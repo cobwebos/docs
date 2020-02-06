@@ -2,7 +2,7 @@
 title: 教程 - 使用 Azure 流量管理器配置地理流量路由
 description: 本教程介绍如何使用 Azure 流量管理器配置地理流量路由方法
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
-ms.author: allensu
-ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: 3eb3f354d51833e55f405ed35679f1a5882c057a
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422796"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938795"
 ---
 # <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>教程：使用流量管理器配置地理流量路由方法
 

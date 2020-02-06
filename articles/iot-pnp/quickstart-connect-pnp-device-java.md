@@ -1,19 +1,19 @@
 ---
 title: 将 IoT 即插即用预览版示例设备代码连接到 IoT 中心 | Microsoft Docs
 description: 使用 Java，生成并运行可连接到 IoT 中心的 IoT 即插即用预览版示例设备代码。 使用 Azure IoT 资源管理器工具查看由设备发送到中心的信息。
-author: baanders
-ms.author: baanders
+author: dominicbetts
+ms.author: dobett
 ms.date: 12/27/2019
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: e1454a197620cacaa8c8303e8f36a8d4a87aec00
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531303"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964815"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>快速入门：将示例 IoT 即插即用预览版设备应用程序连接到 IoT 中心 (Java)
 

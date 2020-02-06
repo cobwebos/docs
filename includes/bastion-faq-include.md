@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c085ce4aba6760b09dcc3eaf2f6232c5cc904706
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922e8a71a22db975685cb82bbd51a125c619ccf2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467578"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989480"
 ---
 ### <a name="regions"></a>面向哪些区域提供？
 
@@ -21,7 +21,7 @@ ms.locfileid: "75467578"
 
 ### <a name="publicip"></a>我是否需要在虚拟机上有一个公共 IP？
 
-不需要在使用 Azure Bastion 服务连接到的 Azure 虚拟机上有一个公共 IP。 Bastion 服务会通过虚拟网络中的虚拟机的专用 IP 打开到虚拟机的 RDP/SSH 会话/连接。
+使用 Azure Bastion 连接到 VM 时，不需要在要连接到的 Azure 虚拟机上有一个公共 IP。 Bastion 服务会通过虚拟网络中的虚拟机的专用 IP 打开到虚拟机的 RDP/SSH 会话/连接。
 
 ### <a name="is-ipv6-supported"></a>是否支持 IPv6？
 
@@ -62,7 +62,7 @@ Azure Bastion 目前在 VM 内支持 en-us-qwerty 键盘布局。  对其他区�
 ### <a name="udr"></a>Azure Bastion 子网是否支持用户定义的路由 (UDR)？
 
 不是。 Azure Bastion 子网不支持 UDR。
-对于在同一虚拟网络中同时包含 Azure Bastion 和 Azure 防火墙/网络虚拟设备 (NVA) 的方案，无需强制流量从 Azure Bastion 子网发往 Azure 防火墙，因为 Azure Bastion 与 VM 之间的通信是专用的。 有关更多详细信息，请参阅[通过 Bastion 访问 Azure 防火墙后的 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
+对于在同一虚拟网络中同时包含 Azure Bastion 和 Azure 防火墙/网络虚拟设备 (NVA) 的方案，无需强制流量从 Azure Bastion 子网发往 Azure 防火墙，因为 Azure Bastion 与 VM 之间的通信是专用的。 有关详细信息，请参阅[通过 Bastion 访问 Azure 防火墙后的 VM](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)。
 
 ### <a name="filetransfer"></a>Azure Bastion RDP 会话是否支持文件传输？
 

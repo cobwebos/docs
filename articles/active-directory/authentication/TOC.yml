@@ -4,16 +4,13 @@
   items:
     - name: 什么是身份验证？
       href: overview-authentication.md
-- name: 快速入门
-  items:
-    - name: 配置密码重置
-      href: quickstart-sspr.md
 - name: 教程
+  expanded: true
   items:
-    - name: 1 为应用程序启用 MFA
+    - name: 启用自助式密码重置
+      href: tutorial-enable-sspr.md
+    - name: 为应用程序启用 MFA
       href: tutorial-mfa-applications.md
-    - name: 2 启用 SSPR 试点
-      href: tutorial-sspr-pilot.md
     - name: 启用 SSPR 本地集成
       href: tutorial-enable-writeback.md
     - name: 集成 Azure 标识保护

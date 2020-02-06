@@ -1,17 +1,17 @@
 ---
 title: 什么是 Azure DNS？
 description: Microsoft Azure 上的 DNS 托管服务概述。 在 Microsoft Azure 上托管域。
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
-ms.author: allensu
-ms.openlocfilehash: 6abdc48187950d9605bdc47b1c5d4f00e4e181f0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211325"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932405"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -25,7 +25,7 @@ Azure DNS 附带了以下功能。
 
 Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上。 Azure DNS 使用任意广播网络。 每个 DNS 查询由最近的可用 DNS 服务器来应答，为你的域提供快速性能和高可用性。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
  Azure DNS 基于 Azure 资源管理器，后者提供以下功能：
 

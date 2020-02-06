@@ -137,6 +137,8 @@
               href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
         - name: 云服务分配失败
           href: cloud-services-allocation-failures.md
+        - name: 应用程序不支持 TLS 1.2
+          href: applications-dont-support-TLS-1-2.md
         - name: 云服务角色回收的常见原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
         - name: TEMP 文件夹的默认大小太小，不能用于角色
@@ -159,7 +161,7 @@
               href: cloud-services-connectivity-and-networking-faq.md
             - name: 部署常见问题解答
               href: cloud-services-deployment-faq.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'

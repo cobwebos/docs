@@ -44,6 +44,8 @@
           href: ./ag/application-gateway-waf-configuration.md
         - name: WAF 策略概述
           href: ./ag/policy-overview.md
+        - name: 机器人防护概述
+          href: ./ag/bot-protection-overview.md
     - name: Front Door
       items:
         - name: 自定义规则

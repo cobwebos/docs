@@ -3,7 +3,7 @@ title: 教程 - 使用 Azure 流量管理器配置优先级流量路由
 description: 本教程介绍如何在流量管理器中配置优先级流量路由方法
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
-ms.author: allensu
-ms.openlocfilehash: d5d58ec39841274b78ababf9f73f00a262cc37be
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: ca223a19ff7ddeae95878f941f3cf295664e62b4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420298"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938728"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>教程：在流量管理器中配置优先级流量路由方法
 
@@ -44,7 +44,7 @@ ms.locfileid: "74420298"
 10. 按如下方式测试配置更改：
     1.  在门户的搜索栏中，搜索流量管理器配置文件名称，并在显示的结果中单击该流量管理器配置文件。
     2.  在“流量管理器配置文件”  边栏选项卡中，单击“概述”  。
-    3.  “流量管理器配置文件”  边栏选项卡会显示新建的流量管理器配置文件的 DNS 名称。 任意客户端（例如通过 Web 浏览器导航到此名称）均可使用此名称路由到根据路由类型确定的相应终结点。 此情况下，所有请求均会路由到第一个终结点；如果流量管理器检测到其处于不正常状态，则流量会自动故障转移到下一终结点。
+    3.  “流量管理器配置文件”  边栏选项卡会显示新建的流量管理器配置文件的 DNS 名称。 任何客户端（例如，通过使用 Web 浏览器导航到客户端）均可使用此名称来路由到由路由类型确定的相应终结点。 此情况下，所有请求均会路由到第一个终结点；如果流量管理器检测到其处于不正常状态，则流量会自动故障转移到下一终结点。
 11. 流量管理器配置文件正常工作后，请在权威 DNS 服务器上编辑 DNS 记录，将公司域名指向流量管理器域名。
 
 ![使用流量管理器配置优先级流量路由方法][1]

@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b0e7d717ed5c06600adf261f7ce5b44f572adf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6e9eddbec3cdc46c04f9c9ae78f937e20bfa8270
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774264"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901979"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>快速入门：结合使用表单识别器 REST API 与 cURL 以提取回执数据
 
 在本快速入门中，我们将结合使用表单识别器 REST API 与 cURL，以提取和识别美国销售收据中的相关信息。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-> [!IMPORTANT]
-> 本快速入门使用表单识别器 v2.0 API。 如果你的订阅不在 `West US 2` 或 `West Europe` 区域中，则需要使用 v1.0 API。 改为按照 [v1.0 快速入门](./curl-train-extract-v1.md)。
 
 ## <a name="prerequisites"></a>必备条件
 

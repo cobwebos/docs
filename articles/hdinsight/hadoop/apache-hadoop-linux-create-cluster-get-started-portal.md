@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 09/25/2019
-ms.openlocfilehash: cab46c4fe2ff0bd1f86c6d98a3b37efb3547a3ce
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 35dc4938760ca83a6781d5791c746ee2f74310ab
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044575"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031574"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Hadoop 群集
 
@@ -38,10 +38,10 @@ ms.locfileid: "73044575"
 
 1. 在“基本信息”下，输入或选择以下值： 
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
-    |Subscription    |  选择 Azure 订阅。 |
-    |Resource group     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
+    |订阅    |  选择 Azure 订阅。 |
+    |资源组     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
     |群集类型| 选择“选择群集类型”  。 然后选择 **Hadoop** 作为群集类型。|
@@ -56,14 +56,14 @@ ms.locfileid: "73044575"
 
 1. 在“存储”  选项卡中，提供以下值：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |主存储类型|使用默认值“Azure 存储”。 |
     |选择方法|使用默认值“从列表中选择”。 |
     |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "提供用于创建 HDInsight 群集的存储值")
+    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
 
     选择“查看 + 创建”  选项卡。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978452"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984161"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
 
@@ -33,18 +33,18 @@ ms.locfileid: "74978452"
 > * 在本地运行 Flask 应用
 
 > [!TIP]
-> 如果想要跳过这些步骤并查看最终的整个代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
+> 如果想要跳过这些步骤并查看最终的全部代码，请参阅 [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial) 上的完整示例和生成说明。
 
 ## <a name="what-is-flask"></a>什么是 Flask？
 
-Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，甚至可以是基于 Web 的日历应用程序或商业网站。
+Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提供所需的工具、库和技术用于生成 Web 应用程序。 此 Web 应用程序可以是一些网页、一篇博客、Wiki，也可以具有较强的实用性，例如基于 Web 的日历应用程序或商业网站。
 
 完成本教程后若要进行深入了解，请参考以下有用链接：
 
 * [Flask 文档](http://flask.pocoo.org/)
 * [Flask for Dummies - Flask 初学者指南](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下面是学习本教程所需的软件和订阅密钥。
 
@@ -103,7 +103,7 @@ Flask 是用于创建 Web 应用程序的微框架。 也就是说，Flask 提�
 
 2. 用于激活虚拟环境的命令根据平台/shell 而异：   
 
-   | 平台 | Shell | 命令 |
+   | 平台 | Shell | Command |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | bash | `source venv/Scripts/activate` |
@@ -128,7 +128,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    ```
 
 > [!NOTE]
-> 若要详细了解 Requests，请参阅 [Requests：HTTP for Humans](http://docs.python-requests.org/en/master/)。
+> 若要详细了解 Requests，请参阅 [Requests：HTTP for Humans](https://2.python-requests.org/en/master/)。
 
 ### <a name="install-and-configure-flask"></a>安装并配置 Flask
 
@@ -151,7 +151,7 @@ Requests 是用于发送 HTTP 1.1 请求的常用模块。 无需手动将查询
    export FLASK_APP=app.py
    ```
 
-   Windows  ：
+    Windows：
    ```
    set FLASK_APP=app.py
    ```

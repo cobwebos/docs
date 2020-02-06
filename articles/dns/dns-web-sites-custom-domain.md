@@ -2,17 +2,17 @@
 title: 教程 - 为 Web 应用创建自定义 Azure DNS 记录
 description: 在本教程中，将使用 Azure DNS 为 Web 应用创建自定义域 DNS 记录。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211206"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939101"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教程：为 Web 应用在自定义域中创建 DNS 记录 
 
@@ -29,7 +29,7 @@ ms.locfileid: "74211206"
 
 请记住，如果在 Azure 中为 Web 应用创建 A 记录，当 Web 应用的基础 IP 地址更改时，则必须手动更新 A 记录。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为自定义域创建 A 记录和 TXT 记录
@@ -43,7 +43,7 @@ ms.locfileid: "74211206"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

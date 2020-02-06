@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561633"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986625"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
 Azure 上有两项服务，可用于在云中设置实验室环境。 
@@ -35,9 +35,6 @@ Azure 上有两项服务，可用于在云中设置实验室环境。
 - **成本优化和分析**。 实验室所有者可以设置实验室计划自动关闭和启动虚拟机。 实验室所有者可以设置计划来指定用户可访问实验室虚拟机的时间段，根据用户或实验室设置使用策略以优化成本，并分析实验室中的使用情况和活动趋势。 对于教室实验室这样的托管实验室类型，目前提供较少的成本优化和分析选项。
 - **嵌入安全性**。 实验室所有者可以为实验室设置专用虚拟网络和子网，并启用共享公共 IP 地址。 利用配置有 ExpressRoute 或站点到站点 VPN 的虚拟网络，实验室用户可以安全地访问资源。 （当前仅开发测试实验室提供）
 - **集成到工作流和工具**。 通过 Azure 实验室服务，可以将实验室集成到组织的网站和管理系统。 可以从持续集成/持续部署 (CI/CD) 工具中，自动预配环境。 （当前仅开发测试实验室提供）
-
-> [!NOTE]
-> 目前，Azure 实验室服务仅支持基于 Azure 市场映像创建的 VM。 如果希望使用自定义映像或者在实验室环境中创建其他 PaaS 资源，请使用开发测试实验室。 有关详细信息，请参阅[在开发测试实验室中创建自定义映像](devtest-lab-create-custom-image-from-vm-using-portal.md)和[使用资源管理器模板创建实验室环境](devtest-lab-create-environment-from-arm.md)。
 
 ## <a name="scenarios"></a>方案
 

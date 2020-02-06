@@ -252,9 +252,13 @@
           href: backup-azure-backup-cloud-as-tape.md
     - name: 脱机备份
       items:
-        - name: 配置脱机备份
+        - name: 概述
+          href: offline-backup-overview.md
+        - name: 使用 Azure Data Box 进行脱机备份
+          href: offline-backup-azure-data-box.md
+        - name: 使用导入/导出 (MARS) 进行脱机备份
           href: backup-azure-backup-import-export.md
-        - name: DPM 和 Azure 备份服务器的脱机备份
+        - name: 使用导入/导出 (DPM/MABS) 进行脱机备份
           href: backup-azure-backup-server-import-export-.md
     - name: 监视和警报
       items:

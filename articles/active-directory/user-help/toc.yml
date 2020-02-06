@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: “我的应用”门户帮助
   items:
-    - name: 访问并使用“我的应用”门户
+    - name: 登录并使用“我的应用”门户
       href: my-apps-portal-end-user-access.md
     - name: 更新配置文件和帐户信息
       href: my-apps-portal-end-user-update-profile.md
     - name: 更新组信息
       href: my-apps-portal-end-user-groups.md
+    - name: 利用集合组织应用
+      href: my-applications-portal-workspaces.md
+    - name: 编辑或撤销应用权限
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: 执行自己的访问评审
       href: my-apps-portal-end-user-access-reviews.md
     - name: 排查问题
       href: my-apps-portal-end-user-troubleshoot.md
-- name: “我的应用”（预览版）门户帮助
-  items:
-    - name: 访问并使用“我的应用”门户
-      href: my-applications-portal-access.md
-    - name: 访问和使用工作区
-      href: my-applications-portal-workspaces.md
-    - name: 编辑或撤销应用权限
-      href: my-applications-portal-permissions-saved-accounts.md

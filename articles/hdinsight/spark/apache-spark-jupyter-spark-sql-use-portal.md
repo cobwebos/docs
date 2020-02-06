@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494132"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029533"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Spark 群集
 
@@ -24,7 +24,7 @@ ms.locfileid: "73494132"
 > [!IMPORTANT]  
 > HDInsight 群集是基于分钟按比例收费，而不管用户是否正在使用它们。 请务必在使用完之后删除群集。 有关详细信息，请参阅本文的[清理资源](#clean-up-resources)部分。
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>创建 HDInsight Spark 群集
 
@@ -34,10 +34,10 @@ ms.locfileid: "73494132"
 
 1. 在“基本”下，提供以下值  ：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
-    |Subscription  | 从下拉列表中，选择用于此群集的 Azure 订阅。 用于本快速入门的订阅是 **Azure**。 |
-    |Resource group | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 用于本快速入门的资源组名称为 **myResourceGroup**。 |
+    |订阅  | 从下拉列表中，选择用于此群集的 Azure 订阅。 用于本快速入门的订阅是 **Azure**。 |
+    |资源组 | 指定是要创建新的资源组还是使用现有的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 用于本快速入门的资源组名称为 **myResourceGroup**。 |
     |群集名称 | 为 HDInsight Spark 群集命名。 用于本快速入门的群集名称为 **myspark2019**。|
     |位置   | 选择资源组的位置。 模板将此位置用于创建群集，以及用于默认群集存储。 用于本快速入门的位置为“美国东部”  。 |
     |群集类型| 选择“Spark”作为群集类型。 |
@@ -52,14 +52,14 @@ ms.locfileid: "73494132"
 
 1. 在“存储”下，提供以下值  ：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |主存储类型|使用默认值“Azure 存储”。 |
     |选择方法|使用默认值“从列表中选择”。 |
     |主存储帐户|使用自动填充的值。|
     |容器|使用自动填充的值。|
 
-    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "使用 HDInsight 基本配置创建 Spark 群集")
+    ![创建 HDInsight Spark 群集基本配置](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "使用 HDInsight 基本配置创建 Spark 群集")
 
     选择“查看 + 创建”以继续。 
 
@@ -129,7 +129,7 @@ HDInsight 将数据保存在 Azure 存储或 Azure Data Lake Storage 中，因�
 
 切换回 Azure 门户，并选择“删除”  。
 
-![Azure 门户删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
+![在 Azure 门户中删除 HDInsight 群集](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "删除 HDInsight 群集")
 
 还可以选择资源组名称来打开“资源组”页，然后选择“删除资源组”  。 通过删除资源组，可以删除 HDInsight Spark 群集和默认存储帐户。
 

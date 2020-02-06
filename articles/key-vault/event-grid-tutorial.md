@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981596"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988458"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）
 
@@ -119,8 +119,6 @@ write-Error "No input data found."
 ## <a name="create-an-event-grid-subscription"></a>创建事件网格订阅
 
 通过 [Azure 门户](https://portal.azure.com)创建事件网格订阅。
-
-1.  打开 [Azure 门户](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)。
 
 1.  转到 Key Vault，然后选择“事件”  选项卡。如果看不到，请确保使用的是[门户的预览版本](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)。
 

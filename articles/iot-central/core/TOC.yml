@@ -9,134 +9,132 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 创建新应用程序
+    - name: 1. 创建新应用程序
       href: quick-deploy-iot-central.md
+    - name: 2. 添加模拟设备
+      href: quick-create-pnp-device.md
+    - name: 3. 配置管理规则和操作
+      href: quick-configure-rules.md
+    - name: 4. 监视设备
+      href: quick-monitor-devices.md
 - name: 教程
   items:
-    - name: 1 - 定义新设备类型
-      href: tutorial-define-device-type.md
-    - name: 2 - 配置规则
-      href: tutorial-configure-rules.md
-    - name: 3 - 自定义操作员的视图
-      href: tutorial-customize-operator.md
-    - name: 4 - 监视设备
-      href: tutorial-monitor-devices.md
-    - name: 5 - 添加设备
-      href: tutorial-add-device.md
+    - name: 建立连接
+      items:
+        - name: 连接即插即用（预览版）设备
+          href: tutorial-connect-pnp-device.md
+        - name: 创建网关设备模板
+          href: tutorial-define-gateway-device-type.md
+        - name: 连接 IoT Edge 设备
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: 保持连接
+      items:
+        - name: 创建设备组
+          href: tutorial-use-device-groups.md
+    - name: 转换
+      items:
+        - name: 创建规则
+          href: tutorial-create-telemetry-rules.md
+        - name: 使用 REST API
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: 概念
   items:
     - name: 体系结构
       href: concepts-architecture.md
-    - name: 连接
-      href: concepts-connectivity.md
     - name: 什么是应用程序模板？
       href: concepts-app-templates.md
+    - name: 建立连接
+      href: concepts-get-connected.md
+    - name: 连接 IoT Edge 设备
+      href: concepts-iot-edge.md
 - name: 操作方法指南
   items:
-    - name: 连接设备
-      items:
-        - name: 准备和连接 Node.js（一般）应用程序
-          href: howto-connect-nodejs.md
-        - name: 准备和连接 MXChip IoT DevKit
-          href: howto-connect-devkit.md
-        - name: 准备和连接 Raspberry Pi (Python)
-          href: howto-connect-raspberry-pi-python.md
-        - name: '准备和连接 Raspberry Pi (C#)'
-          href: howto-connect-raspberry-pi-csharp.md
-        - name: 准备和连接 Windows IoT Core 设备
-          href: howto-connect-windowsiotcore.md
-        - name: 准备和连接 SensorTile.box 设备
-          href: howto-connect-sensortile.md
-        - name: 使用命令行监视设备连接
-          href: howto-use-iotc-explorer.md
-    - name: 管理设备
+    - name: 建立连接
       items:
         - name: 设置设备模板
           href: howto-set-up-template.md
-        - name: 管理设备
-          href: howto-manage-devices.md
-        - name: 运行作业
-          href: howto-run-a-job.md
-        - name: 使用设备集
-          href: howto-use-device-sets.md
-        - name: 对设备模板进行版本控制
-          href: howto-version-device-template.md
-    - name: 监视和分析
-      items:
-        - name: 创建遥测规则
-          href: howto-create-telemetry-rules.md
-        - name: 创建事件中心
-          href: howto-create-event-rules.md
-        - name: 分析设备数据
-          href: howto-create-analytics.md
-    - name: 操作和扩展性
-      items:
-        - name: 在规则中组合多个操作
-          href: howto-use-action-groups.md
-        - name: 创建要在触发规则时执行的 webhook 操作
-          href: howto-create-webhooks.md
-        - name: 在 Microsoft Flow 中构建工作流
-          href: howto-add-microsoft-flow.md
-        - name: 在 Azure 逻辑应用中构建工作流
-          href: howto-build-azure-logic-apps.md
-        - name: 触发 Azure Functions
-          href: howto-trigger-azure-functions.md
-        - name: 导出数据
-          items:
-            - name: 导出到事件中心和服务总线
-              href: howto-export-data-event-hubs-service-bus.md
-            - name: 导出到 Blob 存储
-              href: howto-export-data-blob-storage.md
-        - name: 创建自定义规则
-          href: howto-create-custom-rules.md
-        - name: 创建自定义分析
-          href: howto-create-custom-analytics.md
-        - name: 在 Power BI 中直观显示数据
-          href: howto-connect-powerbi.md
+        - name: 准备和连接 MXChip IoT DevKit
+          href: howto-connect-devkit.md
+        - name: 准备和连接 RuuviTag 设备
+          href: howto-connect-ruuvi.md
+        - name: 准备和连接 Rigado Cascade 500
+          href: howto-connect-rigado-cascade-500.md
         - name: 连接其他 IoT 云
           href: howto-build-iotc-device-bridge.md
+    - name: 保持连接
+      items:
+        - name: 使用 Azure CLI 监视设备连接
+          href: howto-monitor-devices-azure-cli.md
+        - name: 对设备模板进行版本控制
+          href: howto-version-device-template.md
+        - name: 管理设备
+          href: howto-manage-devices.md
+        - name: 配置规则
+          href: howto-configure-rules.md
+        - name: 分析设备数据
+          href: howto-create-analytics.md
+        - name: 向仪表板添加磁贴
+          href: howto-add-tiles-to-your-dashboard.md
+        - name: 创建 Azure IoT Central 个人仪表板
+          href: howto-create-personal-dashboards.md
+        - name: 运行作业
+          href: howto-run-a-job.md
+        - name: 对设备模板进行版本控制
+          href: howto-version-device-template.md
+    - name: 转换
+      items:
+        - name: 配置连续数据导出
+          href: howto-export-data.md
+        - name: 根据规则创建 Webhook
+          href: howto-create-webhooks.md
+        - name: 根据规则连接 Azure Monitor 操作组
+          href: howto-use-action-groups.md
+        - name: 创建自定义规则
+          href: howto-create-custom-rules.md
+        - name: 使用 Databricks 创建自定义分析
+          href: howto-create-custom-analytics.md
     - name: 管理
       items:
         - name: 管理应用程序
-          href: howto-administer.md
-        - name: 管理用户和角色
-          href: howto-manage-users-roles.md
-        - name: 查看帐单
-          href: howto-view-bill.md
-        - name: 自定义应用程序 UI
-          href: howto-customize-ui.md
-        - name: 准备和上传图像
-          href: howto-prepare-images.md
-        - name: 向仪表板添加磁贴
-          href: howto-add-tiles-to-your-dashboard.md
-        - name: 使用仪表板磁贴
-          href: howto-use-tiles.md
-        - name: 使用应用程序模板
-          href: howto-use-app-templates.md
-        - name: 从 Azure 门户进行管理
-          href: howto-manage-iot-central-from-portal.md
-        - name: 从 Azure CLI 进行管理
-          href: howto-manage-iot-central-from-cli.md
-        - name: 从 Azure PowerShell 进行管理
-          href: howto-manage-iot-central-from-powershell.md
-        - name: 以 CSP 身份创建和管理应用程序
-          href: howto-create-and-manage-applications-csp.md
-    - name: 个性化
-      items:
-        - name: 创建 Azure IoT Central 个人仪表板
-          href: howto-create-personal-dashboards.md
-        - name: 管理首选项
-          href: howto-manage-preferences.md
-        - name: 切换实时聊天
-          href: howto-show-hide-chat.md
+          items:
+            - name: 管理应用程序设置
+              href: howto-administer.md
+            - name: 管理用户和角色
+              href: howto-manage-users-roles.md
+            - name: 管理帐单
+              href: howto-view-bill.md
+            - name: 自定义应用程序 UI
+              href: howto-customize-ui.md
+            - name: 导出应用程序
+              href: howto-use-app-templates.md
+        - name: 从其他位置管理
+          items:
+            - name: 从 Azure 门户进行管理
+              href: howto-manage-iot-central-from-portal.md
+            - name: 从 Azure CLI 进行管理
+              href: howto-manage-iot-central-from-cli.md
+            - name: 从 Azure PowerShell 进行管理
+              href: howto-manage-iot-central-from-powershell.md
+            - name: 从云解决方案提供商门户进行管理
+              href: howto-create-and-manage-applications-csp.md
+        - name: 个性化应用程序
+          items:
+            - name: 管理个人首选项
+              href: howto-manage-preferences.md
+            - name: 切换实时聊天
+              href: howto-show-hide-chat.md
 - name: 相关内容
   items:
-    - name: 解决方案
+    - name: 行业应用程序模板
       items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT 解决方案加速器
-          href: /azure/iot-accelerators
+        - name: 零售
+          href: ../retail/overview-iot-central-retail-pnp.md
+        - name: 能源
+          href: ../energy/overview-iot-central-energy.md
+        - name: Government
+          href: ../government/overview-iot-central-government.md
+        - name: 医疗保健
+          href: ../healthcare/overview-iot-central-healthcare.md
     - name: 平台服务
       items:
         - name: IoT 中心
@@ -161,6 +159,8 @@
   items:
     - name: 支持和帮助选项
       href: /azure/iot-fundamentals/iot-support-help
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
     - name: 客户数据请求
       href: iot-central-customer-data-requests.md
     - name: 支持的浏览器

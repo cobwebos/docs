@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: 382205a958030d2a6d1c199627a591978ef8708a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
+ms.date: 02/03/2020
+ms.openlocfilehash: 2c9c5b35110be8f9e51d2205f9fe63dfa4ef8e10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934615"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030998"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -25,13 +25,13 @@ ms.locfileid: "75934615"
 Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点）组成。 Azure HDInsight 对各个节点的安装和配置的实现细节进行处理，因此用户只需提供常规配置信息。
 
 > [!IMPORTANT]  
-> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集每分钟按比例收费，因此不再使用群集时请务必将其删除。 了解如何[删除群集](hdinsight-delete-cluster.md)。
+> 创建群集后便开始 HDInsight 群集计费，删除群集后停止计费。 群集以每分钟按比例收费，因此无需再使用群集时，应始终将其删除。 了解如何[删除群集](hdinsight-delete-cluster.md)。
 
 ## <a name="cluster-setup-methods"></a>群集设置方法
 
 下表显示可用于设置 HDInsight 群集的各种方法。
 
-| 群集创建方法 | Web 浏览器 | 命令行 | REST API | SDK |
+| 群集创建方法 | Web 浏览器 | 命令行 | REST API | SDK 中 IsInRole 中的声明 |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure 门户](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure 数据工厂](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
@@ -52,7 +52,7 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 * [群集类型和配置](#cluster-types)
 * [群集名称](#cluster-name)
 * [群集登录和 SSH 用户名](#cluster-login-and-ssh-username)
-* [位置](#location)
+* [Location](#location)
 
 ## <a name="resource-group-name"></a>资源组名称
 
@@ -83,9 +83,9 @@ Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一�
 
 HDInsight 群集名称具有以下限制：
 
-* 允许的字符：a-z、0-9、A-Z
+* 允许的字符： a-z、0-9、a-z
 * 最大长度：59
-* 保留的名称：应用
+* 保留名称：应用
 * 群集命名范围适用于所有订阅中的所有 Azure。 因此，群集名称在全球范围内必须是唯一的。
 * 前六个字符在 VNET 中必须是唯一的
 
@@ -93,7 +93,7 @@ HDInsight 群集名称具有以下限制：
 
 使用 HDInsight 群集时，可以在群集创建期间配置两个用户帐户：
 
-* HTTP 用户：默认用户名为*admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
+* HTTP 用户：默认的用户名为 *admin*。它使用 Azure 门户上的基本配置。 有时称为“群集用户”。
 * SSH 用户：用于通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 HTTP 用户名具有以下限制：
@@ -113,7 +113,7 @@ SSH 用户名具有以下限制：
 
 ## <a name="location"></a>群集和存储所在的位置（区域）
 
-无需显式指定群集位置：群集位于默认存储所在的位置。 有关受支持区域的列表，请单击 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的“区域”下拉列表。
+不需要显式指定群集位置：群集与默认存储在同一位置。 有关受支持区域的列表，请单击 [HDInsight 定价](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)中的“区域”下拉列表。
 
 ## <a name="storage-endpoints-for-clusters"></a>群集的存储终结点
 
@@ -134,7 +134,7 @@ HDInsight 群集可以使用以下存储选项：
 
 在配置期间，对于默认存储终结点，需要指定 Azure 存储帐户的 Blob 容器或 Data Lake Storage。 默认存储包含应用程序日志和系统日志。 可以选择指定群集可访问的其他链接的 Azure 存储帐户和 Data Lake Storage 帐户。 HDInsight 群集与从属存储帐户必须位于相同的 Azure 位置。
 
-![群集存储设置：与 HDFS 兼容的存储终结点](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage-blank.png)
+![群集存储设置：与 HDFS 兼容的存储终结点](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -184,7 +184,7 @@ HDInsight 群集可以使用以下存储选项：
 
 每种群集类型都有自身的节点数、节点术语和默认的 VM 大小。 下表中的括号内列出了每个节点类型的节点数目。
 
-| 类型 | 节点数 | 图表 |
+| Type | Nodes | 图表 |
 | --- | --- | --- |
 | Hadoop |头节点（2），辅助角色节点（1 +） |![HDInsight Hadoop 群集节点](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |头服务器 (2)，区域服务器 (1+)，主控/ZooKeeper 节点 (3) |![HDInsight HBase 群集类型安装程序](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
@@ -209,9 +209,9 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 > [!NOTE]  
 > 群集大小限制因 Azure 订阅而异。 若要提高限制的大小，请联系 [Azure 计费支持人员](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-使用 Azure 门户配置群集时，可通过 "**配置 + 定价**" 选项卡使用节点大小。在门户中，你还可以查看不同节点大小的相关成本。
+使用 Azure 门户配置群集时，可通过 "**配置 + 定价**" 选项卡使用节点大小。在门户中，还可以查看不同节点大小的相关成本。
 
-![HDInsight 选择节点大小](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-pricing-hadoop.png)
+![HDInsight 选择节点大小](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
 ### <a name="virtual-machine-sizes"></a>虚拟机大小
 
@@ -227,22 +227,19 @@ HDInsight 群集的成本取决于节点数和节点的虚拟机大小。
 
 有关详细信息，请参阅[虚拟机的大小](../virtual-machines/windows/sizes.md)。 有关不同大小的定价信息，请参阅 [HDInsight 定价](https://azure.microsoft.com/pricing/details/hdinsight)。
 
-## <a name="classic-cluster-setup"></a>经典群集设置
-
-经典群集安装程序以默认的创建设置为基础，并添加以下选项：
-
-* [HDInsight 应用程序](#install-hdinsight-applications-on-clusters)
-* [脚本操作](#advanced-settings-script-actions)
-
 ## <a name="install-hdinsight-applications-on-clusters"></a>在群集上安装 HDInsight 应用程序
 
 HDInsight 应用程序是用户可以在基于 Linux 的 HDInsight 群集上安装的应用程序。 可以使用由 Microsoft 或第三方提供的应用程序，也可以使用自行开发的应用程序。 有关详细信息，请参阅[在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序](hdinsight-apps-install-applications.md)。
 
 大多数 HDInsight 应用程序安装在空边缘节点上。  空边缘节点是安装并配置了与头节点中相同的客户端工具的 Linux 虚拟机。 可以使用该边缘节点来访问群集、测试客户端应用程序和托管客户端应用程序。 有关详细信息，请参阅[在 HDInsight 中使用空边缘节点](hdinsight-apps-use-edge-node.md)。
 
-## <a name="advanced-settings-script-actions"></a>高级设置：脚本操作
+![Azure 门户群集配置应用程序](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-applications.png)
+
+## <a name="script-actions"></a>脚本操作
 
 可以在创建期间通过使用脚本安装其他组件或自定义群集配置。 此类脚本可通过**脚本操作**调用，脚本操作是一种配置选项，可通过 Azure 门户、HDInsight Windows PowerShell cmdlet 或 HDInsight .NET SDK 使用。 有关详细信息，请参阅[使用脚本操作自定义 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
+
+![Azure 门户群集配置脚本操作](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-scriptaction.png)
 
 某些本机 Java 组件（例如 Apache Mahout 和 Cascading）可以在群集上作为 Java 存档 (JAR) 文件运行。 可以通过 Hadoop 作业提交机制将这些 JAR 文件分发到 Azure 存储，并提交到 HDInsight 群集。 有关详细信息，请参阅[以编程方式提交 Apache Hadoop 作业](hadoop/submit-apache-hadoop-jobs-programmatically.md)。
 

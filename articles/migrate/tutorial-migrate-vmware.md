@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028696"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989359"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -184,7 +184,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 - **服务总线**：Azure Migrate 服务器迁移使用服务总线将复制业务流程消息发送到设备。
 - **网关存储帐户**：服务器迁移使用网关存储帐户存储有关所要复制的 VM 的状态信息。
 - **日志存储帐户**：Azure Migrate 设备将 VM 的复制日志上传到日志存储帐户。 Azure Migrate 将复制信息应用到副本托管磁盘。
-- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 请[检查这些权限](tutorial-prepare-vmware.md#assign-role-assignment-permissions)。   
+- **Key Vault**：Azure Migrate 设备使用 Key Vault 管理服务总线的连接字符串，以及复制中使用的存储帐户的访问密钥。 在准备阶段，你应已设置 Key Vault 访问存储帐户所需的权限。 请[检查这些权限](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)。   
 
 
 ## <a name="track-and-monitor"></a>跟踪和监视

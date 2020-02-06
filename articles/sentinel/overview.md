@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5f3a8fa7b9619958db1d7213236e27d00b417c54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261869"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939115"
 ---
 # <a name="what-is-azure-sentinel"></a>什么是 Azure Sentinel？
 
@@ -37,17 +37,17 @@ Azure Sentinel 提供整个企业安全局势的鸟瞰图，可以缓解日益�
 
 - 通过内置的业务流程和常见任务自动化**快速响应事件**。
 
-
 ![Azure Sentinel 的核心功能](./media/overview/core-capabilities.png)
 
 Azure Sentinel 基于现有的各种 Azure 服务，原生集成了经过证实的基础服务，例如 Log Analytics 和逻辑应用。 Azure Sentinel 可以借助人工智能丰富调查和检测工作，并提供 Microsoft 的威胁智能流，使你能够运用自己的威胁智能。 
 
- 
 ## <a name="connect-to-all-your-data"></a>连接到所有数据
 
 若要载入 Azure Sentinel，首先需要[连接到安全源](connect-data-sources.md)。 Azure Sentinel 随附许多适用于 Microsoft 解决方案的现成可用的连接器，提供实时集成（包括 Microsoft 威胁防护解决方案）和 Microsoft 365 源（包括 Office 365、Azure AD、Azure ATP 和 Microsoft Cloud App Security，等等）。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 也可以使用常用事件格式 Syslog 或 REST-API 将数据源与 Azure Sentinel 相连接。  
 
 ![数据收集器](./media/collect-data/collect-data-page.png)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="workbooks"></a>工作簿
 
@@ -55,7 +55,7 @@ Azure Sentinel 基于现有的各种 Azure 服务，原生集成了经过证实�
 
 ![仪表板](./media/tutorial-monitor-data/access-workbooks.png)
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 为了帮助降低干扰并尽量减少需要检查和调查的警报数目，Azure Sentinel [使用分析将警报关联到事件](tutorial-detect-threats-built-in.md)。 **事件**是相关警报的分组，它们共同创建了可以调查和解决的、可处理的可能威胁。 可以按原样使用内置的关联规则，也可以使用它们作为起点来生成自己的关联规则。 Azure Sentinel 还提供机器学习规则用于映射网络行为，然后查找不同资源中的异常。 这些分析通过将有关不同实体的低保真度警报合并成潜在的高保真度安全事件，来关联问题点。
 

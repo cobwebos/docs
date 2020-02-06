@@ -2,17 +2,17 @@
 title: 快速入门 - 使用 Azure 门户创建 Azure 专用 DNS 区域
 description: 在本快速入门中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure 门户创建和管理第一个专用 DNS 区域和记录的分步指南。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
-ms.author: allensu
-ms.openlocfilehash: 48c5684dd491a91b6da212f78c535433ac2aecf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210752"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939372"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 专用 DNS 区域
 
@@ -49,7 +49,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 1. 在“创建专用 DNS 区域”页上，键入或选择以下值： 
 
    - **资源组**：选择“新建”，输入 *MyAzureResourceGroup*，然后选择“确定”。   资源组名称在 Azure 订阅中必须唯一。 
-   -  **名称**：对于此示例，请键入 *private.contoso.com*。
+   -  **Name**：对于此示例，请键入 *private.contoso.com*。
 1. 对于“资源组位置”，请选择“美国中西部”。  
 
 1. 选择“查看 + 创建”  。

@@ -2,17 +2,17 @@
 title: 快速入门 - 使用 Azure PowerShell 创建 Azure 专用 DNS 区域
 description: 在本文中，将在 Azure DNS 中创建并测试专用 DNS 区域和记录。 这是有关使用 Azure PowerShell 创建和管理第一个专用 DNS 区域和记录的分步指南。
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: allensu
-ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: 0db53bcd6516bd52e2796deaa49fe0dd582e0588
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210826"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939390"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 Azure 专用 DNS 区域
 

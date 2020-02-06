@@ -1,17 +1,17 @@
 ---
 title: 有关将功能标志添加到 ASP.NET Core 的快速入门
 description: 将功能标志添加到 ASP.NET Core 应用并使用 Azure 应用配置对其进行管理
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: lcozzens
+ms.openlocfilehash: fda0e8072984a25b33731a775780231538e92e3d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260271"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898685"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 

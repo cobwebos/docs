@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242037"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029993"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入门：使用 Azure 门户在 Azure HDInsight 中创建 Apache Kafka 群集
 
@@ -27,7 +27,7 @@ Apache Kafka 是开源分布式流式处理平台。 通常用作消息代理，
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -35,7 +35,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 若要创建 Apache Kafka on HDInsight 群集，请使用以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在左侧菜单中，导航到“+ 创建资源” > “Analytics” > “HDInsight”    。
 
@@ -43,10 +43,10 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 1. 在“基本信息”下，输入或选择以下值： 
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
-    |Subscription    |  选择 Azure 订阅。 |
-    |Resource group     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
+    |订阅    |  选择 Azure 订阅。 |
+    |资源组     | 创建资源组，或选择现有资源组。  资源组是 Azure 组件的容器。  在本例中，资源组包含 HDInsight 群集和依赖的 Azure 存储帐户。 |
     |群集名称   | 输入 Hadoop 群集的名称。 由于 HDInsight 中的所有群集共享同一 DNS 命名空间，因此该名称必须唯一。 该名称最多可以有 59 个字符，包括字母、数字和连字符。 名称的第一个和最后一个字符不能为连字符。 |
     |位置    | 选择要在其中创建群集的 Azure 位置。  选择的位置与你越靠近，性能就越好。 |
     |群集类型| 选择“选择群集类型”  。 然后选择“Kafka”作为群集类型。 |
@@ -65,14 +65,14 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
 1. 在“存储”  选项卡中，提供以下值：
 
-    |属性  |说明  |
+    |properties  |说明  |
     |---------|---------|
     |主存储类型|使用默认值“Azure 存储”。 |
     |选择方法|使用默认值“从列表中选择”。 |
     |主存储帐户|使用下拉列表选择现有存储帐户，或选择“新建”  。 如果创建新帐户，名称的长度必须在 3 到 24 个字符之间，并且只能包含数字和小写字母|
     |容器|使用自动填充的值。|
 
-    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "提供用于创建 HDInsight 群集的存储值")
+    ![HDInsight Linux 入门 - 提供群集存储值](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "提供用于创建 HDInsight 群集的存储值")
 
     选择“安全性 + 网络”选项卡。 
 
@@ -80,7 +80,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
    若要将群集连接到虚拟网络，请从“虚拟网络”下拉列表中选择一个虚拟网络。 
 
-   ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![将群集添加到虚拟网络](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     选择“配置 + 定价”选项卡。 
 
@@ -98,7 +98,7 @@ SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (
 
     创建群集可能需要 20 分钟。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 1. 若要连接到 Apache Kafka 群集的主要头节点，请使用以下命令。 将 `sshuser` 替换为 SSH 用户名。 将 `mykafka` 替换为 Apache Kafka 群集的名称。
 

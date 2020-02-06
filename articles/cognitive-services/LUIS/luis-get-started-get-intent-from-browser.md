@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165749"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987948"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>快速入门：使用浏览器获取意向
 
-若要了解 LUIS 预测终结点返回的内容，请在 Web 浏览器中查看预测结果。 
+若要了解 LUIS 预测终结点返回的内容，请在 Web 浏览器中查看预测结果。
 
 ## <a name="prerequisites"></a>必备条件
 
 若要查询公共应用，需要：
 
-* 你自己的语言理解 (LUIS) 创作或预测密钥，可从 [LUIS 门户(预览)](https://preview.luis.ai/) 获取。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。 
-* 公共应用的 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 
+* 你自己的语言理解 (LUIS) 创作或预测密钥，可从 [LUIS 门户(预览)](https://preview.luis.ai/) 获取。 如果你没有用于创建密钥的订阅，可以注册一个[免费帐户](https://azure.microsoft.com/free/)。
+* 公共应用的 ID：`df67dcdb-c37d-46af-88e1-8b97951ca1c2`。
 
 ## <a name="use-the-browser-to-see-predictions"></a>使用浏览器查看预测
 
-1. 打开 Web 浏览器。 
+1. 打开 Web 浏览器。
 1. 使用以下完整 URL（请将 `YOUR-KEY` 替换为自己的 LUIS 创作或预测密钥）。 这些请求是 GET 请求，并包含授权（使用 LUIS 创作或预测密钥作为查询字符串参数）。
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3 预测请求](#tab/V3-1-1)
-    
-    
+
+
     **GET** 终结点（按槽）请求的 V3 URL 格式为：
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2 预测请求](#tab/V2-1-2)
-    
+
     **GET** 终结点请求的 V2 URL 格式为：
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ ms.locfileid: "76165749"
 
     * * *
 
-1. 要查看所有意图，请添加相应的查询字符串参数。 
+1. 要查看所有意图，请添加相应的查询字符串参数。
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3 预测终结点](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ ms.locfileid: "76165749"
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2020
+ms.date: 02/04/2020
 ms.author: banders
-ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8e674ec1c2d4c47d3b4e56bd788c963c81ea23e9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76274027"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016198"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 

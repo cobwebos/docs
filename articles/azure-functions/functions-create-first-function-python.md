@@ -4,18 +4,18 @@ description: 使用 Azure Functions 创建无服务器 Python 代码并将其部
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845503"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898564"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入门：在 Azure 中创建 HTTP 触发的 Python 函数
 
 在本文中，你将使用命令行工具创建响应 HTTP 请求的 Python 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
-本文还提供了[基于 Visual Studio 代码的版本](/azure/python/tutorial-vs-code-serverless-python-01)。
+本文还提供了[基于 Visual Studio 代码的版本](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python)。
 
 ## <a name="prerequisites"></a>必备条件
 

@@ -4,12 +4,12 @@ description: Azure Policy 是 Azure 中的一项服务，用于创建、分配�
 ms.date: 11/25/2019
 ms.topic: overview
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e886f37a8d7f1395b5c831e81e600ecc6e2dd20f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846044"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937819"
 ---
 # <a name="what-is-azure-policy"></a>什么是 Azure Policy？
 
@@ -24,7 +24,7 @@ Azure Policy 是 Azure 中的一项服务，用于创建、分配和管理策略
 > [!IMPORTANT]
 > 现在，无论定价层如何，为所有分配都提供了 Azure Policy 的符合性评估。 如果分配未显示符合性数据，请确保已向 Microsoft.PolicyInsights 资源提供程序注册订阅。
 
-[!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
+[!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-is-it-different-from-rbac"></a>策略与 RBAC 有什么不同？
 
