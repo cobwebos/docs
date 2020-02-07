@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: 2e8c477aea7a11eefa606ab9cd084ca3ed9f400f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995645"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76841874"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
-Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure Cosmos DB 吞吐量或其他 Azure 资源的一年或三年计划，为你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。
+使用 Azure 预留项，可以承诺为虚拟机、Azure Blob 存储或 Azure Data Lake Storage Gen2、SQL 数据库计算容量、Azure 磁盘存储、Azure Cosmos DB 吞吐量或其他 Azure 资源的一年或三年计划预先付费，从而帮助你节省资金。 通过承诺预付，能够以折扣价购买所用资源。 预留可显著将资源的成本，最多减少至即用即付价格的 72%。 预订提供计费折扣，并且不会影响资源的运行时状态。
 
 可以提前或每月为预留项付费。 预付和每月预留的总费用相同，选择每月支付不会产生额外的费用。 每月付款适用于 Azure 预留项，而不适用于第三方产品。
 
@@ -32,6 +32,7 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 - **虚拟机预留实例** - 预留项仅涵盖虚拟机计算成本。 而不涵盖软件、网络或存储等其他费用。
 - **Azure 存储预留容量** - 该预留项涵盖用于 Blob 存储或 Azure Data Lake Gen2 存储的标准存储帐户的存储容量。 不涵盖带宽或事务费率。
+- **Azure 磁盘存储预留项** - 预留项仅包括大小为 P30 或更高级别的高级 SSD。 它不包括小于 P30 的任何其他磁盘类型或大小。
 - **Azure Cosmos DB 预留容量** - 预留项涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。
 - **SQL 数据库预留 vCore** - 预留项仅包含计算成本。 许可证单独计费。
 - **SQL 数据仓库** - 预留项涵盖 cDWU 用量。 它不涵盖与 SQL 数据仓库用量相关的存储或网络费用。
@@ -40,7 +41,6 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 - Azure 数据资源管理器
-- 高级 SSD 托管磁盘
 
 
 对于 Windows 虚拟机和 SQL 数据库，可以利用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。
@@ -49,7 +49,7 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 若要购买计划，必须在企业订阅（MS-AZR-0017P 或 MS-AZR-0148P）或即用即付订阅（MS-AZR-0003P 或 MS-AZR-0023P）或 Microsoft 客户协议订阅中具有订阅所有者角色。 云解决方案提供商可使用 Azure 门户或 [合作伙伴中心](/partner-center/azure-reservations)购买 Azure 预留项。
 
-企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。 EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
+企业协议 (EA) 客户可以通过在 EA 门户中禁用“添加预留实例”选项，将购买权限制为 EA 管理员。  EA 管理员必须是至少一个 EA 订阅的订阅所有者才能购买预留项。 对于希望通过一个核心团队为不同的成本中心购买预留项的企业而言，该选项非常有用。 购买后，核心团队可将成本中心所有者添加到预留项。 然后，所有者可将预留范围限定为其订阅。 购买预留项时，核心团队无需拥有订阅所有者访问权限。
 
 预留折扣仅适用于与通过企业、云解决方案提供商 (CSP)、采用即用即付费率的 Microsoft 客户协议和单个计划购买的订阅关联的资源。
 
@@ -77,19 +77,19 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 可以在购买预留时将预留范围限定为资源组，也可以在购买后设置范围。 只能订阅所有者才能将预留范围限定为资源组。
 
-若要设置范围，请转到 Azure 门户中的[购买预留项](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand)页。 选择要购买的预留项类型。 在“选择要购买的产品”选项表单中，将“范围”值更改为“单个资源组”。 然后选择一个资源组。
+若要设置范围，请转到 Azure 门户中的[购买预留项](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand)页。 选择要购买的预留项类型。 在“选择要购买的产品”选项表单中，将“范围”值更改为“单个资源组”。  然后选择一个资源组。
 
 ![显示 VM 预留项购买选项的示例](./media/save-compute-costs-reservations/select-product-to-purchase.png)
 
 此时会显示虚拟机预留项中资源组的购买建议。 建议值是通过分析过去 30 天的使用情况计算得出的。 如果运行包含预留实例的资源的成本，比运行采用即用即付费率的资源的成本更低，则会给出购买建议。 有关预留项购买建议的详细信息，请参阅[根据使用模式获取预留实例购买建议](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations)。
 
-始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。 重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
+始终可在购买预留项后更新范围。 为此，请转到该预留项，单击“配置”，然后重新设置预留范围。  重新设置预留范围不属于商业交易。 预留条款不会有变化。 有关更新范围的详细信息，请参阅[在购买预留项后更新范围](manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 ![演示如何更改预留范围的示例](./media/save-compute-costs-reservations/rescope-reservation-resource-group.png)
 
 ### <a name="monitor-and-optimize-reservation-usage"></a>监视和优化预留项的用量
 
-可通过多种方式监视预留项的用量 - 通过 Azure 门户、API 或使用情况数据。 若要查看你有权访问的所有预留项，请在 Azure 门户中转到“预留项”。 预留项网格显示预留的最新记录的利用率百分比。 单击该预留可查看其长期利用率。
+可通过多种方式监视预留项的用量 - 通过 Azure 门户、API 或使用情况数据。 若要查看你有权访问的所有预留项，请在 Azure 门户中转到“预留项”。  预留项网格显示预留的最新记录的利用率百分比。 单击该预留可查看其长期利用率。
 
 如果是企业协议客户或 Microsoft 客户协议客户，则还可以通过 [API](reservation-apis.md#see-reservation-usage) 和[使用情况数据](understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks)来获取预留项利用率。
 
@@ -105,9 +105,9 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 预留折扣适用于以下符合条件的订阅和套餐类型。
 
-- 企业协议（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0017p 或 BC-OP-NT-AZR-Ms-azr-0148p）
+- 企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P）
 - Microsoft 客户协议订阅。
-- 采用即用即付费率的单个计划（产品/服务编号： BC-OP-NT-AZR-Ms-azr-0003p 或 BC-OP-NT-AZR-0023P）
+- 采用即用即付费率的单个计划（套餐编号：MS-AZR-0003P 或 MS-AZR-0023P）
 - CSP 订阅
 
 订阅中运行的其他产品/服务类型的资源无法获得预订折扣。
@@ -120,9 +120,9 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 预留折扣适用于与购买预留时选择的属性相匹配的资源使用情况。 属性包括匹配的 VM、SQL 数据库、Azure Cosmos DB 或其他资源的运行范围。 例如，如果需要“美国西部”区域四个标准 D2 虚拟机的预留折扣，请选择正在运行的 VM 所在的订阅。
 
-预留折扣的性质是“不用就会失效”。 如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”  。 如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
 例如，你可能会在以后创建一个资源，并包含一个利用不足的匹配预留项。 预留折扣将自动应用到新的匹配资源。
 
@@ -140,10 +140,10 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 
 服务计划：
 
-- 保留的 VM 实例：购买保留并选择 "**针对实例大小灵活性优化**" 时，折扣覆盖将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
-- Azure 存储预留容量：可以购买标准 Azure 存储帐户的预留容量，单位为 100 TiB 或每月 1 PiB。 适用于任何访问层（热、冷或存档）和任何复制选项（LRS、GRS 或 ZRS）的所有区域中均提供 Azure 存储预留容量。
-- SQL 数据库保留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](understand-reservation-charges.md)。
-- Azure Cosmos DB 保留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](understand-cosmosdb-reservation-charges.md)。
+- 虚拟机预留实例：购买预留项时，如果选择“针对实例大小灵活性进行优化”  ，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+- Azure 存储预留容量：你可以购买标准 Azure 存储帐户的预留容量（单位为每月 100 TiB 或 1 PiB）。 适用于任何访问层（热、冷或存档）和任何复制选项（LRS、GRS 或 ZRS）的所有区域中均提供 Azure 存储预留容量。
+- SQL 数据库预留容量：折扣覆盖范围取决于所选的性能层。 有关详细信息，请参阅[了解如何应用 Azure 预订折扣](understand-reservation-charges.md)。
+- Azure Cosmos DB 预留容量：折扣覆盖范围取决于预配的吞吐量。 有关详细信息，请参阅[了解如何应用 Azure Cosmos DB 预订折扣](understand-cosmosdb-reservation-charges.md)。
 
 ## <a name="reservation-notifications"></a>预留通知
 
@@ -167,7 +167,7 @@ Azure 预留承诺预付适用于虚拟机、Azure Blob 存储或 Azure Data Lak
 - 帐户所有者将收到所有其他通知。
 
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

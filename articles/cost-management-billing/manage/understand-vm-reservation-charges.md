@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
 ms.openlocfilehash: 9ebc418327d8c73198d43d3c40e14d48c73ad209
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290234"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>如何将 Azure 预留折扣应用于虚拟机
@@ -37,9 +37,9 @@ ms.locfileid: "76290234"
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 
-预留折扣的性质是“不用就会失效”。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
+预留折扣的性质是“不用就会失效”  。 因此，如果你在任何小时内没有匹配资源，那么你将丢失该小时的预留数量。 不能结转未使用的预留小时数。
 
-关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失。
+关闭资源时，预留折扣将自动应用于指定范围内的另一个匹配资源。 如果在指定的范围内找不到匹配的资源，则预留小时数将丢失  。
 
 ## <a name="reservation-discount-for-non-windows-vms"></a>非 Windows VM 的预留折扣
 
@@ -47,7 +47,7 @@ ms.locfileid: "76290234"
 
 ![一个已应用预留和两个匹配的 VM 实例的屏幕截图](./media/understand-vm-reservation-charges/billing-reserved-vm-instance-application.png)
 
-1. 超出预留范围的任何使用量将按常规即用即付费率进行收费。 不会向你的预订行下的任何使用付费，因为它已作为预订购买的一部分支付。
+1. 超出预留范围的任何使用量将按常规即用即付费率进行收费。 对于预留范围内的任何使用量不收取任何费用，因为这些使用量已在购买预留时付费。
 2. 在第 1 个小时内，实例 1 运行了 0.75 小时，实例 2 运行了 0.5 小时。 第 1 个小时的总体使用情况为 1.25 小时。 将按即用即付费率收取剩余 0.25 小时的费用。
 3. 在第 2 个小时和第 3 个小时内，这两个实例都各运行了 1 小时。 一个实例的费用由预订费用涵盖，按即用即付费率对另一个实例收费。
 4. 在第 4 个小时内，实例 1 运行了 0.5 小时，实例 2 运行了 1 小时。 预订费用完全涵盖了实例 1 的费用，并涵盖了实例 2 的 0.5 小时费用。 将按即用即付费率收取剩余 0.5 小时的费用。
@@ -60,7 +60,7 @@ ms.locfileid: "76290234"
 
 ## <a name="discount-can-apply-to-different-sizes"></a>折扣适用于不同大小
 
-在购买预留 VM 实例时，如果选择“优化对象：实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
+在购买预留 VM 实例时，如果选择“优化对象：实例大小灵活性”，则折扣覆盖范围将取决于所选的 VM 大小   。 预订可以应用于同一大小系列组中的虚拟机 (VM) 大小。 有关详细信息，请参阅[预订 VM 实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 
 ## <a name="discount-applies-to-matching-servicetype-only"></a>折扣仅适用于匹配的 ServiceType
 
@@ -74,7 +74,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 
 实例大小灵活性设置确定哪些服务可获得预留实例折扣。
 
-无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService 值。 示例包括：
+无论该设置是打开还是关闭，预留折扣在 *ConsumedService* 为 `Microsoft.Compute` 时会自动应用到任何匹配的 VM 使用量。 因此，请检查使用情况数据中的 ConsumedService  值。 示例包括：
 
 - 虚拟机
 - 虚拟机规模集
@@ -83,7 +83,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Azure Kubernetes 服务 (AKS)
 - Service Fabric
 
-打开此设置后，当 ConsumedService 为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
+打开此设置后，当 ConsumedService  为以下任一项时，预留折扣将自动应用于匹配的 VM 使用量：
 
 - Microsoft.Compute
 - Microsoft.ClassicCompute
@@ -91,7 +91,7 @@ VM 预留可以应用于从多个服务发出的 VM 使用量 - 而不仅应用�
 - Microsoft.MachineLearningServices
 - Microsoft.Kusto
 
-检查使用情况数据中的 ConsumedService 值，以确定该使用是否符合预留折扣的条件。
+检查使用情况数据中的 ConsumedService  值，以确定该使用是否符合预留折扣的条件。
 
 有关实例大小灵活性的详细信息，请参阅[虚拟机预留实例的虚拟机大小灵活性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)。
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
 ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988196"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
@@ -25,11 +25,11 @@ ms.locfileid: "75988196"
 
 此功能仅适用于以 [Azure 专家 MSP](https://partner.microsoft.com/membership/azure-expert-msp) 形式认证的 CSP 直接计费合作伙伴。 它遵循 Microsoft 的治理和策略规定，某些客户可能需要评审和批准。
 
-若要请求计费所有权，你必须拥有“全局管理员”或“管理员代理”角色。 若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
+若要请求计费所有权，你必须拥有“全局管理员”或“管理员代理”角色。   若要了解详细信息，请参阅[合作伙伴中心 - 为用户分配角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
 本文适用于 Microsoft 合作伙伴协议的计费帐户。 这些帐户是为云解决方案提供商 (CSP) 创建的，用于在新的商业体验中管理其客户的计费。 新体验仅适用于特定的合作伙伴，他们至少有一个接受 Microsoft 客户协议 (MCA) 且有 Azure 计划的客户。 [检查你是否有权访问 Microsoft 合作伙伴协议](#check-access-to-a-microsoft-partner-agreement)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 1. 与客户建立[经销商关系](https://docs.microsoft.com/partner-center/request-a-relationship-with-a-customer)。 查看 [CSP 区域授权概述](https://docs.microsoft.com/partner-center/regional-authorization-overview)，确保客户和合作伙伴租户在同一个获得授权的区域内。  
 
@@ -41,19 +41,19 @@ ms.locfileid: "75988196"
 
 1. 使用 CSP 管理员代理凭据登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mpa-request-ownership/search-cmb.png)
 
-3. 在左侧选择“客户”，然后从列表中选择一位客户。
+3. 在左侧选择“客户”，然后从列表中选择一位客户。 
 
    ![屏幕截图，显示正在选择客户](./media/mpa-request-ownership/mpa-select-customers.png)        
 
-4. 选择左下角的“转移请求”，然后选择“添加新请求”。
+4. 选择左下角的“转移请求”，然后选择“添加新请求”。  
 
    ![显示选择转移请求的屏幕截图](./media/mpa-request-ownership/mpa-select-transfer-requests.png)
 
-5. 输入客户组织中将要接受转移请求的用户的电子邮件地址。 此用户必须是企业协议中的帐户所有者。 选择“发送转移请求”。
+5. 输入客户组织中将要接受转移请求的用户的电子邮件地址。 此用户必须是企业协议中的帐户所有者。 选择“发送转移请求”。 
 
    ![显示发送转移请求的屏幕截图](./media/mpa-request-ownership/mpa-send-transfer-requests.png)
 
@@ -69,21 +69,21 @@ ms.locfileid: "75988196"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 搜索“成本管理 + 计费”。
+2. 搜索“成本管理 + 计费”。 
 
    ![显示如何在 Azure 门户中搜索“成本管理 + 计费”的屏幕截图](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 
-3. 在左侧选择“客户”。
+3. 在左侧选择“客户”。 
 
    ![屏幕截图，显示正在选择客户](./media/mpa-request-ownership/mpa-select-customers.png)
 
 4. 从列表中选择已为其发送转移请求的客户。
 
-5. 选择左下角的“转移请求”。 “转移请求”页将显示以下信息：
+5. 选择左下角的“转移请求”。  “转移请求”页将显示以下信息：
 
     ![显示转移请求列表的屏幕截图](./media/mpa-request-ownership/mpa-select-transfer-requests-for-status.png)
 
-   |柱形图​​|定义|
+   |列|定义|
    |---------|---------|
    |请求日期|发送转移请求的日期|
    |Recipient|已向其发送转移计费所有权请求的用户的电子邮件地址|
@@ -102,9 +102,9 @@ ms.locfileid: "75988196"
    |已取消|有权访问转移请求的某人取消了该请求|
    |已拒绝|用户拒绝了转移请求|
 
-6. 选择一个转移请求以查看详细信息。 "传输详细信息" 页显示以下信息： ![屏幕截图，其中显示了传输的订阅的列表](./media/mpa-request-ownership/mpa-transfer-completed.png)
+6. 选择一个转移请求以查看详细信息。 转移详细信息页将显示以下信息：![显示已转移订阅列表的屏幕截图](./media/mpa-request-ownership/mpa-transfer-completed.png)
 
-   |柱形图​​  |定义|
+   |列  |定义|
    |---------|---------|
    |转移请求 ID|转移请求的唯一 ID。 提交支持请求时，请与 Azure 支持人员共享该 ID，以加速支持请求的处理|
    |转移请求日期|发送转移请求的日期|
@@ -148,7 +148,7 @@ Azure 预留项不会随订阅一起自动移动。 请[联系 Azure 支持人�
 
 ### <a name="access-to-azure-services"></a>对 Azure 服务的访问权限
 
-在转换过程中，不会影响使用[AZURE RBAC （基于角色的访问控制）](../../role-based-access-control/overview.md)分配的现有用户、组或服务主体的访问权限。 合作伙伴不会获得对订阅的任何新 RBAC 访问权限。  
+在转换期间，使用 [Azure RBAC（基于角色的访问控制）](../../role-based-access-control/overview.md)为现有用户、组或服务主体分配的访问权限不受影响。 合作伙伴不会获得对订阅的任何新 RBAC 访问权限。  
 
 合作伙伴应协助客户获取对订阅的访问权限。  合作伙伴需获取[代表管理员 - AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) 或 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider) 访问权限才能开具支持票证。
 

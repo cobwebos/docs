@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: banders
 ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75987819"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
@@ -51,12 +51,12 @@ ms.locfileid: "75987819"
 ## <a name="download-invoices-in-the-azure-portal"></a>可以在 Azure 门户中下载发票
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 1. 根据你的访问权限，可能需要选择一个计费帐户或计费对象信息。
-1. 在左侧菜单中，选择“账单”下的“发票”。
+1. 在左侧菜单中，选择“账单”  下的“发票”  。
 1. 在发票网格中，找到要下载的发票行。
 1. 单击行末尾的下载图标或省略号 (`...`)。
-1. 在下载菜单中，选择“发票”。
+1. 在下载菜单中，选择“发票”  。
 
 有关发票的详细信息，请参阅[了解 Microsoft Azure 帐单](review-individual-bill.md)。 如需有关管理成本的帮助，请参阅[通过 Azure 账单和成本管理来防止意外成本](../manage/getting-started.md)。
 
@@ -64,11 +64,11 @@ ms.locfileid: "75987819"
 
 可以选择加入并配置其他收件人来通过电子邮件接收 Azure 发票。 此功能可能不适用于某些订阅，例如支持套餐、企业协议或 Azure 开放许可。
 
-1. 在[“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上选择订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”、“通过电子邮件发送我的发票”。
+1. 在[“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上选择订阅。 为拥有的每个订阅执行选择加入操作。 依次单击“发票”  、“通过电子邮件发送我的发票”  。
 
     ![显示了“选择加入”流的屏幕截图](./media/download-azure-invoice/invoicesdeeplink01.png)
 
-2. 单击“选择加入”并接受条款。
+2. 单击“选择加入”  并接受条款。
 
     ![显示了“选择加入”流步骤 2 的屏幕截图](./media/download-azure-invoice/invoicearticlestep02.png)
 
@@ -80,63 +80,63 @@ ms.locfileid: "75987819"
 
 ## <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>选择不通过电子邮件获取订阅的发票
 
-若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击“选择不通过电子邮件发送发票”。 此选项将删除任何设置用来通过电子邮件接收发票的电子邮件地址。 如果再次选择接收，则可以重新配置收件人。
+若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击“选择不通过电子邮件发送发票”  。 此选项将删除任何设置用来通过电子邮件接收发票的电子邮件地址。 如果再次选择接收，则可以重新配置收件人。
 
  ![显示了“选择退出”流的屏幕截图](./media/download-azure-invoice/invoicearticlestep04.png)
 
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>通过电子邮件获取 Microsoft 客户协议发票
 
-如果你有 Microsoft 客户协议的帐单帐户，你可以选择在电子邮件中获取发票。 在帐单配置文件中拥有所有者、参与者、读者或发票经理角色的所有用户都将在电子邮件中获取其发票。 
+如果你有签订了 Microsoft 客户协议的计费帐户，则可以选择通过电子邮件获取发票。 在帐单配置文件中拥有所有者、参与者、读者或发票管理者角色的所有用户都将通过电子邮件获取其发票。 
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/download-azure-invoice/search-cmb.png)
 
-1. 选择左侧的 "**计费配置文件**"。 从 "计费配置文件" 列表中，选择计费配置文件以通过电子邮件获取其发票。
+1. 在左侧选择“计费对象信息”。  从计费配置文件列表中，选择一个计费配置文件来通过电子邮件获取其发票。
 
-   [显示计费配置文件列表的 ![屏幕快照](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. 选择左侧的 "**属性**"，然后选择 "**更新电子邮件发票首选项**"。
+1. 从左侧选择“属性”  ，然后选择“更新电子邮件发票首选项”  。
 
-   [显示计费配置文件列表的 ![屏幕快照](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/download-azure-invoice/mca-select-update-email-preferences.png)](./media/download-azure-invoice/mca-select-update-email-preferences.png#lightbox)
 
-1. 选择 **"选择加入"** ，然后单击 "**更新**"。
+1. 选择“选择加入”  ，然后单击“更新”  。
 
-   [显示计费配置文件列表的 ![屏幕快照](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/download-azure-invoice/mca-select-email-opt-in.png)](./media/download-azure-invoice/mca-select-email-opt-in.png#lightbox)
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>选择不通过电子邮件获取 Microsoft 客户协议发票
 
-若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击 "**选择退出**"。具有所有者、参与者、读者或发票经理角色的所有用户都未选择使用电子邮件获取发票。 
+若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击“选择退出”  。拥有所有者、参与者、读者或发票管理者角色的所有用户都将选择退出通过电子邮件获取发票。 
 
-## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>允许其他人访问你的 Microsoft 客户协议发票
+## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>允许其他人访问 Microsoft 客户协议发票
 
-您可以通过为计费配置文件分配发票经理角色，使其他人能够查看、下载和支付发票。 如果已选择使用电子邮件获取发票，则这些用户也会在电子邮件中获取发票。 
+你可以通过为其他人分配计费配置文件的发票管理者角色，允许其他人查看、下载和支付发票。 如果你已选择通过电子邮件获取发票，则这些用户也将通过电子邮件获取发票。 
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-1. 搜索“成本管理 + 计费”。
+1. 搜索“成本管理 + 计费”。 
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/download-azure-invoice/search-cmb.png)
 
-1. 选择左侧的 "**计费配置文件**"。 从 "计费配置文件" 列表中，选择要为其分配发票经理角色的帐单配置文件。
+1. 在左侧选择“计费对象信息”。  从计费配置文件列表中，选择要为其分配发票管理者角色的帐单配置文件。
 
-   [显示计费配置文件列表的 ![屏幕快照](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![屏幕截图，显示了计费配置文件列表](./media/download-azure-invoice/mca-select-profile.png)](./media/download-azure-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-1. 选择左侧的 "**访问控制（IAM）** "，然后从页面顶部选择 "**添加**"。
+1. 从左侧选择“访问控制(IAM)”  ，然后从页面顶部选择“添加”。 
 
-   [显示访问控制页面的 ![屏幕快照](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
+   [![屏幕截图，显示了访问控制页面](./media/download-azure-invoice/mca-select-access-control.png)](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png#lightbox)
 
-1. 在 "角色" 下拉列表中，选择 "**发票管理器**"。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。
+1. 在“角色”下拉列表中，选择“发票管理者”  。 输入要向其授予访问权限的用户的电子邮件地址。 选择“保存”以分配该角色。 
 
-   [显示将用户添加为发票管理器 ![屏幕快照](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   [![屏幕截图，显示了将用户添加为发票管理者](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
 
 ## <a name="check-your-billing-account-type"></a>检查计费帐户类型
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>需要帮助？ 联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

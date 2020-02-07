@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75988495"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
@@ -35,13 +35,13 @@ ms.locfileid: "75988495"
 
 当部门支出达到配额的固定阈值时，部门支出配额警报会通知你。 支出配额在 EA 门户中配置。 阈值在达到后会生成一封给部门所有者的电子邮件并显示在成本警报中。 例如，配额的 50% 或 75%。
 
-## <a name="supported-alert-features-by-offer-categories"></a>按产品/服务类别划分的受支持的警报功能
+## <a name="supported-alert-features-by-offer-categories"></a>按套餐类别列出的受支持警报功能
 
-对警报类型的支持取决于你所拥有的 Azure 帐户类型（Microsoft 产品/服务）。 下表显示了各种 Microsoft 产品/服务支持的警报功能。 可以在[了解成本管理数据](understand-cost-mgt-data.md)的同时查看完整的 Microsoft 产品列表。
+对警报类型的支持取决于你拥有的 Azure 帐户的类型（Microsoft 套餐）。 下表显示了各种 Microsoft 套餐支持的警报功能。 你可以在[了解成本管理数据](understand-cost-mgt-data.md)上查看 Microsoft 套餐的完整列表。
 
 | 警报类型 | 企业协议 | Microsoft 客户协议 | Web 直接/即用即付 |
 |---|---|---|---|
-| Budget | ✔ | ✔ | ✔ |
+| 预算 | ✔ | ✔ | ✔ |
 | 额度 | ✔ |✘ | ✘ |
 | 部门支出配额 | ✔ | ✘ | ✘ |
 
@@ -49,7 +49,7 @@ ms.locfileid: "75988495"
 
 ## <a name="view-cost-alerts"></a>查看成本警报
 
-要查看成本警报，请在 Azure 门户中打开所需范围，并在菜单中选择“预算”。 使用“范围”框切换到不同的范围。 在菜单中选择“成本警报”。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+若要查看成本警报，请在 Azure 门户中打开所需的范围，然后在菜单中选择“预算”  。 使用“范围”框可切换到不同的范围。  在菜单中选择“成本警报”  。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在成本管理中显示的警报的示例图像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "75988495"
 
 所有警报都显示警报类型。 预算警报会显示其生成原因以及其适用的预算的名称。 每个警报会显示其生成日期、状态以及适用范围（订阅或管理组）。
 
-可能的状态包括“活动”和“已消除”。 状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
+可能的状态包括“活动”和“已消除”。   状态为“活动”表示警报仍然相关。 状态为“已消除”表示某人已通过标记的方式将警报设置为不再相关。
 
 从列表中选择一个警报，查看其详细信息。 警报详细信息显示有关警报的详细信息。 预算警报包括一个预算链接。 如果提供了预算警报的建议，则也会显示该建议的链接。 预算、信用额度和部门支出配额警报在成本分析中有一个分析链接，用于浏览警报范围的成本。 以下示例显示某个部门的支出，其中包含警报详细信息。
 
