@@ -3,12 +3,12 @@ title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900645"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048802"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -36,12 +36,12 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceId |是 |字符串 |应用扩展资源的资源的资源 ID。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceId |是 |string |应用扩展资源的资源的资源 ID。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -112,15 +112,15 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys` 和 `listSecrets`。 
+此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys` 和 `listSecrets`。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
-| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| functionValues |否 |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 | 
+| resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
+| apiVersion |是 |string |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
+| functionValues |是 |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
@@ -154,7 +154,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| DataShare/帐户/共享 | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) | 
+| DataShare/帐户/共享 | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
 | DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
 | DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
 | DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
@@ -287,7 +287,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 ### <a name="list-example"></a>列表示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。 它还为存储帐户返回 SAS 令牌。 
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json)演示如何从 outputs 节中的存储帐户返回主密钥和辅助密钥。 它还为存储帐户返回 SAS 令牌。
 
 若要获取 SAS 令牌，请在过期时间传递对象。 到期时间必须是将来的时间。 此示例旨在演示如何使用列表函数。 通常情况下，在资源值中使用 SAS 令牌，而不是将其作为输出值返回。 输出值存储在部署历史记录中并不安全。
 
@@ -354,7 +354,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 }
 ```
 
-## <a name="providers"></a>providers
+## <a name="providers"></a>提供程序
 
 ```json
 providers(providerNamespace, [resourceType])
@@ -364,14 +364,14 @@ providers(providerNamespace, [resourceType])
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |字符串 |提供程序的命名空间 |
-| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |string |提供程序的命名空间 |
+| resourceType |是 |string |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
-将使用以下格式返回支持的每个类型： 
+将使用以下格式返回支持的每个类型：
 
 ```json
 {
@@ -431,7 +431,7 @@ providers(providerNamespace, [resourceType])
 }
 ```
 
-## <a name="reference"></a>reference
+## <a name="reference"></a>参考
 
 ```json
 reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
@@ -441,11 +441,11 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
-| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
+| apiVersion |是 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |是 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -460,11 +460,11 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -523,7 +523,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 若要避免对所引用的资源有歧义，可以提供完全限定的资源标识符。
 
 ```json
-"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
 向资源构造完全限定的引用时，类型和名称的分段组合顺序并不是这两者的简单串联。 相反，在命名空间后，需采用“类型/名称”对从最不具体到最具体的序列：
@@ -555,7 +555,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": { 
+      "storageAccountName": {
           "type": "string"
       }
   },
@@ -585,7 +585,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
       }
     }
 }
-``` 
+```
 
 上面的示例返回两个对象。 属性对象采用以下格式：
 
@@ -672,7 +672,7 @@ reference 函数只能用在资源定义的 properties 中以及模板或部署�
 resourceGroup()
 ```
 
-返回表示当前资源组的对象。 
+返回表示当前资源组的对象。
 
 ### <a name="return-value"></a>返回值
 
@@ -752,17 +752,17 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 
+返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| subscriptionId |是 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| resourceGroupName |是 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -903,7 +903,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 subscription()
 ```
 
-返回有关当前部署的订阅的详细信息。 
+返回有关当前部署的订阅的详细信息。
 
 ### <a name="return-value"></a>返回值
 
@@ -924,7 +924,7 @@ subscription()
 
 ### <a name="subscription-example"></a>订阅示例
 
-以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)显示了在 outputs 节中调用的 subscription 函数。 
+以下[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json)显示了在 outputs 节中调用的 subscription 函数。
 
 ```json
 {
@@ -950,12 +950,12 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| subscriptionId |是 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -1034,11 +1034,11 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 ### <a name="parameters"></a>参数
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |字符串 |资源的名称。 |
-| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
+| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |string |资源的名称。 |
+| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 

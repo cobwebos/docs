@@ -1,18 +1,17 @@
 ---
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的网络
 description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 和 Azure CNI、入口控制器、负载均衡器和静态 IP 地址。
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 86fa59a3d1c07aae842404c465b908e550708071
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547959"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047460"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -97,16 +96,16 @@ Kubenet 和 Azure CNI 都为你的 AKS 群集提供网络连接。 不过，每�
 
 Kubenet 和 Azure CNI 之间存在以下行为差异：
 
-| 功能                                                                                   | Kubenet   | Azure CNI |
+| Capability                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| 在现有的或新的虚拟网络中部署群集                                            | 已支持-Udr 手动应用 | 受支持 |
-| Pod-pod 连接                                                                         | 受支持 | 受支持 |
+| 在现有的或新的虚拟网络中部署群集                                            | 已支持-Udr 手动应用 | 支持 |
+| Pod-pod 连接                                                                         | 支持 | 支持 |
 | Pod-VM 连接;同一虚拟网络中的 VM                                          | 由 pod 启动时工作 | 采用两种方式 |
 | Pod-VM 连接;对等互连虚拟网络中的 VM                                            | 由 pod 启动时工作 | 采用两种方式 |
 | 使用 VPN 或 Express Route 进行本地访问                                                | 由 pod 启动时工作 | 采用两种方式 |
-| 访问由服务终结点保护的资源                                             | 受支持 | 受支持 |
-| 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 受支持 | 受支持 |
-| 默认 Azure DNS 和专用区域                                                          | 受支持 | 受支持 |
+| 访问由服务终结点保护的资源                                             | 支持 | 支持 |
+| 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
+| 默认 Azure DNS 和专用区域                                                          | 支持 | 支持 |
 
 ### <a name="support-scope-between-network-models"></a>网络型号之间的支持范围
 
@@ -132,7 +131,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 若要详细了解如何配置 NGINX 入口控制器，请参阅[入口和 TLS][aks-ingress-tls]。
 
-你还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用*客户端源 ip 保留*，则客户端的源 ip 在 " *X 转发-对于*" 下的请求标头中可用。 如果在入口控制器上使用客户端源 IP 保留，则无法使用 SSL 传递。 客户端源 IP 保存和 SSL 传递可用于其他服务，例如*LoadBalancer*类型。
+你还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用*客户端源 ip 保留*，则客户端的源 ip 在 " *X 转发-对于*" 下的请求标头中可用。 如果使用的是客户端源 IP 保存在入口控制器上，则不能使用 SSL 直通。 客户端源 IP 保存和 SSL 传递可用于其他服务，例如*LoadBalancer*类型。
 
 ## <a name="network-security-groups"></a>网络安全组
 

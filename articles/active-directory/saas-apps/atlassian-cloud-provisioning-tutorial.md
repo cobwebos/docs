@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 604dca2861b7a7126d2e37b5a01bcb85c530546e
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 7ddccef00cf1b5ad524c0e1eaa7aed52c0e55197
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561366"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059328"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户预配
 
 本教程的目的是演示要在 Atlassian 云和 Azure Active Directory （Azure AD）中执行的步骤，以将 Azure AD 自动预配和取消预配到 Atlassian 云。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -122,7 +122,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/notification.png)
 
-10. 单击“ **保存**”。
+10. 单击 **“保存”** 。
 
 11. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
 
@@ -140,7 +140,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
-15. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+15. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 16. 若要为 Atlassian Cloud 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -156,7 +156,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Atlassian Cloud 上 Azure AD 预配服务执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>连接器限制
 
@@ -166,12 +166,12 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/atlassian-cloud-provisioning-tutorial/tutorial-general-01.png

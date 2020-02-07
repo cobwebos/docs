@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841040"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048618"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>使用 PowerShell（资源管理器）设置 Hyper-V VM 到辅助站点的灾难恢复
 
@@ -20,7 +20,7 @@ ms.locfileid: "76841040"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 查看[方案体系结构和组件](hyper-v-vmm-architecture.md)。
 - 查看所有组件的[支持要求](site-recovery-support-matrix-to-sec-site.md)。
@@ -219,9 +219,9 @@ ms.locfileid: "76841040"
 1. 运行以下命令，检索源 Virtual Machine Manager 服务器和目标 Virtual Machine Manager 服务器的网络。
 
    ```azurepowershell
-   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[0]
 
-   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Fabric $Servers[1]
    ```
 
    > [!NOTE]
@@ -265,7 +265,7 @@ ms.locfileid: "76841040"
 
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 
-若要测试部署，请针对单个虚拟机运行测试故障转移。 也可以创建包含多个 VM 的恢复计划，并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟故障转移和恢复机制。
+若要测试部署，请针对单个虚拟机运行测试故障转移。 也可以创建包含多个 VM 的恢复计划，并针对该计划运行测试故障转移。 测试故障转移在隔离的网络中模拟你的故障转移和恢复机制。
 
 1. 检索需要将 VM 故障转移到其中的 VM。
 

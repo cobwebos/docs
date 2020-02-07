@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026882"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049187"
 ---
-# <a name="overview"></a>概述
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>统一连接监视与连接监视器（预览）
 
 连接监视器（预览版）在 Azure 网络观察程序中提供统一的端到端连接监视功能，用于混合和 Azure 云部署。 Azure 网络观察程序提供的工具可用于监视、诊断和查看适用于 Azure 部署的与连接相关的指标。
 
@@ -78,8 +78,8 @@ _连接监视器_定期监视通信，并通知源代理和目标终结点之间
 
 ### <a name="accessing-connection-monitor-preview"></a>访问连接监视器（预览）
 
-1. 使用以下链接访问网络观察程序：[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. 在网络观察程序的左窗格的 "监视" 部分中，单击 "连接监视器（预览）" 选项卡。 仅当使用步骤1中指定的链接访问网络观察程序时，此选项卡才可见。
+1. 在 Azure 门户主页上，访问网络观察程序
+2. 在网络观察程序的左窗格的 "监视" 部分中，单击 "连接监视器（预览）" 选项卡。
 3. 你可以看到使用连接监视器（预览）体验创建的所有连接监视器。 使用 "连接监视器" 选项卡的 "经典体验" 创建的所有连接监视器都将显示在 "连接监视器" 选项卡中。
 
     ![创建连接监视器](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -433,7 +433,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 | **测试编号** | **数据源** | **目标** | **测试配置名称** |
 | --- | --- | --- | --- |
-| 第 | A | D | 配置1 |
+| 1 | A | D | 配置1 |
 | 2 | A | D | 配置2 |
 | 3 | A | E | 配置1 |
 | 4 | A | E | 配置2 |
@@ -514,7 +514,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
    3. 搜索字段 = outlook.office365.com
    4. 使用 "值" 旁边的下拉列表选择 "目标"
 
-   ![失败的测试](./media/connection-monitor-2-preview/tests-view.png)
+   ![已失败的测试](./media/connection-monitor-2-preview/tests-view.png)
 
 若要查看失败的检查的趋势% 和 RTT：
 
@@ -574,12 +574,12 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 资源类型-networkWatchers/connectionMonitors/
 
-| 度量值 | 指标显示名称 | 单位 | 聚合类型 | Description | 维度 |
+| 跃点数 | 指标显示名称 | 单位 | 聚合类型 | 说明 | Dimensions |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失败的探测百分比 | 百分比 | 平均值 | 失败的连接监视探测百分比 | 无维度 |
 | AverageRoundtripMs | 平均往返时间（毫秒） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络往返时间（毫秒） |             无维度 |
-| ChecksFailedPercent （预览版） | % 检查失败（预览） | 百分比 | 平均值 | 测试失败的检查百分比 |List：-ConnectionMonitorResourceId-SourceAddress-SourceResourceId-SourceType-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-区 |
-| RoundTripTimeMs （预览版） | 往返时间（毫秒）（预览版） | 毫秒 | 平均值 | 在源和目标之间发送的检查的往返时间（毫秒）。 此值不是平均值 | List：-ConnectionMonitorResourceId-SourceAddress-SourceResourceId-SourceType-DestinationAddress-DestinationName-DestinationResourceId-DestinationType-DestinationPort-TestGroupName-区 |
+| ChecksFailedPercent （预览版） | % 检查失败（预览） | 百分比 | 平均值 | 测试失败的检查百分比 | * ConnectionMonitorResourceId <br> * SourceAddress <br> * 未用 <br> * SourceResourceId <br> * SourceType <br> * 协议 <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * 区域 |
+| RoundTripTimeMs （预览版） | 往返时间（毫秒）（预览版） | 毫秒 | 平均值 | 在源和目标之间发送的检查的往返时间（毫秒）。 此值不是平均值 | * ConnectionMonitorResourceId <br> * SourceAddress <br> * 未用 <br> * SourceResourceId <br> * SourceType <br> * 协议 <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> * TestGroupName <br> * TestConfigurationName <br> * 区域 |
 
  ![监视指标](./media/connection-monitor-2-preview/monitor-metrics.png)
 

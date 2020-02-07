@@ -3,12 +3,12 @@ title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406407"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057339"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -16,12 +16,12 @@ ms.locfileid: "74406407"
 
 ## <a name="locking-modes-and-states"></a>锁定模式和状态
 
-锁定模式适用于蓝图分配，它有三个选项： "**不锁定**"、"**只读**" 或 "不**删除**"。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
+锁定模式适用于蓝图分配，具有三个选项：“不锁定”、“只读”或“不要删除”。 在蓝图分配过程中的项目部署过程中配置锁定模式。 可以通过更新蓝图分配来设置不同的锁定模式。
 但是，不能在蓝图外部更改锁定模式。
 
-蓝图分配中的项目创建的资源具有四种状态：**未锁定**、**只读**、**无法编辑/删除**或**无法删除**。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
+蓝图分配中由项目创建的资源具有四种状态：“未锁定”、“只读”、“无法编辑/删除”或“无法删除”。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|Mode|项目资源类型|状态|说明|
+|模式|项目资源类型|状态|说明|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
@@ -45,13 +45,13 @@ ms.locfileid: "74406407"
 
 ## <a name="how-blueprint-locks-work"></a>蓝图锁定的工作原理
 
-如果蓝图分配选择了“只读”[](../../../role-based-access-control/deny-assignments.md)或“不要删除”选项，则会在分配期间将 RBAC **拒绝分配**拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
+如果蓝图分配选择了“只读”或“不要删除”选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
 
 ![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
 
 每个模式的[拒绝分配属性](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties)如下所示：
 
-|Mode |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|模式 |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
 |只读 |**\*** |**\*/read** |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
 |不要删除 |**\*/delete** | |SystemDefined （Everyone） |**excludedPrincipals**中的蓝图分配和用户定义 |资源组- _true_;资源- _false_ |
@@ -102,6 +102,26 @@ ms.locfileid: "74406407"
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>排除拒绝分配中的操作
+
+与在蓝图分配中排除[拒绝分配](../../../role-based-access-control/deny-assignments.md)中的[主体](#exclude-a-principal-from-a-deny-assignment)类似，你可以排除特定的[RBAC 操作](../../../role-based-access-control/resource-provider-operations.md)。 在**properties**块中，可以在**excludedPrincipals**所在的同一位置添加**excludedActions** ：
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+尽管**excludedPrincipals**必须是显式的，但**excludedActions**条目可以使用 `*` 来匹配 RBAC 操作的通配符。
 
 ## <a name="next-steps"></a>后续步骤
 

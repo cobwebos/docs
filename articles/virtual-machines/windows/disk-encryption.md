@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 8833a70b88b59c59dd373f1cfa9535fd7205ceb5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837742"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048862"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -174,7 +174,7 @@ $diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName
 
 $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB $diskSizeinGiB -StorageAccountType $diskSKU -Lun $diskLUN -DiskEncryptionSetId $diskEncryptionSet.Id 
 
-Update-AzVM -ResourceGroupName $rgName -VM $vm
+Update-AzVM -ResourceGroupName $ResourceGroupName -VM $vm
 
 ```
 

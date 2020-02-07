@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972245"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048754"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>映射数据流中的派生列转换
 
@@ -34,7 +34,7 @@ ms.locfileid: "74972245"
 
 ![添加 subcolumn](media/data-flow/addsubcolumn.png "添加 Subcolumn")
 
-有关处理数据流中的复杂类型的详细信息，请参阅[映射数据流中的 JSON 处理](concepts-data-flow-json.md)
+有关处理数据流中的复杂类型的详细信息，请参阅[映射数据流中的 JSON 处理](format-json.md#mapping-data-flow-properties)。
 
 ![添加复杂列](media/data-flow/complexcolumn.png "添加列")
 

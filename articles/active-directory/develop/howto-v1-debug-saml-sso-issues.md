@@ -12,16 +12,16 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: 630d178a4f1a802d5c98b570544822e4f4013a5a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 648338f2ba57ad1c460c1c5b4a8d9a2ee91ebb1b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697007"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063707"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>在 Azure Active Directory 中调试应用程序的基于 SAML 的单一登录
 
-了解如何在 Azure Active Directory (Azure AD) 中查找和解决支持[安全断言标记语言 (SAML) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language) 的应用程序的[单一登录](../manage-apps/what-is-single-sign-on.md)问题。 
+了解如何在 Azure Active Directory (Azure AD) 中查找和解决支持[安全断言标记语言 (SAML) 2.0](../manage-apps/what-is-single-sign-on.md) 的应用程序的[单一登录](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)问题。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -101,4 +101,4 @@ ms.locfileid: "76697007"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，单一登录正在使用应用程序，你可以[自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)或[开始使用条件性访问](../conditional-access/app-based-conditional-access.md)。
+现在，单一登录正在使用应用程序，你可以[自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)或[开始使用条件性访问](../conditional-access/app-based-conditional-access.md)。

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765766"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047847"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 
@@ -37,7 +37,9 @@ ms.locfileid: "76765766"
 
 
 ## <a name="how-do-i-upgrade"></a>如何实现升级？
-需要升级的每个 VM 都将在 Azure 门户中用于 VM 的 Azure Monitor 的 "**入门**" 选项卡中进行标识。 可以升级单个 VM，也可以选择多个 VM 一起升级。 使用以下命令通过 PowerShell 进行升级：
+Log Analytics 工作区升级到 Vm 的最新 Azure Monitor 版本时，它会升级附加到该工作区的每个 Vm 上的依赖关系代理。 需要升级的每个 VM 都将在 Azure 门户中用于 VM 的 Azure Monitor 的 "**入门**" 选项卡中进行标识。 选择升级 VM 时，会将该 VM 的工作区与附加到该工作区的任何其他 Vm 一起升级。 可以选择单个 VM、多个 Vm、资源组或订阅。 
+
+使用以下命令通过 PowerShell 升级工作区：
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
@@ -53,7 +55,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 >如果有在 `Perf` 表中引用这些计数器的警报规则，则需要更新它们以引用存储在 `InsightsMetrics` 表中的新数据。 请参阅我们的文档，以了解可用于引用此表的示例日志查询。
 >
 
-如果决定保持启用性能计数器，则将根据 [Log Analytics 定价 [（ https://azure.microsoft.com/pricing/details/monitor/) ，为数据引入计费，并将其存储在 `Perf` 表中。
+如果决定保持启用性能计数器，则将根据 [Log Analytics 定价 [（ https://azure.microsoft.com/pricing/details/monitor/)，为数据引入计费，并将其存储在 `Perf` 表中。
 
 ## <a name="how-will-this-change-affect-my-alert-rules"></a>此更改如何影响我的警报规则？
 
@@ -97,7 +99,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>运行状况功能处于有限公共预览状态
 
-我们从客户那里收到了有关 VM 健康功能集的大量出色反馈。 客户对该功能产生了极大的兴趣，对它支持监视工作流的潜力也满怀激情。 我们计划进行一系列更改，添加功能并处理我们收到的反馈。 
+我们从客户那里收到了有关 VM 健康功能集的大量出色反馈。 这项功能与对支持监视工作流的可能会有多大意义。 我们计划做出一系列的更改来添加功能并处理我们收到的反馈。 
 
 为了最大限度地减少对新客户的这些更改的影响，我们已将此功能转移到**有限的公共预览版**中。 此更新发生于10月2019。
 
@@ -107,7 +109,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 使用运行状况功能的现有客户将继续具有访问权限，但不会提供给新客户。  
 
-若要访问该功能，可以将以下功能标志添加到 Azure 门户 URL [https://portal.azure.com](https://portal.azure.com)`feature.vmhealth=true` 。 示例 `https://portal.azure.com/?feature.vmhealth=true`。
+若要访问该功能，可以将以下功能标志添加到 Azure 门户 URL [https://portal.azure.com](https://portal.azure.com)`feature.vmhealth=true`。 示例 `https://portal.azure.com/?feature.vmhealth=true`。
 
 你还可以使用此短 url，它会自动设置功能标志： [https://aka.ms/vmhealthpreview](https://aka.ms/vmhealthpreview)。
 

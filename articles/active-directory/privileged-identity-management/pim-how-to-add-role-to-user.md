@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/17/2019
+ms.date: 01/05/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024222"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047105"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 角色
 
@@ -61,19 +61,9 @@ Azure AD Privileged Identity Management （PIM）服务还允许特权角色管�
 
 1. 选择要分配的角色，然后单击“选择”。
 
-    此时将打开 "**选择成员或组**" 页。
+1. 选择要分配给该角色的成员，然后选择 "**选择**"。
 
-1. 选择要分配给角色的成员或组，然后选择 "**选择**"。
-
-    ![“选择成员或组”窗格](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    随即将打开“成员身份设置”窗格。
-
-1. 在“分配类型”列表中，选择“合格”或“活动”。
-
-    ![“成员身份设置”窗格](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Azure 资源 Privileged Identity Management 提供了两种不同的分配类型：
+1. 在 "**成员资格设置**" 窗格的 "**分配类型**" 列表中，选择 "**符合条件**" 或 "**活动**"。
 
     - “合格”分配要求该角色的成员执行某个操作才能使用该角色。 操作可能包括执行多重身份验证 (MFA) 检查、提供业务理由或请求获得指定审批者的批准。
 
@@ -83,13 +73,9 @@ Azure AD Privileged Identity Management （PIM）服务还允许特权角色管�
 
     根据角色设置，复选框可能不会显示或可能无法修改。
 
-1. 若要指定特定分配持续时间，请取消选中该复选框，并修改开始和/或结束日期与时间框。
+1. 若要指定特定分配持续时间，请取消选中该复选框，并修改开始和/或结束日期与时间框。 完成后，选择 "**完成**"。
 
     ![成员身份设置 - 日期和时间](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. 完成后，选择 "**完成**"。
-
-    ![新建分配 - 添加](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
 1. 若要创建新的角色分配，请选择 "**添加**"。 显示状态通知。
 
@@ -207,7 +193,7 @@ Azure AD Privileged Identity Management （PIM）服务还允许特权角色管�
 
 1. 选择“所有服务”，然后选择“订阅”。
 
-1. 选择订阅。
+1. 选择你的订阅。
 
 1. 选择“访问控制(IAM)”。
 

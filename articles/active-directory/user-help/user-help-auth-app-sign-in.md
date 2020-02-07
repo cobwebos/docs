@@ -2,21 +2,21 @@
 title: 使用 Microsoft Authenticator 应用登录 Azure AD
 description: 通过 Microsoft Authenticator 应用登录到工作或学校帐户或者个人的 Microsoft 和非 Microsoft 帐户，可以使用双重验证，也可以使用手机登录。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84aa3731f8066772c6a268f2ae4e16215452e78a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704674"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062194"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -31,7 +31,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
   >[!Important]
   >此手机登录方法仅适用于工作或学校以及个人 Microsoft 帐户。 非 Microsoft 帐户要求使用标准的双重验证过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在使用 Microsoft Authenticator 应用之前，必须：
 
@@ -113,7 +113,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | -------- | -------- |
 | 为什么使用手机登录比键入密码更安全？ | 当今，大多数人在登录网站或应用时，使用用户名和密码。 遗憾的是，密码可能会丢失、被盗或被黑客猜出。<br><br>安装 Microsoft Authenticator 应用后，该应用会在手机上创建一个密钥，用于解锁受手机 PIN 或生物识别锁保护的帐户。 登录时，可以使用此密钥来证明自己的身份。<br><br>**重要说明**<br>你的数据仅用于在本地保护你的密钥。 这些数据永远不会发送到或者存储在云中。 |
 | 电话登录是否替换双重验证？ 我是否应将其关闭？ | 手机登录是一种在移动设备上进行的双重验证。 应该让双重验证保持启用状态，以便为帐户提供额外的安全性。 |
-| 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | 不。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
+| 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | No。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
 | 如果我的手机丢失或没有与我联系，怎么办？ 如何实现访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)页或“保护帐户安全”页。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
 | 如何实现停止使用此功能并返回到使用我的密码？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，你必须从 "Microsoft Authenticator" 应用的 "**设置**" 页中注销该设备，或从配置文件的 "**设备 &" 活动**区域中禁用该设备。 有关从配置文件禁用设备的详细信息，请参阅[从 "我的应用" 门户更新你的配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
 | 为什么不能使用多个工作或学校帐户登录？ | 一部手机只能注册到单个工作或学校帐户。 如果想要为不同的工作或学校帐户启用手机登录，必须先通过“设置”页取消注册旧设备。 |

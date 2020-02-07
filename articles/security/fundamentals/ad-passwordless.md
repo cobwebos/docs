@@ -1,5 +1,6 @@
 ---
-title: 了解没有密码的世界 Azure Active Directory |Microsoft Docs
+title: Azure AD 的无密码身份验证
+titleSuffix: Active Directory
 description: 本指南可帮助首席身份验证人员、Cio、Ciso、首席标识架构师、企业架构师以及负责为其 Azure Active Directory 实现选择无密码 authentication 方法的安全和 IT 决策制定者。
 keywords: 无密码、azuread
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945591"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064472"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>没有密码的世界 Azure Active Directory
 
@@ -24,7 +25,7 @@ ms.locfileid: "75945591"
 
 本文旨在帮助你了解和实现 Microsoft 的无密码解决方案，并帮助你在以下一个或多个选项之间进行选择：
 
-* **Windows Hello 企业版**。 在 Windows 10 中，Windows Hello 企业版在电脑和移动设备上使用强大的双因素身份验证替换密码。 此身份验证包含一种新类型的用户凭据，该凭据绑定到设备并使用生物识别识别或 PIN。
+* **Windows Hello 企业版**。 在 Windows 10 中，Windows Hello 企业版将密码替换为 Pc 和移动设备上的强双重身份验证。 此身份验证包含一种新类型的用户凭据，该凭据绑定到设备并使用生物识别识别或 PIN。
 
 * **无密码登录 Microsoft Authenticator**。 Microsoft Authenticator 应用可用于登录到 Azure AD 帐户，而无需使用密码。 类似于 Windows Hello 企业版，Microsoft Authenticator 使用基于密钥的身份验证来启用绑定到设备并使用生物识别或 PIN 的用户凭据。
 
@@ -38,7 +39,7 @@ ms.locfileid: "75945591"
 
 Windows Hello 企业版，使用 Microsoft Authenticator 和 FIDO2 安全密钥的无密码登录都共享一个简单的通用体系结构，该体系结构为用户提供了一种高度安全且易于使用的身份验证方法。 这三种技术都基于公共/私有-密钥技术，需要本地手势（如生物识别或 PIN）以及绑定到单一设备并安全存储和永不共享的私钥。
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business
+## <a name="windows-hello-for-business"></a>Windows Hello 企业版
 
 在 Windows 10 中，Windows Hello 企业版将密码替换为 Pc 和设备上的强双重身份验证。 身份验证包含一种新类型的用户凭据，该凭据绑定到设备并使用生物识别手势或 PIN，使用户能够对 Azure AD 以及本地 Active Directory 进行身份验证。 只需使用 Windows Hello 企业版登录到设备很简单。 你可以使用 PIN 或生物识别手势，如指纹或面部识别。
 
@@ -50,7 +51,7 @@ Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工
 
 Windows Hello 企业版是一种分布式系统，使用多个组件完成设备注册、预配和身份验证。 因此，部署需要在组织内的多个团队中进行适当的计划。 Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide)可用于帮助您决定 Windows Hello 企业版部署的类型以及需要考虑的选项。
 
-在部署 Windows Hello 企业版时，有很多个选项可供你选择。 提供多个选项，几乎可确保每一个组织都能够部署 Windows Hello 企业版。 请考虑以下受支持的部署类型：
+部署 Windows Hello 企业版时，有许多选项可供选择。 提供多个选项可确保几乎每个组织都能部署 Windows Hello 企业版。 请考虑以下受支持的部署类型：
 
 * [混合 Azure AD 联接的密钥信任部署](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-key-trust)
 
@@ -70,7 +71,7 @@ Windows Hello 企业版是一种分布式系统，使用多个组件完成设备
 
 #### <a name="user-sets-up-windows-hello-for-business"></a>用户设置 Windows Hello 企业版
 
-在注册期间对用户进行初始双重验证后，将在用户的设备上设置 Windows Hello，Windows 会要求用户设置手势，这可以是一个生物识别，如指纹、面部识别或 PIN。 设置后，用户将提供笔势来验证其身份。 然后，Windows 使用 Windows Hello 对用户进行身份验证。
+在注册期间对用户进行初始双重验证后，将在用户的设备上设置 Windows Hello，Windows 会要求用户设置手势，这可以是一个生物识别，如指纹、面部识别或 PIN。 设置后，用户将提供笔势来验证其身份。 然后，windows 使用 Windows Hello 对用户进行身份验证。
 
 根据你的 Windows 10 设备的功能，你可以使用内置的安全 enclave （称为硬件受信任的平台模块（TPM）或软件 TPM）。 TPM 存储私钥，此密钥需要你的人脸、指纹或 PIN 才能解锁。 生物识别数据不会漫游，并且永远不会发送到外部设备或服务器。 由于 Windows Hello 仅在设备上存储生物识别数据，因此攻击者可能不会泄露单一收集点来窃取生物识别数据。
 
@@ -109,7 +110,7 @@ Windows Hello 企业版提供了一种方便的登录体验，用于对用户进
 
 [MICROSOFT PIN 重置服务](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset)是 Azure AD 中的一项功能，使用户能够根据需要重置其 PIN。 使用组策略、Microsoft Intune 或兼容的 MDM，管理员可以配置 Windows 10 设备以安全地使用 Microsoft PIN 重置服务，该服务使用户可以通过设置或在锁定屏幕上重置其忘记的 PIN，而无需重新注册。
 
-有时用户必须回退到使用密码。 [自助服务密码重置](../../active-directory/authentication/howto-sspr-deployment.md)（SSPR）是另一项 Azure AD 功能，使用户能够重置其密码，而无需联系 IT 员工。 用户必须主动或被动注册自助式密码重置，然后才能使用此服务。 在注册期间，用户可以选择其组织启用的一个或多个身份验证方法。 SSPR 使用户无论在何处或是当天的时间，都可以快速地取消阻止并继续工作。 通过允许用户取消阻止其自身，你的组织可以降低大多数常见密码相关问题的非生产时间和高支持成本。
+有时用户必须回退到使用密码。 [自助服务密码重置](../../active-directory/authentication/howto-sspr-deployment.md)（SSPR）是另一项 Azure AD 功能，使用户能够重置其密码，而无需联系 IT 员工。 在使用服务之前，用户必须注册以进行自助密码重置。 注册过程中，用户选择一个或多个由其组织启用的身份验证方法。 SSPR 使用户无论在何处或是当天的时间，都可以快速地取消阻止并继续工作。 通过允许用户取消阻止其自身，你的组织可以降低大多数常见密码相关问题的非生产时间和高支持成本。
 
 ## <a name="passwordless-sign-in-with-microsoft-authenticator"></a>无密码登录 Microsoft Authenticator
 
@@ -283,7 +284,7 @@ FIDO2 安全密钥提供安全的身份验证，而不考虑其外观。 安全�
 
 ||**Windows Hello for Business**|**无密码 Microsoft Authenticator 应用登录**|**FIDO2 安全密钥**|
 |:-|:-|:-|:-|
-|**必备组件**| Windows 10 版本 1809 或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（运行 Android 6.0 或更高版本的 iOS 和 Android 设备。）|Windows 10 版本 1809 或更高版本<br>Azure Active Directory|
+|**必备组件**| Windows 10 版本1809或更高版本<br>Azure Active Directory| Microsoft Authenticator 应用<br>手机（运行 Android 6.0 或更高版本的 iOS 和 Android 设备。）|Windows 10 版本1809或更高版本<br>Azure Active Directory|
 |**模式**|平台|软件|硬件|
 |**系统和设备**|带有内置受信任的平台模块（TPM）的 PC<br>PIN 和生物识别识别 |电话上的 PIN 和生物识别识别|FIDO2 兼容 Microsoft 的安全设备|
 |**用户体验**|使用 PIN 或生物识别识别（面部、iris 或指纹）通过 Windows 设备登录。<br>Windows Hello 身份验证已绑定到设备;用户需要设备和登录组件（如 PIN 或生物识别因素）来访问公司资源。|使用带有指纹扫描、面部或 iris 识别或 PIN 的移动电话登录。<br>用户从他们的 PC 或手机登录到工作帐户或个人帐户。|使用 FIDO2 security 设备登录（生物识别、PIN 和 NFC）<br>用户可以基于组织控制和使用设备（如 USB 安全密钥和启用了 NFC 的智能卡、密钥或可穿戴设备）的设备，基于 PIN、生物识别来访问设备。|
@@ -291,7 +292,7 @@ FIDO2 安全密钥提供安全的身份验证，而不考虑其外观。 安全�
 
 使用下表选择支持和用户的方法。
 
-|增添|方案|环境|无密码技术|
+|增添|场景|环境|无密码技术|
 |:-|:-|:-|:-|
 |**管理员**|安全访问设备以执行管理任务|分配的 Windows 10 设备|Windows Hello 企业版和/或 FIDO2 安全密钥|
 |**管理员**|非 Windows 设备上的管理任务| 移动或非 windows 设备|无密码 Microsoft Authenticator 应用登录|
@@ -334,7 +335,7 @@ FIDO2 安全密钥提供安全的身份验证，而不考虑其外观。 安全�
 > [!NOTE]
 > 有关无密码方法的许可要求的详细信息，请参阅 Azure Active Directory[许可页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 在过去几年中，Microsoft 一直致力于启用没有密码的世界。 在 Windows 10 中，Microsoft 引入了 Windows Hello 企业版，这是一个强大的、受硬件保护的双因素凭据，支持单一登录 Azure Active Directory 和 Active Directory。 类似于 Windows Hello 企业版，Microsoft Authenticator 应用使用基于密钥的身份验证来启用关联到移动设备并使用生物识别或 PIN 的用户凭据。 现在，使用 FIDO2 安全密钥，你可以通过在 Windows 10 锁屏界面上选择安全密钥作为凭据提供程序来携带凭据并登录到 Azure AD。 所有这三种无密码解决方案都可以降低网络钓鱼、密码喷涂和重播攻击的风险，并为用户提供一种在任何位置登录和访问数据的安全性和便利的方法。
 
