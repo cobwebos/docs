@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 9d00024351c18789e26120cc2af006b9aac4232d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 518d86fff04a23f1c1e63c44c53485b99f30637d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767834"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057800"
 ---
 # <a name="tutorial-configure-harness-for-automatic-user-provisioning"></a>教程：为自动用户预配配置工具
 
 本文介绍如何配置 Azure Active Directory （Azure AD）以自动预配和取消设置要控制的用户或组。
 
 > [!NOTE]
-> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的重要信息以及常见问题的答案，请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。
+> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的重要信息以及常见问题的答案，请参阅[利用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前提供预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本文中所述的方案假定你已具备以下先决条件：
 
@@ -69,8 +69,8 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![工具添加 Api 密钥窗格](media/harness-provisioning-tutorial/title.png)
    
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 "**名称**" 框中，为密钥提供名称。  
-   b.保留“数据库类型”设置，即设置为“共享”。 在 "**继承自**" 下拉列表中，选择一个选项。 
+   a. 在 "**名称**" 框中，为密钥提供名称。  
+   b. 在 "**继承自**" 下拉列表中，选择一个选项。 
    
 1. 选择“提交”。
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” **“所有应用程序”**  > 。
 
     ![“所有应用程序”链接](common/enterprise-applications.png)
 
@@ -130,8 +130,8 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
  
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 "**租户 URL** " 框中，输入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
-   b.保留“数据库类型”设置，即设置为“共享”。 在 "**机密令牌**" 框中，输入你在 "设置用于预配的工具" 部分的步骤6中保存的 SCIM Authentication 令牌值。  
+   a. 在 "**租户 URL** " 框中，输入 **`https://app.harness.io/gateway/api/scim/account/XCPzWkCIQ46ypIu2DeT7yw`** 。  
+   b. 在 "**机密令牌**" 框中，输入你在 "设置用于预配的工具" 部分的步骤6中保存的 SCIM Authentication 令牌值。  
    c. 选择 "**测试连接**" 以确保 Azure AD 可以连接到工具。 如果连接失败，请确保你的工具帐户具有*管理员*权限，然后重试。
 
 1. 在 "**通知电子邮件**" 框中，输入应接收预配错误通知的人员或组的电子邮件地址，然后选中 "**发生故障时发送电子邮件通知**" 复选框。
@@ -156,7 +156,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![工具组 "属性映射" 窗格](media/harness-provisioning-tutorial/groupattributes.png)
 
-1. 若要配置范围筛选器，请参阅[基于属性的应用程序预配和范围筛选器](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)。
+1. 若要配置范围筛选器，请参阅[基于属性的应用程序预配和范围筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。
 
 1. 在 "设置" 下，为 "**设置**" 启用 "Azure AD 预配服务"，将**设置状态**切换到 **"打开**"。
 
@@ -172,13 +172,13 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 此操作将启动正在设置的用户或组的初始同步。 初始同步执行的时间比更新时间长。 只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次同步。 若要监视进度，请参阅 "**同步详细信息**" 部分。 你还可以跟踪到预配活动报告的链接，该报告描述了在工具上 Azure AD 预配服务执行的所有操作。
 
-有关如何读取 Azure AD 设置日志的详细信息，请参阅有关[自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+有关如何读取 Azure AD 设置日志的详细信息，请参阅有关[自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

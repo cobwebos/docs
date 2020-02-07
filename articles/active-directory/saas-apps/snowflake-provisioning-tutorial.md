@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 2aaf1d2b377abc0b10b0b14de03d01c7f6fae5b7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2c5d91894ba35233f3fbebffdff9104edcfdd27b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767769"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063127"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为自动用户预配配置雪花
 
 本教程的目的是演示要在雪花和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到雪花或取消其预配。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -125,7 +125,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“ **保存**”。
+8. 单击 **“保存”** 。
 
 9. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到雪花**"。
 
@@ -143,7 +143,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![雪花组属性](media/Snowflake-provisioning-tutorial/group-attribute.png)
 
-13. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+13. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 14. 若要为雪花启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -159,7 +159,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了在雪花上 Azure AD 预配服务执行的所有操作。
 
-    有关如何读取 Azure AD 设置日志的详细信息，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)
+    有关如何读取 Azure AD 设置日志的详细信息，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="connector-limitations"></a>连接器限制
 
@@ -167,8 +167,8 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户设置](../manage-apps/configure-automatic-user-provisioning-portal.md)。
+* [管理企业应用的用户帐户设置](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
-* [了解如何查看日志并获取有关预配活动的报表](../manage-apps/check-status-user-account-provisioning.md)。
+* [了解如何查看日志并获取有关预配活动的报表](../app-provisioning/check-status-user-account-provisioning.md)。

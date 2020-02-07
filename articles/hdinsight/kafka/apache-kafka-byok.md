@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cba8a4fd64b948d7a3e443426ca1f779af68a3fe
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841626"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048988"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 自带密钥
 
@@ -55,11 +55,11 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 1. 创建密钥。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
+    a. 若要创建新密钥，请从“设置”下的“密钥”菜单中选择“生成/导入”。
 
     ![在 Azure Key Vault 中生成新密钥](./media/apache-kafka-byok/kafka-create-new-key.png "在 Azure Key Vault 中生成新密钥")
 
-    b.保留“数据库类型”设置，即设置为“共享”。 将“选项”设置为“生成”并提供密钥名称。
+    b. 将“选项”设置为“生成”并提供密钥名称。
 
     ![Apache kafka 生成密钥名称](./media/apache-kafka-byok/apache-kafka-create-key.png "生成密钥名称")
 
@@ -67,17 +67,17 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![Apache kafka 密钥保管库密钥列表](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
-    d.单击“下一步”。 当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
+    d. 当你为 Kafka 群集加密使用自己的密钥时，需要提供密钥 URI。 复制“密钥标识符”并将其保存在某处，直到你准备好创建群集。
 
     ![Apache kafka 获取密钥标识符](./media/apache-kafka-byok/kafka-get-key-identifier.png)
 
 1. 将托管标识添加到密钥保管库访问策略。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 创建新的 Azure Key Vault 访问策略。
+    a. 创建新的 Azure Key Vault 访问策略。
 
     ![创建新的 Azure Key Vault 访问策略](./media/apache-kafka-byok/add-key-vault-access-policy.png)
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在“选择主体”下，选择你创建的用户分配的托管标识。
+    b. 在“选择主体”下，选择你创建的用户分配的托管标识。
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
@@ -85,19 +85,23 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![设置 Azure Key Vault 访问 policy1 的密钥权限](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "设置 Azure Key Vault 访问 policy1 的密钥权限")
 
-    d.单击“下一步”。 将“机密权限”设置为“获取”、“设置”和“删除”。
+    d. 将“机密权限”设置为“获取”、“设置”和“删除”。
 
     ![设置 Azure Key Vault 访问 policy2 的密钥权限](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "设置 Azure Key Vault 访问 policy2 的密钥权限")
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“保存”。
+    e. 选择“保存”。
 
     ![保存 Azure Key Vault 访问策略](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
 ## <a name="create-hdinsight-cluster"></a>创建 HDInsight 群集
 
-现在已准备好新建 HDInsight 群集。 BYOK 只能在群集创建期间应用于新群集。 无法从 BYOK 群集中删除加密，并且无法将 BYOK 添加到现有群集。
+现在已准备好新建 HDInsight 群集。 从 "**基本**信息" 选项卡中，选择**Kafka**作为**群集类型**。
 
-![Azure 门户中的 Kafka 磁盘加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
+![Azure 门户选择 Kafka 类型](./media/apache-kafka-byok/azure-portal-cluster-basics-type-kafka.png)
+
+BYOK 只能在群集创建期间应用于新群集。 无法从 BYOK 群集中删除加密，并且无法将 BYOK 添加到现有群集。
+
+![Azure 门户中的 Kafka 磁盘加密](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
 
 在群集创建期间，提供完整的密钥 URL，包括密钥版本。 例如，`https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 。 还需要将托管标识分配给集群并提供密钥 URI。 有关完整的群集创建详细信息，请参阅[使用 Azure 门户创建 Apache Hadoop 群集](./apache-kafka-get-started.md)
 
@@ -139,7 +143,7 @@ BYOK 加密仅适用于 Kafka 1.1 及更高版本的群集。
 
 **是否还会加密操作系统磁盘/资源磁盘？**
 
-不。 OS 磁盘和资源磁盘不加密。
+No。 OS 磁盘和资源磁盘不加密。
 
 **如果纵向扩展群集，新代理是否会无缝支持 BYOK？**
 

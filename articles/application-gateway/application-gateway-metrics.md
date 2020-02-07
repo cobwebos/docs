@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/29/2019
+ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 695507b0d6997870dbea392e73e4f4470248d26c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985877"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046315"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -132,6 +132,9 @@ ms.locfileid: "76985877"
 - **不正常的主机计数**
 
   运行状况探测确定不正常的后端的数目。 你可以根据每个后端池进行筛选，以显示特定后端池中运行不正常的主机数。
+  
+- **每分钟每个正常主机的请求**数后端池中每个正常成员收到的平均请求数（分钟）。 必须使用*BackendPool HttpSettings*维度指定后端池。  
+  
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>应用程序网关 V1 SKU 支持的指标
 

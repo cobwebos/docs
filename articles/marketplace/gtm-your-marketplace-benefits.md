@@ -6,14 +6,14 @@ author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/08/2020
 ms.author: evansma
-ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121805"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064903"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 
@@ -45,7 +45,7 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 2. 团队可以访问每个 marketplace 产品的 "所有者" 或 "主要联系人"。 最佳做法是输入定期检查的个人或别名：发送给别名的消息（如 info@company.com 通常会丢失）。
 
 >[!Note]
->如果产品/服务的运行时间已超过四周并且尚未收到消息，请通过查看云合作伙伴门户或合作伙伴中心来查看你的组织中是否有该产品/服务的所有者。 它们应该具有通信和后续步骤。 <br> <br> 如果你无法确定所有者，或者所有者离开了你的公司，你可以在 https://aka.ms/marketplacepublishersupport 提出支持票证。
+>如果产品/服务的运行时间已超过四周并且尚未收到消息，请通过查看云合作伙伴门户或合作伙伴中心来查看你的组织中是否有该产品/服务的所有者。 它们应该具有通信和后续步骤。 <br> <br> 如果你无法确定所有者，或者所有者离开了你的公司，你可以在 https://aka.ms/marketplacepublishersupport提出支持票证。
 
 随着市场中套餐的不断增加，可用的活动范围也会不断扩大。 所有列表都接收基本级别的优化建议和促销活动，作为自助服务电子邮件的一部分，以及最佳做法。
 
@@ -88,7 +88,7 @@ Marketplace 奖励旨在支持你在增长的特定阶段，从了解活动开�
 
 本页面上所述的所有活动都包含在[marketplace 发布者协议](https://go.microsoft.com/fwlink/?LinkID=699560)中，并遵循商业权益计划附录。
 
-### <a name="cancellation-policy"></a>取消政策
+### <a name="cancellation-policy"></a>取消策略
 
 [列表和试用](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)出版商可以选择加入或选择退出每个产品/服务发布的活动。 合作伙伴可以随时选择退出任何活动。 
 

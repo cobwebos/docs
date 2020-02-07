@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311654"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063792"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 
@@ -29,10 +29,10 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ## <a name="connectivity"></a>连接
 
-你的 HDInsight 群集上提供了 Ambari Web UI `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是群集的名称。
+`https://CLUSTERNAME.azurehdinsight.net`上的 HDInsight 群集上提供了 Ambari Web UI，其中 `CLUSTERNAME` 是群集的名称。
 
 > [!IMPORTANT]  
-> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。
+> 连接到 HDInsight 上的 Ambari 需要 HTTPS。 当提示进行身份验证时，请使用在创建群集时提供的管理员帐户名称和密码。 如果系统未提示你输入凭据，请检查你的网络设置，确认客户端与 Azure HDInsight 群集之间没有连接问题。
 
 ## <a name="ssh-tunnel-proxy"></a>SSH 隧道（代理）
 
@@ -49,17 +49,17 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ![Apache Ambari 仪表板概述](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |描述 |
+|项 |说明 |
 |---|---|
-|Ambari 徽标|打开仪表板，以便可以监视群集。|
-|群集名称 # 项操作|显示进行中的 Ambari 操作数目。 选择群集名称或“# 项操作”会显示后台操作列表。|
-|# 个警报|显示与群集相关的警告或严重警报（如果有）。|
-|仪表板|显示仪表板。|
-|Services|群集中服务的信息和配置设置。|
+|Ambari 徽标|打开仪表板，该仪表板可用于监视群集。|
+|群集名称 # ops|显示正在进行的 Ambari 操作的数量。 选择群集名称或“# 项操作”会显示后台操作列表。|
+|警报数|显示群集的警告或严重警报（如果有）。|
+|面板|显示仪表板。|
+|服务|群集中服务的信息和配置设置。|
 |主机|群集中节点的信息和配置设置。|
-|警报|包含信息、警告和严重警报的日志。|
-|管理员|已安装在群集上的软件堆栈/服务、服务帐户信息和 Kerberos 安全性。|
-|“管理”按钮|Ambari 管理、用户设置和注销。|
+|警报|信息、警告和严重警报的日志。|
+|管理员|安装在群集上的软件堆栈/服务、服务帐户信息和 Kerberos 安全性。|
+|管理按钮|Ambari 管理、用户设置和注销。|
 
 ## <a name="monitoring"></a>监视
 
@@ -67,10 +67,10 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 以下列表包含 Ambari 使用的常见警报状态：
 
-* **正常**
+* **确定**
 * **警告**
 * **严重**
-* **未知**
+* UNKNOWN
 
 警报（“正常”状态除外）会导致页面顶部以“# 个警报”条目显示警报数目。 选择此条目会显示警报及其状态。
 
@@ -90,7 +90,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ### <a name="cluster"></a>群集
 
-仪表板的“度量值”选项卡包含一系列 Widget，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
+仪表板的“指标”选项卡包含一系列小组件，可让你一目了然地轻松监视群集状态。 “CPU 使用率”等多个 Widget 可在单击后提供更多信息。
 
 ![具有指标的 Apache Ambari 仪表板](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
@@ -102,7 +102,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 ![Apache Ambari 主机摘要详细信息](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
-### <a name="services"></a>Services
+### <a name="services"></a>服务
 
 仪表板上的“服务”边栏可让你快速了解群集上运行的服务的状态。 各种图标用来指示状态或应当采取的操作。 例如，如果某项服务需要再循环，则会显示一个黄色的再循环符号。
 
@@ -151,18 +151,18 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 2. 使用“操作”菜单选择要执行的操作：
 
-    |Item |描述 |
+    |项 |说明 |
     |---|---|
     |启动所有组件|启动主机上的所有组件。|
     |停止所有组件|停止主机上的所有组件。|
-    |重启所有组件|停止然后启动主机上的所有组件。|
-    |启用维护模式|隐藏主机的警报。 如果正在执行生成了警报的操作，则应当启用此模式。 例如，停止和启动服务。|
-    |关闭维护模式|使主机恢复正常警报。|
+    |重新启动所有组件|停止并启动主机上的所有组件。|
+    |启用维护模式|抑制主机的警报。 如果执行的是生成警报的操作，则应启用此模式。 例如，停止和启动服务。|
+    |关闭维护模式|将主机恢复正常警报。|
     |停止|停止主机上的 DataNode 或 NodeManagers。|
     |Start|启动主机上的 DataNode 或 NodeManagers。|
-    |重新启动|停止然后启动主机上的 DataNode 或 NodeManagers。|
-    |解除授权|从群集中删除主机。 **请勿在 HDInsight 群集上使用此操作**。|
-    |重用|将以前已解除授权的主机添加到群集中。 **请勿在 HDInsight 群集上使用此操作**。|
+    |重新启动|停止并启动主机上的 DataNode 或 NodeManagers。|
+    |停止|从群集中删除主机。 **请勿在 HDInsight 群集上使用此操作。**|
+    |重用|将以前已停用的主机添加到群集。 **请勿在 HDInsight 群集上使用此操作。**|
 
 ### <a id="service"></a>服务
 
@@ -177,23 +177,23 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 1. 从“仪表板”或“服务”页面中选择一个服务。
 
-2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，然后选择要执行的操作。 这会重启所有节点上的服务。
+2. 在“摘要”选项卡的顶部，使用“服务操作”按钮，并选择要执行的操作。 这会重启所有节点上的服务。
 
     ![Apache Ambari 单个服务操作](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
-   > 在群集运行时重新启动某些服务可能会生成警报。 若要避免生成警报，可使用“服务操作”按钮来为服务启用**维护模式**，然后再执行重启。
+   > 在群集运行时重新启动某些服务可能会生成警报。 要避免生成警报，可使用“服务操作”按钮来启用服务的“维护模式”，再执行重新启动。
 
-3. 选择某个操作后，页面顶部的“# 项操作”条目的数字便会递增，指出正在进行后台操作。 如果已配置为显示，则会显示后台操作的列表。
+3. 选择某个操作后，页面顶部的“# 项操作”条目的数字便会递增，指出正在进行后台操作。 如果已配置为显示，则将显示后台操作的列表。
 
    > [!NOTE]  
-   > 如果你已为服务启用了**维护模式**，请记得在操作完成后使用“服务操作”按钮来将它禁用。
+   > 如果已对服务启用了“维护模式”，请记得在操作完成后使用“服务操作”按钮来将它禁用。
 
 若要配置服务，请使用以下步骤：
 
 1. 从“仪表板”或“服务”页面中选择一个服务。
 
-2. 选择“配置”选项卡。这会显示当前配置。 同时，还会显示以前的配置列表。
+2. 选择 "**配置" 选项卡**。将显示当前配置。 同时，还会显示以前的配置列表。
 
     ![Apache Ambari 服务配置](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
@@ -203,7 +203,7 @@ Apache Ambari 提供简单易用的 Web UI 和 REST API 来简化 Apache Hadoop 
 
 Ambari 视图允许开发人员使用 [Apache Ambari 视图框架](https://cwiki.apache.org/confluence/display/AMBARI/Views)将 UI 元素插入 Ambari Web UI。 HDInsight 提供了以下视图和 Hadoop 群集类型：
 
-* Hive 视图：Hive 视图允许直接从 Web 浏览器运行 Hive 查询。 可保存查询、查看结果、将结果保存到群集存储中或将结果下载到本地系统。 有关使用 Hive 视图的详细信息，请参阅[将 Apache Hive 视图与 HDInsight 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)。
+* Hive 视图: Hive 视图允许直接从 Web 浏览器运行 Hive 查询。 可保存查询、查看结果、将结果保存到群集存储中或将结果下载到本地系统。 有关使用 Hive 视图的详细信息，请参阅[将 Apache Hive 视图与 HDInsight 配合使用](hadoop/apache-hadoop-use-hive-ambari-view.md)。
 
 * Tez 视图：使用 Tez 视图可以更好地理解和优化作业。 可以查看与 Tez 作业的执行情况以及使用了哪些资源有关的信息。
 

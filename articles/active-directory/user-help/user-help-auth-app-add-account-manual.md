@@ -2,21 +2,21 @@
 title: 手动将帐户添加到应用 - Azure Active Directory | Microsoft Docs
 description: 如何手动将帐户添加到 Microsoft Authenticator 应用以进行双因素验证。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4dd38eee8ebc12ed01874611ec5e532a4d78ede2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b237f710866ad3960dd65902c0789228d8c391bc
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704793"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062313"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>手动将帐户添加到应用
 

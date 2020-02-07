@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276588"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058901"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -29,7 +29,7 @@ ms.locfileid: "74276588"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure AD 租户
 * 启用了[企业](https://www.asana.com/pricing)计划或更佳计划的 Asana 租户
@@ -71,7 +71,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 1. 在“管理员凭据”部分中，按照以下说明生成令牌并将其输入到“机密令牌”文本框中：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用管理员帐户登录到 [Asana](https://app.asana.com)。
+    a. 使用管理员帐户登录到 [Asana](https://app.asana.com)。
 
     b. 单击顶部栏中的个人资料照片，然后选择当前的组织名称设置。
 
@@ -89,7 +89,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Asana”。
 
-1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Asana 的用户属性。 选为“匹配”属性的特性用于匹配 Asana 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../manage-apps/customize-application-attributes.md)。
+1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Asana 的用户属性。 选为“匹配”属性的特性用于匹配 Asana 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要为 Asana 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
@@ -97,10 +97,10 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 这会对“用户”部分中分配到 Asana 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些审核日志描述了预配服务对 Asana 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](asana-tutorial.md)

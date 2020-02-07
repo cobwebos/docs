@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 84ab5da993541012fd2199a30d03f5c69e88bf2c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2de0cdd32428884170f549afacdbd52c3a10c93f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530028"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060042"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-sap-successfactors-preview"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性写回（预览版）
 本教程的目的是说明从 Azure AD 到 SuccessFactors Employee Central 需要执行写回属性所需执行的步骤。 写回当前支持的唯一特性是 email 特性。 
@@ -63,7 +63,7 @@ ms.locfileid: "75530028"
 * 在同一框中向下滚动，然后选择 "**员工中心 API**"。 添加权限，如下所示，使用 odata api 并使用 ODATA API 进行编辑。 如果你计划使用同一帐户进行写回 SuccessFactors 方案，请选择 "编辑" 选项。 
   > [!div class="mx-imgBorder"]
   > ![读取写入权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* 单击“完成”。 单击 **“保存更改”** 。
+* 单击“完成”。 单击“保存更改”。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
@@ -92,7 +92,7 @@ ms.locfileid: "75530028"
 * 查看权限角色授予权限组。 
   > [!div class="mx-imgBorder"]
   > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击 **“保存更改”** 。
+* 单击“保存更改”。
 
 ## <a name="configuring-successfactors-writeback"></a>配置 SuccessFactors 写回
 
@@ -170,7 +170,7 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“ **保存**”。
+2. 单击 **“保存”** 。
 
 3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于 SuccessFactors 租户中的用户数量。 您可以查看进度栏，以跟踪同步周期的进度。 
 
@@ -183,8 +183,8 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何在 SuccessFactors 与 Azure Active Directory 之间配置单一登录](successfactors-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
-* [了解如何导出和导入预配配置](../manage-apps/export-import-provisioning-configuration.md)
+* [了解如何导出和导入预配配置](../app-provisioning/export-import-provisioning-configuration.md)
 

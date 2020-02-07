@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cf6c89e5f891c5f16551885fb40e8d5082fd6ba5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841959"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063503"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>为非库应用程序配置基于 SAML 的单一登录
 
@@ -36,7 +36,7 @@ ms.locfileid: "76841959"
 
 1. 以 Azure AD 租户的云应用程序管理员或应用程序管理员的身份登录到 [Azure 门户](https://portal.azure.com)。
 
-2. 导航到“Azure Active Directory” > “企业应用程序”，从列表中选择该应用程序。 
+2. 导航到“Azure Active Directory” **“企业应用程序”，从列表中选择该应用程序。**  >  
    
    - 若要搜索应用程序，请在“应用程序类型”菜单中选择“所有应用程序”，然后选择“应用”。 在“搜索”框中输入应用程序的名称，然后从结果中选择该应用程序。
 
@@ -50,11 +50,11 @@ ms.locfileid: "76841959"
 
 1. 输入以下设置。 你应从应用程序供应商处获取值。 可以手动输入值，或上传元数据文件以提取字段值。
 
-    | 基本 SAML 配置设置 | SP 启动 | idP 启动 | Description |
+    | 基本 SAML 配置设置 | SP 启动 | idP 启动 | 说明 |
     |:--|:--|:--|:--|
     | **标识符（实体 ID）** | 某些应用所需 | 某些应用所需 | 唯一标识该应用程序。 Azure AD 将该标识符作为 SAML 令牌的 Audience 参数发送回应用程序。 应用程序应当对其进行验证。 该值也在应用程序提供的任何 SAML 元数据中显示为实体 ID。 输入使用以下模式的 URL： "https://<subdomain>. contoso.com"。*可以在应用程序发送的**AuthnRequest** （SAML 请求）中找到此值作为**颁发者**元素。* |
-    | 回复 URL | 需要 | 需要 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 您可以使用 "其他回复 URL" 字段指定多个答复 Url。 例如，你可能需要多个子域的其他回复 Url。 或者，出于测试目的，可以一次指定多个回复 Url （本地主机和公共 Url）。 |
-    | **登录 URL** | 需要 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果为空，当用户从 Office 365、Azure AD 访问面板或 Azure AD SSO URL 启动应用程序时，Azure AD 会执行 IdP 启动的登录。|
+    | 回复 URL | 必需 | 必需 | 指定应用程序应在何处接收 SAML 令牌。 回复 URL 也称断言使用者服务 (ACS) URL。 您可以使用 "其他回复 URL" 字段指定多个答复 Url。 例如，你可能需要多个子域的其他回复 Url。 或者，出于测试目的，可以一次指定多个回复 Url （本地主机和公共 Url）。 |
+    | **登录 URL** | 必需 | 不指定 | 当用户打开此 URL 时，服务提供程序会将用户重定向到 Azure AD 进行身份验证和登录。 Azure AD 使用此 URL 从 Office 365 或 Azure AD 访问面板启动应用程序。 如果为空，当用户从 Office 365、Azure AD 访问面板或 Azure AD SSO URL 启动应用程序时，Azure AD 会执行 IdP 启动的登录。|
     | **中继状态** | 可选 | 可选 | 指定应用程序在完成身份验证以后将用户重定向到何处。 通常，该值是应用程序的有效 URL。 但是，某些应用程序以不同的方式使用此字段。 有关详细信息，请询问应用程序供应商。
     | **注销 URL** | 可选 | 可选 | 用于将 SAML 注销响应发回到应用程序。
 
@@ -85,7 +85,7 @@ ms.locfileid: "76841959"
    >- 若要修改应用程序清单以配置应用程序的可选声明，请参阅[配置可选声明](../develop/active-directory-optional-claims.md)。
    >- 若要为刷新令牌、访问令牌、会话令牌和 ID 令牌设置令牌生存期策略，请参阅[配置令牌生存期](../develop/active-directory-configurable-token-lifetimes.md)。 或者，若要通过 Azure AD 条件访问限制身份验证会话，请参阅[身份验证会话管理功能](https://go.microsoft.com/fwlink/?linkid=2083106)。
 
-## <a name="step-3-manage-the-saml-signing-certificate"></a>步骤 3. 管理 SAML 签名证书
+## <a name="step-3-manage-the-saml-signing-certificate"></a>步骤 3。 管理 SAML 签名证书
 
 Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 需要使用此证书在 Azure AD 与应用程序之间设置信任。 有关证书格式的详细信息，请参阅应用程序的 SAML 文档。 有关详细信息，请参阅[在 SAML 令牌中](certificate-signing-options.md)[管理用于联合单一登录的证书](manage-certificates-for-federated-single-sign-on.md)和高级证书签名选项。
 
@@ -102,7 +102,7 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
    - *正确的签名选项和算法。*
    - *正确的通知电子邮件地址。* 当活动证书接近到期日期时，Azure AD 向此字段中配置的电子邮件地址发送通知。
 
-2. 若要下载证书，请选择 Base64 格式、原始格式或联合元数据 XML 的选项之一。 Azure AD 还提供“应用联合元数据 URL”，从中可以访问特定于应用程序的、采用 `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` 格式的元数据。
+2. 若要下载证书，请选择 Base64 格式、原始格式或联合元数据 XML 的选项之一。 Azure AD 还提供“应用联合元数据 URL”，从中可以访问特定于应用程序的、采用  **格式的元数据。** `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`
 
 3. 若要管理、创建或导入证书，请选择 " **SAML 签名证书**" 部分右上角的 "**编辑**" 图标（铅笔）。
 
@@ -122,9 +122,9 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>步骤 4. 将应用程序设置为使用 Azure AD
 
-“设置 \<应用程序名称>”部分列出了需要在应用程序中配置的值，以便应用程序将 Azure AD 用作 SAML 标识提供者。 所需值根据应用程序的不同而异。 有关详细信息，请参阅应用程序的 SAML 文档。 若要查找文档，请参阅**设置 \<应用程序名称 >** 标题，并选择 "**查看分步说明**"。 文档将出现在 "**配置登录**" 页中。 该页指导您填写 "**设置 \<应用程序名称 >** " 标题中的**登录 Url**、 **Azure AD 标识符**和**注销 URL**值。
+“设置 **应用程序名称>”部分列出了需要在应用程序中配置的值，以便应用程序将 Azure AD 用作 SAML 标识提供者。\<** 所需值根据应用程序的不同而异。 有关详细信息，请参阅应用程序的 SAML 文档。 若要查找文档，请参阅**设置 \<应用程序名称 >** 标题，并选择 "**查看分步说明**"。 文档将出现在 "**配置登录**" 页中。 该页指导您填写 "**设置 \<应用程序名称 >** " 标题中的**登录 Url**、 **Azure AD 标识符**和**注销 URL**值。
 
-1. 向下滚动到“设置 \<applicationName>”部分。 
+1. 向下滚动到“设置 **applicationName>”\<** 部分。 
    
    ![步骤4设置应用程序](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 
@@ -137,7 +137,7 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 
 将应用程序配置为使用 Azure AD 作为基于 SAML 的标识提供程序后，你可以测试设置以查看单一登录是否适用于你的帐户。 
 
-2. 滚动到“使用 <applicationName> 验证单一登录”部分。
+2. 滚动到“使用  **验证单一登录”部分。<applicationName>**
 
    ![步骤5验证单一登录](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
@@ -163,4 +163,4 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 ## <a name="next-steps"></a>后续步骤
 
 - [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)
-- [配置用户帐户自动预配](configure-automatic-user-provisioning-portal.md)
+- [配置用户帐户自动预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: f7d62487605c26a68e7c71b6d95d7814da0a07c9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776386"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049668"
 ---
 # <a name="linux-support"></a>Linux 支持
 
@@ -22,7 +22,7 @@ ms.locfileid: "76776386"
 
 你可以使用 SDK Api 来检索资源源、连接到桌面或远程应用程序会话，并使用我们的第一方客户端支持的多个重定向。
 
-### <a name="supported-linux-distributions"></a>支持的 Linux 分发
+### <a name="supported-linux-distributions"></a>支持的 Linux 分发版
 
 SDK 与大多数基于 Ubuntu 18.04 或更高版本的操作系统兼容。 如果你使用的是不同的 Linux 分发版，则可以与你联系，以确定如何最大程度地满足你的需求。
 
@@ -30,7 +30,7 @@ SDK 与大多数基于 Ubuntu 18.04 或更高版本的操作系统兼容。 如�
 
 SDK 支持多个到桌面和远程应用程序会话的连接。 支持以下重定向：
 
-| 重定向       | 受支持 |
+| 重定向       | 支持 |
 | :---------------- | :-------: |
 | 键盘          | &#10004;  |
 | 鼠标             | &#10004;  |
@@ -55,7 +55,7 @@ SDK 还支持多个监视器显示配置，前提是你为会话选择的监视�
 
 ## <a name="next-steps"></a>后续步骤
 
-你可以在我们的[技术社区论坛](https://go.microsoft.com/fwlink/?linkid=2116541)上请求对 Linux SDK 的访问权限。
+SDK 目前正在开发中。 我们将使用可访问 SDK 的说明来更新本文档。
 
 请查看以下客户端的文档：
 

@@ -3,16 +3,18 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989869"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050018"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
-Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述资源符合性，以及在资源不符合的情况下会产生什么影响。
+Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#conditions)，以及在满足条件时要采取的效果。 条件将资源属性[字段](#fields)与所需值进行比较。 使用[别名](#aliases)访问资源属性字段。 资源属性字段是单值字段或多个值的[数组](#understanding-the--alias)。 阵列上的条件计算有所不同。
+了解有关[条件](#conditions)的详细信息。
+
 通过定义约定，可以控制成本并更轻松地管理资源。 例如，可指定仅允许特定类型的虚拟机。 或者，可要求所有资源都拥有特定标记。 策略由所有子资源继承。 如果将策略应用到资源组，则会将其应用到该资源组中的所有资源。
 
 策略定义架构可在此处找到： [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
@@ -20,7 +22,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
 - mode
-- parameters
+- 参数
 - 显示名称
 - description
 - 策略规则
@@ -63,7 +65,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
 
-## <a name="mode"></a>“模式”
+## <a name="mode"></a>模式
 
 **模式**的配置取决于策略是以 Azure 资源管理器属性还是资源提供程序属性为目标。
 
@@ -73,6 +75,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 - `all`：评估资源组和所有资源类型
 - `indexed`：仅评估支持标记和位置的资源类型
+
+例如，资源 `Microsoft.Network/routeTables` 支持标记和位置，并且在这两种模式中进行评估。 但是，无法标记资源 `Microsoft.Network/routeTables/routes` 不会在 `Indexed` 模式下进行评估。
 
 大多数情况下，建议将“mode”设置为`all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
@@ -172,7 +176,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - **订阅** - 只能将该订阅中的资源分配给策略。
 - **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则位置必须是包含那些订阅的管理组。
 
-## <a name="display-name-and-description"></a>显示名称和说明
+## <a name="display-name-and-description"></a>显示名称和描述
 
 请使用“displayName”和“description”来标识策略定义，并提供其使用上下文。 **displayName** 的最大长度为 128个字符，**description** 的最大长度为 512个字符。
 
@@ -253,6 +257,8 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 使用**match**和**notMatch**条件时，请提供 `#` 来匹配数字，`?` 对于字母，`.` 与任何字符匹配，并使用任何其他字符匹配该实际字符。 虽然**match**和**notMatch**区分大小写，但计算_stringValue_的所有其他条件都是不区分大小写的。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
 
+在 **\[\*\] alias**数组字段值时，数组中的每个元素都是在元素之间使用逻辑**and**进行单独计算。 有关详细信息，请参阅[计算 \[\*\] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
+
 ### <a name="fields"></a>字段
 
 使用字段构成条件。 字段匹配资源请求有效负载中的属性，并说明资源的状态。
@@ -275,7 +281,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
   - 示例：`tags['Acct.CostCenter']`，其中 Acct.CostCenter 是标记的名称。
 - `tags['''<tagName>''']`
   - 此括号语法通过双撇号进行转义，可支持在其中包含撇号的标记名称。
-  - 其中“\<tagName\>”是要验证其条件的标记的名称。
+  - 其中“**tagName\<”是要验证其条件的标记的名称\>** 。
   - 示例： `tags['''My.Apostrophe.Tag''']`，其中 **"My. tag"** 是标记的名称。
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
@@ -396,7 +402,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 在修改后的策略规则中，`if()` 将检查**名称**长度，然后再尝试获取长度少于三个字符的值的 `substring()`。 如果**name**太短，则改为返回值 "not 始于 abc"，并将其与**abc**进行比较。 短名称不以**abc**开头的资源仍未通过策略规则，但在评估过程中不再导致错误。
 
-### <a name="count"></a>计数
+### <a name="count"></a>Count
 
 计算资源有效负载中数组的多少个成员满足条件表达式的条件可以使用**计数**表达式形成。 常见的方案是检查是否至少有一个 "、" 和 "全部为"，或数组成员是否满足条件。 **count**计算条件表达式的每个[\[\*\] alias](#understanding-the--alias)数组成员的值，并为_true_结果求和，然后将结果与表达式运算符进行比较。
 
@@ -536,7 +542,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 }
 ```
 
-### <a name="effect"></a>作用
+### <a name="effect"></a>效果
 
 Azure 策略支持以下类型的影响：
 
@@ -691,7 +697,7 @@ Azure 策略支持以下类型的影响：
 
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>计划
+## <a name="initiatives"></a>新方案
 
 使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 

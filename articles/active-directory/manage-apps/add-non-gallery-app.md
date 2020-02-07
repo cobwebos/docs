@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062778"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063605"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>向 Azure AD 组织添加未列出的（非库）应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "73062778"
 
 - 自助集成支持[安全断言标记语言（SAML） 2.0](https://wikipedia.org/wiki/SAML_2.0)标识提供程序的任何应用程序（SP 启动或 IdP 启动）
 - 通过自助方式集成包含 HTML 登录页并使用[基于密码的 SSO](what-is-single-sign-on.md#password-based-sso) 的任何 Web 应用程序
-- 使用[系统实现跨域标识管理（SCIM）协议进行用户预配](use-scim-to-provision-users-and-groups.md)的应用程序的自助服务连接
+- 使用[系统实现跨域标识管理（SCIM）协议进行用户预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)的应用程序的自助服务连接
 - 可在 [Office 365 应用启动器](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)或 [Azure AD 访问面板](what-is-single-sign-on.md#linked-sign-on)中添加任何应用程序的链接
 
 本文介绍如何在不编写代码的情况下，将非库应用程序添加到 Azure 门户中的**企业应用程序**。 如果你要查找有关如何将自定义应用与 Azure AD 集成的开发人员指南，请参阅[Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。 当你开发使用一种新式协议（如[OpenId connect/OAuth](../develop/active-directory-v2-protocols.md) ）对用户进行身份验证的应用时，你可以使用 Azure 门户中的[应用注册](../develop/quickstart-register-app.md)体验将其注册到 Microsoft 标识平台。
@@ -54,7 +54,7 @@ ms.locfileid: "73062778"
    >* 为**本地应用程序配置用于安全远程访问的应用程序代理**打开 Azure AD 应用程序代理和连接器的配置页。
    >* **注册正在处理的应用程序，使其与 Azure AD**打开**应用注册**页面。 此选项通常用于 OpenID Connect 应用程序。
 
-7. 选择**创建**。 此时会打开应用程序的“概述”页。
+7. 选择 **“创建”** 。 此时会打开应用程序的“概述”页。
 
 ## <a name="configure-user-sign-in-properties"></a>配置用户登录属性
 
@@ -74,27 +74,27 @@ ms.locfileid: "73062778"
        |---|---|---|---|---|
        | 启用以供用户登录? | 需要进行用户分配? | 对用户可见? | 已分配用户能否登录? | 已分配用户能否看到应用程序?* |
        | 是 | 是 | 是 | 是 | 是  |
-       | 是 | 是 | 否  | 是 | 否   |
-       | 是 | 否  | 是 | 是 | 是  |
-       | 是 | 否  | 否  | 是 | 否   |
-       | 否  | 是 | 是 | 否  | 否   |
-       | 否  | 是 | 否  | 否  | 否   |
-       | 否  | 否  | 是 | 否  | 否   |
-       | 否  | 否  | 否  | 否  | 否   |
+       | 是 | 是 | no  | 是 | no   |
+       | 是 | no  | 是 | 是 | 是  |
+       | 是 | no  | no  | 是 | no   |
+       | no  | 是 | 是 | no  | no   |
+       | no  | 是 | no  | no  | no   |
+       | no  | no  | 是 | no  | no   |
+       | no  | no  | no  | no  | no   |
 
       **未分配**用户的行为：
 
        | 应用程序属性设置 | | | 未分配用户的体验 | |
        |---|---|---|---|---|
        | 启用以供用户登录? | 需要进行用户分配? | 对用户可见? | 未分配用户能否登录? | 未分配用户能否看到应用程序?* |
-       | 是 | 是 | 是 | 否  | 否   |
-       | 是 | 是 | 否  | 否  | 否   |
-       | 是 | 否  | 是 | 是 | 否   |
-       | 是 | 否  | 否  | 是 | 否   |
-       | 否  | 是 | 是 | 否  | 否   |
-       | 否  | 是 | 否  | 否  | 否   |
-       | 否  | 否  | 是 | 否  | 否   |
-       | 否  | 否  | 否  | 否  | 否   |
+       | 是 | 是 | 是 | no  | no   |
+       | 是 | 是 | no  | no  | no   |
+       | 是 | no  | 是 | 是 | no   |
+       | 是 | no  | no  | 是 | no   |
+       | no  | 是 | 是 | no  | no   |
+       | no  | 是 | no  | no  | no   |
+       | no  | no  | 是 | no  | no   |
+       | no  | no  | no  | no  | no   |
 
      *用户能否在访问面板和 Office 365 应用启动器中看到应用程序?
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429273"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048272"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>了解和调用 IoT 中心的直接方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "75429273"
 > 调用设备上的直接方法时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列组中的任一项除外：``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-直接方法是同步的，在超时期限（默认：30秒，可设置为300秒）后成功或失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
+直接方法是同步的，在超时期限（默认：30 秒，最长可设置为 300 秒）过后，其结果不是成功就是失败。 直接方法适用于交互式场景，即当且仅当设备处于联机状态且可接收命令时，用户希望设备做出响应。 例如，打开手机的灯。 在此类方案中，用户需要立即看到结果是成功还是失败，以便云服务可以尽快根据结果进行操作。 设备可能返回某些消息正文作为方法的结果，但系统不会要求方法一定这样做。 无法保证基于方法调用的排序或者任何并发语义。
 
 直接方法从云端只能通过 HTTPS 调用，从设备端可以通过 MQTT 或 AMQP 调用。
 
@@ -73,7 +73,10 @@ ms.locfileid: "75429273"
     }
     ```
 
-超时以秒为单位。 如果未设置超时，则默认为 30 秒。
+在请求中作为 `responseTimeoutInSeconds` 提供的值是 IoT 中心服务在设备上完成直接方法执行所需等待的时间。 将此超时设置为至少与设备的直接方法的预期执行时间一样长。 如果未提供 timeout，则使用默认值30秒。 `responseTimeoutInSeconds` 的最小值和最大值分别为5和300秒。
+
+在请求中作为 `connectTimeoutInSeconds` 提供的值是调用 IoT 中心服务为断开连接的设备进入联机状态所必须等待的直接方法的时间量。 默认值为0，表示在调用直接方法时，设备必须已处于联机状态。 `connectTimeoutInSeconds` 的最大值为300秒。
+
 
 #### <a name="example"></a>示例
 
@@ -94,11 +97,14 @@ curl -X POST \
 }'
 ```
 
-### <a name="response"></a>响应
+### <a name="response"></a>응답
 
 后端应用接收响应，响应由以下项构成：
 
-* HTTP 状态代码，用于 IoT 中心发出的错误，包括 404 错误（针对当前未连接的设备）。
+* *HTTP 状态代码*：
+  * 200指示成功执行直接方法;
+  * 404指示设备 ID 无效，或者设备在调用直接方法时未联机，并且此后 `connectTimeoutInSeconds` （使用附带的错误消息来了解根本原因）;
+  * 504指示由于设备未响应 `responseTimeoutInSeconds`内的直接方法调用而导致的网关超时。
 
 * 标头，包含 ETag、请求 ID、内容类型和内容编码。
 
@@ -142,7 +148,7 @@ curl -X POST \
 
 方法请求为 QoS 0。
 
-#### <a name="response"></a>响应
+#### <a name="response"></a>응답
 
 设备将响应发送到 `$iothub/methods/res/{status}/?$rid={request id}`，其中：
 
@@ -168,7 +174,7 @@ AMQP 消息会到达表示方法请求的接收链接。 它包含以下部分�
 
 * AMQP 消息正文，其中包含作为 JSON 的方法有效负载。
 
-#### <a name="response"></a>响应
+#### <a name="response"></a>응답
 
 设备会创建一个发送链接以在 `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` 地址上返回方法响应。
 

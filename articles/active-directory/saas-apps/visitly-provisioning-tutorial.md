@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 942f0aa685ff7e2278aae159f7e97917a105f5fa
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 73cc1a58689db7902843f222aa4874a5e188be44
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840148"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063138"
 ---
 # <a name="tutorial-configure-visitly-for-automatic-user-provisioning"></a>教程：为 Visitly 配置自动用户预配
 
 本教程的目的是演示在 Visitly 和 Azure Active Directory （Azure AD）中执行的步骤，以将 Azure AD 自动预配和取消预配到 Visitly。
 
 > [!NOTE]
-> 本教程介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的作用、工作原理和常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到软件即服务（SaaS）应用程序](../manage-apps/user-provisioning.md)。
+> 本教程介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的作用、工作原理和常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到软件即服务（SaaS）应用程序](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -85,7 +85,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，输入 " **Visitly**"，在结果面板中选择 " **Visitly** "，然后选择 "**添加**" 以添加该应用程序。
 
@@ -100,7 +100,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="configure-automatic-user-provisioning-for-visitly-in-azure-ad"></a>在 Azure AD 中配置 Visitly 的自动用户预配
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" > "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" > "**所有应用程序**"。
 
     ![所有应用程序](common/enterprise-applications.png)
 
@@ -134,7 +134,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![Visitly 用户属性](media/visitly-provisioning-tutorial/userattribute.png)
 
-10. 若要配置范围筛选器，请按照[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
+10. 若要配置范围筛选器，请按照[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
 
 11. 若要为 Visitly 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -148,9 +148,9 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![正在保存设置配置](common/provisioning-configuration-save.png)
 
-此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关用户或组设置所需的时间的详细信息，请参阅[预配用户需要多长时间？](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关用户或组设置所需的时间的详细信息，请参阅[预配用户需要多长时间？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Visitly 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 Visitly 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>连接器限制
 
@@ -158,9 +158,9 @@ Visitly 不支持硬删除。 所有内容仅限软删除。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

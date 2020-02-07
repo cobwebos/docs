@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901576"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048162"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由要求
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需要设置并管理路由。 某些连接服务提供商以托管服务形式提供路由的设置和管理。 请咨询连接服务提供商，以确定他们是否提供此类服务。 如果不提供，则必须遵守以下要求：
@@ -204,7 +204,7 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | 南非北部 | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | 南非西部 | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **阿拉伯联合酋长国**| |
-| 阿拉伯联合酋长国北部 | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| 阿联酋北部 | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
 | 阿拉伯联合酋长国中部 | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
@@ -223,13 +223,14 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | Exchange Online * * | 12076:5010 |
 | SharePoint Online * * | 12076:5020 |
 | Skype For Business Online * * | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online * * * |12076:5040 |
 | Azure 全球服务* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | 其他 Office 365 联机服务 * * | 12076:5100 |
 
-*本次 Azure 全球服务仅包括 Azure DevOps。
-\* * Microsoft 要求的授权，请参阅[为 microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md) 
+\* Azure 全局服务目前仅包含 Azure DevOps。
+\* * Microsoft 要求的授权，请参阅[为 microsoft 对等互连配置路由筛选器](how-to-routefilter-portal.md)\
+CRM Online 支持 Dynamics 8.2 和更低的版本。 对于更高版本，请选择 Dynamics 部署的区域社区。
 
 > [!NOTE]
 > Microsoft 不遵循你在播发到 Microsoft 的路由上设置的任何 BGP 社区值。
@@ -241,12 +242,12 @@ ExpressRoute 不能配置为传输路由器。 必须依赖连接服务提供商
 | **国家/地区云 Azure 区域**| **BGP 社区值** |
 | --- | --- |
 | **美国政府** |  |
-| US Gov 亚利桑那州 | 12076:51106 |
+| 美国亚利桑那州政府 | 12076:51106 |
 | US Gov 爱荷华州 | 12076:51109 |
-| US Gov 弗吉尼亚州 | 12076:51105 |
-| US Gov 德克萨斯州 | 12076:51108 |
-| US DoD 中部 | 12076:51209 |
-| US DoD 东部 | 12076:51205 |
+| 美国政府弗吉尼亚州 | 12076:51105 |
+| 美国德克萨斯州政府 | 12076:51108 |
+| 美国 DoD 中部 | 12076:51209 |
+| 美国 DoD 东部 | 12076:51205 |
 
 
 | **国家/地区云中的服务** | **BGP 社区值** |

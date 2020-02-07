@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080215"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049944"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
@@ -38,7 +38,12 @@ ms.locfileid: "74080215"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 列出支持 ExpressRoute Direct 的所有位置：
+2. 将你的订阅重新注册到 Microsoft 以访问 expressrouteportslocation 和 expressrouteport Api
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. 列出支持 ExpressRoute Direct 的所有位置：
     
    ```azurecli
    az network express-route port location list
@@ -105,7 +110,7 @@ ms.locfileid: "74080215"
    }
    ]
    ```
-3. 确定上一步骤中列出的某个位置是否具有可用带宽：
+4. 确定上一步骤中列出的某个位置是否具有可用带宽：
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -131,7 +136,7 @@ ms.locfileid: "74080215"
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. 创建 ExpressRoute Direct 资源，该资源基于在上一步骤中所选择的位置。
+5. 创建 ExpressRoute Direct 资源，该资源基于在上一步骤中所选择的位置。
 
    ExpressRoute Direct 同时支持 QinQ 和 Dot1Q 封装。 如果选择了 QinQ，则会为每个 ExpressRoute 线路动态分配 S-Tag，并且每个线路在整个 ExpressRoute Direct 资源中将是唯一的。 线路上的每个 C-Tag 在该线路上必须是唯一的，但在整个 ExpressRoute Direct 资源中不必唯一。  
 

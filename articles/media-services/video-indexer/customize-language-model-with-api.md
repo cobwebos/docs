@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513144"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049028"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>使用视频索引器 API 自定义语言模型
 
@@ -105,9 +105,8 @@ ms.locfileid: "76513144"
 }
 ```
 
-在将视频重新[索引为索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)时，应使用**linguisticModelId**参数的语言模型的返回 Id 值并为**languageModelId**参数使用返回的**id** [值。](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)
+返回的**id**是用于区分语言模型的唯一 id，而**languageModelId**用于[上传视频来索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)和重新索引[视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)api （在视频索引器上传/重新索引 api 中也称为**linguisticModelId** ）。
 
- 
 ## <a name="delete-a-language-model"></a>删除语言模型
 
 [删除语言模型](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)API 将从指定的帐户中删除自定义语言模型。 使用已删除语言模型的任何视频会保留相同的索引，直到为该视频重新编制索引为止。 如果重新为视频编制索引，可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。

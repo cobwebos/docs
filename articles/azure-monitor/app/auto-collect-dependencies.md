@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678297"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064268"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
@@ -69,25 +69,26 @@ ms.locfileid: "72678297"
 | [HTTP](https://nodejs.org/api/http.html)、[HTTPS](https://nodejs.org/api/https.html) | 0.10+ |
 | <b>存储客户端</b> | |
 | [Redis](https://www.npmjs.com/package/redis) | 2.x |
-| [MongoDb](https://www.npmjs.com/package/mongodb)；[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x-3. x |
-| [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0-2.16 |
-| [PostgreSql](https://www.npmjs.com/package/pg)； | 1.x-7. x |
-| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1. x-2. x |
+| [MongoDb](https://www.npmjs.com/package/mongodb)；[MongoDb Core](https://www.npmjs.com/package/mongodb-core) | 2.x - 3.x |
+| [MySQL](https://www.npmjs.com/package/mysql) | 2.0.0 - 2.16.x |
+| [PostgreSql](https://www.npmjs.com/package/pg)； | 6.x - 7.x |
+| [pg-pool](https://www.npmjs.com/package/pg-pool) | 1.x - 2.x |
 | <b>日志记录库</b> | |
 | [console](https://nodejs.org/api/console.html) | 0.10+ |
 | [Bunyan](https://www.npmjs.com/package/bunyan) | 1.x |
-| [Winston](https://www.npmjs.com/package/winston) | 2.x-3. x |
+| [Winston](https://www.npmjs.com/package/winston) | 2.x - 3.x |
 
 ## <a name="javascript"></a>JavaScript
 
 | 通信库 | 版本 |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | 所有 |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | 全部 |
 
 ## <a name="next-steps"></a>后续步骤
 
 - 为 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 设置自定义依赖项跟踪。
 - 为 [Java](../../azure-monitor/app/java-agent.md) 设置自定义依赖项跟踪。
+- 为[OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)设置自定义依赖项跟踪。
 - [编写自定义依赖项遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- 请参阅[数据模型](../../azure-monitor/app/data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

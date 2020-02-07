@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1ba7fca7576c6f015ad7bbcb47909b90c3065d58
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 7d897b9f85ce6565cbdc1a253a0e20b989539cae
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045964"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048664"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>为操作产品/服务创建新的 Dynamics 365
 
@@ -109,19 +109,9 @@ ms.locfileid: "76045964"
 
 输入产品的版本号。 客户将在产品/服务的详细信息页上列出此版本。
 
-### <a name="standard-contract"></a>标准合同
+### <a name="terms-and-conditions"></a>条款和条件
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 提供了标准合同模板，以帮助促进 marketplace 中的事务。
-
-您可以选择在标准合同下提供您的软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。
-
-可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178
-
-若要使用标准协定，请选中 "**使用标准协定？** " 框。
-
-#### <a name="terms-of-use"></a>使用条款
-
-如果不选中 "**使用标准协定"** 框，则需要在 "**使用条款**" 字段中提供自己的使用条款。 最多输入10000个字符的文本，或者，如果使用条款需要较长的说明，请提供可在其中找到你的其他许可条款的 URL。 客户需要接受这些条款，然后才能试用你的应用。
+在**条款和条件**字段中提供自己的法律条款和条件。 你还可以提供 URL，你可以在其中找到你的条款和条件。 客户需要接受这些条款，然后才能试用你的产品/服务。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -140,7 +130,7 @@ ms.locfileid: "76045964"
 
 提供产品/服务的简短说明（最多100个字符）。 此说明可用于 marketplace 搜索结果中。
 
-### <a name="description"></a>Description
+### <a name="description"></a>说明
 
 提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。
 
@@ -303,9 +293,9 @@ Microsoft 可以通过使用这种类型的测试驱动器来托管和维护服�
 
 - **测试驱动器持续时间**（必需）：通过定义小时数来输入测试驱动器保持活动状态的时间长度。 超过此时间后，会话将结束，并且不再使用您的许可证之一。 建议使用2-24 小时的值，具体取决于产品/服务的复杂性。 此持续时间只能设置为整小时数（例如，"2" 小时;"1.5" 无效。  如果用户运行时间不足，并且想要再次访问测试驱动器，则用户可以请求新的会话。
 
-- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com) 。
+- **实例 url** （必需）：客户将从其开始测试驱动器的 url。 通常是运行应用并安装示例数据的 Dynamics 365 实例的 URL （例如 https://testdrive.crm.dynamics.com)。
 
-- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0) 。
+- **实例 WEB API url** （必需）：通过登录到 Microsoft 365 帐户并导航到 "**设置**" \&Gt; 来检索 Dynamics 365 实例的 Web API url**自定义**\&g t;**开发人员资源**\&g t;**实例 WEB API （服务根 url）** ，复制此处找到的 URL （例如 https://testdrive.crm.dynamics.com/api/data/v9.0)。
 
 - **角色名称**（必需）：提供自定义 Dynamics 365 测试驱动器中定义的安全角色名称。 这会在其测试驱动器（例如，测试驱动器角色）期间分配给用户。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 检测信号问题
 description: 查看 Azure HDInsight 中 Apache Ambari 检测信号问题的各种原因
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964611"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057067"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache Ambari 检测信号问题
 
@@ -22,13 +22,13 @@ ms.locfileid: "76964611"
 
 ### <a name="issue"></a>问题
 
-Ambari 代理的 CPU 使用率较高，这会导致来自某些节点的 Ambari UI 发出警报，Ambari 代理检测信号丢失。 检测信号丢失警报通常是暂时性的。 
+Ambari 代理的 CPU 使用率较高，这会导致来自某些节点的 Ambari UI 发出警报，Ambari 代理检测信号丢失。 检测信号丢失警报通常是暂时性的。
 
 ### <a name="cause"></a>原因
 
 由于各种 ambari 代理 bug，在极少数情况下，ambari 代理的 CPU 使用率高（100）。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 标识 ambari 的进程 ID （pid）：
 
@@ -61,13 +61,13 @@ Ambari 代理的 CPU 使用率较高，这会导致来自某些节点的 Ambari 
 
 ### <a name="issue"></a>问题
 
-Ambari 代理尚未启动，这会导致 Ambari UI 发出的针对某些节点的警报丢失 Ambari 代理检测信号。
+Ambari 代理未启动，这会导致 Ambari UI 发出的针对某些节点的警报丢失 Ambari 代理检测信号。
 
 ### <a name="cause"></a>原因
 
 这些警报是由未运行 Ambari 代理导致的。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 确认 ambari 的状态-代理：
 
@@ -93,9 +93,9 @@ Ambari 检测信号代理已丢失。
 
 OMS 日志导致 CPU 使用率高。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
-* 使用[AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0) PowerShell 模块禁用 OMS 日志记录。 
+* 使用[AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) PowerShell cmdlet 禁用 Azure Monitor 日志记录。
 * 删除 `mdsd.warn` 日志文件
 
 ---

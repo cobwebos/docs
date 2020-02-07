@@ -3,12 +3,12 @@ title: 针对资源的阵列属性创作策略
 description: 了解如何使用数组参数和数组语言表达式、如何计算 [*] 别名，以及如何使用 Azure 策略定义规则附加元素。
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023185"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050065"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源的阵列属性创作策略
 
@@ -140,8 +140,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 如果存在�
 
 ### <a name="evaluating-the--alias"></a>评估 [*] 别名
 
-具有附加到其名称的 **\[\*\]** 的别名指示该**类型**是一个_数组_。 **\[\*\]** ，而不是计算整个数组的值，而是可以对数组中的每个元素进行单独计算。 每个项目评估有三个标准方案： _None_、 _Any_或_All_元素都匹配。
-对于复杂方案，请使用[count](../concepts/definition-structure.md#count)。
+具有附加到其名称的 **\[\*\]** 的别名指示该**类型**是一个_数组_。 **\[\*\]** ，而不是计算整个数组的值，而是可以对数组中的每个元素进行单独计算。 每个项目评估有三个标准方案： _None_、 _Any_或_All_元素都匹配。 对于复杂方案，请使用[count](../concepts/definition-structure.md#count)。
 
 **仅当** **if**规则评估为 true 时，策略引擎才会触发中的**效果**。
 在 **\[\*\]** 计算数组中每个元素的方式的情况下，必须了解这一点。
@@ -184,7 +183,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 如果存在�
 
 以下结果是条件和示例策略规则与上述现有值的数组的组合的结果：
 
-|条件 |业务成效 | 方案 |说明 |
+|条件 |结果 | 场景 |说明 |
 |-|-|-|-|
 |`{<field>,"notEquals":"127.0.0.1"}` |没 |无匹配项 |一个数组元素的计算结果为 false （127.0.0.1！ = 127.0.0.1），另一个数组元素为 true （127.0.0.1！ = 192.168.1.1），因此**notEquals**条件为_false_ ，并且不触发该效果。 |
 |`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |无匹配项 |这两个数组元素的计算结果均为 true （10.0.4.1！ = 127.0.0.1 and 10.0.4.1！ = 192.168.1.1），因此**notEquals**条件为_true_ ，并触发该效果。 |

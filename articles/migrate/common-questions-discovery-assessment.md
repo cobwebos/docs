@@ -3,12 +3,12 @@ title: 常见问题-Azure Migrate 中的发现、评估和依赖项分析
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513280"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059481"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>有关发现、评估和依赖关系分析的常见问题
 
@@ -16,6 +16,8 @@ ms.locfileid: "76513280"
 
 - 有关 Azure Migrate 的[一般问题](resources-faq.md)。
 - 关于 Azure Migrate 设备的[问题](common-questions-appliance.md)。
+- 有关服务器迁移的[问题](common-questions-server-migration.md)。
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>可以使用一个设备发现多少个 Vm？
@@ -74,7 +76,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 > 依赖关系可视化在 Azure 政府版中不可用。
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我是否需要为依赖关系可视化付费？
-不。 [详细了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定价。
+No。 [详细了解](https://azure.microsoft.com/pricing/details/azure-migrate/) Azure Migrate 定价。
 
 ## <a name="what-do-i-install-for-dependency-visualization"></a>对于依赖项可视化，我应该安装什么？
 
@@ -108,7 +110,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 - 查看[MMA 支持的 Linux 操作系统](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)的列表。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-an-hour"></a>是否可将依赖项可视化多个小时？
-不。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖项。 但是，可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
+No。 最多可将依赖项可视化到一小时。 您可以返回到历史记录中的特定日期（在历史记录中，每月返回一项），但可视化效果的最大持续时间是一小时。 例如，你可以在依赖关系映射中使用时间段来查看昨天的依赖项，但你只能查看一个小时窗口的依赖项。 但是，可以使用 Azure Monitor 日志来查询更长时间的[依赖项数据](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies)。
 
 ## <a name="can-visualize-dependencies-for-groups-of-more-than-10-vms"></a>可以可视化超过10个 Vm 的组的依赖项吗？
 可以可视化包含多达10个 Vm 的组的[依赖项](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)。 如果有10个以上 Vm 的组，我们建议将该组拆分为较小的组，然后将这些依赖项可视化。

@@ -10,17 +10,17 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/05/2020
+ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026752"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046021"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>用 Azure Monitor 监视 Azure AD B2C
 
-使用 Azure Monitor 将 Azure Active Directory B2C （Azure AD B2C）使用情况活动事件路由到不同的监视解决方案。 你可以保留日志以便长期使用或与第三方安全信息和事件管理（SIEM）工具集成，以深入了解环境。
+使用 Azure Monitor 将 Azure Active Directory B2C （Azure AD B2C）登录和[审核](view-audit-logs.md)日志路由到不同的监视解决方案。 你可以保留日志以便长期使用或与第三方安全信息和事件管理（SIEM）工具集成，以深入了解环境。
 
 可以将日志事件路由到：
 
@@ -28,9 +28,9 @@ ms.locfileid: "77026752"
 * 一个 Azure 事件中心（与 Splunk 和 Sumo logic 逻辑实例集成）。
 * Azure Log Analytics 工作区（用于分析数据、创建仪表板和针对特定事件的警报）。
 
-![Azure 监视器](./media/azure-monitor/azure-monitor-flow.png)
+![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的步骤，请使用 Azure PowerShell 模块部署 Azure 资源管理器模板。
 
@@ -46,7 +46,7 @@ Azure AD B2C 利用[Azure Active Directory 监视](../active-directory/reports-m
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-在包含你的 Azure 订阅的 Azure Active Directory （Azure AD）租户中（*不*是包含 Azure AD B2C 租户的目录），请[创建一个资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 使用以下值：
+在包含你的 Azure 订阅的 Azure Active Directory （Azure AD）租户中（*不*是包含 Azure AD B2C 租户的目录），请[创建一个资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 请使用以下值：
 
 * **订阅**：选择 Azure 订阅。
 * **资源组**：输入资源组的名称。 例如， *azure-ad-b2c-监视*。
@@ -74,7 +74,7 @@ Azure AD B2C 目录的**目录 id** （也称为租户 id）。
 
 若要加入你的 Azure AD 租户（**客户**），请为你的产品/服务创建一个[Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md)，其中包含以下信息。 在 Azure 门户的 "[服务提供程序" 页](../lighthouse/how-to/view-manage-service-providers.md)中查看产品/服务详细信息时，`mspOfferName` 和 `mspOfferDescription` 值可见。
 
-| 字段   | 定义 |
+| 字段   | Definition |
 |---------|------------|
 | `mspOfferName`                     | 描述此定义的名称。 例如， *Azure AD B2C 托管服务*。 此值将作为产品/服务的标题显示给客户。 |
 | `mspOfferDescription`              | 产品/服务的简短说明。 例如，*启用 Azure AD B2C 中的 Azure Monitor*。|

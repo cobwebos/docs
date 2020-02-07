@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5f36e82c2ff95800a058f56f9cc6b80ddf02dbf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967708"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063843"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -298,7 +298,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>为连接的应用实施用户预配
 
-可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 有关详细信息，请参阅[使用 Azure AD 自动预配和取消预配 SaaS 应用程序的用户](../manage-apps/user-provisioning.md)。
+可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 有关详细信息，请参阅[使用 Azure AD 自动预配和取消预配 SaaS 应用程序的用户](../app-provisioning/user-provisioning.md)。
 
 #### <a name="integrate-information-protection"></a>集成信息保护
 

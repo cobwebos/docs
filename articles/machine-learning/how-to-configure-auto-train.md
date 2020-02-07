@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986489"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048579"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,7 +109,7 @@ automl_config = AutoMLConfig(task = "classification")
 * 轻松地将数据从静态文件或 URL 源传输到工作区
 * 在云计算资源上运行时，使数据可用于训练脚本
 
-有关使用 `Dataset` 类将数据装载到计算目标的示例，请参阅[操作方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
+有关使用 `Dataset` 类将数据装载到计算目标的示例，请参阅操作[方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)。
 
 ## <a name="train-and-validation-data"></a>训练和验证数据
 
@@ -179,7 +179,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 |分类 | 回归 | 时序预测
 |-- |-- |--
-|accuracy| spearman_correlation | spearman_correlation
+|准确性| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
 |average_precision_score_weighted | r2_score | r2_score
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
@@ -189,12 +189,18 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。
+在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#featurization)。
 
-若要启用此特征化，请为[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)指定 `"featurization": 'auto'`。
+配置试验时，可以启用 "高级" 设置 `featurization`。 下表显示[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中特征化的已接受设置。
+
+|特征化配置 | 说明 |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应使用自定义的特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-train.md#customize-feature-engineering)。|
+|`"featurization": 'off'`| 指示不应自动执行特征化步骤。|
+|`"featurization": 'auto'`| 指示在预处理过程中，将自动执行[数据 guardrails 和特征化步骤](how-to-create-portal-experiments.md#advanced-featurization-options)。|
 
 > [!NOTE]
-> 自动机器学习预处理步骤（特征规范化、处理缺失数据，将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，训练期间应用的相同预处理步骤将自动应用于输入数据。
+> 自动机器学习特征化步骤（功能规范化、处理丢失的数据、将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，在训练过程中应用的相同特征化步骤会自动应用于输入数据。
 
 ### <a name="time-series-forecasting"></a>时序预测
 时序 `forecasting` 任务需要配置对象中有其他参数：
@@ -397,22 +403,22 @@ best_run, fitted_model = automl_run.get_output()
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   地点：
+   其中：
 
-   |输出|定义|
+   |Output|Definition|
    |----|--------|
    |RawFeatureName|提供的数据集中的输入功能/列名称。|
    |TypeDetected|检测到输入功能的数据类型。|
-   |删除|指示输入功能是否已删除或已被使用。|
+   |Dropped|指示输入功能是否已删除或已被使用。|
    |EngineeringFeatureCount|通过自动功能工程转换生成的功能的数量。|
    |转换|应用于输入功能以生成工程功能的转换的列表。|
    
 ### <a name="customize-feature-engineering"></a>自定义功能设计
-若要自定义功能设计，请指定 `"feauturization":FeaturizationConfig`。
+若要自定义功能设计，请指定 `"featurization": FeaturizationConfig`。
 
 支持的自定义项包括：
 
-|自定义|定义|
+|自定义|Definition|
 |--|--|
 |列用途更新|重写指定列的功能类型。|
 |转换器参数更新 |更新指定转换器的参数。 目前支持 Imputer （平均值、最频繁 & 中值）和 HashOneHotEncoder。|

@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: a4ddcf27869ea7484f98329d14d01bfad83af219
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: a3e1c936d46e0d9b0ad3b98dafeda7df0b4a23db
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709534"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058454"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>教程：为 Elium 配置自动用户预配
 
 本教程介绍如何配置 Elium 和 Azure Active Directory （Azure AD）以自动将用户或组预配到 Elium 和取消其预配。
 
 > [!NOTE]
-> 本教程介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的用途和工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。
+> 本教程介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 有关此服务的用途和工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前提供预览版。 有关预览版中的 Azure 功能的通用使用条款，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -53,7 +53,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
 ## <a name="set-up-elium-for-provisioning"></a>设置 Elium 以进行预配
 
-在将 Elium 配置为使用 Azure AD 进行自动用户预配之前，必须在 Elium 上为跨域标识管理（SCIM）预配启用系统。 执行以下步骤：
+在将 Elium 配置为使用 Azure AD 进行自动用户预配之前，必须在 Elium 上为跨域标识管理（SCIM）预配启用系统。 执行以下步骤:
 
 1. 登录到 Elium，并 > "**设置**" 中转到 **"我的配置文件"** 。
 
@@ -69,7 +69,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
 ## <a name="add-elium-from-the-gallery"></a>从库中添加 Elium
 
-若要将 Elium 配置为使用 Azure AD 进行自动用户预配，还必须将 Azure AD 应用程序库中的 Elium 添加到托管的软件即服务（SaaS）应用程序列表。 执行以下步骤：
+若要将 Elium 配置为使用 Azure AD 进行自动用户预配，还必须将 Azure AD 应用程序库中的 Elium 添加到托管的软件即服务（SaaS）应用程序列表。 执行以下步骤:
 
 1. 在[Azure 门户](https://portal.azure.com)的左侧导航面板中，选择 " **Azure Active Directory**"。
 
@@ -120,7 +120,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 1. 在 "**映射**" 部分，选择 "**将 Azure Active Directory 用户同步到 Elium**"。
 
@@ -130,7 +130,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
     ![Azure AD 和 Elium 之间的属性映射](media/Elium-provisioning-tutorial/userattribute.png)
 
-1. 若要配置范围筛选器，请按照[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
+1. 若要配置范围筛选器，请按照[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明进行操作。
 
 1. 若要为 Elium 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -144,15 +144,15 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户接收对所选�
 
     ![用于设置配置的 "保存" 按钮](common/provisioning-configuration-save.png)
 
-此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户和组的初始同步。 此初始同步过程所用的时间比稍后同步时间长。 有关预配所需时间的详细信息，请参阅[预配用户](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)需要多长时间？。
+此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户和组的初始同步。 此初始同步过程所用的时间比稍后同步时间长。 有关预配所需时间的详细信息，请参阅[预配用户](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)需要多长时间？。
 
-使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 "设置活动" 报表介绍了 Azure AD 预配服务对 Elium 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 "设置活动" 报表介绍了 Azure AD 预配服务对 Elium 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户设置](../manage-apps/configure-automatic-user-provisioning-portal.md)。
+* [管理企业应用的用户帐户设置](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

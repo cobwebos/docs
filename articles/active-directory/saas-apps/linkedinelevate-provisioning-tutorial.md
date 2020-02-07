@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea6f9923062d960f18203b081702e69a30dd3c9e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276846"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057407"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教程：为 LinkedIn Elevate 配置自动用户预配
 
@@ -28,9 +28,9 @@ ms.locfileid: "74276846"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
-* Azure Active Directory 租户
+* 一个 Azure Active Directory 租户
 * 一个 LinkedIn Elevate 租户
 * 一个有权访问 LinkedIn 帐户中心的 LinkedIn Elevate 管理员帐户
 
@@ -106,7 +106,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-13. 单击“ **保存**”。
+13. 单击 **“保存”** 。
 
 14. 在“属性映射”部分中，查看将从 Azure AD 同步到 LinkedIn Elevate 的用户和组属性。 请注意，选为**匹配**属性的属性用于匹配 LinkedIn Elevate 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
@@ -114,13 +114,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 15. 要为 LinkedIn Elevate 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-16. 单击“ **保存**”。
+16. 单击 **“保存”** 。
 
 这会开始对在“用户和组”部分中分配给 LinkedIn Elevate 的任何用户和/或组进行初始同步。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 LinkedIn Elevate 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

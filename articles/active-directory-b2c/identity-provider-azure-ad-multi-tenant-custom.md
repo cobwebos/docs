@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/06/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a222aa63387f7c57f8896b013f71f0c1bf40b2e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849612"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061584"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849612"
 
 本文展示了如何在 Azure AD B2C 中通过使用[自定义策略](custom-policy-overview.md)为使用 Azure Active Directory (Azure AD) 的多租户终结点的用户实现登录。 这允许多个 Azure AD 租户中的用户使用 Azure AD B2C 登录，无需为每个租户配置标识提供者。 但是，任何这些租户中的来宾成员都将无法登录。 为此，你需要[单独配置每个租户](identity-provider-azure-ad-single-tenant-custom.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -61,8 +61,21 @@ ms.locfileid: "76849612"
 1. 对于“选项”，请选择 `Manual`。
 1. 输入策略密钥的**名称**。 例如，`AADAppSecret` 。  创建前缀后，前缀 `B2C_1A_` 会自动添加到密钥的名称中，因此，在下一部分的 XML 中，其引用为*B2C_1A_AADAppSecret*。
 1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
-1. 在“密钥用法”处选择 `Signature`。
-1. 选择“创建”。
+1. 在“密钥用法”处选择 **。** `Signature`
+1. 选择 **“创建”** 。
+
+## <a name="configuring-optional-claims"></a>配置可选声明
+
+如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 从 "**管理**" 部分中，选择**应用注册**。
+1. 在列表中选择要为其配置可选声明的应用程序。
+1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
+1. 选择 "**添加可选声明**"。
+1. 选择要配置的令牌类型。
+1. 选择要添加的可选声明。
+1. 单击 **“添加”** 。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -148,7 +161,7 @@ ms.locfileid: "76849612"
 至此，已配置策略，以便 Azure AD B2C 知道如何与 Azure AD 目录进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+2. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 3. 选择“上传”。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
@@ -156,7 +169,7 @@ ms.locfileid: "76849612"
 此时，标识提供者已设置，但不会出现在任何注册/登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 Azure AD 标识提供者。
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+2. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 5. 重命名用户旅程的 ID。 例如，`SignUpSignInContoso` 。
@@ -176,7 +189,7 @@ ms.locfileid: "76849612"
 
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Azure AD 通信以接收令牌。 可通过链接 Azure AD 声明提供程序的技术配置文件来将按钮链接到操作。
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML

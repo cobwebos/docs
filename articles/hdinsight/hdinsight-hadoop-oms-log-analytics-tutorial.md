@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/06/2020
+ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240367"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063725"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
@@ -28,7 +28,7 @@ ms.locfileid: "71240367"
 
 * Log Analytics 工作区。 可以将此工作区视为唯一的 Azure Monitor 日志环境，其中包含自己的数据存储库、数据源和解决方案。 有关说明，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)。
 
-* **一个 Azure HDInsight 群集**。 目前，可以将 Azure Monitor 日志与以下 HDInsight 群集类型一起使用：
+* 一个 Azure HDInsight 群集。 目前，可以将 Azure Monitor 日志与以下 HDInsight 群集类型一起使用：
 
   * Hadoop
   * HBase
@@ -39,7 +39,7 @@ ms.locfileid: "71240367"
 
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* **Azure PowerShell Az module**。  请参阅[新 Azure PowerShell Az Module 简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+* Azure PowerShell Az module。  请参阅[新 Azure PowerShell Az Module 简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
 
 > [!NOTE]  
 > 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 Azure Monitor 日志在所有 Azure 区域中均不可用。
@@ -48,17 +48,17 @@ ms.locfileid: "71240367"
 
 在本部分中，将配置现有 HDInsight Hadoop 群集，以使用 Azure Log Analytics 工作区来监视作业、调试日志等等。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](./hdinsight-administer-use-portal-linux.md#showClusters)。 群集会在新的门户页中打开。
+1. 在[Azure 门户](https://portal.azure.com/)中，选择群集。  有关说明，请参阅[列出和显示群集](./hdinsight-administer-use-portal-linux.md#showClusters)。 群集在新的门户页中打开。
 
-1. 在左侧的“监视”下，选择“Operations Management Suite”。
+1. 从左侧的 "**监视**" 下，选择**Azure Monitor**。
 
-1. 在主视图的“OMS 监视”下，选择“启用”。
+1. 在主视图中，在 " **Azure Monitor 集成**" 下，选择 "**启用**"。
 
 1. 在“选择工作区”下拉列表中，选择现有的 Log Analytics 工作区。
 
 1. 选择“保存”。  需要几分钟来保存设置。
 
-    ![启用 HDInsight 群集监视](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Enable monitoring for HDInsight clusters")
+    ![为 HDInsight 群集启用监视](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "为 HDInsight 群集启用监视")
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure Monitor 日志
 
@@ -100,7 +100,7 @@ HDInsight 提供特定于群集的管理解决方案，可为 Azure Monitor 日�
 * HDInsight Spark 监视
 * HDInsight Storm 监视
 
-有关安装管理解决方案的说明，请参阅 [Azure 中的管理解决方案](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)。 若要进行试验，请安装 HDInsight Hadoop 监视解决方案。 完成后，将看到“摘要”下列出的“HDInsightHadoop”磁贴。 选择“HDInsightHadoop”磁贴。 HDInsightHadoop 解决方案如下所示：
+有关安装管理解决方案的说明，请参阅 [Azure 中的管理解决方案](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)。 若要进行试验，请安装 HDInsight Hadoop 监视解决方案。 完成后，将看到 "**摘要**" 下面列出了**HDInsightHadoop**磁贴。 选择“HDInsightHadoop”磁贴。 HDInsightHadoop 解决方案如下所示：
 
 ![HDInsight 监视解决方案视图](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 
@@ -117,7 +117,7 @@ HDInsight 通过导入以下类型的日志来支持 Azure Monitor 日志的群�
 * `log_gateway_audit_CL`-此表提供了可显示成功和失败的登录尝试的群集网关节点审核日志。
 * `log_auth_CL`-此表提供了成功和失败的登录尝试的 SSH 日志。
 * `log_ambari_audit_CL`-此表提供 Ambari 中的审核日志。
-* `log_ranger_audti_CL`-此表提供了 Apache Ranger on ESP 群集的审核日志。
+* `log_ranger_audti_CL`-此表提供来自 ESP 群集上 Apache Ranger 的审核日志。
 
 ## <a name="next-steps"></a>后续步骤
 

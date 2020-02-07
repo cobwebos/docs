@@ -3,12 +3,12 @@ title: Azure Migrate 中的 Hyper-v 迁移支持
 description: 了解支持 Azure Migrate 的 Hyper-v 迁移。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031640"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064455"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-v 迁移的支持矩阵
 
@@ -23,10 +23,10 @@ ms.locfileid: "77031640"
 
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
-| **部署**       | Hyper-v 主机可以是独立的，也可以部署到群集中。 |
+| **部署**       | Hyper-v 主机可以是独立的，也可以部署到群集中。 <br/>需要在 Hyper-v 主机上安装 Azure Migrate 复制软件（Hyper-v 复制提供程序）。|
 | **权限**           | 你需要在 Hyper-v 主机上具有管理员权限。 |
 | **主机操作系统** | Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。 |
-| **URL 访问** | Hyper-v 主机需要访问以下 URL：<br/><br/> -login.microsoftonline.com：使用 Active Directory 访问控制和标识管理。<br/><br/> -*. backup.windowsazure.com：复制数据传输和协调。 迁移服务 Url。<br/><br/> -*. blob.core.windows.net：将数据上传到存储帐户。<br/><br/> -dc.services.visualstudio.com：上传用于内部监视的应用日志。<br/><br/> - time.windows.com | 验证系统与全局时间之间的时间同步。
+| **URL 访问** | Hyper-v 主机上的复制提供程序软件将需要访问以下 URL：<br/><br/> -login.microsoftonline.com：使用 Active Directory 访问控制和标识管理。<br/><br/> -*. backup.windowsazure.com：复制数据传输和协调。 迁移服务 Url。<br/><br/> -*. blob.core.windows.net：将数据上传到存储帐户。<br/><br/> -dc.services.visualstudio.com：上传用于内部监视的应用日志。<br/><br/> -time.windows.com：验证系统与全局时间之间的时间同步。
 | **端口访问** |  HTTPS 端口443上的出站连接，用于发送 VM 复制数据。
 
 ## <a name="hyper-v-vms"></a>Hyper-V VM
@@ -34,8 +34,6 @@ ms.locfileid: "77031640"
 | **支持**                  | **详细信息**               
 | :----------------------------- | :------------------- |
 | **操作系统** | Azure 支持的所有[Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)操作系统。 |
-| **权限**           | 需要在要评估的每个 Hyper-v VM 上都有管理员权限。 |
-| **Integration Services**       | [Hyper-v Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)必须在你评估的 vm 上运行，才能捕获操作系统信息。 |
 | **Azure 所需的更改** | 某些 VM 可能需要经过更改才能在 Azure 中运行。 需要在迁移之前手动进行调整。 相关文章包含有关如何执行此操作的说明。 |
 | **Linux 启动**                 | 如果/boot 位于专用分区上，则它应驻留在 OS 磁盘上，而不会分布在多个磁盘上。<br/> 如果/boot 是根（/）分区的一部分，则 "/" 分区应在 OS 磁盘上，而不是在其他磁盘上。 |
 | **UEFI 启动**                  | Azure 中迁移的 VM 将自动转换为 BIOS 启动 VM。 VM 应仅运行 Windows Server 2012 和更高版本。 OS 磁盘最多可以有5个分区或更少，操作系统磁盘的大小应小于 300 GB。
@@ -55,15 +53,13 @@ ms.locfileid: "77031640"
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 
-复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。 当 Site Recovery 为复制运行必备项检查时，如果无法满足某些要求，则检查将失败。
+复制到 Azure 的所有本地 Vm 必须满足此表中汇总的 Azure VM 要求。
 
 组件 | **要求** | **详细信息**
 --- | --- | ---
-来宾操作系统 | 验证支持迁移的 VMware VM 操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
-来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
 操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
-数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
+数据磁盘计数 | 16或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
 已共享的 VHD | 不受支持。 | 如果不支持，检查会失败。

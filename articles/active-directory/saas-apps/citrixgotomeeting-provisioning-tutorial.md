@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e3145d0faaa3aecb90b582b3b6ef0063572ff43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60430757"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058257"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教程：为 GoToMeeting 配置自动用户预配
 
 本教程的目标是展示从 Azure AD 自动将用户帐户预配到 GoToMeeting 以及取消其预配而需要在 GoToMeeting 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 *   Azure Active Directory 租户。
 *   已启用单一登录的 GoToMeeting 订阅。
@@ -57,39 +57,39 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分  。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
-1. 如果已为 GoToMeeting 配置了单一登录，请使用搜索字段搜索 GoToMeeting 实例。 否则，请选择“添加”  ，然后在应用程序库中搜索“GoToMeeting”  。 从搜索结果中选择 GoToMeeting，并将其添加到应用程序列表。
+1. 如果已为 GoToMeeting 配置了单一登录，请使用搜索字段搜索 GoToMeeting 实例。 否则，请选择“添加”，然后在应用程序库中搜索“GoToMeeting”。 从搜索结果中选择 GoToMeeting，并将其添加到应用程序列表。
 
-1. 选择你的 GoToMeeting 实例，然后选择“预配”  选项卡。
+1. 选择你的 GoToMeeting 实例，然后选择“预配”选项卡。
 
-1. 将预配模式  设置为“自动”  。 
+1. 将预配模式设置为“自动”。 
 
     ![预配](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 
 1. 在“管理员凭据”部分中，执行以下步骤：
    
-    a. 在“GoToMeeting 管理员用户名”  文本框中，键入管理员的用户名。
+    a. 在“GoToMeeting 管理员用户名”文本框中，键入管理员的用户名。
 
-    b. 在“GoToMeeting 管理员密码”  文本框中，键入管理员密码。
+    b. 在“GoToMeeting 管理员密码”文本框中，键入管理员密码。
 
-1. 在 Azure 门户中，单击“测试连接”  ，确保 Azure AD 可以连接到 GoToMeeting 应用。 如果连接失败，请确保 GoToMeeting 帐户具有团队管理员权限，并重试“管理员凭据”  步骤。
+1. 在 Azure 门户中，单击“测试连接”，确保 Azure AD 可以连接到 GoToMeeting 应用。 如果连接失败，请确保 GoToMeeting 帐户具有团队管理员权限，并重试“管理员凭据”步骤。
 
-1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框  。
+1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址，并选中复选框。
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
-1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GoToMeeting”  。
+1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GoToMeeting”。
 
-1. 在“属性映射”部分中，查看从 Azure AD 同步到 GoToMeeting 的用户属性  。 选为“匹配”  属性的特性将用于匹配 GoToMeeting 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+1. 在“属性映射”部分中，查看从 Azure AD 同步到 GoToMeeting 的用户属性。 选为“匹配”属性的特性将用于匹配 GoToMeeting 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-1. 若要为 GoToMeeting 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”  更改为“启用” 
+1. 若要为 GoToMeeting 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-1. 单击“保存”  。
+1. 单击“保存”。
 
-此操作会对“用户和组”部分中分配到 GoToMeeting 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”  部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 GoToMeeting 应用执行的所有操作。
+此操作会对“用户和组”部分中分配到 GoToMeeting 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 GoToMeeting 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -2,21 +2,21 @@
 title: 将非 Microsoft 帐户添加到 Microsoft Authenticator 应用-Azure AD
 description: 将非 Microsoft 帐户（例如用于 Google 或 Facebook）添加到 Microsoft Authenticator 应用，以便在使用双重验证时验证你的身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704759"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063945"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>将非 Microsoft 帐户添加到 Microsoft Authenticator 应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "76704759"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ，选择“开始使用”，然后验证身份。
+1. 在计算机上，转到 https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome，选择“开始使用”，然后验证身份。
 
 2. 按照页面上的步骤操作，以为个人 Google 帐户启用双因素验证。
 
@@ -80,7 +80,7 @@ ms.locfileid: "76704759"
 
 ### <a name="turn-on-two-factor-verification"></a>启用双因素验证
 
-1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” > “安全和登录”。
+1. 在电脑上，打开 Facebook，选择右上角的下拉菜单，再依次转到“设置” **“安全和登录”**  > 。
 
     此时，“安全和登录”页显示。
 

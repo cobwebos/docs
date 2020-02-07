@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170073"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057799"
 ---
-# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Foodee
+# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>教程：为 Foodee 配置自动用户预配
 
 本文介绍如何在 Foodee 中配置 Azure Active Directory （Azure AD），并将 Azure AD 自动预配或取消预配用户或组到 Foodee。
 
 > [!NOTE]
-> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 若要了解此服务的作用及其工作原理，并获得常见问题的答案，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../manage-apps/user-provisioning.md)。
+> 本文介绍了在 Azure AD 用户预配服务的基础上构建的连接器。 若要了解此服务的作用及其工作原理，并获得常见问题的答案，请参阅[使用 Azure Active Directory 自动执行用户预配和取消预配到 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 >
 > 此连接器目前提供预览版。 有关预览版功能的 Azure 使用条款功能的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -79,7 +79,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     ![Azure Active Directory 命令](common/select-azuread.png)
 
-1. 选择“企业应用程序” > “所有应用程序”。
+1. 选择“企业应用程序” **“所有应用程序”**  > 。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -100,7 +100,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 通过执行以下操作，在 Azure AD 中配置 Foodee 的自动用户预配：
 
-1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序** > **所有应用程序**"。
+1. 在[Azure 门户](https://portal.azure.com)中，选择 "**企业应用程序**" > "**所有应用程序**"。
 
     ![“企业应用程序”窗格](common/enterprise-applications.png)
 
@@ -118,7 +118,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 1. 在 "**管理员凭据**" 下，执行以下操作：
 
-   a. 在 "**租户 URL** " 框中，输入之前检索到的**https： \//接待/scim/v2**值。
+   a. 在 "**租户 URL** " 框中，输入之前检索到的**https：\//concierge.food.ee/scim/v2**值。
 
    b. 在 "**机密令牌**" 框中，输入之前检索到的**API 令牌**值。
    
@@ -150,7 +150,7 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
     ![Foodee 用户映射](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. 若要提交更改，请选择 "**保存**"。
-1. 配置范围筛选器。 若要了解如何操作，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中的说明。
+1. 配置范围筛选器。 若要了解如何操作，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中的说明。
 
 1. 若要为 Foodee 启用 Azure AD 预配服务，请在 "**设置**" 部分中，将 "**预配状态**" 更改为 **"开**"。
 
@@ -164,15 +164,15 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
     ![设置配置保存按钮](common/provisioning-configuration-save.png)
 
-前面的操作将启动在 "**作用域**" 下拉列表中定义的用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关详细信息，请参阅[预配用户需要多长时间？](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+前面的操作将启动在 "**作用域**" 下拉列表中定义的用户或组的初始同步。 初始同步执行的时间比后续同步长。 有关详细信息，请参阅[预配用户需要多长时间？](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+你可以使用 "**当前状态**" 部分监视进度并跟踪指向预配活动报告的链接。 该报告描述了 Azure AD 预配服务对 Foodee 执行的所有操作。 有关详细信息，请参阅[检查用户预配的状态](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 若要读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

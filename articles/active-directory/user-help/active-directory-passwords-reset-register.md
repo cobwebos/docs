@@ -2,7 +2,7 @@
 title: 注册身份验证信息以重置你自己的密码-Azure AD
 description: 注册验证方法信息以 Azure AD 自助服务密码重置，以便您可以在没有管理员帮助的情况下重置自己的密码。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
@@ -11,13 +11,13 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: d27b0b7aadf5cffc2a362843ab5373ee0dc5b170
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: curtand
+ms.openlocfilehash: 397e1fd7695fd7e74e1f22959d0f9f24af7d1ea3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261834"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062636"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>注册验证方法信息以重置你自己的密码
 
@@ -58,8 +58,8 @@ ms.locfileid: "76261834"
 | 错误消息 |  可能的解决方案 |
 | --- | --- | --- |
 | 请与管理员联系。<br>我们检测到用户帐户密码不受 Microsoft 管理。 因此，我们无法自动重置密码。<br>请与 IT 人员联系以获得任何进一步的帮助。| 如果在键入你的用户 ID 后收到此错误消息，则表示你的组织在内部管理你的密码，并且不希望你从 "**无法访问帐户**" 链接重置密码。 若要在这种情况下重置密码，你必须与组织的技术支持或管理员联系以获取帮助。 |
-| 帐户未启用密码重置。<br>很抱歉，IT 人员尚未将帐户设置为可使用此服务。<br>如果愿意，我们可以联系你所在组织的管理员重置密码。 | 如果在键入你的用户 ID 后收到此错误消息，则表示你的组织尚未启用密码重置功能，或者你不允许使用该功能。 若要在这种情况下重置密码，你必须选择 "**联系管理员**" 链接。 单击该链接后，会向组织的技术支持人员或管理员发送一封电子邮件，让他们知道您要重置密码。 |
-| 我们无法验证帐户。<br>如果愿意，我们可以联系你所在组织的管理员重置密码。 | 如果在键入你的用户 ID 后收到此错误消息，则表示你的组织已启用密码重置，并且你可以使用它，但你尚未注册该服务。 在这种情况下，你必须与组织的技术支持或管理员联系以重置你的密码。 有关在返回到设备后要注册密码重置的信息，请参阅本文前面的过程。 |
+| 帐户未启用密码重置。<br>很抱歉，IT 人员尚未将帐户设置为可使用此服务。<br>如果你愿意，我们可以联系你所在组织的管理员为你重置密码。 | 如果在键入你的用户 ID 后收到此错误消息，则表示你的组织尚未启用密码重置功能，或者你不允许使用该功能。 若要在这种情况下重置密码，你必须选择 "**联系管理员**" 链接。 单击该链接后，会向组织的技术支持人员或管理员发送一封电子邮件，让他们知道您要重置密码。 |
+| 我们无法验证帐户。<br>如果你愿意，我们可以联系你所在组织的管理员为你重置密码。 | 如果在键入你的用户 ID 后收到此错误消息，则表示你的组织已启用密码重置，并且你可以使用它，但你尚未注册该服务。 在这种情况下，你必须与组织的技术支持或管理员联系以重置你的密码。 有关在返回到设备后要注册密码重置的信息，请参阅本文前面的过程。 |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 将你的工作设备加入你组织的网络-AD
 description: 了解如何将工作设备加入组织的网络。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 149c0298ee7883aa130756bfc4d0cbbb9e002065
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704640"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062262"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>将工作设备加入组织的网络
 将工作专用的 Windows 10 设备加入组织的网络，以便能够访问可能受限的资源。
@@ -79,7 +79,7 @@ ms.locfileid: "76704640"
 
     ![“设置工作或学校帐户”屏幕](./media/user-help-join-device-on-network/join-device-setup-join-aad.png)
 
-4. 在“开始登录”屏幕中，键入电子邮件地址（例如 alain@contoso.com）并选择“下一步”。
+4. 在“开始登录”屏幕中，键入电子邮件地址（例如 **）并选择“下一步”** alain@contoso.com。
 
     ![“开始登录”屏幕](./media/user-help-join-device-on-network/join-device-setup-get-signed-in.png)
 

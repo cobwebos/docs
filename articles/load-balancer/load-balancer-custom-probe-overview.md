@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023542"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056676"
 ---
 # <a name="load-balancer-health-probes"></a>负载均衡器运行状况探测
 
@@ -128,7 +128,7 @@ HTTP 和 HTTPS 探测构建在 TCP 探测的基础之上，发出包含指定路
 
 如果出现以下情况，HTTP/HTTPS 探测将会失败：
 * 探测终结点返回非 200 的 HTTP 响应代码（例如，403、404 或 500）。 这会立即标记运行状况探测停止。 
-* 在 31 秒超时期限内，探测终结点根本未做出响应。 在探测标记为未运行并且达到所有超时间隔的总和之前，多个探测请求可能无应答。
+* 探测终结点在最小探测间隔和30秒超时期限内没有响应。 在探测标记为未运行并且达到所有超时间隔的总和之前，多个探测请求可能无应答。
 * 探测终结点通过 TCP 重置关闭连接。
 
 下面演示了如何在资源管理器模板中表达此类探测配置：
@@ -227,7 +227,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 
 对于 UDP 负载平衡，应从后端终结点生成自定义运行状况探测信号，并使用目标为相应侦听器的 TCP、HTTP 或 HTTPS 运行状况探测来反映 UDP 应用程序的运行状况。
 
-对[标准负载均衡器](load-balancer-standard-overview.md)使用 [HA 端口负载均衡规则](load-balancer-ha-ports-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
+对[标准负载均衡器](load-balancer-ha-ports-overview.md)使用 [HA 端口负载均衡规则](load-balancer-standard-overview.md)时，将对所有端口进行负载均衡个运行状况探测响应必须反映整个实例的状态。
 
 不要通过接收运行状况探测的实例在 VNet 中的另一个实例上转换或代理某个运行状况探测，因为此配置可能导致方案中出现连锁故障。  考虑以下方案：在负载均衡器资源后端池中部署一组第三方设备，以便为设备提供可伸缩性和冗余；配置运行状况探测来探测由第三方设备代理或转换成设备后面的其他虚拟机的端口。  如果探测用于将请求转换或代理到设备后面的其他虚拟机的同一端口，来自设备后面单个虚拟机的任何探测响应会将设备本身标记为完全停止。 此配置可能会导致整个应用程序方案出现级联故障，这是设备后端终结点的结果。  触发器可能是一种间歇性探测故障，该故障导致负载均衡器将原始目标（设备实例）标记为停止，从而可能禁用整个应用程序方案。 请改为探测设备本身的运行状况。 选择用于确定运行状况信号的探测是网络虚拟设备 (NVA) 方案的重要考虑因素，必须咨询应用程序供应商，以了解哪种运行状况信号适合此类方案。
 
@@ -252,7 +252,7 @@ AzureLoadBalancer 服务标记在[网络安全组](../virtual-network/security-o
 ## <a name="limitations"></a>限制
 
 - HTTPS 探测不支持使用客户端证书的相互身份验证。
-- 当启用 TCP 时间戳时，assumehHealth 探测将会失败。
+- 当启用 TCP 时间戳时，应假定运行状况探测失败。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 通过 "安全信息（预览版）" 页创建应用密码-Azure AD
 description: 创建自动生成的密码（应用密码）以用于任何非浏览器应用，或者组织中不支持双重验证的任何应用。 此应用密码有别于普通密码，可以从“安全信息”页面进行设置。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
-ms.author: lizross
-ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704878"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064064"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>通过 "安全信息（预览版）" 页创建应用密码
 
@@ -82,6 +82,6 @@ ms.locfileid: "76704878"
 
 2. 从确认框中选择“是”，以删除“应用密码”。 删除应用密码后，它将从你的安全信息中删除，并从“安全信息”页面中消失。
 
-## <a name="for-more-information"></a>有关
+## <a name="for-more-information"></a>更多信息
 
 - 有关“安全信息”页面以及如何设置它的详细信息，请参阅[安全信息概述](user-help-security-info-overview.md)

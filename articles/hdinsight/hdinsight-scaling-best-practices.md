@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030910"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064625"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
@@ -216,6 +216,10 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 如果群集在向下缩放到三个以上的辅助角色节点时频繁停滞在安全模式下，而前面的步骤不起作用，则可以通过至少保留三个工作节点来避免群集进入安全模式。
 
 与仅向下扩展到一个工作节点相比，保留三个工作节点的成本更高，但它会阻止群集进入安全模式。
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>将 HDInsight 缩小到一个工作节点
+
+即使群集缩小到1个节点，工作节点0仍将保留。 工作节点0不能解除授权。
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>运行命令来退出安全模式。
 

@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解 Azure Migrate 中的 VMware 评估支持。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846172"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048762"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -76,7 +76,7 @@ ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate
 [依赖关系可视化](concepts-dependency-visualization.md)可帮助你可视化要评估和迁移的计算机之间的依赖关系。 对于基于代理的可视化效果，下表总结了要求和限制
 
 
-要求 | **详细信息**
+**要求** | **详细信息**
 --- | ---
 **部署** | 在部署依赖项可视化之前，应准备好一个 Azure Migrate 项目，并将 Azure Migrate： Server 评估工具添加到项目。 将 Azure Migrate 设备设置为发现本地计算机后，部署依赖关系可视化。<br/><br/> 依赖关系可视化在 Azure 政府版中不可用。
 **服务地图** | 基于代理的依赖项可视化使用[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服务映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解决方案。<br/><br/> 若要部署，请将新的或现有的 Log Analytics 工作区与 Azure Migrate 项目相关联。
@@ -86,17 +86,17 @@ ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate
 **Internet 连接** | 如果计算机未连接到 internet，则需要在其上安装 Log Analytics 网关。
 
 
-## <a name="agentless-dependency-visualization"></a>无代理依赖项可视化效果
+## <a name="agentless-dependency-visualization"></a>无代理依赖项可视化
 
-此选项目前处于预览状态。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。 下表总结了要求。
+此选项当前处于预览状态。 [了解详细信息](how-to-create-group-machine-dependencies-agentless.md)。 下表总结了要求。
 
-要求 | **详细信息**
+**要求** | **详细信息**
 --- | ---
 **部署** | 在部署依赖项可视化之前，应准备好一个 Azure Migrate 项目，并将 Azure Migrate： Server 评估工具添加到项目。 将 Azure Migrate 设备设置为发现本地计算机后，部署依赖关系可视化。
 **VM 支持** | 目前仅支持 VMware Vm。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2（64 位）
 **Linux VM** | Red Hat Enterprise Linux 7、6、5<br/> Ubuntu Linux 14.04、16.04<br/> Debian 7、8<br/> Oracle Linux 6、7<br/> CentOS 5、6、7。
-**Windows 帐户** |  可视化需要具有来宾访问权限的用户帐户。
+**Windows 帐户** |  可视化需要本地或域管理员帐户。
 **Linux 帐户** | 可视化需要具有 Root 权限的用户帐户。<br/><br/> 或者，用户帐户需要对/bin/netstat 和/bin/ls 文件的这些权限： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **VM 代理** | Vm 无需代理。
 **VMware 工具** | 必须在要分析的 Vm 上安装并运行 VMware 工具。

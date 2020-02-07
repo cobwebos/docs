@@ -1,20 +1,19 @@
 ---
 title: 监视： Apache Ambari & Azure Monitor 日志-Azure HDInsight
 description: 了解如何使用 Ambari 和 Azure Monitor 日志来监视群集的运行状况和可用性。
-keywords: 监视、ambari、监视、log analytics、警报、可用性和运行状况
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687824"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060162"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>如何通过 Apache Ambari 和 Azure Monitor 日志监视群集可用性
 
@@ -24,7 +23,7 @@ HDInsight 群集同时包含 Apache Ambari，它提供运行状况信息和预�
 
 ## <a name="ambari"></a>Ambari
 
-### <a name="dashboard"></a>仪表板
+### <a name="dashboard"></a>面板
 
 可以通过在 Azure 门户的 HDInsight 概述的 "**群集仪表板**" 部分中选择**Ambari 主页**链接来访问 Ambari 仪表板，如下所示。 或者，可以通过在浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`，其中 CLUSTERNAME 是群集的名称。
 
@@ -58,7 +57,7 @@ Ambari 还提供多个可配置的警报，这些警报可提供特定事件的�
 
 Ambari 提供了许多与可用性相关的预定义警报，其中包括：
 
-| 警报名称                        | 描述   |
+| 警报名称                        | 说明   |
 |---|---|
 | DataNode 运行状况摘要           | 如果有不正常的 DataNodes，则会触发此服务级别警报|
 | NameNode 高可用性运行状况 | 如果 Active NameNode 或待机 NameNode 未运行，则会触发此服务级别警报。|
@@ -96,9 +95,9 @@ Ambari 提供了许多与可用性相关的预定义警报，其中包括：
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>启用 HDInsight Azure Monitor 日志集成
 
-在门户中的 "HDInsight 群集资源" 页上，选择 " **Operations Management Suite**"。 然后选择 "**启用**"，然后从下拉列表中选择 Log Analytics 工作区。
+在门户中的 "HDInsight 群集资源" 页上，选择**Azure Monitor**。 然后，选择 "**启用**"，然后从下拉 Log Analytics 选择 "工作区"。
 
-![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>查询指标和日志表
 
@@ -108,7 +107,7 @@ Ambari 提供了许多与可用性相关的预定义警报，其中包括：
 
 日志列出了多个示例查询，例如：
 
-| 查询名称                      | 描述                                                               |
+| 查询名称                      | 说明                                                               |
 |---------------------------------|---------------------------------------------------------------------------|
 | 目前的计算机可用性    | 图表每小时发送日志的计算机数                     |
 | 列出检测信号                 | 列出最近一小时内的所有计算机检测信号                           |

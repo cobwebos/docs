@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780277"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064982"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>将数据从 IoT 中心引入 Azure 数据资源管理器（预览版）
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入 Azure 数据资源管理器 
 
 > [!div class="op_single_selector"]
 > * [门户](ingest-data-iot-hub.md)
@@ -24,7 +24,7 @@ ms.locfileid: "75780277"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供来自 IoT 中心的引入（数据加载），这是一个大型数据流式处理平台和 IoT 引入服务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 使用数据库名称*testdb*创建[一个测试群集和数据库](create-cluster-database-portal.md)。

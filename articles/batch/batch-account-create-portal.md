@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025890"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048628"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>使用 Azure 门户创建 Batch 帐户
 
@@ -41,19 +41,19 @@ ms.locfileid: "77025890"
 
     ![创建批处理帐户][account_portal]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
+    a. **订阅**：要在其中创建批处理帐户的订阅。 如果只有一个订阅，则默认选择此项。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **资源组**：为新批处理帐户选择现有的资源组，或选择创建一个新组。
+    b. **资源组**：为新批处理帐户选择现有的资源组，或选择创建一个新组。
 
     c. **帐户名称**：所选名称必须在创建帐户的 Azure 区域中唯一（参见下面的“位置”）。 帐户名只能包含小写字符或数字，且长度必须为 3-24 个字符。
 
-    d.单击“下一步”。 **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
+    d. **位置**：要在其中创建批处理帐户的 Azure 区域。 只有订阅和资源组支持的区域显示为选项。
 
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 **存储帐户**：与批处理帐户关联的可选 Azure 存储帐户。 为获得最佳性能，建议使用常规用途 v2 存储帐户。 有关 Batch 中的所有存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中选择现有存储帐户，或者创建一个新帐户。
+    e. **存储帐户**：与批处理帐户关联的可选 Azure 存储帐户。 为获得最佳性能，建议使用常规用途 v2 存储帐户。 有关 Batch 中的所有存储帐户选项，请参阅 [Batch 功能概述](batch-api-basics.md#azure-storage-account)。 在门户中选择现有存储帐户，或者创建一个新帐户。
 
       ![创建存储帐户][storage_account]
 
-    f. **池分配模式**：在 "**高级**设置" 选项卡中，你可以将池分配模式指定为**Batch 服务**或**用户订阅**。 在大多数情况下，接受默认**批处理服务**。
+    f. **池分配模式**：在 "**高级**设置" 选项卡中，你可以将池分配模式指定为**Batch 服务**或**用户订阅**。 对于大多数情况，请接受默认值“Batch 服务”。
 
       ![Batch 池分配模式][pool_allocation]
 
@@ -104,7 +104,7 @@ ms.locfileid: "77025890"
 
     ![添加批处理权限][add_permission]
 
-### <a name="create-a-key-vault"></a>创建 key vault
+### <a name="create-a-key-vault"></a>创建密钥保管库
 
 在“用户订阅”模式下，需要的 Azure 密钥保管库与要创建的批处理帐户属于同一资源组。 请确保资源组所在的区域是[提供](https://azure.microsoft.com/regions/services/)批处理的区域，也是订阅所支持的区域。
 
@@ -117,6 +117,14 @@ ms.locfileid: "77025890"
 如果希望手动授予对密钥保管库的访问权限，请访问密钥保管库的 "**访问策略**" 部分，并选择 "**添加访问策略**"，然后搜索**Microsoft Azure Batch**。 选择后，你将需要使用下拉菜单配置**机密权限**。 必须至少为 Azure Batch 提供**Get**、 **List**、 **Set**和**Delete**权限。
 
 ![Azure Batch 的机密权限](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> 确保在 "链接的**Key Vault** " 资源的 "**访问策略**" 下选择了 "**用于部署的 azure 虚拟机**" 和 " **azure 资源管理器进行模板部署**" 复选框。
+> 
+> ![必需的 Key Vault 访问策略](./media/batch-account-create-portal/key-vault-access-policy.png) 在 Azure 门户中创建 Batch 帐户时，这不是必需的。 默认情况下，该选项处于选中状态。
+
+
 
 ### <a name="configure-subscription-quotas"></a>配置订阅配额
 

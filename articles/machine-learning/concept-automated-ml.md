@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 012300c95fd1edd135b97f52ed3702ce3e7ef0bd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894885"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048976"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -23,18 +23,18 @@ ms.locfileid: "75894885"
 
 传统的机器学习模型开发需要大量资源，需要大量的域知识和时间来生成和比较数十个模型。 如果希望 Azure 机器学习使用指定的目标度量值定型和调整模型，请应用自动 ML。 然后，该服务会循环访问与功能选择配对的 ML 算法，其中，每次迭代都会生成一个包含定型分数的模型。 分数越高，模型被视为 "拟合" 数据就越好。
 
-借助自动化机器学习，将能够轻松高效地缩短获得生产就绪 ML 模型所需的时间。
+使用自动化机器学习，你将加快获取生产就绪 ML 模型所需的时间，使其更轻松、更高效。
 
-## <a name="when-to-use-automated-ml"></a>何时使用自动化 ML
+## <a name="when-to-use-automated-ml"></a>何时使用自动 ML
 
-自动化 ML 可使机器学习模型开发过程大众化，无论用户的数据科学专业知识水平如何，他们都能够针对任何问题确定端到端的机器学习管道。
+自动 ML 大众化机器学习模型开发过程，并使其用户无论其数据科学知识，都可以识别出任何问题的端到端机器学习管道。
 
 跨行业的数据科学家、分析人员和开发人员可以使用自动 ML 执行以下操作：
 
 + 无需大量编程知识即可实现机器学习解决方案
 + 节省时间和资源
 + 利用数据科学最佳做法
-+ 提供灵活的问题解决方案
++ 提供灵活的问题解决
 
 下表列出了常见的自动 ML 用例。 
 
@@ -44,7 +44,7 @@ ms.locfileid: "75894885"
 |[市场营销预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[需求预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
 |[新闻组数据分类](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[饮料生产预测](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
 
-## <a name="how-automated-ml-works"></a>自动化 ML 的工作原理
+## <a name="how-automated-ml-works"></a>自动 ML ML 的工作方式
 
 使用**Azure 机器学习**，可以使用以下步骤来设计和运行自动 ML 培训试验：
 
@@ -83,7 +83,7 @@ ms.locfileid: "75894885"
 
 在每个自动机器学习试验中，数据会自动缩放或规范化，以帮助算法正常执行。  在模型定型过程中，将对每个模型应用以下缩放或规范化技术之一。
 
-|&nbsp;标准化 &缩放&nbsp;| Description |
+|&nbsp;标准化 &缩放&nbsp;| 说明 |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 通过删除平均值并缩放到单位差异来实现功能标准化  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通过按列的最小值和最大值缩放每个特征来转换特征  |
@@ -95,11 +95,11 @@ ms.locfileid: "75894885"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
 
-还提供了其他高级预处理和特征化，例如 data guardrails、encoding 和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#preprocess)。 启用此设置，使用：
+还提供了其他高级预处理和特征化，例如 data guardrails、encoding 和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#featurization)。 启用此设置，使用：
 
-+ Azure 机器学习 studio：在**配置运行**部分中选择 "**查看特征化设置**" [，并执行以下步骤](how-to-create-portal-experiments.md)。
++ Azure 机器学习 studio：在 "**查看附加配置**" 部分中[使用以下步骤](how-to-create-portal-experiments.md#create-and-run-experiment)启用**自动特征化**。
 
-+ Python SDK：指定[`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": auto' / 'off' / FeaturizationConfig`。
++ Python SDK：指定[`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
 ## <a name="prevent-over-fitting"></a>阻止过度调整
 
@@ -193,7 +193,7 @@ ms.locfileid: "75894885"
 
 此外，自动 ML 运行自动生成以下图表，这有助于了解模型分类的正确性，并识别可能会受到不均衡数据影响的模型。
 
-图表| Description
+图表| 说明
 ---|---
 [混淆矩阵](how-to-understand-automated-ml.md#confusion-matrix)| 根据数据的实际标签计算正确分类的标签。 
 [精度-撤回](how-to-understand-automated-ml.md#precision-recall-chart)| 计算正确标签与数据的找到标签实例比率的比率 
@@ -207,15 +207,15 @@ ms.locfileid: "75894885"
 
 - 使用性能指标，可更好地处理不均衡数据。 例如，F1 分数是精度和召回的加权平均值。 精度度量值分类器的 exactness--低精度表示大量误报--,，而召回度量值为分类器的完整性-低召回表示很多假负。 
 
-## <a name="use-with-onnx-in-c-apps"></a>在 C# 应用中与 ONNX 一起使用
+## <a name="use-with-onnx-in-c-apps"></a>在应用中C#使用 with ONNX
 
 使用 Azure 机器学习，可以使用自动 ML 来构建 Python 模型，并将其转换为 ONNX 格式。 ONNX 运行时支持C#，因此你可以使用在C#应用程序中自动生成的模型，而无需进行无编码或 REST 终结点引入的任何网络延迟。 [在此 Jupyter 笔记本中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)试用此流的示例。
 
-## <a name="automated-ml-across-microsoft"></a>Microsoft 中的自动化 ML
+## <a name="automated-ml-across-microsoft"></a>跨 Microsoft 自动 ML
 
 自动 ML 还可用于其他 Microsoft 解决方案，如：
 
-|集成|Description|
+|集成|说明|
 |------------|-----------|
 |[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 与 ML.NET 自动 ML （预览版）配合使用的 .NET 应用中的自动模型选择和培训。|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|并行在 HDInsight 群集中的 Spark 上横向扩展自动 ML 培训作业。|

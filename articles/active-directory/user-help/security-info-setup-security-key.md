@@ -2,7 +2,7 @@
 title: 设置安全密钥作为验证方法-Azure AD
 description: 如何设置安全信息（预览版）页以验证你的身份是否使用快速标识联机（FIDO2）安全密钥作为验证方法。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: librown
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: lizross
-ms.openlocfilehash: 3e16602128a70077d0a7962522ad3898421c8997
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704912"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062330"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>将安全密钥设置为验证方法
 
@@ -29,12 +29,12 @@ ms.locfileid: "76704912"
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全验证与密码重置身份验证
 
-安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+安全信息方法既用于双因素安全验证，又用于密码重置。 但是，并非所有方法都可以用于这二者。
 
 | 方法 | 用于 |
 | ------ | -------- |
 | Authenticator 应用 | 双重验证和密码重置身份验证。 |
-| 短信 | 双重验证和密码重置身份验证。 |
+| 文本消息 | 双重验证和密码重置身份验证。 |
 | 电话呼叫 | 双重验证和密码重置身份验证。 |
 | 安全密钥 | 双重验证和密码重置身份验证。 |
 | 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
@@ -92,7 +92,7 @@ ms.locfileid: "76704912"
 
     你将返回到 "**设置新登录方法**" 框。
 
-7. 选择“**下一页**”。
+7. 选择 **“下一步”** 。
 
 8. 返回到 "**安全信息**" 页，为新的安全密钥键入稍后将识别的名称，然后选择 "**下一步**"。
 

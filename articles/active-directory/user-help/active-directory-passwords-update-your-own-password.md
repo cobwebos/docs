@@ -2,7 +2,7 @@
 title: 使用安全信息重置密码 - Azure Active Directory | Microsoft Docs
 description: 如果忘记密码，如何使用安全信息和双重验证来重置自己的密码。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: ad4831cfb5b09083b4ee76b6badf3936b2256138
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.author: curtand
+ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263483"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062653"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>使用安全信息重置工作或学校密码
 
@@ -155,7 +155,7 @@ ms.locfileid: "76263483"
 
 以下是一些常见的错误案例及其解决方法：
 
-|问题|Description|解决方案|
+|Problem|说明|解决方案|
 | --- | --- | --- |
 |尝试更改我的密码时收到错误。 |你的密码包含单词、短语或模式，这些使你的密码容易被猜出。| 请使用更强的密码重试。|
 |在输入我的用户 ID 后，我转到一个页面，该页面指示“请联系你的管理员”。|Microsoft 确定你的用户帐户密码由你的管理员在本地环境中管理。 因此，你无法使用“无法访问帐户”链接重置你的密码。 |请联系管理员获取进一步的帮助。|

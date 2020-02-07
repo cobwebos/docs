@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839290"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061303"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
 
@@ -40,14 +40,14 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 目前，只有部分 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和附加存储帐户：
 
-| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 说明 |
+| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注意 |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
+| HDInsight 版本4。0 | 是 | 是 |HDInsight 4.0 不支持 ADLS Gen1 |
 | HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
-| HDInsight 版本 3.4 | 否 | 是 | |
-| HDInsight 版本 3.3 | 否 | 否 | |
-| HDInsight 版本 3.2 | 否 | 是 | |
+| HDInsight 版本 3.4 | 是 | 是 | |
+| HDInsight 版本 3.3 | 是 | 是 | |
+| HDInsight 版本 3.2 | 是 | 是 | |
 | Storm | | |可使用 Data Lake Storage Gen1 从 Storm 拓扑写入数据。 对于可由 Storm 拓扑读取的参考数据，也可使用 Data Lake Storage。|
 
 > [!WARNING]  
@@ -210,7 +210,7 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>从 Abmari 标识存储路径
+## <a name="identify-storage-path-from-ambari"></a>从 Ambari 标识存储路径
 
 若要确定配置的默认存储的完整路径，请导航到 HDFS ** > 配置，然后**在 "筛选器" 输入框中输入 `fs.defaultFS`。
 

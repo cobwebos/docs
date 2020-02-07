@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e80373fa28f1ea24d6a2d5fc2c147bf81b2b279
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276513"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77058310"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教程：为 Cerner Central 配置自动用户预配
 
@@ -28,9 +28,9 @@ ms.locfileid: "74276513"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
-* Azure Active Directory 租户
+* 一个 Azure Active Directory 租户
 * Cerner Central 租户
 
 > [!NOTE]
@@ -38,7 +38,7 @@ ms.locfileid: "74276513"
 
 ## <a name="assigning-users-to-cerner-central"></a>将用户分配到 Cerner Central
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中的应用程序的用户和组。 
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已“分配”到 Azure AD 中应用程序的用户和组。 
 
 在配置和启用预配服务前，应确定 Azure AD 中的哪些用户和/或组表示需要访问 Cerner Central 的用户。 确定后，可以按照此处的说明将这些用户分配到 Cerner Central：
 
@@ -111,23 +111,23 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 1. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 1. 在“属性映射”部分中，查看要从 Azure AD 同步到 Cerner Central 的用户和组属性。 选为“匹配”属性的特性将用于匹配 Cerner Central 中的用户帐户和组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
 1. 若要为 Cerner Central 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 这将开始对在“用户和组”部分中分配给 Cerner Central 的任何用户和/或组进行初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Cerner Central 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [Cerner Central：使用 Azure AD 发布标识数据](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [教程：使用 Azure Active Directory 为 Cerner Central 配置单一登录](cernercentral-tutorial.md)
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤

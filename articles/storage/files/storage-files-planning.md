@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906272"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062857"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -24,15 +24,15 @@ ms.locfileid: "76906272"
 
 ![文件结构](./media/storage-files-introduction/files-concepts.png)
 
-* **存储帐户**：对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户容量的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+* **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-* 共享：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量。 高级和标准文件共享的总容量为 100 TiB。
+* **共享**：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量。 高级和标准文件共享的总容量为 100 TiB。
 
-* 目录：可选的目录层次结构。
+* **目录**：可选的目录层次结构。
 
-* 文件：共享中的文件。 文件大小最大可以为 1 TiB。
+* **文件**：共享中的文件。 文件大小最大可以为 1 TiB。
 
-* URL 格式：对于使用文件 REST 协议提出的 Azure 文件共享请求，可采用以下 URL 格式对文件进行寻址：
+* **URL 格式**：对于使用文件 REST 协议向 Azure 文件共享提出的请求，可采用以下 URL 格式对文件进行寻址：
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
@@ -42,7 +42,7 @@ ms.locfileid: "76906272"
 
 Azure 文件提供两个内置的简便数据访问方法，用户可单独使用或结合使用这些方法来访问数据：
 
-1. 直接云访问：可使用行业标准服务器消息块 (SMB) 协议或通过文件 REST API 在 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和/或 [Linux](storage-how-to-use-files-linux.md) 上装载任意 Azure 文件共享。 使用 SMB，可直接在 Azure 中的文件共享上读取和写入共享文件。 若要装载在 Azure VM 上，操作系统中的 SMB 客户端必须至少支持 SMB 2.1。 若要装载在本地（例如用户工作站），工作站支持的 SMB 客户端必须至少支持 SMB 3.0（已加密）。 除 SMB 以外，新应用程序或服务可通过文件 REST 直接访问文件共享，该文件 REST 为软件开发提供简单可缩放的应用程序编程接口。
+1. **直接云访问**：可使用行业标准服务器消息块 (SMB) 协议或通过文件 REST API，由 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和/或 [Linux](storage-how-to-use-files-linux.md) 装载任意 Azure 文件共享。 使用 SMB，可直接在 Azure 中的文件共享上读取和写入共享文件。 若要装载在 Azure VM 上，操作系统中的 SMB 客户端必须至少支持 SMB 2.1。 若要装载在本地（例如用户工作站），工作站支持的 SMB 客户端必须至少支持 SMB 3.0（已加密）。 除 SMB 以外，新应用程序或服务可通过文件 REST 直接访问文件共享，该文件 REST 为软件开发提供简单可缩放的应用程序编程接口。
 2. **Azure 文件同步**：可使用 Azure 文件同步将共享复制到本地或 Azure 中的 Windows Server。 用户可通过 SMB 或 NFS 共享等 Windows Server 访问文件共享。 这适用于要在远离 Azure 数据中心的位置访问和修改数据的方案，例如分支机构方案。 可在多个 Windows Server 终结点（例如多个分支机构）之间复制数据。 最后，可将数据分层到 Azure 文件，以便所有数据仍可通过 Server 进行访问，但 Server 没有完整的数据副本。 相反，数据由用户打开时会被无缝召回。
 
 下表说明了用户和应用程序如何访问 Azure 文件共享：
@@ -50,18 +50,18 @@ Azure 文件提供两个内置的简便数据访问方法，用户可单独使�
 | | 直接云访问 | Azure 文件同步 |
 |------------------------|------------|-----------------|
 | 需使用哪些协议？ | Azure 文件支持 SMB 2.1、SMB 3.0 和文件 REST API。 | 通过 Windows Server 上支持的任意协议（SMB、NFS、FTPS 等）访问 Azure 文件共享 |  
-| 在何处运行工作负荷？ | 在 Azure 中：Azure 文件支持直接访问数据。 | 网络速度较慢的本地：Windows、Linux 和macOS 客户端可将本地 Windows 文件共享作为 Azure 文件共享的快速缓存进行装载。 |
+| 在何处运行工作负荷？ | **在 Azure 中**：Azure 文件支持直接访问数据。 | **网络速度慢的本地文件共享**：Windows、Linux 和 macOS 客户端可以将本地 Windows 文件共享装载为 Azure 文件共享的快速缓存。 |
 | 需要何种级别的 ACL？ | 共享和文件级别。 | 共享、文件和用户级别。 |
 
 ## <a name="data-security"></a>数据安全
 
 Azure 文件提供可确保数据安全的几个内置选项：
 
-* 支持以下两种在线协议的加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
+* 支持以下两种在线协议加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
     * 支持 SMB 3.0 加密的客户端通过加密通道发送和接收数据。
     * 不支持通过加密的 SMB 3.0 的客户端可以在不加密的情况下通过 SMB 2.1 或 SMB 3.0 进行数据中心通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
     * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
-* 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：为所有存储帐户启用存储服务加密 (SSE)。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
+* 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：存储服务加密 (SSE) 对所有存储帐户启用。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
 * 加密数据在传输中的可选要求：选择此项时，Azure 文件将拒绝通过未加密的通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
 
     > [!Important]  
@@ -169,10 +169,10 @@ Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域�
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
-### <a name="geo-redundant-storage"></a>地域冗余存储
+### <a name="geo-redundant-storage"></a>异地冗余存储
 
 > [!Warning]  
-> 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
+> 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
 
 异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
 
@@ -182,7 +182,7 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 对于启用了 GRS 的存储帐户，将首先使用本地冗余存储（LRS）复制所有数据。 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
 
-主要和次要区域在一个存储缩放单元内管理跨单独的容错域和升级域管理副本。 存储缩放单元是数据中心内的基本复制单元。 此级别的复制由 LRS 提供；有关详细信息，请参阅[本地冗余存储 (LRS)：Azure 存储的低成本数据冗余](../common/storage-redundancy-lrs.md)。
+主要和次要区域在一个存储缩放单元内管理跨单独的容错域和升级域管理副本。 存储缩放单元是数据中心内的基本复制单元。 此级别的复制由 LRS 提供;有关详细信息，请参阅 [本地冗余存储（LRS）：适用于 Azure 存储的低成本数据冗余](../common/storage-redundancy-lrs.md)。
 
 确定要使用哪个复制选项时，请记住以下几点：
 
@@ -203,12 +203,11 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 100 TiB 容量限制的标准文件共享在所有 Azure 区域中全局可用-
 
-- LRS：除南非北部和南非西部之外的所有区域。
-   - 通过 PowerShell 和 Azure 命令行接口（CLI）支持全国云（政府、德国、中国）。 无门户支持。 
-   - 美国东部、东2、西欧：支持所有新帐户。 少量现有帐户尚未完成升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
+- LRS除南非北部和南非西部之外的所有区域。
+   - 美国东部和西欧：支持所有新帐户。 少量现有帐户尚未完成升级过程。 可以通过尝试[启用大型文件共享](storage-files-how-to-create-large-file-share.md)来检查现有存储帐户是否已完成升级过程。
 
-- ZRS：除日本东部、北欧、南非北部以外的所有区域。
-- GRS/GZRS：不支持。
+- ZRS除日本东部、北欧、南非北部以外的所有区域。
+- GRS/GZRS：不受支持。
 
 ### <a name="enable-and-create-larger-file-shares"></a>启用和创建更大的文件共享
 
@@ -218,16 +217,16 @@ GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Micros
 
 目前，Azure 文件共享的最大大小为 100 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
 
-可以使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这样，你就可以确保在本地可能会将较旧的大型文件共享引入 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
+可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、大型文件共享能够导入到 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
 
 ## <a name="data-transfer-method"></a>数据传输方法
 
 可通过多种简单的选项将数据从现有文件共享（例如本地文件共享）批量传输到 Azure 文件。 几种常用选项包括（非详尽列表）：
 
-* **[Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** ：作为 azure 文件共享（"云终结点"）和 Windows 目录命名空间（"服务器终结点"）之间首次同步的一部分，Azure 文件同步会将现有文件共享中的所有数据复制到 Azure 文件。
-* [Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
-* [Robocopy](https://technet.microsoft.com/library/cc733145.aspx)：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
-* [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)：AzCopy 是一个命令行实用工具，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。
+* **[Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** ：在 Azure 文件共享（“云终结点”）和 Windows 目录命名空间（“服务器终结点”）之间首次同步期间，Azure 文件同步将把现有文件共享中的所有数据复制到 Azure 文件。
+* **[Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** ：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

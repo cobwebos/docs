@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9519aaf7b57f5f4fbafa7248d3d524aea5d22c46
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922405"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048923"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖范围
 
-Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共传输、自行车共享和 scooter 共享路由的功能，并提供了模行程计划选项。 对于公共传输，该服务提供对附近电台、停止和线路的搜索，并提供诸如计划和实时公共传输到达、停止和路线指南列表以及详细和分步骤路线的信息，以及服务警报。 移动服务还将实时和静态可用性信息返回给车载共享车辆和共享自行车和 scooters。
+Azure Maps 提供了一个[移动服务](https://aka.ms/AzureMapsMobilityService)。 移动服务可提高具有公共传输、自行车共享和 scooter 共享功能的应用程序的开发时间。 它提供了一个选项，可用于通过多种模行程计划选项进行路由。 公共交通功能包括搜索附近的电台、搜索停止、搜索交通线路、检索计划信息、检索实时公共交通到达，以及列出停止和路线指南。 该服务会将实时和静态可用性信息返回给共享车辆，如汽车、自行车和 scooters。 API 将返回详细的、分模的分步路线和服务警报。
 
-对于所有城市和国家/地区，Azure Maps 没有相同级别的信息和准确性。 调用传输数据的能力取决于城市，并且数据可能不包括所有公开的公共交通选项和机构。
+Azure Maps 没有与所有城市和国家/地区相同的信息和准确性。 调用传输数据的能力取决于市县。 数据可能不包括所有公共传输选项和为该城市提供服务的机构。
 
 下表提供了 Azure Maps 移动服务的覆盖范围信息。
 
@@ -50,7 +50,7 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | \+ 美属维尔京群岛 | 美属维尔京群岛 * |
 
 
-## <a name="asia-pacific"></a>亚太
+## <a name="asia-pacific"></a>亚太区
 
 | 国家/地区 |  城市（地铁区域） |
 |--------|---------|
@@ -66,7 +66,7 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 菲律宾 | 马尼拉 |
 | 新加坡 | 新加坡 |
 | 韩国 | 釜山、首尔 |
-| 台湾 | Changhua 县，台北 | 
+| 中国台湾 | Changhua 县，台北 | 
 | 泰国 | 曼谷，Chiang Mai | 
 | 越南 | 河内，Ho Chi 胡志明市 City | 
 
@@ -89,11 +89,11 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 丹麦   | 丹麦 |
 | 爱沙尼亚   | 爱沙尼亚 |   
 | 芬兰   | Hämeenlinna、赫尔辛基、Joensuu、Jyväskylä、Kajaani、Kouvola-Kotka、Kuopio、Lappeenranta、Mikkeli、Oulu、Seinäjoki、Tampere、Turku、Vaasa|
-| 法国    | <p>Amberieu-Bugey，Amiens，Angers，Annecy，Annonay，Arras，Aubenas，Bayonne，Besançon，Blois，Bordeaux，Boulogne .sur Mer，Brest，Briançon，cannes，Châlons，香槟，Chartres，Clermont，Ferrand，Colmar，Dijon，Grenoble，Haguenau，Rochelle，，，，，，，，，，，，Mans，Lens，Lille，Lorient，Lyon，MAC，马赛 & Provence，Wired，Millau，Mont Marsan，Montpellier，Mulhouse，南希，Nantes，Nice，Nimes，诺曼底，Nyons，巴黎，Poitiers，Privas，Quimper，Rennes，Malo，Étienne，Nazaire，，，，，，，，圣-，Saintes、Sarrebourg、Sete、Strasbourg、Tarbes、Toulouse、教程</P> | 
+| France    | <p>Amberieu-Bugey，Amiens，Angers，Annecy，Annonay，Arras，Aubenas，Bayonne，Besançon，Blois，Bordeaux，Boulogne .sur Mer，Brest，Briançon，cannes，Châlons，香槟，Chartres，Clermont，Ferrand，Colmar，Dijon，Grenoble，Haguenau，Rochelle，，，，，，，，，，，，Mans，Lens，Lille，Lorient，Lyon，MAC，马赛 & Provence，Wired，Millau，Mont Marsan，Montpellier，Mulhouse，南希，Nantes，Nice，Nimes，诺曼底，Nyons，巴黎，Poitiers，Privas，Quimper，Rennes，Malo，Étienne，Nazaire，，，，，，，，圣-，Saintes、Sarrebourg、Sete、Strasbourg、Tarbes、Toulouse、教程</P> | 
 | \+ 法属圭亚那 | 卡宴 |
 | \+ 新喀里多尼亚 | Nouméa  |
-| 格鲁吉亚 | 第比利斯 | 
-| 德国 | <p>柏林、Brandenburg、Bremen & Niedersachsen、Cologne、Eisenach、法兰克福、汉堡、Karlsruhe、Mainz、München、Rhein、Neckar、Rhein-Ruhr、Stuttgart、Titisee、Neustadt、Ulm</P> | 
+| 佐治亚州 | 第比利斯 | 
+| Germany | <p>柏林、Brandenburg、Bremen & Niedersachsen、Cologne、Eisenach、法兰克福、汉堡、Karlsruhe、Mainz、München、Rhein、Neckar、Rhein-Ruhr、Stuttgart、Titisee、Neustadt、Ulm</P> | 
 | 希腊 | <p>雅典、Arta、Amorgos、Chania、Corfu、Chios Kos、Heraklion、Ioannina、Kavala、Kalamata、Komotini、Kos、Larissa、Meganisi、Milos、Mykonos、Patra、Rethimno、Rhodes、Santorini、Serres、Syros、Tinos、Thessaloniki、Veria、Volos、Xanthi </P> |
 | 匈牙利 | 布达佩斯、Nograd、Szeged、Székesfehérvár |
 | 冰岛 | Ísland-冰岛 * | 
@@ -130,11 +130,11 @@ Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)可提供公共
 | 埃及 | Cairo    |
 | 以色列| 以色列  |
 | 肯尼亚 | 内罗毕  | 
-| 马达加斯加岛 | Antananarivo |
+| 马达加斯加 | Antananarivo |
 | 摩洛哥 | Casablanca、Khouribga、Tétouan|
-| 卡塔尔| 多哈|
+| 卡塔尔| Doha|
 | 沙特阿拉伯 | Thuwal |
-| 南非 | 开普敦 |
+| 南非 | 佛得角 |
 | 突尼斯 | Kairouan |
 | 阿拉伯联合酋长国  | 阿尔阿布扎比，Dubai |
 

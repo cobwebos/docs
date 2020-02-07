@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 扩展中处�
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 905b71ab1e9a054eaeb6087489d14565933c8a46
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261630"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047246"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>处理 Durable Functions 中的错误 (Azure Functions)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76261630"
 [FunctionName("TransferFunds")]
 public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext context)
 {
-    var transferDetails = ctx.GetInput<TransferOperation>();
+    var transferDetails = context.GetInput<TransferOperation>();
 
     await context.CallActivityAsync("DebitAccount",
         new
@@ -116,7 +116,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
         firstRetryInterval: TimeSpan.FromSeconds(5),
         maxNumberOfAttempts: 3);
 
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
+    await context.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
 
     // ...
 }
@@ -156,7 +156,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="function-timeouts"></a>函数超时
 
-如果在业务流程协调程序函数中完成的时间太长，可能需要放弃该函数调用。 本示例中执行此操作的正确方法是将 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 与 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 结合使用，创建[持久计时器](durable-functions-timers.md)，如下例中所示：
+如果在业务流程协调程序函数中完成的时间太长，可能需要放弃该函数调用。 本示例中执行此操作的正确方法是将 [ (.NET) 或 ](durable-functions-timers.md) (JavaScript) 与 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 结合使用，创建`Task.WhenAny`持久计时器`context.df.Task.any`，如下例中所示：
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 

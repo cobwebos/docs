@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ed2a1b1f4eaf665e893026c8b3bbc77ddad5c98e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712307"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063571"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>如何为 Azure AD 库应用程序配置用户预配
 
@@ -40,9 +40,9 @@ ms.locfileid: "76712307"
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>将应用程序配置为自动化预配
 
-*自动化*意味着已为此应用程序开发了 Azure AD 预配连接器。 有关 Azure AD 预配服务及其工作原理的详细信息，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](user-provisioning.md)。
+*自动化*意味着已为此应用程序开发了 Azure AD 预配连接器。 有关 Azure AD 预配服务及其工作原理的详细信息，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../app-provisioning/user-provisioning.md)。
 
-有关如何将特定用户和组预配到应用程序的详细信息，请参阅[管理为企业应用预配的用户帐户](configure-automatic-user-provisioning-portal.md)。
+有关如何将特定用户和组预配到应用程序的详细信息，请参阅[管理为企业应用预配的用户帐户](../app-provisioning/configure-automatic-user-provisioning-portal.md)。
 
 启用和配置自动预配所需的实际步骤因应用程序而异。
 
@@ -54,5 +54,5 @@ ms.locfileid: "76712307"
 在设置预配时需考虑的重要一点是查看并配置属性映射和工作流，它们可以确定哪些用户（或组）属性将从 Azure AD 流向应用程序。 这包括设置用于唯一标识和匹配两个系统之间的用户/组的 "匹配属性"。 有关属性映射的详细信息，请参阅*后续步骤*中的链接。
 
 ## <a name="next-steps"></a>后续步骤
-[为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](customize-application-attributes.md)
+[为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)
 

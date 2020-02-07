@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044739"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063237"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
-本教程介绍了需要在 ServiceNow 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会自动将用户和组预配到使用 Azure AD 预配服务并将其预配到[ServiceNow](https://www.servicenow.com/)中。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 ServiceNow 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会自动将用户和组预配到使用 Azure AD 预配服务并将其预配到[ServiceNow](https://www.servicenow.com/)中。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -35,7 +35,7 @@ ms.locfileid: "76044739"
 > * 在 ServiceNow 中预配组和组成员身份
 > * [单一登录](servicenow-tutorial.md)到 ServiceNow （建议）
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -61,7 +61,7 @@ ms.locfileid: "76044739"
 
 ![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 ServiceNow
+## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 ServiceNow
 
 从 Azure AD 应用程序库添加 ServiceNow，开始管理到 ServiceNow 的预配。 如果以前为 SSO 设置了 ServiceNow，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
@@ -114,7 +114,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 ServiceNow 的组属性。 选为 "**匹配**" 属性的特性用于匹配 ServiceNow 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+12. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 13. 若要为 ServiceNow 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -146,9 +146,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

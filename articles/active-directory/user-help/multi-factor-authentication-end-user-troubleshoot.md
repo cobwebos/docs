@@ -2,7 +2,7 @@
 title: '& 的解决方案与帐户身份验证 Azure AD'
 description: 了解有关一些更常见的双因素验证问题和工作或学校帐户的潜在问题和解决方案。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 498c150706cd62168b7c45b1bcf36ad6c3a8b63b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3f44884f54278f7b4d07a265604f4a256d66e8a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705201"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062534"
 ---
 # <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>使用双重验证和工作或学校帐户的常见问题和解决方案
 

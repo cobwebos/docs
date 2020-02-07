@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a75630c6419816b048495ee87d24c81979af16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425824"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064761"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN 网关从经典部署模型迁移到 Resource Manager 部署模型
 VPN 网关现可从经典部署模型迁移到 Resource Manager 部署模型。 可以阅读有关 Azure 资源管理器[功能和优点](../azure-resource-manager/management/overview.md)的更多内容。 在本文中，我们将详细介绍如何从经典部署模型迁移到更新的基于 Resource Manager 的部署模型。 

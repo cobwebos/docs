@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867434"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049891"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -40,12 +40,12 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 * 在适用的 Windows Active Directory （AD）服务器上必须打开正确的端口。  
     所需的端口如下： 
 
-    |     服务           |     Port     |     协议     |
+    |     服务           |     端口     |     协议     |
     |-----------------------|--------------|------------------|
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    回显回复    |
+    |    ICMPv4             |    不可用       |    回显回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -73,6 +73,8 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     如果你的域控制器无法通过 Azure NetApp 文件委托子网访问，你可以提交 Azure 支持请求，将作用域从**全局**（默认）更改为**站点**。  Azure NetApp 文件只需与 Azure NetApp 文件委托子网地址空间所在的站点中的域控制器进行通信。
 
     请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
+    
+有关其他 AD 信息，请参阅 Azure NetApp 文件[SMB 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs)。 
 
 ## <a name="create-an-active-directory-connection"></a>创建 Active Directory 连接
 

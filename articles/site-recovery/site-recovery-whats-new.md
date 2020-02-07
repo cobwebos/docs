@@ -3,20 +3,18 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新。
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934936"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064523"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
 [Azure Site Recovery](site-recovery-overview.md) 服务会持续进行更新和改进。 本文介绍最新版本、新功能和新内容，让你始终了解最新动态。 此页会定期更新。
 
 你可以在[Azure 更新](https://azure.microsoft.com/updates/?product=site-recovery)通道中跟踪并订阅 Site Recovery 更新通知。
-
-
 
 ## <a name="supported-updates"></a>支持的更新
 
@@ -30,18 +28,18 @@ ms.locfileid: "76934936"
 [汇总40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [汇总39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 [了解](service-updates-how-to.md)有关更新安装和支持的详细信息。
 
 ## <a name="updates-january-2020"></a>更新（2020年1月）
 
 ### <a name="update-rollup-44"></a>更新汇总44
+
 [更新汇总 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery)提供了以下更新。
 
 **Update** | **详细信息**
 --- | ---
-**问题修复/改进** | Site Recovery 代理和提供程序的更新数（如汇总中所述）。
+**提供程序和代理** | 没有针对 Site Recovery 提供程序和代理的更新。
+**问题修复/改进** | 汇总中详细介绍了许多修补程序和改进功能。
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware 灾难恢复
 
@@ -199,7 +197,7 @@ Azure 虚拟机现在支持使用客户管理的密钥进行静态加密。 [了
 
 ## <a name="updates-july-2019"></a>更新（2019年7月）
 
-### <a name="update-rollup-38"></a>更新汇总 38
+### <a name="update-rollup-38"></a>更新汇总38
 
 [更新汇总 38](https://support.microsoft.com/help/4513507/)提供了以下更新。
 
@@ -242,7 +240,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 
 ## <a name="updates-may-2019"></a>更新（可能为2019）
 
-### <a name="update-rollup-36"></a>更新汇总 36
+### <a name="update-rollup-36"></a>更新汇总36
 
 [更新汇总 36](https://support.microsoft.com/help/4503156)提供了以下更新。
 

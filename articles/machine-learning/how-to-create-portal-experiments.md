@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720395"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046120"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>通过 Azure 机器学习 studio 创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -25,9 +25,9 @@ ms.locfileid: "76720395"
 
  如果你更喜欢更多基于代码的体验，还可以使用[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)[在 Python 中配置自动化机器学习试验](how-to-configure-auto-train.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 一个具有**企业版**类型的 Azure 机器学习工作区。 请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。  若要将现有工作区升级到 Enterprise edition，请参阅[升级到 enterprise edition](how-to-manage-workspace.md#upgrade)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "76720395"
 
 ## <a name="create-and-run-experiment"></a>创建并运行试验
 
-1. 选择 " **+ 创建试验**" 并填充窗体。
+1. 选择 " **+ 新建自动 ML 运行**" 并填充窗体。
 
 1. 从存储容器中选择数据集，或创建新的数据集。 可以从本地文件、web url、数据存储或 Azure 开放数据集创建数据集。 
 
@@ -72,7 +72,7 @@ ms.locfileid: "76720395"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“**下一页**”。
+        选择 **“下一步”** 。
 
     1. **架构**窗体根据 "**设置" 和 "预览**" 窗体中的选择进行智能填充。 此处配置每个列的数据类型，查看列名，并为试验选择**不包括**的列。 
             
@@ -80,7 +80,7 @@ ms.locfileid: "76720395"
 
     1. "**确认详细**信息" 窗体是以前在**基本信息**和**设置和预览**表单中填充的信息的摘要。 你还可以选择使用启用了分析的计算来分析你的数据集。 详细了解[数据分析](#profile)。
 
-        选择“**下一页**”。
+        选择 **“下一步”** 。
 1. 出现后，选择新创建的数据集。 您还可以查看数据集和示例统计信息的预览。 
 
 1. 在 "**配置运行**" 窗体上，输入唯一的实验名称。
@@ -102,7 +102,7 @@ ms.locfileid: "76720395"
     >[!NOTE]
     > 你的计算名称将指示你选择/创建的计算是否已*启用分析*。 （有关详细信息，请参阅[数据分析](#profile)部分）。
 
-    选择“**下一页**”。
+    选择 **“下一步”** 。
 
 1. 在 "**任务类型" 和 "设置**" 窗体上，选择任务类型：分类、回归或预测。 有关详细信息，请参阅[如何定义任务类型](how-to-define-task-type.md)。
 
@@ -113,16 +113,19 @@ ms.locfileid: "76720395"
 
         1. 选择预测范围：指示该模型能够预测到未来的时间单位（分钟/小时/天/周/月/年）。 需要进一步预测模型以预测未来，它的准确性越低。 [了解有关预测和预测范围的详细信息](how-to-auto-train-forecast.md)。
 
-1. 可有可无添加配置：可用于更好地控制训练作业的其他设置。 否则，将会根据试验选择和数据应用默认设置。 
+1. 可有可无查看添加配置设置：可用于更好地控制训练作业的其他设置。 否则，将会根据试验选择和数据应用默认设置。 
 
     其他配置|说明
     ------|------
     主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#explore-model-metrics)。
-    自动特征化| 选择此以启用或禁用自动机器学习完成的预处理。 预处理包括用于生成综合功能的自动数据清理、准备和转换。 [详细了解预处理](#preprocess)。
+    自动特征化| 选择此以启用或禁用自动机器学习完成的预处理。 预处理包括用于生成综合功能的自动数据清理、准备和转换。 不支持时序预测任务类型。 [详细了解预处理](#featurization)。 
+    说明最佳模型 | 选择启用或禁用以显示建议的最佳模型的 explainability
     阻塞算法| 选择要从定型作业中排除的算法。
     退出条件| 如果满足上述任一条件，则会停止训练作业。 <br> *训练作业时间（小时）* ：允许定型作业运行多长时间。 <br> *指标分数阈值*：所有管道的最小指标分数。 这可以确保如果你有想要达到的已定义目标指标，则不需要花费更多时间来完成培训作业。
     验证| 选择要在训练作业中使用的交叉验证选项之一。 [了解有关交叉验证的详细信息](how-to-configure-auto-train.md)。
-    并发| *最大并发迭代*数：定型作业中要测试的管道的最大数目（迭代）。 作业运行的次数不能超过指定的迭代次数。 <br> *每个迭代的最大核心*数：选择使用多核计算时要使用的多核限制。
+    并发| *最大并发迭代*数：定型作业中要测试的管道的最大数目（迭代）。 作业运行的次数不能超过指定的迭代次数。
+
+1. 可有可无查看特征化设置：如果你选择在 "**其他配置设置**" 窗体中启用**自动特征化**，则可以在此窗体中指定执行这些 featurizations 的列，并选择要用于缺少值 imputations 的统计值。
 
 <a name="profile"></a>
 
@@ -133,7 +136,7 @@ ms.locfileid: "76720395"
 >[!NOTE]
 > 对于具有不相关类型的功能，将显示空白条目。
 
-统计信息|说明
+Statistic|说明
 ------|------
 功能| 正在汇总的列的名称。
 配置文件| 基于推断类型的行内可视化。 例如，字符串、布尔值和日期具有值计数，而小数（数字）则具有近似的直方图。 这使你可以快速了解数据的分布情况。
@@ -145,23 +148,19 @@ Count| 列中缺失和缺失条目的总数。
 非缺失计数| 列中不存在的条目数。 空字符串和错误被视为值，因此它们不会影响 "不缺少计数"。
 分位数| 每个分位上的近似值用于提供数据的分布。
 平均值| 列的算术平均值或平均值。
-标准偏差| 度量此列数据的散射量或变体量。
+标准差| 度量此列数据的散射量或变体量。
 Variance| 此列的数据超出其平均值的度量值。 
 倾斜| 衡量此列的数据与正态分布的不同之处。
 峰度| 对此列的数据与正态分布进行比较的尾量的度量值。
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>高级特征化选项
 
-配置试验时，可以启用 "高级" 设置 `feauturization`。 
+自动机器学习提供了预处理和数据 guardrails，可帮助您识别和管理数据的潜在问题。 
 
-|特征化配置 | 说明 |
-| ------------- | ------------- |
-|"feauturization" = "FeaturizationConfig"| 指示应使用自定义的特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-train.md#customize-feature-engineering)。|
-|"feauturization" = "off"| 指示不应自动执行特征化步骤。|
-|"feauturization" = "auto"| 指示在预处理过程中，将自动执行以下数据 guardrails 和特征化步骤。|
+### <a name="preprocessing"></a>预处理
 
 |预处理&nbsp;步骤| 说明 |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Variance| 此列的数据超出其平均值的度量值。
 
 ### <a name="data-guardrails"></a>数据 guardrails
 
-自动机器学习提供了数据 guardrails，可帮助您识别数据的潜在问题（例如，缺少值、类不平衡），并帮助采取纠正措施来提高结果。 有很多可用的最佳实践，可以应用这些方案来实现可靠的结果。 
+将自动应用数据 guardrails，以帮助您识别数据的潜在问题（例如，缺少值、类不平衡），并帮助采取纠正措施来提高结果。 有很多可用的最佳实践，可以应用这些方案来实现可靠的结果。 
 
 下表描述了当前支持的数据 guardrails，以及用户在提交试验时可能会遇到的关联状态。
 
@@ -191,14 +190,11 @@ Guardrail|状态|&nbsp;触发器的条件&nbsp;
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 
-选择 "**启动**" 以运行试验。 试验过程可能需要长达10分钟的时间。 训练作业可能需要额外的2-3 分钟才能完成每个管道的运行。
+选择 "**完成**" 以运行试验。 试验过程可能需要长达10分钟的时间。 训练作业可能需要额外的2-3 分钟才能完成每个管道的运行。
 
 ### <a name="view-experiment-details"></a>查看试验详细信息
 
->[!NOTE]
-> 定期选择 "**刷新**" 以查看运行状态。 
-
-此时将打开 "**运行详细**信息" 屏幕到 "**详细信息**" 选项卡。此屏幕将显示包含**运行状态**的试验运行摘要。 
+此时将打开 "**运行详细**信息" 屏幕到 "**详细信息**" 选项卡。此屏幕将显示实验运行的摘要，包括运行号旁边的状态栏。 
 
 "**模型**" 选项卡包含按指标分数排序的模型列表。 默认情况下，根据所选指标为最高评分的模型位于列表的顶部。 当训练作业尝试更多模型时，它们将被添加到列表中。 使用此值可以快速比较迄今为止生成的模型的指标。
 
@@ -218,9 +214,9 @@ Guardrail|状态|&nbsp;触发器的条件&nbsp;
 
 1. 部署有几个选项。 
 
-    + 选项1：若要部署最佳模型（根据定义的指标条件），请从 "详细信息" 选项卡中选择 "部署最佳模型"。
+    + 选项1：若要部署最佳模型（根据定义的指标条件），请选择 "**详细信息**" 选项卡上的 "**部署最佳模型**" 按钮。
 
-    + 选项2：若要从此试验部署特定模型迭代，请向下钻取模型以打开其 "模型详细信息" 选项卡，然后选择 "部署模型"。
+    + 选项2：若要从此试验部署特定模型迭代，请向下钻取模型以打开其 "**模型详细信息**" 选项卡，然后选择 "**部署模型**"。
 
 1. 填充 "**部署模型**" 窗格。
 
@@ -229,7 +225,7 @@ Guardrail|状态|&nbsp;触发器的条件&nbsp;
     名称| 输入部署的唯一名称。
     说明| 输入说明以更好地识别此部署的用途。
     计算类型| 选择要部署的终结点类型： *Azure Kubernetes Service （AKS）* 或*azure 容器实例（ACI）* 。
-    名称| *仅适用于 AKS：* 选择要部署到的 AKS 群集的名称。
+    计算名称| *仅适用于 AKS：* 选择要部署到的 AKS 群集的名称。
     启用身份验证 | 选择此项可允许基于令牌或基于密钥的身份验证。
     使用自定义部署资产| 如果要上传自己的评分脚本和环境文件，请启用此功能。 [了解有关评分脚本的详细信息](how-to-deploy-and-where.md#script)。
 
@@ -244,7 +240,7 @@ Guardrail|状态|&nbsp;触发器的条件&nbsp;
 
 ## <a name="next-steps"></a>后续步骤
 
-* 尝试[通过 Azure 机器学习创建首次自动 ML 试验](tutorial-first-experiment-automated-ml.md)的端到端教程。 
+* 尝试[通过 Azure 机器学习 studio 创建第一个自动 ML 试验试验](tutorial-first-experiment-automated-ml.md)的端到端教程。 
 * [了解有关自动化机器学习](concept-automated-ml.md)和 Azure 机器学习的详细信息。
 * [了解自动化机器学习结果](how-to-understand-automated-ml.md)。
 * [了解如何使用 web 服务](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。

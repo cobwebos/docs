@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990702"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048693"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -78,7 +78,7 @@ ms.locfileid: "76990702"
 如果收到错误60030或60031，"Azure Key Vault 管理操作失败"，请执行以下操作：
 - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
 - 请确保该帐户具有对错误消息中指定的密钥保管库的访问权限，然后重试该操作。
-- 如果问题持续出现，请联系 Microsoft 支持。
+- 如果问题仍然存在，请与 Microsoft 支持联系。
 - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>错误60028：无法启动发现
@@ -89,7 +89,7 @@ ms.locfileid: "76990702"
 - 如果出现验证错误，请查看更正指南以修复错误，然后再次尝试 "**保存并启动发现**" 选项。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>错误60025： Azure AD 操作失败 
-错误60025： "Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行下列操作之一：
+错误60025： "Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行以下操作之一：
 
 - 确保启动发现的用户帐户与用于注册设备的用户帐户相同。
 - 为发现操作失败的用户帐户提供 Azure Active Directory 应用程序访问权限。
@@ -139,7 +139,7 @@ ms.locfileid: "76990702"
 
 Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色和功能的发现。 应用发现目前仅适用于 VMware。 [了解](how-to-discover-applications.md)有关设置应用程序发现的要求和步骤的详细信息。
 
-表中汇总了典型的应用发现错误。
+表中汇总了典型的应用发现错误。 
 
 **错误** | **原因** | **Action**
 --- | --- | --- | ---

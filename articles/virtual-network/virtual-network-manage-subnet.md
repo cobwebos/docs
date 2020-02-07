@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185380"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064336"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>添加、更改或删除虚拟网络子网
 
@@ -32,10 +32,10 @@ ms.locfileid: "74185380"
 
 - 如果还没有 Azure 帐户，请注册[免费试用帐户](https://azure.microsoft.com/free)。
 - 如果使用门户，请打开 https://portal.azure.com，并使用 Azure 帐户登录。
-- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+- 如果使用 PowerShell 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/powershell) 中的命令，或从计算机运行 PowerShell。 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 本教程需要 Azure PowerShell 模块 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 来创建与 Azure 的连接。
 - 如果使用 Azure 命令行接口 (CLI) 命令来完成本文中的任务，请运行 [Azure Cloud Shell](https://shell.azure.com/bash) 中的命令，或从计算机运行 CLI。 本教程需要 Azure CLI 2.0.31 或更高版本。 运行 `az --version` 查找已安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 Azure CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
-必须将登录或连接到 Azure 所用的帐户分配给[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或分配有“[权限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)”中所列适当操作的[自定义角色](#permissions)。
+登录或连接到 Azure 所用的帐户必须分配有[网络参与者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色或者分配有可执行[权限](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中列出的适当操作的[自定义角色](#permissions)。
 
 ## <a name="add-a-subnet"></a>添加子网
 
@@ -49,11 +49,12 @@ ms.locfileid: "74185380"
    - **网络安全组**：可将零个或一个现有的网络安全组关联到子网，以筛选子网的入站和出站网络流量。 网络安全组必须存在于与虚拟网络相同的订阅和位置。 若要详细了解[网络安全组](security-overview.md)，请参阅[如何创建网络安全组](tutorial-filter-network-traffic.md)。
    - **路由表**：可以选择将现有的路由表关联到子网，控制目标为其他网络的网络流量路由。 路由表必须存在于与虚拟网络相同的订阅和位置。 详细了解 [Azure 路由](virtual-networks-udr-overview.md)和[如何创建路由表](tutorial-create-route-table-portal.md)
    - **服务终结点：** 子网可以有零个或多个为其启用的服务终结点。 若要启用的服务的服务终结点，选择的服务或服务，想要启用服务终结点从**服务**列表。 系统会自动为终结点配置位置。 默认情况下，系统会为虚拟网络所在的区域配置服务终结点。 对于 Azure 存储，为了支持区域故障转移方案，系统会将终结点自动配置到 [Azure 配对区域](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)。
-   - **子网委派**：可以为子网启用零到多个委派。 子网委派为服务提供了显式权限，以便能够在部署服务时使用唯一标识符在子网中创建服务专属资源。 若要向服务委派，请从“服务”列表中选择要委派给的服务。
-
+   
        若要删除的服务终结点，请取消选择你想要删除的服务终结点的服务。 如需详细了解服务终结点以及可为其启用的服务，请参阅[虚拟网络服务终结点概述](virtual-network-service-endpoints-overview.md)。 一旦启用服务的服务终结点，还必须启用与服务创建的资源的子网的网络访问权限。 例如，如果启用的服务终结点*Microsoft.Storage*，还必须启用到你想要授予对网络访问权限的所有 Azure 存储帐户的网络访问权限。 有关如何启用到为启用服务终结点的子网的网络访问的详细信息，请参阅各个启用的服务终结点的服务的文档。
 
      要验证是否为某个子网启用了服务终结点，请查看[有效路由](diagnose-network-routing-problem.md)，获取该子网中的任何网络接口。 如果配置了终结点，将会看到服务地址前缀和 nextHopType 为“VirtualNetworkServiceEndpoint”的“默认”路由。 若要了解有关路由的详细信息，请参阅[路由概述](virtual-networks-udr-overview.md)。
+   - **子网委派**：可以为子网启用零到多个委派。 子网委派为服务提供了显式权限，以便能够在部署服务时使用唯一标识符在子网中创建服务专属资源。 若要向服务委派，请从“服务”列表中选择要委派给的服务。
+
 6. 单击“确定”，将子网添加到所选的虚拟网络。
 
 **命令**

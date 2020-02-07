@@ -2,7 +2,7 @@
 title: 下载并安装 Microsoft Authenticator 应用-Azure AD
 description: 下载并安装 Microsoft Authenticator 应用，以便在使用双重验证时验证您的身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ba6f4d8d7c8bae73d998ee09de3adba7601e25b8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704708"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063894"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下载并安装 Microsoft Authenticator 应用
 

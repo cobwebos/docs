@@ -2,7 +2,7 @@
 title: 将电子邮件地址设置为验证方法-Azure AD
 description: 如何设置安全信息（预览版）页，以使用电子邮件地址作为验证方法来验证身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: a4555ccd5e4f80b7230c1e0992219bd46153220d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 9488b96dda15b0ffb794f83826dc299a5f397b77
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704886"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063996"
 ---
 # <a name="set-up-an-email-address-as-your-verification-method"></a>将电子邮件地址设置为验证方法
 
@@ -29,12 +29,12 @@ ms.locfileid: "76704886"
 
 ## <a name="security-vs-password-reset-verification"></a>安全与密码重置验证
 
-安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+安全信息方法既用于双因素安全验证，又用于密码重置。 但是，并非所有方法都可以用于这二者。
 
 | 方法 | 用于 |
 | ------ | -------- |
 | Authenticator 应用 | 双重验证和密码重置身份验证。 |
-| 短信 | 双重验证和密码重置身份验证。 |
+| 文本消息 | 双重验证和密码重置身份验证。 |
 | 电话呼叫 | 双重验证和密码重置身份验证。 |
 | 安全密钥 | 双重验证和密码重置身份验证。 |
 | 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |
@@ -61,7 +61,7 @@ ms.locfileid: "76704886"
 
     ![“添加方法”框，已选中“电子邮件”](media/security-info/securityinfo-myprofile-addemail.png)
 
-4. 在“电子邮件”页，键入电子邮件地址（例如 alain@gmail.com）并选择“下一步”。
+4. 在“电子邮件”页，键入电子邮件地址（例如 **）并选择“下一步”** alain@gmail.com。
 
     ![添加电话号码并选择电话呼叫](media/security-info/securityinfo-myprofile-emailaddress.png)
 

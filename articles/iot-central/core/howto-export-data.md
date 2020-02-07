@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026791"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049708"
 ---
 # <a name="export-your-azure-iot-central-data"></a>导出 Azure IoT Central 数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "77026791"
 > [!Note]
 > 启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
 
@@ -58,14 +58,18 @@ ms.locfileid: "77026791"
 
 选择 "服务总线" 作为导出目标时，队列和主题不得启用会话或重复检测。 如果启用了其中任一选项，则某些消息不会到达队列或主题中。
 
-### <a name="create-storage-account"></a>创建存储器帐户
+### <a name="create-storage-account"></a>创建存储帐户
 
 如果没有要导出到的现有 Azure 存储帐户，请执行以下步骤：
 
-1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的[Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount)或[Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。
+1. [在 Azure 门户中创建新的存储帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 可以详细了解如何创建新的[Azure Blob 存储帐户](https://aka.ms/blobdocscreatestorageaccount)或[Azure Data Lake Storage v2 存储帐户](../../storage/blobs/data-lake-storage-quickstart-create-account.md)。 数据导出只能将数据写入支持块 blob 的存储帐户。 下面列出了已知的兼容类型的存储帐户： 
 
-    - 如果选择将数据导出到 Azure Data Lake Storage v2 存储帐户，则必须选择**BlobStorage**作为**帐户类型**。
-    - 你可以将数据导出到订阅中的存储帐户，该帐户不同于 IoT Central 应用程序的订阅。 在此示例中，将使用连接字符串进行连接。
+    |性能层|帐户类型|
+    |-|-|
+    |标准|常规用途 V2|
+    |标准|常规用途 V1|
+    |标准|Blob 存储|
+    |高级|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 

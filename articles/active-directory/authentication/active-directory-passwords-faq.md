@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848776"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061448"
 ---
 # <a name="password-management-frequently-asked-questions"></a>密码管理常见问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "74848776"
   >
 * **问：如果为某个组启用密码重置，然后决定为每个人启用它，我的用户是否需要重新注册？**
 
-  > **答：** 否。 已填充身份验证数据的用户不需要重新注册。
+  > **答：** 不。 已填充身份验证数据的用户不需要重新注册。
   >
   >
 * **问：我能否代表用户定义密码重置数据？**
@@ -61,7 +61,7 @@ ms.locfileid: "74848776"
   >
 * **问：是否用户只有在注册之后才能使用密码重置功能？**
 
-  > **答：** 否。 如果为他们定义了足够的身份验证信息，用户就不必进行注册。 只要已正确设置了目录中的相应字段中存储的数据的格式，密码重置将正常工作。
+  > **答：** 不。 如果为他们定义了足够的身份验证信息，用户就不必进行注册。 只要已正确设置了目录中的相应字段中存储的数据的格式，密码重置将正常工作。
   >
   >
 * **问：我是否可以代表用户同步或设置“身份验证电话”、“身份验证电子邮件”或“备用身份验证电话”字段？**
@@ -71,7 +71,7 @@ ms.locfileid: "74848776"
   >
 * **问：注册门户如何确定为用户显示哪些选项？**
 
-  > **答：** 密码重置注册门户只会显示为用户启用的选项。 可以在目录的 "**配置**" 选项卡的 "**用户密码重置策略**" 部分下找到这些选项。例如，如果没有启用安全问题，则用户无法注册该选项。
+  > **答：** 密码重置注册门户只会显示为用户启用的选项。 可以在目录的“配置”选项卡的“用户密码重置策略”部分找到这些选项。例如，如果没有启用安全问题，则用户无法针对该选项进行注册。
   >
   >
 * **问：用户何时才会被视为已注册用户？**
@@ -114,7 +114,7 @@ ms.locfileid: "74848776"
   >
 * **问：如何告知用户可在何处重置密码？**
 
-  > **答：** 请尝试 [SSPR 部署](howto-sspr-deployment.md#communications-plan)一文中的一些建议。
+  > **答：** 请尝试 [SSPR 部署](howto-sspr-deployment.md#plan-communications)一文中的一些建议。
   >
   >
 * **问：能否在移动设备上使用此页面？**
@@ -159,7 +159,7 @@ ms.locfileid: "74848776"
   >
 * **问：用户是否可以注册多个相同的安全问题？**
 
-  > **答：** 否。 一旦用户注册了某个特定问题，他们就不能再次注册该问题。
+  > **答：** 不。 一旦用户注册了某个特定问题，他们就不能再次注册该问题。
   >
   >
 * **问：是否可以针对注册和重置设置安全问题下限？**
@@ -174,7 +174,7 @@ ms.locfileid: "74848776"
   >
 * **问：如果用户注册的重置问题超出了所需的最大问题数量，如何在重置期间选择安全问题？**
 
-  > **答：** N 个安全问题是从用户已注册的所有问题中随机选择的，其中N 是针对“重置所需的问题数”选项设置的一个数。 例如，如果用户注册了五个安全问题，但重置密码只需三个，则会从五个问题中随机选择三个在重置时提出。 为了防止 问题攻击，如果用户提供的问题答案不正确，则选择过程会从头开始。
+  > **答：** *N* 个安全问题是从用户已注册的所有问题中随机选择的，其中 *N* 是针对“重置所需的问题数”选项设置的一个数。 例如，如果用户注册了五个安全问题，但重置密码只需三个，则会从五个问题中随机选择三个在重置时提出。 为了防止 问题攻击，如果用户提供的问题答案不正确，则选择过程会从头开始。
   >
   >
 * **问：电子邮件和短信的一次性密码的有效期有多长？**
@@ -182,7 +182,7 @@ ms.locfileid: "74848776"
   > **答：** 进行密码重置的会话生存期为 15 分钟。 从密码重置操作开始算，用户有 15 分钟的时间来重置其密码。 在密码重置会话期间，电子邮件和短信一次性密码有效期为5分钟。
   >
   >
-* 问：可否阻止用户重置其密码？
+* **问：可否阻止用户重置其密码？**
 
   > **答：** 可以。如果使用组来启用 SSPR，则可将用户从允许用户重置其密码的组中删除。 如果用户是全局管理员，他们将保留重置密码的权限，并且不能禁用此权限。
   >
@@ -200,7 +200,7 @@ ms.locfileid: "74848776"
   > **答：** 可以。如果使用 Active Directory 联合身份验证服务 (AD FS)，这在目前是可以的。 如果使用 AD FS，请按 [Sending password policy claims with AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396)（使用 AD FS 发送密码策略声明）一文中的说明操作。 如果使用密码哈希同步，这在目前是不可以的。 我们不从本地目录同步密码策略，因此无法将过期通知发布到云体验。 在任一情况下，都还可以[通过 PowerShell 向其密码即将过期的用户发送通知](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx)。
   >
   >
-* 问：可否阻止用户更改其密码？
+* **问：可否阻止用户更改其密码？**
 
   > **答：** 对于仅限云的用户来说，不能阻止密码更改。 对于本地用户，可将“用户不能更改密码”选项设置为选定。 选定的用户不能更改其密码。
   >
@@ -246,7 +246,7 @@ ms.locfileid: "74848776"
   > **答：** 请参阅[密码写回的工作原理](howto-sspr-writeback.md)一文，了解有关启用密码写回时发生的情况以及数据如何通过系统流回本地环境的说明。
   >
   >
-* **问：密码写回需要多长时间才能工作？同步延迟是否与密码哈希同步相同？**
+* **问：密码写回需要多长时间才工作？是否和使用密码哈希同步一样也存在同步延迟？**
 
   > **答：** 密码写回是即时的。 它是一种同步管道，其工作方式从根本上不同于密码哈希同步。 密码写回向用户提供关于其密码重置或更改操作成功的实时反馈。 成功的密码写回的平均时间少于 500 毫秒。
   >
@@ -271,7 +271,7 @@ ms.locfileid: "74848776"
   > **答：** 是。 密码写回会强制实施密码使用期限、历史记录、复杂性、筛选器以及可能对本地域密码实施的任何其他限制。
   >
   >
-* **问：密码写回是否安全？ 如何确保我不会受到黑客攻击？**
+* **问：密码写回是否安全？如何确保我不会受到黑客攻击？**
 
   > **答：** 是的。密码写回具有很高的安全性。 若要阅读有关密码写回服务实施的多个安全层的详细信息，请查看[密码写回概述](howto-sspr-writeback.md)一文中的[密码写回安全性](concept-sspr-writeback.md#password-writeback-security)部分。
   >
@@ -279,14 +279,14 @@ ms.locfileid: "74848776"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成 SSPR 成功推出？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？你应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
 * [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些东西是损坏的。如何实现对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)

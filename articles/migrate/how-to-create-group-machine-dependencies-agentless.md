@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288944"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049752"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
 
@@ -39,7 +39,7 @@ ms.locfileid: "76288944"
     - TCP 连接
     - 具有活动连接的进程的名称
     - 运行上述进程的已安装应用程序的名称
-    - 不。 每个轮询间隔检测到的连接
+    - No。 每个轮询间隔检测到的连接
 
 ## <a name="current-limitations"></a>当前限制
 
@@ -62,7 +62,7 @@ ms.locfileid: "76288944"
 
 设置具有所需权限的用户帐户，以便服务器评估可以访问 VM 以便发现。 您可以指定一个用户帐户。
 
-- **对 Windows vm 的必需权限**：用户帐户需要 "来宾" 访问权限。
+- **对 Windows vm 的必需权限**：用户帐户必须是本地管理员或域管理员。
 - **Linux vm 上的所需权限**：帐户需要 root 权限。 此外，用户帐户需要/bin/netstat 和/bin/ls 文件上的以下两个功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 
 ## <a name="add-the-user-account-to-the-appliance"></a>将用户帐户添加到设备
@@ -76,7 +76,7 @@ ms.locfileid: "76288944"
 3. 选择**操作系统**。
 4. 提供帐户的友好名称。
 5. 提供**用户名**和**密码**
-6. 单击“ **保存**”。
+6. 单击 **“保存”** 。
 7. 单击 "**保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)

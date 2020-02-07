@@ -15,19 +15,41 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985149"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064135"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
 本教程介绍了需要在 Workplace by Facebook 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到[Workplace By Facebook](https://work.workplace.com/)并取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
-> [!NOTE]
-> 已批准 Workplace by Facebook 中的 Azure AD 第三方应用程序。 客户在12月16日不会出现服务中断。 当你需要过渡到新应用程序时，将在 Workplace by Facebook 管理员控制台中看到一个说明截止时间为 28-2-2020 的截止时间。 我们正在努力保持过渡尽可能简单，并在此处提供有关转换的更新。
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>通过 Facebook 应用程序迁移到新的工作区
+如果已与 Workplace by Facebook 集成，请参阅以下有关即将发生的更改的部分。 如果你是第一次使用 Facebook 设置工作区，则可以跳过此部分并转到支持的功能。 
+
+#### <a name="whats-changing"></a>有什么变化？
+* Azure AD 端的更改：在工作区中预配用户的授权方法一直以来都是长期的机密令牌。 不久，你会看到授权方法已更改为 OAuth 授权授权。 
+* 工作区端的更改：之前的 Azure AD 应用是 Workplace by Facebook 中的自定义集成。 现在，你将在工作区集成目录中看到 Azure AD 为第三方应用程序。 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>将现有自定义集成迁移到新应用程序需要执行哪些操作？
+如果现有的工作区集成具有有效的令牌，则**无需执行任何操作**。 我们会将每周的客户自动迁移到新应用程序。 这完全在幕后完成。 如果你不能等待，并且想要手动移动到新应用程序，可以从库中添加新的工作区实例，并重新配置设置。 工作区的所有新实例将自动使用新的应用程序版本。 
+
+ 
+如果你的工作区集成处于隔离区，你将需要再次提供有效的令牌，以便我们迁移你的。 "管理员凭据" 部分将灰显，但你可以将以下项（ **？Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true**）到 URL 再次保存凭据。 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+ 
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>"管理员凭据" 部分在我的应用程序上灰显，无法保存。 为什么?
+我们锁定了现有工作区客户的 "管理员凭据" 部分。 当你的租户已迁移到新的工作区应用程序后，你将能够再次更新 "管理员凭据" 部分。 如果无法等待，可以使用上述 URL 来编辑应用程序。 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>何时会发生这些更改？
+工作区的所有新实例都已在使用新的集成/授权方法。 现有集成将于2月逐渐迁移。 该月结束后，将针对所有租户完成迁移。 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
@@ -36,7 +58,7 @@ ms.locfileid: "76985149"
 > * 使用户属性在 Azure AD 和 Workplace by Facebook 之间保持同步
 > * 针对 Workplace by Facebook 的[单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)（建议）
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -65,7 +87,7 @@ ms.locfileid: "76985149"
 
 *   将用户分配到 Workplace by Facebook 时，必须选择有效的用户角色。 “默认访问权限”角色不可用于预配。
 
-## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 Workplace by Facebook
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库中添加 Workplace by Facebook
 
 从 Azure AD 应用程序库中添加 Workplace by Facebook，开始管理到 Workplace by Facebook 的预配。 如果以前已通过 Facebook 为 SSO 设置了 Workplace，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。
 
@@ -109,9 +131,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Workplace BY Facebook API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |Attribute|类型|
+   |属性|类型|
    |---|---|
-   |userName|String|
+   |userName 下方|String|
    |displayName|String|
    |活动|Boolean|
    |title|Boolean|

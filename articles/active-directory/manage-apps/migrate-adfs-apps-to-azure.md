@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c77b03c6e1f2240059d884b051e00b01836d714
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: d3c3eb715c3e371d7e2985f233df584fb83a9870
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724013"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063449"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>将应用程序从 AD FS 移到 Azure AD 
 
@@ -26,7 +26,7 @@ ms.locfileid: "67724013"
 
 本文不提供分步指南， 而是提供帮助你实现迁移的概念性指南，让你了解如何将本地配置转换为 Azure AD。 本文还介绍常用方案。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 如果本地目录包含用户帐户，你可能已经有至少一到两个应用。 这些应用已配置为让用户在访问时通过这些标识登录。
 
@@ -37,9 +37,9 @@ ms.locfileid: "67724013"
 > [!NOTE]
 > 本指南详细介绍了 SaaS 应用配置和迁移，并大致介绍了自定义 LOB 应用。 将来计划推出自定义 LOB 应用的更详细指南。
 
-![已连接应用程序直接在本地](media/migrate-adfs-apps-to-azure/migrate1.png)
+![直接连接到本地的应用程序](media/migrate-adfs-apps-to-azure/migrate1.png)
 
-![通过 Azure AD 联合的应用程序](media/migrate-adfs-apps-to-azure/migrate2.png)
+![通过 Azure AD 进行联合的应用程序](media/migrate-adfs-apps-to-azure/migrate2.png)
 
 ## <a name="reasons-for-moving-apps-to-azure-ad"></a>将应用移到 Azure AD 的原因
 
@@ -47,7 +47,7 @@ ms.locfileid: "67724013"
 
 - **访问更安全**
 
-  - 配置每个应用程序进行细致访问控制，包括 Azure 多重身份验证，使用[Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)。 将这些策略应用到 SaaS 和自定义应用的方式可以与现在对 Office 365 应用策略的方式相同。
+  - 使用[Azure AD 条件性访问](../active-directory-conditional-access-azure-portal.md)，配置精细的按应用程序访问控制，包括 Azure 多重身份验证。 将这些策略应用到 SaaS 和自定义应用的方式可以与现在对 Office 365 应用策略的方式相同。
   - 若要根据用于确定危险流量的机器学习和试探法来检测威胁并保护登录，请使用 [Azure AD 标识保护](../active-directory-identityprotection.md)。
 
 - **Azure AD B2B 协作**
@@ -59,7 +59,7 @@ ms.locfileid: "67724013"
   作为 SaaS 应用的标识提供者，Azure AD 支持其他功能，例如：
   - 基于应用程序的令牌签名证书。
   - [可配置的证书过期日期](manage-certificates-for-federated-single-sign-on.md)。
-  - 根据 Azure AD 标识在重要的 Azure 市场应用中[自动预配](user-provisioning.md)用户帐户。
+  - 根据 Azure AD 标识在重要的 Azure 市场应用中[自动预配](../app-provisioning/user-provisioning.md)用户帐户。
 
 - **保留本地标识提供者的优点**
   
@@ -73,7 +73,7 @@ ms.locfileid: "67724013"
 
 可以根据所用登录类型将大多数应用划分到多个类别中的一个。 这些类别决定了应用在 Azure AD 中的呈现方式。
 
-简单地说，SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非市场应用程序进行集成。 类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可以以“应用注册”的方式与 Azure AD 集成。  阅读更多详细信息。
+简单地说，SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure AD 集成，也可以作为非市场应用程序进行集成。 类似地，使用 OAuth 2.0 或 OpenID Connect 的应用可以以“应用注册”的方式与 Azure AD 集成。 阅读更多详细信息。
 
 ### <a name="federated-saas-apps-vs-custom-lob-apps"></a>联合 SaaS 应用与自定义 LOB 应用
 
@@ -108,15 +108,15 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - AD FS 术语：信赖方或信赖方信任。
 - Azure AD 术语：企业应用程序或应用注册（具体取决于应用类型）。
 
-|应用配置元素|描述|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
+|应用配置元素|说明|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
 |-----|-----|-----|-----|-----|
-|应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|不可用|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。 </br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。） |不可用|
-|应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。  |在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。 </br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。） |映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值：`https://contoso.my.salesforce.com`|
-|应用注销 URL|一个 URL，当用户从应用注销时会向其发送“注销清理”请求，以便注销 IdP 已将用户登录到其中的所有其他应用。|在“AD FS 管理”中的“信赖方信任”下查找它。  右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。  |不适用。 Azure AD 不支持“单一注销”（即注销所有应用）。 它只将用户从 Azure AD 注销。|不可用|
-|应用标识符|从 IdP 的角度来看应用的标识符。 通常使用登录 URL 值作为标识符（但也不一定）。</br></br> 应用有时将其称为“实体 ID”。|在 AD FS 中，此项为信赖方 ID。 右键单击信赖方信任，选择“属性”，然后选择“标识符”选项卡。  |在 Azure AD 中，标识符是在 Azure 门户中配置的，具体说来是在应用程序的“单一登录属性”中作为标识符在“域和 URL”下配置的。   （可能需要选择“显示高级 URL 设置”复选框。） |对应于 SAML 令牌中的 **Audience** 元素。|
-|应用联合元数据|应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。|在应用的 AD FS 信赖方信任中查找应用的联合元数据 URL。 右键单击信任，选择“属性”，然后选择“监视”选项卡。  |不适用。 Azure AD 不支持直接使用应用程序联合元数据。|不可用|
-|用户标识符/**NameID**|一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。</br></br> 此属性通常为用户的 UPN 或电子邮件地址。|在 AD FS 中，可以看到此项充当信赖方的声明规则。 大多数情况下，声明规则在发出声明时，其类型以“nameidentifier”结尾。|在 Azure AD 中，用户标识符位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。  </br></br>默认使用 UPN。|在 SAML 令牌中作为 **NameID** 元素从 IdP 传送到应用。|
-|要发送到应用的其他声明|除了用户标识符/**NameID**，通常还会将其他声明信息从 IdP 发送到应用。 示例包括：名、姓、电子邮件地址、用户所在的组。|在 AD FS 中，可以看到此项充当信赖方的其他声明规则。|在 Azure AD 中，它位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。   选择“查看”，然后编辑所有其他的用户属性。 |不可用|
+|应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|不可用|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。）|不可用|
+|应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。）|映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值： `https://contoso.my.salesforce.com`|
+|应用注销 URL|一个 URL，当用户从应用注销时会向其发送“注销清理”请求，以便注销 IdP 已将用户登录到其中的所有其他应用。|在“AD FS 管理”中的“信赖方信任”下查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|N/A。 Azure AD 不支持“单一注销”（即注销所有应用）。 它只将用户从 Azure AD 注销。|不可用|
+|应用标识符|从 IdP 的角度来看应用的标识符。 通常使用登录 URL 值作为标识符（但也不一定）。</br></br> 应用有时将其称为“实体 ID”。|在 AD FS 中，此项为信赖方 ID。 右键单击信赖方信任，选择“属性”，然后选择“标识符”选项卡。|在 Azure AD 中，标识符是在 Azure 门户中配置的，具体说来是在应用程序的“单一登录属性”中作为标识符在“域和 URL”下配置的。 （可能需要选择“显示高级 URL 设置”复选框。）|对应于 SAML 令牌中的 **Audience** 元素。|
+|应用联合元数据|应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。|在应用的 AD FS 信赖方信任中查找应用的联合元数据 URL。 右键单击信任，选择“属性”，然后选择“监视”选项卡。|N/A。 Azure AD 不支持直接使用应用程序联合元数据。|不可用|
+|用户标识符/**NameID**|一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。</br></br> 此属性通常为用户的 UPN 或电子邮件地址。|在 AD FS 中，可以看到此项充当信赖方的声明规则。 大多数情况下，声明规则在发出声明时，其类型以“nameidentifier”结尾。|在 Azure AD 中，用户标识符位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。</br></br>默认使用 UPN。|在 SAML 令牌中作为 **NameID** 元素从 IdP 传送到应用。|
+|要发送到应用的其他声明|除了用户标识符/**NameID**，通常还会将其他声明信息从 IdP 发送到应用。 示例包括：名、姓、电子邮件地址、用户所在的组。|在 AD FS 中，可以看到此项充当信赖方的其他声明规则。|在 Azure AD 中，它位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。 选择“查看”，然后编辑所有其他的用户属性。|不可用|
 
 ### <a name="representing-azure-ad-as-an-identity-provider-in-an-saas-app"></a>在 SaaS 应用中以标识提供者身份呈现 Azure AD
 在迁移过程中，需将应用配置为指向 Azure AD（而不是本地标识提供者）。 此部分主要介绍使用 SAML 协议的 SaaS 应用，而不是自定义 LOB 应用。 但是，这些概念会扩展到自定义 LOB 应用。
@@ -128,17 +128,17 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - 标识提供者注销 URL：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 
 - 联合元数据位置：https&#58;//login.windows.net/{tenant-id}/federationmetadata/2007-06/federationmetadata.xml?appid={application-id} 
 
-将 {tenant-id} 替换为你的租户 ID，该 ID 在 Azure 门户中的“Azure Active Directory”   >   “属性”下显示为“目录 ID”。  将 {application-id} 替换为你的应用程序 ID，该 ID 在应用程序的属性下显示为“应用程序 ID”。 
+将 {tenant-id} 替换为你的租户 ID，该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”。 将 {application-id} 替换为你的应用程序 ID，该 ID 在应用程序的属性下显示为“应用程序 ID”。
 
 下表介绍了在应用中配置 SSO 设置时的关键 IdP 配置元素，以及其在 AD FS 和 Azure AD 中的值或位置。 表的参考框架为 SaaS 应用，该应用需要知道将身份验证请求发送到何处，以及如何验证收到的令牌。
 
-|配置元素|描述|AD FS|Azure AD|
+|配置元素|说明|AD FS|Azure AD|
 |---|---|---|---|
-|IdP </br>登录 </br>URL|从应用的角度来看，IdP 的登录 URL（将用户重定向到其中以便进行登录的位置）。|AD FS 登录 URL 是 AD FS 联合身份验证服务名称后跟“/adfs/ls/”。 例如：https&#58;//fs.contoso.com/adfs/ls/|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 将替换为你的租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”。   </br></br>对于使用 SAML-P 协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>对于使用 WS 联合身份验证协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
-|IdP </br>注销 </br>URL|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2   </br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
-|令牌 </br>签名 </br>证书|一种证书，IdP 使用其私钥来签署颁发的令牌。 它可以验证令牌是否来自已配置应用所信任的 IdP。|AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。 |在 Azure AD 中，令牌签名证书位于 Azure 门户中，具体说来是在应用程序的“单一登录”属性中的“SAML 签名证书”标头下，   可以在其中下载要上传到应用的证书。</br></br> 如果应用程序有多个证书，则可在联合元数据 XML 文件中找到所有证书。|
-|标识符/</br>“颁发者”|从应用的角度来看，IdP 的标识符（有时称为“颁发者 ID”）。</br></br>在 SAML 令牌中，此值显示为 **Issuer** 元素。|AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符，位于“服务” > “编辑联合身份验证服务属性”下。   例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” > “属性”下显示为“目录 ID”：https&#58;//sts.windows.net/{tenant-id}/   |
-|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务”   > “终结点”   > “元数据”   > “类型:  联合元数据”下。 例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
+|IdP </br>登录 </br>URL|从应用的角度来看，IdP 的登录 URL（将用户重定向到其中以便进行登录的位置）。|AD FS 登录 URL 是 AD FS 联合身份验证服务名称后跟“/adfs/ls/”。 例如：https&#58;//fs.contoso.com/adfs/ls/|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 将替换为你的租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”。**  > </br></br>对于使用 SAML-P 协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>对于使用 WS 联合身份验证协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
+|IdP </br>注销 </br>URL|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2** > </br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
+|令牌 </br>签名 </br>证书 (certificate)|一种证书，IdP 使用其私钥来签署颁发的令牌。 它可以验证令牌是否来自已配置应用所信任的 IdP。|AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。|在 Azure AD 中，令牌签名证书位于 Azure 门户中，具体说来是在应用程序的“单一登录”属性中的“SAML 签名证书”标头下， 可以在其中下载要上传到应用的证书。</br></br> 如果应用程序有多个证书，则可在联合元数据 XML 文件中找到所有证书。|
+|标识符/</br>“颁发者”|从应用的角度来看，IdP 的标识符（有时称为“颁发者 ID”）。</br></br>在 SAML 令牌中，此值显示为 **Issuer** 元素。|AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符，位于“服务” **“编辑联合身份验证服务属性”下。**  >  例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”：https&#58;//sts.windows.net/{tenant-id}/**  > |
+|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” **“终结点”** “元数据” > “类型: 联合元数据”下。 >  >  例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
 
 ## <a name="moving-saas-apps"></a>移动 SaaS 应用
 
@@ -149,7 +149,7 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 - 某些应用可以轻松地进行迁移。 具有较复杂要求（例如自定义声明）的应用可能需要在 Azure AD 和/或 Azure AD Connect 中进行其他配置。
 - 在最常用方案中，应用只需要 **NameID** 声明和其他常用的用户标识符声明。 若要确定是否需要其他声明，请检查通过 AD FS 或第三方标识提供者颁发的具体声明。
 - 确定需要其他声明以后，请确保这些声明在 Azure AD 中可用。 请检查 Azure AD Connect 同步配置，确保将所需属性（例如 **samAccountName**）同步到 Azure AD。
-- 属性在 Azure AD 中可用以后，即可在 Azure AD 中添加声明颁发规则，以便将这些属性作为声明包括在颁发的令牌中。 请在 Azure AD 的应用的“单一登录”属性中添加这些规则。 
+- 属性在 Azure AD 中可用以后，即可在 Azure AD 中添加声明颁发规则，以便将这些属性作为声明包括在颁发的令牌中。 请在 Azure AD 的应用的“单一登录”属性中添加这些规则。
 
 ### <a name="assess-what-can-be-moved"></a>评估可移动的内容
 
@@ -175,7 +175,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
 除了自定义声明和 **NameID** 元素，在迁移过程中需要在 Azure AD 中执行其他配置步骤的配置包括：
 
-- AD FS 中的自定义授权或多重身份验证规则。 使用配置它们[Azure AD 条件访问](../active-directory-conditional-access-azure-portal.md)功能。
+- AD FS 中的自定义授权或多重身份验证规则。 您可以使用 " [Azure AD 条件性访问](../active-directory-conditional-access-azure-portal.md)" 功能对其进行配置。
 - 带有多个 SAML 终结点的应用。 可以使用 PowerShell 在 Azure AD 中配置它们。 （此功能在门户中不可用。）
 - 需要 SAML 1.1 版令牌的 WS 联合身份验证应用（例如 SharePoint 应用）。 必须使用 PowerShell 手动配置它们。
 
@@ -206,27 +206,27 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
 #### <a name="configure-single-sign-on-sso-settings-for-the-saas-app"></a>配置 SaaS 应用的单一登录 (SSO) 设置
 
-在 Azure AD 中，在应用的“单一登录”属性中的“用户属性”下配置应用所要求的 SAML 登录。  
+在 Azure AD 中，在应用的“单一登录”属性中的“用户属性”下配置应用所要求的 SAML 登录。
 
 ![包含“用户属性”部分的单一登录属性](media/migrate-adfs-apps-to-azure/migrate3.png)
 
-选择“查看和编辑所有其他用户属性”即可查看要在安全令牌中作为声明发送的属性。 
+选择“查看和编辑所有其他用户属性”即可查看要在安全令牌中作为声明发送的属性。
 
-![显示可以以声明方式发送的属性列表](media/migrate-adfs-apps-to-azure/migrate4.png)
+![显示可作为声明发送的属性的列表](media/migrate-adfs-apps-to-azure/migrate4.png)
 
-选择特定的属性行即可进行编辑，也可选择“添加属性”来添加新属性。 
+选择特定的属性行即可进行编辑，也可选择“添加属性”来添加新属性。
 
-![显示"编辑属性"窗格](media/migrate-adfs-apps-to-azure/migrate5.png)
+![显示 "编辑属性" 窗格](media/migrate-adfs-apps-to-azure/migrate5.png)
 
 #### <a name="assign-users-to-the-app"></a>将用户分配到应用
 
 需要向 Azure AD 中的用户授予访问权限，他们才能登录到 SaaS 应用。
 
-若要在 Azure AD 门户中分配用户，请浏览到 SaaS 应用的页面，然后选择侧栏中的“用户和组”。  若要添加用户或组，请选择窗格顶部的“添加用户”。 
+若要在 Azure AD 门户中分配用户，请浏览到 SaaS 应用的页面，然后选择侧栏中的“用户和组”。 若要添加用户或组，请选择窗格顶部的“添加用户”。
 
 ![“用户和组”中的“添加用户”按钮](media/migrate-adfs-apps-to-azure/migrate6.png)
 
-![显示"添加分配"窗格](media/migrate-adfs-apps-to-azure/migrate7.png)
+![显示 "添加分配" 窗格](media/migrate-adfs-apps-to-azure/migrate7.png)
 
 用户应该在登录时在[访问面板](../user-help/active-directory-saas-access-panel-introduction.md)中看到 SaaS 应用，这样才能验证访问权限。 可以在 https://myapps.microsoft.com 找到访问面板。 在此示例中，已成功向用户分配 Salesforce 和 ServiceNow 的访问权限。
 
@@ -240,7 +240,7 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
    答：决定使用支持多个 IdP 的 SaaS 应用更改登录体验之前，可以先输入有关新 IdP（在我们的示例中为 Azure AD）的所有信息， 然后再在完成配置之后切换应用的身份验证配置，使之指向 Azure AD。
 
-   **问：：为什么 SaaS 应用能否支持多个 IdP 很重要？**
+   **问：为什么 SaaS 应用能否支持多个 IdP 很重要？**
 
    答：如果不支持多个 IdP，则管理员必须留出一个短的时段（表现为服务性或维护性中断），在此时段内将 Azure AD 配置为应用的新 IdP。 在此中断期间，系统会向用户发出无法登录帐户的通知。
 
@@ -248,19 +248,19 @@ SAML 2.0 应用程序可以通过市场中的 Azure AD 应用程序库与 Azure 
 
    如果应用支持多个 IdP，而你选择使用多个 IdP 来同时处理登录时的身份验证，则用户可以在其登录页中选择用于身份验证的 IdP。
 
-#### <a name="example-support-for-multiple-identity-providers"></a>例如：支持多个标识提供程序
+#### <a name="example-support-for-multiple-identity-providers"></a>示例：支持多个标识提供者
 
-例如，在 Salesforce 中，IDP 配置位于“设置” > “公司设置” > “我的域” > “身份验证配置”下。    
+例如，在 Salesforce 中，IDP 配置位于“设置” **“公司设置”** “我的域” > “身份验证配置”下。 >  > 
 
 ![Salesforce 应用中的“身份验证配置”部分](media/migrate-adfs-apps-to-azure/migrate9.png)
 
-由于此前已在“标识” > “单一登录设置”下创建了配置，因此应该可以更改身份验证配置的 IdP。   例如，可以将它从 AD FS 更改为 Azure AD。
+由于此前已在“标识” **“单一登录设置”下创建了配置，因此应该可以更改身份验证配置的 IdP。**  >  例如，可以将它从 AD FS 更改为 Azure AD。
 
 ![选择 Azure AD 作为身份验证服务](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>可选：在 Azure AD 中配置用户预配
 
-如果需要使用 Azure AD 来直接处理 SaaS 应用的用户预配，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](user-provisioning.md)。
+如果需要使用 Azure AD 来直接处理 SaaS 应用的用户预配，请参阅 [Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配](../app-provisioning/user-provisioning.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

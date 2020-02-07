@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430700"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047472"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
 
@@ -67,16 +67,15 @@ ms.locfileid: "75430700"
 
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。
-6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
+6. 输入占位符 URL，例如，为“重定向 URI”`http://resources`**输入** ，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
 7. 单击“创建”。
 
 ### <a name="add-an-application"></a>添加应用程序
 
-1. 创建应用程序后，单击“设置”。
-2. 单击“所需权限”。
-3. 单击“+添加”。
-4. 按“选择 API”。
-5. 选择 " **microsoft** **AZURE 服务管理 API**"。
+1. 创建应用程序后，单击 " **API 权限**"。
+2. 单击 " **+ 添加权限**"。
+4. 按 "**选择 Microsoft api**"。
+5. 选择 " **Azure 服务管理**"。
 6. 按“选择”。
 
     ![添加权限](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
@@ -116,7 +115,7 @@ namespace GetTokenResourceManagerRequests
 
 根据以下说明替换 `{tenant id}`、`{application id}` 和 `{redirect uri}`。
 
-1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” -> “终结点”访问此 ID。
+1. 将 `{tenant id}` 替换为已创建的 Azure Active Directory 应用程序的租户 ID。 可通过单击“应用注册” **“终结点”访问此 ID。**  -> 
 
     ![终结点][api-management-endpoint]
 
@@ -168,19 +167,22 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
+备份是长时间运行的操作，可能需要数分钟才能完成。 如果请求已成功且备份过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当备份正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示备份操作成功完成。
 
-发出备份请求时请注意以下限制：
+进行备份或还原请求时，请注意以下约束：
 
 -   请求正文中指定的**容器** **必须存在**。
--   当备份正在进行时，请**避免更改服务管理**，例如 SKU 升级或降级、域名更改等。
+-   当备份正在进行时，请**避免在服务中进行管理更改**，如 SKU 升级或降级、域名更改等。
 -   从创建时开始，**备份还原仅保证 30 天**。
 -   用于创建分析报表的**用法数据** **不包括**在备份中。 使用 [Azure API 管理 REST API][azure api management rest api] 定期检索分析报表以保证安全。
 -   此外，以下项不是备份数据的一部分：自定义域 SSL 证书、客户上传的任何中间或根证书、开发人员门户内容和虚拟网络集成设置。
 -   执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 -   备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改** **可能不包含在备份中，会丢失**。
--   **允许**从控制平面访问 Azure 存储帐户。 客户应在存储帐户上打开以下一组入站 Ip 以进行备份。 
-    > 13.84.189.17/32，13.85.22.63/32，23.96.224.175/32，23.101.166.38/32，52.162.110.80/32，104.214.19.224/32，13.64.39.16/32，40.81.47.216/32，51.145.179.78/32，52.142.95.35/32，40.90.185.46/32，20.40.125.155/32
+-   如果启用了[防火墙][azure-storage-ip-firewall]，则**允许**从控制平面访问 Azure 存储帐户。 客户应在存储帐户上打开一组[AZURE API 管理控制平面 IP 地址][control-plane-ip-address]，以便备份到或从中进行还原。 
+
+> [!NOTE]
+> 如果尝试使用启用了[防火墙][azure-storage-ip-firewall]的存储帐户从/向 API 管理服务执行备份/还原，则在同一 Azure 区域中，这将不起作用。 这是因为对 Azure 存储空间的请求不会从计算 > （Azure Api 管理控制平面） Snat 转换成到公共 IP。 跨区域存储请求将被 Snat 转换成。
+
 ### <a name="step2"></a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
@@ -209,7 +211,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 将 `Content-Type` 请求标头的值设置为 `application/json`。
 
-还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `Location` 标头的 `202 Accepted` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
+还原是长时间运行的操作，可能需要长达 30 分钟或更长时间才能完成。 如果请求已成功且还原过程已开始，则会收到带有 `202 Accepted` 标头的 `Location` 响应状态代码。 向 `Location` 标头中的 URL 发出“GET”请求以查明操作状态。 当还原正在进行时，将继续收到“202 已接受”状态代码。 响应代码 `200 OK` 指示还原操作成功完成。
 
 > [!IMPORTANT]
 > 要还原到的服务的 **SKU** 必须与正在还原的已备份服务的 SKU **匹配**。
@@ -241,3 +243,5 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

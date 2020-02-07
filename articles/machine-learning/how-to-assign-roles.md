@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935358"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064744"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,6 +111,62 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 有关自定义角色的详细信息，请参阅[Azure 资源的自定义角色](/azure/role-based-access-control/custom-roles)。
 
 有关自定义角色可用的操作（操作）的详细信息，请参阅[资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+
+
+## <a name="frequently-asked-questions"></a>常见问题
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>问： 在 Azure 机器学习服务中执行各种操作所需的权限有哪些？
+
+下表汇总了 Azure 机器学习活动以及在最小范围内执行它们所需的权限。 例如，如果可以使用工作区范围（第4列）执行活动，则具有该权限的所有更高的作用域也将自动运行。 此表中的所有路径都是 `Microsoft.MachineLearningServices/`的**相对路径**。
+
+| 活动 | 订阅级别范围 | 资源组级别范围 | 工作区级别范围 |
+|---|---|---|---|
+| 创建新工作区 | 不是必需 | 所有者或参与者 | 不适用（在创建后成为所有者或继承更高作用域角色） |
+| 创建新的计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许： `workspaces/computes/write` |
+| 创建新的笔记本 VM | 不是必需 | 所有者或参与者 | 不可能 |
+| 创建新的计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许： `workspaces/computes/write` |
+| 数据平面活动，如提交运行、访问数据、部署模型或发布管道 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许： `workspaces/*/write` <br/> 请注意，你还需要一个已注册到工作区的数据存储，以允许 MSI 访问你的存储帐户中的数据。 |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>问： 如何实现列出订阅中的所有自定义角色？
+
+在 Azure CLI 中运行以下命令。
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>问： 如何实现在我的订阅中查找角色的角色定义？
+
+在 Azure CLI 中运行以下命令。 请注意，`<role-name>` 的格式应与上述命令返回的格式相同。
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>问： 如何实现更新角色定义？
+
+在 Azure CLI 中运行以下命令。
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+请注意，你需要对新角色定义的整个作用域具有权限。 例如，如果此新角色的作用域跨越三个订阅，则需要拥有所有三个订阅的权限。 
+
+> [!NOTE]
+> 角色更新可能需要15分钟到1小时才能应用于该范围内的所有角色分配。
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>问： 能否定义阻止更新工作区版本的角色？ 
+
+是的，你可以定义一个阻止更新工作区版本的角色。 由于工作区更新是对工作区对象的修补调用，因此可以通过在 JSON 定义中的 `"NotActions"` 数组中放置以下操作来实现此目的： 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>问： 在工作区中执行配额操作需要哪些权限？ 
+
+你需要订阅级别权限才能在工作区中执行任何与配额相关的操作。 这意味着，只有在订阅作用域具有写入权限时，才会设置托管计算资源的订阅级别配额或工作区级别配额。 
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712344"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063588"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
 Azure Active Directory (Azure AD) 可以使用[跨域身份管理系统 (SCIM) 2.0 协议规范](https://tools.ietf.org/html/draft-ietf-scim-api-19)中定义的接口，将用户和组自动预配到以 Web 服务为前端的任何应用程序或系统。 
 
-Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序](use-scim-to-provision-users-and-groups.md)中进行介绍，其中列出为了将用户和组从 Azure AD 自动预配到支持 SCIM 2.0 的应用程序而实现的具体协议部分。
+Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序](../app-provisioning/use-scim-to-provision-users-and-groups.md)中进行介绍，其中列出为了将用户和组从 Azure AD 自动预配到支持 SCIM 2.0 的应用程序而实现的具体协议部分。
 
 本文介绍 Azure AD 用户预配服务遵循 SCIM 2.0 协议当前和过去面临的问题，以及如何解决这些问题。
 
@@ -45,7 +45,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
-不是。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
+No。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
 修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](configure-single-sign-on-non-gallery-applications.md)。
 
@@ -53,7 +53,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>是否可以迁移现有的基于 SCIM 的用户预配作业以包含最新的服务修补程序？
 
-是的。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
+可以。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
 
 > [!NOTE]
 > 如果应用程序仍处于开发阶段，并且尚未针对单一登录或用户预配进行部署，最简单的解决办法是在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分中删除应用程序条目，然后使用“创建应用程序”>“非库”选项直接添加新应用程序条目。 这是执行以下程序的替代方法。
@@ -96,7 +96,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>是否可以添加具有旧用户预配行为的新非库应用？
 
-是的。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
+可以。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
  
 1. 登录 Azure 门户： https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序。
@@ -113,5 +113,5 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 
 ## <a name="next-steps"></a>后续步骤
-[了解关于 SaaS 应用程序预配和取消预配的详细信息](user-provisioning.md)
+[了解关于 SaaS 应用程序预配和取消预配的详细信息](../app-provisioning/user-provisioning.md)
 

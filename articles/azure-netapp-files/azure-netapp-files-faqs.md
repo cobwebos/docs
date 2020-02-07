@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046160"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048814"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "76046160"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+No。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -131,7 +131,9 @@ Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本创
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支持多少个 Active Directory 连接？
 
-目前，对于每个 NetApp 帐户、每个订阅和每个区域，Azure NetApp 文件仅支持一个 Active Directory 连接;不会在 NetApp 帐户之间共享连接。
+Azure NetApp 文件不支持单个*区域*中的多个 ACTIVE DIRECTORY （AD）连接，即使 AD 连接在不同的 NetApp 帐户中。 但是，只要 AD 连接位于不同的区域，就可以在单个*订阅*中拥有多个 ad 连接。 如果在单个区域中需要多个 AD 连接，则可以使用单独的订阅来执行此操作。 
+
+AD 连接是按 NetApp 帐户配置的;AD 连接仅在创建它的 NetApp 帐户中可见。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp 文件是否支持 Azure Active Directory？ 
 
@@ -155,7 +157,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+No。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
@@ -189,11 +191,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+No。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+No。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

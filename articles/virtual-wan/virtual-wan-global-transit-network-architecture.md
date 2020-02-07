@@ -1,27 +1,28 @@
 ---
-title: Azure 虚拟 WAN 全局传输网络体系结构 |Microsoft Docs
-description: 了解虚拟 WAN 的全局传输网络体系结构
+title: 体系结构：全局传输网络体系结构
+titleSuffix: Azure Virtual WAN
+description: 了解用于虚拟 WAN 的全局传输网络体系结构
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607370"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064965"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
-现代企业需要在云中和本地的超分布式应用程序、数据与用户之间随时建立连接。 企业采用全局传输网络体系结构来整合、连接和控制以云为中心的新式企业 IT 需求。
+新式企业需要跨云和本地的超分布式应用程序、数据和用户进行广泛的连接。 企业采用全局传输网络体系结构来整合、连接和控制以云为中心的新式企业 IT 需求。
 
-全局传输网络体系结构基于经典的中心辐射型连接模型，使用其中的云托管网络“中心”可以在跨不同“辐射”类型分布的终结点之间建立传输连接。
+全局传输网络体系结构基于经典中心辐射型连接模型，在该模型中，云托管网络 "集线器" 启用可跨不同类型的 "轮辐" 分布的终结点之间的可传递连接。
 
-在此模型中，辐射可以是：
-* 虚拟网络 (VNet)
+在此模型中，分支可以是：
+* 虚拟网络（Vnet）
 * 物理分支站点
 * 远程用户
 * Internet
@@ -30,11 +31,11 @@ ms.locfileid: "73607370"
 
 **图1：全局传输中心辐射型网络**
 
-图1显示了一个全局传输网络的逻辑视图，地理位置分散的用户、物理站点和 Vnet 通过云中托管的网络集线器互连。 此体系结构可在网络终结点之间实现逻辑单跃点传输连接。
+图1显示了一个全局传输网络的逻辑视图，地理位置分散的用户、物理站点和 Vnet 通过云中托管的网络集线器互连。 此体系结构启用网络终结点之间的逻辑单跃点传输连接。
 
 ## <a name="globalnetworktransit"></a>具有虚拟 WAN 的全局传输网络
 
-Azure 虚拟 WAN 是 Microsoft 托管的云网络服务。 此服务所由的所有网络组件由 Microsoft 托管和管理。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)一文。
+Azure 虚拟 WAN 是 Microsoft 托管的云网络服务。 此服务所由的所有网络组件由 Microsoft 托管和管理。 有关虚拟 WAN 的详细信息，请参阅[虚拟 Wan 概述](virtual-wan-about.md)一文。
 
 通过在 Vnet、分支站点、SaaS 和 PaaS 应用程序以及用户的全球分布式云工作负荷组之间实现无处不在的连接，Azure 虚拟 WAN 允许全局传输网络体系结构。
 
@@ -60,7 +61,7 @@ Azure 虚拟 WAN 是 Microsoft 托管的云网络服务。 此服务所由的所
 
 ## <a name="anytoany"></a>任何连接
 
-全局传输网络体系结构可实现通过虚拟 WAN 中心实现的任何连接。 此体系结构消除或减少了轮辐之间完全网格或部分网格连接的需要，更复杂的是生成和维护。 此外，与网格网络相比，中心辐射型体系结构中的路由控制更容易配置和维护。
+全局传输网络体系结构可实现通过虚拟 WAN 中心实现的任何连接。 此体系结构消除或减少了轮辐之间完全网格或部分网格连接的需要，更复杂的是生成和维护。 此外，中心辐射型网络与网格网络中的路由控制更易于配置和维护。
 
 任何连接（在全局体系结构的上下文中）都允许企业使用全球分布的用户、分支、数据中心、Vnet 和应用程序通过 "传输" 中心彼此连接。 Azure 虚拟 WAN 充当全局传输系统。
 
@@ -70,11 +71,11 @@ Azure 虚拟 WAN 是 Microsoft 托管的云网络服务。 此服务所由的所
 
 Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母映射到图4。
 
-* 分支到 VNet (a)
-* 分支到分支 (b)
+* 分支到 VNet （a）
+* 分支到分支（b）
   * ExpressRoute Global Reach 和虚拟广域网
-* 远程用户到 VNet (c)
-* 远程用户到分支 (d)
+* 远程用户到 VNet （c）
+* 远程用户到分支（d）
 * VNet 到 VNet （e）
 * 分支到集线器-中心到分支（f）
 * 分支到集线器-从中心到 VNet （g）
@@ -82,7 +83,7 @@ Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母映�
 
 ### <a name="branch-to-vnet-a-and-branch-to-vnet-cross-region-g"></a>分支到 VNet （a）和分支到 VNet 跨区域（g）
 
-分支到 VNet 是 Azure 虚拟 WAN 支持的主要路径。 使用此路径可将分支连接到 Azure VNet 中部署的 Azure IAAS 企业工作负荷。 分支可以通过 ExpressRoute 或站点到站点 VPN 连接到虚拟 WAN。 流量上流动到通过 VNet 连接连接到虚拟 WAN 集线器的 Vnet。 虚拟 WAN 不需要显式[网关传输](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)，因为虚拟 wan 会自动启用到分支站点的网关传输。 请参阅[虚拟 Wan 合作伙伴](virtual-wan-configure-automation-providers.md)一文，了解如何将 SD 广域网 CPE 连接到虚拟 wan。
+分支到 VNet 是 Azure 虚拟 WAN 支持的主要路径。 此路径允许将分支连接到在 Azure Vnet 中部署的 Azure IAAS 企业工作负荷。 可以通过 ExpressRoute 或站点到站点 VPN 连接到虚拟 WAN。 流量上流动到通过 VNet 连接连接到虚拟 WAN 集线器的 Vnet。 虚拟 WAN 不需要显式[网关传输](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)，因为虚拟 wan 会自动启用到分支站点的网关传输。 请参阅[虚拟 Wan 合作伙伴](virtual-wan-configure-automation-providers.md)一文，了解如何将 SD 广域网 CPE 连接到虚拟 wan。
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach 和虚拟广域网
 
@@ -96,15 +97,15 @@ ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Gl
 
 可以使用 ExpressRoute 线路和/或站点到站点 VPN 连接将分支连接到 Azure 虚拟 WAN 集线器。 你可以将分支连接到距离分支最近的区域中的虚拟 WAN 集线器。
 
-企业可以通过此选项来利用 Azure 主干网连接分支。 但是，尽管可以此功能，应该权衡通过 Azure 虚拟 WAN 与通过专用 WAN 连接分支的利弊。  
+此选项使企业能够利用 Azure 主干来连接分支。 但尽管此功能可用，但你应该权衡通过 Azure 虚拟 WAN 连接分支与使用专用 WAN 的好处。  
 
-### <a name="remote-user-to-vnet-c"></a>远程用户到 VNet (c)
+### <a name="remote-user-to-vnet-c"></a>远程用户到 VNet （c）
 
-你可以使用从远程用户客户端到虚拟 WAN 的点到站点连接来启用对 Azure 的直接、安全远程访问。 企业远程用户不再需要使用企业 VPN 来始终与云保持连接。
+你可以使用从远程用户客户端到虚拟 WAN 的点到站点连接来启用对 Azure 的直接、安全远程访问。 企业远程用户不再需要使用企业 VPN hairpin 到云中。
 
-### <a name="remote-user-to-branch-d"></a>远程用户到分支 (d)
+### <a name="remote-user-to-branch-d"></a>远程用户到分支（d）
 
-使用远程用户到分支路径，与 Azure 建立了点到站点连接的远程用户可以通过云传输流量，以此访问本地工作负荷和应用程序。 此路径可让远程用户灵活访问部署在 Azure 中和本地的工作负荷。 企业可以在 Azure 虚拟 WAN 中启用基于中心云的安全远程访问服务。
+远程用户到分支路径允许使用点到站点连接的远程用户通过云传输访问本地工作负荷和应用程序。 此路径使远程用户可以灵活地访问部署在 Azure 和本地的工作负载。 企业可以在 Azure 虚拟 WAN 中启用基于云的中心安全远程访问服务。
 
 ### <a name="vnet-to-vnet-transit-e-and-vnet-to-vnet-cross-region-h"></a>VNet 到 VNet 传输（e）和 VNet 到 VNet 跨区域（h）
 

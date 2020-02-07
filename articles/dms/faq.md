@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717790"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064829"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -46,7 +46,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.microsoft.com/pricing/details/database-migration/)页。
 
 **问： Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具（例如数据库迁移助手（DMA）或 SQL Server 迁移助手（SSMA））有何不同？**
-Azure 数据库迁移服务是用于大规模 Microsoft Azure 数据库迁移的首选方法。 若要详细了解 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的比较情况，以及针对各种方案使用该服务的建议，请参阅博客文章[区分 Microsoft 的数据库迁移工具和服务](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/)。
+Azure 数据库迁移服务是用于大规模 Microsoft Azure 数据库迁移的首选方法。 若要详细了解 Azure 数据库迁移服务与其他 Microsoft 数据库迁移工具的比较情况，以及针对各种方案使用该服务的建议，请参阅博客文章[区分 Microsoft 的数据库迁移工具和服务](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529)。
 
 **问： Azure 数据库迁移服务与 Azure Migrate 产品/服务有何不同？**
 Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地虚拟机的成本估算。 Azure Migrate 适合用于将基于本地 VM 的工作负荷直接迁移到 Azure IaaS VM。 但是，与 Azure 数据库迁移服务不同，Azure Migrate 不是 Azure PaaS 关系数据库平台（如 Azure SQL 数据库或 Azure SQL 数据库托管实例）的专用数据库迁移服务。
@@ -88,7 +88,7 @@ Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估
 **问：如何实现设置 Microsoft Azure 虚拟网络？**
 尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 **问：使用 Azure 数据库迁移服务执行数据库迁移所需的步骤摘要是什么？**
 在典型的简单数据库迁移过程中，需要：

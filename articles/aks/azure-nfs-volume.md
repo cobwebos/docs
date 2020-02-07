@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549251"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063809"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）手动创建和使用 NFS （网络文件系统） Linux 服务器卷
 在容器之间共享数据通常是基于容器的服务和应用程序的必需组件。 通常有各种 pod 需要访问外部永久性卷上的相同信息。    
@@ -74,7 +74,7 @@ echo "/export        localhost(rw,async,insecure,fsid=0,crossmnt,no_subtree_chec
 
 nohup service nfs-kernel-server restart
 ```
-服务器将重新启动（由于脚本），可以将 NFS 服务器装载到 AKS
+服务器将重新启动（由于脚本），可以将 NFS 服务器装载到 AKS。
 
 >[!IMPORTANT]  
 >请确保将**AKS_SUBNET**替换为群集中的正确一个，否则 "*" 会将 NFS 服务器打开到所有端口和连接。
@@ -93,7 +93,8 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>将 AKS 群集连接到 NFS 服务器
-可以通过预配永久性卷和指定如何访问卷的永久卷声明，将 NFS 服务器连接到群集。  
+可以通过预配永久性卷和指定如何访问卷的永久卷声明，将 NFS 服务器连接到群集。
+
 需要将两个服务连接到相同或对等互连的虚拟网络中。 在同一 VNET 中设置群集的说明如下所示：[在现有 VNET 中创建 AKS 群集][aks-virtual-network]
 
 一旦它们位于同一个虚拟网络（或对等互连）中，你需要在 AKS 群集中预配一个永久性卷和一个永久性卷声明。 然后，容器可以将 NFS 驱动器装载到本地目录。

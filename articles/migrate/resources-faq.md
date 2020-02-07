@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: baf01c0a0d5c6154305f7137c24deb0365b5e812
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989342"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062092"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -55,7 +55,7 @@ Azure Migrate 提供了一个集中式中心，用于评估和迁移到 Azure。
 
 查看适用于[VMWARE vm](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)和[hyper-v vm](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)的 Azure Migrate 支持的地理位置。
 
-## <a name="how-do-i-get-started"></a>我如何开始？
+## <a name="how-do-i-get-started"></a>如何开始？
 
 确定所需的工具，并将其添加到 Azure Migrate 项目。 如果添加 ISV 工具或 Movere：
 - 根据工具策略获取许可证或注册免费试用版即可开始使用该工具。 ISV 工具的许可符合 ISV 或工具的许可模型。
@@ -67,9 +67,7 @@ Azure Migrate 提供了一个集中式中心，用于评估和迁移到 Azure。
 [了解如何](how-to-delete-project.md)删除项目。 
 
 
-## <a name="do-machines-retain-domain-identity-after-migration"></a>迁移后是否保留域标识？
 
-假定域服务已[集成到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/)中，则迁移后会保留域中的域成员身份和计算机标识。 
 
 ## <a name="next-steps"></a>后续步骤
 阅读[Azure Migrate 概述](migrate-services-overview.md)。
