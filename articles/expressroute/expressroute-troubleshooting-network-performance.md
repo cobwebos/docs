@@ -189,9 +189,9 @@ AzureCT PowerShell 模块有两个组件[可用性测试][Availability Doc]和[�
 | 西雅图 | 美国东部          |  3,699 km |  74 ms |  21.1 Mbits/sec |  1.78 Gbits/sec |
 | 西雅图 | 日本东部       |  7,705 km | 106 ms |  14.6 Mbits/sec |  1.22 Gbits/sec |
 | 西雅图 | 英国南部         |  7,708 km | 146 ms |  10.6 Mbits/sec |   896 Mbits/sec |
-| 西雅图 | 欧洲西部      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec |
+| 西雅图 | 西欧      |  7,834 km | 153 ms |  10.2 Mbits/sec |   761 Mbits/sec |
 | 西雅图 | 澳大利亚东部   | 12,484 km | 165 ms |   9.4 Mbits/sec |   794 Mbits/sec |
-| 西雅图 | 亚洲东南部   | 12,989 km | 170 ms |   9.2 Mbits/sec |   756 Mbits/sec |
+| 西雅图 | 东南亚   | 12,989 km | 170 ms |   9.2 Mbits/sec |   756 Mbits/sec |
 | 西雅图 | 巴西南部*   | 10,930 km | 189 ms |   8.2 Mbits/sec |   699 Mbits/sec |
 | 西雅图 | 印度南部      | 12,918 km | 202 ms |   7.7 Mbits/sec |   634 Mbits/sec |
 

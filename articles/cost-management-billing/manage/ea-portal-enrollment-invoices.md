@@ -4,16 +4,16 @@ description: 本文介绍如何管理和处理 Azure 企业发票。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/21/2020
+ms.date: 02/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 1379f4acb88020234aa3a8fa2d3289f0bff0f108
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2a75972d00733d23df7f4a59b2d5010404df8dc3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769553"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023389"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise 注册发票
 
@@ -702,7 +702,7 @@ API 密钥每六个月过期。 如果你遇到问题，企业管理员应生成
 - 每单位 MOCP 资源  ：上游使用情况系统使用不同的单位发出每项服务的用量。 （预设）
 - **每单位消耗量：** Azure Enterprise 度量单位。 （预设）
 - **价格：** Azure Enterprise 门户中的单价。
-- **总费用：** 详细使用情况报表中的应付费用，或者 Azure Enterprise 门户中的承诺用量加上超额。
+- 总成本  ：详细使用情况报表中的应付费用，或者 Azure Enterprise 门户中的承诺用量加上超额。
 
 ### <a name="charges-calculations"></a>费用计算
 
