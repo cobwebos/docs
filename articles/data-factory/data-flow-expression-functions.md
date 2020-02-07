@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716736"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062840"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式 
 
@@ -934,8 +934,8 @@ CumeDist 函数计算某个值相对于分区中所有值的位置。 结果是�
 * ``cumeDist()``
 ___
 ### <code>denseRank</code>
-<code><b>denseRank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值不会在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``denseRank(salesQtr, salesAmt)``
+<code><b>denseRank() => integer</b></code><br/><br/>
+计算在窗口的 order by 子句中指定的一组值中的值排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值不会在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``denseRank()``
 ___
 ### <code>lag</code>，密集排名仍有效 
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
@@ -954,8 +954,8 @@ NTile 函数将每个窗口分区的行分割为从 1 到 `n` 的 `n` 桶。 桶
 * ``nTile(numOfBuckets)``
 ___
 ### <code>rank</code>
-<code><b>rank(<i>&lt;value1&gt;</i> : any, ...) => integer</b></code><br/><br/>
-计算某个值在值组中的排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值将在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``rank(salesQtr, salesAmt)``
+<code><b>rank() => integer</b></code><br/><br/>
+计算在窗口的 order by 子句中指定的一组值中的值排名。 结果是 1 加上前面的行数，或者等于当前行在分区中的顺序。 值将在序列中生成空隙。 即使数据未排序并在值中查找更改 * ``rank()``
 ___
 ### <code>rowNumber</code>，排名仍有效 
 <code><b>rowNumber() => integer</b></code><br/><br/>

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278258"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061269"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
@@ -28,7 +28,7 @@ ms.locfileid: "74278258"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure AD 租户
 * Pingboard 租户[专业版帐户](https://pingboard.com/pricing)
@@ -70,7 +70,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“管理员凭据”部分中，使用以下步骤：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“租户 URL”中，输入  **并将 your_domain 替换为实际的域**`https://your_domain.pingboard.com/scim/v2`
+    a. 在“租户 URL”中，输入  **并将 your_domain 替换为实际的域**`https://your_domain.pingboard.com/scim/v2`
 
     b. 使用管理员帐户登录到 [Pingboard](https://pingboard.com/)。
 
@@ -88,7 +88,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Pingboard”。
 
-1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../manage-apps/customize-application-attributes.md)。
+1. 在“属性映射”部分中，查看将从 Azure AD 同步到 Pingboard 的用户属性。 选为“匹配”属性的特性用于匹配 Pingboard 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 
 1. 若要为 Pingboard 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
@@ -96,10 +96,10 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 初始同步运行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些日志描述了预配服务对 Pingboard 应用所采取的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 * [配置单一登录](pingboard-tutorial.md)

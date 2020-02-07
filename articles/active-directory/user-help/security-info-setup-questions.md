@@ -2,7 +2,7 @@
 title: 设置安全问题作为验证方法-Azure AD
 description: 如何设置安全信息（预览版）页，以使用预定义的安全问题作为验证方法来验证您的身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: e578b545a48468de347db0e0abc69dd0d3906606
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704844"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063962"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>将安全问题设置为验证方法
 
@@ -29,12 +29,12 @@ ms.locfileid: "76704844"
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全验证与密码重置身份验证
 
-安全信息方法用于双因素安全验证和密码重置。 但是，并非所有方法都可以用于这二者。
+安全信息方法既用于双因素安全验证，又用于密码重置。 但是，并非所有方法都可以用于这二者。
 
 | 方法 | 用于 |
 | ------ | -------- |
 | Authenticator 应用 | 双重验证和密码重置身份验证。 |
-| 短信 | 双重验证和密码重置身份验证。 |
+| 文本消息 | 双重验证和密码重置身份验证。 |
 | 电话呼叫 | 双重验证和密码重置身份验证。 |
 | 安全密钥 | 双重验证和密码重置身份验证。 |
 | 电子邮件帐户 | 仅密码重置身份验证。 需选择另一种方法进行双重验证。 |

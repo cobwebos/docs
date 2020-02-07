@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880582"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063639"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 功能部署指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "72880582"
 
 此外，客户可以检查其[标识安全评分](identity-secure-score.md)，以确定他们与 Microsoft 最佳做法的相符程度。 请在实施这些建议之前和之后检查安全评分，以确定你与同行业中的其他公司或者与同等规模的其他组织之间的优劣。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本指南中的许多建议均可通过 Azure AD Free 或根本无许可证实现。 如果需要许可证，本指南会指出完成相应任务最起码需要哪种许可证。
 
@@ -41,7 +41,7 @@ ms.locfileid: "72880582"
 
 在此阶段，管理员启用基准安全功能，以便在 Azure AD 中创建更安全且易用的基础，然后我们导入或创建普通用户帐户。 此基础阶段确保你从一开始就处于一种更安全的状态，并且只需向最终用户介绍新的概念一次。
 
-| 任务 | 详细信息 | 所需的许可证 |
+| 任务 | Detail | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [指定多个全局管理员](../users-groups-roles/directory-emergency-access.md) | 至少分配两个仅限云的永久性全局管理员帐户，以便在紧急情况下使用。 这些帐户不是每日使用，应该具有复杂的长密码。 | Azure AD Free |
 | [尽可能使用非全局管理角色](../users-groups-roles/directory-assign-admin-roles.md) | 只为管理员分配他们必须访问的区域的访问权限。 并非所有管理员都需要是全局管理员。 | Azure AD Free |
@@ -62,7 +62,7 @@ ms.locfileid: "72880582"
 
 接下来，我们通过导入用户、启用同步、规划来宾访问权限并准备支持其他功能，来对阶段 1 中的基础做出补充。
 
-| 任务 | 详细信息 | 所需的许可证 |
+| 任务 | Detail | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [安装 Azure AD Connect](../connect/active-directory-aadconnect-select-installation.md) | 准备将现有本地目录中的用户同步到云。 | Azure AD Free |
 | [实现密码哈希同步](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | 同步密码哈希，以便能够复制密码更改、检测并补救错误密码，以及报告已泄漏的凭据。 | Azure AD Free |
@@ -78,7 +78,7 @@ ms.locfileid: "72880582"
 
 在前几个阶段中持续构建环境的过程中，我们识别了适合迁移并与 Azure AD 集成的应用程序，并完成了这些应用程序的设置。
 
-| 任务 | 详细信息 | 所需的许可证 |
+| 任务 | Detail | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | 识别应用程序 | 识别组织中正在使用的应用程序：本地应用程序、云中的 SaaS 应用程序和其他业务线应用程序。 确定这些应用程序是否可以，以及是否应该由 Azure AD 进行管理。 | 无需许可证 |
 | [集成库中的受支持 SaaS 应用程序](../manage-apps/add-application-portal.md) | Azure AD 的某个库包含数千个预先集成的应用程序。 组织使用的某些应用程序可能就在该库中。可通过 Azure 门户直接访问该库。 | Azure AD Free |
@@ -88,13 +88,13 @@ ms.locfileid: "72880582"
 
 在第 4 阶段，管理员针对管理工作强制实施最低特权原则，完成首次访问评审，并启用常见用户生命周期任务的自动化。
 
-| 任务 | 详细信息 | 所需的许可证 |
+| 任务 | Detail | 所需的许可证 |
 | ---- | ------ | ---------------- |
 | [强制使用 Privileged Identity Management](../privileged-identity-management/pim-security-wizard.md) | 删除普通日常用户帐户的管理角色。 使管理用户能够在成功完成多重身份验证检查、提供业务理由或请求指定的审批者批准之后使用其角色。 | Azure AD Premium P2 |
 | [在 PIM 中完成 Azure AD 目录角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md) | 与安全和领导团队协作创建访问评审策略，以根据组织的策略评审管理访问权限。 | Azure AD Premium P2 |
 | [实施动态组成员资格策略](../users-groups-roles/groups-dynamic-membership.md) | 使用动态组根据来自人力资源（或真实来源）的属性（例如部门、职位、区域和其他属性）自动向组分配用户。 |  |
 | [实施基于组的应用程序预配](../manage-apps/what-is-access-management.md) | 使用基于组的访问管理预配为 SaaS 应用程序自动预配用户。 |  |
-| [自动用户预配和取消预配](../manage-apps/user-provisioning.md) | 从员工帐户生命周期中删除手动步骤，以防止未经授权的访问。 将真实来源（HR 系统）中的标识同步到 Azure AD。 |  |
+| [自动用户预配和取消预配](../app-provisioning/user-provisioning.md) | 从员工帐户生命周期中删除手动步骤，以防止未经授权的访问。 将真实来源（HR 系统）中的标识同步到 Azure AD。 |  |
 
 ## <a name="next-steps"></a>后续步骤
 

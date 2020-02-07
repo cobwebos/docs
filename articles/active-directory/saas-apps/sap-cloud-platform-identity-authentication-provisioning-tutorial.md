@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 266e68b2378db7148649fd4067f1da6172932367
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c30a7b1e6440cf69f7a4858273b365d885e5ec7b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833840"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060394"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 SAP Cloud Platform Identity Authentication
 
 本教程的目的是演示要在 SAP Cloud Platform Identity Authentication 和 Azure Active Directory （Azure AD）中执行的步骤，以将 Azure AD 自动预配和取消预配到 SAP Cloud Platform Identity Authentication。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 >
-> 此连接器目前以公共预览版提供。 有关预览功能的一般 Microsoft Azure 使用条款的详细信息，请参阅[Microsoft Azure 预览版的补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -84,7 +84,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，输入**Sap Cloud Platform Identity authentication**，在结果面板中选择 " **Sap Cloud platform identity authentication** "，然后单击 "**添加**" 按钮添加该应用程序。
 
@@ -99,7 +99,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-cloud-platform-identity-authentication-in-azure-ad"></a>在 Azure AD 中为 SAP Cloud Platform Identity Authentication 配置自动用户预配：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**"，并选择 "**所有应用程序**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -123,7 +123,7 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。
+7. 单击 **“保存”** 。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 SAP Cloud Platform Identity Authentication**"。
 
@@ -133,11 +133,11 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![SAP Cloud Platform Identity Authentication 用户属性](media/sap-cloud-platform-identity-authentication-provisioning-tutorial/userattributes.png)
 
-10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 11. 若要为 SAP Cloud Platform Identity Authentication 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
-    ![设置状态切换开启](common/provisioning-toggle-on.png)
+    ![预配状态已打开](common/provisioning-toggle-on.png)
 
 12. 通过在 "**设置**" 部分的 "**范围**" 中选择所需的值，定义要预配到 SAP Cloud Platform Identity Authentication 的用户和/或组。
 
@@ -145,11 +145,11 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 13. 已准备好预配时，单击“保存”。
 
-    ![正在保存设置配置](common/provisioning-configuration-save.png)
+    ![保存预配配置](common/provisioning-configuration-save.png)
 
 此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了在 SAP Cloud Platform Identity Authentication 上 Azure AD 预配服务执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>连接器限制
 
@@ -157,10 +157,10 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 

@@ -4,15 +4,15 @@ description: 如何使用 Azure 门户将托管数据磁盘附加到 Windows VM�
 author: roygara
 ms.service: virtual-machines-windows
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0610b235d218c24c108e39aeb9bd3b2cf8c9c663
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463431"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77055662"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 门户将托管数据磁盘附加到 Windows VM
 
@@ -33,7 +33,7 @@ ms.locfileid: "75463431"
 
 ## <a name="initialize-a-new-data-disk"></a>初始化新的数据磁盘
 
-1. 连接到 VM。
+1. 连接到虚拟机。
 1. 在正在运行的 VM 中选择 Windows“开始”菜单，然后在搜索框中输入 **diskmgmt.msc**。 此时会打开“磁盘管理”控制台。
 2. “磁盘管理”识别出新的未初始化磁盘，并显示“初始化磁盘”窗口。
 3. 请确保选择新磁盘，然后选择“确定”对其进行初始化。

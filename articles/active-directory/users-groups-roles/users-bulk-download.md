@@ -4,21 +4,21 @@ description: 在 Azure Active Directory 的 Azure 管理中心中批量下载用
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720301"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063826"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>在 Azure Active Directory 门户中下载用户列表（预览）
 
@@ -39,25 +39,24 @@ Azure Active Directory （Azure AD）支持批量用户导入（创建）操作�
 
    下载文件将包含用户的筛选列表。
 
-   将包括以下用户属性： 
+   包含以下用户属性：
 
    - userPrincipalName
    - displayName
    - surname
-   - mail
+   - 邮件
    - givenName
    - objectId
    - userType
    - jobTitle
    - department
-   - manager
    - accountEnabled
    - usageLocation
    - streetAddress
    - state
    - country
    - physicalDeliveryOfficeName
-   - city
+   - 城市
    - postalCode
    - telephoneNumber
    - mobile

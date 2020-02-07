@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bae60622ca8f0e660c8fafbd21189d8e368ba9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276608"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057645"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -28,11 +28,12 @@ ms.locfileid: "74276608"
 
 ## <a name="prerequisites"></a>先决条件
 
-在本教程中概述的方案假定已具有以下各项：
+在本教程中概述的方案假定您已具有以下各项：
 
 * Azure Active Directory 租户
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
 * GitHub 中具有组织管理员权限的用户帐户
+* 确保为你的组织提供了 OAuth 访问权限，如[此处](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
 
 > [!NOTE]
 > Azure AD 预配集成依赖于 github [SCIM API](https://developer.github.com/v3/scim/)，该 API 可供 github 企业级[云](https://help.github.com/articles/github-s-products/#github-enterprise)客户在[github 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用。
@@ -70,7 +71,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![GitHub 预配](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. 在“管理员凭据”部分下，单击“授权”。 此操作将在新的浏览器窗口中打开“GitHub 授权”对话框。 
+5. 在“管理员凭据”部分下，单击“授权”。 此操作将在新的浏览器窗口中打开“GitHub 授权”对话框。 请注意，你需要确保已获得批准访问权限。 按[此处](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述的说明进行操作。
 
 6. 在新窗口中，使用管理员帐户登录到 GitHub。 在显示的授权对话框中，选择要启用预配的 GitHub 团队，并选择“授权”。 完成后，返回到 Azure 门户完成预配配置。
 
@@ -82,7 +83,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
 
-9. 单击“ **保存**”。
+9. 单击 **“保存”** 。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”。
 
@@ -90,17 +91,17 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 要为 GitHub 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-13. 单击“ **保存**”。
+13. 单击 **“保存”** 。
 
 此操作会对“用户和组”部分中分配到 GitHub 的任何用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)

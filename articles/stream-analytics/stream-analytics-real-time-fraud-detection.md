@@ -8,16 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458790"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064374"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时检测欺诈行为
 
-本教程提供有关如何使用 Azure 流分析的端到端说明。 学习如何： 
+本教程提供有关如何使用 Azure 流分析的端到端说明。 你将学习： 
 
 * 将流事件引入 Azure 事件中心实例。 本教程将使用一个应用来模拟移动电话元数据记录流。
 
@@ -31,7 +31,7 @@ ms.locfileid: "75458790"
 
 电信公司的传入呼叫数据量很大。 公司希望实时检测欺诈呼叫，以便他们可以通知客户或关闭特定数目的服务。 有这样一种 SIM 欺诈，即在同一时间出现多个同一身份发起的呼叫，但这些呼叫却位于不同的地理位置。 若要检测这种类型的欺诈，公司需要检查传入的电话记录，并查找特定模式-在本例中，对于在不同国家/地区的相同时间拨打的呼叫。 任何属于此类别的电话记录都将写入存储，以供后续分析。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本教程将通过使用生成示例电话呼叫元数据的客户端应用来模拟电话呼叫数据。 应用生成的某些记录看起来类似欺诈呼叫。 
 
@@ -55,26 +55,33 @@ ms.locfileid: "75458790"
 ### <a name="create-a-namespace-and-event-hub"></a>创建命名空间和事件中心
 在此过程中，首先创建事件中心命名空间，然后将事件中心添加到该命名空间。 事件中心命名空间用于逻辑分组相关的事件总线实例。 
 
-1. 登录 Azure 门户，然后依次单击“创建资源” > “物联网” > “事件中心”。 
+1. 登录到 Azure 门户，并单击屏幕左上角的 "**创建资源**"。
 
-2. 在“创建命名空间”窗格中，输入命名空间名称，例如 `<yourname>-eh-ns-demo`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
+2. 在左侧菜单中选择“所有服务”，然后在“分析”类别中的“事件中心”旁边选择**星号 (** ) **。`*`** 确认“事件中心”已添加到左侧导航菜单中的“收藏夹”。 
+
+   ![搜索事件中心](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. 选择左侧导航菜单中“收藏夹”下的“事件中心”，然后选择工具栏上的“添加”。
+
+   ![“添加”按钮](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. 在“创建命名空间”窗格中，输入命名空间名称，例如 `<yourname>-eh-ns-demo`。 可以对命名空间使用任何名称，但该名称必须对 URL 有效，并且在 Azure 中必须唯一。 
     
-3. 选择订阅并创建或选择一个资源组，然后单击“创建”。
+5. 选择订阅并创建或选择一个资源组，然后单击“创建”。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. 完成部署命名空间后，在 Azure 资源列表中找到事件中心命名空间。 
+6. 完成部署命名空间后，在 Azure 资源列表中找到事件中心命名空间。 
 
-5. 单击新的命名空间，然后在“命名空间”窗格中，单击“事件中心”。
+7. 单击新的命名空间，然后在“命名空间”窗格中，单击“事件中心”。
 
    ![用于创建新事件中心的“添加事件中心”按钮](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
+8. 将新事件中心命名为 `asa-eh-frauddetection-demo`。 可使用其他名称。 如果使用其他名称，请记下该名称，稍后会用到。 不需要立即为事件中心设置任何其他选项。
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. 单击“创建”。
+9. 单击“创建”。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -82,7 +89,7 @@ ms.locfileid: "75458790"
 
 1.  在“事件命名空间”窗格中，单击“事件中心”，然后单击新事件中心的名称。
 
-2.  在“事件中心”窗格中，单击“共享访问策略”，然后单击“+&nbsp;添加”。
+2.  在“事件中心”窗格中，单击“共享访问策略”，然后单击“ **+添加”&nbsp;** 。
 
     >[!NOTE]
     >确保使用的是事件中心，而不是事件中心命名空间。
@@ -163,7 +170,7 @@ ms.locfileid: "75458790"
 
 ### <a name="create-the-job"></a>创建作业 
 
-1. 在 Azure 门户中，单击“创建资源” > “物联网” > “流分析作业”。
+1. 在 Azure 门户中，单击“创建资源” **“物联网”** “流分析作业” >  > 。
 
 2. 将作业命名为 `asa_frauddetection_job_demo`，然后指定订阅、资源组和位置。
 
@@ -213,7 +220,7 @@ ms.locfileid: "75458790"
 TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作业已配置为从事件中心读取记录。 可以使用查询测试作业以确保它正确读取。 若要在 Azure 控制台中测试查询，则需要提供示例数据。 本演练将从要进入事件中心的流中提取示例数据。
 
 1. 请确保 TelcoGenerator 应用正在运行，并且将生成呼叫记录。
-2. 在门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”窗格中搜索 `asa_frauddetection_job_demo`。）
+2. 在门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”`asa_frauddetection_job_demo`**窗格中搜索** 。）
 3. 单击“查询”框。 Azure 会列出为作业配置的输入和输出，并允许创建查询，以便在将输入流发送到输出时对其进行转换。
 4. 在“查询”窗格中，单击 `CallStream` 输入旁边的点，然后选择“来自输入的示例数据”。
 
@@ -288,7 +295,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
         GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
         ```
 
-    此查询在 `FROM` 子句中使用 `Timestamp By` 关键字来指定输入流中要用于定义翻转窗口的时间戳字段。 在这种情况下，窗口按每条记录中的 `CallRecTime` 字段将数据划分为段。 （如果未指定任何字段，开窗操作将使用每个事件到达事件中心的时间。 请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的“到达时间与应用程序时间”。 
+    此查询在 `Timestamp By` 子句中使用 `FROM` 关键字来指定输入流中要用于定义翻转窗口的时间戳字段。 在这种情况下，窗口按每条记录中的 `CallRecTime` 字段将数据划分为段。 （如果未指定任何字段，开窗操作将使用每个事件到达事件中心的时间。 请参阅[流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)中的“到达时间与应用程序时间”。 
 
     投影包括 `System.Timestamp`，后者将返回每个窗口结束时的时间戳。 
 
@@ -348,7 +355,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
    ![在 Azure 门户中创建存储帐户](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
-2. 在 Azure 门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”窗格中搜索 `asa_frauddetection_job_demo`。）
+2. 在 Azure 门户中，返回到“流分析作业”窗格。 （如果关闭了此窗格，请在“所有资源”`asa_frauddetection_job_demo`**窗格中搜索** 。）
 
 3. 在“作业拓扑”部分，单击“输出”框。
 
@@ -364,7 +371,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. 单击“ **保存**”。 
+5. 单击 **“保存”** 。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>启动流分析作业

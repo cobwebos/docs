@@ -3,12 +3,12 @@ title: 设置 Azure Monitor 容器实时数据（预览版） |Microsoft Docs
 description: 本文介绍如何设置容器日志（stdout/stderr）和事件的实时视图，而无需将 kubectl 与 Azure Monitor for 容器一起使用。
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030659"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063758"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>如何设置实时数据（预览）功能
 
@@ -114,7 +114,7 @@ Azure AD 客户端注册必须重新配置为允许 Azure 门户将授权页面�
     >[!NOTE]
     >如果在 Azure 中国区使用此功能，则应 `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` 第一个基本 URL 值，并且应 `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`第二个基本 URL 值。 
     
-4. 注册重定向 Url 之后，在 "**高级设置**" 下，选择 "**访问令牌**" 和 " **ID 令牌**" 选项，并保存所做的更改。
+4. 注册重定向 Url 之后，在 "**隐式授权**" 下选择 "**访问令牌**" 和 " **ID 令牌**" 选项，并保存所做的更改。
 
 >[!NOTE]
 >只能在初次部署新的 AKS 群集期间完成为单一登录配置身份 Azure Active Directory 验证。 不能为已部署的 AKS 群集配置单一登录。

@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849134"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062823"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
 本教程的目的是说明从 Azure AD 自动将用户帐户预配到 Slack 和取消其预配所需在 Slack 和 Azure 中执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在本教程中概述的方案假定您已具有以下各项：
 
-* Azure Active Directory 租户
+* 一个 Azure Active Directory 租户
 * 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户
 * 在 Slack 中具有团队管理员权限的用户帐户
 
@@ -78,7 +78,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 8. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-9. 单击“保存”。
+9. 单击 **“保存”** 。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Slack”。
 
@@ -86,7 +86,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 要为 Slack 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-13. 单击“保存”。
+13. 单击 **“保存”** 。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Slack。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 10 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 Slack 应用执行的所有操作。
 
@@ -102,11 +102,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 3. 在“属性映射”部分中，查看将从 Azure AD 同步到 Slack 的组属性。 请注意，选为**匹配**属性的属性用于在更新操作中匹配 Slack 中的组。 
 
-4. 单击“保存”。
+4. 单击 **“保存”** 。
 
 这会导致“用户和组”部分中分配到 Slack 的任何组对象从 Azure AD 完全同步到 Slack。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接，这些日志描述了预配服务对 Slack 应用执行的所有操作。
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../manage-apps/check-status-user-account-provisioning.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>连接器限制
 
@@ -126,5 +126,5 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

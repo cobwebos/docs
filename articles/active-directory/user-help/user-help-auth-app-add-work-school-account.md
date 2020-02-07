@@ -2,21 +2,21 @@
 title: 将工作或学校帐户添加到 Microsoft Authenticator 应用-Azure AD
 description: 将工作或学校帐户添加到 Microsoft Authenticator 应用，以便在使用双重验证时验证您的身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: lizross
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 834bae055fb9384a66b199f991522811787f58ae
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f0cc14a53f7ead7f0a496728d477d7d30857a0fb
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704725"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063911"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>将工作或学校帐户添加到 Microsoft Authenticator 应用
 

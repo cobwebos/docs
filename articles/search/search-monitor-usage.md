@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793484"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059636"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>监视 Azure 中的资源消耗和查询活动认知搜索
 
@@ -56,7 +56,7 @@ Azure 认知搜索不会将任何数据存储在它所管理的对象之外，�
 
 下表比较了各种选项，这些选项用于存储日志以及添加深度监视指标，以便通过 Application Insights 监视服务操作和查询工作负荷。
 
-| 资源 | 用途 |
+| 资源 | 用于 |
 |----------|----------|
 | [Azure Monitor 日志](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 根据下面的架构记录事件和查询指标。 事件记录到 Log Analytics 工作区中。 可以针对工作区运行查询，以便从日志返回详细信息。 有关详细信息，请参阅[Azure Monitor 日志入门](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 根据下面的架构记录事件和查询指标。 事件记录到 Blob 容器并存储在 JSON 文件中。 使用 JSON 编辑器来查看文件内容。|
@@ -76,19 +76,21 @@ Azure Monitor 日志和 Blob 存储都作为免费服务提供，因此你可以
 
    存储帐户必须与 Azure 认知搜索位于同一区域。
 
-2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到“监视”，然后单击“启用监视”。
+2. 打开搜索服务的“概览”页。 在左侧导航窗格中，向下滚动到 "**监视**"，然后单击 "**诊断设置**"。
 
-   ![启用监视](./media/search-monitor-usage/enable-monitoring.png "启用监视")
+   ![诊断设置](./media/search-monitor-usage/diagnostic-settings.png "诊断设置")
 
-3. 选择想要导出的数据：日志和/或指标。 可以将其复制到存储帐户，将其发送到事件中心，或将其导出到 Azure Monitor 日志。
+3. 选择 "**添加诊断设置**"
+
+4. 选择想要导出的数据：日志和/或指标。 可以将其复制到存储帐户，将其发送到事件中心，或将其导出到 Azure Monitor 日志。
 
    若要存档到 Blob 存储，只有存储帐户必须存在。 导出日志数据时，将根据需要创建容器和 blob。
 
    ![配置 blob 存储存档](./media/search-monitor-usage/configure-blob-storage-archive.png "配置 blob 存储存档")
 
-4. 保存配置文件。
+5. 保存配置文件
 
-5. 通过创建或删除对象（创建日志事件）以及通过提交查询（生成指标）来测试日志记录。 
+6. 通过创建或删除对象（创建日志事件）以及通过提交查询（生成指标）来测试日志记录。 
 
 保存配置文件后，日志记录就会启用。 仅当存在要记录或度量的活动时，才会创建容器。 将数据复制到存储帐户时，数据会被格式化为 JSON 并置于两个容器中：
 
@@ -108,42 +110,42 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>日志架构
 包含搜索服务流量日志的 Blob 的结构如此部分所述。 每个 Blob 都有一个名为 **records** 的根对象，该对象包含一组日志对象。 每个 Blob 包含同一小时内发生的所有操作的记录。
 
-| 名称 | Type | 示例 | 说明 |
+| 名称 | 类型 | 示例 | 注意 |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
-| operationName |字符串 |“Query.Search” |操作的名称 |
-| operationVersion |字符串 |"2019-05-06" |使用的 api-version |
-| category |字符串 |“OperationLogs” |constant |
-| resultType |字符串 |“Success” |可能的值：成功或失败 |
+| resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |ResourceId |
+| operationName |string |“Query.Search” |操作的名称 |
+| operationVersion |string |"2019-05-06" |使用的 api-version |
+| category |string |“OperationLogs” |constant |
+| resultType |string |“Success” |可能的值：成功或失败 |
 | resultSignature |int |200 |HTTP 结果代码 |
 | durationMS |int |50 |操作持续时间，以毫秒为单位 |
 | 属性 |对象 |请参阅下表 |包含特定于操作的数据的对象 |
 
 **属性架构**
 
-| 名称 | Type | 示例 | 说明 |
+| 名称 | 类型 | 示例 | 注意 |
 | --- | --- | --- | --- |
-| 描述 |字符串 |“GET /indexes('content')/docs” |操作的终结点 |
-| Query |字符串 |"？ search = AzureSearch & $count = true & api 版本 = 2019-05-06" |查询参数 |
+| 说明 |string |“GET /indexes('content')/docs” |操作的终结点 |
+| 查询 |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |查询参数 |
 | 文档 |int |42 |处理的文档数目 |
-| IndexName |字符串 |“testindex” |与操作关联的索引名称 |
+| IndexName |string |“testindex” |与操作关联的索引名称 |
 
 ## <a name="metrics-schema"></a>度量值架构
 
 针对查询请求来捕获指标。
 
-| 名称 | Type | 示例 | 说明 |
+| 名称 | 类型 | 示例 | 注意 |
 | --- | --- | --- | --- |
-| resourceId |字符串 |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的资源 ID |
-| metricName |字符串 |“Latency” |度量值名称 |
+| resourceId |string |“/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE” |你的资源 ID |
+| metricName |string |“Latency” |度量值名称 |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |操作的时间戳 |
 | average |int |64 |度量值时间间隔内原始样本的平均值 |
 | minimum |int |37 |度量值时间间隔内原始样本的最小值 |
 | maximum |int |78 |度量值时间间隔内原始样本的最大值 |
 | total |int |258 |度量值时间间隔内原始样本的总计值 |
-| 计数 |int |4 |用于生成度量值的原始样本数 |
-| timegrain |字符串 |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
+| count |int |4 |用于生成度量值的原始样本数 |
+| timegrain |string |“PT1M” |采用 ISO 8601 的度量值时间粒度 |
 
 所有度量值会按一分钟的时间间隔报告。 每个度量值都会显示每分钟的最小、最大和平均值。
 

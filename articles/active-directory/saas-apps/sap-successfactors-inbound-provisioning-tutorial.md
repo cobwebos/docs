@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
-ms.openlocfilehash: c2a699a9fafdba60fb2a938fd4691c291562fbc5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292512"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060220"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配（预览版）
-本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../manage-apps/sap-successfactors-attribute-reference.md)。
+本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../app-provisioning/sap-successfactors-attribute-reference.md)。
 
 >[!NOTE]
 >如果要从 SuccessFactors 预配的用户需要本地 AD 帐户，并选择性地使用 Azure AD 帐户，请使用本教程。 如果 SuccessFactors 中的用户只需要 Azure AD 帐户（仅限云的用户），则请参阅[配置 SAP SuccessFactors 以 Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)用户预配教程。 
@@ -30,17 +30,17 @@ ms.locfileid: "76292512"
 
 ## <a name="overview"></a>概述
 
-[Azure Active Directory 用户预配服务](../manage-apps/user-provisioning.md)与[SuccessFactors 员工中心](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)集成，以便管理用户的标识生命周期。 
+[Azure Active Directory 用户预配服务](../app-provisioning/user-provisioning.md)与[SuccessFactors 员工中心](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)集成，以便管理用户的标识生命周期。 
 
 Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可实现以下人力资源和标识生命周期管理方案的自动化：
 
-* **招聘新员工**-将新员工添加到 SuccessFactors 时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中创建用户帐户，并将电子邮件地址的回写到 SuccessFactors。
+* **招聘新员工**-将新员工添加到 SuccessFactors 时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将电子邮件地址的回写到 SuccessFactors。
 
-* **员工属性和配置文件更新**-在 SuccessFactors 中更新员工记录（例如，其名称、标题或经理）时，将在 Active Directory、365 Azure Active Directory 以及[Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中自动更新其用户帐户。
+* **员工属性和配置文件更新**-在 SuccessFactors 中更新员工记录（例如，其名称、标题或经理）时，将在 Active Directory、365 Azure Active Directory 以及[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中自动更新其用户帐户。
 
-* **员工**离职-当员工在 SuccessFactors 中终止时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)中禁用其用户帐户。
+* **员工**离职-当员工在 SuccessFactors 中终止时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中禁用其用户帐户。
 
-* **员工 rehires** -当员工在 SuccessFactors 中 rehired 时，可以根据你的喜好自动重新激活或重新预配其旧帐户（取决于你的偏好） Active Directory、Azure Active Directory 和（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../manage-apps/user-provisioning.md)。
+* **员工 rehires** -当员工在 SuccessFactors 中 rehired 时，可以根据你的喜好自动重新激活或重新预配其旧帐户（取决于你的偏好） Active Directory、Azure Active Directory 和（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
@@ -82,7 +82,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 * 要部署的 AD 用户预配应用的 SuccessFactors 数
 * 匹配 ID、属性映射、转换和范围筛选器
 
-有关这些主题的综合指导原则，请参阅[云 HR 部署计划](../manage-apps/plan-cloud-hr-provision.md)。 
+有关这些主题的综合指导原则，请参阅[云 HR 部署计划](../app-provisioning/plan-cloud-hr-provision.md)。 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>为集成配置 SuccessFactors
 
@@ -115,9 +115,9 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
   > ![读取写入权限](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
   >[!NOTE]
-  >有关此预配应用检索到的属性的完整列表，请参阅[SuccessFactors 特性引用](../manage-apps/sap-successfactors-attribute-reference.md)
+  >有关此预配应用检索到的属性的完整列表，请参阅[SuccessFactors 特性引用](../app-provisioning/sap-successfactors-attribute-reference.md)
 
-* 单击“完成”。 单击 **“保存更改”** 。
+* 单击“完成”。 单击“保存更改”。
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>为 API 用户创建权限组
 
@@ -146,7 +146,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 * 查看权限角色授予权限组。 
   > [!div class="mx-imgBorder"]
   > ![权限角色和组详细信息](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* 单击 **“保存更改”** 。
+* 单击“保存更改”。
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>配置从 SuccessFactors 到 Active Directory 的用户预配
 
@@ -296,14 +296,14 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
    > 首次配置预配应用时，需要测试和验证属性映射和表达式，以确保它提供所需的结果。 Microsoft 建议使用**源对象范围**下的范围筛选器，通过 SuccessFactors 中的几个测试用户测试映射。 验证确保映射正常工作后，可删除筛选器，也可逐渐扩大范围以包含更多用户。
 
    > [!CAUTION] 
-   > 设置引擎的默认行为是禁用/删除超出作用域的用户。 这可能不是你 SuccessFactors 的 AD 集成所需的。 若要替代此默认行为，请参阅[跳过删除超出范围的用户帐户的](../manage-apps/skip-out-of-scope-deletions.md)文章
+   > 设置引擎的默认行为是禁用/删除超出作用域的用户。 这可能不是你 SuccessFactors 的 AD 集成所需的。 若要替代此默认行为，请参阅[跳过删除超出范围的用户帐户的](../app-provisioning/skip-out-of-scope-deletions.md)文章
   
 1. 在“目标对象操作”字段中，可全局筛选要对 Active Directory 执行的操作。 “创建”和“更新”是最常见的操作。
 
 1. 在 "**属性映射**" 部分中，可以定义单个 SuccessFactors 属性映射到 Active Directory 属性的方式。
 
   >[!NOTE]
-  >有关应用程序支持的 SuccessFactors 特性的完整列表，请参阅[SuccessFactors 特性引用](../manage-apps/sap-successfactors-attribute-reference.md)
+  >有关应用程序支持的 SuccessFactors 特性的完整列表，请参阅[SuccessFactors 特性引用](../app-provisioning/sap-successfactors-attribute-reference.md)
 
 
 1. 单击现有的属性映射可将其更新，单击屏幕底部的“添加新映射”可添加新的映射。 单个属性映射支持以下属性：
@@ -314,7 +314,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 
          * **常量映射** - 将静态常量字符串值写入 AD 属性
 
-         * **Expression** –允许你根据一个或多个 SuccessFactors 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../manage-apps/functions-for-customizing-application-data.md)。
+         * **Expression** –允许你根据一个或多个 SuccessFactors 属性将自定义值写入 AD 属性。 [有关详细信息，请参阅这篇有关表达式的文章](../app-provisioning/functions-for-customizing-application-data.md)。
 
       * **源属性**-SuccessFactors 中的用户属性
 
@@ -346,7 +346,7 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 1. 在“预配”选项卡中，将“预配状态”设置为“打开”。
 
-2. 单击“ **保存**”。
+2. 单击 **“保存”** 。
 
 3. 此操作将启动初始同步，这可能会花费几小时的时间，具体取决于 SuccessFactors 租户中的用户数量。 您可以查看进度栏，以跟踪同步周期的进度。 
 
@@ -359,9 +359,9 @@ SuccessFactors 预配应用配置完成后，即可在 Azure 门户中打开预�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [详细了解用于入站预配的支持 SuccessFactors 属性](../manage-apps/sap-successfactors-attribute-reference.md)
+* [详细了解用于入站预配的支持 SuccessFactors 属性](../app-provisioning/sap-successfactors-attribute-reference.md)
 * [了解如何配置电子邮件写回 SuccessFactors](sap-successfactors-writeback-tutorial.md)
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何在 SuccessFactors 与 Azure Active Directory 之间配置单一登录](successfactors-tutorial.md)
 * [了解如何将其他 SaaS 应用程序与 Azure Active Directory 进行集成](tutorial-list.md)
-* [了解如何导出和导入预配配置](../manage-apps/export-import-provisioning-configuration.md)
+* [了解如何导出和导入预配配置](../app-provisioning/export-import-provisioning-configuration.md)

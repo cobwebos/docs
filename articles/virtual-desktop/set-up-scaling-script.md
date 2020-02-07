@@ -1,138 +1,255 @@
 ---
-title: 动态缩放 Windows 虚拟桌面会话主机-Azure
-description: 描述如何为 Windows 虚拟桌面会话主机设置自动缩放脚本。
+title: 缩放会话托管 Azure 自动化-Azure
+description: 如何利用 Azure 自动化自动缩放 Windows 虚拟桌面会话主机。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: a991a41466d216b9f245c20dbd8054f3ae5ef3d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451340"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061470"
 ---
-# <a name="scale-session-hosts-dynamically"></a>动态缩放会话主机
+# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化缩放会话主机
 
-对于 Azure 中的许多 Windows 虚拟桌面部署，虚拟机成本表示 Windows 虚拟桌面总部署成本的重要部分。 为了降低成本，最好关闭并解除分配会话主机虚拟机（Vm）在非高峰使用时间，并在高峰使用时间内重新启动它们。
+你可以通过缩放虚拟机（Vm）来降低 Windows 虚拟桌面总部署成本。 这意味着在非高峰使用时间使用会话主机 Vm，然后将其重新打开并在高峰时段重新分配。
 
-本文使用简单的缩放脚本来自动缩放 Windows 虚拟桌面环境中的会话主机虚拟机。 若要了解有关缩放脚本工作方式的详细信息，请参阅[缩放脚本的工作](#how-the-scaling-script-works)原理部分。
+在本文中，你将了解如何利用 Azure 自动化和 Azure 逻辑应用（将在 Windows 虚拟桌面环境中自动缩放会话主机虚拟机）构建的缩放工具。 若要了解如何使用缩放工具，请跳到[必备组件](#prerequisites)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="how-the-scaling-tool-works"></a>缩放工具的工作原理
 
-运行脚本的环境必须具有以下各项：
+缩放工具为要优化其会话主机 VM 成本的客户提供了低成本的自动化选项。
 
-- 具有查询该租户的权限的 Windows 虚拟桌面租户和帐户或服务主体（如 RDS 参与者）。
-- 已配置 Windows 虚拟桌面服务并向其注册的会话主机池 Vm。
-- 通过任务计划程序运行计划任务的其他虚拟机，它具有对会话主机的网络访问权限。 稍后将在文档中将其称为 scaler VM。
-- 运行计划任务的 VM 上安装的[Microsoft Azure 资源管理器 PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
-- 运行计划任务的 VM 上安装的[Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)。
+可以使用缩放工具执行以下操作：
+ 
+- 根据高峰期和非高峰时段，计划要启动和停止的 Vm。
+- 基于每个 CPU 核心的会话数横向扩展 Vm。
+- 在非高峰时段扩展 Vm 规模，使最小数量的会话主机 Vm 保持运行。
 
-## <a name="recommendations-and-limitations"></a>建议和限制
+缩放工具结合使用 Azure 自动化 PowerShell runbook、webhook 和 Azure 逻辑应用来发挥作用。 当该工具运行时，Azure 逻辑应用会调用 webhook 来启动 Azure 自动化 runbook。 然后，runbook 会创建一个作业。
 
-运行缩放脚本时，请记住以下事项：
+高峰使用时间期间，作业将检查每个主机池当前正在运行的会话主机的当前会话数和 VM 容量。 它使用此信息来计算正在运行的会话主机 Vm 是否可支持基于为**createazurelogicapp**文件定义的*SessionThresholdPerCPU*参数的现有会话。 如果会话主机 Vm 无法支持现有会话，则该作业会在主机池中启动其他会话主机 Vm。
 
-- 此缩放脚本只能处理运行缩放脚本的计划任务的每个实例一个主机池。
-- 运行缩放脚本的计划任务必须位于始终启用的 VM 上。
-- 为缩放脚本及其配置的每个实例创建一个单独的文件夹。
-- 此脚本不支持使用需要多重身份验证的 Azure AD 用户帐户以管理员身份登录 Windows 虚拟桌面。 建议使用服务主体访问 Windows 虚拟桌面服务和 Azure。 按照[此教程](create-service-principal-role-powershell.md)使用 PowerShell 创建服务主体和角色分配。
-- Azure 的 SLA 保证仅适用于可用性集中的虚拟机。 文档的当前版本描述了一个环境，其中的单个 VM 执行缩放，这可能不符合可用性要求。
+>[!NOTE]
+>*SessionThresholdPerCPU*不会限制虚拟机上的会话数。 此参数仅确定需要启动新 Vm 以对连接进行负载平衡的时间。 若要限制会话数，需要按照说明[RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool)来相应地配置*MaxSessionLimit*参数。
 
-## <a name="deploy-the-scaling-script"></a>部署缩放脚本
+在非高峰使用时间内，作业根据*MinimumNumberOfRDSH*参数确定哪些会话主机 vm 应关闭。 该作业会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果将*LimitSecondsToForceLogOffUser*参数设置为非零正值，则脚本将通知所有当前已登录用户保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该脚本会关闭 VM。
 
-以下过程将告诉你如何部署缩放脚本。
+如果将*LimitSecondsToForceLogOffUser*参数设置为零，则该作业将允许指定组策略中的会话配置设置处理注销用户会话。 若要查看这些组策略，请参阅 "**计算机配置** > **策略**" > **管理模板** > **Windows 组件** ** > 终端**服务器 > "终端**服务器** > **会话时间限制**"。 如果会话主机 VM 上存在任何活动会话，则该作业会使该会话主机 VM 运行。 如果没有活动会话，则该作业将关闭会话主机 VM。
 
-### <a name="prepare-your-environment-for-the-scaling-script"></a>为缩放脚本准备环境
+作业基于设置的重复间隔定期运行。 你可以根据 Windows 虚拟桌面环境的大小更改此间隔，但请记住，启动和关闭虚拟机可能需要一些时间，因此请记住延迟。 建议将重复间隔设置为每15分钟一次。
 
-首先，为缩放脚本准备环境：
+但是，该工具也具有下列限制：
 
-1. 登录到将使用域管理帐户运行计划任务的 VM （scaler VM）。
-2. 在 scaler VM 上创建一个文件夹来保存缩放脚本及其配置（例如， **C：\\缩放-HostPool1**）。
-3. 从[缩放脚本存储库](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script)下载**basicScale**、 **.config**和**Functions-PSStoredCredentials**文件，**并将其**复制到在步骤2中创建的文件夹。 可以通过两种主要方式获取文件，然后将其复制到 scaler VM：
-    - 将 git 存储库克隆到本地计算机。
-    - 查看每个文件的**原始**版本，将每个文件的内容复制并粘贴到文本编辑器中，然后使用相应的文件名和文件类型保存文件。 
+- 此解决方案仅适用于共用的会话主机 Vm。
+- 此解决方案管理任何区域中的 Vm，但只能在与 Azure 自动化帐户和 Azure 逻辑应用相同的订阅中使用。
 
-### <a name="create-securely-stored-credentials"></a>创建安全存储的凭据
+>[!NOTE]
+>缩放工具控制它正在缩放的主机池的负载平衡模式。 它将其设置为高峰期和非高峰时段的广度优先负载平衡。
 
-接下来，需要创建安全存储的凭据：
+## <a name="prerequisites"></a>先决条件
 
-1. 以管理员身份打开 PowerShell ISE。
-2. 通过运行以下 cmdlet 导入 RDS PowerShell 模块：
+开始设置缩放工具之前，请确保已准备好以下内容：
 
-    ```powershell
-    Install-Module Microsoft.RdInfra.RdPowershell
-    ```
-    
-3. 打开编辑窗格并加载**Function-PSStoredCredentials**文件，然后运行整个脚本（F5）
-4. 运行以下 cmdlet：
-    
-    ```powershell
-    Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
-    ```
-    
-    例如， **KeyPath-Scope 全局值 "c：\\HostPool1"**
-5. 运行**StoredCredential-KeyPath \$KeyPath** cmdlet。 出现提示时，输入具有查询主机池权限的 Windows 虚拟桌面凭据（在**配置**中指定主机池）。
-    - 如果使用不同的服务主体或标准帐户，请对每个帐户运行**StoredCredential-KeyPath \$KeyPath** cmdlet，以创建本地存储的凭据。
-6. 运行**StoredCredential-List**确认已成功创建凭据。
+- [Windows 虚拟桌面租户和主机池](create-host-pools-arm-template.md)
+- 已配置 Windows 虚拟桌面服务并向其注册的会话主机池 Vm
+- 对 Azure 订阅具有[参与者访问权限](../role-based-access-control/role-assignments-portal.md)的用户
 
-### <a name="configure-the-configjson-file"></a>配置配置 json 文件
+用于部署此工具的计算机必须具有： 
 
-在以下字段中输入相关值，以更新配置中的扩展脚本设置：
+- Windows PowerShell 5.1 或更高版本
+- Microsoft Az PowerShell 模块
 
-| 字段                     | Description                    |
-|-------------------------------|------------------------------------|
-| AADTenantId                   | 将会话主机 Vm 运行到的订阅关联的 Azure AD 租户 ID     |
-| AADApplicationId              | 服务主体应用程序 ID                                                       |
-| AADServicePrincipalSecret     | 这可以在测试阶段输入，但一旦你通过 Functions-PSStoredCredentials 创建凭据，就会将其保留为空 **。**    |
-| currentAzureSubscriptionId    | 运行会话主机 Vm 的 Azure 订阅的 ID                        |
-| tenantName                    | Windows 虚拟桌面租户名称                                                    |
-| hostPoolName                  | Windows 虚拟桌面主机池名称                                                 |
-| RDBroker                      | WVD 服务的 URL，默认值 https：\//rdbroker.wvd.microsoft.com             |
-| 用户名                      | 服务主体应用程序 ID （在 AADApplicationId 中可能具有相同的服务主体）或没有多重身份验证的标准用户 |
-| isServicePrincipal            | 接受的值为**true**或**false**。 指示所使用的第二组凭据是否为服务主体或标准帐户。 |
-| BeginPeakTime                 | 当高峰使用时间开始时                                                            |
-| EndPeakTime                   | 高峰使用时间结束时                                                              |
-| TimeDifferenceInHours         | 本地时间和 UTC 之间的时间差（以小时为单位）                                   |
-| SessionThresholdPerCPU        | 每 CPU 的最大会话数阈值，用于确定在高峰时段需要启动新的会话主机 VM 的时间。  |
-| MinimumNumberOfRDSH           | 在非高峰使用时间保持运行的主机池 Vm 的最小数目             |
-| LimitSecondsToForceLogOffUser | 强制用户注销前等待的秒数。如果设置为0，则不会强制用户注销。  |
-| LogOffMessageTitle            | 强制注销前发送给用户的消息的标题                  |
-| LogOffMessageBody             | 在用户注销前发送给用户的警告消息的正文。例如，"此计算机将在 X 分钟后关闭。 请保存你的工作并注销。 " |
+如果一切就绪，让我们开始吧。
 
-### <a name="configure-the-task-scheduler"></a>配置任务计划程序
+## <a name="create-an-azure-automation-account"></a>创建 Azure 自动化帐户
 
-配置 JSON 文件配置后，需要将任务计划程序配置为按固定间隔运行 basicScaler 文件。
+首先，你将需要一个 Azure 自动化帐户来运行 PowerShell runbook。 下面是设置帐户的方法：
 
-1. 开始**任务计划程序**。
-2. 在 "**任务计划程序**" 窗口中，选择 "**创建任务 ...** "
-3. 在 **"创建任务**" 对话框中，选择 "**常规**" 选项卡，输入**名称**（例如，"动态 RDSH"），选择 "**运行用户是否登录**"，或 "**使用最高权限运行**"。
-4. 中转到 "**触发器**" 选项卡，然后选择 "**新建 ...** "
-5. 在 "**新建触发器**" 对话框中的 "**高级设置**" 下，选中 "**重复任务**"，然后选择适当的时间段和持续时间（例如**15 分钟**或**无限期**）。
-6. 选择 "**操作**" 选项卡和 "**新建 ...** "
-7. 在 "**新建操作**" 对话框中，在 "**程序/脚本**" 字段中输入 " **powershell** "，然后在 "**添加参数（可选）** " 字段中输入**C：\\缩放\\basicScale** 。
-8. 前往 "**条件**和**设置**" 选项卡，然后选择 **"确定"** 以接受每个选项的默认设置。
-9. 输入计划运行缩放脚本的管理帐户的密码。
+1. 以管理员身份打开 Windows PowerShell。
+2. 运行以下 cmdlet 登录到 Azure 帐户。
 
-## <a name="how-the-scaling-script-works"></a>缩放脚本的工作原理
+     ```powershell
+     Login-AzAccount
+     ```
 
-此扩展脚本从配置文件中读取设置，包括一天中高峰使用期限的开始和结束。
+     >[!NOTE]
+     >你的帐户必须对要在其上部署缩放工具的 Azure 订阅具有参与者权限。
 
-高峰使用时间期间，该脚本会检查当前会话数和每个主机池的当前正在运行的 RDSH 容量。 它计算正在运行的会话主机 Vm 是否有足够的容量来支持基于配置文件中定义的 SessionThresholdPerCPU 参数的现有会话。 否则，该脚本会在主机池中启动其他会话主机 Vm。
+3. 运行以下 cmdlet，下载用于创建 Azure Automation 帐户的脚本：
 
-在非高峰使用时间内，该脚本根据 config.xml 文件中的 MinimumNumberOfRDSH 参数确定应关闭的会话主机。 此脚本会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果在配置文件中将**LimitSecondsToForceLogOffUser**参数设置为非零正值，则该脚本将通知所有当前已登录的用户保存工作，等待配置的时间长度，然后强制用户注销。在会话主机 VM 上注销所有用户会话后，该脚本将关闭服务器。
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazureautomationaccount.ps1" -OutFile "your local machine path\ createazureautomationaccount.ps1"
+     ```
 
-如果在配置文件中将**LimitSecondsToForceLogOffUser**参数设置为零，则该脚本将允许主机池属性中的会话配置设置处理注销用户会话。 如果会话主机 VM 上有任何会话，它会使会话主机 VM 运行。 如果没有任何会话，该脚本将关闭会话主机 VM。
+4. 运行以下 cmdlet 以执行脚本并创建 Azure 自动化帐户：
 
-此脚本设计为在 scaler VM 服务器上使用任务计划程序定期运行。 根据远程桌面服务环境的大小选择适当的时间间隔，并记住启动和关闭虚拟机可能需要一些时间。 建议每15分钟运行一次缩放脚本。
+     ```powershell
+     .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
+     ```
 
-## <a name="log-files"></a>日志文件
+5. 此 cmdlet 的输出将包含 webhook URI。 请确保保留 URI 记录，因为当你为 Azure 逻辑应用设置执行计划时，将使用该 URI 作为参数。
 
-缩放脚本创建两个日志文件： **WVDTenantScale**和**WVDTenantUsage**。 **WVDTenantScale**文件将记录每次执行缩放脚本时的事件和错误（如果有）。
+设置 Azure 自动化帐户后，请登录到 Azure 订阅，并进行检查以确保你的 Azure 自动化帐户和相关 runbook 显示在指定的资源组中，如下图所示：
 
-每次执行缩放脚本时， **WVDTenantUsage**文件都将记录活动的内核数和活动数量的虚拟机。 你可以使用此信息来估算 Microsoft Azure Vm 的实际使用情况和成本。 此文件的格式为逗号分隔值，每个项都包含以下信息：
+![显示新创建的自动化帐户和 runbook 的 Azure 概述页的图像。](media/automation-account.png)
 
->时间，主机池，个内核，个 Vm
+若要检查 webhook 是否应为，请在屏幕左侧的 "资源" 列表中，选择 " **webhook**"。
 
-还可以修改文件名以使其具有 .csv 扩展名，并将其加载到 Microsoft Excel 中并进行分析。
+## <a name="create-an-azure-automation-run-as-account"></a>创建 Azure 自动化运行方式帐户
+
+使用 Azure 自动化帐户后，还需要创建 Azure 自动化运行方式帐户来访问 Azure 资源。
+
+[Azure 自动化运行方式帐户](../automation/manage-runas-account.md)为使用 azure Cmdlet 管理 azure 中的资源提供身份验证。 创建运行方式帐户时，它会在 Azure Active Directory 中创建新的服务主体用户，并在订阅级别将参与者角色分配给服务主体用户，Azure 运行方式帐户是安全地进行身份验证的一种绝佳方式。证书和服务主体名称，而无需在凭据对象中存储用户名和密码。 若要了解有关运行方式身份验证的详细信息，请参阅[限制运行方式帐户权限](../automation/manage-runas-account.md#limiting-run-as-account-permissions)。
+
+如果任何用户是订阅管理员角色的成员，并且共同管理员订阅，则可以按照下一部分的说明创建运行方式帐户。
+
+在 Azure 帐户中创建运行方式帐户：
+
+1. 在 Azure 门户中，选择“所有服务”。 在资源列表中，输入并选择 "**自动化帐户**"。
+
+2. 在 "**自动化帐户**" 页上，选择自动化帐户的名称。
+
+3. 在窗口左侧的窗格中，选择 "帐户设置" 部分下的 "**运行方式帐户**"。
+
+4. 选择 " **Azure 运行方式帐户**"。 当 "**添加 Azure 运行方式帐户**" 窗格出现时，查看概述信息，然后选择 "**创建**" 以启动帐户创建过程。
+
+5. 等待几分钟，让 Azure 创建运行方式帐户。 可以在 "通知" 下的菜单中跟踪创建进度。
+
+6. 完成此过程后，它将在指定的自动化帐户中创建名为 AzureRunAsConnection 的资产。 连接资产包含应用程序 ID、租户 ID、订阅 ID 和证书指纹。 请记住应用程序 ID，因为稍后将使用它。
+
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中创建角色分配
+
+接下来，需要创建一个角色分配，以便 AzureRunAsConnection 可以与 Windows 虚拟桌面进行交互。 请确保使用 PowerShell 通过有权创建角色分配的帐户进行登录。
+
+首先，下载并导入要在 PowerShell 会话中使用的[Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做）。 运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并显示你的租户。
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+
+Get-RdsTenant
+```
+
+找到要缩放的主机池的租户后，请按照[创建 Azure 自动化帐户](#create-an-azure-automation-account)中的说明操作，并使用在以下 cmdlet 中从上一个 cmdlet 获取的租户名称创建角色分配：
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
+```
+
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>创建 Azure 逻辑应用和执行计划
+
+最后，需要创建 Azure 逻辑应用，并为新的缩放工具设置执行计划。
+
+1.  以管理员身份打开 Windows PowerShell
+
+2.  运行以下 cmdlet 登录到 Azure 帐户。
+
+     ```powershell
+     Login-AzAccount
+     ```
+
+3. 运行以下 cmdlet，将 createazurelogicapp 脚本文件下载到本地计算机上。
+
+     ```powershell
+     Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
+     ```
+
+4. 运行以下 cmdlet，以使用具有 RDS 所有者或 RDS 参与者权限的帐户登录到 Windows 虚拟桌面。
+
+     ```powershell
+     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+     ```
+
+5. 运行以下 PowerShell 脚本以创建 Azure 逻辑应用和执行计划。
+
+     ```powershell
+     $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
+     
+     $aadTenantId = Read-Host -Prompt "Enter your Azure AD tenant ID"
+
+     $subscriptionId = Read-Host -Prompt "Enter your Azure Subscription ID"
+
+     $tenantName = Read-Host -Prompt "Enter the name of your WVD tenant"
+
+     $hostPoolName = Read-Host -Prompt "Enter the name of the host pool you’d like to scale"
+
+     $recurrenceInterval = Read-Host -Prompt "Enter how often you’d like the job to run in minutes, e.g. ‘15’"
+
+     $beginPeakTime = Read-Host -Prompt "Enter the start time for peak hours in local time, e.g. 9:00"
+
+     $endPeakTime = Read-Host -Prompt "Enter the end time for peak hours in local time, e.g. 18:00"
+
+     $timeDifference = Read-Host -Prompt "Enter the time difference between local time and UTC in hours, e.g. +5:30"
+
+     $sessionThresholdPerCPU = Read-Host -Prompt "Enter the maximum number of sessions per CPU that will be used as a threshold to determine when new session host VMs need to be started during peak hours"
+
+     $minimumNumberOfRdsh = Read-Host -Prompt "Enter the minimum number of session host VMs to keep running during off-peak hours"
+
+     $limitSecondsToForceLogOffUser = Read-Host -Prompt "Enter the number of seconds to wait before automatically signing out users. If set to 0, users will be signed out immediately"
+
+     $logOffMessageTitle = Read-Host -Prompt "Enter the title of the message sent to the user before they are forced to sign out"
+
+     $logOffMessageBody = Read-Host -Prompt "Enter the body of the message sent to the user before they are forced to sign out"
+
+     $location = Read-Host -Prompt "Enter the name of the Azure region where you will be creating the logic app"
+
+     $connectionAssetName = Read-Host -Prompt "Enter the name of the Azure RunAs connection asset"
+
+     $webHookURI = Read-Host -Prompt "Enter the URI of the WebHook returned by when you created the Azure Automation Account"
+
+     $automationAccountName = Read-Host -Prompt "Enter the name of the Azure Automation Account"
+
+     $maintenanceTagName = Read-Host -Prompt "Enter the name of the Tag associated with VMs you don’t want to be managed by this scaling tool"
+
+     .\createazurelogicapp.ps1 -ResourceGroupName $resourceGroupName `
+       -AADTenantID $aadTenantId `
+       -SubscriptionID $subscriptionId `
+       -TenantName $tenantName `
+       -HostPoolName $hostPoolName `
+       -RecurrenceInterval $recurrenceInterval `
+       -BeginPeakTime $beginPeakTime `
+       -EndPeakTime $endPeakTime `
+       -TimeDifference $timeDifference `
+       -SessionThresholdPerCPU $sessionThresholdPerCPU `
+       -MinimumNumberOfRDSH $minimumNumberOfRdsh `
+       -LimitSecondsToForceLogOffUser $limitSecondsToForceLogOffUser `
+       -LogOffMessageTitle $logOffMessageTitle `
+       -LogOffMessageBody $logOffMessageBody `
+       -Location $location `
+       -ConnectionAssetName $connectionAssetName `
+       -WebHookURI $webHookURI `
+       -AutomationAccountName $automationAccountName `
+       -MaintenanceTagName $maintenanceTagName
+     ```
+
+     运行该脚本后，逻辑应用应出现在资源组中，如下图所示。
+
+     ![示例 Azure 逻辑应用的 "概述" 页的图像。](media/logic-app.png)
+
+若要更改执行计划（例如更改定期间隔或时区），请在自动缩放计划程序中，选择 "**编辑**" 以进入逻辑应用设计器。
+
+![逻辑应用设计器的图像。 定期和 Webhook 菜单允许用户编辑重复执行时间，webhook 文件处于打开状态。](media/logic-apps-designer.png)
+
+## <a name="manage-your-scaling-tool"></a>管理缩放工具
+
+现在，你已创建缩放工具，你可以访问其输出。 本部分介绍一些你可能会有所帮助的功能。
+
+### <a name="view-job-status"></a>查看作业状态
+
+你可以查看所有 runbook 作业的摘要状态，或在 Azure 门户中查看特定 runbook 作业的更深入状态。
+
+在所选自动化帐户的右侧，在 "作业统计信息" 下，你可以查看所有 runbook 作业的摘要列表。 打开窗口左侧的 "**作业**" 页将显示当前作业状态、开始时间和完成时间。
+
+![作业状态页的屏幕截图。](media/jobs-status.png)
+
+### <a name="view-logs-and-scaling-tool-output"></a>查看日志和缩放工具输出
+
+可以通过打开 runbook 并选择作业名称来查看扩展和扩展操作的日志。
+
+在托管 Azure Automation 帐户的资源组中，导航到 runbook （默认名称为 WVDAutoScaleRunbook），并选择 "**概述**"。 在 "概述" 页上，选择 "最近的作业" 下的作业以查看其缩放工具输出，如下图所示。
+
+![缩放工具的输出窗口的图像。](media/tool-output.png)

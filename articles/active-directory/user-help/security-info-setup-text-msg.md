@@ -2,7 +2,7 @@
 title: 设置文本消息作为验证方法-Azure AD
 description: 如何设置安全信息（预览版）页，以使用短信作为验证方法来验证您的身份。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.author: lizross
-ms.openlocfilehash: 1d21445d12ea8ae7040627c6f9bdae7c744953c3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 0525ee6d0ac5df61113e5a97c9812394323ffb3d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704810"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062347"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>设置文本消息作为验证方法
 
@@ -89,11 +89,11 @@ ms.locfileid: "76704810"
 
     ![更改默认登录方法的链接](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. 从可用方法的下拉列表中选择“电话 - 短信 (_your_phone_number_)”，然后选择“确认”。
+2. 从可用方法的下拉列表中选择“电话 - 短信 (**your_phone_number *)”，然后选择“确认”*** 。
 
     ![选择默认登录的方法](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    用于登录的默认方法更改为“电话 - 短信 (_your_phone_number_ )”。
+    用于登录的默认方法更改为“电话 - 短信 (**your_phone_number *)”*** 。
 
 ## <a name="additional-security-info-methods"></a>其他安全信息方法
 

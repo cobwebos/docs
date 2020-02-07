@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 9e9dd529edea23b27de2e3841079244558d6689a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442102"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064489"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD 标识的基于证书的身份验证，用于访问 Azure Cosmos DB 帐户中的密钥
 
-基于证书的身份验证使客户端应用程序能够通过使用 Azure Active Directory （Azure AD）和客户端证书进行身份验证。 你可以在需要标识的计算机（例如本地计算机或 Azure 中的虚拟机）上执行基于证书的身份验证。 然后，应用程序可以读取 Azure Cosmos DB 密钥，而无需在应用程序中直接包含密钥。 本文介绍如何创建 Azure AD 应用程序示例，将其配置为基于证书的身份验证，使用新应用程序标识登录到 Azure，然后从 Azure Cosmos 帐户中检索密钥。 本文使用 Azure PowerShell 设置标识，并提供一个C#可从 Azure Cosmos 帐户对密钥进行身份验证和访问的示例应用。  
+基于证书的身份验证让你可以使用 Azure Active Directory (Azure AD) 和客户端证书对客户端应用程序进行身份验证。 你可以在需要身份的计算机（例如本地计算机或 Azure 中的虚拟机）上执行基于证书的身份验证。 然后，应用程序可以读取 Azure Cosmos DB 密钥，而无需在应用程序中直接包含密钥。 本文介绍如何创建 Azure AD 应用程序示例，将其配置为基于证书的身份验证，使用新应用程序标识登录到 Azure，然后从 Azure Cosmos 帐户中检索密钥。 本文使用 Azure PowerShell 设置标识，并提供一个C#可从 Azure Cosmos 帐户对密钥进行身份验证和访问的示例应用。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 安装[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
 
@@ -55,7 +55,6 @@ ms.locfileid: "75442102"
 1. 以管理员权限打开 Windows PowerShell ISE。 如果尚未执行此操作，请安装 AZ PowerShell 模块并连接到你的订阅。 如果有多个订阅，可以设置当前订阅的上下文，如以下命令中所示：
 
    ```powershell
-
    Install-Module -Name Az -AllowClobber
    Connect-AzAccount
 
@@ -126,7 +125,7 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. 选择**证书 & 机密**，然后**上传证书**。 浏览在上一步中创建的证书文件，以便上传。
 
-1. 选择 **添加** 。 上载证书后，将显示指纹、开始日期和过期值。
+1. 选择“添加”。 上载证书后，将显示指纹、开始日期和过期值。
 
 ## <a name="access-the-keys-from-powershell"></a>从 PowerShell 访问密钥
 

@@ -13,12 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: MT
+ms.openlocfilehash: 54df91d38541fbe17a28c9ae083ae0e7d0c9d88d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695001"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063656"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>适用于 MSAL.NET 的 Xamarin 特定于 Android 的注意事项
 本文介绍将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
@@ -71,16 +71,19 @@ protected override void OnActivityResult(int requestCode,
 
 ## <a name="update-the-android-manifest"></a>更新 Android 清单
 `AndroidManifest.xml` 应包含以下值：
-```csharp
+```xml
 <activity android:name="microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="msal{client_id}" android:host="auth" />
+        <data android:scheme="msauth"
+              android:host="Enter_the_Package_Name"
+              android:path="/Enter_the_Signature_Hash"/>
          </intent-filter>
 </activity>
 ```
+将 `android:host=` 值替换为在 Azure 门户中注册的包名称。 将 `android:path=` 值替换为在 Azure 门户中注册的密钥哈希。 签名哈希不应进行 URL 编码。 确保签名哈希的开头有前导 `/`。
 
 或者，你可以[在代码中创建活动](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而不是手动编辑 `AndroidManifest.xml`。 为此，你必须创建一个具有 `Activity` 和 `IntentFilter` 属性的类。 表示上述 xml 相同值的类应为：
 
@@ -141,6 +144,6 @@ var authResult = AcquireTokenInteractive(scopes)
 
 以下示例的 readme.md 文件的[Android 特定注意事项](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)段落中提供了更多详细信息和示例：
 
-| 示例 | 平台 | Description |
+| 示例 | 平台 | 说明 |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个简单的 Xamarin Forms 应用，展示如何通过 AADD v2.0 终结点使用 MSAL 对 MSA 和 Azure AD 进行身份验证，并使用生成的令牌访问 Microsoft Graph。 <br>![拓扑](media/msal-net-xamarin-android-considerations/topology.png) |
