@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 8b1728332ae050899f88f5c00e98a2a08e036cba
-  ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+  ms.openlocfilehash: 37f3581866a687cce3f65d17175a334f5bba11d7
+  ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/04/2020
-  ms.locfileid: "76980998"
+  ms.lasthandoff: 02/06/2020
+  ms.locfileid: "77047306"
 landingContent:
 - title: 关于 Azure 应用配置
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
       url: quickstart-aspnet-core-app.md
     - text: 使用 C# 编写 Azure Functions 应用代码
       url: quickstart-azure-functions-csharp.md
-    - text: 编写 Java Spring 应用代码
+    - text: 编写 Spring Boot 应用代码
       url: quickstart-java-spring-app.md
   - linkListType: tutorial
     links:
@@ -78,7 +78,7 @@ landingContent:
     links:
     - text: 在 ASP.NET Core 应用中使用 Key Vault 引用
       url: use-key-vault-references-dotnet-core.md
-    - text: 在 Java Spring 应用中使用 Key Vault 引用
+    - text: 在 Spring Boot 应用中使用 Key Vault 引用
       url: use-key-vault-references-spring-boot.md
   - linkListType: sample
     links:
@@ -98,7 +98,7 @@ landingContent:
       url: quickstart-feature-flag-aspnet-core.md
     - text: .NET Framework 应用
       url: quickstart-feature-flag-dotnet.md
-    - text: Java Spring 应用
+    - text: Spring Boot 应用
       url: quickstart-feature-flag-spring-boot.md
   - linkListType: tutorial
     links:
@@ -126,7 +126,7 @@ landingContent:
       url: https://go.microsoft.com/fwlink/?linkid=2074663
     - text: 用于 .Net 的 Azure SDK
       url: https://go.microsoft.com/fwlink/?linkid=2092056
-    - text: Java Spring 提供程序
+    - text: Spring Boot 提供程序
       url: https://go.microsoft.com/fwlink/?linkid=2074659
     - text: 用于 Java 的 Azure SDK
       url: https://go.microsoft.com/fwlink/?linkid=2098196

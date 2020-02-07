@@ -161,6 +161,8 @@
         - name: 部署 - REST API
           displayName: deployment
           href: deploy-rest.md
+        - name: 从 GitHub 进行部署
+          href: deploy-to-azure-button.md
         - name: 模拟部署
           href: template-deploy-what-if.md
         - name: 出错时重新部署

@@ -437,7 +437,7 @@
       href: vmware-azure-disaster-recovery-powershell.md
     - name: 使用 PowerShell 设置 Hyper-V VM 到 Azure 的灾难恢复
       href: hyper-v-azure-powershell-resource-manager.md
-    - name: 使用 PowerShell 设置 Hyper-V VM（带 VMM）到 Azure 的灾难恢复
+    - name: 使用 PowerShell 设置 Hyper-V VM（带 VMM）的灾难恢复
       href: hyper-v-vmm-powershell-resource-manager.md
     - name: 将自动化 Runbook 添加到恢复计划
       href: site-recovery-runbook-automation.md
