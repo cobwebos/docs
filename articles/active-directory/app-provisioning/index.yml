@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: 应用程序和 HR 预配文档
+summary: 使用 Azure Active Directory 应用预配，可以在云 (SaaS) 应用中自动创建和管理用户标识。 Azure AD 还为基于云的人力资源 (HR) 应用程序提供预配。 使用我们的快速入门、教程和指南了解如何管理和部署云应用与 HR 预配。
+metadata:
+  title: 应用程序预配文档
+  description: 使用 Azure Active Directory 应用预配，可以在云 (SaaS) 应用中自动创建和管理用户标识。 Azure AD 还为基于云的人力资源 (HR) 应用程序提供预配。 使用我们的快速入门、教程和指南了解如何管理和部署云应用与 HR 预配。
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065495"
+landingContent:
+- title: 为云应用预配用户和组
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是应用程序预配？
+      url: user-provisioning.md
+    - text: 预配工作原理
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: SAP Cloud Platform Identity Authentication 预配
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Oracle Fusion ERP 预配
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: Atlassian Cloud 预配
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: 想要添加库应用？ 配置到应用的预配
+      url: configure-automatic-user-provisioning-portal.md
+    - text: 自定义属性映射
+      url: customize-application-attributes.md
+    - text: 使用范围筛选器
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: 使用 SCIM 进行预配以开发应用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 使用 SCIM 进行预配（“标识标准”博客）
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: 正在开发应用？ 将 SCIM 用于自动预配
+      url: use-scim-to-provision-users-and-groups.md
+- title: 管理云 HR 入站预配
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 规划云 HR 用户预配部署
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: Workday 预配
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: SAP SuccessFactors 预配
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

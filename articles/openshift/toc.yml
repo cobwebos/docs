@@ -47,6 +47,8 @@
             - name: 禁用适用于容器的 Azure Monitor
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: 在 Azure Red Hat OpenShift 群集中运行特权容器
+      href: howto-run-privileged-containers.md
 - name: 参考
   items:
     - name: Azure Red Hat OpenShift CLI

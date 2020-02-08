@@ -1,0 +1,107 @@
+- name: 应用程序和 HR 预配文档
+  href: index.yml
+- name: 概述
+  expanded: true
+  items:
+    - name: 什么是应用程序预配？
+      href: user-provisioning.md
+- name: 教程
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) - 角色预配
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: 所有集成库应用
+      href: /azure/active-directory/saas-apps
+- name: 概念
+  expanded: true
+  items:
+    - name: 应用程序预配工作原理
+      href: how-provisioning-works.md
+    - name: 规划应用程序预配部署
+      href: plan-auto-user-provisioning.md
+    - name: 规划云 HR 预配部署
+      href: plan-cloud-hr-provision.md
+- name: 操作方法指南
+  expanded: true
+  items:
+    - name: 为库应用配置预配
+      href: configure-automatic-user-provisioning-portal.md
+    - name: 编辑属性映射
+      items:
+        - name: 自定义属性映射
+          href: customize-application-attributes.md
+        - name: 为属性映射编写表达式
+          href: functions-for-customizing-application-data.md
+    - name: 在范围中包括或排除用户和组
+      items:
+        - name: 设置要预配的用户或组的范围
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: 对超出范围的用户跳过删除
+          href: skip-out-of-scope-deletions.md
+    - name: 监视和报告预配情况
+      items:
+        - name: 监视预配状态和性能
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 报告有关应用预配的信息
+          href: check-status-user-account-provisioning.md
+        - name: 导出和导入配置
+          href: export-import-provisioning-configuration.md
+    - name: 排查应用程序预配问题
+      items:
+        - name: 排查应用预配问题
+          href: application-provisioning-config-problem.md
+        - name: 隔离状态
+          href: application-provisioning-quarantine-status.md
+        - name: 授权问题（无法保存管理员凭据）
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: 未预配用户
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: 预配了错误的用户
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: 缺少源属性
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: 预配作业的运行速度缓慢
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: “预配”日志
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: 生成 SCIM 终结点并配置预配
+      href: use-scim-to-provision-users-and-groups.md
+    - name: 使用 MS Graph 自动执行配置
+      href: application-provisioning-configure-api.md
+- name: 参考
+  items:
+    - name: 选择预配方法
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: 云 HR 预配
+      items:
+        - name: SuccessFactors 属性参考
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday 属性参考
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect 预配代理
+      items:
+        - name: 预配代理版本历史记录
+          href: provisioning-agent-release-version-history.md
+- name: 资源
+  items:
+    - name: 开发人员的支持和帮助选项
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

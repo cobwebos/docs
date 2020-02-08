@@ -14,6 +14,8 @@
           href: common-questions-appliance.md
         - name: 有关发现、评估/依赖项可视化的问题
           href: common-questions-discovery-assessment.md
+        - name: 有关服务器迁移的问题
+          href: common-questions-server-migration.md
 - name: 教程
   items:
     - name: 评估和迁移 VMware VM

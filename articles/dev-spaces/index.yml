@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Dev Spaces 文档
-summary: 使用 Azure Dev Spaces，可以在 Azure Kubernetes 服务 (AKS) 中测试并以迭代方式开发你的整个微服务应用程序，而无需复制或模拟依赖项。 Azure Dev Spaces 降低了在共享 AKS 群集中与团队进行协作的负担和复杂性。 它还允许直接在 AKS 中运行和调试容器。
+summary: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
 metadata:
   title: Azure Dev Spaces 文档
-  description: 使用 Azure Dev Spaces，可以在 Azure Kubernetes 服务 (AKS) 中测试并以迭代方式开发你的整个微服务应用程序，而无需复制或模拟依赖项。 Azure Dev Spaces 降低了在共享 AKS 群集中与团队进行协作的负担和复杂性。 它还允许直接在 AKS 中运行和调试容器。
+  description: Azure Dev Spaces 是对 AKS 的扩展，可用于在大型应用程序的上下文中轻松运行和调试代码。 你可以对代码进行端到端测试，命中群集中运行的代码的断点，并在团队成员之间共享开发群集，而不会造成干扰。
   services: azure-dev-spaces
   ms.service: azure-dev-spaces
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 96fe99c5eb2ef8600ee9cca1e63f9fc3451919c2
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 8871b713806b7c80520d4b52112f84056d20bc26
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75438348"
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77057356"
 landingContent:
 - title: 关于 Azure Dev Spaces
   linkLists:

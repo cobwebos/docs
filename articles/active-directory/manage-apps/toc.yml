@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: 最终用户门户
               href: end-user-experiences.md
+    - name: 云应用可见性和控制
+      href: cloud-app-security.md
     - name: 本地应用的应用程序代理
       items:
         - name: 应用程序代理
