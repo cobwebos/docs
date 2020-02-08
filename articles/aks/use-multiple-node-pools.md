@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901523"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086468"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -565,7 +565,7 @@ az group deployment create \
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>为节点池中的每个节点分配公共 IP
 
 > [!WARNING]
-> 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 在预览中，如果需要为每个节点分配一个公共 IP，则必须使用*基本负载均衡器 SKU* 。
+> 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 由于此限制，此预览功能不支持 Windows 代理池。 在预览中，如果需要为每个节点分配一个公共 IP，则必须使用*基本负载均衡器 SKU* 。
 
 AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下，可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此，可以注册单独的预览功能 "节点公共 IP （预览版）"。
 

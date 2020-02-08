@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f34c4fb89d28a001a4af4d21879403a9ac5e860
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024698"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083133"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>设置 AVS 私有云作为本地 VMware 工作负荷的灾难恢复站点
 
@@ -46,12 +46,12 @@ AVS 解决方案：
 3. [在 AVS 私有云上设置 ZVM 和 VRA](#set-up-zvm-and-vra-on-your-avs-private-cloud)
 4. [设置 Zerto 虚拟保护组](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 若要启用从本地环境到 AVS 私有云的 Zerto 虚拟复制，请完成以下先决条件。
 
 1. [设置本地网络与 AVS 私有云之间的站点到站点 VPN 连接](set-up-vpn.md)。
-2. [设置 DNS 查找，以便将你的 Avs 私有云管理组件转发到 Avs 私有云 DNS 服务器](on-premises-dns-setup.md)。 若要启用 DNS 查找转发，请在本地 DNS 服务器中创建一个转发区域条目，以便 `*.AVS.io` 到 AVS DNS 服务器。
+2. [设置 DNS 查找，以便将你的 Avs 私有云管理组件转发到 Avs 私有云 DNS 服务器](on-premises-dns-setup.md)。 若要启用 DNS 查找转发，请在本地 DNS 服务器中创建一个转发区域条目，以便 `*.cloudsimple.io` 到 AVS DNS 服务器。
 3. 设置 DNS 查找，以便将本地 vCenter 组件转发到本地 DNS 服务器。 DNS 服务器必须可通过站点到站点 VPN 通过 AVS 私有云访问。 若要获得帮助，请提交[支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，并提供以下信息。 
 
     * 本地 DNS 域名

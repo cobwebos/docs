@@ -4,14 +4,14 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 tags: billing
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901421"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087419"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束条件
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间的推移，将展开并更新该列表以涵盖更多服务。
 
@@ -71,6 +71,7 @@ ms.locfileid: "76901421"
 * [数据工厂](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
+* [数据共享](#data-share-limits)
 * [数据库迁移服务](#database-migration-service-limits)
 * [事件网格](#event-grid-limits)
 * [事件中心](#event-hubs-limits)
@@ -217,7 +218,7 @@ ms.locfileid: "76901421"
 
 [!INCLUDE [azure-front-door-service-limits](../../../includes/front-door-limits.md)]
 
-### <a name="storage-limits"></a>存储限制
+### <a name="storage-limits"></a>存储限额
 
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
@@ -404,6 +405,10 @@ ms.locfileid: "76901421"
 ### <a name="data-lake-store-limits"></a>Data Lake Store 限制
 
 [!INCLUDE [azure-data-lake-store-limits](../../../includes/azure-data-lake-store-limits.md)]
+
+### <a name="data-share-limits"></a>数据共享限制
+
+[!INCLUDE [azure-data-share-limits](../../../includes/azure-data-share-limits.md)]
 
 ### <a name="database-migration-service-limits"></a>数据库迁移服务限制
 

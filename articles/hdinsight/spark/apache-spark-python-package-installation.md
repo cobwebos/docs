@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529637"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087121"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -22,9 +22,9 @@ ms.locfileid: "75529637"
 
 HDInsight 在 Spark 群集中有两个内置的 Python 安装，Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，如安装外部 Python 包或其他 Python 版本。 本文介绍如何安全地管理 HDInsight 上的[Apache Spark](https://spark.apache.org/)群集的 Python 环境。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* 一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -43,7 +43,7 @@ HDInsight 服务中有两种类型的开放源代码组件：
 > [!IMPORTANT]
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门可帮助找出并解决与这些组件相关的问题。
 >
-> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在[https://apache.org](https://apache.org)上有项目站点，例如[Hadoop](https://hadoop.apache.org/)。
+> 自定义组件可获得合理范围的支持，以帮助你进一步排查问题。 Microsoft 支持部门也许能够解决问题，也可能要求你参与可用的开放源代码技术渠道，获取该技术的深入专业知识。 有许多可以使用的社区站点，例如：[HDInsight 的 MSDN 论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)和 [https://stackoverflow.com](https://stackoverflow.com)。 此外，Apache 项目在 [https://apache.org](https://apache.org) 上提供了项目站点，例如 [Hadoop](https://hadoop.apache.org/)。
 
 ## <a name="understand-default-python-installation"></a>了解默认 Python 安装
 
@@ -51,9 +51,9 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 | |Python 2.7|Python 3.5|
 |----|----|----|
-|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|默认设置为2。7|N/A|
-|Livy|默认设置为2。7|N/A|
+|Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|默认设置为2。7|不可用|
+|Livy|默认设置为2。7|不可用|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -122,7 +122,7 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
 
 ## <a name="known-issue"></a>已知问题
 
-Anaconda 版本4.7.11 和4.7.12 有一个已知的 bug。 如果你的脚本操作在 `"Collecting package metadata (repodata.json): ...working..."` 挂起，但未能通过 `"Python script has been killed due to timeout after waiting 3600 secs"`。 您可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)并将其作为脚本操作运行，以解决此问题。
+Anaconda 版本4.7.11、4.7.12 和4.8.0 有一个已知的 bug。 如果你的脚本操作在 `"Collecting package metadata (repodata.json): ...working..."` 挂起，但未能通过 `"Python script has been killed due to timeout after waiting 3600 secs"`。 您可以下载[此脚本](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)并将其作为脚本操作运行，以解决此问题。
 
 若要检查 Anaconda 版本，可以通过 SSH 连接到群集标头节点并运行 `/usr/bin/anaconda/bin/conda --v`。
 

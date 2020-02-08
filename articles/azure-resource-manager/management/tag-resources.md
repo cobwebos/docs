@@ -3,12 +3,12 @@ title: 逻辑组织的标记资源
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665156"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087326"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -394,7 +394,7 @@ IFS=$origIFS
 
 ### <a name="apply-tags-from-resource-group"></a>从资源组应用标记
 
-若要将资源组中的标记应用于资源，请使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函数。 获取标记值时，请使用 `tags.[tag-name]` 语法而不是 `tags.tag-name` 语法，因为在点表示法中某些字符不能正确解析。
+若要将资源组中的标记应用于资源，请使用[resourceGroup](../templates/template-functions-resource.md#resourcegroup)函数。 获取标记值时，请使用 `tags[tag-name]` 语法而不是 `tags.tag-name` 语法，因为在点表示法中某些字符不能正确解析。
 
 ```json
 {

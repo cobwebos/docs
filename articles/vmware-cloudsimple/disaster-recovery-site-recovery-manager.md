@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024715"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083152"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 将 AVS 私有云设置为灾难恢复目标
 
@@ -101,7 +101,7 @@ AVS 解决方案要求你执行以下操作：
 
 若要为 AVS 私有云中的工作负荷提供 IP 地址查找、IP 地址管理和名称解析服务，请按照在[Avs 私有云中设置 DNS 和 DHCP 应用程序和工作负载](dns-dhcp-setup.md)中所述设置 DHCP 和 DNS 服务器。
 
-*. Avs.io 域由你的 AVS 私有云中的管理 Vm 和主机使用。 若要解决此域的请求，请在 DNS 服务器上配置 DNS 转发，如[创建条件转发器](on-premises-dns-setup.md#create-a-conditional-forwarder)中所述。
+*. Cloudsimple.io 域由你的 AVS 私有云中的管理 Vm 和主机使用。 若要解决此域的请求，请在 DNS 服务器上配置 DNS 转发，如[创建条件转发器](on-premises-dns-setup.md#create-a-conditional-forwarder)中所述。
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>在本地环境中安装 vSphere 复制设备
 
@@ -115,7 +115,7 @@ AVS 解决方案要求你执行以下操作：
 
 ## <a name="install-vsphere-replication-appliance-in-your-avs-private-cloud-environment"></a>在 AVS 私有云环境中安装 vSphere 复制设备
 
-在开始之前，请确认你具有以下各项：
+在开始之前，请验证您具有以下各项：
 
 * 从本地环境中的子网到 AVS 私有云的管理子网的 IP 可访问性
 * 从本地 vSphere 环境中的复制子网到 AVS 私有云的 SRM 解决方案子网的 IP 可访问性
@@ -133,7 +133,7 @@ AVS 要求您不要使用默认的 "cloudowner" 用户安装 vRA 和 SRM，而�
 安装包括以下高级步骤：
 
 1. [提升权限](escalate-private-cloud-privileges.md)。
-2. 在你的 AVS 私有云中创建一个用户，用于 vSphere 复制和 SRM 安装。 [VCENTER UI：在适用于 vRA 的 AVS 私有云中 & SRM 安装中创建用户](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation)。
+2. 在你的 AVS 私有云中创建一个用户，用于 vSphere 复制和 SRM 安装。 [VCENTER UI：在适用于 vRA 的 AVS 私有云中 &AMP; SRM 安装中创建用户](#vcenter-ui-create-a-user-in-the-avs-private-cloud-for-vra-and-srm-installation)。
 3. 准备 vRA 安装的 AVS 私有云环境。
 4. 使用 vmware.com 中的 VR ISO 中的 OVF 在你的 AVS 私有云中部署 vRA。 对于 vRA 6.5，[此 VMware 博客](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices)包含相关信息。
 5. 配置 vRA 的防火墙规则。 下面的[AVS 门户：配置 vRA 的防火墙规则](#avs-portal-configure-firewall-rules-for-vra)。

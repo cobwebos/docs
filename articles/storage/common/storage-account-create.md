@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/17/2020
+ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2ef90e1cb883a2d22b355ff4105ae0ce3c73ad6d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759837"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086964"
 ---
 # <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 
@@ -24,7 +24,7 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
@@ -34,7 +34,15 @@ Azure 存储帐户包含所有 Azure 存储数据对象：Blob、文件、队列
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-本操作指南文章需要 Azure PowerShell 模块 Az 0.7 版或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+若要使用 PowerShell 创建 Azure 存储帐户，请确保已安装 Azure PowerShell 模块 Az 0.7 版或更高版本。 有关详细信息，请参阅[Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
+
+若要查找当前版本，请运行以下命令：
+
+```powershell
+Get-InstalledModule -Name "Az"
+```
+
+若要安装或升级 Azure PowerShell，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -83,13 +91,13 @@ Connect-AzAccount
 
 若要登录到 CLI 的本地安装，请运行[az login](/cli/azure/reference-index#az-login)命令：
 
-```cli
+```azurecli-interactive
 az login
 ```
 
 # <a name="templatetabtemplate"></a>[模板](#tab/template)
 
-N/A
+不可用
 
 ---
 
@@ -113,6 +121,7 @@ N/A
 # put resource group in a variable so you can use the same group name going forward,
 # without hard-coding it repeatedly
 $resourceGroup = "storage-resource-group"
+$location = "westus"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
@@ -120,7 +129,6 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ```powershell
 Get-AzLocation | select Location
-$location = "westus"
 ```
 
 接下来，使用[AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)命令创建具有读取访问权限异地冗余存储（GRS）的通用 v2 存储帐户。 请记住，存储帐户的名称在 Azure 中必须是唯一的，因此请将占位符中的占位符值替换为你自己的唯一值：
@@ -134,7 +142,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 ```
 
 > [!IMPORTANT]
-> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在此参数列表中包含 `-EnableHierarchicalNamespace $True`。 
+> 如果计划使用[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)，请在此参数列表中包含 `-EnableHierarchicalNamespace $True`。
 
 若要创建具有不同复制选项的常规用途 v2 存储帐户，请将**SkuName**参数替换为下表中所需的值。
 
@@ -228,7 +236,7 @@ az group deployment create --resource-group $resourceGroupName --template-file "
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
 1. 导航到[Azure 门户](https://portal.azure.com)中的存储帐户。
-1. 单击 **“删除”** 。
+1. 单击“删除”。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -269,7 +277,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 或者，你可以删除资源组，该资源组将删除该资源组中的存储帐户和其他任何资源。 有关删除资源组的详细信息，请参阅[删除资源组和资源](../../azure-resource-manager/management/delete-resource-group.md)。
 
 > [!WARNING]
-> 无法恢复已删除的存储帐户，也无法检索删除之前该存储帐户包含的任何内容。 请在删除帐户之前务必备份要保存的任何内容。 对于帐户中的任务资源也是如此 — 一旦你删除了一个 Blob、表、队列或文件，则它会被永久删除。
+> 无法恢复已删除的存储帐户，也无法检索删除之前该存储帐户包含的任何内容。 请在删除帐户之前务必备份你想要保存的任何内容。 对于帐户中的任务资源也是如此 — 一旦你删除了一个 Blob、表、队列或文件，则它会被永久删除。
 >
 > 如果尝试删除与 Azure 虚拟机关联的存储帐户，则会显示一条错误消息，指出存储帐户仍在使用。 若要帮助解决此错误，请参阅[删除存储帐户时出现的错误疑难解答](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md)。
 

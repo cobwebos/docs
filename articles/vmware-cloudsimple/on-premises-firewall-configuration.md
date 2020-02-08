@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024460"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082969"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>从本地访问你的 AVS 私有云环境和应用程序
 
@@ -24,9 +24,9 @@ ms.locfileid: "77024460"
 
 若要访问你的 AVS 私有云 vCenter 和 NSX-T 管理器，必须在本地防火墙上打开下表中定义的端口。 
 
-| Port       | 源                           | 目标                      | 用途                                                                                                                |
+| 端口       | 源                           | 目标                      | 目标                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53（UDP）   | 本地 DNS 服务器          | AVS 私有云 DNS 服务器        | 转发 az DNS 查找所需的 *。* 从本地网络 AVS.io 到 AVS 私有云 DNS 服务器。     |
+| 53（UDP）   | 本地 DNS 服务器          | AVS 私有云 DNS 服务器        | 需要将*az.cloudsimple.io*的 DNS 查找从本地网络转发到 AVS 私有云 DNS 服务器。     |
 | 53（UDP）   | AVS 私有云 DNS 服务器        | 本地 DNS 服务器          | 需要将 DNS 查找从 AVS 私有云 vCenter 到本地 DNS 服务器的本地域名。 |
 | 80（TCP）   | 本地网络              | AVS 私有云管理网络 | 需要将 vCenter URL 从*http*重定向到*https*。                                                         |
 | 443（TCP）  | 本地网络              | AVS 私有云管理网络 | 从本地网络访问 vCenter 和 NSX-T 管理器时需要。                                           |
@@ -37,7 +37,7 @@ ms.locfileid: "77024460"
 
 若要在 AVS 私有云 vCenter 上将本地 active directory 配置为标识源，必须打开表中定义的端口。 有关配置步骤，请参阅[在 AVS Avs 私有云上使用 Azure AD 作为 vCenter 的标识提供者](https://docs.azure.cloudsimple.com/azure-ad/)。
 
-| Port         | 源                           | 目标                                         | 用途                                                                                                                                          |
+| 端口         | 源                           | 目标                                         | 目标                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53（UDP）      | AVS 私有云 DNS 服务器        | 本地 DNS 服务器                             | 需要将 DNS 查找从 AVS 私有云 vCenter 到本地 DNS 服务器的本地 active directory 域名。        |
 | 389 (TCP/UDP) | AVS 私有云管理网络 | 本地 active directory 域控制器     | 从 AVS 私有云 vCenter 服务器到 active directory 域控制器的 LDAP 通信需要进行用户身份验证。              |
@@ -49,7 +49,7 @@ ms.locfileid: "77024460"
 
 Access 工作负荷在 AVS 私有云上运行的虚拟机需要在本地防火墙上打开端口。 下表显示了所需的一些常用端口及其用途。 有关任何特定于应用程序的端口要求，请参阅应用程序文档。
 
-| Port         | 源                         | 目标                          | 用途                                                                              |
+| 端口         | 源                         | 目标                          | 目标                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22（TCP）      | 本地网络            | AVS 私有云工作负荷网络       | 安全外壳访问在 AVS 私有云上运行的 Linux 虚拟机。            |
 | 3389（TCP）    | 本地网络            | AVS 私有云工作负荷网络       | 远程桌面到在 AVS 私有云上运行的 windows 虚拟机。               |

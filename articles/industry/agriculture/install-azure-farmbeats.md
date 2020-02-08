@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0702b302af1c964014a6649f5f3e86ce47b4600a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048369"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069279"
 ---
 # <a name="install-azure-farmbeats"></a>安装 Azure FarmBeats
 
@@ -73,11 +73,11 @@ Azure FarmBeats 的整个设置，包括准备和安装所需的时间不到1小
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始实际安装 Azure FarmBeats 之前，需要完成以下步骤：
+开始 Azure FarmBeats 的实际安装之前，需要完成以下步骤：
 
 ### <a name="verify-permissions"></a>验证权限
 
-你需要在想要安装 Azure FarmBeats 的 Azure 租户中拥有以下权限：
+若要安装 Azure FarmBeats，需要在 Azure 租户中具有以下权限：
 
 - 租户-AAD 应用创建者
 - 订阅-所有者
@@ -85,7 +85,7 @@ Azure FarmBeats 的整个设置，包括准备和安装所需的时间不到1小
 
 [创建 AAD 应用程序](#create-an-aad-application)步骤需要前两个权限。 如果需要，可以获取具有适当权限的人员来创建 AAD 应用程序。 安装 FarmBeats 的人员需要是要在其中安装 FarmBeats 的资源组的所有者。
 
-可以按照[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)上的说明验证 Azure 门户中的访问权限
+可以按照[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)上的说明验证 Azure 门户中的访问权限。
 
 ### <a name="decide-subscription-and-region"></a>确定订阅和区域
 
@@ -120,7 +120,7 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
         ./create_aad_script.ps1
     ```
 
-4. AAD 脚本运行大约2分钟的时间，并将值输出到屏幕以及同一目录中的 json 文件。 如果你有其他人运行该脚本，请要求他们与你共享此输出。
+4. AAD 脚本大约需要2分钟的时间来运行和输出屏幕上的值，以及在同一目录中的 json 文件。 如果你有其他人运行该脚本，请要求他们与你共享此输出。
 
 ### <a name="create-sentinel-account"></a>创建 Sentinel 帐户
 
@@ -132,11 +132,11 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
 2. 提供所需的详细信息（名字、姓氏、用户名、密码和电子邮件 ID）并填写表单。
 3. 验证链接将发送到已注册的电子邮件 ID。 选择电子邮件中提供的链接并完成验证。
 
-完成验证后，注册过程即已完成。 记下**Sentinel 用户名**和**sentinel 密码**。
+注册过程已完成。 完成验证后，请记下**Sentinel 用户名**和**sentinel 密码**。
 
 ## <a name="install"></a>安装
 
-现在可以安装 FarmBeats 了。 按照以下步骤开始安装-
+现在可以安装 FarmBeats 了。 按照以下步骤开始安装：
 
 1. 登录到 Azure 门户。 在右上角选择你的帐户，并切换到要在其中安装 Azure FarmBeats 的 Azure AD 租户。
 
@@ -146,13 +146,17 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
 
 4. 新窗口随即出现。 通过选择正确的订阅、资源组和要将 Azure FarmBeats 安装到的位置来完成注册过程。
 
-5. 提供电子邮件地址，该地址应在**FarmBeats Service 警报**部分收到与 Azure FarmBeats 相关的任何服务警报。 单击页面底部的 "下一步" 以转到 "**依赖项**" 选项卡。 ![基本 "选项卡](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
+5. 提供电子邮件地址，该地址应在**FarmBeats Service 警报**部分收到与 Azure FarmBeats 相关的任何服务警报。 选择页面底部的 "**下一步**" 以转到 "**依赖项**" 选项卡。
+
+    ![基本信息选项卡](./media/install-azure-farmbeats/create-azure-farmbeats-basics.png)
 
 6. 将[aad 脚本](#create-an-aad-application)的输出中的各个条目复制到 aad 应用程序部分中的输入。
 
-7. 在 "Sentinel 帐户" 部分输入 " [sentinel 帐户](#create-sentinel-account)用户名" 和 "密码"。 单击 "下一步" 转到 "查看" 和 "**创建**" 选项卡 ![相关性](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png) "选项卡
+7. 在 "Sentinel 帐户" 部分输入 " [sentinel 帐户](#create-sentinel-account)用户名" 和 "密码"。 选择 "**下一步**" 转到 "**评审 + 创建**" 选项卡。
 
-8. 验证输入的详细信息后，选择 **"确定"** 。 此时将显示 "使用条款" 页。 查看条款，然后选择 "**创建**" 以开始安装。 你将自动重定向到一个页面，你可以在该页面上跟踪安装进度。
+    ![Dependencies Tab](./media/install-azure-farmbeats/create-azure-farmbeats-dependencies.png)
+
+8. 验证输入的详细信息后，选择 **"确定"** 。 此时将显示 "使用条款" 页。 查看条款，然后选择 "**创建**" 以开始安装。 你将被重定向到可在其中执行安装进度的页面。
 
 安装完成后，可以通过导航到在安装期间提供的网站名称来验证安装并开始使用 FarmBeats 门户： https://\<FarmBeats-name >. appname>.azurewebsites.net。 应该会看到 FarmBeats 用户界面，其中包含用于创建场的选项。
 
@@ -161,6 +165,7 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
 ## <a name="upgrade"></a>升级
 
 若要将 FarmBeats 升级到最新版本，请使用 PowerShell 环境在 Cloud Shell 实例中运行以下步骤。 用户需要是安装了 FarmBeats 的订阅的所有者。
+
 系统将提示首次用户选择订阅，并创建存储帐户。 按照说明完成安装。
 
 1. 下载[升级脚本](https://aka.ms/FarmBeatsUpgradeScript)
@@ -181,7 +186,7 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
         ./upgrade-farmbeats.ps1 -InputFilePath [Path to input.json file]
     ```
 
-输入的 json 文件的路径是可选的。 如果未指定，脚本将要求你提供所有必需的输入。 升级应在30分钟内完成。
+输入的 json 文件的路径是可选的。 如果未指定，脚本将要求提供所有必需的输入。 升级应在30分钟内完成。
 
 ## <a name="uninstall"></a>卸载
 

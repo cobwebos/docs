@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932622"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084440"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建组和应用程序的访问评审
 
@@ -28,7 +28,7 @@ ms.locfileid: "75932622"
 
 本文介绍如何为组成员或应用程序访问创建一个或多个访问评审。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - Azure AD Premium P2
 - 全局管理员或用户管理员
@@ -93,7 +93,7 @@ ms.locfileid: "75932622"
 
     ![创建访问评审-完成后设置](./media/create-access-review/upon-completion-settings.png)
 
-1. 若要自动删除被拒绝用户的访问权限，请将“将结果自动应用到资源”设置为“启用”。 若要在评审完成后手动应用结果，请将开关设置为“禁用”。
+1. 如果要自动删除，对被拒绝的用户的访问权限，请将 "**自动应用结果**" 设置为 "要**启用**的资源"。 若要在评审完成后手动应用结果，请将开关设置为“禁用”。
 
 1. 使用“如果审阅者未答复”列表指定对于审阅者在评审期限内未评审的用户要执行的操作。 此设置不影响审阅者已手动评审的用户。 如果最终的审阅者决策是“拒绝”，则会删除用户的访问权限。
 
@@ -127,6 +127,20 @@ ms.locfileid: "75932622"
 默认情况下，在评审开始后不久，Azure AD 会向评审者发送一封电子邮件。 如果选择不让 Azure AD 发送电子邮件，请务必通知评审者有一个访问评审任务等待他们完成。 可以向他们展示如何[查看对组或应用程序的访问权限](perform-access-review.md)的说明。 如果你的审阅适用于来宾查看其自己的访问权限，请向他们显示有关如何[查看组或应用程序的访问权限](review-your-access.md)的说明。
 
 如果你已将来宾分配为审阅者，但他们未接受邀请，则他们将不会收到来自访问审阅的电子邮件，因为他们必须首先在查看之前接受邀请。
+
+## <a name="access-review-status-table"></a>访问评审状态表
+
+| 状态 | Definition |
+|--------|------------|
+|NotStarted | 已创建评审，用户发现正在等待启动。 |
+|正在初始化   | 正在进行用户发现，以标识属于评审的所有用户。 |
+|正在启动 | 正在启动审阅。 如果启用电子邮件通知，则会将电子邮件发送给审阅者。 |
+|正在进行 | 已开始评审。 如果已启用电子邮件通知，则电子邮件已发送给审阅者。 审阅者可以在截止日期之前提交决策。 |
+|完善 | 评审正在完成，电子邮件将发送到审核所有者。 |
+|AutoReviewing | 查看在系统检查阶段中。 系统正在记录基于建议或预先配置的决策未查看的用户的决策。 |
+|AutoReviewed | 系统已为未查看的所有用户记录了决策。 如果启用了自动应用，请查看已准备好进行**应用**。 |
+|应用 | 对于批准的用户，访问权限不会更改。 |
+|应用 | 拒绝的用户（如果有）已从资源或目录中删除。 |
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 

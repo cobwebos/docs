@@ -3,22 +3,22 @@ title: 客户端应用程序配置（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 使用 Microsoft 身份验证库（MSAL）了解公用客户端应用程序和机密客户端应用程序的配置选项。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5388dc101dbc4e06ce26f12bfd40645455e8dae8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696476"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085006"
 ---
 # <a name="application-configuration-options"></a>应用程序配置选项
 
@@ -112,7 +112,7 @@ Azure AD 云机构有两部分：
   ---------  | --------------
   桌面应用（.NET FW） | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
   UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`的值。 这将使用浏览器启用 SSO，方法是将值设置为需要注册的 WebAuthenticationBroker （）的结果。
-  .NET Core | `https://localhost`。 这样，用户就可以使用系统浏览器进行交互式身份验证，因为 .NET Core 目前没有用于嵌入的 web 视图的 UI。
+  .NET Core | `https://localhost` 列中的一个值匹配。 这样，用户就可以使用系统浏览器进行交互式身份验证，因为 .NET Core 目前没有用于嵌入的 web 视图的 UI。
 
 - 如果要构建不支持 broker 的 Xamarin Android 和 iOS 应用程序，则无需添加重定向 URI （重定向 URI 自动设置为适用于 Xamarin Android 和 iOS 的 `msal{ClientId}://auth`
 
@@ -122,7 +122,7 @@ Azure AD 云机构有两部分：
 
 你可以使用 `RedirectUri` 属性（例如，如果你使用的是代理）来重写重定向 URI。 下面是此方案的重定向 Uri 的一些示例：
 
-- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
+- `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc：//com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $ "msauth。{//Auth ";
 
 有关其他 iOS 详细信息，请参阅[将使用 Microsoft Authenticator 的 ios 应用程序从 ADAL.NET 迁移到 MSAL.NET](msal-net-migration-ios-broker.md) ，并[利用 iOS 上的代理](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)。

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9824f5cfd7b42860079536232b8a5ad40ea608c9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638351"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087147"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -54,7 +54,7 @@ Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
-错误消息：`ERROR: No matching distribution found for azureml-dataprep-native`
+错误消息： **`ERROR: No matching distribution found for azureml-dataprep-native`**
 
 Anaconda 的 Python 3.7.4 分发有一个破坏 azureml-sdk 安装的缺陷。 此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题，可通过使用此命令创建新的 Conda 环境来解决此问题：
 ```bash
@@ -78,7 +78,7 @@ conda create -n <env-name> python=3.7.3
 
 你将无法在 FPGA 上部署模型，直到已请求并获得 FPGA 配额批准为止。 若要请求访问权限，请填写配额请求表单： https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>自动执行机器学习
+## <a name="automated-machine-learning"></a>自动化机器学习
 
 Tensor Flow 自动化机器学习当前不支持 Tensor 流版本1.13。 安装此版本将导致包依赖关系停止工作。 我们正在努力解决此问题。 
 
@@ -306,3 +306,9 @@ Azure ML 维护的 docker 映像，可以在[AzureML 容器](https://github.com/
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>如果在为对象检测标记时按 Esc 键，则会在左上角创建大小为零的标签。 提交处于此状态的标签失败。
 
 单击标签旁边的交叉标记，删除标签。
+
+## <a name="run-or-experiment-deletion"></a>运行或试验删除
+
+可以通过使用[试验. archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)方法或 Azure 机器学习 studio 客户端中的实验选项卡视图来存档试验。 此操作将从列表查询和视图中隐藏实验，但不会将其删除。
+
+当前不支持永久删除各个试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。

@@ -3,28 +3,28 @@ title: MSAL authentication flow |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解 Microsoft 身份验证库（MSAL）使用的身份验证流和授权。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/30/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bc906e1026dcc051ef152ff9fba94525ac700761
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962079"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085130"
 ---
 # <a name="authentication-flows"></a>身份验证流
 
 本文介绍 Microsoft 身份验证库（MSAL）提供的不同身份验证流。  这些流可用于各种不同的应用程序方案。
 
-| Flow | Description | 适用范围|  
+| 流 | 说明 | 适用范围|  
 | ---- | ----------- | ------- | 
 | [交互式](#interactive) | 通过交互进程获取标记，该进程通过浏览器或弹出窗口提示用户提供凭据。 | [桌面应用](scenario-desktop-overview.md)、[移动应用](scenario-mobile-overview.md) |
 | [隐式授权](#implicit-grant) | 允许应用获取令牌，而无需执行后端服务器凭据交换。 这允许应用在客户端 JavaScript 代码中登录用户、维护会话并获取其他 web Api 的令牌。| [单页应用程序（SPA）](scenario-spa-overview.md) |
@@ -39,14 +39,14 @@ ms.locfileid: "76962079"
  
 根据客户端的构建方式，它可以使用 Microsoft 标识平台支持的身份验证流中的一个（或多个）。  这些流可以生成各种令牌（id_tokens、刷新令牌、访问令牌）以及授权代码，并需要不同的令牌使其正常工作。 此图表提供了概述：
  
-|Flow | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
+|流 | 需要 | id_token | 访问令牌 | 刷新令牌 | 授权代码 | 
 |-----|----------|----------|--------------|---------------|--------------------|
-|[授权代码流](v2-oauth2-auth-code-flow.md) | | 不可以 | 不可以 | 不可以 | 不可以|  
-|[隐式流](v2-oauth2-implicit-grant-flow.md) | | 不可以        | 不可以    |      |                    |
-|[混合 OIDC 流](v2-protocols-oidc.md#get-access-tokens)| | 不可以  | |          |            不可以   |
-|[刷新令牌兑换](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 刷新令牌 | 不可以 | 不可以 | 不可以| |
-|[代理流](v2-oauth2-on-behalf-of-flow.md) | 访问令牌| 不可以| 不可以| 不可以| |
-|[设备代码流](v2-oauth2-device-code.md) | | 不可以| 不可以| 不可以| |
+|[授权代码流](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[隐式流](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[混合 OIDC 流](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[刷新令牌兑换](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 刷新令牌 | x | x | x| |
+|[代理流](v2-oauth2-on-behalf-of-flow.md) | 访问令牌| x| x| x| |
+|[设备代码流](v2-oauth2-device-code.md) | | x| x| x| |
 |[客户端凭据](v2-oauth2-client-creds-grant-flow.md) | | | x （仅限应用程序）| | |
  
 通过隐式模式颁发的令牌具有长度限制，原因是通过 URL 将其传递回浏览器（其中 `response_mode` `query` 或 `fragment`）。  某些浏览器对可放置在浏览器栏中的 URL 大小有限制，但当它太长时，会失败。  因此，这些令牌没有 `groups` 或 `wids` 声明。
@@ -151,7 +151,7 @@ MSAL 支持[OAuth 2 设备代码流](v2-oauth2-device-code.md)，这允许用户
 
 在上图中：
 
-1. 只要需要用户身份验证，应用程序就会提供代码，并要求用户使用其他设备（如连接 internet 的智能手机）来访问 URL （例如 https://microsoft.com/devicelogin) 。 然后，将提示用户输入代码，并通过正常的身份验证体验（如有必要）进行身份验证。
+1. 只要需要用户身份验证，应用程序就会提供代码，并要求用户使用其他设备（如连接 internet 的智能手机）来访问 URL （例如 https://microsoft.com/devicelogin)。 然后，将提示用户输入代码，并通过正常的身份验证体验（如有必要）进行身份验证。
 
 2. 身份验证成功后，命令行应用通过后通道接收所需的令牌，并使用它们来执行所需的 web API 调用。
 
@@ -163,7 +163,7 @@ MSAL 支持[OAuth 2 设备代码流](v2-oauth2-device-code.md)，这允许用户
   - 适用于任何工作和学校帐户（`https://login.microsoftonline.com/organizations/`）。
 - Azure AD v2.0 终结点尚不支持 Microsoft 个人帐户（无法使用 `/common` 或 `/consumers` 租户）。
 
-## <a name="integrated-windows-authentication"></a>Windows 集成身份验证
+## <a name="integrated-windows-authentication"></a>集成 Windows 身份验证
 
 对于在加入域或 Azure AD 加入的 Windows 计算机上运行的桌面应用程序或移动应用程序，MSAL 支持集成 Windows 身份验证（IWA）。 使用 IWA，这些应用程序可以无提示地获取令牌（无需用户的 UI 交互）。 
 

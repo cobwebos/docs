@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150027"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069398"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Azure Monitor 代理概述 
 计算资源（如虚拟机）生成数据来监视其性能和可用性，就像[其他云资源](../insights/monitor-azure-resource.md)。 不过，计算资源还有需要监视的来宾操作系统和工作负荷。 从资源内部收集此监视数据需要代理。 本文介绍 Azure Monitor 使用的代理，并帮助你确定需要满足特定环境的要求。
@@ -37,7 +37,7 @@ Azure Monitor 具有三个代理，每个代理都提供特定功能。 根据�
 | 操作系统 | Windows<br>Linux | Windows<br>Linux | Windows<br>Linux
 | 代理依赖项  | 无 | 无 | 需要 Log Analytics 代理 |
 | 收集的数据 | 事件日志<br>ETW 事件<br>Syslog<br>性能<br>IIS 日志<br>.NET 应用程序跟踪输出日志<br>故障转储 | 事件日志<br>Syslog<br>性能<br>IIS 日志<br>自定义日志<br>解决方案中的数据 | 进程详细信息和依赖项<br>网络连接指标 |
-| 数据发送到 | Azure 存储空间<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
+| 数据发送到 | Azure 存储空间<br>Azure Monitor 度量值<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
 
 
 
@@ -63,7 +63,7 @@ Azure 诊断扩展支持的方案包括以下各项：
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 [Log Analytics 代理](log-analytics-agent.md)在 Azure、其他云提供程序和本地中收集来宾操作系统和虚拟机工作负荷中的监视数据。 它将数据收集到 Log Analytics 工作区中。
 
-Log Analytics 代理与 System Center Operations Manager 使用的代理相同，并且您多宿主代理计算机与管理组进行通信，同时 Azure Monitor。 Azure Monitor 中的某些解决方案也需要此代理。
+Log Analytics 代理是 System Center Operations Manager 使用的相同代理，多宿主代理计算机与管理组进行通信并同时 Azure Monitor。 Azure Monitor 中的某些解决方案也需要此代理。
 
 适用于 Windows 的 Log Analytics 代理通常称为 Microsoft 管理代理（MMA）。 适用于 Linux 的 Log Analytics 代理通常称为 OMS 代理。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74815355"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086993"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -26,20 +26,20 @@ ms.locfileid: "74815355"
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
 
-| 函数 | 功能 | 最新 |
+| Functions | 功能 | 最近 |
 |--|--|--|
 | 语音转文本 | 转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
 | 自定义语音到文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
-| 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
+| 文本到语音转换 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用语音容器之前的先决条件如下：
 
-| 需要 | 用途 |
+| 必需 | 目标 |
 |--|--|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
@@ -75,25 +75,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
 
-| 容器 | 最小值 | 推荐 |
+| 容器 | 最低 | 建议 |
 |-----------|---------|-------------|
 | 语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
 
-| 容器 | 最小值 | 推荐 |
+| 容器 | 最低 | 建议 |
 |-----------|---------|-------------|
 | 自定义语音到文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
 # <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
 
-| 容器 | 最小值 | 推荐 |
+| 容器 | 最低 | 建议 |
 |-----------|---------|-------------|
-| 文本转语音 | 单核，2 GB 内存 | 2核，3 GB 内存 |
+| 文本到语音转换 | 单核，2 GB 内存 | 2核，3 GB 内存 |
 
 # <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
 
-| 容器 | 最小值 | 推荐 |
+| 容器 | 最低 | 建议 |
 |-----------|---------|-------------|
 | 自定义文本到语音转换 | 单核，2 GB 内存 | 2核，3 GB 内存 |
 
@@ -126,7 +126,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 文本转语音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| 文本到语音转换 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -233,7 +233,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](speech-container-configuration.md#example-docker-run-commands)。
+1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 [ 命令的多个](speech-container-configuration.md#example-docker-run-commands)示例`docker run`。
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
@@ -273,7 +273,7 @@ ApiKey={API_KEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | Description |
+| 参数 | 说明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -335,7 +335,7 @@ ApiKey={API_KEY}
 
 下表表示各种 `docker run` 参数及其相应的说明：
 
-| 参数 | Description |
+| 参数 | 说明 |
 |---------|---------|
 | `{VOLUME_MOUNT}` | 宿主计算机的[卷装载](https://docs.docker.com/storage/volumes/)，docker 使用它来持久保存自定义模型。 例如， *C:\CustomSpeech* ，其中*C 驱动器*位于主机上。 |
 | `{MODEL_ID}` | 自定义语音门户的 "**培训**" 页中的自定义语音**模型 ID** 。 |
@@ -425,7 +425,7 @@ ApiKey={API_KEY}
   * *自定义文本到语音转换*
 * 容器映像从 Azure 中的容器注册表下载。
 * 容器映像在 Docker 中运行。
-* 您可以使用 REST API 或 SDK 通过指定容器的主机 URI 来调用语音容器中的操作。
+* 指定容器的主机 URI 时，是使用 REST API （仅文本到语音转换）还是 SDK （语音转换文本或文本到语音转换）。 
 * 在实例化容器时，需要提供计费信息。
 
 > [!IMPORTANT]

@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263113"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086547"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>快速入门：在自己的虚拟网络中创建 Azure Databricks 工作区
 
 Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。 本快速入门演示如何改为在自己的虚拟网络中创建 Azure Databricks 工作区。 还会在该工作区中创建 Apache Spark 群集。 
 
-若要详细了解如何选择在自己的虚拟网络中创建 Azure Databricks 工作区，请参阅 [在 Azure 虚拟网络中部署 Azure Databricks （VNet 注入）] （/databricks/administration-guide/cloud-configurations/azure/vnet-inject）。
+若要详细了解如何选择在自己的虚拟网络中创建 Azure Databricks 工作区，请参阅[在 Azure 虚拟网络中部署 Azure Databricks （VNet 注入）](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/databricks/)。
 
@@ -39,18 +39,18 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
 
 2. 在 "**创建虚拟网络**" 下，应用以下设置： 
 
-    |设置|建议的值|Description|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择 "**新建**"，然后输入帐户的新资源组名称。|
     |名称|databricks-quickstart|选择虚拟网络的名称。|
-    |地区|\<选择离用户最近的区域\>|选择可以在其中托管虚拟网络的地理位置。 使用最靠近用户的位置。|
+    |区域|\<选择离用户最近的区域\>|选择可以在其中托管虚拟网络的地理位置。 使用最靠近用户的位置。|
 
     ![Azure 门户上的虚拟网络基础知识](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
 
 3. 选择 "**下一步： IP 地址 >** ，并应用以下设置。 然后选择 "**查看 + 创建**"。
     
-    |设置|建议的值|Description|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
     |IPv4 地址空间|10.2.0.0/16|以 CIDR 表示法表示的虚拟网络地址范围。 CIDR 范围必须介于/16 和/24 之间|
     |子网名称|default|为虚拟网络中的默认子网选择名称。|
@@ -70,19 +70,19 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
 
 2. 在 " **Azure Databricks 服务**" 下，应用以下设置：
 
-    |设置|建议的值|Description|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
     |工作区名称|databricks-quickstart|为 Azure Databricks 工作区选择一个名称。|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择用于虚拟网络的同一资源组。|
-    |位置|\<选择离用户最近的区域\>|选择与虚拟网络相同的位置。|
+    |Location|\<选择离用户最近的区域\>|选择与虚拟网络相同的位置。|
     |定价层|选择 "标准" 或 "高级"。|有关定价层的详细信息，请参阅[Databricks 定价页](https://azure.microsoft.com/pricing/details/databricks/)。|
 
     ![创建 Azure Databricks 工作区基础知识](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
 3. 在 "**基本**信息" 页上输入完设置后，选择 "**下一步：网络 >** 并应用以下设置：
 
-    |设置|建议的值|Description|
+    |设置|建议的值|说明|
     |-------|---------------|-----------|
     |在虚拟网络（VNet）中部署 Azure Databricks 工作区|是|此设置允许你在虚拟网络中部署 Azure Databricks 工作区。|
     |虚拟网络|databricks-quickstart|选择在上一部分中创建的虚拟网络。|
@@ -124,7 +124,7 @@ Azure Databricks 的默认部署创建由 Databricks 管理的新虚拟网络。
 
 完成本文后，可以终止群集。 为此，请在 Azure Databricks 工作区的左窗格中选择“群集”。 针对想要终止的群集，将光标移到“操作”列下面的省略号上，选择“终止”图标。 这将停止群集。
 
-如果不手动终止群集，但在创建群集时选中了“在不活动 \_\_ 分钟后终止”复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
+如果不手动终止群集，但在创建群集时选中了“在不活动 **\_ 分钟后终止”\_** 复选框，则该群集会自动停止。 在这种情况下，如果群集保持非活动状态超过指定的时间，则会自动停止。
 
 如果不想重新使用群集，可以删除在 Azure 门户中创建的资源组。
 

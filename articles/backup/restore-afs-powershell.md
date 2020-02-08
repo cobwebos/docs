@@ -3,18 +3,21 @@ title: 通过 PowerShell 还原 Azure 文件
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 还原 Azure 文件。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776334"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086829"
 ---
 # <a name="restore-azure-files-with-powershell"></a>通过 PowerShell 还原 Azure 文件
 
 本文介绍如何使用 Azure Powershell 从[Azure 备份](backup-overview.md)服务创建的还原点还原整个文件共享或特定文件。
 
 可以还原整个文件共享或共享中的特定文件。 可以还原到原始位置，或还原到备用位置。
+
+> [!WARNING]
+> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 有关更多详细信息，请参阅概述此更改要求的[部分](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups)。
 
 ## <a name="fetch-recovery-points"></a>提取恢复点
 

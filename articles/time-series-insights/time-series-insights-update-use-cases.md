@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896079"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087394"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 时序见解预览版用例
 
@@ -30,7 +30,7 @@ ms.locfileid: "75896079"
 
 以下各节介绍了这些使用方案的概述。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 Azure 时序见解是端到端的平台即服务产品。 它用于收集、处理、分析和查询高度情景化且优化了时序的 IoT 规模的数据。 时序见解是即席数据浏览和运营分析的理想选择。 时序见解是一种唯一可扩展的自定义服务产品，可满足业界 IoT 部署的广泛需求。
 
@@ -62,9 +62,9 @@ Azure 时序见解是端到端的平台即服务产品。 它用于收集、处�
 
 * 第三种方法是使用功能强大的 API 查询存储在时序见解中的数据。 时序见解包含临时运算符，如 `from`、`to`、`first`和 `last`。 它有一些聚合和转换，如 `average`、`min`、`max`、`split by`、`order by`和 `DateHistogram`。 它还具有筛选运算符，例如 `has`、`in`、`and`、`or`、`greater than`和 `REGEX`。 所有这些运算符使下游应用程序能够快速找到数据中的相关趋势和模式。 使用它们来填充自主开发的可视化效果，以找出异常。
 
-## <a name="operational-analysis-and-driving-process-efficiency"></a>可操作分析和提高处理效率
+## <a name="operational-analysis-and-driving-process-efficiency"></a>操作性分析和提高处理效率
 
-使用时序见解可大规模监视设备的运行状况、使用情况和性能。 时序见解提供了一种衡量操作效率的简便方法。 时序见解有助于管理多种不可预测的 IoT 工作负荷，不影响引入或查询性能。
+使用时序见解可大规模监视设备的运行状况、使用情况和性能。 时序见解提供了一种衡量操作效率的简便方法。 时序见解有助于管理多种不可预测的 IoT 工作负荷，且不影响引入或查询性能。
 
 [![概述](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 

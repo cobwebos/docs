@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 599b8a3fdbad5747b0b303c71aeef084d04db6df
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7706a7f06cedde783e53a24ff385fa2376edcb93
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694914"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083550"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>针对 MSAL.NET 的 Xamarin 特定于 iOS 的注意事项
 在 Xamarin iOS 上，使用 MSAL.NET 时，必须考虑几个注意事项
@@ -103,7 +103,7 @@ var builder = PublicClientApplicationBuilder
 
 以下示例的 readme.md 文件的[IOS 特定注意事项](https://github.com/azure-samples/active-directory-xamarin-native-v2#ios-specific-considerations)段落中提供了更多详细信息：
 
-示例 | 平台 | Description
+示例 | 平台 | 说明
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | 一个简单的 Xamarin Forms 应用，展示如何通过 Azure AD v2.0 终结点使用 MSAL 对 MSA 和 Azure AD 进行身份验证，并使用生成的令牌访问 Microsoft Graph。
 

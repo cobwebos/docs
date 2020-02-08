@@ -3,22 +3,22 @@ title: 使用 web 浏览器（MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Xamarin Android 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695069"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084598"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 web 浏览器（MSAL.NET）
 
@@ -43,17 +43,17 @@ MSAL.NET 是一个多框架库，它具有框架特定的代码，用于在 UI �
 
 通常，建议使用平台默认设置，这通常是系统浏览器。 系统浏览器可以更好地记住以前登录的用户。 如果需要更改此行为，请使用 `WithUseEmbeddedWebView(bool)`
 
-### <a name="at-a-glance"></a>概览
+### <a name="at-a-glance"></a>速览
 
-| 框架        | 嵌入 | 系统 | 默认 |
+| 框架        | 嵌入 | System | 默认 |
 | ------------- |-------------| -----| ----- |
 | .NET 经典     | 是 | 是 ^ | 嵌入 |
-| .NET Core     | 否 | 是 ^ | 系统 |
-| .NET Standard | 否 | 是 ^ | 系统 |
-| UWP | 是 | 否 | 嵌入 |
-| Xamarin.Android | 是 | 是  | 系统 |
-| Xamarin.iOS | 是 | 是  | 系统 |
-| Xamarin.Mac| 是 | 否 | 嵌入 |
+| .NET Core     | 是 | 是 ^ | System |
+| .NET Standard | 是 | 是 ^ | System |
+| UWP | 是 | 是 | 嵌入 |
+| Xamarin.Android | 是 | 是  | System |
+| Xamarin.iOS | 是 | 是  | System |
+| Xamarin| 是 | 是 | 嵌入 |
 
 ^ 需要 "http://localhost" 重定向 URI
 
@@ -149,7 +149,7 @@ MSAL.NET 中嵌入的 web 视图与系统浏览器之间有一些视觉差别。
 
 **使用嵌入的 Web 视图进行 MSAL.NET 交互登录：**
 
-![嵌入](media/msal-net-web-browsers/embedded-webview.png)
+![集成](media/msal-net-web-browsers/embedded-webview.png)
 
 **使用系统浏览器通过 MSAL.NET 进行交互式登录：**
 

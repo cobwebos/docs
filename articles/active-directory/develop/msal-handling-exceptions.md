@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/22/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f903ca541582dfa0f3980bb65a3fef3c4b774a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916768"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084021"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>处理 MSAL 异常和错误
 
@@ -50,7 +50,7 @@ Microsoft 身份验证库（MSAL）中的异常面向应用程序开发人员进
 
 | 异常 | 错误代码 | 缓解措施|
 | --- | --- | --- |
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001：用户或管理员尚未同意使用 ID 为 "{appId}"、名为 "{appName}" 的应用程序。 针对此用户和资源发送交互式授权请求。| 需要先获取用户的许可。 如果未使用 .NET Core （没有任何 Web UI），请调用（仅一次） `AcquireTokeninteractive`。 如果你使用的是 .NET core 或不想执行 `AcquireTokenInteractive`，则用户可以导航到 URL 以获得许可： https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 调用 `AcquireTokenInteractive`： `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001：用户或管理员尚未同意使用 ID 为 "{appId}"、名为 "{appName}" 的应用程序。 针对此用户和资源发送交互式授权请求。| 需要先获取用户的许可。 如果未使用 .NET Core （没有任何 Web UI），请调用（仅一次） `AcquireTokeninteractive`。 如果你使用的是 .NET core 或不想执行 `AcquireTokenInteractive`，则用户可以导航到 URL 以获得许可： https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read。 调用 `AcquireTokenInteractive`： `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079：用户需要使用多重身份验证（MFA）。| 没有缓解措施。 如果为你的租户配置了 MFA 并且 Azure Active Directory （AAD）决定强制执行，则需要回退到交互式流，如 `AcquireTokenInteractive` 或 `AcquireTokenByDeviceCode`。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010： */common*或 */consumers*终结点不支持授予类型。 请使用 */organizations* 或特定于租户的终结点。 使用了 */common*。| 根据 Azure AD 发出的消息中所述，颁发机构需要使用一个租户或 */organizations*。|
 | [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002：请求正文必须包含以下参数： `client_secret or client_assertion`。| 如果你的应用程序未在 Azure AD 中注册为公用客户端应用程序，则会引发此异常。 在 Azure 门户中，编辑应用程序的清单并将 `allowPublicClient` 设置为 "`true`"。 |
@@ -78,7 +78,7 @@ MSAL 公开一个 `Classification` 字段，你可以读取该字段以提供更
 | UserPasswordExpired | 用户的密码已过期。 | 调用 AcquireTokenInteractively （），以使用户可以重置其密码。 |
 | PromptNeverFailed| 在参数 prompt = never 的情况下调用交互身份验证，强制 MSAL 依赖浏览器 cookie，而不是显示浏览器。 此失败。 | 在不提示的情况下调用 AcquireTokenInteractively （）。 None |
 | AcquireTokenSilentFailed | MSAL SDK 没有足够的信息，无法从缓存中获取令牌。 这可能是因为缓存中没有任何令牌或找不到帐户。 错误消息包含更多详细信息。  | 调用 AcquireTokenInteractively （）。 |
-| None    | 未提供更多详细信息。 交互身份验证流期间，用户交互可能会解决此问题。 | 调用 AcquireTokenInteractively （）。 |
+| 无    | 未提供更多详细信息。 交互身份验证流期间，用户交互可能会解决此问题。 | 调用 AcquireTokenInteractively （）。 |
 
 ## <a name="net-code-example"></a>.NET 代码示例
 
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 
 MSAL 公开一个 `reason` 字段，可用于提供更好的用户体验。 例如，"`reason`" 字段可能会告诉用户其密码已过期，或者他们需要提供使用某些资源的许可。 支持的值是 `InteractionRequiredExceptionReason` 枚举的一部分：
 
-| 原因 | 含义 | 建议的处理 |
+| Reason | 含义 | 建议的处理 |
 |---------|-----------|-----------------------------|
 | `BasicAction` | 在交互身份验证流期间，用户交互可以解决条件 | 用交互式参数调用 `acquireToken` |
 | `AdditionalAction` | 与交互式身份验证流之外的系统进行更多的补救交互时，可以解决此问题。 | 使用交互式参数调用 `acquireToken`，以显示一条消息，说明要采取的补救措施。 如果用户不太可能完成补救措施，则调用应用程序可能会选择隐藏需要其他操作的流。 |

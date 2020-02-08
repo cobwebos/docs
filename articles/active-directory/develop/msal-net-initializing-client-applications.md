@@ -3,29 +3,29 @@ title: 初始化 MSAL.NET 客户端应用程序 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）初始化公共客户端和机密客户端应用程序。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 57ce6ab31421cd4016f7e204eeabce82f2f7e6a7
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695545"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083985"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>使用 MSAL.NET 初始化客户端应用程序
 本文介绍如何使用适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）初始化公共客户端应用程序和机密客户端应用程序。  若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
 
 对于 MSAL.NET 2.x，推荐的方法是使用应用程序生成器来实例化应用程序： `PublicClientApplicationBuilder` 和 `ConfidentialClientApplicationBuilder`。 它们提供了一种强大的机制，用于通过代码或配置文件配置应用程序，甚至混合使用这两种方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在初始化应用程序之前，首先需要[注册它](quickstart-register-app.md)，以便您的应用程序可以与 Microsoft 标识平台集成。  注册后，你可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID （表示 GUID 的字符串）
@@ -96,7 +96,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在公共客户端或机密客户端应用程序生成器上设置的修饰符包括：
 
-|修饰符 | Description|
+|组合键 | 说明|
 |--------- | --------- |
 |`.WithAuthority()` 7 覆盖 | 为 Azure AD 机构设置应用程序默认授权，可以选择 Azure 云、受众、租户（租户 ID 或域名），也可以直接提供授权机构 URI。|
 |`.WithAdfsAuthority(string)` | 将应用程序默认授权设置为 ADFS 颁发机构。|
@@ -115,7 +115,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在 Xamarin 上的公共客户端应用程序生成器上设置的修饰符如下：
 
-|修饰符 | Description|
+|组合键 | 说明|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **仅限 Xamarin**：设置 iOS 密钥链安全组（用于缓存持久性）。|
 
@@ -123,7 +123,7 @@ IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create
 
 可在机密客户端应用程序生成器上设置的修饰符包括：
 
-|修饰符 | Description|
+|组合键 | 说明|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | 设置用 Azure AD 标识应用程序的证书。|
 |`.WithClientSecret(string clientSecret)` | 设置用于标识具有 Azure AD 的应用程序的客户端密码（应用密码）。|

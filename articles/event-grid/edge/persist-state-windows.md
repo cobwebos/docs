@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844609"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086624"
 ---
 # <a name="persist-state-in-windows"></a>Windows 中的持久状态
 
@@ -37,7 +37,7 @@ ms.locfileid: "76844609"
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    例如，
+    例如，应用于对象的
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -48,7 +48,7 @@ ms.locfileid: "76844609"
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    例如，
+    例如，应用于对象的
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -79,7 +79,7 @@ ms.locfileid: "76844609"
     1. 在 "*用户的权限*" 下，选择 "**修改**"，然后选择 **"确定"** 。
 1. 使用**绑定**来装入此卷，并从 Azure 门户重新部署事件网格模块
 
-   例如，
+   例如，应用于对象的
 
     ```json
         {
@@ -115,7 +115,7 @@ ms.locfileid: "76844609"
    >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，必须是**C：\\应用\\metadataDb**。
 
 
-    例如，
+    例如，应用于对象的
 
     ```json
     {
@@ -158,7 +158,7 @@ ms.locfileid: "76844609"
    mkdir <your-directory-name-here>
    ```
 
-   例如，
+   例如，应用于对象的
 
    ```sh
    mkdir C:\myhostdir
@@ -178,7 +178,7 @@ ms.locfileid: "76844609"
     >[!IMPORTANT]
     >不要更改绑定值的第二部分。 它指向模块中的特定位置。 对于 windows 上的事件网格模块，该模块必须为**C：\\应用\\metadataDb**。
 
-    例如，
+    例如，应用于对象的
 
     ```json
     {
@@ -212,13 +212,13 @@ ms.locfileid: "76844609"
     ```
 ## <a name="persist-events"></a>持久保存事件
 
-若要启用事件持久性，必须首先使用上述部分通过卷装载或主机目录装载启用元数据持久性。
+若要启用事件持久性，必须首先使用上述部分通过卷装载或主机目录装载来启用事件持久性。
 
 有关保留事件的重要事项：
 
 * 在每个事件订阅的基础上启用保留事件，并在装入卷或目录后选择加入。
 * 事件持久性在创建时配置在事件订阅上，并且在创建事件订阅后无法修改。 若要切换事件持久性，必须删除并重新创建事件订阅。
-* 保持事件的速度几乎始终比在内存操作中慢，但速度差异很大程度上取决于驱动器的特征。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但它只是大规模 noticible。
+* 保持事件的速度几乎始终比在内存操作中慢，但速度差异很大程度上取决于驱动器的特征。 速度和可靠性之间的权衡对于所有消息系统都是固有的，但它的规模只是很明显。
 
 若要在事件订阅中启用事件持久性，请将 `persistencePolicy` 设置为 `true`：
 

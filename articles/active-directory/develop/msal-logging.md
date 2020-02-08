@@ -3,22 +3,22 @@ title: MSAL 应用中的日志记录 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Microsoft 身份验证库 (MSAL) 应用程序中进行日志记录。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/11/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695800"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084895"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL 应用程序中的日志记录
 
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |Description |
+|Level  |说明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 若要在使用 MSAL for iOS 和 macOS 进行记录时设置日志记录级别，请使用以下值之一：
 
-|级别  |Description |
+|Level  |说明 |
 |---------|---------|
 | `MSALLogLevelNothing`| 禁用所有日志记录 |
 | `MSALLogLevelError` | 默认级别，仅在发生错误时输出信息 |

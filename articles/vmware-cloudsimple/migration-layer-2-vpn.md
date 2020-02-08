@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019819"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083229"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 层外延式网络迁移工作负荷
 
@@ -48,19 +48,19 @@ ms.locfileid: "77019819"
 * 独立的 NSX-T 边缘设备版本与你的 AVS 私有云环境中使用的 NSX-T 管理器版本（NSX-T 2.3.0）兼容。
 * 已在本地 vCenter 中创建了一个已启用伪造传输的中继端口组。
 * 已保留一个公共 IP 地址用于 NSX-T 独立客户端上行 IP 地址，1:1 NAT 可用于在两个地址之间进行转换。
-* 在 az 的本地 DNS 服务器上设置 DNS 转发。要指向 AVS 私有云 DNS 服务器的 AVS.io 域。
+* 将 az.cloudsimple.io 域的本地 DNS 服务器上的 DNS 转发设置为指向 AVS 私有云 DNS 服务器。
 * RTT 延迟小于或等于 150 ms，这是因为 vMotion 需要在两个站点间工作。
 
 ## <a name="limitations-and-considerations"></a>限制和注意事项
 
 下表列出了支持的 vSphere 版本和网络适配器类型。 
 
-| vSphere 版本 | 源 vSwitch 类型 | 虚拟 NIC 驱动程序 | 目标 vSwitch 类型 | 受? |
+| vSphere 版本 | 源 vSwitch 类型 | 虚拟 NIC 驱动程序 | 目标 vSwitch 类型 | 是否支持？ |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| 所有 | DVS | 所有 | DVS | 是 |
+| 全部 | DVS | 全部 | DVS | 是 |
 | vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | VMXNET3 | N-VDS | 是 |
 | vSphere 6.7 UI 或更高版本，6.5 P03 或更高版本 | DVS | E1000 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7 UI 或 6.5 P03，NSX-V 或低于 NSX-T 2.2、6.5 P03 或更高版本的版本 | 所有 | 所有 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7 UI 或 6.5 P03，NSX-V 或低于 NSX-T 2.2、6.5 P03 或更高版本的版本 | 全部 | 全部 | N-VDS | [每个 VWware 不支持](https://kb.vmware.com/s/article/56991) |
 
 从 VMware NSX 到2.3 版本：
 
@@ -137,7 +137,7 @@ ms.locfileid: "77019819"
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>提取 L2VPN 所需的逻辑交换机 ID
 
 1. 登录到 " [NSX-T 管理器](https://nsx-t-manager-ip-address)"。
-2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。
+2. 选择 **"网络** ** > 交换机 > 切换 > ** **< \Logical" 交换机\>** "**概述**"。 > 
 3. 记下 stretch 逻辑交换机的 UUID，在配置 L2VPN 时需要用到它。
 
     ![获取逻辑路由器输出](media/l2vpn-fetch-switch01.png)
@@ -154,16 +154,16 @@ ms.locfileid: "77019819"
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>将环回接口 IP 播发到是网络
 
-1. 为环回接口网络创建空路由。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供程序-LR** > **路由** > **静态路由**。 单击“添加”。 对于 "**网络**"，请输入环回接口 IP 地址。 对于 "**下一**跃点"，单击 "**添加**"，为下一个跃点指定 "Null"，并保留默认值1进行管理距离。
+1. 为环回接口网络创建空路由。 登录到 "NSX-T 管理器" 并选择 "**网络** > **路由** > **路由器** > **提供程序-LR** > **路由** > **静态路由**。 单击 **“添加”** 。 对于 "**网络**"，请输入环回接口 IP 地址。 对于 "**下一**跃点"，单击 "**添加**"，为下一个跃点指定 "Null"，并保留默认值1进行管理距离。
 
     ![添加静态路由](media/l2vpn-routing-security01.png)
 
-2. 创建 IP 前缀列表。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **IP 前缀列表**。 单击“添加”。 输入名称以标识列表。 对于**前缀**，单击 "**添加**两次"。 在第一行中，输入 "0.0.0.0/0" 作为**网络**，为 "拒绝" 输入**操作**。 在第二行中，**选择**"**网络**" 和 "**允许** **操作**"。
+2. 创建 IP 前缀列表。 登录到 "NSX-T 管理器"，然后选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** > **IP 前缀列表**。 单击 **“添加”** 。 输入名称以标识列表。 对于**前缀**，单击 "**添加**两次"。 在第一行中，输入 "0.0.0.0/0" 作为**网络**，为 "拒绝" 输入**操作**。 在第二行中，**选择**"**网络**" 和 "**允许** **操作**"。
 3. 将 IP 前缀列表附加到这两个 BGP 邻居（TOR）。 将 IP 前缀列表附加到 BGP 邻居可防止将默认路由播发到 TOR 交换机的 BGP。 但是，任何其他包含空路由的路由都将向 TOR 交换机公布环回接口 IP 地址。
 
     ![创建 IP 前缀列表](media/l2vpn-routing-security02.png)
 
-4. 登录到 "NSX-T 管理器"，并选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** ** > " > ** **邻居**"。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击“ **保存**”。 对第二个邻居重复此步骤。
+4. 登录到 "NSX-T 管理器"，并选择 "**网络** > **路由** > **路由器** > **提供商-LR** > **路由** ** > " > ** **邻居**"。 选择第一个相邻节点。 单击 "**编辑** > **地址系列**"。 对于 IPv4 系列，请编辑 "**输出筛选器**" 列，然后选择所创建的 IP 前缀列表。 单击 **“保存”** 。 对第二个邻居重复此步骤。
 
     ![附加 IP 前缀列表 1](media/l2vpn-routing-security03.png) ![附加 IP 前缀列表 2](media/l2vpn-routing-security04.png)
 
@@ -428,7 +428,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     ![下载独立的 NSX 边缘客户端](media/l2vpn-deploy-client01.png)
 
-2. 前往包含所有已提取文件的文件夹。 为大设备大小选择所有 vmdk （l2t 和 NSX-l2t-client-large），并选择 ""，并选择 ""，为超大大小的设备调整和 l2t。 单击“下一步”。
+2. 前往包含所有已提取文件的文件夹。 为大设备大小选择所有 vmdk （l2t 和 NSX-l2t-client-large），并选择 ""，并选择 ""，为超大大小的设备调整和 l2t。 单击 **“下一步”** 。
 
     ![选择模板](media/l2vpn-deploy-client02.png) ![选择模板 "](media/l2vpn-deploy-client03.png)
 
@@ -440,7 +440,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
     ![选择数据存储](media/l2vpn-deploy-client06.png)
 
-5. 为 NSX-T 独立客户端选择正确的端口组（干线 PG）、公用（上行 PG）和 HA 接口（上行 PG）。 单击“下一步”。
+5. 为 NSX-T 独立客户端选择正确的端口组（干线 PG）、公用（上行 PG）和 HA 接口（上行 PG）。 单击 **“下一步”** 。
 
     ![选择端口组](media/l2vpn-deploy-client07.png)
 

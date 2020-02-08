@@ -3,22 +3,22 @@ title: MSAL for iOS & macOS 差异 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 介绍 iOS 与 macOS 之间的 Microsoft 身份验证库（MSAL）使用差异。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: cdc06ee2aceae4bf8c689d4ef6db0609b8d71c8f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62b79ee7398286b8e6c8ed8612bd001595e1f6ea
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834206"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084976"
 ---
 # <a name="microsoft-authentication-library-for-ios-and-macos-differences"></a>适用于 iOS 的 Microsoft 身份验证库和适用于 macOS 的 Microsoft 身份验证库的差异
 

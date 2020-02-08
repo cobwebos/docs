@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935185"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083714"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>在 SAP 高可用性方案中使用 Azure 标准负载均衡器虚拟机的公共终结点连接
 
@@ -46,7 +46,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
 需要访问 Azure 公共终结点的方案示例包括：  
 - 在 Pacemaker 群集中使用 Azure 隔离代理作为防护机制
 - Azure 备份
-- Azure 站点恢复  
+- Azure Site Recovery  
 - 使用公共存储库修补操作系统
 - SAP 应用程序数据流可能需要到公共终结点的出站连接
 
@@ -106,7 +106,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. 创建网络安全组规则，以限制对特定公用终结点的访问。 如果存在现有的网络安全组，则可以对其进行调整。 下面的示例演示如何只允许访问 Azure 管理 API： 
+4. 创建网络安全组规则，以限制对特定公用终结点的访问。 如果存在现有的网络安全组，则可以对其进行调整。 下面的示例演示如何启用对 Azure 管理 API 的访问权限： 
    1. 导航到网络安全组
    1. 单击 "出站安全规则"
    1. 添加规则以**拒绝**对**Internet**的所有出站访问。
@@ -165,7 +165,7 @@ SAP 系统通常包含敏感的业务数据。 对于托管 SAP 系统的 Vm 具
    防火墙规则如下所示： ![与 Azure 防火墙建立出站连接](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. 创建从 Vm 子网到**MyAzureFirewall**专用 IP 的用户定义路由。
-   1. 在路由表中，单击 "路由"。 选择 "添加"。 
+   1. 在路由表中，单击 "路由"。 选择“添加”。 
    1. 路由名称： ToMyAzureFirewall，地址前缀： **0.0.0.0/0**。 下一跃点类型：选择 "虚拟设备"。 下一个跃点地址：输入配置的防火墙的专用 IP 地址： **11.97.1.4**。  
    1. 保存
 

@@ -3,27 +3,27 @@ title: 初始化 MSAL 客户端应用 |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）初始化客户端应用程序。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/12/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e350f4fc3d40b45a1308e1edd9331dc7f71399c5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696123"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084040"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL 初始化客户端应用程序
 本文介绍如何使用用户代理应用程序的实例初始化适用于 JavaScript 的 Microsoft 身份验证库（MSAL）。 用户代理应用程序是公用客户端应用程序的一种形式，其中客户端代码在用户代理（如 web 浏览器）中执行。 这些客户端不存储机密，因为浏览器上下文可公开访问。 若要了解有关客户端应用程序类型和应用程序配置选项的详细信息，请阅读[概述](msal-client-applications.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 在初始化应用程序之前，首先需要将[其注册到 Azure 门户](scenario-spa-app-registration.md)，以便可以将应用程序与 Microsoft 标识平台集成。 注册后，你可能需要以下信息（可在 Azure 门户中找到）：
 
 - 客户端 ID （表示应用程序的 GUID 的字符串）
@@ -141,4 +141,4 @@ export type Configuration = {
 这些仅适用于从 MSAL 角包装库中向下传递：
 - **unprotectedResources**：可选。  未受保护的资源的 Uri 数组。 MSAL 不会将令牌附加到具有这些 URI 的传出请求。 默认为 `null`。
 
-- **protectedResourceMap**：可选。  这就是将资源映射到 MSAL 使用的作用域，以便在 web API 调用中自动连接访问令牌。 为资源获取单个访问令牌。 因此, 可以按如下所示映射特定的资源路径: "https://graph.microsoft.com/v1.0/me" {""、["用户读取"]} 或资源的应用程序 URL: {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 这是 CORS 调用所必需的。 默认为 `null`。
+- **protectedResourceMap**：可选。  这就是将资源映射到 MSAL 使用的作用域，以便在 web API 调用中自动连接访问令牌。 为资源获取单个访问令牌。 因此，可以按如下所示映射特定的资源路径： {"https://graph.microsoft.com/v1.0/me"、["用户读取"]} 或资源的应用 URL： {"https://graph.microsoft.com/"、["用户读取"、"邮件发送"]}。 这是 CORS 调用所必需的。 默认为 `null`。

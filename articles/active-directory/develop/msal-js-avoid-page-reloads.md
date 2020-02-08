@@ -3,22 +3,22 @@ title: 避免页面重载（MSAL） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何在使用适用于 JavaScript 的 Microsoft 身份验证库（MSAL）以无提示方式获取和续订令牌时避免页面重新加载。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/29/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e68798861d5799a4314bd9cd9b2eeeadb926a90f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 63944a5a9af34c2d4cf98eeb870a730df49654e5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696140"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084960"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>当使用 MSAL 以静默方式获取和续订令牌时避免页面重新加载
 适用于 JavaScript 的 Microsoft 身份验证库（MSAL）使用隐藏 `iframe` 元素在后台无提示地获取和续订令牌。 Azure AD 返回令牌请求中指定的注册 redirect_uri 的令牌（默认情况下，这是应用的根页面）。 由于响应为302，因此会生成与 `iframe`中加载的 `redirect_uri` 对应的 HTML。 通常，应用的 `redirect_uri` 是根页面，这将导致重新加载。

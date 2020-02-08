@@ -1,27 +1,26 @@
 ---
 title: 在中创建你的第一个 Service Fabric 应用程序C#
 description: 介绍如何创建具有无状态服务和有状态服务的 Microsoft Azure Service Fabric 应用程序。
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462816"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083757"
 ---
-# <a name="get-started-with-reliable-services"></a>可靠服务入门
+# <a name="get-started-with-reliable-services"></a>Reliable Services 入门
+
 > [!div class="op_single_selector"]
 > * [Windows 上的 C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 本指南说明如何使用 [Reliable Services](service-fabric-reliable-services-introduction.md) 同时创建无状态与有状态的 Service Fabric 应用程序。  
 
 ## <a name="basic-concepts"></a>基本概念
+
 若要开始使用 Reliable Services，只需了解几个基本概念：
 
 * **服务类型**：这是服务实现。 它由你编写的可扩展 `StatelessService` 的类、其中使用的任何其他代码或依赖项以及名称和版本号定义。
@@ -30,6 +29,7 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 * **服务注册**：通过注册可将所有对象融合在一起。 只有将服务类型注册到服务宿主中的 Service Fabric 运行时后，Service Fabric 才能创建该类型的可运行实例。  
 
 ## <a name="create-a-stateless-service"></a>创建无状态服务
+
 无状态服务是目前在云应用程序中作为基准的服务类型。 该服务之所以被视为无状态，是因为它本身不包含需要可靠存储或高度可用的数据。 如果无状态服务的实例关闭，其所有内部状态都会丢失。 在这种类型的服务中，必须将状态保存到外部存储（如 Azure 表或 SQL 数据库），才能实现高可用性和可靠性。
 
 以管理员身份启动 Visual Studio 2017 或 Visual Studio 2019，并创建名为*HelloWorld*的新 Service Fabric 应用程序项目：
@@ -46,7 +46,8 @@ Azure Service Fabric 应用程序包含一个或多个运行代码的服务。 �
 * *HelloWorldStateless*。 这是服务项目。 其中包含无状态服务实现。
 
 ## <a name="implement-the-service"></a>实现服务
-打开服务项目中的 **HelloWorldStateless.cs** 文件。 在 Service Fabric 中，服务可以运行任一业务逻辑。 服务 API 为代码提供两个入口点：
+
+打开服务项目中的 **HelloWorldStateless.cs** 文件。 在 Service Fabric 中，服务可以运行任一业务逻辑。 服务 API 为你的代码提供两个入口点：
 
 * 名为 *RunAsync* 的开放式入口点方法，可在其中开始执行任何工作负荷，包括长时间运行的计算工作负荷。
 
@@ -70,11 +71,10 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 项目模板包括 `RunAsync()` 的示例实现，该实现递增滚动计数。
 
 > [!NOTE]
-> 有关如何使用通信堆栈的详细信息，请参阅 [Service Fabric Web API 服务与 OWIN 自托管](service-fabric-reliable-services-communication-webapi.md)
-> 
-> 
+> 有关如何使用通信堆栈的详细信息，请参阅[与 ASP.NET Core 的服务通信](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -103,13 +103,14 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
 系统将管理此业务流程，以便保持服务的高度可用和适当平衡。
 
-`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `RunAsync` 实现中的 `Task.Run()` 安排新的 Task。
+`RunAsync()` 不应阻止同步。 RunAsync 实现应返回 Task，或等待任意长时间运行或阻止的操作以允许运行时继续。 请注意，上一示例中的 `while(true)` 循环中使用了返回 Task 的 `await Task.Delay()`。 如果必须同步阻止工作负荷，应使用 `Task.Run()` 实现中的 `RunAsync` 安排新的 Task。
 
 取消工作负荷是一项由所提供的取消标记协调的协同操作。 系统会等任务结束后（成功完成、取消或出现故障）再执行下一步操作。 当系统请求取消时，请务必接受取消标记，完成所有任务，并尽快退出 `RunAsync()`。
 
 在此无状态服务示例中，计数存储在本地变量中。 不过，由于这是无状态服务，因此，所存储的值仅在其所在服务实例的当前生命周期中存在。 当服务移动或重新启动时，值就会丢失。
 
 ## <a name="create-a-stateful-service"></a>创建有状态服务
+
 Service Fabric 引入了一种新的有状态服务。 有状态服务能够可靠地在服务本身内部保持状态，并与使用它的代码共置。 Service Fabric 无需将状态保存到外部存储，便可实现状态的高可用性。
 
 要将计数器值从无状态转换为即使在服务移动或重新启动时仍高度可用并持久存在，需要有状态服务。
@@ -126,7 +127,7 @@ Service Fabric 引入了一种新的有状态服务。 有状态服务能够可�
 
 有状态服务具有与无状态服务相同的入口点。 主要区别是是否有能够可靠地存储状态的*状态提供程序*。 Service Fabric 附带名为[可靠集合](service-fabric-reliable-services-reliable-collections.md)的状态提供程序实现，可让你通过可靠状态管理器创建复制的数据结构。 有状态可靠服务默认使用此状态提供程序。
 
-打开 *HelloWorldStateful* 中的 **HelloWorldStateful.cs**，该文件包含以下 RunAsync 方法：
+打开 **HelloWorldStateful** 中的 *HelloWorldStateful.cs*，该文件包含以下 RunAsync 方法：
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -159,9 +160,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表你执行额外的工作，然后再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠集合与可靠状态管理器
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -178,6 +181,7 @@ var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<str
 可靠状态管理器管理可靠集合。 无论何时何地，都可以根据名称向可靠状态管理器请求服务中的某个可靠集合。 可靠状态管理器可确保能取回引用。 不建议将可靠集合实例的引用存储在类成员变量或属性中。 请特别小心，确保在服务生命周期中随时会引用设置为某个实例。 可靠状态管理器将处理此工作，并已针对重复访问进行优化。
 
 ### <a name="transactional-and-asynchronous-operations"></a>事务和异步操作
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -189,12 +193,12 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-可靠集合具有许多与其 `System.Collections.Generic` 和 `System.Collections.Concurrent` 对应项相同的操作，LINQ 除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
+可靠集合具有许多与它们的 `System.Collections.Generic` 和 `System.Collections.Concurrent` 相同的操作，但语言集成查询（LINQ）除外。 可靠集合上的操作是异步的。 这是因为可靠集合的写入操作执行 I/O 操作，以将数据复制并保存到磁盘。
 
-可靠集合操作是*事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
+可靠集合操作是*事务性的*，因此可以跨多个可靠集合和操作保持状态的一致。 例如，你可以在单个事务中，将工作项从 Reliable Queue 取消排队、对其执行操作并将结果保存在 Reliable Dictionary 中。 这被视为原子操作，它可以保证整个操作要么成功，要么回滚。 如果将项取消排队之后、保存结果之前发生错误，则会回滚整个事务，并且项将保留在队列中以供处理。
 
 ## <a name="run-the-application"></a>运行应用程序
-现在，我们返回到 *HelloWorld* 应用程序。 现在，可以生成并部署服务。 按 **F5** 即可生成应用程序并部署到本地群集。
+现在，我们返回到 *HelloWorld* 应用程序。 现在，你可以生成并部署你的服务。 按 **F5** 即可生成应用程序并部署到本地群集。
 
 服务开始运行之后，可以在“**诊断事件**”窗口中查看生成的 Windows 事件跟踪 (ETW) 事件。 请注意，应用程序中会同时显示无状态服务和有状态服务的事件。 可以通过单击“**暂停**”按钮来暂停流。 然后，可以通过展开该消息来检查消息的详细信息。
 

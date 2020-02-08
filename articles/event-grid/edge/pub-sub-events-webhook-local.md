@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844526"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086638"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
 
@@ -23,8 +23,8 @@ ms.locfileid: "76844526"
 > [!NOTE]
 > 若要了解有关 Azure 事件网格主题和订阅的信息，请参阅[事件网格概念](concepts.md)。
 
-## <a name="prerequisites"></a>必备组件 
-为了完成本教程，你将需要：
+## <a name="prerequisites"></a>先决条件 
+若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
 * **Azure IoT 中心和 IoT Edge 设备**-按照适用于[Linux](../../iot-edge/quickstart-linux.md)或[Windows 设备](../../iot-edge/quickstart.md)的快速入门中的步骤（如果尚未安装）。
@@ -64,8 +64,7 @@ ms.locfileid: "76844526"
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -78,22 +77,18 @@ ms.locfileid: "76844526"
           }
         }
     ```    
- 1. 单击“保存”
- 1. 请继续阅读下一部分，在将其部署到一起之前添加 Azure Functions 模块。
+ 1. 单击 **“保存”**
+ 1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
-    > 在本教程中，将部署已禁用客户端身份验证并允许 HTTP 订阅服务器的事件网格模块。 对于生产工作负荷，建议启用客户端身份验证，并且仅允许 HTTPs 订阅服务器。 有关如何安全配置事件网格模块的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
+    > 在本教程中，将部署已禁用客户端身份验证的事件网格模块。 对于生产工作负荷，建议启用客户端身份验证。 有关如何安全配置事件网格模块的详细信息，请参阅[安全性和身份验证](security-authentication.md)。
     > 
     > 如果使用 Azure VM 作为边缘设备，请添加入站端口规则以允许端口4438上的入站流量。 有关添加规则的说明，请参阅[如何打开 VM 的端口](../../virtual-machines/windows/nsg-quickstart-portal.md)。
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>部署 Azure Function IoT Edge 模块
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>部署事件网格订阅服务器 IoT Edge 模块
 
-本部分介绍如何部署 Azure Functions IoT 模块，该模块将充当可传递事件的事件网格订户。
-
->[!IMPORTANT]
->在本部分中，你将部署一个基于 Azure 功能的示例订阅模块。 当然，它也可以是可侦听 HTTP POST 请求的任何自定义 IoT 模块。
-
+本部分介绍如何部署另一个 IoT 模块，该模块将充当可传递事件的事件处理程序。
 
 ### <a name="add-modules"></a>添加模块
 
@@ -102,24 +97,9 @@ ms.locfileid: "76844526"
 1. 提供容器的 "名称"、"映像" 和 "容器" 创建选项：
 
    * **名称**：订阅服务器
-   * **映像 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **容器创建选项**：
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
-1. 单击“保存”
+   * **映像 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **容器创建选项**：无
+1. 单击 **“保存”**
 1. 单击 "**下一步**" 以继续转到 "路由" 部分
 
  ### <a name="setup-routes"></a>安装路由
@@ -191,7 +171,7 @@ ms.locfileid: "76844526"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ ms.locfileid: "76844526"
     ```
 
     >[!NOTE]
-    > **EndpointType**属性指定订阅服务器是**Webhook**。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure Function 示例。
+    > **EndpointType**属性指定订阅服务器是**Webhook**。  **EndpointUrl**指定订阅服务器侦听事件的 URL。 此 URL 对应于之前部署的 Azure 订阅者示例。
 2. 运行以下命令以创建主题的订阅。 确认 `200 OK`显示 HTTP 状态代码。
 
     ```sh
@@ -223,7 +203,7 @@ ms.locfileid: "76844526"
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ ms.locfileid: "76844526"
     示例输出：
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ ms.locfileid: "76844526"
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>清理资源

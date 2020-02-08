@@ -3,22 +3,22 @@ title: 自定义浏览器 & Webview （MSAL iOS/macOS） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解如何自定义 MSAL iOS/macOS 浏览器体验来登录用户。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fad3a90bd11104b4d770ddc1c527cba7d299d150
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697619"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085904"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>如何：自定义 iOS/macOS 的浏览器和 Webview
 
@@ -65,11 +65,11 @@ MacOS 的 MSAL 仅支持 `WKWebView`。
 
 | 技术    | 浏览器类型  | iOS 可用性 | macOS 可用性 | 共享 cookie 和其他数据  | MSAL 可用性 | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | 系统 | iOS12 及更高 | macOS 10.15 及更高 | 是 | 仅限 iOS | w/Safari 实例
-| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | 系统 | iOS11 及更高 | N/A | 是 | 仅限 iOS |  w/Safari 实例
-| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | 系统 | iOS11 及更高 | N/A | 否 | 仅限 iOS | 否**
-| **SFSafariViewController** | 系统 | iOS10 | N/A | 是 | 仅限 iOS |  w/Safari 实例
-| **WKWebView**  | 应用内 | iOS8 及更高 | macOS 10.10 及更高 | 否 | iOS 和 macOS | 否**
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | System | iOS12 及更高 | macOS 10.15 及更高 | 是 | 仅限 iOS | w/Safari 实例
+| [SFAuthenticationSession](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | System | iOS11 及更高 | 不可用 | 是 | 仅限 iOS |  w/Safari 实例
+| [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | System | iOS11 及更高 | 不可用 | 是 | 仅限 iOS | 否**
+| **SFSafariViewController** | System | iOS10 | 不可用 | 是 | 仅限 iOS |  w/Safari 实例
+| **WKWebView**  | 应用内 | iOS8 及更高 | macOS 10.10 及更高 | 是 | iOS 和 macOS | 否**
 
 \* * 要使 SSO 正常工作，需要在应用之间共享标记。 这需要令牌缓存或代理应用程序，如适用于 iOS 的 Microsoft Authenticator。
 
@@ -131,7 +131,7 @@ extern NSString *MSALWebAuthDidCompleteNotification;
 extern NSString *MSALWebAuthWillSwitchToBrokerApp;
 ```
 
-### <a name="options"></a>选项
+### <a name="options"></a>Options
 
 所有 MSAL 支持的 web 浏览器类型都在[MSALWebviewType 枚举](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALDefinitions.h#L47)中声明
 

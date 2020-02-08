@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849729"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086675"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>监视主题和事件订阅
 
@@ -40,7 +40,7 @@ ms.locfileid: "76849729"
         }
  ```    
 
-在 `5888/metrics` 适用于 http 的模块以及 https `4438/metrics` 的指标。 例如，`http://<modulename>:4438/metrics?api-version=2019-01-01-preview` http。 此时，指标模块可以轮询终结点以收集指标，如此[示例结构](https://github.com/veyalla/ehm)中所示。
+在 `5888/metrics` 适用于 http 的模块以及 https `4438/metrics` 的指标。 例如，`http://<modulename>:5888/metrics?api-version=2019-01-01-preview` http。 此时，指标模块可以轮询终结点以收集指标，如此[示例结构](https://github.com/veyalla/ehm)中所示。
 
 ## <a name="available-metrics"></a>可用指标
 
@@ -48,7 +48,7 @@ ms.locfileid: "76849729"
 
 ### <a name="topic-metrics"></a>主题指标
 
-| 度量值 | Description |
+| 跃点数 | 说明 |
 | ------ | ----------- |
 | EventsReceived | 发布到主题的事件数
 | UnmatchedEvents | 已发布到与事件订阅不匹配并且被删除的主题的事件数
@@ -60,12 +60,12 @@ ms.locfileid: "76849729"
 
 ### <a name="event-subscription-metrics"></a>事件订阅指标
 
-| 度量值 | Description |
+| 跃点数 | 说明 |
 | ------ | ----------- |
 | deliverySuccessCounts | 成功传递到配置的终结点的事件数
-| deliveryFailureCounts | 未能将事件传递尝试次数发送到配置的终结点
+| deliveryFailureCounts | 未能传递到配置的终结点的事件数
 | deliverySuccessLatencyMs | 成功传递的事件滞后时间（毫秒）
 | deliveryFailureLatencyMs | 事件传递失败的延迟时间（毫秒）
 | systemDelayForFirstAttemptMs | 第一次传递尝试前事件的系统延迟（毫秒）
 | deliveryAttemptsCount | 事件传递尝试次数-成功和失败
-| expiredCounts | 无法传递的事件数 
+| expiredCounts | 已过期并且未传递到配置的终结点的事件数

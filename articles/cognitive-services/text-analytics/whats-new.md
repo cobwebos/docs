@@ -8,41 +8,67 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: e3fbff7a5919d4d43656f3112cb24f2017191348
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732614"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086789"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
 文本分析 API 会持续更新。 为了及时了解最新的发展，本文提供了有关新版本和功能的信息。
 
-## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>命名实体识别 v3 公共预览版-10 月2019
+## <a name="named-entity-recognition-v3-public-preview---february-2020"></a>命名实体识别 v3 公共预览版-2020 年2月
 
-下一版本的命名实体识别（NER）现在可用于公共预览版，并为在文本中找到的实体提供扩展的检测和分类。 它提供：
+其他实体类型现已在命名实体识别（NER） v3 公共预览服务中提供，因为我们展开了在文本中找到的常规和个人信息实体的检测。 此更新引入 `2020-02-01`[模型版本](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)，其中包括：
 
-* 以下新实体类型的识别：
-    * 手机号码
+* 识别以下常规实体类型（仅限英语）：
+    * PersonType
+    * 产品
+    * 事件
+    * 地缘政治实体（GPE）作为位置下的子类型
+    * 技能
+
+* 识别以下个人信息实体类型（仅限英语）：
+    * Person
+    * 单位
+    * 在数量下作为子类型的年龄
+    * 日期作为 DateTime 下的子类型
+    * 电子邮件 
+    * 电话号码（仅限美国）
+    * URL
     * IP 地址
-
-* 用于识别个人信息实体类型的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)（仅限英语）
-* 用于[实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)和[实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的不同终结点。
-
-实体链接支持英语和西班牙语。 NER 语言支持因实体类型而异。 
 
 > [!div class="nextstepaction"]
 > [了解有关命名实体识别 v3 的详细信息](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
-## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>情绪分析 v3 公共预览版-2019 年10月
+### <a name="october-2019"></a>2019 年 10 月
 
-[下一版本的情绪分析](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)现在可用于公共预览版，并在 API 的文本分类和评分方面提供了显著的改进。 它还提供：
+#### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-* 为文本中的不同情绪自动添加标签。
-* 在文档和句子级别上情绪分析和输出。 
+* 用于识别个人信息实体类型的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)（仅限英语）
+
+* 用于[实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)和[实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的不同终结点。
+
+* [模型版本](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)`2019-10-01`，其中包括：
+    * 扩展了文本中实体的检测和分类。 
+    * 以下新实体类型的识别：
+        * 电话号码
+        * IP 地址
+
+实体链接支持英语和西班牙语。 NER 语言支持因实体类型而异。
+
+#### <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
+
+* 用于分析情绪的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)。
+* [模型版本](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)`2019-10-01`，其中包括：
+
+    * API 文本分类和评分的准确性和详细信息的显著改进。
+    * 为文本中的不同情绪自动添加标签。
+    * 在文档和句子级别上情绪分析和输出。 
 
 它支持英语（`en`）、日语（`ja`）、简体中文（`zh-Hans`）、繁体中文（`zh-Hant`）、法语（`fr`）、意大利语（`it`）、西班牙语（`es`）、荷兰语（`nl`）、葡萄牙语（`pt`）和德语（`de`），并在以下区域中提供： `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`和 `West US 2`。 
 

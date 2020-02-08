@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044890"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086927"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 * 创建自定义基本映像：向管理员和 DevOps 提供相关信息，了解如何创建自定义映像并使用 Azure CLI 和机器学习 CLI 配置 Azure 容器注册表的身份验证。
 * 使用自定义基本映像部署模型：在从 Python SDK 或 ML CLI 部署训练的模型时，向数据科学家和 DevOps/ML 工程师提供有关使用自定义映像的信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作组。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 internet 上访问的[Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
-* 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的 "准备部署" 一节。
+* 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-deployment-artifacts)的 "准备部署" 一节。
 
 ## <a name="create-a-custom-base-image"></a>创建自定义基本映像
 
@@ -181,7 +181,7 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 
 Microsoft 在可公开访问的存储库上提供了几个 docker 映像，可用于本部分中的步骤：
 
-| 图像 | Description |
+| 映像 | 说明 |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure 机器学习的基本映像 |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | 包含 CPU 推断的 ONNX 运行时 |
@@ -239,7 +239,7 @@ conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml-默认值。 此包包含将模型托管为 web 服务所需的功能。 还必须在环境中将 inferencing_stack_version 属性设置为 "最新"，这将安装 web 服务所需的特定 apt 包。 
+必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml-默认值。 此包包含将模型托管为 Web 服务所需的功能。 还必须在环境中将 inferencing_stack_version 属性设置为 "最新"，这将安装 web 服务所需的特定 apt 包。 
 
 定义环境后，将其与[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)对象一起使用，以定义模型和 web 服务将在其中运行的推理环境。
 

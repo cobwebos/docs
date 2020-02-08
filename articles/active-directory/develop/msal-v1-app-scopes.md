@@ -2,30 +2,30 @@
 title: V1.0 应用的作用域（MSAL） |Microsoft
 description: 了解使用 Microsoft 身份验证库 (MSAL) 的 v1.0 应用程序的范围。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c532eb658e882f11bb380dce4f7a604097693c0f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704351"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085683"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
-OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客户端应用程序公开的 Azure Active Directory （Azure AD）权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 [Azure Active Directory 应用程序清单参考](reference-app-manifest.md#manifest-reference)中有关 `oauth2Permissions` 的部分。
+OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客户端应用程序公开的 Azure Active Directory （Azure AD）权限范围。 在许可期间，可将这些权限范围授予客户端应用程序。 请参阅 `oauth2Permissions`Azure Active Directory 应用程序清单参考[中有关 ](reference-app-manifest.md#manifest-reference) 的部分。
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如 Azure AD 图，请 https://graph.windows.net) 将所需的资源标识符与该资源的所需 OAuth2 权限串联起来，以创建作用域。
+若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如 Azure AD 图，请 https://graph.windows.net)将所需的资源标识符与该资源的所需 OAuth2 权限串联起来，以创建作用域。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 

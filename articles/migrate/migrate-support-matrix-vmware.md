@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解 Azure Migrate 中的 VMware 评估支持。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2fab94b66e09d3923e481326b3650f1beb621dc4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048762"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086777"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -99,7 +99,7 @@ ESXi 主机 | **仅[应用程序发现](https://docs.microsoft.com/azure/migrate
 **Windows 帐户** |  可视化需要本地或域管理员帐户。
 **Linux 帐户** | 可视化需要具有 Root 权限的用户帐户。<br/><br/> 或者，用户帐户需要对/bin/netstat 和/bin/ls 文件的这些权限： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 **VM 代理** | Vm 无需代理。
-**VMware 工具** | 必须在要分析的 Vm 上安装并运行 VMware 工具。
+**VMware 工具** | 必须在要分析的 Vm 上安装并运行 VMware 工具。 <br/> 如果 VMware 工具版本介于 9.10-10.2.0 之间，请确保将其升级到超过10.2.0。
 **vCenter 凭据** | 具有只读访问权限的 vCenter Server 帐户，以及为虚拟机启用 > 来宾操作的特权。
 **端口访问** | 在运行要分析的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
 

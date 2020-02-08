@@ -3,7 +3,7 @@ title: Azure AD B2C （MSAL.NET） |Microsoft
 titleSuffix: Microsoft identity platform
 description: 了解将 Azure AD B2C 与适用于 .NET 的 Microsoft 身份验证库（MSAL.NET）一起使用时的特定注意事项。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834189"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084003"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 登录具有社交标识的用户
 
@@ -182,6 +182,6 @@ MSAL.Net 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 下面的示例提供了有关以交互方式获取用于 Azure AD B2C 应用程序的 MSAL.NET 的令牌的更多详细信息。
 
-| 示例 | 平台 | Description|
+| 示例 | 平台 | 说明|
 |------ | -------- | -----------|
-|[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS，Xamarin Android，UWP | 一个简单的 Xamarin Forms 应用，展示如何使用 MSAL.NET 通过 Azure AD B2C 来对用户进行身份验证，并使用生成的令牌访问一个 Web API。|
+|[active-directory-b2c-本机](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS，Xamarin Android，UWP | 一个简单的 Xamarin Forms 应用，展示如何使用 MSAL.NET 通过 Azure AD B2C 来对用户进行身份验证，并使用生成的令牌访问一个 Web API。|

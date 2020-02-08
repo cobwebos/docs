@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 58b372e1f80386c4e02339f67f4c5aeaa686a662
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549217"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086510"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -97,8 +97,6 @@ AKS 支持以下[许可控制器][admission-controllers]：
 - MutatingAdmissionWebhook
 - ValidatingAdmissionWebhook
 - ResourceQuota
-- DenyEscalatingExec
-- AlwaysPullImages
 
 目前，无法在 AKS 中修改许可控制器的列表。
 
@@ -122,7 +120,7 @@ Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 W
 
 在 AKS 中，可以在创建群集时使用 Azure CLI 和 Azure 资源管理器模板来设置 `maxPods` 值。 但是，Kubenet 和 Azure CNI 都需要一个*最小值*（在创建时验证）：
 
-| 联网 | 最小值 | 最大值 |
+| 联网 | 最低 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |

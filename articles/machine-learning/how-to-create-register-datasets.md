@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260848"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082952"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -32,11 +32,11 @@ ms.locfileid: "76260848"
 
 * 与其他用户共享数据和进行协作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要创建和使用数据集，需要：
 
-* Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* 一个 Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|已保留|Pclass|名称|性别|年龄|SibSp|Parch|票证|车费|客舱|着手
+| |PassengerId|因|Pclass|名称|性别|Age|SibSp|Parch|Ticket|费用|客舱|着手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|第|错误|3|Braund，Owen Harris|男|22.0|第|0|A/5 21171|7.2500||S
-第|2|正确|第|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|第|0|电脑17599|71.2833|C85|C
-2|3|正确|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
+0|1|False|3|Braund，Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
+2|3|True|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取：
 
@@ -162,13 +162,13 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
-#### <a name="on-the-web"></a>在 Web 上 
-以下步骤和动画演示了如何在 Azure 机器学习 studio https://ml.azure.com 中创建数据集。
+#### <a name="on-the-web"></a>在 web 上 
+以下步骤和动画演示了如何在 Azure 机器学习 studio https://ml.azure.com中创建数据集。
 
 ![使用 UI 创建数据集](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 在工作室中创建数据集：
-1. 在 https://ml.azure.com 登录。
+1. 在 https://ml.azure.com登录。
 1. 在左侧窗格的 "**资产**" 部分中选择 "**数据集**"。 
 1. 选择 "**创建数据集**"，选择数据集的源。 此源可以是本地文件、数据存储或公共 Url。
 1. 选择 "**表格**或**文件**" 作为数据集类型。
@@ -177,7 +177,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 
 ## <a name="register-datasets"></a>注册数据集
 
-若要完成创建过程，请将数据集注册到工作区。 使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-)方法将数据集注册到你的工作区，以便与其他人共享数据集，并跨各种试验重复使用这些数据集：
+若要完成创建过程，请将数据集注册到工作区。 使用[`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-)方法将数据集注册到你的工作区，以便与其他人共享数据集，并跨各种试验重复使用这些数据集：
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,
@@ -223,7 +223,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 ![选择数据集](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-选择要在其下注册数据集的名称，并根据需要使用可用的筛选器来筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择“创建”。
+选择要在其下注册数据集的名称，并根据需要使用可用的筛选器来筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择 **“创建”** 。
 
 ![设置数据集参数并创建数据集](./media/how-to-create-register-datasets/open-datasets-3.png)
 

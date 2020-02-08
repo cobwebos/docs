@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 06d15d66df0b2ec0049d4b2fffae6a9909b05dca
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549132"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069500"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的身份验证和授权的最佳做法
 
@@ -122,7 +122,7 @@ Azure 资源的托管标识（当前作为关联的 AKS 开源项目实现）使
 
 有关 AKS 中的群集操作的详细信息，请参阅以下最佳做法：
 
-* [多租户和群集隔离][aks-best-practices-scheduler]
+* [多租户和群集隔离][aks-best-practices-cluster-isolation]
 * [基本 Kubernetes 计划程序功能][aks-best-practices-scheduler]
 * [Advanced Kubernetes 计划程序功能][aks-best-practices-advanced-scheduler]
 

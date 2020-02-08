@@ -2,22 +2,22 @@
 title: 授权代理和如何启用它们 |Microsoft
 description: 了解 Microsoft 身份验证库（MSAL）允许 Android 应用使用的不同授权代理，以及如何启用它们。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c2d0c8a877ba856aa7a93bfc960c44b63cbe8f9c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4f1b3fc5b60069cfa47d437e4341ded141204418
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697993"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085330"
 ---
 # <a name="authorization-agents-android"></a>授权代理 (Android)
 
@@ -37,7 +37,7 @@ MSAL 支持使用 `WebView`或系统浏览器的授权。  下图显示了使用
 
 如果应用程序将 MSAL 与 Microsoft Authenticator 或公司门户支持一起使用，则用户可以在应用程序之间具有 SSO 体验，前提是该用户具有其中一个应用的有效登录。
 
-## <a name="webview"></a>Web 视图
+## <a name="webview"></a>WebView
 
 若要使用应用内 Web 视图，请在传递到 MSAL 的应用配置 JSON 中添加以下行：
 

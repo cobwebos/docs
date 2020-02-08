@@ -7,33 +7,34 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812060"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069432"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心的商用 Marketplace 门户概述
 
 欢迎使用 Microsoft 合作伙伴中心的商业应用商店门户。 [商业应用商店门户](https://partner.microsoft.com/dashboard/commercial-marketplace/)旨在帮助你盈利你的产品和服务、与客户联系并发展你的业务。
 
-在本文档中，我们将介绍创建和使用合作伙伴中心帐户、创建新的软件即服务（SaaS）产品/服务（可在[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)上列出）、管理现有 SaaS 产品/服务的基础知识，以及提供资源以帮助你提出问题并收集反馈。 
+在本文档中，我们将介绍创建和使用合作伙伴中心帐户、创建新的软件即服务（SaaS）产品/服务（可在[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)上列出）、管理现有 SaaS 产品和提供资源以帮助你提出问题并收集反馈的基础知识。 
 
 ## <a name="about-microsofts-commercial-marketplace"></a>关于 Microsoft 的商业市场
 
-各种规模的企业、政府和组织都通过[Azure Marketplace](https://azuremarketplace.microsoft.com/)和[AppSource](https://appsource.microsoft.com/) web 商店查找业务解决方案、创新的技术和支持服务， [Azure 门户产品内体验](https://portal.azure.com)[云解决方案提供商](https://partner.microsoft.com/cloud-solution-provider)和 Microsoft 销售团队。 
+各种规模的企业、政府和组织都通过[Azure Marketplace](https://azuremarketplace.microsoft.com/)和[AppSource](https://appsource.microsoft.com/) web 商店、 [Azure 门户产品内体验](https://portal.azure.com)、[云解决方案提供商](https://partner.microsoft.com/cloud-solution-provider)和 Microsoft 销售团队查找业务解决方案、创新的技术和支持服务。 
 
 合作伙伴中心是 Microsoft 合作伙伴的经验。 对于进入 Microsoft 市场并利用 marketplace 的组织，合作伙伴中心是一种门户，发布者可以通过该门户创建和管理产品/服务、提供测试驱动器演示以及查看有关产品/服务性能的分析。 
 
 ## <a name="migration-from-cloud-partner-portal"></a>从云合作伙伴门户迁移
 
-合作伙伴中心不断发展，可以更好地集成 Microsoft 与软件发布者的关系的所有方面。 作为此演化的一部分，我们正在将[云合作伙伴门户](https://cloudpartner.azure.com/)的功能迁移到合作伙伴中心。 
+合作伙伴中心不断发展，可以更好地集成 Microsoft 与软件发布者的关系的所有方面。 作为此演化的一部分，我们正在将[云合作伙伴门户](https://cloudpartner.azure.com/)的功能迁移到合作伙伴中心。
 
-**目前，合作伙伴中心仅支持创建和管理软件即服务（SaaS）产品/服务。**
+>[!NOTE]
+>目前，合作伙伴中心支持创建和管理软件即服务（SaaS）产品/服务、Azure 应用程序产品/服务、客户产品/服务的 Dynamics 365、Engagement & PowerApps 产品、操作产品的 Dynamics 365 和 Dynamics 365业务中心产品/服务。 即将支持更多产品/服务。
 
-现有 marketplace 发布者可以使用直观的界面找到熟悉但改进的用户体验。 门户和电子邮件中的通知将通知发布者。 用户将无缝定向到适当的位置。 此合作伙伴体验升级不会影响客户。 
+现有 marketplace 发布者可以使用直观的界面找到熟悉但改进的用户体验。 门户和电子邮件中的通知将通知发布者。 用户将无缝定向到适当的位置。 此合作伙伴体验升级不会影响客户。
 
 ### <a name="improvements-on-user-experience-and-billing"></a>改进用户体验和计费
 

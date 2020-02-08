@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844337"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069619"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
 ## <a name="retirement-plans"></a>停用计划
 
 > [!IMPORTANT]
-> 以下旧版媒体处理器将在2020中停用，请参阅下表中的详细信息。 
+> 某些媒体处理器即将停用。 有关停用日期和详细信息，请参阅[旧组件](legacy-components.md)主题。 
 
-|媒体处理器名称|停用日期|附加说明|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|2020年10月1日|此媒体处理器将替换为[Azure 媒体服务视频索引器](https://docs.microsoft.com/azure/media-services/video-indexer/)。 有关详细信息，请参阅[从 Azure Media Indexer 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)
- 
 ## <a name="overview"></a>概述
 
 越来越多的组织将视频用作首选媒体来培训员工、与客户沟通以及规定业务职能。 云计算提供了一种方法来存储、流式传输和访问这些大型媒体文件。 但随着公司视频内容库的扩大，它需要在从内容中提取见解时具有同样有效的方式。 
@@ -49,7 +45,7 @@ ms.locfileid: "76844337"
 
 ## <a name="media-analytics-services"></a>媒体分析服务
 
-### <a name="indexer"></a>索引器
+### <a name="indexer"></a>索引
 借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 有关详细信息和示例，请参阅[在 Azure Media Indexer 中为媒体文件编制索引](media-services-index-content.md)。
 
 ### <a name="motion-detector"></a>动作检测器
@@ -79,7 +75,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
 
 ### <a name="mp-names"></a>MP 名称
 
-* Azure Media Indexer
+* Azure 媒体索引器
 * Azure 媒体面部检测器
 * Azure Media Motion Detector
 * Azure 媒体视频缩略图
@@ -136,7 +132,7 @@ Azure 媒体修订器是一种媒体分析媒体处理器，可用于在云中�
        ]
     }
 
-## <a name="demos"></a>演示
+## <a name="demos"></a>演示版
 请参阅 [Azure 媒体分析演示](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)。
 
 ## <a name="provide-feedback"></a>提供反馈

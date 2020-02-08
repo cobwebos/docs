@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985996"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086532"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -106,7 +106,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>是否可以使用 Exchange Server 作为应用程序网关的后端？
 
-不。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。 
+No。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。 
 
 ## <a name="performance"></a>性能
 
@@ -126,7 +126,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动缩放是否会导致停机？
 
-不。 实例将跨升级域和容错域分布。
+No。 实例将跨升级域和容错域分布。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
@@ -134,7 +134,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 
-可以。 Azure 跨更新域和容错域分配实例，以确保实例不会同时发生故障。 为了支持缩放，应用程序网关可添加同一网关的多个实例来分担负载。
+可以。
 
 ## <a name="configuration"></a>配置
 
@@ -148,7 +148,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在应用程序网关子网中部署其他任何组件？
 
-不。 但你可以在子网中部署其他应用程序网关。
+No。 但你可以在子网中部署其他应用程序网关。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持网络安全组？
 
@@ -180,7 +180,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自定义探测是否支持对响应数据创建通配符或正则表达式？
 
-不。 
+No。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>如何在应用程序网关上处理路由规则？
 
@@ -196,7 +196,7 @@ Host 字段指定在应用程序网关上配置了多站点时将探测发送到
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>能否对面向公众的和面向专用的侦听器使用相同的端口？
 
-不。
+No。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
@@ -300,7 +300,7 @@ Host 字段指定在应用程序网关上配置了多站点时将探测发送到
 
 ### <a name="does-detection-mode-block-traffic"></a>检测模式是否会阻止流量？
 
-不。 检测模式仅记录触发 WAF 规则的流量。
+No。 检测模式仅记录触发 WAF 规则的流量。
 
 ### <a name="can-i-customize-waf-rules"></a>我可以自定义 WAF 规则吗？
 
@@ -322,7 +322,7 @@ WAF 目前支持 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF 是否支持 DDoS 保护？
 
-可以。 可以在部署应用程序网关的虚拟网络上启用 DDoS 防护。 此设置确保 Azure DDoS 防护服务还保护应用程序网关虚拟 IP (VIP)。
+可以。 可以在部署了应用程序网关的虚拟网络上启用 DDoS 保护。 此设置可确保 Azure DDoS 保护服务也保护应用程序网关虚拟 IP （VIP）。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
@@ -397,15 +397,15 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 2. 不要为公共前端 IP 地址创建任何侦听器。 如果没有为其创建侦听器，应用程序网关将不会侦听公共 IP 地址上的任何流量。
 3. 为应用程序网关子网创建并附加具有以下配置的[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)（按优先级顺序）：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 允许来自源的流量作为**GatewayManager**服务标记，将目标作为**任何**和目标端口为**65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 外部实体（包括网关用户管理员）无法在没有适当证书的情况下启动对这些终结点所做的更改
+    a. 允许来自源的流量作为**GatewayManager**服务标记，将目标作为**任何**和目标端口为**65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 外部实体（包括网关用户管理员）无法在没有适当证书的情况下启动对这些终结点所做的更改
     
-    b.保留“数据库类型”设置，即设置为“共享”。 允许来自源的流量作为**AzureLoadBalancer**服务标记，目标和目标端口作为**任何**
+    b. 允许来自源的流量作为**AzureLoadBalancer**服务标记，目标和目标端口作为**任何**
     
     c. 将源中的所有入站流量拒绝为**Internet**服务标记，并将目标和目标端口视为**任意**。 在入站规则中为此规则指定*最小优先级*
     
-    d.单击“下一步”。 保留默认规则，例如允许 VirtualNetwork 入站，以便不阻止对专用 IP 地址的访问
+    d. 保留默认规则，例如允许 VirtualNetwork 入站，以便不阻止对专用 IP 地址的访问
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 不能阻止出站 Internet 连接。 否则，你将面临日志记录、指标等问题。
+    e. 不能阻止出站 Internet 连接。 否则，你将面临日志记录、指标等问题。
 
 仅适用于专用 ip 的 NSG 配置示例：仅限专用 IP 访问的 ![应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 

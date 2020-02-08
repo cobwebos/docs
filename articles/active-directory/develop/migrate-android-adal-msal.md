@@ -2,7 +2,7 @@
 title: 适用于 Android 的 ADAL 到 MSAL 迁移指南 |Microsoft
 description: 了解如何将 Azure Active Directory 身份验证库（ADAL） Android 应用迁移到 Microsoft 身份验证库（MSAL）。
 services: active-directory
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: Android
 ms.workload: identity
 ms.date: 09/6/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 21866bb7dab3d5a093ffc4655161b80853eadfc5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696701"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084060"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>适用于 Android 的 ADAL 到 MSAL 迁移指南
 
@@ -146,7 +146,7 @@ MSAL 没有用于启用或禁用证书颁发机构验证的标志。 颁发机�
 
 如金融机构的帐户一样，使用凭据访问 Microsoft 标识平台中的帐户。 这些凭据是使用注册的，或由 Microsoft 颁发的。 或由 Microsoft 代表一家组织。
 
-Microsoft 标识平台与金融机构的不同之处在于，在此类比中，Microsoft 标识平台提供了一个框架，使用户能够使用一个帐户及其关联的凭据来访问属于多个人和组织。 这就像能够使用一个银行颁发的卡，还可以使用另一个金融机构。 这是因为所涉及的所有组织都在使用 Microsoft 标识平台，这允许在多个组织中使用一个帐户。 下面是一个示例：
+Microsoft 标识平台与金融机构的不同之处在于，在此类比中，Microsoft 标识平台提供了一个框架，使用户能够使用一个帐户及其关联的凭据来访问属于多个人和组织。 这就像能够使用一个银行颁发的卡，还可以使用另一个金融机构。 这是因为所涉及的所有组织都在使用 Microsoft 标识平台，这允许在多个组织中使用一个帐户。 以下是一个示例：
 
 Sam 适用于 Contoso.com，但管理属于 Fabrikam.com 的 Azure 虚拟机。 要使 Sam 管理 Fabrikam 的虚拟机，他需要有权访问它们。 可以通过以下方式授予此访问权限：向 Fabrikam.com 添加 Sam 帐户，并向其帐户授予允许他处理虚拟机的角色。 这将通过 Azure 门户完成。
 
@@ -240,7 +240,7 @@ public interface SilentAuthenticationCallback {
 
 MSAL 异常列表
 
-|异常  | Description  |
+|异常  | 说明  |
 |---------|---------|
 | `MsalException`     | MSAL 引发的默认选中异常。  |
 | `MsalClientException`     | 如果错误是客户端，则引发。 |

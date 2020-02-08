@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 841ff610509c0d580ff8dca3a9fc14b816d56f1c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983216"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085384"
 ---
 # <a name="authentication-basics"></a>身份验证基础知识
 
 ## <a name="what-is-authentication"></a>什么是身份验证
 
-本文介绍了在创建受保护的 web 应用、web Api 或调用受保护的 Web Api 的应用时需要了解的许多身份验证概念。 如果你看到不熟悉的术语，请尝试我们的（词汇表） [glossary.md]。
+本文介绍了在创建受保护的 web 应用、web Api 或调用受保护的 Web Api 的应用时需要了解的许多身份验证概念。 如果你看到不熟悉的术语，请尝试我们的[术语表](developer-glossary.md)。
 
 **身份验证**是证明您的身份的过程。 身份验证有时缩写为 AuthN。
 

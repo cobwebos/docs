@@ -4,7 +4,7 @@ titleSuffix: Microsoft identity platform
 description: 了解如何使用带有 MSAL 的 SSL 证书应对各种问题。目标-C 库。
 services: active-directory
 documentationcenter: ''
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 editor: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: fef1e1df15fed8452066f06a351452a83f73d89b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: e278b928cc7f1e7f830ba246545ea52944a2e252
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701342"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084367"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>如何：对 iOS 和 macOS SSL 问题的 MSAL 进行故障排除
 
@@ -44,7 +44,7 @@ ms.locfileid: "76701342"
 
 使用 SHA-1 哈希的证书具有已知的漏洞。 大多数新式 web 浏览器不允许具有 SHA-1 哈希的证书。
 
-## <a name="captive-portals"></a>强制网络门户
+## <a name="captive-portals"></a>捕获门户
 
 当用户首次访问 Wi-fi 网络但尚未获得对该网络的访问权限时，它会向用户显示一个网页。 它会截获其 internet 流量，直到用户满足门户的要求。 网络错误，因为在用户通过门户连接之前，用户无法连接到网络资源。
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841108"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087022"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,9 +35,9 @@ ms.locfileid: "76841108"
 > * 将模型部署为 Web 服务
 > * 使用 web 服务对数据进行评分
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 若要在**本地环境**中使用本文档中的 CLI 命令，需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -73,7 +73,7 @@ git clone https://github.com/microsoft/MLOps.git
 * `scoring-env.yml`：运行模型和 `score.py` 脚本所需的 conda 依赖项。
 * `testdata.json`：可用于测试已部署 web 服务的数据文件。
 
-## <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
+## <a name="connect-to-your-azure-subscription"></a>连接到你的 Azure 订阅
 
 可以通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的使用浏览器进行交互身份验证。 若要以交互方式进行身份验证，请打开命令行或终端并使用以下命令：
 
@@ -381,7 +381,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 `inferenceConfig.yml` 文件提供了有关如何使用模型进行推理的信息。 例如，它引用条目脚本（`score.py`）和软件依赖关系。 
 
-有关此文件结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md#prepare-to-deploy)。
+有关此文件结构的详细信息，请参阅[推理配置架构](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 有关输入脚本的详细信息，请参阅[部署具有 Azure 机器学习的模型](how-to-deploy-and-where.md#prepare-deployment-artifacts)。
 
 `aciDeploymentConfig.yml` 描述用于承载服务的部署环境。 部署配置特定于用于部署的计算类型。 在这种情况下，将使用 Azure 容器实例。 有关详细信息，请参阅[部署配置架构](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 

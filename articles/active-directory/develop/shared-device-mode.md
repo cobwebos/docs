@@ -3,7 +3,7 @@ title: 适用于 Android 设备的共享设备模式 |Microsoft
 description: 了解共享设备模式，这允许 firstline 工作人员共享 Android 设备
 services: active-directory
 documentationcenter: dev-center-name
-author: tylermsft
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 1/15/2020
-ms.author: twhitney
+ms.author: marsma
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 53fa82cf6eaaba09353ba21a12ae9677b9264b1a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9928b64d286cc5072f28f7cc17e4af3e95662cd0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701461"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77085620"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>适用于 Android 设备的共享设备模式
 
@@ -86,8 +86,8 @@ private IPublicClientApplication mApplication;
 |  | 共享模式设备  | 个人设备 |
 |---------|---------|---------|
 | **帐户**     | 单个帐户 | 多个帐户 |
-| **登录** | 全球 | 全球 |
-| **注销** | 全球 | 每个应用程序都可以控制注销是应用程序的本地还是应用程序系列。 |
+| **登录** | 全局 | 全局 |
+| **注销** | 全局 | 每个应用程序都可以控制注销是应用程序的本地还是应用程序系列。 |
 | **支持的帐户类型** | 仅工作帐户 | 支持个人和工作帐户  |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>为什么你可能只想要支持单帐户模式

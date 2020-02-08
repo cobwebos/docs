@@ -1,5 +1,5 @@
 ---
-title: 使用弹性数据库客户端库与实体框架
+title: 将弹性数据库客户端库与实体框架配合使用
 description: 将弹性数据库客户端库和实体框架用于数据库编码
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823492"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087190"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>将弹性数据库客户端库与实体框架配合使用
 
@@ -27,18 +27,18 @@ ms.locfileid: "73823492"
 若要下载本文的代码：
 
 * 需要 Visual Studio 2012 或更高版本。 
-* 从 MSDN 下载 [Elastic DB Tools for Azure SQL - Entity Framework Integration sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba)（Azure SQL 弹性数据库工具 - Entity Framework 集成示例）。 将示例解压缩到所选位置。
+* 下载[适用于 AZURE SQL 的弹性数据库工具-实体框架集成示例](https://github.com/Azure/elastic-db-tools/)。 将示例解压缩到所选位置。
 * 启动 Visual Studio。 
 * 在 Visual Studio 中，选择“文件”->“打开项目/解决方案”。 
 * 在“打开项目”对话框中，导航到已下载的示例，并选择 **EntityFrameworkCodeFirst.sln** 打开该示例。 
 
-要运行该示例，需要在 Azure SQL 数据库中创建三个空数据库：
+若要运行该示例，您需要在 Azure SQL 数据库中创建三个空数据库：
 
 * 分片映射管理器数据库
 * 分片 1 数据库
 * 分片 2 数据库
 
-创建这些数据库后，使用 Azure SQL DB 服务器名称、数据库名称以及连接到数据库的凭据填充 Program.cs 中的占位符。 在 Visual Studio 中构建解决方案。 在生成过程中，Visual Studio 会下载弹性数据库客户端库、Entity Framework 和暂时性故障处理所需的 NuGet 包。 确保已为解决方案启用还原 NuGet 包。 可以通过右键单击 Visual Studio 解决方案资源管理器中的解决方案文件来启用此设置。 
+创建这些数据库后，使用 Azure SQL DB 服务器名称、数据库名称以及连接到数据库的凭据填充 Program.cs 中的占位符。 在 Visual Studio 中构建解决方案。 在生成过程中，Visual Studio 会下载弹性数据库客户端库、Entity Framework 和暂时性故障处理所需的 NuGet 包。 确保已为您的解决方案启用还原 NuGet 包。 您可以通过右键单击 Visual Studio 解决方案资源管理器中的解决方案文件来启用此设置。 
 
 ## <a name="entity-framework-workflows"></a>实体框架工作流
 
@@ -55,9 +55,9 @@ ms.locfileid: "73823492"
 
 有关术语定义，请参阅[弹性数据库工具词汇表](sql-database-elastic-scale-glossary.md)。
 
-借助弹性数据库客户端库，可以定义称为 shardlet 的应用程序数据分区。 Shardlet 由分片键标识，并且映射到特定数据库。 应用程序可以具有任意所需数量的数据库，并根据当前业务需求分发 shardlet 以提供足够的容量或性能。 分片键值到数据库的映射由弹性数据库客户端 API 提供的分片映射存储。 此功能称为“分片映射管理”或简称为 SMM。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为“数据依赖型路由”。 
+借助弹性数据库客户端库，你可以定义称为 shardlet 的应用程序数据分区。 Shardlet 由分片键标识，并且映射到特定数据库。 应用程序可以具有任意所需数量的数据库，并根据当前业务需求分发 shardlet 以提供足够的容量或性能。 分片键值到数据库的映射由弹性数据库客户端 API 提供的分片映射存储。 此功能称为“分片映射管理”或简称为 SMM。 分片映射还为带有分片键的请求充当数据库连接的代理。 此功能称为“数据依赖型路由”。 
 
-分片映射管理器防止用户在 shardlet 数据中出现不一致视图，当发生并发 shardlet 管理操作时（例如将数据从一个分片重新分配到另一个分片）可能发生此情况。 为此，客户端库管理的分片映射会代理应用程序的数据库连接。 当分片管理操作可能影响为其创建数据库连接的 shardlet 时，此操作允许分片映射功能自动终止该连接。 此方法需要与一些 EF 的功能集成，例如从现有连接创建新连接以检查数据库是否存在。 在通常情况下，我们观察到标准 DbContext 构造函数仅对可安全克隆用于 EF 工作的关闭数据库连接有效。 弹性数据库的设计原则是仅代理打开的连接。 有人可能认为，在交付给 EF DbContext 之前关闭由客户端库代理的连接可能解决此问题。 但是，通过关闭连接并依靠 EF 重新打开它，将放弃由该库执行的验证和一致性检查。 但是，EF 中的迁移功能使用这些连接以对应用程序透明的方式管理基础数据库架构。 理想情况下，将在相同的应用程序中保留和合并所有这些来自弹性数据库客户端库和 EF 的功能。 以下部分将更详细地讨论这些属性和要求。 
+分片映射管理器防止用户在 shardlet 数据中出现不一致视图，当发生并发 shardlet 管理操作时（例如将数据从一个分片重新分配到另一个分片）可能发生此情况。 为此，客户端库管理的分片映射将会代理应用程序的数据库连接。 当分片管理操作可能影响为其创建数据库连接的 shardlet 时，此操作允许分片映射功能自动终止该连接。 此方法需要与一些 EF 的功能集成，例如从现有连接创建新连接以检查数据库是否存在。 在通常情况下，我们观察到标准 DbContext 构造函数仅对可安全克隆用于 EF 工作的关闭数据库连接有效。 弹性数据库的设计原则是仅代理打开的连接。 有人可能认为，在交付给 EF DbContext 之前关闭由客户端库代理的连接可能解决此问题。 但是，通过关闭连接并依靠 EF 重新打开它，将放弃由该库执行的验证和一致性检查。 但是，EF 中的迁移功能使用这些连接以对应用程序透明的方式管理基础数据库架构。 理想情况下，将在相同的应用程序中保留和合并所有这些来自弹性数据库客户端库和 EF 的功能。 以下部分将更详细地讨论这些属性和要求。 
 
 ## <a name="requirements"></a>要求
 
@@ -66,7 +66,7 @@ ms.locfileid: "73823492"
 * **向外缩放**：我们需要根据应用程序的容量需求，在分片应用程序的数据层中添加或删除数据库。 这意味着可以控制数据库的创建和删除，以及使用弹性数据库分片映射管理器 API 管理数据库和 shardlet 的映射。 
 * 一致性：应用程序利用分片，并且使用客户端库的数据依赖型路由功能。 若要避免损坏或错误的查询结果，连接通过分片映射管理器进行代理。 此操作还会保留验证和一致性。
 * **Code First**：保留 EF 的 Code First 范例的便利性。 在“代码优先”中，应用程序中的类透明映射到基础数据库结构。 应用程序代码与 DbSet 交互以为基础数据处理中涉及的大部分方面提供掩码。
-* **架构**：实体框架通过迁移处理初始数据库架构创建和后续架构演变。 通过保留这些功能，随着数据的演变调整应用会很容易。 
+* **架构**：实体框架通过迁移处理初始数据库架构创建和后续架构演变。 通过保留这些功能，随着数据的演变调整您的应用很容易。 
 
 以下指南指导如何满足使用弹性数据库工具的“代码优先”应用程序的这些要求。 
 
@@ -131,9 +131,9 @@ public DbSet<Blog> Blogs { get; set; }
   
   * 它使用分片映射上的弹性数据库客户端接口的 OpenConnectionForKey 调用来建立开放连接。
   * 分片映射创建到保存特定分片键的 shardlet 的分片的开放连接。
-  * 此开放连接将传递回 DbContext 的基类构造函数以指示此连接由 EF 使用，而不是让 EF 自动创建新连接。 这样，该连接已由弹性数据库客户端 API 标记，以便它可以保证分片映射管理操作下的一致性。
+  * 此开放连接将传递回 DbContext 的基类构造函数以指示此连接将由 EF 使用，而不是让 EF 自动创建新连接。 这样，该连接已由弹性数据库客户端 API 标记，以便它可以保证分片映射管理操作下的一致性。
 
-为 DbContext 子类使用新的构造函数而不是代码中的默认构造函数。 下面是一个示例： 
+为您的 DbContext 子类使用新的构造函数而不是您的代码中的默认构造函数。 下面是一个示例： 
 
 ```csharp
 // Create and save a new blog.
@@ -190,14 +190,14 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 上方的代码示例演示应用程序所需的默认构造函数重写，以将数据依赖型路由与 Entity Framework 一起使用。 下表将此方法一般化到其他构造函数。 
 
-| 当前构造函数 | 为数据重写构造函数 | 基构造函数 | 说明 |
+| 当前构造函数 | 为数据重写构造函数 | 基构造函数 | 注意 |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接需要是分片映射和数据依赖路由键的一个函数。 需要通过 EF 绕过自动连接创建，并改用分片映射代理该连接。 |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接需要是分片映射和数据依赖路由键的一个函数。 您需要通过 EF 绕过自动连接创建，并改用分片映射代理该连接。 |
 | MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection, bool) |该连接是分片映射和数据依赖路由键的一个函数。 在它们通过分片映射绕过验证时，固定数据库名称或连接字符串将不起作用。 |
 | MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |会为给定分片映射和分片键创建连接，并提供模型。 编译后的模型会传递到基构造函数。 |
 | MyContext(DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext(DbConnection, bool) |该连接需要从分片映射和键推断。 无法将其作为输入提供（除非该输入已经在使用分片映射和键）。 会传递布尔模型。 |
 | MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |该连接需要从分片映射和键推断。 无法将其作为输入提供（除非该输入正在使用分片映射和键）。 会传递编译后的模型。 |
-| MyContext(ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext(ObjectContext, bool) |新的构造函数需要确保 ObjectContext 中作为输入传递的任何连接重新路由到由 Elastic Scale 管理的连接。 ObjectContext 的更详细讨论不在本文档的范围内。 |
+| MyContext(ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext(ObjectContext, bool) |新的构造函数需要确保 ObjectContext 中作为输入传递的任何连接重新路由到由灵活扩展管理的连接。 ObjectContext 的更详细讨论不在本文档的范围内。 |
 | MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool)； |该连接需要从分片映射和键推断。 无法将连接作为输入提供（除非该输入已经在使用分片映射和键）。 模型和布尔值将传递到基类构造函数。 |
 
 ## <a name="shard-schema-deployment-through-ef-migrations"></a>通过 EF 迁移分片架构部署
@@ -206,7 +206,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 通过 EF 迁移的架构部署对于**未打开的连接**效果最佳。 这与依靠由弹性数据库客户端 API 提供的打开连接的数据依赖型路由方案相反。 另一个区别是一致性要求：尽管确保所有数据相关的路由连接的一致性以防止并发分片映射操作是可取的，但是对于到尚未在分片映射中注册以及尚未分配为保存 shardlet 的新数据库的初始架构部署，这不是问题。 因此，针对此方案，可以依靠常规数据库连接，与数据依赖型路由相反。  
 
-这会导致一种方法，在此方法中通过 EF 迁移的架构部署将与新数据库的注册紧密耦合，以作为应用程序的分片映射中的一个分片。 这依靠以下先决条件： 
+这将导致一种方法，在此方法中通过 EF 迁移的架构部署将与新数据库的注册紧密耦合，以作为应用程序的分片映射中的一个分片。 这依靠以下先决条件： 
 
 * 该数据库已创建。 
 * 该数据库为空 - 它未保存任何用户架构和用户数据。
@@ -273,7 +273,7 @@ new CreateDatabaseIfNotExists<ElasticScaleContext<T>>());
 * 任何意味着数据库架构更改的应用程序更改需要在所有分片上通过 EF 迁移。 本文档的示例代码不演示如何执行此操作。 考虑使用带有 ConnectionString 参数的 Update-Database 循环访问所有分片，或使用 Update-Database 与 –Script 选项提取用于挂起的迁移的 T-SQL 脚本，并将 T-SQL 脚本应用到分片。  
 * 给定一个请求，假设它所有的数据库处理包含在单个分片内，如该请求所提供的分片键所标识的那样。 但是，此假设并不总是有效。 例如，当无法提供分片键时。 为解决此问题，客户端库提供 **MultiShardQuery** 类，此类可实现连接抽象以用于在多个分片上查询。 学习结合使用 **MultiShardQuery** 和 EF 不在本文档的范围内
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 通过本文档中概述的步骤，EF 应用程序可以通过重构 EF 应用程序中使用的 DbContext 子类的构造函数来使用弹性数据库客户端库的数据依赖型路由功能。 这会所需的更改限制到 **DbContext** 类已经存在的位置。 此外，EF 应用程序可以通过将调用必要的 EF 迁移的步骤与新分片的注册和分片映射中的映射进行结合，来继续从自动架构部署中受益。 
 

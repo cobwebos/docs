@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016997"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087124"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>配置与 AVS 私有云的 VPN 连接
 
@@ -97,7 +97,7 @@ ms.locfileid: "77016997"
 
     ![编辑 VPN 连接](media/viscosity-edit-connection.png)
 
-7. 单击 "**网络**" 选项卡，然后输入 AVS 私有云 DNS 服务器 IP 地址，以逗号或空格分隔，将域输入为 ```AVS.io```。 选择 "**忽略 VPN 服务器发送的 DNS 设置**"。
+7. 单击 "**网络**" 选项卡，然后输入 AVS 私有云 DNS 服务器 IP 地址，以逗号或空格分隔，将域输入为 ```az.cloudsimple.io```。 选择 "**忽略 VPN 服务器发送的 DNS 设置**"。
 
     ![VPN 网络](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ ms.locfileid: "77016997"
 
 > [!IMPORTANT]
 >    1. 在 VPN 设备上将 TCP MSS 钳位设置为1200。 或者，如果 VPN 设备不支持 MSS 钳位，还可以改为将隧道接口上的 MTU 设置为1240字节。
-> 2. 设置站点到站点 VPN 后，转发 * 的 DNS 请求。AVS.io 到 AVS 私有云 DNS 服务器。 按照[本地 DNS 设置](on-premises-dns-setup.md)中的说明进行操作。
+> 2. 设置站点到站点 VPN 后，将 *. cloudsimple.io 的 DNS 请求转发到 AVS 私有云 DNS 服务器。 按照[本地 DNS 设置](on-premises-dns-setup.md)中的说明进行操作。

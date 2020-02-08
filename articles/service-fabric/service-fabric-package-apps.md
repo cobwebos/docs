@@ -3,12 +3,12 @@ title: 打包 Azure Service Fabric 应用
 description: 了解如何打包 Azure Service Fabric 应用程序以及如何准备部署到群集。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639677"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083608"
 ---
 # <a name="package-an-application"></a>打包应用程序
 
@@ -56,9 +56,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 生成包
 
-如果使用 Visual Studio 2015 创建应用程序，可以使用“包”命令自动创建符合上述布局的包。
+如果你使用 Visual Studio 创建了应用程序，则可以使用*package*命令自动创建匹配上述布局的包。
 
-若要创建包，请在“解决方案资源管理器”中右键单击应用程序项目，并选择“包”命令，如下所示：
+若要创建包，请在*解决方案资源管理器*中右键单击应用程序项目，然后选择 "**包**" 命令：
 
 ![使用 Visual Studio 打包应用程序][vs-package-command]
 
@@ -88,7 +88,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-此错误显示代码包中缺少服务清单 **SetupEntryPoint** 中引用的 *MySetup.bat* 文件。 添加缺少的文件后，应用程序验证通过：
+此错误显示代码包中缺少服务清单 *SetupEntryPoint* 中引用的 **MySetup.bat** 文件。 添加缺少的文件后，应用程序验证通过：
 
 ```
 tree /f .\MyApplicationType
@@ -134,9 +134,9 @@ True
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
 压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
 
-可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
+可以通过使用 [ 开关运行 Powershell 命令 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`CompressPackage` 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
-以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 `SkipCopy` 标志的 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 将压缩的包复制到一个或多个 Service Fabric 群集中。
+以下命令可压缩包，但不会将包复制到映像存储区。 通过使用不带 [ 标志的 ](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps)Copy-ServiceFabricApplicationPackage`SkipCopy` 将压缩的包复制到一个或多个 Service Fabric 群集中。
 包中现在包括 `code`、`config` 和 `data` 包的压缩文件。 应用程序清单和服务清单不会被压缩，因为它们是许多内部操作所必需的。 例如，进行某些验证时的包共享、应用程序类型名称和版本提取都需要访问清单。 压缩清单会使这些操作无效。
 
 ```
