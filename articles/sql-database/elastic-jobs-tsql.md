@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861330"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087350"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -189,10 +189,13 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 
 以下示例创建一个新作业，以便从多个数据库收集性能数据。
 
-默认情况下，作业代理将查找创建表以存储返回的结果。 因此，与用于输出凭据的凭据相关联的登录将需要具有足够的权限来执行此操作。 如果要提前手动创建表，则需要具有以下属性：
+默认情况下，作业代理将创建用于存储返回的结果的输出表。 因此，与输出凭据关联的数据库主体必须至少具有以下权限：对数据库 `CREATE TABLE`、`ALTER`、`SELECT`、`INSERT`、输出表或其架构上的 `DELETE`，以及[sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)目录视图上 `SELECT`。
+
+如果要提前手动创建表，则需要具有以下属性：
 1. 具有结果集的正确名称和数据类型的列。
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
 3. Internal_execution_id 列上名为 `IX_<TableName>_Internal_Execution_ID` 的非聚集索引。
+4. 上面列出的所有权限（对数据库 `CREATE TABLE` 权限除外）。
 
 连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
@@ -405,7 +408,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 
 
-|存储过程  |Description  |
+|存储过程  |说明  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     添加新的作业。    |
 |[sp_update_job](#sp_update_job)    |      更新现有的作业。   |
@@ -1192,7 +1195,7 @@ GO
 以下视图在[作业数据库](sql-database-job-automation-overview.md#job-database)中提供。
 
 
-|查看  |Description  |
+|视图  |说明  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  显示作业执行历史记录。      |
 |[jobs](#jobs-view)     |   显示所有作业。      |
@@ -1210,7 +1213,7 @@ GO
 显示作业执行历史记录。
 
 
-|列名称|   数据类型   |Description|
+|列名|   数据类型   |说明|
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  一个作业执行操作实例的唯一 ID。
 |**job_name**   |nvarchar(128)  |作业的名称。
@@ -1238,7 +1241,7 @@ GO
 
 显示所有作业。
 
-|列名称|   数据类型|  Description|
+|列名|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1256,7 +1259,7 @@ GO
 
 显示所有作业版本。
 
-|列名称|   数据类型|  Description|
+|列名|   数据类型|  说明|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |作业的名称。|
 |**job_id**|    uniqueidentifier    |作业的唯一 ID。|
@@ -1269,7 +1272,7 @@ GO
 
 显示每项作业的当前版本中的所有步骤。
 
-|列名称    |数据类型| Description|
+|列名    |数据类型| 说明|
 |------|------|-------|
 |**job_name**   |nvarchar(128)| 作业的名称。|
 |**job_id** |uniqueidentifier   |作业的唯一 ID。|
@@ -1310,7 +1313,7 @@ GO
 
 列出所有目标组。
 
-|列名称|数据类型| Description|
+|列名|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |目标组（数据库集合）的名称。 
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。
@@ -1321,7 +1324,7 @@ GO
 
 显示所有目标组的所有成员。
 
-|列名称|数据类型| Description|
+|列名|数据类型| 说明|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|目标组（数据库集合）的名称。 |
 |**target_group_id**    |uniqueidentifier   |目标组的唯一 ID。|
@@ -1329,9 +1332,9 @@ GO
 |**target_type**    |nvarchar(128)| 目标数据库或数据库集合的类型，其中包括一个服务器中的所有数据库、一个弹性池中的所有数据库，或者单个数据库。 target_type 的有效值为 ‘SqlServer’、‘SqlElasticPool’、‘SqlDatabase’ 或 ‘SqlShardMap’。|
 |**target_id**  |uniqueidentifier|  目标组成员的唯一 ID。|
 |**refresh_credential_name**    |nvarchar(128)  |用于连接到目标组成员的数据库范围的凭据的名称。|
-|subscription_id    |uniqueidentifier|  订阅的唯一 ID。|
+|**subscription_id**    |uniqueidentifier|  订阅的唯一 ID。|
 |**resource_group_name**    |nvarchar(128)| 目标组成员所在资源组的名称。|
-|server_name    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
+|**server_name**    |nvarchar(128)  |包含在目标组中的 SQL 数据库服务器的名称。 仅当 target_type 为 ‘SqlServer’ 时指定。 |
 |**database_name**  |nvarchar(128)  |包含在目标组中的数据库的名称。 仅当 target_type 为 ‘SqlDatabase’ 时指定。|
 |**elastic_pool_name**  |nvarchar(128)| 包含在目标组中的弹性池的名称。 仅当 target_type 为 ‘SqlElasticPool’ 时指定。|
 |**shard_map_name** |nvarchar(128)| 包含在目标组中的分片映射的名称。 仅当 target_type 为 ‘SqlShardMap’ 时指定。|
@@ -1339,7 +1342,7 @@ GO
 
 ## <a name="resources"></a>资源
 
- - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "“主题链接”图标") [transact-sql 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
+ - ![主题链接图标](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "“主题链接”图标") [Transact-SQL 语法约定](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>后续步骤
