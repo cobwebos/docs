@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76770580"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900179"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>使用表 API 设置 Azure Cosmos DB 全局分发
 
@@ -28,19 +28,17 @@ ms.locfileid: "76770580"
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>使用表 API 连接到首选区域
 
-为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 这可以通过设置 [TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet) 属性来完成。 Azure Cosmos DB 表 API SDK 将基于帐户配置、当前区域可用性和所提供的首选项列表选取要与之通信的最佳终结点。
+为了利用[全局分发](distribute-data-globally.md)，客户端应用程序应当指定其应用程序在其中运行的当前位置。 这是通过设置 `CosmosExecutorConfiguration.CurrentRegion` 属性实现的。 `CurrentRegion` 属性应当包含单个位置。 每个客户端实例都可以指定其自己的区域，以实现低延迟读取。 区域必须使用其[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名，例如“美国西部”。 
 
-PreferredLocations 应包含以逗号分隔的首选（多宿主）位置列表，以供读取使用。 每个客户端实例可按首选顺序指定这些区域的一个子集以实现低延迟的读取。 必须使用这些区域的[显示名称](https://msdn.microsoft.com/library/azure/gg441293.aspx)命名这些区域，例如 `West US`。
+Azure Cosmos DB 表 API SDK 将基于帐户配置和当前的区域可用性自动选取要与之通信的最佳终结点。 它优先选择最靠近的区域来使客户端实现更低的延迟。 在设置当前的 `CurrentRegion` 属性后，读取和写入请求将如下所述进行定向：
 
-将所有读取请求发送到 PreferredLocations 列表中的第一个可用区域。 如果请求失败，客户端会将请求转发到列表中的下一个区域，依此类推。
+* **读取请求：** 所有读取请求都将发送到所配置的 `CurrentRegion`。 SDK 会基于邻近性自动选择回退异地复制区域以实现高可用性。
 
-SDK 将尝试读取 PreferredLocations 中指定的区域。 例如，如果数据库帐户在三个区域中可用，但客户端只为 PreferredLocations 指定了两个非写入区域，那么，即使是在故障转移时，也不会从写入区域为读取提供服务。
+* **写入请求：** SDK 会自动将所有写入请求发送到当前写入区域。 在多主帐户中，当前区域也将为写入请求提供服务。 SDK 会基于邻近性自动选择回退异地复制区域以实现高可用性。
 
-SDK 自动将所有写入请求发送到当前写入区域。
+如果未指定 `CurrentRegion` 属性，则 SDK 会将当前写入区域用于所有操作。
 
-如果未设置 PreferredLocations 属性，则会从当前写入区域为所有请求提供服务。
-
-本教程到此结束。 阅读 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)，了解如何管理全局复制帐户的一致性。 若要深入了解 Azure Cosmos DB 中全局数据库复制的工作原理，请参阅[使用 Azure Cosmos DB 全局分发数据](distribute-data-globally.md)。
+例如，如果某个 Azure Cosmos 帐户位于“美国西部”和“美国东部”区域中。 如果“美国西部”是写入区域，并且应用程序位于“美国东部”。 如果未配置 CurrentRegion 属性，则所有读取和写入请求始终会定向到“美国西部”区域。 如果配置了 CurrentRegion 属性，则所有读取请求都将在“美国东部”区域中接受服务。
 
 ## <a name="next-steps"></a>后续步骤
 

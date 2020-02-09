@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0e841b1f386d45ddb4af8598855d8e739750307e
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f6f282406c6813b2b126c300f21bda21e8f9464
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910735"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988968"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>从 Google Maps 迁移到 Azure Maps
 
@@ -22,11 +22,11 @@ ms.locfileid: "75910735"
 
 ## <a name="azure-maps-platform-overview"></a>Azure Maps 平台概述
 
-Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了定期更新的地图数据，用于为 Web 和移动应用程序提供地理环境。 Azure Maps 有一组兼容 Azure One API 的 REST API，适用于地图、搜索、路线、交通、时区、地理位置、地理围栏、地图数据、天气、出行和空间操作，随 Web 和 Android SDK 一起提供，可以使开发变得简单、灵活且可跨多个平台移植。
+Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了定期更新的地图数据，用于为 Web 和移动应用程序提供地理环境。 Azure Maps 有一组与 Azure One API 兼容的 REST API。 这些 REST API 提供地图、搜索、路线规划、交通、时区、地理位置、地理围栏、地图数据、天气、移动性和空间操作。 这些操作伴随着 Web 和 Android SDK，可以使开发变得容易、灵活且可跨多个平台移植。
 
 ## <a name="high-level-platform-comparison"></a>概略性的平台比较
 
-下表提供了 Google Maps 功能的概略性列表，以及针对 Azure Maps 中的这些功能的相对支持。 此列表不包含其他 Azure Maps 功能，如辅助功能、地理围栏 API、等时线、空间操作、直接地图图块访问、批处理服务和数据覆盖率比较（即图像覆盖率）。
+下表提供了 Google Maps 功能的大概列表，这些功能对应于 Google Maps 功能。 此列表并未显示所有 Azure Maps 功能。 其他 Azure Maps 功能包括辅助功能、地理围栏 API、等时线、空间操作、直接地图图块访问、批处理服务和数据覆盖率比较（即图像覆盖率）。
 
 | Google Maps 功能         | Azure Maps 支持                     |
 |-----------------------------|:--------------------------------------:|
@@ -55,8 +55,8 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 
 从 Google Maps 迁移到 Azure Maps 时，应考虑与许可相关的以下几点。
 
-- Azure Maps 根据所加载地图图块的数量针对交互式地图的使用收费，而 Google Maps 则针对地图控件的加载收费。 在交互式 Azure Maps SDK 中，地图图块会自动进行缓存以降低开发人员的成本。 每加载 15 个地图图块，就会生成一个 Azure Maps 事务。 交互式 Azure Maps SDK 使用 512 像素的图块，平均每个页面视图生成一个或不到一个事务。
-- 将 Google Maps Web 服务中的静态地图图像替换为 Azure Maps Web SDK 通常会更加经济高效，因为这样做会使用地图图块，除非用户平移并缩放地图，否则它们通常只为每个地图负载生成一小部分事务。 Azure Maps Web SDK 提供了禁用平移和缩放的选项。 此外，Azure Maps Web SDK 提供了比静态地图 Web 服务更多的可视化选项。
+- Azure Maps 针对交互式地图的使用量（基于所加载地图图块的数量）收费，而 Google Maps 则针对地图控件的加载收费。 在交互式 Azure Maps SDK 中，地图图块会自动进行缓存以降低开发人员的成本。 每加载 15 个地图图块，就会生成一个 Azure Maps 事务。 交互式 Azure Maps SDK 使用 512 像素的图块，平均每个页面视图生成一个或不到一个事务。
+- 将 Google Maps Web 服务中的静态地图图像替换为 Azure Maps Web SDK 通常更为经济高效。 Azure Maps Web SDK 使用地图图块，除非用户平移和缩放地图，否则每次加载地图时，它们通常只生成事务的一小部分。 Azure Maps Web SDK 提供了禁用平移和缩放的选项。 此外，Azure Maps Web SDK 提供了比静态地图 Web 服务更多的可视化选项。
 - Azure Maps 允许其平台中的数据存储在 Azure 中。 根据[使用条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，还可以在其他位置缓存它，时间长达六个月。
 
 下面是 Azure Maps 的一些相关资源：

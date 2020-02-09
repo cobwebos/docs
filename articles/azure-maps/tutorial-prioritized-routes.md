@@ -3,22 +3,22 @@ title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
 description: 本教程介绍如何使用 Microsoft Azure Maps 查找不同出行模式的路线。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910849"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989648"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
 
-本教程将介绍如何使用 Azure Maps 帐户和路线服务，以查找按行驶模式划分优先级的兴趣点路线。 地图上显示了两条路线，一条针对汽车，另一条针对可能有路线限制（因为高度、重量或者危险货物）的卡车。 在本教程中，你将了解如何执行以下操作：
+本教程展示了如何使用 Azure Maps 帐户和路线服务。 路线服务可以查找通往你感兴趣的地点的路线，按你的出行模式排列优先级。 你可以在地图上显示两条不同的路线，一条是汽车路线，一条是卡车路线。 由于车辆的高度和重量，或者如果车辆运载危险货物，路线服务会考虑各种限制。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 使用 Map Control API 创建新网页
@@ -27,7 +27,7 @@ ms.locfileid: "75910849"
 > * 在地图上显示多条路线
 
 ## <a name="prerequisites"></a>必备条件
-在继续操作之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取适用于你的帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明进行操作，并选择 S1 定价层。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>创建新地图
 
@@ -158,7 +158,7 @@ ms.locfileid: "75910849"
     });
     ```
     
-    在地图 `ready` 事件处理程序中，将会创建一个数据源来存储路线以及起点和终点。 将会创建一个路线层并将其附加到数据源，以便定义路线的呈现方式。 使用表达式从路线功能的属性中检索路线宽度和颜色。 向地图添加此层时，会传递另一个值为 `'labels'` 的参数，指定在地图标签下呈现此层。 这样可确保路线不覆盖道路标签。 将会创建一个符号层并将其附加到数据源。 此层指定起点和终点的呈现方式。此示例中添加了表达式，用于从每个点对象的属性中检索图标图像和文本标签信息。 
+    在地图 `ready` 事件处理程序中，将会创建一个数据源来存储路线以及起点和终点。 将会创建一个路线层并将其附加到数据源，以便定义路线的呈现方式。 使用表达式从路线功能的属性中检索路线宽度和颜色。 向地图添加此层时，会传递另一个值为 `'labels'` 的参数，指定在地图标签下呈现此层。 这样可确保路线不覆盖道路标签。 将会创建一个符号层并将其附加到数据源。 此层指定起点和终点的呈现方式。 此示例中添加了表达式，用于从每个点对象的属性中检索图标图像和文本标签信息。 
     
 2. 在本教程中，将起点设为西雅图一家名为 Fabrikam 的虚构公司，终点设为 Microsoft 办公室。 在地图 `ready` 事件处理程序中，请添加以下代码。
 
@@ -192,7 +192,7 @@ ms.locfileid: "75910849"
 
     起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个衬距来弥补符号图标的像素尺寸。
 
-4. 保存文件并刷新浏览器以查看地图上显示的图钉。 现在，地图的中心为西雅图，可以看到标记起点的圆形蓝色图钉和标记终点的蓝色图钉。
+4. 保存文件并刷新浏览器以查看地图上显示的图钉。 现在，地图的中心为西雅图。 你可以看到标记起点的圆形蓝色图钉和标记终点的蓝色图钉。
 
    ![查看有起点和终点的地图](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -244,7 +244,7 @@ ms.locfileid: "75910849"
     });
     ```
 
-    上述代码片段通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 该路线行随后将添加到数据源。 它还会添加索引 0，以确保在数据源中的其他任何行之前呈现该路线行。 之所以这样做，是因为卡车路线的计算通常会慢于汽车路线的计算，如果卡车路线在汽车路线之后添加到数据源，则会在其上进行呈现。 将会向卡车路线添加两个属性，一个是蓝色的描边色，另一个是九像素的描边宽度。
+    上述代码片段通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) 方法查询 Azure Maps 路线服务。 然后，从使用 `geojson.getFeatures()` 方法提取的响应中的 GeoJSON 特征集合提取路线。 该路线行随后将添加到数据源。 其索引为 0，这可以确保该路线行在数据源中的任何其他行之前呈现。 之所以这样做，是因为卡车路线的计算通常会慢于汽车路线的计算，如果卡车路线在汽车路线之后添加到数据源，则会在其上进行呈现。 将会向卡车路线添加两个属性，一个是蓝色的描边色，另一个是九像素的描边宽度。
 
 3. 添加以下 JavaScript 代码，以构造车辆路线并显示结果。
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438736"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964409"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>教程：使用 Azure Data Share 共享数据  
 
@@ -22,7 +22,7 @@ ms.locfileid: "75438736"
 > [!div class="checklist"]
 > * 创建 Data Share。
 > * 向 Data Share 添加数据集。
-> * 为 Data Share 启用同步计划。 
+> * 为 Data Share 启用快照计划。 
 > * 将接收人添加到 Data Share。 
 
 ## <a name="prerequisites"></a>必备条件
@@ -33,25 +33,36 @@ ms.locfileid: "75438736"
 ### <a name="share-from-a-storage-account"></a>从存储帐户共享：
 
 * 一个 Azure 存储帐户：如果没有，可以创建一个 [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* 向存储帐户添加角色分配的权限，该权限存在于 *Microsoft.Authorization/role assignments/write* 权限中。 所有者角色中存在此权限。 
+* 向存储帐户进行写入的权限，此权限位于 *Microsoft.Storage/storageAccounts/write* 中。 “参与者”角色有此权限。
+* 向存储帐户添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。 
+
 
 ### <a name="share-from-a-sql-based-source"></a>从基于 SQL 的源共享：
 
-* 包含要共享的表和视图的 Azure SQL 数据库或 Azure SQL 数据仓库。
+* 包含要共享的表和视图的 Azure SQL 数据库或 Azure Synapse Analytics（以前的 Azure SQL 数据仓库）。
+* 向 SQL 服务器上的数据库进行写入的权限，此权限存在于 *Microsoft.Sql/servers/databases/write* 中。 “参与者”角色有此权限。
 * 用于访问数据仓库的数据共享权限。 可以通过以下步骤完成此操作： 
-    1. 将自己设置为服务器的 Azure Active Directory 管理员。
+    1. 将你自己设置为 SQL Server 的 Azure Active Directory 管理员。
     1. 使用 Azure Active Directory 连接到 Azure SQL 数据库/数据仓库。
-    1. 使用查询编辑器（预览版）执行以下脚本，以将数据共享 MSI 添加为 db_owner。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
+    1. 使用查询编辑器（预览版）执行以下脚本，以将 Data Share 资源托管标识添加为 db_datareader。 必须使用 Active Directory 而非 SQL Server 身份验证进行连接。 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-请注意，<share_acc_name> 是 Data Share 帐户的名称  。 如果尚未创建 Data Share 帐户，则可以稍后返回到该先决条件。  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       请注意， *<share_acc_name>* 是 Data Share 资源的名称。 如果尚未创建 Data Share 资源，则可以稍后返回到该先决条件。  
 
-* [具有 `db_owner` 访问权限的 Azure SQL 数据库用户](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)，可以浏览和选择要共享的表和/或视图。 
+* 具有“db_datareader”访问权限的 Azure SQL 数据库用户，可以浏览和选择要共享的表和/或视图。 
 
-* 客户端 IP SQL Server 防火墙访问：可以通过以下步骤完成此操作：1. 导航到防火墙和虚拟网络 1  。 单击“打开”切换按钮以允许访问 Azure 服务  。 
+* 客户端 IP SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
+    1. 在 Azure 门户中的 SQL Server 中，导航到“防火墙和虚拟网络” 
+    1. 单击“打开”切换按钮以允许访问 Azure 服务  。
+    1. 单击“+ 添加客户端 IP”  ，然后单击“保存”  。 客户端 IP 地址可能会更改。 你还可以添加 IP 范围。 
+
+### <a name="share-from-azure-data-explorer"></a>从 Azure 数据资源管理器进行共享
+* Azure 数据资源管理器群集，其中包含要共享的数据库。
+* 向 Azure 数据资源管理器群集进行写入的权限，此权限存在于 *Microsoft.Kusto/clusters/write* 中。 “参与者”角色有此权限。
+* 向 Azure 数据资源管理器群集添加角色分配的权限，此权限存在于 *Microsoft.Authorization/role assignments/write* 中。 “所有者”角色有此权限。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -91,7 +102,7 @@ ms.locfileid: "75438736"
 
 1. 选择“创建”  。   
 
-1. 填充 Data Share 的详细信息。 指定名称、共享内容说明以及使用条款（可选）。 
+1. 填充 Data Share 的详细信息。 指定名称、共享类型、共享内容说明以及使用条款（可选）。 
 
     ![EnterShareDetails](./media/enter-share-details.png "输入共享详细信息") 
 
@@ -101,7 +112,7 @@ ms.locfileid: "75438736"
 
     ![数据集](./media/datasets.png "数据集")
 
-1. 选择要添加的数据集类型。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
+1. 选择要添加的数据集类型。 你将会看到一个不同的数据集类型列表，具体取决于你在上一步中选择的共享类型（快照或就地）。 如果从 Azure SQL 数据库或 Azure SQL 数据仓库进行共享，系统将提示你输入一些 SQL 凭据。 使用你在先决条件部分中创建的用户进行身份验证。
 
     ![AddDatasets](./media/add-datasets.png "添加数据集")    
 
@@ -115,7 +126,7 @@ ms.locfileid: "75438736"
 
 1. 选择“继续” 
 
-1. 如果希望数据使用者能够获得数据的增量更新，请启用快照计划。 
+1. 如果已选择了快照共享类型，则可以配置快照计划来向数据使用者提供数据更新。 
 
     ![EnableSnapshots](./media/enable-snapshots.png "启用快照") 
 
