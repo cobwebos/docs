@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703645"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931581"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -22,7 +22,7 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 
 本教程介绍如何在 Azure 中创建 Windows Server VM，并安装所需的工具来管理 Azure AD DS 托管域。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解可在 Azure AD DS 托管域中执行的管理任务
@@ -31,7 +31,7 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -40,9 +40,9 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 * 与订阅关联的 Azure Active Directory 租户，可以与本地目录或仅限云的目录同步。
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
-    * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
+    * 如果需要，请参阅第一个教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
 * 已加入 Azure AD DS 托管域的 Windows Server VM。
-    * 如果需要，请参考前一篇教程[创建 Windows Server VM 并将其加入托管域][create-join-windows-vm]。
+    * 如果需要，请参阅上一教程[创建 Windows Server VM 并将其加入到托管域][create-join-windows-vm]。
 * 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。 
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -143,7 +143,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 了解可在 Azure AD DS 托管域中执行的管理任务

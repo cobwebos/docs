@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718887"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905695"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
@@ -35,14 +35,16 @@ ms.locfileid: "73718887"
 > * 将示例数据流式传输到事件中心。 
 > * 在 SQL 数据仓库中验证捕获的数据
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs/)。 在安装时，请确保安装以下工作负荷：.NET 桌面开发、Azure 开发、ASP.NET 和 Web 开发、Node.js 开发、Python 开发
-- 下载 [Git 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)。 示例解决方案包含以下组件：
+- 下载 [Git 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo)。该示例解决方案包含以下组件：
     - *WindTurbineDataGenerator* – 一个简单的发布服务器，可以将示例性的风力涡轮机数据发送到启用了捕获功能的事件中心
     - *FunctionDWDumper* – 一个 Azure Function，可以在 Avro 文件捕获到 Azure 存储 Blob 时接收事件网格通知。 它接收 Blob 的 URI 路径、读取其内容并将该数据推送到 SQL 数据仓库。
+
+    此示例使用最新的 Azure.Messaging.EventHubs 包。 可在[此处](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)找到使用 Microsoft.Azure.EventHubs 包的旧示例。 
 
 ### <a name="deploy-the-infrastructure"></a>部署基础结构
 使用 Azure PowerShell 或 Azure CLI 通过此 [Azure 资源管理器模板](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json)部署本教程所需的基础结构。 此模板可创建以下资源：

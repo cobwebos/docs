@@ -1,27 +1,23 @@
 ---
-title: 使用 Azure Migrate 服务器迁移将本地物理机或虚拟机迁移到 Azure | Microsoft Docs
-description: 本文介绍如何使用 Azure Migrate 服务器迁移将本地物理机或虚拟机迁移到 Azure。
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: 使用 Azure Migrate 将计算机作为物理服务器迁移到 Azure。
+description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 Azure。
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028806"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989750"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>将物理服务器或虚拟化服务器迁移到 Azure 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
-本文介绍如何将物理服务器或虚拟化服务器迁移到 Azure。 Azure Migrate 服务器迁移工具可以使用基于代理的复制来迁移物理服务器和虚拟化服务器。 使用此工具可将各种计算机迁移到 Azure：
+本文介绍如何使用 Azure Migrate:服务器迁移工具将计算机作为物理服务器迁移到 Azure。 通过将计算机视为物理服务器来迁移计算机在许多情况下很有用：
 
 - 迁移本地物理服务器。
 - 迁移 Xen、KVM 等平台虚拟化的 VM。
-- 迁移 Hyper-V 或 VMware VM。 如果出于某种原因无法使用 Azure Migrate 服务器迁移为 [Hyper-V](tutorial-migrate-hyper-v.md)、[VMware 无代理](tutorial-migrate-vmware.md)迁移或[基于 VMware 代理](tutorial-migrate-vmware-agent.md)的迁移提供的标准迁移流，此方法将十分有用。
+- 迁移 Hyper-V 或 VMware VM（如果由于某种原因无法使用标准迁移过程进行 [Hyper-V](tutorial-migrate-hyper-v.md) 或 [VMware](server-migrate-overview.md) 迁移）。
 - 迁移私有云中运行的 VM。
 - 迁移 Amazon Web Services (AWS) 或 Google Cloud Platform (GCP) 等公有云中运行的 VM。
 
@@ -266,8 +262,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”     。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。 
-4. 在“vCenter 服务器”中，指定用于管理 VM 的 vCenter 服务器的名称，或者 VM 所在的 vSphere 服务器的名称。 
-5. 在“进程服务器”中，选择复制设备的名称。 
+4. 在“进程服务器”中，选择复制设备的名称。 
 6. 在“来宾凭据”中，指定用于推送安装移动服务的 VM 管理员帐户。  在本教程中，我们将手动安装移动服务，以便可以添加任何虚构帐户。 然后单击“下一页:  虚拟机”。
 
     ![复制 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

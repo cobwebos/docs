@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660794"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964441"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -37,7 +37,7 @@ Azure Data Share 的另一个用例是建立数据联盟。 例如，许多不�
 
 ## <a name="how-it-works"></a>工作原理
 
-Azure 数据共享目前提供基于快照的共享和就地共享（在有限预览版中）。 
+Azure Data Share 目前提供基于快照的共享和就地共享。 
 
 在基于快照的共享中，数据从数据提供者的 Azure 订阅移到数据使用者的 Azure 订阅。 你作为数据提供者预配一个数据共享，然后邀请接收者加入数据共享。 数据使用者通过电子邮件接收数据共享邀请。 数据使用者接受邀请以后，即可触发已共享的数据共享的完整快照。 该数据将接收到数据使用者的存储帐户中。 数据使用者可以接收已共享数据的定期增量更新，因此可以始终拥有最新版的数据。 
 
@@ -47,7 +47,7 @@ Azure 数据共享目前提供基于快照的共享和就地共享（在有限�
 
 数据使用者在接受数据共享以后，即可在所选数据存储中接收数据。 例如，如果数据提供者使用 Azure Blob 存储共享数据，数据使用者可以在 Azure Data Lake Store 中接收该数据。 同样，如果数据提供者共享 Azure SQL 数据仓库中的数据，则数据使用者可以选择是在 Azure Data Lake Store、Azure SQL 数据库还是 Azure SQL 数据仓库中接收数据。 如果从基于 SQL 的源进行共享，数据使用者还可以选择是在 parquet 还是 csv 中接收数据。 
 
-就地共享目前处于 Azure 数据资源管理器的有限预览版中。 数据提供者可以在数据所在位置共享数据，而无需通过符号链接移动数据。 在[此处](https://aka.ms/azuredatasharepreviewsignup)注册 Azure 数据资源管理器的就地共享的有限预览版。 
+通过就地共享，数据提供程序可以共享其所在位置的数据而无需复制数据。 在通过邀请流建立共享关系之后，将在数据提供程序的源数据存储和数据使用者的目标数据存储之间创建一个符号链接。 数据使用者可以使用自己的数据存储实时读取和查询数据。 对源数据存储的更改可立即供数据使用者使用。 Azure 数据资源管理器的就地共享目前为预览版。
 
 ## <a name="key-capabilities"></a>关键功能
 
@@ -56,6 +56,8 @@ Azure 数据共享目前提供基于快照的共享和就地共享（在有限�
 * 将[受支持数据存储](supported-data-stores.md)列表中的数据与组织外部的客户和合作伙伴共享
 
 * 记录与谁共享了数据
+
+* 选择快照或就地共享
 
 * 调整数据使用者接收数据更新的频率
 
@@ -69,13 +71,13 @@ Azure 数据共享目前提供基于快照的共享和就地共享（在有限�
 
 * 接受或拒绝 Azure Data Share 邀请
 
-* 触发组织与你共享的数据共享的完整或增量快照
-
-* 订阅数据共享，以便通过增量快照副本接收数据的最新副本
-
 * 接受与你共享的数据，将其存储到[受支持的数据存储](supported-data-stores.md)。
 
-可以通过 Azure 或 REST API 使用上面列出的所有关键功能。 若要更详细地了解如何通过 REST API 使用 Azure Data Share，请查看我们的参考文档。 
+* 触发组织与你共享的数据共享的完整或增量快照
+
+* 订阅数据共享，以便通过增量快照接收数据的最新副本
+
+可以通过 Azure 门户或 REST API 使用上面列出的所有关键功能。 若要更详细地了解如何通过 REST API 使用 Azure Data Share，请查看我们的参考文档。 
 
 ## <a name="security"></a>安全性
 
@@ -88,9 +90,9 @@ Azure Data Share 利用 Azure 资源的托管标识（以前称为 MSI）在 Azu
 
 ## <a name="supported-regions"></a>支持的区域
 
-如需提供 Azure Data Share 的 Azure区域的列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/)页并搜索 Azure Data Share。 
+如需提供 Azure Data Share 的 Azure区域的列表，请参阅[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=data-share)页并搜索 Azure Data Share。 
 
-Azure Data Share 本身不存储任何数据。 数据存储在共享的基础数据存储中。 例如，如果数据生成者将其数据存储在美国西部的 Azure Data Lake Store 帐户中，则该帐户就是存储数据的位置。 如果数据生成者将数据与欧洲西部的 Azure 存储帐户共享，则数据会直接传输到欧洲西部的 Azure 存储帐户。 
+Azure Data Share 本身不存储数据本身的副本。 数据存储在共享的基础数据存储中。 例如，如果数据生成者将其数据存储在美国西部的 Azure Data Lake Store 帐户中，则该帐户就是存储数据的位置。 如果数据生成者通过快照将数据与西欧的 Azure 存储帐户共享，则通常情况下，数据会直接传输到西欧的 Azure 存储帐户。
 
 Azure Data Share 服务不需在你的区域可用即可利用此服务。 例如，如果将数据存储在某个 Azure 存储帐户中，而该帐户所在的区域尚不提供 Azure Data Share，则仍然可以利用该服务来共享数据。 
 

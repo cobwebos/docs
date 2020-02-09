@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 46764fdae89d5af4c9dedf4037d07dc48d1cda83
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703672"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931644"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -22,7 +22,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 可以[使用默认配置选项创建托管域][tutorial-create-instance]以实现联网和同步，也可以手动定义这些设置。 本教程介绍如何定义这些高级配置选项，以便使用 Azure 门户来创建和配置 Azure AD DS 实例。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为托管域配置 DNS 和虚拟网络设置
@@ -32,7 +32,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -94,6 +94,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     对于要跨区域分布 Azure AD DS，无需进行任何配置。 Azure 平台会自动处理资源的区域分配。 若要查看区域可用性的详细信息，请参阅[Azure 中的可用性区域是什么？][availability-zones]
 
+1. **SKU** 确定可以创建的林信任的性能、备份频率和最大数量。 如果业务需求或要求发生变化，可以在创建托管域后更改 SKU。 有关详细信息，请参阅 [Azure AD DS SKU 概念][concepts-sku]。
+
+    对于本教程，请选择“标准”  SKU。
 1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造  。 默认情况下，Azure AD DS 托管域作为用户林创建  。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]  。
 
     对于本教程，请选择创建用户林  。
@@ -102,9 +105,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 若要手动配置其他选项，请选择“下一步 - 网络”。  否则，请选择“查看 + 创建”以接受默认的配置选项，然后跳到用于[部署托管域](#deploy-the-managed-domain)的部分。  选择此创建选项时，会配置以下默认设置：
 
-* 创建名为 *aadds-vnet* 的虚拟网络，该网络使用的 IP 地址范围为 *10.0.1.0/24*。
-* 创建名为 *aadds-vnet* 的子网，该子网使用的 IP 地址范围为 *10.0.1.0/24*。
-* 将所有用户从 Azure AD 同步到 Azure AD DS 托管域。 
+    * 创建名为 *aadds-vnet* 的虚拟网络，该网络使用的 IP 地址范围为 *10.0.1.0/24*。
+    * 创建名为 *aadds-vnet* 的子网，该子网使用的 IP 地址范围为 *10.0.1.0/24*。
+    * 将所有用户从 Azure AD 同步到 Azure AD DS 托管域。 
 
 ## <a name="create-and-configure-the-virtual-network"></a>创建并配置虚拟网络
 
@@ -125,7 +128,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     1. 如果选择创建虚拟网络，请输入虚拟网络的名称（例如 *myVnet*），然后提供地址范围（例如 *10.0.1.0/24*）。
     1. 创建具有明确名称的专用子网，例如 *DomainServices*。 提供地址范围，例如 *10.0.1.0/24*。
 
-    ![创建用于 Azure AD 域服务的虚拟网络和子网](./media/tutorial-create-instance-advanced/create-vnet.png)
+    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     请确保选择专用 IP 地址范围内的某个地址范围。 选择公共地址空间中你不拥有的 IP 地址范围会导致 Azure AD DS 出错。
 
@@ -223,7 +226,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 为托管域配置 DNS 和虚拟网络设置
@@ -248,5 +251,6 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->

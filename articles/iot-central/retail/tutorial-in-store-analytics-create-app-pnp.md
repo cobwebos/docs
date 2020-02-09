@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702027"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022097"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教程：在 Azure IoT Central 中创建店内分析应用程序
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程向解决方案构建者介绍如何创建 Azure IoT Central 店内分析应用程序。 示例应用程序适用于零售商店。 这是一种满足常见业务需求的解决方案，可监视和适应占用和环境情况。
 
@@ -34,7 +34,7 @@ ms.locfileid: "74702027"
 * 自定义仪表板，使操作员能够监视和管理设备
 * 配置数据导出，使商店经理能够运行分析和可视化见解
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用 Azure IoT Central“店内分析 - 结帐”模板来创建零售商店应用程序 
 > * 自定义应用程序设置
@@ -42,7 +42,7 @@ ms.locfileid: "74702027"
 > * 将设备连接到应用程序
 > * 添加规则和操作来监视条件
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程系列，需要：
 * 建议使用 Azure 订阅。 可以选择使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
@@ -64,24 +64,27 @@ ms.locfileid: "74702027"
 
 1. 选择“零售”  。  “零售”页将显示多个零售应用程序模板。
 
-若要创建使用预览功能的新店内分析结帐应用程序，请执行以下操作：  
+若要新建店内分析结帐应用程序，请执行以下操作：  
 
 1. 选择“店内分析 - 结帐”应用程序模板  。 此模板包括本教程中使用的所有设备（RuuviTag 传感器除外）的设备模板。 此模板还提供用于监视结帐和环境条件以及设备状态的操作员仪表板。 
 
-1. （可选）选择一个友好的应用程序名称  。 此应用程序基于名为 Contoso 的虚构零售商店。 本教程使用应用程序名称 Contoso 结帐   。 应用程序模板基于虚构公司 Northwind。 在本教程中，你将使用 Contoso 来了解如何自定义应用程序。
+1. （可选）选择一个友好的应用程序名称  。 此应用程序基于名为 Contoso 的虚构零售商店。 本教程使用应用程序名称“Contoso checkout”   。 应用程序模板基于虚构公司 Northwind。 在本教程中，你将使用 Contoso 来了解如何自定义应用程序。
 
     > [!NOTE]
     > 如果你使用友好的应用程序名称，则仍必须为应用程序 URL 使用唯一值   。
 
 1. 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。  
 
-    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../preview/quick-deploy-iot-central.md)。
+    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../core/quick-deploy-iot-central.md)。
 
 1. 选择“创建”  。
 
     ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
 
+    ![Azure IoT Central 创建应用程序 - 计费信息](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
+
 ## <a name="customize-application-settings"></a>自定义应用程序设置
+
 构建者可以更改多个设置来自定义应用程序中的用户体验。 在本部分中，你将选择预定义的应用程序主题。 你还可以了解如何创建自定义主题，以及如何更新应用程序图像。 使用自定义主题可以设置刊头中显示的应用程序浏览器颜色、浏览器图标和应用程序徽标。
 
 若要选择预定义的应用程序主题，请执行以下操作：
@@ -160,7 +163,7 @@ ms.locfileid: "74702027"
 
 第三种方式是通过生成自定义视图来自定义设备模板。 视图为操作员提供一种可视化设备的遥测和元数据（如设备指标和运行状况）的方法。
 
-此处，使用前两种方法来自定义 RuuviTag 传感器的设备模板。 有关为传感器创建视图的信息，请参阅[将模拟设备添加到 IoT Central 应用程序](../preview/quick-create-pnp-device.md)快速入门。
+此处，使用前两种方法来自定义 RuuviTag 传感器的设备模板。 有关为传感器创建视图的信息，请参阅[将模拟设备添加到 IoT Central 应用程序](../core/quick-create-pnp-device.md)快速入门。
 
 若要自定义 RuuviTag 设备模板的内置界面，请执行以下操作：
 
@@ -200,7 +203,7 @@ ms.locfileid: "74702027"
 
 1. 输入“显示名称”的“位置”值   。 此值将自动复制到“名称”  字段，它是属性的友好名称。 可以使用复制的值或对其进行更改。
 
-1. 在“架构”下拉列表中选择“字符串”   。 使用字符串类型可以基于模板将位置名称字符串与任何设备关联。 例如，可以将应用商店中的某个区域与每个设备关联。 （可选）可以将属性的“语义类型”设置为“位置”，这会自动将“架构”设置为“地域点”     。 这使你可以将 GPS 坐标与设备关联。 
+1. 在“架构”下拉列表中选择“字符串”   。 使用字符串类型可以基于模板将位置名称字符串与任何设备关联。 例如，可以将应用商店中的某个区域与每个设备关联。 （可选）可以将属性的“语义类型”设置为“位置”，这会自动将“架构”设置为“地域点”     。 从而能够将 GPS 坐标与设备关联。 
 
 1. 将“最小长度”设置为“2”   。 
 
@@ -223,12 +226,12 @@ ms.locfileid: "74702027"
 - 模拟占用传感器  。 模拟传感器包含在应用程序模板中，因此不需要创建它。 
 
 > [!NOTE]
-> 如果没有实际设备，则仍可以通过创建模拟 RuuviTag 传感器来完成本教程。 以下说明包含创建模拟 RuuviTag 的步骤。 不需要创建模拟网关。
+> 如果没有实际设备，仍可以通过创建模拟 RuuviTag 传感器来完成本教程。 以下说明包含创建模拟 RuuviTag 的步骤。 不需要创建模拟网关。
 
 完成以下两篇文章中的步骤以连接实际 Rigado 网关和 RuuviTag 传感器。 完成后，请返回到本教程。 由于你已在本教程中创建了设备模板，因此不需要按照以下一组说明再次创建设备模板。
 
-- 若要连接 Rigado 网关，请参阅[将 Rigado Cascade 500 连接到 Azure IoT Central 应用程序](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。
-- 若要连接 RuuviTag 传感器，请参阅[将 RuuviTag 传感器连接到 Azure IoT Central 应用程序](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 还可以使用这些说明创建两个模拟传感器（如果需要）。
+- 若要连接 Rigado 网关，请参阅[将 Rigado Cascade 500 连接到 Azure IoT Central 应用程序](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。
+- 若要连接 RuuviTag 传感器，请参阅[将 RuuviTag 传感器连接到 Azure IoT Central 应用程序](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json)。 还可以使用这些说明创建两个模拟传感器（如果需要）。
 
 ## <a name="add-rules-and-actions"></a>添加规则和操作
 使用 Azure IoT Central 应用程序中的传感器监视条件时，可以创建规则以在满足某些条件时运行操作。 规则与设备模板和一个或多个设备关联，并且包含必须根据设备遥测或事件满足的条件。 规则也有一个或多个关联的操作。 这些操作可能包括发送电子邮件通知，或触发 Webhook 操作以向其他服务发送数据。  “店内分析 - 结帐”应用程序模板包括应用程序中设备的一些预定义规则。
@@ -247,7 +250,7 @@ ms.locfileid: "74702027"
 
 1. 选择“范围”  中的 RuuviTag 设备模板。 你定义的规则将基于该模板应用于所有传感器。 或者，你可以创建仅将规则应用于已定义的传感器子集的筛选器。 
 
-1. 选择 `Relative humidity` 作为“遥测”  。 这是上一步中自定义的设备功能。
+1. 选择 `Relative humidity` 作为“遥测”  。 这是在上一步中自定义的设备功能。
 
 1. 选择 `Is greater than` 作为“运算符”  。 
 
@@ -274,7 +277,7 @@ ms.locfileid: "74702027"
     几分钟后，指定的电子邮件帐户应开始收到电子邮件。 每当传感器指示湿度级别超出条件中的值时，应用程序都会发送电子邮件。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 * 使用 Azure IoT Central“店内分析 - 结帐”模板来创建零售商店应用程序 
 * 自定义应用程序设置

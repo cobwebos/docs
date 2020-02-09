@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658638"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982528"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 如果你有自定义小组件或喜欢使用 Jupyter/JupyterLab，请在最右侧选择“Jupyter”下拉菜单，然后选择“Jupyter”或“JupyterLab”    。 系统将打开新的浏览器窗口。
 
 > [!NOTE]
-> 计算实例（预览版）当前仅适用于区域为“美国中北部”或“英国南部”的工作区，对其他区域的支持即将推出   。
+> 计算实例（预览版）目前仅适用于区域为“美国中北部”、“美国东部 2”、“北欧”或“英国南部”的工作区，对其他区域的支持即将推出     。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。  可以使用笔记本 VM 或计算实例来运行笔记本。 VM 将持续运行并产生费用，除非你将其停止。 可以从工作室的“计算”选项卡中手动将其停止，或者参阅有关为 Azure VM 启用按计划自动关闭的[博客文章](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342)  。
 
 ## <a name="next-steps"></a>后续步骤

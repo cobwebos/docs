@@ -8,29 +8,33 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 12/02/2019
-ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770741"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938989"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Java 连接到 Azure Database for MySQL 并查询其中的数据
 
-本快速入门演示如何使用 Java 应用程序和 JDBC 驱动程序 [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) 连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Java 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
+在本快速入门中，你将使用 Java 应用程序和 JDBC 驱动程序 MariaDB Connector/J 连接到 Azure Database for MySQL。 然后使用 SQL 语句在 Mac、Ubuntu Linux 和 Windows 平台的数据库中查询、插入、更新和删除数据。 
 
-## <a name="prerequisites"></a>先决条件
-1. 此快速入门使用以下任意指南中创建的资源作为起点：
-   - [使用 Azure 门户创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [使用 Azure CLI 创建用于 MySQL 服务器的 Azure 数据库](./quickstart-create-mysql-server-database-using-azure-cli.md)
+本主题假设你熟悉如何使用 Java 进行开发，但不熟悉 Azure Database for MySQL 的用法。
 
-2. 确保在配置 Azure Database for MySQL 连接安全性时，已打开防火墙并对 SSL 设置进行了调整，以便应用程序能够成功进行连接。
+## <a name="prerequisites"></a>必备条件
 
-3. 使用以下方法之一获取 MariaDB Connector/J 连接器：
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- Azure Database for MySQL 服务器。 [使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)或[使用 Azure CLI 创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-cli.md)。
+- Azure Database for MySQL 连接安全性配置为打开防火墙，并为应用程序配置了 SSL 连接设置。
+
+## <a name="obtain-the-mariadb-connector"></a>获取 MariaDB 连接器
+
+使用以下方法之一获取 [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) 连接器：
    - 使用 Maven 包 [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client) 在项目的 POM 文件中包括 [mariadb-java-client 依赖项](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client)。
-   - 下载 JDBC 驱动程序 [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/)，将 JDBC jar 文件（例如 mariadb-java-client-2.4.3.jar）包括到应用程序类路径中。 如果遇到类路径的问题，请参阅环境文档（例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)），了解类路径具体信息
+   - 下载 JDBC 驱动程序 [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/)，并将 JDBC jar 文件（例如 mariadb-java-client-2.4.3.jar）包含到应用程序类路径中。 请参阅环境文档（例如 [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) 或 [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)），了解类路径具体信息
 
 ## <a name="get-connection-information"></a>获取连接信息
+
 获取连接到 Azure Database for MySQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
@@ -40,6 +44,7 @@ ms.locfileid: "74770741"
  ![Azure Database for MySQL 服务器名称](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
+
 通过以下代码进行连接，然后使用函数和 **INSERT** SQL 语句加载数据。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用于连接到 MySQL。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) 和 execute() 方法用于删除和创建表。 使用 prepareStatement 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 executeUpdate() 方法为每组参数运行该命令，以便插入值。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -142,6 +147,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>读取数据
+
 使用以下代码，通过 **SELECT** SQL 语句读取数据。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用于连接到 MySQL。 使用 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) 和 executeQuery() 方法来连接和运行 select 语句。 使用 ResultSet 对象处理结果。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -229,6 +235,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>更新数据
+
 使用以下代码，通过 **UPDATE** SQL 语句更改数据。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用于连接到 MySQL。 使用 [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法来准备和运行 update 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
@@ -311,6 +318,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>删除数据
+
 使用以下代码，通过 **DELETE** SQL 语句删除数据。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) 方法用于连接到 MySQL。  使用 [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) 和 executeUpdate() 方法来准备和运行 delete 语句。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。

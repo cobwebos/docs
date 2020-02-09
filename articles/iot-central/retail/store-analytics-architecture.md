@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615397"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022114"
 ---
 # <a name="in-store-analytics-architecture"></a>店内分析体系结构
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-店内分析解决方案使你能够监视零售商店环境中的各种情况。 可以利用 IoT Central 中的某种应用程序模板和下面的体系结构作为指导来构建这些解决方案。
+
+店内分析解决方案使你能够监视零售商店环境中的各种情况。 可以使用 IoT Central 中的某个应用程序模板和下面的体系结构作为指导来构建这些解决方案。
 
 
 ![Azure IoT Central 商店分析](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ ms.locfileid: "73615397"
 
 ## <a name="condition-monitoring-sensors"></a>环境监视传感器
 
-IoT 解决方案的基础是从零售商店环境内捕获有意义信号的一组传感器。 上面的体系结构图最左侧的各种传感器反映了这一事实。
+IoT 解决方案的基础是从零售商店环境内捕获有意义信号的一组传感器。 上面的体系结构图最左侧的各种传感器反映了这一点。
 
 ## <a name="gateway-devices"></a>网关设备
 
@@ -43,7 +43,7 @@ IoT 解决方案的基础是从零售商店环境内捕获有意义信号的一�
 
 ## <a name="iot-central-application"></a>IoT Central 应用程序
 
-Azure IoT Central 应用程序从各种 IoT 传感器以及零售商店环境中的网关设备中引入数据，并生成一组有意义的见解。
+Azure IoT Central 应用程序从各种 IoT 传感器以及零售商店环境中的网关设备引入数据，并生成一组有意义的见解。
 
 Azure IoT Central 还为商店运营商提供定制的体验，使他们能够远程监视和管理基础结构设备。
 
@@ -51,8 +51,8 @@ Azure IoT Central 还为商店运营商提供定制的体验，使他们能够�
 解决方案中的 Azure IoT Central 应用程序可配置为将原始或聚合见解导出到一组 Azure PaaS（平台即服务）服务，这些服务可执行数据操作并丰富这些见解，然后将其放入业务应用程序。 
 
 ## <a name="business-application"></a>业务应用程序
-IoT 数据可用于为在零售环境中部署的各种业务应用程序提供支持。 零售商店经理或员工可以利用这些应用程序来可视化业务见解，并实时采取有意义的行动。 若要了解如何为零售团队构建实时 Power BI 仪表板，请按照[教程](./tutorial-in-store-analytics-create-app-pnp.md)操作。
+IoT 数据可用于为零售环境中部署的各种业务应用程序提供支持。 零售店经理或员工可以使用这些应用程序将业务见解可视化，并实时采取有意义的行动。 若要了解如何为零售团队构建实时 Power BI 仪表板，请按照[教程](./tutorial-in-store-analytics-create-app-pnp.md)操作。
 
 ## <a name="next-steps"></a>后续步骤
 * 开始使用[店内分析结账](https://aka.ms/checkouttemplate)和[店内分析环境监视](https://aka.ms/conditiontemplate)应用程序模板。 
-* 请查看[端到端教程](https://aka.ms/storeanalytics-tutorial)，它将逐步说明如何利用店内分析应用程序模板构建解决方案。
+* 请查看[端到端教程](https://aka.ms/storeanalytics-tutorial)，该教程将指导你如何使用店内分析应用程序模板之一构建解决方案。

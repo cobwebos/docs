@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704147"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023151"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入门：设置租户
 
@@ -57,7 +57,7 @@ Microsoft 标识平台可让开发人员生成面向各种自定义 Microsoft 36
 
 ### <a name="create-a-new-azure-ad-tenant"></a>创建新的 Azure AD 租户
 
-如果还没有 Azure AD 租户或想要为开发创建新租户，请遵循[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)。 必须提供以下信息才能创建新租户：
+如果还没有 Azure AD 租户或想要创建用于开发的新租户，请参阅[快速入门](../fundamentals/active-directory-access-create-new-tenant.md)，或者只需按照[目录创建体验](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)进行操作。 必须提供以下信息才能创建新租户：
 
 -  组织名称
 - **初始域** - 这将包括在 *.onmicrosoft.com 中。 稍后你可以更详细地自定义域。

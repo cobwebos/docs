@@ -9,18 +9,18 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7336260d7565697b0559419ae502848bcff9424c
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1e5ccc9d427755ea4274e836e81e3e324fffa39d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892849"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937784"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入门：使用 Azure 门户上传、下载和列出 Blob
 
 本快速入门介绍如何使用 [Azure 门户](https://portal.azure.com/)在 Azure 存储中创建容器，以及在该容器中上传和下载块 Blob。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -45,13 +45,14 @@ ms.locfileid: "74892849"
 
 1. 在 Azure 门户中，导航到在上一部分创建的容器。
 2. 选择一个容器，显示其包含的 Blob 的列表。 此容器为新容器，因此不会包含任何 Blob。
-3. 选择“上传”按钮将 Blob 上传到容器。 
-4. 浏览本地文件系统，找到一个可作为块 Blob 上传的文件，然后选择“上传”。 
+3. 选择“上传”  按钮以打开“上传”边栏选项卡
+4. 浏览本地文件系统，找到要作为块 Blob 上传的文件
      
     ![显示如何将 Blob 从本地驱动器上传的屏幕截图](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-5. 选择“身份验证类型”。  默认值为 **SAS**。
-6. 以这种方式根据需要上传相应数量的 Blob。 可以看到新的 Blob 现已列在容器中。
+5. （可选）展开“高级”部分以定义其他设置，例如身份验证类型、访问层或虚拟文件夹路径。
+6. 选择“上传”  按钮以提交上传
+7. 以这种方式根据需要上传相应数量的 Blob。 可以看到新的 Blob 现已列在容器中。
 
 ## <a name="download-a-block-blob"></a>下载块 Blob
 

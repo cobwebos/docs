@@ -1,28 +1,24 @@
 ---
-title: 快速入门：识别语音、意向和实体，Python - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773040"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900629"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
-* 如果这是你的第一个 Python 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">创建空示例项目</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">安装用于开发环境的语音 SDK</a>。
+* 如果这是第一个 Python 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">安装用于开发环境的语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 
@@ -65,7 +61,7 @@ ms.locfileid: "75773040"
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>添加 LanguageUnderstandingModel 和意向
 
-需要将 `LanguageUnderstandingModel` 与意向识别器相关联，并添加要识别的意向。 我们将使用预生成的域中的意向进行主自动化。 
+需要将 `LanguageUnderstandingModel` 与意向识别器相关联，并添加要识别的意向。 我们将使用预生成的域中的意向进行主自动化。
 
 将此代码插入到你的 `IntentRecognizer` 下方。 请确保将 `"YourLanguageUnderstandingAppId"` 替换为 LUIS 应用 ID。 
 
@@ -90,7 +86,7 @@ ms.locfileid: "75773040"
 
 ## <a name="check-your-code"></a>查看代码
 
-此时，代码应如下所示：  
+此时，代码应如下所示：
 
 > [!NOTE]
 > 我们已向此版本添加了一些注释。

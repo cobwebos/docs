@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 01/13/2020
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941558"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989801"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>快速入门：如何注册并上传第一个视频
 
@@ -49,15 +49,17 @@ ms.locfileid: "75941558"
 
     当视频索引器分析完以后，你会获得一个通知，其中包含视频链接以及对视频中找到的内容的简短说明。 例如：人物、主题、OCR。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
 有关更多详细信息，请参阅[上传视频并为其编制索引](upload-index-videos.md)。
 
 上传视频并为其编制索引后，可以开始使用[视频索引器](video-indexer-view-edit.md)网站或[视频索引器开发人员门户](video-indexer-use-apis.md)查看视频见解。 
 
-## <a name="see-also"></a>另请参阅
+[开始使用 API](video-indexer-use-apis.md)
 
-[视频索引器概述](video-indexer-overview.md)
+## <a name="next-steps"></a>后续步骤
 
-[开始使用 API](video-indexer-use-apis.md)。
+有关详细介绍，请访问我们的[简介实验室](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md)。 
+
+在研讨会结束时，你将对可以从视频和音频内容中提取的信息类型有一个很好的了解，你将做好更充分的准备来识别与内容智能相关的机会、在 Azure 上推介视频 AI，并在视频索引器上演示几个场景。
 

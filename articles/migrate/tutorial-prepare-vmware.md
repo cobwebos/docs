@@ -1,18 +1,15 @@
 ---
 title: 使用 Azure Migrate 准备 VMware VM 以进行评估/迁移
 description: 了解如何使用 Azure Migrate 准备评估/迁移 VMware VM。
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028909"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030789"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>准备 VMware VM 以进行评估和迁移到 Azure
 
@@ -41,8 +38,12 @@ ms.locfileid: "76028909"
 **任务** | **权限**
 --- | ---
 **创建 Azure Migrate 项目** | Azure 帐户需要创建项目的权限。
-**注册 Azure Migrate 设备** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来评估 VMware VM，并通过 Azure Migrate 服务器迁移来执行 VMware VM 的[无代理迁移](server-migrate-overview.md)。 此设备发现 VM，并将 VM 元数据和性能数据发送到 Azure Migrate。<br/><br/>在注册过程中，Azure Migrate 将创建两个 Azure Active Directory 域服务 (Azure AD) 应用用于唯一标识设备，并需要权限来创建这些应用。<br/> - 第一个应用将与 Azure Migrate 服务终结点通信。<br/> - 第二个应用访问注册期间创建的 Azure Key Vault，以存储 Azure AD 应用信息和设备配置设置。
+**注册 Azure Migrate 设备** | Azure Migrate 使用轻型 Azure Migrate 设备通过 Azure Migrate 服务器评估来评估 VMware VM，并通过 Azure Migrate 服务器迁移来执行 VMware VM 的[无代理迁移](server-migrate-overview.md)。 此设备发现 VM，并将 VM 元数据和性能数据发送到 Azure Migrate。<br/><br/>在设备注册过程中，以下资源提供程序将注册到在设备中选择的订阅：Microsoft.OffAzure、Microsoft.Migrate 和 Microsoft.KeyVault。 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 需要订阅的“参与者”或“所有者”角色才能注册资源提供程序。<br/><br/> 在载入过程中，Azure Migrate 将创建两个 Azure Active Directory (Azure AD) 应用：<br/> - 第一个应用用于在代理（在设备上运行）与其各自在 Azure 上运行的服务之间通信（身份验证和授权）。 此应用无权对任何资源进行 ARM 调用，也没有 RBAC 访问权限。<br/> - 第二个应用专门用于访问在用户的订阅中创建的 KeyVault，以便进行无代理迁移。 从设备启动发现时，将为它提供对 Azure Key Vault（在客户的租户中创建）的 RBAC 访问权限。
 **创建 Key Vault** | 若要使用 Azure Migrate 服务器迁移工具迁移 VMware VM，Azure Migrate 需要创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 若要创建保管库，需要对 Azure Migrate 项目所在的资源组拥有角色分配权限。
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
@@ -80,9 +81,9 @@ ms.locfileid: "76028909"
 
 租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
-### <a name="assign-role-assignment-permissions"></a>分配角色分配权限
+### <a name="assign-permissions-to-create-a-key-vault"></a>分配创建 Key Vault 的权限
 
-若要使 Azure Migrate 创建 Key Vault，请按以下方式分配角色分配权限：
+若要允许 Azure Migrate 创建 Key Vault，请按如下所示分配权限：
 
 1. 在 Azure 门户上的资源组中，选择“访问控制(IAM)”。 
 2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。 

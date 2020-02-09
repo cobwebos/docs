@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153120"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899211"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -174,7 +174,7 @@ ms.locfileid: "76153120"
 
 在本部分中，我们创建一个用于接收通知的事件处理程序。 此事件处理程序应将任何设备的进入和退出事件通知给运营管理员。
 
-我们创建两项[逻辑应用](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)服务来处理进入和退出事件。 逻辑应用中的事件触发时，会按顺序触发更多事件。 可以向运营管理员发送警报（在本例中为电子邮件）。 下图演示了如何针对地域隔离区进入事件创建逻辑应用。 可按类似方式针对退出事件创建另一个逻辑应用。 有关详细信息，请参阅所有[支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)。
+我们将生成两项[逻辑应用](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)服务来处理进入和退出事件。 逻辑应用中的事件触发时，会按顺序触发更多事件。 可以向运营管理员发送警报（在本例中为电子邮件）。 下图演示了如何针对地域隔离区进入事件创建逻辑应用。 可按类似方式针对退出事件创建另一个逻辑应用。 有关详细信息，请参阅所有[支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)。
 
 1. 在 Azure 门户中创建逻辑应用
 
@@ -194,7 +194,7 @@ ms.locfileid: "76153120"
 
 ## <a name="create-an-azure-maps-events-subscription"></a>创建 Azure Maps 事件订阅
 
-Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps 查看 Azure Maps 支持的事件类型。 我们需要两个不同的事件订阅，一个用于输入事件，另一个用于退出事件。
+Azure Maps 支持三种事件类型。 可在[此处](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps)查看 Azure Maps 支持的事件类型。 我们需要两个不同的事件订阅，一个用于输入事件，另一个用于退出事件。
 
 遵循以下步骤针对地域隔离区进入事件创建事件订阅。 可按类似的方式订阅地域隔离区退出事件。
 

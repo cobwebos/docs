@@ -5,29 +5,29 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757567"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906628"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>教程：在 Blob 存储上托管静态网站
 
-本教程是一个系列中的第一部分。 它介绍如何生成静态网站并将其部署到 Azure 存储。 完成本教程后，你会有一个可供用户公开访问的静态网站。 
+本教程介绍如何生成静态网站并将其部署到 Azure 存储。 完成本教程后，你会有一个可供用户公开访问的静态网站。 
 
-在该系列的第一部分中，你会学习如何：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 配置静态网站托管
 > * 部署 Hello World 网站
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -99,9 +99,9 @@ Visual Studio Code 现在会将文件上传到 Web 终结点，并显示成功�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程的第一部分介绍了如何针对静态网站托管功能来配置 Azure 存储帐户，以及如何创建静态网站并将其部署到 Azure 终结点。
+本教程介绍了如何为静态网站托管配置 Azure 存储帐户，以及如何创建静态网站并将其部署到 Azure 终结点。
 
-现在请转到第二部分，以便使用 Azure CDN 通过 SSL 为静态网站配置自定义域。
+接下来，了解如何为静态网站配置自定义域。
 
 > [!div class="nextstepaction"]
-> [使用 Azure CDN 通过 SSL 为静态网站启用自定义域](storage-blob-static-website-custom-domain.md)
+> [将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)

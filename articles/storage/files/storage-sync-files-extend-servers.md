@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f71a27ea4da6bce5832287e948e0731672280196
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699489"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031503"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
@@ -32,7 +32,7 @@ ms.locfileid: "68699489"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -136,7 +136,7 @@ ms.locfileid: "68699489"
 
 对于 Windows Server 2016 Datacenter 服务器，请禁用“Internet Explorer 增强的安全配置”。 只有在进行初始的服务器注册时，此步骤才是必要步骤。 可在注册服务器后重新启用。
 
-在 Windows Server 2016 Datacenter VM 中，服务器管理器会自动打开。  如果服务器管理器不默认打开，请在文件资源管理器中搜索它。
+在 Windows Server 2016 Datacenter VM 中，服务器管理器会自动打开。  如果服务器管理器在默认情况下没有打开，请在“开始”菜单中搜索它。
 
 1. 在“服务器管理器”  中，选择“本地服务器”  。
 
@@ -159,9 +159,9 @@ ms.locfileid: "68699489"
     ![数据磁盘](media/storage-sync-files-extend-servers/your-disk.png)
 
 1. 右键单击名为“Msft 虚拟磁盘”的 1 GB 磁盘，然后选择“新建卷”。  
-1. 完成该向导。 使用默认设置并记下分配的驱动器号。
+1. 完成向导。 使用默认设置并记下分配的驱动器号。
 1. 选择“创建”  。
-1. 选择“关闭”。 
+1. 选择“关闭”  。
 
    目前已将磁盘联机并创建一个卷。 在 Windows Server VM 中打开文件资源管理器，确认存在最近添加的数据磁盘。
 
@@ -244,7 +244,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 1. 如果尚未关闭 PowerShell 窗口，请将其关闭。
 1. 接受**存储同步代理设置向导**中的默认设置。
 1. 选择“安装”  。
-1. 选择“完成”。 
+1. 选择“完成”  。
 
 你已在 Windows Server 2016 Datacenter VM 上部署 Azure 同步服务并安装代理。 现在需将 VM 注册到存储同步服务。
 

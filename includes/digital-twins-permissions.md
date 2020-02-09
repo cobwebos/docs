@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/23/2020
+ms.date: 02/03/2020
 ms.custom: include file
-ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cfe3eb4c0ac1378b7c519b3b34094945612d8508
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748748"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029243"
 ---
 >[!NOTE]
 >本部分提供有关 [Azure AD 应用注册](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的说明。
@@ -27,24 +27,40 @@ ms.locfileid: "76748748"
 
     [![选择“新建注册”按钮](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. 在“名称”  框中，为此应用注册提供一个友好名称。 在“重定向 URI (可选)”  部分下，在左侧下拉菜单中选择“公共客户端/本机(移动和桌面)”  ，然后在右侧文本框中输入 `https://microsoft.com`。 选择“注册”  。
+1. 在“名称”  框中，为此应用注册提供一个友好名称。 
+
+    1. 在“重定向 URI (可选)”  部分下的文本框中输入 `https://microsoft.com`。     
+
+    1. 验证 Azure Active Directory 应用支持哪些帐户和租户。
+
+    1. 选择“注册”  。
 
     [![“创建”窗格](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
-1. 若要确保[将应用注册为“公共客户端”](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)  ，请打开用于应用注册的“身份验证”  窗格，然后在该窗格中向下滚动。 在“默认客户端类型”部分中，为“将应用程序视为公共客户端”选择“是”，然后点击“保存”     。
+1. “身份验证”  边栏选项卡可指定重要的身份验证配置设置。 
+
+    1. 通过选择“+ 添加平台”  ，添加“重定向 URI”  并配置“访问令牌”  。
+
+    1. 选择“是”  以指定该应用为“公共客户端”  。
+
+    1. 验证 Azure Active Directory 应用支持哪些帐户和租户。
+
+    [![公共客户端配置设置](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+
+1. 选择适当的平台后，在用户界面右侧的侧面板中配置“重定向 URI”  和“访问令牌”  。
 
     1. “重定向 URI”  必须与身份验证请求所提供的地址相匹配：
 
-        * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”  。 确保将“默认客户端类型”设置为“是”  。
+        * 对于本地开发环境中托管的应用，请选择“公共客户端(移动和桌面)”  。 确保将“公共客户端”  设为“是”  。
         * 对于 Azure 应用服务上托管的单页应用，请选择“Web”  。
 
-        选择“公共客户端(移动和桌面)”，然后输入 `http://localhost:8080/`。 
+    1. 确定“注销 URL”  是否合适。
 
-        [![配置重定向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+    1. 通过选中“访问令牌”  或“ID 令牌”  来启用隐式授权流。
+                
+    [![配置重定向 URI](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
 
-    1. 勾选“访问令牌”  ，在资源的**清单** JSON 中将 **oauth2AllowImplicitFlow** 设置配置为 `true`。
-
-        [![公共客户端配置设置](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+    单击“配置”  ，然后单击“保存”  。
 
 1.  打开已注册的应用的“概述”  窗格，然后将以下实体的值复制到临时文件。 在以下部分中，将使用这些值配置示例应用程序。
 

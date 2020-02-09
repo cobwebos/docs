@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/29/2020
 ms.author: diberry
-ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844256"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901675"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
@@ -39,7 +39,7 @@ ms.locfileid: "76844256"
 1. 在“创建”页上，选择“创建 QnA 服务”。   此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。
 
 1. 在 Azure 门户中创建此资源。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
-1. 返回到 QnA Maker 门户，在门户中刷新网页，以继续创建知识库。
+1. 返回到 QnA Maker 门户，在门户中刷新网页，以继续创建知识库。 选择现有租户、订阅和新资源。 选择语言。 该语言将用于此 QnA Maker 服务中的所有知识库。
 
    ![选择 QnA Maker 服务知识库的屏幕截图](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 

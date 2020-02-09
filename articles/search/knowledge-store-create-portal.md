@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563441"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904884"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索知识存储
 
@@ -81,7 +81,7 @@ ms.locfileid: "75563441"
 在此向导步骤中，你将创建一个包含认知技能扩充的技能集。 源数据由多种语言的客户评论构成。 与此数据集相关的技能包括关键短语提取、情绪检测和文本翻译。 在后续步骤中，这些扩充内容将以 Azure 表的形式“投影”到知识存储。
 
 1. 展开“附加认知服务”。  默认已选择“免费(受限扩充)”。  之所以可以使用此资源，是因为 HotelReviews-Free.csv 中的记录数为 19 个，并且此免费资源每天最多允许 20 个事务。
-1. 展开“添加认知技能”。 
+1. 展开“添加扩充”。 
 1. 对于“技能集名称”，请输入 `hotel-reviews-ss`。 
 1. 对于“源数据字段”，请选择“reviews_text”。  
 1. 对于“扩充粒度级别”，请选择“页面(5000 个字符区块)”。  
@@ -93,11 +93,11 @@ ms.locfileid: "75563441"
       ![创建技能集](media/knowledge-store-create-portal/hotel-reviews-ss.png "创建技能集")
 
 1. 展开“将扩充内容保存到知识存储”。 
-1. 输入在上一步骤中保存的**存储帐户连接字符串**。
 1. 选择以下 **Azure 表投影**：
     + 文档 
     + **页**
     + **关键短语**
+1. 输入在上一步骤中保存的**存储帐户连接字符串**。
 
     ![配置知识存储](media/knowledge-store-create-portal/hotel-reviews-ks.png "配置知识存储")
 

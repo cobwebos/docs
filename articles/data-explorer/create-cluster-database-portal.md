@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326710"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984347"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 
@@ -31,7 +31,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-cluster"></a>创建群集
 
@@ -51,8 +51,8 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | Subscription | 订阅 | 选择要用于群集的 Azure 订阅。|
-    | Resource group | 你的资源组 | 使用现有资源组或创建新资源组。 |
+    | 订阅 | 订阅 | 选择要用于群集的 Azure 订阅。|
+    | 资源组 | 你的资源组 | 使用现有资源组或创建新资源组。 |
     | 群集名称 | 唯一的群集名称 | 选择用于标识群集的唯一名称。 域名 *[region].kusto.windows.net* 将追加到所提供的群集名称。 名称只能包含小写字母和数字。 它必须包含 4 到 22 个字符。
     | 区域 | 美国西部  或美国西部 2  | 对于本快速入门，请选择“美国西部”  或“美国西部 2”  （如果使用可用性区域）。 对于生产系统，请选择最能满足你需求的区域。
     | 可用性区域 | 1  、2  和/或 3  | 将群集实例放置在同一区域的不同可用性区域中（可选）。 [Azure 可用性区域](/azure/availability-zones/az-overview)是同一 Azure 区域中独特的物理位置。 它们保护 Azure 数据资源管理器群集和数据不会在部分区域发生故障。 默认情况下，会在同一数据中心创建群集节点。 通过选择多个可用性区域，可以消除单一故障点并确保高可用性。 仅在群集创建过程中可以部署到可用性区域，后续无法修改。

@@ -11,64 +11,51 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 2/4/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7201b7d3f9f7e8333b18a087f58b6211101b1304
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233553"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983637"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>教程：Azure Active Directory 与 Egnyte 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Egnyte 的集成
 
-本教程介绍如何将 Egnyte 与 Azure Active Directory (Azure AD) 集成。
-将 Egnyte 与 Azure AD 集成可提供以下优势：
+本教程介绍如何将 Egnyte 与 Azure Active Directory (Azure AD) 集成。 将 Egnyte 与 Azure AD 集成后，可以：
 
-* 你可以在 Azure AD 中控制谁有权访问 Egnyte。
-* 可让用户使用其 Azure AD 帐户自动登录到 Egnyte（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Egnyte。
+* 让用户使用其 Azure AD 帐户自动登录到 Egnyte。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要配置 Azure AD 与 Egnyte 的集成，需要以下项目：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用了 Egnyte 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用单一登录 (SSO) 的 Egnyte 订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Egnyte 支持 SP 发起的 SSO 
+* 配置 Egnyte 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-egnyte-from-the-gallery"></a>从库中添加 Egnyte
 
 若要配置 Egnyte 与 Azure AD 的集成，需要从库中将 Egnyte 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Egnyte，请执行以下步骤：**
-
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
-
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-2. 转到“企业应用”，并选择“所有应用”选项   。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中，键入“Egnyte”，从结果面板中选择“Egnyte”，然后单击“添加”按钮添加应用程序    。
-
-     ![结果列表中的 Egnyte](common/search-new-app.png)
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Egnyte”   。
+1. 从结果面板中选择“Egnyte”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -77,14 +64,16 @@ ms.locfileid: "74233553"
 
 若要配置并测试 Egnyte 的 Azure AD 单一登录，需要完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Egnyte 单一登录](#configure-egnyte-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. [创建 Egnyte 测试用户](#create-egnyte-test-user) - 在 Egnyte 中创建 Britta Simon 的对应用户，将其链接到用户的 Azure AD 表示形式  。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+若要通过 Egnyte 配置和测试 Azure AD SSO，请完成以下构建基块：
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Egnyte SSO](#configure-egnyte-sso)** - 在应用程序端配置单一登录设置。
+    1. [创建 Egnyte 测试用户](#create-egnyte-test-user) - 在 Egnyte 中创建 B.Simon 的对应用户，将其关联到用户的 Azure AD 表示形式  。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
+
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
@@ -124,42 +113,6 @@ ms.locfileid: "74233553"
     b. Azure AD 标识符
 
     c. 注销 URL
-
-### <a name="configure-egnyte-single-sign-on"></a>配置 Egnyte 单一登录
-
-1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Egnyte 公司站点。
-
-2. 单击“设置”  。
-   
-    ![设置](./media/egnyte-tutorial/ic787819.png "设置")
-
-3. 在菜单中，单击“设置”。 
-
-    ![设置](./media/egnyte-tutorial/ic787820.png "设置")
-
-4. 单击“配置”选项卡，并单击“安全性”。  
-
-    ![安全性](./media/egnyte-tutorial/ic787821.png "安全")
-
-5. 在“单一登录身份验证”  部分中，执行以下步骤：
-
-    ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "单一登录身份验证")   
-    
-    a. 对于“单一登录身份验证”，选择“SAML 2.0”。  
-   
-    b. 对于“标识提供者”，选择“AzureAD”。  
-   
-    c. 将从 Azure 门户复制的“登录 URL”粘贴到“标识提供者登录 URL”文本框   。
-   
-    d. 将从 Azure 门户复制的“Azure AD 标识符”粘贴到“标识提供者实体 ID”文本框   。
-      
-    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框  。
-   
-    f. 对于“默认用户映射”，选择“电子邮件地址”。  
-   
-    g. 对于“使用特定于域的颁发者值”，选择“禁用”。  
-   
-    h. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -212,6 +165,42 @@ ms.locfileid: "74233553"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
+## <a name="configure-egnyte-sso"></a>配置 Egnyte SSO
+
+1. 在另一 Web 浏览器窗口中，以管理员身份登录到 Egnyte 公司站点。
+
+2. 单击“设置”  。
+   
+    ![设置](./media/egnyte-tutorial/ic787819.png "设置")
+
+3. 在菜单中，单击“设置”。 
+
+    ![设置](./media/egnyte-tutorial/ic787820.png "设置")
+
+4. 单击“配置”选项卡，并单击“安全性”。  
+
+    ![安全性](./media/egnyte-tutorial/ic787821.png "安全性")
+
+5. 在“单一登录身份验证”  部分中，执行以下步骤：
+
+    ![单一登录身份验证](./media/egnyte-tutorial/ic787822.png "单一登录身份验证")   
+    
+    a. 对于“单一登录身份验证”，选择“SAML 2.0”。  
+   
+    b. 对于“标识提供者”，选择“AzureAD”。  
+   
+    c. 将从 Azure 门户复制的“登录 URL”粘贴到“标识提供者登录 URL”文本框   。
+   
+    d. 将从 Azure 门户复制的“Azure AD 标识符”粘贴到“标识提供者实体 ID”文本框   。
+      
+    e. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，然后再粘贴到“标识提供者证书”文本框  。
+   
+    f. 对于“默认用户映射”，选择“电子邮件地址”。  
+   
+    g. 对于“使用特定于域的颁发者值”，选择“禁用”。  
+   
+    h. 单击“ **保存**”。
+
 ### <a name="create-egnyte-test-user"></a>创建 Egnyte 测试用户
 
 若要使 Azure AD 用户能够登录到 Egnyte，必须将这些用户预配到 Egnyte 中。 对于 Egnyte，需要手动执行预配。
@@ -246,7 +235,7 @@ ms.locfileid: "74233553"
 >可以使用 Egnyte 提供的任何其他 Egnyte 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
 >
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -260,3 +249,4 @@ ms.locfileid: "74233553"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

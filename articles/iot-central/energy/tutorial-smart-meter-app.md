@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112537"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015994"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教程：创建并演练智能计量监视应用模板 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程将指导你完成创建智能计量监视应用程序的过程，其中包括具有模拟数据的示例设备模型。 在本教程中，学习：
 
@@ -29,7 +29,7 @@ ms.locfileid: "74112537"
 
 如果没有订阅，请[创建免费试用帐户](https://azure.microsoft.com/free)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - 无
 - 建议使用 Azure 订阅，但不是试用所必需的
 
@@ -49,10 +49,12 @@ ms.locfileid: "74112537"
     * **应用程序名称**：为 IoT Central 应用程序选择一个名称。 
     * **URL**：选择 IoT Central URL，平台将验证其唯一性。
     * **7 天免费试用版**：如果已有 Azure 订阅，则建议使用默认设置。 如果没有 Azure 订阅，请从免费试用版入手。
-    * **付费信息**：应用程序本身是免费的。 预配应用的资源时需要目录、Azure 订阅和区域详细信息。
-    * 单击页面底部的“创建”  按钮，将在一分钟左右创建应用。     
-        > [!div class="mx-imgBorder"]
-        > ![“新建应用程序”窗体](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * **计费信息**：应用程序本身是免费的。 预配应用的资源时需要目录、Azure 订阅和区域详细信息。
+    * 单击页面底部的“创建”  按钮，将在一分钟左右创建应用。
+
+        ![“新建应用程序”表单](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![“新建应用程序”表单 - 计费信息](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>验证应用程序和模拟数据

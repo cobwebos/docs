@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447371"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901663"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教程：创建使用 Azure 机器人服务 v4 的 QnA 机器人
 
@@ -41,7 +41,7 @@ ms.locfileid: "75447371"
 
 1. 在 QnA Maker 门户中转到“发布”页，然后发布知识库。  选择“创建机器人”。 
 
-    ![在 QnA Maker 门户中转到“发布”页，然后发布知识库。 选择“创建机器人”。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![在 QnA Maker 门户中转到“发布”页，并发布知识库。选择“创建机器人”。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
     Azure 门户将会打开，其中提供了用于创建机器人的配置。
 
@@ -101,8 +101,6 @@ ms.locfileid: "75447371"
 
 ## <a name="related-to-qna-maker-bots"></a>有关 QnA Maker 机器人
 
-* QnA Maker 门户中使用的 QnA Maker 帮助机器人可用作[机器人示例](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)。
-    ![QnA Maker 帮助机器人图标是红色的机器人](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [医疗保健机器人](https://docs.microsoft.com/HealthBot/qna_model_howto)使用 QnA Maker 作为其[语言模型](https://docs.microsoft.com/HealthBot/qna_model_howto)之一。
 
 

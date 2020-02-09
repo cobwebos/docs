@@ -1,14 +1,14 @@
 ---
 title: 快速入门 - 生成和运行容器映像
-description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行容器映像。
+description: 使用 Azure 容器注册表快速运行任务，以便在云中按需生成和运行 Docker 容器映像。
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454949"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986268"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入门：使用 Azure 容器注册表任务生成和运行容器映像
 
@@ -40,11 +40,11 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。  有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+此示例创建一个基本注册表  ，这是为了解 Azure 容器注册表的开发人员提供的成本优化选项。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>基于 Dockerfile 生成映像
 
-现在，请使用 Azure 容器注册表来生成映像。 首先创建一个工作目录，然后创建包含以下内容的名为 *Dockerfile* 的 Dockerfile。 这是一个用于演示如何生成 Linux 容器映像的简单示例，你可以创建自己的标准 Dockerfile，并生成适用于其他平台的映像。
+现在，请使用 Azure 容器注册表来生成映像。 首先创建一个工作目录，然后创建包含以下内容的名为 *Dockerfile* 的 Dockerfile。 这是一个用于演示如何生成 Linux 容器映像的简单示例，你可以创建自己的标准 Dockerfile，并生成适用于其他平台的映像。 本文中的命令示例已针对 bash shell 设置了格式。
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 运行 [az acr build][az-acr-build] 命令生成映像。 成功生成后，映像将推送到注册表。 以下示例推送 `sample/hello-world:v1` 映像。 命令末尾处的 `.` 设置 Dockerfile 的位置（在本例中为当前目录）。
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 成功生成并推送后，输出将如下所示：
@@ -110,22 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>运行映像
 
-现在，请快速运行已生成并推送到注册表的映像。 在容器开发工作流中，可以先运行此步骤来验证映像，然后部署映像。
+现在，请快速运行已生成并推送到注册表的映像。 此处使用 [az acr run][az-acr-run] 运行容器命令。 在容器开发工作流中，这可能是部署映像之前的验证步骤，或者你可以将该命令包含在[多步骤 YAML 文件][container-registry-tasks-multi-step]中。 
 
-在本地工作目录中，通过一个步骤创建包含以下内容的 *quickrun.yaml* 文件。 请将 *\<acrLoginServer\>* 替换为注册表的登录服务器名称。 登录服务器名称采用 *\<registry-name\>.azurecr.io*（全小写）格式，例如 *mycontainerregistry008.azurecr.io*。 此示例假设在上一部分生成并推送了 `sample/hello-world:v1` 映像：
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-此示例中的 `cmd` 步骤在默认配置中运行容器，但 `cmd` 支持其他 `docker run` 参数，甚至其他 `docker` 命令。
-
-使用以下命令运行容器：
+以下示例使用 `$Registry` 指定运行命令的注册表：
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+此示例中的 `cmd` 参数以其默认配置运行容器，但 `cmd` 支持附加 `docker run` 参数甚至其他 `docker` 命令。
 
 输出与下面类似：
 
@@ -182,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，我们使用 ACR 任务功能在 Azure 本地快速生成、推送并运行了一个 Docker 容器映像。 请继续学习 Azure 容器注册表教程，了解如何使用 ACR 任务来自动生成和更新映像。
+在本快速入门中，你使用了 Azure 任务功能在 Azure 中以本机方式快速构建、推送和运行 Docker 容器映像，而未本地安装 Docker。 请继续学习 Azure 容器注册表任务教程，了解如何使用 Azure 任务来自动生成和更新映像。
 
 > [!div class="nextstepaction"]
-> [Azure 容器注册表教程][container-registry-tutorial-quick-task]
+> [Azure 容器注册表任务教程][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ az group delete --name myResourceGroup
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533251"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989072"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>创建自承载 Integration Runtime
 
@@ -83,7 +83,8 @@ ms.locfileid: "72533251"
 
 5. 复制其中一个密钥（去除双引号），用于注册将在以下步骤中安装到计算机上的自承载 Integration Runtime。  
 
-## <a name="install-the-integration-runtime"></a>安装 Integration Runtime
+## <a name="install-the-integration-runtime-tool"></a>安装集成运行时工具
+
 1. 如果已在计算机上安装  Integration Runtime，请使用“添加或删除程序”将其卸载。 
 
 2. 将自承载 Integration Runtime [下载](https://www.microsoft.com/download/details.aspx?id=39717)到本地 Windows 计算机上。 进行安装。
@@ -135,5 +136,4 @@ ms.locfileid: "72533251"
     h. 若要确认 Integration Runtime 能否连接到 SQL Server，请选择“测试”。  如果连接成功，则会看到绿色复选标记。 如果连接不成功，则会看到错误消息。 请解决问题，确保 Integration Runtime 可以连接到 SQL Server。    
 
     > [!NOTE]
-    > 记下身份验证类型、服务器、数据库、用户和密码的值。 本教程后面会用到它们。 
-    
+    > 记下身份验证类型、服务器、数据库、用户和密码的值。 本教程后面会用到它们。

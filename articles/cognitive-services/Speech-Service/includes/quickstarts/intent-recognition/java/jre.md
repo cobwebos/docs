@@ -1,28 +1,24 @@
 ---
-title: 快速入门：识别语音、意向和实体，Java - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761420"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900623"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
-* 如果这是你的第一个 Java (JRE) 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">创建空示例项目</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">安装用于开发环境的语音 SDK</a>。
+* 如果这是第一个 Java (JRE) 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">安装用于开发环境的语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 
@@ -96,7 +92,7 @@ ms.locfileid: "76761420"
 
 ## <a name="check-your-code"></a>查看代码
 
-此时，代码应如下所示：  
+此时，代码应如下所示：
 
 > [!NOTE]
 > 我们已向此版本添加了一些注释。
@@ -105,7 +101,7 @@ ms.locfileid: "76761420"
 
 ## <a name="build-and-run-your-app"></a>生成并运行应用
 
-按 F11，或选择“运行” > “调试”。  
+按 <kbd>F11</kbd>，或选择“运行”   > “调试”  。
 接下来的 15 秒，通过麦克风提供的语音输入将被识别并记录到控制台窗口中。
 
 ## <a name="next-steps"></a>后续步骤

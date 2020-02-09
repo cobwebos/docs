@@ -1,27 +1,27 @@
 ---
-title: 通过“我的应用”（预览）门户管理应用程序权限 - Azure Active Directory | Microsoft Docs
-description: 了解如何在“我的应用”（预览）门户中管理组织中基于云的应用的应用程序权限。
+title: 从“我的应用”门户管理应用程序权限 - Azure Active Directory | Microsoft Docs
+description: 了解如何从“我的应用”门户管理你组织的基于云的应用的应用程序权限。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705048"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022403"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>在“我的应用”（预览）门户中编辑或撤销应用程序权限
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在“我的应用”门户中编辑或撤销应用程序权限
 
-在“我的应用”（预览）门户中使用组织应用程序时，用户通常会得到授予权限并保存帐户信息  。 为了确保数据安全，你可能需要查看并撤销权限或清除保存的帐户凭据。 删除权限或帐户可能会破坏某些应用的功能。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
+在“我的应用”门户中使用组织应用程序时，你通常会授予权限并保存帐户信息  。 为了确保数据安全，你可能需要查看并撤销权限或清除保存的帐户凭据。 删除权限或帐户可能会破坏某些应用的功能。 如果删除权限或帐户后遇到问题，请与组织的支持人员联系以获得更多帮助。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ ms.locfileid: "76705048"
 
 在“我的应用”门户中管理应用权限并保存帐户后，你可以  ：
 
-- 将应用整理到组织创建和提供的各种类别中。 有关详细信息，请参阅[在“我的应用”（预览）门户中访问和使用工作区](my-applications-portal-workspaces.md)。
+- 将应用整理到组织创建和提供的各种类别中。 有关详细信息，请参阅[在“我的应用”门户中访问和使用集合](my-applications-portal-workspaces.md)。
 
 ## <a name="related-articles"></a>相关文章
 
-- [更新个人资料和帐户信息](my-account-portal-overview.md)。 说明如何更新“我的个人资料”（预览）门户上显示的个人信息  。
+- [更新个人资料和帐户信息](my-account-portal-overview.md)。 说明如何更新“我的个人资料”门户上显示的个人信息  。
 
 - [管理组织](my-account-portal-organizations-page.md)。 说明如何在“我的个人资料”门户的“组织”页中查看和管理与组相关的信息   。
 

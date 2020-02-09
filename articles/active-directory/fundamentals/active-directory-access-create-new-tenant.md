@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423104"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024596"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>快速入门：在 Azure Active Directory 中创建一个新租户
 可使用 Azure Active Directory (Azure AD) 门户执行所有管理任务，包括为组织创建新的租户。 
@@ -31,7 +31,7 @@ ms.locfileid: "75423104"
 
 ### <a name="to-create-a-new-tenant"></a>创建新的租户
 
-1. 使用全局管理员帐户登录到组织的 [Azure 门户](https://portal.azure.com/)。
+1. 登录到你组织的 [Azure 门户](https://portal.azure.com/)。
 
 1. 在 Azure 门户菜单中，选择“创建资源”  。  
 
@@ -58,6 +58,7 @@ ms.locfileid: "75423104"
 ## <a name="clean-up-resources"></a>清理资源
 如果不计划继续使用此应用程序，可按以下步骤删除此租户：
 
+- 确保你已登录到要通过 Azure 门户中的“目录 + 订阅”  筛选器删除的目录，并根据需要切换到目标目录。
 - 选择 Azure Active Directory，然后在“Contoso - 概述”页面上，选择“删除目录”    。
 
     这会删除此租户及其关联信息。

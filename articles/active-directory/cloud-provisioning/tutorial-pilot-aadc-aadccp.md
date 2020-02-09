@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425085"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931404"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -68,6 +68,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
     **名称：** 为规则指定一个有意义的名称<br>
     **说明：** 添加有意义的说明<br> 
+    
     **连接的系统：** 选择要为其编写自定义同步规则的 AD 连接器<br>
     **连接的系统对象类型：** 用户<br>
     **Metaverse 对象类型：** 人员<br>

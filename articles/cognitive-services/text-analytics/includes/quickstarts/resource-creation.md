@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 254fe3602bdb6a05f3a3225035460b88ebd3e23f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159077"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987866"
 ---
-通过以下选项之一开始使用文本分析 API。
-
+需要使用来自文本分析资源的密钥和终结点来连接应用程序。 通过创建以下资源之一来获取密钥和终结点：
 
 * <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="创建试用文本分析资源" target="_blank">创建试用资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     * 无需任何 Azure 订阅。 

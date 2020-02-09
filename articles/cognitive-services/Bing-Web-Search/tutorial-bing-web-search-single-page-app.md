@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977244"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986655"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>教程：使用必应 Web 搜索 API 创建单页应用
 
@@ -32,7 +32,7 @@ ms.locfileid: "74977244"
 
 要使用此应用，需具备带必应搜索 API 的 [Azure 认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)获取订阅密钥。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需具备以下几项才可运行应用：
 
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个具有两个状态的复选框。 在此片段中，将安全搜索设置为 `strict` 或 `off`，且不使用 `moderate`。
+可将 `SafeSearch` 设置为 `strict`、`moderate` 或 `off`，其中 `moderate` 是必应 Web 搜索的默认值。 此表单使用一个复选框，它有两种状态：`strict` 或 `moderate`。
 
 如果选择任一“提升”复选框，则向查询添加 `answerCount` 参数  。 使用 `promote` 参数时，`answerCount` 是必需的。 在此片段中，将值设置为 `9`，以返回所有可用的结果类型。
 > [!NOTE]
@@ -437,7 +437,7 @@ searchItemRenderers = {
 
 如果提供 `X-MSEdge-ClientID` 标头，则必应 API 可关联用户的搜索项。 首先，它允许必应搜索引擎将过去的上下文应用于搜索，从而查找能更好地满足请求的结果。 例如，如果用户以前搜索过与航海相关的词汇，则稍后搜索“节”时，系统可能会优先返回在航海中使用的节的信息。 其次，在新功能广泛应用之前，必应可能会随机选择用户体验该功能。 为每个请求提供相同的客户端 ID 可确保获准查看某项功能的用户将始终看到此功能。 如果没有客户端 ID，用户可能会看到功能在其搜索结果中随机出现和消失。
 
-浏览器安全策略（例如跨源资源共享 (CORS)）可能阻止示例应用访问 `X-MSEdge-ClientID` 标头。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本与网页的域相同，因此 `X-MSEdge-ClientID` 标头可供 JavaScript 使用。
+浏览器安全策略（例如跨源资源共享 (CORS)）可能阻止示例应用访问 `X-MSEdge-ClientID` 标头。 当搜索响应的域不同于请求搜索的页面时，会出现此限制。 在生产环境中，应该托管一个服务器端脚本，以便在网页所在的域进行 API 调用，这样就可以解决此策略的问题。 由于脚本具有与网页相同的来源，因此会将 `X-MSEdge-ClientID` 标头提供给 JavaScript。
 
 > [!NOTE]
 > 在生产型 Web 应用程序中，无论如何都应在服务器端执行请求。 否则，必应搜索 API 订阅密钥必须包含在网页中，该网页可供查看来源的任何人使用。 收费取决于 API 订阅密钥下的所有使用量（即使请求是由未经授权的用户发出的，也是如此），因此请确保不要公开你的密钥。

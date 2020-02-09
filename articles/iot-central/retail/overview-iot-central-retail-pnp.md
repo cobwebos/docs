@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773048"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022131"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维护企业级 IoT 解决方案相关联的负担和成本。 选择使用 Azure IoT Central 进行构建可将时间、金钱和精力集中于使用 IoT 数据转换业务，而不仅仅是维护和更新复杂且不断发展的 IoT 基础结构。
 
@@ -65,7 +65,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 * 当货物抵达并通过输送系统转移时，摄像头进行监视。
 * 自动识别有问题的货物。
 * 高效的订单跟踪。
-* 降低了成本，提高了工作效率并优化了利用率。
+* 降低了成本，提高了工作效率并优化了使用。
 
 以下屏幕截图显示了应用程序模板中的现成仪表板。 该仪表板可完全自定义，以满足你的特定解决方案要求： 
 
@@ -78,7 +78,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 
 对许多零售商来说，其店内的环境状况是他们与竞争对手的一个关键区别。 为客户着想，零售商希望在他们的店内保持舒适的环境。  
 
-作为解决方案构建者，你可以使用 IoT Central 的店内分析 - 环境监视应用程序模板来构建端到端解决方案。 借助此应用程序模板，你可以使用各种传感器设备进行数字连接，并监视零售商店环境。 这些传感器设备生成遥测数据，你可以将其转换为业务见解，帮助零售商降低运营成本，为其客户创造良好的体验。
+作为解决方案构建者，你可以使用 IoT Central 的店内分析 - 环境监视应用程序模板来构建端到端解决方案。 借助此应用程序模板，你可以使用各种传感器设备进行数字连接，并监视零售店环境。 这些传感器设备生成遥测数据，你可以将其转换为业务见解，帮助零售商降低运营成本，为其客户创造良好的体验。
 
 使用此应用程序模板，可以：
 
@@ -150,7 +150,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 使用此应用程序模板，可以： 
 
 - 将各种 IoT 传感器（例如机器人和状况监视传感器）无缝连接到 IoT Central 应用程序实例。
-- 监视并管理传感器网络以及环境中的网关设备的运行状况。
+- 监视并管理传感器网络以及环境中所有网关设备的运行状况。
 - 创建关于履行中心内环境状况的自定义规则，以触发相应的警报。
 - 将履行中心内的环境状况转换为见解，供零售仓库团队使用。
 - 将聚合的见解导出到现有的或新的业务应用程序，为零售员工成员提供支持。

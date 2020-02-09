@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/16/2020
 ms.author: glenga
-ms.openlocfilehash: c54145cf48912d3911a39e681d85cb6907be8e52
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842100"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964058"
 ---
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
@@ -28,11 +28,17 @@ Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运
     Hello PowerShell
     ```
 
-    也可以从浏览器执行 GET 请求。
+    也可以从浏览器通过以下 URL 执行 GET 请求：
 
-    在未作为查询参数或者在正文中传递 `name` 参数的情况下调用 HttpTrigger 终结点时，该函数将返回 [HttpStatusCode]::BadRequest 错误。 在 run.ps1 中检查代码时，会看到此错误，这是设计使然。
+    <http://localhost:7071/api/HttpExample?name=PowerShell>
 
-1. 若要停止调试，请按 Shift + F5。
+    调用 HttpTrigger 终结点而未将 `name` 参数作为查询参数或在正文中传递时，该函数将返回 `BadRequest` 错误。 在 run.ps1 中检查代码时，会看到此错误，这是设计使然。
+
+1. 有关请求的信息将显示在“终端”  面板中。
+
+    ![“终端”面板中的函数执行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
+
+1. 若要停止调试，请按 Ctrl + C 停止 Core Tools。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
 

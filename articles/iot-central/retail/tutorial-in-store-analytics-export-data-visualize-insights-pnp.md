@@ -11,26 +11,26 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702017"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022080"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教程：从 Azure IoT Central 导出数据，并在 Power BI 中可视化见解
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 在前面的两个教程中，你使用“店内分析 - 结帐”  应用程序模板创建并自定义了 IoT Central 应用程序。 本教程将介绍如何配置 IoT Central 应用程序以导出从设备收集的遥测数据。 然后，可以使用 Power BI 创建用于存储管理器的自定义仪表板，以可视化从遥测数据派生的见解。
 
-本教程介绍如何执行下列操作：
+在本教程中，您将学习如何执行以下操作：
 > [!div class="checklist"]
 > * 配置 IoT Central 应用程序以将遥测数据导出到事件中心。
 > * 使用逻辑应用将数据从事件中心发送到 Power BI 流数据集。
 > * 创建一个 Power BI 仪表板，用于可视化流数据集中的数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -42,7 +42,7 @@ ms.locfileid: "74702017"
 
 在创建事件中心和逻辑应用之前，需要创建一个资源组来对其进行管理。 资源组应与“店内分析 - 结帐”  IoT Central 应用程序的位置相同。 创建资源组：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航栏中，选择“资源组”  。 然后选择“添加”  。
 1. 对于“订阅”  ，请选择用于创建 IoT Central 应用程序的 Azure 订阅的名称。
 1. 对于“资源组”  名称，请输入“retail-store-analysis”  *。
@@ -110,7 +110,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
     | 值名称  | 值类型 |
     | ----------- | ---------- |
-    | Timestamp   | DateTime   |
+    | 时间戳   | DateTime   |
     | 湿度    | Number     |
     | 温度 | Number     |
 
@@ -133,7 +133,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 
     | 值名称     | 值类型 |
     | -------------- | ---------- |
-    | Timestamp      | DateTime   |
+    | 时间戳      | DateTime   |
     | 队列长度 1 | Number     |
     | 队列长度 2 | Number     |
     | 停留时间 1   | Number     |
@@ -442,7 +442,7 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 | ------- | -------- | -------- | -------- | -------- |
 | 数据集 | Zone 1 sensor | Zone 1 sensor | Zone 2 sensor | Zone 2 sensor |
 | 可视化类型 | 折线图 | 折线图 | 折线图 | 折线图 |
-| 轴 | Timestamp | Timestamp | Timestamp | Timestamp |
+| 轴 | 时间戳 | 时间戳 | 时间戳 | 时间戳 |
 | 值 | 温度 | 湿度 | 温度 | 湿度 |
 | 时间范围 | 60 分钟 | 60 分钟 | 60 分钟 | 60 分钟 |
 | 标题 | 温度（1小时） | 湿度（1小时） | 温度（1小时） | 湿度（1小时） |
@@ -476,9 +476,9 @@ Power BI 仪表板将显示零售监视应用程序中的数据。 在此解决�
 | ------- | ------- | ------- | ------- | ------- |
 | 数据集 | 占用传感器 | 占用传感器 | 占用传感器 | 占用传感器 |
 | 可视化类型 | 簇状柱形图 | 簇状柱形图 | 仪表 | 仪表 |
-| 轴    | Timestamp | Timestamp | 不适用 | 不适用 |
+| 轴    | 时间戳 | 时间戳 | 空值 | 空值 |
 | 值 | 停留时间 1 | 停留时间 2 | 队列长度 1 | 队列长度 2 |
-| 时间范围 | 60 分钟 | 60 分钟 |  不适用 | 不适用 |
+| 时间范围 | 60 分钟 | 60 分钟 |  空值 | 空值 |
 | 标题 | 停留时间 | 停留时间 | 队列长度 | 队列长度 |
 | 副标题 | 结帐 1 | 结帐 2 | 结帐 1 | 结帐 2 |
 

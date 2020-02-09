@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841006"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896449"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>教程：使用 Azure 门户记录出入虚拟机的网络流量
 
@@ -97,10 +97,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
     | 位置       | 选择“美国东部”                                            |
     | 资源组 | 选择“使用现有资源组”，然后选择“myResourceGroup”   |
 
-    创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 如果使用现有的存储帐户而不是创建一个，请确保在存储帐户的“设置”下针对“防火墙和虚拟网络”选择了“所有网络”（默认设置）。    在所有情况下，存储帐户必须与 NSG 位于同一区域中。
-
-    > [!NOTE]
-    > 虽然 Azure 存储当前支持 Microsoft.Insight 和 Microsoft.Network 提供程序作为可信 Microsoft 服务，但 NSG 流日志尚未完全上线。 在此功能完全上线之前，若要启用 NSG 流日志记录，还必须选择“所有网络”  。 
+    创建存储帐户可能需要大约一分钟的时间。 在创建好存储帐户之前，请勿继续执行剩余的步骤。 在所有情况下，存储帐户必须与 NSG 位于同一区域中。
 4. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 5. 在“日志”下选择“NSG 流日志”，如下图所示   ：
 
@@ -114,9 +111,7 @@ NSG 流日志记录要求使用 **Microsoft.Insights** 提供程序。 若要注
 
 9. 选择在步骤 3 中创建的存储帐户。
    > [!NOTE]
-   > 在以下情况下，NSG 流日志不适用于存储帐户：
-   > * 存储帐户已启用防火墙。
-   > * 存储帐户已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。
+   > NSG 流日志不适用于已启用[分层命名空间](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)的存储帐户。
 1. 在门户左上角选择“所有服务”  。 在“筛选器”框中，键入“网络观察程序”   。 搜索结果中出现“网络观察程序”后，将其选中  。
 10. 将“保留期(天)”设置为 5，然后选择“保存”。  
 

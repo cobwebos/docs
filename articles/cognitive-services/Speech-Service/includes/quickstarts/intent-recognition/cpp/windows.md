@@ -1,28 +1,24 @@
 ---
-title: 快速入门：识别语音、意向和实体，C++ - 语音服务
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a7245d97c4043a5e4b4e1555e899d3301fc36f3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761426"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900534"
 ---
 ## <a name="prerequisites"></a>必备条件
 
 准备工作：
 
-* 如果这是你的第一个 C++ 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">创建空示例项目</a>。
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">安装用于开发环境的语音 SDK</a>。
+* 如果这是第一个 C++ 项目，请使用本指南<a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">创建一个空示例项目<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">安装用于开发环境的语音 SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>创建 LUIS 应用以进行意向识别
 
@@ -97,7 +93,7 @@ ms.locfileid: "76761426"
 
 ## <a name="check-your-code"></a>查看代码
 
-此时，代码应如下所示：  
+此时，代码应如下所示：
 
 > [!NOTE]
 > 我们已向此版本添加了一些注释。
@@ -109,7 +105,7 @@ ms.locfileid: "76761426"
 现在，可以使用语音服务构建应用并测试语音识别。
 
 1. “编译代码”- 在 Visual Studio 菜单栏中，选择“生成” > “生成解决方案”    。
-2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5    。
+2. **启动应用** - 在菜单栏中，选择“调试” > “开始调试”，或按 F5   <kbd></kbd>。
 3. **开始识别** - 它将提示你说英语短语。 语音将发送到语音服务，转录为文本，并在控制台中呈现。
 
 ## <a name="next-steps"></a>后续步骤

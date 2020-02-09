@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581500"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016556"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>使用 IoT Central 生成能源用解决方案 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 智能仪表和太阳能电池板在能源行业转型中发挥着重要作用。 智能仪表可提供更多控制功能，让你能够实时了解能耗；太阳能电池板的增长推动着可再生能源生成领域的突破性进展。 智能仪表和太阳能电池板监视应用是用于显示各种功能的示例模板。 合作伙伴可以通过 IoT Central 利用这些模板构建能源解决方案，以满足其特定需求。 部署和使用这些应用程序不需要任何新的编码，也无需支付额外的费用。 了解有关能源应用模板及其功能的详细信息。

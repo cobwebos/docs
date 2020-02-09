@@ -3,33 +3,30 @@ title: 快速入门：适用于 Python 的 Azure Blob 存储客户端库 v2.1
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Python 的存储客户端库 v2.1 将 blob 上传到 Azure 存储、下载 blob，然后列出容器中的 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122672"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906436"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>快速入门：适用于 Python 的 Azure Blob 存储客户端库 v2.1
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入门：使用 Python v2.1 SDK 管理 blob
 
-本文介绍如何使用 Python 在 Azure Blob 存储的容器中上传、下载和列出块 Blob。 Blob 是简单的对象，可用于存储大量的文本或二进制数据，其中包括图像、文档、流媒体和存档数据。 Azure 存储中的 Blob 不同于文件共享、无架构表和消息队列。  有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction)。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
 ## <a name="prerequisites"></a>必备条件
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
+- [Python](https://www.python.org/downloads/)。
+- [用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)。
 
-请确保已安装下述额外的必备组件：
-
-* [Python](https://www.python.org/downloads/)
-
-* [用于 Python 的 Azure 存储 SDK](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>下载示例应用程序
 

@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112640"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016487"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程指导你从 IoT Central 连接的废弃物管理应用程序模板创建 Azure IoT Central 连接的废弃物管理应用程序  。 
 
-本教程将介绍如何： 
+在本教程中，您将学习如何执行以下操作： 
 
 > [!div class="checklist"]
+
 > * 使用 Azure IoT Central 连接的废弃物管理模板创建连接的废弃物管理应用程序 
 > * 浏览并自定义操作员仪表板 
 > * 浏览连接的垃圾箱设备模板
@@ -31,14 +32,14 @@ ms.locfileid: "74112640"
 > * 配置作业
 > * 使用白色标签自定义应用程序品牌
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 -  建议使用 Azure 订阅。 可以选择使用 7 天免费试用版。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>在 IoT Central 中创建连接的废弃物管理应用
 
-在本部分中，我们将使用 Azure IoT Central 连接的废弃物管理模板在 IoT Central 中创建连接的废弃物管理应用程序  。
+在本部分中，你将使用 Azure IoT Central 连接的废弃物管理模板在 IoT Central 中创建连接的废弃物管理应用程序  。
 
 若要创建新的 Azure IoT Central 连接的废弃物管理应用程序，请执行以下操作：  
 
@@ -59,12 +60,15 @@ ms.locfileid: "74112640"
     * **URL** - 你可以选择所需的 URL。 也可以稍后更改 URL。 
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。  
 
-    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../preview/quick-deploy-iot-central.md)。
+    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../core/quick-deploy-iot-central.md)。
 
 5. 单击页面底部的“创建”按钮  。 
 
     ![Azure IoT Central 的“创建连接的废弃物应用程序”页](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central 创建连接的废弃物应用程序 - 计费信息](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. 现在，你已使用 Azure IoT Central“连接的废弃物管理模板”创建了连接的废弃物管理应用  。 
 
 祝贺你！ 新创建的应用程序附带预配置的以下项：
@@ -129,9 +133,9 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
     ![设备模板](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. 在“设备模板”列表中，你将看到“连接的垃圾箱”  。 通过单击名称打开。
+2. 在“设备模板”列表中，你将看到“连接的垃圾桶”  。 通过单击名称打开。
 
-3. 熟悉设备模板功能。 你可以看到，它定义了填充级别、气味测量仪、重量、位置等传感器     。
+3. 熟悉设备模板功能。 你可以看到，它定义了填充级别、气味计、重量、位置等传感器     。
 
    ![设备模板](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -206,7 +210,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
      ![箱满警报](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. 在满足条件  `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
+ 3. 在满足**条件** `Fill level is greater than or equal to Bin full alert threshold` 时，检查 `Bin full alert`。
 
     `Bin full alert threshold` 是在 `Connected waste bin` 设备模板中定义的“云属性”  。 
 

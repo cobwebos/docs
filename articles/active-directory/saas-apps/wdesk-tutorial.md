@@ -11,79 +11,66 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/28/2019
+ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 0f614838ae44b5c4263bc9eac81e43fd13f87baa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087287"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985486"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>教程：Azure Active Directory 与 Wdesk 集成
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wdesk 集成
 
-在本教程中，了解如何将 Wdesk 与 Azure Active Directory (Azure AD) 集成。
-将 Wdesk 与 Azure AD 集成有以下优势：
+本教程介绍如何将 Wdesk 与 Azure Active Directory (Azure AD) 集成。 将 Wdesk 与 Azure AD 集成后，可以：
 
-* 可以在 Azure AD 中控制谁有权访问 Wdesk。
-* 可让用户使用其 Azure AD 帐户自动登录到 Wdesk（单一登录）。
-* 可在中心位置（即 Azure 门户）管理帐户。
+* 在 Azure AD 中控制谁有权访问 Wdesk。
+* 允许用户使用其 Azure AD 帐户自动登录到 Wdesk。
+* 在一个中心位置（Azure 门户）管理帐户。
 
-如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要配置 Azure AD 与 Wdesk 的集成，需要以下项目：
+若要开始操作，需备齐以下项目：
 
-* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
-* 已启用 Wdesk 单一登录的订阅
+* 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
+* 已启用 Wdesk 单一登录 (SSO) 的订阅。
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
 * Wdesk 支持 **SP** 和 **IDP** 发起的 SSO
+* 配置 Wdesk 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-wdesk-from-the-gallery"></a>从库中添加 Wdesk
 
 若要配置 Wdesk 与 Azure AD 的集成，需要从库中将 Wdesk 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Wdesk，请执行以下步骤： 
-
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”  图标。
-
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
-
-2. 转到“企业应用”，并选择“所有应用”选项   。
-
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
-
-3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”  按钮。
-
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中键入 **Wdesk**，在结果面板中选择“Wdesk”，然后单击“添加”按钮添加该应用程序。  
-
-     ![结果列表中的“Wdesk”](common/search-new-app.png)
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
+1. 导航到“企业应用程序”，选择“所有应用程序”   。
+1. 若要添加新的应用程序，请选择“新建应用程序”  。
+1. 在“从库中添加”部分的搜索框中，键入“Wdesk”   。
+1. 从结果面板中选择“Wdesk”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
 在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Wdesk 的 Azure AD 单一登录。
 若要正常使用单一登录，需要在 Azure AD 用户与 Wdesk 相关用户之间建立链接关系。
 
-若要配置和测试 Wdesk 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置和测试 Wdesk 的 Azure AD SSO，请完成以下构建基块：
 
-1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Wdesk 单一登录](#configure-wdesk-single-sign-on)** - 在应用程序端配置单一登录设置。
-3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Wdesk 测试用户](#create-wdesk-test-user)** - 在 Wdesk 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
-6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+1. **[配置 Azure AD SSO](#configure-azure-ad-sso)** - 使用户能够使用此功能。
+    1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 B. Simon 测试 Azure AD 单一登录。
+    1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 B. Simon 能够使用 Azure AD 单一登录。
+1. **[配置 Wdesk SSO](#configure-wdesk-sso)** - 在应用程序端配置单一登录设置。
+    1. **[创建 Wdesk 测试用户](#create-wdesk-test-user)** - 在 Wdesk 中创建 B.Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[测试 SSO](#test-sso)** - 验证配置是否正常工作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
+### <a name="configure-azure-ad-sso"></a>配置 Azure AD SSO
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
@@ -131,42 +118,6 @@ ms.locfileid: "67087287"
     b. Azure AD 标识符
 
     c. 注销 URL
-
-### <a name="configure-wdesk-single-sign-on"></a>配置 Wdesk 单一登录
-
-1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Wdesk。
-
-2. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
- 
-     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
-
-3. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
-
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
-
-4. 在“常规设置”下，选中“启用 SAML 单一登录”   ：
-
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
-
-5. 在“服务提供程序详细信息”下，执行以下步骤  ：
-
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
-
-      a. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
-   
-      b. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
-       
-      c. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
-   
-      d. 单击 Azure 门户的“保存”以保存更改  。      
-
-6. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
-    
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
-  
-7. 单击“保存更改”。 
-
-    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -218,6 +169,42 @@ ms.locfileid: "67087287"
 
 7. 在“添加分配”对话框中，单击“分配”按钮。  
 
+## <a name="configure-wdesk-sso"></a>配置 Wdesk SSO
+
+1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Wdesk。
+
+2. 在左下角，单击“管理员”，然后选择“管理员帐户”   ：
+ 
+     ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+
+3. 在 Wdesk 管理员中，导航到“安全性”、“SAML”、“SAML 设置”    >   ：
+
+    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
+
+4. 在“常规设置”下，选中“启用 SAML 单一登录”   ：
+
+    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
+
+5. 在“服务提供程序详细信息”下，执行以下步骤  ：
+
+    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
+
+      a. 复制登录 URL 并将其粘贴到 Azure 门户的“登录 URL”文本框   。
+   
+      b. 复制元数据 URL 并将其粘贴到 Azure 门户的“标识符”文本框   。
+       
+      c. 复制使用者 URL 并将其粘贴到 Azure 门户的“回复 URL”文本框   。
+   
+      d. 单击 Azure 门户的“保存”以保存更改  。      
+
+6. 单击“配置 IdP 设置”以打开“编辑 IdP 设置”对话框   。 单击“选择文件”以查找从 Azure 门户保存的 Metadata.xml 文件，然后将其上传   。
+    
+    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
+  
+7. 单击“保存更改”。 
+
+    ![配置单一登录](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
+
 ### <a name="create-wdesk-test-user"></a>创建 Wdesk 测试用户
 
 要使 Azure AD 用户能够登录到 Wdesk，必须将其预配到 Wdesk 中。 在“Wdesk”中，预配属手动任务。
@@ -254,7 +241,7 @@ ms.locfileid: "67087287"
 
     ![创建 Azure AD 测试用户](./media/wdesk-tutorial/createuser5.png)
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-sso"></a>测试 SSO 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -268,3 +255,4 @@ ms.locfileid: "67087287"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

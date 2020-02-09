@@ -11,20 +11,19 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702691"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022165"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教程：在 Azure IoT Central 中自定义操作员仪表板和管理设备
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 本教程介绍如何作为构建者在 Azure IoT Central 店内分析应用程序中自定义操作员仪表板。 应用程序操作员可以使用自定义仪表板来运行应用程序和管理连接的设备。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 更改仪表板名称
 > * 自定义仪表板上的图像磁贴
@@ -33,14 +32,14 @@ ms.locfileid: "74702691"
 > * 添加属性磁贴以显示设备详细信息
 > * 添加命令磁贴以运行命令
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-在开始本教程之前，构建者应完成第一篇教程以创建 Azure IoT Central 店内分析应用程序并添加设备：
+构建者应完成相关教程以创建 Azure IoT Central 店内分析应用程序并添加设备：
 
 * [在 Azure IoT Central 中创建店内分析应用程序](./tutorial-in-store-analytics-create-app-pnp.md)（必需）
 
 ## <a name="change-the-dashboard-name"></a>更改仪表板名称
-若要自定义操作员仪表板，请在应用程序中编辑默认仪表板。 （可选）可以创建其他新仪表板。 自定义应用程序中的仪表板的第一步是更改名称。
+若要自定义操作员仪表板，必须在应用程序中编辑默认仪表板。 此外，还可以创建其他新仪表板。 自定义应用程序中的仪表板的第一步是更改名称。
 
 1. 导航到 [Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站。
 
@@ -54,7 +53,7 @@ ms.locfileid: "74702691"
 
 1. 在“仪表板名称”中输入仪表板的易记名称  。 本教程使用名为 Contoso 的虚构公司，示例仪表板名称为“Contoso 仪表板”  。 
 
-1. 选择“保存”。  这会保存对仪表板的更改并禁用编辑模式。
+1. 选择“保存”。  你所做的更改将保存到仪表板，并且编辑模式将禁用。
 
     ![Azure IoT Central 更改仪表板名称](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 
@@ -93,7 +92,7 @@ Azure IoT Central 应用程序仪表板由一个或多个磁贴组成。 磁贴�
 
     ![Azure IoT Central 保存商店地图](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-map-save.png)
 
-    Contoso 商店地图示例显示了四个区域：两个结帐区域、一个服装和个人护理品区域，以及一个百货和熟食区域。 在本教程中，将传感器与这些区域关联以提供遥测数据。
+    Contoso 商店地图示例显示了四个区域：两个结帐区域、一个服装和个人护理品区域，以及一个百货和熟食区域。 在本教程中，会将传感器与这些区域关联以提供遥测数据。
 
     ![Azure IoT Central 商店区域](./media/tutorial-in-store-analytics-customize-dashboard-pnp/store-zones.png)
 
@@ -248,7 +247,7 @@ Azure IoT Central 应用程序仪表板由一个或多个磁贴组成。 磁贴�
 1. （可选）选择“重新启动”  磁贴，以在网关上运行重新启动命令。
 
 ## <a name="next-steps"></a>后续步骤
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 * 更改仪表板名称
 * 自定义仪表板上的图像磁贴

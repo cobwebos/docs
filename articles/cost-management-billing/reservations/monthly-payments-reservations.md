@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: cf9bb7f3b9661d5957ad569fce7112fe16659761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 89ae15bb82db1e9e06ac2cb52146137161dac47d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995944"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031333"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>通过按月付款的方式购买预留
 
@@ -29,6 +29,11 @@ ms.locfileid: "75995944"
 - SQL 数据仓库
 - Cosmos DB
 - 应用服务印花费
+- 托管磁盘
+- Azure 数据资源管理器
+- Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL
+- Azure VMware Solution by CloudSimple
+
 
 在 [Azure 门户](https://portal.azure.com/?Microsoft_Azure_Reservations_EnableMultiCart=true&amp;paymentPlan=true#blade/Microsoft_Azure_Reservations/CreateBlade)中购买预留。
 

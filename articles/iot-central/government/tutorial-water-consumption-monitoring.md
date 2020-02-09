@@ -8,20 +8,20 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112619"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016419"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>教程：在 IoT Central 中创建水消耗量监测应用程序
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 本教程指导如何从 IoT Central 水消耗量监测应用程序模板中创建 Azure IoT Central 水消耗量监测应用程序。 
 
-本教程将介绍如何： 
+在本教程中，您将学习如何执行以下操作： 
 
 > [!div class="checklist"]
 > * 使用 Azure IoT Central 水消耗量监测  模板创建水消耗量监测应用程序
@@ -32,7 +32,7 @@ ms.locfileid: "74112619"
 > * 配置作业
 > * 使用白色标签自定义应用程序品牌
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 -  建议使用 Azure 订阅。 如果没有 Azure 订阅，则可在 [Azure 注册页](https://aka.ms/createazuresubscription)上创建一个。
@@ -60,11 +60,13 @@ ms.locfileid: "74112619"
     * **URL**：IoT Central 将根据应用程序名称自动生成 URL。 你可以根据自己的喜好选择更新 URL。 也可以稍后更改 URL。 
     * 如果你有一个 Azure 订阅，请输入目录、Azure 订阅和区域  。 如果你没有订阅，则可以启用 7 天免费试用版并填写所需的联系人信息  。  
 
-    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../preview/quick-deploy-iot-central.md)。
+    有关目录和订阅的详细信息，请参阅[创建应用程序快速入门](../core/quick-deploy-iot-central.md)。
 
 5. 单击页面底部的“创建”按钮  。 
 
     ![Azure IoT Central 的“创建应用程序”页](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+
+    ![Azure IoT Central 创建应用程序 - 计费信息](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
 6. 现在，你已使用 Azure IoT Central 水消耗量监测模板创建了水消耗量监测应用  。
 
@@ -93,7 +95,7 @@ ms.locfileid: "74112619"
 
 * **平均水流量 KPI 磁贴**：KPI 磁贴配置为显示为“最近 30 分钟内的平均值”示例  。 可以自定义 KPI 磁贴，并将其设置为不同的类型和时间范围。
 
-* 然后，它将具有在仪表板的“设备命令”磁贴中执行“关闭阀门”、“打开阀门”或“设置阀门位置”操作的权限     。 单击“命令”可转到模拟设备设备命令页。 在 IoT Central 中，命令是一种设备功能类型，稍后我们将在本教程的设备模板部分中对此进行探讨    。
+* 然后，它将具有在仪表板的“设备命令”磁贴中执行“关闭阀门”、“打开阀门”或“设置阀门位置”操作的权限     。 单击命令将转到“模拟设备命令”页。 在 IoT Central 中，命令是一种设备功能类型，稍后我们会在本教程的“设备模板”部分中对此进行探讨    。
 
 *  **水分布区域地图**：该地图使用 Azure Maps，你可以直接在 Azure IoT Central 中对其进行配置。 地图磁贴显示设备位置。 尝试将鼠标悬停在地图上，然后尝试使用地图上的控件，如放大、缩小或展开    。 
 
@@ -105,7 +107,7 @@ ms.locfileid: "74112619"
 
 * **重置警报阈值内容磁贴**：可以包括对将链接嵌入到操作页的操作内容磁贴的调用。 在此情况下，重置警报阈值会将你转到应用程序作业，你可在其中运行设备属性更新，稍后我们将在本教程的配置作业部分中对此进行探讨   。
 
-* **属性磁贴**：仪表板显示阀门操作信息、流量警报阈值和维护信息之类的设备属性    。  
+* **属性磁贴**：仪表板显示“阀门操作信息”、“流量警报阈值”和“维护信息”    。 
 
 
 ### <a name="customize-dashboard"></a>自定义仪表板 
@@ -126,7 +128,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 如需查看设备模板：
 
 1. 在 IoT Central 中应用程序的左侧导航窗格中单击“设备模板”  。 
-    在设备模板列表中，将看到两个设备模板：“流量计”和“智能阀”  
+    在“设备模板”列表中，将看到两个设备模板：“流量计”和“智能阀”  
 
    ![设备模板](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -146,7 +148,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 ### <a name="add-a-cloud-property"></a>添加云属性 
 1. 从设备模板菜单导航到“云属性” 
 2. 单击“+ 添加云属性”添加新的云属性  。 
-    在 IoT Central 中，可以添加与设备相关的属性。 例如，云属性可以是特定于安装区域、资产信息或维护信息等的警报阈值。 
+    在 IoT Central 中，可以添加与设备相关的属性。 例如，云属性可以是特定于安装区域、资产信息或其他维护信息的警报阈值。 
 3. 保存任何更改  
  
 ### <a name="views"></a>视图 
@@ -155,7 +157,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
   ![设备模板视图](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
 ### <a name="publish"></a>发布 
-如果进行了任何更改，请确保发布设备模板  。 
+如果进行了任何更改，请确保**发布**设备模板。 
 
 ### <a name="create-a-new-device-template"></a>创建新设备模板 
 - 选择“+ 新建”以创建新的设备模板，然后执行创建过程  。 可以从头开始创建自定义设备模板，也可以从 Azure 设备目录中选择设备模板。 
@@ -196,7 +198,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
      ![高 pH 警报](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` 规则配置为根据条件 `Acidity (pH)` `greater than` `Max flow threshold` 进行检查。 最大流量阈值是在设备智能阀设备模板中定义的云属性  。 每个设备实例均设有 `Max flow threshold` 值。 
+    `High flow alert` 规则配置为根据条件 `Acidity (pH)``greater than``Max flow threshold` 进行检查。 最大流量阈值是在设备智能阀设备模板中定义的云属性  。 每个设备实例均设有 `Max flow threshold` 值。 
 
 现在，让我们创建电子邮件操作。
 
