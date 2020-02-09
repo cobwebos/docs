@@ -4,8 +4,6 @@
   items:
     - name: 说明是 Azure Monitor？
       href: overview.md
-    - name: 术语更改
-      href: terminology.md
     - name: 常见问题解答
       href: faq.md
     - name: 新增功能？
@@ -1141,6 +1139,8 @@
       items:
         - name: 架构
           href: platform/diagnostics-extension-schema-1dot3.md
+    - name: 术语更改
+      href: terminology.md
     - name: Application Insights
       items:
         - name: 依赖项自动收集

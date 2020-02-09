@@ -463,6 +463,8 @@
                       href: saas-multitenantdb-schema-management.md
                     - name: 用于分析的 ETL
                       href: saas-multitenantdb-tenant-analytics.md
+        - name: 请求增加配额
+          href: quota-increase-request.md
 - name: SQL 数据库
   items:
     - name: SQL 数据库文档
