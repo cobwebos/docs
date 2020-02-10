@@ -1,62 +1,78 @@
 ---
-title: 用于服务器的 Azure Arc 概述
-description: 了解如何通过用于服务器的 Azure Arc 自动化基础结构和应用程序的生命周期。
+title: Azure Arc for servers（预览版）概述
+description: 了解如何使用 Azure Arc for servers 管理托管在 Azure 外部的计算机，就如同管理 Azure 资源一样。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 11/04/2019
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659615"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899205"
 ---
-# <a name="what-is-azure-arc-for-servers"></a>什么是用于服务器的 Azure Arc
+# <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）
 
-利用用于服务器的 Azure Arc 可以管理非 Azure 的计算机。
-当非 Azure 的计算机连接到 Azure 时，它将成为“已连接的计算机”  并被视为 Azure 中的资源。 每个“已连接的计算机”都有一个资源 ID，均作为订阅内资源组的一部分进行管理，并且得益于标准的 Azure 构造，如 Azure Policy 和标记  。
+使用 Azure Arc for servers（预览版）可以管理企业网络或其他云提供商中的、托管在 Azure 外部的 Windows 和 Linux 计算机，就如同管理本地 Azure 虚拟机一样。 当混合计算机连接到 Azure 时，它将成为一台联网计算机，被视为 Azure 中的资源。 每台联网计算机都有一个资源 ID，作为订阅内资源组的一部分进行管理，并可受益于标准的 Azure 构造，例如 Azure Policy 和应用标记。
 
-需要在每台计算机上安装代理包才能将其连接到 Azure。 本文档的其余部分更详细地介绍了该过程。
+若要为托管在 Azure 外部的混合计算机提供此体验，需要在打算连接到 Azure 的每台计算机上安装 Azure Connected Machine 代理。 此代理不提供任何其他功能，而且不会取代 Azure [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。
 
-基于代理最近的签入方式，计算机的状态会显示为“已连接”或“已断开连接”   。 每个签入称为一个检测信号。 如果计算机在过去 5 分钟内未签入，则在连接恢复之前，计算机会显示为“脱机”。  <!-- For more information on troubleshooting agent connectivity, see [Troubleshooting Azure Arc for servers](troubleshoot/arc-for-servers.md). -->
+>[!NOTE]
+>此预览版用于评估目的，我们建议不要用它来管理关键的生产计算机。
+>
 
-![已连接的服务器](./media/overview/arc-for-servers-onboarded-servers.png)
+## <a name="supported-scenarios"></a>支持的方案
 
-## <a name="clients"></a>客户端
+Azure Arc for servers（预览版）支持以下使用联网计算机的方案：
 
-### <a name="supported-operating-systems"></a>受支持的操作系统
+- 使用与适用于 Azure 虚拟机的策略分配相同的体验，分配 [Azure Policy 来宾配置](../../governance/policy/concepts/guest-configuration.md)。
+- Log Analytics 代理收集的并存储在计算机所注册到的 Log Analytics 工作区中的日志数据现在包含特定于计算机的属性，例如，可用于支持[资源上下文](../../azure-monitor/platform/design-logs-deployment.md#access-mode)日志访问的资源 ID。
 
-在公开预览版中，支持以下操作系统：
+## <a name="supported-regions"></a>支持的区域
+
+使用 Azure Arc for servers（预览版）时，仅支持特定的区域：
+
+- 美国西部 2
+- 西欧
+- 西亚
+
+## <a name="prerequisites"></a>必备条件
+
+### <a name="supported-operating-systems"></a>支持的操作系统
+
+Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操作系统： 
 
 - Windows Server 2012 R2 和更高版本
 - Ubuntu 16.04 和 18.04
 
-公共预览版旨在进行评估，不应用来管理关键的生产资源。
+>[!NOTE]
+>适用于 Windows 的 Connected Machine 代理预览版仅支持配置为使用英语的 Windows Server。
+>
 
-## <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
+### <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
-请务必阅读 Azure 资源管理器限制，并根据针对[订阅](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[资源组](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)列出的准则来规划要连接的计算机的数量。 尤其在默认情况下，每个资源组的服务器数量限制为 800。
+在为计算机配置 Azure Arc for servers（预览版）之前，应查看 Azure 资源管理器[订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以规划要连接的计算机数。
 
-## <a name="networking-configuration"></a>网络配置
+### <a name="networking-configuration"></a>网络配置
 
-在安装期间和运行时，代理需要连接到“Azure Arc 服务终结点”  。 如果使用防火墙阻止出站连接，请确保默认情况下不会阻止以下 URL。 所有连接都是从代理到 Azure 的出站连接，并受 SSL 保护  。 可以通过 HTTPS 代理来路由所有流量  。 如果允许服务器所允许连接到的 IP 范围或域名，则必须允许端口 443 访问以下服务标记和 DNS 名称。
+适用于 Linux 和 Windows 的 Connected Machine 代理通过 TCP 端口 443 安全地与 Azure Arc 进行出站通信。 如果计算机通过防火墙或代理服务器建立连接以通过 Internet 进行通信，请查看下文了解网络配置要求。
+
+如果防火墙或代理服务器限制了出站连接，请确保不要阻止下面列出的 URL。 如果只允许代理与服务进行通信所需的 IP 范围或域名，则还必须允许访问以下服务标记和 URL。
 
 服务标记：
 
-* AzureActiveDirectory
-* AzureTrafficManager
+- AzureActiveDirectory
+- AzureTrafficManager
 
-有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关更多详细信息，请参阅[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+URL：
 
-因为大多数服务当前未注册服务标记，IP 可能会更改，所以除了服务标记 IP 范围信息之外，还提供了这些 DNS 名称。 如果防火墙配置需要 IP 范围，则应使用 AzureCloud 服务标记允许对所有 Azure 服务的访问  。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
-
-| 域环境 | 所需的 Azure 服务终结点 |
+| 代理资源 | 说明 |
 |---------|---------|
 |management.azure.com|Azure 资源管理器|
 |login.windows.net|Azure Active Directory|
@@ -65,116 +81,58 @@ ms.locfileid: "75659615"
 |*-agentservice-prod-1.azure-automation.net|来宾配置|
 |*.his.hybridcompute.azure-automation.net|混合标识服务|
 
-### <a name="installation-network-requirements"></a>安装网络要求
+有关每个服务标记/区域的 IP 地址列表，请参阅 JSON 文件 - [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 每周将发布包含每个 Azure 服务及其使用的 IP 范围的更新。 有关详细信息，请查看[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
-如果要从官方分发服务器下载 [Azure 连接的计算机代理包](https://aka.ms/AzureConnectedMachineAgent)，则必须可从环境中访问以下站点。 可以选择将包下载到文件共享，并从该位置安装代理。 在这种情况下，可能需要修改从 Azure 门户生成的载入脚本。
+除了上表中列出的 URL 以外，还需要服务标记 IP 地址范围信息，因为大多数服务当前没有服务标记注册。 因此，IP 地址可能会变化。 如果防火墙配置需要 IP 地址范围，则应使用 **AzureCloud** 服务标记允许对所有 Azure 服务的访问。 请勿禁用对这些 URL 的安全监视或检查，但就像允许其他 Internet 流量一样允许这些 URL。
 
-Windows：
+### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
-* `aka.ms`
-* `download.microsoft.com`
+Azure Arc for servers（预览版）依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
 
-Linux：
+-  Microsoft.HybridCompute
+-  Microsoft.GuestConfiguration
 
-* `aka.ms`
-* `packages.microsoft.com`
+如果未注册这些提供程序，可使用以下命令注册：
 
-有关如何配置代理来使用代理服务器的信息，请参阅[代理服务器配置](quickstart-onboard-powershell.md#proxy-server-configuration)部分。
-
-## <a name="register-the-required-resource-providers"></a>注册所需的资源提供程序
-
-若要使用适用于服务器的 Azure Arc，必须注册所需的资源提供程序。
-
-*  Microsoft.HybridCompute
-*  Microsoft.GuestConfiguration
-
-可以使用以下命令注册资源提供程序：
-
-Azure PowerShell：
+Azure PowerShell：
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure CLI：
+Azure CLI：
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-此外，还可以按照 [Azure 门户](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)下的步骤，使用门户注册资源提供程序。
+此外，还可以按照 [Azure 门户](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)下的步骤，在 Azure 门户中注册资源提供程序。
 
-## <a name="machine-changes-after-installing-the-agent"></a>安装代理后的计算机更改
+## <a name="connected-machine-agent"></a>Connected Machine 代理
 
-如果已在环境中部署了更改跟踪解决方案，则可以使用以下列表来跟踪、识别和允许 **Azure Connected Machine Agent (AzCMAgent)** 安装包所做的更改。
+可从以下位置下载适用于 Windows 和 Linux 的 Azure Connected Machine 代理包。
 
-安装该代理之后，将看到对服务器所做的以下更改。
+- Microsoft 下载中心提供的 [Windows 代理 Windows Installer 包](https://aka.ms/AzureConnectedMachineAgent)。
+- Linux 代理包通过 Microsoft 的[包存储库](https://packages.microsoft.com/)使用分发版的首选包格式（.RPM 或 .DEB）进行分发。
 
-### <a name="windows"></a>Windows
+>[!NOTE]
+>在预览期，仅发布了一个适用于 Ubuntu 16.04 或 18.04 的包。
 
-已安装的服务：
+## <a name="install-and-configure-agent"></a>安装并配置代理
 
-* `Himds` - **Azure Connected Machine Agent** 服务。
-* `Dscservice` 或 `gcd` - **Guest Configuration** 服务。
+可以根据要求使用不同的方法，将混合环境中的计算机直接连接到 Azure。 下表详细介绍了每种方法，让你确定最适合组织的方法。
 
-已添加到服务器的文件：
+| 方法 | 说明 |
+|--------|-------------|
+| 交互式 | 遵循[从 Azure 门户连接计算机](quickstart-onboard-portal.md)中的步骤，在一台或多台计算机上手动安装代理。<br> 在 Azure 门户中，可以生成一个脚本并在计算机上执行，以自动完成代理安装和配置的步骤。|
+| 大规模 | 遵循[使用服务主体连接计算机](quickstart-onboard-powershell.md)中的步骤，为多台计算机安装并配置代理。<br> 此方法创建一个服务主体来以非交互方式连接计算机。|
 
-* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` - **Azure Connected Machine Agent** 文件的位置。
-* `%ProgramData%\GuestConfig\*.*` - **Guest Configuration** 日志。
-
-注册表项位置：
-
-* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` - **Azure Connected Machine Agent** 的注册表项。
-
-### <a name="linux"></a>Linux
-
-已安装的服务：
-
-* `Himdsd` - **Azure Connected Machine Agent** 服务。
-* `dscd` 或 `gcd` - **Guest Configuration** 服务。
-
-已添加到服务器的文件：
-
-* `/var/opt/azcmagent/**` - **Azure Connected Machine Agent** 文件的位置。
-* `/var/lib/GuestConfig/**` - **Guest Configuration** 日志。
-
-## <a name="supported-scenarios"></a>支持的方案
-
-注册节点后，便可以使用其他 Azure 服务来管理节点。
-
-在公共预览版中，已连接的计算机  支持以下方案。
-
-## <a name="guest-configuration"></a>来宾配置
-
-将计算机连接到 Azure 后，可以将 Azure 策略分配到“已连接的计算机”，此方法与将策略分配到 Azure 虚拟机的方法相同  。
-
-有关详细信息，请参阅[了解 Azure 策略的来宾配置](../../governance/policy/concepts/guest-configuration.md)。
-
-“已连接的计算机”的来宾配置代理日志位于以下位置： 
-
-* Windows - `%ProgramFiles%\AzureConnectedMachineAgent\logs\dsc.log`。
-* Linux：- `/opt/logs/dsc.log`
-
-## <a name="log-analytics"></a>Log Analytics
-
-现在，由 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) 收集并存储于 Log Analytics 工作区中日志数据将包含特定于计算机的属性，如 ResourceId  ，该属性可用于以资源为中心的日志访问。
-
-- 已安装 MMA 代理的计算机，将通过更新的管理包启用 Azure Arc 功能  。
-- 用于服务器的 Azure Arc 的集成需要 [MMA 代理10.20.18011 或更高版本](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version)。
-- 在 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)中查询日志数据时，返回的数据架构将包含混合的 **ResourceId**，形式如下：`/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`。
-
-有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
-
-<!-- MMA agent version 10.20.18011 and later -->
 
 ## <a name="next-steps"></a>后续步骤
 
-可以通过两种方法使用用于服务器的 Azure Arc 连接计算机。
-
-* **交互式** - 参照[门户快速入门](quickstart-onboard-portal.md)，从门户生成脚本并在计算机上执行它。 如果一次只连接一台计算机，则这是最佳选项。
-* **大规模** - 参照 [PowerShell 快速入门](quickstart-onboard-powershell.md)创建服务主体，以非交互式方式连接计算机。
+- 若要开始评估 Azure Arc for servers（预览版），请阅读[从 Azure 门户将混合计算机连接到 Azure](quickstart-onboard-portal.md) 一文。 

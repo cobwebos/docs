@@ -3,18 +3,18 @@ title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft 
 description: 本教程将介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910954"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986999"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -51,7 +51,7 @@ ms.locfileid: "75910954"
 
 ![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-框图中显示了一个相当简洁的应用程序。 该应用程序提供一个搜索框、附近店铺的列表、包含一些标记（符号）的地图，以及当用户选择某个标记时显示其他信息的弹出窗口。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
+框图中显示了一个相当简洁的应用程序。 该应用程序包含一个搜索框、附近店铺的列表，以及包含一些标记（例如符号）的地图。 此外，它还包含一个弹出窗口，当用户选择某个标记时，该窗口会显示附加信息。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
 
 * 将所导入的制表符分隔数据文件中的所有位置加载到地图上。
 * 用户可以平移和缩放地图、执行搜索，以及选择“我的位置”GPS 按钮。
@@ -81,12 +81,12 @@ ms.locfileid: "75910954"
     
 * 位置信息是使用 **AddressLine**、**City**、**Municipality**（国家）、**AdminDivision**（州/省）、**PostCode**（邮政编码）和 **Country** 列存储的。  
 * **Latitude** 和 **Longitude** 列包含每个 Contoso Coffee 咖啡厅位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
-* 某些附加列包含咖啡厅相关的元数据：电话号码、有关是否提供 Wi-Fi 热点和轮椅通道的布尔值列，以及营业和停业时间（24 小时格式）。 可以创建自己的列来包含与位置数据更相关的元数据。
+* 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 可以创建自己的列来包含与位置数据更相关的元数据。
 
 > [!Note]
 > Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。 
 
-可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务，然后将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会大大增加开发工作量，并且成本较高。 
+可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。 
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
@@ -115,7 +115,7 @@ ms.locfileid: "75910954"
 
 若要创建用户界面，请将代码添加到 *index.html*：
 
-1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 标记定义字符集 (UTF-8)，告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本，并指定适用于响应式布局的视区。
+1. 将以下 `meta` 标记添加到 *index.html* 的 `head`。 `charset` 标记定义字符集 (UTF-8)。 `http-equiv` 的值告知 Internet Explorer 和 Microsoft Edge 要使用最新的浏览器版本。 最后一个 `meta` 标记指定适用于响应式布局的视区。
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ ms.locfileid: "75910954"
     }
    ```
 
-如果现在就运行应用程序，则会看到标题、搜索框和搜索按钮，但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑才能访问店铺定位器的所有功能。
+现在运行应用程序，则会看到标题、搜索框和搜索按钮。 但看不到地图，因为它尚未加载。 如果尝试执行搜索，不会有任何反应。 我们需要设置下一部分所述的 JavaScript 逻辑。 此逻辑访问店铺定位器的所有功能。
 
 ## <a name="wire-the-application-with-javascript"></a>使用 JavaScript 统合应用程序
 
-此时，用户界面中的所有组件已设置妥当。 接下来，我们需要添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
+现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
 
-1. 添加全局选项，以便更轻松地更新设置。 此外，请为地图、弹出窗口、数据源、图标层、显示搜索区域中心点的 HTML 标记以及 Azure Maps 搜索服务客户端的实例定义变量。
+1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层、显示搜索区域中心点的 HTML 标记以及 Azure Maps 搜索服务客户端的实例定义变量。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,7 +395,7 @@ ms.locfileid: "75910954"
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. 将代码添加到 *index.js*。 以下代码初始化地图，添加一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)（等到页面完成加载为止），统合事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
+1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
 
    当用户选择搜索按钮，或者在搜索框中输入位置后按 Enter 时，会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
   
@@ -686,7 +686,7 @@ ms.locfileid: "75910954"
     }
     ```
 
-1. 更新列表面板时，系统会计算从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
+1. 更新列表面板时，会计算距离。 此距离是从地图中心点到当前地图视图中所有点特征的距离。 然后按距离将特征排序。 将生成 HTML 以在列表面板中显示每个位置。
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
