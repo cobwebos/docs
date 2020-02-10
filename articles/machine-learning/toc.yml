@@ -25,6 +25,9 @@
         - name: 创建自动化 ML 试验
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: 使用自动 ML 预测需求（自行车共享数据）
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: 创建首个 ML 试验

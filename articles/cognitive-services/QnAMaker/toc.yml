@@ -8,12 +8,14 @@
       href: whats-new.md
 - name: 快速入门
   items:
-    - name: 创建新的知识库
-      href: quickstarts/create-publish-knowledge-base.md
-    - name: 添加带有元数据的问题
-      href: quickstarts/add-question-metadata-portal.md
-    - name: 使用 Postman 或 cURL 获取回答
-      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: 使用 QnA Maker 门户
+      items:
+        - name: 1. 创建知识库
+          href: quickstarts/create-publish-knowledge-base.md
+        - name: 2. 添加带有元数据的问题
+          href: quickstarts/add-question-metadata-portal.md
+        - name: 3. 使用 Postman 或 cURL 获取回答
+          href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: 使用批处理文件进行测试
       href: Quickstarts/batch-testing.md
     - name: 使用 REST API
@@ -61,8 +63,6 @@
     - name: 创建 KB 并从 KB 回答
       displayName: 'curl, publish, chit-chat, chit chat'
       href: Tutorials/create-publish-query-in-portal.md
-    - name: '使用 C# 创建 KB 并从 KB 回答'
-      href: Tutorials/create-publish-answer.md
     - name: 创建 QnA Maker 机器人
       href: Tutorials/create-qna-bot.md
 - name: 概念

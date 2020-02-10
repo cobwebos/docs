@@ -7,19 +7,22 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 29850cb9cb40eae0829b5d8c2b58b5f9518f18d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4cd8d0901ce23fb227bb6919dee18f5aa3d063ed
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021039"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77089034"
 ---
-可以通过第 3 版文本分析 API 选择在数据上使用的文本分析模型。 在请求中使用可选的 `model-version` 参数选择一个模型版本。 如果未指定此参数，API 会默认使用 `latest`（最新的稳定模型版本）。
+使用文本分析 API 的版本 3 可以选择数据的最新模型版本。 使用可选参数 `model-version` 选择请求所需的模型版本。 如果未指定此参数，API 会默认为 `latest`（最新的稳定版）。 尽管可以在任何请求中使用最新的模型版本，但在每个版本中只更新了某些功能。 下表说明了在每个模型版本中更新了哪些功能：
 
-可用模型版本：
-* `2019-10-01` (`latest`)
+| 模型版本           | 已更新功能         | 以下功能的最新版：           |
+|-------------------------|--------------------------|--------------------------|
+| `2020-02-01`            | 实体识别                      | 实体识别                      |
+| `2019-10-01`            | 实体识别、情绪分析  | 语言检测、关键短语提取、情绪分析|
+
 
 来自 v3 终结点的每个响应都包含一个 `model-version` 字段，用于指定已使用的模型版本。
 
@@ -30,3 +33,4 @@ ms.locfileid: "74021039"
     "model-version": "2019-10-01"
 }
 ```
+有关这些模型版本的更新的详细信息，请参阅[新增功能](../whats-new.md)。

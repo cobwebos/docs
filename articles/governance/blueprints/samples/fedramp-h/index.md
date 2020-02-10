@@ -1,14 +1,14 @@
 ---
-title: 示例 - FedRAMP High 蓝图 - 概述
+title: FedRAMP High 蓝图示例概述
 description: FedRAMP High 蓝图示例概述。 此蓝图示例可帮助客户评估特定 FedRAMP High 控制要求。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 9a9d16967495f4785ebffabc968856edab382e75
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dede255b73a2a052acf1e8b95ad5171a1ace6ae5
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941291"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087288"
 ---
 # <a name="overview-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例概述
 
