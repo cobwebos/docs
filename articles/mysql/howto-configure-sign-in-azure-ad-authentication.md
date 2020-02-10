@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 10dae81bf0ca8958f7c10aebef501fc604c4839c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706045"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110608"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 通过 MySQL 进行身份验证
 
@@ -40,42 +40,7 @@ ms.locfileid: "76706045"
 
 在将来的版本中，我们将支持指定 Azure AD 组而不是单个用户来拥有多个管理员，但目前尚不支持此项。
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建 Azure AD 用户
-
-若要将 Azure AD 用户添加到 Azure Database for MySQL 数据库，请在连接后执行以下步骤（请参阅有关如何连接的后面部分）：
-
-1. 首先确保 Azure AD 用户 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租户中的有效用户。
-2. 以 Azure AD 管理员用户身份登录到你的 Azure Database for MySQL 实例。
-3. 在 Azure Database for MySQL 中创建用户 `<user>@yourtenant.onmicrosoft.com`。
-
-**示例：**
-
-```sql
-CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
-```
-
-对于超过32个字符的用户名，建议改为使用别名，以便在连接时使用： 
-
-示例：
-
-```sql
-CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
-```
-
-> [!NOTE]
-> 通过 Azure AD 对用户进行身份验证时，不会向用户授予访问 Azure Database for MySQL 数据库中的对象的任何权限。 您必须手动向用户授予所需的权限。
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建 Azure AD 组
-
-若要为数据库 Azure AD 启用访问权限，请使用与用户相同的机制，但要指定组名称，请执行以下操作：
-
-**示例：**
-
-```sql
-CREATE AADUSER 'Prod_DB_Readonly';
-```
-
-登录时，组的成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
+配置管理员后，你现在可以登录：
 
 ## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>使用 Azure AD 连接到 Azure Database for MySQL
 
@@ -156,12 +121,53 @@ az account get-access-token --resource-type oss-rdbms
 使用 CLI 时，可以使用此短期连接： 
 
 **示例（Linux/macOS）：**
-
-mysql-h mydb.mysql.database.azure.com \--user user@tenant.onmicrosoft.com@mydb \`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`------------------------  
+```
+mysql -h mydb.mysql.database.azure.com \ 
+  --user user@tenant.onmicrosoft.com@mydb \ 
+  --enable-cleartext-plugin \ 
+  --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
+```
 
 请注意 "启用-明文-插件" 设置-你需要对其他客户端使用类似的配置，以确保在不进行哈希处理的情况下将令牌发送到服务器。
 
 你现在可以使用 Azure AD 身份验证向你的 MySQL 服务器进行身份验证。
+
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建 Azure AD 用户
+
+若要将 Azure AD 用户添加到 Azure Database for MySQL 数据库，请在连接后执行以下步骤（请参阅有关如何连接的后面部分）：
+
+1. 首先确保 Azure AD 用户 `<user>@yourtenant.onmicrosoft.com` 是 Azure AD 租户中的有效用户。
+2. 以 Azure AD 管理员用户身份登录到你的 Azure Database for MySQL 实例。
+3. 在 Azure Database for MySQL 中创建用户 `<user>@yourtenant.onmicrosoft.com`。
+
+**示例：**
+
+```sql
+CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
+```
+
+对于超过32个字符的用户名，建议改为使用别名，以便在连接时使用： 
+
+示例：
+
+```sql
+CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
+```
+
+> [!NOTE]
+> 通过 Azure AD 对用户进行身份验证时，不会向用户授予访问 Azure Database for MySQL 数据库中的对象的任何权限。 您必须手动向用户授予所需的权限。
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中创建 Azure AD 组
+
+若要为数据库 Azure AD 启用访问权限，请使用与用户相同的机制，但要指定组名称，请执行以下操作：
+
+**示例：**
+
+```sql
+CREATE AADUSER 'Prod_DB_Readonly';
+```
+
+登录时，组的成员将使用其个人访问令牌，但使用指定为用户名的组名称进行签名。
 
 ## <a name="token-validation"></a>令牌验证
 
@@ -194,7 +200,7 @@ Azure Database for MySQL 中的 Azure AD 身份验证确保了 MySQL server 中�
 * Perl
   * DBD：： mysql：支持
   * Net：： MySQL：不支持
-* Go
+* 开始
   * sql-驱动程序：支持，将 `?tls=true&allowCleartextPasswords=true` 添加到连接字符串
 
 ## <a name="next-steps"></a>后续步骤

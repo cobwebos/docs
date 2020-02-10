@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647911"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110556"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端： Azure AD 身份验证（预览版）
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端： Azure AD 身份验证
 
 本文介绍如何使用点到站点 VPN 和 Azure Active Directory 身份验证配置 VPN 客户端以连接到虚拟网络。 必须先配置 Azure AD 租户，然后才能使用 Azure AD 进行连接和身份验证。 有关详细信息，请参阅[Configure a Azure AD 租户](openvpn-azure-ad-tenant.md)。
 
@@ -24,11 +24,11 @@ ms.locfileid: "75647911"
 
 ## <a name="profile"></a>使用客户端配置文件
 
-若要连接，需要下载 Azure VPN 客户端（预览版），并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
+若要连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上配置 VPN 客户端配置文件。 你可以在计算机上创建客户端配置文件，将其导出，然后将其导入到其他计算机。
 
 ### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-使用[此链接](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下载 Azure VPN 客户端（预览版）。
+使用此[链接](https://go.microsoft.com/fwlink/?linkid=2117554)下载 Azure VPN 客户端。
 
 ### <a name="cert"></a>创建基于证书的客户端配置文件
 
@@ -50,11 +50,11 @@ ms.locfileid: "75647911"
 
 1. 突出显示要导出的 VPN 客户端配置文件，选择 " **...** "，然后选择 "**导出**"。
 
-    ![导出](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 选择要将此配置文件保存到的位置，将 "文件名" 保留原样，然后选择 "**保存**" 以保存 xml 文件。
 
-    ![导出](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![export](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>导入客户端配置文件
 
@@ -82,33 +82,33 @@ ms.locfileid: "75647911"
 
 1. 选择要删除的客户端配置文件旁边的省略号。 然后选择“删除”。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![删除](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![删除](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="connection"></a>创建连接
 
 1. 在 "" 页上，选择 " **+** "，然后单击 " **+ 添加**"。
 
-    ![连接](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填写连接信息。 如果你不确定这些值，请与你的管理员联系。 填写值后，选择 "**保存**"。
 
-    ![连接](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 选择“连接”以连接到 VPN。
 
-    ![连接](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 选择正确的凭据，并选择 "**继续**"。
 
-    ![连接](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功连接后，该图标将变为绿色，并指示**已连接**。
 
-    ![连接](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="autoconnect"></a>自动连接
 

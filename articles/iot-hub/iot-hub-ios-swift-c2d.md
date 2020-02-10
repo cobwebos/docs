@@ -7,18 +7,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 1875e3437c13a678532c05b4057126f785b9125c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147537"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110863"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>使用 IoT 中心发送云到设备消息 (iOS)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 [从设备将遥测数据发送到 IoT 中心](quickstart-send-telemetry-ios.md)快速入门介绍了如何创建 IoT 中心、在其中预配设备标识，以及编写模拟设备应用来发送设备到云的消息。
+Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备和单个解决方案后端之间实现安全可靠的双向通信。 将[遥测数据从设备发送到 iot 中心](quickstart-send-telemetry-ios.md)快速入门演示如何创建 iot 中心、在其中预配设备标识，以及编写用于发送设备到云消息的模拟设备应用程序。
 
 本教程演示如何：
 
@@ -26,7 +26,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * 在设备上接收云到设备的消息。
 
-* 从解决方案后端, 请求传递从 IoT 中心发送到设备的消息的确认 (*反馈*)。
+* 从解决方案后端，请求传递从 IoT 中心发送到设备的消息的确认（*反馈*）。
 
 可以在 [IoT 中心开发人员指南的消息发送部分](iot-hub-devguide-messaging.md)中找到有关云到设备消息的详细信息。
 
@@ -34,10 +34,10 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 * **sample-device**：在[将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-ios.md)中创建的同一应用，可连接到 IoT 中心并接收云到设备的消息。
 
-* **示例-服务**, 它通过 IoT 中心将云到设备的消息发送到模拟设备应用, 然后接收其传递确认。
+* **示例-服务**，它通过 IoT 中心将云到设备的消息发送到模拟设备应用，然后接收其传递确认。
 
 > [!NOTE]
-> IoT 中心通过 Azure IoT 设备 Sdk 对许多设备平台和语言 (包括 C、Java、Python 和 Javascript) 提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
+> IoT 中心通过 Azure IoT 设备 Sdk 对许多设备平台和语言（包括 C、Java、Python 和 Javascript）提供 SDK 支持。 有关如何将设备连接到本教程中的代码（通常是连接到 Azure IoT 中心）的逐步说明，请参阅 [Azure IoT 开发人员中心](https://www.azure.com/develop/iot)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,6 +50,8 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 * 最新版本的 [XCode](https://developer.apple.com/xcode/)，运行最新版本的 iOS SDK。 本快速入门已使用 XCode 9.3 和 iOS 11.3 测试过。
 
 * 最新版 [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="simulate-an-iot-device"></a>模拟 IoT 设备
 
@@ -95,7 +97,7 @@ pod install
 
 4. 搜索 **connectionString** 变量，并使用第一个步骤中复制的设备连接字符串更新其值。
 
-5. 保存更改。 
+5. 保存所做更改。 
 
 6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。
 
@@ -103,7 +105,7 @@ pod install
 
 ## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-在本文中, 你将创建一个后端服务, 通过在将[遥测从设备发送到 iot 中心](quickstart-send-telemetry-ios.md)中创建的 iot 中心发送云到设备的消息。 若要发送云到设备的消息, 服务需要**服务连接**权限。 默认情况下, 每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略, 该策略将授予此权限。
+在本文中，你将创建一个后端服务，通过在将[遥测从设备发送到 iot 中心](quickstart-send-telemetry-ios.md)中创建的 iot 中心发送云到设备的消息。 若要发送云到设备的消息，服务需要**服务连接**权限。 默认情况下，每个 IoT 中心都创建有一个名为 "**服务**" 的共享访问策略，该策略将授予此权限。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
@@ -141,9 +143,9 @@ pod install
 
 3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
 
-4. 搜索**connectionString**变量, 并将值更新为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串。
+4. 搜索**connectionString**变量，并将值更新为先前在[获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)中复制的服务连接字符串。
 
-5. 保存更改。
+5. 保存所做更改。
 
 6. 在 Xcode 中，将模拟器设置更改为其他 iOS 设备，而不是用来运行 IoT 设备的 iOS 设备。 XCode 无法运行相同类型的多个模拟器。
 

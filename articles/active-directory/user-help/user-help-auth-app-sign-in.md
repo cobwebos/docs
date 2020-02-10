@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 8f22e575b609b0dcd56bf9a1f49fffd41f14e898
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062194"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108271"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -116,7 +116,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 | 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | No。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
 | 如果我的手机丢失或没有与我联系，怎么办？ 如何实现访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)页或“保护帐户安全”页。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
 | 如何实现停止使用此功能并返回到使用我的密码？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，你必须从 "Microsoft Authenticator" 应用的 "**设置**" 页中注销该设备，或从配置文件的 "**设备 &" 活动**区域中禁用该设备。 有关从配置文件禁用设备的详细信息，请参阅[从 "我的应用" 门户更新你的配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
-| 为什么不能使用多个工作或学校帐户登录？ | 一部手机只能注册到单个工作或学校帐户。 如果想要为不同的工作或学校帐户启用手机登录，必须先通过“设置”页取消注册旧设备。 |
+| 为什么不能使用多个工作或学校帐户登录？ | 一部手机只能注册到单个工作或学校帐户。 如果要为不同的工作或学校帐户启用电话登录，则必须通过 "**设置**" 页从该设备中取消注册帐户。 |
 | 我是否可以使用我的手机登录到我的计算机？ | 我们建议使用 Windows 10 上的 Windows Hello 登录到电脑。 Windows Hello 允许使用人脸、指纹或 PIN 登录。 |
 
 ## <a name="next-steps"></a>后续步骤

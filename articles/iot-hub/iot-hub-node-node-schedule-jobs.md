@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure IoT 中心安排作业 (Node) | Microsoft Docs
-description: 逼 ﹚ Azure IoT 中心作业调用多个设备上的直接方法，请按照。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
+description: 如何安排 Azure IoT 中心作业对多台设备调用直接方法。 使用 Azure IoT SDK for Node.js 实现模拟设备应用以及用于运行作业的服务应用。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,14 +9,14 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.openlocfilehash: 124af71e458e103392c554a9c86d679f691df5b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5053935f52153f0cd6ff2f05c5153732f5bda945
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147648"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110849"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业 (node.js)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>计划和广播作业（node.js）
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
@@ -32,7 +32,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-node-node-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
 
-* 直接方法：[IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程: 直接方法](quickstart-control-device-node.md)
+* 直接方法： [IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程：直接方法](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -50,9 +50,11 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 ## <a name="prerequisites"></a>先决条件
 
-* Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 10.0. x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍如何在 Windows 或 Linux 上安装本教程所用的 node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -89,7 +91,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。 `{yourDeviceConnectionString}`将占位符值替换为先前复制的设备连接字符串。
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。 将 `{yourDeviceConnectionString}` 占位符值替换为先前复制的设备连接字符串。
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -157,7 +159,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 3. 在 **scheduleJobService** 文件夹中，利用文本编辑器创建新的 **scheduleJobService.js** 文件。
 
-4. 在**scheduleJobService**文件的开头添加以下 "需要" 语句:
+4. 在**scheduleJobService**文件的开头添加以下 "需要" 语句：
 
     ```javascript
     'use strict';
@@ -166,7 +168,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. 添加以下变量声明。 将`{iothubconnectionstring}`占位符值替换为在["获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)" 中复制的值。 如果注册的设备不同于**myDeviceId**, 请确保在查询条件中进行更改。
+5. 添加以下变量声明。 将 `{iothubconnectionstring}` 占位符值替换为在["获取 IoT 中心连接字符串](#get-the-iot-hub-connection-string)" 中复制的值。 如果注册的设备不同于**myDeviceId**，请确保在查询条件中进行更改。
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -269,7 +271,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 现在，已准备就绪，可以运行应用程序了。
 
-1. 在 simDevice 文件夹的命令提示符处，运行以下命令以开始侦听重启直接方法。
+1. 在 **simDevice** 文件夹的命令提示符处，运行以下命令以开始侦听重新启动直接方法。
 
     ```console
     node simDevice.js
@@ -283,11 +285,11 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 3. 可以在控制台中看到直接方法和作业状态的设备响应。
 
-   下面显示了对直接方法的设备响应:
+   下面显示了对直接方法的设备响应：
 
    ![模拟设备应用输出](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
 
-   下面显示了直接方法和设备克隆更新的服务计划作业, 以及运行到完成的作业:
+   下面显示了直接方法和设备克隆更新的服务计划作业，以及运行到完成的作业：
 
    ![运行模拟设备应用](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
@@ -295,6 +297,6 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
-若要继续了解 IoT 中心和设备管理模式 (如远程通过无线固件更新) 的入门, [请参阅教程:如何执行固件更新](tutorial-firmware-update.md)。
+若要继续了解 IoT 中心和设备管理模式（如远程通过无线固件更新）的入门，请参阅[教程：如何进行固件更新](tutorial-firmware-update.md)。
 
-若要继续了解 IoT 中心入门, 请参阅[Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)入门。
+若要继续了解 IoT 中心入门，请参阅[Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)入门。

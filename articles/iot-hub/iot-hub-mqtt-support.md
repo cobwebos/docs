@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937764"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110726"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -34,33 +34,50 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 * [Azure IoT sdk](https://github.com/Azure/azure-iot-sdks)中的库。
 * MQTT 协议。
 
+许多公司和教育网络环境中的 MQTT 端口（8883）被阻止。 如果无法在防火墙中打开端口8883，建议使用 MQTT over Web Socket。 Web 套接字上的 MQTT 通过端口443进行通信，该端口几乎始终在网络环境中打开。 若要了解如何在使用 Azure IoT Sdk 时使用 Web 套接字协议指定 MQTT 和 MQTT，请参阅[使用设备 sdk](#using-the-device-sdks)。
+
 ## <a name="using-the-device-sdks"></a>使用设备 SDK
 
-支持 MQTT 协议的[设备 sdk](https://github.com/Azure/azure-iot-sdks)可用于 Java、Node.js、C、 C#和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
+支持 MQTT 协议的[设备 sdk](https://github.com/Azure/azure-iot-sdks)可用于 Java、Node.js、C、 C#和 Python。 设备 SDK 使用标准 IoT 中心连接字符串来连接到 IoT 中心。 要使用 MQTT 协议，必须将客户端协议参数设置为 **MQTT**。 你还可以在客户端协议参数中通过 Web 套接字指定 MQTT。 默认情况下，设备 SDK 在 **CleanSession** 标志设置为 **0** 的情况下连接到 IoT 中心，并使用 **QoS 1** 来与 IoT 中心交换消息。
 
 当设备连接到 IoT 中心时，设备 SDK 会提供方法，让设备与 IoT 中心交换消息。
 
-下表包含了每种受支持语言的代码示例链接，并指定了以 MQTT 协议连接到 IoT 中心时要使用的参数。
+下表包含指向每个受支持语言的代码示例的链接，并指定要用于使用 MQTT 或 MQTT over Web Socket 协议建立与 IoT 中心的连接的参数。
 
-| 语言 | 协议参数 |
-| --- | --- |
-| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) |azure-iot-device-mqtt |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |IotHubClientProtocol.MQTT |
-| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
-| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |默认情况下始终支持 MQTT |
+| Language | MQTT 协议参数 | MQTT over Web Socket 协议参数
+| --- | --- | --- |
+| [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure iot-设备 mqtt。Mqtt | azure iot-设备 mqtt。MqttWs |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。MQTT | IotHubClientProtocol MQTT_WS |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet)。Mqtt | 如果 MQTT 失败，Mqtt 将回退到 MQTT over Web Socket。 若要仅通过 Web Socket 指定 MQTT，请使用 TransportType。 Mqtt_WebSocket_Only |
+| [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 默认情况下支持 MQTT | 在调用中添加 `websockets=True` 来创建客户端 |
 
-### <a name="default-keep-alive-timeout"></a>默认保持活动超时 
+以下代码片段演示了如何在使用 Azure IoT node.js SDK 时使用 Web 套接字协议指定 MQTT：
+
+```javascript
+var Client = require('azure-iot-device').Client;
+var Protocol = require('azure-iot-device-mqtt').MqttWs;
+var client = Client.fromConnectionString(deviceConnectionString, Protocol);
+```
+
+以下代码片段演示了如何在使用 Azure IoT Python SDK 时使用 Web 套接字协议指定 MQTT：
+
+```python
+from azure.iot.device.aio import IoTHubDeviceClient
+device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectionString, websockets=True)
+```
+
+### <a name="default-keep-alive-timeout"></a>默认保持活动超时
 
 为了确保客户端/IoT 中心连接保持活动状态，服务和客户端定期发送*保持活动状态*的 ping。 使用 IoT SDK 的客户端按下表中定义的间隔发送 keep-alive：
 
-|语言  |默认 keep-alive 间隔  |可配置性  |
+|Language  |默认 keep-alive 间隔  |可配置性  |
 |---------|---------|---------|
-|Node.js     |   180秒      |     否    |
-|Java     |    230秒     |     否    |
+|Node.js     |   180秒      |     是    |
+|Java     |    230秒     |     是    |
 |C     | 240秒 |  [是](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python （V2）   | 60 秒 |  否   |
+|Python （V2）   | 60 秒 |  是   |
 
 遵循[MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)后，IoT 中心保持活动状态的 ping 间隔是客户端 keep-alive 值的1.5 倍。 但是，IoT 中心将最大服务器端超时限制为29.45 分钟（1767秒），因为所有 Azure 服务都绑定到 Azure 负载均衡器 TCP 空闲超时，这是29.45 分钟。 
 
@@ -323,7 +340,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
 | 204 | 成功（不返回任何内容） |
 | 429 | 请求过多（受限），因为每个[IoT 中心限制](iot-hub-devguide-quotas-throttling.md) |
@@ -354,9 +371,9 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 可能的状态代码为：
 
-|状态 | Description |
+|状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 200 | 成功 |
 | 400 | 错误的请求。 格式不正确的 JSON |
 | 429 | 请求过多（受限），因为每个[IoT 中心限制](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 服务器错误 |

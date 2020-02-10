@@ -2,22 +2,20 @@
 title: 锁定资源以防止更改
 description: 通过对所有用户和角色应用锁，来防止用户更新或删除关键 Azure 资源。
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644335"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109539"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改
 
 管理员可能需要锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 可以将锁定级别设置为 **CanNotDelete** 或 **ReadOnly**。 在门户中，锁定分别称为**删除**和**只读**。
 
 * **CanNotDelete** 表示经授权的用户仍可读取和修改资源，但不能删除资源。 
-* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** 表示经授权的用户可以读取资源，但不能删除或更新资源。 应用此锁类似于将所有经授权的用户限制于使用“读者”角色授予的权限。
 
 ## <a name="how-locks-are-applied"></a>锁的应用方式
 
@@ -36,6 +34,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 * 包含虚拟机的资源组上的**ReadOnly**锁将阻止所有用户启动或重新启动虚拟机。 这些操作需要 POST 请求。
 
 ## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
+
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
 
 ## <a name="managed-applications-and-locks"></a>托管应用程序和锁
@@ -58,7 +57,12 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 
 ![删除服务](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure 备份和锁定
+
+如果你锁定由 Azure 备份服务创建的资源组，则备份将开始失败。 服务最多支持18个还原点。 使用**CanNotDelete**锁时，备份服务无法清理还原点。 有关详细信息，请参阅[常见问题-备份 Azure vm](../../backup/backup-azure-vm-backup-faq.md)。
+
 ## <a name="portal"></a>门户
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>模板
@@ -68,12 +72,12 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 对**资源**应用锁定时，请使用以下格式：
 
 * 名称-`{resourceName}/Microsoft.Authorization/{lockName}`
-* type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
+* 类型 - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 将锁定应用到**资源组**或**订阅**时，请使用以下格式：
 
 * 名称-`{lockName}`
-* type - `Microsoft.Authorization/locks`
+* 类型 - `Microsoft.Authorization/locks`
 
 以下示例演示可创建应用服务计划、网站和网站上的锁的模板。 锁的资源类型是要锁定的资源的资源类型和 **/providers/locks**。 锁名是通过将包含 **/Microsoft.Authorization/** 的资源名称与锁名连接起来创建的。
 
@@ -216,13 +220,13 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST API
-可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
+可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 使您可以创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用**2016-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是您想要对该锁使用的任何称谓。 对于 api 版本，请使用**2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 
@@ -235,6 +239,6 @@ az lock delete --ids $lockid
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用逻辑方式组织资源的信息，请参阅[使用标记来组织资源](tag-resources.md)
-* 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
+* 你可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 

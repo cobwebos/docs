@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: elioda
-ms.openlocfilehash: 02ff65b27e03db9e9a48910e23d8ebf46de905a5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 55dc7f73a3e5bbff2e6e331ba0bd7d4088a86536
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060733"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110828"
 ---
-# <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门 (node.js)
+# <a name="get-started-with-device-twins-nodejs"></a>设备孪生入门（node.js）
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
@@ -31,11 +31,13 @@ ms.locfileid: "70060733"
 
 ## <a name="prerequisites"></a>先决条件
 
-要完成本教程，需要：
+若要完成本教程，你需要：
 
-* Node.js 版本 10.0.x 或更高版本。
+* Node.js 版本 10.0. x 或更高版本。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -55,7 +57,7 @@ ms.locfileid: "70060733"
 
 在本部分中，将创建一个 Node.js 控制台应用，该应用将位置元数据添加到与 **myDeviceId** 关联的设备孪生。 然后，该应用将选择位于美国的设备来查询存储在 IoT 中心的设备孪生，然后查询报告移动电话网络连接的设备孪生。
 
-1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的**addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 `--yes`参数接受所有默认值。
+1. 新建名为 **addtagsandqueryapp** 的空文件夹。 在命令提示符下的**addtagsandqueryapp** 文件夹中，使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
 
     ```cmd/sh
     npm init --yes
@@ -69,7 +71,7 @@ ms.locfileid: "70060733"
 
 3. 使用文本编辑器，在 **addtagsandqueryapp** 文件夹中创建一个新的 **AddTagsAndQuery.js** 文件。
 
-4. 将以下代码添加到**AddTagsAndQuery**文件。 将`{iot hub connection string}`替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
+4. 将以下代码添加到**AddTagsAndQuery**文件。 将 `{iot hub connection string}` 替换为在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串。
 
    ``` javascript
         'use strict';
@@ -132,7 +134,7 @@ ms.locfileid: "70060733"
 
     上面的代码执行两个查询：第一个仅选择位于 **Redmond43** 工厂的设备孪生，第二个将查询细化为仅选择还要通过蜂窝网络连接的设备。
 
-    当代码创建**查询**对象时, 它将指定第二个参数中返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为**next**的方法可用于非设备孪生的结果 (例如聚合查询的结果)。
+    当代码创建**查询**对象时，它将指定第二个参数中返回的最大文档数。 **query** 对象包含 **hasMoreResults** 布尔值属性，可以使用它多次调用 **nextAsTwin** 方法来检索所有结果。 名为**next**的方法可用于非设备孪生的结果（例如聚合查询的结果）。
 
 6. 使用以下方法运行应用程序：
 
@@ -150,13 +152,13 @@ ms.locfileid: "70060733"
 
 在本部分中，将创建一个 Node.js 控制台应用作为 **myDeviceId** 连接到中心，然后更新其设备孪生的报告属性，说明它是使用手机网络进行连接的。
 
-1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 `--yes`参数接受所有默认值。
+1. 新建名为 **reportconnectivity** 的空文件夹。 在 **reportconnectivity** 文件夹中，在命令提示符下使用以下命令创建新的 package.json 文件。 `--yes` 参数接受所有默认值。
 
     ```cmd/sh
     npm init --yes
     ```
 
-2. 在命令提示符下, 在**reportconnectivity**文件夹中运行以下命令, 安装**azure iot-设备**和**mqtt**包:
+2. 在命令提示符下，在**reportconnectivity**文件夹中运行以下命令，安装**azure iot-设备**和**mqtt**包：
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
@@ -164,7 +166,7 @@ ms.locfileid: "70060733"
 
 3. 使用文本编辑器，在 **reportconnectivity** 文件夹中创建一个新的 **ReportConnectivity.js** 文件。
 
-4. 将以下代码添加到**ReportConnectivity**文件。 将`{device connection string}`替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建**myDeviceId**设备标识时复制的设备连接字符串。
+4. 将以下代码添加到**ReportConnectivity**文件。 将 `{device connection string}` 替换为在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中创建**myDeviceId**设备标识时复制的设备连接字符串。
 
     ```javascript
         'use strict';
@@ -226,7 +228,7 @@ ms.locfileid: "70060733"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 还学习了如何使用类似 SQL 的 IoT 中心查询语言来查询此信息。
+在本教程中，你已在 Azure 门户中配置了新的 IoT 中心，并在 IoT 中心的标识注册表中创建了设备标识。 已从后端应用以标记形式添加了设备元数据，并编写了模拟的设备应用，用于报告设备孪生中的设备连接信息。 还学习了如何使用类似于 SQL 的 IoT 中心查询语言查询此信息。
 
 使用下列资源了解如何执行以下操作：
 
@@ -234,4 +236,4 @@ ms.locfileid: "70060733"
 
 * 按照[使用所需属性配置设备](tutorial-device-twins.md)教程使用设备孪生的所需属性配置设备，
 
-* 通过[使用直接方法](quickstart-control-device-node.md)教程, 以交互方式控制设备 (例如从用户控制的应用打开风扇)。
+* 通过[使用直接方法](quickstart-control-device-node.md)教程，以交互方式控制设备（例如从用户控制的应用打开风扇）。

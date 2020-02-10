@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f016902f6cf7e0238dadb97d816f4590caec112e
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264265"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109345"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 排查查询问题
 
@@ -146,7 +146,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 
 **Ru 费用：** 409.51 RU
 
-### <a name="optimized"></a>优化
+### <a name="optimized"></a>已优化
 
 更新的索引策略：
 
@@ -219,13 +219,13 @@ SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c.
 
 **Ru 费用：** 44.28 RU
 
-### <a name="optimized"></a>优化
+### <a name="optimized"></a>已优化
 
 更新的查询（包括 `ORDER BY` 子句中的两个属性）：
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -315,7 +315,7 @@ WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushro
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 对分区键使用范围筛选器或对分区键没有任何筛选器的查询，将需要 "扇出"，并检查每个物理分区的结果索引。

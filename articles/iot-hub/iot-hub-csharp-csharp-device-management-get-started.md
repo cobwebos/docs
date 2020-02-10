@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 79e65671613364f5cc05153d90cfdcd5959a279f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939324"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110255"
 ---
 # <a name="get-started-with-device-management-net"></a>设备管理入门（.NET）
 
@@ -34,11 +34,13 @@ ms.locfileid: "76939324"
 
 * **TriggerReboot**。 此应用调用模拟设备应用中的直接方法，显示响应，并显示更新后的报告属性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Visual Studio。
 
 * 有效的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -62,7 +64,7 @@ ms.locfileid: "76939324"
 
 1. 在 "**创建新项目**" 中，找到并选择 "**控制台应用（.NET Framework）** " 项目模板，然后选择 "**下一步**"。
 
-1. 在 "**配置新项目**" 中，将项目命名为 " *TriggerReboot*"，并选择 .NET Framework 4.5.1 或更高版本。 选择“创建”。
+1. 在 "**配置新项目**" 中，将项目命名为 " *TriggerReboot*"，并选择 .NET Framework 4.5.1 或更高版本。 选择 **“创建”** 。
 
     ![新的 Visual C# Windows 经典桌面项目](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -74,7 +76,7 @@ ms.locfileid: "76939324"
 
    此步骤将下载、安装 [Azure IoT 服务 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet 包及其依赖项并添加对其的引用。
 
-1. 在 Program.cs 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs`using`**文件顶部添加以下** 语句：
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -126,7 +128,7 @@ ms.locfileid: "76939324"
    Console.ReadLine();
    ```
 
-1. 选择“生成” > “生成解决方案”。
+1. 选择“生成” **“生成解决方案”**  > 。
 
 > [!NOTE]
 > 本教程仅针对设备的报告属性执行单个查询。 在生产代码中，我们建议通过轮询来检测报告属性是否更改。
@@ -145,19 +147,19 @@ ms.locfileid: "76939324"
 
 1. 在 Visual Studio 中，在已创建的 TriggerReboot 解决方案中，选择 "**文件** > **新建** > **项目**"。 在 "**创建新项目**" 中，找到并选择 "**控制台应用（.NET Framework）** " 项目模板，然后选择 "**下一步**"。
 
-1. 在 "**配置新项目**" 中，将项目命名为 " *SimulateManagedDevice*"，对于 "**解决方案**"，选择 "**添加到解决方案**"。 选择“创建”。
+1. 在 "**配置新项目**" 中，将项目命名为 " *SimulateManagedDevice*"，对于 "**解决方案**"，选择 "**添加到解决方案**"。 选择 **“创建”** 。
 
     ![命名，并将项目添加到解决方案](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 
 1. 在解决方案资源管理器中，右键单击新的 " **SimulateManagedDevice** " 项目，然后选择 "**管理 NuGet 包**"。
 
-1. 选择 "**浏览**"，搜索并选择 " **Microsoft Azure**"。 选择“安装”。
+1. 选择 "**浏览**"，搜索并选择 " **Microsoft Azure**"。 选择**安装**。
 
     ![“NuGet 包管理器”窗口客户端应用](./media/iot-hub-csharp-csharp-device-management-get-started/create-device-nuget-devices-client.png)
 
    此步骤将下载、安装[Azure IoT 设备 SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs`using`**文件顶部添加以下** 语句：
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -236,7 +238,7 @@ ms.locfileid: "76939324"
 
 1. 对于 "**常见属性** > **启动项目**"，选择 "**单个启动项目**"，然后选择 " **SimulateManagedDevice** " 项目。 选择“确定”保存更改。
 
-1. 选择“生成” > “生成解决方案”。
+1. 选择“生成” **“生成解决方案”**  > 。
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按照[暂时性故障处理](/azure/architecture/best-practices/transient-faults)中的建议，实现重试策略（例如指数回退）。

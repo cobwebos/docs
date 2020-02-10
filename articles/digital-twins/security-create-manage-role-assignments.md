@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438058"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110411"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
@@ -36,7 +36,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| Attribute | 名称 | 需要 | 类型 | Description |
+| 属性 | 名称 | 必需 | 类型 | 说明 |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
 | objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 然后，具有“管理员”角色的用户可以通过向以下 URL 发出经过身份验证的 HTTP POST 请求，将“空间管理员”角色分配给用户：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 若要列出所有可用的角色（角色定义），请向以下对象发出经过身份验证的 HTTP GET 请求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,16 +157,16 @@ YOUR_MANAGEMENT_API_URL/system/roles
 
 若要检查特定的角色分配，请向以下对象发出经过身份验证的 HTTP GET 请求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
 | **参数值** | **必需** |  类型 |  **说明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  正确 | String |   UserId objectIdType 的 objectId。 |
-| YOUR_PATH | 正确 | String |   要检查访问权限的所选路径。 |
-| YOUR_ACCESS_TYPE |  正确 | String |   *读取*、*创建*、*更新*或*删除* |
-| YOUR_RESOURCE_TYPE | 正确 | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
+| YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
+| YOUR_PATH | True | String |   要检查访问权限的所选路径。 |
+| YOUR_ACCESS_TYPE |  True | String |   *读取*、*创建*、*更新*或*删除* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*、 *DeviceBlobMetadata*、 *DeviceExtendedProperty*、 *ExtendedPropertyKey*、 *ExtendedType*、 *Endpoint*、*密钥*存储 *、匹配程序*、 *Ontology*、 *Report*、RoleDefinition *、SensorExtendedProperty、* *SpaceBlobMetadata*、 *Space*、 *SpaceExtendedProperty*、 *SpaceResource*、 *SpaceRoleAssignment*、、 *System*、 *UerDefinedFunction*、 *User*、 *UserBlobMetadata*或*UserExtendedProperty* |
 
 成功的请求将返回布尔值 `true` 或 `false`，指示是否已将该访问类型分配到给定路径和资源的用户。
 
@@ -174,7 +174,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 若要检查某个路径的所有角色分配，请向以下对象发出经过身份验证的 HTTP GET 请求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 若要撤消接收方的权限，请通过发出经过身份验证的 HTTP DELETE 请求来删除角色分配：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 
 若要创建角色分配，请向以下 URL 发出经过身份验证的 HTTP POST 请求：
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 

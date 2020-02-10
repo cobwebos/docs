@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: f024659385a92df97b55e88ae217aa9e1e13d860
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 02/10/2020
+ms.openlocfilehash: eb4b51c94a62ad9f700b7cd448ff0f53485a16bf
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732342"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110455"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -35,13 +35,13 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 > [!IMPORTANT]
 > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用不同于基于消耗的定价计划的定价计划。 若要了解 ISEs 的定价和计费工作原理，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价费率，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)。 如果没有虚拟网络，请了解如何[创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。
 
-  * 虚拟网络需要四个*空*子网，以便在 ISE 中创建和部署资源。 你可以提前创建这些子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。
+  * 虚拟网络需要四个*空*子网，以便在 ISE 中创建和部署资源。 每个子网支持用于 ISE 的不同逻辑应用组件。 你可以提前创建这些子网，也可以等待，直到创建了你可以在其中创建子网的 ISE。 了解有关[子网要求](#create-subnet)的详细信息。
 
   * 子网名称必须以字母字符或下划线开头，不能使用以下字符： `<`、`>`、`%`、`&`、`\\`、`?`、`/`。 
   
@@ -66,7 +66,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
 将 ISE 与 Azure 虚拟网络一起使用时，常见的安装问题是有一个或多个被阻止的端口。 用于在 ISE 与目标系统之间建立连接的连接器还可能有自己的端口要求。 例如，如果使用 FTP 连接器与 FTP 系统进行通信，则需要提供在 FTP 系统上使用的端口，例如，用于发送命令的端口21。
 
-若要确保 ISE 可以访问，并且此 ISE 中的逻辑应用可以在虚拟网络中的子网之间进行通信，请[打开此表中的端口](#network-ports-for-ise)。 如果任何所需的端口不可用，ISE 将无法正常运行。
+若要确保 ISE 可以访问，并且此 ISE 中的逻辑应用可以在虚拟网络中的每个子网之间进行通信，请[打开此表中描述的每个子网的端口](#network-ports-for-ise)。 如果任何所需的端口不可用，ISE 将无法正常运行。
 
 * 如果有多个 ISE 实例需要访问具有 IP 限制的其他终结点，请将[Azure 防火墙](../firewall/overview.md)或[网络虚拟设备](../virtual-network/virtual-networks-overview.md#filter-network-traffic)部署到虚拟网络中，并通过该防火墙或网络虚拟设备路由出站流量。 然后，可以[设置单一、出站、公共、静态和可预测的 IP 地址](connect-virtual-network-vnet-set-up-single-ip-address.md)，虚拟网络中的所有 ISE 实例都可以使用该地址与目标系统进行通信。 这样，就无需在每个 ISE 的目标系统上设置其他防火墙。
 
@@ -86,20 +86,20 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 此表介绍你的 ISE 使用的 Azure 虚拟网络中的端口以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)代表一组 IP 地址前缀，有助于在创建安全规则时最大程度地降低复杂性。
 
 > [!IMPORTANT]
-> 源端口是暂时的，因此请确保将其设置为所有规则 `*`。
+> 源端口是暂时的，因此请确保将其设置为所有规则 `*`。 如上所述，内部 ISE 和外部 ISE 引用[在创建 ISE 时选择的终结点](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
-| 用途 | 方向 | 目标端口 | 源服务标记 | 目标服务标记 | 说明 |
+| 目的 | Direction | 目标端口 | 源服务标记 | 目标服务标记 | 注意 |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intrasubnet 通信 | 入站和出站 | * | - | - | **重要提示**：若要在子网内的组件之间进行通信，请确保打开这些子网中的所有端口。 |
+| Intrasubnet 通信 | 入站和出站 | * | 包含 ISE 子网的虚拟网络的地址空间 | 包含 ISE 子网的虚拟网络的地址空间 | 需要，以便流量可以在每个子网内流动。 <p><p>**重要提示**：若要在子网内的组件之间进行通信，请确保打开这些子网中的所有端口。 |
 | Intersubnet 通信 | 入站和出站 | 80、443 | VirtualNetwork | VirtualNetwork | 子网之间的通信 |
 | 从 Azure 逻辑应用通信 | 出站 | 80、443 | VirtualNetwork | Internet | 端口依赖于逻辑应用服务通信时所用的外部服务 |
 | Azure Active Directory | 出站 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure 存储依赖项 | 出站 | 80、443 | VirtualNetwork | 存储空间 | |
-| 与 Azure 逻辑应用通信 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 调用逻辑应用中存在的任何请求触发器或 webhook 的计算机或服务的 IP 地址。 关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
-| 逻辑应用运行历史记录 | 入站 | 443 | 内部访问终结点： <br>VirtualNetwork <p><p>外部访问终结点： <br>Internet <p><p>**注意**：这些终结点引用[在创建 ISE 时选择](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)的终结点设置。 有关详细信息，请参阅[终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 | VirtualNetwork | 从中查看逻辑应用的运行历史记录的计算机的 IP 地址。 尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
+| Azure 存储依赖项 | 出站 | 80、443 | VirtualNetwork | 存储 | |
+| 与 Azure 逻辑应用通信 | 入站 | 443 | 内部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet | VirtualNetwork | 在逻辑应用中调用任何请求触发器或 webhook 的计算机或服务的 IP 地址。 关闭或阻止此端口会阻止对具有请求触发器的逻辑应用的 HTTP 调用。 |
+| 逻辑应用运行历史记录 | 入站 | 443 | 内部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet | VirtualNetwork | 要从中查看逻辑应用运行历史记录的计算机的 IP 地址。 尽管关闭或阻止此端口不会阻止你查看运行历史记录，但无法查看该运行历史记录中每个步骤的输入和输出。 |
 | 连接管理 | 出站 | 443 | VirtualNetwork  | 应用服务 | |
 | 发布诊断日志和指标 | 出站 | 443 | VirtualNetwork  | AzureMonitor | |
-| 来自 Azure 流量管理器的通信 | 入站 | 443 | AzureTrafficManager | VirtualNetwork | |
+| 来自 Azure 流量管理器的通信 | 入站 | 内部 ISE：454 <p><p>外部 ISE：443 | AzureTrafficManager | VirtualNetwork | |
 | 逻辑应用设计器 - 动态属性 | 入站 | 454 | 请参阅 "说明" 列，了解允许的 IP 地址 | VirtualNetwork | 请求来自该区域的逻辑应用访问终结点[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)IP 地址。 |
 | 网络运行状况检查 | 入站 | 454 | 请参阅 "说明" 列，了解允许的 IP 地址 | VirtualNetwork | 请求来自逻辑应用访问终结点，适用于该区域的[入站](../logic-apps/logic-apps-limits-and-config.md#inbound)和[出站](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 地址。 |
 | 应用服务管理依赖项 | 入站 | 454、455 | AppServiceManagement | VirtualNetwork | |
@@ -110,7 +110,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 | API 管理 - 管理终结点 | 入站 | 3443 | APIManagement | VirtualNetwork | |
 | “记录到事件中心”策略和监视代理中的依赖项 | 出站 | 5672 | VirtualNetwork | EventHub | |
 | 访问角色实例之间的 Azure Redis 缓存实例 | 入站 <br>出站 | 6379-6383 | VirtualNetwork | VirtualNetwork | 此外，要使 ISE 使用 Azure Cache for Redis，必须打开[Azure cache For REDIS 常见问题中所述的这些出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
-| Azure 负载均衡器 | 入站 | * | AzureLoadBalancer | VirtualNetwork | |
+| Azure 负载平衡器 | 入站 | * | AzureLoadBalancer | VirtualNetwork | |
 ||||||
 
 <a name="create-environment"></a>
@@ -132,14 +132,14 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    ![提供环境详细信息](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | 属性 | 需要 | 值 | Description |
+   | 属性 | 必需 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **订阅** | 是 | <*Azure-subscription-name*> | 用于环境的 Azure 订阅 |
    | **资源组** | 是 | <*Azure-resource-group-name*> | 要在其中创建环境的 Azure 资源组 |
    | **Integration service 环境名称** | 是 | <*environment-name*> | ISE 名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）和句点（`.`）。 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要在其中部署环境的 Azure 数据中心区域 |
    | **SKU** | 是 | **高级**或**开发人员（无 SLA）** | 要创建和使用的 ISE SKU。 有关这些 Sku 之间的差异，请参阅[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
-   | **额外容量** | 高级： <br>是 <p><p>开发人员版： <br>不适用 | 高级： <br>0到10 <p><p>开发人员版： <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
+   | **额外容量** | 高级版： <br>是 <p><p>开发人员版： <br>不适用 | 高级版： <br>0到10 <p><p>开发人员版： <br>不适用 | 要用于此 ISE 资源的其他处理单元的数量。 若要在创建后添加容量，请参阅[添加 ISE 容量](#add-capacity)。 |
    | **访问终结点** | 是 | **内部**或**外部** | 要用于 ISE 的访问终结点的类型。 这些终结点确定 ISE 中逻辑应用的请求或 webhook 触发器是否可以从虚拟网络外部接收调用。 <p><p>你的选择还会影响你可以查看和访问逻辑应用运行历史记录中的输入和输出的方式。 有关详细信息，请参阅[ISE 终结点访问](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要说明**：此选项仅在创建 ISE 时可用，不能在以后更改。 |
    | **虚拟网络** | 是 | <Azure-virtual-network-name> | 要注入环境以便该环境中的逻辑应用可以访问虚拟网络的 Azure 虚拟网络。 如果没有网络，请[先创建 Azure 虚拟网络](../virtual-network/quick-create-portal.md)。 <p>**重要提示**：只有在创建 ISE 时*才*可以执行此注入。 |
    | **子网** | 是 | <*subnet-resource-list*> | ISE 需要四个*空*子网，以便在您的环境中创建和部署资源。 要创建每个子网，请[按照此表下方的步骤操作](#create-subnet)。 |
@@ -159,7 +159,7 @@ ISE 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和�
 
    * 使用无[类别域间路由（CIDR）格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)和 B 类地址空间。
 
-   * 至少在地址空间中使用 `/27`，因为每个子*网至少必须具有 32* *地址。* 例如：
+   * 至少在地址空间中使用 `/27`，因为每个子网*至少*需要 32*地址。* 例如：
 
      * `10.0.0.0/27` 具有32地址，因为 2<sup>（32-27）</sup>为 2<sup>5</sup>或32。
 

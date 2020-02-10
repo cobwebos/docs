@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 53bff62795e54d88e768b3a22c8b358519b69a91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767808"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110424"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>使用 IoT 中心发送云到设备消息 (Python)
 
@@ -41,9 +41,11 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模拟设备应用中接收消息
 
@@ -51,7 +53,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 使用文本编辑器，创建一个 **SimulatedDevice.py** 文件。
 
-2. 在 **SimulatedDevice.py** 文件的开头添加以下 `import` 语句和变量：
+2. 在 `import`SimulatedDevice.py**文件的开头添加以下** 语句和变量：
 
    ```python
     import threading
@@ -122,7 +124,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 使用文本编辑器，创建一个 **SendCloudToDeviceMessage.py** 文件。
 
-2. 在 **SendCloudToDeviceMessage.py** 文件的开头添加以下 `import` 语句和变量：
+2. 在 `import`SendCloudToDeviceMessage.py**文件的开头添加以下** 语句和变量：
 
     ```python
     import random
@@ -244,7 +246,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 5. 注意设备收到的消息。
 
-    ![收到的消息](./media/iot-hub-python-python-c2d/message-received.png)
+    ![接收到的消息](./media/iot-hub-python-python-c2d/message-received.png)
 
 ## <a name="next-steps"></a>后续步骤
 

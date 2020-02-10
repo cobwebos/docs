@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678172"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110016"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Web 活动
 Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
 
 > [!NOTE]
-> Web 活动只能调用公开显示的 URL。 专用虚拟网络中承载的 Url 不支持此方法。
+> Web 活动只能调用公开显示的 Url。 专用虚拟网络中承载的 Url 不支持此方法。
 
 ## <a name="syntax"></a>语法
 
@@ -63,16 +63,16 @@ Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
 name | Web 活动的名称 | String | 是
 type | 必须设置为 **WebActivity**。 | String | 是
-method | 目标终结点的 Rest API 方法。 | 字符串。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
+方法 | 目标终结点的 Rest API 方法。 | “字符串”。 <br/><br/>支持的类型：“GET”、“POST”、“PUT” | 是
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 如果活动在 1 分钟内未收到终结点的响应，则会超时并显示错误。 | 是
-headers | 发送到请求的标头。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字符串（或带有 resultType 字符串的表达式） | 是，需要内容类型标头。 `"headers":{ "Content-Type":"application/json"}`
+页眉 | 发送到请求的标头。 例如，若要在请求中设置语言和类型：`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`。 | 字符串（或带有 resultType 字符串的表达式） | 是，需要内容类型标头。 `"headers":{ "Content-Type":"application/json"}`
 body | 表示要发送到终结点的有效负载。  | 字符串（或带有 resultType 字符串的表达式）。 <br/><br/>请参阅[请求有效负载架构](#request-payload-schema)部分中的请求有效负载架构。 | POST/PUT 方法所必需。
-authentication | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 否
-datasets | 传递给终结点的数据集列表。 | 数据集引用数组。 可以是空数组。 | 是
+喷靡 | 用于调用该终结点的身份验证方法。 支持的类型为“Basic”或“ClientCertificate”。 有关详细信息，请参阅[身份验证](#authentication)部分。 如果不需要身份验证，则排除此属性。 | 字符串（或带有 resultType 字符串的表达式） | 是
+数据集 | 传递给终结点的数据集列表。 | 数据集引用数组。 可以是空数组。 | 是
 linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用数组。 可以是空数组。 | 是
 
 > [!NOTE]
@@ -90,10 +90,14 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 
 ## <a name="authentication"></a>身份验证
 
+下面是 web 活动中支持的身份验证类型。
+
 ### <a name="none"></a>无
+
 如果不需要身份验证，请排除“身份验证”属性。
 
 ### <a name="basic"></a>基本
+
 指定用户名和密码以用于基本身份验证。
 
 ```json
@@ -105,6 +109,7 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
 ```
 
 ### <a name="client-certificate"></a>客户端证书
+
 指定 base64 编码的 PFX 文件内容和密码。
 
 ```json
@@ -125,6 +130,9 @@ linkedServices | 传递给终结点的链接服务列表。 | 链接服务引用
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> 如果你的数据工厂配置了 git 存储库，则必须将你的凭据存储在 Azure Key Vault 中，才能使用基本身份验证或客户端证书身份验证。 Azure 数据工厂不会在 git 中存储密码。
 
 ## <a name="request-payload-schema"></a>请求有效负载架构
 当使用 POST/PUT 方法时，正文属性表示发送到终结点的有效负载。 可以将链接服务和数据集作为有效负载的一部分进行传递。 下面是有效负载的架构：
@@ -244,7 +252,7 @@ public HttpResponseMessage Execute(JObject payload)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-请参阅数据工厂支持的其他控制流活动：
+查看数据工厂支持的其他控制流活动：
 
 - [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)

@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 5b2e4c03347020b5d5fc67927165403f06854e0b
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147448"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110918"
 ---
-# <a name="get-started-with-device-management-nodejs"></a>设备管理入门 (node.js)
+# <a name="get-started-with-device-management-nodejs"></a>设备管理入门（node.js）
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 本教程演示如何：
 
-* 使用[Azure 门户](https://portal.azure.com)创建 iot 中心, 并在 IoT 中心创建设备标识。
+* 使用[Azure 门户](https://portal.azure.com)创建 iot 中心，并在 IoT 中心创建设备标识。
 
 * 创建包含重新启动该设备的直接方法的模拟设备应用。 直接方法是从云中调用的。
 
@@ -35,9 +35,11 @@ ms.locfileid: "70147448"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Node.js 版本 10.0.x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍了如何在 Windows 或 Linux 上安装本教程所用的 Node.js。
+* Node.js 版本 10.0. x 或更高版本。 [准备开发环境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)介绍如何在 Windows 或 Linux 上安装本教程所用的 node.js。
 
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -80,7 +82,7 @@ ms.locfileid: "70147448"
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将`{yourdeviceconnectionstring}`占位符值替换为之前在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
+5. 添加 **connectionString** 变量，并使用它创建一个**客户端**实例。  将 `{yourdeviceconnectionstring}` 占位符值替换为之前在[IoT 中心注册新设备](#register-a-new-device-in-the-iot-hub)中复制的设备连接字符串。  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -180,7 +182,7 @@ ms.locfileid: "70147448"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 添加以下变量声明, 并将`{iothubconnectionstring}`占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串:
+5. 添加以下变量声明，并将 `{iothubconnectionstring}` 占位符值替换为之前在[获取 iot 中心连接字符串](#get-the-iot-hub-connection-string)中复制的 iot 中心连接字符串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -260,11 +262,11 @@ ms.locfileid: "70147448"
 
 3. 可以在控制台中看到 "重新启动直接方法" 和 "重新启动" 状态的设备响应。
 
-   下面显示了服务发送的重新启动直接方法的设备响应:
+   下面显示了服务发送的重新启动直接方法的设备响应：
 
    ![manageddevice 应用输出](./media/iot-hub-node-node-device-management-get-started/device.png)
 
-   下图显示了在上次重新启动时触发重新启动并轮询设备克隆的服务:
+   下图显示了在上次重新启动时触发重新启动并轮询设备克隆的服务：
 
    ![triggerrebootondevice 应用输出](./media/iot-hub-node-node-device-management-get-started/service.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a206ef6eb529fc396ec4ecb82d468c19f9e54b8a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898848"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108257"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -39,7 +39,7 @@ ms.locfileid: "76898848"
 可以通过两种方式生成开发人员门户：
 
 - **托管版本**-通过编辑和自定义门户，该门户内置于 API 管理实例，并可通过 URL `<your-api-management-instance-name>.developer.azure-api.net`进行访问。 请参阅[此文档一文](api-management-howto-developer-portal-customize.md)，了解如何访问和自定义托管门户。
-- **自承载版本**-通过在 API 管理实例之外部署和自我托管你的门户。 此方法允许您编辑门户的基本代码并扩展提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库中的门户源代码][1]和[实现小组件教程][4]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
+- **自承载版本**-通过在 API 管理实例之外部署和自我托管你的门户。 此方法允许您编辑门户的基本代码并扩展提供的核心功能。 还需要自己将门户升级到最新版本。 有关详细信息和说明，请参阅[GitHub 存储库中的门户源代码][1]和[实现小组件教程][3]。 [托管版本教程](api-management-howto-developer-portal-customize.md)介绍了门户的管理面板，该面板还在自承载版本中提供。
 
 ## <a name="portal-architectural-concepts"></a>门户体系结构概念
 
@@ -98,13 +98,13 @@ ms.locfileid: "76898848"
 
 ### <a name="has-the-old-portal-been-deprecated"></a>旧门户是否已弃用？
 
-旧的开发人员和发布者门户现在是*旧*功能，它们仅接收安全更新。 新功能仅在新版开发人员门户中实现。
+旧的开发人员和发布者门户现在是*旧*功能，它们仅接收安全更新。 新功能将仅在新的开发人员门户中实现。
 
 旧门户的弃用将单独发布。 如果你有疑问、问题或意见，请[在专用 GitHub 问题中](https://github.com/Azure/api-management-developer-portal/issues/121)提出。
 
 ### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>门户中不支持我需要的功能
 
-使用自承载版本并[实现你自己的小组件][4]。
+使用自承载版本并[实现你自己的小组件][3]。
 
 ### <a name="how-can-i-automate-portal-deployments"></a>如何自动部署门户？
 
@@ -114,7 +114,7 @@ ms.locfileid: "76898848"
 
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>门户是否支持 Azure 资源管理器模板和/或它是否与 API 管理 DevOps 资源工具包兼容？
 
-不。
+No。
 
 ### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>是否需要为新的托管门户依赖项启用附加 VNet 连接？
 
@@ -216,12 +216,12 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>门户的浏览器支持有哪些？
 
-| 浏览器                     | 受支持       |
+| 浏览器                     | 支持       |
 |-----------------------------|-----------------|
 | Apple Safari                | 是<sup>1</sup> |
 | Google Chrome               | 是<sup>1</sup> |
 | Microsoft Edge              | 是<sup>1</sup> |
-| Microsoft Internet Explorer | 否              |
+| Microsoft Internet Explorer | 是              |
 | Mozilla Firefox             | 是<sup>1</sup> |
 
  <small><sup>1</sup>在两个最新的生产版本中受支持。</small>
@@ -232,14 +232,12 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
 - [访问和自定义托管开发人员门户](api-management-howto-developer-portal-customize.md)
 - [设置门户的自承载版本][2]
-- [实现自己的小组件][4]
+- [实现自己的小组件][3]
 
 浏览其他资源：
 
 - [带有源代码的 GitHub 存储库][1]
-- [项目的公共路线图][3]
 
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
-[3]: https://github.com/Azure/api-management-developer-portal/projects
-[4]: https://aka.ms/apimdevportal/extend
+[3]: https://aka.ms/apimdevportal/extend

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 2abccf3c891a4e5c4db1e05f09d2e61a590b73b7
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548555"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110471"
 ---
 # <a name="get-started-with-device-management-python"></a>设备管理入门 (Python)
 
@@ -35,9 +35,11 @@ ms.locfileid: "76548555"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
+
+* 请确保已在防火墙中打开端口8883。 本文中的设备示例使用了 MQTT 协议，该协议通过端口8883进行通信。 此端口可能在某些企业和教育网络环境中被阻止。 有关此问题的详细信息和解决方法，请参阅[连接到 IoT 中心（MQTT）](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -65,7 +67,7 @@ ms.locfileid: "76548555"
 
 2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_device**的文件。
 
-3. 在 **dmpatterns_getstarted_device.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_device.py**文件开头添加以下** 语句。
 
     ```python
     import threading
@@ -158,7 +160,7 @@ ms.locfileid: "76548555"
 
 2. 使用文本编辑器，在工作目录中创建一个名为**dmpatterns_getstarted_service**的文件。
 
-3. 在 **dmpatterns_getstarted_service.py** 文件开头添加以下 `import` 语句。
+3. 在 `import`dmpatterns_getstarted_service.py**文件开头添加以下** 语句。
 
     ```python
     import sys, time
