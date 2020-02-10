@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍如何准备环境，以使用 Microsoft Azure 备份 Server （MABS）保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979870"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111596"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -66,6 +66,8 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 > * 作为 System Center Operations Manager 管理服务器的计算机
 > * 运行 Exchange Server 的计算机
 > * 作为群集节点的计算机
+>
+> Windows Server Core 或 Microsoft Hyper-V 服务器不支持安装 Azure 备份服务器。
 
 始终将 Azure 备份服务器加入域。 如果计划将服务器移到其他域，请先安装 Azure 备份服务器，然后将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
@@ -75,7 +77,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 ### <a name="set-storage-replication"></a>设置存储复制
 
-存储复制选项可让用户在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存储选项。
+存储复制选项可让用户在异地冗余存储与本地冗余存储之间进行选择。 默认情况下，恢复服务保管库使用异地冗余存储。 如果此保管库是主保管库，请保留异地冗余存储这一存储选项。 如果想要一个更便宜、但持久性不太高的选项，请选择本地冗余存储。 请参阅 [Azure 存储复制概述](../storage/common/storage-redundancy-grs.md)部分，深入了解[异地冗余](../storage/common/storage-redundancy-lrs.md)和[本地冗余](../storage/common/storage-redundancy.md)存储选项。
 
 若要编辑存储复制设置，请执行以下操作：
 

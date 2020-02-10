@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044910"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111565"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044910"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解决方案更新
-> 此解决方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)常规可用性解决方案取代，并提供[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)。 它们共同提供了以前 Azure Monitor Office 365 解决方案的更新版本，并提供了更好的配置体验。 在2020年3月30日之前，你可以继续使用现有解决方案。
+> 此解决方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)常规可用性解决方案取代，并提供[Azure AD 报告和监视解决方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)。 它们共同提供了以前 Azure Monitor Office 365 解决方案的更新版本，并提供了更好的配置体验。 在2020年4月30日前，你可以继续使用现有解决方案。
 > 
 > Azure Sentinel 是云本机安全信息和事件管理解决方案，引入记录并提供附加的 SIEM 功能，包括检测、调查、搜寻和机器学习驱动见解。 使用 Azure Sentinel 后，将提供 Office 365 SharePoint 活动和 Exchange 管理日志的引入。
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044910"
 >
 > ## <a name="frequently-asked-questions"></a>常见问题
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>问：是否可以在现在和3月30日之间的 Office 365 Azure Monitor 解决方案？
-> 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于3月30日删除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>问：是否可以将 Office 365 Azure Monitor 解决方案从现在到4月30日开始？
+> 不是，Azure Monitor Office 365 解决方案载入脚本不再可用。 解决方案将于4月30日删除。
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>问：表和架构是否会更改？
 > **OfficeActivity**表名称和架构将保持与当前解决方案中的相同。 你可以继续在新的解决方案中使用相同的查询，但不包括引用 Azure AD 数据的查询。
@@ -104,14 +104,14 @@ ms.locfileid: "76044910"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>问： Azure Sentinel 是否提供额外的连接器作为解决方案的一部分？
 > 是，请参阅[Azure Sentinel connect 数据源](../../sentinel/connect-data-sources.md)。
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>问：3月30日会出现什么情况？ 我是否需要预先下架？
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>问：4月30日会发生什么？ 我是否需要预先下架？
 > 
 > - 你将无法从**Office365**解决方案接收数据。 解决方案将不再在 Marketplace 中提供
 > - 对于 Azure Sentinel 客户，Log Analytics 工作区解决方案**Office365**将包含在 Azure sentinel **SecurityInsights**解决方案中。
-> - 如果你没有手动下架解决方案，你的数据将在3月30日自动断开连接。
+> - 如果你没有手动下架解决方案，你的数据将在4月30日自动断开连接。
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>问：我的数据是否会传输到新的解决方案？
-> 可以。 从工作区中删除**Office 365**解决方案时，其数据将暂时不可用，因为架构被删除。 如果在 Sentinel 中启用了新的**Office 365**连接器，则会将该架构还原到工作区，并且已收集的任何数据都将变为可用。 
+> 是的。 从工作区中删除**Office 365**解决方案时，其数据将暂时不可用，因为架构被删除。 如果在 Sentinel 中启用了新的**Office 365**连接器，则会将该架构还原到工作区，并且已收集的任何数据都将变为可用。 
  
 
 通过 Office 365 管理解决方案，可在 Azure Monitor 中监视 Office 365 环境。
@@ -245,10 +245,10 @@ ms.locfileid: "76044910"
 
 仪表板包含下表中的列。 每个列按照指定范围和时间范围内符合该列条件的计数列出了前十个警报。 可通过以下方式运行提供整个列表的日志搜索：单击该列底部的“全部查看”或单击列标题。
 
-| 柱形图​​ | Description |
+| 列 | 说明 |
 |:--|:--|
-| Operations | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
-| 交换 | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
+| 操作 | 提供所有监视的 Office 365 订阅中的活动用户相关信息。 还能够看到随着时间的推移发生的活动数。
+| Exchange | 显示 Exchange Server 活动的明细，例如 Add-Mailbox 权限或 Set-Mailbox。 |
 | SharePoint | 显示用户在 SharePoint 文档上执行次数最多的一些活动。 从此磁贴向下钻取时，搜索页会显示这些活动的详细信息，例如目标文档和此活动的位置。 比如，对于文件访问事件，将能够看到正在访问的文档、其关联的帐户名以及 IP 地址。 |
 | Azure Active Directory | 包含一些最活跃的用户活动，例如重置用户密码和登录尝试。 向下钻取时，将能够看到这些活动的详细信息（例如结果状态）。 如果想要监视 Azure Active Directory 上的可疑活动，这通常很有帮助。 |
 
@@ -263,12 +263,12 @@ ms.locfileid: "76044910"
 
 以下属性对于所有 Office 365 记录通用。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | 类型 | OfficeActivity |
 | ClientIP | 记录活动时使用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
-| OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>交换<br>SharePoint|
-| 操作 | 用户或管理员活动的名称。  |
+| OfficeWorkload | 记录所指的 Office 365 服务。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Operation | 用户或管理员活动的名称。  |
 | OrganizationId | 组织的 Office 365 租户的 GUID。 无论发生在哪种 Office 365 服务中，组织中的此值均保持不变。 |
 | RecordType | 所执行操作的类型。 |
 | ResultStatus | 指示操作（在 Operation 属性中指定）是成功还是失败。 可能的值有 Succeeded、PartiallySucceeded 或 Failed。 对于 Exchange 管理员活动，值为 True 或 False。 |
@@ -281,7 +281,7 @@ ms.locfileid: "76044910"
 
 以下属性对于所有 Azure Active Directory 记录通用。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -293,7 +293,7 @@ ms.locfileid: "76044910"
 
 Active Directory 用户尝试登录时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -307,7 +307,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -325,7 +325,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 基于数据中心安全审核数据创建这些记录。  
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | EffectiveOrganization | 提升/cmdlet 面向的租户的名称。 |
 | ElevationApprovedTime | 提升获得批准时的时间戳。 |
@@ -341,24 +341,24 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 配置时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
-| OfficeWorkload | 交换 |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
 | ExternalAccess |  指定 cmdlet 是由组织中的用户运行、由 Microsoft 数据中心人员或数据中心服务帐户运行，还是由委派的管理员运行。 值 False 标识 cmdlet 由组织中的某人运行。 值 True 表示 cmdlet 由数据中心人员、数据中心服务帐户或委派的管理员运行。 |
 | ModifiedObjectResolvedName |  这是由 cmdlet 修改的对象的用户友好名称。 仅在 cmdlet 修改对象时才记录此信息。 |
 | OrganizationName | 租户的名称。 |
 | OriginatingServer | 从中执行 cmdlet 的服务器的名称。 |
-| 参数 | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
+| parameters | 与 Operations 属性中标识的 cmdlet 结合使用的所有参数的名称和值。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
 
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
-| OfficeWorkload | 交换 |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
 | ClientInfoString | 用于执行操作的电子邮件客户端的相关信息，例如浏览器版本、Outlook 版本和移动设备信息。 |
 | Client_IPAddress | 记录操作时所用的设备的 IP 地址。 IP 地址以 IPv4 或 IPv6 地址格式显示。 |
@@ -379,11 +379,11 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 创建邮箱审核项时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
-| OfficeWorkload | 交换 |
+| OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| 项目 | 表示对其执行操作的项 | 
+| Item | 表示对其执行操作的项 | 
 | SendAsUserMailboxGuid | 为发送电子邮件而访问的邮箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模拟用户的 SMTP 地址。 |
 | SendonBehalfOfUserMailboxGuid | 为代替发送邮件而访问的邮箱的 Exchange GUID。 |
@@ -394,9 +394,9 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
-| OfficeWorkload | 交换 |
+| OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | 组中每个项的相关信息。 |
 | CrossMailboxOperations | 表示操作是否涉及多个邮箱。 |
@@ -413,7 +413,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 这些属性对于所有 SharePoint 记录通用。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -430,7 +430,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 对 SharePoint 进行配置更改时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -443,7 +443,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -464,7 +464,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 下表提供了此解决方案收集的更新记录的示例日志查询。
 
-| 查询 | Description |
+| 查询 | 说明 |
 | --- | --- |
 |Office 365 订阅上所有操作的计数 |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint 网站的使用情况|OfficeActivity &#124; where OfficeWorkload = ~ "sharepoint" &#124;汇总 Count （） By SiteUrl \| 按计数 asc 排序|

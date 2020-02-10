@@ -16,18 +16,18 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275511"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111585"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理启用对 Power BI 移动版的远程访问
 
 本文介绍如何使用 Azure AD 应用程序代理来启用 Power BI 移动应用程序连接到 Power BI 报表服务器（PBIRS）和 SQL Server Reporting Services （SSRS）2016及更高版本。 通过这种集成，远离企业网络的用户可以从 Power BI 移动应用程序访问其 Power BI 报表，并通过 Azure AD 身份验证进行保护。 此保护包括条件访问和多重身份验证等[安全权益](application-proxy-security.md#security-benefits)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假定你已部署了报表服务和[应用程序代理](application-proxy-add-on-premises-application.md)。
 
@@ -91,7 +91,7 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 
 2. 发布应用后，请执行以下步骤来配置单一登录设置：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在门户中的应用程序页上，选择“单一登录”。
+   a. 在门户中的应用程序页上，选择“单一登录”。
 
    b. 对于**单一登录模式**，请选择 "**集成 Windows 身份验证**"。
 
@@ -138,9 +138,6 @@ SPN 是使用 Kerberos 身份验证的服务的唯一标识符。 需要确保�
 3. 输入用户的有效凭据，并选择 **"登录"** 。 你将看到 Reporting Services 服务器中的元素。
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>步骤5：为托管设备配置 Intune 策略（可选）
-
-> [!NOTE]
-> 此功能目前仅适用于 iOS。
 
 你可以使用 Microsoft Intune 来管理公司员工使用的客户端应用。 Intune 允许你使用数据加密等功能和其他访问要求。 若要详细了解如何通过 Intune 进行应用管理，请参阅 Intune 应用管理。 若要使 Power BI 移动应用程序能够使用 Intune 策略，请执行以下步骤。
 

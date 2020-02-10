@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f7bf9fea1b1e15d1ca24686a84e272dd60ceaf5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061584"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111540"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略为多租户 Azure Active Directory 设置登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "77061584"
 
 本文展示了如何在 Azure AD B2C 中通过使用[自定义策略](custom-policy-overview.md)为使用 Azure Active Directory (Azure AD) 的多租户终结点的用户实现登录。 这允许多个 Azure AD 租户中的用户使用 Azure AD B2C 登录，无需为每个租户配置标识提供者。 但是，任何这些租户中的来宾成员都将无法登录。 为此，你需要[单独配置每个租户](identity-provider-azure-ad-single-tenant-custom.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -50,6 +50,19 @@ ms.locfileid: "77061584"
 1. 选择 "**证书 & 密码**"，然后选择 "**新建客户端密钥**"。
 1. 输入机密的**说明**，选择过期时间，然后选择 "**添加**"。 记录机密**值**以便在后面的步骤中使用。
 
+## <a name="configuring-optional-claims"></a>配置可选声明
+
+如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 从 "**管理**" 部分中，选择**应用注册**。
+1. 在列表中选择要为其配置可选声明的应用程序。
+1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
+1. 选择 "**添加可选声明**"。
+1. 选择要配置的令牌类型。
+1. 选择要添加的可选声明。
+1. 单击“添加”。
+
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
@@ -62,20 +75,7 @@ ms.locfileid: "77061584"
 1. 输入策略密钥的**名称**。 例如，`AADAppSecret` 。  创建前缀后，前缀 `B2C_1A_` 会自动添加到密钥的名称中，因此，在下一部分的 XML 中，其引用为*B2C_1A_AADAppSecret*。
 1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
 1. 在“密钥用法”处选择 **。** `Signature`
-1. 选择 **“创建”** 。
-
-## <a name="configuring-optional-claims"></a>配置可选声明
-
-如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
-
-1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
-1. 从 "**管理**" 部分中，选择**应用注册**。
-1. 在列表中选择要为其配置可选声明的应用程序。
-1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
-1. 选择 "**添加可选声明**"。
-1. 选择要配置的令牌类型。
-1. 选择要添加的可选声明。
-1. 单击 **“添加”** 。
+1. 选择“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 

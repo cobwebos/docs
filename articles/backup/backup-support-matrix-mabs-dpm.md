@@ -3,16 +3,16 @@ title: MABS & System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center DPM 备份本地和 Azure 虚拟机资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841161"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111460"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure 备份 Server 或 System Center DPM 备份的支持矩阵
 
-可以使用 [Azure 备份服务](backup-overview.md)备份本地计算机和工作负荷以及 Azure 虚拟机 (VM)。 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center Data Protection Manager （DPM）和 Azure 备份来备份计算机的支持设置和限制。
+可以使用[Azure 备份服务](backup-overview.md)来备份本地计算机和工作负荷，以及 azure 虚拟机（vm）。 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center Data Protection Manager （DPM）和 Azure 备份来备份计算机的支持设置和限制。
 
 ## <a name="about-dpmmabs"></a>关于 DPM/MABS
 
@@ -24,7 +24,7 @@ MABS 基于 System Center DPM，提供类似的功能，但有一些不同之处
 
 - 无需 System Center 许可证即可运行 MABS。
 - 对于 MABS 和 DPM，Azure 提供长期备份存储。 此外，DPM 允许在磁带上备份数据，以作长期存储。 MABS 不提供此功能。
-- 您可以使用辅助 DPM 服务器备份主 DPM 服务器。 辅助服务器将保护主服务器数据库及存储在主服务器上的数据源副本。 如果主服务器出现故障，辅助服务器可以继续保护受主服务器保护的工作负荷，直到主服务器再次可用。  MABS 不提供此功能。
+- 您可以使用辅助 DPM 服务器备份主 DPM 服务器。 辅助服务器将保护主服务器数据库及存储在主服务器上的数据源副本。 如果主服务器发生故障，辅助服务器可以继续保护受主服务器保护的工作负荷，直到主服务器再次可用。  MABS 不提供此功能。
 
 可从[Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57520)下载 MABS。 它可以在本地运行，也可以在 Azure VM 上运行。
 
@@ -43,14 +43,14 @@ DPM 和 MABS 支持备份各种应用、服务器和客户端操作系统。 它
 1. 在 DPM 服务器/MABS 上安装 Microsoft Azure 恢复服务 (MARS) 代理。
 1. MARS 代理使用 Azure 备份将 DPM/MABS 磁盘备份到 Azure 中的备份恢复服务保管库。
 
-有关详细信息：
+更多相关信息：
 
 - [详细了解](backup-architecture.md#architecture-back-up-to-dpmmabs) MABS 体系结构。
 - [查看](backup-support-matrix-mars-agent.md)MARS 代理支持的内容。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-**方案** | **代理** | 位置
+**方案** | **代理** | **位置**
 --- | --- | ---
 **备份本地计算机/工作负荷** | DPM/MABS 保护代理在要备份的计算机上运行。<br/><br/> DPM/MABS 服务器上的 MARS 代理。<br/> 启用此功能所需的 Microsoft Azure 恢复服务代理或 Azure 备份代理的最低版本为 2.0.8719.0。  | DPM/MABS 必须在本地运行。
 
@@ -74,6 +74,9 @@ Azure 备份可以备份运行以下任意操作系统的 DPM/MABS 实例。 操
 **Azure VM 上的 DPM** | System Center 2012 R2 Update 3 或更高版本。<br/><br/> 符合 [System Center 要求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 操作系统。<br/><br/> 建议从 marketplace 开始使用映像。<br/><br/> 最低 A2 标准，具有两个核心和 3.5 GB 的 RAM。
 **本地 MABS** | 支持的 64 位操作系统：<br/><br/> MABS v3 和更高版本： Windows Server 2019 （Standard、Datacenter、Essentials）。 <br/><br/> MABS v2 和更高版本： Windows Server 2016 （Standard、Datacenter、Essentials）。<br/><br/> 所有 MABS 版本： Windows Server 2012 R2。<br/><br/>所有 MABS 版本： Windows Storage Server 2012 R2。
 **本地 DPM** | 物理服务器/Hyper-v VM： System Center 2012 SP1 或更高版本。<br/><br/> VMware VM： System Center 2012 R2 Update 5 或更高版本。
+
+>[!NOTE]
+>Windows Server Core 或 Microsoft Hyper-V 服务器不支持安装 Azure 备份服务器。
 
 ## <a name="management-support"></a>管理支持
 
@@ -120,10 +123,10 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 
 需要与 Azure 备份服务建立连接才能正常运行备份，并且 Azure 订阅应处于活动状态。 下表显示了不满足这两项要求时的行为。
 
-**MABS 到 Azure** | 订阅 | **备份/还原**
+**MABS 到 Azure** | **订阅** | **备份/还原**
 --- | --- | ---
-已连接 | 活动 | 备份到 DPM/MABS 磁盘。<br/><br/> 备份到 Azure。<br/><br/> 从磁盘还原。<br/><br/> 从 Azure 还原。
-已连接 | 已过期/已取消预配 | 不备份到磁盘或 Azure。<br/><br/> 如果订阅已过期，你可以从磁盘或 Azure 还原。<br/><br/> 如果取消订阅，则无法从磁盘或 Azure 还原。 Azure 恢复点已删除。
+连续 | 活动 | 备份到 DPM/MABS 磁盘。<br/><br/> 备份到 Azure。<br/><br/> 从磁盘还原。<br/><br/> 从 Azure 还原。
+连续 | 已过期/已取消预配 | 不备份到磁盘或 Azure。<br/><br/> 如果订阅已过期，你可以从磁盘或 Azure 还原。<br/><br/> 如果取消订阅，则无法从磁盘或 Azure 还原。 Azure 恢复点已删除。
 有 15 天以上未建立连接 | 活动 | 不备份到磁盘或 Azure。<br/><br/> 可以从磁盘或 Azure 还原。
 有 15 天以上未建立连接 | 已过期/已取消预配 | 不备份到磁盘或 Azure。<br/><br/> 如果订阅已过期，你可以从磁盘或 Azure 还原。<br/><br/> 如果取消订阅，则无法从磁盘或 Azure 还原。 Azure 恢复点已删除。
 

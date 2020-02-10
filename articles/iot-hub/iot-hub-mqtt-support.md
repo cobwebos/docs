@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: e1559dbab2503ded957b17c0cc6a61a06c53fffc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110726"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111750"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -44,7 +44,7 @@ IoT 中心不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准
 
 下表包含指向每个受支持语言的代码示例的链接，并指定要用于使用 MQTT 或 MQTT over Web Socket 协议建立与 IoT 中心的连接的参数。
 
-| Language | MQTT 协议参数 | MQTT over Web Socket 协议参数
+| 语言 | MQTT 协议参数 | MQTT over Web Socket 协议参数
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure iot-设备 mqtt。Mqtt | azure iot-设备 mqtt。MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable)。MQTT | IotHubClientProtocol MQTT_WS |
@@ -71,13 +71,13 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 为了确保客户端/IoT 中心连接保持活动状态，服务和客户端定期发送*保持活动状态*的 ping。 使用 IoT SDK 的客户端按下表中定义的间隔发送 keep-alive：
 
-|Language  |默认 keep-alive 间隔  |可配置性  |
+|语言  |默认 keep-alive 间隔  |可配置性  |
 |---------|---------|---------|
-|Node.js     |   180秒      |     是    |
-|Java     |    230秒     |     是    |
+|Node.js     |   180秒      |     否    |
+|Java     |    230秒     |     否    |
 |C     | 240秒 |  [是](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [是](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python （V2）   | 60 秒 |  是   |
+|Python （V2）   | 60 秒 |  否   |
 
 遵循[MQTT 规范](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)后，IoT 中心保持活动状态的 ping 间隔是客户端 keep-alive 值的1.5 倍。 但是，IoT 中心将最大服务器端超时限制为29.45 分钟（1767秒），因为所有 Azure 服务都绑定到 Azure 负载均衡器 TCP 空闲超时，这是29.45 分钟。 
 
@@ -175,7 +175,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 • LinuxConsoleVS2019：包含相同的代码，但在 VS2019 项目中面向 WSL （Windows Linux 子系统）。 此项目使你可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
 
-**对于 mosquito_pub：**
+**对于 mosquitto_pub：**
 
 •此文件夹包含两个用于 Mosquitto.org 提供的 mosquitto_pub 实用工具工具的示例命令。
 
@@ -373,7 +373,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 200 | 成功 |
+| 200 | Success |
 | 400 | 错误的请求。 格式不正确的 JSON |
 | 429 | 请求过多（受限），因为每个[IoT 中心限制](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 服务器错误 |

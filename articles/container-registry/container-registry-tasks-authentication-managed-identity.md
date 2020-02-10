@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: b2f5a9bacf96eb098e307a6a8df3e13cb9d04bd0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513410"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111760"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>在 ACR 任务中使用 Azure 托管标识 
 
@@ -91,12 +91,12 @@ az acr task create \
 
 使用[Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具来管理对资源的基于角色的访问。 例如，运行[az role assign create][az-role-assignment-create]命令，将角色分配给资源。 
 
-下面的示例为托管标识分配从容器注册表中请求的权限。 该命令指定标识的*服务主体 id*和目标注册表的*资源 id* 。
+下面的示例为托管标识分配从容器注册表中请求的权限。 命令指定任务标识的*主体 id*和目标注册表的*资源 id* 。
 
 
 ```azurecli
 az role assignment create \
-  --assignee <servicePrincipalID> \
+  --assignee <principalID> \
   --scope <registryID> \
   --role acrpull
 ```
