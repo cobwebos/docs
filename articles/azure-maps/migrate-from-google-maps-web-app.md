@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d9b873a058410219bc55abc4f575823b519a646b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910868"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989106"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>从 Google Maps 迁移 Web 应用
 
-使用 Google maps 的大多数 Web 应用都是使用 Google Maps V3 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
+使用 Google Maps 的大多数 Web 应用都是使用 Google Maps V3 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图。 你可以在 Web 或移动应用程序中运行自己的应用。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
-如果迁移现有的 Web 应用程序，请检查该应用程序是否使用 Cesium、Leaflet 和 OpenLayers 等开源地图控件库。 如果是，但你不想要使用 Azure Maps Web SDK，则迁移应用程序的另一种做法是继续使用开源地图控件，并将其连接到 Azure Maps 图块服务（[道路图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)）。 下面提供了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
+如果迁移现有的 Web 应用程序，请检查该应用程序是否使用开源地图控件库。 开源地图控件库的示例包括：Cesium、Leaflet 和 OpenLayers。 如果是，但你不想要使用 Azure Maps Web SDK，则迁移应用程序的另一种做法是继续使用开源地图控件，并将其连接到 Azure Maps 图块服务（[道路图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)）。 下面指出了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
 
 - Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
 - Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
@@ -28,7 +28,7 @@ ms.locfileid: "75910868"
 
 ## <a name="key-features-support"></a>重要功能支持
 
-下表列出了 Google Maps V3 JavaScript SDK 中的重要 API 功能，以及 Azure Maps Web SDK 中的类似 API 支持。
+下表列出了 Google Maps V3 JavaScript SDK 中的重要 API 功能，以及 Azure Maps Web SDK 中支持的 API 功能。
 
 | Google Maps 功能     | Azure Maps Web SDK 支持 |
 |-------------------------|:--------------------------:|
@@ -51,18 +51,18 @@ ms.locfileid: "75910868"
 下面是 Google Maps 与 Azure Maps Web SDK 之间需要注意的一些重要区别：
 
 - 除了提供托管终结点用于访问 Azure Maps Web SDK 以外，还可以根据偏好使用某个 NPM 包将 Web SDK 嵌入应用。 有关详细信息，请参阅[此文档](how-to-use-map-control.md)。 此程序包还包括了 TypeScript 定义。
-- 在 Azure Maps 中创建 Map 类的实例后，代码应等待激发地图 `ready` 或 `load` 事件，然后与地图交互。 这可以确保加载所有地图资源并准备好访问这些资源。
+- 在 Azure Maps 中创建 Map 类的实例后，代码应等待激发地图 `ready` 或 `load` 事件，然后与地图交互。 此顺序可以确保加载所有地图资源并准备好访问这些资源。
 - 这两个平台为基础地图使用类似的图块系统，但 Google Maps 中图块的尺寸为 256 像素，而 Azure Maps 中图块的尺寸为 512 像素。 因此，若要在 Azure Maps 中获得与 Google Maps 相同的地图视图，在 Google Maps 中使用的缩放级别在 Azure Maps 中需要减 1。
-- Google Maps 中的坐标以“纬度, 经度”表示，Azure Maps 则使用“经度, 纬度”。 这符合大多数 GIS 平台所遵循的标准 `[x, y]`。
-- Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [*atlas.data* 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)公开。 还可以使用 [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类来包装 GeoJSON 对象，以便能够以数据可绑定的方式轻松更新和维护这些对象。
-- Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组，或新的 atlas.data.Position(longitude, latitude)。
+- Google Maps 中的坐标以“纬度, 经度”表示，Azure Maps 则使用“经度, 纬度”。 Azure Maps 格式符合大多数 GIS 平台所遵循的标准 `[x, y]`。
+- Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [*atlas.data* 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)公开。 还有 [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类。 此类可用于包装 GeoJSON 对象，以便能够以数据可绑定的方式轻松更新和维护这些对象。
+- Azure Maps 中的坐标定义为 Position 对象。 可将坐标指定为采用 `[longitude, latitude]` 格式的数字数组，或使用新的 atlas.data.Position(longitude, latitude) 指定坐标。
     > [!TIP]
-    > Position 类包含静态帮助器方法用于导入“纬度, 经度”格式的坐标。 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) 方法往往可以取代 Google Maps 代码中的 `new google.maps.LatLng` 方法。
-- Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到 Azure Maps 代码用来呈现数据的呈现层。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项，这些选项可以更改单个形状根据形状中定义的属性在层中的呈现方式。
+    > Position 类包含静态帮助器方法用于导入“纬度, 经度”格式的坐标。 往往可以将 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) 方法替换为 Google Maps 代码中的 `new google.maps.LatLng` 方法。
+- Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到呈现层。 Azure Maps 代码使用数据源来呈现数据。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项。 此项支持更改了单个形状根据形状中定义的属性在层中的呈现方式。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK 对比示例
 
-下面是适用于每个平台的代码示例集合，其中涵盖了常见用例，可帮助你将 Web 应用程序从 Google Maps V3 JavaScript SDK 迁移到 Azure Maps Web SDK。 与 Web 应用程序相关的代码示例以 JavaScript 提供；但是，Azure Maps 还通过 [NPM 模块](how-to-use-map-control.md)提供 TypeScript 定义作为附加选项。
+以下集合包含每个平台的代码示例，其中每个示例涵盖了常见用例。 此集合旨在帮助你将 Web 应用程序从 Google Maps V3 JavaScript SDK 迁移到 Azure Maps Web SDK。 与 Web 应用程序相关的代码示例以 JavaScript 提供。 但是，Azure Maps 还通过 [NPM 模块](how-to-use-map-control.md)提供 TypeScript 定义作为附加选项。
 
 ### <a name="load-a-map"></a>加载地图
 
@@ -75,13 +75,13 @@ ms.locfileid: "75910868"
 
 **一些重要差别**
 
-- Google Maps 要求在 API 的脚本引用中指定帐户密钥。 Azure Maps 的身份验证凭据指定为 map 类的选项。 它可以是订阅密钥或 Azure Active Directory 信息。
+- Google Maps 要求在 API 的脚本引用中指定帐户密钥。 Azure Maps 的身份验证凭据指定为 map 类的选项。 此凭据可以是订阅密钥或 Azure Active Directory 信息。
 - Google Maps 在 API 的脚本引用中采用一个回调函数，该函数用于调用初始化函数来加载地图。 使用 Azure Maps 时，应使用页面的 onload 事件。
 - 引用要在其中呈现地图的 `div` 元素时，Azure Maps 中的 `Map` 类只需要 `id` 值，而 Google Maps 需要 `HTMLElement` 对象。
 - Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
-- Azure Maps 中的缩放级别比 Google Maps 示例低一级，因为这两个平台之间的图块系统大小有差异。
-- 默认情况下，Azure Maps 不会将任何导航控件（例如缩放按钮和地图样式按钮）添加到地图画布。 但是，有一些控件可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
-- Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 任何加载后的代码可添加到此事件处理程序中。
+- Azure Maps 中的缩放级别比 Google Maps 中的缩放级别要低一级。 之所以存在这种差异，是因为这两个平台之间的图块系统大小有差别。
+- Azure Maps 不会将任何导航控件添加到地图画布。 因此，默认情况下，地图中不提供缩放按钮和地图样式按钮。 但是，有一些控件可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
+- Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 可将地图完成加载后你要运行的任何代码添加到此事件处理程序。
 
 以下示例演示如何加载基本地图，使该地图在 Google Maps 中的中心点位于纽约，坐标为（经度：-73.985，纬度：40.747），缩放级别为 12。
 
@@ -244,14 +244,14 @@ map = new atlas.Map('myMap', {
 
 ### <a name="setting-the-map-view"></a>设置地图视图
 
-可以通过调用 JavaScript 中的相应函数，以编程方式将 Azure Maps 和 Google Maps 中的动态地图移到新的地理位置。 以下示例演示如何在 Google Maps 中使地图显示卫星航拍图像，并将地图中心点置于坐标（经度：-111.0225，纬度：35.0272），并将缩放级别更改为 15。
+可以编程方式将 Azure Maps 和 Google Maps 中的动态地图移到新的地理位置。 为此，请调用 JavaScript 中的相应函数。 这些示例演示如何在 Google Maps 中使地图显示卫星航拍图像，将地图中心点置于某个位置，并将缩放级别更改为 15。 使用以下位置坐标：经度：-111.0225，纬度：35.0272。
 
 > [!NOTE]
 > Google Maps 使用尺寸为 256 像素的图块，而 Azure Maps 则使用更大的 512 像素图块。 在加载相同的地图区域时，与 Google Maps 相比，这可以减少 Azure Maps 所需的网络请求数。 但是，由于地图控件中图块金字塔的工作方式，Azure Maps 中更大的图块意味着在，在使用 Azure Maps 时，若要实现与 Google Maps 中地图相同的可视区域，需要将 Google Maps 中使用的缩放级别减 1。
 
 **前者：Google Maps**
 
-可以使用 `setOptions` 方法以编程方式移动 Google Maps 地图控件，此方法允许指定地图的中心点和缩放级别。
+可以使用 `setOptions` 方法以编程方式移动 Google Maps 地图控件。 此方法允许指定地图的中心点和缩放级别。
 
 ```javascript
 map.setOptions({
@@ -267,7 +267,7 @@ map.setOptions({
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，可以使用地图的 `setCamera` 方法以编程方式更改地图位置，可以使用 `setStyle` 方法更改地图样式。 请注意，Azure Maps 中的坐标采用“经度, 纬度”格式，缩放级别值需减 1。
+在 Azure Maps 中，可以使用地图的 `setCamera` 方法以编程方式更改地图位置，可以使用 `setStyle` 方法更改地图样式。 Azure Maps 中的坐标采用“经度, 纬度”格式，缩放级别值需减 1。
 
 ```javascript
 map.setCamera({
@@ -291,13 +291,13 @@ map.setStyle({
 
 ### <a name="adding-a-marker"></a>添加标记
 
-在 Azure Maps 中，可通过多种方式在地图上呈现点数据;
+在 Azure Maps 中，可通过多种方式在地图上呈现点数据；
 
 - **HTML 标记** – 使用传统的 DOM 元素呈现点。 HTML 标记支持拖动。
 - **符号层** – 在 WebGL 上下文中使用图标和/或文本呈现点。
 - **气泡层** – 在地图上以圆的形式呈现点。 可根据数据中的属性缩放圆的半径。
 
-符号层和气泡层都在 WebGL 上下文中呈现，并且能够在地图上呈现极大的点集。 这些层要求将数据存储在数据源中。 激发 `ready` 事件后，应将数据源和呈现层添加到地图中。 HTML 标记在页面中呈现为 DOM 元素，且不使用数据源。 页面中的 DOM 元素越多，页面加载速度越慢。 若要在地图上呈现好几百个点，则我们建议改用某个呈现层。
+符号层和气泡层都在 WebGL 上下文中呈现。 这两个层能够在地图上呈现极大的点集。 这些层要求将数据存储在数据源中。 激发 `ready` 事件后，应将数据源和呈现层添加到地图中。 HTML 标记在页面中呈现为 DOM 元素，且不使用数据源。 页面中的 DOM 元素越多，页面加载速度越慢。 若要在地图上呈现好几百个点，则我们建议改用某个呈现层。
 
 以下示例将一个标记添加到地图上的（经度：-0.2，纬度：51.5）位置，并使用叠加的数字 10 作为标签。
 
@@ -320,7 +320,7 @@ var marker = new google.maps.Marker({
 
 **后者：使用 HTML 标记的 Azure Maps**
 
-在 Azure Maps 中，HTML 标记可用于在地图上显示某个点；对于只需在地图上显示少量点的应用，建议使用此类标记。 若要使用 HTML 标记，只需创建 `atlas.HtmlMarker` 类的实例，设置文本和位置选项，然后使用 `map.markers.add` 方法将标记添加到地图。
+在 Azure Maps 中，HTML 标记可用于在地图上显示某个点。 对于只需在地图上显示少量点的简单应用，建议使用 HTML 标记。 若要使用 HTML 标记，请创建 `atlas.HtmlMarker` 类的实例，设置文本和位置选项，然后使用 `map.markers.add` 方法将标记添加到地图。
 
 ```javascript
 //Create a HTML marker and add it to the map.
@@ -336,7 +336,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **后者：使用符号层的 Azure Maps**
 
-使用符号层时，必须将数据添加到数据源，并将数据源附加到层。 此外，在 `ready` 事件激发后，应将数据源和层添加到地图。 若要在符号上方呈现唯一的文本值，需将文本信息存储为数据点的属性，并在层的 `textField` 选项中引用该属性。 这比使用 HTML 标记要略微繁琐一些，但可以提供许多性能优势。
+使用符号层时，必须将数据添加到数据源，并将数据源附加到层。 此外，在 `ready` 事件激发后，应将数据源和层添加到地图。 若要在符号上方呈现唯一的文本值，需将文本信息存储为数据点的属性，并且必须在层的 `textField` 选项中引用该属性。 这种做法比使用 HTML 标记要略微繁琐一些，但具有性能优势。
 
 ```html
 <!DOCTYPE html>
@@ -415,7 +415,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 ### <a name="adding-a-custom-marker"></a>添加自定义标记
 
-可使用自定义图像来表示地图上的点。 以下示例使用一个自定义图像在地图上的（纬度：51.5，经度：-0.2）位置显示一个点，并偏移标记的位置，使图钉图标的点与地图上的正确位置对齐。
+可使用自定义图像来表示地图上的点。 以下地图图像使用自定义图像在地图上显示一个点。 该点的显示位置为纬度：51.5，经度：-0.2。 定位点将标记位置偏移，使图钉图标的点与地图上的正确位置对齐。
 
 <center>
 
@@ -443,7 +443,7 @@ var marker = new google.maps.Marker({
 
 **后者：使用 HTML 标记的 Azure Maps**
 
-若要在 Azure Maps 中自定义 HTML 标记，可将 HTML `string` 或 `HTMLElement` 传入该标记的 `htmlContent` 选项。 在 Azure Maps 中，`anchor` 选项用于通过九个已定义的参照点之一，来指定标记相对于位置坐标的位置：“center”、“top”、“bottom”、“left”、“right”、“top-left”、“top-right”、“bottom-left”、“bottom-right” 默认情况下，内容将定位到 html 内容的中下方。 若要更轻松地从 Google Maps 迁移代码，请将 `anchor` 设置为“top-left”，然后将 `pixelOffset` 选项与 Google Maps 中使用的相同偏移量结合使用。 Azure Maps 中的偏移方向与 Google Maps 中相反，因此需将偏移量乘以 -1。
+若要在 Azure Maps 中自定义 HTML 标记，可将 HTML `string` 或 `HTMLElement` 传递给该标记的 `htmlContent` 选项。 在 Azure Maps 中，`anchor` 选项用于通过九个已定义的参照点之一，来指定标记相对于位置坐标的位置。 定义的参照点为：“center”、“top”、“bottom”、“left”、“right”、“top-left”、“top-right”、“bottom-left”、“bottom-right”。 默认情况下，内容将定位到 html 内容的中下方。 若要更轻松地从 Google Maps 迁移代码，请将 `anchor` 设置为“top-left”，然后将 `pixelOffset` 选项与 Google Maps 中使用的相同偏移量结合使用。 Azure Maps 中的偏移方向与 Google Maps 中相反，因此需将偏移量乘以 -1。
 
 > [!TIP]
 > 在显示不需要的图标的 Microsoft Edge 中，添加 `pointer-events:none` 作为 html 内容的样式可以禁用默认拖放行为。
@@ -463,7 +463,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **后者：使用符号层的 Azure Maps**
 
-Azure Maps 中的符号层也支持自定义图像，但需要先将图像载入地图资源，并为其分配唯一的 ID。 然后，符号层可以引用此 ID。 可以使用图标 `offset` 选项来偏移符号，使之与图像上的正确点对齐。 在 Azure Maps 中，`anchor` 选项用于通过九个已定义的参照点之一，来指定符号相对于位置坐标的位置：“center”、“top”、“bottom”、“left”、“right”、“top-left”、“top-right”、“bottom-left”、“bottom-right” 默认情况下，内容将定位到 html 内容的中下方。 若要更轻松地从 Google Maps 迁移代码，请将 `anchor` 设置为“top-left”，然后将 `offset` 选项与 Google Maps 中使用的相同偏移量结合使用。 Azure Maps 中的偏移方向与 Google Maps 中相反，因此需将偏移量乘以 -1。
+Azure Maps 中的符号层也支持自定义图像，但需要先将图像载入地图资源，并为其分配唯一的 ID。 然后，符号层可以引用此 ID。 可以使用图标 `offset` 选项来偏移符号，使之与图像上的正确点对齐。 在 Azure Maps 中，`anchor` 选项用于通过九个已定义的参照点之一，来指定符号相对于位置坐标的位置。 定义的位置坐标为：“center”、“top”、“bottom”、“left”、“right”、“top-left”、“top-right”、“bottom-left”、“bottom-right”。 默认情况下，内容将定位到 html 内容的中下方。 若要更轻松地从 Google Maps 迁移代码，请将 `anchor` 设置为“top-left”，然后将 `offset` 选项与 Google Maps 中使用的相同偏移量结合使用。 Azure Maps 中的偏移方向与 Google Maps 中相反，因此需将偏移量乘以 -1。
 
 ```html
 <!DOCTYPE html>
@@ -529,7 +529,7 @@ Azure Maps 中的符号层也支持自定义图像，但需要先将图像载入
 ![Azure Maps 自定义图标符号层](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
 
 > [!TIP]
-> 若要创建点的高级自定义呈现，请结合使用多个呈现层。 例如，若要使用多个图钉，而这些图钉在不同的彩色圆上使用相同的图标，则不需要针对每种颜色创建大量的图像，而可以在气泡层上叠加一个符号层，并使该符号层引用同一个数据源。 这比创建大量不同的图像并让地图维护这些图像要高效得多。
+> 若要创建点的高级自定义呈现，请结合使用多个呈现层。 例如，假设你要使用多个图钉，而这些图钉在不同的彩色圆上使用相同的图标。 不需要针对每个颜色叠加层创建大量的图像，而可以在气泡层的顶部添加一个符号层，并使图钉引用同一个数据源。 这种做法比创建并维护大量不同的图像更为高效。
 
 **其他资源：**
 
@@ -588,7 +588,7 @@ line.setMap(map);
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，折线称为 LineString 或 MultiLineString 对象。 可将这些对象添加到数据源，并使用线条层来呈现。
+在 Azure Maps 中，折线称为 `LineString` 或 `MultiLineString` 对象。 可将这些对象添加到数据源，并使用线条层来呈现。
 
 ```javascript
 //Get the center of the map.
@@ -625,7 +625,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="adding-a-polygon"></a>添加多边形
 
-多边形用于表示地图上的某个区域。 Azure Maps 和 Google Maps 为多边形提供非常类似的支持。 以下示例演示如何创建一个多边形，该多边形基于地图的中点坐标构成一个三角形。
+多边形用于表示地图上的某个区域。 Azure Maps 和 Google Maps 为多边形提供类似的支持。 以下示例演示如何创建一个多边形，该多边形基于地图的中点坐标构成一个三角形。
 
 **前者：Google Maps**
 
@@ -658,7 +658,7 @@ polygon.setMap(map);
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，可将 Polygon 和 MultiPolygon 对象添加到数据源，并使用层在地图上呈现这些对象。 可以在多边形层中呈现多边形的区域。 可以使用线条层呈现多边形的轮廓。
+在 Azure Maps 中，可将 `Polygon` 和 `MultiPolygon` 对象添加到数据源，并使用层在地图上呈现这些对象。 可以在多边形层中呈现多边形的区域。 可以使用线条层呈现多边形的轮廓。
 
 ```javascript
 //Get the center of the map.
@@ -702,7 +702,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="display-an-info-window"></a>显示信息窗口
 
-在 Google Maps 中，实体的其他信息可以作为 `google.maps.InfoWindow` 类显示在地图上；在 Azure Maps 中，可以使用 `atlas.Popup` 类实现此目的。 以下示例将一个标记添加到地图，单击该标记会显示信息窗口/弹出窗口。
+在 Google Maps 中，实体的其他信息可以作为 `google.maps.InfoWindow` 类显示在地图上。 在 Azure Maps 中，可以使用 `atlas.Popup` 类实现此功能。 以下示例将一个标记添加到地图，单击该标记会显示信息窗口/弹出窗口。
 
 **前者：Google Maps**
 
@@ -732,7 +732,7 @@ marker.addListener('click', function () {
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，弹出窗口可用于显示某个位置的附加信息。 可将 HTML `string` 或 `HTMLElement` 对象传入弹出窗口的 `content` 选项。 弹出窗口可根据需要独立于任何形状显示，因而需要指定 `position` 值。 若要显示弹出窗口，请调用 `open` 方法，并传入要在其中显示弹出窗口的 `map`。
+在 Azure Maps 中，弹出窗口可用于显示某个位置的附加信息。 可将 HTML `string` 或 `HTMLElement` 对象传入弹出窗口的 `content` 选项。 如果需要，可以独立于任何形状显示弹出窗口。 因此，需要为弹出窗口指定 `position` 值 若要显示弹出窗口，请调用 `open` 方法，并传入要在其中显示弹出窗口的 `map`。
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -775,13 +775,13 @@ map.events.add('click', marker, function () {
 
 ### <a name="import-a-geojson-file"></a>导入 GeoJSON 文件
 
-Google Maps 支持通过 `google.maps.Data` 类加载 GeoJSON 数据并动态设置其样式。 此类的功能在很大程度上与 Azure Maps 的数据驱动样式相同。 一个重要差别在于，使用 Google Maps 时，需指定回调函数和业务逻辑，用于设置它在 UI 线程中单独处理的每个特征的样式。 在 Azure Maps 中，层支持将数据驱动的表达式指定为样式选项。 在呈现时，这些表达式将在单独的线程中处理，提供更高的呈现性能，并可以更快地呈现较大的数据集。
+Google Maps 支持通过 `google.maps.Data` 类加载 GeoJSON 数据并动态设置其样式。 此类的功能在很大程度上与 Azure Maps 的数据驱动样式相同。 一个重要差别在于，使用 Google Maps 时，需指定回调函数。 此外，需指定业务逻辑，用于设置它在 UI 线程中单独处理的每个特征的样式。 在 Azure Maps 中，层支持将数据驱动的表达式指定为样式选项。 在呈现时，这些表达式将在单独的线程中处理。 因此，这种做法可以提高呈现性能。 快速呈现较大的数据集时，这项优势就很明显。
 
-以下示例从 USGS 加载过去 7 天内发生的所有地震的 GeoJSON 源，并在地图上以缩放圆的形式呈现此数据。 每个圆的颜色和比例基于每次地震的震级，此震级数据存储在数据集中每个特征的 `"mag"` 属性中。 如果震级大于或等于 5，则圆为红色；如果大于或等于 3 但小于 5，则圆为橙色；如果小于 3，则圆为绿色。 每个圆的半径是震级的幂乘以 0.1。
+以下示例从 USGS 加载过去 7 天内发生的所有地震的 GeoJSON 源， 并在地图上以缩放圆的形式呈现此数据。 每个圆的颜色和比例基于每次地震的震级，此震级数据存储在数据集中每个特征的 `"mag"` 属性中。 如果震级大于或等于 5，则圆为红色。 如果震级大于或等于 3 但小于 5，则圆为橙色。 如果震级小于 3，则圆为绿色。 每个圆的半径是震级的幂乘以 0.1。
 
 **前者：Google Maps**
 
-在 Google Maps 中，可以在 `map.data.setStyle` 方法中指定单个回调函数，用于将业务逻辑应用到通过 `map.data.loadGeoJson` 方法从 GeoJSON 源加载的每个特征。
+在 Google Maps 中，可以在 `map.data.setStyle` 方法中指定单个回调函数。 此方法用于将业务逻辑应用到通过 `map.data.loadGeoJson` 方法从 GeoJSON 源加载的每个特征。
 
 ```html
 <!DOCTYPE html>
@@ -854,7 +854,7 @@ Google Maps 支持通过 `google.maps.Data` 类加载 GeoJSON 数据并动态设
 
 **后者：Azure Maps**
 
-GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.importFromUrl` 方法轻松将其导入到数据源中。 气泡图层提供基于数据源中特征的属性呈现缩放圆的功能。 它不使用回调函数，而是将业务逻辑转换为表达式，并将其传入样式选项。 表达式定义业务逻辑的工作方式，以便可将业务逻辑传入另一个线程，并针对特征数据进行计算。 可将多个数据源和层添加到 Azure Maps，其中每个数据源和层具有不同的业务逻辑，从而可以通过不同的方式在地图上呈现多个数据集。
+GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.importFromUrl` 方法轻松将其导入到数据源中。 气泡图层提供基于数据源中特征的属性呈现缩放圆的功能。 它不使用回调函数，而是将业务逻辑转换为表达式，并将其传入样式选项。 表达式定义业务逻辑的工作方式。 可将表达式传入另一个线程，并针对特征数据进行评估。 可将多个数据源和层添加到 Azure Maps，其中每个数据源和层具有不同的业务逻辑。 使用此功能可以通过不同的方式在地图上呈现多个数据集。
 
 ```html
 <!DOCTYPE html>
@@ -944,7 +944,7 @@ GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.impor
 
 在地图上可视化大量的数据点时，点将会彼此重叠，使地图显得混乱，难以看清和使用。 可以使用点数据的聚类来改善此用户体验，同时提高性能。 聚类点数据是将相邻的点数据合并在一起，并在地图上将其作为单个聚类数据点进行呈现的过程。 当用户放大地图时，聚类的各个数据点将会分开。
 
-以下示例加载过去一周的地震数据的 GeoJSON 源，并将其添加到地图。 聚类根据它们所含的点数呈现为缩放的彩色圆。
+以下示例代码加载过去一周的地震数据的 GeoJSON 源，并将其添加到地图。 聚类根据它们所含的点数呈现为缩放的彩色圆。
 
 > [!NOTE]
 > 可以使用多种不同的算法进行标记聚类。 Google Maps 和 Azure Maps 使用的算法略有不同。 因此，聚类中的点分布有时可能不同。
@@ -1036,7 +1036,7 @@ GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.impor
 | `getClusterExpansionZoom(clusterId: number)` | Promise&lt;number&gt; | 计算聚类开始展开或分开的缩放级别。 |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 检索聚类中的所有点。 设置 `limit` 可返回点的子集，使用 `offset` 可逐页呈现点。 |
 
-在地图上呈现聚类的数据时，最简单的方法通常是使用两个或更多个层。 以下示例使用三个层：气泡层用于根据聚类的大小绘制缩放的彩色圆，一个符号层将聚类大小呈现为文本，另一个符号层用于呈现未聚类的点。 [聚类点数据](clustering-point-data-web-sdk.md)文档中重点介绍了在 Azure Maps 中呈现聚类数据的其他多种方式。
+在地图上呈现聚类的数据时，最简单的方法通常是使用两个或更多个层。 以下示例使用三个层。 一个气泡层，用于根据聚类的大小绘制缩放的彩色圆。 一个符号层，用于将聚类大小呈现为文本。 此层使用另一个符号层来呈现未聚类的点。 还可以通过其他多种方式呈现聚类数据。 有关详细信息，请参阅[聚类点数据](clustering-point-data-web-sdk.md)文档。
 
 可以使用 `DataSource` 类中的 `importDataFromUrl` 函数，在 Azure Maps 中直接导入 GeoJSON 数据。
 
@@ -1147,13 +1147,13 @@ GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.impor
 
 ### <a name="add-a-heat-map"></a>添加热度地图
 
-热度地图，也称为点密度地图，是一种数据可视化类型，它们使用一系列颜色来表示数据密度。 它们通常用于在地图上显示数据“热点”，是呈现大型点数据集的好方法。
+热度地图也称为点密度地图，是一种数据可视化效果。 它们使用各种颜色来表示数据密度。 此外，它们经常用于在地图上显示数据“热点”。 热度地图能够很好地呈现较大的点数据集。
 
 以下示例从 USGS 加载过去一个月发生的所有地震的 GeoJSON 源，并将其呈现为加权的热度地图，其中 `"mag"` 属性用作权重。
 
 **前者：Google Maps**
 
-若要在 Google Maps 中创建热度地图，需要通过将 `&libraries=visualization` 添加到 API 脚本 URL 来加载“可视化”库。 Google Maps 中的热度地图层不直接支持 GeoJSON 数据，需要先下载数据，并将其转换为加权数据点的数组。
+若要在 Google Maps 中创建热度地图，需要通过将 `&libraries=visualization` 添加到 API 脚本 URL 来加载“可视化”库。 Google Maps 中的热度地图层不直接支持 GeoJSON 数据。 需要先下载数据，然后将其转换为加权数据点的数组。
 
 ```html
 <!DOCTYPE html>
@@ -1295,7 +1295,7 @@ GeoJSON 是 Azure Maps 中的基础数据类型，可以使用 `datasource.impor
 
 ### <a name="overlay-a-tile-layer"></a>叠加图块层
 
-图块层（在 Google Maps 中也称为图像叠加层）可让你叠加大型图像，这些图像已分解成与地图图块系统相符的较小图块式图像。 这是叠加大型图像或极大数据集的常用方法。
+图块层在 Google Maps 中也称为图像叠加层。 图块层可让你叠加大型图像，这些图像已分解成与地图图块系统相符的较小图块式图像。 这是叠加大型图像或大型数据集的常用方法。
 
 以下示例叠加爱荷华州立大学环境气象网提供的气象雷达图块层。
 
@@ -1319,7 +1319,7 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 **后者：Azure Maps**
 
-在 Azure Maps 中，基本上可以像添加任何其他层一样将图块层添加到地图中。 指定包含 x 轴、y 轴、缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 分别用于告知层要在何处访问图块。 Azure Maps 图块层还支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。
+在 Azure Maps 中，可将图块层添加到地图中，这类似于添加任何其他层。 指定包含 x 轴、y 轴、缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 分别用于告知层要在何处访问图块。 Azure Maps 图块层还支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。
 
 > [!TIP]
 > 在 Azure Maps 中，可以轻松地在其他层（包括基础地图层）下面呈现层。 通常，最好是在地图标签下面呈现图块层，以便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：`map.layers.add(myTileLayer, "labels");`
@@ -1346,7 +1346,7 @@ map.layers.add(new atlas.layer.TileLayer({
 - [图块层类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 - [图块层选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
-### <a name="show-traffic"></a>显示交通状况
+### <a name="show-traffic"></a>显示交通情况
 
 在 Azure Maps 和 Google Maps 中都可以叠加交通状况数据。
 
@@ -1531,7 +1531,7 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像，以�
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Google Maps V3 到 Azure Maps Web SDK 的类映射
 
-以下附录提供了 Google Maps V3 中最常用类到其 Azure Maps Web SDK 等效项的交叉参考映射。
+以下附录提供了 Google Maps V3 中的常用类以及 Azure Maps Web SDK 中的等效项的交叉参考。
 
 ### <a name="core-classes"></a>核心类
 
@@ -1562,7 +1562,7 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像，以�
 
 ## <a name="service-classes"></a>服务类
 
-Azure Maps Web SDK 包含一个可单独加载的[服务模块](how-to-use-services-module.md)。 此模块使用 Web API 包装 Azure Maps REST 服务，可在 JavaScript、TypeScript 和 Node.js 应用程序中使用。
+Azure Maps Web SDK 包含一个可单独加载的服务模块。 此模块使用 Web API 包装 Azure Maps REST 服务，可在 JavaScript、TypeScript 和 Node.js 应用程序中使用。
 
 | Google Maps | Azure Maps  |
 |-------------|-------------|

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760566"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939167"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -355,7 +355,7 @@ Import-Module Microsoft.Azure.CosmosDB.Emulator
 
 可在用于 Windows 的 Docker 上运行 Azure Cosmos 模拟器。 该模拟器不适合于用于 Oracle Linux 的 Docker。
 
-安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”  切换到 Windows 容器。
+安装[用于 Windows 的 Docker](https://www.docker.com/docker-windows) 后，通过右键单击工具栏上的 Docker 图标并选择“切换到 Windows 容器”**切换到 Windows 容器**。
 
 接下来，通过从你喜欢使用的 shell 运行以下命令，从 Docker 中心拉取模拟器映像。
 
@@ -419,23 +419,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-如果在 Linux docker 容器上运行 .NET 客户端应用程序，并且在主机上运行 Azure Cosmos 仿真器，则在这种情况下，无法从仿真器连接到 Azure Cosmos 帐户。 由于应用未在主机上运行，因此无法添加在 Linux 容器上注册的与仿真器终结点匹配的证书。 
-
-解决方法是通过传递 `HttpClientHandler` 实例，从客户端应用程序禁用服务器的 SSL 证书验证，如下面的 .Net 代码示例所示。 仅当在使用 `Microsoft.Azure.DocumentDB` Nuget 包时，此解决方案才适用，`Microsoft.Azure.Cosmos` Nuget 包不支持此解决方案：
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-除了禁用 SSL 证书验证之外，请务必使用 `/allownetworkaccess` 选项启动仿真器，并且仿真器的终结点可以从主机 IP 地址而非 `host.docker.internal` DNS 进行访问。
+如果你有在 Linux docker 容器上运行的 .NET 客户端应用程序，并且你在主机上运行 Azure Cosmos 模拟器，请根据适用于 Linux 的以下部分将证书导入到 Linux docker 容器中。
 
 ## 在 Mac 或 Linux 上运行<a id="mac"></a>
 
@@ -447,47 +431,59 @@ using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, 
 ipconfig.exe
 ```
 
-在应用程序中，需要更改 DocumentClient 对象的 URI，以使用 `ipconfig.exe` 返回的 IPv4 地址。 下一步是在构建 DocumentClient 对象时绕过 CA 验证。 为此，需要向 DocumentClient 构造函数提供一个 HttpClientHandler，其中包含它自己的 ServerCertificateCustomValidationCallback 实现。
+在你的应用程序中，你需要更改用作终结点的 URI，以使用由 `ipconfig.exe` 返回的 IPv4 地址而不是使用 `localhost`。
 
-下面是代码应该是什么样的示例。
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-最后，在 Windows VM 中，使用以下选项从命令行启动 Cosmos 模拟器。
+接下来，在 Windows VM 中，使用以下选项从命令行启动 Cosmos 模拟器。
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+最后，我们需要将模拟器 CA 证书导入到 Linux 或 Mac 环境中。
+
+### <a name="linux"></a>Linux
+
+如果在 Linux 中工作，则 .NET 依赖于 OpenSSL 来执行验证：
+
+1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)（当选择导出私钥时，PFX 可用）。 
+
+1. 将该 PFX 文件复制到 Linux 环境。
+
+1. 将 PFX 文件转换为 CRT 文件
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. 将 CRT 文件复制到你的 Linux 分发版中包含自定义证书的文件夹。 在 Debian 分发版中，它通常位于 `/usr/local/share/ca-certificates/`。
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. 更新 CA 证书，这将更新 `/etc/ssl/certs/` 文件夹。
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+如果在 Mac 中工作，请使用以下步骤：
+
+1. [使用 PFX 格式导出证书](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate)（当选择导出私钥时，PFX 可用）。
+
+1. 将该 PFX 文件复制到 Mac 环境。
+
+1. 打开 *Keychain Access* 应用程序并导入 PFX 文件。
+
+1. 打开证书列表，并找到名为 `localhost` 的证书。
+
+1. 打开该特定项的上下文菜单，选择“获取项”  ，然后在“信任” > “使用此证书时”选项下选择“始终信任”。    
+
+   ![打开该特定项的上下文菜单，选择“获取项”，然后在“信任 - 使用此证书时”选项下选择“始终信任”。](./media/local-emulator/mac-trust-certificate.png)
+
+完成这些步骤后，当连接到通过 `/AllowNetworkAccess` 公开的 IP 地址时，你的环境将信任模拟器使用的证书。
 
 ## <a name="troubleshooting"></a>故障排除
 
