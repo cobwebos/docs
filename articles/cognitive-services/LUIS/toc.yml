@@ -302,7 +302,9 @@
       href: reference-pattern-syntax.md
     - name: 情绪
       href: luis-reference-prebuilt-sentiment.md
-    - name: 开发人员资源
+- name: 开发人员参考
+  items:
+    - name: 概述
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
     - name: Azure CLI
