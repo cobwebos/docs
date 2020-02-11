@@ -1,17 +1,17 @@
 ---
 title: 保护访问和数据
-description: 添加安全性以保护输入、输出、基于请求的触发器、运行历史记录、管理任务，以及访问 Azure 逻辑应用中的其他资源
+description: 安全访问输入、输出、基于请求的触发器、运行历史记录、管理任务，以及访问 Azure 逻辑应用中的其他资源
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/04/2020
+ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898431"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116935"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -45,7 +45,7 @@ ms.locfileid: "76898431"
 
 每个 URL 都包含此表中所述的 `sp`、`sv`和 `sig` 查询参数：
 
-| 查询参数 | Description |
+| 查询参数 | 说明 |
 |-----------------|-------------|
 | `sp` | 指定允许的 HTTP 方法使用的权限。 |
 | `sv` | 指定用于生成签名的 SAS 版本。 |
@@ -92,7 +92,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-在正文中，包含值为 `Primary` 或 `Secondary` 的 `KeyType` 属性。 此属性返回由指定的安全密钥签名的 URL。
+在正文中，包含值为 `KeyType` 或 `Primary` 的 `Secondary` 属性。 此属性返回由指定的安全密钥签名的 URL。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -106,7 +106,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”。
+1. 在“访问控制配置” **“允许的入站 IP 地址”下，选择“特定 IP 范围”**  > 。
 
 1. 在“触发器的 IP 范围”下，请指定触发器接受的 IP 地址范围。
 
@@ -206,7 +206,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 1. 在逻辑应用的菜单中，在“设置”下，选择“工作流设置”。
 
-1. 在“访问控制配置” > “允许的入站 IP 地址”下，选择“特定 IP 范围”。
+1. 在“访问控制配置” **“允许的入站 IP 地址”下，选择“特定 IP 范围”**  > 。
 
 1. 在“内容的 IP 范围”下，指定可以访问输入和输出中内容的 IP 地址范围。 
 
@@ -437,7 +437,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 此示例模板具有使用 `securestring` 类型的多个安全参数定义：
 
-| 参数名称 | Description |
+| 参数名称 | 说明 |
 |----------------|-------------|
 | `TemplatePasswordParam` | 一个模板参数，它接受随后传递到工作流定义的 `basicAuthPasswordParam` 参数的密码 |
 | `TemplateUsernameParam` | 一个模板参数，该参数接受用户名，然后将其传递给工作流定义的 `basicAuthUserNameParam` 参数 |
@@ -604,17 +604,17 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站调用或访问这些终结点的请求的触发器或操作，你可以从不同的身份验证类型范围中进行选择。 若要确保保护逻辑应用处理的任何敏感信息，请使用受保护的参数，并根据需要对数据进行编码。 有关使用和保护参数的详细信息，请参阅[访问参数输入](#secure-action-parameters)。
 
-| 身份验证类型 | 支持的语句 |
+> [!NOTE]
+> 在逻辑应用设计器中，可以在某些触发器和操作中隐藏**身份验证**属性，你可以在其中指定身份验证类型。 若要使属性在这些情况下出现，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**身份验证**"。 有关详细信息，请参阅[使用托管身份验证访问权限](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
+
+| 身份验证类型 | 受以下产品支持 |
 |---------------------|--------------|
 | [基本](#basic-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
 | [客户端证书](#client-certificate-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API 管理，Azure 应用服务，Azure Functions，http，HTTP + Swagger，HTTP Webhook |
 | [原材料](#raw-authentication) | Azure API 管理，Azure 应用服务，Azure Functions，http，HTTP + Swagger，HTTP Webhook |
-| [托管标识](#managed-identity-authentication)（仅系统分配） | Azure API 管理，Azure 应用服务，Azure Functions，http，HTTP + Swagger，HTTP Webhook |
+| [托管的标识](#managed-identity-authentication) | Azure API 管理，Azure 应用服务，Azure Functions，http，HTTP + Swagger，HTTP Webhook |
 |||
-
-> [!NOTE]
-> 在逻辑应用设计器中，可以在某些触发器和操作中隐藏**身份验证**属性，你可以在其中指定身份验证类型。 若要使属性在这些情况下出现，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**身份验证**"。 有关详细信息，请参阅[使用托管身份验证访问权限](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
 
 <a name="basic-authentication"></a>
 
@@ -622,7 +622,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果 "[基本](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)" 选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -653,11 +653,11 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
 | **Pfx** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以通过执行以下步骤来使用 PowerShell： <p>1. 将证书内容保存到变量： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 通过使用 `ToBase64String()` 函数来转换证书内容，并将该内容保存到文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **密码** | `password`| 请参阅说明 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码。 <p><p>**注意**：在逻辑应用设计器中工作时，此属性值是必需的，在 "代码视图" 中工作时*不*需要此属性值。 |
+| **密码** | `password`| 是 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码 |
 |||||
 
 使用[受保护的参数](#secure-action-parameters)处理和保护敏感信息（例如，在[用于自动部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中）时，可以在运行时使用表达式来访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ClientCertificate` 并使用[parameters （）函数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)获取参数值：
@@ -692,9 +692,10 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 要使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| **无权** | `authority` | 是 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
 | **组织** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
@@ -702,7 +703,6 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 | **机密** | `secret` | 是，但仅适用于 "机密" 凭据类型 | <*客户端-机密*> | 用于请求授权的客户端密码 |
 | **Pfx** | `pfx` | 是，但仅用于 "证书" 凭据类型 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 |
 | **密码** | `password` | 是，但仅用于 "证书" 凭据类型 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码 |
-| **无权** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 <p>**注意**：若要使此属性在设计器中可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**授权**"。 |
 |||||
 
 使用[受保护的参数](#secure-action-parameters)处理和保护敏感信息（例如，在[用于自动部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中）时，可以在运行时使用表达式来访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ActiveDirectoryOAuth`，将凭据类型指定为 `Secret`，并使用[parameters （）函数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)获取参数值：
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中，指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
+| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | Raw | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-标头值*> | 要用于身份验证的授权标头值 |
@@ -773,18 +773,19 @@ Authorization: OAuth realm="Photos",
 
 ### <a name="managed-identity-authentication"></a>托管标识身份验证
 
-如果 "[托管标识](../active-directory/managed-identities-azure-resources/overview.md)" 选项可用，则逻辑应用可以使用系统分配的标识对其他 Azure Active Directory （Azure AD）租户中的资源进行身份验证，而无需登录。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+如果 "[托管标识](../active-directory/managed-identities-azure-resources/overview.md)" 选项可用，则逻辑应用可以使用系统分配的标识，也可以使用*单个*手动创建的用户分配标识来验证对其他 Azure Active Directory （Azure AD）租户中的资源的访问权限，而无需登录。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-1. 在逻辑应用可以使用系统分配的标识之前，请遵循在[Azure 逻辑应用中使用托管标识对 azure 资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)中的步骤。 这些步骤将在逻辑应用中启用托管标识，并设置该标识对目标 Azure 资源的访问权限。
+1. 在逻辑应用可以使用托管标识之前，请遵循在[Azure 逻辑应用中使用托管标识对 azure 资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)中的步骤。 这些步骤将在逻辑应用中启用托管标识，并设置该标识对目标 Azure 资源的访问权限。
 
-2. 在 Azure 函数可以使用系统分配的标识之前，请先[为 azure 函数启用身份验证](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)。
+1. 在 Azure 函数可以使用托管标识之前，请先[为 azure 函数启用身份验证](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)。
 
-3. 在要使用托管标识的触发器或操作中，指定以下属性值：
+1. 在要使用托管标识的触发器或操作中，指定以下属性值：
 
-   | 属性（设计器） | 属性（JSON） | 需要 | 值 | Description |
+   | 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管的标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
-   | **受众** | `audience` | 是 | <*目标资源 ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使得用于身份验证的访问令牌对所有存储帐户都有效。 但是，你还可以为特定的存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：此属性可能会在某些触发器或操作中隐藏。 若要使此属性可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**受众**"。 <p><p>**重要提示**：请确保此目标资源 ID 与 Azure AD 预期的值完全匹配，其中包括所有必需的尾随斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部斜杠。 不过，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 Id，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
+   | **托管的标识** | `identity` | 是 | * **系统分配的托管标识** <br>或 <br>`SystemAssigned` <p><p>* <*用户分配的标识-名称*> | 要使用的托管标识 |
+   | **受众** | `audience` | 是 | <*目标资源 ID*> | 要访问的目标资源的资源 ID。 <p>例如，`https://storage.azure.com/` 使得用于身份验证的访问令牌对所有存储帐户都有效。 但是，你还可以为特定的存储帐户指定根服务 URL，如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：某些触发器或操作中可能隐藏了**受众**属性。 若要使此属性可见，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**受众**"。 <p><p>**重要提示**：请确保此目标资源 ID 与 Azure AD 预期的值*完全匹配*，其中包括所有必需的尾随斜杠。 因此，所有 Azure Blob 存储帐户的 `https://storage.azure.com/` 资源 ID 都需要尾部斜杠。 不过，特定存储帐户的资源 ID 不需要尾部斜杠。 若要查找这些资源 Id，请参阅[支持 Azure AD 的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 
    使用[受保护的参数](#secure-action-parameters)处理和保护敏感信息（例如，在[用于自动部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中）时，可以在运行时使用表达式来访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ManagedServiceIdentity` 并使用[parameters （）函数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)获取参数值：
@@ -797,6 +798,7 @@ Authorization: OAuth realm="Photos",
          "uri": "@parameters('endpointUrlParam')",
          "authentication": {
             "type": "ManagedServiceIdentity",
+            "identity": "SystemAssigned",
             "audience": "https://management.azure.com/"
          },
       },

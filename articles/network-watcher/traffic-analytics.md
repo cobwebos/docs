@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840581"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114412"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -83,7 +83,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 印度南部
 * 日本东部 
 * 日本西部
-* US Gov 弗吉尼亚州
+* 美国政府弗吉尼亚州
 * 中国东部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域： Log Analytics 工作区
@@ -112,10 +112,10 @@ Log Analytics 工作区必须存在于以下区域中：
 * 韩国中部
 * 印度中部
 * 日本东部
-* US Gov 弗吉尼亚州
+* 美国政府弗吉尼亚州
 * 中国东部 2
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -123,8 +123,8 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|Resource Manager   | “所有者”                  |
-|                   | 参与者            |
+|资源管理器   | 所有者                  |
+|                   | Contributor            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
 
@@ -151,7 +151,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 在启用 NSG 流日志记录之前，必须提供要记录其流的网络安全组。 如果没有网络安全组，请参阅[创建网络安全组](../virtual-network/manage-network-security-group.md#create-a-network-security-group)来创建一个。
 
-在 Azure 门户左侧选择“监视”，然后依次选择“网络观察程序”、“NSG 流日志”。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
+在 Azure 门户中，单击 "**网络观察**程序"，然后选择 " **NSG 流日志**"。 选择要为其启用 NSG 流日志的网络安全组，如下图所示：
 
 ![选择需要启用 NSG 流日志的 NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -210,7 +210,7 @@ New-AzStorageAccount `
 
 首次显示仪表板最长可能需要花费 30 分钟时间，因为流量分析必须先聚合足够的数据来派生有意义的见解，然后才能生成任何报告。
 
-## <a name="usage-scenarios"></a>使用情景
+## <a name="usage-scenarios"></a>使用方案
 
 完全配置流量分析之后，可以获取的某些见解如下：
 

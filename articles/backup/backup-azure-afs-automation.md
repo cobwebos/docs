@@ -3,12 +3,12 @@ title: 通过 PowerShell 备份 Azure 文件
 description: 本文介绍如何使用 Azure 备份服务和 PowerShell 来备份 Azure 文件。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773103"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120522"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>通过 PowerShell 备份 Azure 文件
 
@@ -44,6 +44,13 @@ ms.locfileid: "76773103"
 按如下所述设置 PowerShell：
 
 1. [下载最新版本的 Azure PowerShell](/powershell/azure/install-az-ps)。 所需的最低版本为 1.0.0。
+
+> [!WARNING]
+> 预览版需要的最低版本的 PS 是 "Az 1.0.0"。 由于 GA 的未来更改，所需的最低 PS 版本为 "Az. Microsoft.recoveryservices 2.6.0"。 将所有现有 PS 版本升级到此版本非常重要。 否则，现有脚本会在 GA 后中断。 通过以下 PS 命令安装最低版本
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. 找到包含以下命令的 Azure 备份 PowerShell cmdlet：
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>重要说明-用于 AFS 备份的备份项标识
+
+本部分概述了 AFS 备份中的一项重要更改，为 GA 做准备。
+
+为 AFS 启用备份时，用户会提供客户友好的文件共享名称作为实体名称，并创建备份项。 备份项的 "名称" 是 Azure 备份服务创建的唯一标识符。 通常，标识符涉及用户友好名称。 但是，若要处理软删除的重要情况，其中可以删除文件共享，并且可以创建具有相同名称的另一个文件共享，则 Azure 文件共享的唯一标识现在为 ID 而不是客户友好名称。 为了了解每个项的唯一标识/名称，只需运行带 backupManagementType 和 WorkloadType 相关筛选器的 ```Get-AzRecoveryServicesBackupItem``` 命令，即可获取所有相关项，然后在返回的 PS 对象/响应中观察名称字段。 始终建议列出项，然后在 "名称" 字段中检索其唯一名称。 使用此值可以筛选具有 "Name" 参数的项。 否则，请使用 FriendlyName 参数检索具有客户友好名称/标识符的项。
+
+> [!WARNING]
+> 请确保将 PS 版本升级到最小版本的 Microsoft.recoveryservices 2.6.0。 在此版本中，"friendlyName" 筛选器可用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 将 Azure 文件共享名称传递到 friendlyName 参数。 如果将 Azure 文件共享名称传递到 "Name" 参数，此版本将引发警告，以将此友好名称传递给易记名称参数。 如果不安装此最低版本，则可能导致现有脚本失败。 通过以下命令安装最小版本的 PS。
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>触发按需备份
 
 使用[AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0)为受保护的 Azure 文件共享运行按需备份。
 
-1. 从保管库中的容器中检索存储帐户和文件共享，其中包含[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)的备份数据。
-2. 若要启动备份作业，请使用 [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) 获取有关 VM 的信息。
+1. 从保管库中的容器中检索存储帐户，其中包含[AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer)的备份数据。
+2. 若要启动备份作业，可以使用[AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem)获取有关 Azure 文件共享的信息。
 3. 使用 [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) 运行按需备份。
 
 运行按需备份，如下所示：
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 按需备份可用于将快照保留10年。 计划程序可用于运行具有选定保留期的按需 PowerShell 脚本，从而每周、每月或每年按固定间隔拍摄快照。 在拍摄常规快照时，请参阅使用 Azure 备份进行按[需备份的限制](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)。
 
 如果你正在查找示例脚本，则可以使用 Azure 自动化 runbook 在 GitHub （<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>）上引用示例脚本，该 runbook 允许定期计划备份并将其保留10年。
+
+> [!WARNING]
+> 请确保将 PS 版本升级到自动化 runbook 中的 Microsoft.recoveryservices 2.6.0 的最低版本。 必须将旧的 "AzureRM" 模块替换为 "Az" 模块。 在此版本中，"friendlyName" 筛选器可用于 ```Get-AzRecoveryServicesBackupItem``` 命令。 将 azure 文件共享名称传递到 friendlyName 参数。 如果将 azure 文件共享名称传递到 "Name" 参数，此版本将引发警告，以将此友好名称传递给易记名称参数。
 
 ## <a name="next-steps"></a>后续步骤
 

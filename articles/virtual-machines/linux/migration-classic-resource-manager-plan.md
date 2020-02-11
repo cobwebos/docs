@@ -3,8 +3,8 @@ title: 规划从经典部署迁移到 Azure 资源管理器
 description: 规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969871"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121997"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。
@@ -31,7 +31,7 @@ ms.locfileid: "75969871"
 
 ![迁移阶段](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>套餐
+## <a name="plan"></a>计划
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技术注意事项和权衡
 
@@ -44,7 +44,7 @@ ms.locfileid: "75969871"
 5. 运营团队目前是否支持经典部署模型和 Azure 资源管理器中的应用程序/VM？
 6. Azure 资源管理器如何更改 VM 部署、管理、监视和报告过程（如果有）？  部署脚本是否需要更新？
 7. 用于提醒利益干系人（最终用户、应用程序所有者和基础结构所有者）的通信计划有哪些？
-8. 根据环境的复杂性，是否应有维护时段，其间应用程序对最终用户和应用程序所有者不可用？  如果是，持续时间有多长？
+8. 根据环境的复杂性，是否应有维护时段，其间应用程序对最终用户和应用程序所有者不可用？  如果需要，持续时间有多长？
 9. 用于确保利益干系人知识渊博且熟悉 Azure 资源管理器的培训计划是什么？
 10. 用于迁移的项目管理计划是什么？
 11. Azure 资源管理器迁移时间线和其他相关技术路线图有哪些？  它们是否保持最佳的协调？
@@ -114,7 +114,7 @@ ms.locfileid: "75969871"
     >
 
   - 网络接口
-  - 负载均衡器
+  - 负载平衡器
   - 公共 IP
   - 静态公共 IP
   - 内核数

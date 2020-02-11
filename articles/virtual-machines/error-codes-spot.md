@@ -1,20 +1,19 @@
 ---
 title: Azure 点 Vm 和规模集实例的错误代码
 description: 了解使用污点 Vm 和规模集实例时可能会看到的错误代码。
-services: virtual-machines-windows
 author: cynthn
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 97e68f4d0d671ffa0f697c484c502b9070a3f20f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781938"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115850"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>预览：专色 Vm 和规模集的错误消息
 
@@ -27,7 +26,7 @@ ms.locfileid: "74781938"
 下面是在使用点 Vm 和规模集时可能会收到的一些错误代码。
 
 
-| 密钥 | 消息 | 描述 |
+| Key | Message | 说明 |
 |-----|---------|-------------|
 | SkuNotAvailable | 资源 "\<资源\>" 的请求层当前在订阅 "\<subscriptionID\>" 的位置 "\<位置\>" 中不可用。 请尝试另一层或部署到其他位置。 | 此位置没有足够的 Azure 污点容量来创建 VM 或规模集实例。 |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  只能在 Azure 点虚拟机上设置逐出策略。 | 此 VM 不是一个点 VM，因此无法设置逐出策略。 |

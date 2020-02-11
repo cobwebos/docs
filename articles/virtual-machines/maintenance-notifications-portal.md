@@ -1,20 +1,18 @@
 ---
-title: 使用门户获取 Azure Vm 的维护通知
+title: 使用门户获取维护通知
 description: 查看 Azure 中运行的虚拟机的维护通知，并使用门户启动自助服务维护。
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535816"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115736"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用门户处理计划内维护通知
 
@@ -24,7 +22,7 @@ ms.locfileid: "74535816"
 
 可以使用 Azure 门户来查找计划进行维护的 VM。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 在左侧导航栏中，单击“虚拟机”。
 
@@ -34,9 +32,9 @@ ms.locfileid: "74535816"
 
    **维护状态**：显示 VM 的维护状态。 下面是可能的值：
       
-      | Value | 描述 |
+      | 值 | 说明 |
       |-------|-------------|
-      | 立即开始使用 | 虚拟机位于自助维护窗口中，用户可以自行启动维护。 请参阅以下内容，了解如何在虚拟机上启动维护。 | 
+      | 立即启动 | 虚拟机位于自助维护窗口中，用户可以自行启动维护。 请参阅以下内容，了解如何在虚拟机上启动维护。 | 
       | 计划 | 已安排虚拟机进行维护，无需用户启动维护。 若要了解维护时段，可以在此视图中选择“维护 - 计划”时段，也可以单击 VM。 | 
       | 已经更新 | 你的 VM 已经更新，此时无需任何进一步的操作。 | 
       | 稍后重试 | 已经启动维护，但没有成功。 稍后将能够使用自助式维护选项。 | 

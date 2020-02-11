@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064300"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121740"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -572,7 +572,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 | **Fax**      | facsimileTelephoneNumber     |     |    创建 + 更新 |
 | **Mobile**  |    mobile       |     |       创建 + 更新 |
 | **LocalReference** |  preferredLanguage  |     |  创建 + 更新 |                                               
-| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  创建 + 更新 |
+| **Switch （\[市政府\]，"OU = 标准用户、OU = 用户、OU = 默认、OU = 位置、DC = contoso、DC = com"、"达拉斯"、"OU = Standard Users，OU = Users，OU = 达拉斯，OU = 位置，DC = contoso，DC = com"，"奥斯汀"，"OU = Standard Users，OU = Users，OU = 奥斯汀" OU = 位置、DC = contoso、DC = com "、" 西雅图 "、" OU = 标准用户、OU = 用户、OU = 西雅图、OU = 位置、DC = contoso、DC = com "、" 伦敦 "、" OU = 伦敦、ou = 位置、DC = contoso、DC = com "）**  | parentDistinguishedName     |     |  创建 + 更新 |
 
 属性映射配置完成后，即可[启用并启动用户预配服务](#enable-and-launch-user-provisioning)。
 

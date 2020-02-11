@@ -1,20 +1,18 @@
 ---
-title: 使用 CLI 获取 Azure Vm 的维护通知
+title: 使用 CLI 获取维护通知
 description: 查看 Azure 中运行的虚拟机的维护通知，并使用 Azure CLI 启动自助维护。
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 3c75adc2bf5974c1bce9f05306342068396ae62b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5750d7cc6219714849aaf3e47b23708b54eefab1
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535855"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115727"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 处理计划内维护通知
 

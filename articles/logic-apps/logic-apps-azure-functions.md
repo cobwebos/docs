@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453473"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116908"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>从 Azure 逻辑应用调用 Azure 函数
 
@@ -26,9 +26,9 @@ ms.locfileid: "75453473"
 > [!NOTE]
 > 逻辑应用与 Azure Functions 的集成当前不适用于启用槽。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * Azure function app，它是 Azure 函数的容器，以及 Azure 功能。 若没有函数应用，请先[创建函数应用](../azure-functions/functions-create-first-azure-function.md)。 然后，你可以在 Azure 门户中的逻辑应用外或逻辑应用设计器[内的逻辑应用](#create-function-designer)中创建函数。
 
@@ -83,13 +83,13 @@ function convertToDateString(request, response){
 
 下面是此函数内部发生的情况：
 
-1. 该函数创建 `data` 变量并将 `request` 对象内的 `body` 对象分配给该变量。 该函数使用点 (.) 运算符引用 `request` 对象内的 `body` 对象：
+1. 该函数创建 `data` 变量并将 `body` 对象内的 `request` 对象分配给该变量。 该函数使用点 (.) 运算符引用 `body` 对象内的 `request` 对象：
 
    ```javascript
    var data = request.body;
    ```
 
-1. 该函数现在可以通过 `data` 变量访问 `date` 属性，并通过调用 `ToDateString()` 函数将该属性值从 DateTime 类型转换为 DateString 类型。 该函数还通过函数响应中的 `body` 属性返回结果：
+1. 该函数现在可以通过 `date` 变量访问 `data` 属性，并通过调用 `ToDateString()` 函数将该属性值从 DateTime 类型转换为 DateString 类型。 该函数还通过函数响应中的 `body` 属性返回结果：
 
    ```javascript
    body: data.date.ToDateString();
@@ -129,11 +129,11 @@ function convertToDateString(request, response){
 
    ![定义函数](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   模板代码中的 `context` 对象表示逻辑应用通过后续步骤中“请求正文”字段发送的消息。 要从函数内访问 `context` 对象的属性，请使用如下语法：
+   模板代码中的  *对象表示逻辑应用通过后续步骤中“请求正文”字段发送的消息`context`* 。 要从函数内访问 `context` 对象的属性，请使用如下语法：
 
    `context.body.<property-name>`
 
-   例如，要引用 `context` 对象内的 `content` 属性，请使用如下语法：
+   例如，要引用 `content` 对象内的 `context` 属性，请使用如下语法：
 
    `context.body.content`
 
@@ -200,11 +200,11 @@ function convertToDateString(request, response){
 
 若要对其他 Azure Active Directory （Azure AD）租户中的资源进行身份验证，而无需登录并提供凭据或机密，你的逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI）。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 详细了解[支持 Azure AD 身份验证的托管标识的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果将逻辑应用设置为使用系统分配的托管标识，则逻辑应用中的 Azure 函数也可以使用同一标识进行身份验证。 有关逻辑应用中 Azure 函数的身份验证支持的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果将逻辑应用设置为使用系统分配的标识或手动创建的用户分配的标识，则逻辑应用中的 Azure 函数也可以使用同一标识进行身份验证。 有关逻辑应用中 Azure 函数的身份验证支持的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-若要设置和使用函数的系统分配的标识，请执行以下步骤：
+若要设置并将托管标识用于你的函数，请执行以下步骤：
 
-1. 为逻辑应用启用系统分配的标识，并设置该标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识对 azure 资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)。
+1. 在逻辑应用上启用托管标识，并设置该标识对目标资源的访问权限。 请参阅[在 Azure 逻辑应用中使用托管标识对 azure 资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)。
 
 1. 通过执行以下步骤，在 Azure 函数和函数应用中启用身份验证：
 
@@ -215,7 +215,7 @@ function convertToDateString(request, response){
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>在函数中设置匿名身份验证
 
-若要在 Azure 函数中使用逻辑应用的系统分配的标识，请将函数的身份验证级别设置为 "匿名"。 否则，逻辑应用会引发 "BadRequest" 错误。
+若要在 Azure 函数中使用逻辑应用的托管标识，请将函数的身份验证级别设置为 "匿名"。 否则，逻辑应用会引发 "BadRequest" 错误。
 
 1. 在[Azure 门户](https://portal.azure.com)中，查找并选择函数应用。 这些步骤使用 "FabrikamFunctionApp" 作为示例函数应用。
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888135"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118010"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用发送对 HTTP 或 HTTPS 终结点的传出调用
 
@@ -26,9 +26,9 @@ ms.locfileid: "75888135"
 
 根据目标终结点的功能，HTTP 连接器支持传输层安全（TLS）版本1.0、1.1 和1.2。 逻辑应用与端点协商，使用的支持的最高版本。 例如，如果端点支持1.2，连接器将首先使用1.2。 否则，连接器将使用下一个支持的最高版本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要调用的目标终结点的 URL
 
@@ -50,9 +50,12 @@ ms.locfileid: "75888135"
 
 1. 提供要包含在对目标终结点的调用中的[HTTP 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)的值。 为希望触发器检查目标终结点的频率设置重复周期。
 
-   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
-
    ![输入 HTTP 触发器参数](./media/connectors-native-http/http-trigger-parameters.png)
+
+   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
+
+   * [向出站呼叫添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用托管标识对资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)
 
 1. 若要添加其他可用参数，请打开 "**添加新参数**" 列表，然后选择所需的参数。
 
@@ -80,9 +83,12 @@ ms.locfileid: "75888135"
 
 1. 提供要包含在对目标终结点的调用中的[HTTP 操作参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)的值。
 
-   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
-
    ![输入 HTTP 操作参数](./media/connectors-native-http/http-action-parameters.png)
+
+   如果选择 "**无**" 以外的身份验证类型，则身份验证设置会根据你的选择而有所不同。 有关可用于 HTTP 的身份验证类型的详细信息，请参阅以下主题：
+
+   * [向出站呼叫添加身份验证](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [使用托管标识对资源的访问权限进行身份验证](../logic-apps/create-managed-service-identity.md)
 
 1. 若要添加其他可用参数，请打开 "**添加新参数**" 列表，然后选择所需的参数。
 
@@ -145,20 +151,20 @@ ms.locfileid: "75888135"
 
 下面是有关 HTTP 触发器或操作的输出的详细信息，返回以下信息：
 
-| 属性名称 | 类型 | Description |
+| 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | 对象 | 请求中的标头 |
+| 页眉 | 对象 | 请求中的标头 |
 | body | 对象 | JSON 对象 | 具有来自请求的正文内容的对象 |
 | 状态代码 | int | 请求的状态代码 |
 |||
 
-| 状态代码 | Description |
+| 状态代码 | 说明 |
 |-------------|-------------|
 | 200 | 确定 |
 | 202 | 已接受 |
 | 400 | 错误的请求 |
-| 401 | 未授权 |
-| 403 | 禁止 |
+| 401 | Unauthorized |
+| 403 | 已禁止 |
 | 404 | 未找到 |
 | 500 | 内部服务器错误。 发生未知错误。 |
 |||

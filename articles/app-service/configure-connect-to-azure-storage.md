@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866981"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120668"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>在应用服务上的 Windows 容器中配置 Azure 文件
 
@@ -20,7 +20,7 @@ ms.locfileid: "75866981"
 
 本指南说明如何访问 Windows 容器中的 Azure 存储。 仅支持[Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)和[高级文件共享](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare)。 本操作说明中使用的是 Azure 文件共享。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。
 - [Azure App Service 中的现有 Windows 容器应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
@@ -38,6 +38,7 @@ ms.locfileid: "75866981"
 - 目前，Windows 容器中的 Azure 存储**不支持**在 Windows 应用服务计划中引入自己的代码方案。
 - Windows 容器中的 Azure 存储**不支持**使用**存储防火墙**配置，因为存在基础结构限制。
 - 通过 Windows 容器中的 Azure 存储，可以为每个应用指定**最多5个**装入点。
+- 无法通过应用服务 FTP/FTPs 终结点访问装载到应用的 Azure 存储。 使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 - Azure 存储单独计费，**不包含**在你的 web 应用中。 了解有关[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)的详细信息。
 
 ## <a name="link-storage-to-your-web-app-preview"></a>将存储链接到 Web 应用（预览版）

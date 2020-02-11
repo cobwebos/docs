@@ -1,5 +1,5 @@
 ---
-title: 语言支持-文本翻译 API
+title: 语言支持 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 对于使用神经机器翻译转换（NMT）的文本到文本转换，文本翻译 API 支持以下语言。
 services: cognitive-services
@@ -8,56 +8,56 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901998"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118807"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
-文本翻译 API 支持文本到文本转换的以下语言。 对于高质量的 AI 计算机翻译，神经计算机翻译（NMT）是新标准，可在神经系统可用时使用文本翻译 API 的 V3 作为默认值。
+文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。
 
-[详细了解计算机转换的工作方式](https://www.microsoft.com/translator/mt.aspx)
+[详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
 
-## <a name="translation"></a>转换
+## <a name="translation"></a>翻译
 
-**V2 转换器 API**
+**V2 Translator API**
 
 > [!NOTE]
 > V2 已于2018年4月30日弃用。 请将你的应用程序迁移到 V3，以便充分利用 V3 中专门提供的新功能。
 
 * 仅限统计：没有可用于此语言的神经系统。
-* 可用神经：可用神经系统。 使用参数 `category=generalnn` 访问神经系统。
-* 神经默认值：神经是默认的翻译系统。 使用参数 `category=smt` 访问统计系统，以便与 Microsoft Translator 中心一起使用。
+* 可用神经：可用神经系统。 使用参数 `category=generalnn` 可访问神经系统。
+* 神经默认值：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
 * 仅神经：仅神经翻译可用。
 
-**V3 转换器 API**默认情况下，V3 转换器 API 为神经，统计系统仅在不存在神经系统时可用。
+**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。
 
 > [!NOTE]
 > 目前，可在自定义转换器中使用神经语言的子集，并逐渐添加其他翻译。 [查看自定义转换器中当前可用的语言](#customization)。
 
-|语言|  语言代码|  V3 API|
+|Language|  语言代码|  V3 API|
 |:-----|:-----:|:-----|
 |南非荷兰语| `af`|   神经|
 |阿拉伯语|    `ar`    |   神经|
-|孟加拉语|    `bn`    |   神经|
-|波斯尼亚语（拉丁语）|   `bs`    |   神经|
+|Bangla|    `bn`    |   神经|
+|波斯尼亚语(拉丁语系)|   `bs`    |   神经|
 |保加利亚语| `bg`    |   神经|
-|粤语（传统）|   `yue`|  统计|
-|加泰隆语|   `ca`    |   统计|
+|粤语(繁体)|   `yue`|  统计|
+|加泰罗尼亚语|   `ca`    |   统计|
 |简体中文|    `zh-Hans`|神经|
-|繁体中文|   `zh-Hant`       |神经|
+|中文(繁体)|   `zh-Hant`       |神经|
 |克罗地亚语|  `hr`    |神经|
 |捷克语| `cs`    |   神经|
 |丹麦语|    `da`        |神经|
 |荷兰语| `nl`|   神经|
 |英语|   `en`    |   神经|
 |爱沙尼亚语|  `et`    |   神经|
-|Fijian|    `fj`    |   统计|
+|斐济语|    `fj`    |   统计|
 |菲律宾语|  `fil`   |   统计|
 |芬兰语|   `fi`    |   神经|
 |法语|    `fr`    |   神经|
@@ -66,21 +66,21 @@ ms.locfileid: "76901998"
 |海地克里奥尔语|    `ht`        |统计|
 |希伯来语 |`he`   |神经
 |Hindi| `hi`    |   神经|
-|苗语 Daw| `mww`   |   统计|
+|白苗文| `mww`   |   统计|
 |匈牙利语| `hu`    |   神经|
 |冰岛语| `is`    |   神经|
 |印度尼西亚语|    `id`    |   统计|
 |爱尔兰语 | `ga`| 神经
 |意大利语|   `it`    |   神经|
 |日语|  `ja`    |   神经|
-|埃纳德语|`kn`| 神经
-|斯瓦希| `sw`    |   统计|
-|克|   `tlh`   |   统计|
-|克（plqaD）|   `tlh-Qaak`  |   统计|
+|卡纳达语|`kn`| 神经
+|斯瓦希里语| `sw`    |   统计|
+|克林贡语|   `tlh`   |   统计|
+|克林贡语(plqaD)|   `tlh-Qaak`  |   统计|
 |韩语 |`ko`   |   神经|
 |拉脱维亚语|   `lv`    |   神经|
 |立陶宛语|    `lt`    |   神经|
-|Malgašština|  `mg`    |   统计|
+|马达加斯加语|  `mg`    |   统计|
 |马来语| `ms`        |统计|
 |马拉雅拉姆语| `ml` | 神经
 |马耳他语|   `mt`    |   统计|
@@ -89,72 +89,72 @@ ms.locfileid: "76901998"
 |波斯语|   `fa`    |   神经|
 |波兰语|    `pl`    |   神经|
 |葡萄牙语（巴西）|   `pt-br` |   神经|
-|葡萄牙语（葡萄牙）| `pt-pt` | 神经
+|葡萄牙语(葡萄牙)| `pt-pt` | 神经
 |旁遮普语|`pa`|神经
-|Queretaro Otomi|   `otq`   |   统计|
-|罗马尼亚|  `ro`    |   神经|
+|克雷塔罗奥托米语|   `otq`   |   统计|
+|罗马尼亚语|  `ro`    |   神经|
 |俄语|   `ru`    |   神经|
-|Samoan|    `sm`    |   统计|
-|塞尔维亚语 (西里尔文)|    `sr-Cyrl`|  统计|
-|塞尔维亚语（拉丁语）|   `sr-Latn`       |统计|
+|萨摩亚语|    `sm`    |   统计|
+|塞尔维亚语（西里尔）|    `sr-Cyrl`|  统计|
+|塞尔维亚语（拉丁）|   `sr-Latn`       |统计|
 |斯洛伐克语|    `sk`    |   神经|
 |斯洛文尼亚语| `sl`    |   神经|
 |西班牙语|   `es`    |   神经|
 |瑞典语|   `sv`    |神经|
-|Tahitian|  `ty`    |统计|
+|塔希提语|  `ty`    |统计|
 |泰米尔语| `ta`    |   神经|
 |泰卢固语|    `te`    |   神经|
 |泰语|  `th`    |   神经|
-|汤加|    `to`    |   统计|
+|汤加语|    `to`    |   统计|
 |土耳其语|   `tr`        |神经|
 |乌克兰语| `uk`    |   神经|
-|乌都语|  `ur`    |   统计|
+|乌尔都语|  `ur`    |   统计|
 |越南语|    `vi`    |   神经|
 |威尔士语| `cy`    |   神经|
-|Yucatec Maya|  `yua`   |   统计|
+|尤卡坦玛雅语|  `yua`   |   统计|
 
 > [!NOTE]
 > 语言代码 `pt` 将默认为 `pt-br`、葡萄牙语（巴西）。
 
 ## <a name="transliteration"></a>音译
 
-直译方法支持以下语言。 在 "To/From"、"<-->" 中，表示可以从所列脚本中的任何一种或向其中一个脚本进行转译。 "-->" 表示该语言只能从一个脚本转译到另一个脚本。
+Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”表示该语言可以从列出的两侧脚本互相音译。 “-->” 表示该语言只能从一个脚本音译到另一个脚本。
 
-| 语言    | 语言代码 | 脚本 | 到/从 | 脚本|
+| Language    | 语言代码 | Script | 音译方向 | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| 阿拉伯语 | `ar` | 阿拉伯 `Arab` | <--> | 拉丁 `Latn` |
-|孟加拉语  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁 `Latn` |
-| 中文（简体） | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁 `Latn` |
-| 中文（简体） | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
-| 中文（繁体） | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁 `Latn` |
-| 中文（繁体） | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
-| 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | --> | 拉丁 `Latn` |
-| 希伯来语 | `he` | 希伯来 `Hebr` | <--> | 拉丁 `Latn` |
-| Hindi | `hi` | 梵文 `Deva` | <--> | 拉丁 `Latn` |
-| 日语 | `ja` | 日语 `Jpan` | <--> | 拉丁 `Latn` |
-| 埃纳德语 | `kn` | 埃纳德文 `Knda` | --> | 拉丁 `Latn` |
-| 马拉雅拉姆语 | `ml` | 马拉雅拉姆语 `Mlym` | --> | 拉丁 `Latn` |
-| 马拉地语 | `mr` | 梵文 `Deva` | --> | 拉丁 `Latn` |
-| 奥里 | `or` | 奥利雅文 `Orya` | <--> | 拉丁 `Latn` |
-| 旁遮普语 | `pa` | 锡 `Guru`  | <--> | 拉丁 `Latn`  |
-| 塞尔维亚语 (西里尔文) | `sr-Cyrl` | 西里尔 `Cyrl`  | --> | 拉丁 `Latn` |
-| 塞尔维亚语（拉丁语） | `sr-Latn` | 拉丁 `Latn` | --> | 西里尔 `Cyrl`|
-| 泰米尔语 | `ta` | 泰米尔语 `Taml` | --> | 拉丁 `Latn` |
-| 泰卢固语 | `te` | 泰卢固语 `Telu` | --> | 拉丁 `Latn` |
-| 泰语 | `th` | 泰语 `Thai` | <--> | 拉丁 `Latn` |
+| 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
+|Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
+| 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | --> | 拉丁语 `Latn` |
+| 希伯来语 | `he` | 希伯来语 `Hebr` | <--> | 拉丁语 `Latn` |
+| Hindi | `hi` | 梵语 `Deva` | <--> | 拉丁语 `Latn` |
+| 日语 | `ja` | 日语 `Jpan` | <--> | 拉丁语 `Latn` |
+| 卡纳达语 | `kn` | 卡纳达语 `Knda` | --> | 拉丁语 `Latn` |
+| 马拉雅拉姆语 | `ml` | 马拉雅拉姆语 `Mlym` | --> | 拉丁语 `Latn` |
+| 马拉地语 | `mr` | 梵语 `Deva` | --> | 拉丁语 `Latn` |
+| 奥里雅语 | `or` | 奥里雅语 `Orya` | <--> | 拉丁语 `Latn` |
+| 旁遮普语 | `pa` | 果鲁穆奇语 `Guru`  | <--> | 拉丁语 `Latn`  |
+| 塞尔维亚语（西里尔） | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
+| 塞尔维亚语（拉丁） | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|
+| 泰米尔语 | `ta` | 泰米尔语 `Taml` | --> | 拉丁语 `Latn` |
+| 泰卢固语 | `te` | 泰卢固语 `Telu` | --> | 拉丁语 `Latn` |
+| 泰语 | `th` | 泰语 `Thai` | <--> | 拉丁语 `Latn` |
 
 ## <a name="dictionary"></a>字典
 
-字典使用 Lookup 和示例方法支持以下语言或英语。
+字典使用 Lookup 和 Examples 方法支持以下将语言翻译成英语或将英语翻译为以下语言。
 
-| 语言    | 语言代码 |
+| Language    | 语言代码 |
 |:----------- |:-------------:|
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语（拉丁语）      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
-| 加泰隆语      | `ca`          |
+| 加泰罗尼亚语      | `ca`          |
 | 简体中文      | `zh-Hans`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
@@ -168,14 +168,14 @@ ms.locfileid: "76901998"
 | 海地克里奥尔语      | `ht`          |
 | 希伯来语      | `he`          |
 | Hindi      | `hi`          |
-| 苗语 Daw      | `mww`          |
+| 白苗文      | `mww`          |
 | 匈牙利语      | `hu`          |
 | 冰岛语    | `is`  |
 | 印度尼西亚语      | `id`          |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
-| 斯瓦希      | `sw`          |
-| 克      | `tlh`          |
+| 斯瓦希里语      | `sw`          |
+| 克林贡语      | `tlh`          |
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
@@ -185,9 +185,9 @@ ms.locfileid: "76901998"
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
 | 葡萄牙语（巴西）     | `pt-br`          |
-| 罗马尼亚      | `ro`          |
+| 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
-| 塞尔维亚语（拉丁语）      | `sr-Latn`          |
+| 塞尔维亚语（拉丁）      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |
@@ -196,18 +196,18 @@ ms.locfileid: "76901998"
 | 泰语      | `th`          |
 | 土耳其语      | `tr`          |
 | 乌克兰语      | `uk`          |
-| 乌都语      | `ur`          |
+| 乌尔都语      | `ur`          |
 | 越南语      | `vi`          |
 | 威尔士语      | `cy`          |
 
-## <a name="detect"></a>察觉
+## <a name="detect"></a>检测
 
 文本翻译 API 检测所有可用于转换和音译的语言。
 
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>以编程方式访问文本翻译 API 语言列表
 
-您可以使用语言方法检索文本翻译 API 3.0 的支持语言的列表。 可以按功能、语言代码以及英语或任何其他支持的语言查看列表。 此列表将由 Microsoft Translator 服务自动更新，因为提供了新语言。
+可以使用 Languages 方法检索文本翻译 API v3.0 支持的语言列表。 可按功能、语言代码以及该语言在英文或任何其他受支持语言中的名称来查看列表。 当有新语言可用时，Microsoft Translator 服务会自动更新此列表。
 
 [查看语言操作参考文档](reference/v3-0-languages.md)
 
@@ -215,14 +215,14 @@ ms.locfileid: "76901998"
 
 以下语言可供使用[自定义转换器](https://aka.ms/CustomTranslator)的自定义或从英语进行自定义。
 
-| 语言    | 语言代码 |
+| Language    | 语言代码 |
 |:----------- |:-------------:|
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语（拉丁语）      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 简体中文      | `zh-Hans`          |
-|繁体中文|   `zh-Hant`   |
+|中文(繁体)|   `zh-Hant`   |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -241,20 +241,20 @@ ms.locfileid: "76901998"
 | 爱尔兰语 | `ga`  |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
-| 斯瓦希|    `sw`    |
+| 斯瓦希里语|    `sw`    |
 | 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
-| Malgašština| `mg`    |
+| 马达加斯加语| `mg`    |
 | 毛利语| `mi`  |
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
 | 葡萄牙语（巴西） | `pt-br` |
-| 罗马尼亚      | `ro`          |
+| 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
-| Samoan|   `sm`    |
-| 塞尔维亚语（拉丁语）      | `sr-Latn`          |
+| 萨摩亚语|   `sm`    |
+| 塞尔维亚语（拉丁）      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |
@@ -267,6 +267,6 @@ ms.locfileid: "76901998"
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 
-若要快速查看语言，Microsoft Translator 网站将显示文本翻译和语音 Api 支持的所有语言。 此列表不包括特定于开发人员的信息，如语言代码。
+若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
 [查看语言列表](https://www.microsoft.com/translator/languages.aspx)

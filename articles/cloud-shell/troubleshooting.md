@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024273"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120225"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -28,6 +28,11 @@ ms.locfileid: "77024273"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>常规故障排除
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中运行 AzureAD cmdlet 时出错
+
+- **详细信息**：在 Cloud Shell 中运行 `Get-AzureADUser` 的 AzureAD cmdlet 时，可能会看到错误： `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`。 
+- **解决方法**：运行 `Connect-AzureAD` cmdlet。 以前，Cloud Shell 在 PowerShell 启动过程中自动运行此 cmdlet。 为了加快开始时间，该 cmdlet 不再自动运行。 可以通过在 PowerShell 中将 `Connect-AzureAD` 添加到 $PROFILE 文件来选择还原以前的行为。
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox 中的提前超时
 

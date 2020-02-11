@@ -3,18 +3,18 @@ title: 连接到 IBM MQ 服务器
 description: 使用 Azure 或本地 IBM MQ 服务器和 Azure 逻辑应用发送和检索消息
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789576"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118045"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 IBM MQ 服务器
 
@@ -28,7 +28,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 - 接收一批消息，并从 IBM MQ 服务器中删除这些消息
 - 向 IBM MQ 服务器发送一条消息
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果使用的是本地 MQ 服务器，请在网络中的服务器上[安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 安装本地数据网关的服务器还必须安装 .NET Framework 4.6，才能使 MQ 连接器正常运行。 还必须在 Azure 中为本地数据网关创建资源。 有关详细信息，请参阅[设置数据网关连接](../logic-apps/logic-apps-gateway-connection.md)。
 
@@ -38,7 +38,7 @@ IBM MQ 连接器包含这些操作，但不提供触发器：
 
   * MQ 7.5
   * MQ 8.0
-  * MQ 9。0
+  * MQ 9.0
 
 * 要添加 MQ 操作的逻辑应用。 此逻辑应用必须使用与本地数据网关连接相同的位置，并且必须已有启动工作流的触发器。 
 

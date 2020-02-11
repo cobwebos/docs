@@ -11,27 +11,30 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0d770336099611d69fa9e44d04fff4dd37696707
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382158"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120131"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>“Azure Active Directory 标识保护”通知
 
-Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件，帮助你管理用户风险和风险检测：
+Azure AD Identity Protection 发送两种类型的自动通知电子邮件，以帮助你管理用户风险和风险检测：
 
 - 检测到有风险的用户电子邮件
 - 每周摘要电子邮件
 
 本文概述了两种通知电子邮件。
 
+>[!NOTE]
+>电子邮件通知仅在公有云中提供，在美国政府版云中目前不可用。
+
 ## <a name="users-at-risk-detected-email"></a>检测到有风险的用户电子邮件
 
-当“Azure AD 标识保护”检测到帐户受到威胁时，会生成“检测到有风险的用户”的警报电子邮件。 该电子邮件包括指向**针对风险报告而标记的用户[](../reports-monitoring/concept-user-at-risk.md)** 的链接。 建议立即调查有风险的用户。
+当“Azure AD 标识保护”检测到帐户受到威胁时，会生成“检测到有风险的用户”的警报电子邮件。 该电子邮件包括指向[针对风险报告而标记的用户](../reports-monitoring/concept-user-at-risk.md)的链接。 建议立即调查有风险的用户。
 
-此警报的配置允许你指定要生成警报的用户风险级别。 当用户的风险级别达到你指定的风险级别时，将生成电子邮件；但是，在用户达到此用户风险级别后，你将不会收到针对该用户的新的用户检测到风险电子邮件警报。 例如，如果你将策略设置为对中等用户风险发出警报，并且你的用户 John 达到中等风险，那么你将收到针对 John 的用户检测到风险电子邮件。 但是，如果 John 发生风险，则不会收到第二个用户检测到风险的警报。
+此警报的配置允许你指定要为其生成警报的用户风险级别。 当用户的风险级别达到您指定的值时，将生成该电子邮件;但是，在此用户移动到此用户风险级别后，你将不会收到风险检测到的新用户的电子邮件警报。 例如，如果将策略设置为对中等用户风险发出警报，并且用户 John 移动到 "中等风险"，则你将收到 John 收到电子邮件的 "有风险的用户"。 但是，如果 John 发生风险，则不会收到第二个用户检测到风险的警报。
 
 ![检测到有风险的用户电子邮件](./media/howto-identity-protection-configure-notifications/01.png)
 
@@ -39,7 +42,7 @@ Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件�
 
 管理员可以设置：
 
-- **触发生成此电子邮件的用户风险级别** - 默认情况下，此风险级别设置为“高”风险。
+- **触发此电子邮件生成的用户风险级别**-默认情况下，风险级别设置为 "高" 风险。
 - **此邮件的收件人** - 收件人默认包括所有全局管理员。 全局管理员还可将其他全局管理员、安全管理员、安全读取者添加为收件人。
    - 另外，还可以**添加其他电子邮件来接收警报通知**此功能是预览，而定义的用户必须具有相应的权限才能查看 Azure 门户中的链接报表。
 
@@ -47,7 +50,7 @@ Azure AD 标识保护会发送两种类型的自动生成的通知电子邮件�
 
 ## <a name="weekly-digest-email"></a>每周摘要电子邮件
 
-每周摘要电子邮件中包含新风险检测的摘要。  
+每周摘要电子邮件中包含新的风险检测的汇总。  
 其中包括：
 
 - 有风险的用户

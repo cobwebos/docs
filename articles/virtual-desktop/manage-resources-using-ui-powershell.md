@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772795"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115905"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>使用 PowerShell 部署管理工具
 
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
 ```
 
 添加重定向 URI 后，接下来需要更新 API URL，以便管理工具可以与 API 后端服务交互。

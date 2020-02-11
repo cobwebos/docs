@@ -3,18 +3,21 @@ title: 如何在 Azure Functions 中禁用函数
 description: 了解如何在 Azure Functions 中禁用和启用函数。
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970969"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116147"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>如何在 Azure Functions 中禁用函数
 
 本文介绍如何在 Azure Functions 中禁用函数。 禁用某个函数意味着运行时将忽略针对该函数定义的自动触发器。 这使你可以在不停止整个函数应用的情况下阻止特定函数运行。
 
 禁用函数的建议方法是使用 `AzureWebJobs.<FUNCTION_NAME>.Disabled`格式的应用设置。 您可以通过多种方式创建和修改此应用程序设置，包括通过使用 " [Azure CLI](/cli/azure/) " 和 "函数" 的 "**管理**" 选项卡上的[Azure 门户](https://portal.azure.com)中。 
+
+> [!NOTE]  
+> 如果使用本文中所述的方法禁用 HTTP 触发的函数，则在本地计算机上运行时，终结点可能仍可访问。  
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
@@ -83,7 +86,7 @@ public static class QueueFunctions
 > [!IMPORTANT]
 > 只能使用 `Disabled` 属性来禁用类库函数。 为类库函数生成的 *function.json* 文件不可直接编辑。 如果编辑该文件，对 `disabled` 属性所做的任何更改都不起作用。
 >
-> “管理”选项卡上的“函数状态”开关也是如此，因为它的工作方式就是更改 *function.json* 文件。
+> “管理”选项卡上的“函数状态”开关也是如此，因为它的工作方式就是更改 **function.json** 文件。
 >
 > 另请注意，门户可能指示函数已禁用，但实际上并未禁用。
 

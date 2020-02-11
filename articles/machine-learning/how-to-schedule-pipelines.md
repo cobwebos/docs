@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722248"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116756"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>通过用于 Python 的 Azure 机器学习 SDK 来计划机器学习管道
 
 本文介绍如何以编程方式安排要在 Azure 上运行的管道。 你可以选择基于运行时间或文件系统更改创建计划。 基于时间的计划可用于处理日常任务，如监视数据偏移。 基于更改的计划可用于对异常或不可预测的更改（例如上传的新数据或正在编辑的旧数据）做出反应。 在了解如何创建计划后，你将了解如何检索和停用它们。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
+* 一个 Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
 * 用于安装 Python Azure 机器学习 SDK 的 Python 环境。 有关详细信息，请参阅[使用 Azure 机器学习创建和管理用于定型和部署的可重复使用的环境。](how-to-use-environments.md)
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>创建计划
 
 若要定期运行管道，你将创建一个计划。 `Schedule` 将管道、试验和触发器关联起来。 触发器可以是描述等待的时间间隔的`ScheduleRecurrence`，或用于指定监视更改的目录的数据存储路径。 在任一情况下，都需要管道标识符和要在其中创建计划的实验的名称。
+
+在 python 文件的顶部，导入 `Schedule` 和 `ScheduleRecurrence` 类：
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>创建基于时间的计划
 
@@ -141,3 +148,4 @@ stop_by_schedule_id(ws, schedule_id)
 
 * 了解有关[管道](concept-ml-pipelines.md)的详细信息
 * 了解有关[通过 Jupyter 浏览 Azure 机器学习的](samples-notebooks.md)详细信息
+

@@ -1,25 +1,18 @@
 ---
 title: 开发人员资源-语言理解
-titleSuffix: Azure Cognitive Services
-description: 开发人员同时具有 REST Api 和 Sdk 语言理解。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。
+ms.topic: reference
+ms.date: 02/09/2020
+ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716130"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119975"
 ---
-# <a name="developer-resources-for-language-understanding"></a>语言理解的开发人员资源
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>适用于语言理解的 SDK、REST 和 CLI 开发人员资源（LUIS）
 
-开发人员可以使用 REST Api 和 Sdk 进行语言理解。
+Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。 
 
 ## <a name="azure-resource-management"></a>Azure 资源管理
 
@@ -31,11 +24,17 @@ ms.locfileid: "76716130"
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>语言理解创作和预测请求
 
-可以从需要创建的 Azure 资源访问语言理解服务。 有两个资源：创作和预测终结点资源。 这两个资源都允许您控制 LUIS 资源。
+可以从需要创建的 Azure 资源访问语言理解服务。 有两个资源：
+
+* 使用**创作**资源进行培训，以创建、编辑、定型和发布。
+* 使用 "针对运行时的**预测**" 发送用户的文本并接收预测。
 
 了解[V3 预测终结点](luis-migration-api-v3.md)。
+
+使用[认知服务示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code)了解并使用最常见的任务。
 
 ### <a name="rest-apis"></a>REST API
 
@@ -48,10 +47,10 @@ ms.locfileid: "76716130"
 
 ### <a name="language-based-sdks"></a>基于语言的 Sdk
 
-|语言 |参考文档|包|示例|快速入门|
+|Language |参考文档|包|示例|快速入门|
 |--|--|--|--|--|
 |C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[创建和管理应用](sdk-authoring.md?pivots=programming-language-csharp)<br>[查询预测终结点](sdk-query-prediction-endpoint.md)|
-|Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
+|开始|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[创作和预测](luis-get-started-get-intent-from-rest.md)
 |Node.js|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
 |Python|[创作和预测](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[创作](sdk-authoring.md?pivots=programming-language-python)<br>[使用 REST 进行预测](luis-get-started-get-intent-from-rest.md)
@@ -77,7 +76,7 @@ ms.locfileid: "76716130"
 * [LUIS CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) -创建和管理 LUIS.ai 应用程序
 * [调度](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-管理父和子应用
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -自动生成 LUIS C#意向和实体的支持/Typescript 类。
-* [机器人模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
+* [机器人 framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
 
 
 ## <a name="next-steps"></a>后续步骤

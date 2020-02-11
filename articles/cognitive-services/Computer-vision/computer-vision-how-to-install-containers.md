@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: dapine
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 51c60c8cd13c8ad7cef123f2001fcd0ec61f38ba
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770792"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120208"
 ---
 # <a name="install-and-run-read-containers-preview"></a>安装和运行读取容器（预览）
 
@@ -26,11 +26,11 @@ ms.locfileid: "75770792"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 使用容器之前，必须满足以下先决条件：
 
-|需要|用途|
+|必需|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -46,6 +46,16 @@ ms.locfileid: "75770792"
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
+### <a name="advanced-vector-extension-support"></a>高级矢量扩展支持
+
+**主**计算机是运行 docker 容器的计算机。 主机*必须支持*[高级矢量扩展](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)（AVX2）。 可以通过以下命令在 Linux 主机上检查 AVX2 支持：
+
+```console
+grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
+```
+> [!WARNING]
+> *需要*主机计算机才能支持 AVX2。 如果不支持 AVX2，容器*将无法*正常运行。
+
 ### <a name="container-requirements-and-recommendations"></a>容器要求和建议
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
@@ -56,7 +66,7 @@ ms.locfileid: "75770792"
 
 | 容器 | 容器注册表/存储库/映像名称 |
 |-----------|------------|
-| 读取 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
+| 读 | `containerpreview.azurecr.io/microsoft/cognitive-services-read:latest` |
 
 使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
@@ -72,7 +82,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-read:latest
 
 一旦容器位于[主计算机](#the-host-computer)上，请通过以下过程使用容器。
 
-1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](computer-vision-resource-container-config.md)。 
+1. 使用所需的计费设置[运行容器](#run-the-container-with-docker-run)。 提供 [ 命令的多个](computer-vision-resource-container-config.md)示例`docker run`。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
@@ -96,7 +106,7 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-提供 `docker run` 命令的多个[示例](./computer-vision-resource-container-config.md#example-docker-run-commands)。 
+提供 [ 命令的多个](./computer-vision-resource-container-config.md#example-docker-run-commands)示例`docker run`。 
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。

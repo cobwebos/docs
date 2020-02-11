@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846450"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114294"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -68,7 +68,7 @@ ms.locfileid: "76846450"
 
 应用一次只能使用一种类型的虚拟网络集成功能。 尽管这两种方案对许多情况都很有用，但下表指明了应使用每个方案的位置：
 
-| 问题  | 解决方案 |
+| Problem  | 解决方案 |
 |----------|----------|
 | 希望在同一区域中访问 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域虚拟网络集成 |
 | 想要访问经典虚拟网络或另一个区域中的虚拟网络中的资源 | 网关所需的虚拟网络集成 |
@@ -111,7 +111,7 @@ Azure Functions 中的虚拟网络集成使用共享基础结构和应用服务 
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制在虚拟网络中
 
-创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。
+创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。此功能当前可使用高级计划和虚拟网络集成。
 
 [了解有关存储帐户要求的详细信息。](./functions-create-function-app-portal.md#storage-account-requirements)
 
@@ -141,7 +141,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 版本2.x 和更高版本的函数运行时支持虚拟网络触发器。 支持以下非 HTTP 触发器类型。
 
-| 扩展 | 最低版本 |
+| 扩展名 | 最低版本 |
 |-----------|---------| 
 |[Microsoft Azure Web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 或更高版本 |
 |[EventHubs （& e）](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 或更高版本|

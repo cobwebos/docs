@@ -3,12 +3,12 @@ title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294076"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114319"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -56,6 +56,8 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 7. 从下载位置（通常是“下载”文件夹），右键单击该可执行文件或脚本，然后用管理员凭据运行。 出现提示时，键入密码或从内存中粘贴密码，然后按**enter**。 输入有效的密码后，脚本将连接到恢复点。
 
     ![文件恢复菜单](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. 对于 Linux 计算机，将生成 python 脚本。 需要下载该脚本并将其复制到相关兼容的 Linux 服务器。 您可能必须修改权限才能使用 ```chmod +x <python file name>```执行该权限。 然后 ```./<python file name>```运行 python 文件。
 
 请参阅[访问要求](#access-requirements)部分，确保脚本已成功运行。
 
@@ -159,7 +161,7 @@ mount [RAID Disk Path] [/mountpath]
 
 下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。
 
-|服务器 OS | 兼容的客户端 OS  |
+|服务器操作系统 | 兼容的客户端 OS  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024905"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116733"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "76024905"
 
 通过 Azure 机器学习，您可以从训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了预览功能，可将这些机器学习模型生成到可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)中的函数应用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -61,7 +61,7 @@ ms.locfileid: "76024905"
 这些实体封装为__推理配置__。 推理配置引用入口脚本和其他依赖项。
 
 > [!IMPORTANT]
-> 创建用于 Azure Functions 的推理配置时，必须使用[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)对象。 请注意，如果要定义自定义环境，则必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml 默认值。 此包包含将模型托管为 web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
+> 创建用于 Azure Functions 的推理配置时，必须使用[环境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)对象。 请注意，如果要定义自定义环境，则必须使用版本 > = 1.0.45 作为 pip 依赖项添加 azureml 默认值。 此包包含将模型托管为 Web 服务所需的功能。 下面的示例演示如何创建环境对象并将其用于推理配置：
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -118,7 +118,7 @@ print(blob.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>将映像部署为 web 应用
 
-1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<acrinstance>` 替换为之前从 `package.location`返回的值： 
+1. 使用以下命令获取包含映像的 Azure 容器注册表的登录凭据。 将 `<myacr>` 替换为之前从 `package.location`返回的值： 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ print(blob.location)
 1. 创建用于 blob 触发器存储的存储帐户，并获取它的连接字符串。 将 `<triggerStorage>` 替换为要使用的名称。
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv

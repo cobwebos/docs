@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422645"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120240"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
 
@@ -51,6 +51,10 @@ ms.locfileid: "75422645"
 
 1. 单击 "**创建**" 以创建目录。
 
+### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
+
+你还可以使用 Microsoft Graph 创建目录。  具有具有委托 `EntitlementManagement.ReadWrite.All` 权限的应用程序的相应角色中的用户可以调用 API，以[创建 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+
 ## <a name="add-resources-to-a-catalog"></a>将资源添加到目录
 
 若要在访问包中包含资源，这些资源必须存在于目录中。 可以添加的资源类型包括组、应用程序和 SharePoint Online 站点。 这些组可以是云创建的 Office 365 组，也可以是云创建的 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序和联合到 Azure AD 的你自己的应用程序。 网站可以是 SharePoint Online 网站或 SharePoint Online 网站集。
@@ -76,6 +80,10 @@ ms.locfileid: "75422645"
 1. 完成后，单击 "**添加**"。
 
     现在可以将这些资源包含在目录内的 access 包中。
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以编程方式将资源添加到目录
+
+你还可以使用 Microsoft Graph 将资源添加到目录。  相应角色中的用户，或具有委托 `EntitlementManagement.ReadWrite.All` 权限的应用程序的目录和资源所有者的用户可以调用 API 来[创建 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)。
 
 ## <a name="remove-resources-from-a-catalog"></a>从目录中删除资源
 
@@ -129,7 +137,7 @@ ms.locfileid: "75422645"
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 ## <a name="delete-a-catalog"></a>删除目录
 
@@ -144,6 +152,10 @@ ms.locfileid: "75422645"
 1. 在目录**概述**中，单击 "**删除**"。
 
 1. 在出现的消息框中单击“是”。
+
+### <a name="deleting-a-catalog-programmatically"></a>以编程方式删除目录
+
+你还可以使用 Microsoft Graph 删除目录。  适当角色中具有委托 `EntitlementManagement.ReadWrite.All` 权限的用户可以调用 API 来[删除 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 

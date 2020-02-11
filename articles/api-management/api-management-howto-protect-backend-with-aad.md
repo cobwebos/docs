@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120803"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121396"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -27,7 +27,7 @@ ms.locfileid: "76120803"
 > [!NOTE]
 > 此功能适用于 API 管理的**开发人员** **版、标准**层和**高级**层。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -47,7 +47,7 @@ ms.locfileid: "76120803"
 
 若要使用 Azure AD 保护 API，首先需要在 Azure AD 中注册一个表示该 API 的应用程序。 
 
-1. 请参阅[Azure 门户](https://portal.azure.com)注册应用程序。 搜索并选择 " **API 注册**"。
+1. 请参阅[Azure 门户](https://portal.azure.com)注册应用程序。 搜索并选择 "**应用注册**"。
 
 1. 选择“新注册”。 
 
@@ -117,11 +117,11 @@ ms.locfileid: "76120803"
 
 1. 在 Azure 门户中，浏览到 API 管理实例。
 
-1. 选择“OAuth 2.0” > “添加”。
+1. 选择“OAuth 2.0” **“添加”。**  > 
 
 1. 提供“显示名称”和“说明”。
 
-1. 对于“客户端注册页 URL”，请输入占位符值，如 `http://localhost`。 "**客户端注册页 URL** " 指向一个页面，用户可以使用该页为支持此的 OAuth 2.0 提供程序创建和配置自己的帐户。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
+1. 对于“客户端注册页 URL”，请输入占位符值，如 **。** `http://localhost` "**客户端注册页 URL** " 指向一个页面，用户可以使用该页为支持此的 OAuth 2.0 提供程序创建和配置自己的帐户。 在此示例中，用户不创建和配置自己的帐户，因此使用了占位符。
 
 1. 选择“授权代码”作为“授权类型”。
 
@@ -147,7 +147,7 @@ ms.locfileid: "76120803"
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-1. 选择“创建”。
+1. 选择 **“创建”** 。
 
 1. 返回到客户端应用并选择 "**身份验证**"。
 
@@ -161,7 +161,7 @@ ms.locfileid: "76120803"
 
 2. 选择要保护的 API。 例如，可以使用 `Echo API`。
 
-3. 转到“设置”。
+3. 转到 **“设置”** 。
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。 
 

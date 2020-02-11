@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 01/06/2020
+ms.date: 02/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75706982"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122049"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -55,6 +55,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 [Azure 备份](../../backup/index.yml)：
 
 - 备份并还原客户租户中的客户数据
+- 使用[备份资源管理器](../../backup/monitor-azure-backup-with-backup-explorer.md)来帮助查看备份项（包括尚未针对备份配置的 Azure 资源）的操作信息，以及为委托订阅监视信息（作业和警报）。 备份资源管理器当前仅对 Azure VM 数据可用。
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 

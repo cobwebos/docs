@@ -1,36 +1,29 @@
 ---
-title: Resource Manager 模式下的 Azure CLI 命令 | Microsoft Docs
-description: 用于在 Resource Manager 部署模型中管理资源的 Azure 命令行界面 (CLI) 命令
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Azure 经典 CLI 命令
+description: 用于管理资源的 Azure 命令行接口（CLI）命令。
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355928"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122452"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager 模式下的 Azure CLI 命令
-本文提供常用于在 Azure 资源管理器部署模型中创建和管理 Azure 资源的 Azure 命令行接口 (CLI) 命令的语法和选项。 通过在 Resource Manager (arm) 模式下运行 CLI 可以访问这些命令。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 有关 Azure 资源和资源组的一般概述，请参阅 [Azure 资源管理器概述](../azure-resource-manager/management/overview.md)。  
+# <a name="azure-classic-cli-commands"></a>Azure 经典 CLI 命令 
 
-> [!NOTE]
-> 本文介绍了 Azure CLI（有时亦称为“Azure 经典 CLI”）中的资源管理器模式命令。 若要使用 Resource Manager 模型，还可试用下一代多平台 CLI，即 [Azure CLI](/cli/azure/install-az-cli2)。
->查找有关[新旧 Azure CLI](/cli/azure/old-and-new-clis)的详细信息。
->
+> [!IMPORTANT]
+> 本主题介绍如何安装 Azure 经典 CLI。 此经典 CLI 已弃用，只能与经典部署模型配合使用。
+> 对于所有其他部署，使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
 
-若要开始，请先[安装 Azure CLI](../cli-install-nodejs.md) 并[连接到 Azure 订阅](/cli/azure/authenticate-azure-cli)。
+本文提供了用于创建和管理 Azure 资源的 Azure 经典命令行接口（CLI）命令的语法和选项。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 
+
+若要开始，请先[安装 azure 经典 CLI](../cli-install-nodejs.md)并[连接到 azure 订阅](/cli/azure/authenticate-azure-cli)。
 
 要在 Resource Manager 模式下在命令行中查看当前的命令语法和选项，请键入 `azure help`；要显示某个命令的帮助，请键入 `azure help [command]`。 还可以在创建和管理具体 Azure 服务的说明文档中找到 CLI 示例。
 
@@ -45,11 +38,11 @@ ms.locfileid: "75355928"
 
 > [!NOTE]
 > CLI 的 Azure 资源管理器模式与 Azure 服务管理模式互斥。 即在一种模式下创建的资源不能从另一种模式进行管理。
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>azure account：管理帐户信息
-该工具使用 Azure 订阅信息连接到帐户。
+
+## <a name="account-information"></a>帐户信息
+该工具使用你的 Azure 订阅信息连接到你的帐户。
 
 **列出导入的订阅**
 
@@ -75,7 +68,7 @@ ms.locfileid: "75355928"
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>azure ad：用于显示 Active Directory 对象的命令
+## <a name="active-directory-objects"></a>Active Directory 对象
 **用于显示 Active Directory 应用程序的命令**
 
     ad app create [options]
@@ -102,7 +95,7 @@ ms.locfileid: "75355928"
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>azure availset：用于管理可用性集的命令
+## <a name="availability-sets"></a>可用性集
 **在资源组中创建可用性集**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ ms.locfileid: "75355928"
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>azure config：用于管理本地设置的命令
+## <a name="local-settings"></a>本地设置
 **列出 Azure CLI 配置设置**
 
     config list [options]
@@ -137,7 +130,7 @@ ms.locfileid: "75355928"
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>azure feature：用于管理帐户功能的命令
+## <a name="account-features"></a>帐户功能
 **列出订阅可用的所有功能**
 
     feature list [options]
@@ -150,7 +143,7 @@ ms.locfileid: "75355928"
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>azure group：用于管理资源组的命令
+## <a name="resource-groups"></a>资源组
 **创建资源组**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ ms.locfileid: "75355928"
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight：用于管理 HDInsight 群集的命令
+## <a name="hdinsight-clusters"></a>HDInsight 群集
 **用于创建群集配置文件或在其中添加信息的命令**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 示例：创建一个配置文件，其中包含创建群集时要运行的脚本操作。
 
@@ -307,17 +301,17 @@ ms.locfileid: "75355928"
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights：与监视 Insights（事件、警报规则、自动缩放设置、度量值）相关的命令
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>见解（事件、警报规则、自动缩放设置、指标）
 **检索订阅、correlationId、资源组、资源或资源提供程序的操作日志**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>azure location：用于获取所有资源类型的可用位置的命令
+## <a name="locations"></a>位置 
 **列出可用位置**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>azure network：用于管理网络资源的命令
+## <a name="network-resources"></a>网络资源
 **用于管理虚拟网络的命令**
 
     network vnet create [options] <resource-group> <name> <location>
@@ -631,7 +625,7 @@ ms.locfileid: "75355928"
 <BR>
 
     network lb list [options] <resource-group>
-列出资源组中的负载均衡器资源。
+列出资源组中的负载平衡器资源。
 
     azure network lb list myresourcegroup
 
@@ -1255,7 +1249,7 @@ ms.locfileid: "75355928"
 **用于管理公共 IP 地址的命令**
 
     network public-ip create [options] <resource-group> <name> <location>
-创建公共 IP 资源。 将要创建公共 IP 资源并将其关联到一个域名。
+创建公共 IP 资源。 你将要创建公共 IP 资源并将其关联到一个域名。
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1509,7 +1503,7 @@ ms.locfileid: "75355928"
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure provider：用于管理资源提供程序注册的命令
+## <a name="resource-provider-registrations"></a>资源提供程序注册
 **列出 Resource Manager 中当前已注册的提供程序**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ ms.locfileid: "75355928"
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>azure resource：用于管理资源的命令
+## <a name="resources"></a>资源
 **在资源组中创建资源**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ ms.locfileid: "75355928"
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>azure role：用于管理 Azure 角色的命令
+## <a name="azure-roles"></a>Azure 角色
 **获取所有可用的角色定义**
 
     role list [options]
@@ -1562,7 +1556,7 @@ ms.locfileid: "75355928"
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>azure storage：用于管理存储对象的命令
+## <a name="storage-objects"></a>存储对象
 **用于管理存储帐户的命令**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ ms.locfileid: "75355928"
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag：用于管理 Resource Manager 标记的命令
+## <a name="tags"></a>Tags
 **添加标记**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ ms.locfileid: "75355928"
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm：用于管理 Azure 虚拟机的命令
+## <a name="virtual-machines"></a>虚拟机
 **创建 VM**
 
     vm create [options] <resource-group> <name> <location> <os-type>

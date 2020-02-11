@@ -8,68 +8,82 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/31/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: f00529d00312fd6acb045de698590047f991bec7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714292"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122520"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
-本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中包括底层存储结构、文件格式和时序 ID 属性。 它还讨论了底层入口流程、最佳做法和当前预览限制。
+本文介绍适用于 Azure 时序见解预览的数据存储和入口更新。 其中介绍了基础存储结构、文件格式和时序 ID 属性。 还介绍了底层入口流程、最佳做法和当前预览限制。
 
 ## <a name="data-ingress"></a>数据入口
 
-你的 Azure 时序见解环境包含一个引入引擎，用于收集、处理和存储时序数据。 规划环境时，需要考虑一些注意事项，以确保处理所有传入的数据，并实现高进入规模，并最大限度地减少引入延迟（由 TSI 读取和处理事件中的数据所花费的时间）源）。 
+你的 Azure 时序见解环境包含一个*引入引擎*，用于收集、处理和存储时序数据。 
 
-在时序见解预览中，数据入口策略确定数据的来源位置以及数据应采用的格式。
+在[规划环境](time-series-insights-update-plan.md)时，需要注意一些注意事项，以确保处理所有传入数据，实现高进入规模，并最大限度地减少*引入延迟*（时序见解从事件来源读取和处理数据所用的时间）。
+
+时序见解预览数据入口策略确定数据的来源位置，以及数据应采用的格式。
 
 ### <a name="ingress-policies"></a>入口策略
 
+*数据*引入涉及到将数据发送到 Azure 时序见解预览环境的方式。 
+
+下面总结了密钥配置、格式和最佳实践。
+
 #### <a name="event-sources"></a>事件源
 
-时序见解预览版支持以下事件源：
+Azure 时序见解预览版支持以下事件源：
 
 - [Azure IoT 中心](../iot-hub/about-iot-hub.md)
 - [Azure 事件中心](../event-hubs/event-hubs-about.md)
 
-时序见解预览版每个实例最多支持两个事件源。
+Azure 时序见解预览版每个实例最多支持两个事件源。
 
-> [!WARNING] 
+> [!IMPORTANT] 
 > * 将事件源附加到预览环境时，可能会遇到较高的初始延迟。 
 > 事件源延迟取决于当前在 IoT 中心或事件中心内的事件数。
-> * 在事件源数据第一次引入后，会下降高延迟。 如果你遇到持续的高延迟，请通过 Azure 门户提交支持票证来联系我们。
+> * 在事件源数据第一次引入后，会下降高延迟。 如果遇到高延迟，请通过 Azure 门户提交支持票证。
 
 #### <a name="supported-data-format-and-types"></a>支持的数据格式和类型
 
-Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 UTF8 编码的 JSON。 
+Azure 时序见解支持从 Azure IoT 中心或 Azure 事件中心发送的 UTF-8 编码的 JSON。 
 
-下面是受支持的数据类型的列表。
+支持的数据类型包括：
 
 | 数据类型 | 说明 |
-|-----------|------------------|-------------|
-| bool      |   具有以下两种状态之一的数据类型： true 或 false。       |
-| dateTime    |   表示时间上的一刻，通常以日期和当天的时间表示。 Datetime 应采用 ISO 8601 格式。      |
-| double    |   双精度64位 IEEE 754 浮点
-| 字符串    |   文本值，包含 Unicode 字符。          |
+|---|---|
+| **bool** | 具有以下两种状态之一的数据类型： `true` 或 `false`。 |
+| **dateTime** | 表示时间上的一刻，通常以日期和当天的时间表示。 用[ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html)格式表示。 |
+| **double** | 双精度64位[IEEE 754](https://ieeexplore.ieee.org/document/8766229)浮点。 |
+| **string** | 文本值，包含 Unicode 字符。          |
 
 #### <a name="objects-and-arrays"></a>对象和数组
 
-您可以将复杂类型（如对象和数组）作为事件有效负载的一部分发送，但在存储数据时，您的数据将经历一个平展过程。 若要详细了解如何绘制 JSON 事件以及有关复杂类型和嵌套对象平展的详细信息，请参阅有关[如何为入口和查询构建 json 的](./time-series-insights-update-how-to-shape-events.md)页面。
+您可以将复杂类型（如对象和数组）作为事件有效负载的一部分发送，但在存储数据时，您的数据将经历一个平展过程。 
 
+[如何将 json 用于入口和查询](./time-series-insights-update-how-to-shape-events.md)，以帮助进行规划和优化，详细介绍了如何调整 json 事件、发送复杂类型和嵌套对象平展的详细信息。
 
 ### <a name="ingress-best-practices"></a>入口最佳实践
 
 建议使用以下最佳做法：
 
-* 在同一区域中配置时序见解和 IoT 中心或事件中心，以减少网络引入延迟。
-* 通过计算预计引入率并验证其是否处于下面列出的支持费率中来规划规模需求
+* 在同一区域中配置 Azure 时序见解和任何 IoT 中心或事件中心，以减少潜在的延迟。
+
+* 通过计算预计引入率并验证其是否处于下面列出的支持费率中来[规划规模需求](time-series-insights-update-plan.md)。
+
 * 通过阅读[如何将 json 用于入口和查询](./time-series-insights-update-how-to-shape-events.md)，了解如何优化和调整 json 数据以及预览版的当前限制。
 
-### <a name="ingress-scale-and-limitations-in-preview"></a>预览中的入口规模和限制
+### <a name="ingress-scale-and-preview-limitations"></a>入口规模和预览限制 
+
+Azure 时序见解预览入口限制如下所述。
+
+> [!TIP]
+> 阅读[规划预览环境](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits)以获取所有预览限制的综合列表。
 
 #### <a name="per-environment-limitations"></a>每个环境限制
 
@@ -77,39 +91,65 @@ Azure 时序见解支持通过 Azure IoT 中心或 Azure 事件中心提交的 U
 
 *  **设备数**×**事件发射频率**×**每个事件的大小**。
 
-默认情况下，时序见解预览版可以按**每个 TSI 环境**每秒 1 mb/秒（MBps）的速率引入传入数据。 如果这不能满足您的要求，请与我们联系，我们可以通过在 Azure 门户提交支持票证，为环境支持最多 16 MBps。
+默认情况下，时序见解预览可以按**每秒的速率（MBps）每个时序见解环境**传入传入数据。
+
+> [!TIP] 
+> * 请求最多可提供引入速度为 16 MBps 的环境支持。
+> * 如果需要更高的吞吐量，请通过 Azure 门户提交支持票证来联系我们。
  
-示例1： Contoso 发货包含100000台设备，每分钟发出一次事件三次。 事件的大小为200个字节。 它们使用带有4个分区的事件中心作为 TSI 事件源。
-其 TSI 环境的引入速率为：100000设备 * 200 字节/事件 * （3/60 事件/秒） = 1 MBps。
-每个分区的引入速率为 0.25 MBps。
-Contoso 发货的引入率将在预览规模限制范围内。
- 
-示例2： Contoso 汽油分析具有每秒发出事件的60000设备。 它们将 IoT 中心24分区计数4作为 TSI 事件源使用。 事件的大小为200个字节。
-环境引入速率为：20000设备 * 200 字节/事件 * 1 事件/秒 = 4 MBps。
-每个分区速率为 1 MBps。
-Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交请求以实现此规模。
+* **示例 1：**
+
+    Contoso 发货包含100000台设备，每分钟发出一次事件三次。 事件的大小为200个字节。 它们使用包含四个分区作为时序见解事件源的事件中心。
+
+    * 其时序见解环境的引入速率为： **100000 设备 * 200 字节/事件 * （3/60 事件/秒） = 1 MBps**。
+    * 每个分区的引入速率为 0.25 MBps。
+    * Contoso 发货的引入率将在预览规模限制范围内。
+
+* **示例2：**
+
+    Contoso 汽油分析具有60000个设备，每秒发出一个事件。 它们将 IoT 中心24分区计数4作为时序见解事件源。 事件的大小为200个字节。
+
+    * 环境引入速率为： **20000 设备 * 200 字节/事件 * 1 事件/秒 = 4 MBps**。
+    * 每个分区速率为 1 MBps。
+    * Contoso 汽油分析可以通过 Azure 门户向时序见解提交请求，以增加其环境的引入速率。
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>中心分区和每个分区的限制
 
-在规划你的 TSI 环境时，必须考虑要连接到 TSI 的事件源的配置。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。  分区是中心内保留事件的有序序列。 分区计数在 IoT 或事件中心的创建阶段设置，不可更改。 有关确定分区计数的详细信息，请参阅 "事件中心" "需要多少分区？ 对于使用 IoT 中心的 TSI 环境，大多数 IoT 中心仅需4个分区。 无论是为 TSI 环境创建新的集线器还是使用现有的集线器，都需要按分区引入速率来计算，以确定它是否在预览限制内。 目前，TSI 预览的**每个分区**限制为 0.5 MB/s。 使用下面的示例作为参考，如果你是 IoT 中心用户，请注意以下特定于 IoT 中心的注意事项。
+规划时序见解环境时，必须考虑要连接到时序见解的事件源的配置，这一点很重要。 Azure IoT 中心和事件中心都利用分区来实现事件处理的水平缩放。 
+
+*分区*是中心内保留事件的有序序列。 分区计数是在中心创建阶段设置的，无法更改。 
+
+对于事件中心分区最佳实践，请查看[需要多少分区？](https://docs.microsoft.com/azure/event-hubs/event-hubs-faq#how-many-partitions-do-i-need)
+
+> [!NOTE]
+> 大多数使用 Azure 时序见解的 IoT 中心只需四个分区。
+
+无论是为时序见解环境创建新的中心还是使用现有的集线器，都需要按分区引入速率来计算，以确定其是否在预览限制内。 
+
+Azure 时序见解预览版当前的**每个分区限制为 0.5 MBps**。
 
 #### <a name="iot-hub-specific-considerations"></a>特定于 IoT 中心的注意事项
 
-在 IoT 中心内创建设备时，会将其分配给分区，而不会更改分区分配。 这样，IoT 中心就可以保证事件的排序。 但是，在某些情况下，这种情况下，它会影响 TSI 作为下游读取器。 当使用相同的网关设备 ID 将来自多个设备的消息转发到集线器时，它们将到达同一分区，因此可能超出了每个分区的规模限制。 
+在 IoT 中心内创建设备时，该设备将被永久分配给分区。 这样，IoT 中心就可以保证事件顺序（因为赋值从不会更改）。
 
-**影响**：如果单个分区在预览限制的情况上经历了持续速率，则在超过 IoT 中心数据保持期之前，不会出现一条不会赶上的 TSI 读取器。 这会导致数据丢失。
+固定分区分配还会影响时序见解实例，这些实例引入 IoT 中心发送的数据。 当使用相同的网关设备 ID 将来自多个设备的消息转发到集线器时，它们可能会在同一时间到达同一分区，可能会超出每个分区的规模限制。 
 
-建议如下： 
+**影响**：
 
-* 在部署解决方案之前计算按环境和按分区引入速率
-* 确保 IoT 中心设备（和分区）的负载均衡，以实现最远的扩展
+* 如果单个分区在预览限制的情况下出现持续速率，则时序见解可能不会在已超出 IoT 中心数据保持期之前同步所有设备遥测数据。 因此，如果引入限制始终超过，则发送的数据可能会丢失。
 
-> [!WARNING]
+为了缓解这种情况，我们建议采用以下最佳做法：
+
+* 在部署解决方案之前，按环境和分区引入速率计算。
+* 确保 IoT 中心设备的负载平衡最大。
+
+> [!IMPORTANT]
 > 对于使用 IoT 中心作为事件源的环境，请使用正在使用的集线器设备数计算引入速率，以确保在预览版中，每个分区限制的速率低于 0.5 MBps。
+> * 即使多个事件同时到达，也不会超出预览限制。
 
   ![IoT 中心分区关系图](media/concepts-ingress-overview/iot-hub-partiton-diagram.png)
 
-有关吞吐量单元和分区的详细信息，请参阅以下链接：
+若要详细了解如何优化集线器吞吐量和分区，请参阅以下资源：
 
 * [IoT 中心规模](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling)
 * [事件中心规模](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
@@ -117,9 +157,9 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 
 ### <a name="data-storage"></a>数据存储
 
-创建时序见解预览即用即付 SKU 环境时，需要创建两个 Azure 资源：
+创建时序见解预览*即用即付*（PAYG） SKU 环境时，需要创建两个 Azure 资源：
 
-* 时序见解预览环境，可以选择包括热存储功能。
+* 可为热存储配置的 Azure 时序见解预览环境。
 * 用于冷数据存储的 Azure 存储常规用途 V1 blob 帐户。
 
 你的热存储中的数据仅可通过[时序查询](./time-series-insights-update-tsq.md)和[Azure 时序见解预览资源管理器](./time-series-insights-update-explorer.md)使用。 
@@ -131,12 +171,12 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 
 ### <a name="data-availability"></a>数据可用性
 
-时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
+Azure 时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
 > 在预览期间，你可能会遇到长达60秒的时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure 存储
+## <a name="azure-storage"></a>Azure 存储空间
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 
@@ -144,11 +184,14 @@ Contoso 汽油分析需要通过用于专用环境的 Azure 门户向 TSI 提交
 
 ### <a name="your-storage-account"></a>你的存储帐户
 
-创建时序见解预览即用即付环境时，会将 Azure 存储空间常规用途 V1 blob 帐户创建为长期冷存储。  
+创建 Azure 时序见解预览版 PAYG 环境时，会将 Azure 存储空间常规用途 V1 blob 帐户创建为长期冷存储。  
 
-时序见解预览版在你的 Azure 存储帐户中发布每个事件的两个副本。 初始副本包含按引入时间排序的事件，并且始终保留这些事件，因此你可以使用其他服务来访问它。 你可以使用 Spark、Hadoop 和其他熟悉的工具来处理原始 Parquet 文件。 
+Azure 时序见解预览版在你的 Azure 存储帐户中发布每个事件的两个副本。 初始副本包含按引入时间排序的事件。 **始终保留**该事件顺序，以便其他服务无需对问题进行排序即可访问你的事件。 
 
-时序见解预览版对为时序见解查询进行优化的 Parquet 文件。 还会保存此数据的重新分区副本。
+> [!NOTE]
+> 你还可以使用 Spark、Hadoop 和其他熟悉的工具来处理原始 Parquet 文件。 
+
+时序见解预览版还对要为时序见解查询进行优化的 Parquet 文件。 还会保存此数据的重新分区副本。 
 
 公共预览期间，数据将无限期地存储在 Azure 存储帐户中。
 

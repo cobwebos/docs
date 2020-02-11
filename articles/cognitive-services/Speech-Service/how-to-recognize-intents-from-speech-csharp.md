@@ -3,19 +3,19 @@ title: 如何使用语音 SDK 从语音识别意向C#
 titleSuffix: Azure Cognitive Services
 description: 在本指南中，你将了解如何使用的语音 SDK 从语音识别意向C#。
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805886"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120036"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>如何使用的语音 SDK 从语音识别意向C#
 
@@ -35,7 +35,7 @@ ms.locfileid: "74805886"
 > - 从文件中识别语音
 > - 使用异步的事件驱动的连续识别
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 在开始本指南之前，请确保你具有以下各项：
 
@@ -91,12 +91,15 @@ LUIS 使用三种密钥：
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. 在提供的 `Main()` 方法中添加以下代码：
+1. 将提供的 `Main()` 方法替换为以下异步等效项：
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. 创建空的异步方法 `RecognizeIntentAsync()`，如下所示：
@@ -173,7 +176,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 ## <a name="specify-recognition-language"></a>指定识别语言
 
-默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，在创建识别器之前，在应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 以识别德语中的意向。 有关详细信息，请参阅[支持的语言](language-support.md#speech-to-text)。
+默认情况下，LUIS 可以识别美国英语中的意向 (`en-us`)。 将区域设置代码分配到语音配置的 `SpeechRecognitionLanguage` 属性可以识别其他语言的意向。 例如，在创建识别器之前，在应用程序中添加 `config.SpeechRecognitionLanguage = "de-de";` 以识别德语中的意向。 有关详细信息，请参阅[LUIS language support](../LUIS/luis-language-support.md#languages-supported)。
 
 ## <a name="continuous-recognition-from-a-file"></a>从文件中连续识别
 
@@ -197,4 +200,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：从麦克风识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [快速入门：识别来自麦克风的语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

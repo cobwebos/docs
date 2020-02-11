@@ -4,12 +4,12 @@ description: 本文介绍如何在 azure 虚拟机上备份 SQL Server 数据库
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029565"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120836"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -87,7 +87,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 
 **允许使用 Azure 防火墙标记进行访问**。 如果使用 Azure 防火墙，请使用 AzureBackup [FQDN 标记](https://docs.microsoft.com/azure/firewall/fqdn-tags)创建应用程序规则。 这允许对 Azure 备份进行出站访问。
 
-**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 上备份 SQL Server 数据库时，VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 该扩展是为了访问公共 Internet 而配置的唯一组件。
+**部署用于路由流量的 HTTP 代理服务器**。 在 Azure VM 上备份 SQL Server 数据库时，VM 上的备份扩展将使用 HTTPS Api 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure AD 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 Azure 备份使用的通配符域不能添加到代理规则的允许列表。 你将需要使用 Azure 提供的这些服务的公共 IP 范围。 该扩展是为了访问公共 Internet 而配置的唯一组件。
 
 连接性选项包括以下优点和缺点：
 
@@ -96,7 +96,7 @@ SQL Server 数据库是需要低恢复点目标（RPO）和长期保留的关键
 允许 IP 范围 | 无额外成本 | 管理起来很复杂，因为 IP 地址范围随时会变化 <br/><br/> 允许访问整个 Azure，而不只是 Azure 存储
 使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
 使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
-使用 HTTP 代理 | 允许在代理中对存储 URL 进行精细控制 <br/><br/> 对 VM 进行单点 Internet 访问 <br/><br/> 不受 Azure IP 地址变化的影响 | 通过代理软件运行 VM 带来的额外成本
+使用 HTTP 代理 | 对 VM 进行单点 Internet 访问 <br/> | 通过代理软件运行 VM 带来的额外成本 <br/> 无已发布的 FQDN 地址，允许规则将受到 Azure IP 地址更改的限制
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Azure 备份的数据库命名准则
 

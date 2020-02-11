@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: 16a1f3b8f9ef036bcdc9af122243d313186f99f1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 10ec07cab94184810e083c643e862cebe8e2431c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885337"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121430"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>预览-在 Azure Kubernetes 服务中使用托管标识
 
@@ -29,7 +29,7 @@ AKS 创建两个托管标识：
 在此预览期间，仍需要服务主体。 它用于授权加载项，例如监视、虚拟节点、Azure 策略和 HTTP 应用程序路由。 正在进行的工作是删除服务主体名称（SPN）上加载项的依赖项。 最终，将完全删除 AKS 中的 SPN 要求。
 
 > [!IMPORTANT]
-> AKS 预览版功能提供自助服务，可选择使用。 预览按 "原样" 提供，并从服务级别协议和有限担保中排除。 AKS 预览版已在最大程度上由客户支持部分覆盖。 因此，这些功能不应用于生产。 有关详细信息，请参阅以下支持文章：
+> AKS 预览版功能提供自助服务，可选择使用。 预览按 "原样" 提供，并从服务级别协议和有限担保中排除。 AKS 预览版已在最大程度上由客户支持部分覆盖。 因此，这些功能并不用于生产。 有关详细信息，请参阅以下支持文章：
 >
 > - [AKS 支持策略](support-policies.md)
 > - [Azure 支持常见问题](faq.md)
@@ -44,7 +44,7 @@ AKS 创建两个托管标识：
 若要安装 aks-preview 0.4.14 扩展或更高版本，请使用以下 Azure CLI 命令：
 
 ```azurecli
-az extension update --name aks-preview
+az extension add --name aks-preview
 az extension list
 ```
 

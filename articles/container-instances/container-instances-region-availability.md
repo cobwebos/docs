@@ -2,18 +2,18 @@
 title: 按区域的资源可用性
 description: Azure 容器实例服务的计算和内存资源在不同 Azure 区域的可用性。
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887999"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117822"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器实例在 Azure 区域的资源可用性
 
-本文详述 Azure 容器实例的计算和内存资源在 Azure 区域的可用性。 
+本文详细介绍了 azure 区域中的 Azure 容器实例计算、内存和存储资源的可用性以及目标操作系统。 
 
 提供的值是指部署一个[容器组](container-instances-container-groups.md)时可以使用的最大资源。 在本文发布时，值是最新的。 
 
@@ -26,23 +26,23 @@ ms.locfileid: "75887999"
 
 以下区域和资源可供包含 Linux 和[受支持的](container-instances-faq.md#what-windows-base-os-images-are-supported)基于 Windows Server 2016 的容器的容器组使用。
 
-| 区域 | OS | 最大 CPU | 最大内存（GB） |
-| -------- | -- | :---: | :-----------: |
-| 巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部2、北欧、美国中南部、东南亚、印度、英国南部、西欧、美国西部、美国西部2 | Linux | 4 | 16 |
-| 澳大利亚东部、日本东部 | Linux | 2 | 8 |
-| 美国中北部 | Linux | 2 | 3.5 |
-| 巴西南部、日本东部、西欧 | Windows | 4 | 16 |
-| 美国东部、美国西部 | Windows | 4 | 14 |
-| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部2、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、美国西部2 | Windows | 2 | 3.5 |
+| 区域 | OS | 最大 CPU | 最大内存（GB） | 存储器 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、美国东部2、北欧、美国中南部、东南亚、印度、英国南部、西欧、美国西部、美国西部2 | Linux | 4 | 16 | 50 |
+| 澳大利亚东部、日本东部 | Linux | 2 | 8 | 50 |
+| 美国中北部 | Linux | 2 | 3.5 | 50 |
+| 巴西南部、日本东部、西欧 | Windows | 4 | 16 | 20 |
+| 美国东部、美国西部 | Windows | 4 | 14 | 20 |
+| 澳大利亚东部、加拿大中部、印度中部、美国中部、东亚、美国东部2、美国中北部、北欧、美国中南部、东南亚、印度南部、英国南部、美国西部2 | Windows | 2 | 3.5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>可用性 - Windows Server 2019 LTSC，1809 部署（预览版）
 
 以下区域和资源可供包含基于 Windows Server 2019 的容器（预览版）的容器组使用。
 
-| 区域 | OS | 最大 CPU | 最大内存（GB） |
-| -------- | -- | :---: | :-----------: |
-| 澳大利亚东部、巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、日本东部、美国中北部、北欧、美国中南部、东南亚、印度、英国南部、西欧 | Windows | 4 | 16 |
-| 美国东部2、美国西部2 | Windows | 2 | 3.5 |
+| 区域 | OS | 最大 CPU | 最大内存（GB） | 存储器 (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| 澳大利亚东部、巴西南部、加拿大中部、印度中部、美国中部、东亚、美国东部、日本东部、美国中北部、北欧、美国中南部、东南亚、印度、英国南部、西欧 | Windows | 4 | 16 | 20 |
+| 美国东部2、美国西部2 | Windows | 2 | 3.5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>可用性-虚拟网络部署

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458672"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115840"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>通过 Azure CLI 从自定义磁盘上传并创建 Linux VM
 
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-目标存储帐户必须与虚拟磁盘上传到的位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 阅读有关[可用 CLI Resource Manager 参数](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines)的详细信息。
+目标存储帐户必须与虚拟磁盘上传到的位置相同。 还需要指定或根据提示输入 **az vm create** 命令所需的所有其他参数，例如虚拟网络、公共 IP 地址、用户名和 SSH 密钥。 可以阅读有关[可用的经典 CLI 资源管理器参数](../azure-cli-arm-commands.md#virtual-machines)的详细信息。
 
 ## <a name="requirements"></a>要求
 若要完成以下步骤，需要：

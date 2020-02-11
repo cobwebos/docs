@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174377"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120194"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>将访问管理委派给 Azure AD 的权利管理中的目录创建者
 
-若要委派给不是管理员的用户，以便他们可以创建自己的目录，你可以将这些用户添加到 Azure AD 的授权管理定义的目录创建者角色。 您可以添加单个用户，也可以添加一个组，其成员可以创建目录。
+目录是资源和访问包的容器。 需要对相关资源进行分组并访问包时，可以创建目录。 默认情况下，全局管理员或用户管理员可以[创建目录](entitlement-management-catalog-create.md)，并可以将其他用户添加为目录所有者。
+
+若要委派给不是管理员的用户，以便他们可以创建自己的目录，你可以将这些用户添加到 Azure AD 的授权管理定义的目录创建者角色。 您可以添加单个用户，也可以添加一个组，其成员可以创建目录。  创建目录后，他们可以随后将他们拥有的资源添加到其目录。
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>作为 IT 管理员，委派给目录创建者
 
@@ -37,7 +39,7 @@ ms.locfileid: "73174377"
 
 1. 在左侧菜单的 "**权利管理**" 部分中，单击 "**设置**"。
 
-1. 单击“编辑”。
+1. 单击 **“编辑”** 。
 
     ![用于添加目录创建者的设置](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
@@ -45,7 +47,7 @@ ms.locfileid: "73174377"
 
 1. 单击“选择”。
 
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>允许委托角色访问 Azure 门户
 

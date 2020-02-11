@@ -1,5 +1,5 @@
 ---
-title: 有关 Microsoft Azure StorSimple 和云解决方案提供商计划的常见问题解答（针对合作伙伴）| Microsoft Docs
+title: 合作伙伴常见问题： StorSimple for Cloud 解决方案提供商计划
 description: 针对合作伙伴的有关 StorSimple 和 CSP 的常见问题解答。
 services: storsimple
 documentationcenter: NA
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 893e8de5efc523df34e2c1e139082d2b471cb63e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828530"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116165"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>适用于云解决方案提供商计划的 StorSimple：常见问题解答
 
 
 ## <a name="overview"></a>概述
@@ -44,13 +44,13 @@ ms.locfileid: "71828530"
 StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple Virtual Array 的客户支付 virtual array 和 Azure 的使用费用（作为 CSP 帐单中的单独品种名计费）。 
 
 ### <a name="is-the-storsimple-business-model-similar-to-that-of-other-services-such-as-the-office-365-and-the-enterprise-mobility-suite"></a>StorSimple 业务模型是否类似于其他服务（如 Office 365 和企业移动套件）的业务模型？ 
-是。 与 Azure 中其他基于使用情况的服务一样，该模型是批发折扣模型。 StorSimple 的批发折扣与其他 Azure 服务的批发折扣类似。 此模型为 CSP 合作伙伴提供了通过 StorSimple Virtual Array 提高销售量和推动 Azure 使用量的机会。  
+可以。 与 Azure 中其他基于使用情况的服务一样，该模型是批发折扣模型。 StorSimple 的批发折扣与其他 Azure 服务的批发折扣类似。 此模型为 CSP 合作伙伴提供了通过 StorSimple Virtual Array 提高销售量和推动 Azure 使用量的机会。  
 
 ### <a name="which-storsimple-skus-are-available-at-launch"></a>发布时提供哪些 StorSimple SKU？
 与独立 StorSimple 服务提供的 SKU 相同。 
 
 ### <a name="is-there-any-difference-between-the-storsimple-directly-purchased-from-microsoft-under-ea-and-storsimple-as-a-part-of-csp"></a>直接从 Microsoft 的 EA 下购买的 StorSimple 和作为 CSP 的一部分购买的 StorSimple 是否有区别？
-否。 在 CSP 中，客户还可以在同一发票下，与 StorSimple Virtual Array (SVA) 一起购买 CSP 合作伙伴提供的其他服务。 请注意，若要采购 StorSimple 8000 系列物理设备，客户仍需通过 EA 渠道。 
+No。 在 CSP 中，客户还可以在同一发票下，与 StorSimple Virtual Array (SVA) 一起购买 CSP 合作伙伴提供的其他服务。 请注意，若要采购 StorSimple 8000 系列物理设备，客户仍需通过 EA 渠道。 
 
 ### <a name="in-which-markets-is-storsimple-available-for-csp-at-launch"></a>发布时，哪些市场提供用于 CSP 的 StorSimple？
 现在，所有提供 StorSimple 的市场均提供用于 CSP 的 StorSimple Virtual Array。 有关详细信息，请转到[提供 StorSimple 的区域列表](https://azure.microsoft.com/regions/services/)。
@@ -72,16 +72,16 @@ StorSimple 是基于使用情况的服务。 通过 CSP 渠道采购 StorSimple 
 可以通过合作伙伴中心将 StorSimple Virtual Array 订阅添加到客户的帐户。 此外，还可以使用 Azure 门户向订阅添加用户。
 
 ### <a name="is-the-azure-portal-approach-the-same-as-other-services-for-csp"></a>Azure 门户方法是否与 CSP 的其他服务相同？ 
-是。 借助用于 CSP 的 StorSimple Virtual Array，合作伙伴访问 Azure 门户的最佳方式应该是通过[合作伙伴中心](https://partnercenter.microsoft.com/)进行访问，他们可在合作伙伴中心中管理客户和订阅。 若要管理 StorSimple 订阅，合作伙伴或客户（具体取决于授予的权限），应登录到 Azure 门户。 
+可以。 借助用于 CSP 的 StorSimple Virtual Array，合作伙伴访问 Azure 门户的最佳方式应该是通过[合作伙伴中心](https://partnercenter.microsoft.com/)进行访问，他们可在合作伙伴中心中管理客户和订阅。 若要管理 StorSimple 订阅，合作伙伴或客户（具体取决于授予的权限），应登录到 Azure 门户。 
 
 ### <a name="is-microsoft-shipping-a-new-portal-for-storsimple-for-csp"></a>Microsoft 是否为 StorSimple for CSP 提供了新的门户？ 
-否。 将能够通过 Azure 门户在 CSP 中管理 StorSimple Virtual Array。
+No。 将能够通过 Azure 门户在 CSP 中管理 StorSimple Virtual Array。
 
 ### <a name="i-have-provisioned-a-standalone-storsimple-subscription-for-my-customer-do-i-have-to-use-the-azure-portal-to-administer-my-device"></a>我已为我的客户配置了独立的 StorSimple 订阅。 我必须使用 Azure 门户来管理我的设备吗？ 
-是。 
+可以。 
 
 ### <a name="is-the-microsoft-account-team-compensated-as-a-result-of-sales-of-storsimple-through-csp"></a>对于通过 CSP 销售的 StorSimple，Microsoft 帐户团队是否会因此得到报酬？
-是。 合作伙伴销售主管和面向最终客户的客户团队会获得 CSP 销售的报酬。 合作伙伴可望在销售差异化价值和产品/服务方面起到带头作用。
+可以。 合作伙伴销售主管和面向最终客户的客户团队会获得 CSP 销售的报酬。 合作伙伴可望在销售差异化价值和产品/服务方面起到带头作用。
 
 ## <a name="support-for-storsimple-and-csp"></a>支持 StorSimple 和 CSP
 

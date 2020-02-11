@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152164"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122425"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>示例：使用 Python 创建自定义技能
 
@@ -21,7 +21,7 @@ ms.locfileid: "76152164"
 
 自定义技能在设计上是简单的（它连接两个字符串），以便您可以专注于 Python 中用于自定义技能开发的工具和技术。 在您成功完成一种简单的技能后，您可以使用更复杂的方案进行分支。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 + 查看[自定义技能界面](cognitive-search-custom-skill-interface.md)，了解自定义技能应该实现的输入/输出接口简介。
 
@@ -57,7 +57,7 @@ ms.locfileid: "76152164"
 
 Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 配置文件以及任何特定于语言的项目文件。 
 
-还会在函数应用项目的**连接符**文件夹中创建一个新的 HTTP 触发函数。 在此示例中，会出现一个名为 "\__init_py" 的文件，其中包含以下内容：
+还会在函数应用项目的**连接符**文件夹中创建一个新的 HTTP 触发函数。 在此示例中，会出现一个名为 "\_\_init__" 的文件，其中包含以下内容：
 
 ```py
 import logging

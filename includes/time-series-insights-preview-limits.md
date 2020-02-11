@@ -4,17 +4,17 @@ description: include 文件
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/03/2020
+ms.date: 02/07/2020
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 8537db1e5703abd8df92a2950455bee556731d08
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013744"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123181"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>公开上市和预览比较
 
@@ -25,11 +25,11 @@ ms.locfileid: "77013744"
 | 第一类公民 | 以事件为中心 | 时间系列-中心 |
 | 语义推理 | 低级别（引用数据） | 高级（模型） |
 | 数据 contextualization | 非设备级别 | 设备和非设备级别 |
-| 计算逻辑存储 | 否 | 存储在模型的类型变量中 |
-| 存储和访问控制 | 否 | 已通过模型启用 |
-| 聚合/采样 | 否 | 事件加权和时间加权 |
-| 信号重建 | 否 | 评估 |
-| 衍生时序的生产 | 否 | 是，合并和联接 |
+| 计算逻辑存储 | 是 | 存储在模型的类型变量中 |
+| 存储和访问控制 | 是 | 已通过模型启用 |
+| 聚合/采样 | 是 | 事件加权和时间加权 |
+| 信号重建 | 是 | 评估 |
+| 衍生时序的生产 | 是 | 是，合并和联接 |
 | 语言灵活性 | 不可组合 | 组合 |
 | 表达式语言 | 谓词字符串 | 时序表达式（谓词字符串、值、表达式和函数） |
 
@@ -50,7 +50,7 @@ ms.locfileid: "77013744"
 * 了解如何[添加事件中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 * 配置[IoT 中心源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)。
 
-默认情况下，[预览版环境支持](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress)**每秒 1 mb/秒（MB/s）每个环境**的入口速率。 如果需要，客户可以将其预览版环境扩展到**16 MB/秒**的吞吐量。 此外，每个分区的限制为**0.5 MB/s**。 
+默认情况下，[预览版环境支持](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations)**每秒 1 mb/秒（MB/s）每个环境**的入口速率。 如果需要，客户可以将其预览版环境扩展到**16 MB/秒**的吞吐量。 此外，每个分区的限制为**0.5 MB/s**。 
 
 ### <a name="api-limits"></a>API 限制
 

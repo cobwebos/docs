@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976173"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122186"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
@@ -39,34 +39,87 @@ ms.locfileid: "74976173"
   - 将结果保存到 Azure Blob 存储中。
 - 使用 Microsoft Azure 存储资源管理器查看天气预报。
 
-## <a name="what-you-need"></a>所需条件
+## <a name="what-you-need"></a>所需内容
 
 - 完成[Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或设备教程之一;例如，[包含 node.js 的 Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)。 它们涵盖以下要求：
   - 一个有效的 Azure 订阅。
-  - 已订阅中创建一个 Azure IoT 中心。
+  - 已在订阅中创建一个 Azure IoT 中心。
   - 一个可向 Azure IoT 中心发送消息的客户端应用程序。
 - [Azure 机器学习 Studio （经典）](https://studio.azureml.net/)帐户。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>将天气预测模型部署为 Web 服务
 
+在本部分中，你将从 Azure AI 库获取天气预报预测模型。 然后，将一个 R 脚本模块添加到该模型，以清理温度和湿度数据。 最后，将该模型部署为预测性 web 服务。
+
+### <a name="get-the-weather-prediction-model"></a>获取天气预报预测模型
+
+在本部分中，你将从 Azure AI 库获取天气预报预测模型，并在 Azure 机器学习 Studio （经典）中将其打开。
+
 1. 转到[天气预测模型页](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)。
-1. 在 Microsoft Azure 机器学习工作室（经典）中单击 "**在工作室中打开**"。
-   ![在 Cortana Intelligence 库中打开天气预测模型页](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. 单击“运行”以验证模型中的步骤。 此步骤可能需要 2 分钟才能完成。
-   ![在 Azure 机器学习 Studio （经典）中打开天气预测模型](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. 单击“设置 WEB 服务” > “预测 Web 服务”。
-   ![在 Azure 机器学习 Studio （经典）中部署天气预测模型](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. 在关系图中，将“Web 服务输入”模块拖动至“评分模型”模块附近的某个位置。
-1. 将“Web 服务输入”模块连接到“评分模型”模块。
-   ![在 Azure 机器学习 Studio （经典）中连接两个模块](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
+   ![在 Azure AI 库中打开 "天气预报预测模型" 页](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
+
+1. 单击 "**在工作室中打开" （经典）** 以打开 Microsoft Azure 机器学习工作室（经典）中的模型。
+
+   ![在 Azure 机器学习 Studio （经典）中打开天气预报预测模型](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+
+### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>添加 R 脚本模块以清理温度和湿度数据
+
+若要使模型正常运行，温度和湿度数据必须可转换为数值数据。 在本部分中，将向天气预测模型中添加一个 R 脚本模块，该模块删除其温度或湿度数据值不能转换为数字值的任何行。
+
+1. 在 Azure 机器学习 Studio 窗口的左侧，单击箭头以展开 "工具" 面板。 在搜索框中输入 "执行"。 选择 "**执行 R 脚本**" 模块。
+
+   ![选择执行 R 脚本模块](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
+
+1. 将**执行 R 脚本**模块拖到关系图上的 "**清理缺失数据**" 模块和现有 "**执行 r 脚本**" 模块附近。 删除 "**清理缺失数据**" 和 "**执行 R 脚本**" 模块之间的连接，然后连接新模块的输入和输出，如下所示。
+
+   ![添加执行 R 脚本模块](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
+
+1. 选择新的 "**执行 R 脚本**" 模块以打开其 "属性" 窗口。 将以下代码复制并粘贴到 " **R 脚本**" 框中。
+
+   ```r
+   # Map 1-based optional input ports to variables
+   data <- maml.mapInputPort(1) # class: data.frame
+
+   data$temperature <- as.numeric(as.character(data$temperature))
+   data$humidity <- as.numeric(as.character(data$humidity))
+
+   completedata <- data[complete.cases(data), ]
+
+   maml.mapOutputPort('completedata')
+
+   ```
+
+   完成后，"属性" 窗口应如下所示：
+
+   ![添加代码以执行 R 脚本模块](media/iot-hub-weather-forecast-machine-learning/add-code-to-module.png)
+
+### <a name="deploy-predictive-web-service"></a>部署预测 web 服务
+
+在本部分中，您将验证模型、根据模型设置预测性 web 服务，然后部署 web 服务。
+
+1. 单击“运行”以验证模型中的步骤。 此步骤可能需要几分钟才能完成。
+
+   ![运行试验来验证步骤](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
+
+1. 单击“设置 WEB 服务” > “预测 Web 服务”。 预测试验图随即打开。
+
+   ![在 Azure 机器学习 Studio （经典）中部署天气预报预测模型](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+
+1. 在预测试验图中，删除**Web 服务输入**模块和顶部**天气数据集**之间的连接。 然后，将 " **Web 服务输入**模块" 拖到 "**评分模型**" 模块附近的某个位置，并按如下所示连接：
+
+   ![在 Azure 机器学习 Studio 中连接两个模块（经典）](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
 1. 单击“运行”以验证模型中的步骤。
+
 1. 单击“部署 WEB 服务”以将模型部署为 Web 服务。
+
 1. 在模型的仪表板上，下载“Excel 2010 或更早版本的工作簿”用于“请求/响应”。
 
    > [!Note]
-   > 即使你在计算机上运行更高版本的 Excel，也请确保下载 Excel 2010 或更早版本的工作簿。
+   > 即使您在计算机上运行更高版本的 Excel，也请确保下载**excel 2010 或更早版本的工作簿**。
 
-   ![为请求响应终结点下载 Excel](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![为请求响应终结点下载 Excel](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
 1. 打开 Excel 工作簿，记下“WEB 服务 URL”和“访问密钥”。
 
@@ -163,7 +216,7 @@ ms.locfileid: "74976173"
 
    将 `[YourOutputAlias]` 替换为作业的输出别名。
 
-1. 单击“保存”。
+1. 单击 **“保存”** 。
 
 ### <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
@@ -177,14 +230,14 @@ ms.locfileid: "74976173"
 
 1. [下载并安装 Microsoft Azure 存储资源管理器](https://storageexplorer.com/)。
 1. 打开 Azure 存储资源管理器。
-1. 登录到 Azure 帐户。
-1. 选择订阅。
+1. 登录 Azure 帐户。
+1. 选择你的订阅。
 1. 单击 Azure 订阅 >“存储帐户”> 存储帐户 >“ Blob 容器”> 容器。
-1. 打开一个 .csv 文件以查看结果。 最后一列记录下雨的可能性。
+1. 下载 .csv 文件以查看结果。 最后一列记录下雨的可能性。
 
-   ![使用 Azure 机器学习获取天气预报结果](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![使用 Azure 机器学习获取天气预报结果](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 已成功使用 Azure 机器学习基于 IoT 中心收到的温度和湿度数据生成下雨的可能性。
 

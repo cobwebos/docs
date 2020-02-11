@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049628"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114229"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -35,14 +35,33 @@ ms.locfileid: "77049628"
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
-
+ 
 ## <a name="january-2020"></a>2020 年 1 月
 
 ### <a name="improvements-in-media-processors"></a>媒体处理器的改进
 
 - 改进对视频分析中的隔行扫描的支持–在将其发送到推理引擎之前，此类内容现在已正确取消隔行扫描。
 - 使用 "最佳" 模式生成缩略图时，编码器现在会搜索超过30秒，以选择不单色的帧。
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure 政府版云更新
+
+媒体服务在以下 Azure 政府版区域 GA'ed： *USGov 亚利桑那*和*USGov 德克萨斯州*。
+
+## <a name="december-2019"></a>2019 年 12 月
+
+为*源*和视频点播流式处理添加了 CDN 支持，并提供了支持。适用于与 Akamai CDN 直接签订合同的客户。 源-协助 CDN 预提取功能涉及 Akamai CDN 与 Azure 媒体服务源之间的以下 HTTP 标头交换：
+
+|HTTP 标头|值|发送方|接收方|目的|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-源助手-已启用 | 1（默认值）或0 |CDN|源|指示 CDN 已启用预提取|
+|CDN-源助手-预提取-路径| 示例： <br/>片段（视频 = 1400000000，格式 = mpd-cmaf）|源|CDN|提供 CDN 的预提取路径|
+|CDN-源-辅助-请求|1（预提取请求）或0（常规请求）|CDN|源|指示 CDN 的请求是预提取|
+
+若要查看标头交换的一部分，可以尝试执行以下步骤：
+
+1. 使用 Postman 或卷向 Media Services 源发送音频或视频段或片段的请求。 请确保在请求中添加标头 "CDN-支持预提取： 1"。
+2. 在响应中，应会看到标头 "CDN-源-辅助-预提取-路径"，其中包含相对路径作为其值。
+
 ## <a name="november-2019"></a>2019 年 11 月
 
 ### <a name="live-transcription-preview"></a>实时脚本预览

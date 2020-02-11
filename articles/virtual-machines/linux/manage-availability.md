@@ -15,18 +15,16 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5742ed346c6761dd443d6252e5c9e457fa952b87
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55c9075f28a9ff7e28fcb01352494cd6cff73f14
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035893"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121906"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>管理 Linux 虚拟机的可用性
 
 了解如何设置和管理多个虚拟机，以确保 Linux 应用程序在 Azure 中的高可用性。 也可以[管理 Windows 虚拟机的可用性](../windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
-
-有关在 Resource Manager 部署模型中使用 CLI 创建可用性集的说明，请参阅 [azure availset：用于管理可用性集的命令](../azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)。
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 

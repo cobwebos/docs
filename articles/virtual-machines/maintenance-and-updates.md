@@ -1,22 +1,18 @@
 ---
-title: Azure 中 Vm 的维护和更新 |Microsoft Docs
+title: 维护和更新
 description: 概述 Azure 中运行的虚拟机的维护和更新。
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807079"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121864"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure 中虚拟机的维护
 
@@ -48,7 +44,7 @@ Azure 会定期更新其平台，以提高虚拟机的主机基础结构的可�
 公共预览版中还提供了一项功能、维护控制，可帮助管理不需要重新启动的维护。 必须使用[Azure 专用主机](./linux/dedicated-hosts.md)或[独立 VM](../security/fundamentals/isolation-choices.md)。 维护控制允许在35天滚动窗口中选择跳过平台更新，并在选择的时间应用更新。 有关详细信息，请参阅[控制包含维护控制的更新和 Azure CLI](maintenance-control-cli.md)。
 
 
-### <a name="live-migration"></a>Live migration
+### <a name="live-migration"></a>实时迁移
 
 实时迁移是不需要重新启动并保留 VM 内存的操作。 这会导致暂停或冻结，通常不超过5秒。 除 G、M、N 和 H 系列外，所有基础结构即服务（IaaS） Vm 均适用于实时迁移。 符合条件的 Vm 表示部署到 Azure 汽油的 IaaS Vm 超过90%。 
 

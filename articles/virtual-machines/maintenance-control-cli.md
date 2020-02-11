@@ -1,20 +1,18 @@
 ---
-title: Azure 虚拟机的维护控制
+title: 维护控制
 description: 了解如何使用维护控制来控制何时将维护应用到 Azure Vm。
-services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 13e4923bc5d49843710c9df4523992f541f1d343
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cf4c8c57121a06a607770470c5aef69c5edc0c5f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988016"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115640"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-the-azure-cli"></a>预览：控制包含维护控制的更新和 Azure CLI
 

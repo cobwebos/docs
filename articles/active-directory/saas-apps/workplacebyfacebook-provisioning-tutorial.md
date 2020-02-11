@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064135"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121447"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -43,7 +43,9 @@ ms.locfileid: "77064135"
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
- 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>如何判断应用程序是否已迁移？ 
+当迁移应用程序时，将删除 "授权" 部分中有关 upcomming 更改的标题，并将 "机密令牌" 字段替换为 "蓝色授权" 按钮。 
+
 #### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>"管理员凭据" 部分在我的应用程序上灰显，无法保存。 为什么?
 我们锁定了现有工作区客户的 "管理员凭据" 部分。 当你的租户已迁移到新的工作区应用程序后，你将能够再次更新 "管理员凭据" 部分。 如果无法等待，可以使用上述 URL 来编辑应用程序。 
 

@@ -2,13 +2,13 @@
 title: 将资源部署到管理组
 description: 介绍如何在 Azure 资源管理器模板中的管理组范围内部署资源。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121907"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117040"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
@@ -63,8 +63,20 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
 * **不**支持[订阅（）](template-functions-resource.md#subscription)函数。
-* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 使用它可获取在管理组级别部署中使用的资源的资源 ID。 例如，使用 `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`获取策略定义的资源 ID。 它以 `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`格式返回资源 ID。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
+* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 使用它可获取在管理组级别部署中使用的资源的资源 ID。 不要为资源组参数提供值。
+
+  例如，若要获取策略定义的资源 ID，请使用：
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  返回的资源 ID 具有以下格式：
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>创建策略
 
@@ -136,9 +148,13 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 }
 ```
 
+## <a name="template-sample"></a>模板示例
+
+* 创建资源组、策略和策略分配。  参阅[此处](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json)。
+
 ## <a name="next-steps"></a>后续步骤
 
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](template-syntax.md)。 
+* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](template-syntax.md)。
 * 有关模板的可用函数列表，请参阅[模板函数](template-functions.md)。

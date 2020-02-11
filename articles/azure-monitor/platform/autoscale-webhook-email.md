@@ -4,12 +4,12 @@ description: 了解如何在 Azure Monitor 中使用自动缩放操作来调用 
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364197"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120687"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
@@ -20,8 +20,8 @@ ms.locfileid: "75364197"
 ## <a name="email"></a>电子邮件
 电子邮件可以发送到任何有效电子邮件地址。 还将通知运行规则的订阅的管理员和共同管理员。
 
-## <a name="cloud-services-and-web-apps"></a>云服务和 Web 应用
-可以从 Azure 门户选择加入云服务和服务器场 (Web 应用)。
+## <a name="cloud-services-and-app-services"></a>云服务和应用服务
+你可以从云服务和服务器场（应用服务）的 Azure 门户中进行选择。
 
 * 选择“缩放依据”指标。
 
@@ -56,7 +56,7 @@ ms.locfileid: "75364197"
     ]
 ```
 
-| 字段 | 必需？ | Description |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | operation |是 |值必须是“规模” |
 | sendToSubscriptionAdministrator |是 |值必须是“true”或“false” |
@@ -64,7 +64,7 @@ ms.locfileid: "75364197"
 | customEmails |是 |值可以为 null [] 或电子邮件的字符串数组 |
 | webhooks |是 |该值可以为 null 或有效的 URI |
 | serviceUri |是 |有效的 https URI |
-| properties |是 |值必须是空的 {}，也可以包含键值对 |
+| 属性 |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
 webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https：\//mysamplealert/webcallback？ tokenid = sometokenid & someparameter = somevalue
@@ -99,7 +99,7 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 ```
 
 
-| 字段 | 必需？ | Description |
+| 字段 | 必需？ | 说明 |
 | --- | --- | --- |
 | status |是 |指示生成自动缩放操作的状态 |
 | operation |是 |对于实例的增加，它会是“Scale Out”，对于实例的减少，它会是“Scale In” |
@@ -116,5 +116,5 @@ webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌
 | portalLink |是 |指向目标资源摘要页的 Azure 门户链接 |
 | oldCapacity |是 |自动缩放执行缩放操作时的当前（旧）实例计数 |
 | newCapacity |是 |自动缩放将资源缩放到的新实例计数 |
-| properties |否 |可选。 <键, 值> 对集（例如字典 <String, String>）。 properties 字段是可选的。 在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用有效负载传递的键和值。 将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数） |
+| 属性 |是 |可选。 <键, 值> 对集（例如字典 <String, String>）。 properties 字段是可选的。 在自定义用户界面或基于逻辑应用的工作流中，可以输入可使用有效负载传递的键和值。 将自定义属性传递回传出 webhook 调用的替代方法是使用 webhook URI 本身（作为查询参数） |
 

@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082952"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116707"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -172,7 +172,9 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 在左侧窗格的 "**资产**" 部分中选择 "**数据集**"。 
 1. 选择 "**创建数据集**"，选择数据集的源。 此源可以是本地文件、数据存储或公共 Url。
 1. 选择 "**表格**或**文件**" 作为数据集类型。
-1. 选择 "**下一步**" 查看**设置和预览**、**架构**和**确认详细信息**窗体;它们根据文件类型进行智能填充。 使用这些窗体检查你的选择，并在创建之前进一步配置你的数据集。  
+1. 选择 "**下一步**" 以打开**数据存储和文件选择**窗体。 在此窗体上，你可以选择在创建数据集后保留数据集的位置，还可以选择要用于数据集的数据文件。 
+1. 选择 "**下一步**" 以填充**设置和预览**和**架构**窗体;它们是根据文件类型智能填充的，你可以在创建这些窗体之前，进一步配置你的数据集。 
+1. 选择 "**下一步**" 查看**确认详细信息**窗体。 检查所做的选择，并为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。 
 1. 选择 "**创建**" 以完成数据集创建。
 
 ## <a name="register-datasets"></a>注册数据集

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907469"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120095"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>在 "我的应用" 门户上创建集合
 
@@ -30,7 +30,7 @@ ms.locfileid: "76907469"
 > [!NOTE]
 > 本文介绍管理员如何启用和创建集合。 有关如何使用 "我的应用" 门户和集合的最终用户的信息，请参阅[访问和使用集合](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces)。
 
-## <a name="enable-my-apps-preview-features"></a>启用 My Apps 预览功能
+## <a name="enable-the-latest-my-apps-features"></a>启用 "我的最新应用" 功能
 
 1. 打开[**Azure 门户**](https://portal.azure.com/)并以 "用户管理员" 或 "全局管理员" 身份登录。
 
@@ -39,8 +39,8 @@ ms.locfileid: "76907469"
 3. 在 "**用户功能预览**" 下，选择 "**管理用户功能预览设置**"。
 
 4. 在 "**用户可以使用我的应用的预览功能**" 下，选择以下选项之一：
-   * 已**选择**-启用特定组的预览功能。 使用 "**选择组**" 选项可以选择要为其启用预览功能的组。  
-   * **所有**-启用所有用户的预览功能。
+   * **Selected** -启用特定组的功能。 使用 "**选择组**" 选项可以选择要为其启用功能的组。  
+   * **全部**-启用所有用户的功能。
 
 > [!NOTE]
 > 若要打开 "我的应用" 门户，用户可以使用链接 `https://myapps.microsoft.com` 或组织的自定义链接，如 `https://myapps.microsoft.com/contoso.com`。 启用新的 "我的应用" 体验后，已**更新的 "我的应用程序体验**" 将显示在 "我的应用" 页的顶部，用户可以选择 "**试用**" 以查看新体验。 若要停止使用新体验，用户可以从页面顶部的 "**离开新体验**" 横幅中选择 **"是"** 。
@@ -71,7 +71,7 @@ ms.locfileid: "76907469"
 
    ![添加用户和组](media/acces-panel-collections/add-users-and-groups.png)
 
-11. 选择 "**查看 + 创建**"。 新集合的属性随即出现。
+11. 选择“查看 + 创建”。 新集合的属性随即出现。
 
 
 ## <a name="view-audit-logs"></a>查看审核日志

@@ -2,13 +2,13 @@
 title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121873"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120609"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -86,8 +86,22 @@ New-AzDeployment `
 对于订阅级别部署，在使用模板函数时有一些重要注意事项：
 
 * 不支持 [resourceGroup()](template-functions-resource.md#resourcegroup) 函数。
-* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在订阅级部署中使用的资源的资源 ID。 例如，使用 `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`获取策略定义的资源 ID。 或者，使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函数获取订阅级别资源的资源 ID。
 * 支持 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函数。
+* 支持 [resourceId()](template-functions-resource.md#resourceid) 函数。 可以使用它获取在订阅级部署中使用的资源的资源 ID。 不要为资源组参数提供值。
+
+  例如，若要获取策略定义的资源 ID，请使用：
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  返回的资源 ID 具有以下格式：
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  或者，使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函数获取订阅级别资源的资源 ID。
 
 ## <a name="create-resource-groups"></a>创建资源组
 
@@ -98,7 +112,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ New-AzDeployment `
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -357,6 +371,11 @@ New-AzDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
+
+## <a name="template-samples"></a>模板示例
+
+* 创建资源组，将其锁定并向其授予权限。 参阅[此处](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+* 创建资源组、策略和策略分配。  参阅[此处](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
 
 ## <a name="next-steps"></a>后续步骤
 

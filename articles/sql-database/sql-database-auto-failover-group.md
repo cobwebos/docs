@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768664"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116187"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -38,7 +38,7 @@ ms.locfileid: "76768664"
 
 故障转移后，请确保在新的主机上配置服务器和数据库的身份验证要求。 有关详细信息，请参阅[灾难恢复后的 Azure SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
 
-若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对服务所依赖的服务执行故障转移期间，服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
+若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，你需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对你的服务所依赖的服务执行故障转移期间，你的服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>自动故障转移组的术语和功能
 
@@ -242,7 +242,7 @@ ms.locfileid: "76768664"
 可以在两个不同订阅中的托管实例之间创建故障转移组。 使用 PowerShell API 时，可以通过为辅助实例指定 `PartnerSubscriptionId` 参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包括的每个实例 ID 都可以有自己的 subscriptionID。
   
 > [!IMPORTANT]
-> Azure 门户不支持跨不同订阅的故障转移组。
+> Azure 门户不支持在不同的订阅之间创建故障转移组。 此外，对于跨不同订阅和/或资源组的现有故障转移组，无法通过门户从主实例手动启动故障转移。 改为从异地辅助实例中启动它。
 
 ### <a name="managing-failover-to-secondary-instance"></a>管理故障转移到辅助实例
 
@@ -394,18 +394,18 @@ ms.locfileid: "76768664"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用单一数据库和弹性池管理 SQL 数据库故障转移
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | 从服务器中删除故障转移组 |
+| [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | 从服务器中删除故障转移组 |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 检索故障转移组的配置 |
-| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |修改故障转移组的配置 |
+| [AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |修改故障转移组的配置 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | 触发故障转移组到辅助服务器的故障转移 |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|将一个或多个数据库添加到故障转移组|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>管理包含托管实例的 SQL 数据库故障转移组
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |此命令创建一个故障转移组，并将其注册到主实例和辅助实例上|
 | [AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |修改故障转移组的配置|
@@ -417,7 +417,7 @@ ms.locfileid: "76768664"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>使用单一数据库和弹性池管理 SQL 数据库故障转移
 
-| 命令 | Description |
+| Command | 说明 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
 | [az sql 故障转移-组删除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 从服务器中删除故障转移组 |
@@ -427,7 +427,7 @@ ms.locfileid: "76768664"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>管理包含托管实例的 SQL 数据库故障转移组
 
-| 命令 | Description |
+| Command | 说明 |
 | --- | --- |
 | [az sql 实例-故障转移-组创建](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | 此命令创建一个故障转移组，并将其注册到主实例和辅助实例上 |
 | [az sql 实例-故障转移-组更新](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | 修改故障转移组的配置|
@@ -442,7 +442,7 @@ ms.locfileid: "76768664"
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：管理包含单个和共用数据库的 SQL 数据库故障转移组
 
-| API | Description |
+| API | 说明 |
 | --- | --- |
 | [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | 创建或更新故障转移组 |
 | [删除故障转移组](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | 从服务器中删除故障转移组 |
@@ -454,7 +454,7 @@ ms.locfileid: "76768664"
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API：管理具有托管实例的故障转移组
 
-| API | Description |
+| API | 说明 |
 | --- | --- |
 | [创建或更新故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | 创建或更新故障转移组的配置 |
 | [删除故障转移组](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | 从实例中删除故障转移组 |

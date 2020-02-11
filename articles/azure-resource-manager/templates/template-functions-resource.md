@@ -2,13 +2,13 @@
 title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048802"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120537"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -752,14 +752,14 @@ resourceGroup 函数的一个常见用途是在与资源组相同的位置中创
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。
+返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式取决于部署是在资源组、订阅、管理组还是租户的作用域中发生。
 
 ### <a name="parameters"></a>参数
 
 | 参数 | 必需 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |是 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceGroupName |是 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 |
+| resourceGroupName |是 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组范围内部署时提供此值。 |
 | resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
 | resourceName1 |是 |string |资源的名称。 |
 | resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
@@ -768,7 +768,7 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ### <a name="return-value"></a>返回值
 
-资源 ID 按以下格式返回：
+在资源组的范围内部署模板时，将采用以下格式返回资源 ID：
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+当在[管理组级别部署](deploy-to-management-group.md)或租户级部署中使用时，资源 ID 将按以下格式返回：
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 若要获取其他格式的 ID，请参阅：

@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046021"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121374"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>用 Azure Monitor 监视 Azure AD B2C
 
@@ -24,9 +24,9 @@ ms.locfileid: "77046021"
 
 可以将日志事件路由到：
 
-* 一个 Azure 存储帐户。
-* 一个 Azure 事件中心（与 Splunk 和 Sumo logic 逻辑实例集成）。
-* Azure Log Analytics 工作区（用于分析数据、创建仪表板和针对特定事件的警报）。
+* 一个 Azure[存储帐户](../storage/blobs/storage-blobs-introduction.md)。
+* 一个 Azure[事件中心](../event-hubs/event-hubs-about.md)（与 Splunk 和 sumo logic 逻辑实例集成）。
+* [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)（用于分析数据、创建仪表板和针对特定事件的警报）。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ ms.locfileid: "77046021"
 
 Azure AD B2C 利用[Azure Active Directory 监视](../active-directory/reports-monitoring/overview-monitoring.md)。 若要在 Azure AD B2C 租户 Azure Active Directory 中启用*诊断设置*，请使用[委派的资源管理](../lighthouse/concepts/azure-delegated-resource-management.md)。
 
-在 Azure AD B2C 目录（**服务提供商**）中授权用户在包含你的 Azure 订阅（**客户**）的租户中配置 Azure Monitor 实例。 若要创建授权，请将[Azure 资源管理器](../azure-resource-manager/index.yml)模板部署到包含订阅的 Azure AD 租户。 以下各节将引导你完成该过程。
+在 Azure AD B2C 目录（**服务提供商**）中授权用户或组，以便在包含 Azure 订阅（**客户**）的租户中配置 Azure Monitor 实例。 若要创建授权，请将[Azure 资源管理器](../azure-resource-manager/index.yml)模板部署到包含订阅的 Azure AD 租户。 以下各节将引导你完成该过程。
 
-## <a name="create-a-resource-group"></a>创建资源组
+## <a name="create-or-choose-resource-group"></a>创建或选择资源组
 
-在包含你的 Azure 订阅的 Azure Active Directory （Azure AD）租户中（*不*是包含 Azure AD B2C 租户的目录），请[创建一个资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。 请使用以下值：
+此资源组包含要从 Azure Monitor 接收数据的目标 Azure 存储帐户、事件中心或 Log Analytics 工作区。 部署 Azure 资源管理器模板时指定资源组名称。
 
-* **订阅**：选择 Azure 订阅。
-* **资源组**：输入资源组的名称。 例如， *azure-ad-b2c-监视*。
-* **区域**：选择 Azure 位置。 例如“美国中部”。
+[创建资源组](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)，或选择包含 Azure 订阅的 Azure Active Directory （Azure AD）租户中的现有资源组，*而不*是包含 Azure AD B2C 租户的目录。
+
+此示例使用名为 "*美国中部* *" 的资源*组。
 
 ## <a name="delegate-resource-management"></a>委托资源管理
 
@@ -209,7 +209,17 @@ Parameters              :
 
 ## <a name="configure-diagnostic-settings"></a>配置诊断设置
 
-委派了资源管理并选择了订阅后，便可以在 Azure 门户中[创建诊断设置](../active-directory/reports-monitoring/overview-monitoring.md)了。
+诊断设置定义应将资源的日志和指标发送到的位置。 可能的目标是：
+
+- [Azure 存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)解决方案。
+- [Log Analytics 工作区](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+如果尚未这样做，请在[Azure 资源管理器模板](#create-an-azure-resource-manager-template)中指定的资源组中创建所选目标类型的实例。
+
+### <a name="create-diagnostic-settings"></a>创建诊断设置
+
+你已准备好在 Azure 门户中[创建诊断设置](../active-directory/reports-monitoring/overview-monitoring.md)。
 
 为 Azure AD B2C 活动日志配置监视设置：
 
@@ -217,12 +227,24 @@ Parameters              :
 1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
 1. 选择**Azure Active Directory**
 1. 在“监视”下，选择“诊断设置”。
-1. 选择 " **+ 添加诊断设置**"。
+1. 如果资源上存在设置，你将看到已配置的设置列表。 选择 "**添加诊断设置**" 添加新设置，或选择 "**编辑**" 以编辑现有设置。 每个设置都不能有多个目标类型中的一个。
 
     ![Azure 门户中的诊断设置窗格](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. 为设置指定一个名称（如果没有）。
+1. 选中每个目标的框以发送日志。 选择 "**配置**" 以指定其设置，如下表所述。
+
+    | 设置 | 说明 |
+    |:---|:---|
+    | 存档到存储帐户 | 存储帐户的名称。 |
+    | 流式传输到事件中心 | 在其中创建事件中心的命名空间（如果这是你的第一次流式传输日志）或流式传输到（如果已有资源将日志类别流式传输到此命名空间）。
+    | 发送到 Log Analytics | 工作区的名称。 |
+
+1. 选择**AuditLogs**和**SignInLogs**。
+1. 选择“保存”。
+
 ## <a name="next-steps"></a>后续步骤
 
-有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅 Azure Monitor 文档中的以下教程：
+有关在 Azure Monitor 中添加和配置诊断设置的详细信息，请参阅[教程：收集和分析 Azure 资源的资源日志](../azure-monitor/insights/monitor-azure-resource.md)。
 
-[教程：收集和分析 Azure 资源中的资源日志](/azure-monitor/learn/tutorial-resource-logs.md)
+有关将 Azure AD 日志流式传输到事件中心的信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。

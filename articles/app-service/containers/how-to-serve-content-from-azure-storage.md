@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930011"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121414"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
@@ -20,7 +20,7 @@ ms.locfileid: "75930011"
 
 本指南说明如何将 Azure 存储附加到 Linux 上的应用服务。 优点包括受保护的内容、内容可移植性、持久存储、对多个应用的访问和多种传输方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。
 - [Linux 应用上的现有应用服务](https://docs.microsoft.com/azure/app-service/containers/)。
@@ -34,6 +34,7 @@ ms.locfileid: "75930011"
 - 带有应用服务的 azure 存储支持装载**Azure 文件容器**（读/写）和**azure Blob 容器**（只读）
 - 使用应用服务的 Azure 存储**不支持**使用**存储防火墙**配置，因为存在基础结构限制。
 - 利用应用服务的 Azure 存储，可以为每个应用指定**最多5个**装入点。
+- 无法通过应用服务 FTP/FTPs 终结点访问装载到应用的 Azure 存储。 使用[Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)。
 - Azure 存储**不包括**在 web 应用中，并单独进行计费。 了解有关[Azure 存储定价](https://azure.microsoft.com/pricing/details/storage)的详细信息。
 
 > [!WARNING]

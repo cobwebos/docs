@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937295"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121722"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常见问题解答
 
@@ -32,17 +32,17 @@ Azure DNS 计费模型基于 Azure DNS 中托管的 DNS 区域数。 此外，�
 
 有关详细详细，请参阅 [Azure DNS 定价页](https://azure.microsoft.com/pricing/details/dns/)。
 
-### <a name="what-is-the-sla-for-azure-dns"></a>什么是 Azure DNS 的 SLA？
+### <a name="what-is-the-sla-for-azure-dns"></a>什么是 SLA for Azure DNS？
 
 Azure 保证在任何情况下，有效的 DNS 请求将从至少一个 Azure DNS 名称服务器中收到响应。
 
 有关详细详细，请参阅 [Azure DNS SLA 页](https://azure.microsoft.com/support/legal/sla/dns)。
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>什么是“DNS 区域”？ 它是否与 DNS 域相同？ 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>什么是 DNS 区域？ 它是否等同于 DNS 域？ 
 
 域在域名系统中具有唯一名称。 例如 contoso.com。
 
-DNS 区域用于托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 记录可能包括用于邮件服务器的 mail.contoso.com 和网站的 www\.contoso.com。 这些记录托管在 DNS 区域 contoso.com 中。
+DNS 区域用来托管某个特定域的 DNS 记录。 例如，域 contoso.com 可能包含几条 DNS 记录。 记录可能包括用于邮件服务器的 mail.contoso.com 和网站的 www\.contoso.com。 这些记录托管在 DNS 区域 contoso.com 中。
 
 域名仅是一个名称。 DNS 区域是包含域名的 DNS 记录的数据资源。 可以使用 Azure DNS 托管 DNS 区域，以及管理 Azure 中域的 DNS 记录。 它还提供 DNS 名称服务器，用于回答来自 Internet 的 DNS 查询。
 
@@ -50,7 +50,7 @@ DNS 区域用于托管某个特定域的 DNS 记录。 例如，域 contoso.com 
 
 不一定。
 
-无需购买域即可托管 Azure DNS 中的 DNS 区域。 即使没有域名称，你也可以随时创建 DNS 区域。 仅当此区域的 DNS 查询定向到分配给该区域的 Azure DNS 名称服务器时，才会解析这些查询。
+无需购买域即可托管 Azure DNS 中的 DNS 区域。 没有域名也可随时创建 DNS 区域。 仅当此区域的 DNS 查询定向到分配给该区域的 Azure DNS 名称服务器时，才会解析这些查询。
 
 若要将 DNS 区域链接到全局 DNS 层级结构，则必须购买域名。 然后，来自全球任意位置的 DNS 查询会使用 DNS 记录来查找 DNS 区域和做出应答。
 
@@ -68,25 +68,25 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支持域名注册？
 
-不。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
+No。 Azure DNS 目前不支持购买域名。 若要购买域，必须使用第三方域名注册机构。 注册机构通常收取小额年费。 然后，可将域托管在 Azure DNS 中用于管理 DNS 记录。 有关详细信息，请参阅 [向 Azure DNS 委派域](dns-domain-delegation.md)。
 
 我们正在 Azure 积压工作中跟踪域购买功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支持 DNSSEC？
 
-不。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
+No。 Azure DNS 目前不支持域名系统安全扩展 (DNSSEC)。
 
 我们正在 Azure DNS 积压工作中跟踪 DNSSEC 功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支持区域传送 (AXFR/IXFR)？
 
-不。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
+No。 Azure DNS 目前不支持区域传送。 可[使用 Azure CLI 将 DNS 区域导入 Azure DNS](dns-import-export.md)。 然后，可通过 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)来托管 DNS 记录。
 
 我们正在 Azure DNS 积压工作中跟踪区域传送功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支持 URL 重定向？
 
-不。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
+No。 URL 重定向服务实际并非 DNS 服务。 它们在 HTTP 级别而非 DNS 级别运行。 某些 DNS 提供商会在整体产品/服务中捆绑销售 URL 重定向服务。 Azure DNS 目前不支持此服务。
 
 我们正在 Azure DNS 积压工作中跟踪 URL 重定向功能。 可以使用反馈站点来[表示你对此功能的支持](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)。
 
@@ -149,7 +149,7 @@ Azure DNS 仅支持托管静态 DNS 域，其中对某给定的 DNS 记录来说
 
 若要设置共同托管，请修改域的 NS 记录，使其指向两个提供程序的名称服务器。 名称服务器 (NS) 记录控制哪些提供程序接收域的 DNS 查询。 可在 Azure DNS、另一提供程序以及父区域中修改这些 NS 记录。 父区域通常是通过域名注册机构配置的。 有关 DNS 委派的详细信息，请参阅[DNS 域委派](dns-domain-delegation.md)。
 
-此外，请确保域的 DNS 记录在 DNS 提供程序之间进行同步。 Azure DNS 目前不支持 DNS 区域传送。 必须使用 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)同步 DNS 记录。
+此外，请确保域的 DNS 记录在 DNS 提供程序之间进行同步。 Azure DNS 目前不支持 DNS 区域传送。 必须使用 [Azure DNS 管理门户](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/rest/api/dns/)、[SDK](dns-sdk.md)、[PowerShell cmdlets](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)同步 DNS 记录。
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>是否需向全部四个 Azure DNS 名称服务器委托我的域？
 

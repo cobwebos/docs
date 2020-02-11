@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 评估支持
 description: 了解 Azure Migrate 中的 VMware 评估支持。
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086777"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121336"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 评估的支持矩阵 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77086777"
 **计算机操作系统** | 所有 Windows 和 Linux 版本。
 **vCenter 凭据** | 具有只读访问权限的 vCenter Server 帐户，以及为虚拟机启用 > 来宾操作的特权。
 **VM 凭据** | 目前支持所有 Windows 服务器使用一个凭据，并支持为所有 Linux 服务器使用一个凭据。<br/><br/> 为 Windows Vm 创建来宾用户帐户，为所有 Linux Vm 创建常规/普通用户帐户（非 sudo 访问权限）。
-**VMware 工具** | 必须在要发现的 Vm 上安装并运行 VMware 工具。
+**VMware 工具** | 必须在要发现的 Vm 上安装并运行 VMware 工具。 <br/> 如果 VMware 工具版本介于 9.10-10.2.0 之间，请确保将其升级到超过10.2.0。
 **端口访问** | 在运行要发现的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
 **限制** | 对于应用发现，最多可以发现每个设备10000。 
 

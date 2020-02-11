@@ -2,19 +2,21 @@
 title: 模板语法和表达式
 description: 介绍 Azure 资源管理器模板的声明性 JSON 语法。
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484189"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120601"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的语法和表达式
 
-模板的基本语法为 JSON。 但是，可以使用表达式来扩展模板内可用的 JSON 值。  表达式以括号（`[` 和 `]`）分别开始和结束。 部署模板时会计算表达式的值。 表达式可以返回字符串、整数、布尔值、数组或对象。
+模板的基本语法为 JSON。 但是，可以使用表达式来扩展模板内可用的 JSON 值。  表达式以方括号开头和结尾：分别为 `[` 和 `]`。 部署模板时会计算表达式的值。 表达式可以返回字符串、整数、布尔值、数组或对象。
 
 模板表达式不能超过24576个字符。
+
+表达式支持 json （"null"），并且属性支持文本值 null。 在这两种情况下，资源管理器模板会将其视为不存在属性。
 
 ## <a name="use-functions"></a>使用函数
 

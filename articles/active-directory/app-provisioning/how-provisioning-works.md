@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066845"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121366"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -86,6 +86,8 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 ### <a name="b2b-guest-users"></a>B2B （来宾）用户
 
 可以使用 Azure AD 用户预配服务将 Azure AD 中的 B2B （或来宾）用户预配到 SaaS 应用程序。 但是，为了使 B2B 用户使用 Azure AD 登录到 SaaS 应用程序，SaaS 应用程序必须以特定的方式配置其基于 SAML 的单一登录功能。 有关如何配置 SaaS 应用程序以支持 B2B 用户的登录的详细信息，请参阅[为 B2B 协作配置 SaaS 应用](../b2b/configure-saas-apps.md)。
+
+请注意，来宾用户的 userPrincipalName 通常存储为 "alias # EXT #@domain.com"。 如果在属性映射中包含 userPrincipalName 作为源属性，则会从 userPrincipalName 中去除 #EXT #。 如果要求 #EXT # 出现，请将 userPrincipalName 替换为 originalUserPrincipalName 作为 source 属性。 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>预配周期：初始和增量
 

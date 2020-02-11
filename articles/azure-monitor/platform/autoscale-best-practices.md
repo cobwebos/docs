@@ -4,14 +4,14 @@ description: Azure 中适用于 Web 应用、虚拟机规模集和云服务的�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396996"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117112"
 ---
-# <a name="best-practices-for-autoscale"></a>自动扩展的最佳实践
+# <a name="best-practices-for-autoscale"></a>自动缩放最佳实践
 Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 ## <a name="autoscale-concepts"></a>自动缩放概念
@@ -113,7 +113,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>有关在配置文件中配置多个规则时进行自动缩放的注意事项
 
-在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，服务会使用以下自动缩放规则。
+在某些情况下可能必须在一个配置文件中设置多个规则。 设置了多个规则时，自动缩放引擎会使用以下自动缩放规则。
 
 *横向扩展*时，如果满足任何规则，自动缩放会运行。
 进行缩小时，自动缩放需要满足所有规则。
@@ -133,13 +133,13 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
 另一方面，如果 CPU 是 25% 且内存是 51%，则自动缩放**不会**缩小。 要进行缩小，CPU 必须是 29% 且内存是 49%。
 
 ### <a name="always-select-a-safe-default-instance-count"></a>始终选择安全的默认实例计数
-默认实例计数十分重要，当指标不可用时，自动缩放将服务缩放到该计数。 因此，请选择对工作负荷安全的默认实例计数。
+默认实例计数十分重要，因为在指标不可用时，自动缩放将服务缩放到该计数。 因此，请选择对工作负荷安全的默认实例计数。
 
 ### <a name="configure-autoscale-notifications"></a>配置自动缩放通知
 发生以下任何一种情况时，自动缩放会发布至活动日志：
 
-* 自动缩放发出缩放操作
-* 自动缩放服务成功完成缩放操作
+* 自动缩放会发出缩放操作。
+* 自动缩放服务已成功完成缩放操作。
 * 自动缩放服务未能执行缩放操作。
 * 自动缩放服务无法使用指标进行缩放决策。
 * 指标再次可用（恢复）于进行缩放决策。

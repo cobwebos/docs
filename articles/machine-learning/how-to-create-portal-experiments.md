@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046120"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116897"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>通过 Azure 机器学习 studio 创建、探索和部署自动化机器学习试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -60,7 +60,7 @@ ms.locfileid: "77046120"
 
     1. 为数据集指定唯一名称，并提供可选说明。 
 
-    1. 选择 "**下一步**"，将其上传到自动使用工作区创建的默认存储容器，或选择要用于试验的存储容器。 
+    1. 选择 "**下一步**" 以打开**数据存储和文件选择窗体**。 在此窗体上，你可以选择要将数据集上传到何处;自动使用工作区创建的默认存储容器，或选择要用于试验的存储容器。 
 
     1. 查看**设置和预览**表单的准确性。 将根据文件类型智能地填充窗体。 
 
@@ -78,7 +78,7 @@ ms.locfileid: "77046120"
             
         选择 "**下一步"。**
 
-    1. "**确认详细**信息" 窗体是以前在**基本信息**和**设置和预览**表单中填充的信息的摘要。 你还可以选择使用启用了分析的计算来分析你的数据集。 详细了解[数据分析](#profile)。
+    1. "**确认详细**信息" 窗体是以前在**基本信息**和**设置和预览**表单中填充的信息的摘要。 你还可以选择使用启用了分析的计算为数据集创建数据配置文件。 详细了解[数据分析](#profile)。
 
         选择 **“下一步”** 。
 1. 出现后，选择新创建的数据集。 您还可以查看数据集和示例统计信息的预览。 
@@ -190,13 +190,13 @@ Guardrail|状态|&nbsp;触发器的条件&nbsp;
 
 ## <a name="run-experiment-and-view-results"></a>运行试验并查看结果
 
-选择 "**完成**" 以运行试验。 试验过程可能需要长达10分钟的时间。 训练作业可能需要额外的2-3 分钟才能完成每个管道的运行。
+选择 "**完成**" 以运行试验。 试验准备过程可能需要长达 10 分钟的时间。 训练作业可能需要额外的 2 - 3 分钟才能完成每个管道的运行。
 
 ### <a name="view-experiment-details"></a>查看试验详细信息
 
 此时将打开 "**运行详细**信息" 屏幕到 "**详细信息**" 选项卡。此屏幕将显示实验运行的摘要，包括运行号旁边的状态栏。 
 
-"**模型**" 选项卡包含按指标分数排序的模型列表。 默认情况下，根据所选指标为最高评分的模型位于列表的顶部。 当训练作业尝试更多模型时，它们将被添加到列表中。 使用此值可以快速比较迄今为止生成的模型的指标。
+“模型”选项卡包含按指标分数排序创建的模型列表。 默认情况下，列表中首先显示评分最高的模型（评分根据所选指标给出）。 随着训练作业尝试更多模型，它们会添加到列表中。 使用此项可以快速比较目前为止生成的模型的指标。
 
 [![运行详细信息仪表板](media/how-to-create-portal-experiments/run-details.png)](media/how-to-create-portal-experiments/run-details-expanded.png#lightbox)
 
