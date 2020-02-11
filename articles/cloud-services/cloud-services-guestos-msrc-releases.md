@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: a38685ba4cca4df2c2ae1a52e46626072135408d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
-ms.translationtype: HT
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049866"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087231"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 若要确定特定的更新是否适用于你使用的来宾 OS，请搜索本文。 对于在中引入的特定[系列][family-explain]，更新始终会继续进行。
@@ -42,9 +42,9 @@ ms.locfileid: "77049866"
 |  Rel 20-01  |  [4494174]  |  微码 v4  | [6.15] | 2019年8月29日 |
 |  Rel 20-01  |  [4532947]  |  Windows 安全性  | [6.15] | 2020年1月14日 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 2020年1月14日 |
-|  Rel 20-01  |  [4530734]  |  非安全性  | [2.94] | 12月10日，2019 |
+|  Rel 20-01  |  [4530734]  |  每月汇总  | [2.94] | 12月10日，2019 |
 |  Rel 20-01  |  [4530691]  |  每月汇总   | [3.81] | 12月10日，2019 |
-|  Rel 20-01  |  [4530702]  |  非安全性  | [4.74] | 12月10日，2019 |
+|  Rel 20-01  |  [4530702]  |  每月汇总  | [4.74] | 12月10日，2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251

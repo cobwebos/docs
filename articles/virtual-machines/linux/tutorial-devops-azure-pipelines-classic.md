@@ -46,7 +46,7 @@ Azure Pipelines 提供了一组完整且功能完备的 CI/CD 自动化工具，
 
 下面是分步演练。 
 1. 登录到 Azure 门户，导航到虚拟机。 
-2. 在 VM 左窗格中，导航到“持续交付” **** 菜单。 然后，单击“配置” **** 。 
+2. 在 VM 左窗格中，导航到“ **持续交付**”菜单。  然后，单击“ **配置**”。 
    ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azdevops-configure.png) 
 3. 在配置面板中单击“Azure DevOps 组织”，选择现有帐户或创建一个帐户。 然后，选择要在其下配置管道的项目。  
    ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azdevops-project.png) 
