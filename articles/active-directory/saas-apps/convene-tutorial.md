@@ -98,7 +98,7 @@ ms.locfileid: "75560454"
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Convene 客户端支持团队](mailto:support@convene.me.uk)，获取该值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. Convene 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Convene 应用程序要求将 nameidentifier 与 user.mail 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射 ****   ****  ****  。
+1. Convene 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 与 **user.userprincipalname**相映射。 Convene 应用程序要求将  **nameidentifier** 与  **user.mail** 进行映射，因此需单击“ **编辑**”图标对属性映射进行编辑，然后更改属性映射  。
 
     ![image](common/edit-attribute.png)
 

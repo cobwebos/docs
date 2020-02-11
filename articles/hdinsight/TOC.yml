@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: 使用 IO 缓存启用缓存
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: 管理 Jar 依赖项
+              href: ./spark/manage-jar-dependency.md
             - name: 将笔记本与 Apache Spark 配合使用
               items:
                 - name: 使用本地 Jupyter 笔记本

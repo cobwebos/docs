@@ -25,7 +25,7 @@ Azure 客户做出任何修订都需要与其合作伙伴或 Microsoft 帐户团
 
 ## <a name="enrollment-provisioning-status"></a>注册预配状态
 
-新货币承诺的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的货币承诺订单是在 UTC 时区中处理的，因此你如果在不同的区域处理货币承诺采购订单，可能会遇到延迟。 https://www.explore.ms 上的采购订单中的履行开始日期显示货币承诺的开始日期。 履行开始日期是指在 Azure EA 门户中显示货币承诺的时间。
+新货币承诺的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的货币承诺订单是在 UTC 时区中处理的，因此你如果在不同的区域处理货币承诺采购订单，可能会遇到延迟。 [https://www.explore.ms](https://www.explore.ms ) 上的采购订单中的履行开始日期显示货币承诺的开始日期。 履行开始日期是指在 Azure EA 门户中显示货币承诺的时间。
 
 ## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>对特价和 Azure 承诺折扣的修订
 
