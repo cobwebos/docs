@@ -10,23 +10,23 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: cf20801a8c1bf6c7ee9b2a7f62069c15388ffb74
-  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.openlocfilehash: 8ff93dc3071a442f28878baa958d3583bc046b44
+  ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71173755"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77115564"
 landingContent:
 - title: 最新功能
   linkLists:
   - linkListType: whats-new
     links:
-    - text: 专用主机预览版
+    - text: 点 VM
+      url: spot-vms.md
+    - text: 专用主机
       url: dedicated-hosts.md
-    - text: 邻近放置组预览版
+    - text: 邻近放置组
       url: proximity-placement-groups.md
-    - text: 临时磁盘
-      url: ephemeral-os-disks.md
 - title: 入门
   linkLists:
   - linkListType: quickstart

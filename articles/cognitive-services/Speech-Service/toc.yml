@@ -109,6 +109,10 @@
           href: long-audio-api.md
         - name: 将语音合成与 Docker 容器配合使用
           href: speech-container-howto.md?tabs=tts
+        - name: 使用 REST 获取语音列表 (Python)
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: 使用 REST 将文本转换为语音 (Python)
+          href: quickstart-python-text-to-speech.md
     - name: 参考
       items:
         - name: 语音 SDK

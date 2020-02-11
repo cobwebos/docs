@@ -5,14 +5,14 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 14740e780f6143f19f843891c16b25df761d0b4f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0a4faad8bfe92a5389e0ee440aa3ccc404535955
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931248"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118094"
 ---
-获得使用表单识别器所需的访问权限时，你会收到一封欢迎电子邮件，其中包含多个链接和资源。 使用该邮件中的“Azure 门户”链接打开 Azure 门户并创建表单识别器资源。 在“创建”窗格中提供以下信息： 
+访问 Azure 门户并[创建新的表单识别器资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 在“创建”窗格中提供以下信息： 
 
 |    |    |
 |--|--|

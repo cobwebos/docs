@@ -42,9 +42,9 @@
       href: openvpn-azure-ad-tenant.md
     - name: 为用户 VPN 启用多重身份验证 (MFA)
       href: openvpn-azure-ad-mfa.md
-    - name: 为用户 VPN 配置 Azure AD 身份验证（预览版）
+    - name: 为用户 VPN 配置 Azure AD 身份验证
       href: virtual-wan-point-to-site-azure-ad.md
-    - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证（预览版）
+    - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: 配置自动化（虚拟 WAN 合作伙伴）
       href: virtual-wan-configure-automation-providers.md

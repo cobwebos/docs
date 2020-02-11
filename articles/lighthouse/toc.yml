@@ -33,7 +33,7 @@
     - name: 企业应用场景中的 Azure Lighthouse
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 将客户载入到 Azure 委派资源管理
       displayName: resource management
@@ -44,6 +44,9 @@
     - name: 查看和管理客户
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: 大规模使用 Azure Monitor 日志
+      displayName: 'log, analytics, analyze, activity'
+      href: ./how-to/monitor-at-scale.md
     - name: Azure Policy 集成
       items:
         - name: 大规模部署策略
@@ -60,7 +63,7 @@
         - name: 查看服务提供商活动
           displayName: 'monitor, log'
           href: ./how-to/view-service-provider-activity.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/managedservices?view=azure-cli-latest'

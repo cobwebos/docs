@@ -54,7 +54,7 @@
               href: virtual-machines-windows-sql-automated-patching.md
             - name: 配置 Azure Key Vault 集成
               href: virtual-machines-windows-ps-sql-keyvault.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 创建 SQL VM
       items:
@@ -97,9 +97,11 @@
               href: virtual-machines-windows-sql-availability-group-quickstart-template.md
             - name: 多个区域
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: 独立于域（工作组）
+              href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: 手动配置
               items:
-                - name: 先决条件
+                - name: 必备条件
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
                 - name: 教程
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
@@ -113,7 +115,7 @@
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: 使用高级文件共享
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/azure/overview
