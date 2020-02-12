@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: 项目元数据
           href: logic-apps-enterprise-integration-metadata.md
-        - name: 接收 B2B 消息
+        - name: 接收和发送 B2B 消息
           href: logic-apps-enterprise-integration-b2b.md
         - name: 交换 AS2 消息
           href: logic-apps-enterprise-integration-as2.md

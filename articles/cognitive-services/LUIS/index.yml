@@ -3,7 +3,7 @@ title: 语言理解 (LUIS) 文档
 summary: 了解语言理解如何使应用程序能够理解用户希望使用自己的词语表达的内容。
 metadata:
   ms.topic: landing-page
-  ms.date: 11/22/2019
+  ms.date: 02/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: 语言理解 (LUIS) 文档
   titleSuffix: Azure Cognitive Services
   description: 使用语言理解 (LUIS) 服务，应用程序可以理解用户希望使用自己的词语表达的内容。 LUIS 使用机器学习，使开发人员可以构建应用程序，以便接收采用自然语言的用户输入并从中提取含义。
-  ms.openlocfilehash: f45461b49b51d6d25464ffa7d2084b1bbb1f9e0e
-  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+  ms.openlocfilehash: 1d9b17bcf6817d3c94d191d54be26ce0ff1f14c2
+  ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76169660"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77137334"
 landingContent:
 - title: 关于语言理解 (LUIS)
   linkLists:
@@ -39,8 +39,8 @@ landingContent:
       url: whats-new.md
   - linkListType: video
     links:
-    - text: AI 巡展：LUIS
-      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    - text: Ignite 2019：使用 LUIS 的高级自然语言理解 (NLU) 模型
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
 - title: 创建意向、实体和功能
   linkLists:
   - linkListType: concept

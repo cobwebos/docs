@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: 商业智能工具
+    - name: 集成
       items:
-        - name: 连接 BI 工具
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: 集成概述
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: 商业智能工具
+          items:
+            - name: 连接 BI 工具
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: 合作伙伴数据集成
+          items:
+            - name: 合作伙伴集成概述
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Qlik 集成
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Fivetran 集成
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: InfoWorks 集成
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: Streamsets 集成
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Syncsort 集成
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: Delta Lake 简介
@@ -1818,9 +1837,9 @@
         - name: 版本类型
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Azure Databricks 状态页
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Azure Databricks 状态页
+      href: /azure/databricks/status
+      maintainContext: true
     - name: R 开发人员指南
       href: /azure/machine-learning/r-developers-guide
     - name: Azure 路线图

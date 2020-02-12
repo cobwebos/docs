@@ -47,7 +47,7 @@
           href: container-registry-geo-replication.md
         - name: 注册最佳做法
           href: container-registry-best-practices.md
-    - name: 操作指南
+    - name: 操作方法指南
       expanded: false
       items:
         - name: 注册表操作
@@ -80,16 +80,18 @@
               href: container-registry-vnet.md
             - name: 在防火墙后访问
               href: container-registry-firewall-access-rules.md
-            - name: Authentication
+            - name: 身份验证
               items:
                 - name: 身份验证概述
                   href: container-registry-authentication.md
-                - name: 服务主体身份验证
+                - name: 使用服务主体进行身份验证
                   href: container-registry-auth-service-principal.md
-                - name: 托管标识身份验证
+                - name: 使用托管标识进行身份验证
                   href: container-registry-authentication-managed-identity.md
                 - name: 从 Azure 容器实例进行身份验证
                   href: container-registry-auth-aci.md
+                - name: 使用请求密码从 Kubernetes 进行身份验证
+                  href: container-registry-auth-kubernetes.md
                 - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: 基于角色的访问控制
@@ -158,7 +160,7 @@
       items:
         - name: 多步骤任务
           href: container-registry-tasks-multi-step.md
-    - name: 操作指南
+    - name: 操作方法指南
       expanded: false
       items:
         - name: 使用托管标识访问受保护的资源
@@ -171,7 +173,7 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: 使用 Buildpacks 生成映像（预览版）
           href: container-registry-tasks-pack-build.md
-- name: 引用
+- name: 参考
   expanded: false
   items:
     - name: Azure CLI
