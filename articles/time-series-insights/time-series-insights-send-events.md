@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981100"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152510"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>通过使用事件中心向时序见解环境发送事件
 
@@ -73,12 +73,18 @@ ms.locfileid: "76981100"
 
     [![复制 primary key 连接字符串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 URL 运行模拟 windmill 设备。
+1. 转到  https://tsiclientsample.azurewebsites.net/windFarmGen.html 。 该 URL 创建并运行模拟 windmill 设备。
 1. 在网页上的 "**事件中心连接字符串**" 框中，粘贴在[windmill 输入字段](#push-events-to-windmills-sample)中复制的连接字符串。
   
     [![在 "事件中心连接字符串" 框中粘贴主密钥连接字符串](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. 选择“单击可启动”。 模拟器生成可以直接使用的实例 JSON。
+1. 选择“单击可启动”。 
+
+    > [!TIP]
+    > Windmill 模拟器还会创建 JSON，你可以将其用作带有[时序见解 GA 查询 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的有效负载。
+
+    > [!NOTE]
+    > 在浏览器选项卡关闭之前，模拟器将继续发送数据。
 
 1. 返回到 Azure 门户中的事件中心。 在 "**概述**" 页上，将显示事件中心收到的新事件。
 

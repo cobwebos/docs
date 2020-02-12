@@ -3,12 +3,12 @@ title: 注册表身份验证选项
 description: 专用 Azure 容器注册表的身份验证选项，包括使用 Azure Active Directory 标识登录、使用服务主体和使用可选的管理员凭据。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029871"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152937"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>使用 Azure 容器注册表进行身份验证
 
@@ -23,7 +23,7 @@ ms.locfileid: "77029871"
 | 方法                               | 如何进行身份验证                                           | 方案                                                            | RBAC                             | 限制                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [单个 AD 身份](#individual-login-with-azure-ad)                | Azure CLI  中的 `az acr login`                             | 开发人员、测试人员交互式推送/请求                                    | 是                              | AD 令牌必须每隔3小时续订一次     |
-| [AD 服务主体](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Api 或工具中的注册表登录设置<br/><br/> Kubernetes 请求机密                                           | CI/CD 管道中的无人参与推送<br/><br/> 无人参与拉取到 Azure 或外部服务  | 是                              | SP 密码默认过期时间为1年       |                                                           
+| [AD 服务主体](#service-principal)                  | `docker login`<br/><br/>Azure CLI 中的 `az acr login`<br/><br/> Api 或工具中的注册表登录设置<br/><br/> [Kubernetes 请求机密](container-registry-auth-kubernetes.md)                                           | CI/CD 管道中的无人参与推送<br/><br/> 无人参与拉取到 Azure 或外部服务  | 是                              | SP 密码默认过期时间为1年       |                                                           
 | [与 AKS  集成](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                   | AKS 群集创建或更新时附加注册表  | 无人参与拉取到 AKS 群集                                                  | 否，仅请求访问             | 仅适用于 AKS 群集            |
 | [Azure 资源的托管标识](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/>Azure CLI  `az acr login`                                        | Azure CI/CD 管道中的无人参与推送<br/><br/> 无人参与请求 Azure 服务<br/><br/>   | 是                              | 仅用于[支持 azure 资源的托管标识](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)的 azure 服务              |
 | [管理员用户](#admin-account)                            | `docker login`                                          | 单个开发人员或测试人员进行交互式推送/请求                           | 否，始终请求并推送访问  | 每个注册表单个帐户，不建议用于多个用户         |

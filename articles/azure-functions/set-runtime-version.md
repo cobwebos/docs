@@ -3,22 +3,22 @@ title: 如何面向 Azure Functions 运行时版本
 description: Azure Functions 支持多个版本的运行时。 了解如何在 Azure 中指定函数应用的运行时版本。
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294161"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151949"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何面向 Azure Functions 运行时版本
 
-函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主要版本： 1.x [、2.x 和](functions-versions.md)3.x。 默认情况下，在运行时的版本2.x 中创建函数应用。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
+函数应用在特定版本的 Azure Functions 运行时上运行。 有三个主要版本：1.x [、2.x 和](functions-versions.md)3.x。 默认情况下，在运行时的版本2.x 中创建函数应用。 本文介绍如何在 Azure 中将函数应用配置为在所选的版本上运行。 有关如何为特定版本配置本地开发环境的信息，请参阅[在本地编码和测试 Azure Functions](functions-run-local.md)。
 
 ## <a name="automatic-and-manual-version-updates"></a>自动和手动版本更新
 
 Azure Functions 使你可以使用函数应用中的 `FUNCTIONS_EXTENSION_VERSION` 应用程序设置以特定版本的运行时为目标。 函数应用将一直保留在指定的主版本上，直到显式选择迁移到新版本。
 
-如果仅指定主版本，则在运行时，function app 会在运行时自动更新为新的次要版本。 新次要版本不会引入重大更改。 如果指定次要版本（例如，“2.0.12345”），则函数应用将被固定到该特定版本，直到显式更改它。
+如果仅指定主版本，则在运行时，function app 会在运行时自动更新为新的次要版本。 新的次要版本不应引入重大更改。 如果指定次要版本（例如，“2.0.12345”），则函数应用将被固定到该特定版本，直到显式更改它。
 
 > [!NOTE]
 > 如果你固定到 Azure Functions 的特定版本，然后尝试使用 Visual Studio 发布到 Azure，则会弹出一个对话框窗口，提示你将更新到最新版本或取消发布。 若要避免此情况，请在 `.csproj` 文件中添加 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 属性。

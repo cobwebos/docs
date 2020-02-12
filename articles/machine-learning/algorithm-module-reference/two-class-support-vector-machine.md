@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: c5ad269bf9cfa43ebad7163c858ef20bc8641878
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 072809949badb08e5b1e7078566e289c5a5fecd9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548316"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153666"
 ---
 # <a name="two-class-support-vector-machine-module"></a>双类支持向量机模块
 
@@ -34,7 +34,7 @@ ms.locfileid: "76548316"
 
 对于预测，SVM 算法将新示例分配给一个类别，将它们映射到相同的空间。 
 
-## <a name="how-to-configure"></a>如何配置 
+## <a name="how-to-configure"></a>配置方式 
 
 对于这种模型类型，建议你在使用它来训练分类器之前规范化该数据集。
   

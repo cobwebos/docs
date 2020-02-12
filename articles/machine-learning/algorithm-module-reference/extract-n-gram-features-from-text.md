@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312220"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152272"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>从文本模块引用中提取 N 语法特征
 
-本文介绍 Azure 机器学习设计器中的模块。 使用 "从文本中提取 N 元语法特征" 模块到 "*特征*非结构化文本数据"。 
+本文介绍 Azure 机器学习设计器（预览版）中的模块。 使用 "从文本中提取 N 元语法特征" 模块到 "*特征*非结构化文本数据"。 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>"从文本中提取 N 元语法特征" 模块的配置
 

@@ -1,6 +1,6 @@
 ---
 title: 保护数据库
-description: 有关在开发解决方案时保护 Azure SQL 数据仓库中的数据库的技巧。
+description: 在 SQL Analytics 的 SQL 池资源中保护数据库和开发解决方案的技巧。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064727"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153275"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>保护 SQL 数据仓库中的数据库
 > [!div class="op_single_selector"]
@@ -27,25 +27,25 @@ ms.locfileid: "77064727"
 > 
 > 
 
-本文逐步讲述有关保护 Azure SQL 数据仓库数据库的基本知识。 具体而言，本文将帮助你了解如何使用相应的资源，在数据库中限制访问、保护数据和监视活动。
+本文将指导你了解有关在 SQL Analytics 中保护 SQL 池的基本知识。 具体而言，本文将介绍如何在使用 SQL 池设置的数据库中限制访问、保护数据和监视活动。
 
 ## <a name="connection-security"></a>连接安全性
 连接安全性是指如何使用防火墙规则和连接加密来限制和保护数据库连接。
 
 服务器和数据库使用防火墙规则来拒绝来自尚未显式列入允许列表的 IP 地址的连接尝试。 若要从应用程序或客户端计算机的公共 IP 地址进行连接，必须先使用 Azure 门户、REST API 或 PowerShell 创建服务器级防火墙规则。 
 
-作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。  要从本地计算机访问 Azure SQL 数据仓库，请确保网络和本地计算机上的防火墙允许在 TCP 端口 1433 上的传出通信。  
+作为最佳实践，应该尽量通过服务器防火墙来限制允许的 IP 地址范围。  若要从本地计算机访问 SQL 池，请确保网络和本地计算机上的防火墙允许 TCP 端口1433上的传出通信。  
 
-Azure Synapse 使用服务器级 IP 防火墙规则。 它不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅[AZURE SQL 数据库防火墙规则](../sql-database/sql-database-firewall-configure.md)
+Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 它不支持数据库级 IP 防火墙规则。 有关详细信息，请参阅[AZURE SQL 数据库防火墙规则](../sql-database/sql-database-firewall-configure.md)
 
-默认加密到 SQL 数据仓库的连接。  将忽略通过修改连接设置禁用加密的操作。
+默认情况下，加密到 SQL 池的连接。  将忽略通过修改连接设置禁用加密的操作。
 
-## <a name="authentication"></a>身份验证
-身份验证是指连接到数据库时如何证明你的身份。 SQL 数据仓库当前支持通过用户名和密码，以及 Azure Active Directory 进行 SQL Server 身份验证。 
+## <a name="authentication"></a>Authentication
+身份验证是指连接到数据库时如何证明身份。 SQL 池目前支持使用用户名和密码进行 SQL Server 身份验证，并且具有 Azure Active Directory。 
 
-在为数据库创建逻辑服务器时，你已指定一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
+在为数据库创建逻辑服务器时，已指定一个包含用户名和密码的“服务器管理员”登录名。 使用这些凭据，可以通过 SQL Server 身份验证以数据库所有者（或“dbo”）的身份在该服务器对任何数据库进行验证。
 
-但是，组织的用户最好使用不同的帐户进行验证。 这样，你就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 
+但是，组织的用户最好使用不同的帐户进行验证。 这样，便可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 
 
 若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好同时在 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-然后，使用服务器管理员登录名连接到“SQL 数据仓库数据库”，并基于刚刚创建的服务器登录名创建数据库用户。
+然后，使用服务器管理员登录名连接到**SQL 池数据库**，并根据所创建的服务器登录名创建数据库用户。
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -67,7 +67,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 有关这些其他角色以及对 SQL 数据库进行身份验证的详细信息，请参阅[在 AZURE Sql 数据库中管理数据库和登录名](../sql-database/sql-database-manage-logins.md)。  有关使用 Azure Active Directory 进行连接的详细信息，请参阅[使用 Azure Active Directory 身份验证进行连接](sql-data-warehouse-authentication.md)。
 
 ## <a name="authorization"></a>授权
-授权是指在经过身份验证和连接后可以在数据库中执行的操作。 授权权限由角色成员资格和权限决定。 作为最佳实践，你应向用户授予所需的最低权限。 可使用下列存储过程来管理角色：
+授权是指在经过身份验证和连接后可以在数据库中执行的操作。 授权权限由角色成员资格和权限决定。 作为最佳实践，应向用户授予所需的最低权限。 可使用下列存储过程来管理角色：
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -93,9 +93,9 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ## <a name="encryption"></a>加密
 透明数据加密（TDE）可加密和解密静态数据，从而帮助防止恶意活动的威胁。 在加密数据库时，可以对关联的备份和事务日志文件加密，无需对应用程序进行任何更改。 TDE 使用称为数据库加密密钥的对称密钥来加密整个数据库的存储。 
 
-在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Microsoft 每隔 90 天自动轮换这些证书至少一次。 使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)。
+在 SQL 数据库中，数据库加密密钥由内置服务器证书保护。 内置服务器证书对每个 SQL 数据库服务器都是唯一的。 Microsoft 至少每 90 天自动轮换这些证书。 使用的加密算法为 AES-256。 有关 TDE 的一般描述，请参阅[透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15)。
 
 可以使用[Azure 门户](sql-data-warehouse-encryption-tde.md)或[t-sql](sql-data-warehouse-encryption-tde-tsql.md)加密数据库。
 
 ## <a name="next-steps"></a>后续步骤
-有关如何用不同的协议连接到仓库的详细信息和示例，请参阅[连接到 SQL 数据仓库](sql-data-warehouse-connect-overview.md)。
+有关如何用不同的协议连接到仓库的详细信息和示例，请参阅[连接到 SQL 池](sql-data-warehouse-connect-overview.md)。

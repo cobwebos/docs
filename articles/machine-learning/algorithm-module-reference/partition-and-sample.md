@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314923"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152119"
 ---
 # <a name="partition-and-sample-module"></a>分区和示例模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可对数据集执行采样或从数据集创建分区。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76314923"
 
 ### <a name="get-top-n-rows-from-a-dataset"></a>获取数据集中的前 N 行
 
-使用此模式可以仅获取前*n*行。 如果要对少量行测试管道，而不需要以任何方式平衡或采样数据，则此选项很有用。
+使用此模式可仅获取前 *n* 行。 如果要对少量行测试管道，而不需要以任何方式平衡或采样数据，则此选项很有用。
 
 1. 将**分区和示例**模块添加到接口中的管道，并连接数据集。  
 

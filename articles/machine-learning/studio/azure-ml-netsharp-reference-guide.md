@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 295cac883e7c84158fd9d2a2b7e9780dfe6c64d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6cf6e07e3bbad6b98fcce9cc0e39cdab97375a2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427672"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148566"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 Net # 神经网络规范语言指南（经典）
 
@@ -56,7 +56,7 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 
 ## <a name="supported-customizations"></a>支持的自定义项
 
-可以使用 Net # 广泛地自定义在 Azure 机器学习 Studio （经典）中创建的神经网络模型的体系结构。 你可以：
+可以使用 Net # 广泛地自定义在 Azure 机器学习 Studio （经典）中创建的神经网络模型的体系结构。 可以：
 
 + 创建隐藏层并控制每层的节点数。
 + 指定如何相互连接层。
@@ -175,7 +175,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 或者，可以为筛选的捆绑指定一组权重。 **Weights** 属性的值必须是浮点值的元组，其长度与捆绑定义的连接数匹配。 默认情况下，权重是随机生成的。
 
-权重值按照目标节点索引进行分组。 也就是说，在源索引顺序中，如果第一个目标节点连接到 K 源节点，则 **Weights** 元组的前 `K` 个元素为第一个目标节点的权重。 这同样适用于其他目标节点。
+权重值按照目标节点索引进行分组。 也就是说，在源索引顺序中，如果第一个目标节点连接到 K 源节点，则 `K`Weights**元组的前** 个元素为第一个目标节点的权重。 这同样适用于其他目标节点。
 
 可直接将权重指定为常量值。 例如，如果以前了解权重，则可以使用此语法将其指定为常量：
 
@@ -213,7 +213,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
     如果维度值为 False，则将定义内核，使留出的每个端上的节点数都相同（最大差值为 1）。 此属性的默认值为一个元组，其所有组件都等于 False。
 
-+ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当***没有***定义上述的 **Padding** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
++ **UpperPad** 和 **LowerPad**：（可选）对大量要使用的填充提供更好的控制。 **重要提示：** 当且仅当**没有**定义上述的 ***Padding*** 属性时，才能定义这些属性。 值必须是正整数值的元组，其长度为绑定的实参数量。 指定这些属性后，“虚拟”节点将添加到输入层的每个维度的上下两端。 每个维度的上下两端添加的节点数分别由 **LowerPad**[i] 和 **UpperPad**[i] 确定。
 
     若要确保内核只对应“真实”节点而不是“虚拟”节点，则必须符合以下条件：
   - **LowerPad** 的每个组件必须严格小于 `KernelShape[d]/2`。
@@ -458,7 +458,7 @@ output Digit [10] from Hid3 all;
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + 可通过使用层的声明维数 [50, 5, 5] 来计算节点总数，如下所示：`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
-+ 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
++ 因为只有 `Sharing[d]` 时 `d == 0` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
 
 ## <a name="acknowledgements"></a>致谢
 

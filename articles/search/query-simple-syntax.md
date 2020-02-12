@@ -1,5 +1,5 @@
 ---
-title: 简单查询语法
+title: 简化的查询语法
 titleSuffix: Azure Cognitive Search
 description: 用于 Azure 认知搜索中全文搜索查询的简单查询语法参考。
 manager: nitinme
@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792550"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152663"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的简单查询语法
 
 Azure 认知搜索实现了两种基于 Lucene 的查询语言：[简单查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)和[lucene 查询分析器](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。 在 Azure 认知搜索中，简单查询语法排除模糊/slop 选项。  
 
-> [!NOTE]  
->  Azure 认知搜索提供了一种替代的[Lucene 查询语法](query-lucene-syntax.md)用于更复杂的查询。 若要详细了解查询分析体系结构和每种语法的优点，请参阅[Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
+> [!NOTE]
+> 简单查询语法用于在[搜索文档](https://docs.microsoft.com/rest/api/searchservice/search-documents)API 的**搜索**参数中传递的查询表达式，而不是与用于该 api 的[$filter](search-filters.md)参数的[OData 语法](query-odata-filter-orderby-syntax.md)混淆。 这些不同的语法具有各自的规则用于构造查询、转义字符串等。
+>
+> Azure 认知搜索为**搜索**参数中的更复杂查询提供替代的[完整 Lucene 查询语法](query-lucene-syntax.md)。 若要详细了解查询分析体系结构和每种语法的优点，请参阅[Azure 认知搜索中全文搜索的工作原理](search-lucene-query-architecture.md)。
 
 ## <a name="how-to-invoke-simple-parsing"></a>如何调用简单分析
 
@@ -64,7 +66,7 @@ OR 运算符是一个竖条或管状字符。 例如，`wifi | luxury` 将搜索
 NOT 运算符是一个减号。 例如，`wifi –luxury` 将搜索包含 `wifi` 词条和/或不包含 `luxury`（和/或由 `searchMode` 控制）的文档。
 
 > [!NOTE]  
->  `searchMode` 选项控制在没有 `+` 或 `|` 运算符的情况下，带有 NOT 运算符的词条是与查询中的其他词条进行 AND 运算还是 OR 运算。 请记住，`searchMode` 可设置为 `any`（默认）或 `all`。 如果使用 `any`，可以以包含更多结果的方式提高查询的查全率，且默认情况下将 `-` 解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。 如果使用 `all`，可以以包含更少结果的方式提高查询的精确度，且默认情况下将 - 解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索精确度（而非查全率），*且*用户在搜索中频繁使用 `-` 运算符，则应考虑使用 `searchMode=all` 而不是 `searchMode=any`。
+>  `searchMode` 选项控制在没有 `+` 或 `|` 运算符的情况下，带有 NOT 运算符的词条是与查询中的其他词条进行 AND 运算还是 OR 运算。 请记住，`searchMode` 可设置为 `any`（默认）或 `all`。 如果使用 `any`，可以以包含更多结果的方式提高查询的查全率，且默认情况下将 `-` 解释为“OR NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条或不包含 `luxury` 词条的文档。 如果使用 `all`，可以以包含更少结果的方式提高查询的精确度，且默认情况下将 - 解释为“AND NOT”。 例如，`wifi -luxury` 将匹配包含 `wifi` 词条且不包含“luxury”词条的文档。 这对于 `-` 运算符来说可能是更直观的行为。 因此，如果想要优化搜索精确度（而非查全率），`searchMode=all`且`searchMode=any`用户在搜索中频繁使用 *运算符，则应考虑使用* 而不是 `-`。
 
 ## <a name="suffix-operator"></a>后缀运算符
 

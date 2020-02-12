@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfbca6514328897afe0c0eda5ce7d5a6d2ff92a7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427511"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152833"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>从 Azure AI 库中的工作示例创建 Azure 机器学习 Studio （经典）试验
 
@@ -23,7 +23,7 @@ ms.locfileid: "75427511"
 
 该库包含 Microsoft Azure 机器学习工作室（经典）团队的示例试验，以及机器学习社区共享的示例。 此外，还可以提出问题或发布有关试验的评论。
 
-若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
+若要了解如何使用此库，请观看[适合初学者的数据科学](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)系列中 3 分钟的视频[复制其他人的工作来进行数据科学](data-science-for-beginners-the-5-questions-data-science-answers.md)。
 
 
 

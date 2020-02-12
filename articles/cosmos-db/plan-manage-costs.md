@@ -3,15 +3,16 @@ title: 规划和管理 Azure Cosmos DB 的成本
 description: 了解如何使用 Azure 门户中的成本分析来规划和管理 Azure Cosmos DB 的成本。
 author: SnehaGunda
 ms.author: sngun
+ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/02/2020
-ms.openlocfilehash: 96cb22a0153b3506835df93b50785ad7870929ce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: cf259dfa0b00393cf0fee259b199527569ba1792
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77135754"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152578"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>规划和管理 Azure Cosmos DB 的成本
 
@@ -19,7 +20,7 @@ ms.locfileid: "77135754"
 
 了解 Azure Cosmos DB 的成本仅是 Azure 帐单中每月费用的一部分。 如果你正在使用其他 Azure 服务，则需要为 Azure 订阅中使用的所有 Azure 服务和资源（包括第三方服务）付费。 本文介绍如何为 Azure Cosmos DB 规划和管理成本。 熟悉管理 Azure Cosmos DB 的成本后，可以应用类似的方法来管理订阅中使用的所有 Azure 服务的成本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 成本分析支持各种 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](../cost-management-billing/costs/understand-cost-mgt-data.md)。 若要查看成本数据，你至少需要对 Azure 帐户具有读取访问权限。 若要了解如何分配对 Azure 成本管理数据的访问权限，请参阅[分配对数据的访问权限](../cost-management-billing/costs/assign-access-acm-data.md)。
 

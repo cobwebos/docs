@@ -6,21 +6,23 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 02/04/2020
+ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132710"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152629"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)（频道）表示用于处理实时传送视频流内容的管道。 直播活动通过以下两种方式之一接收实时输入流。
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的直播活动。 引入流将通过直播活动，而不会进行任何进一步处理。 这种方法称为**直通**。 建议实时编码器将多比特率流（而不是单比特率流）发送到传递实时事件，以便向客户端提供自适应比特率流式处理。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的直播活动。 引入流将通过直播活动，而不会进行任何进一步处理。 这种方法称为**直通**。 建议实时编码器将多比特率流（而不是单比特率流）发送到传递实时事件，以便向客户端提供自适应比特率流式处理。 
+
+    如果要将多比特率流用于传递实时事件，则必须同步不同比特率上的视频 GOP 大小和视频片段，以避免播放端出现意外的行为。
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。

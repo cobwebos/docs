@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311659"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152357"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer"></a>设计器的异常和错误代码
+# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览版）
 
-本文介绍 Azure 机器学习设计器中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
+本文介绍 Azure 机器学习设计器（预览版）中的错误消息和异常代码，以帮助你对机器学习管道进行故障排除。
 
 可以通过两种方法获取设计器中的错误消息的完整文本：  
 
@@ -341,8 +341,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |------------------------|
 |无法处理当前类型的列。 模块不支持该类型。|
 |无法处理 {col_type} 类型的列。 模块不支持该类型。|
-|无法处理 col_type {0} 类型的列 "{col_name}"。 模块不支持该类型。|
-|无法处理 col_type {0} 类型的列 "{col_name}"。 模块不支持该类型。 参数名称： {arg_name}。|
+|无法处理 col_type  类型的列 "{col_name}"。 模块不支持该类型。|
+|无法处理 col_type  类型的列 "{col_name}"。 模块不支持该类型。 参数名称： {arg_name}。|
 
 
 ## <a name="error-0018"></a>错误 0018  
@@ -356,7 +356,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 
 <!---   The module requires a specific data type. For example, ratings provided to [Train Matchbox Recommender](train-matchbox-recommender.md) can be either numeric or categorical, but cannot be floating point numbers.  -->
 
--   数据的格式有错。  
+-   数据的格式不正确。  
   
 -   导入的数据包含无效字符、错误值或超出范围值。  
 -   此列为空或包含的缺失值太多。  
@@ -1474,5 +1474,5 @@ For general information about how the Matchbox recommendation algorithm works, a
 |------------------------|
 |库异常。|
 |库例外： {0}。|
-|未知库异常： {0}。 {1}。|
+|未知库异常： {0}。 {1} 列中的一个值匹配。|
 

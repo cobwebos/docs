@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133598"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150164"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
@@ -21,27 +21,11 @@ ms.locfileid: "77133598"
 
 ## <a name="before-you-begin"></a>开始之前
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-可以使用在计算机上本地安装的 PowerShell，也可以使用 Azure Cloud Shell。 如果选择在本地安装并使用 PowerShell，必须使用最新版 PowerShell 模块，才能使用此功能。
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>在本地使用 PowerShell 的具体步骤
-
-如果在计算机本地使用 PowerShell（而不使用 Cloud Shell），必须安装 PowerShell 模块 1.0.0 或更高版本。 若要检查已安装 PowerShell 的版本，请运行下面的命令：
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. 声明变量
 
-下面列出了示例步骤中需要用到的值。 此外，一些示例步骤还使用已声明的变量。 若要在自己的环境中执行这些步骤，请务必将这些值替换为自己的值。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题](#faq)。
+声明要使用的值。 使用以下示例，在必要时会值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题](#faq)。
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

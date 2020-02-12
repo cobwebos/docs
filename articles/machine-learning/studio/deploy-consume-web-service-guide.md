@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 7216d2f97a52798d2609073761eb8f4a2ce9024d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0090c6417921bd9bb6c64048fffadab19d4813c6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976130"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153513"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure 机器学习 Studio （经典） Web 服务：部署和使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "75976130"
 
 接下来的部分提供指向演练、代码和文档的链接，可帮助你开始操作。
 
-## <a name="deploy-a-web-service"></a>部署一个 Web 服务
+## <a name="deploy-a-web-service"></a>部署 Web 服务
 
 ### <a name="with-azure-machine-learning-studio-classic"></a>与 Azure 机器学习 Studio （经典）
 

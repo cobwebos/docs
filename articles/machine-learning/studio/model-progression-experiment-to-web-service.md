@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838016"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148087"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>机器学习 Studio （经典）模型如何从实验到 Web 服务的进展
 Azure 机器学习 Studio （经典）提供了一个交互式画布，可用于开发、运行、测试和迭代表示预测分析模型的***实验***。 有大量各种不同的模块可用于：
@@ -49,7 +49,7 @@ Azure 机器学习 Studio （经典）提供了一个交互式画布，可用于
 ***训练试验***是在机器学习 Studio （经典）中开发 Web 服务的初始阶段。 训练实验的目的是提供一个开发、测试、循环访问和最终定型机器学习模型的环境。 在寻找最佳解决方案时，甚至可以同时训练多个模型，但完成实验后，将选择一个定型模型，并去除实验中的其余部分。 有关开发预测分析实验的示例，请参阅[Azure 机器学习 Studio （经典）中的为信用风险评估开发预测分析解决方案](tutorial-part1-credit-risk.md)。
 
 ### <a name="the-predictive-experiment"></a>预测性实验
-在训练实验中具有定型模型后，单击 "**设置 Web 服务**"，并选择 "机器学习 Studio （经典）中的**预测性 Web 服务**"，以启动将训练实验转换为预测的过程***试验***。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
+在训练实验中具有定型模型后，单击 "**设置 Web 服务**"，并选择 "机器学习 Studio （经典）中的**预测性 Web 服务**"，以启动将训练实验转换为***预测实验***的过程。 预测性实验旨在使用定型模型对新数据进行评分，目的是为了最终变得如 Azure Web 服务一样具备可操作性。
 
 会通过以下步骤完成该转换：
 
@@ -67,14 +67,14 @@ Azure 机器学习 Studio （经典）提供了一个交互式画布，可用于
 >
 
 ### <a name="the-web-service"></a>Web 服务
-预测实验准备就绪让你感到满意后，即可基于 Azure 资源管理器将服务部署为经典 Web 服务或新的 Web 服务。 要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[经典]** ”。 要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[新]** ”。 用户现在可以使用 Web 服务 REST API 将数据发送到模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
+预测实验准备就绪让你感到满意后，即可基于 Azure 资源管理器将服务部署为经典 Web 服务或新的 Web 服务。 要通过将其部署为*经典机器学习 Web 服务*来实施模型，请单击“**部署 Web 服务**”，然后选择“**部署 Web 服务[经典]** ”。 要作为*新的机器学习 Web 服务*进行部署，请单击“**部署 Web 服务**”，并选择“**部署 Web 服务[新]** ”。 用户现在可以使用 Web 服务 REST API 将数据发送到模型并接收返回的结果。 有关详细信息，请参阅[如何使用 Azure 机器学习 Web 服务](consume-web-services.md)。
 
 ## <a name="the-non-typical-case-creating-a-non-predictive-web-service"></a>非典型情况：创建一个非预测性的 Web 服务
 如果实验没有对预测分析模型进行训练，则无需创建训练实验和评分实验 - 只有一个实验，并且可以将其部署为 Web 服务。 机器学习 Studio （经典）通过分析你使用的模块来检测实验是否包含预测模型。
 
 在迭代实验并感到满意后：
 
-1. 单击“**设置 Web 服务**”，并选择“**重新训练 Web 服务**” - 将自动添加输入和输出节点
+1. 单击“**设置 Web 服务**”，然后选择“**重新训练 Web 服务**” - 会自动添加输入和输出节点
 2. 单击“**运行**”
 3. 单击“**部署 Web 服务**”，并选择“**部署 Web 服务[经典]** ”或“**部署 Web 服务[新]** ”，具体取决于要部署的环境。
 
@@ -95,7 +95,7 @@ Web 服务现已部署，并且可以像预测的 Web 服务一样对其进行�
 
 如果要保留机器学习模型，但希望使用新数据对其进行重新训练，有两个选择：
 
-1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行部分修改，以使其成为***重新训练实验***来完成此操作，并可以将其部署为 ***重新训练 Web* 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)。
+1. **Web 服务运行时重新训练模型** - 如果要在预测 Web 服务正在运行时重新训练模型，可以通过对训练实验进行部分修改，以使其成为***重新训练实验***来完成此操作，然后可以将其部署为 ***重新训练 Web* 服务**。 有关如何执行此操作的说明，请参阅[以编程方式重新训练机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)。
 2. **返回原始训练实验并使用不同的训练数据来开发模型** - 预测实验链接到 Web 服务，但训练实验不是以此方式直接链接。 如果修改原始训练实验并单击“**设置 Web 服务**”，它将创建一个*新的*预测实验，在其部署时会创建一项*新的* Web 服务。 它不只是更新原始 Web 服务。
 
    如果需要修改训练实验，请打开它并单击“**另存为**”以制作副本。 这会使原始训练实验、预测实验和 Web 服务保持不变。 现在可以使用更改来创建新的 Web 服务。 部署了新的 Web 服务后，可以决定是否要停止以前的 Web 服务，或使其与新的服务一起运行。

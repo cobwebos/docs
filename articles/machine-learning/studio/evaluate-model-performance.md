@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: baf2352c8842a07691288c9296438624d53d3990
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427642"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153479"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>如何在 Azure 机器学习 Studio （经典）中评估模型性能
 
@@ -67,20 +67,20 @@ Azure 机器学习 Studio （经典）通过以下两种主要机器学习模块
 
 ![线性回归评估指标](./media/evaluate-model-performance/2.png)
 
-图 2： 线性回归评估指标。
+图 2。 线性回归评估指标。
 
 ### <a name="using-cross-validation"></a>使用交叉验证
 如前文所述，可以使用[交叉验证模型][cross-validate-model]模块自动执行重复的培训、评分和评估。 在这种情况下，您只需要一个数据集、一个未训练的模型和一个[交叉验证模型][cross-validate-model]模块（请参阅下图）。 您需要在 "[交叉验证模型][cross-validate-model]" 模块的属性中将标签列设置为 "*价格*"。
 
 ![交叉验证回归模型](./media/evaluate-model-performance/3.png)
 
-图 3： 交叉验证回归模型。
+图 3。 交叉验证回归模型。
 
 运行试验后，可以通过单击[交叉验证模型][cross-validate-model]模块的右输出端口来检查评估结果。 这会提供每次迭代（折）的指标的详细视图和每个指标的平均结果（图 4）。
 
 ![回归模型的交叉验证结果](./media/evaluate-model-performance/4.png)
 
-图 4： 回归模型的交叉验证结果。
+图 4。 回归模型的交叉验证结果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>评估二元分类模型
 在二元分类方案中，目标变量只有两个可能的结果，例如： {0, 1} 或 {false, true}、{negative, positive}。 假设提供一个具有人口统计和雇用变量的成年员工数据集，并要求预测收入水平，此处的收入水平是一个带有值 {“<=50 K”, “>50 K”} 的二进制变量。 换而言之，负类表示年收入小于或等于 50K 的员工，正类表示所有其他员工。 和在回归方案中一样，我们可以训练一个模型、评分一些数据，并评估结果。 此处的主要区别是，选择指标 Azure 机器学习 Studio （经典）计算和输出。 为了说明收入级别预测方案，我们将使用[成人](https://archive.ics.uci.edu/ml/datasets/Adult)数据集创建工作室（经典）试验，并评估双类逻辑回归模型（一种常用的二进制分类器）的性能。
@@ -98,7 +98,7 @@ Azure 机器学习 Studio （经典）通过以下两种主要机器学习模块
 
 ![评估二元分类模型](./media/evaluate-model-performance/5.png)
 
-图 5： 评估二元分类模型。
+图 5。 评估二元分类模型。
 
 ### <a name="inspecting-the-evaluation-results"></a>检查评估结果
 运行试验后，可单击[评估模型][evaluate-model]模块的输出端口，并选择 "*可视化*" 查看评估结果（图7）。 可用于二元分类模型的评估指标包括：*准确性*、*精度*、*召回率*、*F1 分数*和 *AUC*。 此外，模块输出一个显示真正、假负、假正和真负的混淆矩阵，以及 *ROC*、*精度/召回率*和*升力*曲线。
@@ -109,13 +109,13 @@ Azure 机器学习 Studio （经典）通过以下两种主要机器学习模块
 
 ![二元分类混淆矩阵](./media/evaluate-model-performance/6a.png)
 
-图 6： 二元分类混淆矩阵。
+图 6。 二元分类混淆矩阵。
 
 回到收入分类问题，我们可能要问若干个评估问题，以帮助我们了解所使用的分类器的性能。 自然的问题是： "该模型预测要赢取的人员 > 50 K （TP + FP）、已正确分类的数量（TP）？" 可通过查看模型的**精度**来回答此问题，该指标是分类正确的正的比例：TP/(TP+FP)。 另一个常见问题是“在所有收入 50k 的高收入员工中 (TP+FN)，分类器正确分类了多少 (TP)”。 这实际上是**召回率**或真正率：分类器的 TP/(TP+FN)。 可能注意到精度和召回率之间存在明显的权衡。 例如，给定一个相对均衡的数据集，预测大多数正实例的分类器将具有高召回率，但精度较低，因为许多负实例会被错误分类，从而导致大量假正。 若要查看这两个指标的变化图，可单击评估结果输出页中的“精度/召回率”曲线（图 7 左上角）。
 
 ![二元分类评估结果](./media/evaluate-model-performance/7.png)
 
-图 7： 二元分类评估结果。
+图 7。 二元分类评估结果。
 
 另一个常用的相关指标是 **F1 分数**，该指标同时考虑精度和召回率。 它是这两个指标的调和平均值，计算方式如下： F1 = 2 （精度 x 召回）/（精度 + 召回）。 F1 分数是以单个数字总结评估的好方法，但是共同查看精度和召回率以便更好地了解分类器行为始终是良好的做法。
 
@@ -126,11 +126,11 @@ Azure 机器学习 Studio （经典）通过以下两种主要机器学习模块
 
 ![交叉验证二元分类模型](./media/evaluate-model-performance/8.png)
 
-图 8： 交叉验证二元分类模型。
+图 8。 交叉验证二元分类模型。
 
 ![二元分类器交叉验证结果](./media/evaluate-model-performance/9.png)
 
-图 9： 二元分类器的交叉验证结果。
+图 9. 二元分类器的交叉验证结果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>评估多类分类模型
 在此实验中，我们将使用常用的[Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris")数据集，其中包含 Iris 植物的三个不同类型（类）的实例。 每个实例有四个功能值（花萼长度/宽度和花瓣长度/宽度）。 在前面的实验中，我们使用相同的数据集训练并测试了模型。 在这里，我们将使用[拆分数据][split]模块创建数据的两个子集，对第一个进行训练，并在第二个数据集中进行评分和评估。 Iris 数据集在[UCI 机器学习存储库](https://archive.ics.uci.edu/ml/index.html)中公开提供，并且可使用[导入数据][import-data]模块下载。
@@ -149,20 +149,20 @@ Azure 机器学习 Studio （经典）通过以下两种主要机器学习模块
 
 将[训练模型][train-model]模块的标签列索引设置为5。 数据集不再具有标题行，但我们知道类标签在第五列。
 
-单击 "[导入数据][import-data]" 模块，并通过 HTTP 将 "*数据源*" 属性设置为*Web url*，并将 URL 设置为要 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data 的*url* 。
+单击 "[导入数据][import-data]" 模块，并通过 HTTP 将 "*数据源*" 属性设置为*Web url*，并将 URL 设置为要 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data的*url* 。
 
 设置要用于 "[拆分数据][split]" 模块中的定型的实例的小数部分（例如，0.7）。
 
 ![评估多类分类器](./media/evaluate-model-performance/10.png)
 
-图 10： 评估多类分类器
+图 10. 评估多类分类器
 
 ### <a name="inspecting-the-evaluation-results"></a>检查评估结果
 运行试验，并单击 "[评估模型][evaluate-model]" 的输出端口。 在此情况下，评估结果以混淆矩阵形式显示。 该矩阵显示所有三个类的实际与预测实例。
 
 ![多类分类评估结果](./media/evaluate-model-performance/11.png)
 
-图 11： 多类分类评估结果。
+图 11. 多类分类评估结果。
 
 ### <a name="using-cross-validation"></a>使用交叉验证
 如前文所述，可以使用[交叉验证模型][cross-validate-model]模块自动执行重复的培训、评分和评估。 需要一个数据集、一个未训练的模型和一个[交叉验证模型][cross-validate-model]模块（请参阅下图）。 再次需要设置[交叉验证模型][cross-validate-model]模块的标签列（在本例中为列索引5）。 运行试验并单击[交叉验证模型][cross-validate-model]的右输出端口后，可以检查每个折叠的指标值以及平均和标准偏差。 此处显示的指标类似于二元分类案例中讨论的指标。 但是，在多类分类中，通过按每个类进行计数来计算真正的正值/负值和误报/负值，因为没有整体正或负类。 例如，当计算“Iris-setosa”类的精度或召回率时，假设这是正类，其他全部为负类。

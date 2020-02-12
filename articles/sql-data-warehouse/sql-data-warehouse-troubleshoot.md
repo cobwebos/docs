@@ -11,12 +11,12 @@ ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ce57c48e568e840f3a651a5530f3fba6c0be60b7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721041"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153360"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
 本文列出了常见的故障排除问题。
@@ -53,7 +53,7 @@ ms.locfileid: "76721041"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 消息 40847：无法执行操作，因为服务器将超过 45000 这一允许的数据库事务单元配额。 | 请减少要尝试创建的数据库的 [DWU](what-is-a-data-warehouse-unit-dwu-cdwu.md)，或者[请求增加配额](sql-data-warehouse-get-started-create-support-ticket.md)。 |
 | 调查空间使用率                              | 请参阅[表大小]( ../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries)，了解系统的空间使用率。 |
-| 管理表的帮助                                    | 有关管理表的帮助，请参阅 [表概述] [概述] 一文。  本文还包含指向更详细主题的链接，如[表数据类型](sql-data-warehouse-tables-data-types.md)、[分布表](sql-data-warehouse-tables-distribute.md)、[为表编制索引](sql-data-warehouse-tables-index.md)、将表[分区](sql-data-warehouse-tables-partition.md)、[维护表统计信息](sql-data-warehouse-tables-statistics.md)和[临时表](sql-data-warehouse-tables-temporary.md)。 |
+| 管理表的帮助                                    | 有关管理表的帮助，请参阅[表概述](../sql-data-warehouse/sql-data-warehouse-tables-overview.md)一文。  本文还包含指向更详细主题的链接，如[表数据类型](sql-data-warehouse-tables-data-types.md)、[分布表](sql-data-warehouse-tables-distribute.md)、[为表编制索引](sql-data-warehouse-tables-index.md)、将表[分区](sql-data-warehouse-tables-partition.md)、[维护表统计信息](sql-data-warehouse-tables-statistics.md)和[临时表](sql-data-warehouse-tables-temporary.md)。 |
 | 在 Azure 门户中，透明数据加密（TDE）进度栏不更新 | 可以通过 [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) 查看 TDE 的状态。 |
 
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c74388a376a4f45a8e07cfed69bd497f856f1b37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427702"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148668"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>选择参数以优化 Azure 机器学习 Studio （经典）中的算法
 

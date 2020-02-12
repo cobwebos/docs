@@ -6,25 +6,25 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: b707971f0b150bce63b4dd0ffa4e55dc3b3d6bac
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313946"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153734"
 ---
 # <a name="split-data-module"></a>拆分数据模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块将数据集划分为两个不同的集。
 
 当需要将数据分为定型集和测试集时，此模块特别有用。 您也可以自定义数据划分的方式。 某些选项支持随机化数据;其他数据类型为特定的数据类型或模型类型而定制。
 
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
 
 > [!TIP]
 > 在选择拆分模式之前，请阅读所有选项以确定所需的拆分类型。

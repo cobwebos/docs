@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024579"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149824"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -74,7 +74,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 如今，大多数泄密的登录尝试都来自传统身份验证。 旧身份验证不支持多重身份验证。 即使在目录中启用了多重身份验证策略，攻击者仍可使用较旧的协议进行身份验证，并绕过多重身份验证。 
 
-在租户中启用安全默认设置后，较旧协议发出的所有身份验证请求都将被阻止。 安全默认值不会阻止 Exchange ActiveSync。
+在租户中启用安全默认设置后，较旧协议发出的所有身份验证请求都将被阻止。 安全默认值块 Exchange Active Sync 基本身份验证。
 
 > [!WARNING]
 > 启用安全性默认值之前，请确保管理员没有使用较旧的身份验证协议。 有关详细信息，请参阅[如何离开旧身份验证](concept-fundamentals-block-legacy-authentication.md)。
@@ -108,7 +108,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 安全默认值允许使用**通知仅通过 Microsoft Authenticator 应用**注册和使用 Azure 多重身份验证。 条件性访问允许使用管理员选择启用的任何身份验证方法。
 
-|   | 安全默认值 | 条件访问 |
+|   | 安全默认值 | 条件性访问 |
 | --- | --- | --- |
 | 通过移动应用发送通知 | X | X |
 | 移动应用或硬件标志提供的验证码 |   | X |
@@ -118,7 +118,7 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 \* * 只有在管理员启用了旧身份验证方案的情况下，才能在每用户 MFA 中使用应用密码。
 
-### <a name="conditional-access"></a>条件访问
+### <a name="conditional-access"></a>条件性访问
 
 您可以使用条件性访问来配置类似于安全默认设置的策略，但更多的粒度包括用户排除，这在安全性默认值中不可用。 如果使用条件访问，并且在您的环境中启用了条件性访问策略，则不能使用安全默认值。 如果你的许可证提供条件性访问，但你的环境中未启用任何条件性访问策略，则欢迎使用安全默认设置，直至你启用条件性访问策略。 有关 Azure AD 许可的详细信息，请参阅[Azure AD 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9123e1d8e63382c6b89c86f99935dd288bb1bf16
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839811"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153411"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理管理 Azure 机器学习 Studio （经典） web 服务
 ## <a name="overview"></a>概述
@@ -24,7 +24,7 @@ ms.locfileid: "73839811"
 ## <a name="what-is-azure-api-management"></a>什么是 Azure API 管理？
 Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、使用限制和仪表板监视管理 REST API 终结点。 有关更多详细信息，请参阅[AZURE API 管理站点](https://azure.microsoft.com/services/api-management/)。 若要开始进行 Azure API 管理，请参阅[导入和发布指南](/azure/api-management/import-and-publish)。 这份额外指南（作为本指南的依据）涵盖更多主题，包括通知配置、层定价、响应处理、用户身份验证、创建产品、开发人员订阅和使用仪表板。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要完成本指南，需要：
 
 * 一个 Azure 帐户。
@@ -35,7 +35,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 可以使用 API 管理实例来管理 Azure 机器学习 Web 服务。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 选择“+ 创建资源”。
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
 4. 单击“创建”。
@@ -71,7 +71,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
 ## <a name="add-the-operations"></a>添加操作
 
-可以在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。
+在发布者门户中将操作添加并配置到 API。 若要访问发布者门户，请在 API 管理服务的 Azure 门户中单击“发布者门户”，依次选择“API”、“操作”，然后单击“添加操作”。
 
 ![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
@@ -156,7 +156,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 
    ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
 
-5. 单击“发送”。
+5. 单击“Send”。
 
    ![发送](./media/manage-web-service-endpoints-using-api-management/send.png)
 

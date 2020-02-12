@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: ba7afb506a21df7fc2fe4cc4b7194549b6efde83
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050559"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150691"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教程：为 TeamViewer 配置自动用户预配
 
@@ -34,13 +34,14 @@ ms.locfileid: "77050559"
 > * 使用户属性在 Azure AD 和 TeamViewer 之间保持同步
 > * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)到 TeamViewer （推荐）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 中的一个用户帐户，有权配置预配（例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）的[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
-* 具有管理员权限的 TeamViewer 帐户。
+* TeamViewer 的有效[Tensor 许可证](https://www.teamviewer.com/de/teamviewer-tensor/)。
+* 可用的[单一登录](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723)配置中的有效自定义标识符。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
@@ -49,7 +50,7 @@ ms.locfileid: "77050559"
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 TeamViewer 以支持 Azure AD 的预配
 
-1. 登录到 TeamViewer 应用的管理控制台。 导航到 "**编辑配置文件**"。
+1. 登录到[TeamViewer 管理控制台](https://login.teamviewer.com)。 导航到 "**编辑配置文件**"。
 
     ![TeamViewer 管理控制台](./media/teamviewer-provisioning-tutorial/admin.png)
 
@@ -65,7 +66,7 @@ ms.locfileid: "77050559"
 
     ![TeamViewer 令牌](./media/teamviewer-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 TeamViewer
+## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 TeamViewer
 
 从 Azure AD 应用程序库添加 TeamViewer，开始管理到 TeamViewer 的预配。 如果以前为 SSO 设置了 TeamViewer，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
@@ -114,9 +115,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 TeamViewer 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 TeamViewer 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 TeamViewer API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |属性|类型|
+   |Attribute|类型|
    |---|---|
-   |userName 下方|String|
+   |userName|String|
    |displayName|String|
    |活动|Boolean|
 

@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778016"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148326"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作伙伴 VPN 设备配置概述
 本文提供有关配置用于连接到 Azure VPN 网关的本地 VPN 设备的概述。 示例 Azure 虚拟网络和 VPN 网关设置用于演示如何使用相同参数连接到不同的本地 VPN 设备配置。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>设备要求
 Azure VPN 网关使用标准 IPsec/IKE 协议套件建立站点到站点 (S2S) VPN 隧道。 若要获取 Azure VPN 网关的 IPsec/IKE 参数和加密算法列表，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。 还可以根据[关于加密要求](vpn-gateway-about-compliance-crypto.md)中所述，为特定的连接指定确切的算法与密钥长度。

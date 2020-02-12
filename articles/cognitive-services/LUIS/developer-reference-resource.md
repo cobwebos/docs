@@ -2,17 +2,17 @@
 title: 开发人员资源-语言理解
 description: Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119975"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152680"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>适用于语言理解的 SDK、REST 和 CLI 开发人员资源（LUIS）
 
-Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。 
+Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。
 
 ## <a name="azure-resource-management"></a>Azure 资源管理
 
@@ -36,21 +36,48 @@ Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应�
 
 使用[认知服务示例代码](https://github.com/Azure-Samples/cognitive-services-quickstart-code)了解并使用最常见的任务。
 
+### <a name="rest-specifications"></a>REST 规范
+
+[LUIS rest 规范](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS)以及所有[Azure rest 规范](https://github.com/Azure/azure-rest-api-specs)均可在 GitHub 上公开使用。
+
 ### <a name="rest-apis"></a>REST API
 
 创作和预测终结点 API 都可从 REST Api 获取：
 
 |类型|版本|
 |--|--|
-|“创作”|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[预览 V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|创作|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[预览 V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |预测|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>REST 终结点
+
+LUIS 目前有2种类型的终结点：
+
+* 培训端点上的创作
+* 运行时终结点上的查询预测。
+
+|目的|代码|
+|--|--|
+|培训终结点上的创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 运行时-运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|V3 运行时-针对运行时终结点的版本预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|V3 运行时-运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+下表说明了上表中用大括号 `{}` 表示的参数。
+
+|参数|目的|
+|--|--|
+|`your-resource-name`|Azure 资源名称|
+|`q` 或 `query`|从客户端应用程序（如聊天机器人）发送的话语文本|
+|`version`|10字符版本名称|
+|`slot`| `production` 或 `staging`|
 
 ### <a name="language-based-sdks"></a>基于语言的 Sdk
 
-|Language |参考文档|包|示例|快速入门|
+|语言 |参考文档|程序包|示例|快速入门|
 |--|--|--|--|--|
 |C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK 示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[创建和管理应用](sdk-authoring.md?pivots=programming-language-csharp)<br>[查询预测终结点](sdk-query-prediction-endpoint.md)|
-|开始|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
+|Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[创作和预测](luis-get-started-get-intent-from-rest.md)
 |Node.js|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[预测](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[使用 REST 创作和预测](luis-get-started-get-intent-from-rest.md)|
 |Python|[创作和预测](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[创作](sdk-authoring.md?pivots=programming-language-python)<br>[使用 REST 进行预测](luis-get-started-get-intent-from-rest.md)
@@ -77,7 +104,7 @@ Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应�
 * [调度](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)-管理父和子应用
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) -自动生成 LUIS C#意向和实体的支持/Typescript 类。
 * [机器人 framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases)-一种桌面应用程序，允许机器人开发人员测试和调试使用 BOT Framework SDK 生成的机器人
-
+* [机器人 Framework 编辑器](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md)-一种集成开发工具，可供开发人员和多个专业团队使用 Microsoft bot Framework 构建机器人和会话体验
 
 ## <a name="next-steps"></a>后续步骤
 

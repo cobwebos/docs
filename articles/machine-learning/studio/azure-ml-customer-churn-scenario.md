@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427689"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150912"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>使用 Azure 机器学习 Studio （经典）分析客户流失
 ## <a name="overview"></a>概述
@@ -25,7 +25,7 @@ ms.locfileid: "75427689"
 此试验由 Serge Berger、Microsoft 的主要数据科研人员和 Roger Barga，以前的产品经理（经典） Microsoft Azure 机器学习工作室进行开发和测试。 Azure 文档团队有幸确认了他们的专业知识，感谢他们分享了这份白皮书。
 
 > [!NOTE]
-> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/)中的[零售流失模型模板](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)
+> 用于此实验的数据不会公开提供。 有关如何生成流失分析的机器学习模型示例，请参阅：[Azure AI 库](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)中的[零售流失模型模板](https://gallery.azure.ai/)
 > 
 > 
 
@@ -178,7 +178,7 @@ AUC 用作不同算法（或不同系统）的价值衡量，因为其允许根�
 
 *表1。算法的常规性能（准确性）*
 
-| LR | BT | 亚太地区 | SVM |
+| LR | BT | AP | SVM |
 | --- | --- | --- | --- |
 | 平均模型 |最佳模型 |表现不佳 |平均模型 |
 
@@ -219,7 +219,7 @@ Azure 机器学习 Studio （经典）中的另一个令人兴奋的功能是将
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)（大数据市场营销：更有效地吸引客户并创造价值）
 
-[5] [Azure AI 库](https://gallery.azure.ai/) 中的 [电信流失模型模板](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 
+[5] [Azure AI 库](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) 中的 [电信流失模型模板](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>附录

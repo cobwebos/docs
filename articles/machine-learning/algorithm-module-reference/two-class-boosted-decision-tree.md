@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1c51ff1e653ac3fbbf6042cb6fb631b05ef94041
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 985417200737e00ddbda4194cf7596b11c74ac10
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548350"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153717"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>双类提升决策树模块
 
@@ -26,7 +26,7 @@ ms.locfileid: "76548350"
   
 通常，在正确配置后，提升决策树是最简单的方法，可在各种机器学习任务中获得最佳性能。 但是，它们也是占用大量内存的学习器之一，当前实现将所有内容保存在内存中。 因此，提升决策树模型可能无法处理一些线性学习器可以处理的大型数据集。
 
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
 
 此模块创建一个未训练的分类模型。 由于分类是一种监督的学习方法，因此，若要为模型定型，需要一个带标签的*数据集*，其中包含一个标签列，其中包含所有行的值。
 

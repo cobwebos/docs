@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312183"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152255"
 ---
 # <a name="feature-hashing-module-reference"></a>功能哈希模块引用
 
-本文介绍 Azure 机器学习设计器中包含的模块。
+本文介绍 Azure 机器学习设计器（预览版）中包含的模块。
 
 使用 "特征哈希" 模块将英语文本转换为一组整数特征。 然后，你可以将此哈希功能集传递到机器学习算法，以训练文本分析模型。
 
@@ -33,7 +33,7 @@ ms.locfileid: "76312183"
 |用户文本|情绪|
 |--------------|---------------|
 |我喜欢本书|3|
-|我痛恨本书|第|
+|我痛恨本书|1|
 |本书非常好|3|
 |我喜欢图书|2|
 
@@ -42,9 +42,9 @@ ms.locfileid: "76312183"
 |术语（二元语法）|频率|
 |------------|---------------|
 |本书|3|
-|我喜欢|第|
-|我痛恨|第|
-|我喜欢|第|
+|我喜欢|1|
+|我痛恨|1|
+|我喜欢|1|
 
 可以使用**n 元语法**来控制 n 元语法的大小。 如果选择二元语法，则也会计算获得单元语法。 字典还会包含如下所示的单个术语：
 
@@ -52,8 +52,8 @@ ms.locfileid: "76312183"
 |------------|---------------|
 |书籍|3|
 |I|3|
-|书籍|第|
-|尝试|第|
+|书籍|1|
+|尝试|1|
 
 生成字典后，"特征哈希" 模块将字典字词转换为哈希值。 然后，它计算每个事例中是否使用了某个功能。 对于每行文本数据，模块将输出一组列，每个哈希特征对应一列。
 
@@ -61,7 +61,7 @@ ms.locfileid: "76312183"
 
 |Rating|哈希特征 1|哈希功能2|哈希功能3|
 |-----|-----|-----|-----|
-|4|第|第|0|
+|4|1|1|0|
 |5|0|0|0|
 
 * 如果列中的值为0，则该行不包含哈希功能。
@@ -111,7 +111,7 @@ ms.locfileid: "76312183"
 
 在您创建转换后的数据集之后，您可以将其用作 "定型模型" 模块的输入。
  
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 
 以下最佳实践可帮助你充分利用功能哈希模块：
 
@@ -121,7 +121,7 @@ ms.locfileid: "76312183"
     
 * 请考虑使用这些文本预处理选项，以简化结果和提高准确性：
 
-    * 断开词语
+    * 断字
     * 停止单词删除
     * 大小写规范化
     * 删除标点和特殊字符

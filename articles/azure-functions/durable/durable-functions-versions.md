@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849796"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152884"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本概述
 
@@ -59,6 +59,10 @@ Durable Functions 2.x 使用新的 host json 架构。 1\. x 的主要变化包�
 * 事件网格通知配置的 `"notifications"` （和 `"eventGrid"` 子节）。
 
 有关详细信息，请参阅[Durable Functions host json 参考文档](durable-functions-bindings.md#durable-functions-2-0-host-json)。
+
+#### <a name="default-taskhub-name-changes"></a>默认 taskhub 名称更改
+
+在版本1.x 中，如果未在 host. json 中指定任务中心名称，则默认为 "DurableFunctionsHub"。 在版本2.x 中，默认的任务中心名称现在派生自 function app 的名称。 因此，如果你在升级到2.x 时未指定任务中心名称，你的代码将使用新的任务中心操作，并且所有正在进行的业务流程将不再具有处理它们的应用程序。 若要解决此情况，可以显式将任务中心名称设置为默认值 "DurableFunctionsHub"，也可以按照我们的[零停机部署指南](durable-functions-zero-downtime-deployment.md)来了解如何处理正在进行的业务流程的重大更改。
 
 #### <a name="public-interface-changes-net-only"></a>公共接口更改（仅适用于 .NET）
 

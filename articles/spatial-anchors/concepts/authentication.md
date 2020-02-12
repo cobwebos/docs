@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270586"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152595"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>对 Azure 空间锚点进行身份验证和授权
 
@@ -96,6 +96,13 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 1. Azure 门户中的配置
     1.  在 Azure AD 中将应用程序注册为**本机应用程序**。 注册过程中，需要确定应用程序是否应为多租户应用程序，并提供应用程序允许的重定向 Url。
+        1.  切换到**API 权限**选项卡
+        2.  选择 "**添加权限**"
+            1.  在 "**我的组织使用的 api** " 选项卡下选择**混合现实资源提供程序**
+            2.  选择**委托权限**
+            3.  选中 mixedreality 下的 " **mixedreality** " 复选框 **。**
+            4.  选择 "**添加权限**"
+        3.  选择 "**授予管理员许可**"
     2.  向应用程序或用户授予对资源的访问权限：
         1.  导航到 Azure 门户中的空间锚定资源
         2.  切换到 "**访问控制（IAM）** " 选项卡

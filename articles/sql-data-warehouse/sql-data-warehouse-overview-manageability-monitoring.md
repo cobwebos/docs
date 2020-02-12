@@ -1,6 +1,6 @@
 ---
 title: 可管理性和监视-概述
-description: 监视和可管理性概述 Azure SQL 数据仓库中的资源利用率、日志和查询活动、建议以及数据保护（备份和还原）。
+description: 监视和可管理性概述：使用 SQL 池的资源利用率、日志和查询活动、建议以及数据保护（备份和还原）。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760736"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153258"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的可管理性和监视
+# <a name="manageability-and-monitoring-with-sql-pool"></a>SQL 池的可管理性和监视
 
-查看可用于帮助你管理和监视 SQL 数据仓库的内容。 以下文章重点介绍了可优化数据仓库性能和使用的方法。
+SQL Analytics 允许您通过 SQL 池预配数据仓库。 以下文章可帮助你管理和监视数据仓库。 你还将学习如何优化数据仓库的使用情况和性能。
 
 ## <a name="overview"></a>概述
 
@@ -33,4 +33,4 @@ ms.locfileid: "76760736"
 
 
 ## <a name="next-steps"></a>后续步骤
-有关操作说明的指南，请参阅[监视和优化数据仓库](sql-data-warehouse-manage-monitor.md)。
+有关操作指南，请参阅[监视和优化 SQL 池](sql-data-warehouse-manage-monitor.md)。

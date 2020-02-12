@@ -1,5 +1,5 @@
 ---
-title: 重新导流 Web 服务
+title: 重新训练 web 服务
 titleSuffix: ML Studio (classic) - Azure
 description: 了解如何在 Azure 机器学习 Studio （经典）中更新 web 服务以使用新训练的机器学习模型。
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838667"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152850"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 

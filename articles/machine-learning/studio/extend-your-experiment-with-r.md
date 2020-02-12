@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 13d385c69151891030ea0ee8f87ea8b55197a73f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6c5c09d0214b8ab0d427b15e5637adb5e7cbfdee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837609"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153037"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure 机器学习 Studio （经典）：通过 R 扩展试验 
 您可以使用 "[执行 r 脚本][execute-r-script]" 模块，通过 R 语言扩展 Azure 机器学习 Studio （经典）的功能。

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: c43f3021009c0c8a5a414b18bb9f0ff7d7a4a4bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a5512069ec609783d166b8417a7006ec4ab17fe1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427657"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153428"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中执行 Python 机器学习脚本
 
@@ -47,7 +47,7 @@ Python 模块的输入公开为 Pandas DataFrames。 `azureml_main` 函数最多
 
 ### <a name="output-return-values"></a>输出返回值
 
-`azureml_main`函数必须返回在 Python [序列](https://docs.python.org/2/c-api/sequence.html)（如元组、列表或 NumPy 数组）中打包的单个 Pandas 数据帧。 此序列的第一个元素返回到模块的第一个输出端口。 模块的第二个输出端口用于[可视化](#visualizations)，无需返回值。 此方案如下所示。
+`azureml_main` 函数必须返回在 Python[序列](https://docs.python.org/2/c-api/sequence.html)（如元组、列表或 NumPy 数组）中打包的单个 Pandas 数据帧。 此序列的第一个元素返回到模块的第一个输出端口。 模块的第二个输出端口用于[可视化](#visualizations)，无需返回值。 此方案如下所示。
 
 ![将输入端口映射到参数，并将值返回到输出端口](./media/execute-python-scripts/map-of-python-script-inputs-outputs.png)
 

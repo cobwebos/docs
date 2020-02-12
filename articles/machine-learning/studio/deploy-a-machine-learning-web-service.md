@@ -1,5 +1,5 @@
 ---
-title: 部署一个 Web 服务
+title: 部署 Web 服务
 titleSuffix: ML Studio (classic) - Azure
 description: 如何将训练实验转换为预测实验，为部署做好准备，然后将其部署为 Azure 机器学习 Studio （经典） web 服务。
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37968e968a0f9a1098dd5e90d463879bfa95ce1f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454787"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153581"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>部署 Azure 机器学习 Studio （经典） web 服务
 

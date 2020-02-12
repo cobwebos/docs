@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 59efa2510e196bbd423211ba2e81170440a26f08
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a8938eba0f7af995086ab1e2baba41aee7dc6330
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311914"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153802"
 ---
 # <a name="preprocess-text"></a>预处理文本
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用 "**预处理文本**" 模块清除和简化文本。 它支持以下常见文本处理操作：
 

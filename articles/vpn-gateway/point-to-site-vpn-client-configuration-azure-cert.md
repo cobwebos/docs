@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045775"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148961"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -46,7 +46,6 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 
 ### <a name="zipps"></a>使用 PowerShell 生成文件
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 1. 生成 VPN 客户端配置文件时，“-AuthenticationMethod”的值为“EapTls”。 使用以下命令生成 VPN 客户端配置文件：
 
@@ -112,7 +111,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
    ![证书 (certificate)](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. “选择标识”会显示可供选择的证书列表。 选择适当的证书，单击“继续”。
 
-   ![标识](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. 在“本地 ID”字段中，指定证书的名称（见步骤 6）。 在本示例中，该名称为“ikev2Client.com”。 然后单击“应用”按钮保存所做的更改。
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)

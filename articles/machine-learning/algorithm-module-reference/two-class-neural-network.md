@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 9263f9741a1921550a2ed683dbed441552d6cce0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546327"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153649"
 ---
 # <a name="two-class-neural-network-module"></a>双类神经网络模块
 
@@ -36,7 +36,7 @@ ms.locfileid: "76546327"
 
 若要计算特定输入的网络输出，则会在隐藏层和输出层中的每个节点上计算一个值。 值是通过计算前一层中节点的值的加权和来设置的。 然后，将激活函数应用于该加权的总和。
   
-## <a name="how-to-configure"></a>如何配置
+## <a name="how-to-configure"></a>配置方式
 
 1.  将**双类神经网络**模块添加到管道。 您可以在 "**分类**" 类别中**机器学习**"**初始化**" 下找到此模块。  
   

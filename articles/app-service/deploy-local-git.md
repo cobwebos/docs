@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680947"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152986"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>要 Azure App Service 的本地 Git 部署
 
 本操作方法指南演示了如何将应用部署到本地计算机上的 Git 存储库中的[Azure App Service](overview.md) 。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 按照本操作方法指南中的步骤操作：
 
@@ -50,6 +50,9 @@ ms.locfileid: "75680947"
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> 如果你使用的是 linux 应用服务计划，则需要添加此参数：--运行时 python | 3。7
+
 
 或者，若要创建新的启用 Git 的应用，请使用 `--deployment-local-git` 参数在 Cloud Shell 中运行[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 。 将 \<应用名称 >、\<组名称 > 和 \<计划名称 > 替换为新 Git 应用的名称、其 Azure 资源组和 Azure App Service 计划。
 
@@ -142,10 +145,10 @@ az webapp deployment list-publishing-credentials --name <app-name> --resource-gr
 
 使用 Git 发布到 Azure 中的应用服务应用时，可能会看到以下常见错误消息：
 
-|消息|原因|分辨率
+|消息|原因|解决方法
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|应用未启动并正在运行。|在 Azure 门户中启动应用。 Web 应用停止后，Git 部署不可用。|
-|`Couldn't resolve host 'hostname'`|"Azure" 远程地址信息不正确。|使用 `git remote -v` 命令列出所有远程和关联的 URL。 确认“azure”远程网站的 URL 正确。 如果需要，请删除此远程网站并使用正确的 URL 重新创建它。|
+|`Couldn't resolve host 'hostname'`|"Azure" 远程地址信息不正确。|使用 `git remote -v` 命令列出所有远程网站以及关联的 URL。 确认“azure”远程网站的 URL 正确。 如果需要，请删除此远程网站并使用正确的 URL 重新创建它。|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|在 `git push`期间未指定分支，或者未在 `.gitconfig`中设置 `push.default` 值。|再次运行 `git push`，并指定主分支： `git push azure master`。|
 |`src refspec [branchname] does not match any.`|尝试推送到 "azure" 远程上的 "master" 之外的分支。|再次运行 `git push`，并指定主分支： `git push azure master`。|
 |`RPC failed; result=22, HTTP code = 5xx.`|如果尝试通过 HTTPS 推送大型 Git 存储库，则可能出现此错误。|更改本地计算机上的 git 配置，使 `postBuffer` 更大。 例如：`git config --global http.postBuffer 524288000`。|

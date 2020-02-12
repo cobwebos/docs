@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833965"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152000"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 从不同的部署模型连接虚拟网络
 
@@ -166,7 +166,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 
 ## <a name="creatermgw"></a>第 2 节 - 配置 RM VNet 网关
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 先决条件是假设你已创建了一个 RM VNet。 在此步骤中，你将为 RM VNet 创建一个 VPN 网关。 请务必在检索到经典 VNet 的网关的公共 IP 地址之后再开始执行以下步骤。 
 

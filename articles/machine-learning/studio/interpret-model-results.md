@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454698"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153462"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio （经典）中解释模型结果
 本主题说明如何在 Azure 机器学习 Studio （经典）中可视化和解释预测结果。 训练模型并根据它进行预测（“为模型评分”）后，需要了解并解释预测结果。
@@ -66,7 +66,7 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![鸢尾花双类分类实验的结果](./media/interpret-model-results/2.png)
 
-图 2： 在双类分类中可视化评分模型结果
+图 2。 在双类分类中可视化评分模型结果
 
 **结果解释**
 
@@ -78,13 +78,13 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![评分实验的屏幕截图](./media/interpret-model-results/3.png)
 
-图 3： 为鸢尾花双类分类问题实验评分
+图 3。 为鸢尾花双类分类问题实验评分
 
 现在需要设置 Web 服务的输入和输出。 输入是[评分模型][score-model]的右输入端口，这是 "Iris" 的 "输入" 功能。 输出的选择取决于对预测的类（评分标签）、评分概率还是两者都感兴趣。 在本示例中，假设用户对两者都感兴趣。 若要选择所需的输出列，请使用 "[在数据集中选择列][select-columns]" 模块。 单击 "[选择数据集中的列][select-columns]"，单击 "**启动列选择器**"，然后选择 "**评分标签**" 和 "**评分概率**"。 设置[在数据集中选择列][select-columns]的输出端口并再次运行它后，应准备好通过单击 "**发布 web 服务**" 将评分实验发布为 web 服务。 最终实验类似于图 4。
 
 ![鸢尾花双类分类实验](./media/interpret-model-results/4.png)
 
-图 4： 鸢尾花双类分类问题的最终评分实验
+图 4。 鸢尾花双类分类问题的最终评分实验
 
 运行 Web 服务并输入测试实例的某些特征值后，结果返回两个数字。 第一个数字是评分标签，第二个数字是评分概率。 此花卉预测为类 1，概率为 0.9655。
 
@@ -92,7 +92,7 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![评分测试结果](./media/interpret-model-results/5.png)
 
-图 5： 鸢尾花双类分类的 Web 服务结果
+图 5。 鸢尾花双类分类的 Web 服务结果
 
 ### <a name="multi-class-classification"></a>多类分类
 **示例实验**
@@ -105,13 +105,13 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![字母识别多类分类实验](./media/interpret-model-results/6.png)
 
-图 6： 字母识别多类分类实验问题
+图 6。 字母识别多类分类实验问题
 
 通过单击[评分模型][score-model]模块的输出端口，然后单击 "**可视化**"，从 "[评分模型][score-model]" 模块中直观显示结果，你应看到如图7所示的内容。
 
 ![评分模型结果](./media/interpret-model-results/7.png)
 
-图 7： 可视化多类分类中的评分模型结果
+图 7。 可视化多类分类中的评分模型结果
 
 **结果解释**
 
@@ -123,11 +123,11 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![R 代码示例](./media/interpret-model-results/8.png)
 
-图 8： 用于提取评分标签及标签的关联概率的 R 代码
+图 8。 用于提取评分标签及标签的关联概率的 R 代码
 
 ![实验结果](./media/interpret-model-results/9.png)
 
-图 9： 字母识别多类分类问题的最终评分实验
+图 9. 字母识别多类分类问题的最终评分实验
 
 发布和运行 Web 服务并输入某些输入特征值后，返回的结果类似于图 10。 此手写字母及其提取的 16 个特征预测为“T”，概率为 0.9715。
 
@@ -135,7 +135,7 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![测试结果](./media/interpret-model-results/10.png)
 
-图 10： 多类分类的 Web 服务结果
+图 10. 多类分类的 Web 服务结果
 
 ## <a name="regression"></a>回归
 回归问题不同于分类问题。 在分类问题中，将尝试预测离散类，如鸢尾花所属的类。 但是，正如以下回归问题示例所示，将尝试预测连续变量，如一辆汽车的价格。
@@ -146,7 +146,7 @@ Azure 机器学习 Studio （经典）提供了不同的模块来处理每种类
 
 ![汽车价格回归实验](./media/interpret-model-results/11.png)
 
-图 11： 汽车价格回归问题实验
+图 11. 汽车价格回归问题实验
 
 可视化 "[评分模型][score-model]" 模块，结果如图12所示。
 

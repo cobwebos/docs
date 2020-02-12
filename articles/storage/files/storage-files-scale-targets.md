@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905581"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151983"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -81,14 +81,14 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 内存 | 128 GiB |
 | 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负载 | 常规用途文件服务器|
+| 工作负荷 | 常规用途文件服务器|
 
 | 初始的一次性预配  |  |
 |-|-|
 | 对象数 | 2500 万个对象 |
 | 数据集大小| ~ 4.7 TiB |
 | 平均文件大小 | ~ 200 KiB （最大文件： 100 GiB） |
-| 上传吞吐量 | 每秒 20 个对象 |
+| 上传吞吐量 | 每个同步组每秒20个对象 |
 | 命名空间下载吞吐量* | 每秒 400 个对象 |
 
 *当创建新的服务器终结点时，Azure 文件同步代理不下载任何文件内容。 它将首先同步整个命名空间，然后触发后台调用来将文件整体下载，或者根据服务器终结点上设置的云分层策略进行下载（如果启用了云分层）。
@@ -98,7 +98,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 同步的对象数| 125,000 个对象（~1% 的改动） |
 | 数据集大小| 50 GiB |
 | 平均文件大小 | ~500 KiB |
-| 上传吞吐量 | 每秒 20 个对象 |
+| 上传吞吐量 | 每个同步组每秒20个对象 |
 | 完整下载吞吐量* | 每秒 60 个对象 |
 
 *如果启用了云分层，则性能可能更好，因为只会下载一部分文件数据。 只有当已缓存文件的数据在任何终结点上发生更改时，Azure 文件同步才会下载这些数据。 对于任何已分层的或新创建的文件，代理不会下载文件数据，而仅会将命名空间同步到所有服务器终结点。 代理还支持在用户访问已分层文件时下载这些文件的一部分。 

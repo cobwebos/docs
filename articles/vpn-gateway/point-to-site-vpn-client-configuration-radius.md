@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903037"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148464"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
 
@@ -38,7 +38,6 @@ P2S RADIUS 身份验证的配置工作流如下：
 
 若要执行本文中的操作，请先决定想要使用的身份验证类型：用户名/密码、证书或其他类型的身份验证。 每个部分都提供了适用于 Windows、Mac OS X 和 Linux 的步骤（目前可用的有限步骤）。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>用户名/密码身份验证
 
@@ -96,7 +95,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 请使用以下步骤配置用于证书身份验证的本机 Windows VPN 客户端：
 
 1. 根据 Windows 计算机的体系结构选择 VPN 客户端配置文件。 对于 64 位处理器体系结构，请选择 **VpnClientSetupAmd64** 安装程序包。 对于 32 位处理器体系结构，请选择 **VpnClientSetupX86** 安装程序包。 
-2. 若要安装该包，请双击它。 如果看到了 SmartScreen 弹出窗口，请选择“更多信息” > “仍要运行”。
+2. 若要安装该包，请双击它。 如果看到了 SmartScreen 弹出窗口，请选择“更多信息” **“仍要运行”。**  > 
 3. 在客户端计算机上，浏览到“网络设置”，并选择“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。 
 
 #### <a name="admaccli"></a>Mac (OS X) VPN 客户端设置
@@ -222,7 +221,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 
 #### <a name="certwincli"></a>设置 Windows VPN 客户端
 
-1. 选择一个配置包，将其安装在客户端设备上。 对于 64 位处理器体系结构，请选择 **VpnClientSetupAmd64** 安装程序包。 对于 32 位处理器体系结构，请选择 **VpnClientSetupX86** 安装程序包。 如果看到了 SmartScreen 弹出窗口，请选择“更多信息” > “仍要运行”。 也可将要安装的包保存在其他客户端计算机上。
+1. 选择一个配置包，将其安装在客户端设备上。 对于 64 位处理器体系结构，请选择 **VpnClientSetupAmd64** 安装程序包。 对于 32 位处理器体系结构，请选择 **VpnClientSetupX86** 安装程序包。 如果看到了 SmartScreen 弹出窗口，请选择“更多信息” **“仍要运行”。**  >  也可将要安装的包保存在其他客户端计算机上。
 2. 每个客户端都需要使用客户端证书来进行身份验证。 安装客户端证书。 有关客户端证书的信息，请参阅[用于点到站点连接的客户端证书](vpn-gateway-certificates-point-to-site.md)。 若要安装生成的证书，请参阅[在 Windows 客户端上安装证书](point-to-site-how-to-vpn-client-install-azure-cert.md)。
 3. 在客户端计算机上，浏览到“网络设置”，并选择“VPN”。 VPN 连接显示所连接到的虚拟网络的名称。
 
@@ -259,7 +258,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 7. “选择标识”会显示可供选择的证书列表。 选择适当的证书，然后选择“继续”。
 
    ![“选择标识”列表](./media/point-to-site-vpn-client-configuration-radius/identity.png)
-8. 在“本地 ID”框中，指定证书的名称（见步骤 6）。 在本例中，该名称为 **ikev2Client.com**。 然后，选择 "**应用**" 按钮保存更改。
+8. 在“本地 ID”框中，指定证书的名称（见步骤 6）。 在本例中，该名称为 **ikev2Client.com**。 然后，选择“应用”按钮以保存更改。
 
    ![“本地 ID”框](./media/point-to-site-vpn-client-configuration-radius/applyconnect.png)
 9. 在“网络”对话框中，选择“应用”以保存所有更改。 然后，选择“连接”以启动到 Azure 虚拟网络的 P2S 连接。

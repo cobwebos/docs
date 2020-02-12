@@ -2,13 +2,13 @@
 title: 资源命名限制
 description: 显示用于命名 Azure 资源的规则和限制。
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157800"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153156"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -27,7 +27,7 @@ ms.locfileid: "76157800"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务器 | 资源组 | 3-63 | 小写字母和数字。<br><br>小写字母开头。 |
+> | servers | 资源组 | 3-63 | 小写字母和数字。<br><br>小写字母开头。 |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
@@ -105,7 +105,7 @@ ms.locfileid: "76157800"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | batchAccounts | 地区 | 3-24 | 小写字母和数字。 |
+> | batchAccounts | 区域 | 3-24 | 小写字母和数字。 |
 > | batchAccounts/应用程序 | batch 帐户 | 1-64 | 字母数字、下划线和连字符。 |
 > | batchAccounts/证书 | batch 帐户 | 5-45 | 字母数字、下划线和连字符。 |
 > | batchAccounts/池 | batch 帐户 | 1-64 | 字母数字、下划线和连字符。 |
@@ -166,14 +166,14 @@ ms.locfileid: "76157800"
 > | diskEncryptionSets | 资源组 | 1-80 | 字母数字和下划线。 |
 > | disks | 资源组 | 1-80 | 字母数字和下划线。 |
 > | galleries | 资源组 | 1-80 | 字母数字和句点。<br><br>字母数字开头和结尾。 |
-> | 库/应用程序 | 库 | 1-80 | 字母数字、连字符和句点。<br><br>字母数字开头和结尾。 |
+> | 库/应用程序 | 图库 | 1-80 | 字母数字、连字符和句点。<br><br>字母数字开头和结尾。 |
 > | 库/应用程序/版本 | application | 32-bit integer | 数字和句点。 |
-> | 库/图像 | 库 | 1-80 | 字母数字、连字符和句点。<br><br>字母数字开头和结尾。 |
+> | 库/图像 | 图库 | 1-80 | 字母数字、连字符和句点。<br><br>字母数字开头和结尾。 |
 > | 库/图像/版本 | image | 32-bit integer | 数字和句点。 |
 > | images | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结束。 |
 > | snapshots | 资源组 | 1-80 | 字母数字、下划线、句点和连字符。<br><br>以字母数字开头。 以字母数字或下划线结束。 |
-> | virtualMachines | 资源组 | 1-15 （Windows）<br>1-64 （Linux）<br><br>请参见下面的注释。 | 无法使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
-> | virtualMachineScaleSets | 资源组 | 1-15 （Windows）<br>1-64 （Linux）<br><br>请参见下面的注释。 | 无法使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachines | 资源组 | 1-15 （Windows）<br>1-64 （Linux）<br><br>请参阅下面的说明。 | 无法使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
+> | virtualMachineScaleSets | 资源组 | 1-15 （Windows）<br>1-64 （Linux）<br><br>请参阅下面的说明。 | 无法使用：<br> `\/""[]:|<>+=;,?*@&`<br><br>不能以下划线开头。 不能以句点或连字符结尾。 |
 
 > [!NOTE]
 > Azure 虚拟机具有两个不同的名称：资源名称和主机名。 当你在门户中创建虚拟机时，这两个名称使用相同的值。 上表中的限制适用于主机名。 实际资源名称最多可包含 64 个字符。
@@ -213,18 +213,18 @@ ms.locfileid: "76157800"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | hubs | 资源组 | 1-64 | 构成.<br><br>字母开头。  |
-> | 中心/authorizationPolicies | 中心 | 1-50 | 字母数字、下划线和句点。<br><br>字母数字开头和结尾。 |
-> | 集线器/连接器 | 中心 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/authorizationPolicies | 星 | 1-50 | 字母数字、下划线和句点。<br><br>字母数字开头和结尾。 |
+> | 集线器/连接器 | 星 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
 > | 集线器/连接器/映射 | 连接器 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/交互 | 中心 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/kpi | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/链接 | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/预测 | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
-> | 集线器/配置文件 | 中心 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/relationshipLinks | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/关系 | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/roleAssignments | 中心 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
-> | 中心/视图 | 中心 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/交互 | 星 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/kpi | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/链接 | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/预测 | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 集线器/配置文件 | 星 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/relationshipLinks | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/关系 | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/roleAssignments | 星 | 1-128 | 字母数字和下划线。<br><br>字母开头。 |
+> | 中心/视图 | 星 | 1-512 | 字母数字和下划线。<br><br>字母开头。 |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -295,30 +295,30 @@ ms.locfileid: "76157800"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务器 | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
-> | 服务器/数据库 | 服务器 | 1-63 | 字母数字和连字符。 |
-> | 服务器/firewallRules | 服务器 | 1-128 | 字母数字、连字符和下划线。 |
-> | 服务器/virtualNetworkRules | 服务器 | 1-128 | 字母数字和连字符。 |
+> | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
+> | 服务器/数据库 | servers | 1-63 | 字母数字和连字符。 |
+> | 服务器/firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
+> | 服务器/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务器 | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
-> | 服务器/数据库 | 服务器 | 1-63 | 字母数字和连字符。 |
-> | 服务器/firewallRules | 服务器 | 1-128 | 字母数字、连字符和下划线。 |
-> | 服务器/virtualNetworkRules | 服务器 | 1-128 | 字母数字和连字符。 |
+> | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
+> | 服务器/数据库 | servers | 1-63 | 字母数字和连字符。 |
+> | 服务器/firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
+> | 服务器/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | 服务器 | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
-> | 服务器/数据库 | 服务器 | 1-63 | 字母数字和连字符。 |
-> | 服务器/firewallRules | 服务器 | 1-128 | 字母数字、连字符和下划线。 |
-> | 服务器/virtualNetworkRules | 服务器 | 1-128 | 字母数字和连字符。 |
+> | servers | 全局 | 3-63 | 小写字母、连字符和数字。<br><br>不能以连字符开头或结尾。 |
+> | 服务器/数据库 | servers | 1-63 | 字母数字和连字符。 |
+> | 服务器/firewallRules | servers | 1-128 | 字母数字、连字符和下划线。 |
+> | 服务器/virtualNetworkRules | servers | 1-128 | 字母数字和连字符。 |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -407,8 +407,8 @@ ms.locfileid: "76157800"
 > | --- | --- | --- | --- |
 > | clusters | 全局 | 4-22 | 小写字母和数字。<br><br>字母开头。 |
 > | /clusters/数据库 | cluster | 1-260 | 字母数字、连字符、空格和句点。 |
-> | /clusters/数据库/dataConnections | 数据库 | 1-40 | 字母数字、连字符、空格和句点。 |
-> | /clusters/数据库/eventhubconnections | 数据库 | 1-40 | 字母数字、连字符、空格和句点。 |
+> | /clusters/数据库/dataConnections | database | 1-40 | 字母数字、连字符、空格和句点。 |
+> | /clusters/数据库/eventhubconnections | database | 1-40 | 字母数字、连字符、空格和句点。 |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -528,6 +528,13 @@ ms.locfileid: "76157800"
 > | clusters | 资源组 | 4-63 | 字母数字和连字符。<br><br>字母数字开头和结尾。 |
 > | workspaces | 资源组 | 4-63 | 字母数字和连字符。<br><br>字母数字开头和结尾。 |
 
+## <a name="microsoftportal"></a>Microsoft.Portal
+
+> [!div class="mx-tableFixed"]
+> | 实体 | 范围 | 长度 | 有效的字符 |
+> | --- | --- | --- | --- |
+> | dashboards | 资源组 | 3-160 | 字母数字和连字符。<br><br>若要使用受限字符，请使用要使用的仪表板名称添加名为**隐藏标题**的标记。 显示仪表板时，门户会显示该名称。 |
+
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
@@ -570,7 +577,7 @@ ms.locfileid: "76157800"
 > | deployments | 资源组 | 1-64 | 字母数字、下划线、括号、连字符和句点。 |
 > | resourcegroups | 订阅 | 1-90 | 匹配[正则表达式文档](/rest/api/resources/resourcegroups/createorupdate)的字母数字、下划线、括号、连字符、句点和 unicode 字符。<br><br>不能以句点结束。 |
 > | tagNames | resource | 1-512 | 无法使用：<br>`<>%&\?/` |
-> | tagNames / tagValues | 标记名称 | 1-256 | 全部字符。 |
+> | tagNames / tagValues | 标记名称 | 1-256 | 所有字符。 |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
@@ -608,9 +615,9 @@ ms.locfileid: "76157800"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | managedInstances | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
-> | 服务器 | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
+> | servers | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
 > | 服务器/数据库 | server | 1-128 | 无法使用：<br>`<>*%&:\/?`<br><br>不能以句点或空格结束。 |
-> | 服务器/数据库/syncGroups | 数据库 | 1-150 | 字母数字、连字符和下划线。 |
+> | 服务器/数据库/syncGroups | database | 1-150 | 字母数字、连字符和下划线。 |
 > | 服务器/elasticPools | server | 1-128 | 无法使用：<br>`<>*%&:\/?`<br><br>不能以句点或空格结束。 |
 > | 服务器/failoverGroups | 全局 | 1-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 |
 > | 服务器/firewallRules | server | 1-128 | 无法使用：<br>`<>*%&:;\/?`<br><br>不能以句点结束。 |
@@ -621,14 +628,14 @@ ms.locfileid: "76157800"
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
 > | storageAccounts | 全局 | 3-24 | 小写字母和数字。 |
-> | storageAccounts/blobServices | 存储器帐户 |  | 必须是 `default`。 |
-> | storageAccounts/blobServices/容器 | 存储器帐户 | 3-63 | 小写字母、数字和连字符。<br><br>小写字母或数字开头。 不能使用连续的连字符。 |
-> | storageAccounts/fileServices | 存储器帐户 |  | 必须是 `default`。 |
-> | storageAccounts/fileServices/共享 | 存储器帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
-> | storageAccounts/managementPolicies | 存储器帐户 |  | 必须是 `default`。 |
+> | storageAccounts/blobServices | 存储帐户 |  | 必须是 `default`。 |
+> | storageAccounts/blobServices/容器 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>小写字母或数字开头。 不能使用连续的连字符。 |
+> | storageAccounts/fileServices | 存储帐户 |  | 必须是 `default`。 |
+> | storageAccounts/fileServices/共享 | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
+> | storageAccounts/managementPolicies | 存储帐户 |  | 必须是 `default`。 |
 > | blob | 容器 (container) | 1-1024 | 任何 URL 字符，区分大小写 |
-> | queue | 存储器帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
-> | 表 | 存储器帐户 | 3-63 | 构成.<br><br>字母开头。 |
+> | queue | 存储帐户 | 3-63 | 小写字母、数字和连字符。<br><br>不能以连字符开头或结尾。 不能使用连续的连字符。 |
+> | 表 | 存储帐户 | 3-63 | 构成.<br><br>字母开头。 |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 

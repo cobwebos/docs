@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 7626714812b44119099344b52fe7506989555a57
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c164a487ef94ea1eae4b369105cb785d1e8d0f66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314294"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150295"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 机器学习 Studio （经典） web 服务
 

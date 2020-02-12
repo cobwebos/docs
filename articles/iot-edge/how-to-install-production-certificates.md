@@ -4,16 +4,16 @@ description: 创建测试证书，并了解如何将其安装到 Azure IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/03/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509897"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149892"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>在 IoT Edge 设备上安装生产证书
 
@@ -30,7 +30,7 @@ ms.locfileid: "76509897"
 >[!NOTE]
 >本文中使用的 "根 CA" 一词是指 IoT 解决方案的证书链的最顶层颁发机构公共证书。 不需要使用联合的证书颁发机构的证书根，也不需要使用组织的证书颁发机构的根。 在许多情况下，它实际上是一个中间 CA 公共证书。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * IoT Edge 设备，在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上运行。
 * 具有根证书颁发机构（CA）证书（自签名）或从巴尔的摩、Verisign、DigiCert 或 GlobalSign 等可信商业证书颁发机构购买的证书。
@@ -89,6 +89,12 @@ ms.locfileid: "76509897"
       ```
 
 4. 在 Linux 设备上，确保用户**iotedge**具有保存证书的目录的读取权限。
+
+5. 如果以前在设备上使用了任何其他证书用于 IoT Edge，请在启动或重新启动 IoT Edge 之前，删除以下两个目录中的文件：
+
+   * Windows： `C:\ProgramData\iotedge\hsm\certs` 和 `C:\ProgramData\iotedge\hsm\cert_keys`
+
+   * Linux： `/var/lib/iotedge/hsm/certs` 和 `/var/lib/iotedge/hsm/cert_keys`
 
 ## <a name="next-steps"></a>后续步骤
 

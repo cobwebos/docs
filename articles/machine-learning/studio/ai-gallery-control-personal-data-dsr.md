@@ -1,22 +1,22 @@
 ---
 title: 管理 Azure AI 库数据
 titleSuffix: ML Studio (classic) - Azure
-description: 可以使用界面或 AI 库目录 API 从 Azure AI 库中导出和删除产品内用户数据。 本文介绍如何进行此操作。
+description: 可以使用界面或 AI 库目录 API 从 Azure AI 库中导出和删除产品内用户数据。 本文介绍相关实现方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 248c4d38141f30016837f090ab04c64f82749f2b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8406da7a429fb5b9429845628a00cdb6cc715540
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838492"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148686"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
 

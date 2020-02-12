@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845082"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152918"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 网络观察程序执行数据包检查
 
@@ -29,7 +29,7 @@ ms.locfileid: "76845082"
 
 本方案假设已在虚拟机上运行数据包捕获。 若要了解如何创建数据包捕获，请访问 [Manage packet captures with the portal](network-watcher-packet-capture-manage-portal.md)（使用门户管理数据包捕获）；若要了解如何使用 REST 进行相应操作，请访问 [Managing Packet Captures with REST API](network-watcher-packet-capture-manage-rest.md)（使用 REST API 管理数据包捕获）。
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 
 本方案中的操作：
 
@@ -39,7 +39,7 @@ ms.locfileid: "76845082"
 
 本方案说明如何查看两个终结点之间发生的传输控制协议 (TCP) 对话的初始往返时间 (RTT)。
 
-建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+建立 TCP 连接后，在连接中发送的前三个数据包遵循一种通常称作“三次握手”的模式。 通过检查此握手中发送的前两个数据包、客户端发出的初始请求以及服务器发出的响应，我们可以计算建立此连接时的延迟。 此延迟称为“往返时间”(RTT)。 有关 TCP 协议和三次握手的详细信息，请参阅以下资源。 [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>步骤 1
 
@@ -77,7 +77,7 @@ ms.locfileid: "76845082"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “协议层次结构”
+使用前一方案中的同一个捕获。单击“统计信息” **“协议层次结构”**  > 
 
 ![协议层次结构菜单][2]
 
@@ -93,7 +93,7 @@ ms.locfileid: "76845082"
 
 ### <a name="step-1"></a>步骤 1
 
-使用前一方案中的同一个捕获。单击“统计信息” > “IPv4 统计信息” > “目标和端口”
+使用前一方案中的同一个捕获。单击“统计信息” **“IPv4 统计信息”** “目标和端口” >  > 
 
 ![数据包捕获窗口][4]
 

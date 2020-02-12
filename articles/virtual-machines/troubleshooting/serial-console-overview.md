@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134055"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153853"
 ---
 # <a name="azure-serial-console"></a>Azure 串行控制台
 
@@ -66,37 +66,6 @@ Vm 的串行控制台就像在 Azure 门户的 "**支持 + 故障排除**" 部�
   1. 在 "**支持 + 故障排除**" 部分中，选择**串行控制台**。 此时会打开一个包含串行控制台的新窗格，并启动连接。
 
      ![Linux 虚拟机规模集串行控制台](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>串行控制台 RBAC 角色
-如上所述，串行控制台需要 VM 参与者或更高的 VM 或虚拟机规模集访问权限。 如果你不希望向用户授予 VM 参与者，但仍希望允许用户访问串行控制台，则可以使用以下角色实现此目的：
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>若要创建和使用该角色：
-*   在已知位置（例如 `~/serialconsolerole.json`）保存 JSON。
-*   使用以下 Az CLI 命令创建角色定义： `az role definition create --role-definition serialconsolerole.json -o=json`
-*   如果需要更新角色，请使用以下命令： `az role definition update --role-definition serialconsolerole.json -o=json`
-*   该角色将显示在门户中的访问控制（IAM）中（可能需要几分钟才能传播）
-*   你可以将用户添加到 VM，并将启动诊断存储帐户添加到自定义角色角色
-    *   请注意，必须为用户授予 VM 上的自定义角色*和*启动诊断存储帐户
-
 
 ## <a name="advanced-uses-for-serial-console"></a>串行控制台的高级用法
 除了控制台访问 VM 之外，还可以使用 Azure 串行控制台来执行以下操作：

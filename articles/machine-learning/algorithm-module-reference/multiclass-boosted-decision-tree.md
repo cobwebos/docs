@@ -6,25 +6,25 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 73a832d98d0b17f59a98e2d57cf801818c7ed1da
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0bcca16bd89781428773eda168e6ee3c2f5784ef
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311931"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152170"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多类提升决策树
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块来创建基于提升决策树算法的机器学习模型。
 
 提升决策树是一种系综学习方法，在此方法中，第二个树将纠正第一个树的错误，第三个树更正第一个和第二个树的错误，等等。 预测基于系综的树。
 
-## <a name="how-to-configure"></a>如何配置 
+## <a name="how-to-configure"></a>配置方式 
 
 此模块创建一个未训练的分类模型。 由于分类是监督式学习方法，因此您需要一个带标签的*数据集*，其中包含一个标签列，其中包含所有行的值。
 

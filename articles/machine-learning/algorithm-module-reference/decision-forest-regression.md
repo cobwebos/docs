@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 2c1b61d43fde00c435b83071015246bf990e873e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546667"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152374"
 ---
 # <a name="decision-forest-regression-module"></a>决策林回归模块
 
@@ -24,7 +24,7 @@ ms.locfileid: "76546667"
 
 配置该模型后，必须使用标记的数据集和[训练模型](./train-model.md)模块来训练该模型。 然后，可以使用训练的模型进行预测。 
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 决策树是针对每个实例执行一系列简单测试的非参数模型，它会遍历二元树数据结构，直到达到叶节点（决策）。
 

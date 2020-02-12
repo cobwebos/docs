@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 494141cc580d80ff1d025228406d53f9788b5d97
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 320eba16511036df77dcdbb7ddb628eaa34b2450
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837753"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153547"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中调试模型（经典）
 
