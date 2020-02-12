@@ -1,5 +1,5 @@
 ---
-title: 导入培训数据
+title: 导入训练数据
 titleSuffix: ML Studio (classic) - Azure
 description: 如何将数据从各种数据源导入 Azure 机器学习 Studio （经典）。 了解受支持的数据类型和数据格式。
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 95938b979a90766c7e50f2560cf72266e287bfb5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 322dac1e2a3181dba58b518b142ea0fff2ac5de6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454690"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153003"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>将训练数据从各种数据源导入 Azure 机器学习 Studio （经典）
 
@@ -68,7 +68,7 @@ Studio （经典）识别以下数据类型：
 * Integer
 * Double
 * Boolean
-* 日期/时间
+* DateTime
 * TimeSpan
 
 工作室使用名为“数据表”的内部数据类型在模块间传递数据。 您可以使用 "[转换为数据集][convert-to-dataset]" 模块将数据显式转换为数据表格式。
@@ -132,7 +132,7 @@ Studio （经典）识别以下数据类型：
 
 * 使用 HTTP 的 Web URL
 * 使用 HiveQL 的 Hadoop
-* Azure blob 存储
+* Azure Blob 存储
 * Azure 表
 * Azure SQL 数据库，或 Azure VM 上的 SQL Server
 * 本地 SQL Server 数据库
@@ -156,7 +156,7 @@ Studio （经典）识别以下数据类型：
 ### <a name="supported-online-data-sources"></a>支持的联机数据源
 Azure 机器学习 Studio （经典）**导入数据**模块支持以下数据源：
 
-| 数据源 | Description | 参数 |
+| 数据源 | 说明 | parameters |
 | --- | --- | --- |
 | 通过 HTTP 的 Web URL |从使用 HTTP 的任何 Web URL 中读取逗号分隔值 (CSV)、制表符分隔值 (TSV)、属性关系文件格式 (ARFF) 和支持向量机 (SVM-light) 格式的数据 |<b>URL</b>：指定文件的完整名称，包括站点 URL 和文件名与任何扩展名。 <br/><br/><b>数据格式</b>：指定支持的数据格式之一：CSV、TSV、ARFF 或 SVM-light。 如果数据包含标头行，该数据用于分配列名。 |
 | Hadoop/HDFS |从 Hadoop 中的分布式存储读取数据。 可以使用 HiveQL（类似于 SQL 的查询语言）指定所需的数据。 在将数据添加到 Studio （经典）之前，还可以使用 HiveQL 来聚合数据并执行数据筛选。 |<b>Hive 数据库查询</b>：指定用于生成数据的 Hive 查询。<br/><br/><b>HCatalog 服务器 URI</b>：使用 *&lt;群集名称&gt;.azurehdinsight.net 格式指定群集的名称。*<br/><br/><b>Hadoop 用户帐户名</b>：指定用于预配群集的 Hadoop 用户帐户名。<br/><br/><b>Hadoop 用户帐户密码</b>：指定预配群集时使用的凭据。 有关详细信息，请参阅 [Create Hadoop clusters in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)（在 HDInsight 中创建 Hadoop 群集）。<br/><br/><b>输出数据的位置</b>：指定数据是要存储在 Hadoop 分布式文件系统 (HDFS) 还是 Azure 中。 <br/><ul>如果将输出数据存储在 HDFS 中，请指定 HDFS 服务器的 URI。 （请务必使用不带 HTTPS:// 前缀的 HDInsight 群集名称）。 <br/><br/>如果将输出数据存储在 Azure 中，则必须指定 Azure 存储帐户名、存储访问密钥和存储容器名称。</ul> |

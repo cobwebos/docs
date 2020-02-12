@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548333"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153683"
 ---
 # <a name="two-class-logistic-regression-module"></a>双类逻辑回归模块
 
@@ -30,7 +30,7 @@ ms.locfileid: "76548333"
   
 在此模块中，分类算法针对二叉分或 binary 变量进行了优化。 如果需要分类多个结果，请使用 "[多类逻辑回归](./multiclass-logistic-regression.md)" 模块。
 
-##  <a name="how-to-configure"></a>如何配置  
+##  <a name="how-to-configure"></a>配置方式  
 
 若要训练此模型，你必须提供包含标签或类列的数据集。 由于此模块适用于两类问题，因此标签或类列必须只包含两个值。 
 

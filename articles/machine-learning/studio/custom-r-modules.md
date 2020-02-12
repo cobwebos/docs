@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: fdd91b62355b11ba99aafcda04f86282ce5a4f71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76b2f2ae9774fe5951779912e679fa84350878c5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454740"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153564"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>为 Azure 机器学习 Studio （经典）定义自定义 R 模块
 
@@ -40,7 +40,7 @@ ms.locfileid: "75454740"
 此示例阐述如何构建自定义 R 模块需要的文件，如何将文件打包到一个 zip 文件，然后在机器学习工作区中注册该模块。 可从[下载 CustomAddRows.zip 文件](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409)下载示例 zip 包和示例文件。
 
 ## <a name="the-source-file"></a>源文件
-以 **Custom Add Rows** 模块为例，该模块可修改 **Add Rows** 模块的标准实施，后者用于连接来自两个数据集（数据帧）的行（观察值）。 标准 **Add Rows** 模块会使用 `rbind` 算法将第二个输入数据集的行附加到第一个输入数据集的末尾。 自定义 `CustomAddRows` 函数同样会接受两个数据集，但它还会接受布尔交换参数作为一个额外的输入。 如果交换参数设置为 **FALSE**，函数会返回与标准实现相同的数据集。 但如果交换参数为 **TRUE**，则函数会转而将第一个输入数据集的行附加到第二个数据集的末尾。 CustomAddRows.R 文件包含 **Custom Add Rows** 模块公开的 R `CustomAddRows` 函数的实施，该文件的 R 代码如下。
+以 **Custom Add Rows** 模块为例，该模块可修改 **Add Rows** 模块的标准实施，后者用于连接来自两个数据集（数据帧）的行（观察值）。 标准 **Add Rows** 模块会使用 `rbind` 算法将第二个输入数据集的行附加到第一个输入数据集的末尾。 自定义 `CustomAddRows` 函数同样会接受两个数据集，但它还会接受布尔交换参数作为一个额外的输入。 如果交换参数设置为 **FALSE**，函数会返回与标准实现相同的数据集。 但如果交换参数为 **TRUE**，则函数会转而将第一个输入数据集的行附加到第二个数据集的末尾。 CustomAddRows.R 文件包含 `CustomAddRows`Custom Add Rows**模块公开的 R** 函数的实施，该文件的 R 代码如下。
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -92,7 +92,7 @@ ms.locfileid: "75454740"
 
 但要注意，XML 文件中 **Input** 和 **Arg** 元素的 **ID** 属性的值必须与 CustomAddRows.R 文件中 R 代码的函数参数名完全匹配：（示例中的 *dataset1*、*dataset2* 和 *swap*）。 同样，**Language** 元素的 **entryPoint** 属性值必须与 R 脚本中的函数名完全匹配：（示例中的 *CustomAddRows*）。 
 
-与此相反，**Output** 元素的 **ID** 属性与 R 脚本中的任何变量都不相符。 需要多个输出时，只需从 R 函数返回一个列表，列表中的结果需与 XML 文件中公开的 **Outputs** 元素顺序相同。
+与此相反，**Output** 元素的 **ID** 属性与 R 脚本中的任何变量都不相符。 需要多个输出时，只需从 R 函数返回一个列表，列表中的结果需与 XML 文件中公开的 *Outputs* 元素顺序相同。
 
 ### <a name="package-and-register-the-module"></a>包和注册模块
 将两个文件另存为 CustomAddRows.R 和 CustomAddRows.xml，然后将两个文件一起压缩为 CustomAddRows.zip 文件。
@@ -287,10 +287,10 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     * Boolean
     * 分类
     * String
-    * 标签
-    * 功能
-    * 评分
-    * 所有
+    * Label
+    * Feature
+    * Score
+    * All
   * **default** - 列选择器的有效默认选择包括： 
     
     * 无
@@ -313,7 +313,7 @@ XML 定义文件中的 **Language** 元素用于指定自定义模块的语言�
     * AllLabel
     * AllFeature
     * AllScore
-    * 所有
+    * All
 
 **DropDown**：用户指定的枚举（下拉）列表。 使用 **Item** 元素在 **Properties** 元素中指定下拉列表项。 每个 **Item** 的 **ID** 必须是唯一的有效 R变量 **Item** 的 **name** 值既是显示的文本，也是传送到 R 函数的值。
 

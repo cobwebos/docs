@@ -1,5 +1,5 @@
 ---
-title: 导出并删除数据
+title: 导出和删除你的数据
 titleSuffix: ML Studio (classic) - Azure
 description: Azure 机器学习 Studio （经典）存储的产品内数据可通过 Azure 门户以及通过身份验证的 REST Api 进行导出和删除。 可通过 Azure 隐私门户访问遥测数据。 本文介绍相关实现方法。
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 51aad01d5b03335bd1b57f6e5a9c775556187cca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6b815057a6c79eb55303b8d8a349bc5a4a9bfb43
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427588"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153054"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>从 Azure 机器学习 Studio （经典）导出和删除产品内用户数据
 

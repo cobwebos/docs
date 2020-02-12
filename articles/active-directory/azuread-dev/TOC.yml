@@ -1,0 +1,191 @@
+- name: 针对开发人员的 Azure Active Directory
+  href: index.yml
+- name: 概述
+  href: v1-overview.md
+- name: 示例
+  href: sample-v1-code.md
+- name: 概念
+  items:
+    - name: 为何更新到 v2.0
+      href: azure-ad-endpoint-comparison.md
+    - name: 应用程序类型
+      items:
+        - name: 应用程序的类型
+          href: app-types.md
+        - name: 单页应用程序
+          href: single-page-application.md
+        - name: Web 应用
+          href: web-app.md
+        - name: Web API
+          href: web-api.md
+        - name: 移动应用和桌面应用
+          href: native-app.md
+        - name: 守护程序或服务器应用程序
+          href: service-to-service.md
+    - name: 身份验证
+      items:
+        - name: 身份验证基础知识
+          href: v1-authentication-scenarios.md
+        - name: OAuth 2.0 和 OpenID Connect 协议
+          items:
+            - name: OpenID Connect
+              href: v1-protocols-openid-connect-code.md
+            - name: OAuth 2.0 隐式授予流
+              href: v1-oauth2-implicit-grant-flow.md
+            - name: OAuth 2.0 授权代码授予
+              href: v1-protocols-oauth-code.md
+            - name: OAuth 2.0 代理流
+              href: v1-oauth2-on-behalf-of-flow.md
+            - name: OAuth 2.0 客户端凭据授予
+              href: v1-oauth2-client-creds-grant-flow.md
+        - name: SAML 2.0 协议
+          items:
+            - name: 单一登录
+              href: ../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 注销
+              href: ../develop/single-sign-out-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Azure AD 使用 SAML 协议的方式
+              href: ../develop/active-directory-saml-protocol-reference.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WS 联合身份验证
+          items:
+            - name: 联合元数据
+              href: azure-ad-federation-metadata.md
+        - name: 签名密钥滚动更新
+          href: ../develop/active-directory-signing-key-rollover.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ID 令牌
+          href: ../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 访问令牌
+          href: ../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 证书凭据
+          href: ../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: SAML 令牌
+          href: ../develop/reference-saml-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 应用程序配置
+      items:
+        - name: 应用程序和服务主体
+          href: ../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 将应用添加到 Azure AD 的方式及原因
+          href: ../develop/active-directory-how-applications-are-added.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 单租户和多租户应用
+          href: ../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 权限和许可
+      displayName: Scopes
+      items:
+        - name: 权限和许可的类型
+          href: v1-permissions-consent.md
+        - name: 同意框架
+          href: ../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 应用程序同意体验
+          href: ../develop/application-consent-experience.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 条件性访问
+      href: conditional-access-dev-guide.md
+    - name: 国家云
+      href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: 操作方法指南
+  items:
+    - name: 身份验证
+      items:
+        - name: 配置单一登录
+          displayName: SSO
+          items:
+            - name: 在 Android 上启用 SSO
+              href: howto-v1-enable-sso-android.md
+            - name: 在 iOS 上启用 SSO
+              href: howto-v1-enable-sso-ios.md
+            - name: 调试基于 SAML 的 SSO
+              href: howto-v1-debug-saml-sso-issues.md
+        - name: 配置声明
+          items:
+            - name: 配置角色声明
+              href: ../develop/active-directory-enterprise-app-role-management.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 自定义声明 - 门户
+              href: ../develop/active-directory-saml-claims-customization.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 自定义声明 - PowerShell
+              href: ../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 配置可选声明
+              href: ../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 配置令牌生存期
+              href: ../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: ADAL 错误处理最佳做法
+          href: active-directory-devhowto-adal-error-handling.md
+    - name: 应用程序配置
+      items:
+        - name: 将单租户应用转换为多租户应用
+          href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 创建服务主体
+          items:
+            - name: 使用 Azure PowerShell
+              href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: 使用 Azure 门户
+              href: ../develop/howto-create-service-principal-portal.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 将应用限制为一组用户
+          href: ../develop/howto-restrict-your-app-to-a-set-of-users.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 在应用程序中添加应用角色
+          href: ../develop/howto-add-app-roles-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 品牌准则
+          href: ../develop/howto-add-branding-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 服务条款和隐私声明
+          href: ../develop/howto-add-terms-of-service-privacy-statement.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 使用 Visual Studio
+      items:
+        - name: 使用 Active Directory 连接服务
+          href: ../develop/vs-active-directory-add-connected-service.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: .NET MVC 项目入门
+          href: ../develop/vs-active-directory-dotnet-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 我的 .NET MVC 项目发生了什么情况？
+          href: ../develop/vs-active-directory-dotnet-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WebAPI 项目入门
+          href: ../develop/vs-active-directory-webapi-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 我的 WebAPI 项目发生了什么情况？
+          href: ../develop/vs-active-directory-webapi-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: 身份验证检测期间的错误
+          href: ../develop/vs-active-directory-error.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 将应用推向市场
+      items:
+        - name: 发布到 App 源
+          href: howto-get-appsource-certified.md
+        - name: 发布到 Azure AD 应用库
+          href: howto-app-gallery-listing.md
+        - name: 发布到 Office 365 卖家仪表板
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+    - name: Azure 访问控制服务
+      displayName: ACS
+      items:
+        - name: 从 Azure 访问控制服务迁移
+          href: active-directory-acs-migration.md
+        - name: 重新激活禁用的访问控制服务命名空间
+          href: howto-reactivate-disabled-acs-namespaces.md
+    - name: 使用 Azure AD 图形 API
+      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 针对开发人员的 AD FS
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+- name: 参考
+  items:
+    - name: 身份验证库
+      displayName: ADAL
+      href: active-directory-authentication-libraries.md
+    - name: Azure AD 图形 API
+      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 应用程序清单
+      href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 身份验证和授权错误代码
+      href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 重大更改
+      href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: 资源
+  items:
+    - name: 术语表
+      href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure AD 博客
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: Microsoft 标识平台开发人员博客
+      href: 'https://developer.microsoft.com/identity/blogs/'
+    - name: 尝试使用 Microsoft 登录
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: 获取帮助
+      displayName: 'support, help options'
+      href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Azure 资源的托管标识
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

@@ -1,6 +1,6 @@
 ---
 title: 配置 NewTek TriCaster 编码器以发送单比特率实时流 | Microsoft Docs
-description: 本主题说明了如何配置 Tricaster 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。
+description: 本主题说明如何配置 Tricaster 实时编码器，以便将单比特率流发送到 AMS 频道进行实时编码。
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152493"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>使用 NewTek TriCaster 编码器发送单比特率实时流  
 > [!div class="op_single_selector"]
@@ -34,17 +34,17 @@ ms.locfileid: "77131552"
 
 本教程演示了如何通过 Azure 媒体服务浏览器 (AMSE) 工具管理 Azure 媒体服务 (AMS)。 此工具仅在 Windows 电脑上运行。 如果使用的是 Mac 或 Linux，则可使用 Azure 门户创建[频道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[节目](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
-> [!NOTE]
-> 使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
->
->
+使用 Tricaster 将贡献源发送到已启用实时编码的 AMS 频道时，如果使用了 Tricaster 的某些功能（例如，在源之间快速剪切，或者切入/切出静态图像），直播活动可能会出现视频/音频抖动。 AMS 团队正在努力解决这些问题，在此之前，不建议使用这些功能。
 
-## <a name="prerequisites"></a>先决条件
+> [!NOTE]
+>  请考虑移动到 TLS 1.2，prefferred TLS 版本。
+
+## <a name="prerequisites"></a>必备条件
 
 * [创建 Azure 媒体服务帐户](media-services-portal-create-account.md)
 * 确保流式处理终结点正在运行。 有关详细信息，请参阅[在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)
 * 安装最新版本的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
-* 启动该工具并连接到你的 AMS 帐户。
+* 启动该工具并连接到 AMS 帐户。
 
 ## <a name="tips"></a>提示
 
@@ -112,7 +112,7 @@ ms.locfileid: "77131552"
 6. 导航到保存已配置的 FMLE 配置文件的位置。
 7. 选择该文件，并按“确定”。
 
-    上载该配置文件以后，即可继续执行下一步。
+    上传该配置文件以后，即可继续执行下一步。
 8. 获取频道的输入 URL，以便将其分配给 Tricaster “RTMP 终结点”。
 
     导航回 AMSE 工具，查看频道完成状态。 一旦状态从“正在启动”变为“正在运行”，即可获取输入 URL。
@@ -150,7 +150,7 @@ ms.locfileid: "77131552"
 1. 一旦确认频道可以播放，则可创建节目。 在 AMSE 工具的“实时”选项卡下，右键单击节目区域，并选择“创建新节目”。  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
-2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 你还可以指定存储位置，也可以将其保留为默认值。  
+2. 为节目命名，并根据需要调整“存档时段长度”（默认为 4 小时）。 还可以指定存储位置，也可以将其保留为默认值。  
 3. 选中“立即启动节目”框。
 4. 单击“创建节目”。  
 

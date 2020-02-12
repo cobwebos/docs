@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD Privileged Identity Management (PIM) 管理对 Azure 资源的访问权限
+title: 使用 Azure AD 和 PIM 管理对 Azure 资源的访问
 description: 了解如何使用 Azure Active Directory Privileged Identity Management (PIM) 和基于角色的访问控制 (RBAC) 管理对 Azure 资源的访问权限。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 757068034868744b408c9402b521a0e4c73950f7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344608"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138032"
 ---
 # <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>使用 Azure AD Privileged Identity Management 管理对 Azure 资源的访问权限
 

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427555"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153020"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
@@ -24,7 +24,7 @@ ms.locfileid: "75427555"
 
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
 
-Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 具体包括：
+Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括：
 
 * **试验**-库包含了在 Azure 机器学习 Studio （经典）中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
 * **教程** - 可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
@@ -120,8 +120,8 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 * 实验名称
 * 摘要或说明
-* 标记
-* 图像
+* Tags
+* 映像
 * 可见性设置（“公开”或“未列出”）
 
 还可以从库中删除实验。
@@ -195,7 +195,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 输入标记之后，若要输入其他标记，请按 Tab 键。
 
-## <a name="we-want-to-hear-from-you"></a>我们希望倾听你的意见！
+## <a name="we-want-to-hear-from-you"></a>我们希望倾听意见！
 
 我们希望库能由用户驱动并能为用户所用。 使用右侧的笑脸告诉我们你喜欢或不喜欢库。  
 
