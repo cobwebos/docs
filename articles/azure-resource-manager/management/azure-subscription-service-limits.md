@@ -3,13 +3,13 @@ title: Azure 订阅限制和配额
 description: 提供常见的 Azure 订阅和服务限制、配额和约束的列表。 本文包含有关如何增加限制以及最大值的信息。
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087419"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133692"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -28,8 +28,6 @@ ms.locfileid: "77087419"
 ## <a name="limits-and-azure-resource-manager"></a>限制和 Azure 资源管理器
 
 可以将多个 Azure 资源合并到单个 Azure 资源组中。 当你使用资源组时，在使用 Azure 资源管理器，一次全局的限制会在区域级别进行管理。 有关 Azure 资源组的详细信息，请参阅[azure 资源管理器概述](overview.md)。
-
-在下面的限制列表中，新表反映使用 Azure 资源管理器时限制的任何差异。 例如，存在一个**订阅限制**表和一个**订阅限制-Azure 资源管理器**表。 当某个限制同时适用于这两种方案时，它将仅显示在第一个表中。 除非另有说明，否则限制是跨所有区域的全局限制。
 
 > [!NOTE]
 > Azure 资源组中的资源配额是订阅可访问的每个区域，而不是每个订阅，因为服务管理配额是。 让我们以 vCPU 配额为例。 若要为个 vcpu 请求增加配额，必须确定要在哪个区域中使用多少个 vcpu。 然后，针对所需的数量和区域对 Azure 资源组 vCPU 配额进行特定请求。 如果需要在西欧中使用30个个 vcpu 来运行应用程序，请在西欧中专门请求30个个 vcpu。 你的 vCPU 配额未在任何其他区域增加--仅西欧具有 30-vCPU 配额。
@@ -115,13 +113,7 @@ ms.locfileid: "77087419"
 
 ### <a name="subscription-limits"></a>订阅限制
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>订阅限制-Azure 服务管理（经典部署模型）
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>订阅限制 - Azure 资源管理器
-
-使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。 未在 Azure 资源管理器中更改的限制未列出。 请参阅上表了解这些限制。
+使用 Azure 资源管理器和 Azure 资源组时，以下限制适用。
 
 有关资源管理器 API 读写限制的信息，请参阅[限制资源管理器请求](request-limits-and-throttling.md)。
 
@@ -485,6 +477,12 @@ ms.locfileid: "77087419"
 ### <a name="sql-data-warehouse-limits"></a>SQL 数据仓库限制
 
 有关 SQL 数据仓库的限制，请参阅[Sql 数据仓库资源限制](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+
+### <a name="classic-deployment-model-limits"></a>经典部署模型限制
+
+如果使用经典部署模型而不是 Azure 资源管理器部署模型，则以下限制适用。
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
 
 ## <a name="see-also"></a>另请参阅
 

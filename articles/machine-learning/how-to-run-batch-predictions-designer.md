@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 机器学习设计器运行批量预测
+title: 使用 Azure 机器学习设计器运行批量预测（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解如何使用设计器训练模型并设置批量预测管道。 将管道部署为参数化 Web 服务，该服务可从任何 HTTP 库触发。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311880"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138110"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "76311880"
 
 若要了解如何使用 SDK 设置批处理计分服务，请参阅随附的操作[方法](how-to-run-batch-predictions.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 本操作说明假定你已经有了一个训练管道。 有关设计器的指导介绍，请完成[部分设计器教程](tutorial-designer-automobile-price-train-score.md)。 
 
@@ -41,7 +41,7 @@ ms.locfileid: "76311880"
 
 1. 请在工作区中转到 "**设计器**" 选项卡。
 
-1. 选择定型管道，定型模型要用于进行预测。
+1. 选择训练管道，定型要用于进行预测的模型。
 
 1. **运行**管道。
 

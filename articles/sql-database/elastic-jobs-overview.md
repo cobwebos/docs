@@ -1,6 +1,6 @@
 ---
 title: 弹性数据库作业（预览版）
-description: 配置弹性数据库作业（预览）以在包含一个或多个 Azure SQL 数据库的集合中运行 Transact-SQL (T-SQL) 脚本
+description: 配置弹性数据库作业（预览版）以在一个或多个 Azure SQL 数据库集上运行 Transact-sql （T-sql）脚本
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 633c3ffc8e266087c88116a15c43469727a9a50d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420378"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133650"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
@@ -77,18 +77,18 @@ ms.locfileid: "74420378"
 
 若要确保针对 SQL 弹性池中的数据库运行作业时资源不会超负荷，可以对作业进行配置，限制可以在同一时间对其运行作业的数据库数。
 
-通过在 T-SQL 中设置 `sp_add_jobstep` 存储过程的 `@max_parallelism` 参数，或者通过在 PowerShell 中设置 `Add-AzSqlElasticJobStep -MaxParallelism`，来设置作业运行的并发数据库数。
+通过设置 T-sql 中的 `sp_add_jobstep` 存储过程的 `@max_parallelism` 参数，或者在 PowerShell 中 `Add-AzSqlElasticJobStep -MaxParallelism` 设置运行作业的并发数据库的数目。
 
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 
 ### <a name="idempotent-scripts"></a>幂等脚本
-作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业会自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
+作业的 T-SQL 脚本必须[幂等](https://en.wikipedia.org/wiki/Idempotence)。 “幂等”是指如果脚本成功，则再次运行时，会出现相同的结果。 脚本可能由于暂时性网络问题而失败。 在此情况下，作业将自动重试运行脚本，达到默认的次数才停止。 即使幂等脚本已成功运行两次（或更多次），也仍会返回相同的结果。
 
 一个简单的策略是在创建对象之前测试其是否存在。
 
 
 ```sql
-IF NOT EXIST (some_object)
+IF NOT EXISTS (some_object)
     -- Create the object
     -- If it exists, drop the object before recreating it.
 ```

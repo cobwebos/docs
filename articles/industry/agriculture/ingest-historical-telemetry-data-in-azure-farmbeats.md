@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715516"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131901"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "76715516"
 - 客户端机密
 - EventHub 连接字符串
 
-执行以下步骤。
+请执行下列步骤。
 
 >[!NOTE]
 > 您必须是管理员才能执行以下步骤。
@@ -93,7 +93,7 @@ ms.locfileid: "76715516"
 |   DeviceModelId     |     关联的设备模型的 ID。  |
 |  HardwareId          | 设备的唯一 ID，如 MAC 地址。
 |  ReportingInterval        |   报告间隔（秒）。
-|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
+|  Location            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
 |     说明       |      提供有意义的说明。 |
@@ -113,7 +113,7 @@ ms.locfileid: "76715516"
 |    **器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。 |
 |  SensorModelId     |    关联的传感器型号的 ID。   |
-| 位置          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
+| Location          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
 |    设备 ID  |    传感器连接到的设备的 ID。     |
 | 名称            |   标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
@@ -422,4 +422,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](references-for-azure-farmbeats.md#rest-api)。
+有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](rest-api-in-azure-farmbeats.md)。

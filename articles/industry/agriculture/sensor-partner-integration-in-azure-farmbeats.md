@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530640"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132834"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
@@ -25,7 +25,7 @@ ms.locfileid: "75530640"
 - API 终结点
 - 租户 ID
 - 客户端 ID
-- 客户端机密
+- 客户端密钥
 - EventHub 连接字符串
 
 请参阅此部分以获取上述凭据：[启用设备集成](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
@@ -92,7 +92,7 @@ access_token = token_response.get('accessToken') 
 --- | ---
 Content-Type | 请求格式（Content-type： application/<format>）。 对于 FarmBeats 数据中心 Api，格式为 JSON。 Content-Type: application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 < 访问令牌 >
-Accept | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 JSON。 接受： application/json
+接受 | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 JSON。 接受： application/json
 
 **API 请求**
 
@@ -133,16 +133,16 @@ FarmBeats 数据中心具有以下 Api，可让设备合作伙伴创建和管理
   ProductCode  | 设备产品代码或型号名称。 例如，EnviroMonitor # 6800。 |
   端口  | 端口名称和类型，它是数字或模拟。  |
   名称  | 标识资源的名称。 例如，模型名称或产品名称。 |
-  Description  | 提供模型的有意义的说明。 |
+  说明  | 提供模型的有意义的说明。 |
   属性  | 制造商提供的其他属性。 |
   **设备** |  |
   DeviceModelId  |关联的设备模型的 ID。 |
   HardwareId   |设备的唯一 ID，如 MAC 地址。  |
   ReportingInterval |报告间隔（秒）。 |
-  位置    |设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。 |
+  Location    |设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。 |
   ParentDeviceId | 此设备连接到的父设备的 ID。 例如，如果某个节点连接到网关，则该节点将 parentDeviceID 作为网关。 |
   名称  | 用于标识资源的名称。 设备合作伙伴需要发送与设备伙伴端设备名称一致的名称。 如果设备名称是设备伙伴端上的用户定义的，则应将同一用户定义的名称传播到 FarmBeats。  |
-  Description  | 提供有意义的说明。  |
+  说明  | 提供有意义的说明。  |
   属性  |制造商提供的其他属性。  |
   **SensorModel** |  |
   类型（模拟、数字）  |提及模拟或数字传感器。|
@@ -156,16 +156,16 @@ FarmBeats 数据中心具有以下 Api，可让设备合作伙伴创建和管理
   SensorMeasures > 深度  | 传感器的深度（厘米）。 例如，地面上的湿气10厘米测量。
   SensorMeasures > 说明  | 提供度量的有意义的说明。
   名称  | 标识资源的名称。 例如，模型名称或产品名称。
-  Description  | 提供模型的有意义的说明。
+  说明  | 提供模型的有意义的说明。
   属性  | 制造商提供的其他属性。
   **器**  |  |
   HardwareId  | 制造商设置的传感器的唯一 ID。
   SensorModelId  | 关联的传感器型号的 ID。
-  位置  | 传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
+  Location  | 传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
   端口 > 名称  |设备上传感器连接到的端口的名称和类型。 此名称必须与设备模型中定义的名称相同。
   DeviceId  | 传感器连接到的设备的 ID。
   名称  | 用于标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。
-  Description  | 提供有意义的说明。
+  说明  | 提供有意义的说明。
   属性  | 制造商提供的其他属性。
 
  有关每个对象及其属性的信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
@@ -345,4 +345,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 REST API 的详细信息，请参阅[REST API](references-for-azure-farmbeats.md#rest-api)。
+有关 REST API 的详细信息，请参阅[REST API](rest-api-in-azure-farmbeats.md)。

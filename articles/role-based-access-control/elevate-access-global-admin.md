@@ -1,5 +1,5 @@
 ---
-title: 提升访问权限以管理所有 Azure 订阅和管理组 | Microsoft Docs
+title: 提升访问权限以管理所有 Azure 订阅和管理组
 description: 介绍如何使用 Azure 门户或 REST API 提升全局管理员的访问权限，以管理 Azure Active Directory 中的所有订阅和管理组。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772255"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137466"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 中的全局管理员不一定对目录中的�
 
 Azure AD 和 Azure 资源彼此独立保护。 也就是说，Azure AD 角色分配不授予对 Azure 资源的访问权限，Azure 角色分配页不授予对 Azure AD 的访问权限。 但是，Azure AD 中的[全局管理员](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)可为自己分配对目录中所有 Azure 订阅和管理组的访问权限。 如果无权访问 Azure 订阅资源（如虚拟机或存储帐户），并且想使用全局管理员权限来获取这些资源的访问权限，则请使用此功能。
 
-提升访问权限时，将分配到 Azure 中根范围 (`/`) 的[用户访问管理员](built-in-roles.md#user-access-administrator)角色。 这使你可以查看所有资源并在目录中的任何订阅或管理组中分配访问权限。 可以使用 Azure PowerShell、Azure CLI 或 REST API 删除用户访问管理员角色分配。
+提升访问权限时，将分配到 Azure 中根范围 ([) 的](built-in-roles.md#user-access-administrator)用户访问管理员`/`角色。 这使你可以查看所有资源并在目录中的任何订阅或管理组中分配访问权限。 可以使用 Azure PowerShell、Azure CLI 或 REST API 删除用户访问管理员角色分配。
 
 完成需在根范围执行的更改后，应删除此提升的访问权限。
 

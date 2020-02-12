@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: 查找未附加的磁盘
           href: find-unattached-disks.md
-        - name: 使用文件存储
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: 磁盘常见问题解答
           href: faq-for-disks.md
     - name: 管理网络

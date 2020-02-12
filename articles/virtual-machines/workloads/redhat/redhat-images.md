@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 5ed5d9337dd4e7acdbba25c4cb66d2690793f250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941444"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134392"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映像的概述
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -30,7 +30,7 @@ ms.locfileid: "75941444"
 >[!NOTE]
 > 有关 Azure marketplace 中与 RHEL 映像相关的任何问题，请向 Microsoft 提交支持票证。
 
-## <a name="images-available-in-azure"></a>Azure 中提供的映像
+## <a name="viewing-images-available-in-azure"></a>查看 Azure 中提供的映像
 当你在 Marketplace 中搜索 "Red Hat" 时，或者在 Azure 门户 UI 中创建资源时，你将只看到所有可用的 RHEL 映像的子集。 只要使用 Azure CLI/PowerShell/API 就能获取完整的可用 VM 映像集。
 
 若要在 Azure 中查看完整的可用 Red Hat 映像集，请运行以下命令
@@ -60,8 +60,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 
 >[!NOTE]
 > 一般情况下，通过比较版本来确定最新版本时应遵循 [CompareTo 方法](https://msdn.microsoft.com/library/a5ts8tb6.aspx)的规则。
+此映像版本比较是通过将值作为[版本](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8)对象（而不是字符串）进行比较来完成的。
 
-### <a name="rhel-6-image-types"></a>RHEL 6 映像类型
+## <a name="rhel-6-image-types"></a>RHEL 6 映像类型
 对于 RHEL 1.x 映像，图像类型如下：
 
 |发布者 | 产品 | SKU 值 | 版本 | 详细信息
@@ -71,7 +72,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 |RedHat | RHEL | RHEL-SAP-APPS | RHEL 次要版本和发布日期的串联值（例如6.8.2017053118） | 这是适用于 SAP 应用程序的 RHEL 6.8 映像。 它有权访问 SAP 应用程序存储库以及基本 RHEL 存储库。
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL 次要版本和发布日期的串联值（例如6.7.2017053121） | 这是 SAP HANA 映像的 RHEL 6.7。 它有权访问 SAP HANA 存储库以及基本 RHEL 存储库。
 
-### <a name="rhel-7-image-types"></a>RHEL 7 映像类型
+## <a name="rhel-7-image-types"></a>RHEL 7 映像类型
 对于 RHEL 7、windows 映像，有几种不同的映像类型。 下表显示了我们提供的不同映像集。 可以使用 Az CLI 命令 `az vm image list --publisher redhat --all`查看完整列表。
 
 >[!NOTE]
@@ -90,7 +91,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 |RedHat | RHEL | RHEL-SAP-APPS | RHEL 次要版本和发布日期的串联值（例如7.3.2017053118） | 这些映像已过期，因为 SAP 应用程序和 SAP HANA 存储库已合并到 SAP 存储库中。 这些是 RHEL for SAP 应用程序映像。 它们有权访问 SAP 应用程序存储库以及基本 RHEL 存储库。
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL 次要版本和发布日期的串联值（例如7.3.2018051421） | 这些映像已过期，因为 SAP 应用程序和 SAP HANA 存储库已合并到 SAP 存储库中。 这些是 RHEL for SAP HANA 映像。 它们有权访问 SAP HANA 存储库以及基本 RHEL 存储库。
 
-### <a name="rhel-8-image-types"></a>RHEL 8 映像类型
+## <a name="rhel-8-image-types"></a>RHEL 8 映像类型
 下面是 RHEL 8 映像类型的详细信息。
 
 |发布者 | 产品 | SKU 值 | 版本 | 详细信息
@@ -98,7 +99,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 |RedHat | RHEL | 8 | RHEL 次要版本和发布日期的串联值（例如8.0.20191023） | 这些映像是已连接到标准 Red Hat 存储库的 RHEL 8.0 LVM 分区映像。
 |RedHat | RHEL | 8-gen2 | RHEL 次要版本和发布日期的串联值（例如8.0.20191024） | 这些映像是连接到标准 Red Hat 存储库的 Hyper-v 第 2 RHEL 8.0 LVM 分区映像。 [此处](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)提供了有关 Azure 中第2代 vm 的详细信息。
 
-## <a name="extended-update-support-eus"></a>扩展更新支持（EUS）
+## <a name="rhel-longer-support-add-ons"></a>RHEL 更长的支持外接程序
+
+### <a name="extended-update-support-eus"></a>扩展更新支持（EUS）
 从2019年4月起，默认情况下，RHEL 映像可用于附加到扩展更新支持（EUS）存储库。 有关 RHEL EUS 的更多详细信息，请[参阅 Red Hat 的文档](https://access.redhat.com/articles/rhel-eus)。
 
 可以切换到 EUS 存储库，并且支持。 [此处](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms)提供了有关如何将 VM 切换到 EUS 的说明，以及有关 EUS 支持的更多详细信息。
@@ -106,7 +109,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 >[!NOTE]
 > RHEL 附加上不支持 EUS。 这意味着，如果你要安装的包通常在 RHEL 额外通道中可用，则在 EUS 上将无法执行此操作。 [此处](https://access.redhat.com/support/policy/updates/extras/)详细介绍了 Red Hat 额外产品生命周期。
 
-### <a name="differentiating-between-regular-and-eus-images"></a>区分 regular 和 EUS 映像。
+#### <a name="differentiating-between-regular-and-eus-images"></a>区分 regular 和 EUS 映像。
 如果客户想要使用附加到 EUS 存储库的映像，则应在 SKU 中使用包含 RHEL 次版本号的 RHEL 映像。
 
 例如，你可能会看到以下两个 RHEL 7.4 映像可用：
@@ -126,18 +129,23 @@ RedHat:RHEL:7.6:7.6.2019102813
 >
 > 有关 RHEL EUS 可用性的详细信息，请参阅[此处](https://access.redhat.com/support/policy/updates/errata)。
 
-次版本 |EUS 图像示例              |EUS 状态                                                   |
+次要版本 |EUS 图像示例              |EUS 状态                                                   |
 :-------------|:------------------------------|:------------------------------------------------------------|
 RHEL 7。4      |RedHat： RHEL：7.4：7.4.2019041718 | 默认情况下，将 EUS 2019 年4月版和更高版本发布的映像|
 RHEL 7.5      |RedHat:RHEL:7.5:7.5.2019060305 | 默认情况下，将 EUS 2019 年6月发布的映像 |
 RHEL 7.6      |RedHat:RHEL:7.6:7.6.2019052206 | 默认情况下，发布的映像可能为2019，以后将 EUS  |
-RHEL 8。0      |N/A                            | Red Hat 中没有可用的 EUS                               |
+RHEL 8。0      |不可用                            | Red Hat 中没有可用的 EUS                               |
 
+### <a name="update-services-for-sap-e4s"></a>更新 SAP 的服务（E4S）
+最新的 RHEL for SAP 映像将连接到 SAP 解决方案的更新服务订阅（E4S）。 Red Hat[文档](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)提供了有关 E4S 的更多详细信息。
 
+#### <a name="rhel-images-with-e4s"></a>具有 E4S 的 RHEL 映像
+2019年12月之后创建的以下提供的映像将连接到 E4S 存储库。
 
+* RHEL-SAP （RHEL for SAP）
+* RHEL-SAP-HA （RHEL，适用于具有 HA 和更新服务的 SAP）
 
-
-### <a name="other-available-offers-and-skus"></a>其他可用产品/服务和 SKU
+## <a name="other-available-offers-and-skus"></a>其他可用产品和 Sku
 可用产品/服务和 SKU 的完整列表可能还包括除上表所列映像以外的其他映像，例如 `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`。 这些产品/服务可用于为特定市场解决方案提供支持，或者可以发布用于预览和测试目的。 它们可能随时被更改或删除，而不会发出警告。 除非 Microsoft 或 Red Hat 已将它们公开记录在案，否则请勿使用它们。
 
 ## <a name="publishing-policy"></a>发布策略

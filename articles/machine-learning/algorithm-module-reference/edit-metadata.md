@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312185"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137510"
 ---
 # <a name="edit-metadata-module"></a>编辑元数据模块
 
-本文介绍 Azure 机器学习设计器中包含的模块。
+本文介绍 Azure 机器学习设计器（预览版）中包含的模块。
 
 使用 "编辑数据" 模块来更改与数据集中的列关联的元数据。 数据集的值和数据类型将在使用编辑元数据模块之后更改。
 
@@ -40,9 +40,9 @@ ms.locfileid: "76312185"
   
 ## <a name="configure-edit-metadata"></a>配置编辑元数据
   
-1. 在 Azure 机器学习中，将 "编辑元数据" 模块添加到管道并连接要更新的数据集。 您可以在 "**操作**" 类别中的 "**数据转换**" 下查找数据集。
+1. 在 Azure 机器学习设计器中，将 "编辑元数据" 模块添加到管道并连接要更新的数据集。 您可以在 "**数据转换**" 类别中找到该模块。
   
-1. 选择 "**启动列选择器**"，然后选择要使用的列或列集。 您可以按名称或索引单独选择列，也可以按类型选择一组列。  
+1. 在模块的右窗格中单击 "**编辑列**"，然后选择要使用的一列或一组列。 您可以按名称或索引单独选择列，也可以按类型选择一组列。  
   
 1. 如果需要为选定列分配不同的数据类型，请选择 "**数据类型**" 选项。 可能需要更改某些操作的数据类型。 例如，如果您的源数据集具有作为文本处理的数字，则在使用数学运算之前，您必须将其更改为数值数据类型。
 

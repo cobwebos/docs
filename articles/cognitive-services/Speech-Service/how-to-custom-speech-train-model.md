@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137771"
 ---
 # <a name="train-a-model-for-custom-speech"></a>为自定义语音定型模型
 
-训练语音到文本模型可以提高 Microsoft 的基线模型或计划创建的自定义模型的识别准确性。 使用带有人标记的转录和相关文本对模型进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音到文本模型，以识别单词、短语、缩写词、名称和其他特定于产品的术语。 您提供的域中的数据集越多（与用户将显示的内容以及您希望识别的内容相关的数据），您的模型就越精确，这会使识别改进。 请记住，通过将不相关的数据放入您的培训中，可以降低或损害模型的准确性。
+训练语音到文本模型可以提高 Microsoft 的基线模型的识别准确性。 使用带有人标记的转录和相关文本对模型进行训练。 这些数据集以及以前上传的音频数据用于优化和训练语音到文本模型，以识别单词、短语、缩写词、名称和其他特定于产品的术语。 您提供的域中的数据集越多（与用户将显示的内容以及您希望识别的内容相关的数据），您的模型就越精确，这会使识别改进。 请记住，通过将不相关的数据放入您的培训中，可以降低或损害模型的准确性。
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>使用培训解决准确性问题
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba3e677b98406a5f126649aafc2f89fb9d20c895
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984755"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137615"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -70,7 +70,7 @@ ms.locfileid: "76984755"
 
 你还可以执行以下工作区管理任务：
 
-| 工作区管理任务   | 门户              | 工作室 | Python SDK/R SDK       | CLI        |
+| 工作区管理任务   | 门户              | Studio | Python SDK/R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
 | 创建工作区        | **&check;**     | | **&check;** | **&check;** |
 | 管理工作区访问    | **&check;**   || |  **&check;**    |
@@ -81,6 +81,9 @@ ms.locfileid: "76984755"
 > [!NOTE]
 > 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 >如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。
+
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
 
 ## <a name='create-workspace'></a>创建工作区
 

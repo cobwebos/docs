@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479054"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136341"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -30,7 +30,7 @@ ms.locfileid: "75479054"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
  在[自断言技术配置文件](self-asserted-technical-profile.md)的 "[元数据](self-asserted-technical-profile.md#metadata)" 部分中，引用的[ContentDefinition](contentdefinitions.md)需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
@@ -46,19 +46,19 @@ ms.locfileid: "75479054"
 
 **DisplayControl**元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于显示控件的标识符。 可以[引用](#referencing-display-controls)它。 |
 | UserInterfaceControlType | 是 | 显示控件的类型。 目前支持[VerificationControl](display-control-verification.md) |
 
 **DisplayControl**元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims**用于预填充要从用户收集的声明的值。 |
 | DisplayClaims | 0:1 | **DisplayClaims**用于表示要从用户收集的声明。 |
 | OutputClaims | 0:1 | **OutputClaims**用于表示要为此显示**控件**暂时保存的声明。 |
-| 操作 | 0:1 | **操作**用于列出要为前端发生的用户操作调用的验证技术配置文件。 |
+| Actions | 0:1 | **操作**用于列出要为前端发生的用户操作调用的验证技术配置文件。 |
 
 ### <a name="input-claims"></a>输入声明
 
@@ -90,7 +90,7 @@ ms.locfileid: "75479054"
 
 显示控件的**输出声明**不会发送到下一个业务流程步骤。 它们仅对当前显示控制会话临时保存。 这些临时声明可在同一显示控件的不同操作之间共享。
 
-若要将输出的输出向上冒泡到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的**OutputClaims** 。
+若要将输出声明向上冒泡到下一个业务流程步骤，请使用引用此显示控件的实际自断言技术配置文件的**OutputClaims** 。
 
 ### <a name="display-control-actions"></a>显示控件操作
 

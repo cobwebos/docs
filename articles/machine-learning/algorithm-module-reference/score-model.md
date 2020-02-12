@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314090"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138176"
 ---
 # <a name="score-model-module"></a>“评分模型”模块
 
-本文介绍 Azure 机器学习设计器中的模块。
+本文介绍 Azure 机器学习设计器（预览版）中的模块。
 
 使用此模块可以使用训练的分类或回归模型生成预测。
 
@@ -44,7 +44,7 @@ ms.locfileid: "76314090"
 
 - 对于分类模型，[分数模型](./score-model.md)输出类的预测值，以及预测值的概率。
 - 对于回归模型，[分数模型](./score-model.md)仅生成预测的数值。
-- 对于图像分类模型，评分可能是图像中的对象类，或者是指示是否找到了特定特征的布尔值。
+
 
 ## <a name="publish-scores-as-a-web-service"></a>将评分发布为 web 服务
 

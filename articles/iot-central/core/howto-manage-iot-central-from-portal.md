@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/02/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 90bccf76b4c98c732cb926bb4252654d20478412
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018969"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137643"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>通过 Azure 门户管理 IoT Central
 
@@ -23,19 +23,17 @@ ms.locfileid: "77018969"
 
 ## <a name="create-iot-central-applications"></a>创建 IoT Central 应用程序
 
-若要创建应用程序，请导航到[Azure 门户](https://ms.portal.azure.com)，然后在左侧的主窗格中选择 "**创建资源**"。
+若要创建应用程序，请导航到[Azure 门户](https://ms.portal.azure.com)，然后选择 "**创建资源**"。
 
-![管理门户：导航菜单](media/howto-manage-iot-central-from-portal/image0.png)
-
-在搜索栏中，键入“IoT Central”。
+在 **"搜索" Marketplace**栏中，键入*IoT Central*：
 
 ![管理门户：搜索](media/howto-manage-iot-central-from-portal/image0a1.png)
 
-在搜索结果中选择 " **IoT Central 应用程序**" 行项。
+在搜索结果中选择 " **IoT Central 应用程序**" 磁贴：
 
 ![管理门户：搜索结果](media/howto-manage-iot-central-from-portal/image0b1.png)
 
-现在选择“创建”。
+现在，选择 "**创建**"：
 
 ![管理门户：IoT Central 资源](media/howto-manage-iot-central-from-portal/image0c1.png)
 
@@ -55,19 +53,17 @@ ms.locfileid: "77018969"
 > [!NOTE]
 > 无法查看 Azure 门户中的免费定价计划创建的应用程序，因为它们不与你的订阅相关联。
 
-若要开始，请在左侧窗格中选择 "**所有资源**"。 在搜索框中键入应用程序的名称以在资源列表中将其找到。 然后选择要管理的 IoT Central 应用程序。
+若要开始，请在门户中选择 "**所有资源**"。 选择 "**显示隐藏的类型**"，并开始在 "**按名称筛选**" 中键入应用程序的名称以找到它。 然后选择要管理的 IoT Central 应用程序。
 
-![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image2a.png)
-
-若要导航到应用程序，请选择 "IoT Central 应用程序 URL"。
+若要导航到应用程序，请选择 " **IoT Central 应用程序 URL**：
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image3.png)
 
-若要将应用程序移动到其他资源组，请选择资源组旁边的 "**更改**"。 在“移动资源”页上，选取要将此应用程序迁移到其中的资源组。
+若要将应用程序移动到其他资源组，请选择资源组旁边的 "**更改**"。 在 "**移动资源**" 页上，选择要将此应用程序移动到的资源组：
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image4a.png)
 
-若要将应用程序移动到其他订阅，请选择订阅旁边的 "**更改**" 链接。 在显示的对话框中，选取要将此应用程序迁移到其中的订阅。
+若要将应用程序移动到其他订阅，请选择订阅旁边的 "**更改**"。 在 "**移动资源**" 页上，选择要将此应用程序移动到的订阅：
 
 ![管理门户：资源管理](media/howto-manage-iot-central-from-portal/image5a.png)
 

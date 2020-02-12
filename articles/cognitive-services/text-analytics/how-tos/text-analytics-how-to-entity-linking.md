@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774137"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137974"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -44,46 +44,8 @@ ms.locfileid: "76774137"
 
 有关信息，请参阅[语言支持](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
 
-### <a name="entity-types"></a>实体类型
-
-> [!NOTE]
-> 命名实体识别（NER）版本2仅支持以下实体。 NER v3 为公共预览版，并大大扩展了文本中识别的实体数量和深度。   
-
-| 类型  | 子类型 | 示例 |
-|:-----------   |:------------- |:---------|
-| 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
-| 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
-| 组织  | 暂无\*         | “Microsoft”   |
-| 数量      | Number        | “6”、“six”     |
-| 数量      | 百分比    | “50%”、“fifty percent”|
-| 数量      | 序号       | “2nd”、“second”     |
-| 数量      | 年龄           | “90 day old”、“30 years old”    |
-| 数量      | 货币      | “$10.99”     |
-| 数量      | 维度     | “10 miles”、“40 cm”     |
-| 数量      | 温度   | “32 degrees”    |
-| 日期/时间      | 暂无\*         | “6:30PM February 4, 2012”      |
-| 日期/时间      | Date          | “May 2nd, 2017”、“05/02/2017”   |
-| 日期/时间      | 时间          | “8am”、“8:00”  |
-| 日期/时间      | 日期范围     | “May 2nd to May 5th”    |
-| 日期/时间      | 时间范围     | “6pm to 7pm”     |
-| 日期/时间      | 持续时间      | “1 minute and 45 seconds”   |
-| 日期/时间      | 设置           | “every Tuesday”     |
-| URL           | 暂无\*         | "https：\//www.bing.com"    |
-| 电子邮件         | 暂无\*         | "support@contoso.com" |
-| 美国电话号码  | 暂无\*         | （仅限美国电话号码）"（312） 555-0176" |
-| IP 地址    | 暂无\*         | 10.0.0.100 |
-
-\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有支持的实体类型仅适用于英语、简体中文、法语、德语和西班牙语。
-
-### <a name="request-endpoints"></a>请求终结点
-
-命名实体识别 v2 使用单个终结点进行 NER 和实体链接请求：
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-预览版](#tab/version-3)
 
 ### <a name="entity-types"></a>实体类型
 
@@ -110,31 +72,63 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+### <a name="entity-types"></a>实体类型
+
+> [!NOTE]
+> 命名实体识别（NER）版本2仅支持以下实体。 NER v3 为公共预览版，并大大扩展了文本中识别的实体数量和深度。   
+
+| 类型  | 子类型 | 示例 |
+|:-----------   |:------------- |:---------|
+| Person        | 暂无\*         | “Jeff”、“Bill Gates”     |
+| Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
+| 单位  | 暂无\*         | “Microsoft”   |
+| 数量      | Number        | “6”、“six”     |
+| 数量      | 百分比    | “50%”、“fifty percent”|
+| 数量      | Ordinal       | “2nd”、“second”     |
+| 数量      | Age           | “90 day old”、“30 years old”    |
+| 数量      | 货币      | “$10.99”     |
+| 数量      | Dimension     | “10 miles”、“40 cm”     |
+| 数量      | 温度   | “32 degrees”    |
+| DateTime      | 暂无\*         | “6:30PM February 4, 2012”      |
+| DateTime      | 日期          | “May 2nd, 2017”、“05/02/2017”   |
+| DateTime      | 时间          | “8am”、“8:00”  |
+| DateTime      | DateRange     | “May 2nd to May 5th”    |
+| DateTime      | TimeRange     | “6pm to 7pm”     |
+| DateTime      | 持续时间      | “1 minute and 45 seconds”   |
+| DateTime      | 设置           | “every Tuesday”     |
+| URL           | 暂无\*         | "https：\//www.bing.com"    |
+| 电子邮件         | 暂无\*         | "support@contoso.com" |
+| 美国电话号码  | 暂无\*         | （仅限美国电话号码）"（312） 555-0176" |
+| IP 地址    | 暂无\*         | 10.0.0.100 |
+
+\*一些实体可能会省略 `SubType`，具体视输入和已提取的实体而定。  列出的所有支持的实体类型仅适用于英语、简体中文、法语、德语和西班牙语。
+
+### <a name="request-endpoints"></a>请求终结点
+
+命名实体识别 v2 使用单个终结点进行 NER 和实体链接请求：
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 
-### <a name="preparation"></a>准备工作
+### <a name="preparation"></a>准备
 
 你必须具有以下格式的 JSON 文档： ID、文本、语言。
 
-每个文档必须包含5120个字符，并且每个集合最多可包含1000个项（Id）。 集合在请求正文中提交。
+每个文档的长度必须为5120个字符，每个集合最多可包含1000个项（Id）。 集合在请求正文中提交。
 
 ### <a name="structure-the-request"></a>构造请求
 
 创建 POST 请求。 可以使用以下链接中的[Postman](text-analytics-how-to-call-api.md)或**API 测试控制台**快速构建并发送一个。 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> 可以在 azure 门户中找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-[命名实体识别（NER） v2 引用](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-版本2对实体链接和 NER 请求使用以下终结点： 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[第 3 版](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-预览版](#tab/version-3)
 
 [命名实体识别 v3 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 实体链接
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+[命名实体识别（NER） v2 引用](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+版本2对实体链接和 NER 请求使用以下终结点： 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ NER
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中，然后将其导入到允许对数据进行排序、搜索和操作的应用程序。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>示例 NER v2 响应
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-预览版）](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>V3 响应示例
 
@@ -271,6 +237,43 @@ NER
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>示例 NER v2 响应
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

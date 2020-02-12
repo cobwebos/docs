@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979928"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132257"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
-Azure Active Directory 域服务（Azure AD DS）安全审核允许 Azure 将安全事件流式传输到目标资源。 这些资源包括 Azure 存储、Azure Log Analytics 工作区或 Azure 事件中心。 启用安全审核事件后，Azure AD DS 将所选类别的所有已审核事件发送到目标资源。 可以使用 Azure 事件中心将事件存档到 Azure 存储中，并将事件流式传输到安全信息和事件管理（SIEM）软件（或等效项），也可以执行自己的分析并使用 Azure 门户中的 Azure Log Analytics 工作区。
+Azure Active Directory 域服务（Azure AD DS）安全审核允许 Azure 将安全事件流式传输到目标资源。 这些资源包括 Azure 存储、Azure Log Analytics 工作区或 Azure 事件中心。 启用安全审核事件后，Azure AD DS 将所选类别的所有已审核事件发送到目标资源。
+
+可以使用 Azure 事件中心将事件存档到 Azure 存储中，并将事件流式传输到安全信息和事件管理（SIEM）软件（或等效项），也可以执行自己的分析并使用 Azure 门户中的 Azure Log Analytics 工作区。
 
 > [!IMPORTANT]
 > Azure AD DS 安全审核仅适用于基于 Azure 资源管理器的实例。 有关如何迁移的信息，请参阅将[AZURE AD DS 从经典虚拟网络模型迁移到资源管理器][migrate-azure-adds]。
@@ -31,7 +33,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 以下审核事件类别可用：
 
-| 审核类别名称 | Description |
+| 审核类别名称 | 说明 |
 |:---|:---|
 | 帐户登录|审核尝试对域控制器或本地安全帐户管理器（SAM）上的帐户数据进行身份验证。</p>登录和注销策略设置和事件跟踪尝试访问特定的计算机。 此类别中的设置和事件侧重于所使用的帐户数据库。 此类别包括以下子类别：<ul><li>[审核凭据验证](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[审核 Kerberos 身份验证服务](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[审核 Kerberos 服务票证操作](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[审核其他登录/注销事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | 帐户管理|审核对用户和计算机帐户和组所做的更改。 此类别包括以下子类别：<ul><li>[审核应用程序组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[审核计算机帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[审核通讯组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[审核其他帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[审核安全组管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[审核用户帐户管理](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -41,7 +43,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 |对象访问| 审核尝试访问网络或计算机上的特定对象或对象类型。 此类别包括以下子类别：<ul><li>[已生成审核应用程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[审核证书服务](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[审核详细的文件共享](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[审核文件共享](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[审核文件系统](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[审核筛选平台连接](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[审核筛选平台数据包丢弃](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[审核句柄操作](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[审核内核对象](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[审核其他对象访问事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[审核注册表](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[审核可移动存储](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[审核 SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[审核中心访问策略暂存](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
 |策略更改|审核对本地系统或网络上的重要安全策略的更改。 策略通常由管理员建立，以帮助保护网络资源。 监视更改或更改这些策略的尝试可能是网络安全管理的一个重要方面。 此类别包括以下子类别：<ul><li>[审核审核策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[审核身份验证策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[审核授权策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[审核筛选平台策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[审核 MPSSVC 规则级别策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[审核其他策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
 |权限使用| 审核对一个或多个系统的特定权限的使用。 此类别包括以下子类别：<ul><li>[审核非敏感权限使用](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[审核敏感权限使用](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[审核其他权限使用事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|系统| 审核对不包含在其他类别中并具有潜在安全影响的计算机的系统级更改。 此类别包括以下子类别：<ul><li>[审核 IPsec 驱动程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[审核其他系统事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[审核安全状态更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[审核安全系统扩展](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[审核系统完整性](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+|System| 审核对不包含在其他类别中并具有潜在安全影响的计算机的系统级更改。 此类别包括以下子类别：<ul><li>[审核 IPsec 驱动程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[审核其他系统事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[审核安全状态更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[审核安全系统扩展](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[审核系统完整性](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>每个类别的事件 Id
 
@@ -61,25 +63,25 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 ## <a name="security-audit-destinations"></a>安全审核目标
 
-可以将 Azure 存储、Azure 事件中心或 Azure Log Analytics 工作区的任意组合用作 Azure AD DS 安全审核的目标资源。 可以使用 Azure 存储来存档安全审核事件，但 Azure Log Analytics 工作区用于分析和报告短期内的信息。
+可以使用 Azure 存储、Azure 事件中心或 Azure Log Analytics 工作区作为 Azure AD DS 安全审核的目标资源。 这些目标可以组合在一起。 例如，你可以使用 Azure 存储来存档安全审核事件，但 Azure Log Analytics 工作区用于分析和报告短期内的信息。
 
 下表概述了每种目标资源类型的方案。
 
 > [!IMPORTANT]
-> 在启用 Azure AD 域服务安全审核之前，需要创建目标资源。 您可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建这些资源。
+> 在启用 Azure AD DS 安全审核之前，需要创建目标资源。 您可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 创建这些资源。
 
-| 目标资源 | 方案 |
+| 目标资源 | 场景 |
 |:---|:---|
-|Azure 存储器| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 在启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)。|
-|Azure 事件中心| 当主要需要与其他软件（如数据分析软件或安全信息 & 事件管理（SIEM）软件）共享安全审核事件时，应使用此目标。 启用 Azure AD DS 安全审核事件之前，请[使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。 在启用 Azure AD DS 安全审核事件之前，请[在 Azure 门户中创建 Log Analytics 工作区。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure 存储空间| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 <br /><br />在启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)。|
+|Azure 事件中心| 当主要需要与其他软件（如数据分析软件或安全信息 & 事件管理（SIEM）软件）共享安全审核事件时，应使用此目标。<br /><br />启用 Azure AD DS 安全审核事件之前，请[使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。<br /><br />在启用 Azure AD DS 安全审核事件之前，请[在 Azure 门户中创建 Log Analytics 工作区。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>使用 Azure 门户启用安全审核事件
 
 若要使用 Azure 门户启用 Azure AD DS 安全审核事件，请完成以下步骤。
 
 > [!IMPORTANT]
-> Azure AD DS 安全审核不是追溯的。 不能从过去检索事件，也不能重播过去的事件。 Azure AD DS 只能发送启用后发生的事件。
+> Azure AD DS 安全审核不是追溯的。 不能从过去检索或重播事件。 Azure AD DS 只能发送启用安全审核之后发生的事件。
 
 1. 通过 https://portal.azure.com 登录到 Azure 门户。
 1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 选择你的托管域，例如 *aadds.contoso.com*。
@@ -116,7 +118,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 若要使用 Azure PowerShell 启用 Azure AD DS 安全审核事件，请完成以下步骤。 如果需要，请首先[安装 Azure PowerShell 模块并连接到 Azure 订阅](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> Azure AD DS 安全审核不是追溯的。 不能从过去检索事件，也不能重播过去的事件。 Azure AD DS 只能发送启用后发生的事件。
+> Azure AD DS 安全审核不是追溯的。 不能从过去检索或重播事件。 Azure AD DS 只能发送启用安全审核之后发生的事件。
 
 1. 使用[AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) cmdlet 对你的 Azure 订阅进行身份验证。 出现提示时，输入您的帐户凭据。
 
@@ -173,7 +175,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 日志分析工作区使你可以使用 Azure Monitor 和 Kusto 查询语言来查看和分析安全审核事件。 此查询语言用于只读的 power 分析功能和易于阅读的语法的只读使用。 有关 Kusto 查询语言入门的详细信息，请参阅以下文章：
 
 * [Azure Monitor 文档](https://docs.microsoft.com/azure/azure-monitor/)
-* [Azure Monitor Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)
 * [Azure Monitor 中的日志查询入门](../azure-monitor/log-query/get-started-queries.md)
 * [创建和共享 Log Analytics 数据的仪表板](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>示例查询2
 
-查看2019上午9点之间的所有帐户锁定事件（*4740*）。 和2019年7月1日午夜按日期和时间升序排序：
+查看4740年2月 3 2020 日到上午9点之间的所有帐户锁定事件（）。 2月10日午夜2019，按日期和时间升序排序：
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

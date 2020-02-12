@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644692"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131466"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -118,7 +118,7 @@ Azure 数据工厂可视化工具可实现迭代开发和调试。 您可以通�
 ### <a name="datasets"></a>数据集
 数据集代表数据存储中的数据结构，这些结构直接指向需要在活动中使用的数据，或者将其作为输入或输出引用。 
 
-### <a name="linked-services"></a>链接服务
+### <a name="linked-services"></a>链接的服务
 链接的服务类似于连接字符串，它定义数据工厂连接到外部资源时所需的连接信息。 以这种方式思考：链接服务定义到数据源的连接，数据集表示数据的结构。 例如，Azure 存储链接服务指定连接到 Azure 存储帐户所需的连接字符串。 和 Azure blob 数据集指定 blob 容器以及包含数据的文件夹。
 
 数据工厂中的链接服务有两个用途：
@@ -195,6 +195,9 @@ Azure 数据工厂可视化工具可实现迭代开发和调试。 您可以通�
 
 自承载 IR 是一种 ADF 管道构造，可与复制活动一起使用，以便在本地或基于 VM 的数据源和接收器之间获取或移动数据。 首先使用副本来暂存数据，然后使用数据流进行转换，然后将转换后的数据移回本地存储。
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>数据流计算引擎是否为多个租户提供服务？
+不共享群集。 我们保证在生产运行中运行的每个作业的隔离。 在调试方案中，一个人获取一个群集，并且所有调试都将发送到该用户启动的群集。
+
 ## <a name="wrangling-data-flows"></a>整理数据流
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>整理数据流支持哪些区域？
@@ -247,7 +250,7 @@ Azure 数据工厂（ADF）是一个托管数据集成服务，它允许数据�
 * short
 * double
 * real
-* FLOAT
+* float
 * char
 * nchar
 * varchar

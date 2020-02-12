@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647333"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134531"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中为实验室虚拟机指定资源组
 
@@ -31,7 +31,7 @@ ms.locfileid: "75647333"
 利用此功能，可以使用脚本在 Azure 订阅中为所有实验室 Vm 指定新的或现有的资源组。 目前，Azure 开发测试实验室通过 API 支持此功能。
 
 > [!NOTE]
-> 在开发测试实验室中创建实验室时，所有订阅限制都适用。 将实验室视为订阅中的任何其他资源。 对于资源组，限制为[每个订阅980个资源组](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)。 
+> 在开发测试实验室中创建实验室时，所有订阅限制都适用。 将实验室视为订阅中的任何其他资源。 对于资源组，限制为[每个订阅980个资源组](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)。 
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
 按照以下步骤为在实验室中创建的所有 Vm 指定资源组。 

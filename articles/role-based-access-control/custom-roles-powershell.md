@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 创建或更新 Azure 资源的自定义角色 |Microsoft Docs
+title: 为 Azure 资源创建或更新自定义角色 Azure PowerShell
 description: 了解如何使用 Azure PowerShell 使用 Azure 资源的基于角色的访问控制（RBAC）列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa4ff5f35df0f541d8a7e633df024af81676e58b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 52057477fdba9757be2737c223d569b9e9a3e749
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703098"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137436"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 资源创建或更新自定义角色
 
@@ -29,7 +29,7 @@ ms.locfileid: "74703098"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要创建自定义角色，需要具备以下条件：
 
@@ -182,7 +182,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzRoleDefinition -Role $role
 ```
 
-以下示例显示创建“虚拟机操作员”自定义角色的另一种方式。 首先，创建一个新 `PSRoleDefinition` 对象。 在 `perms` 变量中指定操作，然后将操作设置为 `Actions` 属性。 通过从 [虚拟机参与者](built-in-roles.md#virtual-machine-contributor)内置角色读取 `NotActions` 设置 `NotActions` 属性。 由于[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)没有任何 `NotActions`，因此不需要此行，但它显示了从另一个角色检索信息的方式。
+以下示例显示创建“虚拟机操作员”自定义角色的另一种方式。 首先，创建一个新 `PSRoleDefinition` 对象。 在 `perms` 变量中指定操作，然后将操作设置为 `Actions` 属性。 通过从 `NotActions`虚拟机参与者`NotActions`内置角色读取 [ 设置 ](built-in-roles.md#virtual-machine-contributor) 属性。 由于[虚拟机参与者](built-in-roles.md#virtual-machine-contributor)没有任何 `NotActions`，因此不需要此行，但它显示了从另一个角色检索信息的方式。
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()

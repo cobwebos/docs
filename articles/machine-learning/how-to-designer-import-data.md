@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138155"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>将数据导入 Azure 机器学习设计器
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览）
 
 本文介绍如何在设计器中导入自己的数据，以创建自定义解决方案。 可以通过两种方式将数据导入到设计器中： 
 
@@ -45,7 +45,7 @@ ms.locfileid: "76314022"
 
 ![显示设计器调色板中保存的数据集位置的屏幕截图](media/how-to-designer-import-data/use-datasets-designer.png)
 
-注册到机器学习工作区的任何[文件数据集](how-to-create-register-datasets.md#dataset-types)将出现在模块面板中。 不限于使用设计器中创建的数据集。
+
 
 > [!NOTE]
 > 设计器当前仅支持处理[表格数据集](how-to-create-register-datasets.md#dataset-types)。 如果要使用[文件数据集](how-to-create-register-datasets.md#dataset-types)，请使用适用于 Python 和 R 的 Azure 机器学习 SDK。
@@ -77,10 +77,10 @@ ms.locfileid: "76314022"
 设计器在内部识别以下数据类型：
 
 * String
-* Integer
+* 整数
 * Decimal
 * Boolean
-* Date
+* 日期
 
 设计器使用内部数据类型在模块之间传递数据。 您可以使用 "[转换为数据集](algorithm-module-reference/convert-to-dataset.md)" 模块将数据显式转换为数据表格式。 接受除内部格式以外的其他格式的任何模块在将数据传递到下一个模块之前都将进行无提示转换。
 

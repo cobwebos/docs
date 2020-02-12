@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159873"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138021"
 ---
 # <a name="securing-paas-deployments"></a>保护 PaaS 部署
 
@@ -36,7 +36,7 @@ ms.locfileid: "73159873"
 ## <a name="cloud-security-advantages"></a>云的安全优势
 务必了解你和 Microsoft 之间的[责任划分](shared-responsibility.md)。 在本地，拥有整个堆栈，但迁移到云后，某些责任将转移到 Microsoft。
 
-云中存在[安全优势](shared-responsibility.md#cloud security advantages)。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
+云中存在[安全优势](shared-responsibility.md#cloud-security-advantages)。 在本地环境中，组织的可用资源可能有限，无法尽责在安全措施上投资，使得攻击者能够利用所有层中的漏洞。
 
 组织可以使用提供商的基于云的安全功能和云智能来改善其威胁检测和响应时间。  通过将责任转移到云提供商，组织可以扩大安全覆盖范围，为其他优先业务重新调配安全资源与预算。
 
@@ -100,11 +100,11 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 
 | 威胁 | 安全属性 | 潜在的 Azure 平台迁移 |
 | --- | --- | --- |
-| 欺骗 | Authentication | 需要 HTTPS 连接。 |
+| 欺骗 | 身份验证 | 需要 HTTPS 连接。 |
 | 篡改 | 完整性 | 验证 SSL 证书。 |
-| 否认性 | 不可否认性 | 启用 Azure [监视和诊断](/azure/architecture/best-practices/monitoring)。 |
-| 信息泄露 | 机密性 | 使用[服务证书](/rest/api/appservice/certificates)加密静态敏感数据。 |
-| 拒绝服务 | 可用性 | 监视潜在拒绝服务条件的性能指标。 实现连接筛选器。 |
+| 抵赖 | 不可否认性 | 启用 Azure [监视和诊断](/azure/architecture/best-practices/monitoring)。 |
+| I，表示信息泄露 | 机密性 | 使用[服务证书](/rest/api/appservice/certificates)加密静态敏感数据。 |
+| D，表示拒绝服务 | 可用性 | 监视潜在拒绝服务条件的性能指标。 实现连接筛选器。 |
 | 特权提升 | 授权 | 使用[特权标识管理](/azure/active-directory/privileged-identity-management/subscription-requirements)。 |
 
 ## <a name="develop-on-azure-app-service"></a>在 Azure 应用服务上开发
@@ -119,7 +119,7 @@ Microsoft [安全开发生命周期](https://www.microsoft.com/en-us/sdl)指定�
 详细信息：对于想要实施数据访问安全策略的组织，限制访问是必须要做的事。 可以使用 RBAC 向特定范围的用户、组和应用程序分配权限。 若要了解有关向用户授予应用程序访问权限的详细信息，请参阅[访问管理入门](/azure/role-based-access-control/overview)。
 
 最佳做法：保护密钥。   
-详细信息：Azure Key Vault 可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了增加保障，你可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](/azure/key-vault/key-vault-overview) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
+详细信息：Azure Key Vault 可帮助保护云应用程序和服务使用的加密密钥和机密。 通过 Key Vault，可以使用受硬件安全模块 (HSM) 保护的密钥，来加密密钥和机密（例如身份验证密钥、存储帐户密钥、数据加密密钥、.PFX 文件和密码）。 为了提升可靠性，可以在 HSM 中导入或生成密钥。 请参阅 [Azure Key Vault](/azure/key-vault/key-vault-overview) 了解详细信息。 还可以使用 Key Vault 和自动续订来管理 TLS 证书。
 
 最佳做法：限制传入的源 IP 地址。   
 详细信息：[应用服务环境](/azure/app-service/environment/intro)提供虚拟网络集成功能，可帮助你通过网络安全组限制传入的源 IP 地址。 使用虚拟网络可将 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 若要了解详细信息，请参阅[将应用与 Azure 虚拟网络集成](/azure/app-service/web-sites-integrate-with-vnet)。

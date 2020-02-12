@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548401"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137922"
 ---
 # <a name="train-model-module"></a>“定型模型”模块
 
@@ -39,7 +39,7 @@ ms.locfileid: "76548401"
 
 3. 训练完成后，使用训练的模型和一个[计分模块](./score-model.md)来对新数据进行预测。
 
-## <a name="how-to-use-train-model"></a>如何使用**定型模型**  
+## <a name="how-to-use-train-model"></a>如何使用定型模型 
   
 1.  在 Azure 机器学习中，配置分类模型或回归模型。
     
@@ -49,7 +49,7 @@ ms.locfileid: "76548401"
 
     训练数据集必须包含标签列。 不带标签的任何行都将被忽略。
   
-4.  对于 "**标签列**"，单击 "**启动列选择器**"，然后选择包含模型可用于定型的结果的单个列。
+4.  对于 "**标签列**"，请在模块的右面板中单击 "**编辑列**"，然后选择包含可用于定型的结果的单个列。
   
     - 对于分类问题，标签列必须包含**分类**值或**离散**值。 某些示例可能是 "是/否" 分级、疾病分类代码或名称或收入组。  如果选择非分类列，则该模块将在训练过程中返回错误。
   

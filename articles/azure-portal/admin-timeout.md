@@ -5,24 +5,24 @@ services: azure-portal
 keywords: 设置，超时
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310792"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132079"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>设置目录级别的非活动超时
 
-如果用户忘记保护自己的工作站，则 "非活动超时" 设置有助于防止对资源进行未经授权的访问。 用户处于空闲状态一段时间后，其 Azure 门户会话会自动注销。管理员可以强制执行会话注销之前的最长空闲时间。非活动超时设置适用于目录级别。 有关目录的详细信息，请参阅[Active Directory 域服务概述](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+如果用户忘记保护自己的工作站，则 "非活动超时" 设置有助于防止对资源进行未经授权的访问。 用户处于空闲状态一段时间后，其 Azure 门户会话会自动注销。[全局管理员角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)中的管理员可强制执行在注销会话之前的最长空闲时间。非活动超时设置适用于目录级别。 有关目录的详细信息，请参阅[Active Directory 域服务概述](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 ## <a name="configure-the-inactive-timeout-setting"></a>配置非活动超时设置
 
-如果你是管理员，并且想要为 Azure 门户的所有用户强制使用空闲超时设置，请执行以下步骤：
+如果你是全局管理员，并且想要为 Azure 门户的所有用户强制使用空闲超时设置，请执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 从全局页眉中选择 "**设置**"。

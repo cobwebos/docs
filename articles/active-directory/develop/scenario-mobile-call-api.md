@@ -1,7 +1,7 @@
 ---
 title: 从移动应用调用 web API |Microsoft
 titleSuffix: Microsoft identity platform
-description: 了解如何生成调用 web Api 的移动应用程序（调用 web API）
+description: 了解如何构建调用 web Api 的移动应用程序。 （调用 web API。）
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,37 +16,37 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6b87809e29940b343a395ffb461c0829295fcd8a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f41c9a0e4754c60fd248e540a81e2afa833d655b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702056"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132406"
 ---
-# <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>调用 web Api 的移动应用-调用 web API
+# <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 web API
 
-应用登录用户和收到的令牌后，MSAL 会公开有关用户、用户环境和颁发的令牌的几个信息。 应用可以使用这些值来调用 web API 或向用户显示欢迎消息。
+应用登录用户并接收令牌后，Microsoft 身份验证库（MSAL）会公开有关用户、用户环境和已颁发令牌的信息。 应用可以使用这些值来调用 web API 或向用户显示欢迎消息。
 
-首先，我们将看看 MSAL 结果。 接下来，我们将介绍如何使用 `AuthenticationResult` 或 `result` 中的访问令牌来调用受保护的 web API。
+本文首先介绍 MSAL 结果。 接下来，我们将介绍如何使用 `AuthenticationResult` 或 `result` 中的访问令牌来调用受保护的 web API。
 
 ## <a name="msal-result"></a>MSAL 结果
 MSAL 提供下列值： 
 
-- `AccessToken`：用于调用 HTTP 持有者请求中的受保护 web Api。
-- `IdToken`：包含有关已登录用户的有用信息，如用户的姓名、家庭租户和存储的唯一标识符。
-- `ExpiresOn`：令牌的过期时间。 MSAL 处理应用的自动刷新。
-- `TenantId`：用户登录时所用的租户的标识符。 对于来宾用户（Azure Active Directory B2B），此值将确定用户登录时所用的租户，而不是用户的主租户。  
-- `Scopes`：已向令牌授予的作用域。 授予的作用域可能是你请求的作用域的子集。
+- `AccessToken` 调用 HTTP 持有者请求中的受保护 web Api。
+- `IdToken` 包含有关已登录用户的有用信息。 此信息包括用户的姓名、家庭租户和存储的唯一标识符。
+- `ExpiresOn` 为令牌的过期时间。 MSAL 处理应用的自动刷新。
+- `TenantId` 是用户登录的租户的标识符。 对于 Azure Active Directory （Azure AD） B2B 中的来宾用户，此值标识用户登录的租户。 该值不能识别用户的主租户。  
+- `Scopes` 指示已向令牌授予的作用域。 授予的作用域可能是你请求的作用域的子集。
 
-MSAL 还为 `Account`提供抽象。 一个 `Account` 表示当前用户的登录帐户。
+MSAL 还为 `Account` 值提供抽象。 `Account` 值表示当前用户的登录帐户：
 
-- `HomeAccountIdentifier`：用户的主租户的标识符。
-- `UserName`：用户首选的用户名。 对于 Azure Active Directory B2C 用户，此情况可能为空。
-- `AccountIdentifier`：已登录用户的标识符。 在大多数情况下，此值将与 `HomeAccountIdentifier` 的值相同，除非用户是另一个租户中的来宾。
+- `HomeAccountIdentifier` 标识用户的主租户。
+- `UserName` 是用户的首选用户名。 对于 Azure AD B2C 用户，此值可能为空。
+- `AccountIdentifier` 标识已登录的用户。 在大多数情况下，此值与 `HomeAccountIdentifier` 值相同，除非用户是另一个租户中的来宾。
 
 ## <a name="call-an-api"></a>调用 API
 
-拥有访问令牌后，就可以轻松地调用 web API。 你的应用将使用令牌来构造 HTTP 请求，然后运行请求。
+拥有访问令牌后，就可以调用 web API 了。 您的应用程序将使用该令牌生成 HTTP 请求，然后运行该请求。
 
 ### <a name="android"></a>Android
 
@@ -90,9 +90,7 @@ MSAL 还为 `Account`提供抽象。 一个 `Account` 表示当前用户的登�
 
 ### <a name="msal-for-ios-and-macos"></a>适用于 iOS 和 MacOS 的 MSAL
 
-用于获取令牌的方法将返回 `MSALResult` 的对象。 `MSALResult` 公开可用于调用 web API 的 `accessToken` 属性。 访问受保护的 Web API 之前，应将访问令牌添加到 HTTP 授权标头中。
-
-Objective-C：
+用于获取令牌的方法将返回 `MSALResult` 的对象。 `MSALResult` 公开 `accessToken` 属性。 你可以使用 `accessToken` 来调用 web API。 在调用来访问受保护的 web API 之前，将此属性添加到 HTTP 授权标头。
 
 ```objc
 NSMutableURLRequest *urlRequest = [NSMutableURLRequest new];
@@ -105,8 +103,6 @@ NSURLSessionDataTask *task =
      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {}];
 [task resume];
 ```
-
-Swift：
 
 ```swift
 let urlRequest = NSMutableURLRequest()
@@ -122,16 +118,17 @@ task.resume()
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-## <a name="making-several-api-requests"></a>发出几个 API 请求
+## <a name="make-several-api-requests"></a>发出几个 API 请求
 
-如果需要多次调用同一 API，或者需要调用多个 Api，请在构建应用时考虑以下事项：
+如果需要多次调用同一 API，或者需要调用多个 Api，请在构建应用时考虑以下主题：
 
-- **增量许可**： Microsoft 标识平台允许应用在需要权限的情况下获取用户许可，而不是在开始时提供。 每次你的应用程序都可以调用 API 时，它应只请求需要使用的范围。
-- **条件性访问**：在某些情况下，你可能会在发出几个 API 请求时获得其他条件性访问要求。 如果第一个请求已应用条件性访问策略，并且你的应用程序尝试以无提示方式访问需要条件访问的新 API，则会发生这种情况。 若要处理这种情况，请务必捕获无提示请求中的错误，并准备好进行交互式请求。  若要了解详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
+- **增量许可**： Microsoft 标识平台允许应用在需要权限时（而不是在开始时）获得用户许可。 每次你的应用程序都可以调用 API 时，它应只请求所需的作用域。
 
-## <a name="calling-several-apis-in-xamarin-or-uwp---incremental-consent-and-conditional-access"></a>在 Xamarin 或 UWP 中调用多个 Api-增量许可和条件访问
+- **条件性访问**：发出几个 API 请求时，可能需要满足其他条件访问要求。 如果第一个请求没有条件性访问策略，并且你的应用程序尝试以无提示方式访问需要条件访问的新 API，则要求可能会以这种方式增加。 若要解决此问题，请务必捕获无提示请求中的错误，并准备好进行交互式请求。  有关详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
 
-如果需要为同一个用户调用多个 Api，一旦你为用户获取了令牌，你就可以通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复询问用户提供凭据。
+## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量许可和条件访问来调用多个 Api
+
+如果需要为同一用户调用多个 Api，请在为用户获取令牌后，通过随后调用 `AcquireTokenSilent` 获取令牌来避免重复询问用户凭据：
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -141,9 +138,9 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-需要交互的情况如下：
+以下情况需要交互：
 
-- 用户同意第一个 API，但现在需要同意更多作用域（增量许可）
+- 用户同意第一个 API，但现在需要同意更多范围。 在这种情况下，将使用增量同意。
 - 第一个 API 不需要多重身份验证，而是下一个 API。
 
 ```csharp

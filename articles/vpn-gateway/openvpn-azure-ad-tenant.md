@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 6357fb2d69a9c0ded430c17b77e854f63fc8f5c6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6b0b6707f6851ef674d0045c7cf1686af13ea856
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747374"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137843"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
@@ -46,7 +46,7 @@ ms.locfileid: "75747374"
 
 1. 找到要用于身份验证的目录的目录 ID。 它在 "Active Directory" 页的 "属性" 部分中列出。
 
-    ![Directory ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![目录 ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. 复制目录 ID。
 
@@ -75,16 +75,16 @@ ms.locfileid: "75747374"
     Azure 中国世纪互联
 
     ```
-    https://https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
+    https://login.chinacloudapi.cn/common/oauth2/authorize?client_id=49f817b6-84ae-4cc0-928c-73f27289b3aa&response_type=code&redirect_uri=https://portal.azure.cn&nonce=1234&prompt=admin_consent
     ```
 
 5. 如果出现提示，请选择**全局管理员**帐户。
 
-    ![Directory ID](./media/openvpn-create-azure-ad-tenant/pick.png)
+    ![目录 ID](./media/openvpn-create-azure-ad-tenant/pick.png)
 
 6. 出现提示时，选择 "**接受**"。
 
-    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![接受](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. 在 Azure AD 的 "**企业应用程序**" 中，会看到 " **Azure VPN** " 已列出。
 

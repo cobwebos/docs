@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847610"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136312"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847610"
 
 本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，从 Azure Active Directory （Azure AD）组织中启用用户登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -50,6 +50,19 @@ ms.locfileid: "76847610"
 1. 选择 "**证书 & 密码**"，然后选择 "**新建客户端密钥**"。
 1. 输入机密的**说明**，选择过期时间，然后选择 "**添加**"。 记录机密**值**以便在后面的步骤中使用。
 
+## <a name="configuring-optional-claims"></a>配置可选声明
+
+如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 从 "**管理**" 部分中，选择**应用注册**。
+1. 在列表中选择要为其配置可选声明的应用程序。
+1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
+1. 选择 "**添加可选声明**"。
+1. 选择要配置的令牌类型。
+1. 选择要添加的可选声明。
+1. 单击 **“添加”** 。
+
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 需将创建的应用程序密钥存储在 Azure AD B2C 租户中。
@@ -61,8 +74,8 @@ ms.locfileid: "76847610"
 1. 对于“选项”，请选择 `Manual`。
 1. 输入策略密钥的**名称**。 例如，`ContosoAppSecret` 。  创建前缀后，前缀 `B2C_1A_` 会自动添加到密钥的名称中，因此，在下一部分的 XML 中，其引用为*B2C_1A_ContosoAppSecret*。
 1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
-1. 在“密钥用法”处选择 `Signature`。
-1. 选择“创建”。
+1. 在“密钥用法”处选择 **。** `Signature`
+1. 选择 **“创建”** 。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -73,23 +86,20 @@ ms.locfileid: "76847610"
 1. 打开 *TrustFrameworkExtensions.xml* 文件。
 2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
 3. 如下所示添加新的 **ClaimsProvider**：
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ ms.locfileid: "76847610"
 
 若要从 Azure AD 终结点获取令牌，需要定义 Azure AD B2C 与 Azure AD 通信时应使用的协议。 此操作在 ClaimsProvider 的 TechnicalProfile 元素内完成。
 
-1. 更新 TechnicalProfile 元素的 ID。 此 ID 用于从策略的其他部分引用此技术配置文件。
+1. 更新 TechnicalProfile 元素的 ID。 此 ID 用于从策略的其他部分（例如 `OIDC-Contoso`）引用此技术配置文件。
 1. 更新 DisplayName 的值。 此值会显示在登录屏幕中的登录按钮上。
 1. 更新 Description 的值。
-1. Azure AD 使用 OpenID Connect 协议，因此请确保 Protocol 的值是 `OpenIdConnect`。
-1. 将 METADATA 的值设置为 `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`，其中 `your-AD-tenant-name` 为你的 Azure AD 租户名称。 例如： `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
-1. 打开浏览器并中转到刚更新的**元数据**URL，查找**颁发者**对象，然后将该值复制并粘贴到 XML 文件中的**ProviderName**值中。
+1. Azure AD 使用 OpenID Connect 协议，因此请确保 Protocol 的值是`OpenIdConnect`。
+1. 将 METADATA 的值设置为 **，其中**  为你的 Azure AD 租户名称`https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration``tenant-name`。 例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. 将 **client_id** 设置为应用程序注册中的应用程序 ID。
 1. 在**CryptographicKeys**下，将**StorageReferenceId**的值更新为之前创建的策略密钥的名称。 例如，`B2C_1A_ContosoAppSecret` 。
 
@@ -139,15 +148,15 @@ ms.locfileid: "76847610"
 现已配置策略，因此 Azure AD B2C 知道如何与 Azure AD 目录通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-1. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
-1. 单击“上载” 。
+1. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
+1. 单击 **“上载”** 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 
 此时，标识提供者已设置，但在任何注册/登录页面中都不提供该服务。 若要使其可用，请创建现有模板用户旅程的副本，然后对其进行修改，使其也具有 Azure AD 标识提供者：
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-1. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+1. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 1. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 1. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 1. 重命名用户旅程的 ID。 例如，`SignUpSignInContoso` 。
@@ -167,14 +176,14 @@ ms.locfileid: "76847610"
 
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Azure AD 通信以接收令牌。 可通过链接 Azure AD 声明提供程序的技术配置文件来将按钮链接到操作：
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 1. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`ContosoProfile` 。
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`OIDC-Contoso` 。
 
 1. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 

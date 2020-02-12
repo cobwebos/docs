@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530674"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133745"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学
 
@@ -30,7 +30,7 @@ ms.locfileid: "75530674"
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
-为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators)。
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。
 
 | 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |
@@ -46,7 +46,7 @@ ms.locfileid: "75530674"
 | 实验室设置 | 值/说明 |
 | ------------ | ------------------ |
 |虚拟机大小| 小型 GPU （计算）。 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习。 |
-|虚拟机映像| 数据科学虚拟机 - Windows 2016|
+|虚拟机映像| Data Science Virtual Machine-Windows 2016|
 
 ## <a name="template-machine"></a>模板计算机
 
@@ -54,7 +54,7 @@ ms.locfileid: "75530674"
 
 用于设置类的其余任务是提供本地笔记本。  有关如何使用 Azure 机器学习示例的说明，请参阅[如何使用 Jupyter 笔记本配置环境](../../machine-learning/how-to-configure-environment.md#jupyter)。  你还可以在模板计算机上提供自己的笔记本。  发布模板时，笔记本将复制到所有学生计算机。
 
-## <a name="cost-estimate"></a>成本估计
+## <a name="cost-estimate"></a>成本估算
 
 我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  我们选择的虚拟机大小为小 gpu （计算），即139实验室单位。
 
@@ -64,7 +64,7 @@ ms.locfileid: "75530674"
 
 有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结束语
+## <a name="conclusion"></a>结论
 
 本文逐步介绍了为 Jupyter 笔记本类创建实验室的步骤。 对于其他机器学习类，您可以使用类似的设置。
 

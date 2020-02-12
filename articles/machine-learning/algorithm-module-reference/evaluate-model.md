@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546684"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137549"
 ---
 # <a name="evaluate-model-module"></a>评估模型模块
 
@@ -76,14 +76,14 @@ ms.locfileid: "76546684"
 
 因为这是聚类分析模型，所以，计算结果不同于比较两个回归模型中的分数或比较两个分类模型。 不过，整体显示是相同的。 
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 本部分介绍为与**评估模型**一起使用而支持的特定模型类型返回的度量值：
 
-+ [分类模型](#bkmk_classification)
-+ [回归模型](#bkmk_regression)
++ [分类模型](#metrics-for-classification-models)
++ [回归模型](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>分类模型的指标
+### <a name="metrics-for-classification-models"></a>分类模型的指标
 
 评估分类模型时，将报告以下度量值。 如果比较模型，则按您选择进行评估的指标对它们进行排序。  
   
@@ -101,7 +101,7 @@ ms.locfileid: "76546684"
   
 - **训练日志丢失**是一条分数，表示分类器通过随机预测的优势。 日志丢失通过将其输出的概率与标签中的已知值（真假）进行比较来度量模型的不确定性。 您希望最大程度地减少整个模型的日志丢失情况。
 
-##  <a name="bkmk_regression"></a>回归模型的指标
+### <a name="metrics-for-regression-models"></a>回归模型的指标
  
 为回归模型返回的度量值旨在估算错误量。  如果观测值和预测值之间的差异很小，则将模型视为适合数据。 不过，查看残差的模式（任何一个预测点和其对应的实际值之间的差异）可以告诉你有关模型中的潜在偏差的很多信息。  
   
@@ -115,7 +115,7 @@ ms.locfileid: "76546684"
   
 - **相对平方误差（RSE）** 同样，通过将预测值的总平方误差除以实际值的总平方误差来规范化。  
   
-- 表示**零个错误（MZOE）** 指示预测是否正确。  换句话说： `x!=y`时 `ZeroOneLoss(x,y) = 1`;否则 `0`。
+
   
 - **确定系数**（通常称为 R<sup>2</sup>）表示模型的预测能力，其值介于0和1之间。 如果为零，则表示模型是随机的（说明 nothing）;1表示有合适的大小。 不过，应小心解释 R<sup>2</sup>值，因为低值可能是完全正常的，很大的值可能是可疑的。
   

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474449"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132280"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见用例和方案
 
@@ -65,7 +65,7 @@ Contoso 想要将此应用程序迁移到 Azure。 应用程序应继续按原�
 
 与前面的示例方案类似，我们假设 Contoso 有一个本地业务线（LOB）应用程序，该应用程序在将近十年前开发。 此应用程序是目录感知，旨在使用 LDAP 从 AD DS 读取有关用户的信息/属性。 应用程序不会修改属性或以其他方式写入目录。
 
-Contoso 想要将此应用程序迁移到 Azure，并停用当前托管该应用程序的本地过时硬件。 无法重写应用程序以使用新式目录 Api，例如基于 REST 的 Azure AD 图形 API。 无需修改代码或重写应用程序，即可将应用程序迁移到云中运行，而无需使用提升的选项。
+Contoso 想要将此应用程序迁移到 Azure，并停用当前托管该应用程序的本地过时硬件。 无法重写应用程序以使用新式目录 Api，例如基于 REST 的 Microsoft Graph API。 无需修改代码或重写应用程序，即可将应用程序迁移到云中运行，而无需使用提升的选项。
 
 为帮助实现此方案，Azure AD DS 允许应用程序对托管域执行 LDAP 读取，以获取所需的属性信息。 无需重写应用程序，因此，通过直接迁移到 Azure，用户可以继续使用该应用，而不会意识到它运行的位置发生了更改。
 

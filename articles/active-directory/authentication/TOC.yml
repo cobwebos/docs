@@ -9,8 +9,8 @@
   items:
     - name: 启用自助式密码重置
       href: tutorial-enable-sspr.md
-    - name: 为应用程序启用 MFA
-      href: tutorial-mfa-applications.md
+    - name: 启用 Azure 多重身份验证
+      href: tutorial-enable-azure-mfa.md
     - name: 启用 SSPR 本地集成
       href: tutorial-enable-writeback.md
     - name: 集成 Azure 标识保护

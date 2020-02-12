@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451230"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134055"
 ---
 # <a name="azure-serial-console"></a>Azure 串行控制台
 
-Azure 门户中的串行控制台提供对运行 Linux 或 Windows 的虚拟机（Vm）和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接可连接到 VM 或虚拟机规模及实例的 ttyS0 或 COM1 串行端口，使用户可以进行访问，而不管它的网络或操作系统状态如何。 串行控制台只能通过使用 Azure 门户进行访问，而只允许访问角色为 "参与者" 或 "虚拟机" 或 "虚拟机规模集" 的用户使用。
+Azure 门户中的串行控制台提供对运行 Linux 或 Windows 的虚拟机（Vm）和虚拟机规模集实例的基于文本的控制台的访问。 此串行连接连接到 VM 或虚拟机规模集实例的 ttyS0 或 COM1 串行端口，提供独立于网络或操作系统状态的访问权限。 串行控制台只能通过使用 Azure 门户进行访问，而只允许访问角色为 "参与者" 或 "虚拟机" 或 "虚拟机规模集" 的用户使用。
 
 串行控制台的工作方式与 Vm 和虚拟机规模集实例的工作方式相同。 在此文档中，除非另有说明，否则，所有对 Vm 的提及将隐式包含虚拟机规模集实例。
 
@@ -38,7 +38,7 @@ Azure 门户中的串行控制台提供对运行 Linux 或 Windows 的虚拟机�
 - 访问串行控制台的 Azure 帐户必须同时具有 VM 和[启动诊断](boot-diagnostics.md)存储帐户的 "[虚拟机参与者" 角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
 > [!NOTE]
-> - 不支持经典部署。 VM 或虚拟机规模集实例必须使用 Azure 资源管理器部署模型。
+> 不支持经典部署。 VM 或虚拟机规模集实例必须使用 Azure 资源管理器部署模型。
 
 ## <a name="get-started-with-the-serial-console"></a>串行控制台入门
 Vm 和虚拟机规模集的串行控制台只能通过 Azure 门户访问：
@@ -66,6 +66,37 @@ Vm 的串行控制台就像在 Azure 门户的 "**支持 + 故障排除**" 部�
   1. 在 "**支持 + 故障排除**" 部分中，选择**串行控制台**。 此时会打开一个包含串行控制台的新窗格，并启动连接。
 
      ![Linux 虚拟机规模集串行控制台](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+## <a name="serial-console-rbac-role"></a>串行控制台 RBAC 角色
+如上所述，串行控制台需要 VM 参与者或更高的 VM 或虚拟机规模集访问权限。 如果你不希望向用户授予 VM 参与者，但仍希望允许用户访问串行控制台，则可以使用以下角色实现此目的：
+
+```
+{
+  "Name": "Serial Console Role",
+  "IsCustom": true,
+  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
+  "Actions": [
+      "Microsoft.Compute/virtualMachines/*/write",
+      "Microsoft.Compute/virtualMachines/*/read",
+      "Microsoft.Storage/storageAccounts/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<subscriptionId>"
+  ]
+}
+```
+
+### <a name="to-create-and-use-the-role"></a>若要创建和使用该角色：
+*   在已知位置（例如 `~/serialconsolerole.json`）保存 JSON。
+*   使用以下 Az CLI 命令创建角色定义： `az role definition create --role-definition serialconsolerole.json -o=json`
+*   如果需要更新角色，请使用以下命令： `az role definition update --role-definition serialconsolerole.json -o=json`
+*   该角色将显示在门户中的访问控制（IAM）中（可能需要几分钟才能传播）
+*   你可以将用户添加到 VM，并将启动诊断存储帐户添加到自定义角色角色
+    *   请注意，必须为用户授予 VM 上的自定义角色*和*启动诊断存储帐户
+
 
 ## <a name="advanced-uses-for-serial-console"></a>串行控制台的高级用法
 除了控制台访问 VM 之外，还可以使用 Azure 串行控制台来执行以下操作：

@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 创建或更新 Azure 资源的自定义角色-Azure |Microsoft Docs
+title: 为 Azure 资源创建或更新自定义角色，REST API
 description: 了解如何使用 REST API 使用 Azure 资源的基于角色的访问控制（RBAC）列出、创建、更新或删除自定义角色。
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452936"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137358"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 为 Azure 资源创建或更新自定义角色
 
@@ -38,7 +38,7 @@ ms.locfileid: "75452936"
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选 | Description |
+    | 筛选器 | 说明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "75452936"
 
 1. 将 *{filter}* 替换为角色类型。
 
-    | 筛选 | Description |
+    | 筛选器 | 说明 |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | 基于 CustomRole 类型的筛选器 |
 
@@ -86,7 +86,7 @@ ms.locfileid: "75452936"
 
 1. 将 *{filter}* 替换为角色的显示名称。
 
-    | 筛选 | Description |
+    | 筛选器 | 说明 |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | 使用角色的准确显示名称的 URL 编码形式。 例如 `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 

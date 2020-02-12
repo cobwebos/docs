@@ -6,21 +6,21 @@ keywords: 编码;编码器;媒体
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186035"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132710"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)（频道）表示用于处理实时传送视频流内容的管道。 直播活动通过以下两种方式之一接收实时输入流。
 
-* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的直播活动。 引入流将通过直播活动，而不会进行任何进一步处理。 这种方法称为**直通**。 实时编码器可将单比特率流发送到直通通道。 我们不建议使用此配置，因为它不允许对客户端进行自适应比特率流式处理。
+* 本地实时编码器将多比特率 RTMP 或平滑流式处理（分片 MP4）流发送到无法通过媒体服务进行实时编码的直播活动。 引入流将通过直播活动，而不会进行任何进一步处理。 这种方法称为**直通**。 建议实时编码器将多比特率流（而不是单比特率流）发送到传递实时事件，以便向客户端提供自适应比特率流式处理。
 
   > [!NOTE]
   > 实时传送视频流时，使用直通方法是最经济的。
@@ -29,21 +29,28 @@ ms.locfileid: "74186035"
 
 若要详细了解如何使用媒体服务进行实时编码，请参阅[使用媒体服务 v3 的实时传送视频流](live-streaming-overview.md)。
 
+## <a name="encoder-requirements"></a>编码器要求
+
+编码器在使用 HTTPS 或 RTMPS 协议时必须支持 TLS 1.2。
+
 ## <a name="live-encoders-that-output-rtmp"></a>输出 RTMP 的实时编码器
 
 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之一。 支持的 URL 方案为 `rtmp://` 或 `rtmps://`。
 
+通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。<br/><br/>
+通过 RTMPS 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 2935 和 2936 已打开。
+
 > [!NOTE]
-> 通过 RTMP 流式处理时，检查防火墙和/或代理设置，确认出站 TCP 端口 1935 和 1936 已打开。
+> 编码器在使用 RTMPS 协议时必须支持 TLS 1.2。
 
 - Adobe Flash 媒体实时编码器 3.2
-- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [Cambria Live 4。3](https://www.capellasystems.net/products/cambria-live/)
+- Elemental Live （版本2.14.15 及更高版本）
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast （版本13.0.2 或更高版本，原因是 TLS 1.2 要求）
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ ms.locfileid: "74186035"
 
 媒体服务建议使用下列将多比特率平滑流式处理（分片 MP4）作为输出的实时编码器之一。 支持的 URL 方案为 `http://` 或 `https://`。
 
+> [!NOTE]
+> 编码器在使用 HTTPS 协议时必须支持 TLS 1.2。
+
 - Ateme TITAN Live
 - Cisco 数字媒体编码器 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Elemental Live （版本2.14.15 和更高版本，原因是 TLS 1.2 要求）
+- Envivio 4Caster C4 Gen III 
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
->  如果要以多种语言（例如，一个英语音频轨道和一个西班牙语音频轨道）流式传输直播活动，则可以将 Media Excel 实时编码器配置为将实时源发送到直通直播活动，以实现此目的。
-
+>  如果要以多种语言（例如，一个英语音轨和一个西班牙语音轨）流式传输实时事件，则可以使用配置为将实时源发送到传递实时事件的媒体 Excel 实时编码器来实现此目的。
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>配置本地实时编码器设置
 
@@ -97,7 +106,7 @@ ms.locfileid: "74186035"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。
+7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。
@@ -116,7 +125,7 @@ ms.locfileid: "74186035"
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。
-7. 使用内置的**流式处理策略**类型创建**流式处理定位符**。
+7. 使用内置的流式处理策略类型创建流式处理定位符。
 8. 列出流式处理定位器的路径，以取回要使用的 URL。
 9. 获取要从中流式传输的**流式处理终结点**的主机名。
 10. 将步骤 8 中的 URL 与步骤 9 中的主机名合并，获取完整的 URL。

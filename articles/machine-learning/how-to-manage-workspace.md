@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: df50654b8673306a6bee544d9b5fcc2cb578795d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988186"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137590"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建和管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,12 +40,12 @@ ms.locfileid: "76988186"
 
 1. 提供以下信息来配置新工作区：
 
-   字段|Description 
+   字段|说明 
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 工作区名称不区分大小写。
    订阅 |选择要使用的 Azure 订阅。
    资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml。 
-   位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
+   Location | 选择离你的用户和数据资源最近的位置来创建工作区。
    工作区版本 | 选择 "**基本**" 或 "**企业**"。  此工作区版本确定你将拥有访问和定价的功能。 了解有关[基本和企业版产品/服务](overview-what-is-azure-ml.md#sku)的详细信息。 
 
     ![配置工作区](./media/how-to-manage-workspace/select-edition.png)
@@ -105,7 +105,6 @@ ms.locfileid: "76988186"
 
   ![“删除”按钮](./media/how-to-manage-workspace/delete-workspace.png)
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
@@ -115,6 +114,11 @@ ms.locfileid: "76988186"
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>移动工作区
+
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
 
 ## <a name="next-steps"></a>后续步骤
 

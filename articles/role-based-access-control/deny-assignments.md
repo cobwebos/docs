@@ -1,5 +1,5 @@
 ---
-title: 了解 Azure 资源的拒绝分配 | Microsoft Docs
+title: 了解 Azure 资源的拒绝分配
 description: 了解 Azure 资源基于角色的访问控制 (RBAC) 中的拒绝分配。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479359"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137375"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
@@ -39,7 +39,7 @@ ms.locfileid: "74479359"
 
 拒绝分配遵循与角色分配类似的模式，但也存在一些差异。
 
-| 功能 | 角色分配 | 拒绝分配 |
+| Capability | 角色分配 | 拒绝分配 |
 | --- | --- | --- |
 | 授予访问权限 | :heavy_check_mark: |  |
 | 拒绝访问 |  | :heavy_check_mark: |
@@ -57,18 +57,18 @@ ms.locfileid: "74479359"
 > | 属性 | 必需 | 类型 | 说明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | 是 | String | 拒绝分配的显示名称。 对于给定作用域，名称必须是唯一的。 |
-> | `Description` | 否 | String | 拒绝分配的说明。 |
-> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的管理操作的字符串数组。 |
-> | `Permissions.NotActions` | 否 | String[] | 用于指定要从拒绝分配中排除的管理操作的字符串数组。 |
-> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | String[] | 用于指定拒绝分配阻止访问的数据操作的字符串数组。 |
-> | `Permissions.NotDataActions` | 否 | String[] | 用于指定要从拒绝分配中排除的数据操作的字符串数组。 |
-> | `Scope` | 否 | String | 用于指定拒绝分配应用到的作用域的字符串。 |
-> | `DoNotApplyToChildScopes` | 否 | Boolean | 指定拒绝分配是否应用到子作用域。 默认值为 false。 |
-> | `Principals[i].Id` | 是 | String[] | 拒绝分配应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 设置为空 GUID `00000000-0000-0000-0000-000000000000` 将表示所有主体。 |
-> | `Principals[i].Type` | 否 | String[] | 由主体 [i]. Id 表示的对象类型的数组。设置为 `SystemDefined` 以表示所有主体。 |
-> | `ExcludePrincipals[i].Id` | 否 | String[] | 拒绝分配不会应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 |
-> | `ExcludePrincipals[i].Type` | 否 | String[] | ExcludePrincipals[i].Id 所表示的对象类型的数组。 |
-> | `IsSystemProtected` | 否 | Boolean | 指定此拒绝分配是否由 Azure 创建，且无法编辑或删除。 当前，所有拒绝分配受系统保护。 |
+> | `Description` | 是 | String | 拒绝分配的说明。 |
+> | `Permissions.Actions` | 至少一个 Actions 或一个 DataActions | string[] | 用于指定拒绝分配阻止访问的管理操作的字符串数组。 |
+> | `Permissions.NotActions` | 是 | string[] | 用于指定要从拒绝分配中排除的管理操作的字符串数组。 |
+> | `Permissions.DataActions` | 至少一个 Actions 或一个 DataActions | string[] | 用于指定拒绝分配阻止访问的数据操作的字符串数组。 |
+> | `Permissions.NotDataActions` | 是 | string[] | 用于指定要从拒绝分配中排除的数据操作的字符串数组。 |
+> | `Scope` | 是 | String | 用于指定拒绝分配应用到的作用域的字符串。 |
+> | `DoNotApplyToChildScopes` | 是 | Boolean | 指定拒绝分配是否应用到子作用域。 默认值是 false。 |
+> | `Principals[i].Id` | 是 | string[] | 拒绝分配应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 设置为空 GUID `00000000-0000-0000-0000-000000000000` 将表示所有主体。 |
+> | `Principals[i].Type` | 是 | string[] | 由主体 [i]. Id 表示的对象类型的数组。设置为 `SystemDefined` 以表示所有主体。 |
+> | `ExcludePrincipals[i].Id` | 是 | string[] | 拒绝分配不会应用到的 Azure AD 主体对象 ID（用户、组、服务主体或托管主体）的数组。 |
+> | `ExcludePrincipals[i].Type` | 是 | string[] | ExcludePrincipals[i].Id 所表示的对象类型的数组。 |
+> | `IsSystemProtected` | 是 | Boolean | 指定此拒绝分配是否由 Azure 创建，且无法编辑或删除。 当前，所有拒绝分配受系统保护。 |
 
 ## <a name="the-all-principals-principal"></a>所有主体主体
 

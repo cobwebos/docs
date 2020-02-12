@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018986"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137731"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>从 Azure PowerShell 管理 IoT Central
 
@@ -21,7 +21,7 @@ ms.locfileid: "77018986"
 
 你可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)来管理你的应用程序，而不是在[Azure IoT Central 应用程序管理器](https://aka.ms/iotcentral)网站上创建和管理 IoT Central 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -57,39 +57,23 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
 该脚本首先在美国东部区域为应用程序创建一个资源组。 下表描述了与 **New-AzIotCentralApp** 命令配合使用的参数：
 
-|参数         |Description |
+|参数         |说明 |
 |------------------|------------|
 |ResourceGroupName |包含该应用程序的资源组。 此资源组必须已存在于订阅中。 |
-|位置 |此 cmdlet 默认使用资源组中的位置。 目前，你可以在**美国东部**、**美国西部**、**北欧**或**西欧**地区或在**澳大利亚**或**亚太**地区创建 IoT Central 应用程序。  |
+|Location |此 cmdlet 默认使用资源组中的位置。 目前，可以在**澳大利亚**、**亚太**、**欧洲**或**美国**地理位置创建 IoT Central 应用程序。  |
 |名称              |应用程序在 Azure 门户中的名称。 |
-|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com 。 |
+|子域         |应用程序 URL 中的子域。 在该示例中，应用程序 URL 为 https://mysubdomain.azureiotcentral.com。 |
 |Sku               |目前，可以使用**ST1**或**ST2**。 请参阅 [Azure IoT Central 定价](https://azure.microsoft.com/pricing/details/iot-central/)。 |
-|模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表： |
+|模板          | 要使用的应用程序模板。 有关详细信息，请参阅下表。 |
 |DisplayName       |UI 中显示的应用程序名称。 |
 
-**应用程序模板**
-
-| 模板名            | Description |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | 创建一个空的应用程序，以便在其中填充你自己的设备模板和设备。
-| iotc-pnp-preview@1.0.0   | 创建一个空的即插即用（预览版）应用程序，以便使用自己的设备模板和设备进行填充。 |
-| iotc-condition@1.0.0     | 使用 "存储内分析-条件监视" 模板创建应用程序。 使用此模板来连接和监视存储环境。 |
-| iotc-consumption@1.0.0   | 使用水消耗监视模板创建应用程序。 使用此模板来监视和控制水源。 |
-| iotc-distribution@1.0.0  | 使用数字分发模板创建应用程序。 使用此模板可以通过 digitalizing 密钥资产和操作来改善仓库输出效率。 |
-| iotc-inventory@1.0.0     | 创建具有智能库存管理模板的应用程序。 使用此模板自动进行接收、产品移动、循环计数和传感器跟踪。 |
-| iotc-logistics@1.0.0     | 使用连接的后勤模板创建应用程序。 使用此模板，通过位置和条件监视在无线、水和陆地之间实时跟踪货物。 |
-| iotc-meter@1.0.0         | 使用智能计量监视模板创建应用程序。 使用此模板来监视能源消耗、网络状态，并识别趋势以改善客户支持和智能计量管理。  |
-| iotc-patient@1.0.0       | 使用持续患者监视模板创建应用程序。 使用此模板可扩展病人护理、重新招生和管理疾病。 |
-| iotc-power@1.0.0         | 使用阳历面板监视模板创建应用程序。 使用此模板可监视阳历状态、能源生成趋势。 |
-| iotc-quality@1.0.0       | 使用水源质量监视模板创建应用程序。 使用此模板以数字方式监视水源质量。|
-| iotc-store@1.0.0         | 使用 "应用商店内分析–签出" 模板创建应用程序。 使用此模板来监视和管理你的商店内的结帐流。 |
-| iotc-waste@1.0.0         | 使用连接垃圾桶管理模板创建应用程序。 使用此模板监视废箱和调度字段运算符。 |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-iot-central-applications"></a>查看 IoT Central 应用程序
 

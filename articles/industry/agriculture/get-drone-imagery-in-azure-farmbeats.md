@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482551"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132052"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>从无人机合作伙伴获取无人机图像
 
@@ -35,10 +35,10 @@ ms.locfileid: "75482551"
  - 客户端 ID
  - 客户端机密
 
-执行以下步骤。
+请执行下列步骤。
 
 1. 下载此[脚本](https://aka.ms/farmbeatspartnerscript)，并将其解压缩到本地驱动器。 Zip 文件内有两个文件。
-2. 登录到 [Azure 门户](https://portal.azure.com/)，并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。
+2. 登录到[Azure 门户](https://portal.azure.com/)并打开 Azure Cloud Shell。 此选项在门户右上角的工具栏上可用。
 
     ![打开门户右上栏 Azure Cloud Shell](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "75482551"
 
 4. 上传你在 Cloud Shell 实例的步骤1中下载的两个文件。
 
-    ![上传文件](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
+    ![上载文件](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
 
 5. 中转到上载文件的目录。 默认情况下，会将其上传到 "用户名" 下的主目录。
 6. 运行以下脚本：
@@ -91,4 +91,4 @@ ms.locfileid: "75482551"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何使用 FarmBeats Datahub [api](references-for-azure-farmbeats.md#rest-api)获取无人机图像。
+了解如何使用 FarmBeats Datahub [api](rest-api-in-azure-farmbeats.md)获取无人机图像。

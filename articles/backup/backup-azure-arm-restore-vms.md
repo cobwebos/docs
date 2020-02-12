@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d70db384101d838b2b65707090577156daa59b9a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77021978"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138059"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -53,7 +53,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="select-a-restore-point"></a>选择还原点
 
-1. 在与要还原的 VM 关联的保管库中，单击“备份项” > “Azure 虚拟机”。
+1. 在与要还原的 VM 关联的保管库中，单击“备份项” **“Azure 虚拟机”。**  > 
 2. 单击某个 VM。 VM 仪表板默认会显示过去 30 天的恢复点。 可以显示 30 天以前的恢复点，或者根据日期、时间范围和不同类型的快照一致性进行筛选，以找到所需的恢复点。
 3. 若要还原 VM，请单击“还原 VM”。
 
@@ -75,7 +75,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 作为[还原选项](#restore-options)之一，你可以使用基本的设置从还原点快速创建 VM。
 
-1. 在“还原配置” > “新建 > 还原类型”中，选择“创建虚拟机”。
+1. 在“还原配置” **“新建**还原类型”中，选择“创建虚拟机” >  > 。
 2. 在 "**虚拟机名称**" 中，指定订阅中不存在的虚拟机。
 3. 在“资源组”中，为新 VM 选择现有资源组，或创建具有全局唯一名称的新资源组。 如果分配的名称已存在，则 Azure 将为该组分配与 VM 相同的名称。
 4. 在“虚拟网络”中，选择将放置 VM 的 VNet。 将显示与订阅关联的所有 VNet。 选择子网。 默认情况下选择第一个子网。
@@ -93,7 +93,7 @@ Azure 备份提供多种方法用于还原 VM。
 - [将已还原的磁盘附加](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)到现有 VM。
 - 使用 PowerShell 从还原的磁盘[创建新 VM](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#create-a-vm-from-restored-disks) 。
 
-1. 在“还原配置” > “新建 > 还原类型”中，选择“还原磁盘”。
+1. 在“还原配置” **“新建**还原类型”中，选择“还原磁盘” >  > 。
 2. 在“资源组”中，为还原的磁盘选择现有资源组，或创建具有全局唯一名称的新资源组。
 3. 在“存储帐户”中，指定要将 VHD 复制到的帐户。 [了解详细信息](#storage-accounts)。
 
@@ -168,6 +168,9 @@ Azure 备份提供多种方法用于还原 VM。
 - 若要还原和创建 VM，请参阅[创建 vm](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm)。
 - 若要作为磁盘还原，请参阅[还原磁盘](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks)。
 
+>[!NOTE]
+>触发还原并在数据传输阶段中，无法取消还原作业。
+
 ### <a name="monitoring-secondary-region-restore-jobs"></a>监视辅助区域还原作业
 
 1. 从门户中转到 "**恢复服务保管库**" > **备份作业**
@@ -183,7 +186,7 @@ Azure 备份提供多种方法用于还原 VM。
 --- | ---
 **通过混合使用权益还原 VM** | 如果 Windows VM 使用[混合使用权益 (HUB) 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘，并使用提供的模板（将“许可证类型”设置为“Windows_Server”）或 PowerShell 创建新的 VM。  创建 VM 后也可以应用此设置。
 **在发生 Azure 数据中心灾难期间还原 VM** | 如果保管库使用 GRS 并且 VM 的主数据中心出现故障，Azure 备份支持将已备份的 VM 还原到配对的数据中心。 在配对的数据中心选择一个存储帐户，然后像平时一样进行还原。 Azure 备份使用配对区域中的计算服务来创建还原的 VM。 [详细了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)数据中心复原能力。
-**还原单个域中的单个域控制器 VM** | 像还原其他任何 VM 一样还原该 VM。 请注意：<br/><br/> 从 Active Directory 的角度来看，Azure VM 与任何其他 VM 类似。<br/><br/> 还可使用目录服务还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 [详细了解](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)虚拟化域控制器的备份和还原注意事项。
+**还原单个域中的单个域控制器 VM** | 像还原其他任何 VM 一样还原该 VM。 注意：<br/><br/> 从 Active Directory 的角度来看，Azure VM 与任何其他 VM 类似。<br/><br/> 还可使用目录服务还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 [详细了解](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)虚拟化域控制器的备份和还原注意事项。
 **还原单一域中的多个域控制器 VM** | 如果可以通过网络访问同一域中的其他域控制器，则可以像还原任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **还原一个林中的多个域** | 建议使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。

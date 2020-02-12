@@ -6,13 +6,13 @@ ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/02/2020
+ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364962"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137499"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>统一多个 Azure Monitor Application Insights 资源 
 本文介绍如何在一个位置查询和查看所有 Application Insights 日志数据，即使它们位于不同的 Azure 订阅中，也可以取代 Application Insights 连接器的弃用。 可在单个查询中包含 Application Insights 资源数限制为100。
@@ -20,12 +20,7 @@ ms.locfileid: "75364962"
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>用于查询多个 Application Insights 资源的建议做法 
 在查询中列出多个 Application Insights 资源可能很繁琐且难以维护。 可以改为利用函数将查询逻辑从应用程序范围中分离出来。  
 
-本示例演示了如何监视多个 Application Insights 资源，并按应用程序名称显示失败请求的计数。 开始之前，请在该连接到 Application Insights 资源的工作区中运行查询，获取已连接应用程序的列表： 
-
-```
-ApplicationInsights
-| summarize by ApplicationName
-```
+本示例演示了如何监视多个 Application Insights 资源，并按应用程序名称显示失败请求的计数。
 
 使用 union 运算符和应用程序列表创建函数，然后在工作区中使用别名 *applicationsScoping* 将该查询保存为函数。 
 
@@ -61,32 +56,8 @@ applicationsScoping
 
 ![跨查询结果示例](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>跨 Application Insights 资源和工作区数据的查询 
-停止连接器时，如果需要在 Application Insights 数据保留（90 天）调整的时间范围内执行查询，则需于中期在工作区和 Application Insights 资源上执行[跨资源查询](../../azure-monitor/log-query/cross-workspace-query.md)。 应用程序数据按照上述新的 Application Insights 数据保留累积之前均是如此。 由于 Application Insights 和工作区中的架构不同，因此查询需要一些操作。 请参阅本节后面的表格，其中突出显示了架构差异。 
-
 >[!NOTE]
->新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支持日志警报中的[跨资源查询](../log-query/cross-workspace-query.md)。 默认情况下，除非从[旧版日志警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/api-alerts.md) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)创建[跨资源查询](../log-query/cross-workspace-query.md)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
-
-例如，如果连接器于 2018 年 11 月 1 日停止工作，则在 Application Insights 资源和工作区中的应用程序数据之间查询日志时，查询的构造方式类似于以下示例：
-
-```
-applicationsScoping //this brings data from Application Insights resources 
-| where timestamp between (datetime("2018-11-01") .. now()) 
-| where success == 'False' 
-| where duration > 1000 
-| union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
-    | where TimeGenerated < (datetime("2018-12-01") 
-    | where RequestSuccess == 'False' 
-    | where RequestDuration > 1000 
-    | extend duration = RequestDuration //align to Application Insights schema 
-    | extend timestamp = TimeGenerated //align to Application Insights schema 
-    | extend name = RequestName //align to Application Insights schema 
-    | extend resultCode = ResponseCode //align to Application Insights schema 
-    | project-away RequestDuration , RequestName , ResponseCode , TimeGenerated 
-) 
-| project timestamp , duration , name , resultCode 
-```
+>新的 [scheduledQueryRules API](../log-query/cross-workspace-query.md) 支持日志警报中的[跨资源查询](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)。 默认情况下，除非从[旧版日志警报 API](../platform/api-alerts.md) 切换，否则 Azure Monitor 会使用[旧版 Log Analytics 警报 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 从 Azure 门户创建新的日志警报规则。 切换之后，新的 API 成为 Azure 门户中新警报规则的默认设置，借助它可以创建跨资源查询日志警报规则。 可以使用 [scheduledQueryRules API 的 ARM 模板](../log-query/cross-workspace-query.md)创建[跨资源查询](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)日志警报规则，而无需进行切换。但是，此警告规则可通过 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 进行管理，而不可通过 Azure 门户进行管理。
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Application Insights 和 Log Analytics 工作区的架构差异
 下表显示了 Log Analytics 和 Application Insights 之间的架构差异。  
@@ -100,15 +71,15 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
 | AvailabilityMessage | message |
-| AvailabilityRunLocation | location |
+| AvailabilityRunLocation | 位置 |
 | AvailabilityTestId | id |
 | AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
 | 浏览器 | client_browser |
 | 城市 | client_city |
 | ClientIP | client_IP |
-| Computer | cloud_RoleInstance | 
-| 国家/地区 | client_CountryOrRegion | 
+| 计算机 | cloud_RoleInstance | 
+| Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
 | CustomEventName | name | 
@@ -129,7 +100,7 @@ applicationsScoping //this brings data from Application Insights resources
 | RequestDuration | duration | 
 | RequestID | id | 
 | RequestName | name | 
-| RequestSuccess | 成功 | 
+| RequestSuccess | success | 
 | ResponseCode | resultCode | 
 | 角色 | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |

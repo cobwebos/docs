@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886565"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131406"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
+
 使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果选择将本地编码器与实时编码通道一起使用，则编码器应推送高质量单比特率流作为输出。 如果选择使用带直通通道的本地编码器，编码器应将多比特率流作为输出推送到所有所需的输出质量。 有关详细信息，请参阅[包含本地编码器的实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
 
+## <a name="encoder-requirements"></a>编码器要求
+
+编码器在使用 HTTPS 或 RTMPS 协议时必须支持 TLS 1.2。
+
+## <a name="live-encoders-that-output-rtmp"></a>输出 RTMP 的实时编码器 
+
 Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之一：
+
 - Adobe Flash 媒体实时编码器 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Telestream Wirecast （版本13.0.2 或更高版本，原因是 TLS 1.2 要求）
+
+  编码器在使用 RTMPS 协议时必须支持 TLS 1.2。
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之�
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>输出分片 MP4 的实时编码器 
+
 Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处理）作为输出的实时编码器之一：
+
 - Media Excel Hero Live 和 Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco 数字媒体编码器 2200
-- Elemental Live
+- Elemental Live （版本2.14.15 和更高版本，原因是 TLS 1.2 要求）
+
+  编码器在使用 HTTPS 协议时必须支持 TLS 1.2。
 - Envivio 4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 > 实时编码器可以将单比特率流发送到直通通道，但并不建议此配置，因为它不允许对客户端进行自适应比特率流式处理。
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>如何成为本地编码器合作伙伴
+
 作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来提升你的产品。 若要成为本地编码器合作伙伴，必须验证你的本地编码器与媒体服务的兼容性。 为此，请完成以下验证：
 
 直通通道验证
