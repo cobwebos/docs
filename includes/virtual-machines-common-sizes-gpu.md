@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 0f15a6a277020d593465fa0aa78fc434413c4545
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8f256749c363e2900fe62bda557f7cb4caa72e3e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909138"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179148"
 ---
 GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 这些大小是针对计算密集型、图形密集型和可视化工作负荷设计的。 本文介绍有关 GPU、vCPU、数据磁盘和 NIC 的数量和类型的信息。 此分组中的每个大小还包括存储吞吐量及网络带宽。
 
@@ -34,9 +34,9 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf)卡和 Intel 2690 E5-V3 （Haswell）处理器提供支持。 通过将 CUDA 用于能源勘探应用、碰撞模拟、光纤跟踪渲染、深度学习等领域，用户可以更快地分析数据。 NC24r 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | ---- |
-| Standard_NC6 |6 |56 | 340 | 第 | 12 | 24 | 第 |
+| Standard_NC6 |6 |56 | 340 | 1 | 12 | 24 | 1 |
 | Standard_NC12 |12 |112 | 680 | 2 | 24 | 48 | 2 |
 | Standard_NC24 |24 |224 | 1440 | 4 | 48 | 64 | 4 |
 | Standard_NC24r* |24 |224 | 1440 | 4 | 48 | 64 | 4 |
@@ -56,12 +56,12 @@ NCv2 系列 VM 采用 [NVIDIA Tesla P100](https://www.nvidia.com/en-us/data-cent
 NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。
 
 > [!IMPORTANT]
-> 对于此大小系列，订阅中的 vCPU（核心）配额在每个区域中最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)。
+> 对于此大小系列，订阅中的 vCPU（核心）配额在每个区域中最初都设置为 0。 可以请求在某个[可用区域](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)中[提高此系列的 vCPU 配额](https://azure.microsoft.com/regions/services/)。
 >
 
 | 大小 | vCPU | 内存：GiB | 临时存储（SSD）： GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
-| Standard_NC6s_v2 | 6 |112 | 736 | 第 | 16 | 12 | 20000/ 200 | 4 |
+| Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/ 200 | 4 |
 | Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
 | Standard_NC24s_v2 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
 | Standard_NC24rs_v2* | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
@@ -79,12 +79,12 @@ NC24rs v2 配置提供了针对紧密耦合的并行计算工作负荷优化的�
 NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU。 这些 GPU 可提供 NCv2 系列的 1.5 倍计算性能。 客户可将这些更新的 GPU 用于传统的 HPC 工作负荷，例如油藏模拟、DNA 测序、蛋白质分析、Monte Carlo 模拟和其他工作负荷。 NC24rs v3 配置提供了针对紧密耦合的并行计算工作负荷优化的低延迟、高吞吐量网络接口。 除了 Gpu 外，NCv3 系列 Vm 还由 Intel 强 2690 v4 （Broadwell） Cpu 提供支持。
 
 > [!IMPORTANT]
-> 对于此大小系列，订阅中的 vCPU（核心）配额在每个区域中最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)。
+> 对于此大小系列，订阅中的 vCPU（核心）配额在每个区域中最初都设置为 0。 可以请求在某个[可用区域](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)中[提高此系列的 vCPU 配额](https://azure.microsoft.com/regions/services/)。
 >
 
 | 大小 | vCPU | 内存：GiB | 临时存储（SSD）： GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NC6s_v3 | 6 |112 | 736 | 第 | 16 | 12 | 20000 / 200 | 4 |
+| Standard_NC6s_v3 | 6 |112 | 736 | 1 | 16 | 12 | 20000 / 200 | 4 |
 | Standard_NC12s_v3 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
 | Standard_NC24s_v3 | 24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 | 
 | Standard_NC24rs_v3* |24 |448 | 2948 | 4 | 64 | 32 | 80000/800 | 8 |
@@ -128,15 +128,15 @@ NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷�
 
 高级存储缓存：支持
 
-ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列的新成员。 它们在训练和推理方面性能卓越。 ND 实例由[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel 2690 V4 （Broadwell） cpu 提供支持。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还可提供大得多的 GPU 内存大小（24 GB），能够适应大得多的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
+ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列的新成员。 它们在训练和推理方面性能卓越。 ND 实例由[NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) Gpu 和 Intel 2690 V4 （Broadwell） cpu 提供支持。 这些实例可以针对单精度浮点运算和利用 Microsoft 认知工具包、TensorFlow、Caffe 及其他框架的 AI 工作负荷提供卓越的性能。 ND 系列还提供了更大的 GPU 内存大小（24 GB），能够适应更大的神经网络模型。 与 NC 系列一样，ND 系列可通过 RDMA 和 InfiniBand 连接提供含辅助型低延迟、高吞吐量网络的配置，以便可运行跨多个 GPU 的大规模训练作业。
 
 > [!IMPORTANT]
-> 对于此大小系列，订阅中每个区域的 vCPU（核心）配额最初都设置为 0。 可以请求在某个[可用区域](https://azure.microsoft.com/regions/services/)中[提高此系列的 vCPU 配额](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)。
+> 对于此大小系列，订阅中每个区域的 vCPU（核心）配额最初都设置为 0。 可以请求在某个[可用区域](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)中[提高此系列的 vCPU 配额](https://azure.microsoft.com/regions/services/)。
 >
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_ND6s | 6 |112 | 736 | 第 | 24 | 12 | 20000 / 200 | 4 |
+| Standard_ND6s | 6 |112 | 736 | 1 | 24 | 12 | 20000 / 200 | 4 |
 | Standard_ND12s | 12 |224 | 1474 | 2 | 48 | 24 | 40000/400 | 8 | 
 | Standard_ND24s | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
 | Standard_ND24rs* | 24 |448 | 2948 | 4 | 96 | 32 | 80000/800 | 8 |
@@ -155,9 +155,9 @@ NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/t
 
 NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 第 | 8 | 24 | 第 | 第 | 25 |
+| Standard_NV6 |6 |56 |380 | 1 | 8 | 24 | 1 | 1 | 25 |
 | Standard_NV12 |12 |112 |680 | 2 | 16 | 48 | 2 | 2 | 50 |
 | Standard_NV24 |24 |224 |1440 | 4 | 32 | 64 | 4 | 4 | 100 |
 
@@ -173,11 +173,11 @@ NVv3 系列虚拟机由[NVIDIA Tesla M60](https://images.nvidia.com/content/tesl
 
 NVv3 实例中的每个 GPU 都附带了网格许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 | 
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV12s_v3 |12 |112 |336 | 第 | 8 | 12 | 20000 / 200 | 4 | 第 | 25 |
-| Standard_NV24s_v3 |24 |224 |672 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
-| Standard_NV48s_v3 |48 |448 |1344 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 |112 |736 | 1 | 8 | 12 | 20000 / 200 | 4 | 1 | 25 |
+| Standard_NV24s_v3 |24 |224 |1474 | 2 | 16 | 24 | 40000/400 | 8 | 2 | 50 |
+| Standard_NV48s_v3 |48 |448 |2948 | 4 | 32 | 32 | 80000/800 | 8 | 4 | 100 |
 
 1 GPU = 半块 M60 卡。
 
@@ -194,12 +194,12 @@ NVv4 系列虚拟机由[Amd Radeon INSTINCT MI25](https://www.amd.com/en/product
 [注册并在预览期访问这些虚拟机](https://aka.ms/nvv4signup)。
 <br>
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- | 
 | Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
 | Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
 | Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 | 
-| Standard_NV32as_v4 |32 |112 |704 | 第 | 16 | 32 | 8 | 
+| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 | 
 
 
 

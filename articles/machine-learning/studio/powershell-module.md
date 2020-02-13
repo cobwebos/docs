@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 04/25/2019
-ms.openlocfilehash: 0d465c27621464d840555edb1a0f513fbc195e13
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fd2e3a5ec7e69280b38d653009f551580618a541
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148107"
+ms.locfileid: "77168950"
 ---
 # <a name="powershell-modules-for-azure-machine-learning-studio-classic"></a>适用于 Azure 机器学习 Studio 的 PowerShell 模块（经典）
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984806"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169821"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标？ 
 
@@ -50,16 +50,12 @@ Azure 机器学习在不同的计算资源中具有不同的支持。  你还可
 
 你可以在中创建 Azure 机器学习计算实例（预览版）或计算群集：
 
-| | Azure 机器学习工作室 | Azure 门户 | SDK | 资源管理器模板 | CLI |
+| | Azure 机器学习工作室 | Azure 门户 | SDK 中 IsInRole 中的声明 | 资源管理器模板 | CLI |
 |---| ----- | ----- | ----- | ----- | ----- |
 | 计算实例 | 是 | 是 | 是 | 是 |  |
 | 计算群集 | 是 | 是 | 是 | 是 | 是 |
 
 创建这些计算资源时，会自动将工作区的一部分与其他类型的计算目标相同。
-
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 ### <a name="compute-clusters"></a>计算群集
 

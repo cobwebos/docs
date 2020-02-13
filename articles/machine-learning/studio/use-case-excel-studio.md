@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152765"
+ms.locfileid: "77169093"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>将分析从 Excel 迁移到 Azure 机器学习 Studio （经典）
 
@@ -54,8 +54,8 @@ ms.locfileid: "77152765"
 |  | Excel | 工作室（经典版） |
 | --- |:---:|:---:|
 | 性能 | | |
-| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |空值 |
-| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |空值 |0.78<br />（低准确性） |
+| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不可用 |
+| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不可用 |0.78<br />（低准确性） |
 | 平均绝对误差 |$9.5M |$ 19.4 M |
 | 平均绝对误差 (%) |6.03% |12.2% |
 
@@ -73,13 +73,13 @@ ms.locfileid: "77152765"
 | --- |:---:|:---:|:---:|
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
-| 学习器选项 |空值 |默认值 |普通最小二乘法<br />L2 = 0.005 |
+| 学习器选项 |不可用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
 | 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
 | 拆分：训练 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
 | **“性能”** | | | |
-| 调整 R 平方 |0.96 |空值 | |
-| 决定系数 |空值 |0.78 |0.952049 |
+| 调整 R 平方 |0.96 |不可用 | |
+| 决定系数 |不可用 |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -115,7 +115,7 @@ ms.locfileid: "77152765"
 
 如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 数据集作为 Studio （经典）中的示例数据集的一部分提供。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
 
-| “模型” | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
+| 模型 | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
 | --- | --- | --- | --- | --- | --- |
 | 提升决策树 |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | 线性回归（梯度下降） |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |

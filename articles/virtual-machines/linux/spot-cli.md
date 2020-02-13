@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781990"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163086"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>预览：使用 Azure CLI 部署专色 Vm
 
@@ -35,7 +35,7 @@ ms.locfileid: "74781990"
 > 污点实例当前为公共预览版。
 > 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 对于公共预览版的早期部分，污点实例将具有固定价格，因此不会有任何基于价格的逐出。
+
 
 
 ## <a name="install-azure-cli"></a>安装 Azure CLI

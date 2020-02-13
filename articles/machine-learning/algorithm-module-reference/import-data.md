@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152238"
+ms.locfileid: "77163188"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
@@ -42,7 +42,7 @@ ms.locfileid: "77152238"
 
 定义所需的数据并连接到源后， **[导入数据](./import-data.md)** 会根据其包含的值推断每个列的数据类型，并将数据加载到设计器管道。 **导入数据**的输出是一个可与任何设计器管道一起使用的数据集。
 
-如果源数据发生更改，可以通过重新运行 "[导入数据](./import-data.md)" 来刷新数据集并添加新的数据。 但是，如果不希望每次运行管道时从源重新读取源，请将 "**使用缓存的结果**" 选项设置为 TRUE。 选中此选项后，模块将检查管道是否以前使用相同的源和相同的输入选项运行过。 如果找到了以前的运行，则将使用缓存中的数据，而不是从数据源重新加载数据。
+如果源数据发生更改，可以通过重新运行 "[导入数据](./import-data.md)" 来刷新数据集并添加新的数据。
 
 ## <a name="how-to-configure-import-data"></a>如何配置导入数据
 
@@ -60,11 +60,7 @@ ms.locfileid: "77152238"
 
     ![导入-数据-预览](media/module/import-data.png)
 
-1. 如果要缓存数据集以便在连续运行时重复使用，请选择 "**使用缓存的结果**" 选项。
 
-    假设没有对模块参数进行其他更改，则管道仅在模块第一次运行时加载数据，并使用数据集的缓存版本。
-
-    如果需要在每次运行管道时重新加载数据，请取消选择此选项。
 
 1. 运行管道。
 

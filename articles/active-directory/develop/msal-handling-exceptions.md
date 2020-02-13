@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084021"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160838"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>处理 MSAL 异常和错误
 
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 
 MSAL 公开一个 `reason` 字段，可用于提供更好的用户体验。 例如，"`reason`" 字段可能会告诉用户其密码已过期，或者他们需要提供使用某些资源的许可。 支持的值是 `InteractionRequiredExceptionReason` 枚举的一部分：
 
-| Reason | 含义 | 建议的处理 |
+| 原因 | 含义 | 建议的处理 |
 |---------|-----------|-----------------------------|
 | `BasicAction` | 在交互身份验证流期间，用户交互可以解决条件 | 用交互式参数调用 `acquireToken` |
 | `AdditionalAction` | 与交互式身份验证流之外的系统进行更多的补救交互时，可以解决此问题。 | 使用交互式参数调用 `acquireToken`，以显示一条消息，说明要采取的补救措施。 如果用户不太可能完成补救措施，则调用应用程序可能会选择隐藏需要其他操作的流。 |
@@ -506,7 +506,7 @@ MSAL 公开一个 `reason` 字段，可用于提供更好的用户体验。 例�
 
 ## <a name="conditional-access-and-claims-challenges"></a>条件访问和声明质询
 
-以静默方式获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
+以静默方式获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](../azuread-dev/conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
 
 处理此错误的模式是使用 MSAL 以交互方式获取令牌。 以交互方式获取令牌会提示用户，并使他们能够满足所需的条件访问策略。
 
@@ -520,7 +520,7 @@ MSAL 公开一个 `reason` 字段，可用于提供更好的用户体验。 例�
 
 ### <a name="javascript"></a>JavaScript
 
-当使用 MSAL 以静默方式（使用 `acquireTokenSilent`）获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
+当使用 MSAL 以静默方式（使用 `acquireTokenSilent`）获取令牌时，应用程序可能会在你尝试访问的 API 所需的[条件性访问声明质询](../azuread-dev/conditional-access-dev-guide.md)（如 MFA 策略）时收到错误。
 
 处理此错误的模式是发出交互式调用（例如 `acquireTokenPopup` 或 `acquireTokenRedirect`）以获取 MSAL.js 中的令牌，如以下示例所示：
 

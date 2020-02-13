@@ -16,12 +16,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 03f88b0b1369020d0ba5e8cb1e1b416059def21d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703042"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160371"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -39,7 +39,7 @@ ms.locfileid: "76703042"
 
 ## <a name="aadsts-error-codes"></a>AADSTS 错误代码
 
-| 错误 | Description |
+| 错误 | 说明 |
 |---|---|
 | AADSTS16000 | SelectUserAccount - 这是 Azure AD 引发的中断，使得 UI 允许用户从多个有效 SSO 会话中进行选择。 此错误相当常见。如果指定了 `prompt=none`，可能会在应用程序中返回此错误。 |
 | AADSTS16001 | UserAccountSelectionInvalid - 如果用户单击会话选择逻辑已拒绝的某个磁贴，则会出现此错误。 触发此错误时，用户可以从更新的磁贴/会话列表中进行选择或选择另一个帐户进行恢复。 此错误的原因可能是代码缺陷或出现争用状况。 |
@@ -152,7 +152,7 @@ ms.locfileid: "76703042"
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 身份验证失败。 刷新令牌无效。 该错误的可能原因如下：<ul><li>令牌绑定标头为空</li><li>令牌绑定哈希不匹配</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 应用程序处于禁用状态。 |
-| AADSTS70002 | InvalidClient - 验证凭据时出错。 指定的 client_secret 与此客户端的预期值不匹配。 请更正 client_secret，然后重试。 有关详细信息，请参阅[使用授权代码请求访问令牌](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)。 |
+| AADSTS70002 | InvalidClient - 验证凭据时出错。 指定的 client_secret 与此客户端的预期值不匹配。 请更正 client_secret，然后重试。 有关详细信息，请参阅[使用授权代码请求访问令牌](v2-oauth2-auth-code-flow.md#request-an-access-token)。 |
 | AADSTS70003 | UnsupportedGrantType - 应用返回了不受支持的授权类型。 |
 | AADSTS70004 | InvalidRedirectUri - 应用返回了无效的重定向 URI。 客户端指定的重定向地址与配置的任何地址或者 OIDC 批准列表中的任何地址都不匹配。 |
 | AADSTS70005 | UnsupportedResponseType - 由于以下原因，应用返回了不受支持的响应类型：<ul><li>没有为应用启用响应类型“token”</li><li>响应类型“id_token”需要“OpenID”作用域 - 编码的 wctx 中包含不支持的 OAuth 参数值</li></ul> |

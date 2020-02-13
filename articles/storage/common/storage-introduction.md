@@ -5,17 +5,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970210"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157578"
 ---
-# <a name="introduction-to-azure-storage"></a>Azure 存储器简介
+# <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
 Azure 存储是 Microsoft 提供的适用于现代数据存储场景的云存储解决方案。 Azure 存储为数据对象提供可大规模缩放的对象存储，为云提供文件系统服务，并且提供用于可靠消息传送的消息传送存储以及 NoSQL 存储。 Azure 存储：
 
@@ -118,25 +118,23 @@ Azure 存储加密可以保护数据，并满足组织的安全性和符合性�
 
 Azure 存储客户端库提供了一些方法，用于在通过网络发送数据和解密响应之前，从客户端库对数据进行加密。 通过客户端加密进行加密的数据也由 Azure 存储加密。 有关客户端加密的详细信息，请参阅[适用于 Azure 存储的 .Net 客户端加密](storage-client-side-encryption.md)。
 
-## <a name="redundancy"></a>冗余性
+## <a name="redundancy"></a>冗余
 
-为了确保数据的持久性，Azure 存储会复制多个数据副本。 设置存储帐户时，可选择冗余选项。
+为了确保数据持久，Azure 存储存储数据的多个副本。 设置存储帐户时，可选择冗余选项。
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-有关灾难恢复的详细信息，请参阅 [Azure 存储中的灾难恢复和存储帐户故障转移（预览版）](storage-disaster-recovery-guidance.md)。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>将数据传输到和移出 Azure 存储
 
 有多个选项用于将数据移入或移出 Azure 存储。 选择哪个选项取决于数据集的大小和网络带宽。 有关详细信息，请参阅[选择 Azure 数据传输解决方案](storage-choose-data-transfer-solution.md)。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关 Azure 存储定价的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 ## <a name="storage-apis-libraries-and-tools"></a>存储 API、库和工具
 
-Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
+Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储空间还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Azure 存储数据 API 和库参考
 

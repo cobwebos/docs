@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901725"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179070"
 ---
 使用污点 Vm，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
@@ -23,7 +23,6 @@ ms.locfileid: "75901725"
 > 污点实例当前为公共预览版。
 > 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 对于公共预览版的早期部分，污点实例将具有固定价格，因此不会有任何基于价格的逐出。
 
 ## <a name="eviction-policy"></a>逐出策略
 
@@ -31,11 +30,8 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 
 用户可以选择通过[Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md)接收 VM 内通知。 这会在你的 Vm 被逐出时通知你，你将有30秒的时间完成任何作业并在逐出之前执行关闭任务。 
 
-> [!IMPORTANT]
-> 对于公共预览版的早期部分，您可以设置最大价格，但会被忽略。 污点 Vm 具有固定价格，因此不会有任何基于价格的逐出。
 
-
-| 选项 | 业务成效 |
+| 选项 | 结果 |
 |--------|---------|
 | 最大价格设置为 > = 当前价格。 | 如果容量和配额可用，则部署 VM。 |
 | 最大价格设置为 < 当前价格。 | VM 未部署。 您将收到一条错误消息，指出最大价格需要 > = 当前价格。 |
@@ -54,9 +50,9 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 
 污点 Vm 当前无法使用临时 OS 磁盘。
 
-污点 Vm 可以部署到任何区域，但 Azure 政府区域中 Microsoft Azure 中国世纪互联和国防部（DoD）除外。
+污点 Vm 可以部署到任何区域，但 Microsoft Azure 中国世纪互联。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 
 
@@ -95,11 +91,11 @@ Vm 可根据容量或设置的最大价格进行逐出。 对于虚拟机，会�
 | Azure 通道               | Azure 点 Vm 可用性       |
 |------------------------------|-----------------------------------|
 | 企业协议         | 是                               |
-| 即用即付                | 是                               |
+| 即付即用                | 是                               |
 | 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 优势                     | 不可用                     |
+| 优点                     | 不可用                     |
 | 赞助                    | 不可用                     |
-| 免费试用                   | 不可用                     |
+| 免费试用版                   | 不可用                     |
 
 
 **问：** 可以在何处发布问题？

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984840"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169837"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -26,9 +26,6 @@ Azure 机器学习计算实例（预览版）是一种完全托管的基于云�
 
 计算实例通常用作开发环境。  它们还可用作定型和推断的计算目标，以进行开发和测试。  对于大型任务，具有多节点缩放功能的[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
-> [!NOTE]
-> 当前，计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 ## <a name="why-use-a-compute-instance"></a>为什么使用计算实例？
 
@@ -115,7 +112,7 @@ Python 包都安装在**python 3.6 AzureML**环境中。
 
 ![管理计算实例](./media/concept-compute-instance/manage-compute-instance.png)
 
-你可以执行以下操作：
+您可以执行以下操作：
 
 * 创建计算实例。 指定名称，包括 Gpu 的 Azure VM 类型（请注意，创建后无法更改 VM 类型）、启用/禁用 SSH 访问和配置虚拟网络设置（可选）。 你还可以直接从集成的笔记本、Azure 门户、资源管理器模板或 Azure 机器学习 SDK 创建实例。 适用于计算实例创建的每个区域配额专用核心是统一的，并与 Azure 机器学习计算群集配额共享。
 * 刷新 "计算实例" 选项卡
@@ -124,7 +121,7 @@ Python 包都安装在**python 3.6 AzureML**环境中。
 
 对于工作区中的每个计算实例，可以：
 
-* 访问计算实例上的 Jupyter、JupyterLab、RStudio、VS Code Uri
+* 在计算实例上访问 Jupyter、JupyterLab、RStudio
 * 通过 SSH 连接到计算实例。 默认情况下，SSH 访问处于禁用状态，但可以在创建计算实例时启用。 SSH 访问通过公共/私有密钥机制。 该选项卡将提供 SSH 连接的详细信息，例如 IP 地址、用户名和端口号。
 * 获取有关特定计算实例的详细信息，例如 IP 地址和区域。
 

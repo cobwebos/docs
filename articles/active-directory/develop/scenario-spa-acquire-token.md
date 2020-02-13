@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701920"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160060"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>单页应用程序：获取用于调用 API 的令牌
 
@@ -42,7 +42,7 @@ Azure AD 的无提示令牌请求可能失败，原因如下： Azure AD 会话�
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>使用弹出窗口获取令牌
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下面的代码将前面所述的模式与用于弹出体验的方法相结合：
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL 角包装提供 HTTP 侦听器，该侦听器会自动获取访问令牌并将其附加到 Api 的 HTTP 请求。
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 另外，还可以使用 MSAL 中所述的获取令牌方法，显式获取令牌。
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>使用重定向获取令牌
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 下面的模式如前文所述，但使用重定向方法显示以交互方式获取令牌。 如前文所述，需要注册重定向回拨。
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>请求可选声明
+
 可以使用可选声明来实现以下目的：
 
 - 在应用程序的令牌中包含附加声明。
@@ -150,7 +153,6 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 若要在 `IdToken`中请求可选声明，可以将字符串化声明对象发送到 `AuthenticationParameters.ts` 类的 `claimsRequest` 字段。
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 若要了解详细信息，请参阅[可选声明](active-directory-optional-claims.md)。
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 此代码与前面所述相同。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

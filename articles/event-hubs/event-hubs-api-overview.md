@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310962"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162219"
 ---
 # <a name="available-event-hubs-apis"></a>可用的事件中心 API
 
@@ -34,10 +34,10 @@ ms.locfileid: "76310962"
 | 语言/平台 | 客户端程序包 | EventProcessorHost 包 | 存储库 |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | N/A |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | 不可用 |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | N/A | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | N/A | N/A | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| 节点 | [NPM](https://www.npmjs.com/package/azure-event-hubs) | 不可用 | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | 不可用 | 不可用 | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>其他信息
 
@@ -47,7 +47,7 @@ ms.locfileid: "76310962"
 
 #### <a name="node"></a>节点
 
-[Node.js 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前处于预览状态，由 Microsoft 员工和外部参与者作为副项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
+[JavaScript 库](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)目前处于预览阶段，由 Microsoft 员工和外部参与者作为侧的项目进行维护。 包括源代码在内的所有贡献都欢迎并将对其进行审查。
 
 ## <a name="management-apis"></a>管理 API
 
