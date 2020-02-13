@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381076"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186615"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>快速入门：使用 Azure Active Directory 条件访问检测到会话风险时阻止访问  
 
-若要使环境保持受保护状态，可能需要阻止可疑用户登录。 [Azure Active Directory (Azure AD) 标识保护](../active-directory-identityprotection.md)会分析每个登录活动，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作[登录风险级别](conditions.md#sign-in-risk)的计算值来表示。 通过设置登录风险条件，可以配置一个条件访问策略对特定的登录风险级别做出响应。
+若要使环境保持受保护状态，可能需要阻止可疑用户登录。 [Azure Active Directory (Azure AD) 标识保护](../active-directory-identityprotection.md)会分析每个登录活动，并计算不是由用户帐户合法所有者执行的登录尝试的可能性。 这种可能性（低、中、高）以称作[登录风险级别](concept-conditional-access-conditions.md#sign-in-risk)的计算值来表示。 通过设置登录风险条件，可以配置一个条件访问策略对特定的登录风险级别做出响应。
 
 本快速入门介绍如何配置[条件访问策略](../active-directory-conditional-access-azure-portal.md)，以便在检测到已配置的登录风险级别时阻止登录。
 
@@ -28,7 +28,7 @@ ms.locfileid: "74381076"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程中的方案，需要：
 
@@ -57,7 +57,7 @@ ms.locfileid: "74381076"
 | 用户和组 | Alain Charon  |
 | 云应用 | 所有云应用 |
 | 登录风险 | 中型 |
-| 授权 | 阻止访问 |
+| 授予 | 阻止访问 |
 
 ![创建策略](./media/app-sign-in-risk/130.png)
 
@@ -74,11 +74,11 @@ ms.locfileid: "74381076"
 
 1. 在“条件性访问”页顶部的工具栏中，单击“添加”   。
 
-   ![Name](./media/app-sign-in-risk/108.png)
+   ![名称](./media/app-sign-in-risk/108.png)
 
 1. 在“新建”页上的“名称”文本框中，键入“出现中等风险级别时阻止访问”。   
 
-   ![Name](./media/app-sign-in-risk/104.png)
+   ![名称](./media/app-sign-in-risk/104.png)
 
 1. 在“分配”部分中，单击“用户和组”。  
 

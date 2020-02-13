@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 与 ContractSafe Saml2 SSO 的单一登录 (SSO) 集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录 (SSO) 与 ContractSafe Saml2 SSO 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ContractSafe Saml2 SSO 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291526"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185616"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>教程：Azure Active Directory 与 ContractSafe Saml2 SSO 的单一登录 (SSO) 集成
 
@@ -56,7 +56,7 @@ ms.locfileid: "76291526"
 
 ## <a name="configure-and-test-azure-ad-sso-for-contractsafe-saml2-sso"></a>配置并测试 ContractSafe Saml2 SSO 的 Azure AD SSO
 
-使用名为 **B.Simon** 的测试用户配置并测试 ContractSafe Saml2 SSO 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 ContractSafe Saml2 SSO 中的相关用户之间建立链接关系。
+使用名为 **B.Simon** 的测试用户配置并测试 ContractSafe Saml2 SSO 的 Azure AD SSO。 若要运行 SSO，需要在 Azure AD 用户与 ContractSafe Saml2 SSO 相关用户之间建立关联关系。
 
 若要配置并测试 ContractSafe Saml2 SSO 的 Azure AD SSO，请完成以下构建基块：
 
@@ -85,7 +85,7 @@ ms.locfileid: "76291526"
     b. 在“回复 URL”  文本框中，使用以下格式输入 URL：`https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [ContractSafe Saml2 SSO 客户端支持团队](mailto:donne@contractsafe.com)来获取这些值。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
+    > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [ContractSafe Saml2 SSO 客户端支持团队](mailto:support@contractsafe.com)来获取这些值。 还可参考 Azure 门户中的“基本 SAML 配置”部分显示的格式。 
 
 1. ContractSafe Saml2 SSO 需要特定格式的 SAML 断言，因此，你需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -96,7 +96,7 @@ ms.locfileid: "76291526"
     | 名称 | 源属性|
     | ---------------| --------------- |
     | emailname | user.userprincipalname |
-    | email | user.onpremisesuserprincipalname |
+    | 电子邮件 | user.onpremisesuserprincipalname |
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“联合元数据 XML”    。 选择“下载”以下载证书，并将其保存在计算机上。 
 
@@ -138,11 +138,11 @@ ms.locfileid: "76291526"
 
 ## <a name="configure-contractsafe-saml2-sso"></a>配置 ContractSafe Saml2 SSO
 
-若要在 **ContractSafe Saml2 SSO** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [ContractSafe Saml2 SSO 支持团队](mailto:donne@contractsafe.com)。  该团队负责在两端正确设置 SAML SSO 连接。
+若要在 **ContractSafe Saml2 SSO** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [ContractSafe Saml2 SSO 支持团队](mailto:support@contractsafe.com)。  该团队负责在两端正确设置 SAML SSO 连接。
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>创建 ContractSafe Saml2 SSO 测试用户
 
-在 ContractSafe Saml2 SSO 中创建名为 B.Simon 的用户。 与 [ContractSafe Saml2 SSO 支持团队](mailto:donne@contractsafe.com)合作，将用户添加到 ContractSafe Saml2 SSO 平台。 使用 SSO 前，必须先创建并激活用户。
+在 ContractSafe Saml2 SSO 中创建名为 B.Simon 的用户。 与 [ContractSafe Saml2 SSO 支持团队](mailto:support@contractsafe.com)合作，将用户添加到 ContractSafe Saml2 SSO 平台。 使用 SSO 前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO
 
