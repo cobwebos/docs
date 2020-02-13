@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834168"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161913"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -38,7 +38,7 @@ ms.locfileid: "75834168"
 
 3. 选择 "**标识**"。
 
-4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“ **保存**”。
+4. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“保存”。
 
     ![应用服务中的托管标识](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
@@ -175,7 +175,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详细了解如何部署到应用服务和 Functions，请参阅[在应用服务中自动执行资源部署](../app-service/deploy-complex-application-predictably.md)和[在 Azure Functions 中自动执行资源部署](../azure-functions/functions-infrastructure-as-code.md)。
 
-通过在资源定义中包含以下块，然后将 `<RESOURCEID>` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `Microsoft.Web/sites` 类型的资源：
+通过在资源定义中包含以下块，然后将 `Microsoft.Web/sites` 替换为所需标识的资源 ID，就可以创建带有标识的任何 `<RESOURCEID>` 类型的资源：
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -251,7 +251,7 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 “MSI_ENDPOINT”是一本地 URL，应用可向其请求令牌。 若要获取资源的令牌，请对此终结点发起 HTTP GET 请求，并包括以下参数：
 
-> |参数名称|In|Description|
+> |参数名称|In|说明|
 > |-----|-----|-----|
 > |resource|查询|应获取其令牌的资源的 AAD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。|
 > |api-version|查询|要使用的令牌 API 版本。 目前唯一支持的版本是 "2017-09-01"。|
@@ -263,14 +263,14 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 
 成功的 200 OK 响应包括具有以下属性的 JSON 正文：
 
-> |属性名称|Description|
+> |属性名称|说明|
 > |-------------|----------|
 > |access_token|请求的访问令牌。 调用 Web 服务可以使用此令牌向接收 Web 服务进行身份验证。|
 > |expires_on|访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。|
 > |resource|接收 Web 服务的应用 ID URI。|
 > |token_type|指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。|
 
-此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
+此响应与 [AAD 服务到服务访问令牌请求的响应](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token)相同。
 
 > [!NOTE]
 > 进程第一次启动时会设置环境变量，因此为应用程序启用托管标识后，可能需要重启应用程序或重新部署其代码，然后才能在代码中使用 `MSI_ENDPOINT` 和 `MSI_SECRET`。

@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698928"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161335"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
@@ -33,7 +33,7 @@ Azure AD 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程�
 
 在图形 API 中，若要访问要对其执行 CRUD 操作的目录数据和对象（即资源或实体），可以使用基于开放数据 (OData) 协议的 URL。 在图形 API 中使用的 URL 包括四个主要部分：服务根、租户标识符、资源路径和查询字符串选项：`https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`。 以下面的 URL 为例：`https://graph.windows.net/contoso.com/groups?api-version=1.6`。
 
-* **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net 。
+* **服务根**：在 Azure AD 图形 API 中，服务根始终是 https://graph.windows.net。
 * **租户标识符**：此部分可以是已验证（注册）的域名，在前面示例中为 contoso.com。 也可以是租户对象 ID 或者“myorganization”或“me”别名。 有关详细信息，请参阅[Azure AD 图形 API 中的实体和操作进行寻址](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview)。
 * **资源路径**： URL 的此部分标识要与之交互的资源（用户、组、特定用户或特定组，等等）。在上面的示例中，它是用于对资源集寻址的顶级 "组"。 也可以对特定的实体寻址，例如“users/{objectId}”或“users/userPrincipalName”。
 * **查询参数**：问号 (?) 用于分隔资源路径部分与查询参数部分。 需要对 Azure AD 图形 API 中的所有请求提供“api-version”查询参数。 Azure AD 图形 API 还支持以下 OData 查询选项： **$filter**、 **$orderby**、 **$expand**、 **$top** 和 **$format**。 当前不支持以下查询选项： **$count**、 **$inlinecount** 和 **$skip**。 有关详细信息，请参阅 [Azure AD 图形 API 支持的查询、筛选和分页选项](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options)。
@@ -81,7 +81,7 @@ Azure AD 图形 API 通过 OData REST API 终结点提供对 Azure AD 的编程�
 
 以下示例使用 Fiddler Web 调试器在 Azure AD 目录中创建一个新的安全组“MyTestGroup”。
 
-**获取访问令牌**：若要访问 Azure AD Graph，客户端需要先成功地向 Azure AD 进行身份验证。 有关详细信息，请参阅[Azure AD 的身份验证方案](v1-authentication-scenarios.md)。
+**获取访问令牌**：若要访问 Azure AD Graph，客户端需要先成功地向 Azure AD 进行身份验证。 有关详细信息，请参阅[Azure AD 的身份验证方案](authentication-scenarios.md)。
 
 **编写和运行查询**：请完成以下步骤：
 

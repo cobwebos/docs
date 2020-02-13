@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023117"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161573"
 ---
 # <a name="what-is-password-writeback"></a>什么是密码写回？
 
@@ -29,7 +29,7 @@ ms.locfileid: "77023117"
 * [直通身份验证](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../develop/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
+> 当 [Azure访问控制服务 (ACS) 于 2018 年 11 月 7 日停用时](../azuread-dev/active-directory-acs-migration.md)，密码写回将不再用于使用 Azure AD Connect 版本 1.0.8641.0 及更早版本的客户。 届时，Azure AD Connect 版本 1.0.8641.0 及更早版本将不再允许进行密码写回，因为它们依赖于 ACS 来实现该功能。
 >
 > 要避免服务中断，请从以前版本的 Azure AD Connect 升级到较新版本，请参阅文章 [Azure AD Connect：从先前版本升级到最新版本](../hybrid/how-to-upgrade-previous-version.md)
 >

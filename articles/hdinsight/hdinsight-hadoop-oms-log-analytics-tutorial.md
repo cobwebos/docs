@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.openlocfilehash: 980569edf8322c6c22a4357a5b946ded85f0ebe4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e4b33e132e660fba7d06ff33c7db06c7727dd26c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063725"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162780"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志监视 HDInsight 群集
 
@@ -24,7 +24,7 @@ ms.locfileid: "77063725"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Log Analytics 工作区。 可以将此工作区视为唯一的 Azure Monitor 日志环境，其中包含自己的数据存储库、数据源和解决方案。 有关说明，请参阅[创建 Log Analytics 工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "77063725"
 
   有关如何创建 HDInsight 群集的说明，请参阅 [Azure HDInsight 入门](hadoop/apache-hadoop-linux-tutorial-get-started.md)。  
 
-* Azure PowerShell Az module。  请参阅[新 Azure PowerShell Az Module 简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。
+* Azure PowerShell Az module。  请参阅[新 Azure PowerShell Az Module 简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)。 确保具有最新版本。 如有必要，请运行 `Update-Module -Name Az`。
 
 > [!NOTE]  
 > 建议将 HDInsight 群集和 Log Analytics 工作区放置在同一区域中，以实现更好的性能。 Azure Monitor 日志在所有 Azure 区域中均不可用。
@@ -62,7 +62,7 @@ ms.locfileid: "77063725"
 
 ## <a name="enable-azure-monitor-logs-by-using-azure-powershell"></a>使用 Azure PowerShell 启用 Azure Monitor 日志
 
-可以使用 Azure PowerShell Az module [AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightoperationsmanagementsuite) cmdlet 启用 Azure Monitor 日志。
+可以使用 Azure PowerShell Az module [AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/enable-azhdinsightmonitoring) cmdlet 启用 Azure Monitor 日志。
 
 ```powershell
 # Enter user information
@@ -72,19 +72,32 @@ $LAW = "<your-Log-Analytics-workspace>"
 # End of user input
 
 # obtain workspace id for defined Log Analytics workspace
-$WorkspaceId = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW).CustomerId
+$WorkspaceId = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW).CustomerId
 
 # obtain primary key for defined Log Analytics workspace
-$PrimaryKey = (Get-AzOperationalInsightsWorkspace -ResourceGroupName $resourceGroup -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
+$PrimaryKey = (Get-AzOperationalInsightsWorkspace `
+                    -ResourceGroupName $resourceGroup `
+                    -Name $LAW | Get-AzOperationalInsightsWorkspaceSharedKeys).PrimarySharedKey
 
-# Enables Operations Management Suite
-Enable-AzHDInsightOperationsManagementSuite -ResourceGroupName $resourceGroup -Name $cluster -WorkspaceId $WorkspaceId -PrimaryKey $PrimaryKey
+# Enables monitoring and relevant logs will be sent to the specified workspace.
+Enable-AzHDInsightMonitoring `
+    -ResourceGroupName $resourceGroup `
+    -Name $cluster `
+    -WorkspaceId $WorkspaceId `
+    -PrimaryKey $PrimaryKey
+
+# Gets the status of monitoring installation on the cluster.
+Get-AzHDInsightMonitoring `
+    -ResourceGroupName $resourceGroup `
+    -Name $cluster
 ```
 
-若要禁用，请使用[AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite) cmdlet：
+若要禁用，请使用[AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) cmdlet：
 
 ```powershell
-Disable-AzHDInsightOperationsManagementSuite -Name "<your-cluster>"
+Disable-AzHDInsightMonitoring -Name "<your-cluster>"
 ```
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>安装 HDInsight 群集管理解决方案

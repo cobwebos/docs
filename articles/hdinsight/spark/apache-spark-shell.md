@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/12/2019
-ms.openlocfilehash: f088b8210b8170d22e84d131f0a72f5f8caa3b92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435230"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162797"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>从 Spark Shell 运行 Apache Spark
 
@@ -27,29 +27,74 @@ ms.locfileid: "75435230"
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Spark 提供 Scala （spark shell）和 Python （pyspark）的 shell。 在 SSH 会话中，输入以下命令之一：
+1. Spark 提供 Scala （spark shell）和 Python （pyspark）的 shell。 在 SSH 会话中，输入以下命令*之一*：
 
     ```bash
     spark-shell
-    pyspark
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    现在可以用适当的语言输入 Spark 命令。
+    ```bash
+    pyspark
 
-1. 几个基本示例命令：
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    如果要使用任何可选配置，请确保首先查看[Apache Spark 的 OutOfMemoryError 异常](./apache-spark-troubleshoot-outofmemory.md)。
+
+1. 几个基本的示例命令。 选择相关语言：
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. 查询 CSV 文件。 请注意，下面的语言适用于 `spark-shell` 和 `pyspark`。
 
     ```scala
-    // Load data
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. 查询 CSV 文件并将结果存储在变量中：
+
+    ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
 
-    // Show data
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. 显示结果：
+
+    ```spark-shell
     data.show()
-
-    // Select certain columns
     data.select($"BuildingID", $"Country").show(10)
+    ```
 
-    // exit shell
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. 退出
+
+    ```spark-shell
     :q
+    ```
+
+    ```pyspark
+    exit()
     ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession 和 SparkContext 实例

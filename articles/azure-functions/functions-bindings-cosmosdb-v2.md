@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: da05dc7136a75d519660412f2ce176f7530eb392
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3ef2fdcaefeedb0769eac34d292e67a99524a6f2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547432"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168062"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>适用于 Azure Functions 2.x 的 Azure Cosmos DB 绑定
 
@@ -173,22 +173,7 @@ JavaScript 代码如下所示：
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-以下示例展示了 *function.json* 文件中的一个 Cosmos DB 触发器绑定以及使用该绑定的 [Java 函数](functions-reference-java.md)。 当指定的数据库和集合中存在插入或更新时，将调用函数。
-
-```json
-{
-    "type": "cosmosDBTrigger",
-    "name": "items",
-    "direction": "in",
-    "leaseCollectionName": "leases",
-    "connectionStringSetting": "AzureCosmosDBConnection",
-    "databaseName": "ToDoList",
-    "collectionName": "Items",
-    "createLeaseCollectionIfNotExists": false
-}
-```
-
-下面是 Java 代码：
+当指定的数据库和集合中存在插入或更新时，将调用此函数。
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -252,7 +237,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `CosmosDBTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `cosmosDBTrigger`。 |
 |direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
@@ -1697,7 +1682,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `CosmosDB` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |direction     | 不适用 | 必须设置为 `in`。         |
@@ -2282,7 +2267,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `CosmosDB` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type     | 不适用 | 必须设置为 `cosmosDB`。        |
 |direction     | 不适用 | 必须设置为 `out`。         |
@@ -2330,7 +2315,7 @@ Python 不支持特性。
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|

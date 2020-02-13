@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 912287200097906af7a8a9d6d12eb1421f3edadc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696752"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160944"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 标识平台 ID 令牌
 
-`id_tokens` 是在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
+`id_tokens` 是在 [OpenID Connect](v2-protocols-oidc.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
@@ -50,7 +50,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="header-claims"></a>标头声明
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |-----|--------|-------------|
 |`typ` | 字符串 - 始终为“JWT” | 指示令牌是 JWT。|
 |`alg` | String | 指示用于对令牌签名的算法。 示例：“RS256” |
@@ -61,7 +61,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 此列表显示默认情况下处于最 id_tokens 状态的声明（在默认情况下除外）。  但是，你的应用可以使用[可选的声明](active-directory-optional-claims.md)来请求 id_token 中的其他声明。  它们的范围可以从 `groups` 声明到有关用户名称的信息。
 
-|声明 | 格式 | Description |
+|声明 | 格式 | 说明 |
 |-----|--------|-------------|
 |`aud` |  字符串，应用 ID URI | 标识令牌的目标接收方。 在 `id_tokens` 中，受众是在 Azure 门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 |`iss` |  字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果令牌由 v2.0 终结点颁发，则 URI 将以 `/v2.0` 结尾。  表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 应用应该使用声明的 GUID 部分限制可登录应用的租户集（如果适用）。 |

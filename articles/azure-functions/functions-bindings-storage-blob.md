@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 593d596881d0ec53b0f18e8af5a71b55c619f7a5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 5113b59f314a40feb02485b3fdc99fe4df406d88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922118"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168103"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -47,11 +47,11 @@ ms.locfileid: "75922118"
 
 以下方案请使用事件网格而不是 Blob 存储触发器：
 
-* blob 存储帐户
+* Blob 存储帐户
 * 大规模
 * 最大程度地降低延迟
 
-### <a name="blob-storage-accounts"></a>blob 存储帐户
+### <a name="blob-storage-accounts"></a>Blob 存储帐户
 
 [Blob 存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)适用于 Blob 输入和输出绑定，但不适用于 Blob 触发器。 Blob 存储触发器需要使用常规用途存储帐户。
 
@@ -71,7 +71,7 @@ ms.locfileid: "75922118"
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-以下示例演示在 `samples-workitems` 容器中添加或更新 blob 时写入日志的 [C# 函数](functions-dotnet-class-library.md)。
+以下示例演示在 [ 容器中添加或更新 blob 时写入日志的 ](functions-dotnet-class-library.md)C# 函数`samples-workitems`。
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -81,7 +81,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 `BlobTrigger` 特性的详细信息，请参阅[触发器 - 特性](#trigger---attributes)。
 
@@ -106,7 +106,7 @@ blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创�
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -153,7 +153,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -188,7 +188,7 @@ function.json 文件如下所示：
 }
 ```
 
-blob 触发器路径 `samples-workitems/{name}` 中的字符串 `{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
+blob 触发器路径 `{name}` 中的字符串 `samples-workitems/{name}` 会创建一个[绑定表达式](./functions-bindings-expressions-patterns.md)，可以在函数代码中使用它来访问触发 blob 的文件名。 有关详细信息，请参阅本文下文中的 [Blob 名称模式](#trigger---blob-name-patterns)。
 
 有关 *function.json* 文件属性的详细信息，请参阅解释了这些属性的[配置](#trigger---configuration)部分。
 
@@ -205,26 +205,7 @@ def main(myblob: func.InputStream):
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-以下示例显示了 function.json 文件中的一个 Blob 触发器绑定以及使用该绑定的 [Java 代码](functions-reference-java.md)。 在 `myblob` 容器中添加或更新 Blob 时，该函数会写入日志。
-
-function.json 文件如下所示：
-
-```json
-{
-    "disabled": false,
-    "bindings": [
-        {
-            "name": "file",
-            "type": "blobTrigger",
-            "direction": "in",
-            "path": "myblob/{name}",
-            "connection":"MyStorageAccountAppSetting"
-        }
-    ]
-}
-```
-
-下面是 Java 代码：
+在 `myblob` 容器中添加或更新 blob 时，此函数会写入日志。
 
 ```java
 @FunctionName("blobprocessor")
@@ -295,7 +276,7 @@ public void run(
 要使用的存储帐户按以下顺序确定：
 
 * `BlobTrigger` 特性的 `Connection` 属性。
-* 作为 `BlobTrigger` 特性应用到同一参数的 `StorageAccount` 特性。
+* 作为 `StorageAccount` 特性应用到同一参数的 `BlobTrigger` 特性。
 * 应用到函数的 `StorageAccount` 特性。
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
@@ -322,7 +303,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `BlobTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `blobTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 [用法](#trigger---usage)部分中已阐述异常。 |
@@ -358,7 +339,7 @@ Python 不支持特性。
 
 ## <a name="trigger---blob-name-patterns"></a>触发器 - Blob 名称模式
 
-可以在 *function.json* 的 `path` 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
+可以在 `path`function.json*的* 属性中或者在 `BlobTrigger` 特性构造函数中指定 Blob 名称模式。 名称模式可以是[筛选器或绑定表达式](./functions-bindings-expressions-patterns.md)。 以下部分提供了有关示例。
 
 ### <a name="get-file-name-and-extension"></a>获取文件名和扩展名
 
@@ -433,7 +414,7 @@ Azure Functions 运行时确保没有为相同的新 blob 或更新 blob 多次�
 
 Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名为 azure-webjobs-hosts 的容器中（由 `AzureWebJobsStorage` 应用设置定义）。 Blob 回执包含以下信息：
 
-* 触发的函数（"&lt;function app name>.Functions.&lt;function name>"，例如："MyFunctionApp.Functions.CopyBlob"）
+* 触发的函数（"*function app name>.Functions.&lt;function name>* *&lt;* "，例如："MyFunctionApp.Functions.CopyBlob"）
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称
@@ -447,7 +428,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 
 如果 5 次尝试全部失败，Azure Functions 会将消息添加到名为 webjobs-blobtrigger-poison 的存储队列。 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 &lt;function app name>.Functions.&lt;function name>）
+* FunctionId（格式为 *function app name>.Functions.&lt;function name>* *&lt;* ）
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -757,7 +738,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `blob`。 |
 |direction | 不适用 | 必须设置为 `in`。 [用法](#input---usage)部分中已阐述异常。 |
@@ -1127,7 +1108,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Blob` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `blob`。 |
 |direction | 不适用 | 对于输出绑定，必须设置为 `out`。 [用法](#output---usage)部分中已阐述异常。 |

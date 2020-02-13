@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: f5d1fff7d1343ad569fa015ebdb65d0152f04376
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153207"
+ms.locfileid: "77168324"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -32,9 +32,18 @@ ms.locfileid: "77153207"
 
 ## <a name="regions-and-endpoints"></a>区域和终结点
 
-使用 REST API 的语音转文本听录支持以下区域。 请务必选择与订阅区域匹配的终结点。
+REST API 的终结点具有以下格式：
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与此表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
 ## <a name="query-parameters"></a>查询参数
 

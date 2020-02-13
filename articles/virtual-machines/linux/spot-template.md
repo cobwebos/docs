@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782198"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162440"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用资源管理器模板部署专色 Vm
 
@@ -33,7 +33,7 @@ ms.locfileid: "74782198"
 > 污点实例当前为公共预览版。
 > 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 对于公共预览版的早期部分，污点实例将具有固定价格，因此不会有任何基于价格的逐出。
+
 
 
 ## <a name="use-a-template"></a>使用模板 
@@ -48,9 +48,6 @@ ms.locfileid: "74782198"
                 }
 ```
 
-
-> [!IMPORTANT]
-> 对于公共预览版的早期部分，您可以设置最大价格，但会被忽略。 污点 Vm 具有固定价格，因此不会有任何基于价格的逐出。
 
 
 下面是一个示例模板，其中包含为专色 VM 添加的属性。 将资源名称替换为自己的名称，将 `<password>` 替换为 VM 上本地管理员帐户的密码。

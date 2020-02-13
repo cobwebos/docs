@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: 02514285570b764c6f7392b789f2ff7b427bb3a6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7505420cc31fe751ecc0c114a89fea0734cbc6cf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863751"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162401"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway"></a>为 Azure 点到站点 VPN 网关配置 OpenVPN
 
 本文可帮助你在 Azure VPN 网关上设置**OpenVPN®协议**。 本文假设你已拥有一个可正常工作的点到站点环境。 如果并非如此，请按照步骤 1 中的说明来创建点到站点 VPN。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="vnet"></a>1. 创建点到站点 VPN
 

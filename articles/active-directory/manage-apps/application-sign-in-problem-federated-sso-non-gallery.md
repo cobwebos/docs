@@ -16,19 +16,19 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274857"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159176"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的非库应用程序时出现的问题
 
 若要解决下面的登录问题，我们建议你遵循这些建议，以获得更好的诊断并自动执行解决步骤：
 
 - 安装 "[我的应用" 安全浏览器扩展](access-panel-extension-problem-installing.md)，以帮助 Azure Active Directory （Azure AD）在 Azure 门户中使用测试体验时提供更好的诊断和解决方法。
-- 使用 Azure 门户中的 "应用配置" 页上的测试体验再现此错误。 详细了解如何[调试基于 SAML 的单一登录应用程序](../develop/howto-v1-debug-saml-sso-issues.md)
+- 使用 Azure 门户中的 "应用配置" 页上的测试体验再现此错误。 详细了解如何[调试基于 SAML 的单一登录应用程序](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>在目录中未找到应用程序
 
@@ -40,19 +40,19 @@ SAML 请求中从应用程序发送给 Azure AD 的颁发者属性与应用程�
 
 **解决方法**
 
-确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../azuread-dev/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
 
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要配置单一登录的应用程序。
 
@@ -70,13 +70,13 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法** 
 
-确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../azuread-dev/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
  
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。 
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。 
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。 
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。 
 
@@ -102,19 +102,19 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 **解决方法**
 
-若要直接将一个或多个用户分配到应用程序，请执行以下步骤。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
+若要直接将一个或多个用户分配到应用程序，请执行以下步骤。 如果[在 Azure 门户中使用](../azuread-dev/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行这些步骤。
 
 1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”身份登录。
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 从列表中选择要向其分配用户的应用程序。
 
@@ -128,7 +128,7 @@ SAML 请求中的 AssertionConsumerServiceURL 值与 Azure AD 中配置的“回
 
 11. 将鼠标悬停在列表中的“用户”上方以显示“复选框”。 单击用户个人资料头像或徽标旁边的复选框，将用户添加到“已选择”列表。
 
-12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，并单击复选框以将此用户添加到“已选择”列表。
+12. **可选：** 如果想要**添加多个用户**，请在“按名称或电子邮件地址搜索”搜索框中，键入其他**全名**或**电子邮件地址**，然后单击复选框以将此用户添加到“已选择”列表。
 
 13. 在完成用户的选择后，单击“选择”按钮将他们添加到要分配给应用程序的用户和组列表。
 
@@ -172,7 +172,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 **解决方法**
 
-确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../develop/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行以下步骤：
+确保 SAML 请求中的 `Issuer` 属性与 Azure AD 中配置的标识符值匹配。 如果[在 Azure 门户中使用](../azuread-dev/howto-v1-debug-saml-sso-issues.md)"我的应用" 安全浏览器扩展，则无需手动执行以下步骤：
 
 1.  打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。
 
@@ -206,13 +206,13 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
-3. 在筛选器搜索框中键入“Azure Active Directory”，并选择“Azure Active Directory”项。
+3. 在筛选器搜索框中键入“Azure Active Directory”，选择“Azure Active Directory”项。
 
 4. 在 Azure Active Directory 的左侧导航菜单中，单击“企业应用程序”。
 
 5. 单击“所有应用程序”，查看所有应用程序的列表。
 
-   * 如果未看到想在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设为“所有应用程序”。
+   * 如果未看到要在此处显示的应用程序，请使用“所有应用程序列表”顶部的“筛选器”控件，并将“显示”选项设置为“所有应用程序”。
 
 6. 选择要配置单一登录的应用程序。
 
@@ -264,13 +264,13 @@ Azure AD 无法识别 HTTP 请求中的 URL 参数中的 SAML 请求。 如果�
 
 6.  选择要配置为单一登录的应用程序。
 
-7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在 "**答复 URL （断言使用者服务 URL）** " 中，删除系统创建的未使用或默认的答复 url。 例如，`https://127.0.0.1:444/applications/default.aspx`。
+7.  当应用程序加载以后，请打开“基本 SAML 配置”。 在 "**答复 URL （断言使用者服务 URL）** " 中，删除系统创建的未使用或默认的答复 url。 例如，`https://127.0.0.1:444/applications/default.aspx` 。
 
 
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>自定义发送到应用程序的 SAML 声明时出现问题
 
-若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，了解详细信息。
+若要了解如何自定义发送到应用程序的 SAML 属性声明，请参阅 [Azure Active Directory 中的声明映射](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)获取详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 [Azure AD 单一登录 SAML 协议要求](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)

@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512906"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161743"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>使用 Azure 数据资源管理器查询 Azure Data Lake 中的数据
 
-Azure Data Lake Storage 是一种高度可缩放且经济高效的 data Lake 解决方案，适用于大数据分析。 它将大规模执行和经济高效的特点融入到高性能文件系统的功能中，帮助加快见解产生的时间。 Data Lake Storage Gen2 扩展了 Azure Blob 存储功能，并且针对分析工作负载进行了优化。
+Azure Data Lake Storage 是一种高度可缩放且经济高效的 data Lake 解决方案，适用于大数据分析。 它将高性能文件系统的强大功能与大规模和经济相结合，帮助你加快洞察速度。 Data Lake Storage Gen2 扩展了 Azure Blob 存储功能，并针对分析工作负荷进行了优化。
  
-Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2 集成，提供对 Lake 中数据的快速、缓存和索引访问。 无需先引入 Azure 数据资源管理器，即可在 lake 中分析和查询数据。 你还可以同时跨引入和 uningested 本机 lake 数据进行查询。  
+Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage （Gen1 和 Gen2）集成，提供对 Lake 中数据的快速、缓存和索引访问。 无需先引入 Azure 数据资源管理器，即可在 lake 中分析和查询数据。 你还可以同时跨引入和 uningested 本机 lake 数据进行查询。  
 
 > [!TIP]
-> 最佳查询性能要求将数据引入到 Azure 数据资源管理器中。 Azure Data Lake Storage Gen2 在没有预先引入的情况下查询中的数据的功能只能用于不常查询的历史数据或数据。 [在 lake 中优化查询性能](#optimize-your-query-performance)以获得最佳结果。
+> 最佳查询性能要求将数据引入到 Azure 数据资源管理器中。 在不使用预先引入的情况下查询外部数据的功能应该仅用于不很少查询的历史数据或数据。 [在 lake 中优化查询性能](#optimize-your-query-performance)以获得最佳结果。
  
 
 ## <a name="create-an-external-table"></a>创建外部表
 
  > [!NOTE]
- > 当前支持的存储帐户是 Azure Blob 存储或 Azure Data Lake Storage Gen2。 当前支持的数据格式为 json、csv、tsv 和 txt。
+ > 当前支持的存储帐户是 Azure Blob 存储或 Azure Data Lake Storage （Gen1 和 Gen2）。
 
 1. 使用 `.create external table` 命令在 Azure 数据资源管理器中创建外部表。 [外部表命令](/azure/kusto/management/externaltables)中记录了诸如 `.show`、`.drop`和 `.alter` 之类的其他外部表命令。
 
@@ -46,6 +46,7 @@ Azure 数据资源管理器与 Azure Blob 存储和 Azure Data Lake Storage Gen2
     > * 使用分区定义外部表时，存储结构应是相同的。
 例如，如果使用 yyyy/MM/dd 格式（默认值）将表定义为 DateTime 分区，则 URI 存储文件路径应为*container1/yyyy/MM/dd/all_exported_blobs*。 
     > * 如果外部表按日期时间列进行分区，则始终在查询中包含已关闭范围的时间筛选器（例如，查询 `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-应比此（打开的范围）一 `ArchivedProducts | where Timestamp > ago(1h)`）更好。 
+    > * 所有[支持的引入格式](ingest-data-overview.md#supported-data-formats)均可使用外部表进行查询。
 
 1. 外部表显示在 Web UI 的左窗格中
 

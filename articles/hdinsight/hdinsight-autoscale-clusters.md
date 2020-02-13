@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 1073b9014c83ae5d52d0b1a740819c48c9622936
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152714"
+ms.locfileid: "77162848"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
 > [!Important]
-> 自动缩放功能仅适用于在5月 8 2019 日后创建的 Apache Spark、ApacheHive、LLAP 和 Apache HBase 群集。
+> 自动缩放功能仅适用于在5月 8 2019 日后创建的 Apache Spark、ApacheHive、LLAP 和 Apache HBase 群集。 LLAP 和 HBase 的自动缩放处于预览阶段。
 
 Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的辅助角色节点数。 当前无法缩放群集中的其他类型的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 然后，自动缩放会监视 analytics 负载的资源要求，并增加或减少辅助角色节点的数量。 此功能不收取额外费用。
 

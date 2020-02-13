@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049187"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169322"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>统一连接监视与连接监视器（预览）
 
@@ -403,7 +403,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
       ![添加目标2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. 单击 "终结点" 选项卡，选择 "作为目标的 Azure Vm"。 将使用 O365 和 D365 测试 Url 填充 Endpoint 列表，并按名称分组。  你还可以选择在同一连接监视器中的其他测试组中创建的终结点。 若要添加新的终结点，请单击屏幕右上角的 "+ 终结点"，并提供终结点 URL/IP/FQDN 和名称
+   2. 单击 "终结点" 选项卡以选择终结点作为目标。 将使用 O365 和 D365 测试 Url 填充 Endpoint 列表，并按名称分组。  你还可以选择在同一连接监视器中的其他测试组中创建的终结点。 若要添加新的终结点，请单击屏幕右上角的 "+ 终结点"，并提供终结点 URL/IP/FQDN 和名称
 
       ![添加终结点](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -574,7 +574,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 资源类型-networkWatchers/connectionMonitors/
 
-| 跃点数 | 指标显示名称 | 单位 | 聚合类型 | 说明 | Dimensions |
+| 指标 | 指标显示名称 | 单位 | 聚合类型 | 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | 失败的探测百分比 | 百分比 | 平均值 | 失败的连接监视探测百分比 | 无维度 |
 | AverageRoundtripMs | 平均往返时间（毫秒） | 毫秒 | 平均值 | 源和目标之间发送的连接监视探测的平均网络往返时间（毫秒） |             无维度 |

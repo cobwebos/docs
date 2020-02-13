@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: a1ed1eccd7a10d78cd503559469654e5562cde0c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5d29598b0962fc42c855e7a26917a34269c30ddb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615864"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158051"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -30,9 +30,9 @@ ms.locfileid: "67615864"
 
 Kubernetes 中的一个主要用户类型是“服务帐户”。 服务帐户存在于 Kubernetes API 中并由 Kubernetes API 进行管理。 服务帐户的凭据存储为 Kubernetes 机密，可供得到授权的 Pod 用于与 API 服务器进行通信。 大多数 API 请求都会提供服务帐户或普通用户帐户的身份验证令牌。
 
-普通用户帐户允许人工管理员或开发人员进行更为传统的访问，而不仅仅是服务和进程。 Kubernetes 本身不提供存储常规用户帐户和密码的标识管理解决方案。 而是将外部标识解决方案集成到 Kubernetes 中。 对于 AKS 群集，此集成标识解决方案就是 Azure Active Directory。
+普通用户帐户允许人工管理员或开发人员进行更为传统的访问，而不仅仅是服务和进程。 Kubernetes 本身并不提供用于存储常规用户帐户和密码的标识管理解决方案。 而是将外部标识解决方案集成到 Kubernetes 中。 对于 AKS 群集，此集成标识解决方案就是 Azure Active Directory。
 
-若要详细了解 Kubernetes 中的标识选项，请参阅 [Kubernetes 身份验证][kubernetes-authentication]。
+有关 Kubernetes 中的标识选项的详细信息，请参阅[Kubernetes authentication][kubernetes-authentication]。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 集成
 
@@ -40,9 +40,9 @@ Kubernetes 中的一个主要用户类型是“服务帐户”。 服务帐户�
 
 ![Azure Active Directory 与 AKS 群集集成](media/concepts-identity/aad-integration.png)
 
-借助集成了 Azure AD 的 AKS 群集，可授权用户或组访问一个命名空间或多个群集内的 Kubernetes 资源。 若要获取 `kubectl` 配置上下文，用户可以运行 [az aks get-credentials][az-aks-get-credentials] 命令。 随后在用户使用 `kubectl` 与 AKS 群集进行交互时，系统会提示他们使用自己的 Azure AD 凭据登录。 此方法提供用户帐户管理和密码凭据的单一源。 用户只能访问由群集管理员定义的资源。
+借助集成了 Azure AD 的 AKS 群集，可授权用户或组访问一个命名空间或多个群集内的 Kubernetes 资源。 若要获取 `kubectl` 配置上下文，用户可以运行[az aks get 凭据][az-aks-get-credentials]命令。 随后在用户使用 `kubectl` 与 AKS 群集进行交互时，系统会提示他们使用自己的 Azure AD 凭据登录。 此方法提供用户帐户管理和密码凭据的单一源。 用户只能访问由群集管理员定义的资源。
 
-AKS 群集中的 Azure AD 身份验证使用 OpenID Connect，后者是构建在 OAuth 2.0 协议顶层的标识层。 OAuth 2.0 定义获取和使用访问令牌以访问受保护资源的机制，而 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][openid-connect]。 为了验证通过 OpenID Connect 从 Azure AD 获取的身份验证令牌，AKS 群集使用 Kubernetes Webhook 令牌身份验证。 有关详细信息，请参阅 [Webhook 令牌身份验证文档][webhook-token-docs]。
+AKS 群集中的 Azure AD 身份验证使用 OpenID Connect，后者是构建在 OAuth 2.0 协议顶层的标识层。 OAuth 2.0 定义获取和使用访问令牌以访问受保护资源的机制，而 OpenID Connect 实现身份验证，作为对 OAuth 2.0 授权过程的扩展。 有关 OpenID Connect 的详细信息，请参阅[OPEN ID connect 文档][openid-connect]。 为了验证通过 OpenID Connect 从 Azure AD 获取的身份验证令牌，AKS 群集使用 Kubernetes Webhook 令牌身份验证。 有关详细信息，请参阅[Webhook 令牌身份验证文档][webhook-token-docs]。
 
 ## <a name="role-based-access-controls-rbac"></a>基于角色的访问控制 (RBAC)
 
@@ -53,7 +53,7 @@ AKS 群集中的 Azure AD 身份验证使用 OpenID Connect，后者是构建在
 ### <a name="azure-role-based-access-controls-rbac"></a>Azure 基于角色的访问控制 (RBAC)
 另一个用于控制资源访问权限的机制是 Azure 基于角色的访问控制 (RBAC)。 Kubernetes RBAC 用于 AKS 群集中的资源，而 Azure RBAC 用于 Azure 订阅中的资源。 使用 Azure RBAC，可创建“角色定义”，描述要应用的权限。 随后可在特定范围内向用户或组分配此角色定义，该范围可以是单个资源、资源组或整个订阅。
 
-有关详细信息，请参阅[什么是 Azure RBAC？][azure-rbac]
+有关详细信息，请参阅[什么是 AZURE RBAC？][azure-rbac]
 
 ## <a name="roles-and-clusterroles"></a>角色和 ClusterRole
 
@@ -73,9 +73,9 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Azure AD 和 Kubernetes RBAC，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
+若要开始 Azure AD 和 Kubernetes RBAC，请参阅将[Azure Active Directory 与 AKS 集成][aks-aad]。
 
-有关相关的最佳做法，请参阅[在 AKS 中进行身份验证和授权的最佳做法][operator-best-practices-identity]。
+有关相关的最佳实践，请参阅[AKS 中身份验证和授权的最佳实践][operator-best-practices-identity]。
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -83,7 +83,7 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 - [Kubernetes/AKS 安全性][aks-concepts-security]
 - [Kubernetes/AKS 虚拟网络][aks-concepts-network]
 - [Kubernetes/AKS 存储][aks-concepts-storage]
-- [Kubernetes/AKS 规模][aks-concepts-scale]
+- [Kubernetes/AKS scale][aks-concepts-scale]
 
 <!-- LINKS - External -->
 [kubernetes-authentication]: https://kubernetes.io/docs/reference/access-authn-authz/authentication
@@ -91,7 +91,7 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - Internal -->
-[openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
+[openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: azure-ad-integration-cli.md

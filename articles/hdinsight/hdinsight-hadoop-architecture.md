@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162883"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162202"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight 中的 Apache Hadoop 体系结构
 
@@ -46,6 +46,27 @@ NodeManagers 先运行应用程序包含的任务，然后将其进度和状态�
 所有 HDInsight 群集类型都部署 YARN。 ResourceManager 在进行高可用性部署时会使用一个主实例和一个辅助实例，二者分别运行在群集的第一个头节点和第二个头节点上。 一次只有一个 ResourceManager 实例处于活动状态。 NodeManager 实例跨群集的可用工作节点运行。
 
 ![Azure HDInsight 上的 Apache YARN](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>软删除
+
+若要从存储帐户中删除文件，请参阅：
+
+### <a name="azure-storage"></a>Azure 存储
+
+* [Azure 存储 Blob 的软删除](../storage/blobs/storage-blob-soft-delete.md)
+* [删除 Blob](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 第1代
+
+[还原-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Azure Data Lake Storage Gen2 的已知问题](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>清除清除
+
+**HDFS** > **高级核心站点**中的 `fs.trash.interval` 属性应该保留默认值 `0` 因为你不应将任何数据存储在本地文件系统上。 此值不影响远程存储帐户（WASB、ADLS GEN1、ABFS）
 
 ## <a name="next-steps"></a>后续步骤
 

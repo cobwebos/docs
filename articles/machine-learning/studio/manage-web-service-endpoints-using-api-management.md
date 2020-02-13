@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 9123e1d8e63382c6b89c86f99935dd288bb1bf16
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153411"
+ms.locfileid: "77168576"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理管理 Azure 机器学习 Studio （经典） web 服务
 ## <a name="overview"></a>概述

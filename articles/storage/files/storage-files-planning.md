@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062857"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157205"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -93,7 +93,7 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 目前，不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层，必须在该层中创建新的文件共享，并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具（例如 Robocopy 或 AzCopy）来执行此操作。
 
 > [!IMPORTANT]
-> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出支持 ZRS 的区域，请参阅[支持范围和区域可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)。
+> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 有关支持 ZRS 的区域的信息，请参阅[Azure 存储冗余](../common/storage-redundancy.md)。
 >
 > 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
 
@@ -155,41 +155,14 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 
 ## <a name="file-share-redundancy"></a>文件共享冗余
 
-Azure 文件标准共享支持四种数据冗余选项：本地冗余存储（LRS）、区域冗余存储（ZRS）、异地冗余存储（GRS）和异地冗余存储（GZRS）（预览版）。
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域中提供。
-
-以下部分介绍了不同的冗余选项之间的差异：
-
-### <a name="locally-redundant-storage"></a>本地冗余存储
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>区域冗余存储
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>异地冗余存储
+如果选择使用读取访问异地冗余存储（GRS），则应知道 Azure 文件目前不支持任何区域的读取访问异地冗余存储（GRS）。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同，并按 GRS 价格收费。
 
 > [!Warning]  
 > 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
 
-异地冗余存储 (GRS) 通过将数据复制到距主要区域数百英里以外的次要区域，用于在给定的一年内至少为对象提供 99.99999999999999%（16 个 9）的持久性。 如果存储帐户启用了 GRS，则即使遇到区域完全停电或导致主区域不可恢复的灾难，数据也能持久保存。
-
-如果选择使用读取访问异地冗余存储（GRS），则应知道 Azure 文件目前不支持任何区域的读取访问异地冗余存储（GRS）。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同，并按 GRS 价格收费。
-
-GRS 将数据复制到次要区域中的另一个数据中心，但仅当 Microsoft 发起了从主要区域到次要区域的故障转移时，才可读取这些数据。
-
-对于启用了 GRS 的存储帐户，将首先使用本地冗余存储（LRS）复制所有数据。 首先将更新提交到主要位置，并使用 LRS 复制更新。 然后，使用 GRS 以异步方式将更新复制到次要区域。 将数据写入次要位置后，还会使用 LRS 在该位置复制数据。
-
-主要和次要区域在一个存储缩放单元内管理跨单独的容错域和升级域管理副本。 存储缩放单元是数据中心内的基本复制单元。 此级别的复制由 LRS 提供;有关详细信息，请参阅 [本地冗余存储（LRS）：适用于 Azure 存储的低成本数据冗余](../common/storage-redundancy-lrs.md)。
-
-确定要使用哪个复制选项时，请记住以下几点：
-
-* 地域冗余存储（GZRS）（预览版）通过在三个 Azure 可用性区域之间同步复制数据，然后将数据异步复制到次要区域，提供高可用性和最大持久性。 你还可以启用对次要区域的读取访问权限。 GZRS 设计为在给定的一年内提供至少99.99999999999999% （16个9）的对象持久性。 有关 GZRS 的详细信息，请参阅[区域冗余存储以获得高可用性和最大持续性（预览版）](../common/storage-redundancy-gzrs.md)。
-* 区域冗余存储（ZRS）通过同步复制提供高可用性，对于某些方案，可能是比 GRS 更好的选择。 有关 ZRS 的详细信息，请参阅 [ZRS](../common/storage-redundancy-zrs.md)。
-* 对于异步复制，从数据写入到主要区域到数据复制到次要区域，这之间存在延迟。 发生区域性灾难时，如果无法从主要区域中恢复数据，则尚未复制到次要区域的更改可能会丢失。
-* 使用 GRS 时，副本不可用于读取或写入访问，除非 Microsoft 启动到次要区域的故障转移。 如果发生故障转移，则在故障转移完成后，你将具有对该数据的读取和写入访问权限。 有关详细信息，请参阅[灾难恢复指南](../common/storage-disaster-recovery-guidance.md)。
+Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域中提供。
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>集成到较大的文件共享（标准层）
 

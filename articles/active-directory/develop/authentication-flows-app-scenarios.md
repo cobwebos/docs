@@ -7,17 +7,17 @@ manager: CelesteDG
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2c13956fa84b0bdb1ff694878ff2994bee4b64c9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
-ms.translationtype: HT
+ms.openlocfilehash: bdcc93fe84d2fded914f21dfa2a29d9e2a2ab449
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698282"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161352"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>身份验证流和应用程序方案
 
@@ -40,9 +40,9 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 可按以下列表中所述对应用程序进行分类：
 
-- [受保护的资源与客户端应用程序](#protected-resources-vs-client-applications)：一些方案涉及到保护资源（例如 Web 应用或 Web API）。 还有一些方案涉及到获取安全令牌来调用受保护的 Web API。
-- [涉及或不涉及用户](#with-users-or-without-users)：一些方案涉及到已登录的用户，还有一些方案（例如守护程序方案）不涉及到用户。
-- [单页、公共客户端和机密客户端应用程序](#single-page-public-client-and-confidential-client-applications)：应用程序类型有三大类。 每种应用程序配合不同的库和对象使用。
+- [受保护的资源与客户端应用程序](#protected-resources-vs-client-applications)：在某些情况下，可以保护 web 应用或 web api 等资源。 还有一些方案涉及到获取安全令牌来调用受保护的 Web API。
+- [对于用户或没有用户](#with-users-or-without-users)：某些情况涉及到已登录的用户，但其他人（如守护程序方案）不涉及用户。
+- [单页、公共客户端和机密客户端应用程序](#single-page-public-client-and-confidential-client-applications)：这是应用程序类型的三个大类别。 每种应用程序配合不同的库和对象使用。
 - [登录受众](v2-supported-account-types.md#certain-authentication-flows-dont-support-all-the-account-types)：可用的身份验证流因登录受众而异。 一些流仅适用于工作或学校帐户。 还有一些流同时适用于工作或学校帐户和 Microsoft 个人帐户。 允许的受众取决于身份验证流。
 - [支持的 OAuth 2.0 流](#scenarios-and-supported-authentication-flows)：身份验证流用于实现请求令牌的应用程序方案。 应用程序方案和身份验证流之间不存在一对一的映射。
 - [支持的平台](#scenarios-and-supported-platforms-and-languages)：并非所有应用程序方案都适用于每个平台。
@@ -51,8 +51,8 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 身份验证方案涉及两个活动：
 
-- **获取受保护 Web API 的安全令牌**：Microsoft 建议使用[身份验证库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌，尤其是 Microsoft 身份验证库 (MSAL) 系列。
-- **保护 Web API 或 Web 应用**：保护 Web API 或 Web 应用资源的一大难题是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
+- **获取受保护的 WEB API 的安全令牌**： Microsoft 建议使用[身份验证库](reference-v2-libraries.md#microsoft-supported-client-libraries)来获取令牌，尤其是 microsoft 身份验证库（MSAL）家族。
+- **保护 WEB api 或 web 应用**：保护 web api 或 web 应用资源的一个挑战是验证安全令牌。 Microsoft 在某些平台上提供[中间件库](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>涉及或不涉及用户
 
@@ -68,9 +68,9 @@ Microsoft 标识平台 (v2.0) 终结点支持各种新式应用程序体系结�
 
 可从多种类型的应用程序获取安全令牌。 这些应用程序往往划分为三种类别：
 
-- **单页应用程序**：简称为 SPA。它们是一些 Web 应用，其中的令牌是从浏览器中运行的 JavaScript 或 TypeScript 应用获取的。 许多新式应用都有一个单页应用程序前端（主要以 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
+- **单页应用程序**：也称为 spa，它们是在浏览器中运行的 JavaScript 或 TypeScript 应用中获取标记的 web 应用。 许多新式应用都有一个单页应用程序前端（主要以 JavaScript 编写）。 该应用程序通常使用 Angular、React 或 Vue 等框架。 MSAL 是唯一支持单页应用程序的 Microsoft 身份验证库。
 
-- **公共客户端应用程序**：这些应用程序始终可将用户登录：
+- **公共客户端应用程序**：这些应用程序始终登录用户：
   - 代表已登录用户调用 Web API 的桌面应用
   - 移动应用
   - 在没有浏览器的设备上运行的应用，例如，在 iOT 上运行的应用
@@ -154,7 +154,7 @@ Microsoft 标识平台终结点支持各种应用体系结构的身份验证：
 
 ![调用 Web API 的移动应用](media/scenarios/mobile-app.svg)
 
-MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以指示它们改用嵌入式 Web 视图。 根据以下移动平台，存在一些特殊情况：通用 Windows 平台 (UWP)、iOS 或 Android。
+MSAL iOS 和 MSAL Android 默认使用系统 Web 浏览器。 但是，你可以指示它们改用嵌入式 Web 视图。 Specificities （UWP）、iOS 或 Android 都依赖于移动通用 Windows 平台平台。
 
 某些方案（例如，涉及到设备 ID 或设备注册相关条件访问的方案）要求在设备上安装一个[中介](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)。 中介的示例包括 Android 上的 Microsoft 公司门户，以及 Android 和 iOS 上的 Microsoft Authenticator。 此外，MSAL 现在可与中介交互。
 

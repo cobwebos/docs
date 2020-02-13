@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791841"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162338"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文本合并认知技能
 
@@ -29,10 +29,10 @@ Microsoft.Skills.Text.MergeSkill
 
 参数区分大小写。
 
-| 参数名称     | 描述 |
+| 参数名称     | 说明 |
 |--------------------|-------------|
-| insertPreTag  | 每次插入之前要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
-| insertPostTag | 每次插入后要包含的字符串。 默认值为 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPreTag  | 每次插入之前要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
+| insertPostTag | 每次插入后要包含的字符串。 默认值是 `" "`。 要忽略空格，请将值设置为 `""`。  |
 
 
 ##  <a name="sample-input"></a>示例输入
@@ -47,7 +47,7 @@ Microsoft.Skills.Text.MergeSkill
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]

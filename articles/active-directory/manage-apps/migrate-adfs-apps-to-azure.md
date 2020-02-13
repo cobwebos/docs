@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3c3eb715c3e371d7e2985f233df584fb83a9870
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159006"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>将应用程序从 AD FS 移到 Azure AD 
 
@@ -110,13 +110,13 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 
 |应用配置元素|说明|在 AD FS 配置中的位置|在 Azure AD 配置中的相应位置|SAML 令牌元素|
 |-----|-----|-----|-----|-----|
-|应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|不可用|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。）|不可用|
+|应用登录 URL|此应用程序的登录页的 URL。 这是用户进入后在 SP 启动的 SAML 流中登录到应用的位置。|空值|在 Azure AD 中，登录 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为登录 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到登录 URL。）|空值|
 |应用回复 URL|从标识提供者 (IdP) 的角度来看应用的 URL。 这是在用户于 IdP 处登录以后，发送用户和令牌的位置。</br></br> 这有时称为“SAML 断言使用方终结点”。|在应用的 AD FS 信赖方信任中查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|在 Azure AD 中，回复 URL 在 Azure 门户中配置，具体说来是在应用程序的“单一登录属性”中作为回复 URL 配置。</br></br>（可能需要选择“显示高级 URL 设置”才能看到回复 URL。）|映射到 SAML 令牌中的 **Destination** 元素。</br></br> 示例值： `https://contoso.my.salesforce.com`|
-|应用注销 URL|一个 URL，当用户从应用注销时会向其发送“注销清理”请求，以便注销 IdP 已将用户登录到其中的所有其他应用。|在“AD FS 管理”中的“信赖方信任”下查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|N/A。 Azure AD 不支持“单一注销”（即注销所有应用）。 它只将用户从 Azure AD 注销。|不可用|
+|应用注销 URL|一个 URL，当用户从应用注销时会向其发送“注销清理”请求，以便注销 IdP 已将用户登录到其中的所有其他应用。|在“AD FS 管理”中的“信赖方信任”下查找它。 右键单击信赖方，选择“属性”，然后选择“终结点”选项卡。|不适用。 Azure AD 不支持“单一注销”（即注销所有应用）。 它只将用户从 Azure AD 注销。|空值|
 |应用标识符|从 IdP 的角度来看应用的标识符。 通常使用登录 URL 值作为标识符（但也不一定）。</br></br> 应用有时将其称为“实体 ID”。|在 AD FS 中，此项为信赖方 ID。 右键单击信赖方信任，选择“属性”，然后选择“标识符”选项卡。|在 Azure AD 中，标识符是在 Azure 门户中配置的，具体说来是在应用程序的“单一登录属性”中作为标识符在“域和 URL”下配置的。 （可能需要选择“显示高级 URL 设置”复选框。）|对应于 SAML 令牌中的 **Audience** 元素。|
-|应用联合元数据|应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。|在应用的 AD FS 信赖方信任中查找应用的联合元数据 URL。 右键单击信任，选择“属性”，然后选择“监视”选项卡。|N/A。 Azure AD 不支持直接使用应用程序联合元数据。|不可用|
+|应用联合元数据|应用的联合元数据的位置。 IdP 用它来自动更新特定的配置设置，例如终结点或加密证书。|在应用的 AD FS 信赖方信任中查找应用的联合元数据 URL。 右键单击信任，选择“属性”，然后选择“监视”选项卡。|不适用。 Azure AD 不支持直接使用应用程序联合元数据。|空值|
 |用户标识符/**NameID**|一个属性，用于以唯一方式向应用指示 Azure AD 或 AD FS 中的用户标识。</br></br> 此属性通常为用户的 UPN 或电子邮件地址。|在 AD FS 中，可以看到此项充当信赖方的声明规则。 大多数情况下，声明规则在发出声明时，其类型以“nameidentifier”结尾。|在 Azure AD 中，用户标识符位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。</br></br>默认使用 UPN。|在 SAML 令牌中作为 **NameID** 元素从 IdP 传送到应用。|
-|要发送到应用的其他声明|除了用户标识符/**NameID**，通常还会将其他声明信息从 IdP 发送到应用。 示例包括：名、姓、电子邮件地址、用户所在的组。|在 AD FS 中，可以看到此项充当信赖方的其他声明规则。|在 Azure AD 中，它位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。 选择“查看”，然后编辑所有其他的用户属性。|不可用|
+|要发送到应用的其他声明|除了用户标识符/**NameID**，通常还会将其他声明信息从 IdP 发送到应用。 示例包括：名、姓、电子邮件地址、用户所在的组。|在 AD FS 中，可以看到此项充当信赖方的其他声明规则。|在 Azure AD 中，它位于 Azure 门户的应用程序“单一登录”属性的“用户属性”标头下。 选择“查看”，然后编辑所有其他的用户属性。|空值|
 
 ### <a name="representing-azure-ad-as-an-identity-provider-in-an-saas-app"></a>在 SaaS 应用中以标识提供者身份呈现 Azure AD
 在迁移过程中，需将应用配置为指向 Azure AD（而不是本地标识提供者）。 此部分主要介绍使用 SAML 协议的 SaaS 应用，而不是自定义 LOB 应用。 但是，这些概念会扩展到自定义 LOB 应用。
@@ -134,11 +134,11 @@ AD FS 和 Azure AD 的工作原理类似，因此配置信任、登录和注销 
 
 |配置元素|说明|AD FS|Azure AD|
 |---|---|---|---|
-|IdP </br>登录 </br>URL|从应用的角度来看，IdP 的登录 URL（将用户重定向到其中以便进行登录的位置）。|AD FS 登录 URL 是 AD FS 联合身份验证服务名称后跟“/adfs/ls/”。 例如：https&#58;//fs.contoso.com/adfs/ls/|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 将替换为你的租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”。**  > </br></br>对于使用 SAML-P 协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>对于使用 WS 联合身份验证协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
-|IdP </br>注销 </br>URL|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2** > </br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
-|令牌 </br>签名 </br>证书 (certificate)|一种证书，IdP 使用其私钥来签署颁发的令牌。 它可以验证令牌是否来自已配置应用所信任的 IdP。|AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。|在 Azure AD 中，令牌签名证书位于 Azure 门户中，具体说来是在应用程序的“单一登录”属性中的“SAML 签名证书”标头下， 可以在其中下载要上传到应用的证书。</br></br> 如果应用程序有多个证书，则可在联合元数据 XML 文件中找到所有证书。|
+|IdP </br>登录 </br>代码|从应用的角度来看，IdP 的登录 URL（将用户重定向到其中以便进行登录的位置）。|AD FS 登录 URL 是 AD FS 联合身份验证服务名称后跟“/adfs/ls/”。 例如：https&#58;//fs.contoso.com/adfs/ls/|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 将替换为你的租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”。**  > </br></br>对于使用 SAML-P 协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/saml2 </br></br>对于使用 WS 联合身份验证协议的应用：https&#58;//login.microsoftonline.com/{tenant-id}/wsfed|
+|IdP </br>注销 </br>代码|从应用的角度来看，IdP 的注销 URL（当用户选择注销应用时将用户重定向到其中的位置）。|对于 AD FS，注销 URL 是与登录 URL 相同的 URL，或者是附加了“wa=wsignout1.0”的同一 URL。 例如：https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Azure AD 的相应值取决于应用是否支持 SAML 2.0 注销。</br></br>如果应用支持 SAML 注销，则该值遵循以下模式，其中，{tenant-id} 的值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”：https&#58;//login.microsoftonline.com/{tenant-id}/saml2** > </br></br>如果应用不支持 SAML 注销：https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
+|标记 </br>签名 </br>证书 (certificate)|一种证书，IdP 使用其私钥来签署颁发的令牌。 它可以验证令牌是否来自已配置应用所信任的 IdP。|AD FS 令牌签名证书位于 AD FS 管理中的“证书”下。|在 Azure AD 中，令牌签名证书位于 Azure 门户中，具体说来是在应用程序的“单一登录”属性中的“SAML 签名证书”标头下， 可以在其中下载要上传到应用的证书。</br></br> 如果应用程序有多个证书，则可在联合元数据 XML 文件中找到所有证书。|
 |标识符/</br>“颁发者”|从应用的角度来看，IdP 的标识符（有时称为“颁发者 ID”）。</br></br>在 SAML 令牌中，此值显示为 **Issuer** 元素。|AD FS 的标识符通常是 AD FS 管理中的联合身份验证服务标识符，位于“服务” **“编辑联合身份验证服务属性”下。**  >  例如：http&#58;//fs.contoso.com/adfs/services/trust|Azure AD 的相应值遵循以下模式，其中的 {tenant-id} 值将替换为租户 ID。 该 ID 在 Azure 门户中的“Azure Active Directory” **“属性”下显示为“目录 ID”：https&#58;//sts.windows.net/{tenant-id}/**  > |
-|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” **“终结点”** “元数据” > “类型: 联合元数据”下。 >  >  例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../develop/azure-ad-federation-metadata.md)。
+|IdP </br>联合 </br>metadata|IdP 的公开提供的联合元数据的位置。 （某些应用使用联合元数据来分别代替管理员配置 URL、标识符、令牌签名证书。）|AD FS 联合元数据 URL 位于 AD FS 管理中的“服务” **“终结点”** “元数据” > “类型: 联合元数据”下。 >  >  例如：https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD 的相应值遵循 https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml 模式。 {TenantDomainName} 的值将替换为“contoso.onmicrosoft.com”格式的租户名称。 </br></br>有关详细信息，请参阅[联合元数据](../azuread-dev/azure-ad-federation-metadata.md)。
 
 ## <a name="moving-saas-apps"></a>移动 SaaS 应用
 

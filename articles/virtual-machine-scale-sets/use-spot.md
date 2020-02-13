@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544779"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162678"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>预览版：用于虚拟机规模集的 Azure 点 Vm 
 
@@ -25,9 +25,8 @@ ms.locfileid: "76544779"
 > 污点实例当前为公共预览版。
 > 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 对于公共预览版的早期部分，污点实例将具有固定价格，因此不会有任何基于价格的逐出。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 基于区域和 SKU，专色实例的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定价。 
 
@@ -105,7 +104,7 @@ $vmssConfig = New-AzVmssConfig `
 
 若要在逐出实例后将其删除，请将 `evictionPolicy` 参数更改为 `Delete`。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **问：** 创建后，点实例是否与标准实例相同？
 
@@ -161,11 +160,11 @@ $vmssConfig = New-AzVmssConfig `
 | Azure 通道               | Azure 点 Vm 可用性       |
 |------------------------------|-----------------------------------|
 | 企业协议         | 是                               |
-| 即用即付                | 是                               |
+| 即付即用                | 是                               |
 | 云服务提供商 (CSP) | [联系你的合作伙伴](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| 优势                     | 不可用                     |
+| 优点                     | 不可用                     |
 | 赞助                    | 不可用                     |
-| 免费试用                   | 不可用                     |
+| 免费试用版                   | 不可用                     |
 
 
 **问：** 可以在何处发布问题？

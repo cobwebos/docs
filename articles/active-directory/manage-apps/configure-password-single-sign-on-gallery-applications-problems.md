@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274194"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159040"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>配置 Azure AD 库应用程序密码单一登录时遇到的问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "74274194"
 
 但是，尽管 Microsoft 的技术能够在集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题需要一些时间才能解决。 如果其中一个集成无法正确工作，请打开支持案例以尽快解决这一问题。
 
-如果与该应用程序的供应商联系，请向他们发送我们的方法，这样，Microsoft 就可以与他们合作，将其应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
+如果与该应用程序的供应商联系，请向他们发送我们的方法，这样，Microsoft 就可以与他们合作，将其应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../azuread-dev/howto-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>凭据已填写并提交，但页面却显示凭据不正确
 
@@ -39,13 +39,13 @@ ms.locfileid: "74274194"
 
 - 先让用户使用为他们保存的凭据尝试**直接登录应用程序网站**。
 
-  * 如果登录有效，再让用户在**应用程序访问面板**“应用”部分的“应用程序磁贴”上，单击“更新凭据”[](https://myapps.microsoft.com/)，以将凭据更新为最新的已知用户名和密码。
+  * 如果登录有效，再让用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分的“应用程序磁贴”上，单击“更新凭据”，以将凭据更新为最新的已知用户名和密码。
 
   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
 - 如果用户自己分配凭据，让用户“检查以确保他们的密码在应用程序中未过期”，如果已经过期，直接登录应用程序**更新过期密码**。
 
-  * 密码在应用程序中更新好后，要求用户在**应用程序访问面板**“应用”部分中的“应用程序磁贴”上，单击“更新凭据”[](https://myapps.microsoft.com/)按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
+  * 密码在应用程序中更新好后，要求用户在[应用程序访问面板](https://myapps.microsoft.com/)“应用”部分中的“应用程序磁贴”上，单击“更新凭据”按钮，以将凭据更新到大家所知的最新有效的用户名和密码。
 
   * 如果或另一个管理员为该用户分配凭据，请导航到该应用程序的“用户和组”选项卡、选择分配并单击“更新凭据”按钮，找到该用户或组的应用程序分配。
 
@@ -59,7 +59,7 @@ ms.locfileid: "74274194"
 
 但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
+除此之外，**如果你与此应用程序的供应商联系，请** **将其发送**给我们，以便我们可以使用它们将其应用程序以本机方式集成到 Azure Active Directory。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../azuread-dev/howto-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>扩展在 Chrome 和 Firefox 中有效，但在 Internet Explorer 中无效
 
@@ -73,7 +73,7 @@ ms.locfileid: "74274194"
 
   * 不幸的是，这种情况会根据浏览器的版本、计算机的速度或被访问的站点而有所变化。 在这种情况下，我们建议联系支持，这样可以解决具体应用程序的集成。
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
+除此之外，**如果你与此应用程序的供应商联系，请** **将其发送**给我们，以便我们可以使用它们将其应用程序以本机方式集成到 Azure Active Directory。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../azuread-dev/howto-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>检查应用程序的登录页面近期是否已变更，或需要其他字段
 
@@ -81,7 +81,7 @@ ms.locfileid: "74274194"
 
 但是，尽管 Microsoft 的技术能够在应用程序集成中断时进行自动检测，但是可能无法立即找到这些问题，或者这些问题可能需要一些时间才能解决。 当集成无法正常工作时，可以打开支持案例以尽快解决这一问题。 
 
-除此之外，**如果与该应用程序的供应商联系**，请**向他们发送我们的方法**，如此一来，我们就可以与他们合作，将他们的应用程序与 Azure Active Directory 进行本机集成。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../develop/howto-app-gallery-listing.md)来让他们开始工作。
+除此之外，**如果你与此应用程序的供应商联系，请** **将其发送**给我们，以便我们可以使用它们将其应用程序以本机方式集成到 Azure Active Directory。 可以将该供应商发送至[列出 Azure Active Directory 应用程序库中的应用程序](../azuread-dev/howto-app-gallery-listing.md)来让他们开始工作。
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>如何安装访问面板浏览器扩展
 

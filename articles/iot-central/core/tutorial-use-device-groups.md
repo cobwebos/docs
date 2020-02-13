@@ -3,21 +3,19 @@ title: 使用 Azure IoT Central 应用程序中的设备组 |Microsoft Docs
 description: 作为操作员，了解如何使用设备组分析 Azure IoT Central 应用程序中的设备的遥测数据。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 4fd05631e7f54b6258978f70fdd5dfb9705f989b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026960"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167237"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>教程：使用设备组分析设备遥测
-
-
 
 本文介绍如何使用设备组来分析 Azure IoT Central 应用程序中的设备遥测，作为操作员。
 
@@ -29,17 +27,17 @@ ms.locfileid: "77026960"
 > * 创建设备组
 > * 使用设备组来分析设备遥测数据
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的环境传感器设备模板。
+在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)，并[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门中，创建要使用的**MXChip IoT DevKit**设备模板。
 
 ## <a name="create-simulated-devices"></a>创建模拟设备
 
-创建设备组之前，请从**环境传感器**设备模板添加至少五个模拟设备，以便在本教程中使用：
+创建设备组之前，请从**MXChip IoT DevKit**设备模板添加至少五个模拟设备，以便在本教程中使用：
 
-![五个模拟环境传感器设备](./media/tutorial-use-device-groups/simulated-devices.png)
+![五个模拟的传感器设备](./media/tutorial-use-device-groups/simulated-devices.png)
 
-对于四个环境传感器设备，使用 "**环境传感器属性**" 视图将客户名称设置为**Contoso**：
+对于四个模拟的传感器设备，使用 "**管理设备**" 视图将客户名称设置为*Contoso*：
 
 ![将客户名称设置为 Contoso](./media/tutorial-use-device-groups/customer-name.png)
 
@@ -49,17 +47,17 @@ ms.locfileid: "77026960"
 
 1. 选择左窗格中的 "**设备组**"。
 
-1. 选择“+ 新建”。
+1. 选择 **+** ：
 
     ![新设备组](media/tutorial-use-device-groups/image1.png)
 
-1. 为设备组指定一个名称，如**Contoso 设备**。 还可以添加说明。 设备组只能包含来自单个设备模板的设备。 选择要用于此组的**环境传感器**设备模板。
+1. 为设备组指定*Contoso 设备*名称。 还可以添加说明。 设备组只能包含来自单个设备模板的设备。 选择要用于此组的**MXChip IoT DevKit**设备模板。
 
-1. 通过选择 "**客户名称**" 属性、"**等于**比较运算符" 和 " **contoso** " 作为值，创建查询以确定属于该设备组的**Contoso**的设备。 你可以添加多个查询，并将满足**所有**条件的设备放入设备组中。 有权访问该应用程序的任何人都可以访问您创建的设备组，以便任何人都可以查看、修改或删除该设备组。
+1. 若要自定义设备组以只包含属于**Contoso**的设备，请选择 " **+ 筛选器**"。 选择 " **Customer Name** " 属性、"**等于**比较运算符" 和 " **Contoso** " 作为值。 你可以添加多个筛选器，并将满足**所有**筛选器条件的设备放入设备组中。 有权访问该应用程序的任何人都可以访问您创建的设备组，使任何人都可以查看、修改或删除该设备组：
 
     ![设备组查询](media/tutorial-use-device-groups/image2.png)
 
-    > [!NOTE]
+    > [!TIP]
     > 设备组是一个动态查询。 每当查看设备列表时，列表中都可能显示不同的设备。 列表内容取决于哪些设备当前满足查询的条件。
 
 1. 选择“保存”。
@@ -67,7 +65,7 @@ ms.locfileid: "77026960"
 > [!NOTE]
 > 对于 Azure IoT Edge 设备，请选择 Azure IoT Edge 模板来创建设备组。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 
 可以通过设备组使用**分析**来分析来自组中的设备的遥测数据。 例如，您可以绘制所有 Contoso 环境传感器报告的平均温度。
 

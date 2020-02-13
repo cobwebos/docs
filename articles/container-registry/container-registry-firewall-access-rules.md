@@ -2,13 +2,13 @@
 title: 防火墙访问规则
 description: 通过允许访问（"允许列表"） REST API 和存储终结点域名或服务特定的 IP 地址范围，配置从防火墙后面访问 Azure 容器注册表的规则。
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745198"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168021"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>配置规则以访问防火墙后面的 Azure 容器注册表
 
@@ -115,6 +115,10 @@ ms.locfileid: "75745198"
 在 Azure 虚拟网络中，使用网络安全规则筛选从虚拟机等资源到容器注册表的流量。 若要简化 Azure 网络规则的创建，请使用**AzureContainerRegistry** [服务标记](../virtual-network/security-overview.md#service-tags)。 服务标记代表一组用于全局或每个 Azure 区域访问 Azure 服务的 IP 地址前缀。 当地址更改时，将自动更新标记。 
 
 例如，创建包含目标**AzureContainerRegistry**的出站网络安全组规则，以允许流量流向 Azure 容器注册表。 若要仅允许在特定区域中访问服务标记，请按以下格式指定区域： **AzureContainerRegistry**。[*region name*]。
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>配置 MCR 的客户端防火墙规则
+
+如果需要从防火墙后面访问 Microsoft 容器注册表（MCR），请参阅配置[MCR 客户端防火墙规则](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)指南。 MCR 是所有 Microsoft 发布的 docker 映像的主注册表，例如 Windows Server 映像。
 
 ## <a name="next-steps"></a>后续步骤
 

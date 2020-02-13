@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: c3662515846965eb53e8cd19bcb1109407e0088f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 996cf4451811b46a99e7c0b64ca0fa21c1eba5f9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153190"
+ms.locfileid: "77168483"
 ---
 # <a name="manage-an-azure-machine-learning-studio-classic-workspace"></a>管理 Azure 机器学习 Studio （经典）工作区
 

@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3f68ae9665b6235d44411835299721b835745252
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048326"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162355"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥 Azure Database for MySQL 数据加密
 
 > [!NOTE]
 > 此时，你必须请求访问权限才能使用此功能。 为此，请联系 AskAzureDBforMySQL@service.microsoft.com。
 
-Azure Database for MySQL 使用客户托管密钥的数据加密，可以为静态数据保护创建自己的密钥（BYOK）。 它还允许组织在密钥和数据的管理中实现职责分离。 使用客户托管的加密，你需要负责和完全控制密钥的生命周期、密钥使用权限，以及对密钥的操作进行审核。
+通过 Azure Database for MySQL 的客户托管密钥进行数据加密使你能够将你的 qwn 密钥（BYOK）用于静态数据保护。 它还允许组织在密钥和数据的管理中实现职责分离。 通过客户托管的加密，你负责和完全控制密钥的生命周期、密钥使用权限，以及对密钥的操作进行审核。
 
-对于 Azure Database for MySQL，请在服务器级别设置数据加密。 使用这种形式的数据加密，可以使用加密数据加密密钥（DEK）中的密钥。 DEK 是客户管理的非对称密钥，存储在客户拥有的和客户管理的[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)实例中。 本文稍后将详细介绍 DEK。
+在服务器级别设置 Azure Database for MySQL 的客户托管密钥的数据加密。 对于给定服务器，客户托管的密钥称为密钥加密密钥（KEK），用于对服务使用的数据加密密钥（DEK）进行加密。 KEK 是存储在客户拥有的和客户管理的[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)实例中的非对称密钥。 本文稍后将更详细地介绍密钥加密密钥（KEK）和数据加密密钥（DEK）。
 
 Key Vault 是一种基于云的外部密钥管理系统。 它高度可用，并为 RSA 加密密钥提供可缩放的安全存储，可以选择通过 FIPS 140-2 第2级验证的硬件安全模块（Hsm）进行支持。 它不允许直接访问存储的密钥，但会向授权实体提供加密和解密服务。 Key Vault 可以生成密钥，导入密钥，或者[从本地 HSM 设备传输](../key-vault/key-Vault-hsm-protected-keys.md)密钥。
 
@@ -31,11 +31,11 @@ Key Vault 是一种基于云的外部密钥管理系统。 它高度可用，并
 
 Azure Database for MySQL 的数据加密具有以下优势：
 
-* 增加了对加密密钥的透明度、精细控制和管理。
-* 通过在 Azure Key Vault 中托管密钥来集中管理和组织。
-* 能够实现组织中密钥和数据的管理中的职责分离。
-* 能够将密钥管理与组织内的数据管理分开，因此 Key Vault 管理员可以撤消密钥访问权限，使加密数据库不可访问。
-* 与最终用户更好地信任，因为 Microsoft 无法在 Key Vault 中查看或提取加密密钥。
+* 数据访问由你完全控制，可以删除密钥并使数据库无法访问 
+* 完全控制密钥生命周期，包括对密钥的轮替以与公司政策保持一致
+* Azure Key Vault 中的集中管理和密钥组织
+* 能够在安全专员之间实现职责分离，以及 DBA 和系统管理员
+
 
 ## <a name="terminology-and-description"></a>术语和说明
 

@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: 教程
   items:
-    - name: 使用智能合同
+    - name: 创建智能合同
       href: send-transaction.md
+    - name: 使用数据管理器发布数据
+      href: data-manager-cosmosdb.md
 - name: 概念
   items:
     - name: 联盟
       href: consortium.md
     - name: 数据访问和安全性
       href: data-security.md
+    - name: 数据管理器概述
+      href: data-manager.md
     - name: 开发
       href: develop.md
     - name: 限制
@@ -41,6 +45,10 @@
   items:
     - name: 配置 Azure AD 访问
       href: configure-aad.md
+    - name: 配置数据管理器 - 门户
+      href: data-manager-portal.md
+    - name: 配置数据管理器 - CLI
+      href: data-manager-cli.md
     - name: 配置事务节点
       href: configure-transaction-nodes.md
     - name: 使用 Azure CLI 进行管理
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: 监视 Azure 区块链服务
       href: monitor-azure-blockchain-service.md
-- name: 区块链数据管理器
-  items:
-    - name: 数据管理器概述
-      href: data-manager.md
-    - name: 配置数据管理器 - 门户
-      href: data-manager-portal.md
-    - name: 配置数据管理器 - CLI
-      href: data-manager-cli.md
-    - name: 将数据发布到 Cosmos DB
-      href: data-manager-cosmosdb.md
 - name: 资源
   items:
     - name: Azure 区块链开发工具包

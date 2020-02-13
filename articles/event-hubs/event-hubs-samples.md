@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905350"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162052"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
 可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
@@ -46,7 +46,7 @@ ms.locfileid: "76905350"
 | azure-eventhub 版本5（最新版本） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | azure-eventhub 版本1（旧版） | [GitHub 位置](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
-## <a name="nodejs-samples"></a>Node.js 示例
+## <a name="javascript-samples"></a>JavaScript 示例
 
 | 版本 | 示例位置 |
 | ------- | ---------------- | 

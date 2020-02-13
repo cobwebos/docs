@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091785"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157238"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -52,7 +52,7 @@ Azure 数据资源管理器目前支持：
 
 ### <a name="ingestion-using-integration-services"></a>使用集成服务的引入
 
-* Azure 数据工厂 (ADF) 是 Azure 中分析工作负荷的完全托管数据集成服务，可使用[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)向/从 Azure 数据资源管理器复制数据。 有关详细信息，请参阅[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
+* Azure 数据工厂（ADF）是一项完全托管的数据集成服务，可用于在 Azure 中分析工作负荷，以及使用[受支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)向 azure 数据资源管理器复制数据。 有关详细信息，请参阅[将数据从 Azure 数据工厂复制到 azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 
@@ -80,7 +80,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 * 直接将数据引入到 Azure 数据资源管理器引擎（最适合用于探索和原型制作）：
 
-  * **内联引入**：包含带内数据的控制命令 (.ingest inline) 用于临时测试目的。
+  * **内联引入**：包含带内数据的 control 命令（内联）用于即席测试目的。
 
   * **从查询引入**：指向查询结果的控制命令 (.set、.set-or-append、.set-or-replace) 用于生成报表或小型临时表。
 
@@ -88,7 +88,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 
 **不同方法的延迟情况**：
 
-| 方法 | Latency |
+| 方法 | 延迟 |
 | --- | --- |
 | **内联引入** | 即时 |
 | **从查询引入** | 查询时间 + 处理时间 |
@@ -118,7 +118,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 ## <a name="supported-data-formats"></a>受支持的数据格式
 
 对于“从查询引入”以外的所有引入方法，请设置适当的数据格式，使 Azure 数据资源管理器能够对其进行分析。 
-* 支持的数据格式包括： TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON （行分隔、多行）、Avro 和 Parquet。 
+* 支持的数据格式包括： TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON （行分隔、多行）、Avro、Orc 和 Parquet。 
 * 支持 ZIP 和 GZIP 压缩。
 
 > [!NOTE]

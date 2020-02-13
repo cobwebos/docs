@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898852"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158156"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -170,7 +170,7 @@ In | 有权执行的操作
 
 ### <a name="customer-lockbox-access-approvercustomer-lockbox-access-approver-permissions"></a>[客户密码箱访问审批者](#customer-lockbox-access-approver-permissions)
 
-管理组织中的[客户密码箱请求](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests)。 他们接收客户密码箱请求的电子邮件通知，并且可以批准和拒绝来自 Microsoft 365 管理中心的请求。 他们还可以开启或关闭客户密码箱功能。 只有全局管理员可以重置分配到此角色的用户的密码。
+管理你的组织中的[客户密码箱请求](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests)。 他们接收客户密码箱请求的电子邮件通知，并且可以批准和拒绝来自 Microsoft 365 管理中心的请求。 他们还可以开启或关闭客户密码箱功能。 只有全局管理员可以重置分配到此角色的用户的密码。
 
 ### <a name="desktop-analytics-administratordesktop-analytics-administrator-permissions"></a>[桌面分析管理员](#desktop-analytics-administrator-permissions)
 
@@ -179,7 +179,7 @@ In | 有权执行的操作
 
 ### <a name="device-administratordevice-administrators-permissions"></a>[设备管理员](#device-administrators-permissions)
 
-此角色仅可作为 "[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)" 中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
+此角色只能作为[设备设置](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/)中的其他本地管理员进行分配。 拥有此角色的用户成为所有已加入 Azure Active Directory 的 Windows 10 设备上的本地计算机管理员。 他们无权管理 Azure Active Directory 中的设备对象。
 
 ### <a name="directory-readersdirectory-readers-permissions"></a>[目录读取器](#directory-readers-permissions)
 
@@ -194,7 +194,7 @@ In | 有权执行的操作
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[目录编写器](#directory-writers-permissions)
 
-这是要分配给不支持[同意框架](../develop/quickstart-register-app.md)的应用程序的传统角色。 不应将它分配给任何用户。
+这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-register-app.md)的应用程序。 不应将它分配给任何用户。
 
 ### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Dynamics 365 管理员/CRM 管理员](#crm-service-administrator-permissions)
 
@@ -219,7 +219,7 @@ In | 有权执行的操作
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
-具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 只有全局管理员才能分配其他管理员角色。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
 > 在 Microsoft 图形 API、Azure AD 图形 API 和 Azure AD PowerShell 中，此角色标识为“公司管理员”。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
@@ -252,7 +252,7 @@ In | 有权执行的操作
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[来宾邀请者](#guest-inviter-permissions)
 
-此角色中的用户可以在 "**成员可以邀请**用户" 设置设置为 "否" 时管理 Azure Active Directory B2B 来宾用户邀请。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
+此角色的用户可在“成员可以邀请”用户设置设置为“否”时管理 Azure Active Directory B2B 来宾用户邀请。 [关于 Azure AD B2B 协作](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)中提供了有关 B2B 协作的详细信息。 它不包括任何其他权限。
 
 ### <a name="helpdesk-administratorhelpdesk-administrator-permissions"></a>[支持管理员](#helpdesk-administrator-permissions)
 
@@ -300,7 +300,7 @@ In | 有权执行的操作
 
 ### <a name="message-center-readermessage-center-reader-permissions"></a>[消息中心读取器](#message-center-reader-permissions)
 
-此角色中的用户可以在已配置的服务（如 Exchange、Intune 和 Microsoft 团队）上监视[Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)中的通知和通知运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
+具有此角色的用户可以在其组织的 [Office 365 消息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)内，监视 Exchange、Intune 和 Microsoft Teams 等已配置服务的通知和公告运行状况更新。 消息中心读者会收到包含帖子和最新动态的每周电子邮件摘要，并能在 Office 365 内共享消息中心帖子。 在 Azure AD 中，分配到此角色的用户对 Azure AD 服务只拥有只读访问权限，如用户和组。 此角色无权查看、创建或管理支持票证。
 
 ### <a name="office-apps-administratoroffice-apps-administrator-permissions"></a>[Office 应用管理员](#office-apps-administrator-permissions)
 

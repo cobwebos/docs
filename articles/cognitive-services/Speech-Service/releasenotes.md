@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293583"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168146"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -28,7 +28,7 @@ ms.locfileid: "76293583"
 - 已为 aar 包添加关键字识别支持，并为 x86 和 x64 风格添加了支持。 
 - 目标-C： `SendMessage` 和 `SetMessageProperty` 方法添加到 `Connection` 对象。 请参阅[此处](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)的文档。
 - TTS C++ api 现在支持 `std::wstring` 作为合成文本输入，无需将 wstring 转换为字符串，然后再将其传递给 SDK。 详见[此处](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)。 
-- C#：[语言 id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp)和[源语言配置](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp)现在可用。
+- C#：[语言 ID](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp)和[源语言配置](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp)现在可用。
 - JavaScript：向 `Connection` 对象添加了一项功能，该功能可通过自定义消息作为回调 `receivedServiceMessage`从语音服务传递。
 - JavaScript：添加了对 `FromHost API` 的支持，便于与本地容器和主权云一起使用。 请参阅[此处](speech-container-howto.md)的文档。
 - JavaScript：我们现在通过[orgads](https://github.com/orgads)的内容来服从 `NODE_TLS_REJECT_UNAUTHORIZED`。 详见[此处](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)。
@@ -45,7 +45,7 @@ ms.locfileid: "76293583"
 
 - 请参阅上述重大更改下的 `OpenSSL` 更新。 修复了 Linux 和 Java 中的间歇性崩溃和性能问题（高负载下的锁争用）。 
 - Java：对高并发方案中的对象关闭进行了改进。
-- 重构了 Nuget 包。 我们删除了 `Microsoft.CognitiveServices.Speech.core.dll` 和 `Microsoft.CognitiveServices.Speech.extension.kws.dll` lib 文件夹下的三个副本，使 Nuget 包更小、更快速地下载，并添加了编译某些C++本机应用所需的标头。
+- 重构了 NuGet 包。 我们删除了 `Microsoft.CognitiveServices.Speech.core.dll` 和 `Microsoft.CognitiveServices.Speech.extension.kws.dll` lib 文件夹下的三个副本，使 NuGet 包更小、更快速地下载，并添加了编译某些C++本机应用所需的标头。
 - 修复了[本文](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)中的快速入门示例。 这些都是在 Linux、MacOS、Windows 上不显示 "未找到麦克风" 异常的情况下退出。
 - 修复了长语音识别的 SDK 崩溃，其中包含了某些代码路径，如[本示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)中所示。
 - 修复了 Azure Web 应用环境中的 SDK 部署错误，以解决[此客户问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)。
@@ -75,7 +75,7 @@ ms.locfileid: "76293583"
 - 添加了 `FromHost()` API，以便于本地容器和主权云轻松使用。
 - 为语音识别添加了自动源语言检测（在 Java C++和中）
 - 添加了 `SourceLanguageConfig` 对象用于语音识别，用于指定预期的源语言（在 Java C++和中）
-- 通过 Nuget 和 Unity 包增加了对 Windows （UWP）、Android 和 iOS 的 `KeywordRecognizer` 支持
+- 通过 NuGet 和 Unity 包增加了对 Windows （UWP）、Android 和 iOS 的 `KeywordRecognizer` 支持
 - 添加了用于执行会话的远程会话 Java API 异步批处理。
 
 **重大更改**
@@ -467,7 +467,7 @@ ms.locfileid: "76293583"
 
 **重大更改**
 
-- 将 C# 中的 `SpeechRecognitionResult.RecognizedText` 更改为 `SpeechRecognitionResult.Text`。
+- 将 C# 中的 `SpeechRecognitionResult.Text` 更改为 `SpeechRecognitionResult.RecognizedText`。
 
 **Bug 修复**
 

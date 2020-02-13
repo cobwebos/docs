@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933323"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167314"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下面的示例演示*函数 json*文件中的预热触发器，以及将在添加到应用时每个新实例上运行的[Java 函数](functions-reference-java.md)。
+下面的示例演示了在将每个新实例添加到应用程序时运行的预热触发器。
 
-函数必须命名为 ```warmup``` （不区分大小写），并且每个应用程序只能有一个预热函数。
-
-function.json 文件如下所示：
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-下面是 Java 代码：
+函数必须命名为 `warmup` （不区分大小写），并且每个应用程序只能有一个预热函数。
 
 ```java
 @FunctionName("Warmup")
@@ -243,7 +227,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `WarmupTrigger` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 | type | 不适用| 必需 - 必须设置为 `warmupTrigger`。 |
 | direction | 不适用| 必需 - 必须设置为 `in`。 |

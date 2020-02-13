@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒体服务实时传送视频流，通过 Azure 门户创建多比特率流 | Microsoft Docs
+title: 使用 Azure 媒体服务执行实时流式处理以使用 Azure 门户创建多比特率流 |Microsoft Docs
 description: 本教程会逐步指导用户使用 Azure 门户创建频道，该频道接收单比特率实时流，然后将其编码为多比特率流。
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015208"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162559"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务实时传送视频流，通过 Azure 门户创建多比特率流  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务执行实时传送视频流，以使用 Azure 门户创建多比特率流  
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -36,38 +36,38 @@ ms.locfileid: "69015208"
 有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
 ## <a name="common-live-streaming-scenario"></a>常见的实时流方案
-以下是创建常见的实时流应用程序时涉及的常规步骤。
+以下是在创建常见的实时流应用程序时涉及的常规步骤。
 
 > [!NOTE]
 > 目前，直播活动的最大建议持续时间为 8 小时。 如果需要较长时间运行某个频道，请联系 amshelp@microsoft.com。
 
 1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
 
-    如果你无法访问摄像机，则可以使用 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 等工具从视频文件生成实时源。
-1. 启动并配置一个可通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
+    如果你无权访问照相机，则可以使用[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)之类的工具从视频文件生成实时源。
+1. 启动并配置可以通过以下协议之一输出单比特率流的本地实时编码器：RTMP 或平滑流式处理。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，请查看此博客：[包含 OBS 的实时流式处理生产](https://link.medium.com/ttuwHpaJeT)。
 
     此步骤也可以在创建频道后执行。
 1. 创建并启动频道。 
-1. 检索通道引入 URL。 
+1. 检索频道引入 URL。 
 
     实时编码器使用引入 URL 将流发送到频道。
 1. 检索频道预览 URL。 
 
     使用此 URL 来验证频道是否正常接收实时流。
 1. 创建事件/节目（这也会创建资产）。 
-1. 发布事件（这将为关联的资产创建点播定位符）。    
+1. 发布事件（这会为关联的资产创建点播定位符）。    
 1. 在准备好开始流式传输和存档时，启动事件。
 1. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
 1. 要停止流式传输并存档事件时，停止事件。
 1. 删除事件（并选择性地删除资产）。   
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 以下是完成本教程所需具备的条件。
 
 * 要完成本教程，需要一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 
-  有关详细信息，请参阅[Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* 一个媒体服务 帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
+  有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个媒体服务帐户。 若要创建媒体服务帐户，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 可以发送单比特率实时流的摄像头和编码器。
 
 ## <a name="create-a-channel"></a>创建通道
@@ -76,7 +76,7 @@ ms.locfileid: "69015208"
 2. 选择“实时传送视频流”。
 3. 选择“自定义创建”。 选择此选项可以创建一个频道来进行实时编码。
 
-    ![创建频道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
+    ![创建通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. 单击“设置”。
 
    1. 选择“实时编码” 频道类型。 此类型指定要创建能够进行实时编码的频道。 这意味着传入单比特率流将发送到频道，并使用指定的实时编码器设置编码为多比特率流。 有关详细信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。 单击“确定”。
@@ -86,7 +86,7 @@ ms.locfileid: "69015208"
 
    1. 在此页上，可以选择流式处理协议。 对于“实时编码” 频道类型，其有效的协议选项包括：
 
-      * 单比特率分片 MP4（平滑流式处理）
+      * 单比特率分片 MP4（平滑流）
       * 单比特率 RTMP
 
         有关每个协议的详细说明，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
@@ -94,7 +94,7 @@ ms.locfileid: "69015208"
         运行频道或其关联的事件/节目时，不能更改协议选项。 如果需要其他协议，应当为每个流协议创建单独的频道。  
    2. 可以对引入中应用 IP 限制。 
 
-       可定义允许向该通道引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”），或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如'10.0.0.1(255.255.252.0)').
+       可定义允许向该通道引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”），或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。
 
        如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。
 6. 在“预览” 选项卡上，对预览应用 IP 限制。
@@ -109,7 +109,7 @@ ms.locfileid: "69015208"
 
 创建频道后，可以单击频道并选择“设置” 选项卡，在该选项卡中可以查看频道配置。 
 
-有关详细信息，请参阅 [使用 Azure 媒体服务实时传送视频流以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
+有关详细信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
 ## <a name="get-ingest-urls"></a>获取引入 URL
 创建通道后，可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
@@ -119,13 +119,13 @@ ms.locfileid: "69015208"
 ## <a name="create-and-manage-events"></a>创建并管理事件
 
 ### <a name="overview"></a>概述
-通道与事件/节目相关联，使用事件/节目，可控制实时流中的段的发布和存储。 频道管理事件/节目。 通道和节目的关系非常类似于传统媒体，通道具有恒定的内容流，而节目的范围限定为该通道上的一些定时事件。
+频道与事件/节目相关联，使用事件/节目，可以控制实时流中的段的发布和存储。 频道管理事件/节目。 频道和节目的关系非常类似于传统媒体，频道具有恒定的内容流，而节目的范围限定为该频道上的一些定时事件。
 
-可以通过设置“存档时段” 长度，指定希望保留事件录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将不断被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
+可以通过设置“存档时段” 长度，指定希望保留事件录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将全部被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
 每个事件都与某个资产关联。 若要发布事件，必须为关联的资产创建按需定位符。 创建此定位符后，可以生成提供给客户端的流 URL。
 
-一个通道最多支持三个并发运行的事件，因此可为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的事件，但只广播过去 10 分钟的内容。 需要创建两个同时运行的事件才能实现此目的。 一个事件设置为存档 6 小时的事件但不发布节目。 另一个事件设置为存档 10 分钟的事件并发布节目。
+一个通道最多支持三个并发运行的事件，因此可以为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的事件，但只广播过去 10 分钟的内容。 需要创建两个同时运行的事件才能实现此目的。 一个事件设置为存档 6 小时的事件但不发布节目。 另一个事件设置为存档 10 分钟的事件并发布节目。
 
 不应当将现有节目重用于新事件。 与之相反，应针对每个事件创建并启动新节目。
 
@@ -167,16 +167,16 @@ ms.locfileid: "69015208"
 ## <a name="watch-the-event"></a>观看事件
 要观看事件，请在 Azure 门户中单击“观看” ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
 
-![已创建](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
+![创建](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
 直播活动在停止后会自动转换为点播内容。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 如果已完成流式处理事件，并想要清理先前设置的资源，请遵循以下过程。
 
 * 停止从编码器推送流。
 * 停止通道。 停止通道后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
-* 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果通道处于停止状态，则不会产生任何费用。
+* 除非想要继续以点播流形式提供直播活动的存档，否则可以停止流式处理终结点。 如果通道处于停止状态，不会产生任何费用。
 
 ## <a name="view-archived-content"></a>查看存档的内容
 即使你停止并删除了事件，只要没有删除资产，用户也能够按需将已存档内容作为视频进行流式传输。 如果资产被某个事件使用，则无法将其删除，必须先删除该事件。 

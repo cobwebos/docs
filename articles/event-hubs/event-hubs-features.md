@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827723"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157170"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中心的功能和术语
 
@@ -33,7 +33,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 [此功能](event-hubs-for-kafka-ecosystem-overview.md)提供了一个终结点，该终结点允许客户使用 Kafka 协议与事件中心进行通信。 此集成为客户提供了一个 Kafka 终结点。 这允许客户将其现有 Kafka 应用程序配置为与事件中心进行通信，提供了运行其自己的 Kafka 群集的替代方式。 Apache Kafka 的事件中心支持 Kafka 协议 1.0 和更高版本。 
 
-通过这种集成，您不必运行 Kafka 群集或使用 Zookeeper 管理它们。 这还允许你使用事件中心的一些要求最严苛的功能，例如“捕获”、“自动扩展”和“异地灾难恢复”。
+通过这种集成，无需运行 Kafka 群集或通过 Zookeeper 管理这些群集。 这还允许你使用事件中心的一些要求最严苛的功能，例如“捕获”、“自动扩展”和“异地灾难恢复”。
 
 使用此集成，只需要进行配置更改，便可允许应用程序（例如 Mirror Maker）或框架（例如 Kafka Connect）以非群集方式工作。 
 
@@ -43,29 +43,29 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="publishing-an-event"></a>发布事件
 
-可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，这些库和类用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”  （如下一部分所述）或其标识。
+可以通过 AMQP 1.0、Kafka 1.0（和更高版本）或 HTTPS 发布事件。 服务总线提供了[客户端库和类](event-hubs-dotnet-framework-api-overview.md)，这些库和类用于从 .NET 客户端将事件发布到事件中心。 对于其他运行时和平台，可以使用任何 AMQP 1.0 客户端，例如 [Apache Qpid](https://qpid.apache.org/)。 可以逐个或者批量发送事件。 单个发布（事件数据实例）限制为 1 MB，不管它是单个事件还是事件批。 发布大于此限制的事件将导致出错。 发布者最好是不知道事件中心内的分区数，而只是通过其 SAS 令牌指定“分区键”（如下一部分所述）或其标识。
 
 是要使用 AMQP 还 HTTPS 根据具体的使用方案而定。 AMQP 除了需要使用传输级别安全 (TLS) 或 SSL/TLS 以外，还需要建立持久的双向套接字。 AMQP 在初始化会话时的网络成本更高，而 HTTPS 则每次请求都需要额外的 SSL 开销。 对于需要频繁进行发布的发布者来说，AMQP 的性能更高。
 
 ![事件中心](./media/event-hubs-features/partition_keys.png)
 
-事件中心可确保按顺序将共享分区键值的所有事件传送到同一分区。 如果将分区键与发布者策略结合使用，则发布者的标识与分区键的值必须匹配。 否则会出错。
+事件中心可确保按顺序将共享分区键值的所有事件传送到同一分区。 如果将分区键与发布者策略结合使用，则发布者的标识与分区键的值必须匹配。 否则，将会出错。
 
 ### <a name="publisher-policy"></a>发布者策略
 
-事件中心可让你通过发布者策略对事件发布者进行精细控制  。 发布者策略是运行时功能，旨在为大量的独立事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符：
+事件中心可让你通过 *发布者策略*对事件发布者进行精细控制。 发布者策略是运行时功能，旨在为大量独立的事件发布者提供方便。 借助发布者策略，每个发布者在使用以下机制将事件发布到事件中心时可以使用自身的唯一标识符。
 
 ```http
 //[my namespace].servicebus.windows.net/[event hub name]/publishers/[my publisher name]
 ```
 
-不需要提前创建发布者名称，但它们必须与发布事件时使用的 SAS 令牌匹配，以确保发布者标识保持独立。 使用发布者策略时，**PartitionKey** 值设置为发布者名称。 若要正常工作，这些值必须匹配。
+不需要提前创建发布者名称，但它们必须与发布事件时使用的 SAS 令牌匹配，以确保发布者标识保持独立。 使用发布者策略时，**PartitionKey** 值将设置为发布者名称。 若要正常工作，这些值必须匹配。
 
 ## <a name="capture"></a>捕获
 
 使用[事件中心捕获](event-hubs-capture-overview.md)，可以自动捕获事件中心的流式处理数据，并将其保存到所选 Blob 存储帐户或 Azure Data Lake 服务帐户。 可以从 Azure 门户启用捕获，并指定大小上限和时间范围以执行捕获。 使用事件中心捕获，用户可以指定自己的 Azure Blob 存储帐户和容器或 Azure Data Lake 服务帐户（其中之一用于存储已捕获数据）。 捕获的数据用 Apache Avro 格式编写。
 
-## <a name="partitions"></a>分区
+## <a name="partitions"></a>“度量值组”
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
@@ -75,11 +75,11 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ## <a name="event-consumers"></a>事件使用者
 
-从事件中心读取事件数据的任何实体称为“事件使用者”。  所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。 客户端不需要轮询数据可用性。
+从事件中心读取事件数据的任何实体称为“事件使用者”。 所有事件中心使用者通过 AMQP 1.0 会话进行连接，事件在可用时通过会话传送。 客户端不需要轮询数据可用性。
 
 ### <a name="consumer-groups"></a>使用者组
 
-事件中心的发布/订阅机制通过“使用者组”启用。  使用者组是整个事件中心的视图（状态、位置或偏移量）。 使用者组使多个消费应用程序都有各自独立的事件流视图，并按自身步调和偏移量独立读取流。
+事件中心的发布/订阅机制通过“使用者组”启用。 使用者组是整个事件中心的视图（状态、位置或偏移量）。 使用者组使多个消费应用程序都有各自独立的事件流视图，并按自身步调和偏移量独立读取流。
 
 在流处理体系结构中，每个下游应用程序相当于一个使用者组。 如果要将事件数据写入长期存储，则该存储写入器应用程序就是一个使用者组。 然后即可由另一独立的使用者组执行复杂的事件处理。 只能通过使用者组访问分区。 事件中心内始终有一个默认的使用者组，最多可为一个标准层事件中心创建 20 个使用者组。
 
@@ -99,7 +99,7 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 ### <a name="stream-offsets"></a>流偏移量
 
-“偏移量”是事件在分区中的位置。  可以将偏移量视为客户端游标。 偏移量是事件的字节编号。 有了该偏移量，事件使用者（读取者）便可以在事件流中指定要从其开始读取事件的点。 可以时间戳或者偏移量值的形式指定偏移量。 使用者负责在事件中心服务的外部存储其自身的偏移量值。 在分区中，每个事件都包含一个偏移量。
+“偏移量”是事件在分区中的位置。 可以将偏移量视为客户端游标。 偏移量是事件的字节编号。 有了该偏移量，事件使用者（读取者）便可以在事件流中指定要从其开始读取事件的点。 可以时间戳或者偏移量值的形式指定偏移量。 使用者负责在事件中心服务的外部存储其自身的偏移量值。 在分区中，每个事件都包含一个偏移量。
 
 ![事件中心](./media/event-hubs-features/partition_offset.png)
 
@@ -122,9 +122,9 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 为特定分区建立 AMQP 1.0 会话和链接后，事件中心服务会将事件传送到 AMQP 1.0 客户端。 与 HTTP GET 等基于提取的机制相比，此传送机制可以实现更高的吞吐量和更低的延迟。 将事件发送到客户端时，每个事件数据实例将包含重要的元数据，例如，用于简化对事件序列执行的检查点操作的偏移量和序列号。
 
 事件数据：
-* 偏移量
+* Offset
 * 序列号
-* 正文
+* Body
 * 用户属性
 * 系统属性
 
@@ -134,11 +134,14 @@ Azure 事件中心是可缩放的事件处理服务，它引入并处理大量�
 
 有关事件中心的详细信息，请访问以下链接：
 
-* 使用 [事件中心教程][Event Hubs tutorial]
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题解答](event-hubs-faq.md)
 * [事件中心示例][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [事件中心示例]: https://github.com/Azure/azure-event-hubs/tree/master/samples

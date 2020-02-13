@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
-ms.translationtype: MT
+ms.openlocfilehash: 187989153ae32704df8a7ff061e19fe35206e0e8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170166"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162508"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>创建沉浸式读者资源并配置 Azure Active Directory 身份验证
 
@@ -109,6 +109,10 @@ ms.locfileid: "76170166"
             Write-Host "New service principal created successfully"
         }
 
+        # Sleep for 5 seconds to allow the new service principal to propagate
+        Write-Host "Sleeping for 5 seconds"
+        Start-Sleep -Seconds 5
+
         Write-Host "Granting service principal access to the newly created Immersive Reader resource"
         $accessResult = az role assignment create --assignee $principalId --scope $resourceId --role "Cognitive Services User"
         if (-not $accessResult) {
@@ -174,7 +178,7 @@ ms.locfileid: "76170166"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 查看[node.js 快速入门](./quickstart-nodejs.md)，了解使用 node.js 可以通过沉浸式读者 SDK 执行的其他操作
+* 查看 [Node.js 快速入门](./quickstart-nodejs.md)，了解通过 Node.js 使用沉浸式阅读器 SDK 还可以做什么
 * 查看 [Python 教程](./tutorial-python.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
 * 查看[swift 教程](./tutorial-ios-picture-immersive-reader.md)，了解如何使用 swift 来处理沉浸式读者 SDK
 * 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)

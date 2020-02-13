@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: f7b5ca7112a6fb79586dc66b385e8015fe10e0b0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: cb91d51770c15914ff23e839cef8e7626ffd241f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153445"
+ms.locfileid: "77168637"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>用于 Azure 机器学习 Studio （经典） web 服务的 Excel 外接程序
 Excel 可以直接轻松调用 Web 服务，而无需编写任何代码。

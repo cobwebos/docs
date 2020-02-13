@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 76b2f2ae9774fe5951779912e679fa84350878c5
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153564"
+ms.locfileid: "77168778"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>为 Azure 机器学习 Studio （经典）定义自定义 R 模块
 

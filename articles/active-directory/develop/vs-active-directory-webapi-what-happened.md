@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 595a89ca58e970a9c886d0b6c2dd05aecd1411ef
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699863"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159380"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况
 
@@ -89,7 +89,7 @@ ms.locfileid: "76699863"
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />
     ```
 
-- 在 `System.IdentityModel.Tokens.Jwt` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>` 的 `<runtime><assemblyBinding>` 节点下添加了 `System.IdentityModel.Tokens.Jwt` 元素。
 
 - 如果选择了“读取目录数据”选项，在 `<appSettings>` 下添加了以下配置条目：
 
@@ -99,7 +99,7 @@ ms.locfileid: "76699863"
 
 ## <a name="code-changes-and-additions"></a>代码更改和添加
 
-- 向 `Controllers/ValueController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
+- 向 `[Authorize]` 和任何其他现有控制器添加了 `Controllers/ValueController.cs` 属性。
 
 - 添加了身份验证启动类 `App_Start/Startup.Auth.cs`（其中包含 Azure AD 身份验证的启动逻辑）或相应地对其进行了修改。 如果选择了“读取目录数据”选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 
@@ -129,4 +129,4 @@ ms.locfileid: "76699863"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

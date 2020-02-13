@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/27/2016
-ms.openlocfilehash: 8dd120731ca7eeb98fafe230b79ac50668cdc4e8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1b76147ac48d0bfb7b7bb1302e33b21e5ababb77
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152731"
+ms.locfileid: "77169063"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Azure 机器学习 Studio （经典）中的应用程序生命周期管理
 Azure 机器学习 Studio （经典）是一个工具，用于开发在 Azure 云平台中操作化的机器学习试验。 它类似于将 Visual Studio IDE 和可缩放云服务合并到单个平台。 你可以将标准的应用程序生命周期管理（ALM）实践从版本控制纳入到自动执行和部署 Azure 机器学习 Studio （经典）。 本文介绍一些选项和方法。

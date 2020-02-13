@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639865"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161930"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Azure Databricks 群集的区域性灾难恢复
 
@@ -37,7 +37,7 @@ Databricks 控制平面管理并监视 Databricks 工作区环境。 任何管�
 
    1. 在不同的 Azure 区域中预配多个 Azure Databricks 工作区。 例如，在“美国东部 2”区域中创建主要 Azure Databricks 工作区。 在另一个区域（例如“美国西部”）中创建辅助灾难恢复 Azure Databricks 工作区。
 
-   2. 使用[异地冗余存储](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)。 与 Azure Databricks 关联的数据默认存储在 Azure 存储中。 Databricks 作业的结果也存储在 Azure Blob 存储中，因此，在终止群集后，处理的数据具有持久性，并保持高可用性。 由于存储和 Databricks 群集共置在一起，因此必须使用异地冗余存储，以便在主要区域不再可访问时，可在次要区域中访问数据。
+   2. 使用[异地冗余存储](../storage/common/storage-redundancy.md)。 与 Azure Databricks 关联的数据默认存储在 Azure 存储中。 Databricks 作业的结果也存储在 Azure Blob 存储中，因此，在终止群集后，处理的数据具有持久性，并保持高可用性。 由于存储和 Databricks 群集共置在一起，因此必须使用异地冗余存储，以便在主要区域不再可访问时，可在次要区域中访问数据。
 
    3. 创建次要区域后，必须迁移用户、用户文件夹、笔记本、群集配置、作业配置、库、存储、初始化脚本，并重新配置访问控制。 以下部分介绍了其他详细信息。
 

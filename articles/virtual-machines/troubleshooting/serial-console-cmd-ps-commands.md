@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: a106984bc60d0ccfe29a1956213aec6f87ad30dd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090169"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167029"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
 
@@ -28,7 +28,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 使用 SAC 可以通过串行端口连接到正在运行的 OS。 从 SAC 启动 CMD 时，`sacsess.exe` 会从正在运行的 OS 内部启动 `cmd.exe`。 如果通过 RDP 连接到 VM，同时通过串行控制台功能连接到 SAC 的话，可在任务管理器中看到此进程。 通过 SAC 访问的 CMD 也就是通过 RDP 连接时使用的 `cmd.exe`。 可以使用所有相同的命令和工具，包括可以从该 CMD 实例启动 PowerShell。 SAC 与 Windows 恢复环境 (WinRE) 之间的主要差别在于，使用 SAC 可以管理正在运行的 OS，而 WinRE 会引导进入一个不同的精简 OS。 尽管 Azure VM 不支持访问 WinRE，但使用串行控制台功能可以通过 SAC 管理 Azure VM。
 
-由于 SAC 限制为 80x24 屏幕缓冲且不支持回滚，因此，需添加 `| more` 命令来每次显示一页输出。 使用 `<spacebar>` 查看下一页，或使用 `<enter>` 查看下一行。  
+由于 SAC 限制为 80x24 屏幕缓冲且不支持回滚，因此，需添加 `| more` 命令来每次显示一页输出。 使用 `<spacebar>` 查看下一页，或使用 `<enter>` 查看下一行。
 
 `SHIFT+INSERT` 是串行控制台窗口中的粘贴快捷键。
 
@@ -45,7 +45,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="enable-rdp"></a>启用 RDP
 `reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0`
 
-`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0` 
+`reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0`
 
 仅当已配置相关的组策略设置时，才需要第二个键（在 \Policies 下）。 下一次刷新组策略时，将重写值（如果已在组策略中配置此设置）。
 
@@ -55,12 +55,12 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 `sc query termservice`
 ###  <a name="view-service-logon-account"></a>查看服务登录帐户
 `sc qc termservice`
-### <a name="set-service-logon-account"></a>设置服务登录帐户 
+### <a name="set-service-logon-account"></a>设置服务登录帐户
 `sc config termservice obj= "NT Authority\NetworkService"`
 
 需要在等号后面添加空格。
 ### <a name="set-service-start-type"></a>设置服务启动类型
-`sc config termservice start= demand` 
+`sc config termservice start= demand`
 
 需要在等号后面添加空格。 可能的启动值包括 `boot`、`system`、`auto`、`demand`、`disabled`、`delayed-auto`。
 ### <a name="set-service-dependencies"></a>设置服务依赖关系
@@ -81,11 +81,11 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 `sc stop termservice`
 ## <a name="manage-networking-features"></a>管理网络功能
 ### <a name="show-nic-properties"></a>显示 NIC 属性
-`netsh interface show interface` 
+`netsh interface show interface`
 ### <a name="show-ip-properties"></a>显示 IP 属性
 `netsh interface ip show config`
 ### <a name="show-ipsec-configuration"></a>显示 IPSec 配置
-`netsh nap client show configuration`  
+`netsh nap client show configuration`
 ### <a name="enable-nic"></a>启用 NIC
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>将 NIC 设置为使用 DHCP
@@ -95,8 +95,8 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 应始终在来宾 OS 中将 Azure VM 配置为使用 DHCP 获取 IP 地址。 Azure 静态 IP 设置仍使用 DHCP 向 VM 提供静态 IP。
 ### <a name="ping"></a>Ping
-`ping 8.8.8.8` 
-### <a name="port-ping"></a>端口 ping  
+`ping 8.8.8.8`
+### <a name="port-ping"></a>端口 ping
 安装 telnet 客户端
 
 `dism /online /Enable-Feature /FeatureName:TelnetClient`
@@ -130,7 +130,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 基于通用化映像创建的 Azure VM 的本地管理员帐户将重命名为 VM 预配期间指定的名称。 因此，该帐户通常不是 `Administrator`。
 ### <a name="enable-user-account"></a>启用用户帐户
-`net user <username> /active:yes`  
+`net user <username> /active:yes`
 ### <a name="view-user-account-properties"></a>查看用户帐户属性
 `net user <username>`
 
@@ -191,15 +191,15 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="export-file-permissions-to-text-file"></a>将文件权限导出到文本文件
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>将文件权限保存到 ACL 文件
-`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`  
+`icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /save %temp%\MachineKeys_permissions_before.aclfile /t`
 ### <a name="restore-file-permissions-from-acl-file"></a>从 ACL 文件还原文件权限
 `icacls %programdata%\Microsoft\Crypto\RSA /save %temp%\MachineKeys_permissions_before.aclfile /t`
 
-使用 `/restore` 时的路径需是使用 `/save` 指定的文件夹的父文件夹。 在此示例中，`\RSA` 是在上述 `/save` 示例中指定的 `\MachineKeys` 文件夹的父级。
+使用 `/restore` 时的路径需是使用 `/save` 指定的文件夹的父文件夹。 在此示例中，`\RSA` 是在上述 `\MachineKeys` 示例中指定的 `/save` 文件夹的父级。
 ### <a name="take-ntfs-ownership-of-a-folder"></a>取得文件夹的 NTFS 所有权
-`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`  
+`takeown /f %programdata%\Microsoft\Crypto\RSA\MachineKeys /a /r`
 ### <a name="grant-ntfs-permissions-to-a-folder-recursively"></a>以递归方式授予对文件夹的 NTFS 权限
-`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`  
+`icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"`
 ## <a name="manage-devices"></a>管理设备
 ### <a name="remove-non-present-pnp-devices"></a>删除不存在的 PNP 设备
 `%windir%\System32\RUNDLL32.exe %windir%\System32\pnpclean.dll,RunDLL_PnpClean /Devices /Maxclean`
@@ -210,11 +210,11 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="show-os-version"></a>显示 OS 版本
 `ver`
 
-或 
+或
 
 `wmic os get caption,version,buildnumber /format:list`
 
-或 
+或
 
 `systeminfo  find /i "os name"`
 
@@ -222,7 +222,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="view-os-install-date"></a>查看 OS 安装日期
 `systeminfo | find /i "original"`
 
-或 
+或
 
 `wmic os get installdate`
 ### <a name="view-last-boot-time"></a>查看上次启动时间
@@ -238,7 +238,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 添加 `/f` 会强制正在运行的应用程序关闭，且不向用户发出警告。
 ### <a name="detect-safe-mode-boot"></a>检测安全模式启动
-`bcdedit /enum | find /i "safeboot"` 
+`bcdedit /enum | find /i "safeboot"`
 
 ## <a name="windows-commands---powershell"></a>Windows 命令 - PowerShell
 
@@ -249,7 +249,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 > [!CAUTION]
 > 在运行其他任何 PowerShell 命令之前，请从 PowerShell 会话中删除 PSReadLine 模块。 目前有一个已知问题：如果在 SAC 中的 PowerShell 会话内运行 PSReadLine，从剪贴板粘贴的文本中会出现额外的字符。
 
-请先检查是否已加载 PSReadLine。 在 Windows Server 2016、Windows 10 和更高版本的 Windows 上，默认已加载 PSReadLine。 在更低的 Windows 版本上，只有手动安装的 PSReadLine 才会加载。 
+请先检查是否已加载 PSReadLine。 在 Windows Server 2016、Windows 10 和更高版本的 Windows 上，默认已加载 PSReadLine。 在更低的 Windows 版本上，只有手动安装的 PSReadLine 才会加载。
 
 如果此命令返回提示符而未提供任何输出，则表示未加载该模块，此时，可以在 SAC 中继续照常使用 PowerShell 会话。
 
@@ -295,7 +295,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="show-nic-properties"></a>显示 NIC 属性
 `get-netadapter | where {$_.ifdesc.startswith('Microsoft Hyper-V Network Adapter')} |  format-list status,name,ifdesc,macadDresS,driverversion,MediaConNectState,MediaDuplexState`
 
-或 
+或
 
 `get-wmiobject win32_networkadapter -filter "servicename='netvsc'" |  format-list netenabled,name,macaddress`
 
@@ -319,6 +319,9 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="ping"></a>Ping
 `test-netconnection`
 
+> [!NOTE]
+> 写入进度 cmdlet 可能不适用于此命令。 作为缓解措施，可以在 PowerShell 中运行 `$ProgressPreference = "SilentlyContinue"` 以禁用进度栏。
+
 或
 
 `get-wmiobject Win32_PingStatus -Filter 'Address="8.8.8.8"' | format-table -autosize IPV4Address,ReplySize,ResponseTime`
@@ -333,15 +336,15 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 `Test-NetConnection` 适用于 2012+ 和更高版本。 对于 2008R2，请使用 `Net.Sockets.TcpClient`
 ### <a name="test-dns-name-resolution"></a>测试 DNS 名称解析
-`resolve-dnsname bing.com` 
+`resolve-dnsname bing.com`
 
-或 
+或
 
 `[System.Net.Dns]::GetHostAddresses('bing.com')`
 
 `Resolve-DnsName` 适用于 2012+ 和更高版本。 对于 2008R2，请使用 `System.Net.DNS`。
 ### <a name="show-windows-firewall-rule-by-name"></a>按名称显示 Windows 防火墙规则
-`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP` 
+`get-netfirewallrule -name RemoteDesktop-UserMode-In-TCP`
 ### <a name="show-windows-firewall-rule-by-port"></a>按端口显示 Windows 防火墙规则
 `get-netfirewallportfilter | where {$_.localport -eq 3389} | foreach {Get-NetFirewallRule -Name $_.InstanceId} | format-list Name,Enabled,Profile,Direction,Action`
 
@@ -349,7 +352,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 
 `(new-object -ComObject hnetcfg.fwpolicy2).rules | where {$_.localports -eq 3389 -and $_.direction -eq 1} | format-table Name,Enabled`
 
-`Get-NetFirewallPortFilter` 适用于 2012+ 和更高版本。 对于 2008R2，请使用 `hnetcfg.fwpolicy2` COM 对象。 
+`Get-NetFirewallPortFilter` 适用于 2012+ 和更高版本。 对于 2008R2，请使用 `hnetcfg.fwpolicy2` COM 对象。
 ### <a name="disable-windows-firewall"></a>禁用 Windows 防火墙
 `Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False`
 
@@ -360,7 +363,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="verify-user-account-is-enabled"></a>验证是否已启用用户帐户
 `(get-localuser | where {$_.SID -like "S-1-5-21-*-500"}).Enabled`
 
-或 
+或
 
 `(get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'").Disabled`
 
@@ -368,13 +371,13 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="add-local-user-to-local-group"></a>将本地用户添加到本地组
 `add-localgroupmember -group Administrators -member <username>`
 ### <a name="enable-local-user-account"></a>启用本地用户帐户
-`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser` 
+`get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | enable-localuser`
 
 此示例启用始终具有 SID `S-1-5-21-*-500` 的内置本地管理员帐户。 基于通用化映像创建的 Azure VM 的本地管理员帐户将重命名为 VM 预配期间指定的名称。 因此，该帐户通常不是 `Administrator`。
 ### <a name="view-user-account-properties"></a>查看用户帐户属性
 `get-localuser | where {$_.SID -like "S-1-5-21-*-500"} | format-list *`
 
-或 
+或
 
 `get-wmiobject Win32_UserAccount -Namespace "root\cimv2" -Filter "SID like 'S-1-5-%-500'" |  format-list Name,Disabled,Status,Lockout,Description,SID`
 
@@ -414,7 +417,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 此示例创建 `c:\bin` 文件夹，然后下载 Sysinternals 工具套件并将其提取到 `c:\bin`。
 ## <a name="miscellaneous-tasks"></a>其他任务
 ### <a name="show-os-version"></a>显示 OS 版本
-`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber` 
+`get-wmiobject win32_operatingsystem | format-list caption,version,buildnumber`
 ### <a name="view-os-install-date"></a>查看 OS 安装日期
 `(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).installdate)`
 ### <a name="view-last-boot-time"></a>查看上次启动时间
@@ -422,7 +425,7 @@ SAC 已包含在 Windows Server 2003 和所有更高版本中，但默认已禁�
 ### <a name="view-windows-uptime"></a>查看 Windows 运行时间
 `"{0:dd}:{0:hh}:{0:mm}:{0:ss}.{0:ff}" -f ((get-date)-(get-wmiobject win32_operatingsystem).converttodatetime((get-wmiobject win32_operatingsystem).lastbootuptime))`
 
-返回 `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` 形式的运行时间，例如 `49:16:48:00.00`。 
+返回 `<days>:<hours>:<minutes>:<seconds>:<milliseconds>` 形式的运行时间，例如 `49:16:48:00.00`。
 ### <a name="restart-windows"></a>重启 Windows
 `restart-computer`
 

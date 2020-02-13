@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbee6bfcca3ddb356abe9dceab2fca07c152b07
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3d2a2bb9dd543da7455a276075a829ef06032edb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961807"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159278"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何允许本机客户端应用程序与代理应用程序交互
 
@@ -31,7 +31,7 @@ ms.locfileid: "73961807"
 
 ![最终用户、Azure AD 和发布的应用程序之间的关系](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-若要发布本机应用程序，请使用 Azure AD 身份验证库，它负责身份验证并支持许多客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/native-app.md)。
+若要发布本机应用程序，请使用 Azure AD 身份验证库，它负责身份验证并支持许多客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](../azuread-dev/native-app.md)。
 
 本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。
 
@@ -60,7 +60,7 @@ ms.locfileid: "73961807"
 1. 在 "**重定向 URI** " 标题中，选择 "**公用客户端（移动 & 桌面）** "，然后键入应用程序的重定向 URI。
 1. 选择并阅读**Microsoft 平台策略**，然后选择 "**注册**"。 将创建并显示新应用程序注册的概述页。
 
-有关创建新的应用程序注册的更多详细信息，请参阅将[应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+有关创建新的应用程序注册的更多详细信息，请参阅将[应用程序与 Azure Active Directory 集成](../develop/quickstart-register-app.md)。
 
 ## <a name="step-3-grant-access-to-your-proxy-application"></a>步骤3：授予对代理应用程序的访问权限
 
@@ -105,6 +105,6 @@ HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本机应用程序流的详细信息，请参阅[Azure Active Directory 中的本机应用](../develop/native-app.md)。
+有关本机应用程序流的详细信息，请参阅[Azure Active Directory 中的本机应用](../azuread-dev/native-app.md)。
 
 了解如何[在 Azure Active Directory 中设置应用程序的单一登录](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。

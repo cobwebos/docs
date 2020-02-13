@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046099"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162083"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -122,7 +122,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 ### <a name="file-system-features"></a>文件系统功能
 
-| 功能 | 支持状态 | 说明 |
+| Feature | 支持状态 | 说明 |
 |---------|----------------|-------|
 | 访问控制列表 (ACL) | 完全支持 | Windows ACL 由 Azure 文件同步进行保留，并由 Windows Server 在服务器终结点上强制实施。 如果直接在云中访问文件，则 Azure 文件不（尚不）支持 Windows ACL。 |
 | 硬链接 | 已跳过 | |
@@ -139,7 +139,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 ### <a name="files-skipped"></a>跳过的文件
 
-| 文件/文件夹 | 说明 |
+| 文件/文件夹 | 注意 |
 |-|-|
 | pagefile.sys | 特定于系统的文件 |
 | Desktop.ini | 特定于系统的文件 |
@@ -178,7 +178,7 @@ Azure 文件同步不支持在 Windows Server 2012 R2 上的同一卷上进行�
 - 如果在启用云分层之后在卷上启用了重复数据删除，则初始重复数据删除优化作业将优化尚未分层的卷上的文件，并将对云分层产生以下影响：
     - 可用空间策略将根据卷上的可用空间，使用热度地图继续对文件进行分层。
     - 由于对文件进行重复数据删除优化作业，日期策略将跳过可能已有资格进行分层的文件分层。
-- 对于正在进行的重复数据删除优化作业, 如果尚未对文件进行分层, 则使用日期策略[MinimumFileAgeDays](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)的云分层将会延迟。 
+- 对于正在进行的重复[数据删除优化](https://docs.microsoft.com/powershell/module/deduplication/set-dedupvolume?view=win10-ps)作业，如果尚未对文件进行分层，则使用日期策略的云分层将会延迟。 
     - 示例：如果 MinimumFileAgeDays 设置为7天，而云分层日期策略为30天，则日期策略将在37天后对文件进行分级。
     - 注意：按 Azure 文件同步对文件进行分层后，重复数据删除优化作业将跳过该文件。
 - 如果运行 Windows Server 2012 R2 的服务器将安装 Azure 文件同步代理升级到 Windows Server 2016 或 Windows Server 2019，则必须执行以下步骤以支持在同一卷上进行重复数据删除和云分层：  
@@ -246,22 +246,22 @@ Azure 文件同步现不支持：
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>其他分层存储管理 (HSM) 解决方案
 其他 HSM 解决方案均无法使用 Azure 文件同步。
 
-## <a name="region-availability"></a>适用区域
+## <a name="region-availability"></a>上市区域
 Azure 文件同步仅在以下区域中可用：
 
-| 地区 | 数据中心位置 |
+| 区域 | 数据中心位置 |
 |--------|---------------------|
 | 澳大利亚东部 | 新南威尔士州 |
 | 澳大利亚东南部 | 维多利亚 |
 | 巴西南部 | 圣保罗州 |
-| 加拿大中部 | 多伦多 |
+| 加拿大中部 | Toronto |
 | 加拿大东部 | 魁北克市 |
-| 印度中部 | 普纳 |
-| 美国中部 | 衣阿华州 |
+| 印度中部 | 浦那 |
+| 美国中部 | 爱荷华州 |
 | 东亚 | 香港特别行政区 |
-| 美国东部 | 弗吉尼亚 |
-| 美国东部 2 | 弗吉尼亚 |
-| 法国中部 | 巴黎 |
+| 美国东部 | 弗吉尼亚州 |
+| 美国东部 2 | 弗吉尼亚州 |
+| 法国中部 | Paris |
 | 法国南部 * | 马赛 |
 | 韩国中部 | 首尔 |
 | 韩国南部 | 釜山 |
@@ -270,28 +270,28 @@ Azure 文件同步仅在以下区域中可用：
 | 美国中北部 | 伊利诺斯州 |
 | 北欧 | 爱尔兰 |
 | 南非北部 | 约翰内斯堡 |
-| 南非西部 * | 开普敦 |
-| 美国中南部 | 德克萨斯 |
+| 南非西部 * | 佛得角 |
+| 美国中南部 | Texas |
 | 印度南部 | 金奈 |
 | 东南亚 | 新加坡 |
-| 英国南部 | 伦敦 |
+| 英国南部 | London |
 | 英国西部 | 加的夫 |
-| US Gov 亚利桑那州 | 亚利桑那 |
-| US Gov 德克萨斯州 | 德克萨斯 |
-| US Gov 弗吉尼亚州 | 弗吉尼亚 |
-| 阿拉伯联合酋长国北部 | 迪拜 |
-| 阿拉伯联合酋长国中部 * | 阿布扎比 |
+| US Gov 亚利桑那州 | Arizona |
+| US Gov 德克萨斯州 | Texas |
+| US Gov 弗吉尼亚州 | 弗吉尼亚州 |
+| 阿拉伯联合酋长国北部 | Dubai |
+| 阿拉伯联合酋长国中部 * | 阿尔阿布扎比 |
 | 西欧 | 荷兰 |
-| 美国中西部 | 怀俄明 |
-| 美国西部 | 加利福尼亚 |
-| 美国西部 2 | 华盛顿 |
+| 美国中西部 | Wyoming |
+| 美国西部 | California |
+| 美国西部 2 | Washington |
 
 Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件共享进行同步。
 
 对于用星号标记的区域，必须与 Azure 支持部门联系，请求访问这些区域中的 Azure 存储。 [本文档](https://azure.microsoft.com/global-infrastructure/geographies/)概述了此过程。
 
 ### <a name="azure-disaster-recovery"></a>Azure 灾难恢复
-为了防止 Azure 区域丢失，Azure 文件同步集成了[异地冗余存储冗余](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) 选项。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 如果发生导致 Azure 区域暂时或永久脱机的灾难，则 Microsoft 会将存储故障转移到配对区域。 
+若要防止丢失 Azure 区域，Azure 文件同步与[异地冗余存储](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)（GRS）集成。 GRS 存储的工作原理是在主要区域中的存储（你通常与之交互）和配对次要区域中的存储之间使用异步块复制。 如果发生导致 Azure 区域暂时或永久脱机的灾难，则 Microsoft 会将存储故障转移到配对区域。 
 
 > [!Warning]  
 > 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。

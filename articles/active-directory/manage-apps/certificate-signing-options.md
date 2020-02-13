@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dc911ff06208b1fd0af7651c8274a45c958bf0cd
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274747"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159193"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
 
@@ -53,7 +53,7 @@ Azure AD 支持两种签名算法或安全哈希算法（Sha）来对 SAML 响�
 
 若要更改应用程序的 SAML 证书签名选项和证书签名算法，请选择有问题的应用程序：
 
-1. 在[Azure Active Directory 门户](https://aad.portal.azure.com/)中，登录到你的帐户。 此时会显示“Azure Active Directory 管理中心”页。
+1. 在[Azure Active Directory 门户](https://aad.portal.azure.com/)中，登录到你的帐户。 此时将显示 " **Azure Active Directory 管理中心**" 页。
 1. 在左窗格中，选择“企业应用程序”。 此时将显示帐户中企业应用程序的列表。
 1. 选择一个应用程序。 此时将显示应用程序的 "概述" 页。
 
@@ -76,4 +76,4 @@ Azure AD 支持两种签名算法或安全哈希算法（Sha）来对 SAML 响�
 ## <a name="next-steps"></a>后续步骤
 
 * [针对不在 Azure Active Directory 应用库中的应用程序配置单一登录](configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录的问题](../develop/howto-v1-debug-saml-sso-issues.md)
+* [排查基于 SAML 的单一登录的问题](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

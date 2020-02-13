@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5406d301f6487753bc13b291db6d22eaedbf67b7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066806"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161607"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -54,7 +54,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 ### <a name="understanding-attribute-mapping-types"></a>了解属性映射类型
 
 使用属性映射可以控制属性在第三方 SaaS 应用程序中的填充方式。
-有四种不同的受支持的映射类型：
+支持四种不同的映射类型：
 
 - **直接** – 目标属性由 Azure AD 中的链接对象的属性值填充。
 - **常量**-目标属性使用指定的特定字符串填充。
@@ -111,7 +111,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 - Salesforce
 - ServiceNow
-- 工作日
+- Workday
 - Azure Active Directory（支持 [Azure AD 图形 API 默认属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
 - 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用（需要添加[核心架构](https://tools.ietf.org/html/rfc7643)中定义的属性）
 
@@ -143,7 +143,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
    4. 选择 "**编辑 AppName 的属性列表**"。
    5. 在属性列表的底部，在提供的字段中输入自定义属性的相关信息。 然后选择 "**添加属性**"。
 
-对于 SCIM 应用程序，属性名称必须遵循以下示例中所示的模式。 可以根据应用程序的要求自定义 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架构：扩展：2.0： CustomExtensionName： CustomAttribute
+对于 SCIM 应用程序，属性名称必须遵循以下示例中所示的模式。 可以根据应用程序的要求自定义 "CustomExtensionName" 和 "CustomAttribute"，例如： urn： ietf： params： scim：架构：扩展：2.0： CustomExtensionName： CustomAttribute 或 urn： ietf： params： scim：架构： extension：CustomExtensionName：2.0： CustomAttributeName：值
 
 这些说明仅适用于启用了 SCIM 的应用程序。 使用 SCIM 的应用程序（如 ServiceNow 和 Salesforce）不与 Azure AD 集成，因此，在添加自定义属性时，它们不需要此特定的命名空间。
 

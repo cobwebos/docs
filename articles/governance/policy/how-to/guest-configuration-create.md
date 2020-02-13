@@ -3,12 +3,12 @@ title: 如何创建来宾配置策略
 description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Linux Vm 的 Azure 策略来宾配置策略。
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278458"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167183"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 
@@ -374,7 +374,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 GitHub 上的一篇文章提供了一个用于创建用于 Linux 计算机的 GPG 密钥的好参考，其中[生成了新的 GPG 密钥](https://help.github.com/en/articles/generating-a-new-gpg-key)。
 
-发布内容后，将名为 `GuestConfigPolicyCertificateValidation` 和值 `enabled` 的标记追加到需要进行代码签名的所有虚拟机。 可以使用 Azure 策略大规模传递此标记。 请参阅[应用标记及其默认值](../samples/apply-tag-default-value.md)示例。 完成此标记后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
+发布内容后，将名为 `GuestConfigPolicyCertificateValidation` 和值 `enabled` 的标记追加到需要进行代码签名的所有虚拟机。 请参阅[标记示例](../samples/built-in-policies.md#tags)，了解如何使用 Azure 策略按比例交付标记。 完成此标记后，使用 `New-GuestConfigurationPolicy` cmdlet 生成的策略定义将通过来宾配置扩展启用要求。
 
 ## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>来宾配置策略分配故障排除（预览版）
 

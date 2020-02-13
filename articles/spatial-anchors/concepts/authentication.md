@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152595"
+ms.locfileid: "77161675"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>对 Azure 空间锚点进行身份验证和授权
 
@@ -92,7 +92,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD 用户身份验证
 
-对于以 Azure Active Directory 用户为目标的应用程序，建议的方法是使用用户的 Azure AD 标记，如以下文档所述，可以使用 ADAL 库获取该令牌： [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md);应按照 "快速入门" 下列出的步骤进行操作，其中包括：
+对于以 Azure Active Directory 用户为目标的应用程序，建议的方法是将 Azure AD 令牌用于用户，可以使用[MSAL 库](../../active-directory/develop/msal-overview.md)获取该令牌。 你应按照[注册应用快速入门](../../active-directory/develop/quickstart-register-app.md)中列出的步骤进行操作，其中包括：
 
 1. Azure 门户中的配置
     1.  在 Azure AD 中将应用程序注册为**本机应用程序**。 注册过程中，需要确定应用程序是否应为多租户应用程序，并提供应用程序允许的重定向 Url。
@@ -118,7 +118,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
         3.  如果你的应用程序支持**所有 Microsoft 帐户用户**，请将此值替换为**Common**
     3.  在令牌请求上，将**资源**设置为 "https://sts.mixedreality.azure.com"。 此 "资源" 将指示 Azure AD 应用程序正在请求 Azure 空间锚定服务的令牌。
 
-这样，应用程序应该能够从 ADAL 获取 Azure AD 令牌;可以在云会话配置对象上将该 Azure AD 令牌设置为**authenticationToken** 。
+这样，应用程序应该能够从 MSAL 获取 Azure AD 令牌;可以在云会话配置对象上将该 Azure AD 令牌设置为**authenticationToken** 。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ configuration.AuthenticationToken(LR"(MyAuthenticationToken)");
 
 此处，假设你的应用程序使用自己的机制（例如： Microsoft 帐户、PlayFab、Facebook、Google ID、自定义用户名/密码等）来向其后端服务进行身份验证。 向后端服务对用户进行身份验证后，该服务可以检索 Azure AD 令牌，并为 Azure 空间锚定访问令牌，并将其返回给客户端应用程序。
 
-使用 ADAL 库检索 Azure AD 访问令牌，如以下文档所述： [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md);应按照 "快速入门" 下列出的步骤进行操作，其中包括：
+使用[MSAL 库](../../active-directory/develop/msal-overview.md)检索 Azure AD 访问令牌。 你应按照[注册应用快速入门](../../active-directory/develop/quickstart-register-app.md)中列出的步骤进行操作，其中包括：
 
 1.  Azure 门户中的配置：
     1.  在 Azure AD 中注册应用程序：

@@ -13,12 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697466"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160961"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
 
@@ -47,7 +47,7 @@ ms.locfileid: "76697466"
 
 ## <a name="use-the-development-support-tools"></a>使用开发支持工具
 
-| 工具  | Description  |
+| 工具  | 说明  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
 | [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
@@ -58,7 +58,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 
 如果通过搜索未找到你的问题的解答，请在 Stack Overflow 中提交新问题。 在提问时请使用以下标记之一，以便社区更快速地识别问题和解答问题：
 
-|组件/区域  | 标记 |
+|组件/区域  | Tags |
 |---------|---------|
 | ADAL 库 | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL 库     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
@@ -79,8 +79,8 @@ Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代�
 
 有关库及其 GitHub 存储库的列表，请参阅以下内容：
 
-* [ADAL](active-directory-authentication-libraries.md) 库和 GitHub 存储库
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md)， [MSAL。Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)和 MSAL 库和 GitHub 存储库[obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc)
+* [Azure Active Directory 身份验证库（ADAL）](../azuread-dev/active-directory-authentication-libraries.md)库和 GitHub 存储库
+* [Microsoft 身份验证库（MSAL）](reference-v2-libraries.md)库和 GitHub 存储库
 
 ## <a name="open-a-support-request"></a>提出支持请求
 

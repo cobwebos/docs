@@ -21,7 +21,11 @@
 - name: 概念
   items:
     - name: 位置与合作伙伴
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: 中心位置和合作伙伴
+          href: virtual-wan-locations-partners.md
+        - name: 面向合作伙伴的自动化指南
+          href: virtual-wan-configure-automation-providers.md
     - name: IPsec 策略
       href: virtual-wan-ipsec.md
 - name: 操作方法指南
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: 配置自动化（虚拟 WAN 合作伙伴）
-      href: virtual-wan-configure-automation-providers.md
     - name: 下载全局 VPN 配置文件和基于中心的 VPN 配置文件
       href: global-hub-profile.md
     - name: 配置路由

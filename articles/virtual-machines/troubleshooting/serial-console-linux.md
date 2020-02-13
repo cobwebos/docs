@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772510"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167018"
 ---
 # <a name="azure-serial-console-for-linux"></a>适用于 Linux 的 Azure 串行控制台
 
@@ -32,7 +32,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 > 在全球 Azure 区域和 Azure 政府公共预览版中，此串行控制台已正式发布。 它目前在 Azure 中国云中不可用。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
 
@@ -59,7 +59,7 @@ Azure 门户中的串行控制台提供对 Linux 虚拟机（Vm）和虚拟机�
 > [!NOTE]
 > 如果在串行控制台中没有看到任何内容，请确保在 VM 上启用了启动诊断。 命中**输入**通常会修复串行控制台中没有显示任何内容的问题。
 
-分配      | 串行控制台访问
+分发      | 串行控制台访问
 :-----------|:---------------------
 Red Hat Enterprise Linux    | 默认已启用串行控制台访问。
 CentOS      | 默认已启用串行控制台访问。
@@ -78,7 +78,7 @@ Oracle Linux        | 默认已启用串行控制台访问。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>访问串行控制台的常见方案
 
-方案          | 串行控制台中的操作
+场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 *FSTAB* 文件受损 | 按 **Enter** 键继续，然后使用文本编辑器修复 *FSTAB* 文件。 可能需要在单用户模式下执行此操作。 有关详细信息，请参阅[如何修复 fstab 问题](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用串行控制台访问 GRUB 和单一用户模式](serial-console-grub-single-user-mode.md)的串行控制台部分。
 错误的防火墙规则 |  如果已将 iptables 配置为阻止 SSH 连接，则可以使用串行控制台与 VM 交互，而无需使用 SSH。 可在[iptables 手册页](https://linux.die.net/man/8/iptables)找到更多详细信息。<br>同样，如果你的 firewalld 阻止 SSH 访问，你可以通过串行控制台访问 VM，然后重新配置 firewalld。 可在[firewalld 文档](https://firewalld.org/documentation/)中找到更多详细信息。
@@ -124,7 +124,7 @@ SSH 配置问题 | 访问串行控制台并更改设置。 无论 VM 的 SSH 配
 
 问题                           |   缓解操作
 :---------------------------------|:--------------------------------------------|
-在出现连接标题后按 **Enter** 不会显示登录提示。 | 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的是自定义 VM、强化的设备或 GRUB 配置，导致 Linux 无法连接到串行端口，则可能出现此问题。
+在出现连接标题后按 **Enter** 不会显示登录提示。 | 可能未正确配置 GRUB。 运行以下命令： `grub2-mkconfig -o /etc/grub2-efi.cfg` 和/或 `grub2-mkconfig -o /etc/grub2.cfg`。 有关详细信息，请参阅[按 Enter 不起任何作用](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)。 如果你运行的是自定义 VM、强化的设备或 GRUB 配置，导致 Linux 无法连接到串行端口，则可能出现此问题。
 串行控制台文本仅占用屏幕大小的一部分（通常在使用文本编辑器后）。 | 串行控制台不支持协商窗口大小 ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt))，这意味着不会发送 SIGWINCH 信号来更新屏幕大小，因此 VM 不会了解终端的大小。 安装可提供 `resize` 命令的 xterm 或类似实用工具，然后运行 `resize`。
 无法粘贴长字符串。 | 串行控制台将粘贴到终端的字符串长度限制为 2048 个字符，以防止串行端口带宽过载。
 SLES BYOS 映像中的键盘输入不正常。 仅限偶尔识别键盘输入。 | 这是 Plymouth 包的问题。 Plymouth 不应在 Azure 中运行，因为你不需要初始屏幕，Plymouth 会干扰平台使用串行控制台的功能。 删除具有 `sudo zypper remove plymouth` 的 Plymouth，然后重新启动。 或者，通过将 `plymouth.enable=0` 追加到行尾来修改 GRUB 配置的内核行。 可以通过以下方式执行此操作：[在启动时编辑启动项](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles)，或编辑 `/etc/default/grub`中的 GRUB_CMDLINE_LINUX 行，使用 `grub2-mkconfig -o /boot/grub2/grub.cfg`重新生成 GRUB，然后重新启动。
@@ -138,7 +138,7 @@ A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题�
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 可以。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
+A. 是的。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
 
 **问：我是否可以使用串行控制台而不是 SSH 连接？**
 
@@ -165,7 +165,7 @@ A. 是的，它是！ 请参阅[用于虚拟机规模集的串行控制台](seri
 
 **问：如果我使用 SSH 密钥身份验证设置 VM 或虚拟机规模集，是否仍可使用串行控制台连接到我的 VM/虚拟机规模集实例？**
 
-A. 可以。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。
+A. 是的。 由于串行控制台不需要 SSH 密钥，因此你只需设置用户名/密码组合。 为此，可以在 Azure 门户中选择“重置密码”，然后使用这些凭据登录到串行控制台。
 
 ## <a name="next-steps"></a>后续步骤
 * 使用串行控制台[访问 GRUB 和单用户模式](serial-console-grub-single-user-mode.md)。

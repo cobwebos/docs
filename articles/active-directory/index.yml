@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: e11e0edf214d3362784285cc24ee209855383119
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: zh-CN
   ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77159295"
+  ms.locfileid: "77166170"
 highlightedContent:
   items:
   - title: 什么是 Azure AD？
@@ -70,15 +70,15 @@ conceptualContent:
       text: 查看详细信息
   - title: 身份验证
     links:
-    - url: ./authentication/concept-mfa-howitworks.md
+    - url: ./authentication/overview-authentication.md
       itemType: concept
-      text: 工作原理：Azure MFA
-    - url: ./authentication/concept-sspr-howitworks.md
-      itemType: concept
-      text: Azure AD 自助密码重置
-    - url: ./authentication/concept-password-ban-bad.md
-      itemType: concept
-      text: Azure AD 密码保护
+      text: 什么是 Azure AD 身份验证？
+    - url: ./authentication/tutorial-enable-sspr.md
+      itemType: tutorial
+      text: 启用自助式密码重置
+    - url: ./authentication/tutorial-enable-azure-mfa.md
+      itemType: tutorial
+      text: 启用 Azure 多重身份验证
     footerLink:
       url: ./authentication/index.yml
       text: 查看详细信息

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848871"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161658"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD Graph API
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C （Azure AD B2C）租户可以拥有数千或数百�
 对于 B2C 租户，有两种与图形 API 通信的主要模式：
 
 * 对于**交互式**的、运行一次的任务，您应在执行任务时作为 B2C 租户中的管理员帐户。 此模式需要管理员使用凭据登录，才能执行对图形 API 的任何调用。
-* 对于**自动**的连续任务，你应使用你为执行管理任务所需的权限而提供的某种类型的服务帐户。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 [OAuth 2.0 客户端凭据授予](../active-directory/develop/service-to-service.md)的*应用程序 ID* 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
+* 对于**自动**的连续任务，你应使用你为执行管理任务所需的权限而提供的某种类型的服务帐户。 在 Azure AD 中，可以通过注册应用程序并向 Azure AD 进行身份验证来执行此操作。 这通过利用使用 *OAuth 2.0 客户端凭据授予*的[应用程序 ID](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) 来完成。 在这种情况下，应用程序作为其本身而不是用户来调用图形 API。
 
 本文介绍如何执行自动用例。 构建一个执行用户创建、读取、更新和删除 (CRUD) 操作的 .NET 4.5 `B2CGraphClient`。 客户端将拥有一个 Windows 命令行接口 (CLI)，允许用户调用各种方法。 但是，代码以非交互式、自动化的方式进行编写。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 创建应用程序或用户前，需要一个 Azure AD B2C 租户。 如果还没有，请创建一个[Azure Active Directory B2C 租户](tutorial-create-tenant.md)。
 
@@ -73,7 +73,7 @@ Azure AD B2C 租户后，需要使用[Azure 门户](https://portal.azure.com)注
 
 ## <a name="get-the-sample-code"></a>获取示例代码
 
-此代码示例是一个 .NET 控制台应用程序，它使用[Active Directory 身份验证库（ADAL）](../active-directory/develop/active-directory-authentication-libraries.md)与 Azure AD 图形 API 进行交互。 它的代码演示如何调用 API 以编程方式管理 Azure AD B2C 租户中的用户。
+此代码示例是一个 .NET 控制台应用程序，它使用[Active Directory 身份验证库（ADAL）](../active-directory/azuread-dev/active-directory-authentication-libraries.md)与 Azure AD 图形 API 进行交互。 它的代码演示如何调用 API 以编程方式管理 Azure AD B2C 租户中的用户。
 
 您可以[下载示例存档](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip)（\*.zip）或克隆 GitHub 存储库：
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 除了用户管理之外，还可以使用 Azure AD 图形 API 执行许多其他操作。 [Azure AD 图形 API 参考](/previous-versions/azure/ad/graph/api/api-catalog)提供了每个操作的详细信息以及示例请求。
 
-## <a name="use-custom-attributes"></a>使用自定义特性
+## <a name="use-custom-attributes"></a>使用自定义属性
 
 大多数使用者应用程序需要存储某些类型的自定义用户配置文件信息。 实现此目的的一种方法是在 B2C 租户中定义自定义属性。 然后，可以采用与处理用户对象上任何其他属性相同的方式来处理该属性。 可以更新属性、删除属性、按属性查询、发送属性等，如登录令牌中的声明一样。
 

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031371"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157121"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>使用 REST 代理与 Azure HDInsight 中的 Apache Kafka 群集进行交互
 
@@ -24,6 +24,8 @@ Kafka REST 代理允许通过 HTTP 上的 REST API 与 Kafka 群集进行交互�
 
 如果没有 REST 代理，Kafka 客户端需要与 Kafka 群集或对等互连 VNet 位于同一 VNet 中。 REST 代理使你可以连接位于任何位置的数据创建者或使用者。 部署 REST 代理会为你的群集创建新的公共终结点，你可以在门户设置中找到此终结点。
 
+![Kafka REST 代理体系结构](./media/rest-proxy/rest-proxy-architecture.png)
+
 有关 API 支持的操作的完整规范，请参阅[APACHE KAFKA REST 代理 API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)。
 
 ### <a name="security"></a>安全性
@@ -32,11 +34,11 @@ Kafka REST 代理允许通过 HTTP 上的 REST API 与 Kafka 群集进行交互�
 
 在启用 REST 代理的情况下创建 Kafka 群集时，你将提供应有权访问 REST 终结点的 AAD 安全组。 需要访问 REST 代理的 Kafka 客户端（应用程序）应由组所有者注册到此组。 组所有者可以通过门户或 Powershell 执行此操作。
 
-在向 REST 代理终结点发出请求之前，客户端应用程序应获取 OAuth 令牌来验证正确安全组的成员身份。 有关 OAuth 令牌工作方式的详细信息，请参阅[使用 OAuth 2.0 代码授予流授予对 Azure Active Directory web 应用程序的访问权限](../../active-directory/develop/v1-protocols-oauth-code.md)。 有关在 python 中获取 OAuth 令牌的示例，请参阅[客户端应用程序示例](#client-application-sample)
+在向 REST 代理终结点发出请求之前，客户端应用程序应获取 OAuth 令牌来验证正确安全组的成员身份。 有关 OAuth 令牌工作方式的详细信息，请参阅[使用 OAuth 2.0 代码授予流授予对 Azure Active Directory web 应用程序的访问权限](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)。 有关在 python 中获取 OAuth 令牌的示例，请参阅[客户端应用程序示例](#client-application-sample)
 
 当客户端应用程序具有 OAuth 令牌后，它们必须在向 REST 代理发出的 HTTP 请求中传递该令牌。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 1. 将应用程序注册到 Azure AD。 你编写的用于与 Kafka REST 代理交互的客户端应用程序将使用此应用程序的 ID 和机密对 Azure 进行身份验证。
 1. 创建 Azure AD 安全组，并将你向 Azure AD 注册的应用程序添加到安全组。 此安全组将用于控制允许哪些应用程序与 REST 代理交互。 有关创建 Azure AD 组的详细信息，请参阅[使用 Azure Active Directory 创建基本组和添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。

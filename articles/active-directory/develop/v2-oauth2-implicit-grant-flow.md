@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42d315b44a76e79d6f1db48e5024094099564a98
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d7f27ad2adc5d4abf2b5ec993b3398ebf1370f52
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700475"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159669"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 使用 Microsoft 标识平台终结点，你可以使用 Microsoft 的个人和工作或学校帐户，将用户登录到单页应用。 主要在浏览器上运行的单页面和其他 JavaScript 应用程序在身份验证时面临一些有趣的挑战：
 
@@ -42,6 +40,35 @@ ms.locfileid: "76700475"
 
 > [!NOTE]
 > Microsoft 标识平台终结点并不支持所有 Azure Active Directory （Azure AD）方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[microsoft 标识平台限制](active-directory-v2-limitations.md)。
+
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 隐式授权的适用方案
+
+OAuth2 规范声明，设计隐式授权是为了实现用户代理应用程序，即在浏览器中执行的 JavaScript 应用程序。 此类应用程序的鲜明特征是，JavaScript 代码用于访问服务器资源（通常是 Web API）以及相应地更新应用程序用户体验。 以 Gmail 或 Outlook Web Access 之类的应用程序为例：在收件箱中选择某封邮件时，只有邮件可视化面板会更改以显示新的选择内容，页面的其余部分保持不变。 此特征明显不同于传统的基于重定向的 Web 应用，在后者中，每个用户交互都会造成整页回发，并造成整页呈现新的服务器响应。
+
+将基于 JavaScript 的方法发挥到极致的应用程序称为单页应用程序或 SPA。 其思想是，这些应用程序仅提供初始 HTML 页和关联的 JavaScript，所有后续交互都由通过 JavaScript 执行的 Web API 调用驱动。 但是，应用程序大多是由回传驱动，但偶尔执行 JS 调用的混合方法也并非罕见；关于隐式流用法的介绍也与这些方法有关。
+
+基于重定向的应用程序通常通过 Cookie 确保请求的安全性，但该方法不适用于 JavaScript 应用程序。 Cookie 仅适用于生成 Cookie 时所针对的域，而 JavaScript 调用可能会定向到其他域。 事实上，情况往往是这样的：以调用 Microsoft Graph API、Office API、Azure API 的应用程序为例 – 这些应用程序全都位于提供应用程序的域之外。 JavaScript 应用程序的发展趋势是完全没有后端，全部依赖于第三方 Web API 来实现其业务功能。
+
+当前情况下，若要保护对 Web API 的调用，首选方法是使用 OAuth2 持有者令牌方法，该方法的每个调用都伴随 OAuth2 访问令牌的使用。 Web API 会检查传入的访问令牌，如果在其中发现所需的范围，则会授予对已请求操作的访问权限。 隐式流提供了方便的机制供 JavaScript 应用程序获取 Web API 的访问令牌，并提供很多与 Cookie 相关的优点：
+
+* 可以可靠地获取令牌而无需跨源调用 – 强制注册令牌要返回到的重定向 URI 可保证令牌不会转到其他位置
+* JavaScript 应用程序可以针对任意数目的目标 Web API 获取所需数目的访问令牌 – 对域没有限制
+* 会话或本地存储等 HTML5 功能可授予令牌缓存和生存期管理的完全控制权，但是 Cookie 管理对于应用而言是不透明的
+* 访问令牌不容易遭受跨站点请求伪造 (CSRF) 攻击
+
+隐式授权流不颁发刷新令牌，这主要是出于安全考虑。 刷新令牌的范围不像访问令牌的范围一样，因此，赋予更多的功率，万一泄露会造成更大的损害。在隐式流中，令牌在 URL 中传递，因此拦截的风险高于授权代码授予的风险。
+
+不过，JavaScript 应用程序提供另一种可任其处置的机制，可用于续订访问令牌，且不会重复提示用户输入凭据。 应用程序可以使用隐藏的 iframe 来针对 Azure AD 的授权终结点执行新的令牌请求：只要浏览器仍然针对 Azure AD 域提供活动会话（读取：有会话 Cookie），则身份验证请求就可以成功且不需要用户交互。
+
+此模型授予 JavaScript 应用程序相关功能，以允许其独立续订访问令牌，甚至允许其为新的 API 获取新的访问令牌，前提是用户此前已表示同意。 这样可以避免因获取、维护和保护高价值项目（例如刷新令牌）而增加的负担。 实现无提示续订的项目（Azure AD 会话 Cookie）在应用程序外部进行管理。 此方法的另一优势是，用户可以通过登录到 Azure AD 的任意应用程序从 Azure AD（在任意浏览器标签页中运行）注销。 这样会删除 Azure AD 会话 Cookie，而 JavaScript 应用程序会自动失去为已注销用户续订令牌的功能。
+
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>隐式授权适合我的应用吗？
+
+隐式授权与其他授权相比有更多的风险，并且你需要注意的方面有很好的记录（例如，[在隐式流中误用访问令牌来模拟资源所有者] [OAuth2）和 [OAuth 2.0 威胁模型和安全注意事项] [OAuth2]）（& a）。 但是，风险走势之所以较高，主要是因为它要启用执行活动代码的应用程序，并由远程资源提供给浏览器。 如果要规划一个 SPA 体系结构，则不要设置后端组件或尝试通过 JavaScript 调用 Web API，而应使用隐式流来获取令牌。
+
+如果应用程序是本机客户端，则隐式流并不太适合。 在使用本机客户端的情况下，如果没有 Azure AD 会话 Cookie，应用程序将无法长时间维持一个会话。 这意味着，在为新资源获取访问令牌时，应用程序会反复提示用户。
+
+如果要开发包含后端的 Web 应用程序，并需要从其后端代码使用 API，则也不适合使用隐式流。 其他授权可以提供更强大的功能。 例如，授予 OAuth2 客户端凭据即可获取的令牌能够反映分配给应用程序本身的权限，这不同于用户委派。 这意味着，即使在用户未积极参与某个会话这样的情况下，客户端也可始终对资源进行程序性的访问。 不仅如此，此类授权还提供更严格的安全保证。 例如，访问令牌从不在用户浏览器中传输，因此不会有被保存在浏览器历史记录中的风险，诸如此类。 在请求令牌时，客户端应用程序还可以进行严格的身份验证。
 
 ## <a name="protocol-diagram"></a>协议图
 
@@ -70,10 +97,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 若要使用隐式流测试登录，请单击 " <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize.. "。</a>登录后，应将浏览器重定向到地址栏中的 `id_token` `https://localhost/myapp/` 。
+> 若要使用隐式流测试登录，请单击 " <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize.."。</a>登录后，应将浏览器重定向到地址栏中的 `id_token` `https://localhost/myapp/`。
 >
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | `tenant` | 必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必填 | [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
@@ -103,7 +130,7 @@ GET https://localhost/myapp/#
 &state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌。 不应对访问令牌进行解码或检查，而应将其视为不透明的字符串。 |
 | `token_type` |如果 `response_type` 包含 `token`，则包含该参数。 始终为 `Bearer`。 |
@@ -122,7 +149,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -156,7 +183,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 >`https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&login_hint={your-username}`
 >
 
-借助 `prompt=none` 参数，此请求将立即成功或立即失败，并返回应用程序。 成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的 `redirect_uri` 的应用。
+借助 `prompt=none` 参数，此请求将立即成功或立即失败，并返回应用程序。 成功的响应会通过 `redirect_uri` 参数中指定的方法，发送到位于所指示的 `response_mode` 的应用。
 
 #### <a name="successful-response"></a>成功的响应
 
@@ -171,7 +198,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token`，则包含该参数。 应用请求的访问令牌，在本例中为 Microsoft Graph 的访问令牌。 不应对访问令牌进行解码或检查，而应将其视为不透明的字符串。 |
 | `token_type` | 始终为 `Bearer`。 |
@@ -190,7 +217,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `error` |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -209,7 +236,7 @@ OpenID Connect `end_session_endpoint` 允许你的应用程序将请求发送到
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
 | `tenant` |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
 | `post_logout_redirect_uri` | 建议 | 注销完成后用户应返回到的 URL。 此值必须与为应用程序注册的重定向 URI 之一匹配。 如果不包含，则 Microsoft 标识平台终结点会向用户显示一条一般消息。 |

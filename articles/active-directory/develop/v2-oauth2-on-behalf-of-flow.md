@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700458"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159636"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代表流
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服务/Web API，而后者又需要调用另一个服务/Web API。 思路是通过请求链传播委托用户标识和权限。 要使中间层服务向下游服务发出身份验证请求，需要代表用户保护来自 Microsoft 标识平台的访问令牌。
 
@@ -68,14 +67,14 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 使用共享密钥时，服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
-| `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 | [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
-| `client_secret` | 需要 | 您在 Azure 门户应用注册页中为您的应用程序生成的客户端密码。 |
-| `assertion` | 需要 | 请求中使用的令牌值。  此令牌必须拥有应用程序的受众，此应用程序发出此 OBO 请求（由 `client-id` 字段表示的应用）。 |
-| `scope` | 需要 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
-| `requested_token_use` | 需要 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `grant_type` | 必选 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必选 | [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
+| `client_secret` | 必选 | 您在 Azure 门户应用注册页中为您的应用程序生成的客户端密码。 |
+| `assertion` | 必选 | 请求中使用的令牌值。  此令牌必须拥有应用程序的受众，此应用程序发出此 OBO 请求（由 `client-id` 字段表示的应用）。 |
+| `scope` | 必选 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
+| `requested_token_use` | 必选 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
 #### <a name="example"></a>示例
 
@@ -100,15 +99,15 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 使用证书的服务到服务访问令牌请求包含以下参数：
 
-| 参数 |  | Description |
+| 参数 |  | 说明 |
 | --- | --- | --- |
-| `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 |  [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
-| `client_assertion_type` | 需要 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
-| `assertion` | 需要 | 请求中使用的令牌值。 |
-| `requested_token_use` | 需要 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
-| `scope` | 需要 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
+| `grant_type` | 必选 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `client_id` | 必选 |  [Azure 门户应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
+| `client_assertion_type` | 必选 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
+| `client_assertion` | 必选 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
+| `assertion` | 必选 | 请求中使用的令牌值。 |
+| `requested_token_use` | 必选 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `scope` | 必选 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
 
 请注意，这些参数与共享密钥请求的参数几乎相同，只不过 `client_secret` 参数替换为以下两个参数：`client_assertion_type` 和 `client_assertion`。
 
@@ -136,7 +135,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 成功响应是具有以下参数的 JSON OAuth 2.0 响应。
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `token_type` | 指示令牌类型值。 Microsoft 标识平台支持的唯一类型是 `Bearer`。 有关持有者令牌的详细信息，请参阅[OAuth 2.0 Authorization Framework：持有者令牌用法（RFC 6750）](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | `scope` | 令牌中授予的访问权限的范围。 |

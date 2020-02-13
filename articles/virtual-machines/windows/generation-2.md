@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837336"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161726"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -58,7 +58,8 @@ Azure 中的所有 VM 大小（Mv2 系列 Vm 除外）都支持第1代 Vm。 Azu
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8。0
+* RHEL 8.0、7.6、7.5、7.4、7。0
+* 美分 OS 8。0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与 Azure 第2代 Vm
 
@@ -67,7 +68,7 @@ Azure 目前不支持第2代 Vm 的本地 Hyper-v 支持的某些功能。
 | 第2代功能                | 本地 Hyper-v | Azure |
 |-------------------------------------|---------------------|-------|
 | 安全启动                         | :heavy_check_mark:  | :x:   |
-| 受防护的 VM                         | :heavy_check_mark:  | :x:   |
+| 屏蔽的 VM                         | :heavy_check_mark:  | :x:   |
 | vTPM                                | :heavy_check_mark:  | :x:   |
 | 基于虚拟化的安全性（VBS） | :heavy_check_mark:  | :x:   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
@@ -76,9 +77,9 @@ Azure 目前不支持第2代 Vm 的本地 Hyper-v 支持的某些功能。
 
 ### <a name="generation-1-vs-generation-2-features"></a>第1代和第2代功能
 
-| 功能 | 第 1 代 | 第2代 |
+| Feature | 第 1 代 | 第2代 |
 |---------|--------------|--------------|
-| 引导             | PCAT                      | UEFI                               |
+| 启动             | PCAT                      | UEFI                               |
 | 磁盘控制器 | IDE                       | SCSI                               |
 | VM 大小         | 所有 VM 大小 | 仅支持高级存储的 Vm |
 
@@ -89,7 +90,7 @@ Azure 目前不支持第2代 Vm 的本地 Hyper-v 支持的某些功能。
 | OS 磁盘 > 2 TB                    | :x:                | :heavy_check_mark: |
 | 自定义磁盘/映像/交换操作系统         | :heavy_check_mark: | :heavy_check_mark: |
 | 虚拟机规模集支持 | :heavy_check_mark: | :heavy_check_mark: |
-| Azure 站点恢复               | :heavy_check_mark: | :heavy_check_mark: |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | 备份/还原                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共享映像库              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure 磁盘加密             | :heavy_check_mark: | :x:                |
@@ -102,16 +103,17 @@ Azure 目前不支持第2代 Vm 的本地 Hyper-v 支持的某些功能。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-Windows 和 SLES 的第2代映像包含在 Gen1 映像所在的同一个服务器服务中。 从流的角度来看，从 VM 的门户中选择产品/服务和 SKU。 如果 SKU 支持第1代和第2代映像，可以从 VM 创建流的 "*高级*" 选项卡中选择创建第2代 VM。
+下面是在 Azure 门户中创建第2代（Gen2） VM 的步骤。
 
-目前，以下 Sku 支持第1代和第2代映像：
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-选择 Windows Server SKU 作为产品/服务时，在 "**高级**" 选项卡中，可以选择创建**第1代**（BIOS）或**第2代**（UEFI） VM。 如果选择 "第**2**代"，请确保[第2代 Vm 支持](#generation-2-vm-sizes)"**基本**信息" 选项卡中所选的 VM 大小。
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 选择“创建资源”。
+1. 单击左侧 Azure Marketplace 中的 "**查看全部**"。
+1. 选择支持 Gen2 的映像。
+1. 单击“创建”。
+1. 在 "**高级**" 选项卡的 " **VM 生成**" 部分下，选择 "**第2代**" 选项。
+1. 在 "**基本**信息" 选项卡的 "**实例详细信息**" 下，选择 "**大小**" 并打开 "**选择 VM 大小**" 边栏选项卡。
+1. 选择[受支持的第2代 VM](#generation-2-vm-sizes)。
+1. 完成创建 VM 的[Azure 门户创建流程](quick-create-portal.md)。
 
 ![选择第1代或第2代 VM](./media/generation-2/gen1-gen2-select.png)
 
@@ -151,10 +153,10 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="frequently-asked-questions"></a>常见问题
 
 * **第2代 Vm 是否适用于所有 Azure 区域？**  
-    可以。 但并非所有[第2代 VM 大小](#generation-2-vm-sizes)都可在每个区域中使用。 第2代 VM 的可用性取决于 VM 大小的可用性。
+    是的。 但并非所有[第2代 VM 大小](#generation-2-vm-sizes)都可在每个区域中使用。 第2代 VM 的可用性取决于 VM 大小的可用性。
 
 * **第1代和第2代 Vm 之间是否存在价格差异？**  
-   不。
+   不是。
 
 * **我有来自本地第2代 VM 的 .vhd 文件。能否在 Azure 中使用该 .vhd 文件创建第2代 VM？**
   是的，你可以将第2代 .vhd 文件引入 Azure 并使用它来创建第2代 VM。 使用以下步骤来执行此操作：
@@ -185,16 +187,23 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   你可能会看到大于 2 TB 的 OS 磁盘的警告。 警告不适用于第2代 Vm。 但是，*不建议使用*大于 4 TB 的 OS 磁盘大小。
 
 * **第2代 Vm 是否支持加速网络？**  
-    可以。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    是的。 有关详细信息，请参阅[创建具有加速网络的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第2代支持 VHDX？**  
     不是，第2代 Vm 仅支持 VHD。
 
 * **第2代 Vm 是否支持 Azure Ultra 磁盘存储？**  
-    可以。
+    是的。
 
 * **是否可以将 VM 从第1代迁移到第2代？**  
     不可以，在创建 VM 后，无法更改其代。 如果需要在虚拟机之间进行切换，请创建一个不同代的新 VM。
+
+* **为什么在尝试创建 Gen2 VM 时，大小选择器中未启用我的 VM 大小？**
+
+    为此，可以执行以下操作：
+
+    1. 验证 "**高级**" 选项卡中的 " **VM 生成**" 属性是否设置为**第2代**。
+    1. 验证是否正在搜索[支持 Gen2 vm 的 vm 大小](#generation-2-vm-sizes)。
 
 ## <a name="next-steps"></a>后续步骤
 

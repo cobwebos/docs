@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 83717f9a78d80923f020ab699be9ddabbbcc12ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0f426e7a87204acd4be6529f7dd11a954f23491a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699999"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159465"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 项目（Visual Studio Azure Active Directory 连接服务）发生了什么情况？
 
@@ -87,7 +87,7 @@ ms.locfileid: "76699999"
     </appSettings>
     ```
 
-- 在 `System.IdentityModel.Tokens.Jwt` 和 `Microsoft.IdentityModel.Protocol.Extensions` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>` 和 `<runtime><assemblyBinding>` 的 `System.IdentityModel.Tokens.Jwt` 节点下添加了 `Microsoft.IdentityModel.Protocol.Extensions` 元素。
 
 选择了“读取目录数据”选项时的其他更改：
 
@@ -121,11 +121,11 @@ ms.locfileid: "76699999"
     </entityFramework>
     ```
 
-- 在 `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm` 和 `Microsoft.Data.OData` 的 `<runtime><assemblyBinding>` 节点下添加了 `<dependentAssembly>` 元素。
+- 在 `<dependentAssembly>`、`<runtime><assemblyBinding>` 和 `Microsoft.Data.Services.Client` 的 `Microsoft.Data.Edm` 节点下添加了 `Microsoft.Data.OData` 元素。
 
 ## <a name="code-changes-and-additions"></a>代码更改和添加
 
-- 向 `Controllers/HomeController.cs` 和任何其他现有控制器添加了 `[Authorize]` 属性。
+- 向 `[Authorize]` 和任何其他现有控制器添加了 `Controllers/HomeController.cs` 属性。
 
 - 添加了身份验证启动类 `App_Start/Startup.Auth.cs`，其中包含 Azure AD 身份验证的启动逻辑。 如果选择了“读取目录数据”选项，则此文件还包含用于接收 OAuth 代码以及用 OAuth 代码交换访问令牌的代码。
 
@@ -139,7 +139,7 @@ ms.locfileid: "76699999"
 
 - 添加了 `Connected Services/AzureAD/ConnectedService.json`（Visual Studio 2017）或 `Service References/Azure AD/ConnectedService.json`（Visual Studio 2015），其中包含 Visual Studio 用来跟踪连接服务添加的信息。
 
-- 如果选择了“读取目录数据”选项，则已将 `Models/ADALTokenCache.cs` 和 `Models/ApplicationDbContext.cs` 添加到支持令牌缓存。 另外添加了一个控制器和视图，以演示如何使用 Azure 图形 API `Controllers/UserProfileController.cs`、`Views/UserProfile/Index.cshtml` 和 `Views/UserProfile/Relogin.cshtml` 访问用户配置文件信息
+- 如果选择了“读取目录数据”选项，则已将 **和** 添加到支持令牌缓存。`Models/ADALTokenCache.cs``Models/ApplicationDbContext.cs` 另外添加了一个控制器和视图，以演示如何使用 Azure 图形 API `Controllers/UserProfileController.cs`、`Views/UserProfile/Index.cshtml` 和 `Views/UserProfile/Relogin.cshtml` 访问用户配置文件信息
 
 ### <a name="file-backup-visual-studio-2015"></a>文件备份 (Visual Studio 2015)
 
@@ -164,4 +164,4 @@ ms.locfileid: "76699999"
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Active Directory 的身份验证方案](authentication-scenarios.md)
-- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v1-aspnet-webapp.md)
+- [向 ASP.NET Web 应用添加 Microsoft 登录功能](quickstart-v2-aspnet-webapp.md)

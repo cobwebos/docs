@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: 条件访问策略组件
       href: concept-conditional-access-policies.md
-    - name: 云应用和操作
-      href: concept-conditional-access-cloud-apps.md
-    - name: 条件
-      href: conditions.md
-    - name: 位置条件
-      href: location-condition.md
-    - name: 控制
-      href: controls.md
+    - name: 分配
+      items:
+        - name: 用户和组
+          href: concept-conditional-access-users-groups.md
+        - name: 云应用或操作
+          href: concept-conditional-access-cloud-apps.md
+        - name: 条件
+          href: concept-conditional-access-conditions.md
+    - name: 访问控制
+      items:
+        - name: 授予
+          href: concept-conditional-access-grant.md
+        - name: 会话
+          href: concept-conditional-access-session.md
     - name: “仅报表”模式
       href: concept-conditional-access-report-only.md
     - name: 服务依赖项
       href: service-dependencies.md
+    - name: 位置条件
+      href: location-condition.md
     - name: 假设分析工具
       href: what-if-tool.md
+    - name: 控制
+      href: controls.md
     - name: 经典策略迁移
       href: policy-migration.md
     - name: 基线保护策略
@@ -84,10 +94,6 @@
       items:
         - name: 使用 What If 工具排查问题
           href: troubleshoot-conditional-access-what-if.md
-- name: 参考
-  items:
-    - name: 技术参考
-      href: technical-reference.md
 - name: 资源
   items:
     - name: Azure 反馈论坛

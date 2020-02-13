@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988205"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169948"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（或
 > [!WARNING]
 > Microsoft 不支持将 Azure 机器学习设计器或自动化机器学习（通过 studio）用于虚拟网络内的资源。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 + Azure 机器学习[工作区](how-to-manage-workspace.md)。
 
@@ -124,10 +124,6 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>使用机器学习计算
-
-> [!NOTE]
-> 计算实例（预览版）当前仅适用于区域为“美国中北部”或“英国南部”的工作区，对其他区域的支持即将推出。
-> 使用其中一个区域创建可添加到虚拟网络的计算实例。
 
 若要在虚拟网络中使用 Azure 机器学习的计算实例或计算群集，必须满足以下网络要求：
 
@@ -251,17 +247,17 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 
 1. 若要将此计算资源配置为使用虚拟网络，请执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 对于 "__网络配置__"，选择 "__高级__"。
+    a. 对于 "__网络配置__"，选择 "__高级__"。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在 "__资源组__" 下拉列表中，选择包含虚拟网络的资源组。
+    b. 在 "__资源组__" 下拉列表中，选择包含虚拟网络的资源组。
 
     c. 在 "__虚拟网络__" 下拉列表中，选择包含子网的虚拟网络。
 
-    d.单击“下一步”。 在 "__子网__" 下拉列表中，选择要使用的子网。
+    d. 在 "__子网__" 下拉列表中，选择要使用的子网。
 
    ![机器学习计算的虚拟网络设置](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-也可以使用 Azure 机器学习 SDK 创建机器学习计算群集。 以下代码在名为 `mynetwork` 的虚拟网络的 `default` 子网中创建新的机器学习计算群集：
+也可以使用 Azure 机器学习 SDK 创建机器学习计算群集。 以下代码在名为 `default` 的虚拟网络的 `mynetwork` 子网中创建新的机器学习计算群集：
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute

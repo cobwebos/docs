@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure 策略如何使用来宾配置代理审核虚拟机内的设置。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830490"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169523"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -183,10 +183,10 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>来宾配置示例
 
-策略来宾配置的示例可在以下位置找到：
+策略来宾配置内置计划的源在以下位置提供：
 
-- [示例索引-来宾配置](../samples/index.md#guest-configuration)
-- [Azure 策略示例 GitHub 存储库](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [内置计划-来宾配置](../samples/built-in-initiatives.md#guest-configuration)
+- [Azure 策略示例 GitHub 存储库](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
 
 ## <a name="next-steps"></a>后续步骤
 

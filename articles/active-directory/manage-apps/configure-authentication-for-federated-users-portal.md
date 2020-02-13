@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274628"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159159"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -152,7 +152,7 @@ MSDN 中的[策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/
 - 列出为其配置了策略的应用程序。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 以下示例在 Azure AD 中的应用程序服务主体上创建、更新、链接和删除策略。
 
 1.  首先请下载最新的 Azure AD PowerShell Cmdlet 预览版。 
@@ -271,4 +271,4 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>后续步骤
 - 有关 Azure AD 中的身份验证工作原理的详细信息，请参阅 [Azure AD 的身份验证方案](../develop/authentication-scenarios.md)。
 - 有关用户单一登录的详细信息，请参阅[对应用程序的单一登录 Azure Active Directory](what-is-single-sign-on.md)。
-- 请访问 [Active Directory 开发人员指南](../develop/v1-overview.md)，了解与所有开发人员相关内容的概述。
+- 有关与开发人员相关的所有内容的概述，请访问[Microsoft 标识平台](../develop/v2-overview.md)。

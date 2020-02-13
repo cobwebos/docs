@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701852"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159992"
 ---
 # <a name="single-page-application-call-a-web-api"></a>单页应用程序：调用 web API
 
@@ -27,7 +27,7 @@ ms.locfileid: "76701852"
 
 ## <a name="call-a-web-api"></a>调用 Web API
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 使用获取的访问令牌作为 HTTP 请求中的持有者来调用任何 web API，例如 Microsoft Graph API。 例如：
 
@@ -47,9 +47,11 @@ ms.locfileid: "76701852"
         }
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL 角包装充分利用 HTTP 拦截器自动获取访问令牌，并将其附加到 Api 的 HTTP 请求。 有关详细信息，请参阅[获取用于调用 API 的令牌](scenario-spa-acquire-token.md)。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

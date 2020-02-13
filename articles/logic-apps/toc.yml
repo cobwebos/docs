@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: 安全
           items:
-            - name: 保护逻辑应用
+            - name: 提高逻辑应用的安全性
               href: logic-apps-securing-a-logic-app.md
             - name: 使用托管标识进行身份验证
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: 为逻辑应用创建自定义 API
               href: logic-apps-create-api-app.md
-            - name: 保护对自定义 API 的调用
+            - name: 提高对自定义 API 的调用的安全性
               href: logic-apps-custom-api-authentication.md
             - name: 部署和调用自定义 API
               href: logic-apps-custom-api-host-deploy-call.md

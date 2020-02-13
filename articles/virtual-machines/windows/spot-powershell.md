@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782120"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158938"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>预览：使用 Azure PowerShell 部署专色 Vm
 
@@ -29,7 +29,7 @@ ms.locfileid: "74782120"
 > 污点实例当前为公共预览版。
 > 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
-> 对于公共预览版的早期部分，污点实例将具有固定价格，因此不会有任何基于价格的逐出。
+
 
 
 ## <a name="create-the-vm"></a>创建 VM
@@ -37,9 +37,6 @@ ms.locfileid: "74782120"
 使用[AzVmConfig](/powershell/module/az.compute/new-azvmconfig)创建 spotVM，创建配置。 包括 `-Priority Spot`，并将 `-MaxPrice` 设置为：
 - `-1` 因此不会根据价格收回 VM。
 - 美元金额，最多5位数字。 例如，`-MaxPrice .98765` 表示一旦 spotVM 的价格约为每小时98765美元，就会释放 VM。
-
-> [!IMPORTANT]
-> 对于公共预览版的早期部分，您可以设置最大价格，但会被忽略。 污点 Vm 具有固定价格，因此不会有任何基于价格的逐出。
 
 
 此示例将创建一个 spotVM，此功能不会根据定价进行释放（仅当 Azure 需要恢复容量时）。

@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 9860ab6b16c6639581d0bcd1783d43f420f88d74
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8f6307e37ff24d2a3f10bcf39ed989acdf3611f9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668442"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157986"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
@@ -171,7 +171,7 @@ let query = table.queryWithPredicate(NSPredicate(format: "complete == NO"))
 * 指定请求中的自定义查询字符串参数
 * 应用其他函数
 
-通过对对象调用 `readWithCompletion` 来执行 `MSQuery` 查询。
+通过对对象调用 `MSQuery` 来执行 `readWithCompletion` 查询。
 
 ## <a name="sorting"></a>如何使用 MSQuery 对数据排序
 
@@ -561,7 +561,7 @@ if (error.code == MSErrorPreconditionFailed) {
 3. 使用终端，从包含项目的目录运行 `pod install`，并打开生成的 Xcode 工作区（而不是项目）。
 4. 根据使用的语言，将以下代码添加到应用程序。 在每个应用程序中，进行以下替换：
 
-   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
+   * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。 可以在 [Azure 门户]中从 Azure Active Directory 的域选项卡复制此值。
    * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
    * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
    * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。
@@ -920,6 +920,6 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 [5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/configure-authentication-provider-aad.md
-[8]:../active-directory/develop/quickstart-v1-ios.md
+[8]:../active-directory/develop/quickstart-v2-ios.md
 [9]: ../app-service/configure-authentication-provider-facebook.md
 [10]: https://developers.facebook.com/docs/ios/getting-started

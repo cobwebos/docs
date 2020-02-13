@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: ba974228d63c542027ea5191d2c5877e7288b331
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050018"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169767"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -22,7 +22,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 使用 JSON 创建策略定义。 策略定义包含以下项的元素：
 
 - mode
-- 参数
+- parameters
 - 显示名称
 - description
 - 策略规则
@@ -65,7 +65,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 
 所有 Azure 策略示例均在[Azure 策略示例](../samples/index.md)中。
 
-## <a name="mode"></a>模式
+## <a name="mode"></a>“模式”
 
 **模式**的配置取决于策略是以 Azure 资源管理器属性还是资源提供程序属性为目标。
 
@@ -94,7 +94,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 > [!NOTE]
 > 资源提供程序模式仅支持内置策略定义，并在预览时不支持计划。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 参数可减少策略定义的数量，有助于简化策略管理。 使用类似窗体中字段的参数 - `name`、`address`、`city`、`state`。 这些参数始终不变，但其值会基于窗体中的各填写内容变化。
 构建策略时，参数同样适用。 如果在策略定义中包括参数，就可以通过使用不同的值重新使用策略以执行不同方案。
@@ -176,7 +176,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 - **订阅** - 只能将该订阅中的资源分配给策略。
 - **管理组** - 只能将子管理组和子订阅中的资源分配给策略。 如果计划将策略定义应用于多个订阅，则位置必须是包含那些订阅的管理组。
 
-## <a name="display-name-and-description"></a>显示名称和描述
+## <a name="display-name-and-description"></a>显示名称和说明
 
 请使用“displayName”和“description”来标识策略定义，并提供其使用上下文。 **displayName** 的最大长度为 128个字符，**description** 的最大长度为 512个字符。
 
@@ -255,7 +255,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 使用 like 和 notLike 条件时，请在值中指定通配符 `*`。
 值不应包含多个通配符 `*`。
 
-使用**match**和**notMatch**条件时，请提供 `#` 来匹配数字，`?` 对于字母，`.` 与任何字符匹配，并使用任何其他字符匹配该实际字符。 虽然**match**和**notMatch**区分大小写，但计算_stringValue_的所有其他条件都是不区分大小写的。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案。 例如，请参阅[允许多个名称模式](../samples/allow-multiple-name-patterns.md)。
+使用**match**和**notMatch**条件时，请提供 `#` 来匹配数字，`?` 对于字母，`.` 与任何字符匹配，并使用任何其他字符匹配该实际字符。 虽然**match**和**notMatch**区分大小写，但计算_stringValue_的所有其他条件都是不区分大小写的。 “matchInsensitively”和“notMatchInsensitively”中提供了不区分大小写的替代方案。
 
 在 **\[\*\] alias**数组字段值时，数组中的每个元素都是在元素之间使用逻辑**and**进行单独计算。 有关详细信息，请参阅[计算 \[\*\] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
@@ -271,7 +271,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 - `kind`
 - `type`
 - `location`
-  - 对于不限位置的资源，请使用 **global**。 如需示例，请参阅[示例 - 允许的位置](../samples/allowed-locations.md)。
+  - 对于不限位置的资源，请使用 **global**。
 - `identity.type`
   - 返回在资源上启用的[托管标识](../../../active-directory/managed-identities-azure-resources/overview.md)类型。
 - `tags`
@@ -697,7 +697,7 @@ Azure 策略支持以下类型的影响：
 
 有关详细信息，请参阅[评估 [\*] 别名](../how-to/author-policies-for-arrays.md#evaluating-the--alias)。
 
-## <a name="initiatives"></a>新方案
+## <a name="initiatives"></a>计划
 
 使用计划可组合多个相关策略定义，以简化分配和管理，因为可将组作为单个项使用。 例如，可以将相关标记策略组合为单个计划。 将应用计划，而非单独分配每个策略。
 

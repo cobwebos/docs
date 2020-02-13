@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063008"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166013"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理安全访问本地 Api
 
@@ -38,7 +38,7 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 由于 Azure AD 应用程序代理身份验证和授权建立在 Azure AD 之上，因此你可以使用 Azure AD 条件访问来确保只有受信任的设备才能访问通过应用程序代理发布的 Api。 使用连接到桌面的 Azure AD 联接或 Azure AD 混合，并为设备管理 Intune。 还可以利用 Azure 多重身份验证等 Azure Active Directory Premium 功能，以及支持机器学习的[Azure Identity Protection](/azure/active-directory/active-directory-identityprotection)安全性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本演练，你需要：
 
@@ -53,19 +53,19 @@ Azure AD 应用程序代理形成解决方案的主干，作为 API 访问的公
 
 1. 生成示例 SecretAPI 项目并将其发布为本地计算机或 intranet 上的 ASP.NET web 应用。 请确保可以在本地访问 web 应用。 
    
-1. 在[Azure 门户](https://portal.azure.com)中，在左侧导航栏中选择 " **Azure Active Directory** "。 然后，在 "**概述**" 页上，选择 "**企业应用程序**"。
+1. 在 [Azure 门户](https://portal.azure.com)中，选择“Azure Active Directory”。 然后选择 "**企业应用程序**"。
    
 1. 在 "**企业应用程序-所有应用程序**" 页的顶部，选择 "**新建应用程序**"。
    
-1. 在 "**浏览 Azure AD 库**" 页上的 **"本地应用程序**" 下，选择 "**添加本地应用程序**"。 此时将显示 "**添加自己的本地应用程序**" 页。
+1. 在 "**添加应用程序**" 页上，选择 **"本地应用程序**"。 此时将显示 "**添加自己的本地应用程序**" 页。
    
 1. 如果尚未安装应用程序代理连接器，系统将提示你安装它。 选择 "**下载应用程序代理连接器**"，下载并安装连接器。 
    
 1. 安装应用程序代理连接器后，请在 "**添加自己的本地应用程序**" 页上：
    
-   1. 在 "**名称**" 旁边输入*SecretAPI* 。
+   1. 在 "**名称**" 旁边，输入 " *SecretAPI*"。
       
-   1. 输入用于从**内部 url**旁边的 INTRANET 访问 API 的 URL。 
+   1. 在 "**内部 Url**" 旁边，输入你的 intranet 中用于访问 API 的 Url。
       
    1. 请确保**预身份验证**设置为**Azure Active Directory**。 
       

@@ -17,12 +17,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3c77b74eb97f03b1234cb2735b4a680b030d2073
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0282336cb5df7d010571a15e9d1f9d93b82d461e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108197"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160315"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 标识平台代码示例（v2.0 终结点）
 
@@ -34,7 +34,7 @@ ms.locfileid: "77108197"
 本文简要介绍并提供 Microsoft 标识平台终结点的示例链接。 这些示例演示了它的完成方式，还提供了可在应用程序中使用的代码片段。 在 "代码示例" 页上，可以找到有助于满足要求、安装和设置的详细自述主题。 代码中的注释有助于理解关键部分。
 
 > [!NOTE]
-> 如果对 v1.0 示例感兴趣，请参阅[Azure AD 代码示例（1.0 版终结点）](sample-v1-code.md)。
+> 如果对 v1.0 示例感兴趣，请参阅[Azure AD 代码示例（1.0 版终结点）](../azuread-dev/sample-v1-code.md)。
 
 若要了解每个示例类型的基本方案，请参阅[Microsoft 标识平台终结点的应用类型](v2-app-types.md)。
 
@@ -132,6 +132,6 @@ ms.locfileid: "77108197"
 
 ## <a name="see-also"></a>另请参阅
 
-- [Azure Active Directory （1.0 版）开发人员指南](v1-overview.md)
+- [Azure Active Directory （1.0 版）开发人员指南](../azuread-dev/v1-overview.md)
 - [Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 - [Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

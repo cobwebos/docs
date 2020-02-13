@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698843"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161216"
 ---
 # <a name="integrating-with-azure-active-directory"></a>与 Azure Active Directory 集成
 
@@ -32,7 +32,7 @@ ms.locfileid: "76698843"
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>支持 Azure AD 作为一种登录应用程序的方式
 
-**减少登录阻碍并降低支持成本。** 如果使用 Azure AD 登录应用程序，用户不需要记住更多的名称和密码。 作为开发人员，可以减少要存储和保护的密码。 无需重置忘记的密码，单凭这一点就能节省不少的精力。 使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Microsoft Azure。 Azure AD 包含了来自数百万家组织的几亿个用户，用户很可能已经登录到了 Azure AD。 深入了解如何[添加 Azure AD 登录支持](v1-authentication-scenarios.md)。
+**减少登录阻碍并降低支持成本。** 如果使用 Azure AD 登录应用程序，用户不需要记住更多的名称和密码。 作为开发人员，可以减少要存储和保护的密码。 无需重置忘记的密码，单凭这一点就能节省不少的精力。 使用 Azure AD 可以登录世界上最热门的一些云应用程序，包括 Office 365 和 Microsoft Azure。 Azure AD 包含了来自数百万家组织的几亿个用户，用户很可能已经登录到了 Azure AD。 深入了解如何[添加 Azure AD 登录支持](authentication-scenarios.md)。
 
 **简化应用程序的注册过程。**  在注册应用程序期间，Azure AD 可以发送有关用户的基本信息，以便可以预先填充注册表单，或者完全清除表单。 用户可以使用其 Azure AD 帐户，通过社交媒体和移动应用程序中常见的许可体验注册应用程序。 任何用户都可以注册和登录与 Azure AD 集成的应用程序，而无需 IT 人员的参与。 深入了解如何[注册应用程序进行 Azure AD 帐户登录](../../app-service/configure-authentication-provider-aad.md)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "76698843"
 
 **Azure AD 已将 Active Directory 扩展到云中，便于应用程序与 AD 集成。**  世界各地的许多组织都在使用 Active Directory 作为首要登录和标识管理系统，并要求它们的应用程序使用 AD。 与 Azure AD 集成可将应用与 Active Directory 相集成。
 
-### <a name="advanced-security-features"></a>先进的安全功能
+### <a name="advanced-security-features"></a>高级安全功能
 
 **多重身份验证。**  Azure AD 提供本机多重身份验证。 IT 管理员可以要求访问应用程序之前经过多重身份验证，因此，无需编写此项支持的代码。 深入了解[多重身份验证](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)。
 
@@ -92,5 +92,5 @@ ms.locfileid: "76698843"
 
 [开始编写代码](v2-overview.md#getting-started)。
 
-[使用 Microsoft 标识平台登录用户](v1-authentication-scenarios.md)
+[使用 Microsoft 标识平台登录用户](authentication-scenarios.md)
 

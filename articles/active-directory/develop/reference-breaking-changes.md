@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758744"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160354"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -104,7 +104,7 @@ ms.locfileid: "76758744"
 
 **受影响的协议**：所有流
 
-按照[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 应用程序现在可以注册并使用具有静态查询参数的重定向（回复） uri （例如，OAuth 2.0 请求 https://contoso.com/oauth2?idp=microsoft) 。  动态重定向 Uri 仍处于禁用状态，因为它们表示安全风险，这不能用于在身份验证请求中保留状态信息-对于这种情况，请使用 `state` 参数。
+按照[RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2)，Azure AD 应用程序现在可以注册并使用具有静态查询参数的重定向（回复） uri （例如，OAuth 2.0 请求 https://contoso.com/oauth2?idp=microsoft)。  动态重定向 Uri 仍处于禁用状态，因为它们表示安全风险，这不能用于在身份验证请求中保留状态信息-对于这种情况，请使用 `state` 参数。
 
 与重定向 URI 的任何其他部分一样，静态查询参数会服从重定向 uri 的字符串匹配-如果没有注册与 URI 解码 redirect_uri 匹配的字符串，则会拒绝该请求。  如果在应用程序注册中找到了 URI，则将使用整个字符串来重定向用户，包括静态查询参数。 
 
@@ -156,7 +156,7 @@ ms.locfileid: "76758744"
 
 如果应用重复使用授权代码来获取多个资源的令牌，则我们建议使用该代码获取刷新令牌，然后使用该刷新令牌获取其他资源的其他令牌。 授权代码只能使用一次，但刷新令牌可对多个资源使用多次。 尝试在 OAuth 代码流期间重用身份验证代码的任何新应用都将收到 invalid_grant 错误。
 
-有关刷新令牌的详细信息，请参阅[刷新访问令牌](v1-protocols-oauth-code.md#refreshing-the-access-tokens)。  如果使用 ADAL 或 MSAL，则由库为你处理 - 将“AcquireTokenByAuthorizationCodeAsync”的第二个实例替换为“AcquireTokenSilentAsync”。 
+有关刷新令牌的详细信息，请参阅[刷新访问令牌](v2-oauth2-auth-code-flow.md#refresh-the-access-token)。  如果使用 ADAL 或 MSAL，则由库为你处理 - 将“AcquireTokenByAuthorizationCodeAsync”的第二个实例替换为“AcquireTokenSilentAsync”。 
 
 ## <a name="may-2018"></a>2018 年 5 月
 
@@ -166,7 +166,7 @@ ms.locfileid: "76758744"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：隐式流和 [OBO 流](v1-oauth2-on-behalf-of-flow.md)
+**受影响的协议**：隐式流和代理[流](v2-oauth2-on-behalf-of-flow.md)
 
 在 2018 年 5 月 1 日之后，id_token 不能用作新应用程序的 OBO 流中的断言。 应改为使用访问令牌来保护 API，即使在同一应用程序的客户端和中间层之间也是如此。 在 2018 年 5 月 1 日之前注册的应用将继续有效，并能够使用 id_tokens 交换访问令牌；但是，此模式并不是最佳做法。
 

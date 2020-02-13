@@ -3,12 +3,12 @@ title: 逻辑组织的标记资源
 description: 演示如何应用标记来整理 Azure 资源以便进行计费和管理。
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087326"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166613"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>使用标记整理 Azure 资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "77087326"
 
 可以使用 [Azure Policy ](../../governance/policy/overview.md)来强制实施标记规则和约定。 通过创建策略，可以避免将与预期的组织标记不相符的资源部署到订阅。 无需手动应用标记或搜索不符合的资源，可以创建一个策略，在部署期间自动应用所需标记。 现在，还可以使用新的[修改](../../governance/policy/concepts/effects.md#modify)效果和[修正任务](../../governance/policy/how-to/remediate-resources.md)将标记应用到现有资源。 以下部分展示标记策略示例。
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-general-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 

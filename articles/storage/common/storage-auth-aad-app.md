@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941481"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157442"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>从 Azure AD 获取用于从客户端应用程序授权请求的令牌
 
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-许可是指用户授权应用程序代表他们访问受保护资源的过程。 Microsoft 标识平台2.0 支持增量许可，这意味着，安全主体最初可以请求一组最小的权限，并根据需要在一段时间内添加权限。 当代码请求访问令牌时，在任何给定时间通过 `scope` 参数指定应用所需的权限范围。 有关增量许可的详细信息，请参阅有关[更新 Microsoft 标识平台（v2.0）的原因](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中标题为 "**增量和动态同意**" 的部分。
+许可是指用户授权应用程序代表他们访问受保护资源的过程。 Microsoft 标识平台2.0 支持增量许可，这意味着，安全主体最初可以请求一组最小的权限，并根据需要在一段时间内添加权限。 当代码请求访问令牌时，在任何给定时间通过 `scope` 参数指定应用所需的权限范围。 有关增量许可的详细信息，请参阅有关[更新 Microsoft 标识平台（v2.0）的原因](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)中标题为 "**增量和动态同意**" 的部分。
 
 以下方法将构造用于请求增量许可的身份验证属性：
 

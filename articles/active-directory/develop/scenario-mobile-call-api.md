@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: f41c9a0e4754c60fd248e540a81e2afa833d655b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd848fa6f74f049f97956ef1736ac2b08f3a6148
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132406"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160145"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>从移动应用调用 web API
 
@@ -124,7 +124,7 @@ task.resume()
 
 - **增量许可**： Microsoft 标识平台允许应用在需要权限时（而不是在开始时）获得用户许可。 每次你的应用程序都可以调用 API 时，它应只请求所需的作用域。
 
-- **条件性访问**：发出几个 API 请求时，可能需要满足其他条件访问要求。 如果第一个请求没有条件性访问策略，并且你的应用程序尝试以无提示方式访问需要条件访问的新 API，则要求可能会以这种方式增加。 若要解决此问题，请务必捕获无提示请求中的错误，并准备好进行交互式请求。  有关详细信息，请参阅[条件性访问指南](conditional-access-dev-guide.md)。
+- **条件性访问**：发出几个 API 请求时，可能需要满足其他条件访问要求。 如果第一个请求没有条件性访问策略，并且你的应用程序尝试以无提示方式访问需要条件访问的新 API，则要求可能会以这种方式增加。 若要解决此问题，请务必捕获无提示请求中的错误，并准备好进行交互式请求。  有关详细信息，请参阅[条件性访问指南](../azuread-dev/conditional-access-dev-guide.md)。
 
 ## <a name="call-several-apis-by-using-incremental-consent-and-conditional-access"></a>使用增量许可和条件访问来调用多个 Api
 

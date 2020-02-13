@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148855"
+ms.locfileid: "77157867"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ ms.locfileid: "77148855"
 | `globalexception` | 遇到异常或错误时显示错误页面。 |
 | `providerselection` | 列出可供用户在登录期间选择的标识提供者。 |
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
-| `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
+| `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
 | `selfasserted` | 显示一个窗体，让用户创建或更新其个人资料。 |
 
-## <a name="select-a-page-layout"></a>选择页面布局
+### <a name="select-a-page-layout"></a>选择页面布局
 
 可以通过在 `elements` 和页面类型之间插入 `contract` 来启用[JavaScript 客户端代码](javascript-samples.md)。 例如，`urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 。
 
@@ -126,6 +126,29 @@ ms.locfileid: "77148855"
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>元数据
+
+**Metadata** 元素包含以下元素：
+
+| 元素 | 出现次数 | 说明 |
+| ------- | ----------- | ----------- |
+| Item | 0:n | 与内容定义相关的元数据。 |
+
+**Metadata** 元素的 **Item** 元素包含以下属性：
+
+| Attribute | 必选 | 说明 |
+| --------- | -------- | ----------- |
+| 密钥 | 是 | 元数据密钥。  |
+
+#### <a name="metadata-keys"></a>元数据密钥
+
+内容定义支持以下元数据项： 
+
+| 密钥 | 必选 | 说明 |
+| --------- | -------- | ----------- |
+| DisplayName | 否 | 一个字符串，其中包含内容定义的名称。 |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 **LocalizedResourcesReferences** 元素包含以下元素：
@@ -134,7 +157,7 @@ ms.locfileid: "77148855"
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | 内容定义的本地化资源引用列表。 |
 
-**LocalizedResourcesReferences** 元素包含以下属性：
+**LocalizedResourcesReference**元素包含以下属性：
 
 | Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |

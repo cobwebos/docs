@@ -17,16 +17,14 @@ ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 031890b389e78c4ca01e6d6ae52430db865ede2f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8a847afa2253223ebe9450d350cd18f5f659e0e3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931062"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159771"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OAuth 2.0 授权代码授予可用于设备上所安装的应用中，以访问受保护的资源，例如 Web API。 使用 OAuth 2.0 的 Microsoft 标识平台实现，可以将登录和 API 访问添加到移动应用和桌面应用。 本指南与语言无关，介绍在不使用任何 [Azure 开放源代码身份验证库](reference-v2-libraries.md)的情况下，如何发送和接收 HTTP 消息。
 
@@ -60,10 +58,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 > [!TIP]
-> 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
+> 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `https://localhost/myapp/` 的 `code`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 参数    | 必需/可选 | Description |
+| 参数    | 必需/可选 | 说明 |
 |--------------|-------------|--------------|
 | `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | 必填    | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。  |
@@ -75,7 +73,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 与此相反，它会确保用户不会看到任何交互式提示。 如果请求无法通过单一登录静默完成，Microsoft 标识平台终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  | 可选    | 如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
 | `domain_hint`  | 可选    | 可以是 `consumers` 或 `organizations` 之一。<br/><br/>如果包括，它将跳过用户在登录页面上经历的基于电子邮件的发现过程，从而使用户体验稍微更加简洁。 通常，应用会在重新身份验证期间使用此参数，方法是从前次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
-| `code_challenge_method` | 可选    | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
+| `code_challenge_method` | 可选    | 用于为 `code_verifier` 参数编码 `code_challenge` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 | `code_challenge`  | 可选 | 用于通过本地客户端的 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 此时，请求用户输入其凭据并完成身份验证。 Microsoft 标识平台终结点还将确保用户已同意 `scope` 查询参数中指示的权限。 如果用户未曾同意这些权限的任何一项，就请求用户同意请求的权限。 [此处提供了权限、许可与多租户应用](v2-permissions-and-consent.md)的详细信息。
@@ -92,7 +90,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| 参数 | Description  |
+| 参数 | 说明  |
 |-----------|--------------|
 | `code` | 应用程序请求的 authorization_code。 应用程序可以使用授权代码请求目标资源的访问令牌。 Authorization_codes 生存期较短，通常会在大约10分钟后过期。 |
 | `state` | 如果请求中包含状态参数，响应中就应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
@@ -107,7 +105,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description  |
+| 参数 | 说明  |
 |----------|------------------|
 | `error`  | 用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -116,7 +114,7 @@ error=access_denied
 
 下表描述了可在错误响应的 `error` 参数中返回的各个错误代码。
 
-| 错误代码  | Description    | 客户端操作   |
+| 错误代码  | 说明    | 客户端操作   |
 |-------------|----------------|-----------------|
 | `invalid_request` | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。 这通常是在初始测试期间捕获的开发错误。 |
 | `unauthorized_client` | 不允许客户端应用程序请求授权代码。 | 如果客户端应用程序未注册 Azure AD 或未添加到用户的 Azure AD 租户，则通常会出现此错误。 应用程序可以提示用户，并说明如何安装应用程序并将其添加到 Azure AD。 |
@@ -130,7 +128,7 @@ error=access_denied
 
 ## <a name="request-an-access-token"></a>请求访问令牌
 
-现在已获取 authorization_code 并获得用户授权，可兑换 `code` 以获取所需资源的 `access_token`。 通过向 `/token` 终结点发送 `POST` 请求来完成此操作：
+现在已获取 authorization_code 并获得用户授权，可兑换 `code` 以获取所需资源的 `access_token`。 通过向 `POST` 终结点发送 `/token` 请求来完成此操作：
 
 ```
 // Line breaks for legibility only
@@ -150,7 +148,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 尝试在 Postman 中执行此请求！ （不要忘记替换 `code`）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| 参数  | 必需/可选 | Description     |
+| 参数  | 必需/可选 | 说明     |
 |------------|-------------------|----------------|
 | `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | 必填  | [Azure 门户–应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端） ID。 |
@@ -176,7 +174,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数     | Description   |
+| 参数     | 说明   |
 |---------------|------------------------------|
 | `access_token`  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。  |
 | `token_type`    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
@@ -202,7 +200,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数         | Description    |
+| 参数         | 说明    |
 |-------------------|----------------|
 | `error`       | 用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
@@ -213,7 +211,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>令牌终结点错误的错误代码
 
-| 错误代码         | Description        | 客户端操作    |
+| 错误代码         | 说明        | 客户端操作    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | 协议错误，例如，缺少必需的参数。 | 修复并重新提交请求。   |
 | `invalid_grant`    | 授权代码或 PKCE 代码验证程序无效或已过期。 | 尝试向 `/authorize` 终结点发送新请求，并验证 code_verifier 参数是否正确。  |
@@ -239,7 +237,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>刷新访问令牌
 
-Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `/token` 终结点提交另一个 `POST` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。  
+Access_token 生存期很短，必须在其过期后刷新，才能继续访问资源。 为此，可以向 `POST` 终结点提交另一个 `/token` 请求，但这次要提供 `refresh_token` 而不是 `code`。  刷新令牌对客户端已获得同意的所有权限有效 - 因此，对 `scope=mail.read` 请求发出的刷新令牌可用于请求 `scope=api://contoso.com/api/UseResource` 的新访问令牌。  
 
 刷新令牌没有指定的生存期。 通常，刷新令牌的生存期相对较长。 但是，在某些情况下，刷新令牌会过期、被吊销，或缺少执行所需操作的足够权限。 应用程序需要正确预期和处理[令牌颁发终结点返回的错误](#error-codes-for-token-endpoint-errors)。 
 
@@ -263,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 尝试在 Postman 中执行此请求！ （不要忘记替换 `refresh_token`）[![尝试在 Postman 中运行此请求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
-| 参数     |                | Description        |
+| 参数     |                | 说明        |
 |---------------|----------------|--------------------|
 | `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必填    | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
@@ -286,7 +284,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| 参数     | Description         |
+| 参数     | 说明         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。 |
 | `token_type`    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
@@ -310,7 +308,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 参数         | Description                                                                                        |
+| 参数         | 说明                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | 用于分类发生的错误类型与响应错误的错误码字符串。 |
 | `error_description` | 帮助开发人员识别身份验证错误根本原因的特定错误消息。           |

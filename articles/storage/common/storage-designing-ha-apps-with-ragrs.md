@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945457"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157086"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>使用读取访问异地冗余存储设计高度可用的应用程序
 
@@ -23,8 +23,8 @@ ms.locfileid: "75945457"
 
 为异地冗余复制配置的存储帐户会在主要区域中同步复制，然后以异步方式复制到数百英里以外的次要区域。 Azure 存储提供两种类型的异地冗余复制：
 
-* [区域冗余存储（GZRS）（预览版）](storage-redundancy-gzrs.md)可为需要高可用性和最大持续性的方案提供复制。 使用区域冗余存储（ZRS）以同步方式将数据复制到主区域中的三个 Azure 可用性区域，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问权限异地冗余存储（GZRS）。
-* [异地冗余存储（GRS）](storage-redundancy-grs.md)提供跨区域复制，以防范区域性服务中断。 使用本地冗余存储（LRS）在主要区域中同步复制数据三次，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问异地冗余存储（GRS）。
+* [区域冗余存储（GZRS）（预览版）](storage-redundancy.md)可为需要高可用性和最大持续性的方案提供复制。 使用区域冗余存储（ZRS）以同步方式将数据复制到主区域中的三个 Azure 可用性区域，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问权限异地冗余存储（GZRS）。
+* [异地冗余存储（GRS）](storage-redundancy.md)提供跨区域复制，以防范区域性服务中断。 使用本地冗余存储（LRS）在主要区域中同步复制数据三次，并将其异步复制到次要区域。 若要对次要区域中的数据进行读取访问，请启用读取访问异地冗余存储（GRS）。
 
 本文介绍如何设计应用程序以处理主要区域的服务中断。 如果主要区域变得不可用，您的应用程序可以改为对次要区域执行读取操作。 在开始之前，请确保已为 GRS 或 GZRS 配置存储帐户。
 
@@ -149,7 +149,7 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，404错�
 
 可使用三个主要选项监视主要区域中的重试频率，以便确定何时切换到次要区域并将应用程序更改为在只读模式下运行。
 
-* 为传递到存储请求的 [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) 对象上的[**重试**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
+* 为传递到存储请求的 [**OperationContext**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) 对象上的[**重试**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext)事件添加处理程序 - 这是本文演示的方法，且在随附的示例中使用了该方法。 每当客户端重试请求时都将触发这些事件，以便跟踪客户端在主终结点上遇到可重试错误的频率。
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -212,40 +212,9 @@ Azure 存储客户端库可帮助你确定可重试的错误。 例如，404错�
 
 在此示例中，假定客户端在 T5 从次要区域切换到读取。 它此时能够成功读取**管理员角色**实体，但该实体包含的管理员数量值与次要区域中此时标记的**员工**数量不一致。 客户端只需显示此值，并且具有信息不一致的风险。 或者，客户端可能会尝试确定**管理员角色**可能是不一致的状态，因为更新是无序进行的，并随后告知用户这一事实。
 
-要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的上次同步时间的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间将设置为 *T1*。 当服务更新次要区域中的**员工**实体前，它仍然保持为 *T1*，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
+要识别它可能具有不一致的数据，客户端可以使用通过随时查询存储服务获取的上次同步时间的值。 借此可了解次要区域中的数据上一次一致的时间，以及服务在该时间点前应用所有事务的时间。 在上述示例中，服务在次要区域中插入**员工**实体后，上次同步时间将设置为 *T1*。 当服务更新次要区域中的*员工*实体前，它仍然保持为 **T1**，之后则设置为 *T6*。 如果客户端在其读取 *T5* 处的实体时检索上次同步时间，它会将其与实体上的时间戳进行对比。 如果实体上的时间戳晚于上次同步时间，则实体可能处于不一致状态，可对应用程序采取任何适当操作。 使用此字段要求了解到主要区域上次更新的时间。
 
-## <a name="getting-the-last-sync-time"></a>正在获取上次同步时间
-
-可以使用 PowerShell 或 Azure CLI 检索上次同步时间，以确定上次将数据写入辅助数据库的时间。
-
-### <a name="powershell"></a>PowerShell
-
-若要使用 PowerShell 获取存储帐户的上次同步时间，请安装支持获取异地复制统计信息的 Azure 存储预览模块。例如：
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-然后检查存储帐户的**GeoReplicationStats. LastSyncTime**属性。 请记住将占位符值替换为自己的值：
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-若要使用 Azure CLI 获取存储帐户的上次同步时间，请检查存储帐户的**geoReplicationStats. lastSyncTime**属性。 使用 `--expand` 参数可以返回嵌套在**geoReplicationStats**下的属性的值。 请记住将占位符值替换为自己的值：
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+若要了解如何检查上次同步时间，请参阅[检查存储帐户的 "上次同步时间" 属性](last-sync-time-get.md)。
 
 ## <a name="testing"></a>测试
 

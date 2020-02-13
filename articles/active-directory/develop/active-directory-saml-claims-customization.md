@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698673"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161250"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
 
@@ -55,7 +55,7 @@ ms.locfileid: "76698673"
 
 从 "**选择名称标识符格式**" 下拉列表中，可以选择以下选项之一。
 
-| NameID 格式 | Description |
+| NameID 格式 | 说明 |
 |---------------|-------------|
 | **Default** | Azure AD 将使用默认的源格式。 |
 | **式** | Azure AD 将使用永久性格式作为 NameID 格式。 |
@@ -69,7 +69,7 @@ ms.locfileid: "76698673"
 
 为 `NameIdentifier`（或 NameID）声明选择所需的源。 可以从以下选项中选择。
 
-| 名称 | Description |
+| 名称 | 说明 |
 |------|-------------|
 | 电子邮件 | 用户的电子邮件地址 |
 | userprincipalName | 用户的用户主体名称（UPN） |
@@ -99,10 +99,10 @@ ms.locfileid: "76698673"
 
 你还可以使用声明转换函数。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
+| **Join （）** | 将属性与已验证的域联接。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
 
@@ -126,13 +126,13 @@ ms.locfileid: "76698673"
 
 您可以使用以下函数来转换声明。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |----------|-------------|
 | **ExtractMailPrefix()** | 删除电子邮件地址或用户主体名称中的域后缀。 这只会提取传递用户名的第一部分（例如，“joe_smith”而不是 joe_smith@contoso.com）。 |
-| **Join()** | 通过联接两个属性来创建新的值。 或者，您可以在两个属性之间使用分隔符。 对于 NameID 声明转换，该联接限制为已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
+| **Join （）** | 通过联接两个属性来创建新的值。 或者，您可以在两个属性之间使用分隔符。 对于 NameID 声明转换，该联接限制为已验证的域。 如果所选用户标识符值具有域，则将提取用户名以追加所选的已验证域。 例如，如果选择电子邮件 (joe_smith@contoso.com) 作为用户标识符值，并选择 contoso.onmicrosoft.com 作为已验证的域，则将生成 joe_smith@contoso.onmicrosoft.com。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
-| **Contains()** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的电子邮件地址（如果它包含域 "@contoso.com"），否则你需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数1（输入）* ： user. email<br/>*值*： "@contoso.com"<br/>参数2（输出）： user. email<br/>参数3（如果没有匹配项，则为输出）：用户 userprincipalname |
+| **Contains （）** | 如果输入与指定的值匹配，则输出一个属性或常量。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的电子邮件地址（如果它包含域 "@contoso.com"），否则你需要输出用户主体名称。 为此，需要配置以下值：<br/>*参数1（输入）* ： user. email<br/>*值*： "@contoso.com"<br/>参数2（输出）： user. email<br/>参数3（如果没有匹配项，则为输出）：用户 userprincipalname |
 | **EndWith()** | 如果输入以指定的值结束，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的员工 ID （如果雇员 ID 以 "000" 结尾），否则你需要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户 id<br/>*值*： "000"<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
 | **StartWith()** | 如果输入以指定值开头，则输出特性或常数。 否则，如果没有匹配项，则可以指定其他输出。<br/>例如，如果你想要发出一个声明，其中值为用户的员工 ID （如果国家/地区以 "US" 开头），否则你要输出一个扩展属性。 为此，需要配置以下值：<br/>*参数1（输入）* ：用户所在的国家/地区<br/>*值*： "US"<br/>参数2（输出）：用户 id<br/>参数3（如果没有匹配项，则为输出）： extensionattribute1 |
 | **提取（）-匹配后** | 返回与指定的值匹配的子字符串。<br/>例如，如果输入的值为 "Finance_BSimon"，则匹配值为 "Finance_"，则声明的输出为 "BSimon"。 |
@@ -180,4 +180,4 @@ ms.locfileid: "76698673"
 
 * [Azure AD 中的应用程序管理](../manage-apps/what-is-application-management.md)
 * [针对不在 Azure AD 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录的问题](howto-v1-debug-saml-sso-issues.md)
+* [排查基于 SAML 的单一登录的问题](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

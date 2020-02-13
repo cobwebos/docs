@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521010"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157697"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -27,20 +27,20 @@ ms.locfileid: "73521010"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
 
 - 注册帐户故障转移（预览版）。 若要了解如何注册，请参阅[关于预览版](storage-disaster-recovery-guidance.md#about-the-preview)。
-- 确保存储帐户已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 有关异地冗余存储的详细信息，请参阅[异地冗余存储（GRS）： Azure 存储的跨区域复制](storage-redundancy-grs.md)。 
+- 确保存储帐户已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 有关异地冗余存储的详细信息，请参阅[Azure 存储冗余](storage-redundancy.md)。
 
 ## <a name="important-implications-of-account-failover"></a>帐户故障转移的重要影响
 
 在你为存储帐户启动帐户故障转移后，辅助终结点的 DNS 记录更新为，辅助终结点成为主终结点。 启动故障转移前，请务必先了解它对存储帐户的潜在影响。
 
-若要在启动故障转移前估计可能造成的数据丢失程度，请使用  **PowerShell cmdlet 检查“上次同步时间”** `Get-AzStorageAccount`属性，并添加 `-IncludeGeoReplicationStats` 参数。 然后，检查帐户的 `GeoReplicationStats` 属性。 
+若要在启动故障转移前估计可能造成的数据丢失程度，请使用  **PowerShell cmdlet 检查“上次同步时间”** `Get-AzStorageAccount`属性，并添加 `-IncludeGeoReplicationStats` 参数。 然后，检查帐户的 `GeoReplicationStats` 属性。 \
 
-在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 
+在故障转移完成后，存储帐户类型自动转换为新的主要区域中的本地冗余存储 (LRS)。 可以为帐户重新启用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 请注意，从 LRS 转换为 GRS 或 RA-GRS 会产生额外费用。 有关其他信息，请参阅[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 在你为存储帐户重新启用 GRS 后，Microsoft 便会开始将帐户中的数据复制到新的次要区域。 复制时间取决于要复制的数据量。  
 

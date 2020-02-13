@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6097d38d3335be356ca75f5a9d0eadeed414b03
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395079"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166953"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Monitor 日志流程
 [Microsoft Flow](https://ms.flow.microsoft.com) 支持使用数百种操作为不同服务创建自动化工作流。 来自一个操作的输出可以用作另一个操作的输入，从而在不同的服务之间创建集成。  可以借助用于 Microsoft Flow 的 Azure Log Analytics 连接器来构建工作流，以包括 Azure Monitor 中的 Log Analytics 工作区中的日志查询检索到的数据。
@@ -77,6 +77,5 @@ ms.locfileid: "75395079"
 
 - 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
 - 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
-
 
 

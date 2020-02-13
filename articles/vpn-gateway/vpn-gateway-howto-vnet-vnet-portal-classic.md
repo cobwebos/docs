@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864105"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157901"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -33,7 +33,7 @@ ms.locfileid: "75864105"
 
 ![VNet 到 VNet 连接示意图](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
 
@@ -73,7 +73,7 @@ ms.locfileid: "75864105"
 
 **示例**
 
-| 虚拟网络 | 地址空间 | 地区 | 连接到本地网络站点 |
+| 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |美国东部 |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |美国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -135,7 +135,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 每个 VNet 的本地站点是另一个 VNet。 我们的配置使用以下示例值：
 
-| 虚拟网络 | 地址空间 | 地区 | 连接到本地网络站点 |
+| 虚拟网络 | 地址空间 | 区域 | 连接到本地网络站点 |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |美国东部 |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |美国西部 |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |

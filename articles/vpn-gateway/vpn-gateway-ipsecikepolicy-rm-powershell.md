@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514912"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161896"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>为 S2S VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略
 
 本文逐步讲解如何使用资源管理器部署模型和 PowerShell 为站点到站点的 VPN 或 VNet 到 VNet 的连接配置 IPsec/IKE 策略。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>关于 Azure VPN 网关的 IPsec 和 IKE 策略参数
 IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请参阅[关于加密要求和 Azure VPN 网关](vpn-gateway-about-compliance-crypto.md)，了解此操作如何帮助确保跨站点的和 VNet 到 VNet 的连接满足符合性或安全性要求。
@@ -98,7 +98,7 @@ IPsec 和 IKE 协议标准支持采用各种组合的各种加密算法。 请�
 
 | **Diffie-Hellman 组**  | **DHGroup**              | **PFSGroup** | 密钥长度 |
 | --- | --- | --- | --- |
-| 第                         | DHGroup1                 | PFS1         | 768 位 MODP   |
+| 1                         | DHGroup1                 | PFS1         | 768 位 MODP   |
 | 2                         | DHGroup2                 | PFS2         | 1024 位 MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 位 MODP  |
 | 19                        | ECP256                   | ECP256       | 256 位 ECP    |

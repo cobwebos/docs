@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167504"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
 
@@ -44,7 +44,7 @@ ms.locfileid: "76547449"
 
 ### <a name="c-2x-and-higher"></a>C#（2.x 及更高版本）
 
-以下示例演示绑定到 `EventGridEvent` 的 [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 ](functions-dotnet-class-library.md)C# 函数`EventGridEvent`：
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -70,7 +70,7 @@ namespace Company.Function
 
 ### <a name="version-1x"></a>版本 1.x
 
-以下示例演示绑定到 `JObject` 的 Functions 1.x [C# 函数](functions-dotnet-class-library.md)：
+以下示例演示绑定到 [ 的 Functions 1.x ](functions-dotnet-class-library.md)C# 函数`JObject`：
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -224,19 +224,7 @@ def main(event: func.EventGridEvent):
 * [事件网格触发器、字符串参数](#event-grid-trigger-string-parameter)
 * [事件网格触发器、POJO 参数](#event-grid-trigger-pojo-parameter)
 
-以下示例显示了 *function.json* 文件和 [Java 函数](functions-reference-java.md)中的触发器绑定，这些函数使用绑定并打印出事件，首先接收 ```String``` 形式的事件，第二个接收 POJO 形式的事件。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+下面的示例演示了使用绑定并输出事件的[Java](functions-reference-java.md)中的触发器绑定，首先以 POJO 的形式接收 `String` 事件，并将秒作为接收。
 
 ### <a name="event-grid-trigger-string-parameter"></a>事件网格触发器，字符串参数
 
@@ -336,7 +324,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
-|function.json 属性 |Description|
+|function.json 属性 |说明|
 |---------|---------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | direction | 必需 - 必须设置为 `in`。 |

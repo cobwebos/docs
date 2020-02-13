@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544151"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161641"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>预览-将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
 对于当前使用经典虚拟网络模型到资源管理器虚拟网络模型的客户，Azure Active Directory 域服务（AD DS）支持一次移动。 使用资源管理器部署模型 Azure AD DS 托管域提供其他功能，例如细化密码策略、审核日志和帐户锁定保护。
 
-本文概述了迁移的优点和注意事项，以及成功迁移现有 Azure AD DS 实例所需的步骤。 此迁移功能目前处于预览阶段。
+本文概述了迁移的优点和注意事项，以及成功迁移现有 Azure AD DS 实例所需的步骤。
 
 ## <a name="overview-of-the-migration-process"></a>迁移过程概述
 
@@ -153,11 +153,11 @@ Azure AD DS 托管域可以迁移到的虚拟网络有一些限制。 资源管�
 
 | 步骤    | 执行  | 估计时间  | 故障时间  | 要回滚/还原？ |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [步骤 1-更新并找到新的虚拟网络](#update-and-verify-virtual-network-settings) | Azure 门户 | 15 分钟 | 无需停机 | N/A |
+| [步骤 1-更新并找到新的虚拟网络](#update-and-verify-virtual-network-settings) | Azure 门户 | 15 分钟 | 无需停机 | 空值 |
 | [步骤 2-为迁移准备 Azure AD DS 托管域](#prepare-the-managed-domain-for-migration) | PowerShell | 平均15到30分钟 | 此命令完成后，将启动 Azure AD DS 的停机时间。 | 回滚并可用还原。 |
 | [步骤 3-将 Azure AD DS 托管域移动到现有虚拟网络](#migrate-the-managed-domain) | PowerShell | 平均时间为1到3小时 | 当完成此命令后，一个域控制器可用，中断时间结束。 | 出现故障时，回滚（自助服务）和还原都可用。 |
 | [步骤 4-测试并等待副本域控制器](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 门户 | 1小时或更多，具体取决于测试数量 | 这两个域控制器都可用并且应正常工作。 | 不适用。 成功迁移第一个 VM 后，就不会有回滚或还原选项。 |
-| [步骤 5-可选配置步骤](#optional-post-migration-configuration-steps) | Azure 门户和 Vm | N/A | 无需停机 | N/A |
+| [步骤 5-可选配置步骤](#optional-post-migration-configuration-steps) | Azure 门户和 Vm | 空值 | 无需停机 | 空值 |
 
 > [!IMPORTANT]
 > 若要避免额外的停机时间，请在开始迁移过程之前阅读此迁移文章和指南。 迁移过程会在一段时间内影响 Azure AD DS 域控制器的可用性。 在迁移过程中，用户、服务和应用程序无法对托管域进行身份验证。

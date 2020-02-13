@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 756c3c198963da7f2f06a91c675f43da33df9e3e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310197"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121470"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -27,7 +27,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-通过 https://portal.azure.com 登录到 Azure 门户。
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 107f2376df7eb767953b32b3447937e24869894c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa1d870effc92f63fb661119214fc635eae95672
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036171"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162457"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -28,14 +28,14 @@ ms.locfileid: "74036171"
 所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关详细信息，请参阅 [Azure 认可的分发版本中的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅 [虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+每个数据磁盘最多可为 32767 GiB。 可以使用的数据磁盘的数目取决于虚拟机的大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级托管磁盘和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
 Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的存储空间。 每个磁盘都是一个 .vhd 文件，以页 blob 形式存储。 有关定价详细信息，请参阅 [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/)（存储定价详细信息）。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
-使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增大此数目。
+使用安全外壳（SSH）建立远程连接以登录虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增大此数目。
 
 如果遇到问题，请查阅[排除安全外壳 (SSH) 连接故障](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -43,7 +43,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>我是否可以复制或克隆现有的 Azure VM？
-可以。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+是的。 有关说明，请参阅[如何在 Resource Manager 部署模型中创建 Linux 虚拟机的副本](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure 资源管理器中看不到加拿大中部和加拿大东部区域？
 针对现有 Azure 订阅创建的虚拟机不会自动注册到加拿大中部和加拿大东部这两个新区域。 通过 Azure 门户使用 Azure 资源管理器将虚拟机部署到其他任何区域时，会自动完成注册。 将虚拟机部署到其他任何 Azure 区域后，新区域可供后续虚拟机使用。
@@ -52,10 +52,10 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 能，目前可行。 首先需停止解除分配 VM。 然后便可添加或删除 NIC（除非它是 VM 上的最后一个 NIC）。 
 
 ## <a name="are-there-any-computer-name-requirements"></a>是否有任何计算机名称要求？
-可以。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
+是的。 计算机名称的最大长度为 64 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
-可以。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
+是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/architecture/best-practices/resource-naming)。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>创建 VM 时，用户名有什么要求？
 
@@ -77,13 +77,13 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>创建 VM 时，密码有什么要求？
 
-根据所使用的工具，有不同的密码长度要求：
- - 门户 - 12 到 72 个字符之间
- - PowerShell - 8 到 123 个字符之间
- - CLI - 12 到 123 个字符之间
+密码长度要求不同，具体取决于你使用的工具：
+ - 门户-介于 12-72 个字符之间
+ - PowerShell-介于 8-123 个字符之间
+ - CLI-介于 12-123
  
 
-密码还必须满足以下 4 个复杂性要求中的 3 个要求：
+密码还必须满足以下4个复杂性要求中的3个要求：
 
 * 具有小写字符
 * 具有大写字符

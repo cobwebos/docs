@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362458"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168307"
 ---
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 每个请求都需要一个授权标头。 下表列出了每个服务支持的标头：
 
 | 支持的授权标头 | 语音转文本 | 文本转语音 |
 |------------------------|----------------|----------------|
 | Ocp-Apim-Subscription-Key | 是 | 否 |
-| Authorization:Bearer | 是 | 是 |
+| 授权：持有者 | 是 | 是 |
 
 使用 `Ocp-Apim-Subscription-Key` 标头时，只需提供订阅密钥。 例如：
 
@@ -26,15 +26,21 @@ ms.locfileid: "68362458"
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 在接下来的几个部分中, 你将了解如何获取令牌并使用令牌。
+使用 `Authorization: Bearer` 标头时，需要向 `issueToken` 终结点发出请求。 在此请求中，交换有效期为 10 分钟的访问令牌的订阅密钥。 在接下来的几个部分中，你将了解如何获取令牌并使用令牌。
 
 ### <a name="how-to-get-an-access-token"></a>如何获取访问令牌
 
-若要获取访问令牌，需使用 `Ocp-Apim-Subscription-Key` 和订阅密钥向 `issueToken` 终结点发出请求。
+若要获取访问令牌，需使用 `issueToken` 和订阅密钥向 `Ocp-Apim-Subscription-Key` 终结点发出请求。
 
-支持以下区域和终结点：
+`issueToken` 终结点具有以下格式：
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```
+https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
+```
+
+将 `<REGION_IDENTIFIER>` 替换为与此表中的订阅区域匹配的标识符：
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 使用这些示例创建访问令牌请求。
 

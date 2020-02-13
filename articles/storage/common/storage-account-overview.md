@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274533"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157256"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -115,11 +115,9 @@ Azure 存储提供不同的选项用于根据使用模式访问块 Blob 数据�
 > [!IMPORTANT]
 > 更改现有存储帐户或 Blob 的访问层可能会产生额外的费用。 有关详细信息，请参阅[“存储帐户计费”部分](#storage-account-billing)。
 
-## <a name="replication"></a>复制
+## <a name="redundancy"></a>冗余
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-有关存储复制的详细信息，请参阅 [Azure 存储复制](storage-redundancy.md)。
 
 ## <a name="encryption"></a>加密
 

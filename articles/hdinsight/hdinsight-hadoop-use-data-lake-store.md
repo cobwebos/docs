@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061303"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162389"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用
 
@@ -40,14 +40,14 @@ HDInsight 群集可通过以下两种方式使用 Data Lake Storage Gen1：
 
 目前，只有部分 HDInsight 群集类型/版本支持使用 Data Lake Storage Gen1 作为默认存储和附加存储帐户：
 
-| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 注意 |
+| HDInsight 群集类型 | 将 Data Lake Storage Gen1 用作默认存储 | 将 Data Lake Storage Gen1 用作附加存储| 说明 |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight 版本4。0 | 是 | 是 |HDInsight 4.0 不支持 ADLS Gen1 |
+| HDInsight 版本4。0 | 否 | 否 |HDInsight 4.0 不支持 ADLS Gen1 |
 | HDInsight 版本 3.6 | 是 | 是 | HBase 除外|
 | HDInsight 版本 3.5 | 是 | 是 | HBase 除外|
-| HDInsight 版本 3.4 | 是 | 是 | |
-| HDInsight 版本 3.3 | 是 | 是 | |
-| HDInsight 版本 3.2 | 是 | 是 | |
+| HDInsight 版本 3.4 | 否 | 是 | |
+| HDInsight 版本 3.3 | 否 | 否 | |
+| HDInsight 版本 3.2 | 否 | 是 | |
 | Storm | | |可使用 Data Lake Storage Gen1 从 Storm 拓扑写入数据。 对于可由 Storm 拓扑读取的参考数据，也可使用 Data Lake Storage。|
 
 > [!WARNING]  
@@ -130,6 +130,8 @@ New-AzResourceGroupDeployment `
 
 > [!NOTE]  
 > 如果要将 Azure Data Lake Storage Gen1 用作 HDInsight 群集的附加存储，强烈建议在创建该群集时按本文说明进行此项操作。 将 Azure Data Lake Storage Gen1 作为附加存储添加到现有的 HDInsight 群集是不受支持的方案。
+
+有关 Data Lake Storage Gen1 的访问控制模型的基础知识的详细信息，请参阅[Azure Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。
 
 ## <a name="access-files-from-the-cluster"></a>从群集访问文件
 

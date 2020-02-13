@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899982"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162287"
 ---
 # <a name="event-processor-host"></a>事件处理程序主机
 > [!NOTE]
@@ -47,7 +47,7 @@ Azure 事件中心是强大的遥测引入服务，使用它能以较低的成�
 
 1. **缩放：** 创建多个使用者，每个使用者获取若干事件中心分区的读取所有权。
 2. **负载均衡：** 动态增加或减少使用者。 例如，将新的传感器类型（例如一氧化碳检测器）添加到每个家庭后，事件数会增多。 在这种情况下，操作员（人类）会增加使用者实例的数目。 然后，使用者池可以重新均衡它们拥有的分区数，以便与新添加的使用者分担负载。
-3. **故障时无缝恢复：** 如果某个使用者（**使用者 A**）发生故障（例如，托管使用者的虚拟机突然崩溃），其他使用者必须能够拾取**使用者 A** 拥有的分区并继续。 此外，称作“检查点”或“偏移量”的延续点应该位于**使用者 A** 发生故障时的确切位置，或者略微在该位置的前面。
+3. **故障时无缝恢复：** 如果某个使用者（**使用者 A**）发生故障（例如，托管使用者的虚拟机突然崩溃），其他使用者必须能够拾取**使用者 A** 拥有的分区并继续。 此外，称作“检查点”或“偏移量”的延续点应该位于*使用者 A* 发生故障时的确切位置，或者略微在该位置的前面。
 4. **使用事件：** 尽管前面三个要点能够应对使用者的管理，但还必须提供代码来使用事件并对其执行有用的操作；例如，聚合事件并将其上传到 Blob 存储。
 
 你无需为此生成自己的解决方案，事件中心会通过 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 接口和 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 类提供此功能。
@@ -121,10 +121,10 @@ public class SimpleEventProcessor : IEventProcessor
 | **使用者组名称** | **分区 ID** | **主机名（所有者）** | **租约（或所有权）获取时间** | **分区（检查点）中的偏移量** |
 | --- | --- | --- | --- | --- |
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
-| $Default | 第 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
+| $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| ： |   |   |   |   |
-| ： |   |   |   |   |
+| 解码的字符： |   |   |   |   |
+| 解码的字符： |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 此处，每个主机按特定的持续时间（租约持续时间）获取分区所有权。 如果某个主机发生故障（VM 关闭），则租约将会过期。 其他主机尝试获取分区所有权，其中一个主机会成功。 此过程会重置具有新所有者的分区上的租约。 这样，每次只会有一个读取者可以从使用者组中任意给定的分区读取事件。
@@ -135,7 +135,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 建议以相对较快的速度执行操作；也就是说，尽量减少处理量。 改用使用者组。 如果需要写入存储并进行某些路由，最好使用两个使用者组，并提供两个单独运行的[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor)实现。
 
-在处理过程中的某个阶段，你可能想要跟踪已读取和已完成哪些信息。 如果必须重新开始读取，以免返回到流的开头，则保持跟踪至关重要。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 使用检查点简化了这种跟踪。 检查点是给定使用者组中给定分区的位置或偏移量，你希望在此位置处理消息。 在 **EventProcessorHost** 中标记检查点的过程是通过在 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 对象中调用 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 方法实现的。 此操作是在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法中完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
+在处理过程中的某个阶段，你可能想要跟踪已读取和已完成哪些信息。 如果必须重新开始读取，以免返回到流的开头，则保持跟踪至关重要。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 使用检查点简化了这种跟踪。 检查点是给定使用者组中给定分区的位置或偏移量，你希望在此位置处理消息。 在 **EventProcessorHost** 中标记检查点的过程是通过在 [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) 对象中调用 [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) 方法实现的。 此操作是在 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 方法中完成，但也可以在 [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 中完成。
 
 ## <a name="checkpointing"></a>检查点
 
@@ -145,7 +145,7 @@ public class SimpleEventProcessor : IEventProcessor
 
 ## <a name="thread-safety-and-processor-instances"></a>线程安全性和处理程序实例
 
-默认情况下，[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 是线程安全的，以相对于 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实例的同步方式运行。 当事件抵达某个分区时，会在 **IEventProcessor** 实例上针对该分区调用 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync)，并阻止针对该分区进一步调用 **ProcessEventsAsync**。 后续消息和 **ProcessEventsAsync** 调用在幕后排队，因为消息泵持续在其他线程上后台运行。 此线程安全性消除了线程安全集合的需要，并显著提高了性能。
+默认情况下，[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) 是线程安全的，以相对于 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 实例的同步方式运行。 当事件抵达某个分区时，会在 [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) 实例上针对该分区调用 **ProcessEventsAsync**，并阻止针对该分区进一步调用 **ProcessEventsAsync**。 后续消息和 **ProcessEventsAsync** 调用在幕后排队，因为消息泵持续在其他线程上后台运行。 此线程安全性消除了线程安全集合的需要，并显著提高了性能。
 
 ## <a name="shut-down-gracefully"></a>正常关闭
 
@@ -202,7 +202,11 @@ Epoch 是服务使用的唯一标识符（epoch 值），用来强制实施分�
 
 熟悉事件处理程序主机后，请参阅以下文章来详细了解事件中心：
 
-* 使用 [事件中心教程](event-hubs-dotnet-standard-getstarted-send.md)
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [事件中心编程指南](event-hubs-programming-guide.md)
 * [事件中心中的可用性和一致性](event-hubs-availability-and-consistency.md)
 * [事件中心常见问题解答](event-hubs-faq.md)

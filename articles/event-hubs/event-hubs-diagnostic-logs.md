@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750730"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162304"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -71,7 +71,7 @@ ms.locfileid: "75750730"
 
 存档日志 JSON 字符串包括下表列出的元素：
 
-名称 | Description
+名称 | 说明
 ------- | -------
 TaskName | 失败的任务的说明。
 ActivityId | 用于跟踪的内部 ID。
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 运行日志 JSON 字符串包括下表列出的元素：
 
-名称 | Description
+名称 | 说明
 ------- | -------
 ActivityId | 用于跟踪目的的内部 ID。
 EventName | 操作名称。  
@@ -139,6 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [事件中心简介](event-hubs-what-is-event-hubs.md)
-* [事件中心 API 概述](event-hubs-api-overview.md)
-* [事件中心入门](event-hubs-dotnet-standard-getstarted-send.md)
+- [事件中心简介](event-hubs-what-is-event-hubs.md)
+- [事件中心 API 概述](event-hubs-api-overview.md)
+- 事件中心入门
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

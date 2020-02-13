@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806875"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158904"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -50,7 +50,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 > [!TIP]
 > 为存储服务的辅助实例创建单独的专用终结点，以在 GRS 帐户中获得更好的读取性能。
 
-对于[读取访问异地冗余存储帐户](storage-redundancy-grs.md#read-access-geo-redundant-storage)的读取可用性，需要为该服务的主要实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。
+若要使用为异地冗余存储配置的存储帐户对辅助区域进行读取访问，需要为服务的主实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。 有关存储冗余选项的详细信息，请参阅[Azure 存储冗余](storage-redundancy.md)。
 
 #### <a name="resources"></a>资源
 
@@ -78,7 +78,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 对于上面所示的示例，存储帐户 "StorageAccountA" 的 DNS 资源记录在托管专用终结点的 VNet 之外进行解析时将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<存储服务公共终结点\>                   |
@@ -88,7 +88,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 托管专用终结点的 VNet 中的客户端解析后，StorageAccountA 的 DNS 资源记录将为：
 
-| 名称                                                  | Type  | Value                                                 |
+| 名称                                                  | 类型  | 值                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -118,7 +118,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 - [Azure 虚拟网络中资源的名称解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
 - [专用终结点的 DNS 配置](/azure/private-link/private-endpoint-overview#dns-configuration)
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关定价详细信息，请参阅 [Azure 专用链接定价](https://azure.microsoft.com/pricing/details/private-link)。
 

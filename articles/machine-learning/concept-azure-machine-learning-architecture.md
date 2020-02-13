@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984857"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169874"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure 机器学习的工作方式：体系结构和概念
 
@@ -84,9 +84,6 @@ ms.locfileid: "76984857"
 
 ### <a name="compute-instance"></a>计算实例（预览）
 
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
->如果你的工作区在任何其他区域，则可以继续创建并使用[笔记本 VM](concept-compute-instance.md#notebookvm)。 
 
 **Azure 机器学习计算实例**（以前称为笔记本 VM）是一种完全托管的基于云的工作站，其中包含为机器学习安装的多个工具和环境。 计算实例可用作定型和推断作业的计算目标。 对于大型任务，使用多节点缩放功能[Azure 机器学习计算群集](how-to-set-up-training-targets.md#amlcompute)是更好的计算目标选择。
 
@@ -176,7 +173,7 @@ Azure ML 环境用于指定用于为数据准备、模型定型和模型服务�
 
 有关机器学习管道与此服务的详细信息，请参阅[管道和 Azure 机器学习](concept-ml-pipelines.md)。
 
-### <a name="models"></a>模型
+### <a name="models"></a>Models
 
 简单地说，模型是一段接受输入并生成输出的代码。 创建机器学习模型将涉及选择算法、为其提供数据以及优化超参数。 培训是一个迭代过程，将生成经过培训的模型，它会封装模型在培训过程中学到的内容。
 
@@ -199,7 +196,7 @@ Azure 机器学习与框架无关。 创建模型时，可以使用任何主流�
 
 有关注册模型的示例，请参阅[使用 Azure 机器学习训练映像分类模型](tutorial-train-models-with-aml.md)。
 
-### <a name="runs"></a>运行
+### <a name="runs"></a>运行次数
 
 "运行" 是训练脚本的单次执行。 Azure 机器学习记录所有运行并存储以下信息：
 

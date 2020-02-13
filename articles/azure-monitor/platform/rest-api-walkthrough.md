@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363500"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162253"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure 监视器 REST API。
+若要查询 Azure 监视器 API，客户端应用程序应使用事先创建的服务主体进行身份验证。 以下示例 PowerShell 脚本演示了一种使用 [Active Directory 身份验证库](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) 来获取 JWT 身份验证令牌的方法。 JWT 令牌作为请求中 HTTP 授权参数的一部分传递给 Azure 监视器 REST API。
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -314,7 +314,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-请求 URI： https://management.azure.com/subscriptions/ {subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/ {resource-type}/ {resource-name}/providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&interval={timeGrain}&aggregation={aggreation}&api-version={apiVersion}
+请求 URI： https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace} *{resource-type}* {resource-name}/providers/microsoft.insights/metrics?metricnames={metric}&timespan={starttime/endtime}&$filter={filter}&interval={timeGrain}&aggregation={aggreation}&api-version={apiVersion}//
 
 例如，若要在 5 分钟时间范围内按“事务”数降序值检索前 3 个 API，其中 GeotType 为 “Primary”，则请求将如下所示：
 
@@ -466,7 +466,7 @@ Invoke-RestMethod -Uri $request `
 
 **方法**：GET
 
-请求 URI： https://management.azure.com/subscriptions/ {subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/ {resource-type}/ {resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}
+请求 URI： **{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}** {resource-type} https://management.azure.com/subscriptions/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}//
 
 例如，要检索给定时间范围内时间粒度为 1 小时的 RunsSucceeded 指标数据点，请求将如下所示：
 

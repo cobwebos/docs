@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153122"
+ms.locfileid: "77168338"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 以下步骤演示了如何使用 Azure PowerShell 命令将基础结构即服务 (IaaS) 资源从经典部署模型迁移到 Azure 资源管理器部署模型。
@@ -52,8 +52,6 @@ ms.locfileid: "77153122"
 安装 Azure PowerShell 可以通过两个主要的选项：[PowerShell 库](https://www.powershellgallery.com/profiles/azure-sdk/)或 [Web 平台安装程序 (WebPI)](https://aka.ms/webpi-azps)。 WebPI 接收每月的更新。 PowerShell 库会持续接收更新。 本文基于 Azure PowerShell 2.1.0 版。
 
 如需安装说明，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>步骤3：确保你是订阅的管理员
 若要执行此迁移，必须在[Azure 门户](https://portal.azure.com)中为订阅添加共同管理员。
@@ -104,6 +102,14 @@ ms.locfileid: "77153122"
 
 请确保在继续操作之前，RegistrationState 为 `Registered`。
 
+切换到经典部署模型之前，请确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机个 vcpu。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
+
+此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 现在，请登录到经典部署模型的帐户。
 
 ```powershell
@@ -122,27 +128,17 @@ ms.locfileid: "77153122"
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>步骤5：拥有足够的资源管理器 VM 个 vcpu
-请确保在当前部署或虚拟网络的 Azure 区域中有足够的 Azure 资源管理器虚拟机个 vcpu。 可以使用以下 PowerShell 命令检查 Azure 资源管理器中目前的 vCPU 数量。 若要了解有关 vCPU 配额的详细信息，请参阅[限制和 Azure 资源管理器](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits)。
-
-此示例检查在“美国西部”区域中的可用性。 将示例区域名称替换成自己的名称。
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>步骤 6：运行迁移 IaaS 资源的命令
-* [迁移云服务中的 Vm （不在虚拟网络中）](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [迁移虚拟网络中的 VM](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [迁移存储帐户](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>步骤 5：运行迁移 IaaS 资源的命令
+* [迁移云服务中的 Vm （不在虚拟网络中）](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [迁移虚拟网络中的 VM](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [迁移存储帐户](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > 此处描述的所有操作都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，建议重试准备、中止或提交操作。 然后，平台会尝试再次该操作。
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步骤 6.1：选项 1 - 迁移云服务中的虚拟机（不在虚拟网络中）
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>步骤5.1：选项 1-迁移云服务中的虚拟机（不在虚拟网络中）
 使用以下命令获取云服务列表。 然后选取要迁移的云服务。 如果云服务中的 VM 在虚拟网络中或者具有 Web 角色或辅助角色，该命令会返回错误消息。
 
 ```powershell
@@ -223,7 +219,7 @@ Get-AzVMUsage -Location "West US"
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步骤 6.1：选项 2 - 迁移虚拟网络中的虚拟机
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>步骤5.1：选项 2-迁移虚拟网络中的虚拟机
 
 若要迁移虚拟网络中的虚拟机，可迁移虚拟网络。 虚拟机随虚拟网络自动迁移。 选取要迁移的虚拟网络。
 > [!NOTE]
@@ -266,7 +262,7 @@ Get-AzVMUsage -Location "West US"
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>步骤6.2：迁移存储帐户
+### <a name="step-52-migrate-a-storage-account"></a>步骤5.2：迁移存储帐户
 迁移完虚拟机后，在迁移存储帐户之前，请执行以下先决条件检查。
 
 > [!NOTE]

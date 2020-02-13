@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990345"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169753"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>使用 VS Code 远程在 Azure 机器学习计算实例上交互式调试
 
 在本文中，你将了解如何在 Azure 机器学习计算实例上设置 Visual Studio Code 远程，以便可以从 VS Code**以交互方式调试你的代码**。 
-
-> [!NOTE]
-> 计算实例仅适用于区域为**美国中北部**、**美国东部 2**、**北欧**或**英国南部**的工作区，并为即将推出的其他区域提供支持。
 
 + [Azure 机器学习计算实例](concept-compute-instance.md)是一种完全托管的基于云的数据科学家工作站，为 IT 管理员提供管理和企业就绪能力。 
 
@@ -37,7 +34,7 @@ ms.locfileid: "76990345"
 
 ## <a name="get-ip-and-ssh-port"></a>获取 IP 和 SSH 端口 
 
-1. 在 https://ml.azure.com/ 中转到 Azure 机器学习 studio。
+1. 在 https://ml.azure.com/中转到 Azure 机器学习 studio。
 
 2. 选择[工作区](concept-workspace.md)。
 1. 单击 "**计算实例**" 选项卡。
@@ -89,11 +86,11 @@ Host azmlci1
 
 下面是有关这些字段的一些详细信息： 
 
-|字段|Description|
+|字段|说明|
 |----|---------|
 |主机|使用所需的任何速记作为计算实例 |
 |HostName|这是计算实例的 IP 地址 |
-|Port|这是上面的 SSH 对话框中显示的端口 |
+|端口|这是上面的 SSH 对话框中显示的端口 |
 |用户|这需要 `azureuser` |
 |IdentityFile|应指向保存私钥的文件 |
 

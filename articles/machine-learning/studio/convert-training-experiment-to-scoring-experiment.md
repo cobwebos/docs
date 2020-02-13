@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 03/28/2017
-ms.openlocfilehash: 82db8fb2d8b8fc38542e202cc9e590663dc8bbab
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fa9c5e5fa84a1ea6718bd82cd349f9248d283722
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150053"
+ms.locfileid: "77168848"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>如何在 Azure 机器学习 Studio （经典）中准备要部署的模型
 

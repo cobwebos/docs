@@ -13,12 +13,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 372eac63b2ab9ea7dea540a088d61a5144886686
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698588"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161165"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Azure AD 使用 SAML 协议的方式
 
@@ -36,4 +36,4 @@ Azure Active Directory 公开特定于租户的和公用的（独立于租户的
 
 * 独立于租户的终结点位于 `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`。 此终结点地址中显示 **common**，而不是租户域名或 ID。
 
-有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata](azure-ad-federation-metadata.md)（联合元数据）。
+有关 Azure AD 发布的联合元数据文档的信息，请参阅 [Federation Metadata](../azuread-dev/azure-ad-federation-metadata.md)（联合元数据）。

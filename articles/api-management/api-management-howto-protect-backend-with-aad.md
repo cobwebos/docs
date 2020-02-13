@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121396"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161794"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -27,7 +27,7 @@ ms.locfileid: "77121396"
 > [!NOTE]
 > 此功能适用于 API 管理的**开发人员** **版、标准**层和**高级**层。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -147,7 +147,7 @@ ms.locfileid: "77121396"
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 1. 返回到客户端应用并选择 "**身份验证**"。
 
@@ -161,7 +161,7 @@ ms.locfileid: "77121396"
 
 2. 选择要保护的 API。 例如，可以使用 `Echo API`。
 
-3. 转到 **“设置”** 。
+3. 转到“设置”。
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。 
 
@@ -212,7 +212,7 @@ ms.locfileid: "77121396"
 
 ## <a name="build-an-application-to-call-the-api"></a>生成应用程序来调用 API
 
-在本指南中，我们使用了 API 管理中的开发者控制台作为示例客户端应用程序来调用由 OAuth 2.0 保护的 `Echo API`。 若要详细了解如何生成应用程序并实现 OAuth 2.0，请参阅 [Azure Active Directory 代码示例](../active-directory/develop/sample-v1-code.md)。
+在本指南中，我们使用了 API 管理中的开发者控制台作为示例客户端应用程序来调用由 OAuth 2.0 保护的 `Echo API`。 若要详细了解如何生成应用程序并实现 OAuth 2.0，请参阅 [Azure Active Directory 代码示例](../active-directory/develop/sample-v2-code.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 详细了解 [Azure Active Directory 和 OAuth2.0](../active-directory/develop/authentication-scenarios.md)。
