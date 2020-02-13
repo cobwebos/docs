@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: 教程
       items:
-        - name: 批量邀请 B2B 来宾用户
+        - name: 通过 PowerShell 批量邀请
+          href: bulk-invite-powershell.md
+        - name: 通过门户批量邀请（预览版）
           href: tutorial-bulk-invite.md
         - name: 实施多重身份验证
           href: b2b-tutorial-require-mfa.md

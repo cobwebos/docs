@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: 使用 Power BI 进行连接
               href: knowledge-store-connect-power-bi.md
+            - name: 投影示例
+              href: knowledge-store-projections-examples.md
     - name: 查询文档
       items:
         - name: 查询类型和组合

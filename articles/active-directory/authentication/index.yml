@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847145"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166417"
 landingContent:
 - title: 关于身份验证
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: 密码写回
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: 自助式密码重置快速入门
-      url: quickstart-sspr.md
+    - text: 启用自助式密码重置
+      url: tutorial-enable-sspr.md
+    - text: 启用向本地进行密码写回
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure AD 自助式密码重置
+    - text: 自助式密码重置部署指南
       url: howto-sspr-deployment.md
-    - text: 启用密码写回
-      url: howto-sspr-writeback.md
     - text: 从 Windows 登录屏幕启用密码重置
       url: howto-sspr-windows.md
 - title: 启用 Azure 多重身份验证
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: 针对特定应用程序试点 Azure MFA
-      url: tutorial-mfa-applications.md
-    - text: 使用风险检测触发多重身份验证和密码更改
+    - text: 启用 Azure 多重身份验证
+      url: tutorial-enable-azure-mfa.md
+    - text: 启用基于风险的 Azure 多重身份验证
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: 部署 Azure 多重身份验证
+    - text: Azure 多重身份验证部署指南
       url: howto-mfa-getstarted.md
     - text: 使用 NPS 扩展集成本地应用程序
       url: howto-mfa-nps-extension.md

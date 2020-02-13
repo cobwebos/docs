@@ -64,7 +64,7 @@
   items:
     - name: 自助式密码重置
       items:
-        - name: 部署自助密码重置
+        - name: 部署指南
           href: howto-sspr-deployment.md
         - name: 预注册身份验证数据
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: 基于云的 MFA
       items:
-        - name: 部署基于云的 MFA
+        - name: 部署指南
           href: howto-mfa-getstarted.md
         - name: 每用户 MFA
           href: howto-mfa-userstates.md

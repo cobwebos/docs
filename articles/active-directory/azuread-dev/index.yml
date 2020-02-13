@@ -1,0 +1,54 @@
+### YamlMime:Landing
+title: 针对开发人员的 Azure Active Directory
+summary: Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以使用它来生成应用，让用户使用 Microsoft 工作或学校帐户安全登录。 Azure AD 支持开发人员生成单租户业务线 (LOB) 应用和多租户应用。 Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 对于新的应用程序，我们建议你使用 Microsoft 标识平台 (v2.0) 和 MSAL 来获取令牌并访问受保护的 Web API。
+metadata:
+  ms.topic: landing-page
+  ms.date: 01/27/2020
+  author: CelesteDG
+  ms.author: celested
+  ms.service: active-directory
+  ms.subservice: azuread-dev
+  ms.workload: identity
+  ms.openlocfilehash: 5af100e7e5a1456dae4bc4e68334299d1fd12794
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77163205"
+landingContent:
+- title: 针对开发人员的 Azure Active Directory
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 面向开发人员的 Azure Active Directory (v1.0)
+      url: v1-overview.md
+    - text: Microsoft 标识平台的发展
+      url: ../develop/about-microsoft-identity-platform.md
+    - text: Microsoft 标识平台 (v2.0)
+      url: ../develop/v2-overview.md
+  - linkListType: concept
+    links:
+    - text: 为什么要更新到 Microsoft 标识平台 (v2.0)？
+      url: azure-ad-endpoint-comparison.md
+    - text: 应用程序类型和方案
+      url: app-types.md
+- title: 身份验证协议
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 身份验证基础知识
+      url: v1-authentication-scenarios.md
+  - linkListType: concept
+    links:
+    - text: OAuth 2.0 授权代码流
+      url: v1-protocols-oauth-code.md
+    - text: OpenID Connect 代码流
+      url: v1-protocols-openid-connect-code.md
+    - text: OAuth 2.0 客户端凭据授予流
+      url: v1-oauth2-client-creds-grant-flow.md
+- title: 示例
+  linkLists:
+  - linkListType: download
+    links:
+    - text: 示例应用
+      url: sample-v1-code.md

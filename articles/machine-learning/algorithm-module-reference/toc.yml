@@ -26,6 +26,8 @@
       href: convert-to-csv.md
     - name: 转换为数据集
       href: convert-to-dataset.md
+    - name: 转换为指示器值
+      href: convert-to-indicator-values.md
     - name: 清理缺失数据
       href: clean-missing-data.md
     - name: 编辑元数据
@@ -66,7 +68,7 @@
           href: linear-regression.md
         - name: 神经网络回归
           href: neural-network-regression.md
-    - name: 群集功能
+    - name: 群集
       items:
         - name: K 平均值聚类
           href: k-means-clustering.md

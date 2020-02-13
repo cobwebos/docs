@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: 故障排除
           items:
+            - name: 无法创建 Jupyter 笔记本
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: OutOfMemoryError 异常
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Apache Spark 作业失败 - NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: 调试 Apache Spark 作业
               href: ./spark/apache-spark-job-debugging.md
+            - name: 调试 WASB 文件操作
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: 使用 IntelliJ 调试 Apache Spark 作业
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Apache Spark 故障排除
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: 失去密钥保管库访问权限
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: WASBS 存储异常
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: 概述
