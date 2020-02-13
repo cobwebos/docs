@@ -11,18 +11,21 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 079cfcee543cf1ce36c4a1394479a622b3658789
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935121"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76961993"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>使用管理 Azure 时序见解环境的 GA 引用数据C#
 
 本文演示如何结合C#、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory 将编程式 API 请求发送到 Azure 时序见解 GA[参考数据管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。
 
-## <a name="summary"></a>摘要
+> [!TIP]
+> 查看C# GA 代码示例[https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)。
+
+## <a name="summary"></a>Summary
 
 下面的示例代码演示了以下功能：
 
@@ -52,9 +55,6 @@ ms.locfileid: "76935121"
 1. 通过将每个 **#PLACEHOLDER #** 替换为适当的环境标识符，编辑下面的示例代码。
 
 1. 在项目的根目录中运行 `dotnet run`。 出现提示时，请使用用户配置文件登录到 Azure。 
-
-> [!TIP]
-> * 查看 上C#的其他 GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)代码示例。
 
 ## <a name="project-dependencies"></a>项目依赖项
 

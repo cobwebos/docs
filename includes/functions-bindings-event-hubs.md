@@ -4,41 +4,41 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a31dc1c6d1a7f4dce6e7baae5a0e0e8f3d6d3d34
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748918"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179095"
 ---
-## <a name="trigger"></a>트리거
+## <a name="trigger"></a>触发器
 
 使用函数触发器来响应发送到事件中心事件流的事件。 若要设置触发器，你必须对基础事件中心具有读取访问权限。 触发函数时，传递给函数的消息将类型化为字符串。
 
-## <a name="trigger---scaling"></a>트리거 - 크기 조정
+## <a name="trigger---scaling"></a>触发器 - 缩放
 
 事件触发函数的每个实例都由单个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例支持。 触发器（由事件中心提供支持）可确保只有一个[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例可以获得给定分区上的租约。
 
-예를 들어, 다음과 같은 Event Hub를 고려합니다.
+例如，考虑如下所述的一个事件中心：
 
 * 10个分区
 * 1000在所有分区上均匀分布的事件，每个分区中包含100条消息
 
-함수를 처음 사용하는 경우 함수 인스턴스가 하나만 있습니다. 让我们调用第一个函数实例 `Function_0`。 `Function_0` 函数具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的单个实例，该实例持有所有10个分区的租约。 이 인스턴스는 파티션 0-9에서 이벤트를 읽습니다. 이 지점부터 다음 중 하나가 발생합니다.
+首次启用函数时，只有一个函数实例。 让我们调用第一个函数实例 `Function_0`。 `Function_0` 函数具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的单个实例，该实例持有所有10个分区的租约。 此实例从分区 0-9 读取事件。 从此时开始，将发生下列情况之一：
 
 * **不需要新的函数实例**：在函数缩放逻辑生效之前，`Function_0` 能够处理所有1000事件。 在这种情况下，将 `Function_0`处理所有1000消息。
 
-* **添加了额外的函数实例**：如果函数缩放逻辑确定 `Function_0` 的消息数超过其处理能力，则会创建一个新的 function app 实例（`Function_1`）。 此新函数也具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的关联实例。 当基础事件中心检测到新的主机实例正在尝试读取消息时，它会在主机实例之间负载平衡分区。 예를 들어, 파티션 0-4는 `Function_0`에, 파티션 5-9는 `Function_1`에 할당할 수 있습니다.
+* **添加其他函数实例**：如果函数缩放逻辑确定 `Function_0` 的消息数超过其处理能力，则会创建一个新的 function app 实例（`Function_1`）。 此新函数也具有[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的关联实例。 当基础事件中心检测到新的主机实例正在尝试读取消息时，它会在主机实例之间负载平衡分区。 例如，可以将分区 0-4 分配给 `Function_0`，将分区 5-9 分配给 `Function_1`。
 
-* **添加了更多函数实例**：如果函数缩放逻辑确定 `Function_0` 和 `Function_1` 的消息数超过其处理能力，则会创建新的 `Functions_N` function app 实例。  将为 `N` 大于事件中心分区数的点创建应用。 이 예에서 Event Hubs는 다시 파티션을 부하 분산합니다(이 경우, 인스턴스 `Function_0`...`Functions_9`로).
+* **额外添加 N 个函数实例**：如果函数缩放逻辑确定 `Function_0` 和 `Function_1` 包含的消息超过其处理的数目，则将创建新的 `Functions_N` function app 实例。  将为 `N` 大于事件中心分区数的点创建应用。 在我们的示例中，事件中心再次对分区进行负载均衡，在本例中是在实例 `Function_0`...`Functions_9` 之间进行的。
 
 进行缩放时，`N` 实例是大于事件中心分区数的数字。 此模式用于确保在分区从其他实例中变得可用时，可以使用[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)实例获取这些分区中的锁。 只需为函数实例执行时所使用的资源付费。 换句话说，这种过度预配无需支付费用。
 
-모든 함수 실행이 오류 없이 완료되면 연결된 스토리지 계정에 검사점이 추가됩니다. 如果检查指针成功，则永远不会再次检索1000的所有消息。
+当所有函数执行都完成时（不管是否有错误），则会将检查点添加到关联的存储帐户。 如果检查指针成功，则永远不会再次检索1000的所有消息。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-다음 예제에서는 이벤트 허브 트리거의 메시지 본문을 기록하는 [C# 함수](../articles/azure-functions/functions-dotnet-class-library.md)를 보여줍니다.
+以下示例演示用于记录事件中心触发器消息正文的 [C# 函数](../articles/azure-functions/functions-dotnet-class-library.md)。
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -48,7 +48,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-함수 코드에서 [이벤트 메타데이터](#trigger---event-metadata)에 대한 액세스를 얻으려면 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) 개체에 바인딩합니다(`Microsoft.Azure.EventHubs`에 using 문이 필요함). 메서드 시그니처의 바인딩 식을 사용하여 동일한 속성에 액세스할 수도 있습니다.  다음 예제에서는 동일한 데이터를 가져오는 두 가지 방법을 모두 보여줍니다.
+若要在函数代码中访问[事件元数据](#trigger---event-metadata)，请绑定到 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) 对象（需要对 `Microsoft.Azure.EventHubs` 使用 using 语句）。 此外，还可以通过在方法签名中使用绑定表达式来访问相同的属性。  以下示例演示了获取相同数据的两种方法：
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -71,10 +71,10 @@ public static void Run(
 }
 ```
 
-일괄 처리에서 이벤트를 수신하려면 `string` 또는 `EventData` 배열을 만듭니다.  
+若要成批接收事件，请将 `string` 或 `EventData` 设为数组。  
 
 > [!NOTE]
-> 일괄로 이벤트를 수신하면 `DateTime enqueuedTimeUtc`를 사용하여 위 예제와 같이 메서드 매개 변수에 바인딩할 수 없으며 각 `EventData` 개체에서 이러한 매개 변수를 수신해야 합니다.  
+> 成批接收事件时，不能像上述示例那样使用 `DateTime enqueuedTimeUtc` 绑定到方法参数，且必须从每个 `EventData` 对象中接收这些事件  
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -90,9 +90,9 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-다음 예에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [C# 스크립트 함수](../articles/azure-functions/functions-reference-csharp.md)를 보여줍니다. 함수는 이벤트 허브 트리거의 메시지 본문을 기록합니다.
+以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数记录事件中心触发器的消息正文。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다.
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
 #### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
 
@@ -106,7 +106,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-### <a name="version-1x"></a>버전 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -118,7 +118,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-C# 스크립트 코드는 다음과 같습니다.
+C# 脚本代码如下所示：
 
 ```cs
 using System;
@@ -129,7 +129,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-함수 코드에서 [이벤트 메타데이터](#trigger---event-metadata)에 대한 액세스를 얻으려면 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) 개체에 바인딩합니다(`Microsoft.Azure.EventHubs`에 using 문이 필요함). 메서드 시그니처의 바인딩 식을 사용하여 동일한 속성에 액세스할 수도 있습니다.  다음 예제에서는 동일한 데이터를 가져오는 두 가지 방법을 모두 보여줍니다.
+若要在函数代码中访问[事件元数据](#trigger---event-metadata)，请绑定到 [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) 对象（需要对 `Microsoft.Azure.EventHubs` 使用 using 语句）。 此外，还可以通过在方法签名中使用绑定表达式来访问相同的属性。  以下示例演示了获取相同数据的两种方法：
 
 ```cs
 #r "Microsoft.Azure.EventHubs"
@@ -157,7 +157,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-일괄 처리에서 이벤트를 수신하려면 `string` 또는 `EventData` 배열을 만듭니다.
+若要成批接收事件，请将 `string` 或 `EventData` 设为数组：
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -171,9 +171,9 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-다음 예에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [JavaScript 함수](../articles/azure-functions/functions-reference-node.md)를 보여줍니다. 함수는 [이벤트 메타데이터](#trigger---event-metadata)를 읽고 메시지를 기록합니다.
+以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다.
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
 #### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
 
@@ -187,7 +187,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-### <a name="version-1x"></a>버전 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -199,7 +199,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-JavaScript 코드는 다음과 같습니다.
+JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -212,7 +212,7 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-일괄 처리에서 이벤트를 수신하려면 다음 예제에 표시된 대로 *function.json* 파일에서 `cardinality`를 `many`로 설정합니다.
+若要批量接收事件，请将 function.json 文件中的 `cardinality` 设为 `many`，如以下示例所示。
 
 #### <a name="version-2x-and-higher"></a>版本2.x 和更高版本
 
@@ -227,7 +227,7 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-### <a name="version-1x"></a>버전 1.x
+### <a name="version-1x"></a>版本 1.x
 
 ```json
 {
@@ -240,7 +240,7 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-JavaScript 코드는 다음과 같습니다.
+JavaScript 代码如下所示：
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -259,9 +259,9 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-다음 예제에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [Python 함수](../articles/azure-functions/functions-reference-python.md)를 보여줍니다. 함수는 [이벤트 메타데이터](#trigger---event-metadata)를 읽고 메시지를 기록합니다.
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 此函数将读取[事件元数据](#trigger---event-metadata)并记录消息。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다.
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
 ```json
 {
@@ -273,7 +273,7 @@ module.exports = function (context, eventHubMessages) {
 }
 ```
 
-다음은 Python 코드입니다.
+下面是 Python 代码：
 
 ```python
 import logging
@@ -289,17 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-下面的示例演示了*函数 json*文件中的事件中心触发器绑定，以及使用绑定的[Java 函数](../articles/azure-functions/functions-reference-java.md)。 함수는 Event Hub 트리거의 메시지 본문을 기록합니다.
-
-```json
-{
-  "type": "eventHubTrigger",
-  "name": "msg",
-  "direction": "in",
-  "eventHubName": "myeventhubname",
-  "connection": "myEventHubReadConnectionAppSetting"
-}
-```
+下面的示例演示了记录事件中心触发器消息正文的事件中心触发器绑定。
 
 ```java
 @FunctionName("ehprocessor")
@@ -313,7 +303,7 @@ public void eventHubProcessor(
  }
 ```
 
- [Java 함수 런타임 라이브러리](/java/api/overview/azure/functions/runtime)에서 값이 Event Hub에서 제공되는 매개 변수에 대한 `EventHubTrigger` 주석을 사용합니다. 이러한 주석을 사용하는 매개 변수로 인해 이벤트 도착 시 함수가 실행될 수 있습니다.  `Optional<T>`을 사용하여 원시 Java 형식, POJO 또는 null 허용 값으로 이 주석을 사용할 수 있습니다.
+ 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用 `EventHubTrigger` 注释。 带有这些注释的参数会导致函数在事件到达时运行。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
  ---
 
@@ -321,9 +311,9 @@ public void eventHubProcessor(
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-[C# 클래스 라이브러리](../articles/azure-functions/functions-dotnet-class-library.md)에서 [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) 특성을 사용합니다.
+在 [C# 类库](../articles/azure-functions/functions-dotnet-class-library.md)中，使用 [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) 特性。
 
-특성의 생성자는 이벤트 허브의 이름, 소비자 그룹의 이름 및 연결 문자열을 포함하는 앱 설정의 이름을 사용합니다. 이러한 설정에 대한 자세한 내용은 [트리거 구성 섹션](#trigger---configuration)을 참조하세요. `EventHubTriggerAttribute` 특성 예제는 다음과 같습니다.
+该特性的构造函数使用事件中心的名称、使用者组的名称和包含连接字符串的应用设置的名称。 有关这些设置的详细信息，请参阅[触发器配置部分](#trigger---configuration)。 下面是 `EventHubTriggerAttribute` 特性的示例：
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -333,7 +323,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-전체 예제는 [트리거 - C# 예제](#trigger)를 참조하세요.
+有关完整示例，请参阅[触发器 - C# 示例](#trigger)。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
@@ -349,58 +339,58 @@ Python 不支持特性。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-在 Java[函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)批注。 이러한 주석을 사용하는 매개 변수로 인해 이벤트 도착 시 함수가 실행될 수 있습니다. `Optional<T>`을 사용하여 원시 Java 형식, POJO 또는 null 허용 값으로 이 주석을 사용할 수 있습니다.
+在 Java[函数运行时库](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)中，对其值来自事件中心的参数使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)批注。 带有这些注释的参数会导致函数在事件到达时运行。 可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
 ---
 
-## <a name="trigger---configuration"></a>트리거 - 구성
+## <a name="trigger---configuration"></a>触发器 - 配置
 
-다음 표에서는 *function.json* 파일 및 `EventHubTrigger` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `EventHubTrigger` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | n/a | `eventHubTrigger`로 설정해야 합니다. 이 속성은 사용자가 Azure Portal에서 트리거를 만들 때 자동으로 설정됩니다.|
-|**direction** | n/a | `in`로 설정해야 합니다. 이 속성은 사용자가 Azure Portal에서 트리거를 만들 때 자동으로 설정됩니다. |
-|**name** | n/a | 함수 코드에서 이벤트 항목을 나타내는 변수의 이름입니다. |
-|**path** |**EventHubName** | Functions 1.x에만 해당합니다. 이벤트 허브의 이름입니다. 이벤트 허브 이름이 연결 문자열에 있는 경우 해당 값은 런타임 시 이 속성을 재정의합니다. |
-|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 이벤트 허브의 이름입니다. 이벤트 허브 이름이 연결 문자열에 있는 경우 해당 값은 런타임 시 이 속성을 재정의합니다. 可以通过应用设置% eventHubName% 引用 |
-|**consumerGroup** |**ConsumerGroup** | 허브에서 이벤트를 구독하는 데 사용되는 [소비자 그룹](../articles/event-hubs/event-hubs-features.md#event-consumers)을 설정하는 선택적 속성입니다. 생략한 경우 `$Default` 소비자 그룹이 사용됩니다. |
-|**cardinality** | n/a | JavaScript의 경우 `many`로 설정하여 일괄 처리할 수 있도록 합니다.  如果省略或设置为 `one`，则会将单个消息传递给函数。 |
-|**연결** |**연결** | 이벤트 허브의 네임스페이스에 대한 연결 문자열을 포함하는 앱 설정의 이름입니다. 이벤트 허브 자체가 아닌 [네임스페이스](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)에 대한 **연결 정보** 단추를 클릭하여 이 연결 문자열을 복사합니다. 트리거를 활성화하려면 이 연결 문자열은 적어도 읽기 권한이 있어야 합니다.|
+|**type** | 不适用 | 必须设置为 `eventHubTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|**direction** | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
+|**name** | 不适用 | 在函数代码中表示事件项的变量的名称。 |
+|**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 可以通过应用设置% eventHubName% 引用 |
+|**consumerGroup** |**ConsumerGroup** | 一个可选属性，用于设置[使用者组](../articles/event-hubs/event-hubs-features.md#event-consumers)，该组用于订阅事件中心中的事件。 如果将其省略，则会使用 `$Default` 使用者组。 |
+|**基数** | 不适用 | 适用于 JavaScript。 设为 `many` 以启用批处理。  如果省略或设置为 `one`，则会将单个消息传递给函数。 |
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 [命名空间](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须至少具有读取权限才可激活触发器。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---event-metadata"></a>트리거 - 이벤트 메타데이터
+## <a name="trigger---event-metadata"></a>触发器 - 事件元数据
 
-Event Hubs 트리거는 몇 가지 [메타데이터 속성](../articles/azure-functions/./functions-bindings-expressions-patterns.md)을 제공합니다. 元数据属性可用作其他绑定中的绑定表达式的一部分，或者用作代码中的参数。 属性来自[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)类。
+事件中心触发器提供了几个[元数据属性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 元数据属性可用作其他绑定中的绑定表达式的一部分，或者用作代码中的参数。 属性来自[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)类。
 
-|속성|유형|Description|
+|properties|Type|说明|
 |--------|----|-----------|
-|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 인스턴스입니다.|
-|`EnqueuedTimeUtc`|`DateTime`|큐에 대기된 시간(UTC)입니다.|
-|`Offset`|`string`|Event Hub 파티션 스트림을 기준으로 데이터의 오프셋 오프셋은 Event Hubs 스트림 내의 이벤트에 대한 표식 또는 식별자입니다. 식별자는 Event Hubs 스트림의 파티션 내에서 고유합니다.|
-|`PartitionKey`|`string`|이벤트 데이터를 전송해야 하는 파티션|
-|`Properties`|`IDictionary<String,Object>`|이벤트 데이터의 사용자 속성|
-|`SequenceNumber`|`Int64`|이벤트의 논리적 시퀀스 번호|
-|`SystemProperties`|`IDictionary<String,Object>`|이벤트 데이터를 비롯한 시스템 속성|
+|`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 实例。|
+|`EnqueuedTimeUtc`|`DateTime`|排队时间 (UTC)。|
+|`Offset`|`string`|数据相对于事件中心分区流的偏移量。 偏移量是事件中心流中的事件的标记或标识符。 该标识符在事件中心流的分区中是惟一的。|
+|`PartitionKey`|`string`|事件数据应该发送到的分区。|
+|`Properties`|`IDictionary<String,Object>`|事件数据的用户属性。|
+|`SequenceNumber`|`Int64`|事件的逻辑序列号。|
+|`SystemProperties`|`IDictionary<String,Object>`|系统属性，包括事件数据。|
 
-이 아티클의 앞부분에서 이러한 속성을 사용하는 [코드 예제](#trigger)를 참조하세요.
+请参阅在本文的前面部分使用这些属性的[代码示例](#trigger)。
 
-## <a name="trigger---hostjson-properties"></a>트리거 - host.json 속성
+## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
-[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 파일에는 Event Hubs 트리거 동작을 제어하는 설정이 포함됩니다.
+[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 文件包含控制事件中心触发器行为的设置。
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="output"></a>출력
+## <a name="output"></a>输出
 
-Event Hubs 출력 바인딩을 사용하여 이벤트 스트림에 이벤트를 씁니다. 이벤트를 쓰려면 이벤트 허브에 대한 보내기 사용 권한이 있어야 합니다.
+使用事件中心输出绑定将事件写入到事件流。 必须具有事件中心的发送权限才可将事件写入到其中。
 
 在尝试实现输出绑定之前，请确保所需的包引用已准备就绪。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-다음 예제에서는 메서드 반환 값을 출력으로 사용하여 이벤트 허브로 메시지를 쓰는 [C# 함수](../articles/azure-functions/functions-dotnet-class-library.md)를 보여줍니다.
+以下示例演示使用方法返回值作为输出将消息写入到事件中心的 [C# 函数](../articles/azure-functions/functions-dotnet-class-library.md)：
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -434,9 +424,9 @@ public static async Task Run(
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-다음 예에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [C# 스크립트 함수](../articles/azure-functions/functions-reference-csharp.md)를 보여줍니다. 함수는 이벤트 허브로 메시지를 씁니다.
+以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [C# 脚本函数](../articles/azure-functions/functions-reference-csharp.md)。 该函数将消息写入事件中心。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다. 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
 
 ```json
 {
@@ -458,7 +448,7 @@ public static async Task Run(
 }
 ```
 
-단일 메시지를 만드는 C# 스크립트 코드는 다음과 같습니다.
+下面是可创建一条消息的 C# 脚本代码：
 
 ```cs
 using System;
@@ -472,7 +462,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-여러 메시지를 만드는 C# 스크립트 코드는 다음과 같습니다.
+下面是可创建多条消息的 C# 脚本代码：
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -486,9 +476,9 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-다음 예에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [JavaScript 함수](../articles/azure-functions/functions-reference-node.md)를 보여줍니다. 함수는 이벤트 허브로 메시지를 씁니다.
+以下示例演示 *function.json* 文件中的一个事件中心触发器绑定以及使用该绑定的 [JavaScript 函数](../articles/azure-functions/functions-reference-node.md)。 该函数将消息写入事件中心。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다. 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。 第一个示例适用于函数1.x 和更高版本，第二个示例用于函数1.x。 
 
 ```json
 {
@@ -510,7 +500,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-단일 메시지를 보내는 JavaScript 코드는 다음과 같습니다.
+下面是可发送一条消息的 JavaScript 代码：
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -521,7 +511,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-여러 메시지를 보내는 JavaScript 코드는 다음과 같습니다.
+下面是可发送多条消息的 JavaScript 代码：
 
 ```javascript
 module.exports = function(context) {
@@ -538,9 +528,9 @@ module.exports = function(context) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-다음 예제에서는 *function.json* 파일의 이벤트 허브 트리거 바인딩 및 바인딩을 사용하는 [Python 함수](../articles/azure-functions/functions-reference-python.md)를 보여줍니다. 함수는 이벤트 허브로 메시지를 씁니다.
+以下示例演示 function.json 文件中的事件中心触发器绑定以及使用该绑定的 [Python 函数](../articles/azure-functions/functions-reference-python.md)。 该函数将消息写入事件中心。
 
-다음 예제에서는 *function.json* 파일에 있는 Event Hubs 데이터 바인딩을 표시합니다.
+以下示例显示了 *function.json* 文件中的事件中心绑定数据。
 
 ```json
 {
@@ -552,7 +542,7 @@ module.exports = function(context) {
 }
 ```
 
-단일 메시지를 보내는 Python 코드는 다음과 같습니다.
+下面是可发送一条消息的 Python 代码：
 
 ```python
 import datetime
@@ -579,7 +569,7 @@ public String sendTime(
  }
 ```
 
-[Java 함수 런타임 라이브러리](/java/api/overview/azure/functions/runtime)에서 값이 Event Hub에 게시되는 매개 변수에 대한 `@EventHubOutput` 주석을 사용합니다.  매개 변수 형식은 `OutputBinding<T>`이어야 합니다. 여기서 T는 POJO 또는 원시 Java 형식입니다.
+在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将被发布到事件中心的参数使用 `@EventHubOutput` 注释。  此参数应为 `OutputBinding<T>` 类型，其中 T 是 POJO 或任何本机 Java 类型。
 
 ---
 
@@ -587,9 +577,9 @@ public String sendTime(
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-[C# 클래스 라이브러리](../articles/azure-functions/functions-dotnet-class-library.md)에서 [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 특성을 사용합니다.
+对于 [C# 类库](../articles/azure-functions/functions-dotnet-class-library.md)，使用 [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs) 特性。
 
-특성의 생성자는 이벤트 허브의 이름 및 연결 문자열을 포함하는 앱 설정의 이름을 사용합니다. 이러한 설정에 대한 자세한 내용은 [출력 - 구성](#output---configuration)을 참조하세요. `EventHub` 특성 예제는 다음과 같습니다.
+该特性的构造函数使用事件中心的名称和包含连接字符串的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#output---configuration)。 下面是 `EventHub` 特性的示例：
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -600,7 +590,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-전체 예제는 [출력 - C# 예제](#output)를 참조하세요.
+有关完整示例，请参阅[输出 - C# 示例](#output)。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
@@ -620,30 +610,30 @@ Python 不支持特性。
 
 ---
 
-## <a name="output---configuration"></a>출력 - 구성
+## <a name="output---configuration"></a>输出 - 配置
 
-다음 표에서는 *function.json* 파일 및 `EventHub` 특성에 설정된 바인딩 구성 속성을 설명합니다.
+下表解释了在 function.json 文件和 `EventHub` 特性中设置的绑定配置属性。
 
-|function.json 속성 | 특성 속성 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | n/a | "eventHub"로 설정해야 합니다. |
-|**direction** | n/a | "out"으로 설정해야 합니다. 이 매개 변수는 사용자가 Azure Portal에서 바인딩을 만들 때 자동으로 설정됩니다. |
-|**name** | n/a | 이벤트를 나타내는 함수 코드에서 사용되는 변수 이름입니다. |
-|**path** |**EventHubName** | Functions 1.x에만 해당합니다. 이벤트 허브의 이름입니다. 이벤트 허브 이름이 연결 문자열에 있는 경우 해당 값은 런타임 시 이 속성을 재정의합니다. |
-|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 이벤트 허브의 이름입니다. 이벤트 허브 이름이 연결 문자열에 있는 경우 해당 값은 런타임 시 이 속성을 재정의합니다. |
-|**연결** |**연결** | 이벤트 허브의 네임스페이스에 대한 연결 문자열을 포함하는 앱 설정의 이름입니다. 이벤트 허브 자체가 아닌 *네임스페이스*에 대한 **연결 정보** 단추를 클릭하여 이 연결 문자열을 복사합니다. 이 연결 문자열에는 이벤트 스트림으로 메시지를 보내기 위해 보내기 사용 권한이 있어야 합니다.|
+|**type** | 不适用 | 必须设置为“eventHub”。 |
+|**direction** | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|**name** | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**路径** |**EventHubName** | 仅适用于 Functions 1.x。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|**eventHubName** |**EventHubName** | 函数1.x 和更高版本。 事件中心的名称。 当事件中心名称也出现在连接字符串中时，该值会在运行时覆盖此属性。 |
+|连接 |**Connection** | 应用设置的名称，该名称中包含事件中心命名空间的连接字符串。 单击 *命名空间* （而不是事件中心本身）的“连接信息”按钮，以复制此连接字符串。 此连接字符串必须具有发送权限才可将消息发送到事件流。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
-## <a name="output---usage"></a>출력 - 사용
+## <a name="output---usage"></a>输出 - 用法
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-使用方法参数（例如 `out string paramName`）发送消息。 C# 스크립트에서 `paramName`은 *function.json*의 `name` 속성에 지정된 값입니다. 여러 메시지를 쓰려면 `out string` 대신 `ICollector<string>` 또는 `IAsyncCollector<string>`를 사용할 수 있습니다.
+使用方法参数（例如 `out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
-使用方法参数（例如 `out string paramName`）发送消息。 C# 스크립트에서 `paramName`은 *function.json*의 `name` 속성에 지정된 값입니다. 여러 메시지를 쓰려면 `out string` 대신 `ICollector<string>` 또는 `IAsyncCollector<string>`를 사용할 수 있습니다.
+使用方法参数（例如 `out string paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<string>` 或 `IAsyncCollector<string>` 代替 `out string`。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -653,34 +643,34 @@ Python 不支持特性。
 
 有两个选项可用于从函数输出事件中心消息：
 
-- **返回值**：将*函数*中的 `name` 属性设置为 `$return`。 使用此配置时，函数的返回值将作为事件中心消息保留。
+- **返回值**：将*函数 json*中的 `name` 属性设置为 `$return`。 使用此配置时，函数的返回值将作为事件中心消息保留。
 
-- **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给 `set` 的值将作为事件中心消息保留。
+- **命令式**：将值传递给声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 传递给 `set` 的值将作为事件中心消息保留。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 可以通过以下两个选项使用[EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput)批注从函数输出事件中心消息：
 
-- **返回值**：通过将批注应用于函数本身，函数的返回值将作为事件中心消息保持。
+- **返回值**：通过将批注应用于函数本身，函数的返回值将持久保存为事件中心消息。
 
 - **命令式**：若要显式设置消息值，请将批注应用于类型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定参数，其中 `T` 是 POJO 或任何本机 Java 类型。 使用此配置时，向 `setValue` 方法传递值会将值作为事件中心消息保留。
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>예외 및 반환 코드
+## <a name="exceptions-and-return-codes"></a>异常和返回代码
 
-| 바인딩 | 참조 |
+| 绑定 | 参考 |
 |---|---|
-| 이벤트 허브 | [운영 가이드](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| 事件中心 | [操作指南](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>host.json 설정
+## <a name="hostjson-settings"></a>host.json 设置
 
 本部分介绍此绑定在版本2.x 和更高版本中可用的全局配置设置。 下面的示例 host json 文件仅包含此绑定的版本 2.x + 设置。 有关版本2.x 和更高版本中的全局配置设置的详细信息，请参阅[host json reference for Azure Functions](../articles/azure-functions/functions-host-json.md)。
 
 > [!NOTE]
-> Functions 1.x에서 host.json의 참조는 [Azure Functions 1.x에 대한 host.json 참조](../articles/azure-functions/functions-host-json-v1.md)를 참조하세요.
+> 有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](../articles/azure-functions/functions-host-json-v1.md)。
 
 ```json
 {
@@ -697,8 +687,8 @@ Python 不支持特性。
 }  
 ```
 
-|속성  |기본값 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
-|`maxBatchSize`|10|수신 루프 당 받은 최대 이벤트 수입니다.|
+|`maxBatchSize`|10|每个接收循环收到的最大事件计数。|
 |`prefetchCount`|300|基础 `EventProcessorHost`使用的默认预提取计数。|
-|`batchCheckpointFrequency`|1|EventHub 커서 검사점을 만들기 전에 처리할 이벤트 일괄 처리 수입니다.|
+|`batchCheckpointFrequency`|1|创建 EventHub 游标检查点之前要处理的事件批数。|

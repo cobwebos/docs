@@ -10,7 +10,7 @@
     - name: 将 Ansible 解决方案模板部署到 CentOS
       href: ./ansible-deploy-solution-template.md
     - name: 在 Linux 虚拟机上安装 Ansible
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: 在 Cloud Shell 中运行 Playbook
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,10 +18,10 @@
       expanded: true
       items:
         - name: 配置 Linux 虚拟机
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: 管理 Linux 虚拟机
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
 - name: 教程
   items:
@@ -99,7 +99,7 @@
       href: 'https://github.com/microsoft/ansiblelabs'
     - name: Ansible Azure playbook 示例
       href: 'https://github.com/Azure-Samples/ansible-playbooks'
-- name: 引用
+- name: 参考
   items:
     - name: Playbook 角色
       items:
