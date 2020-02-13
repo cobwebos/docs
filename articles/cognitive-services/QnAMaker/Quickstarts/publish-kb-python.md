@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: b93ba53996168d55e45e995a3fc11fdc3b889f7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a9751f5771fe9dd5c33a3a01f2819664d893d53
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447409"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109459"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入门：在 QnA Maker 中通过 Python 发布知识库
 
@@ -76,7 +76,7 @@ python publish-kb-3x.py
 
 ## <a name="next-steps"></a>后续步骤
 
-在发布知识库后，需要[生成答案所需的终结点 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。
+在发布知识库后，需要[生成答案所需的终结点 URL](./get-answer-from-knowledge-base-python.md)。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

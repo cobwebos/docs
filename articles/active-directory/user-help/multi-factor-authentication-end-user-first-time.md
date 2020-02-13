@@ -2,20 +2,20 @@
 title: 什么是“附加验证”页？ - Azure AD
 description: 如何进入“附加安全验证”页进行两因素验证。
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705286"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062551"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什么是“附加验证”页？
 

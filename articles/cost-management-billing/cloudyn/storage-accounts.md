@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769958"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117625"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>为 Cloudyn 配置存储帐户
 
@@ -34,12 +34,12 @@ ms.locfileid: "76769958"
 
 配置可供 Cloudyn 使用的 Azure 存储很简单。 收集存储帐户的详细信息，并在 Cloudyn 门户中复制这些信息。
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 单击“所有服务”，选择“存储帐户”，滚动到要使用的存储帐户，然后选择该帐户。  
 3. 在存储帐户页的“设置”下，单击“访问密钥”。  
 4. 复制**存储帐户名称**和 key1 下的**连接字符串**。  
    ![复制存储帐户名称和连接字符串](./media/storage-accounts/azure-storage-access-keys.png)  
-5. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com 并进行登录。
+5. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com) 并进行登录。
 6. 单击齿轮符号，然后选择“报表存储管理”。 
 7. 单击“新增 +”，确保选中“Microsoft Azure”。  在“名称”区域中粘贴 Azure 存储帐户名称。  在相应的区域中粘贴**连接字符串**。 输入容器名称，  然后单击“保存”。  
    ![在“添加新报表存储”框中粘贴 Azure 存储帐户名称和连接字符串](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Cloudyn 使用现有的 AWS 凭据“用户”或“角色”将报表保存到 
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>将 AWS 报表存储添加到 Cloudyn
 
-1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 https://azure.cloudyn.com 并进行登录。
+1. 通过 Azure 门户打开 Cloudyn 门户，或导航到 [https://azure.cloudyn.com](https://azure.cloudyn.com) 并进行登录。
 2. 单击齿轮符号，然后选择“报表存储管理”。 
 3. 单击“新增 +”，确保选中“AWS”。 
 4. 选择帐户和存储 Bucket。 AWS 存储 Bucket 的名称会自动填充。  

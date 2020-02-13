@@ -2,22 +2,22 @@
 title: Microsoft 标识平台 iOS 和 macOS 快速入门 | Azure
 description: 了解如何在 iOS 或 macOS 应用程序中将用户登录并查询 Microsoft Graph。
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/24/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703450"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084496"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入门：从 iOS 或 macOS 应用将用户登录并调用 Microsoft Graph API
 

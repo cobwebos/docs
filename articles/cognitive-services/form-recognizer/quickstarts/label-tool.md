@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025888"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118372"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -25,7 +25,7 @@ ms.locfileid: "77025888"
 ## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，必须具备以下条件：
-- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求表单](https://aka.ms/FormRecognizerRequestAccess)。 你将收到一封电子邮件，其中包含用于创建表单识别器资源的链接。
+
 - 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 44b2f39cb1467e3459ee326bf81381830510d6b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85eb35e1634f1183a6a5f93242f9466778b24d22
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278944"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069602"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入门：使用 Azure CLI 启动 Java Spring 应用程序
 
@@ -59,7 +59,7 @@ az extension add --name spring-cloud
     ```azurecli
         az login
         az account list -o table
-        az account set --subscription
+        az account set --subscription <Name or ID of subscription from the last step>
     ```
 
 2. 准备 Azure Spring Cloud 服务的名称。  该名称必须为 4 到 32 个字符，只能包含小写字母、数字及连字符。  服务名称的第一个字符必须是字母，最后一个字符必须是字母或数字。

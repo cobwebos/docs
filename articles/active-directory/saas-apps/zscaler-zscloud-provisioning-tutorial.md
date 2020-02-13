@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 34d3a7fb299ba143eee01b6b7184f1c566d41aba
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515443"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062670"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教程：为 Zscaler ZSCloud 配置自动用户预配
 
 本教程介绍如何将 Azure Active Directory (Azure AD) 配置为自动为 Zscaler ZSCloud 预配和取消设置用户和/或组。
 
 > [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
+> 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理的重要详细信息以及常见问题解答，请参阅[使用 Azure Active Directory 为 SaaS 应用程序自动化用户预配和取消预配](../active-directory-saas-app-provisioning.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程中所述的步骤，需要准备好以下各项：
 
@@ -39,13 +39,13 @@ ms.locfileid: "68515443"
 * Zscaler ZSCloud 中具有管理员权限的用户帐户。
 
 > [!NOTE]
-> Azure AD 预配集成依赖于 Zscaler ZSCloud SCIM API，该 API 可用于企业帐户。
+> Azure AD 预配集成依赖于适用于企业帐户的 Zscaler ZSCloud SCIM API。
 
 ## <a name="add-zscaler-zscloud-from-the-gallery"></a>从库添加 Zscaler ZSCloud
 
 在使用 Azure AD 为 Zscaler ZSCloud 配置自动用户预配之前，需要从 Azure AD 应用程序库将 Zscaler ZSCloud 添加到托管的 SaaS 应用程序列表。
 
-在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”  ：
+在 [Azure 门户](https://portal.azure.com)的左窗格中，选择“Azure Active Directory”： 
 
 ![选择“Azure Active Directory”](common/select-azuread.png)
 
@@ -69,16 +69,16 @@ ms.locfileid: "68515443"
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-zscloud"></a>将用户分配到 Zscaler ZSCloud 的重要提示
 
-* 建议先将一个 Azure AD 用户分配到 Zscaler ZSCloud 以测试自动用户预配配置。 稍后再分配更多用户和组。
+* 建议先将一个 Azure AD 用户分配到 Zscaler ZSCloud 以测试自动用户预配配置。 稍后再分配更多的用户和组。
 
-* 如果将用户分配到 Zscaler ZSCloud，则需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
+* 将用户分配到 Zscaler ZSCloud 时，需要在分配对话框中选择任何特定于应用程序的有效角色（如果有）。 具有“默认访问权限”  角色的用户排除在预配之外。
 
 ## <a name="set-up-automatic-user-provisioning"></a>设置自动用户预配
 
 本部分介绍如何配置 Azure AD 预配服务以基于 Azure AD 中的用户和组分配在 Zscaler ZSCloud 中创建、更新和禁用用户和组。
 
 > [!TIP]
-> 此外，还建议为 Zscaler ZSCloud 启用基于 SAML 的单一登录。 如果要启用，请按照 [Zscaler ZSCloud 单一登录教程](zscaler-zsCloud-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，但这两个功能相互补充。
+> 此外，还建议为 Zscaler ZSCloud 启用基于 SAML 的单一登录。 如果要启用，请按照 [Zscaler ZSCloud 单一登录教程](zscaler-zsCloud-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，但这两个功能是互补的。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，然后选择“企业应用程序” > “所有应用程序” > “Zscaler ZSCloud”    ：
 
@@ -88,11 +88,11 @@ ms.locfileid: "68515443"
 
     ![“应用程序”列表](common/all-applications.png)
 
-3. 选择“预配”选项卡  ：
+3. 选择“预配”选项卡： 
 
     ![预配 Zscaler ZSCloud](./media/zscaler-zscloud-provisioning-tutorial/provisioningtab.png)
 
-4. 将“预配模式”设置为“自动”   ：
+4. 将“预配模式”  设置为“自动”  ：
 
     ![设置预配模式](./media/zscaler-zscloud-provisioning-tutorial/provisioningcredentials.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "68515443"
 
     ![Zscaler ZSCloud 身份验证设置](./media/zscaler-zscloud-provisioning-tutorial/secrettoken1.png)
 
-    选择“配置 SAML”以打开“配置 SAML”窗口   ：
+    选择“配置 SAML”打开“配置 SAML”窗口   ：
 
     ![“配置 SAML”窗口](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
@@ -150,11 +150,11 @@ ms.locfileid: "68515443"
 
 此操作会对“设置”部分的“范围”中定义的所有用户和组启动初始同步   。 初始同步花费的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每 40 分钟就会进行一次同步。 可在“同步详细信息”部分中监视进度  。 也可跟踪指向预配活动报告的链接，这些报告描述了 Azure AD 预配服务对 Zscaler ZSCloud 执行的所有操作。
 
-要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
+若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../active-directory-saas-provisioning-reporting.md)。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤

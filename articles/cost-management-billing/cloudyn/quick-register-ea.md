@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.service: cost-management-billing
 ms.reviewer: benshy
-ms.openlocfilehash: dcb4a04ced1d36a6d0717b9a65150faacc702cc5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e6431d1fa73106267730db721060906e43c456d2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769973"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117765"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>注册 Azure 企业协议并查看成本数据
 
@@ -24,7 +24,7 @@ Azure 成本管理提供了与 Cloudyn 类似的功能。 Azure 成本管理是�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 https://portal.azure.com 登录到 Azure 门户。
+- 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="register-with-cloudyn"></a>注册 Cloudyn
 

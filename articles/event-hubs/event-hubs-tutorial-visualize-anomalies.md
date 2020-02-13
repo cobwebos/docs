@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
-ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906380"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163171"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教程：将发送到 Azure 事件中心的实时事件中的数据异常可视化
 
@@ -384,6 +384,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 请继续学习下一篇文章，以详细了解 Azure 事件中心。
 
 > [!div class="nextstepaction"]
-> [在 .NET Standard 中开始将消息发送到 Azure 事件中心](event-hubs-dotnet-standard-getstarted-send.md)
+> [在 .NET Standard 中开始将消息发送到 Azure 事件中心](get-started-dotnet-standard-send-v2.md)
 
 [创建一个免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

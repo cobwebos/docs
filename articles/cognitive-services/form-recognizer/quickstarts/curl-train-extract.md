@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 32756187852de0834afc1dc034d3f7419f0c8087
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900196"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118387"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入门：使用 REST API 和 cURL 训练表单识别器模型并提取表单数据
 
@@ -25,7 +25,6 @@ ms.locfileid: "76900196"
 ## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，必须具备以下条件：
-- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 已安装 [cURL](https://curl.haxx.se/windows/)。
 - 至少有六个相同类型的表单。 你将使用其中五个表单训练模型，然后使用第六个表单对模型进行测试。 表单可以是不同的文件类型，但必须是相同的文档类型。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。 可以将测试文件放在单独的文件夹中。
 

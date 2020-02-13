@@ -3,19 +3,19 @@ title: 快速入门：Java（Windows、Linux）的自定义语音助手 - 语音
 titleSuffix: Azure Cognitive Services
 description: 本快速入门介绍如何在 Java 控制台应用程序中使用认知服务语音 SDK。 其中将会介绍将客户端应用程序连接到事先创建的某个 Bot Framework 机器人。该机器人配置为使用 Direct Line 语音通道，可以实现语音助手体验。
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815856"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119673"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>快速入门：使用语音 SDK 创建语音助手，Java（预览版）
 
@@ -23,7 +23,7 @@ ms.locfileid: "74815856"
 
 在本文中，我们将使用 [Azure 认知服务语音 SDK](speech-sdk.md) 创建一个 Java 控制台应用程序。 该应用程序将连接到事先创作的某个机器人。该机器人配置为使用 Direct Line 语音通道，发送语音请求，并返回语音响应活动（如果已配置）。 该应用程序是使用语音 SDK Maven 包和 Eclipse Java IDE 在 Windows、Ubuntu Linux 或 macOS 上生成的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要：
 

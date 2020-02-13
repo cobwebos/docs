@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: a6ad8156b5ab6370bb089c97d620bae0ccff82eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 33cc4caa8b5901177699368e2f31908951910a6f
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381454"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109569"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>快速入门：在 QnA Maker 中通过 C# 发布知识库
 
@@ -29,7 +29,7 @@ ms.locfileid: "75381454"
 
 * 最新的 [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)。
 * 必须已有一个 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”  。
-* 在 `kbid` 查询字符串参数中的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
+* 在 `kbid` 查询字符串参数的 URL 中找到的 QnA Maker 知识库 (KB) ID，如下所示。
 
     ![QnA Maker 知识库 ID](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "75381454"
 
 ## <a name="next-steps"></a>后续步骤
 
-在发布知识库后，需要[生成答案所需的终结点 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。
+在发布知识库后，需要[生成答案所需的终结点 URL](./get-answer-from-knowledge-base-csharp.md)。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

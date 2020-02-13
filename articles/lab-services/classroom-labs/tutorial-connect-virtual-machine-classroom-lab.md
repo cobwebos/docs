@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 30983d141f087a46e420f7ea457fba181956c28e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577801"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134043"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -63,7 +63,7 @@ ms.locfileid: "73577801"
 1. 选择下图中所示的第二个按钮以**连接**到实验室的 VM。 
 
     ![连接到 VM](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. 执行以下步骤之一： 
+2. 执行以下步骤中的一个： 
     1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上   。 打开要连接到虚拟机的 RDP 文件。 使用从教师/教授处获得的用户名和密码登录到计算机   。 
     3. 对于 **Linux** 虚拟机，可以使用 **SSH** 或 **RDP**（如果已启用）连接到它们。 有关详细信息，请参阅[为 Linux 计算机启用远程桌面连接](how-to-enable-remote-desktop-linux.md)。 
 

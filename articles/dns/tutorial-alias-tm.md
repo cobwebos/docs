@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937919"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149943"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>教程：使用流量管理器配置支持顶点域名的别名记录 
 
@@ -40,7 +40,7 @@ ms.locfileid: "76937919"
 
 ## <a name="create-the-network-infrastructure"></a>创建网络基础结构
 首先，创建要放置 Web 服务器的虚拟网络和子网。
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在门户的左上角，选择“创建资源”。  在搜索框中输入“资源组”，然后创建名为 RG-DNS-Alias-TM 的资源组   。
 3. 选择“创建资源” > “网络” > “虚拟网络”。   
 4. 创建名为“VNet-Servers”的虚拟网络。  将其放在 RG-DNS-Alias-TM 资源组中，然后将子网命名为 SN-Web   。

@@ -3,17 +3,17 @@ title: 快速入门：在门户中创建搜索服务
 titleSuffix: Azure Cognitive Search
 description: 本门户快速入门介绍如何在 Azure 门户中设置 Azure 认知搜索资源。 选择资源组、区域以及 SKU 或定价层。
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 02/10/2020
+ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534566"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121710"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -33,7 +33,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 单击左上角的加号（“+ 创建资源”）。
 3. 使用搜索栏查找“Azure 认知搜索”，或通过“Web” > “Azure 认知搜索”导航到资源   。
 

@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892900"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162168"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
 本教程是一个系列中的第一部分。 本教程介绍如何在 Azure 中实现应用程序数据的高可用性。
 
-完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 存储帐户检索它。
+完成本教程后，将会生成一个控制台应用程序，用于上传 Blob 并从[读取访问异地冗余](../common/storage-redundancy.md) (RA-GRS) 存储帐户检索它。
 
 RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复制过程可保证次要区域中的数据最终保持一致。 应用程序使用[断路器](/azure/architecture/patterns/circuit-breaker)模式来确定要连接到的终结点，在模拟故障和恢复时在终结点之间自动切换。
 
@@ -35,7 +35,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 > * 设置连接字符串
 > * 运行控制台应用程序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -58,7 +58,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -76,7 +76,7 @@ RA-GRS 的工作方式是将事务从主要区域复制到次要区域。 此复
    | **名称** | mystorageaccount | 存储帐户的唯一值 |
    | **部署模型** | 资源管理器  | “资源管理器”包含最新功能。|
    | **帐户种类** | StorageV2 | 若要详细了解帐户类型，请参阅[存储帐户类型](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **性能** | 标准 | “标准”足以满足示例方案需求。 |
+   | **“性能”** | Standard | “标准”足以满足示例方案需求。 |
    | **复制**| 读取访问异地冗余存储 (RA-GRS) | 此为示例正常运行所必需。 |
    |**订阅** | 用户订阅 |有关订阅的详细信息，请参阅[订阅](https://account.azure.com/Subscriptions)。 |
    |**ResourceGroup** | myResourceGroup |如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |

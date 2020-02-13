@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/20/2019
 ms.author: femila
-ms.openlocfilehash: 7003cc90bdb456eba9cfaebc1e24332d2e4a6251
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5b1574eaac8771043e09500225b65e4835c8e627
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029922"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157476"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>快速入门：使用 Azure 门户创建事件中心专用群集 
 事件中心群集提供单租户部署来满足客户的苛刻流式处理要求。 此套餐提供有保障的 99.99% SLA，只能在专用定价层上使用。 [事件中心群集](event-hubs-dedicated-overview.md)每秒能够引入数百万个事件，且提供有保障的容量和亚秒级的延迟。 在群集中创建的命名空间和事件中心不仅包括标准套餐的所有功能，而且不存在任何引入限制。 专用套餐还免费随附了热门的[事件中心捕获](event-hubs-capture-overview.md)功能，可让你自动批处理数据流并将其记录到 [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)。
@@ -106,6 +106,10 @@ ms.locfileid: "77029922"
 ## <a name="next-steps"></a>后续步骤
 在本文中，你已创建一个事件中心群集。 有关在事件中心发送和接收事件，以及将事件捕获到 Azure 存储或 Azure Data Lake Store 的分步说明，请参阅以下教程：
 
-- [在 .NET Core 中发送和接收事件](event-hubs-dotnet-standard-getstarted-send.md)
+- 发送和接收事件 
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 - [使用 Azure 门户启用事件中心捕获](event-hubs-capture-enable-through-portal.md)
 - [使用适用于 Apache Kafka 的 Azure 事件中心](event-hubs-for-kafka-ecosystem-overview.md)

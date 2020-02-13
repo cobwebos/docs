@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939267"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149926"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>教程：配置表示 Azure 公共 IP 地址的别名记录 
 
@@ -36,7 +36,7 @@ ms.locfileid: "76939267"
 
 ## <a name="create-the-network-infrastructure"></a>创建网络基础结构
 首先，创建要放置 Web 服务器的虚拟网络和子网。
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在门户的左上角，选择“创建资源”。  在搜索框中输入“资源组”，然后创建名为 **RG-DNS-Alias-pip** 的资源组  。
 3. 选择“创建资源” > “网络” > “虚拟网络”。   
 4. 创建名为“VNet-Server”的虚拟网络。  将其放在 **RG-DNS-Alias-pip** 资源组中，然后将子网命名为 **SN-Web**。

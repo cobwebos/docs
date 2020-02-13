@@ -3,8 +3,7 @@ title: 快速入门：创建包含使用者组的事件中心 - Azure 事件中�
 description: 快速入门：使用 Azure 资源管理器模板创建包含事件中心和使用者组的事件中心命名空间
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
 ms.service: event-hubs
@@ -12,14 +11,14 @@ ms.devlang: tbd
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: faff7800ea4436d58ed72e8179c7845a6d8f65a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/11/2020
+ms.author: spelluru
+ms.openlocfilehash: 88cd29af75239f0ad79eb78b5ff8e106c3b2ee56
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437135"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163069"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建事件中心
 
@@ -89,11 +88,10 @@ Write-Host "Press [ENTER] to continue ..."
 
 在本文中，你已创建一个事件中心命名空间，并在该命名空间中创建了一个事件中心。 有关如何将事件发送到事件中心（或）从事件中心接收事件的分步说明，请参阅“发送和接收事件”教程  ：
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 5ebc1e6df85a521ef7a03bfce8e062fc0fbf734b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 86401e0a827d1941b2d183d8c17371ba915c81ae
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703280"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063690"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -103,7 +103,7 @@ ms.locfileid: "76703280"
 MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) 是一个库，用于用户登录和请求安全令牌。 安全令牌用于访问受面向开发人员的 Microsoft 标识平台保护的 API。 可在 Visual Studio 的包管理器控制台中运行以下命令，以便安装 MSAL  ：
 
 ```powershell
-Install-Package Microsoft.Identity.Client -IncludePrerelease
+Install-Package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL 初始化
@@ -119,6 +119,7 @@ using Microsoft.Identity.Client;
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
+                                                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                                                     .Build();
 ```
 

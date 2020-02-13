@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978520"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118608"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "74978520"
 | 文本翻译 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
 | 必应拼写检查 | [拼写检查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在继续之前，需要准备好以下各项：
 
@@ -116,8 +116,8 @@ ms.locfileid: "74978520"
 
 | 名称 | 类型 | 说明 |
 |------|------|-------------|
-| `FromLanguageComboBox` | 组合框 | 显示 Microsoft 文本翻译支持的语言列表。 用户选择他们要进行翻译的语言。 |
-| `ToLanguageComboBox` | 组合框 | 显示与 `FromComboBox` 相同的语言列表，但用于选择用户要翻译到的语言。 |
+| `FromLanguageComboBox` | ComboBox | 显示 Microsoft 文本翻译支持的语言列表。 用户选择他们要进行翻译的语言。 |
+| `ToLanguageComboBox` | ComboBox | 显示与 `FromComboBox` 相同的语言列表，但用于选择用户要翻译到的语言。 |
 | `TextToTranslate` | TextBox | 让用户输入要翻译的文本。 |
 | `TranslateButton` | 按钮 | 使用此按钮翻译文本。 |
 | `TranslatedTextLabel` | Label | 显示翻译。 |

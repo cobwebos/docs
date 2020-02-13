@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2b800cbc2f836d415afbb53a8415e9e400f40d0e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2224ec64712ff9d1745231f39a1521ae941304ff
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901971"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118769"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>快速入门：将表单识别器 REST API 与 Python 结合使用来提取回执数据
 
@@ -25,7 +25,6 @@ ms.locfileid: "76901971"
 ## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，必须具备以下条件：
-- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 回执图像的 URL。 在本快速入门中，可以使用[示例图像](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true)。
 

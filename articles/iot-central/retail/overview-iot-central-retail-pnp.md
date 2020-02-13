@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022131"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059840"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 生成零售解决方案
 
@@ -160,7 +160,7 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 > [!div class="mx-imgBorder"]
 > ![微履行中心](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)教程。
+若要了解详细信息，请参阅[部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center-pnp.md)教程。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -170,5 +170,5 @@ Azure IoT Central 是一个 IoT 应用平台，可减轻与开发、管理和维
 * [部署并演练互联物流应用程序模板](./tutorial-iot-central-connected-logistics-pnp.md)。
 * [部署并演练数字分发中心应用程序模板](./tutorial-iot-central-digital-distribution-center-pnp.md)。
 * [部署并演练智能库存管理应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)。
-* [部署并演练微履行中心应用程序模板](./tutorial-iot-central-smart-inventory-management-pnp.md)。
+* [部署并演练微履行中心应用程序模板](./tutorial-micro-fulfillment-center-pnp.md)。
 * 若要详细了解 IoT Central，请参阅 [IoT Central 概述](../preview/overview-iot-central.md)。

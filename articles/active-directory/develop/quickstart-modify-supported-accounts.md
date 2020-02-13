@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704113"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160683"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>快速入门：修改应用程序支持的帐户
 
@@ -63,7 +63,7 @@ ms.locfileid: "76704113"
 
 通常将单页应用程序 (SPA) 构建为一个在浏览器中运行的 JavaScript 重型前端，该前端调用应用程序的 Web API 后端来执行其业务逻辑。 对于托管在 Azure AD 中的 SPA，可以使用 OAuth 2.0 隐式授权对具有 Azure AD 的用户进行身份验证，并获取可用来保护从应用程序 JavaScript 客户端到其后端 Web API 的调用的令牌。
 
-用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并确定其是否适合应用程序方案，请了解 Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隐式授权流。
+用户授予同意之后，可以使用同一个身份验证协议来获取令牌以保护客户端与针对应用程序配置的其他 Web API 资源之间的调用。 若要了解有关隐式授权的详细信息，并确定其是否适合应用程序方案，请了解 Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) 和 [v2.0](v2-oauth2-implicit-grant-flow.md) 中的 OAuth 2.0 隐式授权流。
 
 默认情况下，为应用程序禁用了 OAuth 2.0 隐式授权。 可以执行下述步骤，为应用程序启用 OAuth 2.0 隐式授权。
 

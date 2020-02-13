@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: c5e8ed4a78fccce4f3a5c631a99a8729114e5722
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: a415ac749d0d322bc2f71f64d4bec6e32ad1f12e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422601"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063486"
 ---
 # <a name="how-to-configure-saml-based-single-sign-on"></a>如何配置基于 SAML 的单一登录
 
@@ -135,4 +135,4 @@ Azure AD 使用证书对它发送到应用程序的 SAML 令牌进行签名。 �
 ## <a name="next-steps"></a>后续步骤
 
 - [将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)
-- [配置用户帐户自动预配](configure-automatic-user-provisioning-portal.md)
+- [配置用户帐户自动预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)

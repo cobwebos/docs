@@ -2,19 +2,19 @@
 title: 快速入门：使用 REST API 在 Python 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 介绍如何使用 Python、Jupyter Notebook 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
-author: heidisteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792267"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121615"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -30,7 +30,7 @@ ms.locfileid: "72792267"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。 
 
@@ -297,7 +297,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 

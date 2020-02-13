@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1cf519d8d8c25877b49bf14aefd1c0be3afa8023
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448166"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137878"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>快速入门：使用墨迹识别器 REST API 和 C# 识别数字墨迹
 
@@ -49,11 +49,11 @@ ms.locfileid: "75448166"
 
 1. 在 Visual Studio 中，创建新的控制台解决方案并添加以下包。 
     
-    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. 为订阅密钥和终结点以及示例 JSON 文件创建变量。 稍后，终结点将与 `inkRecognitionUrl` 结合使用来访问 API。 
 
-    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
 
@@ -63,7 +63,7 @@ ms.locfileid: "75448166"
  
 3. 通过 `PutAsync()` 发送请求。 如果请求成功，则返回响应。  
     
-    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>发送墨迹识别请求
 
@@ -71,13 +71,13 @@ ms.locfileid: "75448166"
 
 2. 反序列化 JSON 对象，并将其写入控制台。 
     
-    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>加载数字墨迹数据
 
 创建一个名为 `LoadJson()` 的函数，以便加载墨迹数据 JSON 文件。 使用 `StreamReader` 和 `JsonTextReader` 创建 `JObject` 并将其返回。
 
-[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>发送 API 请求
 
@@ -85,7 +85,7 @@ ms.locfileid: "75448166"
 
 2. 调用上面创建的 `recognizeInk()` 函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
     
-    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
 
 ## <a name="run-the-application-and-view-the-response"></a>运行应用程序并查看响应

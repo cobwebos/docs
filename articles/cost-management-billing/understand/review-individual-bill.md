@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2019
 ms.author: banders
-ms.openlocfilehash: 1249758e5dd5b7e823c11890e57549195da22529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 969fbc3fe0aa614d4284e1442f507f263d48b499
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984122"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117152"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>教程：查看个人 Azure 账单
 
@@ -40,7 +40,7 @@ ms.locfileid: "75984122"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 https://portal.azure.com 登录到 Azure 门户。
+- 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="compare-invoiced-charges-with-usage-file"></a>将已开票费用与使用情况文件进行比较
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 43dec74b75b5c2e2844f89655e17c31d62a9df1b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774180"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118143"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -25,7 +25,6 @@ ms.locfileid: "76774180"
 ## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，必须具备以下条件：
-- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 至少有六个相同类型的表单。 我们将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 

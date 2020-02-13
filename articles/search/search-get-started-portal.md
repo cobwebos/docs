@@ -2,18 +2,18 @@
 title: 使用 Azure 门户创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 此门户快速入门介绍如何使用“导入数据”向导在 Azure 认知搜索中创建、加载和查询第一个搜索索引。
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901002"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121668"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "74901002"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。 
 

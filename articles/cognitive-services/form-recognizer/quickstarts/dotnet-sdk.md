@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 8fd938e685c712cda60c171ccf9092ff42e6037e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446497"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118363"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>快速入门：适用于 .NET 的表单识别器客户端库
 
@@ -33,7 +33,6 @@ ms.locfileid: "75446497"
 ## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。
-* 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 * 包含一组训练数据的 Azure 存储 Blob。 有关整理训练数据的提示和选项，请参阅[为自定义模型生成训练数据集](../build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)的 **Train** 文件夹下的文件。
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core) 的当前版本。
 

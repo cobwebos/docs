@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: pafarley
-ms.openlocfilehash: ea716caf575fce1197c12f3cb3cea8348c7a04c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450999"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118744"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>快速入门：使用表单识别器 REST API 和 Python 提取文本和布局信息
 
@@ -25,7 +25,6 @@ ms.locfileid: "75450999"
 ## <a name="prerequisites"></a>必备条件
 
 若要完成本快速入门，必须具备以下条件：
-- 有权访问表单识别器受限访问预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 表单文档。 可以从本快速入门的[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)中下载图像。
 

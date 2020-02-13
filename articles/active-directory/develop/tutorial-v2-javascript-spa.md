@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701257"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159874"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -50,8 +50,8 @@ ms.locfileid: "76701257"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|适用于 JavaScript 的 Microsoft 身份验证库预览|
 
 > [!NOTE]
-> *Msal.js* 面向 Microsoft 标识平台终结点，个人帐户以及学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](azure-ad-endpoint-comparison.md#limitations)。
-> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](azure-ad-endpoint-comparison.md)。
+> *Msal.js* 面向 Microsoft 标识平台终结点，个人帐户以及学校和工作帐户可通过该终结点登录并获取令牌。 Microsoft 标识平台终结点有[一些限制](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)。
+> 若要了解 v1.0 和 v2.0 终结点之间的差异，请参阅[终结点比较指南](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 <!--end-collapse-->
 

@@ -3,18 +3,18 @@ title: 快速入门 - 在 Azure IoT Central 中监视设备
 description: 作为操作员，了解如何使用 Azure IoT Central 应用程序监视设备。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026160"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168736"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>快速入门：使用 Azure IoT Central 监视设备
 
@@ -41,8 +41,6 @@ Azure IoT Central 将有关设备的通知作为电子邮件发送。 构建者�
 ## <a name="investigate-an-issue"></a>调查问题
 
 作为操作员，你可以在“概述”  、“关于”  和“命令”  视图上查看设备相关信息。 构建者创建了“管理设备”  视图，供你编辑设备信息和设置设备属性。
-
-选择“概述”视图可查看有关设备的信息  。
 
 仪表板上的图表显示了设备温度的曲线图。 你确定设备温度过高。
 

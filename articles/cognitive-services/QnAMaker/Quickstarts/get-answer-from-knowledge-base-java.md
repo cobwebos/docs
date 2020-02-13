@@ -2,15 +2,15 @@
 title: 快速入门：从知识库获取答案 - REST、Java - QnA Maker
 description: 此基于 Java REST 的快速入门详细介绍如何以编程方式从知识库获取答案。
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCHANGE-20200128
-ms.openlocfilehash: b65677be32519a9dd2716a2e365abfb2ca1291d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 96b8b870dc82bfb08aca2a1d1acb2958ff7eb2f3
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842965"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109875"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>快速入门：使用 Java 从知识库获取问题的答案
 

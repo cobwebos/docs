@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 3a1d99ad282190c61f652179dd08a810c9444064
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481177"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132221"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -32,7 +32,7 @@ ms.locfileid: "74481177"
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要以下各资源：
 

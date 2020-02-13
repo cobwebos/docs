@@ -3,30 +3,30 @@ title: 有关自动完成功能和建议的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程演示使用下拉列表收集用户的搜索词输入时的自动完成功能和建议。 它基于现有的酒店项目。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114562"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121530"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# 教程：添加自动完成功能和建议 - Azure 认知搜索
 
 了解如何在用户开始在搜索框中键入内容时实现自动完成功能（提前键入和提供建议）。 本教程将分别展示提前键入的结果和建议结果，然后展示一种将二者相结合来创建更丰富的用户体验的方法。 用户可能只需按下两个或三个键就能得到所有可用结果。 本教程是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 添加建议
 > * 为建议添加突出显示
 > * 添加自动完成功能
 > * 结合使用自动完成功能和建议
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

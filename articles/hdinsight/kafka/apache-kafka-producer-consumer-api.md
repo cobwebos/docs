@@ -1,19 +1,19 @@
 ---
 title: 教程：Apache Kafka 生成者和使用者 API - Azure HDInsight
 description: 了解如何将 Apache Kafka 生成者和使用者 API 与 Kafka on HDInsight 配合使用。 本教程介绍如何从 Java 应用程序中将这些 API 与 Kafka on HDInsight 配合使用。
-author: dhgoelmsft
-ms.author: dhgoel
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: ad810ac2f8751554aaf0afcd2b15e1da83f38fe1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242006"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161709"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>教程：使用 Apache Kafka 生成者和使用者 API
 
@@ -21,17 +21,17 @@ ms.locfileid: "73242006"
 
 Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafka 使用者 API 允许应用程序从群集读取数据流。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
-> * 先决条件
+> * 必备条件
 > * 了解代码
 > * 生成并部署应用程序
 > * 在群集上运行应用程序
 
 有关这些 API 的详细信息，请参阅有关[生成者 API](https://kafka.apache.org/documentation/#producerapi) 和[使用者 API](https://kafka.apache.org/documentation/#consumerapi) 的 Apache 文档。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Apache Kafka on HDInsight 3.6。 若要了解如何创建 Kafka on HDInsight 群集，请参阅 [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)。
 
@@ -45,10 +45,10 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 示例应用程序位于 `Producer-Consumer` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 该应用程序主要包含四个文件：
 
-* `pom.xml`：此文件定义项目依赖项、Java 版本和打包方法。
-* `Producer.java`：此文件使用生成者 API 将随机句子发送到 Kafka。
-* `Consumer.java`：此文件使用使用者 API 从 Kafka 读取数据并将其发出到 STDOUT。
-* `Run.java`：用于运行生成者和使用者代码的命令行接口。
+* `pom.xml`设置用户帐户 ：此文件定义项目依赖项、Java 版本和打包方法。
+* `Producer.java`设置用户帐户 ：此文件使用生成者 API 将随机句子发送到 Kafka。
+* `Consumer.java`设置用户帐户 ：此文件使用使用者 API 从 Kafka 读取数据并将其发出到 STDOUT。
+* `Run.java`设置用户帐户 ：用于运行生成者和使用者代码的命令行接口。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -69,8 +69,8 @@ Kafka 生成者 API 允许应用程序将数据流发送到 Kafka 群集。 Kafk
 
 * 插件：Maven 插件提供各种功能。 此项目使用了以下插件：
 
-    * `maven-compiler-plugin`：用于将项目使用的 Java 版本设置为 8。 这是 HDInsight 3.6 的 Java 版本。
-    * `maven-shade-plugin`：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
+    * `maven-compiler-plugin`设置用户帐户 ：用于将项目使用的 Java 版本设置为 8。 这是 HDInsight 3.6 的 Java 版本。
+    * `maven-shade-plugin`设置用户帐户 ：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
 
 ### <a name="producerjava"></a>Producer.java
 

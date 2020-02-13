@@ -3,19 +3,19 @@ title: 快速入门：自定义语音助手，Java (Android) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音 SDK 在 Java on Android 中创建语音助手应用程序
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975952"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119753"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Java on Android 中创建语音助手
 
@@ -28,7 +28,7 @@ ms.locfileid: "74975952"
 > [!NOTE]
 > 对于语音设备 SDK 和 Roobo 设备，请参阅[语音设备 SDK](speech-devices-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 语音服务的 Azure 订阅密钥。 [免费获取一个](get-started.md)或在 [Azure 门户](https://portal.azure.com)上创建它。
 - 先前创建的并使用 [Direct Line 语音通道](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)配置的机器人

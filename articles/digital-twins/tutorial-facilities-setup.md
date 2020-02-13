@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895432"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163035"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>教程：部署 Azure 数字孪生预览版并配置空间图
 
@@ -52,7 +52,7 @@ ms.locfileid: "75895432"
 
 ## <a name="grant-permissions-to-your-app"></a>向应用授权
 
-数字孪生使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 来控制对服务的[读/写访问权限](../active-directory/develop/v1-permissions-and-consent.md)。 任何需要与数字孪生实例连接的应用程序都必须注册到 Azure AD。 本部分的步骤介绍如何注册示例应用。
+数字孪生使用 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 来控制对服务的[读/写访问权限](../active-directory/develop/v2-permissions-and-consent.md)。 任何需要与数字孪生实例连接的应用程序都必须注册到 Azure AD。 本部分的步骤介绍如何注册示例应用。
 
 如果已经进行了应用注册，可以将其重用于示例。 但是，请浏览本部分，确保应用注册已正确配置。
 

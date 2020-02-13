@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/16/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 44b53cbfdb1982d9f9e6a0cb6408a16b1d660d2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 48da92374a29b5319f0ae5eaa830f2e03511b512
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447421"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109467"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入门：在 QnA Maker 中使用 Java 发布知识库
 
@@ -102,7 +102,7 @@ public class PublishKB {
 
 ## <a name="next-steps"></a>后续步骤
 
-在发布知识库后，需要[生成答案所需的终结点 URL](../Tutorials/create-publish-answer.md#generating-an-answer)。
+在发布知识库后，需要[生成答案所需的终结点 URL](./get-answer-from-knowledge-base-java.md)。
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API 参考](https://go.microsoft.com/fwlink/?linkid=2092179)

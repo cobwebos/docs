@@ -3,17 +3,17 @@ title: 有关使用分面辅助导航的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程是在“搜索结果分页 - Azure 认知搜索”项目的基础上编写的，目的是添加分面导航。 了解如何使用分面来轻松缩小搜索范围。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794098"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121570"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# 教程：使用分面辅助导航 - Azure 认知搜索
 
@@ -21,12 +21,12 @@ ms.locfileid: "72794098"
 
 本教程是在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 将模型属性设置为 _IsFacetable_
 > * 将分面导航添加到应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

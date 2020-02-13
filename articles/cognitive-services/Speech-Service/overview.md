@@ -3,19 +3,19 @@ title: 什么是语音服务？
 titleSuffix: Azure Cognitive Services
 description: 语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用语音 SDK、语音设备 SDK 或 REST API 在应用程序、工具和设备中添加语音。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261426"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119922"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
@@ -37,24 +37,6 @@ ms.locfileid: "76261426"
 | | [创建自定义语音](#customize-your-speech-experience) | 创建专属于品牌或产品的自定义语音字体。 | 否 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [语音翻译](speech-translation.md) | 语音翻译 | 使用语音翻译可在应用程序、工具和设备中实现实时的多语言语音翻译。 进行语音转语音和语音转文本翻译时可以使用此服务。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | 否 |
 | [语音助手](voice-assistants.md) | 语音助手 | 语音助手使用语音服务为开发人员助力，使他们可为其应用程序和体验创建自然的、类似于人类的对话界面。 语音助手服务在设备和助手实现之间提供快速且可靠的交互。该实现使用 Bot Framework 的 Direct Line 语音通道或集成的自定义命令（预览版）服务来完成任务。 | [是](voice-assistants.md) | 否 |
-
-## <a name="news-and-updates"></a>新增功能和更新
-
-了解语音服务的新增功能。
-
-- 2019 年 11 月
-  - 添加了两种新的说话风格，支持 `en-US-JessaNeural` 的 [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) 和 [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles)。
-- 2019 年 9 月
-  - 发布了语音 SDK 1.7.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-- 2019 年 8 月
-  - **新教程**：[使用语音 SDK、C# 为机器人启用语音](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - 添加了一种新的说话风格 [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)，用于 `en-US-JessaNeural` 语音。
-- 2019 年 6 月
-  - 发布了语音 SDK 1.6.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-- 2019 年 5 月 - [会话听录](conversation-transcription-service.md)、[呼叫中心听录](call-center-transcription.md)和[语音助手](voice-assistants.md)的文档现已提供。
-- 2019 年 5 月
-  - 发布了语音 SDK 1.5.1。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
-  - 发布了语音 SDK 1.5.0。 有关更新、增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 
 ## <a name="try-the-speech-service"></a>试用语音服务
 

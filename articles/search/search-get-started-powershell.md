@@ -3,18 +3,18 @@ title: 快速入门：使用 REST API 在 PowerShell 中创建搜索索引
 titleSuffix: Azure Cognitive Search
 description: 在此 REST API 快速入门中，了解如何使用 PowerShell 的 Invoke-RestMethod 和 Azure 认知搜索 REST API 创建索引、加载数据以及运行查询。
 manager: nitinme
-author: heidisteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: db474b7e880ec2d65b9b9a71194964740e4fb329
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: 612751c2405cd55ad0b3760aa8e093e434a22f57
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406917"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121601"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>快速入门：在 PowerShell 中使用 REST API 创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "74406917"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要以下服务和工具。 
 

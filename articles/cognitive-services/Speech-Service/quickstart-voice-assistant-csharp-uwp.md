@@ -3,19 +3,19 @@ title: 快速入门：自定义语音助手，C# (UWP) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本文中，你将使用认知服务语音软件开发工具包 (SDK) 创建一个 C# 通用 Windows 平台 (UWP) 应用程序。 你要将客户端应用程序连接到先前创建的、配置为使用 Direct Line 语音通道的 Bot Framework 机器人。 该应用程序是使用语音 SDK NuGet 包和 Microsoft Visual Studio 2019 构建的。
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816225"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119774"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>快速入门：使用语音 SDK、UWP 创建语音助手
 
@@ -26,7 +26,7 @@ ms.locfileid: "74816225"
 > [!NOTE]
 > 通用 Windows 平台允许开发在支持 Windows 10 的任何设备上运行的应用，包括电脑、Xbox、Surface Hub 和其他设备。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要：
 

@@ -3,17 +3,17 @@ title: 有关结果排序的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程演示如何对搜索结果进行排序。 它基于之前的酒店项目，按主要属性和次要属性排序，并包含计分概要文件，以添加提升条件。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112682"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121550"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# 教程：对结果排序 - Azure 认知搜索
 
@@ -21,18 +21,18 @@ ms.locfileid: "74112682"
 
 为了轻松比较所返回的结果，此项目构建在 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)教程中创建的分页项目的基础上编写的。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 根据一个属性对结果排序
 > * 根据多个属性对结果排序
 > * 根据到某地理点的距离筛选结果
 > * 根据计分概要文件对结果排序
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
-已设置并运行 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+已设置并运行 [C# 教程：搜索结果分页 - Azure 认知搜索](tutorial-csharp-paging.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ## <a name="order-results-based-on-one-property"></a>根据一个属性对结果排序
 
@@ -44,7 +44,7 @@ ms.locfileid: "74112682"
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>向搜索参数添加 OrderBy 属性
 
-1. 要根据单个数值属性对结果进行排序，只需将 OrderBy 属性设置为属性的名称  。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
+1. 要根据单个数值属性对结果进行排序，只需将 OrderBy 参数设置为属性的名称  。 在 Index(SearchData model) 方法中，向搜索参数添加以下行  。
 
     ```cs
         OrderBy = new[] { "Rating desc" },
@@ -143,7 +143,7 @@ ms.locfileid: "74112682"
                 }
     ```
 
-6. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
+6. 需要能在所显示的第一个页面以及通过无限滚动调用的后续页面中进行评级。 对于这两种情况的后一种情况，我们需要更新控制器中的 Next 操作，还需要更新 scrolled 函数   。 首先从控制器开始，将 Next 方法更改为以下代码  。 此代码会创建并传递评级文本。
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -942,7 +942,7 @@ ms.locfileid: "74112682"
 
 5. 如果你已为上一部分（“根据多个属性排序”）添加了代码，则我们不需要对 Next 操作进行任何更改  。
 
-### <a name="run-and-test-the-app"></a>运行和测试应用
+### <a name="run-and-test-the-app"></a>运行并测试应用
 
 1. 运行应用。 你应会在视图中看到一组完整的便利设施。
 

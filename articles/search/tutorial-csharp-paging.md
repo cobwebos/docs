@@ -3,32 +3,32 @@ title: 有关搜索结果分页的 C# 教程
 titleSuffix: Azure Cognitive Search
 description: 本教程演示如何对搜索结果进行分页。 它基于现有的酒店项目，通过第一个、下一个、前一个、最后一个和编号按钮进行分页。 第二个分页系统使用无限滚动，它通过将垂直滚动条移到其下限进行触发。
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113763"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121516"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# 教程：搜索结果分页 - Azure 认知搜索
 
 了解如何实现这两个不同的分页系统，其中第一个基于页码，第二个基于无限滚动。 这两个分页系统都得到广泛使用，请根据要用于结果的用户体验选择合适的系统。 本教程将分页系统构建到在 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)教程中创建的项目。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 使用带编号的分页来扩展应用
 > * 使用无限滚动来扩展应用
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
-启动并运行 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+启动并运行 [C# 教程：创建第一个应用 - Azure 认知搜索](tutorial-csharp-create-first-app.md)项目。 此项目可以是你自己的版本，也可从 GitHub 安装：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ## <a name="extend-your-app-with-numbered-paging"></a>使用带编号的分页来扩展应用
 
@@ -392,7 +392,7 @@ ms.locfileid: "74113763"
 
 这里重要的一点是，不会替换正在显示的页面，而是新结果追加到该页面上。 用户可始终滚回到搜索的第一批结果。
 
-要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+要实现无限滚动，首先要在添加任何页码滚动元素之前处理项目。 因此，如果需要此滚动，请从 GitHub 再创建一个基本搜索页的副本：[创建第一个应用](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 
 ### <a name="add-paging-fields-to-the-model"></a>向模型添加分页字段
 
