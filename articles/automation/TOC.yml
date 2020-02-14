@@ -116,13 +116,7 @@
               href: source-control-integration.md
               displayName: 'github, vsts, azure devops, personal access token'
             - name: 源代码管理集成 - 传统
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: 源代码管理与 GitHub Enterprise 的集成
-              href: automation-scenario-source-control-integration-with-github-ent.md
-              displayName: 'CI, runbooks'
-            - name: 源代码管理与 Azure DevOps 的集成
-              href: automation-scenario-source-control-integration-with-VSTS.md
+              href: source-control-integration-legacy.md
     - name: 故障排除
       items:
         - name: 为 Microsoft Azure 自动化建立案例时要收集的数据
