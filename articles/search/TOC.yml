@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: 相关性调整（计分配置文件）
           href: index-add-scoring-profiles.md
-    - name: 管理和监视
+    - name: 管理服务
       items:
-        - name: 门户管理
+        - name: 门户
           href: search-manage.md
-        - name: PowerShell 管理
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: 监视活动和日志记录
+    - name: 监视和日志记录
+      items:
+        - name: 基本
           href: search-monitor-usage.md
+        - name: 监视查询活动
+          href: search-monitor-queries.md
+        - name: 诊断日志记录
+          href: search-monitor-logs.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
     - name: 故障排除

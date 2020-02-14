@@ -554,6 +554,8 @@
           href: cassandra-introduction.md
         - name: 线路协议支持
           href: cassandra-support.md
+        - name: 弹性缩放
+          href: manage-scale-cassandra.md
         - name: 快速入门
           items:
             - name: .NET
@@ -1071,6 +1073,8 @@
           href: migrate-cosmosdb-data.md
         - name: 迁移一对多关系数据
           href: migrate-relational-to-cosmos-db-sql-api.md
+        - name: 迁移 - Couchbase 到 SQL API
+          href: couchbase-cosmos-migration.md
     - name: 批量执行程序库
       items:
         - name: 关于批量执行程序库
