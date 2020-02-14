@@ -1,6 +1,6 @@
 ---
-title: Azure Cache for Redis를 구성하는 방법
-description: Azure Cache for Redis에 대한 기본 Redis 구성을 이해하고 Azure Cache for Redis 인스턴스를 구성하는 방법을 알아봅니다.
+title: 如何配置 Azure Redis 缓存
+description: 了解 Azure Redis 缓存的默认 Redis 配置，并了解如何配置 Azure Redis 缓存实例
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
@@ -13,496 +13,496 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76714635"
 ---
-# <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis를 구성하는 방법
-이 항목에서는 Azure Cache for Redis 인스턴스에 사용할 수 있는 구성에 대해 설명합니다. 또한 Azure Cache for Redis 인스턴스에 대한 기본 Redis 서버 구성에 대해서도 설명합니다.
+# <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
+本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
 
 > [!NOTE]
-> 프리미엄 캐시 기능을 구성하고 사용하는 방법에 대한 자세한 내용은 [지속성을 구성하는 방법](cache-how-to-premium-persistence.md), [클러스터링을 구성하는 방법](cache-how-to-premium-clustering.md) 및 [Virtual Network 지원을 구성하는 방법](cache-how-to-premium-vnet.md)을 참조하세요.
+> 有关配置和使用高级缓存功能的详细信息，请参阅[如何配置持久性](cache-how-to-premium-persistence.md)、[如何配置群集](cache-how-to-premium-clustering.md)以及[如何配置虚拟网络支持](cache-how-to-premium-vnet.md)。
 >
 >
 
-## <a name="configure-azure-cache-for-redis-settings"></a>Azure Cache for Redis 설정 구성
+## <a name="configure-azure-cache-for-redis-settings"></a>配置 Azure Redis 缓存设置
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Azure Cache for Redis 설정은 **리소스 메뉴**를 사용하여 **Azure Cache for Redis** 블레이드에 표시되고 구성됩니다.
+使用“资源菜单”在“Azure Redis 缓存”边栏选项卡上查看和配置 Azure Redis 缓存设置。
 
-![Azure Cache for Redis 설정](./media/cache-configure/redis-cache-settings.png)
+![Azure Redis 缓存设置](./media/cache-configure/redis-cache-settings.png)
 
-**리소스 메뉴**를 사용하여 다음 설정을 살펴보고 구성할 수 있습니다.
+可使用“资源菜单”查看和配置以下设置。
 
-* [개요](#overview)
-* [활동 로그](#activity-log)
-* [액세스 제어(IAM)](#access-control-iam)
-* [태그](#tags)
-* [문제 진단 및 해결](#diagnose-and-solve-problems)
-* [설정](#settings)
-    * [액세스 키](#access-keys)
-    * [고급 설정](#advanced-settings)
-    * [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
-    * [규모](#scale)
-    * [클러스터 크기](#cluster-size):
+* [概述](#overview)
+* [活动日志](#activity-log)
+* [访问控制 (IAM)](#access-control-iam)
+* [标记](#tags)
+* [诊断并解决问题](#diagnose-and-solve-problems)
+* [设置](#settings)
+    * [访问密钥](#access-keys)
+    * [高级设置](#advanced-settings)
+    * [Azure Redis 缓存顾问](#azure-cache-for-redis-advisor)
+    * [缩放](#scale)
+    * [群集大小](#cluster-size)
     * [数据暂留](#redis-data-persistence)
-    * [업데이트 예약](#schedule-updates)
-    * [지역에서 복제](#geo-replication)
-    * [Virtual Network](#virtual-network)
-    * [방화벽](#firewall)
-    * [속성](#properties)
-    * [잠금](#locks)
-    * [Automation 스크립트](#automation-script)
-* 관리
-    * [데이터 가져오기](#importexport)
-    * [데이터 내보내기](#importexport)
-    * [Reboot](#reboot)
-* [Monitoring](#monitoring)
-    * [Redis 메트릭](#redis-metrics)
-    * [경고 규칙](#alert-rules)
-    * [진단](#diagnostics)
-* 설정 지원 및 문제 해결
-    * [리소스 상태](#resource-health)
-    * [새 지원 요청](#new-support-request)
+    * [计划更新](#schedule-updates)
+    * [异地复制](#geo-replication)
+    * [虚拟网络](#virtual-network)
+    * [Firewall](#firewall)
+    * [属性](#properties)
+    * [锁](#locks)
+    * [自动化脚本](#automation-script)
+* 管理
+    * [导入数据](#importexport)
+    * [导出数据](#importexport)
+    * [重新启动](#reboot)
+* [监视](#monitoring)
+    * [Redis 指标](#redis-metrics)
+    * [警报规则](#alert-rules)
+    * [诊断](#diagnostics)
+* 支持和故障排除设置
+    * [资源运行状况](#resource-health)
+    * [新建支持请求](#new-support-request)
 
 
-## <a name="overview"></a>개요
+## <a name="overview"></a>概述
 
-**개요**에서는 이름, 포트, 가격 책정 계층 및 선택한 캐시 메트릭과 같은 캐시에 대한 기본 정보를 제공합니다.
+**概述**提高有关缓存的基本信息，如名称、端口、定价层和所选缓存度量值等。
 
-### <a name="activity-log"></a>활동 로그
+### <a name="activity-log"></a>活动日志
 
-캐시에 대해 수행된 작업을 보려면 **활동 로그** 를 클릭합니다. 또한 다른 리소스를 포함하도록 이 뷰를 확장하려면 필터링을 사용하면 됩니다. 감사 로그 작업에 대한 자세한 내용은 [Resource Manager를 사용하는 감사 작업](../azure-resource-manager/management/view-activity-logs.md)을 참조하세요. Azure Cache for Redis 이벤트를 모니터링하는 방법에 대한 자세한 내용은 [작업 및 경고](cache-how-to-monitor.md#operations-and-alerts)를 참조하세요.
+单击“活动日志”可查看已对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关如何使用审核日志的详细信息，请参阅[使用资源管理器审核操作](../azure-resource-manager/management/view-activity-logs.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
 
-### <a name="access-control-iam"></a>액세스 제어(IAM)
+### <a name="access-control-iam"></a>访问控制 (IAM)
 
-**액세스 제어(IAM)** 섹션에서는 Azure Portal의 RBAC(역할 기반 액세스 제어)에 대한 지원을 제공합니다. 이 구성은 조직이 액세스 관리 요구 사항을 간편하고 정확하게 충족하도록 도와줍니다. 자세한 내용은 [Azure 포털의 역할 기반 액세스 제어](../role-based-access-control/role-assignments-portal.md)를 참조하세요.
+访问控制 (IAM) 部分在 Azure 门户中为基于角色的访问控制 (RBAC) 提供支持。 此配置有助于组织轻松准确地满足其访问管理要求。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="tags"></a>태그
+### <a name="tags"></a>标记
 
-**태그** 섹션은 리소스 구성에 도움이 됩니다. 자세한 내용은 [태그를 사용하여 Azure 리소스 구성](../azure-resource-manager/management/tag-resources.md)을 참조하세요.
-
-
-### <a name="diagnose-and-solve-problems"></a>문제 진단 및 해결
-
-일반적인 문제 및 이러한 문제를 해결하기 위한 전략을 확인하려면 **문제 진단 및 해결** 을 클릭합니다.
+“标记”部分可帮助用户整理资源。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../azure-resource-manager/management/tag-resources.md)。
 
 
+### <a name="diagnose-and-solve-problems"></a>诊断并解决问题
 
-## <a name="settings"></a>설정
-**설정** 섹션을 사용하여 캐시에 대한 다음 설정에 액세스하고 해당 설정을 구성할 수 있습니다.
+单击“诊断并解决问题”可提供常见问题和用于解决这些问题的策略。
 
-* [액세스 키](#access-keys)
-* [고급 설정](#advanced-settings)
-* [Azure Cache for Redis Advisor](#azure-cache-for-redis-advisor)
-* [규모](#scale)
-* [클러스터 크기](#cluster-size):
+
+
+## <a name="settings"></a>设置
+“设置”部分用于访问和配置缓存的下列设置。
+
+* [访问密钥](#access-keys)
+* [高级设置](#advanced-settings)
+* [Azure Redis 缓存顾问](#azure-cache-for-redis-advisor)
+* [缩放](#scale)
+* [群集大小](#cluster-size)
 * [数据暂留](#redis-data-persistence)
-* [업데이트 예약](#schedule-updates)
-* [지역에서 복제](#geo-replication)
-* [Virtual Network](#virtual-network)
-* [방화벽](#firewall)
-* [속성](#properties)
-* [잠금](#locks)
-* [Automation 스크립트](#automation-script)
+* [计划更新](#schedule-updates)
+* [异地复制](#geo-replication)
+* [虚拟网络](#virtual-network)
+* [Firewall](#firewall)
+* [属性](#properties)
+* [锁](#locks)
+* [自动化脚本](#automation-script)
 
 
 
-### <a name="access-keys"></a>액세스 키
-**선택키** 를 클릭하여 캐시에 대한 선택키를 보거나 다시 생성할 수 있습니다. 이러한 키는 캐시에 연결하는 클라이언트에서 사용합니다.
+### <a name="access-keys"></a>访问密钥
+单击“访问密钥”查看或重新生成缓存访问密钥。 这些密钥供连接到缓存的客户端使用。
 
-![Azure Cache for Redis 액세스 키](./media/cache-configure/redis-cache-manage-keys.png)
+![Azure Redis 缓存访问密钥](./media/cache-configure/redis-cache-manage-keys.png)
 
-### <a name="advanced-settings"></a>고급 설정
-다음 설정은 **고급 설정** 블레이드에 구성됩니다.
+### <a name="advanced-settings"></a>高级设置
+在“高级设置”边栏选项卡上配置以下设置。
 
-* [액세스 포트](#access-ports)
-* [메모리 정책](#memory-policies)
-* [Keyspace 알림(고급 설정)](#keyspace-notifications-advanced-settings)
+* [访问端口](#access-ports)
+* [内存策略](#memory-policies)
+* [密钥空间通知（高级设置）](#keyspace-notifications-advanced-settings)
 
-#### <a name="access-ports"></a>액세스 포트
-비 SSL 액세스는 기본적으로 새 캐시에 대해 사용하지 않도록 설정됩니다. 비 SSL 포트를 사용하도록 설정하려면 **고급 설정 블레이드**의 **SSL을 통해서만 액세스 허용**에서 **아니요**를 클릭한 다음 **저장**을 클릭합니다.
+#### <a name="access-ports"></a>访问端口
+默认情况下，为新缓存禁用非 SSL 访问。 要启用非 SSL 端口，请对“高级设置”边栏选项卡中的“仅允许通过 SSL 访问”单击“否”，并单击“保存”。
 
 > [!NOTE]
 > 用于 Redis 的 Azure 缓存访问的 SSL 目前支持 TLS 1.0、1.1 和1.2，但版本1.0 和1.1 即将停用。  有关更多详细信息，请参阅[删除 TLS 1.0 和1.1 页](cache-remove-tls-10-11.md)。
 
-![Azure Cache for Redis 액세스 포트](./media/cache-configure/redis-cache-access-ports.png)
+![Azure Redis 缓存访问端口](./media/cache-configure/redis-cache-access-ports.png)
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
-#### <a name="memory-policies"></a>메모리 정책
-**고급 설정** 블레이드의 **Maxmemory 정책**, **maxmemory-reserved** 및 **maxfragmentationmemory-reserved** 설정은 캐시에 대한 메모리 정책을 구성합니다.
+#### <a name="memory-policies"></a>内存策略
+“高级设置”边栏选项卡上的“Maxmemory policy”、“maxmemory-reserved”和“maxfragmentationmemory-reserved”设置用于为缓存配置内存策略。
 
-![Azure Cache for Redis Maxmemory 정책](./media/cache-configure/redis-cache-maxmemory-policy.png)
+![Azure Redis 缓存 Maxmemory 策略](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
-**Maxmemory 정책**은 캐시에 대한 제거 정책을 구성하고, 다음 제거 정책 중에서 선택할 수 있도록 합니다.
+“Maxmemory policy”用于为缓存配置逐出策略，并允许你从以下逐出策略中进行选择：
 
-* `volatile-lru` - 기본 제거 정책입니다.
+* `volatile-lru` - 这是默认逐出策略。
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
 * `volatile-ttl`
 * `noeviction`
 
-`maxmemory` 정책에 대한 자세한 내용은 [제거 정책](https://redis.io/topics/lru-cache#eviction-policies)을 참조하세요.
+有关 `maxmemory` 策略的详细信息，请参阅[逐出策略](https://redis.io/topics/lru-cache#eviction-policies)。
 
-**maxmemory-reserved** 설정은 장애 조치(Failover) 중 복제와 같은 비캐시 작업을 위해 예약되는 메모리의 양을 MB 단위로 구성합니다. 이 값을 설정하면 부하가 달라져도 Redis 서버 환경이 더 일관되도록 할 수 있습니다. 이 값은 쓰기 작업이 많은 워크로드에서 더 높게 설정되어야 합니다. 이러한 작업을 위해 메모리가 예약된 경우 캐시된 데이터의 스토리지에는 사용할 수 없습니다.
+“maxmemory-reserved”设置用于配置保留给非缓存操作（例如故障转移期间的复制）的内存量 (MB)。 设置此值能够在负载变化时具有更一致的 Redis 服务器体验。 对于写入密集型工作负荷，应将此值设置为较高。 为此类操作保留内存后，将无法存储缓存数据。
 
-**maxfragmentationmemory-reserved** 설정은 메모리 조각화를 고려하여 예약된 메모리 양을 MB 단위로 구성합니다. 이 값을 설정하면 캐시가 가득 찼거나 거의 가득 찼고 조각화 비율이 높을 때 더욱 일관된 Redis 서버 환경을 갖출 수 있습니다. 이러한 작업을 위해 메모리가 예약된 경우 캐시된 데이터의 스토리지에는 사용할 수 없습니다.
+“maxfragmentationmemory-reserve”设置配置保留以容纳内存碎片的内存量（以 MB 为单位）。 设置此值后，即使在缓存已满或接近满的状态并且碎片比率很高时，你也能拥有更加稳定的 Redis 服务器体验。 为此类操作保留内存后，将无法存储缓存数据。
 
-새 메모리 예약 값(**maxmemory-reserved** 또는 **maxfragmentationmemory-reserved**)을 선택할 때 고려해야 할 사항 중 하나는 이러한 변경이 이미 많은 양의 데이터로 실행 중인 캐시에 미칠 수 있는 영향력입니다. 예를 들어 49GB의 데이터가 있는 53GB 캐시가 있는 경우 예약 값을 8GB로 변경하면 시스템에 사용 가능한 최대 메모리가 45GB로 줄어듭니다. 현재 `used_memory` 또는 `used_memory_rss` 값이 새 제한인 45GB보다 높으면 시스템에서 `used_memory`과 `used_memory_rss` 모두가 45GB 미만이 될 때까지 데이터를 제거해야 합니다. 제거는 서버 부하 및 메모리 조각화를 증가시킬 수 있습니다. `used_memory` 및 `used_memory_rss`와 같은 캐시 메트릭에 대한 자세한 내용은 [사용 가능한 메트릭 및 보고 간격](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)을 참조하세요.
-
-> [!IMPORTANT]
-> **maxmemory-reserved** 및 **maxfragmentationmemory-reserved** 설정은 Standard 및 Premium 캐시에만 사용할 수 있습니다.
->
->
-
-#### <a name="keyspace-notifications-advanced-settings"></a>Keyspace 알림(고급 설정)
-Redis keyspace 알림은 **고급 설정** 블레이드에서 구성됩니다. Keyspace 알림을 사용하면 특정 이벤트가 발생할 때 클라이언트에서 알림을 받을 수 있습니다.
-
-![Azure Cache for Redis 고급 설정](./media/cache-configure/redis-cache-advanced-settings.png)
+在选择新的内存预留值（maxmemory-reserved 或 maxfragmentationmemory-reserved）时，请注意此更改可能会如何影响已在运行的包含大量数据的缓存。 例如，如果你的 53 GB 缓存中已有 49 GB 数据，那么，将预留值更改为 8 GB 后，此更改会将系统的最大可用内存降至 45 GB。 如果你的当前 `used_memory` 或 `used_memory_rss` 值高于 45 GB 的新限制，则系统需要逐出数据，直到 `used_memory` 和 `used_memory_rss` 均低于 45 GB。 逐出可能会增加服务器负载和内存碎片。 有关 `used_memory` 和 `used_memory_rss` 等缓存指标的详细信息，请参阅[可用指标和报告时间间隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
 
 > [!IMPORTANT]
-> Keyspace 알림과 **notify-keyspace-events** 설정은 표준 및 프리미엄 캐시에만 사용할 수 있습니다.
+> “maxmemory-reserved”和“maxfragmentationmemory-reserved”设置仅适用于标准缓存和高级缓存。
 >
 >
 
-자세한 내용은 [Redis Keyspace 알림](https://redis.io/topics/notifications)을 참조하세요. 샘플 코드는 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 샘플의 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 파일을 참조하세요.
+#### <a name="keyspace-notifications-advanced-settings"></a>密钥空间通知（高级设置）
+Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 密钥空间通知让客户端能够在发生特定事件时接收通知。
+
+![Azure Redis 缓存的“高级设置”](./media/cache-configure/redis-cache-advanced-settings.png)
+
+> [!IMPORTANT]
+> 密钥空间通知和“notify-keyspace-events”设置仅适用于标准缓存和高级缓存。
+>
+>
+
+有关详细信息，请参阅 [Redis Keyspace Notifications](https://redis.io/topics/notifications)（Redis 密钥空间通知）。 有关示例代码，请参阅 [Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 示例中的 [KeySpaceNotifications.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/KeySpaceNotifications.cs) 文件。
 
 
 <a name="recommendations"></a>
-## <a name="azure-cache-for-redis-advisor"></a>Azure Cache for Redis Advisor
-**Azure Cache for Redis Advisor** 블레이드에는 캐시에 대한 추천 사항이 표시됩니다. 정상적으로 작동하는 중에는 추천이 표시되지 않습니다.
+## <a name="azure-cache-for-redis-advisor"></a>Azure Redis 缓存顾问
+“Azure Redis 缓存顾问”边栏选项卡会显示适用于缓存的建议。 在正常操作期间，不会显示任何建议。
 
-![권장 사항](./media/cache-configure/redis-cache-no-recommendations.png)
+![建议](./media/cache-configure/redis-cache-no-recommendations.png)
 
-캐시 작업 중에 높은 메모리 사용량, 네트워크 대역폭, 또는 서버 부하와 같은 조건이 발생하면 **Azure Cache for Redis** 블레이드에 경고가 표시됩니다.
+如果在缓存操作期间发生任何状况（例如，高内存使用率、网络带宽或服务器负载），会在“Azure Redis 缓存”边栏选项卡中显示警报。
 
-![권장 사항](./media/cache-configure/redis-cache-recommendations-alert.png)
+![建议](./media/cache-configure/redis-cache-recommendations-alert.png)
 
-자세한 내용은 **추천** 블레이드에서 확인할 수 있습니다.
+可在“建议”边栏选项卡上找到进一步的信息。
 
-![권장 사항](./media/cache-configure/redis-cache-recommendations.png)
+![建议](./media/cache-configure/redis-cache-recommendations.png)
 
-이러한 메트릭은 **Azure Cache for Redis** 블레이드의 [모니터링 차트](cache-how-to-monitor.md#monitoring-charts) 및 [사용 현황 차트](cache-how-to-monitor.md#usage-charts) 섹션에서 모니터링할 수 있습니다.
+可以在“Azure Redis 缓存”边栏选项卡的[监视图表](cache-how-to-monitor.md#monitoring-charts)和[使用率图表](cache-how-to-monitor.md#usage-charts)部分监视这些指标。
 
-가격 책정 계층마다 클라이언트 연결, 메모리 및 대역폭에 대한 제한이 다릅니다. 캐시가 오랫동안 이러한 메트릭의 최대 용량에 근접하면 추천이 생성됩니다. **추천** 도구에서 검토하는 메트릭 및 제한에 대한 자세한 내용은 다음 테이블을 참조하세요.
+每个定价层都有不同的客户端连接、内存和带宽的限制。 如果缓存持续一段时间接近这些度量值的最大容量，即会提供建议。 有关通过“建议”工具查看的指标和限制的详细信息，请参阅下表：
 
-| Azure Cache for Redis 메트릭 | 자세한 정보 |
+| Azure Redis 缓存指标 | 详细信息 |
 | --- | --- |
-| 네트워크 대역폭 사용량 |[캐시 성능 - 사용 가능한 대역폭](cache-faq.md#cache-performance) |
-| 연결된 클라이언트 |[기본 Redis 서버 구성 - maxclients](#maxclients) |
-| 서버 부하 |[사용 현황 차트 - Redis 서버 부하](cache-how-to-monitor.md#usage-charts) |
-| 메모리 사용량 |[캐시 성능 - 크기](cache-faq.md#cache-performance) |
+| 网络带宽使用率 |[缓存性能 - 可用带宽](cache-faq.md#cache-performance) |
+| 连接的客户端数 |[默认 Redis 服务器配置 - maxclients](#maxclients) |
+| 服务器负载 |[使用率图表 - Redis 服务器负载](cache-how-to-monitor.md#usage-charts) |
+| 内存使用率 |[缓存性能 - 大小](cache-faq.md#cache-performance) |
 
-캐시를 업그레이드하려면 **지금 업그레이드**를 클릭하여 [가격 책정 계층](#scale)을 변경하고 캐시 크기를 조정하세요. 가격 책정 계층을 선택하는 방법에 대한 자세한 내용은 [사용해야 하는 Azure Cache for Redis 제안 및 크기는 어떻게 되나요?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)를 참조하세요.
+若要升级缓存，请单击“立即升级”以更改定价层并[缩放](#scale)缓存。 有关选择定价层的详细信息，请参阅[应使用哪种 Azure Redis 缓存套餐和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>확장성
-**확장**을 클릭하여 캐시에 대한 가격 책정 계층을 보거나 변경합니다. 크기를 조정하는 방법에 대한 자세한 내용은 [Azure Cache for Redis 크기를 조정하는 방법](cache-how-to-scale.md)을 참조하세요.
+### <a name="scale"></a>缩放
+单击“缩放”可查看或更改缓存的定价层。 有关缩放的详细信息，请参阅[如何缩放 Azure Redis 缓存](cache-how-to-scale.md)。
 
-![Azure Cache for Redis 가격 책정 계층](./media/cache-configure/pricing-tier.png)
+![Azure Redis 缓存定价层](./media/cache-configure/pricing-tier.png)
 
 <a name="cluster-size"></a>
 
-### <a name="redis-cluster-size"></a>Redis 클러스터 크기
+### <a name="redis-cluster-size"></a>Redis 群集大小
 单击 "**群集大小**" 可更改启用了群集功能的正在运行的高级缓存的群集大小。
 
-![클러스터 크기](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![群集大小](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
-클러스터 크기를 변경하려면 슬라이더를 사용하거나 **분할된 데이터베이스 수** 텍스트 상자에 1에서 10 사이의 수를 입력하고 **확인**을 클릭하여 저장합니다.
-
-> [!IMPORTANT]
-> Redis 클러스터링은 프리미엄 캐시에만 사용할 수 있습니다. 자세한 내용은 [프리미엄 Azure Cache for Redis에 대한 클러스터링을 구성하는 방법](cache-how-to-premium-clustering.md)을 참조하세요.
->
->
-
-
-### <a name="redis-data-persistence"></a>Redis 데이터 지속성
-单击 "**数据持久性**" 可启用、禁用或配置高级缓存的数据持久性。 Azure Cache for Redis는 [RDB 지속성](cache-how-to-premium-persistence.md#configure-rdb-persistence) 또는 [AOF 지속성](cache-how-to-premium-persistence.md#configure-aof-persistence)을 사용하여 Redis 지속성을 제공합니다.
-
-자세한 내용은 [프리미엄 Azure Redis Cache에 대한 지속성을 구성하는 방법](cache-how-to-premium-persistence.md)을 참조하세요.
-
+要更改群集大小，请使用滑块，或在“分片计数”文本框中键入 1 到 10 之间的数字，并单击“确定”进行保存。
 
 > [!IMPORTANT]
-> Redis 데이터 지속성은 프리미엄 캐시에만 사용할 수 있습니다.
+> Redis 群集仅适用于高级缓存。 有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置群集功能](cache-how-to-premium-clustering.md)。
 >
 >
 
-### <a name="schedule-updates"></a>업데이트 예약
-**업데이트 예약** 블레이드에서는 캐시의 Redis 서버 업데이트에 대한 유지 관리 기간을 지정할 수 있습니다.
+
+### <a name="redis-data-persistence"></a>Redis 数据持久性
+单击 "**数据持久性**" 可启用、禁用或配置高级缓存的数据持久性。 Azure Redis 缓存通过 [RDB 持久性](cache-how-to-premium-persistence.md#configure-rdb-persistence)或 [AOF 持久性](cache-how-to-premium-persistence.md#configure-aof-persistence)提供 Redis 持久性。
+
+有关详细信息，请参阅[如何为高级 Azure Redis 缓存配置持久性](cache-how-to-premium-persistence.md)。
+
 
 > [!IMPORTANT]
-> 유지 관리 기간은 Redis 서버 업데이트에만 적용되며 Azure 업데이트나 캐시를 호스트하는 VM의 운영 체제에 대한 업데이트에는 적용되지 않습니다.
+> Redis 数据持久性仅适用于高级缓存。
 >
 >
 
-![업데이트 예약](./media/cache-configure/redis-schedule-updates.png)
-
-유지 관리 기간을 지정하려면 원하는 요일을 선택하고 각 요일의 유지 관리 기간 시작 시간을 지정한 후 **확인**을 클릭합니다. 유지 관리 기간은 UTC 단위입니다.
+### <a name="schedule-updates"></a>计划更新
+可以通过“计划更新”边栏选项卡指定一个维护时段，以便针对缓存进行 Redis 服务器更新。
 
 > [!IMPORTANT]
-> **업데이트 예약** 기능은 프리미엄 계층 캐시에만 제공됩니다. 자세한 내용과 지침은 [Azure Cache for Redis 관리 - 업데이트 예약](cache-administration.md#schedule-updates)을 참조하세요.
+> 维护时段仅适用于 Redis 服务器更新，不适用于任何 Azure 更新或托管缓存的 VM 的操作系统更新。
 >
 >
 
-### <a name="geo-replication"></a>지역에서 복제
+![计划更新](./media/cache-configure/redis-schedule-updates.png)
 
-**지역 복제** 블레이드에서 두 개의 프리미엄 계층 Azure Cache for Redis 인스턴스를 연결하는 메커니즘을 제공합니다. 한 캐시는 주 연결된 캐시로 지정하고 다른 캐시는 보조 연결된 캐시로 지정합니다. 보조 연결된 캐시는 읽기 전용이 되고 주 캐시에 쓴 데이터는 보조 연결된 캐시에 복제됩니다. 이 기능은 Azure 지역 간에 캐시를 복제하는 데 사용할 수 있습니다.
+要指定维护时段，请勾选合适的日期，并指定每天的维护时段开始时间，最后再单击“确定”。 维护时段使用 UTC 时间。
 
 > [!IMPORTANT]
-> **지역에서 복제**는 프리미엄 계층 캐시에서만 사용할 수 있습니다. 자세한 내용과 지침은 [Azure Cache for Redis에 대한 지역 복제를 구성하는 방법](cache-how-to-geo-replication.md)을 참조하세요.
+> “计划更新”功能仅适用于高级层缓存。 有关详细信息和说明，请参阅 [Azure Redis 缓存管理 - 计划更新](cache-administration.md#schedule-updates)。
 >
 >
 
-### <a name="virtual-network"></a>Virtual Network
-**Virtual Network** 섹션에서 캐시의 가상 네트워크 설정을 구성할 수 있습니다. VNET 지원을 통해 프리미엄 캐시를 만들고 설정을 업데이트하는 방법에 대한 자세한 내용은 [프리미엄 Azure Cache for Redis에 대한 Virtual Network 지원을 구성하는 방법](cache-how-to-premium-vnet.md)을 참조하세요.
+### <a name="geo-replication"></a>异地复制
+
+“异地复制”边栏选项卡提供一种用于链接两个高级层 Azure Redis 缓存实例的机制。 一个缓存指定为主链接缓存，另一个缓存指定为辅助链接缓存。 辅助链接缓存将变为只读，写入主缓存的数据将复制到辅助链接缓存。 此功能可用于跨 Azure 区域复制缓存。
 
 > [!IMPORTANT]
-> 가상 네트워크 설정은 캐시를 만드는 동안 VNET 지원을 통해 구성된 프리미엄 캐시에만 제공됩니다.
+> 异地复制仅适用于高级层缓存。 有关详细信息和说明，请参阅[如何为 Azure Redis 缓存配置异地复制](cache-how-to-geo-replication.md)。
 >
 >
 
-### <a name="firewall"></a>방화벽
-
-방화벽 규칙 구성은 모든 Azure Cache for Redis 계층에서 사용할 수 있습니다.
-
-**방화벽**을 클릭하여 Cache에 대한 방화벽 규칙을 보고 구성합니다.
-
-![방화벽](./media/cache-configure/redis-firewall-rules.png)
-
-시작 및 끝 IP 주소 범위를 사용하여 방화벽 규칙을 지정할 수 있습니다. 방화벽 규칙이 구성되면 지정된 IP 주소 범위의 클라이언트 연결만 캐시에 연결할 수 있습니다. 방화벽 규칙이 저장되면 잠시 지연되었다가 규칙이 적용됩니다. 이러한 지연 시간은 일반적으로 1분 미만입니다.
+### <a name="virtual-network"></a>虚拟网络
+使用“虚拟网络”部分，可配置缓存的虚拟网络设置。 有关利用 VNET 支持创建高级缓存并更新其设置的信息，请参阅[如何配置高级 Azure Redis 缓存的虚拟网络支持](cache-how-to-premium-vnet.md)。
 
 > [!IMPORTANT]
-> 방화벽 규칙이 구성된 경우에도 Azure Cache for Redis 모니터링 시스템의 연결은 항상 허용됩니다.
+> 虚拟网络设置仅适用于缓存创建期间利用 VNET 支持配置的高级缓存。
 >
 >
 
-### <a name="properties"></a>속성
-**속성** 을 클릭하여 캐시 엔드포인트 및 포트를 포함하여 캐시에 대한 정보를 볼 수 있습니다.
+### <a name="firewall"></a>防火墙
 
-![Azure Cache for Redis 속성](./media/cache-configure/redis-cache-properties.png)
+防火墙规则配置可用于所有 Azure Redis 缓存层。
 
-### <a name="locks"></a>잠금
-**잠금** 섹션에서는 구독, 리소스 그룹 또는 리소스에 잠금을 설정하여 조직의 다른 사용자가 실수로 중요한 리소스를 삭제 또는 수정하지 못하게 방지할 수 있습니다. 자세한 내용은 [Azure 리소스 관리자를 사용하여 리소스 잠그기](../azure-resource-manager/management/lock-resources.md)를 참조하세요.
+单击“防火墙”，查看和配置缓存的防火墙规则。
 
-### <a name="automation-script"></a>Automation 스크립트
+![防火墙](./media/cache-configure/redis-firewall-rules.png)
 
-미래 배포를 위해 배포된 리소스의 템플릿을 빌드하고 내보내려면 **Automation 스크립트**를 클릭합니다. 템플릿 작업에 대한 자세한 내용은 [Azure Resource Manager 템플릿을 사용하여 리소스 배포](../azure-resource-manager/templates/deploy-powershell.md)를 참조하세요.
-
-## <a name="administration-settings"></a>관리 설정
-**관리** 섹션의 설정을 사용하여 캐시에 대해 다음과 같은 관리 작업을 수행할 수 있습니다.
-
-![관리](./media/cache-configure/redis-cache-administration.png)
-
-* [데이터 가져오기](#importexport)
-* [데이터 내보내기](#importexport)
-* [Reboot](#reboot)
-
-
-### <a name="importexport"></a>Import/Export
-가져오기/내보내기는 Azure Cache for Redis 데이터 관리 작업입니다. 즉 프리미엄 캐시에서 Azure Storage 계정의 페이지 Blob으로 Azure Cache for Redis 데이터베이스(RDB) 스냅샷을 가져오고 내보내는 방식으로 캐시에서 데이터를 가져오고 내보낼 수 있습니다. 가져오기/내보내기를 사용하면 다양한 Azure Cache for Redis 인스턴스 간에 마이그레이션하거나 데이터를 사용하기 전에 캐시에 채울 수 있습니다.
-
-가져오기는 Linux, Windows 또는 Amazon Web Services 및 기타 클라우드 공급자에서 실행되는 Redis를 비롯한 환경이나 클라우드에서 실행되는 Redis 서버로부터 Redis 호환 RDB 파일을 가져오는 데 사용됩니다. 데이터 가져오기는 미리 채워진 데이터로 캐시를 만드는 손쉬운 방법입니다. 가져오기 프로세스 중에는 Azure Cache for Redis에서 RDB 파일을 Azure Storage에서 메모리로 로드한 다음, 키를 캐시에 삽입합니다.
-
-내보내기를 사용하면 Azure Cache for Redis에 저장된 데이터를 Redis 호환 RDB 파일로 내보낼 수 있습니다. 이 기능을 사용하여 데이터를 Azure Cache for Redis 인스턴스에서 다른 인스턴스 또는 다른 Redis 서버로 이동할 수 있습니다. 내보내기 프로세스 중에는 임시 파일이 Azure Cache for Redis 서버 인스턴스를 호스팅하는 VM에 만들어지고, 지정된 스토리지 계정에 업로드됩니다. 성공 또는 실패 상태로 내보내기 작업이 완료되면, 임시 파일은 삭제됩니다.
+可以指定具有开始和结束 IP 地址范围的防火墙规则。 配置防火墙规则时，仅指定 IP 地址范围内的客户端连接可以连接到缓存。 保存防火墙规则后，规则生效前会有短暂延迟。 延迟通常不超过 1 分钟。
 
 > [!IMPORTANT]
-> Import/Export는 프리미엄 계층 캐시에만 제공됩니다. 자세한 내용과 지침은 [Azure Cache for Redis에서 데이터 가져오기 및 내보내기](cache-how-to-import-export-data.md)를 참조하세요.
+> 即使配置了防火墙规则，仍始终允许来自 Azure Redis 缓存监视系统的连接。
 >
 >
 
-### <a name="reboot"></a>다시 부팅
-**다시 부팅** 블레이드에서는 캐시 노드를 다시 부팅할 수 있습니다. 이 다시 부팅 기능을 사용하면 캐시 노드에 오류가 발생하는 경우 애플리케이션의 복원력을 테스트할 수 있습니다.
+### <a name="properties"></a>属性
+单击“属性”查看有关缓存的信息，包括缓存终结点和端口。
 
-![다시 부팅](./media/cache-configure/redis-cache-reboot.png)
+![Azure Redis 缓存属性](./media/cache-configure/redis-cache-properties.png)
 
-클러스터링이 설정된 프리미엄 캐시를 사용하는 경우 재부팅할 캐시 분할을 선택할 수 있습니다.
+### <a name="locks"></a>锁
+“锁定”部分可用来锁定订阅、资源组或资源，以防止组织中的其他用户意外删除或修改关键资源。 有关详细信息，请参阅 [使用 Azure 资源管理器锁定资源](../azure-resource-manager/management/lock-resources.md)。
 
-![다시 부팅](./media/cache-configure/redis-cache-reboot-cluster.png)
+### <a name="automation-script"></a>自动化脚本
 
-하나 이상의 캐시 노드를 다시 부팅하려면 원하는 노드를 선택하고 **다시 부팅**을 클릭합니다. 클러스터링이 설정된 프리미엄 캐시를 사용하는 경우 다시 부팅할 분할을 선택하고 **다시 부팅**을 클릭합니다. 몇 분 후 선택된 노드가 재부팅되고, 다시 몇 분 후에 온라인 상태가 됩니다.
+单击“自动化模板”可生成并导出已部署资源的模板，以用于将来部署。 有关使用模板的详细信息，请参阅[使用 Azure 资源管理器模板部署资源](../azure-resource-manager/templates/deploy-powershell.md)。
+
+## <a name="administration-settings"></a>管理设置
+可以通过“管理”部分的设置针对缓存执行以下管理任务。
+
+![管理](./media/cache-configure/redis-cache-administration.png)
+
+* [导入数据](#importexport)
+* [导出数据](#importexport)
+* [重新启动](#reboot)
+
+
+### <a name="importexport"></a>导入/导出
+导入/导出是一种 Azure Redis 缓存数据管理操作，可用于通过从高级缓存导入 Azure Redis 缓存数据库 (RDB) 快照以及将 Azure Redis 缓存数据库 (RDB) 快照导出到 Azure 存储帐户中的页 Blob 来相应地在缓存中导入和导出数据。 通过导入/导出可在不同的 Azure Redis 缓存实例之间进行迁移，或者在使用之前使用数据填充缓存。
+
+导入可用于从任何云或环境中运行的任何 Redis 服务器引入与 Redis 兼容的 RDB 文件，包括在 Linux、Windows 上运行的 Redis 或任何云提供程序（如 Amazon Web Services 等）。 导入数据是使用预先填充的数据创建缓存的简单方式。 在导入过程中，Azure Redis 缓存从 Azure 存储将 RDB 文件加载到内存中，再将密钥插入到缓存中。
+
+可以使用导出将 Azure Redis 缓存中存储的数据导出到与 Redis 兼容的 RDB 文件。 可以使用此功能将一个 Azure Redis 缓存实例中的数据移到另一个 Azure Redis 缓存实例或另一个 Redis 服务器。 在导出过程中，会在托管 Azure Redis 缓存服务器实例的 VM 上创建临时文件，并将该文件上传到指定的存储帐户。 导出操作完成后，无论状态为成功还是失败，都会删除临时文件。
 
 > [!IMPORTANT]
-> 이제 모든 가격 책정 계층에서 다시 부팅을 사용할 수 있습니다. 자세한 내용과 지침은 [Azure Cache for Redis 관리 - 다시 부팅](cache-administration.md#reboot)을 참조하세요.
+> 导入/导出仅适用于高级层缓存。 有关详细信息和说明，请参阅[在 Azure Redis 缓存中导入和导出数据](cache-how-to-import-export-data.md)。
+>
+>
+
+### <a name="reboot"></a>重新启动
+可通过“重新启动”边栏选项卡重新启动缓存的节点。 如果有缓存节点发生故障，此重新启动功能可用于测试应用程序的复原能力。
+
+![重新启动](./media/cache-configure/redis-cache-reboot.png)
+
+如果高级缓存启用了群集功能，则可选择要重新启动的缓存分片。
+
+![重新启动](./media/cache-configure/redis-cache-reboot-cluster.png)
+
+要重新启动缓存的一个或多个节点，请选择所需节点，并单击“重新启动”。 如果高级缓存启用了群集功能，请选择要重新启动的分片，并单击“重新启动”。 几分钟后，所选节点将重新启动，再过几分钟后，又会回到联机状态。
+
+> [!IMPORTANT]
+> 现在所有定价层都可以重新启动。 有关详细信息和说明，请参阅 [Azure Redis 缓存管理 - 重启](cache-administration.md#reboot)。
 >
 >
 
 
-## <a name="monitoring"></a>모니터링
+## <a name="monitoring"></a>监视
 
-**모니터링** 섹션에서 Azure Cache for Redis에 대한 진단 및 모니터링을 구성할 수 있습니다.
-Azure Cache for Redis를 모니터링하고 진단하는 방법에 대한 자세한 내용은 [Azure Cache for Redis를 모니터링하는 방법](cache-how-to-monitor.md)을 참조하세요.
+“监视”部分用于配置 Azure Redis 缓存的诊断和监视。
+有关 Azure Redis 缓存监视和诊断的详细信息，请参阅[如何监视 Azure Redis 缓存](cache-how-to-monitor.md)。
 
-![진단](./media/cache-configure/redis-cache-diagnostics.png)
+![诊断](./media/cache-configure/redis-cache-diagnostics.png)
 
-* [Redis 메트릭](#redis-metrics)
-* [경고 규칙](#alert-rules)
-* [진단](#diagnostics)
+* [Redis 指标](#redis-metrics)
+* [警报规则](#alert-rules)
+* [诊断](#diagnostics)
 
-### <a name="redis-metrics"></a>Redis 메트릭
-캐시에 대한 [메트릭을 보려면](cache-how-to-monitor.md#view-cache-metrics)**Redis 메트릭**을 클릭합니다.
+### <a name="redis-metrics"></a>Redis 指标
+单击“Redis 指标”可[查看度量值](cache-how-to-monitor.md#view-cache-metrics)（用于缓存的）。
 
-### <a name="alert-rules"></a>경고 규칙
+### <a name="alert-rules"></a>警报规则
 
-**경고 규칙**을 클릭하여 Azure Cache for Redis 메트릭을 기반으로 하는 경고를 구성합니다. 자세한 내용은 [경고](cache-how-to-monitor.md#alerts)를 참조하세요.
+单击“警报规则”可配置基于 Azure Redis 缓存指标的警报。 有关详细信息，请参阅[警报](cache-how-to-monitor.md#alerts)。
 
-### <a name="diagnostics"></a>진단
+### <a name="diagnostics"></a>诊断
 
-기본적으로 Azure Monitor의 캐시 메트릭은 [30일 동안 저장](../azure-monitor/platform/data-platform-metrics.md)되었다가 삭제됩니다. 30일 이후에도 캐시 메트릭을 유지하려면 **진단**을 클릭하여 캐시 진단을 저장하는 데 사용되는 [스토리지 계정을 구성](cache-how-to-monitor.md#export-cache-metrics)합니다.
+默认情况下，Azure Monitor 中的缓存指标会[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，之后将被删除。 若要将缓存指标保留超过 30 天，请单击“诊断”，[配置存储帐户](cache-how-to-monitor.md#export-cache-metrics)以用于存储缓存诊断。
 
 >[!NOTE]
 >除了将缓存指标存档到存储，还可以将[它们流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 >
 >
 
-## <a name="support--troubleshooting-settings"></a>설정 지원 및 문제 해결
-**설정 지원 + 문제 해결** 섹션의 설정은 캐시로 문제를 해결하는 옵션을 제공합니다.
+## <a name="support--troubleshooting-settings"></a>支持和故障排除设置
+“支持 + 疑难解答”部分中的设置提供了用于解决缓存问题的选项。
 
-![설정 지원 + 문제 해결](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![支持 + 疑难解答](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [리소스 상태](#resource-health)
-* [새 지원 요청](#new-support-request)
+* [资源运行状况](#resource-health)
+* [新建支持请求](#new-support-request)
 
-### <a name="resource-health"></a>리소스 상태
-**리소스 상태** 기능은 리소스를 감시하고 예상대로 실행되는지를 알려줍니다. Azure 리소스 상태 관리 서비스에 대한 자세한 내용은 [Azure 리소스 상태 개요](../resource-health/resource-health-overview.md)를 참조하세요.
+### <a name="resource-health"></a>资源运行状况
+“资源运行状况”会监视资源，并告知资源是否按预期运行。 有关 Azure 资源运行状况服务的详细信息，请参阅 [Azure 资源运行状况概述](../resource-health/resource-health-overview.md)。
 
 > [!NOTE]
-> 리소스 상태는 현재 가상 네트워크에서 호스팅되는 Azure Cache for Redis 인스턴스의 상태를 보고할 수 없습니다. 자세한 내용은 [VNET에서 캐시를 호스팅하는 경우 모든 캐시 기능이 작동하나요?](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> 资源运行状况当前无法报告在虚拟网络中托管的 Azure Redis 缓存实例的运行状况。 有关详细信息，请参阅[在 VNET 中托管缓存时，是否可以使用所有缓存功能？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
 >
 >
 
-### <a name="new-support-request"></a>새 지원 요청
-캐시에 대한 지원 요청을 열려면 **새 지원 요청** 을 클릭합니다.
+### <a name="new-support-request"></a>新建支持请求
+单击“新建支持请求”可建立缓存的支持请求。
 
 
 
 
 
-## <a name="default-redis-server-configuration"></a>기본 Redis 서버 구성
-새 Azure Cache for Redis 인스턴스는 다음과 같은 기본 Redis 구성 값으로 구성됩니다.
+## <a name="default-redis-server-configuration"></a>默认 Redis 服务器配置
+新的 Azure Redis 缓存实例均已配置以下默认 Redis 配置值：
 
 > [!NOTE]
-> 이 섹션의 설정은 `StackExchange.Redis.IServer.ConfigSet` 메서드를 사용하여 변경할 수 없습니다. 이 메서드를 이 섹션의 명령 중 하나와 함께 호출하면 다음 예제와 유사한 예외가 발생됩니다.  
+> 无法使用 `StackExchange.Redis.IServer.ConfigSet` 方法更改本部分中的设置。 如果使用此部分中的任一命令调用此方法，将引发类似于如下示例的异常：  
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> **max-memory-policy**와 같이 구성 가능한 모든 값은 Azure Portal 또는 명령줄 관리 도구(예: Azure CLI 또는 PowerShell)를 통해 구성할 수 있습니다.
+> 任何可配置的值（例如 **max-memory-policy**）都可以通过 Azure 门户或命令行管理工具（例如 Azure CLI 或 PowerShell）进行配置。
 >
 >
 
-| 설정 | 기본값 | Description |
+| 设置 | 默认值 | 说明 |
 | --- | --- | --- |
-| `databases` |16 |데이터베이스의 기본 수는 16이지만 가격 책정 계층에 따라 다른 숫자를 구성할 수 있습니다.<sup>1</sup> 기본 데이터베이스는 DB 0입니다. `connection.GetDatabase(dbid)`을 사용하여 연결 단위로 다른 데이터베이스를 선택할 수 있습니다. 여기서 `dbid`는 `0`에서 `databases - 1` 사이의 숫자입니다. |
-| `maxclients` |가격 책정 계층에 따라 달라집니다.<sup>2</sup> |이 값은 동시에 연결이 허용되는 클라이언트의 최대 수입니다. 제한에 도달하면 Redis는 'max number of clients reached' 오류를 반환하고 모든 새 연결을 닫습니다. |
-| `maxmemory-policy` |`volatile-lru` |`maxmemory` 정책은 최대 메모리(캐시를 만들 때 선택한 캐시의 크기)에 도달했을 때 Redis가 어떤 것을 제거할지 선택하는 방법에 대한 설정입니다. Azure Cache for Redis를 사용하면 기본 설정은 `volatile-lru`이며, 이 경우 LRU 알고리즘을 사용하여 만료 기간이 설정되어 있는 키를 제거합니다. 이 설정은 Azure 포털에서 구성할 수 있습니다. 자세한 내용은 [메모리 정책](#memory-policies)을 참조하세요. |
-| `maxmemory-samples` |3 |메모리를 절약하기 위해 LRU 및 최소 TTL 알고리즘은 정밀한 알고리즘이 아닌 대략적인 알고리즘입니다. 기본적으로 Redis는 세 개의 키를 확인하고 가장 오래 전에 사용된 키를 선택합니다. |
-| `lua-time-limit` |5,000 |밀리초 단위의 Lua 스크립트 최대 실행 시간입니다. 최대 실행 시간에 도달하면 Redis는 허용된 시간 이후에도 실행 중인 스크립트를 기록하고 쿼리에 오류로 응답하기 시작합니다. |
-| `lua-event-limit` |500 |스크립트 이벤트 큐의 최대 크기 |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |클라이언트 출력 버퍼 제한은 어떤 이유로 서버에서 데이터를 읽는 속도가 충분히 빠르지 않은 클라이언트의 연결을 강제로 끊는 데 사용할 수 있습니다. 속도가 느린 일반적인 이유는 게시/구독 클라이언트가 게시자의 생성 속도만큼 빠르게 메시지를 소화하지 못하기 때문입니다. 자세한 내용은 [https://redis.io/topics/clients](https://redis.io/topics/clients)를 참조하세요. |
+| `databases` |16 |默认的数据库数为 16，但可以根据定价层配置不同数目。<sup>1</sup> 默认数据库是 DB 0，可以基于每个连接使用 `connection.GetDatabase(dbid)`（其中 `dbid` 是介于 `0` 和 `databases - 1` 之间的数字）选择其他数据库。 |
+| `maxclients` |取决于定价层<sup>2</sup> |该值是同一时间内允许的最大已连接客户端数。 一旦达到该限制，Redis 会在关闭所有新连接的同时返回“达到客户端最大数量”的错误。 |
+| `maxmemory-policy` |`volatile-lru` |Maxmemory 策略是达到 `maxmemory`（创建缓存时所选缓存服务的大小）时，Redis 根据它选择要删除内容的设置。 Azure Redis 缓存的默认设置为 `volatile-lru`，此设置使用 LRU 算法删除具有过期设置的密钥。 可以在 Azure 门户中配置此设置。 有关详细信息，请参阅[内存策略](#memory-policies)。 |
+| `maxmemory-samples` |3 |为了节省内存，LRU 和最小 TTL 算法是近似算法而不是精确算法。 默认情况下，Redis 会检查三个密钥并选取最近使用较少的一个。 |
+| `lua-time-limit` |5,000 |Lua 脚本的最大执行时间（以毫秒为单位）。 如果达到最大执行时间，Redis 将记录脚本在达到最大允许时间后仍在执行，并开始以错误响应查询。 |
+| `lua-event-limit` |500 |脚本事件队列的最大大小。 |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |客户端输出缓冲区限制可用于强制断开处于某种原因（一个常见原因是发布/订阅客户端处理消息的速度慢于发布者提供消息的速度）而未从服务器快速读取数据的客户端的连接。 有关详细信息，请参阅 [https://redis.io/topics/clients](https://redis.io/topics/clients)。 |
 
 <a name="databases"></a>
-<sup>1</sup>`databases`에 대한 제한은 Azure Cache for Redis 가격 책정 계층마다 다르며 캐시를 만들 때 설정할 수 있습니다. 캐시를 만드는 동안 `databases` 설정이 지정되지 않았다면 기본값은 16입니다.
+<sup>1</sup>每个 Azure Redis 缓存定价层的 `databases` 限制是不同的，可以在创建缓存时进行设置。 如果在创建缓存期间未指定 `databases` 设置，则默认值为 16。
 
-* 기본 및 표준 캐시
-  * C0(250MB) 캐시 - 최대 16개의 데이타베이스
-  * C1(1GB) 캐시 - 최대 16개의 데이타베이스
-  * C2(2.5GB) 캐시 - 최대 16개의 데이타베이스
-  * C3(6GB) 캐시 - 최대 16개의 데이타베이스
-  * C4(13GB) 캐시 - 최대 32개의 데이타베이스
-  * C5(26GB) 캐시 - 최대 48개의 데이타베이스
-  * C6(53GB) 캐시 - 최대 64개의 데이타베이스
-* 프리미엄 캐시
-  * P1(6GB-60GB)-최대 16개의 데이터베이스
-  * P2(13GB-130GB)-최대 32개의 데이터베이스
-  * P3(26GB-260GB)-최대 48개의 데이터베이스
-  * P4(53GB-530GB)-최대 64개의 데이터베이스
-  * Redis 클러스터를 사용할 수 있는 모든 프리미엄 캐시 - Redis 클러스터는 0 데이터베이스의 사용만을 지원하므로 Redis 클러스터를 사용할 수 있는 모든 프리미엄 캐시에 대한 `databases` 제한은 사실상 1이며 [Select](https://redis.io/commands/select) 명령은 허용되지 않습니다. 자세한 내용은 [클러스터링을 사용하려면 클라이언트 애플리케이션을 변경해야 합니까?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+* 基本缓存和标准缓存
+  * C0 (250 MB) 缓存 - 最多支持 16 个数据库
+  * C1 (1 GB) 缓存 - 最多支持 16 个数据库
+  * C2 (2.5 GB) 缓存 - 最多支持 16 个数据库
+  * C3 (6 GB) 缓存 - 最多支持 16 个数据库
+  * C4 (13 GB) 缓存 - 最多支持 32 个数据库
+  * C5 (26 GB) 缓存 - 最多支持 48 个数据库
+  * C6 (53 GB) 缓存 - 最多支持 64 个数据库
+* 高级缓存
+  * P1 (6 GB - 60 GB) - 最多支持 16 个数据库
+  * P2 (13 GB - 130 GB) - 最多支持 32 个数据库
+  * P3 (26 GB - 260 GB) - 最多支持 48 个数据库
+  * P4 (53 GB - 530 GB) - 最多支持 64 个数据库
+  * 所有启用了 Redis 群集的高级缓存 - Redis 群集仅支持使用数据库 0，因此任何启用了 Redis 群集的高级缓存的 `databases` 限制实际上是 1，并且不允许使用 [Select](https://redis.io/commands/select) 命令。 有关详细信息，请参阅[使用群集功能时，是否需要对客户端应用程序进行更改？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-데이터베이스에 대한 자세한 내용은 [Redis 데이터베이스란?](cache-faq.md#what-are-redis-databases)을 참조하세요.
+有关数据库的详细信息，请参阅[什么是 Redis 数据库？](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> `databases` 설정은 캐시를 만드는 동안에만 PowerShell, CLI, 또는 다른 관리 클라이언트를 사용하여 구성할 수 있습니다. PowerShell을 사용하여 캐시를 만드는 동안 `databases`를 구성하는 예제는 [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)를 참조하세요.
+> `databases` 设置只能在创建缓存期间配置，并且只能使用 PowerShell、CLI 或其他管理客户端进行配置。 有关在创建缓存期间使用 PowerShell 配置 `databases` 的示例，请参阅 [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)。
 >
 >
 
 <a name="maxclients"></a>
-<sup>2</sup>`maxclients`는 Azure Cache for Redis 가격 책정 계층마다 다릅니다.
+<sup>2</sup>`maxclients` 对于每个 Azure Redis 缓存定价层都是不同的。
 
-* 기본 및 표준 캐시
-  * C0(250MB) 캐시 - 최대 256개 연결
-  * C1(1GB) 캐시 - 최대 1,000개 연결
-  * C2(2.5GB) 캐시 - 최대 2,000개 연결
-  * C3(6GB) 캐시 - 최대 5,000개 연결
-  * C4(13GB) 캐시 - 최대 10,000개 연결
-  * C5(26GB) 캐시 - 최대 15,000개 연결
-  * C6(53GB) 캐시 - 최대 20,000개 연결
-* 프리미엄 캐시
-  * P1(6GB - 60GB) - 최대 7,500개 연결
-  * P2(13GB - 130GB) - 최대 15,000개 연결
-  * P3(26GB - 260GB) - 최대 30,000개 연결
-  * P4(53GB - 530GB) - 최대 40,000개 연결
+* 基本缓存和标准缓存
+  * C0 (250 MB) 缓存 - 最多支持 256 个连接
+  * C1 (1 GB) 缓存 - 最多支持 1,000 个连接
+  * C2 (2.5 GB) 缓存 - 最多支持 2,000 个连接
+  * C3 (6 GB) 缓存 - 最多支持 5,000 个连接
+  * C4 (13 GB) 缓存 - 最多支持 10,000 个连接
+  * C5 (26 GB) 缓存 - 最多支持 15,000 个连接
+  * C6 (53 GB) 缓存 - 最多支持 20,000 个连接
+* 高级缓存
+  * P1 (6 GB - 60 GB) - 最多支持 7,500 个连接
+  * P2 (13 GB - 130 GB) - 最多支持 15,000 个连接
+  * P3 (26 GB - 260 GB) - 最多支持 30,000 个连接
+  * P4 (53 GB - 530 GB) — 最多支持 40,000 个连接
 
 > [!NOTE]
-> 각 캐시 크기는 특정 횟수의 연결*까지* 허용하지만 Redis에 대한 각 연결에는 오버헤드가 연결되어 있습니다. 이러한 오버헤드의 예로 TLS/SSL 암호화의 결과인 CPU 및 메모리 사용량이 있습니다. 특정 캐시 크기에 대한 최대 연결 제한은 부하가 적은 캐시를 가정합니다. 연결 오버헤드의 부하 *그리고* 클라이언트 작업의 부하가 시스템의 용량을 초과하면 현재 캐시 크기에 대한 연결 제한을 초과하지 않은 경우에도 캐시에 용량 문제가 발생할 수 있습니다.
+> 虽然每个缓存大小*最多*允许一定数量的连接，但与 Redis 的每个连接都具有其关联的开销。 此类开销的一个示例是，由于 TLS/SSL 加密而导致的 CPU 和内存使用。 给定缓存大小的最大连接限制假定轻负载缓存。 如果连接开销的负载*和*客户端操作的负载超出了系统容量，那么即使未超出当前缓存大小的连接限制，缓存也可能会遇到容量问题。
 >
 >
 
 
 
-## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Azure Cache for Redis에서 지원되지 않는 Redis 명령
+## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Azure Redis 缓存中不支持 Redis 命令
 > [!IMPORTANT]
-> Azure Cache for Redis 인스턴스에 대한 구성과 관리는 Microsoft에서 구성하므로 다음 명령은 비활성화됩니다. 이러한 명령을 호출하려고 하면 `"(error) ERR unknown command"`와 유사한 오류 메시지가 표시됩니다.
+> 因为 Azure Redis 缓存实例的配置和管理由 Microsoft 进行管理，所以禁用了以下命令。 如果尝试调用它们，将收到一条类似于 `"(error) ERR unknown command"` 的错误消息。
 >
 > * BGREWRITEAOF
 > * BGSAVE
-> * CONFIG
-> * DEBUG
-> * MIGRATE
-> * SAVE
-> * SHUTDOWN
+> * 配置
+> * 调试
+> * 迁移
+> * 保存
+> * 关机
 > * SLAVEOF
-> * 클러스터 - 클러스트 쓰기 명령은 비활성화되지만, 읽기 전용 클러스터 명령은 허용됩니다.
+> * CLUSTER - 群集写命令已禁用，但允许使用只读群集命令。
 >
 >
 
-Redis 명령에 대한 자세한 내용은 [https://redis.io/commands](https://redis.io/commands)를 참조하세요.
+有关 Redis 命令的详细信息，请参阅 [https://redis.io/commands](https://redis.io/commands)。
 
-## <a name="redis-console"></a>Redis 콘솔
-Azure Portal에서 모든 캐시에 제공되는 **Redis 콘솔**을 사용하여 Azure Cache for Redis 인스턴스에 명령을 안전하게 실행할 수 있습니다.
+## <a name="redis-console"></a>Redis 控制台
+可以使用“Redis 控制台”向 Azure Redis 缓存实例安全地发出命令，此操作在 Azure 门户中适用于所有缓存层。
 
 > [!IMPORTANT]
-> - Redis 콘솔이 [VNET](cache-how-to-premium-vnet.md)에서 작동하지 않습니다. 캐시가 VNET의 일부인 경우 VNET의 클라이언트만 캐시에 액세스할 수 있습니다. Redis 콘솔은 VNET 외부에 있는 로컬 브라우저에서 실행되기 때문에 캐시에 연결할 수 없습니다.
-> - Redis 명령 중 일부는 Azure Cache for Redis에서 지원되지 않습니다. Azure Cache for Redis에서 사용할 수 없는 Redis 명령 목록은 이전 [Azure Cache for Redis에서 지원되지 않는 Redis 명령](#redis-commands-not-supported-in-azure-cache-for-redis) 섹션을 참조하세요. Redis 명령에 대한 자세한 내용은 [https://redis.io/commands](https://redis.io/commands)를 참조하세요.
+> - Redis 控制台不处理 [VNET](cache-how-to-premium-vnet.md)。 如果缓存是 VNET 的一部分，则只有 VNET 中的客户端可以访问缓存。 由于 Redis 控制台在本地浏览器中运行（这在 VNET 的外部），因此它无法连接到缓存。
+> - Azure Redis 缓存中并不支持所有 Redis 命令。 有关为 Azure Redis 缓存禁用的 Redis 命令列表，请参阅之前的 [Azure Redis 缓存中不支持的 Redis 命令](#redis-commands-not-supported-in-azure-cache-for-redis)部分。 有关 Redis 命令的详细信息，请参阅 [https://redis.io/commands](https://redis.io/commands)。
 >
 >
 
-Redis 콘솔에 액세스하려면 **Azure Cache for Redis** 블레이드에서 **콘솔**을 클릭합니다.
+若要访问 Redis 控制台，则从“Azure Redis 缓存”边栏选项卡单击“控制台”。
 
-![Redis 콘솔](./media/cache-configure/redis-console-menu.png)
+![Redis 控制台](./media/cache-configure/redis-console-menu.png)
 
-캐시 인스턴스에 대해 명령을 실행하려면 원하는 명령을 콘솔에 입력합니다.
+若要针对缓存实例发出命令，请将所需命令键入控制台。
 
-![Redis 콘솔](./media/cache-configure/redis-console.png)
+![Redis 控制台](./media/cache-configure/redis-console.png)
 
 
-### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>프리미엄 클러스터형 캐시에서 Redis 콘솔 사용
+### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>配合使用 Redis 控制台和高级群集缓存
 
-프리미엄 클러스터형 캐시에서 Redis 콘솔을 사용하는 경우 캐시의 단일 분할된 데이터베이스에 대해 명령을 실행할 수 있습니다. 특정 분할된 데이터베이스에 대해 명령을 실행하려면 분할된 데이터베이스 선택에서 원하는 분할된 데이터베이스를 클릭하여 연결합니다.
+配合使用 Redis 控制台和高级群集缓存时，可向缓存的单个分片发出命令。 若要向某个特定分片发出命令，请首先在分片选取器上单击所需的分片以连接到它。
 
-![Redis 콘솔](./media/cache-configure/redis-console-premium-cluster.png)
+![Redis 控制台](./media/cache-configure/redis-console-premium-cluster.png)
 
-연결된 분할된 데이터베이스가 아닌 다른 분할된 데이터베이스에 저장된 키에 액세스하려고 하면 다음과 같은 오류 메시지가 표시됩니다.
+如果尝试访问存储在不同分片（而非已连接的分片）中的密钥，将收到类似于以下消息的错误消息：
 
 ```
 shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-이전 예제에서 분할된 데이터베이스 1은 선택된 분할된 데이터베이스이지만 `myKey`는 오류 메시지의 `(shard 0)` 부분에 표시된 대로 분할된 데이터베이스 0에 있습니다. 이 예제에서 `myKey`에 액세스하려면 분할된 데이터베이스 선택을 사용하여 분할된 데이터베이스 0을 선택한 다음 원하는 명령을 실행합니다.
+在之前的示例中，分片 1 为所选分片，但如错误消息的 `(shard 0)` 部分所述，`myKey` 位于分片 0 中。 在此示例中，若要访问 `myKey`，请使用分片选取器选择分片 0，然后发出所需命令。
 
 
-## <a name="move-your-cache-to-a-new-subscription"></a>캐시를 새 구독으로 이동
-**이동**을 클릭하여 캐시를 새 구독으로 이동할 수 있습니다.
+## <a name="move-your-cache-to-a-new-subscription"></a>将缓存移动到新的订阅
+可以单击“移动”，将缓存移动到新的订阅。
 
-![Azure Cache for Redis 이동](./media/cache-configure/redis-cache-move.png)
+![移动 Azure Redis 缓存](./media/cache-configure/redis-cache-move.png)
 
-한 리소스 그룹에서 다른 리소스 그룹으로, 그리고 한 구독에서 다른 구독으로 리소스를 이동하는 방법에 대한 자세한 내용은 [새 리소스 그룹 또는 구독으로 리소스 이동](../azure-resource-manager/management/move-resource-group-and-subscription.md)을 참조하세요.
+有关在资源组之间以及订阅之间移动资源的信息，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-## <a name="next-steps"></a>다음 단계
-* Redis 명령을 사용하는 방법은 [어떻게 Redis 명령을 실행할 수 있나요?](cache-faq.md#how-can-i-run-redis-commands)를 참조하세요.
+## <a name="next-steps"></a>后续步骤
+* 有关使用 Redis 命令的详细信息，请参阅[如何运行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)

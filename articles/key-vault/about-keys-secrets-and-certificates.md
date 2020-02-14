@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault 키, 비밀 및 인증서 정보 - Azure Key Vault
-description: 키, 비밀 및 인증서에 대한 Azure Key Vault REST 인터페이스 및 개발자 정보의 개요입니다.
+title: 关于 Azure 密钥保管库密钥、机密和证书 - Azure 密钥保管库
+description: Azure Key Vault REST 接口概述以及密钥、机密和证书的开发人员详细信息。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -16,464 +16,464 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76720055"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>키, 비밀 및 인증서 정보
+# <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
-Azure Key Vault는 Microsoft Azure 애플리케이션 및 사용자가 여러 가지 종류의 비밀/키 데이터를 저장하고 사용할 수 있게 도와줍니다.
+凭借 Azure Key Vault，Microsoft Azure 应用程序和用户能够存储和使用多种类型的机密/密钥数据：
 
-- 암호화 키: Key Vault는 여러 키 유형과 알고리즘을 지원하며, 고부가 가치 키에 HSM(하드웨어 보안 모듈)을 사용할 수 있습니다. 
-- 비밀: 암호, 데이터베이스 연결 문자열 등의 비밀을 안전하게 스토리지합니다.
-- 인증서: 인증서를 지원합니다. 인증서는 키와 비밀을 기반으로 하며 자동 갱신 기능을 추가합니다.
-- Azure Storage: 관리자를 대신하여 Azure Storage 계정의 키를 관리할 수 있습니다. 내부적으로 Key Vault는 Azure Storage 계정을 사용하여 키를 나열(동기화)하고, 주기적으로 키를 다시 생성(회전)할 수 있습니다. 
+- 加密密钥：支持多种密钥类型和算法，可以对高价值的密钥使用硬件安全模块 (HSM)。 
+- 机密：提供机密（例如密码和数据库连接字符串）的安全存储。
+- 证书：支持基于密钥和机密并且添加了自动续订功能的证书。
+- Azure 存储：可以管理 Azure 存储帐户的密钥。 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥，并定期重新生成（轮换）密钥。 
 
-Key Vault에 대한 일반적 내용은 [Azure Key Vault란?](/azure/key-vault/key-vault-overview)을 참조하세요.
+有关 Key Vault 的更多常规信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-overview)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
-다음 섹션에서는 Key Vault 서비스의 구현에 적용할 수 있는 일반 정보를 제공합니다.
+以下部分提供在实现 Key Vault 服务中可以用到的常规信息。
 
-### <a name="supporting-standards"></a>지원 표준
+### <a name="supporting-standards"></a>支持标准
 
-JSON(JavaScript Object Notation) 및 JOSE(JavaScript Object Signing and Encryption) 사양은 중요한 배경 정보입니다.  
+JavaScript 对象表示法 (JSON) 与 JavaScript 对象的签名和加密 (JOSE) 规范是重要的背景信息。  
 
--   [JWK(JSON 웹 키)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JWE(JSON 웹 암호화)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JWA(JSON 웹 알고리즘)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JWS(JSON 웹 서명)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
+-   [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
+-   [JSON Web 加密 (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
+-   [JSON Web 算法 (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
+-   [JSON Web 签名 (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
 
-### <a name="data-types"></a>데이터 형식
+### <a name="data-types"></a>数据类型
 
-키, 암호화 및 서명에 대한 관련 데이터 형식은 JOSE 사양을 참조하세요.  
+请参阅 JOSE 规范，了解密钥、加密和签名的相关数据类型。  
 
--   **알고리즘** - 키 작업에 지원되는 알고리즘(예: RSA1_5)  
--   **암호 텍스트 값** - Base64URL을 사용하여 인코딩된 암호 텍스트 옥텟  
--   **다이제스트 값** - Base64URL을 사용하여 인코딩된 해시 알고리즘의 출력  
--   **키 유형** - 지원되는 키 유형 중 하나(예: RSA(Rivest-Shamir-Adleman))  
--   **일반 텍스트 값** - Base64URL을 사용하여 인코딩된 일반 텍스트 옥텟  
--   **서명 값** - Base64URL을 사용하여 인코딩된 서명 알고리즘의 출력  
--   **base64URL** - Base64URL[RFC4648]을 사용하여 인코딩된 이진 값  
--   **부울** - true 또는 false 중 하나  
--   **ID** - AAD(Azure Active Directory)의 ID  
--   **IntDate** - 1970-01-01T0:0:0Z UTC에서 지정된 UTC 날짜/시간까지의 초 수를 나타내는 JSON 10진수 값입니다. 일반적 날짜/시간, 특히 UTC에 대한 자세한 내용은 RFC3339를 참조하세요.  
+-   **algorithm** - 支持的密钥操作算法，例如 RSA1_5  
+-   **ciphertext-value** - 密码文本八位组，使用 Base64URL 编码  
+-   **digest-value** - 哈希算法的输出，使用 Base64URL 编码  
+-   **key-type** - 一种支持的密钥类型，例如 RSA (Rivest-Shamir-Adleman)。  
+-   **plaintext-value** - 纯文本位组，使用 Base64URL 编码  
+-   **signature-value** - 签名算法的输出，使用 Base64URL 编码  
+-   **base64URL** - Base64URL [RFC4648] 编码的二进制值  
+-   **boolean** - 要么为 true，要么为 false  
+-   **Identity** - Azure Active Directory (AAD) 的标识。  
+-   **IntDate** - 一个 JSON 十进制值，表示从 1970-01-01T0:0:0Z UTC 到指定 UTC 日期/时间的秒数。 请参阅 RFC3339，了解有关日期/时间的常规信息和 UTC 的特别信息。  
 
-### <a name="objects-identifiers-and-versioning"></a>개체, 식별자 및 버전 관리
+### <a name="objects-identifiers-and-versioning"></a>对象、标识符和版本控制
 
-Key Vault에 저장된 개체는 개체의 새 인스턴스가 만들어질 때마다 버전 관리됩니다. 각 버전에는 고유 식별자 및 URL이 할당됩니다. 개체가 처음으로 만들어지면 고유한 버전 식별자가 지정되고 개체의 현재 버전으로 표시됩니다. 개체 이름이 동일한 새 인스턴스를 만들면 새 개체에 고유한 버전 식별자가 제공되어 현재 버전이 됩니다.  
+对于存储在 Key Vault 中的对象，在创建了某一对象的新实例后，这些对象就会受到版本控制。 每个版本都分配有唯一标识符和 URL。 首次创建一个对象时，该对象被赋予了一个唯一的版本标识符，并标记为当前版本的对象。 创建与对象同名的新实例会向新对象赋予一个唯一的版本标识符，并使其成为当前版本。  
 
-Key Vault의 개체는 현재 식별자 또는 버전별 식별자를 사용하여 처리할 수 있습니다. 예를 들어 `MasterKey`라는 이름의 키가 지정되는 경우 현재 식별자를 사용하여 작업을 수행하면 시스템에서 사용 가능한 최신 버전을 사용하게 됩니다. 버전별 식별자를 사용하여 작업을 수행하면 시스템에서 해당 특정 버전의 개체를 사용하게 됩니다.  
+Key Vault 中的对象可以使用当前标识符或特定于版本的标识符进行寻址。 例如，给定一个名称为 `MasterKey` 的密钥，使用当前标识符执行操作会导致系统使用最新的可用版本。 使用特定于版本的标识符执行操作会导致系统使用该特定版本的对象。  
 
-개체는 URL을 사용하여 Key Vault 내에서 고유하게 식별됩니다. 지리적 위치에 관계 없이, 시스템의 두 개체가 동일한 URL을 가질 수 없습니다. 개체의 전체 URL을 개체 식별자라고 합니다. URL은 Key Vault를 식별하는 접두사, 개체 형식, 사용자가 입력한 개체 이름 및 개체 버전으로 구성됩니다. 개체 이름은 대/소문자를 구분하지 않으며 변경할 수 없습니다. 개체 버전이 포함되지 않은 식별자를 기본 식별자라고 합니다.  
+Key Vault 中的对象通过 URL 唯一标识。 不管地理位置如何，系统中都不存在两个具有相同 URL 的对象。 对象的完整 URL 称为对象标识符。 URL 由标识 Key Vault 的前缀、对象类型、用户提供的对象名称和对象版本组成。 对象名称不区分大小写且不可变。 不包括对象版本的标识符称为基本标识符。  
 
-자세한 내용은 [인증, 요청 및 응답](authentication-requests-and-responses.md)을 참조하세요.
+有关详细信息，请参阅[身份验证、请求和响应](authentication-requests-and-responses.md)
 
-개체 식별자의 일반적인 형식은 다음과 같습니다.  
+对象标识符具有以下常规格式：  
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
-장소:  
+其中：  
 
 |||  
 |-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault 서비스의 키 자격 증명 모음에 대한 이름입니다.<br /><br /> Key Vault 이름은 사용자가 선택하며 전역적으로 고유합니다.<br /><br /> Key Vault 이름은 0~9, a~z, A~Z 및 -만 포함된 3-24자 길이의 문자열이어야 합니다.|  
-|`object-type`|개체의 형식은 "키" 또는 "비밀"입니다.|  
-|`object-name`|`object-name`은 사용자가 제공한 이름이며 Key Vault 내에서 고유해야 합니다. 이름은 0~9, a~z, A~Z 및 -만 포함된 1-127자 길이의 문자열이어야 합니다.|  
-|`object-version`|`object-version`은 시스템에서 생성된 32자의 문자열 식별자이며, 필요에 따라 고유한 버전의 개체를 처리하는 데 사용됩니다.|  
+|`keyvault-name`|Microsoft Azure Key Vault 服务中的保管库名称。<br /><br /> Key Vault 名称由用户选择，并且全局唯一。<br /><br /> Key Vault 的名称必须是 3-24 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
+|`object-type`|对象的类型，要么为“密钥”，要么为“机密”。|  
+|`object-name`|`object-name` 是用户提供名称，在 Key Vault 中必须保持唯一。 该名称必须是 1-127 个字符，且仅包含 0-9、a-z、A-Z 和 - 的字符串。|  
+|`object-version`|`object-version` 是系统生成的 32 个字符的字符串标识符，可以选择用来对某个对象的唯一版本进行寻址。|  
 
-## <a name="key-vault-keys"></a>Key Vault 키
+## <a name="key-vault-keys"></a>Key Vault 密钥
 
-### <a name="keys-and-key-types"></a>키 및 키 유형
+### <a name="keys-and-key-types"></a>密钥和密钥类型
 
-Key Vault의 암호화 키는 JWK[JSON 웹 키] 개체로 표현됩니다. 또한 기본 JWK/JWA 사양을 확장하여 Key Vault 구현에 고유한 키 유형을 지원할 수 있습니다. 예를 들어 HSM 공급업체별 패키징을 사용하여 키를 가져오면 Key Vault HSM에서만 사용할 수 있는 키를 안전하게 전송할 수 있습니다.  
+Key Vault 中的加密密钥表示为 JSON Web 密钥 [JWK] 对象。 此外，还扩展了基本 JWK/JWA 规范，以启用对于 Key Vault 实现唯一的密钥类型。 例如，使用 HSM 供应商特定的包导入密钥，可以安全传输仅可在 Key Vault HSM 中使用的密钥。  
 
-- **"소프트" 키**: 소프트웨어에서 Key Vault를 통해 처리되지만, 사용되지 않을 때에는 HSM에 있는 시스템 키를 사용하여 암호화되는 키입니다. 클라이언트는 기존 RSA 또는 EC(타원 곡선) 키를 가져오거나 Key Vault에서 생성하도록 요청할 수 있습니다.
-- **"하드" 키**: HSM(하드웨어 보안 모듈)에서 처리되는 키입니다. 이러한 키는 Key Vault HSM 보안 권역 중 하나에서 보호됩니다(격리를 유지하기 위해 지역별로 보안 권역이 하나씩 있음). 클라이언트는 소프트 형식으로 또는 호환되는 HSM 디바이스에서 내보내는 방식으로 RSA 또는 EC 키를 가져올 수 있습니다. 클라이언트는 Key Vault에 키를 생성하라고 요청할 수도 있습니다. 此密钥类型将 key_hsm 特性添加到 JWK 获取以携带 HSM 密钥材料。
+- **“软”密钥**：由 Key Vault 在软件中处理，但使用 HSM 中的系统密钥进行静态加密的一种密钥。 客户端可以导入现有 RSA 或 EC（椭圆曲线）密钥，也可以请求 Key Vault 生成该密钥。
+- **“硬”密钥**：在 HSM（硬件安全模块）中处理的密钥。 这些密钥在一个 Key Vault HSM 安全体系中受到保护（按地理位置设置安全体系，以保持隔离）。 客户端可以采用软性形式或通过从兼容 HSM 设备导出的方式来导入 RSA 或 EC 密钥。 此外，客户端还可以请求 Key Vault 生成该密钥。 此密钥类型将 key_hsm 特性添加到 JWK 获取以携带 HSM 密钥材料。
 
-     지리적 경계에 대한 자세한 내용은 [Microsoft Azure 보안 센터](https://azure.microsoft.com/support/trust-center/privacy/)를 참조하세요.  
+     有关地理边界的详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/privacy/)  
 
-Key Vault는 RSA 및 타원 곡선 키만 지원합니다. 
+Key Vault 仅支持 RSA 和椭圆曲线密钥。 
 
--   **EC**: "소프트" 타원 곡선 키입니다.
--   **EC-HSM**: "하드" 타원 곡선 키입니다.
--   **RSA**: "소프트" RSA 키입니다.
--   **RSA-HSM**: "하드" RSA 키입니다.
+-   **EC**：“软”椭圆曲线密钥。
+-   **EC-HSM**：“硬”椭圆曲线密钥。
+-   **RSA**：“软”RSA 密钥。
+-   **RSA-HSM**：“硬”RSA 密钥。
 
-Key Vault는 크기가 2048, 3072, 4096인 RSA 키를 지원합니다. Key Vault는 타원 곡선 키 유형 p-256, p-384, p-521 및 P-256K(SECP256K1)를 지원합니다.
+Key Vault 支持大小为 2048、3072 和 4096 的 RSA 密钥。 Key Vault 支持类型为 P-256、P-384、P-521 和 P-256K (SECP256K1) 的椭圆曲线密钥。
 
-### <a name="cryptographic-protection"></a>암호화 보호
+### <a name="cryptographic-protection"></a>加密保护
 
-Key Vault에서 사용하는 암호화 모듈(HSM 또는 소프트웨어)은 FIPS에 유효합니다. FIPS 모드에서 실행되는 어떤 특별한 작업도 수행할 필요가 없습니다. HSM으로 보호되는 키로 **만들어진** 또는 **가져온** 키는 FIPS 140-2 Level 2에서 유효한 HSM 내부에서 처리됩니다. 소프트웨어로 보호되는 키로 **만들어진** 또는 **가져온** 키는 FIPS 140-2 Level 1에서 유효한 암호화 모듈 내부에서 처리됩니다. 자세한 내용은 [키 및 키 유형](#keys-and-key-types)을 참조하세요.
+Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信息处理标准）验证。 因此不必执行任何特殊操作便可在 FIPS 模式下运行。 “创建”或“导入”为受 HSM 保护的密钥在 HSM 内处理，且验证为 FIPS 140-2 级别 2。 “创建”或“导入”为受软件保护的密钥在加密模块内处理，且验证为 FIPS 140-2 级别 1。 有关详细信息，请参阅[密钥和密钥类型](#keys-and-key-types)。
 
-###  <a name="ec-algorithms"></a>EC 알고리즘
- Key Vault의 EC 및 EC-HSM 키에서 지원되는 알고리즘 식별자는 다음과 같습니다. 
+###  <a name="ec-algorithms"></a>EC 算法
+ Key Vault 中的 EC 和 EC-HSM 密钥支持以下算法标识符。 
 
-#### <a name="curve-types"></a>곡선 유형
+#### <a name="curve-types"></a>曲线类型
 
--   **P-256** - [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)에 정의되는 NIST 곡선 P-256.
--   **P-256K** - [SEC 2: Recommended Elliptic Curve Domain Parameters](https://www.secg.org/sec2-v2.pdf)에 정의되는 SEC 곡선 SECP256K1.
--   **P-384** - [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)에 정의되는 NIST 곡선 P-384.
--   **P-521** - [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf)에 정의되는 NIST 곡선 P-521.
-
-#### <a name="signverify"></a>SIGN/VERIFY
-
--   **ES256** - 곡선 P-256을 사용하여 생성된 SHA-256 메시지 다이제스트 및 키에 대한 ECDSA입니다. 이 알고리즘은 [RFC7518](https://tools.ietf.org/html/rfc7518)에 설명되어 있습니다.
--   **ES256K** - 곡선 P-256K를 사용하여 생성된 SHA-256 메시지 다이제스트 및 키에 대한 ECDSA입니다. 이 알고리즘 표준화 보류 중입니다.
--   **ES384** - 곡선 P-384를 사용하여 생성된 SHA-384 메시지 다이제스트 및 키에 대한 ECDSA입니다. 이 알고리즘은 [RFC7518](https://tools.ietf.org/html/rfc7518)에 설명되어 있습니다.
--   **ES512** - 곡선 P-521을 사용하여 생성된 SHA-512 메시지 다이제스트 및 키에 대한 ECDSA입니다. 이 알고리즘은 [RFC7518](https://tools.ietf.org/html/rfc7518)에 설명되어 있습니다.
-
-###  <a name="rsa-algorithms"></a>RSA 알고리즘  
- Key Vault의 RSA 및 RSA-HSM 키에서 지원되는 알고리즘 식별자는 다음과 같습니다.  
-
-#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ENCRYPT/DECRYPT
-
--   **RSA1_5** - RSAES-PKCS1-V1_5[RFC3447] 키 암호화입니다.  
--   **RSA-OAEP** - OAEP(Optimal Asymmetric Encryption Padding)[RFC3447]를 사용하는 RSAES입니다(A.2.1 섹션의 RFC 3447에 명시된 기본 매개 변수 포함). 이러한 기본 매개 변수는 SHA-1의 해시 함수와 SHA-1이 포함된 MGF1의 마스크 생성 함수를 사용합니다.  
+-   P-256 - NIST 曲线 P-256，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-256K - SEC 曲线 SECP256K1，在 [SEC 2：建议使用的椭圆曲线域参数](https://www.secg.org/sec2-v2.pdf)中定义。
+-   P-384 - NIST 曲线 P-384，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
+-   P-521 - NIST 曲线 P-521，在 [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) 中定义。
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **RS256** - SHA-256을 사용하는 RSASSA-PKCS-v1_5입니다. 애플리케이션에서 제공하는 다이제스트 값은 SHA-256을 사용하여 계산되어야 하며, 길이는 32바이트여야 합니다.  
--   **RS384** - SHA-384를 사용하는 RSASSA-PKCS-v1_5입니다. 애플리케이션에서 제공하는 다이제스트 값은 SHA-384를 사용하여 계산되어야 하며, 길이는 48바이트여야 합니다.  
--   **RS512** - SHA-512를 사용하는 RSASSA-PKCS-v1_5입니다. 애플리케이션에서 제공하는 다이제스트 값은 SHA-512를 사용하여 계산되어야 하며, 길이는 64바이트여야 합니다.  
--   **RSNULL** - 특정 TLS 시나리오를 사용하려면 특수 사용 사례인 [RFC2437]을 참조하세요.  
+-   **ES256** - 使用曲线 P-256 创建的 SHA-256 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
+-   **ES256K** - 使用曲线 P-256K 创建的 SHA-256 摘要和密钥的 ECDSA。 此算法正在等待标准化。
+-   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
+-   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 
-###  <a name="key-operations"></a>키 작업
+###  <a name="rsa-algorithms"></a>RSA 算法  
+ Key Vault 中的 RSA 和 RSA-HSM 密钥支持以下算法标识符。  
 
-Key Vault에서 키 개체에 대해 지원하는 작업은 다음과 같습니다.  
+#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>包装密钥/解包密钥、加密/解密
 
--   **만들기**: 클라이언트가 Key Vault에 키를 만들 수 있습니다. 키 값은 Key Vault에서 생성되고 저장되며 클라이언트에 릴리스되지 않습니다. Key Vault에 비대칭 키를 만들 수 있습니다.  
--   **가져오기**: 클라이언트가 기존 키를 Key Vault로 가져올 수 있습니다. JWK 구조 내에서 다양한 패키징 메서드를 사용하여 Key Vault로 비대칭 키를 가져올 수 있습니다. 
--   **업데이트**: 충분한 권한이 있는 클라이언트는 이전에 Key Vault에 저장된 키와 연결된 메타데이터(키 특성)를 수정할 수 있습니다.  
--   **삭제**: 충분한 권한이 있는 클라이언트는 Key Vault에서 키를 삭제할 수 있습니다.  
--   **나열**: 클라이언트가 지정된 Key Vault의 모든 키를 나열할 수 있습니다.  
--   **버전 나열**: 클라이언트가 지정된 Key Vault의 지정된 키 버전을 모두 나열할 수 있습니다.  
--   **가져오기**: 클라이언트가 Key Vault에서 지정된 키의 공개 부분을 검색할 수 있습니다.  
--   **백업**: 키를 보호된 형식으로 내보냅니다.  
--   **복원**: 이전에 백업한 키를 가져옵니다.  
+-   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] 密钥加密  
+-   **RSA-OAEP** - RSAES 使用最优非对称加密填充 (OAEP) [RFC3447] 以及 A.2.1. 节中 RFC 3447 指定的默认参数。 这些默认参数使用 SHA-1 哈希函数和 SHA-1 附带的 MGF1 掩码生成函数。  
 
-자세한 내용은 [Key Vault REST API 참조에서 키 작업](/rest/api/keyvault)을 참조하세요.  
+#### <a name="signverify"></a>SIGN/VERIFY
 
-키가 Key Vault에 만들어지면 해당 키를 사용하여 수행할 수 있는 암호화 작업은 다음과 같습니다.  
+-   **RS256** - RSASSA-PKCS-v1_5 使用 SHA-256。 必须使用 SHA-256 计算应用程序提供的摘要值，并且该值的长度必须为 32 字节。  
+-   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
+-   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
+-   **RSNULL** - 请参阅一种用于实现某种 TLS 方案的特殊用例 [RFC2437]。  
 
--   **서명 및 확인**: 엄격히 말해서, Key Vault는 서명 만들기의 일부로 콘텐츠의 해싱을 지원하지 않으므로 이 작업은 "해시 서명" 또는 "해시 확인"입니다. 애플리케이션은 로컬로 서명할 데이터를 해시한 다음, Key Vault에서 이 해시에 서명하도록 요청해야 합니다. [공개] 키 자료에 액세스할 수 없는 애플리케이션을 편리하게 사용할 수 있도록 서명된 해시 확인이 지원됩니다. 애플리케이션 성능을 최적화하려면 작업이 로컬로 수행되는지 확인합니다.  
--   **키 암호화/래핑**: Key Vault에 저장된 키는 다른 키(일반적으로 대칭 CEK(콘텐츠 암호화 키))를 보호하는 데 사용할 수 있습니다. Key Vault의 키가 비대칭이면 키 암호화가 사용됩니다. 예를 들어 RSA-OAEP 및 WRAPKEY/UNWRAPKEY 작업은 ENCRYPT/DECRYPT와 동일합니다. Key Vault의 키가 대칭이면 키 래핑이 사용됩니다. 예: AES-KW. [공개] 키 자료에 액세스할 수 없는 애플리케이션을 편리하게 사용할 수 있도록 WRAPKEY 작업이 지원됩니다. 애플리케이션 성능을 최적화하려면 WRAPKEY 작업을 로컬로 수행해야 합니다.  
--   **암호화 및 암호 해독**: Key Vault에 저장된 키는 데이터의 단일 블록을 암호화 또는 암호 해독하는 데 사용할 수 있습니다. 블록의 크기는 키 유형과 선택한 암호화 알고리즘에 따라 결정됩니다. [공개] 키 자료에 액세스할 수 없는 애플리케이션을 간편하게 사용할 수 있도록 암호화 작업이 제공됩니다. 애플리케이션 성능을 최적화하려면 암호화 작업을 로컬로 수행해야 합니다.  
+###  <a name="key-operations"></a>密钥操作
 
-비대칭 키를 사용하는 WRAPKEY/UNWRAPKEY가 필요 없는 것처럼 보일 수도 있지만(작업이 ENCRYPT/DECRYPT와 동일하므로), 구분되는 작업을 사용하는 것이 중요합니다. 구분을 통해 이러한 작업의 의미 체계 및 권한 부여를 분리하고, 서비스에서 다른 키 유형을 지원할 때 일관성을 유지할 수 있습니다.  
+Key Vault 支持对密钥对象执行以下操作：  
 
-Key Vault는 EXPORT 작업을 지원하지 않습니다. 일단 키가 시스템에 프로비전되면 키를 추출하거나 키 자료를 수정할 수 없습니다. 그러나 Key Vault 사용자가 다른 사용 사례에 사용하기 위해 키가 필요할 수 있습니다(예: 키가 삭제된 후). 이 경우 BACKUP 및 RESTORE 작업을 사용하여 키를 보호되는 형식으로 내보낼/가져올 수 있습니다. BACKUP 작업으로 만든 키는 Key Vault 외부에서 사용할 수 없습니다. 또는 IMPORT 작업을 여러 Key Vault 인스턴스에 사용할 수 있습니다.  
+-   **创建**：允许客户端在 Key Vault 中创建密钥。 密钥的值由 Key Vault 生成，存储但不发布到客户端。 可在 Key Vault 中创建非对称密钥。  
+-   **导入**：允许客户端将现有密钥导入到 Key Vault。 非对称密钥可以使用 JWK 构造中的多种不同的打包方法导入到 Key Vault。 
+-   **更新**：允许具有足够权限的客户端修改与以前存储在 Key Vault 中的密钥相关联的元数据（密钥属性）。  
+-   **删除**：允许具有足够权限的客户端删除 Key Vault 中的密钥。  
+-   **列出**：允许客户端列出给定 Key Vault 中的所有项。  
+-   **列出版本**：允许客户端列出给定 Key Vault 中的给定密钥的所有版本。  
+-   **获取**：允许客户端检索 Key Vault 中的给定密钥的公共部分。  
+-   **备份**：导出受保护窗体中的密钥。  
+-   **还原**：导入以前备份的密钥。  
 
-사용자는 Key Vault에서 JWK 개체의 key_ops 속성을 사용하여 키별로 지원하는 암호화 작업을 제한할 수 있습니다.  
+有关详细信息，请参阅 [Key Vault REST API 中的密钥操作参考](/rest/api/keyvault)。  
 
-JWK 개체에 대한 자세한 내용은 [JWK(JSON 웹 키)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)를 참조하세요.  
+在 Key Vault 中创建密钥后，即可使用密钥执行以下加密操作：  
 
-###  <a name="key-attributes"></a>키 특성
+-   **签名并验证**：严格来讲，此操作应该为“签名哈希”或“验证哈希”，因为 Key Vault 不支持创建签名过程中的内容哈希。 应用程序应哈希要在本地签名的数据，然后请求 Key Vault 对哈希签名。 支持签名哈希的验证，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，请验证操作在本地执行。  
+-   **密钥加密/包装**：Key Vault 中存储的一个密钥可以用来保护另一个密钥，通常是对称内容加密密钥 (CEK)。 如果 Key Vault 中的密钥是非对称密钥，将使用密钥加密。 例如，RSA-OAEP 和 WRAPKEY/UNWRAPKEY 操作等同于 ENCRYPT/DECRYPT。 如果 Key Vault 中的密钥是对称密钥，则使用密钥包装。 例如，AES-KW。 支持 WRAPKEY 操作，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，WRAPKEY 操作应在本地执行。  
+-   **加密和解密**：存储在 Key Vault 中的密钥可用于加密或解密单个数据块。 块大小取决于密钥类型和所选加密算法。 支持加密操作，作为可能无法访问 [公共] 密钥材料的应用程序的一种便捷操作。 为获得最佳应用程序性能，加密操作应在本地执行。  
 
-키 자료 외에도 지정할 수 있는 특성은 다음과 같습니다. JSON 요청에서 특성이 지정되지 않은 경우에도 특성 키워드 및 중괄호('{' '}')가 필요합니다.  
+虽然使用非对称密钥的 WRAPKEY/UNWRAPKEY 可能看似多余（因为操作等同于 ENCRYPT/DECRYPT），但使用不同的操作却非常重要。 此不同提供了这些操作的语义和授权分离，并在服务支持其他密钥类型时提供一致性。  
 
-- *enabled*: 부울, 선택 사항, 기본값은 **true**입니다. 암호화 작업을 위해 사용 설정 및 사용 가능한 키인지 여부를 지정합니다. *Enabled*属性与*nbf*和*exp*结合使用。当*nbf*和*exp*之间发生操作时，只有在 " *enabled* " 设置为**true**时才允许使用该操作。 [특정 조건](#date-time-controlled-operations)에 따른 특정 작업 유형을 제외하고는 *nbf* / *exp* 시간 범위에 속하지 않은 작업이 자동으로 허용되지 않습니다.
-- *nbf*: IntDate, 선택 사항, 기본값은 now입니다. *nbf*(이전이 아님) 특성은 [특정 조건](#date-time-controlled-operations)에 따른 특정 작업 유형을 제외하고는 암호화 작업에 키를 사용하지 않아야 하는 시간을 식별합니다. *nbf* 특성을 처리하려면 현재 날짜/시간이 *nbf* 특성에 나열된 날짜/시간 이전이 아닌 시간 이후이거나 같아야 합니다. Key Vault는 클록 오차를 처리하기 위해 일반적으로 약간(몇 분 이내)의 여유를 제공해야 합니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.  
-- *exp*: IntDate, 선택 사항, 기본값은 "forever"입니다. *exp*(만료 시간) 특성은 [특정 조건](#date-time-controlled-operations)에 따른 특정 작업 유형을 제외하고는 암호화 작업에 키를 사용하지 않아야 하는 만료 시간 또는 그 이후를 식별합니다. *exp* 특성을 처리하려면 현재 날짜/시간이 *exp* 특성에 나열된 만료 날짜/시간 이전이어야 합니다. Key Vault는 클록 오차를 처리하기 위해 일반적으로 약간(몇 분 이내)의 여유를 제공해야 합니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.  
+Key Vault 不支持“导出”操作。 在系统中设置密钥后，便无法提取该密钥，也无法修改其密钥材料。 但是，Key Vault 的用户可能需要将密钥用于其他用例，例如删除密钥后。 在这种情况下，可以使用“备份”和“还原”操作以受保护的形式导出/导入密钥。 “备份”操作创建的密钥无法在 Key Vault 外部使用。 或者，可能会对多个 Key Vault 实例使用“导入”操作。  
 
-키 특성이 포함된 모든 응답에 포함되는 추가 읽기 전용 특성이 있습니다.  
+用户可以使用 JWK 对象的 key_ops 属性按密钥限制 Key Vault 支持的任何加密操作。  
 
-- *created*: IntDate, 선택 사항입니다. *created* 특성은 이 버전의 키를 만든 시점을 나타냅니다. 이 특성을 추가하기 전에 만든 키의 값은 null입니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.  
-- *updated*: IntDate, 선택 사항입니다. *updated* 특성은 이 버전의 키를 업데이트한 시점을 나타냅니다. 이 특성을 추가하기 전에 마지막으로 업데이트한 키의 값은 null입니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.  
+有关 JWK 对象的详细信息，请参阅 [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)。  
 
-IntDate 및 기타 데이터 형식에 대한 자세한 내용은 [데이터 형식](#data-types)을 참조하세요.  
+###  <a name="key-attributes"></a>密钥属性
 
-#### <a name="date-time-controlled-operations"></a>날짜 및 시간 제어 작업
+除密钥材料外，还可以指定以下属性。 在 JSON 请求中，即使未指定任何属性，也需要属性关键字和大括号“{”“}”。  
 
-*nbf* / *exp* 시간 범위에 속하지 않은 아직 유효하지 않은 키와 만료된 키는 **decrypt**, **unwrap** 및 **verify** 작업에 대해 작동합니다(403, 금지됨 오류를 반환하지 않음). 아직 유효하지 않은 상태를 사용하는 이유는 프로덕션에서 사용하기 전에 키를 테스트할 수 있도록 하기 위한 것입니다. 만료된 상태를 사용하는 이유는 키가 유효할 때 만들어진 데이터에 대한 복구 작업을 허용하기 위한 것입니다. 또한 Key Vault 정책을 사용하거나 *enabled* 키 특성을 **false**로 업데이트하여 키에 대한 액세스를 사용하지 않도록 설정할 수 있습니다.
+- enabled：布尔型，可选，默认值为 true。 指定密钥是否已启用并可用于加密操作。 enabled 属性结合 nbf 和 exp 使用。如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf / exp 时段外的操作会自动禁止，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。
+- *nbf*：IntDate，可选，默认值为“now”。 nbf（非过去）属性识别密钥不得用于加密操作以前的时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 nbf 属性要求当前日期/时间必须晚于或等于 nbf 属性中列出的非过去日期/时间。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
+- *exp*：IntDate，可选，默认值为“forever”。 exp（过期时间）属性识别密钥不得用于加密操作当时或之后的过期时间，[特定条件](#date-time-controlled-operations)下的某些操作类型除外。 处理 exp 属性要求当前日期/时间必须早于 exp 属性中列出的过期日期/时间。 Key Vault 可能会稍微留有一些余地（通常不超过几分钟），以适应时钟偏差。 其值必须是包含 IntDate 值的数字。  
 
-데이터 형식에 대한 자세한 내용은 [데이터 형식](#data-types)을 참조하세요.
+在包含密钥属性的任何响应中还包括以下其他只读属性：  
 
-사용 가능한 다른 특성에 대한 자세한 내용은 [JWK(JSON 웹 키)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)를 참조하세요.
+- *created*：IntDate，可选。 created 属性指示创建此版本的密钥的时间。 如果密钥在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *updated*：IntDate，可选。 updated 属性指示更新此版本的密钥的时间。 如果密钥上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
 
-### <a name="key-tags"></a>키 태그
+有关 IntDate 和其他数据类型的详细信息，请参阅[数据类型](#data-types)  
 
-애플리케이션 관련 메타데이터를 태그 형식으로 추가로 지정할 수 있습니다. Key Vault는 최대 15개의 태그를 지원하며, 각 태그는 256자 이름과 256자의 값을 가질 수 있습니다.  
+#### <a name="date-time-controlled-operations"></a>日期时间控制的操作
+
+这些在 nbf / exp 时段外的尚未生效的密钥和过期密钥适合 decrypt、unwrap 和 verify 操作（不会返回 403 禁止访问）。 使用尚未生效状态的基本原理是允许在投入生产前测试密钥。 使用过期状态的基本原理是允许对秘钥有效期间创建的数据执行恢复操作。 此外，使用 Key Vault 策略，或通过将 enabled 密钥属性更新为 false 可以禁用访问密钥。
+
+有关数据类型的详细信息，请参阅[数据类型](#data-types)。
+
+有关其他可能的属性的详细信息，请参阅 [JSON Web 密钥 (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)。
+
+### <a name="key-tags"></a>密钥标记
+
+可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->해당 개체 형식(키, 비밀 또는 인증서)에 대한 *list* 또는 *get* 권한이 태그에 있는 경우 호출자에서 해당 태그를 읽을 수 있습니다.
+>如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
-###  <a name="key-access-control"></a>키 액세스 제어
+###  <a name="key-access-control"></a>密钥访问控制
 
-Key Vault에서 관리하는 키에 대한 액세스 제어는 키 컨테이너 역할을 하는 Key Vault 수준에서 제공됩니다. 密钥的访问控制策略不同于同一 Key Vault 中机密的访问控制策略。 사용자는 키를 보관할 하나 이상의 자격 증명 모음을 만들 수 있으며, 시나리오에 따라 키를 적절하게 세분화하고 관리해야 합니다. 키 액세스 제어는 비밀 액세스 제어와 무관합니다.  
+Key Vault 托管的密钥的访问控制是在充当密钥容器的 Key Vault 级别提供的。 密钥的访问控制策略不同于同一 Key Vault 中机密的访问控制策略。 用户可以创建一个或多个保管库来保存密钥，并且需要维护方案相应的密钥分段和管理。 密钥的访问控制与机密的访问控制无关。  
 
-자격 증명 모음의 키 액세스 제어 항목에 대해 사용자/서비스 사용자별로 부여할 수 있는 권한은 다음과 같습니다. 这些权限会密切镜像对密钥对象允许的操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，对于所有 Azure 订阅，它将保持不变。 可以使用它来部署所需数量的证书。 
+在保管库上的密钥访问控制条目中可以按用户/服务主体授予以下权限。 这些权限会密切镜像对密钥对象允许的操作。  向密钥保管库中的服务主体授予访问权限是一项一次性操作，对于所有 Azure 订阅，它将保持不变。 可以使用它来部署所需数量的证书。 
 
-- 키 관리 작업에 필요한 권한
-  - *get*: 키의 공개 부분 및 해당 특성 읽기
-  - *list*: 키 자격 증명 모음에 저장된 키 또는 키 버전 나열
-  - *update*: 키 특성 업데이트
-  - *create*: 새 키 만들기
-  - *import*: 키 자격 증명 모음으로 키 가져오기
-  - *delete*: 키 개체 삭제
-  - *recover*: 삭제된 키 복구
-  - *backup*: 키를 키 자격 증명 모음에 백업
-  - *restore*: 키 자격 증명 모음에 백업된 키 복원
+- 针对密钥管理操作的权限
+  - *get*：读取密钥的公共部分及其属性
+  - *list*：列出密钥保管库中存储的密钥或密钥版本
+  - *update*：更新键的属性
+  - *create*：新建密钥
+  - *import*：将密钥导入到密钥保管库
+  - *delete*：删除密钥对象
+  - *recover*：恢复已删除的密钥
+  - *backup*：备份密钥保管库中的密钥
+  - *restore*：将备份密钥还原到密钥保管库
 
-- 암호화 작업에 필요한 권한
-  - *decrypt*: 키를 사용하여 바이트 시퀀스 보호 해제
-  - *encrypt*: 키를 사용하여 임의의 바이트 시퀀스 보호
-  - *unwrapKey*: 키를 사용하여 래핑된 대칭 키 보호 해제
-  - *wrapKey*: 키를 사용하여 대칭 키 보호
-  - *verify*: 키를 사용하여 다이제스트 확인  
-  - *sign*: 키를 사용하여 다이제스트에 서명
+- 针对加密操作的权限
+  - *decrypt*：使用密钥取消保护字节序列
+  - *encrypt*：使用密钥保护任意字节序列
+  - *unwrapKey*：使用密钥取消保护包装的对称密钥
+  - *wrapKey*：使用密钥保护对称密钥
+  - *verify*：使用密钥验证摘要  
+  - *sign*：使用密钥签名摘要
     
-- 권한 있는 작업에 필요한 권한
-  - *purge*: 삭제된 키 제거(영구적으로 삭제)
+- 针对特权操作的权限
+  - *purge*：清除（永久删除）已删除的密钥
 
-키 사용에 대한 자세한 내용은 [Key Vault REST API 참조에서 키 작업](/rest/api/keyvault)을 참조하세요. 권한 설정에 대한 내용은 [자격 증명 모음 - 만들기 또는 업데이트](/rest/api/keyvault/vaults/createorupdate) 및 [자격 증명 모음 - 액세스 정책 업데이트](/rest/api/keyvault/vaults/updateaccesspolicy)를 참조하세요. 
+有关使用密钥的详细信息，请参阅 [Key Vault REST API 中的密钥操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
-## <a name="key-vault-secrets"></a>Key Vault 비밀 
+## <a name="key-vault-secrets"></a>Key Vault 机密 
 
-### <a name="working-with-secrets"></a>비밀 사용
+### <a name="working-with-secrets"></a>使用机密
 
-개발자의 관점에서 Key Vault API는 비밀 값을 수락하고 문자열로 반환합니다. 내부적으로 Key Vault는 비밀을 8진수(8비트 바이트) 시퀀스로 저장 및 관리하며, 각각의 최대 크기는 25k 바이트입니다. Key Vault 서비스는 비밀에 대한 의미 체계를 제공하지 않습니다. 단순히 데이터를 수락하고, 암호화하고, 저장하고, 비밀 식별자("id")를 반환할 뿐입니다. 식별자는 나중에 비밀을 검색하는 데 사용할 수 있습니다.  
+从开发人员的角度来看，Key Vault API 接受机密值并将其作为字符串返回。 在内部，Key Vault 存储机密并将其作为八位字节序列（8 位字节）管理，每个字节的最大大小为 25k 字节。 Key Vault 服务不提供机密的语义。 它只是接受数据，然后加密和存储该数据，最后返回机密标识符（“id”）。 该标识符可用于稍后检索机密。  
 
-매우 중요한 데이터의 경우 클라이언트가 데이터에 대한 추가 보호 레이어를 고려해야 합니다. 예를 들어 별도의 보호 키를 사용하여 데이터를 암호화한 후 Key Vault에 스토리지합니다.  
+对于高度敏感的数据，客户端应考虑对数据进行额外的保护。 例如，在 Key Vault 中存储数据之前，使用单独的保护密钥加密数据。  
 
-Key Vault는 비밀에 대한 contentType 필드도 지원합니다. 클라이언트는 비밀 데이터에 대해 검색 시 해당 데이터를 해석하는 데 도움이 되는 콘텐츠 형식을 지정할 수 있습니다. 이 필드의 최대 길이는 255자이며, 미리 정의된 값이 없습니다. 비밀 데이터를 해석하기 위한 힌트로 사용하는 것이 좋습니다. 예를 들어 구현에서는 암호와 인증서를 모두 비밀로 저장한 다음, 이 필드를 사용하여 구분할 수 있습니다. 미리 정의된 값이 없습니다.  
+Key Vault 还支持机密的 contentType 字段。 客户端可以指定机密的内容类型，以帮助在检索时解释机密数据。 此字段的最大长度为 255 个字符。 没有预定义的值。 建议用于解释机密数据的提示。 例如，实现可以将密码和证书都存储为机密，然后使用此字段进行区分。 没有预定义的值。  
 
-### <a name="secret-attributes"></a>비밀 특성
+### <a name="secret-attributes"></a>机密属性
 
-비밀 데이터 외에도 지정할 수 있는 특성은 다음과 같습니다.  
+除机密数据外，还可以指定以下属性：  
 
-- *exp*: IntDate, 선택 사항, 기본값은 **forever**입니다. *exp*(만료 시간) 특성은 [특정 조건](#date-time-controlled-operations)에 있는 경우를 제외하고는 비밀 데이터를 검색하지 않아야 하는 만료 시간 또는 그 이후를 식별합니다. 이 필드는 키 자격 증명 모음 서비스의 사용자에게 특정 비밀이 사용되지 않음을 알리므로 오직 **정보 제공**을 목적으로 합니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.   
-- *nbf*: IntDate, 선택 사항, 기본값은 **now**입니다. *nbf*(이전이 아님) 특성은 [특정 조건](#date-time-controlled-operations)에 있는 경우를 제외하고는 비밀 데이터를 검색하지 않아야 하는 시간 이전을 식별합니다. 이 필드는 오직 **정보 제공**을 목적으로 합니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다. 
-- *enabled*: 부울, 선택 사항, 기본값은 **true**입니다. 이 특성은 비밀 데이터이 검색 가능 여부를 지정합니다. enabled 특성은 *nbf* 및 *exp* 사이에 작업이 발생하는 경우 *nbf* 및 *exp*와 함께 사용되며, enabled가 **true**로 설정된 경우에만 허용됩니다. [특정 조건](#date-time-controlled-operations)에 있는 경우를 제외하고는 *nbf* 및 *exp* 시간 범위에 속하지 않은 작업이 자동으로 허용되지 않습니다.  
+- *exp*：IntDate，可选，默认值为 **forever**。 exp（过期时间）属性标识在不应检索机密数据当时或之后的过期时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考，因为它通知密钥保管库服务用户可能无法使用特定机密。 其值必须是包含 IntDate 值的数字。   
+- *nbf*：IntDate，可选，默认值为 **now**。 nbf（非过去）属性标识在不应检索机密数据之前的时间，[特定情况](#date-time-controlled-operations)除外。 此字段仅供参考。 其值必须是包含 IntDate 值的数字。 
+- enabled：布尔型，可选，默认值为 true。 此属性指定是否可以检索机密数据。 enabled 属性与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止，[特定情况](#date-time-controlled-operations)除外。  
 
-비밀 특성이 포함된 모든 응답에 포함되는 추가 읽기 전용 특성이 있습니다.  
+在包含机密属性的任何响应中还包括以下其他只读属性：  
 
-- *created*: IntDate, 선택 사항입니다. created 특성은 이 버전의 비밀을 만든 시점을 나타냅니다. 이 특성을 추가하기 전에 만든 비밀에 대한 값은 null입니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.  
-- *updated*: IntDate, 선택 사항입니다. updated 특성은 이 버전의 비밀을 업데이트한 시점을 나타냅니다. 이 특성을 추가하기 전에 마지막으로 업데이트한 비밀에 대한 값은 null입니다. 이 값은 IntDate 값이 포함된 숫자여야 합니다.
+- *created*：IntDate，可选。 created 属性指示创建此版本的机密的时间。 如果机密在添加此属性之前创建，此值为 NULL。 其值必须是包含 IntDate 值的数字。  
+- *updated*：IntDate，可选。 updated 属性指示更新此版本的机密的时间。 如果机密上次更新的时间早于添加此属性的时间，此值为 NULL。 其值必须是包含 IntDate 值的数字。
 
-#### <a name="date-time-controlled-operations"></a>날짜 및 시간 제어 작업
+#### <a name="date-time-controlled-operations"></a>日期时间控制的操作
 
-*nbf* / *exp* 시간 범위에 속하지 않은 비밀의 **get** 작업은 아직 유효하지 않은 비밀과 만료된 비밀에 대해 작동합니다. 테스트를 위해 비밀의 **get** 작업 호출을 아직 유효하지 않은 비밀에 사용할 수 있습니다. 복구 작업을 위해 만료된 비밀을 검색(**get**)할 수 있습니다.
+机密的获取操作在 nbf / exp 时段外适合尚未生效的机密和过期的机密。 对于尚未生效的机密，调用机密的“获取”操作可用于测试目的。 检索（获取）过期的密钥可以用于恢复操作。
 
-데이터 형식에 대한 자세한 내용은 [데이터 형식](#data-types)을 참조하세요.  
+有关数据类型的详细信息，请参阅[数据类型](#data-types)。  
 
-### <a name="secret-access-control"></a>비밀 액세스 제어
+### <a name="secret-access-control"></a>机密访问控制
 
-Key Vault에서 관리되는 비밀에 대한 액세스 제어는 해당 비밀을 포함하는 Key Vault 수준에서 제공됩니다. 비밀에 대한 액세스 제어 정책은 동일한 Key Vault의 키에 대한 액세스 제어 정책과 다릅니다. 사용자는 비밀을 보관할 하나 이상의 자격 증명 모음을 만들 수 있으며, 시나리오에 따라 비밀을 적절하게 세분화하고 관리해야 합니다.   
+Key Vault 中托管的机密的访问控制是在包含这些机密的 Key Vault 级别提供的。 在同一 Key Vault 中，机密的访问控制策略不同于密钥的访问控制策略。 用户可以创建一个或多个保管库来保存机密，并且需要维护方案相应的机密分段和管理。   
 
-자격 증명 모음의 비밀 액세스 제어 항목에서 보안 주체별로 사용할 수 있고 비밀 개체에 허용되는 작업과 매우 비슷한 권한은 다음과 같습니다.  
+在保管库上的机密访问控制条目中可以按主体使用以下权限，这些权限对机密对象上允许的操作采取严密的镜像操作：  
 
-- 비밀 관리 작업에 필요한 권한
-  - *get*: 비밀 읽기  
-  - *list*: Key Vault에 저장된 비밀 또는 비밀 버전 나열  
-  - *set*: 비밀 만들기  
-  - *delete*: 비밀 삭제  
-  - *recover*: 삭제된 비밀 복구
-  - *backup*: 비밀을 키 자격 증명 모음에 백업
-  - *restore*: 키 자격 증명 모음에 백업된 비밀 복원
+- 针对机密管理操作的权限
+  - *get*：读取机密  
+  - *list*：列出 Key Vault 中存储的机密或机密版本  
+  - *set*：创建机密  
+  - *delete*：删除机密  
+  - *recover*：恢复已删除的机密
+  - *backup*：备份密钥保管库中的机密
+  - *restore*：将备份机密还原到密钥保管库
 
-- 권한 있는 작업에 필요한 권한
-  - *purge*: 삭제된 비밀 제거(영구적으로 삭제)
+- 针对特权操作的权限
+  - *purge*：清除（永久删除）已删除的机密
 
-비밀을 사용하는 방법에 대한 자세한 내용은 [Key Vault REST API 참조에서 비밀 작업](/rest/api/keyvault)을 참조하세요. 권한 설정에 대한 내용은 [자격 증명 모음 - 만들기 또는 업데이트](/rest/api/keyvault/vaults/createorupdate) 및 [자격 증명 모음 - 액세스 정책 업데이트](/rest/api/keyvault/vaults/updateaccesspolicy)를 참조하세요. 
+有关使用机密的详细信息，请参阅 [Key Vault REST API 中的机密操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。 
 
-### <a name="secret-tags"></a>비밀 태그  
-애플리케이션 관련 메타데이터를 태그 형식으로 추가로 지정할 수 있습니다. Key Vault는 최대 15개의 태그를 지원하며, 각 태그는 256자 이름과 256자의 값을 가질 수 있습니다.  
-
->[!Note]
->해당 개체 형식(키, 비밀 또는 인증서)에 대한 *list* 또는 *get* 권한이 태그에 있는 경우 호출자에서 해당 태그를 읽을 수 있습니다.
-
-## <a name="key-vault-certificates"></a>Key Vault 인증서
-
-Key Vault 인증서 지원은 x509 인증서 및 다음 동작의 관리를 위해 제공됩니다.  
-
--   인증서 소유자는 Key Vault 만들기 프로세스 또는 기존 인증서의 가져오기를 통해 인증서를 만들 수 있습니다. 자체 서명된 인증서 및 인증 기관 생성 인증서가 모두 포함됩니다.
--   Key Vault 인증서 소유자는 프라이빗 키 자료와 상호 작용하지 않고 X509 인증서의 안전한 스토리지 및 관리를 구현할 수 있습니다.  
--   인증서 소유자는 인증서의 수명 주기를 관리하도록 Key Vault를 지시하는 정책을 만들 수 있습니다.  
--   인증서 소유자는 인증서의 만료 및 갱신이라는 수명 주기 이벤트에 대한 알림을 위해 연락처 정보를 제공할 수 있습니다.  
--   선택한 발급자 - Key Vault 파트너 X509 인증서 공급자/인증서 기관을 통한 자동 갱신을 지원합니다.
+### <a name="secret-tags"></a>机密标记  
+可以用标记的形式指定其他特定于应用程序的元数据。 Key Vault 支持多达 15 种标记，每种标记可以有 256 个字符的名称和 256 个字符的值。  
 
 >[!Note]
->파트너가 아닌 공급자/기관도 허용되지만 자동 갱신 기능은 지원하지 않습니다.
+>如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
-### <a name="composition-of-a-certificate"></a>인증서 작성
+## <a name="key-vault-certificates"></a>Key Vault 证书
 
-Key Vault 인증서가 만들어지면 주소 지정 가능한 키와 암호도 동일한 이름으로 만들어집니다. Key Vault 키는 키 작업을 허용하고, Key Vault 비밀은 인증서 값을 비밀로 검색할 수 있게 합니다. Key Vault 인증서에는 공용 x509 인증서 메타데이터도 포함됩니다.  
+密钥保管库证书支持提供 x509 证书的管理和下列行为：  
 
-인증서의 식별자 및 버전은 키 및 암호의 식별자 및 버전과 비슷합니다. Key Vault 인증서 버전으로 만든 특정 버전의 주소 지정 가능한 키와 암호는 Key Vault 인증서 응답에서 사용할 수 있습니다.
+-   允许证书所有者通过密钥保管库创建过程或通过导入现有证书来创建证书。 包括自签名证书和证书颁发机构生成的证书。
+-   允许密钥保管库证书所有者实现 X509 证书的安全存储和管理，无需与私钥材料交互。  
+-   允许证书所有者创建一个策略，指示密钥保管库来管理证书的生命周期。  
+-   允许证书所有者为有关证书的过期和续订生命周期事件的通知提供联系信息。  
+-   支持向所选的颁发者（密钥保管库合作伙伴 X509 的证书提供者/证书颁发机构）进行自动续订。
+
+>[!Note]
+>也允许使用非合作伙伴提供者/颁发机构，但将不支持自动续订功能。
+
+### <a name="composition-of-a-certificate"></a>证书组合
+
+创建 Key Vault 证书后，还可以创建具有相同名称的可寻址密钥和机密。 Key Vault 密钥允许密钥操作，Key Vault 机密允许以机密的形式检索证书值。 Key Vault 证书还包含公共 x509 证书元数据。  
+
+标识符和证书版本与密钥和机密的类似。 使用 Key Vault 证书版本创建的特定版本的可寻址密钥和机密可用于 Key Vault 证书响应。
  
-![인증서는 복잡한 개체입니다.](media/azure-key-vault.png)
+![证书是复杂的对象](media/azure-key-vault.png)
 
-### <a name="exportable-or-non-exportable-key"></a>내보내기 가능/불가능 키
+### <a name="exportable-or-non-exportable-key"></a>可导出或不可导出密钥
 
-Key Vault 인증서가 만들어지면 PFX 또는 PEM 형식의 프라이빗 키를 사용하여 주소 지정 가능한 비밀에서 해당 인증서를 검색할 수 있습니다. 인증서를 만드는 데 사용된 정책은 키를 내보낼 수 있다고 표시해야 합니다. 정책에서 내보낼 수 없다고 표시하는 경우 프라이빗 키는 비밀로 검색될 때 값에 포함되지 않습니다.  
+创建 Key Vault 证书后，可以使用 PFX 或 PEM 格式的私钥从可寻址机密中检索该证书。 用于创建证书的策略必须指示密钥可导出。 如果策略指示密钥不可导出，则在作为机密检索私钥时，该私钥不包括在值中。  
 
-주소 지정이 가능한 키는 내보낼 수 없는 KV 인증서와 더 관련이 있습니다. 주소 지정 가능한 KV 키의 작업은 KV 인증서를 만드는 데 사용되는 KV 인증서 정책의 *keyusage* 필드에서 매핑됩니다.  
+可寻址密钥与不可导出的 KV 证书的相关性变得更高。 可寻址 KV 密钥的操作从用于创建 KV 证书的 KV 证书策略的“密钥使用情况”字段映射。  
 
-두 가지 유형의 키, 즉 *RSA* 또는 인증서가 있는 *RSA HSM*이 지원됩니다. 내보내기 가능한 키는 RSA에서만 허용되며, RSA HSM에서는 지원되지 않습니다.  
+证书支持以下两种类型的密钥：RSA 或 RSA HSM。 仅 RSA 允许可导出，RSA HSM 不支持。  
 
-### <a name="certificate-attributes-and-tags"></a>인증서 특성 및 태그
+### <a name="certificate-attributes-and-tags"></a>证书属性和标记
 
-Key Vault 인증서에는 인증서 메타데이터, 주소 지정 가능한 키 및 주소 지정 가능한 비밀 외에도 특성 및 태그가 포함됩니다.  
+除了证书元数据、可寻址密钥和可寻址机密外，Key Vault 证书还包含属性和标记。  
 
-#### <a name="attributes"></a>특성
+#### <a name="attributes"></a>特性
 
-인증서 특성은 KV 인증서를 만들 때 만들어지는 주소 지정 가능한 키와 암호의 특성으로 미러됩니다.  
+证书属性将镜像到创建 KV 证书时创建的可寻址密钥和机密的属性。  
 
-Key Vault 인증서에 포함되는 특성은 다음과 같습니다.  
+Key Vault 证书具有以下属性：  
 
--   *enabled*: 부울, 선택 사항, 기본값은 **true**입니다. 인증서 데이터를 비밀로 검색할 수 있는지 또는 키로 작동할 수 있는지 여부를 나타내기 위해 지정할 수 있습니다. 또한 *nbf*과 *exp* 사이에 작업이 발생할 때 *nbf* 및 *exp*와 함께 사용되며, enabled가 true로 설정된 경우에만 허용됩니다. *nbf* 및 *exp* 시간 범위에 속하지 않은 작업은 자동으로 허용되지 않습니다.  
+-   enabled：布尔型，可选，默认值为 true。 可以指定，以指示证书数据是否可以作为机密进行检索，或者可以作为密钥进行操作。 还可与 nbf 和 exp 结合使用，如果在 nbf 和 exp 之间出现操作，只有在 enabled 设置为 true 时，才允许该操作。 nbf 和 exp 时段外的操作会自动禁止。  
 
-응답에 포함되는 추가 읽기 전용 특성은 다음과 같습니다.
+在响应中还包括以下其他只读属性：
 
--   *created*: IntDate: 이 버전의 인증서를 만든 시점을 나타냅니다.  
--   *updated*: IntDate: 이 버전의 인증서를 업데이트한 시점을 나타냅니다.  
--   *exp*: IntDate: x509 인증서의 만료 날짜 값을 포함합니다.  
--   *nbf*: IntDate: x509 인증서의 날짜 값을 포함합니다.  
+-   *created*：IntDate：指示创建此版本的证书的时间。  
+-   *updated*：IntDate：指示更新此版本的证书的时间。  
+-   *exp*：IntDate：包含 x509 证书的过期日期的值。  
+-   *nbf*：IntDate：包含 x509 证书的日期的值。  
 
 > [!Note] 
-> Key Vault 인증서가 만료되면 주소 지정 가능한 해당 키와 비밀이 작동하지 않게 됩니다.  
+> 如果 Key Vault 证书过期，则它是可寻址密钥，机密会无法操作。  
 
-#### <a name="tags"></a>태그
+#### <a name="tags"></a>标记
 
- 클라이언트에서 지정하는 키 값 쌍의 사전이며, 키와 비밀의 태그와 비슷합니다.  
+ 客户端指定的键值对字典，类似于密钥和机密中的标记。  
 
  > [!Note]
-> 해당 개체 형식(키, 비밀 또는 인증서)에 대한 *list* 또는 *get* 권한이 태그에 있는 경우 호출자에서 해당 태그를 읽을 수 있습니다.
+> 如果调用方具有该对象类型（密钥、机密或证书）的列出或获取权限，则调用方可读取标记。
 
-### <a name="certificate-policy"></a>인증서 정책
+### <a name="certificate-policy"></a>证书策略
 
-인증서 정책에는 Key Vault 인증서의 수명 주기를 만들고 관리하는 방법에 대한 정보가 포함됩니다. 프라이빗 키가 있는 인증서를 키 자격 증명 모음에 가져오면 x509 인증서를 읽어 기본 정책을 만듭니다.  
+证书策略包含有关如何创建和管理 Key Vault 证书生命周期的信息。 具有私钥的证书导入到密钥保管库时，将通过阅读 x509 证书创建一个默认策略。  
 
-Key Vault 인증서를 처음부터 새로 만드는 경우 정책을 제공해야 합니다. 정책은 이 Key Vault 인증서 버전 또는 그 다음 Key Vault 인증서 버전을 만드는 방법을 지정합니다. 일단 정책이 설정되면 이후 버전에 대한 연속 만들기 작업에는 해당 정책이 필요하지 않습니다. Key Vault 인증서의 모든 버전에 대한 정책 인스턴스는 하나만 있습니다.  
+从零开始创建 Key Vault 证书时，需要提供策略。 该策略指定如何创建此 Key Vault 证书版本或下一个 Key Vault 证书版本。 建立策略后，便不需要使用连续创建操作创建将来的版本。 所有版本的 Key Vault 证书只有一个策略实例。  
 
-크게 보자면, 인증서 정책에 다음 정보가 포함됩니다.  
+在高级别，证书策略包含以下信息：  
 
--   X509 인증서 속성: 주체 이름, 주체 대체 이름, x509 인증서 요청을 만드는 데 사용되는 기타 속성을 포함합니다.  
--   키 속성: 키 유형, 키 길이, 내보낼 수 있는 항목, 재사용 키 필드를 포함합니다. 이러한 필드는 키를 생성하는 방법을 키 자격 증명 모음에 지시합니다.  
--   비밀 속성: 인증서를 비밀 번호로 검색하기 위해 비밀 값을 생성하기 위한 주소 지정 가능한 비밀의 콘텐츠 형식과 같은 비밀 속성을 포함합니다.  
--   수명 작업: KV 인증서에 대한 수명 작업을 포함합니다. 각 수명 작업에 포함되는 항목은 다음과 같습니다.  
+-   X509 证书属性：包含主题名称、主题备用名称以及用于创建 x509 证书请求的其他属性。  
+-   密钥属性：包含密钥类型、密钥长度、可导出密钥字段和重用密钥字段。 这些字段指示密钥保管库如何生成密钥。  
+-   机密属性：包含可寻址机密的内容类型等机密属性以生成机密值，用于以机密的形式检索证书。  
+-   生存期操作：包含 KV 证书生命周期的操作。 每个生存期操作包含：  
 
-     - 트리거: 만료 이전 잔존 일 수 또는 수명 범위 백분율을 통해 지정됩니다.  
+     - 触发器：通过距离到期的天数或生存期范围百分比指定  
 
-     - 작업: *emailContacts* 또는 *autoRenew* 작업 유형이 지정됩니다.  
+     - 操作：指定操作类型 - emailContacts 或 autoRenew  
 
--   발급자: x509 인증서를 발급하는 데 사용할 인증서 발급자에 대한 매개 변수입니다.  
--   정책 특성: 정책과 관련된 특성을 포함합니다.  
+-   颁发者：有关用于颁发 x509 证书的证书颁发者的参数。  
+-   策略属性：包含与策略关联的属性  
 
-#### <a name="x509-to-key-vault-usage-mapping"></a>X509 및 Key Vault 사용 매핑
+#### <a name="x509-to-key-vault-usage-mapping"></a>X509 到 Key Vault 使用情况的映射
 
-다음 표에서는 x509 키 사용 정책과 Key Vault 인증서 만들기의 일부로 만들어진 키의 효과적인 키 작업을 매핑하고 있습니다.
+下表表示 x509 密钥使用策略映射到在创建 Key Vault 证书过程中创建的密钥的有效密钥操作。
 
-|**X509 키 사용 플래그**|**Key Vault 키 작업**|**기본 동작**|
+|X.509 密钥使用情况标记|Key Vault 密钥的操作|默认行为|
 |----------|--------|--------|
-|DataEncipherment|encrypt, decrypt| N/A |
-|DecipherOnly|decrypt| N/A  |
-|DigitalSignature|sign, verify| 인증서를 만들 때 사용하도록 지정하지 않은 Key Vault 기본값 | 
-|EncipherOnly|encrypt| N/A |
-|KeyCertSign|sign, verify|N/A|
-|KeyEncipherment|wrapKey, unwrapKey| 인증서를 만들 때 사용하도록 지정하지 않은 Key Vault 기본값 | 
-|NonRepudiation|sign, verify| N/A |
-|crlsign|sign, verify| N/A |
+|DataEncipherment|加密、解密| 不可用 |
+|DecipherOnly|解密| 不可用  |
+|DigitalSignature|签名、验证| Key Vault 在创建证书时默认为无使用规范 | 
+|EncipherOnly|encrypt| 不可用 |
+|KeyCertSign|签名、验证|不可用|
+|KeyEncipherment|包装密钥、解包密钥| Key Vault 在创建证书时默认为无使用规范 | 
+|NonRepudiation|签名、验证| 不可用 |
+|crlsign|签名、验证| 不可用 |
 
-### <a name="certificate-issuer"></a>인증서 발급자
+### <a name="certificate-issuer"></a>证书颁发者
 
-Key Vault 인증서 개체에는 선택한 인증서 발급자 공급자와 통신하여 x509 인증서를 요청하는 데 사용되는 구성이 있습니다.  
+Key Vault 证书对象包含与所选证书颁发者提供者进行通信的配置以订购 x509 证书。  
 
 -   具有以下证书颁发者提供程序的 Key Vault 合作伙伴： TLS/SSL 证书
 
-|**공급자 이름**|**위치**|
+|提供者名称|**位置**|
 |----------|--------|
-|DigiCert|퍼블릭 클라우드 및 Azure Government의 모든 키 자격 증명 모음 서비스 위치에서 지원됩니다.|
-|GlobalSign|퍼블릭 클라우드 및 Azure Government의 모든 키 자격 증명 모음 서비스 위치에서 지원됩니다.|
+|DigiCert|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
+|GlobalSign|公有云和 Azure 政府中的所有密钥保管库服务位置均支持|
 
-Key Vault에 인증서 발급자를 만들려면 먼저 다음 필수 조건 1 및 2의 단계를 수행해야 합니다.  
+可以在 Key Vault 中创建的证书颁发者之前，必须成功完成以下必需的步骤 1 和 2。  
 
-1. CA(인증 기관) 공급자에 등록  
+1. 加入证书颁发机构 (CA) 提供者  
 
-    -   조직 관리자는 하나 이상의 CA 공급자와 함께 자신의 회사(예: Contoso)를 등록해야 합니다.  
+    -   组织管理员必须将他们的公司（例如， Contoso）加入到至少一个 CA 提供者。  
 
 2. 管理员为用于注册（和续订） TLS/SSL 证书的 Key Vault 创建申请人凭据  
 
-    -   공급자의 발급자 개체를 만드는 데 사용할 구성을 키 자격 증명 모음에 제공합니다.  
+    -   提供用于在密钥保管库中创建提供程序的颁发者对象的配置  
 
-인증서 포털에서 발급자 개체를 만드는 방법에 대한 자세한 내용은 [Key Vault 인증서 블로그](https://aka.ms/kvcertsblog)를 참조하세요.  
+有关从证书门户创建颁发者对象的详细信息，请参阅 [Key Vault 证书博客](https://aka.ms/kvcertsblog)  
 
-Key Vault를 사용하면 서로 다른 발급자 구성으로 여러 발급자 개체를 만들 수 있습니다. 발급자 개체가 만들어지면 하나 또는 여러 개의 증명서 정책에서 해당 이름을 참조할 수 있습니다. 발행자 개체를 참조하면 인증서를 만들고 갱신하는 동안 CA 공급자로부터 x509 인증서를 요청할 때 발행자 개체에서 지정한 대로 구성을 사용하도록 Key Vault에 지시합니다.  
+Key Vault 允许使用其他颁发者提供者的配置创建多个颁发者对象。 在创建颁发者对象以后，即可在一个或多个证书的策略中引用其名称。 在创建和续订证书的过程中从 CA 提供者请求 x509 证书时，引用颁发者对象可以指示 Key Vault 按颁发者对象中的规定使用配置。  
 
-발급자 개체는 자격 증명 모음에 만들어지며, 동일한 자격 증명 모음의 KV 인증서에만 사용할 수 있습니다.  
+颁发者对象在保管库中创建，并且仅可用于同一个保管库中的 KV 证书。  
 
-### <a name="certificate-contacts"></a>인증서 연락처
+### <a name="certificate-contacts"></a>证书联系人
 
-인증서 연락처에는 인증서 수명 이벤트에서 트리거된 알림을 보내도록 연락처 정보가 포함됩니다. 연락처 정보는 키 자격 증명 모음의 모든 인증서에서 공유합니다. 알림은 키 자격 증명 모음의 모든 인증서에 대한 이벤트에 대해 지정한 모든 연락처로 보내집니다.  
+证书联系人包含联系人信息以发送由证书生存期事件触发的通知。 密钥保管库中的所有证书共享联系人信息。 如果保管库中的任何证书发生事件，所有指定联系人都会收到通知。  
 
-인증서를 자동으로 갱신하도록 정책이 설정되는 경우 알림을 보내는 이벤트는 다음과 같습니다.  
+如果证书的策略设置为自动续订，则在发生以下事件时发送通知。  
 
-- 인증서 갱신 전
-- 인증서 갱신 후 - 인증서가 성공적으로 갱신된 경우에 시작되거나, 오류가 있는 경우 인증서를 수동으로 갱신해야 합니다.  
+- 证书续订之前
+- 证书续订之后，指出是否已成功续订证书，或是否存在错误，需要手动续订证书。  
 
-  인증서를 수동으로(이메일을 통해서만) 갱신하는 정책을 설정하는 경우 인증서를 갱신할 시간이 되면 알림이 전송됩니다.  
+  如果证书策略设置为手动续订（仅限电子邮件），则在续订证书时发送通知。  
 
-### <a name="certificate-access-control"></a>인증서 액세스 제어
+### <a name="certificate-access-control"></a>证书访问控制
 
- 인증서에 대한 액세스 제어는 Key Vault를 통해 관리되고, 해당 인증서를 포함하는 Key Vault를 통해 제공됩니다. 인증서에 대한 액세스 제어 정책은 동일한 Key Vault의 키 및 비밀에 대한 액세스 제어 정책과 다릅니다. 사용자는 인증서를 보관할 하나 이상의 자격 증명 모음을 만들어서 시나리오를 적절하게 세분화하고 인증서를 관리할 수 있습니다.  
+ 证书的访问控制由 Key Vault 托管，并且由包含这些证书的 Key Vault 提供。 在同一 Key Vault 中，证书的访问控制策略不同于密钥和机密的访问控制策略。 用户可以创建一个或多个保管库来保存证书，以维护方案相应的证书分段和管理。  
 
- 키 자격 증명 모음의 비밀 액세스 제어 항목에서 보안 주체별로 사용할 수 있고 비밀 개체에 허용되는 작업과 매우 비슷한 권한은 다음과 같습니다.  
+ 在密钥保管库上的机密访问控制条目中可以按主体使用以下权限，这些权限对机密对象上允许的操作采取严密的镜像操作：  
 
-- 인증서 관리 작업에 필요한 권한
-  - *get*: 현재 인증서 버전 또는 모든 인증서 버전 가져오기 
-  - *list*: 현재 인증서 또는 인증서 버전 나열  
-  - *update*: 인증서 업데이트
-  - *create*: Key Vault 인증서 만들기
-  - *import*: 인증서 자료를 Key Vault 인증서로 가져오기
-  - *delete*: 인증서, 해당 정책 및 모든 해당 버전 삭제  
-  - *recover*: 삭제된 인증서 복구
-  - *backup*: 인증서를 키 자격 증명 모음에 백업
-  - *restore*: 키 자격 증명 모음에 백업된 인증서 복원
-  - *managecontacts*: Key Vault 인증서 연락처 관리  
-  - *manageissuers*: Key Vault 인증서 기관/발급자 관리
-  - *getissuers*: 인증서 기관/발급자 가져오기
-  - *listissuers*: 인증서 기관/발급자 나열  
-  - *setissuers*: Key Vault 인증서의 기관/발급자 만들기 또는 업데이트  
-  - *deleteissuers*: Key Vault 인증서의 기관/발급자 삭제  
+- 针对证书管理操作的权限
+  - *get*：获取最新版本的证书或任何版本的证书 
+  - *list*：列出最新版本的证书或任何版本的证书  
+  - *update*：更新证书
+  - *create*：创建 Key Vault 证书
+  - *import*：将证书材料导入到 Key Vault 证书
+  - *delete*：删除证书、策略及其所有版本  
+  - *recover*：恢复已删除的证书
+  - *backup*：备份密钥保管库中的证书
+  - *restore*：将备份证书还原到密钥保管库
+  - *managecontacts*：管理 Key Vault 证书联系人  
+  - *manageissuers*：管理 Key Vault 证书颁发机构/颁发者
+  - *getissuers*：获取证书的颁发机构/颁发者
+  - *listissuers*：列出证书的颁发机构/颁发者  
+  - *setissuers*：创建或更新 Key Vault 证书的颁发机构/颁发者  
+  - *deleteissuers*：删除 Key Vault 证书的颁发机构/颁发者  
  
-- 권한 있는 작업에 필요한 권한
-  - *purge*: 삭제된 인증서 제거(영구적으로 삭제)
+- 针对特权操作的权限
+  - *purge*：清除（永久删除）已删除的证书
 
-자세한 내용은 [Key Vault REST API 참조에서 인증서 작업](/rest/api/keyvault)을 참조하세요. 권한 설정에 대한 내용은 [자격 증명 모음 - 만들기 또는 업데이트](/rest/api/keyvault/vaults/createorupdate) 및 [자격 증명 모음 - 액세스 정책 업데이트](/rest/api/keyvault/vaults/updateaccesspolicy)를 참조하세요.
+有关详细信息，请参阅 [Key Vault REST API 中的证书操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="azure-storage-account-key-management"></a>Azure Storage 계정 키 관리
+## <a name="azure-storage-account-key-management"></a>Azure 存储帐户密钥管理
 
-Key Vault는 Azure Storage 계정 키를 관리할 수 있습니다.
+Key Vault 可以管理 Azure 存储帐户密钥：
 
-- 내부적으로 Key Vault는 키를 Azure Storage 계정과 함께 나열(동기화)할 수 있습니다. 
-- Key Vault는 정기적으로 키를 다시 생성(회전)합니다.
-- 키 값은 호출자에게 응답으로 반환되지 않습니다.
-- Key Vault는 스토리지 계정과 클래식 스토리지 계정의 키를 모두 관리합니다.
+- 在内部，Key Vault 可以使用 Azure 存储帐户列出（同步）密钥。 
+- Key Vault 定期重新生成（轮换）密钥。
+- 响应调用方时永远不会返回密钥值。
+- Key Vault 管理存储帐户和经典存储帐户的密钥。
 
-자세한 내용은 [Azure Key Vault 스토리지 계정 키](key-vault-ovw-storage-keys.md)를 참조하세요.
+有关详细信息，请参阅 [Azure Key Vault 存储帐户密钥](key-vault-ovw-storage-keys.md)
 
-### <a name="storage-account-access-control"></a>스토리지 계정 액세스 제어
+### <a name="storage-account-access-control"></a>存储帐户访问控制
 
-다음 권한은 관리되는 스토리지 계정에서 작업을 수행할 사용자 또는 애플리케이션 보안 주체에 권한을 부여할 때 사용할 수 있습니다.  
+授权用户或应用程序主体对托管的存储帐户执行操作时，可以使用以下权限：  
 
-- 관리되는 스토리지 계정 및 SaS 정의 작업에 대한 권한
-  - *get*: 스토리지 계정에 대한 정보 가져오기 
-  - *list*: Key Vault에서 관리하는 스토리지 계정 나열
-  - *update*: 스토리지 계정 업데이트
-  - *delete*: 스토리지 계정 삭제  
-  - *recover*: 삭제된 스토리지 계정 복구
-  - *backup*: 스토리지 계정 백업
-  - *restore*: Key Vault에 백업된 스토리지 계정 복원
-  - *set*: 스토리지 계정 만들기 또는 업데이트
-  - *regeneratekey*: 스토리지 계정에 대해 지정된 키 값을 다시 생성
-  - *getsas*: 스토리지 계정의 SAS 정의에 대한 정보 가져오기
-  - *listsas*: 스토리지 계정에 대한 스토리지 SAS 정의 나열
-  - *deletesas*: 스토리지 계정에서 SAS 정의 삭제
-  - *setsas*: 스토리지 계정에 대한 새 SAS 정의/특성 만들기 또는 업데이트
+- 针对托管存储帐户和 SaS 定义操作的权限
+  - *get*：获取有关存储帐户的信息 
+  - *list*：列出 Key Vault 托管的存储帐户
+  - *update*：更新存储帐户
+  - *delete*：删除存储帐户  
+  - *recover*：恢复删除的存储帐户
+  - *backup*：备份存储帐户
+  - *restore*：将备份存储帐户还原到 Key Vault
+  - *set*：创建或更新存储帐户
+  - *regeneratekey*：为存储帐户重写指定的密钥值
+  - *getsas*：获取有关存储帐户的 SAS 定义的信息
+  - *listsas*：列出存储帐户的存储 SAS 定义
+  - *deletesas*：从存储帐户中删除 SAS 定义
+  - *setsas*：创建或更新存储帐户的新 SAS 定义/属性
 
-- 권한 있는 작업에 필요한 권한
-  - *제거*: 관리되는 스토리지 계정 제거(영구적으로 삭제)
+- 针对特权操作的权限
+  - *purge*：清除（永久删除）托管存储帐户
 
-자세한 내용은 [Key Vault REST API 참조의 스토리지 계정 작업](/rest/api/keyvault)을 참조하세요. 권한 설정에 대한 내용은 [자격 증명 모음 - 만들기 또는 업데이트](/rest/api/keyvault/vaults/createorupdate) 및 [자격 증명 모음 - 액세스 정책 업데이트](/rest/api/keyvault/vaults/updateaccesspolicy)를 참조하세요.
+有关详细信息，请参阅 [Key Vault REST API 中的存储帐户操作参考](/rest/api/keyvault)。 有关建立权限的信息，请参阅[保管库 - 创建或更新](/rest/api/keyvault/vaults/createorupdate)和[保管库 - 更新访问策略](/rest/api/keyvault/vaults/updateaccesspolicy)。
 
-## <a name="see-also"></a>참고 항목
+## <a name="see-also"></a>另请参阅
 
-- [인증, 요청 및 응답](authentication-requests-and-responses.md)
-- [Key Vault 개발자 가이드](/azure/key-vault/key-vault-developers-guide)
+- [身份验证、请求和响应](authentication-requests-and-responses.md)
+- [Key Vault 开发人员指南](/azure/key-vault/key-vault-developers-guide)

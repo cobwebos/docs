@@ -1,6 +1,6 @@
 ---
-title: BI 분석 도구를 사용하여 Azure Cosmos DB에 연결
-description: BI 및 데이터 분석 소프트웨어에서 정규화된 데이터를 볼 수 있도록 Azure Cosmos DB ODBC 드라이버를 사용하여 테이블 및 뷰를 만드는 방법을 알아봅니다.
+title: 使用 BI 分析工具连接到 Azure Cosmos DB
+description: 了解如何使用 Azure Cosmos DB ODBC 驱动程序创建表和视图，以便能够在 BI 和数据分析软件中查看规范化数据。
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -13,141 +13,141 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76721075"
 ---
-# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>ODBC 드라이버와 함께 BI 분석 도구를 사용하여 Azure Cosmos DB에 연결
+# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
-Azure Cosmos DB ODBC 드라이버를 사용하면 SQL Server Integration Services, Power BI Desktop 및 Tableau와 같은 BI 분석 도구를 사용하여 Azure Cosmos DB에 연결할 수 있으므로 해당 솔루션에서 Azure Cosmos DB 데이터 시각화를 분석하고 만들 수 있습니다.
+借助 Azure Cosmos DB ODBC 驱动程序，可以使用 SQL Server Integration Services、Power BI Desktop 和 Tableau 等 BI 分析工具连接到 Azure Cosmos DB，以便能够在这些解决方案中分析和创建 Azure Cosmos DB 数据的可视化效果。
 
-Azure Cosmos DB ODBC 드라이버는 ODBC 3.8 규격으로, ANSI SQL-92 구문을 지원합니다. 이 드라이버는 Azure Cosmos DB에서 데이터를 다시 정규화하는 데 도움이 되는 다양한 기능을 제공합니다. 이 드라이버를 사용하여 Azure Cosmos DB의 데이터를 테이블 및 뷰로 나타낼 수 있습니다. 이 드라이버를 사용하면 테이블 및 뷰에 대해 쿼리별 그룹화, 삽입, 업데이트 및 삭제 등의 SQL 작업을 수행할 수 있습니다.
+Azure Cosmos DB ODBC 驱动程序符合 ODBC 3.8 规范，支持 ANSI SQL-92 语法。 该驱动程序提供丰富的功能来帮助用户重新规范化 Azure Cosmos DB 中的数据。 使用该驱动程序，能够以表和视图的形式表示 Azure Cosmos DB 中的数据。 使用该驱动程序还可以针对表和视图执行 SQL 操作，包括 group by 查询、插入、更新和删除。
 
 > [!NOTE]
-> Azure Cosmos DB와 ODBC 드라이버 연결은 현재 Azure Cosmos DB SQL API 계정에서만 지원됩니다.
+> 目前仅 Azure Cosmos DB SQL API 帐户支持使用 ODBC 驱动程序连接到 Azure Cosmos DB。
 
-## <a name="why-do-i-need-to-normalize-my-data"></a>데이터를 정규화해야 하는 이유는 무엇인가요?
-Azure Cosmos DB는 엄격한 스키마로 국한하지 않으면서 신속한 애플리케이션 개발과 데이터 모델 반복 기능을 지원하는 스키마 없는 데이터베이스입니다. 单个 Azure Cosmos 数据库可以包含各种结构的 JSON 文档。 이러한 특징은 신속한 애플리케이션 개발에 유용하지만 데이터 분석 및 BI 도구를 사용하여 데이터 보고서를 분석하고 만들려는 경우 데이터를 평면화하고 특정 스키마를 따르도록 할 필요가 있습니다.
+## <a name="why-do-i-need-to-normalize-my-data"></a>为何需要将数据规范化？
+Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序并对数据模型进行迭代，不受限于严格的架构。 单个 Azure Cosmos 数据库可以包含各种结构的 JSON 文档。 这非常适合于快速应用程序开发，但如果用户想要使用数据分析和 BI 工具来分析和创建数据报表，则数据通常需要平整化并遵守特定的架构。
 
-바로 이러한 경우 ODBC 드라이버가 사용됩니다. 이제 ODBC 드라이버를 사용하여 Azure Cosmos DB의 데이터를 데이터 분석 및 보고 요구에 맞는 테이블 및 뷰로 다시 정규화할 수 있습니다. 다시 정규화된 스키마는 기본 데이터에 아무런 영향도 미치지 않고 개발자도 이러한 스키마를 준수할 필요가 없습니다. 대신, 사용자는 ODBC 호환 도구를 사용하여 데이터에 액세스할 수 있습니다. 现在，Azure Cosmos 数据库不仅是开发团队的最爱，而且数据分析师也会喜欢它。
+这就是 ODBC 驱动程序的作用所在。 通过使用 ODBC 驱动程序，你现在可以将 Azure Cosmos DB 中的数据重新规范化为适合数据分析和报告需求的表和视图。 重新规范化的架构不会对基础数据造成影响，不强制要求开发人员遵守。 相反，它们使你可以利用符合 ODBC 规范的工具来访问数据。 现在，Azure Cosmos 数据库不仅是开发团队的最爱，而且数据分析师也会喜欢它。
 
-ODBC 드라이버를 살펴보겠습니다.
+接下来让我们开始使用 ODBC 驱动程序。
 
-## <a id="install"></a>1단계: Azure Cosmos DB ODBC 드라이버 설치
+## <a id="install"></a>步骤 1：安装 Azure Cosmos DB ODBC 驱动程序
 
-1. 다음 중에서 환경에 맞는 드라이버를 다운로드합니다.
+1. 下载适用于环境的驱动程序：
 
-    | 설치 관리자 | 지원되는 운영 체제| 
+    | 安装程序 | 支持的操作系统| 
     |---|---| 
-    |Windows 64비트용 [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64)| 64비트 버전의 Windows 8.1 이상, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 및 Windows Server 2008 R2.| 
-    |Windows 32비트 또는 64비트용 [Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64)| 64비트 버전의 Windows 8.1 이상, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 및 Windows Server 2003| 
-    |Windows 32비트용 [Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32)|32비트 버전의 Windows 8.1 이상, Windows 8, Windows 7, Windows XP 및 Windows Vista|
+    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64)（适用于 64 位 Windows）| 64 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows Server 2012 R2、Windows Server 2012 和 Windows Server 2008 R2。| 
+    |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64)（适用于 32 位或 64 位 Windows）| 64 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 和 Windows Server 2003。| 
+    |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32)（适用于 32 位 Windows）|32 位的 Windows 8.1 或更高版本、Windows 8、Windows 7、Windows XP 和 Windows Vista。|
 
-    msi 파일을 로컬로 실행합니다. 그러면 **Microsoft Azure Cosmos DB ODBC 드라이버 설치 마법사**가 시작됩니다. 
+    在本地运行 msi 文件，启动“Microsoft Azure Cosmos DB ODBC 驱动程序安装向导”。 
 
-1. 기본 입력으로 ODBC 드라이버를 설치하여 설치 마법사를 완료합니다.
+1. 使用默认输入完成安装向导，安装 ODBC 驱动程序。
 
-1. 컴퓨터에서 **ODBC 데이터 원본 관리자** 앱을 엽니다. Windows 검색 상자에 **ODBC 데이터 원본**을 입력하여 이 작업을 수행할 수 있습니다. 
-    **드라이버** 탭을 클릭하고 **Microsoft Azure Cosmos DB ODBC 드라이버**가 표시되는지 확인하여 이 드라이버가 설치되어 있는지 확인할 수 있습니다.
+1. 在计算机上打开 **ODBC 数据源管理器**应用。 可以通过在 Windows 搜索框中键入 **ODBC 数据源**来执行此操作。 
+    单击“驱动程序”选项卡并检查“Microsoft Azure Cosmos DB ODBC 驱动程序”是否已列出，可确认是否已安装该驱动程序。
 
-    ![Azure Cosmos DB ODBC 데이터 원본 관리자](./media/odbc-driver/odbc-driver.png)
+    ![Azure Cosmos DB ODBC 数据源管理器](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>步骤2：连接到 Azure Cosmos 数据库
+## <a id="connect"></a>步骤 2：连接到 Azure Cosmos 数据库
 
-1. [Azure Cosmos DB ODBC 드라이버를 설치](#install)한 후 **ODBC 데이터 원본 관리자** 창에서 **추가**를 클릭합니다. 사용자 또는 시스템 DSN을 만들 수 있습니다. 이 예제에서는 사용자 DSN을 만듭니다.
+1. [安装 Azure Cosmos DB ODBC 驱动程序](#install)后，请在“ODBC 数据源管理器”窗口中单击“添加”。 可以创建一个用户 DSN 或系统 DSN。 在本示例中，将创建一个用户 DSN。
 
-1. **새 데이터 원본 만들기** 창에서 **Microsoft Azure Cosmos DB ODBC 드라이버**를 선택하고 **마침**을 클릭합니다.
+1. 在“创建新数据源”窗口中选择“Microsoft Azure Cosmos DB ODBC 驱动程序”，并单击“完成”。
 
-1. **Azure Cosmos DB ODBC 드라이버 SDN 설정** 창에서 다음 정보를 입력합니다. 
+1. 在“Azure Cosmos DB ODBC 驱动程序 SDN 设置”窗口中填写以下信息： 
 
-    ![Azure Cosmos DB ODBC 드라이버 DSN 설정 창](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **데이터 원본 이름**: ODBC DSN에 대한 고유한 이름입니다 이 이름은 Azure Cosmos DB 계정에 고유하므로 여러 계정이 있는 경우 적절히 이름을 지정합니다.
-    - **설명**: 데이터 원본에 대한 짧은 설명입니다.
-    - **호스트**: Azure Cosmos DB 계정에 대한 URI입니다. 다음 스크린샷처럼 Azure Portal의 Azure Cosmos DB 키 페이지에서 이 URI를 검색할 수 있습니다. 
-    - **액세스 키**: 다음 스크린샷처럼 Azure Portal의 Azure Cosmos DB 키 페이지에 있는 기본 또는 보조 읽기-쓰기/읽기 전용 키입니다. DSN가 읽기 전용 데이터 처리 및 보고에 사용되는 경우 읽기 전용 키를 사용하는 것이 좋습니다.
-    ![Azure Cosmos DB 키 페이지](./media/odbc-driver/odbc-cosmos-account-keys.png)
-    - **액세스 키 암호화**: 이 컴퓨터의 사용자 수에 따라 가장 적합한 옵션을 선택합니다. 
+    ![“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口](./media/odbc-driver/odbc-driver-dsn-setup.png)
+    - **数据源名称**：ODBC DSN 的友好名称。 此名称是 Azure Cosmos DB 帐户的唯一名称，因此，如果有多个帐户，请适当地为数据源命名。
+    - **说明**：数据源的简短说明。
+    - **主机**：Azure Cosmos DB 帐户的 URI。 可在 Azure 门户的“Azure Cosmos DB 密钥”页中检索此信息，如以下屏幕截图所示。 
+    - **访问密钥**：从 Azure 门户中“Azure Cosmos DB 密钥”页获取的主要或辅助读写或只读密钥，如以下屏幕截图所示。 如果 DSN 用于只读数据的处理和报告，我们建议使用只读密钥。
+    ![“Azure Cosmos DB 密钥”页](./media/odbc-driver/odbc-cosmos-account-keys.png)
+    - **加密以下对象的访问密钥**：根据此计算机的用户选择最合适的选项。 
     
-1. Azure Cosmos DB 계정에 연결할 수 있는지 확인하려면 **테스트** 단추를 클릭합니다. 
+1. 单击“测试”按钮，确保可以连接到 Azure Cosmos DB 帐户。 
 
-1.  **고급 옵션**을 클릭하고 다음 값을 설정합니다.
+1.  单击“高级选项”并设置以下值：
     *  **REST API 版本**：选择操作的[REST API 版本](https://docs.microsoft.com/rest/api/cosmos-db/)。 默认值为2015-12-16。 如果容器具有[大分区键](large-partition-keys.md)，并且需要 REST API 版本2018-12-31：
         - 为 REST API 版本键入**2018-12-31**
         - 在 "**开始**" 菜单中，键入 "regedit"，查找并打开**注册表编辑器**应用程序。
-        - 在注册表编辑器中，导航到以下路径： **Computer \ HKEY_LOCAL_MACHINE \software\odbc\odbc。INI**
-        - 使用与你的 DSN 相同的名称创建新子项，例如 "Contoso Account ODBC DSN"。
+        - 在注册表编辑器中，导航到以下路径：**计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\ODBC\ODBC.INI**
+        - 使用与你的 DSN 相同的名称创建新子项，例如"Contoso 帐户 ODBC DSN"。
         - 导航到 "Contoso Account ODBC DSN" 子项。
         - 右键单击以添加新的**字符串**值：
-            - 值名称： **IgnoreSessionToken**
-            - 值数据： **1**
+            - 值名称：**IgnoreSessionToken**
+            - 值数据：**1**
             ![注册表编辑器设置](./media/odbc-driver/cosmos-odbc-edit-registry.png)
-    - **쿼리 일관성**: 작업에 대해 [일관성 수준](consistency-levels.md)을 선택합니다. 기본값은 세션입니다.
-    - **재시도 횟수**: 초기 요청이 서비스 속도 제한으로 인해 완료되지 않은 경우 작업을 다시 시도할 횟수를 입력합니다.
-    - **스키마 파일**: 다양한 옵션이 있습니다.
-        - 默认情况下，将此项保留为（空白），驱动程序将扫描所有容器的第一页数据，以确定每个容器的架构。 这称为容器映射。 정의된 스키마 파일이 없이 경우 이 드라이버는 각 드라이버 세션을 검색하므로, DSN을 사용하는 애플리케이션의 시작 시간이 더 늘어날 수 있습니다. 따라서 DSN에 대한 스키마 파일을 항상 연결하는 것이 좋습니다.
-        - 스키마 파일이 이미 있는 경우(스키마 편집기를 사용하여 만들었을 수 있음) **찾아보기**를 클릭하고 해당 파일로 이동한 후 **저장**을 클릭하고 **확인**을 클릭합니다.
-        - 새 스키마를 만들려면 **확인**을 클릭하고 주 창에서 **스키마 편집기**를 클릭합니다. 그런 다음, 스키마 편집기 정보로 이동합니다. 새 스키마 파일을 만든 후 **고급 옵션** 창으로 돌아가 새로 만든 스키마 파일을 포함해야 합니다.
+    - **查询一致性**：选择操作的[一致性级别](consistency-levels.md)。 默认值为“会话”。
+    - **重试次数**：输入当初始请求因服务速率限制而未能完成时，重试操作的次数。
+    - **架构文件**：此处有多个选项供你选择。
+        - 默认情况下，将此项保留为（空白），驱动程序将扫描所有容器的第一页数据，以确定每个容器的架构。 这称为容器映射。 如果未定义架构文件，驱动程序必须针对每个驱动程序会话执行扫描，这可能会导致使用 DSN 启动应用程序时需要更长的时间。 我们建议始终关联 DSN 的架构文件。
+        - 如果已有一个架构文件（也许是使用架构编辑器创建的文件），则可以单击“浏览”，导航到该文件，单击“保存”，并单击“确定”。
+        - 如果想要创建新架构，请单击“确定”，并在主窗口中单击“架构编辑器”。 接下来，继续在架构编辑器中提供信息。 创建新架构文件后，请记得返回“高级选项”窗口以包含新建的架构文件。
 
-1. 작업을 완료하고 **Azure Cosmos DB ODBC 드라이버 DSN 설정** 창을 닫으면 새 사용자 DSN이 사용자 DSN 탭에 추가됩니다.
+1. 完成并关闭“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口后，新的用户 DSN 将添加到“用户 DSN”选项卡。
 
-    ![사용자 DSN 탭의 새 Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
+    ![“用户 DSN”选项卡中的新 Azure Cosmos DB ODBC DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#container-mapping"></a>步骤3：使用容器映射方法创建架构定义
+## <a id="#container-mapping"></a>步骤 3：使用容器映射方法创建架构定义
 
 可以使用两种类型的采样方法：**容器映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 下面的步骤使用容器映射方法为一个或多个容器中的数据创建架构。 此采样方法检索容器页中的数据，以确定数据的结构。 它将容器转置到 ODBC 端的表中。 当容器中的数据是同源时，此采样方法的效率更高。 如果容器包含异类数据类型，我们建议使用[表分隔符映射方法](#table-mapping)，因为它提供更可靠的采样方法来确定容器中的数据结构。 
 
 1. 完成[连接到 Azure Cosmos 数据库](#connect)中的步骤1-4 后，在 " **Azure Cosmos DB ODBC 驱动程序 DSN 设置**" 窗口中单击 "**架构编辑器**"。
 
-    ![Azure Cosmos DB ODBC 드라이버 DSN 설정 창의 스키마 편집기 단추](./media/odbc-driver/odbc-driver-schema-editor.png)
-1. **스키마 편집기** 창에서 **새로 만들기**를 클릭합니다.
+    ![“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口中的架构编辑器按钮](./media/odbc-driver/odbc-driver-schema-editor.png)
+1. 在“架构编辑器”窗口中单击“新建”。
     "**生成架构**" 窗口显示 Azure Cosmos DB 帐户中的所有容器。 
 
 1. 选择要采样的一个或多个容器，然后单击 "**采样**"。 
 
-1. **디자인 보기** 탭에 데이터베이스, 스키마 및 테이블이 표시됩니다. 테이블 보기에서 검색을 수행하면 열 이름(예: SQL 이름, 원본 이름 등)과 관련된 속성 집합이 표시됩니다.
-    각 열에 대해 SQL 열 이름, SQL 형식, SQL 길이(해당되는 경우), 소수 자릿수(해당되는 경우), 전체 자릿수(해당되는 경우) 및 null 허용을 수정할 수 있습니다.
-    - 쿼리 결과에서 해당 열을 제외하려면 **Hide Column**을 **true**로 설정합니다. Hide Column = true로 표시된 열은 스키마의 일부이지만 선택 및 프로젝션의 경우에는 반환되지 않습니다. 예를 들어 “_”로 시작하는 모든 Azure Cosmos DB 시스템 필수 속성을 숨길 수 있습니다.
-    - **id** 열은 정규화된 스키마에서 기본 키로 사용되기 때문에 숨길 수 없는 유일한 필드입니다. 
+1. “设计视图”选项卡中显示了数据库、架构和表。 在表视图中，扫描会显示与列名称（“SQL 名称”、“源名称”等）关联的属性集。
+    可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
+    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以“_”开头的所有 Azure Cosmos DB 系统必需属性。
+    - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 
-1. 스키마 정의를 끝낸 후에 **파일** | **저장**을 클릭한 후 스키마를 저장할 디렉터리로 이동하고 **저장**을 클릭합니다.
+1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
 
-1. 若要对 DSN 使用此架构，请打开 " **AZURE COSMOS DB Odbc 驱动程序 DSN 设置" 窗口**（通过 "Odbc 数据源管理器"），单击 "**高级选项**"，然后在 "**架构文件**" 框中导航到保存的架构。 스키마 파일을 기존 DSN에 저장하면 해당 스키마로 정의된 데이터 및 구조로 범위가 지정되도록 DSN 연결이 수정됩니다.
+1. 若要对 DSN 使用此架构，请打开 " **AZURE COSMOS DB Odbc 驱动程序 DSN 设置" 窗口**（通过 "Odbc 数据源管理器"），单击 "**高级选项**"，然后在 "**架构文件**" 框中导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
 
-## <a id="table-mapping"></a>4단계: 테이블 구분 기호 매핑 방법을 사용하여 스키마 정의 만들기
+## <a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
 
 可以使用两种类型的采样方法：**容器映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个容器只能使用特定的采样方法。 
 
-以下步骤使用**表分隔符**映射方法为一个或多个容器中的数据创建一个架构。 如果容器包含异类数据类型，我们建议使用此采样方法。 이 방법을 사용하여 샘플링 범위를 특성 집합 및 해당 값으로 지정할 수 있습니다. 예를 들어 문서에 “Type” 속성이 포함된 경우 샘플링 범위를 이 속성의 값으로 지정할 수 있습니다. 샘플링의 최종 결과는 지정한 Type의 각 값에 대한 테이블 집합입니다. 예를 들어, Type = Car를 지정하면 Car 테이블이 생성되지만 Type = Plane을 지정하면 Plane 테이블이 생성됩니다.
+以下步骤使用**表分隔符**映射方法为一个或多个容器中的数据创建一个架构。 如果容器包含异类数据类型，我们建议使用此采样方法。 可以使用此方法将采样范围限定为一组属性及其相应值。 例如，如果某个文档包含“Type”属性，可将采样范围限定为此属性的值。 采样的最终结果是针对每个指定的 Type 值返回一组表。 例如，Type = Car 将生成 Car 表，Type = Plane 将生成 Plane 表。
 
 1. 完成[连接到 Azure Cosmos 数据库](#connect)中的步骤1-4 后，在 "Azure Cosmos DB ODBC 驱动程序 DSN 设置" 窗口中单击 "**架构编辑器**"。
 
-1. **스키마 편집기** 창에서 **새로 만들기**를 클릭합니다.
+1. 在“架构编辑器”窗口中单击“新建”。
     "**生成架构**" 窗口显示 Azure Cosmos DB 帐户中的所有容器。 
 
-1. 在 "**示例视图**" 选项卡上的 "**映射定义**" 列中选择容器的容器，然后单击 "**编辑**"。 그런 다음 **매핑 정의** 창에서 **테이블 구분 기호** 방법을 선택합니다. 그런 다음 아래 작업을 수행합니다.
+1. 在 "**示例视图**" 选项卡上的 "**映射定义**" 列中选择容器的容器，然后单击 "**编辑**"。 在“映射定义”窗口中，选择“表分隔符”方法。 然后执行以下操作：
 
-    a. **특성** 상자에 구분 기호 속성의 이름을 입력합니다. 이것은 문서에서 샘플링 범위로 지정하려는 속성(예: City)입니다. 그런 후 Enter 키를 누릅니다. 
+    a. 在“属性”框中，键入分隔符属性的名称。 这是文档中要将采样范围限定到的属性（例如 City）。然后按 Enter 键。 
 
-    b. 위에서 입력한 특성에 대한 특정 값으로 샘플링 범위를 지정하려는 경우 선택 상자에서 해당 특성을 선택하고 **값** 상자에 값(예: Seattle)을 입력하고 Enter 키를 누릅니다. 특성에 대해 여러 값을 계속 추가할 수 있습니다. 값을 입력할 때 올바른 속성이 선택되어 있는지 확인하기만 하면 됩니다.
+    b. 如果只想将采样范围限定为你在上面输入的属性的某些值，请在选择框中选择该属性，在“值”框中输入一个值（例如 Seattle），然后按 Enter 键。 可以继续添加属性的多个值。 只需确保在输入值时选择正确的属性。
 
-    예를 들어 **특성** 값으로 City를 포함하고 city 값이 New York과 Dubai인 행만 포함하도록 테이블을 제한하려면 특성 상자에 City를 입력하고 **값** 상자에 New York을 입력한 후 Dubai를 입력합니다.
+    例如，如果包含 City 的 **Attributes** 值，并想要将表限制为仅包含带有 New York 和 Dubai 城市值的行，请在“属性”框中输入 City，在“值”框中输入 New York 和 Dubai。
 
-1. **확인**을 클릭합니다. 
+1. 单击 **“确定”** 。 
 
 1. 完成要采样的容器的映射定义后，在 "**架构编辑器**" 窗口中单击 "**采样**"。
-     각 열에 대해 SQL 열 이름, SQL 형식, SQL 길이(해당되는 경우), 소수 자릿수(해당되는 경우), 전체 자릿수(해당되는 경우) 및 null 허용을 수정할 수 있습니다.
-    - 쿼리 결과에서 해당 열을 제외하려면 **Hide Column**을 **true**로 설정합니다. Hide Column = true로 표시된 열은 스키마의 일부이지만 선택 및 프로젝션의 경우에는 반환되지 않습니다. 예를 들어 `_`로 시작하는 모든 Azure Cosmos DB 시스템 필수 속성을 숨길 수 있습니다.
-    - **id** 열은 정규화된 스키마에서 기본 키로 사용되기 때문에 숨길 수 없는 유일한 필드입니다. 
+     可以修改每个列，包括“SQL 名称”、“SQL 类型”、“SQL 长度”（如果适用）、“小数位数”（如果适用）、“精度”（如果适用）和“可为 Null”。
+    - 如果想要从查询结果中排除某个列，可将对应的“隐藏列”设置为 **true**。 标记为“隐藏列 = true”的列不会返回供选择和投影，不过它们仍是架构的一部分。 例如，可以隐藏以 `_` 开头的所有 Azure Cosmos DB 系统必需属性。
+    - “Id”列是唯一不能隐藏的字段，因为它用作规范化架构中的主键。 
 
-1. 스키마 정의를 끝낸 후에 **파일** | **저장**을 클릭한 후 스키마를 저장할 디렉터리로 이동하고 **저장**을 클릭합니다.
+1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
 
-1. **Azure Cosmos DB ODBC 드라이버 DSN 설정** 창으로 돌아가 **고급 옵션**을 클릭합니다. 그런 다음 **스키마 파일** 상자에서 저장된 스키마 파일로 이동한 후 **확인**을 클릭합니다. **확인**을 다시 클릭하여 DSN을 저장합니다. 이렇게 하면 만든 스키마가 DSN에 저장됩니다. 
+1. 返回“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口，单击“高级选项”。 然后，在“架构文件”框中，导航到保存的架构文件并单击“确定”。 再次单击“确定”保存 DSN。 这会将创建的架构保存到 DSN。 
 
-## <a name="optional-set-up-linked-server-connection"></a>(선택 사항) 연결된 서버 연결 설정
+## <a name="optional-set-up-linked-server-connection"></a>（可选）设置链接服务器连接
 
-연결된 서버 연결을 설정하여 SSMS(SQL Server Management Studio)에서 Azure Cosmos DB를 쿼리할 수 있습니다.
+通过设置链接服务器连接，可以从 SQL Server Management Studio (SSMS) 查询 Azure Cosmos DB。
 
-1. 예를 들어 `SDS Name`으로 명명된 [2단계](#connect)에서 설명된 대로 시스템 데이터 원본을 만듭니다.
+1. 按[步骤 2](#connect) 中所述创建系统数据源并为其命名，如 `SDS Name`。
 
-1. [SQL Server Management Studio를 설치](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)하고 서버에 연결합니다. 
+1. [安装 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 并连接到服务器。 
 
-1. SSMS 쿼리 편집기에서 다음 명령을 사용하여 데이터 원본에 대한 연결된 서버 개체 `DEMOCOSMOS`을 만듭니다. `DEMOCOSMOS`을 연결된 서버의 이름으로, `SDS Name`는 시스템 데이터 원본 이름으로 바꿉니다.
+1. 在 SSMS 查询编辑器中，使用以下命令为数据源创建链接服务器对象 `DEMOCOSMOS`。 将 `DEMOCOSMOS` 替换为链接服务器的名称，并将 `SDS Name` 替换为系统数据源的名称。
 
     ```sql
     USE [master]
@@ -160,19 +160,19 @@ ODBC 드라이버를 살펴보겠습니다.
     GO
     ```
     
-새 연결된 서버 이름을 보려면 연결된 서버 목록을 새로 고칩니다.
+要查看新的链接服务器名称，请刷新链接服务器列表。
 
-![SSMS의 연결된 서버](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+![SSMS 中的链接服务器](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
 
-### <a name="query-linked-database"></a>연결된 데이터베이스 쿼리
+### <a name="query-linked-database"></a>查询链接的数据库
 
-연결된 데이터베이스를 쿼리하려면 SSMS 쿼리를 입력합니다. 在此示例中，查询从名为 `customers`的容器中的表中进行选择：
+若要查询链接的数据库，请输入 SSMS 查询。 在此示例中，查询从名为 `customers`的容器中的表中进行选择：
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
 ```
 
-쿼리를 실행합니다. 결과는 다음과 비슷합니다.
+执行查询。 结果应如下所示：
 
 ```
 attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
@@ -183,7 +183,7 @@ attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c15
 ```
 
 > [!NOTE]
-> 연결된 Cosmos DB 서버는 네 부분으로 된 이름 지정을 지원하지 않습니다. 오류는 다음 메시지와 비슷하게 반환됩니다.
+> 链接的 Cosmos DB 服务器不支持由四部分组成的命名。 将返回类似于以下消息的错误：
 
 ```
 Msg 7312, Level 16, State 1, Line 44
@@ -191,60 +191,60 @@ Msg 7312, Level 16, State 1, Line 44
 Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
 ``` 
 
-## <a name="optional-creating-views"></a>(선택 사항) 뷰 만들기
-샘플링 프로세스의 일부로 뷰를 정의하고 만들 수 있습니다. 이러한 뷰는 SQL 뷰와 비슷합니다. 읽기 전용이며, 정의된 Azure Cosmos DB SQL 쿼리의 선택 및 프로젝션으로 범위가 지정됩니다. 
+## <a name="optional-creating-views"></a>（可选）创建视图
+可在采样过程中定义和创建视图。 这些视图相当于 SQL 视图。 它们是只读的，并且是定义的 Azure Cosmos DB SQL 查询的选择和投影范围。 
 
 若要创建数据视图，请在 "**架构编辑器**" 窗口中的 "**视图定义**" 列中，单击要采样的容器行上的 "**添加**"。 
-    ![데이터 뷰 만들기](./media/odbc-driver/odbc-driver-create-view.png)
+    ![创建数据视图](./media/odbc-driver/odbc-driver-create-view.png)
 
 
-그런 다음 **뷰 정의** 창에서 다음을 수행합니다.
+然后在“视图定义”窗口中执行以下操作：
 
-1. **새로 만들기**를 클릭하고 뷰 이름(예: EmployeesfromSeattleView)을 입력하고 **확인**을 클릭합니다.
+1. 单击“新建”，输入视图的名称（例如 EmployeesfromSeattleView），并单击“确定”。
 
-1. **뷰 편집** 창에서 Azure Cosmos DB 쿼리를 입력합니다. [Azure Cosmos DB SQL 쿼리](how-to-sql-query.md)(예: `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`)여야 합니다. 그런 후 **확인**을 클릭합니다.
+1. 在“编辑视图”窗口中，输入一个 Azure Cosmos DB 查询。 这必须是一个 [Azure Cosmos DB SQL 查询](how-to-sql-query.md)（例如 `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`），然后单击“确定”。
 
-    ![뷰를 만들 때 쿼리 추가](./media/odbc-driver/odbc-driver-create-view-2.png)
+    ![创建视图时添加查询](./media/odbc-driver/odbc-driver-create-view-2.png)
 
 
-원하는 수만큼 뷰를 만들 수 있습니다. 뷰 정의가 끝나면 데이터를 샘플링할 수 있습니다. 
+可以创建任意数量的视图。 定义完视图后，可以采样数据。 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>5단계: Power BI Desktop과 같은 BI 도구에서 데이터 보기
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>步骤 5：在 Power BI Desktop 等 BI 工具中查看数据
 
-새 DSN을 사용하여 ODBC 호환 도구를 통해 Azure Cosmos DB에 연결할 수 있습니다. 이 단계에서는 Power BI Desktop에 연결하고 Power BI 시각화를 만드는 방법을 보여 줍니다.
+可以使用新 DSN 将 Azure Cosmos DB 连接到任何符合 ODBC 规范的工具 - 本步骤仅说明如何连接到 Power BI Desktop 并创建 Power BI 可视化效果。
 
-1. Power BI Desktop을 엽니다.
+1. 打开 Power BI Desktop。
 
-1. **데이터 가져오기**를 클릭합니다.
+1. 单击“获取数据”。
 
-    ![Power BI Desktop에서 데이터 가져오기](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
+    ![在 Power BI Desktop 中获取数据](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
 
-1. **데이터 가져오기** 창에서 **기타** | **ODBC** | **연결**을 클릭합니다.
+1. 在“获取数据”窗口中，单击“其他” | “ODBC” | “连接”。
 
-    ![Power BI 데이터 가져오기에서 ODBC 데이터 원본 선택](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
+    ![在 Power BI“获取数据”中选择 ODBC 数据源](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
 
-1. **ODBC에서** 창에서 만든 데이터 원본 이름을 선택하고 **확인**을 클릭합니다. **고급 옵션** 항목은 빈 상태로 두어도 됩니다.
+1. 在“从 ODBC”窗口中，选择创建的数据源名称，并单击“确定”。 可将“高级选项”项保留空白。
 
-    ![Power BI 데이터 가져오기에서 DSN(데이터 원본 이름) 선택](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+    ![在 Power BI“获取数据”中选择数据源名称 (DSN)](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
 
-1. **ODBC 드라이버를 사용하여 데이터 원본에 액세스합니다.** 창에서 **기본 또는 사용자 지정**을 클릭하고 **연결**을 클릭합니다. **자격 증명 연결 문자열 속성**은 포함하지 않아도 됩니다.
+1. 在“使用 ODBC 驱动程序访问数据源”窗口中，选择“默认或自定义”，并单击“连接”。 不需要包括“凭据连接字符串属性”。
 
-1. **탐색 창**의 왼쪽 분할 창에서 데이터베이스, 스키마를 확장한 다음 테이블을 선택합니다. 결과 분할 창에는 만든 스키마를 사용하여 해당 데이터가 포함됩니다.
+1. 在“导航器”窗口的左窗格中，展开数据库和架构，并选择表。 结果窗格包含使用创建的架构的数据。
 
-    ![Power BI 데이터 가져오기에서 테이블 선택](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
+    ![在 Power BI“获取数据”中选择表](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
 
-1. Power BI desktop의 데이터를 시각화하려면 테이블 이름 앞의 확인란을 선택하고 **로드**를 클릭합니다.
+1. 要在 Power BI Desktop 中可视化数据，请选中表名称前面的框，并单击“加载”。
 
-1. Power BI Desktop의 맨 왼쪽에 있는 데이터 탭을 선택하여 ![Power BI Desktop의 데이터 탭](./media/odbc-driver/odbc-driver-data-tab.png) 데이터를 가져왔는지 확인합니다.
+1. 在 Power BI Desktop 中的最左侧，选择“数据”选项卡 ![Power BI Desktop 中的“数据”选项卡](./media/odbc-driver/odbc-driver-data-tab.png) 确认数据是否已导入。
 
-1. 이제 보고서 탭 ![Power BI Desktop의 보고서 탭](./media/odbc-driver/odbc-driver-report-tab.png)을 클릭한 다음 **새 시각적 개체**를 클릭하고 타일을 사용자 지정함으로써 Power BI를 통해 시각적 개체를 만들 수 있습니다. Power BI Desktop에서 시각화를 만드는 방법에 대한 자세한 내용은 [Power BI의 시각화 유형](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)을 참조하세요.
+1. 现在，可以使用 Power BI 创建视觉对象：单击“报表”选项卡![Power BI Desktop 中的“报表”选项卡](./media/odbc-driver/odbc-driver-report-tab.png)，单击“新建视觉对象”，并自定义磁贴。 有关在 Power BI Desktop 中创建可视化效果的详细信息，请参阅 [Power BI 中的可视化效果类型](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)。
 
-## <a name="troubleshooting"></a>문제 해결
+## <a name="troubleshooting"></a>故障排除
 
-다음 오류가 표시되면 [2단계](#connect)에서 Azure Portal로부터 복사한 **호스트** 및 **액세스 키** 값이 올바른지 확인하고 다시 시도하세요. Azure Portal의 **호스트** 및 **액세스 키** 값 오른쪽에 있는 복사 단추를 사용하여 올바른 값을 복사합니다.
+如果遇到以下错误，请确保执行[步骤 2](#connect) 时在 Azure 门户中复制的“主机”和“访问密钥”值正确，并重试。 在 Azure 门户中使用“主机”和“访问密钥”值右侧的复制按钮可以正确无误地复制这些值。
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>다음 단계
+## <a name="next-steps"></a>后续步骤
 
-Azure Cosmos DB에 대한 자세한 내용은 [Azure Cosmos DB 시작](introduction.md)을 참조하세요.
+若要了解有关 Azure Cosmos DB 的详细信息，请参阅[欢迎使用 Azure Cosmos DB](introduction.md)。

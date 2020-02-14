@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928734"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187480"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>在 SSIS 集成运行时中对包执行进行故障排除
 
@@ -142,10 +142,9 @@ ms.locfileid: "74928734"
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>错误消息： "暂存任务错误：错误代码：2906，ErrorMessage：包执行失败。，输出： {" OperationErrorMessages "：" 错误：请求的 OLE DB 提供程序 。未注册。 如果未安装64位驱动程序，请在32位模式下运行包 ... "
 
-请确保包中 OLE DB 连接器使用的相应提供程序正确安装在自承载集成运行时计算机上。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+请确保包中 OLE DB 连接器使用的相应提供程序正确安装在自承载集成运行时计算机上。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息： "暂存任务错误： ErrorCode：2906，ErrorMessage：包执行失败。，输出： {" OperationErrorMessages "：" Error： FileLoadException：无法加载文件或程序集 "Windowsazure.storage，Version = ...，Culture = 中立，PublicKeyToken = 31bf3856ad364e35 ' 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配。"..."
-
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>错误消息： "暂存任务错误： ErrorCode：2906，ErrorMessage：包执行失败。，输出： {" OperationErrorMessages "：" Error： FileLoadException：无法加载文件或程序集 "Windowsazure.storage，Version = ...，Culture = 中立，PublicKeyToken = 31bf3856ad364e35 ' 或其依赖项之一。 找到的程序集清单定义与程序集引用不匹配。..."
 
 一个可能的原因是您的自承载集成运行时未正确安装或升级。 建议下载并重新安装最新的自承载集成运行时。 有关详细信息，请参阅[创建和配置自承载集成运行时](create-self-hosted-integration-runtime.md#installation-best-practices)
 
@@ -158,7 +157,7 @@ ms.locfileid: "74928734"
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>错误消息： "暂存任务状态：失败。 暂存任务错误：错误代码：2906，ErrorMessage：包执行失败。输出： {"OperationErrorMessages"： "SSIS 执行程序退出代码：-1. \ n"，"LogLocation"： ".\\SSISTelemetry\\ExecutionLog\\..."，"effectiveIntegrationRuntime"： "..."，"executionDuration"： ...，"durationInQueue"： {"integrationRuntimeQueue"： ...}} "
 
-请确保在C++自承载集成运行时计算机上安装了 Visual 运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir)
+请确保在C++自承载集成运行时计算机上安装了 Visual 运行时。 有关详细信息，请参阅[配置自承载 IR 作为 ADF 中 Azure-SSIS IR 的代理](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>意外触发多个包执行
 

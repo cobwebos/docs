@@ -7,6 +7,7 @@
     - name: Microsoft 标识平台的发展
       href: about-microsoft-identity-platform.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 设置租户
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: 示例
   href: sample-v2-code.md
 - name: 概念
+  expanded: true
   items:
     - name: 身份验证基础知识
       href: authentication-scenarios.md
