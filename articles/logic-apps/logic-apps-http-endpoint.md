@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792031"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191333"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP 终结点调用、触发或嵌套逻辑应用
 
@@ -28,15 +28,15 @@ ms.locfileid: "74792031"
 
 如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* 一个 Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 要将 HTTP 终结点设置为触发器的逻辑应用。 你可以开始使用空白逻辑应用，也可以从现有逻辑应用开始，将当前触发器替换为该应用。 此示例以空白逻辑应用开始。
 
 ## <a name="create-a-callable-endpoint"></a>创建可调用终结点
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开空白逻辑应用。
+1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中创建并打开空白逻辑应用。
 
    此示例使用请求触发器，但你可以使用任何可接收传入 HTTP 请求的触发器。 所有原则均相同适用于这些触发器。 有关请求触发器的详细信息，请参阅[使用 Azure 逻辑应用接收和响应传入 HTTPS 调用](../connectors/connectors-native-reqres.md)。
 
@@ -275,7 +275,7 @@ ms.locfileid: "74792031"
 
 响应具有以下属性：
 
-| 属性（显示） | 属性（JSON） | 描述 |
+| 属性（显示） | 属性（JSON） | 说明 |
 |--------------------|-----------------|-------------|
 | **状态代码** | `statusCode` | 要在传入请求的响应中使用的 HTTP 状态代码。 该代码可以是以 2xx、4xx 或 5xx 开头的任何有效状态代码。 但是，不允许使用 3xx 状态代码。 |
 | **标头** | `headers` | 要包括在响应中的一个或多个标头 |
@@ -309,7 +309,7 @@ ms.locfileid: "74792031"
 **答**： Azure 通过使用[共享访问签名（SAS）](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)安全地生成逻辑应用回调 url。 此签名通过作为查询参数传递，必须先进行验证，然后才能运行逻辑应用。 Azure 使用每个逻辑应用的机密密钥、触发器名称和执行的操作的唯一组合生成签名。 因此，除非用户对机密逻辑应用密钥拥有访问权限，否则他们无法生成有效的签名。
 
 > [!IMPORTANT]
-> 对于生产和安全系统，强烈建议不要直接从浏览器调用逻辑应用，原因如下：
+> 对于生产和更高版本的安全系统，强烈建议不要直接从浏览器调用逻辑应用，原因如下：
 >
 > * URL 中会出现共享访问密钥。
 > * 由于 Azure 逻辑应用客户之间的共享域，因此无法管理安全内容策略。

@@ -14,20 +14,21 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 502d1fe599accb29ccc99c9e527f8d1c8e1d52b8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690905"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201810"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>更改 Azure 中 SQL Server 虚拟机的许可证型号
 本文介绍如何使用新的 SQL VM 资源提供程序**SqlVirtualMachine**在 Azure 中更改 SQL Server 虚拟机（VM）的许可证模型。
 
-承载 SQL Server 的 VM 有两个许可证模型：即用即付和 Azure 混合权益。 您可以使用 Azure 门户、Azure CLI 或 PowerShell 来修改您的 SQL Server VM 的许可证模型。 
+承载 SQL Server 的 VM 有三个许可证模型：即用即付、Azure 混合权益和灾难恢复（DR）。 您可以使用 Azure 门户、Azure CLI 或 PowerShell 来修改您的 SQL Server VM 的许可证模型。 
 
-即用即付模型意味着运行 Azure VM 的每秒费用包括 SQL Server 许可证的成本。
-[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)允许你将自己的 SQL Server 许可证与运行 SQL SERVER 的 VM 一起使用。 
+- 即**用即付**模型意味着运行 Azure VM 的每秒费用包括 SQL Server 许可证的成本。
+- [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)允许你将自己的 SQL Server 许可证与运行 SQL SERVER 的 VM 一起使用。 
+- **灾难恢复**许可证类型用于 Azure 中的[免费 DR 副本](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)。 
 
 Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格许可证"）的 SQL Server 许可证。 使用 Azure 混合权益，客户无需支付对 VM 使用 SQL Server 许可证的费用。 但仍必须支付基础云计算（即，基础费率）、存储和备份的成本。 他们还必须为与服务的使用相关的 i/o 付费（如果适用）。
 
@@ -41,7 +42,7 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 
 预配 VM 时，将设置 SQL Server 的许可证类型。 您可以在以后随时对其进行更改。 在许可证模型之间切换不会造成停机，也不会重新启动 VM 或 SQL Server 服务，不会添加任何额外的费用，并且立即生效。 事实上，激活 Azure 混合权益*降低了*成本。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 更改 SQL Server VM 的许可模式具有以下要求： 
 
@@ -50,7 +51,7 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 - [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)是利用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)的必要条件。 
 
 
-## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>更改已注册到资源提供程序的 Vm 的许可证 
+## <a name="vms-already-registered-with-the-resource-provider"></a>已向资源提供程序注册的 Vm 
 
 # <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 
@@ -70,7 +71,8 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 
 你可以使用 Azure CLI 来更改你的许可证模型。  
 
-以下代码片段将切换即用即付许可证模型，以自带许可证（或使用 Azure 混合权益）：
+
+**Azure 混合权益**
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
@@ -79,7 +81,7 @@ Azure 混合权益允许在 Azure 虚拟机上使用带有软件保障（"合格
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
-以下代码片段将您自己的许可模式切换为即用即付模式： 
+即**付即用**： 
 
 ```azurecli-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
@@ -88,28 +90,45 @@ az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
+**灾难恢复（DR）**
+
+```azurecli-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+# example: az sql vm update -n AHBTest -g AHBTest --license-type DR
+
+az sql vm update -n <VMName> -g <ResourceGroupName> --license-type DR
+```
+
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 你可以使用 PowerShell 更改你的许可证模型。
 
-以下代码片段将切换即用即付许可证模型，以自带许可证（或使用 Azure 混合权益）：
+**Azure 混合权益**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
-以下代码片段将您自己的许可模式切换为即用即付模式：
+**即用即付**
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
 
+**灾难恢复** 
+
+```powershell-interactive
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType DR
+```
+
 ---
 
-## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>更改未注册到资源提供程序的 Vm 的许可证
+## <a name="vms-not-registered-with-the-resource-provider"></a>未向资源提供程序注册的 Vm
 
-如果你从即用即付 Azure Marketplace 映像预配了 SQL Server VM，则 SQL Server 许可证类型将为 "即用即付"。 如果使用 Azure Marketplace 中的自带许可证映像预配了 SQL Server VM，则许可证类型将为 AHUB。 默认情况下（即用即付）或自带许可 Azure Marketplace 映像中预配的所有 SQL Server Vm 将自动注册到 SQL VM 资源提供程序，因此它们可以更改[许可证类型](#change-the-license-for-vms-already-registered-with-the-resource-provider)。
+如果你从即用即付 Azure Marketplace 映像预配了 SQL Server VM，则 SQL Server 许可证类型将为 "即用即付"。 如果使用 Azure Marketplace 中的自带许可证映像预配了 SQL Server VM，则许可证类型将为 AHUB。 默认情况下（即用即付）或自带许可 Azure Marketplace 映像中预配的所有 SQL Server Vm 将自动注册到 SQL VM 资源提供程序，因此它们可以更改[许可证类型](#vms-already-registered-with-the-resource-provider)。
 
 仅可通过 Azure 混合权益在 Azure VM 上自行安装 SQL Server。 你应将[这些 vm 注册到 SQL VM 资源提供程序](virtual-machines-windows-sql-register-with-resource-provider.md)，方法是将 SQL Server 许可证设置为 Azure 混合权益，以根据 Microsoft 产品条款指示 Azure 混合权益的使用情况。
 

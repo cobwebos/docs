@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 78c20c72d0e344d993878f6e06ccc94f42048606
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162321"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187466"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>使用 .NET Core （EventHubs）将事件发送到 Azure 事件中心或从 Azure 事件中心接收事件
 本快速入门介绍如何使用**EventHubs** .net Core 库将事件发送到事件中心以及从事件中心接收事件。
@@ -26,7 +26,7 @@ ms.locfileid: "77162321"
 > [!WARNING]
 > 此快速入门使用旧的**EventHubs**包。 有关使用最新的**EventHubs**库的快速入门，请参阅[使用 EventHubs 库发送和接收事件](get-started-dotnet-standard-send-v2.md)。 若要将应用程序从使用旧库移动到新的库，请参阅[从 EventHubs 迁移到 EventHubs 的指南](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 如果不熟悉 Azure 事件中心，请参阅[事件中心概述](event-hubs-about.md)，然后再执行此快速入门。 
 
 若要完成本快速入门，需要具备以下先决条件：
@@ -371,6 +371,9 @@ ms.locfileid: "77162321"
 ## <a name="next-steps"></a>后续步骤
 请阅读以下文章：
 
+- [基于角色的访问控制（RBAC）示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
+    
+    这些示例使用旧的**EventHubs**库，但你可以轻松地将其更新为使用最新的**EventHubs**库。 若要将示例从使用旧库移动到新库，请参阅[从 EventHubs 迁移到 EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)。）
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中心的功能和术语](event-hubs-features.md)
 - [事件中心常见问题解答](event-hubs-faq.md)

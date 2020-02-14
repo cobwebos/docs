@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: c49c37ced4a5d5cc7cdde0737b889aad3b538f7f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898995"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198592"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器（ILB）终结点配置应用程序网关
 
@@ -27,7 +27,7 @@ Azure 应用程序网关可使用面向 Internet 的 VIP 或不向 Internet 公�
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 <https://portal.azure.com>Kv 的 Azure 门户
+登录到 Azure 门户 (<https://portal.azure.com>)
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -59,7 +59,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 10. 选择 "**添加后端池**"。
 11. 对于 "**名称**"，请键入*appGatewayBackendPool*。
 12. 对于 "**添加无目标的后端池**"，请选择 **"是"** 。 稍后将添加目标。
-13. 选择 **添加** 。
+13. 选择“添加”。
 14. 选择**下一步：配置**。
 15. 在 "**路由规则**" 下，选择 "**添加规则**"。
 16. 对于 "**规则名称**"，请键入*Rrule-01*。
@@ -110,7 +110,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 ### <a name="install-iis"></a>安装 IIS
 
 1. 打开 Cloud Shell 并确保将其设置为**PowerShell**。
-    ![private-frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
+    ![frontendip-3](./media/configure-application-gateway-with-private-frontend-ip/private-frontendip-3.png)
 2. 运行以下命令以在虚拟机上安装 IIS：
 
    ```azurepowershell

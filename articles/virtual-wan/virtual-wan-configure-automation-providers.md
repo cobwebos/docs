@@ -1,20 +1,20 @@
 ---
-title: Azure 虚拟 WAN 合作伙伴 | Microsoft Docs
+title: Azure 虚拟 WAN 合作伙伴自动化指南 |Microsoft Docs
 description: 本文帮助合作伙伴设置 Azure 虚拟 WAN 自动化。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775320"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190419"
 ---
-# <a name="virtual-wan-partners"></a>虚拟 WAN 合作伙伴
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>虚拟 WAN 合作伙伴的自动化准则
 
 本文介绍如何设置自动化环境以连接和配置 Azure 虚拟 WAN 的分支设备（客户本地 VPN 设备或 SDWAN CPE）。 如果你是可通过 IPsec/IKEv2 或 IPsec/IKEv1 容纳 VPN 连接的分支设备的提供商，那么本文对你有帮助。
 
@@ -27,7 +27,7 @@ ms.locfileid: "76775320"
 * 测试 Azure 虚拟 WAN 的门户体验。
 * 然后，确定连接步骤中的哪部分需要自动化。 建议至少自动化以下部分：
 
-  * 访问控制
+  * Access Control
   * 将分支设备信息上传到 Azure 虚拟 WAN
   * 下载 Azure 配置，并设置从分支设备到 Azure 虚拟 WAN 的连接
 

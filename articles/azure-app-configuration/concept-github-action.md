@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899621"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190377"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>使用 GitHub 操作同步应用配置实例
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>使用 GitHub Actions 同步应用配置实例
 Azure 应用配置使用 GitHub 操作来更新应用配置实例，该实例由对 GitHub 存储库执行的操作触发。 你可以利用 GitHub 工作流来更新应用配置，使应用配置更新与用于更新应用程序代码的工作流集成。
 
 GitHub 操作[工作流](https://help.github.com/articles/about-github-actions#workflow)是在 GitHub 存储库中定义的自动化过程。 此过程告知 GitHub 如何生成和部署 GitHub 项目。 Azure 应用配置提供*Azure 应用配置同步*操作，以便在对源存储库进行更改时启用对应用配置实例的更新。 
@@ -25,8 +25,7 @@ GitHub 事件（例如推送到存储库）可以触发 GitHub 操作工作流�
 GitHub[文档](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)提供 github 工作流和操作的深入视图。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在存储库中启用 GitHub 操作
-若要开始使用此 GitHub 操作，请在存储库中选择 "**操作**" 选项卡。在 marketplace 中搜索 "Azure 应用配置同步"，找到并选择 GitHub 操作。 
-
+若要开始使用此 GitHub 操作，请在存储库中选择 "**操作**" 选项卡。单击 "新建工作流"，然后单击 "自行设置工作流"。 在该处搜索 marketplace "Azure 应用配置同步"。
 > [!div class="mx-imgBorder"]
 > ![选择 "操作" 选项卡](media/find-github-action.png)
 
@@ -131,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
 嵌套的 JSON 特性的默认行为是对整个对象进行平展。  下面的 JSON 定义此键值对：
 
-| 密钥 | 值 |
+| Key | 值 |
 | --- | --- |
 | 对象：内部： InnerKey | InnerValue |
 
@@ -173,7 +172,7 @@ jobs:
 
 如果深度为2，则上面的示例将返回以下键：值对：
 
-| 密钥 | 值 |
+| Key | 值 |
 | --- | --- |
 | 对象：内部 | {"InnerKey":"InnerValue"} |
 
@@ -190,11 +189,11 @@ jobs:
 | format | 是 | 配置文件的文件格式。  有效的格式为： JSON、YAML、properties。 |
 | connectionString | 是 | 应用配置实例的连接字符串。 连接字符串应作为机密存储在 GitHub 存储库中，并且仅应在工作流中使用机密名称。 |
 | separator | 是 | 将配置文件平展到键值对时使用的分隔符。  有效值为：。 , ;: - _ __ / |
-| 前缀 | 否 | 要添加到键的开头的前缀。 |
-| label | 否 | 设置键值对时使用的标签。 如果未指定，则使用 null 标签。 |
-| strict | 否 | 确定是否已启用严格模式的布尔值。 默认值是 False。 |
-| 长度 | 否 | 平展配置文件的最大深度。  深度必须是正数。  默认值不具有最大深度。 |
-| 标记 | 否 | 指定对键值对设置的标记。  预期格式是以下形状的 JSON 对象的字符串化形式： {[propertyName： string]： string;}每个属性名称-值变成一个标记。 |
+| prefix | 是 | 要添加到键的开头的前缀。 |
+| 标签 | 是 | 设置键值对时使用的标签。 如果未指定，则使用 null 标签。 |
+| strict | 是 | 确定是否已启用严格模式的布尔值。 默认值为 false。 |
+| 长度 | 是 | 平展配置文件的最大深度。  深度必须是正数。  默认值不具有最大深度。 |
+| 标记 | 是 | 指定对键值对设置的标记。  预期格式是以下形状的 JSON 对象的字符串化形式： {[propertyName： string]： string;}每个属性名称-值变成一个标记。 |
 
 ## <a name="next-steps"></a>后续步骤
 

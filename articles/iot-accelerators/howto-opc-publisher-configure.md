@@ -4,16 +4,16 @@ description: 本文介绍如何配置 OPC 发布服务器以指定 OPC UA 节点
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1e6f50eea559662bb0ba60e10b41c3db50db2939
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: HT
+ms.openlocfilehash: 0ebbf0d41c05f71c571d9665903ba4ba44f71bd0
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720208"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198797"
 ---
 # <a name="configure-opc-publisher"></a>配置 OPC 发布服务器
 
@@ -116,7 +116,7 @@ ms.locfileid: "76720208"
 
 ### <a name="configure-using-opc-ua-method-calls"></a>使用 OPC UA 方法调用进行配置
 
-OPC 发布服务器包括一个 OPC UA 服务器，在 62222 端口上可以访问该服务器。 如果主机名是“发布服务器”，则终结点 URI 是：`opc.tcp://publisher:62222/UA/Publisher`  。
+OPC 发布服务器包括一个 OPC UA 服务器，在 62222 端口上可以访问该服务器。 如果主机名是“发布服务器”，则终结点 URI 是：`opc.tcp://publisher:62222/UA/Publisher`。
 
 此终结点公开以下四种方法：
 
@@ -146,7 +146,7 @@ OPC 发布服务器实现以下 Azure IoT 中心直接方法调用：
 
 ### <a name="configure-username-and-password-for-authentication"></a>配置用于身份验证的用户名和密码
 
-通过 IoT 中心直接方法调用可以设置身份验证模式。 有效负载必须包含 OpcAuthenticationMode 属性以及用户名和密码  ：
+通过 IoT 中心直接方法调用可以设置身份验证模式。 有效负载必须包含 OpcAuthenticationMode 属性以及用户名和密码：
 
 ```csharp
 {
@@ -168,7 +168,7 @@ OPC 发布服务器实现以下 Azure IoT 中心直接方法调用：
 }
 ```
 
-如果有效负载种未设置 OpcAuthenticationMode 属性，则配置中的身份验证设置保持不变  。
+如果有效负载种未设置 OpcAuthenticationMode 属性，则配置中的身份验证设置保持不变。
 
 ## <a name="configure-telemetry-publishing"></a>配置遥测发布
 
@@ -181,7 +181,7 @@ OPC 发布服务器收到发布节点中的值更改通知后，会生成一条 
 遥测数据的来源如下：
 
 - 节点的 OPC 发布服务器节点配置
-- OPC 发布服务器收到其通知的 OPC UA 堆栈的 MonitoredItem 对象  。
+- OPC 发布服务器收到其通知的 OPC UA 堆栈的 MonitoredItem 对象。
 - 传递给此通知的参数，其中提供有关数据值更改的详细信息。
 
 输入到 JSON 格式消息中的遥测数据是这些对象的精选重要属性。 如果需要更多属性，则需要更改 OPC 发布服务器代码库。

@@ -1,24 +1,24 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoringConfig。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
+description: Application Insights 代理 API 参考。 Set-ApplicationInsightsMonitoringConfig. 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: d90739fbdc862d67dc2ce0f1dfdf5af5f4089a44
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899680"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189425"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
 
 本文档描述了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 设置配置文件而不进行完全重新安装。
 重新启动 IIS 以使更改生效。
@@ -42,20 +42,18 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用指定唯一的检测密钥。
 - `AppFilter='WebAppTwo'` 为指定的应用指定唯一的检测密钥。
-- 最后，`AppFilter` 还使用 `'.*'` 通配符来匹配之前的规则不匹配的所有 web 应用，并分配默认的检测密钥。
+- 最后，`AppFilter` 还使用 `'.*'` 通配符来匹配所有与先前的规则不匹配的 web 应用，并分配默认的检测密钥。
 - 添加空格以便于阅读。
 
 ```powershell
-PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
-    @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
-      @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'},
-      @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'},
-      @{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'})
-
+Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
+       @(@{MachineFilter='.*';AppFilter='WebAppExclude'},
+          @{MachineFilter='.*';AppFilter='WebAppOne';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1'}},
+          @{MachineFilter='.*';AppFilter='WebAppTwo';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2'}},
+          @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
 
-
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必需。** 此参数用于提供单个检测密钥，供目标计算机上的所有应用使用。
@@ -84,7 +82,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 **通用参数。** 使用此开关显示详细日志。
 
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 默认情况下，没有输出。
 

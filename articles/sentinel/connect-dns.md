@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262732"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190865"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 
@@ -44,9 +44,9 @@ ms.locfileid: "71262732"
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../azure-monitor/platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [Linux 代理](../azure-monitor/learn/quick-collect-linux-computer.md) | 是 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](../azure-monitor/platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | 解决方案不会使用 Azure 存储。 |
+| [Azure 存储帐户](../azure-monitor/platform/collect-azure-metrics-logs.md) | 是 | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 
@@ -73,7 +73,17 @@ ms.locfileid: "71262732"
 
 在 Log Analytics 中，搜索架构**DnsEvents** ，并确保有事件。
 
+## <a name="troubleshooting"></a>故障排除
+
+如果未在 Azure Sentinel 中显示查找查询，请执行以下步骤，以便正确显示查询：
+1. 打开[服务器上的 DNS Analytics 日志](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11))。
+2. 请确保 DNSEvents 出现在 Log Analytics 集合列表中。
+3. 启用[Azure DNS 分析](../azure-monitor/insights/dns-analytics.md)。
+4. 在 Azure DNS Analytics "下的"**配置**"下，更改任何设置，保存，然后在需要时将其更改回来，并再次保存。
+5. 检查 Azure DNS 分析以确保现在正在显示查询。
+
 ## <a name="next-steps"></a>后续步骤
+
 本文档介绍了如何将 DNS 本地设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。

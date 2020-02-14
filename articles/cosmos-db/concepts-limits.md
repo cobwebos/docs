@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759766"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200038"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -27,10 +27,10 @@ ms.locfileid: "76759766"
 | 每个数据库的最大每个 RUs （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
 | 最大每（逻辑）分区键 | 10,000 |
 | 每个（逻辑）分区键的所有项的最大存储空间| 10 GB |
-| 不同（逻辑）分区键的最大数目 | 无限制 |
-| 每个容器的最大存储 | 无限制 |
-| 每个数据库的最大存储 | 无限制 |
-| 每个帐户的最大附件大小（附件功能正在进行折旧） | 2GB |
+| 不同（逻辑）分区键的最大数目 | 不受限制 |
+| 每个容器的最大存储 | 不受限制 |
+| 每个数据库的最大存储 | 不受限制 |
+| 每个帐户的最大附件大小（附件功能正在进行折旧） | 2 GB |
 | 每 1 GB 需要的最小 ru | 10 RU/秒 |
 
 > [!NOTE]
@@ -76,8 +76,8 @@ Cosmos DB 会定期定期备份数据。 有关备份保留间隔和 windows 的
 
 | 资源 | 默认限制 |
 | --- | --- |
-| 最大数据库数 | 无限制 |
-| 每个数据库的最大容器数（或帐户） | 无限制 |
+| 最大数据库数 | 不受限制 |
+| 可以在具有共享吞吐量的数据库中设置的容器的最大数目 |25 |
 | 最大区域数 | 无限制（所有 Azure 区域） |
 
 ## <a name="per-container-limits"></a>每个容器的限制
@@ -166,7 +166,7 @@ Cosmos DB 支持针对 MongoDB 编写的应用程序的 MongoDB 线路协议。 
 | 资源 | 默认限制 |
 | --- | --- |
 | 最大 MongoDB 查询内存大小 | 40 MB |
-| MongoDB 操作的最长执行时间| 30 秒 |
+| MongoDB 操作的最长执行时间| 30s |
 
 ## <a name="try-cosmos-db-free-limits"></a>试用 Cosmos DB 可用限制
 
@@ -175,7 +175,7 @@ Cosmos DB 支持针对 MongoDB 编写的应用程序的 MongoDB 线路协议。 
 | 资源 | 默认限制 |
 | --- | --- |
 | 试用持续时间 | 30天（可以随时续订） |
-| 每个订阅的最大容器数（SQL、Gremlin、表 API） | 第 |
+| 每个订阅的最大容器数（SQL、Gremlin、表 API） | 1 |
 | 每个订阅的最大容器（MongoDB API） | 3 |
 | 每个容器的最大吞吐量 | 5000 |
 | 每个共享吞吐量数据库的最大吞吐量 | 20000 |

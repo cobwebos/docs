@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906849"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201775"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -46,6 +46,8 @@ Microsoft Azure 上的 VMware 横向云使组织能够将其自己的 Microsoft 
 具有先进的瘦和零客户端硬件和软件的10ZiG 技术是一个长久持续合作伙伴，其中包含 Microsoft 和专用的 Microsoft Azure 和 Windows 虚拟桌面合作伙伴。 10ZiG Windows 10 基于 IoT 的瘦客户端是适用于所有 Windows 虚拟桌面多用户的功能强大、可靠和经济实惠的终结点。 10ZiG Manager 软件提供卓越的管理和部署而无需额外付费。 10ZiG 技术团队、高级担保计划和无障碍演示是云中的一站式 Windows 虚拟桌面多会话支持解决方案。
 
 10ZiG's 全球市场领导，适用于虚拟桌面的瘦和零客户端终结点设备和管理软件的工作方式由其客户的工作方式举例说明。 它的瘦客户端硬件附带了周全构造的权益功能和选项，旨在确保客户根据其需求接收正确的客户端设备。 10ZiG 通过基于 Windows 和 Linux 的客户端对其设备进行定制，使其能够在虚拟桌面（云内部和外部）提供最佳性能。
+
+- [请参阅合作伙伴网站](https://www.10zig.com/)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -89,7 +91,7 @@ deviceTRUST 将 Windows 虚拟桌面的值扩展为其上下文安全技术。 d
 
 - [请参阅合作伙伴网站](https://devicetrust.com/wvd)。
 
-## <a name="hp"></a>制造
+## <a name="hp"></a>HP
 
 ![HP 徽标](./media/partners/hp.png)
 
@@ -148,6 +150,8 @@ Liquidware Essentials 通过有效地收集用户配置文件和收集重要用�
 Liquit 应用程序聚合和交付软件使企业和服务提供商能够连接到所有工作区后端（Citrix、VMWare、Windows 虚拟桌面、RDP 和旧版）并与之合并，并提供自定义且一致的客户体验，而不考虑客户的应用程序所在的位置。 当客户发布智能图标时，Liquit 根据客户的位置、设备和配置文件权限决定启动应用程序的位置。
 
 作为认证的集成合作伙伴，Liquit 可帮助加速过渡到云，而无需延迟和替换延迟。 Windows 虚拟桌面可以轻松连接到现有环境，创建工作区，并交付桌面。 然后，你可以将时间从旧的平台迁移，并在不需要用户注意的情况下在后端进行更改。 无论在何处，都可以获得一致的最终用户体验、灵活的基础结构，并保持对应用程序的控制。
+
+- [请参阅合作伙伴网站](https://www.liquit.com/wvd/)。
 
 ## <a name="login-vsi"></a>登录 .VSI
 

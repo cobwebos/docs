@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949417"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193425"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义声明转换技术配置文件
 
@@ -100,9 +100,15 @@ TransformationClaimType="collection" />
 </UserJourney>
 ```
 
+## <a name="metadata"></a>元数据
+
+| 属性 | 必需 | 说明 |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+
 ## <a name="use-a-validation-technical-profile"></a>使用验证技术配置文件
 
-声明转换技术配置文件可以用来验证信息。 在以下示例中，名为 **LocalAccountSignUpWithLogonEmail** 的[自断言技术配置文件](self-asserted-technical-profile.md)要求用户输入电子邮件两次，然后调用名为 **Validate-Email** 的[验证技术配置文件](validation-technical-profile.md)，对电子邮件进行验证。 **Validate-Email** 技术配置文件调用声明转换 **AssertEmailAreEqual** 来比较两个声明（**email** 和 **emailRepeat**）。如果在进行指定的比较后确定这两个声明不相同，则会引发异常。
+声明转换技术配置文件可以用来验证信息。 在以下示例中，名为 [LocalAccountSignUpWithLogonEmail](self-asserted-technical-profile.md) 的**自断言技术配置文件**要求用户输入电子邮件两次，然后调用名为 [Validate-Email](validation-technical-profile.md) 的**验证技术配置文件**，对电子邮件进行验证。 **Validate-Email** 技术配置文件调用声明转换 **AssertEmailAreEqual** 来比较两个声明（**email** 和 **emailRepeat**）。如果在进行指定的比较后确定这两个声明不相同，则会引发异常。
 
 ```XML
 <ClaimsTransformations>

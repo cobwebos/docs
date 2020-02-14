@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/18/2010
-ms.openlocfilehash: 6d8957fc5d4ba49dd034d6687df61c68b9d35ada
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/14/2020
+ms.openlocfilehash: cfd4c113391f2ead238f5288c255b599e91b7e3a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314277"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201452"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 
@@ -25,7 +25,7 @@ ms.locfileid: "76314277"
 某些输出类型支持[分区](#partitioning)。 [输出批大小](#output-batch-size)会有所不同以优化吞吐量。
 
 
-## <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+## <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage 第1代
 
 流分析支持[Azure Data Lake Storage 第1代](../data-lake-store/data-lake-store-overview.md)。 Azure Data Lake Storage 是适用于大数据分析工作负荷的企业级超大规模存储库。 您可以使用 Data Lake Storage 存储任何大小、类型和引入速度的数据，以便进行操作和探索分析。 流分析需要经过授权才能访问 Data Lake Storage。
 
@@ -33,21 +33,21 @@ ms.locfileid: "76314277"
 
 下表列出了用于配置 Data Lake Storage 第1代输出的属性名称及其说明。   
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 在查询中使用的友好名称，用于将查询输出定向到 Data Lake Store。 |
 | 订阅 | 包含 Azure Data Lake Storage 帐户的订阅。 |
 | 帐户名 | 要向其发送输出的 Data Lake Store 帐户的名称。 你会看到一个下拉列表，其中列出了你的订阅中可用的 Data Lake Store 帐户。 |
 | 路径前缀模式 | 用于在指定的 Data Lake Store 帐户中写入文件的文件路径。 可以指定 {date} 和 {time} 变量的一个或多个实例：<br /><ul><li>示例 1：folder1/logs/{date}/{time}</li><li>示例 2：folder1/logs/{date}</li></ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />如果文件路径模式不包含尾部反斜杠（/），则文件路径中的最后一个模式将被视为文件名前缀。 <br /><br />在这些情况下会创建新文件：<ul><li>在输出架构中进行更改</li><li>作业的外部或内部重启</li></ul> |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
-|时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
+|时间格式 | 可选。 如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV 和 Avro。|
 | 编码 | 如果使用 CSV 或 JSON 格式，则必须指定编码。 目前只支持 UTF-8 这种编码格式。|
 | 分隔符 | 仅适用于 CSV 序列化。 流分析支持大量的常见分隔符以对 CSV 数据进行序列化。 支持的值为逗号、分号、空格、制表符和竖线。|
 | 格式 | 仅适用于 JSON 序列化。 **分隔行**指定通过使每个 JSON 对象用新行分隔来设置输出的格式。 **数组**指定输出的格式为 JSON 对象的数组。 仅当作业停止或流分析移动到下个时间段时，才关闭此数组。 通常，最好使用以行分隔的 JSON，因为在输出文件仍在写入时，它不需要任何特殊处理。|
 | 身份验证模式 | 你可以使用[托管标识](stream-analytics-managed-identities-adls.md)或用户令牌授权访问你的 Data Lake Storage 帐户。 授予访问权限后，你可以通过更改用户帐户密码、删除此作业 Data Lake Storage 输出或删除流分析作业，来撤销访问权限。 |
 
-## <a name="sql-database"></a>SQL Database
+## <a name="sql-database"></a>SQL 数据库
 
 可以使用[AZURE SQL 数据库](https://azure.microsoft.com/services/sql-database/)作为本质上的关系或依赖于在关系数据库中托管的内容的应用程序的输出。 流分析作业将写入 SQL 数据库中的现有表。 表架构必须与作业输出中的字段及其类型完全匹配。 还可以通过 SQL 数据库输出选项指定[AZURE SQL 数据仓库](https://azure.microsoft.com/documentation/services/sql-data-warehouse/)作为输出。 若要了解提高写入吞吐量的方法，请参阅将[AZURE SQL 数据库作为输出的流分析](stream-analytics-sql-output-perf.md)一文。
 
@@ -55,7 +55,7 @@ ms.locfileid: "76314277"
 
 下表列出了用于创建 SQL 数据库输出的属性名称及其说明。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此数据库。 |
 | 数据库 | 要将输出发送到的数据库的名称。 |
@@ -74,15 +74,15 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 下表列出了用于创建 blob 或 ADLS Gen2 输出的属性名称及其说明。
 
-| 属性名称       | Description                                                                      |
+| 属性名称       | 说明                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | 输出别名        | 查询中使用的友好名称，用于将查询输出定向到此 blob 存储。 |
 | 存储帐户     | 要将输出发送到的存储帐户的名称。               |
 | 存储帐户密钥 | 与存储帐户关联的密钥。                              |
-| 存储容器   | 存储在 Azure Blob 服务中的 blob 的逻辑分组。 将 blob 上传到 Blob 服务时，必须为该 blob 指定一个容器。 |
+| 存储容器   | 存储在 Azure Blob 服务中的 blob 的逻辑分组。 将 blob 上载到 Blob 服务时，必须为该 blob 指定一个容器。 |
 | 路径模式 | 可选。 用于写入指定容器中的 blob 的文件路径模式。 <br /><br /> 在路径模式中，你可以选择使用日期和时间变量的一个或多个实例来指定写入 blob 的频率： <br /> {date}、{time} <br /><br />可以使用自定义 blob 分区从事件数据中指定一个自定义 {field} 名称来对 blob 进行分区。 字段名称是字母数字，并且可以包含空格、连字符和下划线。 对自定义字段的限制包括以下内容： <ul><li>字段名称不区分大小写。 例如，服务无法区分 "id" 和 "id" 列。</li><li>不允许使用嵌套字段。 相反，请在作业查询中使用别名以 "平展" 字段。</li><li>表达式不能用作字段名称。</li></ul> <br />通过此功能可以在路径中使用自定义日期/时间格式说明符配置。 一次只能指定一个自定义日期和时间格式，并用 {datetime:\<specifier>} 关键字括起来。 \<说明符的允许输入 > 为 yyyy、MM、M、dd、d、HH、H、MM、M、ss 或 s。 可以在路径中多次使用 {datetime：\<说明符 >} 关键字来形成自定义日期/时间配置。 <br /><br />示例： <ul><li>示例 1：cluster1/logs/{date}/{time}</li><li>示例 2：cluster1/logs/{date}</li><li>示例 3：cluster1/{client_id}/{date}/{time}</li><li>示例4： cluster1/{datetime： ss}/{myField}，其中查询为：从输入中选择 myField 作为 myField;</li><li>示例 5：cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br />创建的文件夹结构的时间戳遵循 UTC 而不是本地时间。<br /><br />文件命名使用以下约定： <br /><br />{路径前缀模式}/schemaHashcode_Guid_Number.extension<br /><br />示例输出文件：<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br />有关此功能的详细信息，请参阅[Azure 流分析自定义 blob 输出分区](stream-analytics-custom-path-patterns-blob-storage-output.md)。 |
-| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
-| 时间格式 | 可选。 如果在前缀路径中使用时间令牌，可以指定组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
+| 日期格式 | 可选。 如果在前缀路径中使用日期令牌，你可以选择组织文件所采用的日期格式。 示例：YYYY/MM/DD |
+| 时间格式 | 可选。 如果在前缀路径中使用时间令牌，你可以选择组织文件所采用的时间格式。 目前唯一支持的值是 HH。 |
 | 事件序列化格式 | 输出数据的序列化格式。 支持 JSON、CSV、Avro 和 Parquet。 |
 |最小行数（仅 Parquet）|每批的最小行数。 对于 Parquet，每个批处理都将创建一个新文件。 当前默认值为2000行，允许的最大值为10000行。|
 |最长时间（仅 Parquet）|每批的最长等待时间。 在此之后，即使未满足最小行要求，也会将该批写入输出。 当前默认值为1分钟，允许的最大值为2小时。 如果 blob 输出具有路径模式频率，则等待时间不能大于分区时间范围。|
@@ -107,7 +107,7 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 需要使用几个参数将事件中心的数据流配置为输出。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 在查询中使用的友好名称，用于将查询输出定向到此事件中心。 |
 | 事件中心命名空间 | 一组消息实体的容器。 创建新的事件中心后，还创建了一个事件中心命名空间。 |
@@ -129,12 +129,12 @@ Azure Blob 存储提供了一种经济高效且可缩放的解决方案，用于
 
 下表列出了用于配置 Power BI 输出的属性名称及其说明。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |提供一个友好名称，该名称在查询中用于将查询输出定向到此 Power BI 输出。 |
 | 组工作区 |若要启用与其他 Power BI 用户共享数据，可在 Power BI 帐户中选择组，如果不想写入组，请选择 **"我的工作区"** 。 更新现有组需要对 Power BI 重新进行身份验证。 |
 | 数据集名称 |提供要 Power BI 输出使用的数据集名称。 |
-| 表名称 |在 Power BI 输出的数据集下提供表名称。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。 |
+| 表名 |在 Power BI 输出的数据集下提供表名称。 目前，流分析作业的 Power BI 输出在 1 个数据集中只能有 1 个表。 |
 | 授权连接 | 需要 Power BI 授权才能配置输出设置。 向 Power BI 仪表板授予此输出访问权限后，你可以通过更改用户帐户密码、删除作业输出或删除流分析作业来撤销访问权限。 | 
 
 有关配置 Power BI 输出和仪表板的演练，请参阅[Azure 流分析和 Power BI](stream-analytics-power-bi-dashboard.md)教程。
@@ -158,7 +158,7 @@ Power BI 使用先进先出（FIFO）保留策略。 数据将在表中收集，
 bigint | Int64
 nvarchar(max) | String
 datetime | Datetime
-FLOAT | Double
+float | Double
 记录数组 | String 类型、常量值 "IRecord" 或 "IArray"
 
 ### <a name="update-the-schema"></a>更新架构
@@ -180,12 +180,12 @@ Datetime | String | String |  Datetime | String
 
 下表列出了用于创建表输出的属性名称及其说明。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |该名称是在查询中使用的友好名称，用于将查询输出定向到此表存储。 |
 | 存储帐户 |要将输出发送到的存储帐户的名称。 |
 | 存储帐户密钥 |与存储帐户关联的访问密钥。 |
-| 表名称 |表的名称。 如果该表不存在，则创建该表。 |
+| 表名 |表的名称。 如果该表不存在，则创建该表。 |
 | 分区键 |包含分区键的输出列的名称。 分区键是表中分区的唯一标识符，该表构成了实体主键的第一部分。 这是一个最大为 1 KB 的字符串值。 |
 | 行键 |包含行键的输出列的名称。 行键是分区内实体的唯一标识符。 行键构成了实体主键的第二部分。 行键是一个最大为 1 KB 的字符串值。 |
 | 批大小 |批处理操作的记录数。 默认值 (100) 对大部分作业来说都已足够。 有关修改此设置的更多详细信息，请参阅[表批处理操作规范](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation)。 |
@@ -194,9 +194,11 @@ Datetime | String | String |  Datetime | String
 
 [服务总线队列](../service-bus-messaging/service-bus-queues-topics-subscriptions.md)为一个或多个竞争使用方提供 FIFO 消息传递。 通常，接收方按消息添加到队列中的临时顺序接收和处理消息。 每条消息仅由一个消息使用方接收并处理。
 
+在[兼容性级别 1.2](stream-analytics-compatibility-level.md)中，Azure 流分析使用[高级消息队列协议（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)消息传递协议来写入 Service Bus 队列和主题。 AMQP 让您能够使用开放标准协议构建跨平台的混合应用程序。
+
 下表列出了用于创建队列输出的属性名称及其说明。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此服务总线队列。 |
 | 服务总线命名空间 |一组消息实体的容器。 |
@@ -217,7 +219,7 @@ Datetime | String | String |  Datetime | String
 
 下表列出了用于创建服务总线主题输出的属性名称及其说明。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 |在查询中使用的友好名称，用于将查询输出定向到此服务总线主题。 |
 | 服务总线命名空间 |一组消息实体的容器。 创建新的事件中心后，还创建了 Service Bus 命名空间。 |
@@ -243,7 +245,7 @@ Datetime | String | String |  Datetime | String
 
 下表描述了用于创建 Azure Cosmos DB 输出的属性。
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 输出别名 | 用于在流分析查询中引用此输出的别名。 |
 | 接收器 | Azure Cosmos DB。 |
@@ -261,13 +263,15 @@ Azure Functions 是一项无服务器计算服务，可用于按需运行代码�
 
 Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions 输出适配器可用于以下可配置属性：
 
-| 属性名称 | Description |
+| 属性名称 | 说明 |
 | --- | --- |
 | 函数应用 |Azure Functions 应用程序的名称。 |
 | 函数 |Azure Functions 应用中函数的名称。 |
-| 密钥 |如果要使用其他订阅中的 Azure 函数，可以通过提供访问函数的密钥来实现此目的。 |
+| Key |如果要使用其他订阅中的 Azure 函数，可以通过提供访问函数的密钥来实现此目的。 |
 | 最大批大小 |一种属性，可用于设置发送到 Azure 函数的每个输出批的最大大小。 输入单元以字节为单位。 默认情况下，此值为262144字节（256 KB）。 |
 | 最大批数  |一个属性，该属性允许你指定发送到 Azure Functions 的每个批中的最大事件数。 默认值为 100。 |
+
+对于已成功处理的批，Azure 流分析需要函数应用中的 HTTP 状态200。
 
 当 Azure 流分析收到 Azure 函数发出的413（"http 请求实体过大"）异常时，它将减少其发送到 Azure Functions 的批的大小。 在 Azure Function 代码中，使用此异常以确保 Azure 流分析不会发送过大的批。 此外，请确保函数中使用的最大批处理计数和大小值与在流分析门户中输入的值一致。
 
@@ -321,10 +325,10 @@ Azure 流分析通过 HTTP 触发器调用 Azure Functions。 Azure Functions �
 | 输出类型 | 分区支持 | 分区键  | 输出写入器数目 |
 | --- | --- | --- | --- |
 | Azure Data Lake Store | 是 | 在路径前缀模式中使用 {date} 和 {time} 标记。 选择日期格式，如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 HH 用于时间格式。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
-| Azure SQL Database | 是，需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果启用了 "继承分区" 选项，则会按照[完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 若要详细了解如何在将数据加载到 Azure SQL 数据库时获得更好的写入吞吐量性能，请参阅 azure[流分析输出到 AZURE Sql database](stream-analytics-sql-output-perf.md)。 |
+| Azure SQL 数据库 | 是，需要启用。 | 基于查询中的 PARTITION BY 子句。 | 如果启用了 "继承分区" 选项，则会按照[完全可并行化查询](stream-analytics-scale-jobs.md)的输入分区进行。 若要详细了解如何在将数据加载到 Azure SQL 数据库时获得更好的写入吞吐量性能，请参阅 azure[流分析输出到 AZURE Sql database](stream-analytics-sql-output-perf.md)。 |
 | Azure Blob 存储 | 是 | 使用路径模式中的事件字段的 {date} 和 {time} 标记。 选择日期格式，如 YYYY/MM/DD、DD/MM/YYYY 或 MM-DD。 HH 用于时间格式。 可以通过单个自定义事件属性 {fieldname} 或 {datetime:\<specifier>} 对 blob 输出进行分区。 | 按照[完全可并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 事件中心 | 是 | 是 | 按分区对齐方式变化。<br /> 如果事件中心输出的分区键与上游（上一个）查询步骤相同，则写入器的数量与事件中心输出中的分区数相同。 每个编写器都使用[EventHubSender 类](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)将事件发送到特定分区。 <br /> 当事件中心输出的分区键与上游（上一个）查询步骤不一致时，写入器数与该前一步骤中的分区数相同。 每个编写器都使用**EventHubClient**中的[SendBatchAsync 类](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)将事件发送到所有输出分区。 |
-| Power BI | 否 | 无 | 不适用。 |
+| Power BI | 是 | 无 | 不适用。 |
 | Azure 表存储 | 是 | 任何输出列。  | 按照[完全并行化的查询](stream-analytics-scale-jobs.md)的输入分区。 |
 | Azure 服务总线主题 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出主题中的分区数量相同。  |
 | Azure 服务总线队列 | 是 | 自动选择。 分区数基于[服务总线 SKU 和大小](../service-bus-messaging/service-bus-partitioning.md)。 分区键是每个分区的唯一整数值。| 与输出队列中的分区数量相同。 |
@@ -341,7 +345,7 @@ Azure 流分析使用可变大小的批处理来处理事件并写入输出。 �
 | 输出类型 | 最大消息大小 | 批大小优化 |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | 请参阅[Data Lake Storage 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits)。 | 每个写入操作使用最多 4 MB。 |
-| Azure SQL Database | 可使用最大批处理计数进行配置。 默认情况下，每个单次大容量插入最多10000和最多100行。<br />请参阅[AZURE SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  最初批量插入的每个批处理都具有最大批处理计数。 根据 SQL 中的可重试错误，将 Batch 拆分为半（截至最小批处理计数）。 |
+| Azure SQL 数据库 | 可使用最大批处理计数进行配置。 默认情况下，每个单次大容量插入最多10000和最多100行。<br />请参阅[AZURE SQL 限制](../sql-database/sql-database-resource-limits.md)。 |  最初批量插入的每个批处理都具有最大批处理计数。 根据 SQL 中的可重试错误，将 Batch 拆分为半（截至最小批处理计数）。 |
 | Azure Blob 存储 | 请参阅[Azure 存储限制](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)。 | Blob 块的最大大小为 4 MB。<br />最大 blob bock 计数为50000。 |
 | Azure 事件中心  | 每条消息 256 KB 或 1 MB。 <br />请参阅[事件中心限制](../event-hubs/event-hubs-quotas.md)。 |  如果输入/输出分区未对齐，则每个事件将在 `EventData` 中单独打包，并在最大消息大小的一批中发送。 如果使用了[自定义元数据属性](#custom-metadata-properties-for-output)，也会发生这种情况。 <br /><br />  当输入/输出分区对齐时，多个事件将打包到单个 `EventData` 实例，最大消息大小为，然后发送。 |
 | Power BI | 请参阅[Power BI REST API 限制](https://msdn.microsoft.com/library/dn950053.aspx)。 |

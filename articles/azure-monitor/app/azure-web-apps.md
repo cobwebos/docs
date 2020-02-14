@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407234"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189588"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -168,12 +168,12 @@ ms.locfileid: "75407234"
 
 ### <a name="application-settings-definitions"></a>应用程序设置定义
 
-|应用设置名称 |  定义 | 值 |
+|应用设置名称 |  Definition | 值 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 主扩展，控制运行时监视。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  仅在默认模式下，启用了基本功能，以便确保最佳性能。 | `default` 或 `recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否将启用二进制重写引擎 `InstrumentationEngine`。 此设置会影响性能，并影响冷启动/启动时间。 | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否将捕获 SQL & Azure 表文本以及依赖项调用。 性能警告：此设置需要 `InstrumentationEngine`。 | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | 控制是否将捕获 SQL & Azure 表文本以及依赖项调用。 性能警告：应用程序冷启动时间将会受到影响。 此设置需要 `InstrumentationEngine`。 | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>Azure 资源管理器的应用服务应用程序设置
 
@@ -229,6 +229,10 @@ ms.locfileid: "75407234"
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -308,9 +312,6 @@ ms.locfileid: "75407234"
 }
 ```
 
-> [!NOTE]
-> 该模板将在 "默认" 模式下生成应用程序设置。 此模式优化了性能，但你可以修改模板以激活所需的任何功能。
-
 ### <a name="enabling-through-powershell"></a>通过 PowerShell 启用
 
 为了通过 PowerShell 启用应用程序监视，只需更改底层应用程序设置。 下面是一个示例，它为资源组 "AppMonitoredRG" 中名为 "AppMonitoredSite" 的网站启用应用程序监视，并配置要发送到 "012345678-abcd-ef01-2345-6789abcd" 检测密钥的数据。
@@ -320,8 +321,9 @@ ms.locfileid: "75407234"
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
-$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
-$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} # preserve non Application Insights application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights instrumentation key
+$newAppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights connection string
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
@@ -370,14 +372,14 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
         * 如果不存在相似的值，则表示应用程序当前未运行或不受支持。 若要确保应用程序正在运行，请尝试手动访问应用程序 url/应用程序终结点，这将允许运行时信息变得可用。
 
     * 确认 `IKeyExists` `true`
-        * 如果为 false，请将 "APPINSIGHTS_INSTRUMENTATIONKEY ikey guid 添加到应用程序设置。
+        * 如果 `false`，请将 ikey guid `APPINSIGHTS_INSTRUMENTATIONKEY` 和 `APPLICATIONINSIGHTS_CONNECTION_STRING` 添加到应用程序设置。
 
     * 确认没有任何条目用于 `AppAlreadyInstrumented`、`AppContainsDiagnosticSourceAssembly`和 `AppContainsAspNetTelemetryCorrelationAssembly`。
         * 如果其中有任何项存在，请从应用程序中删除以下包： `Microsoft.ApplicationInsights`、`System.Diagnostics.DiagnosticSource`和 `Microsoft.AspNet.TelemetryCorrelation`。
 
 下表提供了有关这些值的含义、其根本原因和推荐修补程序的更详细说明：
 
-|问题值|说明|Fix
+|问题值|说明|修复
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值指示该扩展已检测到 SDK 的某个方面已经存在于应用程序中，并将进行回退。 这可能是由于引用 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`或 `Microsoft.ApplicationInsights`  | 删除引用。 某些 Visual studio 模板默认情况下会添加其中的某些引用，较旧版本的 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights`的引用。
 |`AppAlreadyInstrumented:true` | 如果应用程序面向 .NET Core 2.1 或2.2，并引用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.All) ，则会将其引入 Application Insights，扩展将会关闭。 | [建议](https://github.com/aspnet/Announcements/issues/287)使用 .net Core 2.1、2.2 的客户改为使用 AspNetCore 元包。|

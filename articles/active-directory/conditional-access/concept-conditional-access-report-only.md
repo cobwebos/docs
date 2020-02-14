@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180324"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186116"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什么是条件访问仅报告模式？
 
@@ -25,7 +25,8 @@ ms.locfileid: "73180324"
 仅限报表模式是一种新的条件性访问策略状态，它使管理员能够在其环境中启用条件访问策略之前对其影响进行评估。  在发布仅限报表模式时：
 
 - 可以在仅限报表模式下启用条件访问策略。
-- 在登录过程中，将计算仅限报表模式下的策略，但不执行这些策略。 结果记录在登录日志详细信息的 "**条件访问**" 和 "**仅报告（预览）** " 选项卡中。
+- 在登录过程中，将计算仅限报表模式下的策略，但不执行这些策略。
+- 结果记录在登录日志详细信息的 "**条件访问**" 和 "**仅报告（预览）** " 选项卡中。
 - 具有 Azure Monitor 订阅的客户可以使用条件性访问见解工作簿来监视其条件访问策略的影响。
 
 > [!WARNING]
@@ -37,7 +38,7 @@ ms.locfileid: "73180324"
 
 如果针对给定登录计算仅限报表模式下的策略，则有四个新的可能结果值：
 
-| 结果 | 描述 |
+| 结果 | 说明 |
 | --- | --- |
 | 仅报告：成功 | 满足所有已配置的策略条件、所需的非交互式授权控制和会话控制。 例如，多重身份验证要求由令牌中已经存在的 MFA 声明满足，或者通过在兼容的设备上执行设备检查来满足合规的设备策略。 |
 | 仅报告：失败 | 满足所有已配置的策略条件，但未满足所有必需的非交互式授予控件或会话控制。 例如，策略适用于配置了 block 控件的用户，或者设备未通过合规的设备策略。 |

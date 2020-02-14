@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793221"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191430"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>创建可从 Azure 逻辑应用调用的自定义 API
 
@@ -102,7 +102,7 @@ ms.locfileid: "74793221"
    
    * 必需：用于指定逻辑应用引擎检查 API 作业状态的 URL 的绝对路径的 `location` 标头
 
-   * 可选：用于指定引擎检查 `location` URL 获知作业状态之前应等待秒数的 `retry-after` 标头。 
+   * 可选：用于指定引擎检查 `retry-after` URL 获知作业状态之前应等待秒数的 `location` 标头。 
 
      默认情况下，引擎每隔 20 秒检查一次。 若要指定不同的时间间隔，请包括 `retry-after` 标头和下次轮询前的秒数。
 
@@ -146,7 +146,7 @@ ms.locfileid: "74793221"
 
 ## <a name="trigger-patterns"></a>触发器模式
 
-自定义 API 还可充当[触发器](./logic-apps-overview.md#logic-app-concepts)，在新数据或事件满足指定条件时启动逻辑应用。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
+自定义 API 还可充当[触发器 *，在新数据或事件满足指定条件时启动逻辑应用*](./logic-apps-overview.md#logic-app-concepts)。 此触发器可以定期检查或者等待侦听服务终结点上的新数据或事件。 如果新数据或事件满足指定的条件，触发器触发并启动正在侦听该触发器的逻辑应用。 若要以这种方式启动逻辑应用，API 可以遵循[轮询触发器](#polling-triggers)或 [Webhook 触发器](#webhook-triggers)模式。 这些模式类似于其[轮询操作](#async-pattern)和 [Webhook 操作](#webhook-actions)的对应项。 另请详细了解[触发器的用量计量](logic-apps-pricing.md)。
 
 <a name="polling-triggers"></a>
 
@@ -164,15 +164,15 @@ ms.locfileid: "74793221"
 | 找到新数据或事件？  | API 响应 | 
 | ------------------------- | ------------ |
 | 已找到 | 返回 HTTP `200 OK` 状态与响应有效负载（下一步的输入）。 <br/>此响应创建逻辑应用实例，并启动工作流。 | 
-| 未找到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
+| 找不到 | 返回 HTTP `202 ACCEPTED` 状态与 `location` 标头和 `retry-after` 标头。 <br/>对于触发器，`location` 标头还应包含 `triggerState` 查询参数，通常是“时间戳”。 API 可以使用此标识符跟踪上次触发逻辑应用的时间。 | 
 ||| 
 
 例如，若要定期检查服务的新文件，可生成具有以下行为的轮询触发器：
 
 | 请求是否包含 `triggerState`？ | API 响应 | 
 | -------------------------------- | -------------| 
-| No | 返回 HTTP `202 ACCEPTED` 状态及 `triggerState` 设置为当前时间、`retry-after` 间隔为 15 秒的 `location` 标头。 | 
-| 是 | 在 `triggerState` 的 `DateTime` 之后检查服务的已添加文件。 | 
+| 是 | 返回 HTTP `202 ACCEPTED` 状态及 `location` 设置为当前时间、`triggerState` 间隔为 15 秒的 `retry-after` 标头。 | 
+| 是 | 在 `DateTime` 的 `triggerState` 之后检查服务的已添加文件。 | 
 ||| 
 
 | 找到的文件数 | API 响应 | 
@@ -206,9 +206,9 @@ Webhook 触发器的行为非常类似于之前本主题中所述的 [Webhook �
 > [!TIP]
 > 有关 Webhook 模式的示例，请查看 [GitHub 中的 Webhook 触发器控制器示例](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs)。
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>通过逻辑应用保护对 API 的调用
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>提高从逻辑应用对 Api 的调用的安全性
 
-创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何通过逻辑应用保护对自定义 API 的调用](../logic-apps/logic-apps-custom-api-authentication.md)。
+创建自定义 API 后，请为 API 设置身份验证，以便可以通过逻辑应用安全地调用它们。 了解[如何提高从逻辑应用对自定义 api 的调用的安全性](../logic-apps/logic-apps-custom-api-authentication.md)。
 
 ## <a name="deploy-and-call-your-apis"></a>部署和调用 API
 

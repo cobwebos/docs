@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983038"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185589"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,16 +42,16 @@ ClaimsSchema 元素定义了可以引用为策略的一部分的声明类型。 
 
 ClaimType 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| ID | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
+| Id | 是 | 用于声明类型的标识符。 其他元素可以在策略中使用此标识符。 |
 
 ClaimType 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
-| 数据类型 | 1:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection 的数据类型。 基元数据类型表示C#变量数据类型的等效项。 stringCollection 表示字符串的集合。 有关详细信息，请参阅[ C#类型和变量](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)。 日期遵循 ISO 8601 约定。 |
+| 数据类型 | 1:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection 和 phoneNumber 的数据类型。 基元数据类型表示C#变量数据类型的等效项。 stringCollection 表示字符串的集合。 有关详细信息，请参阅[ C#类型和变量](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)。 日期遵循 ISO 8601 约定。 |
 | DefaultPartnerClaimTypes | 0:1 | 用于指定协议的合作伙伴默认声明类型。 可以覆盖 InputClaim 或 OutputClaim 元素中指定的 PartnerClaimType 中的值。 将此元素用于指定协议的默认名称。  |
 | Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
@@ -63,15 +63,15 @@ PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的�
 
 DefaultPartnerClaimTypes 可能包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 协议 | 1:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
+| Protocol | 1:n | 具有其默认合作伙伴声明类型名称的协议的列表。 |
 
 Protocol 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 名称 | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值包括： OAuth1、OAuth2、SAML2、OpenIdConnect。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称。 可能的值有：OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | 是 | 要使用的声明类型名称。 |
 
 在以下示例中，当标识体验框架与 SAML2 标识提供者或信赖方应用交互时，surname 声明将映射到 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`，如果使用 OpenIdConnect 和 OAuth2，该声明将映射到 `family_name`。
@@ -104,7 +104,7 @@ Protocol 元素包含以下属性：
 
 Mask 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | `Type` | 是 | 声明掩码的类型。 可能的值：`Simple` 或 `Regex`。 `Simple` 值表示简单的文本掩码应用于字符串声明的前导部分。 `Regex` 值指示正则表达式总体上应用于字符串声明。  如果指定了 `Regex` 值，则还必须通过要使用的正则表达式定义可选属性。 |
 | `Regex` | 否 | 如果 **`Type`** 设置为 `Regex`，请指定要使用的正则表达式。
@@ -144,13 +144,13 @@ Mask 元素包含以下属性：
 
 Restriction 元素可能包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | MergeBehavior | 否 | 用于将枚举值与具有相同标识符的父策略中的 ClaimType 合并的方法。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值是应追加到父策略中指定的集合的末尾的数据集合。 `Prepend` 值是应在父策略中指定的集合之前添加的数据集合。 `ReplaceAll` 值是应忽略的父策略中指定的数据集合。 |
 
 Restriction 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 枚举 | 1:n | 可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 | 模式 | 1:1 | 要使用的正则表达式。 |
@@ -159,7 +159,7 @@ Restriction 元素包含以下元素：
 
 Enumeration 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 文本 | 是 | 在用户界面中向用户显示的此选项的显示字符串。 |
 |值 | 是 | 与此选项关联的声明值。 |
@@ -188,7 +188,7 @@ Enumeration 元素包含以下属性：
 
 Pattern 元素可以包含以下属性：
 
-| Attribute | 需要 | Description |
+| 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
 | HelpText | 否 | 此声明的模式或正则表达式。 |

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031850"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191064"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>解决私有终结点连接问题
+# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>排查专用终结点连接问题
 
 本指南提供验证和诊断专用终结点连接设置的分步指导。 
 
@@ -100,7 +100,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
        ![NSG 出站规则](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. 如果连接具有验证的结果，则连接问题可能与应用程序层的机密、令牌和密码等其他方面相关。
-   - 在这种情况下，请检查与专用终结点关联的专用链接资源的配置。 请参阅[专用链接故障排除指南](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)。 
+   - 在这种情况下，请检查与专用终结点关联的专用链接资源的配置。 请参阅[专用链接故障排除指南](troubleshoot-private-link-connectivity.md)。 
 
 6. 如果问题仍未解决并且连接问题仍然存在，请与[Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)团队联系。 
 
@@ -108,4 +108,4 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
  * [在更新的子网（Azure 门户）上创建专用终结点](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [专用链接故障排除指南](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting)
+ * [专用链接故障排除指南](troubleshoot-private-link-connectivity.md)

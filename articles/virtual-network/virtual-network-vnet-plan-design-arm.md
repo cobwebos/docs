@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845588"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190466"
 ---
 # <a name="plan-virtual-networks"></a>计划虚拟网络
 
@@ -27,7 +27,7 @@ ms.locfileid: "76845588"
 
 ## <a name="naming"></a>命名
 
-所有 Azure 资源都有名称。 该名称在一个范围内必须是唯一的，但每种资源类型可能会有所不同。 例如，虚拟网络的名称在[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内必须是唯一的，但可在[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [区域](https://azure.microsoft.com/regions/#services)内重复。 当一段时间内管理多个网络资源时，定义命名资源时可一致使用的命名约定很有用。 有关建议，请参阅[命名约定](/azure/architecture/best-practices/resource-naming#networking)。
+所有 Azure 资源都有名称。 该名称在一个范围内必须是唯一的，但每种资源类型可能会有所不同。 例如，虚拟网络的名称在[资源组](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内必须是唯一的，但可在[订阅](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)或 Azure [区域](https://azure.microsoft.com/regions/#services)内重复。 当一段时间内管理多个网络资源时，定义命名资源时可一致使用的命名约定很有用。 有关建议，请参阅[命名约定](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork)。
 
 ## <a name="regions"></a>区域
 
@@ -87,7 +87,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 如果需要实施自定义路由，建议熟悉 [Azure 中的路由](virtual-networks-udr-overview.md)。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
 可使用虚拟网络对等将虚拟网络连接到其他虚拟网络，或使用 Azure VPN 网关将其连接到本地网络。
 
@@ -97,7 +97,7 @@ Azure 为子网中的出站流量创建多个默认路由。 可通过创建路�
 
 ### <a name="vpn-gateway"></a>VPN 网关
 
-可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
+可通过[站点到站点 VPN ](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或与 Azure [ExpressRoute](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的专用连接，使用 Azure [VPN 网关](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)将虚拟网络连接到本地网络。
 
 例如，可将对等和 VPN 网关结合使用以创建[中心辐射网络](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中分支虚拟网络连接到中心虚拟网络，并且中心虚拟网络连接到本地网络。
 

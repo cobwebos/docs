@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: b2b07882afb6c89c6920726db3c313dbb6a6dfc4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453485"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191483"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>为 Azure 逻辑应用中的一个或多个 integration services 环境设置单个 IP 地址
 
@@ -19,7 +19,7 @@ ms.locfileid: "75453485"
 
 本主题说明如何通过 Azure 防火墙路由出站流量，但你可以将类似的概念应用于网络虚拟设备，例如 Azure Marketplace 中的第三方防火墙。 尽管本主题重点介绍多个 ISE 实例的设置，但当方案需要限制需要访问的 IP 地址的数目时，还可以将此方法用于单个 ISE。 考虑防火墙或虚拟网络设备的额外成本是否适合你的方案。 了解有关[Azure 防火墙定价](https://azure.microsoft.com/pricing/details/azure-firewall/)的详细信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 与 ISE 在同一虚拟网络中运行的 Azure 防火墙。 如果没有防火墙，请先将名为 `AzureFirewallSubnet` 的[子网添加](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)到虚拟网络。 然后，你可以在虚拟网络中[创建和部署防火墙](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "75453485"
 
    ![设置用于定向出站流量的规则](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-rule-to-route-table.png)
 
-   | 属性 | 值 | Description |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **路由名称** | <*唯一路由名称*> | 路由表中的路由的唯一名称 |
    | **地址前缀** | <*目标地址*> | 要向其发送流量的目标系统地址。 请确保对此地址使用无类[域间路由（CIDR）表示法](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。 |
@@ -71,7 +71,7 @@ ms.locfileid: "75453485"
 
    **网络规则集合属性**
 
-   | 属性 | 值 | Description |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | <*网络规则集合名称*> | 网络规则集合的名称 |
    | **Priority** | <*优先级级别的*> | 用于运行规则集合的优先级顺序。 有关详细信息，请参阅[什么是 Azure 防火墙概念](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)？ |
@@ -80,7 +80,7 @@ ms.locfileid: "75453485"
 
    **网络规则属性**
 
-   | 属性 | 值 | Description |
+   | 属性 | 值 | 说明 |
    |----------|-------|-------------|
    | **名称** | <*网络规则名称*> | 网络规则的名称 |
    | 协议 | <*连接-协议*> | 要使用的连接协议。 例如，如果使用 NSG 规则，请同时选择**tcp**和**UDP**，而不是仅选择**tcp**。 |

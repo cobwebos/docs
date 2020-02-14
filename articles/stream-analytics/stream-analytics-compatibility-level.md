@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989852"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201792"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -49,9 +49,13 @@ Azure 流分析目前支持三种兼容性级别：
 
 当你更新兼容级别时，T-sql 编译器将用与所选兼容级别对应的语法来验证作业。
 
-## <a name="compatibility-level-12"></a>兼容级别 1.2
+## <a name="compatibility-level-12"></a>兼容性级别1。2
 
 兼容级别1.2 中引入了以下主要更改：
+
+###  <a name="amqp-messaging-protocol"></a>AMQP 消息传送协议
+
+**1.2 级别**： Azure 流分析使用[高级消息队列协议（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)消息传递协议来写入 Service Bus 队列和主题。 AMQP 让您能够使用开放标准协议构建跨平台的混合应用程序。
 
 ### <a name="geospatial-functions"></a>地理空间函数
 

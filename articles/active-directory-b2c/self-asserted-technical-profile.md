@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982732"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197912"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -187,18 +187,20 @@ ms.locfileid: "76982732"
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| setting.operatingMode | 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
-| AllowGenerationOfClaimsWithNullValues| 否| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
+| setting.operatingMode | 是 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
+| AllowGenerationOfClaimsWithNullValues| 是| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
-| EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
-| SignUpTarget | 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
-| setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showSignupLink | 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 forgotPasswordLinkLocation| 否| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
+| EnforceEmailVerification | 是 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
+| setting.retryLimit | 是 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
+| SignUpTarget | 是 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
+| setting.showCancelButton | 是 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showContinueButton | 是 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showSignupLink | 是 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置。 forgotPasswordLinkLocation| 是| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
+| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+
 ## <a name="cryptographic-keys"></a>加密密钥
 
 不使用“CryptographicKeys”元素。

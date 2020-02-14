@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833840"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190523"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 Vm 部署到专用主机
 
@@ -28,7 +28,7 @@ ms.locfileid: "75833840"
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 支持以下 VM 系列： DSv3 和 ESv3。 
+- 支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="create-a-host-group"></a>创建主机组
 
@@ -56,7 +56,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>创建主机
 
-现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  在预览期间，我们将支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
+现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。
 
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
@@ -170,7 +170,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 即使部署了虚拟机，也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
 

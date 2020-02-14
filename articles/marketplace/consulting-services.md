@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825973"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191130"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -74,8 +74,8 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 
 |符合条件的国家/地区 |   |   |   |
 |---------|----------|----------|----------|
-|澳大利亚 |法国  |     墨西哥          |西班牙       |
-|比利时   |德国 |     荷兰     |瑞典       |
+|澳大利亚 |France  |     墨西哥          |西班牙       |
+|比利时   |Germany |     荷兰     |瑞典       |
 |加拿大    |印度   |     新西兰     |英国  |
 |丹麦   |意大利   |     挪威          |美国 |
 |芬兰   |日本   |     波兰          
@@ -138,7 +138,7 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 
 标题字段有一个 50 字符的限制，必须指出产品/服务的持续时间和服务类型，以最大限度地优化搜索引擎。 所需格式如下：名称：持续时间类型
 
-示例:
+示例：
 
 
 |标题示例  |正确格式  |
@@ -151,7 +151,7 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 
 在审核“产品/服务说明”和“产品/服务摘要”时，审核团队会应用以下标准：
 
-|产品/服务类型  |必选 |建议  |
+|产品/服务类型  |必需 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |
@@ -159,7 +159,7 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 |**概念证明**    |    说明客户参加后预期可以获得的工程变化、技术项目或其他项目     | 使用最常用的搜索引擎优化关键字来优化产品/服务摘要        |
 |**研讨会**    |   包括一个详细的每日、每周或每月议程，具体取决于所选择的产品/服务持续时间。 说明研讨会的学习目标或其他可交付结果     |   使用最常用的搜索引擎优化关键字来优化产品/服务摘要      |
 
-在云合作伙伴门户中，可以通过 [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
+在云合作伙伴门户中，可以通过 [Markdown](/contribute/markdown-reference) 向商品信息添加格式。 这是一种轻型设计语言，用于优化商品信息。 
 
 **示例 Markdown 说明**
 * 在复制块的开头和结尾添加 *（无空格）以创建斜体（例如：*content*）

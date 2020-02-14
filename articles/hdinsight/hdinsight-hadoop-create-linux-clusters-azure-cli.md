@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990685"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199035"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>使用 Azure CLI 创建 HDInsight 群集
 
@@ -25,7 +25,7 @@ ms.locfileid: "76990685"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 来了解步骤。
 
@@ -44,11 +44,11 @@ Azure CLI。 如果尚未安装 Azure CLI，请参阅[安装 Azure CLI](https://
 
 2. 设置环境变量。 本文中的变量的使用基于 Bash。 在其他环境中需要进行细微的更改。 有关群集创建的可能参数的完整列表，请参阅[az-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) 。
 
-    |参数 | Description |
+    |参数 | 说明 |
     |---|---|
     |`--workernode-count`| 群集中的辅助角色节点数。 本文使用变量 `clusterSizeInNodes` 作为传递到 `--workernode-count`的值。 |
     |`--version`| HDInsight 群集版本。 本文使用变量 `clusterVersion` 作为传递到 `--version`的值。 另请参阅：[支持的 HDInsight 版本](./hdinsight-component-versioning.md#supported-hdinsight-versions)。|
-    |`--type`| HDInsight 群集的类型，例如： hadoop、interactivehive、hbase、kafka、风暴、spark、rserver、mlservices。  本文使用变量 `clusterType` 作为传递到 `--type`的值。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。|
+    |`--type`| HDInsight 群集的类型，例如： hadoop、interactivehive、hbase、kafka、风暴、spark、rserver、mlservices。  本文使用变量 `clusterType` 作为传递到 `--type`的值。 另请参阅：[群集类型和配置](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。|
     |`--component-version`|各种 Hadoop 组件的版本，以 "组件 = 版本" 格式表示的以空格分隔的版本。 本文使用变量 `componentVersion` 作为传递到 `--component-version`的值。 另请参阅： [Hadoop 组件](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)。|
 
     将 `RESOURCEGROUPNAME`、`LOCATION`、`CLUSTERNAME`、`STORAGEACCOUNTNAME`和 `PASSWORD` 替换为所需的值。 根据需要更改其他变量的值。 然后输入 CLI 命令。

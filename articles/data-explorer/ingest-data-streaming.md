@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548338"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188017"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -23,9 +23,9 @@ ms.locfileid: "74548338"
 > [!NOTE]
 > 流式引入不支持以下功能：
 > * [数据库游标](/azure/kusto/management/databasecursor)。
-> * [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
+> * [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/create-ingestion-mapping-command)数据映射。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[WEB UI](https://dataexplorer.azure.com/)。

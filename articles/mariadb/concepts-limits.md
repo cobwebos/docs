@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969541"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191157"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -21,7 +21,7 @@ ms.locfileid: "74969541"
 
 |**定价层**|**vCore(s)**| 最大连接数|
 |---|---|---|
-|基本| 第| 50|
+|基本| 1| 50|
 |基本| 2| 100|
 |常规用途| 2| 600|
 |常规用途| 4| 1250|
@@ -38,9 +38,14 @@ ms.locfileid: "74969541"
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004): 连接过多
 
+> [!IMPORTANT]
+> 为了获得最佳体验，我们建议使用 ProxySQL 等连接池来有效地管理连接。
+
+创建到 MariaDB 的新客户端连接需要一段时间，并且在建立后，这些连接会占用数据库资源（即使处于空闲状态时）。 大多数应用程序会请求很多生存期较短的连接，这将会出现这种情况。 结果是，为实际工作负荷提供的资源越少，从而降低性能。 减少空闲连接并重复使用现有连接的连接池会有助于避免这种情况。 若要了解如何设置 ProxySQL，请访问我们的[博客文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042)。
+
 ## <a name="storage-engine-support"></a>存储引擎支持
 
-### <a name="supported"></a>受支持
+### <a name="supported"></a>支持
 - [InnoDB](https://mariadb.com/kb/en/library/xtradb-and-innodb/)
 - [MEMORY](https://mariadb.com/kb/en/library/memory-storage-engine/)
 
@@ -54,11 +59,11 @@ ms.locfileid: "74969541"
 ### <a name="unsupported"></a>不支持
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。
 - SUPER 特权：[SUPER 特权](https://mariadb.com/kb/en/library/grant/#global-privileges)同样也受到限制。
-- DEFINER：需要超级权限才能创建和受限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+- DEFINER：需要超级权限才能创建和受限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `CREATE DEFINER` 命令删除 `--skip-definer` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 
-### <a name="supported"></a>受支持
+### <a name="supported"></a>支持
 - 支持 `LOAD DATA INFILE`，但必须指定 `[LOCAL]` 参数，并将其定向到 UNC 路径（通过 SMB 装载的 Azure 存储空间）。
 
 ### <a name="unsupported"></a>不支持

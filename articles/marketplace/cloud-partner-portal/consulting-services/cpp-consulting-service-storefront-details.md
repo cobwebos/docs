@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818082"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191169"
 ---
 # <a name="storefront-details-tab"></a>“店面详细信息”选项卡
 
@@ -71,7 +71,7 @@ ms.locfileid: "73818082"
 
 不要在套餐说明中包含电子邮件链接或电话号码。 套餐应附带一个“与我联系”按钮，使用该按钮可将潜在顾客上传到你在套餐中指定的潜在顾客管理目标。
 
-以 Markdown 格式输入套餐说明。 如果你不熟悉 Markdown 或 HTML 格式，请参阅[使用 Markdown 编写文档](https://docs.microsoft.com/contribute/how-to-write-use-markdown)。
+以 Markdown 格式输入套餐说明。 如果你不熟悉 Markdown 或 HTML 格式，请参阅[使用 Markdown 编写文档](/contribute/markdown-reference)。
 
 使用这些格式可确保客户能够最方便地阅读你的套餐内容。
 
@@ -170,7 +170,7 @@ Microsoft 专门侧重于提供给单个客户的固定范围、固定持续时�
 
 选择咨询服务套餐最适合的行业。
 
-**持续时间**
+**Duration**
 
 在“持续时间”下选择一个数字（例如 3 或 4），然后选择“小时”、“天”或“周”。
 

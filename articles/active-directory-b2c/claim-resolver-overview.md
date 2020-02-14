@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836042"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193373"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -44,18 +44,18 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 
 以下部分列出了可用的声明解析程序。
 
-### <a name="culture"></a>区域性
+### <a name="culture"></a>环境
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
 | {Culture:LCID}   | 语言代码的 LCID。 | 2052 |
-| {Culture:RegionName} | 区域的两字母 ISO 代码。 | 美国 |
+| {Culture:RegionName} | 区域的两字母 ISO 代码。 | US |
 | {Culture:RFC5646} | RFC5646 语言代码。 | zh-CN |
 
 ### <a name="policy"></a>策略
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信赖方策略名称。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
@@ -64,21 +64,21 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | N/A |
+| {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不可用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |`domain_hint` 查询字符串参数。 | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` 查询字符串参数。 | someone@contoso.com |
-| {OIDC:MaxAge} | `max_age`。 | N/A |
+| {OIDC:MaxAge} | `max_age`。 | 不可用 |
 | {OIDC:Nonce} |`Nonce` 查询字符串参数。 | defaultNonce |
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | login |
-| {OIDC:Resource} |`resource` 查询字符串参数。 | N/A |
+| {OIDC:Resource} |`resource` 查询字符串参数。 | 不可用 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
 
 ### <a name="context"></a>上下文
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 标识体验框架版本（内部版本号）。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -91,18 +91,40 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
 | {OAUTH-KV:loyalty_number} | 查询字符串参数。 | 1234 |
-| {OAUTH-KV:any custom query string} | 查询字符串参数。 | N/A |
+| {OAUTH-KV:any custom query string} | 查询字符串参数。 | 不可用 |
 
 ### <a name="oauth2"></a>OAuth2
 
-| 声明 | Description | 示例 |
+| 声明 | 说明 | 示例 |
 | ----- | ----------------------- | --------|
-| {oauth2:access_token} | 访问令牌。 | N/A |
+| {oauth2:access_token} | 访问令牌。 | 不可用 |
+
+## <a name="using-claim-resolvers"></a>使用声明解析程序 
+
+可以将声明解析程序用于以下元素： 
+
+| Item | 元素 | 设置 |
+| ----- | ----------------------- | --------|
+|Application Insights 技术配置文件 |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md)技术配置文件| `InputClaim`， `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md)技术配置文件| `InputClaim`， `OutputClaim`| 1, 2|
+|[OpenID connect](openid-connect-technical-profile.md)技术配置文件| `InputClaim`， `OutputClaim`| 1, 2|
+|[索赔转换](claims-transformation-technical-profile.md)技术配置文件| `InputClaim`， `OutputClaim`| 1, 2|
+|[RESTful 提供程序](restful-technical-profile.md)技术配置文件| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md)技术配置文件| `OutputClaim`| 1, 2|
+|[自断言](self-asserted-technical-profile.md)技术配置文件| `InputClaim`， `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile)技术配置文件| `OutputClaim`| 2 |
+
+设置： 
+1. `IncludeClaimResolvingInClaimsHandling` 元数据必须设置为 `true`
+1. 输入或输出声明特性 `AlwaysUseDefaultValue` 必须设置为 `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>如何使用声明解析程序
 

@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: b9d2b3916e4509e5ce3aa8a9ddd66f1cf14a8827
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 27682863a96e2f190a0dafe6e4d783029e987453
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690871"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201639"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure 虚拟机上 SQL Server 的文档更改
 
 Azure 允许你使用内置 SQL Server 的映像部署虚拟机（VM）。 本文总结了与[Azure 虚拟机上 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)的最新版本中的新功能和改进相关的文档更改。 
 
 
-## <a name="january-2020"></a>2020年1月
+## <a name="january-2020"></a>2020 年 1 月
 
 | 更改 | 详细信息 |
 | --- | --- |
@@ -50,7 +50,7 @@ Azure 允许你使用内置 SQL Server 的映像部署虚拟机（VM）。 本�
 | **自定义映像可支持性** | 你现在可以将[SQL Server IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)安装到自定义 OS 和 SQL 映像，这提供了灵活的[许可](virtual-machines-windows-sql-ahb.md)功能。 在将自定义映像注册到 SQL 资源提供程序时，请将许可证类型指定为 "AHUB"。 否则，注册将失败。 | 
 | **命名实例支持** | 如果已正确卸载默认实例，现在可以将[SQL Server IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)与命名实例一起使用。 | 
 | **门户增强功能** | 部署 SQL Server VM 的 Azure 门户体验已改进，以提高可用性。 有关详细信息，请参阅简短的[快速入门](quickstart-sql-vm-create-portal.md)和部署 SQL Server VM 的操作[方法指南](virtual-machines-windows-portal-sql-server-provision.md)。|
-|  **门户改进** | 现在可以通过使用[Azure 门户](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)，从即用即付到自带许可证中更改 SQL Server VM 的许可模式。|
+| **门户改进** | 现在可以通过使用[Azure 门户](virtual-machines-windows-sql-ahb.md#vms-already-registered-with-the-resource-provider)，从即用即付到自带许可证中更改 SQL Server VM 的许可模式。|
 | **通过 Azure SQL Server VM CLI 简化可用性组部署** | 现在，将可用性组部署到 Azure 中的 SQL Server VM 比以往更容易。 你可以使用[Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid)从命令行创建 Windows 故障转移群集、内部负载均衡器和可用性组侦听器。 有关详细信息，请参阅[使用 azure SQL SERVER VM CLI 为 AZURE VM 上的 SQL Server 配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 | 
 | &nbsp; | &nbsp; |
 

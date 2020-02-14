@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563660"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190881"
 ---
 # <a name="connect-data-from-azure-security-center"></a>连接 Azure 安全中心的数据
 
@@ -24,13 +24,12 @@ ms.locfileid: "75563660"
 
 可以通过 azure Sentinel 连接[Azure 安全中心](../security-center/security-center-intro.md)的警报，并将其流式传输到 azure Sentinel。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-- 如果要从 Azure 安全中心导出警报，你必须是订阅的参与者，该订阅的日志会进行流式处理。
+- 若要从 Azure 安全中心导出警报，你必须在你所流式传输的日志的订阅中具有安全读者角色。
 
 - 必须在订阅上运行[Azure 安全中心标准层](../security-center/security-center-pricing.md)。 否则，请[将订阅升级到 standard](https://azure.microsoft.com/pricing/details/security-center/)。
 
-- 必须以对要连接的每个订阅具有全局管理员或安全管理员权限的用户身份登录。
 
 
 ## <a name="connect-to-azure-security-center"></a>连接到 Azure 安全中心

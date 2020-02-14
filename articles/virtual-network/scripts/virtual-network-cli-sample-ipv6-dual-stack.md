@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 脚本示例-配置 IPv6 虚拟网络终结点 (预览)
+title: Azure CLI 脚本示例-配置 IPv6 前端
 titlesuffix: Azure Virtual Network
 description: 使用 Azure 虚拟网络中的 Azure CLI 启用 IPv6 终结点
 services: virtual-network
@@ -12,29 +12,29 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248899"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201351"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虚拟网络脚本示例中配置 IPv6 终结点 (预览)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虚拟网络脚本示例中配置 IPv6 终结点（预览）
 
-本文介绍如何在 Azure 中部署一个双堆栈 (IPv4 + IPv6) 应用程序, 该应用程序包含一个双堆栈子网、一个具有双堆栈子网的负载均衡器、一个具有双堆栈子网的负载均衡器、一个具有双 IP 配置的 Nic 的 Vm,双重网络安全组规则和双重公共 Ip。
+本文介绍如何在 Azure 中部署一个双堆栈（IPv4 + IPv6）应用程序，该应用程序包含一个双堆栈子网、一个具有双堆栈子网的负载均衡器、一个具有双堆栈子网的负载均衡器、一个具有双 IP 配置的 Nic 的 Vm，双重网络安全组规则和双重公共 Ip。
 
 可以通过 Azure [Cloud Shell](https://shell.azure.com/bash) 或本地 Azure CLI 安装来执行脚本。 如果在本地使用 CLI，此脚本要求运行版本 2.0.28 或更高版本。 要查找已安装的版本，请运行 `az --version`。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果在本地运行 CLI，则还需运行 `az login` 以创建与 Azure 的连接。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>先决条件
-若要使用 Azure 虚拟网络的 IPv6 功能, 你必须按如下所示配置订阅一次:
+若要使用 Azure 虚拟网络的 IPv6 功能，你必须按如下所示配置订阅一次：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure CLI 命令来检查注册状态:
+功能注册最多需要 30 分钟才能完成。 可以通过运行以下 Azure CLI 命令来检查注册状态：
 
 ```azurelci
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -273,7 +273,7 @@ az group delete --name <resourcegroupname> --yes
 
 此脚本使用以下命令创建资源组、虚拟机、可用性集、负载均衡器和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| Command | 注意 |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-create) | 创建 Azure 虚拟网络和子网。 |

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863717"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201554"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>使用 Azure 门户创建站点到站点连接（经典）
 
@@ -39,7 +39,7 @@ ms.locfileid: "75863717"
 * 确保有一台兼容的 VPN 设备，并且可对其进行配置。 有关兼容的 VPN 设备和设备配置的详细信息，请参阅[关于 VPN 设备](vpn-gateway-about-vpn-devices.md)。
 * 确认 VPN 设备有一个面向外部的公共 IPv4 地址。
 * 如果不熟悉本地网络配置中的 IP 地址范围，则需咨询能够提供此类详细信息的人员。 创建此配置时，必须指定 IP 地址范围前缀，Azure 会将该前缀路由到本地位置。 本地网络的任何子网都不得与要连接到的虚拟网络子网重叠。
-* 目前需要使用 PowerShell 来指定共享密钥和创建 VPN 网关连接。 安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 若要安装 cmdlet，请参阅[服务管理](/powershell/azure/servicemanagement/install-azure-ps)。 有关 PowerShell 安装的常规详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 使用 PowerShell 进行此配置时，请确保以管理员身份运行。
+* 需要 PowerShell，才能指定共享密钥和创建 VPN 网关连接。 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>此练习的示例配置值
 
@@ -72,7 +72,7 @@ ms.locfileid: "75863717"
 1. 从浏览器导航到 [Azure 门户](https://portal.azure.com)，并在必要时用 Azure 帐户登录。
 2. 单击 "*创建资源*"。 在“在市场中搜索”字段中，键入“虚拟网络”。 从返回的列表中找到“虚拟网络”，单击打开“虚拟网络”页。
 3. 单击 " **（改为经典）** "，然后单击 "**创建**"。
-4. 在“创建虚拟网络(经典)”页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 完成创建 VNet 之后，可以返回并添加其他子网和地址空间。
+4. 在“创建虚拟网络(经典)”页上，配置 VNet 设置。 在此页上，添加第一个地址空间和单个子网地址范围。 创建 VNet 之后，可以返回并添加其他子网和地址空间。
 
    !["创建虚拟网络" 页](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "创建虚拟网络页")
 5. 验证“订阅” 是否正确。 可以使用下拉列表更改订阅。
@@ -159,23 +159,24 @@ ms.locfileid: "75863717"
 
 ### <a name="step-1-connect-to-your-azure-account"></a>步骤 1。 连接到 Azure 帐户
 
-必须使用 PowerShell 服务管理模块在本地运行这些命令。 若要切换到服务管理，请使用以下命令：
+必须使用 PowerShell 服务管理模块在本地运行这些命令。 
 
-```powershell
-azure config mode asm
-```
+1. 通过提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
 
-1. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
+   ```powershell
+   azure config mode asm
+   ```
+2. 连接到帐户。 使用下面的示例来帮助连接：
 
    ```powershell
    Add-AzureAccount
    ```
-2. 检查该帐户的订阅。
+3. 检查该帐户的订阅。
 
    ```powershell
    Get-AzureSubscription
    ```
-3. 如果有多个订阅，请选择要使用的订阅。
+4. 如果有多个订阅，请选择要使用的订阅。
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
@@ -208,7 +209,7 @@ azure config mode asm
 
 ## <a name="reset"></a>如何重置 VPN 网关
 
-如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md#resetclassic)。
+如果丢失一个或多个站点到站点隧道上的跨界 VPN 连接，重置 VPN 网关可有效解决该情况。 在此情况下，你的本地 VPN 设备都在正常工作，但却无法与 Azure VPN 网关建立 IPsec 隧道。 有关步骤，请参阅[重置 VPN 网关](vpn-gateway-resetgw-classic.md#resetclassic)。
 
 ## <a name="changesku"></a>如何更改网关 SKU
 

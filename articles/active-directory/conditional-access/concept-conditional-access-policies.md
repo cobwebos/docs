@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077602"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186235"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件性访问策略
 
@@ -26,21 +26,21 @@ ms.locfileid: "71077602"
 
 ![条件性访问（信号 + 决策 + 强制 = 策略）](./media/concept-conditional-access-policies/conditional-access-signal-decision-enforcement.png)
 
-## <a name="assignments"></a>作业
+## <a name="assignments"></a>分配
 
 "分配" 部分控制条件访问策略的人员、内容和位置。
 
 ### <a name="users-and-groups"></a>用户和组
 
-用户和组分配策略将包括或排除的用户。 此分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
+[用户和组](concept-conditional-access-users-groups.md)分配策略将包括或排除的用户。 此分配可以包括所有用户、特定的用户组、目录角色或外部来宾用户。 
 
 ### <a name="cloud-apps-or-actions"></a>云应用或操作
 
-云应用或操作可以包括或排除将服从策略的云应用程序或用户操作。
+[云应用或操作](concept-conditional-access-cloud-apps.md)可以包括或排除将服从策略的云应用程序或用户操作。
 
 ### <a name="conditions"></a>条件
 
-策略可以包含多个条件。
+策略可以包含多个[条件](concept-conditional-access-conditions.md)。
 
 #### <a name="sign-in-risk"></a>登录风险
 
@@ -70,7 +70,9 @@ ms.locfileid: "71077602"
 
 条件性访问策略的 "访问控制" 部分控制如何强制实施策略。
 
-### <a name="grant"></a>授予
+### <a name="grant"></a>Grant
+
+[Grant](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
 
 #### <a name="block-access"></a>阻止访问
 
@@ -82,8 +84,8 @@ Grant 控件可以触发一个或多个控件的强制执行。
 
 - 需要多重身份验证（Azure 多重身份验证）
 - 要求设备标记为符合（Intune）
-- 需要混合 Azure AD 联接的设备
-- 需要核准的客户端应用
+- 要求使用加入混合 Azure AD 的设备
+- 需要批准的客户端应用
 - 需要应用保护策略
 
 管理员可以选择要求使用以下选项之一之前的控件或所有选定的控件。 多个控件的默认值为 "全部需要"。
@@ -93,9 +95,9 @@ Grant 控件可以触发一个或多个控件的强制执行。
 
 ### <a name="session"></a>会话
 
-会话控制可限制体验 
+[会话控制](concept-conditional-access-session.md)可限制体验 
 
-- 使用应用强制实施的限制
+- 使用应用所强制实施的限制
    - 目前仅适用于 Exchange Online 和 SharePoint Online。
       - 传递设备信息，以允许控制授予完全访问权限或受限访问权限。
 - 使用条件访问应用控制
@@ -121,11 +123,11 @@ Grant 控件可以触发一个或多个控件的强制执行。
 
 ![空白条件性访问策略](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+本文[常见的条件性访问策略](concept-conditional-access-policy-common.md)包括一些我们认为对大多数组织有用的策略。
+
 ## <a name="next-steps"></a>后续步骤
 
-[使用条件访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
-
-[常见的条件访问策略](concept-conditional-access-policy-common.md)
+[使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9f00bebfbab7b3726930e212893ae9dd2f5c17c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835787"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193432"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -121,7 +121,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory �
 
 ## <a name="azure-ad-technical-provider-operations"></a>Azure AD 技术提供程序操作
 
-### <a name="read"></a>读取
+### <a name="read"></a>读
 
 **Read** 操作读取有关单个用户帐户的数据。 若要读取用户数据，需要提供一个键作为输入声明，例如 **objectId**、**userPrincipalName**、**signInNames**（任何类型，可以是用户名和基于电子邮件的帐户）或 **alternativeSecurityId**。
 
@@ -253,15 +253,16 @@ Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory �
 ```
 ## <a name="metadata"></a>元数据
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | 操作 | 是 | 要执行的操作。 可能的值：`Read`、`Write`、`DeleteClaims` 或 `DeleteClaimsPrincipal`。 |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | 否 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
-| UserMessageIfClaimsPrincipalDoesNotExist | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
-| RaiseErrorIfClaimsPrincipalAlreadyExists | 否 | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
-| UserMessageIfClaimsPrincipalAlreadyExists | 否 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
-| ApplicationObjectId | 否 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md)。 |
-| ClientId | 否 | 作为第三方访问租户的客户端标识符。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md) |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | 是 | 如果目录中不存在该用户对象，则引发错误。 可能的值：`true` 或 `false`。 |
+| UserMessageIfClaimsPrincipalDoesNotExist | 是 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalDoesNotExist 属性说明），则指定当用户对象不存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
+| RaiseErrorIfClaimsPrincipalAlreadyExists | 是 | 如果该用户对象已存在，则引发错误。 可能的值：`true` 或 `false`。|
+| UserMessageIfClaimsPrincipalAlreadyExists | 是 | 如果要引发错误（参阅 RaiseErrorIfClaimsPrincipalAlreadyExists 属性说明），则指定当用户对象已存在时要向用户显示的消息。 可将值[本地化](localization.md)。|
+| ApplicationObjectId | 是 | 扩展属性的应用程序对象标识符。 值：应用程序的 ObjectId。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md)。 |
+| ClientId | 是 | 作为第三方访问租户的客户端标识符。 有关详细信息，请参阅[在自定义配置文件编辑策略中使用自定义属性](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
 
 
 

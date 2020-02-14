@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766040"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198201"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在光栅地图上呈现自定义数据
 
-本文介绍如何将[静态图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)与图像组合功能一起使用，以允许叠加到光栅地图的顶部。 图像组合包括使用额外数据（例如自定义图钉、标签和几何叠加）恢复光栅磁贴的功能。
+本文介绍如何通过图像组合功能使用[静态图像服务](https://docs.microsoft.com/rest/api/maps/render/getmapimage)，以允许在光栅地图的顶部进行重叠。 图像组合包括使用额外数据（例如自定义图钉、标签和几何叠加）恢复光栅磁贴的功能。
 
 若要呈现自定义图钉、标签和几何叠加，可以使用 Postman 应用程序。 您可以使用 Azure Maps[数据服务 api](https://docs.microsoft.com/rest/api/maps/data)来存储和渲染覆盖区。
 
 > [!Tip]
 > 使用 Azure Maps Web SDK 在网页上显示简单的映射比使用静态图像服务通常更具成本效益。 Web SDK 使用地图磁贴，除非用户平移并缩放地图，否则他们通常只为每个地图负载生成一小部分事务。 请注意，Azure Maps web SDK 提供了用于禁用平移和缩放的选项。 此外，Azure Maps web SDK 提供了一组更丰富的数据可视化选项，而不是静态地图 web 服务。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
@@ -43,7 +43,7 @@ Azure Maps 帐户 S0 层仅支持 `pins` 参数的单个实例。 使用该功�
 
 1. 创建用于存储请求的集合。 在 Postman 应用中，选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**集合**"。 将该集合命名为，然后选择 "**创建**" 按钮。 
 
-2. 若要创建请求，请再次选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**请求**"。 输入图钉的 "**请求名称**"。 选择你在上一步中创建的集合作为请求保存位置，然后选择 "**保存**"。
+2. 若要创建请求，请再次选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**请求**"。 输入图钉的 "**请求名称**"。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择“保存”。
     
     ![在 Postman 中创建请求](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Azure Maps 帐户 S0 层仅支持 `pins` 参数的单个实例。 使用该功�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. 若要获取 udId，请在 Postman 应用中打开新选项卡，然后在 "生成器" 选项卡上选择 "获取 HTTP 方法" 并在状态 URI 发出 GET 请求。 如果数据上传成功，你将在响应正文中收到一个 udId。 复制 udId。
+6. 若要获取 udId，请在 Postman 应用中打开新选项卡。 在 "生成器" 选项卡上选择 "获取 HTTP 方法"。在状态 URI 发出 GET 请求。 如果数据上传成功，将在响应正文中收到 udId。 复制 udId。
 
    ```JSON
    {

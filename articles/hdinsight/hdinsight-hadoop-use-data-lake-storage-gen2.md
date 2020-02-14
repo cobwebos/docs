@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767664"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186880"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -57,7 +57,7 @@ Data Lake Storage Gen2 作为存储选项，几乎所有 Azure HDInsight 群集�
 1. 单击“创建”。
 1. 在 "**创建存储帐户**" 屏幕上：
     1. 选择正确的订阅和资源组。
-    1. 输入 Data Lake Storage Gen2 帐户的名称。 有关存储帐户命名约定的详细信息，请参阅[Azure 资源的命名约定](/azure/architecture/best-practices/resource-naming#storage)。
+    1. 输入 Data Lake Storage Gen2 帐户的名称。 有关存储帐户命名约定的详细信息，请参阅[Azure 资源的命名约定](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage)。
     1. 单击 "**高级**" 选项卡。
     1. 在**Data Lake Storage Gen2**下，单击 "**分层命名空间**" 旁边的 "**启用**"。
     1. 单击“查看 + 创建”。
@@ -102,13 +102,13 @@ Data Lake Storage Gen2 作为存储选项，几乎所有 Azure HDInsight 群集�
 
 您可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 使用以下模板和 Azure CLI 代码片段之前，请将以下占位符替换为正确的值：
 
-| 占位符 | Description |
+| 占位符 | 说明 |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Azure 订阅的 ID |
 | `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
 | `<MANAGEDIDENTITYNAME>` | 将获得 Azure Data Lake Storage Gen2 帐户的权限的托管标识的名称。 |
 | `<STORAGEACCOUNTNAME>` | 要创建的新 Azure Data Lake Storage Gen2 帐户。 |
-| `<CLUSTERNAME>` | HDInsight 群集的名称。 |
+| `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
 | `<PASSWORD>` | 使用 SSH 和 Ambari 仪表板登录到群集所用的密码。 |
 
 下面的代码片段执行以下初始步骤：

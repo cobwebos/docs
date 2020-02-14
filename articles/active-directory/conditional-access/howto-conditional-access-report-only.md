@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180298"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186086"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>在仅限报表模式下配置条件访问策略（预览）
 
 若要在仅限报表模式下配置条件访问策略，请执行以下操作：
 
 1. 以条件访问管理员、安全管理员或全局管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
 1. 根据需要配置策略条件和所需的授权控制。
 1. 在 "**启用策略**" 下，将切换设置为**仅报告**模式。
@@ -40,6 +40,9 @@ ms.locfileid: "73180298"
 1. 浏览到**Azure Active Directory** > **登录**。
 1. 选择 "登录" 或添加筛选器以缩小结果范围。
 1. 在 "**详细信息**" 抽屉中，选择 "**仅限报告（预览）** " 选项卡，以查看登录期间评估的策略。
+
+> [!NOTE]
+> 下载登录日志时，请选择 "JSON 格式" 以包含仅限条件访问报告结果数据。
 
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>设置与 Azure AD 的 Azure Monitor 集成
 
@@ -61,7 +64,7 @@ ms.locfileid: "73180298"
 1. 选择时间范围（如果时间范围超过可用的数据集，则报表将显示所有可用数据）。 设置**条件访问策略**和**时间范围**参数后，报表将加载。
    1. （可选）搜索各个**用户**或**应用**以缩小报表范围。
 1. 选择 "时间范围" 中的数据，按用户数或登录数查看。
-1. 根据**数据视图**，**影响摘要**显示所选参数作用域中的用户或登录的数量，按总数、**成功**、**失败**、**需要用户操作**和**不应用**. 选择一个磁贴来检查特定结果类型的登录。 
+1. 根据**数据视图**，**影响摘要**显示所选参数作用域中的用户或登录的数量，按总数量、**成功**、**失败**、**需要用户操作**和**不应用**。 选择一个磁贴来检查特定结果类型的登录。 
    1. 如果更改了工作簿参数，则可以选择保存副本以供将来使用。 选择报表顶部的 "保存" 图标，并提供要保存到的名称和位置。
 1. 向下滚动以查看每个条件的登录细目。
 1. 查看报表底部的**登录详细信息**，调查按上述选项筛选的单个登录事件。

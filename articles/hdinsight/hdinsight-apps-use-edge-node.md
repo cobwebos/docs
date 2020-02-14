@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
-ms.openlocfilehash: b8bb68f7da74e547b020ae00a4672e10d70cbfd1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844456"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199001"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 群集上使用空边缘节点
 
@@ -52,7 +52,7 @@ ms.locfileid: "76844456"
 
 如示例中所示，可以选择性地调用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md)来执行其他配置，例如，在边缘节点中安装 [Apache Hue](hdinsight-hadoop-hue-linux.md)。 脚本操作脚本必须可在 Web 上公开访问。  例如，如果该脚本存储在 Azure 存储中，请使用公共容器或公共 blob。
 
-边缘节点虚拟机大小必须满足 HDInsight 群集工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。
+边缘节点虚拟机大小必须满足 HDInsight 群集工作节点 vm 的大小要求。 有关建议的工作节点 vm 的大小信息，请参阅[在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。
 
 创建边缘节点后，可以使用 SSH 连接到边缘节点，并运行客户端工具访问 HDInsight 中的 Hadoop 群集。
 
@@ -69,7 +69,7 @@ ms.locfileid: "76844456"
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>将边缘节点添加到现有群集
 
-本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板将边缘节点添加到现有 HDInsight 群集。  可以在 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/) 中找到 Resource Manager 模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
 
 1. 选择以下图像登录到 Azure，并在 Azure 门户中打开 Azure 资源管理器模板。
 
@@ -77,11 +77,11 @@ ms.locfileid: "76844456"
 
 1. 配置以下属性：
 
-    |属性 |Description |
+    |属性 |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|选择用于现有 HDInsight 群集的资源组。|
-    |位置|选择现有 HDInsight 群集的位置。|
+    |Location|选择现有 HDInsight 群集的位置。|
     |群集名称|输入现有 HDInsight 群集的名称。|
 
 1. 选中 **"我同意上述条款和条件**"，然后选择 "**购买**" 创建边缘节点。
@@ -91,7 +91,7 @@ ms.locfileid: "76844456"
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>创建群集时添加边缘节点
 
-本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在[Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)中找到资源管理器模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh 的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
+本部分介绍如何使用 Resource Manager 模板创建包含边缘节点的 HDInsight 群集。  可以在[Azure 快速入门模板库](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)中找到资源管理器模板。 资源管理器模板调用位于 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh的脚本操作。脚本不执行任何操作。  演示如何从资源管理器模板调用脚本操作。
 
 1. 创建一个 HDInsight 群集（如果没有）。  请参阅 [开始使用 HDInsight 中的 Hadoop](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -101,11 +101,11 @@ ms.locfileid: "76844456"
 
 1. 配置以下属性：
 
-    |属性 |Description |
+    |属性 |说明 |
     |---|---|
     |订阅|选择用于创建群集的 Azure 订阅。|
     |资源组|创建用于该群集的新资源组。|
-    |位置|选择资源组的位置。|
+    |Location|选择资源组的位置。|
     |群集名称|输入要创建的新群集的名称。|
     |群集登录用户名|输入 Hadoop HTTP 用户名。  默认名称为 **admin**。|
     |群集登录密码|输入 Hadoop HTTP 用户密码。|
@@ -158,7 +158,7 @@ ms.locfileid: "76844456"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解详细信息，请参阅以下文章：
+本文介绍了如何添加边缘节点以及如何访问边缘节点。 若要了解更多信息，请参阅下列文章：
 
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md)：了解如何将 HDInsight 应用程序安装到群集。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)：了解如何将未发布的 HDInsight 应用程序部署到 HDInsight。

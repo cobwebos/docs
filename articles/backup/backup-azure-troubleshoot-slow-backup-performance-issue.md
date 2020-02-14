@@ -4,12 +4,12 @@ description: 提供了故障排除指导，帮助你诊断 Azure 备份性能问
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172581"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198604"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>排查在 Azure 备份中备份文件和文件夹时速度缓慢的问题
 
@@ -25,6 +25,18 @@ ms.locfileid: "74172581"
 此外，我们强烈建议查看 [Azure Backup service FAQ](backup-azure-backup-faq.md)（Azure 备份服务常见问题），确保所遇到的问题并非任何常见配置问题。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>原因：备份作业在未优化模式下运行
+
+* MARS 代理可以使用 USN （更新序列号）更改日志或未**优化模式**在**优化模式下**运行备份作业，方法是通过扫描整个卷来检查目录或文件的更改。
+* 未优化模式的速度较慢，因为代理必须扫描卷上的每个文件，并与元数据进行比较以确定更改的文件。
+* 若要验证这一点，请从 MARS 代理控制台打开**作业详细信息**，并检查状态以查看它是否显示 **"传输数据" （未优化，可能需要更长时间）** ，如下所示：
+
+    ![在未优化模式下运行](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* 以下情况可能会导致备份作业以未优化模式运行：
+  * 第一次备份（也称为初始复制）将始终以未优化模式运行
+  * 如果上一个备份作业失败，则下一个计划的备份作业将以未优化的方式运行。
 
 <a id="cause1"></a>
 

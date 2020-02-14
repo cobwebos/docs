@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509999"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186471"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -33,7 +33,7 @@ ms.locfileid: "76509999"
 
 有关 IoT Edge 最新版本中包含的内容的信息，请参阅[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。
 
@@ -133,14 +133,14 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 
 有关这些安装选项的详细信息，请继续阅读本文，或转到[所有安装参数](#all-installation-parameters)。
 
-## <a name="offline-installation"></a>脱机安装
+## <a name="offline-or-specific-version-installation"></a>脱机或特定版本安装
 
 在安装期间，下载两个文件：
 
 * Microsoft Azure IoT Edge cab，其中包含 IoT Edge 安全守护程序（iotedged）、小鲸鱼容器引擎和小鲸鱼 CLI。
-* Visual C++ Redistributable Package（VC 运行时）msi 文件
+* Visual C++可再发行组件包（VC 运行时） MSI
 
-你可以提前将其中一个或两个文件下载到设备，然后将安装脚本指向包含这些文件的目录。 安装程序首先会检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则可以在不使用 internet 连接的情况下安装。 你还可以使用此功能来安装特定版本的组件。  
+如果在安装过程中设备将处于脱机状态，或者，如果要安装 IoT Edge 的特定版本，则可以提前将其中一个或两个文件下载到设备。 当安装时，请将安装脚本指向包含已下载文件的目录。 安装程序首先检查该目录，然后仅下载未找到的组件。 如果所有文件都可脱机使用，则可以在不使用 internet 连接的情况下安装。
 
 有关最新 IoT Edge 安装文件以及早期版本，请参阅[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
@@ -151,7 +151,17 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-你还可以将脱机安装路径参数与 IoTEdge 命令一起使用，本文稍后会介绍。
+>[!NOTE]
+>`-OfflineInstallationPath` 参数将在提供的目录中查找名为**Microsoft-Azure-IoTEdge**的文件。 从 IoT Edge 1.0.9 版本开始，可以使用两个 .cab 文件，一个用于 AMD64 设备，另一个用于 ARM32。 下载适用于你的设备的正确文件，然后重命名该文件以删除体系结构后缀。
+
+`Deploy-IoTEdge` 命令安装 IoT Edge 组件，然后需要继续执行 `Initialize-IoTEdge` 命令，以将设备设置为 IoT 中心设备 ID 和连接。 直接运行命令并提供 IoT 中心的连接字符串，或者使用上一节中的链接之一，了解如何使用设备预配服务自动设置设备。
+
+```powershell
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+Initialize-IoTEdge
+```
+
+还可以将脱机安装路径参数与 IoTEdge 命令一起使用。
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
@@ -205,29 +215,6 @@ docker -H npipe:////./pipe/iotedge_moby_engine images
 
 有关可用于与设备上运行的容器和图像交互的命令的详细信息，请参阅[Docker 命令行接口](https://docs.docker.com/engine/reference/commandline/docker/)。
 
-## <a name="update-an-existing-installation"></a>更新现有安装
-
-如果之前已在设备上安装了 IoT Edge 运行时，并使用 IoT 中心的标识对其进行了设置，则可以更新运行时，而不必重新输入设备信息。
-
-有关详细信息，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
-
-此示例演示指向现有配置文件并使用 Windows 容器的安装：
-
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Update-IoTEdge
-```
-
-更新 IoT Edge 时，可以使用其他参数来修改更新，包括：
-
-* 直接流量通过代理服务器，或
-* 将安装程序指向某个脱机目录
-* 必要时重新启动而不提示
-
-无法使用脚本参数声明 IoT Edge 代理容器映像，因为该信息已在先前安装的配置文件中设置。 若要修改代理容器映像，请在 config.yaml 文件中修改。
-
-有关这些更新选项的详细信息，请使用命令 `Get-Help Update-IoTEdge -full` 或引用[所有安装参数](#all-installation-parameters)。
-
 ## <a name="uninstall-iot-edge"></a>卸载 IoT Edge
 
 若要从 Windows 设备中删除 IoT Edge 安装，请在 PowerShell 管理窗口中使用以下命令。 此命令会删除 IoT Edge 运行时，以及现有的配置和 Moby 引擎数据。
@@ -249,7 +236,7 @@ IoTEdge 命令在 Windows IoT Core 上不起作用。 若要从 Windows IoT Core
 
 IoTEdge 命令将下载并部署 IoT Edge 安全守护程序及其依赖项。 部署命令接受这些通用参数，以及其他参数。 有关完整列表，请使用命令 `Get-Help Deploy-IoTEdge -full`。  
 
-| 参数 | 接受的值 | 注释 |
+| 参数 | 接受的值 | Comments |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 为默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的小鲸鱼容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
@@ -261,7 +248,7 @@ IoTEdge 命令将下载并部署 IoT Edge 安全守护程序及其依赖项。 �
 
 IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息。 然后，此命令生成的大部分信息都存储在 iotedge\config.yaml 文件中。 初始化命令接受这些公共参数，以及其他参数。 有关完整列表，请使用命令 `Get-Help Initialize-IoTEdge -full`。
 
-| 参数 | 接受的值 | 注释 |
+| 参数 | 接受的值 | Comments |
 | --------- | --------------- | -------- |
 | **手动** | 无 | **开关参数**。 如果未指定设置类型，则手动为默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
 | **Dps** | 无 | **开关参数**。 如果未指定设置类型，则手动为默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
@@ -277,7 +264,7 @@ IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息�
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 
-| 参数 | 接受的值 | 注释 |
+| 参数 | 接受的值 | Comments |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器 OS，则 Windows 为默认值。 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
@@ -287,7 +274,7 @@ IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息�
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
-| 参数 | 接受的值 | 注释 |
+| 参数 | 接受的值 | Comments |
 | --------- | --------------- | -------- |
 | **团队** | none | 此标志会强制卸载，以防上一次卸载尝试失败。
 | **RestartIfNeeded** | none | 此标志允许卸载脚本在不提示的情况下重新启动计算机（如有必要）。 |

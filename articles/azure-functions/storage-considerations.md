@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 和有关加密存储的数据的存储要求。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 353fdd3bf7775e3bc7a9d017a9e8dd8238b09830
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964977"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190296"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -17,7 +17,7 @@ ms.locfileid: "76964977"
 
 |存储服务  | 函数使用情况  |
 |---------|---------|
-| [Azure Blob 存储](/storage/blobs/storage-blobs-overview.md)     | 维护绑定状态和功能键。  <br/>还由[中的任务中心使用 Durable Functions](durable/durable-functions-task-hubs.md)。 |
+| [Azure Blob 存储](../storage/blobs/storage-blobs-introduction.md)     | 维护绑定状态和功能键。  <br/>还由[中的任务中心使用 Durable Functions](durable/durable-functions-task-hubs.md)。 |
 | [Azure 文件](../storage/files/storage-files-introduction.md)  | 用于在[消耗计划](functions-scale.md#consumption-plan)中存储和运行函数应用代码的文件共享。 |
 | [Azure 队列存储](../storage/queues/storage-queues-introduction.md)     | 由[中的任务中心使用 Durable Functions](durable/durable-functions-task-hubs.md)。   |
 | [Azure 表存储](../storage/tables/table-storage-overview.md)  |  由[中的任务中心使用 Durable Functions](durable/durable-functions-task-hubs.md)。       |

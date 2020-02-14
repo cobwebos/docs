@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608714"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185576"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>为外部用户管理对 Azure AD 权限管理的访问权限
 
@@ -91,7 +91,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 ### <a name="review-your-conditional-access-policies"></a>查看条件访问策略
 
-- 请确保从新的来宾用户无法满足的任何条件性访问策略中排除来宾，因为这样会阻止用户登录到你的目录。 例如，来宾可能没有已注册的设备，不在已知的位置，并且不想重新注册多重身份验证（MFA），因此在条件性访问策略中添加这些要求会阻止来宾使用权利层. 有关详细信息，请参阅[什么是条件性访问中的条件 Azure Active Directory？](../conditional-access/conditions.md)。
+- 请确保从新的来宾用户无法满足的任何条件性访问策略中排除来宾，因为这样会阻止用户登录到你的目录。 例如，来宾可能没有已注册的设备，不在已知的位置，并且不想重新注册多重身份验证（MFA），因此在条件性访问策略中添加这些要求会阻止来宾使用权利层. 有关详细信息，请参阅[什么是条件性访问中的条件 Azure Active Directory？](../conditional-access/concept-conditional-access-conditions.md)。
 
     ![Azure AD 条件访问策略排除设置](./media/entitlement-management-external-users/conditional-access-exclude.png)
 
@@ -143,7 +143,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 如果要删除此目录中的来宾用户帐户，可以设置删除之前的天数。 如果要在来宾用户帐户丢失其最后一次分配到任何访问包时立即将其删除，请设置将**此目录中的外部用户删除到0前的天数**。
 
-1. 单击“ **保存**”。
+1. 单击 **“保存”** 。
 
 ## <a name="next-steps"></a>后续步骤
 

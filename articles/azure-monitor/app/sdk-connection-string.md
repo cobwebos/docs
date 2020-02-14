@@ -8,12 +8,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992061"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190097"
 ---
 # <a name="connection-strings"></a>连接字符串
 
@@ -140,10 +140,10 @@ ms.locfileid: "76992061"
 - 授权方案默认为 "ikey" 
 - 检测密钥：00000000-0000-0000-0000-000000000000
 - 区域服务 Uri 基于显式重写值： 
-   - 引入： https://custom.com:111/
-   - 实时指标： https://custom.com:222/
-   - Profiler： https://custom.com:333/ 
-   - 调试器： https://custom.com:444/   
+   - 引入： https：\//custom.com:111/
+   - 实时指标： https：\//custom.com:222/
+   - Profiler： https：\//custom.com:333/ 
+   - 调试器： https：\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>如何设置连接字符串

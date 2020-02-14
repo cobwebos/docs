@@ -2,13 +2,13 @@
 title: 配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集 |Microsoft Docs
 description: 本文介绍如何使用 Azure Red Hat OpenShift 上托管 Azure Monitor 来配置监视 Kubernetes 群集。
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979776"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190076"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 
@@ -20,8 +20,8 @@ ms.locfileid: "75979776"
 
 可以使用以下受支持的方法，为新的或 Azure Red Hat OpenShift 的一个或多个现有部署启用容器 Azure Monitor：
 
-- 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集
-- 对于使用 Azure 资源管理器模板的新群集
+- 对于来自 Azure 门户或使用 Azure 资源管理器模板的现有群集。
+- 对于使用 Azure 资源管理器模板的新群集，或在使用[Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create)创建新群集时使用。
 
 ## <a name="supported-and-unsupported-features"></a>支持和不支持的功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "75979776"
 - 实时数据（预览）
 - [收集](container-insights-update-metrics.md)群集节点和 pod 中的指标，并将其存储在 Azure Monitor 度量值数据库中
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 若要启用和访问容器 Azure Monitor 中的功能，至少需要是 Azure 订阅中的 Azure*参与者*角色的成员，以及配置了 Azure Monitor for 容器的 Log Analytics 工作区的[*Log Analytics 参与者*](../platform/manage-access.md#manage-access-using-azure-permissions)角色的成员。
 
@@ -111,7 +111,7 @@ ms.locfileid: "75979776"
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
 
-    输出如下所示：
+    输出类似于以下内容：
 
     ```azurecli
     provisioningState       : Succeeded
@@ -121,7 +121,7 @@ ms.locfileid: "75979776"
 
 执行以下步骤以启用对 Azure 中部署的 Azure Red Hat OpenShift 群集的监视。 可以从 Azure 门户或使用所提供的模板来实现此目的。
 
-### <a name="from-the-azure-portal"></a>通过 Azure 门户
+### <a name="from-the-azure-portal"></a>从 Azure 门户
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -195,7 +195,7 @@ ms.locfileid: "75979776"
     az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
-    输出如下所示：
+    输出类似于以下内容：
 
     ```azurecli
     provisioningState       : Succeeded

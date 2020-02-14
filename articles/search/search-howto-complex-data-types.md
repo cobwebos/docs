@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754354"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190999"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>如何在 Azure 中为复杂数据类型建模认知搜索
 
@@ -125,7 +125,7 @@ Azure 认知搜索本机支持复杂类型和集合。 这些类型使你能够�
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>筛选、facet 和排序复杂字段
 
-用于筛选和现场搜索的相同[OData 路径语法](query-odata-filter-orderby-syntax.md)还可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，规则适用，用于管理可以标记为可排序或可查找的子字段。 有关这些规则的详细信息，请参阅[创建索引 API 参考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+用于筛选和现场搜索的相同[OData 路径语法](query-odata-filter-orderby-syntax.md)还可用于分面、排序和选择搜索请求中的字段。 对于复杂类型，规则适用，用于管理可以标记为可排序或可查找的子字段。 有关这些规则的详细信息，请参阅[创建索引 API 参考](/rest/api/searchservice/create-index)。
 
 ### <a name="faceting-sub-fields"></a>分面子字段
 
@@ -149,7 +149,7 @@ Azure 认知搜索本机支持复杂类型和集合。 这些类型使你能够�
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-与顶级简单字段一样，复杂字段的简单子字段只能包含在筛选器中（如果**它们在索引**定义中设置为 `true`。 有关详细信息，请参阅[创建索引 API 参考](https://docs.microsoft.com/rest/api/searchservice/create-index#request)。
+与顶级简单字段一样，复杂字段的简单子字段只能包含在筛选器中（如果**它们在索引**定义中设置为 `true`。 有关详细信息，请参阅[创建索引 API 参考](/rest/api/searchservice/create-index)。
 
 ## <a name="next-steps"></a>后续步骤
 

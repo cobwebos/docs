@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845129"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191181"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -107,7 +107,7 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 选择 "概述" 选项卡（如果尚未这样做）。 使用下拉列表选择要在其中禁用网络观察程序的订阅。
 通过单击箭头，展开所选订阅的区域列表。 对于任何给定的，使用右侧的3个点访问上下文菜单。
-单击 "禁用网络观察程序" 开始禁用。 系统会要求你确认此步骤。 单击 "是" 以继续。
+单击 "禁用网络观察程序" 开始禁用。 系统会要求你确认此步骤。 单击“是”继续操作。
 在门户上，你必须为每个订阅中的每个区域单独执行此操作。
 
 
@@ -132,5 +132,3 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 * [安全组视图](network-watcher-security-group-view-overview.md)
 * [NSG 流日志记录](network-watcher-nsg-flow-logging-overview.md)
 * [虚拟网络网关故障排除](network-watcher-troubleshoot-overview.md)
-
-创建网络观察程序实例后，可以在虚拟机内启用数据包捕获。 若要了解如何操作，请参阅[创建警报触发的数据包捕获](network-watcher-alert-triggered-packet-capture.md)

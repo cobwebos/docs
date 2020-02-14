@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177369"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198865"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>优化 HDInsight 中的 Apache Spark 作业
 
-了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常见的难题是内存压力，因为配置不正确（特别是错误的执行器）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。
+了解如何为特定工作负荷优化 [Apache Spark](https://spark.apache.org/) 群集配置。  最常见的难题是内存压力，因为配置不正确（特别是错误的执行器）、长时间运行的操作以及导致笛卡尔操作的任务。 可通过以下方式为作业提速：使用适当的缓存，并允许[数据倾斜](#optimize-joins-and-shuffles)。 若要实现最佳性能，应监视和查看长时间运行并耗用资源的 Spark 作业执行。 有关 HDInsight 上 Apache Spark 入门的信息，请参阅[使用 Azure 门户创建 Apache Spark 群集](apache-spark-jupyter-spark-sql-use-portal.md)。
 
 以下部分介绍常用的 Spark 作业优化方法和建议。
 
@@ -59,11 +59,13 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 | 存储类型 | 文件系统 | 速度 | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
-| Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
-| Azure Blob 存储（安全） | **wasbs：** //url/ | **标准** | 是 | 暂时性群集 |
-| Azure Data Lake Storage 第2代| **abfs：** //url/ | **较快** | 是 | 暂时性群集 |
-| Azure Data Lake Storage Gen 1| **adl:** //url/ | **较快** | 是 | 暂时性群集 |
-| 本地 HDFS | **hdfs:** //url/ | **最快** | No | 全天候交互型群集 |
+| Azure Blob 存储 | **wasb:** //url/ | **Standard** | 是 | 暂时性群集 |
+| Azure Blob 存储（安全） | **wasbs：** //url/ | **Standard** | 是 | 暂时性群集 |
+| Azure Data Lake Storage Gen 2| **abfs：** //url/ | **较快** | 是 | 暂时性群集 |
+| Azure Data Lake Storage 第1代| **adl:** //url/ | **较快** | 是 | 暂时性群集 |
+| 本地 HDFS | **hdfs:** //url/ | **最快** | 是 | 全天候交互型群集 |
+
+有关适用于 HDInsight 群集的存储选项的完整说明，请参阅[比较用于 Azure hdinsight 群集的存储选项](../hdinsight-hadoop-compare-storage-options.md)。
 
 ## <a name="use-the-cache"></a>使用缓存
 
@@ -74,7 +76,7 @@ Spark 提供自己的本机缓存机制，可通过各种方法（比如 `.persi
     * 不能用于分区，这可能会在将来的 Spark 版本中更改。
 
 * 存储级缓存（推荐）
-    * 可以使用 [Alluxio](https://www.alluxio.io/) 实现。
+    * 可以在 HDInsight 上使用[IO 缓存](apache-spark-improve-performance-iocache.md)功能实现。
     * 使用内存中和 SSD 缓存。
 
 * 本地 HDFS（推荐）
@@ -106,6 +108,8 @@ Spark 在运行时会将数据放在内存中，因此，管理内存资源是�
 * 首选在执行程序或分区上执行更多工作的 `TreeReduce`，而不是在驱动程序上执行所有工作的 `Reduce`。
 * 使用 DataFrame，而不是级别较低的 RDD 对象。
 * 创建用于封装操作（比如“Top N”、各种聚合或窗口化操作）的 ComplexType。
+
+有关其他故障排除步骤，请参阅[Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 异常](apache-spark-troubleshoot-outofmemory.md)。
 
 ## <a name="optimize-data-serialization"></a>优化数据序列化
 
@@ -193,7 +197,11 @@ sql("SELECT col1, col2 FROM V_JOIN")
 3. 跨并行应用程序分布查询。
 4. 基于试用版和前述因素（如 GC 开销）修改大小。
 
-通过查看时间线视图、SQL 图、作业统计信息等等，监视查询性能中的离群值或其他性能问题。 有时，一个或几个执行程序的速度比其他执行程序要慢，执行任务时花费的时间也长得多。 这通常发生在较大的群集（超过 30 个节点）上。 在这种情况下，应将工作划分成更多任务，以便计划程序可以补偿速度较慢的任务。 例如，任务数量应至少为应用程序中执行程序内核数的两倍。 也可以使用 `conf: spark.speculation = true` 对任务启用推理执行。
+有关使用 Ambari 配置执行器的详细信息，请参阅[Apache Spark 设置-Spark](apache-spark-settings.md#configuring-spark-executors)执行器。
+
+通过查看时间线视图、SQL 图、作业统计信息等等，监视查询性能中的离群值或其他性能问题。 有关使用 YARN 和 Spark 历史记录服务器调试 Spark 作业的信息，请参阅[调试在 Azure HDInsight 上运行 Apache Spark 作业](apache-spark-job-debugging.md)。 有关使用 YARN 时间线服务器的提示，请参阅[Access APACHE HADOOP YARN 应用程序日志](../hdinsight-hadoop-access-yarn-app-logs-linux.md)。
+
+有时，一个或几个执行程序的速度比其他执行程序要慢，执行任务时花费的时间也长得多。 这通常发生在较大的群集（超过 30 个节点）上。 在这种情况下，应将工作划分成更多任务，以便计划程序可以补偿速度较慢的任务。 例如，任务数量应至少为应用程序中执行程序内核数的两倍。 也可以使用 `conf: spark.speculation = true` 对任务启用推理执行。
 
 ## <a name="optimize-job-execution"></a>优化作业执行
 

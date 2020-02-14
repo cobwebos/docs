@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932647"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185759"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Azure AD 访问评审是什么？
 
@@ -62,9 +62,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 | Azure 资源角色 | 指定的审阅者</br>自我审查 | [Azure AD PIM](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) | Azure 门户 |
 
 
-## <a name="onboard-access-reviews"></a>载入访问评审
+## <a name="create-access-reviews"></a>创建访问评审
 
-若要进行检查，请执行以下步骤。
+若要创建访问评审，请执行以下步骤：
 
 1. 请访问[Azure 门户](https://portal.azure.com)来管理访问评审，并以全局管理员或用户管理员身份登录。
 
@@ -74,13 +74,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 1. 选择 "**标识调控**"。
 
-1. 单击 "**访问评审**"。
- 
-    ![访问评审起始页](./media/access-reviews-overview/access-reviews-overview-onboard.png)
+1. 在 "入门" 页上，单击 "**创建访问评审**" 按钮。
 
-1. 在该页上，单击 "**立即开始**" 按钮。
-    
-      ![板载访问评审](./media/access-reviews-overview/access-reviews-overview-select-onboard.png)
+   ![访问评审起始页](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
 
 ## <a name="learn-about-access-reviews"></a>了解访问评审
@@ -118,9 +114,9 @@ Azure AD 支持在组织内进行内部协作和与外部组织的用户（例�
 
 下面是一些示例许可方案，可帮助您确定您必须拥有的许可证数量。
 
-| 方案 | 计算 | 许可证数量 |
+| 场景 | 计算 | 许可证数量 |
 | --- | --- | --- |
-| 管理员将创建组 A 的访问评审，其中包含75个用户和1个组所有者，并将该组所有者指定为审阅者。 | 1组所有者作为审阅者的许可证 | 第 |
+| 管理员将创建组 A 的访问评审，其中包含75个用户和1个组所有者，并将该组所有者指定为审阅者。 | 1组所有者作为审阅者的许可证 | 1 |
 | 管理员将创建组 B 的访问评审，其中包含500用户和3组所有者，并将3个组所有者分配为审阅者。 | 每个组所有者作为审阅者的3个许可证 | 3 |
 | 管理员将创建组 B 的访问评审，其中包含500个用户。 使其成为自我审查。 | 每个用户作为自助审阅者的500许可证 | 500 |
 | 管理员将创建组 C 的访问评审，其中包含50成员用户和25个来宾用户。 使其成为自我审查。 | 将每个用户的许可证作为自助审阅者。50<br/>（来宾用户享有所需的1:5 比） | 50 |

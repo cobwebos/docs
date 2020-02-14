@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424967"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186215"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
 使用[Azure Active Directory （Azure AD）条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用的方式。 在条件性访问策略中，定义触发策略的原因（"当发生此情况时"）的响应（"执行此操作"）。
 
-![控制](./media/controls/10.png)
+![控件](./media/controls/10.png)
 
 在条件性访问的上下文中，
 
@@ -31,7 +31,7 @@ ms.locfileid: "75424967"
 
 Condition 语句与您的控件的组合表示一种条件性访问策略。
 
-![控制](./media/controls/61.png)
+![控件](./media/controls/61.png)
 
 每个控制要么限制人员或系统必须满足哪些要求才能登录，要么限制用户在登录后可以执行哪些操作。
 
@@ -49,7 +49,7 @@ Condition 语句与您的控件的组合表示一种条件性访问策略。
 - 满足所有选定控制 (AND)
 - 满足一个选定控制 (OR)
 
-![控制](./media/controls/18.png)
+![控件](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>多重身份验证
 
@@ -85,18 +85,18 @@ Condition 语句与您的控件的组合表示一种条件性访问策略。
 由于员工使用移动设备执行个人和工作任务，因此可能需要能够保护设备访问的公司数据，即使这些设备不受你管理，也不例外。
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据，而不受任何移动设备管理 (MDM) 解决方案的影响。
 
-利用核准客户端应用程序，可以要求客户端应用程序必须支持 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。 要求批准的客户端应用的条件性访问策略也称为[基于应用的条件性访问策略](app-based-conditional-access.md)。 有关支持的核准客户端应用程序列表，请参阅[核准客户端应用程序要求](technical-reference.md#approved-client-app-requirement)。
+利用核准客户端应用程序，可以要求客户端应用程序必须支持 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，才能访问云应用程序。 例如，可以限制为只有 Outlook 应用程序，才能访问 Exchange Online。 要求批准的客户端应用的条件性访问策略也称为[基于应用的条件性访问策略](app-based-conditional-access.md)。 有关支持的核准客户端应用程序列表，请参阅[核准客户端应用程序要求](concept-conditional-access-grant.md#require-approved-client-app)。
 
 ### <a name="app-protection-policy-preview"></a>应用保护策略（预览）
 
 由于员工使用移动设备执行个人和工作任务，因此可能需要能够保护设备访问的公司数据，即使这些设备不受你管理，也不例外。
 可以使用 [Intune 应用程序保护策略](https://docs.microsoft.com/intune/app-protection-policy)，帮助保护公司数据，而不受任何移动设备管理 (MDM) 解决方案的影响。
 
-使用应用保护策略，你可以将访问权限限制为已报告给 Azure AD 的客户端应用程序已收到[Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)。 例如，你可以将对 Exchange Online 的访问限制为具有 Intune 应用保护策略的 Outlook 应用。 需要应用保护策略的条件访问策略也称为[基于应用保护的条件性访问策略](app-protection-based-conditional-access.md)。 
+使用应用保护策略，你可以将访问权限限制为已报告给 Azure AD 的客户端应用程序已收到[Intune 应用保护策略](https://docs.microsoft.com/intune/app-protection-policy)。 例如，你可以将对 Exchange Online 的访问限制为具有 Intune 应用保护策略的 Outlook 应用。 需要应用保护策略的条件访问策略也称为[基于应用保护的条件性访问策略](concept-conditional-access-session.md#application-enforced-restrictions)。 
 
 必须先将设备注册到 Azure AD，然后才能将应用程序标记为受策略保护。
 
-有关受支持的受保护策略的客户端应用列表，请参阅[应用保护策略要求](technical-reference.md#app-protection-policy-requirement)。
+有关受支持的受保护策略的客户端应用列表，请参阅[应用保护策略要求](concept-conditional-access-session.md#application-enforced-restrictions)。
 
 ### <a name="terms-of-use"></a>使用条款
 
@@ -133,11 +133,11 @@ Condition 语句与您的控件的组合表示一种条件性访问策略。
 
 用于创建自定义控件的选项位于 "**条件访问**" 页的 "**管理**" 部分中。
 
-![控制](./media/controls/82.png)
+![控件](./media/controls/82.png)
 
 单击“新建自定义控件”，打开包含控件 JSON 数据文本框的边栏选项卡。  
 
-![控制](./media/controls/81.png)
+![控件](./media/controls/81.png)
 
 ### <a name="deleting-custom-controls"></a>删除自定义控件
 
@@ -155,7 +155,7 @@ Condition 语句与您的控件的组合表示一种条件性访问策略。
 
 通过会话控制，可以限制云应用程序中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
 
-![控制](./media/controls/31.png)
+![控件](./media/controls/31.png)
 
 ### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
 

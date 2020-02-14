@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379765"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194460"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
 本主题介绍了如何排查和诊断企业状态漫游问题，并提供已知问题的列表。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>故障排除预备步骤 
 
@@ -31,13 +34,13 @@ ms.locfileid: "74379765"
 1. 已在设备上安装包含最新更新的 Windows 10，最低版本需为 1511（OS 内部版本 10586 或更高）。 
 1. 设备是已加入 Azure AD 的或已加入混合 Azure AD 的。 有关详细信息，请参阅[如何使设备受 Azure AD 控制](overview.md)。
 1. 确保如**启用企业状态漫游**中所述在 Azure AD 中为租户启用了[企业状态漫游](enterprise-state-roaming-enable.md)。 可以为所有用户启用漫游，也可以仅为选定的一组用户启用漫游。
-1. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
+1. 为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
-## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
+## <a name="information-to-include-when-you-need-help"></a>你需要帮助时应包含的信息
 如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
 
-* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
+* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述你所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
 * **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
 * **关于用户的信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
 * **关于设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
@@ -46,6 +49,7 @@ ms.locfileid: "74379765"
 包含这些信息有助于我们尽快解决问题。
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>排查和诊断问题
+
 本部分提供有关如何排查和诊断企业状态漫游相关问题的建议。
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>验证同步；“同步设置”设置页 
@@ -66,13 +70,13 @@ ms.locfileid: "74379765"
 1. 打开命令提示符后，键入“*dsregcmd.exe /status*”。
 1. 在预期的输出中，**AzureAdJoined** 字段值应为“YES”，**WamDefaultSet** 字段值应为“YES”，**WamDefaultGUID** 字段值应是末尾为“(AzureAd)”的 GUID。
 
-**潜在问题**： **WamDefaultSet**和**AzureAdJoined**在字段值中都有 "NO"，则设备已加入域并已注册到 Azure AD，设备不会同步。如果显示了此设备，则设备可能需要等待策略应用，或者在连接到 Azure AD 时，设备的身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销再重新登录，或者在任务计划程序中启动任务，来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
+**潜在问题**： **WamDefaultSet**和**AzureAdJoined**在字段值中都有 "NO"，则设备已加入域并已注册到 Azure AD，设备不会同步。如果显示了此设备，则设备可能需要等待策略应用，或者在连接到 Azure AD 时，设备的身份验证失败。 用户可能需要等待几个小时来应用策略。 其他故障排除步骤可能包括通过注销并重新登录，或在任务计划程序中启动任务来重试自动注册。 某些情况下，在权限提升的命令提示窗口中运行“*dsregcmd.exe /leave*”，重新启动，并重试注册，可能有助于解决此问题。
 
-**潜在问题**： **SettingsUrl**的字段为空，且设备未同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员导航到“Azure Active Directory” > “设备” > “企业状态漫游”禁用并重新启用“用户可以跨设备同步设置和应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这未解决该问题，则在设备证书错误的情况下，**SettingsUrl** 可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
+**潜在问题**： **SettingsUrl**的字段为空，且设备未同步。在 Azure Active Directory 门户中启用企业状态漫游之前，用户可能已登录到设备。 重启设备并让用户登录。 （可选）在门户中，尝试让 IT 管理员导航到“Azure Active Directory” > “设备” > “企业状态漫游”禁用并重新启用“用户可以跨设备同步设置和应用数据”。 重新启用后，重新启动设备并让用户登录。 如果这不能解决此问题，如果设备证书不正确， **SettingsUrl**可能为空。 在此情况下，在权限提升的命令提示符窗口中运行“*dsregcmd.exe /leave*”，重启然后重试注册，可能有助于解决此问题。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企业状态漫游和多重身份验证 
 
-在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档 [KB3193683](https://support.microsoft.com/kb/3193683)。 
+在某些情况下，如果未配置 Azure 多重身份验证，企业状态漫游可能无法同步数据。 有关这些症状的详细信息，请参阅支持文档[KB3193683](https://support.microsoft.com/kb/3193683)。 
 
 **潜在问题**：如果在 Azure Active Directory 门户中将设备配置为需要多重身份验证，则在使用密码登录到 Windows 10 设备时可能无法对设置进行同步。 这种多重身份验证配置旨在保护 Azure 管理员帐户。 通过 Microsoft Passport for Work PIN 或通过访问其他 Azure 服务（如 Office 365）时完成多重身份验证，管理员用户仍能登录到 Windows 10 设备，从而进行同步。
 
@@ -149,12 +153,12 @@ ms.locfileid: "74379765"
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>已加入 Azure AD 的设备不同步，且用户具有混合大小写的用户主体名称。
 
-如果用户的 UPN 混用大小写（例如 UserName 而非 username），并且该用户位于已从 Windows 10 内部版本 10586 升级到 14393 的 Azure AD 联接设备上，则用户的设备可能无法同步。 
+如果用户具有混合大小写 UPN （例如，用户名而不是用户名），并且用户在已从 Windows 10 版本10586升级到14393的 Azure AD 联接设备上，则该用户的设备可能无法同步。 
 
 **建议的操作**  
 用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到“设置” > “系统” > “关于”使设备脱离，再选择“从工作或学校管理或断开”。 清理以下文件，Azure AD 将通过以下方式再次联接设备：转到“设置” > “系统” > “关于”，并选择“连接到工作或学校”。 继续将设备加入到 Azure Active Directory 并完成该流。
 
-在清理步骤中，清除以下文件：
+在清除步骤中，清理以下文件：
 - `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 settings.dat
 - `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account` 文件夹下的所有文件
 

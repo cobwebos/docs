@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 667fa1c85c63ffb87e49c4bf99112f57d0c85a72
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031915"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191043"
 ---
 # <a name="troubleshoot-private-link-service-connectivity-problems"></a>排查专用链接服务连接问题
 
@@ -112,4 +112,4 @@ ms.locfileid: "77031915"
 
  * [创建专用链接服务（CLI）](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
 
- * [专用终结点疑难解答指南](https://docs.microsoft.com/azure/private-link/private-endpoint-connectivity-troubleshooting)
+ * [专用终结点疑难解答指南](troubleshoot-private-endpoint-connectivity.md)

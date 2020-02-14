@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207391"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185846"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -55,9 +55,9 @@ ms.locfileid: "74207391"
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>问：为什么我的用户在其 Windows 10 设备上看到一条错误消息，指出 "你的组织已删除设备" 或 "你的组织已禁用了设备"？
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>问：为什么我的用户在其 Windows 10 设备上看到一条错误消息，指出 "你的组织已删除设备" 或 "你的组织已禁用了设备"？
 
-**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，会向用户颁发允许单一登录的[主刷新令牌（PRT）](concept-primary-refresh-token.md) 。 PRT 的有效性取决于设备本身的 validaity。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
+**答：** 在加入或注册到 Azure AD 的 Windows 10 设备上，会向用户颁发允许单一登录的[主刷新令牌（PRT）](concept-primary-refresh-token.md) 。 PRT 的有效性取决于设备本身的有效性。 如果 Azure AD 在中删除或禁用了设备，则用户将看到此消息，而无需从设备本身启动操作。 在以下任一情况下，都可以删除或禁用设备 Azure AD： 
 
 - 用户从 "我的应用" 门户禁用该设备。 
 - 管理员（或用户）在 Azure 门户或使用 PowerShell 删除或禁用设备
@@ -108,7 +108,7 @@ ms.locfileid: "74207391"
 
 ### <a name="q-why-do-i-see-duplicate-device-entries-in-the-azure-portal"></a>问：为什么在 Azure 门户中看不到重复的设备条目？
 
-**答：**
+**答:**
 
 - 对于 Windows 10 和 Windows Server 2016，如果反复尝试分离再重新加入同一个设备，则可能会出现重复条目。 
 - 使用“添加工作或学校帐户”的每个 Windows 用户将创建具有相同设备名称的新设备记录。
@@ -119,7 +119,7 @@ ms.locfileid: "74207391"
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>问：在 FIPS 模式下 Azure AD 中的 Windows 10 设备注册是否支持 Tpm？
 
-**答：** Windows 10 设备注册仅支持符合 FIPS 标准的 TPM 2.0，不支持 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续 Azure AD 联接或混合 Azure AD 加入。 请注意，Microsoft 不提供任何工具来为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 
+**答：** Windows 10 设备注册仅支持符合 FIPS 标准的 TPM 2.0，不支持 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续 Azure AD 联接或混合 Azure AD 加入。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 联系你的硬件 OEM 以获得支持。 
 
 ---
 
@@ -285,7 +285,7 @@ ms.locfileid: "74207391"
 
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>问：如何实现删除设备在本地 Azure AD 注册状态吗？
 
-**答：** 
+**答:** 
 - 对于 Windows 10 Azure AD 注册的设备，请**访问 > 访问工作或学校** > **帐户**的**设置**。 选择帐户，然后选择“断开连接”。 设备注册为 Windows 10 上的每个用户配置文件。
 - 对于 iOS 和 Android，你可以使用 "Microsoft Authenticator 应用程序**设置** > **设备注册**"，然后选择 "**注销设备**"。
 - 对于 macOS，可以使用 Microsoft Intune 公司门户应用程序从管理中取消注册设备，并删除任何注册。 
@@ -312,7 +312,7 @@ ms.locfileid: "74207391"
 
 **备注：**
 
-- 你的条件访问策略中包含的用户需要[macOS 的支持的 Office 版本](../conditional-access/technical-reference.md#client-apps-condition)来访问资源。 
+- 你的条件访问策略中包含的用户需要[macOS 的支持的 Office 版本](../conditional-access/concept-conditional-access-conditions.md)来访问资源。 
 - 在首次尝试访问期间，用户使用公司门户时会看到注册设备的提示。
 
 ---

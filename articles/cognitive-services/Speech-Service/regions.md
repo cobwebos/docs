@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168360"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201146"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -96,7 +96,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
-### <a name="text-to-speech"></a>文本转语音
+### <a name="text-to-speech"></a>文本到语音转换
 
 有关文本到语音的参考文档，请参阅[文本到语音 REST API](rest-text-to-speech.md)。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846159"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185916"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>条件性访问经典策略迁移
 
@@ -27,7 +27,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 - 现在可以解决以前无法处理的方案。
 - 可以通过合并来减少需要管理的策略数。
 - 你可以在一个中心位置管理所有条件访问策略。
-- Azure 经典门户将停用。
+- Azure 经典门户即将停用。
 
 本文介绍将现有的条件性访问策略迁移到新框架需要了解的内容。
 
@@ -89,7 +89,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![条件访问条件](./media/policy-migration/16.png)
  
-Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端应用条件的[基于应用](technical-reference.md#approved-client-app-requirement)的经典策略允许**受支持**和**不受支持**的[设备平台](technical-reference.md#device-platform-condition)。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](technical-reference.md#device-platform-condition)。 
+适用于 Office 365 Exchange Online 的基于应用的经典策略，其中包括作为客户端应用条件的**Exchange Active Sync** ，它允许支持的和**不受** **支持**的设备平台。 尽管无法在相关的新策略中配置单个设备平台，但可以将支持状态限制为[受支持的设备平台](concept-conditional-access-conditions.md#device-platforms)。 
 
 ![条件访问选择 Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ Office 365 Exchange Online 的、将 **Exchange Active Sync** 包含为客户端
 
 ### <a name="device-platforms"></a>设备平台
 
-包含[基于应用的控制条件](technical-reference.md#approved-client-app-requirement)的经典策略中已预先将 iOS 和 Android 配置为[设备平台条件](technical-reference.md#device-platform-condition)。 
+基于应用的控件的经典策略是预配置的 iOS 和 Android 作为设备平台条件。 
 
-在新策略中，需要选择希望单独支持的[设备平台](technical-reference.md#device-platform-condition)。
+在新策略中，需要选择希望单独支持的[设备平台](concept-conditional-access-conditions.md#device-platforms)。
 
 ![条件访问设备平台选择](./media/policy-migration/41.png)
 

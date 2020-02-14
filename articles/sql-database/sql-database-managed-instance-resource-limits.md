@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443829"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201724"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -38,8 +38,8 @@ ms.locfileid: "75443829"
 | 最大实例保留存储 |  常规用途： 8 TB<br/>业务关键： 1 TB | 常规用途： 8 TB<br/> 业务关键 1 TB、2 TB 或 4 TB，具体取决于核心数 |
 
 > [!IMPORTANT]
-> - Gen4 硬件正在逐步推出。建议在 Gen5 硬件上部署新的托管实例。
-> - 目前还仅在以下区域提供 Gen4 硬件：北欧、西欧、美国东部、美国中南部、美国中北部、美国西部2、美国中部、加拿大中部、印度南部和韩国中部。
+> - Gen4 硬件正在被淘汰，不再适用于新部署。 所有新的托管实例都必须部署在 Gen5 硬件上。
+> - 考虑将[托管实例移至第5代](sql-database-service-tiers-vcore.md)硬件，以体验更广泛的 vCore 和存储可伸缩性、加速网络、最佳 IO 性能和最小滞后时间。
 
 ### <a name="in-memory-oltp-available-space"></a>内存中 OLTP 可用空间 
 
@@ -47,8 +47,8 @@ ms.locfileid: "75443829"
 
 | 内存中 OLTP 空间  | **Gen5** | **Gen4** |
 | --- | --- | --- |
-| 4 个 vCore  | 3.14 GB | |   
-| 8 个 vCore  | 6.28 GB | 8 GB |
+| 4 Vcore  | 3.14 GB | |   
+| 8 Vcore  | 6.28 GB | 8 GB |
 | 16 Vcore | 15.77 GB | 20 GB |
 | 24 Vcore | 25.25 GB | 36 GB |
 | 32 Vcore | 37.94 GB | |
@@ -134,10 +134,10 @@ ms.locfileid: "75443829"
 
 |订阅类型| 托管实例子网的最大数目 | VCore 单元的最大数目 * |
 | :---| :--- | :--- |
-|现用现付|3|320|
+|即用即付|3|320|
 |CSP |8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
 |即用即付开发/测试|3|320|
-|企业开发/测试|3|320|
+|Enterprise 开发/测试|3|320|
 |EA|8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
@@ -162,7 +162,7 @@ ms.locfileid: "75443829"
 
      ![问题类型配额](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. 单击“下一步”。
+3. 单击 **“下一步”** 。
 4. 在新支持请求的 "**问题" 选项卡**上：
    - 对于“严重性”，选择问题的严重性级别。
    - 对于“详细信息”，提供有关问题的其他信息，包括错误消息。
@@ -176,7 +176,7 @@ ms.locfileid: "75443829"
      > - 在配额增加后，现有子网中的每个服务层所需的 Vcore 数（如果需要扩展现有子网。
      > - 新子网中所需的新子网数和每个服务层的 Vcore 总数（如果需要在新子网中部署托管实例）。
 
-5. 单击“下一步”。
+5. 单击 **“下一步”** 。
 6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
 7. 单击“创建”。
 

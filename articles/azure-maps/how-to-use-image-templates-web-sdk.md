@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911575"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198218"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
 
@@ -24,7 +24,7 @@ ms.locfileid: "75911575"
  - 可以使用填充模式图像呈现多边形层。 
  - HTML 标记可以使用图像和其他 HTML 元素呈现点。
 
-为了确保层具有良好的性能，在呈现之前，需要将这些图像加载到地图图像 sprite 资源中。 默认情况下， [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)会将几个颜色的标记图像预加载到地图图像 sprite。 这些相同的标记图像和其他图像作为 SVG 模板提供，可用于创建具有自定义比例的图像，以及客户的主要颜色和辅助颜色。 总共提供了42个映像模板;27个符号图标和15个多边形填充模式。
+为了确保层具有良好的性能，请在呈现前将图像加载到地图图像动画处理资源。 默认情况下，SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)将几个颜色的标记图像预加载到地图图像的子画面。 这些标记图像和其他标记图像作为 SVG 模板提供。 它们可用于创建具有自定义比例的图像，或用作客户主要和辅助颜色。 总共提供了42个图像模板：27个符号图标和15个多边形填充模式。
 
 可以通过使用 `map.imageSprite.createFromTemplate` 函数，将图像模板添加到地图图像 sprite 资源。 此函数允许传入多达五个参数;
 
@@ -32,11 +32,11 @@ ms.locfileid: "75911575"
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-其中，`id` 是创建的唯一标识符，在将其添加到地图图像 sprite 时，会将其分配给映像。 在层中使用此标识符来指定要呈现的图像资源。 `templateName` 指定要使用的映像模板。 `color` 选项设置图像的主要颜色，`secondaryColor` 选项设置图像的辅助颜色。 `scale` 选项会在将图像模板应用于图像子画面之前先对其进行缩放。 当图像应用于图像子画面时，它将转换为 PNG。 若要确保清晰渲染，最好在将图像模板添加到子画面之前先对其进行缩放，然后再将其添加到子画面。
+`id` 是您创建的唯一标识符。 将该 `id` 添加到地图图像动画层后，会将其分配给映像。 在层中使用此标识符来指定要呈现的图像资源。 `templateName` 指定要使用的映像模板。 `color` 选项设置图像的主要颜色，`secondaryColor` 选项设置图像的辅助颜色。 `scale` 选项会在将图像模板应用于图像子画面之前先对其进行缩放。 当图像应用于图像子画面时，它将转换为 PNG。 若要确保清晰渲染，最好在将图像模板添加到子画面之前向上向上扩展，而不是在层中进行缩放。
 
-此函数以异步方式将图像加载到图像 sprite，因而返回可等待此函数完成的承诺。
+此函数以异步方式将图像加载到图像 sprite。 因此，它将返回可等待此函数完成的承诺。
 
-下面的代码演示如何创建一个内置模板的图像，并将其用于符号层。
+下面的代码演示如何从一个内置模板创建一个图像，并将其用于符号层。
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -106,24 +106,24 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 ## <a name="create-custom-reusable-templates"></a>创建自定义的可重用模板
 
-如果你的应用程序使用具有不同图标的相同图标，或者如果你要创建添加其他图像模板的模块，则可以通过使用 `atlas` 命名空间上的下列静态函数，从 Azure Maps web SDK 轻松添加和检索这些图标。
+如果你的应用程序使用不同图标的相同图标，或者如果你要创建添加其他图像模板的模块，则可以从 Azure Maps web SDK 轻松添加和检索这些图标。 对 `atlas` 命名空间使用以下静态函数。
 
-| 名称 | 返回类型 | Description | 
+| 名称 | 返回类型 | 说明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | 按名称检索 SVG 模板。 |
 | `getAllImageTemplateNames()` | string[] |  按名称检索 SVG 模板。 |
 
 SVG 图像模板支持以下占位符值：
 
-| 占位符 | Description |
+| 占位符 | 说明 |
 |-|-|
 | `{color}` | 主要颜色。 | 
 | `{secondaryColor}` | 辅助颜色。 | 
 | `{scale}` | 将 SVG 图像添加到地图图像动画层后，会将其转换为 png 图像。 此占位符可用于在转换模板之前对其进行缩放，确保它清晰呈现。 | 
 | `{text}` | 与 HTML 标记一起使用时呈现文本的位置。 |
 
-下面的示例演示如何获取 SVG 模板并将其作为可重用的图标模板添加到 Azure Maps web SDK。 
+下面的示例演示如何获取 SVG 模板，并将其作为可重用的图标模板添加到 Azure Maps web SDK。 
 
 <br/>
 
@@ -133,7 +133,7 @@ SVG 图像模板支持以下占位符值：
 
 ## <a name="list-of-image-templates"></a>映像模板列表
 
-下表列出了 Azure Maps web SDK 中当前可用的所有映像模板，每个图像上方有模板名称。 默认情况下，主要颜色为蓝色，辅助颜色为白色。 为了使辅助颜色在白色背景上更易于查看，以下图像将辅助颜色设置为黑色。
+下表列出了 Azure Maps web SDK 中当前可用的所有映像模板。 模板名称位于每个图像上方。 默认情况下，主要颜色为蓝色，辅助颜色为白色。 为了使辅助颜色在白色背景上更易于查看，以下图像将辅助颜色设置为黑色。
 
 **符号图标模板**
 
@@ -145,17 +145,17 @@ SVG 图像模板支持以下占位符值：
 | 标记-正方形 | 标记-方形-分类 | 标记-箭头 | 标记球-pin | 
 |![标记-正方形图标](./media/image-templates/marker-square.png)|![标记-方形-群集图标](./media/image-templates/marker-square-cluster.png)|![标记-箭头图标](./media/image-templates/marker-arrow.png)|![标记球图标](./media/image-templates/marker-ball-pin.png)|
 ||||
-| 标记-圆形 | 标记-方形舍入-分类 | flag | 标记-三角形 |
+| 标记-圆形 | 标记-方形舍入-分类 | 标志 | 标记-三角形 |
 | ![标记-圆形图标](./media/image-templates/marker-square-rounded.png) | ![标记-方形舍入-分类图标](./media/image-templates/marker-square-rounded-cluster.png) | ![标志图标](./media/image-templates/flag.png) | ![标记-三角形图标](./media/image-templates/flag-triangle.png) |
 ||||
-| 三角形 | 三角形-粗 | 三角形-向上箭头 | 三角形-向左箭头 |
+| 三角 | 三角形-粗 | 三角形-向上箭头 | 三角形-向左箭头 |
 | ![三角形图标](./media/image-templates/triangle.png) | ![三角形-厚图标](./media/image-templates/triangle-thick.png) | ![三角形-向上箭头图标](./media/image-templates/triangle-arrow-up.png) | ![三角形-向左箭头图标](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | 六边形 | 六边形-粗 | 六边形-圆形 | 六边形-粗 |
 | ![六边形图标](./media/image-templates/hexagon.png) | ![六边形-厚图标](./media/image-templates/hexagon-thick.png) | ![六边形圆形图标](./media/image-templates/hexagon-rounded.png) | ![六边形-粗图标](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
-| pin | 固定 | 圆角正方形 | 圆方形-粗 |
-| ![“固定”图标](./media/image-templates/pin.png) | ![固定线图标](./media/image-templates/pin-round.png) | ![圆角图标](./media/image-templates/rounded-square.png) | ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png) |
+| 固定 | 固定 | 圆角正方形 | 圆方形-粗 |
+| ![固定图标](./media/image-templates/pin.png) | ![固定线图标](./media/image-templates/pin-round.png) | ![圆角图标](./media/image-templates/rounded-square.png) | ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png) |
 ||||
 | 向上箭头 | 向上箭头-细 | 汽车 ||
 | ![向上箭头图标](./media/image-templates/arrow-up.png) | ![向上箭头-细图标](./media/image-templates/arrow-up-thin.png) | ![汽车图标](./media/image-templates/car.png) | |

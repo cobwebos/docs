@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760787"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191027"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的技能组合概念和组合
 
@@ -44,10 +44,10 @@ ms.locfileid: "76760787"
 |Data Source\Parsing 模式|默认|JSON，JSON 行 & CSV|
 |---|---|---|
 |Blob 存储|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
-|Azure Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|不可用 |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|不可用|
 
- 随着技能的执行，他们将新节点添加到扩充树。 然后，这些新节点可用作下游技能的输入，投影到知识存储或映射到索引字段。 根据不可变：创建后，无法编辑节点。 由于您的技能集变得更加复杂，因此您的扩充树，但并非扩充树中的所有节点都需要将其设为索引或知识存储区。 可以有选择地仅将根据的一个子集保存到索引或知识存储区。
+ 随着技能的执行，他们将新节点添加到扩充树。 然后，这些新节点可用作下游技能的输入，投影到知识存储或映射到索引字段。 根据不可变：创建后，无法编辑节点。 由于您的技能集变得更加复杂，因此您的扩充树，但并非扩充树中的所有节点都需要将其设为索引或知识存储区。 
 
 可以有选择地仅将根据的一个子集保存到索引或知识存储区。
 对于本文档的其余部分，我们假设我们使用[宾馆审查示例](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)，但相同的概念也适用于从所有其他数据源中丰富的文档。

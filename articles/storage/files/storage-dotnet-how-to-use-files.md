@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dfb1d71a02ae3bf06a5f2d8a93bcb3ac83433a86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 361ee5179b20d9488bb477a4e3c9fc0f0e6f266e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460363"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190650"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -36,10 +36,10 @@ ms.locfileid: "75460363"
 
 Azure 文件为客户端应用程序提供两个主要方法：服务器消息块 (SMB) 和 REST。 在 .NET 中，`System.IO` 和 `WindowsAzure.Storage` Api 对这些方法进行了抽象。
 
-API | 使用时机 | 说明
+API | 何时使用 | 注意
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 应用程序： <ul><li>需要使用 SMB 读取/写入文件</li><li>是否在可以通过端口 445 访问 Azure 文件帐户的设备上运行</li><li>不需要管理文件共享的任何管理设置</li></ul> | 通过 SMB 通过 Azure 文件实现的文件 i/o 通常与任何网络文件共享或本地存储设备的 i/o 相同。 有关 .NET 中的许多功能（包括文件 i/o）的简介，请参阅[控制台应用程序](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教程。
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | 应用程序： <ul><li>由于防火墙或 ISP 限制，无法使用端口445上的 SMB 访问 Azure 文件</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何使用 REST 的 `Microsoft.Azure.Storage.File` 来代替文件共享的 SMB 和管理。
+[Microsoft。](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 应用程序： <ul><li>由于防火墙或 ISP 限制，无法使用端口445上的 SMB 访问 Azure 文件</li><li>需要管理功能，例如能够设置文件共享的配额或创建共享访问签名</li></ul> | 本文演示如何使用 REST 的 `Microsoft.Azure.Storage.File` 来代替文件共享的 SMB 和管理。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>创建控制台应用程序，并获取程序集
 
@@ -79,7 +79,7 @@ API | 使用时机 | 说明
 1. 搜索并安装以下包：
 
    * **Microsoft. Common**
-   * **Microsoft.Azure.Storage.File**
+   * **Microsoft。**
    * **ConfigurationManager**
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>将存储帐户凭据保存到 App.config 文件
@@ -154,7 +154,7 @@ if (share.Exists())
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>设置文件共享的最大大小
 
-从 Azure 存储客户端库的版本1.x 开始，可以设置文件共享的配额（最大大小）。 还可以查看共享当前存储了多少数据。
+从 Azure 存储客户端库的版本1.x 开始，可以设置文件共享的配额（最大大小）。 你还可以查看共享当前存储了多少数据。
 
 设置共享配额会限制共享上存储的文件的总大小。 如果共享上文件的总大小超过在共享上设置的配额，则客户端不能增加现有文件的大小。 客户端无法创建新文件，除非这些文件是空的。
 
@@ -244,7 +244,7 @@ if (share.Exists())
 
 ## <a name="copy-files"></a>复制文件
 
-从 Azure 存储客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在接下来的部分中，我们将演示如何以编程方式执行这些复制操作。
+从 Azure 存储空间客户端库的 5.x 版开始，可以将一个文件复制到另一个文件，将一个文件复制到一个 Blob，或将一个 Blob 复制到一个文件。 在接下来的部分中，我们将演示如何以编程方式执行这些复制操作。
 
 还可以使用 AzCopy 将一个文件复制到另一个文件，或将一个 blob 复制到一个文件或其他方法。 请参阅 [AzCopy 入门](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -497,7 +497,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 
 ### <a name="reference"></a>参考
 
-* [用于 .NET 的 Azure 存储 API](/dotnet/api/overview/azure/storage)
+* [适用于 .NET 的 Azure 存储 Api](/dotnet/api/overview/azure/storage)
 * [文件服务 REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>博客文章

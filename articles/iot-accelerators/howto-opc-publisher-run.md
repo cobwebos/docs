@@ -4,16 +4,16 @@ description: 本文介绍如何运行和调试 OPC 发布服务器。 它还解�
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: HT
+ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712901"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198780"
 ---
 # <a name="run-opc-publisher"></a>运行 OPC 发布服务器
 
@@ -338,7 +338,7 @@ Options:
 
 ## <a name="run-natively-on-windows"></a>在 Windows 上执行本机运行
 
-使用 Visual Studio 打开“opcpublisher.sln”项目，生成解决方案，并将其发布  。 可以在发布的“目标目录”中启动应用程序，如下所示  ：
+使用 Visual Studio 打开“opcpublisher.sln”项目，生成解决方案，并将其发布。 可以在发布的“目标目录”中启动应用程序，如下所示：
 
 ```cmd
 dotnet opcpublisher.dll <applicationname> [<IoT Hubconnectionstring>] [options]
@@ -364,17 +364,17 @@ docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubco
 
 ## <a name="run-as-an-azure-iot-edge-module"></a>作为 Azure IoT Edge 模块运行
 
-OPC 发布服务器已准备好用作 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) 模块。 如果将 OPC 发布服务器用作 IoT Edge 模块，唯一受支持的传输协议是 Amqp_Tcp_Only 和 Mqtt_Tcp_Only   。
+OPC 发布服务器已准备好用作 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) 模块。 如果将 OPC 发布服务器用作 IoT Edge 模块，唯一受支持的传输协议是 Amqp_Tcp_Only 和 Mqtt_Tcp_Only。
 
 若要将 OPC 发布服务器作为模块添加到 IoT Edge 部署，请转到 Azure 门户中的 IoT 中心设置并完成以下步骤：
 
-1. 转到 IoT Edge，然后创建或选择你的 IoT Edge 设备  。
-1. 选择“设置模块”  。
-1. 选择“部署模块”下的“添加”，然后选择“IoT Edge 模块”    。
-1. 在“名称”字段中，输入“发布服务器”   。
-1. 在“映像 URI”字段中，输入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>` 
+1. 转到 IoT Edge，然后创建或选择你的 IoT Edge 设备。
+1. 选择“设置模块”。
+1. 选择“部署模块”下的“添加”，然后选择“IoT Edge 模块”。
+1. 在“名称”字段中，输入“发布服务器”。
+1. 在“映像 URI”字段中，输入`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
 1. 可以在 [Docker Hub](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) 找到可用标记
-1. 将以下 JSON 粘贴到“容器创建选项”字段  ：
+1. 将以下 JSON 粘贴到“容器创建选项”字段：
 
     ```json
     {
@@ -385,10 +385,10 @@ OPC 发布服务器已准备好用作 [Azure IoT Edge](https://docs.microsoft.co
     }
     ```
 
-    此配置会配置 IoT Edge，使用 OPC 发布服务器映像启动名为“发布服务器”的容器  。 此容器系统的主机名设置为“发布服务器”  。 使用以下命令行参数调用 OPC 发布服务器：`--aa`。 使用此选项，OPC 发布服务器信任它连接到的 OPC UA 服务器的证书。 可以使用 OPC 发布服务器命令行的任何选项。 唯一的限制是 IoT Edge 支持的“容器创建选项”的大小  。
+    此配置会配置 IoT Edge，使用 OPC 发布服务器映像启动名为“发布服务器”的容器。 此容器系统的主机名设置为“发布服务器”。 使用以下命令行参数调用 OPC 发布服务器：`--aa`。 使用此选项，OPC 发布服务器信任它连接到的 OPC UA 服务器的证书。 可以使用 OPC 发布服务器命令行的任何选项。 唯一的限制是 IoT Edge 支持的“容器创建选项”的大小。
 
-1. 将其他设置保留不变，然后选择“保存”  。
-1. 如果要使用另一个 IoT Edge 模块在本地处理 OPC 发布服务器的输出，请返回到“设置模块”页  。 然后转到“指定路由”选项卡，并添加类似以下 JSON 的新路由  ：
+1. 将其他设置保留不变，然后选择“保存”。
+1. 如果要使用另一个 IoT Edge 模块在本地处理 OPC 发布服务器的输出，请返回到“设置模块”页。 然后转到“指定路由”选项卡，并添加类似以下 JSON 的新路由：
 
     ```json
     {
@@ -399,13 +399,13 @@ OPC 发布服务器已准备好用作 [Azure IoT Edge](https://docs.microsoft.co
     }
     ```
 
-1. 返回“设置模块”页上，选择“下一步”，直到到达配置的最后一页   。
-1. 选择“提交“，将配置发送到 IoT Edge  。
-1. 如果已在边缘设备上启动 IoT Edge 并且 docker 容器发布服务器正在运行，则可以通过 `docker logs -f publisher` 或检查日志文件签出 OPC 发布服务器的日志输出  。 在前面的示例中，日志文件在 `d:\iiotegde\publisher-publisher.log` 上方。 也可使用 [iot-edge-opc-publisher-diagnostics 工具](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)。
+1. 返回“设置模块”页上，选择“下一步”，直到到达配置的最后一页。
+1. 选择“提交“，将配置发送到 IoT Edge。
+1. 如果已在边缘设备上启动 IoT Edge 并且 docker 容器发布服务器正在运行，则可以通过  **或检查日志文件签出 OPC 发布服务器的日志输出**`docker logs -f publisher`。 在前面的示例中，日志文件在 `d:\iiotegde\publisher-publisher.log` 上方。 也可使用 [iot-edge-opc-publisher-diagnostics 工具](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)。
 
 ### <a name="make-the-configuration-files-accessible-on-the-host"></a>使配置文件可以在主机上访问
 
-若要在主机文件系统中可访问 IoT Edge 模块配置文件，请使用以下“容器创建选项”  。 下面的示例是使用适用于 Windows 的 Linux 容器进行部署的过程：
+若要在主机文件系统中可访问 IoT Edge 模块配置文件，请使用以下“容器创建选项”。 下面的示例是使用适用于 Windows 的 Linux 容器进行部署的过程：
 
 ```json
 {
@@ -491,11 +491,11 @@ docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname
 
 ### <a name="use-bind-mounts-shared-filesystem"></a>使用绑定装载（共享文件系统）
 
-可以选择用主机文件系统来存储配置信息和日志文件，而不是使用容器文件系统。 若要配置此选项，请在绑定装载模式下使用 `docker run` 的 `-v` 选项。
+可以选择用主机文件系统来存储配置信息和日志文件，而不是使用容器文件系统。 若要配置此选项，请在绑定装载模式下使用 `-v` 的 `docker run` 选项。
 
 ## <a name="opc-ua-x509-certificates"></a>OPC UA X.509 证书
 
-当 OPC UA 客户端和服务器建立连接和对它们之间的通信进行加密时，OPC UA 使用 X.509 证书对它们进行身份验证。 OPC 发布服务器使用 OPC UA 堆栈所维护的证书存储来管理所有证书。 在启动时，OPC 发布服务器自行检查是否有证书。 如果在证书存储中未发现证书，并且在命令行中没有传入证书，OPC 发布服务器将创建自签名证书。 有关详细信息，请参阅 `OpcApplicationConfigurationSecurity.cs` 中的 InitApplicationSecurityAsync 方法  。
+当 OPC UA 客户端和服务器建立连接和对它们之间的通信进行加密时，OPC UA 使用 X.509 证书对它们进行身份验证。 OPC 发布服务器使用 OPC UA 堆栈所维护的证书存储来管理所有证书。 在启动时，OPC 发布服务器自行检查是否有证书。 如果在证书存储中未发现证书，并且在命令行中没有传入证书，OPC 发布服务器将创建自签名证书。 有关详细信息，请参阅  **中的 InitApplicationSecurityAsync 方法**`OpcApplicationConfigurationSecurity.cs`。
 
 自签名证书不提供任何安全性，因为它们未由受信任的 CA 签名。
 
@@ -685,9 +685,9 @@ current working set in MB: 90
 
 ## <a name="debug-the-application"></a>调试应用程序
 
-若要调试该应用程序，请使用 Visual Studio 打开 opcpublisher.sln 解决方案文件，并使用 Visual Studio 调试工具  。
+若要调试该应用程序，请使用 Visual Studio 打开 opcpublisher.sln 解决方案文件，并使用 Visual Studio 调试工具。
 
-如果需要访问 OPC 发布服务器中的 OPC UA 服务器，请确保你的防火墙允许访问服务器侦听的端口。 默认端口是：62222。
+如果需要访问 OPC 发布服务器中的 OPC UA 服务器，请确保你的防火墙允许访问服务器侦听的端口。 默认端口为：62222。
 
 ## <a name="control-the-application-remotely"></a>远程控制应用程序
 

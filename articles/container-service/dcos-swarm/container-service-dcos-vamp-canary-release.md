@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275664"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189110"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集上使用 Vamp 通过 Canary 发布微服务
 
@@ -127,13 +127,13 @@ Elasticsearch 报告“正在运行”后，可以添加 Vamp DC/OS 通用包。
 
 Vamp 启动并运行后，请从蓝图部署一个服务。 
 
-最简单形式的 [Vamp 蓝图](https://vamp.io/documentation/using-vamp/blueprints/)描述了要部署的终结点（网关）、群集和服务。 Vamp 使用群集将相同服务的不同变体分组成逻辑组，以用于 Canary 发布或 A/B 测试。  
+最简单形式的 [Vamp 蓝图](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments)描述了要部署的终结点（网关）、群集和服务。 Vamp 使用群集将相同服务的不同变体分组成逻辑组，以用于 Canary 发布或 A/B 测试。  
 
 此方案使用名为 [**sava**](https://github.com/magneticio/sava)、版本为 1.0 的示例整体应用程序。 该整体应用程序打包在一个 Docker 容器中，该容器位于 Docker 中心的 magneticio/sava:1.0.0 下面。 正常情况下，该应用在端口 8080 上运行，但在本例中，你希望在端口 9050 下将它公开。 使用简单的蓝图通过 Vamp 部署该应用。
 
 1. 转到“部署”。
 
-2. 单击“添加”。
+2. 单击 **“添加”** 。
 
 3. 粘贴以下蓝图 YAML。 此蓝图包含一个群集，该群集只包含一个要在后续步骤中更改的服务变体：
 
@@ -151,7 +151,7 @@ Vamp 启动并运行后，请从蓝图部署一个服务。
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. 单击“ **保存**”。 Vamp 将启动部署。
+4. 单击 **“保存”** 。 Vamp 将启动部署。
 
 该部署将列在“部署”页上。 单击该部署监视其状态。
 
@@ -211,7 +211,7 @@ Vamp 在 DC/OS 代理节点上部署了 sava 服务，从而在端口 9050 上�
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 单击“ **保存**”。 该蓝图会存储，并列在“蓝图”页上。
+3. 单击 **“保存”** 。 该蓝图会存储，并列在“蓝图”页上。
 
 4. 在 sava:1.1 蓝图中打开操作菜单，并单击“合并到”。
 
@@ -262,7 +262,7 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
    Vamp 将添加默认强度为 0% 的条件。 若要开始筛选流量，需要调整条件强度。
 
-3. 单击“Vamp UI - 编辑”更改应用到条件的**强度**。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)
+3. 单击“Vamp UI - 编辑”更改应用到条件的![强度](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png)。
  
 4. 将“强度”设置为 100%，然后单击“Vamp UI - 保存”以保存该设置。![](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png)
 
@@ -287,9 +287,9 @@ Vamp 使用**条件**来筛选网关中路由之间的流量。 流量首先根�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何通过 [Vamp REST API](https://vamp.io/documentation/api/api-reference/) 管理 Vamp 操作。
+* 了解如何通过 [Vamp REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events) 管理 Vamp 操作。
 
-* 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)的形式运行这些脚本。
+* 在 Node.js 中生成 Vamp 自动化脚本并以 [Vamp 工作流](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows)的形式运行这些脚本。
 
-* 参阅其他 [VAMP 教程](https://vamp.io/documentation/tutorials/)。
+* 参阅其他 [VAMP 教程](https://docs.vamp.io/tutorials/)。
 

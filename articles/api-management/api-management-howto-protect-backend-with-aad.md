@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161794"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190363"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>结合 Azure Active Directory 和 API 管理使用 OAuth 2.0 保护 API
 
@@ -27,7 +27,7 @@ ms.locfileid: "77161794"
 > [!NOTE]
 > 此功能适用于 API 管理的**开发人员** **版、标准**层和**高级**层。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 若要执行本文中的步骤，必须提供：
 * API 管理实例
 * 使用 API 管理实例发布的 API
@@ -71,7 +71,7 @@ ms.locfileid: "77161794"
 
 需要调用该 API 的每个客户端应用程序也必须注册到 Azure AD 中。 在此示例中，客户端应用程序是 API 管理开发人员门户中的开发人员控制台。 下面介绍如何在 Azure AD 中注册另一个应用程序用于表示开发人员控制台。
 
-1. 请参阅[Azure 门户](https://portal.azure.com)注册应用程序。 搜索并选择 " **API 注册**"。
+1. 请参阅[Azure 门户](https://portal.azure.com)注册应用程序。 搜索并选择 "**应用注册**"。
 
 1. 选择“新注册”。
 
@@ -97,7 +97,7 @@ ms.locfileid: "77161794"
 
 注册用于表示 API 和开发人员控制台的两个应用程序之后，需要授予权限，使客户端应用能够调用后端应用。  
 
-1. 请访问[Azure 门户](https://portal.azure.com)向客户端应用程序授予权限。 搜索并选择 " **API 注册**"。
+1. 请访问[Azure 门户](https://portal.azure.com)向客户端应用程序授予权限。 搜索并选择 "**应用注册**"。
 
 1. 选择客户端应用。 然后在应用的页面列表中，选择 " **API 权限**"。
 
@@ -147,7 +147,7 @@ ms.locfileid: "77161794"
 
 1. 紧接在客户端机密的后面，是授权代码授权类型的 **redirect_url**。 记下此 URL。
 
-1. 选择“创建”。
+1. 选择 **“创建”** 。
 
 1. 返回到客户端应用并选择 "**身份验证**"。
 
@@ -161,7 +161,7 @@ ms.locfileid: "77161794"
 
 2. 选择要保护的 API。 例如，可以使用 `Echo API`。
 
-3. 转到“设置”。
+3. 转到 **“设置”** 。
 
 4. 在“安全性”下，选择“OAuth 2.0”并选择前面配置的 OAuth 2.0 服务器。 
 
@@ -202,7 +202,7 @@ ms.locfileid: "77161794"
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

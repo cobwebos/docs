@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062177"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190023"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能出现的 "无法从此处获取" 错误消息的修补程序
 
@@ -29,7 +29,7 @@ ms.locfileid: "77062177"
 
 ![与浏览器支持相关的错误消息](media/user-help-device-remediation/browser-version.png)
 
-若要解决此问题，必须根据你的操作系统安装并运行支持的浏览器。 如果使用的是 Windows 10，则支持的浏览器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果使用的是其他操作系统，则可以检查[支持的浏览器](../conditional-access/technical-reference.md#supported-browsers)的完整列表。
+若要解决此问题，必须根据你的操作系统安装并运行支持的浏览器。 如果使用的是 Windows 10，则支持的浏览器包括 Microsoft Edge、Internet Explorer 和 Google Chrome。 如果使用的是其他操作系统，则可以检查[支持的浏览器](../conditional-access/concept-conditional-access-conditions.md#supported-browsers)的完整列表。
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>确保使用的是支持的操作系统
 确保正在运行支持的操作系统版本，包括：

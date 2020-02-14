@@ -12,20 +12,20 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 17c7949f2bbd6d75343bb2e6825be36b56a20967
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695324"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185825"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>将使用 Microsoft Authenticator 的 iOS 应用程序从 ADAL.NET 迁移到 MSAL.NET
 
 你使用的是适用于 .NET 的 Azure Active Directory 身份验证库（ADAL.NET）和 iOS 代理。 现在可以迁移到适用于 .NET 的[Microsoft 身份验证库](msal-overview.md)（MSAL.NET），它支持从版本4.3 开始的 iOS 上的代理。 
 
-我应该从何处着手？ 本文可帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
+你应从何处着手？ 本文可帮助你将 Xamarin iOS 应用从 ADAL 迁移到 MSAL。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 本文假设已有一个集成了 iOS 代理的 Xamarin iOS 应用。 如果不这样做，请直接转到 MSAL.NET，并在其中开始执行 broker 实现。 有关如何使用新的应用程序在 MSAL.NET 中调用 iOS 代理的信息，请参阅[此文档](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
@@ -37,7 +37,7 @@ ms.locfileid: "76695324"
 它们启用：
 
 - 单一登录。
-- 设备标识，这是某些[条件访问策略](../conditional-access/overview.md)所必需的。 有关详细信息，请参阅[设备管理](../conditional-access/conditions.md#device-platforms)。
+- 设备标识，这是某些[条件访问策略](../conditional-access/overview.md)所必需的。 有关详细信息，请参阅[设备管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
 - 应用程序身份验证，在某些企业方案中也是必需的。 有关详细信息，请参阅[Intune 移动应用程序管理（MAM）](https://docs.microsoft.com/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>从 ADAL 迁移到 MSAL
@@ -151,7 +151,7 @@ ADAL.NET 和 MSAL.NET 使用 Url 来调用 broker，并将 broker 响应返回�
 <tr><td>
 此 URL 方案对你的应用程序是唯一的。
 </td><td>
-我们的 
+这些 
 
 `CFBundleURLSchemes` 名称必须包括 
 
@@ -189,7 +189,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查设备上是否安装了
 <table>
 <tr><td>当前 ADAL 代码：</td><td>MSAL 对应项：</td></tr>
 <tr><td>
-用途 
+使用 
 
 `msauth`
 
@@ -201,7 +201,7 @@ ADAL.NET 和 MSAL.NET 都使用 `-canOpenURL:` 来检查设备上是否安装了
 </array>
 ```
 </td><td>
-用途 
+使用 
 
 `msauthv2`
 

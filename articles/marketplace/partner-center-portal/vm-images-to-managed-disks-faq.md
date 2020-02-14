@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774998"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198728"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>我们正在将 Azure Marketplace 中的虚拟机（VM）映像迁移到托管磁盘存储
 
@@ -39,11 +39,11 @@ VM 映像的用户将不会遇到中断。
 
 ### <a name="do-i-need-to-take-any-action"></a>是否需要执行任何操作？
 
-不。 发布者或使用者不需要执行任何操作。
+No。 发布者或使用者不需要执行任何操作。
 
 ### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>是否必须将系统更新为以不同方式调用云门户 Api，然后再将其移动到托管磁盘存储？
 
-不。 你的现有 API 调用将继续工作。
+No。 你的现有 API 调用将继续工作。
 
 ### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>是否所有 VM 映像都同时移动到托管磁盘？
 
@@ -61,6 +61,6 @@ VM 映像的用户将不会遇到中断。
 
 不，发布过程将保持不变。 
 
-## <a name="next-steps"></a>后续步骤
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>发布者是否可以将其产品/服务移动到托管磁盘？
 
-请访问[虚拟机产品/服务发布者指南](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines)页。
+不能，发布服务器无法将其产品/服务移动到托管磁盘。 它们将需要等待，并会自动移动其映像。 在进行任何更改之前，我们会将通知发送到发布服务器。

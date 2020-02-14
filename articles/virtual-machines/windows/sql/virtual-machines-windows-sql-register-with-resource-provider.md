@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122488"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201622"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>使用 SQL VM 资源提供程序在 Azure 中注册 SQL Server 虚拟机
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>轻型管理模式
 
-如果未在 VM 上安装[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)，则建议在轻型模式下向 SQL VM 资源提供程序注册。 这会在[轻型模式下](#management-modes)安装 SQL IaaS 扩展，并阻止 SQL Server 服务重新启动。 然后，你可以随时升级到完整模式，但这样做将重新启动 SQL Server 服务，因此建议等待计划的维护时段。 需要将 SQL Server 许可证的类型作为即用即付（`PAYG`）提供，以按使用情况付费，或 Azure 混合权益（`AHUB`）来使用自己的许可证。
+如果未在 VM 上安装[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)，则建议在轻型模式下向 SQL VM 资源提供程序注册。 这会在[轻型模式下](#management-modes)安装 SQL IaaS 扩展，并阻止 SQL Server 服务重新启动。 然后，你可以随时升级到完整模式，但这样做将重新启动 SQL Server 服务，因此建议等待计划的维护时段。 
+
+提供 SQL Server 许可证类型作为即用即付（`PAYG`），按使用情况付费，Azure 混合权益（`AHUB`）使用自己的许可证，或使用灾难恢复（`DR`）激活[免费的 DR 副本许可证](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure)。
 
 故障转移群集实例和多实例部署只能在轻型模式下的 SQL VM 资源提供程序中注册。 
 
@@ -176,7 +178,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 在[NoAgent 模式下](#management-modes)，在 Windows Server 2008 （_而非 R2_）上安装的 SQL Server 2008 和 2008 R2 可以在 SQL VM 资源提供程序中注册。 此选项可确保符合性，并允许在 Azure 门户中监视 SQL Server VM 功能有限。
 
-指定 `AHUB` 或 `PAYG` 作为**sqlLicenseType**，并 `SQL2008-WS2008` 或 `SQL2008R2-WS2008` 为**sqlImageOffer**。 
+将 `AHUB`、`PAYG`或 `DR` 指定为**sqlLicenseType**，并将 `SQL2008-WS2008` 或 `SQL2008R2-WS2008` 指定为**sqlImageOffer**。 
 
 若要在 Windows Server 2008 实例上注册 SQL Server 2008 或 2008 R2 实例，请使用以下 Az CLI 或 PowerShell 代码片段： 
 

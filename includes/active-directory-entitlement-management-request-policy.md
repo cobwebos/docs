@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981179"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192871"
 ---
 ## <a name="for-users-in-your-directory"></a>适用于目录中的用户
 
@@ -198,7 +198,7 @@ ms.locfileid: "74981179"
 
 ## <a name="enable-requests"></a>启用请求
 
-1. 如果希望访问包立即可供请求策略中的用户使用，请单击 **"是"** 以启用。
+1. 如果希望访问包立即可供请求策略中的用户使用，请将 "启用" 切换切换为 **"是"** 。
 
     在完成创建访问包后，你始终可以启用它。
 
@@ -206,4 +206,4 @@ ms.locfileid: "74981179"
 
     ![访问包-策略-启用策略设置](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 单击“下一步”。
+1. 单击 **“下一步”** 。

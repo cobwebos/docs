@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880276"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185893"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中规划条件访问部署
 
@@ -53,7 +53,7 @@ Azure Active Directory 条件性访问使你能够将云应用的保护带入新
 |尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (AND) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 |尝试访问：<br>- 访问云应用<br>- 由用户和组<br>使用：<br>- 条件 1（例如，外部企业网络）<br>- 条件 2（例如，设备平台）|使用 (OR) 授予访问权限：<br>- 要求 1（例如，MFA）<br>- 要求 2（例如，设备合规性）|
 
-“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。 如果需要，还可以包含访问尝试是“如何”执行的。 在条件性访问中，定义了谁、什么和如何称为条件的元素。 有关详细信息，请参阅[什么是 Azure Active Directory 条件访问中的条件？](conditions.md) 
+“发生这种情况时”最起码要定义尝试访问云应用（“什么”）的主体（“谁”）。 如果需要，还可以包含访问尝试是“如何”执行的。 在条件性访问中，定义了谁、什么和如何称为条件的元素。 有关详细信息，请参阅[什么是 Azure Active Directory 条件访问中的条件？](concept-conditional-access-conditions.md) 
 
 对于“这样做”，请定义策略对访问条件做出的响应。 在响应中，可以使用附加的要求（例如，多重身份验证 (MFA)）阻止或授予访问权限。 有关完整概述，请参阅[什么是 Azure Active Directory 条件访问中的访问控制？](controls.md)  
 
@@ -116,7 +116,7 @@ Azure Active Directory 条件性访问使你能够将云应用的保护带入新
 
 使用条件性访问策略，你可以实现自动响应，使其免受可能泄露的标识的登录。 帐户泄密的可能性以风险级别的形式表示。 “标识保护”计算两种风险级别：登录风险和用户风险。 若要对登录风险实施响应，可以使用两个选项：
 
-- 条件访问策略中[的登录风险条件](conditions.md#sign-in-risk)
+- 条件访问策略中[的登录风险条件](concept-conditional-access-conditions.md#sign-in-risk)
 - “标识保护”中的[登录风险策略](../identity-protection/howto-sign-in-risk-policy.md) 
 
 解决条件形式的登录风险是首选方法，因为它提供更多的自定义选项。
@@ -158,7 +158,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 测试计划非常重要，它可以在预期结果与实际结果之间进行比较。 进行测试之前，始终应该持有某种预期。 下表概述了示例测试用例。 根据 CA 策略的配置方式调整方案和预期结果。
 
-|策略 |场景 |预期结果 | 结果 |
+|策略 |应用场景 |预期结果 | 结果 |
 |---|---|---|---|
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用|不提示用户执行 MFA| |
 |[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用|提示用户执行 MFA，他们可以成功登录| |

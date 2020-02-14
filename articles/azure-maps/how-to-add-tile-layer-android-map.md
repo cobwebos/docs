@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4113f632e70bf1008c688066b51a27f1bc3c6345
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911517"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198252"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure Maps 向地图添加图块层 Android SDK
 
 本文介绍如何使用 Azure Maps Android SDK 在地图上呈现图块层。 通过图块层可以在 Azure Maps 基本地图图块顶部附加图像。 可在[缩放级别和图块网格](zoom-levels-and-tile-grid.md)文档中找到有关 Azure Maps 图块系统的详细信息。
 
-图块层从服务器的磁贴中加载。 这些图像可以使用图块层能理解的命名约定或动态生成图像的动态服务（像服务器上的任何其他图像一样）进行预呈现和存储。 Azure Maps TileLayer 类支持三个不同的平铺服务命名约定; 
+图块层从服务器的磁贴中加载。 可以使用图块层所理解的命名约定，预先呈现这些图像并将其存储为服务器上的任何其他图像。 或者，可以使用动态服务呈现这些图像，这种动态服务会近乎实时生成图像。 Azure Maps TileLayer 类支持三个不同的平铺服务命名约定：
 
 * X、Y、缩放表示法 - 基于缩放级别，x 是列，y 是图块网格中图块的行位置。
 * Quadkey 表示法 - 将 x、y、缩放信息合并到单个字符串值（即图块的唯一标识符）中。
@@ -35,16 +35,16 @@ ms.locfileid: "75911517"
 * `{z}` - 图块的缩放级别。 还需要 `{x}` 和 `{y}`。
 * `{quadkey}` - 基于必应地图图块系统命名约定的图块 quadkey 标识符。
 * `{bbox-epsg-3857}` - EPSG 3857 空间引用系统中格式为 `{west},{south},{east},{north}` 的边界框字符串。
-* `{subdomain}` - 将添加子域值（如果已指定）的占位符。
+* `{subdomain}`-如果指定了子域值，则为子域值的占位符。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文中的过程，需要安装[Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)来加载地图。
 
 
 ## <a name="add-a-tile-layer-to-the-map"></a>向地图添加图块层
 
- 此示例演示如何创建指向一组使用 x、y、缩放图块系统的图块的图块层。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 
+ 此示例演示如何创建指向一组图块的图块层。 这些磁贴使用 "x，y，zoom" 平铺系统。 此图块层源自[爱荷华州立大学的 Iowa Environmental Mesonet](https://mesonet.agron.iastate.edu/ogc/) 的气象雷达图覆盖。 
 
 可以按照以下步骤向地图中添加图块层。
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 26906f2a7343dbaf09f3107d2598e81a42c65091
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064642"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190492"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
 <a name="network-service-tags"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "77064642"
 
 | 标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Azure API 管理的管理流量-专用部署。 | 两者同时 | 是 | 是 |
+| **ApiManagement** | Azure API 管理的管理流量-专用部署。 <br/><br/>*注意：* 此标记表示每个区域的控制平面的 Azure API 管理服务终结点。 这样，客户就可以对 API 管理服务中配置的 Api、操作、策略和 NamedValues 执行管理操作。  | 入站 | 是 | 是 |
 | **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 是 | 是 |
 | **AppService**    | Azure 应用服务。 建议将此标记用于对 web 应用程序前端的出站安全规则。 | 出站 | 是 | 是 |
 | **AppServiceManagement** | 专用于应用服务环境的部署的管理流量。 | 两者同时 | 是 | 是 |

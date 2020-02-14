@@ -1,16 +1,16 @@
 ---
 title: 以编程方式创建 Azure 订阅
 description: 了解如何以编程方式创建其他 Azure 订阅。
-author: amberb
+author: amberbhargava
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981223"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198677"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以编程方式创建 Azure 订阅（预览）
 
@@ -23,7 +23,7 @@ ms.locfileid: "75981223"
 
 ## <a name="create-subscriptions-for-an-ea-billing-account"></a>为 EA 帐单帐户创建订阅
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 若要创建订阅，必须拥有注册帐户的所有者角色。 可以通过两种方式获取角色：
 
@@ -147,11 +147,11 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 需要 | 类型   | Description                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
+| `displayName` | 是      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
-| `owners`      | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
+| `owners`      | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
 
 在响应中，返回 `subscriptionOperation` 对象进行监视。 完成订阅创建后，`subscriptionOperation` 对象将返回有订阅 ID 的 `subscriptionLink` 对象。
 
@@ -165,14 +165,14 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| 元素名称  | 需要 | 类型   | Description                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `Name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
+| `Name` | 是      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `OfferType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
 | `EnrollmentAccountObjectId`      | 是       | String | 注册帐户的对象 ID，在该帐户下创建订阅并对其计费。 此值为从 `Get-AzEnrollmentAccount` 获取的 GUID。 |
-| `OwnerObjectId`      | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
-| `OwnerSignInName`    | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `OwnerObjectId`。|
-| `OwnerApplicationId` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `OwnerObjectId`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
+| `OwnerObjectId`      | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
+| `OwnerSignInName`    | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `OwnerObjectId`。|
+| `OwnerApplicationId` | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `OwnerObjectId`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 要查看所有参数的完整列表，请参阅 [New-AzSubscription](/powershell/module/az.subscription)。
 
@@ -186,14 +186,14 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名称  | 需要 | 类型   | Description                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `display-name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
+| `display-name` | 是      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offer-type`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
 | `enrollment-account-object-id`      | 是       | String | 注册帐户的对象 ID，在该帐户下创建订阅并对其计费。 此值为从 `az billing enrollment-account list` 获取的 GUID。 |
-| `owner-object-id`      | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
-| `owner-upn`    | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `owner-object-id`。|
-| `owner-spn` | 否       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `owner-object-id`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
+| `owner-object-id`      | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的对象 ID。  |
+| `owner-upn`    | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意用户的电子邮件地址。 可以使用此参数，而不是 `owner-object-id`。|
+| `owner-spn` | 是       | String | 希望在订阅创建时作为 RBAC 所有者添加到订阅上的任意服务主体的应用程序 ID。 可以使用此参数，而不是 `owner-object-id`。 使用此参数时，服务主体必须具有[对该目录的读取访问权限](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole)。|
 
 要查看所有参数的完整列表，请参阅 [az account create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)。
 
@@ -209,7 +209,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>为 MCA 帐户创建订阅
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 对于某个发票部分，必须有 "所有者"、"参与者" 或 "Azure 订阅创建者" 角色，或者在帐单配置文件中拥有 "所有者" 或 "参与者" 角色或计费帐户才能创建订阅。 有关详细信息，请参阅[订阅计费角色和任务](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
@@ -337,20 +337,20 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| 元素名称  | 需要 | 类型   | Description                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 订阅的显示名称。|
 | `billingProfileId`   | 是      | String | 将按订阅费用计费的计费配置文件的 ID。  |
 | `skuId` | 是      | String | 确定 Azure 计划类型的 sku ID。 |
-| `owners`      | 否       | String | 要在创建订阅时作为 RBAC 所有者添加到订阅中的任何用户或服务主体的对象 ID。  |
-| `costCenter` | 否      | String | 与订阅关联的成本中心。 它将显示在使用情况 csv 文件中。 |
-| `managementGroupId` | 否      | String | 将订阅添加到的管理组的 ID。 若要获取管理组的列表，请参阅[管理组列表 API](/rest/api/resources/managementgroups/list)。 使用 API 中管理组的 ID。 |
+| `owners`      | 是       | String | 要在创建订阅时作为 RBAC 所有者添加到订阅中的任何用户或服务主体的对象 ID。  |
+| `costCenter` | 是      | String | 与订阅关联的成本中心。 它将显示在使用情况 csv 文件中。 |
+| `managementGroupId` | 是      | String | 将订阅添加到的管理组的 ID。 若要获取管理组的列表，请参阅[管理组列表 API](/rest/api/resources/managementgroups/list)。 使用 API 中管理组的 ID。 |
 
 在响应中，返回 `subscriptionCreationResult` 对象进行监视。 完成订阅创建后，`subscriptionCreationResult` 对象将返回有订阅 ID 的 `subscriptionLink` 对象。
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>为 MPA 计费帐户创建订阅
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 
 你必须在组织的云解决方案提供商帐户中具有全局管理员或管理员代理角色，才能为你的计费帐户创建订阅。 有关详细信息，请参阅[合作伙伴中心-分配用户角色和权限](https://docs.microsoft.com/partner-center/permissions-overview)。
 
@@ -487,7 +487,7 @@ API 响应列出了客户的分销商：
 
 ### <a name="create-a-subscription-for-a-customer"></a>为客户创建订阅
 
-下面的示例为*Fabrikam 玩具*创建名为*Dev 团队订阅*的订阅，并将*Wingtip*经销商关联到该订阅。 万亿项
+下面的示例为*Fabrikam 玩具*创建名为*Dev 团队订阅*的订阅，并将*Wingtip*经销商关联到该订阅。 T
 
 发出以下请求，将 `<customerId>` 替换为从第二步中复制的 `id` （```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```）。 传递从 API 的请求参数中的第二步复制的可选*resellerId* 。
 
@@ -502,11 +502,11 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| 元素名称  | 需要 | 类型   | Description                                                                                               |
+| 元素名称  | 必需 | 类型   | 说明                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 是      | String | 订阅的显示名称。|
 | `skuId` | 是      | String | Azure 计划的 sku ID。 使用*0001*作为 Microsoft Azure 计划类型的订阅 |
-| `resellerId`      | 否       | String | 将与订阅关联的分销商的 MPN ID。  |
+| `resellerId`      | 是       | String | 将与订阅关联的分销商的 MPN ID。  |
 
 在响应中，返回 `subscriptionCreationResult` 对象进行监视。 完成订阅创建后，`subscriptionCreationResult` 对象将返回有订阅 ID 的 `subscriptionLink` 对象。
 

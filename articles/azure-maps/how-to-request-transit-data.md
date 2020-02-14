@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d9fac909dbb264dea65447a086b78e8a53acefae
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 08a35492a61d7e75680603308aa31bf7a184c036
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911419"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198167"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求公共传输数据 
 
-本文介绍如何使用 Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)来请求公用传输数据，包括停止、路由信息和旅行时间估算。
+本文介绍如何使用 Azure Maps[移动服务](https://aka.ms/AzureMapsMobilityService)来请求公共传输数据。 传输数据包括传输停止、路由信息以及旅行时间估算。
 
 在本文中，你将学习如何：
 
@@ -28,9 +28,9 @@ ms.locfileid: "75911419"
 * 使用[获取传输路线 API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)请求传输路由几何和路由的详细计划。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-若要对 Azure Maps 公共传输 Api 进行任何调用，需要一个 Maps 帐户和密钥。 有关创建帐户和获取密钥的信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
+首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 
 本文使用 [Postman 应用](https://www.getpostman.com/apps)来构建 REST 调用。 可以使用你喜欢的任何 API 开发环境。
@@ -38,23 +38,23 @@ ms.locfileid: "75911419"
 
 ## <a name="get-a-metro-area-id"></a>获取地铁区域 ID
 
-为了请求特定大都市区域的传输信息，需要为要请求传输数据的区域 `metroId`。 使用 "[获取地铁区域 API](https://aka.ms/AzureMapsMobilityMetro) "，可以请求提供 Azure Maps 移动服务的地铁区。 响应包括详细信息，如 `metroId`、`metroName` 和 GeoJSON 格式的地铁区域几何的表示形式。
+为了请求特定大都市区域的传输信息，你将需要该区域的 `metroId`。 "[获取地铁区域 API](https://aka.ms/AzureMapsMobilityMetro) " 允许您请求大都市区域，其中 Azure Maps 移动服务可用。 响应包括详细信息，如 `metroId`、`metroName`和 GeoJSON 格式的地铁区域几何的表示形式。
 
 接下来，让我们请求获取 Tacoma 地铁区域 ID 的地铁区域。 若要请求地铁区域的 ID，请完成以下步骤：
 
-1. 创建用于存储请求的集合。 在 Postman 应用中，选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**集合**"。 将该集合命名为，然后选择 "**创建**" 按钮。
+1. 打开 Postman 应用，让我们创建一个集合来存储请求。 在 Postman 应用的顶部附近，选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**集合**"。  将该集合命名为，然后选择 "**创建**" 按钮。
 
-2. 若要创建请求，请再次选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**请求**"。 输入请求的**请求名称**，选择你在上一步中创建的集合作为要保存请求的位置，然后选择 "**保存**"。
+2. 若要创建请求，请再次选择 "**新建**"。 在 "**新建**" 窗口中，选择 "**请求**"。 输入请求的 "**请求名称**"。 选择你在上一步中创建的集合，作为要保存请求的位置。 然后选择“保存”。
     
     ![在 Postman 中创建请求](./media/how-to-request-transit-data/postman-new.png)
 
-3. 在 "生成器" 选项卡上选择 "获取 HTTP" 方法，然后输入以下 URL 创建 GET 请求。
+3. 在 "生成器" 选项卡上选择 "**获取**HTTP" 方法，然后输入以下 URL 创建 GET 请求。 将 `{subscription-key}`替换为 Azure Maps 的主键。
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
     ```
 
-4. 成功请求后，你将收到以下响应：
+4. 成功请求后，会收到以下响应：
 
     ```JSON
     {
@@ -111,11 +111,11 @@ ms.locfileid: "75911419"
     }
     ```
 
-5. 复制 `metroId`，以备以后使用。
+5. 复制 `metroId`，稍后需要使用。
 
 ## <a name="request-nearby-transit-stops"></a>请求附近传输停止
 
-Azure Maps[获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit)服务，可以搜索传输对象，例如，公共传输停止，并围绕给定位置绕过共享自行车，返回传输对象的详细信息。 接下来，我们将向服务发出请求，搜索附近的公共传输在给定位置附近的300米的 radius 内停止。 在请求中，需要包括在前面检索到的 `metroId`。
+Azure Maps[获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit)服务，可以搜索传输对象。  该 API 将返回传输对象的详细信息，如公用传输停止以及围绕给定位置的共享自行车。 接下来，我们将向服务发出请求，搜索附近的公共传输在给定位置附近的300米的 radius 内停止。 在请求中，需要包含之前检索到的 `metroId`。
 
 若要向[附近传输](https://aka.ms/AzureMapsMobilityNearbyTransit)请求，请执行以下步骤：
 
@@ -214,18 +214,18 @@ Azure Maps[获取附近的传输](https://aka.ms/AzureMapsMobilityNearbyTransit)
     }   
     ```
 
-如果仔细观察响应结构，可以看到它包含每个传输对象的参数，如 `id`、`type`、`stopName`、`mainTransitType`、`mainAgencyName` 以及对象的位置（坐标）。
+如果仔细观察响应结构，则会看到它包含每个传输对象的参数。 每个中转对象都具有对象的参数，如 `id`、`type`、`stopName`、`mainTransitType`、`mainAgencyName`以及对象的位置（以坐标表示）。
 
-为便于理解，我们将在下一节中使用一个总线停止的 `id` 作为路由的源。  
+出于学习的目的，我们将在下一部分中使用总线的 `id` 作为起点。  
 
 
 ## <a name="request-a-transit-route"></a>请求传输路由
 
-Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)允许行程计划在源和目标之间返回最佳路由选项。 服务提供各种行程模式，包括行走、biking 和公共交通。 接下来，我们将搜索从最接近的总线停止位置到西雅图的空间针的路由。
+Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)允许行程计划。 它会返回从源到目标的最佳路由选项。 此服务提供不同种类的旅行模式，包括行走、biking 和公共交通。 接下来，我们将搜索从最近的总线停止位置到西雅图的空间针塔的路线。
 
 ### <a name="get-location-coordinates-for-destination"></a>获取目标的位置坐标
 
-为了获取空间针的位置坐标，允许使用 Azure Maps[模糊搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。
+为了获取太空针塔式的位置坐标，允许使用 Azure Maps[模糊搜索服务](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)。
 
 若要向模糊搜索服务发出请求，请执行以下步骤：
 
@@ -237,7 +237,7 @@ Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
     
-3. 如果你仔细查看响应，则它会在空间针的结果中包含多个位置，并在 "**位置**" 下包含每个位置的坐标信息。 复制第一个结果的 `lat` 和 `lon` 的位置。
+3. 如果仔细查看响应，则它在空间针搜索的结果中包含多个位置。 每个结果**包含位置坐标。** 将 `lat` 和 `lon` 复制到第一个结果的**位置**。
     
    ```JSON
    {
@@ -341,7 +341,7 @@ Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)
 
 2. 在 "生成器" 选项卡上，选择 "**获取**HTTP" 方法，输入 API 终结点的以下请求 URL，然后单击 "**发送**"。
 
-    我们将通过指定 `modeType` 和 `transitType` 参数来请求总线的公共传输路由。 请求 URL 包含之前部分中检索到的位置。 作为 `originType` 现在我们有**stopId** ，因为 `destionationType` 我们的**位置**。
+    我们将通过指定 `modeType` 和 `transitType` 参数来请求总线的公共传输路由。 请求 URL 包含之前部分中检索到的位置。 `originType`，现在有一个**stopId**。 对于 `destionationType`，我们有了**位置**。
 
     查看可在请求中用于[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)的[URI 参数的列表](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters)。 
   
@@ -494,7 +494,7 @@ Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)
     }
     ```
 
-4. 如果仔细观察，响应中会有多个**总线**路由。 每个路由都有唯一的**路线 ID**和描述路由每个阶段的摘要。 接下来，我们将使用响应中的 `itineraryId` 请求最快路由的详细信息。
+4. 如果仔细观察，响应中会有多个**总线**路由。 每个路由都有唯一的**路线 ID**和描述路由每个阶段的摘要。 路由段是两个停止 waypoints 之间的路由部分。 接下来，我们将使用响应中的 `itineraryId` 请求最快路由的详细信息。
 
 ## <a name="request-fastest-route-itinerary"></a>请求最快路线路线
 
@@ -502,7 +502,7 @@ Azure Maps[获取传输路由 API](https://aka.ms/AzureMapsMobilityTransitRoute)
 
 1. 在 Postman 中，单击 "**新建请求** | **获取请求**并将其命名为**获取传输信息**"。
 
-2. 在 "生成器" 选项卡上，选择 "**获取**HTTP" 方法，输入 API 终结点的以下请求 URL，然后单击 "**发送**"。
+2. 在 "生成器" 选项卡上，选择 "**获取**HTTP" 方法。 输入 API 终结点的以下请求 URL，然后单击 "**发送**"。
 
     我们会将 `detailType` 参数设置为**geometry** ，以使响应包含用于公共传输的停止信息，并为路线的 "审核" 和 "自行车" 腿启用 "转到" 导航。
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833940"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192679"
 ---
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 初始版本支持以下 VM 系列： DSv3 和 ESv3。 
+- 初始版本支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="create-a-host-group"></a>创建主机组
 
@@ -54,7 +54,7 @@ ms.locfileid: "75833940"
 
 ## <a name="create-a-dedicated-host"></a>创建专用主机
 
-现在，在主机组中创建专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。 支持以下主机 SKU 值： DSv3_Type1 和 ESv3_Type1。
+现在，在主机组中创建专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 

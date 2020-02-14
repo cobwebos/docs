@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936391"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200072"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批处理脚本
 
@@ -34,11 +34,11 @@ ms.locfileid: "76936391"
 
 在易于使用的 API 旁，你无需部署自定义终结点，并且你无需执行任何并发性要求。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="subscription-key"></a>订阅密钥
 
-与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。
+与语音服务的其他所有功能一样，需要按照[入门指南](https://portal.azure.com)通过 [Azure 门户](get-started.md)创建订阅密钥。
 
 >[!NOTE]
 > 需要语音服务的标准订阅（S0）才能使用批处理脚本。 免费订阅密钥 (F0) 不可用。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
@@ -53,7 +53,7 @@ ms.locfileid: "76936391"
 
 Batch 听录 API 支持以下格式：
 
-| 格式 | 编解码器 | Bitrate | 采样率 |
+| 格式 | 编解码器 | Bitrate | 采样速率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位 | 8 kHz 或 16 kHz、单声道或立体声 |
 | MP3 | PCM | 16 位 | 8 kHz 或 16 kHz、单声道或立体声 |
@@ -87,7 +87,7 @@ Batch 听录 API 支持以下格式：
 
 使用以下可选属性来配置脚本：
 
-| 参数 | Description |
+| 参数 | 说明 |
 |-----------|-------------|
 | `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。 |
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（表示使用显式标点）、`Automatic`（允许解码器处理标点）或 `DictatedAndAutomatic`（表示使用专用标点符号或自动使用标点）。 |
@@ -96,7 +96,7 @@ Batch 听录 API 支持以下格式：
 | `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道，该输入应为包含两个声音的 mono 通道。 接受的值为 `true`，这将启用 diarization 和 `false` （默认值）以禁用它。 它还要求将 `AddWordLevelTimestamps` 设置为 true。|
 |`TranscriptionResultsContainerUrl`|指向 Azure 中可写容器的[服务 SAS](../../storage/common/storage-sas-overview.md)的可选 URL。 结果将存储在此容器中。
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 
 批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)，用于读取音频并将转录写入存储。
 
@@ -129,8 +129,8 @@ Batch 听录 API 支持以下格式：
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ Batch 听录 API 支持以下格式：
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -199,7 +199,7 @@ Diarization 是将扬声器分离成一片音频的过程。 批处理管道支�
 
 由于上述请求中的参数表明，Word 级时间戳还必须 "打开"。
 
-## <a name="sentiment-analysis"></a>观点分析
+## <a name="sentiment-analysis"></a>情绪分析
 
 情绪功能估算音频中表示的情绪。 情绪由介于0和1之间的值表示 `Negative`、`Neutral`和 `Positive` 情绪。 例如，情绪分析可用于呼叫中心方案：
 
@@ -247,11 +247,11 @@ JSON 输出示例如下所示：
 }
 ```
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 脚本服务可处理大量提交的转录。 可以通过对[转录方法](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)的 `GET` 查询转录的状态。 通过指定 `take` 参数（几百个），将信息恢复到合理的大小。 检索结果后，请定期从服务中[删除转录](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription)。 这将保证快速响应脚本管理呼叫。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 `samples/batch` 子目录内的[GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整的示例。
 
@@ -263,7 +263,7 @@ JSON 输出示例如下所示：
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
 
-有关上述调用的完整详细信息，请参阅 [Swagger 文档](https://westus.cris.ai/swagger/ui/index)。 有关此处所示的完整示例，请转到 `samples/batch` 子目录中的 [GitHub](https://aka.ms/csspeech/samples)。
+有关上述调用的完整详细信息，请参阅 [Swagger 文档](https://westus.cris.ai/swagger/ui/index)。 有关此处所示的完整示例，请转到 [ 子目录中的 ](https://aka.ms/csspeech/samples)GitHub`samples/batch`。
 
 请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是一个 .NET HTTP 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收结果。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
 
@@ -274,7 +274,7 @@ JSON 输出示例如下所示：
 
 ## <a name="download-the-sample"></a>下载示例
 
-可以在 [GitHub 示例存储库](https://aka.ms/csspeech/samples)的 `samples/batch` 目录中查找到该示例。
+可以在 `samples/batch`GitHub 示例存储库[的 ](https://aka.ms/csspeech/samples) 目录中查找到该示例。
 
 ## <a name="next-steps"></a>后续步骤
 

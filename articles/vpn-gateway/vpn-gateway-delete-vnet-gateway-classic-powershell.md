@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 495fa3837681fb2a78d86e6c34d4b4888b1e37f4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863676"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198643"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell 删除虚拟网络网关（经典）
 
@@ -29,15 +29,22 @@ ms.locfileid: "75863676"
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. 安装最新的 PowerShell cmdlet。
 
-下载和安装最新版本的 Azure 服务管理 (SM) PowerShell cmdlet。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="2-connect-to-your-azure-account"></a>2. 连接到 Azure 帐户。 
+### <a name="2-connect-to-your-azure-account"></a>2. 连接到 Azure 帐户。
 
 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
-```powershell
-Add-AzureAccount
-```
+1. 通过提升的权限打开 PowerShell 控制台。 若要切换到服务管理，请使用以下命令：
+
+   ```powershell
+   azure config mode asm
+   ```
+2. 连接到帐户。 使用下面的示例来帮助连接：
+
+   ```powershell
+   Add-AzureAccount
+   ```
 
 ## <a name="export"></a>步骤 2：导出并查看网络配置文件
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840275"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197968"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 RESTful 技术配置文件
 
@@ -110,7 +110,7 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 技术配置文件还会返回标识提供者不返回的声明：
 
-- 默认值设置为 `true` 的 **loyaltyNumberIsNew** 声明。
+- 默认值设置为 **的**loyaltyNumberIsNew`true` 声明。
 
 ```xml
 <OutputClaims>
@@ -121,14 +121,15 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 终结点的 URL。 |
 | AuthenticationType | 是 | RESTful 声明提供程序所执行的身份验证类型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 不是匿名的。 `Basic` 值表示使用 HTTP 基本身份验证保护 REST API。 只有经验证的用户（包括 Azure AD B2C）可以访问你的 API。 `ClientCertificate` （推荐）值指示 REST API 使用客户端证书身份验证来限制访问。 只有具有适当证书的服务（例如 Azure AD B2C）才能访问 API。 `Bearer` 值指示 REST API 使用客户端 OAuth2 持有者令牌限制访问。 |
-| SendClaimsIn | 否 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个调用的 HTTP 谓词如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
-| ClaimsFormat | 否 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
-| ClaimUsedForRequestPayload| 否 | 包含要发送到 REST API 的有效负载的字符串声明的名称。 |
-| DebugMode | 否 | 在调试模式下运行技术配置文件。 可能的值： `true`或 `false` （默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回的错误消息](#returning-error-message)部分。 |
+| SendClaimsIn | 是 | 指定如何将输入声明发送到 RESTful 声明提供程序。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输入声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输入声明。 `Header` 值是在请求标头中发送的输入声明。 `QueryString` 值是在请求查询字符串中发送的输入声明。 每个调用的 HTTP 谓词如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
+| ClaimsFormat | 是 | 指定输出声明的格式。 可能的值：`Body`（默认值）、`Form`、`Header` 或 `QueryString`。 `Body` 值是在请求正文中以 JSON 格式发送的输出声明。 `Form` 值是在请求正文中以“&”分隔键值格式发送的输出声明。 `Header` 值是在请求标头中发送的输出声明。 `QueryString` 值是在请求查询字符串中发送的输出声明。 |
+| ClaimUsedForRequestPayload| 是 | 包含要发送到 REST API 的有效负载的字符串声明的名称。 |
+| DebugMode | 是 | 在调试模式下运行技术配置文件。 可能的值： `true`或 `false` （默认值）。 在调试模式下，REST API 可以返回更多信息。 请参阅[返回的错误消息](#returning-error-message)部分。 |
+| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
@@ -148,7 +149,7 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 如果身份验证类型设置为 `Basic`，则 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | 是 | 用于身份验证的用户名。 |
 | BasicAuthenticationPassword | 是 | 用于身份验证的密码。 |
@@ -173,7 +174,7 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 如果身份验证类型设置为 `ClientCertificate`，则 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | 是 | 用于身份验证的 X509 证书（RSA 密钥集）。 |
 
@@ -194,9 +195,9 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 如果身份验证类型设置为 `Bearer`，则 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| BearerAuthenticationToken | 否 | OAuth 2.0 持有者令牌。 |
+| BearerAuthenticationToken | 是 | OAuth 2.0 持有者令牌。 |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -217,15 +218,15 @@ REST API 技术配置文件允许将复杂的 JSON 有效负载发送到终结�
 
 REST API 可能需要返回错误消息，例如“在 CRM 系统中未找到该用户”。 如果发生错误，REST API 应返回带有以下属性的 HTTP 409 错误消息（冲突响应状态代码）：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 版本 | 是 | 1.0.0 |
+| version | 是 | 1.0.0 |
 | status | 是 | 409 |
-| 代码 | 否 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
-| requestId | 否 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
+| 代码 | 是 | 来自 RESTful 终结点提供程序的错误代码，启用 `DebugMode` 后会显示。 |
+| requestId | 是 | 来自 RESTful 终结点提供程序的请求标识符，启用 `DebugMode` 后会显示。 |
 | userMessage | 是 | 向用户显示的错误消息。 |
-| developerMessage | 否 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |
-| moreInfo | 否 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 |
+| developerMessage | 是 | 问题的详细说明及其解决方法，启用 `DebugMode` 后会显示。 |
+| moreInfo | 是 | 指向其他信息的 URI，启用 `DebugMode` 后会显示。 |
 
 以下示例演示了一个以 JSON 格式返回错误消息的 REST API：
 

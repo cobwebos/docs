@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110183"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187808"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure 数据工厂中的持续集成和交付
 
@@ -139,6 +139,9 @@ ms.locfileid: "77110183"
 
    ![选择 "创建发布"](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> 在 CI/CD 方案中，不同环境中的集成运行时（IR）类型必须相同。 例如，如果在开发环境中具有自承载 IR，则同一 IR 还必须在其他环境（如测试和生产）中是自承载类型。 同样，如果你要跨多个阶段共享集成运行时，则必须在所有环境（例如开发、测试和生产）中将集成运行时配置为链接自承载。
+
 ### <a name="get-secrets-from-azure-key-vault"></a>从 Azure Key Vault 获取机密
 
 如果你有权传入 Azure 资源管理器模板中的机密，则建议你将 Azure Key Vault 与 Azure Pipelines 版本结合使用。
@@ -184,11 +187,11 @@ ms.locfileid: "77110183"
 
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需要手动将其停止，然后在部署后重新启动它们。 为此，可以使用 Azure PowerShell 任务：
 
-1.  在版本的 "**任务**" 选项卡上，添加一个**Azure PowerShell**任务。
+1.  在版本的 "**任务**" 选项卡上，添加一个**Azure PowerShell**任务。 选择 "任务版本 4. *"。 
 
-1.  选择 " **Azure 资源管理器**作为" 连接类型 "，然后选择订阅。
+1.  选择工厂所在的订阅。
 
-1.  选择 "**内联脚本**" 作为脚本类型，然后提供您的代码。 下面的代码停止触发器：
+1.  选择 "**脚本文件路径**" 作为脚本类型。 这要求你将 PowerShell 脚本保存到存储库中。 以下 PowerShell 脚本可用于停止触发器：
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ ms.locfileid: "77110183"
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell 任务](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 部署后，可以完成类似的 `Start-AzDataFactoryV2Trigger` 步骤来重新启动触发器。
 
-> [!IMPORTANT]
-> 在 CI/CD 方案中，不同环境中的集成运行时（IR）类型必须相同。 例如，如果在开发环境中具有自承载 IR，则同一 IR 还必须在其他环境（如测试和生产）中是自承载类型。 同样，如果你要跨多个阶段共享集成运行时，则必须在所有环境（例如开发、测试和生产）中将集成运行时配置为链接自承载。
+### <a name="sample-pre--and-post-deployment-script"></a>示例预先部署脚本和后期部署脚本
 
-#### <a name="sample-pre--and-post-deployment-script"></a>示例预先部署脚本和后期部署脚本
+下面的示例脚本可用于在部署之前停止触发器并在以后重新启动。 此脚本还包括用于删除已移除资源的代码。 将该脚本保存在 Azure DevOps git 存储库中，并通过使用版本 4. * 的 Azure PowerShell 任务引用它。
 
-下面的示例脚本演示了如何在部署之前停止触发器并在以后重新启动它们。 此脚本还包括用于删除已移除资源的代码。 若要安装最新版本的 Azure PowerShell，请参阅[使用 PowerShellGet 在 Windows 上安装 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+在运行预先部署脚本时，需要在 "**脚本参数**" 字段中指定以下参数的变体。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+运行后期部署脚本时，需要在 "**脚本参数**" 字段中指定以下参数的变体。
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+下面是可以用于预先部署和后期部署的脚本。 它用于删除资源和资源引用。
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

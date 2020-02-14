@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911336"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198116"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>查看 Azure Maps API 使用情况指标
 
-本文介绍如何在[门户](https://portal.azure.com)中查看 Azure Maps 帐户的 API 使用情况指标。 指标以便捷的图形形式显示，可自定义时间段。
+本文介绍如何在[Azure 门户](https://portal.azure.com)中查看 Azure Maps 帐户的 API 使用情况指标。 指标以便捷的图形形式显示，可自定义时间段。
 
 ## <a name="view-metric-snapshot"></a>查看指标快照
 
@@ -35,22 +35,22 @@ ms.locfileid: "75911336"
 
 3. 打开 Maps 帐户后，单击左侧的“指标”菜单。
 
-4. 在“指标”窗格中，选择以下一值：
+4. 在 "**度量值**" 窗格上，选择下列选项之一：
 
    1. 可用性 - 显示一段时间内 API 可用性的平均值。
    2. 使用情况 - 显示帐户的使用量计算情况。
 
       ![Azure Maps 使用情况指标 "窗格](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”。 默认情况下，时间范围设置为 24 小时。 单击后，可看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间。 单击“应用”。
+5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”。 默认情况下，时间范围设置为 24 小时。 单击后，您将看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间。 单击 **“应用”** 。
 
     ![Azure Maps 度量值时间范围](media/how-to-view-api-usage/time-range.png)
 
-6. 添加指标后，可在与该指标相关的属性中“添加筛选器”，并然后选择要查看其图的属性的值。
+6. 添加度量值后，可以从与该度量值相关的属性中**添加筛选器**。 然后，选择要在关系图上反射的属性的值。
 
     ![Azure Maps 使用情况指标筛选器](media/how-to-view-api-usage/filter.png)
 
-7. 此外，还可以根据所选的指标属性，对指标“应用拆分”。 如此，即可将指标图拆分成多个图，每个图显示一个属性值。 在下图中，每个图的颜色对应图底部所示的属性值。
+7. 此外，还可以根据所选的指标属性，对指标“应用拆分”。 它允许将关系图拆分为该属性的每个值的多个关系图。 在下图中，每个图的颜色对应图底部所示的属性值。
 
     ![Azure Maps 使用情况指标拆分](media/how-to-view-api-usage/splitting.png)
 

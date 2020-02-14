@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 846abb61511ae1d5aedf77059ed2f1e9f4e5dbfb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911745"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190266"
 ---
 # <a name="clustering-point-data"></a>聚类数据
 
-当在地图上可视化多个数据点时，点彼此重叠，地图看起来显得有些混乱，因而难以查看和使用。 可使用点数据的聚类分析来改善此用户的体验。 聚类数据是将相邻的点数据组合在一起并将其作为单个群集数据点表示在地图上的过程。 当用户放大到地图中时，分类将分成各自的数据点。
+可视化地图上的多个数据点时，数据点可能相互重叠。 重叠可能会导致映射不可读且难以使用。 聚类点数据是将相邻的点数据合并在一起，并在地图上将其作为单个聚类数据点进行呈现的过程。 当用户放大地图时，聚类的各个数据点将会分开。 处理大量数据点时，请使用聚类处理过程来改善用户体验。
 
 <br/>
 
@@ -26,7 +26,7 @@ ms.locfileid: "75911745"
 
 ## <a name="enabling-clustering-on-a-data-source"></a>对数据源启用群集功能
 
-可以通过将 `cluster` 选项设置为 true，在 `DataSource` 类上轻松启用群集。 此外，还可以使用 `clusterRadius` 设置像素半径来选择要合并到群集中的相邻点，还可以使用 "`clusterMaxZoom`" 选项指定缩放级别，以禁用群集逻辑。 下面的示例演示如何在数据源中启用群集。
+通过将 `cluster` 选项设置为 true，在 `DataSource` 类中启用群集。 将 `ClusterRadius` 设置为选择附近的点，并将其合并到群集。 `ClusterRadius` 的值以像素为单位。 使用 `clusterMaxZoom` 指定禁用聚类分析逻辑的缩放级别。 下面的示例演示如何在数据源中启用群集。
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,19 +44,21 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> 如果两个数据点在地面上彼此接近，则群集可能永远不会中断，无论用户在多长时间内进行放大。 若要解决此情况，您可以设置数据源的 `clusterMaxZoom` 选项，该选项在缩放级别指定以禁用聚集逻辑，只显示所有内容。
+> 如果两个数据点在地面上彼此接近，则群集可能永远不会中断，无论用户在多长时间内进行放大。 若要解决此情况，可以设置 `clusterMaxZoom` 选项来禁用聚类逻辑，并只显示所有内容。
 
-`DataSource` 类还具有以下与聚类分析相关的方法：
+下面是 `DataSource` 类为聚类提供的其他方法：
 
-| 方法 | 返回类型 | Description |
+| 方法 | 返回类型 | 说明 |
 |--------|-------------|-------------|
-| getClusterChildren （clusterId： number） | 承诺&lt;数组&lt;功能&lt;几何，任何&gt; \| 形状&gt;&gt; | 在下一个缩放级别检索给定分类的子项。 这些子级可以是形状和 subclusters 的组合。 Subclusters 将是具有与 ClusteredProperties 匹配的属性的功能。 |
-| getClusterExpansionZoom （clusterId： number） | 承诺&lt;号&gt; | 计算群集开始展开或分离的缩放级别。 |
-| getClusterLeaves （clusterId： number，limit： number，offset： number） | 承诺&lt;数组&lt;功能&lt;几何，任何&gt; \| 形状&gt;&gt; | 检索群集中的所有点。 设置 `limit` 以返回部分点，并使用 `offset` 逐页浏览点。 |
+| getClusterChildren （clusterId： number） | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 在下一个缩放级别检索给定聚类的子级。 这些子级可以是形状和子聚类的组合。 子聚类是包含与 ClusteredProperties 匹配的属性的特征。 |
+| getClusterExpansionZoom （clusterId： number） | Promise&lt;number&gt; | 计算聚类开始展开或分开的缩放级别。 |
+| getClusterLeaves （clusterId： number，limit： number，offset： number） | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 检索聚类中的所有点。 设置 `limit` 可返回点的子集，使用 `offset` 可逐页呈现点。 |
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>使用气泡图层显示分类
 
-气泡图层是一种呈现聚类的好方法，因为可以轻松地缩放半径，并使用表达式根据分类中的点数更改颜色。 使用气泡图层显示群集时，还应使用单独的层来呈现非群集的数据点。 还可以在气泡顶部显示群集的大小，这也是一种很好的方法。 带有文本和无图标的符号层可用于实现此行为。 
+气泡图层是渲染聚集点的好方法。 使用表达式可以根据群集中的点数，缩放 radius 并更改颜色。 如果使用气泡层显示群集，则应使用单独的层来呈现非群集的数据点。
+
+若要在气泡顶部显示群集的大小，请将符号层用于文本，不要使用图标。
 
 <br/>
 
@@ -66,7 +68,9 @@ var datasource = new atlas.source.DataSource(null, {
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>使用符号层显示群集
 
-使用符号层可视化点数据时，默认情况下，它会自动隐藏彼此重叠的符号，以创建更清晰的体验，但如果您想要查看地图上数据点的密度，这可能不是所需的体验。 将 "符号层 `iconOptions`" 属性 `allowOverlap` 选项设置为 "`true` 禁用此体验，但将导致显示所有符号。 使用聚类分析可查看所有数据的密度，同时创建良好的干净用户体验。 在此示例中，自定义符号将用于表示群集和各个数据点。
+可视化数据点时，符号层会自动隐藏彼此重叠的符号，以确保更清晰的用户界面。 如果要在地图上显示数据点密度，则可能不需要此默认行为。 但是，可以更改这些设置。 若要显示所有符号，请将符号层 `iconOptions` 属性的 `allowOverlap` 选项设置为 "`true`"。 
+
+使用聚类分析来显示数据点密度，同时保持干净的用户界面。 下面的示例演示如何使用符号层添加自定义符号并表示群集和各个数据点。
 
 <br/>
 
@@ -76,7 +80,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>聚类分析和热度地图层
 
-热度地图是在地图上显示数据密度的好方法。 此可视化效果可以自行处理大量数据点，但如果数据点是聚集的，则可以处理更多的数据，并将群集大小用作热度地图的权重。 将热度地图层的 `weight` 选项设置为 `['get', 'point_count']` 以实现此目的。 当群集的 radius 较小时，热度地图看起来几乎与使用非群集数据点的热度地图完全相同，但性能会更好。 然而，分类半径越小，热度地图就越精确，但性能优势也就越小。
+热度地图是在地图上显示数据密度的好方法。 此可视化方法可以自行处理大量数据点。 如果数据点已群集化，并且簇大小用作热度地图的权重，则热度地图可以处理更多的数据。 若要实现此选项，请将热度地图层的 `weight` 选项设置为 "`['get', 'point_count']`"。 当群集的 radius 较小时，热度地图看起来几乎与使用非群集数据点的热度地图完全相同，但性能会更好。 但是，更小的群集半径越小，热度地图就越精确，但性能优势就越少。
 
 <br/>
 
@@ -88,14 +92,14 @@ var datasource = new atlas.source.DataSource(null, {
 
 当鼠标事件发生在包含群集数据点的层上时，群集数据点将作为 GeoJSON 点功能对象返回到事件。 此点功能将具有以下属性：
 
-| 属性名称             | 类型    | Description   |
+| 属性名称             | 类型    | 说明   |
 |---------------------------|---------|---------------|
-| `cluster`                 | boolean | 指示功能是否表示群集。 |
-| `cluster_id`              | 字符串  | 可以与 DataSource 一起使用的群集的唯一 ID `getClusterExpansionZoom`、`getClusterChildren`和 `getClusterLeaves` 方法。 |
-| `point_count`             | 数字  | 群集包含的点数。  |
-| `point_count_abbreviated` | 字符串  | 一个字符串，如果 `point_count` 值过长，则该字符串缩写。 （例如，4000变为4K）  |
+| `cluster`                 | boolean | 指示特征是否表示聚类。 |
+| `cluster_id`              | string  | 可与数据源 `getClusterExpansionZoom`、`getClusterChildren` 和 `getClusterLeaves` 方法结合使用的群集唯一 ID。 |
+| `point_count`             | number  | 聚类包含的点数。  |
+| `point_count_abbreviated` | string  | 一个字符串，如果该 `point_count` 值过长，则该字符串缩写。 （例如，将 4,000 缩写为 4K）  |
 
-此示例采用一个呈现分类点的气泡图层，并添加一个单击事件，当触发、计算并缩放地图到下一个缩放级别时，将会使用 `DataSource` 类的 `getClusterExpansionZoom` 方法和已单击的群集数据点的 `cluster_id` 属性来分离该地图。 
+此示例采用一个呈现分类点并添加一个 click 事件的气泡图层。 当单击事件触发时，代码将计算地图，并将其缩放到下一个缩放级别，分类将在该缩放级别中断。 此功能是使用 `DataSource` 类的 `getClusterExpansionZoom` 方法和被单击的群集数据点的 `cluster_id` 属性实现的。
 
 <br/>
 
@@ -105,7 +109,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 ## <a name="display-cluster-area"></a>显示群集区域 
 
-分类所代表的点数据分散在某个区域。 在此示例中，当鼠标悬停在群集上时，它包含的各个数据点（叶）将用于计算凸形，并显示在地图上以显示区域。 可以使用 `getClusterLeaves` 方法从数据源中检索包含在群集中的所有点。 凸形凸形是一种用于包装一组点（如弹性带区）并可使用 `atlas.math.getConvexHull` 方法进行计算的多边形。
+分类所代表的点数据分散在某个区域。 在此示例中，当鼠标悬停在群集上时，将发生两种主要行为。 首先，群集中包含的各个数据点将用于计算凸首。 然后，凸形凸形将显示在地图上以显示一个区域。  凸形凸形是一种用于包装一组点（如弹性带区）并可使用 `atlas.math.getConvexHull` 方法进行计算的多边形。 可以使用 `getClusterLeaves` 方法从数据源中检索包含在群集中的所有点。
 
 <br/>
 
@@ -115,9 +119,9 @@ var datasource = new atlas.source.DataSource(null, {
 
 ## <a name="aggregating-data-in-clusters"></a>聚合群集中的数据
 
-通常使用带有群集内点数的符号来表示分类，但有时需要根据某个指标进一步自定义分类的样式，如群集中所有点的总收入。 使用分类聚合自定义属性可以使用[聚合表达式](data-driven-style-expressions-web-sdk.md#aggregate-expression)计算来创建和填充。  可以在 `DataSource``clusterProperties` 选项中定义群集聚合。
+通常使用带有群集内点数的符号来表示分类。 但有时需要自定义具有其他指标的分类样式。 使用分类聚合，可以使用[聚合表达式](data-driven-style-expressions-web-sdk.md#aggregate-expression)计算来创建和填充自定义属性。  可以在 `DataSource``clusterProperties` 选项中定义群集聚合。
 
-下面的示例使用聚合表达式来计算基于群集中每个数据点的实体类型属性的计数。
+下面的示例使用聚合表达式。 此代码根据群集中每个数据点的实体类型属性计算计数。 当用户单击群集时，将显示一个弹出窗口，其中包含有关该群集的其他信息。
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="群集聚合" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅<a href='https://codepen.io'>CodePen</a>上的笔<a href='https://codepen.io/azuremaps/pen/jgYyRL/'>群集聚合</a>按 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
@@ -128,7 +132,7 @@ var datasource = new atlas.source.DataSource(null, {
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [数据源类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
+> [DataSource 类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
 > [DataSourceOptions 对象](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.datasourceoptions?view=azure-iot-typescript-latest)

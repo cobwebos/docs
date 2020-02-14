@@ -1,25 +1,25 @@
 ---
 title: 添加用于保护对自定义 Api 的调用的身份验证
-description: 如何设置身份验证，以便通过 Azure 逻辑应用保护对自定义 Api 的调用
+description: 如何设置身份验证以提高从 Azure 逻辑应用的自定义 Api 调用的安全性
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666884"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191408"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>通过 Azure 逻辑应用保护对自定义 API 的调用
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>提高从 Azure 逻辑应用调用自定义 Api 的安全性
 
-要保护对 API 的调用，可通过 Azure 门户设置 Azure Active Directory (Azure AD) 身份验证，这样便无需更新代码。 或者，还可利用 API 代码要求并强制执行身份验证。
+若要提高对 Api 的调用的安全性，可以通过 Azure 门户设置 Azure Active Directory （Azure AD）身份验证，这样就无需更新代码。 或者，还可利用 API 代码要求并强制执行身份验证。
 
 ## <a name="authentication-options-for-your-api"></a>适用于 API 的身份验证选项
 
-通过以下方式可以保护对自定义 API 的调用：
+可以通过以下方式提高对自定义 API 的调用的安全性：
 
 * [无需更改代码](#no-code)：通过 Azure 门户使用 [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) 保护 API，以便无需更新代码或重新部署 API。
 
@@ -51,9 +51,9 @@ ms.locfileid: "75666884"
 2. 确认所在目录与 Web 应用或 API 应用相同。
 
    > [!TIP]
-   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” > “切换目录”。
+   > 要切换目录，请选择配置文件，然后选择其他目录。 还可以选择“概述” **“切换目录”**  > 。
 
-3. 在目录菜单的“管理”下，选择“应用注册” > “新建应用程序注册”。
+3. 在目录菜单的“管理”下，选择“应用注册” **“新建应用程序注册”**  > 。
 
    > [!TIP]
    > 默认情况下，应用注册列表显示目录中的所有应用注册。 若要仅查看应用注册，请在搜索框旁选择“我的应用”。 
@@ -197,7 +197,7 @@ ms.locfileid: "75666884"
 }
 ```
 
-| 属性 | 需要 | Description | 
+| 属性 | 必需 | 说明 | 
 | -------- | -------- | ----------- | 
 | tenant | 是 | Azure AD 租户的 GUID | 
 | audience | 是 | 想要访问的目标资源的 GUID - Web 应用或 API 应用的应用程序标识中的客户端 ID | 
@@ -234,7 +234,7 @@ ms.locfileid: "75666884"
 
 <a name="certificate"></a>
 
-#### <a name="certificate-authentication"></a>证书身份验证
+#### <a name="certificate-authentication"></a>证书验证
 
 若要验证从逻辑应用传入 Web 应用或 API 应用的请求，可以使用客户端证书。 若要设置代码，请了解[如何配置 TLS 相互身份验证](../app-service/app-service-web-configure-tls-mutual-auth.md)。
 
@@ -248,10 +248,10 @@ ms.locfileid: "75666884"
 } 
 ```
 
-| 属性 | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | -------- | -------- | ----------- |
 | `type` | 是 | 身份验证类型。 对于 SSL 客户端证书，该值必须为 `ClientCertificate`。 |
-| `password` | 否 | 用于访问客户端证书（PFX 文件）的密码 |
+| `password` | 是 | 用于访问客户端证书（PFX 文件）的密码 |
 | `pfx` | 是 | 客户端证书（PFX 文件）的 base64 编码内容 |
 ||||
 
@@ -271,7 +271,7 @@ ms.locfileid: "75666884"
 }
 ```
 
-| 属性 | 需要 | Description | 
+| 属性 | 必需 | 说明 | 
 | -------- | -------- | ----------- | 
 | type | 是 | 要使用的身份验证类型。 对于基本身份验证，该值必须是 `Basic`。 | 
 | username | 是 | 要用于身份验证的用户名 | 

@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75658519"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198337"
 ---
 | 资源 | [消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan) | [高级计划](../articles/azure-functions/functions-scale.md#premium-plan) | [应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | 横向扩展 | 事件驱动 | 事件驱动 | [手动/自动缩放](../articles/app-service/manage-scale-up.md) | 
 | 最大实例数 | 200 | 100 | 10-20 |
 |默认[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |5 | 30 |30<sup>2</sup> |
-|最大[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |10 | 60 | 无限<sup>3</sup> |
+|最大[超时持续时间](../articles/azure-functions/functions-scale.md#timeout)（分钟） |10 | 无限<sup>8</sup> | 无限<sup>3</sup> |
 | 最大出站连接数（每个实例） | 600活动（总共1200个） | unbounded | unbounded |
 | 最大请求大小（MB）<sup>4</sup> | 100 | 100 | 100 |
 | 最大查询字符串长度<sup>4</sup> | 4096 | 4096 | 4096 |
@@ -35,4 +35,5 @@ ms.locfileid: "75658519"
 <sup>4</sup> [主机中设置](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config)了这些限制。  
 <sup>5</sup>你可以承载的函数应用的实际数目取决于应用的活动、计算机实例的大小和相应的资源利用率。  
 <sup>6</sup>存储限制是同一应用服务计划中所有应用的临时存储中的总内容大小。 消耗计划使用 Azure 文件进行临时存储。  
-<sup>7</sup>当函数应用托管在[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)中时，仅支持 CNAME 选项。 对于[高级计划](../articles/azure-functions/functions-scale.md#premium-plan)或[应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)中的函数应用，可以使用 CNAME 或 a 记录来映射自定义域。
+<sup>7</sup>当函数应用托管在[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)中时，仅支持 CNAME 选项。 对于[高级计划](../articles/azure-functions/functions-scale.md#premium-plan)或[应用服务计划](../articles/azure-functions/functions-scale.md#app-service-plan)中的函数应用，可以使用 CNAME 或 a 记录来映射自定义域。  
+<sup>8</sup>保证最长60分钟。

@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中为 SMTP 横幅检查配置反向查找区域
+title: 为 SMTP 横幅检查配置反向查找区域
 titlesuffix: Azure Virtual Network
 description: 介绍如何在 Azure 中为 SMTP 横幅检查配置反向查找区域
 services: virtual-network
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059024"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201690"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>为 SMTP 横幅检查配置反向查找区域
 
 本文介绍如何在 Azure DNS 中使用反向区域，并为 SMTP 横幅检查创建反向 DNS （PTR）记录。
 
-## <a name="symptom"></a>症状
+## <a name="symptom"></a>故障现象
 
 如果在 Microsoft Azure 中托管 SMTP 服务器，则通过自远程邮件服务器收发邮件时，可能收到以下错误消息：
 
-**554：无 PTR 记录**
+**554: 无 PTR 记录**
 
 ## <a name="solution"></a>解决方案
 

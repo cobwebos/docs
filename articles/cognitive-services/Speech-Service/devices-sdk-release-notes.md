@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446944"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189054"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>发行说明：语音设备 SDK
 
 以下部分列出了最新版本中的更改。
 
+## <a name="speech-devices-sdk-190"></a>语音设备 SDK 1.9.0：
+
+- 提供[URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) （Linux ARM64）的初始二进制文件。
+- Roobo v1 现在使用适用于 Speech SDK 的 Maven
+- 已将[SPEECH SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)组件更新为版本1.9.0。 有关详细信息，请参阅其[发行说明](https://aka.ms/csspeech/whatsnew)。
+
 ## <a name="speech-devices-sdk-170"></a>语音设备 SDK 1.7.0：
 
 - 现在支持 Linux ARM。
-- 提供 Roobo v2 的初始二进制文件（Linux ARM64）。
+- 提供[Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)的初始二进制文件（Linux ARM64）。
 - Windows 用户可以使用 `AudioConfig.fromDefaultMicrophoneInput()` 或 `AudioConfig.fromMicrophoneInput(deviceName)` 来指定要使用的麦克风。
 - 库大小已优化。
 - 支持使用相同的语音/意向识别器对象的多项识别。

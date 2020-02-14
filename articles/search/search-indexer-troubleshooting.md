@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931124"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190936"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure 认知搜索中的常见索引器问题疑难解答
 
@@ -112,6 +112,6 @@ api-key: [admin key]
 
 * 文档尚未进行索引。 查看门户中是否有成功的索引器运行。
 * 文档在索引器运行之后已更新。 如果索引器已在[计划](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule)之中，它最终会重新运行并选取该文档。
-* 在数据源中指定的 [query](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) 排除了该文档。 索引器不能索引不属于数据源的文档。
+* 在数据源中指定的 [query](/rest/api/searchservice/create-data-source) 排除了该文档。 索引器不能索引不属于数据源的文档。
 * [字段映射](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings)或[AI 扩充](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro)已更改文档，其外观与预期的不同。
 * 使用[查找文档 API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 来查找文档。

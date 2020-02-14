@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426990"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190942"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>在 Azure 认知搜索中实现搜索流量分析
 
@@ -106,7 +106,7 @@ ms.locfileid: "75426990"
 **SearchServiceName**：（string）搜索服务名称**SearchId**：（guid）搜索查询的唯一标识符（传入搜索响应） **IndexName**：（string）搜索要查询的搜索服务索引**QueryTerms** **：（** string）搜索的搜索词。返回的文档数（在搜索响应中） **ScoringProfile**：（string）使用的计分配置文件的名称（如果有）
 
 > [!NOTE]
-> 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请在[此处](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)查看详细信息
+> 请通过向搜索查询添加 $count=true 来请求用户生成查询的计数。 请参阅[此处](/rest/api/searchservice/search-documents#counttrue--false)的详细信息。
 >
 
 > [!NOTE]

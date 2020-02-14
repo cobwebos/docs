@@ -1,6 +1,6 @@
 ---
 title: Android 地图控件入门 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure Map Android SDK 开始使用 Android 地图控件。
+description: 在本文中，你将学习如何使用 Microsoft Azure Map Android SDK 开始使用 Android 地图控件。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911399"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198184"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
 Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指导你完成安装 Azure Maps Android SDK 和加载映射的过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
 若要完成本文中的过程，首先需要在 S1 定价层中[创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)，并获取帐户的[主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 
-有关 Azure Maps 中的身份验证的详细信息，请参阅[Azure Maps 中的管理身份验证](./how-to-manage-authentication.md)。
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
 ### <a name="download-android-studio"></a>下载 Android Studio
 
@@ -38,7 +38,7 @@ Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指�
 
 1. 在 "**选择项目**" 下，选择 "**手机和平板电脑**"。 应用程序将在此外观上运行。
 2. 在 "**手机和平板电脑**" 选项卡上，选择 "**空活动**"，然后选择 "**下一步**"。
-3. 在“配置项目”下，选择 `API 21: Android 5.0.0 (Lollipop)` 作为最低要求的 SDK。 这是 Azure Maps Android SDK 支持的最早版本。
+3. 在“配置项目”下，选择  **作为最低要求的 SDK。** `API 21: Android 5.0.0 (Lollipop)` 这是 Azure Maps Android SDK 支持的最早版本。
 4. 接受默认 `Activity Name` 并 `Layout Name` 并选择 "**完成**"。
 
 有关安装 Android Studio 和创建新项目的更多帮助，请参阅[Android Studio 文档](https://developer.android.com/studio/intro/)。
@@ -57,7 +57,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
 
 构建应用程序的下一步是安装 Azure Maps Android SDK。 完成以下步骤以安装 SDK：
 
-1. 打开顶级**gradle**文件，并将以下代码添加到 "**所有项目**"、"**存储库**" 块部分：
+1. 打开顶级 **build.gradle** 文件，将以下代码添加到**所有项目**的 **repositories** 块节中：
 
     ```
     maven {
@@ -65,11 +65,11 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     }
     ```
 
-2. 更新**应用/gradle** ，并向其中添加以下代码：
+2. 更新 **app/build.gradle** 并在其中添加以下代码：
     
-    1. 请确保项目的**minSdkVersion**为 API 21 或更高版本。
+    1. 确保项目的 **minSdkVersion** 设置为 API 21 或更高版本。
 
-    2. 将以下代码添加到 Android 部分：
+    2. 将以下代码添加到 Android 节：
 
         ```
         compileOptions {
@@ -77,14 +77,14 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    3. 更新依赖项块，并为最新的 Azure Maps Android SDK 添加新的实现依赖项行：
+    3. 更新 dependencies 块，并为最新 Azure Maps Android SDK 添加新的实现依赖项行：
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
     
-    4. 在工具栏中，单击 "**文件**"，然后单击 "将**项目与 Gradle 文件同步**"。
-3. 将地图片段添加到主活动（res \> 布局 \> 活动\_：
+    4. 在工具栏中转到“文件”，然后单击“将项目与 Gradle 文件同步”。
+3. 将一个地图片段添加到 main 活动 (res \> layout \> activity\_main.xml)：
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -103,15 +103,15 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     </FrameLayout>
     ```
 
-4. 在**MainActivity**文件中，你将需要：
+4. 在**MainActivity**文件中，需要执行以下操作：
     
-    * 添加 Azure Maps SDK 的导入
+    * 添加 Azure Maps SDK 的 import 语句
     * 设置 Azure Maps 身份验证信息
-    * 在**onCreate**方法中获取地图控件实例
+    * 在 **onCreate** 方法中获取地图控件实例
 
     使用 `setSubscriptionKey` 或 `setAadProperties` 方法全局设置 `AzureMaps` 类的身份验证信息，这样就无需在每个视图上添加身份验证信息。 
 
-    Map 控件包含其自身的生命周期方法，用于管理 Android 的 OpenGL 生命周期，该生命周期必须直接从包含的活动中调用。 若要使应用正确地调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法，并调用各自的地图控制方法。 
+    Map 控件包含自己的生命周期方法来管理 Android 的 OpenGL 生命周期。 必须直接从包含活动中调用这些生命周期方法。 若要让应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 而且，您必须调用各自的 map 控制方法。 
 
     * onCreate （捆绑包） 
     * onStart （） 
@@ -122,7 +122,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     * onSaveInstanceState （捆绑包） 
     * onLowMemory() 
 
-    编辑**MainActivity**文件，如下所示：
+    按如下所示编辑 **MainActivity.java** 文件：
     
     ```java
     package com.example.myapplication;
@@ -238,7 +238,7 @@ static {
 }
 ```
 
-第二种方法是将语言和视图信息传递到地图控件 XML 中。
+第二种做法是将语言和视图信息传入地图控件 XML 中。
 
 ```XML
 <com.microsoft.azure.maps.mapcontrol.MapControl
@@ -250,7 +250,7 @@ static {
     />
 ```
 
-第三种方法是使用地图 `setStyle` 方法以编程方式设置地图的语言和区域视图。 可随时完成此操作，以更改地图的语言和区域视图。
+第三种做法是使用地图 `setStyle` 方法以编程方式设置地图的语言和区域视图。 随时可以采取这种做法来更改地图的语言和区域视图。
 
 ```Java
 mapControl.onReady(map -> {
@@ -266,7 +266,7 @@ mapControl.onReady(map -> {
 ![Azure Maps，以法语](./media/how-to-use-android-map-control-library/android-localization.png)
 显示标签的地图图像 </center>
 
-[此处](supported-languages.md)介绍了支持的语言和区域视图的完整列表。
+[此文档](supported-languages.md)提供了支持的语言和区域视图的完整列表。
 
 ## <a name="next-steps"></a>后续步骤
 

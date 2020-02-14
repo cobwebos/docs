@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 47b9c0f89cb3db1610b8e3d98f408283c6ff9980
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116935"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191319"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "77116935"
 
 如果逻辑应用使用基于请求的触发器来接收传入的调用或请求，如[请求](../connectors/connectors-native-reqres.md)或[Webhook](../connectors/connectors-native-webhook.md)触发器，则可以限制访问，以便只有经过授权的客户端才能调用逻辑应用。 逻辑应用接收到的所有请求都使用安全套接字层 (SSL) 协议进行加密和保护。
 
-可以通过以下方式保护对此触发器类型的访问：
+以下是可帮助你保护对此触发器类型的访问的选项：
 
 * [生成共享访问签名](#sas)
 * [限制入站 IP 地址](#restrict-inbound-ip-addresses)
@@ -92,7 +92,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-在正文中，包含值为 `KeyType` 或 `Primary` 的 `Secondary` 属性。 此属性返回由指定的安全密钥签名的 URL。
+在正文中，包含值为 `KeyType` 或 `Primary` 的 `Secondary` 属性。 此属性返回由指定安全密钥签名的 URL。
 
 <a name="restrict-inbound-ip"></a>
 
@@ -188,7 +188,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 * [按 IP 地址范围限制访问](#restrict-ip)。
 
-  此选项可让你基于特定 IP 地址范围内的请求来保护对运行历史记录的访问。
+  此选项可帮助您基于特定 IP 地址范围内的请求来保护对运行历史记录的访问。
 
 * [使用混淆隐藏运行历史记录中的数据](#obfuscate)。
 
@@ -257,21 +257,21 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ### <a name="hide-data-from-run-history-by-using-obfuscation"></a>使用混淆隐藏运行历史记录中的数据
 
-许多触发器和操作都具有从逻辑应用的运行历史记录中隐藏输入和/或输出的设置。 当你使用这些设置来保护此类数据时，请[注意以下事项](#obfuscation-considerations)。
+许多触发器和操作都具有从逻辑应用的运行历史记录中隐藏输入和/或输出的设置。 当你使用这些设置帮助你保护此类数据时，请[注意以下事项](#obfuscation-considerations)。
 
-#### <a name="secure-inputs-and-outputs-in-the-designer"></a>设计器中的安全输入和输出
+#### <a name="hide-inputs-and-outputs-in-the-designer"></a>在设计器中隐藏输入和输出
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中打开逻辑应用。
 
    ![在逻辑应用设计器中打开逻辑应用](./media/logic-apps-securing-a-logic-app/open-sample-logic-app-in-designer.png)
 
-1. 在要保护数据的触发器或操作上，选择省略号（ **...** ）按钮，然后选择 "**设置**"。
+1. 在要隐藏敏感数据的触发器或操作上，选择省略号（ **...** ）按钮，然后选择 "**设置**"。
 
    ![打开触发器或操作设置](./media/logic-apps-securing-a-logic-app/open-action-trigger-settings.png)
 
 1. 启用**安全输入**和/或**安全输出**。 完成后，选择“完成”。
 
-   ![启用安全输入或输出](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
+   ![打开 "安全输入" 或 "安全输出"](./media/logic-apps-securing-a-logic-app/turn-on-secure-inputs-outputs.png)
 
    操作或触发器现在在标题栏中显示锁定图标。
 
@@ -287,20 +287,20 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
    1. 在 "**逻辑应用运行**" 窗格上，展开要查看的操作。
 
-      如果选择保护输入和输出，则这些值现在显示为隐藏。
+      如果选择同时遮蔽输入和输出，这些值现在会显示为隐藏。
 
       ![运行历史记录中隐藏的输入和输出](./media/logic-apps-securing-a-logic-app/hidden-data-run-history.png)
 
 <a name="secure-data-code-view"></a>
 
-#### <a name="secure-inputs-and-outputs-in-code-view"></a>在代码视图中保护输入和输出
+#### <a name="hide-inputs-and-outputs-in-code-view"></a>在代码视图中隐藏输入和输出
 
 在基础触发器或操作定义中，添加或更新其中一个或两个值的 `runtimeConfiguration.secureData.properties` 数组：
 
 * `"inputs"`：保护运行历史记录中的输入。
 * `"outputs"`：保护运行历史记录中的输出。
 
-当你使用这些设置来保护此类数据时，请[注意以下事项](#obfuscation-considerations)。
+当你使用这些设置帮助你保护此类数据时，请[注意以下事项](#obfuscation-considerations)。
 
 ```json
 "<trigger-or-action-name>": {
@@ -324,13 +324,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>隐藏输入和输出时的注意事项
 
-* 当你保护触发器或操作的输入或输出时，逻辑应用不会将受保护的数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
+* 当隐藏触发器或操作的输入或输出时，逻辑应用不会将受保护的数据发送到 Azure Log Analytics。 此外，不能将[跟踪的属性](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data)添加到该触发器或操作进行监视。
 
 * [用于处理工作流历史记录的逻辑应用 API](https://docs.microsoft.com/rest/api/logic/)不返回安全输出。
 
-* 若要通过保护输入的操作保护输出，或显式使用安全输出，请在该操作中手动打开**安全输出**。
+* 若要从遮盖输入或显式隐藏输出的操作中隐藏输出，请在该操作中手动打开**安全输出**。
 
-* 请确保在期望运行历史记录保护数据的下游操作中启用**安全输入**或**安全输出**。
+* 请确保在期望运行历史记录掩盖数据的下游操作中启用**安全输入**或**安全输出**。
 
   **安全输出设置**
 
@@ -358,7 +358,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 如果在不同的环境中进行部署，请考虑在工作流定义中参数化根据这些环境而变化的值。 这样一来，你就可以通过使用[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)来部署逻辑应用、通过定义受保护的参数来保护敏感数据，[并通过使用](../azure-resource-manager/templates/template-parameters.md)[参数文件](../azure-resource-manager/templates/parameter-files.md)将该数据作为单独的输入传递，来避免使用硬编码数据。
 
-例如，如果使用[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)对 HTTP 操作进行身份验证，则可以定义接受用于身份验证的客户端 ID 和客户端密钥的参数并确保它们的安全。 若要在逻辑应用中定义这些参数，请使用逻辑应用的工作流定义中的 `parameters` 部分，并为部署资源管理器模板。 若要隐藏编辑逻辑应用或查看运行历史记录时不希望显示的参数值，请使用 `securestring` 或 `secureobject` 类型定义参数，并在必要时使用编码。 具有此类型的参数不会随资源定义一起返回，且在部署后查看资源时不可访问。 若要在运行时访问这些参数值，请使用工作流定义中的 `@parameters('<parameter-name>')` 表达式。 此表达式仅在运行时进行计算，由[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)进行描述。
+例如，如果使用[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)对 HTTP 操作进行身份验证，则可以定义并掩盖接受用于身份验证的客户端 ID 和客户端密码的参数。 若要在逻辑应用中定义这些参数，请使用逻辑应用的工作流定义中的 `parameters` 部分，并为部署资源管理器模板。 若要隐藏编辑逻辑应用或查看运行历史记录时不希望显示的参数值，请使用 `securestring` 或 `secureobject` 类型定义参数，并在必要时使用编码。 具有此类型的参数不会随资源定义一起返回，且在部署后查看资源时不可访问。 若要在运行时访问这些参数值，请使用工作流定义中的 `@parameters('<parameter-name>')` 表达式。 此表达式仅在运行时进行计算，由[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)进行描述。
 
 > [!NOTE]
 > 如果在请求标头或正文中使用参数，则在查看逻辑应用的运行历史记录和传出 HTTP 请求时，该参数可能可见。 请确保同时设置内容访问策略。 还可以使用[模糊](#obfuscate)处理在运行历史记录中隐藏输入和输出。 始终不能通过输入或输出看见授权标头。 因此，如果在此处使用机密，则无法检索该机密。
@@ -566,7 +566,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 ## <a name="access-to-services-and-systems-called-from-logic-apps"></a>访问逻辑应用中调用的服务和系统
 
-可以通过以下方式保护接收来自逻辑应用的调用或请求的终结点：
+下面是一些可帮助保护接收来自逻辑应用的调用或请求的终结点的方法：
 
 * 将身份验证添加到出站请求。
 
@@ -586,13 +586,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
   从逻辑应用对终结点进行的所有调用源自基于逻辑应用区域的特定指定 IP 地址。 可以添加仅接受来自这些 IP 地址的请求的筛选规则。 若要获取这些 IP 地址，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md#configuration)。
 
-* 安全连接到本地系统。
+* 提高与本地系统的连接的安全性。
 
-  Azure 逻辑应用可与这些服务集成，提供安全可靠的本地通信。
+  Azure 逻辑应用提供与这些服务的集成，以帮助提供更安全、更可靠的本地通信。
 
   * 本地数据网关
 
-    Azure 逻辑应用中的许多托管连接器提供与本地系统（如文件系统、SQL、SharePoint 和 DB2）的安全连接。 网关通过 Azure 服务总线发送来自加密通道上的本地源的数据。 所有流量最初都是网关代理的安全出站流量。 了解[本地数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。
+    Azure 逻辑应用中的许多托管连接器都有助于安全连接到本地系统，如文件系统、SQL、SharePoint 和 DB2。 网关通过 Azure 服务总线发送来自加密通道上的本地源的数据。 所有流量均源自网关代理的安全出站流量。 了解[本地数据网关的工作原理](logic-apps-gateway-install.md#gateway-cloud-service)。
 
   * 通过 Azure API 管理进行连接
 
@@ -680,9 +680,9 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 有关使用客户端证书身份验证保护服务的详细信息，请参阅以下主题：
 
-* [在 Azure API 管理中使用客户端证书身份验证保护 Api](../api-management/api-management-howto-mutual-certificates-for-clients.md)
-* [在 Azure API 管理中使用客户端证书身份验证保护后端服务](../api-management/api-management-howto-mutual-certificates.md)
-* [使用客户端证书保护 RESTfuL 服务](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [在 Azure API 管理中使用客户端证书身份验证提高 Api 的安全性](../api-management/api-management-howto-mutual-certificates-for-clients.md)
+* [在 Azure API 管理中使用客户端证书身份验证提高后端服务的安全性](../api-management/api-management-howto-mutual-certificates.md)
+* [使用客户端证书提高 RESTfuL 服务的安全性](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [用于应用程序身份验证的证书凭据](../active-directory/develop/active-directory-certificate-credentials.md)
 * [在 Azure 应用服务的应用程序代码中使用 SSL 证书](../app-service/configure-ssl-certificate-in-code.md)
 

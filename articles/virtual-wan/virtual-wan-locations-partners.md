@@ -1,19 +1,19 @@
 ---
-title: Azure 虚拟 WAN 合作伙伴位置 | Microsoft Docs
+title: Azure 虚拟 WAN 合作伙伴和位置 |Microsoft Docs
 description: 本文包含 Azure 虚拟 WAN 合作伙伴和中心位置的列表。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: afa808c95c88184fb531e858fbfe6d102a6f1f08
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
+ms.openlocfilehash: 68379fd2334e517df4011c05bb32543f7ce4a173
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157153"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190405"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>虚拟 WAN 合作伙伴和虚拟中心位置
 
@@ -34,7 +34,7 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 * 自动下载 Azure 连接信息
 * 本地分支设备的配置 
 
-某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 若想了解有关自动化的详细信息，请参阅[配置自动化 - WAN 合作伙伴](virtual-wan-configure-automation-providers.md)。
+某些连接合作伙伴可以扩展自动化，包括创建 Azure 虚拟中心 VNet 和 VPN 网关。 如果你想要了解有关自动化的详细信息，请参阅[虚拟 WAN 合作伙伴的自动化指导原则](virtual-wan-configure-automation-providers.md)。
 
 ## <a name="partners"></a>通过合作伙伴建立连接
 
@@ -50,4 +50,4 @@ Azure Virtual WAN 是一种网络服务，它通过 Azure 提供经优化、自�
 
 * 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 常见问题解答](virtual-wan-faq.md)。
 
-* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[虚拟 WAN 合作伙伴 - 如何实现自动化](virtual-wan-configure-automation-providers.md)。
+* 有关如何自动连接到 Azure 虚拟 WAN 的详细信息，请参阅[虚拟 wan 合作伙伴的自动化指南](virtual-wan-configure-automation-providers.md)。

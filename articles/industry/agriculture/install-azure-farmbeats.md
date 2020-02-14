@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131881"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198848"
 ---
 # <a name="install-azure-farmbeats"></a>安装 Azure FarmBeats
 
@@ -83,7 +83,9 @@ Azure FarmBeats 的整个设置，包括准备和安装所需的时间不到1小
 - 订阅-所有者
 - 要在其中安装 FarmBeats 的资源组-所有者
 
-[创建 AAD 应用程序](#create-an-aad-application)步骤需要前两个权限。 如果需要，可以获取具有适当权限的人员来创建 AAD 应用程序。 安装 FarmBeats 的人员需要是要在其中安装 FarmBeats 的资源组的所有者。
+[创建 AAD 应用程序](#create-an-aad-application)步骤需要前两个权限。 如果需要，可以获取具有适当权限的人员来创建 AAD 应用程序。
+
+从 marketplace 运行 FarmBeats 安装的人员需要是要在其中安装 FarmBeats 的资源组的所有者。 对于订阅所有者，在创建资源组时会自动发生这种情况。 对于其他人，请预先创建资源组，并请求订阅所有者使你成为资源组的所有者。
 
 可以按照[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/check-access)上的说明验证 Azure 门户中的访问权限。
 
@@ -120,7 +122,15 @@ Azure FarmBeats 要求创建和注册 Azure Active Directory 应用程序。 若
         ./create_aad_script.ps1
     ```
 
-4. AAD 脚本大约需要2分钟的时间来运行和输出屏幕上的值，以及在同一目录中的 json 文件。 如果你有其他人运行该脚本，请要求他们与你共享此输出。
+4. 该脚本要求提供以下三个输入：
+
+    - FarmBeats 网站名称：这是 FarmBeats web 应用程序的唯一 URL 前缀。 如果已采用前缀，该脚本将会出错。安装完成后，你的 FarmBeats 部署将可从 https://\<FarmBeats >。 appname>.azurewebsites.net，swagger Api 将位于 https://\<FarmBeats-name >-api.azurewebsites.net
+
+    - Azure 登录 ID：提供要添加为 FarmBeats 管理员的用户的 Azure 登录 ID。 然后，该用户可以向其他用户授予访问 FarmBeats web 应用程序的访问权限。 登录 ID 的格式通常为 john.doe@domain.com。 还支持 Azure UPN。
+
+    - 订阅 ID：这是要在其中安装 Azure FarmBeats 的订阅的 ID
+
+5. AAD 脚本大约需要2分钟的时间来运行和输出屏幕上的值，以及在同一目录中的 json 文件。 如果你有其他人运行该脚本，请要求他们与你共享此输出。
 
 ### <a name="create-sentinel-account"></a>创建 Sentinel 帐户
 

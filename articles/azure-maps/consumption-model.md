@@ -8,30 +8,29 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5a8a0778ce279846b0d7a66b1729b6898e80a4b5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911710"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190250"
 ---
 # <a name="consumption-model"></a>消耗模型
 
-联机路由提供了一组参数，可详细描述特定车辆的消耗模型。
-根据 vehicleEngineType 的值，支持以下两种主要消耗模型：燃烧和电气。 在同一请求中指定属于不同模型的参数是错误做法。
-消耗模型不能与 travelMode 值 “bicycle”和“pedestrian”一起使用。
+路由服务提供了一组用于特定于车辆的消耗模型详细说明的参数。
+根据 vehicleEngineType 的值，支持以下两种主要消耗模型：燃烧和电气。 指定属于同一请求中不同模型的参数是不正确的。 此外，消耗模型参数不能与以下**travelMode**值一起使用：_自行车_和_行人_。
 
 ## <a name="parameter-constraints-for-consumption-model"></a>消耗模型的参数约束
 
-在两种消耗模型中，显式指定某些参数时，还需指定部分其他参数。 这些依赖关系是：
+在这两种消耗模型中，指定参数时有一些依赖关系。 这意味着，显式指定某些参数可能需要指定其他一些参数。 下面是要注意的这些依赖项：
 
-* 所有参数均要求用户指定 constantSpeedConsumption。 如果未指定“constantSpeedConsumption”，则除“vehicleWeight”外，指定任何其他消耗模型参数都是错误的。
-* 始终必须一起指定（即指定两者或不指定）accelerationEfficiency 和 decelerationEfficiency。
+* 所有参数均要求用户指定 constantSpeedConsumption。 如果未指定**constantSpeedConsumption** ，则指定任何其他消耗模型参数是错误的。 **VehicleWeight**参数是此要求的例外情况。
+* **accelerationEfficiency**和**decelerationEfficiency**必须始终指定为成对（即，或 none）。
 * 如果指定了 accelerationEfficiency 和 decelerationEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）。
-* 始终必须一起指定（即指定两者或不指定）uphillEfficiency 和 downhillEfficiency。
+* **uphillEfficiency**和**downhillEfficiency**必须始终指定为成对（即，或 none）。
 * 如果指定了 uphillEfficiency 和 downhillEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）。
 * 如果用户指定了 \*Efficiency 参数，还必须指定“vehicleWeight”参数。 如果 vehicleEngineType 为燃料，则还必须指定 fuelEnergyDensityInMJoulesPerLiter。
-* 始终必须一起指定（即指定两者或不指定） maxChargeInkWh 和 currentChargeInkWh。
+* **maxChargeInkWh**和**currentChargeInkWh**必须始终指定为成对（即，或 none）。
 
 > [!NOTE]
 > 如果仅指定了 constantSpeedConsumption，消耗计算不会考虑其他任何消耗（如爬坡和车辆加速）。
@@ -68,5 +67,5 @@ ms.locfileid: "75911710"
 
 ## <a name="sensible-values-of-consumption-parameters"></a>合理的消耗参数值
 
-尽管一组特定消耗参数可能满足上面指定的所有显式需求，但该组参数仍可能遭到拒绝。 如果某个特定参数值或多个参数值组合被认为会造成不合理的消耗值，则会出现此情况。 如果出现此情况，则很可能是存在输入错误，应当注意调整所有合理的消耗参数值。 如果一组特定消耗参数遭到拒绝，随之而来的错误消息会解释其原因。
+可以拒绝一组特定的消耗参数，即使该集可能满足所有显式要求。 如果特定参数的值或多个参数的值的组合导致使用值的度不合理，则会发生这种情况。 如果出现此情况，则很可能是存在输入错误，应当注意调整所有合理的消耗参数值。 如果一组特定消耗参数遭到拒绝，随之而来的错误消息会解释其原因。
 参数的详细说明中包含两种模型的合理值的示例。

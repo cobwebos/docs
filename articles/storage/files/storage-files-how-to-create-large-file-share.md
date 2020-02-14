@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732138"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190675"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
-最初，标准文件共享最多只能扩展到 5 TiB。 现在，对于大型文件共享，它们最多可以扩展到 100 TiB。 可以在现有的文件共享的现有存储帐户上启用此缩放。 默认情况下，高级文件共享最多可扩展到 100 TiB。
+在存储帐户上启用大型文件共享时，文件共享最多可以扩展到 100 TiB。 可以在现有的文件共享的现有存储帐户上启用此缩放。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - 如果要使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -26,7 +26,7 @@ ms.locfileid: "75732138"
 
 ## <a name="restrictions"></a>限制
 
-目前，只能对启用了大型文件共享的帐户使用 LRS 或 ZRS。 不能使用 GZRS、GRS 或 GRS。
+现在，只能在启用了大文件共享的帐户上使用本地冗余存储（LRS）或区域冗余存储（ZRS）。 不能使用异地冗余存储（GZRS）、异地冗余存储（GRS）或读取访问异地冗余存储（RA-GRS）。
 在一个帐户上启用大型文件共享是一种无法恢复的过程。 启用后，你将无法将你的帐户转换为 GZRS、GRS 或 GRS。
 
 ## <a name="create-a-new-storage-account"></a>新建存储帐户
@@ -49,7 +49,7 @@ ms.locfileid: "75732138"
 
    |字段  |值  |
    |---------|---------|
-   |部署模型     |Resource Manager         |
+   |部署模型     |资源管理器         |
    |性能     |标准         |
    |帐户类型     |StorageV2（常规用途 v2）         |
    |访问层     |热         |
@@ -59,7 +59,7 @@ ms.locfileid: "75732138"
 
     ![在 Azure 门户的新存储帐户上使用 "已启用" 选项按钮的屏幕截图](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 选择“创建”。
+1. 选择 **“创建”** 。
 
 ### <a name="cli"></a>CLI
 

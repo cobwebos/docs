@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062519"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185542"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD 应用程序代理配置自定义域
 
-通过 Azure Active Directory 应用程序代理发布应用程序时，将为用户创建外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果你在名为*Contoso*的租户中发布名为 "*支出*" 的应用，则外部 URL 为*https： \//expenses-contoso.msappproxy.net*。 如果要使用自己的域名而不是*msappproxy.net*，则可为应用程序配置自定义域。 
+通过 Azure Active Directory 应用程序代理发布应用程序时，将为用户创建外部 URL。 此 URL 的默认域为 yourtenant.msappproxy.net。 例如，如果你在名为*Contoso*的租户中发布名为 "*支出*" 的应用，则外部 URL 为*https：\//expenses-contoso.msappproxy.net*。 如果要使用自己的域名而不是*msappproxy.net*，则可为应用程序配置自定义域。 
 
 ## <a name="benefits-of-custom-domains"></a>自定义域的优点
 
@@ -49,7 +49,7 @@ ms.locfileid: "73062519"
 
 如果你不希望通过应用程序代理定向内部用户，则可以设置一个*分裂的 DNS*。 拆分 DNS 基础结构将内部域名服务器和外部主机定向到外部域名服务器，以进行名称解析。 
 
-![裂脑 DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![拆分式 DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>不同的内部和外部 Url 
 
@@ -77,7 +77,7 @@ ms.locfileid: "73062519"
 
 使用自定义域通过应用程序代理发布应用程序：
 
-1. 对于新应用，在 Azure Active Directory 中，在左侧导航栏中选择 "**企业应用程序**"。 选择“新建应用程序”。 在 "**本地应用程序**" 部分中，选择 "**添加本地应用程序**"。 
+1. 对于新应用，在 Azure Active Directory 中，在左侧导航栏中选择 "**企业应用程序**"。 选择“新建应用程序”。 在“本地应用程序”部分中，选择“添加本地应用程序”。 
    
    对于已在**企业应用程序**中的应用，请从列表中选择它，然后在左侧导航栏中选择 "**应用程序代理**"。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "73062519"
    
 4. 在 "**外部 Url** " 字段中，下拉列表并选择要使用的自定义域。
    
-5. 选择 **添加** 。
+5. 选择“添加”。
    
    ![选择自定义域](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -97,7 +97,7 @@ ms.locfileid: "73062519"
    
 7. 在 " **SSL 证书**" 页上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择 "**上传证书**"。 有关证书的详细信息，请参阅 "[自定义域的证书](#certificates-for-custom-domains)" 部分。
    
-   ![上传证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
+   ![上载证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > 自定义域只需上载一次证书。 之后，在将自定义域用于其他应用时，将自动应用上传的证书。
@@ -128,7 +128,7 @@ ms.locfileid: "73062519"
 
 证书签名方法没有限制。 支持椭圆曲线加密（ECC）、使用者备用名称（SAN）和其他常见证书类型。 
 
-只要通配符与外部 URL 匹配，就可以使用通配符证书。 必须为[通配符应用程序](application-proxy-wildcard.md)使用通配符证书。 如果要使用证书还访问子域，则必须在同一证书中将子域通配符作为使用者备用名称添加。 例如，除非你 *\* 添加 apps.adventure-works.com*作为使用者备用名称，否则 *\** 的证书将不能 *\* 用于 apps.adventure-works.com。* 
+只要通配符与外部 URL 匹配，就可以使用通配符证书。 必须为[通配符应用程序](application-proxy-wildcard.md)使用通配符证书。 如果要使用证书还访问子域，则必须在同一证书中将子域通配符作为使用者备用名称添加。 例如，除非你 *\*添加 apps.adventure-works.com*作为使用者备用名称，否则 *\** 的证书将不能 *\*用于 apps.adventure-works.com。* 
 
 如果证书链安装在客户端设备上，则可以使用自己的公钥基础结构（PKI）颁发的证书。 Intune 可以将这些证书部署到托管设备。 对于非托管设备，必须手动安装这些证书。
 
@@ -144,5 +144,5 @@ ms.locfileid: "73062519"
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 Azure AD 身份验证对已发布应用[启用单一登录](application-proxy-configure-single-sign-on-with-kcd.md)。
-* [启用](../conditional-access/technical-reference.md#cloud-apps-assignments)已发布应用的条件性访问。
+* [启用](../conditional-access/overview.md)已发布应用的条件性访问。
 

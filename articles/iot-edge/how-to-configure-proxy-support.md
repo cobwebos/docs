@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a8ee1e07dafac46467aa26f89b609cd499346974
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510815"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186581"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>将 IoT Edge 设备配置为通过代理服务器进行通信
 
@@ -22,7 +22,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
 
 1. **在设备上安装 IoT Edge 运行时。**
 
-   IoT Edge 安装脚本从 internet 提取包和文件，因此你的设备需要通过代理服务器进行通信以发出这些请求。 有关详细步骤，请参阅本文的[通过代理安装运行时](#install-the-runtime-through-a-proxy)部分。 对于 Windows 设备，安装脚本还提供[脱机安装](how-to-install-iot-edge-windows.md#offline-installation)选项。
+   IoT Edge 安装脚本从 internet 提取包和文件，因此你的设备需要通过代理服务器进行通信以发出这些请求。 有关详细步骤，请参阅本文的[通过代理安装运行时](#install-the-runtime-through-a-proxy)部分。 对于 Windows 设备，安装脚本还提供[脱机安装](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation)选项。
 
    此步骤是第一次设置时在 IoT Edge 设备上执行的一次性过程。 更新 IoT Edge 运行时也需要相同的连接。
 
@@ -82,7 +82,7 @@ IoT Edge 设备将发送 HTTPS 请求以与 IoT 中心进行通信。 如果设�
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge
    ```
 
-如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-InvokeWebRequestParameters` 中的 `-ProxyCredential` 参数。 例如，
+如果拥有不能包含在 URL 中的复杂代理服务器凭据，请使用 `-ProxyCredential` 中的 `-InvokeWebRequestParameters` 参数。 例如，
 
 ```powershell
 $proxyCredential = (Get-Credential).GetNetworkCredential()
@@ -186,13 +186,13 @@ IoT Edge 代理是在任意 IoT Edge 设备上启动的第一个模块。 该代
 
 5. 将更改保存到 config.yaml 并关闭编辑器。 重新启动 IoT Edge 以使更改生效。
 
-   * Linux：
+   * Linux:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows：
+   * Windows:
 
       ```powershell
       Restart-Service iotedge

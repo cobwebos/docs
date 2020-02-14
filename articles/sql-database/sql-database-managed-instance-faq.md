@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835018"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201673"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL 数据库托管实例常见问题（FAQ）
 
@@ -82,21 +82,11 @@ ms.locfileid: "75835018"
 
 如果数据库小于 100 GB，则建议使用此方法。 如果数据库中的所有表都具有主键，则可以使用事务复制。
 
-## <a name="gen-4-vs-gen-5"></a>第4代和第5代 
-
-**对于托管实例，如何实现在第4代和第5代硬件生成之间进行选择吗？**
-
-这取决于你的工作负荷，因为某些类型的工作负荷更适合某些类型的工作负荷。 尽管性能主题是一个复杂的主题，但要简化这种情况，但影响工作负荷性能的硬件生成之间存在以下差异：
-- 第4代提供更好的计算支持，因为它基于物理处理器，而不是基于 vCore 处理器的第5代。 这对于计算密集型工作负荷可能更有利。
-- 第5代支持加速网络，导致更好的 IO 带宽到远程存储。 对于常规用途服务层上的 IO 密集型工作负荷，这一点可能很有利。 与第4代相比，第5代使用更快的 SSD 本地磁盘。 对于业务关键服务层上的 IO 密集型工作负荷，这一点可能很有利。
-
-强烈建议在投入使用之前测试用于生产的实际工作负荷的性能，以确定哪些硬件生成在特定情况下的工作效果更佳。
-
 ## <a name="switch-hardware-generation"></a>交换机硬件生成 
 
 **能否在第4代和第5代联机之间切换托管实例硬件生成？**
 
-如果在预配托管实例的区域中同时提供两个硬件，则可以在硬件生成之间进行自动联机切换。 在这种情况下，可以使用[博客文章中的脚本](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)，说明如何在硬件生成之间切换。
+如果在预配托管实例的区域中同时提供两个硬件，则可以在硬件生成之间进行自动联机切换。 在这种情况下，可以查看说明如何在硬件生成之间切换的[vCore model 概述页](sql-database-service-tiers-vcore.md)。
 
 这是一个长时间运行的操作，因为新的托管实例将在后台预配，在该过程结束时，将自动在新实例和新实例之间传输数据库。 
 
@@ -109,11 +99,9 @@ ms.locfileid: "75835018"
 
 常规用途托管实例使用远程存储，因为数据和日志文件的大小对于性能很重要。 有关详细信息，请参阅[常规用途托管实例性能的日志文件大小的影响](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)。
 
-对于 IO 密集型工作负荷，请考虑使用第5代硬件，而不是使用第4代计算密集型工作负荷。 有关详细信息，请参阅[如何实现在第4代和第5代之间进行选择](#gen-4-vs-gen-5)。
-
 如果工作负荷包含大量小事务，请考虑将连接类型从代理切换到重定向模式。
 
-## <a name="maximum-storage-size"></a>最大存储大小
+## <a name="maximum-storage-size"></a>存储大小上限
 
 **托管实例的最大存储大小是多少？**
 

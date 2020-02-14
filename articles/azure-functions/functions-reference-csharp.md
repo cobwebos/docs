@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 13e16fef2ae66851909e03dddab293e9c7955acb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978775"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198354"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -55,7 +55,7 @@ FunctionsProject
 
 ## <a name="binding-to-arguments"></a>绑定到参数
 
-输入或输出数据通过 *function.json* 配置文件中的 `name` 属性绑定到 C# 脚本函数参数。 以下示例显示了一个 *function.json* 文件以及适用于队列触发函数的 *run.csx* 文件。 从队列消息接收数据的参数名为 `myQueueItem`，因为这是 `name` 属性的值。
+输入或输出数据通过 `name`function.json*配置文件中的* 属性绑定到 C# 脚本函数参数。 以下示例显示了一个 *function.json* 文件以及适用于队列触发函数的 *run.csx* 文件。 从队列消息接收数据的参数名为 `myQueueItem`，因为这是 `name` 属性的值。
 
 ```json
 {
@@ -85,11 +85,11 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-[本文后面](#referencing-external-assemblies)对 `#r` 语句做了解释。
+`#r`本文后面[对 ](#referencing-external-assemblies) 语句做了解释。
 
 ## <a name="supported-types-for-bindings"></a>绑定支持的类型
 
-每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob.md#trigger---usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
+每个绑定都具有其自己支持的类型；例如，Blob 触发器可以与字符串参数、POCO 参数、`CloudBlockBlob` 参数或任何其他几种受支持类型之一配合使用。 [适用于 Blob 绑定的绑定参考文章](functions-bindings-storage-blob-trigger.md#usage)列出了适用于 Blob 触发器的所有受支持参数类型。 有关详细信息，请参阅[触发器和绑定](functions-triggers-bindings.md)与[每个绑定类型的绑定参考文档](functions-triggers-bindings.md#next-steps)。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -116,7 +116,7 @@ POCO 类必须为每个属性定义 getter 和 setter。
 
 ## <a name="reusing-csx-code"></a>重用.csx 代码
 
-可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx 文件中的 `#load` 指令。 在下面的实例中，在 myLogger.csx 中共享了名为 `MyLogger` 的日志记录例程，并使用 `#load` 指令将其加载到 run.csx：
+可以在 *run.csx* 文件中使用其他 *run.csx* 文件中定义的类和方法。 为此，需使用 run.csx`#load`*文件中的* 指令。 在下面的实例中，在 myLogger.csx`MyLogger`*中共享了名为* 的日志记录例程，并使用  *指令将其加载到 run.csx*`#load`：
 
 示例 *run.csx*：
 
@@ -218,7 +218,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>绑定到方法返回值
 
-可通过在 *function.json* 中使用名称 `$return` 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。
+可通过在 `$return`function.json*中使用名称* 将方法返回值用于输出绑定。 有关示例，请参阅[触发器和绑定](./functions-bindings-return-value.md)。
 
 仅当成功的函数执行始终将返回值传递给输出绑定时，才使用返回值。 否则，请使用 `ICollector` 或 `IAsyncCollector`，如以下部分所示。
 
@@ -248,9 +248,9 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> 有关可以用来代替 `TraceWriter` 的较新的日志记录框架，请参阅**监视 Azure Functions** 一文中的[以 C# 函数写入日志](functions-monitoring.md#write-logs-in-c-functions)。
+> 有关可以用来代替 `TraceWriter` 的较新的日志记录框架，请参阅[监视 Azure Functions](functions-monitoring.md#write-logs-in-c-functions) 一文中的**以 C# 函数写入日志**。
 
-## <a name="async"></a>异步
+## <a name="async"></a>Async
 
 要使函数[异步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，请使用 `async` 关键字并返回 `Task` 对象。
 
@@ -268,7 +268,7 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>取消令牌
 
-函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
+函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 你可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
 
 下面的示例演示了如何检查即将发生的函数终止。
 
@@ -359,7 +359,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 若要引用自定义程序集，可使用共享程序集或私有程序集：
 
-* 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到[函数应用根文件夹`bin` (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。
+* 共享程序集在函数应用内的所有函数中共享。 若要引用自定义程序集，请将程序集上传到`bin`函数应用根文件夹[ (wwwroot) 中名为 ](functions-reference.md#folder-structure) 的文件夹。
 
 * 私有程序集是给定函数上下文的一部分，支持不同版本的旁加载。 私有程序集应上传到函数目录中的 `bin` 文件夹。 使用文件名（例如 `#r "MyAssembly.dll"`）引用程序集。
 
@@ -367,7 +367,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 
 ### <a name="watched-directories"></a>监视的目录
 
-自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
+自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 `watchDirectories`host.json[ 中的 ](functions-host-json.md) 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
 若要在1.x 和更高版本C#函数中使用 NuGet 包，请将*函数 proj*文件上传到函数应用的文件系统中的函数文件夹中。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
@@ -444,7 +444,7 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>在运行时绑定
 
-在 C# 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是 *function.json* 中的[*声明式*](https://en.wikipedia.org/wiki/Declarative_programming)绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
+在 C# 和其他 .NET 语言中，可以使用[命令性](https://en.wikipedia.org/wiki/Imperative_programming)绑定模式，而不是 [function.json *中的*](https://en.wikipedia.org/wiki/Declarative_programming)声明式绑定。 当绑定参数需要在运行时（而非在设计时）计算时，命令性绑定很有用。 通过此模式，可以在函数代码中动态绑定到受支持的输入和输出绑定。
 
 如下所示定义命令性绑定：
 
@@ -463,7 +463,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 
 ### <a name="single-attribute-example"></a>单属性示例
 
-下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob.md#output)，然后将字符串写入此 blob。
+下面的示例代码使用在运行时定义的 blob 路径创建[存储 blob 输出绑定](functions-bindings-storage-blob-output.md)，然后将字符串写入此 blob。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -508,7 +508,7 @@ public static async Task Run(string input, Binder binder)
 > [!div class="mx-codeBreakAll"]
 > | 绑定 | 属性 | 添加引用 |
 > |------|------|------|
-> | Azure Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
+> | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | 事件中心 | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
 > | 移动应用 | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 > | 通知中心 | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |

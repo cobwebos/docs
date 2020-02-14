@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935209"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201588"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>什么是 Azure SQL 数据库托管实例？
 
@@ -53,17 +53,17 @@ ms.locfileid: "76935209"
 
 下表显示托管实例的主要功能：
 
-|功能 | Description|
+|功能 | 说明|
 |---|---|
 | SQL Server 版本/内部版本 | SQL Server 数据库引擎（最新稳定版） |
 | 受管理的自动备份 | 是 |
 | 内置的实例和数据库监视与指标 | 是 |
 | 自动软件修补 | 是 |
 | 最新的数据库引擎功能 | 是 |
-| 每个数据库的数据文件 (ROWS) 数目 | 多个 |
-| 每个数据库的日志文件 (LOG) 数目 | 第 |
+| 每个数据库的数据文件 (ROWS) 数目 | 多种 |
+| 每个数据库的日志文件 (LOG) 数目 | 1 |
 | VNet - Azure 资源管理器部署 | 是 |
-| VNet - 经典部署模型 | 否 |
+| VNet - 经典部署模型 | 是 |
 | 门户支持 | 是|
 | 内置集成服务 (SSIS) | 否 - SSIS 属于 [Azure 数据工厂 PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | 内置分析服务 (SSAS) | 否 - SSAS 是单独的 [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -81,9 +81,6 @@ ms.locfileid: "76935209"
 
 若要详细了解两代硬件之间的区别，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)。
 
-> [!IMPORTANT]
-> 澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。
-
 ## <a name="managed-instance-service-tiers"></a>“托管实例”服务层级
 
 托管实例可在两个服务层级中提供：
@@ -99,7 +96,7 @@ ms.locfileid: "76935209"
 
 - 适用于具有典型性能要求的大多数业务应用程序
 - 高性能 Azure Blob 存储 (8 TB)
-- 基于可靠的 Azure Blob 存储和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)
+- 基于可靠的 Azure Blob 存储和 [Azure Service Fabric](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) 的内置[高可用性](../service-fabric/service-fabric-overview.md)
 
 有关详细信息，请参阅[常规用途层中的存储层](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[托管实例（常规用途）的存储性能最佳做法和注意事项](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)。
 
@@ -113,7 +110,7 @@ ms.locfileid: "76935209"
 
 - 为具有最严苛性能和 HA 要求的商业应用程序设计
 - 附带超高速本地 SSD 存储（第 4 代最多 1 TB，第 5 代最多 4 TB）
-- 基于 [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)和 [Azure Service Fabric](../service-fabric/service-fabric-overview.md) 的内置[高可用性](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。
+- 基于 [Always On 可用性组](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)和 [Azure Service Fabric](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) 的内置[高可用性](../service-fabric/service-fabric-overview.md)。
 - 内置的附加[只读数据库副本](sql-database-read-scale-out.md)，可用于报表和其他只读工作负荷
 - [内存中 OLTP](sql-database-in-memory.md)，可用于具有高性能要求的工作负荷  
 
@@ -147,13 +144,13 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 下表总结了操作和典型的总持续时间：
 
-|类别  |操作  |长时间运行的段  |估计持续时间  |
+|类别  |操作  |长时间运行的段  |估计的持续时间  |
 |---------|---------|---------|---------|
 |**部署** |空子网中的第一个实例|创建虚拟群集|90% 的操作在4小时内完成|
 |部署 |非空子网中的第一个硬件生成的第一个实例（例如，子网中的第一个第1代实例，具有第4代实例）|虚拟群集创建 *|90% 的操作在4小时内完成|
 |部署 |第一个实例在空子网或非空子网中创建4个 Vcore|虚拟群集创建 * *|90% 的操作在4小时内完成|
 |部署 |在非空子网（第二个、第三个等实例）中创建后续实例|虚拟群集大小调整|90% 的操作在2.5 小时内完成|
-|**Update** |实例属性更改（管理员密码、AAD 登录、Azure 混合权益标志）|N/A|最长1分钟|
+|**Update** |实例属性更改（管理员密码、AAD 登录、Azure 混合权益标志）|不可用|最长1分钟|
 |更新 |实例存储扩展/缩减（常规用途服务层）|附加数据库文件|90% 的操作在5分钟内完成|
 |更新 |实例存储扩展/缩减（业务关键服务层）|-虚拟群集大小调整<br>-Always On 可用性组种子设定|90% 的操作在2.5 小时内完成，为所有数据库设定种子（220 GB/小时）|
 |更新 |实例计算（Vcore）增加和减少（常规用途）|-虚拟群集大小调整<br>-附加数据库文件|90% 的操作在2.5 小时内完成|
@@ -190,14 +187,14 @@ Azure SQL 数据库提供管理操作，你可以使用这些操作自动部署�
 
 类别  |操作  |可  |估计取消持续时间  |
 |---------|---------|---------|---------|
-|部署 |实例创建 |否 |  |
-|更新 |实例存储增加/减少（常规用途） |否 |  |
+|部署 |实例创建 |是 |  |
+|更新 |实例存储增加/减少（常规用途） |是 |  |
 |更新 |实例存储增加/减少（业务关键） |是 |90% 的操作在5分钟内完成 |
 |更新 |实例计算（Vcore）增加和减少（常规用途） |是 |90% 的操作在5分钟内完成 |
 |更新 |实例计算（Vcore）增加和减少（业务关键） |是 |90% 的操作在5分钟内完成 |
 |更新 |实例服务层更改（常规用途为业务关键，反之亦然） |是 |90% 的操作在5分钟内完成 |
-|删除 |实例的删除 |否 |  |
-|删除 |删除虚拟群集（作为用户启动的操作） |否 |  |
+|删除 |实例的删除 |是 |  |
+|删除 |删除虚拟群集（作为用户启动的操作） |是 |  |
 
 若要取消管理操作，请切换到 "概述" 边栏选项卡，并单击 "正在进行的操作" 通知框。 在右侧，将出现带有正在进行的操作的屏幕，并且将显示 "取消" 操作按钮。 第一次单击之后，系统会要求您再次单击并确认您要取消该操作。
 
@@ -242,7 +239,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 - [托管实例审核](sql-database-managed-instance-auditing.md)功能可跟踪数据库事件，并将其写入 Azure 存储帐户中的审核日志文件。 借助审核可以保持合规、了解数据库活动，以及深入了解可能指示业务考量因素或疑似安全违规的偏差和异常。
 - 动态数据加密 - 托管实例提供动态数据加密，使用传输层安全性保护数据。 除传输层安全性以外，托管实例部署选项使用 [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 在动态、静态和查询处理期间提供敏感数据的保护。 Always Encrypted 是业界首创功能，可针对涉及关键数据被盗的漏洞提供无与伦比的数据安全性。 例如，借助 Always Encrypted，信用卡号即使在查询处理期间也始终加密存储在数据库中，允许经授权员工或需要处理该数据的应用程序在使用时进行解密。
 - [高级威胁防护](sql-database-managed-instance-threat-detection.md)通过提供内置于服务中的额外安全智能层来补充[审核](sql-database-managed-instance-auditing.md)，该服务可检测异常和可能有害的数据库访问或利用尝试。 出现可疑活动、潜在漏洞、 SQL 注入攻击和异常数据库访问模式时，它会发出警报。 可从[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看高级威胁防护警报，提供可疑活动的详细信息，并提供有关如何调查和缓解威胁的建议操作。  
-- [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)功能通过对非特权用户模糊化敏感数据来限制此类数据的泄漏。 动态数据掩码允许指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，可以隐藏对指定数据库字段进行查询时获得的结果集中的敏感数据，不会更改数据库中的数据。
+- [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)功能通过对非特权用户模糊化敏感数据来限制此类数据的泄漏。 动态数据掩码允许指定在对应用层产生最小影响的前提下可以透露的敏感数据量，从而帮助防止未经授权的用户访问敏感数据。 它是一种基于策略的安全功能，会在针对指定的数据库字段运行查询后返回的结果集中隐藏敏感数据，同时保持数据库中的数据不变。
 - 使用[行级别安全性](/sql/relational-databases/security/row-level-security)可以根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性 (RLS) 简化了应用程序中的安全性设计和编程。 使用 RLS 可针对数据行访问实施限制。 例如，确保工作人员只能访问与其部门相关的数据行，或者将可访问的数据限制为相关的数据。
 - [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 可以加密托管实例数据文件，称为静态数据加密。 TDE 针对数据和日志文件执行实时 I/O 加密和解密。 加密使用数据库加密密钥 (DEK)，它存储在数据库引导记录中，可在恢复时使用。 可使用透明数据加密保护托管实例中的所有数据库。 TDE 是 SQL Server 经验证的静态加密技术，许多符合性标准都需要它来防止存储介质被盗。
 
@@ -323,12 +320,12 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 下表显示了可通过 Transact SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用托管实例和检索重要属性。
 
-|属性|值|注释|
+|属性|值|备注|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。 这**并不**表示 SQL 引擎版本12（SQL Server 2014）。 托管实例始终运行最新稳定的 SQL 引擎版本，该版本等于或高于 SQL Server 的最新可用 RTM 版本。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|
 |`SERVERPROPERTY('EngineEdition')`|8|此值唯一标识托管实例。|
-|`@@SERVERNAME`，`SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369841"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201486"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -59,6 +59,8 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
 请注意，具有复杂查询逻辑的作业即使在不连续接收输入事件时也可能具有较高的 SU% 利用率。 这可能发生在输入和输出事件突然激增之后。 如果查询很复杂，作业可能会继续在内存中维护状态。
 
 在回到预期水平之前，SU% 利用率可能会在短时间内突然降至 0。 发生这种情况是由于暂时性错误或系统启动升级。 如果查询未[完全并行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)，增加作业的流式处理单位数可能无法降低 SU% 的利用率。
+
+在比较一段时间内的使用情况时，请使用[事件速率指标](stream-analytics-monitoring.md)。 大于和等于指标显示读取和处理的事件数。 有指示错误事件数的指标，例如反序列化错误。 当每个时间单位的事件数增加时，在大多数情况下，SU% 会增加。
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>时态元素中的有状态查询逻辑
 Azure 流分析作业的独有功能之一是执行有状态的处理，如开窗聚合、临时联接和临时分析函数。 其中的每个运算符都会保存状态信息。 这些查询元素的最大窗口大小为7天。 

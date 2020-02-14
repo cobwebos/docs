@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773934"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188193"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>将数据从事件中心引入到 Azure 数据资源管理器
 
@@ -24,7 +24,7 @@ ms.locfileid: "76773934"
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器可从事件中心引入（加载数据），是一个大数据流式处理平台和事件引入服务。 [事件中心](/azure/event-hubs/event-hubs-about)每秒可以近实时处理数百万个事件。 在本文中，你将创建一个事件中心，从 Azure 数据资源管理器连接到该中心，并查看整个系统的数据流。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [一个测试群集和数据库](create-cluster-database-portal.md)。
@@ -61,7 +61,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     |---|---|---|
     | 订阅 | 订阅 | 选择要用于事件中心的 Azure 订阅。|
     | 资源组 | test-hub-rg | 创建新的资源组。 |
-    | 位置 | *美国西部* | 对于本文，请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
+    | Location | *美国西部* | 对于本文，请选择 "*美国西部*"。 对于生产系统，请选择最能满足你需求的区域。 在与 Kusto 群集相同的位置创建事件中心命名空间以获得最佳性能（对于具有高吞吐量的事件中心命名空间来说最重要）。
     | 命名空间名称 | 唯一的命名空间名称 | 选择用于标识命名空间的唯一名称。 例如，mytestnamespace。 域名 servicebus.windows.net 将追加到所提供的名称。 该名称只能包含字母、数字和连字符。 名称必须以字母开头，并且必须以字母或数字结尾。 值长度必须介于 6 到 50 个字符之间。
     | 事件中心名称 | test-hub | 事件中心位于命名空间下，该命名空间提供唯一的范围容器。 事件中心名称在命名空间中必须唯一。 |
     | 使用者组名称 | test-group | 使用者组允许多个使用应用程序各自具有事件流的单独视图。 |
@@ -117,7 +117,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | 事件中心命名空间 | 唯一的命名空间名称 | 先前选择的用于标识命名空间的名称。 |
     | 事件中心 | test-hub | 你创建的事件中心。 |
     | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
-    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，系统属性将添加到第一个记录。 添加系统属性时，[创建](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 |
+    | 事件系统属性 | 选择相关属性 | [事件中心系统属性](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations)。 如果每个事件消息有多个记录，系统属性将添加到第一个记录。 添加系统属性时，[创建](/azure/kusto/management/create-table-command)或[更新](/azure/kusto/management/alter-table-command)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 |
     | 压缩 | 无 | 事件中心消息负载的压缩类型。 支持的压缩类型： *None、GZip*。|
     | | |
 
@@ -167,7 +167,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. 生成并运行应用。 应用将消息发送到事件中心，并且每十秒显示一次状态。
+1. 构建并运行应用程序。 应用将消息发送到事件中心，并且每十秒显示一次状态。
 
 1. 应用发送一些消息后，继续执行下一步：查看到事件中心和测试表的数据流。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557902"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190016"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>通过 Azure API 管理服务使用外部服务
 Azure API 管理服务中的策略可以单纯根据传入的请求、传出的响应以及基本配置信息执行多种不同的有用工作。 但是，如果能够与 API 管理策略中的外部服务进行交互，则可以使更多的想法成为可能。
@@ -68,7 +68,7 @@ Slack 具有入站 Web Hook 的概念。 配置入站 Web Hook 时，Slack 将�
 `send-request` 策略能够使用外部服务来执行复杂的处理函数，并将数据返回到 API 管理服务，此服务可用于进一步处理策略。
 
 ### <a name="authorizing-reference-tokens"></a>授权引用令牌
-API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) 一样创建 [JWT 令牌](https://jwt.io/)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 某些授权服务器创建所谓的[引用令牌](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
+API 管理的主要功能是保护后端资源。 如果 API 使用的授权服务器可以像 [Azure Active Directory](https://jwt.io/) 一样创建 [JWT 令牌](../active-directory/hybrid/whatis-hybrid-identity.md)作为其 OAuth2 流程的一部分，则可以使用 `validate-jwt` 策略来验证令牌的有效性。 某些授权服务器创建所谓的[引用令牌](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/)，这些令牌无法在不对授权服务器进行回调的情况下进行验证。
 
 ### <a name="standardized-introspection"></a>标准化自检
 对于使用授权服务器来验证引用令牌，过去一直没有标准化的方式。 但是，IETF 最近发布的提议标准 [RFC 7662](https://tools.ietf.org/html/rfc7662) 定义了资源服务器如何验证令牌的有效性。
@@ -102,6 +102,10 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 
 从响应对象中可以检索主体，RFC 7622 会告知 API 管理，响应必须是 JSON 对象，并且必须至少包含一个名为 `active` 的属性（布尔值）。 当 `active` 为 true，则令牌被视为有效。
 
+或者，如果授权服务器不包含用于指示令牌是否有效的 "活动" 字段，请使用 Postman 等工具来确定有效令牌中设置的属性。 例如，如果有效的令牌响应中包含一个名为 "expires_in" 的属性，请按照以下方式检查授权服务器响应中是否存在此属性名称：
+
+当条件 = "@ （（IResponse）上下文时，<。变量 ["tokenstate"]）。Body.As<JObject>（）。Property （"expires_in"） = = null） ">
+
 ### <a name="reporting-failure"></a>报告失败
 可以使用 `<choose>` 策略来检测令牌是否无效，如果无效，则返回 401 响应。
 
@@ -118,7 +122,7 @@ API 管理的主要功能是保护后端资源。 如果 API 使用的授权服�
 </choose>
 ```
 
-根据 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) 中说明的 `bearer` 令牌的使用方式，API 管理还返回了 `WWW-Authenticate` 标头以及 401 响应。 WWW-Authenticate 的目的是指示客户端如何构造适当授权的请求。 由于有各式各样可能具有 OAuth2 架构的处理方法，因此很难传达所有必要的信息。 幸运的是，我们仍持续努力来帮助[客户端发现如何适当地将请求授权给资源服务器](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
+根据 [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) 中说明的 `bearer` 令牌的使用方式，API 管理还返回了 `WWW-Authenticate` 标头以及 401 响应。 WWW-Authenticate 的目的是指示客户端如何构造适当授权的请求。 由于有各式各样可能具有 OAuth2 架构的处理方法，因此很难传达所有必要的信息。 幸好我们仍持续努力来帮助[客户端发现如何适当地将请求授权给资源服务器](https://tools.ietf.org/html/draft-jones-oauth-discovery-00)。
 
 ### <a name="final-solution"></a>最终解决方案
 在结束时，你获得以下策略：

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064982"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188363"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>将数据从 IoT 中心引入 Azure 数据资源管理器 
 
@@ -83,7 +83,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
     | IoT 中心 | IoT 中心名称 |
     | 共享访问策略 | 共享访问策略的名称。 必须具有读取权限 |
     | 使用者组 |  IoT 中心内置终结点中定义的使用者组 |
-    | 事件系统属性 | [IoT 中心事件系统属性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 添加系统属性时，[创建](/azure/kusto/management/tables#create-table)或[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 | | | 
+    | 事件系统属性 | [IoT 中心事件系统属性](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 添加系统属性时，[创建](/azure/kusto/management/create-table-command)或[更新](/azure/kusto/management/alter-table-command)表架构和[映射](/azure/kusto/management/mappings)以包括所选属性。 | | | 
 
     > [!NOTE]
     > 如果是[手动故障转移](/azure/iot-hub/iot-hub-ha-dr#manual-failover)，则必须重新创建数据连接。
