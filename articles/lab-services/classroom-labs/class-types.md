@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806807"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133666"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>类类型概述 - Azure 实验室服务
 
@@ -45,6 +45,22 @@ ms.locfileid: "74806807"
 在道德黑客课程中，学生可以学习抵御漏洞的新式技术。 每个学生都获得一个 Windows Server 主机虚拟机，它包含两个嵌套虚拟机 - 一个是带有 [Metasploitable3](https://github.com/rapid7/metasploitable3) 映像的虚拟机，另一个是带有 [Kali Linux](https://www.kali.org/) 映像的虚拟机。 Metasploitable 虚拟机用于开发目的。  Kali Linux 虚拟机用于访问执行取证任务所需的工具。
 
 有关如何设置此类实验室的详细信息，请参阅[设置实验室以教授道德黑客课程](class-type-ethical-hacking.md)。
+
+## <a name="database-management"></a>数据库管理
+数据库概念是大学的大多数计算机系讲授的入门课程之一。 可以在 Azure 实验室服务中为基本数据库管理类设置实验室。 例如，可以通过 [MySQL](https://www.mysql.com/) 数据库服务器或 [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019) 服务器在实验室中设置一个虚拟机模板。
+
+有关如何设置此类实验室的详细信息，请参阅[设置实验室来讲授关系数据库的数据库管理](class-type-database-management.md)。
+
+## <a name="python-and-jupyter-notebooks"></a>Python 和 Jupyter Notebooks
+可以使用向学生讲授 [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) 使用方法所需的工具，在 Azure 实验室服务中设置模板计算机。 Jupyter Notebooks 是一个开源项目，可让你轻松地在名为“笔记本”的单张画布上组合使用丰富的文本和可执行的 [Python](https://www.python.org/) 源代码。 运行笔记本会生成输入和输出的线性记录。  这些输出可能包括文本、信息表、散点图等。
+
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以使用 Python 和 Jupyter Notebooks 讲授数据科学](class-type-jupyter-notebook.md)。
+
+## <a name="mobile-app-development-with-android-studio"></a>使用 Android Studio 进行移动应用开发
+可以在 Azure 实验室服务中设置实验室，讲授入门级移动应用程序开发课程。 此课程重点介绍可以发布到 [Google Play 商店](https://play.google.com/store/apps)的 Android 移动应用程序。  学生学习如何使用 [Android Studio](https://developer.android.com/studio) 来生成应用程序。  [适用于 Android 的 Visual Studio 模拟器](https://visualstudio.microsoft.com/vs/msft-android-emulator/)用于在本地测试应用程序。
+
+有关如何设置此类实验室的详细信息，请参阅[设置实验室以使用 Android Studio 讲授移动应用程序开发](class-type-mobile-dev-android-studio.md)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

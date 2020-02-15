@@ -3,30 +3,30 @@ title: 概述 | Microsoft Azure Maps
 description: 了解 Microsoft Azure Maps 中的服务和功能，以及如何在应用程序中使用这些服务和功能。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2909dbebc7531be0e45b321cc31b599b0f63ee4a
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262565"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190354"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
 Azure Maps 是一系列地理空间服务，它使用全新地图绘制数据为 Web 和移动应用程序提供地理环境。 Azure Maps 具有以下功能：
 
-* 提供以多种样式和卫星图像呈现地图的 REST API。
-* 搜索世界各地的地址、地点和兴趣点。
-* 各种类型的路线：地点到地点、多地点、多地点优化、等时线、商务车、受影响的交通，以及路网路线
-* 交通流量和事故视图。
-* 提供用于请求公共交通和其他交通模式（例如共享单车、共享摩托车和共享汽车）以及实时规划路线的移动服务。 
-* 通过地理位置建立用户位置，并将位置转换为时区。 
-* 提供地理围栏和地图数据存储服务，其中的位置信息存储在 Azure 中。 
+* REST API，以多种样式和卫星图像呈现地图。
+* 搜索服务，用于查找全世界的地址、地点和兴趣点。
+* 各种路线选项，例如地点到地点、多地点、多地点优化、等时线、商务车、受影响的交通，以及路网路线。
+* 交通情况视图和事故视图，适用于需要交通信息的应用程序。
+* 出行服务，用于请求公共交通物流、实时规划路线，并请求替代运输模式的信息。
+* 时区和地理位置服务，以及将位置转换为时区。
+* 地理围栏和地图数据存储，其中的位置信息托管在 Azure 中。 
 * 通过地理空间分析进行智能定位。 
 
 此外，还可以通过 Web SDK 或 Android SDK 提供 Azure Maps 服务。 这些工具可以帮助开发人员快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 
@@ -43,7 +43,7 @@ Azure Maps 是一系列地理空间服务，它使用全新地图绘制数据为
 
 ### <a name="web-sdk"></a>Web SDK
 
-Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图，以便在 Web 或移动应用程序中显示。 此控件使用 WebGL，因此可以呈现大型数据集，同时保持高性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
+Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图。 可以将此交互式地图用于 Web 或移动应用程序。 地图控件使用 WebGL，因此可以呈现大型数据集，同时保持高性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
 ![人口变化的地图示例](media/about-azure-maps/Introduction_WebMapControl.png)
 
@@ -63,15 +63,15 @@ Azure Maps 包含以下九个可在 Azure 应用程序中提供地理上下文�
 
 ### <a name="mobility-service"></a>移动服务
 
-Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可能路线选项，并提供各种出行模式。 对于地铁（城市）区域，这些模式可能包括步行、单车和公共交通。 你可以请求交通路线、线路几何图形、站点列表、预计和实时到达时间，以及服务警报。
+Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可能路线选项，并提供各种出行模式。 对于地铁（城市）区域，这些模式可能包括步行、单车和公共交通。 你可以请求交通路线、线路几何图形、站点列表、预计到达时间、实时到达时间，以及服务警报。
 
-该服务还可以搜索特定的对象类型，如位置周围的共享单车、摩托车或汽车。 用户可以请求最近的停放点中可用自行车的数量，并搜索可用于拼车的汽车。 另外，用户还可以查找未来可用情况和当前燃油水平等详细信息。
+该服务还可以搜索位置周围的特定对象类型。 用户可以围绕某个位置搜索共享自行车、摩托车或汽车。 用户可以请求最近的停放点中可用自行车的数量，并搜索可用于拼车的汽车。 另外，用户可以查找未来可用情况和当前燃油水平等详细信息。
 
 若要了解有关服务的更多信息，请参阅[移动 API 文档](https://docs.microsoft.com/rest/api/maps/mobility)。
 
 ### <a name="render-service"></a>呈现服务
 
-呈现服务帮助开发人员创建与地图绘制有关的 Web 和移动应用程序。 该服务使用有 19 个缩放级别的高品质光栅图形图像或完全可自定义的矢量格式的地图图像。
+呈现服务帮助开发人员创建带地图功能的 Web 和移动应用程序。 该服务使用有 19 个缩放级别的高品质光栅图形图像或完全可自定义的矢量格式的地图图像。
 
 ![呈现服务中的地图示例](media/about-azure-maps/Introduction_Map.png)
 
@@ -108,7 +108,7 @@ Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可�
 
 ### <a name="spatial-operations-service"></a>空间操作服务
 
-Azure Maps 空间操作服务获取位置信息并对其进行快速分析，以帮助客户了解某时某地正在发生的事件。 它可以实现近乎实时地分析事件并对事件进行预测性建模。 
+Azure Maps 空间操作服务获取位置信息。 它会快速分析位置信息，帮助客户了解某时某地正在发生的事件。 它可以实现近乎实时地分析事件并对事件进行预测性建模。 
 
 该服务使客户可以借助一系列常用的地理空间数学计算来增强其智能定位能力。 常用计算包括最近点、大圆圈航线距离和缓冲区。 若要详细了解该服务和各种功能，请阅读[空间操作 API 文档](https://docs.microsoft.com/rest/api/maps/spatial)。
 
@@ -118,7 +118,7 @@ Azure Maps 空间操作服务获取位置信息并对其进行快速分析，以
 
 * 将 Microsoft Windows 时区 ID 转换为 IANA 时区。
 * 提取与 UTC 的时区偏移量。
-* 获取时区中的当前时间。 
+* 获取选定时区的当前时间。 
 
 查询时区服务的典型 JSON 响应如下例所示：
 
@@ -169,7 +169,7 @@ Azure Maps 针对移动设备设计，可帮助你开发跨平台应用程序。
 
 若要访问 Azure Maps 服务，只需转到 [Azure 门户](https://portal.azure.com)并创建一个 Azure Maps 帐户即可。
 
-Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带已为你生成的两个密钥。 通过使用任一密钥开始将这些位置功能集成到你的应用程序中，并向 Azure Maps 服务发出请求。
+Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带为你生成的两个密钥，请使用任一密钥。 开始将这些位置功能集成到应用程序中，并向 Azure Maps 服务发出请求。
 
 ## <a name="supported-regions"></a>支持的区域
 

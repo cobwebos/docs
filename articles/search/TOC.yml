@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: 服务限制
           href: search-limits-quotas-capacity.md
-        - name: 缩放分区和副本
+        - name: 调整容量
           href: search-capacity-planning.md
-        - name: 部署策略和最佳做法
+        - name: 性能规模
           href: search-performance-optimization.md
         - name: 多租户体系结构
           href: search-modeling-multitenant-saas-applications.md

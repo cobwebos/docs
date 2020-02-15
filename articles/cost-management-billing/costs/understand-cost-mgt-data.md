@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901760"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188537"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -85,8 +85,6 @@ ms.locfileid: "76901760"
 
 下表显示了成本管理中包括或不包括的数据。 在生成发票之前估计所有成本。 显示的成本不包括免费额度和预付额度。
 
-**成本和用量数据**
-
 | **包括** | **不包括** |
 | --- | --- |
 | Azure 服务使用情况<sup>5</sup>        | 支持费用 - 有关详细信息，请参阅[发票条款说明](../understand/understand-invoice.md)。 |
@@ -101,13 +99,42 @@ ms.locfileid: "76901760"
 
 <sup>**7**</sup> 预留购买目前仅适用于企业协议 (EA) 帐户。 
 
-**元数据**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>如何在成本和使用情况数据中使用标记
 
-| **包括** | **不包括** |
-| --- | --- |
-| 资源标记<sup>8</sup> | 资源组标记 |
+Azure 成本管理接收标记，作为各个服务提交的每个使用记录的一部分。 以下约束适用于这些标记：
 
-<sup>**8**</sup> 当每个服务发出用量数据并且这些数据不可用于追溯历史用量时，将应用资源标记。 
+- 必须直接将标记应用到资源，不能从父资源组隐式继承标记。
+- 只有部署到资源组的资源才支持资源标记。
+- 某些部署的资源可能不支持标记，或者可能在使用情况数据中不包含标记 - 请参阅 [Azure 资源的标记支持](../../azure-resource-manager/tag-support.md)。
+- 应用标记时，资源标记只包含在使用情况数据中 - 标记不应用于历史数据。
+- 资源标记只有在数据刷新后才可用于成本管理 - 请参阅[使用情况数据更新频率可变](#usage-data-update-frequency-varies)。
+- 仅当资源处于活动/运行状态并生成使用情况记录时（例如，在 VM 不处于解除分配的情况下），资源标记才可用于成本管理。
+- 若要管理标记，必须有每个资源的参与者访问权限。
+- 若要管理标记策略，必须有管理组、订阅或资源组的所有者或策略参与者访问权限。
+    
+如果在成本管理中看不到特定标记，请考虑以下事项：
+
+- 是否已将标记直接应用到资源？
+- 标记的应用是否已超出 24 小时？ 请参阅[使用情况数据更新频率可变](#usage-data-update-frequency-varies)
+- 资源类型是否支持标记？ 以下资源类型在 2019 年 12 月 1 日之前的使用情况数据中不支持标记。 如需所支持功能的完整列表，请参阅 [Azure 资源的标记支持](../../azure-resource-manager/tag-support.md)。
+    - Azure Active Directory B2C 目录
+    - Azure 防火墙
+    - Azure NetApp 文件
+    - 数据工厂
+    - Databricks
+    - 负载均衡器
+    - 网络观察程序
+    - 通知中心
+    - 服务总线
+    - 时序见解
+    - VPN 网关
+    
+下面是一些标记使用提示：
+
+- 提前计划并定义标记策略，以便按组织、应用程序、环境等细分成本。
+- 使用 Azure 策略将资源组标记复制到各个资源，并强制实施标记策略。
+- 将标记 API 与 Query 或 UsageDetails 结合使用，根据当前标记获取所有成本。
+
 
 **从免费试用到即用即付的升级**
 

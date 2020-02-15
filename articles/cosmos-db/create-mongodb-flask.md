@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 8e58d0bdaaa5e4fb4564a68b46de7887ec28336d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 43f4cf7e4008aa01a26c48a8e99f7465eeeb234b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445490"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061737"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>快速入门：使用 Azure Cosmos DB 的用于 MongoDB 的 API 构建 Python 应用
 
@@ -26,21 +26,13 @@ ms.locfileid: "75445490"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Cosmos DB 核心的全球分布和水平缩放功能。
-
-本快速入门指南使用以下 [Flask 示例](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample)并演示如何借助 [Azure Cosmos DB 模拟器](local-emulator.md)和 Azure Cosmos DB 的用于 MongoDB 的 API 构建简单的待办事项 Flask 应用。
+在本快速入门中，我们使用 Mongo DB API 帐户的 Azure Cosmos DB 或 Azure Cosmos DB 模拟器来运行从 GitHub 克隆的 Python Flask To-Do Web 应用。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
 ## <a name="prerequisites"></a>必备条件
 
-- 下载 [Azure Cosmos DB 模拟器](local-emulator.md)。 当前只有 Windows 支持模拟器。 此示例演示如何借助 Azure 中的生产密钥使用示例，此操作可在任何平台上完成。
-
-- 如果尚未安装 Visual Studio Code，可为平台（Windows、Mac、Linux）快速安装 [VS Code](https://code.visualstudio.com/Download)。
-
-- 请务必通过安装任一常用 Python 扩展来添加 Python 语言支持。
-  1. 选择扩展。
-  2. 通过在命令面板 `Ctrl+Shift+P` 中键入 `ext install` 来安装扩展。
-
-     本文档中的示例使用 Don Jayamanne 的常用、全功能型 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)。
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。 或者，可以使用 [Azure Cosmos DB 模拟器](local-emulator.md)。 
+- [Python 3.6+](https://www.python.org/downloads/)
+- 带 [Python 扩展](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)的 [Visual Studio Code](https://code.visualstudio.com/Download)。
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
@@ -74,7 +66,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以跳到[运行 Web 应用](#run-the-web-app)。 
 
-以下代码片段全部摘自 app.py 文件，并对本地 Azure Cosmos DB 模拟器使用连接字符串。 密码需要进行拆分（如下所示）以适应在其他方面无法解析的正斜杠。
+以下代码片段全部摘自 *app.py* 文件，并对本地 Azure Cosmos DB 模拟器使用连接字符串。 密码需要进行拆分（如下所示）以适应在其他方面无法解析的正斜杠。
 
 * 初始化 MongoDB 客户端、检索数据库，并进行身份验证。
 
@@ -106,29 +98,31 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 3. 然后，使用 `set FLASK_APP=app.py`、`$env:FLASK_APP = app.py`（适用于 PowerShell 编辑器）或 `export FLASK_APP=app.py`（如果使用的是 Mac）设置 Flask 应用的环境变量。 
 
-4. 使用 `flask run` 运行此应用并浏览到 [http://127.0.0.1:5000/](http://127.0.0.1:5000/)。
+4. 使用 `flask run` 运行此应用并浏览到 *http:\//127.0.0.1:5000/* 。
 
 5. 添加和删除任务，并查看集合中添加和更改的任务。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
+若要针对实时 Azure Cosmos DB 帐户测试代码，请转到 Azure 门户创建一个帐户。
+
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
-若要针对实时 Cosmos 帐户测试代码，请转到 Azure 门户创建一个帐户，并获取连接字符串信息。 然后将其复制到此应用中。
+若要针对实时 Azure Cosmos DB 帐户测试代码，请获取连接字符串信息。 然后将其复制到此应用中。
 
-1. 在 [Azure 门户](https://portal.azure.com/)上的 Cosmos 帐户中，在左侧导航栏中单击“连接字符串”  ，然后单击“读写密钥”  。 使用屏幕右侧的复制按钮将用户名、密码和主机复制到下一步的 Dal.cs 文件中。
+1. 在 Azure 门户的 Azure Cosmos DB 帐户的左侧导航栏中，选择“连接字符串”，然后选择“读写密钥”。   我们将使用屏幕右侧的复制按钮复制用户名、连接字符串和密码。 
 
 2. 在根目录中打开 app.py 文件  。
 
 3. 从门户中（使用复制按钮）复制“用户名”值，并在 app.py 文件中将其设为“名称”的值    。
 
-4. 然后从门户中复制“连接字符串”值，并在 app.py 文件中将其设为 MongoClient 值   。
+4. 然后从门户中复制“连接字符串”值，并在 *app.py* 文件中将其设为 MongoClient 值   。
 
 5. 最后从门户复制“密码”值，并在 app.py 文件中将其设为“密码”的值    。
 
-现在，你已在应用中更新了全部所需信息，它可以与 Cosmos DB 进行通信。 此时，即可像以前一样运行它。
+现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 此时，即可像以前一样运行它。
 
 ## <a name="deploy-to-azure"></a>“部署到 Azure”
 
@@ -144,7 +138,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 然后需要将 MONGOURL、MONGO_PASSWORD 和 MONGO_USERNAME 添加到应用程序设置中。 可参阅此[教程](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)了解有关 Azure Web 应用中应用程序设置的详细信息。
 
-如果不想创建此存储库的分支，也可单击下方的“部署到 Azure”按钮。 然后应转到 Azure，就可使用 Cosmos DB 的帐户信息设置应用程序设置。
+如果不想创建此存储库的分支，也可选择下方的“部署到 Azure”按钮。  然后应转到 Azure，就可使用 Azure Cosmos DB 的帐户信息设置应用程序设置。
 
 <a href="https://deploy.azure.com/?repository=https://github.com/heatherbshapiro/To-Do-List---Flask-MongoDB-Example" target="_blank">
 <img src="https://azuredeploy.net/deploybutton.png" alt="Click to Deploy to Azure">
@@ -163,7 +157,7 @@ Azure Cosmos DB 是 Microsoft 提供的全球分布式多模型数据库服务�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已学习了如何创建 Cosmos 帐户和运行 Flask 应用。 现在可以向你的 Cosmos 数据库导入更多数据。 
+本快速入门介绍了如何创建 Mongo DB API 帐户的 Azure Cosmos DB，以及如何使用 Azure Cosmos DB 模拟器运行从 GitHub 克隆的 Python Flask To-Do Web 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将 MongoDB 数据导入 Azure Cosmos DB](mongodb-migrate.md)

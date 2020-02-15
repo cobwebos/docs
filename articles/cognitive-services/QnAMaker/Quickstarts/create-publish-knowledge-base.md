@@ -1,61 +1,55 @@
 ---
 title: 快速入门：创建、训练和发布知识库 - QnA Maker
-titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 此示例中的 QnA Maker 知识库根据一个简单的 FAQ 网页创建，该网页解答有关 BitLocker 密钥恢复的问题。
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: qna-maker
+description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: quickstart
-ms.date: 01/29/2020
-ms.author: diberry
-ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/08/2020
+ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901675"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108724"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
-可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 BitLocker 密钥恢复相关问题的示例。
+可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 
-包括聊天个性化内容，让你的知识更吸引用户。
-
-[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
-
-## <a name="prerequisite"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 在 Azure 门户中创建的 QnA Maker [资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
 
-## <a name="create-a-new-qna-maker-knowledge-base"></a>创建新的 QnA Maker 知识库
+## <a name="create-your-first-qna-maker-knowledge-base"></a>创建第一个 QnA Maker 知识库
 
 1. 使用 Azure 凭据登录到 [QnAMaker.ai](https://QnAMaker.ai) 门户。
 
-1. 在 QnA Maker 门户上，选择“创建知识库”。 
+1. 在 QnA Maker 门户中，选择“创建知识库”。 
 
-1. 在“创建”页上，选择“创建 QnA 服务”。   此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。
+1. 在“创建”页上，如果你已经有 QnA Maker 资源，请跳过“步骤 1”   。
 
-1. 在 Azure 门户中创建此资源。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
-1. 返回到 QnA Maker 门户，在门户中刷新网页，以继续创建知识库。 选择现有租户、订阅和新资源。 选择语言。 该语言将用于此 QnA Maker 服务中的所有知识库。
+    如果尚未创建此资源，请选择“创建 QnA 服务”  。 此时会将你定向到 [Azure 门户](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，让你在订阅中设置 QnA Maker 服务。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+
+    在 Azure 门户中创建资源后，请返回到 QnA Maker 门户，刷新浏览器页，并继续完成“步骤 2”  。
+
+1. 在“步骤 3”  中，为在服务中创建的所有知识库选择 Active Directory、订阅、服务（资源）和语言。
 
    ![选择 QnA Maker 服务知识库的屏幕截图](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 将知识库命名为“我的示例 QnA KB”。 
+1. 在“步骤 3”中，将知识库命名为“我的示例 QnA KB”。  
 
-1. 将示例 Word 文档添加为 URL：
+1. 在**步骤 4** 中，按照下表配置设置：
 
-    `https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`
+    |设置|值|
+    |--|--|
+    |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
+    |**默认答案文本**| `Quickstart - default answer not found.`|
+    |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**聊天内容**|选择“专业” |
 
-1. 选择 `+ Add URL`。
+1. 在“步骤 5”中，选择“创建 KB”   。
 
-1. 将专业聊天  添加到你的 KB。
-
-1. 选择“创建知识库”  。
-
-    提取过程需要数分钟来读取文档并确定问题和解答。
+    提取过程需要一些时间来读取文档并确定问题和解答。
 
     QnA Maker 成功创建知识库后，“知识库”页会打开。  可在此页面上编辑知识库的内容。
 
@@ -78,7 +72,7 @@ ms.locfileid: "76901675"
 
 ## <a name="save-and-train"></a>保存并训练
 
-在右上角选择“保存并训练”，以便保存所做的编辑并训练  QnA Maker 模型。 如果不保存，编辑的内容不会保留。
+在右上角选择“保存并训练”，以便保存所做的编辑并训练  QnA Maker。 如果不保存，编辑的内容不会保留。
 
 ## <a name="test-the-knowledge-base"></a>测试知识库
 
@@ -145,13 +139,16 @@ ms.locfileid: "76901675"
 
 在发布知识库之后，你创建了一个机器人，并测试了该机器人。
 
-这只需几分钟即可完成，无需编写任何代码并清理内容。
+这只需几分钟即可完成，无需编写代码或清理内容。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-清理 Azure 门户中的 QnA Maker 和 Bot Framework 资源。
+如果不继续完成下一快速入门，请删除 Azure 门户中的 QnA Maker 和 Bot Framework 资源。
 
 ## <a name="next-steps"></a>后续步骤
+
+> [!div class="nextstepaction"]
+> [添加带有元数据的问题](add-question-metadata-portal.md)
 
 更多相关信息：
 
@@ -159,5 +156,4 @@ ms.locfileid: "76901675"
 * QnA Maker [数据源](../concepts/knowledge-base.md)。
 * [机器人资源配置设置](../tutorials/create-qna-bot.md)。
 
-> [!div class="nextstepaction"]
-> [添加带有元数据的问题](add-question-metadata-portal.md)
+
