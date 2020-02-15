@@ -2,13 +2,13 @@
 title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: HT
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715591"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207802"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -121,6 +121,7 @@ ms.locfileid: "76715591"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft 笔记本](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
@@ -153,6 +154,7 @@ ms.locfileid: "76715591"
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [SpoolService](#microsoftspoolservice)
 > - [Microsoft .SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ ms.locfileid: "76715591"
 > | billingAccounts/billingProfiles/说明 | 否 |
 > | billingAccounts/billingProfiles/发票 | 否 |
 > | billingAccounts/billingProfiles/发票/价目表 | 否 |
+> | billingAccounts/billingProfiles/发票/交易 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | 否 |
@@ -489,7 +492,6 @@ ms.locfileid: "76715591"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | Redis | 是 |
-> | RedisConfigDefinition | 否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -712,6 +714,9 @@ ms.locfileid: "76715591"
 > | 注册表/getBuildSourceUploadUrl | 否 |
 > | 注册表/System.web.clientservices.providers.iclientformsauthenticationcredentialsprovider.getcredentials | 否 |
 > | 注册表/importImage | 否 |
+> | 注册表/privateEndpointConnectionProxies | 否 |
+> | 注册表/privateEndpointConnectionProxies/验证 | 否 |
+> | 注册表/privateLinkResources | 否 |
 > | 注册表/queueBuild | 否 |
 > | 注册表/regenerateCredential | 否 |
 > | 注册表/regenerateCredentials | 否 |
@@ -1397,6 +1402,13 @@ ms.locfileid: "76715591"
 > | netAppAccounts/capacityPools/卷 | 是 |
 > | netAppAccounts/capacityPools/卷集/mountTargets | 是 |
 > | netAppAccounts/capacityPools/卷/快照 | 是 |
+
+## <a name="microsoftnotebooks"></a>Microsoft 笔记本
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | NotebookProxies | 否 |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ ms.locfileid: "76715591"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | clusters | 是 |
-> | devices | 否 |
 > | linkTargets | 否 |
 > | storageInsightConfigs | 否 |
 > | workspaces | 是 |
@@ -1523,6 +1534,7 @@ ms.locfileid: "76715591"
 > | 工作区/privateEndpointConnections | 否 |
 > | 工作区/privateLinkResources | 否 |
 > | 工作区/查询 | 否 |
+> | 工作区/scopedPrivateLinkProxies | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1745,8 +1757,10 @@ ms.locfileid: "76715591"
 > | 书签 | 否 |
 > | cases | 否 |
 > | dataConnectors | 否 |
+> | dataConnectorsCheckRequirements | 否 |
 > | 实体 | 否 |
 > | entityQueries | 否 |
+> | 发生 | 否 |
 > | officeConsents | 否 |
 > | 设置 | 否 |
 
@@ -1780,6 +1794,8 @@ ms.locfileid: "76715591"
 > | containerGroupSets | 是 |
 > | edgeclusters | 是 |
 > | edgeclusters/应用程序 | 否 |
+> | managedclusters | 是 |
+> | managedclusters/nodetypes | 否 |
 > | networks | 是 |
 > | secretstores | 是 |
 > | secretstores/证书 | 否 |
@@ -1837,6 +1853,14 @@ ms.locfileid: "76715591"
 > | applicationDefinitions | 是 |
 > | 应用程序 | 是 |
 > | jitRequests | 是 |
+
+## <a name="microsoftspoolservice"></a>SpoolService
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 完整模式删除 |
+> | ------------- | ----------- |
+> | registeredSubscriptions | 否 |
+> | 线轴 | 是 |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1993,6 +2017,7 @@ ms.locfileid: "76715591"
 > | devices | 是 |
 > | 供应商 | 否 |
 > | 供应商/sku | 否 |
+> | 供应商/vnfs | 否 |
 > | vnfs | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

@@ -2,13 +2,13 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: e17e6a996f54d6211f87ec20765d3fde782b7d6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: HT
+ms.date: 02/13/2020
+ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715599"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207921"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为**支持标记**的列指示资源类型是否具有标记的属性。 标记为 **"成本报表中的标记**" 的列指示该资源类型是否将标记传递给成本报告。 你可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和[Azure 计费发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按标记查看成本。
@@ -116,6 +116,7 @@ ms.locfileid: "76715599"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft 笔记本](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
@@ -148,6 +149,7 @@ ms.locfileid: "76715599"
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [SpoolService](#microsoftspoolservice)
 > - [Microsoft .SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -367,6 +369,7 @@ ms.locfileid: "76715599"
 > | billingAccounts/billingProfiles/说明 | 否 | 否 |
 > | billingAccounts/billingProfiles/发票 | 否 | 否 |
 > | billingAccounts/billingProfiles/发票/价目表 | 否 | 否 |
+> | billingAccounts/billingProfiles/发票/交易 | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingPermissions | 否 | 否 |
 > | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | 否 | 否 |
@@ -484,7 +487,6 @@ ms.locfileid: "76715599"
 > | 资源类型 | 支持标记 | 成本报表中的标记 |
 > | ------------- | ----------- | ----------- |
 > | Redis | 是 | 是 |
-> | RedisConfigDefinition | 否 | 否 |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -707,6 +709,9 @@ ms.locfileid: "76715599"
 > | 注册表/getBuildSourceUploadUrl | 否 | 否 |
 > | 注册表/System.web.clientservices.providers.iclientformsauthenticationcredentialsprovider.getcredentials | 否 | 否 |
 > | 注册表/importImage | 否 | 否 |
+> | 注册表/privateEndpointConnectionProxies | 否 | 否 |
+> | 注册表/privateEndpointConnectionProxies/验证 | 否 | 否 |
+> | 注册表/privateLinkResources | 否 | 否 |
 > | 注册表/queueBuild | 否 | 否 |
 > | 注册表/regenerateCredential | 否 | 否 |
 > | 注册表/regenerateCredentials | 否 | 否 |
@@ -1393,6 +1398,13 @@ ms.locfileid: "76715599"
 > | netAppAccounts/capacityPools/卷集/mountTargets | 是 | 否 |
 > | netAppAccounts/capacityPools/卷/快照 | 是 | 否 |
 
+## <a name="microsoftnotebooks"></a>Microsoft 笔记本
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 成本报表中的标记 |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | 否 | 否 |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1514,7 +1526,6 @@ ms.locfileid: "76715599"
 > | 资源类型 | 支持标记 | 成本报表中的标记 |
 > | ------------- | ----------- | ----------- |
 > | clusters | 是 | 是 |
-> | devices | 否 | 否 |
 > | linkTargets | 否 | 否 |
 > | storageInsightConfigs | 否 | 否 |
 > | workspaces | 是 | 是 |
@@ -1525,6 +1536,7 @@ ms.locfileid: "76715599"
 > | 工作区/privateEndpointConnections | 否 | 否 |
 > | 工作区/privateLinkResources | 否 | 否 |
 > | 工作区/查询 | 否 | 否 |
+> | 工作区/scopedPrivateLinkProxies | 否 | 否 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1658,7 +1670,7 @@ ms.locfileid: "76715599"
 > | notifyResourceJobs | 否 | 否 |
 > | providers | 否 | 否 |
 > | resourceGroups | 是 | 否 |
-> | subscriptions | 否 | 否 |
+> | subscriptions | 是 | 否 |
 > | tenants | 否 | 否 |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1747,8 +1759,10 @@ ms.locfileid: "76715599"
 > | 书签 | 否 | 否 |
 > | cases | 否 | 否 |
 > | dataConnectors | 否 | 否 |
+> | dataConnectorsCheckRequirements | 否 | 否 |
 > | 实体 | 否 | 否 |
 > | entityQueries | 否 | 否 |
+> | 发生 | 否 | 否 |
 > | officeConsents | 否 | 否 |
 > | 设置 | 否 | 否 |
 
@@ -1782,6 +1796,8 @@ ms.locfileid: "76715599"
 > | containerGroupSets | 是 | 是 |
 > | edgeclusters | 是 | 是 |
 > | edgeclusters/应用程序 | 否 | 否 |
+> | managedclusters | 是 | 是 |
+> | managedclusters/nodetypes | 否 | 否 |
 > | networks | 是 | 是 |
 > | secretstores | 是 | 是 |
 > | secretstores/证书 | 否 | 否 |
@@ -1839,6 +1855,14 @@ ms.locfileid: "76715599"
 > | applicationDefinitions | 是 | 是 |
 > | 应用程序 | 是 | 是 |
 > | jitRequests | 是 | 是 |
+
+## <a name="microsoftspoolservice"></a>SpoolService
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 成本报表中的标记 |
+> | ------------- | ----------- | ----------- |
+> | registeredSubscriptions | 否 | 否 |
+> | 线轴 | 是 | 是 |
 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
@@ -2004,6 +2028,7 @@ ms.locfileid: "76715599"
 > | devices | 是 | 是 |
 > | 供应商 | 否 | 否 |
 > | 供应商/sku | 否 | 否 |
+> | 供应商/vnfs | 否 | 否 |
 > | vnfs | 是 | 是 |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

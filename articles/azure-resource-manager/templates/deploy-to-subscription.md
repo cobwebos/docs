@@ -3,12 +3,12 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120609"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207649"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
@@ -135,7 +135,7 @@ New-AzDeployment `
 }
 ```
 
-结合使用 [copy 元素](create-multiple-instances.md)与资源组来创建多个资源组。
+结合使用 [copy 元素](copy-resources.md)与资源组来创建多个资源组。
 
 ```json
 {
@@ -170,7 +170,7 @@ New-AzDeployment `
 }
 ```
 
-有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源或属性的多个实例](./create-multiple-instances.md)，以及[教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
+有关资源迭代的信息，请参阅[在 Azure 资源管理器模板中部署资源的多个实例](./copy-resources.md)和 [教程：使用资源管理器模板创建多个资源实例](./template-tutorial-create-multiple-instances.md)。
 
 ## <a name="resource-group-and-resources"></a>资源组和资源
 

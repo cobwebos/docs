@@ -3,12 +3,12 @@ title: 模板函数-数组和对象
 description: 介绍可在 Azure 资源管理器模板中用来处理数组和对象的函数。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 16b36d290a99da56dffe82c9e4c7265a89350391
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484085"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207360"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数
 
@@ -25,7 +25,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [json](#json)
 * [last](#last)
 * [length](#length)
-* max[](#max)
+* [max](#max)
 * [min](#min)
 * [range](#range)
 * [skip](#skip)
@@ -40,9 +40,9 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 将值转换为数组。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |是 |int、string、array 或 object |要转换为数组的值。 |
 
@@ -93,11 +93,11 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| intOutput | 数组 | [1] |
-| stringOutput | 数组 | ["efgh"] |
-| objectOutput | 数组 | [{"a": "b", "c": "d"}] |
+| intOutput | Array | [1] |
+| stringOutput | Array | ["efgh"] |
+| objectOutput | Array | [{"a": "b", "c": "d"}] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -117,9 +117,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 从参数中返回第一个非 null 值。 空字符串、空数组和空对象不为 null。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |int、string、array 或 object |要测试是否为 null 的第一个值。 |
 | 其他参数 |否 |int、string、array 或 object |要测试是否为 null 的其他值。 |
@@ -178,13 +178,13 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | default |
-| intOutput | Int | 第 |
-| objectOutput | 对象 | {"first": "default"} |
-| arrayOutput | 数组 | [1] |
-| emptyOutput | Bool | 正确 |
+| intOutput | Int | 1 |
+| objectOutput | Object | {"first": "default"} |
+| arrayOutput | Array | [1] |
+| emptyOutput | Bool | True |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -204,9 +204,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 合并多个数组并返回串联的数组，或合并多个字符串值并返回串联的字符串。 
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要串联的第一个数组或字符串。 |
 | 其他参数 |否 |数组或字符串 |按顺序排列的串联的其他数组或字符串。 |
@@ -256,9 +256,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| 返回 | 数组 | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| 返回 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -296,7 +296,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -318,9 +318,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 检查数组是否包含某个值、某个对象是否包含某个键，或者某个字符串是否包含某个子字符串。 字符串比较区分大小写。 但在测试某个对象是否包含某个键时，该比较不区分大小写。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | 容器 (container) |是 |数组、对象或字符串 |包含要查找的值的值。 |
 | itemToFind |是 |字符串或整数 |要查找的值。 |
@@ -384,14 +384,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| stringTrue | Bool | 正确 |
-| stringFalse | Bool | 错误 |
-| objectTrue | Bool | 正确 |
-| objectFalse | Bool | 错误 |
-| arrayTrue | Bool | 正确 |
-| arrayFalse | Bool | 错误 |
+| stringTrue | Bool | True |
+| stringFalse | Bool | False |
+| objectTrue | Bool | True |
+| objectFalse | Bool | False |
+| arrayTrue | Bool | True |
+| arrayFalse | Bool | False |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -411,9 +411,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 从参数创建数组。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串、整数、数组或对象 |数组中的第一个值。 |
 | 其他参数 |否 |字符串、整数、数组或对象 |数组中的其他值。 |
@@ -465,12 +465,12 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| stringArray | 数组 | ["a", "b", "c"] |
-| intArray | 数组 | [1, 2, 3] |
-| objectArray | 数组 | [{"one": "a", "two": "b", "three": "c"}] |
-| arrayArray | 数组 | [["one", "two", "three"]] |
+| stringArray | Array | ["a", "b", "c"] |
+| intArray | Array | [1, 2, 3] |
+| objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
+| arrayArray | Array | [["one", "two", "three"]] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -490,9 +490,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 确定数组、对象或字符串是否为空。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |是 |数组、对象或字符串 |要检查是否为空的值。 |
 
@@ -543,11 +543,11 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | 正确 |
-| objectEmpty | Bool | 正确 |
-| stringEmpty | Bool | 正确 |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -567,9 +567,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回数组的第一个元素，或字符串的第一个字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索第一个元素或字符的值。 |
 
@@ -608,9 +608,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | 一 |
+| arrayOutput | String | one |
 | stringOutput | String | O |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -631,9 +631,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回包含参数中通用元素的单个数组或对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于查找通用元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于查找通用元素的第二个值。 |
@@ -686,10 +686,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| objectOutput | 对象 | {"one": "a", "three": "c"} |
-| arrayOutput | 数组 | ["two", "three"] |
+| objectOutput | Object | {"one": "a", "three": "c"} |
+| arrayOutput | Array | ["two", "three"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -709,9 +709,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回一个 JSON 对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串 |要转换为 JSON 的值。 |
 
@@ -758,11 +758,11 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| jsonOutput | 对象 | {"a": "b"} |
-| nullOutput | Boolean | 正确 |
-| paramOutput | 对象 | {"a": "demo value"}
+| jsonOutput | Object | {"a": "b"} |
+| nullOutput | Boolean | True |
+| paramOutput | Object | {"a": "demo value"}
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -782,9 +782,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回数组的最后一个元素，或字符串的最后一个字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或字符串 |要检索最后一个元素或字符的值。 |
 
@@ -823,9 +823,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | 三 |
+| arrayOutput | String | three |
 | stringOutput | String | e |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -846,9 +846,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回数组中的元素数、字符串中的字符或对象中的根级属性。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组、字符串或对象 |用于获取元素数的数组，要用于获取字符数的字符串，或用于获取根级别属性数的对象的数组。 |
 
@@ -910,7 +910,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
@@ -937,7 +937,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 }
 ```
 
-有关在数组中使用此函数的详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+有关在数组中使用此函数的详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 
 ## <a name="max"></a>max
 
@@ -945,9 +945,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -985,7 +985,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -1002,15 +1002,15 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-## <a name="min"></a>分钟
+## <a name="min"></a>min
 
 `min(arg1)`
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -1048,7 +1048,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -1071,9 +1071,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 从起始整数创建整数数组并包含一些项。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | startingInteger |是 |int |数组中的第一个整数。 |
 | numberofElements |是 |int |数组中的整数个数。 |
@@ -1112,9 +1112,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| rangeOutput | 数组 | [5, 6, 7] |
+| rangeOutput | Array | [5, 6, 7] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -1134,9 +1134,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回一个数组，其中包含数组中指定数字后面的所有元素；或返回一个字符串，其中包含字符串中指定数后面的所有字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |用于跳过的数组或字符串。 |
 | numberToSkip |是 |int |要跳过的元素或字符数。 如果此值小于或等于 0，则返回值中的所有元素或字符。 如果此值大于数组或字符串的长度，则返回空数组或字符串。 |
@@ -1191,9 +1191,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["three"] |
+| arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -1214,9 +1214,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回一个数组，其中包含从数组开头位置算起的指定数目的元素；或返回一个字符串，其中包含从字符串开头位置算起的指定数目的字符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
 | numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
@@ -1271,9 +1271,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | 数组 | ["one", "two"] |
+| arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
 
 要使用 Azure CLI 部署此示例模板，请使用：
@@ -1294,9 +1294,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回包含参数中所有元素的单个数组或对象。 重复的值或键仅包含一次。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |数组或对象 |用于联接元素的第一个值。 |
 | arg2 |是 |数组或对象 |用于联接元素的第二个值。 |
@@ -1349,10 +1349,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| objectOutput | 对象 | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
-| arrayOutput | 数组 | ["one", "two", "three", "four"] |
+| objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
+| arrayOutput | Array | ["one", "two", "three", "four"] |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -1370,6 +1370,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

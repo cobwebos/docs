@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193373"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251764"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -123,16 +123,16 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 |[RelyingParty](relyingparty.md#technicalprofile)技术配置文件| `OutputClaim`| 2 |
 
 设置： 
-1. `IncludeClaimResolvingInClaimsHandling` 元数据必须设置为 `true`
-1. 输入或输出声明特性 `AlwaysUseDefaultValue` 必须设置为 `true`
+1. `IncludeClaimResolvingInClaimsHandling` 的元数据必须设置为 `true`。
+1. 输入或输出声明特性 `AlwaysUseDefaultValue` 必须设置为 `true`。
 
-## <a name="how-to-use-claim-resolvers"></a>如何使用声明解析程序
+## <a name="claim-resolvers-samples"></a>声明解析器示例
 
 ### <a name="restful-technical-profile"></a>RESTful 技术配置文件
 
 在 [RESTful](restful-technical-profile.md) 技术配置文件中，可能想要发送用户语言、策略名称、作用域和客户端 ID。 根据这些声明，REST API 可以运行自定义业务逻辑，并提出已本地化的错误消息（如有必要）。
 
-以下示例演示了一个 RESTful 技术配置文件：
+下面的示例演示了此方案中的 RESTful 技术配置文件：
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-通过 Azue AD B2C，可将查询字符串参数传递给 HTML 内容定义终结点，以便可以动态呈现页面内容。 例如，可以基于从 Web 或移动应用程序传递的自定义参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization-dynamic.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终结点，以动态呈现页面内容。 例如，使用此功能，可以基于从 web 或移动应用程序传递的自定义参数来修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization-dynamic.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
-以下示例将名为 campaignId，且值为 `hawaii`，语言代码为 `en-US`，以及表示客户端 ID 的 app 的参数传入查询字符串：
+以下示例在名为**campaignId**的查询字符串参数中传递，其值为 `hawaii`、`en-US`的**语言**代码和表示客户端 ID 的**应用**：
 
 ```XML
 <UserJourneyBehaviors>
@@ -173,10 +174,21 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 </UserJourneyBehaviors>
 ```
 
-结果，Azure AD B2C 将上述参数发送到 HTML 内容页：
+因此，Azure AD B2C 会将以上参数发送到 HTML 内容页：
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>内容定义
+
+在[ContentDefinition](contentdefinitions.md) `LoadUri`中，可以发送声明解析程序，根据所使用的参数从不同位置拉取内容。 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Application Insights 技术配置文件
@@ -195,4 +207,29 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>信赖方策略
+
+在[信赖方](relyingparty.md)策略技术配置文件中，你可能需要将租户 id 或相关 ID 发送到 JWT 中的信赖方应用程序。 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

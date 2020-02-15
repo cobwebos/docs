@@ -3,12 +3,12 @@ title: 模板函数-数值
 description: 介绍可在 Azure 资源管理器模板中使用的用于处理数值的函数。
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483942"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207228"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数值函数
 
@@ -19,7 +19,7 @@ Resource Manager 提供以下用于处理整数的函数：
 * [div](#div)
 * [float](#float)
 * [int](#int)
-* max[](#max)
+* [max](#max)
 * [min](#min)
 * [mod](#mod)
 * [mul](#mul)
@@ -34,9 +34,9 @@ Resource Manager 提供以下用于处理整数的函数：
 
 返回提供的两个整数的总和。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- | 
 |operand1 |是 |int |要添加的第一个数。 |
 |operand2 |是 |int |要添加的第二个数。 |
@@ -82,7 +82,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -105,9 +105,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回一个迭代循环的索引。 
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | loopName | 否 | 字符串 | 用于获取迭代的循环的名称。 |
 | offset |否 |int |要添加到从零开始的迭代值的数。 |
@@ -118,7 +118,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 **loopName** 可用于指定 copyIndex 是引用资源迭代还是引用属性迭代。 如果没有为 **loopName** 提供值，则将使用当前的资源类型迭代。 当在属性上迭代时，请为 **loopName** 提供值。 
  
-有关如何使用 **copyIndex** 的完整说明，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+有关如何使用 **copyIndex** 的完整说明，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 
 有关定义变量时使用“copyIndex”的示例，请参阅[变量](template-syntax.md#variables)。
 
@@ -151,9 +151,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数在整除后的商。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |除数。 不能为 0。 |
@@ -199,7 +199,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -217,14 +217,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="float" />
 
-## <a name="float"></a>FLOAT
+## <a name="float"></a>浮点数
 `float(arg1)`
 
 将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |字符串或整数 |要转换为浮点数的值。 |
 
@@ -256,9 +256,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 将指定的值转换为整数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |是 |字符串或整数 |要转换为整数的值。 |
 
@@ -293,7 +293,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -316,9 +316,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最大值的集合。 |
 
@@ -356,7 +356,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -375,14 +375,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>分钟
+## <a name="min"></a>min
 `min (arg1)`
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |是 |整数数组或逗号分隔的整数列表 |要获取最小值的集合。 |
 
@@ -420,7 +420,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -444,9 +444,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回使用提供的两个整数整除后的余数。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除数。 |
 | operand2 |是 |int |非零除数。 |
@@ -491,9 +491,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
-| modResult | Int | 第 |
+| modResult | Int | 1 |
 
 要使用 Azure CLI 部署此示例模板，请使用：
 
@@ -514,9 +514,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数的积。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |要乘以的第一个数。 |
 | operand2 |是 |int |要乘以的第二个数。 |
@@ -562,7 +562,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -585,9 +585,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数在相减后的结果。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被减数。 |
 | operand2 |是 |int |减数。 |
@@ -632,7 +632,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 上面具有默认值的示例的输出为：
 
-| 名称 | 类型 | 值 |
+| 名称 | Type | 值 |
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
@@ -651,6 +651,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

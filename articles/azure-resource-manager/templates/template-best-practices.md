@@ -1,20 +1,20 @@
 ---
-title: 模板的最佳实践
+title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484241"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207479"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
 本文提供有关如何构造资源管理器模板的建议。 这些建议有助于在使用模板部署解决方案时避免出现常见问题。
 
-有关如何管理 Azure 订阅的建议，请参阅[azure 企业基架：规范性订阅管理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+有关如何管理 Azure 订阅的建议，请参阅 [Azure Enterprise 基架：出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
 
 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 Azure 资源管理器模板](templates-cloud-consistency.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "75484241"
 
 如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -156,7 +156,7 @@ ms.locfileid: "75484241"
 
 * 包含必须具有唯一性的资源名称的变量。
 
-* [在变量中使用复制循环](create-multiple-instances.md#variable-iteration)来创建重复的 JSON 对象模式。
+* [在变量中使用复制循环](copy-variables.md)来创建重复的 JSON 对象模式。
 
 * 删除未使用的变量。
 

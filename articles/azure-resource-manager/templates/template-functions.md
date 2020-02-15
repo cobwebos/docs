@@ -1,20 +1,22 @@
 ---
-title: 模板功能
+title: 模板函数
 description: 介绍在 Azure 资源管理器模板中检索值、处理字符串和数字以及检索部署信息时所用的函数。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483968"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207036"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure 资源管理器模板函数
 
 本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 有关在模板中使用函数的信息，请参阅[模板语法](template-expressions.md)。
 
 若要创建自己的函数，请参阅[用户定义函数](template-syntax.md#functions)。
+
+大多数函数在部署到资源组、订阅、管理组或租户时的工作方式相同。 有些函数不能用于所有范围。 下面的列表中对它们进行了说明。
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,6 +37,7 @@ ms.locfileid: "75483968"
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>数组和对象函数
+
 Resource Manager 提供以下用于处理数组和对象的函数。
 
 * [array](template-functions-array.md#array)
@@ -49,7 +52,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 * [last](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
 * [min](template-functions-array.md#min)
-* max[](template-functions-array.md#max)
+* [max](template-functions-array.md#max)
 * [range](template-functions-array.md#range)
 * [skip](template-functions-array.md#skip)
 * [take](template-functions-array.md#take)
@@ -62,6 +65,7 @@ Resource Manager 提供以下用于处理数组和对象的函数。
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>比较函数
+
 Resource Manager 提供了多个用于在模板中进行比较的函数。
 
 * [equals](template-functions-comparison.md#equals)
@@ -75,6 +79,7 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>部署值函数
+
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
 * [deployment](template-functions-deployment.md#deployment)
@@ -89,6 +94,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>逻辑函数
+
 资源管理器提供以下用于逻辑条件的函数：
 
 * [and](template-functions-logical.md#and)
@@ -109,6 +115,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>数字函数
+
 Resource Manager 提供以下用于处理整数的函数：
 
 * [add](template-functions-numeric.md#add)
@@ -117,7 +124,7 @@ Resource Manager 提供以下用于处理整数的函数：
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
 * [min](template-functions-numeric.md#min)
-* max[](template-functions-numeric.md#max)
+* [max](template-functions-numeric.md#max)
 * [mod](template-functions-numeric.md#mod)
 * [mul](template-functions-numeric.md#mul)
 * [sub](template-functions-numeric.md#sub)
@@ -134,6 +141,7 @@ Resource Manager 提供以下用于处理整数的函数：
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>资源函数
+
 Resource Manager 提供以下用于获取资源值的函数：
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -143,9 +151,9 @@ Resource Manager 提供以下用于获取资源值的函数：
 * [list*](template-functions-resource.md#list)
 * [providers](template-functions-resource.md#providers)
 * [reference](template-functions-resource.md#reference)
-* [resourceGroup](template-functions-resource.md#resourcegroup)
-* [resourceId](template-functions-resource.md#resourceid)
-* [subscription](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup) -只能在资源组的部署中使用。
+* [resourceId](template-functions-resource.md#resourceid) -可以在任何范围内使用，但有效参数会根据范围而发生变化。
+* [订阅](template-functions-resource.md#subscription)-只能用于部署到资源组或订阅。
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,6 +189,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>字符串函数
+
 Resource Manager 提供以下用于处理字符串的函数：
 
 * [base64](template-functions-string.md#base64)
@@ -193,7 +202,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [empty](template-functions-string.md#empty)
 * [endsWith](template-functions-string.md#endswith)
 * [first](template-functions-string.md#first)
-* format[](template-functions-string.md#format)
+* [format](template-functions-string.md#format)
 * [guid](template-functions-string.md#guid)
 * [indexOf](template-functions-string.md#indexof)
 * [last](template-functions-string.md#last)
@@ -221,5 +230,5 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)
