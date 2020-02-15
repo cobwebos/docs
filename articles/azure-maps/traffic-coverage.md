@@ -1,19 +1,19 @@
 ---
 title: 流量覆盖率 |Microsoft Azure 映射
 description: 在本文中，你将了解 Microsoft Azure Maps 中的流量覆盖率。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988139"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209522"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
@@ -23,23 +23,23 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="americas"></a>美洲
 
-|国家/地区  |事故  |Flow  |
+|国家/地区  |事故  |流向  |
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
-|加拿大     |✓         |✓         |
+|Canada     |✓         |✓         |
 |智利     |✓         |✓         |
 |哥伦比亚      |✓         |✓         |
 |墨西哥     |✓         |✓         |
 |秘鲁       |✓         |✓         | 
-|美国     |✓         |✓        |
+|United States     |✓         |✓        |
 |+波多黎各     |✓         |✓         |
 |乌拉圭 |✓         |✓         |
 
 
-## <a name="asia-pacific"></a>亚太
+## <a name="asia-pacific"></a>亚太区
 
-|国家/地区   |事故  |Flow  |
+|国家/地区   |事故  |流向  |
 |---------|:---------:|:---------:|
 |澳大利亚     |✓         |✓        |
 |文莱   |✓         |✓        |
@@ -52,14 +52,14 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |新西兰     |✓         |✓         |
 |菲律宾  |✓         |✓         |
 |新加坡     |✓         |✓         |
-|台湾     |✓         |✓        |
+|中国台湾     |✓         |✓        |
 |泰国     |✓         |✓        |
 |越南   |✓         |✓         |
 
 
 ## <a name="europe"></a>欧洲
 
-|国家/地区   |事故  |Flow  |
+|国家/地区   |事故  |流向  |
 |---------|:---------:|:---------:|
 |安道尔   |✓         |✓         |
 |奥地利     |✓         |✓         |
@@ -108,7 +108,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 |瑞士     |✓         |✓        |
 |土耳其     |✓         |✓         |
 |乌克兰     |✓         |✓         |
-|英国     |✓         |✓         |
+|United Kingdom     |✓         |✓         |
 |+直布罗陀     |✓         |✓         |
 |\+ 根西岛 & Jersey     |✓         |✓         |
 |\+ Isle     |✓         |✓         |
@@ -117,7 +117,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
-|国家/地区 |事故  |Flow  |
+|国家/地区 |事故  |流向  |
 |---------|:---------:|:---------:|
 |巴林     |✓         |✓         |
 |埃及     |✓         |✓         |

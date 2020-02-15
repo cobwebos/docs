@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718028"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252053"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -47,7 +47,13 @@ ms.locfileid: "76718028"
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我应在组织的防火墙设置上打开哪些公共 IP 地址范围，以便通过 RDP/SSH 连接到实验室虚拟机？
 请参阅[AZURE IP 范围和服务标记—公有云](https://www.microsoft.com/download/details.aspx?id=56519)，它为 Azure 中的数据中心提供公共 IP 地址范围。 可以打开实验室帐户所在区域的 IP 地址。
 
-## <a name="users"></a>Users
+## <a name="virtual-machine-images"></a>虚拟机映像
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>作为实验室创建者，为什么在创建新实验室时无法在虚拟机映像下拉列表中启用其他映像选项？
+
+当管理员将你作为实验室创建者添加到实验室帐户时，你将获得创建实验室的权限。 但是，你没有权限编辑实验室帐户中的任何设置，包括已启用的虚拟机映像的列表。 若要启用其他映像，请联系你的实验室帐户管理员为你执行此操作，或者要求管理员将你作为参与者角色添加到实验室帐户。 参与者角色将授予你编辑实验室帐户中的虚拟机映像列表的权限。
+
+## <a name="users"></a>用户
 
 ### <a name="how-many-users-can-be-in-a-classroom-lab"></a>教室实验室中可以有多少用户？
 最多可以向一个教室实验室添加400个用户。 

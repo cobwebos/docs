@@ -1,19 +1,19 @@
 ---
 title: 天气服务概念 |Microsoft Azure 映射
 description: 在本文中，你将了解适用于 Microsoft Azure 映射天气服务的概念。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991134"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208720"
 ---
 # <a name="weather-services-in-azure-maps"></a>Azure Maps 中的天气服务
 
@@ -23,11 +23,11 @@ ms.locfileid: "76991134"
 
 某些天气服务 Api 允许用户指定是以公制单位还是以英制单位返回数据。 这些 Api 返回的响应包括 Unittype.pixel 度量和可用于单位转换的数值。 请参阅下表以解释这些值。
 
-|Unittype.pixel 度量|Description         |
+|Unittype.pixel 度量|说明         |
 |--------|--------------------|
 |0       |离                |
-|第       |×              |
-|2       |单位               |
+|1       |×              |
+|2       |英里               |
 |3       |毫米          |
 |4       |点数          |
 |5       |进度表               |
@@ -45,7 +45,7 @@ ms.locfileid: "76991134"
 |17      |摄氏温度             |
 |18      |华氏温度          |
 |19      |开氏温度              |
-|20      |表示             |
+|20      |%             |
 |21      |FLOAT               |
 |22      |integer             |
 
@@ -54,9 +54,9 @@ ms.locfileid: "76991134"
 
 某些天气服务 Api 在响应中返回 `iconCode`。 `iconCode` 是用于定义图标的数值。 请勿直接链接到应用程序中的这些映像，Url 可能会更改。
 
-| 图标编号 |图标| 天 | 高枕无忧 | 文本 |
+| 图标编号 |图标| 日期 | 高枕无忧 | 文本 |
 |-------------|:----:|-----|-------|------|
-| 第           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴|
+| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | 是 |  否    | 晴|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | 是 |  否    | 主要 Sunny|
 | 3           |![](./media/weather-services-concepts/partly-sunny.png)                | 是 |  否    | 部分 Sunny|
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | 是 |  否    | 间歇性云|
@@ -71,7 +71,7 @@ ms.locfileid: "76991134"
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | 是 |  是   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | 是 |  否    | 大多数云与 Thunderstorms|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | 是 |  否    | 部分 Sunny 与 Thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | 雨|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | 是 |  是   | 采用|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | 是 |  是   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | 是 |  否    | 大多数云与 Flurries|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | 是 |  否    | 部分 Sunny 与 Flurries|
@@ -84,7 +84,7 @@ ms.locfileid: "76991134"
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | 是 |  是   | 热|
 | 31           |![](./media/weather-services-concepts/cold-i.png)                      | 是 |  是   | 冷|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | 是 |  是   | 风|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | 清除|
+| 33           |![](./media/weather-services-concepts/clear-night.png)                | 否  |  是   | Clear|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | 否  |  是   | 大多数情况下清除|
 | 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | 否  |  是   | 部分云|
 | 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | 否  |  是   | 间歇性云|

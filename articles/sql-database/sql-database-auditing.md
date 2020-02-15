@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161947"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212890"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -90,7 +90,7 @@ ms.locfileid: "77161947"
 
    ![存储帐户](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-若要在虚拟网络或防火墙下配置存储帐户，需要在服务器上使用[Active Directory 管理员](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)，启用 "**允许受信任的 Microsoft 服务访问**存储帐户上的此存储帐户"。 此外，还需要对所选存储帐户具有 "Microsoft Authorization/roleAssignments/write" 权限。
+若要在虚拟网络或防火墙下配置存储帐户，需要在服务器上使用[Active Directory 管理员](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance)，启用 "**允许受信任的 Microsoft 服务访问**存储帐户上的此存储帐户"。 此外，还需要对所选存储帐户具有 "Microsoft Authorization/roleAssignments/write" 权限。
 
 建议你是[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)，以便向托管标识授予角色的存储 blob 数据参与者。 若要了解有关权限和基于角色的访问控制的详细信息，请参阅[azure 资源的基于角色的访问控制（RBAC）是什么？](../role-based-access-control/overview.md)以及[使用 azure RBAC 和 Azure 门户添加或删除角色分配](../role-based-access-control/role-assignments-portal.md)
 

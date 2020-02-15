@@ -1,19 +1,19 @@
 ---
 title: Web 地图控件入门 |Microsoft Azure 映射
 description: 了解如何使用 Microsoft Azure map map control 客户端 Javascript 库，将地图和嵌入 Azure Maps 功能呈现到 web 或移动应用程序中。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 90cd752ddd46999627de538abe3ca6b1926005aa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264113"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209811"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -27,14 +27,14 @@ ms.locfileid: "76264113"
 
 2. 载入 Azure Maps Web SDK。 您可以选择以下两个选项之一：
 
-a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
+a. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
 
 ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 ```
 
-b.保留“数据库类型”设置，即设置为“共享”。 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
+b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
 
 > **npm 安装 azure-maps**
 
@@ -51,7 +51,7 @@ b.保留“数据库类型”设置，即设置为“共享”。 使用[Azure M
     > import * as atlas from 'azure-maps-control';
     > ```
 
-3. 若要以填满整个页面正文的方式呈现地图，请向 `<head>` 元素中添加以下 `<style>` 元素。
+3. 若要以填满整个页面正文的方式呈现地图，请向 `<style>` 元素中添加以下 `<head>` 元素。
 
 ```HTML
     <style>
@@ -212,7 +212,7 @@ map = new atlas.Map('myMap', {
 
 ![以法语显示标签的地图图像](./media/how-to-use-map-control/websdk-localization.png)
 
-[此处](supported-languages.md)介绍了支持的语言和区域视图的完整列表。
+[此文档](supported-languages.md)提供了支持的语言和区域视图的完整列表。
 
 ## <a name="azure-government-cloud-support"></a>Azure 政府版云支持
 

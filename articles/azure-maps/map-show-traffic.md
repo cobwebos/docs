@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910898"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208414"
 ---
 # <a name="show-traffic-on-the-map"></a>在地图上显示交通信息
 
 Azure Maps 提供了两种类型的流量数据：
 
 - 事件数据-由基于点的数据和基于行的数据组成，如构造、公路和意外等。
-- 流数据-提供有关公路流量的指标。 流量流数据通常用于根据速度限制或其他某个指标的流量减慢流量的流量，来为道路着色。 Azure Maps 中的流量数据具有三个不同的度量指标：
+- 流数据-提供有关公路流量的指标。 通常，流量流数据用于为道路着色。 这些颜色基于在流中减慢流量的频率，相对于速度限制或其他指标。 Azure Maps 中的流量数据具有三个不同的度量指标：
     - `relative`-相对于路上的自由流动速度。
     - `absolute` 是指路上所有车辆的绝对速度。
     - `relative-delay`-显示比平均预计延迟慢的区域。
@@ -40,7 +40,7 @@ map.setTraffic({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='在地图上显示交通信息' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>Show traffic on a map</a>（在地图上显示交通信息）。
+<iframe height='500' scrolling='no' title='在地图上显示交通信息' src='//codepen.io/azuremaps/embed/WMLRPw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/WMLRPw/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Show traffic on a map</a>（在地图上显示交通信息）。
 </iframe>
 
 ## <a name="traffic-overlay-options"></a>流量覆盖选项

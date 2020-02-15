@@ -4,17 +4,17 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: f2ee442d0d6fecf34449ad28f058615a1274bbea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 622a2f69c2e7b82f2df10d6120ee2dd466961915
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172838"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211373"
 ---
 旧版（老版）VPN 网关 SKU 为：
 
-* 基本
-* 标准
+* 默认值（基本）
+* Standard
 * HighPerformance
 
 VPN 网关不使用 UltraPerformance 网关 SKU。 有关 UltraPerformance SKU 的信息，请参阅 [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) 文档。

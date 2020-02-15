@@ -2,13 +2,13 @@
 title: 限制和边界 - QnA Maker
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760226"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252002"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -55,6 +55,8 @@ ms.locfileid: "76760226"
 
 ## <a name="metadata-limits"></a>元数据限制
 
+存储元数据，并以小写形式进行比较。
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>由 Azure 认知搜索定价层
 
 每个知识库的元数据字段的最大数目取决于 **[Azure 认知搜索层限制](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** 。
@@ -67,7 +69,7 @@ ms.locfileid: "76760226"
 
 下表列出了元数据名称和值可接受的长度和可接受的字符。
 
-|项目|允许的字符|Regex 模式匹配|最大字符数|
+|Item|允许的字符|Regex 模式匹配|最大字符数|
 |--|--|--|--|
 |名称|可用<br>字母数字（字母和数字）<br>`_` （下划线）|`^[a-zA-Z0-9_]+$`|100|
 |值|允许除以外的所有内容<br>`:` （冒号）<br>`|` （垂直管道）|`^[^:|]+$`|500|

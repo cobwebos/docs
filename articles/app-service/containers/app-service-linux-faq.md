@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687593"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251798"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -30,9 +30,9 @@ ms.locfileid: "74687593"
 
 **配置运行时堆栈时，“启动文件”部分的所需值是什么？**
 
-| 重叠           | 预期值                                                                         |
+| Stack           | 预期值                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | 用于启动 JAR 应用的命令（例如 `java -jar my-app.jar --server.port=80`） |
+| Java SE         | 用于启动 JAR 应用的命令（例如 `java -jar /home/site/wwwroot/app.jar --server.port=80`） |
 | Tomcat、Wildfly | 用于执行任何所需配置的脚本的位置（例如 `/home/site/deployments/tools/startup_script.sh`）          |
 | Node.js         | PM2 配置文件或脚本文件                                |
 | .NET Core       | 作为 `dotnet <myapp>.dll` 的已编译的 DLL 名称                                 |
@@ -66,7 +66,7 @@ ms.locfileid: "74687593"
 
 **是否支持过渡环境？**
 
-可以。
+是的。
 
 **是否可以使用 *WebDeploy/MSDeploy* 来部署 Web 应用？**
 
@@ -84,7 +84,7 @@ ms.locfileid: "74687593"
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   如果有错误指出找不到 `curl` 命令，请确保在运行前一条 `curl` 命令之前使用 `apt-get install curl` 安装 curl。
+   如果有错误指出找不到 `curl` 命令，请确保在运行前一条 `apt-get install curl` 命令之前使用 `curl` 安装 curl。
 
 ## <a name="language-support"></a>语言支持
 
@@ -100,7 +100,7 @@ const io = require('socket.io')(server,{
 
 **是否支持未编译的 .NET Core 应用？**
 
-可以。
+是的。
 
 **是否支持将 Composer 用作 PHP 应用的依赖关系管理器？**
 

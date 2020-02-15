@@ -3,12 +3,12 @@ title: 模板结构和语法
 description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 7f9b964212d7b8056895aa1c6826766315af2ec2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122060"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209454"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -33,7 +33,7 @@ ms.locfileid: "76122060"
 }
 ```
 
-| 元素名称 | 需要 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
@@ -42,11 +42,11 @@ ms.locfileid: "76122060"
 | [variables](#variables) |否 |在模板中用作 JSON 片段以简化模板语言表达式的值。 |
 | [函数](#functions) |否 |可在模板中使用的用户定义函数。 |
 | [resources](#resources) |是 |已在资源组或订阅中部署/更新的资源类型。 |
-| [outputs](#outputs) |否 |部署后返回的值。 |
+| [输出](#outputs) |否 |部署后返回的值。 |
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 在模板的 parameters 节中，可以指定在部署资源时能够输入的值。 一个模板中最多可以有 256 个参数。 您可以使用包含多个属性的对象来减少参数的数量。
 
@@ -69,7 +69,7 @@ ms.locfileid: "76122060"
 }
 ```
 
-| 元素名称 | 需要 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 参数-名称 |是 |参数的名称。 必须是有效的 JavaScript 标识符。 |
 | type |是 |参数值的类型。 允许的类型和值为 **string**、**securestring**、**int**、**bool**、**object**、**secureObject** 和 **array**。 请参阅[数据类型](#data-types)。 |
@@ -126,11 +126,11 @@ ms.locfileid: "76122060"
 }
 ```
 
-有关使用 `copy` 为变量创建几个值的信息，请参阅[变量迭代](create-multiple-instances.md#variable-iteration)。
+有关使用 `copy` 为变量创建几个值的信息，请参阅[变量迭代](copy-variables.md)。
 
 有关如何使用变量的示例，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>函数
 
 在模板中，可以创建自己的函数。 这些函数可在模板中使用。 通常，您可以定义不希望在整个模板中重复的复杂表达式。 从模板中支持的表达式和[函数](template-functions.md)创建用户定义函数。
 
@@ -164,7 +164,7 @@ ms.locfileid: "76122060"
 ],
 ```
 
-| 元素名称 | 需要 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 命名空间 |是 |自定义函数的命名空间。 使用可避免与模板函数发生命名冲突。 |
 | 函数名称 |是 |自定义函数的名称。 调用函数时，将函数名称与命名空间组合在一起。 例如，若要在命名空间 contoso 中调用名为 uniqueName 的函数，请使用 `"[contoso.uniqueName()]"`。 |
@@ -235,7 +235,7 @@ ms.locfileid: "76122060"
 ]
 ```
 
-| 元素名称 | 需要 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 条件 (condition) | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 请参阅[条件](conditional-resource-deployment.md)。 |
 | type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板引用](/azure/templates/)。 对于子资源，类型的格式取决于它是嵌套在父资源中还是在父资源外定义。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
@@ -247,7 +247,7 @@ ms.locfileid: "76122060"
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
-| copy |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。 |
+| copy |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。 |
 | 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 |
 | properties |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用值，请参阅[模板引用](/azure/templates/)。 |
 | 资源 |否 |依赖于所定义的资源的子资源。 只能提供父资源的架构允许的资源类型。 不隐式表示对父资源的依赖。 必须显式定义该依赖关系。 请参阅[设置子资源的名称和类型](child-resource-name-type.md)。 |
@@ -268,7 +268,7 @@ ms.locfileid: "76122060"
 }
 ```
 
-| 元素名称 | 需要 | Description |
+| 元素名称 | 必选 | 说明 |
 |:--- |:--- |:--- |
 | 输出-名称 |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | 条件 (condition) |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
@@ -320,7 +320,7 @@ ms.locfileid: "76122060"
   },
 ```
 
-对于参数，添加具有 `description` 属性的 `metadata` 对象。
+对于参数，添加具有 **属性的** 对象`metadata``description`。
 
 ```json
 "parameters": {
@@ -336,7 +336,7 @@ ms.locfileid: "76122060"
 
 ![显示参数提示](./media/template-syntax/show-parameter-tip.png)
 
-对于资源，添加 `comments` 元素或元数据对象。 以下示例同时显示了注释元素和元数据对象。
+对于资源，添加  **元素或元数据对象**`comments`。 以下示例同时显示了注释元素和元数据对象。
 
 ```json
 "resources": [

@@ -1,20 +1,20 @@
 ---
 title: 请求实时传输数据 |Microsoft Azure 映射
 description: 使用 Microsoft Azure 映射移动服务来请求实时数据。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 053e6c84f69e8b3d3fed0a90a8b632aa4eb311cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198150"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209896"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>使用 Azure Maps 移动服务请求实时数据
 
@@ -27,7 +27,7 @@ ms.locfileid: "77198150"
  * 请求给定自行车扩展坞的实时信息。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 首先需要 Azure Maps 帐户和订阅密钥才能对 Azure Maps 公用传输 Api 进行任何调用。 有关信息，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)创建 Azure Maps 帐户中的说明进行操作。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 

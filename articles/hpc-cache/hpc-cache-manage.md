@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988825"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252036"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>从 Azure 门户管理缓存
 
@@ -73,6 +73,8 @@ Azure 门户中的 "缓存概述" 页显示缓存的项目详细信息、缓存�
 软件更新可能需要几个小时。 比具有较小的高峰吞吐量值的缓存相比，使用更高吞吐量配置的缓存需要更长的时间来升级
 
 当软件升级可用时，你会有一周的时间来手动应用它。 结束日期将在升级消息中列出。 如果在这段时间内没有升级，Azure 会自动将更新应用于缓存。 自动升级的时间不能配置。 如果你担心缓存性能影响，你应在此时间段到期之前自行升级软件。
+
+如果在结束日期通过时缓存停止，缓存将在下一次启动时自动升级软件。 （更新可能不会立即启动，但会在第一小时开始。）
 
 单击 "**升级**" 按钮以开始软件更新。 在操作完成之前，缓存状态将更改为 "正在**升级**"。
 

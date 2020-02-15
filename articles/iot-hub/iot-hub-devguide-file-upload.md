@@ -8,24 +8,24 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.openlocfilehash: 3ae87523e66ae49d17f198a1f70b0f449ca0a713
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e10c0f9babca7719ff496e7068ad1564670fee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080420"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209148"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
 
 如 [IoT 中心终结点](iot-hub-devguide-endpoints.md)一文中详述，设备可以通过面向设备的终结点 ( **/devices/{deviceId}/files**) 发送通知以启动文件上传。 当设备通知 IoT 中心已完成某个上传时，IoT 中心会通过面向服务的终结点 ( **/messages/servicebound/filenotifications**) 发送文件上传通知消息。
 
-IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度程序。 设备请求来自 IoT 中心的存储令牌，该令牌特定于设备要上传的文件。 设备使用 SAS URI 将文件上传到存储，上传完成后，设备将完成通知发送到 IoT 中心。 IoT 中心检查文件上传是否已完成，然后将文件上传通知消息添加到面向服务的文件通知终结点。
+IoT 中心本身不中转消息，而是充当关联 Azure 存储帐户的调度程序。 设备请求来自 IoT 中心的存储令牌，该令牌特定于设备要上传的文件。 设备使用 SAS URI 将文件上传到存储空间，上传完成后，设备将完成通知发送到 IoT 中心。 IoT 中心检查文件上传是否已完成，然后将文件上传通知消息添加到面向服务的文件通知终结点。
 
 从设备将文件上传到 IoT 中心之前，必须通过为其[关联 Azure 存储](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub)帐户来配置该中心。
 
 然后，设备就能[初始化上传](iot-hub-devguide-file-upload.md#initialize-a-file-upload)，并在上传完成后[通知 IoT 中心](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)。 （可选）设备通知 IoT 中心上传完成以后，服务可以生成[通知消息](iot-hub-devguide-file-upload.md#file-upload-notifications)。
 
-### <a name="when-to-use"></a>使用时机
+### <a name="when-to-use"></a>何时使用
 
 使用文件上传，发送间歇性连接的设备上传的媒体文件和大型遥测批文件（或者是压缩后的文件，以节省带宽）。
 
@@ -95,9 +95,9 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 （可选）当设备通知 IoT 中心某个上传完成后，IoT 中心将生成一条通知消息。 此消息包含文件的名称和存储位置。
 
-如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 ( **/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备的消息的相同，并且具有相同[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
+如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点 ( **/messages/servicebound/fileuploadnotifications**) 以消息的形式传递文件上传通知。 文件上传通知的接收语义与云到设备消息的接收语义相同，并且具有相同的[消息生命周期](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-life-cycle)。 从文件上传通知终结点检索到的每条消息都是具有以下属性的 JSON 记录：
 
-| 属性 | 描述 |
+| properties | 说明 |
 | --- | --- |
 | EnqueuedTimeUtc |指示通知创建时间的时间戳。 |
 | DeviceId |上传文件的设备的 **DeviceId**。 |
@@ -123,12 +123,14 @@ IoT 中心有两个 REST 终结点支持文件上传，一个用于获取存储�
 
 每个 IoT 中心都具有针对文件上传通知的以下配置选项：
 
-| 属性 | 描述 | 范围和默认值 |
+| properties | 说明 | 范围和默认值 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |控制是否将文件上传通知写入文件通知终结点。 |布尔型。 默认值：True。 |
 | **fileNotifications.ttlAsIso8601** |文件上传通知的默认 TTL。 |ISO_8601 间隔上限为 48 小时（下限为 1 分钟）。 默认值：1 小时。 |
 | **fileNotifications.lockDuration** |文件上传通知队列的锁定持续时间。 |5 到 300 秒（最小为 5 秒）。 默认值：60 秒。 |
 | **fileNotifications.maxDeliveryCount** |文件上传通知队列的最大传递计数。 |1 到 100。 默认值：100。 |
+
+可以使用 Azure 门户、Azure CLI 或 PowerShell 在 IoT 中心设置这些属性。 若要了解如何操作，请参阅[配置文件上传](iot-hub-configure-file-upload.md)。
 
 ## <a name="additional-reference-material"></a>其他参考资料
 

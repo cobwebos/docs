@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114412"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212253"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -83,7 +83,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 印度南部
 * 日本东部 
 * 日本西部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
 * 中国东部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域： Log Analytics 工作区
@@ -112,10 +112,10 @@ Log Analytics 工作区必须存在于以下区域中：
 * 韩国中部
 * 印度中部
 * 日本东部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
 * 中国东部 2
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -123,8 +123,8 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|资源管理器   | 所有者                  |
-|                   | Contributor            |
+|资源管理器   | “所有者”                  |
+|                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
 
@@ -182,7 +182,7 @@ New-AzStorageAccount `
 
 1. 为“状态”选择“打开”
 2. 选择*版本 2*作为**流日志版本**。 版本 2 包含流会话统计信息（字节和数据包）
-3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保你的存储未将 "已启用 Data Lake Storage Gen2 分层命名空间" 设置为 true。 此外，NSG 流日志不能存储在具有防火墙的存储帐户中。 
+3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保你的存储未将 "已启用 Data Lake Storage Gen2 分层命名空间" 设置为 true。
 4. 将“保留期”设置为存储数据的天数。
 > [!IMPORTANT]
 > 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。

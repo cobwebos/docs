@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988526"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208516"
 ---
 # <a name="get-information-from-a-coordinate"></a>从坐标获取信息
 
 本文介绍如何进行反向地址搜索，以显示所单击的弹出位置的地址。
 
-可通过两种方法进行反向地址搜索。 一种方法是通过服务模块查询 [Azure Maps 反向地址搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)。 另一种方法是使用[FETCH API](https://fetch.spec.whatwg.org/)向[Azure Maps 的反向地址搜索 api](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)发出请求以查找地址。 下面将研究这两种方法。
+可通过两种方法进行反向地址搜索。 一种方法是通过服务模块查询 [Azure Maps 反向地址搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)。 另一种方法是使用[FETCH API](https://fetch.spec.whatwg.org/)向[Azure Maps 反向地址搜索 api](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)发出请求以查找地址。 下面将研究这两种方法。
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>通过服务模块发出反向搜索请求
 
-<iframe height='500' scrolling='no' title='从坐标获取信息（服务模块）' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>Get information from a coordinate (Service Module)</a>（从坐标获取信息[服务模块]）。
+<iframe height='500' scrolling='no' title='从坐标获取信息（服务模块）' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Get information from a coordinate (Service Module)</a>（从坐标获取信息[服务模块]）。
 </iframe>
 
 在上面的代码中，第一个块构造一个 map 对象，并将身份验证机制设置为使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
@@ -37,13 +37,13 @@ ms.locfileid: "76988526"
 
 第五个代码块设置 HTML 弹出内容，以显示单击的坐标位置的响应地址。
 
-更改游标、popup 对象和 click 事件均在映射的[load 事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中创建，以确保在检索坐标信息之前完全映射加载。
+更改 cursor、popup 对象和 click 事件都是在映射的[load 事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中创建的。 此代码结构可确保在检索坐标信息之前映射完全加载。
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>通过提取 API 发出反向搜索请求
 
 单击地图，使用 fetch 为该位置进行反向地理编码请求。
 
-<iframe height='500' scrolling='no' title='从坐标获取信息' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>Get information from a coordinate</a>（从坐标获取信息）。
+<iframe height='500' scrolling='no' title='从坐标获取信息' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Get information from a coordinate</a>（从坐标获取信息）。
 </iframe>
 
 在上面的代码中，第一个代码块构造一个 map 对象，并将身份验证机制设置为使用访问令牌。 有关说明，可以参阅[创建地图](./map-create.md)。
@@ -52,7 +52,7 @@ ms.locfileid: "76988526"
 
 第三个代码块针对鼠标单击添加事件侦听器。 鼠标单击时，它将使用[提取 API](https://fetch.spec.whatwg.org/)来查询已单击坐标地址的[Azure Maps 反向地址搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) 。 对于成功的响应，它将收集已单击位置的地址。 它使用 popup 类的[setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-)函数定义 popup 内容和位置。
 
-更改游标、popup 对象和 click 事件均在映射的[load 事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中创建，以确保在检索坐标信息之前完全映射加载。
+更改 cursor、popup 对象和 click 事件都是在映射的[load 事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中创建的。 此代码结构可确保在检索坐标信息之前映射完全加载。
 
 ## <a name="next-steps"></a>后续步骤
 

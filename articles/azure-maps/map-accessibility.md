@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933302"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209777"
 ---
 # <a name="building-an-accessible-application"></a>构建可访问的应用程序
 
@@ -61,13 +61,13 @@ Azure Maps Web SDK 预建了许多辅助功能，例如：
 - 将地图集中在一起后，请使用 shift 键和向上键或向下键。 
 - 通过鼠标、触摸或键盘 tab/enter 键使用螺距控件。
 
-**更改地图样式**并非所有开发人员都希望在应用程序中提供所有可能的地图样式。 开发人员可以根据需要以编程方式设置和更改地图样式。 如果开发人员显示地图样式选取器控件，则用户可以使用鼠标、触摸或键盘使用 tab/enter 键来更改地图样式。 开发人员可以在地图样式选取器控件中指定要提供的地图样式。 
+**更改地图样式**并非所有开发人员都希望在应用程序中提供所有可能的地图样式。 开发人员可以通过编程方式设置和更改地图样式。 如果开发人员显示了地图的样式选取器控件，则用户可以使用鼠标、触控或使用 tab 或 enter 键的键盘来更改地图样式。 开发人员可以在地图样式选取器控件中指定要提供的地图样式。 
 
 ## <a name="keyboard-shortcuts"></a>键盘快捷方式
 
 地图中内置了多个键盘快捷键，可以更轻松地使用地图。 当地图有焦点时，这些键盘快捷方式将起作用。
 
-| 密钥      | 行动                            |
+| 密钥      | 操作                            |
 |----------|-----------------------------------|
 | `Tab` | 在映射中的控件和弹出窗口间导航。 |
 | `ESC` | 将焦点从映射中的任何元素移到顶级地图元素。 |
@@ -94,13 +94,13 @@ Azure Maps Web SDK 预建了许多辅助功能，例如：
 
 ## <a name="make-popups-keyboard-accessible"></a>使弹出键盘可访问
 
-标记或符号通常用于表示地图上的位置。 用户与标记进行交互时，有关该位置的其他信息通常显示在弹出窗口中。 在大多数应用程序中，当用户单击或点击标记时，弹出窗口会显示，但此事件要求用户使用鼠标或触摸屏。 一种很好的做法是在使用键盘时使弹出窗口可访问。 可以通过为每个数据点创建一个弹出窗口并将其添加到地图来实现此功能。 
+标记或符号通常用于表示地图上的位置。 用户与标记进行交互时，有关该位置的其他信息通常显示在弹出窗口中。 在大多数应用程序中，当用户单击或点击标记时，将显示弹出窗口。 然而，单击和点击要求用户分别使用鼠标和触摸屏。 一种很好的做法是在使用键盘时使弹出窗口可访问。 可以通过为每个数据点创建一个弹出窗口并将其添加到地图来实现此功能。 
 
 下面的示例使用符号层加载地图上的兴趣点，并为每个相关点向地图添加一个弹出框。 每个弹出项的引用都存储在每个数据点的属性中。 还可以为标记（如单击标记时）检索它。 当焦点位于地图上时，按 tab 键可允许用户单步执行地图上的每个弹出窗口。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='构建可访问的应用程序' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>构建可访问的应用程序</a>。 </iframe>
+<iframe height='500' scrolling='no' title='构建可访问的应用程序' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>构建可访问的应用程序</a>。 </iframe>
 
 <br/>
 
@@ -116,12 +116,12 @@ Azure Maps Web SDK 预建了许多辅助功能，例如：
     - 将更新限制为每隔几秒钟一次。 
     - 以逻辑方式将消息组合在一起。 
 - 避免使用颜色作为传达信息的唯一方法。 使用文本、图标或模式来补充或替换颜色。 一些注意事项：
-    - 如果使用气泡图层来显示数据点之间的相对值，则请考虑将每个气泡的半径加起来或作为突出颜色的替代方法。 
+    - 如果使用气泡图层来显示数据点之间的相对值，请考虑缩放每个气泡的半径，为气泡着色，或同时为两者着色。 
     - 对于不同的指标类别（如三角形、星形和正方形），请考虑使用带有不同图标的符号层。 符号层还支持缩放图标大小。 还可以显示文本标签。
     - 如果显示行数据，则可使用宽度来表示权重或大小。 短线数组模式可用于表示不同类别的行。 可以结合使用符号层和线条来叠加线条上的图标。 使用箭头图标对于显示直线的流或方向非常有用。
     - 如果显示多边形数据，则可以使用一种模式（如条纹）作为颜色的替代方法。 
 - 对于视力障碍的用户，某些可视化对象（如热图、图块层和图像层）无法访问。 一些注意事项：
-    - 让屏幕阅读器说明该层添加到地图时所显示的内容。 例如，如果显示 "天气雷达" 图块层，则让屏幕阅读器显示类似于 "地图上重叠的天气预报" 之类的内容。
+    - 让屏幕阅读器说明该层添加到地图时所显示的内容。 例如，如果显示 "天气雷达" 图块层，则让屏幕阅读器显示 "天气雷达图数据在地图上重叠"。
 - 限制需要鼠标悬停的功能量。 使用键盘或触摸设备与应用程序进行交互的用户将无法访问这些功能。 请注意，对于交互式内容（如可单击图标、链接和按钮），可以使用悬停样式。
 - 尝试使用键盘浏览应用程序。 请确保 tab 键顺序为逻辑。
 - 如果创建键盘快捷方式，请尝试将其限制为两个或更少的键。 

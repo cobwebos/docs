@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665351"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211820"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure Monitor 中使用应用程序更改分析（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "74665351"
 
 ![有关更改分析如何获取更改数据并将其提供给客户端工具的体系结构关系图](./media/change-analysis/overview.png)
 
-当前的更改分析集成到应用服务 web 应用中的**诊断和解决问题**体验，并在 Azure 门户中作为独立的边栏选项卡提供。
+当前的更改分析集成到应用服务 web 应用中的**诊断和解决问题**体验，并在 Azure 门户中作为独立选项卡提供。
 请参阅本文后面的 "*查看 Azure 中所有资源的更改*" 部分以访问更改分析边栏选项卡和*web 应用功能的更改分析*部分，以便在 web 应用门户中使用它。
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure 资源管理器跟踪的属性更改
@@ -39,7 +39,7 @@ ms.locfileid: "74665351"
 使用[Azure 资源关系图](https://docs.microsoft.com/azure/governance/resource-graph/overview)，更改分析提供了一条历史记录，说明托管应用程序的 Azure 资源在一段时间内的变化情况。 可以检测到管理的设置，例如托管标识、平台操作系统升级和主机名。
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure 资源管理器代理设置更改
-设置（例如 IP 配置规则、SSL 设置和扩展版本）在 ARG 中尚不可用，因此更改分析查询并安全地计算这些更改，以提供有关应用中所更改内容的更多详细信息。 这些信息在 Azure 资源图中不可用，但即将推出。
+设置（例如 IP 配置规则、SSL 设置和扩展版本）在 ARG 中尚不可用，因此更改分析查询并对这些更改进行安全计算，以便在应用程序中更改的内容中提供更多详细信息。 这些信息在 Azure 资源图中不可用，但即将推出。
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web 应用部署和配置（来宾内更改）中的更改
 
@@ -52,12 +52,13 @@ ms.locfileid: "74665351"
 更改资源依赖项也会导致 web 应用出现问题。 例如，如果 web 应用调用 Redis 缓存，则 Redis 缓存 SKU 可能会影响 web 应用性能。 为了检测依赖项中的更改，更改分析检查 web 应用的 DNS 记录。 通过这种方式，它可以识别可能导致问题的所有应用组件中的更改。
 目前支持以下依赖项：
 - Web 应用
-- Azure 存储器
+- Azure 存储
 - Azure SQL
 
 ### <a name="enablement"></a>实现
-需要将 "ChangeAnalysis" 资源提供程序注册到 Azure 资源管理器跟踪的属性的订阅中，代理设置将数据更改为 "可用"。 输入 Web 应用诊断和解决问题或打开 "更改分析独立" 边栏选项卡时，将自动注册此资源提供程序。 它不会为你的订阅提供任何性能和成本实现。
-对于 web 应用中的 web 应用更改，在 web 应用中扫描代码文件需要单独启用。 有关更多详细信息，请参阅本文后面*的 "诊断和解决问题" 工具部分中的 "启用更改分析"* 。
+需要将 "ChangeAnalysis" 资源提供程序注册到 Azure 资源管理器跟踪的属性的订阅中，代理设置将数据更改为 "可用"。 当你输入 Web 应用 "诊断和解决问题" 工具或显示 "更改分析独立" 选项卡时，将自动注册此资源提供程序。 它不会为你的订阅提供任何性能和成本实现。 当你为 web 应用启用更改分析（或在 "诊断和解决问题" 工具中启用）时，它将对 web 应用造成性能影响，无需支付费用。
+对于 web 应用中的 web 应用更改，在 web 应用中扫描代码文件需要单独启用。 有关详细信息，请参阅本文后面[的 "诊断和解决问题" 工具一节中的 "启用更改分析"](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) 。
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>查看 Azure 中所有资源的更改
 在 Azure Monitor 中，有一个独立的边栏选项卡，用于更改分析，以查看具有见解和应用程序依赖项资源的所有更改。

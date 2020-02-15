@@ -9,13 +9,13 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 634f949daa4926f2707c0611b819800441e76610
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 06/01/2019
+ms.openlocfilehash: d573378bc5e729eb75b6c3b51d3671492f7f98f1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438027"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209369"
 ---
 # <a name="what-is-azure-database-migration-service"></a>什么是 Azure 数据库迁移服务？
 
@@ -32,7 +32,7 @@ Azure 数据库迁移服务集成了一些现有工具和服务的功能。 它�
 
 有关 Azure 数据库迁移服务的区域可用性的最新信息，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration)）。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关 Azure 数据库迁移服务定价的最新信息，请参阅 [Azure 数据库迁移服务定价](https://azure.microsoft.com/pricing/details/database-migration/)。
 

@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 78a7f3eb920d2f656b91cff187ca22b1e15973b7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165405"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212570"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>更改存储帐户的复制方式
 
@@ -38,10 +38,10 @@ Azure 存储提供以下类型的复制：
 
 | 更换 | ...到 LRS | ...to GRS/RA-GRS | ...到 ZRS | ...to GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>...from LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br />请求实时迁移 |
-| <b>...from GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br />请求实时迁移 |
-| <b>...from ZRS</b> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br />请求实时迁移 | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 |
-| <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br />请求实时迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
+| <b>...from LRS</b> | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> | 执行手动迁移 <br /><br />请求实时迁移 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 GRS/RA-GRS，然后请求实时迁移<sup>1</sup> |
+| <b>...from GRS/RA-GRS</b> | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 | 执行手动迁移 <br /><br /> 或 <br /><br /> 先切换到 LRS，然后请求实时迁移 | 执行手动迁移 <br /><br /> 请求实时迁移 |
+| <b>...from ZRS</b> | 执行手动迁移 | 执行手动迁移 | 空值 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置<sup>1</sup> |
+| <b>...from GZRS/RA-GZRS</b> | 执行手动迁移 | 执行手动迁移 | 使用 Azure 门户、PowerShell 或 CLI 更改复制设置 | 空值 |
 
 <sup>1</sup>会产生一次性的出口费用。
 

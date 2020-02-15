@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891642"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212397"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -56,7 +56,7 @@ UPD 和 RUP 是远程桌面会话主机（RDSH）和虚拟硬盘（VHD）环境�
 
 #### <a name="performance"></a>性能
 
-UPD 需要[存储空间直通（S2D）](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment)来满足性能要求。 UPD 使用服务器消息块（SMB）协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。  
+UPD 需要[存储空间直通（S2D）](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)来满足性能要求。 UPD 使用服务器消息块（SMB）协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。  
 
 #### <a name="cost"></a>成本
 
@@ -70,15 +70,15 @@ S2D 群集要求在安全状态下对操作系统进行修补、更新和维护�
 
 2018年11月19日， [Microsoft 获取了 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解决了许多配置文件容器挑战。 其中的关键是：
 
-- **性能：** [FSLogix 配置文件容器](https://fslogix.com/products/profile-containers)具有高性能，并解决过去已阻止缓存 exchange 模式的性能问题。
-- **OneDrive：** 如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 [OneDrive for business 和 FSLogix 最佳实践](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices)介绍了它们如何交互。 有关详细信息，请参阅[使用虚拟机上的同步客户端](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi)。
+- **性能：** [FSLogix 配置文件容器](/fslogix/configure-profile-container-tutorial/)具有高性能，并解决过去已阻止缓存 exchange 模式的性能问题。
+- **OneDrive：** 如果没有 FSLogix 配置文件容器，则在非持久性 RDSH 或 VDI 环境中不支持 OneDrive for Business。 [OneDrive for business 和 FSLogix 最佳实践](/fslogix/overview/)介绍了它们如何交互。 有关详细信息，请参阅[使用虚拟机上的同步客户端](/deployoffice/rds-onedrive-business-vdi/)。
 - **其他文件夹：** FSLogix 提供扩展用户配置文件以包括更多文件夹的功能。
 
 由于收购，Microsoft 开始将现有用户配置文件解决方案（例如 UPD）替换为 FSLogix 配置文件容器。
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 文件与 Azure Active Directory 域服务的集成
 
-FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure[个文件通过 Azure Active Directory 域服务（AD DS）公布了 Azure 文件身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
+FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure[个文件通过 Azure Active Directory 域服务（AD DS）公布了 Azure 文件身份验证](../storage/files/storage-files-active-directory-overview.md)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows 虚拟桌面的最佳实践
 
@@ -87,7 +87,7 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 确保 Windows 虚拟桌面环境遵循最佳做法：
 
 - Azure 文件存储帐户必须位于与会话主机 Vm 相同的区域中。
-- Azure 文件权限应与[要求-配置文件容器](https://docs.microsoft.com/fslogix/overview#requirements)中所述的权限匹配。
+- Azure 文件权限应与[要求-配置文件容器](/fslogix/overview#requirements/)中所述的权限匹配。
 - 每个主机池都必须基于相同的主映像生成相同的类型和大小的 VM。
 - 每个主机池 VM 必须位于同一个资源组中，以帮助管理、缩放和更新。
 - 为了获得最佳性能，存储解决方案和 FSLogix 配置文件容器应位于相同的数据中心位置。
@@ -99,7 +99,7 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 
 - 若要开始构建桌面虚拟化解决方案，请参阅[在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)。
 - 若要在 Windows 虚拟桌面租户中创建主机池，请参阅[使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)。
-- 若要设置云中完全托管的文件共享，请参阅[设置 Azure 文件共享](/azure/storage/files/storage-files-active-directory-enable)。
+- 若要设置云中完全托管的文件共享，请参阅[设置 Azure 文件共享](/azure/storage/files/storage-files-active-directory-enable/)。
 - 若要配置 FSLogix 配置文件容器，请参阅[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
 - 若要将用户分配到主机池，请参阅[管理 Windows 虚拟桌面的应用组](manage-app-groups.md)。
 - 若要通过 web 浏览器访问 Windows 虚拟桌面资源，请参阅[连接到 Windows 虚拟桌面](connect-web.md)。

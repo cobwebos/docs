@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 门户中管理 Azure Maps 帐户 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Azure 门户管理 Microsoft Azure Maps 帐户。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a983eab03e948d092af652962d75211eb8ee3e7b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1186c3ab0fc333896f3be4db5d103bcd6d12abf9
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025599"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209964"
 ---
 # <a name="manage-your-azure-maps-account"></a>管理 Azure Maps 帐户
 

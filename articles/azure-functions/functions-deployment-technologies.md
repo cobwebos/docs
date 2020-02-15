@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029854"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210151"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -51,7 +51,7 @@ Azure Functions 支持在 Windows 和 Linux 上进行跨平台本地开发和托
 更改任何触发器时，函数基础结构必须知道这些更改。 对于许多部署技术，同步会自动进行。 但是，在某些情况下，必须手动同步触发器。 当你通过引用外部包 URL、本地 Git、云同步或 FTP 来部署更新时，你必须手动同步你的触发器。 可以通过以下三种方式之一来同步触发器：
 
 * 在 Azure 门户中重启函数应用
-* 使用[主密钥](functions-bindings-http-webhook.md#authorization-keys)将 HTTP POST 请求发送到 `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`。
+* 使用[主密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)将 HTTP POST 请求发送到 `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>`。
 * 向 `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`发送 HTTP POST 请求。 将占位符替换为你的订阅 ID、资源组名称和函数应用的名称。
 
 ### <a name="remote-build"></a>远程生成
@@ -114,7 +114,7 @@ Azure Functions 中提供了以下部署方法。
 
 你可以部署包含 function app 的 Linux 容器映像。
 
->__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可以采取两种方式来实现此目的：
+>__如何使用：__ 在高级或专用计划中创建 Linux 函数应用，并指定要从中运行的容器映像。 可通过两种方式实现此目的：
 >
 >* 在 Azure 门户中的 Azure App Service 计划上创建 Linux 函数应用。 对于 "**发布**"，选择 " **Docker 映像**"，然后配置容器。 输入托管图像的位置。
 >* 使用 Azure CLI 在应用服务计划中创建 Linux 函数应用。 若要了解如何操作，请参阅[在 Linux 上使用自定义映像创建函数](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function)。

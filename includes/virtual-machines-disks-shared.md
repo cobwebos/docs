@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202198"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211414"
 ---
 Azure 共享磁盘（预览版）是 Azure 托管磁盘的一项新功能，可同时将 Azure 托管磁盘附加到多个虚拟机（Vm）。 通过将托管磁盘附加到多个 Vm，可将现有的群集应用程序部署到 Azure 或将其迁移到 Azure。
 
@@ -55,7 +55,7 @@ Linux 群集可以利用群集管理器，如[Pacemaker](https://wiki.clusterlab
 
 下图演示了一个示例2节点群集数据库应用程序，该应用程序利用 SCSI PR 来实现从一个节点到另一个节点的故障转移。
 
-![shared-disk-updated-two-node-cluster-diagram .png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![双节点群集。 群集上运行的应用程序正在处理对磁盘的访问](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 流程如下所示：
 
@@ -68,7 +68,7 @@ Linux 群集可以利用群集管理器，如[Pacemaker](https://wiki.clusterlab
 
 下图说明了由多个节点从磁盘读取数据以运行并行进程（例如机器学习模型定型）的另一个常见群集工作负载。
 
-![shared-disk-updated-machine-learning-trainer-model .png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![四个节点 VM 群集，每个节点都注册要写入的意图，应用程序使用独占保留来正确处理写入结果](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 流程如下所示：
 

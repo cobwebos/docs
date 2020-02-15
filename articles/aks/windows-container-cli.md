@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767437"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251696"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>预览-使用 Azure CLI 在 Azure Kubernetes Service （AKS）群集上创建 Windows Server 容器
 
@@ -148,6 +148,10 @@ az aks create \
 > [!Note]
 > 如果出现密码验证错误，请尝试在另一个区域中创建资源组。
 > 然后尝试创建包含新资源组的群集。
+
+> [!Note]
+> 如果无法创建 AKS 群集，因为在此区域中不支持该版本，则可使用 [az AKS get-help--location eastus] 命令查找此区域的受支持版本列表。
+
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。 有时，可能需要花费超过几分钟的时间才能设置群集。 在这种情况下，最多允许10分钟。 
 
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 若要查看操作中的示例应用，请打开 web 浏览器，以访问服务的外部 IP 地址。
 
 ![浏览到 ASP.NET 示例应用程序的图像](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> 如果尝试加载页面时收到连接超时，则应使用以下命令验证示例应用是否已准备好 [kubectl get pod--watch]。 有时，在您的外部 IP 地址可用时，windows 容器将不会启动。
 
 ## <a name="delete-cluster"></a>删除群集
 

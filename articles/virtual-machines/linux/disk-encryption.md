@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841176"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210595"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -38,7 +38,7 @@ ms.locfileid: "76841176"
 
 下图显示了托管磁盘如何使用 Azure Active Directory 和 Azure Key Vault 来使用客户管理的密钥发出请求：
 
-![托管磁盘客户管理的密钥工作流](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![托管磁盘和客户管理的密钥工作流。 管理员创建 Azure Key Vault，然后创建磁盘加密集，并设置磁盘加密集。 集与 VM 关联，这允许磁盘使用 Azure AD 进行身份验证](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 以下列表更详细地介绍了关系图：

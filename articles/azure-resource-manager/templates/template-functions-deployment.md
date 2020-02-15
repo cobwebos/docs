@@ -3,12 +3,12 @@ title: 模板函数-部署
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索部署信息的函数。
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484033"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207275"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的部署函数 
 
@@ -237,9 +237,9 @@ ms.locfileid: "75484033"
 
 返回一个参数值。 指定的参数名称必须已在模板的 parameters 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -329,9 +329,9 @@ ms.locfileid: "75484033"
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
-| intOutput | Int | 第 |
-| objectOutput | 对象 | {"one": "a", "two": "b"} |
-| arrayOutput | 数组 | [1, 2, 3] |
+| intOutput | Int | 1 |
+| objectOutput | Object | {"one": "a", "two": "b"} |
+| arrayOutput | Array | [1, 2, 3] |
 | crossOutput | String | option 1 |
 
 有关使用参数的详细信息，请参阅[Azure 资源管理器模板中的参数](template-parameters.md)。
@@ -342,9 +342,9 @@ ms.locfileid: "75484033"
 
 返回变量的值。 指定的变量名称必须已在模板的 variables 节中定义。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | 类型 | Description |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | variableName |是 |String |要返回的变量名称。 |
 
@@ -421,15 +421,15 @@ ms.locfileid: "75484033"
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
-| exampleOutput2 | 数组 | [1, 2, 3, 4] |
+| exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | String | myVariable |
-| exampleOutput4 |  对象 | {"property1": "value1", "property2": "value2"} |
+| exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
 有关使用变量的详细信息，请参阅[Azure 资源管理器模板中的变量](template-variables.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 若要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

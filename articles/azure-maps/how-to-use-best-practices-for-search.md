@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Maps 搜索服务有效地搜索 |Microsoft Azure 映射
 description: 了解如何使用 Microsoft Azure 映射为搜索服务应用最佳实践。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e29b3d70c576955637424208aeb0f980669b67bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899166"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209794"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Azure Maps 搜索服务的最佳实践
 
@@ -26,7 +26,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包括�
 * 了解结果类型之间的差异。
 * 阅读地址搜索-响应结构。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要调用 Azure Maps 服务 Api，需要 Azure Maps 帐户和密钥。 有关详细信息，请参阅[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取主键](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 

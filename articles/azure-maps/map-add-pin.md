@@ -1,6 +1,6 @@
 ---
 title: 向地图添加符号层 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用符号层通过 Microsoft Azure map Web SDK 自定义和添加地图上的符号。
+description: 在本文中，你将了解如何使用符号层自定义符号，并使用 Microsoft Azure map Web SDK 在地图上添加符号。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933126"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209692"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
-一个连接到数据源的符号，用于在给定点呈现图标和/或文本。 符号层使用 WebGL 呈现，并用于呈现地图上的大型点集合。 与 HTML 标记相比，符号层在地图上呈现大量的点数据，从而提高性能。 但是，符号层不支持传统的 CSS 和 HTML 元素进行样式设置。  
+将符号连接到数据源，并使用它在给定点呈现图标或文本。 
+
+符号层是使用 WebGL 呈现的。 使用符号层可在地图上呈现大型点集合。 与 HTML 标记相比，符号层在地图上呈现大量的点数据，从而提高性能。 但是，符号层不支持传统的 CSS 和 HTML 元素进行样式设置。  
 
 > [!TIP]
 > 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要将层限制为仅呈现点几何特征，请将层的 `filter` 属性设置为 `['==', ['geometry-type'], 'Point']` 或 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` 如需要，也可以包含多点功能。
@@ -33,7 +35,9 @@ ms.locfileid: "76933126"
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 
-在将符号层添加到地图之前，需要执行几个步骤。 首先，创建一个数据源并将其添加到地图中。 然后，可以在数据源中创建并传递符号层以从数据源中检索数据。 最后，需要将数据添加到数据源，以便呈现一些内容。 下面的代码演示了在加载后应添加到映射中的代码。 代码使用符号层在地图上呈现一个点。 
+你需要先执行几个步骤，然后才能将符号层添加到地图中。 首先，创建一个数据源，并将其添加到地图中。 创建符号层。 然后，将数据源传递到符号层，以从数据源中检索数据。 最后，将数据添加到数据源，以便呈现一些内容。 
+
+下面的代码演示了加载后应添加到映射的内容。 此示例使用符号层在地图上呈现一个点。 
 
 ```javascript
 //Create a data source and add it to the map.
@@ -61,7 +65,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='500' scrolling='no' title='切换图钉位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的通过 Azure Maps <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>切换图钉位置</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 文章。
+<iframe height='500' scrolling='no' title='切换图钉位置' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>CodePen</a> 上的通过 Azure Maps <a href='https://codepen.io/azuremaps'>切换图钉位置@azuremaps (</a><a href='https://codepen.io'></a>) 文章。
 </iframe>
 
 > [!TIP]
@@ -73,7 +77,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>自定义符号图像图标</a>文章。
+<iframe height='500' scrolling='no' title='自定义符号图像图标' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>自定义符号图像图标</a>文章。
 </iframe>
 
 > [!TIP]
@@ -85,7 +89,7 @@ dataSource.add(new atlas.data.Point([0, 0]));
 
 <br/>
 
-<iframe height='700' scrolling='no' title='符号层选项' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/PxVXje/'>符号层选项</a>文章。
+<iframe height='700' scrolling='no' title='符号层选项' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/PxVXje/'>CodePen</a> 上的 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>符号层选项</a>文章。
 </iframe>
 
 > [!TIP]

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841023"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206253"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
@@ -68,7 +68,7 @@ user.department -eq "Sales"
 
 使用用户或设备自动填充组的成员资格规则是一个二进制表达式，会生成 true 或 false 结果。 一个简单的规则包含三个部分：
 
-- 属性
+- properties
 - 操作员
 - 值
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>扩展属性和自定义扩展属性
 
-支持在动态成员身份规则中将扩展属性和自定义扩展属性作为字符串属性。 扩展属性从本地 Window Server AD 同步，并采用“ExtensionAttributeX”格式，其中 X 等于 1 - 15。 以下是使用扩展属性作为属性的规则示例：
+支持在动态成员身份规则中将扩展属性和自定义扩展属性作为字符串属性。 [扩展属性](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0)从本地 WINDOW Server AD 同步，采用 "ExtensionAttributeX" 格式，其中 X 等于 1-15。 以下是使用扩展属性作为属性的规则示例：
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-自定义扩展属性与本地 Windows Server AD 或连接的 SaaS 应用程序同步，格式为 `user.extension_[GUID]_[Attribute]`，其中：
+[自定义扩展属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)从本地 WINDOWS Server AD 或从连接的 SaaS 应用程序同步，其格式为 `user.extension_[GUID]_[Attribute]`，其中：
 
 * [GUID] 是 Azure AD 中用于在 Azure AD 中创建属性的应用程序的唯一标识符
 * [Attribute] 是属性创建时的名称

@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Maps 搜索服务搜索位置 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用地理编码和反向地理编码的 Microsoft Azure 映射搜索服务搜索位置。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899226"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209879"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务搜索位置
 
@@ -27,7 +27,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 * 进行[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址
 * 使用[搜索地址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)搜索交叉街道
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，你需要先创建一个 Azure Maps 帐户，并向你显示 Maps 帐户订阅密钥。 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](./how-to-manage-authentication.md)。
 
@@ -39,7 +39,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
 
 如果你有一组要地理编码的地址，则可以使用[Post Search 地址批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch)通过单个 API 调用发送一批查询。
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“地址搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“地址搜索”。**  | 
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL，并选择授权协议（如果有）。
 
@@ -99,7 +99,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)是一�
     | 请求 URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | 授权 | 无身份验证 |
 
-    URL 路径中的 **json** 属性确定响应格式。 本文使用 json 以方便使用和提高可读性。 可以在 [Maps 功能 API 参考](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)的 **Get 模糊搜索**定义中找到可用的响应格式。
+    URL 路径中的 **json** 属性确定响应格式。 本文使用 json 以方便使用和提高可读性。 可以在 **Maps 功能 API 参考**的 [Get 模糊搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)定义中找到可用的响应格式。
 
 3. 单击“参数”，输入以下键值对用作请求 URL 中的查询或路径参数：
 
@@ -143,7 +143,7 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
 如果你有一组要反转地理编码的坐标位置，则可以使用[Post Search 地址反向批处理 API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch)通过单个 API 调用发送一批查询。
 
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“反向地址搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“反向地址搜索”。**  | 
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   
@@ -203,7 +203,7 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
   
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>使用反向地址跨街道搜索搜索交叉街道
 
-1. 在 Postman 中，单击“新建请求” | “GET 请求”，并将请求命名为“反向地址十字路口搜索”。
+1. 在 Postman 中，单击“新建请求” **“GET 请求”，并将请求命名为“反向地址十字路口搜索”。**  | 
 
 2. 在“生成器”选项卡上，选择“GET”HTTP 方法，输入 API 终结点的请求 URL。
   

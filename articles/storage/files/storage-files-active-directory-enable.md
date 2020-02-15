@@ -4,22 +4,21 @@ description: 了解如何通过 Azure Active Directory 域服务，为 Azure 文
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 01/06/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06ff14b23057755a643e5a57fbaf711798cca00e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980780"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210476"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>启用 Azure 文件的通过 SMB Azure Active Directory 域服务身份验证
+# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>启用 Azure 文件上 Azure Active Directory 域服务身份验证
 
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-有关 Azure 文件的 SMB Azure AD 身份验证的概述，请参阅[Azure 文件的通过 smb Azure Active Directory 身份验证的概述](storage-files-active-directory-overview.md)。
-
+有关 Azure 文件支持的基于身份的身份验证的概述，请参阅[Azure 文件的通过 SMB Azure Active Directory 身份验证的概述](storage-files-active-directory-overview.md)。 本文重点介绍如何使用 Azure 文件上 Azure Active Directory 域服务（Azure AD DS）启用身份验证。 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>工作流概述
@@ -37,7 +36,7 @@ ms.locfileid: "75980780"
 
 ![显示通过 SMB 为 Azure 文件启用 Azure AD 的工作流的图表](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在通过 SMB 为 Azure 文件启用 Azure AD 之前，请确保满足以下先决条件：
 
@@ -71,7 +70,7 @@ ms.locfileid: "75980780"
 
 ## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>为帐户启用 Azure AD DS 身份验证
 
-若要启用针对 Azure 文件的 SMB Azure AD DS 身份验证，可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 在2018年9月24日之后创建的存储帐户上设置属性。 设置此属性将向关联的 Azure AD DS 部署注册存储帐户。 然后，将对存储帐户中的所有新的和现有文件共享启用通过 SMB 进行的 Azure AD DS 身份验证。
+若要启用对 Azure 文件的 SMB Azure AD DS 身份验证，可以通过使用 Azure 门户、Azure PowerShell 或 Azure CLI 来设置存储帐户的属性。 将此属性隐式设置为具有关联 Azure AD DS 部署的存储帐户。 然后，将对存储帐户中的所有新的和现有文件共享启用通过 SMB 进行的 Azure AD DS 身份验证。
 
 请记住，仅当已成功将 Azure AD DS 部署到 Azure AD 租户之后，才能通过 SMB 启用 Azure AD DS 身份验证。 有关详细信息，请参阅[先决条件](#prerequisites)。
 

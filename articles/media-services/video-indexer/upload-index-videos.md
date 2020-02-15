@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169370"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209267"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -47,7 +47,7 @@ ms.locfileid: "76169370"
 
     如果它是专用 URL，则需要在请求中提供访问令牌。
 - URL 必须指向有效的媒体文件，而不是指向网页，如指向 `www.youtube.com` 页面的链接。
-- 每分钟最多可以上传60个电影。
+- 在付费帐户中，最多可以上传50个电影，每分钟最多上载5个电影。
 
 > [!Tip]
 > 建议使用 .NET framework 版本 4.6.2. 或更高版本，因为较旧的 .NET framework 不会默认为 TLS 1.2。
@@ -56,7 +56,7 @@ ms.locfileid: "76169370"
 
 ## <a name="supported-file-formats-for-video-indexer"></a>视频索引器支持的文件格式
 
-有关可用于视频索引器的文件格式的列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
+有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
 ## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a><a id="website"/>使用视频索引器网站上传视频并为视频编制索引
 
@@ -93,7 +93,7 @@ ms.locfileid: "76169370"
 - 索引状态更改： 
     - 属性：    
     
-        |名称|Description|
+        |名称|说明|
         |---|---|
         |id|视频 ID|
         |state|视频状态|  
@@ -101,7 +101,7 @@ ms.locfileid: "76169370"
 - 在视频中标识的人：
   - 属性
     
-      |名称|Description|
+      |名称|说明|
       |---|---|
       |id| 视频 ID|
       |faceId|出现在视频索引中的人脸 ID|
@@ -344,10 +344,11 @@ public class AccountContractSlim
 
 上传操作可能会返回下表中列出的状态代码。
 
-|状态代码|ErrorType（在响应正文中）|Description|
+|状态代码|ErrorType（在响应正文中）|说明|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|相同的视频已在给定帐户的处理进度中。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小时前，相同的视频已在给定帐户中处理失败。 API 客户端应至少等待 2 小时才能重新上传视频。|
+|429||每分钟允许5次上载的试用帐户。 每分钟允许上传50个付费帐户。|
 
 ## <a name="next-steps"></a>后续步骤
 

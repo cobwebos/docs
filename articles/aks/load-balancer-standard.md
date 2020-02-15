@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025701"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212410"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 
@@ -57,7 +57,10 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 默�
 
 ## <a name="use-the-standard-sku-load-balancer"></a>使用*标准*SKU 负载均衡器
 
-创建 AKS 群集时，默认情况下，在群集中运行服务时，将使用*标准*SKU 负载均衡器。 例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署使用*标准*SKU 负载均衡器的示例应用程序。 
+创建 AKS 群集时，默认情况下，在群集中运行服务时，将使用*标准*SKU 负载均衡器。 例如，[使用 Azure CLI 的快速入门][aks-quickstart-cli]部署使用*标准*SKU 负载均衡器的示例应用程序。
+
+> [!IMPORTANT]
+> 可以通过自定义用户定义的路由（UDR）来避免公共 IP 地址。 指定 AKS 群集的出站类型为 UDR 时，可以跳过 AKS 创建的 Azure 负载均衡器的 IP 预配和后端池设置。 请参阅[将群集的 `outboundType` 设置为 "userDefinedRouting"](egress-outboundtype.md)。
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>将负载均衡器配置为内部负载均衡器
 

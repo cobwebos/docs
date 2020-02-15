@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122425"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210459"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>示例：使用 Python 创建自定义技能
 
@@ -21,7 +21,7 @@ ms.locfileid: "77122425"
 
 自定义技能在设计上是简单的（它连接两个字符串），以便您可以专注于 Python 中用于自定义技能开发的工具和技术。 在您成功完成一种简单的技能后，您可以使用更复杂的方案进行分支。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 + 查看[自定义技能界面](cognitive-search-custom-skill-interface.md)，了解自定义技能应该实现的输入/输出接口简介。
 
@@ -52,7 +52,7 @@ ms.locfileid: "77122425"
 1. 选择 Python 版本（Azure Functions 支持版本3.7.5）
 1. 为项目的第一个函数选择模板。 选择 " **http 触发器**"，在新的 function app 中创建 http 触发的函数。
 1. 提供函数名称。 在这种情况下，我们将使用**连接符** 
-1. 选择 "**函数**" 作为授权级别。 这意味着我们将提供[函数密钥](../azure-functions/functions-bindings-http-webhook.md#authorization-keys)来调用函数的 HTTP 终结点。 
+1. 选择 "**函数**" 作为授权级别。 这意味着我们将提供[函数密钥](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)来调用函数的 HTTP 终结点。 
 1. 选择要打开项目的方式。 对于此步骤，请选择 "**添加到工作区**" 以在当前工作区中创建函数应用。
 
 Visual Studio Code 将在新的工作区中创建函数应用项目。 此项目包含 [host.json](../azure-functions/functions-host-json.md) 和 [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) 配置文件以及任何特定于语言的项目文件。 

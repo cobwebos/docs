@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083235"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210493"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "77083235"
 
 有关部署工作流中所涉及的概念的详细信息，请参阅[管理、部署和监视具有 Azure 机器学习的模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -396,7 +396,7 @@ def run(data):
 
 <a id="binary"></a>
 
-#### <a name="binary-data"></a>二进制数据
+#### <a name="binary-data"></a>Binary data
 
 如果模型接受二进制数据（如图像），则必须修改部署所用的 `score.py` 文件，以接受原始 HTTP 请求。 若要接受原始数据，请在输入脚本中使用 `AMLRequest` 类，并向 `run()` 函数添加 `@rawhttp` 修饰器。
 
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 有关详细信息，请参阅[az ml 模型部署](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy)文档。
+
+### <a name="understanding-service-state"></a>了解服务状态
+
+在模型部署过程中，你可能会在服务状态发生更改的情况下进行完全部署。
+
+下表描述了不同的服务状态：
+
+| Webservice 状态 | 说明 | 最终状态？
+| ----- | ----- | ----- |
+| 转为 | 服务正在部署过程中。 | 否 |
+| 不正常 | 该服务已部署，但当前无法访问。  | 否 |
+| 主机设 | 由于缺少资源，此时无法部署该服务。 | 否 |
+| 失败 | 由于出现错误或崩溃，服务部署失败。 | 是 |
+| 正常 | 服务正常，终结点可用。 | 是 |
 
 ### <a id="notebookvm"></a>计算实例 web 服务（开发/测试）
 

@@ -3,12 +3,12 @@ title: 带有模板的条件部署
 description: 介绍如何在 Azure 资源管理器模板中有条件地部署资源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121992"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207785"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>资源管理器模板中的条件部署
 
@@ -88,4 +88,4 @@ ms.locfileid: "76121992"
 ## <a name="next-steps"></a>后续步骤
 
 * 有关创建模板的建议，请参阅 [Azure 资源管理器模板的最佳做法](template-best-practices.md)。
-* 若要创建资源的多个实例，请参阅[Azure 资源管理器模板中的资源、属性或可变迭代](create-multiple-instances.md)。
+* 若要创建资源的多个实例，请参阅[Azure 资源管理器模板中的资源迭代](copy-resources.md)。

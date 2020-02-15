@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198711"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206100"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（源）
 
@@ -59,11 +59,11 @@ ms.locfileid: "77198711"
 
 ## <a name="comparing-streaming-types"></a>比较流式处理类型
 
-功能|标准|高级
+Feature|Standard|Premium
 ---|---|---
 吞吐量 |使用 CDN 时，高达 600 Mbps，可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
-按比例计费| 每天一次|每天一次
+按比例计费| 每日|每日
 动态加密|是|是
 动态打包|是|是
 缩放|自动增加到目标吞吐量。|其他 SUs
@@ -102,7 +102,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
     - `media.azure.net`
     - `verifydns.media.azure.net`
 
-  - China：
+  - 中国：
 
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
@@ -147,17 +147,20 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 ### <a name="enable-azure-cdn-integration"></a>启用 Azure CDN 集成
 
+> [!IMPORTANT]
+> 不能为试用版或学生版 Azure 帐户启用 CDN。
+>
+> 所有 Azure 数据中心（美国联邦政府版和中国区域除外）均已启用 CDN 集成。
+
 启用 CDN 后，在设置了一个流式处理终结点后，在完成 DNS 更新以将流式处理终结点映射到 CDN 终结点之前，媒体服务会有一个定义的等待时间。
 
 如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，你可以在不中断流式处理终结点的情况下启动流式处理终结点和流，而在集成完成后，将从 CDN 传送流。 在设置期间，流式处理终结点将处于 "**正在启动**" 状态，你可能会看到性能下降。
 
 创建标准流式处理终结点时，默认情况下，它是使用标准 Verizon 进行配置的。 可以使用 REST Api 配置高级 Verizon 或标准 Akamai 提供程序。
 
-将在所有 Azure 数据中心启用 CDN 集成，但中国区域和联邦政府区域除外。
-
 标准流式处理终结点可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。 可以使用所有 **Azure CDN 定价层和提供程序**配置高级流式处理终结点。 
 
-> [!IMPORTANT]
+> [!NOTE]
 > 有关 Azure CDN 的详细信息，请参阅[CDN 概述](../../cdn/cdn-overview.md)。
 
 ### <a name="determine-if-dns-change-was-made"></a>确定是否进行了 DNS 更改

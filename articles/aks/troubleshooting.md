@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120955"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209216"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -23,16 +23,16 @@ ms.locfileid: "76120955"
 请尝试 [Kubernetes 群集故障排除的官方指南](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)。
 还可尝试由 Microsoft 工程师发布的[故障排除指南](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)，用于对 Pod、节点、群集和其他功能进行故障排除。
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到“超出配额”的错误。 我应该怎么做？ 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>在创建或升级期间遇到“超出配额”的错误。 我该怎么办？ 
 
 需要[请求内核](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>对 AKS 而言，每个节点设置的最大 Pod 是多少？
 
 如果在 Azure 门户中部署 AKS 群集，则每个节点的最大 Pod 均默认设置为 30。
-如果在 Azure CLI 中部署 AKS 群集，则每个节点的最大 Pod 均默认设置为 110。 （确保使用最新版本的 Azure CLI）。 可以使用 `az aks create` 命令中的 `–-max-pods` 标记来更改此默认设置。
+如果在 Azure CLI 中部署 AKS 群集，则每个节点的最大 Pod 均默认设置为 110。 （确保使用最新版本的 Azure CLI）。 可以使用 `–-max-pods` 命令中的 `az aks create` 标记来更改此默认设置。
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我应该怎么做？
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>在使用高级网络部署 AKS 群集时收到 insufficientSubnetSize 错误。 我该怎么办？
 
 如果使用 Azure CNI （高级网络），则 AKS 会根据配置的每个节点的 "最大箱" 分配 IP 地址。 根据每个节点配置的最大 pod 数，子网大小必须大于节点数和每个节点的最大 pod 数的乘积。 以下公式概述了这一点：
 
@@ -40,7 +40,7 @@ ms.locfileid: "76120955"
 
 有关详细信息，请参阅[规划群集的 IP 地址](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)。
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。 我应该怎么做？
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>我的 Pod 停滞在 CrashLoopBackOff 模式。 我该怎么办？
 
 可能有多种原因导致 Pod 停滞在该模式。 可能通过以下方式查看：
 
@@ -53,17 +53,17 @@ ms.locfileid: "76120955"
 
 遗憾的是，目前不支持在现有群集上启用基于角色的访问控制 (RBAC)。 必须显式创建新群集。 如果使用 CLI，则默认启用 RBAC。 如果使用 AKS 门户，则在创建工作流时可使用切换按钮来启用 RBAC。
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>使用带有默认值的 Azure CLI 或 Azure 门户创建了一个启用了 RBAC 的集群，现在 Kubernetes 仪表板上出现了许多警告。 仪表板以前在没有任何警告的情况下工作。 我应该怎么做？
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>使用带有默认值的 Azure CLI 或 Azure 门户创建了一个启用了 RBAC 的集群，现在 Kubernetes 仪表板上出现了许多警告。 仪表板以前在没有任何警告的情况下工作。 我该怎么办？
 
 仪表板上收到警告的原因是群集现在启用了 RBAC，但已默认禁用了对它的访问。 一般来说，此方法比较棒，因为仪表板默认公开给群集的所有用户可能会导致安全威胁。 如果仍想要启用仪表板，请遵循此[博客文章](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)中的步骤进行操作。
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我无法连接到仪表板。 我应该怎么做？
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我无法连接到仪表板。 我该怎么办？
 
 要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`。
 
 如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 收到 "服务器出错：错误拨号后端：拨号 tcp ..."。 我应该怎么做？
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 收到 "服务器出错：错误拨号后端：拨号 tcp ..."。 我该怎么办？
 
 请确保默认网络安全组未被修改，并且端口22和9000已打开以连接到 API 服务器。 使用 `kubectl get pods --namespace kube-system` 命令检查 `tunnelfront` pod 是否正在*kube*命名空间中运行。 如果没有，请强制删除 Pod，它会重启。
 
@@ -120,7 +120,7 @@ ms.locfileid: "76120955"
 
 * 群集名称必须为1-63 个字符。 唯一允许使用的字符包括字母、数字、短划线和下划线。 第一个字符和最后一个字符必须是字母或数字。
 * AKS *MC_* 资源组名称结合了资源组名称和资源名称。 `MC_resourceGroupName_resourceName_AzureRegion` 的自动生成的语法不能超过80个字符。 如果需要，请减小资源组名称或 AKS 群集名称的长度。
-* *DnsPrefix*必须以字母数字值开头和结尾。 有效字符包括字母数字值和连字符（-）。 *DnsPrefix*不能包含特殊字符（例如句点（.））。
+* *DnsPrefix*必须以字母数字值开头和结尾，且必须介于1-54 个字符之间。 有效字符包括字母数字值和连字符（-）。 *DnsPrefix*不能包含特殊字符（例如句点（.））。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>尝试创建、更新、缩放、删除或升级群集时收到错误，不允许执行该操作，因为正在执行其他操作。
 
@@ -193,7 +193,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 | -- | :--: |
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
-| 1.12 及更高版本 | N/A |
+| 1.12 及更高版本 | 空值 |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 时失败
 
@@ -267,7 +267,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | N/A |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过等待几分钟再重试来缓解此问题。
 
@@ -288,7 +288,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.6 或更高版本 |
 | 1.12 | 1.12.4 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | N/A |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以尝试以下方法来缓解此问题：
 
@@ -309,7 +309,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.9 或更高版本 |
 | 1.12 | 1.12.7 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | N/A |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过手动分离磁盘来缓解此问题。
 
@@ -324,7 +324,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
 | 1.14 | 1.14.2 或更高版本 |
-| 1.15 及更高版本 | N/A |
+| 1.15 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 具有过时的磁盘列表，则可以通过将所有非现有磁盘作为单个批量操作从 VM 分离来缓解此问题。 **单独分离非现有磁盘可能会失败。**
 
@@ -344,7 +344,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
 | 1.14 | 1.14.4 或更高版本 |
-| 1.15 及更高版本 | N/A |
+| 1.15 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 处于故障状态，则可以通过使用以下其中一项来手动更新 VM 状态来缓解此问题：
 
@@ -461,7 +461,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 | -- | :--: |
 | 1.12 | 1.12.6 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | N/A |
+| 1.14 及更高版本 | 空值 |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>由于存储帐户密钥已更改，Azure 文件装载失败
 

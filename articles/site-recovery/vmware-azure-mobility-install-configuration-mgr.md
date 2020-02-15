@@ -3,14 +3,14 @@ title: 自动执行移动服务，以便在 Azure Site Recovery 中进行灾难�
 description: 如何通过 Azure Site Recovery 自动安装 VMware/physical server 灾难恢复的移动服务。
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896011"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252221"
 ---
 # <a name="automate-mobility-service-installation"></a>自动安装移动服务
 
@@ -20,7 +20,7 @@ ms.locfileid: "76896011"
 
 - **推送安装**：在为 Azure 门户中的计算机启用复制时，让 Site Recovery 安装移动服务代理。
 - **手动安装**：在每台计算机上手动安装移动服务。 [了解](vmware-physical-mobility-service-overview.md)有关推送和手动安装的详细信息。
-- **自动部署**：通过软件部署工具（例如 Microsoft Endpoint Configuration Manager）或第三方工具（如 Intigua JetPatch）自动执行安装。
+- **自动部署**：通过软件部署工具（例如 Microsoft Endpoint Configuration Manager）或第三方工具（如 JetPatch）自动进行安装。
 
 自动安装和更新提供了以下解决方案：
 
@@ -31,7 +31,7 @@ ms.locfileid: "76896011"
 - 需要将代理安装同时扩展到大量服务器。
 - 你希望在计划的维护时段内计划安装和升级。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必备条件
 
 若要自动安装，需要以下项：
 
@@ -42,9 +42,9 @@ ms.locfileid: "76896011"
 
 下表总结了用于自动执行移动服务部署的工具和过程。
 
-**工具栏** | **세부 정보** | **说明**
+**工具** | **详细信息** | **说明**
 --- | --- | ---
-**Configuration Manager** | 1. 验证是否已准备好上面列出的[先决条件](#prerequisites)。 <br/><br/> 2. 通过设置源环境部署灾难恢复，包括下载 .OVA 文件，以使用 OVF 模板将 Site Recovery 配置服务器部署为 VMware VM。<br/><br/> 3. 将配置服务器注册到 Site Recovery 服务，设置目标 Azure 环境，并配置复制策略。<br/><br/> 4. 对于自动移动服务部署，你可以创建包含配置服务器密码和移动服务安装文件的网络共享。<br/><br/> 5. 创建包含安装或更新的 Configuration Manager 包，并为移动服务部署做准备。<br/><br/> 6. 然后，你可以为安装了移动服务的计算机启用到 Azure 的复制。 | [自动执行 Configuration Manager](#automate-with-configuration-manager)
+**配置管理器** | 1. 验证是否已准备好上面列出的[先决条件](#prerequisites)。 <br/><br/> 2. 通过设置源环境部署灾难恢复，包括下载 .OVA 文件，以使用 OVF 模板将 Site Recovery 配置服务器部署为 VMware VM。<br/><br/> 3. 将配置服务器注册到 Site Recovery 服务，设置目标 Azure 环境，并配置复制策略。<br/><br/> 4. 对于自动移动服务部署，你可以创建包含配置服务器密码和移动服务安装文件的网络共享。<br/><br/> 5. 创建包含安装或更新的 Configuration Manager 包，并为移动服务部署做准备。<br/><br/> 6. 然后，你可以为安装了移动服务的计算机启用到 Azure 的复制。 | [自动执行 Configuration Manager](#automate-with-configuration-manager)
 **JetPatch** | 1. 验证是否已准备好上面列出的[先决条件](#prerequisites)。 <br/><br/> 2. 通过设置源环境部署灾难恢复，包括使用 OVF 模板在 Site Recovery 环境中下载和部署 JetPatch Azure Site Recovery 代理程序管理器。<br/><br/> 3. 将配置服务器注册到 Site Recovery，设置目标 Azure 环境，并配置复制策略。<br/><br/> 4. 对于自动部署，初始化并完成 JetPatch 代理程序管理器配置。<br/><br/> 5. 在 JetPatch 中，可以创建 Site Recovery 策略来自动部署和升级移动服务代理。 <br/><br/> 6. 然后，你可以为安装了移动服务的计算机启用到 Azure 的复制。 | [自动执行 JetPatch 代理程序管理器](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [排查 JetPatch 中的代理安装问题](https://kc.jetpatch.com/hc/articles/360035981812)
 
 ## <a name="automate-with-configuration-manager"></a>自动执行 Configuration Manager
@@ -342,7 +342,7 @@ cd /tmp
 1. 右键单击 "**包**" > "**创建包**"。
 1. 提供包详细信息，包括名称、描述、制造商、语言和版本。
 1. 选择 "**此包包含源文件**"。
-1. 单击 "**浏览**"，然后选择包含相关安装程序的网络共享和文件夹（_MobSvcWindows_或_MobSvcLinux_）。 然后选择 "**下一步**"。
+1. 单击 "**浏览**"，然后选择包含相关安装程序的网络共享和文件夹（_MobSvcWindows_或_MobSvcLinux_）。 然后，选择“下一步”。
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
@@ -352,11 +352,11 @@ cd /tmp
 
 1. 在 "**指定有关此标准程序的信息**" 页上，指定以下值：
 
-    **参数** | **Windows 值** | **Linux 值**
+    **Parameter** | **Windows 值** | **Linux 值**
     --- | --- | ---
-    **名称** | 安装 Microsoft Azure 移动服务（Windows） | 安装 Microsoft Azure 移动服务（Linux）。
-    **命令行** | 安装 .bat | ./install_linux
-    **程序可以运行** | 无论用户是否登录 | 无论用户是否登录
+    **名称** | 安装 Microsoft Azure 移动服务 (Windows) | 安装 Microsoft Azure 移动服务（Linux）。
+    **命令行** | install.bat | ./install_linux.sh
+    **程序可以运行** | 用户是否已登录 | 用户是否已登录
     **其他参数** | 使用默认设置 | 使用默认设置
 
    ![创建包和程序向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -364,9 +364,9 @@ cd /tmp
 1. 在 "**指定此标准程序的要求**" 中，执行以下任务：
 
    - 对于 Windows 计算机，选择 "**此程序只能在指定的平台上运行"** 。 然后，选择[支持的 Windows 操作系统](vmware-physical-azure-support-matrix.md#replicated-machines)，并选择 "**下一步**"。
-   - 对于 Linux 计算机，选择 "**此程序可以在任何平台上运行"** 。 然后选择 "**下一步**"。
+   - 对于 Linux 计算机，选择 "**此程序可以在任何平台上运行"** 。 然后，选择“下一步”。
 
-1. 完成向导。
+1. 完成该向导。
 
 ### <a name="deploy-the-package"></a>部署包
 
@@ -374,8 +374,8 @@ cd /tmp
 
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
-1. 选择包应复制到的分发点。 [了解更多](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
-1. 完成向导。 然后，包将开始复制到指定的分发点。
+1. 选择包应复制到的分发点。 [了解详细信息](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
+1. 完成向导。 包随后开始复制到指定的分发点。
 1. 包分发完成后，右键单击 >**部署**的包。
 
    ![Configuration Manager 控制台的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
@@ -386,10 +386,10 @@ cd /tmp
 
    ![部署软件向导的屏幕截图](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. 在 "**为此部署指定计划**" 中，设置计划。 [了解更多](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
+1. 在 "**为此部署指定计划**" 中，设置计划。 [了解详细信息](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
 
    - 移动服务按照您指定的计划安装。
-   - 若要避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
+   - 为了避免不必要的重新启动，请在每月的维护时段或软件更新时段计划包安装。
 
 1. 在 "**分发点**" 页上，配置设置并完成向导。
 1. 在 Configuration Manager 控制台中监视部署进度。 请参阅**监视** > **部署** >  _\<包名称\>_ 。

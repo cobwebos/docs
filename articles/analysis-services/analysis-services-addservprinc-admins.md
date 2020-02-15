@@ -7,16 +7,20 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.custom: fasttrack-edit
+ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573617"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212500"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
- 若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。
+ 若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。 您可以使用 SQL Server Management Studio 或资源管理器模板来执行此操作。
+ 
+> [!NOTE]
+> 对于使用 Azure PowerShell cmdlet 的服务器操作，服务主体也必须属于[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)中资源的**所有者**角色。 
 
 ## <a name="before-you-begin"></a>开始之前
 在完成此项任务之前，必须有一个在 Azure Active Directory 中注册的服务主体。
@@ -24,10 +28,9 @@ ms.locfileid: "73573617"
 [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
 [创建服务主体 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>所需权限
-若要完成此项任务，在 Azure AS 服务器上必须具备[服务器管理员](analysis-services-server-admins.md)权限。 
+## <a name="using-sql-server-management-studio"></a>使用 SQL Server Management Studio
 
-## <a name="add-service-principal-to-server-administrators-role"></a>将服务主体添加到服务器管理员角色
+你可以使用 SQL Server Management Studio （SSMS）配置服务器管理员。 若要完成此项任务，在 Azure AS 服务器上必须具备[服务器管理员](analysis-services-server-admins.md)权限。 
 
 1. 在 SSMS 中连接至 Azure AS 服务器。
 2. 在“服务器属性” **“安全性”中，单击“添加”**  > 。
@@ -39,9 +42,60 @@ ms.locfileid: "73573617"
     
     ![搜索服务主体帐户](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
+## <a name="using-a-resource-manager-template"></a>使用资源管理器模板
 
-> [!NOTE]
-> 对于使用 Azure PowerShell cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 **Azure 基于角色的访问控制 (RBAC)** 中资源的“所有者”角色[](../role-based-access-control/overview.md)。 
+还可以通过使用 Azure 资源管理器模板部署 Analysis Services 服务器来配置服务器管理员。 运行部署的标识必须属于[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)中资源的**参与者**角色。
+
+> [!IMPORTANT]
+> 必须使用格式 `app:{service-principal-client-id}@{azure-ad-tenant-id}`来添加服务主体。
+
+以下资源管理器模板使用已添加到 Analysis Services 管理员角色中的指定服务主体部署 Analysis Services 服务器：
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "analysisServicesServerName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "analysisServicesSkuName": {
+            "type": "string"
+        },
+        "analysisServicesCapacity": {
+            "type": "int"
+        },
+        "servicePrincipalClientId": {
+            "type": "string"
+        },
+        "servicePrincipalTenantId": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('analysisServicesServerName')]",
+            "type": "Microsoft.AnalysisServices/servers",
+            "apiVersion": "2017-08-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "[parameters('analysisServicesSkuName')]",
+                "capacity": "[parameters('analysisServicesCapacity')]"
+            },
+            "properties": {
+                "asAdministrators": {
+                    "members": [
+                        "[concat('app:', parameters('servicePrincipalClientId'), '@', parameters('servicePrincipalTenantId'))]"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
 
 ## <a name="related-information"></a>相关信息
 

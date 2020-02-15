@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机上的 azure 虚拟机高可用性 Azure NetApp 文件 Red Hat Enterprise Linux 上的 SAP NetWeaver |Microsoft Docs
+title: Azure 虚拟机上的 SAP NW 高可用性与 Azure NetApp 文件 |Microsoft Docs
 description: Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 02/13/2020
 ms.author: radeltch
-ms.openlocfilehash: 8acb4819c6ef7a1969a85a056dfdde1fd021a5e6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ed18928237d19e9fad2548ee502f9a24266f12c0
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894658"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212873"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux
 
@@ -107,16 +107,16 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620&lt;nr&gt;
+  * 端口 620<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 32&lt;nr&gt; TCP
-  * 36&lt;nr&gt; TCP
-  * 39&lt;nr&gt; TCP
-  * 81&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+  * 32<strong>nr&lt; TCP&gt;</strong>
+  * 36<strong>nr&lt; TCP&gt;</strong>
+  * 39<strong>nr&lt; TCP&gt;</strong>
+  * 81<strong>nr&lt; TCP&gt;</strong>
+  * 5<strong>nr&lt;13 TCP&gt;</strong>
+  * 5<strong>nr&lt;14 TCP&gt;</strong>
+  * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ### <a name="ers"></a>ERS
 
@@ -125,14 +125,14 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621&lt;nr&gt;
+  * 端口 621<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
-  * 32&lt;nr&gt; TCP
-  * 33&lt;nr&gt; TCP
-  * 5&lt;nr&gt;13 TCP
-  * 5&lt;nr&gt;14 TCP
-  * 5&lt;nr&gt;16 TCP
+  * 32<strong>nr&lt; TCP&gt;</strong>
+  * 33<strong>nr&lt; TCP&gt;</strong>
+  * 5<strong>nr&lt;13 TCP&gt;</strong>
+  * 5<strong>nr&lt;14 TCP&gt;</strong>
+  * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
 
@@ -295,7 +295,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   有关如何更改 `nfs4_disable_idmapping` 参数的详细信息，请参阅 https://access.redhat.com/solutions/1749883 。
+   有关如何更改 `nfs4_disable_idmapping` 参数的详细信息，请参阅 https://access.redhat.com/solutions/1749883。
 
 ### <a name="create-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -462,12 +462,14 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    sudo pcs node standby anftstsapcl2
    # If using NFSv3
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_ASCS Filesystem device='192.168.24.5:/sapQAS/usrsapQASascs' \
-     directory='/usr/sap/QAS/ASCS00' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ASCS00' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
      --group g-QAS_ASCS
    
    sudo pcs resource create vip_QAS_ASCS IPaddr2 \
@@ -523,12 +525,14 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    
    # If using NFSv3
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    # If using NFSv4.1
    sudo pcs resource create fs_QAS_AERS Filesystem device='192.168.24.5:/sapQAS/usrsapQASers' \
-     directory='/usr/sap/QAS/ERS01' fstype='nfs' options='sec=sys,vers=4.1' \
+     directory='/usr/sap/QAS/ERS01' fstype='nfs' force_unmount=safe options='sec=sys,vers=4.1' \
+     op start interval=0 timeout=60 op stop interval=0 timeout=120 op monitor interval=200 timeout=40 \
     --group g-QAS_AERS
    
    sudo pcs resource create vip_QAS_AERS IPaddr2 \
@@ -644,12 +648,15 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -669,12 +676,15 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     sudo pcs resource create rsc_sap_QAS_ASCS00 SAPInstance \
     InstanceName=QAS_ASCS00_anftstsapvh START_PROFILE="/sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_ASCS
    
     sudo pcs resource create rsc_sap_QAS_ERS01 SAPInstance \
     InstanceName=QAS_ERS01_anftstsapers START_PROFILE="/sapmnt/QAS/profile/QAS_ERS01_anftstsapers" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-QAS_AERS
       
     sudo pcs constraint colocation add g-QAS_AERS with g-QAS_ASCS -5000
@@ -685,6 +695,9 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     ```
 
    如果从较旧版本升级并切换到排队服务器2，请参阅 SAP 说明[2641322](https://launchpad.support.sap.com/#/notes/2641322)。 
+
+   > [!NOTE]
+   > 上述配置中的超时只是示例，可能需要适应特定的 SAP 设置。 
 
    请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
 

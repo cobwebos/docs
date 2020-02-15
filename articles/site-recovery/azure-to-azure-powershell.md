@@ -7,16 +7,16 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 254f64c6405fb214bfbc61b3e45747d9e119565d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509319"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212284"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
-本文介绍如何使用 Azure PowerShell 来设置和测试 Azure 虚拟机的灾难恢复。
+本文介绍如何使用 Azure PowerShell 为 Azure 虚拟机设置和测试灾难恢复。
 
 学习如何：
 
@@ -36,16 +36,16 @@ ms.locfileid: "76509319"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
 - 你有 Azure PowerShell `Az` 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azure/install-az-ps)。
 
-## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 
-使用 `Connect-AzAccount` cmdlet 登录到 Azure 订阅。
+用 `Connect-AzAccount` cmdlet 登录到你的 Azure 订阅。
 
 ```azurepowershell
 Connect-AzAccount
@@ -57,9 +57,9 @@ Connect-AzAccount
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>获取要复制的虚拟机的详细信息
+## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>获取要复制的虚拟机的详细信息
 
-本文中的示例将美国东部区域中的某个虚拟机复制到美国西部 2 区域并在其中进行恢复。 要复制的虚拟机是包含 OS 磁盘和单个数据磁盘的虚拟机。 示例中使用的虚拟机的名称是 `AzureDemoVM`。
+在本文中，"美国东部" 区域中的虚拟机将复制到美国西部2区域并进行恢复。 正在复制的虚拟机有一个操作系统磁盘和一个数据磁盘。 示例中使用的虚拟机的名称是 `AzureDemoVM`。
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -68,7 +68,7 @@ $VM = Get-AzVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
 Write-Output $VM
 ```
 
-```
+```Output
 ResourceGroupName  : A2AdemoRG
 Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/A2AdemoRG/providers/Microsoft.Compute/virtualMachines/AzureDemoVM
 VmId               : 1b864902-c7ea-499a-ad0f-65da2930b81b
@@ -84,7 +84,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-获取虚拟机磁盘的详细信息。 稍后在开始复制虚拟机时，将使用磁盘详细信息。
+获取虚拟机磁盘的磁盘详细信息。 稍后在开始复制虚拟机时，将使用磁盘详细信息。
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -100,14 +100,14 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 > * 恢复服务保管库的资源组和要保护的虚拟机必须位于不同的 Azure 位置。
 > * 恢复服务保管库及其所属的资源组可以位于相同的 Azure 位置。
 
-在本文的示例中，要保护的虚拟机位于美国东部区域。 为灾难恢复选择的恢复区域为美国西部 2 区域。 恢复服务保管库和保管库的资源组均位于恢复区域（美国西部2）。
+在本文的示例中，要保护的虚拟机位于美国东部区域。 为灾难恢复选择的恢复区域为美国西部 2 区域。 恢复服务保管库和保管库的资源组均位于恢复区域，美国西部2。
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
 New-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ```
 
-```
+```Output
 ResourceGroupName : a2ademorecoveryrg
 Location          : westus2
 ProvisioningState : Succeeded
@@ -115,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-创建恢复服务保管库。 在下面的示例中，在美国西部2区域创建名为 `a2aDemoRecoveryVault` 的恢复服务保管库。
+创建恢复服务保管库。 在此示例中，在美国西部2区域创建了一个名为 `a2aDemoRecoveryVault` 的恢复服务保管库。
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -124,7 +124,7 @@ $vault = New-AzRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroup
 Write-Output $vault
 ```
 
-```
+```Output
 Name              : a2aDemoRecoveryVault
 ID                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoRecoveryVault
 Type              : Microsoft.RecoveryServices/vaults
@@ -136,14 +136,14 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
-设置 PowerShell 会话中使用的保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
+设置 PowerShell 会话中使用的保管库上下文。 设置保管库上下文后，PowerShell 会话中的 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 ```azurepowershell
 #Setting the vault context.
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-```
+```Output
 ResourceName         ResourceGroupName ResourceNamespace          ResourceType
 ------------         ----------------- -----------------          -----------
 a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
@@ -170,7 +170,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 - 每个区域只能创建一个结构对象。
 - 如果之前已在 Azure 门户中为 VM 启用了 Site Recovery 复制，则 Site Recovery 会自动创建结构对象。 如果区域存在结构对象，则无法创建新结构对象。
 
-在开始之前，请注意 Site Recovery 操作以异步方式执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 使用作业跟踪对象获取作业的最新状态（`Get-AzRecoveryServicesAsrJob`），并监视操作的状态。
+在开始之前，请了解 Site Recovery 操作以异步方式执行。 启动操作时，将提交 Azure Site Recovery 作业，并返回跟踪对象的作业。 使用作业跟踪对象获取作业的最新状态（`Get-AzRecoveryServicesAsrJob`），并监视操作的状态。
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -193,7 +193,7 @@ $PrimaryFabric = Get-AzRecoveryServicesAsrFabric -Name "A2Ademo-EastUS"
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>创建用于表示恢复区域的 Site Recovery 结构对象
 
-恢复结构对象表示 Azure 恢复位置。 虚拟机将复制和恢复到（发生故障转移时）该恢复结构表示的恢复区域。 本示例使用的 Azure 恢复区域是“美国西部 2”。
+恢复结构对象表示 Azure 恢复位置。 如果有故障转移，则会将虚拟机复制和恢复到恢复结构表示的恢复区域。 本示例使用的 Azure 恢复区域是“美国西部 2”。
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -289,10 +289,10 @@ $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>创建用于故障回复（故障转移后的反向复制）的保护容器映射
 
-故障转移后，当你准备好将故障转移的虚拟机恢复到原始 Azure 区域时，你将会故障回复。 为了故障回复，故障转移的虚拟机将从故障转移的区域反向复制到原始区域。 反向复制时，原始区域和恢复区域的角色将会切换。 原始区域现在变成新的恢复区域，而最初的恢复区域现在会变成主要区域。 反向复制的保护容器映射表示原始和恢复区域的已切换角色。
+故障转移后，当你准备好将故障转移的虚拟机恢复到原始 Azure 区域时，你将执行故障回复。 若要进行故障回复，将故障转移的虚拟机从故障转移区域反向复制到原始区域。 反向复制时，原始区域和恢复区域的角色将会切换。 原始区域现在变成新的恢复区域，而最初的恢复区域现在会变成主要区域。 反向复制的保护容器映射表示原始和恢复区域的已切换角色。
 
 ```azurepowershell
-#Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
+#Create Protection container mapping (for fail back) between the Recovery and Primary Protection Containers with the Replication policy
 $TempASRJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
 
 #Track Job status to check for completion
@@ -303,18 +303,20 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
+
+$WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryProtContainer -Name "A2ARecoveryToPrimary"
 ```
 
-## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>创建缓存存储帐户和目标存储帐户
+## <a name="create-cache-storage-account-and-target-storage-account"></a>创建缓存存储帐户和目标存储帐户
 
-缓存存储帐户是复制的虚拟机所在的同一 Azure 区域中的标准存储帐户。 缓存存储帐户用于在将更改转移到 Azure 恢复区域之前，暂时保存复制更改。 可为虚拟机的不同磁盘选择（但不需要）指定不同的缓存存储帐户。
+缓存存储帐户是复制的虚拟机所在的同一 Azure 区域中的标准存储帐户。 缓存存储帐户用于在将更改转移到 Azure 恢复区域之前，暂时保存复制更改。 您可以选择，但不需要为虚拟机的不同磁盘指定不同的缓存存储帐户。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-对于**不使用托管磁盘**的虚拟机，目标存储帐户是虚拟机磁盘复制到的恢复区域中的存储帐户。 目标存储帐户可以是标准存储帐户，也可以是高级存储帐户。 根据磁盘的数据更改率（IO 写入速率），选择所需的存储帐户类型，并为存储类型 Azure Site Recovery 支持的改动量限制。
+对于**未使用托管磁盘**的虚拟机，目标存储帐户是虚拟机的磁盘要复制到的恢复区域中的存储帐户。 目标存储帐户可以是标准存储帐户，也可以是高级存储帐户。 根据磁盘的数据更改率（IO 写入速率），选择所需的存储帐户类型，并为存储类型 Azure Site Recovery 支持的改动量限制。
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -323,7 +325,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ## <a name="create-network-mappings"></a>创建网络映射
 
-网络映射将主要区域中的虚拟网络映射到恢复区域中的虚拟网络。 网络映射在恢复区域中指定主要虚拟网络中的虚拟机应故障转移到的 Azure 虚拟网络。 一个 Azure 虚拟网络只能映射到恢复区域中的单个 Azure 虚拟网络。
+网络映射将主要区域中的虚拟网络映射到恢复区域中的虚拟网络。 网络映射指定恢复区域中的 Azure 虚拟网络，主虚拟网络中的虚拟机应故障转移到该虚拟网络。 一个 Azure 虚拟网络只能映射到恢复区域中的单个 Azure 虚拟网络。
 
 - 在恢复区域中创建 Azure 虚拟网络，以便故障转移到：
 
@@ -336,7 +338,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
 
-- 检索主虚拟网络（虚拟机连接到的 VNet）：
+- 检索主虚拟网络。 虚拟机连接到的 VNet：
 
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
@@ -376,10 +378,10 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
     Write-Output $TempASRJob.State
    ```
 
-- 创建反向方向的网络映射（故障回复）：
+- 反向创建网络映射（故障回复）：
 
     ```azurepowershell
-    #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
+    #Create an ASR network mapping for fail back between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
 
     #Track Job status to check for completion
@@ -463,7 +465,7 @@ Write-Output $TempASRJob.State
 
 复制过程首先在恢复区域中初始植入虚拟机复制磁盘的副本。 此阶段中称为初始复制阶段。
 
-初始复制完成后，复制过程将转移到差异同步阶段。 此时，虚拟机受到保护，并可以对其执行测试故障转移操作。 初始复制完成后，表示虚拟机的复制项的复制状态将进入**受保护**状态。
+初始复制完成后，复制会移动到差异同步阶段。 此时，虚拟机受到保护，并可以对其执行测试故障转移操作。 初始复制完成后，表示虚拟机的复制项的复制状态将进入**受保护**状态。
 
 获取虚拟机对应的复制保护项的详细信息，监视该虚拟机的复制状态和复制运行状况。
 
@@ -477,9 +479,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>执行测试故障转移，进行验证，然后清理测试故障转移
+## <a name="do-a-test-failover-validate-and-cleanup-test-failover"></a>执行测试故障转移、验证和清理测试故障转移
 
-一旦虚拟机的复制已进入受保护状态，就可以在虚拟机上执行测试故障转移操作（在虚拟机的复制受保护的项上）。
+虚拟机的复制已进入受保护状态后，可以在虚拟机上执行测试故障转移操作（在虚拟机的复制受保护的项上）。
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -504,7 +506,7 @@ $TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $
 Get-AzRecoveryServicesAsrJob -Job $TFOJob
 ```
 
-```
+```Output
 Name             : 3dcb043e-3c6d-4e0e-a42e-8d4245668547
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/3dcb043e-3c6d-4e0e-a42e-8d4245668547
@@ -534,13 +536,13 @@ $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -Replication
 Get-AzRecoveryServicesAsrJob -Job $Job_TFOCleanup | Select State
 ```
 
-```
+```Output
 State
 -----
 Succeeded
 ```
 
-## <a name="failover-to-azure"></a>故障转移到 Azure
+## <a name="fail-over-to-azure"></a>故障转移到 Azure
 
 将虚拟机故障转移到特定的恢复点。
 
@@ -551,12 +553,12 @@ $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedIt
 "{0} {1}" -f $RecoveryPoints[0].RecoveryPointType, $RecoveryPoints[-1].RecoveryPointTime
 ```
 
-```
+```Output
 CrashConsistent 4/24/2018 11:10:25 PM
 ```
 
 ```azurepowershell
-#Start the failover job
+#Start the fail over job
 $Job_Failover = Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[-1]
 
 do {
@@ -567,11 +569,11 @@ do {
 $Job_Failover.State
 ```
 
-```
+```Output
 Succeeded
 ```
 
-成功完成故障转移后，可以提交故障转移操作。
+故障转移作业成功后，可以提交故障转移操作。
 
 ```azurepowershell
 $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -579,7 +581,7 @@ $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationPr
 Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJOb
 ```
 
-```
+```Output
 Name             : 58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
@@ -599,7 +601,7 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-failback-to-source-region"></a>重新保护和故障回复到源区域
+## <a name="reprotect-and-fail-back-to-the-source-region"></a>重新保护和故障回复到源区域
 
 故障转移后，当你准备好返回到原始区域时，请使用 `Update-AzRecoveryServicesAsrProtectionDirection` cmdlet 为复制受保护项启动反向复制。
 
@@ -609,16 +611,16 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 ```
 
 ```azurepowershell
-#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+#Use the recovery protection container, new cache storage account in West US and the source region VM resource group
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
--ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+-ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId
 ```
 
-重新保护完成后，可以按相反方向（美国西部到美国东部）启动故障转移，并故障回复到源区域。
+重新保护完成后，可以反向故障转移到美国东部，并故障回复到源区域。
 
 ## <a name="disable-replication"></a>禁用复制
 
-你可以通过使用 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 来禁用复制。
+可以通过 `Remove-AzRecoveryServicesAsrReplicationProtectedItem` cmdlet 禁用复制。
 
 ```azurepowershell
 Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
@@ -626,4 +628,4 @@ Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[Azure Site Recovery powershell 参考](/powershell/module/az.RecoveryServices)，了解如何通过 powershell 执行其他任务，例如创建恢复计划和恢复计划的故障转移。
+查看[Azure Site Recovery powershell 参考](/powershell/module/az.RecoveryServices)，了解如何执行其他任务，例如创建恢复计划和通过 PowerShell 测试恢复计划的故障转移。

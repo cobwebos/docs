@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422093"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211696"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板部署 Web 应用的指南
 
@@ -90,7 +90,7 @@ ms.locfileid: "75422093"
 
 1. 转到站点的 [Kudu 控制台](https://github.com/projectkudu/kudu/wiki/Kudu-console)。
 2. 浏览到 D:\home\LogFiles\SiteExtensions\MSDeploy 上的文件夹。
-3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不明白该错误，可将它发布到论坛上来寻求帮助。
+3. 查找 appManagerStatus.xml 和 appManagerLog.xml 文件。 第一个文件记录了状态。 第二个文件记录了有关错误的信息。 如果不清楚此错误，你可以在获取有关[论坛](https://docs.microsoft.com/answers/topics/azure-webapps.html)的帮助时将其包含在内。
 
 ## <a name="choose-a-unique-web-app-name"></a>选择唯一的 Web 应用名称
 

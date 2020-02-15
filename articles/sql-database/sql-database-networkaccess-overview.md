@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894792"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251900"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -113,7 +113,7 @@ start          end
 
 子网：虚拟网络包含子网。 你所拥有的任何 Azure 虚拟机 (VM) 都会分配到子网。 一个子网可能包含多个 VM 或其他计算节点。 虚拟网络之外的计算节点不能访问虚拟网络，除非已将安全性配置为允许这样的访问。
 
-**虚拟网络服务终结点：** [虚拟网络服务终结点] [649d] 是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
+虚拟网络服务终结点：[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)是一个子网，其属性值包括一个或多个正式的 Azure 服务类型名称。 本文介绍 **Microsoft.Sql** 的类型名称，即名为“SQL 数据库”的 Azure 服务。
 
 虚拟网络规则：适用于 SQL 数据库服务器的虚拟网络规则是一个子网，列在 SQL 数据库服务器的访问控制列表 (ACL) 中。 子网必须包含“Microsoft.Sql”类型名称才会将其列在 SQL 数据库的 ACL 中。 虚拟网络规则要求 SQL 数据库服务器接受来自子网上所有节点的通信。
 
@@ -122,7 +122,7 @@ start          end
 
 利用 Azure SQL Server 防火墙，你可以指定 IP 地址范围，从该范围内可接受到 SQL 数据库的通信。 此方法适用于 Azure 专用网络外部的稳定 IP 地址。 但是，Azure 专用网络中的虚拟机（Vm）配置有*动态*IP 地址。 当 VM 重新启动时，动态 IP 地址可能会更改，因此会使基于 IP 的防火墙规则无效。 处于生产环境中时，在防火墙规则中指定一个动态 IP 地址并不明智。
 
-可以通过获取 VM 的*静态*IP 地址来解决此限制。 有关详细信息，请参阅 [使用 Azure 门户配置虚拟机的专用 IP 地址] [321w] [vm 配置------------但是，静态 IP 方法可能会变得难以管理，并且规模非常昂贵。 
+可以通过获取 VM 的*静态*IP 地址来解决此限制。 有关详细信息，请参阅[使用 Azure 门户为虚拟机配置专用 IP 地址](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)。 但是，静态 IP 方法可能会变得难以管理，在规模大时操作成本高。 
 
 虚拟网络规则是建立和管理来自包含 Vm 的特定子网的访问权限的简便方法。
 
@@ -137,7 +137,7 @@ start          end
 
 - 有关从开放源代码或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅[SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 
-- 有关可能需要打开的其他端口的信息，请参阅[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中的 **SQL 数据库：外部与内部**部分
+- 有关可能需要打开的其他端口的信息，请参阅**用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口**中的 [SQL 数据库：外部与内部](sql-database-develop-direct-route-ports-adonet-v12.md)部分
 
 - 有关 Azure SQL 数据库连接的概述，请参阅[AZURE Sql 连接体系结构](sql-database-connectivity-architecture.md)
 

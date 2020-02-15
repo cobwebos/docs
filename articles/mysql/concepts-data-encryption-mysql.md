@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162355"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210425"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥 Azure Database for MySQL 数据加密
 
 > [!NOTE]
 > 此时，你必须请求访问权限才能使用此功能。 为此，请联系 AskAzureDBforMySQL@service.microsoft.com。
 
-通过 Azure Database for MySQL 的客户托管密钥进行数据加密使你能够将你的 qwn 密钥（BYOK）用于静态数据保护。 它还允许组织在密钥和数据的管理中实现职责分离。 通过客户托管的加密，你负责和完全控制密钥的生命周期、密钥使用权限，以及对密钥的操作进行审核。
+通过 Azure Database for MySQL 的客户托管密钥进行数据加密使你可以自带密钥（BYOK）来保护静态数据。 它还允许组织在密钥和数据的管理中实现职责分离。 通过客户托管的加密，你负责和完全控制密钥的生命周期、密钥使用权限，以及对密钥的操作进行审核。
 
 在服务器级别设置 Azure Database for MySQL 的客户托管密钥的数据加密。 对于给定服务器，客户托管的密钥称为密钥加密密钥（KEK），用于对服务使用的数据加密密钥（DEK）进行加密。 KEK 是存储在客户拥有的和客户管理的[Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)实例中的非对称密钥。 本文稍后将更详细地介绍密钥加密密钥（KEK）和数据加密密钥（DEK）。
 

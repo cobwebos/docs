@@ -3,12 +3,12 @@ title: 模板中的子资源
 description: 介绍如何在 Azure 资源管理器模板中设置子资源的名称和类型。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122009"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207887"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>设置子资源的名称和类型
 
@@ -27,7 +27,7 @@ ms.locfileid: "76122009"
 ]
 ```
 
-下一个示例演示父资源之外的子资源。 如果父资源未部署在同一个模板中，或者如果要使用[copy](create-multiple-instances.md)来创建多个子资源，则可以使用此方法。
+下一个示例演示父资源之外的子资源。 如果父资源未部署在同一个模板中，或者如果要使用[copy](copy-resources.md)来创建多个子资源，则可以使用此方法。
 
 ```json
 "resources": [

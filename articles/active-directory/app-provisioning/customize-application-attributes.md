@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161607"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207190"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -300,7 +300,7 @@ SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，�
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>还原默认属性和属性映射
 
-如果需要重新启动现有映射并将其重置回默认状态，可以选中 "**还原默认映射**" 复选框并保存配置。 这样做会设置所有映射，就像应用程序库中刚添加到 Azure AD 租户的应用程序一样。
+如果需要重新启动现有映射并将其重置回默认状态，可以选中 "**还原默认映射**" 复选框并保存配置。 这样做会设置所有映射和范围筛选器，就像应用程序库中刚添加到 Azure AD 租户的应用程序一样。
 
 如果选择此选项，则在预配服务正在运行时，会有效地强制执行所有用户的重新同步。
 

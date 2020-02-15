@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963644"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210253"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -62,7 +62,7 @@ ms.locfileid: "76963644"
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 [Azure 存储队列触发器和绑定](functions-bindings-storage-queue.md#trigger---poison-messages)文档中的**处理有害队列消息**。 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 **Azure 存储队列触发器和绑定**文档中的[处理有害队列消息](functions-bindings-storage-queue.md#trigger---poison-messages)。 
 
 ## <a name="scalability-best-practices"></a>可伸缩性最佳做法
 
@@ -104,15 +104,15 @@ FUNCTIONS_WORKER_PROCESS_COUNT 适用于在扩展应用程序以满足需求时�
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>尽量批量接收消息
 
-某些触发器（例如事件中心）允许通过单次调用接收一批消息。  批处理消息可大幅提升性能。  可以根据 [host.json 参考文档](functions-host-json.md)中的详述，在 `host.json` 文件中配置最大批大小
+某些触发器（例如事件中心）允许通过单次调用接收一批消息。  批处理消息可大幅提升性能。  可以根据 `host.json`host.json 参考文档[中的详述，在 ](functions-host-json.md) 文件中配置最大批大小
 
-对于C#函数，可以将类型更改为强类型数组。  例如，方法签名可以是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  对于其他语言，你需要将 `function.json` 中的基数属性显式设置为 `many` 以启用批处理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
+对于C#函数，可以将类型更改为强类型数组。  例如，方法签名可以是 `EventData sensorEvent`，而不是 `EventData[] sensorEvent`。  对于其他语言，你需要将 `function.json` 中的基数属性显式设置为 `many` 以启用批处理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>配置主机行为以更好地处理并发性
 
 使用函数应用中的 `host.json` 文件可以配置主机运行时和触发器行为。  除了批处理行为以外，还可以管理大量触发器的并发性。 调整这些选项中的值往往有助于每个实例根据被调用函数的需求适当缩放。
 
-Host json 文件中的设置适用于应用中的所有函数，该函数的*单个实例*内。 例如，如果你有一个具有两个 HTTP 函数的 function app，并且[`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings)的请求设置为25，则对 HTTP 触发器的请求将计入共享的25个并发请求。  当该函数应用扩展为10个实例时，两个函数有效地允许250个并发请求（每个实例有10个实例 * 25 个并发请求）。 
+Host json 文件中的设置适用于应用中的所有函数，该函数的*单个实例*内。 例如，如果你有一个具有两个 HTTP 函数的 function app，并且[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)的请求设置为25，则对 HTTP 触发器的请求将计入共享的25个并发请求。  当该函数应用扩展为10个实例时，两个函数有效地允许250个并发请求（每个实例有10个实例 * 25 个并发请求）。 
 
 其他主机配置选项可在 "[主机" 配置一文](functions-host-json.md)中找到。
 

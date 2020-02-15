@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7461f378a4f95a43971f5893fe70739511e942ff
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731995"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212212"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
 
@@ -32,7 +32,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 > * 配置应用以在连接到应用程序配置时使用托管标识。
 > * （可选）将应用配置为在通过应用配置 Key Vault 引用连接到 Key Vault 时使用托管标识。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须满足以下先决条件：
 
@@ -95,7 +95,6 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
     ```csharp-interactive
     using Azure.Identity;
-    using Microsoft.Azure.Services.AppAuthentication;
     ```
 
 1. 如果只希望访问直接存储在应用程序配置中的值，请通过替换 `config.AddAzureAppConfiguration()` 方法来更新 `CreateWebHostBuilder` 方法。
@@ -117,7 +116,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 2。x](#tab/core3x)
+    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -151,7 +150,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 2。x](#tab/core3x)
+    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

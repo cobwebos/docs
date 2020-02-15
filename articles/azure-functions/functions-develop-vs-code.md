@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 开发 Azure Functions
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Functions 扩展来开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964001"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210236"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 开发 Azure Functions
 
@@ -38,7 +38,7 @@ Azure Functions 扩展提供以下好处：
 > [!IMPORTANT]
 > 不要为单一函数应用混合本地开发和门户开发。 从本地项目发布到函数应用时，部署过程会覆盖在门户中开发的任何函数。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在 Visual Studio Code [适用于 visual studio code 的 azure functions 扩展][适用于 visual studio code 的 azure functions 扩展]之前，必须满足以下要求：
 
@@ -71,7 +71,7 @@ Azure Functions 扩展提供以下好处：
 
     ![选择 HTTP 触发器模板](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. 为 "函数名称" 键入**HttpExample** ，然后选择 Enter，然后选择 "**函数**授权"。 此授权级别要求你在调用函数终结点时提供[功能键](functions-bindings-http-webhook.md#authorization-keys)。
+1. 为 "函数名称" 键入**HttpExample** ，然后选择 Enter，然后选择 "**函数**授权"。 此授权级别要求你在调用函数终结点时提供[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![选择函数授权](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -184,7 +184,7 @@ Visual Studio Code 使你可以通过使用一组方便的提示向函数 json �
 
 下面是用于定义新的存储输出绑定的示例提示：
 
-| Prompt | 值 | Description |
+| Prompt | 值 | 说明 |
 | -------- | ----- | ----------- |
 | **选择绑定方向** | `out` | 该绑定是输出绑定。 |
 | **选择方向绑定** | `Azure Queue Storage` | 该绑定是 Azure 存储队列绑定。 |
@@ -248,7 +248,7 @@ Visual Studio Code 允许你将函数项目直接发布到 Azure。 在此过程
 
 1. 按照提示操作，提供以下信息：
 
-    | Prompt | 值 | Description |
+    | Prompt | 值 | 说明 |
     | ------ | ----- | ----------- |
     | 在 Azure 中选择 function app | 在 Azure 中创建新 Function App | 在下一个提示符下，键入标识新函数应用的全局唯一名称，然后选择 "Enter"。 函数应用名称的有效字符包括 `a-z`、`0-9` 和 `-`。 |
     | 选择 OS | Windows | 函数应用在 Windows 上运行。 |
@@ -277,7 +277,7 @@ Visual Studio Code 允许你将函数项目直接发布到 Azure。 在此过程
 
 ## <a name="get-the-url-of-the-deployed-function"></a>获取已部署函数的 URL
 
-若要调用 HTTP 触发的函数，需要将函数的 URL 部署到 function app。 此 URL 包括任何所需的[功能键](functions-bindings-http-webhook.md#authorization-keys)。 您可以使用此扩展获取已部署函数的这些 Url。
+若要调用 HTTP 触发的函数，需要将函数的 URL 部署到 function app。 此 URL 包括任何所需的[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。 您可以使用此扩展获取已部署函数的这些 Url。
 
 1. 选择 F1 打开命令面板，然后搜索并运行命令**Azure Functions：复制函数 URL**。
 
@@ -413,7 +413,7 @@ HTTP 触发器的请求 URL 显示在终端的输出中。 当项目在本地运
 
 Azure Functions 扩展在区域中提供了一个有用的图形界面，用于与 Azure 中的函数应用交互。 命令面板（F1）中也提供了相同的功能。 以下 Azure Functions 命令可用：
 
-|Azure Functions 命令  | Description  |
+|Azure Functions 命令  | 说明  |
 |---------|---------|
 |**添加新设置**  |  在 Azure 中创建新的应用程序设置。 若要了解详细信息，请参阅[发布应用程序设置](#publish-application-settings)。 你可能还需要将[此设置下载到本地设置](#download-settings-from-azure)。 |
 | **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 若要了解详细信息，请参阅[Azure Functions 的持续部署](functions-continuous-deployment.md)。 |

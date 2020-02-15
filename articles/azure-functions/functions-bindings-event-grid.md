@@ -1,24 +1,25 @@
 ---
-title: Azure Functions 的事件网格触发器
+title: 适用于 Azure Functions 的 Azure 事件网格绑定
 description: 了解如何处理 Azure Functions 中的事件网格事件。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/04/2018
+ms.date: 02/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df851a79ef3fbb7473e100619f58b7f35bce1d45
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167504"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212013"
 ---
-# <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions 的事件网格触发器
+# <a name="azure-event-grid-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格绑定
 
 本文介绍如何处理 Azure Functions 中的[事件网格](../event-grid/overview.md)事件。 有关如何在 HTTP 终结点中处理事件网格消息的详细信息，请参阅[接收事件到 http 终结](../event-grid/receive-events.md)点。
 
 事件网格是一个 Azure 服务，它可以发送 HTTP 请求来告知发布方中发生的事件情况。 发布方是发起事件的服务或资源。 例如，Azure Blob 存储帐户是发布方，而 [Blob 上传或删除是事件](../storage/blobs/storage-blob-event-overview.md)。 某些 [Azure 服务原生支持向事件网格发布事件](../event-grid/overview.md#event-sources)。
 
-事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文将会介绍在收到事件网格发出的事件时，如何使用事件网格触发器调用某个函数。
+事件处理程序接收并处理事件。 Azure Functions 是[原生支持处理事件网格事件的多个 Azure 服务](../event-grid/overview.md#event-handlers)之一。 本文介绍如何使用事件网格触发器在事件从事件网格接收到事件时调用函数，以及如何使用输出绑定将事件发送到[事件网格自定义主题](../event-grid/post-to-custom-topic.md)。
 
 如果愿意，可以使用 HTTP 触发器处理事件网格事件;请参阅[将事件接收到 HTTP 终结点](../event-grid/receive-events.md)。 目前，在以 [CloudEvents 架构](../event-grid/cloudevents-schema.md#azure-functions)传递事件时，无法为 Azure Functions 应用使用事件网格触发器。 应转而使用 HTTP 触发器。
 
@@ -26,7 +27,7 @@ ms.locfileid: "77167504"
 
 ## <a name="packages---functions-2x-and-higher"></a>包-函数2.x 和更高版本
 
-[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包 2.x 版中提供了事件网格触发器。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub 存储库中提供了此包的源代码。
+事件网格绑定在[EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet 包版本2.x 中提供，共个版本。 [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub 存储库中提供了此包的源代码。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -36,7 +37,11 @@ ms.locfileid: "77167504"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>示例
+## <a name="trigger"></a>触发器
+
+使用函数触发器来响应发送到事件网格主题的事件。
+
+## <a name="trigger---example"></a>触发器 - 示例
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -66,7 +71,7 @@ namespace Company.Function
 }
 ```
 
-有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
+有关详细信息，请参阅包、[特性](#trigger---attributes)、[配置](#trigger---configuration)和[用法](#trigger---usage)。
 
 ### <a name="version-1x"></a>版本 1.x
 
@@ -127,7 +132,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-有关详细信息，请参阅包、[特性](#attributes)、[配置](#configuration)和[用法](#usage)。
+有关详细信息，请参阅包、[特性](#trigger---attributes)、[配置](#trigger---configuration)和[用法](#trigger---usage)。
 
 ### <a name="version-1x"></a>版本 1.x
 
@@ -284,7 +289,7 @@ public class EventSchema {
 
 ---
 
-## <a name="attributes"></a>属性
+## <a name="trigger---attributes"></a>触发器 - 特性
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -316,11 +321,11 @@ Python 不支持特性。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)批注允许您通过提供配置值以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#example)和[配置](#configuration)部分。
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java)批注允许您通过提供配置值以声明方式配置事件网格绑定。 有关更多详细信息，请参阅[示例](#trigger---example)和[配置](#trigger---configuration)部分。
 
 ---
 
-## <a name="configuration"></a>配置
+## <a name="trigger---configuration"></a>触发器 - 配置
 
 下表解释了在 function.json 文件中设置的绑定配置属性。 无法在 `EventGridTrigger` 特性中设置任何构造函数参数或属性。
 
@@ -330,7 +335,7 @@ Python 不支持特性。
 | direction | 必需 - 必须设置为 `in`。 |
 | name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
-## <a name="usage"></a>使用情况
+## <a name="trigger---usage"></a>触发器 - 用法
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -370,11 +375,11 @@ Python 不支持特性。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-事件网格事件实例可通过与类型为 `EventSchema`的 `EventGridTrigger` 属性关联的参数提供。 有关更多详细信息，请参阅[示例](#example)。
+事件网格事件实例可通过与类型为 `EventSchema`的 `EventGridTrigger` 属性关联的参数提供。 有关更多详细信息，请参阅[示例](#trigger---example)。
 
 ---
 
-## <a name="event-schema"></a>事件架构
+## <a name="trigger---event-schema"></a>触发器-事件架构
 
 事件网格事件的数据在 HTTP 请求的正文中以 JSON 对象形式接收。 该 JSON 如以下示例所示：
 
@@ -412,7 +417,7 @@ Python 不支持特性。
 
 `EventGridEvent` 类型只定义顶级属性；`Data` 属性是 `JObject`。
 
-## <a name="create-a-subscription"></a>创建订阅
+## <a name="trigger---create-a-subscription"></a>触发器-创建订阅
 
 若要开始接收事件网格 HTTP 请求，请创建一个事件网格订阅，用于指定可调用函数的终结点 URL。
 
@@ -486,7 +491,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_exten
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-这是一个管理 API，因此它需要函数应用[主密钥](functions-bindings-http-webhook.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和主密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。
+这是一个管理 API，因此它需要函数应用[主密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。 请不要混淆系统密钥（用于调用事件网格触发器函数）和主密钥（用于针对函数应用执行管理任务）。 订阅事件网格主题时，请务必使用系统密钥。
 
 下面是提供系统密钥的响应示例：
 
@@ -508,11 +513,11 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 > [!IMPORTANT]
 > 主密钥提供对函数应用的管理员访问权限。 不要与第三方共享此密钥或将其分发到本机客户端应用程序中。
 
-有关详细信息，请参阅 HTTP 触发器参考文章中的[授权密钥](functions-bindings-http-webhook.md#authorization-keys)。
+有关详细信息，请参阅 HTTP 触发器参考文章中的[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
 或者，可以发送 HTTP PUT 以自行指定密钥值。
 
-## <a name="local-testing-with-viewer-web-app"></a>使用查看器 Web 应用进行本地测试
+## <a name="trigger---local-testing-with-viewer-web-app"></a>触发器-通过查看器 web 应用进行本地测试
 
 若要在本地测试事件网格触发器，必须获取从云中的来源位置传送到本地计算机的事件网格 HTTP 请求。 实现此目的的方法之一是在线捕获请求，然后手动将其重新发送到本地计算机：
 
@@ -584,6 +589,239 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 事件网格触发器函数将会执行，并显示类似于以下示例的日志：
 
 ![事件网格触发器函数日志示例](media/functions-bindings-event-grid/eg-output.png)
+
+## <a name="output"></a>输出
+
+使用事件网格输出绑定将事件写入自定义主题。 您必须具有[该自定义主题的有效访问密钥](../event-grid/security-authentication.md#custom-topic-publishing)。
+
+> [!NOTE]
+> 事件网格输出绑定不支持共享访问签名（SAS 令牌）。 必须使用该主题的访问密钥。
+
+在尝试实现输出绑定之前，请确保所需的包引用已准备就绪。
+
+> [!IMPORTANT]
+> 事件网格输出绑定仅适用于函数1.x 和更高版本。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+下面的示例演示一个[ C#函数](functions-dotnet-class-library.md)，该函数使用方法返回值作为输出将消息写入事件网格自定义主题：
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    return new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+下面的示例演示如何使用 `IAsyncCollector` 接口发送一批消息。
+
+```csharp
+[FunctionName("EventGridAsyncOutput")]
+public static async Task Run(
+    [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+    [EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]IAsyncCollector<EventGridEvent> outputEvents,
+    ILogger log)
+{
+    for (var i = 0; i < 3; i++)
+    {
+        var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+        await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+下面的示例演示了*函数 json*文件中的事件网格输出绑定数据。
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+下面是C#创建一个事件的脚本代码：
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogger log)
+{
+    outputEvent = new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+下面是C#用于创建多个事件的脚本代码：
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent, ILogger log)
+{
+    outputEvent.Add(new EventGridEvent("message-id-1", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+    outputEvent.Add(new EventGridEvent("message-id-2", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+下面的示例演示了*函数 json*文件中的事件网格输出绑定数据。
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+下面是创建单个事件的 JavaScript 代码：
+
+```javascript
+module.exports = async function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = {
+        id: 'message-id',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    };
+    context.done();
+};
+```
+
+下面是创建多个事件的 JavaScript 代码：
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = [];
+
+    context.bindings.outputEvent.push({
+        id: 'message-id-1',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.bindings.outputEvent.push({
+        id: 'message-id-2',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.done();
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+事件网格输出绑定不适用于 Python。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+事件网格输出绑定对于 Java 不可用。
+
+---
+
+## <a name="output---attributes-and-annotations"></a>输出-属性和批注
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+对于[ C#类库](functions-dotnet-class-library.md)，请使用[EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs)属性。
+
+该特性的构造函数采用包含自定义主题名称的应用设置的名称，以及包含主题键的应用设置的名称。 有关这些设置的详细信息，请参阅[输出 - 配置](#output---configuration)。 下面是 `EventGrid` 特性的示例：
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    ...
+}
+```
+
+有关完整示例，请参阅[输出 - C# 示例](#output)。
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+C#脚本不支持特性。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支持特性。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+事件网格输出绑定不适用于 Python。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+事件网格输出绑定对于 Java 不可用。
+
+---
+
+## <a name="output---configuration"></a>输出 - 配置
+
+下表解释了在 function.json 文件和 `EventGrid` 特性中设置的绑定配置属性。
+
+|function.json 属性 | Attribute 属性 |说明|
+|---------|---------|----------------------|
+|type | 不适用 | 必须设置为 "eventGrid"。 |
+|direction | 不适用 | 必须设置为“out”。 在 Azure 门户中创建绑定时，会自动设置该参数。 |
+|name | 不适用 | 函数代码中使用的表示事件的变量名称。 |
+|**topicEndpointUri** |**TopicEndpointUri** | 包含自定义主题的 URI 的应用设置的名称，例如 `MyTopicEndpointUri`。 |
+|**topicKeySetting** |**TopicKeySetting** | 应用设置的名称，该设置包含自定义主题的访问密钥。 |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> 确保将 "`TopicEndpointUri` 配置" 属性的值设置为包含自定义主题的 URI 的应用设置的名称。 不要在此属性中直接指定自定义主题的 URI。
+
+## <a name="output---usage"></a>输出 - 用法
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+使用方法参数（例如 `out EventGridEvent paramName`）发送消息。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+
+# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+
+使用方法参数（例如 `out EventGridEvent paramName`）发送消息。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 若要编写多条消息，可以使用 `ICollector<EventGridEvent>` 或 `IAsyncCollector<EventGridEvent>` 代替 `out EventGridEvent`。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+使用 `context.bindings.<name>`，其中 `<name>` 是*函数 json*的 `name` 属性中指定的值来访问输出事件。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+事件网格输出绑定不适用于 Python。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+事件网格输出绑定对于 Java 不可用。
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

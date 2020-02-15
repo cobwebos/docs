@@ -3,12 +3,12 @@ title: 模板函数-资源
 description: 介绍可在 Azure 资源管理器模板中使用的用于检索资源相关值的函数。
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120537"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207002"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的资源函数
 
@@ -34,14 +34,14 @@ extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ..
 
 返回[扩展资源](../management/extension-resource-types.md)的资源 ID，它是应用于要添加到其功能的其他资源的资源类型。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceId |是 |string |应用扩展资源的资源的资源 ID。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
+| resourceId |是 |字符串 |应用扩展资源的资源的资源 ID。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -114,17 +114,17 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 
 此函数的语法因列表操作的名称而异。 每个实现都为支持列表操作的资源类型返回值。 操作名称必须以 `list` 开头。 一些常见用法是 `listKeys` 和 `listSecrets`。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的唯一标识符。 |
-| apiVersion |是 |string |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
-| functionValues |是 |对象 | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的唯一标识符。 |
+| apiVersion |是 |字符串 |资源运行时状态的 API 版本。 通常情况下，格式为 **yyyy-mm-dd**。 |
+| functionValues |否 |对象 (object) | 具有函数值的对象。 仅为支持接收具有参数值的对象的函数提供此对象，例如存储帐户上的 listAccountSas。 本文中演示了传递函数值的示例。 |
 
 ### <a name="valid-uses"></a>有效使用
 
-只能在资源定义的属性和模板或部署的输出部分中使用 list 函数。 与[属性迭代](create-multiple-instances.md#property-iteration)一起使用时，可以使用 list 函数进行 `input`，因为该表达式被分配到资源属性。 不能将它们与 `count` 一起使用，因为必须在解决列表函数之前确定计数。
+只能在资源定义的属性和模板或部署的输出部分中使用 list 函数。 与[属性迭代](copy-properties.md)一起使用时，可以使用 list 函数进行 `input`，因为该表达式被分配到资源属性。 不能将它们与 `count` 一起使用，因为必须在解决列表函数之前确定计数。
 
 ### <a name="implementations"></a>实现形式
 
@@ -354,7 +354,7 @@ list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 }
 ```
 
-## <a name="providers"></a>提供程序
+## <a name="providers"></a>providers
 
 ```json
 providers(providerNamespace, [resourceType])
@@ -362,12 +362,12 @@ providers(providerNamespace, [resourceType])
 
 返回有关资源提供程序及其支持的资源类型的信息。 如果未提供资源类型，则该函数将返回资源提供程序支持的所有类型。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |是 |string |提供程序的命名空间 |
-| resourceType |是 |string |指定的命名空间中的资源类型。 |
+| providerNamespace |是 |字符串 |提供程序的命名空间 |
+| resourceType |否 |字符串 |指定的命名空间中的资源类型。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -431,7 +431,7 @@ providers(providerNamespace, [resourceType])
 }
 ```
 
-## <a name="reference"></a>参考
+## <a name="reference"></a>reference
 
 ```json
 reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
@@ -439,13 +439,13 @@ reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 
 返回表示资源的运行时状态的对象。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceName 或 resourceIdentifier |是 |string |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
-| apiVersion |是 |string |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
-| 'Full' |是 |string |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
+| resourceName 或 resourceIdentifier |是 |字符串 |资源的名称或唯一标识符。 当引用当前模板中的资源时，请仅提供资源名称作为参数。 引用以前部署的资源时，或资源名称不明确时，提供资源 ID。 |
+| apiVersion |否 |字符串 |指定的资源的 API 版本。 如果资源不是在同一模板中预配的，请包含此参数。 通常情况下，格式为 **yyyy-mm-dd**。 有关资源的有效 API 版本，请参阅[模板参考](/azure/templates/)。 |
+| 'Full' |否 |字符串 |一个值，指定是否要返回完整资源对象。 如果未指定 `'Full'`，仅返回资源的属性对象。 完整对象包括资源 ID 和位置等值。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -496,7 +496,7 @@ reference 函数检索以前部署的资源或在当前模板中部署的资源�
 
 ### <a name="valid-uses"></a>有效使用
 
-reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](create-multiple-instances.md#property-iteration)一起使用时，可以使用 reference 函数进行 `input`，因为该表达式被分配到资源属性。 不能将其与 `count` 一起使用，因为必须先确定计数，然后才能解析引用函数。
+reference 函数只能用在资源定义的 properties 中以及模板或部署的 outputs 节中。 与[属性迭代](copy-properties.md)一起使用时，可以使用 reference 函数进行 `input`，因为该表达式被分配到资源属性。 不能将其与 `count` 一起使用，因为必须先确定计数，然后才能解析引用函数。
 
 不能在[嵌套模板](linked-templates.md#nested-template)的输出中使用 reference 函数来返回已在嵌套模板中部署的资源。 而是使用[链接的模板](linked-templates.md#linked-template)。
 
@@ -754,15 +754,15 @@ resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [
 
 返回资源的唯一标识符。 如果资源名称不确定或未设置在相同的模板内，请使用此函数。 返回的标识符的格式取决于部署是在资源组、订阅、管理组还是租户的作用域中发生。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |是 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceGroupName |是 |string |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组范围内部署时提供此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
+| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 仅在资源组或订阅的范围内部署时提供此值。 |
+| resourceGroupName |否 |字符串 |默认值为当前资源组。 如果需要检索另一个资源组中的资源，请指定此值。 仅在资源组范围内部署时提供此值。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -954,14 +954,14 @@ subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceN
 
 返回在订阅级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |是 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
+| subscriptionId |否 |字符串（GUID 格式） |默认值为当前订阅。 如果需要检索另一个订阅中的资源，请指定此值。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -1038,13 +1038,13 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 返回在租户级别部署的资源的唯一标识符。
 
-### <a name="parameters"></a>参数
+### <a name="parameters"></a>parameters
 
-| 参数 | 必需 | 类型 | 说明 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
-| resourceType |是 |string |资源类型，包括资源提供程序命名空间。 |
-| resourceName1 |是 |string |资源的名称。 |
-| resourceName2 |是 |string |下一个资源名称段（如果需要）。 |
+| resourceType |是 |字符串 |资源类型，包括资源提供程序命名空间。 |
+| resourceName1 |是 |字符串 |资源的名称。 |
+| resourceName2 |否 |字符串 |下一个资源名称段（如果需要）。 |
 
 当资源类型包括更多段时，继续添加资源名称作为参数。
 
@@ -1064,6 +1064,6 @@ tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
 
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](linked-templates.md)。
-* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+* 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 * 要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

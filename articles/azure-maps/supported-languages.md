@@ -1,19 +1,19 @@
 ---
 title: 本地化支持 |Microsoft Azure 映射
 description: 本文介绍 Microsoft Azure Maps 中的服务所支持的语言。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025429"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208142"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
 
@@ -22,10 +22,10 @@ Azure Maps 支持基于国家/地区的各种语言和视图。 本文提供支�
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps 支持的语言
 
-Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供了每项服务支持的语言代码。  
+Azure Maps 已在其服务中使用多种语言进行了本地化。 下表提供了每项服务支持的语言代码。  
   
 
-| ID         | 名称                   |  地图 | 搜索 | 路线 | 天气 | 交通事故 | JS 地图控件 |
+| ID         | 名称                   |  地图 | 搜索 | 路由 | 天气 | 交通事故 | JS 地图控件 |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | 南非荷兰语              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | 阿拉伯语                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -35,7 +35,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | eu-ES      | 巴斯克语                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | 保加利亚语              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ca-ES      | 加泰罗尼亚语                |       |    ✓   |         |    ✓      |                   |                |
-| zh-HanS    | 简体中文   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanS    | 中文(简体)   |       |  zh-CN |         |     zh-CN   |                   |                |
 | zh-HanT    | 中文(香港特别行政区)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | 中文（台湾）  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | 克罗地亚语               |       |    ✓   |         |    ✓      |                   |                |
@@ -59,7 +59,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | he-IL      | 希伯来语                 |       |    ✓   |         |     ✓    |         ✓         |                |
 | hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | 匈牙利语              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| 为-IS      | 冰岛语              |       |       |         |     ✓    |                   |                |
+| is-IS      | 冰岛语              |       |       |         |     ✓    |                   |                |
 | id-ID      | 印度尼西亚语             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | 意大利语                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | 日语               |       |        |         |     ✓    |                   |                |
@@ -71,7 +71,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 | lt-LT      | 立陶宛语             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | mk-MK      | 马其顿语             |       |       |         |     ✓    |                   |                |
 | ms-MY      | 马来语(拉丁语系)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
-| mr      | 马拉地语                 |       |       |         |     ✓    |                   |                |
+| mr-IN      | 马拉地语                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | 书面挪威语       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | 非特定真实语言 - 本地脚本中所有区域的官方语言（如果可用） |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | 非特定真实语言 - 拉丁语外来语。 将使用拉丁语脚本（如果可用） |   ✓     |        |         |         |                |        ✓         |
@@ -109,7 +109,7 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 >
 > 2019年8月1日之后， **View**参数将为上面列出的新区域/国家/地区定义返回的映射内容。 Azure Maps **View**参数（也称为 "用户区域参数"）是一个由两个3166字母组成的国家/地区代码，它将显示该国家/地区的正确地图，其中指定通过 Azure Maps 服务返回的 geopolitically 争议内容集，包括地图上显示的边框和标签。 
 
-确保已根据服务所使用的 REST Api 和 Sdk 设置了 "**查看**" 参数。
+请确保为服务所使用的 REST Api 和 Sdk 设置 "**查看**" 参数。
 >  
 >
 >  **Rest Api：**
@@ -142,12 +142,12 @@ Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供�
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-默认情况下，即使未在请求中定义 View 参数，也会将其设置为**统一**。 确定用户的位置，然后为该位置正确设置 "**查看**" 参数。 或者，您可以设置 "View = Auto"，它将基于请求的 IP 地址返回映射数据。  Azure Maps 中的**View**参数必须遵循适用的法律，其中包括有关如何映射国家/地区的法律，其中的地图、图像和其他数据和第三方内容可以通过 Azure Maps 提供。
+默认情况下，即使未在请求中定义 View 参数，也会将其设置为**统一**。 确定用户的位置。 然后，正确设置该位置的**View**参数。 或者，您可以设置 "View = Auto"，它将基于请求的 IP 地址返回映射数据。  Azure Maps 中的**View**参数必须遵循适用的法律，其中包括有关如何映射国家/地区的法律，其中的地图、图像和其他数据和第三方内容可以通过 Azure Maps 提供。
 
 
 下表提供了支持的视图。
 
-| 查看         | Description                            |  地图 | 搜索 | JS Map Control |
+| 查看         | 说明                            |  地图 | 搜索 | JS Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | 阿拉伯联合酋长国（阿拉伯视图）    |   ✓   |        |     ✓          |
 | AR           | 阿根廷（Argentinian 视图）           |   ✓   |    ✓   |     ✓          |

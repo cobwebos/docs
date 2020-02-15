@@ -1,19 +1,19 @@
 ---
 title: 地理编码覆盖率 |Microsoft Azure 映射
 description: 将位置地址转换为纬度和经度坐标的过程称为地理编码。 在本文中，你将了解 Microsoft Azure Maps 中的地理编码覆盖区域。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911631"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210049"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
@@ -34,14 +34,14 @@ ms.locfileid: "75911631"
 | 安提瓜和巴布达                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | 阿根廷                                           |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | 阿鲁巴                                               |                 |                |              |      ✓     |          ✓         |
-| 巴哈马群岛                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| 巴哈马                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | 巴巴多斯                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | 伯利兹                                              |                 |                |              |      ✓     |          ✓         |
 | 百慕大群岛                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | 玻利维亚                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | 博内尔岛、圣尤斯特歇斯和萨巴岛                   |                 |                |              |      ✓     |          ✓         |
 | 巴西                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| 加拿大                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Canada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 开曼群岛                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | 智利                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | 哥伦比亚                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -86,7 +86,7 @@ ms.locfileid: "75911631"
 | 英属维尔京群岛                              |                 |                |              |      ✓     |          ✓         |
 | 美属维尔京群岛                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
-## <a name="asia-pacific"></a>亚太
+## <a name="asia-pacific"></a>亚太区
 
 | 国家/地区                                      | 地址点 |门牌号 | 街道级 | 市/县级 | 兴趣点 |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
@@ -135,7 +135,7 @@ ms.locfileid: "75911631"
 | 所罗门群岛                                     |                 |                |              |      ✓     |          ✓         |
 | 南千岛群岛                                     |        ✓        |                |              |      ✓     |          ✓         |
 | 斯里兰卡                                           |                 |                |              |      ✓     |          ✓         |
-| 台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 中国台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 泰国                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | 托克劳                                             |                 |                |              |      ✓     |          ✓         |
 | 汤加                                               |                 |                |              |      ✓     |          ✓         |
@@ -210,7 +210,7 @@ ms.locfileid: "75911631"
 | 土耳其                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 土库曼斯坦                                        |                 |                |              |      ✓     |          ✓         |
 | 乌克兰                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| 英国                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| United Kingdom                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 乌兹别克斯坦                                          |                 |                |              |      ✓     |          ✓         |
 | 梵蒂冈                                        |                 |                |       ✓      |      ✓     |          ✓         |
 

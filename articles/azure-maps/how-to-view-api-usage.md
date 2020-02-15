@@ -1,19 +1,19 @@
 ---
 title: 查看 Azure Maps API 使用情况指标 |Microsoft Azure 映射
 description: 本文介绍如何在 Azure 门户中查看 Microsoft Azure 映射 API 调用的指标。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198116"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208679"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>查看 Azure Maps API 使用情况指标
 
@@ -42,7 +42,7 @@ ms.locfileid: "77198116"
 
       ![Azure Maps 使用情况指标 "窗格](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”。 默认情况下，时间范围设置为 24 小时。 单击后，您将看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间。 单击 **“应用”** 。
+5. 接下来，可通过单击“过去 24 小时(自动)”来选择“时间范围”。 默认情况下，时间范围设置为 24 小时。 单击后，您将看到所有可选择的时间范围。 可选择“时间粒度”，然后在同一下拉菜单中选择显示“本地”或“GMT”时间。 单击“应用”。
 
     ![Azure Maps 度量值时间范围](media/how-to-view-api-usage/time-range.png)
 

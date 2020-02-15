@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967349"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251187"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -27,9 +27,9 @@ ms.locfileid: "75967349"
 > API 管理仅接受[主机标头](https://tools.ietf.org/html/rfc2616#section-14.23)值与默认域名或任何已配置的自定义域名匹配的请求。
 
 > [!WARNING]
-> 想要使用证书固定改进其应用程序安全性的客户必须使用自定义域名和他们管理的证书，而不是使用默认证书。 固定默认证书的客户将会硬性依赖于他们不控制的证书的属性，这不是建议的做法。
+> 希望使用证书固定来改善其应用程序安全性的客户必须使用自定义域名和他们管理的证书，而不是默认证书。 固定默认证书的客户将会硬性依赖于他们不控制的证书的属性，这不是建议的做法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -55,7 +55,7 @@ ms.locfileid: "75967349"
     - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`）。
 
     > [!NOTE]
-    > 只有可用于配置的**网关**终结点才可用于配置。
+    > 仅**网关**终结点可用于在消耗层中进行配置。
     > 可以更新所有终结点或者更新其中的一部分。 通常，客户更新**网关**（此 URL 用于调用通过 api 管理公开的 api）和**门户**（开发人员门户 URL）。
     > **管理**终结点和**SCM**终结点仅由 API 管理实例所有者在内部使用，因此不太频繁地分配自定义域名。
     > **高级**层支持为**网关**终结点设置多个主机名。
@@ -73,7 +73,7 @@ ms.locfileid: "75967349"
     > 建议使用 Azure Key Vault 来管理证书，并将其设置为 autorotate。
     > 如果使用 Azure Key Vault 管理自定义域 SSL 证书，请确保将证书[作为_证书_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate)（而不是_机密_）插入 Key Vault。
     >
-    > 若要获取 SSL 证书，API 管理必须对包含该证书的 Azure Key Vault 具有获取机密权限的列表。 使用时 Azure 门户会自动完成所有必需的配置步骤。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的 "托管标识" 页，确保已启用托管标识，并记下该页面上显示的主体 id。 其次，授予权限列表，并在包含证书的 Azure Key Vault 上获取对此主体 id 的机密权限。
+    > 若要获取 SSL 证书，API 管理必须具有列表并获取包含证书的 Azure Key Vault 的机密权限。 使用时 Azure 门户会自动完成所有必需的配置步骤。 使用命令行工具或管理 API 时，必须手动授予这些权限。 此过程分为两个步骤。 首先，使用 API 管理实例上的 "托管标识" 页，确保已启用托管标识，并记下该页面上显示的主体 id。 其次，授予权限列表，并在包含证书的 Azure Key Vault 上获取对此主体 id 的机密权限。
     >
     > 如果将证书设置为 autorotate，则 API 管理将自动选取最新版本，而不会对服务造成任何停机（如果你的 API 管理层在开发人员层以外的所有层中都有 SLA-i. e）。
 

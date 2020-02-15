@@ -8,25 +8,25 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086890"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211426"
 ---
 ## <a name="general-entity-types"></a>常规实体类型：
 
-### <a name="person"></a>Person
+### <a name="person"></a>人员
 
 识别文本中的人员姓名。
 
 语言：
-* 公共预览版： `English`
+* 公共预览版： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子类型名称 | 说明                                                      | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------|---------------------------------------|
-| 不可用          | 可识别的人员姓名，例如 `Bill Gates`、`Marie Curie` | `2019-10-01`                          | 
+| 空值          | 可识别的人员姓名，例如 `Bill Gates`、`Marie Curie` | `2019-10-01`                          | 
 
 ### <a name="persontype"></a>PersonType
 人员持有的作业类型或角色。
@@ -36,32 +36,32 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                                                                | 开始使用模型版本 |
 |--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 作业类型例如 `civil engineer`、`salesperson`、`chef`、`librarian`、`nursing aide` | `2020-02-01`                           |
+| 空值          | 作业类型例如 `civil engineer`、`salesperson`、`chef`、`librarian`、`nursing aide` | `2020-02-01`                           |
 
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
 自然和人工特征点、结构、地理功能和地缘政治实体。
 
 语言：
 
-* 公共预览版： `English`
+* 公共预览版： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子类型名称              | 说明                                                                              | 开始使用模型版本 |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用                       | 位置，例如 `Atlantic Ocean`、`library`、`Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
-| 地缘政治实体（GPE） | 城市、国家/地区，例如 `Seattle`、`Pennsylvania`、`South Africa``Tokyo` | `2020-02-01`                           |
+| 空值                       | 位置，例如 `Atlantic Ocean`、`library`、`Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
+| 地缘政治实体（GPE）-仅限英语| 城市、国家/地区，例如 `Seattle`、`Pennsylvania`、`South Africa``Tokyo` | `2020-02-01`                           |
 
-### <a name="organization"></a>单位  
+### <a name="organization"></a>组织  
 
 认识到的组织、公司、机构和其他人组。 例如：公司、政治组、音乐带、运动俱乐部、政府机构和公共组织。 各族和 religions 不包含在此实体类型中。 
 
 语言： 
 
-* 公共预览版： `English`
+* 公共预览版： `Arabic`、`Czech`、`Chinese-Simplified`、`Danish`、`Dutch`、`English`、`Finnish`、`French`、`German`、`Hungarian`、`Italian`、`Japanese`、`Korean`、`Norwegian (Bokmål)`、`Polish`、`Portuguese (Portugal)`、`Portuguese (Brazil)`、`Russian`、`Spanish`、`Swedish` 和 `Turkish`
 
 | 子类型名称 | 说明                                                                                             | 开始使用模型版本 |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 组织，例如 `Microsoft`、`NASA`、`National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
+| 空值          | 组织，例如 `Microsoft`、`NASA`、`National Oceanic and Atmospheric Administration``VOA` | `2019-10-01`                           |
 
 ### <a name="event"></a>事件  
 
@@ -73,9 +73,9 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                                            | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 事件，例如 `wedding`、`hurricane`、`car accident`、`solar eclipse`、`American Revolution` | `2020-02-01`                           |
+| 空值          | 事件，例如 `wedding`、`hurricane`、`car accident`、`solar eclipse`、`American Revolution` | `2020-02-01`                           |
 
-### <a name="product"></a>产品  
+### <a name="product"></a>Products  
 
 各种类别的物理对象。  
 
@@ -85,7 +85,7 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                                                        | 开始使用模型版本 |
 |--------------|------------------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | 例如，`Microsoft Surface laptop`、`sunglasses`、`motorcycle`、`bag`、`Xbox` | `2020-02-01`                           |
+| 空值          | 例如，`Microsoft Surface laptop`、`sunglasses`、`motorcycle`、`bag`、`Xbox` | `2020-02-01`                           |
 | 计算    | `Azure Cosmos DB`、`Azure Kubernetes Service`                                     | `2020-02-01`                           |
 
 ### <a name="skill"></a>技能  
@@ -98,7 +98,7 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                                                 | 开始使用模型版本 |
 |--------------|-----------------------------------------------------------------------------|----------------------------------------|
-| 不可用          | `nursing`、`data mining`、`linguistics`、`critical thinking`、`photography` | `2020-02-01`                           |
+| 空值          | `nursing`、`data mining`、`linguistics`、`critical thinking`、`photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>电话号码
 
@@ -110,7 +110,7 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                    | 开始使用模型版本 |
 |--------------|------------------------------------------------|----------------------------------------|
-| 不可用          | 美国电话号码，例如 `(312) 555-0176` | `2019-10-01`                           |
+| 空值          | 美国电话号码，例如 `(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>电子邮件
 
@@ -122,9 +122,9 @@ ms.locfileid: "77086890"
 
 | 子类型名称 | 说明                                      | 开始使用模型版本 |
 |--------------|--------------------------------------------------|----------------------------------------|
-| 不可用          | 电子邮件地址，例如 `support@contoso.com` | `2019-10-01`                           |
+| 空值          | 电子邮件地址，例如 `support@contoso.com` | `2019-10-01`                           |
 
-### <a name="url"></a>URL
+### <a name="url"></a>代码
 
 Internet Url。
 
@@ -134,7 +134,7 @@ Internet Url。
 
 | 子类型名称 | 说明                                          | 开始使用模型版本 |
 |--------------|------------------------------------------------------|----------------------------------------|
-| 不可用          | 网站的 Url，例如 `https://www.bing.com` | `2019-10-01`                           |
+| 空值          | 网站的 Url，例如 `https://www.bing.com` | `2019-10-01`                           |
 
 ### <a name="ip-address"></a>IP 地址
 
@@ -146,7 +146,7 @@ Internet 协议地址
 
 | 子类型名称 | 说明                              | 开始使用模型版本 |
 |--------------|------------------------------------------|----------------------------------------|
-| 不可用          | 例如 `10.0.0.101` 的网络地址 | `2019-10-01`                           |
+| 空值          | 例如 `10.0.0.101` 的网络地址 | `2019-10-01`                           |
 
 ###  <a name="datetime"></a>DateTime
 
@@ -156,17 +156,17 @@ Internet 协议地址
 
 语言：
 
-* 公共预览版： `English`
+* 公共预览版： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
-| 不可用         | `6:30PM February 4, 2012`、`4/1/2011 2:45`                   |
-| 日期  | `May 2nd, 2017`、`05/02/2017`       |
+| 空值         | `6:30PM February 4, 2012`、`4/1/2011 2:45`                   |
+| Date  | `May 2nd, 2017`、`05/02/2017`       |
 | 时间     | `8:15`、`6AM`              |
 | DateRange    | `August 2nd to August 5th`         |
 | TimeRange   | `4-6PM`、`10:00AM to Noon`          |
-| 持续时间 | `2.5 minutes`、`one and a half hours`         |
-| 设置 | `every Saturday`         |
+| Duration | `2.5 minutes`、`one and a half hours`         |
+| Set | `every Saturday`         |
 
 ###  <a name="quantity"></a>数量
 
@@ -176,14 +176,14 @@ Internet 协议地址
 
 语言：
 
-* 公共预览版： `English`
+* 公共预览版： `Chinese-Simplified`、`English`、`French`、`German` 和 `Spanish`
 
 | 子类型名称    | 示例                     |
 |-------------|------------------------------|
 | Number         | `6`、`six`                   |
 | 百分比  | `50%`、`fifty percent`       |
 | Ordinal     | `2nd`、`second`              |
-| Age         | `90 day old`、`30 years old` |
-| Currency    | `$10.99`、`€30.00`           |
-| Dimension   | `10 miles`、`40 cm`          |
+| 年龄         | `90 day old`、`30 years old` |
+| 货币    | `$10.99`、`€30.00`           |
+| 维度   | `10 miles`、`40 cm`          |
 | 温度 | `32 degrees`、`10°C`         |

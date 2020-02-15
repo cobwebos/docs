@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 38763f414b1e5373af79d2501850a44e8e813451
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c5beef98f03c52ca022a7ab8047d3b392755c0bf
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185471"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212191"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定义电话号码声明转换
 
@@ -30,9 +30,10 @@ ms.locfileid: "77185471"
 
 此声明验证电话号码的格式。 如果它是有效的格式，请将其更改为 Azure AD B2C 使用的标准格式。 如果提供的电话号码格式无效，则返回一条错误消息。
 
-| 项 | TransformationClaimType | 数据类型 | 注意 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | string | 从转换的字符串类型的声明。 |
+| InputClaim | phoneNumberString | 字符串 |  电话号码的字符串声明。 电话号码必须为国际格式，并以 "+" 和国家/地区代码开头。 如果提供了输入声明 `country`，则电话号码为本地格式（无国家/地区代码）。 |
+| InputClaim | country | 字符串 | 可有可无ISO3166 格式的电话号码的国家/地区代码的字符串声明（由两个字母组成的 ISO-3166 国家/地区代码）。 |
 | OutputClaim | outputClaim | phoneNumber | 此声明转换的结果。 |
 
 **ConvertStringToPhoneNumberClaim**声明转换始终从由[自断言技术配置文件](self-asserted-technical-profile.md)或[显示控件](display-controls.md)调用的[验证技术配置文件](validation-technical-profile.md)执行。 **UserMessageIfClaimsTransformationInvalidPhoneNumber**自断言技术配置文件元数据控制向用户显示的错误消息。
@@ -44,7 +45,8 @@ ms.locfileid: "77185471"
 ```XML
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="inputClaim" />
+    <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
+    <InputClaim ClaimTypeReferenceId="countryCode" TransformationClaimType="country" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
@@ -63,24 +65,32 @@ ms.locfileid: "77185471"
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>示例
+### <a name="example-1"></a>示例 1
 
 - 输入声明：
-  - **inputClaim**： + 1 （123）456-7890
+  - **phoneNumberString**： 045 456-7890
+  - **国家/地区**：深色
 - 输出声明：
+  - **outputClaim**： + 450546148120
+
+### <a name="example-2"></a>示例 2
+
+- 输入声明：
+  - **phoneNumberString**： + 1 （123）456-7890
+- 输出声明： 
   - **outputClaim**： + 11234567890
 
 ## <a name="getnationalnumberandcountrycodefromphonenumberstring"></a>GetNationalNumberAndCountryCodeFromPhoneNumberString
 
 这将提取国家/地区代码和输入声明中的国家/地区号，如果提供的电话号码无效，则可以选择引发异常。
 
-| 项 | TransformationClaimType | 数据类型 | 注意 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | phoneNumber | string | 电话号码的字符串声明。 电话号码必须为国际格式，并以 "+" 和国家/地区代码开头。 |
-| InputParameter | throwExceptionOnFailure | boolean | 可有可无一个参数，该参数指示当电话号码无效时是否引发异常。 默认值是 false。 |
-| InputParameter | countryCodeType | string | 可有可无一个参数，指示输出声明中的国家/地区代码类型。 可用值为**CallingCode** （国家/地区的国际电话号码，例如 + 1）或**ISO3166** （两字母 ISO-3166 国家/地区代码）。 |
-| OutputClaim | nationalNumber | string | 电话号码的国家/地区号码的字符串声明。 |
-| OutputClaim | countryCode | string | 电话号码的国家/地区代码的字符串声明。 |
+| InputClaim | phoneNumber | 字符串 | 电话号码的字符串声明。 电话号码必须为国际格式，并以 "+" 和国家/地区代码开头。 |
+| InputParameter | throwExceptionOnFailure | boolean | 可有可无一个参数，该参数指示当电话号码无效时是否引发异常。 默认值为 false。 |
+| InputParameter | countryCodeType | 字符串 | 可有可无一个参数，指示输出声明中的国家/地区代码类型。 可用值为**CallingCode** （国家/地区的国际电话号码，例如 + 1）或**ISO3166** （两字母 ISO-3166 国家/地区代码）。 |
+| OutputClaim | nationalNumber | 字符串 | 电话号码的国家/地区号码的字符串声明。 |
+| OutputClaim | countryCode | 字符串 | 电话号码的国家/地区代码的字符串声明。 |
 
 
 如果从由[自断言技术配置文件](self-asserted-technical-profile.md)或[显示控制操作](display-controls.md#display-control-actions)调用的[验证技术配置文件](validation-technical-profile.md)执行**GetNationalNumberAndCountryCodeFromPhoneNumberString**声明转换，则**UserMessageIfPhoneNumberParseFailure**的自断言技术配置文件元数据将控制向用户显示的错误消息。

@@ -1,19 +1,19 @@
 ---
 title: 选择适当的定价层 |Microsoft Azure 映射
 description: 在本文中，你将了解 Microsoft Azure 地图提供的定价层。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 048ecdc9b96edcdebecb4cd7df0630aa991aa4d1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190288"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210066"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -27,7 +27,7 @@ S0 和 S1 定价层处理不同数量的数据吞吐量。 S0 定价层每秒最
 
 ### <a name="pricing-tier-capabilities"></a>定价层功能
 
-| Capability                              |        S0           |  S1      |
+| 功能                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | 地图呈现                              | ✓                   | ✓       |
 | 卫星图像                       |                     | ✓        |

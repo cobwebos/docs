@@ -3,12 +3,12 @@ title: 设置资源的部署顺序
 description: 介绍如何在部署期间将一个资源设置为依赖于另一个资源，以确保按正确的顺序部署资源。
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121958"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207683"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>定义 Azure 资源管理器模板中部署资源的顺序
 
@@ -40,7 +40,7 @@ Resource Manager 将评估资源之间的依赖关系，并根据其依赖顺序
 }
 ```
 
-在前面的示例中，通过名为 **storageLoop** 的复制循环创建的资源上包含一个依赖关系。 有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](create-multiple-instances.md)。
+在前面的示例中，通过名为 **storageLoop** 的复制循环创建的资源上包含一个依赖关系。 有关示例，请参阅[在 Azure 资源管理器中创建多个资源实例](copy-resources.md)。
 
 定义依赖关系时，可以包括资源提供程序命名空间和资源类型，以避免模糊。 例如，为明确表示可能与其他资源同名的负载均衡器和虚拟网络，可使用以下格式：
 

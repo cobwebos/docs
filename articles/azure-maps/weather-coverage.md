@@ -1,23 +1,23 @@
 ---
 title: 天气范围 |Microsoft Azure 映射
 description: 在本文中，你将了解 Microsoft Azure 地图中的天气覆盖面。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fdae00a07b364252ae6d297a6df5eb242beac262
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989597"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207938"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps 天气范围
 
-本文提供 Azure Maps[天气服务](https://aka.ms/AzureMapsWeatherService)的覆盖范围信息。 Azure Maps 天气数据服务将返回详细信息，如雷达图、当前天气状况、天气预测和沿着路线的天气。
+本文提供 Azure Maps[天气服务](https://aka.ms/AzureMapsWeatherService)的覆盖范围信息。 Azure Maps 天气数据服务将返回详细信息，如雷达图、当前天气情况、天气预测和沿着路线的天气。
 
 对于所有国家和地区，Azure Maps 没有相同级别的信息和准确性。
 
@@ -37,15 +37,15 @@ ms.locfileid: "76989597"
 | 安提瓜和巴布达                      | ✓ |   |  ✓| 
 | 阿根廷                                | ✓ |   |  ✓| 
 | 阿鲁巴                                    | ✓ |   |  ✓| 
-| 巴哈马群岛                                  | ✓ |   |  ✓| 
+| 巴哈马                                  | ✓ |   |  ✓| 
 | 巴巴多斯                                 | ✓ |   |  ✓| 
 | 伯利兹                                   | ✓ |   |  ✓| 
 | 百慕大群岛                                  | ✓ |   |  ✓| 
 | 玻利维亚                                  | ✓ |   |  ✓| 
-| 博内尔                                  | ✓ |   |  ✓| 
+| 博内尔岛                                  | ✓ |   |  ✓| 
 | 巴西                                   | ✓ |   |  ✓| 
 | 英属维尔京群岛                   | ✓ |   |  ✓| 
-| 加拿大                                   | ✓ | ✓ |  ✓| 
+| Canada                                   | ✓ | ✓ |  ✓| 
 | 开曼群岛                           | ✓ |   |  ✓| 
 | 智利                                    | ✓ |   |  ✓| 
 | 哥伦比亚                                 | ✓ |   |  ✓| 
@@ -88,7 +88,7 @@ ms.locfileid: "76989597"
 | 特克斯和凯科斯群岛                 | ✓ |   |  ✓| 
 | 美属外岛                    | ✓ |   |  ✓| 
 | 美属维尔京群岛                      | ✓ |   |  ✓| 
-| 美国                            | ✓ | ✓ |  ✓| 
+| United States                            | ✓ | ✓ |  ✓| 
 | 乌拉圭                                  | ✓ |   |  ✓| 
 | 委内瑞拉                                | ✓ |   |  ✓| 
 
@@ -172,7 +172,7 @@ ms.locfileid: "76989597"
 | 津巴布韦                    | ✓               |                              |        ✓| 
 
 
-## <a name="asia-pacific"></a>亚太
+## <a name="asia-pacific"></a>亚太区
 
 | 国家/地区              |  附属磁贴 | 分钟预测，雷达图磁贴 | 以外 | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -225,7 +225,7 @@ ms.locfileid: "76989597"
 | 新加坡                         | ✓ |   |  ✓| 
 | 所罗门群岛                   | ✓ |   |  ✓| 
 | 斯里兰卡                         | ✓ |   |  ✓| 
-| 台湾                            | ✓ |   |  ✓| 
+| 中国台湾                            | ✓ |   |  ✓| 
 | 塔吉克斯坦                        | ✓ |   |  ✓| 
 | 泰国                          | ✓ |   |  ✓| 
 | 东帝汶                       | ✓ |   |  ✓| 
@@ -298,5 +298,5 @@ ms.locfileid: "76989597"
 | 瑞士            | ✓ | ✓ |  ✓| 
 | 土耳其                 | ✓ |   |  ✓| 
 | 乌克兰                | ✓ |   |  ✓| 
-| 英国         | ✓ | ✓ |  ✓| 
+| United Kingdom         | ✓ | ✓ |  ✓| 
 | 梵蒂冈           | ✓ |   |  ✓| 

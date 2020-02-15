@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 3e7402be79f7b57a426543c35f08524e0da9d283
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024528"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206168"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 
@@ -47,11 +47,11 @@ ms.locfileid: "77024528"
 > [!NOTE]
 > 有关命名实体识别（NER） v3 公共预览版的详细语言支持，请参阅[命名实体类型](named-entity-types.md)。
 
-| 语言              | 语言代码 | 情绪 | 关键短语 | 识别命名实体 | 实体链接 |       说明        |
+| 语言              | 语言代码 | 情绪 | 关键短语 | 命名实体识别 | 实体链接 |       说明        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | 阿拉伯语                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | 捷克语                 |     `cs`      |           |             |           ✔ \*           |                |                    |
-| 中文-简体    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
+| 中文-简体    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                | `zh` 也接受                   |
 | 中文-繁体   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
 | 丹麦语                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 荷兰语                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
@@ -64,7 +64,7 @@ ms.locfileid: "77024528"
 | 意大利语               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 日语              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
 | 韩语                |     `ko`      |   ✔ \*\*  |      ✔      |           ✔ \*           |                |                    |
-| 挪威语(博克马尔语)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| 挪威语(博克马尔语)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                | `nb` 也接受                   |
 | 波兰语                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | 葡萄牙语(葡萄牙) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` 也接受 |
 | 葡萄牙语（巴西）   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |

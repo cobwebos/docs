@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024630"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212474"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -88,17 +88,22 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 创建或缩放计划时，可以在三种实例大小之间进行选择。  将按照内核总数和每秒使用的内存数计费。  应用可根据需要自动向外扩展到多个实例。  
 
-|SKU|内核数|内存|存储空间|
+|SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|第|3.5 GB|250GB|
+|EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14 GB|250GB|
+
+### <a name="memory-utilization-considerations"></a>内存使用率注意事项
+在具有更多内存的计算机上运行并不一定意味着函数应用将使用所有可用内存。
+
+例如，JavaScript 函数应用受 node.js 中默认的内存限制的限制。 若要增加此固定内存限制，请添加值为 `--max-old-space-size=<max memory in MB>`的应用设置 `languageWorkers:node:arguments`。
 
 ## <a name="regions"></a>区域
 
 下面是每个操作系统当前支持的区域。
 
-|地区| Windows | Linux |
+|区域| Windows | Linux |
 |--| -- | -- |
 |澳大利亚中部| ✔<sup>1</sup> | |
 |澳大利亚中部 2| ✔<sup>1</sup> | |
@@ -107,7 +112,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |巴西南部| ✔<sup>2</sup> |  |
 |加拿大中部| ✔ |  |
 |美国中部| ✔ |  |
-|亚洲东部| ✔ |  |
+|东亚| ✔ |  |
 |美国东部 | ✔ | ✔<sup>1</sup> |
 |美国东部 2| ✔ |  |
 |法国中部| ✔ |  |

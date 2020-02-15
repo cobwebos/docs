@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561732"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251730"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中安装和使用 Istio
 
-[Istio][istio-github] 是跨 Kubernetes 群集中的微服务提供关键功能集的开源服务网格。 这些功能包括流量管理、服务标识和安全性、策略执行以及可观察性。 有关 Istio 的详细信息，请参阅官方文档[什么是 Istio？][istio-docs-concepts]。
+[Istio][istio-github]是一种开放源代码服务网格，提供跨 Kubernetes 群集中微服务的一组关键功能。 这些功能包括流量管理、服务标识和安全性、策略执行以及可观察性。 有关 Istio 的详细信息，请参阅官方[Is Istio？][istio-docs-concepts]文档。
 
 本文介绍如何安装 Istio。 Istio `istioctl` 客户端二进制文件安装在客户端计算机上，Istio 组件安装在 AKS 上的 Kubernetes 群集。
 
@@ -98,7 +98,9 @@ kubectl create namespace istio-system --save-config
 > Istio 目前必须计划在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Istio pod 仅计划在 Linux 节点上运行。 我们将使用[节点选择器][kubernetes-node-selectors]来确保将 pod 安排到正确的节点。
 
 > [!CAUTION]
-> [SDS （机密发现服务）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能当前采用[Alpha][istio-feature-stages]，因此应在启用之前提供。 此外，在当前 AKS 版本中未启用[服务帐户令牌卷投影][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的要求）。
+> [SDS （机密发现服务）][istio-feature-sds]和[Istio CNI][istio-feature-cni] Istio 功能当前采用[Alpha][istio-feature-stages]，因此应在启用之前提供。 
+>
+> 请注意，现在已为 AKS 上的所有 Kubernetes 1.13 和更高版本**启用**了[服务帐户标记量预测][kubernetes-feature-sa-projected-volume]Kubernetes 功能（SDS 的要求）。
 
 使用以下内容创建名为 `istio.aks.yaml` 的文件。 此文件将保存用于配置 Istio 的[Istio 控制平面规范][istio-control-plane]详细信息。
 

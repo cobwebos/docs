@@ -1,20 +1,20 @@
 ---
 title: 在光栅地图上呈现自定义数据 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure Maps 静态图像服务来呈现光栅地图上的自定义数据。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 78068a8deda68434daaeb18cc994099d74d9ccdf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198201"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209947"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在光栅地图上呈现自定义数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "77198201"
 > [!Tip]
 > 使用 Azure Maps Web SDK 在网页上显示简单的映射比使用静态图像服务通常更具成本效益。 Web SDK 使用地图磁贴，除非用户平移并缩放地图，否则他们通常只为每个地图负载生成一小部分事务。 请注意，Azure Maps web SDK 提供了用于禁用平移和缩放的选项。 此外，Azure Maps web SDK 提供了一组更丰富的数据可视化选项，而不是静态地图 web 服务。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 

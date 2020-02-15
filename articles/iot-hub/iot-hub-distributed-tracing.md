@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911899"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212485"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -30,7 +30,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 本文将[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md) 与分布式跟踪配合使用。 对其他 SDK 的分布式跟踪支持仍在开发中。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 分布式跟踪预览版目前仅支持在以下区域中创建的 IoT 中心：
 
@@ -90,7 +90,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 安装适用于 Visual Studio 2019 的["桌面开发C++" 工作负载](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)。 还支持 Visual Studio 2017 和2015。
 
-1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `cmake -version`，确保 CMake 位于 `PATH` 中。
+1. 安装 [CMake](https://cmake.org/)。 在命令提示符下键入 `PATH`，确保 CMake 位于 `cmake -version` 中。
 
 1. 打开命令提示符或 Git Bash shell。 运行以下命令以克隆[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库的最新版本：
 
@@ -102,7 +102,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
     应该预料到此操作需要几分钟才能完成。
 
-1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录中运行以下命令：
+1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 从 `azure-iot-sdk-c` 目录运行以下命令：
 
     ```cmd
     mkdir cmake
@@ -130,13 +130,16 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>编辑发送遥测数据的示例以启用分布式跟踪
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">在 GitHub 上获取示例</a>
+
 1. 使用编辑器打开 `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` 源文件。
 
 1. 找到 `connectionString` 常量的声明：
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_config&highlight=2)]
 
-    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](./quickstart-send-telemetry-c.md)的[注册设备](./quickstart-send-telemetry-c.md#register-a-device)部分记下的设备连接字符串。
+    将 `connectionString` 常量值替换为在[发送遥测数据 C 快速入门](./quickstart-send-telemetry-c.md#register-a-device)的[注册设备](./quickstart-send-telemetry-c.md)部分记下的设备连接字符串。
 
 1. 将 `MESSAGE_COUNT` 定义更改为 `5000`：
 
@@ -154,7 +157,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 ### <a name="compile-and-run"></a>编译和运行
 
-1. 从前面创建的 CMake 目录 (`azure-iot-sdk-c/cmake`) 导航到 *iothub_ll_telemetry_sample* 项目目录，并编译示例：
+1. 从前面创建的 CMake 目录 ( *) 导航到* iothub_ll_telemetry_sample`azure-iot-sdk-c/cmake` 项目目录，并编译示例：
 
     ```cmd
     cd iothub_client/samples/iothub_ll_telemetry_sample
@@ -198,7 +201,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 1. 选择介于 0% 与 100% 之间的**采样率**。
 
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
 1. 等待几秒钟，然后点击“刷新”，如果设备已成功确认，则会显示一个带有勾选标记的同步图标。
 
@@ -241,7 +244,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 }
 ```
 
-| 元素名称 | 需要 | 类型 | Description |
+| 元素名称 | 必选 | 类型 | 说明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 表示启用，`2` 表示禁用。 |
 | `sampling_rate` | 是 | Integer | 此值是百分比。 只允许使用从 `0` 到 `100`（含）的值。  |
@@ -307,7 +310,7 @@ Log Analytics 显示的示例日志：
 1. IoT 中心在消息应用程序属性中查找 `tracestate`，并检查其格式是否正确。
 1. 如果正确，则 IoT 中心生成 `trace-id` 和 `span-id`，并将其记录到 Azure Monitor 诊断日志的 `DiagnosticIoTHubD2C` 类别下。
 1. 消息处理完成后，IoT 中心生成另一个 `span-id`，并将其连同现有的 `trace-id` 记录到 `DiagnosticIoTHubIngress` 类别下。
-1. 如果为消息启用了路由，则 IoT 中心会将消息写入自定义终结点，并在 `DiagnosticIoTHubEgress` 类别下记录名为 `trace-id` 的另一个 `span-id`。
+1. 如果为消息启用了路由，则 IoT 中心会将消息写入自定义终结点，并在 `span-id` 类别下记录名为 `trace-id` 的另一个 `DiagnosticIoTHubEgress`。
 1. 针对生成的每条消息重复上述步骤。
 
 ## <a name="public-preview-limits-and-considerations"></a>公共预览版限制和注意事项

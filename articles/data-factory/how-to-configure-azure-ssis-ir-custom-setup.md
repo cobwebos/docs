@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187717"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251968"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的设置
 
@@ -46,7 +46,7 @@ Azure SQL Server Integration Services Integration Runtime （Azure-SSIS IR）的
 
 - Azure-SSIS IR 上不支持 IBM iSeries Access ODBC 驱动程序。 你可能会在自定义安装过程中看到安装错误。 如果这样做，请联系 IBM 支持部门以获得帮助。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -72,7 +72,7 @@ Azure SQL Server Integration Services Integration Runtime （Azure-SSIS IR）的
 
    a. 在 " **（本地和附加）** " 下，右键单击 "**存储帐户**"，然后选择 "**连接到 Azure 存储**"。
 
-      ![连接到 Azure 存储空间](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      ![连接到 Azure 存储](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
    b. 选择 "**使用存储帐户名称和密钥**"，然后选择 "**下一步**"。
 
@@ -121,8 +121,12 @@ Azure SQL Server Integration Services Integration Runtime （Azure-SSIS IR）的
 
      * 如果选择**OH22'S HEDDA。IO**组件，可以安装[HEDDA。](https://hedda.io/ssis-component/)在购买其服务后 Azure-SSIS IR 上的 oh22 中的 IO 数据质量/清理组件。 当前的集成版本为**1.0.13**。
 
-      * 如果选择**oh22's SQLPhonetics.NET**组件，则可以通过在 "**许可证密钥**" 框中输入你从中购买的产品许可证密钥，在 Azure-SSIS IR 上的 oh22 中安装[SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/)数据质量/匹配组件。 当前的集成版本为**1.0.43**。
-   
+     * 如果选择**oh22's SQLPhonetics.NET**组件，则可以通过在 "**许可证密钥**" 框中输入你从中购买的产品许可证密钥，在 Azure-SSIS IR 上的 oh22 中安装[SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/)数据质量/匹配组件。 当前的集成版本为**1.0.43**。
+
+     * 如果你选择**KingswaySoft 的 SSIS 集成工具包**组件，则可以通过在 "**许可证密钥**" 框中输入你从中购买的产品许可证密钥，为 CRM/ERP/市场营销/协作应用（如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce 行销 Azure-SSIS IR 云等）安装[SSIS 集成工具包](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365)套件。 当前的集成版本为**2019.2**。
+
+     * 如果选择**KingswaySoft 的 Ssis 生产力包**组件，则可以通过在 "**许可证密钥**" 框中输入你从中购买的产品许可证密钥，在 Azure-SSIS IR 上的 KingswaySoft 中安装[SSIS 生产力包](https://www.kingswaysoft.com/products/ssis-productivity-pack)套件。 当前的集成版本为**10.0**。
+
    你添加的快速自定义设置将显示在 "**高级设置**" 部分中。 若要删除它们，请选中其复选框，然后选择 "**删除**"。
 
    ![自定义设置的高级设置](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

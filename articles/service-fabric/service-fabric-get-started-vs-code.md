@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457863"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251628"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -21,7 +21,7 @@ ms.locfileid: "75457863"
 > [!IMPORTANT]
 > 可在 Windows 计算机上开发 Service Fabric Java 应用程序，但只能将其部署到 Azure Linux 群集。 Windows 不支持调试 Java 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 必须在所有环境中安装以下必备组件。
 
@@ -69,7 +69,7 @@ ms.locfileid: "75457863"
 
 “Service Fabric: 创建应用程序”命令在当前工作区中创建新的 Service Fabric 应用程序。 根据开发计算机上安装的 yeoman 生成器，可以创建多种类型的 Service Fabric 应用程序，包括 Java、C#、容器和来宾项目。 
 
-1.  选择“Service Fabric: 添加服务”命令
+1.  选择**Service Fabric： "创建应用程序**" 命令
 2.  选择新 Service Fabric 应用程序的类型。 
 3.  输入要创建的应用程序的名称
 3.  选择要添加到 Service Fabric 应用程序的服务的类型。 

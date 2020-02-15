@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910008"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251832"
 ---
 # <a name="url-path-based-routing-overview"></a>基于 URL 路径的路由概述
 
@@ -27,7 +27,7 @@ ms.locfileid: "70910008"
 对 http\://contoso.com/video/* 的请求会路由到 VideoServerPool，对 http\://contoso.com/images/* 的请求会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
 > [!IMPORTANT]
-> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+> 对于 v1 SKU，按门户中列出的顺序处理规则。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。 对于 v2 SKU，精确匹配具有更高的优先级。 不过，强烈建议先配置多站点侦听器，然后再配置基本侦听器。 这确保将流量路由到适当的后端。
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap 配置元素
 

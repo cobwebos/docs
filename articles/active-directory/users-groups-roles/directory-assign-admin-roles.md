@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158156"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251611"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -246,7 +246,7 @@ In | 有权执行的操作
 > 这些功能目前正在开发中。
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[组管理员](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[组管理员](#groups-administrator-permissions)
 
 此角色中的用户可以创建/管理组及其设置，如命名和过期策略。 必须了解的是，将用户分配到此角色后，他们能够跨各种工作负荷（如团队、SharePoint、Yammer）以及 Outlook 管理租户中的所有组。 此外，用户还能够跨各种管理门户（如 Microsoft 管理中心、Azure 门户以及工作负荷（如团队和 SharePoint 管理中心）管理各种组设置。
 
@@ -1081,7 +1081,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | office365. webPortal/allEntities/standard/read   | 读取 office365. webPortal 中所有资源的标准属性。 |
 
-### <a name="group-administrator-permissions"></a>组管理员权限
+### <a name="groups-administrator-permissions"></a>组管理员权限
 可以管理组和组设置的所有方面，如命名和过期策略。
 
 | **操作** | **说明** |

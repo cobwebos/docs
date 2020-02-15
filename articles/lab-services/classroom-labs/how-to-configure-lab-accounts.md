@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718090"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210563"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>在 Azure 实验室服务中配置实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室类型的容器，例如教室实验室。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -30,25 +30,13 @@ ms.locfileid: "76718090"
 
     ![实验室配置页](../media/how-to-manage-lab-accounts/labs-configuration-page.png) 
 1. 对于**对等虚拟网络**，选择 "**已启用**" 或 "**已禁用**"。 默认值为 "**已禁用**"。 若要启用对等虚拟网络，请执行以下步骤： 
-    1. 选择“已启用”。
+    1. 选择“启用”。
     2. 从下拉列表中选择**VNet** 。 
 3. 在工具栏上选择“保存”。 
 
 此帐户中创建的实验室已连接到所选虚拟网络。 它们可以访问所选虚拟网络中的资源。 有关详细信息，请参阅[在 Azure 实验室服务中将实验室的网络与对等虚拟网络连接](how-to-connect-peer-virtual-network.md)。
 
 为**对等虚拟网络**字段选择虚拟网络后，将禁用 "**允许实验室创建者选取实验室位置**" 选项。 这是因为实验室帐户中的实验室必须与实验室帐户位于同一区域，才能与对等虚拟网络中的资源进行连接。 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>允许实验室创建者选取实验室位置
-可以通过执行以下步骤，允许 lab creator 在不同于实验室帐户位置的位置创建实验室： 
-
-1. 在 "**实验室帐户**" 页上，选择左侧菜单上的 "**实验室配置**"。
-2. 对于 "**允许实验室创建者选取实验室位置**"，请选择 "**已启用**" （如果希望实验室创建者能够选择实验室位置）。 如果已禁用，则会在实验室帐户所在的同一位置自动创建实验室。 
-    
-    为**对等虚拟网络**字段选择虚拟网络时，将禁用此字段。 这是因为实验室帐户中的实验室必须与实验室帐户位于同一区域，才能访问对等虚拟网络中的资源。 
-1. 在工具栏上选择“保存”。 
-
-    ![配置实验室位置设置](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>在实验室中为 Vm 指定地址范围
 以下过程包含在实验室中为 Vm 指定地址范围的步骤。 如果更新之前指定的范围，则修改后的地址范围仅适用于在进行更改后创建的 Vm。 

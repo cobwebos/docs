@@ -1,26 +1,26 @@
 ---
 title: Android 地图控件入门 |Microsoft Azure 映射
-description: 在本文中，你将学习如何使用 Microsoft Azure Map Android SDK 开始使用 Android 地图控件。
-author: walsehgal
-ms.author: v-musehg
+description: 本文介绍如何使用 Microsoft Azure Map Android SDK 开始使用 Android 地图控件。
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: fbb81764262d98a401a26cd089e53ad37007050c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 57ad9992bec3f070366134d8dfbcdafa8f2e16d4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198184"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209845"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
 Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指导你完成安装 Azure Maps Android SDK 和加载映射的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 

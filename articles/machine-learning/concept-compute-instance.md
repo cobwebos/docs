@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169837"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252070"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -141,11 +141,11 @@ Python 包都安装在**python 3.6 AzureML**环境中。
 
 ## <a name="notebookvm"></a>笔记本 VM 发生了什么情况？
 
-计算实例正在替换笔记本 VM。  在计算实例尚未提供的区域中，你可以继续使用具有完整功能的笔记本 Vm，并创建新的笔记本 Vm。
+计算实例正在替换笔记本 VM。  
 
 工作区数据存储区中存储的任何笔记本文件以及工作区数据存储区中的数据都可从计算实例访问。 但是，任何以前安装在笔记本 VM 上的自定义包都需要在计算实例上重新安装。 应用于计算群集创建的配额限制也适用于创建计算实例。 
 
-在计算实例可用的区域中，无法创建新的笔记本 Vm。 不过，你仍然可以访问和使用已创建的笔记本 Vm，并具有完整功能。 可以在与现有笔记本 Vm 相同的工作区中创建计算实例。 
+无法创建新的笔记本 Vm。 不过，你仍然可以访问和使用已创建的笔记本 Vm，并具有完整功能。 可以在与现有笔记本 Vm 相同的工作区中创建计算实例。 
 
 
 ## <a name="next-steps"></a>后续步骤

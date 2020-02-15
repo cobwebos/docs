@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768361"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209335"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的定价层-单服务器
 
@@ -19,11 +19,11 @@ ms.locfileid: "74768361"
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | Gen 5 |
+| 计算的代 | 第 4 代、第 5 代 | 第 4 代、第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| 每个 vCore 的内存 | 2GB | 5 GB | 10 GB |
+| 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
-| 存储类型 | Azure 标准存储 | Azure 高级存储器 | Azure 高级存储器 |
+| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -40,19 +40,19 @@ ms.locfileid: "74768361"
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 中国东部1、中国北部1、US DoD 中部和 US DoD 东部利用基于 Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器的第4代逻辑 Cpu。 所有其他区域都利用基于 Intel E5-2673 v4 （Broadwell） 2.3 GHz 处理器的第5代逻辑 Cpu。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 预配的存储是指可供 Azure Database for PostgreSQL 服务器使用的存储容量。 此存储用于数据库文件、临时文件、事务日志和 PostgreSQL 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | Azure 标准存储 | Azure 高级存储器 | Azure 高级存储器 |
+| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |
 
 > [!NOTE]
-> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、美国西部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部。
+> 以下区域支持存储最多16TB 和 20000 IOPS：美国东部、美国东部2、美国中部、美国西部、美国中北部、美国中南部、北欧、西欧、英国南部、英国西部、东南亚、东亚、日本东部、日本西部、韩国中部、韩国南部、澳大利亚东部、澳大利亚东南部。
 >
 > 所有其他区域支持最高4TB 的存储和 6000 IOPS。
 >
@@ -92,16 +92,16 @@ ms.locfileid: "74768361"
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器后，可以单独更改 vCore 数、硬件生成、定价层（来回调整基本定价层除外）、存储量和备份保持期。 创建服务器后，便无法再更改备份存储类型。 向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
+创建服务器后，可以单独更改 vCore 数、硬件生成、定价层（来回调整基本定价层除外）、存储量和备份保持期。 创建服务器后，便无法再更改备份存储类型。 可以增加或减少 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 有关使用 Azure CLI 进行缩放的示例，请参阅[使用 Azure CLI 监视和缩放 Azure Database for PostgreSQL 服务器](scripts/sample-scale-server-up-or-down.md)。
 
 > [!NOTE] 
 > 存储大小只能增加。 增加后，不能再返回到较小的存储大小。
 
-更改 vCore 数、硬件生成或定价层时，将会使用新的计算分配创建原始服务器的副本。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
+更改 vCore 数、硬件生成或定价层时，将会创建原始服务器的副本，其分配有新的计算资源。 启动并运行新服务器后，连接将切换到新服务器。 在系统切换到新服务器的短暂期间，无法建立新的连接，所有未提交的连接将会回退。 此时段不定，但大多数情况下短于一分钟。
 
 缩放存储和更改备份保留期是真正的联机操作。 不会造成停机，应用程序不会受影响。 当 IOPS 随已预配存储的大小缩放时，可以通过扩大存储来增加提供给服务器的 IOPS。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/PostgreSQL/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.PostgreSQLServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for PostgreSQL”自定义选项。
 

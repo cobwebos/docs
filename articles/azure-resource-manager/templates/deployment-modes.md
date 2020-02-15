@@ -3,12 +3,12 @@ title: 部署模式
 description: 介绍如何使用 Azure 资源管理器指定是使用完整部署模式还是增量部署模式。
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 9cc0e8eb20a0375a98906524d4d598ccb473d2a8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261018"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207581"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -24,7 +24,7 @@ ms.locfileid: "76261018"
 
 如果模板包含的资源未部署，因为[条件](conditional-resource-deployment.md)的计算结果为 false，则结果取决于用于部署模板的 REST API 版本。 如果使用早于2019-05-10 的版本，则不会**删除**该资源。 对于2019-05-10 或更高版本，将**删除**该资源。 最新版本的 Azure PowerShell 和 Azure CLI 删除资源。
 
-使用带有[复制循环](create-multiple-instances.md)的完整模式时请小心。 删除了解析复制循环后未在模板中指定的任何资源。
+使用带有[复制循环](copy-resources.md)的完整模式时请小心。 删除了解析复制循环后未在模板中指定的任何资源。
 
 如果在[模板中部署到多个资源组](cross-resource-group-deployment.md)，则部署操作中指定的资源组中的资源可以被删除。 辅助资源组中的资源不会被删除。
 

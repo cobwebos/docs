@@ -1,6 +1,6 @@
 ---
 title: 向地图添加热度地图层 |Microsoft Azure 映射
-description: 在本文中，将了解如何使用 Microsoft Azure Map Web SDK 将热度地图层添加到地图。
+description: 本文介绍如何使用 Microsoft Azure map Web SDK 将热度地图层添加到地图中。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986234"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208533"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>简单热度地图层</a>。
+<iframe height='500' scrolling='no' title='简单热度地图层' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>简单热度地图层</a>。
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>自定义热度地图层
@@ -79,17 +79,17 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“内插”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“线性”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0，“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“紫色”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5，“#fb00fb”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;1，“#00c3ff”<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;“递阶”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[“热度地图密度”\]，<br/>&nbsp;&nbsp;&nbsp;&nbsp;“透明”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01，“海军蓝”，<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25 "，" 绿色 "<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50、"黄色"、<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75 "red"<br/>\] |   
 
 - `opacity`：指定热度地图层的不透明或透明程度。
-- `intensity`：对每个数据点的权重应用乘数以增加热度地图的总体亮度。 这有助于在数据点权重上产生差异，使其更易于可视化。
+- `intensity`：对每个数据点的权重应用乘数以增加热度地图的总体亮度。 这会导致数据点的权重差别，使其更易于可视化。
 - `weight`：默认情况下，所有数据点的权重都为1，并且具有相同的加权。 权重选项用作乘数，你可以将其设置为数字或表达式。 如果将数字设置为权重，则这是将每个数据点置于地图上两次的等效性。 例如，如果权重为2，则该密度会加倍。 将权重选项设置为一个数字，以类似于使用强度选项的方式来呈现热度地图。 
 
-  但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点都表示地震。 重要指标每个地震数据点都是一个数量级值。 地震始终发生，但大多数情况下都是很低的，而且没有注意到。 通过使用表达式中的 "量值" 将权重分配给每个数据点，可以更好地表示热图中地震的重要性。
+  但是，如果使用表达式，则每个数据点的权重可以基于每个数据点的属性。 例如，假设每个数据点都表示地震。 数量级值是每个地震数据点的重要指标。 地震始终发生，但大多数情况下都是很低的，而且没有注意到。 使用表达式中的 "量值" 将权重分配给每个数据点。 通过使用数量级值分配权重，可以更好地表示热图中地震的重要性。
 - `source` 和 `source-layer`：允许更新数据源。
 
 以下工具用于测试不同的热度地图层选项。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>热度地图层选项</a>。
+<iframe height='700' scrolling='no' title='热度地图层选项' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>热度地图层选项</a>。
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>一致的 zoomable 热度地图
