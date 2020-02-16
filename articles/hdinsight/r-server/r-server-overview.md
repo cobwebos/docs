@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321659"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122365"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 ML 服务
 
@@ -23,7 +23,7 @@ HDInsight 上的 ML Services 提供最新的功能，可针对载入 Azure Blob 
 
 群集的边缘节点为连接到群集和运行 R 脚本提供了便捷的位置。 使用边缘节点，可以选择跨边缘节点服务器的各个核心运行 ScaleR 的并行化分布式函数。 还可以通过使用 ScaleR 的 Hadoop Map Reduce 或 Apache Spark 计算上下文跨群集的各个节点运行这些函数。
 
-可以下载分析后生成的模型或预测，以便在本地使用。 也可以在 Azure 中的其他位置操作这些模型，具体说来，还可通过 [Azure 机器学习工作室（经典）](https://studio.azureml.net)[Web 服务](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)进行操作。
+可以下载分析后生成的模型或预测，以便在本地使用。 也可以在 Azure 中的其他位置对其进行操作，尤其是通过 [Azure 机器学习工作室(经典)](https://studio.azureml.net) [Web 服务](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)进行操作。
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight 上的 ML Services 入门
 
@@ -50,6 +50,9 @@ HDInsight 中的 ML Services 具有下述优势：
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> HDInsight 上的 ML Services 群集类型仅在 HDInsight 3.6 上受支持。 HDInsight 3.6 计划于 2020 年 12 月 31 日停用。
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>HDInsight 上的 ML Services 的主要功能
 

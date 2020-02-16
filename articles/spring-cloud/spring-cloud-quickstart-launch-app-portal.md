@@ -1,23 +1,23 @@
 ---
-title: 快速入门 - 使用 Azure 门户启动 Azure Spring Cloud 应用程序
-description: 在本快速入门中，请使用 Azure 门户将示例应用程序部署到 Azure Spring Cloud。
+title: 快速入门 - 使用 Azure 门户启动现有 Azure Spring Cloud 应用程序
+description: 在本快速入门中，使用 Azure 门户将 Spring Cloud 应用程序部署到 Azure Spring Cloud。
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/4/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278903"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137753"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动 Azure Spring Cloud 应用程序
+# <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>快速入门：使用 Azure 门户启动现有 Azure Spring Cloud 应用程序
 
-使用 Azure Spring Cloud 可以在 Azure 上轻松运行基于 Spring Cloud 的微服务应用程序。
+本快速入门介绍如何将现有的 Spring Cloud 应用程序部署到 Azure。 使用 Azure Spring Cloud 可以在 Azure 上轻松运行基于 Spring Cloud 的微服务应用程序。 
 
-本快速入门介绍如何将现有的 Spring Cloud 应用程序部署到 Azure。  可以在 [GitHub 示例存储库](https://github.com/Azure-Samples/PiggyMetrics)中找到本教程中使用的示例应用程序代码。 完成后，可以在线访问所提供的示例应用程序，并可通过 Azure 门户对其进行管理。
+可以在 [GitHub 示例存储库](https://github.com/Azure-Samples/PiggyMetrics)中找到本教程中使用的示例应用程序代码。 完成后，可以在线访问所提供的示例应用程序，并可通过 Azure 门户对其进行管理。
 
 本快速入门介绍如何执行以下操作：
 

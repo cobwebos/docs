@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将物理计算机迁移到 
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989750"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134940"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>将计算机作为物理服务器迁移到 Azure
 
@@ -61,9 +61,6 @@ ms.locfileid: "76989750"
 在使用 Azure Migrate 服务器迁移工具迁移之前设置 Azure 权限。
 
 - **创建项目**：你的 Azure 帐户需要有权创建 Azure Migrate 项目。 
-- **注册 Azure Migrate 复制设备**：复制设备将在 Azure 帐户中创建并注册 Azure Active Directory 应用。 请委托此操作的权限。
-- **创建 Key Vault**：为了迁移计算机，Azure Migrate 将在资源组中创建一个 Key Vault，用于管理订阅中复制存储帐户的访问密钥。 若要创建保管库，需要对 Azure Migrate 项目所在的资源组拥有角色分配权限。 
-
 
 ### <a name="assign-permissions-to-create-project"></a>分配创建项目的权限
 
@@ -73,43 +70,6 @@ ms.locfileid: "76989750"
     - 如果你刚刚创建了免费的 Azure 帐户，那么你就是订阅的所有者。
     - 如果你不是订阅所有者，请让所有者分配该角色。
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>分配注册复制设备的权限
-
-对于基于代理的迁移，请委托 Azure Migrate 服务器迁移的权限，以便能够在帐户中创建和注册 Azure AD 应用。 可使用以下方法之一分配权限：
-
-- 租户/全局管理员可为租户中的用户授予创建和注册 Azure AD 应用的权限。
-- 租户/全局管理员可将“应用程序开发人员”角色（拥有权限）分配到帐户。
-
-值得注意的是：
-
-- 除上述权限外，应用对订阅不拥有任何其他访问权限。
-- 只有在注册新的复制设备时，你才需要这些权限。 设置复制设备后可以删除这些权限。 
-
-
-#### <a name="grant-account-permissions"></a>授予帐户权限
-
-租户/全局管理员可按如下所述授予权限
-
-1. 在 Azure AD 中，租户/全局管理员应导航到“Azure Active Directory” > “用户” > “用户设置”    。
-2. 管理员应将“应用注册”设置为“是”   。
-
-    ![Azure AD 权限](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> 这是不受影响的默认设置。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
-
-#### <a name="assign-application-developer-role"></a>分配“应用程序开发人员”角色 
-
-租户/全局管理员可将“应用程序开发人员”角色分配到帐户。 [了解详细信息](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
-
-## <a name="assign-permissions-to-create-key-vault"></a>分配创建 Key Vault 的权限
-
-按如下所述分配对 Azure Migrate 项目所在的资源组的角色分配权限：
-
-1. 在 Azure 门户上的资源组中，选择“访问控制(IAM)”。 
-2. 在“检查访问权限”中找到相关的帐户，然后单击它以查看权限。  需要“所有者”（或“参与者”和“用户访问管理员”）权限。   
-3. 如果没有所需的权限，可请求资源组所有者分配这些权限。 
-
 ## <a name="prepare-for-migration"></a>准备迁移
 
 ### <a name="check-machine-requirements-for-migration"></a>检查要迁移的计算机的要求
@@ -117,7 +77,7 @@ ms.locfileid: "76989750"
 确保计算机符合迁移到 Azure 的要求。 
 
 > [!NOTE]
-> 使用 Azure Migrate 服务器迁移进行基于代理的迁移依赖于 Azure Site Recovery 服务的功能。 某些要求可能提供了 Site Recovery 文档的链接。
+> 使用 Azure Migrate 服务器迁移的基于代理的迁移与 Azure Site Recovery 服务的基于代理的灾难恢复功能具有相同的复制体系结构，并且使用的某些组件共享相同的代码库。 某些要求可能提供了 Site Recovery 文档的链接。
 
 1. [验证](migrate-support-matrix-physical-migration.md#physical-server-requirements)物理服务器要求。
 2. 验证 VM 设置。 复制到 Azure 的本地计算机必须符合 [Azure VM 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
@@ -194,7 +154,7 @@ Azure Migrate 服务器迁移使用复制设备将计算机复制到 Azure。 �
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-完成注册后，最长可能需要经过 15 分钟，已发现的计算机才会出现在 Azure Migrate 服务器迁移中。 随着 VM 的发现，“已发现的服务器”计数会不断增大。 
+完成注册后，可能需要一些时间才能将发现的计算机显示在 Azure Migrate 服务器迁移中。 随着 VM 的发现，“已发现的服务器”计数会不断增大。 
 
 ![已发现的服务器](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

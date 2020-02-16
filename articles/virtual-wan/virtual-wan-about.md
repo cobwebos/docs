@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048477"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056336"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -37,6 +37,13 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 有关升级虚拟 WAN 的步骤，请参阅 [Upgrade a virtual WAN from Basic to Standard](upgrade-virtual-wan.md)（从基本虚拟 WAN 升级到标准虚拟 WAN）。
 
+## <a name="architecture"></a>体系结构
+
+有关虚拟 WAN 体系结构以及如何迁移到虚拟 WAN 的信息，请参阅以下文章：
+
+* [虚拟 WAN 体系结构](migrate-from-hub-spoke-topology.md)
+* [全局传输网络体系结构](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>虚拟 WAN 资源
 
 若要配置端到端虚拟 WAN，请创建以下资源：
@@ -57,7 +64,7 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
   * **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite  。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
-## <a name="connectivity"></a>连接
+## <a name="connectivity"></a>连接类型
 
 虚拟 WAN 允许以下类型的连接：站点到站点 VPN、用户 VPN（点到站点）和 ExpressRoute。
 

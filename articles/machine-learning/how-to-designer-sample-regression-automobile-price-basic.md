@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963281"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138126"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>通过 Azure 机器学习设计器使用回归来预测汽车价格
 
@@ -61,7 +61,7 @@ ms.locfileid: "76963281"
 
 机器学习问题各有不同。 常见的机器学习任务包括分类、聚类、回归和推荐器系统，每个系统可能需要不同的算法。 选择哪个算法通常取决于用例的要求。 选取算法后，需要优化其参数，以训练更准确的模型。 然后，需要基于指标（例如准确度、可理解性和效率）评估所有模型。
 
-由于此示例的目标是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。 考虑到特征数目相对较少（小于 100），且这些特征不是稀疏的，因此决策边界很可能是非线性的。 因此，我们将“决策林回归”用于此管道  。
+由于此示例的目标是预测汽车价格，并且由于标签列（价格）是连续数据，因此回归模型可能是一个不错的选择。 我们对此管道使用**线性回归**。
 
 使用“拆分数据”模块来随机分割输入数据，使训练数据集包含 70% 的原始数据，使测试数据集包含 30% 的原始数据。 
 

@@ -1,38 +1,32 @@
 ---
-title: 教程：与持续集成和交付管道集成
-titleSuffix: Azure App Configuration
-description: 本教程介绍了如何在持续集成和交付期间使用 Azure 应用程序配置中的数据生成配置文件
+title: 使用持续集成和交付管道集成 Azure 应用程序配置
+description: 了解如何使用 Azure 应用程序配置实现持续集成和交付
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
-ms.date: 02/24/2019
+ms.date: 01/30/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899389"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047291"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>与 CI/CD 管道集成
 
-本文介绍如何通过不同的方式在持续集成和持续部署系统中使用来自 Azure 应用程序配置的数据。
+本文介绍如何在持续集成和持续部署系统中使用来自 Azure 应用程序配置的数据。
 
 ## <a name="use-app-configuration-in-your-azure-devops-pipeline"></a>在 Azure DevOps 管道中使用应用程序配置
 
-如果你有一个 Azure DevOps 管道，则可以从应用程序配置提取键值，并将其设置为任务变量。 [Azure 应用程序配置 DevOps 扩展](https://go.microsoft.com/fwlink/?linkid=2091063)是可以提供此功能的加载项模块。 只需遵照此扩展中的说明在生成或发布任务序列中使用它。
+如果你有一个 Azure DevOps 管道，则可以从应用程序配置提取键值，并将其设置为任务变量。 [Azure 应用程序配置 DevOps 扩展](https://go.microsoft.com/fwlink/?linkid=2091063)是可以提供此功能的加载项模块。 请按照其说明在生成或发布任务序列中使用该扩展。
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>使用应用程序部署应用程序配置数据
 
-如果应用程序依赖于 Azure 应用程序配置且无法访问它，则应用程序可能无法运行。 可以增强应用程序的复原能力来应对此类事件，不过，这种情况不太可能发生。 为此，请将当前配置数据打包到与应用程序一起部署的文件中，并在其启动期间在本地加载。 这种方法可保证应用程序至少有默认设置值。 当应用程序配置存储区可用时，这些值将被应用程序配置存储区中的任何较新的更改覆盖。
+如果应用程序依赖于 Azure 应用程序配置且无法访问它，则应用程序可能无法运行。 通过将配置数据打包到与应用程序一起部署并在应用程序启动期间本地加载的文件中来提高应用程序的复原能力。 此方法可保证应用程序在启动时具有默认设置值。 当应用程序配置存储区可用时，这些值将被应用程序配置存储区中的任何较新的更改覆盖。
 
-使用 Azure 应用程序配置的[导出](./howto-import-export-data.md#export-data)功能，可以将当前配置数据的检索过程自动化为单个文件。 然后将此文件嵌入到持续集成和持续部署 (CI/CD) 管道的生成或部署步骤中。
+使用 Azure 应用程序配置的[导出](./howto-import-export-data.md#export-data)功能，可以将当前配置数据的检索过程自动化为单个文件。 然后，可以将此文件嵌入到持续集成和持续部署 (CI/CD) 管道的生成或部署步骤中。
 
 下面的示例演示如何将应用程序配置数据包含在快速入门中引入的 Web 应用程序的生成步骤中。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
@@ -54,10 +48,7 @@ ms.locfileid: "76899389"
         <Exec WorkingDirectory="$(MSBuildProjectDirectory)" Condition="$(ConnectionString) != ''" Command="az appconfig kv export -d file --path $(OutDir)\azureappconfig.json --format json --separator : --connection-string $(ConnectionString)" />
     </Target>
     ```
-
-    添加与应用程序配置存储区关联的 *ConnectionString* 作为环境变量。
-
-2. 打开 *Program.cs* 并更新 `CreateWebHostBuilder` 方法以通过调用 `config.AddJsonFile()` 方法使用导出的 JSON 文件。
+1. 打开 *Program.cs* 并更新 `CreateWebHostBuilder` 方法以通过调用 `config.AddJsonFile()` 方法使用导出的 JSON 文件。  此外，添加 `System.Reflection` 命名空间。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -75,7 +66,8 @@ ms.locfileid: "76899389"
 
 ### <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用
 
-1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
+1. 设置名为“ConnectionString”的环境变量，并将其设置为应用程序配置存储区的访问密钥  。 
+    如果使用 Windows 命令提示符，则请运行以下命令并重启命令提示符，这样更改才会生效：
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

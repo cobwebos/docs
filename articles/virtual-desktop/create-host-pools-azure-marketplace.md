@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40659414848adb9be86b6163cf456809e9cb750f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020023"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134595"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：通过使用 Azure 市场创建主机池
 
@@ -55,7 +55,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 3. 输入在 Azure 市场产品/服务完成后可登录到 Windows 虚拟桌面客户端并访问桌面的用户的逗号分隔列表。 例如，如果要分配 user1@contoso.com 和 user2@contoso.com 访问权限，请输入“user1@contoso.com,user2@contoso.com”。
 4. 选择“新建”，并为新资源组提供一个名称。 
 5. 对于“位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。 
-6. 选择“下一步:  配置虚拟机 >”。
+6. **选择“下一步:** 配置虚拟机 >”。
 
 >[!IMPORTANT]
 >如果使用的是纯 Azure Active Directory 域服务和 Azure Active Directory 解决方案，请确保将主机池部署在与 Azure Active Directory 域服务相同的区域中，以避免加入域错误和凭据错误。
@@ -65,8 +65,12 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 在“配置虚拟机”边栏选项卡中，可以执行以下操作  ：
 
 1. 接受默认设置，或自定义 VM 的数量和大小。
+    
+    >[!NOTE]
+    >如果要查找的特定 VM 大小未出现在 VM 大小选择器中，那是因为我们尚未将其加入到 Azure 市场工具中。 若要请求 VM 大小，请在 [Windows 虚拟桌面 UserVoice 论坛](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中创建请求或投票赞成现有请求。
+    
 2. 输入虚拟机名称的前缀。 例如，如果输入“prefix”作为名称，则虚拟机的名称将是“prefix-0”、“prefix-1”，依此类推。
-3. 选择“下一步:  虚拟机设置”。
+3. **选择“下一步:** 虚拟机设置”。
 
 ### <a name="virtual-machine-settings"></a>虚拟机设置
 
@@ -80,7 +84,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 对于“映像源”，请选择所需的源，并输入有关如何找到和存储该源的相应信息  。 如果选择不使用托管磁盘，请选择包含 .vhd 文件的存储帐户。
 2. 输入用于将 VM 加入 Active Directory 域的域帐户的用户主体名称和密码。 在虚拟机上将会创建与此相同的用户名和密码作为本地帐户。 以后可以重置这些本地帐户。
 3. 选择连接到 Active Directory 服务器的虚拟网络，然后选择一个子网用于托管虚拟机。
-4. 选择“下一步:  Windows 虚拟桌面信息”。
+4. 在完成时选择“下一步:  Windows 虚拟桌面信息”。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows 虚拟桌面租户信息
 

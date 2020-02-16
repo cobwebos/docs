@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435858"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061635"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>教程：使用企业安全性套餐（预览版）在 HDInsight 中配置 Apache Kafka 策略
 
@@ -147,6 +147,8 @@ ms.locfileid: "75435858"
 
 4. 按照以下文章的**生成并部署示例**下的步骤 3 进行操作：[教程：使用 Apache Kafka 生成者和使用者 API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) 来确保 `kafka-producer-consumer.jar` 也可供 **sales_user** 使用。
 
+注意：**对于本教程，请使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。**
+
 5. 执行以下命令来验证 **sales_user1** 可以生成主题 `salesevents`：
 
    ```bash
@@ -194,6 +196,9 @@ ms.locfileid: "75435858"
 1. 选择“服务”下的“HDInsight 群集”   。
 1. 在显示的 HDInsight 群集列表中，单击为本教程创建的群集旁边的“...”。  
 1. 单击 **“删除”** 。 单击 **“是”** 。
+
+## <a name="troubleshooting"></a>故障排除
+如果 kafka-producer-consumer.jar 在已加入域的群集中不起作用，请确保使用“DomainJoined-Producer-Consumer”项目下的 kafka-producer-consumer.jar（而不是 Producer-Consumer 项目下的那个文件，它适用于非加入域方案）。
 
 ## <a name="next-steps"></a>后续步骤
 

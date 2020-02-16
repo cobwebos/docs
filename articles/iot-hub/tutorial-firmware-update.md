@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.custom: mvc
-ms.openlocfilehash: 0665a20bfd8253b28936044abe515862b32f1b43
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ba94c9f2af737af3ae1ebcccf6685643a54da237
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888747"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110700"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
@@ -36,7 +36,7 @@ ms.locfileid: "73888747"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门中运行的两个示例应用程序是使用 Node.js 编写的。 开发计算机上需要有 Node.js v10.x.x 或更高版本。
 
@@ -49,6 +49,8 @@ node --version
 ```
 
 从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip 下载示例 Node.js 项目并提取 ZIP 存档。
+
+确保已在防火墙中打开端口 8883。 本教程中的设备示例使用 MQTT 协议，该协议通过端口 8883 进行通信。 在某些公司和教育网络环境中，此端口可能被阻止。 有关解决此问题的更多信息和方法，请参阅[连接到 IoT 中心(MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="set-up-azure-resources"></a>设置 Azure 资源
 

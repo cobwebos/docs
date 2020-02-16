@@ -1,18 +1,18 @@
 ---
 title: Azure 物联网 (IoT) 技术和解决方案
 description: 介绍可以用来构建 Azure IoT 解决方案的技术和服务的集合。
-author: robinsh
+author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
-ms.author: robinsh
-ms.openlocfilehash: cf707a0ddc3d5b46c7be7944a911ee03f00fc064
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.author: dobett
+ms.openlocfilehash: 0b04b5170c13f6f6c3fd74976461f03e4367060a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457163"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046058"
 ---
 # <a name="azure-technologies-and-services-for-creating-iot-solutions"></a>用于创建 IoT 解决方案的 Azure 技术和服务
 
@@ -83,6 +83,8 @@ Iot Central 使用数字孪生将现实世界中的设备和数据与用户用�
 ### <a name="data-and-analytics"></a>数据和分析
 
 IoT 设备通常生成大量时序数据，例如从传感器读取的温度数据。 [Azure 时序见解](../time-series-insights/time-series-insights-overview.md)可以连接到某个 IoT 中心，从设备读取遥测流，存储该数据，然后我们就可以查询它并将它可视化。
+
+[Azure Maps](/azure/azure-maps) 是一系列地理空间服务，这些服务使用新鲜的地图数据为 Web 和移动应用程序提供准确的地理上下文。 可以使用 REST API、基于 Web 的 JavaScript 控件或 Android SDK 来构建应用程序。
 
 ## <a name="next-steps"></a>后续步骤
 

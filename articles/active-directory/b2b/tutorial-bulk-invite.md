@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 9/19/2019
+ms.date: 2/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908830"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166441"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>教程：批量邀请 Azure AD B2B 协作用户（预览）
 
@@ -27,7 +27,7 @@ ms.locfileid: "76908830"
 
 > [!NOTE]
 > 从 2019/12/22 起，批量邀请用户（预览）功能已暂时禁用。
-> 目前还不知道何时重新启用此功能。 
+> 目前尚不知道何时在 Azure 门户中重新启用此功能。 若要使用 PowerShell 批量邀请来宾用户，请参阅 [B2B 批量邀请教程](bulk-invite-powershell.md)或 [B2B 代码和 PowerShell 示例](code-samples.md)。
 
 如果使用 Azure Active Directory (Azure AD) B2B 协作功能与外部合作伙伴进行协作，可同时邀请多名来宾用户加入你的组织。 本教程介绍如何使用 Azure 门户向外部用户批量发送邀请。 具体操作如下：
 

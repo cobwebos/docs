@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: cb4e27aeada4f1b5f9e06279382327dcc51cc7dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899606"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049812"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>使用 Azure DevOps Projects 创建用于 Python 的 CI/CD 管道
 
-Azure DevOps Projects 提供一种简化的体验，适合为 Python 应用创建 Azure 资源并设置持续集成 (CI) 和持续交付 (CD) 管道。  
+在本快速入门中，将利用简化的 Azure DevOps 项目体验在 Azure Pipelines 中为 Python 应用设置持续集成 (CI) 和持续交付 (CD) 管道。 可以使用 Azure DevOps Projects 来设置开发、部署和监视应用所需的全部设置。 
 
-如果没有 Azure 订阅，可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) 帐户和组织。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
- DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。  可以创建免费的新 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
+DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
 
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后在左窗格中选择“创建资源”  。 
 
-2. 在左窗格中选择“创建资源”图标，然后搜索“DevOps Projects”。    
+   ![在 Azure 门户中创建 Azure 资源](_img/azure-devops-project-python/fullbrowser.png)
 
-3. 选择“创建”  。
-
-    ![开始“持续交付”配置](_img/azure-devops-project-python/fullbrowser.png)
+1. 搜索并选择“DevOps Projects”  ，然后选择“创建”  。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 

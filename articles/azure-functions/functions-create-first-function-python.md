@@ -1,17 +1,17 @@
 ---
-title: 在 Azure 中创建 HTTP 触发的 Python 函数
+title: 在 Azure Functions 中为 HTTP 请求创建无服务器 Python 函数
 description: 使用 Azure Functions 创建无服务器 Python 代码并将其部署到云中。
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898564"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157884"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>快速入门：在 Azure 中创建 HTTP 触发的 Python 函数
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的 Python 函数
 
 在本文中，你将使用命令行工具创建响应 HTTP 请求的 Python 函数。 在本地测试代码后，将代码部署到 Azure Functions 的无服务器环境。 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。
 
@@ -107,7 +107,7 @@ py -m venv .venv
 
 如果需要，可以跳到[在本地运行函数](#run-the-function-locally)并稍后再检查文件内容。
 
-### <a name="__init__py"></a>\_\_init\_\_.py
+#### <a name="__init__py"></a>\_\_init\_\_.py
 
 *\_\_init\_\_.py* 包含一个根据 *function.json* 中的配置触发的 `main()` Python 函数。
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 对于 HTTP 触发器，该函数将接收 *function.json* 中定义的变量 `req` 中的请求数据。 `req` 是 [azure.functions.HttpRequest 类](/python/api/azure-functions/azure.functions.httprequest)的实例。 在 *function.json* 中定义为 `$return` 的返回对象是 [azure.functions.HttpResponse 类](/python/api/azure-functions/azure.functions.httpresponse)的一个实例。 要了解详细信息，请参阅 [Azure Functions HTTP 触发器和绑定](functions-bindings-http-webhook.md)。
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *function.json* 是一个配置文件，其中定义了函数的输入和输出 `bindings`，包括触发器类型。 如果需要，可以更改 `scriptFile` 以调用不同的 Python 文件。
 
@@ -199,7 +199,7 @@ Http Functions:
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>创建函数的支持性 Azure 资源
 
-若要将函数代码部署到 Azure，需要创建三个资源：
+在将函数代码部署到 Azure 之前，需要创建三个资源：
 
 - 一个资源组：相关资源的逻辑容器。
 - 一个 Azure 存储帐户：维护有关项目的状态和其他信息。

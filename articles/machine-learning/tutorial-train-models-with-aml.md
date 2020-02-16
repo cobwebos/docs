@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5a2ff4d78c1e0e67b390f607da69cc299e2dce4a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261358"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116489"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>教程：使用 Azure 机器学习通过 MNIST 数据和 scikit-learn 训练映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "76261358"
     * 将教程笔记本克隆到工作区中的文件夹。
     * 创建基于云的计算实例。
 
-* 在克隆的教程文件夹中打开 img-classification-part1-training.ipynb 笔记本   。 
+* 在克隆的 tutorials/image-classification-mnist-data  文件夹中，打开 img-classification-part1-training.ipynb 笔记本  。 
 
 
 如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程及其附带的 **utils.py** 文件，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。 运行 `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` 以便安装本教程的依赖项。

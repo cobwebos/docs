@@ -2,21 +2,21 @@
 title: 为 Azure 客户打开银行 (PSD2) 和强客户身份验证 (SCA)
 description: 本文解释了某些 Azure 购买项目为何需要多重身份验证，以及如何完成身份验证。
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996035"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133557"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>为 Azure 客户打开银行 (PSD2) 和强客户身份验证 (SCA)
 
@@ -53,14 +53,13 @@ ms.locfileid: "75996035"
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>结算市场和预留购买项目的未付费用
 
-市场和预留购买项目的计费与 Azure 服务是分开的。 如果银行拒绝了市场或预留费用，Azure 门户中的发票状态将显示为“逾期未付”。  可遵循以下步骤检查市场和预留发票的状态：
+市场和预留购买项目的计费与 Azure 服务是分开的。 如果银行拒绝了市场或预留费用，则你的发票将变为逾期，并且 Azure 门户中会显示“立即付款”选项。  你可以遵循以下步骤为逾期的市场和预留发票进行支付：
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在“成本管理 + 计费”中进行搜索。 
 3. 在“计费”下，选择“发票”。 
-4. 单击右侧的“Azure 市场和预留”选项卡。 
-5. 选择相应的订阅。
-6. 在“发票”网格中查看状态列。 如果发票状态为“逾期”或“逾期未付”，请单击“立即支付”。    在此过程中，系统会提示你完成多重身份验证。
+5. 在“订阅”下拉筛选器中，选择与市场或预留购买相关联的订阅。
+6. 在“发票”网格中查看类型列。 如果类型为“Azure 市场和预留”  ，则当发票应付或逾期时，会显示“立立即付款”  链接。 如果未看到“立即付款”  ，则说明你的发票已支付。 在立即付款过程中，会提示你完成多重身份验证。
 
 ## <a name="next-steps"></a>后续步骤
 - 如果需要支付 Azure 帐单，请参阅[结算 Azure 订阅的逾期未付余款](resolve-past-due-balance.md)。

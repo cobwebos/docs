@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464378"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121486"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>快速入门：在 Azure Service Fabric 上部署 Java Spring Boot 应用
 
-本快速入门演示如何将 Java Spring Boot 应用程序部署到 Azure Service Fabric。 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
-
-本快速入门使用 Spring 网站中的[入门](https://spring.io/guides/gs/spring-boot/)示例。 本快速入门逐步讲解如何使用熟悉的命令行工具，将 Spring Boot 示例部署为 Service Fabric 应用程序。 完成后，Spring Boot 入门示例将在 Service Fabric 上正常运行。
-
-![Spring Boot Service Fabric 示例](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-此快速入门介绍如何：
-
-* 将 Spring Boot 应用程序部署到 Service Fabric
-* 将应用程序部署到本地群集
-* 跨多个节点横向扩展应用程序
-* 在不影响可用性的情况下执行服务故障转移
+在本快速入门中，你将在 Linux 或 MacOS 上使用熟悉的命令行工具将 Java Spring Boot 应用程序部署到 Azure Service Fabric。 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。 
 
 ## <a name="prerequisites"></a>必备条件
 
-完成本快速入门教程需要：
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-1. 安装 Service Fabric SDK 和 Service Fabric 命令行界面 (CLI)
+- [Java 环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)和 [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK 和 Service Fabric 命令行接口 (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-1. [安装 Git](https://git-scm.com/)
-1. 安装 Yeoman
+- [Java 环境和 Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK 和 Service Fabric 命令行接口 (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. 设置 Java 环境
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>下载示例
 
-在终端窗口中运行以下命令，将 Spring Boot 入门示例应用克隆到本地计算机。
+在终端窗口中运行以下命令，将 Spring Boot [入门](https://github.com/spring-guides/gs-spring-boot)示例应用克隆到本地计算机。
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>生成 Spring Boot 应用程序 
-1. 在 `gs-spring-boot/complete` 目录中，运行以下命令以生成此应用程序。 
+在 *gs-spring-boot/complete* 目录中，运行以下命令以生成此应用程序。 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>打包 Spring Boot 应用程序 
-1. 在克隆的 `gs-spring-boot` 目录中运行 `yo azuresfguest` 命令。 
+1. 在克隆中的 *gs-spring-boot* 目录中运行 `yo azuresfguest` 命令。 
 
 1. 每次出现提示时，请输入以下详细信息。
 
     ![Spring Boot Yeoman 条目](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. 在 `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` 文件夹中，创建名为 `entryPoint.sh` 的文件。 将以下内容添加到 `entryPoint.sh` 文件中。 
+1. 在 *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code* 文件夹中，创建一个名为 *entryPoint.sh* 的文件。在 *entryPoint.sh* 文件中添加以下代码。 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    **ServiceManifest.xml** 现在如下所示： 
+    *ServiceManifest.xml* 现在如下所示： 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址： **http://localhost:19080** ）。 5 个节点均正常即表示本地群集运行正常。 
+    启动本地群集需要一些时间。 若要确认群集已完全启动，请访问 Service Fabric Explorer（网址：`http://localhost:19080`）。 5 个节点均正常即表示本地群集运行正常。 
     
     ![Service Fabric Explorer 显示运行正常的节点](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. 打开 `gs-spring-boot/SpringServiceFabric` 文件夹。
+1. 打开 *gs-spring-boot/SpringServiceFabric* 文件夹。
 1. 运行以下命令连接到本地群集。
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. 运行 `install.sh` 脚本。
+1. 运行 *install.sh* 脚本。
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ![Spring Boot Service Fabric 示例](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 现在可以访问已部署到 Service Fabric 群集的 Spring Boot 应用程序。
+
+有关详细信息，请参阅 Spring 网站上的 Spring Boot [入门](https://spring.io/guides/gs/spring-boot/)示例。
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
 

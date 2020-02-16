@@ -16,28 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 monikerRange: vsts
-ms.openlocfilehash: 11edeb35119e2c598fd83fd89c65ba4dc4679650
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 35eebeaa393ff75ada11752aaf9f195efddfa12b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256102"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049808"
 ---
 #  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>快速入门：使用 Azure DevOps Projects 创建用于 Node.js 的 Azure Pipelines 中的 CI/CD 管道
 
-Azure DevOps Projects 提供一种简化的体验，适合在 Azure Pipelines 中为 Node.js 应用创建 Azure 资源并设置持续集成 (CI) 和持续交付 (CD) 管道。  
+在本快速入门中，将利用简化的 Azure DevOps 项目体验在 Azure Pipelines 中为 Node.js 应用设置持续集成 (CI) 和持续交付 (CD) 管道。 可以使用 Azure DevOps Projects 来设置开发、部署和监视应用所需的全部设置。 
 
-如果没有 Azure 订阅，可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) 帐户和组织。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
 
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后在左窗格中选择“创建资源”  。 
 
-1. 在左窗格中选择“创建资源”，然后搜索“DevOps Projects”。   
+   ![在 Azure 门户中创建 Azure 资源](_img/azure-devops-project-nodejs/create-azure-resource.png)
 
-    ![创建持续交付配置资源](_img/azure-devops-project-nodejs/create-azure-resource.png)
+1. 搜索并选择“DevOps Projects”  ，然后选择“创建”  。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 
@@ -52,16 +55,16 @@ DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>配置 Azure DevOps 和 Azure 订阅 
 
 1. 创建新的 Azure DevOps 组织，或者选择现有的组织。 
+   
+   1. 输入项目的名称。
+      
+   1. 选择 Azure 订阅和位置，输入应用程序的名称，然后选择“完成”。   
+      几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
+   
+1. 选择“浏览”，查看正在运行的应用程序。 
+   
+   ![CI/CD 管道的仪表板视图](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-    a. 输入项目的名称。
-
-    b. 选择 Azure 订阅和位置，输入应用程序的名称，然后选择“完成”。   
-    几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
-     
-3. 选择“浏览”，查看正在运行的应用程序。 
-
-    ![CI/CD 管道的仪表板视图](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
-    
 DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Node.js 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD

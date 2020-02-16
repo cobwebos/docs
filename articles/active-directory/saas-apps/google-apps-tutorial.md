@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8a1736092578634680da5d56b5ec02f70cdde38
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cf148ec64ceed28577224741033258bad0e62372
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289843"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047958"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 G Suite 集成
 
@@ -252,9 +252,9 @@ G Suite 还支持自动用户预配。 若要配置自动用户预配，你必�
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
 - [在 Azure AD 中试用 G Suite](https://aad.portal.azure.com/)
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 G Suite](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 G Suite](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

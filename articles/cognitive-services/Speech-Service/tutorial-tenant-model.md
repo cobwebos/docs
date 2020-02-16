@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446801"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189000"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 
@@ -39,11 +39,11 @@ ms.locfileid: "75446801"
 
 1. 登录 [Microsoft 365 管理中心](https://admin.microsoft.com)。
 
-1. 在左窗格中，依次选择“设置”、“应用”、“Azure 语音服务”。   
+1. 在左窗格中，选择“设置”  ，然后从嵌套菜单中选择“设置”  ，然后从主窗口中选择“Azure 语音服务”  。
 
    ![“服务和加载项”窗格](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. 选中“允许组织范围内的语言模型”复选框，然后选择“保存更改”。   
+1. 选中“允许组织范围内的语言模型”复选框，然后选择“保存更改”。  
 
    ![“Azure 语音服务”窗格](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -79,11 +79,11 @@ ms.locfileid: "75446801"
 
    > [!NOTE]
    > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱、客户密钥或 Office 365 政府版客户，此功能不可用。 若要确定自己是客户密码箱客户还是客户密钥客户，请参阅：
-   > * [客户密码箱](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [客户密钥](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
+   > * [客户密码箱](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [客户密钥](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 政府版](/microsoft-365/government)
 
-1. 选择“选择加入”  。 
+1. 选择“选择加入”  。
 
    当租户模型准备就绪时，你会收到一封确认电子邮件，其中包含更多说明。
 

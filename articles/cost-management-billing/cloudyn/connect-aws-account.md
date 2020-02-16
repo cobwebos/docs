@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770329"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086837"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>连接 Amazon Web Services 帐户
 
@@ -41,7 +41,7 @@ ms.locfileid: "76770329"
 
 ### <a name="add-aws-read-only-role-based-access"></a>添加基于 AWS 只读角色的访问
 
-1. 通过 https://console.aws.amazon.com/iam/home 登录到 AWS 控制台，选择“角色”。 
+1. 通过 [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) 登录到 AWS 控制台，选择“角色”。 
 2. 单击“创建角色”，然后选择“另一个 AWS 帐户”   。
 3. 在“帐户 ID”框中粘贴 `432263259397`。  此帐户 ID 是 AWS 分配给 Cloudyn 服务的 Cloudyn 数据收集器帐户。 使用与显示内容完全相同的帐户 ID。
 4. 在“选项”旁边，选择“需要外部 ID”。   粘贴前面从 Cloudyn 中的“外部 ID”字段复制的唯一值。  然后单击“下一页:  权限”。  
@@ -76,7 +76,7 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
 
 ### <a name="add-aws-read-only-user-based-access"></a>添加基于 AWS 只读用户的访问
 
-1. 通过 https://console.aws.amazon.com/iam/home 登录到 AWS 控制台，选择“用户”。 
+1. 通过 [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) 登录到 AWS 控制台，选择“用户”。 
 2. 单击“添加用户”  。
 3. 在“用户名”字段中键入用户名。 
 4. 对于“访问类型”，请选择“以编程方式访问”，然后单击“下一页   :  权限”。  
@@ -107,7 +107,7 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
 
 使用以下步骤获取 AWS 角色 ARN。 使用角色 ARN 授予对计费存储桶的读取权限。
 
-1. 通过 https://console.aws.amazon.com 登录到 AWS 控制台，选择“服务”  。
+1. 通过 [https://console.aws.amazon.com](https://console.aws.amazon.com) 登录到 AWS 控制台，选择“服务”  。
 2. 在“服务搜索”框中键入 *IAM*，并选择该选项。
 3. 从左侧菜单中选择“角色”。 
 4. 在“角色”列表中，选择为授予 Cloudyn 访问权限而创建的角色。
@@ -117,7 +117,7 @@ Cloudyn 将开始收集数据并填充报告。 接下来，[启用详细 AWS �
 
 创建一个 S3 存储桶用于存储详细计费信息。
 
-1. 通过 https://console.aws.amazon.com 登录到 AWS 控制台，选择“服务”  。
+1. 通过 [https://console.aws.amazon.com](https://console.aws.amazon.com) 登录到 AWS 控制台，选择“服务”  。
 2. 在“服务搜索”框中键入 *S3*，并选择“S3”。 
 3. 在“Amazon S3”页上，单击“创建存储桶”。 
 4. 在“创建存储桶”向导中选择存储桶名称和区域，然后单击“下一步”。   

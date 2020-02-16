@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd4ad3e2e3da9dce3a5bab36137ce65807b6a9a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293719"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046777"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Box 集成
 
@@ -155,6 +155,6 @@ ms.locfileid: "76293719"
 
 - [通过 Azure AD 试用 Box](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-box)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Box](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Box](https://docs.microsoft.com/cloud-app-security/protect-box)

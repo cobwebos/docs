@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 5d5715e21b0560f4433e557f52b7fcf204e2046b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588052"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134689"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -24,18 +24,14 @@ ms.locfileid: "56588052"
 > * [Python](create-cassandra-python.md)
 >  
 
-本快速入门介绍如何使用 Python 和 Azure Cosmos DB [Cassandra API](cassandra-introduction.md)，通过克隆 GitHub 中的示例来生成配置文件应用。 此外，本快速入门还介绍了如何使用基于 Web 的 Azure 门户创建 Azure Cosmos DB 帐户。
+在本快速入门中，你将创建一个 Azure Cosmos DB Cassandra API 帐户，并使用从 GitHub 克隆的 Cassandra Python 应用创建一个 Cassandra 数据库和一个容器。 Azure Cosmos DB 是一种多模型数据库服务，你可以借助其全球分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、表、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和横向缩放功能。
+## <a name="prerequisites"></a>必备条件
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
-
-此外，还需要：
-* [Python](https://www.python.org/downloads/) 版本 v2.7.14
-* [Git](https://git-scm.com/)
-* [Apache Cassandra 的 Python 驱动程序](https://github.com/datastax/python-driver)
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。
+- [Python 2.7.14+ 或 3.4+](https://www.python.org/downloads/)。
+- [Git](https://git-scm.com/downloads)。
+- [适用于 Apache Cassandra 的 Python 驱动程序](https://github.com/datastax/python-driver)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -67,7 +63,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 pyquickstart.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 pyquickstart.py  文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
 * 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 `path\to\cert` 提供 X509 证书的路径。 
 
@@ -136,13 +132,13 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串使应用能与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
 
     使用 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
 
     ![在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点](./media/create-cassandra-python/keys.png)
 
-2. 打开 `config.py` 文件。 
+2. 打开 config.py  文件。 
 
 3. 粘贴门户中的“联系点”值，并覆盖第 10 行中的 `<FILLME>`。
 
@@ -162,17 +158,17 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. 保存 config.py 文件。
+6. 保存 config.py  文件。
     
 ## <a name="use-the-x509-certificate"></a>使用 X509 证书
 
-1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名 `.cer` 重命名该文件。
+1. 从 [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) 在本地下载 Baltimore CyberTrust 根证书。 使用文件扩展名“.cer”  重命名该文件。
 
    证书的序列号为 `02:00:00:b9`，SHA1 指纹为 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`。
 
-2. 打开 `pyquickstart.py` 并更改 `path\to\cert` 以指向新证书。
+2. 打开 pyquickstart.py  ，并将 `path\to\cert` 更改为指向新证书。
 
-3. 保存 `pyquickstart.py`。
+3. 保存 pyquickstart.py  。
 
 ## <a name="run-the-python-app"></a>运行 Python 应用
 
@@ -187,7 +183,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     python -m pip install pyopenssl
     ```
 
-2. 运行以下命令启动 node 应用程序：
+2. 运行以下命令启动 Python 应用程序：
 
     ```
     python pyquickstart.py
@@ -195,11 +191,11 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 3. 通过命令行验证结果是否符合预期。
 
-    按 CTRL + C 停止执行程序并关闭控制台窗口。 
+    按 CTRL+C 停止执行程序并关闭控制台窗口。 
 
     ![查看并验证输出](./media/create-cassandra-python/output.png)
     
-4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器  ，以查询、修改和处理这些新数据。 
 
     ![在数据资源管理器中查看数据](./media/create-cassandra-python/data-explorer.png)
 
@@ -213,7 +209,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建容器，以及如何运行应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+本快速入门介绍了如何使用 Cassandra API 创建 Azure Cosmos DB 帐户，以及如何运行用于创建 Cassandra 数据库和容器的 Cassandra Python 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)

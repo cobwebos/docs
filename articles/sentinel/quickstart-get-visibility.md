@@ -7,15 +7,15 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: fasttrack-edit
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 35ecb5c4e3987676d235fc6fd09f58c046301cda
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d91567f10b33717b157bd0b839d2706996c5b591
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548027"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087201"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>快速入门：Azure Sentinel 入门
 
@@ -53,7 +53,7 @@ ms.locfileid: "76548027"
 
 ## 使用内置工作簿<a name="dashboards"></a>
 
-内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure ID、Azure 活动事件和本地信息，这些数据可能来自 Windows 服务器事件、第一方警报或任何第三方，其中包括防火墙流量日志、Office 365 和基于 Windows 的不安全协议。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/app/usage-workbooks.md)。
+内置工作簿提供连接的数据源中的集成数据，让你深入调查这些服务中生成的事件。 内置工作簿包括 Azure AD、Azure 活动事件和本地信息，这些数据可能来自服务器的 Windows 事件、第一方警报或任何第三方（包括防火墙流量日志、Office 365 和基于 Windows 事件的不安全协议）。 这些工作簿基于 Azure Monitor 工作簿，为你提供增强的可定制性和灵活性，方便你设计自己的工作簿。 有关详细信息，请参阅[工作簿](../azure-monitor/app/usage-workbooks.md)。
 
 1. 在“设置”  下，选择“工作簿”  。 在“已安装”下，可以看到所有已安装的工作簿。  在“全部”下，可以看到可供安装的整个内置工作簿库。  
 2. 搜索特定的工作簿以查看整个列表，以及每个工作簿的功能说明。 

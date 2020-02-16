@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983854"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Azure AD SAML Toolkit 集成
 
@@ -45,6 +45,7 @@ ms.locfileid: "76983854"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Azure AD SAML Toolkit 支持 **SP** 发起的 SSO
+* 配置 Azure AD SAML Toolkit 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-azure-ad-saml-toolkit-from-the-gallery"></a>从库中添加 Azure AD SAML Toolkit
 
@@ -76,17 +77,17 @@ ms.locfileid: "76983854"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的“Azure AD SAML Toolkit”应用程序集成页上，找到“管理”部分并选择“单一登录”    。
 1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。 可以使用“SAML Toolkit SAML 配置”页检索设置。 
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
 1. 在“基本 SAML 配置”页上，输入以下字段的值  ：
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>` 
+    a. 在“登录 URL”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net/` 
 
     b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://samltoolkit.azurewebsites.net` 
 
-    c. 在“回复 URL”文本框中键入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>` 
+    c. 在“回复 URL”文本框中键入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume` 
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -173,3 +174,7 @@ ms.locfileid: "76983854"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 Azure AD SAML Toolkit](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [如何通过高级可见性和控制保护 Azure AD SAML Toolkit](https://docs.microsoft.com/cloud-app-security/protect-azure)

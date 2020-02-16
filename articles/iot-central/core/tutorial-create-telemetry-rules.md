@@ -3,29 +3,27 @@ title: 教程 - 在 Azure IoT Central 应用程序中创建和管理规则
 description: 本教程介绍如何通过 Azure IoT Central 规则以近实时方式监视设备并自动调用操作（例如在触发规则时发送电子邮件）。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 96514a224960240f2187164aac7c79c1659880e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026350"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167421"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中创建规则并设置通知
 
 *本文适用于操作员、构建者和管理员。*
 
-
-
 可以使用 Azure IoT Central 对连接的设备进行远程监视。 通过 Azure IoT Central 规则，你可以近乎实时地监视设备并自动调用操作（例如，发送电子邮件）。 只需单击几下，即可定义条件来监视来自设备的遥测数据并配置相应的操作。 本文介绍如何创建规则来监视设备发送的遥测数据。
 
 设备使用遥测从设备发送数值数据。 选定的设备遥测超过指定阈值时会触发规则。
 
-在本教程中，你将创建一个规则，用于在环境传感器设备中的温度超过 70&deg; F 时发送电子邮件。
+在本教程中，你将创建一个规则，用于在模拟环境传感器设备中的温度超过 70&deg; F 时发送电子邮件。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -36,7 +34,7 @@ ms.locfileid: "77026350"
 
 ## <a name="prerequisites"></a>必备条件
 
-在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的环境传感器设备模板  。
+在开始之前，应完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)和[将模拟设备添加到 IoT Central 应用程序](./quick-create-pnp-device.md)快速入门，以创建要使用的 MXChip IoT DevKit 设备模板  。
 
 ## <a name="create-a-rule"></a>创建规则
 
@@ -52,7 +50,7 @@ ms.locfileid: "77026350"
 
 1. 输入名称“温度监视器”以标识规则，然后按 Enter  。
 
-1. 选择“环境传感器”设备模板  。 默认情况下，此规则自动应用到与此设备模板关联的所有设备。 要筛选设备的子集，请选择“+ 筛选器”，然后使用设备属性来标识设备  。 要禁用规则，请切换规则标头中的“启用/禁用”按钮  ：
+1. 选择“MXChip IoT DevKit”  设备模板。 默认情况下，此规则自动应用到与此设备模板关联的所有设备。 要筛选设备的子集，请选择“+ 筛选器”，然后使用设备属性来标识设备  。 要禁用规则，请切换规则标头中的“启用/禁用”按钮  ：
 
     ![筛选器和启用](media/tutorial-create-telemetry-rules/device-filters.png)
 
@@ -77,7 +75,7 @@ ms.locfileid: "77026350"
 
 ### <a name="configure-actions"></a>配置操作
 
-定义条件后，可以设置触发规则时要执行的操作。 此规则中指定的所有条件评估结果均为 true 时会调用操作。 当前，电子邮件是唯一可用的操作。
+定义条件后，可以设置触发规则时要执行的操作。 此规则中指定的所有条件评估结果均为 true 时会调用操作。
 
 1. 在“操作”部分中选择“+ 电子邮件”   。
 

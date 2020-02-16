@@ -1,25 +1,28 @@
 ---
 title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842412"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117587"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
-Azure 成本管理原生适用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的合作伙伴。 本文介绍合作伙伴如何使用 [Azure 成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，介绍合作伙伴如何为其客户启用成本管理访问。 在 CSP 合作伙伴为其客户启用成本管理功能后，客户即可使用该功能。
+Azure 成本管理原生可用于已将其客户加入 Microsoft 客户协议并已[购买 Azure 计划](/partner-center/purchase-azure-plan)的直接合作伙伴。 本文介绍合作伙伴如何使用 [Azure 成本管理](../index.yml)功能查看 Azure 计划中的订阅的成本。 此外，介绍合作伙伴如何为其客户启用成本管理访问。
+
+就直接合作伙伴和间接提供商而言，间接提供商的全局管理员和管理员代理可以访问合作伙伴租户中的成本管理。 经销商和客户可以访问客户租户中的成本管理并查看订阅的成本，其中成本是按零售价计算和显示的。 但是，他们必须对客户租户中的订阅具有 RBAC 访问权限才能查看成本。 提供商必须为客户租户启用成本可见性策略。
+
+在 CSP 合作伙伴为其客户启用成本管理功能后，客户即可使用该功能。
 
 CSP 合作伙伴可以使用成本管理来实现以下目的：
 

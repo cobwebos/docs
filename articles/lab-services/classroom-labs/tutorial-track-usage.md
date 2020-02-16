@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580227"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134829"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>教程：在 Azure 实验室服务中跟踪实验室使用情况
 本教程介绍实验室创建者/所有者如何跟踪实验室使用情况。
@@ -32,18 +32,18 @@ ms.locfileid: "73580227"
 > * 管理学生 VM 
 
 
-## <a name="view-users-registered-with-the-lab"></a>查看注册到实验室的用户
+## <a name="view-registered-users"></a>查看已注册用户
 
 1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 
 2. 选择“登录”  并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
 3. 在“我的实验室”页上，选择要跟踪其使用情况的实验室。  
-4. 选择左侧菜单上的“用户”，或选择“用户”磁贴  。  此时会看到注册到实验室的学生。 选择“注册链接”，复制该链接并将其发送给尚未注册到实验室的新学生。  
+4. 选择左侧菜单上的“用户”，或选择“用户”磁贴  。  此时会看到注册到实验室的学生。  
 
     ![注册的用户](../media/tutorial-track-usage/registered-users.png)
 
     有关添加和管理实验室用户的详细信息，请参阅[添加和管理实验室用户](how-to-configure-student-usage.md)。
 
-## <a name="view-the-usage-of-vms-in-the-lab"></a>查看实验室中 VM 的使用情况 
+## <a name="view-the-usage-of-vms"></a>查看 VM 使用情况
 
 1. 在左侧菜单中选择“虚拟机”。  
 2. 确认可以看到 VM 的状态以及 VM 已运行的小时数。 实验室所有者在学生 VM 上花的时间不计入在最后一列中显示的使用时间。 

@@ -3,30 +3,27 @@ title: 转移 Azure 订阅的计费所有权
 description: 介绍如何将 Azure 订阅的计费所有权转移到另一帐户，并解答有关转移过程的一些常见问题 (FAQ)
 keywords: 转移 Azure 订阅, Azure 转移订阅, 将 Azure 订阅转移到另一帐户, Azure 更改订阅所有者, 将 Azure 订阅转移到另一帐户, Azure 转移计费
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76270860"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188394"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
-如果你即将离职，或者希望在另一帐户中计收订阅费用，可以转移 Azure 订阅的计费所有权。 将计费所有权转移到另一帐户后，对新帐户拥有权限的管理员可以执行各种计费任务，例如更改付款方式、查看费用，以及取消订阅。
+如果你即将离职，或者希望在另一帐户中计收订阅费用，可以转移 Azure 订阅的计费所有权。 将计费所有权转移到另一帐户可为新帐户中的管理员提供执行各种计费任务的权限。 他们可以更改付款方式、查看费用，以及取消订阅。
 
 若要保留计费所有权，但要更改订阅的类型，请参阅[将 Azure 订阅切换到另一套餐](switch-azure-offer.md)。 若要控制谁可以管理订阅中的资源，请参阅 [Azure 资源的内置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
 
-如果你是企业协议 (EA) 客户，则你的企业管理员可以在帐户之间转移订阅的计费所有权。 有关详细信息，请参阅[转移企业协议 (EA) 订阅的计费所有权](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions)。
+如果你是企业协议 (EA) 客户，则你的企业管理员可以在帐户之间转移订阅的计费所有权。 有关详细信息，请参阅[转移企业协议 (EA) 订阅的计费所有权](#EA)。
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>转移 Azure 订阅的计费所有权
 
@@ -44,7 +41,7 @@ ms.locfileid: "76270860"
 
 1. 输入充当帐户计费管理员的用户（该用户将是订阅的新所有者）的电子邮件地址。
 
-1. 若要将订阅转移到另一个 Azure AD 租户中的帐户，请选择是否要将该订阅移到新帐户的租户。 有关详细信息，请参阅[将订阅转移到另一个 Azure AD 租户中的帐户](#transferring-subscription-to-an-account-in-another-azure-ad-tenant)
+1. 若要将订阅转移到另一个 Azure AD 租户中的帐户，请选择是否要将该订阅移到新帐户的租户。 有关详细信息，请参阅[将订阅转移到另一个 Azure AD 租户中的帐户](#transfer-a-subscription-to-another-azure-ad-tenant-account)
 
     > [!IMPORTANT]
     >
@@ -58,7 +55,7 @@ ms.locfileid: "76270860"
 
    ![发送给收件人的订阅转移电子邮件](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。 用户必须选择用于支付订阅费用的付款方式。 此外，如果用户没有 Azure 帐户，则他们必须注册一个新帐户。
+1. 若要批准转移请求，用户需选择电子邮件中的链接，并按说明操作。 然后，用户选择用于支付订阅费用的付款方式。 如果用户没有 Azure 帐户，则他们必须注册一个新帐户。
 
    ![第一个订阅转移网页](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -68,23 +65,23 @@ ms.locfileid: "76270860"
 
 1. 成功！ 订阅现已转让。
 
-## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>将订阅转移到另一个 Azure AD 租户中的帐户
+## <a name="transfer-a-subscription-to-another-azure-ad-tenant-account"></a>将订阅转移到另一个 Azure AD 租户帐户
 
 注册 Azure 时，会创建一个 Azure Active Directory (AD) 租户。 该租户代表你的帐户。 使用该租户可以管理对订阅和资源的访问权限。
 
 创建新订阅时，该订阅将托管在帐户的 Azure AD 租户中。 若要为其他用户提供对你的订阅或其资源的访问权限，需要邀请他们加入你的租户。 这有助于控制对订阅和资源的访问。
 
-将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的[基于角色的访问权限 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 若要为最初拥有访问权限的用户提供访问权限，新的所有者必须[手动将这些用户添加到订阅](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+将订阅的计费所有权转移到另一个 Azure AD 租户中的帐户时，可将订阅移到新帐户的租户。 这样，以前拥有管理订阅及其资源的[基于角色的访问权限 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 的用户、组或服务主体将失去其访问权限。 只有新帐户中接受了转移请求的用户才有权管理这些资源。 新所有者必须[手动将这些用户添加到订阅](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)，才能为他们提供失去的访问权限。
 
 
-## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>转移 Visual Studio、MPN 和即用即付开发/测试订阅
+## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>转移 Visual Studio 和合作伙伴网络订阅
 
 Visual Studio 和 Microsoft 合作伙伴网络订阅具有关联的每月定期 Azure 额度。 转移这些订阅时，你的额度在目标计费帐户中不可用。 订阅使用目标计费帐户中的额度。 例如，如果 Bob 在 9 月 9 日将 Visual Studio Enterprise 订阅转移到了 Jane 的帐户，而 Jane 接受了这种转移。 转移完成后，订阅将开始使用 Jane 帐户中的额度。 该额度在每个月的 9 号重置。
 
 
 <a id="EA"></a>
 
-## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>转移企业协议 (EA) 订阅的计费所有权
+## <a name="transfer-ea-subscription-billing-ownership"></a>转移 EA 订阅计费所有权
 
 企业管理员可以在注册中的帐户之间转移订阅所有权。 有关详细信息，请参阅 EA 门户中的[更改帐户所有者](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner)。
 
@@ -135,7 +132,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 1. 访问 [Azure 门户中的“成本管理 + 计费”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview)。
 1. 在左窗格中选择“所有计费范围”。 
-1. 订阅页将列出你是其计费管理员的所有订阅。
+1. 订阅页将列出你是其中的计费管理员的所有订阅。
 
 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 
@@ -145,7 +142,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>所有内容都会转让吗？ 包括资源组、VM、磁盘和其他正在运行的服务吗？
 
-所有资源（例如 VM、磁盘和网站）将转移到新帐户。 但是，如果将订阅转移到了另一个 Azure AD 租户中的帐户，则订阅的任何[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配将[不会转移](#transferring-subscription-to-an-account-in-another-azure-ad-tenant)。 此外，[应用注册](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他特定于租户的服务不会随订阅一起转移。
+所有资源（例如 VM、磁盘和网站）将转移到新帐户。 但是，如果将订阅转移到了另一个 Azure AD 租户中的帐户，则订阅的任何[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配将[不会转移](#transfer-a-subscription-to-another-azure-ad-tenant-account)。 此外，[应用注册](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)和其他特定于租户的服务不会随订阅一起转移。
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>是否可将所有权转移到另一个国家/地区中的帐户？
 遗憾的是，在 Azure 门户中无法执行跨国家/地区的转移。 若要跨国家/地区转移订阅，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
@@ -155,11 +152,11 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>订阅转让会造成任何服务停机吗？
 
-如果将订阅转移到同一 Azure AD 租户中的帐户，该订阅中正在运行的资源不受影响。 但是，如果你将订阅转移到另一个租户中的帐户，并决定将订阅移到该租户，则以前拥有管理订阅中资源的[基于角色的访问权限 (RBAC)](../../role-based-access-control/overview.md) 的所有用户、组和服务主体将失去其访问权限。 这可能会导致服务停机。
+如果将订阅转移到同一 Azure AD 租户中的帐户，该订阅中正在运行的资源不受影响。 但是，保存在 PowerShell 中的上下文信息不会更新，因此，可能必须清除此信息，或更改设置。 如果将订阅转移到另一个租户中的帐户，并决定将订阅移到该租户，则以前拥有管理订阅中资源的[基于角色的访问权限 (RBAC)](../../role-based-access-control/overview.md) 的所有用户、组和服务主体将失去其访问权限。 可能会导致服务停机。
 
-### <a name="do-users-in-new-account-have-access-to-usage-and-billing-history"></a>新帐户中的用户是否有权访问使用情况和计费历史记录？
+### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>新帐户中的用户是否可以访问使用情况和帐单？
 
-新帐户中用户可获得的唯一信息是上个月的订阅费用。 其余的使用情况与计费历史记录不会随订阅一起转移。
+新帐户中用户可获得的唯一信息是上个月的订阅费用。 其余的使用情况与帐单不会随订阅一起转移。
 
 ### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-new-subscription"></a>如何将 Azure 订阅的数据和服务迁移到新的订阅？
 
@@ -167,7 +164,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>如果我转移了 Visual Studio 或 Microsoft 合作伙伴网络订阅，我的额度是否会随订阅一起转移到新帐户？
 
-不会，你的额度在新帐户中不可用。 接受转移请求的用户需要拥有 Visual Studio 许可证才能接受转移请求。 订阅使用用户帐户中可用的 Visual Studio 额度。 有关详细信息，请参阅[转移 Visual Studio、Microsoft 合作伙伴网络 (MPN) 和即用即付开发/测试订阅](#transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions)。
+不会，你的额度在新帐户中不可用。 接受转移请求的用户需要拥有 Visual Studio 许可证才能接受转移请求。 订阅使用用户帐户中可用的 Visual Studio 额度。 有关详细信息，请参阅[转移 Visual Studio 和合作伙伴网络订阅](#transfer-visual-studio-and-partner-network-subscriptions)。
 
 
 ## <a name="frequently-asked-questions-faq-for-recipients"></a>面向接收方的常见问题解答 (FAQ)
@@ -176,7 +173,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>如果我从另一帐户接管了订阅的计费所有权，该帐户中的用户是否可以继续访问我的资源？
 
-是的。 不过，如果你的帐户所在的 Azure AD 租户不同于订阅的租户，并且发送转移请求的用户将订阅移到了你的帐户的租户，则会删除任何[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配。 若要查看拥有[基于角色的访问权限 (RBAC)](../../role-based-access-control/overview.md)，可管理订阅中的资源的用户，请使用以下步骤：
+是的。 但是，可能会删除[管理员角色](add-change-subscription-administrator.md)和[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)。 如果你的帐户所在的 Azure AD 租户不同于订阅的租户，并且发送转移请求的用户将订阅移到了你的帐户的租户，则会发生访问权限丢失。 若要查看拥有[基于角色的访问权限 (RBAC)](../../role-based-access-control/overview.md)，可管理订阅中的资源的用户，请使用以下步骤：
 
 1. 访问 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 1. 选择要检查的订阅，然后在左窗格中选择“访问控制(IAM)”。 
@@ -193,7 +190,7 @@ Azure 门户中的订阅转移适用于下面列出的订阅类型。 [免费试
   1. 登录 [Azure 门户](https://portal.azure.com)。
   2. 在“中心”菜单上，选择“所有资源”  。
   3. 选择资源。
-  4. 在资源页中单击“设置”。  可以在这里查看和更新现有机密。
+  4. 在资源页中选择“设置”。  可以在这里查看和更新现有机密。
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>如果我在计费周期的中途接管了订阅的计费所有权，是否需要支付整个计费周期的费用？
 

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122077"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116502"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>教程：在 Azure 容器实例中部署映像分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "76122077"
 
 ## <a name="prerequisites"></a>必备条件
 
-若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，在克隆的教程文件夹中打开 img-classification-part2-deploy.ipynb 笔记本   。
+若要运行 Notebook，请首先完成以下教程中的模型训练：[教程（第 1 部分）：训练映像分类模型](tutorial-train-models-with-aml.md)。   然后，在克隆的 tutorials/image-classification-mnist-data 文件夹中打开 img-classification-part2-deploy.ipynb 笔记本   。
 
 如果希望在自己的[本地环境](how-to-configure-environment.md#local)中使用此教程，也可以在 [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 上找到它。  请确保已在环境中安装了 `matplotlib` 和 `scikit-learn`。 
 

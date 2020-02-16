@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3b0df9f663866c916a45c85767d49b8701152cd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4b8f58fbfa9de929139646ad267a433645e2db35
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927827"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156412"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -40,7 +40,7 @@ ms.locfileid: "75927827"
 
 ## <a name="create-a-speech-configuration"></a>创建语音配置
 
-在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置。 将此代码插入 `RecognizeSpeechAsync()` 方法。
+在初始化 `SpeechRecognizer` 对象之前，需要创建一个使用订阅密钥和订阅区域的配置（从[区域](https://aka.ms/speech/sdkregion)中选择“语音 SDK 参数”）。 将此代码插入 `RecognizeSpeechAsync()` 方法。
 
 > [!NOTE]
 > 此示例使用 `FromSubscription()` 方法来生成 `SpeechConfig`。 有关可用方法的完整列表，请参阅 [SpeechConfig 类](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)。

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293685"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046722"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ServiceNow 集成
 
@@ -467,6 +467,6 @@ ms.locfileid: "76293685"
 
 - [通过 Azure AD 试用 ServiceNow](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 ServiceNow](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 ServiceNow](https://docs.microsoft.com/cloud-app-security/protect-servicenow)

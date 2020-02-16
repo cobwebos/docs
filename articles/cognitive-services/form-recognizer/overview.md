@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379415"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118536"
 ---
 # <a name="what-is-form-recognizer"></a>什么是表单识别器？
 
@@ -51,17 +51,9 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 
 表单识别器还可以使用高清光学字符识别 (OCR) 来提取文本和表结构（与文本关联的行号和列号）。 
 
-## <a name="where-do-i-start"></a>从哪里开始？
+## <a name="get-started"></a>入门
 
-**步骤 1：** 请求访问权限：
-
-表单识别器目前只推出了访问权限受限的预览版。 若要访问预览版，请填写并提交[表单识别器访问请求](https://aka.ms/FormRecognizerRequestAccess)表单。 该表单将请求有关你、你的公司以及要在其中使用表单识别器的方案的信息。
-
-**步骤 2：** 在 Azure 门户中创建表单识别器资源：
-
-获得使用表单识别器所需的访问权限时，你会收到一封欢迎电子邮件，其中包含多个链接和资源。 使用该邮件中的“Azure 门户”链接打开 Azure 门户并创建表单识别器资源。
-
-**步骤 3：** 从表单提取数据：
+按照快速入门开始从表单中提取数据。 我们建议你在学习该技术时使用免费服务。 请记住，每月的免费页数限于 500。
 
 * 自定义 - 按表单训练模型
   * 在没有标签的情况下训练
@@ -76,9 +68,7 @@ Azure 表单识别器是一个认知服务，该服务使用机器学习技术�
 * 布局 - 从表单提取文本和表结构
   * [快速入门：使用 Python 提取布局数据](quickstarts/python-layout.md)
 
-我们建议你在学习该技术时使用免费服务。 请记住，每月的免费页数限于 500。
-
-**步骤 4：** 查看 REST API：
+### <a name="review-the-rest-apis"></a>查看 REST API
 
 使用以下 API 训练模型并提取表单中的结构化数据。
 

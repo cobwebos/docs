@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5eb5cedf14af9a013a5b6a1eba5df40d665cbad5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181615"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048064"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
 
@@ -31,9 +31,9 @@ ms.locfileid: "74181615"
 * 让用户使用其 Azure AD 帐户自动登录到 F5。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要详细了解 SaaS 应用与 Azure AD 单一登录的集成，请参阅[单一登录到 Azure Active Directory 中的应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -154,7 +154,7 @@ ms.locfileid: "74181615"
 
     b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
-1. 如果要在 SP  发起的模式下配置应用程序，请点击“设置其他 URL”  ，并执行以下步骤：
+1. 如果要在 SP  发起的模式下配置应用程序，请单击“设置其他 URL”  ，并执行以下步骤：
 
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<YourCustomFQDN>.f5.com/`
 
@@ -206,7 +206,7 @@ ms.locfileid: "74181615"
 
 - [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
 
-- [为高级 Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
+- [为 Advanced Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
 
 ### <a name="configure-f5-single-sign-on-for-header-based-application"></a>为 Header Based 应用程序配置 F5 单一登录
 
@@ -218,7 +218,7 @@ ms.locfileid: "74181615"
 
     ![F5 (Header Based) 配置](./media/headerf5-tutorial/configure12.png)
  
-1. 此外，还需要 SSL 证书以获取应用程序主机名。  导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
+1. 此外，还需要 **SSL 证书以获取应用程序主机名。导航到“系统”>“证书管理”>“流量证书管理”>“SSL 证书列表”** 。 在右下角选择“导入”  。 “导入类型”将为“PKCS 12(IIS)”   。 指定稍后会在配置中引用的“密钥名称”，并指定 PFX 文件  。 为 PFX 指定“密码”  。 单击“导入”  。
 
     >[!NOTE]
     >在此示例中，我们的应用名称是 `Headerapp.superdemo.live`，我们使用通配符证书，我们的密钥名称为 `WildCard-SuperDemo.live`。
@@ -466,9 +466,9 @@ ms.locfileid: "74181615"
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [通过 Azure AD 试用 F5](https://aad.portal.azure.com/)
+- [在 Azure AD 中试用 F5](https://aad.portal.azure.com/)
 
 - [为 Kerberos 应用程序配置 F5 单一登录](kerbf5-tutorial.md)
 
-- [为高级 Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
+- [为 Advanced Kerberos 应用程序配置 F5 单一登录](advance-kerbf5-tutorial.md)
 

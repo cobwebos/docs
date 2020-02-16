@@ -6,41 +6,31 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 257fd02c2f7ec2aff9d55b91b2cbd54b6eb55431
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc615149b092aebfdde767fb3b716fb897bfd551
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464398"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121507"
 ---
 # <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>快速入门：将 Java 应用部署到 Linux 上的 Azure Service Fabric
 
-此快速入门演示如何在 Linux 开发人员计算机上使用 Eclipse IDE 将首个 Java 应用程序部署到 Azure Service Fabric。 完成后，将生成一个带 Java Web 前端的投票应用程序，用于将投票结果保存到群集的有状态后端服务中。
+在本快速入门中，你将在 Linux 开发人员计算机上使用 Eclipse IDE 将 Java 应用程序部署到 Azure Service Fabric。 完成后，将生成一个带 Java Web 前端的投票应用程序，用于将投票结果保存到群集的有状态后端服务中。
 
 Azure Service Fabric 是一款分布式系统平台，可用于部署和管理微服务和容器。
 
-![Azure Service Fabric 投票示例](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
-
-此快速入门介绍如何：
-
-* 使用 Eclipse 处理 Service Fabric Java 应用程序
-* 将应用程序部署到本地群集
-* 跨多个节点横向扩展应用程序
-
 ## <a name="prerequisites"></a>必备条件
 
-完成本快速入门教程需要：
-
-1. [安装 Service Fabric SDK 和 Service Fabric 命令行接口 (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
-2. [安装 Git](https://git-scm.com/)
-3. [安装 Eclipse](https://www.eclipse.org/downloads/)
-4. [设置 Java 环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)，确保遵循可选步骤安装 Eclipse 插件
+- [Java 环境](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) 和 [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Eclipse Neon (4.6)+](https://www.eclipse.org/downloads/packages/) 和[用于 Service Fabric 的 Eclipse 插件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#install-the-eclipse-plug-in-optional)
+- [Service Fabric SDK 和命令行接口(CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
 ## <a name="download-the-sample"></a>下载示例
 
 在命令窗口中，运行以下命令，将示例应用程序存储库克隆到本地计算机。
 
-```git
+```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 ```
 
@@ -51,13 +41,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ```bash
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
-    启动本地群集需要一些时间。 若要确认群集是否完全正常，请访问 Service Fabric Explorer（网址： **http://localhost:19080** ）。 5 个节点均正常即表示本地群集运行正常。
+    启动本地群集需要一些时间。 若要确认群集已完全启动，请访问 Service Fabric Explorer（网址：`http://localhost:19080`）。 5 个节点均正常即表示本地群集运行正常。
 
     ![Azure Service Fabric Explorer 显示运行正常的节点](./media/service-fabric-quickstart-java/service-fabric-explorer-healthy-nodes.png)
 
 2. 打开 Eclipse。
 3. 选择“文件”   > “导入”   > “Gradle”   > “现有 Gradle 项目”  ，并按照向导进行操作。
-4. 选择“目录”  ，然后在从 GitHub 克隆的 `service-fabric-java-quickstart` 文件夹中选择 `Voting` 目录。 选择“完成”  。
+4. 选择“目录”  ，然后在从 GitHub 克隆的 **service-fabric-java-quickstart** 文件夹中选择 **Voting** 目录。 选择“完成”  。
 
     ![将 Gradle 项目导入 Eclipse](./media/service-fabric-quickstart-java/eclipse-import-gradle-project.png)
 
@@ -72,15 +62,17 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
 
 现在可以添加一组投票选项，并开始进行投票。 此应用程序可以运行，并将所有数据存储到 Service Fabric 群集中，而无需单独提供数据库。
 
+![Azure Service Fabric 投票示例](./media/service-fabric-quickstart-java/service-fabric-voting-sample.png)
+
 ## <a name="scale-applications-and-services-in-a-cluster"></a>在群集中缩放应用程序和服务
 
-可跨群集缩放服务来适应服务负载的变化。 可以通过更改群集中运行的实例数量来缩放服务。 存在多种服务缩放方式，例如，可使用 Service Fabric CLI (sfctl) 脚本/命令。 以下步骤使用 Service Fabric Explorer。
+可跨群集缩放服务来适应服务负载的变化。 可以通过更改群集中运行的实例数量来缩放服务。 有许多方法可以缩放服务。 例如，可以通过 Service Fabric CLI (`sfctl`) 使用脚本或命令。 以下步骤使用 Service Fabric Explorer。
 
-Service Fabric Explorer 在所有 Service Fabric 群集中运行，并能通过浏览器进行访问，访问方法是转到群集的 HTTP 管理端口 (19080)，例如，`http://localhost:19080`。
+Service Fabric Explorer 在所有 Service Fabric 群集中运行，并且可以通过浏览到群集的 HTTP 管理端口 (19080) 从浏览器进行访问。 例如，`http://localhost:19080` 。
 
 若要缩放 Web 前端服务，请执行以下操作：
 
-1. 在群集中打开 Service Fabric Explorer - 例如 `https://localhost:19080`。
+1. 在群集中打开 Service Fabric Explorer。 例如，`https://localhost:19080` 。
 2. 在树视图中选择“fabric:/Voting/VotingWeb”节点旁边的省略号 ( **...** )，再选择“缩放服务”   。
 
     ![在 Azure Service Fabric 中缩放服务](./media/service-fabric-quickstart-java/service-fabric-scale-service.png)

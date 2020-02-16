@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 01/29/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899205"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190318"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）
 
@@ -42,6 +41,8 @@ Azure Arc for servers（预览版）支持以下使用联网计算机的方案�
 - 西欧
 - 西亚
 
+在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 为了在发生区域性中断时具有恢复能力，如果你有提供地理冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
+
 ## <a name="prerequisites"></a>必备条件
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
@@ -55,9 +56,15 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 >适用于 Windows 的 Connected Machine 代理预览版仅支持配置为使用英语的 Windows Server。
 >
 
+### <a name="required-permissions"></a>所需的权限
+
+- 若要将计算机加入，你必须是 **Azure Connected Machine 加入**角色的成员。
+
+- 若要读取、修改、重新加入和删除计算机，你必须是 **Azure Connected Machine 资源管理员**角色的成员。 
+
 ### <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
-在为计算机配置 Azure Arc for servers（预览版）之前，应查看 Azure 资源管理器[订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)和[资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以规划要连接的计算机数。
+在为计算机配置 Azure Arc for servers（预览版）之前，应查看 Azure 资源管理器[订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以规划要连接的计算机数。
 
 ### <a name="networking-configuration"></a>网络配置
 
@@ -129,10 +136,10 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 | 方法 | 说明 |
 |--------|-------------|
-| 交互式 | 遵循[从 Azure 门户连接计算机](quickstart-onboard-portal.md)中的步骤，在一台或多台计算机上手动安装代理。<br> 在 Azure 门户中，可以生成一个脚本并在计算机上执行，以自动完成代理安装和配置的步骤。|
-| 大规模 | 遵循[使用服务主体连接计算机](quickstart-onboard-powershell.md)中的步骤，为多台计算机安装并配置代理。<br> 此方法创建一个服务主体来以非交互方式连接计算机。|
+| 交互式 | 遵循[从 Azure 门户连接计算机](onboard-portal.md)中的步骤，在一台或多台计算机上手动安装代理。<br> 在 Azure 门户中，可以生成一个脚本并在计算机上执行，以自动完成代理安装和配置的步骤。|
+| 大规模 | 遵循[使用服务主体连接计算机](onboard-service-principal.md)中的步骤，为多台计算机安装并配置代理。<br> 此方法创建一个服务主体来以非交互方式连接计算机。|
 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要开始评估 Azure Arc for servers（预览版），请阅读[从 Azure 门户将混合计算机连接到 Azure](quickstart-onboard-portal.md) 一文。 
+- 若要开始评估 Azure Arc for servers（预览版），请阅读[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文。 

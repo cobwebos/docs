@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8035cce1482c3c441cc956272a7300f0d0ea8194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815308"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189080"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>快速入门：在 Linux 上运行语音设备 SDK 示例应用
 
@@ -27,7 +27,7 @@ ms.locfileid: "74815308"
 
 [示例应用程序](https://aka.ms/sdsdk-download-JRE)的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本快速入门需要：
 
@@ -38,7 +38,7 @@ ms.locfileid: "74815308"
 * 语音服务的 Azure 订阅密钥。 [免费获得一个](get-started.md)。
 * 下载用于 Java 的[语音设备 SDK](https://aka.ms/sdsdk-download-JRE) 的最新版本，并将 .zip 提取到工作目录。
    > [!NOTE]
-   > JRE-Sample-Release.zip 文件包含 JRE 示例应用，本快速入门假设该应用提取到 /home/wcaltest/JRE-Sample-Release
+   > 本快速入门假设应用已解压缩到 /home/wcaltest/JRE-Sample-Release
 
 确保在启动 Eclipse 之前安装这些依赖项。
 
@@ -56,7 +56,7 @@ ms.locfileid: "74815308"
   sudo apt-get install libssl1.0.2 libasound2
   ```
 
-对话听录目前仅在“centralus”和“eastasia”区域中适用于“en-US”和“zh-CN”。 必须在这些区域中的一个区域内有语音密钥，才能使用对话听录。
+对话听录目前仅在“centralus”和“eastasia”区域中适用于“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
 如果计划使用意向，则将需要[语音理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 
@@ -72,11 +72,11 @@ ms.locfileid: "74815308"
 
 1. 从 Eclipse 菜单栏上，依次选择“文件”   > “新建”   > “Java 项目”以新建一个项目  。 如果不可用，请依次选择“项目”  和“Java 项目”  。
 
-1. 此时将启动“新建 Java 项目”向导  。 **浏览**示例项目所在的位置。 选择“完成”。 
+1. 此时将启动“新建 Java 项目”向导  。 **浏览**示例项目所在的位置。 选择“完成”  。
 
    ![“新建 Java 项目”向导的屏幕截图](media/speech-devices-sdk/eclipse-new-java-project-linux.png)
 
-1. 在“包资源管理器”  中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。   选择“完成”。 
+1. 在“包资源管理器”  中，右键单击你的项目。 从上下文菜单中选择“配置” > “转换为 Maven 项目”。   选择“完成”  。
 
    ![包资源管理器的屏幕截图](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "74815308"
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限
+title: '教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限 '
 description: 本教程介绍如何使用 Azure 门户中的基于角色的访问控制 (RBAC) 授予用户对 Azure 资源的访问权限。
 services: role-based-access-control
 documentationCenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419664"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138094"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>教程：使用 RBAC 和 Azure 门户授予用户对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，你将授权用户在某个资源组中创建和管理虚拟机。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，你将授权用户在某个资源组中创建和管理虚拟机。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在资源组范围内为用户授予访问权限
@@ -92,13 +92,13 @@ ms.locfileid: "74419664"
 
 1. 在角色分配列表中，在具有“虚拟机参与者”角色的用户旁边添加复选标记。
 
-1. 单击“删除”。 
+1. 单击 **“删除”** 。
 
    ![“删除角色分配”消息](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
 1. 在显示的“删除角色分配”消息中，单击“是”。 
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 1. 在导航列表中，单击“资源组”  。
 

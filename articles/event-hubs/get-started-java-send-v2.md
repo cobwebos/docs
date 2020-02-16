@@ -6,31 +6,30 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d9d22374868f3befd659918c532f339d49ba1642
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 4ebb52aa3e8d4ccfee6b36fb60c7f041df08a69a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77032045"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163018"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-messaging-eventhubs) 发送/接收事件
-本快速入门介绍如何创建用于向/从 Azure 事件中心发送/接收事件的 Java 应用程序。 
-
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
+本快速入门介绍如何使用 **azure-messaging-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
 
 > [!IMPORTANT]
-> 本快速入门使用新的 **azure-messaging-eventhubs** 库。 有关使用旧 **azure-eventhubs** 和 **azure-eventhubs-eph** 包的快速入门，请参阅[此文](event-hubs-java-get-started-send.md)。 
+> 本快速入门使用新的 **azure-messaging-eventhubs** 库。 有关使用旧的 **azure-eventhubs** 和 **azure-eventhubs-eph** 包的快速入门，请参阅[使用 azure-eventhubs 和 azure-eventhubs-eph 发送和接收事件](event-hubs-java-get-started-send.md)。 
 
 
 ## <a name="prerequisites"></a>必备条件
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
-若要完成本教程，需要具备以下先决条件：
+若要完成本快速入门，需要具备以下先决条件：
 
-- 有效的 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
-- Java 开发环境。 本教程使用 [Eclipse](https://www.eclipse.org/)。 需要 Java 开发工具包 (JDK) 版本 8 或更高版本。 
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。
+- **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Java 开发环境。 本快速入门使用 [Eclipse](https://www.eclipse.org/)。 需要 Java 开发工具包 (JDK) 版本 8 或更高版本。 
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 稍后将在本快速入门中使用连接字符串。
 
 ## <a name="send-events"></a>发送事件 
 本部分介绍如何创建一个向事件中心发送事件的 Java 应用程序。 
@@ -75,7 +74,7 @@ String eventHubName = "<EVENT HUB NAME>";
 ```java
 EventHubProducerClient producer = new EventHubClientBuilder()
     .connectionString(connectionString, eventHubName)
-    .buildProducer();
+    .buildProducerClient();
 ```
 
 ### <a name="prepare-a-batch-of-events"></a>准备一批事件
@@ -117,7 +116,7 @@ public class Sender {
         // create a producer using the namespace connection string and event hub name
         EventHubProducerClient producer = new EventHubClientBuilder()
             .connectionString(connectionString, eventHubName)
-            .buildProducer();
+            .buildProducerClient();
 
         // prepare a batch of events to send to the event hub    
         EventDataBatch batch = producer.createBatch();
@@ -158,54 +157,55 @@ public class Sender {
 1. 使用以下代码创建名为 `Receiver`的新类。 将占位符替换为创建事件中心和存储帐户时所使用的值：
    
    ```java
-    import com.azure.messaging.eventhubs.*;
-    import com.azure.messaging.eventhubs.models.ErrorContext;
-    import com.azure.messaging.eventhubs.models.EventContext;
-    import java.util.concurrent.TimeUnit;
-    import java.util.function.Consumer;
-
-    public class Receiver {
-
-        private static final String connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
-        private static final String eventHubName = "EVENT HUB NAME";
+     import com.azure.messaging.eventhubs.*;
+     import com.azure.messaging.eventhubs.models.ErrorContext;
+     import com.azure.messaging.eventhubs.models.EventContext;
+     import java.util.concurrent.TimeUnit;
+     import java.util.function.Consumer;
     
-        public static void main(String[] args) throws Exception {
-
-            // function to process events
-            Consumer<EventContext> processEvent = eventContext  -> {
-                System.out.print("Received event: ");
-                // print the body of the event
-                System.out.println(eventContext.getEventData().getBodyAsString());
-                eventContext.updateCheckpoint();
-            };
-
-            // function to process errors
-            Consumer<ErrorContext> processError = errorContext -> {
-                // print the error message
-                System.out.println(errorContext.getThrowable().getMessage());
-            };
-
-            EventProcessorBuilder eventProcessorBuilder = new EventProcessorBuilder()
-                .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
-                .connectionString(connectionString, eventHubName)
-                .processEvent(processEvent)
-                .processError(processError)
-                .checkpointStore(new InMemoryCheckpointStore());
-        
-            EventProcessorClient eventProcessorClient = eventProcessorClientBuilder.buildEventProcessorClient();
-            System.out.println("Starting event processor");
-            eventProcessorClient.start();
-
-            System.out.println("Press enter to stop.");
-            System.in.read();
-
-            System.out.println("Stopping event processor");
-            eventProcessor.stop();
-            System.out.println("Event processor stopped.");
+     public class Receiver {
     
-            System.out.println("Exiting process");
-        }
-    }
+         final static String connectionString = "<EVENT HUBS NAMESPACE - CONNECTION STRING>";
+         final static String eventHubName = "<EVENT HUB NAME>";
+         
+         public static void main(String[] args) throws Exception {
+    
+             // function to process events
+             Consumer<EventContext> processEvent = eventContext  -> {
+                 System.out.print("Received event: ");
+                 // print the body of the event
+                 System.out.println(eventContext.getEventData().getBodyAsString());
+                 eventContext.updateCheckpoint();
+             };
+    
+             // function to process errors
+             Consumer<ErrorContext> processError = errorContext -> {
+                 // print the error message
+                 System.out.println(errorContext.getThrowable().getMessage());
+             };
+    
+            
+             EventProcessorClient eventProcessorClient = new EventProcessorClientBuilder()
+                     .connectionString(connectionString, eventHubName)
+                     .processEvent(processEvent)
+                     .processError(processError)
+                     .consumerGroup(EventHubClientBuilder.DEFAULT_CONSUMER_GROUP_NAME)
+                     .checkpointStore(new InMemoryCheckpointStore())
+                     .buildEventProcessorClient();
+    
+             System.out.println("Starting event processor");
+             eventProcessorClient.start();
+    
+             System.out.println("Press enter to stop.");
+             System.in.read();
+    
+             System.out.println("Stopping event processor");
+             eventProcessorClient.stop();
+             System.out.println("Event processor stopped.");
+    
+             System.out.println("Exiting process");
+         }
+     }
     ```
     
 2. 从 [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs) 下载 **InMemoryCheckpointStore.java** 文件，并将其添加到项目。 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451103"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108993"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>快速入门：使用成批的问题和预期的解答测试知识库
 
@@ -24,7 +24,7 @@ ms.locfileid: "75451103"
 ## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [创建 QnA Maker 服务](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base)或使用现有的服务，后者对本快速入门中使用的示例文档使用英语。
+* [创建 QnA Maker 服务](create-publish-knowledge-base.md)或使用现有服务（使用英语）。
 * 下载[多轮示例 `.docx` 文件](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)
 * 下载[批量测试工具](https://aka.ms/qnamakerbatchtestingtool)，从 `.zip` 文件中提取可执行文件。
 
@@ -41,9 +41,16 @@ ms.locfileid: "75451103"
     * Azure QnA 服务名称
     * 语言 - 英语
 1. 输入名称 `Multi-turn batch test quickstart` 作为知识库的名称。
-1. 在“步骤 4”中，勾选“允许从 URL、.pdf 或 .docx 文件进行多轮提取”。  
-1. 输入**默认答案文本**：`Quickstart - can't find answer`。 在生产性知识库中，此信息应该对用户更具指导性，但在本快速入门中，只需进行简单的响应。
-1. 选择“+ 添加文件”，然后选择在先决条件中列出的已下载的 `.docx` 文件（此时仍在“步骤 4”中）。  
+
+1. 在**步骤 4** 中，按照下表配置设置：
+
+    |设置|值|
+    |--|--|
+    |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
+    |**默认答案文本**| `Batch test - default answer not found.`|
+    |**+ 添加文件**|选择先决条件中列出的已下载 `.docx` 文件。|
+    |**聊天内容**|选择“专业” |
+
 1. 在“步骤 5”中，选择“创建 KB”   。
 
     创建过程完成后，门户会显示可编辑的知识库。
@@ -160,7 +167,7 @@ batchtesting.exe batch-test-data-1.tsv https://YOUR-RESOURCE-NAME.azurewebsites.
 * **处理聊天日志文件** - 确定上一个未见问题的排名最靠前的答案 - 最常见的情况是你需要处理查询的日志文件，例如某个聊天机器人的用户问题。 只使用所需列创建批处理文件测试。 测试会返回每个问题的排名最靠前的答案。 这并不意味着排名最靠前的答案是正确答案。 完成此测试以后，请转到验证测试。
 * **验证测试** - 验证预期的答案。 此测试要求批量测试中的所有问题和匹配的预期答案均已验证。 这可能需要进行一些手动处理。
 
-以下过程假设方案是处理聊天日志 
+以下过程假设方案是处理聊天日志
 
 1. 创建新的批量测试文件，使之包括可选数据 `batch-test-data-2.tsv`。 添加来自原始批量测试输入文件中的 6 行，然后添加每行的元数据、top 和 QnA 集 ID。
 

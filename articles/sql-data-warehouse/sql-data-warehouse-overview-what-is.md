@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760753"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153241"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>什么是 Azure Synapse Analytics（以前称为 SQL DW）？
 
@@ -34,7 +34,7 @@ Azure Synapse 包含四个组件：
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>Azure Synapse 中的 SQL Analytics 和 SQL 池
 
-SQL Analytics 是 Azure Synapse 中正式发布的企业数据仓库功能。 
+SQL Analytics 是指 Azure Synapse 中正式发布的企业数据仓库功能。 
 
 SQL 池表示使用 SQL Analytics 时预配的分析资源集合。 SQL 池的大小由数据仓库单位 (DWU) 决定。
 

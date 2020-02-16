@@ -3,19 +3,17 @@ title: 管理 Azure 预留
 description: 了解如何管理 Azure 预留。
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994046"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188509"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -128,7 +126,7 @@ ms.locfileid: "75994046"
 
 ## <a name="optimize-reservation-use"></a>优化预留的使用
 
-只有持续使用资源，才会有 Azure 预留节省好处。 进行预留购买时，你提前支付一笔费用，获得的是在一到三年的期限内几乎 100% 可能的资源使用。 尝试将预留最大化，以获取尽可能多的使用和节省。 下面各部分介绍了如何监视预留并优化其使用。
+只有持续使用资源，才会有 Azure 预留节省好处。 进行预留购买时，你要为一或三年的期限内基本上 100% 可能的资源使用付费。 尝试将预留最大化，以获取尽可能多的使用和节省。 下面各部分介绍了如何监视预留并优化其使用。
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>在 Azure 门户中查看预留使用
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: ba5879543d7640993ac834811ec6a82965557755
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 16ebde7d98fbbf95f6c83275ab986ed91c89d736
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432692"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190211"
 ---
 # <a name="what-is-application-insights"></a>什么是 Application Insights？
 Application Insights 是 [Azure Monitor](../overview.md) 的一项功能，是面向开发人员和 DevOps 专业人员的可扩展应用程序性能管理 (APM) 服务。 使用它可以监视实时应用程序。 它将自动检测性能异常，并且包含了强大的分析工具来帮助诊断问题，了解用户在应用中实际执行了哪些操作。  它旨在帮助持续提高性能与可用性。 它适用于本地云、混合云或任何公有云中托管的各种平台（包括 .NET、Node.js 和 Java EE）中的应用。 它与 DevOps 进程集成，并且具有与不同开发工具的连接点。 可以通过与 Visual Studio App Center 集成来监视和分析移动应用的遥测数据。
@@ -53,12 +53,12 @@ Application Insights 主要面向开发团队，旨在帮助用户了解应用�
 
 |  |  |
 | --- | --- |
-| [**智能检测和手动警报**](../../azure-monitor/app/proactive-diagnostics.md)<br/>将自动警报设置为适应应用的正常遥测模式并在存在异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../../azure-monitor/app/alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
+| [**智能检测和手动警报**](../../azure-monitor/app/proactive-diagnostics.md)<br/>设置自动警报，使其适应应用的正常遥测模式并在出现异常情况时触发。 还可以在自定义或标准指标的特定级别上[设置警报](../../azure-monitor/app/alerts.md)。 |![警报示例](./media/app-insights-overview/alerts-tn.png) |
 | [**应用程序映射**](../../azure-monitor/app/app-map.md)<br/>探索应用的组件，包含关键指标和警报。 |![应用程序映射](./media/app-insights-overview/appmap-tn.png)  |
 | [**探查器**](../../azure-monitor/app/profiler.md)<br/>检查抽样请求的执行配置文件。 |![探查器](./media/app-insights-overview/profiler.png) |
 | [**使用情况分析**](../../azure-monitor/app/usage-overview.md)<br/>分析用户细分和保留情况。|![留存情况工具](./media/app-insights-overview/retention.png) |
 | [**实例数据的诊断搜索**](../../azure-monitor/app/diagnostic-search.md)<br/>搜索和筛选事件，例如请求、异常、依赖项调用、日志跟踪和页面视图。  |![搜索遥测](./media/app-insights-overview/search-tn.png) |
-| [**聚合数据的指标资源管理器**](../../azure-monitor/app/metrics-explorer.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![度量值](./media/app-insights-overview/metrics-tn.png) |
+| [**聚合数据的指标资源管理器**](../../azure-monitor/app/metrics-explorer.md)<br/>浏览、筛选和细分聚合的数据，例如请求率、故障率和异常率；响应时间、页面加载时间。 |![指标](./media/app-insights-overview/metrics-tn.png) |
 | [**仪表板**](../../azure-monitor/app/overview-dashboard.md)<br/>混合使用来自多个资源的数据并与他人共享。 对于多组件应用程序和在团队聊天室中连续显示很有用。 |![仪表板示例](./media/app-insights-overview/dashboard-tn.png) |
 | [**实时指标流**](../../azure-monitor/app/live-stream.md)<br/>部署新的生成时，观看这些准实时性能指示器，确保一切按预期工作。 |![实时指标示例](./media/app-insights-overview/live-metrics-tn.png) |
 | [**分析**](../../azure-monitor/app/analytics.md)<br/>使用此功能强大的查询语言，回答有关应用的性能和使用情况的疑难问题。 |![分析示例](./media/app-insights-overview/analytics-tn.png) |

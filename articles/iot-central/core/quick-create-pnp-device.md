@@ -3,17 +3,17 @@ title: 快速入门 - 将模拟设备添加到 Azure IoT Central
 description: 本快速入门介绍如何创建设备模板并将模拟设备添加到 IoT Central 应用程序中。
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026180"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169607"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入门：将模拟设备添加到 IoT Central 应用程序
 
@@ -34,7 +34,7 @@ ms.locfileid: "77026180"
 
 ## <a name="create-a-template"></a>创建模板
 
-构建人员可在 IoT Central 应用程序中创建和编辑设备模板。 发布设备模板后，可以生成模拟设备，或者从设备模板连接真实设备。 使用模拟设备可以在连接真实设备之前先测试应用程序的行为。
+构建人员可在 IoT Central 应用程序中创建和编辑设备模板。 发布设备模板后，可以生成模拟设备，或者从设备模板连接真实设备。 使用模拟设备可以在连接实际设备之前先测试应用程序的行为。
 
 若要将新设备模板添加到应用程序，请在左侧窗格中选择“设备模板”选项卡。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "77026180"
 
 1. 若要以操作员身份添加新设备，请在左侧窗格中选择“设备”  。 “设备”选项卡将显示“所有设备”和“MXChip IoT DevKit”设备模板。    选择“MXChip IoT DevKit”。 
 
-1. 若要添加模拟的 DevKit 设备，请选择 **+** 。 使用建议的**设备 ID** 或输入自己的小写**设备 ID**。 也可输入新设备的名称。 确保“模拟”切换开关为“打开”，然后选择“创建”。   
+1. 若要添加模拟的 DevKit 设备，请选择 **+** 。 使用建议的**设备 ID** 或输入自己的小写**设备 ID**。 也可输入新设备的名称。 确保“模拟”开关为“开”，然后选择“创建”。   
 
     ![模拟设备](./media/quick-create-pnp-device/simulated-device.png)
 

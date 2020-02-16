@@ -1,21 +1,20 @@
 ---
 title: 教程 - 创建并管理 Azure 预算 | Microsoft Docs
 description: 本教程介绍如何对所使用的 Azure 服务进行成本计划和核算。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769792"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132103"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -34,6 +33,7 @@ ms.locfileid: "76769792"
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算
+> * 通过 PowerShell 创建和编辑预算
 > * 编辑预算
 
 ## <a name="prerequisites"></a>必备条件
@@ -62,7 +62,7 @@ ms.locfileid: "76769792"
 
 创建预算后，会显示一个简单的视图，其中说明了当前支出与预算的对比情况。
 
-单击“添加”  。
+选择 **添加** 。
 
 ![示例，显示已创建的预算的列表](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,15 +78,19 @@ ms.locfileid: "76769792"
 
 ![示例，显示通过每月成本数据进行的预算创建操作 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-配置预算金额后，单击“下一步”  即可配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算阈值时，通常会在 20 小时内收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。 在下面的示例中，达到预算的 90% 时，会生成电子邮件警报。 如果使用预算 API 创建预算，也可将角色分配给人员来接收警报。 不支持在 Azure 门户中向人员分配角色。 有关 Azure 预算 API 的详细信息，请参阅[预算 API](/rest/api/consumption/budgets)。
+配置预算金额后，选择“下一步”  来配置预算警报。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 满足预算阈值时，通常会在 20 小时内收到电子邮件通知。
+
+如果要接收电子邮件，请将 azure-noreply@microsoft.com 添加到已批准的发件人列表，使电子邮件不会被发送到垃圾电子邮件文件夹。 有关通知的详细信息，请参阅[使用成本警报](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
+
+在下面的示例中，达到预算的 90% 时，会生成电子邮件警报。 如果使用预算 API 创建预算，也可将角色分配给人员来接收警报。 不支持在 Azure 门户中向人员分配角色。 有关 Azure 预算 API 的详细信息，请参阅[预算 API](/rest/api/consumption/budgets)。
 
 ![显示警报条件的示例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-创建预算后，预算会显示在成本分析中。 开始[分析成本和支出](../../cost-management/quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与支出趋势的关系。
+创建预算后，预算会显示在成本分析中。 开始[分析成本和支出](../../cost-management/quick-acm-cost-analysis.md)时，首先要执行的步骤之一是查看预算与对应的支出趋势。
 
 ![成本分析中显示的预算和支出示例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上面的示例中，你为订阅创建了一个预算。 不过，也可为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”  &gt;“订阅”  ，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。   
+在上面的示例中，你为订阅创建了一个预算。 还可以为资源组创建预算。 如需为资源组创建预算，请导航到“成本管理 + 计费”  &gt;“订阅”  ，选择一个订阅，然后选择“资源组”，接着选择一个资源组，单击“预算”，然后单击“添加”以添加预算。   
 
 ## <a name="costs-in-budget-evaluations"></a>预算估算中的成本
 
@@ -106,12 +110,12 @@ ms.locfileid: "76769792"
 
 
 
-若要创建或更新操作组，请在创建或编辑预算时单击“管理操作组”  。
+若要创建或更新操作组，请在创建或编辑预算时选择“管理操作组”  。
 
 ![示例，介绍如何创建预算以显示“管理操作组”](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-接下来单击“添加操作组”  ，创建操作组。
+接下来，选择“添加操作组”  并创建操作组。
 
 
 ![“添加操作组”框的图像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ ms.locfileid: "76769792"
 
 预算与操作组的集成仅适用于禁用常见警报架构的操作组。 若要详细了解如何禁用该架构，请参阅[如何启用常见警报架构？](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
+## <a name="create-and-edit-budgets-with-powershell"></a>通过 PowerShell 创建和编辑预算
+
+EA 客户可以使用 Azure PowerShell 模块以编程方式创建和编辑预算。  若要下载最新版本的 Azure PowerShell，请运行以下命令：
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+下面的示例命令将创建一个预算。
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算
+> * 通过 PowerShell 创建和编辑预算
 > * 编辑预算
 
 请继续学习下一教程，了解如何针对成本管理数据创建定期导出。

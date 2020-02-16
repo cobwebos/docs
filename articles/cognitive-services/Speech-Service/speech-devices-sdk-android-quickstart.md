@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 657cf0a0648cd53e5692a2cf5333ba29951b77a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380314"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189128"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>快速入门：在 Android 上运行语音设备 SDK 示例应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "75380314"
 - 下载[语音设备 SDK](https://aka.ms/sdsdk-download) 的最新版本，并将 .zip 提取到工作目录。
 
   > [!NOTE]
-  > Android-Sample-Release.zip 文件包含 Android 示例应用，本快速入门假设该应用提取到 C:\SDSDK\Android-Sample-Release
+  > 本快速入门假设应用已解压缩到 C:\SDSDK\Android-Sample-Release
 
 - 获取[语音服务的 Azure 订阅密钥](get-started.md)
 
@@ -83,6 +83,29 @@ ms.locfileid: "75380314"
 
 1. 转到 C:\SDSDK\Android-Sample-Release\example。 选择“确定”打开示例项目。 
 
+1. 配置 Gradle 以引用语音 SDK。 可以在 Android Studio 的 **Gradle Scripts** 下找到以下文件。
+
+    通过添加 maven 行更新 **build.gradle(Project:example)** ，allprojects 块应该与下面匹配。
+
+    ```xml
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            mavenCentral()
+            maven {
+                url 'https://csspeechstorage.blob.core.windows.net/maven/'
+            }
+        }
+    }
+    ```
+
+    通过将以下行添加到 dependencies 节来更新 **build.gradle(Module:app)** 。 
+    
+    ```xml
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.9.0'
+    ```
+    
 1. 将语音订阅密钥添加到源代码。 如果想要尝试意向识别，还需要添加[语言理解服务](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)订阅密钥和应用程序 ID。
 
    对于语音和 LUIS，你的信息会进入 MainActivity.java：

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 78dfbabdcddaafefe77711e8f7b0ea1028f15c58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665182"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117910"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>快速入门：使用 Gremlin 控制台创建、查询和遍历 Azure Cosmos DB 图形数据库
 
@@ -49,7 +49,7 @@ Gremlin 控制台基于 Groovy/Java，在 Linux、Mac 和 Windows 上运行。 �
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>连接到应用服务
+## <a id="ConnectAppService"></a>连接到应用服务/图
 1. 在启动 Gremlin 控制台之前，请在 `apache-tinkerpop-gremlin-console-3.2.5/conf` 目录中创建或修改 remote-secure.yaml 配置文件。
 2. 根据下表中的定义，填写 *host*、*port*、*username*、*password*、*connectionPool* 和 *serializer* 配置：
 

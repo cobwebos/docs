@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964492"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083102"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -30,7 +30,7 @@ ms.locfileid: "76964492"
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * Data Share 邀请：Microsoft Azure 发出的邀请，主题名为“来自 **<yourdataprovider@domain.com>** 的 Azure Data Share 邀请”。
-* 注册 Microsoft.DataShare 资源提供程序。 按照[排查 Azure Data Share 问题](data-share-troubleshoot.md)中的说明注册数据共享资源提供程序。
+* 在你将在其中创建 Data Share 资源的 Azure 订阅以及目标 Azure 数据存储所在的 Azure 订阅中注册 [Microsoft.DataShare 资源提供程序](concepts-roles-permissions.md#resource-provider-registration)。
 
 ### <a name="receive-data-into-a-storage-account"></a>将数据接收到存储帐户 
 
@@ -57,7 +57,7 @@ ms.locfileid: "76964492"
 * 客户端 IP SQL Server 防火墙访问权限。 可以通过以下步骤完成此操作： 
     1. 在 Azure 门户中的 SQL Server 中，导航到“防火墙和虚拟网络” 
     1. 单击“打开”切换按钮以允许访问 Azure 服务  。
-    1. 单击“+ 添加客户端 IP”  ，然后单击“保存”  。 客户端 IP 地址可能会更改。 下次从 Azure 门户共享 SQL 数据时，可能需要重复此过程。 还可以添加 IP 范围。 
+    1. 单击“+ 添加客户端 IP”  ，然后单击“保存”  。 客户端 IP 地址可能会更改。 下次从 Azure 门户将数据接收到 SQL 目标中时，可能需要重复此过程。 还可以添加 IP 范围。 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>将数据接收到 Azure 数据资源管理器群集中： 

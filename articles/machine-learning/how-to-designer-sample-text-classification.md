@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963235"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137788"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器来预测公司类别。
 
@@ -63,7 +63,7 @@ ms.locfileid: "76963235"
 
 ## <a name="pre-process-the-text-data"></a>预处理文本数据
 
-我们将使用“预处理文本”模块对文本数据进行预处理，包括检测句子、切分句子，等等。  可以在[**预处理文本**](algorithm-module-reference/preprocess-text.md)一文中找到所有支持的选项。 预处理文本数据后，我们将使用“拆分数据”模块来随机分割输入数据，使训练数据集包含 50% 的原始数据，使测试数据集包含 50% 的原始数据。 
+我们将使用“预处理文本”模块对文本数据进行预处理，包括检测句子、切分句子，等等。  可以在[**预处理文本**](algorithm-module-reference/preprocess-text.md)一文中找到所有支持的选项。 对文本数据进行预处理后，我们使用“拆分数据”  模块对输入数据进行随机划分，使得训练数据集包含 50% 的原始数据，而测试数据集包含 50% 的原始数据。
 
 ## <a name="feature-engineering"></a>特征工程
 在此示例中，我们将使用两种方法来执行特征工程。

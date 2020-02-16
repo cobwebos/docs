@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781724"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122028"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建用户 VPN 连接
 
@@ -20,7 +20,7 @@ ms.locfileid: "74781724"
 
 此类连接要求在客户端计算机上配置一个客户端。 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 WAN
@@ -53,7 +53,7 @@ ms.locfileid: "74781724"
 
 1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
 2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
-3. 在“创建 WAN”  页的“基本”  选项卡上，填写以下字段：
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
 
    ![虚拟 WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
@@ -86,19 +86,17 @@ ms.locfileid: "74781724"
 
 P2S 配置定义连接远程客户端的参数。
 
-1. 设置以下变量（请根据环境替换为所需的值）。
+1. 在虚拟 WAN 下，选择“用户 VPN 配置”  。
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. 运行以下命令创建配置：
+2. 单击“+创建用户 VPN 配置”  。
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. 输入信息，然后单击“创建” 
+
+   ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>编辑中心分配
 
@@ -125,7 +123,7 @@ P2S 配置定义连接远程客户端的参数。
 
 ## <a name="configure-user-vpn-clients"></a>配置用户 VPN 客户端
 
-若要进行连接，需在要连接到 VNet 的每台计算机上，下载 Azure VPN 客户端（预览版）并导入在前面步骤中下载的 VPN 客户端配置文件。
+若要进行连接，需要下载 Azure VPN 客户端，并在要连接到 VNet 的每台计算机上导入在前面步骤中下载的 VPN 客户端配置文件。
 
 > [!NOTE]
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
@@ -133,7 +131,7 @@ P2S 配置定义连接远程客户端的参数。
 
 #### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-使用[此链接](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下载 Azure VPN 客户端（预览版）。
+使用[此链接](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)下载 Azure VPN 客户端。
 
 #### <a name="import"></a>导入客户端配置文件
 

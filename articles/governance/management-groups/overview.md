@@ -4,12 +4,12 @@ description: 了解管理组、其权限的工作方式以及如何使用它们�
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750255"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186982"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -23,7 +23,7 @@ ms.locfileid: "75750255"
 
 ![管理组层次结构树的示例](./media/tree.png)
 
-例如，可以创建应用一个策略的层次结构，该策略将 VM 位置限制到名为“生产”的组中的“美国西部”区域。 此策略将继承到该管理组下的所有 EA 订阅，并应用到这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
+例如，可以创建应用一个策略的层次结构，该策略将 VM 位置限制到名为“生产”的组中的“美国西部”区域。 此策略将继承到作为该管理组后代的所有企业协议 (EA) 订阅，并将应用于这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
 
 使用管理组的另一个场景是向用户提供对多个订阅的访问权限。 通过移动该管理组下的多个订阅，可对该管理组创建一个[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 分配，该分配将这种访问权限继承到所有订阅。
 管理组的一个分配就能让用户访问所需的一切内容，而无需基于多个订阅编写 RBAC 分配的脚本。
@@ -102,7 +102,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>自定义 RBAC 角色定义和分配
 
-针对管理组的自定义 RBAC 角色目前受支持，但存在一些[限制](#limitations)。  可以在角色定义的可分配范围中定义管理组范围。  然后即可在该管理组及其下的任何管理组、订阅、资源组或资源中分配该自定义 RBAC 角色。 此自定义角色会继承层次结构，就像任何内置角色一样。    
+对管理组的自定义 RBAC 角色支持目前处于预览状态，并且存在一些[限制](#limitations)。  可以在角色定义的可分配范围中定义管理组范围。  然后即可在该管理组及其下的任何管理组、订阅、资源组或资源中分配该自定义 RBAC 角色。 此自定义角色会继承层次结构，就像任何内置角色一样。    
 
 ### <a name="example-definition"></a>示例定义
 在包括管理组后，[定义和创建自定义角色](../../role-based-access-control/custom-roles.md)的操作不变。 使用完整路径来定义管理组 **/providers/Microsoft.Management/managementgroups/{groupId}** 。 

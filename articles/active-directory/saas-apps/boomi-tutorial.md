@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2469745edb5b8b3696478603cfe874bcabc8c1ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a22a36d5e6c36008c3a574cbcf9be8ec4f52b82b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231951"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086453"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Boomi 的集成
 
@@ -31,9 +30,9 @@ ms.locfileid: "74231951"
 * 让用户使用其 Azure AD 帐户自动登录到 Boomi。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -45,6 +44,7 @@ ms.locfileid: "74231951"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Boomi 支持 **IDP** 发起的 SSO
+* 配置 Boomi 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-boomi-from-the-gallery"></a>从库中添加 Boomi
 
@@ -81,14 +81,22 @@ ms.locfileid: "74231951"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“使用 SAML 设置单一登录”页上，输入以下字段的值： 
+1. 如果已获取“服务提供商元数据文件”并想要在“IDP”发起的模式下进行配置，请在“基本 SAML 配置”部分执行以下步骤    ：
 
-    a. 在“标识符”文本框中键入 URL：`https://platform.boomi.com/` 
+    a. 单击“上传元数据文件”  。
 
-    b. 在“回复 URL”  文本框中，使用以下模式键入 URL：`https://platform.boomi.com/sso/<boomi-tenant>/saml`
+    ![上传元数据文件](common/upload-metadata.png)
 
-    > [!NOTE]
-    > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Boomi 客户端支持团队](https://boomi.com/company/contact/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
+
+    ![选择元数据文件](common/browse-upload-metadata.png)
+
+    c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“基本 SAML 配置”部分。  
+
+    ![image](common/idp-intiated.png)
+
+    > [!Note]
+    > 你将从“配置 Boomi SSO”  部分获得**服务提供商元数据文件**，本教程稍后将对此进行说明。 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。  
 
 1. Boomi 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
@@ -96,7 +104,7 @@ ms.locfileid: "74231951"
 
 1. 除了上述属性，Boomi 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------|  --------- |
     | FEDERATION_ID | user.mail |
 
@@ -156,7 +164,9 @@ ms.locfileid: "74231951"
 
     d. 对于“联合 ID 位置”，选择“联合 ID 位于 FEDERATION_ID 属性元素中”单选按钮。  
 
-    e. 单击“保存”按钮  。
+    e. 复制 **AtomSphere 元数据 URL**，通过所选浏览器转到**元数据 URL**，并将输出保存到文件。 在 Azure 门户的“基本 SAML 配置”  部分中上传**元数据 URL**。
+
+    f. 单击“保存”按钮  。
 
 ### <a name="create-boomi-test-user"></a>创建 Boomi 测试用户
 
@@ -189,7 +199,7 @@ ms.locfileid: "74231951"
     f. 单击“确定”。 
 
     > [!NOTE]
-    > 用户不会收到包含可用于登录 AtomSphere 帐户的密码的欢迎通知电子邮件，因为其密码是通过标识提供者进行管理的。 可以使用 Boomi 提供的任何其他 Boomi 用户帐户创建工具或 API 来预配 Azure AD 用户帐户。
+    > 用户不会收到包含可用于登录 AtomSphere 帐户的密码的欢迎通知电子邮件，因为其密码是通过标识提供者进行管理的。 可以使用任何其他 Boomi 用户帐户创建工具或 Boomi 提供的 API 来预配 AAD 用户帐户。
 
 ## <a name="test-sso"></a>测试 SSO
 
@@ -201,8 +211,10 @@ ms.locfileid: "74231951"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [通过 Azure AD 试用 Boomi](https://aad.portal.azure.com/)

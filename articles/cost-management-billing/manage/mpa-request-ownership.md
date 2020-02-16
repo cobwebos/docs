@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988196"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048205"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 
@@ -120,7 +120,7 @@ ms.locfileid: "75988196"
 - [Enterprise 开发/测试](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft 企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* 企业 DevTest 订阅在转移后将按即用即付费率收费，任何按照客户的 EA 通过企业 DevTest 套餐提供的折扣都不能供 CSP 合作伙伴使用。
+\* 必须首先通过支持票证将开发/测试订阅转换为 EA Enterprise 产品/服务。 Enterprise 开发/测试订阅在转让后将按即用即付费率计费。 云解决方案提供商合作伙伴无法使用在客户 EA 中通过 Enterprise 开发/测试产品/服务提供的任何折扣。
 
 ## <a name="additional-information"></a>其他信息
 

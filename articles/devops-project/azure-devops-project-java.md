@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203723"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049970"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>快速入门：使用 Azure DevOps Projects 为 Java 应用设置 CI/CD 管道
 
-在本快速入门文章中，使用 Azure DevOps Projects 的简化体验在 Azure Pipelines 中为 Java 应用设置持续集成 (CI) 和持续交付 (CD) 管道。 还可以使用 Azure DevOps Projects 创建其他 Azure 资源。  
+在本快速入门中，将利用简化的 Azure DevOps 项目体验在 Azure Pipelines 中为 Java 应用设置持续集成 (CI) 和持续交付 (CD) 管道。 可以使用 Azure DevOps Projects 来设置开发、部署和监视应用所需的全部设置。 
 
-如果没有 Azure 订阅，可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Azure DevOps](https://azure.microsoft.com/services/devops/) 帐户和组织。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-  DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
+DevOps Projects 在 Azure Pipelines 中创建 CI/CD 管道。 可以创建新的 Azure DevOps 组织，或使用现有的组织。 DevOps Projects 还可以在所选的 Azure 订阅中创建 Azure 资源。
 
-1. 登录到 [Microsoft Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后在左窗格中选择“创建资源”  。 
 
-1. 在左窗格中选择“创建资源”，然后搜索“DevOps Projects”。    
+   ![在 Azure 门户中创建 Azure 资源](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
-2. 选择“创建”  。
-
-    ![在 DevOps Projects 中创建 Azure 资源](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
+1. 搜索并选择“DevOps Projects”  ，然后选择“创建”  。
 
 ## <a name="select-a-sample-application-and-azure-service"></a>选择示例应用程序和 Azure 服务
 
@@ -53,18 +54,17 @@ Java 示例包括一个选项，可以从多个应用程序框架中进行选择
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>配置 Azure DevOps 和 Azure 订阅 
 
 1. 创建新的 Azure DevOps 组织，或者选择现有的组织。 
-
-    a. 为项目选择一个名称。 
-
-    b. 依次选择 Azure 订阅和位置、应用程序的名称、“完成”。   
-    几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
-    
-
+   
+   1. 为项目选择一个名称。 
+   
+   1. 依次选择 Azure 订阅和位置、应用程序的名称、“完成”。   
+   几分钟后，DevOps Projects 仪表板会显示在 Azure 门户中。 首先会在 Azure DevOps 组织的存储库中设置示例应用程序，然后执行生成并将应用程序部署到 Azure。 可以通过此仪表板查看代码存储库、CI/CD 管道以及 Azure 中的应用程序。
+   
 2. 选择“浏览”，查看正在运行的应用程序。 
+   
+   ![在 Azure 门户中查看应用程序仪表板](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-    ![在 Azure 门户中查看应用程序仪表板](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
-    
-   DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Java 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
+DevOps Projects 自动配置了 CI 生成和发布触发器。  现在可以与 Java 应用团队协作，通过 CI/CD 过程自动将最新工作部署到网站。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>提交代码更改并执行 CI/CD
 

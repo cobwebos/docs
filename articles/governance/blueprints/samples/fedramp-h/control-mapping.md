@@ -1,14 +1,14 @@
 ---
-title: 示例 - FedRAMP High 蓝图 - 控制映射
+title: FedRAMP High 蓝图示例控制
 description: FedRAMP High 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: 4b4d644497eb98ed88f57803e99cf27a419523fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cceca23e4bdc749c553eaf41b5f9599be3c9bf7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941345"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150606"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 蓝图示例的控制映射
 
@@ -261,7 +261,7 @@ Azure 的分布式拒绝服务 (DDoS) 标准层通过基本服务层提供额外
 
 - 应该强化面向 Internet 的虚拟机的网络安全组规则
 - 应该限制通过面向 Internet 的终结点进行访问
-- 应该强化 IaaS 上 Web 应用程序的 NSG 规则
+- 应在与 VM 关联的网络安全组上限制 Web 端口
 - 审核对存储帐户的不受限的网络访问
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) 边界保护 | 接入点

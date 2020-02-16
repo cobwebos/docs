@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532420"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116538"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>教程：训练第一个 ML 模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "75532420"
 
 唯一的先决条件是运行本教程的第一部分：[设置环境和工作区](tutorial-1st-experiment-sdk-setup.md)。
 
-在本教程的这一部分中，你将运行在第一部分结束时打开的示例 Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` 中的代码。 本文将介绍此 Notebook 中的相同代码。
+在本教程的这一部分中，你将运行在第一部分末尾打开的示例 Jupyter 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  中的代码。 本文将介绍此 Notebook 中的相同代码。
 
 ## <a name="open-the-notebook"></a>打开笔记本
 
@@ -45,7 +45,7 @@ ms.locfileid: "75532420"
 
 
 > [!Warning]
-> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本`tutorials/tutorial-1st-experiment-sdk-train.ipynb`包含本教程**所需的所有代码和数据**。
+> 在 Jupyter 界面中**不**创建*新的*笔记本！ 笔记本 tutorials/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb  包含本教程**所需的所有代码和数据**。
 
 ## <a name="connect-workspace-and-create-experiment"></a>连接工作区并创建试验
 

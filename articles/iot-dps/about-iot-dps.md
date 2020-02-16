@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904870"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082862"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务预配设备
 Microsoft Azure 提供一套丰富的集成公有云服务，满足所有 IoT 解决方案需求。 IoT 中心设备预配服务 (DPS) 是 IoT 中心的帮助器服务，支持零接触、实时预配到适当的 IoT 中心，不需要人为干预。 使用 DPS 能够以安全且可缩放的方式预配数百万台设备。
@@ -80,8 +80,10 @@ DPS 具有许多功能，非常适合用于预配设备。
 * 注册列表，其中包含可能在某一时刻注册的设备/设备组的完整记录  。 注册列表包含有关设备注册后所需的设备配置信息，并可随时更新。
 * **多个分配策略**，用于根据自己的需要控制 DPS 向 IoT 中心分配设备的方式：通过注册列表控制最小延迟、平均加权分布（默认值）和静态配置。 延迟是使用与[流量管理器](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance)相同的方法确定的。
 * **监视和诊断日志记录**，用于确保一切都正常工作。
-* **多中心支持**使 DPS 能够在运行时将设备后期绑定到 IoT 中心。 DPS 可以跨多个 Azure 订阅来与中心通信。
+* **多中心支持**，允许 DPS 将设备分配给多个 IoT 中心。 DPS 可以跨多个 Azure 订阅来与中心通信。
 * **跨区域支持**使 DPS 能够将设备分配到其他区域的 IoT 中心。
+* **静态数据加密**允许使用 256 位 AES 加密（可用的最强大的分组加密法之一，并且符合 FIPS 140-2）透明地加密和解密 DPS 中的数据。
+
 
 可在[设备概念](concepts-device.md)、[服务概念](concepts-service.md)和[安全概念](concepts-security.md)中详细了解设备预配中涉及的概念和功能。
 

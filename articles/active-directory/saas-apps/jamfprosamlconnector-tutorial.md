@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212377"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150181"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>教程：Azure Active Directory SSO 与 Jamf Pro 的集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "71212377"
 
 若要详细了解 SaaS 应用与 Azure AD 的集成，请参阅[使用 Azure Active Directory 进行单一登录](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -100,7 +100,7 @@ ms.locfileid: "71212377"
 1. 在 Azure 门户的左窗格中，依次选择“Azure Active Directory”、“用户”、“所有用户”。   
 1. 选择屏幕顶部的“新建用户”  。
 1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
+   1. 在“名称”  字段中，输入 `B.Simon`。
    1. 在“用户名”字段中，以“[姓名]@[公司域].[扩展]”格式输入用户名。  例如，`B.Simon@contoso.com` 。
    1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
    1. 选择“创建”  。
@@ -123,7 +123,7 @@ ms.locfileid: "71212377"
 1. 如果希望在 SAML 断言中使用任何角色值，请在“选择角色”对话框中，为用户选择相应的角色。  然后选择屏幕底部的“选择”按钮。 
 1. 在“添加分配”对话框中，选择“分配”按钮。  
 
-## <a name="configure-sso-in-jamf-pro"></a>在 Jamf Pro 中配置 SSO 
+## <a name="configure-sso-in-jamf-pro"></a>在 Jamf Pro 中配置 SSO
 
 1. 若要在 Jamf Pro 中自动完成配置，需要选择“安装扩展”来安装“‘我的应用’安全登录浏览器扩展”。  
 
@@ -147,11 +147,11 @@ ms.locfileid: "71212377"
 
     ![Jamf Pro 中的“单一登录”页](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-    a. 选中“启用单一登录身份验证”复选框。 
+  a. 选择“编辑”  。
 
-    b. 从“标识提供者”下拉菜单中选择选项“其他”。  
+  b. 选中“启用单一登录身份验证”复选框。 
 
-    c. 在“其他提供者”字段中输入 **Azure AD**。 
+    c. 从“标识提供者”下拉菜单中选择“Azure”作为选项。  
 
     d. 复制“实体 ID”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”字段中。   
 
@@ -160,17 +160,19 @@ ms.locfileid: "71212377"
 
     e. 从“标识提供者元数据源”下拉菜单中选择“元数据 URL”。   在显示的字段中，粘贴从 Azure 门户复制的“应用联合元数据 URL”值。 
 
-7. 在同一页上，向下滚动到“用户映射”部分。  然后执行以下步骤。   
+    f. （可选）编辑令牌到期值或选择“禁用 SAML 令牌到期”。
 
-    ![Jamf Pro 中“单一登录”页的“用户映射”部分。](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+7. 在同一页上，向下滚动到“用户映射”部分。  然后执行以下步骤。
+
+    ![Jamf Pro 中“单一登录”页的“用户映射”部分。](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
     a. 为“标识提供者用户映射”选择“NameID”选项。   默认情况下，此选项指定为“NameID”，但你可以定义自定义属性。 
 
-    b. 为“JAMF PRO 用户映射”选择“电子邮件”。   Jamf Pro 先按用户，然后按组来映射 IdP 发送的 SAML 属性。 当用户尝试访问 Jamf Pro 时，Jamf Pro 会从标识提供者获取有关该用户的信息，并且其与所有 Jamf Pro 用户帐户相匹配。 如果未找到传入的用户帐户，Jamf Pro 会尝试按组名称进行匹配。
+    b. 为“Jamf Pro 用户映射”选择“电子邮件”。   Jamf Pro 先按用户，然后按组来映射 IdP 发送的 SAML 属性。 当用户尝试访问 Jamf Pro 时，Jamf Pro 会从标识提供者获取有关该用户的信息，并且其与所有 Jamf Pro 用户帐户相匹配。 如果未找到传入的用户帐户，Jamf Pro 会尝试按组名称进行匹配。
 
     c. 将值 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` 粘贴到“标识提供者组属性名称”字段中。 
 
-    d. 选择“允许用户绕过单一登录身份验证”。  因此，用户将不会重定向到标识提供者登录页进行身份验证，而可以直接登录到 Jamf Pro。 当用户尝试通过标识提供者访问 Jamf Pro 时，会发生 IdP 发起的 SSO 身份验证和授权。
+    d. 在同一页上，向下滚动到“安全性”  部分，然后选择“允许用户绕过单一登录身份验证”  。 因此，用户将不会重定向到标识提供者登录页进行身份验证，而可以直接登录到 Jamf Pro。 当用户尝试通过标识提供者访问 Jamf Pro 时，会发生 IdP 发起的 SSO 身份验证和授权。
 
     e. 选择“保存”。 
 
@@ -216,7 +218,7 @@ ms.locfileid: "71212377"
 
     g. 选择“保存”。 
 
-## <a name="test-the-sso-configuration"></a>测试 SSO 配置 
+## <a name="test-the-sso-configuration"></a>测试 SSO 配置
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -231,4 +233,3 @@ ms.locfileid: "71212377"
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [在 Azure AD 中试用 Jamf Pro](https://aad.portal.azure.com/)
-

@@ -3,22 +3,22 @@ title: 升级 Azure 帐户
 description: 介绍如何升级 Azure 帐户。
 keywords: 即用即付升级
 author: bandersmsft
-manager: jureid
+manager: sasrin
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: aa9e4c60222f5dd0f2991f2b0085c00a34d1dd7a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989769"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134550"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>升级 Azure 免费帐户或面向学生的 Azure 入门版帐户
 

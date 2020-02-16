@@ -3,15 +3,15 @@ title: 托管容器注册表
 description: 介绍 Azure 容器注册表服务，该服务提供基于云的托管专用 Docker 注册表。
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445730"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132035"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -41,7 +41,7 @@ Azure 提供包括 Azure 命令行界面、Azure 门户和 API 支持在内的�
 * **安全性和访问** - 使用 Azure CLI 或标准的 `docker login` 命令登录到注册表。 Azure 容器注册表通过 HTTPS 传输容器映像，并支持通过 TLS 来保护客户端连接。 
 
   > [!IMPORTANT]
-  > 从 2020 年 1 月 13 日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
+  > 从 2020 年 1 月 13 日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 使用任何最近的 Docker 客户端（版本 18.03.0 或更高版本）启用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。 
 
   可以使用 Azure 标识、Azure Active Directory 支持的[服务主体](../active-directory/develop/app-objects-and-service-principals.md)或提供的管理员帐户来[控制访问](container-registry-authentication.md)（针对容器注册表）。 使用基于角色的访问控制 (RBAC) 向用户或系统分配对注册表的精细权限。
 

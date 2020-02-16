@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 01/28/2020
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c32d2fb45bbd4f4a9b4845bb4ef27a439d536677
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9bf33aae5de600d6e5b0ab836c99da1d56935db3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905867"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169376"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>将 Azure Key Vault 与 Azure Policy 集成
 
@@ -152,5 +152,4 @@ Key Vault 已创建一组策略，你可以将其分配给常见方案来管理�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解有关 [Azure Policy 服务](../governance/policy/overview.md)的详细信息
-- 查看示例：[没有虚拟网络终结点的 Key Vault](../governance/policy/samples/keyvault-no-vnet-rules.md)
-
+- 请参阅 Key Vault 示例：[Key Vault 内置策略定义](../governance/policy/samples/built-in-policies.md#key-vault)

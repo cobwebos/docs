@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964824"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121013"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>快速入门：将示例 IoT 即插即用预览版设备应用程序连接到 IoT 中心 (C#)
 
@@ -25,7 +25,7 @@ ms.locfileid: "76964824"
 
 ## <a name="prerequisites"></a>必备条件
 
-要完成本快速入门，需要在开发计算机上安装 .NET Core 2.2。 你可以从[下载 .NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2) 下载适用于多平台的此版 .NET Core SDK。
+若要完成本快速入门，需要在开发计算机上安装 .NET Core 3.0。 可以从[下载 .NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) 为多个平台下载此版 .NET Core SDK。
 
 可以通过在本地终端窗口中运行以下命令来验证开发计算机上的 .NET 版本： 
 
@@ -72,7 +72,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
 1. 运行示例应用程序，以模拟将遥测发送到 IoT 中心的 IoT 即插即用设备。 在同一终端窗口中，请使用以下命令生成所需的包并运行示例应用程序：
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 你会看到有消息显示设备已成功注册并正在等待云中的更新。 这表明设备现在可以接收命令和属性更新，并且已开始向中心发送遥测数据。 在执行后续步骤时，保持示例处于运行状态。

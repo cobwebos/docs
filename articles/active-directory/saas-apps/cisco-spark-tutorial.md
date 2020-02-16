@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f6ab2d5811060b7dc36323a80fed6961b8cf5a9
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01fe4d06d5f73eacee1d1cdaf1963232b84daf05
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290676"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046789"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Cisco Webex 集成
 
@@ -207,6 +207,6 @@ ms.locfileid: "76290676"
 
 - [通过 Azure AD 试用 Cisco Webex](https://aad.portal.azure.com)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-webex)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Cisco Webex](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Cisco Webex](https://docs.microsoft.com/cloud-app-security/protect-webex)

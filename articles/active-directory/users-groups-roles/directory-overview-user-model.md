@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027741"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046329"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>大型组织的用户、组、许可和角色
 
@@ -31,7 +31,7 @@ ms.locfileid: "74027741"
 
 ## <a name="assign-users-to-groups"></a>将用户分配到组
 
-可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以使用组在 Azure AD 中分配管理员角色，或者，可以授予对外部资源（例如 SaaS 应用程序或 SharePoint 站点）的访问权限。
+可以使用 Azure AD 中的组将许可证分配给大量用户，或者为用户分配已部署企业应用的访问权限。 可以在 Azure AD 中使用组分配除全局管理员以外的所有管理员角色，也可以授予对外部资源（例如 SaaS 应用程序或 SharePoint 站点）的访问权限。
 
 为了提高灵活性和减少管理组成员身份的工作量，可以使用 Azure AD 中的[动态组](groups-create-rule.md)来自动扩展和收缩组成员身份。 对于属于一个或多个动态组的每个独特用户，需要 Azure AD Premium P1 许可证。
 

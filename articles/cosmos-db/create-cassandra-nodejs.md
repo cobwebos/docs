@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: a8698bf74d8be4a57d5928b8be74bcf35cee008f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586131"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134771"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>快速入门：使用 Node.js SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -24,17 +24,13 @@ ms.locfileid: "56586131"
 > * [Python](create-cassandra-python.md)
 >  
 
-本快速入门介绍如何使用 Node.js 和 Azure Cosmos DB [Cassandra API](cassandra-introduction.md)，通过克隆 GitHub 中的示例来生成配置文件应用。 此外，本快速入门还介绍了如何使用基于 Web 的 Azure 门户创建 Azure Cosmos DB 帐户。
+在本快速入门中，你将创建一个 Azure Cosmos DB Cassandra API 帐户，并使用从 GitHub 克隆的 Cassandra Node.js 应用创建一个 Cassandra 数据库和一个容器。 Azure Cosmos DB 是一种多模型数据库服务，你可以借助其全球分布和水平缩放功能快速创建和查询文档、表、键/值和图数据库。
 
-Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服务。 可快速创建和查询文档、表、键/值和图形数据库，它们都受益于 Azure Cosmos DB 核心的全球分布和横向缩放功能。 
+## <a name="prerequisites"></a>必备条件
 
-## <a name="prerequisites"></a>先决条件
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]或者，无需 Azure 订阅即可[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，也无需缴纳费用或承诺金。
-
-此外，还需要：
-* [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](https://git-scm.com/)
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://www.git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -117,7 +113,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
     ...
        {
           query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
-          params: [5, 'IvanaV', 'Belgaum', '2017-10-3136']
+          params: [5, 'IvanaV', 'Belgaum']
         }
     ];
     client.batch(queries, { prepare: true}, next);
@@ -156,7 +152,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 现在返回到 Azure 门户，获取连接字符串信息，并将其复制到应用。 连接字符串使应用能与托管数据库进行通信。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，选择“连接字符串”。 
+1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”  。 
 
     使用 ![“复制”按钮](./media/create-cassandra-nodejs/copy.png) 复制最上面的值“联系点”。
 
@@ -204,9 +200,9 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ![查看并验证输出](./media/create-cassandra-nodejs/output.png)
 
-    按 CTRL + C 停止执行程序并关闭控制台窗口。 
+    按 CTRL+C 停止执行程序并关闭控制台窗口。 
 
-4. 在 Azure 门户中，打开数据资源管理器，以查询、修改和处理这些新数据。 
+4. 在 Azure 门户中，打开数据资源管理器  ，以查询、修改和处理这些新数据。 
 
     ![在数据资源管理器中查看数据](./media/create-cassandra-nodejs/data-explorer.png) 
 
@@ -220,7 +216,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门介绍了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建容器，以及如何运行应用。 现在可以将其他数据导入 Cosmos DB 帐户。 
+本快速入门介绍了如何使用 Cassandra API 创建 Azure Cosmos DB 帐户，以及如何运行用于创建 Cassandra 数据库和容器的 Cassandra Node.js 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
 
 > [!div class="nextstepaction"]
 > [将 Cassandra 数据导入 Azure Cosmos DB](cassandra-import-data.md)

@@ -3,28 +3,31 @@ title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
 description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647078"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064438"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
-本快速入门介绍如何在 Azure Notebooks 上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
+在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与其他人共享该笔记本。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+## <a name="prerequisites"></a>必备条件
+无。
 
 ## <a name="create-a-new-project-and-notebook"></a>创建新项目和笔记本
 
-1. 转到 [Azure Notebooks 站点 (https://notebooks.azure.com)](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. 转到 [Azure Notebooks 站点 (https://notebooks.azure.com)](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门 - 登录到 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
 1. 在公用个人资料页面中，选择页面顶部的“我的项目”  ：
 
     ![浏览器窗口顶部的“我的项目”链接](media/quickstarts/my-projects-link.png)
 
-1. 在“我的项目”页面上，选择“+ 新建项目”（键盘快捷方式：N）；如果浏览器窗口较窄，该按钮可能仅显示为 +    ：
+1. 在“我的项目”页上，选择“+ 新建项目”（键盘快捷方式：n）。   如果浏览器窗口较窄，则该按钮可能仅显示为“+”  ：
 
     ![“我的项目”页面上的“新建项目”命令](media/quickstarts/new-project-command.png)
 
@@ -102,4 +105,4 @@ ms.locfileid: "75647078"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)

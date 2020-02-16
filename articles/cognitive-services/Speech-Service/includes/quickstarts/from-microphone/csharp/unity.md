@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927768"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156693"
 ---
 > [!NOTE]
 > 适用于 Unity 的语音 SDK 支持 Windows 桌面版（x86 和 x64）或通用 Windows 平台（x86、x64、ARM/ARM64）、Android（x86、ARM32/64）或 iOS（x64 模拟器、ARM32 和 ARM64）
@@ -90,7 +90,7 @@ ms.locfileid: "75927768"
 
 1. 找到字符串 `YourSubscriptionKey` 并将其替换为你的语音服务订阅密钥。
 
-1. 找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 例如，如果使用的是免费试用版，区域是 `westus`。
+1. 找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“语音 SDK 参数”。 例如，如果使用的是免费试用版，区域是 `westus`。
 
 1. 保存对脚本所做的更改。
 

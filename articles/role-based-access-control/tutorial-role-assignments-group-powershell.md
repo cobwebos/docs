@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
+title: 教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
 description: 在本教程中了解如何使用基于角色的访问控制 (RBAC) 和 Azure PowerShell 授予组对 Azure 资源的访问权限。
 services: active-directory
 documentationCenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: fb26e603ebb867bda47a93162ffef9bf716d3db6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418587"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138240"
 ---
 # <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>教程：使用 RBAC 和 Azure PowerShell 授予组对 Azure 资源的访问权限
 
-可以通过[基于角色的访问控制 (RBAC)](overview.md) 方式管理对 Azure 资源的访问权限。 在本教程中，请授予组访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
+可以通过[基于角色的访问控制 (RBAC)](overview.md) 管理对 Azure 资源的访问权限。 在本教程中，请授予组访问权限，以便通过 Azure PowerShell 查看订阅中的所有内容并管理资源组中的一切。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在不同范围授予组访问权限
@@ -35,21 +35,21 @@ ms.locfileid: "74418587"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-要完成本教程，需要：
+若要完成本教程，需要：
 
 - 在 Azure Active Directory 中创建组的权限（或者有现成的组）
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell)
 
 ## <a name="role-assignments"></a>角色分配
 
-在 RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个元素：安全主体、角色订阅、范围。 下面是两个将要在本教程中执行的角色分配：
+在 RBAC 中，若要授予访问权限，请创建角色分配。 角色分配包含三个要素：安全主体、角色订阅和范围。 下面是两个将要在本教程中执行的角色分配：
 
 | 安全主体 | 角色定义 | 范围 |
 | --- | --- | --- |
-| 组<br>（RBAC 教程组） | [读取者](built-in-roles.md#reader) | Subscription |
-| 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
+| 组<br>（RBAC 教程组） | [读取者](built-in-roles.md#reader) | 订阅 |
+| 组<br>（RBAC 教程组）| [参与者](built-in-roles.md#contributor) | 资源组<br>(rbac-tutorial-resource-group) |
 
    ![组的角色分配](./media/tutorial-role-assignments-group-powershell/rbac-role-assignments.png)
 

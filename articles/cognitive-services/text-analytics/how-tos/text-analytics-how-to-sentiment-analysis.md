@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644675"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137959"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -50,14 +50,7 @@ ms.locfileid: "75644675"
 | 情绪标记                        |                       | X                     |
 | 模型版本控制                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>情绪评分
-
-情绪分析器将文本分类为积极为主或消极为主， 并分配范围在 0 到 1 之间的分数。 接近 0.5 的值表示中性或不确定。 得分 0.5 表示中性。 如果无法分析字符串的情绪或不含情绪，则分数始终为 0.5。 例如，如果传入带有英语语言代码的西班牙语字符串，则分数为 0.5。
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>情绪评分
 
@@ -85,6 +78,13 @@ ms.locfileid: "75644675"
 
 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) 上查找一个可调用此版情绪分析的示例 C# 应用程序。
 
+
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>情绪评分
+
+情绪分析器将文本分类为积极为主或消极为主， 并分配范围在 0 到 1 之间的分数。 接近 0.5 的值表示中性或不确定。 得分 0.5 表示中性。 如果无法分析字符串的情绪或不含情绪，则分数始终为 0.5。 例如，如果传入带有英语语言代码的西班牙语字符串，则分数为 0.5。
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求 
@@ -101,27 +101,28 @@ ms.locfileid: "75644675"
 
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求  。 
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-[情绪分析 v2 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 [情绪分析 v3 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+
+[情绪分析 v2 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTPS 终结点，以便进行情绪分析。 必须包括要使用的版本的正确 URL。 例如：
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
+> [!NOTE]
+> 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ ms.locfileid: "75644675"
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。
 
-#### <a name="version-2tabversion-2"></a>[第 2 版](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>情绪分析 v2 示例响应
-
-情绪分析 v2 的响应包含每个已发送文档的情绪分数。
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[版本 3（公共预览版）](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>情绪分析 v3 示例响应
 
@@ -255,6 +237,26 @@ ms.locfileid: "75644675"
     "errors": []
 }
 ```
+
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>情绪分析 v2 示例响应
+
+情绪分析 v2 的响应包含每个已发送文档的情绪分数。
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>总结

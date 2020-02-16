@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: 92586667675823343eb1f44f054e939c59719379
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 67157126aa218a520bc59251a93d0e2f049a240a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748833"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156264"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "76748833"
 
 1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，免费试用版订阅的 `westus`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“语音 SDK 参数”（例如，对于免费试用版订阅，为 `westus`）。
 
 1. 将 `whatstheweatherlike.wav` 字符串替换为你自己的文件名。
 

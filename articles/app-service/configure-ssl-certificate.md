@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845931"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046420"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>在 Azure 应用服务中添加 SSL 证书
 
@@ -37,6 +37,9 @@ ms.locfileid: "76845931"
 - 仅限免费证书：使用 [CNAME 记录](app-service-web-tutorial-custom-domain.md#map-a-cname-record)将子域（例如 `www.contoso.com`）映射到应用服务。
 
 ## <a name="private-certificate-requirements"></a>私有证书要求
+
+> [!NOTE]
+> Azure Web 应用**不**支持 AES256，并且所有 pfx 文件都应使用 TrippleDES 进行加密。
 
 [免费应用服务托管证书](#create-a-free-certificate-preview)或[应用服务证书](#import-an-app-service-certificate)已满足应用服务的要求。 如果选择将私有证书上传或导入到应用服务，则证书必须满足以下要求：
 

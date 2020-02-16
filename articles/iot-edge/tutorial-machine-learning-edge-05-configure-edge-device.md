@@ -4,39 +4,35 @@ description: 在本教程中，我们将运行 Linux 的 Azure 虚拟机配置�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514640"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133318"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>教程：配置 IoT Edge 设备
 
 > [!NOTE]
 > 有一系列教程介绍如何在 IoT Edge 上使用 Azure 机器学习，本文是其中的一篇。 如果你是直接转到本文的，建议从本系列的[第一篇文章](tutorial-machine-learning-edge-01-intro.md)开始，以获得最佳学习效果。
 
-在本文中，我们会将一个运行 Linux 的 Azure 虚拟机配置为充当透明网关的 Azure IoT Edge 设备。 借助透明网关配置，设备在不知道网关存在的情况下就能通过网关连接到 Azure IoT 中心。 同时，与 IoT 中心内的设备交互的用户也察觉不到中间网关设备。 最后，我们通过向网关添加 IoT Edge 模块，使用透明网关向我们的系统添加边缘分析功能。
+在本文中，我们会将一个运行 Linux 的 Azure 虚拟机配置为充当透明网关的 IoT Edge 设备。 借助透明网关配置，设备在不知道网关存在的情况下就能通过网关连接到 Azure IoT 中心。 同时，与 Azure IoT 中心内的设备交互的用户也察觉不到中间网关设备。 最后，我们将通过向透明网关添加 IoT Edge 模块，向我们的系统添加边缘分析功能。
 
 本文的步骤通常由云开发人员执行。
 
-## <a name="generate-certificates"></a>生成证书
+## <a name="create-certificates"></a>创建证书
 
-充当网关的设备必须能够安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 要详细了解 IoT Edge 设备如何使用证书，请查看 [Azure IoT Edge 证书使用详细信息](iot-edge-certs.md)。
+充当网关的设备必须能够安全地连接到下游设备。 Azure IoT Edge 允许使用公钥基础结构 (PKI) 在设备之间建立安全连接。 在这种情况下，我们可以将下游 IoT 设备连接到充当透明网关的 IoT Edge 设备。 要维持合理的安全性，下游设备应确认 IoT Edge 设备的标识。 要详细了解 IoT Edge 设备如何使用证书，请查看 [Azure IoT Edge 证书使用详细信息](iot-edge-certs.md)。
 
 在此部分中，我们要使用到时会生成和运行的 Docker 映像来创建自签名证书。 我们选择用 Docker 映像来完成此步骤的原因是，它显著减少了在 Windows 开发计算机上创建证书所需的步骤数。 请参阅[创建演示证书以测试 IoT Edge 设备功能](how-to-create-test-certificates.md)，了解通过 Docker 映像实现自动化的操作。
 
-1. 登录到开发虚拟机。
+1. 登录到开发 VM。
 
-2. 打开命令行提示符，运行以下命令在 VM 上创建一个目录。
-
-    ```cmd
-    mkdir c:\edgeCertificates
-    ```
+2. 使用路径和名称 `c:\edgeCertificates` 创建一个新的文件夹。
 
 3. 从 Windows 的“开始”菜单启动用于 Windows 的 Docker  。
 
@@ -44,9 +40,11 @@ ms.locfileid: "76514640"
 
 5. 选择“文件” > “打开文件夹...”，再选择 C:\\source\\IoTEdgeAndMlSample\\CreateCertificates    。
 
-6. 右键单击 dockerfile，然后选择“生成映像”  。
+6. 在“资源管理器”窗格中，右键单击 **dockerfile** 并选择“生成映像”  。
 
-7. 在对话框中，接受映像名称和标记的默认值 createcertificates:latest  。
+7. 在对话框中，接受映像名称和标记的默认值：**createcertificates: latest**。
+
+    ![在 Visual Studio Code 中创建证书](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
 8. 等待生成完成。
 
@@ -73,7 +71,7 @@ ms.locfileid: "76514640"
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>将证书上传到 Azure Key Vault
 
-为安全存储证书并使其可通过多台设备访问，我们将证书上传到 Azure Key Vault 中。 如在上述列表中看到的那样，我们有两种类型的证书文件：PFX 和 PEM。 我们将 PFX 看作 Key Vault 证书，将其上传到 Key Vault。 PEM 文件是纯文本形式，我们将其看作 Key Vault 机密。 我们之前通过运行 [Azure Notebook](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).创建了 Azure 机器学习工作区，现在我们将使用与该工作区关联的 Key Vault。
+为安全存储证书并使其可通过多台设备访问，我们将证书上传到 Azure Key Vault 中。 如在上述列表中看到的那样，我们有两种类型的证书文件：PFX 和 PEM。 我们将 PFX 看作 Key Vault 证书，将其上传到 Key Vault。 PEM 文件是纯文本形式，我们将其视为 Key Vault 机密。 我们之前通过运行 [Azure Notebook](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks).创建了 Azure 机器学习工作区，现在我们将使用与该工作区关联的 Key Vault。
 
 1. 从 [Azure 门户](https://portal.azure.com)导航到 Azure 机器学习工作区。
 
@@ -95,17 +93,17 @@ ms.locfileid: "76514640"
 
 ## <a name="create-iot-edge-device"></a>创建 IoT Edge 设备
 
-要将 Azure IoT Edge 设备连接到 IoT 中心，首先需在中心内创建该设备的标识。 我们从云端设备标识中提取连接字符串，用它在 IoT Edge 设备上配置运行时。 设备配置完毕并连接到中心后，我们就能部署模块和发送消息了。 我们还能更改 IoT 中心内相应设备标识的配置，进而更改物理 IoT Edge 设备的配置。
+要将 Azure IoT Edge 设备连接到 IoT 中心，首先需在中心内创建该设备的标识。 我们从云端设备标识中提取连接字符串，用它在 IoT Edge 设备上配置运行时。 在所配置的设备连接到中心后，我们就能够部署模块并发送消息了。 我们还能更改 IoT 中心内相应的设备标识，进而更改物理 IoT Edge 设备的配置。
 
 在本教程中，我们会使用 Visual Studio Code 创建新的设备标识。 你可通过 [Azure 门户](how-to-register-device.md#register-in-the-azure-portal)或 [Azure CLI](how-to-register-device.md#register-with-the-azure-cli) 完成这些步骤。
 
 1. 在开发计算机上，打开 Visual Studio Code。
 
-2. 从 Visual Studio Code 资源管理器视图中，打开“Azure IoT 中心设备”框架  。
+2. 从 Visual Studio Code 资源管理器视图中，展开“Azure IoT 中心”框架  。
 
 3. 单击省略号并选择“创建 IoT Edge 设备”  。
 
-4. 向设备提供一个名称。 为方便起见，我们使用的是 aaTurbofanEdgeDevice，因为它排在我们之前通过设备创建的所有客户端设备的前面，可用来发送测试数据  。
+4. 向设备提供一个名称。 为方便起见，我们使用名称 **aaTurbofanEdgeDevice**，以便它排在所列出设备的顶部。
 
 5. 新设备将在设备列表中显示。
 
@@ -117,7 +115,7 @@ ms.locfileid: "76514640"
 
 ### <a name="enable-programmatic-deployment"></a>启用编程部署
 
-要在部署中使用市场提供的映像，我们需要为该映像启用编程部署。
+若要在脚本化部署中使用市场提供的映像，我们需要为该映像启用编程部署。
 
 1. 登录到 Azure 门户。
 
@@ -125,9 +123,9 @@ ms.locfileid: "76514640"
 
 1. 在搜索栏中，输入并选择“市场”  。
 
-1. 在搜索栏中，输入并选择“Azure IoT Edge on Ubuntu”  。
+1. 在市场搜索栏中，输入并选择“Azure IoT Edge on Ubuntu”  。
 
-1. 选择“想要以编程方式进行部署?  请开始使用”超链接。
+1. 选择**入门**超链接以编程方式进行部署。
 
 1. 选择“启用”按钮，然后选择“保存”   。
 
@@ -192,7 +190,9 @@ ms.locfileid: "76514640"
 
 ## <a name="download-key-vault-certificates"></a>下载 Key Vault 证书
 
-在本文前述部分，我们将证书上传到了 Key Vault，使其可供 IoT Edge 设备和叶设备使用；叶设备是一个下游设备，它使用 IoT Edge 设备作为网关来与 IoT 中心通信。 在本文稍后部分，我们将讲解叶设备。 在此部分中，请将证书下载到 IoT Edge 设备。
+在本文的前面部分中，我们已将证书上传到 Key Vault，使其可供 IoT Edge 设备和叶设备使用。 叶设备是一个下游设备，它使用 IoT Edge 设备作为网关与 IoT 中心进行通信。
+
+在本文稍后部分，我们将讲解叶设备。 在此部分中，请将证书下载到 IoT Edge 设备。
 
 1. 从 Linux 虚拟机上的 SSH 会话，使用 Azure CLI 登录到 Azure。
 
@@ -227,7 +227,7 @@ ms.locfileid: "76514640"
 
 ## <a name="update-the-iot-edge-device-configuration"></a>更新 IoT Edge 设备配置
 
-IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 我们需要更新此文件中的三部分信息：
+IoT Edge 运行时使用 `/etc/iotedge/config.yaml` 文件来保留其配置。 我们需要更新此文件中的三部分信息：
 
 * **设备连接字符串**：IoT 中心内来自此设备的标识的连接字符串
 * **证书**：用于通过下游设备建立的连接的证书
@@ -296,7 +296,9 @@ IoT Edge 运行时使用 /etc/iotedge/config.yaml 文件来保留其配置。 �
 
 ## <a name="next-steps"></a>后续步骤
 
-我们刚才完成了将 Azure VM 配置为 Azure IoT Edge 透明网关的操作。 我们首先是创建了测试证书并将它们上传到 Azure Key Vault。 接下来，我们使用了脚本和 Resource Manager 模板，通过 Azure 市场中的“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”映像部署了 VM。 该脚本有额外一个步骤 - 我们安装了 Azure CLI（[使用 apt 安装Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)）。 在 VM 启动并运行的情况下，我们通过 SSH 进行了连接、登录到了 Azure、从 Key Vault 下载了证书，还通过更新 config.yaml 文件对 IoT Edge 运行时的配置进行了几项更新。 要详细了解如何将 IoT Edge 用作网关，请参阅[如何将 IoT Edge 设备用作网关](iot-edge-as-gateway.md)。 要详细了解如何将 IoT Edge 设备配置为透明网关，请参阅[配置 IoT Edge 设备以充当透明网关](how-to-create-transparent-gateway.md)。
+我们刚才完成了将 Azure VM 配置为 Azure IoT Edge 透明网关的操作。 我们首先创建了测试证书并将它们上传到 Azure Key Vault。 接下来，我们使用了脚本和 Resource Manager 模板，通过 Azure 市场中的“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”映像部署了 VM。 在 VM 启动并运行后，我们通过 SSH 进行了连接，登录到 Azure 并从 Key Vault 下载了证书。 我们通过更新 config.yaml 文件对 IoT Edge 运行时的配置进行了多处更新。
+
+有关详细信息，请参阅[如何将 IoT Edge 设备用作网关](iot-edge-as-gateway.md)和[将 IoT Edge 设备配置为充当透明网关](how-to-create-transparent-gateway.md)。
 
 请继续学习下一篇文章，了解如何构建 IoT Edge 模块。
 

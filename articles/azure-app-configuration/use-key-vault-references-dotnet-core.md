@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714426"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116619"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用 Key Vault 引用
 
@@ -172,7 +172,7 @@ ms.locfileid: "76714426"
     using Azure.Identity;
     ```
 
-1. 通过调用 `config.AddAzureAppConfiguration` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。 包含 `UseAzureKeyVault` 选项，以传入对 Key Vault 的新 `KeyVaultClient` 引用。
+1. 通过调用 `config.AddAzureAppConfiguration` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。 包括 `ConfigureKeyVault` 选项，并将正确的凭据传递到 Key Vault。
 
     #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -217,7 +217,7 @@ ms.locfileid: "76714426"
             .UseStartup<Startup>());
     ```
 
-1. 初始化与应用程序配置的连接后，即已将 `KeyVaultClient` 引用传递给 `UseAzureKeyVault` 方法。 初始化之后，可以像访问普通的应用程序配置密钥值一样访问 Key Vault 引用值。
+1. 在初始化与“应用配置”服务的连接时，你已通过调用 `ConfigureKeyVault` 方法设置了与 Key Vault 的连接。 初始化之后，可以像访问普通的应用程序配置密钥值一样访问 Key Vault 引用值。
 
     若要了解此过程的运作方式，请打开“视图” > “主页”文件夹中的 *Index.cshtml*。   将其内容替换为以下代码：
 

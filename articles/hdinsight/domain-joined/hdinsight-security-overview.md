@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053738"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122108"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
@@ -32,7 +32,7 @@ HDInsight 中的外围安全性通过[虚拟网络](../hdinsight-plan-virtual-ne
 
 部署在 VNET 中的所有群集也会有一个专用终结点，该终结点解析为 VNET 中的专用 IP，可以对群集网关进行专用 HTTP 访问。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>身份验证
 
 HDInsight 的[企业安全性套餐](apache-domain-joined-architecture.md)提供基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 Active Directory 集成通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)实现。 有了这些功能，就可以创建已加入托管 Active Directory 域的 HDInsight 群集。 接下来可配置企业员工的列表，这些员工可进行身份验证并登录到群集。
 
@@ -87,9 +87,9 @@ Azure 符合性产品/服务基于各种类型的保证，包括独立的第三�
 |  | 确保定期进行 [OS 修补](../hdinsight-os-patching.md) | 客户 |
 | 网络安全 | 配置[虚拟网络](../hdinsight-plan-virtual-network-deployment.md) |
 |  | 配置[网络安全组 (NSG) 入站规则](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | 客户 |
-|  | 使用防火墙（预览版）配置[出站流量限制](../hdinsight-restrict-outbound-traffic.md) | 客户 |
-| 虚拟化的基础结构 | 不适用 | HDInsight（云提供商） |
-| 物理基础结构安全性 | 不适用 | HDInsight（云提供商） |
+|  | 使用防火墙配置[出站流量限制](../hdinsight-restrict-outbound-traffic.md) | 客户 |
+| 虚拟化的基础结构 | 空值 | HDInsight（云提供商） |
+| 物理基础结构安全性 | 空值 | HDInsight（云提供商） |
 
 ## <a name="next-steps"></a>后续步骤
 

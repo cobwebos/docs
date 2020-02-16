@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428764"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191277"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个工作流 - Azure 门户
 
@@ -116,7 +116,7 @@ ms.locfileid: "75428764"
 1. 如果你选择的电子邮件连接器提示你进行身份验证，请立即完成该步骤，以在逻辑应用与电子邮件服务之间创建连接。
 
    > [!NOTE]
-   > 在此特定示例中，你将手动进行身份验证。 但是，要求进行身份验证的各种连接器所支持的身份验证类型有所不同。 你也可以选择设置要用于处理身份验证的方式。 例如当使用 Azure 资源管理器模板进行部署时，可以参数化并保护要频繁或轻松更改的输入，例如连接信息。 有关详细信息，请参阅以下主题：
+   > 在此特定示例中，你将手动进行身份验证。 但是，要求进行身份验证的各种连接器所支持的身份验证类型有所不同。 你也可以选择设置要用于处理身份验证的方式。 例如，当使用 Azure 资源管理器模板进行部署时，可以对你想要经常或轻松更改的输入（如连接信息）进行参数化并提高安全性。 有关详细信息，请参阅以下主题：
    >
    > * [部署的模板参数](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [授权 OAuth 连接](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469516"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156733"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "75469516"
 1. 在源文件的 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourSubscriptionKey` 并将其替换为订阅密钥。
 
 
-1. 在 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 （例如，将 `westus` 用于免费试用版订阅。）
+1. 在 `OnRecognitionButtonClicked` 处理程序中，找到字符串 `YourServiceregion`，并将其替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“语音 SDK 参数”。 （例如，将 `westus` 用于免费试用版订阅。）
 
 1. 接下来，需要创建一项 [Xamarin 服务](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，用于从不同的平台项目（例如 UWP、Android 和 iOS）查询麦克风权限。 为此，请在 helloworld 项目下添加名为 *Services* 的新文件夹，然后在其下创建新的 C# 源文件。 可以右键单击 *Services* 文件夹，然后选择“添加” > “新建项” > “代码文件”。    将文件重命名为 `IMicrophoneService.cs`，然后将以下代码片段中的所有代码置于该文件中：
 

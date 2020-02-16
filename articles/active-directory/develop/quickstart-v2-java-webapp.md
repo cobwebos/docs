@@ -11,16 +11,14 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3e1369901e259af6722d9e5a14fababac80f1d02
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549935"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160553"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入门：向 Java Web 应用添加 Microsoft 登录功能
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 本快速入门介绍如何将 Java Web 应用与 Microsoft 标识平台集成。 应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌，并针对 Microsoft Graph API 发出请求。
 
@@ -61,7 +59,7 @@ ms.locfileid: "75549935"
 >    - 暂时将“重定向 URI”留空，并选择“注册”。  
 > 1. 在“概述”  页上，找到应用程序的“应用程序(客户端) ID”  和“目录(租户) ID”  值。 复制这些值，供以后使用。
 > 1. 从菜单选择“身份验证”，然后添加以下信息  ：
->    - 在“重定向 URI”中添加 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。 
+>    - 在“重定向 URI”中添加 `https://localhost:8080/msal4jsample/secure/aad` 和 `https://localhost:8080/msal4jsample/graph/me`。 
 >    - 选择“保存”。 
 > 1. 在菜单中选择“证书和密码”，然后在“客户端密码”部分中单击“新建客户端密码”：   
 >
@@ -75,7 +73,7 @@ ms.locfileid: "75549935"
 >
 > 若要正常运行本快速入门中的代码示例，需要：
 >
-> 1. 添加 `http://localhost:8080/msal4jsamples/secure/aad` 和 `http://localhost:8080/msal4jsamples/graph/me` 作为回复 URL。
+> 1. 添加 `https://localhost:8080/msal4jsamples/secure/aad` 和 `https://localhost:8080/msal4jsamples/graph/me` 作为回复 URL。
 > 1. 创建客户端机密。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [为我进行这些更改]()
@@ -91,23 +89,36 @@ ms.locfileid: "75549935"
 
  1. 将 zip 文件解压缩到某个本地文件夹。
  1. 如果使用集成开发环境，请在偏好的 IDE 中打开示例（可选）。
-
  1. 打开可在 src/main/resources/ 文件夹中找到的 application.properties 文件，将字段“aad.clientId”、“aad.authority”和“aad.secretKey”的值替换为相应的“应用程序 ID”、“租户 ID”和“客户端密码”值，如下所示       ：
 
     ```file
     aad.clientId=Enter_the_Application_Id_here
     aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
     aad.secretKey=Enter_the_Client_Secret_Here
-    aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-    aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
+    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
+    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
     ```
 
-> [!div renderon="docs"]
-> 其中：
->
-> - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
-> - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
-> - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值  。
+    > [!div renderon="docs"]
+    > 其中：
+    >
+    > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
+    > - `Enter_the_Client_Secret_Here` - 是你在“证书和机密”  中为注册的应用程序创建的**客户端密码**。
+    > - `Enter_the_Tenant_Info_Here` - 是注册的应用程序的目录（租户）ID 值  。
+
+ 1. 若要将 https 与 localhost 一起使用，请填写 server.ssl.key 属性。 若要生成自签名证书，请使用 keytool 实用工具（包含在 JRE 中）。
+
+   ```
+   Example: 
+   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
+
+   server.ssl.key-store-type=PKCS12  
+   server.ssl.key-store=classpath:keystore.p12  
+   server.ssl.key-store-password=password  
+   server.ssl.key-alias=testCert 
+   ```
+
+   将生成的 keystore 文件放在“resources”文件夹中。
 
 #### <a name="step-4-run-the-code-sample"></a>步骤 4：运行代码示例
 
@@ -117,11 +128,11 @@ ms.locfileid: "75549935"
 
 ##### <a name="running-from-ide"></a>从 IDE 运行
 
-如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 http://localhost:8080
+如果从 IDE 运行 Web 应用程序，请单击“运行”，然后导航到项目的主页。 对于本示例，标准主页 URL 为 https://localhost:8080 。
 
 1. 在前面的页面上，选择“登录”  按钮以重定向到 Azure Active Directory 并提示用户输入其凭据。
 
-1. 用户通过身份验证后，会重定向到 http://localhost:8080/msal4jsample/secure/aad  。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
+1. 用户通过身份验证后，会重定向到 https://localhost:8080/msal4jsample/secure/aad  。 他们现在已登录，页面将显示有关已登录帐户的信息。 示例 UI 包含以下按钮：
     - *注销*：从应用程序中注销当前用户，并将其重定向到主页。
     - *显示用户信息*：获取 Microsoft Graph 的令牌，并使用包含该令牌的请求调用 Microsoft Graph，这将返回有关已登录用户的基本信息。
 

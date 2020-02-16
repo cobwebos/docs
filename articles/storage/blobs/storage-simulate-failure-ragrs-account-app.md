@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892441"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162695"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
-本教程是一个系列中的第二部分。 本教程通过模拟一个故障，介绍[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 的优点。
+本教程是一个系列中的第二部分。 在其中通过模拟一个故障，介绍[读取访问异地冗余存储](../common/storage-redundancy.md) (RA-GRS) 的优点。
 
-若要模拟故障，可以使用[静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler)。 使用这两种方法都可以模拟这样一个故障：向[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 存储帐户的主终结点发送请求，导致应用程序改从辅助终结点读取内容。
+若要模拟故障，可以使用[静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler)。 使用这两种方法都可以模拟这样一个故障：向[读取访问异地冗余](../common/storage-redundancy.md) (RA-GRS) 存储帐户的主终结点发送请求，导致应用程序改从辅助终结点读取内容。
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "74892441"
 > * 使用[无效的静态路由](#simulate-a-failure-with-an-invalid-static-route)或 [Fiddler](#simulate-a-failure-with-fiddler) 模拟故障
 > * 模拟主终结点还原
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 开始学习本教程之前，请完成前一教程：[使用 Azure 存储实现应用程序数据的高可用性][previous-tutorial]。
 
@@ -41,7 +41,7 @@ ms.locfileid: "74892441"
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>使用无效的静态路由模拟失败
 
-对于向[读取访问异地冗余](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) 存储帐户的主终结点发出的所有请求，可以创建一个无效的静态路由。 本教程使用本地主机作为网关来路由向存储帐户发出的请求。 使用本地主机作为网关会导致向存储帐户主终结点发出的所有请求都以循环方式返回到主机内，随后导致请求失败。 执行以下步骤，使用无效的静态路由模拟失败和主终结点还原。
+对于向[读取访问异地冗余](../common/storage-redundancy.md) (RA-GRS) 存储帐户的主终结点发出的所有请求，可以创建一个无效的静态路由。 本教程使用本地主机作为网关来路由向存储帐户发出的请求。 使用本地主机作为网关会导致向存储帐户主终结点发出的所有请求都以循环方式返回到主机内，随后导致请求失败。 执行以下步骤，使用无效的静态路由模拟失败和主终结点还原。
 
 ### <a name="start-and-pause-the-application"></a>启动和暂停应用程序
 

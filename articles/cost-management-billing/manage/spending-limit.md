@@ -2,21 +2,21 @@
 title: Azure 支出限制 | Microsoft Docs
 description: 本文介绍 Azure 支出限制的工作原理以及移除方式。
 author: bandersmsft
-manager: amberb
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76314111"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188285"
 ---
 # <a name="azure-spending-limit"></a>Azure 支出限制
 
@@ -36,30 +36,48 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>在 Azure 门户中消除支出限制
 
+只要 Azure 订阅关联了有效的付款方法，即可随时移除支出限制。 对于具有多个月额度的订阅类型（例如 Visual Studio Enterprise 和 Visual Studio Professional），你可以选择无限期移除支出限制，也可以只移除当前计费周期的支出限制。 如果你只选择当前计费周期，则在下一个计费周期开始时将自动启用支出限制。
+
+如果你有 Azure 免费帐户，请参阅[升级 Azure 订阅](upgrade-azure-subscription.md)来移除支出限制。 否则，请按照以下步骤来移除支出限制：
+
 <a id="remove"></a>
 
-只要 Azure 订阅关联了有效的付款方法，即可随时移除支出限制。 对于具有多个月额度的订阅类型（例如 Visual Studio Enterprise 和 Visual Studio Professional），还可以在下个计费周期开始时启用支出限制。
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索“成本管理 + 计费”。 
 
-若要移除支出限制，请按照以下步骤操作：
+    ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
 
-1. 登录 [Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
-1. 导航到“订阅”  。
-1. 选择订阅。 例如 *Visual Studio Enterprise*。
-1. 在页面顶部，选择“管理”  。 你将重定向到 https://account.azure.com/ 。 在页面右侧，选择“删除支出限制”  。  
-  ![显示了“删除支出限制”的示例](./media/spending-limit/account-azure-com-spending-limit.png)
-1. 你将被重定向回 Azure 门户。 选择适合你的一个选项，然后选择一种付款方式。 选择“完成”  。  
-  ![选择一个选项来删除支出限制](./media/spending-limit/remove-spending-limit.png)
+1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。 
 
-| 选项 | 效果 |
-| --- | --- |
-| 永久性移除支出限制 | 移除支出限制，且在下次计费期开始不自动打开此限制。 |
-| 移除当前计费期间的支出限制 | 移除支出限制，使其在下次计费期开始时自动重新打开。 |
+   ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
+    
+1. 在订阅概览中，单击橙色横幅删除支出限制。
+    
+    ![显示删除支出限制横幅的屏幕截图](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
+
+1. 选择是要永久删除支出限制还是仅为当前计费周期删除。
+    
+      ![显示删除支出限制边栏选项卡的屏幕截图](./media/spending-limit/remove-spending-limit-blade-x.png)
+    
+      | 选项 | 效果 |
+      | --- | --- |
+      | 永久性移除支出限制 | 支出限制在下个计费周期开始时不会自动重新启用。 但是，你随时可以将其重新启用。 |
+      | 移除当前计费期间的支出限制 | 支出限制在下个计费周期开始时会自动重新启用。 |
+
+
+1. 单击“选择付款方式”，为订阅选择一个付款方式  。 这将成为订阅的有效付款方式。
+
+1. 单击“完成”  。
+
 
 ## <a name="why-you-might-want-to-remove-the-spending-limit"></a>为什么需要移除支出限制
 
 支出限制会阻止你部署或使用某些第三方和 Microsoft 服务。 有些情况应移除订阅上的支出限制。
 
--  计划部署第一方映像（如 Oracle）或服务（如 Azure DevOps Services）。 此情况几乎立马导致你达到支出限制并导致订阅被禁。
+-  你计划部署第三方映像（如 Oracle）或服务（如 Azure DevOps Services）。 此情况几乎立马导致你达到支出限制并导致订阅被禁。
 - 拥有不希望其中断的服务。 达到支出限制时，会从生产中移除部署的 Azure 资源，Azure 虚拟机会被停止并取消分配。 如果有不希望其中断的服务，则必须消除支出限制。
 - 服务和资源包含希望保留的设置，如虚拟 IP 地址。 这些设置会在达到支出限制且服务和资源被取消分配时丢失。
 
@@ -67,9 +85,20 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
 对于包含多个月额度的订阅类型来说，仅当已无限期移除支出限制时，此功能才可用。 可以使用此功能，在下次计费期开始时自动打开支出限制。
 
-1. 登录到[帐户中心](https://account.windowsazure.com/Subscriptions)。
-1. 选择黄色横幅来更改支出限制选项。
-1. 选择“在下一计费周期的\<计费周期的开始日期\>启用支出限制” 
+
+1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
+1. 搜索“成本管理 + 计费”。 
+
+    ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
+
+1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。 
+
+   ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
+    
+1. 在订阅概述中，单击页面顶部的横幅以重新启用支出限制。
 
 ## <a name="custom-spending-limit"></a>自定义支出限制
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Java 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f4f265b522c62e36d338157b6ddc56f72f623dc4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 47948b0ce4ac0cb9a78552891e42d7634335839e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867135"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121762"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Java 与 Azure Dev Spaces 结合使用
 
@@ -93,7 +93,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 在此部分中，将创建一个 Java Web 应用并让其在 Kubernetes 的容器中运行。
 
 ### <a name="create-a-java-web-app"></a>创建 Java Web 应用
-请从 GitHub 下载代码，方法是：导航到 https://github.com/Azure/dev-spaces ，然后选择“Clone or Download”（克隆或下载）  ，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
+从 GitHub 下载代码，方法是：导航到 [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces)，然后选择“克隆或下载”  ，将 GitHub 存储库下载到本地环境。 本指南的代码位于 `samples/java/getting-started/webfrontend` 中。
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>准备用于 Docker 和 Kubernetes 开发的代码
 到目前为止，已有一个可以在本地运行的基本 Web 应用。 现在，将通过创建定义应用的容器以及将应用部署到 Kubernetes 的方式的资产来将其容器化。 使用 Azure Dev Spaces，可以很容易完成此任务： 

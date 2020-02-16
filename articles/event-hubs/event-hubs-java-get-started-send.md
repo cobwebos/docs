@@ -6,38 +6,38 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: a2cce90b5aa28dac6ff945ac48f70bfd319683b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029888"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158003"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 向/从 Azure 事件中心 (azure-eventhubs) 发送/接收事件
 
-本教程介绍如何创建用于向/从 Azure 事件中心发送/接收事件的 Java 应用程序。
-
-Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅“事件中心概述”和“事件中心功能”。
+本快速入门介绍如何使用 **azure-eventhubs** Java 包向事件中心发送事件以及从事件中心接收事件。
 
 > [!WARNING]
-> 本快速入门使用旧的 **azure-eventhubs** 和 **azure-eventhubs-eph** 包。 建议[迁移](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)代码以使用最新的 [azure-messaging-eventhubs](get-started-java-send-v2.md) 包。 
+> 本快速入门使用旧的 **azure-eventhubs** 和 **azure-eventhubs-eph** 包。 有关使用最新 **azure-messaging-eventhubs** 包的快速入门，请参阅[使用 azure-messaging-eventhubs 发送和接收事件](get-started-java-send-v2.md)。 若要将应用程序从使用旧包迁移到使用新包，请参阅[从 azure-eventhubs 迁移到 azure-messaging-eventhubs 的指南](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)。 
 
 
 ## <a name="prerequisites"></a>必备条件
 
-若要完成本教程，需要具备以下先决条件：
+如果不熟悉 Azure 事件中心，请在阅读本快速入门之前参阅[事件中心概述](event-hubs-about.md)。 
 
-- 有效的 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- Java 开发环境。 本教程使用 [Eclipse](https://www.eclipse.org/)。
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 可在本教程后面编写的代码中使用该访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。
+若要完成本快速入门，需要具备以下先决条件：
+
+- **Microsoft Azure 订阅**。 若要使用 Azure 服务（包括 Azure 事件中心），需要一个订阅。  如果没有现有的 Azure 帐户，可以注册[免费试用](https://azure.microsoft.com/free/)帐户，或者在[创建帐户](https://azure.microsoft.com)时使用 MSDN 订阅者权益。
+- Java 开发环境。 本快速入门使用 [Eclipse](https://www.eclipse.org/)。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取事件中心访问密钥的值：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 你将在本快速入门中稍后编写的代码中使用访问密钥。 默认密钥名称为：RootManageSharedAccessKey  。
 
 ## <a name="send-events"></a>发送事件 
 本部分介绍如何创建一个向事件中心发送事件的 Java 应用程序。 
 
 > [!NOTE]
-> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，可以按照本教程中的步骤创建自己的解决方案。
+> 可以从 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) 下载此用作示例的快速入门，将 `EventHubConnectionString` 和 `EventHubName` 字符串替换为事件中心值，并运行它。 或者，也可以按照本快速入门中的步骤创建自己的应用程序。
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>将引用添加到 Azure 事件中心库
 

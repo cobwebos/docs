@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982441"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048281"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>教程：使用自动化机器学习创建第一个分类模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -69,11 +69,15 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 通过从“+ 创建数据集”  下拉菜单选择“从本地文件”  ，创建新的数据集。 
 
+    1. 在“基本信息”  窗体上，为数据集指定一个名称，并提供可选说明。 Azure 机器学习工作室中的自动化 ML 当前仅支持表格数据集，因此，数据集类型应当默认设置为“表格”。
+
+    1. 在左下角选择“下一步” 
+
+    1. 在“数据存储和文件选择”  窗体上，选择在创建工作区期间自动设置的默认数据存储“workspaceblobstore(Azure Blob 存储)”  。 你可以在此数据存储中上传数据文件，使其可用于你的工作区。
+
     1. 选择“浏览”  。
     
     1. 选择本地计算机上的 bankmarketing_train.csv 文件  。 这是作为[必备组件](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)下载的文件。
-
-    1. 选择“表格”  作为数据集类型。 
 
     1. 为数据集指定唯一名称，并提供可选说明。 
 
@@ -136,18 +140,18 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
         阻止的算法 | 要从训练作业中排除的算法| 无
         退出条件| 如果符合某个条件，则会停止训练作业。 |训练作业时间（小时）：&nbsp;&nbsp;1 <br> 指标分数阈值：&nbsp;&nbsp;无
         验证 | 选择交叉验证类型和测试数。|验证类型：<br>k-折交叉验证&nbsp;&nbsp; <br> <br> 验证次数：2
-        并发| 已执行并行迭代的最大次数和每次迭代使用的最大内核数| 最大并发迭代次数：&nbsp;&nbsp;5<br> 最大内核数/迭代：&nbsp;&nbsp;&nbsp;无
+        并发| 每次迭代执行的并行迭代的最大数目| 最大并发迭代次数：&nbsp;&nbsp;5
         
         选择“保存”。 
 
-1. 选择“完成”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并显示“运行状态”  。
+1. 选择“完成”  以运行试验。 当试验准备开始时，将打开“运行详细信息”  屏幕并且会在顶部显示“运行状态”  。
 
 >[!IMPORTANT]
 > 准备试验运行时，准备需要 **10-15 分钟**。
 > 运行以后，**每个迭代还需要 2-3 分钟**。  
 > 定期选择“刷新”  ，以查看实验过程中运行的状态。
 >
-> 在生产环境中，你可能会走开一段时间。 但在本教程中，建议你开始浏览“模型”选项卡上的已测试算法，因为当其他模型仍在运行的时候，这些模型已经完成。 
+> 在生产环境中，你可能会走开一段时间。 但在本教程中，建议你开始浏览“模型”选项卡上的已测试算法，因为当其他模型仍在运行的时候，这些模型已经完成。  
 
 ##  <a name="explore-models"></a>浏览模型
 
@@ -165,7 +169,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 
 对于本试验，部署到 Web 服务意味着金融机构现已获得一个迭代和可缩放的 Web 解决方案，用于识别潜在的定期存款客户。 
 
-运行完成后，导航回“运行详细信息”  页，然后选择“模型”  选项卡。选择“刷新”  。 
+运行完成后，导航回“运行详细信息”  页，然后选择“模型”  选项卡。
 
 在此试验上下文中，根据 **AUC_weighted** 指标，**VotingEnsemble** 被视为最佳模型。  我们将部署此模型，但请注意，部署需要大约 20 分钟才能完成。 部署过程需要几个步骤，包括注册模型、生成资源和为 Web 服务配置资源。
 
@@ -216,7 +220,7 @@ Azure 机器学习工作室中的自动化机器学习可以通过几个步骤�
 > [!div class="nextstepaction"]
 > [使用 Web 服务](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ 详细了解[预处理](how-to-create-portal-experiments.md#preprocess)。
++ 详细了解[特征化](how-to-create-portal-experiments.md#featurization)。
 + 详细了解[数据分析](how-to-create-portal-experiments.md#profile)。
 + 详细了解[自动化机器学习](concept-automated-ml.md)。
 + 有关分类指标和图表的详细信息，请参阅[理解自动化机器学习结果](how-to-understand-automated-ml.md#classification)一文。

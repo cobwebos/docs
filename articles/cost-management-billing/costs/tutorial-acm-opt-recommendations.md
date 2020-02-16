@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990289"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168768"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -79,7 +79,7 @@ Azure 顾问会监视虚拟机 7 天的使用情况，并识别利用不足的�
 
 注意当前虚拟机的大小。 确认应该调整该虚拟机的大小后，关闭 VM 详细信息以查看虚拟机列表。
 
-在要关闭或调整大小的候选项列表中，选择“将 FromVirtualMachineSKU 调整为 ToVirtualMachineSKU“。 *&lt;&gt;* &lt;&gt;
+在要关闭或调整大小的候选项列表中，选择“将 &lt;FromVirtualMachineSKU&gt; 调整为 &lt;ToVirtualMachineSKU&gt;”    。
 ![具有调整虚拟机大小选项的示例建议](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 接下来，会看到可用调整大小选项的列表。 选择能够为方案实现最佳性能和成本效益的选项。 在以下示例中，所选的选项会将大小从 **Standard_D8s_v3** 调整为 **Standard_D2s_v3**。

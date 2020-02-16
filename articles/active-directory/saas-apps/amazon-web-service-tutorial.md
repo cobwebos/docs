@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293090"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047261"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -375,9 +375,9 @@ ms.locfileid: "76293090"
 
 - [通过 Azure AD 试用 Amazon Web Services (AWS)](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/protect-aws)
+- [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [如何通过高级可见性和控制保护 Amazon Web Services (AWS)](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [如何通过高级可见性和控制保护 Amazon Web Services (AWS)](https://docs.microsoft.com/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

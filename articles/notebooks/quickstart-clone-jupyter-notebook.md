@@ -3,24 +3,29 @@ title: 使用 Azure Notebooks 预览版从 GitHub 克隆 Jupyter 笔记本
 description: 快速克隆 GitHub 存储库中的 Jupyter 笔记本并在 Azure Notebooks 帐户中运行它。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 8aa88008ece170a5eed7ab491e3318aed5168923
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d0f3a12ff04e115074c3821c5e29652484710bca
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647095"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064591"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中克隆笔记本
 
-许多数据科学家和开发人员将其笔记本存储在 [GitHub 存储库](https://github.com)中，该存储库是一项免费的服务，可以针对许多不同的项目类型提供存储和版本控制。 GitHub 通常用来在 Jupyter 笔记本（在本地运行）上进行协作。 在这种情况下，每位协作者都保留该存储库的本地副本，通过该副本运行笔记本。
+在本快速入门中，你将 GitHub 中存储的一个 Jupyter 笔记本复制到 Azure Notebooks 帐户中。 
 
-克隆时，则改在 Azure Notebooks 帐户中创建 GitHub 笔记本的副本。 此克隆独立于其原始存储库；更改仅存储在 Azure Notebooks 帐户中，不影响原始存储库。 由于你的克隆位于云中，因此可以将项目与其他协作者共享，这些协作者不需进行本地复制，甚至不需在其计算机上安装 Jupyter。 也可在着手自己的项目时或需要获取数据文件时克隆笔记本。
+GitHub 存储库为 Jupyter 笔记本提供存储和版本控制。 协作者维护存储库的本地副本，并通过这些副本来运行笔记本。 将某个 Jupyter 笔记本从 GitHub 克隆到你的 Azure Notebooks 帐户将创建该笔记本的独立副本。 更改仅存储在 Azure Notebooks 帐户中，不会影响原始 GitHub 存储库。 
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+由于你的 Azure Notebooks 克隆位于云中，因此可以将它与其他协作者共享，这些协作者不需要创建任何本地复制，也不需要在其计算机上安装 Jupyter。 你还可以克隆某个笔记本来仅将其用作你自己的项目的起点，或者克隆它来获取数据文件。 
+
+## <a name="prerequisites"></a>必备条件
+无。
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>克隆 Azure 认知服务笔记本
 
-1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 （有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)）。
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. 转到 [Azure Notebooks](https://notebooks.azure.com) 并登录。 有关详细信息，请参阅[快速入门 - 登录 Azure Notebooks](quickstart-sign-in-azure-notebooks.md)。
 
 1. 在公用个人资料页面中，选择页面顶部的“我的项目”  ：
 
@@ -69,4 +74,4 @@ ms.locfileid: "75647095"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)

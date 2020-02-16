@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991899"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046692"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>教程：Azure Active Directory 单一登录 (SSO) 与 EAB Navigate 的集成
 
@@ -45,7 +45,8 @@ ms.locfileid: "76991899"
 
 * EAB Navigate 支持 **SP** 发起的 SSO
 
-* 配置 EAB Navigate 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+> [!NOTE]
+> 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>从库中添加 EAB Navigate
 
@@ -57,7 +58,6 @@ ms.locfileid: "76991899"
 1. 若要添加新的应用程序，请选择“新建应用程序”  。
 1. 在“从库中添加”部分的搜索框中，键入 **EAB Navigate**。 
 1. 在结果面板中选择“EAB Navigate”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>配置并测试 EAB Navigate 的 Azure AD 单一登录
 
@@ -82,32 +82,21 @@ ms.locfileid: "76991899"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分，如果有**服务提供程序元数据文件**，请执行以下步骤：
+1. 在“基本 SAML 配置”部分，输入以下字段的值  ：
+    
+    在“标识符(实体 ID)”  文本框中，准确输入以下值：`https://bouncer.eab.com`
+    
+    在“回复 URL (断言使用者服务 URL)”  文本框中，将以下两个值作为单独的行输入：`https://bouncer.eab.com/sso/saml2/acs`
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. 单击“上传元数据文件”  。
+    > [!NOTE]
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [EAB Navigate 客户端支持团队](mailto:EABTechSupport@eab.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-    ![上传元数据文件](common/upload-metadata.png)
+1. 在“使用 SAML 设置单一登录”  页的“SAML 签名证书”  部分中，单击“复制”按钮，以复制“应用联合元数据 URL”  ，并将它保存在计算机上。
 
-    b. 单击“文件夹徽标”  来选择元数据文件并单击“上传”。 
-
-    ![选择元数据文件](common/browse-upload-metadata.png)
-
-    c. 成功上传元数据文件后，“标识符”值会自动填充在“基本 SAML 配置”部分中  。
-
-    ![EAB Navigate 域和 URL 单一登录信息](common/sp-identifier.png)
-
-    在“登录 URL”  文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > 如果“标识符”值未自动填充，请根据要求手动填充该值。  登录 URL 值不是实际值。 使用实际登录 URL 更新此值。 请联系 [EAB Navigate 客户端支持团队](mailto:jmahoney@eab.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
-
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(原始)”，选择“下载”以下载该证书并将其保存到计算机上     。
-
-    ![证书下载链接](common/certificateraw.png)
-
-1. 在“设置 EAB Navigate”部分，根据要求复制相应的 URL。 
-
-    ![复制配置 URL](common/copy-configuration-urls.png)
+    ![证书下载链接](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
@@ -141,13 +130,13 @@ ms.locfileid: "76991899"
 
 ## <a name="configure-eab-navigate-sso"></a>配置 EAB Navigate SSO
 
-若要在 **EAB Navigate** 端配置单一登录，需要将下载的“证书(原始)”以及从 Azure 门户复制的相应 URL 发送给 [EAB Navigate 支持团队](mailto:jmahoney@eab.com)。  他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **EAB Navigate** 端配置单一登录，需要将**应用联合元数据 URL** 发送给 [EAB Navigate 支持团队](mailto:EABTechSupport@eab.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-eab-navigate-test-user"></a>创建 EAB Navigate 测试用户
 
-在本部分，你将在 EAB Navigate 中创建名为 B.Simon 的用户。 在 [EAB Navigate 支持团队](mailto:jmahoney@eab.com)的配合下，将用户添加到 EAB Navigate 平台。 使用单一登录前，必须先创建并激活用户。
+在本部分，你将在 EAB Navigate 中创建名为 B.Simon 的用户。 在 [EAB Navigate 支持团队](mailto:EABTechSupport@eab.com)的配合下，将用户添加到 EAB Navigate 平台。 使用单一登录前，必须先创建并激活用户。
 
-## <a name="test-sso"></a>测试 SSO 
+## <a name="test-sso"></a>测试 SSO
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 

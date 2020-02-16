@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 08459238173b379280cb513ccb3242e4f15ef0bc
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 85f2d671e53592fbe2a543fade43c0bc3e6f47e1
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928190"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156211"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "75928190"
 
 1. 在此新文件中，将字符串 `YourSubscriptionKey` 替换为你的语音服务订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)（例如，免费试用版订阅的 `westus`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“语音 SDK 参数”（例如，对于免费试用版订阅，为 `westus`）。
 
 > [!NOTE]
 > 语音 SDK 将默认使用 en-us 作为语言进行识别。若要了解如何选择源语言，请参阅[指定语音转文本的源语言](../../../../how-to-specify-source-language.md)。

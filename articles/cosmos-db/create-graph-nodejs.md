@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
-ms.openlocfilehash: 966dfbf0280351c605e6dc20fc65178aee83d099
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 7ab259886409610fc89c35f4c96c9babb977b44d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735250"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061765"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 Node.js 应用程序
 
@@ -26,17 +26,12 @@ ms.locfileid: "68735250"
 > * [PHP](create-graph-php.md)
 >  
 
-Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快速创建和查询文档、键/值和图形数据库，所有这些都受益于 Azure Cosmos DB 核心的全球分布和水平缩放功能。 
+在本快速入门中，你将通过 Azure 门户创建和管理 Azure Cosmos DB Gremlin（图形）API 帐户，并使用从 GitHub 克隆的 Node.js 应用来添加数据。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
-本快速入门演示如何使用 Azure 门户创建 Azure Cosmos DB [Gremlin API](graph-introduction.md) 帐户、数据库和图。 然后使用开放源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序生成并运行控制台应用。
-
-## <a name="prerequisites"></a>先决条件
-
-在运行此示例之前，必须具备以下先决条件：
-* [Node.js](https://nodejs.org/en/) 版本 v0.10.29 或更高版本
-* [Git](https://git-scm.com/)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+## <a name="prerequisites"></a>必备条件
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 
+- [Node.js 0.10.29+](https://nodejs.org/)。
+- [Git](https://git-scm.com/downloads)。
 
 ## <a name="create-a-database-account"></a>创建数据库帐户
 
@@ -74,7 +69,9 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 此步骤是可选的。 如果有意了解如何使用代码创建数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-以下代码片段全部摘自 app.js 文件。
+以下代码片段全部摘自 *app.js* 文件。
+
+此控制台应用使用开源 [Gremlin Node.js](https://www.npmjs.com/package/gremlin) 驱动程序。
 
 * 将创建 Gremlin 客户端。
 
@@ -97,7 +94,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
     ```
 
-  配置均位于 `config.js` 中，后者可在[以下部分](#update-your-connection-string)中编辑。
+  配置均位于 *config.js* 中，可以在[以下部分](#update-your-connection-string)中编辑该文件。
 
 * 将定义一系列函数以执行不同 Gremlin 操作。 以下是其中一个函数：
 
@@ -151,15 +148,15 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
-1. 打开 config.js 文件。 
+1. 打开 *config.js* 文件。 
 
-2. 在 config.js 中，使用 Azure 门户的“概述”页中的“Gremlin URI”值填写 `config.endpoint` 密钥。   
+2. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“概述”页面中的“Gremlin 终结点”值填写 `config.endpoint` 密钥。   
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
+    ![在 Azure 门户的“概述”页面中，查看并复制访问密钥](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. 在 config.js 中，使用 Azure 门户“密钥”页中的“主密钥”值填充 config.primaryKey 值。   
+3. 在 *config.js* 中，使用 Azure 门户中你的 Cosmos DB 帐户的“密钥”页面中的“主密钥”值填写 config.primaryKey 值。   
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -167,7 +164,7 @@ Azure Cosmos DB 是 Microsoft 全球分布的多模型数据库服务。 可快�
 
 4. 输入数据库名称和图形（容器）名称作为 config.database 和 config.collection 的值。 
 
-下面举例说明了完成的 config.js 文件是什么样子：
+下面的示例展示了完成的 *config.js* 文件应该是什么样子的：
 
 ```javascript
 var config = {}
@@ -183,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>运行控制台应用
 
-1. 打开终端窗口，更改（通过 `cd` 命令）为项目中包括的 package.json 文件的安装目录。
+1. 打开一个终端窗口，切换到（通过 `cd` 命令）项目中包括的 *package.json* 文件的安装目录。
 
 2. 运行 `npm install`，安装所需的 npm 模块，包括 `gremlin`。
 
@@ -209,7 +206,7 @@ module.exports = config;
 
 ## <a name="next-steps"></a>后续步骤
 
-通过本文，已了解如何创建 Azure Cosmos DB 帐户、使用数据资源管理器创建图形和运行应用。 现可使用 Gremlin 生成更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本文中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Node.js 应用来向图形中添加数据。 现可使用 Gremlin 生成更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

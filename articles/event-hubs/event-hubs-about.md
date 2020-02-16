@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: e8a91647d7532a9904901c247bb0b4096ffa0a1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314421"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161692"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中心 — 大数据流式处理平台和事件引入服务
 Azure 事件中心是大数据流式处理平台和事件引入服务。 它可以每秒接收和处理数百万个事件。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到事件中心的数据。
@@ -61,7 +61,7 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 [Apache Kafka 生态系统的事件中心](event-hubs-for-kafka-ecosystem-overview.md)可让 [Apache Kafka（1.0 和更高版本）](https://kafka.apache.org/)客户端和应用程序与事件中心通信。 你无需设置、配置和管理自己的 Kafka 群集。
 
-借助支持各种[语言（.NET、Java、Python、Go、Node.js）](https://github.com/Azure/azure-event-hubs)的丰富生态系统，可以从事件中心轻松开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
+借助各种[语言（.NET、Java、Python、Go、JavaScript）](https://github.com/Azure/azure-event-hubs)提供的广泛生态系统，可以轻松地从事件中心开始处理流。 所有支持的客户端语言提供低级别集成。 该生态系统还为你提供了与 Azure 服务（如 Azure 流分析和 Azure Functions）的无缝集成，使你能够构建无服务器体系结构。
 
 ## <a name="key-architecture-components"></a>重要的体系结构组件
 事件中心包含以下[关键组件](event-hubs-features.md)：
@@ -81,11 +81,10 @@ Azure 事件中心还能与 [Azure Functions](/azure/azure-functions/) 集成，
 
 要开始使用事件中心，请参阅“发送和接收事件”教程  ：
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C（仅发送）](event-hubs-c-getstarted-send.md)
 - [Apache Storm（仅接收）](event-hubs-storm-getstarted-receive.md)
