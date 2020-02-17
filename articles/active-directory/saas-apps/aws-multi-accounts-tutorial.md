@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195901"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>教程：Azure Active Directory 与多个 Amazon Web Services (AWS) 帐户的集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "74195901"
 
 请注意，不建议使用此方法的原因如下：
 
-* 需要使用 Graph 浏览器方法来修补分配给应用的所有角色。 不建议使用清单文件方法。
+* 必须使用 Microsoft Graph 资源管理器方法将所有角色修补到应用中。 不建议使用清单文件方法。
 
 * 我们了解到，客户反映在为单个 AWS 应用添加约 1200 个应用角色后，在应用上执行任何操作都会开始引发与大小相关的错误。 应用程序对象的大小有硬性限制。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74195901"
 
 * 所有 AWS 帐户将都使用相同的联合元数据 XML 文件，并且在证书滚动更新时，必须同时在所有 AWS 帐户上进行大量的操作来更新证书
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要配置 Azure AD 与 Amazon Web Services (AWS) 的集成，需要具有以下项：
 
@@ -58,7 +58,7 @@ ms.locfileid: "74195901"
 * 启用了 Amazon Web Services (AWS) 单一登录的订阅
 
 > [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
+> 不建议使用生产环境测试本教程中的步骤。
 
 测试本教程中的步骤应遵循以下建议：
 
@@ -87,7 +87,7 @@ ms.locfileid: "74195901"
 
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新建应用程序”按钮](common/add-new-app.png)
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
 4. 在搜索框中，键入“Amazon Web Services (AWS)”，从结果面板中选择“Amazon Web Services (AWS)”，然后单击“添加”按钮添加该应用程序。
 
@@ -105,7 +105,7 @@ ms.locfileid: "74195901"
 
 可通过将 Azure AD 中“用户名”的值指定为 Amazon Web Services (AWS) 中“用户名”的值来建立此链接关系。
 
-若要配置和测试 Amazon Web Services (AWS) 的 Azure AD 单一登录，需要完成以下构建基块：
+若要配置并测试 Amazon Web Services (AWS) 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 Amazon Web Services (AWS) 单一登录](#configure-amazon-web-services-aws-single-sign-on)** - 在应用程序端配置单一登录设置。
@@ -121,7 +121,7 @@ ms.locfileid: "74195901"
 
     ![配置单一登录链接](common/select-sso.png)
 
-2. 在“选择单一登录方法”对话框中，选择 SAML/WS-Fed 模式以启用单一登录。
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
     ![单一登录选择模式](common/select-saml-option.png)
 
@@ -131,11 +131,11 @@ ms.locfileid: "74195901"
 
 4. 在“基本 SAML 配置”部分中，用户不必执行任何步骤，因为该应用已经与 Azure 预先集成。
 
-    ![图像](common/preintegrated.png)
+    ![image](common/preintegrated.png)
 
 5. Amazon Web Services (AWS) 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性和声明”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性和声明”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -145,11 +145,11 @@ ms.locfileid: "74195901"
     | 角色            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | “提供介于 900 秒（15 分钟）到 43200 秒（12 小时）之间的值” |  https://aws.amazon.com/SAML/Attributes |
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“添加新声明”以打开“管理用户声明”对话框。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](common/new-save-attribute.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![image](common/new-attribute-details.png)
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
@@ -161,7 +161,7 @@ ms.locfileid: "74195901"
 
     f. 单击“确定”
 
-    g. 单击“ **保存**”。
+    g. 单击“保存”。
 
 7. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“联合元数据 XML”并将其保存在计算机上。
 
@@ -187,7 +187,7 @@ ms.locfileid: "74195901"
 
     ![配置单一登录对话框][14]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 对于“提供者类型”，请选择“SAML”。
+    a. 对于“提供者类型”，请选择“SAML”。
 
     b. 在“提供者名称”文本框中，键入提供者名称（例如：*WAAD*）。
 
@@ -207,7 +207,7 @@ ms.locfileid: "74195901"
 
     ![配置单一登录信任][19]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
+    a. 在“选择可信实体的类型”下选择“SAML 2.0 联合身份验证”。
 
     b. 在“选择 SAML 2.0 提供程序”部分中，选择之前创建的 SAML 提供程序（例如：*WAAD*）
 
@@ -223,7 +223,7 @@ ms.locfileid: "74195901"
 
     ![配置单一登录审阅][34]
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在“角色名称”文本框中，输入你的角色名称。
+    a. 在“角色名称”文本框中，输入你的角色名称。
 
     b. 在“角色说明”文本框中，输入说明。
 
@@ -247,9 +247,9 @@ ms.locfileid: "74195901"
 
 16. 针对所有帐户中的所有角色执行上述步骤，并以 **<角色 ARN>,<受信任实体>** 的格式将其存储在记事本中。
 
-17. 在另一个窗口中打开 [Azure AD Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)。
+17. 在另一个窗口中打开[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
+    a. 使用租户的全局管理员/共同管理员凭据登录到 Graph 浏览器站点。
 
     b. 需要拥有足够的权限才能创建角色。 单击“修改权限”以获取所需的权限。
 
@@ -271,7 +271,7 @@ ms.locfileid: "74195901"
 
     f. 从提取的服务主体的列表中，获取需要修改的那一个。 还可使用 Ctrl+F 从列出的所有服务主体中搜索应用程序。 可以使用从“Azure AD 属性”页复制的“对象 ID”运行以下查询，转到相应的服务主体。
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`。
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` 列中的一个值匹配。
 
     ![Graph 浏览器对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
@@ -325,9 +325,9 @@ ms.locfileid: "74195901"
     > [!Note]
     > 对于修补操作，只能在 **msiam_access** 之后添加新角色。 此外，可以根据组织的需要添加任意数量的角色。 Azure AD 将在 SAML 响应中将这些角色的**值**作为声明值进行发送。
 
-    j. 返回到 Graph 浏览器，将方法从 **GET** 更改为 **PATCH**。 通过更新 appRoles 属性（类似于上面示例中所示的属性）来修补服务主体对象以获取所需的角色。 单击“运行查询”执行此修补操作。 随后会显示一条成功消息，确认已创建 Amazon Web Services 应用程序的角色。
+    j. 返回 Microsoft Graph 资源管理器，并将方法从 " **GET** " 更改为 " **PATCH**"。 通过更新 appRoles 属性（类似于上面示例中所示的属性）来修补服务主体对象以获取所需的角色。 单击“运行查询”执行此修补操作。 随后会显示一条成功消息，确认已创建 Amazon Web Services 应用程序的角色。
 
-    ![Graph 浏览器对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    !["Microsoft Graph 资源管理器" 对话框](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 18. 使用更多角色修补服务主体后，可将用户/组分配到相应的角色。 可通过转到门户并导航到 Amazon Web Services 应用程序来完成此操作。 在顶部单击“用户和组”选项卡。
 
@@ -349,7 +349,7 @@ ms.locfileid: "74195901"
 
 ### <a name="test-single-sign-on"></a>测试单一登录
 
-在本部分中，将使用访问面板测试 Azure AD 单一登录配置。
+在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
 在访问面板中单击“Amazon Web Services (AWS)”磁贴时，应会看到 Amazon Web Services (AWS) 应用程序页，其中包含用于选择角色的选项。
 
@@ -363,7 +363,7 @@ ms.locfileid: "74195901"
 
 ## <a name="additional-resources"></a>其他资源
 
-* [如何使用 MS Graph Api 配置预配](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [如何使用 Microsoft Graph Api 配置预配](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 

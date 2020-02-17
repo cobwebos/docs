@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207190"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367806"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
 
@@ -112,7 +112,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory（支持 [Azure AD 图形 API 默认属性](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)和自定义目录扩展）
+- Azure Active Directory （[Microsoft Graph REST API 1.0 版引用](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)和自定义目录扩展支持）
 - 支持 [SCIM 2.0](https://tools.ietf.org/html/rfc7643) 的应用（需要添加[核心架构](https://tools.ietf.org/html/rfc7643)中定义的属性）
 
 > [!NOTE]
@@ -133,7 +133,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 - **多值?** -特性是否支持多个值。
 - **区分大小写?** -是否以区分大小写的方式对属性值进行求值。
 - **API 表达式**-不使用，除非通过特定预配连接器（如 Workday）的文档的指示执行此操作。
-- **被引用的对象特性**-如果它是引用类型属性，则可以使用此菜单选择包含与属性关联的值的目标应用程序中的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)进行编辑。
+- **被引用的对象特性**-如果它是引用类型属性，则可以使用此菜单选择包含与属性关联的值的目标应用程序中的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[MICROSOFT GRAPH API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)进行编辑。
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>将自定义扩展属性预配到符合 SCIM 的应用程序
 SCIM RFC 定义核心用户和组架构，同时允许对架构进行扩展，以满足应用程序的需求。 向 SCIM 应用程序添加自定义属性：

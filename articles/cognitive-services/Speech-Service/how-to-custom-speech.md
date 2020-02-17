@@ -3,19 +3,19 @@ title: 自定义语音语音服务入门
 titleSuffix: Azure Cognitive Services
 description: 自定义语音是一组联机工具，可用于评估和改进我们的应用程序、工具和产品的语音到文本的准确性。 开始使用的只是一些测试音频文件。 请按照以下链接开始创建自定义语音到文本体验。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806005"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368330"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -60,6 +60,9 @@ ms.locfileid: "74806005"
 数据、模型、测试和终结点等内容组织到[自定义语音门户](https://speech.microsoft.com/customspeech)中的**项目**中。 每个项目都是特定于域和国家/地区的。 例如，你可以为在美国中使用英语的呼叫中心创建项目。
 
 若要创建第一个项目，请选择 "**语音到文本"/"自定义" 语音**，然后单击 "**新建项目**"。 按照向导提供的说明创建项目。 创建项目后，应该会看到四个选项卡：**数据**、**测试**、**定型**和**部署**。 使用[后续步骤](#next-steps)中提供的链接来了解如何使用各个选项卡。
+
+> [!IMPORTANT]
+> [自定义语音门户](https://aka.ms/custom-speech)最近已更新！ 如果使用 CRI 门户或 Api 中的数据、模型、测试和已发布终结点创建了以前的项目，则需要在新门户中创建一个新项目以连接到这些旧实体。
 
 ## <a name="next-steps"></a>后续步骤
 

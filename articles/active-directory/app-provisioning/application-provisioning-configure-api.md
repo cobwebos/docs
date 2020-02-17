@@ -1,6 +1,6 @@
 ---
-title: 使用 MS Graph Api 配置预配-Azure Active Directory |Microsoft Docs
-description: 需要为应用程序的多个实例设置预配？ 了解如何通过使用 MS Graph Api 来自动完成自动预配配置来节省时间。
+title: 使用 Microsoft Graph Api 配置预配-Azure Active Directory |Microsoft Docs
+description: 需要为应用程序的多个实例设置预配？ 了解如何通过使用 Microsoft Graph Api 来自动完成自动预配配置来节省时间。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067183"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367825"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 配置预配
 

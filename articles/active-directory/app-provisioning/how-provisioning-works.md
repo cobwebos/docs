@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121366"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367779"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -62,7 +62,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 对于这些映射，你必须编写一个类似脚本的表达式，以便将用户的数据转换为 SaaS 应用程序更易接受的格式。 有关详细信息，请参阅[编写属性映射的表达式](functions-for-customizing-application-data.md)。
 
-## <a name="scoping"></a>作用域 
+## <a name="scoping"></a>Scoping 
 ### <a name="assignment-based-scoping"></a>基于分配的作用域
 
 对于从 Azure AD 到 SaaS 应用程序的出站预配，依赖于[用户或组分配](../manage-apps/assign-user-or-group-access-portal.md)是确定哪些用户处于预配范围内的最常见方法。 由于用户分配还用于启用单一登录，因此，可以使用相同的方法来管理访问和设置。 基于分配的作用域不适用于入站预配方案，例如 Workday 和 Successfactors。
@@ -91,7 +91,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>预配周期：初始和增量
 
-如果 Azure AD 是源系统，预配服务将使用 [Azure AD 图形 API 的差异查询功能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query)来监视用户和组。 预配服务对源系统和目标系统运行初始循环，后跟定期增量循环。
+当 Azure AD 是源系统时，预配服务使用 "[使用增量查询" 跟踪 Microsoft Graph 数据中的更改](https://docs.microsoft.com/graph/delta-query-overview)，以监视用户和组。 预配服务对源系统和目标系统运行初始循环，后跟定期增量循环。
 
 ### <a name="initial-cycle"></a>初始周期
 
@@ -142,8 +142,8 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 预配服务会按[特定于每个应用程序的教程](../saas-apps/tutorial-list.md)中定义的时间间隔，无限期地继续运行后向后增量循环。 增量循环将继续，直到发生以下事件之一：
 
-- 使用 Azure 门户或使用相应的图形 API 命令手动停止了该服务 
-- 使用 Azure 门户中的 "**清除状态" 和 "重新启动**" 选项，或使用适当的图形 API 命令触发新初始周期。 此操作会清除所有存储的水印，并导致重新评估所有源对象。
+- 使用 Azure 门户或使用适当的 Microsoft Graph API 命令手动停止了该服务。
+- 使用 Azure 门户中的 "**清除状态" 和 "重新启动**" 选项，或使用适当的 Microsoft Graph API 命令触发新的初始周期。 此操作会清除所有存储的水印，并导致重新评估所有源对象。
 - 由于属性映射或范围筛选器发生更改，将触发新的初始周期。 此操作还会清除所有存储的水印，并导致重新评估所有源对象。
 - 预配过程将进入隔离区（请参阅下文），因为其错误率较高，并且保持隔离时间超过四周。 在此情况下，该服务会自动禁用。
 

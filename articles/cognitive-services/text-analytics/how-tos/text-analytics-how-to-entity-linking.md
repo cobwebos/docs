@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137974"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367634"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -28,13 +28,15 @@ ms.locfileid: "77137974"
 
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-命名实体识别（NER）是一种能够识别文本中的不同实体并将它们分类为预定义的类或类型的能力。 例如：人员、地点和组织。
+命名实体识别（NER）是一种能够识别文本中的不同实体并将它们分类为预定义的类或类型（如： person、location、event、product 和 organization）的功能。  
+
+从版本3开始，文本分析 API 的此功能还可以标识个人和敏感信息类型，例如：电话号码、社会安全号码、电子邮件地址和银行帐号。  确定这些实体有助于对敏感文档进行分类，并编校个人信息。
 
 ## <a name="named-entity-recognition-versions-and-features"></a>命名实体识别版本和功能
 
 文本分析 API 提供了两个版本的命名实体识别-v2 和 v3。 版本3（公共预览版）在可检测和分类的实体中提供了更多详细信息。
 
-| 功能                                                         | NER v2 | NER v3 |
+| Feature                                                         | NER v2 | NER v3 |
 |-----------------------------------------------------------------|--------|--------|
 | 用于单个请求和批量请求的方法                          | X      | X      |
 | 跨多个类别的基本实体识别              | X      | X      |
@@ -45,7 +47,7 @@ ms.locfileid: "77137974"
 有关信息，请参阅[语言支持](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition)。
 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-预览版](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="entity-types"></a>实体类型
 
@@ -72,7 +74,7 @@ NER
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
 
 ### <a name="entity-types"></a>实体类型
 
@@ -81,24 +83,24 @@ NER
 
 | 类型  | 子类型 | 示例 |
 |:-----------   |:------------- |:---------|
-| Person        | 暂无\*         | “Jeff”、“Bill Gates”     |
-| Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
-| 单位  | 暂无\*         | “Microsoft”   |
+| 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
+| 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
+| 组织  | 暂无\*         | “Microsoft”   |
 | 数量      | Number        | “6”、“six”     |
 | 数量      | 百分比    | “50%”、“fifty percent”|
 | 数量      | Ordinal       | “2nd”、“second”     |
-| 数量      | Age           | “90 day old”、“30 years old”    |
+| 数量      | 年龄           | “90 day old”、“30 years old”    |
 | 数量      | 货币      | “$10.99”     |
-| 数量      | Dimension     | “10 miles”、“40 cm”     |
+| 数量      | 维度     | “10 miles”、“40 cm”     |
 | 数量      | 温度   | “32 degrees”    |
 | DateTime      | 暂无\*         | “6:30PM February 4, 2012”      |
-| DateTime      | 日期          | “May 2nd, 2017”、“05/02/2017”   |
+| DateTime      | Date          | “May 2nd, 2017”、“05/02/2017”   |
 | DateTime      | 时间          | “8am”、“8:00”  |
 | DateTime      | DateRange     | “May 2nd to May 5th”    |
 | DateTime      | TimeRange     | “6pm to 7pm”     |
-| DateTime      | 持续时间      | “1 minute and 45 seconds”   |
-| DateTime      | 设置           | “every Tuesday”     |
-| URL           | 暂无\*         | "https：\//www.bing.com"    |
+| DateTime      | Duration      | “1 minute and 45 seconds”   |
+| DateTime      | Set           | “every Tuesday”     |
+| 代码           | 暂无\*         | "https：\//www.bing.com"    |
 | 电子邮件         | 暂无\*         | "support@contoso.com" |
 | 美国电话号码  | 暂无\*         | （仅限美国电话号码）"（312） 555-0176" |
 | IP 地址    | 暂无\*         | 10.0.0.100 |
@@ -115,7 +117,7 @@ NER
 
 ## <a name="sending-a-rest-api-request"></a>发送 REST API 请求
 
-### <a name="preparation"></a>准备
+### <a name="preparation"></a>准备工作
 
 你必须具有以下格式的 JSON 文档： ID、文本、语言。
 
@@ -128,7 +130,7 @@ NER
 > [!NOTE]
 > 可以在 azure 门户中找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”页上的“资源管理”下。 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-预览版](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
 
 [命名实体识别 v3 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -142,7 +144,7 @@ NER
 实体链接
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
 
 [命名实体识别（NER） v2 引用](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
@@ -240,7 +242,7 @@ NER
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[版本2。1](#tab/version-2)
+#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
 
 ### <a name="example-ner-v2-response"></a>示例 NER v2 响应
 ```json
@@ -279,7 +281,7 @@ NER
 
 ---
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 

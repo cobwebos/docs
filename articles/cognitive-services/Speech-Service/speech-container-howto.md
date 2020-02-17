@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086993"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367749"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -26,20 +26,20 @@ ms.locfileid: "77086993"
 > [!IMPORTANT]
 > 所有语音容器当前均作为[公共 "封闭" 预览版](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分提供。 语音容器推出正式发行版（GA）时将发出一则通知。
 
-| Functions | 功能 | 最近 |
+| 函数 | 功能 | 最近 |
 |--|--|--|
 | 语音转文本 | 转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
 | 自定义语音到文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
-| 文本到语音转换 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
+| 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 使用语音容器之前的先决条件如下：
 
-| 必需 | 目标 |
+| 必选 | 目的 |
 |--|--|
 | Docker 引擎 | 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br> |
 | 熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。 |
@@ -75,25 +75,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 # <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
 
-| 容器 | 最低 | 建议 |
+| 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
 # <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
 
-| 容器 | 最低 | 建议 |
+| 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 自定义语音到文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
 # <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
 
-| 容器 | 最低 | 建议 |
+| 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
-| 文本到语音转换 | 单核，2 GB 内存 | 2核，3 GB 内存 |
+| 文本转语音 | 单核，2 GB 内存 | 2核，3 GB 内存 |
 
 # <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
 
-| 容器 | 最低 | 建议 |
+| 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 自定义文本到语音转换 | 单核，2 GB 内存 | 2核，3 GB 内存 |
 
@@ -126,7 +126,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 | 容器 | 存储库 |
 |-----------|------------|
-| 文本到语音转换 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
+| 文本转语音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
 
@@ -261,7 +261,16 @@ ApiKey={API_KEY}
 
 # <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
 
-*自定义语音到文本*的容器依赖于自定义语音模型。 自定义模型必须使用[自定义语音门户](https://speech.microsoft.com/customspeech)进行[训练](how-to-custom-speech-train-model.md)。 运行容器需要自定义语音**模型 ID** 。 可在自定义语音门户的 "**培训**" 页找到此功能。 在自定义语音门户中，导航到**定型**页面并选择模型。
+*自定义语音到文本*的容器依赖于自定义语音模型。 自定义模型必须使用[自定义语音门户](https://speech.microsoft.com/customspeech)进行[训练](how-to-custom-speech-train-model.md)。
+
+> [!IMPORTANT]
+> 需要从以下模型版本之一训练自定义语音模型：
+> * **20181201（v 3.3 统一）**
+> * **20190520（v 4.14 统一）**
+> * **20190701（v 4.17 统一）**<br>
+> 自定义语音训练容器模型 ![](media/custom-speech/custom-speech-train-model-container-scoped.png)
+
+运行容器需要自定义语音**模型 ID** 。 可在自定义语音门户的 "**培训**" 页找到此功能。 在自定义语音门户中，导航到**定型**页面并选择模型。
 <br>
 
 ![自定义语音培训页](media/custom-speech/custom-speech-model-training.png)
@@ -414,7 +423,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文介绍了用于下载、安装和运行语音容器的概念和工作流。 综上所述：
 
