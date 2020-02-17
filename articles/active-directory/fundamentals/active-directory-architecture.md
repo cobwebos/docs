@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0511f008a3d5bc39a0fb2d9406d33b72dbede6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532942"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368066"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什么是 Azure Active Directory 体系结构？
 
@@ -100,7 +100,7 @@ Azure AD 跨数据中心运行，具有以下特征：
 
 Azure AD 为面向次要副本的应用程序提供读写一致性，为此，它会将写入操作路由到主要副本，然后以异步方式将这些写入操作拉回到次要副本。
 
-使用 Azure AD 图形 API 的应用程序写入操作经过抽象化，可与目录副本保持相关性，实现读写一致性。 Azure AD Graph 服务维护一个逻辑会话，该会话与用于读取的辅助副本关联;在 "副本令牌" 中捕获关系，关系图服务在辅助副本数据中心使用分布式缓存进行缓存。 然后，此令牌可用于同一个逻辑会话中的后续操作。 若要继续使用同一个逻辑会话，必须将后续请求路由到同一个 Azure AD datacenter。 如果目录客户端请求路由到多个 Azure AD 数据中心，则无法继续逻辑会话;如果发生这种情况，则客户端具有多个具有独立读写一致性的逻辑会话。
+使用 Azure AD 的 Microsoft Graph API 的应用程序写入将从保持与目录副本的相关性进行抽象，以实现读写一致性。 Microsoft Graph API 服务维护一个逻辑会话，该会话与用于读取的辅助副本关联;使用辅助副本数据中心内的分布式缓存，在 "副本标记" 中捕获关联。 然后，此令牌可用于同一个逻辑会话中的后续操作。 若要继续使用同一个逻辑会话，必须将后续请求路由到同一个 Azure AD datacenter。 如果目录客户端请求路由到多个 Azure AD 数据中心，则无法继续逻辑会话;如果发生这种情况，则客户端具有多个具有独立读写一致性的逻辑会话。
 
  >[!NOTE]
  >写入操作立即复制到逻辑会话读取操作所颁发到的次要副本。

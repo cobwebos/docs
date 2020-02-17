@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480107"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368151"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B 最佳实践
 本文包含 Azure Active Directory （Azure AD）中的企业到企业（B2B）协作的建议和最佳实践。
@@ -33,7 +33,7 @@ ms.locfileid: "75480107"
 | 强制执行多重身份验证（MFA）的条件性访问策略 | 建议在要与合作伙伴 B2B 用户共享的应用上强制实施 MFA 策略。 这样，无论合作伙伴组织是否使用 MFA，都将对租户中的应用一致地强制执行 MFA。 请参阅[B2B 协作用户的条件性访问](conditional-access.md)。 |
 | 如果要强制实施基于设备的条件访问策略，请使用排除列表来允许访问 B2B 用户 | 如果在组织中启用了基于设备的条件性访问策略，则 B2B 来宾用户设备将被阻止，因为它们不受组织的管理。 你可以创建包含特定合作伙伴用户的排除列表，将其从基于设备的条件访问策略中排除。 请参阅[B2B 协作用户的条件性访问](conditional-access.md)。 |
 | 提供指向 B2B 来宾用户的直接链接时使用特定于租户的 URL | 作为邀请电子邮件的替代方法，你可以向来宾授予你的应用或门户的直接链接。 此直接链接必须是特定于租户的，这意味着它必须包含租户 ID 或已验证的域，以便在你的租户中对来宾进行身份验证，共享应用位于该位置。 请参阅[用户的兑换体验](redemption-experience.md)。 |
-| 开发应用时，请使用 UserType 来确定来宾用户体验  | 如果要开发应用程序，并且想要为租户用户和来宾用户提供不同的体验，请使用 UserType 属性。 令牌中当前未包括 UserType 声明。 应用程序应使用图形 API 来查询目录，以便用户获取其 UserType。 |
+| 开发应用时，请使用 UserType 来确定来宾用户体验  | 如果要开发应用程序，并且想要为租户用户和来宾用户提供不同的体验，请使用 UserType 属性。 令牌中当前未包括 UserType 声明。 应用程序应使用 Microsoft Graph API 来查询目录，以便用户获取其 UserType。 |
 | 仅当用户与组织之间的关系发生更改时*才*更改 UserType 属性 | 尽管可以使用 PowerShell 将用户的 UserType 属性从成员转换为来宾（反之亦然），但仅当用户与组织之间的关系发生更改时，才应更改此属性。 请参阅[B2B 来宾用户的属性](user-properties.md)。|
 
 ## <a name="next-steps"></a>后续步骤

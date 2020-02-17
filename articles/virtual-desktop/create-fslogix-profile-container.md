@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483655"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368919"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
 
@@ -38,13 +38,13 @@ ms.locfileid: "74483655"
 
 - 设置和配置 Windows 虚拟桌面
 - 预配 Windows 虚拟桌面主机池
-- [启用 Azure NetApp 文件订阅](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [启用 Azure NetApp 文件订阅](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>设置你的 Azure NetApp 文件帐户
 
 若要开始，需要设置 Azure NetApp 文件帐户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
+1. 登录 [Azure 门户](https://portal.azure.com)。 请确保你的帐户具有参与者或管理员权限。
 
 2. 选择搜索栏右侧的 " **Azure Cloud Shell" 图标**以打开 Azure Cloud Shell。
 
@@ -166,7 +166,7 @@ ms.locfileid: "74483655"
 
 5. 选中 "**我同意许可条款和条件**" 旁边的复选框。
 
-6. 选择“安装”。
+6. 选择**安装**。
 
 7. 导航到**C：\\Program Files\\FSLogix\\应用**以确认安装的代理。
 

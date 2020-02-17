@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031742"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365209"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -188,7 +188,7 @@ Exception: A task was canceled.
 
 可以通过将 Azure 模块更新到最新版本来解决此错误。
 
-在自动化帐户中，单击“模块”，然后单击“更新 Azure 模块”。 更新需要花费大约 15 分钟，完成后，重新运行失败的 Runbook。 若要了解有关更新模块的详细信息，请参阅[在 Azure 自动化中更新 Azure 模块](../automation-update-azure-modules.md)。
+在自动化帐户中，单击 "**模块**"，然后单击 "**更新 Azure 模块**"。 更新需要花费大约 15 分钟，完成后，重新运行失败的 Runbook。 若要了解有关更新模块的详细信息，请参阅[在 Azure 自动化中更新 Azure 模块](../automation-update-azure-modules.md)。
 
 ## <a name="runbook-auth-failure"></a>方案： Runbook 在处理多个订阅时失败
 
@@ -254,7 +254,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 如果模块是 Azure 模块，请参阅[如何更新 Azure 自动化中的 Azure PowerShell 模块](../automation-update-azure-modules.md)，了解如何更新自动化帐户中的模块。
 
-如果它是一个单独的模块，请确保该模块已导入到自动化帐户中。
+如果它是一个单独的模块，请确保在自动化帐户中导入了模块。
 
 ## <a name="job-attempted-3-times"></a>方案： runbook 作业启动已尝试三次，但每次都无法启动
 
@@ -457,7 +457,7 @@ Runbook 作业失败并显示错误：
 下述解决方案中的任何一种都可以解决此问题：
 
 * 检查输入的 cmdlet 名称是否正确。
-* 请确保该 cmdlet 存在于自动化帐户中，并且不存在冲突。 要验证 cmdlet 是否存在，请在编辑模式下打开 Runbook，并搜索希望在库中找到的 cmdlet，或者运行 `Get-Command <CommandName>`。 验证该 cmdlet 可供帐户使用且与其他 cmdlet 或 runbook 不存在名称冲突以后，可将其添加到画布上，并确保使用的是 runbook 中的有效参数集。
+* 确保 cmdlet 存在于自动化帐户中，且没有冲突。 要验证 cmdlet 是否存在，请在编辑模式下打开 Runbook，并搜索希望在库中找到的 cmdlet，或者运行 `Get-Command <CommandName>`。 验证该 cmdlet 可供帐户使用且与其他 cmdlet 或 runbook 不存在名称冲突以后，可将其添加到画布上，并确保使用的是 runbook 中的有效参数集。
 * 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 **ModuleName\CmdletName**。
 * 如果是在本地执行混合辅助角色组中的 runbook，则请确保模块和 cmdlet 已安装在托管混合辅助角色的计算机上。
 
@@ -569,53 +569,77 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 * 验证 nxautomationuser 帐户在 sudoers 文件中的配置。 请参阅[在混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>方案： Cmdlet 在 Azure 自动化中的 PnP PowerShell runbook 中失败
+
+### <a name="issue"></a>问题
+
+当 runbook 直接将 PnP PowerShell 生成的对象写入 Azure 自动化输出时，cmdlet 输出无法流式传输到自动化。
+
+### <a name="cause"></a>原因
+
+此问题最常见的原因是 Azure 自动化处理调用 PnP PowerShell cmdlet 的 runbook，例如**pnplistitem**，而无需捕获返回对象。
+
+### <a name="resolution"></a>解决方法
+
+编辑脚本以将任何返回值分配给变量，使 cmdlet 不会尝试将整个对象写入标准输出。 脚本可以将输出流重定向到 cmdlet，如下所示。
+
+```azurecli
+  $null = add-pnplistitem
+```
+如果你的脚本分析了 cmdlet 输出，则该脚本必须将输出存储在一个变量中，然后操作变量，而不是只是对输出进行流式处理。
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>我的问题未在上面列出
 
 以下部分列出了其他常见错误以及支持文档，以帮助你解决问题。
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>混合 runbook 辅助角色不运行作业，或者没有响应
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>混合 runbook 辅助角色不运行作业，或者没有响应
 
 如果使用混合辅助角色而不是在 Azure 自动化中运行作业，可能需要对[混合辅助角色本身进行故障排除](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)。
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook 由于“无权限”或某个变动而失败
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook 由于“无权限”或某个变动而失败
 
 运行方式帐户可能没有与当前帐户相同的权限。 确保运行方式帐户有权访问脚本中使用的[任何资源](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
 
 * 如果 runbook 以前执行但停止，请确保[运行方式帐户](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)未过期。
 * 如果使用 webhook 启动 runbook，请确保[webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)未过期。
 
-## <a name="issues-passing-parameters-into-webhooks"></a>将参数传递到 webhook 的问题
+### <a name="issues-passing-parameters-into-webhooks"></a>将参数传递到 webhook 的问题
 
 有关将参数传递到 webhook 的帮助，请参阅[从 Webhook 启动 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
 
-## <a name="issues-using-az-modules"></a>使用 Az 模块时出现问题
+### <a name="issues-using-az-modules"></a>使用 Az 模块时出现问题
 
-不支持在同一自动化帐户中同时使用 Az 模块和 AzureRM 模块。 有关详细信息，请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)了解更多详细信息。
+不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 有关详细信息，请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)了解更多详细信息。
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中的行为不一致
+### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中的行为不一致
 
 按照[runbook 执行](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior)中的指导进行操作，以避免出现并发作业问题、创建多个资源或在 runbook 中进行其他计时敏感逻辑。
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook 失败，并出现错误 "无权限"、"已禁止" （403）或 "某些变体"
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Runbook 失败，并出现错误 "无权限"、"已禁止" （403）或 "某些变体"
 
 运行方式帐户可能没有与当前帐户相同的权限。 确保运行方式帐户有权访问脚本中使用的[任何资源](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
 
 * 如果 runbook 以前执行但停止，请确保运行方式帐户未过期。 请参阅[认证续订](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)。
 * 如果使用 webhook 启动 runbook，请确保 webhook[未过期](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)。
 
-## <a name="passing-parameters-into-webhooks"></a>将参数传递到 webhook
+### <a name="passing-parameters-into-webhooks"></a>将参数传递到 webhook
 
 有关将参数传递到 webhook 的帮助，请参阅[从 Webhook 启动 runbook](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)。
 
-## <a name="using-az-modules"></a>使用 Az 模块
+### <a name="using-az-modules"></a>使用 Az 模块
 
-不支持在同一自动化帐户中同时使用 Az 模块和 AzureRM 模块。 请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)。
+不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)。
 
-## <a name="using-self-signed-certificates"></a>使用自签名证书
+### <a name="using-self-signed-certificates"></a>使用自签名证书
 
 若要使用自签名证书，请参阅[创建新证书](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)。
 

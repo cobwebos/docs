@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: de875ca9db9716e59c3c6efc0d7fb34e31f0c1d2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605857"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367542"
 ---
-# <a name="connect-with-the-android-client"></a>与 Android 客户端连接
+# <a name="connect-with-the-android-client"></a>使用 Android 客户端进行连接
 
 > 适用于： Android 4.1 及更高版本、Chromebook 和 ChromeOS 53 及更高版本。
 
@@ -49,4 +49,4 @@ ms.locfileid: "73605857"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何使用 Android 客户端的详细信息，请查看[android 客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-android)。
+若要了解有关如何使用 Android 客户端的详细信息，请查看[android 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-android/)。

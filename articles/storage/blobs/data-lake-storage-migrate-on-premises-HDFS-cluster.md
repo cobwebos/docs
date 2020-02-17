@@ -3,17 +3,17 @@ title: 通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 description: 将数据从本地 HDFS 存储迁移到 Azure 存储
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990957"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368671"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
@@ -25,19 +25,19 @@ ms.locfileid: "76990957"
 > * 准备迁移数据。
 > * 将数据复制到 Data Box 或 Data Box Heavy 设备。
 > * 将设备寄回给 Microsoft。
-> * 将数据移动到 Data Lake Storage Gen2。
+> * 应用对文件和目录的访问权限（仅 Data Lake Storage Gen2）
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成迁移需要执行以下任务。
 
-* 两个存储帐户;已在其上启用分层命名空间的，而另一个不包含分层命名空间。
+* 一个 Azure 存储帐户。
 
 * 包含源数据的本地 Hadoop 群集。
 
 * [Azure Data Box 设备](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [排序 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 对设备进行排序时，请记住选择**未**在其上启用分层命名空间的存储帐户。 这是因为 Data Box 设备尚不支持直接引入到 Azure Data Lake Storage Gen2 中。 需要将复制到存储帐户，然后再执行 ADLS Gen2 帐户中的第二个副本。 以下步骤提供了有关此操作的说明。
+  * [排序 Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
 
   * 将[Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)连接到本地网络。
 
@@ -173,36 +173,14 @@ ms.locfileid: "76990957"
 
     * 有关 Data Box Heavy 设备，请参阅[发运 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
 
-5. Microsoft 接收设备后，它将连接到数据中心网络，并将数据上传到指定的存储帐户（禁用了分层命名空间）。 针对所有数据都上载到 Azure 的 BOM 文件进行验证。 你现在可以将此数据移到 Data Lake Storage Gen2 的存储帐户。
+5. Microsoft 收到你的设备后，它将连接到数据中心网络，并且数据将上传到你在你放置设备顺序时指定的存储帐户。 针对所有数据都上载到 Azure 的 BOM 文件进行验证。 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>将数据移动到 Azure Data Lake Storage Gen2
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>应用对文件和目录的访问权限（仅 Data Lake Storage Gen2）
 
-已将数据导入到 Azure 存储帐户。 现在，你将数据复制到 Azure Data Lake 的存储帐户中，并将访问权限应用于文件和目录。
+已将数据导入到 Azure 存储帐户。 现在，将访问权限应用于文件和目录。
 
 > [!NOTE]
-> 如果使用 Azure Data Lake Storage Gen2 作为数据存储区，则需要执行此步骤。 如果只使用不带分层命名空间的 blob 存储帐户作为数据存储区，则可以跳过此部分。
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>将数据复制到 Azure Data Lake Storage 第2代帐户
-
-可以使用 Azure 数据工厂或基于 Azure 的 Hadoop 群集来复制数据。
-
-* 若要使用 Azure 数据工厂，请参阅[Azure 数据工厂将数据移动到 ADLS Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)。 请确保将**Azure Blob 存储**指定为源。
-
-* 若要使用基于 Azure 的 Hadoop 群集，请运行以下 DistCp 命令：
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * 将 `<source_account>` 和 `<dest_account>` 占位符替换为源和目标存储帐户的名称。
-
-    * 将 `<source_container>` 和 `<dest_container>` 占位符替换为源和目标容器的名称。
-
-    * 将 `<source_path>` 和 `<dest_path>` 占位符替换为源目录和目标目录路径。
-
-    * 将 `<source_account_key>` 占位符替换为包含数据的存储帐户的访问密钥。
-
-    此命令会将存储帐户中的数据和元数据复制到 Data Lake Storage Gen2 的存储帐户中。
+> 仅当使用 Azure Data Lake Storage Gen2 作为数据存储时，才需要执行此步骤。 如果只使用不带分层命名空间的 blob 存储帐户作为数据存储区，则可以跳过此部分。
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>为 Azure Data Lake Storage Gen2 帐户创建服务主体
 

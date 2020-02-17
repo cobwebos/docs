@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846141"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368640"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>使用 Azure 时序见解预览版塑造事件
 
 本文可帮助你为引入和最大限度地提高 Azure 时序见解预览查询的效率。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 考虑如何将事件发送到时序见解预览。 也就是说，始终应该：
 
@@ -148,7 +148,7 @@ ms.locfileid: "76846141"
   "data_flow" : 1.76435072345733643
 }
 ```
-在上面的示例中，平展 `data_flow` 属性会出现与 `data_flow` 属性的命名冲突。 在这种情况下，*最新*的属性值将覆盖以前的属性值。 如果此行为对你的业务方案提出挑战，请联系 TSI 团队。
+在上面的示例中，平展 `data_flow` 属性会出现与 `data_flow` 属性的命名冲突。 在这种情况下，*最新*的属性值将覆盖以前的属性值。 如果此行为为你的业务方案带来了挑战，请联系 TSI 团队。
 
 > [!WARNING] 
 > 如果由于平展或其他机制导致相同事件负载中存在重复属性，则会存储最新的属性值，overwritting 任何以前的值。

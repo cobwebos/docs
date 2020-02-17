@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f8aebee72105e4f3218e7ae5f867962d0ed8e23d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896222"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367365"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机（VM）的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明创建主机池。 之后，请按照在[Azure Marketplace 中创建主机池](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group)中的说明将一个或多个用户分配到桌面应用程序组。
 
@@ -35,7 +35,7 @@ ms.locfileid: "75896222"
 5. 请在 VM 上中转到 Windows 更新。
 6. 安装 "重要" 类别中的所有 Windows 更新。
 7. 在可选类别中安装所有 Windows 更新（语言包除外）。 这将安装完成这些说明所需的远程桌面协议8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)）。
-8. 打开本地组策略编辑器，导航到 "**计算机配置**" > **管理模板** > **Windows 组件** ** > 远程桌面服务 > ** 远程桌面会话主机**远程会话环境**。
+8. 打开本地组策略编辑器，导航到 "**计算机配置**" > **管理模板** > **Windows 组件** ** > 远程桌面服务 > ** 远程桌面会话主机**远程会话环境**。 > 
 9. 启用远程桌面协议8.0 策略。
 10. 将此 VM 加入到 Active Directory 域。
 11. 通过运行以下命令重新启动虚拟机：
@@ -44,7 +44,7 @@ ms.locfileid: "75896222"
      shutdown /r /t 0
      ```
     
-12. 按照[此处](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo)的说明获取注册令牌。
+12. 按照[此处](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/)的说明获取注册令牌。
 13. [下载适用于 windows 7 的 Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [下载适用于 windows 7 的 Windows 虚拟桌面代理程序管理器](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. 打开 Windows 虚拟桌面代理安装程序，然后按照说明进行操作。 出现提示时，请提供在步骤12中创建的注册密钥。

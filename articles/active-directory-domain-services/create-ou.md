@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705348"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367155"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>在 Azure AD 域服务托管域中创建组织单位（OU）
 
@@ -54,7 +54,7 @@ Azure AD DS 托管域包括两个内置 Ou- *AADDC 计算机*和*AADDC 用户*�
 * 将创建*AADDC 用户*的默认 OU，其中包含 Azure AD 租户中所有已同步的用户帐户。
     * 不能将用户或组从 " *AADDC 用户*" OU 移到创建的自定义 ou。 只能将 Azure AD DS 托管域中创建的用户帐户或资源移动到自定义 Ou 中。
 * 在自定义 Ou 下创建的用户帐户、组、服务帐户和计算机对象在 Azure AD 租户中不可用。
-    * 这些对象不会使用 Azure AD 图形 API 或 Azure AD UI 中显示;它们仅在 Azure AD DS 托管域中可用。
+    * 这些对象不会使用 Microsoft Graph API 或 Azure AD UI 中显示;它们仅在 Azure AD DS 托管域中可用。
 
 ## <a name="create-a-custom-ou"></a>创建自定义 OU
 

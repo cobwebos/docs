@@ -1,5 +1,5 @@
 ---
-title: Microsoft 365 政府版中 Azure AD 有哪些新功能？ | Microsoft 文档
+title: Microsoft 365 政府版中 Azure AD 有哪些新功能？ | Microsoft Docs
 description: 了解 Microsoft 365 政府云实例中对 Azure Active Directory （Azure AD）所做的一些更改，这可能会对你产生影响。
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805282"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367942"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Microsoft 365 政府版中 Azure Active Directory 的新增功能
 
@@ -55,7 +55,6 @@ ms.locfileid: "73805282"
 |------|------------------|
 | 门户 |Microsoft Azure 政府： https://portal.azure.us<p>Microsoft 365 政府– GCC 高： https://portal.office365.us<p>Microsoft 365 政府– DoD： https://portal.apps.mil |
 | Azure Active Directory 机构终结点 | https://login.microsoftonline.us |
-| Azure Active Directory 图形 API | https://graph.windows.net |
 | Microsoft 365 政府-GCC 高版的 Microsoft Graph API | https://graph.microsoft.us |
 | Microsoft 365 政府-DoD 的 Microsoft Graph API | https://dod-graph.microsoft.us |
 | Azure 政府服务终结点 | 有关详细信息，请参阅[Azure 政府开发人员指南](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) |

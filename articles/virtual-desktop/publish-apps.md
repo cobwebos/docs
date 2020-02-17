@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769653"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367266"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中发布内置应用
 
@@ -23,7 +23,7 @@ ms.locfileid: "74769653"
 发布内置应用程序：
 
 1. 连接到主机池中的某个虚拟机。
-2. 按照[本文](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps)中的说明获取要发布的应用的**PackageFamilyName** 。
+2. 按照[本文](/powershell/module/appx/get-appxpackage?view=win10-ps/)中的说明获取要发布的应用的**PackageFamilyName** 。
 3. 最后，运行以下 cmdlet，`<PackageFamilyName>` 替换为在上一步中找到的**PackageFamilyName** ：
    
    ```powershell

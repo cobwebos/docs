@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013151"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368797"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -22,13 +22,13 @@ ms.locfileid: "74013151"
 
 Azure 映像库中提供了 Windows 10 企业多会话。 自定义此映像有两个选项。
 
-第一种方法是按照[从托管映像创建 VM](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)中的说明在 Azure 中预配虚拟机（VM），然后跳到[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
+第一种方法是按照[从托管映像创建 VM](../virtual-machines/windows/create-vm-generalized-managed.md)中的说明在 Azure 中预配虚拟机（VM），然后跳到[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
 
 第二种方法是在本地创建映像，方法是下载映像，预配 Hyper-v VM，并根据需要对其进行自定义以满足您的需要，我们将在下一节中介绍。
 
 ### <a name="local-image-creation"></a>创建本地映像
 
-将映像下载到本地位置后，打开**Hyper-v 管理器**，以使用复制的 VHD 创建 VM。 以下说明是一个简单的版本，但你可以在 Hyper-v 中的 "[创建虚拟机](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)" 中找到更详细的说明。
+将映像下载到本地位置后，打开**Hyper-v 管理器**，以使用复制的 VHD 创建 VM。 以下说明是一个简单的版本，但你可以在 Hyper-v 中的 "[创建虚拟机](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/)" 中找到更详细的说明。
 
 使用复制的 VHD 创建 VM：
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>固定磁盘
 
-如果从现有 VHD 创建 VM，则默认情况下会创建动态磁盘。 可以通过选择 "**编辑磁盘 ...** " 将其更改为固定磁盘，如下图所示。 有关更多详细说明，请参阅[准备要上传到 Azure 的 WINDOWS VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image)。
+如果从现有 VHD 创建 VM，则默认情况下会创建动态磁盘。 可以通过选择 "**编辑磁盘 ...** " 将其更改为固定磁盘，如下图所示。 有关更多详细说明，请参阅[准备要上传到 Azure 的 WINDOWS VHD 或 VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md)。
 
 ![编辑磁盘选项的屏幕截图。](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ### <a name="set-up-user-profile-container-fslogix"></a>设置用户配置文件容器（FSLogix）
 
-若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)测试 FSLogix 容器的功能。
+若要将 FSLogix 容器包括为映像的一部分，请按照[使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的说明进行操作。 可以通过[本快速入门](/fslogix/configure-cloud-cache-tutorial/)测试 FSLogix 容器的功能。
 
 ### <a name="configure-windows-defender"></a>配置 Windows Defender
 
@@ -78,9 +78,9 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 此配置仅在附件期间删除 VHD 和 VHDX 文件的扫描，但不会影响实时扫描。
 
-有关如何在 Windows Server 上配置 Windows Defender 的更详细说明，请参阅[在 Windows server 上配置 Windows Defender 防病毒排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus)。
+有关如何在 Windows Server 上配置 Windows Defender 的更详细说明，请参阅[在 Windows server 上配置 Windows Defender 防病毒排除项](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/)。
 
-若要详细了解如何将 Windows Defender 配置为排除某些文件的扫描，请参阅[基于文件扩展名和文件夹位置配置和验证排除项](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)。
+若要详细了解如何将 Windows Defender 配置为排除某些文件的扫描，请参阅[基于文件扩展名和文件夹位置配置和验证排除项](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/)。
 
 ### <a name="disable-automatic-updates"></a>禁用自动更新
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 本文不介绍如何配置语言和区域支持。 有关详细信息，请参阅以下文章：
 
-- [向 Windows 映像添加语言](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [按需功能](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [按需语言和区域功能（FOD）](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [向 Windows 映像添加语言](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [按需功能](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [按需语言和区域功能（FOD）](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>其他应用程序和注册表配置
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>准备要上传到 Azure 的映像
 
-完成配置并安装所有应用程序后，请按照[准备 WINDOWS VHD 或 VHDX 中的说明上传到 Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) ，以便准备映像。
+完成配置并安装所有应用程序后，请按照[准备 WINDOWS VHD 或 VHDX 中的说明上传到 Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) ，以便准备映像。
 
 准备好用于上传的映像后，请确保 VM 处于关闭或释放状态。
 

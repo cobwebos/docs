@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115905"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368825"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>使用 PowerShell 部署管理工具
 
@@ -36,7 +36,7 @@ ms.locfileid: "77115905"
 在部署管理工具之前，需要一个 Azure Active Directory (Azure AD) 用户创建应用注册并部署管理 UI。 此用户必须：
 
 - 有权在 Azure 订阅中创建资源
-- 有权创建 Azure AD 应用程序 按照[所需的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
+- 有权创建 Azure AD 应用程序 按照[所需的权限](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
 为了成功部署和配置管理工具，首先需要从[RDS 模板 github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts)存储库下载以下 PowerShell 脚本，并将其保存到本地计算机上的相同文件夹中。
 

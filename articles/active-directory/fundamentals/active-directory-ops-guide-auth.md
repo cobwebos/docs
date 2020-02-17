@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511886"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368054"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory 身份验证管理操作参考指南
 
@@ -105,7 +105,7 @@ ms.locfileid: "76511886"
 
 ### <a name="programmatic-usage-of-credentials"></a>凭据的编程使用情况
 
-使用 PowerShell 或使用图形 API 的应用程序 Azure AD 脚本需要安全身份验证。 执行这些脚本和工具的凭据管理不当会增加凭据被盗的风险。 如果你使用的脚本或应用程序依赖硬编码的密码或密码提示，你应该首先查看配置文件或源代码中的密码，然后替换这些依赖项，并尽可能使用 Azure 托管标识、集成的 Windows 身份验证或[证书](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)。 对于之前的解决方案无法实现的应用程序，请考虑使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
+使用 PowerShell 或使用 Microsoft Graph API 的应用程序 Azure AD 脚本需要安全身份验证。 执行这些脚本和工具的凭据管理不当会增加凭据被盗的风险。 如果你使用的脚本或应用程序依赖硬编码的密码或密码提示，你应该首先查看配置文件或源代码中的密码，然后替换这些依赖项，并尽可能使用 Azure 托管标识、集成的 Windows 身份验证或[证书](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates)。 对于之前的解决方案无法实现的应用程序，请考虑使用[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
 如果确定有具有密码凭据的服务主体，并且不确定这些密码凭据如何由脚本或应用程序保护，请与应用程序所有者联系，以便更好地了解使用模式。
 
@@ -207,7 +207,7 @@ ms.locfileid: "76511886"
 
 | **Priority** | **方案** | **建议** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 第 | 如果你使用的是 PHS 或 PTA，但未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
+| 1 | 如果你使用的是 PHS 或 PTA，但未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
 | 2 | 如果你是联合的并且未使用 "insideCorporateNetwork" 声明和命名位置， | 定义已命名位置以提高风险事件的检测 |
 | 3 | 如果不在条件访问策略中使用命名位置，并且条件访问策略中没有任何风险或设备控制 | 配置条件访问策略以包含命名位置 |
 | 4 | 如果你是联合的并且使用的是 "insideCorporateNetwork" 声明，并且尚未定义已命名的位置 | 定义已命名位置以提高风险事件的检测 |
@@ -277,9 +277,9 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 1. 使用[登录活动报告](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)来识别仍在使用旧身份验证和计划修正的用户：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 升级到受影响用户的支持新式身份验证的客户端。
+   a. 升级到受影响用户的支持新式身份验证的客户端。
    
-   b.保留“数据库类型”设置，即设置为“共享”。 计划转换时间范围，按以下步骤进行锁定。
+   b. 计划转换时间范围，按以下步骤进行锁定。
    
    c. 确定哪些旧应用程序对旧式身份验证有硬依赖关系。 请参阅下面的步骤3。
 
@@ -305,7 +305,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 | Office 365 Exchange Online | EAS.AccessAsUser |
 | | EWS.AccessAsUser |
 | | Mail。阅读 |
-| Microsoft Graph | Mail。阅读 |
+| Microsoft Graph API | Mail。阅读 |
 | | Mail. Read. Shared |
 | | Node.js |
 
@@ -313,15 +313,14 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 
 |资源 | 权限 |
 | :- | :- |
-| Azure AD Graph | Directory.AccessAsUser.All |
-| Microsoft Graph | Directory.AccessAsUser.All |
+| Microsoft Graph API| AccessAsUser。 All |
 | Azure REST API | user_impersonation |
 
 若要避免这种情况，应参阅[Office 365 中的 "检测和修正违法许可授权](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)"，以识别和修复具有违法授权的任何应用程序或具有超过所需的授权的应用程序。 接下来，[删除自助服务](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)并[建立管理过程](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。 最后，计划应用权限的定期审查，并在不需要时删除它们。
 
 #### <a name="consent-grants-recommended-reading"></a>同意授予建议阅读
 
-- [Microsoft Graph 权限](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API 权限](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>用户和组设置
 
@@ -373,7 +372,7 @@ Azure AD 可以计算每个登录和每个用户的风险。 使用风险作为�
 - [Office 365 管理活动 API 参考](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
 - [如何使用 Azure Active Directory Power BI 内容包](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 安全标识基础结构有12个方面。 此列表将帮助你进一步保护和管理凭据、定义身份验证体验、委派分配、衡量使用情况，并根据企业安全状况定义访问策略。
 

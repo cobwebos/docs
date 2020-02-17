@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905733"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366217"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什么是 Azure 机器学习管道？
 
 Azure 机器学习管道使你可以在机器学习项目中创建工作流。 这些工作流有多个优点： 
 
-+ 简易性
-+ 速度
++ 简易
++ Speed
 + 可重复性
 + 灵活性
 + 版本控制和跟踪
@@ -40,11 +40,12 @@ Azure 机器学习管道使你可以在机器学习项目中创建工作流。 �
 
 Azure 云提供多个其他管道，每个都有不同的用途。 下表列出了不同的管道以及它们的用途：
 
-| 管道 | 它的作用 | 规范管道 |
-| ---- | ---- | ---- |
-| Azure 机器学习管道 | 定义可重复使用的机器学习工作流，可用作机器学习方案的模板。 | 数据 > 模型 |
-| [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | 对执行任务所需的数据移动、转换和控制活动进行分组。  | 数据 > 数据 |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | 将你的应用程序持续集成和交付到任何平台/任何云  | 代码 > 应用/服务 |
+| 场景 | 主要角色 | Azure 产品 | OSS 产品 | 规范管道 | 优势 | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| 模型业务流程（机器学习） | 数据科学家 | Azure 机器学习管道 | Kubeflow 管道 | 数据 > 模型 | 分布，缓存，代码优先，重用 | 
+| 数据业务流程（数据准备） | 数据工程 | [Azure 数据工厂管道](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache 气流 | 数据 > 数据 | 强类型移动。 以数据为中心的活动。 |
+| 代码 & 应用程序业务流程（CI/CD） | 应用开发人员/Ops | [Azure DevOps 管道](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 代码 + 模型-> 应用/服务 | 最开放和 flexibile 的活动支持，批准队列，具有门的阶段 | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管道有哪些用途？
 
@@ -52,7 +53,7 @@ Azure 机器学习管道是完整的机器学习任务的可独立执行的工�
 
 + 数据准备，包括导入、验证、清理、修整、转换、规范化和暂存
 + 训练配置，包括参数化自变量、文件路径和日志记录/报告配置
-+ 高效重复地进行培训和验证，其中可能包括指定特定的数据子集、不同的硬件计算资源、分布式处理和进度监视
++ 高效重复地进行培训和验证。 效率可能来自指定特定的数据子集、不同的硬件计算资源、分布式处理和进度监视
 + 部署，包括版本控制、缩放、预配和访问控制 
 
 独立步骤允许多个数据科学家同时在同一管道上处理，而无需过多的计算资源。 单独的步骤还可以简化每个步骤使用不同的计算类型/大小。
@@ -69,7 +70,7 @@ Azure 机器学习管道是完整的机器学习任务的可独立执行的工�
 
 Azure ML 管道使用排序的一系列步骤来执行完整的逻辑工作流。 每个步骤都是一个离散的处理操作。 管道在 Azure 机器学习[试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)的上下文中运行。
 
-在 ML 项目的早期阶段，有一个 Jupyter 笔记本或 Python 脚本可以完成 Azure 工作区和资源配置、数据准备、运行配置、培训和验证的所有工作。 但正如函数和类很快就会成为代码的单个命令块，ML 工作流很快就会变得更适合单一笔记本或脚本。 
+在 ML 项目的早期阶段，可以创建一个 Jupyter 笔记本或 Python 脚本，用于完成 Azure 工作区和资源配置、数据准备、运行配置、培训和验证的所有工作。 但正如函数和类很快就会成为代码的单个命令块，ML 工作流很快就会变得更适合单一笔记本或脚本。 
 
 通过模块化 ML 任务，管道支持计算机科学，组件应 "执行（仅适用于）。" 在团队中进行编程时，模块化非常重要，但即使是单独工作，即使是小型 ML 项目也涉及单独的任务，每个任务都有很大的复杂性。 任务包括：工作区配置和数据访问、数据准备、模型定义和配置，以及部署。 尽管一个或多个任务的输出构成了其他任务的输出，但在下一任务中，任何一项任务的具体实现细节都是最重要的。 在最糟糕的情况下，一个任务的计算状态可能导致另一个任务中的 bug。 
 
@@ -195,7 +196,7 @@ pipeline_run.wait_for_completion()
 
 为机器学习工作流使用管道的主要优点是：
 
-|主要优点|Description|
+|主要优点|说明|
 |:-------:|-----------|
 |**无人参与&nbsp;运行**|计划以可靠且无人参与的方式并行运行或按顺序运行的步骤。 数据准备和建模可以过去几天或几周，而管道可用于在进程运行时将精力集中在其他任务上。 |
 |**异类计算**|使用跨异类和可缩放计算资源和存储位置可靠协调的多个管道。 通过在不同的计算目标（例如 HDInsight、GPU 数据科学 Vm 和 Databricks）上运行单个管道步骤来有效地使用可用计算资源。|

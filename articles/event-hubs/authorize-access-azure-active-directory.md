@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169188"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368495"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory （Azure AD）向事件中心资源的请求授权。 使用 Azure AD，你可以使用基于角色的访问控制（RBAC）向安全主体（可以是用户或应用程序服务主体）授予权限。 若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -54,9 +54,13 @@ Azure 提供下列内置 RBAC 角色，可使用 Azure AD 和 OAuth 授权访问
 - **订阅**：角色分配适用于订阅中所有资源组中的所有事件中心资源。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要长达五分钟才能传播。 
+> - 请记住，RBAC 角色分配可能需要长达五分钟才能传播。 
+> - 此内容适用于 Apache Kafka 的事件中心和事件中心。 有关 Kafka 支持的事件中心的详细信息，请参阅[Kafka 的事件中心-安全和身份验证](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
+
 
 有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建自定义 RBAC 角色的详细信息，请参阅[为 Azure 基于角色的访问控制创建自定义角色](../role-based-access-control/custom-roles.md)。
+
+
 
 ## <a name="samples"></a>示例
 - [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac)。 
@@ -65,6 +69,8 @@ Azure 提供下列内置 RBAC 角色，可使用 Azure AD 和 OAuth 授权访问
 - [EventHubs 示例](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     此示例已更新为使用最新的**EventHubs**库。
+- [Kafka 的事件中心-OAuth 示例](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)。 
+
 
 ## <a name="next-steps"></a>后续步骤
 - 了解如何向安全主体分配内置 RBAC 角色的详细说明，请参阅[使用 Azure Active Directory 对事件中心资源的访问权限进行身份验证](authenticate-application.md)。

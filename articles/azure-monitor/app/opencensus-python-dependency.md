@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 18354881b7bf2899bdd109b47d6a10e29073cc36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6217798f8175e7ecc1c1ec4068d7765444e4d2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432498"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368288"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>跟踪 OpenCensus Python 的依赖项
 
@@ -101,8 +101,8 @@ MIDDLEWARE = [
 OPENCENSUS = {
     'TRACE': {
         'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1)',
-        'EXPORTER': '''opencensus.ext.ocagent.trace_exporter.TraceExporter(
-            service_name='foobar',
+        'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
+            connection_string="InstrumentationKey=<your-ikey-here>"
         )''',
     }
 }

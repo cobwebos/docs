@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9baaf6c39f85f82b034bee42f01cf3c0dd2a610
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771302"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367457"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
@@ -20,7 +20,7 @@ ms.locfileid: "75771302"
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用 PowerShell 客户端创建主机池
 
-首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。
 
 运行以下 cmdlet 以登录到 Windows 虚拟桌面环境
 
@@ -60,9 +60,9 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 可以通过多种方式创建虚拟机：
 
-- [从 Azure 库映像创建虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [从托管映像创建虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [从 Azure 库映像创建虚拟机](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [从托管映像创建虚拟机](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [从非托管映像创建虚拟机](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
 
 >[!NOTE]
 >如果要使用 Windows 7 将虚拟机部署为主机操作系统，创建和部署过程会稍有不同。 有关更多详细信息，请参阅[在 Windows 虚拟机上部署 windows 7 虚拟机](deploy-windows-7-virtual-machine.md)。
@@ -78,7 +78,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 若要成功加入域，请在每个虚拟机上执行以下操作：
 
-1. 用在创建虚拟机时提供的凭据[连接到虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 用在创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 在虚拟机上，启动 "**控制面板"** ，然后选择 "**系统**"。
 3. 选择 "**计算机名称**"，选择 "**更改设置**"，然后选择 "**更改 ...** "
 4. 选择 "**域**"，然后在虚拟网络上输入 Active Directory 域。
@@ -93,7 +93,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 
 若要注册 Windows 虚拟桌面代理，请在每个虚拟机上执行以下操作：
 
-1. 用在创建虚拟机时提供的凭据[连接到虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
+1. 用在创建虚拟机时提供的凭据[连接到虚拟机](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下载并安装 Windows 虚拟桌面代理。
    - 下载[Windows 虚拟桌面代理](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
    - 右键单击已下载的安装程序，选择 "**属性**"，选择 "**取消阻止**"，然后选择 **"确定"** 。 这将允许你的系统信任安装程序。
@@ -104,7 +104,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
    - 运行安装程序。
 
 >[!IMPORTANT]
->为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)。
+>为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

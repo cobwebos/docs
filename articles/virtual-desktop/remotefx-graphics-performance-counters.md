@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607463"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367240"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面中的图形性能问题
 
@@ -69,9 +69,9 @@ ms.locfileid: "73607463"
 
 如果输出帧/秒计数器与输入帧/秒计数器匹配，但仍注意到异常延迟或停止，则平均编码时间可能是原因。 编码是在单会话（vGPU）方案中的服务器上和多会话方案中的 VM 上发生的同步过程。 平均编码时间应小于33毫秒。 如果平均编码时间低于33毫秒，但仍存在性能问题，则您正在使用的应用或操作系统可能存在问题。
 
-有关诊断与应用相关的问题的详细信息，请参阅[用户输入延迟性能计数器](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)。
+有关诊断与应用相关的问题的详细信息，请参阅[用户输入延迟性能计数器](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)。
 
-由于 RDP 支持的平均编码时间为33毫秒，因此它支持输入帧速率最多为30帧/秒。 请注意，33毫秒是受支持的最大帧速率。 在许多情况下，用户遇到的帧速率将更低，具体取决于源将帧提供给 RDP 的频率。 例如，观看视频等任务需要30帧/秒的输入帧速率为30帧/秒，但计算密集型任务（如不经常编辑文档）会导致输入帧/秒的值大大降低，用户的体验质量。
+由于 RDP 支持的平均编码时间为33毫秒，因此它支持输入帧速率最多为30帧/秒。 请注意，33毫秒是受支持的最大帧速率。 在许多情况下，用户遇到的帧速率将更低，具体取决于源将帧提供给 RDP 的频率。 例如，观看视频等任务需要30帧/秒的输入帧速率为30帧/秒，但计算密集型任务（如不经常编辑文档）会导致输入帧/秒的值大大降低，用户的体验质量不会降低。
 
 ### <a name="addressing-poor-frame-quality"></a>解决帧质量差问题
 
@@ -101,6 +101,6 @@ ms.locfileid: "73607463"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 GPU 优化的 Azure 虚拟机，请参阅[配置 Windows 虚拟桌面环境的图形处理单元（GPU）加速](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)。
-- 有关疑难解答和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)。
-- 若要了解有关该服务的详细信息，请参阅[Windows 桌面环境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)。
+- 若要创建 GPU 优化的 Azure 虚拟机，请参阅[配置 Windows 虚拟桌面环境的图形处理单元（GPU）加速](configure-vm-gpu.md)。
+- 有关疑难解答和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
+- 若要了解有关该服务的详细信息，请参阅[Windows 桌面环境](environment-setup.md)。

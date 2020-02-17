@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/08/2020
 ms.author: helohr
-ms.openlocfilehash: 92e11edf3b28017ac73702e3f71dfc491d3986e3
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: aba2202f0d33609400588e379a4ed3bb9bb798d9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110621"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367528"
 ---
 # <a name="connect-with-the-ios-client"></a>使用 iOS 客户端进行连接
 
@@ -47,4 +47,4 @@ ms.locfileid: "77110621"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何使用 iOS 客户端的详细信息，请查看[ios 客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios)文档。
+若要了解有关如何使用 iOS 客户端的详细信息，请查看[ios 客户端入门](/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios/)文档。

@@ -1,5 +1,5 @@
 ---
-title: 使用设计器中的辅助功能
+title: 使用设计器中的辅助功能（预览版）
 titleSuffix: Azure Machine Learning
 description: 了解设计器中提供的键盘快捷方式和屏幕阅读器辅助功能。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314226"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366199"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>使用键盘 Azure 机器学习设计器
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>使用键盘 Azure 机器学习设计器（预览）
 
 了解如何使用键盘和屏幕阅读器来使用 Azure 机器学习设计器。 有关 Azure 门户中的所有地方使用的键盘快捷方式的列表，请参阅[Azure 门户中的键盘快捷方式](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -24,7 +24,7 @@ ms.locfileid: "76314226"
 
 ## <a name="navigate-the-pipeline-graph"></a>导航管道图
 
-管道图形按列表的列表组织。 顶级模块列表包含管道中的所有模块。 模块列表中的每一项都包含一个描述其所有连接的连接列表。 
+管道图以嵌套列表的形式进行组织。 外部列表是模块列表，它描述了 "管道" 图中的所有模块。 内部列表是一个连接列表，它描述特定模块的所有连接。  
 
 1. 在模块列表中，使用箭头键切换模块。
 1. 使用 "选项卡" 打开目标模块的连接列表。
@@ -52,7 +52,7 @@ ms.locfileid: "76314226"
 
 ## <a name="navigation-shortcuts"></a>导航快捷方式
 
-| 击键 | Description |
+| 击键 | 说明 |
 |-|-|
 | Ctrl + F6 | 在画布和模块树之间切换焦点 |
 | Ctrl + F1   | 专注于模块树中的节点时打开信息卡 |
@@ -62,9 +62,9 @@ ms.locfileid: "76314226"
 
 ## <a name="action-shortcuts"></a>操作快捷方式
 
-使用以下快捷方式和访问密钥。 有关访问密钥的详细信息，请参阅 https://en.wikipedia.org/wiki/Access_key 。
+使用以下快捷方式和访问密钥。 有关访问密钥的详细信息，请参阅 https://en.wikipedia.org/wiki/Access_key。
 
-| 击键 | 行动 |
+| 击键 | 操作 |
 |-|-|
 | 访问键 + R | 运行 |
 | 访问键 + P | 发布 |

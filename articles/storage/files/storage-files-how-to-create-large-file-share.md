@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190675"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368658"
 ---
 # <a name="enable-and-create-large-file-shares"></a>启用和创建大型文件共享
 
 在存储帐户上启用大型文件共享时，文件共享最多可以扩展到 100 TiB。 可以在现有的文件共享的现有存储帐户上启用此缩放。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - 如果要使用 Azure CLI，请[安装最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -43,14 +43,14 @@ ms.locfileid: "77190675"
     ![显示如何在门户中创建资源组的屏幕截图](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. 然后，输入存储帐户的名称。 该名称在 Azure 中必须唯一。 该名称的长度必须为3到24个字符，并且只能包含数字和小写字母。
-1. 选择存储帐户的位置，并确保它是[大型文件共享支持的区域之一](storage-files-planning.md#regional-availability)。
+1. 选择存储帐户的位置，并确保它是[大型文件共享支持的复制之一](storage-files-planning.md#regional-availability)。
 1. 将复制设置为**本地冗余存储**或**区域冗余存储**。
 1. 将这些字段保留为其默认值：
 
    |字段  |值  |
    |---------|---------|
    |部署模型     |资源管理器         |
-   |性能     |标准         |
+   |性能     |Standard         |
    |帐户类型     |StorageV2（常规用途 v2）         |
    |访问层     |热         |
 
@@ -59,7 +59,7 @@ ms.locfileid: "77190675"
 
     ![在 Azure 门户的新存储帐户上使用 "已启用" 选项按钮的屏幕截图](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ### <a name="cli"></a>CLI
 

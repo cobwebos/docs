@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452431"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368846"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -25,7 +25,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -36,8 +36,8 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 在开始之前，还需要安装这两个 PowerShell 模块：
 
-- [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell 模块](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD 模块](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 请确保在登录时已准备好订阅 ID。
 
@@ -253,7 +253,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
     - 阈值：大于80% 将被标记为不正常。
 
-- [每个会话的用户输入延迟（\*）\\最大输入延迟](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters)：
+- [每个会话的用户输入延迟（\*）\\最大输入延迟](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
 
     - 阈值：大于 2000 ms 被标记为不正常。
 

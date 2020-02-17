@@ -1,6 +1,6 @@
 ---
-title: 开发 SCIM 终结点，以便将用户预配到 Azure AD 的应用
-description: 跨域标识管理（SCIM）的系统标准化自动用户预配。 了解如何开发 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始自动将用户和组预配到你的云应用程序中。
+title: 生成 SCIM 终结点，以便用户预配到 Azure AD 的应用
+description: 了解如何构建 SCIM 终结点，如何将 SCIM API 与 Azure Active Directory 集成，并开始自动将用户和组预配到你的云应用程序中。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,25 +11,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 2/7/2020
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a74e03a5b166af85c809725c2c8b9a13b7e4f4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d3d891dfcc2a37489953724ce22e0e0422d512ff
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085445"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368216"
 ---
-# <a name="develop-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>开发 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
 作为应用程序开发人员，你可以使用系统来实现跨域标识管理（SCIM）用户管理 API，以便在应用程序和 Azure AD 之间自动预配用户和组。 本文介绍如何生成 SCIM 终结点并与 Azure AD 预配服务集成。 SCIM 规范提供了用于预配的常见用户架构。 与 SAML 或 OpenID Connect 等联合标准结合使用时，SCIM 为管理员提供了一种基于标准的端到端解决方案，用于访问管理。
 
 SCIM 是两个终结点的标准化定义：/Users 终结点和/Groups 终结点。 它使用常见的 REST 谓词来创建、更新和删除对象，并为常见属性（如组名称、用户名、名字、姓氏和电子邮件）预定义架构。 提供 SCIM 2.0 REST API 的应用可减少或消除使用专有用户管理 API 的难点。 例如，任何符合 SCIM 的客户端都知道如何将 JSON 对象的 HTTP POST 发送到/Users 终结点，以创建新的用户条目。 不需要对相同的基本操作使用略微不同的 API，符合 SCIM 标准的应用可以立即利用预先存在的客户端、工具和代码。 
 
-![使用 SCIM 从 Azure AD 预配到应用](./media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+![使用 SCIM 从 Azure AD 预配到应用](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
 SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://tools.ietf.org/html/rfc7643)、 [7644](https://tools.ietf.org/html/rfc7644)）中定义的用于管理的标准用户对象架构和 rest api 允许标识提供者和应用更轻松地彼此集成。 生成 SCIM 终结点的应用程序开发人员无需进行自定义工作即可与任何 SCIM 兼容的客户端集成。
 
@@ -45,57 +45,19 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 
   * **[步骤 5：将应用程序发布到 Azure AD 应用程序库。](#step-5-publish-your-application-to-the-azure-ad-application-gallery)** 使客户能够轻松发现应用程序并轻松配置预配。 
 
-![将 SCIM 终结点与 Azure AD 集成的步骤](./media/use-scim-to-provision-users-and-groups/process.png)
+![将 SCIM 终结点与 Azure AD 集成的步骤](media/use-scim-to-provision-users-and-groups/process.png)
 
 ## <a name="step-1-design-your-user-and-group-schema"></a>步骤 1：设计用户和组架构
 
-每个应用程序都需要使用不同的属性来创建用户或组。 通过标识应用程序所需的对象（用户、组）和属性（名称、管理器、作业标题等）开始集成。 SCIM 标准定义了用于管理用户和组的架构。 核心用户架构只需要三个属性： **id** （服务提供商定义的标识符）、 **externalId** （客户端定义的标识符）和**元**数据（由服务提供商维护的只读元数据）。 所有其他属性都是可选的。 除核心用户架构外，SCIM 标准还定义了一个企业用户扩展和一个模型，用于扩展用户架构以满足应用程序的需求。 例如，如果你的应用程序需要用户的管理者，则可以使用企业用户架构收集用户的管理器和核心架构以收集用户的电子邮件。 若要设计架构，请执行以下步骤：
-  1. 列出应用程序所需的属性。 将要求分解到身份验证所需的属性（例如，loginName 和电子邮件）、管理用户的生命周期所需的属性（例如状态/活动）以及特定应用程序的工作所需的其他属性（例如，管理器、标记），这可能会很有帮助。
-  2. 检查是否已在核心用户架构或企业用户架构中定义了这些属性。 如果核心或企业用户架构中不包含所需的任何属性，则需要定义包含所需属性的用户架构扩展。 在下面的示例中，我们已向用户添加了一个扩展，以允许在用户上设置 "标记"。 最好只从核心和企业用户架构开始，以后再展开到其他自定义架构。  
-  3. 将 SCIM 属性映射到 Azure AD 中的用户属性。 如果在 SCIM 终结点中定义的属性之一在 Azure AD 用户架构上没有明确的对应项，则很有可能不会在大多数租户上将数据存储在用户对象上。 考虑此特性是否可用于创建用户。 如果该属性对您的应用程序运行至关重要，请指导租户管理员扩展其架构或使用如下所示的扩展属性。
+每个应用程序都需要使用不同的属性来创建用户或组。 通过标识应用程序所需的对象（用户、组）和属性（名称、管理器、作业标题等）开始集成。 然后，你可以使用下表来了解应用程序所需的属性如何映射到 Azure AD 中的属性和 SCIM RFC。 请注意，你可以[自定义](customize-application-attributes.md)属性在 AZURE AD 和 SCIM 终结点之间的映射方式。 
 
-### <a name="table-1-outline-the-attributes-that-you-need"></a>表 1：概述所需的属性 
-| 步骤 1：确定应用需要的属性| 步骤 2：将应用程序要求映射到 SCIM 标准| 步骤 3：将 SCIM 特性映射到 Azure AD 特性|
-|--|--|--|
-|loginName|userName|userPrincipalName|
-|firstName|name.givenName|givenName|
-|lastName|名称 lastName|lastName|
-|workMail|电子邮件 [类型 eq "work"]。值|Mail|
-|manager|manager|manager|
-|tag|urn： ietf： params： scim：架构：扩展：2.0： CustomExtension：标记|extensionAttribute1|
-|status|활성|isSoftDeleted （计算值未存储在用户上）|
+用户资源由以下协议规范中包含的架构标识符 `urn:ietf:params:scim:schemas:extension:enterprise:2.0:User`确定： https://tools.ietf.org/html/rfc7643 。  表1提供了 Azure AD 中用户的属性的默认映射。  
 
-上面定义的架构将使用下面的 Json 有效负载来表示。 请注意，除应用程序所需的属性外，JSON 表示形式还包含所需的 "id"、"externalId" 和 "meta" 特性。
+그룹 리소스는 스키마 식별자 `urn:ietf:params:scim:schemas:core:2.0:Group`으로 식별됩니다. 表2显示 Azure AD 中组的属性到组资源的属性的默认映射。
 
-```json
-{
-     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
-      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
-     "userName":"bjensen",
-     "externalId":"bjensen",
-     "name":{
-       "familyName":"Jensen",
-       "givenName":"Barbara"
-     },
-     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
-     "Manager": "123456"
-   },
-     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
-     "tag": "701984",
-   },
-   "meta": {
-     "resourceType": "User",
-     "created": "2010-01-23T04:56:22Z",
-     "lastModified": "2011-05-13T04:42:34Z",
-     "version": "W\/\"3694e05e9dff591\"",
-     "location":
- "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
-   }
- ```
+请注意，不需要同时支持用户和组或下面显示的所有属性。 它们是有关 Azure AD 中的特性如何经常映射到 SCIM 协议中的属性的参考。  
 
-### <a name="table-2-default-user-attribute-mapping"></a>表 2：默认用户属性映射
-然后，你可以使用下表来了解应用程序所需的属性如何映射到 Azure AD 中的属性和 SCIM RFC。 您可以[自定义](customize-application-attributes.md)属性在 AZURE AD 和 SCIM 终结点之间的映射方式。 请注意，不需要同时支持用户和组或下面显示的所有属性。 它们是有关 Azure AD 中的特性如何经常映射到 SCIM 协议中的属性的参考。 
+### <a name="table-1-default-user-attribute-mapping"></a>表 1：默认用户属性映射
 
 | Azure Active Directory 사용자 | "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
@@ -119,7 +81,7 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | user-PrincipalName |userName |
 
 
-### <a name="table-3-default-group-attribute-mapping"></a>表 3：默认组属性映射
+### <a name="table-2-default-group-attribute-mapping"></a>表 2：默认组属性映射
 
 | Azure Active Directory 그룹 | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
@@ -129,19 +91,6 @@ SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://to
 | members |members |
 | objectId |externalId |
 | proxyAddresses |emails[type eq "other"].Value |
-
-SCIM RFC 中定义了多个终结点。 可以开始启用/User 终结点，并从该处进行扩展。 使用自定义属性或架构频繁更改时，/Schemas 终结点非常有用。 它使客户端能够自动检索最新的架构。 支持组时，/Bulk 终结点特别有用。 下表描述了 SCIM 标准中定义的各种终结点。 使用自定义属性或架构频繁更改时，/Schemas 终结点非常有用。 它使客户端能够自动检索最新的架构。 支持组时，/Bulk 终结点特别有用。 下表描述了 SCIM 标准中定义的各种终结点。 
- 
-### <a name="table-4-determine-the-endpoints-that-you-would-like-to-develop"></a>表 4：确定想要开发的终结点
-|ENDPOINT|DESCRIPTION|
-|--|--|
-|/User|对用户对象执行 CRUD 操作。|
-|/Group|对组对象执行 CRUD 操作。|
-|/ServiceProviderConfig|提供有关支持的 SCIM 标准功能的详细信息，例如，支持的资源和身份验证方法。|
-|/ResourceTypes|指定有关每个资源的元数据|
-|/Schemas|每个客户端和服务提供商支持的属性集可能有所不同。 尽管一个服务提供商可能包括 "名称"、"标题" 和 "电子邮件"，但另一个服务提供商使用 "名称"、"标题" 和 "phoneNumbers"。 架构端点允许发现支持的属性。|
-|/Bulk|使用大容量操作，可以在单个操作中对大型资源对象集合执行操作（例如，更新大型组的成员身份）。|
-
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>步骤 2：了解 Azure AD SCIM 实现
 > [!IMPORTANT]
@@ -176,7 +125,7 @@ SCIM RFC 中定义了多个终结点。 可以开始启用/User 终结点，并�
 
 下图显示了 Azure Active Directory 发送到 SCIM 服务的消息，以管理应用程序的标识存储中用户的生命周期。  
 
-![显示用户预配和取消设置序列](./media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
+![显示用户预配和取消设置序列](media/use-scim-to-provision-users-and-groups/scim-figure-4.png)<br/>
 *用户预配和取消预配顺序*
 
 ### <a name="group-provisioning-and-deprovisioning"></a>组预配和取消预配
@@ -186,14 +135,14 @@ SCIM RFC 中定义了多个终结点。 可以开始启用/User 终结点，并�
 * 检索组的请求指定要从为响应请求而提供的任何资源中排除成员属性。  
 * 참조 특성에 특정 값이 있는지를 확인하는 요청은 멤버 특성에 대한 요청입니다.  
 
-![显示组预配和取消设置序列](./media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
+![显示组预配和取消设置序列](media/use-scim-to-provision-users-and-groups/scim-figure-5.png)<br/>
 *组预配和取消预配顺序*
 
 ### <a name="scim-protocol-requests-and-responses"></a>SCIM 协议请求和响应
 本部分提供 Azure AD SCIM 客户端发出的示例 SCIM 请求以及预期的响应。 为了获得最佳结果，应将应用编码为按此格式处理这些请求，并发出预期的响应。
 
 > [!IMPORTANT]
-> 要了解 Azure AD 用户预配服务如何以及何时发出下面所述的操作，请参阅 [预配周期部分：初始和增量](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)[了预配的工作方式](../app-provisioning/how-provisioning-works.md)。
+> 要了解 Azure AD 用户预配服务如何以及何时发出下面所述的操作，请参阅 [预配周期部分：初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)[了预配的工作方式](how-provisioning-works.md)。
 
 [用户操作](#user-operations)
   - [创建用户](#create-user)（[请求](#request) / [响应](#response)）
@@ -722,34 +671,6 @@ SCIM RFC 中定义了多个终结点。 可以开始启用/User 终结点，并�
 
 *HTTP/1.1 204 无内容*
 
-### <a name="security-requirements"></a>安全性要求
-**TLS 协议版本**
-
-唯一可接受的 TLS 协议版本为 TLS 1.2 和 TLS 1.3。 不允许使用其他版本的 TLS。 不允许使用任何 SSL 版本。 
-- RSA 密钥必须至少为2048位。
-- ECC 密钥必须至少为256位，使用批准的椭圆曲线生成
-
-
-**密钥长度**
-
-所有服务都必须使用使用足够长度的加密密钥生成的 x.509 证书，这意味着：
-
-**密码套件**
-
-必须按下面指定的准确顺序将所有服务配置为使用以下密码套件。 请注意，如果只有一个 RSA 证书，则安装的 ECDSA 密码套件不会有任何影响。 </br>
-
-TLS 1.2 密码套件最小栏：
-
-- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-
-
 ## <a name="step-3-build-a-scim-endpoint"></a>步骤 3：生成 SCIM 终结点
 
 通过创建与 Azure Active Directory 进行交互的 SCIM web 服务，你可以为几乎任何应用程序或标识存储启用自动用户预配。
@@ -831,7 +752,7 @@ SCIM 사양을 준수하는 웹 서비스를 개발하려면 먼저 개발 프�
 
 * CLI(공용 언어 인프라) 라이브러리는 C#과 같은 해당 인프라에 따라 언어와 함께 사용하기 위해 제공됩니다. 其中一个库 Microsoft.systemforcrossdomainidentitymanagement 声明了一个接口每 microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior，如下图中所示：。 라이브러리를 사용하는 개발자는 일반적으로 공급자로 참조될 수 있는 클래스를 사용하여 해당 인터페이스를 구현합니다. 这些库允许开发人员部署符合 SCIM 规范的 web 服务。 Web 服务可以位于 Internet Information Services 或任何可执行 CLI 程序集中。 요청은 공급자의 메서드에 대한 호출로 변환되며, 개발자에 의해 일부 ID 저장소에서 작동하도록 프로그래밍됩니다.
   
-   ![结构转换为对提供程序方法的调用的请求](./media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
+   ![结构转换为对提供程序方法的调用的请求](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
   
 * [기본 경로 처리기](https://expressjs.com/guide/routing.html)는 node.js 웹 서비스에 수행된(SCIM 사양에 정의된 대로) 호출을 나타내는 node.js 요청 개체를 구문 분석하는 데 사용할 수 있습니다.
 
@@ -842,6 +763,10 @@ SCIM 사양을 준수하는 웹 서비스를 개발하려면 먼저 개발 프�
 ```csharp
  private static void Main(string[] arguments)
  {
+ // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor, 
+ // Microsoft.SystemForCrossDomainIdentityManagement.IProvider and 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IMonitor monitor = 
    new DevelopersMonitor();
@@ -931,6 +856,10 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 ```csharp
  public class Startup
  {
+ // Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter, 
+ // Microsoft.SystemForCrossDomainIdentityManagement.IMonitor and  
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service are all defined in 
+ // Microsoft.SystemForCrossDomainIdentityManagement.Service.dll.  
 
  Microsoft.SystemForCrossDomainIdentityManagement.IWebApplicationStarter starter;
 
@@ -956,7 +885,7 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 
 ### <a name="handling-endpoint-authentication"></a>엔드포인트 인증 처리
 
-Azure Active Directory에서 요청은 OAuth 2.0 전달자 토큰을 포함합니다.   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Azure Active Directory Graph web 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是颁发令牌的 Azure Active Directory 租户的唯一标识符。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 有关库应用程序的应用程序模板 ID 的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
+Azure Active Directory에서 요청은 OAuth 2.0 전달자 토큰을 포함합니다. 接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Microsoft Graph API 服务。 在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是颁发令牌的 Azure Active Directory 租户的唯一标识符。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 有关库应用程序的应用程序模板 ID 的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
 
 使用 Microsoft 提供的 CLI 库生成 SCIM 服务的开发人员可以通过执行以下步骤，使用 Owin 包对来自 Azure Active Directory 的请求进行身份验证： 
 
@@ -978,7 +907,7 @@ Azure Active Directory에서 요청은 OAuth 2.0 전달자 토큰을 포함합�
   }
 ```
 
-接下来，将以下代码添加到该方法，以对任何服务的终结点发出请求，该服务的任何终结点均已通过 Azure Active Directory 为指定租户颁发的令牌进行身份验证，以便访问 Azure AD Graph web 服务： 
+接下来，将以下代码添加到该方法，以对任何服务的终结点发出请求，该服务的任何终结点均已通过 Azure Active Directory 为指定租户颁发的令牌进行身份验证，以便访问 Microsoft Graph 的 API 服务： 
 
 ```csharp
   private void OnServiceStartup(
@@ -1386,7 +1315,7 @@ SCIM 서비스 구현에 대한 Microsoft 공용 언어 인프라 라이브러�
 애플리케이션 공급자 또는 애플리케이션 공급자의 설명서를 통해 이러한 요구 사항과의 호환성을 확인합니다.
 
 > [!IMPORTANT]
-> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅 [预配周期的部分：初始和增量](../app-provisioning/how-provisioning-works.md#provisioning-cycles-initial-and-incremental)[了预配的工作方式](../app-provisioning/how-provisioning-works.md)。
+> Azure AD SCIM 实现基于 Azure AD 用户预配服务，该服务旨在使用户不断地在 Azure AD 和目标应用程序之间保持同步，并实现一组非常具体的标准操作。 了解这些行为以了解 Azure AD SCIM 客户端的行为非常重要。 有关详细信息，请参阅 [预配周期的部分：初始和增量](how-provisioning-works.md#provisioning-cycles-initial-and-incremental)[了预配的工作方式](how-provisioning-works.md)。
 
 ### <a name="getting-started"></a>시작
 
@@ -1399,13 +1328,13 @@ Azure AD 애플리케이션 갤러리에 있는 "비-갤러리 애플리케이�
 3. 选择 " **+ 新建应用程序** > **所有** > **的非库应用程序**。
 4. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 新应用将添加到企业应用程序列表中，并打开到其应用管理屏幕。
 
-   ![屏幕快照显示 Azure AD 应用程序库](./media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
+   ![屏幕快照显示 Azure AD 应用程序库](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
    *Azure AD 应用程序库*
 
 5. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
 6. **프로비전 모드** 메뉴에서 **자동**을 선택합니다.
 
-   示例：![Azure 门户中的应用设置页](./media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
+   示例：![Azure 门户中的应用设置页](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *在 Azure 门户中配置预配*
 
 7. **테넌트 URL** 필드에 애플리케이션의 SCIM 엔드포인트 URL을 입력합니다. 예: https://api.contoso.com/scim/
@@ -1441,20 +1370,11 @@ Azure AD 애플리케이션 갤러리에 있는 "비-갤러리 애플리케이�
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在应用程序库中预配连接器的授权
 SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 它依赖于现有的行业标准。 Azure AD 预配客户端支持库中应用程序的两种授权方法。 
 
-|授权方法|优点|缺点|支持|
-|--|--|--|--|
-|用户名和密码（Azure AD 不推荐或支持）|易于实现|不安全- [Pa $ $word 不重要](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|库应用按案例支持。 不支持非库应用。|
-|长生存期持有者令牌（目前支持 Azure AD）|生存期较长的令牌不要求用户提供。 在设置预配时，管理员可以轻松地使用它们。|在不使用安全方法（如电子邮件）的情况下，长时间生存期令牌可能很难与管理员共享。 |库和非库应用支持。 |
-|OAuth 授权代码授予（当前支持 Azure AD）|访问令牌的生存期比密码短得多，并且具有长生存期持有者令牌不具有的自动刷新机制。  在初始授权期间，实际用户必须提供，从而增加了责任级别。 |要求用户提供。 如果用户离开了组织，则令牌将无效，并且将需要再次完成授权。|库应用支持。 对非库应用的支持正在进行。|
-|OAuth 客户端凭据授予（在我们的路线图上不受支持）|访问令牌的生存期比密码短得多，并且具有长生存期持有者令牌不具有的自动刷新机制。 授权代码授权和客户端凭据 grant 都创建相同类型的访问令牌，因此在这些方法之间移动对于 API 是透明的。  预配可完全自动进行，并且无需用户交互即可无提示方式请求新令牌。 ||库和非库应用不支持。 积压工作（backlog）中的支持。|
-
 **OAuth 授权代码授予流：** 预配服务支持[授权代码授予](https://tools.ietf.org/html/rfc6749#page-24)。 提交你的应用程序在库中发布的请求后，我们的团队将与你一起收集以下信息：
 *  授权 URL：由客户端使用的 URL，通过用户代理重定向从资源所有者获取授权。 用户被重定向到此 URL 以授权访问。 
 *  令牌交换 URL：客户端用于交换访问令牌授权的 URL，通常使用客户端身份验证。
 *  客户端 ID：授权服务器向注册的客户端颁发客户端标识符，该标识符是表示客户端提供的注册信息的唯一字符串。  客户端标识符不是机密;它向资源所有者公开，**不得**单独用于客户端身份验证。  
 *  客户端密钥:客户端密码是由授权服务器生成的机密。 它应该是唯一的唯一值，只是授权服务器。 
-
-请注意，由于公开了客户端机密，因此不支持 OAuth v1。 支持 OAuth v2。  
 
 最佳做法（建议但不需要）：
 * 支持多个重定向 Url。 管理员可以配置 "portal.azure.com" 和 "aad.portal.azure.com" 中的预配。 支持多个重定向 Url 将确保用户可以从任一门户授予访问权限。
@@ -1472,7 +1392,7 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 
 * [自动执行用户预配和取消预配到 SaaS 应用](user-provisioning.md)
 * [사용자 프로비전을 위한 사용자 지정 특성 매핑](customize-application-attributes.md)
-* [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
-* [用户预配的作用域筛选器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+* [为属性映射编写表达式](functions-for-customizing-application-data.md)
+* [用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [계정 프로비전 알림](user-provisioning.md)
 * [SaaS App을 통합하는 방법에 대한 자습서 목록](../saas-apps/tutorial-list.md)

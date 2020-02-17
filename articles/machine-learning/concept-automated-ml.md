@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191203"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366243"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -139,7 +139,7 @@ ms.locfileid: "77191203"
 
 请考虑以下训练模型及其相应的训练和测试准确性。
 
-| 模型 | 定型准确度 | 测试准确性 |
+| “模型” | 定型准确度 | 测试准确性 |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
@@ -211,22 +211,71 @@ ms.locfileid: "77191203"
 
 使用 Azure 机器学习，可以使用自动 ML 来构建 Python 模型，并将其转换为 ONNX 格式。 ONNX 运行时支持C#，因此你可以使用在C#应用程序中自动生成的模型，而无需进行无编码或 REST 终结点引入的任何网络延迟。 [在此 Jupyter 笔记本中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)试用此流的示例。
 
-## <a name="automated-ml-across-microsoft"></a>跨 Microsoft 自动 ML
+## <a name="automated-ml-in-azure-machine-learning"></a>Azure 机器学习中的自动 ML
 
-自动 ML 还可用于其他 Microsoft 解决方案，如：
+Azure 机器学习提供了两种使用自动 ML 的体验
 
-|集成|说明|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|使用 Visual Studio 和 Visual Studio Code 与 ML.NET 自动 ML 一起使用，自动选择和培训 .NET 应用中的培训。|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|并行在 HDInsight 群集中的 Spark 上横向扩展自动 ML 培训作业。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接在 Power BI 中调用机器学习模型。|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|在 SQL Server 2019 大数据群集中通过数据创建新的机器学习模型。|
+* 对于经验丰富的客户， [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* 对于有限/无代码体验客户，Azure 机器学习 studio [https://ml.azure.com](https://ml.azure.com/)  
+
+下面总结了每种体验中支持的高级自动化 ML 功能。
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>试验设置 
+
+以下设置允许配置自动 ML 试验。 
+
+| | Python SDK| studio
+----|:----:|:----:
+将数据拆分为定型/验证集| ✓|✓
+支持 ML 任务：分类、回归和预测| ✓| ✓
+基于主要指标进行优化| ✓| ✓
+支持将 AML 计算作为计算目标 | ✓|✓
+配置预测范围，目标滞后 & 滚动窗口|✓|✓
+设置退出条件 |✓|✓ 
+设置并发迭代| ✓|✓
+删除列| ✓|✓
+块算法|✓|✓
+交叉验证 |✓|✓
+支持 Azure Databricks 群集的培训| ✓|
+查看工程特征名称|✓|
+特征化摘要| ✓|
+假日特征化|✓|
+日志文件的详细级别| ✓|
+
+### <a name="model-settings"></a>模型设置
+
+这些设置可作为自动 ML 试验的结果应用于最佳模型。
+
+||Python SDK|studio
+----|:----:|:----:
+最佳模型注册| ✓|✓
+最佳模型部署| ✓| ✓
+最佳模型 explainability| ✓|✓
+启用投票系综 & stack 系综模型| ✓|✓
+基于非主要指标显示最佳模型|✓|启用/禁用 ONNX 模型兼容性|✓|
+测试模型 | ✓| |
+
+### <a name="run-control-settings"></a>运行控件设置
+
+通过这些设置，你可以查看和控制实验运行及其子运行。 
+
+||Python SDK| studio
+----|:----:|:----:
+运行摘要表| ✓|✓
+取消运行| ✓|✓
+取消子运行| ✓| ✓
+获取 guardrails| ✓|✓
+暂停运行| ✓| 
+继续运行| ✓| 
 
 ## <a name="next-steps"></a>后续步骤
 
 请参阅示例并了解如何使用自动机器学习来构建模型：
 
-+ 按照[教程操作：使用 Azure 自动化机器学习自动为回归模型定型](tutorial-auto-train-models.md)
++ 按照[教程操作：使用 Azure 机器学习自动为回归模型定型](tutorial-auto-train-models.md)
 
 + 配置自动定型试验的设置：
   + 在 Azure 机器学习 studio 中，请[使用以下步骤](how-to-create-portal-experiments.md)。
@@ -235,3 +284,5 @@ ms.locfileid: "77191203"
 + 若要了解如何使用时序数据自动定型，请[使用以下步骤](how-to-auto-train-forecast.md)。
 
 + 试用[自动机器学习 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* 自动 ML 还可用于其他 Microsoft 解决方案，如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

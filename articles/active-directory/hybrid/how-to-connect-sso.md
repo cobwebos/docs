@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025697"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367966"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -36,7 +36,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 ![无缝单一登录](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->无缝 SSO 需要用户的设备**加入域**，但不需要设备[加入 Azure AD](../active-directory-azureadjoin-overview.md)。
+>无缝 SSO 只需将用户设备**加入域**，但不会在[联接 Azure AD](../active-directory-azureadjoin-overview.md)或 [混合 Azure AD 联接] （.）上使用它。/active-directory-azureadjoin-overview.md）设备。 SSO pn Azure AD 联接，并且混合 Azure AD 联接的工作基于 [主刷新标记] （.。。/active-directory/devices/concept-primary-refresh-token.md)
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -63,12 +63,12 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 
 | 操作系统\浏览器 |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|是\*|是|是|是\*\*\*|不适用
-|Windows 8.1|是\*|不适用|是|是\*\*\*|不适用
-|Windows 8|是\*|不适用|是|是\*\*\*|不适用
-|Windows 7|是\*|不适用|是|是\*\*\*|不适用
-|Windows Server 2012 R2 或更高版本|是\*\*|不适用|是|是\*\*\*|不适用
-|Mac OS X|不适用|不适用|是\*\*\*|是\*\*\*|是\*\*\*
+|Windows 10|是\*|是|是|是\*\*\*|空值
+|Windows 8.1|是\*|空值|是|是\*\*\*|空值
+|Windows 8|是\*|空值|是|是\*\*\*|空值
+|Windows 7|是\*|空值|是|是\*\*\*|空值
+|Windows Server 2012 R2 或更高版本|是\*\*|空值|是|是\*\*\*|空值
+|Mac OS X|空值|空值|是\*\*\*|是\*\*\*|是\*\*\*
 
 
 \*需要 Internet Explorer 版本 10 或更高版本

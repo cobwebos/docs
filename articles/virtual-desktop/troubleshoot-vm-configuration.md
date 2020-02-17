@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980221"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367166"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>会话主机虚拟机配置
 
@@ -26,7 +26,7 @@ ms.locfileid: "75980221"
 
 如果在将 Vm 加入到域时遇到问题，请按照这些说明进行操作。
 
-- 使用将[Windows Server 虚拟机加入到托管域](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal)或使用[域加入模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)中的过程，手动联接 VM。
+- 使用将[Windows Server 虚拟机加入到托管域](../active-directory-domain-services/join-windows-vm.md)或使用[域加入模板](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)中的过程，手动联接 VM。
 - 尝试从 VM 上的命令行 ping 域名。
 - 在[排查域加入错误消息](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)中查看域加入错误消息列表。
 
@@ -37,7 +37,7 @@ ms.locfileid: "75980221"
 **修复：** 执行下列操作之一来解决。
 
 - 手动将 Vm 添加到域。
-- 确认凭据后，重新部署模板。 请参阅[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)。
+- 确认凭据后，重新部署模板。 请参阅[使用 PowerShell 创建主机池](create-host-pools-powershell.md)。
 - 使用将[现有 WINDOWS VM 加入 AD 域](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)的模板将 vm 加入域。
 
 ### <a name="error-timeout-waiting-for-user-input"></a>错误：等待用户输入超时
@@ -62,17 +62,17 @@ ms.locfileid: "75980221"
 
 **原因1：** Vm 位于与域所在的虚拟网络（VNET）不关联的虚拟网络上。
 
-**修复1：** 在配置了 Vm 的 VNET 和运行域控制器（DC）的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)。
+**修复1：** 在配置了 Vm 的 VNET 和运行域控制器（DC）的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](../virtual-network/create-peering-different-subscriptions.md)。
 
 **原因2：** 使用 Azure Active Directory 域服务（Azure AD DS）时，不会将虚拟网络的 DNS 服务器设置更新为指向托管域控制器。
 
-**修复2：** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置，请参阅[更新 Azure 虚拟网络的 dns 设置](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)。
+**修复2：** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置，请参阅[更新 Azure 虚拟网络的 dns 设置](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)。
 
 **原因3：** 网络接口的 DNS 服务器设置未指向虚拟网络上适当的 DNS 服务器。
 
 **修复3：** 按照 [更改 DNS 服务器] 中的步骤操作，执行以下操作之一以解决此问题。
-- 将网络接口的 DNS 服务器设置更改为 "**自定义**"，并执行 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)" 和 "指定虚拟网络上 DNS 服务器的专用 IP 地址" 中的步骤。
-- 更改网络接口的 DNS 服务器设置，使其从 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers)" 中的步骤**继承**，然后更改虚拟网络的 dns 服务器设置和 "[更改 dns 服务器](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers)" 中的步骤。
+- 将网络接口的 DNS 服务器设置更改为 "**自定义**"，并执行 "[更改 dns 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)" 和 "指定虚拟网络上 DNS 服务器的专用 IP 地址" 中的步骤。
+- 更改网络接口的 DNS 服务器设置，使其从 "[更改 dns 服务器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)" 中的步骤**继承**，然后更改虚拟网络的 dns 服务器设置和 "[更改 dns 服务器](../virtual-network/manage-virtual-network.md#change-dns-servers)" 中的步骤。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>未安装 windows 虚拟桌面代理和 Windows 虚拟桌面启动加载程序
 
@@ -88,7 +88,7 @@ ms.locfileid: "75980221"
 
 **原因1：** 在 Azure 资源管理器模板的输入过程中提供的凭据不正确或权限不足。
 
-**修复1：** 使用 "[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)"，手动将缺少的组件添加到 vm。
+**修复1：** 使用 "[使用 PowerShell 创建主机池](create-host-pools-powershell.md)"，手动将缺少的组件添加到 vm。
 
 **原因2：** PowerShell DSC 能够启动并执行，但无法完成，因为它无法登录到 Windows 虚拟桌面并获得所需的信息。
 
@@ -147,7 +147,7 @@ ms.locfileid: "75980221"
 
 **修复2：** 按照以下说明打开端口443。
 
-1. 从[Sysinternal 工具](https://docs.microsoft.com/sysinternals/downloads/psping)下载 PSPing 工具，确认端口443已打开。
+1. 从[Sysinternal 工具](/sysinternals/downloads/psping/)下载 PSPing 工具，确认端口443已打开。
 2. 在运行代理的会话主机 VM 上安装 PSPing。
 3. 以管理员身份打开命令提示符，并发出以下命令：
 
@@ -189,7 +189,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 ![已安装或启用并行堆栈，其中 qwinsta 在输出中列为 rdp-sxs。](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-检查下面列出的注册表项，并确认它们的值是否匹配。 如果缺少注册表项或值不匹配，请按照如何重新安装并行堆栈中的[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)中的说明进行操作。
+检查下面列出的注册表项，并确认它们的值是否匹配。 如果缺少注册表项或值不匹配，请按照如何重新安装并行堆栈中的[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明进行操作。
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 **修复：** 按照这些说明在会话主机 VM 上安装并行堆栈。
 
 1. 使用远程桌面协议（RDP）作为本地管理员直接加入会话主机 VM。
-2. 下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），然后运行此 cmdlet 以登录到你的帐户：
+2. 下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），然后运行此 cmdlet 以登录到你的帐户：
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. 使用 "使用[PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)" 安装并行堆栈。
+3. 使用 "使用[PowerShell 创建主机池](create-host-pools-powershell.md)" 安装并行堆栈。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>如何修复发生故障的 Windows 虚拟桌面并行堆栈
 
@@ -226,14 +226,14 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 - 多次运行 enablesxsstackrc
 - 在没有本地管理员权限的帐户中运行 enablesxsstackrc
 
-本节中的说明可帮助你卸载 Windows 虚拟桌面并行堆栈。 卸载并列堆栈后，请在[使用 PowerShell 创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)中的 "使用 Windows 虚拟机主机池注册 VM" 中，使用安装并行堆栈。
+本节中的说明可帮助你卸载 Windows 虚拟桌面并行堆栈。 卸载并列堆栈后，请在[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的 "使用 Windows 虚拟机主机池注册 VM" 中，使用安装并行堆栈。
 
 用于运行修正的 VM 必须与具有故障并行堆栈的 VM 位于同一子网和域中。
 
 按照以下说明从同一子网和域运行修正：
 
 1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
-2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec 下载 PsExec。
+2. 从 https://docs.microsoft.com/sysinternals/downloads/psexec下载 PsExec。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
 5. 导航到在其中解压缩了 PsExec 的文件夹。
@@ -305,7 +305,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 如果看到这些消息中的任何一个，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面授权模式。 按照以下部分中的步骤检查组策略设置，确定 Windows 10 企业多会话版本，并安装相应的更新。  
 
 >[!NOTE]
->当主机池包含 Windows Server 会话主机时，Windows 虚拟桌面只需要 RDS 客户端访问许可证（CAL）。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为你的 RDS 部署提供许可](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)。
+>当主机池包含 Windows Server 会话主机时，Windows 虚拟桌面只需要 RDS 客户端访问许可证（CAL）。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为你的 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 

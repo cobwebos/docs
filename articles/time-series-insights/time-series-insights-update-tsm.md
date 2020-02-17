@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861381"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368635"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的时序模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "75861381"
 > * 阅读有关[Azure 时序见解预览资源管理器](time-series-insights-update-explorer.md)的信息，了解如何导航时序模型 UI。
 > * 了解如何使用时序见解 web 资源管理器[处理时序模型](time-series-insights-update-how-to-tsm.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 一直以来，从 IoT 设备收集的数据缺少上下文信息，以致难以快速查找和分析传感器。 时序模型的主要动机是简化 IoT 或时序数据的查找和分析。 它通过启用时序数据的特选、维护和扩充来实现这一目标，帮助为分析准备使用者就绪的数据集。
 
@@ -97,7 +97,7 @@ ms.locfileid: "75861381"
 
 实例由**timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和**instanceFields**定义。 每个实例仅映射到一个*类型*和一个或多个*层次结构*。
 
-| 属性 | Description |
+| properties | 说明 |
 | --- | ---|
 | timeSeriesId | 与实例关联的时序的 UUID。 |
 | typeId | 实例与之关联的时序模型类型的 UUID。 默认情况下，所有发现的新实例都关联到默认类型。
@@ -145,7 +145,7 @@ ms.locfileid: "75861381"
 
 层次结构由层次结构**id**、**名称**和**源**定义。
 
-| 属性 | Description |
+| properties | 说明 |
 | ---| ---|
 | id | 层次结构的唯一标识符，例如在定义实例时使用。 |
 | name | 用于提供层次结构的名称的字符串。 |
@@ -237,7 +237,7 @@ ms.locfileid: "75861381"
 
 时序模型类型定义方式如下： **id**、**名称**、**说明**和**变量**。
 
-| 属性 | Description |
+| properties | 说明 |
 | ---| ---|
 | id | 类型的 UUID。 |
 | name | 用于为类型提供名称的字符串。 |
@@ -300,7 +300,7 @@ ms.locfileid: "75861381"
 
 #### <a name="numeric-variables"></a>数值变量
 
-| 变量属性 | Description |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制被视为计算的行数。 |
 | 变量值 | 用于计算的遥测值来自设备或传感器，或使用时序表达式进行转换。 数值类型变量的类型必须为*Double*。|
@@ -330,7 +330,7 @@ ms.locfileid: "75861381"
 
 #### <a name="categorical-variables"></a>分类变量
 
-| 变量属性 | Description |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制被视为计算的行数。 |
 | 变量值 | 用于计算的遥测值来自设备或传感器。 分类类型变量必须是*Long*或*String*。 |
@@ -370,7 +370,7 @@ ms.locfileid: "75861381"
 
 #### <a name="aggregate-variables"></a>聚合变量
 
-| 变量属性 | Description |
+| 变量属性 | 说明 |
 | --- | ---|
 | 变量筛选器 | 筛选器是可选的条件子句，用于限制被视为计算的行数。 |
 | 变量聚合 | 支持通过*Avg*、 *Min*、 *Max*、 *Sum*、 *Count*、 *First*、 *Last*进行计算。 |

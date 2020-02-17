@@ -4,15 +4,15 @@ description: 了解如何购买 Azure Cosmos DB 预留容量以节省计算成�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 17f6787cddf2800663d37b153b3e1b8cf33390f8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201164"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367697"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
@@ -52,7 +52,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 ![保留的容量建议](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
 
-这种购买 3000000 RU/秒预订的建议表明，在3年的保留期，3000000 RU/秒预留大小将最大限度地节省费用。 在这种情况下，将根据 Azure Cosmos DB 使用量过去的30天来计算建议。 如果此客户预计过去30天的 Azure Cosmos DB 使用量代表将来使用，则可以通过购买 3000000 RU/s 预订来最大限度地节省成本。
+这种购买 30000 RU/秒预订的建议表明，在3年的保留期，30000 RU/秒预留大小将最大限度地节省费用。 在这种情况下，将根据 Azure Cosmos DB 使用量过去的30天来计算建议。 如果此客户预计过去30天的 Azure Cosmos DB 使用量代表将来使用，则可以通过购买 30000 RU/s 预订来最大限度地节省成本。
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>购买 Azure Cosmos DB 预留容量
 

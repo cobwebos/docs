@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191294"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366231"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure 逻辑应用中的触发器和操作类型的架构参考指南
 
@@ -2304,7 +2304,7 @@ ID,Product_Name
 | <action-type> | String | 要运行的操作类型 | 
 | <action-inputs> | 各种各样 | 要运行的操作的输入 | 
 | <condition> | String | 当循环中的所有操作都运行完成后要计算的条件或表达式 | 
-| <loop-count> | Integer | 针对操作可运行的最大循环数的限制。 默认 `count` 值为 60。 | 
+| <loop-count> | Integer | 针对操作可运行的最大循环数的限制。 有关默认限制和最大限制的详细信息，请参阅[Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 | 
 | <loop-timeout> | String | 针对循环可运行的最长时间的限制。 默认 `timeout` 值为 `PT1H`，即要求的 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
 |||| 
 

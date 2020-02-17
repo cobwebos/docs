@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772544"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367628"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -38,7 +38,7 @@ ms.locfileid: "75772544"
 1. 打开[Windows 预览体验门户](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0)并登录。
 
      >[!NOTE]
-     >你必须是 Windows 预览体验计划的成员才能访问 Windows 预览体验门户。 若要了解有关 Windows 预览体验计划的详细信息，请查看我们的[Windows 预览体验文档](https://docs.microsoft.com/windows-insider/at-home/)。
+     >你必须是 Windows 预览体验计划的成员才能访问 Windows 预览体验门户。 若要了解有关 Windows 预览体验计划的详细信息，请查看我们的[Windows 预览体验文档](/windows-insider/at-home/)。
 
 2. 向下滚动到 "**选择版本**" 部分，并选择 " **Windows 10 预览体验版（快速）-生成 19035** " 或更高版本。
 
@@ -79,7 +79,7 @@ sc config wuauserv start=disabled
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>准备应用程序以进行 .MSIX 应用附加 
 
-如果你已有 .MSIX 包，请直接跳到[配置 Windows 虚拟桌面基础结构](#configure-windows-virtual-desktop-infrastructure)。 如果要测试旧应用程序，请按照[从 VM 上的桌面安装程序创建 .msix 包](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm)中的说明，将旧应用程序转换为 .msix 包。
+如果你已有 .MSIX 包，请直接跳到[配置 Windows 虚拟桌面基础结构](#configure-windows-virtual-desktop-infrastructure)。 如果要测试旧应用程序，请按照[从 VM 上的桌面安装程序创建 .msix 包](/windows/msix/packaging-tool/create-app-package-msi-vm/)中的说明，将旧应用程序转换为 .msix 包。
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>为 .MSIX 生成 VHD 或 VHDX 包
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>设置 .MSIX 应用附加代理的模拟脚本
 
-创建脚本后，用户可以手动运行这些脚本，或将其设置为以启动、登录、注销和关闭脚本的形式自动运行。 若要了解有关这些类型的脚本的详细信息，请参阅[在组策略中使用启动、关机、登录和注销脚本](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11))。
+创建脚本后，用户可以手动运行这些脚本，或将其设置为以启动、登录、注销和关闭脚本的形式自动运行。 若要了解有关这些类型的脚本的详细信息，请参阅[在组策略中使用启动、关机、登录和注销脚本](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)。
 
 其中每个自动脚本都运行一个应用附加脚本阶段：
 
@@ -407,7 +407,7 @@ rmdir $packageName -Force -Verbose
 
 下面介绍如何设置脱机使用的许可证： 
 
-1. 从适用于企业的 Microsoft Store 下载应用程序包、许可证和所需框架。 你需要编码的和未编码的许可证文件。 可在[此处](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到详细的下载说明。
+1. 从适用于企业的 Microsoft Store 下载应用程序包、许可证和所需框架。 你需要编码的和未编码的许可证文件。 可在[此处](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)找到详细的下载说明。
 2. 请在步骤3：
       1. `$contentID` 是未编码的许可证文件（.xml）的 Id 为值。 可以在所选的文本编辑器中打开许可证文件。
       2. `$licenseBlob` 是编码的许可证文件（bin）中许可证 blob 的整个字符串。 可以在所选的文本编辑器中打开编码的许可证文件。 

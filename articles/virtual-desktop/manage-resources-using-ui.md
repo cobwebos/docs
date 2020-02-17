@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887353"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367309"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署管理工具
 
@@ -36,7 +36,7 @@ ms.locfileid: "75887353"
 
 - 已禁用 Azure 多重身份验证 (MFA)
 - 有权在 Azure 订阅中创建资源
-- 有权创建 Azure AD 应用程序 按照[所需的权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
+- 有权创建 Azure AD 应用程序 按照[所需的权限](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)中的说明，执行这些步骤检查用户是否具有所需的权限。
 
 部署和配置管理工具后，建议你要求用户启动管理 UI，以确保一切正常。 启动管理 UI 的用户必须具有使他们能够查看或编辑 Windows 虚拟桌面租户的角色分配。
 
@@ -48,18 +48,18 @@ ms.locfileid: "75887353"
 
 1. 转到 [GitHub Azure RDS 模板页](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)。
 2. 将模板部署到 Azure。
-    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。  
+    - 如果在“企业”订阅中部署，请向下滚动并选择“部署到 Azure”。 
     - 如果在“云解决方案提供商”订阅中部署，请遵照以下说明部署到 Azure：
-        1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。  
+        1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。
         2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
         3. 紧接在 <https://portal.azure.com/> 之后、井号 (#) 之前，输入 @ 符号，后接租户域名。 下面格式示例：<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
         4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
         5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 3. 输入参数时，请执行以下操作：
-    - 对于 isServicePrincipal 参数，选择 false   。
+    - 对于 isServicePrincipal 参数，选择 false。
     - 对于凭据，在已禁用多重身份验证的情况下输入 Azure AD 凭据。 这些凭据将用于创建 Azure AD 应用程序和 Azure 资源。 若要了解详细信息，请参阅[部署管理工具所需满足的条件](#what-you-need-to-deploy-the-management-tool)。
-    - 对于 applicationName，为要在 Azure Active Directory 中注册的应用使用唯一的名称  。 此名称还将用于 Web 应用 URL。 例如，可以使用类似于“Apr3UX”的名称。
-4. 提供参数后，接受条款和条件，并选择“购买”  。
+    - 对于 applicationName，为要在 Azure Active Directory 中注册的应用使用唯一的名称。 此名称还将用于 Web 应用 URL。 例如，可以使用类似于“Apr3UX”的名称。
+4. 提供参数后，接受条款和条件，并选择“购买”。
 
 ## <a name="provide-consent-for-the-management-tool"></a>为管理工具提供许可
 
@@ -69,19 +69,19 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 ![该屏幕截图显示许可 UI 管理工具时提供的权限。](media/management-ui-delegated-permissions.png)
 
-若要确定可以使用哪个用户登录到该工具，请转到 [Azure Active Directory 用户设置页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)，并记下“用户可以许可应用代表他们访问公司数据”的值。 
+若要确定可以使用哪个用户登录到该工具，请转到 [Azure Active Directory 用户设置页](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)，并记下“用户可以许可应用代表他们访问公司数据”的值。
 
 ![该屏幕截图显示用户是否可以许可应用程序代表他们访问数据。](media/management-ui-user-consent-allowed.png)
 
-- 如果该值设置为“是”，则你可以使用 Azure Active Directory 中的任何用户帐户登录，并只能为该用户提供许可。  但是，如果以后使用其他用户登录到管理工具，则必须再次执行相同的许可。
-- 如果该值设置为“否”，则必须以 Azure Active Directory 中的全局管理员身份登录，并针对目录中的所有用户提供管理员许可。  所有其他用户不会看到许可提示。
+- 如果该值设置为“是”，则你可以使用 Azure Active Directory 中的任何用户帐户登录，并只能为该用户提供许可。 但是，如果以后使用其他用户登录到管理工具，则必须再次执行相同的许可。
+- 如果该值设置为“否”，则必须以 Azure Active Directory 中的全局管理员身份登录，并针对目录中的所有用户提供管理员许可。 所有其他用户不会看到许可提示。
 
 
 决定要使用哪个用户提供许可后，请遵照以下说明为工具提供许可：
 
 1. 转到你的 Azure 资源，选择具有模板中提供的名称（例如 Apr3UX）的 Azure 应用服务资源，然后导航到与它关联的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用相应的 Azure Active Directory 用户帐户登录。
-3. 如果已使用全局管理员帐户进行身份验证，则现在可以选中“代表组织提供许可”复选框。  选择“接受”以提供许可。 
+3. 如果已使用全局管理员帐户进行身份验证，则现在可以选中“代表组织提供许可”复选框。 选择“接受”以提供许可。
    
    ![该屏幕截图显示用户或管理员将看到的整个许可页。](media/management-ui-consent-page.png)
 
@@ -95,8 +95,8 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 1. 选择具有模板中提供的名称（例如 Apr3UX）的 Azure 应用服务资源，然后导航到与它关联的 URL，例如 <https://rdmimgmtweb-210520190304.azurewebsites.net>。
 2. 使用 Windows 虚拟桌面凭据登录。
-3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。 
-4. 选择“默认租户组”时，将在窗口左侧显示一个菜单  。 在此菜单中，找到租户组的名称并将其选中。
+3. 当系统提示你选择租户组时，请从下拉列表中选择“默认租户组”。
+4. 选择“默认租户组”时，将在窗口左侧显示一个菜单。 在此菜单中，找到租户组的名称并将其选中。
   
   > [!NOTE]
   > 如果你有自定义的租户组，请手动输入名称，而不要从下拉列表中选择。

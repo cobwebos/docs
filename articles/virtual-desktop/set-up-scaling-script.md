@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061470"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367249"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化缩放会话主机
 
@@ -35,7 +35,7 @@ ms.locfileid: "77061470"
 高峰使用时间期间，作业将检查每个主机池当前正在运行的会话主机的当前会话数和 VM 容量。 它使用此信息来计算正在运行的会话主机 Vm 是否可支持基于为**createazurelogicapp**文件定义的*SessionThresholdPerCPU*参数的现有会话。 如果会话主机 Vm 无法支持现有会话，则该作业会在主机池中启动其他会话主机 Vm。
 
 >[!NOTE]
->*SessionThresholdPerCPU*不会限制虚拟机上的会话数。 此参数仅确定需要启动新 Vm 以对连接进行负载平衡的时间。 若要限制会话数，需要按照说明[RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool)来相应地配置*MaxSessionLimit*参数。
+>*SessionThresholdPerCPU*不会限制虚拟机上的会话数。 此参数仅确定需要启动新 Vm 以对连接进行负载平衡的时间。 若要限制会话数，需要按照说明[RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)来相应地配置*MaxSessionLimit*参数。
 
 在非高峰使用时间内，作业根据*MinimumNumberOfRDSH*参数确定哪些会话主机 vm 应关闭。 该作业会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果将*LimitSecondsToForceLogOffUser*参数设置为非零正值，则脚本将通知所有当前已登录用户保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该脚本会关闭 VM。
 
@@ -126,7 +126,7 @@ ms.locfileid: "77061470"
 
 接下来，需要创建一个角色分配，以便 AzureRunAsConnection 可以与 Windows 虚拟桌面进行交互。 请确保使用 PowerShell 通过有权创建角色分配的帐户进行登录。
 
-首先，下载并导入要在 PowerShell 会话中使用的[Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做）。 运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并显示你的租户。
+首先，下载并导入要在 PowerShell 会话中使用的[Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。 运行以下 PowerShell cmdlet 连接到 Windows 虚拟桌面，并显示你的租户。
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965731"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367213"
 ---
 # <a name="tenant-and-host-pool-creation"></a>创建租户和主机池
 
@@ -53,7 +53,7 @@ ms.locfileid: "75965731"
 
 **原因：** 未在 Azure Active Directory 中为登录用户分配 "TenantCreator" 角色。
 
-**修复：** 按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)中的说明进行操作。 按照说明操作后，你将拥有一个分配给 TenantCreator 角色的用户。
+**修复：** 按照[为 Azure Active Directory 租户中的用户分配 TenantCreator 应用程序角色](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)中的说明进行操作。 按照说明操作后，你将拥有一个分配给 TenantCreator 角色的用户。
 
 ![已分配 TenantCreator 角色的屏幕截图。](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
-1. 使用[Azure 资源管理器的 "查看部署" 操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)查看部署中的错误。
-2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误，[以审核对资源的操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
-3. 确定错误后，请使用错误消息和资源[解决 azure 资源管理器的常见 Azure 部署错误](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors)，以解决此问题。
+1. 使用[Azure 资源管理器的 "查看部署" 操作](../azure-resource-manager/resource-manager-deployment-operations.md)查看部署中的错误。
+2. 如果部署中没有错误，请使用查看活动日志查看活动日志中的错误，[以审核对资源的操作](../azure-resource-manager/resource-group-audit.md)。
+3. 确定错误后，请使用错误消息和资源[解决 azure 资源管理器的常见 Azure 部署错误](../azure-resource-manager/resource-manager-common-deployment-errors.md)，以解决此问题。
 4. 删除在之前的部署过程中创建的任何资源，然后重试部署模板。
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>错误：部署失败 ...\<主机名 >/joindomain

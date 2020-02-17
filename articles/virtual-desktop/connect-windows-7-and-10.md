@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 745b33efe46c82e3b9358c9c5a2ed13292242db1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 15bda000f0297f6e8e006416672897cb15792b79
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997337"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367493"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>使用 Windows 桌面客户端进行连接
 
@@ -25,15 +25,15 @@ ms.locfileid: "74997337"
 
 ## <a name="install-the-windows-desktop-client"></a>安装 Windows 桌面客户端
 
-选择与你的 Windows 版本相匹配的客户端：
+选择与您的 Windows 版本相匹配的客户端：
 
 - [Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2068602)
 - [Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2098960)
 - [Windows ARM64](https://go.microsoft.com/fwlink/?linkid=2098961)
 
-你可以为当前用户安装客户端（这不需要管理员权限），或者你的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
+您可以为当前用户安装客户端，而不需要管理员权限，或者您的管理员可以安装和配置客户端，以便设备上的所有用户都可以访问该客户端。
 
-安装后，可以通过搜索“远程桌面”，从“开始”菜单启动客户端。
+安装后，可以通过搜索 "**远程桌面**"，从 "开始" 菜单启动客户端。
 
 ## <a name="subscribe-to-a-feed"></a>订阅源
 
@@ -43,7 +43,7 @@ ms.locfileid: "74997337"
 
 1. 打开 Windows 桌面客户端。
 2. 在主页上选择 "**订阅**"，连接到服务并检索资源。
-3. 出现提示时，请使用用户帐户登录。
+3. 出现提示时，请用用户帐户登录。
 
 成功登录后，应会看到可访问的资源列表。
 
@@ -57,4 +57,4 @@ ms.locfileid: "74997337"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅[Windows 桌面客户端入门](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)。
+若要了解有关如何使用 Windows 桌面客户端的详细信息，请参阅[Windows 桌面客户端入门](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)。

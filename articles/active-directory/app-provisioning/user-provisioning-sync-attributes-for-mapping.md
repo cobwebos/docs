@@ -15,18 +15,18 @@ ms.date: 05/13/2019
 ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f49fce985484e85bcba2883a66ec0b1e6d032a8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12d8e60d3bfeb2e72d52b30dffcec4ad6e6c3f08
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066039"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368183"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序
 
 为用户预配自定义属性映射时，您可能会发现您要映射的属性未出现在 "**源属性**" 列表中。 本文介绍如何通过将缺少的属性从本地 Active Directory （AD）同步到 Azure Active Directory （Azure AD）来添加该属性。
 
-将用户帐户从 Azure AD 预配到 SaaS 应用时，Azure AD 必须包含创建用户配置文件所需的所有数据。 在某些情况下，若要使数据可用，可能需要将本地 AD 中的属性同步到 Azure AD。 Azure AD Connect 会自动将某些属性同步到 Azure AD，但不会将所有属性同步。 而且，默认情况下同步的某些属性（如 SAMAccountName）可能不会通过 Azure AD 图形 API 公开。 在这些情况下，可以使用 Azure AD Connect 目录扩展功能将特性同步到 Azure AD。 这样，属性将对 Azure AD 图形 API 和 Azure AD 预配服务可见。
+将用户帐户从 Azure AD 预配到 SaaS 应用时，Azure AD 必须包含创建用户配置文件所需的所有数据。 在某些情况下，若要使数据可用，可能需要将本地 AD 中的属性同步到 Azure AD。 Azure AD Connect 会自动将某些属性同步到 Azure AD，但不会将所有属性同步。 而且，默认情况下同步的某些属性（如 SAMAccountName）可能不会使用 Microsoft Graph API 公开。 在这些情况下，可以使用 Azure AD Connect 目录扩展功能将特性同步到 Azure AD。 这样一来，属性将对 Microsoft Graph API 和 Azure AD 预配服务可见。
 
 如果预配所需的数据位于 Active Directory 中，但由于上述原因不可用于预配，请执行以下步骤。
  

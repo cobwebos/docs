@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186049"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368088"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory 条件访问常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "77186049"
 
 ## <a name="does-a-sharepoint-online-policy-also-apply-to-onedrive-for-business"></a>SharePoint Online 策略是否也适用于 OneDrive for Business？
 
-可以。 SharePoint Online 策略也适用于 OneDrive for Business。
+是的。 SharePoint Online 策略也适用于 OneDrive for Business。
 
 ## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>为什么无法直接在客户端应用程序（如 Word 或 Outlook）上设置策略？
 
@@ -40,7 +40,7 @@ ms.locfileid: "77186049"
 
 条件访问策略适用于所有用户帐户。 其中包括用作服务帐户的用户帐户。 通常，在无人参与模式下运行的服务帐户无法满足条件访问策略的要求。 例如，可能需要多重身份验证。 可以使用条件访问策略管理设置从策略中排除服务帐户。 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>图形 Api 是否可用于配置条件性访问策略？
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Microsoft Graph Api 是否可用于配置条件性访问策略？
 
 目前不可以。 
 

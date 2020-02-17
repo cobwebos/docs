@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159244"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367900"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>登录到配置为联合单一登录的库应用程序时出现的问题
 
@@ -162,7 +162,7 @@ Azure AD 不支持应用程序针对单一登录所发送的 SAML 请求。 常�
 
 ## <a name="misconfigured-application"></a>应用程序配置错误
 
-*错误 AADSTS650056：应用程序配置不正确。这可能是由以下原因之一导致的：客户端未在客户端应用程序注册中的请求权限中列出 "AAD Graph" 的任何权限。或者，管理员未同意租户。或者，检查请求中的应用程序标识符，以确保它与配置的客户端应用程序标识符匹配。请联系你的管理员以解决此问题。*
+*错误 AADSTS650056：应用程序配置不正确。这可能是由以下原因之一导致的：客户端在客户端的应用程序注册中未列出所请求权限的任何权限。或者，管理员未同意租户。或者，检查请求中的应用程序标识符，以确保它与配置的客户端应用程序标识符匹配。请联系你的管理员以解决此问题。*
 
 **可能的原因**
 

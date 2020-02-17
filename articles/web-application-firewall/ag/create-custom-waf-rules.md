@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 14aa1018aec2a9dc22c3b059b4aa46bff2bb554a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050063"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368299"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在应用程序网关上创建和使用 Web 应用程序防火墙 v2 自定义规则
 
@@ -126,7 +126,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-### <a name="example-2"></a>示例 2
+## <a name="example-2"></a>示例 2
 
 你希望通过 GeoMatch 操作员允许来自美国的流量：
 

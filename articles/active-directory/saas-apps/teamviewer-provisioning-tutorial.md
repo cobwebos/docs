@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150691"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366430"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>教程：为 TeamViewer 配置自动用户预配
 
@@ -101,7 +101,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入你的 TeamViewer 管理员凭据和用户名。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 TeamViewer。 如果连接失败，请确保你的 TeamViewer 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分的 " **Tentant URL** " 字段中，输入 "`ttps://webapi.teamviewer.com/scim/v2`"，并输入之前在**机密令牌**中创建的脚本标记。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 TeamViewer。 如果连接失败，请确保你的 TeamViewer 帐户具有管理员权限，然后重试。
 
     ![预配](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

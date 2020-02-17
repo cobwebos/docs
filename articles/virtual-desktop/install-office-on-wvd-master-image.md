@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539137"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368816"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>在主 VHD 映像中安装 Office
 
@@ -20,20 +20,20 @@ ms.locfileid: "74539137"
 
 本文假设你已创建虚拟机（VM）。 否则，请参阅[准备和自定义主 VHD 映像](set-up-customize-master-image.md#create-a-vm)
 
-本文还假定你在 VM 上拥有提升的访问权限，无论是在 Azure 中预配还是 Hyper-v 管理器。 否则，请参阅[提升访问权限以管理所有 Azure 订阅和管理组](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)。
+本文还假定你在 VM 上拥有提升的访问权限，无论是在 Azure 中预配还是 Hyper-v 管理器。 否则，请参阅[提升访问权限以管理所有 Azure 订阅和管理组](../role-based-access-control/elevate-access-global-admin.md)。
 
 >[!NOTE]
 >这些说明适用于可与组织的现有过程配合使用的特定于 Windows 虚拟桌面的配置。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>在共享计算机激活模式下安装 Office
 
-共享计算机激活使你能够将 Office 365 ProPlus 部署到你组织中由多个用户访问的计算机。 有关共享计算机激活的详细信息，请参阅[Office 365 的共享计算机激活概述 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus)。
+共享计算机激活使你能够将 Office 365 ProPlus 部署到你组织中由多个用户访问的计算机。 有关共享计算机激活的详细信息，请参阅[Office 365 的共享计算机激活概述 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)。
 
 使用[Office 部署工具](https://www.microsoft.com/download/details.aspx?id=49117)安装 office。 Windows 10 企业多会话仅支持以下版本的 Office：
 - Office 365 ProPlus
 - Microsoft 365 商业版订阅随附的 Office 365 业务
 
-Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示例，请参阅[Office 部署工具的配置选项](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool)。
+Office 部署工具需要一个配置 XML 文件。 若要自定义下面的示例，请参阅[Office 部署工具的配置选项](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)。
 
 我们提供的此示例配置 XML 将执行以下操作：
 

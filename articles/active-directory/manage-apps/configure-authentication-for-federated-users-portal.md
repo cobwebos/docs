@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159159"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367878"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
@@ -100,9 +100,7 @@ ms.locfileid: "77159159"
 
 服务主体中每次只有一个 HRD 策略处于活动状态。  
 
-可直接使用 Microsoft Azure Active Directory 图形 API，或使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
-
-MSDN 中的[策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)一文介绍了用于操作策略的图形 API。
+你可以使用 Azure Active Directory PowerShell cmdlet 来创建和管理 HRD 策略。
 
 以下是 HRD 策略定义示例：
     
@@ -209,7 +207,7 @@ Get-AzureADPolicy
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>步骤 2：查找要向其分配策略的服务主体  
 需要要向其分配策略的服务主体的“ObjectID”。 可通过多种方法查找服务主体的“ObjectID”。    
 
-可以使用门户，或查询 [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 
+可以使用门户，或查询 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)。 还可以转到 [Graph 浏览器工具](https://developer.microsoft.com/graph/graph-explorer)，并登录到 Azure AD 帐户，查看组织的所有服务主体。 
 
 因为你使用的是 PowerShell，你可以使用以下 cmdlet 列出服务主体及其 Id。
 
