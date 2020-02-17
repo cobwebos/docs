@@ -345,7 +345,13 @@
               href: functions-bindings-cosmosdb-v2.md
               displayName: Azure Cosmos DB
         - name: 事件网格
-          href: functions-bindings-event-grid.md
+          items:
+            - name: 概述
+              href: functions-bindings-event-grid.md
+            - name: 触发器
+              href: functions-bindings-event-grid-trigger.md
+            - name: 输出
+              href: functions-bindings-event-grid-output.md
         - name: 事件中心
           href: functions-bindings-event-hubs.md
         - name: IoT 中心
