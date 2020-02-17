@@ -20,9 +20,9 @@ Azure 应用服务提供高度可缩放、自修补的 Web 托管服务。 本�
 
 ## <a name="prerequisites"></a>先决条件
 
-如果你没有 Azure 帐户，请[立即注册](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)一个免费帐户来试用任何服务组合，并获得 200 美元的 Azure 信用额度。
+如果你没有 Azure 帐户，[现在注册](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension)免费帐户即可获得 200 美元的 Azure 额度；这笔额度可用于试用任何服务组合。
 
-需要连同 [Node.js 和 npm](https://nodejs.org/en/download)（Node.js 包管理器）一起安装 [Visual Studio Code](https://code.visualstudio.com/)。
+需要安装 [Visual Studio Code](https://code.visualstudio.com/) 以及 [Node.js 和 npm](https://nodejs.org/en/download)（Node.js 包管理器）。
 
 还需要安装 [Azure 应用服务扩展](vscode:extension/ms-azuretools.vscode-azureappservice)，使用该扩展可在 Azure 平台即服务 (PaaS) 上创建、管理和部署 Linux Web 应用。
 
@@ -34,7 +34,7 @@ Azure 应用服务提供高度可缩放、自修补的 Web 托管服务。 本�
 
 ### <a name="troubleshooting"></a>故障排除
 
-如果出现错误“找不到名为 [订阅 ID] 的订阅”，原因可能是你使用了代理，因此无法访问 Azure API。  在终端中使用 `export` 以代理信息配置 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量。
+如果出现错误“找不到名为 [订阅 ID] 的订阅”，原因可能是你使用了代理，因此无法访问 Azure API。  在终端中使用 `export` 根据代理信息配置 `HTTP_PROXY` 和 `HTTPS_PROXY` 环境变量。
 
 ```sh
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -47,7 +47,7 @@ export HTTP_PROXY=http://username:password@proxy:8080
 
 在继续之前，请确保已安装并配置了所有必备组件。
 
-在 VS Code 的状态栏中应会显示你的 Azure 电子邮件地址，“AZURE 应用服务”资源管理器中应会显示你的订阅。 
+VS Code 的状态栏中应该会显示你的 Azure 电子邮件地址，“AZURE 应用服务”资源管理器中应该会显示你的订阅。 
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
@@ -154,7 +154,7 @@ code .
 
 ### <a name="update-the-app"></a>更新应用
 
-可以使用相同的过程来部署对此应用所做的更改，并选择现有应用而不是创建新应用。
+要部署对此应用所做的更改，可以使用相同的过程并选择现有应用而不是创建新应用。
 
 ## <a name="viewing-logs"></a>查看日志
 
