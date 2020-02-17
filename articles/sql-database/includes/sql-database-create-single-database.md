@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496145"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252092"
 ---
 在此步骤中，将创建 Azure SQL 数据库单一数据库。 
 
@@ -29,16 +30,16 @@ ms.locfileid: "73496145"
 
    ![创建单一数据库](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：  
+4. 在“项目详细信息”部分的“基本信息”选项卡上，键入或选择以下值：  
 
    - **订阅**：下拉列表并选择正确的订阅（如果它没有出现）。
    - **资源组**：选择“新建”，键入 `myResourceGroup`，然后选择“确定”   。
 
      ![“新建 SQL 数据库 - 基本信息”选项卡](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. 在“数据库详细信息”部分，键入或选择以下值： 
+5. 在“数据库详细信息”部分，键入或选择以下值： 
 
-   - **数据库名称**：输入 `mySampleDatabase` 。
+   - **数据库名称**：输入 `mySampleDatabase`。
    - **服务器**：选择“新建”并输入以下值，然后选择“选择”。  
        - **服务器名称**：键入 `mysqlserver` 和一些数字，使名称唯一。
        - **服务器管理员登录名**：键入 `azureuser`。
@@ -63,18 +64,22 @@ ms.locfileid: "73496145"
      - 还可以选择“更改配置”来更改硬件生成  。
    - 选择“应用”。 
 
-5. 选择“其他设置”选项卡。  
-6. 在“数据源”部分的“使用现有数据”下，选择 `Sample`。  
+6. 选择“网络”  选项卡，并决定是要[**允许 Azure 服务和资源访问此服务器**](../sql-database-networkaccess-overview.md)，还是要添加[专用终结点](../../private-link/private-endpoint-overview.md)。
+
+   ![“网络”选项卡](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. 选择“其他设置”选项卡。  
+8. 在“数据源”部分的“使用现有数据”下，选择 `Sample`。  
 
    ![其他 SQL 数据库设置](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > 确保选择“示例(AdventureWorksLT)”数据，这样就可以轻松地按照本指南以及使用此数据的其他 Azure SQL 数据库快速入门进行操作  。
 
-7. 将剩余字段保留默认值，然后选择窗体底部的“查看 + 创建”。 
-8. 检查最终的设置，然后选择“创建”。 
+9. 将剩余字段保留默认值，然后选择窗体底部的“查看 + 创建”。 
+10. 检查最终的设置，然后选择“创建”。 
 
-9. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库   。
+11. 在“SQL 数据库”窗体中，选择“创建”来部署和预配资源组、服务器和数据库   。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -144,7 +149,7 @@ ms.locfileid: "73496145"
 
 本文的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
@@ -219,7 +224,7 @@ ms.locfileid: "73496145"
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | 将订阅设置为当前的活动订阅。 | 
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
