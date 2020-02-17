@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185869"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368017"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>存档 Azure Active Directory 中的新增功能
 
@@ -483,7 +483,7 @@ Azure AD 应用现在可以使用静态查询参数（例如，`https://contoso.
 
 在5月2019，我们已将这21个新应用和联合支持添加到应用库：
 
-[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial)， [Real Links](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial)， [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/)，[简单符号](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial)， [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial)， [Displayr](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial)， [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial)， [Marketo 销售接洽](https://toutapp.com/login)， [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial)， [OutSystems](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial)， [Meta4 Global HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial)，[量子工作区](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial)，[钴](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial)， [webMethods API 云](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial)， [RedFlag](https://pocketstop.com/redflag/) [，Whatfix，](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial)JOBHUB [](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial) [，NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial) [](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial) [](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial) [](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
+[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial)， [Real Links](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial)， [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/)，[简单符号](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial)， [Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial)， [Displayr](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial)， [Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial)， [Marketo 销售接洽](https://toutapp.com/login)， [ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial)， [OutSystems](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial)， [Meta4 Global HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial)，[量子工作区](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial)，[钴](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial)， [webMethods API 云](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial)， [RedFlag](https://pocketstop.com/redflag/) ，[Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial)，[Control](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial) [JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial) ， [NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial) [Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial) [MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
 
@@ -1698,7 +1698,7 @@ Azure AD 活动日志现已推出适用于 Azure Monitor（Azure 的平台级监
 **服务类别：** 报告  
 **产品功能：** 监视和报告
  
-由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户。 客户将能够在 Azure AD 门户中通过登录 MS Graph API 或登录活动日志访问此信息。在该门户中，你可以使用“客户端应用”控件对旧式身份验证进行筛选。 查看文档可了解更多详细信息。
+由于在登录活动日志中引入了“客户端应用”字段，客户现在可以查看使用旧式身份验证的用户。 客户将可以使用登录 Microsoft Graph API 或通过 Azure AD 门户中的登录活动日志访问此信息，你可以使用**客户端应用程序**控件来筛选旧身份验证。 查看文档可了解更多详细信息。
 
 ---
 
@@ -2092,7 +2092,7 @@ Azure AD Connect 的最新版本包括：
 **服务类别：** 报告  
 **产品功能：** 监视和报告
  
-现在可通过 MS Graph 获取 Azure AD 活动日志（包括登录和审核日志）。 我们已通过 MS Graph 公开 2 个用于访问这些日志的终结点。 请查看我们的[文档](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)，了解如何以编程方式访问入门所需的 Azure AD 报告 API。 
+Azure AD 活动日志（包括登录和审核日志）现在可通过 Microsoft Graph API 获得。 我们已通过 Microsoft Graph API 公开了两个终结点来访问这些日志。 请查看我们的[文档](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)，了解如何以编程方式访问入门所需的 Azure AD 报告 API。 
 
 ---
  
@@ -2596,7 +2596,7 @@ Azure AD 应用现在可以在 JWT 或 SAML 令牌中请求自定义或可选声
 **服务类别：** 报告  
 **产品功能：** 监视和报告
 
-由于某些客户反映他们想要启用非管理员角色来访问 Azure AD 活动日志，我们为充当“报告读取者”角色的用户启用了该功能，让他们使用 Azure 门户或图形 API 访问登录和审核活动。 
+为了使非管理员角色能够访问 Azure AD 活动日志的客户反馈，我们为 "报表读者" 角色中的用户启用了此功能，以便访问 Azure 门户中的登录和审核活动，并使用 Microsoft GraphAPI. 
 
 有关如何使用这些报告的详细信息，请参阅 [Azure Active Directory 报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)。 
 

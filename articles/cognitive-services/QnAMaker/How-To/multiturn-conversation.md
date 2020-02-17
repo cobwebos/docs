@@ -1,22 +1,14 @@
 ---
 title: 多轮会话-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 使用 "提示" 和 "上下文" 来管理机器人，使机器人从一个问题到另一个问题。 多轮功能可以让您在上一个问题的上下文中影响下一个问题和答案。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843254"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210408"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用跟进提示创建多个轮次的对话
 
@@ -31,6 +23,9 @@ ms.locfileid: "76843254"
 不能在单次轮中回答某些问题。 在设计客户端应用程序（聊天机器人）对话时，用户可能会询问需要筛选或改进的问题，以确定正确的答案。 通过向用户提供*跟进提示*，你可以使此流出现问题。
 
 当用户提出问题时，QnA Maker 将返回应答_和_任何后续提示。 此响应允许您将后续问题作为选择提供。
+
+> [!CAUTION]
+> 不会从 FAQ 文档中提取多个提示。 如果需要多轮提取，请删除将 QnA 对指定为 Faq 的问号。
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>带聊天机器人的多轮会话示例
 
