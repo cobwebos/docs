@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251764"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425640"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -104,6 +104,18 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 访问令牌。 | 不可用 |
 
+
+### <a name="saml"></a>SAML
+
+| 声明 | 说明 | 示例 |
+| ----- | ----------- | --------|
+| {SAML： AuthnContextClassReferences} | SAML 请求中的 `AuthnContextClassRef` 元素值。 | urn： oasis：名称： tc： SAML：2.0： ac：类： PasswordProtectedTransport |
+| {SAML： NameIdPolicyFormat} | `Format` 特性，来自 SAML 请求的 `NameIDPolicy` 元素。 | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML： Issuer} |  SAML 请求的 SAML `Issuer` 元素值。| https://contoso.com |
+| {SAML： AllowCreate} | 来自 SAML 请求的 `NameIDPolicy` 元素的 `AllowCreate` 属性值。 | True |
+| {SAML： ForceAuthn} | 来自 SAML 请求的 `AuthnRequest` 元素的 `ForceAuthN` 属性值。 | True |
+| {SAML： ProviderName} | 来自 SAML 请求的 `AuthnRequest` 元素的 `ProviderName` 属性值。| Contoso.com |
+
 ## <a name="using-claim-resolvers"></a>使用声明解析程序 
 
 可以将声明解析程序用于以下元素： 
@@ -160,7 +172,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 
 ### <a name="dynamic-ui-customization"></a>动态 UI 自定义
 
-Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终结点，以动态呈现页面内容。 例如，使用此功能，可以基于从 web 或移动应用程序传递的自定义参数来修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization-dynamic.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
+Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终结点，以动态呈现页面内容。 例如，使用此功能，可以基于从 web 或移动应用程序传递的自定义参数来修改 Azure AD B2C 注册或登录页上的背景图像。 有关详细信息，请参阅[使用 Azure Active Directory B2C 中的自定义策略动态配置 UI](custom-policy-ui-customization.md)。 此外，还可以根据语言参数本地化 HTML 页，或者根据客户端 ID 更改内容。
 
 以下示例在名为**campaignId**的查询字符串参数中传递，其值为 `hawaii`、`en-US`的**语言**代码和表示客户端 ID 的**应用**：
 

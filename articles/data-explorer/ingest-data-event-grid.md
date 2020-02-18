@@ -1,23 +1,23 @@
 ---
 title: 将 Azure Blob 引入 Azure 数据资源管理器
 description: 本文介绍如何使用事件网格订阅将存储帐户数据发送到 Azure 数据资源管理器。
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667488"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424977"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-event-grid.md)
+> * [门户](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager 模板](data-connection-event-grid-resource-manager.md)
@@ -26,9 +26,9 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 本文介绍如何设置[Azure 事件网格](/azure/event-grid/overview)订阅，并通过事件中心将事件路由到 Azure 数据资源管理器。 在开始之前，应已准备好一个存储帐户，以及一个可将通知发送到 Azure 事件中心的事件网格订阅。 然后创建事件网格数据连接，并查看整个系统中的数据流。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* 一个 Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [一个群集和数据库](create-cluster-database-portal.md)。
 * [一个存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)。
 * [一个事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
@@ -36,7 +36,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>在存储帐户中创建事件网格订阅
 
 1. 在 Azure 门户中找到你的存储帐户。
-1. 选择“事件” > “事件订阅”。
+1. 选择“事件” **“事件订阅”。**  > 
 
     ![查询应用程序链接](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -47,7 +47,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
     | 名称 | *test-grid-connection* | 要创建的事件网格的名称。|
     | 事件架构 | *事件网格架构* | 事件网格要使用的架构。 |
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
-    | 主题资源 | *gridteststorage* | 存储帐户的名称。 |
+    | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |
     | 订阅所有事件类型 | *clear* | 不要获取有关所有事件的通知。 |
     | 定义的事件类型 | *已创建 Blob* | 要获取其通知的特定事件。 |
     | 终结点类型 | *事件中心* | 要将事件发送到的终结点的类型。 |
@@ -56,7 +56,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 1. 如果要跟踪特定容器中的文件，请选择 "**筛选器**" 选项卡。 按如下所述设置通知筛选器：
     * “主题开头为”字段是 Blob 容器的文本前缀。 由于应用的模式是 *startswith*，因此可以跨越多个容器。 不允许通配符。
-     必须设置为： *`/blobServices/default/containers/`* [容器前缀]
+     必须设置为： *[容器前缀]`/blobServices/default/containers/`*
     * “主题末尾为”字段是 Blob 的文本后缀。 不允许通配符。
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>在 Azure 数据资源管理器中创建目标表
@@ -87,11 +87,11 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 1. 在工具栏上选择“通知”，以验证事件中心部署是否成功。
 
-1. 在创建的群集下，选择“数据库” > “TestDatabase”。
+1. 在创建的群集下，选择“数据库” **“TestDatabase”。**  > 
 
     ![选择测试数据库](media/ingest-data-event-grid/select-test-database.png)
 
-1. 选择“数据引入” > “添加数据连接”。
+1. 选择“数据引入” **“添加数据连接”。**  > 
 
     ![数据引入](media/ingest-data-event-grid/data-ingestion-create.png)
 
@@ -157,6 +157,11 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Azure 数据资源管理器不会删除引入后的 blob。
+> 将 thrre 的 blob 保留5天。
+> 使用[Azure blob 存储生命周期](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)来管理 Blob 删除。 
 
 ## <a name="review-the-data-flow"></a>查看数据流
 

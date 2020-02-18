@@ -8,126 +8,40 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42426e8249f3b6ceb592254833f38ab0df99c83c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8bb65e07a8360c434f73ff826ed21f380b036604
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848962"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373124"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-完成本文后，你将拥有一个带有品牌和外观的注册和登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。
+通过完成本文中的步骤，可以创建具有品牌和外观的注册和登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
-## <a name="page-ui-customization"></a>页面 UI 自定义
+[!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-使用页面 UI 自定义功能可对任何自定义策略的外观进行自定义。 还可以在应用程序与 Azure AD B2C 之间保持品牌和视觉一致性。
+## <a name="4-modify-the-extensions-file"></a>4. 修改扩展文件
 
-工作原理如下：Azure AD B2C 在客户的浏览器中运行代码，并使用称为[跨域资源共享 (CORS)](https://www.w3.org/TR/cors/) 的现代方法。 首先，请在包含自定义 HTML 内容的自定义策略中指定 URL。 Azure AD B2C 会将 UI 元素与从 URL 加载的 HTML 内容合并，然后向客户显示页面。
+若要配置 UI 自定义，请将基文件中的**ContentDefinition**及其子元素复制到扩展文件中。
 
-## <a name="create-your-html5-content"></a>创建 HTML5 内容
-
-在标题中创建包含产品的品牌名称的 HTML 内容。
-
-1. 复制以下 HTML 代码段。 它是格式正确的 HTML5， *\<body\>* 标记内包含名为 *\<div id="api"\>\</div\>* 的空元素。 此元素指示要在何处插入 Azure AD B2C 内容。
-
-   ```html
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <title>My Product Brand Name</title>
-   </head>
-   <body>
-       <div id="api"></div>
-   </body>
-   </html>
-   ```
-
-1. 将复制的代码段粘贴到文本编辑器中，然后将文件保存为 *customize-ui.html*。
-
-> [!NOTE]
-> 如果使用 login.microsoftonline.com，将删除 HTML 窗体元素。 如果要使用自定义 HTML 内容中的 HTML 窗体元素，请使用 b2clogin.com。 有关其他权益，请参阅[使用 b2clogin.com](b2clogin.md) 。
-
-## <a name="create-an-azure-blob-storage-account"></a>创建 Azure Blob 存储帐户
-
->[!NOTE]
-> 在本文中，我们使用 Azure Blob 存储来托管内容。 可以选择将内容托管在 Web 服务器上，但必须[在 Web 服务器上启用 CORS](https://enable-cors.org/server.html)。
-
-若要在 Blob 存储中托管此 HTML 内容，请执行以下步骤：
-
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 在“中心”菜单上，选择“新建” > “存储” > “存储帐户”。
-1. 为存储帐户选择一个**订阅**。
-1. 创建一个**资源组**或选择现有的资源组。
-1. 为存储帐户输入唯一的**名称**。
-1. 为存储帐户选择**地理位置**。
-1. “部署模型”可保留为“Resource Manager”。
-1. “性能”可保留为“标准”。
-1. 将“帐户类型”更改为“Blob 存储”。
-1. “复制”可保留为“RA-GRS”。
-1. “访问层”可保留为“热”。
-1. 单击 "**查看 + 创建**" 以创建存储帐户。
-    部署完成后，将自动打开 "**存储帐户**" 页。
-
-## <a name="create-a-container"></a>创建容器
-
-若要在 Blob 存储中创建公共容器，请执行以下步骤：
-
-1. 在左侧菜单中的 " **blob 服务**" 下，选择 " **blob**"。
-1. 单击 " **+ 容器**"。
-1. 对于 "**名称**"，请输入*root*。 这可以是你选择的名称（例如*wingtiptoys*），但为了简单起见，我们在此示例中使用了*root* 。
-1. 对于 "**公共访问级别**"，请选择 " **Blob**"，然后选择 **"确定"** 。
-1. 单击 "**根**" 打开新容器。
-1. 单击“上载” 。
-1. 单击“选择文件”旁边的文件夹图标。
-1. 导航到并选择前面在 "页面 UI 自定义" 部分中创建的**customize-ui.html。**
-1. 如果要上传到子文件夹，请展开 "**高级**"，然后在 "**上传到文件夹**" 中输入文件夹名称。
-1. 选择“上传”。
-1. 选择上传的**customize-ui.html** blob。
-1. 在 " **URL** " 文本框的右侧，选择 "**复制到剪贴板**" 图标以将 URL 复制到剪贴板。
-1. 在 web 浏览器中，导航到复制的 URL，以验证上传的 blob 是否可访问。 如果它不可访问，例如如果遇到 `ResourceNotFound` 错误，请确保容器访问类型设置为**blob**。
-
-## <a name="configure-cors"></a>配置 CORS
-
-通过执行以下步骤，将 Blob 存储配置为跨域资源共享：
-
-1. 在菜单中，选择“CORS”。
-1. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com` 。 输入租户名称时，需要使用全小写字母。
-1. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
-1. 对于“允许的标头”，请输入一个星号 (*)。
-1. 对于“公开的标头”，请输入一个星号 (*)。
-1. 对于“最大期限”，请输入 200。
-1. 单击“ **保存**”。
-
-## <a name="test-cors"></a>测试 CORS
-
-通过执行以下步骤验证是否已准备就绪：
-
-1. 转到 [www.test-cors.org](https://www.test-cors.org/) 网站，然后将 URL 粘贴到“远程 URL”框中。
-1. 单击“发送请求”。
-    如果收到错误，请确保 [CORS 设置](#configure-cors)正确。 可能还需要清除浏览器缓存，或通过按 Ctrl+Shift+P 打开专用浏览会话。
-
-## <a name="modify-the-extensions-file"></a>修改扩展文件
-
-要配置 UI 自定义，请将 ContentDefinition 及其子元素从基本文件复制到扩展文件。
-
-1. 打开策略的基文件。 例如， <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> 。 这是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
+1. 打开策略的基文件。 例如， <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>。 此基本文件是自定义策略初学者包中包含的策略文件之一，你应该已在先决条件中获取[自定义策略入门](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom)。
 1. 搜索并复制 ContentDefinitions 元素的全部内容。
 1. 打开扩展文件， 例如，TrustFrameworkExtensions.xml。 搜索 BuildingBlocks 元素。 如果该元素不存在，请添加该元素。
 1. 粘贴作为 BuildingBlocks 元素的子元素复制的 ContentDefinitions 元素的全部内容。
-1. 在复制的 XML 中搜索包含 `Id="api.signuporsignin"` 的 ContentDefinition 元素。
+1. 在复制的 XML 中搜索包含  **的 ContentDefinition**`Id="api.signuporsignin"` 元素。
 1. 将 LoadUri 的值更改为上传到存储的 HTML 文件的 URL。 例如，`https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html` 。
 
-    自定义策略应如下所示：
+    自定义策略应类似于以下代码片段：
 
     ```xml
     <BuildingBlocks>
@@ -146,9 +60,9 @@ ms.locfileid: "76848962"
 
 1. 保存扩展文件。
 
-## <a name="upload-and-test-your-updated-custom-policy"></a>上载和测试更新的自定义策略
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. 上载和测试更新的自定义策略
 
-### <a name="upload-the-custom-policy"></a>上传自定义策略
+### <a name="51-upload-the-custom-policy"></a>5.1 上传自定义策略
 
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录。
 1. 搜索并选择**Azure AD B2C**。
@@ -156,55 +70,66 @@ ms.locfileid: "76848962"
 1. 选择 "**上载自定义策略**"。
 1. 上传以前已更改的扩展文件。
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>使用“立即运行”测试自定义策略
+### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 通过使用 "**立即运行**" 测试自定义策略
 
 1. 选择上传的策略，然后选择 "**立即运行**"。
 1. 现在，应该可以使用电子邮件地址进行注册了。
 
-## <a name="reference"></a>参考
+[!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
 
-### <a name="sample-templates"></a>示例模板
-可以在以下位置找到用于 UI 自定义的示例模板：
+## <a name="configure-dynamic-custom-page-content-uri"></a>配置动态自定义页面内容 URI
 
+通过使用 Azure AD B2C 自定义策略，你可以在 URL 路径中发送参数，或在查询字符串中发送参数。 通过将该参数传递到 HTML 终结点，可以动态更改页面内容。 例如，可以基于从 Web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。 参数可以是任何[声明解析](claim-resolver-overview.md)程序，如应用程序 ID、语言 ID 或自定义查询字符串参数，如 `campaignId`。
+
+### <a name="sending-query-string-parameters"></a>发送查询字符串参数
+
+若要发送查询字符串参数，请在[信赖方策略](relyingparty.md)中添加一个 `ContentDefinitionParameters` 元素，如下所示。
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <UserJourneyBehaviors>
+    <ContentDefinitionParameters>
+        <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+        <Parameter Name="lang">{Culture:LanguageName}</Parameter>
+        <Parameter Name="appId">{OIDC:ClientId}</Parameter>
+    </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
+    ...
+</RelyingParty>
 ```
-git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
+
+在内容定义中，将 `LoadUri` 的值更改为 `https://<app_name>.azurewebsites.net/home/unified`。 自定义策略 `ContentDefinition` 应类似于以下代码片段：
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
-sample_templates/wingtip 文件夹包含以下 HTML 文件：
+当 Azure AD B2C 加载页面时，它会调用你的 web 服务器终结点：
 
-| HTML5 模板 | Description |
-|----------------|-------------|
-| *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
-| *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
-| *selfasserted.html* | 将此文件用作社交帐户注册页面、本地帐户注册页面或本地帐户登录页面的模板。 |
-| *unified.html* | 将此文件用作统一注册或登录页面的模板。 |
-| *updateprofile.html* | 将此文件用作个人资料更新页面的模板。 |
+```http
+https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f893d6d3-3b6d-480d-a330-1707bf80ebea
+```
 
-下面是有关如何使用此示例的步骤：
+### <a name="dynamic-page-content-uri"></a>动态页内容 URI
 
-1. 将存储库克隆到本地计算机。 选择 sample_templates 下的模板文件夹。 您可以使用 `wingtip` 或 `contoso`。
-1. 按照前面几节中所述，将 `css`、`fonts`和 `images` 文件夹下的所有文件上传到 Blob 存储。
-1. 接下来，在 `wingtip` 或 `contoso` （在第一步中选择）的根目录中打开每个 \*.html 文件，并将 "http://localhost" 的所有实例替换为在步骤2中上载的 css、图像和字体文件的 Url。
-1. 保存 \*.html 文件并将其上传到 Blob 存储。
-1. 现在, 如上文所述[修改扩展文件](#modify-the-extensions-file)来修改扩展文件。
-1. 如果发现缺少字体、图像或 CSS，请检查扩展策略和 \*.html 文件中的引用。
+可以根据所使用的参数从不同位置拉取内容。 在启用 CORS 的终结点中，设置文件夹结构以托管内容。 例如，可以按以下结构组织内容。 *每个语言/html 文件的根文件夹/文件夹*。 例如，你的自定义页 URI 可能如下所示：
 
-### <a name="content-definition-ids"></a>内容定义 ID
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
+```
 
-在“修改注册或登录自定义策略”部分中，你已配置了 `api.idpselections` 的内容定义。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
+Azure AD B2C 为语言发送两个字母 ISO 代码，`fr` 为法语：
 
-| 内容定义 ID | Description |
-|-----------------------|-------------|
-| *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
-| *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
-| *api.idpselections.signup* | **用于注册的标识提供者选项**。 此页面包含有可供用户在注册期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |
-| *api.localaccountpasswordreset* | **忘记密码页面**。 此页面包含一个窗体，用户必须填写该窗体才能发起密码重置。  |
-| *api.localaccountsignin* | **本地帐户登录页面**。 此页面包含一个登录窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 该窗体可以包含文本输入框和密码输入框。 |
-| *api.localaccountsignup* | **本地帐户注册页面**。 此页面包含一个注册窗体，用于通过基于电子邮件地址或用户名的本地帐户进行注册。 该窗体可以包含各种输入控件，如文本输入框、密码输入框、单选按钮、单选下拉框和多选复选框。 |
-| *api.phonefactor* | **多重身份验证页面** 在此页面上，用户可以在注册或登录期间（使用文字或语音）验证其电话号码。 |
-| *api.selfasserted* | **社交帐户注册页面**。 此页面包含一个注册窗体，用户在使用 Facebook 或 Google+ 等社交标识提供者的现有帐户注册时必须填写此窗体。 除了密码输入字段之外，此页面类似于前面的社交帐户注册页面。 |
-| *api.selfasserted.profileupdate* | **个人资料更新页面**。 此页面包含用户可以用来更新其个人资料的窗体。 除了密码输入字段之外，此页面类似于社交帐户注册页面。 |
-| *api.signuporsignin* | **统一注册或登录页面**。 此页面处理用户的注册和登录，用户可以使用企业标识提供者、社交标识提供者（例如 Facebook 或 Google+）或本地帐户。  |
+```http
+https://contoso.blob.core.windows.net/fr/myHTML/unified.html
+```
 
 ## <a name="next-steps"></a>后续步骤
 
