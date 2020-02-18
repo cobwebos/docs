@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762500"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373407"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitor 中包含动态阈值的指标警报
 
@@ -92,11 +92,11 @@ ms.locfileid: "74762500"
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>需要使用多少数据来预览再计算阈值？
 
-第一次创建和警报时，将根据用于计算小时或每日季节性模式（10天）的足够多的历史数据来计算图表中出现的阈值。 创建警报规则后，动态阈值将使用所需的所有可用历史数据，并根据新数据持续学习和适应，使阈值更准确。 这意味着，在此计算后，图表还将显示每周的模式。
+第一次创建预警规则时，将根据用于计算小时或每日季节性模式（10天）的足够多历史数据计算图表中出现的阈值。 创建警报规则后，动态阈值将使用所需的所有可用历史数据，并根据新数据持续学习和适应，使阈值更准确。 这意味着，在此计算后，图表还将显示每周的模式。
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>触发警报需要多少数据？
 
-如果有新资源或缺少指标数据，则在三天的数据可用之前，动态阈值不会触发警报，以确保阈值的准确性。
+如果有新资源或缺少指标数据，则动态阈值将不会在三天或30个指标数据示例可用时触发警报，以确保准确的阈值。
 
 ## <a name="dynamic-thresholds-best-practices"></a>动态阈值最佳做法
 
@@ -129,7 +129,7 @@ ms.locfileid: "74762500"
 
 8. 指标图表将显示基于最新数据计算得出的阈值。
 
-9. 单击“完成”。
+9. 单击 **“完成”** 。
 
 10. 填写“警报详细信息”，例如“警报规则名称”、“说明”和“严重性”。
 
@@ -164,7 +164,7 @@ ms.locfileid: "74762500"
 
 8. 指标图表将显示基于最新数据计算得出的阈值。
 
-9. 单击“完成”。
+9. 单击 **“完成”** 。
 
 10. 填写“警报详细信息”，例如“警报规则名称”、“说明”和“严重性”。
 

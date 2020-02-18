@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271591"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373351"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>在 Azure 中保护 Azure 数据资源管理器群集
 
@@ -34,10 +34,10 @@ Azure 资源的 Azure Active Directory （Azure AD）托管标识功能解决了
 
 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了进一步控制加密密钥，你可以提供客户管理的密钥用于数据加密。 你可以用自己的密钥管理存储级别的数据加密。 使用客户管理的密钥来保护和控制对根加密密钥（用于加密和解密所有数据）的访问。 客户管理的密钥提供更大的灵活性，以创建、轮换、禁用和撤消访问控制。 你还可以审核用于保护数据的加密密钥。
 
-使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault API 来生成密钥。 Azure 数据资源管理器群集和 Azure Key Vault 必须位于同一区域中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-overview)。 有关客户托管密钥的详细说明，请参阅[Azure Key Vault 的客户托管密钥](/azure/storage/common/storage-service-encryption)
+使用 Azure Key Vault 来存储客户管理的密钥。 你可以创建自己的密钥并将其存储在密钥保管库中，也可以使用 Azure Key Vault API 来生成密钥。 Azure 数据资源管理器群集和 Azure Key Vault 必须位于同一区域中，但它们可以位于不同的订阅中。 有关 Azure Key Vault 的详细信息，请参阅[什么是 Azure Key Vault？](/azure/key-vault/key-vault-overview)。 有关客户托管密钥的详细说明，请参阅[Azure Key Vault 的客户托管密钥](/azure/storage/common/storage-service-encryption)。 使用[C#](/azure/data-explorer/customer-managed-keys-csharp)或[azure 资源管理器模板](/azure/data-explorer/customer-managed-keys-resource-manager)在 azure 数据资源管理器群集中配置客户管理的密钥
 
 > [!Note]
-> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 若要在 Azure 门户中配置客户管理的密钥，需要配置群集的**SystemAssigned**托管标识。
+> 客户托管的密钥依赖于 Azure 资源的托管标识，一项功能 Azure Active Directory （Azure AD）。 若要在 Azure 门户中配置客户管理的密钥，需要配置群集的**SystemAssigned**托管标识，如为[Azure 数据资源管理器群集配置托管标识](/azure/data-explorer/managed-identities)中所述。
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>将客户托管的密钥存储在 Azure Key Vault
 
@@ -60,8 +60,8 @@ Azure 资源的 Azure Active Directory （Azure AD）托管标识功能解决了
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置 Azure 数据资源管理器群集的托管标识](managed-identities.md)
 * 通过启用静态加密来[保护 Azure 中的群集数据资源管理器门户](manage-cluster-security.md)。
+* [配置 Azure 数据资源管理器群集的托管标识](managed-identities.md)
 * [使用 Azure 资源管理器模板配置客户托管密钥](customer-managed-keys-resource-manager.md)
 * [使用配置客户管理的密钥C#](customer-managed-keys-csharp.md)
 

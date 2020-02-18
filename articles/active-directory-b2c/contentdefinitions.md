@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157867"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372790"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "77157867"
 
 **ContentDefinition** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
 
@@ -82,7 +82,7 @@ ms.locfileid: "77157867"
 | 页面标识符 | 说明 |
 | ----- | ----------- |
 | `globalexception` | 遇到异常或错误时显示错误页面。 |
-| `providerselection` | 列出可供用户在登录期间选择的标识提供者。 |
+| `providerselection`、`idpselection` | 列出可供用户在登录期间选择的标识提供者。  |
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
@@ -133,21 +133,21 @@ ms.locfileid: "77157867"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 与内容定义相关的元数据。 |
+| 项 | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 密钥 | 是 | 元数据密钥。  |
+| Key | 是 | 元数据密钥。  |
 
 #### <a name="metadata-keys"></a>元数据密钥
 
 内容定义支持以下元数据项： 
 
-| 密钥 | 必选 | 说明 |
+| Key | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| DisplayName | 否 | 一个字符串，其中包含内容定义的名称。 |
+| DisplayName | 是 | 一个字符串，其中包含内容定义的名称。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -159,9 +159,9 @@ ms.locfileid: "77157867"
 
 **LocalizedResourcesReference**元素包含以下属性：
 
-| Attribute | 必选 | 说明 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
+| Language | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：

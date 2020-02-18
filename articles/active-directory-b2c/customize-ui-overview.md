@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908918"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373152"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义用户界面 Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ ms.locfileid: "76908918"
 
 如果要使用[自定义策略](custom-policy-overview.md)在应用程序中提供注册或登录、密码重置或配置文件编辑，请使用[策略文件来自定义 UI](custom-policy-ui-customization.md)。
 
-如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](custom-policy-ui-customization-dynamic.md)的自定义策略。 例如，可以基于从 web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
+如果需要根据客户的决定提供动态内容，请使用可以根据在查询字符串中发送的参数[动态更改页面内容](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)的自定义策略。 例如，可以基于从 web 或移动应用程序传递的参数，更改 Azure AD B2C 注册或登录页面上的背景图像。
 
 ### <a name="javascript"></a>JavaScript
 
@@ -61,7 +61,7 @@ ms.locfileid: "76908918"
 
 接下来，从列表中选择一个模板。 下面是每个模板的登录页面示例：
 
-| 海蓝 | 石板灰色 | 经典 |
+| 海蓝 | 石板灰色 | Classic |
 |:-:|:-:|:-:|
 |!["注册登录" 页上呈现的海蓝色模板的示例](media/customize-ui-overview/template-ocean-blue.png)|![在注册登录页上呈现的石板灰色模板的示例](media/customize-ui-overview/template-slate-gray.png)|![在注册登录页上呈现的经典模板的示例](media/customize-ui-overview/template-classic.png)|
 
@@ -96,7 +96,7 @@ Azure AD B2C 使用称为[跨域资源共享（CORS）](https://www.w3.org/TR/co
 
 遵循这些准则，开始在用户体验页中使用自己的 HTML 和 CSS。
 
-- 使用位于 `<body>` 中某处的空 `<div id="api"></div>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
+- 使用位于 `<div id="api"></div>` 中某处的空 `<body>` 元素创建格式正确的 HTML 内容。 此元素标记插入 Azure AD B2C 内容的位置。 以下示例显示了一个最小化页面：
 
     ```html
     <!DOCTYPE html>

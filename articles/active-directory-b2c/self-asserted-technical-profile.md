@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/16/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a16fb1184de5b545b3ef527b1a66ffb7b68d1ef4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197912"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372857"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -189,17 +189,21 @@ ms.locfileid: "77197912"
 
 | 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| setting.operatingMode | 是 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。 |
+| 设置。 operatingMode <sup>1</sup>| 是 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 是| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
 | EnforceEmailVerification | 是 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
 | setting.retryLimit | 是 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
-| SignUpTarget | 是 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
+| SignUpTarget <sup>1</sup>| 是 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
 | setting.showCancelButton | 是 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
 | setting.showContinueButton | 是 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showSignupLink | 是 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 forgotPasswordLinkLocation| 是| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
+| 设置。 showSignupLink <sup>2</sup>| 是 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置。 forgotPasswordLinkLocation <sup>2</sup>| 是| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
 | IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+
+注：
+1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。
+1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。 [页面布局版本](page-layout.md)1.1.0 及更高版本。
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

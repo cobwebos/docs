@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725970"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373372"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>配置 Azure 数据资源管理器群集的托管标识
 
-[通过 Azure Active Directory 中的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)，你的群集可以轻松访问其他受 AAD 保护的资源，例如 Azure Key Vault。 该标识由 Azure 平台管理，不需要你预配或轮换任何机密。 本文介绍如何为 Azure 数据资源管理器群集创建托管标识。 
+[通过 Azure Active Directory 中的托管标识](/azure/active-directory/managed-identities-azure-resources/overview)，你的群集可以轻松访问其他受 AAD 保护的资源，例如 Azure Key Vault。 该标识由 Azure 平台管理，不需要你预配或轮换任何机密。 本文介绍如何为 Azure 数据资源管理器群集创建托管标识。 目前支持托管标识配置，以[启用群集的客户托管密钥](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)。
 
 > [!Note]
 > 如果你的应用跨订阅或租户迁移，Azure 数据资源管理器的托管标识不会按预期方式运行。 应用需要获取新的标识，这可以通过使用[删除标识](#remove-an-identity)来禁用和重新启用该功能来实现。 还需要更新下游资源的访问策略，以便使用新标识。

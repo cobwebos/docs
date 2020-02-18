@@ -101,7 +101,7 @@
               href: user-flow-self-service-password-reset.md
         - name: UX 自定义
           items:
-            - name: 用户界面自定义
+            - name: 自定义 UI
               href: customize-ui-overview.md
             - name: JavaScript 和页面布局
               href: user-flow-javascript-overview.md
@@ -177,8 +177,6 @@
             - name: 自定义 UI
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: 动态自定义 UI
-              href: custom-policy-ui-customization-dynamic.md
             - name: 自定义电子邮件
               href: custom-email.md
               displayName: verification
