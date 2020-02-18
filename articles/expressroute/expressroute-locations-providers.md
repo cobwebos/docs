@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6eaa2c038c75243c2b2ad4361c173fe527ebf3b4
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 51ede9e264bd92721aca0ca0b75baf73c089e8fb
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212309"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371244"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -46,7 +46,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **北美** | 美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、San Antonio、西雅图、硅谷、硅 Valley2、华盛顿特区、华盛顿 DC2、蒙特利尔、魁北克市、多伦多 |
 | **亚洲** | 东亚、东南亚 | 曼谷，香港特别行政区，香港 Kong2，雅加达，吉隆坡，新加坡，新加坡2，台北 |
 | **印度** | 印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
-| **日本** | 日本西部、日本东部 |大坂、东京 |
+| **日本** | 日本西部、日本东部 |大阪、东京、Tokyo2 |
 | **大洋洲** | 澳大利亚东南部、澳大利亚东部 |奥克兰，墨尔本，Sydney2，悉尼， | 
 | **韩国** | 韩国中部、韩国南部 |釜山、首尔|
 | **阿拉伯联合酋长国** | 阿拉伯联合酋长国中部，阿拉伯联合酋长国北部 | Dubai、Dubai2 |
@@ -132,9 +132,10 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **Stavanger** | [绿色山地 DC1](https://greenmountain.no/dc1-stavanger/) | 1 | 挪威西部 | 10G，100G | |
 | **斯德哥尔摩** | [Equinix SK1](https://www.equinix.com/locations/europe-colocation/sweden-colocation/stockholm-data-centers/sk1/) | 1 | 不适用 | 10G | Equinix，Telia 电信公司 |
 | **悉尼** | [Equinix SY2](https://www.equinix.com/locations/asia-colocation/australia-colocation/sydney-data-centers/sy2/) | 2 | 澳大利亚东部 | 10G，100G | AARNet，AT & T NetBond，英国电信，Devoli，Equinix，Kordia，Megaport，NEXTDC，NTT 通信，Optus，橙色，Spark NZ，Telstra Corporation，TPG 电信，Verizon，Vocus 组 NZ |
-| **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | 澳大利亚东部 | 10G，100G | NextDC |
+| **Sydney2** | [NextDC S1](https://www.nextdc.com/data-centres/s1-sydney-data-centre) | 2 | 澳大利亚东部 | 10G，100G | Megaport、NextDC |
 | **台北** | Chief Telecom | 2 | 不适用 | 10G | 首席电信，FarEasTone |
-| **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本东部 | 10G，100G | Aryaka networks、网络，在 & T NetBond，英国电信，CenturyLink Cloud Connect，Colt，Equinix，Internet 计划日本 Inc.-IIJ，Megaport，NTT 通信，NTT EAST，橙色，Softbank，Verizon |
+| **东京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本东部 | 10G，100G | Aryaka networks、网络，在 & T NetBond、BBIX、英国电信、CenturyLink Cloud Connect、Colt、Equinix、Internet 计划日本 Inc.-IIJ、Megaport、NTT、NTT、Softbank、橙色、Verizon、 |
+| **Tokyo2** | [东京](https://www.attokyo.com/) | 2 | 日本东部 | 10G，100G | |
 | **多伦多** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G，100G | & T NetBond、钟形加拿大、CenturyLink Cloud Connect、Cologix、Equinix、IX 到 Megaport、Telus、Verizon、Zayo |
 | **华盛顿特区** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美国东部、美国东部2 | 10G，100G | Aryaka networks、网络，在 & T NetBond，英国电信，CenturyLink Cloud Connect，Cologix，Colt，Comcast，Coresite，Equinix，Internet2，InterCloud，IX 到，Level 3 通信，Megaport，Neutrona 网络，NTT 通信，橙色，PacketFabric，SES，冲刺（Sprint），Tata 通信，Telia 电信公司，Verizon，Zayo |
 | **华盛顿特区 2** | [Coresite 场](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | 美国东部、美国东部2 | 10G，100G | CenturyLink Cloud Connect、Coresite、Intelsat、Viasat、Zayo | 

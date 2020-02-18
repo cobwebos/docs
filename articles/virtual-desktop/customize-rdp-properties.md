@@ -32,7 +32,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP 属性 | 桌面 | RemoteApp |
 |---|---| --- |
-| 多监视器模式 | 已启用 | 不可用 |
+| 多监视器模式 | 已启用 | 空值 |
 | 已启用驱动器重定向 | 驱动器、剪贴板、打印机、COM 端口、USB 设备和智能卡| 驱动器、剪贴板和打印机 |
 | 远程音频模式 | 本地播放 | 本地播放 |
 

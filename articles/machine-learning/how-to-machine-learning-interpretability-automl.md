@@ -29,7 +29,7 @@ ms.locfileid: "77366269"
 - 启用可视化效果，以帮助你查看数据和说明中的模式。
 - 在推理或评分过程中实现 interpretability。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Interpretability 功能。 运行 `pip install azureml-interpret azureml-contrib-interpret` 以获取所需的包。
 - 构建自动 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或了解如何[配置自动 ML 试验](how-to-configure-auto-train.md)。

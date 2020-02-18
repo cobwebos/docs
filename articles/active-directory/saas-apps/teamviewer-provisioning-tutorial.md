@@ -34,7 +34,7 @@ ms.locfileid: "77366430"
 > * 使用户属性在 Azure AD 和 TeamViewer 之间保持同步
 > * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)到 TeamViewer （推荐）
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -66,7 +66,7 @@ ms.locfileid: "77366430"
 
     ![TeamViewer 令牌](./media/teamviewer-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 TeamViewer
+## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 TeamViewer
 
 从 Azure AD 应用程序库添加 TeamViewer，开始管理到 TeamViewer 的预配。 如果以前为 SSO 设置了 TeamViewer，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
@@ -115,9 +115,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 TeamViewer 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 TeamViewer 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 TeamViewer API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |Attribute|类型|
+   |属性|类型|
    |---|---|
-   |userName|String|
+   |userName 下方|String|
    |displayName|String|
    |活动|Boolean|
 

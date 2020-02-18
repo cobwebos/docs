@@ -2,27 +2,27 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 05f9b653910dcbe39b937c711d0045fd3ee33d4e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1f949a5c13393758d69223fa49e9e84d91e27310
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192533"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371200"
 ---
-|名称 |说明 |作用 |版本 |
+|名称 |说明 |作用 |版本 |源 |
 |---|---|---|---|
-|[将标记添加到资源组](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |创建或更新任何缺少此标记的资源组时添加指定的标记和值。 可以通过触发修正任务来修正现有资源组。 如果存在具有不同值的标记，则不会更改该资源组。 |modify |1.0.0 |
-|[将标记添加到资源](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |创建或更新任何缺少此标记的资源时添加指定的标记和值。 可以通过触发修正任务来修正现有资源。 如果存在具有不同值的标记，则不会更改该资源组。 而不会修改资源组上的标记。 |modify |1.0.0 |
-|[在资源组中添加或替换标记](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_ResourceGroup_Modify.json) |创建或更新任何资源组时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源组。 |modify |1.0.0 |
-|[在资源中添加或替换标记](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Modify.json) |创建或更新任何资源时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源。 而不会修改资源组上的标记。 |modify |1.0.0 |
-|[追加标记及其默认值](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json) |创建或更新任何缺少此标记的资源时追加指定的标记和值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 不要应用到资源组。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |
-|[将标记及其默认值追加到资源组](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupApplyTag_Append.json) |创建或更新任何缺少此标记的资源组时追加指定的标记和值。 在更改这些资源组之前，请不要修改应用此策略之前创建的资源组的标记。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |
-|[从资源组追加标记及其值](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json) |创建或更新任何缺少此标记的资源时，从资源组追加指定的标记及其值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |
-|[从资源组继承标记](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json) |创建或更新任何资源时，添加或替换父资源组中指定的标记和值。 可以通过触发修正任务来修正现有资源。 |modify |1.0.0 |
-|[从资源组继承标记（如果缺少此标记）](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json) |创建或更新任何缺少此标记的资源时，从父资源组添加指定的标记及其值。 可以通过触发修正任务来修正现有资源。 如果存在具有不同值的标记，则不会更改该资源组。 |modify |1.0.0 |
-|[需要指定的标记](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTag_Deny.json) |强制要求存在某个标记。 不要应用到资源组。 |deny |1.0.0 |
-|[要求资源组中存在指定的标记](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTag_Deny.json) |强制要求资源组中存在某个标记。 |deny |1.0.0 |
-|[需要标记及其值](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTagAndValue_Deny.json) |强制执行所需的标记及其值。 不要应用到资源组。 |deny |1.0.0 |
-|[要求资源组中存在标记及其值](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTagAndValue_Deny.json) |强制要求资源组中存在所需的标记及其值。 |deny |1.0.0 |
+|[将标记添加到资源组](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |创建或更新任何缺少此标记的资源组时添加指定的标记和值。 可以通过触发修正任务来修正现有资源组。 如果存在具有不同值的标记，则不会更改该资源组。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json)
+|[将标记添加到资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |创建或更新任何缺少此标记的资源时添加指定的标记和值。 可以通过触发修正任务来修正现有资源。 如果存在具有不同值的标记，则不会更改该资源组。 而不会修改资源组上的标记。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json)
+|[在资源组中添加或替换标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd157c373-a6c4-483d-aaad-570756956268) |创建或更新任何资源组时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源组。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_ResourceGroup_Modify.json)
+|[在资源中添加或替换标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ffd78d9-436d-4b41-a421-5baa819e3008) |创建或更新任何资源时添加或替换指定的标记和值。 可以通过触发修正任务来修正现有资源。 而不会修改资源组上的标记。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddOrReplaceTag_Modify.json)
+|[追加标记及其默认值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2a0e14a6-b0a6-4fab-991a-187a4f81c498) |创建或更新任何缺少此标记的资源时追加指定的标记和值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 不要应用到资源组。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ApplyTag_Append.json)
+|[将标记及其默认值追加到资源组](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F49c88fc8-6fd1-46fd-a676-f12d1d3a4c71) |创建或更新任何缺少此标记的资源组时追加指定的标记和值。 在更改这些资源组之前，请不要修改应用此策略之前创建的资源组的标记。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupApplyTag_Append.json)
+|[从资源组追加标记及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9ea02ca2-71db-412d-8b00-7c7ca9fcd32d) |创建或更新任何缺少此标记的资源时，从资源组追加指定的标记及其值。 在更改这些资源之前，请不要修改应用此策略之前创建的资源的标记。 可以使用新的“modify”效果策略来支持对现有资源中的标记进行修正 (请参阅 https://aka.ms/modifydoc) 。 |append |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Append.json)
+|[从资源组继承标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcd3aa116-8754-49c9-a813-ad46512ece54) |创建或更新任何资源时，添加或替换父资源组中指定的标记和值。 可以通过触发修正任务来修正现有资源。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_AddOrReplace_Modify.json)
+|[从资源组继承标记（如果缺少此标记）](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea3f2387-9b95-492a-a190-fcdc54f7b070) |创建或更新任何缺少此标记的资源时，从父资源组添加指定的标记及其值。 可以通过触发修正任务来修正现有资源。 如果存在具有不同值的标记，则不会更改该资源组。 |modify |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/InheritTag_Add_Modify.json)
+|[需要指定的标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F871b6d14-10aa-478d-b590-94f262ecfa99) |强制要求存在某个标记。 不要应用到资源组。 |deny |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTag_Deny.json)
+|[要求资源组中存在指定的标记](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F96670d01-0a4d-4649-9c89-2d3abc0a5025) |强制要求资源组中存在某个标记。 |deny |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTag_Deny.json)
+|[需要标记及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e30110a-5ceb-460c-a204-c1c3969c6d62) |强制执行所需的标记及其值。 不要应用到资源组。 |deny |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/RequireTagAndValue_Deny.json)
+|[要求资源组中存在标记及其值](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8ce3da23-7156-49e4-b145-24f95f9dcb46) |强制要求资源组中存在所需的标记及其值。 |deny |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/ResourceGroupRequireTagAndValue_Deny.json)

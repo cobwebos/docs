@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847280"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370065"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>如何：在 Windows 登录屏幕上启用密码重置
 
@@ -27,7 +27,9 @@ ms.locfileid: "74847280"
 ## <a name="general-limitations"></a>一般限制
 
 - 当前不支持从远程桌面或 Hyper-v 增强会话中进行密码重置。
-- 此功能不适用于部署了 802.1x 网络身份验证的网络和“在用户登录前立即执行”选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
+- 已知某些第三方凭据提供程序会导致此功能出现问题。
+- 通过修改[EnableLUA 注册表项](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec)来禁用 UAC 会导致问题。
+- 此功能不适用于部署了 802.1 x 网络身份验证的网络和 "用户登录前立即执行" 选项。 对于部署了 802.1x 网络身份验证的网络，建议使用计算机身份验证来启用此功能。
 - 混合 Azure AD 联接的计算机必须具有到域控制器的网络连接线路才能使用新密码和更新缓存的凭据。
 - 如果使用映像，则在运行 sysprep 之前，请确保在执行 CopyProfile 步骤之前为内置管理员清除了 web 缓存。 有关此步骤的详细信息，请参阅支持文章[使用自定义默认用户配置文件时的性能不佳](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)。
 - 已知下列设置会影响在 Windows 10 设备上使用和重置密码的功能

@@ -32,7 +32,7 @@ ms.locfileid: "77368919"
 >[!NOTE]
 >如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 必须先执行以下操作，然后才能为主机池创建 FSLogix 配置文件容器：
 
@@ -166,7 +166,7 @@ ms.locfileid: "77368919"
 
 5. 选中 "**我同意许可条款和条件**" 旁边的复选框。
 
-6. 选择**安装**。
+6. 选择“安装”。
 
 7. 导航到**C：\\Program Files\\FSLogix\\应用**以确认安装的代理。
 

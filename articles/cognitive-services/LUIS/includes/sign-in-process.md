@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
-ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278569"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372297"
 ---
 ## <a name="sign-in-to-luis-portal"></a>登录到 LUIS 门户
 
@@ -31,19 +31,19 @@ LUIS 的新用户需要执行此过程：
 
     ![创建创作资源](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    **创建新的创作资源**时，请提供以下信息： 
+    **创建新的创作资源**时，请提供以下信息：
 
     * **资源名称** - 你选择的自定义名称，用作创作和预测终结点查询的 URL 的一部分。
-    * **租户** - 与 Azure 订阅关联的租户。 
+    * **租户** - 与 Azure 订阅关联的租户。
     * **订阅名称** - 将对资源计费的订阅。
-    * **资源组** - 你选择或创建的自定义资源组名称。 使用资源组可将 Azure 资源分组，以便进行访问和管理。 
+    * **资源组** - 你选择或创建的自定义资源组名称。 使用资源组可将 Azure 资源分组，以便进行访问和管理。
     * **位置** - 位置选项基于**资源组**选择。
     * **定价层** - 定价层确定每秒和每月的最大事务数。
 
-1. 此时将显示要创建的资源的摘要。 选择“**下一步**”。
+1. 此时将显示要创建的资源的摘要。 选择“**下一页**”。
 
     ![创建创作资源](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. 选择“继续”进行确认  。 
+1. 选择“继续”进行确认  。
 
     ![创建创作资源](../media/sign-in/sign-in-confirm-continue.png)

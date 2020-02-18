@@ -1,22 +1,14 @@
 ---
 title: 最佳做法 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 使用这些最佳做法来改进知识库，并向应用程序/聊天机器人的最终用户提供更好的结果。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843797"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370102"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker 知识库的最佳做法
 
@@ -31,8 +23,6 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 ### <a name="configuring-multi-turn"></a>配置多轮
 
 启用启用了多轮提取的[知识库](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure)。 如果您的知识库确实满足或应支持问题层次结构，则可以从文档中提取此层次结构，也可以在提取文档后创建此层次结构。
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>创建有价值的问题和解答
 
@@ -51,7 +41,7 @@ QnA Maker 服务持续改进着从内容提取 QnA 的算法，并扩展支持�
 
 最好的答案是简单答案，但并不简单。 不要使用诸如 `yes` 和 `no`之类的答案。 如果你的答案应链接到其他源或提供丰富的媒体和链接体验，请使用[元数据标记](../how-to/edit-knowledge-base.md#add-metadata)来区分答案，然后使用 `strictFilters` 属性中的元数据标记[提交查询](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)以获取正确的答案版本。
 
-|答案|Follup 提示|
+|Answer|Follup 提示|
 |--|--|
 |用键盘上的电源按钮关闭 Surface 笔记本电脑。|* 用于休眠、关闭和重新启动的组合键。<br>* 如何硬启动 Surface 便携机<br>* 如何更改 Surface 便携机的 BIOS<br>* 睡眠、关机和重启之间的差异|
 |客户服务可通过手机、Skype 和短信24小时提供。|* 销售的联系人信息。<br> * 办公地点和商店地点和营业时间。<br> * 适用于 Surface 便携机的附件。|
@@ -66,11 +56,11 @@ Chit-多个预定义个性支持聊天：
 
 |个性化 |QnA Maker 数据集文件 |
 |---------|-----|
-|专业版 |[qna_chitchat_professional.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
-|友好 |[qna_chitchat_friendly.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
-|Witty |[qna_chitchat_witty.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
-|关心 |[qna_chitchat_caring.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
-|热情 |[qna_chitchat_enthusiastic.tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
+|专业版 |[qna_chitchat_professional tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_professional.tsv) |
+|友好 |[qna_chitchat_friendly tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_friendly.tsv) |
+|Witty |[qna_chitchat_witty tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_witty.tsv) |
+|关心 |[qna_chitchat_caring tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_caring.tsv) |
+|热情 |[qna_chitchat_enthusiastic tsv](https://qnamakerstore.blob.core.windows.net/qnamakerdata/editorial/qna_chitchat_enthusiastic.tsv) |
 
 响应既有正式的，也有非正式的和粗鲁的。 应该选择与所需机器人语气最接近的个性。 你可以查看数据集，并选择一个充当机器人的基础的[数据集](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)，然后自定义响应。
 
@@ -104,7 +94,7 @@ GenerateAnswer API 使用这两个问题和答案来搜索用户查询的最佳�
 
 ### <a name="choosing-a-threshold"></a>选择一个阈值
 
-用作阈值的默认[置信度](confidence-score.md)为50，但你可以根据需要更改 KB 的[阈值](confidence-score.md#set-threshold)。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。
+用作阈值的默认[置信度](confidence-score.md)为0，但你可以根据需要更改 KB 的[阈值](confidence-score.md#set-threshold)。 由于知识库各不相同，因此应该进行测试，选择最适合知识库的阈值。
 
 ### <a name="choosing-ranker-type"></a>选择 Ranker 类型
 默认情况下，QnA Maker 搜索问题和答案。 如果只想搜索问题，以生成答案，请使用 GenerateAnswer 请求的 POST 正文中的 `RankerType=QuestionOnly`。
@@ -140,7 +130,7 @@ GenerateAnswer API 使用这两个问题和答案来搜索用户查询的最佳�
 |停车位置在哪里|
 |ATM 位置在哪里|
 
-由于这两个 QnA 使用很类似的单词来措辞，因此这种相似性可能导致许多措辞类似于“`<x>` 位置在哪里”的用户查询获得很类似的分数。 可以改为使用“停车点在哪里”和“ATM 在哪里”之类的查询进行清晰的区分，避免使用“位置”这样的词，此类词存在于知识库的许多问题中。
+由于这两个 QnA 使用很类似的单词来措辞，因此这种相似性可能导致许多措辞类似于 *`<x>`“* 位置在哪里”的用户查询获得很类似的分数。 可以改为使用“停车点在哪里”和“ATM 在哪里”之类的查询进行清晰的区分，避免使用“位置”这样的词，此类词存在于知识库的许多问题中。
 
 ## <a name="collaborate"></a>协作
 QnA Maker 让用户可以在知识库上进行[协作](../How-to/collaborate-knowledge-base.md)。 用户需要具备对 Azure QnA Maker 资源组的访问权限，以便访问知识库。 某些组织可能想外包知识库的编辑工作和维护工作，但仍要能保护 Azure 资源的访问权限。 在不同订阅中设置两个完全相同的 [QnA maker 服务](../How-to/set-up-qnamaker-service-azure.md)并选择一个用于编辑测试循环，即可完成编辑者-审批者模型。 完成测试后，请使用[导入-导出](../Tutorials/migrate-knowledge-base.md)进程将知识库内容转移到审批者 QnA Maker 服务，由审批者进行最终的知识库发布和终结点更新。

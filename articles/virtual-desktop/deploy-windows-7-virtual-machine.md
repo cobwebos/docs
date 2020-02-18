@@ -18,7 +18,7 @@ ms.locfileid: "77367365"
 
 在 Windows 虚拟机上部署 Windows 7 虚拟机（VM）的过程与运行更高版本 Windows 的 Vm 略有不同。 本指南将介绍如何部署 Windows 7。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请按照[使用 PowerShell 创建主机池](create-host-pools-powershell.md)中的说明创建主机池。 之后，请按照在[Azure Marketplace 中创建主机池](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group)中的说明将一个或多个用户分配到桌面应用程序组。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050442"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370533"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Azure Databricks SCIM 连接器
 
@@ -34,7 +34,7 @@ ms.locfileid: "77050442"
 > * 使用户属性在 Azure AD 和 Azure Databricks SCIM 连接器之间保持同步
 > * 在 Azure Databricks SCIM 连接器中预配组和组成员身份
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -57,7 +57,7 @@ ms.locfileid: "77050442"
 
 3. 复制**令牌**。 此值将在 Azure 门户中 Azure Databricks SCIM 连接器应用程序的 "预配" 选项卡的 "机密令牌" 字段中输入。
 
-## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库添加 Azure Databricks SCIM 连接器
+## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 Azure Databricks SCIM 连接器
 
 从 Azure AD 应用程序库中添加 Azure Databricks SCIM 连接器，开始管理预配 Azure Databricks SCIM 连接器。 如果以前为 SSO 设置 Azure Databricks SCIM 连接器，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
@@ -96,7 +96,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入 Azure Databricks SCIM 连接器管理员凭据和用户名。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Azure Databricks SCIM 连接器。 如果连接失败，请确保 Azure Databricks SCIM 连接器帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分下，在 "**租户 URL**" 中输入 SCIM 终结点值。 租户 URL 的格式应为 `https://<region>.azuredatabricks.net/api/2.0/preview/scim` 可以在 Azure Databricks 主页 URL 中找到**区域**。 例如，将 `https://westus.azuredatabricks.net/api/2.0/preview/scim`用于**westus**区域的 SCIM 终结点。 输入先前在**机密令牌**中检索的令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Azure Databricks SCIM 连接器。 如果连接失败，请确保 Azure Databricks SCIM 连接器帐户具有管理员权限，然后重试。
 
     ![预配](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
@@ -110,9 +110,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Azure Databricks SCIM Connector 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 Azure Databricks SCIM 连接器中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Azure Databricks SCIM 连接器 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |属性|类型|
+   |Attribute|类型|
    |---|---|
-   |userName 下方|String|
+   |userName|String|
    |displayName|String|
    |活动|Boolean|
 
@@ -120,10 +120,10 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Azure Databricks SCIM 连接器的组属性。 选为 "**匹配**" 属性的属性用于匹配 Azure Databricks SCIM 连接器中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-     |属性|类型|
+     |Attribute|类型|
      |---|---|
      |displayName|String|
-     |成员|参考|
+     |members|参考|
 
 11. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Azure Databricks SCIM 连接器**"。
 

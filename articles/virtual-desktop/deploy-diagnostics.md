@@ -25,7 +25,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 

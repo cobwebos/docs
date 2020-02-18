@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机重启停滞在重启、关闭或停止服务 |Microsoft Docs
+title: Azure 虚拟机关机停滞在重启、关闭或停止服务 |Microsoft Docs
 description: 本文将帮助你解决 Azure Windows 虚拟机中的服务错误。
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477403"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371358"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 重启停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 关机停滞在 "正在重新启动"、"正在关闭" 或 "正在停止服务"
 
 本文提供了解决在 Microsoft Azure 中重新启动 Windows 虚拟机（VM）时可能遇到的 "重新启动"、"关闭" 或 "停止服务" 消息问题的步骤。
 

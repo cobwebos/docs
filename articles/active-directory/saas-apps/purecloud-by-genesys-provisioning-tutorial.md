@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087474"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370677"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 
@@ -35,7 +35,7 @@ ms.locfileid: "77087474"
 > * 在 PureCloud by Genesys 中预配组和组成员身份
 > * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)到 PureCloud by Genesys （推荐）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -49,13 +49,13 @@ ms.locfileid: "77087474"
 2. 确定将处于[预配范围内的](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)用户。
 3. 确定[Genesys Azure AD 和 PureCloud 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。 
 
-## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>步骤 2。 将 PureCloud 配置为 Genesys，以支持使用 Azure AD 进行预配
+## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>步骤 2. 将 PureCloud 配置为 Genesys，以支持使用 Azure AD 进行预配
 
 1. 在 PureCloud 组织中创建配置的[Oauth 客户端](https://help.mypurecloud.com/?p=188023)。
 2. [使用 oauth 客户端](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)生成令牌。
 3. 如果你希望在 PureCloud 中自动设置组成员身份，则必须在 Azure AD 中的组中[创建](https://help.mypurecloud.com/?p=52397)具有相同名称的 PureCloud 中的组。
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库中添加 PureCloud by Genesys
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 PureCloud by Genesys
 
 从 Azure AD 应用程序库中添加 PureCloud by Genesys，开始将预配设置为 Genesys 的 PureCloud。 如果以前已将 PureCloud 设置为 SSO，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
@@ -90,7 +90,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
     ![设置选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分下，分别在 "**租户 URL** " 和 "**机密令牌**" 字段中输入 PureCloud By Genesys API URL 和 Oauth 令牌。 单击 "**测试连接**" 以确保 Azure AD 可以通过 Genesys 连接到 PureCloud。 如果连接失败，请确保 PureCloud by Genesys 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分下，分别在 "**租户 URL** " 和 "**机密令牌**" 字段中输入 PureCloud By Genesys API URL 和 Oauth 令牌。 API URL 将使用[PureCloud 开发人员中心](https://developer.mypurecloud.com/api/rest/index.html)的 PureCloud 区域的 api url 作为 `{{API Url}}/api/v2/scim/v2`来构建。 单击 "**测试连接**" 以确保 Azure AD 可以通过 Genesys 连接到 PureCloud。 如果连接失败，请确保 PureCloud by Genesys 帐户具有管理员权限，然后重试。
 
     ![预配](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -104,9 +104,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 PureCloud by Genesys 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 PureCloud by Genesys 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 PureCloud BY Genesys API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-     |属性|类型|
+     |Attribute|类型|
      |---|---|
-     |userName 下方|String|
+     |userName|String|
      |活动|Boolean|
      |displayName|String|
      |emails[type eq "work"].value|String|
@@ -120,11 +120,11 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 11. 在 "**属性映射**" 部分中，查看通过 Genesys 从 Azure AD 同步到 PureCloud 的组属性。 选为 "**匹配**" 属性的属性用于匹配 PureCloud by Genesys 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 PureCloud by Genesys 不支持组创建或删除，并且仅支持更新组。
 
-      |属性|类型|
+      |Attribute|类型|
       |---|---|
       |displayName|String|
       |externalId|String|
-      |成员|参考|
+      |members|参考|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 

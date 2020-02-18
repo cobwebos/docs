@@ -36,7 +36,7 @@ ms.locfileid: "77365152"
 
 使用触发器和绑定需要引用适当的包。 NuGet 包用于 .NET 类库，而扩展捆绑所有其他应用程序类型。
 
-| 语言                                        | 添加依据 。                                   | 备注 
+| Language                                        | 添加依据 。                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装[NuGet 包]版本2。x | |
 | C#脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑]          | 建议将[Azure 工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |
