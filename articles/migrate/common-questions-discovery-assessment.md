@@ -2,21 +2,22 @@
 title: 常见问题-Azure Migrate 中的发现、评估和依赖项分析
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059481"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426286"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>有关发现、评估和依赖关系分析的常见问题
 
-本文解答了有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题。 阅读本文后，如果你有更多的查询，请将其发布到[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)。 如果你有其他问题，请查看以下文章：
+本文解答了有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题。 如果你有其他问题，请查看以下文章：
 
 - 有关 Azure Migrate 的[一般问题](resources-faq.md)。
 - 关于 Azure Migrate 设备的[问题](common-questions-appliance.md)。
 - 有关服务器迁移的[问题](common-questions-server-migration.md)。
+- 在[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)上发布问题
 
 
 

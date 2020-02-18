@@ -1,17 +1,14 @@
 ---
 title: Azure Migrate 中的依赖项可视化
 description: 概述中的服务器评估服务中的评估计算 Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: hamusa
-ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/17/2020
+ms.openlocfilehash: 65a99e230262ae05d34dc8c04e87252c15133fda
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772306"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425674"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -39,7 +36,7 @@ ms.locfileid: "75772306"
         - TCP 连接
         - 具有活动连接的进程的名称
         - 运行上述进程的已安装应用程序的名称
-        - 不。 每个轮询间隔检测到的连接
+        - No。 每个轮询间隔检测到的连接
 - **基于代理的依赖项可视化**：若要使用基于代理的依赖项可视化，需要在要分析的每台本地计算机上下载并安装以下代理。  
     - 需要在每台计算机上安装 [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)有关如何安装 MMA 代理的详细信息。
     - 需要在每台计算机上安装[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 [了解](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)有关如何安装依赖关系代理的详细信息。
@@ -54,7 +51,7 @@ ms.locfileid: "75772306"
 [详细了解](how-to-assess.md)如何添加该工具，以及如何为[hyper-v](how-to-set-up-appliance-hyper-v.md)、 [VMware](how-to-set-up-appliance-vmware.md)或物理服务器部署设备。
 
 
-### <a name="how-does-it-work"></a>它是如何工作的？
+### <a name="how-does-it-work"></a>它的工作原理是怎样的？
 
 Azure Migrate 使用[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)中的[服务映射](../operations-management-suite/operations-management-suite-service-map.md)解决方案进行依赖关系可视化。
 

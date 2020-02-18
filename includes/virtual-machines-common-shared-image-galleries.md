@@ -88,7 +88,7 @@ ms.locfileid: "76020830"
 
 ## <a name="regional-support"></a>区域支持
 
-下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅白名单。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
+下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | 源区域        |                   |                    |                    |

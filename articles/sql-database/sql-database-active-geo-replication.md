@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2019
-ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842643"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426266"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>创建和使用活动异地复制
 
@@ -61,7 +61,7 @@ ms.locfileid: "76842643"
 - **数据库迁移**：可以使用活动异地复制将数据库在联机情况下从一台服务器迁移到另一台服务器，只需要极少的停机时间。
 - **应用程序升级**：可以在应用程序升级期间创建额外的辅助数据库作为故障回复副本。
 
-若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对服务所依赖的服务执行故障转移期间，服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
+若要真正实现业务连续性，只需添加数据中心之间的数据库冗余即可，这只是该解决方案的一部分功能。 在发生灾难性故障后，端对端地恢复应用程序（服务）需要恢复构成该服务的所有组件以及所有依赖服务。 这些组件的示例包括客户端软件（例如，使用自定义 JavaScript 的浏览器）、Web 前端、存储和 DNS。 所有组件必须能够弹性应对相同的故障，并在应用程序的恢复时间目标 (RTO) 值内变为可用，这一点非常关键。 因此，你需要识别所有依赖服务，并了解它们提供的保证和功能。 然后，必须执行适当的步骤来确保对你的服务所依赖的服务执行故障转移期间，你的服务能够正常运行。 有关设计灾难恢复解决方案的详细信息，请参阅[设计使用活动异地复制的灾难恢复云解决方案](sql-database-designing-cloud-solutions-for-disaster-recovery.md)。
 
 ## <a name="active-geo-replication-terminology-and-capabilities"></a>活动异地复制术语和功能
 
@@ -113,7 +113,7 @@ ms.locfileid: "76842643"
 
 ## <a name="configuring-secondary-database"></a>配置辅助数据库
 
-主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷，则计算大小较小的辅助数据库可能无法跟上它。 这将导致辅助副本上的重做延迟，并且可能不可用。 如果要求强制故障转移，则落后于主数据库的辅助数据库还存在比较大的数据丢失风险。 若要缓解这些风险，有效的活动异地复制会限制主要的日志速率，以允许其辅助数据库保持同步。 不均衡辅助配置的另一个结果是，在故障转移后，应用程序的性能会因为新的主数据库的计算能力不足而受到影响。 需要将其升级到更高的计算级别，这在中断中断之前将无法进行。 
+主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 如果主数据库遇到大量写入工作负荷，则计算大小较小的辅助数据库可能无法跟上它。 这将导致辅助副本上的重做延迟，并且可能不可用。 如果需要强制故障转移，则在主数据库后滞后的辅助数据库也会面临大数据丢失的风险。 若要缓解这些风险，有效的活动异地复制会限制主要的日志速率，以允许其辅助数据库保持同步。 不均衡辅助配置的另一个结果是，在故障转移后，应用程序的性能会因为新的主数据库的计算能力不足而受到影响。 需要将其升级到更高的计算级别，这在中断中断之前将无法进行。 
 
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ ms.locfileid: "76842643"
 1. 创建相应的用户并将其分配给 dbmanager 角色： 
 
    ```sql
-   create user geodrsetup for login gedrsetup
+   create user geodrsetup for login geodrsetup
    alter role geodrsetup dbmanager add member geodrsetup
    ```
 
@@ -223,12 +223,12 @@ ms.locfileid: "76842643"
 
 ## <a name="monitoring-geo-replication-lag"></a>监视异地复制滞后时间
 
-若要监视与 RPO 有关的 lag，请在主数据库上使用[sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec*列。 它显示在主副本上提交的事务与在辅助数据库上保留的事务之间的滞后时间（秒）。 例如， 如果 lag 的值为1秒，则表示主副本受中断的影响，并且启动故障转移时，将不会保存1秒的最近转换。 
+若要监视与 RPO 有关的 lag，请在主数据库上使用[sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) *replication_lag_sec*列。 它显示在主副本上提交的事务与在辅助数据库上保留的事务之间的滞后时间（秒）。 例如 如果 lag 的值为1秒，则表示主副本受中断的影响，并且启动故障转移时，将不会保存1秒的最近转换。 
 
 若要对主数据库上已应用于辅助数据库的更改（即可从辅助数据库进行读取）进行度量，请将辅助数据库上*last_commit*时间与主数据库上的相同值进行比较。
 
 > [!NOTE]
-> 有时，主数据库上*replication_lag_sec*的值为 NULL，这意味着主数据库当前不知道辅助数据库的距离。   这通常发生在进程重新启动之后，并且应为暂时性情况。 如果*replication_lag_sec*长时间返回空值，请考虑对应用程序发出警报。 这会指示由于永久性连接失败，辅助数据库无法与主数据库通信。 还可能会导致辅助数据库上的*last_commit*时间与主数据库上的时间差异变得很大。 例如， 如果在较长一段时间后在主副本上进行提交，则在快速返回到0之前，该差异将跳到较大的值。 如果这两个值之间的差异在长时间内保持较大，请考虑使用错误情况。
+> 有时，主数据库上*replication_lag_sec*的值为 NULL，这意味着主数据库当前不知道辅助数据库的距离。   这通常发生在进程重新启动之后，并且应为暂时性情况。 如果*replication_lag_sec*长时间返回空值，请考虑对应用程序发出警报。 这会指示由于永久性连接失败，辅助数据库无法与主数据库通信。 还可能会导致辅助数据库上的*last_commit*时间与主数据库上的时间差异变得很大。 例如 如果在较长一段时间后在主副本上进行提交，则在快速返回到0之前，该差异将跳到较大的值。 如果这两个值之间的差异在长时间内保持较大，请考虑使用错误情况。
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
@@ -240,7 +240,7 @@ ms.locfileid: "76842643"
 > [!IMPORTANT]
 > 这些 Transact-SQL 命令仅适用于活动异地复制，不适用于故障转移组。 因此，它们也不适用于托管实例，因为它们仅支持故障转移组。
 
-| 命令 | Description |
+| Command | 说明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 参数为现有数据库创建辅助数据库，并开始数据复制 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS 将辅助数据库切换为主数据库，启动故障转移 |
@@ -257,7 +257,7 @@ ms.locfileid: "76842643"
 > [!IMPORTANT]
 > Azure SQL 数据库仍支持 PowerShell Azure 资源管理器模块，但所有将来的开发都适用于 Az .Sql 模块。 有关这些 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令的参数完全相同。
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |获取一个或多个数据库。 |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |为现有数据库创建辅助数据库，并开始数据复制。 |
@@ -271,7 +271,7 @@ ms.locfileid: "76842643"
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API：管理单个和共用数据库的故障转移
 
-| API | Description |
+| API | 说明 |
 | --- | --- |
 | [创建或更新数据库 (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |创建、更新或还原主数据库或辅助数据库。 |
 | [获取创建或更新数据库状态](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |返回创建操作过程中的状态。 |

@@ -135,7 +135,7 @@ CMK 功能是一项早期的访问功能。 你计划创建*群集*资源的订�
 
 ### <a name="create-cluster-resource"></a>创建*群集*资源
 
-此资源用作 Key Vault 与工作区之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。 Application Insights 和 Log Analytics 需要单独的群集资源。 群集资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "Applicationinsights.config" 来定义。 不能更改群集资源类型。
+此资源用作 Key Vault 与工作区之间的中间标识连接。 收到订阅处于允许列表状态的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。 Application Insights 和 Log Analytics 需要单独的群集资源。 群集资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "Applicationinsights.config" 来定义。 不能更改群集资源类型。
 
 对于 Application Insights CMK 配置，请遵循此步骤的附录内容。
 
@@ -512,7 +512,7 @@ Application Insights CMK 的配置与本文中所述的过程完全相同，包�
 
 ### <a name="create-a-cluster-resource"></a>创建*群集*资源
 
-此资源用作 Key Vault 与组件之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在组件所在的区域创建 Log Analytics*群集*资源。 *群集*资源的类型在创建时通过将*clusterType*属性设置为*LogAnalytics*或*applicationinsights.config*定义。 它应为 Application Insights CMK 的*applicationinsights.config* 。 配置后无法更改*clusterType*设置。
+此资源用作 Key Vault 与组件之间的中间标识连接。 收到订阅处于允许列表状态的确认后，请在组件所在的区域创建 Log Analytics*群集*资源。 *群集*资源的类型在创建时通过将*clusterType*属性设置为*LogAnalytics*或*applicationinsights.config*定义。 它应为 Application Insights CMK 的*applicationinsights.config* 。 配置后无法更改*clusterType*设置。
 
 **创建**
 

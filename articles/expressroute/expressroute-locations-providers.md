@@ -97,8 +97,8 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北欧 | 10G，100G | Colt、eir、Equinix、euNetworks、Interxion、Megaport |
 | **法兰克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G，100G | Colt，CIX，GEANT，Interxion，Megaport，橙色，Telia 载波 |
 | **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G，100G | Equinix、Megaport |
-| **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | Aryaka networks、网络，英国电信，CenturyLink 云连接，首席电信，中国电信全局，Equinix，InterCloud，Megaport，NTT 通信，橙色，PCCW 全局有限，Tata 通信，Telia 载波，Verizon |
-| **香港 Kong2** | [万像素-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |
+| **中国香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | Aryaka networks、网络，英国电信，CenturyLink 云连接，首席电信，中国电信全局，Equinix，InterCloud，Megaport，NTT 通信，橙色，PCCW 全局有限，Tata 通信，Telia 载波，Verizon |
+| **中国香港 Kong2** | [万像素-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |
 | **雅加达** | Telkom 印度尼西亚 | 4 | 不适用 | 10G | |
 | **约翰内斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | 英国电信，Internet 解决方案-云连接，液体电信，橙色，Teraco |
 | **吉隆坡** | [时间 dotCom Menara 目标](https://www.aims.com.my/co-location/points-of-presence.html) | 2 | 不适用 | 不适用 | TIME dotCom |

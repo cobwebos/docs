@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552196"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425878"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>使用 MirrorMaker 通过 Kafka on HDInsight 复制 Apache Kafka 主题
 
@@ -63,7 +63,7 @@ ms.locfileid: "75552196"
 
 1. 创建两个新的资源组：
 
-    |资源组 | 位置 |
+    |资源组 | Location |
     |---|---|
     | kafka | 美国中部 |
     | kafka-secondary-rg | 美国中北部 |
@@ -73,7 +73,7 @@ ms.locfileid: "75552196"
 
 1. 创建两个新的 Kafka 群集：
 
-    | 群集名称 | 资源组 | 虚拟网络 | 存储器帐户 |
+    | 群集名称 | 资源组 | 虚拟网络 | 存储帐户 |
     |---|---|---|---|
     | kafka-群集 | kafka | kafka-primary-vnet | kafkaprimarystorage |
     | kafka-secondary-cluster | kafka-secondary-rg | kafka-secondary-vnet | kafkasecondarystorage |
@@ -81,7 +81,7 @@ ms.locfileid: "75552196"
 1. 创建虚拟网络对等互连。 此步骤将创建两个对等互连：一个从**kafka--vnet**到**kafka** ，另一个从 kafka 到**kafka**的 。
     1. 选择**kafka**虚拟网络。
     1. 选择 "**设置**" 下的**对等互连**。
-    1. 选择 **添加** 。
+    1. 选择“添加”。
     1. 在 "**添加对等互连**" 屏幕上，输入详细信息，如以下屏幕截图所示。
 
         ![HDInsight Kafka 添加 vnet 对等互连](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -268,7 +268,7 @@ ms.locfileid: "75552196"
 
     此示例中使用的参数有：
 
-    |参数 |Description |
+    |参数 |说明 |
     |---|---|
     |--使用者 .config|指定包含使用者属性的文件。 这些属性用于创建从*主*Kafka 群集读取的使用者。|
     |--生成程序 .config|指定包含创建者属性的文件。 这些属性用于创建写入*辅助*Kafka 群集的制造者。|
@@ -305,7 +305,7 @@ ms.locfileid: "75552196"
 本文档已介绍如何使用 [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) 创建 [Apache Kafka](https://kafka.apache.org/) 群集的副本。 使用以下链接来发现与 Kafka 配合使用的其他方式：
 
 * cwiki.apache.org 上的 [Apache Kafka MirrorMaker 文档](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)。
+* [Kafka 镜像 Maker 最佳实践](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Apache Kafka on HDInsight 入门](apache-kafka-get-started.md)
 * [将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
-* [将 Apache Storm 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-storm-with-kafka.md)
 * [通过 Azure 虚拟网络连接到 Apache Kafka](apache-kafka-connect-vpn-gateway.md)

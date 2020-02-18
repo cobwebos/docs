@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280928"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426201"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for MariaDB （预览版）的专用链接
 
@@ -20,7 +20,7 @@ ms.locfileid: "76280928"
 > [!NOTE]
 > 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要逐步执行本操作方法指南，需要：
 
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点网络策略。 使用 *az network vnet subnet update* 更新名为 [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -131,14 +131,14 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开下载的 .rdp* 文件。
+1. 打开 downloaded.rdp 文件。
 
     1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
 
 1. 选择“确定”。
 
@@ -159,27 +159,28 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 使用任何可用的客户端测试 MariaDB 服务器的专用链接连接。 在下面的示例中，我使用了[MySQL 工作台](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)来执行该操作。
 
-4. In **New connection**, enter or select this information:
+4. 在 "**新建连接**" 中，输入或选择以下信息：
 
-    | Setting | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | 连接名称| 选择所选的连接名称。|
+    | Hostname | 选择*mydemoserver.privatelink.mariadb.database.azure.com* |
+    | 用户名 | 输入用户名作为在 MariaDB 服务器创建过程中提供的 *username@servername* 。 |
+    | 密码 | 输入在创建 MariaDB 服务器期间提供的密码。 |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. 选择 "**测试连接** **" 或 "确定"** 。
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. 同时从左侧菜单浏览数据库，并从 MariaDB 数据库创建或查询信息
 
-8. Close the remote desktop connection to myVm.
+8. 关闭与 myVm 的远程桌面连接。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>清理资源 
+如果不再需要资源组及其所有资源，可以使用 az group delete 将其删除： 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982273"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425601"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -75,17 +75,17 @@ ms.locfileid: "76982273"
 
 **TechnicalProfile** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 |---------|---------|---------|
 | ID | 是 | 技术配置文件的唯一标识符。 可以使用此标识符从策略文件中的其他元素引用技术配置文件。 例如，**OrchestrationSteps** 和 **ValidationTechnicalProfile**。 |
 
 **TechnicalProfile** 包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | 域 | 0:1 | 技术配置文件的域名。 例如，如果技术配置文件指定 Facebook 标识提供者，则域名是 Facebook.com。 |
 | DisplayName | 1:1 | 可向用户显示的技术配置文件名称。 |
-| Description | 0:1 | 可向用户显示的技术配置文件说明。 |
+| 说明 | 0:1 | 可向用户显示的技术配置文件说明。 |
 | 协议 | 0:1 | 用来与另一方通信的协议。 |
 | 元数据 | 0:1 | 在事务处理过程中，协议用来与终结点通信的键/值对集合。 |
 | InputTokenFormat | 0:1 | 输入令牌的格式。 可能的值：`JSON`、`JWT`、`SAML11` 或 `SAML2`。 `JWT` 值表示符合 IETF 规范的 JSON Web 令牌。 `SAML11` 值表示符合 OASIS 规范的 SAML 1.1 安全令牌。  `SAML2` 值表示符合 OASIS 规范的 SAML 2.0 安全令牌。 |
@@ -109,49 +109,49 @@ ms.locfileid: "76982273"
 
 Protocol 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值： `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`、`session management`、`self-asserted`或 `None`。 |
-| Handler | 否 | 当协议名称设置为 `Proprietary` 时，指定 Azure AD B2C 用来确定协议处理程序的程序集的完全限定名称。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值： `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary`或 `None`。 |
+| Handler | 是 | 当协议名称设置为 `Proprietary` 时，指定 Azure AD B2C 用来确定协议处理程序的程序集的完全限定名称。 |
 
 ## <a name="metadata"></a>元数据
 
 **Metadata** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项目 | 0:n | 与技术配置文件相关的元数据。 每种类型的技术配置文件具有一组不同的元数据项。 有关详细信息，请参阅“技术配置文件类型”部分。 |
+| 项 | 0:n | 与技术配置文件相关的元数据。 每种类型的技术配置文件具有一组不同的元数据项。 有关详细信息，请参阅“技术配置文件类型”部分。 |
 
-### <a name="item"></a>项目
+### <a name="item"></a>项
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| 密钥 | 是 | 元数据密钥。 请参阅每种技术配置文件类型了解元数据项的列表。 |
+| Key | 是 | 元数据密钥。 请参阅每种技术配置文件类型了解元数据项的列表。 |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
 **CryptographicKeys** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 密钥 | 1:n | 此技术配置文件中使用的加密密钥。 |
+| Key | 1:n | 此技术配置文件中使用的加密密钥。 |
 
-### <a name="key"></a>密钥
+### <a name="key"></a>Key
 
 **Key** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| ID | 否 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
+| ID | 是 | 从策略文件中的其他元素引用的特定密钥对的唯一标识符。 |
 | StorageReferenceId | 是 | 从策略文件中的其他元素引用的存储密钥容器的标识符。 |
 
 ## <a name="inputclaimstransformations"></a>InputClaimsTransformations
 
 **InputClaimsTransformations** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | 在将任何声明发送到声明提供程序或信赖方之前应执行的声明转换的标识符。 声明转换可用于修改现有的或生成新的 ClaimsSchema 声明。 |
 
@@ -159,7 +159,7 @@ Protocol 元素包含以下属性：
 
 **InputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -167,7 +167,7 @@ Protocol 元素包含以下属性：
 
 InputClaims 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | 预期的输入声明类型。 |
 
@@ -175,17 +175,17 @@ InputClaims 元素包含以下元素：
 
 InputClaim 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
-| DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
-| PartnerClaimType | 否 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
+| DefaultValue | 是 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
+| PartnerClaimType | 是 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
 
 ## <a name="displayclaims"></a>DisplayClaims
 
 **DisplayClaims**元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1:n | 预期的输入声明类型。 |
 
@@ -195,11 +195,11 @@ DislayClaims 功能目前处于**预览阶段**。
 
 **DisplayClaim**元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | 否 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
-| DisplayControlReferenceId | 否 | 已在策略文件或父策略文件的 ClaimsSchema 部分中定义的[显示控件](display-controls.md)的标识符。 |
-| 需要 | 否 | 指示是否需要显示声明。 |
+| ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
+| DisplayControlReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 部分中定义的[显示控件](display-controls.md)的标识符。 |
+| 必需 | 是 | 指示是否需要显示声明。 |
 
 **DisplayClaim**要求指定 `ClaimTypeReferenceId` 或 `DisplayControlReferenceId`。
 
@@ -207,7 +207,7 @@ DislayClaims 功能目前处于**预览阶段**。
 
 **PersistedClaims** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1:n | 要保存的声明类型。 |
 
@@ -215,17 +215,17 @@ DislayClaims 功能目前处于**预览阶段**。
 
 **PersistedClaim** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
-| DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
-| PartnerClaimType | 否 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
+| DefaultValue | 是 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
+| PartnerClaimType | 是 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 OutputClaims 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | OutputClaim | 1:n | 预期的输出声明类型。 |
 
@@ -233,18 +233,18 @@ OutputClaims 元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 已在策略文件或父策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
-| DefaultValue | 否 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
-|AlwaysUseDefaultValue |否 |强制使用默认值。  |
-| PartnerClaimType | 否 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
+| DefaultValue | 是 | 当 ClaimTypeReferenceId 指示的声明不存在时用来创建声明的默认值。技术配置文件可将生成的声明用作 InputClaim。 |
+|AlwaysUseDefaultValue |是 |强制使用默认值。  |
+| PartnerClaimType | 是 | 指定的策略声明类型映射到的外部合作伙伴声明类型的标识符。 如果未指定 PartnerClaimType 属性，则指定的策略声明类型将映射到同名的合作伙伴声明类型。 当声明类型名称不同于另一方时，请使用此属性。 例如，第一个声明名称为“givenName”，而合作伙伴使用名为“first_name”的声明。 |
 
 ## <a name="outputclaimstransformations"></a>OutputClaimsTransformations
 
 **OutputClaimsTransformations** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1:n | 在将任何声明发送到声明提供程序或信赖方之前应执行的声明转换的标识符。 声明转换可用于修改现有的或生成新的 ClaimsSchema 声明。 |
 
@@ -252,7 +252,7 @@ OutputClaim 元素包含以下属性：
 
 **OutputClaimsTransformation** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的声明转换的标识符。 |
 
@@ -260,7 +260,7 @@ OutputClaim 元素包含以下属性：
 
 **ValidationTechnicalProfiles** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 用于验证引用技术配置文件的部分或所有输出声明的技术配置文件的标识符。 被引用技术配置文件的所有输入声明必须出现在引用技术配置文件的输出声明中。 |
 
@@ -268,7 +268,7 @@ OutputClaim 元素包含以下属性：
 
 **ValidationTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -276,7 +276,7 @@ OutputClaim 元素包含以下属性：
 
 **SubjectNamingInfo** 包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 已在策略文件的 ClaimsSchema 节中定义的声明类型的标识符。 |
 
@@ -284,7 +284,7 @@ OutputClaim 元素包含以下属性：
 
 **IncludeTechnicalProfile** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 
@@ -292,7 +292,7 @@ OutputClaim 元素包含以下属性：
 
 **UseTechnicalProfileForSessionManagement** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ReferenceId | 是 | 已在策略文件或父策略文件中定义的技术配置文件的标识符。 |
 

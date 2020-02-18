@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: fa8bc56376704b96f5ddee09db7b09e28f10a936
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 6ad8726e61f4f8e79cfa9c437b3f0ea876b55e27
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281234"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425470"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>使用门户创建和管理 Azure Database for MySQL （预览版）的专用链接
 
@@ -32,16 +32,16 @@ ms.locfileid: "76281234"
 ### <a name="create-the-virtual-network"></a>创建虚拟网络
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”。
+1. 在屏幕的左上方，选择“创建资源” **“网络”** “虚拟网络” >  > 。
 2. 在“创建虚拟网络”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
-    | 订阅 | 选择订阅。|
+    | 订阅 | 选择你的订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择“西欧”。|
+    | Location | 选择“西欧”。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     |||
@@ -49,20 +49,20 @@ ms.locfileid: "76281234"
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “计算” > “虚拟机”。
+1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“计算”** “虚拟机”。 >  > 
 
 2. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择订阅。 |
+    | 订阅 | 选择你的订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 地区 | 选择“西欧”。 |
+    | 区域 | 选择“西欧”。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
-    | 图像 | 选择“Windows Server 2019 Datacenter”。 |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
@@ -106,13 +106,13 @@ ms.locfileid: "76281234"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择订阅。 |
+    | 订阅 | 选择你的订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **服务器详细信息** |  |
     |服务器名称  | 输入*myServer*。 如果此名称已被使用，请创建唯一的名称。|
     | 管理员用户名| 输入所选的管理员名称。 |
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
-    | 位置 | 选择要在其中保存 MySQL 服务器的 Azure 区域。 |
+    | Location | 选择要在其中保存 MySQL 服务器的 Azure 区域。 |
     |版本  | 选择所需的 MySQL 服务器的数据库版本。|
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
@@ -126,7 +126,7 @@ ms.locfileid: "76281234"
 
 在本部分中，将创建 MySQL 服务器，并向其添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” > “网络” > “专用链接中心(预览版)”。
+1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“网络”** “专用链接中心(预览版)”。 >  > 
 
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。
 
@@ -137,11 +137,11 @@ ms.locfileid: "76281234"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择订阅。 |
+    | 订阅 | 选择你的订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 名称 | 输入“myPrivateEndpoint”。 如果此名称已被使用，请创建唯一的名称。 |
-    |地区|选择“西欧”。|
+    |区域|选择“西欧”。|
     |||
 
 5. 选择 "**下一步：资源**"。
@@ -150,7 +150,7 @@ ms.locfileid: "76281234"
     | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
-    | 订阅| 选择订阅。 |
+    | 订阅| 选择你的订阅。 |
     | 资源类型 | 选择 " **DBforMySQL/服务器**"。 |
     | 资源 |选择“myServer”|
     |目标子资源 |选择*mysqlServer*|
@@ -164,7 +164,7 @@ ms.locfileid: "76281234"
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |请选择“是”。 |
+    |与专用 DNS 区域集成 |选择 **“是”** 。 |
     |专用 DNS 区域 |选择 *（新的） privatelink* |
     |||
 
@@ -191,7 +191,7 @@ ms.locfileid: "76281234"
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
 
 1. 选择“确定”。
 
@@ -212,35 +212,36 @@ ms.locfileid: "76281234"
     Non-authoritative answer:
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. 使用任何可用的客户端测试 MySQL 服务器的专用链接连接。 在下面的示例中，我使用了[MySQL 工作台](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html)来执行该操作。
 
-4. In **New connection**, enter or select this information:
+4. 在 "**新建连接**" 中，输入或选择以下信息：
 
-    | Setting | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    | Server type| Select **MySQL**.|
-    | Server name| Select *myServer.privatelink.mysql.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MySQL server creation. |
-    |Password |Enter a password provided during the MySQL server creation. |
-    |SSL|Select **Required**.|
+    | 服务器类型| 选择 " **MySQL**"。|
+    | 服务器名称| 选择*myServer.privatelink.mysql.database.azure.com* |
+    | 用户名 | 输入用户名作为在创建 MySQL server 过程中提供 username@servername。 |
+    |密码 |输入在创建 MySQL server 期间提供的密码。 |
+    |SSL|选择 "**必需**"。|
     ||
 
-5. Select Connect.
+5. 选择“连接”。
 
-6. Browse databases from left menu.
+6. 浏览左侧菜单中的数据库。
 
-7. (Optionally) Create or query information from the MySQL server.
+7. 同时从 MySQL 服务器创建或查询信息。
 
-8. Close the remote desktop connection to myVm.
+8. 关闭与 myVm 的远程桌面连接。
 
-## Clean up resources
-When you're done using the private endpoint, MySQL server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>清理资源
+使用完专用终结点、MySQL 服务器和 VM 后，请删除资源组及其包含的所有资源：
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. 在门户顶部的“搜索”框中输入“myResourceGroup” **  ，然后从搜索结果中选择“myResourceGroup”。 **  
+2. 选择“删除资源组”。
+3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”。
 
-## Next steps
+## <a name="next-steps"></a>后续步骤
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MySQL, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MySQL server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+在本操作方法中，你在虚拟网络上创建了一个虚拟机、一个 Azure Database for MySQL 和一个私有终结点用于专用访问。 你从 internet 连接到一个 VM，并使用专用链接安全地传达给 MySQL 服务器。 若要了解有关专用终结点的详细信息，请参阅[什么是 Azure 专用终结点](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)。

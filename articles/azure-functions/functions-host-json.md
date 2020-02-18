@@ -3,12 +3,12 @@ title: Azure Functions 2.x 的 host.json 参考
 description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文档。
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9b0d078a8c6df21e8000930e72856e92e2d40af7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208818"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425198"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host json 引用 
 
@@ -21,9 +21,9 @@ ms.locfileid: "77208818"
 > [!NOTE]
 > 本文适用于 Azure Functions 2.x 及更高版本。  有关 Functions 1.x 中 host.json 的参考，请参阅 [Azure Functions 1.x 的 host.json 参考](functions-host-json-v1.md)。
 
-其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
+其他函数应用配置选项在[应用设置](functions-app-settings.md)（适用于已部署的应用）或 web.config[文件（](functions-run-local.md#local-settings-file)用于本地开发）中进行管理。
 
-某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
+与绑定相关的 host 中的配置同样适用于函数应用中的每个函数。 
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
@@ -69,11 +69,11 @@ ms.locfileid: "77208818"
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"
@@ -143,7 +143,7 @@ ms.locfileid: "77208818"
 > [!NOTE]
 > 日志采样可能会导致一些执行不会显示在 Application Insights 监视器边栏选项卡中。 若要避免日志采样，请将 `samplingExcludedTypes: "Request"` 添加到 `applicationInsights` 值。
 
-| properties | 默认 | 说明 |
+| 属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | samplingSettings | 不适用 | 请参阅[applicationinsights.config. samplingSettings](#applicationinsightssamplingsettings)。 |
 | samplingExcludedTypes | Null | 不希望对其进行采样的以分号分隔的类型列表。 已识别的类型包括：Dependency、Event、Exception、PageView、Request、Trace。 传输指定类型的所有实例;对未指定的类型进行采样。 |
@@ -157,7 +157,7 @@ ms.locfileid: "77208818"
 
 ### <a name="applicationinsightssamplingsettings"></a>Applicationinsights.config. samplingSettings
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | isEnabled | true | 启用或禁用采样。 | 
 | maxTelemetryItemsPerSecond | 20 | 每个服务器主机上每秒记录的遥测项的目标数目。 如果你的应用程序在多个主机上运行，请将此值降低到流量的总体目标值中。 | 
@@ -171,7 +171,7 @@ ms.locfileid: "77208818"
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>Applicationinsights.config. httpAutoCollectionOptions
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | 启用或禁用 HTTP 触发器的扩展 HTTP 请求信息：传入请求相关标头，多检测密钥支持，HTTP 方法，路径，以及响应。 |
 | enableW3CDistributedTracing | true | 启用或禁用对 W3C 分布式跟踪协议的支持（并打开旧版相关架构）。 如果 `enableHttpTriggerExtendedInfoCollection` 为 true，则默认情况下启用。 如果 `enableHttpTriggerExtendedInfoCollection` 为 false，则此标志仅适用于传出请求，而不应用于传入的请求。 |
@@ -181,7 +181,7 @@ ms.locfileid: "77208818"
 
 有关快照的详细信息，请参阅[调试 .net 应用中的异常](/azure/azure-monitor/app/snapshot-debugger)和[排查 Application Insights Snapshot Debugger 或查看快照](/azure/azure-monitor/app/snapshot-debugger-troubleshoot)中的异常。
 
-|properties | 默认 | 说明 |
+|属性 | 默认 | 说明 |
 | --------- | --------- | --------- | 
 | agentEndpoint | Null | 用于连接到 Application Insights Snapshot Debugger 服务的终结点。 如果为 null，则使用默认终结点。 |
 | captureSnapshotMemoryWeight | 0.5 | 检查是否有足够的内存来拍摄快照时，为当前进程内存大小指定的权重。 预期值为大于0的正确分数（0 < CaptureSnapshotMemoryWeight < 1）。 |
@@ -218,7 +218,7 @@ ms.locfileid: "77208818"
 
 可在[事件中心触发器和绑定](functions-bindings-event-hubs.md#host-json)中查找配置设置。 
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>扩展插件
 
 该属性返回一个对象，其中包含所有特定于绑定的设置，例如 [http](#http) 和 [eventHub](#eventhub)。
 
@@ -268,9 +268,9 @@ ms.locfileid: "77208818"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
-|已启用|true|指定是否启用此功能。 | 
+|enabled|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -280,7 +280,7 @@ ms.locfileid: "77208818"
 
 可在 [http 触发器和绑定](functions-bindings-http-webhook-output.md#hostjson-settings)中查找配置设置。
 
-## <a name="logging"></a>logging
+## <a name="logging"></a>日志记录
 
 控制函数应用（包括 Application Insights）的日志记录行为。
 
@@ -300,14 +300,14 @@ ms.locfileid: "77208818"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|定义启用哪种级别的文件日志记录。  选项包括 `never`、`always` 和 `debugOnly`。 |
 |logLevel|不适用|一个对象，它定义了用于筛选应用中的函数的日志类别。 版本2.x 和更高版本按照 ASP.NET Core 布局进行日志类别筛选。 此设置允许你筛选特定函数的日志记录。 有关详细信息，请参阅 ASP.NET Core 文档中的[日志筛选](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)。 |
-|console|不适用| [控制台](#console)日志记录设置。 |
+|控制台|不适用| [控制台](#console)日志记录设置。 |
 |applicationInsights|不适用| [applicationInsights](#applicationinsights) 设置。 |
 
-## <a name="console"></a>console
+## <a name="console"></a>控制台
 
 此设置是[日志记录](#logging)的子项。 它在未处于调试模式时控制控制台日志记录。
 
@@ -323,7 +323,7 @@ ms.locfileid: "77208818"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |isEnabled|false|启用或禁用控制台日志记录。| 
 
@@ -367,7 +367,7 @@ ms.locfileid: "77208818"
 }
 ```
 
-|properties  |默认 | 说明 |
+|属性  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -375,7 +375,7 @@ ms.locfileid: "77208818"
 |lockAcquisitionTimeout|00:01:00|运行时尝试获取锁的最长时间。| 
 |lockAcquisitionPollingInterval|不适用|尝试获取锁的间隔时间。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 此值指示 host 的架构版本。 对于面向 v2 运行时或更高版本的函数应用，版本字符串 `"version": "2.0"` 是必需的。 V2 和 v3 之间没有 host json 架构更改。
 

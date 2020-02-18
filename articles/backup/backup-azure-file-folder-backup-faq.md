@@ -3,16 +3,16 @@ title: 备份文件和文件夹-常见问题
 description: 解决有关在 Azure 备份中备份文件和文件夹的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720355"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425062"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>有关备份文件和文件夹的常见问题
 
-本文提供了 Microsoft Azure 恢复服务有关在[Azure 备份](backup-overview.md)服务中备份文件和文件夹 ABOUND （MARS）代理的常见问题的解答。
+本文解答了 abound 在[Azure 备份](backup-overview.md)服务中备份文件和文件夹和 MICROSOFT AZURE 恢复服务（MARS）代理的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
@@ -90,7 +90,7 @@ MARS 代理依赖 NTFS，并允许文件名称/路径中[支持的字符](/windo
 缓存文件夹的大小由你正在备份的数据量确定。
 
 * 缓存文件夹卷的可用空间应等于备份数据总大小的至少5-10%。
-* 如果卷的可用空间少于5%，请增加卷大小，或者将缓存文件夹移动到具有足够空间的卷。
+* 如果卷的可用空间少于5%，请按以下[步骤操作](#how-do-i-change-the-cache-location-for-the-mars-agent)，增加卷大小或将缓存文件夹移动到具有足够空间的卷。
 * 如果备份 Windows 系统状态，则在包含缓存文件夹的卷中将需要额外的 30-35 GB 可用空间。
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何检查暂存文件夹是否有效并可访问？
@@ -98,35 +98,35 @@ MARS 代理依赖 NTFS，并允许文件名称/路径中[支持的字符](/windo
 1. 默认情况下，暂存文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. 确保暂存文件夹位置的路径与下面显示的注册表项项的值匹配：
 
-  | 注册表路径 | 注册表项 | 值 |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
+    | 注册表路径 | 注册表项 | 值 |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>如何实现更改 MARS 代理的缓存位置？
 
 1. 在提升的命令提示符下运行此命令以停止备份引擎：
 
     ```Net stop obengine```
-
 2. 如果已配置系统状态备份，请打开 "磁盘管理"，然后卸载其名称格式为 "`"CBSSBVol_<ID>"`" 的磁盘。
-3. 请勿移动文件。 而是将缓存空间文件夹复制到具有足够空间的其他驱动器。
-4. 用新缓存文件夹的路径更新以下注册表项。
+3. 默认情况下，暂存文件夹位于 `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. 将整个 `\Scratch` 文件夹复制到具有足够空间的其他驱动器。 确保内容已复制，而不是移动。
+5. 更新以下注册表项，并将其替换为新移动的暂存文件夹的路径。
 
     | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暂存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暂存文件夹位置* |
 
-5. 在提升的命令提示符下重新启动备份引擎：
+6. 在提升的命令提示符下重新启动备份引擎：
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. 运行按需备份。 使用新位置成功完成备份后，可以删除原始缓存文件夹。
+7. 运行按需备份。 使用新位置成功完成备份后，可以删除原始缓存文件夹。
 
 ### <a name="where-should-the-cache-folder-be-located"></a>缓存文件夹应位于何处？
 
@@ -139,7 +139,7 @@ MARS 代理依赖 NTFS，并允许文件名称/路径中[支持的字符](/windo
 
 缓存文件夹不支持以下属性或其组合：
 
-* 已加密
+* 加密
 * 已删除重复数据
 * Compressed
 * 稀疏
@@ -151,19 +151,19 @@ MARS 代理依赖 NTFS，并允许文件名称/路径中[支持的字符](/windo
 
 是的，可以使用 MARS 代理中的 "**更改属性**" 选项来调整带宽和计时。 [了解详细信息](backup-configure-vault.md#enable-network-throttling)。
 
-## <a name="restore"></a>还原
+## <a name="restore"></a>Restore
 
 ### <a name="manage"></a>管理
 
 **如果我忘记了密码，可以恢复吗？**
 Azure 备份代理需要密码（在注册过程中提供），以便在还原过程中对备份的数据进行解密。 查看以下方案，了解用于处理丢失的密码的选项：
 
-| 原始计算机 <br> *（执行备份的源计算机）* | 通行短语 | 可用选项 |
+| 原始计算机 <br> *（执行备份的源计算机）* | Passphrase | 可用选项 |
 | --- | --- | --- |
-| 可用 |Lost |如果原始计算机（在其中创建了备份）可用且仍注册到同一个恢复服务保管库，则可以通过执行以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)来重新生成该通行短语。  |
-| Lost |Lost |无法恢复数据或数据不可用 |
+| 可用 |流失 |如果原始计算机（在其中创建了备份）可用且仍注册到同一个恢复服务保管库，则可以通过执行以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)来重新生成该通行短语。  |
+| 流失 |流失 |无法恢复数据或数据不可用 |
 
-考虑以下情况：
+请考虑以下情况：
 
 * 如果在同一台原始计算机上卸载并重新注册代理
   * *相同的密码*，你将能够还原已备份的数据。
@@ -177,10 +177,10 @@ Azure 备份代理需要密码（在注册过程中提供），以便在还原�
 
 如果在原始计算机的注册过程中提供了相同的密码，则可以将备份的数据还原到备用计算机。 请查看以下方案了解还原选项。
 
-| 原始计算机 | 通行短语 | 可用选项 |
+| 原始计算机 | Passphrase | 可用选项 |
 | --- | --- | --- |
-| Lost |可用 |你可以在另一台计算机上安装和注册 MARS 代理，该计算机具有你在注册原始计算机期间提供的相同密码。 选择**恢复选项** > **其他位置**执行还原。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
-| Lost |Lost |无法恢复数据或数据不可用 |
+| 流失 |可用 |你可以在另一台计算机上安装和注册 MARS 代理，该计算机具有你在注册原始计算机期间提供的相同密码。 选择**恢复选项** > **其他位置**执行还原。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| 流失 |流失 |无法恢复数据或数据不可用 |
 
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？

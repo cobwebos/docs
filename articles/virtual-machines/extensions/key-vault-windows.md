@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806773"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425776"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -29,7 +29,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体如下：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体而言：  
 
 ```json
     {
@@ -69,14 +69,14 @@ Key Vault VM 扩展支持以下版本的 Windows：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| 发布者 | Microsoft.Azure.KeyVault | 字符串 |
-| type | KeyVaultForWindows | 字符串 |
+| 发布者 | Microsoft.Azure.KeyVault | string |
+| type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | 字符串 |
-| certificateStoreName | MY | 字符串 |
+| pollingIntervalInS | 3600 | string |
+| certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | 字符串 |
-| requiredInitialSync | 是 | boolean |
+| certificateStoreLocation  | LocalMachine | string |
+| requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
 
 
@@ -169,7 +169,7 @@ Azure CLI 可用于将 Key Vault VM 扩展部署到现有的虚拟机或虚拟�
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
@@ -215,4 +215,4 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 
 ### <a name="support"></a>支持
 
-如果你对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

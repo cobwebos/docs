@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026109"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425759"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
-Kubernetes 社区大约每三个月会发布次要版本。 这些版本包括新增功能和改进。 修补程序版本的发布更为频繁（有时会每周发布），并且仅用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对影响大量客户以及在生产中基于 Kubernetes 运行的产品的安全漏洞或重大 Bug 的修复。
+Kubernetes 社区大约会每隔三个月发布次要版本。 这些版本包括新增功能和改进。 修补程序版本更为频繁（有时会每周发布），并且仅用于次要版本中的关键 Bug 修复。 这些修补程序版本包括针对影响大量客户以及在生产中基于 Kubernetes 运行的产品的安全漏洞或重大 Bug 的修复。
 
 AKS 旨在验证和发布上游版本30天内的新 Kubernetes 版本，但要服从版本的稳定性。
 
@@ -70,7 +70,7 @@ AKS 支持三种次要版本的 Kubernetes：
 1.13.f
 ```
 
-和 AKS 版本1.16。 *，这意味着1.13。* 版本（所有1.13 版本）将被删除且不再受支持。
+和 AKS 版本1.16。 *，这意味着1.13。* 版本（所有1.13 版本）将被删除，并且不受支持。
 
 > [!NOTE]
 > 请注意，如果客户运行不受支持的 Kubernetes 版本，则在请求支持群集时，系统将要求他们升级。 运行不受支持的 Kubernetes 版本的群集不包含在[AKS 支持策略](https://docs.microsoft.com/azure/aks/support-policies)中。
@@ -99,7 +99,7 @@ New Supported Version List
   * 客户从公共通知日期起**30 天**后，升级到受支持的次要版本。
 * 对于新的**修补程序**版本 Kubernetes
   * 所有用户都将收到新修补程序版本的通知，并将其升级到最新的修补程序版本。
-  * 用户有**30 天**的时间可升级到支持的更新版本。 删除最旧的之前，用户有**30 天**的时间升级到受支持的修补程序版本。
+  * 删除最早版本之前，用户有**30 天**的时间升级到更新的受支持修补程序版本。
 
 AKS 将 "已发布的版本" 定义为正式发布的版本，在所有 SLO/质量的服务度量中启用并在所有区域中可用。 AKS 可能还支持预览版本，这些版本已明确标记并受预览版条款和条件的约束。
 
@@ -146,7 +146,7 @@ az aks get-versions --location eastus --output table
 
 不支持升级到不支持的*N-2*窗口版本。 在这种情况下，我们建议客户创建新的 AKS 群集，然后在支持的窗口中将其工作负荷部署为版本。
 
-**"不支持" 的含义是什么**
+**"不受支持" 的含义是什么**
 
 "不受支持" 意味着你正在运行的版本在受支持的版本列表外，在请求支持时，系统将要求你将群集升级到受支持的版本。 此外，AKS 不会对支持的版本列表之外的群集进行任何运行时或其他保证。
 

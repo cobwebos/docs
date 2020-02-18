@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212253"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426218"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -83,7 +83,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 印度南部
 * 日本东部 
 * 日本西部
-* US Gov 弗吉尼亚州
+* 美国政府弗吉尼亚州
 * 中国东部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域： Log Analytics 工作区
@@ -112,10 +112,10 @@ Log Analytics 工作区必须存在于以下区域中：
 * 韩国中部
 * 印度中部
 * 日本东部
-* US Gov 弗吉尼亚州
+* 美国政府弗吉尼亚州
 * 中国东部 2
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -123,8 +123,8 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|资源管理器   | “所有者”                  |
-|                   | 参与者            |
+|资源管理器   | 所有者                  |
+|                   | Contributor            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
 
@@ -184,9 +184,6 @@ New-AzStorageAccount `
 2. 选择*版本 2*作为**流日志版本**。 版本 2 包含流会话统计信息（字节和数据包）
 3. 选择用于存储流日志的现有存储帐户。 若要永久存储数据，请将值设置为 *0*。 存储帐户会产生 Azure 存储费用。 确保你的存储未将 "已启用 Data Lake Storage Gen2 分层命名空间" 设置为 true。
 4. 将“保留期”设置为存储数据的天数。
-> [!IMPORTANT]
-> 目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 如果你有现有的非零保留策略，我们建议你定期删除超过保留期的存储 blob，以避免产生任何费用。 有关如何删除 NSG 流日志存储 blob 的详细信息，请参阅[删除 NSG 流日志存储 blob](network-watcher-delete-nsg-flow-log-blobs.md)。
-
 5. 为“流量分析状态”选择“打开”。
 6. 选择处理时间间隔。 根据你的选择，将从存储帐户收集流日志并由流量分析处理。 你可以选择每1小时或每10分钟的处理间隔。 
 7. 选择现有的 Log Analytics (OMS) 工作区，或选择“创建新工作区”来创建一个新工作区。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个[受支持区域](#supported-regions-log-analytics-workspaces)，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[将 Azure Log Analytics 升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。

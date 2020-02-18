@@ -57,7 +57,7 @@ ms.locfileid: "76760243"
 | SBMP | 9350至9354 | 请参阅[连接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行白名单？
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行允许列表？
 若要查找连接的空白列表的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 

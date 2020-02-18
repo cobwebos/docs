@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889357"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425283"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Windows Java 应用
 
@@ -24,7 +24,7 @@ Azure App Service 允许 Java 开发人员在完全托管的基于 Windows 的�
 
 ## <a name="deploying-your-app"></a>部署应用
 
-你可以使用用于[Azure App Service 的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 war 文件。 [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij)或[Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)还支持通过常用 ide 进行部署。
+可以使用用于[Maven 的 Azure Web 应用插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)来部署 war 文件。 [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij)或[Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)还支持通过常用 ide 进行部署。
 
 否则，你的部署方法将取决于你的存档类型：
 
@@ -44,7 +44,7 @@ Azure App Service 允许 Java 开发人员在完全托管的基于 Windows 的�
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可以在 */LogFiles/Application/* 目录中找到 Java 和 Tomcat 应用日志。
+通过 Azure 门户或 [Azure CLI](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) 启用[应用程序日志记录](/cli/azure/webapp/log#az-webapp-log-config)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 可以在 */LogFiles/Application/* 目录中找到 Java 和 Tomcat 应用日志。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
 
@@ -63,7 +63,7 @@ Azure App Service 通过 Azure 门户和 CLI 支持全新的优化和自定义�
 
 若要设置分配的内存或其他 JVM 运行时选项，请使用选项创建名为 `JAVA_OPTS` 的[应用设置](configure-common.md#configure-app-settings)。 应用服务启动时，应用服务会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 **且包含其他设置的新应用设置，例如**。`JAVA_OPTS``-Xms512m -Xmx1204m`
 
 若要从 Maven 插件配置应用设置，请在 "Azure 插件" 部分中添加 "设置/值" 标记。 下面的示例设置了一个特定的最小和最大 Java 堆大小：
 
@@ -103,7 +103,7 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 **且包含值** 的新应用设置。`JAVA_OPTS``-Dfile.encoding=UTF-8`
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -291,7 +291,7 @@ public int getServerPort()
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
 
-Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/) 提供的 [Zulu](https://www.azul.com/downloads/azure-only/zulu/)。
+Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) 提供的 [Zulu](https://www.azul.com/)。
 
 主版本更新将通过 Windows Azure App Service 中的新运行时选项提供。 客户可以通过配置应用服务部署来更新到这些较新的 Java 版本，他们需要负责测试和确保重大更新符合其需求。
 
@@ -315,7 +315,7 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 
 ### <a name="runtime-support"></a>运行时支持
 
-如果开发人员有[符合条件的支持计划](https://azure.microsoft.com/support/plans/)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+如果开发人员有[符合条件的支持计划](/azure/azure-portal/supportability/how-to-create-azure-support-request)，则可以通过 Azure 支持部门针对 Azul Zulu JDK [提出问题](https://azure.microsoft.com/support/plans/)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bbdafde85097d0052edd5984b594fd37066dc1e6
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 775e9fc737798a0e5517f9eb3314c71b14c5be07
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279715"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371896"
 ---
 此部分介绍如何使用 [Azure 门户](https://portal.azure.com)创建 IoT 中心。
 
@@ -54,11 +54,11 @@ ms.locfileid: "77279715"
 
 1. 对于本文，请接受默认选择，然后选择“下一步:  标记”转到下一屏幕。
 
-    标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。
+    标记是名称/值对。 可以为多个资源和资源组分配相同的标记，以便对资源进行分类并合并计费。 有关详细信息，请参阅[使用标记来组织 Azure 资源](../articles/azure-resource-manager/management/tag-resources.md)。
 
    ![使用 Azure 门户为新的中心设置大小和规模](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-    选择“下一步:  查看+创建”可查看选择。 会显示类似于以下的屏幕。
+    在完成时选择“下一步:  查看+创建”可查看选择。 会显示类似于以下的屏幕。
 
    ![查看用于创建新中心的信息](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 

@@ -151,7 +151,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 ### <a name="probable-causes"></a>可能的原因
 * 在载入期间指定的代理不正确
-* Azure Monitor 和 Azure 自动化服务终结点在你的数据中心内不允许列入白名单 
+* Azure Monitor 和 Azure 自动化服务终结点在你的数据中心内不允许列入允许列表 
 
 ### <a name="resolution"></a>分辨率
 1. 通过在启用了选项 `-v` 的情况下使用以下命令，重新载入与适用于 Linux 的 Log Analytics 代理 Azure Monitor。 它允许代理通过代理连接到 Azure Monitor 的详细输出。 

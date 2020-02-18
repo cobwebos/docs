@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026830"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425028"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>排除不支持 TLS 1.2 的应用程序的故障
 本文介绍如何在 Windows Server 2019 云服务 web 角色和辅助角色上启用较旧的 TLS 协议（TLS 1.0 和1.1），并应用旧密码套件以支持其他协议。 
@@ -27,7 +27,7 @@ ms.locfileid: "77026830"
 我们了解到，虽然我们在执行弃用 TLS 1.0 和 TLS 1.1 的步骤，但我们的客户可能需要支持较旧的协议和密码套件，直到它们可以规划其弃用。  尽管我们不建议重新启用这些旧值，但我们将提供帮助客户的指导。 我们鼓励客户在实现本文中所述的更改之前评估回归风险。 
 
 > [!NOTE]
-> 来宾操作系统系列6版本通过禁用 1.0/1.0 密码来强制执行 TLS 1.2。 
+> 来宾操作系统系列6版本通过禁用 1.0/1.1 密码来强制执行 TLS 1.2。 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>删除 TLS 1.0、TLS 1.1 和旧密码套件支持 

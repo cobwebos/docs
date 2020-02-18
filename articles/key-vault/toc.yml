@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: 使用访问控制策略
           href: key-vault-group-permissions-for-apps.md
+        - name: 导入受 HSM 保护的密钥
+          items:
+            - name: 概述
+              href: key-vault-hsm-protected-keys.md
+            - name: 将受 HSM 保护的密钥导入到 Key Vault（预览版）
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: 将受 HSM 保护的密钥导入到 Key Vault（旧版）
+              href: hsm-protected-keys-legacy.md
     - name: 通过事件网格路由 Key Vault 通知
       href: event-grid-tutorial.md
     - name: 通过事件网格和逻辑应用接收通知
@@ -170,8 +178,6 @@
       items:
         - name: 开发人员指南
           href: key-vault-developers-guide.md
-        - name: HSM 保护的密钥
-          href: key-vault-hsm-protected-keys.md
         - name: 迁移到 .NET 2.0
           href: key-vault-dotnet2api-release-notes.md
         - name: 保存 Web 应用机密

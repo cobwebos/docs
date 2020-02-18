@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 1be6420598e7983ef9014f617da1f87f5550fa6a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbc2e08ab131c591d8857e1cf88b5c9f91db9610
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705354"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425232"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -40,7 +40,7 @@ ms.locfileid: "76705354"
 
 ### <a name="one-entity"></a>一个实体
 
-以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 
+以下示例演示读取单个表行的 [C# 函数](functions-dotnet-class-library.md)。 对于表中插入的每个记录，将触发函数。
 
 行键值“{queueTrigger}”指示行键来自队列消息字符串。
 
@@ -93,7 +93,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-[Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是使用 `CloudTable` 方法参数通过 Azure 存储 SDK 来读取表。 下面是查询 Azure Functions 日志表的函数示例：
+`IQueryable`Functions v2 运行时[不支持 ](functions-versions.md)。 一种替代方法是使用 `CloudTable` 方法参数通过 Azure 存储 SDK 来读取表。 下面是查询 Azure Functions 日志表的函数示例：
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -476,7 +476,7 @@ public int run(
 要使用的存储帐户按以下顺序确定：
 
 * `Table` 特性的 `Connection` 属性。
-* 作为 `Table` 特性应用到同一参数的 `StorageAccount` 特性。
+* 作为 `StorageAccount` 特性应用到同一参数的 `Table` 特性。
 * 应用到函数的 `StorageAccount` 特性。
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
@@ -503,7 +503,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `in`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |
@@ -523,27 +523,27 @@ Python 不支持特性。
 
 * **在中读取一行**
 
-  设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
+  设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
 
 * **读取一行或多行**
 
-  使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
+  使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
 
   > [!NOTE]
-  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+  > `IQueryable`Functions v2 运行时[不支持 ](functions-versions.md)。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
 
 * **在中读取一行**
 
-  设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
+  设置 `partitionKey` 和 `rowKey`。 使用方法参数 `T <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 `T` 通常是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 此方案中不使用 `filter` 和 `take` 属性。
 
 * **读取一行或多行**
 
-  使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 *function.json* 的 `name` 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
+  使用方法参数 `IQueryable<T> <paramName>` 访问表数据。 在 C# 脚本中，`paramName` 是在 `name`function.json*的* 属性中指定的值。 `T` 必须是实现 `ITableEntity` 或派生自 `TableEntity` 的类型。 可以使用 `IQueryable` 方法执行任何所需的筛选。 此方案中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 属性。  
 
   > [!NOTE]
-  > [Functions v2 运行时](functions-versions.md)不支持 `IQueryable`。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+  > `IQueryable`Functions v2 运行时[不支持 ](functions-versions.md)。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
@@ -559,12 +559,12 @@ Python 不支持特性。
 
 ---
 
-## <a name="output"></a>输出
+## <a name="output"></a>Output
 
 使用 Azure 表存储输出绑定读取将实体写入 Azure 存储帐户中的表。
 
 > [!NOTE]
-> 此输出绑定不支持更新现有实体。 请使用 [Azure 存储 SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) 中的 `TableOperation.Replace` 操作来更新现有实体。
+> 此输出绑定不支持更新现有实体。 请使用 `TableOperation.Replace`Azure 存储 SDK[ 中的 ](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) 操作来更新现有实体。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -889,7 +889,7 @@ Python 不支持特性。
 
 下表解释了在 function.json 文件和 `Table` 特性中设置的绑定配置属性。
 
-|function.json 属性 | Attribute 属性 |Description|
+|function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
 |type | 不适用 | 必须设置为 `table`。 在 Azure 门户中创建绑定时，会自动设置此属性。|
 |direction | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建绑定时，会自动设置此属性。 |

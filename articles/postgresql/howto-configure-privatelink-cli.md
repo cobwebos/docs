@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281302"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425521"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
 
@@ -20,7 +20,7 @@ ms.locfileid: "76281302"
 > [!NOTE]
 > 此功能在所有 Azure Database for PostgreSQL 单一服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要逐步执行本操作方法指南，需要：
 
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>禁用子网专用终结点策略 
-Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点网络策略。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 更新名为 *mySubnet* 的子网配置：
+Azure 会将资源部署到虚拟网络中的子网，因此，你需要创建或更新子网，以禁用专用终结点网络策略。 使用 *az network vnet subnet update* 更新名为 [mySubnet](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 的子网配置：
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -131,14 +131,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
-1. 打开下载的 .rdp* 文件。
+1. 打开 downloaded.rdp 文件。
 
     1. 出现提示时，选择“连接”。
 
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
 
 1. 选择“确定”。
 
@@ -159,30 +159,31 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. 使用任何可用的客户端测试 PostgreSQL 服务器的专用链接连接。 在下面的示例中，我使用[Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15)执行此操作。
 
-4. In **New connection**, enter or select this information:
+4. 在 "**新建连接**" 中，输入或选择以下信息：
 
-    | Setting | Value |
+    | 设置 | 值 |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | 服务器类型| 选择**PostgreSQL**。|
+    | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |
+    | 用户名 | 输入用户名作为在 PostgreSQL 服务器创建过程中提供的 username@servername。 |
+    |密码 |输入在创建 PostgreSQL 服务器期间提供的密码。 |
+    |SSL|选择 "**必需**"。|
     ||
 
-5. Select Connect.
+5. 选择“连接”。
 
-6. Browse databases from left menu.
+6. 浏览左侧菜单中的数据库。
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. 同时创建或查询来自 postgreSQL 服务器的信息。
 
-8. Close the remote desktop connection to myVm.
+8. 关闭与 myVm 的远程桌面连接。
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>清理资源 
+如果不再需要资源组及其所有资源，可以使用 az group delete 将其删除： 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

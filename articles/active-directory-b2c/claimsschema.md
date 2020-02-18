@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185589"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372988"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -51,13 +51,31 @@ ClaimType 元素包含以下元素：
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 在各种屏幕上向用户显示的标题。 可将值[本地化](localization.md)。 |
-| 数据类型 | 1:1 | 声明类型。 可以使用 boolean、date、dateTime、int、long、string、stringCollection 和 phoneNumber 的数据类型。 基元数据类型表示C#变量数据类型的等效项。 stringCollection 表示字符串的集合。 有关详细信息，请参阅[ C#类型和变量](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables)。 日期遵循 ISO 8601 约定。 |
+| 数据类型 | 1:1 | 声明类型。 |
 | DefaultPartnerClaimTypes | 0:1 | 用于指定协议的合作伙伴默认声明类型。 可以覆盖 InputClaim 或 OutputClaim 元素中指定的 PartnerClaimType 中的值。 将此元素用于指定协议的默认名称。  |
 | Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
 | UserInputType | 0:1 | 应在手动输入声明类型的声明数据时可供用户使用的输入控制的类型。 请参阅稍后在此页中定义的用户输入类型。 |
 | 限制 | 0:1 | 此声明的值限制，如正则表达式 (Regex) 或可接受值的列表。 可将值[本地化](localization.md)。 |
 PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的引用。 **PredicateValidationReference** 元素可用于执行验证过程，以确保仅输入格式正确的数据。 有关详细信息，请参阅 [Predicates](predicates.md)。 |
+
+### <a name="datatype"></a>数据类型
+
+**DataType**元素支持以下值：
+
+| Type | 说明 |
+| ------- | ----------- | 
+|boolean|表示布尔值（`true` 或 `false`）。|
+|date| 表示时间上的一刻，通常表示为一天中的日期。 日期的值遵循 ISO 8601 约定。|
+|dateTime|表示时间上的一刻，通常以日期和当天的时间表示。 日期的值遵循 ISO 8601 约定。|
+|duration|表示以年、月、日、小时、分钟和秒为单位的时间间隔。 的格式为 `PnYnMnDTnHnMnS`，其中 `P` 表示正值，或 `N` 为负值。 `nY` 是后跟文本 `Y`的年数。 `nMo` 是后跟文本 `Mo`的月份数。 `nD` 是后跟文本 `D`的天数。 示例： `P21Y` 表示21年。 `P1Y2Mo` 表示一年，两个月。 `P1Y2Mo5D` 表示一年、两个月和五天。  `P1Y2M5DT8H5M620S` 表示一年、两个月、五天、八小时、五分钟和20秒。  |
+|phoneNumber|表示电话号码。 |
+|int| 表示介于-2147483648 和2147483647之间的数字|
+|long| 表示介于-9223372036854775808 到9223372036854775807之间的数字 |
+|字符串| 将文本表示为 UTF-16 代码单元的序列。|
+|stringCollection|表示 `string` 的集合。|
+|userIdentity| 表示用户标识。|
+|userIdentityCollection|表示 `userIdentity` 的集合。|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -155,7 +173,7 @@ Restriction 元素包含以下元素：
 | 枚举 | 1:n | 可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 | 模式 | 1:1 | 要使用的正则表达式。 |
 
-### <a name="enumeration"></a>枚举
+#### <a name="enumeration"></a>枚举
 
 Enumeration 元素包含以下属性：
 
@@ -214,11 +232,26 @@ Pattern 元素可以包含以下属性：
 
 ![显示 regex 限制触发的错误消息的文本框](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型的声明数据时可以使用的文本框、密码和下拉列表。 使用[自断言技术配置文件](self-asserted-technical-profile.md)从用户收集信息时，必须指定 UserInputType。
+Azure AD B2C 支持各种用户输入类型，例如在手动输入声明类型的声明数据时可以使用的文本框、密码和下拉列表。 使用[自断言技术配置文件](self-asserted-technical-profile.md)和[显示控件](display-controls.md)从用户那里收集信息时，必须指定**UserInputType** 。
 
-### <a name="textbox"></a>TextBox
+**UserInputType**元素可用的用户输入类型：
+
+| UserInputType | 支持的 ClaimType | 说明 |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |"多选" 下拉框。 声明值以逗号分隔字符串的形式表示。 |
+|DateTimeDropdown | `date`， `dateTime` |选择 "日"、"月" 和 "年"。 |
+|DropdownSingleSelect |`string` |单个选择下拉框。 声明值为选择的值。|
+|EmailBox | `string` |电子邮件输入字段。 |
+|Paragraph | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`|仅在段落标记中显示文本的字段。 |
+|密码 | `string` |密码文本框。|
+|RadioSingleSelect |`string` | 单选按钮的集合。 声明值为选择的值。|
+|Readonly | `boolean`、`date`、`dateTime`、`duration`、`int`、`long`、`string`| 只读文本框。 |
+|TextBox |`boolean`, `int`, `string` |单行文本框。 |
+
+
+#### <a name="textbox"></a>TextBox
 
 TextBox 用户输入类型用于提供单行文本框。
 
@@ -233,7 +266,7 @@ TextBox 用户输入类型用于提供单行文本框。
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 EmailBox 用户输入类型用于提供基本电子邮件输入字段。
 
@@ -251,7 +284,7 @@ EmailBox 用户输入类型用于提供基本电子邮件输入字段。
 </ClaimType>
 ```
 
-### <a name="password"></a>密码
+#### <a name="password"></a>密码
 
 Password 用户输入类型用于记录用户输入的密码。
 
@@ -266,7 +299,7 @@ Password 用户输入类型用于记录用户输入的密码。
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 DateTimeDropdown 用户输入类型用于提供一组用来选择日、月和年的下拉列表。 可以使用 Predicates 和 PredicateValidations 元素来控制最小日期值和最大日期值。 有关详细信息，请参阅 [Predicates 和 PredicateValidations](predicates.md) 的“配置日期范围”部分。
 
@@ -281,7 +314,7 @@ DateTimeDropdown 用户输入类型用于提供一组用来选择日、月和年
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 RadioSingleSelect 用户输入类型用于提供允许用户选择一个选项的单选按钮集合。
 
@@ -300,7 +333,7 @@ RadioSingleSelect 用户输入类型用于提供允许用户选择一个选项�
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 DropdownSingleSelect 用户输入类型用于提供允许用户选择一个选项的下拉框。
 
@@ -319,7 +352,7 @@ DropdownSingleSelect 用户输入类型用于提供允许用户选择一个选�
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 CheckboxMultiSelect 用户输入类型用于提供允许用户选择多个选项的复选框集合。
 
@@ -338,7 +371,7 @@ CheckboxMultiSelect 用户输入类型用于提供允许用户选择多个选项
 </ClaimType>
 ```
 
-### <a name="readonly"></a>Readonly
+#### <a name="readonly"></a>Readonly
 
 Readonly 用户输入类型用于提供要显示声明和值的只读字段。
 
@@ -354,9 +387,9 @@ Readonly 用户输入类型用于提供要显示声明和值的只读字段。
 ```
 
 
-### <a name="paragraph"></a>Paragraph
+#### <a name="paragraph"></a>Paragraph
 
-Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字段。 例如，&lt;p&gt;文本&lt;/p&gt;。
+Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字段。  例如，&lt;p&gt;文本&lt;/p&gt;。 `OutputClaim` 自断言技术配置文件的**段落**用户输入类型必须设置 `Required` 属性 `false` （默认值）。
 
 ![使用具有 paragraph 的声明类型](./media/claimsschema/paragraph.png)
 

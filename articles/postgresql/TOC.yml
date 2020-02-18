@@ -183,7 +183,7 @@
           items:
             - name: Azure 门户
               href: howto-create-manage-server-portal.md
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 创建用户
               href: howto-create-users.md
@@ -245,6 +245,8 @@
           items:
             - name: 排查连接错误
               href: howto-troubleshoot-common-connection-issues.md
+            - name: 排查数据加密问题
+              href: howto-data-encryption-troubleshoot.md
         - name: 高级威胁防护
           items:
             - name: Azure 门户

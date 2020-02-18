@@ -3,12 +3,12 @@ title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 1dd060840e589d601d87d8be235eda5c34283a4f
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369905"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425045"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -65,7 +65,7 @@ ms.locfileid: "77369905"
 
 **方案** | **OS 支持**
 --- | ---
-使用 Azure VM 代理扩展进行备份 | -Windows 10 客户端（仅限64位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> -Windows 2008 （仅限64位）
+使用 Azure VM 代理扩展进行备份 | -Windows 10 客户端（仅限64位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> -Windows Server 2008 （仅限64位）
 使用 MARS 代理进行备份 | [支持](backup-support-matrix-mars-agent.md#support-for-direct-backups)的操作系统。
 使用 DPM/MABS 备份 | 使用 [MABS](backup-mabs-protection-matrix.md) 和 [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) 备份时支持的操作系统。
 

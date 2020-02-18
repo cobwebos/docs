@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132068"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424926"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 排查查询问题
 
@@ -302,7 +302,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 Azure Cosmos DB 使用[分区](partitioning-overview.md)来缩放单个容器，因为请求单元和数据存储需求增加。 每个物理分区都有单独的独立索引。 如果查询具有与容器的分区键匹配的相等筛选器，则只需检查相关分区的索引。 此优化可减少查询所需的 RU 总数。
 
-如果有大量预配 RU （超过30000）或存储了大量数据（超过 100 GB），则很可能有足够大的容器来查看查询 RU 费用的显著降低。
+如果有大量预配 RU （超过30000）或存储了大量数据（超过 100 GB），则很可能会有足够大的容器来查看查询 RU 费用的显著降低。
 
 例如，如果创建的容器具有分区键 foodGroup，则以下查询只需要检查单个物理分区：
 
@@ -383,7 +383,7 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 
 ## <a name="increase-provisioned-throughput"></a>增加预配的吞吐量
 
-在 Azure Cosmos DB 中，预配的吞吐量以请求单位（RU）度量。 假设你有一个使用 5 RU 吞吐量的查询。 例如，如果你预配 1000 RU，则每秒可以运行查询200次。 如果尝试在没有足够的吞吐量的情况下运行查询，Azure Cosmos DB 将返回 HTTP 429 错误。 任何当前核心（SQL） API sdk 将在等待一小段时间后自动重试该查询。 限制请求需要更长时间，因此增加预配的吞吐量可以提高查询延迟。 可以在 Azure 门户的 "指标" 边栏选项卡中查看[请求限制请求总数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
+在 Azure Cosmos DB 中，预配的吞吐量以请求单位（RU）度量。 假设你有一个使用 5 RU 吞吐量的查询。 例如，如果你预配 1000 RU，则每秒可以运行查询200次。 如果尝试在没有足够的吞吐量的情况下运行查询，Azure Cosmos DB 将返回 HTTP 429 错误。 任何当前核心（SQL） API sdk 将在等待一小段时间后自动重试该查询。 限制请求需要更长时间，因此增加预配的吞吐量可以提高查询延迟。 可以在 "指标" 边栏选项卡中查看 Azure 门户的[限制请求总数](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors)。
 
 ## <a name="increase-maxconcurrency"></a>增加 MaxConcurrency
 

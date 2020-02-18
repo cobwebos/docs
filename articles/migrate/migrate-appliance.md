@@ -2,13 +2,13 @@
 title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031657"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425453"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -55,7 +55,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **哈希值** | MD5：29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256：37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V 主机** | 正在运行 Windows Server 2012 R2 或更高版本。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
-**发现** | 设备最多可在 vCenter Server 上发现 5000 VMware Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。
+**发现** | 一个设备最多可以发现5000个 Hyper-v Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。
 **设备组件** | 管理应用：部署期间用于用户输入的设备中的 Web 应用。<br/> 发现代理：收集计算机配置数据。<br/> 评估代理：收集性能数据。<br/>  自动更新服务：更新组件（每24小时运行一次）。
 
 

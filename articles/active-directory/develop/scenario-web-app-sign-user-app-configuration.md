@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f15006f9c7f2778c986d1977123e1a396c4317f3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d54103cad8a3550bdc300cba2308397dd1ce3d6c
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701597"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425572"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登录用户的 Web 应用：代码配置
 
@@ -30,7 +30,7 @@ ms.locfileid: "76701597"
 <!-- This section can be in an include for Web App and Web APIs -->
 用于保护 web 应用（和 web API）的库包括：
 
-| 平台 | 库 | Description |
+| 平台 | 库 | 说明 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [适用于 .NET 的标识模型扩展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | 适用于 .NET Framework .NET 的 Microsoft 标识模型扩展，可由 ASP.NET 和 ASP.NET Core 直接使用。 从 ASP.NET 或 ASP.NET Core web 应用，可以使用**TokenValidationParameters**类（特别是在某些合作伙伴方案中）控制令牌验证。 |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | 对 Java web 应用程序的支持 |
@@ -93,7 +93,7 @@ ms.locfileid: "76701597"
     // - "organizations" to sign in users in any work or school account
     // - "common" to sign in users with any work or school account or Microsoft personal account
     // - "consumers" to sign in users with a Microsoft personal account only
-    "TenantId": "[Enter the tenantId here]]",
+    "TenantId": "[Enter the tenantId here]",
 
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",

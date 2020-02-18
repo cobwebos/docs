@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780175"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425709"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 
@@ -48,7 +48,7 @@ ms.locfileid: "75780175"
 4. **本地 ID** 可以为空。
 5. 单击“身份验证设置”按钮，并确认已从下拉列表中选择了“用户名”。
 
-   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.jpg)
+   ![身份验证设置](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. 请确保输入了正确的凭据。
 
 ## <a name="additional"></a>其他步骤
@@ -60,7 +60,7 @@ ms.locfileid: "75780175"
 
    ![数据包](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
   
-3. 如果没有关于网络跟踪的任何服务器响应，请在 Azure 门户网站的 Azure 网关配置页中验证是否已启用 IKEv2 协议。
+3. 如果网络跟踪上没有服务器响应，请在 Azure 门户网站上的 Azure 网关配置页上验证是否已启用 IKEv2 协议。
 
 ## <a name="next-steps"></a>后续步骤
 有关更多帮助，请参阅 [Microsoft 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

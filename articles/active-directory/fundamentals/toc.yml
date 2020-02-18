@@ -39,8 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: 用于欧盟的标识数据存储
       href: active-directory-data-storage-eu.md
-    - name: 用于澳大利亚的标识数据存储
-      href: active-directory-data-storage-australia.md
+    - name: 用于澳大利亚和新西兰的标识数据存储
+      href: active-directory-data-storage-australia-newzealand.md
     - name: Microsoft 365 政府版中的新增功能
       href: whats-new-microsoft-365-government.md
     - name: Azure AD 操作参考

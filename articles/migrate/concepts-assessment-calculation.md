@@ -2,13 +2,13 @@
 title: Azure Migrate 中的评估
 description: 了解 Azure Migrate 中的评估。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: 0cf933dd1c8c61edfcea20ea954c5813f3848b28
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833322"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425691"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>关于 Azure Migrate 中的评估
 
@@ -149,7 +149,7 @@ Windows Client 7、8 和 10 | Azure 仅支持 [Visual Studio 订阅。](https://
 Windows 10 专业版桌面 | Azure 提供了对[多租户托管权限](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)的支持。 | 已做好特定条件下的 Azure 迁移准备
 Windows Vista、XP Professional | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
 Linux | Azure 予以认可这些 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能会在 Azure 中启动，但建议在迁移到 Azure 之前将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本不受认可，则为 Azure 有条件的就绪。
-其他操作系统<br/><br/> 例如 Oracle Solaris、Apple Mac 操作系统、FreeBSD 等。 | Azure 不认可这些操作系统。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前安装受支持的操作系统。  
+其他操作系统<br/><br/> 例如，Oracle Solaris、Apple macOS 等。 | Azure 不认可这些操作系统。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前安装受支持的操作系统。  
 vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 无法确认 OS。 | 就绪性未知。 确保 VM 内部运行的 OS 在 Azure 中受到支持。
 32 位操作系统 | 计算机可能会在 Azure 中启动，但 Azure 可能不提供完全支持。 | Azure 有条件的就绪。 迁移到 Azure 之前，请考虑将计算机的操作系统从32位 OS 升级到64位操作系统。
 

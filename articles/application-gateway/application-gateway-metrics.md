@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046315"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425250"
 ---
 # <a name="metrics-for-application-gateway"></a>应用程序网关的指标
 
@@ -95,10 +95,20 @@ ms.locfileid: "77046315"
 - **当前连接数**
 
    从客户端到应用程序网关的活动并发连接总数
+   
+- **估计的计费容量单位**
+
+  估计计费使用的容量单位数。 这 calcutaed 作为*当前容量单位*与*固定计费容量单位*之间的更大值。  
 
 - **失败的请求数**
 
    应用程序网关已提供的失败请求计数。 可以进一步筛选请求计数，以显示每个/特定的后端池的计数-http 设置组合。
+   
+- **固定的可计费容量单位**在应用程序网关配置中，根据*最小缩放单位*设置保持预配的容量单元的最小数目。
+   
+ - **新连接数/秒**
+
+   每秒从客户端到应用程序网关以及从应用程序网关到后端成员建立的新 TCP 连接的平均数目。
 
 
 - **响应状态**

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368330"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424994"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -62,7 +62,7 @@ ms.locfileid: "77368330"
 若要创建第一个项目，请选择 "**语音到文本"/"自定义" 语音**，然后单击 "**新建项目**"。 按照向导提供的说明创建项目。 创建项目后，应该会看到四个选项卡：**数据**、**测试**、**定型**和**部署**。 使用[后续步骤](#next-steps)中提供的链接来了解如何使用各个选项卡。
 
 > [!IMPORTANT]
-> [自定义语音门户](https://aka.ms/custom-speech)最近已更新！ 如果使用 CRI 门户或 Api 中的数据、模型、测试和已发布终结点创建了以前的项目，则需要在新门户中创建一个新项目以连接到这些旧实体。
+> [自定义语音门户](https://aka.ms/custom-speech)最近已更新！ 如果在 CRIS.ai 门户或 Api 中创建了以前的数据、模型、测试和已发布的终结点，则需要在新门户中创建一个新项目以连接到这些旧实体。
 
 ## <a name="next-steps"></a>后续步骤
 

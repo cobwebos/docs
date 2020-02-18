@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c759b7f0467ddb961f44f27c2d2f18ed24d2cfca
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372790"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425623"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ ms.locfileid: "77372790"
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | 一个字符串，包含内容定义 HTML5 页面的 URL。 |
-| RecoveryUri | 0:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
+| RecoveryUri | 1:1 | 一个字符串，包含用于显示内容定义相关错误的 HTML 页面的 URL。 |
 | DataUri | 1:1 | 一个字符串，包含一个 HTML 文件的相对 URL，该文件提供要为步骤调用的用户体验。 |
 | 元数据 | 0:1 | 一个键/值对集合，包含内容定义使用的元数据。 |
 | LocalizedResourcesReferences | 0:1 | 本地化的资源引用集合。 使用此元素可以自定义用户界面和声明属性的本地化。 |
@@ -86,7 +86,7 @@ ms.locfileid: "77372790"
 | `unifiedssp` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 此值还提供“使我保持登录功能”和“忘记了密码?” 链接。 |
 | `unifiedssd` | 显示一个窗体，用于通过基于电子邮件地址或用户名的本地帐户进行登录。 |
 | `multifactor` | 在注册或登录期间使用短信或语音来验证电话号码。 |
-| `selfasserted` | 显示一个窗体，让用户创建或更新其个人资料。 |
+| `selfasserted` | 显示用于从用户收集数据的窗体。 例如，允许用户创建或更新其配置文件。 |
 
 ### <a name="select-a-page-layout"></a>选择页面布局
 

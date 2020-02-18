@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: 连接
       items:
+        - name: NAT
+          items:
+            - name: 概述
+              href: nat-overview.md
+            - name: 资源
+              href: nat-gateway-resource.md
         - name: 后端连接互操作性
           items:
             - name: 前言和测试设置
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: 连接
       items:
+        - name: NAT
+          items:
+            - name: 创建 NAT 网关 - 门户
+              href: quickstart-create-nat-gateway-portal.md
+            - name: 创建 NAT 网关 - PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: 创建 NAT 网关 - CLI
+              href: quickstart-create-nat-gateway-cli.md
+            - name: 创建并验证 NAT 网关 - 门户
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: 创建并验证 NAT 网关 - PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: 创建并验证 NAT 网关 - CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: 管理 NIC
           href: virtual-network-network-interface.md
         - name: 管理虚拟网络

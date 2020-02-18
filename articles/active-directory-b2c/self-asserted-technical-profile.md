@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/16/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 37d895e2514d01bdbe73f42e1ba5ea5e4c46bfa1
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372857"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425589"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -55,7 +55,7 @@ ms.locfileid: "77372857"
 
 显示声明功能目前处于**预览阶段**。
 
-**DisplayClaims**元素包含用于从用户收集数据的声明的列表。 若要预填充输出声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
+**DisplayClaims**元素包含用于从用户收集数据的声明的列表。 若要预填充显示声明的值，请使用前面介绍的输入声明。 另外，此元素还可能包含默认值。
 
 **DisplayClaims**中声明的顺序指定 Azure AD B2C 在屏幕上呈现声明的顺序。 若要强制用户为特定声明提供值，请将**DisplayClaim**元素的**Required**特性设置为 `true`。
 

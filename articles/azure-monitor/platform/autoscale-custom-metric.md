@@ -4,17 +4,18 @@ description: 了解如何在 Azure 中根据自定义指标缩放资源。
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364537"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425113"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>在 Azure 中根据自定义指标自动缩放入门
 本文介绍如何在 Azure 门户中根据自定义指标缩放资源。
 
-Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 - Web 应用](https://azure.microsoft.com/services/app-service/web/)和 [API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
+Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[云服务](https://azure.microsoft.com/services/cloud-services/)、[应用服务 Web 应用](https://azure.microsoft.com/services/app-service/web/)、 [Azure 数据资源管理器群集](https://azure.microsoft.com/services/data-explorer/)   
+集成服务环境和[API 管理服务](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)。
 
 ## <a name="lets-get-started"></a>入门
 本文假定已有一个配了 Application Insights 的 Web 应用。 如果还没有，可以[为 ASP.NET 网站设置 Application Insights][1]
@@ -35,7 +36,7 @@ Azure Monitor 自动缩放仅适用于[虚拟机规模集](https://azure.microso
   > 注意：如果读取资源指标时出现问题，且当前容量低于默认容量，则要确保资源的可用性，自动缩放将扩大到默认值。 如果当前容量已大于默认容量，则自动缩放不会缩小。
 - 单击“保存”
 
-祝贺。 现在已成功创建缩放设置，以基于自定义指标自动缩放 Web 应用。
+祝贺你。 现在已成功创建缩放设置，以基于自定义指标自动缩放 Web 应用。
 
 > 注意：若要开始使用 VMSS 或云服务角色，也可以运用相同的步骤。
 

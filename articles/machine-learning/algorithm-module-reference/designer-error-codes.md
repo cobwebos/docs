@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152357"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425793"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>设计器的异常和错误代码（预览版）
 
@@ -74,7 +74,7 @@ ms.locfileid: "77152357"
 |异常消息|
 |------------------------|
 |一个或多个输入为 null 或为空。|
-|输入 "{0}" 为 null 或为空。|
+|输入 "{name}" 为 null 或为空。|
 
 
 ## <a name="error-0004"></a>错误 0004  
@@ -87,8 +87,8 @@ ms.locfileid: "77152357"
 |异常消息|
 |------------------------|
 |参数应大于边界值。|
-|参数 "{0}" 值应大于 {1}。|
-|参数 "{0}" 的值为 "{1}"，该值应大于 {2}。|
+|参数 "{arg_name}" 值应大于 {lower_boundary}。|
+|参数 "{arg_name}" 的 actual_value 值应大于 {lower_boundary}。|
 
 
 ## <a name="error-0005"></a>错误 0005  
@@ -101,8 +101,8 @@ ms.locfileid: "77152357"
 |异常消息|
 |------------------------|
 |参数应大于或等于边界值。|
-|参数 "{arg_name}" 值应大于或等于 {target_val}。|
-|参数 "{arg_name}" 的 true_val 值应大于或等于 {target_val}。|
+|参数 "{arg_name}" 值应大于或等于 {lower_boundary}。|
+|参数 "{arg_name}" 的值 "{value}" 应大于或等于 {lower_boundary}。|
 
 
 ## <a name="error-0006"></a>错误 0006  
@@ -115,8 +115,8 @@ ms.locfileid: "77152357"
 |异常消息|
 |------------------------|
 |参数不匹配。 一个参数应小于另一个参数。|
-|参数 "{0}" 值应小于参数 "{1}" 值。|
-|参数 "{0}" 的值应小于 {2}的值 "{1}"。|
+|参数 "{arg_name}" 的值应小于参数 "{upper_boundary_parameter_name}"。|
+|参数 "{arg_name}" 具有值 "{value}"，该值应小于 {upper_boundary_parameter_name}。|
 
 
 ## <a name="error-0007"></a>错误 0007  
@@ -137,8 +137,9 @@ ms.locfileid: "77152357"
 |异常消息|
 |------------------------|
 |参数不匹配。 一个参数应小于或等于另一个参数。|
-|参数 "{0}" 的值应小于或等于参数 "{1}" 值。|
-|参数 "{0}" 的值应小于或等于 {2}的值 "{1}"。|
+|参数 "{arg_name}" 的值应小于或等于参数 "{upper_boundary_parameter_name}"。|
+|参数 "{arg_name}" 的 actual_value 值应小于或等于 {upper_boundary}。|
+|参数 "{arg_name}" 值 {actual_value} 应小于或等于参数 "{upper_boundary_parameter_name}" 值 {upper_boundary}。|
 
 
 ## <a name="error-0008"></a>错误 0008  
@@ -154,8 +155,8 @@ ms.locfileid: "77152357"
 |------------------------|
 |参数字不在指定的范围内。|
 |参数 "{arg_name}" 的值不在范围内。|
-|参数 "{arg_name}" 的值应在 [{a}，{b}] 的范围内。|
-|参数 "{arg_name}" 的值不在范围内。在于|
+|参数 "{arg_name}" 的值应在 [{lower_boundary}，{upper_boundary}] 的范围内。|
+|参数 "{arg_name}" 的值不在范围内。 在于|
 
 
 ## <a name="error-0009"></a>错误 0009  
@@ -187,7 +188,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |Azure 存储帐户名称或容器名称不正确。|
-|Azure 存储帐户名称 "{0}" 或容器名称 "{1}" 不正确;应为容器/blob 格式的容器名称。|
+|Azure 存储帐户名称 "{account_name}" 或容器名称 "{container_name}" 不正确;应为容器/blob 格式的容器名称。|
 
 
 ## <a name="error-0010"></a>错误 0010  
@@ -200,7 +201,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |输入数据集中具有相应索引的列具有不同的名称。|
-|对于输入数据集的列 {0} （从零开始）（分别为{1} 和 {2}），列名称不同。|
+|输入数据集的列 {col_index} （从零开始）的列名称不同（分别为 {dataset1} 和 {dataset2}）。|
 
 
 ## <a name="error-0011"></a>错误 0011  
@@ -219,7 +220,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |指定的列集不适用于任何数据集列。|
-|指定的列集 "{0}" 不适用于任何数据集列。|
+|指定的列集 "{column_set}" 不适用于任何数据集列。|
 
 
 ## <a name="error-0012"></a>错误 0012  
@@ -301,7 +302,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |建立数据库连接时出错。|
-|建立数据库连接时出错： {0}。|
+|建立数据库连接时出错： {connection_str}。|
 
 
 ## <a name="error-0016"></a>错误 0016  
@@ -363,7 +364,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 
  若要确定要求和数据的可能方式，请查看将使用数据集作为输入的模块的帮助主题。  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->。  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |异常消息|
 |------------------------|
@@ -384,8 +385,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |列中的值未排序。|
-|列 "{0}" 中的值未排序。|
-|数据集 "{1}" 的列 "{0}" 中的值未排序。|
+|列 "{col_index}" 中的值未排序。|
+|数据集 "{dataset}" 的列 "{col_index}" 中的值未排序。|
 
 
 ## <a name="error-0020"></a>错误 0020  
@@ -398,6 +399,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |输入数据集中的列数小于允许的最小列数。|
+|输入数据集 "{arg_name}" 中的列数小于允许的最小值。|
 |输入数据集中的列数小于允许的最小值 {required_columns_count} 列。|
 |输入数据集 "{arg_name}" 中的列数小于允许的最小值 {required_columns_count} 列。|
 
@@ -450,9 +452,9 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |在输入数据集中选择的列数不等于所需数目。|
-|输入数据集中的选定列数不等于 {0}。|
-|列选择模式 "{0}" 提供的输入数据集中的选定列数不等于 {1}。|
-|列选择模式 "{0}" 应提供输入数据集中所选 {1} 列，但实际提供 {2} 列。|
+|输入数据集中的选定列数不等于 {expected_col_count}。|
+|列选择模式 "{selection_pattern_friendly_name}" 提供的输入数据集中的选定列数不等于 {expected_col_count}。|
+|列选择模式 "{selection_pattern_friendly_name}" 应提供在输入数据集中选择的 {expected_col_count} 列，但实际提供的是 {selected_col_count} 列。|
 
 
 ## <a name="error-0023"></a>错误 0023  
@@ -466,8 +468,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |输入数据集包含不支持的目标列。|
-|输入数据集包含不支持的目标列 "{0}"。|
-|对于 {1}类型的学习器，输入数据集包含不支持的目标列 "{0}"。|
+|输入数据集包含不支持的目标列 "{column_index}"。|
+|对于类型为 {learner_type} 的学习器，输入数据集包含不支持的目标列 "{column_index}"。|
 
 
 ## <a name="error-0024"></a>错误 0024  
@@ -500,8 +502,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |数据集中没有评分列。|
-|"{0}" 中没有评分列。|
-|"{1}" 生成的 "{0}" 中没有评分列。 请使用正确类型的学习器为数据集评分。|
+|"{Dataset_name}" 中没有评分列。|
+|"{Learner_type}" 生成的 "{dataset_name}" 中没有评分列。 请使用正确类型的学习器为数据集评分。|
 
 
 ## <a name="error-0026"></a>错误 0026  
@@ -514,7 +516,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |在参数中指定了相同的列名。 模块不允许相同的列名。|
-|不允许参数 "{0}" 和 "{1}" 中的列名称相等。 请指定不同的名称。|
+|不允许参数 "{arg_name_1}" 和 "{arg_name_2}" 中的列名相等。 请指定不同的名称。|
 
 
 ## <a name="error-0027"></a>错误 0027  
@@ -533,7 +535,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |传递的对象大小不一致。|
-|"{0}" 的大小与 "{1}" 的大小不一致。|
+|"{Friendly_name1}" 的大小与 "{friendly_name2}" 的大小不一致。|
 
 
 ## <a name="error-0028"></a>错误 0028  
@@ -571,7 +573,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |传递了无效的 URI。|
-|Uri "{0}" 无效。|
+|Uri "{invalid_url}" 无效。|
 
 
 ## <a name="error-0030"></a>错误 0030  
@@ -584,7 +586,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |无法下载文件。|
-|下载文件时出错： {0}。|
+|下载文件时出错： {file_url}。|
 
 
 ## <a name="error-0031"></a>错误 0031  
@@ -597,7 +599,8 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |列集中的列数小于所需列数。|
-|应至少指定 {0} 列。 指定的实际列数为 {1}。|
+|应为输入参数 "{arg_name}" 至少指定 {required_columns_count} 列。|
+|应为输入参数 "{arg_name}" 至少指定 {required_columns_count} 列。 指定列的实际数量为 {input_columns_count}。|
 
 
 ## <a name="error-0032"></a>错误 0032  
@@ -610,7 +613,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |参数不是数字。|
-|"{0}" 不是数字。|
+|"{arg_name}" 不是数字。|
 
 
 ## <a name="error-0033"></a>错误 0033  
@@ -623,7 +626,7 @@ Azure 机器学习不支持某些较新的帐户类型。 例如，新的 "热" 
 |异常消息|
 |------------------------|
 |参数必须是有限的。|
-|"{0}" 不是有限的。|
+|"{arg_name}" 不是有限的。|
 
 
 ## <a name="error-0034"></a>错误 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |没有为所需的用户或项目提供特征。|
-|需要 {0} 功能，但未提供。|
+|需要 {required_feature_name} 的功能，但未提供。|
 
 
 ## <a name="error-0036"></a>错误 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |用户或项存在重复的特征定义。|
-|{0}的复制功能定义。|
 
 
 ## <a name="error-0037"></a>错误 0037  
@@ -742,9 +744,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |不允许转换。|
-|无法将 {0} 类型的列转换为类型 {1}的列。|
-|无法将类型 {0} 的列 "{2}" 转换为类型 {1}的列。|
-|无法将类型 {0} 的列 "{2}" 转换为类型 {1}的列 "{3}"。|
+|无法将类型为 {type1} 的列转换为类型为 {type2} 的列。|
+|无法将 {type1} 类型的列 "{col_name1}" 转换为类型为 {type2} 的列。|
+|无法将类型为 {type1} 的列 "{col_name1}" 转换为 {type2} 类型的列 "{col_name2}"。|
 
 
 ## <a name="error-0044"></a>错误 0044  
@@ -757,8 +759,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法派生列的元素类型。|
-|无法为列 "{0}" 派生元素类型-所有元素都是 null 引用。|
-|无法为数据集 "{1}" 的列 "{0}" 派生元素类型-所有元素都是 null 引用。|
+|无法为 "{column_name}" 列派生元素类型-所有元素都是 null 引用。|
+|无法为数据集 "{dataset_name}" 的列 "{column_name}" 派生元素类型-所有元素都是 null 引用。|
 
 
 ## <a name="error-0045"></a>错误 0045  
@@ -771,8 +773,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法创建具有混合元素类型的列。|
-|无法创建混合元素类型的 id 为 "{column_id}" 的列： \ n\tType data [{row_1}，{column_id}] 是 "{type_1}"。 数据类型 [{row_2}，{column_id}] 为 "{type_2}"。|
-|无法创建混合元素类型为 "{column_id}" 的列：块区 {chunk_id_1} 中的 \ n\tType 为 "{type_1}"。 块区 {chunk_id_2} 中的类型为 "{type_2}"，区块大小为： {chunk_size}。|
+|无法创建混合元素类型 id 为 "{column_id}" 的列：<br />数据类型 [{row_1}，{column_id}] 为 "{type_1}"。 <br />数据类型 [{row_2}，{column_id}] 为 "{type_2}"。|
+|无法创建混合元素类型 id 为 "{column_id}" 的列：<br />在块区 {chunk_id_1} 中键入 "{type_1}"。 <br />块区 {chunk_id_2} 中的类型为 "{type_2}"，区块大小为： {chunk_size}。|
 
 
 ## <a name="error-0046"></a>错误 0046  
@@ -785,7 +787,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |请指定有效的输出目录。|
-|目录：无法创建 {0}。 请指定有效路径。|
+|无法创建目录： {path}。 请指定有效路径。|
 
 
 ## <a name="error-0047"></a>错误 0047  
@@ -824,8 +826,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法打开文件。|
-|打开文件时出错： {0}。|
-|打开文件时出错： {0}。 存储异常消息： {1}。|
+|打开文件时出错： {file_name}。|
+|打开文件时出错： {file_name}。 存储异常消息： {exception}。|
 
 
 ## <a name="error-0049"></a>错误 0049  
@@ -910,7 +912,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |文件或 Blob 已存在。|
-|文件或 Blob "{0}" 已存在。|
+|文件或 Blob "{file_path}" 已存在。|
 
 
 ## <a name="error-0058"></a>错误 0058  
@@ -945,7 +947,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法分析一个或多个指定的列索引或索引范围。|
-|未能分析列索引或范围 "{0}"。|
+|未能分析列索引或范围 "{column_index_or_range}"。|
 
 
 ## <a name="error-0060"></a>错误 0060  
@@ -958,7 +960,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |指定了无效或超出范围的列索引范围。|
-|列范围 "{0}" 无效或超出范围。|
+|列范围 "{column_range}" 无效或超出范围。|
 
 
 ## <a name="error-0061"></a>错误 0061  
@@ -1035,7 +1037,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法将资源上载到 Azure 存储空间。|
-|无法将文件 "{0}" 作为 "{1}" 上传到 Azure 存储。|
+|无法将文件 "{source_path}" 上传到 Azure 存储中的 "{dest_path}"。|
 
 
 ## <a name="error-0067"></a>错误 0067  
@@ -1079,7 +1081,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |Hive 脚本不正确。|
-|Hive 脚本 {0} 不正确。|
 
 
 ## <a name="error-0069"></a>错误 0069  
@@ -1101,8 +1102,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |SQL 脚本不正确。|
-|SQL 查询 "{0}" 不正确。|
-|SQL 查询 "{0}" 不正确：{1}。|
+|SQL 查询 "{sql_query}" 不正确。|
+|SQL 查询 "{sql_query}" 不正确。 异常消息： {exception}。|
 
 
 ## <a name="error-0070"></a>错误 0070  
@@ -1115,7 +1116,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |Azure 表不存在。|
-|Azure 表 "{0}" 不存在。|
+|Azure 表 "{table_name}" 不存在。|
 
 
 ## <a name="error-0072"></a>错误 0072  
@@ -1140,7 +1141,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法转换列。|
-|无法将列转换为 {0}。|
+|将列转换为 {target_type} 失败。|
 
 
 ## <a name="error-0075"></a>错误 0075  
@@ -1169,7 +1170,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |不支持的 Blob 写入模式。|
-|不支持的 blob 写入模式： {0}。|
+|不支持的 blob 写入模式： {blob_write_mode}。|
 
 
 ## <a name="error-0078"></a>错误 0078  
@@ -1194,7 +1195,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |Azure 存储容器名称不正确。|
-|Azure 存储容器名称 "{0}" 不正确;应为容器/blob 格式的容器名称。|
+|Azure 存储容器名称 "{container_name}" 不正确;应为容器/blob 格式的容器名称。|
 
 
 ## <a name="error-0080"></a>错误 0080  
@@ -1207,7 +1208,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |不允许包含所有缺失值的列。|
-|列 {0} 包含所有缺少的值。|
+|列 {col_index_or_name} 的所有值均缺失。|
 
 
 ## <a name="error-0081"></a>错误 0081  
@@ -1244,9 +1245,9 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |用于训练的数据集无效。|
-|{0} 包含用于定型的无效数据。|
-|{0} 包含用于定型的无效数据。 学习器类型： {1}。|
-|{0} 包含用于定型的无效数据。 学习器类型： {1}。 原因： {2}。|
+|{data_name} 包含用于定型的无效数据。|
+|{data_name} 包含用于定型的无效数据。 学习器类型： {learner_type}。|
+|{data_name} 包含用于定型的无效数据。 学习器类型： {learner_type}。 原因： {reason}。|
 
 
 ## <a name="error-0084"></a>错误 0084  
@@ -1271,7 +1272,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |评估脚本期间出错。|
-|脚本计算过程中出现以下错误，请查看输出日志以了解详细信息：----------从 {script_language} 解释器开始错误消息的开头----------{message}----------错误消息的结束时间为 {script_language} 解释器----------|
+|评估脚本期间发生以下错误，请查看输出日志以了解详细信息：<br />从 {script_language} 解释器----------启动错误消息----------<br />邮件<br />从 {script_language} 解释器----------错误消息结束----------|
 
 
 ## <a name="error-0090"></a>错误0090  
@@ -1284,8 +1285,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |无法创建 Hive 表。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过 module 参数传递的名称相同。|
-|无法创建 Hive 表 "{0}"。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过 module 参数传递的名称相同。|
-|无法创建 Hive 表 "{0}"。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称为 "{1}"。|
+|无法创建 Hive 表 "{table_name}"。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称与通过 module 参数传递的名称相同。|
+|无法创建 Hive 表 "{table_name}"。 对于 HDInsight 群集，请确保与群集关联的 Azure 存储帐户名称为 "{cluster_name}"。|
 
 
 ## <a name="error-0102"></a>错误 0102  
@@ -1317,6 +1318,19 @@ For general information about how the Matchbox recommendation algorithm works, a
 |指定的参数类型 "{0}" 不受支持。|  
 
 
+## <a name="error-0107"></a>错误 0107  
+ 当模块定义文件定义不受支持的输出类型时引发  
+  
+ 当自定义模块 xml 定义中的输出端口的类型与支持的类型不匹配时，将生成 Azure 机器学习中的此错误。  
+  
+**解决方法：** 请确保自定义模块 xml 定义文件中的 Output 元素的 type 属性是受支持的类型。  
+  
+|异常消息|  
+|------------------------|  
+|不支持的输出类型。|  
+|指定了不支持的输出类型 "{output_type}"。|  
+
+
 ## <a name="error-0125"></a>错误 0125  
  当多个数据集的架构不匹配时引发。  
 
@@ -1342,7 +1356,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |图像像素大小超过允许的限制。|
-|文件 "{0}" 中的图像像素大小超出了允许的限制： "{1}"。|
+|文件 "{file_path}" 中的图像像素大小超出了允许的限制： "{size_limit}"。|
 
 
 ## <a name="error-0128"></a>错误0128  
@@ -1353,7 +1367,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |分类列的条件概率的数目超出了限制。|
-|分类列的条件概率的数目超出了限制。 列 "{0}" 和 "{1}" 是有问题的对。|
+|分类列的条件概率的数目超出了限制。 列 "{column_name_or_index_1}" 和 "{column_name_or_index_2}" 是有问题的对。|
 
 
 ## <a name="error-0129"></a>错误0129  
@@ -1376,7 +1390,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 如果上一个操作更改了数据集，从而使的行数不足以用于下游操作，也会出现此错误。 例如，假设您在**分区和示例**模块中使用表达式来按值划分数据集。 如果没有为表达式找到匹配项，则该分区生成的数据集之一将为空。
 
-解决方法： 
+解决方案： 
 
  如果在列选择中包括标签列但无法识别，则使用 "[编辑元数据](edit-metadata.md)" 模块将其标记为标签列。
 
@@ -1424,7 +1438,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |所选数值列的数目和分类和字符串列中的唯一值太小。|
-|分类列和字符串列（当前 {0}）中所选数值列和唯一值的总数至少应为 {1}。|
+|分类列和字符串列（当前为 {actual_num}）中所选数值列和唯一值的总数应该至少为 {lower_boundary}。|
 
 
 ## <a name="error-0154"></a>错误0154  
@@ -1473,6 +1487,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |异常消息|
 |------------------------|
 |库异常。|
-|库例外： {0}。|
-|未知库异常： {0}。 {1} 列中的一个值匹配。|
+|库异常： {exception}。|
+|未知库异常： {exception}。 {customer_support_guidance}。|
 

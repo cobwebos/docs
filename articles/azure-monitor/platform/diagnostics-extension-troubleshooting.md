@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f3dd1fa4b70fcdbec7e62c84bbfc1df14d3502e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450561"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425079"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -20,15 +20,15 @@ ms.locfileid: "75450561"
 ## <a name="logical-components"></a>逻辑组件
 **诊断插件启动器 (DiagnosticsPluginLauncher.exe)** ：启动 Azure 诊断扩展。 用作入口点进程。
 
-诊断插件 (DiagnosticsPlugin.exe)：配置、启动和管理监视代理的生命周期。 这是由启动器启动的主要进程。
+**诊断插件 (DiagnosticsPlugin.exe)** ：配置、启动和管理监视代理的生存期。 这是由启动器启动的主要进程。
 
-监视代理（MonAgent\*.exe 进程）：监视、收集和传输诊断数据。  
+**监视代理（MonAgent\*.exe 进程）** ：监视、收集和传输诊断数据。  
 
 ## <a name="logartifact-paths"></a>日志/项目路径
 以下是一些重要日志和项目的路径。 文档剩余部分将始终引用此信息。
 
 ### <a name="azure-cloud-services"></a>Azure 云服务
-| 项目 | 路径 |
+| 项目 | Path |
 | --- | --- |
 | **Azure 诊断配置文件** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **日志文件** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -39,7 +39,7 @@ ms.locfileid: "75450561"
 | **MonAgentHost 日志文件** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ### <a name="virtual-machines"></a>虚拟机
-| 项目 | 路径 |
+| 项目 | Path |
 | --- | --- |
 | **Azure 诊断配置文件** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -51,7 +51,7 @@ ms.locfileid: "75450561"
 | **MonAgentHost 日志文件** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<seq_num>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>指标数据不显示在 Azure 门户中
-Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查看门户中的这些数据，请检查 Azure 诊断存储帐户中的 WADMetrics\* 表，以查看是否存在相应的指标记录。
+Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果在门户中查看数据时遇到问题，请查看 Azure 诊断存储帐户中的 WADMetrics\* 表，以查看是否存在相应的指标记录，并确保注册了[资源提供程序](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
 此处，表的 PartitionKey 是资源 ID、虚拟机或虚拟机规模集。 RowKey 是指标名称（也称为性能计数器名称）。
 
@@ -101,7 +101,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ### <a name="no-data-is-appearing"></a>未显示数据
 完全不显示事件数据的最常见原因，是存储帐户信息定义不正确。
 
-解决方案：更正诊断配置，然后重新安装 Azure 诊断。
+解决方案：更正诊断配置，然后重新安装诊断。
 
 如果存储帐户配置正确，则远程访问计算机，并验证*diagnosticsplugin.exe*和*monagentcore.exe*是否正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。
 
@@ -121,14 +121,14 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 诊断配置包含要收集的特定类型数据的介绍。 [查看配置](#how-to-check-diagnostics-extension-configuration)以验证是否仅查找已配置进行收集的数据。
 
 #### <a name="is-the-host-generating-data"></a>主机是否生成数据？
-- 性能计数器：打开 perfmon 并检查计数器。
+- **性能计数器**：打开 perfmon 并检查计数器。
 
-- 跟踪日志：远程访问 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 https://msdn.microsoft.com/library/sk36c28t.aspx 设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
+- **跟踪日志**：远程访问 VM 并向应用的配置文件添加 TextWriterTraceListener。  请参阅 https://msdn.microsoft.com/library/sk36c28t.aspx 设置文本侦听器。  确保 `<trace>` 元素具有 `<trace autoflush="true">`。<br />
 如果没有看到生成跟踪日志，请查看“关于跟踪日志丢失的更多信息”。
 
-- ETW 跟踪：远程访问 VM 并安装 PerfView。  在 PerfView 中运行“文件” > “用户命令” > “侦听 etwprovder1” > “etwprovider2”等。 侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。 如果命令未能运行，可选择 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，则会弹出一个新窗口。 几秒钟后，即可看到 ETW 跟踪信息。
+- **ETW 跟踪**：远程访问 VM 并安装 PerfView。  在 PerfView 中运行“文件” > “用户命令” > “侦听 etwprovder1” > “etwprovider2”等。 侦听命令区分大小写，ETW 提供程序的逗号分隔列表之间不能有空格。 如果命令未能运行，可选择 Perfview 工具右下角的“日志”按钮，查看尝试运行的内容以及结果。  假设输入正确，则会弹出一个新窗口。 几秒钟后，即可看到 ETW 跟踪信息。
 
-- 事件日志：远程访问 VM。 打开 `Event Viewer`确保事件存在。
+- **事件日志**：远程访问 VM。 打开 `Event Viewer`确保事件存在。
 
 #### <a name="is-data-getting-captured-locally"></a>数据是否是本地捕获的？
 接下来，请确保本地捕获到了数据。
@@ -213,7 +213,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 | provider = "prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 （"prov1"） |
 | provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>参考
+## <a name="references"></a>引用
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>如何检查诊断扩展配置
 检查扩展配置的最简方法是转到 [Azure 资源浏览器](https://resources.azure.com)、再转到 Azure 诊断扩展 (IaaSDiagnostics/PaaDiagnostics) 所在的虚拟机或云服务。
@@ -229,26 +229,26 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：
 
-| 退出代码 | Description |
+| 退出代码 | 说明 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |常规错误。 |
 | -2 |无法加载 rcf 文件。<p>仅当在 VM 上不正确地手动调用了来宾代理插件启动器时，才会发生此内部错误。 |
 | -3 |无法加载诊断配置文件。<p><p>解决方案：这是配置文件未通过架构验证的结果。 解决方案是提供符合架构的配置文件。 |
-| -4 |监视代理诊断的另一个实例已在使用本地资源目录。<p><p>解决方案：为 **LocalResourceDirectory** 指定不同的值。 |
+| -4 |监视代理诊断的另一个实例已在使用本地资源目录。<p><p>解决方案：为“LocalResourceDirectory”指定不同的值。 |
 | -6 |来宾代理插件启动器尝试使用无效的命令行启动诊断。<p><p>仅当在 VM 上不正确地手动调用了来宾代理插件启动器时，才会发生此内部错误。 |
 | -10 |Diagnostics 插件退出并返回未处理的异常。 |
-| -11 |来宾代理程序无法创建负责启动和监视监视代理的进程。<p><p>解决方案：验证是否有足够的系统资源用于启动新进程。<p> |
+| -11 |来宾代理程序无法创建负责启动和监视监视代理的进程。<p><p>解决方案：验证是否有足够的系统资源可用于启动新进程。<p> |
 | -101 |调用诊断插件时参数无效。<p><p>仅当在 VM 上不正确地手动调用了来宾代理插件启动器时，才会发生此内部错误。 |
-| -102 |插件进程将无法初始化自身。<p><p>解决方案：验证是否有足够的系统资源用于启动新进程。 |
-| -103 |插件进程将无法初始化自身。 具体而言，它无法创建记录器对象。<p><p>解决方案：验证是否有足够的系统资源用于启动新进程。 |
+| -102 |插件进程将无法初始化自身。<p><p>解决方案：验证是否有足够的系统资源可用于启动新进程。 |
+| -103 |插件进程将无法初始化自身。 具体而言，它无法创建记录器对象。<p><p>解决方案：验证是否有足够的系统资源可用于启动新进程。 |
 | -104 |无法加载来宾代理提供的 rcf 文件。<p><p>仅当在 VM 上不正确地手动调用了来宾代理插件启动器时，才会发生此内部错误。 |
 | -105 |诊断插件无法打开诊断配置文件。<p><p>此内部错误应仅当在 VM 上不正确地手动调用了诊断插件时才会发生。 |
 | -106 |无法读取诊断配置文件。<p><p>这是配置文件未通过架构验证的结果。 <br><br>解决方案：提供符合架构的配置文件。 有关详细信息，请参阅[如何检查诊断扩展配置](#how-to-check-diagnostics-extension-configuration)。 |
 | -107 |传递给监视代理的资源目录无效。<p><p>此内部错误应仅当在 VM 上不正确地手动调用了监视代理时才会发生。</p> |
 | -108 |无法将诊断配置文件转换为监视代理配置文件。<p><p>此内部错误应仅当使用无效的配置文件手动调用了诊断插件时才会发生。 |
 | -110 |常规诊断配置错误。<p><p>此内部错误应仅当使用无效的配置文件手动调用了诊断插件时才会发生。 |
-| -111 |无法启动监视代理。<p><p>解决方案：验证是否有足够的系统资源。 |
+| -111 |无法启动监视代理。<p><p>解决方案：验证是否有足够的系统资源可用。 |
 | -112 |常规错误 |
 
 ### <a name="local-log-extraction"></a>本地日志提取
@@ -267,9 +267,9 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 >[!NOTE]
 > 以下信息主要适用于 Azure 云服务，除非已在于 IaaS VM 上运行的应用程序上配置了 DiagnosticsMonitorTraceListener。
 
-- 请确保在 web.config 或 app.config 中配置了**DiagnosticMonitorTraceListener** 。 默认情况下，云服务项目中配置了此项。 然而，某些客户将其注释掉了，导致诊断不收集相关跟踪语句。
+- 确保在 web.config 或 app.config 中配置了 DiagnosticMonitorTraceListener。这是云服务项目中默认配置的。 然而，某些客户将其注释掉了，导致诊断不收集相关跟踪语句。
 
-- 如果没有从**OnStart**或**Run**方法写入日志，请确保**DiagnosticMonitorTraceListener**位于 app.config 中。 默认情况下，它在 web.config 中，但仅适用于在 w3wp.exe 中运行的代码。 因此需将其置于 app.config 中，以捕获在 WaIISHost.exe 中运行的跟踪。
+- 如果没有从 OnStart 或 Run 方法写入日志，请确保 DiagnosticMonitorTraceListener 位于 app.config 中。默认情况下，它位于 web.config 中，但这仅适用于在 w3wp.exe 中运行的代码。 因此需将其置于 app.config 中，以捕获在 WaIISHost.exe 中运行的跟踪。
 
 - 确保使用的是 Diagnostics.Trace.TraceXXX，而不是 Diagnostics.Debug.WriteXXX 从发布版本中删除了 Debug 语句。
 
@@ -289,13 +289,13 @@ Microsoft Azure 诊断扩展对于 .NET 4.5 框架或更高版本存在运行时
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
 
-缓解措施：在计算机上安装 .NET 4.5 或更高版本。
+**缓解：** 在计算机上安装 .NET 4.5 或更高版本。
 
-**2. 性能计数器数据在存储中可用，但不显示在门户中**
+**2.性能计数器数据在存储中可用，但不显示在门户中**
 
 默认情况下，虚拟机中的门户体验会显示某些性能计数器。 如果未看到性能计数器，且知道正在生成数据，因为数据在存储中可用，此时进行以下检查：
 
-- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 缓解措施：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
+- 存储中的数据是否有英文计数器名称。 如果计数器名称不是英文，门户指标图表将无法识别它。 **缓解措施**：将系统帐户的计算机语言更改为英语。 要执行此操作，请选择“控制面板” > “区域” > “管理” > “复制设置”。 接下来，取消选择“欢迎界面和系统帐户”，以免将自定义语言应用到系统帐户。
 
-- 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：若要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到[“Azure Monitor”接收器](diagnostics-extension-schema.md#diagnostics-extension-111)。
+- 如果在性能计数器名称中使用通配符 (\*)，则在将性能计数器发送到 Azure 存储接收器时，门户将无法关联已配置和已收集的计数器。 **缓解措施**：要确保可以使用通配符并让门户展开 (\*)，请将性能计数器路由到[“Azure Monitor”接收器](diagnostics-extension-schema.md#diagnostics-extension-111)。
 
