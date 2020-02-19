@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443888"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461260"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Windows Java 应用
 
@@ -29,6 +29,7 @@ Azure App Service 允许 Java 开发人员在完全托管的基于 Windows 的�
 否则，你的部署方法将取决于你的存档类型：
 
 - 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
+- 若要将 .jar 文件部署到 Java SE，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
 
 不要使用 FTP 部署 war。 FTP 工具设计用来上传启动脚本、依赖项或其他运行时文件。 它不是用于部署 Web 应用的最佳选项。
 
@@ -287,6 +288,10 @@ public int getServerPort()
 
 最后，请重启应用服务。 部署应像以前一样 `D:\home\site\wwwroot\webapps`。
 
+## <a name="configure-java-se"></a>配置 Java SE
+
+在运行时。Windows 上 Java SE 上的 JAR 应用程序，在应用程序启动时，`server.port` 作为命令行选项传递。 可以从环境变量（`HTTP_PLATFORM_PORT`）手动解析 HTTP 端口。 此环境变量的值将是应用程序应侦听的 HTTP 端口。 
+
 ## <a name="java-runtime-statement-of-support"></a>Java 运行时支持声明
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK 版本和维护
@@ -300,6 +305,8 @@ Azure 支持的 Java 开发工具包 (JDK) 为提供 [Azul Systems](https://www.
 ### <a name="security-updates"></a>安全更新
 
 重大安全漏洞的修补程序和修复程序将在 Azul Systems 提供后立即发布。 “重大”漏洞是根据 [NIST 常见漏洞评分系统版本 2](https://nvd.nist.gov/cvss.cfm) 提供的基本评分 9.0 或以上来定义的。
+
+Tomcat 8.0 已[于2018年9月30日结束](https://tomcat.apache.org/tomcat-80-eol.html)。 尽管运行时仍在 Azure App Service 上在，但 Azure 不会对 Tomcat 8.0 应用安全更新。 如果可能，请将应用程序迁移到 Tomcat 8.5 或9.0。 Azure App Service 上提供 Tomcat 8.5 和9.0。 有关详细信息，请参阅[官方 Tomcat 站点](https://tomcat.apache.org/whichversion.html)。 
 
 ### <a name="deprecation-and-retirement"></a>弃用和停用
 

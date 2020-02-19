@@ -6,25 +6,20 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 90d26d6469c5f3e238ac2410cdccb8ef5e0c160f
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4788aa50074016a34d906353f5b37dbba85ef104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668331"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458760"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>向 Xamarin Forms 应用添加身份验证
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
 本主题演示如何从客户端应用程序对应用服务移动应用的用户进行身份验证。 在本教程中，使用应用服务支持的标识提供者向 Xamarin Forms 快速入门项目添加身份验证。 移动应用成功进行身份验证和授权后，会显示用户 ID 值，该用户能够访问受限制的表数据。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 为了在本教程中获得最佳效果，我们建议你先完成[创建 Xamarin Forms 应用][1]教程。 完成此教程后，用户会获得一个 Xamarin Forms 项目，它是一个多平台 TodoList 应用。
 
 如果不使用下载的快速入门服务器项目，必须将身份验证扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][2]。
@@ -42,7 +37,7 @@ ms.locfileid: "74668331"
 
 3. 在“允许的外部重定向 URL”中，输入 `url_scheme_of_your_app://easyauth.callback`。  此字符串中的 url_scheme_of_your_app 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-4. 单击 **“确定”** 。
+4. 单击“确定”。
 
 5. 单击“保存”。
 
@@ -52,14 +47,14 @@ ms.locfileid: "74668331"
 ## <a name="add-authentication-to-the-portable-class-library"></a>向可移植类库添加身份验证
 移动应用使用[MobileServiceClient][4]上的[LoginAsync][3]扩展方法通过应用服务身份验证登录用户。 此示例使用服务器托管的身份验证流，在应用中显示提供程序的登录界面。 有关详细信息，请参阅[服务器托管的身份验证][5]。 若要在生产应用中提供更好的用户体验，应考虑改用[客户端托管的身份验证][6]。
 
-若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后将“登录”按钮添加到可移植类库中定义的用户界面，单击该按钮可开始身份验证。 身份验证成功后，将从移动应用后端加载数据。
+若要使用 Xamarin Forms 项目进行身份验证，请在可移植类库中为应用定义 **IAuthenticate** 接口。 然后，将“登录”按钮添加到可移植类库中定义的用户界面，用户单击此按钮即可开始进行身份验证。 身份验证成功后，将从移动应用后端加载数据。
 
 为应用支持的每个平台实现 **IAuthenticate** 接口。
 
 1. 在 Visual Studio 或 Xamarin Studio 中，从名称中包含 **Portable** 的项目（该项目是可移植类库项目）中打开 App.cs，并添加以下 `using` 语句：
 
         using System.Threading.Tasks;
-2. 在 App.cs 中，在 `App` 类定义前添加以下 `IAuthenticate` 接口定义。
+2. 在 App.cs 中，在 `IAuthenticate` 类定义前添加以下 `App` 接口定义。
 
         public interface IAuthenticate
         {
@@ -73,7 +68,7 @@ ms.locfileid: "74668331"
         {
             Authenticator = authenticator;
         }
-4. 从可移植类库项目中打开 TodoList.xaml，在 *buttonsPanel* 布局元素中现有按钮之后添加以下 **Button** 元素：
+4. 从可移植类库项目中打开 TodoList.xaml，在 **buttonsPanel** 布局元素中现有按钮之后添加以下 *Button* 元素：
 
           <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30"
             Clicked="loginButton_Clicked"/>
@@ -164,7 +159,7 @@ ms.locfileid: "74668331"
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-6. 在 `<application>` 元素内添加以下 XML，更新 **AndroidManifest.xml** 文件：
+6. 在 **元素内添加以下 XML，更新**AndroidManifest.xml`<application>` 文件：
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -177,7 +172,7 @@ ms.locfileid: "74668331"
     </activity>
     ```
     将 `{url_scheme_of_your_app}` 替换为 URL 方案。
-7. 调用 `LoadApplication()` 之前，向 **MainActivity** 类的 **OnCreate** 方法添加以下代码：
+7. 调用 **之前，向**MainActivity**类的**OnCreate`LoadApplication()` 方法添加以下代码：
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -249,7 +244,7 @@ ms.locfileid: "74668331"
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. 调用 `LoadApplication()` 之前，向 **FinishedLaunching** 方法添加以下代码行：
+7. 调用 **之前，向**FinishedLaunching`LoadApplication()` 方法添加以下代码行：
 
         App.Init(this);
 
@@ -313,7 +308,7 @@ ms.locfileid: "74668331"
 
     如果使用的是 Facebook 以外的其他标识提供者，请为 [MobileServiceAuthenticationProvider][7] 选择不同的值。
 
-1. 调用 `LoadApplication()` 之前，在 **MainPage** 类的构造函数中添加以下代码行：
+1. 调用 **之前，在**MainPage`LoadApplication()` 类的构造函数中添加以下代码行：
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);

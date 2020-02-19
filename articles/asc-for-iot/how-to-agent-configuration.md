@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664828"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461243"
 ---
 # <a name="tutorial-configure-security-agents"></a>教程：配置安全代理
 
@@ -120,33 +120,32 @@ ms.locfileid: "74664828"
 
 [GitHub](https\://aka.ms/iot-security-module-default)中的正确架构中提供了默认值。
 
-| 名称| 状态 | 有效值| 默认值| 描述 |
+| 名称| 状态 | 有效值| 默认值| 说明 |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|必需： false |有效值： ISO 8601 格式的持续时间 |默认值： PT7M |发送高优先级消息之前的最大时间间隔。|
 |lowPriorityMessageFrequency |必需： false|有效值： ISO 8601 格式的持续时间 |默认值： PT5H |发送低优先级邮件前的最长时间。| 
 |snapshotFrequency |要求： false|有效值： ISO 8601 格式的持续时间 |默认值 PT13H |创建设备状态快照的时间间隔。| 
 |maxLocalCacheSizeInBytes |必需： false |有效值： |默认值：2560000，大于8192 | 代理的消息缓存允许的最大存储空间（以字节为单位）。 发送消息之前，允许在设备上存储消息的最大空间量。| 
 |maxMessageSizeInBytes |必需： false |有效值：正数，大于8192，小于262144 |默认值：204800 |代理到云消息的最大允许大小。 此设置控制每条消息中发送的最大数据量。 |
-|eventPriority $ {名称} |必需： false |有效值： "高"、"低"、"关" |默认值： |每个代理生成的事件的优先级 | 
+|eventPriority${EventName} |必需： false |有效值： "高"、"低"、"关" |默认值： |每个代理生成的事件的优先级 | 
 
 ### <a name="supported-security-events"></a>支持的安全事件
 
 |事件名称| PropertyName | 默认值| Snapshot 事件| 详细信息状态  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|诊断事件|eventPriorityDiagnostic| 关闭| 错误| 与代理相关的诊断事件。 使用此事件进行详细日志记录。| 
-|配置错误 |eventPriorityConfigurationError |低 |错误 |代理无法分析配置。 根据架构验证配置。| 
-|删除的事件统计信息 |eventPriorityDroppedEventsStatistics |低 |正确|与代理相关的事件统计信息。 |
-|消息统计信息|eventPriorityMessageStatistics |低 |正确 |与代理相关的消息统计信息。 |
-|已连接硬件|eventPriorityConnectedHardware |低 |正确 |连接到设备的所有硬件的快照。|
-|侦听端口|eventPriorityListeningPorts |高 |正确 |设备上所有打开的侦听端口的快照。|
-|进程创建 |eventPriorityProcessCreate |低 |错误 |审核在设备上的进程创建。|
-|进程终止|eventPriorityProcessTerminate |低 |错误 |审核在设备上终止进程。| 
-|系统信息 |eventPrioritySystemInformation |低 |正确 |系统信息（例如：操作系统或 CPU）的快照。| 
-|本地用户| eventPriorityLocalUsers |高 |正确|系统中已注册的本地用户的快照。 |
-|登录|  eventPriorityLogin |高|错误|审核登录事件到设备（本地和远程登录）。|
-|连接创建 |eventPriorityConnectionCreate|低|错误|审核在设备上创建的 TCP 连接。 |
-|防火墙配置| eventPriorityFirewallConfiguration|低|正确|设备防火墙配置的快照（防火墙规则）。 |
-|操作系统基线| eventPriorityOSBaseline| 低|正确|设备操作系统基线检查的快照。|
+|诊断事件|eventPriorityDiagnostic| 关闭| False| 与代理相关的诊断事件。 使用此事件进行详细日志记录。| 
+|配置错误 |eventPriorityConfigurationError |低 |False |代理无法分析配置。 根据架构验证配置。| 
+|删除的事件统计信息 |eventPriorityDroppedEventsStatistics |低 |True|与代理相关的事件统计信息。 |
+|已连接硬件|eventPriorityConnectedHardware |低 |True |连接到设备的所有硬件的快照。|
+|侦听端口|eventPriorityListeningPorts |高 |True |设备上所有打开的侦听端口的快照。|
+|进程创建 |eventPriorityProcessCreate |低 |False |审核在设备上的进程创建。|
+|进程终止|eventPriorityProcessTerminate |低 |False |审核在设备上终止进程。| 
+|系统信息 |eventPrioritySystemInformation |低 |True |系统信息（例如：操作系统或 CPU）的快照。| 
+|本地用户| eventPriorityLocalUsers |高 |True|系统中已注册的本地用户的快照。 |
+|登录|  eventPriorityLogin |高|False|审核登录事件到设备（本地和远程登录）。|
+|连接创建 |eventPriorityConnectionCreate|低|False|审核在设备上创建的 TCP 连接。 |
+|防火墙配置| eventPriorityFirewallConfiguration|低|True|设备防火墙配置的快照（防火墙规则）。 |
+|操作系统基线| eventPriorityOSBaseline| 低|True|设备操作系统基线检查的快照。|
 |
  
 

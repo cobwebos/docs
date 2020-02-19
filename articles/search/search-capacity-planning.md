@@ -8,18 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bc90ecb029afe70ed61e94a727c67c53bb968b96
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212545"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462558"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>调整 Azure 认知搜索中的容量
 
-[预配搜索服务](search-create-service-portal.md)并在特定定价层中锁定之前，需花费几分钟的时间来了解服务中副本和分区的角色，无论你需要按比例增加还是更快速地分区，以及如何配置服务以实现预期的负载。
+在[预配搜索服务](search-create-service-portal.md)并在特定定价层中锁定之前，需要花费几分钟时间来了解服务中副本和分区的角色，以及如何调整服务以适应资源需求高峰和 dip。
 
-容量是[所选层](search-sku-tier.md)的一个功能（层决定硬件特征）以及预计的工作负荷所需的副本和分区组合。 本文重点介绍副本和分区的组合以及交互。
+容量是[所选层](search-sku-tier.md)的一个功能（层决定硬件特征）以及预计的工作负荷所需的副本和分区组合。 根据调整的层和大小，增加或减少容量的时间可能需要15分钟到几小时。 
+
+当修改副本和分区的分配时，我们建议使用 Azure 门户。 门户对允许的组合强制实施限制，这些组合保持低于最大层限制。 但是，如果需要基于脚本或基于代码的预配方法，则[Azure PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)是替代解决方案。
 
 ## <a name="terminology-replicas-and-partitions"></a>术语：副本和分区
 
@@ -28,15 +30,17 @@ ms.locfileid: "77212545"
 |*分区* | 为读/写操作（例如在重建或刷新索引时）提供索引存储和 I/O。 每个分区都有总计索引的份额。 如果分配三个分区，则索引将分为三分之二。 |
 |*副本* | 是搜索服务的实例，主要用于对查询操作进行负载均衡。 每个副本都是索引的一个副本。 如果分配三个副本，则可以使用三个索引副本来处理查询请求。|
 
-## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
+## <a name="when-to-add-nodes"></a>何时添加节点
 
 最初，为服务分配一个包含一个分区和一个副本的最小级别的资源。 
 
-单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 工作负荷不会在后台运行。 如果查询请求的频率不是很频繁，则可以计划索引时间，但该服务不会对另一任务设置优先级。
-
-当修改副本和分区的分配时，我们建议使用 Azure 门户。 门户对允许的组合强制实施限制，这些组合保持低于最大层限制。 但是，如果需要基于脚本或基于代码的预配方法，则[Azure PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/services)是替代解决方案。
+单个服务必须具有足够的资源才能处理所有工作负荷（索引和查询）。 工作负荷不会在后台运行。 如果查询请求的频率不是很频繁，则可以计划索引时间，但该服务不会对另一任务设置优先级。 此外，在内部更新服务或节点时，一定数量的冗余会降低查询性能。
 
 作为一般规则，搜索应用程序往往需要比分区更多的副本，尤其是在服务操作倾向于查询工作负荷时。 [高可用性](#HA)部分将解释原因。
+
+添加更多的副本或分区会增加运行服务的成本。 务必检查[价格计算器](https://azure.microsoft.com/pricing/calculator/)以了解添加更多节点的计费含义。 [下图](#chart)可帮助您交叉引用特定配置所需的搜索单位数。
+
+## <a name="how-to-allocate-replicas-and-partitions"></a>如何分配副本和分区
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)，并选择搜索服务。
 
@@ -114,7 +118,7 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 
 ## <a name="estimate-replicas"></a>估计副本
 
-在生产服务中，出于 SLA 目的应分配三个副本。 如果查询性能较慢，一项补救措施是添加副本，以便使索引的其他副本联机以支持更大的查询工作负荷，并对多个副本的请求进行负载均衡。
+在生产服务中，出于 SLA 目的应分配三个副本。 如果查询性能缓慢，可以添加副本，以便使索引的其他副本联机以支持更大的查询工作负荷，并对多个副本上的请求进行负载均衡。
 
 我们不提供满足查询负载所需的副本数的指导。 查询性能取决于查询复杂性和争用工作负荷。 尽管添加副本会明显提高性能，但结果不一定有线性改善：添加三个副本并不保证带来三倍的吞吐量。
 
@@ -122,7 +126,7 @@ Azure 网站上详细说明了 SU、定价和容量。 有关详细信息，请�
 
 ## <a name="estimate-partitions"></a>估计分区
 
-[你选择的层](search-sku-tier.md)决定分区大小和速度，每个层都围绕一组适用于各种方案的特征进行了优化。 如果选择更高的层级，则可能需要的分区比使用 S1 更少。
+[你选择的层](search-sku-tier.md)决定分区大小和速度，每个层都围绕一组适用于各种方案的特征进行了优化。 如果选择更高的层级，则可能需要的分区比使用 S1 更少。 你需要通过自行指导测试回答的问题之一是，在较低层预配的服务上，更大和更昂贵的分区产生的性能是否比两个便宜的分区更好。
 
 需要以近乎实时的速度刷新数据的搜索应用程序，需要的分区数在比例上要多于副本。 添加分区可将读/写操作分配到更多的计算资源。 此外，还能提供更多磁盘空间来存储更多的索引和文档。
 

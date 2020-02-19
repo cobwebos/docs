@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 39e06587e48f30ce099eafaf7cfdb2fb2269d24f
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668641"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461345"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>向 Xamarin.iOS 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 
@@ -28,7 +23,7 @@ ms.locfileid: "74668641"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 完成 [Xamarin.iOS 快速入门](app-service-mobile-xamarin-ios-get-started.md)教程。
 * 物理 iOS 设备。 iOS 模拟器不支持推送通知。
@@ -49,7 +44,7 @@ ms.locfileid: "74668641"
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-## <a name="add-push-notifications-to-your-app"></a>向你的应用程序添加推送通知
+## <a name="add-push-notifications-to-your-app"></a>向应用程序添加推送通知
 
 1. 在 **QSTodoService** 中，添加以下属性使 **AppDelegate** 可以获取移动客户端：
 
@@ -66,7 +61,7 @@ ms.locfileid: "74668641"
     }
     ```
 
-2. 在 **AppDelegate.cs** 文件顶部添加以下 `using` 语句。
+2. 在 `using`AppDelegate.cs**文件顶部添加以下** 语句。
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
@@ -135,7 +130,7 @@ ms.locfileid: "74668641"
     }
     ```
 
-现在，你的应用程序已更新为支持推送通知。
+应用现已更新，可支持推送通知。
 
 ## <a name="test"></a>在应用中测试推送通知
 

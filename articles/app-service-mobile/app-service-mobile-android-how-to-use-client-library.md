@@ -6,19 +6,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668892"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461583"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>如何使用用于 Android 的 Azure 移动应用 SDK
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本指南演示了如何使用用于移动应用的 Android 客户端 SDK 实现常见方案，如：
 
@@ -37,7 +32,7 @@ ms.locfileid: "74668892"
 
 用于 Android 的 Azure 移动应用 SDK 支持手机和平板电脑外形规格的 API 级别 19 到 24（KitKat 到 Nougat）。  具体而言，身份验证利用通用 Web 框架方法收集凭据。  服务器流身份验证不适用于手表等小型设备。
 
-## <a name="setup-and-prerequisites"></a>设置和先决条件
+## <a name="setup-and-prerequisites"></a>安装与先决条件
 
 完成[移动应用快速入门](app-service-mobile-android-get-started.md)教程。  确保满足用于开发 Azure 移动应用的所有先决条件。  快速入门教程还有助于配置帐户并创建第一个移动应用后端。
 
@@ -69,7 +64,7 @@ ms.locfileid: "74668892"
     }
     ```
 
-2. 将以下代码添加到*依赖关系*标记内*模块应用*级别的 **build.gradle** 文件：
+2. 将以下代码添加到*依赖关系*标记内**模块应用**级别的 *build.gradle* 文件：
 
     ```gradle
     implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
@@ -104,7 +99,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 `<MobileAppUrl>` 是一个字符串，或者是指向移动后端的 URL 对象。  如果使用 Azure 应用服务来托管移动后端，请确保使用 URL 的安全 `https://` 版本。
 
-客户端还需要能够访问活动或上下文 - 本示例中的 `this` 参数。  MobileServiceClient 构造应发生在 `AndroidManifest.xml` 文件中引用的活动的 `onCreate()` 方法内。
+客户端还需要能够访问活动或上下文 - 本示例中的 `this` 参数。  MobileServiceClient 构造应发生在 `onCreate()` 文件中引用的活动的 `AndroidManifest.xml` 方法内。
 
 最佳做法是将服务器通信抽象化为其自身的（单一实例模式）类。  在本例中，应该传递构造函数中的活动，以便适当地配置服务。  例如：
 
@@ -148,7 +143,7 @@ public class AzureServiceAdapter {
 }
 ```
 
-现在，可以调用主活动的 `onCreate()` 方法中的 `AzureServiceAdapter.Initialize(this);`。  需要访问客户端的其他任何方法使用 `AzureServiceAdapter.getInstance();` 获取对服务适配器的引用。
+现在，可以调用主活动的 `AzureServiceAdapter.Initialize(this);` 方法中的 `onCreate()`。  需要访问客户端的其他任何方法使用 `AzureServiceAdapter.getInstance();` 获取对服务适配器的引用。
 
 ## <a name="data-operations"></a>数据操作
 
@@ -290,10 +285,10 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 首先，请获取表引用。  然后对表引用执行查询。  查询是以下元素的任意组合：
 
-* `.where()` [筛选子句](#filtering)。
-* `.orderBy()` [排序子句](#sorting)。
-* `.select()` [字段选择子句](#selection)。
-* [分页结果](#paging)的 `.skip()` 和 `.top()`。
+* `.where()`[筛选子句](#filtering)。
+* `.orderBy()` 的[排序子句](#sorting)。
+* 一个 `.select()`[字段选择子句](#selection)。
+* `.skip()`分页结果`.top()`的 [ 和 ](#paging)。
 
 子句必须按上述顺序提供。
 
@@ -479,7 +474,7 @@ List<ToDoItem> results = mToDoTable
 
 ## <a name="binding"></a>将数据绑定到用户界面
 
-数据绑定涉及以下三个组件：
+数据绑定涉及到三个组件：
 
 * 数据源
 * 屏幕布局
@@ -560,7 +555,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
     }
 ```
 
-我们在我们的活动中创建了此类的一个实例，如下所示：
+在活动中创建此类的实例，如下所示：
 
 ```java
     ToDoItemAdapter mAdapter;
@@ -634,7 +629,7 @@ ToDoItem entity = mToDoTable
 字符串 ID 值提供以下优势：
 
 * 无需往返访问数据库即可生成 ID。
-* 可以更方便地从不同表或数据库合并记录。
+* 更方便地合并不同表或数据库中的记录。
 * ID 值能够更好地与应用程序的逻辑集成。
 
 对于脱机同步支持，字符串 ID 值为 **REQUIRED**。  将 ID 存储到后端数据库后，无法对它进行更改。
@@ -680,7 +675,7 @@ ToDoItem result = mToDoTable
 
 ## <a name="untyped"></a>如何处理非类型化数据
 
-非类型化编程模型可以提供对 JSON 序列化的完全控制。  但有时可能想要使用非类型化编程模型，这种情况也是比较常见的。 例如，如果后端表包含很多列，并且只需引用列的子集。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于：在非类型化的模型中，你对于 **MobileServiceJsonTable** 对象（而不是对于 **MobileServiceTable** 对象）调用方法。
+非类型化编程模型可以提供对 JSON 序列化的完全控制。  但有时可能想要使用非类型化编程模型，这种情况也是比较常见的。 例如，如果后端表包含很多列，并且只需引用列的子集。  类型化模型需要在数据类中定义移动应用后端中定义的所有列。  用于访问数据的大多数 API 调用都与类型化编程调用类似。 主要差别在于，在非类型化模型中，要对 **MobileServiceJsonTable** 对象而不是 **MobileServiceTable** 对象调用方法。
 
 ### <a name="json_instance"></a>创建非类型化表的实例
 
@@ -717,14 +712,14 @@ JsonObject insertedItem = mJsonToDoTable
 String id = insertedItem.getAsJsonPrimitive("id").getAsString();
 ```
 ### <a name="json_delete"></a>从非类型化表中删除
-以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 *insert* 示例中创建的 **JsonObject** 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
+以下代码演示了如何删除一个实例，在本例中，该实例就是我们在前一个 **insert** 示例中创建的 *JsonObject* 的实例。 该代码与类型化案例相同，但方法具有不同的签名，因为它引用了 **JsonObject**。
 
 ```java
 mToDoTable
     .delete(insertedItem);
 ```
 
-还可以使用实例的 ID 来直接删除此实例：
+还可以使用某个实例的 ID 来直接删除该实例：
 
 ```java
 mToDoTable.delete(ID);
@@ -870,7 +865,7 @@ private AsyncTask<Void, Void, Void> sync(MobileServiceClient mClient) {
 
 ## <a name="custom-api"></a>调用自定义 API
 
-自定义 API 可用于定义自定义终结点，这些终结点公开未映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
+自定义 API 可让你定义自定义终结点，这些终结点会公开不映射到插入、更新、删除或读取操作的服务器功能。 使用自定义 API 能够以更大的力度控制消息传送，包括读取和设置 HTTP 消息标头，以及定义除 JSON 以外的消息正文格式。
 
 从 Android 客户端调用 **invokeApi** 方法，以调用自定义 API 终结点。 以下示例演示了如何调用名为 **completeAll** 的 API 终结点，从而返回名为 **MarkAllResult** 的集合类。
 
@@ -892,13 +887,13 @@ public void completeItem(View view) {
 }
 ```
 
-**invokeApi** 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。 该自定义 API 返回的结果显示在一个消息对话框中，就像任何错误一样。 使用其他版本的 **invokeApi** 可以选择性地在请求正文中发送对象、指定 HTTP 方法，以及随请求一起发送查询参数。 此外还提供了非类型化的 **invokeApi** 版本。
+**invokeApi** 方法在客户端上调用，该客户端向新的自定义 API 发送 POST 请求。 与任何错误相同，自定义 API 返回的结果也显示在消息对话框中。 使用其他版本的 **invokeApi** 可以选择性地在请求正文中发送对象、指定 HTTP 方法，以及随请求一起发送查询参数。 此外还提供了非类型化的 **invokeApi** 版本。
 
 ## <a name="authentication"></a>向应用添加身份验证
 
 教程已详细说明如何添加这些功能。
 
-应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。 你可以对表设置权限，以限制只有通过了身份验证的用户才能执行特定操作。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
+应用服务支持使用各种外部标识提供者[对应用用户进行身份验证](app-service-mobile-android-get-started-users.md)，这些提供者包括：Facebook、Google、Microsoft 帐户、Twitter 和 Azure Active Directory。 可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以在后端中使用已经过身份验证的用户的标识来实施授权规则。
 
 支持两种身份验证流：**服务器**流和**客户端**流。 服务器流依赖于标识提供者 Web 界面，因此可提供最简便的身份验证体验。  实现服务器流身份验证不需要任何其他 SDK。 服务器流身份验证不提供与移动设备的深入集成，因此建议仅用于验证概念方案。
 
@@ -911,7 +906,7 @@ public void completeItem(View view) {
 * 在应用服务后端上，仅为经过身份验证的用户授予表权限。
 * 将身份验证代码添加到应用。
 
-你可以对表设置权限，以限制只有通过了身份验证的用户才能执行特定操作。 还可以使用已经过身份验证的用户的 SID 来修改请求。  有关详细信息，请参阅[身份验证入门]和“如何使用服务器 SDK”文档。
+可以在表中设置权限，以便将特定操作的访问权限限制给已经过身份验证的用户。 还可以使用已经过身份验证的用户的 SID 来修改请求。  有关详细信息，请参阅[身份验证入门]和“如何使用服务器 SDK”文档。
 
 ### <a name="caching"></a>身份验证：服务器流
 
@@ -1107,7 +1102,7 @@ MobileServiceUser user = mClient
 
 3. 将以下代码添加到应用程序并进行以下替换：
 
-    * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com 。
+    * 将 **INSERT-AUTHORITY-HERE** 替换为在其中预配应用程序的租户的名称。 格式应为 https://login.microsoftonline.com/contoso.onmicrosoft.com。
     * 将 **INSERT-RESOURCE-ID-HERE** 替换移动应用后端的客户端 ID。 可以在门户中“Azure Active Directory 设置”下面的“高级”选项卡获取此客户端 ID。
     * 将 **INSERT-CLIENT-ID-HERE** 替换为从本机客户端应用程序复制的客户端 ID。
     * 使用 HTTPS 方案将 **INSERT-REDIRECT-URI-HERE** 替换为站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done* 。

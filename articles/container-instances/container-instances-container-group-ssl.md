@@ -1,16 +1,16 @@
 ---
-title: 在容器组中启用 SSL
-description: 为 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
+title: 使用挎斗容器启用 SSL
+description: 通过在挎斗容器中运行 Nginx，为在 Azure 容器实例中运行的容器组创建 SSL 或 TLS 终结点
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773070"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460546"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>在容器组中启用 SSL 终结点
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>在挎斗容器中启用 SSL 终结点
 
 本文介绍如何使用应用程序容器和运行 SSL 提供程序的挎斗容器创建[容器组](container-instances-container-groups.md)。 通过使用单独的 SSL 终结点设置容器组，你可以为应用程序启用 SSL 连接，而无需更改应用程序代码。
 
@@ -18,7 +18,9 @@ ms.locfileid: "76773070"
 * 使用公共 Microsoft [helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)映像运行简单 web 应用的应用程序容器。 
 * 运行公共[Nginx](https://hub.docker.com/_/nginx)映像的挎斗容器，配置为使用 SSL。 
 
-在此示例中，容器组只公开端口443的 Nginx 及其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用，该应用在内部侦听端口80。 可以调整侦听其他端口的容器应用的示例。 请参阅[后续步骤](#next-steps)，了解在容器组中启用 SSL 的其他方法。
+在此示例中，容器组只公开端口443的 Nginx 及其公共 IP 地址。 Nginx 将 HTTPS 请求路由到辅助 web 应用，该应用在内部侦听端口80。 可以调整侦听其他端口的容器应用的示例。 
+
+请参阅[后续步骤](#next-steps)，了解在容器组中启用 SSL 的其他方法。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,13 +52,13 @@ openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 
 ### <a name="create-nginx-configuration-file"></a>创建 Nginx 配置文件
 
-在本部分中，将创建 Nginx 的配置文件以使用 SSL。 首先，将以下文本复制到名为`nginx.conf`的新文件中。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
+在本部分中，将创建 Nginx 的配置文件以使用 SSL。 首先，将以下文本复制到名为 `nginx.conf`的新文件中。 在 Azure Cloud Shell 中，可以使用 Visual Studio Code 在工作目录中创建文件：
 
 ```console
 code nginx.conf
 ```
 
-在 `location`中，请务必将 `proxy_pass` 设置为适用于应用的正确端口。 在此示例中，我们为 `aci-helloworld` 容器设置了端口80。
+在 `location`中，请确保为你的应用程序设置 `proxy_pass` 的正确端口。 在此示例中，我们为 `aci-helloworld` 容器设置了端口80。
 
 ```console
 # nginx Configuration File
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Base64-对 Nginx 配置文件、SSL 证书和 SSL 密钥进行编码。 在下一部分中，将在用于部署容器组的 YAML 文件中输入编码内容。
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>部署容器组
@@ -216,17 +218,18 @@ az container show --resource-group <myResourceGroup> --name app-with-ssl --outpu
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>验证 SSL 连接
 
-若要查看正在运行的应用程序，请在浏览器中导航到其 IP 地址。 例如，此示例中显示的 IP 地址是 `52.157.22.76`。 由于 Nginx 服务器配置的原因，您必须使用 `https://<IP-ADDRESS>` 来查看正在运行的应用程序。 尝试连接 `http://<IP-ADDRESS>` 失败。
+使用浏览器导航到容器组的公共 IP 地址。 在此示例中显示的 IP 地址是 `52.157.22.76`的，因此 **https://52.157.22.76** 了 URL。 由于 Nginx 服务器配置，必须使用 HTTPS 查看正在运行的应用程序。 尝试通过 HTTP 进行连接失败。
 
 ![浏览器屏幕截图，显示应用程序在 Azure 容器实例中运行](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> 由于本示例使用自签名证书，而不是证书颁发机构颁发的证书，因此在通过 HTTPS 连接到站点时，浏览器会显示安全警告。 此行为是预期的行为。
+> 由于本示例使用自签名证书，而不是证书颁发机构颁发的证书，因此在通过 HTTPS 连接到站点时，浏览器会显示安全警告。 你可能需要接受警告或调整浏览器或证书设置，才能转到页面。 此行为是预期的行为。
+
 >
 
 ## <a name="next-steps"></a>后续步骤
@@ -239,6 +242,4 @@ app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-
 
 * [Azure Functions 代理](../azure-functions/functions-proxies.md)
 * [Azure API 管理](../api-management/api-management-key-concepts.md)
-* [Azure 应用程序网关](../application-gateway/overview.md)
-
-若要使用应用程序网关，请参阅示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。
+* [Azure 应用程序网关](../application-gateway/overview.md)-请参阅示例[部署模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet)。

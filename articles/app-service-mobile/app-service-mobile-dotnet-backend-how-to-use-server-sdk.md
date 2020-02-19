@@ -8,20 +8,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668863"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461532"
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用 Azure 移动应用的 .NET 后端服务器 SDK
+# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>使用适用于 Azure 移动应用的 .NET 后端服务器 SDK
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本主题说明如何在关键的 Azure 应用服务移动应用方案中使用 .NET 后端服务器 SDK。 借助 Azure 移动应用 SDK 可从 ASP.NET 应用程序使用移动客户端。
 
@@ -67,7 +62,7 @@ ms.locfileid: "74668863"
 3. 选择“ASP.NET Web 应用程序”。
 4. 填写项目名称。 然后单击“确定”。
 5. 在“ASP.NET 4.5.2 模板”下，选择“Azure 移动应用”。 选中“云中的主机”，在云中创建移动后端（可在其中发布此项目）。
-6. 单击 **“确定”** 。
+6. 单击“确定”。
 
 ## <a name="install-sdk"></a>如何下载并初始化 SDK
 SDK 可在[NuGet.org]上找到。此包包含开始使用 SDK 所需的基本功能。 若要初始化该 SDK，需要对 **HttpConfiguration** 对象执行操作。
@@ -215,7 +210,7 @@ DTO 用于定义 SQL 数据库中的表。  要创建数据库条目，请将 `D
 ## <a name="how-to-define-a-custom-api-controller"></a>如何定义自定义 API 控制器
 自定义 API 控制器通过公开终结点，向移动应用后端提供最基本的功能。 可以使用 [MobileAppController] 属性注册移动设备特定的 API 控制器。 `MobileAppController` 属性将注册路由、设置移动应用 JSON 序列化程序，并打开[客户端版本检查](app-service-mobile-client-and-server-versioning.md)。
 
-1. 在 Visual Studio 中，右键单击“控制器”文件夹，单击“添加” > “控制器”，选择“Web API 2 控制器 &mdash; 空白”，并单击“添加”。
+1. 在 Visual Studio 中，右键单击“控制器”文件夹，单击“添加” **“控制器”，选择“Web API 2 控制器**  空白”，并单击“添加”。 >  **&mdash;**
 2. 提供**控制器名称**（例如 `CustomController`），并单击“添加”。
 3. 在新控制器类文件中添加以下 using 语句：
 

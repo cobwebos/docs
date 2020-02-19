@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66ae11fb0532ae2a138eb8590eb92de15e997dfa
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 236d4c199a13b02bcd82ae02657bbd35e45f729b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668409"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458811"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>为 Windows 应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程演示如何使用 Azure 移动应用后端为通用 Windows 平台 (UWP) 应用添加脱机支持。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
@@ -42,11 +37,11 @@ ms.locfileid: "74668409"
 1. 安装[适用于通用 Windows 平台的 SQLite 运行时](https://sqlite.org/2016/sqlite-uwp-3120200.vsix)。
 2. 在 Visual Studio 中，打开在[创建 Windows 应用]教程中完成的 UWP 应用项目的 NuGet 包管理器。
     搜索并安装 **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet 包。
-3. 在解决方案资源管理器中，右键单击 "**引用**" > "**添加引用 ...** " >**通用 Windows** >**扩展**，然后为通用 Windows 平台**应用的通用 Windows 平台C++和 Visual 2015 运行时**启用**SQLite** 。
+3. 在解决方案资源管理器中，右键单击 "**引用**" > "**添加引用 ...** ">**通用 Windows** >**扩展**，然后为通用 Windows 平台应用的通用 Windows 平台和**Visual C++ 2015 运行时**启用**SQLite** 。
 
     ![添加 SQLite UWP 引用][1]
 4. 打开 MainPage.xaml.cs 文件并取消注释 `#define OFFLINE_SYNC_ENABLED` 定义。
-5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前的工作方式相同。但是，本地数据库现在填充了可在脱机方案中使用的数据。
+5. 在 Visual Studio 中，按 **F5** 键重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
 ## <a name="update-sync"></a>更新应用以与后端断开连接
 在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
@@ -78,7 +73,7 @@ ms.locfileid: "74668409"
 为了支持移动服务的脱机功能，我们使用了[IMobileServiceSyncTable]接口，并使用本地 SQLite 数据库初始化了[MobileServiceClient。][synccontext] 脱机时，移动应用的普通 CRUD 操作执行起来就像此应用仍处于连接状态一样，但操作针对本地存储进行。 以下方法用于将本地存储与服务器进行同步：
 
 * **[PushAsync]** 由于此方法是 [IMobileServicesSyncContext] 的成员，因此对所有表进行的更改将推送到后端。 只有具有本地更改的记录将发送到服务器。
-* **[PullAsync]** 从 [IMobileServiceSyncTable] 启动拉取操作。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 *查询*参数使用[IMobileServiceTableQuery\<t >][IMobileServiceTableQuery]或 OData 查询字符串来筛选返回的数据。 *QueryId*参数用于定义增量同步。有关详细信息，请参阅[Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
+* **[PullAsync]** 从 [IMobileServiceSyncTable] 启动拉取操作。 当表中存在被跟踪的更改时，会执行隐式推送操作以确保本地存储中的所有表以及关系都保持一致。 *PushOtherTables* 参数控制在隐式推送操作中是否推送上下文中的其他表。 *查询*参数使用[IMobileServiceTableQuery\<t >][IMobileServiceTableQuery]或 OData 查询字符串来筛选返回的数据。 *queryId* 参数用于定义增量同步。有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。
 * **[PurgeAsync]** 应用应定期调用此方法，从本地存储中清除过时数据。 需要清除尚未同步的任何更改时，请使用 *force* 参数。
 
 有关这些概念的详细信息，请参阅 [Azure 移动应用中的脱机数据同步](app-service-mobile-offline-data-sync.md#how-sync-works)。

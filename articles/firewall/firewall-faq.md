@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442983"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460461"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -129,7 +129,9 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>是否支持向网络虚拟设备强制建立隧道/链接？
 
-当前不支持强制隧道。 Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接。
+支持强制隧道。 有关详细信息，请参阅[Azure 防火墙强制隧道（预览版）](forced-tunneling.md)。 
+
+Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubnet 知道通过 BGP 的本地网络的默认路由，则必须将其替代为 0.0.0.0/0 UDR，将 NextHopType 值设置为 Internet 以保持 Internet 直接连接。
 
 如果你的配置需要通过强制隧道连接到本地网络，并且可以确定 Internet 目标的目标 IP 前缀，则可以通过 AzureFirewallSubnet 上用户定义的路由将本地网络的这些范围配置为下一跃点。 或者，可以使用 BGP 来定义这些路由。
 
@@ -166,7 +168,7 @@ Azure 防火墙在主动-主动配置中包含多个后端节点。  对于任�
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙的吞吐量？
 
-Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps。 目前，scale out 仅基于 CPU 使用情况。 在某些情况下，具有网络规则的防火墙不会进行扩展以提高吞吐量，因为网络规则不会显著影响 CPU 使用率。 如果你的防火墙需要更高的吞吐量，请联系支持人员以增加防火墙的初始吞吐量容量。
+Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps。 目前，横向扩展基于 CPU 使用情况和吞吐量。 在某些情况下，具有网络规则的防火墙不会进行扩展以提高吞吐量，因为网络规则不会显著影响 CPU 使用率。 如果你的防火墙需要更高的吞吐量，请联系支持人员以增加防火墙的初始吞吐量容量。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙需要多长时间才能扩大？
 

@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169767"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461996"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -111,6 +111,12 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 - `metadata`：定义主要由 Azure 门户用于显示用户友好信息的子属性：
   - `description`：有关参数用途的说明。 可以用来提供可接受值的示例。
   - `displayName`：门户中为参数显示的友好名称。
+  - `version`：（可选）跟踪有关策略定义的内容版本的详细信息。
+
+    > [!NOTE]
+    > Azure 策略服务使用 `version`、`preview`和 `deprecated` 属性来传达对内置策略定义或计划和状态的更改级别。 `version` 的格式为： `{Major}.{Minor}.{Patch}`。 特定状态（如不_推荐使用_或_预览版_）将追加到 `version` 属性或另一个属性中的**布尔值**。
+
+  - `category`：（可选）确定在哪个类别下显示策略定义 Azure 门户。
   - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
   - `assignPermissions`：（可选）将设置为_true_ ，以便 Azure 门户在策略分配过程中创建角色分配。 如果希望在分配范围之外分配权限，此属性很有用。 策略中的每个角色定义有一个角色分配（或计划中的所有策略中的每个角色定义）。 参数值必须是有效的资源或范围。
 - `defaultValue`：（可选）如果未指定任何值，则设置赋值中的参数值。

@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 925894cab00537cb9aeb03ca05c9699bb4bf6a84
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fd7860053e8c04ca9d5e355a721afd834835a441
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668457"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459017"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 本教程介绍如何使用支持的标识提供者向 [iOS 快速入门]项目添加身份验证。 本教程基于 [iOS 快速入门]教程，这是必须首先完成的教程。
 
@@ -40,7 +35,7 @@ ms.locfileid: "74668457"
 
 5. 在“允许的外部重定向 URL”中，输入 `appname://easyauth.callback`。  此字符串中的 _appname_ 是移动应用程序的 URL 方案。  它应该遵循协议的正常 URL 规范（仅使用字母和数字，并以字母开头）。  请记下所选的字符串，你将需要在几个地方使用 URL 方案调整移动应用程序代码。
 
-6. 单击 **“确定”** 。
+6. 单击“确定”。
 
 7. 单击“保存”。
 
@@ -78,7 +73,7 @@ ms.locfileid: "74668457"
 
     将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回应用程序。
 
-2. 按以下代码替换 QSTodoListViewController.m 的 `viewDidLoad` 中的 `[self refresh]`：
+2. 按以下代码替换 QSTodoListViewController.m`[self refresh]``viewDidLoad` 的 *中的*：
 
     ```Objective-C
     [self loginAndGetData];
@@ -164,7 +159,7 @@ ms.locfileid: "74668457"
 
     将 **urlScheme** 替换为应用程序的唯一名称。  urlScheme 应与在 Azure 门户的“允许的外部重定向 URL”字段中所指定的 URL 方案协议保持一致。 当身份验证请求完成后，身份验证回调使用 urlScheme 切回应用程序。
 
-2. 删除 *ToDoTableViewController.swift* 中 `viewDidLoad()` 末尾的 `self.refreshControl?.beginRefreshing()` 和 `self.onRefresh(self.refreshControl)` 行。 在其位置上添加对 `loginAndGetData()` 的调用：
+2. 删除 `self.refreshControl?.beginRefreshing()`ToDoTableViewController.swift`self.onRefresh(self.refreshControl)` 中 `viewDidLoad()` 末尾的 *和* 行。 在其位置上添加对 `loginAndGetData()` 的调用：
 
     ```swift
     loginAndGetData()

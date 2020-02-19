@@ -323,10 +323,10 @@
       items:
         - name: 基本
           href: search-monitor-usage.md
-        - name: 监视查询活动
-          href: search-monitor-queries.md
         - name: 诊断日志记录
           href: search-monitor-logs.md
+        - name: 监视查询活动
+          href: search-monitor-queries.md
         - name: 搜索流量分析
           href: search-traffic-analytics.md
     - name: 故障排除

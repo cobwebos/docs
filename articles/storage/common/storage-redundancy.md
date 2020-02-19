@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162916"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462626"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -66,7 +66,7 @@ LRS 是成本最低的冗余选项，并且与其他选项相比，其持久性�
 |    FileStorage    | 西欧<br /> 美国东部    |    仅限 Azure 文件    |
 
 <sup>1</sup> ZRS 帐户当前不支持存档层。<br />
-<sup>2</sup>虚拟机的 Azure 磁盘（包括托管磁盘和非托管磁盘）仅支持 LRS。 它们不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅[Azure 托管磁盘的定价](/pricing/details/managed-disks/)。
+<sup>2</sup>虚拟机的 Azure 磁盘（包括托管磁盘和非托管磁盘）仅支持 LRS。 它们不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅[Azure 托管磁盘的定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
 有关哪些区域支持 ZRS 的信息，请参阅["Azure 可用性区域的内容"](../../availability-zones/az-overview.md)中**的 "按区域提供的服务支持**"。
 
@@ -131,7 +131,7 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 
 启用辅助数据库的读取访问权限后，可以从辅助终结点以及存储帐户的主终结点读取数据。 辅助终结点将后缀 *–辅助*点追加到帐户名称。 例如，如果 Blob 存储的主终结点是 `myaccount.blob.core.windows.net`的，则辅助终结点 `myaccount-secondary.blob.core.windows.net`。 存储帐户的帐户访问密钥对于主终结点和辅助终结点是相同的。
 
-### <a name="check-the-last-sync-time-property"></a>选中 "上次同步时间" 属性
+### <a name="check-the-last-sync-time-property"></a>检查“上次同步时间”属性
 
 由于数据是以异步方式复制到辅助区域，因此次要区域通常位于主要区域后面。 如果主要区域发生故障，则很可能所有写入主要区域的数据都尚未复制到辅助数据库。
 

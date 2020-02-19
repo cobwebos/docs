@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275587"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461277"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单一登录
 
@@ -41,17 +41,15 @@ ms.locfileid: "74275587"
 
 1. 在 Azure 门户中，选择 " **Azure Active Directory" > 企业应用程序**"，然后选择"**新建应用程序**"。
 
-2. 在“本地应用程序”部分中，选择“添加本地应用程序”。
+2. 输入新应用程序的 "显示名称"，选择 **"集成"** ，然后选择 "**创建**"。
 
-3. 输入新应用程序的显示名称，然后选择 "**添加**"。
+3. 在应用的 "**概述**" 页上，选择 "**单一登录**"。
 
-4. 在应用的 "**概述**" 页上，选择 "**单一登录**"。
+4. 选择 " **SAML** " 作为 "单一登录方法"。
 
-5. 选择 " **SAML** " 作为 "单一登录方法"。
+5. 首先，将 SAML SSO 设置为在公司网络上工作。 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 按照[输入基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)中的步骤为应用程序配置基于 SAML 的身份验证。
 
-6. 首先，将 SAML SSO 设置为在公司网络上工作。 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 按照[输入基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)中的步骤为应用程序配置基于 SAML 的身份验证。
-
-7. 至少将一个用户添加到应用程序，并确保测试帐户有权访问该应用程序。 连接到企业网络时，请使用测试帐户查看应用程序的单一登录。 
+6. 至少将一个用户添加到应用程序，并确保测试帐户有权访问该应用程序。 连接到企业网络时，请使用测试帐户查看应用程序的单一登录。 
 
    > [!NOTE]
    > 设置应用程序代理后，会返回并更新 "SAML**回复 URL**"。
@@ -74,7 +72,7 @@ ms.locfileid: "74275587"
 
 1. 在 Azure 门户中，如果应用程序仍处于打开状态，请选择 "**单一登录**"。 
 
-2. 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 在应用程序代理中配置的**外部 URL**会自动填充 "**标识符**"、"**回复 URL**" 和 "**注销 url** " 字段。 请勿编辑这些 Url，因为这些 Url 是应用程序代理正常工作所必需的。
+2. 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 请确保在 "**标识符**"、"**回复 url**" 和 "**注销 url** " 字段中填充了在应用程序代理中配置的**外部 URL** 。 这些 Url 是应用程序代理正常工作所必需的。 
 
 3. 编辑前面配置的**回复 URL** ，使其域可由应用程序代理访问。 例如，如果您的**外部 URL**是 `https://contosotravel-f128.msappproxy.net` 的，并且原始**回复 url**是 `https://contosotravel.com/acs`的，则需要将原始**回复 url**更新为 `https://contosotravel-f128.msappproxy.net/acs`。 
 
@@ -90,7 +88,7 @@ ms.locfileid: "74275587"
     > [!NOTE]
     > 如果后端应用程序需要**回复 url**作为内部 url，则需要使用[自定义域](application-proxy-configure-custom-domain.md)来匹配内部和外部 url，或在用户的设备上安装 "我的应用" 安全登录扩展。 此扩展将自动重定向到相应的应用程序代理服务。 若要安装该扩展，请参阅[我的应用安全登录扩展](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)。
     
-## <a name="test-your-app"></a>测试应用程序
+## <a name="test-your-app"></a>测试应用
 
 完成所有这些步骤后，应用应会启动并运行。 测试应用：
 

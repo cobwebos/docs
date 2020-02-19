@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025803"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460954"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Cosmos DB （SQL API）中的数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "77025803"
 
 以下活动支持此 Azure Cosmos DB （SQL API）连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
@@ -48,7 +48,7 @@ ms.locfileid: "77025803"
 > [!TIP]
 > [数据迁移视频](https://youtu.be/5-SRNiC_qOU)将指导你完成将数据从 Azure Blob 存储复制到 Azure Cosmos DB 的步骤。 该视频还介绍了在一般情况下将数据引入 Azure Cosmos DB 的性能优化注意事项。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "77025803"
 
 Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | **type** 属性必须设置为 **CosmosDb**。 | 是 |
 | connectionString |指定连接 Azure Cosmos DB 数据库所需的信息。<br />**注意**：必须如以下示例所示，在连接字符串中指定数据库信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -114,7 +114,7 @@ Azure Cosmos DB (SQL API) 链接服务支持以下属性：
 
 Azure Cosmos DB （SQL API）数据集支持以下属性： 
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的**type**属性必须设置为**CosmosDbSqlApiCollection**。 |是 |
 | collectionName |Azure Cosmos DB 文档集合的名称。 |是 |
@@ -150,7 +150,7 @@ Azure Cosmos DB （SQL API）数据集支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的**type**属性必须设置为**CosmosDbSqlApiSource**。 |是 |
 | query |指定要读取数据的 Azure Cosmos DB 查询。<br/><br/>示例：<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行此 SQL 语句：`select <columns defined in structure> from mycollection` |
@@ -202,7 +202,7 @@ Azure Cosmos DB （SQL API）数据集支持以下属性：
 
 复制活动 **source** 节支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的**type**属性必须设置为**CosmosDbSqlApiSink**。 |是 |
 | writeBehavior |描述如何将数据写入 Azure Cosmos DB。 允许的值为 **insert** 和 **upsert**。<br/><br/>**upsert** 的行为是，如果已存在具有相同 ID 的文档，则替换该文档；否则将插入该文档。<br /><br />**注意**：如果未在原始文档中指定 ID，或未通过列映射指定 ID，则数据工厂会自动为文档生成 ID。 这表示必须先确保文档有 ID，才能让 **upsert** 按预期工作。 |否<br />（默认值为 **insert**） |
@@ -213,7 +213,7 @@ Azure Cosmos DB （SQL API）数据集支持以下属性：
 >若要按原样导入 JSON 文档，请参阅[导入或导出 json 文档](#import-and-export-json-documents)部分;若要从表格格式的数据中复制数据，请参阅[从关系数据库迁移到 Cosmos DB](#migrate-from-relational-database-to-cosmos-db)。
 
 >[!TIP]
->Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的 `writeBatchSize` 值。
+>Cosmos DB 将单个请求的大小限制为 2MB。 公式为请求大小 = 单个文档大小 * 写入批大小。 若出现“请求太大。”错误，请减少复制接收器配置中的  **值** **`writeBatchSize`** 。
 
 如果使用 "DocumentDbCollectionSink" 类型源，则仍支持按原样提供，以便向后兼容。 建议使用新的模型，以便提供更丰富的功能，以便从 Cosmos DB 复制数据。
 
@@ -318,7 +318,7 @@ Azure Cosmos DB （SQL API）数据集支持以下属性：
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>从关系数据库迁移到 Cosmos DB
 
-从关系数据库（例如 SQL Server 到 Azure Cosmos DB）进行迁移时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 在某些情况下，您可能需要重新设计数据模型，以便根据[Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)来优化 NoSQL 用例的数据模型，例如，通过将所有相关子项嵌入到一个 JSON 文档中来非规范化数据。 对于这种情况，请参阅[此博客文章](https://medium.com/@ArsenVlad/denormalizing-via-embedding-when-copying-data-from-sql-to-cosmos-db-649a649ae0fb)，其中演练了如何使用 Azure 数据工厂复制活动实现此目的。
+从关系数据库（例如 SQL Server 到 Azure Cosmos DB）进行迁移时，复制活动可以轻松地从源映射表格数据，以在 Cosmos DB 中平展 JSON 文档。 在某些情况下，您可能需要重新设计数据模型，以便根据[Azure Cosmos DB 中的数据建模](../cosmos-db/modeling-data.md)来优化 NoSQL 用例的数据模型，例如，通过将所有相关子项嵌入到一个 JSON 文档中来非规范化数据。 对于这种情况，请参阅[此文](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md)，其中演练了如何使用 Azure 数据工厂复制活动实现此目的。
 
 ## <a name="next-steps"></a>后续步骤
 

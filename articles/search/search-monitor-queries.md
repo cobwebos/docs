@@ -7,32 +7,32 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/12/2020
-ms.openlocfilehash: 346a44f02667976d95125b72371b6e33715ee4b1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211147"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462509"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>监视 Azure 认知搜索中的查询请求
 
-本文介绍如何使用指标度量查询性能和卷。 它还说明了在需要评估搜索语料库的实用工具和有效性时，如何收集查询中使用的输入术语。
+本文介绍如何使用指标和诊断日志记录来度量查询性能和卷。 它还说明了在需要评估搜索语料库的实用工具和有效性时，如何收集查询中使用的输入术语。
 
-源为指标的历史数据将保留30天。 对于更长的保留期，或要报告操作数据和查询字符串，请确保启用指定存储选项的[诊断设置](search-monitor-logs.md)。
+源为指标的历史数据将保留30天。 对于更长的保留期，或要报告操作数据和查询字符串，请确保启用指定存储选项的[诊断设置](search-monitor-logs.md)，以便保存已记录的事件和指标。
 
 最大程度地提高数据度量的完整性的条件包括：
 
 + 使用可计费服务（在 "基本" 或 "标准" 级别创建的服务）。 免费服务由多个订阅者共享，这会在负载变化时引入一定数量的变动。
 
-+ 如果可能，请使用单个副本，使计算仅限于一台计算机。 如果使用多个副本，则查询度量值在多个节点之间平均，其中一些可能会更快。 如果要优化查询性能，则单个节点会提供更稳定的环境用于测试。
++ 如果可能，请使用单个副本和分区来创建包含和隔离环境。 如果使用多个副本，则会在多个节点之间平均查询指标，这可以降低结果的精度。 同样，多个分区表示数据被分割，如果索引也在进行，则可能存在某些分区可能具有不同数据的可能性。 优化查询性能时，单个节点和分区提供了更稳定的环境用于测试。
 
 > [!Tip]
 > 通过其他客户端代码和 Application Insights，还可以捕获点击链接型数据，深入了解应用程序用户感兴趣的 attracts。 有关详细信息，请参阅[搜索流量分析](search-traffic-analytics.md)。
 
 ## <a name="query-volume-qps"></a>查询卷（QPS）
 
-卷的度量值为**每秒搜索查询**数（QPS），它是一种内置的指标，可报告为在一分钟时间范围内执行的查询的平均值、计数、最小值或最大值。 系统中固定指标的一分钟间隔（TimeGrain = "PT1M"）。
+卷按**每秒搜索查询数**（QPS）度量，这是一种内置的指标，可报告为在一分钟时间内执行的查询的平均、计数、最小值或最大值。 系统中的指标的一分钟间隔（TimeGrain = "PT1M"）是固定的。
 
 查询通常以毫秒为单位执行，因此仅度量值为秒的查询将显示在度量值中。
 
@@ -116,6 +116,45 @@ ms.locfileid: "77211147"
 
 1. 放大折线图上感兴趣的区域。 将鼠标指针放在区域的开头位置，单击并按住鼠标左键，拖动到区域的另一侧，然后松开按钮。 图表将在该时间范围内放大。
 
+## <a name="identify-strings-used-in-queries"></a>标识在查询中使用的字符串
+
+启用诊断日志记录时，系统将捕获**AzureDiagnostics**表中的查询请求。 作为先决条件，你必须已启用[诊断日志记录](search-monitor-logs.md)，并指定 log analytics 工作区或其他存储选项。
+
+1. 在 "监视" 部分下，选择 "**日志**" 以打开 Log Analytics 中的空查询窗口。
+
+1. 运行以下表达式，搜索查询。搜索操作，返回一个表格结果集，其中包含操作名称、查询字符串、所查询的索引以及找到的文档数。 最后两个语句排除包含空或未指定搜索的查询字符串（通过示例索引），这会在结果中削减干扰。
+
+   ```
+   AzureDiagnostics
+   | project OperationName, Query_s, IndexName_s, Documents_d
+   | where OperationName == "Query.Search"
+   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where IndexName_s != "realestate-us-sample-index"
+   ```
+
+1. （可选）在*Query_s*上设置列筛选器，以搜索特定的语法或字符串。 例如，可以将筛选器*等于*`?api-version=2019-05-06&search=*&%24filter=HotelName`）。
+
+   ![记录的查询字符串](./media/search-monitor-usage/log-query-strings.png "记录的查询字符串")
+
+尽管此方法适用于即席调查，但生成报表后，你可以将查询字符串合并并呈现在布局中，以便进行更有利于的分析。
+
+## <a name="identify-long-running-queries"></a>标识长时间运行的查询
+
+添加 "持续时间" 列以获取所有查询的数量，而不仅仅是作为指标选取的所有查询。 对此数据进行排序时，会显示哪些查询的完成时间最长。
+
+1. 在 "监视" 部分下，选择 "**日志**" 以查询日志信息。
+
+1. 运行以下查询以返回按持续时间（以毫秒为单位）排序的查询。 最长运行的查询位于顶部。
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search"
+   | sort by DurationMs
+   ```
+
+   ![按持续时间对查询进行排序](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "按持续时间对查询进行排序")
+
 ## <a name="create-a-metric-alert"></a>创建指标警报
 
 指标警报建立阈值，您将收到一个通知或触发您预先定义的纠正措施。 
@@ -144,31 +183,9 @@ ms.locfileid: "77211147"
 
 如果你指定了电子邮件通知，你将收到来自 "Microsoft Azure" 的电子邮件，其中主题行为 "Azure：已激活严重性： 3 `<your rule name>`"。
 
-## <a name="query-strings-used-in-queries"></a>查询中使用的查询字符串
+<!-- ## Report query data
 
-启用诊断日志记录时，系统将捕获**AzureDiagnostics**表中的查询请求。 作为先决条件，你必须已启用[诊断日志记录](search-monitor-logs.md)，并指定 log analytics 工作区或其他存储选项。
-
-1. 在 "监视" 部分下，选择 "**日志**" 以打开 Log Analytics 中的空查询窗口。
-
-1. 运行以下表达式，搜索查询。搜索操作，返回一个表格结果集，其中包含操作名称、查询字符串、所查询的索引以及找到的文档数。 最后两个语句排除包含空或未指定搜索的查询字符串（通过示例索引），这会在结果中削减干扰。
-
-   ```
-    AzureDiagnostics 
-     | project OperationName, Query_s, IndexName_s, Documents_d 
-     | where OperationName == "Query.Search"
-     | where Query_s != "?api-version=2019-05-06&search=*"
-     | where IndexName_s != "realestate-us-sample-index"
-   ```
-
-1. （可选）在*Query_s*上设置列筛选器，以搜索特定的语法或字符串。 例如，可以将筛选器*等于*`?api-version=2019-05-06&search=*&%24filter=HotelName`）。
-
-   ![记录的查询字符串](./media/search-monitor-usage/log-query-strings.png "记录的查询字符串")
-
-尽管此方法适用于即席调查，但生成报表后，你可以将查询字符串合并并呈现在布局中，以便进行更有利于的分析。
-
-## <a name="report-query-data"></a>报表查询数据
-
-Power BI 是一种分析报告工具，可用于存储在 Blob 存储或 Log Analytics 工作区中的日志数据。
+Power BI is an analytical reporting tool useful for visualizing data, including log information. If you are collecting data in Blob storage, a Power BI template makes it easy to spot anomalies or trends. Use this link to download the template. -->
 
 ## <a name="next-steps"></a>后续步骤
 

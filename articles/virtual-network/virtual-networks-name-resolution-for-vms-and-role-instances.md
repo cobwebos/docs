@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991025"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462660"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -105,8 +105,7 @@ Azure 提供的名称解析包括以下功能：
 
 > [!NOTE]
 > dnsmasq 包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否适合特定需求，且没有安装其他缓存。
->
->
+
     
 ### <a name="client-side-retries"></a>客户端重试
 
@@ -169,8 +168,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 * 禁止从 Internet 进行访问，减少外部代理带来的威胁。
 
 > [!NOTE]
-> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。 [公共 IP 地址](virtual-network-public-ip-address.md) 应分配给每个 DNS 服务器 VM。 如需获取更多性能分析和优化（使用 Windows Server 作为 DNS 服务器时），请参阅[递归 Windows DNS Server 2012 R2 的名称解析性能](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx)。
-> 
+> 为获得最佳性能，在将 Azure VM 用作 DNS 服务器时，应禁用 IPv6。 [公共 IP 地址](virtual-network-public-ip-address.md) 应分配给每个 DNS 服务器 VM。 
 > 
 
 ### <a name="web-apps"></a>Web 应用

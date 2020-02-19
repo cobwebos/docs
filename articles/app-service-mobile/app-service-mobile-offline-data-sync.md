@@ -6,19 +6,14 @@ ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668417"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458743"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure 移动应用中的脱机数据同步
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="what-is-offline-data-sync"></a>什么是脱机数据同步？
 脱机数据同步是 Azure 移动应用的客户端和服务器 SDK 功能，可让开发人员创建不需要网络连接就能正常运行的应用。
@@ -58,7 +53,7 @@ ms.locfileid: "74668417"
 ## <a name="what-is-a-sync-context"></a>什么是同步上下文？
 *同步上下文*与移动客户端对象（例如 `IMobileServiceClient` 或 `MSClient`）关联，并跟踪对同步表所做的更改。 同步上下文维护操作队列，其中保留了 CUD 操作（Create、Update、Delete）的顺序列表，该列表稍后发送到服务器。
 
-本地存储使用初始化方法（例如 [.NET 客户端 SDK] 中的 `IMobileServicesSyncContext.InitializeAsync(localstore)`）来与同步上下文关联。
+本地存储使用初始化方法（例如 `IMobileServicesSyncContext.InitializeAsync(localstore)`.NET 客户端 SDK[.NET 客户端 SDK]）来与同步上下文关联。
 
 ## <a name="how-sync-works"></a>脱机同步的工作原理
 使用同步表时，客户端代码将控制本地更改与 Azure 移动应用后端同步的时机。 在发生*推送*本地更改的调用之前，不会向后端发送任何内容。 同样，仅当发生了*提取*数据的调用时，才在本地存储中填充新数据。

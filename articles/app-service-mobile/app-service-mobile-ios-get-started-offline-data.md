@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668481"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459168"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 本教程介绍如何使用适用于 iOS 的 Azure 应用服务的“移动应用”功能进行脱机同步。 使用脱机同步，即使没有网络连接，最终用户也可与移动应用交互，以便查看、添加或修改数据。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程后端同步。
@@ -35,7 +30,7 @@ ms.locfileid: "74668481"
 
 在 **QSTodoService.m** (Objective-C) 或 **ToDoTableViewController.swift** (Swift) 中，请注意成员 **syncTable** 的类型为 **MSSyncTable**。 脱机同步使用此同步表接口而不是 **MSTable**。 使用同步表时，所有操作会转到本地存储，而且只会与具有显式推送和提取操作的远程后端同步。
 
- 若要获取对同步表的引用，请对 `MSClient` 使用 **syncTableWithName** 方法。 若要删除脱机同步功能，请改用 **tableWithName**。
+ 若要获取对同步表的引用，请对 **使用**syncTableWithName`MSClient` 方法。 若要删除脱机同步功能，请改用 **tableWithName**。
 
 表操作之前，必须初始化本地存储区。 下面是相关的代码：
 
@@ -156,12 +151,12 @@ ms.locfileid: "74668481"
 
 ![MS_TableOperations 表属性][defining-core-data-tableoperations-entity]
 
-| 属性 | Type |
+| Attribute | 类型 |
 | --- | --- |
 | id | 64 位整数 |
-| itemId | 字符串 |
-| 属性 | 二进制数据 |
-| 表 | 字符串 |
+| itemId | String |
+| properties | Binary Data |
+| 表 | String |
 | tableKind | 16 位整数 |
 
 
@@ -169,37 +164,37 @@ ms.locfileid: "74668481"
 
  ![MS_TableOperationErrors 表属性][defining-core-data-tableoperationerrors-entity]
 
-| 属性 | Type |
+| Attribute | 类型 |
 | --- | --- |
-| id |字符串 |
+| id |String |
 | operationId |64 位整数 |
-| 属性 |二进制数据 |
+| properties |Binary Data |
 | tableKind |16 位整数 |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| 属性 | Type |
+| Attribute | 类型 |
 | --- | --- |
-| id |字符串 |
-| key |字符串 |
+| id |String |
+| key |String |
 | keyType |64 位整数 |
-| 表 |字符串 |
-| 值 |字符串 |
+| 表 |String |
+| 值 |String |
 
 ### <a name="data-table"></a>数据表
 
 **TodoItem**
 
-| 属性 | Type | 说明 |
+| Attribute | 类型 | 注意 |
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
-| complete | 布尔 | 待办事项字段 |
-| text |字符串 |待办事项字段 |
-| createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
-| updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
-| 版本 | 字符串 | （可选）用于检测冲突，映射到版本 |
+| complete | Boolean | 待办事项字段 |
+| text |String |待办事项字段 |
+| createdAt | Date | （可选）映射到 **createdAt** 系统属性 |
+| updatedAt | Date | （可选）映射到 **updatedAt** 系统属性 |
+| 版本 | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为
 在本部分，将修改应用，以便在应用启动时或插入和更新项时应用不会进行同步。 仅当按刷新手势按钮时，应用才会同步。
@@ -223,7 +218,7 @@ ms.locfileid: "74668481"
 
 **Swift**：
 
-在 **ToDoTableViewController.swift** 中的 `viewDidLoad` 内，注释掉以下两行，停止在应用启动时同步。 在编写本文时，当某人添加或完成某个项时，Swift Todo 应用不会更新服务。 它仅在应用启动时更新服务。
+在 `viewDidLoad`ToDoTableViewController.swift**中的** 内，注释掉以下两行，停止在应用启动时同步。 在编写本文时，当某人添加或完成某个项时，Swift Todo 应用不会更新服务。 它仅在应用启动时更新服务。
 
    ```swift
   self.refreshControl?.beginRefreshing()
@@ -269,7 +264,7 @@ ms.locfileid: "74668481"
 
 ## <a name="additional-resources"></a>其他资源
 * [移动应用中的脱机数据同步]
-* [云覆盖：Azure 移动服务中的脱机同步]\(此视频与移动服务有关，但移动应用脱机同步的工作原理与其类似。\)
+* [云覆盖：Azure 移动服务中的脱机同步]\(视频与移动服务有关，但移动应用脱机同步的工作方式类似。\)
 
 <!-- URLs. -->
 

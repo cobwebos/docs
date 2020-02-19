@@ -3,12 +3,12 @@ title: 设置容器实时数据 Azure Monitor （预览） |Microsoft Docs
 description: 本文介绍如何设置容器日志（stdout/stderr）和事件的实时视图，而无需将 kubectl 与容器的 Azure Monitor 一起使用。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 91f035b98a57fd9a37203cc48b3cc5d685967a13
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251781"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459916"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何设置实时数据（预览）功能
 
@@ -48,7 +48,7 @@ Azure 门户提示你验证 Azure Active Directory 群集的登录凭据，并�
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>在启用 RBAC 的群集中使用 clusterMonitoringUser
 
-若要在[启用 RBAC](#configure-kubernetes-rbac-authorization)授权后无需应用额外的配置更改，以允许 Kubernetes 用户规则绑定**ClusterUser**访问实时数据（预览版）功能，AKS 添加了名为**clusterMonitoringUser**的新 Kubernetes 群集角色绑定。 此群集角色绑定具有现成的所有必需权限，可用于访问 Kubernetes API 和用于利用实时数据（预览）功能的终结点。 
+若要在[启用 RBAC](#configure-kubernetes-rbac-authorization)授权后无需应用额外的配置更改，以允许 Kubernetes 用户角色绑定**ClusterUser**访问实时数据（预览版）功能，AKS 添加了名为**clusterMonitoringUser**的新 Kubernetes 群集角色绑定。 此群集角色绑定具有现成的所有必需权限，可用于访问 Kubernetes API 和用于利用实时数据（预览）功能的终结点。
 
 若要利用此新用户使用实时数据（预览版）功能，你需要是 AKS 群集资源上 "[参与者](../../role-based-access-control/built-in-roles.md#contributor)" 角色的成员。 默认情况下，为容器 Azure Monitor 配置为使用此用户进行身份验证。 如果 clusterMonitoringUser 角色绑定不存在于群集上，则使用**clusterUser**进行身份验证。
 
