@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133683"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443544"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>设置在 Linux 上讲授 shell 脚本的实验室
 本文介绍如何设置实验室，以在 Linux 上讲授 shell 脚本。 脚本编写是系统管理的有用组成部分，可让管理员避免重复性的任务。 在此示例场景中，类涵盖了传统的 bash 脚本和增强的脚本。 增强的脚本是结合了 bash 命令和 Ruby 的脚本。 这样，Ruby 便可以传递数据和 bash 命令来与 shell 交互。 
@@ -32,7 +32,7 @@ ms.locfileid: "77133683"
 
 | 实验室帐户设置 | Instructions |
 | ----------- | ------------ |  
-| Marketplace 映像 | 启用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映像，以便在实验室帐户中使用。 有关详细信息，请参阅[指定可用于实验室创建者的 Marketplace 映像](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
+| Marketplace 映像 | 启用[Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic)映像，以便在实验室帐户中使用。 有关详细信息，请参阅[指定可用于实验室创建者的 Marketplace 映像](specify-marketplace-images.md)。 | 
 
 按照[本教程](tutorial-setup-classroom-lab.md)创建新的实验室并应用以下设置：
 
@@ -89,7 +89,7 @@ Ruby 是一种开放源动态语言，可与 bash 脚本结合使用。 本部�
 
 有关定价的详细信息，请参阅以下文档： [Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 本文指导你完成为脚本编写类创建实验室的步骤。 尽管本文重点介绍了如何在 Linux 计算机上设置 Ruby 脚本编写工具，但相同的设置可用于其他脚本类，如 Linux 上的 Python。
 
 ## <a name="next-steps"></a>后续步骤

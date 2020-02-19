@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 9cf65edc3bdd5f675ba1972501139b9ecebcfafd
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1439383598517f57bc77e718d4ded7f53941d3bb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964390"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444190"
 ---
 # <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器的事件网格数据连接
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964390"
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager 模板](data-connection-event-grid-resource-manager.md)
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入（数据加载）。 本文介绍如何使用 Python 创建 Azure 数据资源管理器的事件网格数据连接。
+本文介绍如何使用 Python 创建 Azure 数据资源管理器的事件网格数据连接。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供从事件中心、IoT 中心和写入 blob 容器的 blob 的引入或数据加载。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-* 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
-* 创建[群集和数据库](create-cluster-database-python.md)
-* 创建[表和列映射](python-ingest-data.md#create-a-table-on-your-cluster)
-* 设置[数据库和表策略](database-table-policies-python.md)（可选）
-* [使用事件网格订阅创建存储帐户](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)。
+* 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Python 3.4+](https://www.python.org/downloads/)。
+
+* [一个群集和数据库](create-cluster-database-python.md)。
+
+* [表和列映射](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
+
+* [数据库和表策略](database-table-policies-csharp.md)（可选）。
+
+* [具有事件网格订阅的存储帐户](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)。
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: cfb35f6eeae6d74eea8dab96fa336fb6700eb7a7
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3fc20288f4ec80c85bd0109799d5ed45b504d359
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77123254"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430146"
 ---
 常规用途 VM 大小提供均衡的 CPU 与内存之比。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数以及存储吞吐量的相关信息。
 
@@ -159,7 +159,7 @@ ACU：210-250
 
 高级存储缓存：支持
 
-DSv2 系列大小运行在 Intel®强® 8171M 2.1 GHz （Skylake）或 Intel®强® E5-2673 v4 2.3 GHz （Broadwell）上，或 intel®至强® E5-2673 v3 2.4 GHz （Haswell）处理器，其中包含 Intel Turbo 提升技术2.0 并使用高级存储。
+DSv2 系列大小运行于 Intel®强® 8171M 2.1 GHz （Skylake）或 Intel®® E5-2673 v4 2.3 GHz （Broadwell）或 intel®至强® E5-2673 v3 2.4 GHz （Haswell）处理器，其中包含 Intel Turbo 提升技术2.0 并使用高级存储。
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

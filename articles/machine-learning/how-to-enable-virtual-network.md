@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169948"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444343"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中保护 Azure ML 试验和推理作业
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Azure 机器学习使用与工作区关联的密钥保管库实例来存储以�
 > * 如果要在一个虚拟网络中放置多个计算实例或群集，则可能需要为一个或多个资源请求增加配额。
 > * 如果工作区的 Azure 存储帐户还在虚拟网络中受保护，则它们必须与 Azure 机器学习计算实例或群集位于同一虚拟网络中。 
 
-机器学习的计算实例或群集会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算实例或群集，服务分配以下资源：
-
-* 一个网络安全组
-* 一个公共 IP 地址
-* 一个负载均衡器
-
-这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)限制。
+> [!TIP]
+> 机器学习的计算实例或群集会自动分配包含虚拟网络的资源组中的其他网络资源。 对于每个计算实例或群集，服务分配以下资源：
+> 
+> * 一个网络安全组
+> * 一个公共 IP 地址
+> * 一个负载均衡器
+> 
+> 这些资源受订阅的[资源配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)限制。
 
 
 ### <a id="mlcports"></a>所需的端口
@@ -500,6 +501,10 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 添加规则时，将__协议__设置为 "任意"，将 "端口" 设置为 "`*`"。
 
 有关配置网络规则的详细信息，请参阅[部署和配置 Azure 防火墙](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)。
+
+## <a name="use-azure-container-registry"></a>使用 Azure 容器注册表
+
+将虚拟网络与 Azure 机器学习一起使用时 __，请__不要将工作区的 Azure 容器注册表放在虚拟网络中。 不支持该配置。
 
 ## <a name="next-steps"></a>后续步骤
 

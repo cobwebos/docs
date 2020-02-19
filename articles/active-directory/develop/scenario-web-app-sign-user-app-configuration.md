@@ -38,25 +38,25 @@ ms.locfileid: "77425572"
 
 选择与你感兴趣的平台相对应的选项卡：
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 本文中的代码片段和以下文章摘自[ASP.NET Core web 应用增量教程第1章](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)。
 
 有关完整的实现的详细信息，请参阅本教程。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 本文中的代码片段和以下文章摘自[ASP.NET web 应用示例](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)。
 
 你可能想要参考此示例以获取完整的实现细节。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 本文中的代码片段和下面的代码片段从 MSAL Java 中[调用 Microsoft graph 示例的 java web 应用程序](https://github.com/Azure-Samples/ms-identity-java-webapp)中提取。
 
 你可能想要参考此示例以获取完整的实现细节。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 本文中的代码片段和以下代码片段从 MSAL Python 中[调用 Microsoft graph 示例的 Python web 应用程序](https://github.com/Azure-Samples/ms-identity-python-webapp)中提取。
 
@@ -74,7 +74,7 @@ ms.locfileid: "77425572"
 
 有时，应用程序可以由 `Authority`参数化，这是 `Instance` 和 `TenantId`的串联。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET Core 中，这些设置位于 "AzureAd" 节中的[appsettings](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8)文件中。
 
@@ -139,7 +139,7 @@ ms.locfileid: "77425572"
 
 同样，注销 URI 也将设置为 `https://localhost:44321/signout-callback-oidc`。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 在 ASP.NET 中，应用程序通过[web.config 文件进行](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15)配置，第12行到第15行。
 
@@ -165,7 +165,7 @@ ms.locfileid: "77425572"
 
 在 Azure 门户中，需要在应用程序的**身份验证**页上注册的答复 uri 需要匹配这些 url。 也就是说，它们应该 `https://localhost:44326/`。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 Java 中，配置位于位于 `src/main/resources`下的[application. properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties)文件中。
 
@@ -179,7 +179,7 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 在 Azure 门户中，需要在应用程序的**身份验证**页上注册的答复 uri 需要与应用程序定义的 `redirectUri` 实例相匹配。 也就是说，应 `http://localhost:8080/msal4jsample/secure/aad` 和 `http://localhost:8080/msal4jsample/graph/me`。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下面是 app_config 中的 Python 配置文件[。 py](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py)：
 
@@ -207,7 +207,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 初始化代码因平台而异。 对于 ASP.NET Core 和 ASP.NET，将用户登录到 OpenID Connect 中间件。 ASP.NET 或 ASP.NET Core 模板为 Azure Active Directory （Azure AD） v1.0 终结点生成 web 应用程序。 需要进行一些配置才能适应 Microsoft 标识平台（v2.0）终结点。 对于 Java，它是通过与应用程序的协作进行弹簧处理的。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 在 ASP.NET Core web 应用（和 web Api）中，应用程序受到保护，因为控制器或控制器操作具有 `[Authorize]` 属性。 此属性检查是否对用户进行了身份验证。 正在初始化该应用程序的代码位于 Startup.cs 文件中。
 
@@ -316,7 +316,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 在许多情况下，`AadIssuerValidator` 类允许验证令牌的颁发者。 此类适用于1.0 版或 v2.0 版令牌、单租户或多租户应用程序，或在 Azure 公有云和全国云中使用个人 Microsoft 帐户登录用户的应用程序。 它可通过[AadIssuerValidator/资源/cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs)获得。
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 与 ASP.NET web 应用和 web Api 中的身份验证相关的代码位于[App_Start/startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61)文件中。
 
@@ -342,7 +342,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
  }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了一个筛选器，该筛选器会截获每个 HTTP 响应。 在 Java web 应用快速入门中，此筛选器在 `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`中 `AuthFilter`。
 
@@ -357,7 +357,7 @@ Java 示例使用弹簧框架。 应用程序受到保护，因为你实现了�
 
 有关此方法触发的授权代码流的详细信息，请参阅[Microsoft 标识平台和 OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 示例使用 Flask。 Flask 和 MSAL Python 的初始化是在[py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28)中完成的。
 
@@ -381,22 +381,22 @@ Session(app)
 
 在下一篇文章中，你将学习如何触发登录和注销。
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [登录和注销](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [登录和注销](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [登录和注销](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [登录和注销](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)

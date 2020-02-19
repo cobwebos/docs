@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063877"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443612"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题（Faq）
 
@@ -50,8 +50,9 @@ Microsoft Authenticator 应用替代了 Azure Authenticator 应用，建议使�
 | 我的 Apple Watch 伴侣应用已崩溃。 是否可以向你们发送崩溃日志以便调查？ | 首先，请务必选择与我们共享分析数据。 如果你是 TestFlight 用户，则已注册。 否则，可以转到“设置”>“隐私”>“分析”，并同时选择“共享 iPhone 和 Watch 分析”和“与应用开发人员共享”选项。<br><br>注册后，可以尝试重现崩溃，因此自动将崩溃日志发送给我们进行调查。 但是，如果无法重现崩溃，可以手动复制日志文件并将其发送给我们。<ol><li>在手机上打开 Watch 应用，转到“设置”>“通用”，然后单击“复制 Watch 分析数据”。</li><li>在“设置”>“隐私”>“分析”>“分析数据”下找到相应的崩溃信息，然后手动复制整个文本。</li><li>在手机上打开 Microsoft Authenticator 应用，并将复制的文本粘贴到“发送日志”页上的“与应用开发人员共享”文本框中。</li></ol> |
 | 什么是应用锁定功能，它如何帮助我更加安全？ | 若要使你的一次性密码、应用信息和应用设置更加安全，可以在 Microsoft Authenticator 应用中开启应用锁定功能。 从 Microsoft Authenticator 应用的“设置”屏幕开启应用锁定意味着你每次打开 Microsoft Authenticator 应用时都会要求你使用 PIN 或生物识别进行身份验证。 此功能提供额外的保护，你对 Microsoft Authenticator 应用中的通知进行批准的方式不会改变。<br><br>**注意**<br>由于设备注册可能发生在 Microsoft Authenticator 应用以外的其他位置，例如在公司门户应用或 Android 帐户设置中，因此不能保证应用锁定会阻止用户访问 Microsoft验证器应用。 |
 | 为什么会收到关于帐户活动的通知？ | 为了帮助你更好地掌握 Microsoft 个人帐户状况的最新信息，我们会向你的 Microsoft Authenticator 应用发送活动通知。 这些通知会在发生更改后立即显示，帮助提高安全性。 我们之前通过电子邮件或短信发送这些通知，现在将其扩展为包括应用。 有关这些活动通知的详细信息，请参阅[存在异常帐户登录时会发生什么](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)。 若要更改接收通知的位置，请登录到你的帐户的 "[你可以通过非关键帐户警报与你联系](https://account.live.com/SecurityNotifications/Update)" 页。 |
-| 使用 iOS 附带的默认邮件应用登录到我的工作或学校帐户时，会提示 Microsoft Authenticator 应用获取我的安全验证信息。 输入该信息并返回邮件应用后，出现错误。 我该做什么？ | 出现这种情况很可能是因为登录和邮件应用程序发生在两个不同的应用程序中，这会导致初始后台登录过程停止工作并发生故障。 若要尝试解决此问题，我们建议你在登录到邮件应用程序时选择屏幕右下角的**Safari**图标。 通过移动到 Safari，整个登录过程都在单个应用程序中进行，使你能够成功登录到应用程序。 |
+| 使用 iOS 附带的默认邮件应用登录到我的工作或学校帐户时，会提示 Microsoft Authenticator 应用获取我的安全验证信息。 输入该信息并返回邮件应用后，出现错误。 我该怎么办？ | 出现这种情况很可能是因为登录和邮件应用程序发生在两个不同的应用程序中，这会导致初始后台登录过程停止工作并发生故障。 若要尝试解决此问题，我们建议你在登录到邮件应用程序时选择屏幕右下角的**Safari**图标。 通过移动到 Safari，整个登录过程都在单个应用程序中进行，使你能够成功登录到应用程序。 |
 | 我的一次性密码（OTP）代码不起作用。 我该怎么办？ | 请确保设备上的日期和时间正确，并且已自动同步。 如果日期和时间错误或不同步，则代码将不起作用。 |
+| Windows 10 移动版操作系统已在2019年12月弃用。 是否也会弃用 Windows Mobile 操作系统上的 Microsoft Authenticator？ | 2020年2月28日以后，将不支持所有 Windows Mobile 操作系统上的 Microsoft Authenticator 应用。 用户将不能接收到上述日期之后的任何新应用程序更新。 2020年2月28日以后，使用所有 Windows Mobile 操作系统上的 Microsoft Authenticator 支持身份验证的 Microsoft 服务将开始停用其支持。 为了向 Microsoft 服务进行身份验证，我们强烈建议所有用户在此日期之前切换到备用身份验证机制。 |
 
 ## <a name="next-steps"></a>后续步骤
 

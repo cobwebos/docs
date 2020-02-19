@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701663"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443172"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>在 Azure 实验室服务中将实验室的网络与对等虚拟网络连接 
 本文提供了有关将实验室网络与其他网络对等互连的信息。 
@@ -34,7 +34,7 @@ ms.locfileid: "74701663"
 某些本地网络通过[ExpressRoute](../../expressroute/expressroute-introduction.md)或[虚拟网络网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)连接到 Azure 虚拟网络。 这些服务必须在 Azure 实验室服务之外设置。 若要详细了解如何使用 ExpressRoute 将本地网络连接到 Azure，请参阅[ExpressRoute 概述](../../expressroute/expressroute-introduction.md)。 对于使用虚拟网关的本地连接，网关、指定的虚拟网络和实验室帐户必须都位于同一区域。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>创建实验室帐户时进行配置
-在创建新的实验室帐户期间，可以选择在 "**对等虚拟网络**" 下拉列表中显示的现有虚拟网络。 所选虚拟网络已连接（对等互连）到实验室帐户下创建的实验室。 在进行此更改后，在实验室中创建的所有虚拟机都可以访问对等互连虚拟网络中的资源。 
+创建新的实验室帐户时，可以在 "**高级**" 选项卡上的 "**对等虚拟网络**" 下拉列表中选择一个现有虚拟网络。所选虚拟网络已连接（对等互连）到实验室帐户下创建的实验室。 在进行此更改后，在实验室中创建的所有虚拟机都可以访问对等互连虚拟网络中的资源。 
 
 ![选择 VNet 到对等](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -56,8 +56,8 @@ ms.locfileid: "74701663"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [以管理员身份创建并管理实验室帐户](how-to-manage-lab-accounts.md)
-- [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
-- [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
-- [以实验室用户身份访问教室实验室](how-to-use-classroom-lab.md)
-
+- [允许 lab creator 选取实验室位置](allow-lab-creator-pick-lab-location.md)
+- [将共享映像库附加到实验室](how-to-attach-detach-shared-image-gallery.md)
+- [添加用户作为实验室所有者](how-to-add-user-lab-owner.md)
+- [查看实验室的防火墙设置](how-to-configure-firewall-settings.md)
+- [为实验室配置其他设置](how-to-configure-lab-accounts.md)

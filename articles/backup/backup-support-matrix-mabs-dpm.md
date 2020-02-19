@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center DPM 备份本地和 Azure 虚拟机资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111460"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444020"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure 备份 Server 或 System Center DPM 备份的支持矩阵
 
@@ -70,9 +70,9 @@ Azure 备份可以备份运行以下任意操作系统的 DPM/MABS 实例。 操
 
 **方案** | **DPM/MABS**
 --- | ---
-**Azure VM 上的 MABS** | Windows Server 2012 R2。<br/><br/> Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> 建议从 marketplace 开始使用映像。<br/><br/> 最低 A2 标准，具有两个核心和 3.5 GB 的 RAM。
-**Azure VM 上的 DPM** | System Center 2012 R2 Update 3 或更高版本。<br/><br/> 符合 [System Center 要求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 操作系统。<br/><br/> 建议从 marketplace 开始使用映像。<br/><br/> 最低 A2 标准，具有两个核心和 3.5 GB 的 RAM。
-**本地 MABS** | 支持的 64 位操作系统：<br/><br/> MABS v3 和更高版本： Windows Server 2019 （Standard、Datacenter、Essentials）。 <br/><br/> MABS v2 和更高版本： Windows Server 2016 （Standard、Datacenter、Essentials）。<br/><br/> 所有 MABS 版本： Windows Server 2012 R2。<br/><br/>所有 MABS 版本： Windows Storage Server 2012 R2。
+**Azure VM 上的 MABS** |  Windows 2016 Datacenter。<br/><br/> Windows 2019 Datacenter。<br/><br/> 建议从 marketplace 开始使用映像。<br/><br/> 具有四个核心和 8 GB RAM 的最小 Standard_A4_v2。
+**Azure VM 上的 DPM** | System Center 2012 R2 Update 3 或更高版本。<br/><br/> 符合 [System Center 要求](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)的 Windows 操作系统。<br/><br/> 建议从 marketplace 开始使用映像。<br/><br/> 具有四个核心和 8 GB RAM 的最小 Standard_A4_v2。
+**本地 MABS** |  MABS v3 和更高版本： Windows Server 2016 或 Windows Server 2019
 **本地 DPM** | 物理服务器/Hyper-v VM： System Center 2012 SP1 或更高版本。<br/><br/> VMware VM： System Center 2012 R2 Update 5 或更高版本。
 
 >[!NOTE]

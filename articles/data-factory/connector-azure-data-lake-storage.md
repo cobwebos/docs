@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/16/2020
-ms.openlocfilehash: 7845e381c5a8851683edf6b955d40070bd4e0c30
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/17/2020
+ms.openlocfilehash: 2f147890887d5eb9dd1b2681bd09c662c14c74ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122264"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431072"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure 数据工厂复制和转换 Azure Data Lake Storage Gen2 中的数据
 
@@ -28,7 +28,7 @@ Azure Data Lake Storage Gen2 （ADLS Gen2）是专用于[Azure Blob 存储](../s
 
 以下活动支持此 Azure Data Lake Storage Gen2 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
@@ -47,7 +47,7 @@ Azure Data Lake Storage Gen2 （ADLS Gen2）是专用于[Azure Blob 存储](../s
 >[!TIP]
 >如果启用分层命名空间，则在 Blob 与 Data Lake Storage Gen2 Api 之间，当前没有操作的互操作性。 如果遇到错误 "ErrorCode = FilesystemNotFound"，并出现 "指定的文件系统不存在" 的消息，则这是由通过 Blob API 创建的指定接收器文件系统引起的，而不是在其他位置 Data Lake Storage Gen2 API。 若要解决此问题，请指定一个名称不是 Blob 容器名称的新文件系统。 然后，数据工厂会在数据复制期间自动创建该文件系统。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 >[!TIP]
 >有关如何使用 Data Lake Storage Gen2 连接器的演练，请参阅将[数据加载到 Azure Data Lake Storage Gen2](load-azure-data-lake-storage-gen2.md)中。
@@ -71,7 +71,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 若要使用存储帐户密钥身份验证，需支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net`模式 Data Lake Storage Gen2 的终结点。 | 是 |
@@ -123,7 +123,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 此链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net`模式 Data Lake Storage Gen2 的终结点。 | 是 |
@@ -177,7 +177,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 此链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 AzureBlobFS。 |是 |
 | url | 具有 `https://<accountname>.dfs.core.windows.net`模式 Data Lake Storage Gen2 的终结点。 | 是 |
@@ -209,7 +209,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 基于格式的数据集中 `location` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
-| 属性   | Description                                                  | 需要 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为**AzureBlobFSLocation**。 | 是      |
 | fileSystem | Data Lake Storage Gen2 文件系统名称。                              | 否       |
@@ -253,7 +253,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 基于格式的复制源中 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
-| 属性                 | Description                                                  | 需要                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobFSReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
@@ -310,10 +310,11 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 基于格式的复制接收器 `storeSettings` 设置下的 Data Lake Storage Gen2 支持以下属性：
 
-| 属性                 | Description                                                  | 需要 |
+| properties                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobFSWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
+| blockSizeInMB | 指定用于将数据写入 ADLS Gen2 的块大小（以 MB 为单位）。 详细了解[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许的值**介于4和 100 MB 之间**。 <br/>默认情况下，ADF 会根据源存储类型和数据自动确定块大小。 对于非二进制副本到 ADLS Gen2，默认块大小为 100 MB，因此最多可容纳 4.95 TB 的数据。 当你的数据不太大时，这可能不是最佳的，尤其是在你使用具有较差网络的自承载 Integration Runtime 导致操作超时或性能问题时。 可以显式指定块大小，同时确保 blockSizeInMB * 50000 足够大以存储数据，否则复制活动运行将失败。 | 否 |
 | maxConcurrentConnections | 并发连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 **示例：**
@@ -484,7 +485,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 AzureBlobFSFile。 |是 |
 | folderPath | Data Lake Storage Gen2 中的文件夹的路径。 如果未指定，它指向根目录。 <br/><br/>支持通配符筛选器。 允许的通配符 `*` （与零个或多个字符匹配）和 `?` （与零个或一个字符匹配）。 如果你的实际文件夹名称包含通配符或此转义字符位于内部，则使用 `^` 进行转义。 <br/><br/>示例：文件系统/文件夹/。 请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |否 |
@@ -529,7 +530,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 AzureBlobFSSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
@@ -569,7 +570,7 @@ Azure Data Lake Storage Gen2 连接器支持以下身份验证类型。 有关�
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 AzureBlobFSSink。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |

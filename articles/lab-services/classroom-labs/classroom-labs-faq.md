@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252053"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443493"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure 实验室服务中的教室实验室—常见问题（FAQ）
 获取有关 Azure 实验室服务中的教室实验室的一些最常见问题的解答。 
@@ -27,6 +27,9 @@ ms.locfileid: "77252053"
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>每个用户的配额或每周的配额，还是每周的实验室持续时间？ 
 为实验室设置的配额是针对实验室的整个持续时间的每个学生。 而且， [vm 的计划运行时间](how-to-create-schedules.md)不会计为分配给用户的配额。 配额是指学生在 VM 上花费的计划外时间。  有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md#set-quotas-for-users)。
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>如果教授启用了学生 VM，会影响学生配额吗？ 
+不是。 不是。 当教授开启学生 VM 时，它不会影响分配给该学生的配额。 
 
 ## <a name="schedules"></a>计划
 
@@ -42,7 +45,9 @@ ms.locfileid: "77252053"
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我应在组织的防火墙设置上打开哪些端口范围才能通过 RDP/SSH 连接到实验室虚拟机？
 
-端口为：49152–65535。 教室实验室位于负载均衡器的后面，因此实验室中的所有虚拟机都有单个 IP 地址，并且实验室中的每个虚拟机都有一个唯一的端口。 每次重新发布实验室时，端口号和公共 IP 地址可能会更改。
+端口为：49152–65535。 教室实验室位于负载均衡器的后面。 每个实验室都有一个公共 IP 地址，并且实验室中的每个虚拟机都有一个唯一的端口。 
+
+你还可以在 "Azure 门户中的" 实验室 "主页的"**虚拟机池**"选项卡上查看每个虚拟机的专用 IP 地址。 如果重新发布实验室，实验室的公共 IP 地址将不会更改，但实验室中每个虚拟机的专用 IP 和端口号都可以更改。 有关详细信息，请参阅文章： [Azure 实验室服务的防火墙设置](how-to-configure-firewall-settings.md)。
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>我应在组织的防火墙设置上打开哪些公共 IP 地址范围，以便通过 RDP/SSH 连接到实验室虚拟机？
 请参阅[AZURE IP 范围和服务标记—公有云](https://www.microsoft.com/download/details.aspx?id=56519)，它为 Azure 中的数据中心提供公共 IP 地址范围。 可以打开实验室帐户所在区域的 IP 地址。

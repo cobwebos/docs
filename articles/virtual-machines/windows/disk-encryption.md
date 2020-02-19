@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206289"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430402"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -58,7 +58,7 @@ ms.locfileid: "77206289"
 
 目前仅支持以下区域：
 
-- 作为 "美国东部"、"美国西部 2" 和 "美国中南部" 区域提供。
+- 在美国东部、美国西部2、美国中南部、英国南部地区提供作为 GA 产品/服务。
 - 可在美国西部、美国东部2、加拿大中部和北欧地区以公共预览版的形式提供。
 
 ### <a name="restrictions"></a>限制

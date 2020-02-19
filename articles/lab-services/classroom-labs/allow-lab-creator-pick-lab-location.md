@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211004"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444360"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>允许 lab creator 在 Azure 实验室服务中选取实验室位置
 在 Azure 实验室服务中，实验室帐户所有者可以允许实验室创建者（教师）为其创建的实验室选取位置。 此位置可能与实验室帐户的位置不同。 位置是一组 Azure 区域。 例如，美国位置是一组区域，如 "美国东部"、"美国西部" 等。 
@@ -73,6 +73,8 @@ ms.locfileid: "77211004"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：
 
-- [以实验室所有者身份创建并管理实验室](how-to-manage-classroom-labs.md)
-- [以实验室所有者身份设置并发布模板](how-to-create-manage-template.md)
-- [以实验室所有者身份配置并控制实验室的使用](how-to-configure-student-usage.md)
+- [将实验室的网络连接到对等虚拟网络](how-to-connect-peer-virtual-network.md)
+- [将共享映像库附加到实验室](how-to-attach-detach-shared-image-gallery.md)
+- [添加用户作为实验室所有者](how-to-add-user-lab-owner.md)
+- [查看实验室的防火墙设置](how-to-configure-firewall-settings.md)
+- [为实验室配置其他设置](how-to-configure-lab-accounts.md)

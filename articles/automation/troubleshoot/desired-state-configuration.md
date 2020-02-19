@@ -9,41 +9,48 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834259"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430527"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>排查 Azure 自动化所需状态配置（DSC）的问题
 
 本文提供有关 Desired State Configuration (DSC) 问题疑难解答的信息。
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>排除所需状态配置（DSC）的步骤
+## <a name="diagnosing-an-issue"></a>诊断问题
 
 如果在 Azure 状态配置中编译或部署配置时出现错误，下面提供了一些步骤来帮助你诊断问题。
 
-1. **确保你的配置在本地计算机上成功编译：** Azure 状态配置是在 PowerShell DSC 上构建的。 可以在[POWERSHELL Dsc 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. 确保你的配置在本地计算机上成功编译
 
-   通过在本地计算机上编译 DSC 配置，可以发现和解决常见错误，如：
+Azure 状态配置是在 PowerShell DSC 上构建的。 可以在[POWERSHELL Dsc 文档](https://docs.microsoft.com/powershell/scripting/overview)中找到 DSC 语言和语法的文档。
 
-   - **缺少模块**
-   - **语法错误**
-   - **逻辑错误**
+通过在本地计算机上编译 DSC 配置，可以发现和解决常见错误，如：
 
-2. **查看节点上的 DSC 日志：** 如果配置成功编译，但应用于节点时失败，则可以在日志中找到详细信息。 有关在何处查找 DSC 日志的信息，请参阅[Dsc 事件日志的位置](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
+   - 缺少模块
+   - 语法错误
+   - 逻辑错误
 
-   此外， [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)可帮助您分析 DSC 日志中的详细信息。 如果你联系支持人员，他们将需要这些日志来诊断你的问题。
+### <a name="2-view-dsc-logs-on-your-node"></a>2. 查看节点上的 DSC 日志
 
-   可以按照[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装**xDscDiagnostics** 。
+如果配置成功编译，但在应用于节点时失败，则可以在 DSC 日志中找到详细信息。 有关在何处查找这些日志的信息，请参阅[DSC 事件日志的位置](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)。
 
-   若要在 Azure 计算机上安装**xDscDiagnostics** ，可以使用[az vm run-command](/cli/azure/vm/run-command)或[AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 还可以按照在[WINDOWS VM 中运行 PowerShell 脚本和运行命令](../../virtual-machines/windows/run-command.md)中的步骤，使用门户中的 "**运行" 命令**选项。
+[XDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)模块可以帮助你分析 DSC 日志中的详细信息。 如果联系支持人员，则需要这些日志来诊断问题。
 
-   有关使用**xDscDiagnostics**的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)和[xDscDiagnostics cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
-3. **确保节点和自动化工作区具有所需的模块：** Desired State Configuration 依赖于节点上安装的模块。  使用 Azure 自动化状态配置时，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤将任何所需的模块导入到自动化帐户中。 配置还可以依赖于特定版本的模块。  有关详细信息，请参阅[模块故障排除](shared-resources.md#modules)。
+可以按照[安装稳定版本模块](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)中的说明在本地计算机上安装 xDscDiagnostics 模块。
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>使用所需状态配置 (DSC) 时的常见错误
+若要在 Azure 计算机上安装 xDscDiagnostics 模块，请使用[AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)。 还可以按照在[WINDOWS VM 中运行 PowerShell 脚本和运行命令](../../virtual-machines/windows/run-command.md)中的步骤，使用门户中的 "**运行" 命令**选项。
+
+有关使用 xDscDiagnostics 的信息，请参阅[使用 xDscDiagnostics 分析 DSC 日志](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)。 另请参阅[XDscDiagnostics cmdlet](https://github.com/PowerShell/xDscDiagnostics#cmdlets)。
+
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. 确保节点和自动化工作区具有所需的模块
+
+DSC 依赖于节点上安装的模块。 使用 Azure 自动化状态配置时，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤将任何所需的模块导入到自动化帐户中。 配置还可以依赖于特定版本的模块。 有关详细信息，请参阅[模块故障排除](shared-resources.md#modules)。
+
+## <a name="common-errors-when-working-with-dsc"></a>使用 DSC 时的常见错误
 
 ### <a name="unsupported-characters"></a>方案：无法从门户中删除包含特殊字符的配置
 
@@ -59,7 +66,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 此错误是计划解决的暂时性问题。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 * 使用 Az Cmdlet "AzAutomationDscConfiguration" 删除配置。
 * 尚未更新此 cmdlet 的文档。  在此之前，请参阅 AzureRM 模块的文档。
@@ -86,7 +93,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 此错误通常是由防火墙导致，计算机位于代理服务器后面或其他网络错误。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 验证你的计算机是否可以访问适用于 Azure Automation DSC 的正确终结点，然后重试。 有关所需端口和地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
 
@@ -97,7 +104,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 当注册具有状态配置（DSC）的节点时，会收到以下错误消息之一：
 
 ```error
-The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
 ```
 
 ```error
@@ -108,7 +115,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 此问题是由证书损坏或过期引起的。  有关详细信息，请参阅[证书过期和重新注册](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 请按照下面列出的步骤重新注册失败的 DSC 节点。
 
@@ -166,7 +173,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 将节点分配到配置名称（例如 ABC）而不是节点配置名称（例如 ABC.WebServer）时，通常会发生此错误。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 * 请确保为节点分配 "节点配置名称"，而不是 "配置名称"。
 * 可以使用 Azure 门户或 PowerShell cmdlet 将节点配置分配给节点。
@@ -186,9 +193,9 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>原因
 
-如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置。
+如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 **，则不会生成节点配置**`$null`。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
@@ -209,7 +216,7 @@ No instance found with given property values
 
 已升级 WMF 版本，已损坏 WMI。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 若要解决此问题，请按照[DSC 已知问题和限制](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)一文中的说明进行操作。
 
@@ -227,9 +234,9 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 你已在配置中使用凭据，但未提供正确的**ConfigurationData**将**PSDscAllowPlainTextPassword**设置为 true 以用于每个节点配置。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
-* 请确保传入正确的**ConfigurationData** ，以将配置中提到的每个节点配置的**PSDscAllowPlainTextPassword**设置为 true。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)。
+* 请确保传入正确的**ConfigurationData** ，以将配置中提到的每个节点配置的**PSDscAllowPlainTextPassword**设置为 true。 有关详细信息，请参阅[在 Azure 自动化状态配置中编译 DSC 配置](../automation-dsc-compile.md)。
 
 ### <a name="failure-processing-extension"></a>方案：从 dsc 扩展载入 "失败处理扩展" 错误
 
@@ -245,7 +252,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 当向节点分配了服务中不存在的节点配置名称时，通常会发生此错误。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 * 请确保为节点分配的节点配置名称与服务中的名称完全匹配。
 * 你可以选择不包括节点配置名称，这将导致加入该节点但不分配节点配置
@@ -264,7 +271,7 @@ One or more errors occurred.
 
 当你尝试注册与自动化帐户位于不同订阅中的节点时，会发生此错误。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 处理跨订阅节点，就好像它驻留在单独的云或本地。
 
@@ -287,7 +294,7 @@ Provisioning has failed
 
 当节点与 Azure 之间存在连接问题时，将出现此消息。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 确定节点是否处于专用虚拟网络中，或者在连接到 Azure 时是否存在其他问题。
 
@@ -307,7 +314,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 客户已确定，如果 `/tmp` 位置设置为 `noexec`，则 DSC 的当前版本将无法应用配置。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 * 从 `/tmp` 位置中删除 `noexec` 选项。
 
@@ -323,7 +330,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 与编译服务有关的已知问题。
 
-#### <a name="resolution"></a>分辨率
+#### <a name="resolution"></a>解决方法
 
 最好的解决方法是在本地编译或在 CI/CD 管道中进行编译，并将 MOF 文件直接上传到服务。  如果服务中的编译是必需的，则下一种最佳解决方法是拆分编译作业，使名称中不存在重叠。
 
@@ -331,6 +338,6 @@ This event indicates that failure happens when LCM is processing the configurati
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
+* 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
 * 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

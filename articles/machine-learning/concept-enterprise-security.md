@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312407"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444139"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -26,7 +26,7 @@ ms.locfileid: "76312407"
 > [!NOTE]
 > 本文中的信息适用于 Azure 机器学习 Python SDK 1.0.83.1 或更高版本。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 如果 Azure Active Directory （Azure AD）配置为使用多重身份验证，则支持多重身份验证。 身份验证过程如下：
 
@@ -43,10 +43,10 @@ ms.locfileid: "76312407"
 
 对于 web 服务，Azure 机器学习支持两种形式的身份验证：密钥和令牌。 每个 web 服务一次只能启用一种形式的身份验证。
 
-|身份验证方法|Description|Azure 容器实例|AKS|
+|身份验证方法|说明|Azure 容器实例|AKS|
 |---|---|---|---|
 |密钥|密钥是静态的，无需刷新。 可以手动重新生成密钥。|默认情况下禁用| 默认为启用|
-|令牌|令牌在指定的时间段后过期，需要刷新。| 不可用| 默认情况下禁用 |
+|标记|令牌在指定的时间段后过期，需要刷新。| 不可用| 默认情况下禁用 |
 
 有关代码示例，请参阅[web 服务身份验证部分](how-to-setup-authentication.md#web-service-authentication)。
 
@@ -215,7 +215,7 @@ Azure 机器学习使用与工作区关联的 Azure Key Vault 实例来存储各
 
 Microsoft 可能会收集非用户识别信息，如资源名称（例如数据集名称或机器学习试验名称）或用于诊断目的的作业环境变量。 所有此类数据都使用 microsoft 托管的密钥存储在 Microsoft 拥有的订阅中，并遵循[microsoft 的标准隐私策略和数据处理标准](https://privacy.microsoft.com/privacystatement)。
 
-Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥机密）。 环境变量由我们记录、加密和存储。
+Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥机密）。 环境变量由我们记录、加密和存储。 同样，命名[runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)时，请避免包含敏感信息，如用户名或机密项目名称。 此信息可能会出现在 Microsoft 支持部门工程师可访问的遥测日志中。
 
 设置工作区时，你可以通过将 `hbi_workspace` 参数设置为 `TRUE` 来选择不收集诊断数据。 使用 AzureML Python SDK、CLI、REST Api 或 Azure 资源管理器模板时，支持此功能。
 
@@ -227,7 +227,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 
 ## <a name="monitoring"></a>监视
 
-### <a name="metrics"></a>指标
+### <a name="metrics"></a>度量值
 
 你可以使用 Azure Monitor 度量值来查看和监视 Azure 机器学习工作区的指标。 在[Azure 门户](https://portal.azure.com)中，选择工作区，然后选择 "**度量值**"：
 
@@ -253,7 +253,7 @@ Microsoft 还建议不要在环境变量中存储敏感信息（如帐户密钥�
 * RequestUrl
 * StatusCode
 * RequestId
-* 持续时间
+* Duration
 
 > [!IMPORTANT]
 > Azure 机器学习工作区中的一些操作不会将信息记录到活动日志。 例如，不会记录定型运行和模型注册的开始时间。

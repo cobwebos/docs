@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278026"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443578"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增强的安全评分（预览） 
 
@@ -71,7 +71,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 
 ### <a name="calculations---understanding-your-score"></a>计算-了解成绩
 
-|度量值|公式和示例|
+|指标|公式和示例|
 |-|-|
 |**安全控件的当前评分**|<br>用于计算安全控件当前分数的 ![公式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每个单独的安全控件都提供安全分数。 受控件中的建议影响的每个资源都有助于控件的当前分数。 每个控件的当前分数是控件*中*资源状态的度量值。<br>![工具提示，显示计算安全控件的当前分数时使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，最大分数6将除以78，因为这是正常和不正常资源的总和。<br>6/78 = 0.0769<br>按照正常资源（74）的数量乘以当前分数：<br>0.0769 * 74 = **5.69**<br><br>|
 |**安全功能分数**<br>一个订阅|<br>![用于计算当前安全分数的公式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![已启用所有控制的单一订阅安全分数](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此示例中，有一个订阅，其中包含所有可用的安全控件（60点的可能最大分数）。 评分显示了可能的60的28个点，其余32点反映在安全控制的 "潜在分数增加" 图形中。<br>![控件列表和潜在评分增加](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -101,12 +101,12 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 |**加密传输中的数据**|4|-API 应用只能通过 HTTPS 访问<br>-Function App 只能通过 HTTPS 访问<br>-仅应启用到 Redis 缓存的安全连接<br>-应启用到存储帐户的安全传输<br>-只能通过 HTTPS 访问 Web 应用程序|
 |**管理访问权限和权限**|4|-应为订阅指定最多3个所有者<br>-应从订阅中删除不推荐使用的帐户（预览）<br>-应从订阅中删除不推荐使用的帐户（预览）<br>-应从订阅中删除具有所有者权限的外部帐户（预览）<br>-应从订阅中删除具有读取权限的外部帐户<br>-应从订阅中删除具有写入权限的外部帐户（预览）<br>-应该有多个所有者分配给你的订阅<br>-基于角色的访问控制（RBAC）应在 Kubernetes Services （预览版）上使用<br>-Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证|
 |**修正安全配置**|4|-Pod 安全策略应在 Kubernetes Services （预览版）上定义<br>-应修正容器安全配置中的漏洞<br>-应修正计算机上安全配置中的漏洞<br>-应修正虚拟机规模集上的安全配置漏洞<br>-监视代理应安装在虚拟机上<br>-应在计算机上安装监视代理<br>-监视代理应安装在虚拟机规模集上<br>-应在计算机上解决监视代理运行状况问题|
-|**限制未经授权的网络访问**|4|-应禁用虚拟机上的 IP 转发<br>-应在 Kubernetes Services （预览版）上定义授权的 IP 范围<br>-应限制对应用服务的访问（预览）<br>-应强制执行 IaaS Nsg 上的 web 应用程序的规则<br>-虚拟机应与网络安全组相关联<br>-CORS 不应允许每个资源访问 API 应用<br>-CORS 不应允许每个资源访问你的 Function App<br>-CORS 不应允许每个资源访问你的 Web 应用程序<br>-应对 API 应用关闭远程调试<br>-应对 Function App 关闭远程调试<br>-应关闭 Web 应用程序的远程调试<br>-应为具有面向 Internet 的 Vm 的许可网络安全组限制访问<br>-应加强面向 Internet 的虚拟机的网络安全组规则|
+|**限制未经授权的网络访问**|4|-应禁用虚拟机上的 IP 转发<br>-应在 Kubernetes Services （预览版）上定义授权的 IP 范围<br>-（已弃用）应限制对应用服务的访问（预览）<br>-（已弃用）应强制执行 IaaS Nsg 上的 web 应用程序的规则<br>-虚拟机应与网络安全组相关联<br>-CORS 不应允许每个资源访问 API 应用<br>-CORS 不应允许每个资源访问你的 Function App<br>-CORS 不应允许每个资源访问你的 Web 应用程序<br>-应对 API 应用关闭远程调试<br>-应对 Function App 关闭远程调试<br>-应关闭 Web 应用程序的远程调试<br>-应为具有面向 Internet 的 Vm 的许可网络安全组限制访问<br>-应加强面向 Internet 的虚拟机的网络安全组规则|
 |**应用自适应应用程序控制**|3|-应在虚拟机上启用自适应应用程序控件<br>-监视代理应安装在虚拟机上<br>-应在计算机上安装监视代理<br>-应在计算机上解决监视代理运行状况问题|
 |**应用数据分类**|2|-应对 SQL 数据库中的敏感数据进行分类（预览）|
 |**保护应用程序免受 DDoS 攻击**|2|-应启用 DDoS 保护标准|
 |**启用 endpoint protection**|2|-应在虚拟机规模集上修正 Endpoint protection 运行状况故障<br>-应在你的计算机上解决 Endpoint protection 运行状况问题<br>-Endpoint protection 解决方案应安装在虚拟机规模集上<br>-在虚拟机上安装 endpoint protection 解决方案<br>-应在计算机上解决监视代理运行状况问题<br>-监视代理应安装在虚拟机规模集上<br>-应在计算机上安装监视代理<br>-监视代理应安装在虚拟机上<br>-在计算机上安装 endpoint protection 解决方案|
-|**启用审核和日志记录**|第|-应启用 SQL server 审核<br>-应在应用服务中启用诊断日志<br>-应启用 Azure Data Lake Store 中的诊断日志<br>-应启用 Azure 流分析中的诊断日志<br>-应启用 Batch 帐户中的诊断日志<br>-应启用 Data Lake Analytics 中的诊断日志<br>-应启用事件中心的诊断日志<br>-应启用 IoT 中心的诊断日志<br>-应启用 Key Vault 中的诊断日志<br>-应在逻辑应用中启用诊断日志<br>-应启用搜索服务中的诊断日志<br>-应启用 Service Bus 中的诊断日志<br>-应启用虚拟机规模集中的诊断日志<br>-应在批处理帐户上配置指标警报规则<br>-SQL 审核设置应将操作组配置为捕获关键活动<br>-应将 SQL server 配置为超过90天的审核保留天数。|
+|**启用审核和日志记录**|1|-应启用 SQL server 审核<br>-应在应用服务中启用诊断日志<br>-应启用 Azure Data Lake Store 中的诊断日志<br>-应启用 Azure 流分析中的诊断日志<br>-应启用 Batch 帐户中的诊断日志<br>-应启用 Data Lake Analytics 中的诊断日志<br>-应启用事件中心的诊断日志<br>-应启用 IoT 中心的诊断日志<br>-应启用 Key Vault 中的诊断日志<br>-应在逻辑应用中启用诊断日志<br>-应启用搜索服务中的诊断日志<br>-应启用 Service Bus 中的诊断日志<br>-应启用虚拟机规模集中的诊断日志<br>-应在批处理帐户上配置指标警报规则<br>-SQL 审核设置应将操作组配置为捕获关键活动<br>-应将 SQL server 配置为超过90天的审核保留天数。|
 |**实现安全最佳做法**|0|-应限制对具有防火墙和虚拟网络配置的存储帐户的访问权限<br>-应从事件中心命名空间中删除除 RootManageSharedAccessKey 之外的所有授权规则<br>-应为 SQL server 设置 Azure Active Directory 管理员<br>-应定义事件中心实例的授权规则<br>-应该将存储帐户迁移到新的 Azure 资源管理器资源<br>-虚拟机应迁移到新的 Azure 资源管理器资源<br>-SQL server 的高级数据安全设置应包含用于接收安全警报的电子邮件地址<br>-应在托管实例上启用高级数据安全性<br>-所有高级威胁防护类型都应在 SQL 托管实例高级数据安全设置中启用<br>-应在 SQL server 高级数据安全设置中启用针对管理员和订阅所有者的电子邮件通知<br>-高级威胁防护类型应在 SQL server 高级数据安全设置中设置为 "All"<br>-子网应与网络安全组相关联<br>-所有高级威胁防护类型都应在 SQL server 高级数据安全设置中启用|
 ||||
 
@@ -122,7 +122,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 是的，但在一段时间内，它们会并行运行以简化转换。
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建议不适用于我，而在策略中禁用它，我的安全控制是否已完成，安全分数是否更新？
-可以。 建议在不适用环境中时禁用建议。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
+是的。 建议在不适用环境中时禁用建议。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
 
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>如果安全控制向我的安全评分提供了零点，应忽略它吗？
 在某些情况下，你会看到一个大于零的控件最大分数，但影响为零。 如果用于修复资源的增量分数可忽略不计，则舍入为零。 请勿忽略这些建议，因为它们仍会带来安全改进。 唯一的例外是 "附加最佳做法" 控件。 修正这些建议不会提高你的得分，但会提高你的整体安全性。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: dd9ac9654f916653af974e816485630423466ae5
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: fcc43caf895dadfaf832a47c3254f9b828bcb71a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815429"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430799"
 ---
 # <a name="swagger-documentation"></a>Swagger 文档
 
@@ -28,7 +28,7 @@ ms.locfileid: "74815429"
 
 [Swagger 规范](https://cris.ai/swagger/ui/index)包含可快速测试各种路径的选项。 但有时需要为所有路径生成代码，从而创建可基于未来的解决方案的单个调用库。 让我们看看生成 Python 库的过程。
 
-需要将 Swagger 设置为与语音服务订阅相同的区域。 可以在语音服务资源下的 Azure 门户中确认区域。 有关受支持的区域的完整列表，请参阅[区域](regions.md)。
+需要将 Swagger 设置为与语音服务订阅相同的区域。 可以在语音服务资源下的 Azure 门户中确认区域。 有关支持的区域的完整列表，请参阅[区域](regions.md)。
 
 1. 转到 https://editor.swagger.io
 2. 单击“文件”，然后单击“导入”

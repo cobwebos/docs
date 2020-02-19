@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513314"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443833"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -67,12 +67,12 @@ ms.locfileid: "76513314"
 
 ### <a name="supported-client-types"></a>支持的客户端类型
 
-下表列出了支持的操作系统进行更新评估。 修补需要混合 Runbook 辅助角色。 有关混合 Runbook 辅助角色要求的信息，请参阅安装[Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)和[Linux 混合 runbook 辅助角色](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安装指南。
+下表列出了支持的操作系统进行更新评估。 修补需要混合 Runbook 辅助角色。 有关混合 Runbook 辅助角色要求的信息，请参阅安装[Windows 混合 Runbook 辅助角色](automation-windows-hrw-install.md)和[Linux 混合 runbook 辅助角色](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)的安装指南。
 
 |操作系统  |说明  |
 |---------|---------|
 |Windows Server 2019 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2016 （Datacenter/Datacenter Core/Standard）<br><br>Windows Server 2012 R2 （Datacenter/Standard）<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 （RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统执行评估，不支持修补，因为 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。 |
+|Windows Server 2008 R2 （RTM 和 SP1 Standard）| 更新管理仅支持对此操作系统执行评估，不支持修补，因为 Windows Server 2008 R2 不支持[混合 Runbook 辅助角色](automation-windows-hrw-install.md)。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要 `yum` 返回 CentOS 在其 RTM 版本中没有的安全数据。 有关 CentOS 上基于分类的修补的详细信息，请参阅[Linux 上的更新分类](automation-view-update-assessments.md#linux-2)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |
@@ -155,7 +155,7 @@ ms.locfileid: "76513314"
 
 下表介绍了此解决方案支持的连接的源：
 
-| 连接的源 | 受支持 | Description |
+| 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -214,7 +214,7 @@ ms.locfileid: "76513314"
 
 ### <a name="windows"></a>Windows
 
-|分类  |Description  |
+|分类  |说明  |
 |---------|---------|
 |关键更新     | 解决关键、非安全相关错误的特定问题的更新。        |
 |安全更新     | 产品特定、安全相关问题的更新。        |
@@ -227,7 +227,7 @@ ms.locfileid: "76513314"
 
 ### <a name="linux-2"></a>Linux
 
-|分类  |Description  |
+|分类  |说明  |
 |---------|---------|
 |关键和安全更新     | 特定问题或产品特定、安全相关问题的更新。         |
 |其他更新     | 本质上不重要或不是安全更新的所有其他更新。        |

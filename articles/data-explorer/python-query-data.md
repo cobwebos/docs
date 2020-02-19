@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827529"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443969"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库查询数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器提供[适用于 Python 的数据客户端库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 该库允许通过代码查询数据。 在本文中, 将连接到已设置为帮助学习的*帮助群集*上的表。 然后查询该群集上的表，并返回结果。
+本文介绍如何使用 Azure 数据资源管理器查询数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。
 
-本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) 的形式提供。
+Azure 数据资源管理器提供[适用于 Python 的数据客户端库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 该库允许通过代码查询数据。 连接到已设置为帮助学习的*帮助群集*上的表。 您可以查询该群集上的表并返回结果。
 
-## <a name="prerequisites"></a>系统必备
+本文也可用作[Azure 笔记本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)。
+
+## <a name="prerequisites"></a>必备条件
+
+* [Python 3.4 +](https://www.python.org/downloads/)
 
 * 组织电子邮件帐户是 Azure Active Directory (AAD) 的成员
-
-* 已在开发计算机上安装了 [Python](https://www.python.org/downloads/)
 
 ## <a name="install-the-data-library"></a>安装数据的库
 
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>连接到Azure 数据资源管理器并执行查询
 
-针对群集执行查询，并将输出存储在数据帧中。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin ，然后输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回以运行下一个代码块。
+针对群集执行查询，并将输出存储在数据帧中。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 *，并输入代码 F3W4VWZDM 进行身份验证 https://microsoft.com/devicelogin* 。 按照步骤登录，然后返回以运行下一个代码块。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)

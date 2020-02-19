@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133768"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444088"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 实验室服务在自然语言处理中设置一个以深度学习为重点的实验室
 本文介绍如何使用 Azure 实验室服务，设置以自然语言处理（NLP）为深度学习的实验室。 自然语言处理 (NLP) 是某种形式的人工智能 (AI)，可在计算机中实现翻译、语音识别和其他语言理解功能。  
@@ -32,7 +32,7 @@ ms.locfileid: "77133768"
 
 | 实验室帐户设置 | Instructions |
 | ----------- | ------------ |  
-| Marketplace 映像 | 启用适用于 Linux （Ubuntu）映像的 Data Science Virtual Machine，以便在实验室帐户中使用。  有关说明，请参阅以下文章：[指定可用于实验室创建者的 marketplace 映像](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。 | 
+| Marketplace 映像 | 启用适用于 Linux （Ubuntu）映像的 Data Science Virtual Machine，以便在实验室帐户中使用。  有关说明，请参阅以下文章：[指定可用于实验室创建者的 marketplace 映像](specify-marketplace-images.md)。 | 
 
 按照[本教程](tutorial-setup-classroom-lab.md)创建新的实验室并应用以下设置：
 
@@ -51,7 +51,7 @@ ms.locfileid: "77133768"
 
 有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 本文指导你完成为自然语言处理类创建实验室的步骤。 对于其他深度学习类，您可以使用类似的设置。
 
 ## <a name="next-steps"></a>后续步骤

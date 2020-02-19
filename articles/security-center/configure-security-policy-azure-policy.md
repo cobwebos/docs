@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 创建和编辑 Azure 策略安全策略 |Microsoft Docs
+title: 使用 REST API 创建和编辑 Azure 策略安全策略
 description: 通过 REST API 了解 Azure 策略策略管理。
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522016"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430935"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>使用 REST API 在 Azure 策略中配置安全策略
 
@@ -25,7 +25,7 @@ Azure Policy 中的重要概念：
 
 - **计划**是策略定义（规则）的集合 
 
-- **分配**是将计划或策略应用于特定的范围（管理组、订阅等） 
+- **分配**是对特定范围（管理组、订阅等）的计划或策略的应用 
 
 安全中心有一项内置计划，它包括中心内的所有安全策略。 若要评估 Azure 资源上的安全中心策略，你应在要评估的管理组或订阅上创建分配。
 

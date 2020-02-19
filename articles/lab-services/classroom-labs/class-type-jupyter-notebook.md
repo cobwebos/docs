@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133745"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444105"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>使用 Python 和 Jupyter 笔记本设置实验室来讲授数据科学
 
@@ -30,7 +30,7 @@ ms.locfileid: "77133745"
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
-为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators)。
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](specify-marketplace-images.md)。
 
 | 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |
@@ -56,7 +56,7 @@ ms.locfileid: "77133745"
 
 ## <a name="cost-estimate"></a>成本估算
 
-我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  我们选择的虚拟机大小为小 gpu （计算），即139实验室单位。
+我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  我们选择的虚拟机大小为小 GPU （计算），即139实验室单位。
 
 下面是此类的可能的成本估算示例：
 
@@ -64,7 +64,7 @@ ms.locfileid: "77133745"
 
 有关定价的更多详细信息，请参阅[Azure 实验室服务定价](https://azure.microsoft.com/pricing/details/lab-services/)。
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 本文逐步介绍了为 Jupyter 笔记本类创建实验室的步骤。 对于其他机器学习类，您可以使用类似的设置。
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210529"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443595"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
 本文介绍了在服务（资源）级别的监视工作负荷级别（查询和索引），并建议用于监视用户访问的框架。
 
-在各种领域，你将结合使用内置基础结构和基础服务（如 Azure Monitor）以及返回统计信息、计数和状态的服务 Api。 了解能力范围将帮助你配置或创建有效的通信系统，以便在出现问题时对其进行主动响应。
+在各种领域，你将结合使用内置基础结构和基础服务（如 Azure Monitor）以及返回统计信息、计数和状态的服务 Api。 了解一系列功能有助于构造反馈循环，以便在出现问题时对其进行处理。
 
 ## <a name="use-azure-monitor"></a>使用 Azure Monitor
 
@@ -52,9 +52,9 @@ ms.locfileid: "77210529"
 
 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
 
-与存储相关的警报当前不可用;不会聚合或记录到**AzureMetrics**中。 需要生成自定义解决方案，以获取与资源相关的通知。
+与存储相关的警报当前不可用;不会聚合存储消耗，也不会将其记录到 Azure Monitor 中的**AzureMetrics**表中。 你需要构建一个自定义解决方案，用于发出与资源相关的通知，你的代码将检查存储大小并处理响应。 有关存储指标的详细信息，请参阅[获取服务统计](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)信息。
 
-在门户中，"**使用情况**" 选项卡显示相对于服务层强加的当前[限制](search-limits-quotas-capacity.md)的资源可用性。 
+对于门户中的可视监视，"**使用情况**" 选项卡会显示相对于服务层强加的当前[限制](search-limits-quotas-capacity.md)的资源可用性。 
 
 下图描述免费服务的情况，该服务的上限是每个类型 3 个对象，最大存储为 50 MB。 “基本”或“标准”服务的限制更高，在增加分区计数的情况下，最大存储会按比例增大。
 
@@ -63,7 +63,7 @@ ms.locfileid: "77210529"
 
 ## <a name="monitor-workloads"></a>监视工作负荷
 
-记录的事件包括与索引和查询相关的事件。 Log Analytics 中的**Azure 诊断**表收集与查询和索引相关的操作数据。
+记录的事件包括与索引和查询相关的事件。 Log Analytics 中的**AzureDiagnostics**表收集与查询和索引相关的操作数据。
 
 大多数记录的数据用于只读操作。 对于日志中未捕获的其他 "创建-更新-删除" 操作，你可以在搜索服务中查询系统信息。
 
@@ -115,9 +115,9 @@ Azure 认知搜索 REST API 和 .NET SDK 都提供对服务指标、索引和索
 
 ## <a name="monitor-user-access"></a>监视用户访问权限
 
-由于搜索索引是更大的客户端应用程序的一个组件，因此没有用于控制对索引的访问的内置的按用户方法。 假设请求是来自客户端应用程序，用于管理请求或查询请求。 管理员读写操作包括在整个服务中创建、更新、删除对象。 只读操作是针对文档集合的查询，其作用域为单个索引。 
+由于搜索索引是更大的客户端应用程序的一个组件，因此没有用于控制或监视每个用户对索引的访问的内置方法。 假设请求是来自客户端应用程序，用于管理请求或查询请求。 管理员读写操作包括在整个服务中创建、更新、删除对象。 只读操作是针对文档集合的查询，其作用域为单个索引。 
 
-因此，在日志中看到的内容是使用管理密钥或查询密钥的调用的引用。 在源自客户端代码的请求中包括相应的密钥。 服务未配备用于处理标识令牌或模拟的情况。
+因此，你将在活动日志中看到的内容是使用管理密钥或查询密钥的调用的引用。 在源自客户端代码的请求中包括相应的密钥。 服务未配备用于处理标识令牌或模拟的情况。
 
 如果每个用户的授权存在业务要求，建议与 Azure Active Directory 集成。 您可以使用 $filter 和用户标识来剪裁用户不应看到的文档的[搜索结果](search-security-trimming-for-azure-search-with-aad.md)。 
 

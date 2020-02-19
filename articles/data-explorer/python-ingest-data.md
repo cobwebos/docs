@@ -1,32 +1,34 @@
 ---
 title: 使用 Azure 数据资源管理器 Python 库引入数据
-description: 本文介绍如何使用 Python 将数据引入（加载）到 Azure 数据资源管理器中。
+description: 本文介绍如何使用 Python 将数据引入（加载）到 Azure 数据资源管理器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355933"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441997"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>使用 Azure 数据资源管理器 Python 库引入数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 可以使用这些库在群集中引入（加载）数据并从代码中查询数据。 本文首先在群集中创建一个表和数据映射。 然后将引入排列到群集并验证结果。
+本文介绍如何使用 Azure 数据资源管理器 Python 库来引入数据。 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Azure 数据资源管理器为 Python 提供了两个客户端库：[引入库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest)和[数据库](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data)。 使用这些库，可以将数据引入或加载到群集中，并从代码中查询数据。
 
-本文同时也以 [Azure Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) 的形式提供。
+首先，在群集中创建表和数据映射。 然后将引入排列到群集并验证结果。
 
-## <a name="prerequisites"></a>系统必备
+本文也可用作[Azure 笔记本](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb)。
 
-* 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>必备条件
 
-* [群集和数据库](create-cluster-database-portal.md)
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* 已在开发计算机上安装了 [Python](https://www.python.org/downloads/)
+* [Python 3.4+](https://www.python.org/downloads/)。
+
+* [一个群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="install-the-data-and-ingest-libraries"></a>安装数据和引入库
 
@@ -103,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>在群集上创建表
 
-创建与 StormEvents.csv 文件中的数据架构匹配的表。 运行此代码时，它会返回如下消息：若要登录，请使用 Web 浏览器打开页面 https://microsoft.com/devicelogin ，然后输入代码 F3W4VWZDM 进行身份验证。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
+创建与 StormEvents.csv 文件中的数据架构匹配的表。 此代码运行时，它将返回如下消息：要登录，请使用 Web 浏览器打开页面 *，并输入代码 F3W4VWZDM 进行身份验证 https://microsoft.com/devicelogin* 。 按照步骤登录，然后返回运行下一个代码块。 建立连接的后续代码块将要求你再次登录。
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -175,7 +177,7 @@ dataframe_from_result_table(RESPONSE.primary_results[0])
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果计划学习我们的其他文章，请保留已创建的资源。 否则，在数据库中运行以下命令以清除 StormEvents 表。
+如果你打算追随我们的其他文章，请保留你创建的资源。 否则，在数据库中运行以下命令以清除 StormEvents 表。
 
 ```Kusto
 .drop table StormEvents

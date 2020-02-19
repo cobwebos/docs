@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 69801909c6bc8d215ca7dd3ccb7ac349201e8774
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 578fcf4cd03a2d4fc8400b9e84f53206750a588c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198558"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430714"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>将 Azure 自动化状态配置报告数据转发到 Azure Monitor 日志
 
@@ -31,7 +31,7 @@ Azure 自动化状态配置保留了30天的节点状态数据。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始将自动化状态配置报表发送到 Azure Monitor 日志，需要：
 
@@ -39,7 +39,7 @@ Azure 自动化状态配置保留了30天的节点状态数据。
 - 一个 Azure 自动化帐户。 有关详细信息，请参阅[Azure 自动化简介](automation-intro.md)。
 - 具有自动化 & 控制服务产品的 Log Analytics 工作区。 有关详细信息，请参阅 [Azure Monitor 中的 Log Analytics 入门](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)。
 - 至少一个 Azure Automation State Configuration 节点。 有关详细信息，请参阅[通过 Azure 自动化状态配置载入计算机进行管理](automation-dsc-onboarding.md)。
-- [XDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0)模块版本2.7.0.0 或更高版本。 有关安装步骤，请参阅[排查 Azure Automation Desired State Configuration](./troubleshoot/desired-state-configuration.md#steps-to-troubleshoot-desired-state-configuration-dsc)。
+- [XDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0)模块版本2.7.0.0 或更高版本。 有关安装步骤，请参阅[排查 Azure Automation Desired State Configuration](./troubleshoot/desired-state-configuration.md)。
 
 ## <a name="set-up-integration-with-azure-monitor-logs"></a>设置与 Azure Monitor 日志的集成
 
@@ -132,7 +132,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscNodeStatusData. |
@@ -140,7 +140,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 | NodeName_s |托管节点的名称。 |
 | NodeComplianceStatus_s |节点是否符合。 |
 | DscReportStatus |符合性检查是否已成功运行。 |
-| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>ApplyOnly：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 不会检查是否偏离以前配置的状态。 DSC 将尝试应用配置，直到成功， *ApplyOnly*值才会生效。 </li><li>ApplyAndMonitor：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 DSC 将尝试应用配置，直到成功， *ApplyAndMonitor*值才会生效。</li><li>*ApplyAndAutoCorrect*：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
+| ConfigurationMode | 如何将配置应用到节点。 可能的值包括： <ul><li>ApplyOnly：DSC 将应用配置，且不执行进一步操作，除非有新配置被推送到目标节点或从服务器请求新配置。 首次应用新配置后，DSC 将不检查以前配置状态的偏离。 DSC 将尝试应用配置，直到成功， *ApplyOnly*值才会生效。 </li><li>ApplyAndMonitor：这是默认值。 LCM 将应用任意新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异。 DSC 将尝试应用配置，直到成功， *ApplyAndMonitor*值才会生效。</li><li>*ApplyAndAutoCorrect*：DSC 将应用任何新配置。 首次应用新配置后，如果目标节点偏离所需状态，DSC 将在日志中报告差异，然后重新应用当前配置。</li></ul> |
 | HostName_s | 托管节点的名称。 |
 | IPAddress | 托管节点的 IPv4 地址。 |
 | 类别 | DscNodeStatus. |
@@ -163,7 +163,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | TimeGenerated |符合性检查运行的日期和时间。 |
 | OperationName |DscResourceStatusData|
@@ -192,7 +192,7 @@ Azure 自动化诊断在 Azure Monitor 日志中创建两类记录：
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |作为相容性报告的相关性 ID 的 GUID。 |
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 通过将自动化状态配置数据发送到 Azure Monitor 日志，可以通过以下方式更好地了解自动化状态配置节点的状态：
 

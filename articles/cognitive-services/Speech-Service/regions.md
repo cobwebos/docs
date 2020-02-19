@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201146"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431156"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -44,7 +44,7 @@ ms.locfileid: "77201146"
 
 通过语音 SDK 实现**意向识别**的可用区域如下：
 
-| 全球区域 | 区域           | 语音 SDK 参数 |
+| 全球区域 | 区域           | 区域标识符 |
 | ------------- | ---------------- | -------------------- |
 | 亚洲          | 东亚        | `eastasia`           |
 | 亚洲          | 东南亚   | `southeastasia`      |
@@ -65,7 +65,7 @@ ms.locfileid: "77201146"
 
 [语音 SDK](speech-sdk.md)支持以下区域中的**语音助手**功能：
 
-| 区域         | 语音 SDK 参数 |
+| 区域         | 区域标识符 |
 | -------------- | -------------------- |
 | 美国西部        | `westus`             |
 | 美国西部 2      | `westus2`            |
@@ -96,7 +96,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > 必须将语言参数追加到 URL 以避免收到 4xx HTTP 错误。 例如，使用“美国西部”终结点设置为美国英语的语言为：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
-### <a name="text-to-speech"></a>文本到语音转换
+### <a name="text-to-speech"></a>文本转语音
 
 有关文本到语音的参考文档，请参阅[文本到语音 REST API](rest-text-to-speech.md)。
 

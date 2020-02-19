@@ -560,7 +560,7 @@ Content-type: application/json
 > [!IMPORTANT]
 > 复制并保留 "cluster id" 值，因为在后续步骤中需要用到它。
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-updatehttpsdocsmicrosoftcomrestapiapplication-insightscomponentscreateorupdate-api"></a>使用[组件-创建或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API 将组件关联到*群集*资源
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用[组件-创建或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API 将组件关联到*群集*资源
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

@@ -3,12 +3,12 @@ title: Azure 备份服务器可备份哪些内容
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c7aa8823ca2bf638c6b726c504cddf8c5217fa19
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449892"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444037"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 
@@ -16,7 +16,7 @@ ms.locfileid: "75449892"
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 
-|工作负载|版本|Azure 备份服务器</br> installation|支持的 Azure 备份服务器|保护和恢复|
+|工作负荷|版本|Azure 备份服务器</br> installation|支持的 Azure 备份服务器|保护和恢复|
 |------------|-----------|---------------|--------------|--------------|
 |客户端计算机（64 位和 32 位）|Windows 10|物理服务器<br /><br />Hyper-V 虚拟机<br /><br />VMware 虚拟机|V3，V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
 |客户端计算机（64 位和 32 位）|Windows 8.1|物理服务器<br /><br />Hyper-V 虚拟机|V3，V2|文件<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
@@ -25,7 +25,7 @@ ms.locfileid: "75449892"
 |客户端计算机（64 位和 32 位）|Windows 8|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）|V3，V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
 |客户端计算机（64 位和 32 位）|Windows 7|物理服务器<br /><br />本地 Hyper-V 虚拟机|V3，V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
 |客户端计算机（64 位和 32 位）|Windows 7|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）|V3，V2|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 Azure 备份服务器使用卷影复制服务（VSS）来获取数据快照，仅当卷至少为 1 GB 时快照才起作用。|
-|服务器（64 位）|Windows Server 2019|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /><br />物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3 <br />非 Nano Server|卷、共享、文件夹、文件、系统状态/裸机）、删除重复数据的卷|
+|服务器（64位）|Windows Server 2019|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /><br />物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3 <br />非 Nano Server|卷、共享、文件夹、文件、系统状态/裸机）、删除重复数据的卷|
 |服务器（32 位和 64 位）|Windows Server 2016|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /><br />物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2<br />非 Nano Server|卷、共享、文件夹、文件、系统状态/裸机）、删除重复数据的卷|
 |服务器（32 位和 64 位）|Windows Server 2012 R2 - 数据中心和标准版|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3，V2|卷、共享、文件夹、文件<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 重复数据卷。|
 |服务器（32 位和 64 位）|Windows Server 2012 R2 - 数据中心和标准版|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|卷、共享、文件夹、文件、系统状态/裸机）<br /><br />Azure 备份服务器必须在 Windows Server 2012 或 2012 R2 上运行才能保护 Windows Server 2012 重复数据卷。|
@@ -57,12 +57,12 @@ ms.locfileid: "75449892"
 |SQL Server|SQL Server 2008|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|所有部署方案：数据库|
 |SQL Server|SQL Server 2008|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3，V2|所有部署方案：数据库|
 |SQL Server|SQL Server 2008|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|所有部署方案：数据库|
-|交换|Exchange 2016|物理服务器<br/><br/> 本地 Hyper-V 虚拟机<br /> <br /> Azure Stack<br /> <br />Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|交换|Exchange 2016|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|交换|Exchange 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|交换|Exchange 2013|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|交换|Exchange 2010|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
-|交换|Exchange 2010|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2016|物理服务器<br/><br/> 本地 Hyper-V 虚拟机<br /> <br /> Azure Stack<br /> <br />Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2016|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2013|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2010|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
+|Exchange|Exchange 2010|VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：独立 Exchange 服务器，数据库可用性组 (DAG) 下的数据库<br /><br />恢复（所有部署方案）：邮箱，DAG 下的邮箱数据库<br/><br/> 不支持通过 ReFS 备份 Exchange |
 |SharePoint|SharePoint 2016|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /><br />Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /><br />VMWare 中的 Windows 虚拟机（保护在 VMWare 中的 Windows 虚拟机中运行的工作负荷）<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：场，前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
 |SharePoint|SharePoint 2013|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：场，前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
 |SharePoint|SharePoint 2013|Azure 虚拟机（当工作负荷作为 Azure 虚拟机运行时）- <br /> <br /> Azure Stack|V3，V2|保护（所有部署方案）：场、SharePoint 搜索、前端 Web 服务器内容<br /><br />恢复（所有部署方案）：场、数据库、Web 应用程序、文件或列表项、SharePoint 搜索、前端 Web 服务器<br /><br />请注意，不支持保护使用内容数据库的 SQL Server 2012 AlwaysOn 功能的 SharePoint 场。|
@@ -78,7 +78,7 @@ ms.locfileid: "75449892"
 |Hyper-v 主机服务器、群集或 VM 上的 MABS 保护代理|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机|不支持|保护：Hyper-V 计算机、群集共享卷 (CSV)<br /><br />恢复：文件和文件夹、卷、虚拟硬盘驱动器的虚拟机项目级恢复|
 |VMware VM|VMware vCenter/vSphere ESX/ESXi 许可版本 5.5/6.0/6。5 |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3，V2|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
 |VMware VM|[VMware vSphere 许可版本6。7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3|群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM<br /> 文件和文件夹的项目级恢复仅适用于 Windows VM，不支持 VMware vApp。|
-|Linux|以 Hyper-V 或 VMware 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3，V2|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
+|Linux|以 Hyper-V 或 VMware 来宾身份运行的 Linux|物理服务器、 <br/>本地 Hyper-V VM、 <br/> VMWare 中的 Windows VM|V3，V2|Hyper-V 必须在 Windows Server 2012 R2 或 Windows Server 2016 上运行。 保护：整个虚拟机<br /><br />恢复：整个虚拟机 <br/><br/> 仅支持文件一致的快照。 <br/><br/> 有关支持的 Linux 分发版和版本的完整列表，请参阅 [Azure 认可的分发中的 Linux](../virtual-machines/linux/endorsed-distros.md) 一文。|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
 

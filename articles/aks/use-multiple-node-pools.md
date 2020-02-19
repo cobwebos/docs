@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365175"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443918"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > 还可以在使用[az aks nodepool update][az-aks-nodepool-update]命令时以及在群集创建过程中使用 `--tags` 参数。 在群集创建过程中，`--tags` 参数会将标记应用到与群集一起创建的初始节点池。 所有标记名称都必须遵守[使用标记来组织 Azure 资源][tag-limitation]的限制。 使用 `--tags` 参数更新节点池会更新所有现有标记值并追加任何新标记。 例如，如果你的节点池具有*部门 = it*并且*costcenter = 9999*用于标记，并且已使用*team = dev*和*costcenter = 111* for 标记对其进行了更新，则 nodepool 会将*部门 = IT*、 *costcenter = 111*和*team = dev*用于标记。
 
-以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*taggednodepool*正在*创建*具有指定*标记*的节点：
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*tagnodepool*正在*创建*具有指定*标记*的节点：
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

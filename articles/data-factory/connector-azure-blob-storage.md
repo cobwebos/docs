@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/16/2020
-ms.openlocfilehash: f245254c85cbf9223ab5dda60799c6b7ce72f11c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/17/2020
+ms.openlocfilehash: f21c99b18102adc9d43c21964e51b7c7b769771e
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120207"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431207"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Azure Blob 存储中复制和转换数据
 
@@ -31,7 +31,7 @@ ms.locfileid: "76120207"
 
 以下活动支持此 Azure Blob 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [映射数据流](concepts-data-flow-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
@@ -48,7 +48,7 @@ ms.locfileid: "76120207"
 >[!IMPORTANT]
 >如果在 Azure 存储防火墙设置上启用 "**允许受信任的 Microsoft 服务访问此存储帐户**" 选项，并想要使用 azure 集成运行时连接到 Blob 存储，则必须使用[托管标识身份验证](#managed-identity)。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -73,7 +73,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 
 若要使用存储帐户密钥身份验证，需支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureBlobStorage**（建议）或 **AzureStorage**（参阅下面的注释）。 |是 |
 | connectionString | 为 connectionString 属性指定连接到存储所需的信息。 <br/> 还可以将帐户密钥放在 Azure 密钥保管库中，并从连接字符串中拉取 `accountKey` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -144,7 +144,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 
 若要使用共享访问签名身份验证，需支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureBlobStorage**（建议）或 **AzureStorage**（参阅下面的注释）。 |是 |
 | sasUri | 指定存储资源（例如 Blob/容器）的共享访问签名 URI。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 你还可以在 Azure Key Vault 中放置 SAS 令牌，以利用自动旋转和删除令牌部分。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是 |
@@ -228,7 +228,7 @@ Azure Blob 连接器支持以下身份验证类型，有关详细信息，请参
 
 Azure Blob 存储链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureBlobStorage**。 |是 |
 | serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 |是 |
@@ -282,7 +282,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 Azure Blob 存储链接服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **AzureBlobStorage**。 |是 |
 | serviceEndpoint | 使用 `https://<accountName>.blob.core.windows.net/` 模式指定 Azure Blob 存储服务终结点。 |是 |
@@ -317,7 +317,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 基于格式的数据集中 `location` 设置下的 Azure Blob 支持以下属性：
 
-| 属性   | Description                                                  | 需要 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中的位置的 type 属性必须设置为**AzureBlobStorageLocation**。 | 是      |
 | 容器 (container)  | Blob 容器。                                          | 是      |
@@ -361,10 +361,11 @@ Azure Blob 存储链接服务支持以下属性：
 
 基于格式的复制源中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
-| 属性                 | Description                                                  | 需要                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobStorageReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
+| 前缀                   | 在数据集中配置的给定容器下的 blob 名称的前缀，用于筛选源 blob。 选择名称以此前缀开头的 blob。 <br>仅当未指定 `wildcardFolderPath` 和 `wildcardFileName` 属性时才适用。 | 否                                                          |
 | wildcardFolderPath       | 在数据集中配置的给定容器下包含通配符的文件夹路径，用于筛选源文件夹。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br>请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 否                                            |
 | wildcardFileName         | 给定容器下包含通配符的文件名 + folderPath/wildcardFolderPath 用于筛选源文件。 <br>允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 | 如果未在数据集中指定 `fileName` 则为 Yes |
 | modifiedDatetimeStart    | 基于特性筛选的文件：上次修改时间。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。 | 否                                            |
@@ -421,10 +422,11 @@ Azure Blob 存储链接服务支持以下属性：
 
 基于格式的复制接收器中 `storeSettings` 设置下的 Azure Blob 支持以下属性：
 
-| 属性                 | Description                                                  | 需要 |
+| properties                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**AzureBlobStorageWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
+| blockSizeInMB | 指定用于将数据写入块 blob 的块大小（以 MB 为单位）。 详细了解[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)。 <br/>允许的值**介于4和 100 MB 之间**。 <br/>默认情况下，ADF 会根据源存储类型和数据自动确定块大小。 对于非二进制副本到 Blob，默认块大小为 100 MB，因此最多可容纳 4.95 TB 的数据。 当你的数据不太大时，这可能不是最佳的，尤其是在你使用具有较差网络的自承载 Integration Runtime 导致操作超时或性能问题时。 可以显式指定块大小，同时确保 blockSizeInMB * 50000 足够大以存储数据，否则复制活动运行将失败。 | 否 |
 | maxConcurrentConnections | 可以同时连接到存储库的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
 
 **示例：**
@@ -588,7 +590,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 **AzureBlob**。 |是 |
 | folderPath | 到 Blob 存储中的容器和文件夹的路径。 <br/><br/>不包含容器名称的路径支持通配符筛选器。 允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“myblobcontainer/myblobfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |对于复制/查找活动，为“是”；对于 GetMetadata 活动，为“否” |
@@ -633,7 +635,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 **BlobSource**。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 **true**（默认值）和 **false**。 | 否 |
@@ -673,7 +675,7 @@ Azure Blob 存储链接服务支持以下属性：
 
 ### <a name="legacy-copy-activity-sink-model"></a>旧复制活动接收器模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 **BlobSink**。 |是 |
 | copyBehavior | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 从源文件到源文件夹的相对路径与从目标文件到目标文件夹的相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名或 Blob 名称，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否 |

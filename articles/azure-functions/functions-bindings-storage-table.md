@@ -36,7 +36,7 @@ ms.locfileid: "77425232"
 
 使用 Azure 表存储输入绑定读取 Azure 存储帐户中的表。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>一个实体
 
@@ -143,7 +143,7 @@ namespace FunctionAppCloudTable2
 
 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 ### <a name="one-entity"></a>一个实体
 
@@ -310,7 +310,7 @@ public class LogEntity : TableEntity
 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示了 function.json 文件中的表输入绑定以及使用该绑定的 [JavaScript 代码](functions-reference-node.md)。 该函数使用队列触发器来读取单个表行。 
 
@@ -352,7 +352,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 单个表行 
 
@@ -401,7 +401,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 以下示例显示了 HTTP 触发的函数，该函数返回表存储中指定分区中项的总计数。
 
@@ -423,7 +423,7 @@ public int run(
 
 ## <a name="input---attributes-and-annotations"></a>输入-特性和批注
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  在 [C# 类库](functions-dotnet-class-library.md)中，请使用以下属性来配置表输入绑定：
 
@@ -481,19 +481,19 @@ public int run(
 * 应用到类的 `StorageAccount` 特性。
 * 函数应用的默认存储帐户（“AzureWebJobsStorage”应用设置）。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 C#脚本不支持特性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对其值将来自表存储的参数使用 `@TableInput` 注释。  可以将此注释与本机 Java 类型、POJO 或使用了 `Optional<T>` 的可为 null 的值一起使用。
 
@@ -519,7 +519,7 @@ Python 不支持特性。
 
 ## <a name="input---usage"></a>输入 - 用法
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **在中读取一行**
 
@@ -532,7 +532,7 @@ Python 不支持特性。
   > [!NOTE]
   > `IQueryable`Functions v2 运行时[不支持 ](functions-versions.md)。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 * **在中读取一行**
 
@@ -545,15 +545,15 @@ Python 不支持特性。
   > [!NOTE]
   > `IQueryable`Functions v2 运行时[不支持 ](functions-versions.md)。 一种替代方法是[使用 CloudTable paramName 方法参数](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable)通过 Azure 存储 SDK 来读取表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 设置 `filter` 和 `take` 属性。 不要设置 `partitionKey` 或 `rowKey`。 使用 `context.bindings.<BINDING_NAME>` 访问输入一个或多个输入表实体。 反序列化的对象具有 `RowKey` 和 `PartitionKey` 属性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 表数据作为 JSON 字符串传递给函数。 通过调用 `json.loads` 如输入[示例](#input)中所示对消息进行反序列化。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)属性使你能够访问触发函数的表行。
 
@@ -566,7 +566,7 @@ Python 不支持特性。
 > [!NOTE]
 > 此输出绑定不支持更新现有实体。 请使用 `TableOperation.Replace`Azure 存储 SDK[ 中的 ](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) 操作来更新现有实体。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 以下示例演示使用 HTTP 触发器写入单个表行的 [C# 函数](functions-dotnet-class-library.md)。 
 
@@ -590,7 +590,7 @@ public class TableStorage
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [C# 脚本](functions-reference-csharp.md)代码。 该函数写入多个表实体。
 
@@ -645,7 +645,7 @@ public class Person
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 以下示例演示 *function.json* 文件中的一个表输出绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数写入多个表实体。
 
@@ -692,7 +692,7 @@ module.exports = function (context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下面的示例演示如何使用表存储输出绑定。 `table` 绑定通过向 `name`、`tableName`、`partitionKey`和 `connection`赋值来在*函数 json*中进行配置：
 
@@ -751,7 +751,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
     return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下面的示例演示一个 Java 函数，该函数使用 HTTP 触发器写入单个表行。
 
@@ -831,7 +831,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>输出-属性和批注
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 类库](functions-dotnet-class-library.md)中，使用 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)。
 
@@ -865,19 +865,19 @@ public static MyPoco TableOutput(
 
 可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[输入 - 特性](#input---attributes-and-annotations)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 C#脚本不支持特性。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支持特性。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python 不支持特性。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 在[Java 函数运行时库](/java/api/overview/azure/functions/runtime)中，对参数使用[TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)批注，以将值写入表存储。
 
@@ -903,23 +903,23 @@ Python 不支持特性。
 
 ## <a name="output---usage"></a>输出 - 用法
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` （其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性）访问输出表实体。 这些属性通常附带 `ITableEntity` 或继承 `TableEntity`。
 
 或者，可以使用 `CloudTable` 方法参数通过 Azure 存储 SDK 写入表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-scripttabcsharp-script"></a>[C#脚本](#tab/csharp-script)
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 使用方法参数 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` （其中 `T` 包括 `PartitionKey` 和 `RowKey` 属性）访问输出表实体。 这些属性通常附带 `ITableEntity` 或继承 `TableEntity`。 `paramName` 值是在*函数 json*的 `name` 属性中指定的。
 
 或者，可以使用 `CloudTable` 方法参数通过 Azure 存储 SDK 写入表。 如果尝试绑定到 `CloudTable` 并收到错误消息，请确保已引用[正确的存储 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<name>`，其中 `<name>` 是*函数 json*的 `name` 属性中指定的值来访问输出事件。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 有两个选项可用于从函数输出表存储行消息：
 
@@ -927,7 +927,7 @@ Python 不支持特性。
 
 - **命令式**：向声明为[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给 `set` 的值将作为事件中心消息保留。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 可以通过以下两个选项使用[TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)批注从函数中输出表存储行：
 

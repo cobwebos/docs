@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850051"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444156"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -125,15 +125,15 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>使用 Azure Monitor 中的指标警报进行大规模监视
 
-到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 Azure Monitor 还支持使用一个指标警报规则监视多个资源。 目前仅在虚拟机、SQL server 数据库、SQL server 弹性池和数据 box 边缘设备上支持此功能。 此外，单个指标警报可以监视一个 Azure 区域中的资源。
+到目前为止，已了解了如何使用单个指标警报监视与单个 Azure 资源相关的一个或多个指标时序。 很多时候，你可能希望将同一预警规则应用于许多资源。 对于同一 Azure 区域中的资源，Azure Monitor 还支持监视包含一个指标警报规则的多个资源（属于同一类型）。 此功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL server 数据库、SQL server 弹性池和 Data box edge 设备。 此外，此功能仅适用于平台指标，自定义度量值不支持此功能。
 
-可以通过以下三种方式之一指定单个指标警报的监视范围：
+可以通过以下三种方式之一来指定监视的作用域：
 
 - 指定为单个订阅中单个 Azure 区域中的虚拟机列表
 - 指定为单个订阅中一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）
 - 指定为单个订阅中的所有虚拟机（在单个 Azure 区域中）
 
-创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 对于每台虚拟机，你将收到单独的通知。
+创建监视多个资源的指标预警规则类似于[创建监视单个资源的任何其他指标警报](alerts-metric.md)。 唯一区别是，你将选择要监视的所有资源。 也可以通过 [Azure 资源管理器模板](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)创建这些规则。 你将收到每个被监视资源的单个通知。
 
 ## <a name="typical-latency"></a>典型延迟
 
