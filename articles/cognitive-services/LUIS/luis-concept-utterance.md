@@ -55,10 +55,10 @@ ms.locfileid: "74280801"
 
 |示例陈述|
 |--|
-|如何买计算机？|
-|在哪里买计算机？|
-|我想要一台计算机，我该怎么做？|
-|我什么时候能有一台计算机？| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 此处的核心术语 "计算机" 不会改变。 可以使用替代话语“台式电脑”、“笔记本电脑”、“工作站”，甚至是“机器”。 LUIS 可以智能地从上下文推断同义词，但在创建用于定型的最谈话时，更改它们的方式始终更好。
 
@@ -144,8 +144,8 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 |话语|
 |--|
-|今年夏天西雅图地区会举办什么样的乡村集市？|
-|西雅图评审的当前评级公平吗？|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 如果希望事件实体查找所有事件数据，请标记第一个话语中的 `fair` 一词，而不是第二个话语。
 
