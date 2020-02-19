@@ -8,12 +8,12 @@
   expanded: true
   items:
     - name: 安装和配置 Terraform
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: 创建 Terraform 配置
       href: terraform-create-configuration.md
     - name: 创建 Linux VM
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: 教程
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: 基础结构
       items:
-        - name: 创建启用了 Azure 资源托管标识的 Terraform VM
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: 使用 Terraform 模块创建 VM 群集
           href: terraform-create-vm-cluster-module.md
         - name: 使用 Terraform 和 HCL 创建 VM 群集
@@ -73,7 +71,7 @@
   items:
     - name: 配置模板
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: 引用
+- name: 参考
   items:
     - name: Azure 模块注册表
       href: 'https://registry.terraform.io/modules/Azure'
