@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 559c0e2a56bfb452f1faf10f68c19d4f406427e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/17/2020
+ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480549"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462133"
 ---
 # <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>商业 Marketplace 分析的常见问题和术语
 
@@ -29,7 +29,6 @@ ms.locfileid: "75480549"
 
 为什么您会收到此消息：
 
-- Marketplace 中列出的产品/服务不是 SaaS 产品/服务。 目前，适用于 SaaS 的合作伙伴中心报表分析仅提供。 可以在合作伙伴中心发布 Dynamics 365 产品/服务，但这些产品/服务的分析在合作伙伴中心尚未启用。
 - Marketplace 中的发布产品/服务当前不存在任何购置。 这可能意味着你的产品/服务在 marketplace 中提供，并在产品显示页面中获得客户的视图，但客户尚未采取措施来购买和部署它们。
 - 你的产品/服务的发布可能正在进行，但尚未推出。 仅客户可获取实时产品/服务。 若要检查产品/服务的状态，请参阅[分析仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)中的概述。 有关详细信息，请参阅[商业 Marketplace 分析中的摘要仪表板](./summary-dashboard.md)。
 - 你的产品/服务可能列出为 "**与我联系**"、"仅限列表" 和 "marketplace 中的客户无法购买"。 虽然这些产品/服务生成潜在顾客，并与你共享，但不能购买这些产品/服务的订单。 若要查看产品/服务列表类型，请参阅 "设置" 页。
@@ -72,7 +71,7 @@ ms.locfileid: "75480549"
 | 市场许可证类型：免费| 订单| 该产品/服务已配置为可供所有用户免费。 Microsoft 不会向客户收取此产品/服务的使用费用。||
 | 市场许可证类型：Microsoft 充当经销商  | 订单| Microsoft 是此市场套餐的经销商。|  |
 | Marketplace 订阅 ID | Customer、Order | 与客户用于购买 Marketplace 产品/服务的 Azure 订阅相关联的唯一标识符。 ID 以前是 Azure 订阅 GUID。||
-| 产品/服务名称  | 订单| Marketplace 产品/服务的名称。|| |
+| 产品名称  | 订单| Marketplace 产品/服务的名称。|| |
 | 产品/服务类型  | 订单| Microsoft 市场产品的类型。|||
 | 套餐类型：托管的应用程序  | 为了 | 如果需要以下条件，请使用 Azure 应用：托管应用产品/服务类型：使用 VM 或整个基于 IaaS 的解决方案为客户部署基于订阅的解决方案。 你或你的客户要求解决方案由合作伙伴管理。 |
 | 产品/服务类型： Azure 应用程序| 为了 | 如果你的解决方案需要在简单 VM 之外额外部署和配置自动化，请使用 Azure 应用程序解决方案模板产品类型。||

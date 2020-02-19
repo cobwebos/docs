@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 794e18590f554d1537449d2aee9451c0053ac4a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198407"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462303"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>适用于 Azure Functions 的 Azure Blob 存储绑定概述
 
@@ -26,9 +26,9 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[
 
 ### <a name="functions-2x-and-higher"></a>函数1.x 和更高版本
 
-使用触发器和绑定需要引用适当的包。 NuGet 包用于 .NET 类库，而扩展捆绑所有其他应用程序类型。
+使用触发器和绑定需要引用适当的包。 NuGet 包用于 .NET 类库，而扩展捆绑用于所有其他应用程序类型。
 
-| Language                                        | 添加依据 。                                   | 备注 
+| 语言                                        | 添加依据 。                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装[NuGet 包]版本2。x | |
 | C#脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑]          | 建议将[Azure 工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |

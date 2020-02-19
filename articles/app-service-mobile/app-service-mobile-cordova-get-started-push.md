@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 6ec214c0f1a4f8333bf88790de8d2936fce39002
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 08260437076728421cb6fa393f481d27b95b1782
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668911"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461600"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>将推送通知添加到 Apache Cordova 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 
@@ -35,7 +30,7 @@ ms.locfileid: "74668911"
 要完成本教程，需要：
 
 * 使用[Visual Studio 社区 2015][2]或更高版本的电脑
-* [Visual Studio Tools for Apache Cordova][4]
+* [用于 Apache Cordova 的 Visual Studio 工具][4]
 * [有效的 Azure 帐户][3]
 * 已完成的[Apache Cordova 快速入门][5]项目
 * Android包含已验证电子邮件地址的[Google 帐户][6]
@@ -79,7 +74,7 @@ Apache Cordova 应用程序不支持在本地处理设备或网络功能。  这
 
 **从 Visual Studio 内部：**
 
-1. 在“解决方案资源管理器”中，打开 `config.xml` 文件。 接下来，选择“插件” > “自定义”。 然后选择“Git”作为安装源。
+1. 在“解决方案资源管理器”中，打开 `config.xml` 文件。 接下来，选择“插件” **“自定义”。**  >  然后选择“Git”作为安装源。
 
 2. 输入 `https://github.com/phonegap/phonegap-plugin-push` 作为源。
 
@@ -372,7 +367,7 @@ pushRegistration = PushNotification.init({
 
 2. 在应用中，为新 todoitem 键入一个名称，并选择加号 **(+)** 图标添加该项。
 
-确认在添加项时收到了通知。
+确认在添加该项目时收到了通知。
 
 ## <a name="next-steps"></a>后续步骤
 

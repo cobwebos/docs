@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442014"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461226"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -1445,6 +1445,16 @@ Azure AD 애플리케이션 갤러리에 있는 "비-갤러리 애플리케이�
 
 如果要构建的应用程序将由多个租户使用，则可以将其提供给 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序并配置设置。 在 Azure AD 库中发布你的应用程序并使其可供其他人使用非常简单。 [여기](../develop/howto-app-gallery-listing.md)서 단계를 확인하세요. Microsoft 将与你合作，将你的应用程序集成到我们的库、测试终结点，并发布载入[文档](../saas-apps/tutorial-list.md)供客户使用。 
 
+### <a name="gallery-onboarding-checklist"></a>库载入清单
+按照下面的清单，确保你的应用程序是载入可的，并且客户具有平稳的部署体验。 载入库时，将收集此信息。 
+> [!div class="checklist"]
+> * [支持 SCIM 2.0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) （必需）
+> * 支持每个租户每秒至少25个请求（必需）
+> * 支持架构发现（建议）
+> * 支持 OAuth 授权代码授予或长生存期令牌（必需）
+> * 建立工程和支持点联系以支持客户发布库载入（必需）
+> * 公开记录你的 SCIM 终结点（建议） 
+
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在应用程序库中预配连接器的授权
 SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 它依赖于现有的行业标准。 Azure AD 预配客户端支持库中应用程序的两种授权方法。 
@@ -1471,6 +1481,17 @@ SCIM 规范未定义用于身份验证和授权的特定于 SCIM 的方案。 �
 **生存期较长的 OAuth 持有者令牌：** 如果你的应用程序不支持 OAuth 授权代码授予流，你还可以生成一个长期的 OAuth 持有者令牌，而不是管理员可用于设置预配集成。 令牌应为永久标记，否则在令牌过期时将[隔离](application-provisioning-quarantine-status.md)设置作业。 此令牌的大小必须小于 1 KB。  
 
 有关其他身份验证和授权方法，请在[UserVoice](https://aka.ms/appprovisioningfeaturerequest)上告诉我们。
+
+### <a name="gallery-go-to-market-launch-check-list"></a>库走向市场启动检查列表
+为了帮助推动对联合集成的认知和需求，我们建议您更新现有文档，并放大您的营销渠道中的集成。  下面是我们建议你完成以支持启动的一组清单活动
+
+* **销售和客户支持就绪情况。** 确保你的销售和支持团队了解，并可以与集成功能进行交流。 简要介绍销售和支持团队，向他们提供 Faq 并将集成添加到销售材料中。 
+* **博客文章和/或按版本。** 创建一个博客文章或按版本，介绍联合集成、优点和入门方式。 示例：[Imprivata 和 Azure Active Directory 按](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+* **社交媒体。** 利用你的社交媒体（如 Twitter、Facebook 或 LinkedIn）来促进与客户的集成。 请确保包含 @AzureAD 以便转推您的帖子。 示例：[Imprivata Twitter Post](https://twitter.com/azuread/status/1123964502909779968)
+* **营销网站。** 创建或更新市场营销页面（例如集成页、合作伙伴页、定价页等）以包括联合集成的可用性。 示例：[Pingboard 集成页](https://pingboard.com/org-chart-for)， [Smartsheet 集成页](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad)， [Monday.com 定价页](https://monday.com/pricing/) 
+* **技术文档。** 创建帮助中心文章或有关客户如何开始使用的技术文档。 示例：[Envoy + Microsoft Azure Active Directory 集成。](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+) 
+* **客户通信。** 通过您的客户通信（每月新闻稿、电子邮件活动、产品发行说明）通知客户新的集成。 
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>允许 Azure AD 预配服务使用的 IP 地址发出 SCIM 请求
 

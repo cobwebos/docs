@@ -77,6 +77,8 @@
       href: how-to-security-data-access.md
     - name: 调查设备
       href: how-to-investigate-device.md
+    - name: 连接到 Azure Sentinel
+      href: how-to-configure-with-sentinel.md
     - name: 自定义解决方案
       href: how-to-customize-solution.md
 - name: 资源

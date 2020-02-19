@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: 配置全局 VNet 对等互连
       href: global-peering-vnet.md
-    - name: 创建基于 ExpressRoute 的 VPN 连接
+    - name: 配置 ExpressRoute 加密
       href: vpn-over-expressroute.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md

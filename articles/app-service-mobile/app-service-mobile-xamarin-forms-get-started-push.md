@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 69fe4b98c26ac2f67fc777b754f3bc391e3b71b5
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023049"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461464"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>向 Xamarin.Forms 应用添加推送通知
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
 
 ## <a name="overview"></a>概述
 
@@ -28,7 +23,7 @@ ms.locfileid: "77023049"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 对于 iOS，用户需要 [Apple 开发人员计划成员身份](https://developer.apple.com/programs/ios/)和物理 iOS 设备。 [iOS 模拟器不支持推送通知](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)。
 
@@ -78,7 +73,7 @@ ms.locfileid: "77023049"
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>实现 Firebase 实例 ID 服务
 
-1. 将新类添加到名为 `FirebaseRegistrationService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
+1. 将新类添加到名为 **的**Droid`FirebaseRegistrationService` 项目，并确保文件顶部存在以下 `using` 语句：
 
     ```csharp
     using System.Threading.Tasks;
@@ -121,7 +116,7 @@ ms.locfileid: "77023049"
 
 #### <a name="registering-with-the-azure-notification-hub"></a>注册到 Azure 通知中心
 
-1. 将新类添加到名为 `AzureNotificationHubService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
+1. 将新类添加到名为 **的**Droid`AzureNotificationHubService` 项目，并确保文件顶部存在以下 `using` 语句：
 
     ```csharp
     using System;
@@ -164,7 +159,7 @@ ms.locfileid: "77023049"
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>显示推送通知的内容
 
-1. 将新类添加到名为 `FirebaseNotificationService` 的 **Droid** 项目，并确保文件顶部存在以下 `using` 语句：
+1. 将新类添加到名为 **的**Droid`FirebaseNotificationService` 项目，并确保文件顶部存在以下 `using` 语句：
 
     ```csharp
     using Android.App;
@@ -314,7 +309,7 @@ ms.locfileid: "77023049"
 
     这会启用对远程通知的支持并请求推送注册。
 
-现在，你的应用程序已更新为支持推送通知。
+应用现已更新，可支持推送通知。
 
 #### <a name="test-push-notifications-in-your-ios-app"></a>在 iOS 应用中测试推送通知
 
@@ -381,7 +376,7 @@ ms.locfileid: "77023049"
 
     此方法获取推送通知通道，并注册模板以从通知中心接收模板通知。 支持 *messageParam* 的模板通知将传送到此客户端。
 
-3. 在 App.xaml.cs 中，通过添加 `async` 修饰符更新 **OnLaunched** 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
+3. 在 App.xaml.cs 中，通过添加 **修饰符更新**OnLaunched`async` 事件处理程序方法定义。 然后，在方法的末尾添加以下代码行：
 
     ```csharp
     await InitNotificationsAsync();

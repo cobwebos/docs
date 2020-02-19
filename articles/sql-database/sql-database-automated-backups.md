@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157493"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461760"
 ---
 # <a name="automated-backups"></a>自动备份
 
@@ -81,10 +81,14 @@ PITR 备份通过异地冗余存储进行保护。 有关详细信息，请参�
 
 Azure SQL Database 会将总保留备份存储计算为累积值。 每小时，此值将报告给 Azure 计费管道，该管道负责聚合这一小时的使用情况，以便在每月结束时计算消耗。 删除数据库后，消耗会缩短为备份期限。 一旦备份早于保持期，计费就会停止。 
 
+   > [!IMPORTANT]
+   > 即使已删除数据库，数据库的备份仍将保留指定的保持期。 通常，在删除和重新创建数据库时，可能会节省存储和计算成本，因为我们会在每个已删除的数据库的每个删除数据库保留时间（最低为7天）时保留备份存储成本。 
 
-### <a name="monitoring-consumption"></a>监视消耗
 
-每种类型的备份（完整备份、差异备份和日志备份）都作为单独的指标在 "数据库监视" 边栏选项卡上报告。 下图显示了如何监视备份存储消耗。  
+
+### <a name="monitor-consumption"></a>监视器消耗
+
+每种类型的备份（完整备份、差异备份和日志备份）都作为单独的指标在 "数据库监视" 边栏选项卡上报告。 下图显示了如何监视单一数据库的备份存储消耗情况。 此功能当前不可用于托管实例。
 
 ![监视 Azure 门户的 "数据库监视" 边栏选项卡上的数据库备份消耗](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Azure SQL Database 会将总保留备份存储计算为累积值。 每小时，
 
 ## <a name="storage-costs"></a>存储成本
 
+如果使用 DTU 模型或 vCore 模型，存储的价格会有所不同。 
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -120,11 +125,14 @@ Azure SQL DB 会将总保留备份存储计算为累积值。 每小时将此值
 
 现在，这是一个更复杂的示例。 假设数据库的保留期增加到了月份中间的14天，此（假设）会导致总备份存储量翻倍到 1488 GB。 SQL DB 会报告小时1-372 的使用量为 1 GB，然后将其报告为 2 GB，时间为373-744。 这会被聚合为 1116 GB/mo 的最终帐单。 
 
-你可以使用 Azure 订阅成本分析来确定你当前在备份存储上的支出。
+### <a name="monitor-costs"></a>监视成本
+
+若要了解备份存储成本，请从 Azure 门户中转到 "**成本管理 + 计费**"，选择 "**成本管理**"，然后选择 "**成本分析**"。 选择所需的订阅作为**作用域**，然后筛选所需的时间段和服务。 
+
+为 "**服务名称**" 添加筛选器，然后从下拉菜单中选择 " **sql 数据库**"。 使用 "**计量子类别**" 筛选器选择服务的帐单计数器。 对于单一数据库或弹性池，请选择 "**单一/弹性池 pitr 备份存储**"。 对于托管实例，请选择 " **mi pitr 备份存储**"。 尽管**存储**和**计算**子类别不与备份存储成本相关联，但也可能会对其感兴趣。 
 
 ![备份存储成本分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-例如，若要了解托管实例的备份存储成本，请在 Azure 门户中找到你的订阅，并打开 "成本分析" 边栏选项卡。 选择计量子类别**mi pitr 备份存储**，以查看当前的备份成本和费用预测。 还可以包括其他计量子类别，如**托管实例常规用途存储**或**托管实例常规用途-计算 gen5** ，将备份存储成本与其他成本类别进行比较。
 
 ## <a name="backup-retention"></a>备份保留
 
@@ -169,13 +177,13 @@ Azure SQL DB 会将总保留备份存储计算为累积值。 每小时将此值
 
 若要使用 Azure 门户更改 PITR 备份保持期，请导航到要在门户中更改其保持期的服务器对象，然后根据要修改的服务器对象选择合适的选项。
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[单一数据库和弹性池](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[单一数据库和弹性池](#tab/single-database)
 
 在服务器级别执行单个 Azure SQL 数据库的 PITR 备份保留。 在服务器级别所做的更改适用于该服务器上的数据库。 若要从 Azure 门户更改 Azure SQL 数据库服务器的 PITR，请导航到 "服务器概述" 边栏选项卡，在导航菜单上单击 "管理备份"，然后单击导航栏中的 "配置保留"。
 
 ![更改 PITR Azure 门户](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[托管实例](#tab/managed-instance)
+#### <a name="managed-instance"></a>[托管实例](#tab/managed-instance)
 
 SQL 数据库托管实例的 PITR 备份保留更改是在单个数据库级别执行的。 若要从 Azure 门户更改实例数据库的 PITR 备份保留，请导航到 "单个数据库概述" 边栏选项卡，然后在导航栏上单击 "配置备份保留"。
 

@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766522"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462218"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>适用于 IoT 的 Azure 安全中心简介
 
 统一安全管理，并跨混合云工作负荷和 Azure IoT 解决方案实现端到端的威胁检测和分析。 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保护从 IoT 设备到 Azure 云的整个 IoT 解决方案。
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>保护从 IoT 设备到 Azure 云的整个 IoT 解决方案
 
 从无缝的无代理解决方案中进行选择，或者利用基于代理的全面安全性，适用于 IoT 的 Azure 安全中心在 IoT 资产上为每个设备、IoT Edge 和 IoT 中心提供威胁防护和分析。
 
@@ -38,7 +37,7 @@ ms.locfileid: "76766522"
 
 ### <a name="unified-visibility-and-control"></a>统一的可见性和控制
 
-跨所有本地和云工作负载（包括 Azure IoT 解决方案）获得统一的安全视图。 载入新设备，并跨工作负荷（叶设备、Microsoft Edge 设备、IoT 中心）应用安全策略，确保符合安全标准和改进的安全状况。 
+在所有本地和云工作负载中获得统一的安全视图，包括 Azure IoT 解决方案。 载入新设备，并跨工作负荷（叶设备、Microsoft Edge 设备、IoT 中心）应用安全策略，确保符合安全标准和改进的安全状况。 
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防护
 
@@ -46,7 +45,7 @@ ms.locfileid: "76766522"
 
 ### <a name="intelligent-threat-detection-and-response"></a>智能威胁检测和响应
 
-使用高级分析和 Microsoft Intelligent Security Graph 来获得对不断演变的网络攻击的优势。 内置行为分析和机器学习识别攻击和零天攻击。 监视 IoT 解决方案中即将发生的攻击和信息泄露后进行的活动。 通过交互式工具和上下文威胁智能简化设备调查和修正。
+使用高级分析和 Microsoft Intelligent Security Graph 来获得对不断演变的网络攻击的优势。 内置行为分析和机器学习识别攻击和零天攻击。 监视 IoT 解决方案的传入攻击和违规后活动。 通过交互式工具和上下文威胁智能简化设备调查和修正。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
-ms.translationtype: HT
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030806"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462167"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -23,10 +23,53 @@ ms.locfileid: "77030806"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>用于 Python 的 Azure 机器学习 SDK 版本 1.1.1 rc0
+
++ **Bug 修复和改进**
+  + **azure-cli-ml**
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+  + **automl-核心**
+    + 错误日志记录已改进。
+  + **automl-运行时**
+    + 解决了当数据集包含带有长时间间隙的短粒度时的预测问题。
+    + 解决了自动最大水平范围启用并且日期列包含字符串格式的日期时的问题。 如果无法转换为 date，我们添加了正确的转换和合理错误
+    + 使用 native NumPy 和 SciPy 对 FileCacheStore 的中间数据进行序列化和反序列化（用于本地 AutoML）
+    + 修复了失败的子运行可能会停滞在运行状态的错误。
+  + **azureml-cli-常见**
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+  + **azureml 核心**
+    + 添加了 `--grant-workspace-msi-access` 作为数据存储 CLI 的附加参数，用于注册 Azure Blob 容器，这将允许你注册位于 VNet 后面的 Blob 容器
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+    + 修复了 aks.py _deploy 中的问题
+    + 验证要上传的模型的完整性以避免无提示存储失败。
+  + **azureml-解释**
+    + 向 azureml-解读添加了 azureml 样式的例外
+    + 修复了 keras 模型的 DeepScoringExplainer 序列化
+  + **azureml-核心**
+    + 管道批处理计分笔记本现在使用 ParallelRunStep
+  + **azureml-管道-步骤**
+    + 已移动 `azureml-pipeline-steps` 包中的 `AutoMLStep`。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+  + **contrib-管道-步骤**
+    + 可选参数 side_inputs 添加到 ParallelRunStep。 此参数可用于将文件夹装载到容器上。 当前支持的类型为 DataReference 和 PipelineData。
+  + **azureml-tensorboard**
+    + 更新的 tensorboard 支持 tensorflow 2。0
+  + **azureml-automl-客户端**
+    + 修复了用于筛选自定义特征化配置的问题的 FeaturizationConfig。
+  + **azureml-automl-运行时**
+    + 已移动 `azureml-pipeline-steps` 包中的 `AutoMLStep`。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+  + **azureml-核心**
+    + 支持 PyTorch 估计器中的 PyTorch 版本1。4
+  
 ## <a name="2020-02-04"></a>2020-02-04
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>用于 Python 1.1.0 rc0 的 Azure 机器学习 SDK
 
++ **重大更改**
+  + **语义版本控制2.0。0**
+    + 从版本1.1 开始，Azure ML Python SDK 采用语义版本控制2.0.0。 在[此处](https://semver.org/)了解详细信息。 所有后续版本都将遵循新的编号方案和语义版本控制约定。 
+  
 + **Bug 修复和改进**
   + **automl-运行时**
     + 提高了特征化的速度。
@@ -118,8 +161,7 @@ ms.locfileid: "77030806"
     + 向 Model 和 Service 对象添加了 System.createdby 信息。 可以通过 <var>访问。 created_by
     + 修复了 Save-containerimage （），无法正确设置 Docker 容器的 HTTP 端口。
     + 为 `az ml dataset register` cli 命令 `azureml-dataprep` 可选
-  + **azureml-dataprep**
-    + 修复了一个 bug，其中 to_pandas_dataframe TabularDataset 会错误地回退到备用读取器并输出警告。
+    + 修复了一个 bug，`TabularDataset.to_pandas_dataframe` 会错误地回退到备用读取器并输出警告。
   + **azureml-说明模型**
     + 将 shap 依赖项推迟到 azureml-解释
   + **azureml-核心**
@@ -255,7 +297,7 @@ ms.locfileid: "77030806"
 
 从工作室访问以下基于 web 的创作工具：
 
-| 基于 Web 的工具 | 说明 | 版本类别 |
+| 基于 Web 的工具 | 说明 | 版本 |
 |-|-|-|
 | 笔记本 VM （预览） | 完全托管的基于云的工作站 | 基本 & 企业版 |
 | [自动机器学习](tutorial-first-experiment-automated-ml.md)（预览版） | 没有用于自动执行机器学习模型开发的代码体验 | Enterprise |
@@ -295,7 +337,7 @@ Azure 机器学习现在是事件网格的资源提供程序，您可以通过 A
   + 我们还对 Azure 机器学习计算进行了增强-你现在可以在 Azure Monitor 中查看群集的指标（如总体节点数、运行节点数、总核心配额），除了查看诊断日志以便进行调试。 此外，还可以查看群集上当前正在运行或已排队运行的运行，以及群集中各种节点的 Ip 等详细信息。 可以在门户中查看这些项，也可以使用 SDK 或 CLI 中的相应函数来查看这些项。
 
   + **预览功能**
-    + 正在 Azure 机器学习计算中发布本地 SSD 的磁盘加密的预览版支持。 若要使订阅允许列表使用此功能，请提出技术支持票证。
+    + 正在 Azure 机器学习计算中发布本地 SSD 的磁盘加密的预览版支持。 若要使订阅白名单使用此功能，请提出技术支持票证。
     + Azure 机器学习批推理的公共预览版。 Azure 机器学习批处理推理以不区分时间的大型推理作业为目标。 批处理推理提供了经济高效的推理计算缩放，并为异步应用程序提供了无与伦比的吞吐量。 它经过优化，可对大型数据集合进行高吞吐量、火灾和遗忘的推理。
     + [**contrib-数据集**](https://docs.microsoft.com/python/api/azureml-contrib-dataset)
         + 已对标记的数据集启用功能

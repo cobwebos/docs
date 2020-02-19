@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443595"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462320"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>监视 Azure 认知搜索的操作和活动
 
@@ -52,7 +52,7 @@ ms.locfileid: "77443595"
 
 对于[将哪个层用于生产工作负荷](search-sku-tier.md)或是否要[调整活动副本和分区的数目](search-capacity-planning.md)这样的问题，可以根据这些指标进行最终决策，因为这些指标会显示资源的消耗速度，以及当前配置处理现有负载的有效程度。
 
-与存储相关的警报当前不可用;不会聚合存储消耗，也不会将其记录到 Azure Monitor 中的**AzureMetrics**表中。 你需要构建一个自定义解决方案，用于发出与资源相关的通知，你的代码将检查存储大小并处理响应。 有关存储指标的详细信息，请参阅[获取服务统计](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)信息。
+与存储相关的警报当前不可用;不会聚合存储消耗，也不会将其记录到 Azure Monitor 中的**AzureMetrics**表中。 你需要[构建一个自定义解决方案](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating)，用于发出与资源相关的通知，你的代码将检查存储大小并处理响应。 有关存储指标的详细信息，请参阅[获取服务统计](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response)信息。
 
 对于门户中的可视监视，"**使用情况**" 选项卡会显示相对于服务层强加的当前[限制](search-limits-quotas-capacity.md)的资源可用性。 
 

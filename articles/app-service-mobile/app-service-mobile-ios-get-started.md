@@ -1,27 +1,21 @@
 ---
-title: 创建 iOS 应用程序
+title: 创建 iOS 应用
 description: 遵循本教程，开始使用适用于后端或 Swift 的 iOS 开发 Azure 移动应用。
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: d933319d22fe7622f0409e8931c41a801fcd18ca
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1b1114a22d33689f485aa228a8a1cf65eba719da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668793"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461481"
 ---
-# <a name="create-an-ios-app"></a>创建 iOS 应用程序
+# <a name="create-an-ios-app"></a>创建 iOS 应用
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center 支持以移动应用开发为中心的端到端集成服务。 开发人员可以使用“生成”、“测试”和“分发”服务来设置“持续集成和交付”管道。 部署应用后，开发人员可以使用“分析”和“诊断”服务监视其应用的状态和使用情况，并使用“推送”服务吸引用户。 开发人员还可以利用“身份验证”对其用户进行身份验证，并使用“数据”服务在云中保留和同步应用数据。
->
-> 如果希望将云服务集成到移动应用程序中，请立即注册到 [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) 中。
-
 ## <a name="overview"></a>概述
 
 本教程说明如何将云后端服务 [Azure 应用服务移动应用](app-service-mobile-value-prop.md)添加到 iOS 应用。 第一步是在 Azure 上创建一个新的移动后端。 然后，下载一个简单的“待办事项列表”iOS 示例应用以在 Azure 中存储数据。

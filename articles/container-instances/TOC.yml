@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: 使用 GPU 资源（预览版）
           href: container-instances-gpu.md
-        - name: 启用 SSL 终结点
+        - name: 在挎斗中启用 SSL 终结点
           href: container-instances-container-group-ssl.md
     - name: 装载数据卷
       items:

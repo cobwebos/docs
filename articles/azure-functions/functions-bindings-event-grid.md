@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c9891751ac24a630819d9b0a708ffbd288ac1327
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365152"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461073"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 事件网格绑定
 
@@ -34,9 +34,9 @@ ms.locfileid: "77365152"
 
 ### <a name="functions-2x-and-higher"></a>函数1.x 和更高版本
 
-使用触发器和绑定需要引用适当的包。 NuGet 包用于 .NET 类库，而扩展捆绑所有其他应用程序类型。
+使用触发器和绑定需要引用适当的包。 NuGet 包用于 .NET 类库，而扩展捆绑用于所有其他应用程序类型。
 
-| Language                                        | 添加依据 。                                   | 备注 
+| 语言                                        | 添加依据 。                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安装[NuGet 包]版本2。x | |
 | C#脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑]          | 建议将[Azure 工具扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)用于 Visual Studio Code。 |

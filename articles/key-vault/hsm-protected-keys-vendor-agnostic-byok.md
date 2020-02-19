@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429288"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461733"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>将受 HSM 保护的密钥导入 Key Vault （预览版）
 
@@ -52,13 +52,13 @@ ms.locfileid: "77429288"
 | Azure 订阅 |若要创建 Azure 密钥保管库，需要 Azure 订阅：[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/) |
 | 密钥保管库（高级 SKU），用于导入受 HSM 保护的密钥 |请参阅 [Azure 密钥保管库定价](https://azure.microsoft.com/pricing/details/key-vault/)网站，了解有关 Azure 密钥保管库的服务层级和功能的详细信息。 |
 | 受支持的 hsm 列表中的 HSM 以及 HSM 供应商提供的 BYOK 工具和说明 | 您必须有权访问硬件安全模块和 Hsm 的基本操作知识。 请参阅[支持的 hsm](#supported-hsms)。 |
-| Azure CLI 版本2.0.82 或更高版本 | 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 。|
+| Azure CLI 版本2.1.0 或更高版本 | 有关详细信息，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 。|
 
 ## <a name="supported-hsms"></a>支持的 Hsm
 
 |HSM 供应商名称|支持的 HSM 模型|其他详细信息|
 |---|---|---|
-|Thales|SafeNet Luna HSM 7 系列固件版本7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://safenet.gemalto.com/blah-blah)|
+|Thales|SafeNet Luna HSM 7 系列固件版本7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

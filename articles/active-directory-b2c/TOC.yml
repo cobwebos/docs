@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: 帐户管理
           href: manage-user-accounts-graph-api.md
+        - name: 使用 Azure Pipelines 进行部署
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: 使用 PowerShell 管理策略
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: 审核日志
       href: view-audit-logs.md
     - name: 管理用户 - Azure 门户

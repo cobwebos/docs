@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: 企业安全常规指南
+          href: ./domain-joined/general-guidelines.md
         - name: ESP 群集的计划
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 虚拟网络体系结构
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: 客户管理的密钥磁盘加密
           href: ./disk-encryption.md
+        - name: Ranger 和 Apache Ambari 中的 LDAP 同步
+          href: ./domain-joined/ldap-sync.md
     - name: 如何
       items:
         - name: 使用 ID 代理进行凭据管理
