@@ -59,7 +59,7 @@ Azure IoT 解决方案加速器可以对 IoT 解决方案进行高级控制。 �
 
 可以使用 [IoT 即插即用预览版](../iot-pnp/overview-iot-plug-and-play.md)服务进一步简化为设备创建嵌入代码的方式。 IoT 即插即用使解决方案开发人员能够将设备与其解决方案相集成，而无需编写任何嵌入代码。 IoT 即插即用的核心是描述设备功能的设备功能模型架构。  使用设备功能模型生成嵌入设备代码并配置基于云的解决方案，例如 IoT Central 应用程序。
 
-可以通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将 IoT 工作负荷的部件从 Azure 云服务卸载到你的设备。 IoT Edge 可以降低解决方案中的延迟、减少设备与云的数据交换量，以及启用脱机方案。 可以管理 IoT Central 和某些解决方案加速器中的 IoT Edge 设备。
+可以通过 [Azure IoT Edge](../iot-edge/about-iot-edge.md) 将 IoT 工作负荷的部件从 Azure 云服务下移到你的设备。 IoT Edge 可以降低解决方案中的延迟、减少设备与云的数据交换量，以及启用脱机方案。 可以管理 IoT Central 和某些解决方案加速器中的 IoT Edge 设备。
 
 [Azure Sphere](https://docs.microsoft.com/azure-sphere/product-overview/what-is-azure-sphere) 是一个安全的高级应用程序平台，具有针对互连设备的内置通信和安全功能。 它包括一个安全的微控制器单元、一个自定义的基于 linux 的操作系统和一项基于云的安全服务（提供连续的可续订安全性）。
 
