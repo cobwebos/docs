@@ -12,7 +12,7 @@ ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
 ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/05/2020
 ms.locfileid: "77030806"

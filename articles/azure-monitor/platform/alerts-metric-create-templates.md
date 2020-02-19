@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444003"
+ms.locfileid: "77425130"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -24,7 +24,7 @@ ms.locfileid: "77444003"
 > [!IMPORTANT]
 > 用于创建资源类型的指标警报的资源模板： Azure Log Analytics 工作区（即） `Microsoft.OperationalInsights/workspaces`，需要额外的步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
-基本步骤如下所述：
+基本步骤如下所示：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
@@ -1510,15 +1510,15 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>用于监视多个资源的指标警报模板
 
-上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 对于同一 Azure 区域中的资源，Azure Monitor 现在支持使用单个指标警报规则监视多个资源（属于同一类型）。 此功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL server 数据库、SQL server 弹性池和 Databox edge 设备。 此外，此功能仅适用于平台指标，自定义度量值不支持此功能。
+上一部分中已介绍了一些示例 Azure 资源管理器模板，它们用来创建用于监视单个资源的指标警报。 Azure Monitor 现在支持使用单个指标警报规则监视多个资源。 此功能目前仅在 Azure 公有云中受支持，并且仅适用于虚拟机、SQL 数据库、SQL 弹性池和 Databox Edge 设备。
 
 动态阈值警报规则还可以帮助一次为数百个指标系列（甚至不同类型）创建定制阈值，从而减少需要管理的警报规则。
 
 本部分将介绍适用于三种方案的 Azure 资源管理器模板，它们用于使用单个规则监视多个资源。
 
 - 监视一个或多个资源组中的所有虚拟机（在单个 Azure 区域中）。
-- 监视订阅中的所有虚拟机（在一个 Azure 区域中）。
-- 监视订阅中的虚拟机列表（在一个 Azure 区域中）。
+- 监视单个订阅中的所有虚拟机（在单个 Azure 区域中）。
+- 监视单个订阅中的一个虚拟机列表（在单个 Azure 区域中）。
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>一个或多个资源组中所有虚拟机上的静态阈值警报
 

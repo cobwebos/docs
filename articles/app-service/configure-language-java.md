@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: f6f334ed6b84d4688849b6dfd8cb1f79f8db57bf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425283"
+ms.locfileid: "77443888"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>为 Azure App Service 配置 Windows Java 应用
 
@@ -128,9 +128,9 @@ az webapp start --name <app-name> --resource-group <resource-group-name>
 
 在 Azure 门户中设置采用**身份验证和授权**选项的应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。 有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](configure-authentication-provider-aad.md)，以及其他标识提供者的相关文章。 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](app-service-authentication-how-to.md)一文中的说明。
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat 和 Wildfly
+#### <a name="tomcat"></a>Tomcat
 
-Tomcat 或 Wildfly 应用程序可以通过将主体对象强制转换为 Map 对象，直接从 servlet 访问用户的声明。 Map 对象会将每个声明类型映射到该类型的声明的集合。 在下面的代码中，`request` 是 `HttpServletRequest`的实例。
+Tomcat 应用程序可以通过将主体对象强制转换为 Map 对象，直接从 servlet 访问用户的声明。 Map 对象会将每个声明类型映射到该类型的声明的集合。 在下面的代码中，`request` 是 `HttpServletRequest`的实例。
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
