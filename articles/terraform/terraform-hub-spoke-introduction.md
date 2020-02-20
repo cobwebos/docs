@@ -3,12 +3,12 @@ title: 教程 - 使用 Terraform 在 Azure 中创建中心辐射型混合网络�
 description: 本教程演示如何使用 Terraform 在 Azure 中创建完整的混合网络参考体系结构
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159032"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472173"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>教程：使用 Terraform 在 Azure 中创建中心辐射型混合网络拓扑
 
@@ -26,11 +26,11 @@ ms.locfileid: "74159032"
 > * 使用 Terraform 在本地与 Azure 网络之间建立网关和连接
 > * 使用 Terraform 来与辐射网络建立 VNet 对等互连
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **安装并配置 Terraform**：若要在 Azure 中预配 VM 和其他基础结构，请[安装并配置 Terraform](/azure/virtual-machines/linux/terraform-install-configure)
+- **安装并配置 Terraform**：若要在 Azure 中预配 VM 和其他基础结构，请[安装并配置 Terraform](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>中心辐射型拓扑体系结构
 
@@ -117,7 +117,7 @@ ms.locfileid: "74159032"
     }
     ```
 
-1. 保存该文件并退出编辑器。
+1. 保存文件并退出编辑器。
 
 ## <a name="create-the-variables-file"></a>创建 variables 文件
 

@@ -3,21 +3,18 @@ title: 查看和下载 Microsoft Azure 发票
 description: 介绍如何查看和下载 Microsoft Azure 发票。
 keywords: 帐单发票, 发票下载, azure 发票, azure 使用情况
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987819"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200259"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
 
@@ -87,7 +84,7 @@ ms.locfileid: "75987819"
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>通过电子邮件获取 Microsoft 客户协议发票
 
-如果你有签订了 Microsoft 客户协议的计费帐户，则可以选择通过电子邮件获取发票。 在帐单配置文件中拥有所有者、参与者、读者或发票管理者角色的所有用户都将通过电子邮件获取其发票。 
+如果你有签订了 Microsoft 客户协议的计费帐户，则可以选择通过电子邮件获取发票。 在帐单配置文件中拥有所有者、参与者、读者或发票管理者角色的所有用户都将通过电子邮件获取其发票。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
@@ -109,11 +106,11 @@ ms.locfileid: "75987819"
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>选择不通过电子邮件获取 Microsoft 客户协议发票
 
-若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击“选择退出”  。拥有所有者、参与者、读者或发票管理者角色的所有用户都将选择退出通过电子邮件获取发票。 
+若要选择不通过电子邮件获取发票，请按照前面的步骤进行操作，并单击“选择退出”  。拥有所有者、参与者、读者或发票管理者角色的所有用户都将选择退出通过电子邮件获取发票。
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>允许其他人访问 Microsoft 客户协议发票
 
-你可以通过为其他人分配计费配置文件的发票管理者角色，允许其他人查看、下载和支付发票。 如果你已选择通过电子邮件获取发票，则这些用户也将通过电子邮件获取发票。 
+你可以通过为其他人分配计费配置文件的发票管理者角色，允许其他人查看、下载和支付发票。 如果你已选择通过电子邮件获取发票，则这些用户也将通过电子邮件获取发票。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 

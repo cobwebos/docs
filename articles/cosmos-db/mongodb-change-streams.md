@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184738"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467771"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>更改 Azure Cosmos DB 的适用于 MongoDB 的 API 中的流
 
 通过使用更改流 API，可以使用 Azure Cosmos DB 的 API for MongoDB 中的[更改源](change-feed.md)支持。 通过使用更改流 API，你的应用程序可以获取对集合或单个分片中的项所做的更改。 稍后，你可以根据结果采取进一步操作。 对集合中的项所做的更改将按照其修改时间的顺序进行捕获，并按分片键保证排序顺序。
+
+> [!NOTE]
+> 若要使用更改流，请使用版本 3.6 Azure Cosmos DB 的适用于 MongoDB 的 API 或更高版本创建帐户。 如果对早期版本运行更改流示例，可能会看到 `Unrecognized pipeline stage name: $changeStream` 错误。 
 
 下面的示例演示如何获取集合中所有项的更改流。 此示例在插入、更新或替换项时创建光标来监视项。 获取更改流需要 $match 阶段、$project 阶段和 fullDocument 选项。 当前不支持监视使用更改流的删除操作。 作为一种解决方法，你可以对要删除的项添加软标记。 例如，你可以在名为 "deleted" 的项中添加一个属性，并将其设置为 "true"，并在该项上设置 TTL，以便可以自动删除它并进行跟踪。
 

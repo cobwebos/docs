@@ -3,18 +3,18 @@ title: 教程 - 使用 Terraform 通过 Packer 自定义映像创建 Azure 虚�
 description: 使用 Terraform 通过 Packer 生成的自定义映像配置 Azure 虚拟机规模集（配有虚拟网络和托管的附加磁盘）并对其进行版本控制。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159281"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472192"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>教程：使用 Terraform 通过 Packer 自定义映像创建 Azure 虚拟机规模集
 
 在本教程中，你将使用 [Terraform](https://www.terraform.io/) 并通过 [HashiCorp 配置语言](https://www.terraform.io/docs/configuration/syntax.html) (HCL) 创建和部署含有托管磁盘的 [ Azure 虚拟机规模集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)（使用 [Packer](https://www.packer.io/intro/index.html) 生成的自定义映像创建）。 
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置 Terraform 部署。
@@ -26,9 +26,9 @@ ms.locfileid: "74159281"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- **Terraform**：[安装 Terraform 并配置对 Azure 的访问](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**：[安装 Terraform 并配置对 Azure 的访问](terraform-install-configure.md)。
 - **SSH 密钥对**：[创建 SSH 密钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 - **Packer**：[安装 Packer](https://www.packer.io/docs/install/index.html)。
 
@@ -36,9 +36,9 @@ ms.locfileid: "74159281"
 
 在空目录中使用以下名称创建 3 个新文件：
 
-- `variables.tf`：此文件保存模板中所用的变量值。
-- `output.tf`：此文件说明部署后显示的设置。
-- `vmss.tf`：此文件包含要部署的基础结构的代码。
+- `variables.tf`设置用户帐户 ：此文件保存模板中所用的变量值。
+- `output.tf`设置用户帐户 ：此文件说明部署后显示的设置。
+- `vmss.tf`设置用户帐户 ：此文件包含要部署的基础结构的代码。
 
 ##  <a name="create-the-variables"></a>创建变量 
 

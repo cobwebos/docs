@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e44a7e71858f028b798720c5505eacbfe8c2332
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188177"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472037"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>适用于 Azure 数据资源管理器的 azure DevOps 任务
 
@@ -22,7 +22,7 @@ ms.locfileid: "77188177"
 
 本文档介绍了使用**Azure 数据资源管理器-管理命令**任务将架构更改部署到数据库的简单示例。 有关完整的 CI/CD 管道，请参阅[Azure DevOps 文档](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops#vsts)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * Azure 数据资源管理器群集设置：
@@ -42,7 +42,7 @@ ms.locfileid: "77188177"
 ![创建文件夹](media/devops/create-folders.png)
 
 > [!TIP]
-> 创建自己的工作流时，建议使代码具有幂等性。 例如，使用创建[-合并表](/azure/kusto/management/create-table-command#create-merge-table)而不是[。 create table](/azure/kusto/management/create-table-command)，并使用[. create 或 alter](/azure/kusto/management/functions#create-or-alter-function) function，而不是[. create](/azure/kusto/management/functions#create-function) function。
+> 创建自己的工作流时，建议使代码具有幂等性。 例如，使用创建[-合并表](/azure/kusto/management/create-table-command#create-merge-table)而不是[。 create table](/azure/kusto/management/create-table-command)，并使用[. create 或 alter](/azure/kusto/management/create-alter-function) function，而不是[. create](/azure/kusto/management/create-function) function。
 
 ## <a name="create-a-release-pipeline"></a>创建发布管道
 

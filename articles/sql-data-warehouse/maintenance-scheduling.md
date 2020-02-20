@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839794"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471782"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>使用维护计划管理服务更新和维护
 
@@ -37,7 +37,7 @@ ms.locfileid: "73839794"
 24小时提前通知优先于不属于 DWC400c 和更低层的所有维护事件。
 
 > [!NOTE]
-> 在我们需要部署时间关键型更新的情况下，提前通知时间可能会显著减少。
+> 如果需要部署时间重要更新，高级通知时间可能会显著降低。
 
 如果提前收到了维护通知，但 SQL 数据仓库无法在此期间执行维护，则你会收到取消通知。 随即会在下一个计划的维护期间继续进行维护。
 
@@ -55,9 +55,9 @@ ms.locfileid: "73839794"
 
 若要查看已应用于你的数据仓库的维护计划，请完成以下步骤：
 
-1.  登录到 [Azure 门户](https://portal.azure.com/)。
+1.  登录 [Azure 门户](https://portal.azure.com/)。
 2.  选择要查看的数据仓库。 
-3.  所选的数据仓库将在“概述”边栏选项卡上打开。 应用于该数据仓库的维护计划将显示在“维护计划”下方。
+3.  所选的数据仓库将在“概述”边栏选项卡上打开。 应用到数据仓库的维护计划显示在**维护计划**下。
 
 ![概述边栏选项卡](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
 
@@ -71,9 +71,9 @@ ms.locfileid: "73839794"
 主要和辅助时段必须包含不同的日期范围。 例如，主要时段为星期二到星期四，辅助时段为星期六到星期日。
 
 若要更改数据仓库的维护计划，请完成以下步骤：
-1.  登录到 [Azure 门户](https://portal.azure.com/)。
+1.  登录 [Azure 门户](https://portal.azure.com/)。
 2.  选择要更新的数据仓库。 页面将在概述边栏选项卡上打开。 
-3.  在概述边栏选项卡上选择“维护计划(预览版)摘要”链接，打开维护计划设置的页面。 或者，选择左侧资源菜单中的“维护计划”选项。  
+3.  通过选择 "概述" 边栏选项卡上的 "**维护计划摘要**" 链接，打开 "维护计划设置" 页。 或者，选择左侧资源菜单中的“维护计划”选项。  
 
     ![概述边栏选项卡选项](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 

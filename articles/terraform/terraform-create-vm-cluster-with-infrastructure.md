@@ -3,12 +3,12 @@ title: 教程 - 使用 Terraform 和 HCL 创建 Azure VM 群集
 description: 使用 Terraform 和 HCL 在 Azure 中创建具有负载均衡器的 Linux 虚拟机群集
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665356"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470864"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>教程：使用 Terraform 和 HCL 创建 Azure VM 群集
 
@@ -28,11 +28,11 @@ ms.locfileid: "75665356"
 ## <a name="1-set-up-azure-authentication"></a>1.设置 Azure 身份验证
 
 > [!NOTE]
-> 如果[使用 Terraform 环境变量](/azure/virtual-machines/linux/terraform-install-configure)或在 [Azure Cloud Shell](terraform-cloud-shell.md) 中运行此教程，请跳过此部分。
+> 如果[使用 Terraform 环境变量](terraform-install-configure.md)或在 [Azure Cloud Shell](terraform-cloud-shell.md) 中运行此教程，请跳过此部分。
 
 此部分中，将生成 Azure 服务主体和两个包含安全性主体中的凭据的 Terraform 配置文件。
 
-1. [设置 Azure AD 服务主体](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure)，使 Terraform 将资源预配到 Azure。 创建主体时，请注意订阅 ID、租户、appId 和密码的值。
+1. [设置 Azure AD 服务主体](terraform-install-configure.md#set-up-terraform-access-to-azure)，使 Terraform 将资源预配到 Azure。 创建主体时，请注意订阅 ID、租户、appId 和密码的值。
 
 2. 打开命令提示符。
 

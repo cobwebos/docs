@@ -2,24 +2,21 @@
 title: 根据需要组织发票 - Azure
 description: 了解如何在发票中组织成本。
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843882"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200738"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>通过自定义计费帐户来组织成本
 
-Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目或开发环境）灵活组织成本。 
+Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目或开发环境）灵活组织成本。
 
 本文介绍如何使用 Azure 门户来组织成本。 本文的内容适用于 Microsoft 客户协议的计费帐户。 [检查你是否有权访问 Microsoft 客户协议](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -33,7 +30,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 计费配置文件代表发票和相关的计费信息（例如付款方式和计费地址）。 每月发票是在当月开始时针对帐户中的每项计费对象信息生成的。 发票包含上个月的 Azure 使用费以及其他购买项的费用。
 
-注册 Azure 时，会自动创建计费配置文件和计费帐户。 可以创建更多的计费配置文件，以便在多份月度发票中组织成本。 
+注册 Azure 时，会自动创建计费配置文件和计费帐户。 可以创建更多的计费配置文件，以便在多份月度发票中组织成本。
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 ### <a name="invoice-section"></a>发票科目
 
-发票科目代表发票中成本的分组。 系统会自动为帐户中的每个计费配置文件创建一个发票科目。 可以根据需要创建其他科目来组织成本。 每个发票科目显示在发票上，其中包括当月产生的费用。 
+发票科目代表发票中成本的分组。 系统会自动为帐户中的每个计费配置文件创建一个发票科目。 可以根据需要创建其他科目来组织成本。 每个发票科目显示在发票上，其中包括当月产生的费用。
 
-下图显示了包含两个发票科目（“工程”和“营销”）的发票。 每个科目的摘要和详细费用显示在发票中。 图中所示的价格仅为示例，而不代表 Azure 服务的实际价格。 
+下图显示了包含两个发票科目（“工程”和“营销”）的发票。 每个科目的摘要和详细费用显示在发票中。 图中所示的价格仅为示例，而不代表 Azure 服务的实际价格。
 
 ![显示包含科目的发票的插图](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
    ![显示在门户中搜索“成本管理 + 计费”的屏幕截图](./media/mca-section-invoice/search-cmb.png)
 
-3. 在左侧窗格中选择“计费配置文件”。  在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。 
+3. 在左侧窗格中选择“计费配置文件”。  在列表中选择一个计费配置文件。 新科目将显示在所选计费配置文件的发票上。
 
    [![显示计费配置文件列表的屏幕截图](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
    [![演示如何添加发票科目的屏幕截图](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. 输入发票科目的名称。 
+5. 输入发票科目的名称。
 
    [![显示发票科目创建页的屏幕截图](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 
 6. 选择发票科目以链接订阅费用。 费用将显示在计费配置文件发票上的此科目下。
 
-7. 选择 Azure 计划，并输入订阅的易记名称。 
+7. 选择 Azure 计划，并输入订阅的易记名称。
 
 9. 单击“创建”。   
 
 ### <a name="link-existing-subscriptions-and-products"></a>链接现有的订阅和产品
 
-如果你有现有的 Azure 订阅或其他产品（例如 Azure 市场和应用源资源），可将其从现有发票科目移到另一个发票科目，以重新组织成本。 
+如果你有现有的 Azure 订阅或其他产品（例如 Azure 市场和应用源资源），可将其从现有发票科目移到另一个发票科目，以重新组织成本。
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 |---------|---------|---------|
 |前 50 TB 中每 TB 费用为 1.84/月    | 50 TB        | 92.0  |
 |后 450 TB 中每 TB 费用为 1.77/月    |  0 TB         | 0.0  |
-|总计     |     50 TB  | 92.0 
+|总计     |     50 TB  | 92.0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ Microsoft 客户协议的计费帐户可让你根据需要（按部门、项目�
 |---------|---------|---------|
 |前 50 TB 中每 TB 费用为 1.84/月    | 50 TB        | 92.0  |
 |后 450 TB 中每 TB 费用为 1.77/月    |  0 TB         | 0.0  |
-|总计     |     50 TB  | 92.0 
+|总计     |     50 TB  | 92.0
 
 在此场景中，使用 100 TB 数据的总费用为 **184.0** (92.0 * 2)。
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Azure 预留权益可能不会应用到所有订阅
 
-具有共享范围的 Azure 预留将应用到单个计费配置文件中的订阅，且不在计费配置文件之间共享。 
+具有共享范围的 Azure 预留将应用到单个计费配置文件中的订阅，且不在计费配置文件之间共享。
 
 ![不同计费帐户结构的预留应用信息图](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-在上图中，Contoso 有两个订阅。 将会根据计费帐户的构建方式，以不同的方式应用 Azure 预留权益。 在左侧的场景中，预留权益将应用到从工程计费配置文件计费的两个订阅。 在右侧的场景中，预留权益只会应用到订阅 1，因为该订阅是唯一一个从工程计费配置文件计费的订阅。 
+在上图中，Contoso 有两个订阅。 将会根据计费帐户的构建方式，以不同的方式应用 Azure 预留权益。 在左侧的场景中，预留权益将应用到从工程计费配置文件计费的两个订阅。 在右侧的场景中，预留权益只会应用到订阅 1，因为该订阅是唯一一个从工程计费配置文件计费的订阅。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

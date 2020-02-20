@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053805"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466920"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
@@ -23,9 +23,9 @@ ms.locfileid: "73053805"
 
 有关 Hive JDBC 接口的详细信息，请参阅 [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-* HDInsight Hadoop 群集。 要创建此群集，请参阅 [Azure HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。
+* HDInsight Hadoop 群集。 要创建此群集，请参阅 [Azure HDInsight 入门](apache-hadoop-linux-tutorial-get-started.md)。 确保服务 HiveServer2 正在运行。
 * [Java 开发人员工具包（JDK）版本 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)或更高版本。
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/)。 SQuirreL 是 JDBC 客户端应用程序。
 
@@ -71,7 +71,7 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 5. 在“添加驱动程序”对话框中，添加以下信息：
 
-    |properties | Value |
+    |properties | 值 |
     |---|---|
     |名称|Hive|
     |示例 URL|jdbc： hive2：//localhost： 443/default; transportMode = http; ssl = true; httpPath =/hive2|
@@ -88,11 +88,11 @@ SQuirreL SQL 是一种 JDBC 客户端，可用于通过 HDInsight 群集远程�
 
 7. 将以下值用于 "**添加别名**" 对话框：
 
-    |properties |Value |
+    |properties |值 |
     |---|---|
     |名称|Hive on HDInsight|
     |驱动程序|使用下拉箭头选择**Hive**驱动程序。|
-    |URL|jdbc： hive2：//CLUSTERNAME.azurehdinsight.net： 443/default; transportMode = http; ssl = true; httpPath =/hive2。 将 **CLUSTERNAME** 替换为 HDInsight 群集名。|
+    |代码|jdbc： hive2：//CLUSTERNAME.azurehdinsight.net： 443/default; transportMode = http; ssl = true; httpPath =/hive2。 将 **CLUSTERNAME** 替换为 HDInsight 群集名。|
     |用户名|HDInsight 群集的群集登录帐户名。 默认值为**admin**。|
     |密码|群集登录帐户的密码。|
 

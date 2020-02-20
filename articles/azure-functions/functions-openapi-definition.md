@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562007"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210202"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>使用 Azure API 管理为无服务器 API 创建 OpenAPI 定义
 
@@ -45,7 +45,7 @@ ms.locfileid: "75562007"
 
 1. 选择“更多模板...”  ，然后选择“完成并查看模板” 
 
-1. 选择 HTTP 触发器，键入 `TurbineRepair` 作为函数**名称**，选择 `Function` 作为[身份验证级别](functions-bindings-http-webhook.md#http-auth)，然后选择“创建”   。  
+1. 选择 HTTP 触发器，键入 `TurbineRepair` 作为函数**名称**，选择 `Function` 作为[身份验证级别](functions-bindings-http-webhook-trigger.md#http-auth)，然后选择“创建”   。  
 
     ![创建用于 OpenAPI 的 HTTP 函数](media/functions-openapi-definition/select-http-trigger-openapi.png)
 

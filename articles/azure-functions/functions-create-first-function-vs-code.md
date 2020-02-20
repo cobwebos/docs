@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964063"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208942"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure Functions 项目
 
@@ -68,24 +68,24 @@ ms.locfileid: "76964063"
 1. 根据提示提供以下信息：
 
     ::: zone pivot="programming-language-csharp"
-    + **选择函数项目的语言**：选择 `C#`。
+    + **选择函数项目的语言**：选择`C#`。
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **选择函数项目的语言**：选择 `JavaScript`。
+    + **选择函数项目的语言**：选择`JavaScript`。
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **选择函数项目的语言**：选择 `TypeScript`。
+    + **选择函数项目的语言**：选择`TypeScript`。
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **选择函数项目的语言**：选择 `PowerShell`。
+    + **选择函数项目的语言**：选择`PowerShell`。
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **选择函数项目的语言**：选择 `Python`。
+    + **选择函数项目的语言**：选择`Python`。
 
     + **选择一个 Python 别名以创建虚拟环境**：选择 Python 解释器的位置。 如果该位置未显示，请键入 Python 二进制文件的完整路径。  
     ::: zone-end
 
-    + **为项目的第一个函数选择模板**：选择 `HTTP trigger`。
+    + **为项目的第一个函数选择模板**：选择`HTTP trigger`。
     
     + **提供函数名称**：键入 `HttpExample`。
     
@@ -93,7 +93,7 @@ ms.locfileid: "76964063"
     + **提供命名空间**：键入 `My.Functions`。 
     ::: zone-end
 
-    + **授权级别**：选择 `Anonymous`，这使任何人都可以调用你的函数终结点。 若要了解授权级别，请参阅[授权密钥](functions-bindings-http-webhook.md#authorization-keys)。
+    + **授权级别**：选择 `Anonymous`，这使任何人都可以调用你的函数终结点。 若要了解授权级别，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     + **选择打开项目的方式**：选择`Add to workspace`。
 

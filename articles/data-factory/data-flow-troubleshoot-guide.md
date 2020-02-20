@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2020
-ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029514"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472122"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure 数据工厂中的数据流故障排除
 
@@ -29,8 +29,8 @@ ms.locfileid: "77029514"
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>错误代码： DF-执行器-SystemImplicitCartesian
 
 - **消息**：不支持对内部联接使用隐式笛卡尔积，请改用交叉联接。 联接中使用的列应为行创建唯一键。
-- **原因**：不支持逻辑计划之间的内部联接的隐式笛卡尔积。 如果联接中使用的列创建唯一键
-- **建议**：对于基于不相等的联接，你必须选择 "交叉联接"。
+- **原因**：不支持逻辑计划之间的内部联接的隐式笛卡尔积。 如果联接中使用的列创建唯一键，则至少需要从关系的双方中有一列。
+- **建议**：对于基于不相等的联接，你必须选择 "自定义交叉联接"。
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>错误代码： DF-执行器-SystemInvalidJson
 

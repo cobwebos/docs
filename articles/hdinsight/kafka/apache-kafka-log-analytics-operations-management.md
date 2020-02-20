@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894263"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471174"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>分析 HDInsight 上 Apache Kafka 的日志
 
 了解如何使用 Azure Monitor 日志来分析 HDInsight 上 Apache Kafka 生成的日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>日志位置
+
+群集中 Apache Kafka 日志位于 `/var/log/kafka`。 不管是否使用托管磁盘，都不会在群集生命周期中保存或保存 Kafka 日志。 下表显示了可用的日志。
+
+|日志 |说明 |
+|---|---|
+|kafka|Kafka 进程的 stdout 和 stderr。 你会在此文件中找到 Kafka 的启动和关闭日志。|
+|服务器 .log|主 Kafka 服务器日志。 所有 Kafka broker 日志都在此结束。|
+|controller .log|控制器日志，前提是代理充当控制器。|
+|statechange|将所有状态更改事件都记录在此文件中。|
+|kafka-gc|Kafka 垃圾回收统计信息。|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>为 Apache Kafka 启用 Azure Monitor 日志
 
@@ -82,7 +94,7 @@ ms.locfileid: "74894263"
 
     也可输入 `*` 来搜索全部已记录的类型。 当前有以下日志可用于查询：
 
-    | 日志类型 | 描述 |
+    | 日志类型 | 说明 |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka broker server.log |
     | log\_kafkacontroller\_CL | Kafka broker controller.log |

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367628"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470881"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -407,7 +407,7 @@ rmdir $packageName -Force -Verbose
 
 下面介绍如何设置脱机使用的许可证： 
 
-1. 从适用于企业的 Microsoft Store 下载应用程序包、许可证和所需框架。 你需要编码的和未编码的许可证文件。 可在[此处](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/)找到详细的下载说明。
+1. 从适用于企业的 Microsoft Store 下载应用程序包、许可证和所需框架。 你需要编码的和未编码的许可证文件。 可在[此处](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)找到详细的下载说明。
 2. 请在步骤3：
       1. `$contentID` 是未编码的许可证文件（.xml）的 Id 为值。 可以在所选的文本编辑器中打开许可证文件。
       2. `$licenseBlob` 是编码的许可证文件（bin）中许可证 blob 的整个字符串。 可以在所选的文本编辑器中打开编码的许可证文件。 
