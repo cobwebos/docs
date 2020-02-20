@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845905"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210219"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>在 Azure 中创建首个 PowerShell 函数
 
@@ -61,7 +61,7 @@ ms.locfileid: "76845905"
 1. 选择“HTTP 触发器”作为第一个函数的模板，使用 `HTTPTrigger` 作为函数名称，然后选择授权级别“函数”。  
 
     > [!NOTE]
-    > 在 Azure 中调用函数终结点时，[函数](functions-bindings-http-webhook.md#authorization-keys) 授权级别需要“函数密钥”值。  这样可以增大任何人调用你的函数的难度。
+    > 在 Azure 中调用函数终结点时，[函数](functions-bindings-http-webhook-trigger.md#authorization-keys) 授权级别需要“函数密钥”值。  这样可以增大任何人调用你的函数的难度。
 
 1. 出现提示时，选择“添加到工作区”  。
 

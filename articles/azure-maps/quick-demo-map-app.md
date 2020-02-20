@@ -1,20 +1,20 @@
 ---
 title: 快速入门：使用 Azure Maps 执行交互式地图搜索 | Microsoft Azure Maps
 description: 了解如何使用 Microsoft Azure Maps Web SDK 创建用于交互式地图搜索的演示 Web 应用程序。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 74539a7ed74d0216f1a4bb2d719983895d8b320f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156431"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209624"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 

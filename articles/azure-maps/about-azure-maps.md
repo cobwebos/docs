@@ -1,20 +1,20 @@
 ---
 title: 概述 | Microsoft Azure Maps
 description: 了解 Microsoft Azure Maps 中的服务和功能，以及如何在应用程序中使用这些服务和功能。
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190354"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443657"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -45,13 +45,13 @@ Azure Maps 是一系列地理空间服务，它使用全新地图绘制数据为
 
 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图。 可以将此交互式地图用于 Web 或移动应用程序。 地图控件使用 WebGL，因此可以呈现大型数据集，同时保持高性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
-![人口变化的地图示例](media/about-azure-maps/Introduction_WebMapControl.png)
+![人口变化的地图示例](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 使用 Azure Maps Android SDK 创建移动地图绘制应用程序。 
 
-![移动设备上的地图示例](media/about-azure-maps/AndroidSDK.png)
+![移动设备上的地图示例](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Azure Maps 中的服务
 
@@ -73,7 +73,7 @@ Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可�
 
 呈现服务帮助开发人员创建带地图功能的 Web 和移动应用程序。 该服务使用有 19 个缩放级别的高品质光栅图形图像或完全可自定义的矢量格式的地图图像。
 
-![呈现服务中的地图示例](media/about-azure-maps/Introduction_Map.png)
+![呈现服务中的地图示例](media/about-azure-maps/intro_map.png)
 
 呈现服务现在提供预览版 API，使开发人员能够使用卫星图像。 有关更多详细信息，请阅读[呈现 API 文档](https://docs.microsoft.com/rest/api/maps/render)。
 
@@ -81,7 +81,7 @@ Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可�
 
 “路线”服务包含实际基础结构的可靠几何计算，以及多种运输模式的指示。 通过此服务，开发人员可以计算大量出行模式（例如汽车、卡车、自行车或步行）的指示。 此服务还考虑流量条件、重量限制或危险材料运输等因素。
 
-![路线服务中的地图示例](media/about-azure-maps/Introduction_Route.png)
+![路线服务中的地图示例](media/about-azure-maps/intro_route.png)
 
 路线服务可以预览高级功能，例如： 
 
@@ -95,7 +95,7 @@ Azure Maps 移动服务可以实现实时行程规划。 它返回最佳的可�
 
 搜索服务帮助开发人员按名称或类别搜索地址、地点、商家列表和其他地理信息。 搜索服务能根据纬度和经度将地址和十字路口进行[反向地理编码](https://en.wikipedia.org/wiki/Reverse_geocoding)。
 
-![地图上的搜索示例](media/about-azure-maps/Introduction_Search.png)
+![地图上的搜索示例](media/about-azure-maps/intro_search.png)
 
 搜索服务还提供高级功能，例如：
 
@@ -149,7 +149,7 @@ Azure Maps 空间操作服务获取位置信息。 它会快速分析位置信�
 * 交通流量：在路网中对所有关键道路进行实时观察获得的车速和行驶时间。
 * 交通事故：有关路网周围的交通堵塞和事故的最新视图。
 
-![含交通信息的地图示例](media/about-azure-maps/Introduction_Traffic.png)
+![含交通信息的地图示例](media/about-azure-maps/intro_traffic.png)
 
 有关详细信息，请参阅[交通 API 文档](https://docs.microsoft.com/rest/api/maps/traffic)。
 
