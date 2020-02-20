@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4c150d874d56e3de495b0682bee979d13304a01d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202211"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471668"
 ---
 在预览中，启用了共享磁盘的托管磁盘受到以下限制：
 
@@ -26,4 +26,4 @@ ms.locfileid: "77202211"
 - 只能将可用性集和虚拟机规模集用于 `FaultDomainCount` 设置为1。
 - Azure 备份和 Azure Site Recovery 支持尚不可用。
 
-如果你对尝试共享磁盘感兴趣，请[注册预览](https://aka.ms/shareddisksignup)。
+如果你对尝试共享磁盘感兴趣，请[注册预览](https://aka.ms/AzureSharedDiskPreviewSignUp)。

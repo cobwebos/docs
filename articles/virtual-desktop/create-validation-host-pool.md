@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 98d1a9c3dd86972990ae896d156be6c6aedfff77
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606921"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367402"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -20,12 +20,12 @@ ms.locfileid: "73606921"
 
 若要确保应用适用于最新更新，验证主机池应尽可能类似于生产环境中的主机池。 用户应如同连接到生成主机池一样频繁地连接到验证主机池。 如果在主机池上进行自动测试，则应在验证主机池上包含自动测试。
 
-可以使用[诊断功能](diagnostics-role-service.md)或 [Windows 虚拟桌面故障排除文章](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview)对验证主机池中的问题进行调试。
+可以使用[诊断功能](diagnostics-role-service.md)或 [Windows 虚拟桌面故障排除文章](troubleshoot-set-up-overview.md)对验证主机池中的问题进行调试。
 
 >[!NOTE]
 > 建议保留验证主机池以测试所有将来的更新。
 
-在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做）。 然后，运行以下 cmdlet 登录到你的帐户：
+在开始之前，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做）。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 管理 Azure 动态库存
 keywords: ansible, azure, devops, bash, cloudshell, 动态库存
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442792"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193593"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>教程：使用 Ansible 配置 Azure 资源的动态库存
 
@@ -47,7 +47,7 @@ ms.locfileid: "75442792"
 
 1. 使用以下方法之一在 Azure 上创建两个 Linux 虚拟机：
 
-    - **Ansible 演练手册** - [使用 Ansible 在 Azure 中创建基本的虚拟机](/azure/virtual-machines/linux/ansible-create-vm)一文演示了如何通过 Ansible 演练手册创建虚拟机。 如果使用演练手册定义其中的一个或两个虚拟机，请确保使用 SSH 连接，而不要使用密码。
+    - **Ansible 演练手册** - [使用 Ansible 在 Azure 中创建基本的虚拟机](./ansible-create-vm.md)一文演示了如何通过 Ansible 演练手册创建虚拟机。 如果使用演练手册定义其中的一个或两个虚拟机，请确保使用 SSH 连接，而不要使用密码。
 
     - **Azure CLI** - 在 Cloud Shell 中发出以下每条命令，以创建两个虚拟机：
 
@@ -316,4 +316,4 @@ Ansible 提供一个名为 [azure_rm.py](https://github.com/ansible/ansible/blob
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"] 
-> [快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机](/azure/virtual-machines/linux/ansible-create-vm)
+> [快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机](./ansible-create-vm.md)

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: tagore
-ms.openlocfilehash: 16b0727a78ad8ad582535fa1f5b0e57079cc4c05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b4028a09f69acd5d7a6579b4610785ed32e227d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385580"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469521"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>收集 Azure 云服务的性能计数器
 
@@ -103,7 +103,7 @@ Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -E
 
 Application Insights 会自动收集以下性能计数器：
 
-* \Process （？？APP_WIN32_PROC？？）\% 处理器时间
+* \Process(??APP_WIN32_PROC??)\%处理器时间
 * \Memory\Available Bytes
 * \.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -121,7 +121,7 @@ Application Insights 会自动收集以下性能计数器：
 
 要收集的性能计数器在 **diagnostics.wadcfgx** 文件中定义。 请在 Visual Studio 中打开此文件（为每个角色定义了此文件），并找到 **DiagnosticsConfiguration** > **PublicConfig** > **WadCfg** > **DiagnosticMonitorConfiguration** > **PerformanceCounters** 元素。 将新的 **PerformanceCounterConfiguration** 元素添加为子级。 此元素有两个属性：`counterSpecifier` 和 `sampleRate`。 `counterSpecifier` 属性定义要收集的系统性能计数器集（请参阅上一部分）。 `sampleRate` 值指示轮询值的频率。 将会根据父 `PerformanceCounters` 元素的 `scheduledTransferPeriod` 属性值，将所有性能计数器作为一个整体传输到 Azure。
 
-有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)。
+有关 `PerformanceCounters` 架构元素的详细信息，请参阅 [Azure 诊断架构](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)。
 
 `sampleRate` 属性定义的时间段使用 XML 持续时间数据类型来指示轮询性能计数器的频率。 在以下示例中，频率设置为 `PT3M`，表示 `[P]eriod[T]ime[3][M]inutes`：每隔 3 分钟。
 
@@ -291,7 +291,7 @@ counterServiceUsed.Increment();
 - [适用于 Azure 云服务的 Application Insights](../azure-monitor/app/cloudservices.md#performance-counters)
 - [Application Insights 中的系统性能计数器](../azure-monitor/app/performance-counters.md)
 - [指定计数器路径](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
-- [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+- [Azure 诊断架构 - 性能计数器](../azure-monitor/platform/diagnostics-extension-schema-windows.md#performancecounters-element)
 
 
 

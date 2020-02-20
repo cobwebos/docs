@@ -3,12 +3,12 @@ title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控�
 description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772860"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472258"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "76772860"
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
+- **配置 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](terraform-install-configure.md)一文中的指导
 
 - **Azure 资源组**：如果没有用于演示的 Azure 资源组，请[创建 Azure 资源组](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups)。 记下资源组名称和位置，因为这些值将在演示中使用。
 

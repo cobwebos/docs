@@ -3,12 +3,12 @@ title: 将 Java 函数连接到 Azure 存储
 description: 了解如何使用队列存储输出绑定将 HTTP 触发的 Java 函数连接到 Azure 存储。
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926895"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198541"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>将 Java 函数连接到 Azure 存储
 
@@ -18,7 +18,7 @@ ms.locfileid: "74926895"
 
 大多数绑定都需要一个存储的连接字符串，函数将使用该字符串来访问绑定的服务。 为便于建立此连接，请使用连同函数应用一起创建的存储帐户。 与此帐户建立的连接已存储在名为 `AzureWebJobsStorage` 的应用设置中。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始学习本文之前，请完成 [Java 快速入门第 1 部分](functions-create-first-java-maven.md)中的步骤。
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> 由于已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)以及其他 Microsoft 绑定扩展。
+> 由于已在 host.json 中启用扩展捆绑包，因此在启动期间已下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#add-to-your-functions-app)以及其他 Microsoft 绑定扩展。
 
 如前所述，使用 cURL 在新的终端窗口中从命令行触发函数：
 

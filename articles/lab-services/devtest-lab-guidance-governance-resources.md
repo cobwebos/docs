@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dc65d368eb4c1beb57099cb6c16fb33bbe5c1f79
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981495"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470643"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure 开发测试实验室基础结构的监管 - 资源
 本文介绍组织中开发测试实验室的资源调配和管理。 
@@ -28,7 +28,7 @@ ms.locfileid: "75981495"
 ### <a name="question"></a>问题
 如何调配 Azure 订阅中的开发测试实验室资源？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 在组织开始使用 Azure 进行一般性的应用程序开发之前，IT 规划人员首先应该评审如何在整个服务产品组合中引入功能。 评审的各个方面应可解决以下问题：
 
 - 如何衡量与应用程序开发生命周期关联的成本？
@@ -38,7 +38,7 @@ ms.locfileid: "75981495"
 
 **第一项建议的做法**是评审组织中对生产订阅和开发订阅做了划分的 Azure 分类。 在下图中，建议的分类能够对开发/测试和生产环境进行逻辑分离。 使用此方法，组织可以引入计费代码来单独跟踪与每个环境关联的成本。 有关详细信息，请参阅[出于合规目的监管订阅](/azure/architecture/cloud-adoption/appendix/azure-scaffold)。 此外，可以使用 [Azure 标记](../azure-resource-manager/management/tag-resources.md)来组织资源，以便于跟踪和计费。
 
-**第二项建议的做法**是在 Azure 企业门户中启用开发测试订阅。 这样，组织便可以运行 Azure 企业订阅中通常不会提供的客户端操作系统。 然后，使用仅支付计算费用的企业软件，而无需担心许可问题。 这可以确保只需根据消耗量支付指定服务的费用，包括 IaaS 中的库映像，例如 Microsoft SQL Server。 企业协议 (EA) 客户和即用即付客户可以分别在[此处](https://azure.microsoft.com/offers/ms-azr-0148p/)和[此处](https://azure.microsoft.com/offers/ms-azr-0023p/)找到有关 Azure 开发测试订阅的详细信息。
+**第二项建议的做法**是在 Azure 企业门户中启用开发测试订阅。 这样，组织便可以运行 Azure 企业订阅中通常不会提供的客户端操作系统。 然后，使用企业软件，只需为计算付费，而无需担心许可。 这可以确保只需根据消耗量支付指定服务的费用，包括 IaaS 中的库映像，例如 Microsoft SQL Server。 企业协议 (EA) 客户和即用即付客户可以分别在[此处](https://azure.microsoft.com/offers/ms-azr-0148p/)和[此处](https://azure.microsoft.com/offers/ms-azr-0023p/)找到有关 Azure 开发测试订阅的详细信息。
 
 ![资源与订阅相符](./media/devtest-lab-guidance-governance/resource-alignment-with-subscriptions.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "75981495"
 ### <a name="question"></a>问题
 如何在整个开发测试实验室环境中保留命名约定？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 你可能需要将当前企业命名约定扩展到 Azure 运营，并在整个开发测试实验室环境中保持这种命名约定的一致性。
 
 部署开发测试实验室时，我们建议使用特定的起始策略。 通过中心脚本和 JSON 模板部署这些策略，以实施一致性。 可以通过在订阅级别应用的 Azure 策略来实施命名策略。 有关 Azure Policy 的 JSON 示例，请参阅 [Azure Policy 示例](../governance/policy/samples/index.md)。
@@ -63,7 +63,7 @@ ms.locfileid: "75981495"
 ### <a name="question"></a>问题 
 如何确定每个实验室的用户数与整个组织中所需实验室总数的比？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 我们建议将同一开发项目关联的业务单位和开发组关联到同一实验室。 这样，便可以对这两个组应用相同类型的策略、映像和关闭策略。 
 
 可能还需要考虑地理边界。 例如，美国 (US) 东北部的开发人员可能会使用美国东部 2 区域中预配的实验室。 另外，位于德克萨斯州达拉斯市和科罗拉多州丹佛市的开发人员可能会定向为使用美国中南部的资源。 如果能够与外部第三方展开协作，则可为这些开发人员分配未由内部开发人员使用的实验室。 
@@ -75,7 +75,7 @@ ms.locfileid: "75981495"
 ### <a name="question"></a>问题
 如何防止删除实验室中的资源？
 
-### <a name="answer"></a>答案
+### <a name="answer"></a>Answer
 我们建议在实验室级别设置适当的权限，以便只有经过授权的用户才能删除资源或更改实验室策略。 应将开发人员放置在“开发测试实验室用户”组中。 开发人员主管或基础结构主管应是“开发测试实验室所有者”。 我们建议仅指定两个实验室所有者。 此策略根据代码存储库的扩展而扩展，以避免损坏。 实验室用户有权使用资源，但不能更新实验室策略。 请参阅以下文章，其中列出了每个内置组在实验室中拥有的角色和权限：[在 Azure 开发测试实验室中添加所有者和用户](devtest-lab-add-devtest-user.md)。
 
 ## <a name="move-lab-to-another-resource-group"></a>将实验室移到另一个资源组 
@@ -83,8 +83,8 @@ ms.locfileid: "75981495"
 ### <a name="question"></a>问题
 是否支持将实验室移到另一个资源组？
 
-### <a name="answer"></a>答案
-可以。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
+### <a name="answer"></a>Answer
+是的。 从实验室的主页导航到“资源组”页。 然后，在工具栏中选择“移动”，并选择要移到其他资源组的实验室。 创建实验室时，会自动创建一个资源组。 但是，你可能需要将实验室移到遵循企业命名约定的其他资源组。 
 
 ## <a name="next-steps"></a>后续步骤
 参阅[管理成本和所有权](devtest-lab-guidance-governance-cost-ownership.md)。

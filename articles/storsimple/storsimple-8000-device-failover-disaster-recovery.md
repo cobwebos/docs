@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 系列设备的故障转移、灾难恢复 | Microsoft Docs
+title: StorSimple 8000 系列设备的故障转移和灾难恢复
 description: 了解如何将 StorSimple 设备故障转移到其自身、另一个物理设备或云设备。
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576320"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468586"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 
@@ -27,20 +27,20 @@ ms.locfileid: "60576320"
 
 本文介绍了 StorSimple 8000 系列设备的设备故障转移功能以及在发生灾难时可以如何使用此功能来恢复 StorSimple 设备。 StorSimple 使用设备故障转移将数据从数据中心内的源设备迁移到另一目标设备。 本文中的指导适用于运行软件版本 Update 3 和更高版本的 StorSimple 8000 系列物理设备与云设备。
 
-当发生灾难时，StorSimple 使用“设备”边栏选项卡启动设备故障转移功能。  此边栏选项卡列出连接到 StorSimple 设备管理器服务的所有 StorSimple 设备。
+当发生灾难时，StorSimple 使用“设备”边栏选项卡启动设备故障转移功能。 此边栏选项卡列出连接到 StorSimple 设备管理器服务的所有 StorSimple 设备。
 
 ![“设备”边栏选项卡](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
 
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>灾难恢复 (DR) 与设备故障转移
 
-在灾难恢复 (DR) 方案中，主要设备将停止工作。 StorSimple 使用主设备作为“源”并将关联的云数据移动到另一“目标”设备。   此过程称为*故障转移*。 下图演示了故障转移过程。
+在灾难恢复 (DR) 方案中，主要设备将停止工作。 StorSimple 使用主设备作为“源”并将关联的云数据移动到另一“目标”设备。 此过程称为*故障转移*。 下图演示了故障转移过程。
 
 ![设备故障转移过程中发生的操作](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
 故障转移的目标设备可以是物理设备，甚至可以是云设备。 目标设备可以位于与源设备相同或不同的地理位置。
 
-在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。  故障回复将所有权转移回原始源设备。
+在故障转移期间，可以选择要迁移的卷容器。 然后，StorSimple 会将这些卷容器的所有权从源设备更改为目标设备。 在卷容器更改所有权后，StorSimple 会将这些容器从源设备中删除。 在删除完成后，你可以对目标设备进行故障回复。 故障回复将所有权转移回原始源设备。
 
 ### <a name="cloud-snapshot-used-during-device-failover"></a>设备故障转移期间使用的云快照
 
@@ -50,8 +50,8 @@ ms.locfileid: "60576320"
 
 假设有两个备份策略，分别为 *defaultPol* 和 *customPol*：
 
-* *defaultPol*:一个卷*vol1*，10:30 PM 开始运行。
-* *customPol*:四个卷*vol1*， *vol2*， *vol3*， *vol4*，10:00 PM 开始运行。
+* *defaultPol*：有一个卷（*vol1*），每天晚上 10:30 开始运行。
+* *customPol*：有四个卷（*vol1*、*vol2*、*vol3*、*vol4*），每天晚上 10:00 开始运行。
 
 在此情况下，StorSimple 将针对崩溃一致性确定优先级并将使用 *customPol*，因为具有更多卷。 此策略中的最新备份用于还原数据。 有关如何创建和管理备份策略的详细信息，请转到[使用 StorSimple 设备管理器服务管理备份策略](storsimple-8000-manage-backup-policies-u2.md)。
 
@@ -106,21 +106,21 @@ ms.locfileid: "60576320"
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-问： **如果灾难恢复失败或部分成功，会发生什么情况？**
+Q. **如果灾难恢复失败或部分成功，会发生什么情况？**
 
 A. 如果灾难恢复失败，我们建议再试一次。 第二个设备故障转移作业知道第一个作业的进度，并且将从该点向前开始。
 
-问： **正在进行设备故障转移时，是否可以删除设备？**
+Q. **正在进行设备故障转移时，是否可以删除设备？**
 
-A. 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。 
+A. 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。
 
-问： **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
+Q. **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
 
 A. 只有在完全清理设备之后，才会在源设备上启用垃圾收集。 清理过程包括清理已从源设备故障转移的对象，例如卷、备份对象（不是数据）、卷容器和策略。
 
-问： **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
+Q. **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
 
-A.  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。   选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。  删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
+A.  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。 选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。 删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>业务连续性灾难恢复 (BCDR)
 

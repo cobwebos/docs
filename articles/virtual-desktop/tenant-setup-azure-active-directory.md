@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459508"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368785"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教程：在 Windows 虚拟桌面中创建租户
 
@@ -121,7 +121,7 @@ ms.locfileid: "75459508"
 
 向 Windows 虚拟桌面服务授予查询 Azure Active Directory 的权限并将 TenantCreator 角色分配到用户帐户后，可以创建 Windows 虚拟桌面租户。
 
-首先[下载并导入 Windows 虚拟桌面模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），以便在 PowerShell 会话中使用。
 
 运行以下 cmdlet，使用 TenantCreator 用户帐户登录到 Windows 虚拟桌面：
 

@@ -3,12 +3,12 @@ title: 将 Terraform 与 Azure 结合使用
 description: 介绍了如何使用 Terraform 部署 Azure 基础结构并对其进行版本控制。
 ms.topic: overview
 ms.date: 10/26/2019
-ms.openlocfilehash: d1754594c651206a0d4d15e659e2926557f9e912
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158986"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472156"
 ---
 # <a name="terraform-with-azure"></a>Terraform 与 Azure
 
@@ -40,6 +40,6 @@ Terraform 擅长跨多个云提供商部署基础结构。 开发者借助它可
 
 现在你已大致了解 Terraform 及其优点，下面是建议的后续步骤：
 
-- 首先，[安装并配置 Terraform 以使用 Azure](/azure/virtual-machines/linux/terraform-install-configure)。
-- [使用 Terraform 创建 Azure 虚拟机](/azure/virtual-machines/linux/terraform-create-complete-vm)
+- 首先，[安装并配置 Terraform 以使用 Azure](terraform-install-configure.md)。
+- [使用 Terraform 创建 Azure 虚拟机](terraform-create-complete-vm.md)
 - 浏览[适用于 Terraform 的 Azure 资源管理器模块](https://www.terraform.io/docs/providers/azurerm/) 

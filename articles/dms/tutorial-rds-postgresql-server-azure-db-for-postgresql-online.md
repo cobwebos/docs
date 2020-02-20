@@ -11,15 +11,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 0930afeb02c79c9b3cf1da791e8cc5cda83c2820
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/17/2020
+ms.openlocfilehash: 1bc3f3d8c0f8992927acc3247e94a984e1653deb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751273"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471039"
 ---
-# <a name="tutorial-migrate-rds-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 迁移到 Azure Database for PostgreSQL online
+# <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 迁移到 Azure DB for PostgreSQL online
 
 可以使用 Azure 数据库迁移服务将 RDS PostgreSQL 实例中的数据库迁移到 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)，在迁移期间，源数据库可保持联机状态。 换而言之，实现这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何在 Azure 数据库迁移服务中使用联机迁移活动将 **DVD Rental** 示例数据库从 RDS PostgreSQL 9.6 实例迁移到 Azure Database for PostgreSQL。
 
@@ -31,6 +31,7 @@ ms.locfileid: "75751273"
 > * 使用 Azure 数据库迁移服务创建迁移项目。
 > * 运行迁移。
 > * 监视迁移。
+> * 执行迁移转换。
 
 > [!NOTE]
 > 使用 Azure 数据库迁移服务执行联机迁移需要基于“高级”定价层创建实例。 有关详细信息，请参阅 Azure 数据库迁移服务[定价](https://azure.microsoft.com/pricing/details/database-migration/)页。
@@ -42,7 +43,7 @@ ms.locfileid: "75751273"
 
 本文介绍如何从 PostgreSQL 的本地实例联机迁移到 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要：
 
@@ -50,7 +51,7 @@ ms.locfileid: "75751273"
 
     另外，RDS PostgreSQL 版本必须与 Azure Database for PostgreSQL 版本相符。 例如，RDS PostgreSQL 9.5.11.5 只能迁移到 Azure Database for PostgreSQL 9.5.11，不能迁移到 9.6.7 版本。
 
-* 创建 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) 的实例。 有关如何使用 pgAdmin 连接到 PostgreSQL 服务器的详细信息，请参阅此文档[部分](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)。
+* 创建[Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)或[Azure Database for PostgreSQL 超大规模（Citus）](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)的实例。 有关如何使用 pgAdmin 连接到 PostgreSQL 服务器的详细信息，请参阅此文档[部分](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin)。
 * 使用 Azure 资源管理器部署模型创建 Azure 数据库迁移服务的 Microsoft Azure 虚拟网络，该模型通过使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)为本地源服务器提供站点到站点连接。 有关创建虚拟网络的详细信息，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步详细信息的快速入门文章。
 * 确保虚拟网络安全组规则不会阻止以下到 Azure 数据库迁移服务的入站通信端口：443、53、9354、445和12000。 有关虚拟网络 NSG 流量筛选的详细信息，请参阅[筛选网络流量和网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 配置[针对数据库引擎访问的 Windows 防火墙](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
@@ -62,9 +63,14 @@ ms.locfileid: "75751273"
 
 1. 若要创建新的参数组，请遵照 AWS 在[使用 DB 参数组](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html)中提供的说明操作。
 2. 在 Azure 数据库迁移服务中使用主用户名连接到源。 如果使用的帐户不是主用户帐户，该帐户必须具有 rds_superuser 角色和 rds_replication 角色。 rds_replication 角色可以授予管理逻辑槽以及使用逻辑槽流式传输数据的权限。
-3. 使用以下配置创建新的参数组：a. 将 DB 参数组中的 rds.logical_replication 参数设置为 1。
-    b.保留“数据库类型”设置，即设置为“共享”。 max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为 10 个任务。
+3. 使用以下配置创建新的参数组：
+
+    a. 将 DB 参数组中的 rds.logical_replication 参数设置为 1。
+
+    b. max_wal_senders =[并发任务数] - max_wal_senders 参数设置可以运行的并发任务数，建议设置为 10 个任务。
+
     c. max_replication_slots = [槽数]，建议设置为 5 个槽。
+
 4. 将创建的参数组关联到 RDS PostgreSQL 实例。
 
 ## <a name="migrate-the-schema"></a>迁移架构
@@ -86,7 +92,7 @@ ms.locfileid: "75751273"
 2. 在目标服务（即 Azure Database for PostgreSQL）中创建一个空数据库。 若要连接和创建数据库，请参阅以下文章之一：
 
     * [使用 Azure 门户创建 Azure Database for PostgreSQL 服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal)
-    * [使用 Azure CLI 创建用于 PostgreSQL 的 Azure 数据库](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-azure-cli)
+    * [使用 Azure 门户创建 Azure Database for PostgreSQL 超大规模（Citus）服务器](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)
 
 3. 将架构导入目标服务（即 Azure Database for PostgreSQL）。 若要还原架构转储文件，请运行以下命令：
 
@@ -174,7 +180,7 @@ ms.locfileid: "75751273"
 
 6. 选择定价层;对于此联机迁移，请确保选择 "高级： 4vCores" 定价层。
 
-    ![配置 Azure 数据库迁移服务实例设置](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings4.png)
+    ![配置 Azure 数据库迁移服务实例设置](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings5.png)
 
 7. 选择“创建”来创建服务。
 
@@ -186,13 +192,9 @@ ms.locfileid: "75751273"
 
       ![查找 Azure 数据库迁移服务的所有实例](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-search.png)
 
-2. 在“Azure 数据库迁移服务”屏幕上，搜索你创建的 Azure 数据库迁移服务实例名称，然后选择该实例。
-
-     ![查找 Azure 数据库迁移服务实例](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-instance-search.png)
-
-3. 选择“+ 新建迁移项目”。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for PostgreSQL”，在“目标服务器类型”文本框中选择“Azure Database for PostgreSQL”。
-5. 在“选择活动类型”部分选择“联机数据迁移”。
+2. 在 " **Azure 数据库迁移服务**" 屏幕上，搜索所创建的 Azure 数据库迁移服务实例的名称，选择该实例，然后选择 "+**新建迁移项目**"。
+3. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for PostgreSQL”，在“目标服务器类型”文本框中选择“Azure Database for PostgreSQL”。
+4. 在“选择活动类型”部分选择“联机数据迁移”。
 
     > [!IMPORTANT]
     > 请确保选择“联机数据迁移”；此方案不支持脱机迁移。
@@ -202,30 +204,30 @@ ms.locfileid: "75751273"
     > [!NOTE]
     > 也可以现在就选择“仅创建项目”来创建迁移项目，在以后再执行迁移。
 
-6. 选择“保存”。
+5. 选择“保存”。
 
-7. 选择“创建并运行活动”，以便创建项目并运行迁移活动。
+6. 选择“创建并运行活动”，以便创建项目并运行迁移活动。
 
     > [!NOTE]
     > 请在项目创建边栏选项卡中记下设置联机迁移所要满足的先决条件。
 
 ## <a name="specify-source-details"></a>指定源详细信息
 
-* 在“迁移源详细信息”屏幕上，指定源 PostgreSQL 实例的连接详细信息。
+* 在 "**添加源详细信息**" 屏幕上，为源 PostgreSQL 实例指定连接详细信息。
 
-   ![源详细信息](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-source-details4.png)
+   ![源详细信息](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-source-details5.png)
 
 ## <a name="specify-target-details"></a>指定目标详细信息
 
 1. 选择“保存”，然后在“目标详细信息”屏幕上指定目标 Azure Database for PostgreSQL 服务器的连接详细信息，该服务器是提前预配的，具有使用 pg_dump 部署的 **DVD Rentals** 架构。
 
-    ![选择目标](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-select-target4.png)
+    ![目标详细信息](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-target-details.png)
 
 2. 选择“保存”，然后在“映射到目标数据库”屏幕上，映射源和目标数据库以进行迁移。
 
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
-    ![映射到目标数据库](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-targets-activity5.png)
+    ![映射到目标数据库](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-map-target-databases.png)
 
 3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符。
 
@@ -257,13 +259,13 @@ ms.locfileid: "75751273"
 
 1. 如果准备完成数据库迁移，请选择“启动直接转换”。
 
-    ![开始交接](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-inventory-start-cutover.png)
+2. 等待 "**挂起的更改**" 计数器显示**0** ，以确保停止源数据库的所有传入事务，选中 "**确认**" 复选框，然后选择 "**应用**"。
 
-2. 确保停止传入源数据库的所有事务；等到“挂起的更改”计数器显示 **0**。
-3. 选择“确认”，然后选择“应用”。
-4. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 数据库。
+    ![完成切换屏幕](media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-complete-cutover.png)
 
-将 PostgreSQL 的本地实例联机迁移到 Azure Database for PostgreSQL 的过程现已完成。
+3. 当数据库迁移状态显示“已完成”后，请将应用程序连接到新的目标 Azure Database for PostgreSQL 数据库。
+
+将 RDS PostgreSQL 的本地实例联机迁移到 Azure Database for PostgreSQL 现已完成。
 
 ## <a name="next-steps"></a>后续步骤
 

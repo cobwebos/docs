@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367126"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470566"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
@@ -28,7 +28,7 @@ Windows 10 企业多会话（以前称为 Windows 10 企业版虚拟桌面（EVD
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>为什么应用程序报告 Windows 10 企业多会话作为服务器操作系统？
 
-Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项差异是，此操作系统（OS）会将值为3的[ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/)报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。 
+Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项差异是，此操作系统（OS）会将值为3的[ProductType](/windows/win32/cimwin32prov/win32-operatingsystem)报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>能否在本地运行 Windows 10 企业多会话？
 

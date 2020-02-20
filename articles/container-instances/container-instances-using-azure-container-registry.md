@@ -1,23 +1,23 @@
 ---
 title: 从 Azure 容器注册表部署容器映像
-description: 了解如何使用容器映像在 Azure 容器注册表中部署 Azure 容器实例中的容器。
+description: 了解如何通过从 Azure 容器注册表拉取容器映像，在 Azure 容器实例中部署容器。
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981691"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468909"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>从 Azure 容器注册表部署到 Azure 容器实例
 
-[Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何将存储在 Azure 容器注册表中的容器映像部署到 Azure 容器实例。
+[Azure 容器注册表](../container-registry/container-registry-intro.md)是基于 Azure 的托管容器注册表服务，用于存储专用的 Docker 容器映像。 本文介绍如何在部署到 Azure 容器实例时请求存储在 Azure 容器注册表中的容器映像。 配置注册表访问的建议方法是创建一个 Azure Active Directory 的服务主体和密码，并将登录凭据存储在 Azure 密钥保管库中。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 **Azure 容器注册表**：需要 azure 容器注册表--和注册表中至少一个容器映像--若要完成本文中的步骤。 如果需要注册表，请参阅[使用 Azure CLI 创建容器注册表](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981691"
 在提供对 "无外设" 服务和应用程序的访问权限的生产方案中，建议使用[服务主体](../container-registry/container-registry-auth-service-principal.md)配置注册表访问。 服务主体允许您为容器映像提供[基于角色的访问控制](../container-registry/container-registry-roles.md)。 例如，可将服务主体配置为拥有注册表的仅限提取的访问权限。
 
 Azure 容器注册表提供其他[身份验证选项](../container-registry/container-registry-authentication.md)。
+
+> [!NOTE]
+> 使用同一个容器组中配置的[托管标识](container-instances-managed-identity.md)，无法通过 Azure 容器注册表进行身份验证，以便在容器组部署期间请求映像。
 
 在以下部分中，将创建一个 Azure 密钥保管库和一个服务主体，并将服务主体的凭据存储在保管库中。 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-现已创建 Azure Key Vault 并在其中存储了两个机密：
+已创建 Azure key vault 并在其中存储了两个机密：
 
 * `$ACR_NAME-pull-usr`：用作容器注册表**用户名**的服务主体 ID。
 * `$ACR_NAME-pull-pwd`：用作容器注册表**密码**的服务主体密码。

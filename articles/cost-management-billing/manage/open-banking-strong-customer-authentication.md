@@ -2,21 +2,18 @@
 title: 为 Azure 客户打开银行 (PSD2) 和强客户身份验证 (SCA)
 description: 本文解释了某些 Azure 购买项目为何需要多重身份验证，以及如何完成身份验证。
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133557"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200582"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>为 Azure 客户打开银行 (PSD2) 和强客户身份验证 (SCA)
 

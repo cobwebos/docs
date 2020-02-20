@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676447"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368767"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
@@ -25,11 +25,11 @@ ms.locfileid: "71676447"
 
 若要详细了解 Azure 服务运行状况，请参阅 [Azure 运行状况文档](https://docs.microsoft.com/azure/service-health/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-- [教程：在 Windows 虚拟桌面中创建租户](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [教程：使用 PowerShell 创建服务主体和角色分配](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [教程：通过 Azure 市场创建主机池](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [教程：在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)
+- [教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)
+- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>创建服务警报
 
@@ -48,7 +48,7 @@ ms.locfileid: "71676447"
 
 若要配置服务警报，请执行以下操作：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 选择“服务运行状况”  。
 3. 按照[创建有关服务通知的活动日志警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal)中的说明设置警报和通知。
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9c2da82034a3742f789c736d8c0410f005f20edb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 774a0354c6262598c7d5e1f51e2e475fd17fe2d7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422302"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468274"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中轮替证书
 
@@ -42,7 +42,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令显示*myAKSCluster*群集的证书详细信息。
 > ```console
-> kubectl config view --raw -o jsonpath='{.clusters[?(@.name == "myAKSCluster")].cluster.certificate-authority-data}' | base64 -d > my-cert.crt
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
 > openssl x509 -in my-cert.crt -text
 > ```
 

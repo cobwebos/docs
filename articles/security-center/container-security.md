@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430986"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470762"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -71,9 +71,9 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 ## <a name="container-security-faq"></a>容器安全常见问题
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure 安全中心扫描哪些类型的映像？
-安全中心扫描基于 Linux 操作系统的映像。 
+安全中心扫描基于 Linux OS 的映像，这些映像提供外壳访问权限。 
 
-Qualys 扫描程序不支持仅包含应用程序及其运行时依赖项的 "distroless" 映像。
+Qualys 扫描程序不支持超级最简单映像（例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像）或 "Distroless" 映像，这些映像只包含应用程序及其运行时依赖项（无需包管理器、外壳程序或操作系统）。
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>如何扫描 Azure 安全中心扫描图像？
 将从注册表中提取映像。 然后，它使用 Qualys 扫描程序在隔离沙盒中运行，该扫描程序可提取已知漏洞的列表。

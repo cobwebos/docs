@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461140"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472445"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>将认知服务资源附加到 Azure 中的技能组合认知搜索 
 
@@ -48,7 +48,7 @@ Azure 认知搜索依赖于认知服务，其中包括图像分析和光学字�
 
 您可以使用有限的免费处理选项来完成 AI 扩充教程和快速入门练习。
 
-每个订阅每天的免费（受限根据）资源限制为20个文档。
+每个索引器每天的免费（受限根据）资源限制为20个文档。 可以通过删除并重新创建索引器来重置计数器。
 
 1. 打开 "导入数据" 向导：
 

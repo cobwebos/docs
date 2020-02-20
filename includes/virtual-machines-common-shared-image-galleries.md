@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020830"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474201"
 ---
 共享映像库是一种服务，可帮助你围绕托管映像构建结构和组织。 共享图像库提供：
 
 - 托管的映像全局复制。
 - 对图像进行版本控制和分组，以方便管理。
-- 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 可以更好地恢复映像，防止区域性故障。
+- 具有区域冗余存储（ZRS）帐户的高度可用映像，位于支持可用性区域的区域中。 ZRS 提供了针对区域性故障的更好的恢复能力。
 - 使用 RBAC 在多个订阅之间共享，甚至在 Active Directory （AD）租户之间共享。
 - 通过每个区域中的映像副本缩放部署。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76020830"
 
 共享映像库功能具有多种资源类型：
 
-| 资源 | Description|
+| 资源 | 说明|
 |----------|------------|
 | **托管映像** | 可单独使用或用于在映像库中创建**映像版本**的基本映像。 托管映像是从[通用化](#generalized-and-specialized-images)vm 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **快照** | 可用于生成**映像版本**的 VHD 副本。 快照可以从[专用](#generalized-and-specialized-images)VM （一个尚未通用化的虚拟机）中获取，然后单独使用或与数据磁盘的快照一起使用，以创建专用的映像版本。
@@ -88,7 +88,7 @@ ms.locfileid: "76020830"
 
 ## <a name="regional-support"></a>区域支持
 
-下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅允许列表。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
+下表列出了源区域。 所有公共区域都可以是目标区域，但是若要复制到澳大利亚中部和澳大利亚中部2，需要订阅白名单。 要请求允许列表，请转到： https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 
 | 源区域        |                   |                    |                    |
@@ -100,7 +100,7 @@ ms.locfileid: "76020830"
 | 巴西南部          | 东亚         | 韩国中部      | US DoD 东部        |
 | 加拿大中部        | 美国东部           | 韩国南部        | US Gov 亚利桑那州     |
 | 加拿大东部           | 美国东部 2         | 美国中北部   | US Gov 德克萨斯州       |
-| 印度中部         | 美国东部 2 EUAP    | 北欧       | US Gov 弗吉尼亚州    |
+| 印度中部         | 美国东部 2 EUAP    | 北欧       | 美国政府弗吉尼亚州    |
 | 美国中部            | 法国中部    | 美国中南部   | 印度西部         |
 | 美国中部 EUAP       | 法国南部      | 美国中西部    | 美国西部            |
 |                       |                   |                    | 美国西部 2          |
@@ -148,10 +148,10 @@ ms.locfileid: "76020830"
 
 由于共享映像库、映像定义和映像版本都是资源，因此可以使用内置的本机 Azure RBAC 控件共享这些资源。 使用 RBAC 可以将这些资源与其他用户、服务主体和组共享。 甚至可以共享对其创建者之外的人员的访问权限。 用户有权访问共享映像版本后，便可以部署 VM 或虚拟机规模集。  以下共享矩阵可以帮助你了解用户有权访问哪些资源：
 
-| 与用户共享     | 共享映像库 | 映像定义 | 映像版本 |
+| 与用户共享     | 共享的映像库 | 映像定义 | 映像版本 |
 |----------------------|----------------------|--------------|----------------------|
-| 共享映像库 | 是                  | 是          | 是                  |
-| 映像定义     | 否                   | 是          | 是                  |
+| 共享的映像库 | 是                  | 是          | 是                  |
+| 映像定义     | 是                   | 是          | 是                  |
 
 建议在库级别共享以获得最佳体验。 建议不要共享单独的映像版本。 有关 RBAC 的详细信息，请参阅[使用 Rbac 管理对 Azure 资源的访问权限](../articles/role-based-access-control/role-assignments-portal.md)。
 
@@ -159,7 +159,7 @@ ms.locfileid: "76020830"
 
 ## <a name="billing"></a>计费
 使用共享映像库服务不会产生额外的费用。 以下资源会产生费用：
-- 存储共享映像版本的存储费用。 成本取决于映像版本的副本数以及版本复制到的区域数。 例如，如果有2个映像，并且两者都复制到3个区域，则将根据其大小更改6个托管磁盘。 有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
+- 存储共享映像版本的存储费用。 成本取决于映像版本的副本数以及版本复制到的区域数。 例如，如果有2个映像，并且两个都复制到3个区域，则将根据6个托管磁盘的大小向你收费。 有关详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
 - 将第一个映像版本从源区域复制到复制区域的网络出口费用。 后续副本将在区域内进行处理，因此不会产生额外的费用。 
 
 ## <a name="updating-resources"></a>正在更新资源
@@ -167,12 +167,12 @@ ms.locfileid: "76020830"
 创建后，可以对映像库资源进行一些更改。 这些限制为：
  
 共享映像库：
-- Description
+- 说明
 
 映像定义：
 - 建议的 vCPU 数
 - 推荐的内存
-- Description
+- 说明
 - 生命周期终结日期
 
 映像版本：
@@ -291,7 +291,7 @@ ms.locfileid: "76020830"
 
 如果未为每个位置指定区域副本计数，则默认副本数将是指定的通用副本计数。 
 
-若要在 CLI 中指定通用副本计数，请在 `az sig image-version create` 命令中使用 **--replica-count** 参数。
+若要在 CLI 中指定通用副本计数，请在 **命令中使用**--replica-count`az sig image-version create` 参数。
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>能否在映像定义和映像版本不同的位置创建共享映像库？
 

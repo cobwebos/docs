@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9000cab026ec08bd78d8a8f334c8967a8a747c95
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 34699ed89e79448d66343021dd624cb872d0172d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202289"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471669"
 ---
 目前，只有高级 Ssd 可以启用共享磁盘。 支持此功能的磁盘大小 P15 和更高版本。 不同的磁盘大小可能具有不同的 `maxShares` 限制，在设置 `maxShares` 值时不能超过此限制。
 

@@ -1,5 +1,5 @@
 ---
-title: StorSimple 虚拟阵列灾难恢复和设备故障转移 | Microsoft 文档
+title: StorSimple 虚拟阵列的故障转移和灾难恢复
 description: 了解有关如何对 StorSimple Virtual Array 进行故障转移的详细信息。
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190639"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467209"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>通过 Azure 门户进行 StorSimple 虚拟阵列的灾难恢复和设备故障转移
 
@@ -44,7 +44,7 @@ ms.locfileid: "77190639"
 
 ## <a name="prerequisites-for-device-failover"></a>设备故障转移先决条件
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 对于设备故障转移，请确保满足以下先决条件：
 

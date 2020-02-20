@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: efd4a9333b5fb02c18b2f6a6d0f8ce58bfb8f220
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185694"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472377"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>教程：使用C#和 .Net SDK 创建 AI 扩充管道
 
@@ -30,16 +30,16 @@ ms.locfileid: "74185694"
 
 输出是 Azure 认知搜索中的全文搜索索引。 可以使用[同义词](search-synonyms.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[筛选器](search-filters.md)等其他标准功能来增强索引。
 
-本教程在免费服务中运行，但免费事务数目限制为每日 20 个文档。 若要在同一天多次运行本教程，请使用可以运行更多次的较小文件集。
+本教程在免费服务中运行，但免费事务数目限制为每日 20 个文档。 如果要在同一天中多次运行此教程，请删除索引器以重置计数器。
 
 > [!NOTE]
 > 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要附加可计费的认知服务资源。 调用认知服务中的 API 以及在 Azure 认知搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
 > 内置技能的执行将按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取定价如 [Azure 认知搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)所述。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程使用了以下服务、工具和数据。 
 
@@ -85,7 +85,7 @@ ms.locfileid: "74185694"
 
 可通过其他方式指定连接字符串，例如，提供共享访问签名。 若要详细了解数据源凭据，请参阅[为 Azure Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md#Credentials)。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 首先，打开 Visual Studio，并新建能在 .NET Core 上运行的控制台应用项目。
 
@@ -415,7 +415,7 @@ catch (Exception e)
 
 本演练使用以下字段和字段类型：
 
-| field-names: | `id`       | 内容   | languageCode | keyPhrases         | organizations     |
+| field-names: | `id`       | content   | languageCode | keyPhrases         | 组织     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

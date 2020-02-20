@@ -3,15 +3,15 @@ title: 在 Azure 门户中创建和管理器操作组
 description: 了解如何在 Azure 门户中创建和管理操作组。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 8/19/2019
+ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030738"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467328"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 门户中创建和管理器操作组
 操作组是由 Azure 订阅的所有者定义的通知首选项的集合。 Azure Monitor 和服务运行状况警报使用操作组来通知用户某个警报已触发。 各种警报可以使用相同的操作组或不同的操作组，具体取决于用户的要求。 可以在订阅中最多配置 2,000 个操作组。
@@ -89,7 +89,7 @@ ms.locfileid: "77030738"
 操作组中可能包含有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 ### <a name="email-azure-resource-manager-role"></a>电子邮件 Azure 资源管理器角色
-向订阅角色的成员发送电子邮件。
+向订阅角色的成员发送电子邮件。 电子邮件将只发送给角色**Azure AD 的用户**成员。 不会将电子邮件发送到 Azure AD 组或服务主体。
 
 操作组中可能包含有限数量的电子邮件操作。 请参阅[速率限制信息](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
@@ -107,8 +107,6 @@ ITSM 操作需要 ITSM 连接。 了解如何创建 [ITSM 连接](../../azure-mo
 操作组中可能包含有限数量的逻辑应用操作。
 
 ### <a name="secure-webhook"></a>安全 Webhook
-**安全 Webhook 功能目前处于预览阶段。**
-
 操作组 Webhook 操作使你能够利用 Azure Active Directory 来保护操作组与受保护的 web API （Webhook 终结点）之间的连接。 下面介绍了利用此功能的整个工作流。 有关 Azure AD 应用程序和服务主体的概述，请参阅[Microsoft 标识平台（v2.0）概述](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)。
 
 1. 为受保护的 web API 创建 Azure AD 应用程序。 请参阅 https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview。

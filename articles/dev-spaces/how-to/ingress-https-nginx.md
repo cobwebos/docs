@@ -5,18 +5,18 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 NGINX 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: a6fcc6bfd7f3bd682cd67b58312a83c23e2a3b1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c6158c3229f4cb81df69b05c6973425c346a2046
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483162"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466869"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自定义 NGINX 入口控制器并配置 HTTPS
 
 本文介绍如何将 Azure Dev Spaces 配置为使用自定义 NGINX 入口控制器。 本文还介绍如何将该自定义入口控制器配置为使用 HTTPS。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有帐户，可以[创建一个免费帐户][azure-account-create]。
 * [已安装 Azure CLI][az-cli]。
@@ -53,6 +53,13 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 kubectl create ns nginx
 helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
+
+> [!NOTE]
+> 上面的示例为入口控制器创建一个公共终结点。 如果需要改用入口控制器的专用终结点，请添加 *--set controller。helm 安装命令的服务\\\\beta kubernetes\\。 io/azure-* *安装*命令。 例如：
+> ```console
+> helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
+> ```
+> 此专用终结点在部署 AKS 群集的虚拟网络中公开。
 
 使用[kubectl get][kubectl-get]获取 NGINX 入口控制器服务的 IP 地址。
 
@@ -141,7 +148,7 @@ http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-通过 `azds list-uris` 命令打开公共 URL，导航到 *bikesharingweb* 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
+通过 *命令打开公共 URL，导航到*bikesharingweb`azds list-uris` 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
 
 使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子 dev 空间的 url。
 
