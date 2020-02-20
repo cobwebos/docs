@@ -1,5 +1,5 @@
 - name: 媒体服务文档
-  href: index.md
+  href: index.yml
 - name: 概述
   href: media-services-overview.md
   items:
