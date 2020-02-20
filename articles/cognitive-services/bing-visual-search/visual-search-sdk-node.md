@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 676427ca2985de51767939891b41f413446d4bb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d99aa2d2827716b2b04d059e47d9768eef8cd690
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446568"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485091"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>快速入门：使用适用于 Node.js 的必应视觉搜索 SDK 获取图像见解
 
@@ -26,7 +26,7 @@ ms.locfileid: "75446568"
 * 适用于 Node.js 的必应视觉搜索 SDK
     * 若要使用必应视觉搜索 SDK 来设置控制台应用程序，请运行以下命令：
         1. `npm install ms-rest-azure`
-        2. `npm install azure-cognitiveservices-search-visualSearch` 列中的一个值匹配。
+        2. `npm install azure-cognitiveservices-visualsearch` 列中的一个值匹配。
 
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f5737dccca6baa2dc2c1d98233b80d871cf86007
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ea1cae1f5a30d4cd76df39fec43f3818178fc213
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974693"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484190"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>快速入门：使用 Azure CLI 设置 IoT 中心设备预配服务
 
@@ -30,7 +30,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
 
 以下示例在 *westus* 位置创建名为 *my-sample-resource-group* 的资源组。
 
@@ -64,7 +64,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> 此示例在“美国西部”位置创建预配服务。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `-- location "West US"`。
+> 此示例在“美国西部”位置创建预配服务。 若要查看可用位置的列表，可以运行 `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` 命令，也可以转到[Azure 状态](https://azure.microsoft.com/status/)页，在其中搜索“设备预配服务”。 在命令中，可以使用一个单词或多个单词的格式来指定位置，例如：westus、West US、WEST US，等等。该值不区分大小写。 如果使用多个单词的格式来指定位置，请将值置于引号中，例如 `--location "West US"`。
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>获取 IoT 中心的连接字符串

@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210185"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482354"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -919,7 +919,7 @@ export default httpTrigger;
     
     ---
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue-trigger.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
 
     # <a name="bash"></a>[bash](#tab/bash)
     

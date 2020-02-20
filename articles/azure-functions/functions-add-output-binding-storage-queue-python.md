@@ -3,12 +3,12 @@ title: 将 Azure 存储队列绑定添加到 Python 函数
 description: 使用输出绑定将 Azure 存储队列与 Python 函数相集成。
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198473"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485159"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
@@ -100,7 +100,7 @@ ms.locfileid: "77198473"
 
 在这种情况下，`msg` 将作为输出参数提供给函数。 对于 `queue` 类型，还必须在 `queueName` 中指定队列的名称，并在 `connection` 中提供 Azure 存储连接的名称（来自 *local.settings.json*）。 
 
-有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)和[队列输出配置](functions-bindings-storage-queue.md#output---configuration)。
+有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)和[队列输出配置](functions-bindings-storage-queue-output.md#configuration)。
 
 ## <a name="add-code-to-use-the-output-binding"></a>添加使用输出绑定的代码
 
@@ -219,7 +219,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     ---
 
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue-trigger.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
 
     # <a name="bash"></a>[bash](#tab/bash)
     
