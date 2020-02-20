@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: a153416a247ec3a38ec29e95b83fa919e765942b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966936"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368431"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -29,8 +29,6 @@ ms.locfileid: "76966936"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>以编程方式更改模型
-
-使用 Go 将经过机器学习的实体 [API](https://aka.ms/luis-apim-v3-authoring) 添加到应用程序中。
 
 1. 创建名为 `predict.go` 的新文件。 添加以下代码：
 

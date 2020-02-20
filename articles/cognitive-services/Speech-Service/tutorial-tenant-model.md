@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a83ed5c9cec994c1bc4cadd5cf6208c159823658
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189000"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469011"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>教程：创建租户模型（预览版）
 
@@ -81,7 +81,7 @@ ms.locfileid: "77189000"
    > 北美的 Office 365 企业客户有资格创建租户模型（英语）。 对于客户密码箱、客户密钥或 Office 365 政府版客户，此功能不可用。 若要确定自己是客户密码箱客户还是客户密钥客户，请参阅：
    > * [客户密码箱](/microsoft-365/compliance/customer-lockbox-requests)
    > * [客户密钥](/microsoft-365/compliance/customer-key-overview)
-   > * [Office 365 政府版](/microsoft-365/government)
+   > * [Office 365 政府版](https://www.microsoft.com/microsoft-365/government)
 
 1. 选择“选择加入”  。
 

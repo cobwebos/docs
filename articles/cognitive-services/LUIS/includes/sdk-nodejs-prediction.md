@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 0539f4a8080056f96319a7a75a355782ee80018d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772425"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372048"
 ---
 可以使用适用于 Node.js 的语言理解 (LUIS) 运行时客户端库执行以下操作：
 
@@ -66,7 +66,7 @@ npm install @azure/cognitiveservices-luis-runtime @azure/ms-rest-js
 
 ## <a name="add-the-dependencies"></a>添加依赖项
 
-在首选编辑器或 IDE 中从项目目录打开 `luis_prediction.js` 文件。 添加以下依赖项：
+在偏好的编辑器或 IDE 中打开项目目录中的 `luis_prediction.js` 文件。 添加以下依赖项：
 
 [!code-javascript [Dependencies](~/cognitive-services-quickstart-code/javascript/LUIS/luis_prediction.js?name=Dependencies)]
 
@@ -74,7 +74,7 @@ npm install @azure/cognitiveservices-luis-runtime @azure/ms-rest-js
 
 1. 为自己所需的 LUIS 信息创建变量：
 
-    添加用于管理从 `LUIS_RUNTIME_KEY` 环境变量拉取的预测密钥的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
+    添加用于管理从 `LUIS_RUNTIME_KEY` 环境变量提取的预测密钥的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
 
     创建保留资源名称 `LUIS_RUNTIME_ENDPOINT` 的变量。
 

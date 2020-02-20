@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 056b2d2b1951b6630b61bbd6fd8a8c38b272900a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966683"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368399"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -30,8 +30,6 @@ ms.locfileid: "76966683"
 
 
 ## <a name="change-model-programmatically"></a>以编程方式更改模型
-
-使用 Go 将经过机器学习的实体 [API](https://aka.ms/luis-apim-v3-authoring) 添加到应用程序中。
 
 1. 创建名为 `model.js` 的新文件。 添加以下代码：
 
