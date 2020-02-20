@@ -113,11 +113,15 @@
           href: dns-sdk.md
         - name: Azure 资源的自定义域
           href: dns-custom-domain.md
+    - name: 专用 DNS
+      items:
+        - name: 保护专用 DNS 区域和记录
+          href: dns-protect-private-zones-recordsets.md
     - name: 故障排除
       items:
         - name: 故障排除指南
           href: dns-troubleshoot.md
-- name: 引用
+- name: 参考
   items:
     - name: 公共 DNS
       items:

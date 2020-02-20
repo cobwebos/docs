@@ -26,15 +26,17 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: 以联机方式将 RDS MySQL 迁移到 Azure DB for MySQL
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: 将 PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
+    - name: 通过门户将 PostgreSQL 迁移到 Azure DB for PostgreSQL
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: 通过 CLI 将 PostgreSQL 迁移到 Azure DB for PostgreSQL
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: 将 RDS PostgreSQL 联机迁移到 Azure DB for PostgreSQL 单一服务器
+    - name: 以联机方式将 RDS PostgreSQL 迁移到 Azure DB for PostgreSQL
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: 以脱机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db.md
     - name: 以联机方式将 MongoDB 迁移到 Azure Cosmos DB Mongo API
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: 将 Oracle 联机迁移到 Azure Database for PostgreSQL 单一服务器
+    - name: 将 Oracle 联机迁移到 Azure DB for PostgreSQL – 单一服务器
       href: tutorial-oracle-azure-postgresql-online.md
 - name: 操作方法指南
   items:
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 监视迁移活动
       href: how-to-monitor-migration-activity.md
-    - name: 将 SSIS 包重新部署到 Azure SQL 数据库单一数据库
+    - name: 将 SSIS 包重新部署到 Azure SQL DB 单一数据库
       href: how-to-migrate-ssis-packages.md
-    - name: 将 SSIS 包重新部署到 Azure SQL 数据库托管实例
+    - name: 将 SSIS 包重新部署到 Azure SQL DB 托管实例
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: 资源
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: 满足先决条件并创建 DMS 实例
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: 将 SQL Server 2008 迁移到 Azure SQL 数据库托管实例
+        - name: 将 SQL Server 2008 迁移到 Azure SQL DB 托管实例
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
-        - name: 将 PostgreSQL 迁移到 Azure Database for PostgreSQL
+        - name: 将 PostgreSQL 迁移到 Azure DB for PostgreSQL
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: 监视联机迁移并执行直接转换
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: 将 Oracle 迁移到 Azure SQL 数据库
+        - name: 将 Oracle 迁移到 Azure SQL DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: 将 MongoDB 迁移到 Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
