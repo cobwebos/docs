@@ -6,12 +6,14 @@
       href: overview.md
 - name: 快速入门
   items:
-    - name: 要求对特定应用执行 MFA
-      href: app-based-mfa.md
     - name: 要求接受使用条款
       href: require-tou.md
     - name: 检测到会话风险时阻止访问
       href: app-sign-in-risk.md
+- name: 教程
+  items:
+    - name: 需要 Azure 多重身份验证
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: 概念
   expanded: false
   items:
