@@ -1,0 +1,139 @@
+### YamlMime:Landing
+title: 排查 Azure 中的 Linux 虚拟机问题
+summary: 有关如何排查 Azure 中的 Linux 虚拟机问题的文档。
+metadata:
+  title: 排查 Azure 中的 Linux 虚拟机问题
+  description: 有关如何对 Azure 中的 Linux 虚拟机进行故障排除和管理的文档。
+  services: virtual-machines-linux
+  ms.service: virtual-machines-linux
+  ms.topic: landing-page
+  author: genlin
+  ms.author: genli
+  ms.date: 09/09/2019
+  ms.openlocfilehash: 5b5ef5ee550100eed4bd8a236fb102c2870c70ed
+  ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77519268"
+landingContent:
+- title: 排查部署失败问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure 中创建、重启 VM 或重设其大小时排查分配失败
+      url: allocation-failure.md
+    - text: 排查在 Azure 中新建虚拟机时遇到的部署问题
+      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm
+    - text: 解决无效模板错误
+      url: ../../azure-resource-manager/templates/error-invalid-template.md
+    - text: 解决 SKU 不可用的错误
+      url: https://docs.microsoft.com/azure/azure-resource-manager/templates/error-sku-not-available
+- title: VM 部署指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 为 Azure 准备和上传未认可的映像
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic
+    - text: 在 Azure 中创建或克隆通用 VM 的映像
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/capture-image
+- title: 无法连接到 VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何使用启用诊断功能来解决 Azure 中 Linux 虚拟机的问题
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+    - text: 如何在 Azure VM 上重置本地 Linux 密码
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/reset-password
+    - text: 使用 PowerShell 或 CLI 重置远程访问以解决远程服务器问题
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection
+    - text: 诊断和解决常见 SSH 连接问题的快速步骤
+      url: https://azure.microsoft.com/documentation/articles/virtual-machines-troubleshoot-ssh-connections/
+- title: 密码重置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 VM 访问扩展重置 SSH 密钥或密码
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#ways-to-use-the-vmaccess-extension
+    - text: 使用脱机方法重置 Azure Linux VM 的本地密码
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/reset-password
+- title: VM 无法启动
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 解决在应用特定内核更改后启动 VM 时出现的启动错误
+      url: https://support.microsoft.com/help/4091524/how-recovery-azure-linux-vm-from-kernel-related-boot-related-issues
+    - text: 使用串行控制台访问 GRUB 来修改启动配置模式
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode
+    - text: 如何使用启用诊断功能来解决 Azure 中 Linux 虚拟机的问题
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics
+    - text: 了解 FSTAB 错误和缓解步骤
+      url: https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors
+- title: 无法启动或停止 VM
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 排查在 Azure 中部署 Windows 虚拟机时遇到的问题
+      url: https://docs.microsoft.com/azure/virtual-machines/windows/restart-resize-error-troubleshooting
+    - text: 排查分配失败问题（经典部署模型）
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure-classic
+- title: VM 意外重启
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 如何查看 VM 重新启动日志以确定重新启动的原因
+      url: https://azure.microsoft.com/blog/viewing-vm-reboot-logs
+- title: 虚拟磁盘管理问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 虚拟磁盘常见问题解答
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks
+    - text: 排查在调整 VM 大小时出现的分配失败问题
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/allocation-failure
+    - text: 了解 VM 上的临时驱动器
+      url: https://docs.microsoft.com/azure/storage/storage-about-disks-and-vhds-linux#temporary-disk
+    - text: Azure 托管磁盘概述
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/managed-disks-overview
+    - text: 有关 Azure VM 磁盘以及托管和非托管高级磁盘的常见问题解答
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks
+- title: 磁盘加密问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Linux VM 上的 Azure 磁盘加密方案
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux
+    - text: 排查磁盘加密问题
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-troubleshooting
+    - text: Azure 磁盘加密常见问题解答
+      url: https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-faq
+- title: VM 性能问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 排查 Azure VM 性能问题
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-performance-virtual-machine-linux-windows
+    - text: Azure VM 的性能诊断
+      url: https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics
+- title: VM 扩展问题
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 针对扩展的常规故障排除步骤
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/troubleshoot
+    - text: 在 VM 中安装扩展
+      url: https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#installing-the-extension-in-your-vm
+    - text: 适用于 Windows 的自定义脚本扩展
+      url: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows#tips-and-tricks
+- title: 备份和还原
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Azure 门户中排查 Azure VM 备份问题
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot
+    - text: 对 Azure 备份服务器进行故障排除
+      url: https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot
+    - text: 查看 Azure 备份的功能
+      url: https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup#using-premium-storage-vms-with-azure-backup
+    - text: 了解如何将 Azure 虚拟机备份到恢复服务保管库
+      url: https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm

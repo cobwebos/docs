@@ -1,52 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 媒体服务视频索引器文档
+### YamlMime:Landing
+title: 了解 Azure 媒体服务视频索引器
+summary: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
 metadata:
-  title: Azure 媒体服务视频索引器文档 | Microsoft Docs
-  description: 了解视频索引器。
+  title: Azure 媒体服务视频索引器文档
+  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.subservice: video-indexer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: Azure 媒体服务视频索引器是基于 Azure 媒体分析、Azure 认知搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。<br/>如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: video-indexer-overview.md
-            html: <p>视频索引器整合了媒体 AI 技术，可以更轻松地从视频中提取见解。</p>
-            image:
-              src: media/index/AMSIcons-media_servicesV3.svg
-            title: 什么是 Azure 媒体服务视频索引器？
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 登录视频索引器网站并上传你的第一个视频：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: 提取见解
-            href: /azure/media-services/video-indexer/video-indexer-get-started
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何使用视频索引器 API 从视频中提取见解：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: 提取见解
-            href: /azure/media-services/video-indexer/video-indexer-use-apis
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77485108"
+landingContent:
+- title: 关于 Azure 媒体服务视频索引器
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是视频索引器？
+      url: video-indexer-overview.md
+    - text: 比较媒体服务 v3 预设和视频索引器
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: 常见问题
+      url: faq.md
+    - text: 用户之声
+      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - linkListType: whats-new
+    links:
+    - text: 视频索引器中有哪些新增功能？
+      url: release-notes.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 注册并上传视频
+      url: video-indexer-get-started.md
+    - text: 邀请用户
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: 创建连接到 Azure 的帐户
+      url: connect-to-azure.md
+    - text: 使用视频索引器 API
+      url: video-indexer-use-apis.md
+    - text: 上传视频和编制视频索引
+      url: upload-index-videos.md
+    - text: 检查 API 生成的输出
+      url: video-indexer-output-json-v2.md
+    - text: 将视频索引器小组件嵌入到应用中
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: 代码示例
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: 自定义内容模型
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 自定义品牌模型
+      url: customize-brands-model-with-website.md
+    - text: 自定义语言模型
+      url: customize-language-model-with-website.md
+    - text: 自定义人员模型
+      url: customize-person-model-with-website.md

@@ -72,54 +72,47 @@
     - name: 用户定义函数客户端库
       href: reference-user-defined-functions-client-library.md
 - name: 资源
+  expanded: true
   items:
+    - name: 开发人员资源
+      items:
+        - name: Azure 数字孪生图形查看器
+          href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
+        - name: '用于 C# (.NET) 的 Azure 数字孪生示例'
+          href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
+        - name: Azure 数字孪生 REST API
+          href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
+    - name: 定价和可用性
+      items:
+        - name: 定价
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
+        - name: 定价计算器
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: 上市区域
+          href: 'https://azure.microsoft.com/regions/services/'
     - name: 支持和帮助选项
-      href: /azure/iot-fundamentals/iot-support-help
-    - name: '用于 C# (.NET) 的 Azure 数字孪生示例'
-      href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
-    - name: Azure 数字孪生 REST API
-      href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
-    - name: 定价
-      href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-    - name: 定价计算器
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Azure 数字孪生图形查看器
-      href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
-    - name: 堆栈溢出
-      href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
+      items:
+        - name: Azure 支持选项
+          href: 'https://azure.microsoft.com/support/options/'
+        - name: Azure IoT 支持和帮助选项
+          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
+        - name: 堆栈溢出
+          href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: Azure IoT 代码示例
+          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
+    - name: 反馈和论坛
+      items:
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/home?category=&forum=&filter=&sort=relevancedesc&brandIgnore=true&searchTerm=Azure+Digital+Twins'
+        - name: 产品请求和建议
+          href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
     - name: 客户案例
-      href: 'https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/'
-    - name: Azure IoT 开发人员中心
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Azure 路线图
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Azure 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=digital-twins&sort=newest'
+    - name: Channel 9 视频
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Azure IoT 更新
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: 视频
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
-- name: 相关内容
-  items:
-    - name: 解决方案
-      items:
-        - name: IoT 解决方案加速器
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: /azure/iot-central/iot-support-help
-    - name: 平台服务
-      items:
-        - name: IoT 中心
-          href: /azure/iot-hub
-        - name: IoT 即插即用
-          href: /azure/iot-pnp
-        - name: IoT 中心设备预配服务
-          href: /azure/iot-dps
-        - name: 地图
-          href: /azure/azure-maps
-        - name: 服务 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: 时序见解
-          href: /azure/time-series-insights
-    - name: Edge 解决方案
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT 设备 SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
