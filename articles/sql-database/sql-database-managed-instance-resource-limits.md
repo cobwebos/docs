@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/18/2020
+ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201724"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526852"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -96,7 +96,7 @@ ms.locfileid: "77201724"
 
 在常规用途服务层中，每个数据库文件都获取专用的 IOPS 和吞吐量，具体取决于文件大小。 较大的文件会获得更多的 IOPS 和吞吐量。 下表显示了数据库文件的 IO 特征：
 
-| 文件大小           | 0-128 GiB | 128-256 GiB | 256-512 GiB | 0.5-1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| 文件大小 | > = 0 且 < = 128 GiB | > 128 和 < = 256 GiB | > 256 和 < = 512 GiB | > 0.5 且 < = 1 TiB    | > 1 和 < = 2 TiB    | > 2 和 < = 4 TiB | > 4 和 < = 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | 每个文件的 IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500   |
 | 每个文件的吞吐量 | 100 MiB/秒 | 125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 
@@ -162,7 +162,7 @@ ms.locfileid: "77201724"
 
      ![问题类型配额](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. 单击 **“下一步”** 。
+3. 单击“下一步”。
 4. 在新支持请求的 "**问题" 选项卡**上：
    - 对于“严重性”，选择问题的严重性级别。
    - 对于“详细信息”，提供有关问题的其他信息，包括错误消息。
@@ -176,7 +176,7 @@ ms.locfileid: "77201724"
      > - 在配额增加后，现有子网中的每个服务层所需的 Vcore 数（如果需要扩展现有子网。
      > - 新子网中所需的新子网数和每个服务层的 Vcore 总数（如果需要在新子网中部署托管实例）。
 
-5. 单击 **“下一步”** 。
+5. 单击“下一步”。
 6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
 7. 单击“创建”。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847051"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482762"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847051"
 
 本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）目录中创建自定义属性。 将在配置文件编辑用户旅程中将此新属性用作自定义声明。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 遵循文章 [Azure Active Directory B2C：自定义策略入门](custom-policy-get-started.md)中的步骤进行操作。
 
@@ -34,7 +34,7 @@ Azure AD B2C 目录附带了一组内置属性。 示例包括：Given Name、Su
 * 标识提供者具有必须保存的唯一用户标识符，例如 uniqueUserGUID。
 * 自定义用户旅程需要保留用户的状态，例如 migrationStatus。
 
-Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用 [Azure AD 图形 API](manage-user-accounts-graph-api.md) 读取和写入这些属性。
+Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以通过使用[MICROSOFT GRAPH API](manage-user-accounts-graph-api.md)来读取和写入这些属性。
 
 扩展属性扩展目录中用户对象的架构。 术语扩展属性、自定义属性和自定义声明在本文的上下文中引用相同的内容。 名称会因上下文（应用程序、对象、策略）而异。
 
@@ -141,7 +141,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 4. 将相同的 `ClaimType` 定义添加到 **TrustFrameworkBase.xml**。 不必在基本文件和扩展文件中添加 `ClaimType` 定义。 但是，后续步骤会在基本文件中将 `extension_loyaltyId` 添加到 TechnicalProfiles。 因此，策略验证程序在没有此元素的情况下会拒绝上传基本文件。 这可能有助于在 TrustFrameworkBase.xml 文件中跟踪名为“ProfileEdit”的用户旅程的执行操作。 在编辑器中搜索同名的用户旅程。 观察业务流程步骤 5 是否调用 TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate。 请搜索并检查此 TechnicalProfile，熟悉相关的流。
 
-5. 打开 TrustFrameworkBase.xml 文件，并在 TechnicalProfile SelfAsserted-ProfileUpdate 中添加 `loyaltyId` 作为输入和输出声明：
+5. 打开 TrustFrameworkBase.xml 文件，并在 TechnicalProfile SelfAsserted-ProfileUpdate 中添加  **作为输入和输出声明**`loyaltyId`：
 
     ```xml
     <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
@@ -177,7 +177,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
     </TechnicalProfile>
     ```
 
-6. 在 TrustFrameworkBase.xml 文件中，将 `loyaltyId` 声明添加到 TechnicalProfile AAD-UserWriteProfileUsingObjectId。 此添加将声明的值保留在目录中当前用户的扩展属性中：
+6. 在 TrustFrameworkBase.xml 文件中，将  **声明添加到 TechnicalProfile AAD-UserWriteProfileUsingObjectId**`loyaltyId`。 此添加将声明的值保留在目录中当前用户的扩展属性中：
 
     ```xml
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
@@ -204,7 +204,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
     </TechnicalProfile>
     ```
 
-7. 在 TrustFrameworkBase.xml 文件中，将 `loyaltyId` 声明添加到 TechnicalProfile AAD-UserReadUsingObjectId，以便每次用户登录时都会读取扩展属性的值。 到目前为止，TechnicalProfiles 仅在本地帐户流中发生过更改。 如果社交帐户或联合帐户流中需要新属性，则需要更改一组不同的 TechnicalProfiles。 请参阅“后续步骤”部分。
+7. 在 TrustFrameworkBase.xml 文件中，将  **声明添加到 TechnicalProfile AAD-UserReadUsingObjectId，以便每次用户登录时都会读取扩展属性的值**`loyaltyId`。 到目前为止，TechnicalProfiles 仅在本地帐户流中发生过更改。 如果社交帐户或联合帐户流中需要新属性，则需要更改一组不同的 TechnicalProfiles。 请参阅“后续步骤”部分。
 
     ```xml
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
@@ -234,7 +234,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
-1. 打开“Azure AD B2C”边栏选项卡并导航到“标识体验框架” > “自定义策略”。
+1. 打开“Azure AD B2C”边栏选项卡并导航到“标识体验框架” **“自定义策略”**  > 。
 1. 选择已上传的自定义策略。 选择“立即运行”。
 1. 使用电子邮件地址注册。
 
@@ -269,10 +269,10 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 2. 在内置策略和自定义策略之间使用相同的扩展属性。 通过门户体验添加扩展属性或自定义属性时，使用每个 B2C 租户中都存在的 b2c-extensions-app 注册这些属性。 按照以下步骤在自定义策略中使用扩展属性：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。
-   b.保留“数据库类型”设置，即设置为“共享”。 找到 b2c-extensions-app，然后选择它。
+   a. 在 portal.azure.com 的 B2C 租户中，导航到 Azure Active Directory 并选择“应用注册”。
+   b. 找到 b2c-extensions-app，然后选择它。
    c. 在“概要”下，输入“应用程序 ID”和“对象 ID”。
-   d.单击“下一步”。 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：
+   d. 将这些信息包含在 AAD-Common TechnicalProfile 元数据中：
 
    ```xml
       <ClaimsProviders>
@@ -297,7 +297,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 ## <a name="reference"></a>参考
 
-有关扩展属性的详细信息，请参阅文章[目录架构扩展| 图形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)。
+有关扩展属性的详细信息，请参阅文章[使用扩展将自定义数据添加到资源](https://docs.microsoft.com/graph/extensibility-overview)。
 
 > [!NOTE]
 > * TechnicalProfile 是一种元素类型或函数，用于定义终结点的名称、元数据和协议。 TechnicalProfile 详细说明了“标识体验框架”执行的声明交换。 在业务流程步骤中或者通过另一 TechnicalProfile 调用此函数时，调用方以参数形式提供 InputClaims 和 OutputClaims。

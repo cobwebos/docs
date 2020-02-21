@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ab9d7128748e99b75b7e1a7187a7958e18300759
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834921"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483476"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 将 Vm 部署到专用主机
  
@@ -27,7 +27,7 @@ ms.locfileid: "75834921"
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 初始版本支持以下 VM 系列： DSv3 和 ESv3。 
+- 初始版本支持以下 VM 系列： DSv3、ESv3、FSv2、LSv2 和 MSv2。 
  
 
 ## <a name="create-resource-group"></a>创建资源组 

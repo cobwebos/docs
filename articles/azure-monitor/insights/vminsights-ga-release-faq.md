@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047847"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482878"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>用于 VM 的 Azure Monitor 公开发布（GA）常见问题
 
@@ -24,7 +24,9 @@ ms.locfileid: "77047847"
 
 在此升级过程中，用于 VM 的 Azure Monitor 性能数据存储在[容器 Azure Monitor](container-insights-overview.md)相同的*InsightsMetrics*表中，这使你可以更轻松地查询两个数据集。 此外，还可以存储在以前使用的表中无法存储的多个不同的数据集。 
 
-在接下来的一周或第二周，我们的性能视图也将更新为使用此新表。
+现在，我们的性能视图使用我们在*InsightsMetrics*表中存储的数据。  如果尚未升级以在工作区中使用最新的 VMInsights 解决方案，则图表将不再显示信息。  你可以从我们的**入门**页面升级，如下所述。
+
+通过此升级，用于 VM 的 Azure Monitor 性能数据存储在[容器 Azure Monitor 的](container-insights-overview.md)相同*InsightsMetrics*表中，使您可以更轻松地查询这两个数据集。 您还可以存储不能在以前使用的表中存储的多个不同的数据集。 
 
 我们认识到，请求现有客户升级导致工作流中断，这就是我们目前在公共预览版中（而不是在 GA 之后）完成此操作的原因。
 
@@ -34,6 +36,8 @@ ms.locfileid: "77047847"
 我们发布了一个名为 VMInsights 的新解决方案，其中包括用于数据收集的其他功能，以及用于将此数据存储在 Log Analytics 工作区中的新位置。 
 
 过去，我们在你的工作区中启用了 ServiceMap 解决方案，并在 Log Analytics 工作区中设置了性能计数器，以将数据发送到*Perf*表。 这一新的解决方案会将数据发送到名为*InsightsMetrics*的表，用于容器 Azure Monitor。 此表架构使我们可以存储与*Perf*表格式不兼容的其他度量值和服务数据集。
+
+我们更新了性能图表，以使用我们在*InsightsMetrics*表中存储的数据。 可以按如下所述升级，以使用**入门**页中的*InsightsMetrics*表。
 
 
 ## <a name="how-do-i-upgrade"></a>如何实现升级？

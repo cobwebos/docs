@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905264"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526489"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>配置、优化 AzCopy 并对其进行故障排除
 
@@ -22,9 +22,9 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户中复制 blob �
 > [!NOTE]
 > 如果你正在寻找有助于你开始处理 AzCopy 的内容，请参阅以下文章：
 > - [AzCopy 入门](storage-use-azcopy-v10.md)
-> - [用 AzCopy 和 blob 存储传输数据](storage-use-azcopy-blobs.md)
-> - [用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
-> - [用 AzCopy 和 Amazon S3 存储桶传输数据](storage-use-azcopy-s3.md)
+> - [使用 AzCopy 和 Blob 存储传输数据](storage-use-azcopy-blobs.md)
+> - [使用 AzCopy 和文件存储传输数据](storage-use-azcopy-files.md)
+> - [使用 AzCopy 和 Amazon S3 Bucket 传输数据](storage-use-azcopy-s3.md)
 
 ## <a name="configure-proxy-settings"></a>配置代理设置
 
@@ -114,16 +114,18 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 [Azcopy copy](storage-ref-azcopy-copy.md)命令不会从目标删除文件，因此，如果想要在目标位置删除文件时在目标位置删除文件，请使用[azcopy sync](storage-ref-azcopy-sync.md)命令，将 `--delete-destination` 标志设置为 `true` 或 `prompt`的值。 
 
-## <a name="troubleshoot-issues"></a>解决问题
+## <a name="troubleshoot-issues"></a>排查问题
 
-AzCopy 为每个作业创建日志和计划文件。 您可以使用这些日志来调查并解决任何潜在问题。 
+AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并解决任何潜在问题。 
 
 日志将包含失败状态（`UPLOADFAILED`、`COPYFAILED`和 `DOWNLOADFAILED`）、完整路径和失败的原因。
 
 默认情况下，日志和计划文件位于 Windows 上的 `%USERPROFILE%\.azcopy` 目录中或 Mac 和 Linux 上的 `$HOME$\.azcopy` 目录中，但你可以根据需要更改该位置。
 
+相关错误不一定是出现在文件中的第一个错误。 对于网络错误、超时和服务器繁忙错误等错误，AzCopy 将重试最多20次，重试过程通常会成功。  你看到的第一个错误可能是已成功重试的错误。  因此，请查找 `UPLOADFAILED`、`COPYFAILED`或 `DOWNLOADFAILED`附近的错误，而不是查看文件中的第一个错误。 
+
 > [!IMPORTANT]
-> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可确保 SAS 不会意外地与任何人共享。 您可以在日志文件的开头找到修正版本。
+> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可确保 SAS 不会意外地与任何人共享。 可以在日志文件的开头找到经修订的版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 

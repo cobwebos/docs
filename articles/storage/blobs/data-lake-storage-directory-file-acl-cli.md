@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835116"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486128"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 Azure CLI 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
@@ -24,7 +24,7 @@ ms.locfileid: "75835116"
 > 本文中所述的 `storage-preview` 扩展目前为公共预览版。
 
  | [Gen1 到 Gen2 映射的](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)[示例](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#adls-gen2-support) | [提供反馈](https://github.com/Azure/azure-cli-extensions/issues)
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -77,7 +77,7 @@ ms.locfileid: "75835116"
 此示例将创建一个名为 `my-file-system`的文件系统。
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>创建目录
@@ -237,6 +237,12 @@ az storage blob access show -b my-directory/upload.txt -c my-file-system --accou
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
+此示例在目录中为所属用户、拥有组或其他用户设置*默认*acl，然后将 ACL 打印到控制台。
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
 使用 `az storage blob access set` 命令设置**文件**的 acl。 

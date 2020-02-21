@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642159"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498629"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 中使用索引器对 Cosmos DB 数据编制索引认知搜索 
 
@@ -29,13 +29,13 @@ ms.locfileid: "75642159"
 
 由于术语可能令人困惑，值得注意的是， [Azure Cosmos DB 索引](https://docs.microsoft.com/azure/cosmos-db/index-overview)和[Azure 认知搜索索引](search-what-is-an-index.md)是不同的操作，每个服务都是唯一的。 开始 Azure 认知搜索编制索引之前，Azure Cosmos DB 数据库必须已存在并且包含数据。
 
-Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure Cosmos DB 项](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)进行爬网。
+Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure Cosmos DB 项](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items)进行爬网。 
 
-+ 对于通常可用的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，可以使用[门户](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)。
++ 对于通常可用的[SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference)，可以使用[门户](#cosmos-indexer-portal)、 [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)或[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)来创建数据源和索引器。
 
-+ 对于[MONGODB api （预览版）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)和[Gremlin api （预览版）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2019-05-06-预览版](search-api-preview.md)创建索引器[（REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)调用来创建索引器。
++ 对于[MONGODB API （预览版）](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)，可以使用[门户](#cosmos-indexer-portal)或[REST API 版本 2019-05-06-preview](search-api-preview.md)来创建数据源和索引器。
 
-+ 对于[Cassandra API （预览版）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)，只能在[Create 索引器（REST）](https://docs.microsoft.com/rest/api/searchservice/create-indexer)调用上使用[REST API 版本 2019-05-06-preview](search-api-preview.md) 。
++ 对于[Cassandra API （预览版）](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)和[Gremlin API （预览版）](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)，只能使用[REST API 版本 2019-05-06-preview](search-api-preview.md)来创建数据源和索引器。
 
 
 > [!Note]
@@ -173,7 +173,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-| 字段   | Description |
+| 字段   | 说明 |
 |---------|-------------|
 | name | 必需。 选择任意名称来表示数据源对象。 |
 |type| 必需。 必须是 `cosmosdb`。 |
@@ -261,7 +261,7 @@ Azure 认知搜索中的 Cosmos DB 索引器可对通过不同协议访问[Azure
 | 基元类型的数组，如 ["a", "b", "c"] |集合 (Edm.String) |
 | 类似于日期的字符串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 对象，如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |
-| 其他 JSON 对象 |N/A |
+| 其他 JSON 对象 |空值 |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4-配置并运行索引器
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368614"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526472"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -176,7 +176,7 @@ Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域�
 
 100 TiB 容量限制的标准文件共享在所有 Azure 区域中全局可用-
 
-- LRS除南非北部和南非西部之外的所有区域。
+- LRS除南非北部、南非西部、德国中西部和德国北部以外的所有区域。
 - ZRS除日本东部、北欧、南非北部以外的所有区域。
 - GRS/GZRS：不受支持。
 

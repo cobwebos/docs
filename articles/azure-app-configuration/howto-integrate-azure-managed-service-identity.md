@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212212"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500403"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
 
@@ -78,7 +78,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 1. 添加对*Azure. Identity*包的引用：
 
     ```cli
-    dotnet add package Azure.Identity --version 1.1.0
+    dotnet add package Azure.Identity
     ```
 
 1. 查找应用配置存储的终结点。 此 URL 在 Azure 门户中存储的 "**访问密钥**" 选项卡上列出。
@@ -102,7 +102,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
     > [!IMPORTANT]
     > `CreateHostBuilder` 替换 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根据环境选择正确的语法。
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -116,7 +116,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
                 .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -134,7 +134,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 若要同时使用应用配置值和 Key Vault 引用，请按如下所示更新*Program.cs* 。 此代码使用 `AzureServiceTokenProvider` 创建新 `KeyVaultClient`，并将此引用传递给对 `UseAzureKeyVault` 方法的调用。
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -150,7 +150,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
                     .UseStartup<Startup>();
     ```
 
-    ### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>

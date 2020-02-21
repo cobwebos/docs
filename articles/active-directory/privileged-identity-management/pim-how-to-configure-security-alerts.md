@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024188"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498926"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>为 Privileged Identity Management 中 Azure AD 角色配置安全警报
 
@@ -32,11 +32,11 @@ ms.locfileid: "77024188"
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 角色的用户登录到[Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 按照本文中的步骤来调查 Azure AD 角色的安全警报。
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ![Azure AD 角色-警报窗格列出警报和严重性](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -120,7 +120,7 @@ ms.locfileid: "77024188"
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **预防** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>对于具有多个管理员共享帐户的特权角色，[需要多重身份验证](pim-how-to-change-default-settings.md)。 |
-| **门户中的缓解措施** | N/A |
+| **门户中的缓解措施** | 空值 |
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置指定从2到100的激活次数，你希望在选择的时间范围内收到通知。 可通过移动滑块或在文本框中键入数字更改此设置。 |
@@ -135,7 +135,7 @@ ms.locfileid: "77024188"
 
 ![用于启用和配置设置的警报的 "设置" 页](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
+# <a name="previous-version"></a>[先前版本](#tab/previous)
 
 ![Azure AD 角色-警报窗格列出警报和严重性](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "77024188"
 | **为何收到此警报？** | 同一用户多次激活同一特权角色是受到攻击的迹象。 |
 | **如何修复？** | 检查列表中的用户，并确保用户特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使他们能够执行任务。 |
 | **预防** | 确保特权角色的[激活持续时间](pim-how-to-change-default-settings.md)设置得足够长，使用户能够执行其任务。</br>对于具有多个管理员共享帐户的特权角色，[需要多重身份验证](pim-how-to-change-default-settings.md)。 |
-| **门户中的缓解措施** | N/A |
+| **门户中的缓解措施** | 空值 |
 | **触发器** | 如果用户在指定期限内多次激活同一特权角色，将触发此警报。 可以同时配置时间段和激活次数。 |
 | **激活续订时间范围** | 此设置以天、小时、分钟和秒为单位指定要用于跟踪可疑续订的时间段。 |
 | **激活续订次数** | 此设置指定从2到100的激活次数，你希望在选择的时间范围内收到通知。 可通过移动滑块或在文本框中键入数字更改此设置。 |

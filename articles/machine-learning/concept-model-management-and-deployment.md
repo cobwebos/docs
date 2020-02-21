@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122332"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486370"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -89,7 +89,7 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 
 创建映像时，还会添加 Azure 机器学习所需的组件。 例如，运行 web 服务并与 IoT Edge 进行交互所需的资产。
 
-#### <a name="batch-scoring"></a>批处理评分
+#### <a name="batch-scoring"></a>批评分
 通过 ML 管道支持批处理评分。 有关详细信息，请参阅[大数据上的批处理预测](how-to-use-parallel-run-step.md)。
 
 #### <a name="real-time-web-services"></a>实时 web 服务
@@ -114,13 +114,13 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md)。
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 Microsoft Power BI 支持使用机器学习模型进行数据分析。 有关详细信息，请参阅[Power BI （预览版）中的 Azure 机器学习集成](https://docs.microsoft.com/power-bi/service-machine-learning-integration)。
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>捕获捕获端到端 ML 生命周期所需的管理数据
 
-Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体如下：
+Azure ML 使你能够跟踪所有 ML 资产的端到端审核记录。 具体来说：
 
 - Azure ML[与 Git 集成](how-to-set-up-training-targets.md#gitintegration)，以跟踪有关代码来源的存储库/分支/提交的信息。
 - [AZURE ML 数据集](how-to-create-register-datasets.md)可帮助你跟踪、分析和版本数据。 
@@ -138,6 +138,19 @@ Azure ML 将关键事件发布到 Azure EventGrid，可用于在 ML 生命周期
 此信息可帮助你了解模型的使用方式。 收集的输入数据在训练模型的未来版本时也可能会很有用。
 
 有关详细信息，请参阅[如何启用模型数据收集](how-to-enable-data-collection.md)。
+
+## <a name="retrain-your-model-on-new-data"></a>针对新数据重新训练模型
+
+通常，您需要更新您的模型，甚至在收到新信息时从头开始重新训练该模型。 有时，接收新数据是域的预期部分。 其他情况下，如在数据[集上检测数据偏移（预览版）](how-to-monitor-datasets.md)中所述，在面对特定传感器的更改、自然数据更改（如季节性影响）或功能改变为其他功能的情况下，模型性能可能会下降。 
+
+"如何实现知道我是否应该重新训练？" 但前面讨论过的 Azure ML 事件和监视工具是自动化的良好起点。 在您决定重新训练后，您应该： 
+
+- 使用可重复的自动化过程预处理你的数据
+- 训练新模型
+- 将新模型的输出与旧模型的输出进行比较
+- 使用预定义的条件来选择是否替换旧模型 
+
+以上步骤的一个主题是，您的重新训练应该是自动化的，而不是临时的。 [Azure 机器学习管道](concept-ml-pipelines.md)是创建与数据准备、培训、验证和部署相关的工作流的好办法。 阅读重新训练[模型与 Azure 机器学习设计器（预览）](how-to-retrain-designer.md) ，了解管道和 Azure 机器学习设计器如何适应重新训练方案。 
 
 ## <a name="automate-the-ml-lifecycle"></a>自动执行 ML 生命周期 
 

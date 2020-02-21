@@ -10,16 +10,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 02/18/2020
 ms.author: rkarlin
-ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 5ab5d3c0fc1c37feaac2cc6b4b6837627c5a82df
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369689"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500643"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的高级多阶段攻击检测
+
+
+> [!IMPORTANT]
+> Azure Sentinel 中的某些合成功能当前以公共预览版提供。
+> 提供这些功能没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+
 
 通过使用基于机器学习的合成技术，Azure Sentinel 可以通过组合在终止链的不同阶段观察到的异常行为和可疑活动，来自动检测多阶段攻击。 然后，Azure Sentinel 会生成可能非常难以捕获的事件。 这些事件以及括住了两个或多个警报或活动。 按照设计，这些事件的数量较低、高度保真和高严重性。
 
@@ -41,13 +48,32 @@ ms.locfileid: "77369689"
 
 规则模板不适用于高级多阶段攻击检测。
 
+> [!NOTE]
+> Azure Sentinel 目前使用30天的历史数据来训练机器学习系统。 此数据将在通过机器学习管道传递时使用 Microsoft 密钥进行加密。 但是，如果在 Azure Sentinel 工作区中启用了 CMK，则不会使用[客户托管的密钥（CMK）](customer-managed-keys.md)加密定型数据。 若要选择退出，请导航到**Azure Sentinel** \> **配置** \> **Analytics \> Active Rules \> Advanced 多阶段攻击检测**"，然后在"**状态**"列中，选择"**禁用 "。**
+
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>使用 Palo Alto 网络和 Microsoft Defender ATP 进行合成
 
-- TOR 匿名服务的网络请求，后跟 Palo Alto 网络防火墙标记的异常流量
+这些方案结合了安全分析师使用的两个基本日志：来自 Palo Alto 网络的防火墙日志和来自 Microsoft Defender ATP 的终结点检测日志。 在下面列出的所有方案中，在涉及外部 IP 地址的终结点中检测到可疑活动，然后将来自外部 IP 地址的异常流量返回到防火墙中。 在 Palo Alto 日志中，Azure Sentinel 侧重于[威胁日志](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，在允许威胁时（可疑数据、文件、洪水、数据包、扫描、间谍软件、url、病毒、漏洞、分秒必争、wildfires），流量被视为可疑。
 
-- PowerShell 建立了可疑的网络连接，并 Palo Alto 网络防火墙标记的异常流量
+### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名服务的网络请求，后跟 Palo Alto 网络防火墙标记的异常流量。
 
-- 到 IP 的出站连接，其中包含未经授权的访问尝试的历史记录，以及 Palo Alto 网络防火墙标记的异常流量
+在此方案中，Azure Sentinel 首先检测到 Microsoft Defender 高级威胁防护检测到对 TOR 匿名服务的网络请求，导致异常活动。 此操作是在帐户 {account name} 下启动的，SID ID {sid} 于 {time}。 连接的传出 IP 地址是 {IndividualIp}。
+然后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量的目标 IP 地址为 {DestinationIP}。
+
+此方案目前为公共预览版。
+
+
+### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell 进行了可疑的网络连接，并 Palo Alto 网络防火墙标记的异常流量。
+
+在此方案中，Azure Sentinel 首先检测到 Microsoft Defender 高级威胁防护检测到 PowerShell 发出可疑网络连接，导致 Palo Alto 网络防火墙检测到异常活动。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 然后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
+
+此方案目前为公共预览版。
+
+### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>到 IP 的出站连接，其中包含未经授权的访问尝试的历史记录，以及 Palo Alto 网络防火墙标记的异常流量
+
+在这种情况下，Azure Sentinel 会检测到警报，指出 Microsoft Defender 高级威胁防护检测到 IP 地址的出站连接，其中包含导致 Palo Alto 检测到异常活动的未经授权的访问尝试。网络防火墙。 这是由在 {time} 的 SID ID 为 {sid} 的帐户 {account name} 启动的。 连接的传出 IP 地址是 {IndividualIp}。 完成此操作后，Palo Alto 网络防火墙在 {TimeGenerated} 检测到异常活动。 这表明网络流量进入了网络。 网络流量的目标 IP 地址为 {DestinationIP}。
+
+此方案目前为公共预览版。
 
 
 

@@ -1,23 +1,27 @@
 ---
-title: 适用于 Azure SQL 数据库的最佳安全做法手册Microsoft Docs
-description: 本文提供了有关 Azure SQL 数据库中安全最佳做法的一般指南。
+title: 用于解决常见安全要求的操作手册 |Microsoft Docs
+titleSuffix: Azure SQL Database
+description: 本文提供 Azure SQL 数据库中的常见安全要求和最佳实践。
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845870"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506224"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL 数据库安全最佳实践操作手册
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>针对 Azure SQL 数据库解决常见安全要求的操作手册
 
-## <a name="overview"></a>概述
+> [!NOTE]
+> 本文档提供有关如何解决常见安全要求的最佳实践。 并非所有要求都适用于所有环境，你应该向数据库和安全团队咨询要实现哪些功能。
+
+## <a name="solving-common-security-requirements"></a>解决常见的安全要求
 
 本文档提供有关如何解决使用 Azure SQL 数据库的新的或现有应用程序的常见安全要求的指导。 它按高级安全区域进行组织。 若要解决特定的威胁，请参阅[常见安全威胁和潜在缓解](#common-security-threats-and-potential-mitigations)部分。 虽然在将应用程序从本地迁移到 Azure 时，某些提供的建议适用，但迁移方案并不是本文档的重点。
 
@@ -32,7 +36,7 @@ ms.locfileid: "76845870"
 - Azure SQL Vm （IaaS）
 - 本地 SQL Server
 
-### <a name="audience"></a>受众
+### <a name="audience"></a>读者
 
 本指南的目标读者是面向客户的有关如何保护 Azure SQL 数据库的问题。 此最佳实践文章中感兴趣的角色包括但不限于：
 
@@ -59,12 +63,15 @@ ms.locfileid: "76845870"
 
 我们计划继续更新此处列出的建议和最佳实践。 使用本文底部的 "**反馈**" 链接提供对此文档的输入或任何更正。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 身份验证是证明用户所声明身份的过程。 Azure SQL 数据库支持两种类型的身份验证：
 
 - SQL 身份验证
 - Azure Active Directory 身份验证
+
+> [!NOTE]
+> 所有工具和第三方应用程序可能不支持 Azure Active Directory 身份验证。
 
 ### <a name="central-management-for-identities"></a>标识的集中管理
 
@@ -82,7 +89,7 @@ ms.locfileid: "76845870"
 
 - 创建 Azure AD 租户，并[创建用户](../active-directory/fundamentals/add-users-azure-active-directory.md)来表示人为用户并创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md)，以表示应用、服务和自动化工具。 服务主体等效于 Windows 和 Linux 中的服务帐户。 
 
-- 通过组分配将资源的访问权限分配给 Azure AD 主体：创建 Azure AD 组，授予对组的访问权限，并向组中添加单个成员。 在数据库中，创建映射 Azure AD 组的包含的数据库用户。 
+- 通过组分配将资源的访问权限分配给 Azure AD 主体：创建 Azure AD 组，授予对组的访问权限，并向组中添加单个成员。 在数据库中，创建映射 Azure AD 组的包含的数据库用户。 若要在数据库内分配权限，请将用户放在具有相应权限的数据库角色中。
   - 请参阅文章使用[Sql 配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)和[使用 Azure AD 进行 sql 身份验证](sql-database-aad-authentication.md)。
   > [!NOTE]
   > 在托管实例中，还可以创建映射到 master 数据库中 Azure AD 主体的登录名。 请参阅[CREATE LOGIN （transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)。
@@ -204,11 +211,6 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 - 作为服务器管理员，创建登录名和用户。 除非使用包含密码的包含数据库用户，否则所有密码都存储在 master 数据库中。
   - 请参阅[如何控制和授予数据库对 Sql 数据库和 Sql 数据仓库的访问权限](sql-database-manage-logins.md)一文。
 
-- 遵循密码管理最佳做法：
-  - 提供复杂的密码，由拉丁文大写字母和小写字母、数字（0-9）以及非字母数字字符（如 $、！、# 或%）组成。
-  - 使用更长的密码，而不是较短的随机选定字符。
-  - 至少每90天执行一次手动密码更改。
-
 ## <a name="access-management"></a>访问管理
 
 访问管理是对 Azure SQL 数据库的授权用户访问和权限的控制和管理过程。
@@ -250,24 +252,25 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 避免将权限分配给单个用户。 改为改用角色（数据库或服务器角色）。 角色有助于对权限进行报告和故障排除。 （Azure RBAC 仅支持通过角色分配权限。） 
 
-- 当角色的权限与用户的所需权限完全匹配时，请使用内置角色。 您可以将用户分配到多个角色。 
-
-- 当内置角色授予过多或权限不足时，创建和使用自定义角色。 实践中使用的典型角色： 
+- 创建和使用具有所需的确切权限的自定义角色。 实践中使用的典型角色： 
   - 安全部署 
   - 管理员 
-  - Developer 
+  - 开发人员 
   - 支持人员 
   - 审核员 
   - 自动化过程 
   - 最终用户 
+  
+- 仅当角色的权限与用户的所需权限完全匹配时，才使用内置角色。 您可以将用户分配到多个角色。 
 
 - 请记住，SQL Server 数据库引擎中的权限可应用于以下作用域。 范围越小，授予权限的影响越小。 
   - Azure SQL 数据库服务器（master 数据库中的特殊角色） 
   - 数据库 
-  - 架构（另请参阅：针对[SQL Server 的架构设计：针对架构设计的建议，具有安全性](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
+  - 架构
+      - 最佳做法是使用架构授予数据库内的权限。 （另请参阅：[针对 SQL Server 的架构设计：具有安全考虑的架构设计建议](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)）
   - 对象（表、视图、过程等） 
   > [!NOTE]
-  > 不建议在对象级别上应用权限，因为此级别会给整体实现增加不必要的复杂性。 如果决定使用对象级权限，应清楚地记录这些权限。 这同样适用于列级权限，因为同样的原因，这些权限甚至更少建议。 [拒绝](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)的标准规则不适用于列。
+  > 不建议在对象级别上应用权限，因为此级别会给整体实现增加不必要的复杂性。 如果决定使用对象级权限，应清楚地记录这些权限。 这同样适用于列级权限，因为同样的原因，这些权限甚至更少建议。 另请注意，默认情况下，表级[DENY](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql)不会覆盖列级授予。 这需要激活[通用标准符合性服务器配置](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option)。
 
 - 使用[漏洞评估（VA）](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment)执行定期检查，以测试太多权限。
 
@@ -320,7 +323,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 - 请始终确保具有与安全相关的操作的审核线索。 
 
-- 可以检索内置 RBAC 角色的定义，以查看所使用的权限，并通过 Powershell 基于这些权限的摘录和 cumulations 创建自定义角色 
+- 可以检索内置 RBAC 角色的定义，以查看所使用的权限，并通过 PowerShell 基于这些权限的摘录和 cumulations 创建自定义角色。
 
 - 由于 db_owner 数据库角色的任何成员都可以更改透明数据加密的安全设置，如（TDE）或更改 SLO，因此应小心授予此成员资格。 但是，有许多任务需要 db_owner 权限。 更改任何数据库设置（例如更改 DB 选项）之类的任务。 审核在任何解决方案中扮演着关键角色。
 
@@ -409,6 +412,8 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 使用中的数据是指在执行 SQL 查询期间数据库系统内存中存储的数据。 如果数据库存储敏感数据，则您的组织可能需要确保不允许高权限用户查看数据库中的敏感数据。 高特权用户（如组织中的 Microsoft 操作员或 Dba）应该能够管理数据库，但不能从 SQL Server 进程的内存或通过查询数据库来查看并可能窃取敏感数据。
 
+确定哪些数据是敏感的，以及敏感数据是否必须在内存中加密，并且对于明文中的管理员不能访问的策略，特定于您的组织以及您需要遵守的符合性规定。 请参阅相关要求：[标识并标记敏感数据](#identify-and-tag-sensitive-data)。
+
 **如何实现**：
 
 - 使用[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)确保在 Azure SQL 数据库中不以纯文本形式公开敏感数据，即使在内存/正在使用中也是如此。 Always Encrypted 保护数据库管理员（Dba）和云管理员的数据（或可以模拟高特权但未经授权的用户的不良参与者），并使你能够更好地控制谁可以访问你的数据。
@@ -416,6 +421,8 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 **最佳做法**：
 
 - Always Encrypted 不能代替静态数据（TDE）或传输（SSL/TLS）。 不应将 Always Encrypted 用于非敏感数据，以最大程度地降低性能和功能影响。 建议将 Always Encrypted 与 TDE 和传输层安全性（TLS）结合使用，以全面保护静态数据、传输内和使用中的数据。 
+
+- 在将 Always Encrypted 部署到生产数据库之前，请先评估对已标识敏感数据列进行加密的影响。 通常情况下，Always Encrypted 会减少对加密列的查询功能，并有其他限制，如[Always Encrypted 功能详细信息](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details)中所述。 因此，你可能需要重塑你的应用程序重新实现功能，查询不支持，在客户端或/上重构你的数据库架构，其中包括存储过程、函数、视图和触发器的定义。 如果现有应用程序不符合 Always Encrypted 的限制和限制，则可能无法使用加密列。 虽然 Microsoft 工具的生态系统、支持 Always Encrypted 的产品和服务越来越多，但许多客户不能使用加密列。 加密列还可能会影响查询性能，具体取决于工作负荷的特征。 
 
 - 如果你使用 Always Encrypted 来保护恶意 Dba 的数据，请使用角色分隔来管理 Always Encrypted 密钥。 使用角色分离时，安全管理员会创建物理密钥。 DBA 在数据库中创建列主密钥和列加密密钥元数据对象，并对物理密钥进行描述。 在此过程中，安全管理员不需要访问数据库，DBA 不需要以纯文本形式访问物理密钥。 
   - 有关详细信息，请参阅[管理密钥和角色分离](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation)。 
@@ -705,7 +712,7 @@ SQL 身份验证是指使用用户名和密码连接到 Azure SQL 数据库时�
 
 ### <a name="identify-and-tag-sensitive-data"></a>标识并标记敏感数据 
 
-发现可能包含敏感数据的列。 对列进行分类以使用基于敏感的高级审核和保护方案。 
+发现可能包含敏感数据的列。 什么是敏感数据的严重程度取决于客户、合规性法规等，并需要由用户负责评估这些数据。 对列进行分类以使用基于敏感的高级审核和保护方案。 
 
 **如何实现**：
 

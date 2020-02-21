@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208876"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523265"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -43,6 +43,9 @@ ms.locfileid: "77208876"
 
 [Azure Functions Core Tools] 包含同一运行时的另一版本，该版本为本地开发计算机上可运行的 Azure Functions 运行时提供支持。 它还提供用于创建函数、连接到 Azure 和部署函数项目的命令。
 
+>[!IMPORTANT]
+>你必须本地安装[Azure CLI](/cli/azure/install-azure-cli)才能从 Azure Functions Core Tools 发布到 Azure。  
+
 ### <a name="v2"></a>版本1.x 和2。x
 
 版本 2.x/版本的工具使用基于 .NET Core 构建的 Azure Functions 运行时。 .NET Core 支持的所有平台（包括[Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2)、 [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)和[Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2)）都支持此版本。 
@@ -50,7 +53,7 @@ ms.locfileid: "77208876"
 > [!IMPORTANT]
 > 您可以通过使用[扩展捆绑]来绕过安装 .NET Core SDK 的要求。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 以下步骤使用 npm 在 Windows 上安装 Core Tools。 也可使用 [Chocolatey](https://chocolatey.org/)。 有关详细信息，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
@@ -76,7 +79,7 @@ ms.locfileid: "77208876"
 
 1. 如果不打算使用[扩展捆绑]，请安装[.NET Core 2.X SDK for Windows](https://www.microsoft.com/net/download/windows)。
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 以下步骤使用 Homebrew 在 macOS 上安装 Core Tools。
 
@@ -100,7 +103,7 @@ ms.locfileid: "77208876"
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 以下步骤使用 [APT](https://wiki.debian.org/Apt) 在 Ubuntu/Debian Linux 发行版上安装 Core Tools。 有关其他 Linux 发行版，请参阅 [Core Tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)。
 
@@ -454,6 +457,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>发布到 Azure
 
 Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-deployment-technologies.md#zip-deploy)部署和[部署自定义 Docker 容器](functions-deployment-technologies.md#docker-container)将函数项目文件直接部署到 function app。 你必须已[在 Azure 订阅中创建了一个函数应用](functions-cli-samples.md#create)，以便将你的代码部署到该应用。 应该生成需要编译的项目，以便可以部署二进制文件。
+
+>[!IMPORTANT]
+>若要从核心工具发布到 Azure，必须在本地安装[Azure CLI](/cli/azure/install-azure-cli) 。  
 
 项目文件夹可能包含不应发布的特定于语言的文件和目录。 排除的项在根项目文件夹中的 funcignore 文件中列出。     
 

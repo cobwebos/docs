@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459610"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525526"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 流分析中的异常情况检测
 
@@ -21,6 +21,12 @@ Azure 流分析可在云和 Azure IoT Edge 中使用，它提供内置的机器�
 机器学习模型采用统一采样的时序。 如果时序不统一，你可以在调用异常情况检测之前使用翻转窗口插入一个聚合步骤。
 
 目前，机器学习操作不支持季节性趋势或多变量相关。
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure 流分析中的机器学习的异常情况检测
+
+以下视频演示了如何使用 Azure 流分析中的机器学习函数实时检测异常。 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>模型行为
 
@@ -120,7 +126,7 @@ windowDuration （以毫秒为单位） = 1000 * historySize/（每秒输入事�
 
 按 deviceId 对函数进行分区时，请将 "PARTITION BY deviceId" 添加到异常检测函数调用。
 
-### <a name="observations"></a>观察结果
+### <a name="observations"></a>观测
 下表包括针对非分区事例的单个节点（6 SU）的吞吐量观察值：
 
 | 历史记录大小（事件） | 窗口持续时间（毫秒） | 每秒输入事件总数 |
@@ -147,12 +153,6 @@ windowDuration （以毫秒为单位） = 1000 * historySize/（每秒输入事�
 
 ### <a name="identifying-bottlenecks"></a>确定瓶颈
 使用 Azure 流分析作业中的 "指标" 窗格识别管道中的瓶颈。 检查吞吐量和["水印延迟"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)的**输入/输出事件**，或查看**囤积的事件**，查看作业是否与输入速率保持一致。 对于事件中心指标，请查找**限制的请求**并相应地调整阈值单位。 对于 Cosmos DB 度量值，查看 "吞吐量" 下**每个分区键范围内使用的最大 RU 数/秒**，以确保对分区键范围进行统一使用。 对于 Azure SQL DB，监视**日志 IO**和**CPU**。
-
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>使用 Azure 流分析中的机器学习的异常情况检测
-
-以下视频演示了如何使用 Azure 流分析中的机器学习函数实时检测异常。 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
 
 ## <a name="next-steps"></a>后续步骤
 

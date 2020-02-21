@@ -13,24 +13,30 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ab4eebf56abd2d328ccf86929a043d4354ca157c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3860823787b860f2504d6fb13b9479d1feec9d28
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186317"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505811"
 ---
 # <a name="assets-in-azure-media-services"></a>Azure 媒体服务中的资产
 
-在 Azure 媒体服务中，[资产](https://docs.microsoft.com/rest/api/media/assets)包含有关 Azure 存储中存储的数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）的信息。
+在 Azure 媒体服务中，[资产](https://docs.microsoft.com/rest/api/media/assets)包含有关存储在 azure 存储中的数字文件（包括视频、音频、图像、缩略图集合、文本轨道和隐藏式字幕文件）的信息。
 
 资产将映射到 [Azure 存储帐户](storage-account-concept.md)中的 Blob 容器，资产中的文件作为块 Blob 存储在该容器中。 当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)。 **存档**存储适用于在不再需要时存档源文件（例如，在编码后）。
 
 建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联并使用流式处理或分析内容的输出容器中的 blob 必须存在于**热**或**冷**存储层中。
 
-### <a name="naming-blobs"></a>命名 blob
+### <a name="naming"></a>命名 
 
-资产中的文件/blob 名称必须符合 [Blob 名称要求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和 [NTFS 名称要求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 符合这些要求的原因是可以将文件从 Blob 存储复制到本地 NTFS 磁盘进行处理。
+#### <a name="assets"></a>资产
+
+资产的名称必须是唯一的。 媒体服务 v3 资源名称（例如，资产、作业、转换）受 Azure 资源管理器命名约束的约束。 有关详细信息，请参阅[命名约定](media-services-apis-overview.md#naming-conventions)。
+
+#### <a name="blobs"></a>Blob
+
+资产内文件/blob 的名称必须遵循[blob 名称要求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和[NTFS 名称要求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 这些要求的原因是，可将文件从 blob 存储复制到本地 NTFS 磁盘进行处理。
 
 ## <a name="upload-digital-files-into-assets"></a>将数字文件上传到资产
 
@@ -51,7 +57,7 @@ ms.locfileid: "74186317"
     az storage blob upload -f /path/to/file -c MyContainer -n MyBlob
     ```
 2. 获取具有读写权限的 SAS URL，用于将数字文件上传到资产容器。 可以使用媒体服务 API [列出资产容器 URL](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)。
-3. 使用 Azure 存储 API 或 SDK（例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md) 或 [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
+3. 使用 Azure 存储 Api 或 Sdk （例如，[存储 REST API](../../storage/common/storage-rest-api-auth.md)或[.net SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)）将文件上传到资产容器。
 4. 使用媒体服务 v3 API 创建用于处理“输入”资产的转换和作业。 有关详细信息，请参阅[转换和作业](transform-concept.md)。
 5. 从“输出”资产流式传输内容。
 
@@ -96,7 +102,7 @@ curl -X PUT \
 
 ## <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2
 
-下表显示了 v3 中[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的属性如何映射到 v2 中资产的属性。
+下表显示了 v3 中[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的属性映射到 V2 中资产的属性的方式。
 
 |v3 属性|v2 属性|
 |---|---|
@@ -118,7 +124,7 @@ curl -X PUT \
 |加密选项|说明|媒体服务 v2|媒体服务 v3|
 |---|---|---|---|
 |媒体服务存储加密|AES-256 加密，密钥由媒体服务管理。|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|是否支持|是否支持|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|支持|支持|
 |[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 存储提供的客户端加密，Key Vault 中的客户管理的密钥。|不支持|不支持|
 
 <sup>1</sup>虽然媒体服务支持以明文/不加密形式处理内容，但不建议这样做。

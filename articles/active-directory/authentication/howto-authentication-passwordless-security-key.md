@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8d5ff722d4a035113af8528ed8adb396b01c81eb
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848436"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77504948"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录（预览版）
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>启用无密码安全密钥登录（预览）
 
 对于目前使用密码并具有共享 PC 环境的企业，安全密钥为辅助角色提供了无需输入用户名或密码即可进行身份验证的无缝方式。 安全密钥可提高工作人员的工作效率，并获得更好的安全性。
 
@@ -26,7 +26,7 @@ ms.locfileid: "74848436"
 
 |     |
 | --- |
-| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| FIDO2 安全密钥是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="requirements"></a>要求
@@ -40,7 +40,9 @@ ms.locfileid: "74848436"
 
 ## <a name="prepare-devices-for-preview"></a>为预览版准备设备
 
-要试验的设备必须运行 Windows 10 版本1809或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+你试点的 Azure AD 联接的设备必须运行 Windows 10 版本1809或更高版本。 最佳体验是在 Windows 10 版本1903或更高版本上。
+
+混合 Azure AD 联接的设备必须运行 Windows 10 预览体验版18945或更高版本。
 
 ## <a name="enable-passwordless-authentication-method"></a>启用无密码 authentication 方法
 
@@ -50,7 +52,7 @@ ms.locfileid: "74848436"
 
 ### <a name="enable-fido2-security-key-method"></a>启用 FIDO2 安全密钥方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 浏览到**Azure Active Directory** > **安全** > **身份验证**方法 > **身份验证方法策略（预览）** 。
 1. 在 "方法**FIDO2 安全密钥**" 下，选择以下选项：
    1. **启用**-是或否
@@ -79,13 +81,13 @@ ms.locfileid: "74848436"
 
 ## <a name="troubleshooting-and-feedback"></a>故障排除和反馈
 
-若要在预览此功能时共享反馈或遇到问题，请通过 Windows 反馈中心应用进行共享。
+若要在预览此功能时共享反馈或遇到问题，请使用以下步骤通过 Windows 反馈中心应用进行共享：
 
 1. 启动**反馈中心**并确保已登录。
 1. 按照以下分类提交反馈：
-   1. 类别：安全和隐私
-   1. 子类别： FIDO
-1. 若要捕获日志，请使用选项：**重新创建问题**
+   - 类别：安全和隐私
+   - 子类别： FIDO
+1. 若要捕获日志，请使用选项**重新创建我的问题**
 
 ## <a name="known-issues"></a>已知问题
 
@@ -95,7 +97,7 @@ ms.locfileid: "74848436"
 
 ### <a name="upn-changes"></a>UPN 更改
 
-如果用户的 UPN 发生更改，你将无法再修改 FIDO2 安全密钥来考虑此更改。 解决方法是重置设备，用户必须重新注册其 FIDO2 安全密钥。
+我们正在努力支持一项功能，该功能允许在混合 Azure AD 联接和 Azure AD 加入的设备上进行 UPN 更改。 如果用户的 UPN 发生更改，你将无法再修改 FIDO2 安全密钥来考虑此更改。 解决方法是重置设备，用户必须重新注册。
 
 ## <a name="next-steps"></a>后续步骤
 

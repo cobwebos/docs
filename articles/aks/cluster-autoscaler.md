@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 033cf88e29ba4a9f7ce9397fe216f7380e70be07
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 12e5ee1b5c56e642cef117963d7cd879cf9b0633
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713398"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524282"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自动缩放群集以满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求
 
 若要满足 Azure Kubernetes 服务 (AKS) 中的应用程序需求，可能需要调整运行工作负载的节点数。 群集自动缩放程序组件可以监视群集中由于资源约束而无法进行计划的 Pod。 当检测到问题时，将增加节点池中的节点数，以满足应用程序的需求。 还会定期检查节点是否缺少正在运行的 Pod，随后根据需要减少节点数。 这种自动增加或减少 AKS 群集中的节点数的功能使你可以运行具有成本效益的高效群集。
 
-本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。 
+本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -106,6 +106,90 @@ az aks update \
 
 监视应用程序和服务的性能，并调整群集自动缩放程序节点计数以匹配所需性能。
 
+## <a name="using-the-autoscaler-profile"></a>使用自动缩放程序配置文件
+
+还可以通过更改群集范围内的自动缩放程序配置文件中的默认值，配置更详细的群集自动缩放程序的详细信息。 例如，在10分钟后，节点不可用后，将发生缩减事件。 如果你的工作负荷每15分钟运行一次，则可能需要更改自动缩放程序配置文件，以便在15到20分钟后缩减使用节点。 启用群集自动缩放程序后，除非指定不同的设置，否则将使用默认配置文件。 群集自动缩放程序配置文件具有以下可更新的设置：
+
+| 设置                          | 说明                                                                              | 默认值 |
+|----------------------------------|------------------------------------------------------------------------------------------|---------------|
+| 扫描-间隔                    | 增加或减少群集的重新评估频率                                    | 10 秒    |
+| 向下缩放-添加后延迟       | 缩减评估恢复后多长时间                               | 10 分钟    |
+| 减少-删除后的延迟    | 缩减评估恢复的节点删除后多长时间                          | 扫描-间隔 |
+| 在故障后缩减延迟   | 缩减评估恢复后缩减故障后多长时间                     | 3 分钟     |
+| 缩减-不需要的时间         | 节点有资格缩减之前应等待多长时间                  | 10 分钟    |
+| 缩减-处于未准备-时间          | 处于未准备节点有资格缩减之前应等待多长时间         | 20 分钟    |
+| 缩减利用率-阈值 | 节点利用率级别，定义为所请求资源的总和除以容量，低于此级别可将节点视为缩小 | 0.5 |
+| 最大-正常终止-秒     | 群集自动缩放程序尝试缩小节点时等待 pod 终止的最大秒数。 | 600秒   |
+
+> [!IMPORTANT]
+> Cluster 自动缩放程序配置文件影响所有使用群集自动缩放程序的节点池。 不能为每个节点池设置自动缩放程序配置文件。
+
+### <a name="install-aks-preview-cli-extension"></a>安装 aks-preview CLI 扩展
+
+若要设置群集自动缩放程序设置配置文件，需要*aks* CLI 扩展版本0.4.30 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>在现有的 AKS 群集上设置群集自动缩放程序配置文件
+
+将[az aks update][az-aks-update]命令与*自动缩放程序*参数一起使用，以便在群集上设置群集自动缩放程序配置文件。 以下示例在配置文件中将扫描间隔设置配置为30秒。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+在群集中的节点池上启用群集自动缩放程序后，这些群集也将使用群集自动缩放程序配置文件。 例如：
+
+```azurecli-interactive
+az aks nodepool update \
+  --resource-group myResourceGroup \
+  --cluster-name myAKSCluster \
+  --name mynodepool \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3
+```
+
+> [!IMPORTANT]
+> 设置群集自动缩放程序配置文件时，启用了群集自动缩放程序的任何现有节点池都将立即开始使用配置文件。
+
+### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>创建 AKS 群集时设置群集自动缩放程序配置文件
+
+你还可以在创建群集时使用*自动缩放程序*参数。 例如：
+
+```azurecli-interactive
+az aks create \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --node-count 1 \
+  --enable-cluster-autoscaler \
+  --min-count 1 \
+  --max-count 3 \
+  --cluster-autoscaler-profile scan-interval=30s
+```
+
+上述命令将创建一个 AKS 群集，并为群集范围的自动缩放程序配置文件将扫描间隔定义为30秒。 该命令还会在初始节点池上启用群集自动缩放程序，并将最小节点计数设置为1，将最大节点数设置为3。
+
+### <a name="reset-cluster-autoscaler-profile-to-default-values"></a>将群集自动缩放程序配置文件重置为默认值
+
+使用[az aks update][az-aks-update]命令重置群集上的群集自动缩放程序配置文件。
+
+```azurecli-interactive
+az aks update \
+  --resource-group myResourceGroup \
+  --name myAKSCluster \
+  --cluster-autoscaler-profile ""
+```
+
 ## <a name="disable-the-cluster-autoscaler"></a>禁用群集自动缩放程序
 
 如果不再想要使用群集自动缩放程序，可以使用[az aks update][az-aks-update]命令禁用该群集，并指定 *--disable-自动缩放程序*参数。 群集自动缩放程序处于禁用状态时，不会删除节点。
@@ -129,7 +213,7 @@ az aks update \
 
 AKS 代表您管理群集自动缩放程序并在托管控制平面中运行该群集。 必须将主节点日志配置为查看结果。
 
-若要将日志配置为从群集自动缩放程序推送到 Log Analytics 执行以下步骤。
+若要将日志配置为从群集自动缩放程序推送到 Log Analytics，请执行以下步骤。
 
 1. 设置诊断日志规则，以便将群集自动缩放程序日志推送 Log Analytics。 [此处详细说明](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)，请确保在为 "日志" 选择选项时选中 `cluster-autoscaler` 的复选框。
 1. 通过 Azure 门户单击群集上的 "日志" 部分。
@@ -140,7 +224,7 @@ AzureDiagnostics
 | where Category == "cluster-autoscaler"
 ```
 
-只要有要检索的日志，就会看到类似于下面返回的日志。
+只要有要检索的日志，就会看到类似于以下示例的日志。
 
 ![Log Analytics 日志](media/autoscaler/autoscaler-logs.png)
 
@@ -185,20 +269,20 @@ az aks nodepool update \
 本文演示了如何自动缩放 AKS 节点数。 还可以使用水平 Pod 自动缩放程序自动调整运行应用程序的 Pod 数。 有关使用横向 pod 自动缩放程序的步骤，请参阅[在 AKS 中缩放应用程序][aks-scale-apps]。
 
 <!-- LINKS - internal -->
+[aks-faq]: faq.md
+[aks-scale-apps]: tutorial-kubernetes-scale.md
+[aks-support-policies]: support-policies.md
 [aks-upgrade]: upgrade-cluster.md
+[autoscaler-profile-properties]: #using-the-autoscaler-profile
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-extension-add]: /cli/azure/extension#az-extension-add
-[aks-scale-apps]: tutorial-kubernetes-scale.md
+[az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

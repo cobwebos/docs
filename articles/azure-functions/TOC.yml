@@ -389,7 +389,16 @@
             - name: 输出
               href: functions-bindings-service-bus-output.md
         - name: SignalR 服务
-          href: functions-bindings-signalr-service.md
+          items:
+            - name: 概述
+              href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-input.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-output.md
+              displayName: SignalR Service
         - name: 表存储
           href: functions-bindings-storage-table.md
         - name: Timer

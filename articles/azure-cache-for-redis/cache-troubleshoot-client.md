@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433372"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523333"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>排查 Azure Cache for Redis 客户端问题
 
@@ -51,7 +51,7 @@ ms.locfileid: "75433372"
 - 请注意，在 `IOCP` 部分和 `WORKER` 部分，`Busy` 值大于 `Min` 值。 这种差异意味着 `ThreadPool` 设置需要调整。
 - 也可参看 `in: 64221`。 此值指示已在客户端内核套接字层接收到64211字节，但应用程序尚未对其进行读取。 这种差异通常意味着，当服务器发送给你的应用程序（例如，Stackexchange.redis）不是从网络读取数据的速度。
 
-可以[配置 `ThreadPool` 设置](https://gist.github.com/JonCole/e65411214030f0d823cb)，确保线程池在突发情况下快速扩展。
+可以[配置 `ThreadPool` 设置](cache-faq.md#important-details-about-threadpool-growth)，确保线程池在突发情况下快速扩展。
 
 ## <a name="high-client-cpu-usage"></a>客户端 CPU 使用率过高
 
@@ -60,7 +60,7 @@ ms.locfileid: "75433372"
 使用 Azure 门户中的指标或计算机上的性能计数器，监视客户端的系统范围的 CPU 使用情况。 请注意不要监视*进程*cpu，因为单个进程的 cpu 使用率较低，但系统范围的 cpu 可能会很高。 注意与超时相对应的 CPU 使用率峰值。 高 CPU 可能还会导致 `TimeoutException` 错误消息中的高 `in: XXX` 值，如[流量](#traffic-burst)激增部分所述。
 
 > [!NOTE]
-> StackExchange.Redis 1.1.603 及更高版本在 `TimeoutException` 错误消息中包括了 `local-cpu` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
+> StackExchange.Redis 1.1.603 及更高版本在 `local-cpu` 错误消息中包括了 `TimeoutException` 指标。 确保使用最新版本的 [StackExchange.Redis NuGet 包](https://www.nuget.org/packages/StackExchange.Redis/)。 我们会不断对代码中的 Bug 进行修正，以便更好地应对超时情况。因此，请务必使用最新的版本。
 >
 
 降低客户端的高 CPU 使用率：

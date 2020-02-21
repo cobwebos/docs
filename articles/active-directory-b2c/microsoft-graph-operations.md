@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f23d3ffa14deccae9825568dee2f3c8b9ac7e7e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492950"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522962"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>可用于 Azure AD B2C Microsoft Graph 操作
 
@@ -57,7 +57,7 @@ ms.locfileid: "77492950"
 
 以下操作可用于管理 Azure AD B2C 信任框架策略（称为[自定义策略](custom-policy-overview.md)）。
 
-- [列出租户中配置的所有信任框架策略](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies.md)
+- [列出租户中配置的所有信任框架策略](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies)
 - [创建信任框架策略](https://docs.microsoft.com/graph/api/trustframework-post-trustframeworkpolicy)
 - [读取现有信任框架策略的属性](https://docs.microsoft.com/graph/api/trustframeworkpolicy-get)
 - [更新或创建信任框架策略。](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)

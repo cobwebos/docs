@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 02/20/2020
+ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045041"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500271"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何将自定义技能添加到 Azure 认知搜索扩充管道
 
@@ -33,6 +33,8 @@ Azure 认知搜索中的[扩充管道](cognitive-search-concept-intro.md)可从[
         "uri": "https://[your custom skill uri goes here]",
         "timeout": "PT230S",
 ```
+
+请确保 URI 是安全的（HTTPS）。
 
 目前，与自定义技能交互的唯一机制是通过 Web API 接口。 Web API 需求必须满足本节中所述的要求。
 

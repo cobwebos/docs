@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772391"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485448"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -19,11 +19,10 @@ ms.locfileid: "74772391"
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 计算的代 | Gen 5 |Gen 5 | Gen 5 |
+| 计算的代 | 第 5 代 |第 5 代 | 第 5 代 |
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| 每个 vCore 的内存 | 2GB | 5 GB | 10 GB |
+| 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
-| 存储类型 | Azure 标准存储 | Azure 高级存储器 | Azure 高级存储器 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -40,13 +39,13 @@ ms.locfileid: "74772391"
 
 计算资源以 vCore 的形式提供，代表基础硬件的逻辑 CPU。 第 5 代逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 预配的存储是指可供 Azure Database for MariaDB 服务器使用的存储容量。 此存储可用于数据库文件、临时文件、事务日志和 MariaDB 服务器日志。 预配的总存储量也定义了可供服务器使用的 I/O 容量。
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | Azure 标准存储 | Azure 高级存储器 | Azure 高级存储器 |
+| 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5GB 到 4TB | 5GB 到 4TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 6000 IOPS |
@@ -84,7 +83,7 @@ ms.locfileid: "74772391"
 
 ## <a name="scale-resources"></a>缩放资源
 
-创建服务器后，可以单独更改 vCore 数、定价层（来回调整基本定价层除外）、存储量和备份保留期。 创建服务器后，便无法再更改备份存储类型。 向上或向下调整 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 
+创建服务器后，可以单独更改 vCore 数、定价层（来回调整基本定价层除外）、存储量和备份保留期。 创建服务器后，便无法再更改备份存储类型。 可以增加或减少 VCore 数。 备份保留期可以从 7 天到 35 天进行上下调整。 存储大小只能增加。 可以通过门户或 Azure CLI 缩放资源。 
 
 <!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
@@ -92,7 +91,7 @@ ms.locfileid: "74772391"
 
 缩放存储和更改备份保留期是真正的联机操作。 不会造成停机，应用程序不会受影响。 当 IOPS 随已预配存储的大小缩放时，可以通过扩大存储来增加提供给服务器的 IOPS。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 有关最新定价信息，请参阅服务的[定价页](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看所需配置的具体成本，可以单击 [Azure 门户](https://portal.azure.com/#create/Microsoft.MariaDBServer)的“定价层”选项卡，系统就会根据选定的选项显示每月成本。 如果没有 Azure 订阅，可使用 Azure 定价计算器获取估计的价格。 在 [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)网站上，选择“添加项”，展开“数据库”类别，选择“Azure Database for MariaDB”自定义选项。
 
