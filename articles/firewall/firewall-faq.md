@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 41cc058d09c3bca114ba5a469f23a27ff88fed19
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460461"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505793"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -117,7 +117,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
 
-能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个分支虚拟网络中的子网必须具有指向 Azure 防火墙的 UDR，作为使此方案正常工作的默认网关。
+能，可以在中心虚拟网络中使用 Azure 防火墙来路由和筛选两个分支虚拟网络之间的流量。 每个辐射虚拟网络中的子网必须具有指向 Azure 防火墙作为默认网关的 UDR，此应用程序才能正常工作。
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
@@ -168,11 +168,11 @@ Azure 防火墙在主动-主动配置中包含多个后端节点。  对于任�
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙的吞吐量？
 
-Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps。 目前，横向扩展基于 CPU 使用情况和吞吐量。 在某些情况下，具有网络规则的防火墙不会进行扩展以提高吞吐量，因为网络规则不会显著影响 CPU 使用率。 如果你的防火墙需要更高的吞吐量，请联系支持人员以增加防火墙的初始吞吐量容量。
+Azure 防火墙的初始吞吐量容量为 2.5-3 Gbps，可扩展到 30 Gbps。 它会根据 CPU 使用情况和吞吐量进行扩展。 如果你的防火墙无法扩展以满足你的需求，并且你需要更高的吞吐量容量，请联系支持人员以增加防火墙的吞吐量容量。
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火墙需要多长时间才能扩大？
 
-目前，Azure 防火墙需要5到7分钟的时间来横向扩展。如果突发需要更快的自动缩放，请联系支持人员以提高防火墙的初始吞吐量容量。
+Azure 防火墙要横向扩展需要5到7分钟。如果突发需要更快的自动缩放，请联系支持人员以提高防火墙的初始吞吐量容量。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 

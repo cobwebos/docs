@@ -223,9 +223,9 @@
                   href: ../ndv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: NV 系列
                   href: ../nv-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                - name: NDv3 系列
+                - name: NVv3 系列
                   href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                - name: NDv4 系列
+                - name: NVv4 系列
                   href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 安装 GPU 驱动程序
               href: n-series-driver-setup.md
@@ -710,7 +710,7 @@
             - name: 常见问题解答
               href: migration-classic-resource-manager-faq.md
 - name: 故障排除
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: 参考
   items:
     - name: Azure CLI
