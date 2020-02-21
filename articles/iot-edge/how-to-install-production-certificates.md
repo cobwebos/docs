@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fe46e968aa2dcebaa483cd38fd2e050ccfe43054
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d9f715a6ab43206d02107f6335e9b4c0bb4266e0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149892"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471000"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>在 IoT Edge 设备上安装生产证书
 
@@ -30,7 +30,7 @@ ms.locfileid: "77149892"
 >[!NOTE]
 >本文中使用的 "根 CA" 一词是指 IoT 解决方案的证书链的最顶层颁发机构公共证书。 不需要使用联合的证书颁发机构的证书根，也不需要使用组织的证书颁发机构的根。 在许多情况下，它实际上是一个中间 CA 公共证书。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * IoT Edge 设备，在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上运行。
 * 具有根证书颁发机构（CA）证书（自签名）或从巴尔的摩、Verisign、DigiCert 或 GlobalSign 等可信商业证书颁发机构购买的证书。
@@ -68,24 +68,24 @@ ms.locfileid: "77149892"
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-3. 将 yaml 文件中的**证书**属性设置为 IoT Edge 设备上的证书和密钥文件的文件 URI。 删除证书属性之前的 `#` 字符，取消注释四行。 请确保**证书：** 行前面没有空格，并且嵌套项按两个空格缩进。 例如：
+3. 将 yaml 文件中的**证书**属性设置为 IoT Edge 设备上的证书和密钥文件的完整路径。 删除证书属性之前的 `#` 字符，取消注释四行。 请确保**证书：** 行前面没有空格，并且嵌套项按两个空格缩进。 例如：
 
-   * Windows：
+   * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "file:///c:/path/device-ca.cert.pem"
-        device_ca_pk: "file:///c:/path/device-ca.key.pem"
-        trusted_ca_certs: "file:///c:/path/root-ca.root.ca.cert.pem"
+        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
+        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
+        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
       ```
 
-   * Linux：
+   * Linux:
 
       ```yaml
       certificates:
-        device_ca_cert: "file:///path/device-ca.cert.pem"
-        device_ca_pk: "file:///path/device-ca.key.pem"
-        trusted_ca_certs: "file:///path/root-ca.root.ca.cert.pem"
+        device_ca_cert: "<path>/device-ca.cert.pem"
+        device_ca_pk: "<path>/device-ca.key.pem"
+        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
       ```
 
 4. 在 Linux 设备上，确保用户**iotedge**具有保存证书的目录的读取权限。

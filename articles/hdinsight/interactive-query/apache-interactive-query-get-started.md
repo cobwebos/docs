@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 09/17/2019
-ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076356"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198916"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的交互式查询？
 
-交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)。 交互式查询支持内存中缓存，可提高 Apache Hive 查询速度和交互性。 客户使用交互式查询以超快的方式查询存储在 Azure 存储和 Azure Data Lake Storage 中的数据。 交互式查询使开发人员和数据科学家可以使用他们最喜欢的 BI 工具轻松处理大数据。 HDInsight 交互式查询支持使用多种工具轻松访问大数据。
+交互式查询（也称为 Apache Hive LLAP 或[低延迟分析处理](https://cwiki.apache.org/confluence/display/Hive/LLAP)）是一种 Azure HDInsight [群集类型](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)。 交互式查询支持内存中缓存，可提高 Apache Hive 查询速度和交互性。 客户使用交互式查询以超快的方式查询存储在 Azure 存储和 Azure Data Lake Storage 中的数据。 交互式查询使开发人员和数据科学家可以使用他们最喜欢的 BI 工具轻松处理大数据。 HDInsight 交互式查询支持使用多种工具轻松访问大数据。
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/10/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.reviewer: jmprieur, lenalepa, sureshja
+ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212226"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467753"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -37,7 +37,7 @@ ms.locfileid: "77212226"
 3. [将代码更新为处理多个颁发者值](#update-your-code-to-handle-multiple-issuer-values)
 4. [了解用户和管理员的同意意向并进行适当的代码更改](#understand-user-and-admin-consent)
 
-让我们详细了解每个步骤。 你还可以直接跳转到[此多租户示例列表](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)。
+让我们详细了解每个步骤。 你还可以直接跳到示例[生成使用 Azure AD 和 OpenID connect 调用 Microsoft Graph 的多租户 SaaS web 应用程序](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>将注册更新为多租户
 

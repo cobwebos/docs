@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845729"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210287"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 创建你的第一个持久函数
 
@@ -57,7 +57,7 @@ ms.locfileid: "76845729"
     | 选择版本 | Azure Functions v2 | 仅当尚未安装 Core Tools 时，才会出现此选项。 在本例中，当你首次运行应用时即已安装 Core Tools。 |
     | 为项目的第一个函数选择模板 | HTTP 触发器 | 在新的函数应用中创建一个 HTTP 触发的函数。 |
     | 提供函数名称 | HttpTrigger | 按 Enter 以使用默认名称。 |
-    | 授权级别 | 函数 | `function` 授权级别要求在调用函数的 HTTP 终结点时提供访问密钥。 这样，就更难以访问不安全的终结点。 有关详细信息，请参阅[授权密钥](../functions-bindings-http-webhook.md#authorization-keys)。  |
+    | 授权级别 | 函数 | `function` 授权级别要求在调用函数的 HTTP 终结点时提供访问密钥。 这样，就更难以访问不安全的终结点。 有关详细信息，请参阅[授权密钥](../functions-bindings-http-webhook-trigger.md#authorization-keys)。  |
     | 选择打开项目的方式 | 添加到工作区 | 在当前工作区中创建函数应用。 |
 
 Visual Studio Code 会根据需要安装 Azure Functions Core Tools。 它还会在新工作区中创建一个函数应用项目。 此项目包含 [host.json](../functions-host-json.md) 和 [local.settings.json](../functions-run-local.md#local-settings-file) 配置文件。 它还会创建一个 HttpExample 文件夹，其中包含 [function.json 定义文件](../functions-reference-node.md#folder-structure)和 [index.js 文件](../functions-reference-node.md#exporting-a-function)（包含函数代码的 Node.js 文件）

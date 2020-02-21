@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162848"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484836"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -78,7 +78,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>使用基于负载的自动缩放创建群集
 
-若要在群集上使用自动缩放，则在创建群集时必须启用 "**启用自动缩放**" 选项。 若要启用基于负载的缩放的自动缩放功能，请在正常的群集创建过程中完成以下步骤：
+若要启用基于负载的缩放的自动缩放功能，请在正常的群集创建过程中完成以下步骤：
 
 1. 在 "**配置 + 定价**" 选项卡上，选中 "**启用自动缩放**" 复选框。
 1. 在**自动缩放类型**下选择 "**基于负载**"。

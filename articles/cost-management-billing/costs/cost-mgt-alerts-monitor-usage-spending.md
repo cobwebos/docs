@@ -1,21 +1,19 @@
 ---
 title: 通过成本警报监视使用情况和支出 | Microsoft Docs
 description: 本文介绍如何通过成本警报在 Azure 成本管理中监视使用情况和支出。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: alavital
+ms.reviewer: adwise
 ms.custom: ''
-ms.openlocfilehash: 4be484cdff2014f11c872da9a246ef8406447712
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3ce643767ad8ba6116c9e93f23b1c8a7819d7277
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988495"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199936"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -41,7 +39,7 @@ ms.locfileid: "75988495"
 
 | 警报类型 | 企业协议 | Microsoft 客户协议 | Web 直接/即用即付 |
 |---|---|---|---|
-| 预算 | ✔ | ✔ | ✔ |
+| Budget | ✔ | ✔ | ✔ |
 | 额度 | ✔ |✘ | ✘ |
 | 部门支出配额 | ✔ | ✘ | ✘ |
 

@@ -4,12 +4,12 @@ description: 了解如何使用用于 Visual Studio 2019 Azure Functions 工具�
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547347"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484700"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -27,7 +27,7 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 
 除非另有说明，否则将显示 Visual Studio 2019 的过程和示例。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 从 Visual studio 2017 开始，Visual Studio 的 Azure 开发工作负载中包含 Azure Functions 工具。 请确保在 Visual Studio 安装中包括**Azure 开发**工作负荷。
 
@@ -90,7 +90,7 @@ Visual Studio 允许你开发、测试类库函数并C#将其部署到 Azure。 
 
 ## <a name="configure-the-project-for-local-development"></a>为本地开发配置项目
 
-Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为 `UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
+Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webhook 以外的所有触发器类型，必须将 **Values.AzureWebJobsStorage** 键设置为有效的 Azure 存储帐户连接字符串。 函数应用还可以在项目所需的 AzureWebJobsStorage 连接设置中使用 [Azure 存储模拟器](../storage/common/storage-use-emulator.md)。 若要使用模拟器，请将 AzureWebJobsStorage 的值设置为`UseDevelopmentStorage=true`。 在部署之前，请将此设置更改为实际的存储帐户连接字符串。
 
 若要设置存储帐户连接字符串，请执行以下操作：
 
@@ -136,7 +136,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
     }
     ```
 
-    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue.md#trigger)。
+    已向提供给入口点方法的每个绑定参数提供了特定于绑定的属性。 该属性采用绑定信息作为参数。 在上例中，第一个参数具应用了 QueueTrigger 属性，表示触发了队列的函数。 队列名称和连接字符串设置名称作为参数传递到“QueueTrigger”属性。 有关详细信息，请参阅 [Azure Functions 的 Azure 队列存储绑定](functions-bindings-storage-queue-trigger.md)。
 
 可以使用上述过程向函数应用项目添加更多的函数。 项目中的每个函数可以有不同的触发器，但每个函数的触发器必须刚好一个。 有关详细信息，请参阅 [Azure Functions 触发器和绑定概念](functions-triggers-bindings.md)。
 
@@ -148,7 +148,7 @@ Functions 运行时在内部使用 Azure 存储帐户。 对于除 HTTP 和 Webh
 
 2. 为特定绑定添加适当的 NuGet 扩展包。 有关详细信息，请参阅“触发器和绑定”一文中的[使用 Visual Studio 进行本地 C# 开发](./functions-bindings-register.md#local-csharp)。 特定于绑定的 NuGet 包要求位于绑定的参考文章中。 例如，可以在[事件中心绑定参考文章](functions-bindings-event-hubs.md)中找到事件中心触发器的包要求。
 
-3. 如果有绑定需要的应用设置，请将其添加到[本地设置文件](functions-run-local.md#local-settings-file)中的 **Values** 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
+3. 如果有绑定需要的应用设置，请将其添加到**本地设置文件**中的 [Values](functions-run-local.md#local-settings-file) 集合。 当函数在本地运行时，会使用这些值。 当函数在 Azure 的函数应用中运行时，会使用[函数应用设置](#function-app-settings)。
 
 4. 将适当的绑定属性添加到方法签名。 在以下示例中，一条队列消息触发了该函数，而输出绑定则创建了一条新的队列消息，在不同的队列中使用了相同的文本。
 

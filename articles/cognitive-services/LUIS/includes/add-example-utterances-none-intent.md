@@ -5,23 +5,23 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/20/2019
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.author: diberry
-ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 956aa308bf1cb3736c491031239661ec6b295ddb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262736"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279541"
 ---
 客户端应用程序需要知道某个话语是否对应用程序没有意义或不合适。 在创建过程中，**None** 意向会添加到每个应用程序，以确定客户端应用程序是否不应回答某个言语。
 
-如果 LUIS 对于某个话语返回“None”  意向，客户端应用程序可以询问用户是否要结束聊天或提供更多指示以继续聊天。 
+如果 LUIS 对于某个话语返回“None”  意向，客户端应用程序可以询问用户是否要结束聊天或提供更多指示以继续聊天。
 
-如果将“无”  意向留空，则将在现有主题域意向之一中预测应在主题域之外预测的言语。 因此，客户端应用程序（如聊天机器人）将基于错误的预测执行错误的操作。 
+如果将“无”  意向留空，则将在现有主题域意向之一中预测应在主题域之外预测的言语。 因此，客户端应用程序（如聊天机器人）将基于错误的预测执行错误的操作。
 
 1. 在左侧面板中选择“意向”。 
 

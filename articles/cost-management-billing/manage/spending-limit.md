@@ -2,21 +2,18 @@
 title: Azure 支出限制 | Microsoft Docs
 description: 本文介绍 Azure 支出限制的工作原理以及移除方式。
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188285"
+ms.locfileid: "77200548"
 ---
 # <a name="azure-spending-limit"></a>Azure 支出限制
 
@@ -47,21 +44,21 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
 
-1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。 
+1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
 
    ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
-    
+
 1. 在订阅概览中，单击橙色横幅删除支出限制。
-    
+
     ![显示删除支出限制横幅的屏幕截图](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. 选择是要永久删除支出限制还是仅为当前计费周期删除。
-    
+
       ![显示删除支出限制边栏选项卡的屏幕截图](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | 选项 | 效果 |
       | --- | --- |
       | 永久性移除支出限制 | 支出限制在下个计费周期开始时不会自动重新启用。 但是，你随时可以将其重新启用。 |
@@ -91,13 +88,13 @@ Azure 中的支出限制可以防止支出超过额度金额。 如果新客户�
 
     ![显示搜索“成本管理 + 计费”的屏幕截图 ](./media/spending-limit/search-bar.png)
 
-1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。 
+1. 在“我的订阅”  列表中，选择你的订阅。 例如 *Visual Studio Enterprise*。
 
    ![显示我的订阅网格概览的屏幕截图](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > 如果在此处未看到你的某些 Visual Studio 订阅，则可能是因为你在某个时间点更改了订阅目录。 对于这些订阅，你需要将目录切换回原始目录（你最初在其中进行注册的目录）。 然后，重复步骤 2。
-    
+
 1. 在订阅概述中，单击页面顶部的横幅以重新启用支出限制。
 
 ## <a name="custom-spending-limit"></a>自定义支出限制

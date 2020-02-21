@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 6f7497e62be0036c13d5c33fa82301469df16f26
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066182"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522350"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
 
@@ -31,85 +31,85 @@ ms.locfileid: "77066182"
 
 | \# | SuccessFactors 实体                  | SuccessFactors 特性     | 操作类型 |
 |----|----------------------------------------|------------------------------|----------------|
-| 1  | PerPerson                              | personIdExternal             | 读           |
-| 2  | PerPerson                              | personId                     | 读           |
-| 3  | PerPerson                              | perPersonUuid                | 读           |
-| 4  | PerPersonal                            | displayName                  | 读           |
-| 5  | PerPersonal                            | firstName                    | 读           |
-| 6  | PerPersonal                            | gender                       | 读           |
-| 7  | PerPersonal                            | lastName                     | 读           |
-| 8  | PerPersonal                            | middleName                   | 读           |
-| 9  | PerPersonal                            | preferredName                | 读           |
-| 10 | 用户                                   | addressLine1                 | 读           |
-| 11 | 用户                                   | addressLine2                 | 读           |
-| 12 | 用户                                   | addressLIne3                 | 读           |
-| 13 | 用户                                   | 商务电话                | 读           |
-| 14 | 用户                                   | 手机                    | 读           |
-| 15 | 用户                                   | 城市                         | 读           |
-| 16 | 用户                                   | country                      | 读           |
-| 17 | 用户                                   | custom01                     | 读           |
-| 18 | 用户                                   | custom02                     | 读           |
-| 19 | 用户                                   | custom03                     | 读           |
-| 20 | 用户                                   | custom04                     | 读           |
-| 21 | 用户                                   | custom05                     | 读           |
-| 22 | 用户                                   | custom06                     | 读           |
-| 23 | 用户                                   | custom07                     | 读           |
-| 24 | 用户                                   | custom08                     | 读           |
-| 25 | 用户                                   | custom09                     | 读           |
-| 26 | 用户                                   | custom10                     | 读           |
-| 27 | 用户                                   | custom11                     | 读           |
-| 28 | 用户                                   | custom12                     | 读           |
-| 29 | 用户                                   | custom13                     | 读           |
-| 30 | 用户                                   | custom14                     | 读           |
-| 31 | 用户                                   | empId                        | 读           |
-| 32 | 用户                                   | homePhone                    | 读           |
-| 33 | 用户                                   | jobFamily                    | 读           |
-| 34 | 用户                                   | nickname                     | 读           |
-| 35 | 用户                                   | state                        | 读           |
-| 36 | 用户                                   | timezone                     | 读           |
-| 37 | 用户                                   | username                     | 读           |
-| 38 | 用户                                   | zipCode                      | 读           |
-| 39 | PerPhone                               | 区号                     | 读           |
-| 40 | PerPhone                               | countryCode                  | 读           |
-| 41 | PerPhone                               | 扩展                    | 读           |
-| 42 | PerPhone                               | phoneNumber                  | 读           |
-| 43 | PerPhone                               | phoneType                    | 读           |
+| 1  | PerPerson                              | personIdExternal             | 读取           |
+| 2  | PerPerson                              | personId                     | 读取           |
+| 3  | PerPerson                              | perPersonUuid                | 读取           |
+| 4  | PerPersonal                            | displayName                  | 读取           |
+| 5  | PerPersonal                            | firstName                    | 读取           |
+| 6  | PerPersonal                            | gender                       | 读取           |
+| 7  | PerPersonal                            | lastName                     | 读取           |
+| 8  | PerPersonal                            | middleName                   | 读取           |
+| 9  | PerPersonal                            | preferredName                | 读取           |
+| 10 | 用户                                   | addressLine1                 | 读取           |
+| 11 | 用户                                   | addressLine2                 | 读取           |
+| 12 | 用户                                   | addressLIne3                 | 读取           |
+| 13 | 用户                                   | 商务电话                | 读取           |
+| 14 | 用户                                   | 手机                    | 读取           |
+| 15 | 用户                                   | city                         | 读取           |
+| 16 | 用户                                   | country                      | 读取           |
+| 17 | 用户                                   | custom01                     | 读取           |
+| 18 | 用户                                   | custom02                     | 读取           |
+| 19 | 用户                                   | custom03                     | 读取           |
+| 20 | 用户                                   | custom04                     | 读取           |
+| 21 | 用户                                   | custom05                     | 读取           |
+| 22 | 用户                                   | custom06                     | 读取           |
+| 23 | 用户                                   | custom07                     | 读取           |
+| 24 | 用户                                   | custom08                     | 读取           |
+| 25 | 用户                                   | custom09                     | 读取           |
+| 26 | 用户                                   | custom10                     | 读取           |
+| 27 | 用户                                   | custom11                     | 读取           |
+| 28 | 用户                                   | custom12                     | 读取           |
+| 29 | 用户                                   | custom13                     | 读取           |
+| 30 | 用户                                   | custom14                     | 读取           |
+| 31 | 用户                                   | empId                        | 读取           |
+| 32 | 用户                                   | homePhone                    | 读取           |
+| 33 | 用户                                   | jobFamily                    | 读取           |
+| 34 | 用户                                   | nickname                     | 读取           |
+| 35 | 用户                                   | state                        | 读取           |
+| 36 | 用户                                   | timezone                     | 读取           |
+| 37 | 用户                                   | username                     | 读取           |
+| 38 | 用户                                   | zipCode                      | 读取           |
+| 39 | PerPhone                               | 区号                     | 读取           |
+| 40 | PerPhone                               | countryCode                  | 读取           |
+| 41 | PerPhone                               | 扩展                    | 读取           |
+| 42 | PerPhone                               | phoneNumber                  | 读取           |
+| 43 | PerPhone                               | phoneType                    | 读取           |
 | 44 | PerEmail                               | emailAddress                 | 读取和写入    |
-| 45 | PerEmail                               | emailType                    | 读           |
-| 46 | EmpEmployment                          | firstDateWorked              | 读           |
-| 47 | EmpEmployment                          | lastDateWorked               | 读           |
-| 48 | EmpEmployment                          | userId                       | 读           |
-| 49 | EmpEmployment                          | isContingentWorker           | 读           |
-| 50 | EmpJob                                 | countryOfCompany             | 读           |
-| 51 | EmpJob                                 | emplStatus                   | 读           |
-| 52 | EmpJob                                 | endDate                      | 读           |
-| 53 | EmpJob                                 | startDate                    | 读           |
-| 54 | EmpJob                                 | jobTitle                     | 读           |
-| 55 | EmpJob                                 | position                     | 读           |
-| 65 | EmpJob                                 | customString13               | 读           |
-| 56 | EmpJob                                 | managerId                    | 读           |
-| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | 读           |
-| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | 读           |
-| 59 | EmpJob\.公司                        | company                      | 读           |
-| 60 | EmpJob\.公司                        | companyId                    | 读           |
-| 61 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode           | 读           |
-| 62 | EmpJob\.CostCenter                     | costCenter                   | 读           |
-| 63 | EmpJob\.CostCenter                     | costCenterId                 | 读           |
-| 64 | EmpJob\.CostCenter                     | costCenterDescription        | 读           |
-| 65 | EmpJob\.部门                     | department                   | 读           |
-| 66 | EmpJob\.部门                     | departmentId                 | 读           |
-| 67 | EmpJob\.除法                       | 除法                     | 读           |
-| 68 | EmpJob\.除法                       | divisionId                   | 读           |
-| 69 | EmpJob\.JobCode                        | jobCode                      | 读           |
-| 70 | EmpJob\.JobCode                        | jobCodeId                    | 读           |
-| 71 | EmpJob\.位置                       | LocationName                 | 读           |
-| 72 | EmpJob\.位置                       | officeLocationAddress        | 读           |
-| 73 | EmpJob\.位置                       | officeLocationCity           | 读           |
-| 74 | EmpJob\.位置                       | officeLocationCustomString4  | 读           |
-| 75 | EmpJob\.位置                       | officeLocationZipCode        | 读           |
-| 76 | EmpJob\.PayGrade                       | payGrade                     | 读           |
-| 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 读           |
-| 78 | EmpEmploymentTermination               | latestTerminationDate        | 读           |
+| 45 | PerEmail                               | emailType                    | 读取           |
+| 46 | EmpEmployment                          | firstDateWorked              | 读取           |
+| 47 | EmpEmployment                          | lastDateWorked               | 读取           |
+| 48 | EmpEmployment                          | userId                       | 读取           |
+| 49 | EmpEmployment                          | isContingentWorker           | 读取           |
+| 50 | EmpJob                                 | countryOfCompany             | 读取           |
+| 51 | EmpJob                                 | emplStatus                   | 读取           |
+| 52 | EmpJob                                 | endDate                      | 读取           |
+| 53 | EmpJob                                 | startDate                    | 读取           |
+| 54 | EmpJob                                 | jobTitle                     | 读取           |
+| 55 | EmpJob                                 | position                     | 读取           |
+| 65 | EmpJob                                 | customString13               | 读取           |
+| 56 | EmpJob                                 | managerId                    | 读取           |
+| 57 | EmpJob\.BusinessUnit                   | businessUnit                 | 读取           |
+| 58 | EmpJob\.BusinessUnit                   | businessUnitId               | 读取           |
+| 59 | EmpJob\.公司                        | company                      | 读取           |
+| 60 | EmpJob\.公司                        | companyId                    | 读取           |
+| 61 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode           | 读取           |
+| 62 | EmpJob\.CostCenter                     | costCenter                   | 读取           |
+| 63 | EmpJob\.CostCenter                     | costCenterId                 | 读取           |
+| 64 | EmpJob\.CostCenter                     | costCenterDescription        | 读取           |
+| 65 | EmpJob\.部门                     | department                   | 读取           |
+| 66 | EmpJob\.部门                     | departmentId                 | 读取           |
+| 67 | EmpJob\.除法                       | division                     | 读取           |
+| 68 | EmpJob\.除法                       | divisionId                   | 读取           |
+| 69 | EmpJob\.JobCode                        | jobCode                      | 读取           |
+| 70 | EmpJob\.JobCode                        | jobCodeId                    | 读取           |
+| 71 | EmpJob\.位置                       | LocationName                 | 读取           |
+| 72 | EmpJob\.位置                       | officeLocationAddress        | 读取           |
+| 73 | EmpJob\.位置                       | officeLocationCity           | 读取           |
+| 74 | EmpJob\.位置                       | officeLocationCustomString4  | 读取           |
+| 75 | EmpJob\.位置                       | officeLocationZipCode        | 读取           |
+| 76 | EmpJob\.PayGrade                       | payGrade                     | 读取           |
+| 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 读取           |
+| 78 | EmpEmploymentTermination               | latestTerminationDate        | 读取           |
 
 
 ## <a name="default-attribute-mapping"></a>默认属性映射
@@ -124,17 +124,17 @@ ms.locfileid: "77066182"
 | 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
 | 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
 | 6  | 用户                                   | addressLine1             | streetAddress                           | NA                                                                                           |
-| 7  | 用户                                   | 城市                     | l                                       | NA                                                                                           |
+| 7  | 用户                                   | city                     | l                                       | NA                                                                                           |
 | 8  | 用户                                   | country                  | co                                      | NA                                                                                           |
 | 9  | 用户                                   | state                    | st                                      | NA                                                                                           |
 | 10 | 用户                                   | username                 | samAccountName                          | NA                                                                                           |
 | 11 | 用户                                   | zipCode                  | postalCode                              | NA                                                                                           |
-| 12 | PerEmail                               | emailAddress             | 邮件                                    | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
 | 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
 | 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
 | 15 | EmpJob\.公司\.CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
 | 16 | EmpJob\.部门                     | department               | department                              | NA                                                                                           |
-| 17 | EmpJob\.除法                       | 除法                 | company                                 | NA                                                                                           |
+| 17 | EmpJob\.除法                       | division                 | company                                 | NA                                                                                           |
 | 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，则禁用 account\。                                           |

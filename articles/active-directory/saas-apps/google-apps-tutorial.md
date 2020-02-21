@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf148ec64ceed28577224741033258bad0e62372
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047958"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>教程：Azure Active Directory 单一登录 (SSO) 与 G Suite 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "77047958"
 * 让用户使用其 Azure AD 帐户自动登录到 G Suite。
 * 在一个中心位置（Azure 门户）管理帐户。
 
-若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -136,6 +136,14 @@ ms.locfileid: "77047958"
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
 
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL： 
+
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
+
 1. 在“基本 SAML 配置”  部分中，如果想要为 **Google Cloud Platform** 进行配置，请执行以下步骤：
 
     a. 在“登录 URL”  文本框中，使用以下模式键入 URL： `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`
@@ -149,6 +157,13 @@ ms.locfileid: "77047958"
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
     
+    c. 在“回复 URL”  文本框中，使用以下模式键入 URL： 
+    
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 G Suite 不在单一登录配置上提供“实体 ID/标识符”值，因此，在取消选中“特定于域的颁发者”选项后，  “标识符”值将为 `google.com`。 如果勾选“特定于域的颁发者”选项，  它将为 `google.com/a/<yourdomainname.com>`。 若要勾选/取消选中“特定于域的颁发者”选项，  需转到“配置 G Suite SSO”部分进行操作，详见教程后面的内容。  有关详细信息，请联系 [G Suite 客户端支持团队](https://www.google.com/contact/)。
 
@@ -247,14 +262,18 @@ G Suite 还支持自动用户预配。 若要配置自动用户预配，你必�
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [什么是使用 Azure Active Directory 的应用程序访问和单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
 - [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+
 - [在 Azure AD 中试用 G Suite](https://aad.portal.azure.com/)
+
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [如何通过高级可见性和控制保护 G Suite](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

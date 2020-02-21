@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 861e8fc115165214db5d01cb142a2980ba08bf53
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933071"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467363"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 
@@ -117,7 +117,7 @@ ms.locfileid: "76933071"
 
 ## <a name="internal-sdk-version"></a>内部：SDK 版本
 
-SDK 版本。 请参阅 https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification 获取相关信息。
+SDK 版本。 有关信息，请参阅[此文](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md)。
 
 最大长度：64
 

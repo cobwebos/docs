@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233761"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469912"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>设置实验室来讲授关系数据库的数据库管理
 
@@ -28,15 +28,15 @@ ms.locfileid: "74233761"
 
 ## <a name="lab-configuration"></a>实验室配置
 
-若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
+若要设置此实验室，需要一个 Azure 订阅和实验室帐户才能开始使用。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。 获取 Azure 订阅后，可以在 Azure 实验室服务中创建新的实验室帐户。 有关创建新实验室帐户的详细信息，请参阅[设置实验室帐户教程](tutorial-setup-lab-account.md)。  你还可以使用现有的实验室帐户。
 
 ### <a name="lab-account-settings"></a>实验室帐户设置
 
-为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators)。
+为实验室帐户启用下表中所述的设置。 有关如何启用 marketplace 映像的详细信息，请参阅[指定可用于实验室创建者的 marketplace 映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
 
-| 实验室帐户设置 | 说明 |
+| 实验室帐户设置 | Instructions |
 | ------------------- | ------------ |
-|市场映像| 启用 "Windows Server 2019 上的 SQL Server 2019 标准" 映像，以便在实验室帐户中使用。|
+|Marketplace 映像| 启用 "Windows Server 2019 上的 SQL Server 2019 标准" 映像，以便在实验室帐户中使用。|
 
 ### <a name="lab-settings"></a>实验室设置
 
@@ -53,7 +53,7 @@ ms.locfileid: "74233761"
 
 在创建新实验室时选择的虚拟机映像中预安装了 SQL Server 2019。
 
-## <a name="cost-estimate"></a>成本估计
+## <a name="cost-estimate"></a>成本估算
 
 我们来介绍此类的可能的成本估算。  我们将使用一类25名学生。  计划的类时间有20小时。  此外，每个学生在计划的类时间之外为家庭作业或分配获取10小时配额。  选择的虚拟机大小为 "中"，即 "42 实验室单位"。
 

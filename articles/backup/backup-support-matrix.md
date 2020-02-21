@@ -3,12 +3,12 @@ title: Azure 备份支持矩阵
 description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936250"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505866"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -43,7 +43,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 如果要备份本地计算机，则支持以下是：
 
-**计算机** | **备份的内容** | **位置** | **功能特色**
+**计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
 **使用 MARS 代理直接备份 Windows 计算机** | 文件、文件夹、系统状态 | 备份到恢复服务保管库。 | 每天备份三次<br/><br/> 无应用感知备份<br/><br/> 还原文件、文件夹、卷
 **使用 MARS 代理直接备份 Linux 计算机** | 不支持备份
@@ -63,7 +63,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 如果要备份 Azure Vm，则支持以下是：
 
-**计算机** | **备份的内容** | **位置** | **功能特色**
+**计算机** | **备份的内容** | **位置** | **功能**
 --- | --- | --- | ---
 **使用 VM 扩展的 Azure VM 备份** | 整个 VM | 备份到保管库。 | 为 VM 启用备份时安装的扩展。<br/><br/> 每天备份一次。<br/><br/> 适用于 Windows Vm 的应用程序感知备份;适用于 Linux Vm 的文件一致性备份。 你可以使用自定义脚本为 Linux 计算机配置应用程序一致性。<br/><br/> 还原 VM 或磁盘。<br/><br/> 无法将 Azure VM 备份到本地位置。
 **使用 MARS 代理备份 Azure VM** | 文件、文件夹、系统状态 | 备份到保管库。 | 每天备份三次。<br/><br/> 如果要备份特定文件或文件夹，而不是整个 VM，则 MARS 代理可以与 VM 扩展一起运行。
@@ -78,8 +78,9 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 --- | ---
 **直接备份运行 Linux 的本地计算机** | 不支持。 MARS 代理只能安装在 Windows 计算机上。
 **使用代理扩展来备份运行 Linux 的 Azure VM** | 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用程序一致性备份。<br/><br/> 文件级恢复。<br/><br/> 通过从恢复点或磁盘创建 VM 进行还原。
-**使用 DPM 备份本地或运行 Linux 的 Azure VM** | Hyper-v 和 VMWare 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMWare Linux 来宾 Vm 的 VM 还原。<br/><br/> 文件一致性备份不适用于 Azure VM。
-**使用 MABS 备份运行 Linux 的本地计算机或 Azure VM** | Hyper-v 和 VMWare 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMWare Linux 来宾 Vm 的 VM 还原。<br/><br/> 文件一致性备份不适用于 Azure VM。
+**使用 DPM 备份运行 Linux 的本地计算机** | Hyper-v 和 VMWare 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMWare Linux 来宾 Vm 的 VM 还原。
+**使用 MABS 备份运行 Linux 的本地计算机** | Hyper-v 和 VMWare 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMWare Linux 来宾 Vm 的 VM 还原。
+**使用 MABS 或 DPM 备份 Linux Azure Vm** | 不支持。
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
@@ -126,10 +127,10 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 - 对于 Azure Vm，VM 扩展会通过存储网络直接读取 Azure 存储帐户中的数据，因此无需压缩此流量。
 - 如果你使用的是 DPM 或 MABS，则可以通过在备份数据前对其进行压缩来节省带宽。
 
-**计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
+**计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库（HTTPS）**
 --- | --- | ---
-**直接备份本地 Windows 计算机** | 不可用 | ![是][green]
-**使用 VM 扩展对 Azure Vm 进行备份** | 不可用 | 不可用
+**直接备份本地 Windows 计算机** | NA | ![是][green]
+**使用 VM 扩展对 Azure Vm 进行备份** | NA | NA
 **使用 MABS/DPM 在本地/Azure 计算机上备份** | ![是][green] | ![是][green]
 
 ## <a name="retention-limits"></a>保留期限制
@@ -148,12 +149,12 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 Azure 备份添加了跨区域还原功能来增强数据可用性和复原能力，使客户能够完全控制将数据还原到次要区域。 若要配置此功能，请访问[Set 跨区域还原一文。](backup-create-rs-vault.md#set-cross-region-restore) 以下管理类型支持此功能：
 
-| 备份管理类型 | 受支持                                                    | 支持的区域 |
+| 备份管理类型 | 支持                                                    | 支持的区域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 可以。 对于超过 4 TB 磁盘的加密 Vm 和 Vm 支持公共有限预览版 | 美国中西部   |
-| MARS 代理/本地 | 否                                                           | N/A               |
-| SQL/SAP HANA          | 否                                                           | N/A               |
-| AFS                    | 否                                                           | N/A               |
+| Azure VM               | 是的。 对于超过 4 TB 磁盘的加密 Vm 和 Vm 支持公共有限预览版 | 美国中西部   |
+| MARS 代理/本地 | 否                                                           | 空值               |
+| SQL/SAP HANA          | 否                                                           | 空值               |
+| AFS                    | 否                                                           | 空值               |
 
 
 

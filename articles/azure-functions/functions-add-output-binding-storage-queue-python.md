@@ -3,12 +3,12 @@ title: 将 Azure 存储队列绑定添加到 Python 函数
 description: 使用输出绑定将 Azure 存储队列与 Python 函数相集成。
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715367"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485159"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>将 Azure 存储队列绑定添加到 Python 函数
 
@@ -100,7 +100,7 @@ ms.locfileid: "76715367"
 
 在这种情况下，`msg` 将作为输出参数提供给函数。 对于 `queue` 类型，还必须在 `queueName` 中指定队列的名称，并在 `connection` 中提供 Azure 存储连接的名称（来自 *local.settings.json*）。 
 
-有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)和[队列输出配置](functions-bindings-storage-queue.md#output---configuration)。
+有关绑定的详细信息，请参阅 [Azure Functions 触发器和绑定的概念](functions-triggers-bindings.md)和[队列输出配置](functions-bindings-storage-queue-output.md#configuration)。
 
 ## <a name="add-code-to-use-the-output-binding"></a>添加使用输出绑定的代码
 
@@ -156,7 +156,7 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
 1. 完成后，按 **Ctrl**+**C** 停止主机。
 
 > [!TIP]
-> 在启动过程中，主机会下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)和其他 Microsoft 绑定扩展。 之所以安装这些扩展，是因为默认情况下，已在 *host.json* 文件中使用以下属性启用了绑定扩展：
+> 在启动过程中，主机会下载并安装[存储绑定扩展](functions-bindings-storage-blob.md#add-to-your-functions-app)和其他 Microsoft 绑定扩展。 之所以安装这些扩展，是因为默认情况下，已在 *host.json* 文件中使用以下属性启用了绑定扩展：
 >
 > ```json
 > {
@@ -176,19 +176,19 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
 
 1. 打开函数项目的 *local.setting.json* 文件，并复制连接字符串值。 在终端或命令窗口中运行以下命令，以创建名为 `AZURE_STORAGE_CONNECTION_STRING` 的环境变量（请在 `<connection_string>` 位置粘贴特定的连接字符串）。 （创建此环境变量后，无需在使用 `--connection-string` 参数的每个后续命令中提供连接字符串。）
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     
 1. （可选）使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     ---
 
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue-trigger.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     由于需要取消引用消息集合并从 base64 解码，因此请运行 PowerShell 并使用 PowerShell 命令。
 
@@ -251,13 +251,13 @@ def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
     
 1. 像在上一篇快速入门中一样，使用浏览器或 CURL 来测试重新部署的函数。
 
-    # <a name="browsertabbrowser"></a>[浏览器](#tab/browser)
+    # <a name="browser"></a>[浏览器](#tab/browser)
     
     将 publish 命令的输出中显示的完整“调用 URL”复制到浏览器的地址栏，并追加查询参数 `&name=Azure`。  浏览器显示的输出应与本地运行函数时显示的输出类似。
 
     ![在 Azure 上运行函数后浏览器中的输出](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[curl](#tab/curl)
+    # <a name="curl"></a>[curl](#tab/curl)
     
     结合“调用 URL”运行 [curl](https://curl.haxx.se/)，并追加参数 `&name=Azure`。  该命令的输出应是文本“Hello Azure”。
     

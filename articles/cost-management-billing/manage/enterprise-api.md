@@ -1,26 +1,18 @@
 ---
 title: Azure 计费企业 API | Microsoft Docs
 description: 了解使企业 Azure 客户能够以编程方式提取消耗数据的报告 API。
-services: ''
-documentationcenter: ''
 author: mumami
-manager: mumami
-editor: ''
 tags: billing
-ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: billing
-ms.date: 10/01/2019
+ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75991992"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200670"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>面向企业客户的报告 API 概述
 报告 API 使企业 Azure 客户能够以编程方式将消耗数据和计费数据提取到首选的数据分析工具。 企业客户与 Azure 签订了[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)，以达成协商的货币承诺并获取自定义 Azure 资源定价的访问权限。

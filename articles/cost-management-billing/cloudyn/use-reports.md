@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 中的 Cloudyn 报表 | Microsoft Docs
 description: 本文介绍 Cloudyn 门户中包含的 Cloudyn 报表的用途，可帮助你有效使用它们。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -10,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 6f974ae35dbf23a134b775fe0d4f8cf5195a75af
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b3563e08963b0b32542dcbece2529c350981f557
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773913"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200004"
 ---
 # <a name="reports-available-in-the-cloudyn-portal"></a>Cloudyn 门户中可用的报表
 

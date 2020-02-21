@@ -8,32 +8,32 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133038"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471629"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>使用自定义规则在应用程序网关上配置 Web 应用程序防火墙 v2 Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-自定义规则允许你创建自己的规则，对通过 Web 应用程序防火墙 (WAF) v2 进行传递的每个请求进行评估。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有一个操作（允许或阻止）、一个匹配条件和一个运算符以允许完全自定义。
+自定义规则允许您为通过 Web 应用程序防火墙（WAF） v2 传递的每个请求创建自己的规则。 这些规则的优先级高于托管规则集中的其余规则。 自定义规则具有操作（允许或阻止）、匹配条件和允许完全自定义的运算符。
 
 本文创建使用自定义规则的应用程序网关 WAF v2。 如果请求标头包含用户代理 *evilbot*，该自定义规则会阻止流量。
 
-若要查看更多自定义规则示例，请参阅[创建和使用自定义 Web 应用程序防火墙规则](create-custom-waf-rules.md)
+若要查看更多自定义规则示例，请参阅[创建和使用自定义 web 应用程序防火墙规则](create-custom-waf-rules.md)
 
-如果你想在一个可以复制、粘贴和运行的连续脚本中运行本文中的 Azure PowerShell，请参见 [Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
+如果要在可复制、粘贴和运行的一个连续脚本中运行本文中的 Azure PowerShell，请参阅[Azure 应用程序网关 PowerShell 示例](powershell-samples.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell 模块
 
 如果选择在本地安装并使用 Azure PowerShell，则此脚本需要安装 Azure PowerShell 模块 2.1.0 或更高版本。
 
-1. 若要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要进行升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
+1. 要查找版本，请运行 `Get-Module -ListAvailable Az`。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 2. 若要创建与 Azure 的连接，请运行 `Connect-AzAccount`。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -109,6 +109,8 @@ $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>创建两个自定义规则并将其应用于 WAF 策略
 
 ```azurepowershell
+# Create WAF config
+$wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0"
 # Create a User-Agent header custom rule 
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
 $condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -MatchValue "evilbot" -Transform Lowercase -NegationCondition $False  

@@ -4,12 +4,12 @@ description: 介绍如何使用 Ansible 自动执行云预配、配置管理和�
 keywords: ansible, azure, devops, 概述, 云预配, 配置管理, 应用程序部署, ansible 模块, ansible playbook
 ms.topic: overview
 ms.date: 04/30/2019
-ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155777"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193559"
 ---
 # <a name="using-ansible-with-azure"></a>在 Azure 中使用 Ansible
 
@@ -57,4 +57,4 @@ Ansible 包括一套用于预配和配置 Azure 资源的模块。 这些资源�
 ## <a name="next-steps"></a>后续步骤
 
 - [快速入门：将适用于 Azure 的 Ansible 解决方案模板部署到 CentOS](./ansible-deploy-solution-template.md)
-- [快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [快速入门：使用 Ansible 在 Azure 中配置 Linux 虚拟机](./ansible-install-configure.md)

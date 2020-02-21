@@ -77,6 +77,8 @@
       href: application-provisioning-configure-api.md
 - name: 参考
   items:
+    - name: SCIM 2.0 协议符合性
+      href: application-provisioning-config-problem-scim-compatibility.md
     - name: 选择预配方法
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: 云 HR 预配

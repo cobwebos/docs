@@ -7,12 +7,12 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 1be97f9754733561111cedcf95fe237b7788583e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b929dd8979ecf587872092af2fa44e5ae03626d1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122552"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472479"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教程：将机器学习试验代码转换为生产代码
 
@@ -409,4 +409,4 @@ MLOpsPython 模板使用 evaluate_model 脚本根据均方根误差来比较最�
 
 > [!div class="nextstepaction"]
 > [监视 Azure 机器学习试验运行和指标](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [监视机器学习 Web 服务终结点并从中收集数据](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insight)
+> [监视机器学习 Web 服务终结点并从中收集数据](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

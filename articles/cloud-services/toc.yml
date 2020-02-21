@@ -122,7 +122,7 @@
             - name: Visual Studio
               href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
         - name: 在 Azure 存储中存储和查看诊断数据
-          href: ../azure-monitor/platform/diagnostics-extension-to-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
+          href: diagnostics-extension-to-storage.md
         - name: 使用诊断跟踪云服务
           href: cloud-services-dotnet-diagnostics-trace-flow.md
     - name: 故障排除

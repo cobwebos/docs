@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: 543514683ff96449bfe0e5a21c525834f61f3027
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367126"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484598"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise 多会话常见问题解答
 
-本文将回答一些常见问题，并涵盖 Windows 10 企业多会话的最佳实践。
+本文回答了常见问题，并说明了 Windows 10 企业多会话的最佳实践。
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>什么是 Windows 10 企业多会话？ 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>什么是 Windows 10 企业多会话？
 
-Windows 10 企业多会话（以前称为 Windows 10 企业版虚拟桌面（EVD））是一个新的远程桌面会话主机，它允许以前只有 Windows Server 才能完成的多个并发交互会话。 此功能为用户提供了一个熟悉的 Windows 10 体验，同时它可以从多会话的成本优势和使用现有的每用户 Windows 授权（而不是 RDS 客户端访问许可证（Cal））中受益。 有关许可证和定价的详细信息，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。 
+Windows 10 企业多会话（以前称为 Windows 10 企业版虚拟桌面（EVD））是允许多个并发交互式会话的新远程桌面会话主机。 以前，只有 Windows Server 可以执行此操作。 此功能为用户提供了一个熟悉的 Windows 10 体验，同时它可以从多会话的成本优势和使用现有的每用户 Windows 授权（而不是 RDS 客户端访问许可证（Cal））中受益。 有关许可证和定价的详细信息，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>有多少用户可以在 Windows 10 企业多会话上同时拥有交互式会话？
 
@@ -28,7 +28,7 @@ Windows 10 企业多会话（以前称为 Windows 10 企业版虚拟桌面（EVD
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>为什么应用程序报告 Windows 10 企业多会话作为服务器操作系统？
 
-Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项差异是，此操作系统（OS）会将值为3的[ProductType](/windows/desktop/cimwin32prov/win32-operatingsystem/)报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。 
+Windows 10 企业多会话是 Windows 10 企业版的虚拟版本。 其中一项差异是，此操作系统（OS）会将值为3的[ProductType](/windows/win32/cimwin32prov/win32-operatingsystem)报告为与 Windows Server 相同的值。 此属性可保持操作系统与现有的 RDSH 管理工具、RDSH 多会话感知应用程序的兼容性，并且主要用于 RDSH 环境的低级别系统性能优化。 某些应用程序安装程序可以在 Windows 10 多会话上阻止安装，具体取决于它们是否检测到 "ProductType" 设置为 "客户端"。 如果你的应用程序无法安装，请与你的应用程序供应商联系以获取更新的版本。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>能否在本地运行 Windows 10 企业多会话？
 
@@ -40,7 +40,7 @@ Windows 10 企业多会话无法在本地生产环境中运行，因为它已针
  
 若要开始，请使用 Windows 10 Windows 10 企业多会话在 Azure 中创建 VM。 你可以直接下载 VHD，而不是在 Azure 中启动 VM。 之后，你将能够使用已下载的 VHD 在启用 Hyper-v 的 Windows 10 电脑上创建新的第1代 VM。
 
-通过安装 LOB 应用程序并 sysprep 映像，根据需要自定义映像。 完成自定义后，将映像上传到 Azure 中的 VHD。 然后，从 Azure Marketplace 获取 Windows 虚拟桌面，并将其用于使用自定义映像部署新的主机池。
+通过安装 LOB 应用程序并 sysprep 映像，根据需要自定义映像。 完成自定义后，将映像上传到 Azure 中的 VHD。 然后，从 Azure Marketplace 获取 Windows 虚拟桌面，并使用它来部署包含自定义映像的新主机池。
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>部署后如何实现管理 Windows 10 企业多会话？
 
@@ -71,6 +71,31 @@ Windows 10 企业多会话版本1809及更高版本都受支持，并在 Azure �
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>访问 Windows 10 企业多会话需要哪些许可证？
 
 有关适用许可证的完整列表，请参阅[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>为何我的应用在注销后不会消失？
+
+出现这种情况的原因是，你将 Windows 10 企业多会话与 FSLogix 等配置文件管理解决方案一起使用。 你的管理员或配置文件解决方案将系统配置为在用户注销时删除用户配置文件。此配置意味着，当你注销后你的系统删除你的用户配置文件时，它还会删除在你的会话过程中安装的任何应用。 如果要保留已安装的应用，则需要让管理员为 Windows 虚拟桌面环境中的所有用户设置这些应用。
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>如何实现确保用户注销时不会消失应用？
+
+默认情况下，配置大多数虚拟化环境，以防止用户将其他应用安装到其配置文件。 如果要在用户注销 Windows 虚拟桌面时确保应用不会消失，则必须为环境中的所有用户配置文件预配该应用。 有关设置应用的详细信息，请查看以下资源：
+
+- [在 Windows 虚拟桌面中发布内置应用](publish-apps.md)
+- [DISM 应用程序包服务命令行选项](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>如何实现确保用户不会从 Microsoft Store 下载和安装应用？
+
+可以禁用 Microsoft Store 应用，确保用户不会下载额外的应用，而不是已为其预配的应用。
+
+若要禁用应用商店应用：
+
+1. 创建新组策略。
+2. 选择 "**计算机配置**" > **管理模板** > **Windows 组件**"。
+3. 选择“应用商店”。
+4. 选择 "**应用商店应用程序**"。
+5. 选择 "**禁用**"，然后选择 **"确定"** 。
+6. 选择“应用”。
  
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200072"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500017"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批处理脚本
 
@@ -34,7 +34,7 @@ ms.locfileid: "77200072"
 
 在易于使用的 API 旁，你无需部署自定义终结点，并且你无需执行任何并发性要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="subscription-key"></a>订阅密钥
 
@@ -53,7 +53,7 @@ ms.locfileid: "77200072"
 
 Batch 听录 API 支持以下格式：
 
-| 格式 | 编解码器 | Bitrate | 采样速率 |
+| 格式 | 编解码器 | Bitrate | 采样率 |
 |--------|-------|---------|-------------|
 | WAV | PCM | 16 位 | 8 kHz 或 16 kHz、单声道或立体声 |
 | MP3 | PCM | 16 位 | 8 kHz 或 16 kHz、单声道或立体声 |
@@ -87,14 +87,55 @@ Batch 听录 API 支持以下格式：
 
 使用以下可选属性来配置脚本：
 
-| 参数 | 说明 |
-|-----------|-------------|
-| `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `None`（禁用不雅内容筛选）、`Masked`（将不雅内容替换为星号）、`Removed`（从结果中删除所有不雅内容）或 `Tags`（添加“不雅内容”标记）。 默认设置为 `Masked`。 |
-| `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `None`（禁用标点）、`Dictated`（表示使用显式标点）、`Automatic`（允许解码器处理标点）或 `DictatedAndAutomatic`（表示使用专用标点符号或自动使用标点）。 |
-| `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 |
-| `AddSentiment` | 指定应将情绪添加到查询文本中。 接受的值为 `true`，这将启用每个查询文本的情绪和 `false` （默认值）以禁用它。 |
-| `AddDiarization` | 指定应对输入执行的 diarization 分析应为单声道通道，该输入应为包含两个声音的 mono 通道。 接受的值为 `true`，这将启用 diarization 和 `false` （默认值）以禁用它。 它还要求将 `AddWordLevelTimestamps` 设置为 true。|
-|`TranscriptionResultsContainerUrl`|指向 Azure 中可写容器的[服务 SAS](../../storage/common/storage-sas-overview.md)的可选 URL。 结果将存储在此容器中。
+:::row:::
+   :::column span="1":::
+      **Parameter**
+   :::column-end:::
+   :::column span="2":::
+      **说明**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何处理识别结果中的不雅内容。 接受的值 `None` 来禁用猥亵语言筛选，`Masked` 用星号替换猥亵语言，`Removed` 删除结果中的所有猥亵语言，或 `Tags` 添加 "猥亵" 标记。 默认设置为 `Masked`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      指定如何处理识别结果中的标点。 接受的值将 `None` 禁用标点符号，`Dictated` 为表示显式（口述）标点，`Automatic` 使解码器处理标点符号，或 `DictatedAndAutomatic` 使用听写和自动标点。 默认设置为 `DictatedAndAutomatic`。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      指定是否应将字级时间戳添加到输出。 接受的值将 `true` 以启用 word 级别的时间戳和 `false` （默认值）以禁用它。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      指定应将情绪添加到查询文本中。 接受的值 `true` 为每个查询文本启用情绪，并 `false` （默认值）以禁用它。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      指定应对输入执行的 diarization 分析应为单声道通道，该输入应为包含两个声音的 mono 通道。 接受的值为 `true` 启用 diarization 和 `false` （默认值）以禁用它。 它还要求将 `AddWordLevelTimestamps` 设置为 true。
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      指向 Azure 中可写容器的[服务 SAS](../../storage/common/storage-sas-overview.md)的可选 URL。 结果将存储在此容器中。
+:::row-end:::
 
 ### <a name="storage"></a>存储
 

@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: bb661e6d4497a85cf2ef445fc39774e93a04cc99
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b0704c6262451cef615355e871ce7f26005b3132
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899413"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467656"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>导入 Azure 应用配置存储区
 
@@ -31,10 +31,6 @@ ms.locfileid: "76899413"
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 如果选择在本地安装并使用 Azure CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 若要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
-
-需要先安装 Azure 应用配置 CLI 扩展，方法是通过执行以下命令：
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -53,7 +49,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 | Command | 说明 |
 |---|---|
-| [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | 导入应用程序配置存储区资源。 |
+| [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | 导入应用程序配置存储区资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 

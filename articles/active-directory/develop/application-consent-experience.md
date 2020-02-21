@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: 82d64895f4bf2ef6eb1fdb248f470f981d1cb426
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c9b449b65a8f8def9dc28a668cd9ee3671124cb0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698163"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484496"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
@@ -29,7 +29,7 @@ ms.locfileid: "76698163"
 
 许可是指用户授权应用程序代表他们访问受保护资源的过程。 可以要求管理员或用户同意访问其组织/个人数据。
 
-授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-permissions)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
+授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
 
 - **用户许可流**是指应用程序开发人员将用户定向到授权终结点，意图仅记录当前用户的许可。
 - **管理员许可流**是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。
@@ -42,9 +42,9 @@ ms.locfileid: "76698163"
 
 ![许可提示的构建基块](./media/application-consent-experience/consent_prompt.png)
 
-| # | 组件 | 用途 |
+| # | 组件 | 目的 |
 | ----- | ----- | ----- |
-| 第 | 用户标识符 | 此标识符表示客户端应用程序正在请求代表其访问受保护资源的用户。 |
+| 1 | 用户标识符 | 此标识符表示客户端应用程序正在请求代表其访问受保护资源的用户。 |
 | 2 | 标题 | 标题根据用户是完成用户许可流还是管理员许可流而变化。 在用户许可流中，标题将为“请求的权限”，而在管理员许可流中，标题还有额外的一行“为组织接受”。 |
 | 3 | 应用徽标 | 此图像应帮助用户直观地了解此应用是否是他们打算访问的应用。 此图像由应用程序开发人员提供，并且未验证此图像的所有权。 |
 | 4 | 应用程序名称 | 此值应告知用户哪个应用程序正在请求访问其数据。 请注意，此名称由开发人员提供，并且未验证此应用名称的所有权。 |

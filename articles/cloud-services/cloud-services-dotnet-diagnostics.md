@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361107"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469759"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "75361107"
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>如何在辅助角色中启用诊断
 本演练介绍如何实现使用 .NET EventSource 类发出遥测数据的 Azure 辅助角色。 Azure Diagnostics 用于收集遥测数据，并将其存储在一个 Azure 存储帐户中。 创建辅助角色时，Visual Studio 将在适用于 .NET 2.4 和更低版本的 Azure SDK 中，自动启用 Diagnostics 1.0 作为解决方案的一部分。 以下说明介绍了创建辅助角色、从解决方案禁用 Diagnostics 1.0，以及在辅助角色中部署 Diagnostics 1.2 或 1.3 的过程。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 本文假定你具有 Azure 订阅，并要将 Visual Studio 与 Azure SDK 配合使用。 如果没有 Azure 订阅，可以注册[免费试用版][Free Trial]。 请确保[安装并配置 Azure PowerShell 0.8.7 或更高版本][Install and configure Azure PowerShell version 0.8.7 or later]。
 
 ### <a name="step-1-create-a-worker-role"></a>步骤 1：创建辅助角色
@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. 右键单击 **WorkerRole1** 项目并选择“添加” -> “新建项...”，将 XML 文件添加到 **WorkerRole1** 项目中。 -> “Visual C# 项” -> “数据” -> “XML 文件”。 将该文件命名为“WadExample.xml”。
+2. 右键单击 **WorkerRole1** 项目并选择“添加” **“新建项...”**  -> ，将 XML 文件添加到 **WorkerRole1** 项目中。 -> “Visual C# 项” -> “数据” -> “XML 文件”。 将该文件命名为“WadExample.xml”。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. 将 WadConfig.xsd 与配置文件相关联。 确保 WadExample.xml 编辑器窗口是活动的窗口。 按 **F4** 打开“属性”窗口。 在“属性”窗口中单击“架构”属性。 在“架构”属性中 单击“...”。 单击“添加...” 按钮并导航到 XSD 文件的保存位置，然后选择文件 WadConfig.xsd。 单击“确定”。
@@ -193,7 +193,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -Diagnostic
 如果遇到问题，请参阅 [Azure 诊断疑难解答](../azure-diagnostics-troubleshooting.md)，以获取有关常见问题的帮助。
 
 ## <a name="next-steps"></a>后续步骤
-若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics)。
+若要更改你收集的数据、排查问题或者了解有关诊断的一般信息，请参阅[有关 Azure 虚拟机的诊断文章列表](../azure-monitor/platform/diagnostics-extension-overview.md)。
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

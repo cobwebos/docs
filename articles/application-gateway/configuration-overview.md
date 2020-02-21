@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714854"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485074"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -210,7 +210,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 如果为基本规则配置了重定向，则关联侦听器上的所有请求都将重定向到目标。 这是*全局*重定向。 如果为基于路径的规则配置了重定向，则仅重定向特定站点区域中的请求。 例如， */cart/\** 表示购物车区域。 这是*基于路径的*重定向。
 
-有关重定向的详细信息，请参阅[应用程序网关重定向概述](https://docs.microsoft.com/azure/application-gateway/redirect-overview)。
+有关重定向的详细信息，请参阅[应用程序网关重定向概述](redirect-overview.md)。
 
 #### <a name="redirection-type"></a>重定向类型
 
@@ -227,24 +227,24 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 !["应用程序网关组件" 对话框](./media/configuration-overview/configure-redirection.png)
 
 有关 HTTP 到 HTTPS 重定向的详细信息，请参阅：
-- [使用 Azure 门户进行 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 进行 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 进行 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [使用 Azure 门户进行 HTTP 到 HTTPS 的重定向](redirect-http-to-https-portal.md)
+- [使用 PowerShell 进行 HTTP 到 HTTPS 的重定向](redirect-http-to-https-powershell.md)
+- [使用 Azure CLI 进行 HTTP 到 HTTPS 的重定向](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>外部站点
 
 如果要将与此规则关联的侦听器上的流量重定向到外部站点，请选择 "外部站点"。 您可以选择在转发到重定向目标的请求中包含原始请求中的查询字符串。 不能将路径转发到原始请求中的外部站点。
 
 有关重定向的详细信息，请参阅：
-- [使用 PowerShell 将流量重定向到外部站点](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [使用 CLI 将流量重定向到外部站点](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [使用 PowerShell 将流量重定向到外部站点](redirect-external-site-powershell.md)
+- [使用 CLI 将流量重定向到外部站点](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>重写 HTTP 标头设置
 
 此设置在客户端和后端池之间移动请求和响应数据包时添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅：
 
- - [重写 HTTP 标头概述](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [配置 HTTP 标头重写](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [重写 HTTP 标头概述](rewrite-http-headers.md)
+ - [配置 HTTP 标头重写](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP 设置
 
@@ -252,7 +252,18 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="cookie-based-affinity"></a>基于 Cookie 的相关性
 
-如果要在同一台服务器上保留用户会话，此功能很有用。 通过网关管理的 cookie，应用程序网关可以将来自用户会话的后续流量定向到相同的服务器进行处理。 当在服务器上为用户会话保存会话状态时，这一点非常重要。 如果应用程序无法处理基于 cookie 的关联，则无法使用此功能。 若要使用它，请确保客户端支持 cookie。
+Azure 应用程序网关使用网关托管 cookie 来维护用户会话。 当用户将第一个请求发送到应用程序网关时，它会在响应中使用包含会话详细信息的哈希值来设置关联 cookie，以便将具有关联 cookie 的后续请求路由到的后端服务器保持粘性。 
+
+如果要在同一台服务器上保存用户会话，并在服务器上为用户会话保存会话状态时，此功能很有用。 如果应用程序无法处理基于 cookie 的关联，则无法使用此功能。 若要使用它，请确保客户端支持 cookie。
+
+从**2020 年2月 17**日开始， [Chromium](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)带来了一个强制要求，其中不含 SameSite 特性的 HTTP cookie 被视为 SameSite = 宽松。 在 CORS （跨源资源共享）请求的情况下，如果必须在第三方上下文中发送 cookie，则必须使用 "SameSite = None;安全的 "属性，只应通过 HTTPS 发送。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 cookie。 此更新从 Chrome 的目标是增强安全性并避免跨站点请求伪造（CSRF）攻击。 
+
+若要支持此更改，应用程序网关（所有 SKU 类型）将注入另一个名为**ApplicationGatewayAffinityCORS**的相同 cookie 以及现有的**ApplicationGatewayAffinity** cookie，但这一点类似，但此 cookie 现在将有两个以上的属性 **"SameSite = None"。"安全"** 添加到其中，以便即使对于跨源请求也能维持粘滞会话。
+
+请注意，默认关联 cookie 名称为**ApplicationGatewayAffinity** ，用户可以更改此名称。 如果你使用的是自定义相关性 cookie 名称，将使用 CORS 作为后缀添加额外的 cookie，例如， **CustomCookieNameCORS**。
+
+> [!NOTE]
+> 如果设置了属性**SameSite = None** ，cookie 还应包含**Secure**标志，并且应通过**HTTPS**发送。 因此，如果需要通过 CORS 进行会话相关性，则必须将工作负荷迁移到 HTTPS。 请参阅此处的应用程序网关的 SSL 卸载和端到端 SSL 文档–[概述](ssl-overview.md)，[如何配置 SSL 卸载](create-ssl-portal.md)，[如何配置端到端 ssl](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>连接清空
 
@@ -262,7 +273,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 应用程序网关支持将请求路由到后端服务器的 HTTP 和 HTTPS。 如果选择 HTTP，则不会加密到后端服务器的流量。 如果无法接受未加密的通信，请选择 HTTPS。
 
-此设置与侦听器中的 HTTPS 组合支持[端到端 SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)。 这样，你就可以安全地将加密的敏感数据传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书以允许安全通信。
+此设置与侦听器中的 HTTPS 组合支持[端到端 SSL](ssl-overview.md)。 这样，你就可以安全地将加密的敏感数据传输到后端。 后端池中每个已启用端到端 SSL 的后端服务器都必须配置证书以允许安全通信。
 
 ### <a name="port"></a>端口
 
@@ -301,7 +312,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="use-custom-probe"></a>使用自定义探测
 
-此设置将[自定义探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)与 HTTP 设置关联。 只能将一个自定义探测与一个 HTTP 设置关联。 如果未显式关联自定义探测，则使用[默认探测器](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)来监视后端的运行状况。 建议创建自定义探测，以便更好地控制后端的运行状况监视。
+此设置将[自定义探测](application-gateway-probe-overview.md#custom-health-probe)与 HTTP 设置关联。 只能将一个自定义探测与一个 HTTP 设置关联。 如果未显式关联自定义探测，则使用[默认探测器](application-gateway-probe-overview.md#default-health-probe-settings)来监视后端的运行状况。 建议创建自定义探测，以便更好地控制后端的运行状况监视。
 
 > [!NOTE]
 > 自定义探测不会监视后端池的运行状况，除非相应的 HTTP 设置与侦听器显式关联。
@@ -335,7 +346,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="health-probes"></a>运行状况探测
 
-默认情况下，应用程序网关监视其后端中所有资源的运行状况。 但我们强烈建议为每个后端 HTTP 设置创建自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)。
+默认情况下，应用程序网关监视其后端中所有资源的运行状况。 但我们强烈建议为每个后端 HTTP 设置创建自定义探测，以便更好地控制运行状况监视。 若要了解如何配置自定义探测，请参阅[自定义运行状况探测设置](application-gateway-probe-overview.md#custom-health-probe-settings)。
 
 > [!NOTE]
 > 创建自定义运行状况探测后，需要将其关联到后端 HTTP 设置。 自定义探测不会监视后端池的运行状况，除非相应的 HTTP 设置与使用规则的侦听器显式关联。

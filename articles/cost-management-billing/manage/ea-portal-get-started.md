@@ -1,19 +1,18 @@
 ---
 title: Azure Enterprise 门户入门
 description: 本文介绍 Azure 企业协议 (Azure EA) 客户如何使用 Azure Enterprise 门户。
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023338"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200823"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise 门户入门
 
@@ -235,7 +234,7 @@ Azure Enterprise 门户的层次结构包括：
   - 从一个工作或学校帐户转移到另一个工作或学校帐户。
   - 从 Microsoft 帐户转移到工作或学校帐户。
   - 从一个 Microsoft 帐户转移到另一个 Microsoft 帐户。
-  
+
     目标帐户必须是有效的 Azure 商务帐户才能成为有效的转移目标。 对于新帐户，当你登录到 Azure Enterprise 门户时，系统会要求创建一个 Azure 商务帐户。 对于现有帐户，必须先创建新的 Azure 订阅，然后该帐户才符合条件。
 
 - 无法从工作或学校帐户转移到 Microsoft 帐户。
@@ -285,7 +284,7 @@ Azure Enterprise 门户的层次结构包括：
 
 为每个应用程序环境创建不同的订阅可以帮助保护每个环境的安全。
 
-- 还可以针对每个订阅分配不同的服务管理员帐户。 
+- 还可以针对每个订阅分配不同的服务管理员帐户。
 - 可将订阅关联到任意数量的服务。
 - 帐户所有者可以创建订阅，并将服务管理员帐户分配到其帐户中的每个订阅。
 
@@ -309,7 +308,7 @@ Azure Enterprise 门户的层次结构包括：
 1. 选择“订阅”，然后选择创建的订阅。 
 1. 选择“编辑订阅详细信息”。 
 1. 编辑“订阅名称”和“服务管理员”，然后选择勾选标记。  
-  
+
    订阅名称将显示在报表中。 它是与开发门户中的订阅关联的项目的名称。
 
 新的订阅最长可能需要在 24 小时后才会显示在订阅列表中。 创建订阅后，可以：
@@ -509,14 +508,14 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 - Microsoft Azure Enterprise，非常适合用于：
   - 所有生产使用情况
   - 基于所用基础设施的最优价格
-  
+
   有关详细信息，请[联系 Azure 销售人员](https://azure.microsoft.com/pricing/enterprise-agreement/)。
 
 - Enterprise 开发/测试，非常适合用于：
   - 所有团队开发/测试工作负载
   - 中到重量级单个开发/测试工作负载
   - 访问特殊的 MSDN 映像和优惠服务费率
-  
+
   有关详细信息，请参阅 [Enterprise 开发/测试套餐](https://azure.microsoft.com/offers/ms-azr-0148p/)。
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>能将订阅所有权转让给其他帐户吗？

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444139"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486387"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -112,6 +112,7 @@ Azure 机器学习依赖于其他 Azure 服务计算资源。 计算资源（计
 > [!IMPORTANT]
 > 如果工作区包含敏感数据，我们建议在创建工作区时设置[hbi_workspace 标志](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)。 这会控制 Microsoft 出于诊断目的收集的数据量，并在 Microsoft 托管环境中启用其他加密功能。
 
+若要深入了解 Azure 中的静态加密如何工作，请参阅[静态 Azure 数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
 
 #### <a name="azure-blob-storage"></a>Azure Blob 存储
 
@@ -189,7 +190,9 @@ Azure 容器实例不支持磁盘加密。 如果需要磁盘加密，建议改[
 
 每个虚拟机还具有一个本地临时磁盘用于操作系统操作。 如果需要，可以使用磁盘来暂存定型数据。 默认情况下，对工作区加密磁盘，将 `hbi_workspace` 参数设置为 `TRUE`。 此环境只在运行期间生存期较短，加密支持仅限于系统管理的密钥。
 
-若要深入了解 Azure 中的静态加密如何工作，请参阅[静态 Azure 数据加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)。
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks 可以在 Azure 机器学习管道中使用。 默认情况下，Azure Databricks 使用的 Databricks 文件系统（DBFS）使用 Microsoft 托管的密钥进行加密。 若要将 Azure Databricks 配置为使用客户托管的密钥，请参阅[在默认情况下配置客户托管的密钥（DBFS）](/azure/databricks/security/customer-managed-keys-dbfs)。
 
 ### <a name="encryption-in-transit"></a>传输中加密
 

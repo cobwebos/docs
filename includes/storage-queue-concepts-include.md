@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 59dd5d38b1cb89ce966a74284f0e392af52e9827
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 317e47144a716bd1bea5549aed1db0a02250d353
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457682"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77465987"
 ---
 ## <a name="what-is-queue-storage"></a>什么是队列存储？
 
@@ -26,9 +26,9 @@ Azure 队列服务包含以下组件：
   
     可使用以下 URL 访问示意图中的某个队列：  
   
-    `http://myaccount.queue.core.windows.net/images-to-download`
+    `http://myaccount.queue.core.windows.net/incoming-orders`
 
-* **存储帐户：** 对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户的详细信息，请参阅 [存储帐户概述] [。/articles/storage/common/storage-account-overview.md].
+* **存储帐户：** 对 Azure 存储服务的所有访问都要通过存储帐户来完成。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述][../articles/storage/common/storage-account-overview.md]。
 * **队列：** 一个队列包含一组消息。 所有消息必须位于相应的队列中。 请注意，队列名称必须全部小写。 有关命名队列的信息，请参阅 [命名队列和元数据](https://msdn.microsoft.com/library/azure/dd179349.aspx)。
 * **消息：** 一条消息（无论哪种格式）的最大大小为 64 KB。 消息可以保留在队列中的最长时间为 7 天。 在 2017-07-29 或更高版本中，最大生存时间可以是任何正数，或者是 -1（表示消息不会过期）。 如果省略此参数，则默认的生存时间为 7 天。
 

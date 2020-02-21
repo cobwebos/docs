@@ -8,16 +8,14 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049708"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524377"
 ---
-# <a name="export-your-azure-iot-central-data"></a>导出 Azure IoT Central 数据
-
-
+# <a name="export-iot-data-to-destinations-in-azure"></a>将 IoT 数据导出到 Azure 中的目标
 
 *本主题适用于管理员。*
 
@@ -29,7 +27,7 @@ ms.locfileid: "77049708"
 > [!Note]
 > 启用连续数据导出时，只能获得从那时之后的数据。 目前，关闭连续数据导出后将暂时无法检索数据。 若要保留更多的历史数据，请及早启用连续数据导出。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
 
@@ -66,10 +64,10 @@ ms.locfileid: "77049708"
 
     |性能层|帐户类型|
     |-|-|
-    |标准|常规用途 V2|
-    |标准|常规用途 V1|
-    |标准|Blob 存储|
-    |高级|块 Blob 存储|
+    |Standard|常规用途 V2|
+    |Standard|常规用途 V1|
+    |Standard|Blob 存储|
+    |Premium|块 Blob 存储|
 
 2. 在存储帐户中创建容器。 转到存储帐户。 在“Blob 服务”下选择“浏览 Blob”。 选择顶部的“+ 容器”以创建新容器。
 

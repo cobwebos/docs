@@ -305,46 +305,50 @@
       items:
         - name: 什么是语音助手？
           href: voice-assistants.md
-    - name: 构建助手
+    - name: 自定义命令（预览版）
       items:
-        - name: 自定义命令（预览版）
+        - name: 什么是自定义命令？
           href: custom-commands.md
-        - name: Direct Line 语音
+        - name: 快速入门
+          items:
+            - name: 创建自定义命令（预览版）
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: 创建带参数的自定义命令（预览版）
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: 借助自定义语音使用自定义命令（预览版）
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: 借助语音 SDK 使用自定义命令（预览版）
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: 操作方法指南
+          items:
+            - name: 使用语音 SDK 履行自定义命令（预览版）
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: 向自定义命令添加参数验证
+              href: how-to-custom-speech-commands-validations.md
+            - name: 向自定义命令添加确认
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: 向自定义命令添加单步更正
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line 语音
+      items:
+        - name: 什么是 Direct Line 语音？
           href: direct-line-speech.md
-    - name: 快速入门
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: Java（Windows、macOS、Linux）
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: 创建自定义命令（预览版）
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: 创建带参数的自定义命令（预览版）
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: 借助自定义语音使用自定义命令（预览版）
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: 借助语音 SDK 使用自定义命令（预览版）
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: 操作方法指南
-      items:
-        - name: 使用语音 SDK 履行自定义命令（预览版）
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: 向自定义命令添加参数验证
-          href: how-to-custom-speech-commands-validations.md
-        - name: 向自定义命令添加确认
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: 向自定义命令添加单步更正
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: 教程
-      items:
-        - name: 使用语音 SDK 为机器人启用语音
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: 资源
-      items:
-        - name: 语音助手常见问题解答
-          href: faq-voice-assistants.md
+        - name: 快速入门
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: Java（Windows、macOS、Linux）
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: 教程
+          items:
+            - name: 使用语音 SDK 为机器人启用语音
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: 资源
+          items:
+            - name: 语音助手常见问题解答
+              href: faq-voice-assistants.md
 - name: 自定义
   expanded: false
   items:

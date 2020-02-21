@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9fe17c8657b183f9f5370b6096d678e12f7d629
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647503"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472496"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Windows 故障转移群集上安装 SAP NetWeaver 高可用性，在 Azure 上安装适用于 SAP ASCS/SCS 实例的文件共享
 
@@ -199,7 +199,7 @@ ms.locfileid: "75647503"
 
 本文介绍如何在 Azure 上安装和配置高可用 SAP 系统，使用 Windows Server 故障转移群集 (WSFC) 和横向扩展文件服务器作为一个选项来群集化 SAP ASCS/SCS 实例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看以下文章：
 
@@ -268,7 +268,7 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 $UsrSAPFolder = "C:\ClusterStorage\SAP$SAPSID\usr\sap\"
 
 # Create a SAPMNT file share and set share security
-New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
+New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $true -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
@@ -299,7 +299,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一个群集节点上安装 SAP ASCS/SCS 实例。 若要安装该实例，请在 SAP SWPM 安装工具中转到：
 
-**\<产品 >**  >  **\<DBMS >**  >  > 的**应用程序服务器 ABAP** （或**Java** **） >** **/SCS 实例** ** > ** **第一个群集节点**。
+**\<产品 >**  >  **\<DBMS >**  >  > 的**应用程序服务器 ABAP** （或**Java** **） >** **/SCS 实例** ** > ** **第一个群集节点**。 > 
 
 ### <a name="add-a-probe-port"></a>添加探测端口
 

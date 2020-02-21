@@ -14,19 +14,19 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a741fd0616fc17ed133309ea6200dca43a83b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025579"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484853"
 ---
-# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和 Graph 示例
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中基于组的许可的 PowerShell 和图形示例
 
-基于组的许可的完整功能可通过 [Azure 门户](https://portal.azure.com)获得，目前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
+基于组的许可的全部功能通过[Azure 门户](https://portal.azure.com)提供，当前 PowerShell 和 Microsoft Graph 支持仅限于只读操作。 但是，可使用现有的 [MSOnline PowerShell cmdlet](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) 和 Microsoft Graph 执行一些有用的任务。 本文档提供了可执行的任务示例。
 
 > [!NOTE]
-> 开始运行 cmdlet 前，请先运行 `Connect-MsolService` cmdlet，确保连接到组织。
+> 在开始运行 cmdlet 之前，请确保先通过运行 `Connect-MsolService` cmdlet 连接到你的组织。
 
 > [!WARNING]
 > 此示例代码用于演示目的。 如果想要在环境中使用，请考虑先进行小规模的测试，或者在单独的测试租户中使用。 可能需要根据具体的环境需求调整该代码。
@@ -50,7 +50,7 @@ EMSPREMIUM
 > [!NOTE]
 > 数据被限制为产品 (SKU) 信息。 无法列出许可证中禁用的服务计划。
 
-使用以下示例从 Microsoft Graph 获取相同的数据。
+使用以下示例获取 Microsoft Graph 中的相同数据。
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
@@ -82,11 +82,11 @@ HTTP/1.1 200 OK
 
 可通过运行以下命令，查找所有已分配有任意许可证的组：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses}
+Get-MsolGroup -All | Where {$_.Licenses}
 ```
 可显示更多有关分配了哪些产品的详细信息：
 ```powershell
-Get-MsolGroup | Where {$_.Licenses} | Select `
+Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
@@ -163,7 +163,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>获取含有许可证错误的所有组
 查找组，这些组中包含一些无法为其分配许可证的用户：
 ```powershell
-Get-MsolGroup -HasLicenseErrorsOnly $true
+Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
 输出：
 ```
@@ -227,7 +227,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-使用以下示例从 Microsoft Graph 获取相同的数据：
+使用以下项从 Microsoft Graph 获取相同的数据：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -285,7 +285,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 下面是该脚本的另一个版本，它只在包含许可证错误的组中搜索。 预期有问题的组较少的情况下，这可能最适用。
 
 ```powershell
-$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+$groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
         Get-MsolUser -ObjectId {$_.ObjectId} |
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Graph 没有以直观的方式来显示结果，但可以通过此 API 进行查看：
+Graph 没有一种简单的方法来显示结果，但可以从以下 API 中查看：
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -617,7 +617,7 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> 在运行上述脚本之前，请根据测试环境更新变量 `$skuId` 和 `$groupId` 的值，这些变量用于删除直接许可证。 
+> 在运行上述脚本之前，请更新 `$skuId` 和 `$groupId` 的变量值，以根据测试环境删除直接许可证。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -628,5 +628,5 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 * [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
 * [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](../users-groups-roles/licensing-groups-change-licenses.md)
-* [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
+* [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
 * [Azure Active Directory 中基于组的许可的 PowerShell 示例](../users-groups-roles/licensing-ps-examples.md)

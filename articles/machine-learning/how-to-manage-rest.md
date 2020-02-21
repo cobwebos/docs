@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964951"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525543"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-可以通过多种方式来管理 Azure ML 资源。 可以使用[门户](https://portal.azure.com/)、[命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)。 或者，您可以选择 REST API。 REST API 以标准方式使用 HTTP 谓词来创建、检索、更新和删除资源。 REST API 适用于可发出 HTTP 请求的任何语言或工具。 REST 的简单结构通常使其成为脚本环境和 MLOps 自动化的不错选择。 
+可以通过多种方式来管理 Azure ML 资源。 可以使用[门户](https://portal.azure.com/)、[命令行接口](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)或[Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。 或者，您可以选择 REST API。 REST API 以标准方式使用 HTTP 谓词来创建、检索、更新和删除资源。 REST API 适用于可发出 HTTP 请求的任何语言或工具。 REST 的简单结构通常使其成为脚本环境和 MLOps 自动化的不错选择。 
 
 在本文中，学习如何：
 
@@ -32,7 +32,7 @@ ms.locfileid: "76964951"
 > * 使用 DELETE 请求清理资源 
 > * 使用基于密钥的授权来评分已部署的模型
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 你对其具有管理权限的**Azure 订阅**。 如果你没有订阅，请尝试[免费或付费的个人订阅](https://aka.ms/AMLFree)
 - [Azure 机器学习工作区](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -203,10 +203,10 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 |区域|路径|参考|
 |-|-|-|
-|Artifacts|项目/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|项目|项目/v2.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |数据存储|数据存储/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |超参数优化|hyperdrive/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|模型|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Models|modelmanagement/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
 |运行历史记录|执行/v1.0 1.0/和 history/v1.0/|[REST API 参考](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 您可以使用的常规模式浏览 REST API：

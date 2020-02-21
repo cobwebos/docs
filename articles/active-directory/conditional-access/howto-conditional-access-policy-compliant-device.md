@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a18f0b1f83ae02b06344c332cfdd1cc093f37fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424877"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521908"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件性访问：需要相容的设备
 
@@ -27,14 +27,14 @@ ms.locfileid: "75424877"
 * 要求最小或最大操作系统版本
 * 要求设备未越狱或取得 root 权限
 
-此策略符合性信息将转发到 Azure AD 其中条件访问可以决定是授予还是阻止对资源的访问。
+此策略符合性信息将转发到 Azure AD 其中条件访问可以决定是授予还是阻止对资源的访问。 有关设备符合性策略的详细信息，请参阅如何在[设备上设置规则以允许使用 Intune 访问组织中的资源](/intune/protect/device-compliance-get-started)
 
-## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
+## <a name="create-a-conditional-access-policy"></a>创建条件性访问策略
 
 以下步骤将帮助创建条件性访问策略，以要求将访问资源的设备标记为符合组织的 Intune 合规性策略。
 
 1. 以全局管理员、安全管理员或条件访问管理员身份登录到**Azure 门户**。
-1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
 1. 为策略指定一个名称。 建议组织为其策略名称创建有意义的标准。
 1. 在 "**分配**" 下，选择 "**用户和组**"
@@ -61,4 +61,4 @@ ms.locfileid: "75424877"
 
 [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)
 
-[设备合规性策略适用于 Azure AD](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
+[设备合规性策略适用于 Azure AD](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

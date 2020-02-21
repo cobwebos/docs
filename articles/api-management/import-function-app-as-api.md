@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442585"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209182"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -118,7 +118,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 * 主机密钥，该密钥位于 Function App 中，其名称为 apim-{*你的 Azure API 管理服务实例名称*}；
 * 命名值，该值位于 Azure API 管理实例中，其名称为 {*你的 Azure Function App 实例名称*}-key，其中包含创建的主机密钥。
 
-对于 2019 年 4 月 4 日以后创建的 API，主机密钥将通过 HTTP 请求从 API 管理传递到标头中的 Function App。 较旧的 API 将主机密钥作为[查询参数](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)传递。 可以通过对与 Function App 关联的*后端*实体进行 `PATCH Backend` [REST API 调用](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)来更改此行为。
+对于 2019 年 4 月 4 日以后创建的 API，主机密钥将通过 HTTP 请求从 API 管理传递到标头中的 Function App。 较旧的 API 将主机密钥作为[查询参数](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)传递。 可以通过对与 Function App 关联的*后端*实体进行 `PATCH Backend` [REST API 调用](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)来更改此行为。
 
 > [!WARNING]
 > 删除或更改 Azure Function App 主机密钥或 Azure API 管理命名值的值会导致服务之间的通信中断。 这些值不自动同步。

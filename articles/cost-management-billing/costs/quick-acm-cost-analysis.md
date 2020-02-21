@@ -1,21 +1,19 @@
 ---
 title: 快速入门 - 通过成本分析了解 Azure 成本 | Microsoft Docs
 description: 本快速入门可帮助你通过成本分析了解和分析 Azure 组织成本。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188646"
+ms.locfileid: "77201044"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>快速入门：通过成本分析了解和分析成本
 
@@ -64,9 +62,9 @@ ms.locfileid: "77188646"
 
 ### <a name="understand-forecast"></a>了解预测
 
-成本预测显示选定时间段的估计成本预测。 该模型基于时序回归模型。 它需要至少 10 天的最近成本和使用情况数据才能准确预测成本。 对于给定的时间段，预测模型需要使用与预测期间相同时长的训练数据。 例如，对三个月进行预测至少需要三个月的最近成本和使用情况数据。 
+成本预测显示选定时间段的估计成本预测。 该模型基于时序回归模型。 它需要至少 10 天的最近成本和使用情况数据才能准确预测成本。 对于给定的时间段，预测模型需要使用与预测期间相同时长的训练数据。 例如，对三个月进行预测至少需要三个月的最近成本和使用情况数据。
 
-该模型使用最多六个月的训练数据来预测一年的成本。 它至少需要 7 天的训练数据才会改变它的预测。 此预测基于成本和使用模式的巨大变化，例如剧增和剧减。 预测不会为“分组依据”属性中的每个项生成单独的预测。  它仅提供针对总累计成本的预测。 如果你使用多种货币，则模型仅以美元提供成本预测。 
+该模型使用最多六个月的训练数据来预测一年的成本。 它至少需要 7 天的训练数据才会改变它的预测。 此预测基于成本和使用模式的巨大变化，例如剧增和剧减。 预测不会为“分组依据”属性中的每个项生成单独的预测。  它仅提供针对总累计成本的预测。 如果你使用多种货币，则模型仅以美元提供成本预测。
 
 
 ## <a name="customize-cost-views"></a>自定义成本视图
@@ -145,7 +143,7 @@ ms.locfileid: "77188646"
 
 下表列出了一些最常见的分组和筛选选项以及使用它们的时机。
 
-| 属性 | 何时使用 | 说明 |
+| properties | 何时使用 | 说明 |
 | --- | --- | --- |
 | **可用性区域** | 按可用性区域细分 AWS 成本。 | 仅适用于 AWS 范围和管理组。 Azure 数据不包含可用性区域，会显示为“不适用”  。 |
 | **计费周期** | 将 PAYG 成本按已开票（或将开票）的月份细分。 | 使用“计费周期”  可以准确表示已开票的 PAYG 费用。 如果筛选到自定义的日期范围，请在计费周期之前和之后额外包括 2 天。 仅限确切的计费周期日期会与发票不匹配。 会显示计费周期内所有发票的成本。 使用**发票 ID** 筛选特定发票。 仅适用于 PAYG 订阅，因为 EA 和 MCA 按日历月计费。 EA/MCA 帐户可以使用日期选取器中的日历月份或每月粒度来完成同一目标。 |

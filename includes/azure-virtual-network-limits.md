@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021299"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466059"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>网络限制-Azure 资源管理器以下限制仅适用于通过**Azure 资源管理器**每个订阅的每个区域管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
 
@@ -25,8 +25,8 @@ ms.locfileid: "76021299"
 | 虚拟网络 |1,000 |
 | 每个虚拟网络的子网数 |3,000 |
 | 每个虚拟网络的虚拟网络对等互连 |500 |
-| [每个虚拟网络的虚拟网络网关（VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |第 |
-| [每个虚拟网络的虚拟网络网关（ExpressRoute 网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |第 |
+| [每个虚拟网络的虚拟网络网关（VPN 网关）](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
+| [每个虚拟网络的虚拟网络网关（ExpressRoute 网关）](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
 | 每个虚拟网络的 DNS 服务器数 |20 |
 | 每个虚拟网络的专用 IP 地址 |65,536 |
 | 每个网络接口的专用 IP 地址 |256 |
@@ -51,10 +51,13 @@ ms.locfileid: "76021299"
 #### <a name="publicip-address"></a>公共 IP 地址限制
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 公共 IP 地址数 - 动态 | 对于 Basic 为1000。 |联系支持人员。 |
-| 公共 IP 地址数 - 静态 | 对于 Basic 为1000。 |联系支持人员。 |
-| 公共 IP 地址数 - 静态 | 标准为1000。|联系支持人员。 |
+| 公共 IP 地址<sup>1</sup> | 10表示基本。 | 联系支持人员。 |
+| 静态公共 IP 地址<sup>1</sup> | 10表示基本。 | 联系支持人员。 |
+| 标准公共 IP 地址<sup>1</sup> | 10 | 联系支持人员。 |
+| 公共 IP 前缀 | 受订阅中标准公共 Ip 的数量限制 | 联系支持人员。 |
 | 公共 IP 前缀长度 | /28 | 联系支持人员。 |
+
+<sup>1</sup>公共 IP 地址的默认限制根据产品类别类型（例如免费试用、即用即付、CSP）而有所不同。 例如，企业协议订阅的默认值为1000。
 
 #### <a name="load-balancer"></a>负载均衡器限制
 以下限制仅适用于每个订阅按区域通过 Azure 资源管理器管理的网络资源。 了解如何[针对订阅限制查看当前资源使用情况](../articles/networking/check-usage-against-limits.md)。
@@ -99,5 +102,5 @@ ms.locfileid: "76021299"
 | 公共 IP 地址 (动态) |500 |500 |
 | 保留的公共 IP 地址 |500 |500 |
 | 每个部署的公共 VIP |5 |联系支持人员 |
-| 每个部署的私有 VIP （内部负载均衡） |第 |第 |
+| 每个部署的私有 VIP （内部负载均衡） |1 |1 |
 | 终结点访问控制列表（Acl） |50 |50 |

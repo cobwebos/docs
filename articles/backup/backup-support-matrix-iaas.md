@@ -3,12 +3,12 @@ title: Azure VM 备份的支持矩阵
 description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支持设置和限制摘要。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 0bc66939fc6bd150d57242f144cdb032db8188d1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425045"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468994"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -171,6 +171,7 @@ Azure VM 数据磁盘 | 备份包含16个或更少数据磁盘的虚拟机。<BR
 将磁盘添加到受保护的 VM | 支持。
 调整受保护 VM 上的磁盘大小 | 支持。
 共享存储| 不支持使用群集共享卷（CSV）或横向扩展文件服务器备份 Vm。 在备份期间，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
+[共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | 不支持。
 
 ## <a name="vm-network-support"></a>VM 网络支持
 

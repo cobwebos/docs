@@ -3,14 +3,16 @@ author: yashar
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11-20-2018
-ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 02-18-2020
+ms.openlocfilehash: aebe8f05bd1a3607da6d1153c87490891fc6b299
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005456"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471443"
 ---
+购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅[更改保留 vm 实例的优化设置](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+
 使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于同一实例大小灵活性组中的虚拟机（Vm）大小。 例如，如果购买了 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS5_v2，则预订折扣可以应用于同一实例大小灵活性组中列出的其他四种大小：
 
 - Standard_DS1_v2

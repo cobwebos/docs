@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905447"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484581"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 流分析中分析 JSON 和 Avro 数据
 
@@ -63,7 +63,7 @@ FROM input
 
 结果为：
 
-|DeviceID|Lat|Long|温度|版本|
+|设备 ID|Lat|Long|温度|版本|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -80,7 +80,7 @@ FROM input
 
 结果为：
 
-|DeviceID|Lat|Long|
+|设备 ID|Lat|Long|
 |-|-|-|
 |12345|47|122|
 
@@ -123,7 +123,7 @@ WHERE
 
 结果为：
 
-|DeviceID|SensorName|AlertMessage|
+|设备 ID|SensorName|AlertMessage|
 |-|-|-|
 |12345|湿度|警报：传感器超出阈值|
 
@@ -144,7 +144,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 结果为：
 
-|DeviceID|SensorName|AlertMessage|
+|设备 ID|SensorName|AlertMessage|
 |-|-|-|
 |12345|温度|80|
 |12345|湿度|70|
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>分析 SQL 引用数据中的 JSON 记录
+使用 Azure SQL 数据库作为作业中的引用数据时，可能会有一个数据采用 JSON 格式的列。 下面显示了一个示例。
+
+|设备 ID|data|
+|-|-|
+|12345|{"key"： "value1"}|
+|54321|{"key"： "value2"}|
+
+可以通过编写简单的 JavaScript 用户定义函数来分析*数据*列中的 JSON 记录。
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+然后，你可以在流分析查询中创建一个步骤，如下所示，访问 JSON 记录的字段。
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>数组数据类型
@@ -248,7 +280,7 @@ CROSS APPLY GetArrayElements(SensorReadings.CustomSensor03) AS CustomSensor03Rec
 |DeviceId|ArrayIndex|ArrayValue|
 |-|-|-|
 |12345|0|12|
-|12345|第|-5|
+|12345|1|-5|
 |12345|2|0|
 
 ```SQL

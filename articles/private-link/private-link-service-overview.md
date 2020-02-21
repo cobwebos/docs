@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191087"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500412"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
-Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引用。 可对在[Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)后面运行的服务启用专用链接访问，以便服务的使用者可以从其自己的 vnet 中私下访问该服务。 客户可在其 VNet 中创建专用终结点，并将其映射到此服务。 本文介绍与服务提供商端相关的概念。 
+Azure 专用链接服务是对你自己的、由 Azure 专用链接提供支持的服务的引用。 可对在[Azure 标准负载均衡器](../load-balancer/load-balancer-standard-overview.md)后面运行的服务启用专用链接访问，以便服务的使用者可以从其自己的 vnet 中私下访问该服务。 客户可在其 VNet 中创建专用终结点，并将其映射到此服务。 本文介绍与服务提供商端相关的概念。 
 
 ## <a name="workflow"></a>工作流
 
@@ -46,7 +46,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 
 专用链接服务指定以下属性： 
 
-|属性 |说明  |
+|properties |说明  |
 |---------|---------|
 |预配状态（provisioningState）  |一个只读属性，其中列出了私有链接服务的当前设置状态。 适用的预配状态为： "删除;因成功正在更新 "。 如果预配状态为 "成功"，则已成功设置专用链接服务。        |
 |别名（别名）     | 别名是服务的全局唯一的只读字符串。 它可帮助你屏蔽服务的客户数据，同时为你的服务创建一个易于共享的名称。 创建专用链接服务时，Azure 将为你的服务生成可与客户共享的别名。 你的客户可以使用此别名请求连接到你的服务。          |
@@ -98,7 +98,7 @@ Azure 专用链接服务是对由 Azure 专用链接提供支持的服务的引�
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>使用 TCP 代理 v2 获取连接信息
 
-使用专用链接服务时，来自专用终结点的数据包的源 IP 地址是服务提供商端的网络地址转换（NAT），使用从提供程序的虚拟网络分配的 NAT IP。 因此，应用程序接收分配的 NAT IP 地址，而不是服务使用者的实际源 IP 地址。 如果应用程序需要来自使用方的实际源 IP 地址，则可以在服务上启用代理协议，并从代理协议标头中检索信息。 除了源 IP 地址外，代理协议标头还携带专用终结点的 LinkID。 源 IP 地址和 LinkID 的组合可帮助服务提供商唯一标识其使用者。 有关代理协议的详细信息，请访问此处。 
+使用专用链接服务时，来自专用终结点的数据包的源 IP 地址是服务提供商端的网络地址转换（NAT），使用从提供程序的虚拟网络分配的 NAT IP。 因此，应用程序接收分配的 NAT IP 地址，而不是服务使用者的实际源 IP 地址。 如果应用程序需要来自使用方的实际源 IP 地址，则可以在服务上启用代理协议，并从代理协议标头中检索信息。 除了源 IP 地址外，代理协议标头还携带专用终结点的 LinkID。 源 IP 地址和 LinkID 的组合可帮助服务提供商唯一标识其使用者。 有关代理协议的详细信息，请访问[此处](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)。 
 
 此信息使用自定义的类型-长度-值（TLV）向量进行编码，如下所示：
 

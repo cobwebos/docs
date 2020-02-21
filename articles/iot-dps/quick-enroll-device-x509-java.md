@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4be7dc3e93b61f036a4167347a45725eff185f04
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969704"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461962"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>快速入门：使用 Java 将 X.509 设备注册到设备预配服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "74969704"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 安装 [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
 * 安装 [Maven 3](https://maven.apache.org/download.cgi)。 可以通过运行以下命令来验证当前的 Maven 版本：
@@ -149,7 +149,7 @@ ms.locfileid: "74969704"
     mvn install -DskipTests
     ```
 
-   此命令将 Maven 包 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下载到计算机。 此包包括示例代码需要生成的适用于 Java 服务 SDK 的二进制文件。 如果在上一部分运行了 _X.509 证书生成器_工具，则此包已下载到计算机上。 
+   此命令将 Maven 包 [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) 下载到计算机。 此包包括示例代码需要生成的适用于 Java 服务 SDK 的二进制文件。 如果在上一部分运行了 _X.509 证书生成器_工具，则此包已下载到计算机上。 
 
 3. 运行示例，方法是在命令窗口使用以下命令：
 

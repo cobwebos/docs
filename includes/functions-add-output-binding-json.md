@@ -4,14 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/23/2019
 ms.author: glenga
-ms.openlocfilehash: 64a1062a8b73768a334277eafb663a7d2d5dd59a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b118da6b751bc7a1e29ceef10c91dc5e9e3659c2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838961"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474207"
 ---
-直接在 function.json 文件中定义绑定属性。 根据绑定类型，可能还需要其他属性。 [队列输出配置](../articles/azure-functions/functions-bindings-storage-queue.md#output---configuration)描述 Azure 存储队列绑定所需的字段。 扩展可以轻松地将绑定添加到 function.json 文件。 
+直接在 function.json 文件中定义绑定属性。 根据绑定类型，可能还需要其他属性。 [队列输出配置](../articles/azure-functions/functions-bindings-storage-queue-output.md#configuration)描述 Azure 存储队列绑定所需的字段。 扩展可以轻松地将绑定添加到 function.json 文件。 
 
 要创建绑定，请右键单击（在 macOS 系统上，请按住 Ctrl 并单击）HttpTrigger 文件夹中的 `function.json` 文件，并选择“添加绑定...”  。请按照提示为新绑定定义以下绑定属性：
 

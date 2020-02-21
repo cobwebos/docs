@@ -371,13 +371,34 @@
         - name: 通知中心
           href: functions-bindings-notification-hubs.md
         - name: 队列存储
-          href: functions-bindings-storage-queue.md
+          items:
+            - name: 概述
+              href: functions-bindings-storage-queue.md
+            - name: 触发器
+              href: functions-bindings-storage-queue-trigger.md
+            - name: 输出
+              href: functions-bindings-storage-queue-output.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服务总线
-          href: functions-bindings-service-bus.md
+          items:
+            - name: 概述
+              href: functions-bindings-service-bus.md
+            - name: 触发器
+              href: functions-bindings-service-bus-trigger.md
+            - name: 输出
+              href: functions-bindings-service-bus-output.md
         - name: SignalR 服务
-          href: functions-bindings-signalr-service.md
+          items:
+            - name: 概述
+              href: functions-bindings-signalr-service.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-input.md
+              displayName: SignalR Service
+            - name: 概述
+              href: functions-bindings-signalr-service-output.md
+              displayName: SignalR Service
         - name: 表存储
           href: functions-bindings-storage-table.md
         - name: Timer

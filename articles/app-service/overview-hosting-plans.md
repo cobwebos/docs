@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672282"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482337"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure 应用服务计划概述
 
@@ -28,7 +28,7 @@ ms.locfileid: "74672282"
 
 - **共享计算**：“免费”和“共享”，这两个基本层在其他应用服务应用（包括其他客户的应用）所在的同一个 Azure VM 上运行应用。 这些层为共享资源中运行的每个应用分配 CPU 配额，且资源不可横向扩展。
 - **专用计算**：“基本”、“标准”、“高级”和“高级 V2”层在专用的 Azure VM 上运行应用。 只有同一应用服务计划中的应用可以共享相同的计算资源。 层越高，可用于横向扩展的 VM 实例就越多。
-- **隔离**：此层在专用的 Azure 虚拟网络上运行专用的 azure vm。 它在计算隔离之上为应用提供网络隔离。 此层提供最大的横向扩展能力。
+- **隔离**：此层在专用的 Azure 虚拟网络上运行专用的 Azure Vm。 它在计算隔离之上为应用提供网络隔离。 此层提供最大的横向扩展能力。
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -37,7 +37,7 @@ ms.locfileid: "74672282"
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/windows/sizes-general.md#dv2-series)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。 **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”层中提供的所有功能。
+> 与“标准”层相比，新的“高级 V2”层提供 [Dv2 系列 VM](../virtual-machines/dv2-dsv2-series.md)，此系列 VM 配备更快的处理器、SSD 存储以及双倍的内存核心比。 **高级 V2** 还支持通过增加实例数扩大规模，同时仍提供标准计划中的所有高级功能。 **高级 V2** 中包含现有“高级”层中提供的所有功能。
 >
 > 类似于其他专用层，以下三种 VM 大小可用于此层：
 >
@@ -51,7 +51,7 @@ ms.locfileid: "74672282"
 
 ## <a name="how-does-my-app-run-and-scale"></a>应用如何运行和缩放？
 
-在 "**免费**" 和 "**共享**" 层中，应用在共享 VM 实例上收到 CPU 分钟，并且无法横向扩展。在其他层中，应用按如下方式运行和缩放。
+在“免费”和“共享”层中，应用遵循共享 VM 实例上的 CPU 分钟配额，且不能横向扩展。在其他层中，应用按如下所述运行和缩放。
 
 在应用服务中创建某个应用时，该应用将被放入应用服务计划。 该应用运行时，将在应用服务计划中配置的所有 VM 实例上运行。 如果同一应用服务计划中包含多个应用，这些应用将共享相同的 VM 实例。 如果对某个应用使用多个部署槽位，所有部署槽位也在相同的 VM 实例上运行。 如果启用诊断日志、执行备份或运行 Web 作业，它们也会使用这些 VM 实例上的 CPU 周期和内存。
 

@@ -56,6 +56,8 @@
               href: container-registry-get-started-docker-cli.md
             - name: 推送和拉取 OCI 项目
               href: container-registry-oci-artifacts.md
+            - name: 推送和拉取 Helm 图表
+              href: container-registry-helm-repos.md
             - name: 查看存储库
               href: container-registry-repositories.md
             - name: 导入容器映像
@@ -72,8 +74,6 @@
                   href: container-registry-auto-purge.md
             - name: 使用 ACR webhook
               href: container-registry-webhook.md
-            - name: Helm 图表存储库（预览版）
-              href: container-registry-helm-repos.md
         - name: 安全性和身份验证
           items:
             - name: 使用虚拟网络限制访问（预览版）

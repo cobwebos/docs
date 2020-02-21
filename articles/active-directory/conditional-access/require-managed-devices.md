@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 66e94393bef942d7bfad41a7dccc8b651696d4af
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512583"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484513"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>如何：要求托管设备使用条件访问访问 cloud app
 
@@ -24,12 +24,16 @@ ms.locfileid: "76512583"
 
 本文介绍如何配置条件访问策略，这些策略需要托管设备才能访问环境中的某些云应用。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 需要将托管设备用于 cloud app access **Azure AD 结合使用条件访问**和**Azure AD 设备管理**。 如果尚不熟悉其中的某项功能，应该先阅读以下主题:
 
 - **[Azure Active Directory 中的条件性访问](../active-directory-conditional-access-azure-portal.md)** -本文提供了有关条件访问和相关术语的概念性概述。
 - **[Azure Active Directory 中的设备管理简介](../devices/overview.md)** - 此文章概述了可以用来将设备置于组织控制下的各种选项。 
+
+>[!NOTE] 
+> 建议使用基于 Azure AD 设备的条件性访问策略，以便在初始设备身份验证后获得最佳强制。 这包括在设备不符合和设备代码流时关闭会话。
+
 
 ## <a name="scenario-description"></a>方案描述
 

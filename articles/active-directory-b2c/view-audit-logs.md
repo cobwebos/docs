@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847753"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505621"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>访问 Azure AD B2C 审核日志
 
@@ -32,14 +32,14 @@ Azure Active Directory B2C （Azure AD B2C）会发出审核日志，其中包�
 
 审核日志中的“B2C”类别包含以下类型的活动：
 
-|活动类型 |Description  |
+|活动类型 |说明  |
 |---------|---------|
 |授权 |与访问 B2C 资源的用户授权有关的活动（例如，管理员访问 B2C 策略列表）。         |
 |目录 |当管理员使用 Azure 门户登录时，与检索到的目录属性相关的活动。 |
 |应用程序 | 在 B2C 应用程序上创建、读取、更新和删除（CRUD）操作。 |
 |密钥 |对 B2C 密钥容器中存储的密钥进行 CRUD 操作。 |
 |资源 |B2C 资源上的 CRUD 操作。 例如，策略和标识提供者。
-|身份验证 |验证用户凭据和令牌颁发。|
+|Authentication |验证用户凭据和令牌颁发。|
 
 有关用户对象 CRUD 活动，请参阅“核心目录”类别。
 
@@ -51,7 +51,7 @@ Azure 门户中的此示例图像显示用户使用外部标识提供者（在�
 
 "活动详细信息" 面板包含下列相关信息：
 
-|部分|字段|Description|
+|部分|字段|说明|
 |-------|-----|-----------|
 | 活动 | 名称 | 发生的活动。 例如，*向应用程序发出 id_token*，这将结束实际用户登录。 |
 | 发起者（参与者） | ObjectId | 用户登录到的 B2C 应用程序的**对象 ID** 。 此标识符在 Azure 门户中不可见，但可通过 Microsoft Graph API 访问。 |
@@ -88,51 +88,15 @@ Azure 门户提供对 Azure AD B2C 租户中的审核日志事件的访问。
 
 ### <a name="enable-reporting-api-access"></a>启用报表 API 访问
 
-若要允许对 Azure AD 报告 API 进行基于脚本或应用程序的访问，需要使用以下 API 权限在 Azure AD B2C 租户中注册 Azure Active Directory 应用程序：
+若要允许对 Azure AD 报告 API 进行基于脚本或应用程序的访问，需要使用以下 API 权限在 Azure AD B2C 租户中注册的应用程序。 你可以对 B2C 租户中的现有应用程序注册启用这些权限，或者创建专用于审核日志自动化的新权限。
 
-* Microsoft Graph > 应用程序权限 > 审核日志
+* Microsoft Graph > 应用程序权限 > 审核日志 > 审核日志
 
-你可以在 B2C 租户内的现有 Azure Active Directory 应用程序注册中启用这些权限，或者创建专用于审核日志自动化的新权限。
+按照以下文章中的步骤操作，以注册具有所需权限的应用程序：
 
-按照以下步骤注册应用程序，向其授予所需的 Microsoft Graph API 权限，然后创建客户端机密。
+[用 Microsoft Graph 管理 Azure AD B2C](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>在 Azure Active Directory 中注册应用程序
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>分配 API 访问权限
-
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
-
-1. 在 "**已注册的应用**概述" 页上，选择 "**设置**"。
-1. 在 " **API 访问**" 下，选择 "**所需权限**"。
-1. 选择 "**添加**"，然后**选择一个 API**。
-1. 选择 " **Microsoft Graph**"，然后**选择**""。
-1. 在 "**应用程序权限**" 下，选择 "**读取所有审核日志数据**"。
-1. 选择 "**选择**" 按钮，然后选择 "**完成**"。
-1. 选择“授予权限”，然后选择“是”。
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
-
-1. 在“管理”下选择“API 权限”。
-1. 在“已配置权限”下，选择“添加权限”。
-1. 选择 " **Microsoft api** " 选项卡。
-1. 选择“Microsoft Graph”。
-1. 选择“应用程序权限”。
-1. 展开 "**审核日志**"，然后选中 "**审核日志**" 复选框。
-1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
-1. 选择“向(租户名称)授予管理员许可”。
-1. 如果已为你分配了*全局管理员*角色，请选择你当前登录的帐户，或者使用你的 Azure AD B2C 租户中被分配了*全局管理员*角色的帐户登录。
-1. 选择“接受”。
-1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在*审核日志*权限的 "**状态**" 下。 传播权限可能需要几分钟时间。
-
-* * *
-
-### <a name="create-client-secret"></a>创建客户端密码
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-你现在已有一个应用程序，其中包含所需的 API 访问权限、一个应用程序 ID 和一个可在自动化脚本中使用的密钥。 有关如何使用脚本获取活动事件的示例，请参阅本文后面的 "PowerShell 脚本" 一节。
+使用适当的权限注册应用程序后，请参阅本文后面的 "PowerShell 脚本" 一节，了解如何使用脚本获取活动事件的示例。
 
 ### <a name="access-the-api"></a>访问 API
 
@@ -149,13 +113,14 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 可以在[Azure Cloud Shell](overview.md)中尝试此脚本。 请确保将其更新为你的应用程序 ID、客户端密钥和 Azure AD B2C 租户的名称。
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ if ($oauth.access_token -ne $null) {
 
 ## <a name="next-steps"></a>后续步骤
 
-可以自动执行其他管理任务，例如，[用 .net 管理用户](manage-user-accounts-graph-api.md)。
+你可以自动执行其他管理任务，例如，[通过 Microsoft Graph 管理 Azure AD B2C 用户帐户](manage-user-accounts-graph-api.md)。

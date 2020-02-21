@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048600"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506045"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>为你的 Azure Cosmos 帐户配置客户托管密钥，Azure Key Vault
 
@@ -61,7 +61,7 @@ ms.locfileid: "77048600"
 
    ![选择正确的权限](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. 在 "**选择主体**" 下，选择 "**未**选择"。 然后，搜索 " **Azure Cosmos DB**主体" 并将其选中。 最后，选择底部的 "**选择**"。 如果**Azure Cosmos DB**主体不在列表中，则可能需要重新注册**Microsoft DocumentDB**资源提供程序，如本文的[注册资源提供程序](#register-resource-provider)部分中所述。
+1. 在 "**选择主体**" 下，选择 "**未**选择"。 然后，搜索 " **Azure Cosmos DB**主体" 并选择它（为了更容易查找，还可以按主体 id： `a232010e-820c-4083-83bb-3ace5fc29d0b` 用于任何 azure 区域，其中，主体 id 是 `57506a73-e302-42a9-b869-6f12d9ec29e9`的 azure 政府区域除外）。 最后，选择底部的 "**选择**"。 如果**Azure Cosmos DB**主体不在列表中，则可能需要重新注册**Microsoft DocumentDB**资源提供程序，如本文的[注册资源提供程序](#register-resource-provider)部分中所述。
 
    ![选择 Azure Cosmos DB 主体](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -193,7 +193,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>使用客户管理的密钥是否需要支付额外费用？
 
-可以。 若要考虑使用客户管理的密钥管理数据加密和解密所需的额外计算负载，对 Azure Cosmos 帐户执行的所有操作都消耗25% 的[请求单位](./request-units.md)。
+是的。 若要考虑使用客户管理的密钥管理数据加密和解密所需的额外计算负载，对 Azure Cosmos 帐户执行的所有操作都消耗25% 的[请求单位](./request-units.md)。
 
 ### <a name="what-data-gets-encrypted-with-the-customer-managed-keys"></a>哪些数据是用客户管理的密钥加密的？
 

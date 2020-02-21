@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205719"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474245"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
 
@@ -48,7 +48,7 @@ ms.locfileid: "77205719"
 
 了解如何操作：
 
-- [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)。
+- [从 Azure 市场部署 Puppet](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)。
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -99,11 +99,11 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 
 了解如何操作：
 
-- [使用 Azure 安装和配置 Terraform](../articles/virtual-machines/linux/terraform-install-configure.md)。
-- [使用 Terraform 创建 Azure 基础结构](../articles/virtual-machines/linux/terraform-create-complete-vm.md)。
+- [使用 Azure 安装和配置 Terraform](../articles/terraform/terraform-install-configure.md)。
+- [使用 Terraform 创建 Azure 基础结构](../articles/terraform/terraform-create-complete-vm.md)。
 
 
-## <a name="azure-automation"></a>Azure 自动化
+## <a name="azure-automation"></a>Azure Automation
 [Azure 自动化](https://azure.microsoft.com/services/automation/)使用 Runbook 在目标 VM 上处理一组任务。 Azure 自动化用于管理现有 VM，而不是创建基础结构。 Azure 自动化可以跨 Linux 和 Windows VM 运行，还可以通过混合 Runbook 辅助角色在本地虚拟机或物理计算机上运行。 可以将 Runbook 存储在源代码管理存储库（例如 GitHub）中。 然后即可手动运行或按定义的计划运行这些 Runbook。
 
 Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对给定的一组 VM 的配置方式创建定义。 然后，DSC 就可以确保所需配置得到应用且 VM 保持一致。 Azure 自动化 DSC 可以在 Windows 和 Linux 计算机上运行。

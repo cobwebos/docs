@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025140"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524250"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>在 Batch 计算节点上运行作业准备和作业发布任务
 
@@ -58,7 +58,7 @@ Batch 作业通常需要一组通用的数据作为作业任务的输入。 例�
 > 
 
 ## <a name="job-preparation-task"></a>作业准备任务
-在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，作业准备任务将再次运行，但可以禁用此行为。
+在执行作业的任务之前，Batch 在计划运行任务的每个计算节点上执行作业准备任务。 默认情况下，Batch 服务等待作业准备任务完成，才在节点上运行计划执行的任务。 但可以将该服务配置为不要等待。 如果节点重新启动，作业准备任务将再次运行，但可以禁用此行为。 如果有作业准备任务和作业管理器任务已配置，作业准备任务在作业管理器任务之前运行，就像对所有其他任务执行任务一样。 作业准备任务始终首先运行。
 
 作业准备任务只会在计划运行任务的节点上运行。 例如，这可以防止未分配任务的节点不必要地执行准备任务， 当作业的任务数小于池中的节点数时，可能会出现这种情况。 此外，这也适用于在任务计数小于可能的并行任务总数的情况下启用[并行任务执行](batch-parallel-node-tasks.md)，从而留出一些空闲节点的情况。 不在空闲节点上运行作业准备任务可以节省数据传输费用。
 

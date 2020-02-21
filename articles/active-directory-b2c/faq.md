@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847298"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483289"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常见问题解答 (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以配置范围，从各种社交标识提供者收集更多使用者的相关信息吗？
 
-不。 一组受支持的社交标识提供者使用的默认范围是：
+不是。 一组受支持的社交标识提供者使用的默认范围是：
 
 * Facebook：电子邮件
 * Google+：电子邮件
@@ -59,7 +59,7 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>必须在 Azure 上运行应用程序才能将其与 Azure AD B2C 一起使用吗？
 
-不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的终结点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
+不，可以在任何位置（在云中或本地）托管应用程序。 只要能在公共可访问的端点上发送和接收 HTTP 请求，它就可以与 Azure AD B2C 进行交互。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>我有多个 Azure AD B2C 租户。 如何在 Azure 门户上管理它们？
 
@@ -86,15 +86,17 @@ Azure AD B2C 还支持[自定义策略](custom-policy-overview.md)。 自定义�
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>如何将我现有的用户名、密码和配置文件从数据库迁移到 Azure AD B2C？
 
-可以使用 Azure AD 图形 API 编写迁移工具。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
+可以使用 Microsoft Graph API 编写迁移工具。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Azure AD B2C 中的本地帐户使用什么密码用户流？
 
-本地帐户的 Azure AD B2C 密码用户流以 Azure AD 的策略为基础。 Azure AD B2C 的注册、注册或登录和密码重置用户流使用“强”密码强度，并且不会让任何密码过期。 有关详细信息，请阅读 [Azure AD 密码策略](/previous-versions/azure/jj943764(v=azure.100))。 有关帐户锁定和密码的信息，请参阅[管理对 Azure Active Directory B2C 中资源和数据的威胁](threat-management.md)。
+本地帐户的 Azure AD B2C 密码用户流以 Azure AD 的策略为基础。 Azure AD B2C 的注册、注册或登录和密码重置用户流使用“强”密码强度，并且不会让任何密码过期。 有关更多详细信息，请参阅[Azure Active Directory 中的密码策略和限制](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)。
+
+有关帐户锁定和密码的信息，请参阅[管理对 Azure Active Directory B2C 中资源和数据的威胁](threat-management.md)。
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect 将存储在本地 Active Directory 中的使用者标识迁移到 Azure AD B2C 吗？
 
-不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用 [Azure AD 图形 API](manage-user-accounts-graph-api.md) 进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
+不可以，Azure AD Connect 不是为与 Azure AD B2C 一起使用而设计的。 请考虑使用[MICROSOFT GRAPH API](manage-user-accounts-graph-api.md)进行用户迁移。 有关详细信息，请参阅[用户迁移指南](user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的应用是否可在 iFrame 中打开 Azure AD B2C 页？
 
@@ -134,7 +136,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 
 你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
@@ -155,7 +157,7 @@ Azure AD B2C 不适用于 SharePoint 外部合作伙伴共享的情况；请改�
 1. 在左侧菜单中选择 " **Azure Active Directory** "。
 1. 在 "**概述**" 页上，选择 "**删除目录**"。 按照屏幕上的说明完成该过程。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 以*订阅管理员身份*登录到[Azure 门户](https://portal.azure.com/)。 使用相同的工作或学校帐户或用于注册 Azure 的相同 Microsoft 帐户。
 1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。

@@ -431,53 +431,9 @@
           items:
             - name: 使用 Apache Hadoop 沙盒
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: 使用 Apache Pig
+              href: use-pig.md
         - name: 开发
-          items:
-            - name: 将 MapReduce 与 Apache Hadoop 配合使用
-              items:
-                - name: MapReduce 概述
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: 使用 SSH
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: 使用 cURL
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: 使用 Azure PowerShell
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: 使用用于 .NET 的 SDK
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: 运行 MapReduce 示例
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: 运行自定义 Apache Hadoop MapReduce 程序
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: '开发 C# 流式处理 MapReduce 程序'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: 开发 Java MapReduce 程序
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 使用 Apache Hive 作为提取、转换和加载 (ETL) 工具
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 大规模提取、转换和加载
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: 创建非交互式身份验证 .NET HDInsight 应用程序
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: 分析大数据
-              items:
-                - name: 使用 Power Query 进行分析
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: 将 Power BI 连接到交互式查询
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: 将 Power BI 连接到 Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: 将 Excel 连接到 Apache Hadoop
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: 使用 Apache Hive JDBC 驱动程序进行连接
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: 分析存储的推文
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: 使用 Apache Mahout 生成建议
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: 适用于 HDInsight 的高级分析
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: 管理
           items:
             - name: 使用空边缘节点
               href: ./hdinsight-apps-use-edge-node.md
@@ -529,6 +485,8 @@
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
             - name: WASBS 存储异常
               href: ./hadoop/troubleshoot-wasbs-storage-exception.md
+            - name: 管理磁盘空间
+              href: ./hadoop/troubleshoot-disk-space.md
 - name: Apache Kafka
   items:
     - name: 概述
@@ -884,6 +842,8 @@
           href: ./hdinsight-sync-aad-users-to-cluster.md
         - name: 使用企业安全性管理群集
           href: ./domain-joined/apache-domain-joined-manage.md
+        - name: 管理 SSH 访问权限
+          href: ./domain-joined/ssh-domain-accounts.md
         - name: 保护数据
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 故障排除

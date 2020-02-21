@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 9cacc0a1faa66e5d265f7f80830e13c54a88a68c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 4ab3bc43cf8ef479cb91d187a4c177db03415b86
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366269"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525577"
 ---
 # <a name="model-interpretability-in-automated-machine-learning"></a>自动机器学习中的模型 interpretability
 
@@ -29,7 +29,7 @@ ms.locfileid: "77366269"
 - 启用可视化效果，以帮助你查看数据和说明中的模式。
 - 在推理或评分过程中实现 interpretability。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Interpretability 功能。 运行 `pip install azureml-interpret azureml-contrib-interpret` 以获取所需的包。
 - 构建自动 ML 试验的知识。 有关如何使用 Azure 机器学习 SDK 的详细信息，请完成此[回归模型教程](tutorial-auto-train-models.md)，或了解如何[配置自动 ML 试验](how-to-configure-auto-train.md)。
@@ -89,12 +89,13 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 MimicWrapper 还获取将上传原始和工程说明的 `automl_run` 对象。
 
 ```python
-from azureml.interpret.mimic.models.lightgbm_model import LGBMExplainableModel
-from azureml.interpret.mimic_wrapper import MimicWrapper
+from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
+from azureml.explain.model.mimic_wrapper import MimicWrapper
 
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
+# Initialize the Mimic Explainer
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel,
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
-                         features=automl_explainer_setup_obj.engineered_feature_names, 
+                         features=automl_explainer_setup_obj.engineered_feature_names,
                          feature_maps=[automl_explainer_setup_obj.feature_map],
                          classes=automl_explainer_setup_obj.classes)
 ```

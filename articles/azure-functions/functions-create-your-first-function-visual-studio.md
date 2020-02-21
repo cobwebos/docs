@@ -5,12 +5,12 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 07/19/2019
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 6d09453db0fdf8c09ad6d90c63b27f48508302be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b343adeed5abeecdf55f71f8bc4298659a106e09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230712"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198388"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>使用 Visual Studio 创建你的第一个函数
 
@@ -20,7 +20,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ![浏览器中的函数 localhost 响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 确保还安装了 **Azure 开发**工作负荷。
 
@@ -32,7 +32,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 方法中的 `FunctionName` 属性设置函数的名称，默认情况下为 `HttpTrigger`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
+Visual Studio 将创建一个项目和一个包含 HTTP 触发器函数类型样本代码的类。 方法中的 `FunctionName` 属性设置函数的名称，默认情况下为 `Function1`。 `HttpTrigger` 属性指定该函数将由某个 HTTP 请求触发。 样本代码发送 HTTP 响应，其中包含请求正文或查询字符串中的值。
 
 通过将适当的属性应用于方法，可以使用输入和输出绑定来扩展函数的功能。 有关详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)的[触发器和绑定](functions-dotnet-class-library.md#triggers-and-bindings)部分。
 

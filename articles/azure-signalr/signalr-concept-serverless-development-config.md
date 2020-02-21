@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786769"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523164"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>通过 Azure SignalR 服务 Azure Functions 开发和配置
 
@@ -31,8 +31,8 @@ Azure Functions 应用程序可以利用[Azure SignalR 服务绑定](../azure-fu
 
 使用 Azure Functions 和 Azure SignalR 服务构建的无服务器实时应用程序通常需要两个 Azure Functions：
 
-* "协商" 函数，客户端调用该函数以获取有效的 SignalR 服务访问令牌和服务终结点 URL
-* 用于发送消息或管理组成员身份的一个或多个函数
+* 一个“negotiate”函数，客户端调用该函数可获取有效的 SignalR 服务访问令牌和服务终结点 URL
+* 一个或多个用于发送消息或管理组成员身份的函数
 
 ### <a name="negotiate-function"></a>negotiate 函数
 
@@ -40,7 +40,7 @@ Azure Functions 应用程序可以利用[Azure SignalR 服务绑定](../azure-fu
 
 使用 HTTP 触发的 Azure 函数和*SignalRConnectionInfo*输入绑定生成连接信息对象。 函数必须具有以 `/negotiate`结尾的 HTTP 路由。
 
-有关如何创建 negotiate 函数的详细信息，请参阅[ *SignalRConnectionInfo*输入绑定引用](../azure-functions/functions-bindings-signalr-service.md#input)。
+有关如何创建 negotiate 函数的详细信息，请参阅[ *SignalRConnectionInfo*输入绑定引用](../azure-functions/functions-bindings-signalr-service-input.md)。
 
 若要了解如何创建经过身份验证的令牌，请参阅[使用应用服务身份验证](#using-app-service-authentication)。
 
@@ -50,7 +50,7 @@ Azure Functions 应用程序可以利用[Azure SignalR 服务绑定](../azure-fu
 
 用户可以添加到一个或多个组。 还可以使用*SignalR*输出绑定在组中添加或删除用户。
 
-有关详细信息，请参阅[ *SignalR*输出绑定引用](../azure-functions/functions-bindings-signalr-service.md#output)。
+有关详细信息，请参阅[ *SignalR*输出绑定引用](../azure-functions/functions-bindings-signalr-service-output.md)。
 
 ### <a name="signalr-hubs"></a>SignalR 中心
 
@@ -82,7 +82,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 有关如何使用 SignalR 客户端 SDK 的详细信息，请参阅适用于你的语言的文档：
 
-* [.NET 标准](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
+* [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
 * [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
@@ -100,7 +100,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 JavaScript/TypeScript 客户端向 negotiate 函数发出 HTTP 请求，以启动连接协商。 如果客户端应用程序承载于 Azure Function app 以外的域中，则必须在 Function app 上启用跨域资源共享（CORS），否则，浏览器会阻止请求。
 
-#### <a name="localhost"></a>主机
+#### <a name="localhost"></a>Localhost
 
 在本地计算机上运行函数应用时，可以将 `Host` 部分添加到*本地。设置*为启用 CORS。 在 `Host` 部分中，添加两个属性：
 

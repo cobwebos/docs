@@ -3,33 +3,39 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 02/12/2020
 ms.author: marsma
-ms.openlocfilehash: 43bcd1f11eb228bd1454b2ad0f2addb851029f2f
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e5201dfee83ec5360e55533e923e2b55c24c09d9
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799643"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77492924"
 ---
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
-1. 在“已注册的应用”概述页上，选择“设置”。
-1. 在“API 访问”下，选择“所需的权限”。
-1. 选择“Windows Azure Active Directory”。
-1. 在**应用程序权限**下，选择“读取和写入目录数据”。
+1. 在 "**已注册的应用**概述" 页上，选择 "**设置**"。
+1. 在 " **API 访问**" 下，选择 "**所需权限**"。
+1. 选择“Microsoft Graph”。
+1. 在 "**应用程序权限**" 下，选中要授予你的管理应用程序的权限的复选框。 例如：
+    * **读取所有审核日志数据**：选择此权限以读取目录的审核日志。
+    * **读取和写入目录数据**：为用户迁移或用户管理方案选择此权限。
+    * **读取和写入组织的信任框架策略**：为持续集成/持续交付（CI/CD）方案选择此权限。 例如，具有 Azure Pipelines 的自定义策略部署。
 1. 选择“保存”。
-1. 选择“授予权限”，然后选择“是”。 可能需要几分钟才能完全传播权限。
+1. 选择“授予权限”，然后选择“是”。 权限完全传播可能需要几分钟的时间。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 在 "**管理**" 下，选择 " **API 权限**"。
-1. 在 "**配置的权限**" 下，选择 "**添加权限**"。
-1. 选择**Azure Active Directory 关系图**。
+1. 在“管理”下选择“API 权限”。
+1. 在“已配置权限”下，选择“添加权限”。
+1. 选择 " **Microsoft api** " 选项卡，然后选择 " **Microsoft Graph**"。
 1. 选择“应用程序权限”。
-1. 展开 "**目录**"，然后选中 "**全部**" 复选框。
-1. 选择“添加权限”。 按照指示，请等待几分钟，然后再继续下一步。
-1. 选择 "**授予管理员同意（你的租户名称）** "。
-1. 选择租户管理员帐户。
+1. 展开相应的权限组，然后选中要授予管理应用程序的权限的复选框。 例如：
+    * **审核日志** > **审核日志**：用于读取目录的审核日志。
+    * **Directory** > **directory. ReadWrite**：用于用户迁移或用户管理方案。
+    * **策略** > **TrustFramework**：用于持续集成/持续交付（CI/CD）方案。 例如，具有 Azure Pipelines 的自定义策略部署。
+1. 选择“添加权限”。 按照指示等待几分钟，然后继续下一步。
+1. 选择“向(租户名称)授予管理员许可”。
+1. 选择当前登录的管理员帐户，或者使用至少分配了“云应用程序管理员”角色的 Azure AD B2C 租户中的帐户登录。
 1. 选择“接受”。
 1. 选择 "**刷新**"，然后验证 "授权给 ..."显示在 "**状态**" 下。 传播权限可能需要几分钟时间。

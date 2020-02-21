@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212300"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498375"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 中重新生成索引认知搜索
 
@@ -33,7 +33,7 @@ ms.locfileid: "77212300"
 | 向字段分配分析器 | [分析器](search-analyzers.md)是在索引中定义的，然后分配给字段。 随时都可以向索引添加新的分析器定义，但只有在创建字段时才能分配分析器。 对于 **analyzer** 和 **indexAnalyzer** 属性都是如此。 **searchAnalyzer** 属性是一个例外（可以向现有字段分配此属性）。 |
 | 更新或删除索引中的分析器定义 | 无法删除或更改索引中的现有分析器配置（分析器、tokenizer、令牌筛选器或字符筛选器），除非重新生成整个索引。 |
 | 将字段添加到建议器 | 如果某个字段已存在，并且希望将其添加到[建议器](index-add-suggesters.md)构造，则必须重新生成索引。 |
-| 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成无法实现时，可以修改应用程序代码来禁止访问“已删除”字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
+| 删除字段 | 若要以物理方式删除字段的所有跟踪，必须重新生成索引。 当即时重新生成不可行时，你可以修改应用程序代码以禁用对 "已删除" 字段的访问，或使用[$select 查询参数](search-query-odata-select.md)选择在结果集中表示的字段。 实际上，当你应用省略了相关字段的架构时，字段定义和内容会一直保留在索引中，直至下次重新生成。 |
 | 切换层 | 如果需要更多容量，Azure 门户中没有就地升级。 必须创建新的服务，而且必须在新服务上从头开始构建索引。 若要帮助自动执行此过程，你可以使用此[Azure 认知搜索 .net 示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)存储库中的**索引备份-还原**示例代码。 此应用将索引备份到一系列 JSON 文件，然后在指定的搜索服务中重新创建该索引。|
 
 ## <a name="update-conditions"></a>更新条件
@@ -52,9 +52,11 @@ ms.locfileid: "77212300"
 
 ## <a name="how-to-rebuild-an-index"></a>如何重新生成索引
 
-在开发过程中，索引架构经常更改。 可以通过创建可以删除、重新创建的索引，并使用小型代表性数据集快速重新加载索引来规划。 
+在开发过程中，索引架构经常更改。 可以通过创建可以删除、重新创建的索引，并使用小型代表性数据集快速重新加载索引来规划。
 
 对于已投入生产的应用程序，建议创建一个与现有索引并排运行的新索引，以避免查询时停机。 应用程序代码提供到新索引的重定向。
+
+索引不在后台运行，并且服务将针对正在进行的查询平衡额外的索引。 在编制索引期间，你可以在门户中[监视查询请求](search-monitor-queries.md)，以确保查询及时完成。
 
 1. 确定是否需要重新生成。 如果只是添加字段或更改与字段无关的部分索引，则可以只[更新定义](https://docs.microsoft.com/rest/api/searchservice/update-index)，而无需删除、重新创建和完全重新加载它。
 
@@ -78,6 +80,10 @@ ms.locfileid: "77212300"
 ## <a name="check-for-updates"></a>检查更新
 
 在加载第一个文档时就可以开始查询索引。 如果你知道文档的 ID，那么[查找文档 REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) 将返回特定的文档。 对于更大型的测试，应该等待索引完全加载，然后使用查询来验证你想看到的上下文。
+
+可以使用[搜索资源管理器](search-explorer.md)或 Web 测试工具（如[Postman](search-get-started-postman.md) ）检查更新的内容。
+
+如果添加或重命名了字段，请使用[$select](search-query-odata-select.md)返回该字段： `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>另请参阅
 

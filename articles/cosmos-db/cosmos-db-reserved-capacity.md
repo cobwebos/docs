@@ -4,15 +4,15 @@ description: 了解如何购买 Azure Cosmos DB 预留容量以节省计算成�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367697"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505964"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
@@ -30,7 +30,9 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>在购买之前确定所需吞吐量
 
-预留大小基于现有的或即将部署的 Azure Cosmos DB 资源将使用的吞吐量总量。 您可以使用以下步骤在 Azure 门户中查看推荐的保留大小：
+保留容量购买的大小应基于现有或即将部署 Azure Cosmos DB 资源每小时将使用的总吞吐量量（以小时为单位）。 例如：购买 30000 RU/s 保留容量（如果这是你的每小时使用模式）。 在此示例中，将使用即用即付费率对超过 30000 RU/s 的任何预配吞吐量进行计费。 如果在一小时内预配的吞吐量低于 30000 RU/秒，则该小时的额外预留容量将会浪费。
+
+我们根据你的每小时使用情况模式计算购买建议。 会分析过去7、30和60天的使用情况，并购买保留容量购买，建议你节省费用。 您可以使用以下步骤在 Azure 门户中查看推荐的保留大小：
 
 1. 登录 [Azure 门户](https://portal.azure.com)。  
 
@@ -46,7 +48,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 - **计费频率**（月度或前期）
 - **吞吐量类型**（RU 的 vs 多主机 RU）
 
-此外，你可以将建议范围限定在单个资源组、单个订阅或整个 Azure 注册中。 你可以根据过去7天、30天或60天的使用情况显示建议。
+此外，你可以将建议范围限定在单个资源组、单个订阅或整个 Azure 注册中。 
 
 下面是一个示例建议：
 

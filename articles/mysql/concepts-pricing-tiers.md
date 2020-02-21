@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc538b55e31a4c133da1bc2f7ecc32b5fada6399
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 10eacb9cc1ca4641396212ec9564308d7ef74c3a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210391"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484666"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL 定价层
 
@@ -23,7 +23,6 @@ ms.locfileid: "77210391"
 | vCore 数 | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | 每个 vCore 的内存 | 2 GB | 5 GB | 10 GB |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
 | 数据库备份保留期 | 7 到 35 天 | 7 到 35 天 | 7 到 35 天 |
 
 可以从下表着手来选择定价层。
@@ -46,7 +45,7 @@ ms.locfileid: "77210391"
 
 |    | **基本** | **常规用途** | **内存优化** |
 |:---|:----------|:--------------------|:---------------------|
-| 存储类型 | Azure 标准存储 | Azure 高级存储 | Azure 高级存储 |
+| 存储类型 | 基本存储 | 常规用途存储 | 常规用途存储 |
 | 存储大小 | 5 GB 到 1 TB | 5 GB 到 16 TB | 5 GB 到 16 TB |
 | 存储增量大小 | 1 GB | 1 GB | 1 GB |
 | IOPS | 变量 |3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS | 3 IOPS/GB<br/>至少 100 IOPS<br/>最大 20000 IOPS |

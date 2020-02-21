@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
 ms.author: diberry
-ms.openlocfilehash: fa0537b4009cf38b95cedff93850e5dac61baf34
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772381"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372224"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 预测客户端库可以：
 
@@ -43,7 +43,7 @@ ms.locfileid: "76772381"
 
 使用操作系统的说明。
 
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
@@ -52,7 +52,7 @@ setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
 
 添加环境变量后，请重启控制台窗口。
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
@@ -61,7 +61,7 @@ export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
 
 添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 编辑 `.bash_profile`，然后添加环境变量：
 

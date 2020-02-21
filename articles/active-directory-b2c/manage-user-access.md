@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840428"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484105"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -46,7 +46,7 @@ ms.locfileid: "76840428"
 
 下面是收集家长同意的用户流示例：
 
-1. [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
+1. [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api)操作将用户标识为次用户，并以无符号 JSON 令牌的形式将用户数据返回到应用程序。
 
 2. 应用程序处理 JSON 令牌并显示一个小屏幕，通知他们需要家长同意并请求家长联机的许可。
 
@@ -54,9 +54,9 @@ ms.locfileid: "76840428"
 
 4. 应用程序提供一个选项让未成年人撤消同意。
 
-5. 未成年人或成人撤消同意时，可以使用 Azure AD 图形 API 将 **consentProvidedForMinor** 更改为 **denied**。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
+5. 当次要或成年人撤消许可时，可以使用 Microsoft Graph API 将**consentProvidedForMinor**更改为 "已**拒绝**"。 或者，应用程序可以选择删除已撤消其同意的未成年人。 可以选择性地自定义用户流，让经过身份验证的未成年人（或使用未成年人帐户的家长）撤消同意。 Azure AD B2C 将 **consentProvidedForMinor** 记录为 **denied**。
 
-有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Azure AD 图形 API 解决扩展属性时，必须使用长版本的属性，例如 *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*。
+有关 **legalAgeGroupClassification**、**consentProvidedForMinor** 和 **ageGroup** 的详细信息，请参阅[用户资源类型](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user)。 有关自定义属性的详细信息，请参阅[使用自定义属性来收集有关用户的信息](user-flow-custom-attributes.md)。 使用 Microsoft Graph API 处理扩展属性时，必须使用属性的长版本，如*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*： *01T00：00： 00Z*。
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>收集出生日期和国家/地区数据
 
@@ -70,9 +70,9 @@ ms.locfileid: "76840428"
 
 2. 如果 country 元素中存在 **MinorConsent** 节点：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 计算用户必须在哪个日期出生，才能将其视为成年人。 例如，如果当前日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则出生日期必须晚于 2000 年 3 月 14。
+    a. 计算用户必须在哪个日期出生，才能将其视为成年人。 例如，如果当前日期为 2015 年 3 月 14 日，**MinorConsent** 为 18，则出生日期必须晚于 2000 年 3 月 14。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
+    b. 将最小出生日期与实际出生日期相比较。 如果最小出生日期在用户的实际出生日期之前，则计算会返回 **Minor** 作为年龄组计算结果。
 
 3. 如果 country 元素中存在 **MinorNoConsentRequired** 节点，请使用 **MinorNoConsentRequired** 中的值重复步骤 2a 和 2b。 如果最小出生日期在用户的实际出生日期之前，则 2b 的输出将返回 **MinorNoConsentRequired**。
 

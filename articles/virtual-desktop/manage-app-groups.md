@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8469b54afe01d9ee42dda8cf99f2f0125a4a1982
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679452"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367317"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>教程：管理 Windows 虚拟桌面的应用组
 
@@ -24,7 +24,7 @@ ms.locfileid: "71679452"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)，以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)，以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

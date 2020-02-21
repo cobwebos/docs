@@ -1,21 +1,20 @@
 ---
 title: 通过 Azure 成本管理优化云投资 | Microsoft Docs
 description: 本文有助于最大程度利用云投资、减少成本以及对资金使用情况进行评估。
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988378"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201061"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>如何通过 Azure 成本管理优化云投资
 
@@ -85,20 +84,20 @@ Azure 提供了有助于评估过程的工具。 借助这些工具，可以充�
 
 要详细了解各种选项，请访问[如何购买 Azure](https://azure.microsoft.com/pricing/purchase-options/)。 以下列出了几种最常见的计费模型。
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[免费](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[免费](https://azure.microsoft.com/free/)
 
 - 12 个月的热门免费服务
 - 200 美元额度，用于在 30 天内探索各种服务
 - 超过 25 种服务永久免费
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - 无最低限额或承诺使用量
 - 有竞争力的定价
 - 只需为使用的服务付费
 - 随时可以取消
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[企业协议](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - 可选择预先货币承诺付款
 - 可享受 Azure 价格优惠

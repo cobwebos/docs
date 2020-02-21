@@ -1,23 +1,21 @@
 ---
 title: 了解和使用 Azure 成本管理范围
 description: 本文帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 API 中使用范围。
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/17/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 58bd1d3e3fb27344706b23866a68c7e1363e7ec2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5e7d01c5383898fb14f57188cd1bee7ea64e8263
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990133"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200959"
 ---
-# <a name="understand-and-work-with-scopes"></a>了解和使用范围
+# <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
 本文帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 API 中使用范围。
 

@@ -2,22 +2,17 @@
 title: 获取 Microsoft 合作伙伴协议 (MPA) 的 Azure 订阅的计费所有权
 description: 了解如何从其他用户请求 Azure 订阅的计费所有权。
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/13/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 8e272267ffc8dd2946a390470df78b179ebbdf92
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048205"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199647"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>获取 MPA 帐户的 Azure 订阅的计费所有权
 

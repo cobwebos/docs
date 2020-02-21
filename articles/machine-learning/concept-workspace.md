@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169792"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505571"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -70,13 +70,16 @@ ms.locfileid: "77169792"
 
 你还可以执行以下工作区管理任务：
 
-| 工作区管理任务   | 门户              | Studio | Python SDK/R SDK       | CLI        |
+| 工作区管理任务   | 门户              | 工作室 | Python SDK/R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
 | 创建工作区        | **&check;**     | | **&check;** | **&check;** |
 | 管理工作区访问    | **&check;**   || |  **&check;**    |
 | 升级到 Enterprise edition    | **&check;** | **&check;**  | |     |
 | 创建和管理计算资源    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | 创建笔记本 VM |   | **&check;** | |     |
+
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
 
 ## <a name='create-workspace'></a>创建工作区
 

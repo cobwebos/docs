@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513841"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469130"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -64,6 +64,7 @@ Azure VM 代理可能已停止、过时、处于不一致的状态，或者未�
 
 - 如果对恢复点资源组锁定会阻止自动清理恢复点，则会出现此问题。
 - 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只进行一次备份，因为在任何给定时间，即时还原点将保留1-5 天，而每个配置的快照保留期只能与 VM 相关联。 <br>
+- VM 的还原点集合和资源组间的还原点数量不能超过18个。 若要创建新的还原点，请删除现有的还原点。
 
 建议的操作：<br>
 若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
@@ -229,7 +230,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。
+2. 转到“所有资源选项”，选择采用 AzureBackupRG_ **_** 格式的还原点集合资源组。`<Geo>``<number>`
 3. 在“设置”部分，选择“锁”以显示锁。
 4. 若要删除锁，请选择省略号，然后单击“删除”。
 
@@ -258,7 +259,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 若要手动清除由于资源组上的锁定而未清除的还原点集合，请尝试执行以下步骤：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_`<Geo>`_`<number>` 格式的资源组。
+2. 在“中心”菜单中单击“所有资源”，选择 VM 所在的、采用 AzureBackupRG_ **_** 格式的资源组。`<Geo>``<number>`
 
     ![删除锁](./media/backup-azure-arm-vms-prepare/resource-group.png)
 

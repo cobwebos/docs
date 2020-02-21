@@ -3,12 +3,12 @@ title: 快速入门 - 创建适用于 Azure 的 Terraform 配置
 description: 通过部署 Azure Cosmos DB 和 Azure 容器实例开始使用 Azure 上的 Terraform。
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159309"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470015"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>快速入门：创建适用于 Azure 的 Terraform 配置
 
@@ -23,7 +23,7 @@ ms.locfileid: "74159309"
 
 在本部分中，请为 Azure Cosmos DB 实例创建配置。
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
 1. 打开 Azure Cloud Shell。
 
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [安装并配置 Terraform 以预配 Azure 资源](../virtual-machines/linux/terraform-install-configure.md)。
+> [安装并配置 Terraform 以预配 Azure 资源](terraform-install-configure.md)。

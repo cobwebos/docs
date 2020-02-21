@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024171"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498493"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中查看 Azure AD 角色的审核历史记录
 
@@ -32,9 +32,9 @@ ms.locfileid: "77024171"
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 角色的用户登录到[Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 按照以下步骤查看 Azure AD 角色的审核历史记录。
 
@@ -50,7 +50,7 @@ ms.locfileid: "77024171"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![包含筛选器的资源审核列表](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![包含筛选器的资源审核列表](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>查看我的审核
 
@@ -66,15 +66,15 @@ ms.locfileid: "77024171"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![当前用户的审核列表](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![当前用户的审核列表](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
+# <a name="previous-version"></a>[先前版本](#tab/previous)
 
 ## <a name="view-audit-history"></a>查看审核历史记录
 
 按照以下步骤查看 Azure AD 角色的审核历史记录。
 
-1. 使用[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色成员用户的身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用[特权角色管理员](https://portal.azure.com/)角色成员用户的身份登录到 [Azure 门户](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
@@ -88,14 +88,14 @@ ms.locfileid: "77024171"
 
     在页面的底部，会显示一个表，其中包含有关可用审核历史记录中每个操作的信息。 列具有以下含义：
 
-    | 柱形图​​ | Description |
+    | 列 | 说明 |
     | --- | --- |
     | 时间 | 操作发生时。 |
     | 者 | 请求角色激活或更改的用户。 如果值为**Azure 系统**，请查看 azure 审核历史记录以了解详细信息。 |
-    | 行动 | 请求程序执行的操作。 操作可包括分配、取消分配、激活、停用或 AddedOutsidePIM。 |
+    | 操作 | 请求程序执行的操作。 操作可包括分配、取消分配、激活、停用或 AddedOutsidePIM。 |
     | 成员 | 激活或分配给角色的用户。 |
     | 角色 | 用户分配或激活的角色。 |
-    | 推论 | 激活过程中在 "原因" 字段中输入的文本。 |
+    | 背后 | 激活过程中在 "原因" 字段中输入的文本。 |
     | 过期时间 | 当激活的角色过期时。 仅适用于符合条件的角色分配。 |
 
 1. 若要对审核历史记录进行排序，请单击 "**时间**"、"**操作**" 和 "**角色**" 按钮。

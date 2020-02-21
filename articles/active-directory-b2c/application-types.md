@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8c98149d9e9ff65b7b18762f0f17d19053f2f49
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ec97f986c4472f793c2d38ded2a1c6873b1ee08d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846752"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482779"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在 Active Directory B2C 中使用的应用程序类型
 
 Azure Active Directory B2C （Azure AD B2C）支持多种新式应用程序体系结构的身份验证。 所有这些体系结构都以行业标准协议 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 为基础。 本文介绍了你可以构建的应用程序类型，这些类型与你喜欢的语言或平台无关。 在开始构建应用程序之前，不妨从中了解一些高级方案。
 
-必须通过 [Azure 门户](https://portal.azure.com/)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](tutorial-create-tenant.md)中。 应用程序注册过程将收集和分配一些值，例如：
+必须通过 [Azure 门户](tutorial-create-tenant.md)将使用 Azure AD B2C 的每个应用程序注册到 [Azure AD B2C 租户](https://portal.azure.com/)中。 应用程序注册过程将收集和分配一些值，例如：
 
 * 用于唯一标识应用程序的应用程序 ID。
 * 可用于将响应定向回应用程序的**回复 URL**。
@@ -125,7 +125,7 @@ Web API 可从许多类型的客户端（包括 Web 应用程序、桌面和移�
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 链（代理流）
 
-许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft online 服务（例如 Microsoft Graph API 或 Azure AD 图形 API）。
+许多体系结构包含需要调用另一个下游 Web API 的 Web API，这两者都受 Azure AD B2C 的保护。 此方案常见于具有 Web API 后端的本机客户端，并调用 Microsoft online 服务，例如 Microsoft Graph API。
 
 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为“代理流”）来支持这种链接的 Web API 方案。  但是，Azure AD B2C 中目前尚未实现代理流。
 

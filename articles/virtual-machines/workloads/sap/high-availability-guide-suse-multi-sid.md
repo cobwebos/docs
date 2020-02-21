@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: radeltch
-ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e48cb1baa515e6a1549bf913a3c3e4cf50e1fff6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314192"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525475"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南
 
@@ -83,7 +83,7 @@ ms.locfileid: "76314192"
 * [适用于 Linux 上的 SAP 的 Azure 虚拟机 DBMS 部署][dbms-guide]
 * [SUSE SAP HA 最佳实践指南][suse-ha-guide]本指南包含在本地设置 Netweaver HA 和 SAP HANA 系统复制所需的所有信息。 请使用上述指南作为常规基准。 它们提供更多详细信息。
 * [SUSE 高可用性扩展 12 SP3 发行说明][suse-ha-12sp3-relnotes]
-* [针对多 SID 群集的 SUSE 支持](https://www.suse.com/c/sap-workloads-going-green/)
+* [适用于 SLES 12 和 SLES 15 的 SUSE 多 SID 群集指南](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
 
 ## <a name="overview"></a>概述
 
@@ -117,13 +117,13 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 为每个实例创建一个实例，即 NW1/ASCS、NW2/ASCS 和 NW3/ASCS。
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 36&lt;nr&gt; TCP
-    * 39&lt;nr&gt; TCP
-    * 81&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 36<strong>nr&lt; TCP&gt;</strong>
+    * 39<strong>nr&lt; TCP&gt;</strong>
+    * 81<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ### <a name="ers"></a>ERS
 
@@ -138,11 +138,11 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 负载均衡规则-为每个实例创建一个规则，即 NW1/ERS、NW2/ERS 和 NW3/ERS。
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 33&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 33<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 
 > [!Note]
@@ -175,7 +175,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2。
 
-### <a name="prerequisites"></a>必备组件 
+### <a name="prerequisites"></a>必备条件 
 
 > [!IMPORTANT]
 > 在按照说明在群集中部署其他 SAP 系统之前，请按照说明在群集中部署第一个 SAP 系统，因为在第一次部署系统的过程中，只需要执行一些步骤。  

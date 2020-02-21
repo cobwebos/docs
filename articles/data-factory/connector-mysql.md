@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 03f8bffafe9ebfd95d439f920a5e00be27810c96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444227"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471153"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 复制数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,20 +32,18 @@ ms.locfileid: "75444227"
 
 以下活动支持此 MySQL 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 MySQL 数据库复制到任何支持的接收器数据存储。 有关复制活动支持作为源/接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
 具体而言，此 MySQL 连接器支持 5.6 和5.7 版本的 MySQL。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 集成运行时提供内置 MySQL 驱动程序（从版本 3.7 开始），因此无需手动安装任何驱动程序。
-
-对于低于 3.7 的自承载 IR 版本，需要在集成运行时计算机上安装[适用于 Microsoft Windows 的 MySQL 连接器/Net](https://dev.mysql.com/downloads/connector/net/)（6.6.5 和 6.10.7 之间的版本）。 此32位驱动程序与64位 IR 兼容。
 
 ## <a name="getting-started"></a>入门
 
@@ -57,18 +55,18 @@ ms.locfileid: "75444227"
 
 MySQL 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**MySql** | 是 |
 | connectionString | 指定连接到 Azure Database for MySQL 实例所需的连接信息。<br/> 还可以将密码放在 Azure 密钥保管库中，并从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅以下示例和[在 Azure 密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 | 是 |
-| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
+| connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |是 |
 
 典型的连接字符串为 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 你可以根据自己的情况设置更多属性：
 
-| 属性 | Description | 选项 | 需要 |
+| 属性 | 说明 | Options | 必需 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
-| UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如， `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 否 |
+| SSLMode | 此选项指定驱动程序在连接到 MySQL 时是否使用 SSL 加密和验证。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(Default)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 是 |
+| UseSystemTrustStore | 此选项指定是使用系统信任存储中的 CA 证书还是使用指定 PEM 文件中的 CA 证书。 例如 `UseSystemTrustStore=<0/1>;`| Enabled (1) / Disabled (0) **(Default)** | 是 |
 
 **示例：**
 
@@ -146,7 +144,7 @@ MySQL 链接的服务支持以下属性：
 
 若要从 MySQL 复制数据，支持以下属性：
 
-| 属性 | Description | 需要 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **MySqlTable** | 是 |
 | tableName | MySQL 数据库中的表名。 | 否（如果指定了活动源中的“query”） |
@@ -179,7 +177,7 @@ MySQL 链接的服务支持以下属性：
 
 若要从 MySQL 复制数据，复制活动**源**部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| 属性 | 说明 | 必需 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **MySqlSource** | 是 |
 | query | 使用自定义 SQL 查询读取数据。 例如：`"SELECT * FROM MyTable"`。 | 否（如果指定了数据集中的“tableName”） |

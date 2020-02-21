@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867163"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524233"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes 服务 (AKS) 的服务主体
 
@@ -70,6 +70,9 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!NOTE]
+> 如果使用的是具有自定义机密的现有服务主体，请确保密码长度不超过190个字节。
+
 如果使用 Azure 门户来部署 AKS 群集，请在“创建 Kubernetes 群集”对话框的“身份验证”页上选择“配置服务主体”。 选择“使用现有”并指定以下值：
 
 - **服务主体客户端 ID** 是你的 *appId*
@@ -95,20 +98,20 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 如果使用 Azure 容器注册表（ACR）作为容器映像存储，则需要向 AKS 群集的服务主体授予权限以读取和提取映像。 目前，建议的配置是使用[az aks create][az-aks-create]或[az aks update][az-aks-update]命令与注册表集成，并为服务主体分配相应的角色。 有关详细步骤，请参阅通过 azure[容器注册表从 Azure Kubernetes 服务进行身份验证][aks-to-acr]。
 
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 
 可以使用高级网络，在该网络中，虚拟网络和子网或公共 IP 地址位于另一资源组中。 分配下列角色权限集之一：
 
 - 创建[自定义角色][rbac-custom-role]并定义以下角色权限：
   - *Microsoft.Network/virtualNetworks/subnets/join/action*
   - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *VirtualNetworks/子网/写入*
   - *Microsoft.Network/publicIPAddresses/join/action*
   - *Microsoft.Network/publicIPAddresses/read*
   - *Microsoft.Network/publicIPAddresses/write*
 - 或者，将[网络参与者][rbac-network-contributor]内置角色分配到虚拟网络中的子网上
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 
 可能需要访问另一资源组中的现有磁盘资源。 分配下列角色权限集之一：
 

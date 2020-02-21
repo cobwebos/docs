@@ -79,35 +79,94 @@
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM 类型和大小
       items:
-        - name: 大小系列
+        - name: VM 大小
           href: sizes.md
         - name: 第 2 代 VM
           href: generation-2.md
         - name: 常规用途
-          href: sizes-general.md
           items:
+            - name: 概述
+              href: ../sizes-general.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Av2 系列
+              href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B 系列可突增
-              href: b-series-burstable.md
+              href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: DC 系列
+              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列
+              href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv3 和 Dsv3 系列
+              href: ../dv3-dsv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dav4 和 Dasv4 系列
+              href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 计算优化
-          href: sizes-compute.md
-        - name: 内存优化
-          href: sizes-memory.md
           items:
+            - name: 概述
+              href: ../sizes-compute.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Fsv2 系列
+              href: ../fsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+        - name: 内存优化
+          displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
+          items:
+            - name: 概述
+              href: ../sizes-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Dv2 和 DSv2 系列 11-15
+              href: ../dv2-dsv2-series-memory.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Ev3 和 Esv3 系列
+              href: ../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Eav4 和 Easv4 系列
+              href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: M 系列
+              href: ../m-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Mv2 系列
+              href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 约束的 vCPU
               href: constrained-vcpu.md
         - name: 存储优化
-          href: sizes-storage.md
           items:
+            - name: 概述
+              href: ../sizes-storage.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Lsv2 系列
+              href: ../lsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 优化性能
               href: storage-performance.md
         - name: 加速计算
           items:
             - name: GPU 优化
-              href: sizes-gpu.md
+              items:
+                - name: 概述
+                  href: ../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NC 系列
+                  href: ../nc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv2 系列
+                  href: ../ncv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NCv3 系列
+                  href: ../ncv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: ND 系列
+                  href: ../nd-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NDv2 系列
+                  href: ../ndv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NV 系列
+                  href: ../nv-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv3 系列
+                  href: ../nvv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                - name: NVv4 系列
+                  href: ../nvv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 安装 GPU 驱动程序
               href: n-series-driver-setup.md
         - name: 高性能计算
-          href: sizes-hpc.md
+          displayName: H-series
+          items:
+            - name: 概述
+              href: ../sizes-hpc.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: H 系列
+              href: ../h-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HB 系列
+              href: ../hb-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HBv2 系列
+              href: ../hbv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: HC 系列
+              href: ../hc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 预留实例
           items:
             - name: 为 VM 预付
@@ -119,11 +178,11 @@
         - name: 点 VM
           href: spot-vms.md
         - name: 前几代
-          href: sizes-previous-gen.md
+          href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 独立大小
           href: isolation.md
         - name: Azure 计算单元 (ACU)
-          href: acu.md
+          href: ../acu.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: vCPU 配额
           href: quotas.md
         - name: 预留实例
@@ -322,7 +381,7 @@
         - name: 更新和修补程序
           items:
             - name: Red Hat 更新基础结构
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure VM 代理
           items:
             - name: 概述
@@ -450,9 +509,9 @@
         - name: Terraform
           items:
             - name: 安装和配置
-              href: terraform-install-configure.md
+              href: ../../terraform/terraform-install-configure.md
             - name: 创建完整 VM
-              href: terraform-create-complete-vm.md
+              href: ../../terraform/terraform-create-complete-vm.md
         - name: Cloud-init
           items:
             - name: Cloud-init 概述
@@ -712,4 +771,4 @@
     - name: 常见问题解答
       href: faq.md
 - name: 故障排除
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml

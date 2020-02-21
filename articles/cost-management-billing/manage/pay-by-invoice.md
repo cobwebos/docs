@@ -2,21 +2,18 @@
 title: 按发票为 Azure 订阅付款
 description: 说明如何按发票为 Azure 订阅付款。
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 12ad1f09c988171b0d6212d79ca61d93acf92d80
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133630"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199596"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>按发票为 Azure 订阅付款
 

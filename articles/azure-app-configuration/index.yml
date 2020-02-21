@@ -1,20 +1,20 @@
 ### YamlMime:Landing
-title: Azure 应用配置预览版文档
+title: Azure 应用配置文档
 summary: 了解如何使用 Azure 应用配置（一项托管服务，可帮助开发人员轻松且安全地集中管理其应用程序和功能设置）。
 metadata:
-  title: Azure 应用配置预览版文档
+  title: Azure 应用配置文档
   description: 了解如何使用 Azure 应用配置（一项托管服务，可帮助开发人员轻松且安全地集中管理其应用程序和功能设置）。
   author: lisaguthrie
   ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 37f3581866a687cce3f65d17175a334f5bba11d7
-  ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+  ms.openlocfilehash: 15a1d5ddd84a9683a2666ecbd58918b99186278e
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/06/2020
-  ms.locfileid: "77047306"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77468155"
 landingContent:
 - title: 关于 Azure 应用配置
   linkLists:
@@ -119,7 +119,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest
+      url: https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest
     - text: .NET Core 提供程序
       url: https://go.microsoft.com/fwlink/?linkid=2074664
     - text: .NET Framework 生成器

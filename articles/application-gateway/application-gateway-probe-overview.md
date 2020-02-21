@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766834"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505890"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>应用程序网关运行状况监视概述
 
@@ -59,7 +59,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ### <a name="default-health-probe-settings"></a>默认的运行状况探测设置
 
-| 探测属性 | 值 | Description |
+| 探测属性 | 值 | 说明 |
 | --- | --- | --- |
 | 探测 URL |http://127.0.0.1:\<port\>/ |URL 路径 |
 | 时间间隔 |30 |发送下一个运行状况探测前需要等待的时间（以秒为单位）。|
@@ -85,7 +85,7 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 下表提供自定义运行状况探测的属性的定义。
 
-| 探测属性 | Description |
+| 探测属性 | 说明 |
 | --- | --- |
 | 名称 |探测的名称。 此名称用于在后端 HTTP 设置中引用探测。 |
 | 协议 |用于发送探测的协议。 探测使用后端 HTTP 设置中定义的协议 |
@@ -101,9 +101,11 @@ $match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 
 ## <a name="nsg-considerations"></a>NSG 注意事项
 
-如果应用程序网关子网上有网络安全组（NSG），则必须在应用程序网关子网上打开端口范围65503-65534，才能进行入站流量。 这些端口是确保后端运行状况 API 正常工作所必需的。
+对于应用程序网关 v1 SKU，你必须允许 TCP 端口65503-65534 上的传入 Internet 流量，并允许 v2 SKU 的 TCP 端口65200-65535 （目标子网为**Any** and Source as **GatewayManager** service 标记）。 此端口范围是进行 Azure 基础结构通信所必需的。
 
-此外，不能阻止出站 Internet 连接，并且必须允许来自 AzureLoadBalancer 标记的入站流量。
+此外，不能阻止出站 Internet 连接，并且必须允许来自**AzureLoadBalancer**标记的入站流量。
+
+有关详细信息，请参阅[应用程序网关配置概述](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet)。
 
 ## <a name="next-steps"></a>后续步骤
 了解应用程序网关的运行状况监视后，可以在 Azure 门户中配置[自定义运行状况探测](application-gateway-create-probe-portal.md)，或使用 PowerShell 和 Azure 资源管理器部署模型配置[自定义运行状况探测](application-gateway-create-probe-ps.md)。

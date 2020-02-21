@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cf182e55e172b308a288c741640538ab680e1103
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773809"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462082"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流（预览版）使用 C# 与设备应用程序进行通信
 
@@ -54,7 +54,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 

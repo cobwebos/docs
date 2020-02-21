@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896388"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526138"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -40,13 +40,15 @@ ms.locfileid: "75896388"
 
 ## <a name="fixed-pricing-model"></a>固定定价模型
 
-[*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供专用、隔离和专用的方式，用于创建和运行可访问 Azure 虚拟网络中的资源的逻辑应用。 对于在 ISE 中运行的新逻辑应用，你可以为这些功能支付[固定的每月价格](https://azure.microsoft.com/pricing/details/logic-apps)：
+[*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)为你创建和运行可访问 Azure 虚拟网络中的资源的逻辑应用提供隔离的方式。 对于在 ISE 中运行的新逻辑应用，你可以为这些功能支付[固定的每月价格](https://azure.microsoft.com/pricing/details/logic-apps)：
 
-* [内置触发器和操作](../connectors/apis-list.md#built-in)
+* [内置](../connectors/apis-list.md#built-in)触发器和操作
 
-* [标准连接器](../connectors/apis-list.md#managed-connectors)
+  在 ISE 中，内置触发器和操作显示 "**核心**" 标签，并在与逻辑应用相同的 ISE 中运行。
 
-* 具有任意数量的连接的[企业连接器](../connectors/apis-list.md#enterprise-connectors)
+* [标准](../connectors/apis-list.md#managed-connectors)连接器和[企业](../connectors/apis-list.md#enterprise-connectors)连接器（尽可能多的企业连接）
+
+   显示**ise**标签的标准和企业连接器与逻辑应用在同一 ISE 中运行。 不显示 ISE 标签的连接器在全局逻辑应用服务中运行。 固定的月度定价还适用于在使用在 ISE 中运行的逻辑应用时在全局服务中运行的连接器。
 
 * 基于[ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)，无需额外付费即可使用[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)：
 
@@ -60,12 +62,9 @@ ms.locfileid: "75896388"
 
   * **开发人员 SKU**：最多4个标准帐户或最多5个标准帐户。 无基本帐户。
 
-有关集成帐户限制的详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
+  有关集成帐户限制的详细信息，请参阅[逻辑应用限制和配置](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)。 可以在本主题的后面部分了解有关[集成帐户层及其定价模型](#integration-accounts)的详细信息。
 
-对于高级 ISE SKU，基本单位具有固定容量，因此，如果需要更多的吞吐量，可以在创建期间或之后[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 开发人员 ISE SKU 不能添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
-
-> [!NOTE]
-> 在 ISE 中，内置触发器和操作显示 "**核心**" 标签，并在与逻辑应用相同的 ISE 中运行。 显示**ise**标签的标准和企业连接器与逻辑应用在同一 ISE 中运行。 不显示 ISE 标签的连接器在全局逻辑应用服务中运行。
+如果选择高级 ISE SKU，基本单位具有固定容量。 如果需要更多的吞吐量，可以在创建期间或之后[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)。 开发人员 ISE SKU 不能添加更多缩放单位。 在 ISE 中运行的逻辑应用不会产生数据保留成本。
 
 有关定价费率，请参阅[逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
 

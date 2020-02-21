@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/18/2020
-  ms.openlocfilehash: f404ecb676b75258cd44fb819dbafc3b2fb6452e
-  ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+  ms.openlocfilehash: 2c6708ec408780d492fbef073f3a61591cc2fd21
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/18/2020
-  ms.locfileid: "77431173"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77524313"
 landingContent:
 - title: 关于 Azure IoT Central
   linkLists:
@@ -69,8 +69,10 @@ landingContent:
     links:
     - text: 创建遥测规则
       url: tutorial-create-telemetry-rules.md
-    - text: 导出数据
+    - text: 将数据导出到 Azure 中的目标
       url: howto-export-data.md
+    - text: 探索 IoT Central API
+      url: https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/
   - linkListType: how-to-guide
     links:
     - text: 创建自定义规则

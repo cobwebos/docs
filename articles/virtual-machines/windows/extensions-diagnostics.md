@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033480"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471612"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>适用于 Windows VM 的 Azure 诊断扩展
 
@@ -25,7 +25,7 @@ ms.locfileid: "74033480"
 
 Azure 诊断 VM 扩展可用来从 Windows VM 收集监视数据，例如性能计数器和事件日志。 你可以精细地指定要收集什么数据以及希望该数据出现在何处，例如 Azure 存储帐户或 Azure 事件中心。 还可以使用该数据在 Azure 门户中构建图表或创建指标警报。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -37,7 +37,7 @@ Azure 诊断扩展要求目标虚拟机已连接到 Internet。
 
 ## <a name="extension-schema"></a>扩展架构
 
-[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[本文档介绍了 Azure 诊断扩展架构和属性值。](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>模板部署
 
@@ -88,8 +88,8 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 * [详细了解 Azure 诊断扩展](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [查看扩展架构和版本](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

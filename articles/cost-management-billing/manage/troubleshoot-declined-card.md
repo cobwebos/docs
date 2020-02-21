@@ -2,22 +2,19 @@
 title: 对 Azure 注册时卡被拒进行故障排除
 description: 解决在 Azure 门户或帐户中心注册 Azure 时信用卡被拒的问题。
 author: v-miegge
-manager: adpick
+ms.reviewer: judupont
 editor: v-jesits
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/12/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 432a6f22f3c1b0c323b689103cd16cbea344cab1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ea30fe715bc01b4cd621a2a99c68167f45e5fd36
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989262"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200463"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>对 Azure 注册时卡被拒进行故障排除
 

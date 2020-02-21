@@ -1,19 +1,18 @@
 ---
 title: 通过 Azure 预留容量节省 SQL 数据仓库费用
 description: 了解如何通过省钱的预留容量节省 SQL 数据仓库的费用成本。
-services: billing
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: b4069c9b18f9591e79d983a1317f00df11cf0611
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c428472d5564393e9f9fcdc3103bb1506dc50936
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995840"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200361"
 ---
 # <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>通过预留容量节省 SQL 数据仓库的费用成本
 

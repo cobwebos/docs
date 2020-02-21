@@ -105,8 +105,10 @@
     - name: 事件域
       href: event-domains.md
     - name: 事件源
+      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
       href: event-sources.md
     - name: 事件处理程序
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
     - name: 异地灾难恢复
       href: geo-disaster-recovery.md

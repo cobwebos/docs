@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548894"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483850"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中添加连接的组织
 
@@ -96,6 +96,23 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
 1. 在 "**查看**" 和 "创建" 选项卡上，查看你的组织设置，然后单击 "**创建**"。
 
     ![访问包-策略-添加已连接组织-审阅 + 创建选项卡](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>更新连接的组织 
+
+如果已连接的组织更改为不同的域，如果你有一个新的组织名称，或你想要更改主办方，则可以更新连接的组织。
+
+**必备角色：** 全局管理员、用户管理员或来宾邀请者
+
+1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。
+
+1. 在左侧菜单中，单击 "**连接组织**"，然后单击打开连接的组织。
+
+1. 在 "概述" 页上，单击 "**编辑**" 更改组织名称或说明。  
+
+1. 在 "目录和域" 页上，单击 "**更新目录 + 域**" 以更改为其他目录或域。
+
+1. 在 "赞助商" 页上，单击 "**添加内部赞助**商" 或 "**添加外部赞助**商"，将用户添加为主办方。  若要删除主办方，请单击主办方，并在右侧菜单中单击 "**删除**"。
+
 
 ## <a name="delete-a-connected-organization"></a>删除连接的组织
 

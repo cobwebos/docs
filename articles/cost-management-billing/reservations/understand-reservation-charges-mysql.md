@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 7be3a7913559947be1291db35ac3531f152dfae9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995541"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199307"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>如何对 Azure Database for MySQL 应用预留折扣
 
-购买 Azure Database for MySQL 预留容量后，预留折扣会自动应用到与预留属性和数量匹配的 MySQL 服务器。 预留仅涵盖 Azure Database for MySQL 的计算费用。 按标准费率收取存储和网络费用。 
+购买 Azure Database for MySQL 预留容量后，预留折扣会自动应用到与预留属性和数量匹配的 MySQL 服务器。 预留仅涵盖 Azure Database for MySQL 的计算费用。 按标准费率收取存储和网络费用。
 
 ## <a name="how-reservation-discount-is-applied"></a>如何应用预留折扣
 

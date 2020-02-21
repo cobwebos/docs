@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120895"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526223"
 ---
 # <a name="classroom-labs-concepts"></a>教室实验室概念
 
 以下列表包含重要的实验室服务概念和定义：
 
-## <a name="quota"></a>“配额”
+## <a name="quota"></a>Quota
 
 配额是指教师可以设置为学生使用实验室 VM 的时间限制（以小时为单位）。 它可以设置为0或指定的小时数。 如果配额设置为0，则学生只能在计划运行时或当教师手动打开学生的虚拟机时使用虚拟机。  
 
@@ -32,7 +32,13 @@ ms.locfileid: "77120895"
 
 ## <a name="schedules"></a>计划
 
-计划是教师可以为类创建的时间段（一次或定期）。 实验室中的所有虚拟机都将在计划开始时自动启动，并在计划结束时停止。 在计划运行时不使用配额时间。
+计划是指教师可以为类创建的时间段，以便学生 Vm 可用于类时间。  计划可以是一次性的，也可以是重复的。  在计划运行时不使用配额时间。
+
+有三种类型的计划：标准、仅启动和仅停止。
+
+- **标准**。  此计划将在指定的开始时间启动所有学生 Vm，并在指定的停止时间关闭所有学生 Vm。
+- **仅启动**。   此计划将在指定时间启动所有学生 Vm。  学生通过 Azure 实验室服务门户停止其 VM 之前，学生 Vm 不会停止，或者发生 "仅停止" 计划。
+- **仅停止**。  此计划将在指定时间停止所有学生 Vm。  
 
 ## <a name="template-virtual-machine"></a>模板虚拟机
 
@@ -60,7 +66,7 @@ ms.locfileid: "77120895"
 - 指定能够访问实验室的人员。
 - 向学生提供实验室的注册链接。
 
-### <a name="student"></a>Student
+### <a name="student"></a>学生
 
 学生执行以下任务：
 

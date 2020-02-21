@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 02/19/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b1489ce6bee2ce25ffb268ef20cc8fa587664619
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f4265659df786cf0a972b6dcf4f122bfc68535c1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848923"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483272"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 Microsoft 帐户的登录
 
@@ -24,12 +24,12 @@ ms.locfileid: "76848923"
 
 本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，在 Microsoft 帐户中启用用户登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 - 如果还没有 Microsoft 帐户，请在 [https://www.live.com/](https://www.live.com/) 上创建一个。
 
-## <a name="add-an-application"></a>添加应用程序
+## <a name="register-an-application"></a>注册应用程序
 
 若要为具有 Microsoft 帐户的用户登录，需要在 Azure AD 租户内注册应用程序。 Azure AD 租户与 Azure AD B2C 租户不同。
 
@@ -47,6 +47,19 @@ ms.locfileid: "76848923"
 1. 输入机密的**说明**，例如*MSA 应用程序客户端密码*，然后单击 "**添加**"。
 1. 记录 "**值**" 列中显示的应用程序密码。 在下一部分中使用此值。
 
+## <a name="configuring-optional-claims"></a>配置可选声明
+
+如果要从 Azure AD 获取 `family_name` 和 `given_name` 声明，可以在 Azure 门户 UI 或应用程序清单中为应用程序配置可选声明。 有关详细信息，请参阅[如何向 Azure AD 应用提供可选声明](../active-directory/develop/active-directory-optional-claims.md)。
+
+1. 登录 [Azure 门户](https://portal.azure.com)。 搜索并选择“Azure Active Directory”。
+1. 从 "**管理**" 部分中，选择**应用注册**。
+1. 在列表中选择要为其配置可选声明的应用程序。
+1. 从 "**管理**" 部分，选择 "**令牌配置（预览）** "。
+1. 选择 "**添加可选声明**"。
+1. 选择要配置的令牌类型。
+1. 选择要添加的可选声明。
+1. 单击“添加”。
+
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
 现在，你已在 Azure AD 租户中创建了应用程序，你需要将该应用程序的客户端机密存储在 Azure AD B2C 租户中。
@@ -59,7 +72,7 @@ ms.locfileid: "76848923"
 1. 对于“选项”，请选择 `Manual`。
 1. 输入策略密钥的**名称**。 例如，`MSASecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在 "**密钥**" 中，输入你在上一节中记录的客户端密码。
-1. 在“密钥用法”处选择 `Signature`。
+1. 在“密钥用法”处选择 **。** `Signature`
 1. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
@@ -94,10 +107,12 @@ ms.locfileid: "76848923"
             <Key Id="client_secret" StorageReferenceId="B2C_1A_MSASecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
-            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
             <OutputClaim ClaimTypeReferenceId="email" />
           </OutputClaims>
           <OutputClaimsTransformations>
@@ -123,7 +138,7 @@ ms.locfileid: "76848923"
 
 1. 导航到 Azure 门户中的 Azure AD B2C 租户，并选择 "**标识体验框架**"。
 1. 在 "**自定义策略**" 页上，选择 "**上载自定义策略**"。
-1. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+1. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 1. 单击“上载” 。
 
 如果门户中没有显示任何错误，请转到下一节。
@@ -133,7 +148,7 @@ ms.locfileid: "76848923"
 此时，你已设置了标识提供程序，但它在任何注册或登录屏幕上都不可用。 若要使其可用，请创建现有模板用户旅程的副本，然后对其进行修改，使其也具有 Microsoft 帐户标识提供者。
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-1. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+1. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 1. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 1. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 1. 重命名用户旅程的 ID。 例如，`SignUpSignInMSA` 。
@@ -142,7 +157,7 @@ ms.locfileid: "76848923"
 
 **ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 Microsoft 帐户添加**claimsexchange**元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在 *TrustFrameworkExtensions.xml* 文件中，在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在 *TrustFrameworkExtensions.xml* 文件中，在创建的用户旅程中找到包含 **的**OrchestrationStep`Order="1"` 元素。
 1. 在 **ClaimsProviderSelects** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `MicrosoftAccountExchange`：
 
     ```XML
@@ -153,7 +168,7 @@ ms.locfileid: "76848923"
 
 准备好按钮后，需将它链接到某个操作。 在此示例中，操作用于 Azure AD B2C 与 Microsoft 帐户通信以接收令牌。
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 1. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```xml

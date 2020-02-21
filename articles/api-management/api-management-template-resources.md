@@ -58,7 +58,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 | hu      | Magyar               |
 | 以便      | Italiano             |
 | "ja-jp"   | 日本語                |
-| ko      | 한국어                |
+| “ko”      | 한국어                |
 | nl      | Nederlands           |
 | pl      | Polski               |
 | "pt-br"   | "Português （巴西）"   |
@@ -135,10 +135,10 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebDevelopersAppNotSubmitted|未提交|  
 |WebDevelopersAppTableCategoryHeader|类别|  
 |WebDevelopersAppTableNameHeader|名称|  
-|WebDevelopersAppTableStateHeader|状况|  
+|WebDevelopersAppTableStateHeader|状态|  
 |WebDevelopersEditLink|编辑|  
 |WebDevelopersRegisterAppLink|注册应用程序|  
-|WebDevelopersRemoveLink|移除|  
+|WebDevelopersRemoveLink|删除|  
 |WebDevelopersSubmitLink|提交|  
 |WebDevelopersYourApplicationsHeader|应用程序|  
   
@@ -152,7 +152,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
   
 |名称|文本|  
 |----------|----------|  
-|NoItemsToDisplay|未找到结果。|  
+|NoItemsToDisplay|找不到结果。|  
 |GeneralExceptionMessage|出现问题。 可能存在临时故障或 Bug。 请重试。|  
 |GeneralJsonExceptionMessage|出现问题。 可能存在临时故障或 Bug。 请重新加载页面，并重试。|  
 |ConfirmationMessageUnsavedChanges|某些更改未保存。 是否确实要取消并放弃更改?|  
@@ -169,8 +169,8 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |NoItemsToDisplay|没有要显示的项。|  
 |PagerButtonLabelFirst|第一个|  
 |PagerButtonLabelLast|最后一个|  
-|PagerButtonLabelNext|下一页|  
-|PagerButtonLabelPrevious|上一个|  
+|PagerButtonLabelNext|Next|  
+|PagerButtonLabelPrevious|上一步|  
 |PagerLabelPageNOfM|第 {0} 页，共 {1} 页|  
 |PasswordTooShort|密码过短|  
 |EmailAsPassword|请勿使用电子邮件作为密码|  
@@ -354,11 +354,11 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |名称|文本|  
 |----------|----------|  
 |WebIssuesIndexTitle|问题|  
-|WebIssuesNoActiveSubscriptions|没有活动的订阅。 需要先订阅产品，然后才能报告问题。|  
+|WebIssuesNoActiveSubscriptions|没有活动的订阅。 需要先订阅产品，才能报告问题。|  
 |WebIssuesNotSignin|没有登录。 请{0}，以便报告问题或发表评论。|  
 |WebIssuesReportIssueButton|报告问题|  
 |WebIssuesSignIn|登录|  
-|WebIssuesStatusReportedBy|{1} 报告了状态: {0} &#124;|  
+|WebIssuesStatusReportedBy|{0} 报告了状态: {1} &#124;|  
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
@@ -385,7 +385,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebProductsUsageLimitsHeader|使用限制|  
 |WebProductsYouAreNotSubscribed|已订阅此产品。|  
 |WebProductsYouRequestedSubscription|已请求订阅此产品。|  
-|ErrorYouNeedToAgreeWithLegalTerms|必须同意使用条款，然后才能继续。|  
+|ErrorYouNeedToAgreeWithLegalTerms|必须同意使用条款，才能继续。|  
 |ButtonLabelAddSubscription|添加订阅|  
 |LinkLabelChangeSubscriptionName|更改|  
 |ButtonLabelConfirm|确认|  
@@ -477,7 +477,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |ButtonLabelChangePassword|更改密码|  
 |ButtonLabelChangeAccountInfo|更改帐户信息|  
 |ButtonLabelCloseAccount|关闭帐户|  
-|WebAuthenticationInvalidCaptchaErrorMessage|输入的文本与图片上的文本不匹配。 请稍后重试。|  
+|WebAuthenticationInvalidCaptchaErrorMessage|输入的文本与图片上的文本不匹配。 请重试。|  
 |ValidationErrorCredentialsInvalid|电子邮件或密码无效。 请更正错误，并重试。|  
 |WebAuthenticationRequestIsNotValid|请求无效|  
 |WebAuthenticationUserIsNotConfirm|请在尝试登录之前确认注册。|  
@@ -505,7 +505,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |CheckboxLabelUserRegistrationTermsConsentRequired|我同意`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`。|  
 |TextblockUserRegistrationTermsProvided|请查看`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|使用条款|  
-|ValidationMessageConsentNotAccepted|必须同意使用条款，然后才能继续。|  
+|ValidationMessageConsentNotAccepted|必须同意使用条款，才能继续。|  
   
 ###  <a name="SigninStrings"></a> SigninStrings  
   
@@ -524,7 +524,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |名称|文本|  
 |----------|----------|  
 |PageTitleSignup|注册|  
-|WebAuthenticationAlreadyAMember|已经是成员？|  
+|WebAuthenticationAlreadyAMember|已经是成员?|  
 |WebAuthenticationCreateNewAccount|创建新的 API 管理帐户|  
 |WebAuthenticationSigninNow|立即登录|  
 |ButtonLabelSignup|注册|  
@@ -544,7 +544,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |WebDevelopersSubscriptionRequested|请求日期: {0}|  
 |WebDevelopersSubscriptionRequestedState|已请求|  
 |WebDevelopersSubscriptionTableNameHeader|名称|  
-|WebDevelopersSubscriptionTableStateHeader|状况|  
+|WebDevelopersSubscriptionTableStateHeader|状态|  
 |WebDevelopersUsageStatisticsLink|分析报告|  
 |WebDevelopersYourSubscriptions|订阅|  
 |SubscriptionPropertyLabelRequestedDate|请求日期:|  
@@ -557,7 +557,7 @@ Azure API 管理提供以下类型的资源，适用于开发人员门户模板�
 |名称|文本|  
 |----------|----------|  
 |SectionHeadingCloseAccount|想要关闭帐户?|  
-|PageTitleDeveloperProfile|个人资料|  
+|PageTitleDeveloperProfile|配置文件|  
 |ButtonLabelHideKey|隐藏|  
 |ButtonLabelRegenerateKey|重新生成|  
 |InformationMessageKeyWasRegenerated|是否确实要重新生成此密钥?|  

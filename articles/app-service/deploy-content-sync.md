@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: c55894bff9501d3ffb9aa843a9eaa240a213180e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671732"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482966"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>将内容从云文件夹同步到 Azure 应用服务
 本文介绍如何将内容同步到 Dropbox 和 OneDrive 上的 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)。 
 
-按需内容同步部署由应用服务的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)提供支持。 你可以在指定的云文件夹中处理应用代码和内容，然后通过单击按钮将其同步到应用服务。 内容同步使用 Kudu 生成服务器。 
+按需内容同步部署由应用服务的 [Kudu 部署引擎](https://github.com/projectkudu/kudu/wiki)提供支持。 你可以在指定的云文件夹中使用应用代码和内容，然后通过单击按钮同步到应用服务。 内容同步使用 Kudu 生成服务器。 
 
 ## <a name="enable-content-sync-deployment"></a>启用内容同步部署
 
@@ -54,7 +54,7 @@ ms.locfileid: "74671732"
 
 若要禁用内容同步，请导航至 [Azure 门户](https://portal.azure.com)中的“应用服务应用”页。
 
-在左侧菜单中，单击“部署中心” > “断开连接”。
+在左侧菜单中，单击“部署中心” **“断开连接”。**  > 
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

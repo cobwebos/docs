@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185893"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468431"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中规划条件访问部署
 
@@ -31,6 +31,9 @@ ms.locfileid: "77185893"
 有两种类型的条件性访问策略：基线和标准。 [基准策略](baseline-protection.md)是预定义的条件性访问策略。 这些策略的目标是确保至少启用了基线安全级别。 基线策略。 基线策略适用于所有 Azure AD 版本，只提供有限的自定义选项。 如果方案需要更大的灵活性，请禁用基线策略，并在自定义标准策略中实现要求。
 
 在标准条件访问策略中，你可以自定义所有设置以根据你的业务需求调整策略。 标准策略需要 Azure AD Premium P1 许可证。
+
+>[!NOTE]
+> 建议使用基于 Azure AD 设备的条件性访问策略，以便在初始设备身份验证后获得最佳强制。 这包括在设备不符合和设备代码流时关闭会话。
 
 ## <a name="draft-policies"></a>草拟策略
 

@@ -5,19 +5,19 @@ services: active-directory
 author: martincoetzer
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0860c2e7b5be686ad5577436f41b321164853a0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066507"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522404"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -43,7 +43,7 @@ Azure Active Directory （Azure AD）自动用户预配可通过安全地根据�
 
 * **降低成本**。 自动用户预配通过避免与手动预配相关的低效和人为错误，降低了成本。 它减少了自定义开发的用户预配解决方案、脚本和审核日志的需求。
 
-### <a name="licensing"></a>许可
+### <a name="licensing"></a>授权
 
 Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提供自助集成。 有关许可证要求的完整列表，请参阅[Azure AD 授权 "页](https://azure.microsoft.com/pricing/details/active-directory/)。
 
@@ -74,7 +74,7 @@ Azure AD 使用应用程序库菜单中提供的模板为任何应用程序提�
 | 联机课程| SkillUp Online：[管理标识](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> 了解如何将 Azure AD 与多个 SaaS 应用程序集成，并确保用户对这些应用程序的访问权限。 |
 | 图书| [针对 Web 应用程序的 Azure Active Directory 新式身份验证（开发人员参考）第一版](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0)。  <br> 这是为这些新环境构建 Active Directory 身份验证解决方案的权威深入指南。 |
 | 教程| 请参阅[有关如何将 SaaS 应用与 Azure AD 集成的教程的列表](../saas-apps/tutorial-list.md)。 |
-| 常见问题| [有关自动](../app-provisioning/user-provisioning.md)用户预配的常见问题 |
+| 常见问题解答| [有关自动](../app-provisioning/user-provisioning.md)用户预配的常见问题 |
 
 ### <a name="solution-architectures"></a>解决方案体系结构
 

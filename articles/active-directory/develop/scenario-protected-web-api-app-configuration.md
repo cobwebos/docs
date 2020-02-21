@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b05eefb2a0e516772390f898c22e723b08973338
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931464"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484445"
 ---
 # <a name="protected-web-api-code-configuration"></a>受保护的 web API：代码配置
 
@@ -108,7 +108,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 此指令将中间件添加到 web API：
 
 ```csharp
- services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+         .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  目前，ASP.NET Core 模板创建了 Azure Active Directory （Azure AD） web Api，该 Api 用于登录组织或任何组织中的用户。 他们不会通过个人帐户登录用户。 但你可以通过将以下代码添加到 Startup.cs，将模板更改为使用 Microsoft 标识平台终结点：
@@ -153,7 +154,7 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 
 下表描述了验证程序：
 
-| 基值 | Description |
+| 基值 | 说明 |
 |---------|---------|
 | **ValidateAudience** | 确保令牌适用于为你验证令牌的应用程序。 |
 | **ValidateIssuer** | 确保令牌由受信任的 STS 颁发，这意味着它来自你信任的人。 |

@@ -16,19 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2c096f41acd5852423205b0b185c8e1a8533c55
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: cbd60d1311bd84adb303a0d329ab4e42f4d61525
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048139"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498737"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management 中激活 Azure AD 自定义角色
 
 Azure Active Directory (Azure AD) 中的 Privileged Identity Management 现在支持对自定义角色进行恰时分配和有时限的分配，这些自定义角色是在“标识和访问管理”管理体验中为了进行应用程序管理而创建的。 若要详细了解如何在 Azure AD 中创建自定义角色来委托应用程序管理，请参阅 [Azure Active Directory 中的自定义管理员角色（预览）](../users-groups-roles/roles-custom-overview.md)。
 
 > [!NOTE]
-> 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。
+> 在预览版中，Azure AD 自定义角色未集成内置的目录角色。 此功能的正式版发布后，可在内置的角色体验中进行角色管理。 如果看到以下横幅，则应[在内置角色体验中](pim-how-to-activate-role.md)管理这些角色，本文不适用：
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="activate-a-role"></a>激活角色
 

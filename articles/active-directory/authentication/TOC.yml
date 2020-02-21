@@ -11,8 +11,8 @@
       href: tutorial-enable-sspr.md
     - name: 启用 Azure 多重身份验证
       href: tutorial-enable-azure-mfa.md
-    - name: 启用 SSPR 本地集成
-      href: tutorial-enable-writeback.md
+    - name: 启用向本地进行密码写回
+      href: tutorial-enable-sspr-writeback.md
     - name: 集成 Azure 标识保护
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -68,8 +68,6 @@
           href: howto-sspr-deployment.md
         - name: 预注册身份验证数据
           href: howto-sspr-authenticationdata.md
-        - name: 启用密码写回
-          href: howto-sspr-writeback.md
         - name: 用于 Windows 客户端的 SSPR
           href: howto-sspr-windows.md
     - name: 基于云的 MFA
@@ -132,10 +130,14 @@
       items:
         - name: 部署无密码
           href: howto-authentication-passwordless-deployment.md
-        - name: 无密码安全密钥
-          href: howto-authentication-passwordless-security-key.md
-        - name: 无密码 Windows 10
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: 无密码 FIDO2 安全密钥
+          items:
+            - name: 为租户启用 FIDO2 安全密钥
+              href: howto-authentication-passwordless-security-key.md
+            - name: 登录到 Windows 10 设备
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: SSO 到本地资源
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: 无密码的手机登录
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business

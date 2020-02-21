@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368017"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484479"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>存档 Azure Active Directory 中的新增功能
 
@@ -1426,7 +1426,7 @@ Azure 门户“登录”页上的新“故障排除和支持”选项卡旨在�
 **服务类别：** 条件访问  
 **产品功能：** 标识安全性和保护
 
-以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)列表中：
+以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)列表中：
 
 - 微软待办
 
@@ -2753,7 +2753,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 有关详细信息，请参阅：
 
-- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** 条件访问  
 **产品功能：** 标识安全性和保护
 
-以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表中：
+以下应用包含在[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)列表中：
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 有关详细信息，请参阅：
 
-- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** Azure AD  
 **产品功能：** 标识安全性和保护
 
-你现在可以使用[基于应用的条件访问 Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)，将对 Office 365 和其他 Azure AD 连接的云应用的访问限制到支持 Intune 应用保护策略的[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
+你现在可以使用[基于应用的条件访问 Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)，将对 Office 365 和其他 Azure AD 连接的云应用的访问限制到支持 Intune 应用保护策略的[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)。 Intune 应用保护策略用于配置和保护这些客户端应用程序中的公司数据。
 
 通过结合基于[应用](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)和[基于设备](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)的条件访问策略，你可以灵活地保护个人和公司设备的数据。
 
@@ -3189,14 +3189,14 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 **服务类别：** 条件访问  
 **产品功能：** 标识安全性和保护
 
-以下应用已添加到[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)列表：
+以下应用已添加到[批准的客户端应用](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)列表：
 
 - Microsoft Planner
 - Azure 信息保护 
 
 有关详细信息，请参阅：
 
-- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [批准的客户端应用要求](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Azure AD 基于应用的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

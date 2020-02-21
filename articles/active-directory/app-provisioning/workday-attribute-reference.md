@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066052"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521925"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性参考
 
@@ -58,11 +58,11 @@ ms.locfileid: "77066052"
 | 29 | LocationIdentifier                    | wd： Worker/wd： Worker\_Data/wd：就业\_Data/wd： Position\_Data/wd： Business\_Site\_Summary\_Data/wd： Location\_Reference/wd： ID\[@wd:type= ' Location\_ID '\]/text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | wd： Worker/wd： Worker\_Data/wd： Management\_链\_Data/wd： Worker\_监督\_管理\_链\_数据\[位置\(\)= 1\]/wd： Management\_链\_数据\[最后\(\)= 位置\(\)\]\_\[@wd:type引用//wd： ID\]\(= "WID" \) wd                                                                                                                                                                            |
 | 31 | MiddleName                            | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Name\_Data/wd：法律\_名称\_Data/wd： Name\_详细信息\_Data/wd：中间\_名称/文本\(\)                                                                                                                                                                                                                                                                                |
-| 32 | 移动设备                                | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Contact\_Data/wd： Phone\_数据\[转换\(字符串\(wd： Phone\_设备\_类型\_Reference/@wd:Descriptor\)、"abcdefghijklmnopqrstuvwxyz"、"ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "MOBILE"，并将\(\(\_wd： Type\_data/wd： type\_Reference/@wd:Descriptor\)，"abcdefghijklmnopqrstuvwxyz"，"ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "WORK"\]/@wd:Formatted\_手机    |
+| 32 | 移动型                                | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Contact\_Data/wd： Phone\_数据\[转换\(字符串\(wd： Phone\_设备\_类型\_Reference/@wd:Descriptor\)、"abcdefghijklmnopqrstuvwxyz"、"ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "MOBILE"，并将\(\(\_wd： Type\_data/wd： type\_Reference/@wd:Descriptor\)，"abcdefghijklmnopqrstuvwxyz"，"ABCDEFGHIJKLMNOPQRSTUVWXYZ"\)= "WORK"\]/@wd:Formatted\_手机    |
 | 33 | 市政府                          | wd： Worker/wd： Worker\_Data/wd：招聘\_Data/wd： Position\_Data/wd： Business\_Site\_Summary\_Data/wd： Address\_Data/wd：市政府/text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | wd： Worker/wd： Worker\_Data/wd：招聘\_Data/wd： Position\_Data/wd： Position\_ID/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | wd： Worker/wd： Worker\_Data/wd：招聘\_Data/wd： Position\_Data/wd： Position\_标题/文本\(\)                                                                                                                                                                                                                                                                                                                  |
-| 36 | 邮政编码                            | wd： Worker/wd： Worker\_Data/wd：受雇\_Data/wd： Position\_Data/wd： Business\_Site\_Summary\_Data/wd： Address\_Data/wd：邮政编码\_\(\)                                                                                                                                                                                                                                                                   |
+| 36 | PostalCode                            | wd： Worker/wd： Worker\_Data/wd：受雇\_Data/wd： Position\_Data/wd： Business\_Site\_Summary\_Data/wd： Address\_Data/wd：邮政编码\_\(\)                                                                                                                                                                                                                                                                   |
 | 37 | PreferredFirstName                    | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Name\_Data/wd：首选\_名称\_Data/wd： Name\_详细信息\_Data/wd： First\_Name/text\(\)                                                                                                                                                                                                                                                                             |
 | 38 | PreferredLastName                     | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Name\_Data/wd：首选\_名称\_Data/wd： Name\_详细信息\_Data/wd：最后\_名称/文本\(\)                                                                                                                                                                                                                                                                              |
 | 39 | PreferredMiddleName                   | wd： Worker/wd： Worker\_Data/wd： Personal\_Data/wd： Name\_Data/wd：首选\_名称\_Data/wd： Name\_详细信息\_Data/wd：中间\_名称/文本\(\)                                                                                                                                                                                                                                                                            |

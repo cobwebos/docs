@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209267"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468756"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -123,6 +123,10 @@ ms.locfileid: "77209267"
 - 仅使用视频 `VideoOnly` 索引和提取见解（忽略音频）
 - `Default` - 使用音频和视频编制见解的索引和提取见解
 - `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
+
+> [!NOTE]
+> 视频索引器最多包含两个音频轨道。 如果文件中有更多的音频曲目，它们将被视为一个轨迹。<br/>
+如果要单独为曲目编制索引，则需要提取相关的音频文件，并将其索引为 `AudioOnly`。
 
 价格取决于所选索引编制选项。  
 

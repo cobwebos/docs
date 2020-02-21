@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116733"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471935"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>将机器学习模型部署到 Azure Functions （预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "77116733"
 
 通过 Azure 机器学习，您可以从训练的机器学习模型创建 Docker 映像。 Azure 机器学习现在提供了预览功能，可将这些机器学习模型生成到可[部署到 Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)中的函数应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -111,7 +111,7 @@ print(blob.location)
 当 `show_output=True`时，将显示 Docker 生成过程的输出。 完成此过程后，将在工作区的 Azure 容器注册表中创建映像。 构建映像后，将显示 Azure 容器注册表中的位置。 返回的位置 `<acrinstance>.azurecr.io/package@sha256:<hash>`格式。
 
 > [!NOTE]
-> 函数的打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅[Azure Functions 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob?tabs=csharp#trigger---blob-name-patterns)。
+> 函数的打包当前支持 HTTP 触发器、Blob 触发器和服务总线触发器。 有关触发器的详细信息，请参阅[Azure Functions 绑定](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)。
 
 > [!IMPORTANT]
 > 保存位置信息，因为它在部署映像时使用。

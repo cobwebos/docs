@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326789"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469929"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>示例
 
-以下 SELECT 查询示例从 `Families` 中返回 `address`，其中 `id` 匹配 `AndersenFamily`：
+以下 SELECT 查询示例从 `Families` 中返回 `id` 与 `AndersenFamily`匹配的 `address`：
 
 ```sql
     SELECT f.address
@@ -86,7 +86,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -109,7 +109,7 @@ SELECT <select_specification>
 
 ### <a name="nested-properties"></a>嵌套属性
 
-下面的示例投影两个嵌套的属性 `f.address.state` 和 `f.address.city`。
+下面的示例投影两个嵌套的属性，`f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -117,7 +117,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -135,7 +135,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -147,7 +147,7 @@ SELECT <select_specification>
     }]
 ```
 
-在前面的示例中，SELECT 子句需要创建 JSON 对象，并且由于该示例未提供任何键，因此子句使用隐式参数变量名 `$1`。 下面的查询返回两个隐式参数变量： `$1` 和 `$2`。
+在前面的示例中，SELECT 子句需要创建 JSON 对象，并且由于该示例未提供任何键，因此子句将使用隐式参数变量名 `$1`。 下面的查询返回两个隐式参数变量： `$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -156,7 +156,7 @@ SELECT <select_specification>
     WHERE f.id = "AndersenFamily"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -168,6 +168,50 @@ SELECT <select_specification>
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>保留关键字和特殊字符
+
+如果数据包含的属性的名称与保留关键字（如 "order" 或 "Group"）相同，则对这些文档的查询将导致语法错误。 应将属性显式包含在 `[]` 字符中，以便成功运行查询。
+
+例如，下面是一个文档，其中包含一个名为 `order` 的属性和一个包含特殊字符的属性 `price($)`：
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+如果运行包含 `order` 属性或 `price($)` 属性的查询，则将收到语法错误。
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+结果为：
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+应重写相同的查询，如下所示：
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>后续步骤

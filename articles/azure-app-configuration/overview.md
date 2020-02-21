@@ -6,18 +6,16 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899332"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467549"
 ---
 # <a name="what-is-azure-app-configuration"></a>什么是 Azure 应用程序配置？
 
 Azure 应用程序配置提供一项可集中管理应用程序设置和功能标志的服务。 新式程序，尤其是在云端运行的程序，通常具有多个事实上已分发的组件。 跨这些组件分散配置设置可能导致应用程序部署过程中出现难以解决的错误。 使用应用程序配置来存储应用程序的所有设置并在一个位置保证其访问权限的安全。
-
-应用程序配置当前为公共预览版。 它在预览版期间免费使用。 可以在 [Azure 门户](https://portal.azure.com)中注册它。
 
 ## <a name="why-use-app-configuration"></a>为何要使用应用程序配置？
 

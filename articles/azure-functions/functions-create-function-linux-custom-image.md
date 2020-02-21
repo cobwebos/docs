@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846480"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482354"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -256,7 +256,7 @@ ms.locfileid: "76846480"
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. 该映像在本地容器中运行后，请在浏览器中打开 `http://localhost:8080`。浏览器中应会显示如下所示的占位符映像。 该映像之所以在此时显示，是因为函数在本地容器中运行（与在 Azure 中一样），这意味着，该函数由 *function.json* 中定义的访问密钥使用 `"authLevel": "function"` 属性来保护。 但是，容器尚未发布到 Azure 中的函数应用，因此该密钥尚不可用。 若要在本地进行测试，请停止 Docker，将授权属性更改为 `"authLevel": "anonymous"`，重新生成映像，然后重启 Docker。 然后重置 *function.json* 中的 `"authLevel": "function"`。 有关详细信息，请参阅[授权密钥](functions-bindings-http-webhook.md#authorization-keys)。
+1. 该映像在本地容器中运行后，请在浏览器中打开 `http://localhost:8080`。浏览器中应会显示如下所示的占位符映像。 该映像之所以在此时显示，是因为函数在本地容器中运行（与在 Azure 中一样），这意味着，该函数由 *function.json* 中定义的访问密钥使用 `"authLevel": "function"` 属性来保护。 但是，容器尚未发布到 Azure 中的函数应用，因此该密钥尚不可用。 若要在本地进行测试，请停止 Docker，将授权属性更改为 `"authLevel": "anonymous"`，重新生成映像，然后重启 Docker。 然后重置 *function.json* 中的 `"authLevel": "function"`。 有关详细信息，请参阅[授权密钥](functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
     ![指示容器正在本地运行的占位符映像](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -370,7 +370,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
 1. 使用 Azure 门户或者在 Azure CLI 中使用 `az rest` 命令检索包含访问（函数）密钥的函数 URL。
 
-    # <a name="portaltabportal"></a>[门户](#tab/portal)
+    # <a name="portal"></a>[门户](#tab/portal)
 
     1. 登录到 Azure 门户，在页面顶部的“搜索”框中输入函数应用的名称找到该函数应用。  在结果中选择“应用服务”资源。 
 
@@ -387,7 +387,7 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
     > [!NOTE]  
     > 由于函数应用将部署为容器，因此无法在门户中对函数代码进行更改。 必须更新本地映像中的项目，再次将该映像推送到注册表，然后重新部署到 Azure。 可以在后面的部分设置持续部署。
     
-    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
     1. 构造采用以下格式的 URL 字符串（请将 `<subscription_id>`、`<resource_group>` 和 `<app_name>` 分别替换为你的 Azure 订阅 ID、函数应用的资源组，以及函数应用的名称）：
 
@@ -877,19 +877,19 @@ export default httpTrigger;
 
 1. 打开函数项目的 *local.setting.json* 文件，并复制连接字符串值。 在终端或命令窗口中运行以下命令，以创建名为 `AZURE_STORAGE_CONNECTION_STRING` 的环境变量（请在 `<connection_string>` 位置粘贴特定的连接字符串）。 （创建此环境变量后，无需在使用 `--connection-string` 参数的每个后续命令中提供连接字符串。）
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ export default httpTrigger;
     
 1. （可选）使用 [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) 命令查看帐户中的存储队列。 此命令的输出应包含名为 `outqueue` 的队列，该队列是函数将其第一条消息写入该队列时创建的。
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -919,21 +919,21 @@ export default httpTrigger;
     
     ---
 
-1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
+1. 使用 [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) 命令查看此队列中的消息，队列名称应是前面在测试函数时使用的名称。 该命令检索队列中采用 [base64 编码](functions-bindings-storage-queue-trigger.md#encoding)的第一条消息，因此，还必须将此消息解码，才能以文本格式查看它。
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     由于需要取消引用消息集合并从 base64 解码，因此请运行 PowerShell 并使用 PowerShell 命令。
 

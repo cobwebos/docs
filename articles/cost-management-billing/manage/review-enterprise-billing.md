@@ -1,31 +1,23 @@
 ---
 title: 使用 REST API 查看 Azure 企业合约计费数据 | Microsoft Docs
 description: 了解如何使用 Azure REST API 来查看企业合约计费信息。
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75993461"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199562"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>使用 Azure REST API 查看企业合约计费信息
 
 Azure 报告 API 可帮助查看和管理 Azure 费用。
 
-在本文中，你将学习如何使用 Azure REST API 检索与计费帐户、部门或企业协议 (EA) 合约帐户关联的账单信息。 
+在本文中，你将学习如何使用 Azure REST API 检索与计费帐户、部门或企业协议 (EA) 合约帐户关联的账单信息。
 
 ## <a name="individual-account-billing"></a>个人帐户计费
 
@@ -39,7 +31,7 @@ Authorization: Bearer
 
 `{billingAccountId}` 参数是必需的，并且应当包含帐户的 ID。
 
-以下标头是必需的： 
+以下标头是必需的：
 
 |请求标头|说明|  
 |--------------------|-----------------|  
@@ -80,9 +72,9 @@ Authorization: Bearer
 
 此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为计费帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy)。
 
-## <a name="department-billing"></a>部门计费 
+## <a name="department-billing"></a>部门计费
 
-获取针对部门中的所有帐户聚合的使用情况详细信息。 
+获取针对部门中的所有帐户聚合的使用情况详细信息。
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,7 +84,7 @@ Authorization: Bearer
 
 `{departmentId}` 参数是必需的，并且应当包含合约帐户中的部门的 ID。
 
-以下标头是必需的： 
+以下标头是必需的：
 
 |请求标头|说明|  
 |--------------------|-----------------|  
@@ -148,7 +140,7 @@ Authorization: Bearer
 
 `{enrollmentAccountId}` 参数是必需的，并且应当包含合约帐户的 ID。
 
-以下标头是必需的： 
+以下标头是必需的：
 
 |请求标头|说明|  
 |--------------------|-----------------|  
@@ -185,11 +177,11 @@ Authorization: Bearer
     }
   ]
 }
-``` 
+```
 
 此示例已经过缩略；有关每个响应字段和错误处理的完整说明，请参阅[为合约帐户获取使用情况详细信息](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy)。
 
-## <a name="next-steps"></a>后续步骤 
+## <a name="next-steps"></a>后续步骤
 - 查看 [Enterprise Reporting 概述](https://docs.microsoft.com/azure/billing/billing-enterprise-api)
 - 详细研究[企业计费 REST API](https://docs.microsoft.com/rest/api/billing/)   
 - [Azure REST API 入门](https://docs.microsoft.com/rest/api/azure/)   

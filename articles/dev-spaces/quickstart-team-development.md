@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门介绍如何使用 Azure Dev Spaces 对容器和微服务进行团队 Kubernetes 开发
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1b36cf30574c0c9892a0383bee7e2f914bc9feac
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721585"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482388"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行团队开发 - Azure Dev Spaces
 
@@ -86,7 +86,7 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 ```cmd
 cd charts/
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 `helm install` 命令可能需要几分钟才能完成。 在群集上安装示例应用程序后，由于已在群集上启用了 Dev Spaces，因此请使用 `azds list-uris` 命令来显示该示例应用程序在当前已选择的 *dev* 中的 URL。

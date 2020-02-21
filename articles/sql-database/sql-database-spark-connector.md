@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 03150ef3a8799cd0f84fb1bc03f2fd712cddd541
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889796"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471646"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>通过适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器，加速实时大数据分析
 
@@ -27,13 +27,13 @@ ms.locfileid: "73889796"
 
 ## <a name="official-supported-versions"></a>官方支持的版本
 
-| 组件                            |版本                  |
-| :----------------------------------- | :---------------------- |
-| Apache Spark                         |2.0.2 或更高版本           |
-| Scala                                |2.10 或更高版本            |
-| Microsoft JDBC Driver for SQL Server |6.2 或更高版本             |
-| Microsoft SQL Server                 |SQL Server 2008 或更高版本 |
-| Azure SQL 数据库                   |支持                |
+| 组件                            | 版本                  |
+| :----------------------------------- | :----------------------- |
+| Apache Spark                         | 2.0.2 或更高版本           |
+| Scala                                | 2.10 或更高版本            |
+| Microsoft JDBC Driver for SQL Server | 6.2 或更高版本             |
+| Microsoft SQL Server                 | SQL Server 2008 或更高版本 |
+| Azure SQL 数据库                   | 支持                |
 
 适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器利用 Microsoft JDBC Driver for SQL Server 在 Spark 辅助角色节点和 SQL 数据库之间移动数据：
  
@@ -89,7 +89,7 @@ val config = Config(Map(
 ))
 
 //Read all data in table dbo.Clients
-val collection = sqlContext.read.sqlDb(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -118,7 +118,7 @@ import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
 val query = """
               |UPDATE Customers
-              |SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+              |SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
               |WHERE CustomerID = 1;
             """.stripMargin
 
@@ -134,7 +134,7 @@ sqlContext.sqlDBQuery(config)
 ```
 
 ## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>使用 AAD 身份验证将 Spark 连接到 Azure SQL 数据库
-可使用 Azure Active Directory (AAD) 身份验证连接到 Azure SQL 数据库。 使用 AAD 身份验证集中管理数据库用户的身份，并充当 SQL Server 身份验证的替代方案。
+可使用 Azure Active Directory (AAD) 身份验证连接到 Azure SQL 数据库。 使用 AAD 身份验证以集中管理数据库用户的标识且作为 SQL Server 身份验证的一种替代方法使用。
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>使用 ActiveDirectoryPassword 身份验证模式进行连接
 #### <a name="setup-requirement"></a>安装程序要求
 如果使用 ActiveDirectoryPassword 身份验证模式，则需要下载 [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) 及其依赖项，并将他它们包含在 Java 生成路径中。
@@ -146,13 +146,13 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.windows.net",
   "databaseName"   -> "MyDatabase",
-  "user"           -> "username ",
+  "user"           -> "username",
   "password"       -> "*********",
   "authentication" -> "ActiveDirectoryPassword",
   "encrypt"        -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -169,12 +169,12 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"                   -> "mysqlserver.database.windows.net",
   "databaseName"          -> "MyDatabase",
-  "accessToken"           -> "access_token ",
+  "accessToken"           -> "access_token",
   "hostNameInCertificate" -> "*.database.windows.net",
   "encrypt"               -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -214,7 +214,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ## <a name="next-steps"></a>后续步骤
 从 [azure-sqldb-spark GitHub 存储库](https://github.com/Azure/azure-sqldb-spark)下载适用于 Azure SQL 数据库和 SQL Server 的 Spark 连接器（如果尚未下载），并浏览该存储库中的其他资源：
 
--   [示例 Azure Databricks 笔记本](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [示例 Azure Databricks 笔记本](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [示例脚本 (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 此外，还可以查看 [Apache Spark SQL、数据框架和数据集指南](https://spark.apache.org/docs/latest/sql-programming-guide.html)以及 [Azure Databricks 文档](https://docs.microsoft.com/azure/azure-databricks/)。

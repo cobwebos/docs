@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 7b67569ee821fee837f4fa63a1d71e622a0370a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212397"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472462"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -87,7 +87,7 @@ Windows 虚拟桌面提供对客户所使用的 Vm 大小、类型和计数的�
 确保 Windows 虚拟桌面环境遵循最佳做法：
 
 - Azure 文件存储帐户必须位于与会话主机 Vm 相同的区域中。
-- Azure 文件权限应与[要求-配置文件容器](/fslogix/overview#requirements/)中所述的权限匹配。
+- Azure 文件权限应与[要求-配置文件容器](/fslogix/overview#requirements)中所述的权限匹配。
 - 每个主机池都必须基于相同的主映像生成相同的类型和大小的 VM。
 - 每个主机池 VM 必须位于同一个资源组中，以帮助管理、缩放和更新。
 - 为了获得最佳性能，存储解决方案和 FSLogix 配置文件容器应位于相同的数据中心位置。

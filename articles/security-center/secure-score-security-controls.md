@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443578"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500243"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增强的安全评分（预览） 
 
@@ -65,15 +65,15 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 
 在上面的屏幕截图中，安全控制 "应用系统更新" 的可能性显示了 "2% （1点）"。 这意味着，如果修正此控制中的所有建议，分数将增加2% （在本例中为一个点）。 为简单起见，建议列表的 "潜在增加" 列中的值舍入到整数。 工具提示将显示精确值：
 
+* **最大分数**-在控件内完成所有建议可以获得的最大点数。 控件的最大分数指示该控件的相对重要性。 使用最大分数值来会审要首先处理哪些问题。 
 * **潜在增加**-控件内可供您使用的剩余点。 若要将这些点数添加到安全分数，请修正控件的所有建议。 在上面的示例中，为控件显示的一个点实际上为0.96 点。
 * **当前分数**-此控件的当前分数。 每个控件都提供总体分数。 在此示例中，控件的分数为5.04。 
-* **最大分数**-前两个值的和。
 
 ### <a name="calculations---understanding-your-score"></a>计算-了解成绩
 
 |指标|公式和示例|
 |-|-|
-|**安全控件的当前评分**|<br>用于计算安全控件当前分数的 ![公式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每个单独的安全控件都提供安全分数。 受控件中的建议影响的每个资源都有助于控件的当前分数。 每个控件的当前分数是控件*中*资源状态的度量值。<br>![工具提示，显示计算安全控件的当前分数时使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，最大分数6将除以78，因为这是正常和不正常资源的总和。<br>6/78 = 0.0769<br>按照正常资源（74）的数量乘以当前分数：<br>0.0769 * 74 = **5.69**<br><br>|
+|**安全控件的当前评分**|<br>用于计算安全控件当前分数的 ![公式](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>每个单独的安全控件都提供安全分数。 受控件中的建议影响的每个资源都有助于控件的当前分数。 每个控件的当前分数是控件*中*资源状态的度量值。<br>![工具提示，显示计算安全控件的当前分数时使用的值](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>在此示例中，最大分数6将除以78，因为这是正常和不正常资源的总和。<br>6/78 = 0.0769<br>将其与正常资源（4）的数量相乘会导致当前评分：<br>0.0769 * 4 = **0.31**<br><br>|
 |**安全功能分数**<br>一个订阅|<br>![用于计算当前安全分数的公式](media/secure-score-security-controls/secure-score-equation.png)<br><br>![已启用所有控制的单一订阅安全分数](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>在此示例中，有一个订阅，其中包含所有可用的安全控件（60点的可能最大分数）。 评分显示了可能的60的28个点，其余32点反映在安全控制的 "潜在分数增加" 图形中。<br>![控件列表和潜在评分增加](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**安全功能分数**<br>多个订阅|<br>添加所有订阅中所有资源的当前分数，然后计算与单个订阅相同<br><br>查看多个订阅时，安全分数会评估所有启用的策略中的所有资源，并对每个安全控件的最大分数的组合影响进行分组。<br>为启用了所有控件的多个订阅 ![安全分数](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>组合分数**不**是平均值;相反，它是所有订阅中所有资源的状态的计算状态。<br>这种情况下，如果你跳到 "建议" 页面并增加可用的可用点数，你会发现这是当前评分（24）和可用分数（60）之间的差异。|
 ||||

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029485"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471850"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>有关 Azure 网络观察程序的常见问题解答（FAQ）
 [Azure 网络观察](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)程序服务提供了一套工具，用于监视、诊断、查看指标，并为 Azure 虚拟网络中的资源启用或禁用日志。 本文解答了有关该服务的常见问题。
@@ -75,8 +75,11 @@ ms.locfileid: "77029485"
 ### <a name="what-are-resource-limits-on-network-watcher"></a>什么是网络观察程序的资源限制？
 有关所有限制，请参阅[服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits)页。  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>为什么每个区域只允许一个网络观察程序实例？ 
 仅需为订阅启用一次网络观察程序，才能使用它的功能，这并不是服务限制。
+
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>如何管理网络观察程序资源？ 
+网络观察程序资源代表网络观察程序的后端服务，由 Azure 完全管理。 客户无需管理它。 资源不支持移动等操作。 但是，[可以删除资源](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal)。 
 
 ## <a name="nsg-flow-logs"></a>NSG 流日志
 

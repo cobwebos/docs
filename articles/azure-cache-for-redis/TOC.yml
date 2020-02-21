@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: 设置异地复制
           href: cache-how-to-geo-replication.md
+        - name: 借助预留容量节省资金
+          href: cache-reserved-pricing.md
         - name: 从托管缓存服务迁移
           href: cache-migrate-to-redis.md
     - name: 自动化

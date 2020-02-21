@@ -6,17 +6,17 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
-ms.date: 07/26/2019
 ms.author: diberry
-ms.openlocfilehash: 10a4c0b90a94433301923d2b1bcc0893b09bf935
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7c028127343fe522c7546fc68adcf950c7777df0
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451649"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371798"
 ---
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要 LUIS 应用时，请将其删除。 为此，请在左上角的菜单中选择“我的应用”。  在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。  在弹出的“删除应用?”对话框中，选择“确定”   。 
+不再需要 LUIS 应用时，请将其删除。 为此，请在左上角的菜单中选择“我的应用”。  在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。  在弹出的“删除应用?”对话框中，选择“确定”   。

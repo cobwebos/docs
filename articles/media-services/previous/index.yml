@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure 媒体服务 v2（旧版）
+summary: 媒体服务 v2 中未添加新功能。 请查看最新版本：媒体服务 v3。
+metadata:
+  title: Azure 媒体服务 v2 文档
+  description: 了解如何使用媒体服务 v2 安全地流式传输广播质量的点播或直播视频。
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500767"
+landingContent:
+- title: 关于 Azure 媒体服务 v2
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 媒体服务 v2 概述
+      url: media-services-overview.md
+    - text: 迁移到媒体服务 v3
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: 媒体服务 v2 中有哪些新增功能？
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: 旧组件
+      url: legacy-components.md
+- title: 实时流式处理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 概述
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用门户创建媒体服务帐户
+      url: media-services-portal-create-account.md
+    - text: 以编程方式连接
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: 使用 Azure 门户实时传送视频流
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: 使用 .NET 实时传送视频流
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: 传送点播视频
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 Azure 门户
+      url: media-services-portal-vod-get-started.md
+    - text: 使用 .NET
+      url: media-services-dotnet-get-started.md
+    - text: 使用 REST
+      url: media-services-rest-get-started.md

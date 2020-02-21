@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228853"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460001"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>什么是 Azure HDInsight 上的 Apache Storm？
 
@@ -42,7 +42,7 @@ Storm on HDInsight 提供以下功能：
 
     如需集成 Azure 服务的示例解决方案，请参阅[使用 Apache Storm on HDInsight 处理事件中心的事件](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)。
 
-有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/documentation/Powered-By.html)。
+有关在实时分析解决方案中使用 Apache Storm 的公司的列表，请参阅[使用 Apache Storm 的公司](https://storm.apache.org/Powered-By.html)。
 
 若要开始使用 Storm，请参阅[在 Azure HDInsight 中创建和监视 Apache Storm 拓扑](apache-storm-quickstart.md)。
 

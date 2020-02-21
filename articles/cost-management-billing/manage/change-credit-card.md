@@ -2,21 +2,18 @@
 title: 更改用于 Azure 的信用卡
 description: 介绍如何更改用于支付 Azure 订阅的信用卡。
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 10d475b9c0c33dfd17c3d87beed00154511e1ab6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188407"
+ms.locfileid: "77199851"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡
 
@@ -118,7 +115,7 @@ Microsoft Azure 支持的付款方式为信用卡和支票/电汇。 若要获�
 
 以下部分适用于已签署 Microsoft 客户协议，并已使用信用卡注册了 Azure Online 的客户。 [了解如何检查是否已签署 Microsoft 客户协议](#check-the-type-of-your-account)。
 
-### <a name="change-default-credit-card"></a>更改默认信用卡 
+### <a name="change-default-credit-card"></a>更改默认信用卡
 如果已签署 Microsoft 客户协议，则信用卡与计费配置文件相关联。 只有注册了 Azure 并创建了计费帐户的人员才能更改计费配置文件的付款方式。
 
 若要将计费配置文件的默认付款方式更改为支票/电汇，请参阅[通过发票为 Azure 订阅付款](pay-by-invoice.md)。

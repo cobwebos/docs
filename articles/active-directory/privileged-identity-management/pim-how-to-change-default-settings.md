@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048087"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498969"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -32,11 +32,11 @@ ms.locfileid: "77048087"
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 角色的用户登录到[Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
 
-    ![Azure AD 角色新版本](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 按照本文中的步骤批准或拒绝 Azure AD 角色的请求。
 
-# <a name="new-versiontabnew"></a>[新版本](#tab/new)
+# <a name="new-version"></a>[新版本](#tab/new)
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -46,15 +46,15 @@ ms.locfileid: "77048087"
 gt
 1. 打开**Azure AD Privileged Identity Management** &gt; **Azure AD 角色**&gt;**角色设置**。
 
-    ![列出 Azure 资源角色的角色设置页](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    !["角色设置" 页列出 Azure AD 角色](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. 选择要配置其设置的角色。
 
-    ![列出多个分配和激活设置的角色设置详细信息页](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![列出多个分配和激活设置的角色设置详细信息页](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. 选择 "**编辑**" 以打开 "角色设置" 页。
 
-    !["编辑角色设置" 页，其中包含用于更新分配和激活设置的选项](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    !["编辑角色设置" 页，其中包含用于更新分配和激活设置的选项](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     在每个角色的“角色设置”窗格上，有多个可以配置的设置。
 
@@ -66,18 +66,18 @@ gt
 
 | | |
 | --- | --- |
-| **允许永久的合格分配** | 资源管理员可以分配永久的合格分配。 |
-| **使合格分配在以下时间后过期** | 资源管理员可以要求所有合格分配都具有指定的开始和结束日期。 |
+| **允许永久的合格分配** | 全局管理员和特权角色管理员可以分配永久的合格分配。 |
+| **使合格分配在以下时间后过期** | 全局管理员和特权角色管理员可要求所有符合条件的分配都具有指定的开始日期和结束日期。 |
 
 并且，可以选择其中一个活动分配持续时间选项：
 
 | | |
 | --- | --- |
-| **允许永久的活动分配** | 资源管理员可以分配永久活动分配。 |
-| **使活动分配在以下时间后过期** | 资源管理员可以要求所有活动分配都具有指定的开始和结束日期。 |
+| **允许永久的活动分配** | 全局管理员和特权角色管理员可以分配永久活动分配。 |
+| **使活动分配在以下时间后过期** | 全局管理员和特权角色管理员可要求所有活动分配都具有指定的开始日期和结束日期。 |
 
 > [!NOTE]
-> 资源管理员可续订具有特定结束日期的所有分配。 此外，用户还可以启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
+> 具有指定结束日期的所有分配都可以由全局管理员和特权角色管理员续订。 此外，用户还可以启动自助服务请求来[扩展或续订角色分配](pim-resource-roles-renew-extend.md)。
 
 ## <a name="require-multi-factor-authentication"></a>需要多重身份验证
 
@@ -87,13 +87,13 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 在某些情况下，你可能想要将用户分配到一段较短的时间（例如一天）。 在这种情况下，分配的用户无需请求激活。 在这种情况下，当用户使用其角色分配时，Privileged Identity Management 无法强制实施多重身份验证，因为在分配该角色时，用户已在角色中处于活动状态。
 
-若要确保满足分配的资源管理员是谁，可以通过选中 "**对活动分配需要多重身份验证**" 复选框，对活动分配强制执行多重身份验证。
+若要确保满足分配的管理员是谁，可以通过选中 "**对活动分配需要多重身份验证**" 复选框，对活动分配强制执行多重身份验证。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>要求在激活时进行多重身份验证
 
 你可以要求具有角色的用户能够在激活之前证明他们使用 Azure 多重身份验证的用户。 多重身份验证可确保用户是他们声称具有合理确定性的用户。 强制执行此选项可以在用户帐户可能已遭入侵的情况下保护关键资源。
 
-若要在激活之前要求进行多重身份验证，请选中 "**激活时需要多重身份验证**" 复选框。
+若要在激活之前要求多重身份验证，请选中 "**编辑角色设置**" 的 "分配" 选项卡中的 "**激活时需要多重身份验证**" 复选框。
 
 有关详细信息，请参阅[多重身份验证和 Privileged Identity Management](pim-how-to-require-mfa.md)。
 
@@ -121,7 +121,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 1. 指定所有角色设置后，请选择 "**更新**" 以保存所做的更改。
 
-# <a name="previous-versiontabprevious"></a>[先前版本](#tab/previous)
+# <a name="previous-version"></a>[先前版本](#tab/previous)
 
 ## <a name="open-role-settings"></a>打开角色设置
 
@@ -131,7 +131,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 1. 选择**Azure AD 角色**。
 
-1. 单击“设置”。
+1. 选择“设置”。
 
     ![Azure AD 角色-设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -163,7 +163,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 使用 "**事件/请求票证**" 开关来要求符合条件的管理员在激活其角色时包括票证编号。 这种做法可以使角色访问审核更为有效。
 
-## <a name="multi-factor-authentication"></a>多因素身份验证
+## <a name="multi-factor-authentication"></a>多重身份验证
 
 使用“多重身份验证”开关指定是否要求用户在激活其角色之前，先使用 MFA 验证其身份。 它们只需在每个会话中验证其标识一次，而不是每次都激活角色。 启用 MFA 时，请记住两点提示：
 
@@ -184,7 +184,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
   - Power BI 管理员
   - 特权角色管理员
   - 安全管理员
-  - SharePoint administrator
+  - SharePoint 管理员
   - Skype for Business 管理员
   - 用户管理员
 

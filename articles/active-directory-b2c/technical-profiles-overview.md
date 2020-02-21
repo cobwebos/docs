@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136238"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505653"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的技术配置文件
 
@@ -39,7 +39,7 @@ ms.locfileid: "77136238"
 - [SAML2](saml-technical-profile.md) - 与任何 SAML 协议标识提供者联合。
 - [自断言](self-asserted-technical-profile.md) - 与用户交互。 例如，收集用户的凭据进行登录、呈现注册页或密码重置。
 - [会话管理](custom-policy-reference-sso.md) - 处理不同类型的会话。
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - 一次性[密码](one-time-password-technical-profile.md)-提供对管理一次性密码生成和验证的支持。 
 
 ## <a name="technical-profile-flow"></a>技术配置文件流

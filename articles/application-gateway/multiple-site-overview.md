@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 1/7/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: 0192d27ebfa696376ce79f90a6ceeb816dfb1e46
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac9dd31e01b1915642951aeddb10d3eae118d943
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719947"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523775"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "75719947"
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
 > [!IMPORTANT]
-> 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
+> 规则按其在 v1 SKU 的门户中列出的顺序进行处理。 对于 v2 SKU，精确匹配具有更高的优先级。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这可以确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
 
 对 `http://contoso.com` 的请求路由到 ContosoServerPool，对 `http://fabrikam.com` 的请求路由到 FabrikamServerPool。
 

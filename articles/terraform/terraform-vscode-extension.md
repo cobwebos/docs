@@ -3,12 +3,12 @@ title: 教程 - 配置 Azure Terraform Visual Studio Code 扩展
 description: 了解如何在 Visual Studio Code 中安装和使用 Azure Terraform 扩展。
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159234"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472275"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>教程：配置 Azure Terraform Visual Studio Code 扩展
 
@@ -20,10 +20,10 @@ ms.locfileid: "74159234"
 > * 安装和使用 Azure 服务提供的 Terraform Visual Studio Code 扩展。
 > * 使用 Visual Studio Code 编写、规划和执行 Terraform 计划。
 
-## <a name="prerequisites"></a>先决条件
-- **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+## <a name="prerequisites"></a>必备条件
+- **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **Terraform**：[安装和配置 Terraform](/azure/virtual-machines/linux/terraform-install-configure)。
+- **Terraform**：[安装和配置 Terraform](terraform-install-configure.md)。
 
 - **Visual Studio Code**：安装适合环境的 [Visual Studio Code](https://code.visualstudio.com/download) 版本。
 
@@ -190,7 +190,7 @@ Terraform plan 命令用于检查一组更改的执行计划是否按预期执�
 
     ![Terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-1. 输入 `yes` 。
+1. 输入 `yes`。
 
     ![Terraform apply 是](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 

@@ -3,12 +3,12 @@ title: 教程 - 使用 Terraform 创建 Azure 虚拟机规模集
 description: 了解如何使用 Terraform 配置 Azure 虚拟机规模集并设置其版本。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369467"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472224"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>教程：使用 Terraform 创建 Azure 虚拟机规模集
 
@@ -30,7 +30,7 @@ ms.locfileid: "75369467"
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-- **安装 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](/azure/virtual-machines/linux/terraform-install-configure)一文中的指导
+- **安装 Terraform**：遵循[安装 Terraform 并配置对 Azure 的访问权限](terraform-install-configure.md)一文中的指导
 
 - **创建 SSH 密钥对**：有关详细信息，请参阅[如何创建和使用适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对](/azure/virtual-machines/linux/mac-create-ssh-keys)。
 

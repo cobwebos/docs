@@ -3,21 +3,18 @@ title: 支付 Microsoft Azure 帐单 | Microsoft Docs
 description: 介绍如何在 Azure 门户中支付账单
 keywords: 账单, 逾期未付, 余额, 立即付款,
 author: banders
-manager: judupont
+ms.reviewer: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188125"
+ms.locfileid: "77200140"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帐单
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9df00eea79b5dedc3211de02b17fe8f396d7b8a5
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: acf358b530c61dcbac38faf92e2ba672a7d4abef
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951048"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484377"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
 
@@ -39,7 +39,7 @@ ms.locfileid: "74951048"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅 [AlternativeSecurityId 的架构](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#alternativesecurityid-type)。
+创建可在 Azure Active Directory 调用中使用的用户 alternativeSecurityId 属性的 JSON 表示形式。 有关详细信息，请参阅[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架构。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
@@ -82,7 +82,7 @@ ms.locfileid: "74951048"
 以下示例将新的社交标识与现有帐户相链接。 链接新的社交标识：
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技术配置文件中，输出用户的 **alternativeSecurityIds** 声明。
 1. 要求用户使用某个不与此用户关联的标识提供者登录。
-1. 使用 **CreateAlternativeSecurityId** 声明转换创建名为 `AlternativeSecurityId2` 的新 **alternativeSecurityId** 声明类型
+1. 使用 **CreateAlternativeSecurityId** 声明转换创建名为 **的新**alternativeSecurityId`AlternativeSecurityId2` 声明类型
 1. 调用 **AddItemToAlternativeSecurityIdCollection** 声明转换，将 **AlternativeSecurityId2** 声明添加到现有的 **AlternativeSecurityIds** 声明。
 1. 将 **alternativeSecurityIds** 声明保存到用户帐户
 

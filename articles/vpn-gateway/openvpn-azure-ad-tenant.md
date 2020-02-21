@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: alzam
-ms.openlocfilehash: 6b0b6707f6851ef674d0045c7cf1686af13ea856
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: b9627862002a70dc84b0e268128c53a97df0ebe8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137843"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472292"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
@@ -46,7 +46,7 @@ ms.locfileid: "77137843"
 
 1. 找到要用于身份验证的目录的目录 ID。 它在 "Active Directory" 页的 "属性" 部分中列出。
 
-    ![目录 ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
+    ![Directory ID](./media/openvpn-create-azure-ad-tenant/directory-id.png)
 
 2. 复制目录 ID。
 
@@ -80,11 +80,11 @@ ms.locfileid: "77137843"
 
 5. 如果出现提示，请选择**全局管理员**帐户。
 
-    ![目录 ID](./media/openvpn-create-azure-ad-tenant/pick.png)
+    ![Directory ID](./media/openvpn-create-azure-ad-tenant/pick.png)
 
 6. 出现提示时，选择 "**接受**"。
 
-    ![接受](./media/openvpn-create-azure-ad-tenant/accept.jpg)
+    ![Accept](./media/openvpn-create-azure-ad-tenant/accept.jpg)
 
 7. 在 Azure AD 的 "**企业应用程序**" 中，会看到 " **Azure VPN** " 已列出。
 
@@ -102,6 +102,9 @@ ms.locfileid: "77137843"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/" -VpnClientAddressPool 192.168.0.0/24 -VpnClientProtocol OpenVPN
     ```
+
+   > [!NOTE]
+   > 请确保在 `AadIssuerUri` 值的末尾包含尾随斜杠。 否则，该命令将失败。
 
 10. 通过运行以下命令创建并下载配置文件。 更改-ResourceGroupName 和-Name 值，使其与你自己的值匹配。
 

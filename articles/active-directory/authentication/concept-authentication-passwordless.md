@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756787"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505764"
 ---
-# <a name="passwordless-authentication-options"></a>无密码身份验证选项
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
 多重身份验证（MFA）是保护组织的一种好方法，但用户通常会在必须记住其密码的情况下使用额外的安全层。 无密码身份验证方法更为方便，因为密码会被删除并替换为你拥有的内容，以及你或你知道的内容。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76756787"
 | --- | --- | --- |
 | 无密码 | Windows 10 设备、电话号码或安全密钥 | 生物识别或 PIN |
 
-当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供三个无密码 authentication 选项：
+当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供以下三个无密码身份验证选项：
 
 - Windows Hello for Business
 - Microsoft Authenticator 应用
@@ -52,7 +52,7 @@ Windows Hello 企业版[规划指南](https://docs.microsoft.com/windows/securit
 
 FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，可采用任何形式。 Fast Identity Online （FIDO）是无密码 authentication 的开放标准。 FIDO 允许用户和组织利用标准登录到其资源，而无需使用外部安全密钥或设备内置的平台密钥。
 
-对于公共预览版，员工可以使用安全密钥登录到已加入 Azure AD 的 Windows 10 设备，并对其云和本地资源进行单一登录。 用户还可以登录到受支持的浏览器。 对于安全敏感的企业而言，FIDO2 安全密钥是一个不错的选择，或者不愿意或无法使用其电话作为第二个因素的方案或员工。
+对于公共预览版，员工可以使用安全密钥登录到其 Azure AD 或混合 Azure AD 加入 Windows 10 设备，并对其云和本地资源进行单一登录。 用户还可以登录到受支持的浏览器。 对于安全敏感的企业而言，FIDO2 安全密钥是一个不错的选择，或者不愿意或无法使用其电话作为第二个因素的方案或员工。
 
 ![使用安全密钥登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -62,14 +62,14 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 | # | 功能/扩展信任 | 为什么需要此功能或扩展？ |
 | --- | --- | --- |
-| 第 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
+| 1 | 居民密钥 | 此功能使安全密钥可移植，其中的凭据存储在安全密钥上。 |
 | 2 | 客户端 pin | 利用此功能，你可以使用另一个因素来保护凭据，并将其应用于没有用户界面的安全密钥。 |
 | 3 | hmac-secret | 此扩展可确保你可以在设备处于脱机状态或处于飞行模式时登录到你的设备。 |
 | 4 | 每个 RP 多个帐户 | 此功能可确保你可以在多个服务（如 Microsoft 帐户和 Azure Active Directory）上使用相同的安全密钥。 |
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 建议你通过联系供应商以及 FIDO 联盟来评估这些密钥的安全属性。
 
-| 提供商 | 联系人 |
+| 提供程序 | 联系人 |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

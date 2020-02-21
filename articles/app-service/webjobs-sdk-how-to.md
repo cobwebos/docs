@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549081"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486336"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -71,7 +71,7 @@ static void Main(string[] args)
 
 可在开发模式下运行主机，提高本地开发效率。 下面是在开发模式下运行时更改的一些设置：
 
-| 属性 | 开发设置 |
+| properties | 开发设置 |
 | ------------- | ------------- |
 | `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
@@ -281,7 +281,7 @@ static async Task Main()
 * 队列存储
 * 表存储
 
-若要使用其他触发器和绑定类型，请安装包含这些类型的 NuGet 包，并对 `JobHostConfiguration` 对象调用 `Use<binding>` 方法。 例如，如果要使用计时器触发器，请在 `Main` 方法中安装 `Microsoft.Azure.WebJobs.Extensions` 并调用 `UseTimers`，如下所示：
+若要使用其他触发器和绑定类型，请安装包含这些类型的 NuGet 包，并对 `Use<binding>` 对象调用 `JobHostConfiguration` 方法。 例如，如果要使用计时器触发器，请在 `Main` 方法中安装 `Microsoft.Azure.WebJobs.Extensions` 并调用 `UseTimers`，如下所示：
 
 ```cs
 static void Main()
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[队列存储绑定](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[队列存储绑定](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties)一文。
 
 #### <a name="version-2x"></a>版本2。*x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-有关更多详细信息，请参阅[服务总线绑定](../azure-functions/functions-bindings-service-bus.md#hostjson-settings)一文。
+有关更多详细信息，请参阅[服务总线绑定](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings)一文。
 
 ### <a name="configuration-for-other-bindings"></a>其他绑定的配置
 
@@ -680,11 +680,11 @@ public static void CreateQueueMessage(
 
 Azure Functions 文档提供了有关每个绑定类型的参考信息。 你将在每个绑定参考文章中找到以下信息。 （此示例基于存储队列。）
 
-* [包](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x)。 需要安装以包含对 Web 作业 SDK 项目中的绑定的支持的包。
-* [示例](../azure-functions/functions-bindings-storage-queue.md#trigger)。 代码示例。 C#类库示例适用于 WEB 作业 SDK。 只需省略 `FunctionName` 特性。
-* [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations)。 要用于绑定类型的特性。
-* [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的说明。
-* [用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可以绑定到的类型，以及绑定的工作方式的相关信息。 例如：轮询算法、有害队列处理。
+* [包](../azure-functions/functions-bindings-storage-queue.md)。 需要安装以包含对 Web 作业 SDK 项目中的绑定的支持的包。
+* [示例](../azure-functions/functions-bindings-storage-queue-trigger.md)。 代码示例。 C#类库示例适用于 WEB 作业 SDK。 只需省略 `FunctionName` 特性。
+* [特性](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations)。 要用于绑定类型的特性。
+* [配置](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration)。 特性属性和构造函数参数的说明。
+* [用法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 可以绑定到的类型，以及绑定的工作方式的相关信息。 例如：轮询算法、有害队列处理。
   
 有关绑定引用项目的列表，请参阅 Azure Functions 的[触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)一文中的 "支持的绑定"。 在该列表中，仅 Azure Functions （而不是 Web 作业 SDK）支持 HTTP、Webhook 和事件网格绑定。
 
@@ -824,7 +824,7 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 |LogLevel    |代码|
 |------------|---|
 |跟踪       | 0 |
-|调试       | 第 |
+|调试       | 1 |
 |信息 | 2 |
 |警告     | 3 |
 |错误       | 4 |
@@ -903,7 +903,7 @@ using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.ApplicationInsights.Channel;
 ```
 
-使用以下 [`ITelemetryInitializer`] 的自定义实现，可向默认的 [`TelemetryConfiguration`] 添加自己的 [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry)。
+使用以下 [`ITelemetryInitializer`] 的自定义实现，可向默认的 [`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry) 添加自己的 [`TelemetryConfiguration`]。
 
 ```cs
 internal class CustomTelemetryInitializer : ITelemetryInitializer
@@ -1002,4 +1002,4 @@ config.LoggerFactory = new LoggerFactory()
 [`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
 [`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
 [`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[JobHostConfiguration]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
