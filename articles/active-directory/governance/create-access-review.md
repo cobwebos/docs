@@ -15,12 +15,12 @@ ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 3e769df186597a88247601f4fc70c48263edc88b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084440"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483901"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建组和应用程序的访问评审
 
@@ -28,7 +28,7 @@ ms.locfileid: "77084440"
 
 本文介绍如何为组成员或应用程序访问创建一个或多个访问评审。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - Azure AD Premium P2
 - 全局管理员或用户管理员
@@ -53,7 +53,7 @@ ms.locfileid: "77084440"
 
     ![创建访问评审 - 开始和结束日期](./media/create-access-review/start-end-dates.png)
 
-1. 若要定期检查访问权限，请将**频率**设置从**一次**更改为**每周**、**每月**、每**季度**或**每年**。 使用 "**持续时间**" 滑块或文本框可定义为审阅者的输入打开的重复序列的每个检查天数。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。
+1. 若要定期检查访问权限，请将**频率**设置从**一次**更改为**每周**、**每月**、每**季度**、**半年**或**每年**。 使用 "**持续时间**" 滑块或文本框可定义为审阅者的输入打开的重复序列的每个检查天数。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。
 
 1. 使用“结束”设置指定如何结束定期访问评审系列。 系列的结束方式有三种：持续运行，无限期地开始评审；运行至指定日期；运行至已完成定义的评审数目。 在创建后，其他用户管理员或其他全局管理员可以通过在 "**设置**" 中更改日期来停止序列，使其在该日期结束。
 
@@ -130,7 +130,7 @@ ms.locfileid: "77084440"
 
 ## <a name="access-review-status-table"></a>访问评审状态表
 
-| 状态 | Definition |
+| 状态 | 定义 |
 |--------|------------|
 |NotStarted | 已创建评审，用户发现正在等待启动。 |
 |正在初始化   | 正在进行用户发现，以标识属于评审的所有用户。 |

@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896428"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499044"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management 中的 Azure AD 角色的管理功能
 
 已更新 Privileged Identity Management 中 Azure AD 角色的管理体验，以统一管理 Azure AD 角色和 Azure 资源角色的方式。 以前，Azure 资源角色 Privileged Identity Management 具有几个不可用于 Azure AD 角色的关键功能。
 
 当前推出更新时，我们将两者合并为单一的管理体验，在其中你可以获得与 Azure 资源角色相同的 Azure AD 角色功能。 本文通知您已更新的功能和任何要求。
+
 
 ## <a name="time-bound-assignments"></a>时间绑定分配
 

@@ -1,5 +1,6 @@
 ---
-title: 参考： Ubuntu DSVM
+title: 参考： Ubuntu Data Science Virtual Machine
+titleSuffix: Azure Data Science Virtual Machine
 description: Ubuntu Data Science Virtual Machine 中包含的工具的详细信息
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 97072f1a17f2b0adbe96afae3263dc84aff0f30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497632"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525815"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考： Ubuntu （Linux） Data Science Virtual Machine
 
@@ -172,7 +173,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-不需要 Hadoop 相关的服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来停止这些服务。
+不需要 Hadoop 相关服务时，可以通过运行 ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` 来停止这些服务。
 
 /dsvm/samples/MRS 目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 Microsoft Machine Learning Server。
 
@@ -314,7 +315,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (**R** **A**nalytical **T**ool **T**o **L**earn **E**asily) 使用基于 GUI 的数据浏览和建模。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。
+Rattle （ **R** **A**nalytical **t**ool **t**o **L**获得**E**asily）使用基于 GUI 的数据浏览和建模。 它提供数据的统计和可视化摘要，转换可轻松建模的数据，从数据构建不受监督和受监督的模型，以图形方式呈现模型的性能，以及对新数据集进行评分。 它还生成 R 代码，用于复制 UI 中可直接在 R 中运行或用作进一步分析的起点的操作。
 
 若要运行 Rattle，需进入图形桌面登录会话。 在终端中输入 **R** 打开 R 环境。 在 R 提示符中，输入以下命令：
 
@@ -328,7 +329,7 @@ rattle()
 > [!NOTE]
 > 如果无权在系统目录（默认）中安装包，可能会在 R 控制台窗口中看到一个提示，提醒将包安装到个人库中。 如果看到这些提示，请回复 y。
 
-1. 选择”**执行**“。
+1. 选择“执行”。
 1. 此时会显示一个对话框，询问是否要使用示例气象数据集。 选择“是”以加载示例。
 1. 选择“模型”选项卡。
 1. 选择“执行”以生成决策树。

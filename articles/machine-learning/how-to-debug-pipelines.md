@@ -1,7 +1,7 @@
 ---
 title: 调试机器学习管道并对其进行故障排除
 titleSuffix: Azure Machine Learning
-description: 调试 Azure 机器学习 SDK for Python 中的机器学习管道并对其进行故障排除。 了解开发管道的常见缺陷，以及帮助你在远程执行前后调试脚本的技巧。
+description: 调试 Azure 机器学习 SDK for Python 中的机器学习管道并对其进行故障排除。 了解开发管道的常见缺陷，以及帮助你在远程执行前后调试脚本的技巧。 了解如何使用 Visual Studio Code 以交互方式调试机器学习管道。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,22 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769127"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485363"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>调试机器学习管道并对其进行故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)和[Azure 机器学习设计器（预览版）](https://docs.microsoft.com/azure/machine-learning/concept-designer)中对[计算机学习管道](concept-ml-pipelines.md)进行调试和故障排除。
+本文介绍如何在[AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)和[Azure 机器学习设计器（预览版）](https://docs.microsoft.com/azure/machine-learning/concept-designer)中对[计算机学习管道](concept-ml-pipelines.md)进行调试和故障排除。 提供了有关如何：
+
+* 使用 Azure 机器学习 SDK 进行调试
+* 使用 Azure 机器学习设计器进行调试
+* 使用 Application Insights 调试
+* 使用 Visual Studio Code （VS Code）和针对 Visual Studio 的 Python 工具交互调试（PTVSD）
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure 机器学习 SDK 中的调试和故障排除
 以下部分概述了生成管道时的常见缺陷，以及用于调试在管道中运行的代码的不同策略。 如果在使管道按预期运行时遇到问题，请使用以下提示。
@@ -85,7 +90,7 @@ ms.locfileid: "76769127"
 
 | 库                    | 类型   | 示例                                                          | 目标                                  | 资源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure 机器学习 SDK | 度量值 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml。运行类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Azure 机器学习 SDK | 指标 | `run.log(name, val)`                                             | Azure 机器学习门户 UI             | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml。运行类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Python 打印/日志记录    | 日志    | `print(val)`<br>`logging.info(message)`                          | 驱动程序日志，Azure 机器学习设计器 | [如何跟踪试验](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 日志记录](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | 日志    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights 跟踪                | [在 Application Insights 中调试管道](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)（OpenCensus Azure Monitor 导出程序）<br>[Python 日志记录指南](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -148,6 +153,239 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights 中的调试和故障排除
 有关以这种方式使用 OpenCensus Python 库的详细信息，请参阅本指南：[在 Application Insights 中调试和解决机器学习管道问题](how-to-debug-pipelines-application-insights.md)
+
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code 中的调试和故障排除
+
+在某些情况下，可能需要以交互方式调试 ML 管道中使用的 Python 代码。 通过使用 Visual Studio Code （VS Code）和针对 Visual Studio 的 Python 工具（PTVSD），可以在代码在定型环境中运行时附加到代码。
+
+### <a name="prerequisites"></a>必备条件
+
+* 配置为使用__Azure 虚拟网络__的__Azure 机器学习工作区__。
+* 一个__Azure 机器学习管道__，它使用 Python 脚本作为管道步骤的一部分。 例如，PythonScriptStep。
+* Azure 机器学习计算群集，它位于__虚拟网络中__，__由管道用于定型__。
+* __虚拟网络中__的__开发环境__。 开发环境可能是以下项之一：
+
+    * 虚拟网络中的 Azure 虚拟机
+    * 虚拟网络中笔记本 VM 的计算实例
+    * 虚拟专用网络（VPN）连接到虚拟网络的客户端计算机。
+
+有关将 Azure 虚拟网络与 Azure 机器学习配合使用的详细信息，请参阅[在 Azure 虚拟网络中保护 AZURE ML 试验和推理作业](how-to-enable-virtual-network.md)。
+
+### <a name="how-it-works"></a>工作原理
+
+ML 管道步骤运行 Python 脚本。 修改这些脚本以执行以下操作：
+    
+1. 记录正在其上运行的主机的 IP 地址。 使用 IP 地址将调试器连接到脚本。
+
+2. 启动 PTVSD 调试组件，并等待调试程序连接。
+
+3. 在您的开发环境中，您将监视定型过程创建的日志，以查找运行脚本的 IP 地址。
+
+4. 使用 `launch.json` 文件告诉 VS Code 要将调试器连接到的 IP 地址。
+
+5. 附加调试器并以交互方式执行该脚本。
+
+### <a name="configure-python-scripts"></a>配置 Python 脚本
+
+若要启用调试，请对 ML 管道中的步骤所使用的 Python 脚本进行以下更改：
+
+1. 添加以下 import 语句：
+
+    ```python
+    import ptvsd
+    import socket
+    from azureml.core import Run
+    ```
+
+1. 添加以下自变量。 这些自变量允许您根据需要启用调试器，并设置附加调试器的超时值：
+
+    ```python
+    parser.add_argument('--remote_debug', action='store_true')
+    parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the Azure ML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+    ```
+
+1. 添加以下语句。 这些语句将加载当前的运行上下文，以便您可以记录运行代码的节点的 IP 地址：
+
+    ```python
+    global run
+    run = Run.get_context()
+    ```
+
+1. 添加一个 `if` 语句，该语句启动 PTVSD 并等待调试器附加。 如果在超时之前未附加调试器，则脚本将继续正常运行。
+
+    ```python
+    if args.remote_debug:
+        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+        # Log the IP and port
+        ip = socket.gethostbyname(socket.gethostname())
+        print(f'ip_address: {ip}')
+        ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                            redirect_output=True)
+        # Wait for the timeout for debugger to attach
+        ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+        print(f'Debugger attached = {ptvsd.is_attached()}')
+    ```
+
+以下 Python 示例显示了启用调试的基本 `train.py` 文件：
+
+```python
+# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license.
+
+import argparse
+import os
+import ptvsd
+import socket
+from azureml.core import Run
+
+print("In train.py")
+print("As a data scientist, this is where I use my training code.")
+
+parser = argparse.ArgumentParser("train")
+
+parser.add_argument("--input_data", type=str, help="input data")
+parser.add_argument("--output_train", type=str, help="output_train directory")
+
+# Argument check for remote debugging
+parser.add_argument('--remote_debug', action='store_true')
+parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the AML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+# Get run object, so we can find and log the IP of the host instance
+global run
+run = Run.get_context()
+
+args = parser.parse_args()
+
+# Start debugger if remote_debug is enabled
+if args.remote_debug:
+    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+    # Log the IP and port
+    ip = socket.gethostbyname(socket.gethostname())
+    print(f'ip_address: {ip}')
+    ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                        redirect_output=True)
+    # Wait for the timeout for debugger to attach
+    ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+    print(f'Debugger attached = {ptvsd.is_attached()}')
+
+print("Argument 1: %s" % args.input_data)
+print("Argument 2: %s" % args.output_train)
+
+if not (args.output_train is None):
+    os.makedirs(args.output_train, exist_ok=True)
+    print("%s created" % args.output_train)
+```
+
+### <a name="configure-ml-pipeline"></a>配置 ML 管道
+
+若要提供启动 PTVSD 和获取运行上下文所需的 Python 包，请创建[环境]()并设置 `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`。 更改 SDK 版本，使其与你正在使用的版本匹配。 下面的代码段演示如何创建环境：
+
+```python
+# Use a RunConfiguration to specify some additional requirements for this step.
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# enable Docker 
+run_config.environment.docker.enabled = True
+
+# set Docker base image to the default CPU-based image
+run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+# use conda_dependencies.yml to create a conda environment in the Docker image for execution
+run_config.environment.python.user_managed_dependencies = False
+
+# specify CondaDependencies obj
+run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
+                                                                           pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
+```
+
+在[配置 Python 脚本](#configure-python-scripts)部分，将两个新参数添加到 ML 管道步骤所使用的脚本中。 下面的代码段演示如何使用这些参数启用组件调试并设置超时。 它还演示了如何使用之前通过设置 `runconfig=run_config`创建的环境：
+
+```python
+# Use RunConfig from a pipeline step
+step1 = PythonScriptStep(name="train_step",
+                         script_name="train.py",
+                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300],
+                         compute_target=aml_compute, 
+                         source_directory=source_directory,
+                         runconfig=run_config,
+                         allow_reuse=False)
+```
+
+管道运行时，每个步骤创建一个子运行。 如果启用调试，则修改后的脚本将在子运行的 `70_driver_log.txt` 中记录类似于以下文本的信息：
+
+```text
+Timeout for debug connection: 300
+ip_address: 10.3.0.5
+```
+
+保存 `ip_address` 值。 在下一部分中使用。
+
+> [!TIP]
+> 还可以从运行日志中查找此管道步骤的子运行日志的 IP 地址。 有关查看此信息的详细信息，请参阅[监视 AZURE ML 试验运行和指标](how-to-track-experiments.md)。
+
+### <a name="configure-development-environment"></a>配置开发环境
+
+1. 若要在 VS Code 开发环境中安装针对 Visual Studio 的 Python 工具（PTVSD），请使用以下命令：
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    有关将 PTVSD 与 VS Code 一起使用的详细信息，请参阅[远程调试](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
+
+1. 若要配置 VS Code 以便与运行调试器的 Azure 机器学习计算进行通信，请创建新的调试配置：
+
+    1. 在 VS Code 中，选择 "__调试__" 菜单，然后选择 "__打开配置__"。 将打开一个名为 "__启动__" 的文件。
+
+    1. 在__启动 json__文件中，找到包含 `"configurations": [`的行，然后在其后面插入以下文本。 将 `"host": "10.3.0.5"` 项更改为在上一节的日志中返回的 IP 地址。 将 `"localRoot": "${workspaceFolder}/code/step"` 项更改为包含要调试的脚本副本的本地目录：
+
+        ```json
+        {
+            "name": "Azure Machine Learning Compute: remote debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "10.3.0.5",
+            "redirectOutput": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/code/step1",
+                    "remoteRoot": "."
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > 如果 "配置" 部分中已有其他项，请在插入的代码后添加一个逗号（，）。
+
+        > [!TIP]
+        > 最佳做法是将脚本的资源保留在不同的目录中，这就是 `localRoot` 示例值引用 `/code/step1`的原因。
+        >
+        > 如果正在调试多个脚本，请在不同的目录中为每个脚本创建一个单独的配置节。
+
+    1. 保存__启动__文件。
+
+### <a name="connect-the-debugger"></a>连接调试器
+
+1. 打开 VS Code 并打开脚本的本地副本。
+2. 设置在附加后要使脚本停止的断点。
+3. 当子进程正在运行脚本，并且 `Timeout for debug connection` 显示在日志中时，请使用 F5 键或选择 "__调试__"。 出现提示时，请选择 " __Azure 机器学习计算：远程调试__" 配置。 还可以从侧栏中选择 "调试" 图标，从 "调试" 下拉菜单中选择 " __Azure 机器学习：远程调试__"，然后使用绿色箭头附加调试器。
+
+    此时，VS Code 连接到计算节点上的 PTVSD，并在之前设置的断点处停止。 现在可以单步执行代码，就像运行、查看变量等。
+
+    > [!NOTE]
+    > 如果日志中显示一条说明 `Debugger attached = False`的条目，则超时时间已到，并且该脚本在没有调试器的情况下继续。 再次提交管道，并在 `Timeout for debug connection` 消息后和超时过期之前连接调试器。
 
 ## <a name="next-steps"></a>后续步骤
 

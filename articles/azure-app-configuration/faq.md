@@ -1,31 +1,26 @@
 ---
-title: Azure 应用配置常见问题解答 |Microsoft Docs
+title: Azure 应用配置常见问题
 description: 有关 Azure 应用配置的常见问题
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467583"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523486"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用配置常见问题
 
-本文解决了有关 Azure 应用配置的常见问题。
+本文解答了有关 Azure 应用配置的常见问题。
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>应用配置与 Azure Key Vault 有何不同之处？
 
-应用配置适用于一组不同的用例：它可帮助开发人员管理应用程序设置和控制功能可用性。 它旨在简化处理复杂配置数据的许多任务。
+应用配置可帮助开发人员管理应用程序设置和控制功能可用性。 它旨在简化处理复杂配置数据的许多任务。
 
 应用配置支持：
 
@@ -36,7 +31,7 @@ ms.locfileid: "77467583"
 - 专用管理操作
 - 功能管理用户界面
 
-应用配置与 Key Vault 具有互补性，而这两个应用程序应在大多数应用程序部署中并行使用。
+应用配置对 Key Vault 进行了补充，而这两个应用程序应在大多数应用程序部署中并行使用。
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>是否应在应用配置中存储机密？
 
@@ -62,7 +57,7 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何为多个环境（测试、过渡、生产等）存储配置？
 
-目前，你可以控制谁可以访问每个商店级别的应用配置。 对于需要不同权限的每个环境，请使用单独的存储区。 此方法可提供最佳的安全隔离。
+可以在每个商店级别控制谁可以访问应用配置。 对于需要不同权限的每个环境，请使用单独的存储区。 此方法可提供最佳的安全隔离。
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用应用配置的建议方法有哪些？
 
@@ -70,9 +65,14 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 ## <a name="how-much-does-app-configuration-cost"></a>应用配置的成本是多少？
 
-有两个定价层：1）一个免费层和2个标准层。
+有两个定价层： 
 
-如果在引入标准层之前创建了存储，则它会在公开上市时自动移至免费层。 你可以选择升级到标准层，或在免费层上保留（如果它满足你的需求）。
+- 免费层
+- 标准层。
+
+如果在引入标准层之前创建了存储，则它会在公开上市时自动移至免费层。 你可以选择升级到标准层或保留在免费层上。
+
+不能将存储从标准层降级到免费层。 可以在免费层中创建新的存储，然后将配置数据导入到该存储中。
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>我应该使用哪个应用配置层？
 

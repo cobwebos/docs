@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210253"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486319"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>优化 Azure Functions 的性能和可靠性
 
@@ -62,7 +62,7 @@ ms.locfileid: "77210253"
 
 如果已处理队列项，则允许函数不执行任何操作。
 
-利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 **Azure 存储队列触发器和绑定**文档中的[处理有害队列消息](functions-bindings-storage-queue.md#trigger---poison-messages)。 
+利用已为 Azure Functions 平台中使用的组件提供的防御措施。 有关示例，请参阅 **Azure 存储队列触发器和绑定**文档中的[处理有害队列消息](functions-bindings-storage-queue-trigger.md#poison-messages)。 
 
 ## <a name="scalability-best-practices"></a>可伸缩性最佳做法
 

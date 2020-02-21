@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7798cb86606c206f027a1014802770a74aba909a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: ba5af060a02e8525320f005b5d1c80534c5ca4ea
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160371"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483918"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 身份验证和授权错误代码
 
@@ -133,7 +133,7 @@ ms.locfileid: "77160371"
 | AADSTS50180 | WindowsIntegratedAuthMissing - 需要 Windows 集成身份验证。 为租户启用无缝 SSO。 |
 | AADSTS50187 | DeviceInformationNotProvided - 服务无法执行设备身份验证。 |
 | AADSTS50196 | LoopDetected-检测到客户端循环。 检查应用程序的逻辑，以确保已实现令牌缓存，并正确处理错误条件。  该应用程序在一段时间内发出了太多的相同请求，这表示它处于错误状态或 abusively 请求令牌。 |
-| AADSTS50199 | CmsiInterrupt-此身份验证需要用户交互。  由于这是一个 "interaction_required" 错误，客户端应进行交互式身份验证。 之所以发生这种情况，是因为系统 web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为要登录的应用。|
+| AADSTS50199 | CmsiInterrupt-出于安全原因，此请求需要用户确认。  由于这是一个 "interaction_required" 错误，客户端应进行交互式身份验证。 之所以发生这种情况，是因为系统 web 视图已用于请求本机应用程序的令牌，必须提示用户询问此应用是否确实为要登录的应用。|
 | AADSTS51000 | RequiredFeatureNotEnabled - 已禁用该功能。 |
 | AADSTS51001 | DomainHintMustbePresent - 必须使用本地安全标识符或本地 UPN 提供域提示。 |
 | AADSTS51004 | UserAccountNotInDirectory - 目录中不存在该用户帐户。 |

@@ -3,12 +3,12 @@ title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3868987fa76d4ce0d4c34e81b46301ea106203d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543403"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526206"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -120,10 +120,7 @@ az role definition list --name "<roleName>" | grep name
 |**managedByTenantId**     |租户 ID。          |
 |**authorizations**     |租户中的用户/组/Spn 的**principalId**值，每个值都有一个**principalIdDisplayName** ，可帮助客户了解授权的目的，并将其映射到内置的**roleDefinitionId**值以指定访问级别。      |
 
-> [!TIP]
-> 请确保**managedByTenantID**、 **principalIdDisplayName**和**roleDefinitionId**条目与 Azure 使用的值相同。 请勿在这些值中使用任何大写字母。
-
-载入过程需要 Azure 资源管理器模板（在我们的[示例](https://github.com/Azure/Azure-Lighthouse-samples/)存储库中提供，并使用您修改的相应参数文件来匹配配置并定义您的授权。
+载入过程需要 Azure 资源管理器模板（在我们的[示例](https://github.com/Azure/Azure-Lighthouse-samples/)存储库中提供）和相应的参数文件，你可以修改该模板来匹配配置并定义你的授权。
 
 你选择的模板取决于你是在订阅中加入整个订阅、资源组还是多个资源组。 我们还提供了一个模板，可供购买了你发布 Azure 市场的托管服务产品/服务的客户使用；如果你偏向于按此方式载入其资源，则可使用它。
 

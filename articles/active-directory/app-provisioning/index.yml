@@ -5,19 +5,19 @@ metadata:
   title: 应用程序预配文档
   description: 使用 Azure Active Directory 应用预配，可以在云 (SaaS) 应用中自动创建和管理用户标识。 Azure AD 还为基于云的人力资源 (HR) 应用程序提供预配。 使用我们的快速入门、教程和指南了解如何管理和部署云应用与 HR 预配。
   ms.service: active-directory
-  ms.subservice: app-mgmt
+  ms.subservice: app-provisioning
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 02/06/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
-  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.openlocfilehash: 0b6b3829f4111c57e20f495be962357832a5bfcd
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/07/2020
-  ms.locfileid: "77065495"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77522460"
 landingContent:
 - title: 为云应用预配用户和组
   linkLists:

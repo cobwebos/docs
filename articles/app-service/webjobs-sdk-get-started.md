@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640818"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483034"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>用于事件驱动的后台处理的 Azure WebJobs SDK 入门
 
@@ -19,7 +19,7 @@ ms.locfileid: "75640818"
 
 本文介绍如何将 Web 作业部署为 .NET Core 控制台应用。 若要将 Web 作业部署为 .NET Framework 控制台应用，请参阅[Web 作业作为 .NET Framework 控制台应用](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps)。 如果你对仅支持 .NET Framework 的 Web 作业 SDK 版本2.x 感兴趣，请参阅[使用 Visual Studio 开发和部署 Web 作业-Azure App Service](webjobs-dotnet-deploy-vs.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * [安装 Visual Studio 2019](/visualstudio/install/)和**Azure 开发**工作负荷。 如果已安装 Visual Studio，但未配置该工作负荷，请选择“工具”>“获取工具和功能”添加该工作负荷。
 
@@ -93,7 +93,7 @@ ms.locfileid: "75640818"
    using Microsoft.Extensions.Logging;
    ```
 
-1. 在 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 上调用 [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) 方法。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) 方法将控制台日志记录添加到配置中。
+1. 在 [`ConfigureLogging`](/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.configurelogging) 上调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 方法。 [`AddConsole`](/dotnet/api/microsoft.extensions.logging.consoleloggerextensions.addconsole) 方法将控制台日志记录添加到配置中。
 
     ```cs
     builder.ConfigureLogging((context, b) =>
@@ -143,7 +143,7 @@ ms.locfileid: "75640818"
     Install-Package Microsoft.Azure.WebJobs.Extensions.Storage -Version 3.0.4
     ```
 
-2. 在 `ConfigureWebJobs` 扩展方法中，调用 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 实例上的 `AddAzureStorage` 方法来初始化存储扩展。 此时，`ConfigureWebJobs` 方法如下例所示：
+2. 在 `ConfigureWebJobs` 扩展方法中，调用 `AddAzureStorage`[`HostBuilder` 实例上的 ](/dotnet/api/microsoft.extensions.hosting.hostbuilder) 方法来初始化存储扩展。 此时，`ConfigureWebJobs` 方法如下例所示：
 
     ```cs
     builder.ConfigureWebJobs(b =>
@@ -177,7 +177,7 @@ ms.locfileid: "75640818"
 
    `QueueTrigger` 特性告知运行时，在名为 `queue` 的 Azure 存储队列中写入新消息时，应调用此函数。 队列消息的内容将提供给 `message` 参数中的方法代码。 在方法的正文中处理触发器数据。 在此示例中，代码只是记录消息。
 
-   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
+   `message` 参数不一定要是字符串。 也可以绑定到 JSON 对象、字节数组或 [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) 对象。 [参阅队列触发器用法](../azure-functions/functions-bindings-storage-queue-trigger.md#usage)。 每个绑定类型（例如队列、Blob 或表）具有一组可以绑定到的不同参数类型。
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
@@ -265,15 +265,15 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
    ![创建队列](./media/webjobs-sdk-get-started/create-queue-message.png)
 
-1. 在“添加消息”对话框中，输入 *Hello World!* 作为**消息正文**，然后选择“确定”。 队列中现在有一条消息。
+1. 在“添加消息”对话框中，输入 **Hello World!** 作为**消息正文**，然后选择“确定”。 队列中现在有一条消息。
 
    ![创建队列](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 1. 再次运行该项目。
 
-   由于在 `ProcessQueueMessage` 函数中使用了 `QueueTrigger` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
+   由于在 `QueueTrigger` 函数中使用了 `ProcessQueueMessage` 特性，因此 WeJobs SDK 运行时会在启动时侦听队列消息。 它会在名为 *queue* 的队列中查找新队列消息，并调用函数。
 
-   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
+   由于[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)，运行时最长可能需要花费 2 分钟才能找到消息并调用函数。 以[开发模式](webjobs-sdk-how-to.md#host-development-settings)运行可以缩减此等待时间。
 
    控制台输出如下所示：
 
@@ -334,7 +334,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 选择“保存”。
 
-1. 将 Application Insights 连接添加到项目，以便可以在本地运行它。 在“appsettings.json”文件中，添加 `APPINSIGHTS_INSTRUMENTATIONKEY` 字段，如下例所示：
+1. 将 Application Insights 连接添加到项目，以便可以在本地运行它。 在“appsettings.json”文件中，添加  *字段，如下例所示*`APPINSIGHTS_INSTRUMENTATIONKEY`：
 
     ```json
     {
@@ -362,7 +362,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
    Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version 3.0.2
    ```
 
-1. 打开“Program.cs”并使用以下代码替换 `Main` 方法中的代码：
+1. 打开“Program.cs”并使用以下代码替换  *方法中的代码*`Main`：
 
     ```cs
     static void Main(string[] args)
@@ -436,7 +436,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 1. 刷新“队列”页后新消息消失，因为它已由 Azure 中运行的函数处理。
 
    > [!TIP]
-   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm)导致的延迟。
+   > 若要在 Azure 中进行测试，请使用[开发模式](webjobs-sdk-how-to.md#host-development-settings)来确保立即调用队列触发函数，并避免[队列轮询指数退让](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)导致的延迟。
 
 ### <a name="view-logs-in-application-insights"></a>在 Application Insights 中查看日志
 
@@ -474,15 +474,15 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在存储帐户中创建 Blob 容器。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Visual Studio 的“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
+   a. 在 Visual Studio 的“服务器资源管理器”中，展开你的存储帐户所在的节点，右键单击“Blob”，并选择“创建 Blob 容器”。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在“创建 Blob 容器”对话框中，输入 *container* 作为容器名称，然后单击“确定”。
+   b. 在“创建 Blob 容器”对话框中，输入 **container** 作为容器名称，然后单击“确定”。
 
 1. 将 *Program.cs* 文件上传到 Blob 容器。 （此处使用的文件用作示例；可以上传任何文本文件，并使用该文件的名称创建队列消息。）
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“服务器资源管理器”中，双击创建的容器所在的节点。
+   a. 在“服务器资源管理器”中，双击创建的容器所在的节点。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在“容器”窗口中，选择“上传”按钮。
+   b. 在“容器”窗口中，选择“上传”按钮。
 
    ![Blob 上传按钮](./media/webjobs-sdk-get-started/blob-upload-button.png)
 
@@ -528,7 +528,7 @@ WebJobs SDK 在 Azure 的“应用程序设置”中查找存储连接字符串�
 
 1. 在本地运行项目。
 
-   该队列消息会触发函数，而该函数又会读取 Blob、记录其长度并创建新 Blob。 控制台输出相同，但在转到 Blob 容器窗口并选择“刷新”时，会看到名为 *copy-Program.cs* 的新 Blob。
+   该队列消息会触发函数，而该函数又会读取 Blob、记录其长度并创建新 Blob。 控制台输出相同，但在转到 Blob 容器窗口并选择“刷新”时，会看到名为 **copy-Program.cs** 的新 Blob。
 
 ## <a name="republish-the-updates-to-azure"></a>将更新发布到 Azure
 

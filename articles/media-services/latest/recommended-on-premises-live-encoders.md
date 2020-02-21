@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c8cf8883c80dad7988793a898dcaf01dd8f860c3
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: aa9cd3f642e3d8047e8b64afb023fffb7bd2c4f6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152629"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484904"
 ---
 # <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
 
@@ -53,6 +53,7 @@ ms.locfileid: "77152629"
 - OBS Studio
 - Switcher Studio (iOS)
 - Telestream Wirecast （版本13.0.2 或更高版本，原因是 TLS 1.2 要求）
+- Telestream Wirecast S （仅支持 RTMP）
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4

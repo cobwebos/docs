@@ -1,36 +1,35 @@
 ---
-title: 使用 Azure 计划程序创建计划的作业 - Azure 门户 | Microsoft Docs
-description: 了解如何在 Azure 门户中使用 Azure 计划程序创建、计划和运行第一个自动化作业
+title: 创建计划的作业-Azure 门户
+description: 使用 Azure 计划程序在 Azure 门户中创建、计划和运行第一个自动作业
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300994"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524795"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业 - Azure 门户
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>使用 Azure 计划程序创建和计划第一个作业-Azure 门户
 
 > [!IMPORTANT]
 > [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
 
-本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。 
+本教程演示了如何轻松创建和计划作业，然后监视并管理该作业。
 
-如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
+如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="create-job"></a>创建作业
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。  
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
-1. 在 Azure 主菜单上选择“创建资源”。 在搜索框中输入“计划程序”。 在结果列表中，选择“计划程序”，然后选择“创建”。
+1. 在 "Azure 搜索" 框中，输入 `scheduler` 作为筛选器。 从结果列表中，选择 "**计划程序作业集合**"，然后选择 "**创建**"。
 
    ![创建计划程序资源](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -38,7 +37,7 @@ ms.locfileid: "71300994"
 
 1. 在“计划程序作业”下，输入这些信息：
 
-   | 属性 | 示例值 | 描述 |
+   | properties | 示例值 | 说明 |
    |----------|---------------|-------------| 
    | **名称** | getMicrosoft | 作业的名称 | 
    | **作业集合** | <job-collection-name> | 创建一个作业集合，或选择现有的集合。 | 
@@ -47,7 +46,7 @@ ms.locfileid: "71300994"
 
 1. 选择“操作设置 - 配置”，提供此信息，完成后选择“确定”：
 
-   | 属性 | 示例值 | 描述 |
+   | properties | 示例值 | 说明 |
    |----------|---------------|-------------| 
    | **Action** | Http | 要运行的操作类型 | 
    | **方法** | **Get** | 要调用的方法 | 
@@ -60,7 +59,7 @@ ms.locfileid: "71300994"
 
    尽管可以创建一次性作业，但此示例设置的是定期计划。
 
-   | 属性 | 示例值 | 描述 |
+   | properties | 示例值 | 说明 |
    |----------|---------------|-------------| 
    | **定期** | 定期 | 一次性或定期作业 | 
    | **Start on** | <今天的日期> | 作业的开始日期 | 
@@ -107,7 +106,7 @@ ms.locfileid: "71300994"
 
 ![查看操作设置](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-| 操作类型 | 描述 | 
+| 操作类型 | 说明 | 
 |-------------|-------------| 
 | 所有类型 | 可以更改“重试策略”和“错误操作”设置。 | 
 | HTTP 和 HTTPS | 可以将“方法”更改为任何允许的方法。 还可以添加、删除或更改标头及基本身份验证信息。 | 
@@ -147,6 +146,6 @@ ms.locfileid: "71300994"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [构建复杂的计划和高级的定期计划](scheduler-advanced-complexity.md)
+* [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
 * 了解[计划程序的高可用性和可靠性](scheduler-high-availability-reliability.md)
 * 了解[限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

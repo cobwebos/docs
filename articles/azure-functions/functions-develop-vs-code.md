@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 开发 Azure Functions
 description: 了解如何使用适用于 Visual Studio Code 的 Azure Functions 扩展来开发和测试 Azure Functions。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484768"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 开发 Azure Functions
 
@@ -92,11 +92,11 @@ Azure Functions 扩展提供以下好处：
 
 根据你的语言，将创建这些其他文件：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * 实现函数的[HttpExample.cs 类库文件](functions-dotnet-class-library.md#functions-class-library-project)。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * 根文件夹中的包文件。
 
@@ -122,7 +122,7 @@ Azure Functions 扩展提供以下好处：
 
 除 HTTP 和 timer 触发器外，绑定在扩展包中实现。 必须为需要的触发器和绑定安装扩展包。 安装绑定扩展的过程取决于项目的语言。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 在终端窗口中运行[dotnet add package](/dotnet/core/tools/dotnet-add-package)命令，以在项目中安装所需的扩展包。 以下命令将安装 Azure 存储扩展，该扩展可实现 Blob、队列和表存储的绑定。
 
@@ -130,7 +130,7 @@ Azure Functions 扩展提供以下好处：
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 此操作的结果取决于项目的语言：
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 新C#的类库（.cs）文件将添加到你的项目中。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 在项目中创建一个新文件夹。 文件夹包含新的函数 json 文件和新的 JavaScript 代码文件。
 
@@ -158,7 +158,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 以下示例连接到名为 `outqueue`的存储队列，在该队列中，存储帐户的连接字符串是在 `MyStorageConnection` 应用程序设置中设置的。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 更新函数方法，将以下参数添加到 `Run` 方法定义：
 
@@ -174,9 +174,9 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 `msg` 参数为 `ICollector<T>` 类型，表示函数完成时写入输出绑定的消息集合。 向集合中添加一条或多条消息。 当函数完成时，这些消息将发送到队列。
 
-若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)文档。
+若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue-output.md)文档。
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code 使你可以通过使用一组方便的提示向函数 json 文件添加绑定。 若要创建绑定，请右键单击（Ctrl + 单击 macOS）函数文件夹中的**函数 json**文件，然后选择 "**添加绑定**"：
 
@@ -212,7 +212,7 @@ Visual Studio Code 使你可以通过使用一组方便的提示向函数 json �
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue.md#output)引用。
+若要了解详细信息，请参阅[队列存储输出绑定](functions-bindings-storage-queue-output.md)引用。
 
 ---
 

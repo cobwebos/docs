@@ -4,12 +4,12 @@ description: 了解如何使用 PowerShell 开发函数。
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974234"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485125"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -73,13 +73,13 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| properties   | 描述                                     | Type     |
+| properties   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | 当触发函数时，采用 UTC 格式        | 日期/时间 |
+| UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
 | MethodName | 触发的函数的名称     | 字符串   |
 | RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
-每个触发器类型都有一组不同的元数据。 例如，`QueueTrigger` 的 `$TriggerMetadata` 包含 `InsertionTime`、`Id`、`DequeueCount`和其他项。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue.md#trigger---message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
+每个触发器类型都有一组不同的元数据。 例如，`QueueTrigger` 的 `$TriggerMetadata` 包含 `InsertionTime`、`Id`、`DequeueCount`和其他项。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
 
 ## <a name="bindings"></a>绑定
 
@@ -125,11 +125,11 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 下面是用于调用 `Push-OutputBinding`的有效参数：
 
-| 名称 | Type | 位置 | 描述 |
+| 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | 字符串 | 第 | 要设置的输出绑定的名称。 |
-| **`-Value`** | 对象 | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
-| **`-Clobber`** | SwitchParameter | 名为 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
+| **`-Name`** | String | 1 | 要设置的输出绑定的名称。 |
+| **`-Value`** | Object | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
+| **`-Clobber`** | SwitchParameter | 已命名 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
 
 还支持以下常见参数： 
 * `Verbose`
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>OutputBinding 示例：队列输出绑定
 
-`Push-OutputBinding` 用于将数据发送到输出绑定，如[Azure 队列存储输出绑定](functions-bindings-storage-queue.md#output)。 在下面的示例中，写入队列的消息的值为 "output #1"：
+`Push-OutputBinding` 用于将数据发送到输出绑定，如[Azure 队列存储输出绑定](functions-bindings-storage-queue-output.md)。 在下面的示例中，写入队列的消息的值为 "output #1"：
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -274,7 +274,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
-* 哈希表
+* Hashtable
 * 字符串
 * byte[]
 * int
@@ -294,9 +294,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传入脚本的请求对象的类型为 `HttpRequestContext`，该类型具有以下属性：
 
-| properties  | 描述                                                    | Type                      |
+| properties  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body` 根据数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 根据数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
 | **`Headers`** | 包含请求标头的字典。                | 字典 < 字符串，string ><sup>*</sup> |
 | **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | 字典 < 字符串，string ><sup>*</sup> |
@@ -309,9 +309,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 应发送回的响应对象的类型为 `HttpResponseContext`，该对象具有以下属性：
 
-| properties      | 描述                                                 | Type                      |
+| properties      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | 一个包含响应正文的对象。           | 对象                    |
+| **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
 | **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
@@ -420,7 +420,7 @@ param([string] $myBlob)
 
 以下应用程序设置可用于更改如何下载和安装托管依赖项。 应用升级在 `MDMaxBackgroundUpgradePeriod`中启动，升级过程将在大约 `MDNewSnapshotCheckPeriod`内完成。
 
-| Function App 设置              | 默认值             | 描述                                         |
+| Function App 设置              | 默认值             | 说明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` （7天）     | 每个 PowerShell 工作进程启动 PowerShell 库的进程启动时检查模块升级，并在之后每 `MDMaxBackgroundUpgradePeriod`。 当 PowerShell 库中有新的模块版本时，它将安装到文件系统，并提供给 PowerShell 辅助角色。 减小此值后，函数应用可以更快地获取较新的模块版本，但它还会增加应用资源使用情况（网络 i/o、CPU、存储）。 增加此值会减少应用的资源使用情况，但也可能会延迟将新的模块版本传递给你的应用。 | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00` （1小时）       | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在 `MDNewSnapshotCheckPeriod`内重新启动所有 PowerShell 辅助角色。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |

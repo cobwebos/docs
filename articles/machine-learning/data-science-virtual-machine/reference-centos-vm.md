@@ -1,5 +1,6 @@
 ---
-title: 参考： CentOS DSVM
+title: 参考： CentOS Data Science Virtual Machine
+titleSuffix: Azure Data Science Virtual Machine
 description: CentOS 中包含的工具的详细信息 Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493719"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525832"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>参考： CentOS （Linux） Data Science Virtual Machine
 
@@ -140,7 +141,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-不需要 Hadoop 相关的服务时，可以通过运行 `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` 来停止这些服务。
+不需要 Hadoop 相关服务时，可以通过运行 `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn` 来停止这些服务。
 
 /dsvm/samples/MRS 目录中提供了一个示例，演示如何在远程 Spark 上下文（即，DSVM 上的独立 Spark 实例）中开发和测试 Machine Learning Server。
 
@@ -308,7 +309,7 @@ xgboost mushroom.conf
 
 ### <a name="rattle"></a>Rattle
 
-Rattle (*R* *A*nalytical *T*ool *T*o *L*earn *E*asily) 使用基于 GUI 的数据浏览和建模。 Rattle：
+Rattle （*R* *A*nalytical *t*ool *t*o *L*获得*E*asily）使用基于 GUI 的数据浏览和建模。 Rattle：
 - 呈现数据的统计和可视化摘要。
 - 转换可随时建模的数据。
 - 基于数据生成非监督式和监督式模型。
@@ -329,7 +330,7 @@ rattle()
 > [!NOTE]
 > 如果你无权在系统目录（默认目录）中安装包，可能会在 R 控制台窗口中看到一个提示，指出包将安装到个人库中。 如果看到这些提示，请输入 **y**。
 
-1. 选择”**执行**“。
+1. 选择“执行”。
 1. 此时会出现一个对话框，提示是否要加载示例气象数据集。 选择“是”以加载示例。
 1. 选择“模型”选项卡。
 1. 选择“执行”以生成决策树。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 408f29322af2199259f59be1f2c7e891a80a6b35
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65838c36cadba580c578677185683e27b57b1e27
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980578"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525492"
 ---
 # <a name="manage-azure-cosmos-db-mongodb-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB MongoDB API 资源
 
@@ -24,6 +24,8 @@ ms.locfileid: "75980578"
 > [!NOTE]
 > 帐户名称必须是小写、44或更少字符。
 > 若要更新 RU/秒，请用更新的吞吐量属性值重新提交模板。
+>
+> 目前，只能使用 PowerShell、CLI 和资源管理器模板来创建3.2 版（即，使用 Azure Cosmos DB 格式为 `*.documents.azure.com`）的 MongoDB 帐户的 API。 若要创建3.6 版帐户，请改用 Azure 门户。
 
 [!code-json[create-cosmos-mongo](~/quickstart-templates/101-cosmosdb-mongodb/azuredeploy.json)]
 

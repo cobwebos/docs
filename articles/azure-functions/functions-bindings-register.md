@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766231"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484717"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>注册 Azure Functions 绑定扩展
 
@@ -29,7 +29,7 @@ ms.locfileid: "76766231"
 |Azure 门户|自动|自动|
 |Non-.NET 语言或本地 Azure 核心工具开发|自动|[使用 Azure Functions Core Tools 和扩展捆绑](#extension-bundles)|
 |C#使用 Visual Studio 的类库|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
-|使用 Visual Studio Code 的 C# 类库|N/A|[使用 .NET Core CLI](#vs-code)|
+|使用 Visual Studio Code 的 C# 类库|空值|[使用 .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>用于本地开发的扩展捆绑
 
@@ -55,7 +55,7 @@ ms.locfileid: "76766231"
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-用于给定绑定的包的名称是在此绑定的参考文章中提供的。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#packages---functions-1x)。
+用于给定绑定的包的名称是在此绑定的参考文章中提供的。 有关示例，请参阅[服务总线绑定参考文章的“包”部分](functions-bindings-service-bus.md#functions-1x)。
 
 将示例中的 `<TARGET_VERSION>` 替换为特定包版本，例如 `3.0.0-beta5`。 有效版本列在[NuGet.org](https://nuget.org)上的各个包页面上。对应于函数运行时1.x 或2.x 的主要版本是在绑定的参考文章中指定的。
 

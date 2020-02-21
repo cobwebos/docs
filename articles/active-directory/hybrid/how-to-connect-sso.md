@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367966"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483748"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory 无缝单一登录
 
@@ -36,7 +36,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 ![无缝单一登录](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->无缝 SSO 只需将用户设备**加入域**，但不会在[联接 Azure AD](../active-directory-azureadjoin-overview.md)或 [混合 Azure AD 联接] （.）上使用它。/active-directory-azureadjoin-overview.md）设备。 SSO pn Azure AD 联接，并且混合 Azure AD 联接的工作基于 [主刷新标记] （.。。/active-directory/devices/concept-primary-refresh-token.md)
+>无缝 SSO 只需将用户设备**加入域**，但不会在[加入 Azure AD](../devices/concept-azure-ad-join.md)或已[加入混合 Azure AD](../devices/concept-azure-ad-join-hybrid.md)设备上使用。 联接 Azure AD 上的 SSO 和混合 Azure AD 联接的工作基于[主刷新令牌](../devices/concept-primary-refresh-token.md)。
 
 ## <a name="key-benefits"></a>主要优点
 
@@ -78,7 +78,7 @@ Azure Active Directory 无缝单一登录（Azure AD 无缝 SSO）可使连接�
 \*\*\*需要[额外的配置](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->对于 Windows 10，建议使用 [Azure AD join](../active-directory-azureadjoin-overview.md)，以获得最佳的 Azure AD 单一登录体验。
+>对于 Windows 10，建议使用 [Azure AD join](../devices/concept-azure-ad-join.md)，以获得最佳的 Azure AD 单一登录体验。
 
 ## <a name="next-steps"></a>后续步骤
 

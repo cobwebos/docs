@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5ed3ee9b0e7e7218a519baa56cda443fddab105
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750772"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522611"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -51,7 +51,7 @@ ms.locfileid: "75750772"
 
 - Azure SQL 分析
 - Azure 事件中心
-- Azure 存储器
+- Azure 存储
 
 可预配新的 Azure 资源或选择现有资源。 使用“诊断设置”选项选择资源之后，指定要收集的数据。
 
@@ -260,7 +260,7 @@ ms.locfileid: "75750772"
 
 若要支持多个订阅，请使用 [Enable Azure resource metrics logging using PowerShell](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/)（通过 PowerShell 启用 Azure 资源指标日志记录）中的 PowerShell 脚本。
 
-在执行脚本 `Enable-AzureRMDiagnostics.ps1` 时提供工作区资源 ID \<$WSID\> 作为参数，以便将诊断数据从多个资源发送到工作区。
+在执行脚本 \< 时提供工作区资源 ID \>$WSID`Enable-AzureRMDiagnostics.ps1` 作为参数，以便将诊断数据从多个资源发送到工作区。
 
 - 若要获取诊断数据的目标的工作区 ID \<$WSID\>，请使用以下脚本：
 
@@ -441,7 +441,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**资源**|**指标**|
 |---|---|
-|Azure SQL Database|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
+|Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
 ## <a name="advanced-metrics"></a>高级指标
 
@@ -449,9 +449,9 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 |**指标**|**指标显示名称**|**说明**|
 |---|---|---|
-|tempdb_data_size| Tempdb 数据文件大小（Kb） |Tempdb 数据文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
-|tempdb_log_size| Tempdb 日志文件大小（Kb） |Tempdb 日志文件大小（Kb）。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
-|tempdb_log_used_percent| 使用的 Tempdb 百分比日志 |使用的 Tempdb 百分比日志。 不适用于数据仓库。 对于基于 DTU 的购买模型，此指标适用于使用 vCore 购买模型的数据库或 100 DTU 和更高版本。 |
+|tempdb_data_size| Tempdb 数据文件大小（Kb） |Tempdb 数据文件大小（Kb）。 不适用于数据仓库。 此指标适用于使用 vCore 购买模型的数据库，其中包含2个 Vcore 和更高版本，或者用于基于 DTU 的购买模型的 200 DTU 和更高版本。 此指标当前不适用于超大规模数据库。|
+|tempdb_log_size| Tempdb 日志文件大小（Kb） |Tempdb 日志文件大小（Kb）。 不适用于数据仓库。 此指标适用于使用 vCore 购买模型的数据库，其中包含2个 Vcore 和更高版本，或者用于基于 DTU 的购买模型的 200 DTU 和更高版本。 此指标当前不适用于超大规模数据库。|
+|tempdb_log_used_percent| 使用的 Tempdb 百分比日志 |使用的 Tempdb 百分比日志。 不适用于数据仓库。 此指标适用于使用 vCore 购买模型的数据库，其中包含2个 Vcore 和更高版本，或者用于基于 DTU 的购买模型的 200 DTU 和更高版本。 此指标当前不适用于超大规模数据库。|
 
 ## <a name="basic-logs"></a>基本日志
 
@@ -459,7 +459,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>托管实例的资源使用情况统计信息
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure|
@@ -484,7 +484,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>查询数据存储运行时统计信息
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -535,7 +535,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>查询存储等待统计信息
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -573,7 +573,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>错误数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -602,7 +602,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>数据库等待统计数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -631,7 +631,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>超时数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -654,7 +654,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>阻塞数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -678,7 +678,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="deadlocks-dataset"></a>死锁数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |
@@ -699,7 +699,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="automatic-tuning-dataset"></a>自动优化数据集
 
-|属性|Description|
+|properties|说明|
 |---|---|
 |TenantId|租户 ID |
 |SourceSystem|始终是：Azure |

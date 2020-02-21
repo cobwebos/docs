@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/05/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 06323ba8f623bc80a355be69ed9571ee32dd69e6
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461209"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505638"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -34,7 +34,8 @@ ms.locfileid: "77461209"
 | InputClaim | inputClaim2 | 字符串 | 要比较的第二个声明的类型。 |
 | InputParameter | stringComparison | 字符串 | 字符串比较，其中一个值：Ordinal、OrdinalIgnoreCase。 |
 
-AssertStringClaimsAreEqual 声明转换始终从[验证技术配置文件](validation-technical-profile.md)执行，该文件由[自断言技术配置文件](self-asserted-technical-profile.md)调用。 UserMessageIfClaimsTransformationStringsAreNotEqual 自断言技术配置文件元数据控制向用户显示的错误消息。
+**AssertStringClaimsAreEqual**声明转换始终从由[自断言技术配置文件](self-asserted-technical-profile.md)或[DisplayConrtol](display-controls.md)调用的[验证技术配置文件](validation-technical-profile.md)执行。 自断言技术配置文件的 `UserMessageIfClaimsTransformationStringsAreNotEqual` 元数据控制向用户显示的错误消息。
+
 
 ![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
 
@@ -122,7 +123,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-基于策略中提供的输入参数创建字符串声明。
+从转换中提供的输入参数创建一个字符串声明。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
@@ -516,6 +517,42 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - errorOnFailedLookup: false
 - 输出声明：
     - outputClaim:  c7026f88-4299-4cdb-965d-3f166464b8a9
+
+当 `errorOnFailedLookup` 输入参数设置为 `true`时，始终从由[自断言技术配置文件](self-asserted-technical-profile.md)或[DisplayConrtol](display-controls.md)调用的[验证技术配置文件](validation-technical-profile.md)执行**LookupValue**声明转换。 自断言技术配置文件的 `LookupNotFound` 元数据控制向用户显示的错误消息。
+
+![AssertStringClaimsAreEqual 执行](./media/string-transformations/assert-execution.png)
+
+下面的示例在某一个 inputParameters 集合中查找域名。 声明转换查找标识符中的域名，并返回其值（应用程序 ID），或引发错误消息。
+
+```XML
+ <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="contoso.com" DataType="string" Value="13c15f79-8fb1-4e29-a6c9-be0d36ff19f1" />
+    <InputParameter Id="microsoft.com" DataType="string" Value="0213308f-17cb-4398-b97e-01da7bd4804e" />
+    <InputParameter Id="test.com" DataType="string" Value="c7026f88-4299-4cdb-965d-3f166464b8a9" />
+    <InputParameter Id="errorOnFailedLookup" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>示例
+
+- 输入声明：
+    - **inputParameterId**： live.com
+- 输入参数：
+    - contoso.com: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - microsoft.com: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - test.com: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **errorOnFailedLookup**： true
+- 错误：
+    - 在输入参数 id 列表中找不到输入声明值的匹配项，errorOnFailedLookup 为 true。
+
 
 ## <a name="nullclaim"></a>NullClaim
 

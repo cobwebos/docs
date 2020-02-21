@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190492"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526240"
 ---
-# <a name="virtual-network-service-tags"></a>虚拟网络服务标记 
+# <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
 
-服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而最大程度地降低频繁更新网络安全规则的复杂性。 
+服务标记表示给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 管理服务标记包含的地址前缀，并在地址发生更改时自动更新服务标记，从而最大程度地降低频繁更新网络安全规则的复杂性。
 
-你可以使用服务标记来定义 [网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 " *源*" 或 " *目标* " 字段中指定服务标记名称（例如， **ApiManagement**），可以允许或拒绝相应服务的流量。 
+你可以使用服务标记来定义[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火墙](https://docs.microsoft.com/azure/firewall/service-tags)上的网络访问控制。 创建安全规则时，使用服务标记代替特定的 IP 地址。 通过在规则的相应 "*源*" 或 " *目标* " 字段中指定服务标记名称（例如， **ApiManagement**），可以允许或拒绝相应服务的流量。
 
-可以使用服务标记来实现网络隔离，并在访问具有公共终结点的 Azure 服务时，通过常规 Internet 保护 Azure 资源。 创建入站/出站网络安全组规则，拒绝发往/发往**Internet**的流量，允许流量流向或来自特定 Azure 服务的**AzureCloud**或其他[可用服务标记](#available-service-tags)。 
+可以使用服务标记来实现网络隔离，并在访问具有公共终结点的 Azure 服务时，通过常规 Internet 保护 Azure 资源。 创建入站/出站网络安全组规则，拒绝发往/发往**Internet**的流量，允许流量流向或来自特定 Azure 服务的**AzureCloud**或其他[可用服务标记](#available-service-tags)。
 
 ## <a name="available-service-tags"></a>可用服务标记
 下表包含可用于[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)规则的所有服务标记。
@@ -43,53 +43,53 @@ ms.locfileid: "77190492"
 | 标记 | 目的 | 可以使用入站或出站？ | 可以是区域？ | 是否可与 Azure 防火墙一起使用？ |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Azure API 管理的管理流量-专用部署。 <br/><br/>*注意：* 此标记表示每个区域的控制平面的 Azure API 管理服务终结点。 这样，客户就可以对 API 管理服务中配置的 Api、操作、策略和 NamedValues 执行管理操作。  | 入站 | 是 | 是 |
-| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 是 | 是 |
+| **ApplicationInsightsAvailability** | Application Insights 可用性。 | 入站 | 否 | 否 |
 | **AppService**    | Azure 应用服务。 建议将此标记用于对 web 应用程序前端的出站安全规则。 | 出站 | 是 | 是 |
-| **AppServiceManagement** | 专用于应用服务环境的部署的管理流量。 | 两者同时 | 是 | 是 |
-| **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 是 | 是 |
-| **AzureActiveDirectoryDomainServices** | 专用于 Azure Active Directory 域服务的部署的管理流量。 | 两者同时 | 是 | 是 |
-| **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 是 | 是 |
-| **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 是 | 是 |
-| **AzureBotService** | Azure 机器人服务。 | 出站 | 是 | 是 |
+| **AppServiceManagement** | 专用于应用服务环境的部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
+| **AzureActiveDirectory** | Azure Active Directory。 | 出站 | 否 | 是 |
+| **AzureActiveDirectoryDomainServices** | 专用于 Azure Active Directory 域服务的部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
+| **AzureAdvancedThreatProtection** | Azure 高级威胁防护。 | 出站 | 否 | 否 |
+| **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 否 | 是 |
+| **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
-| **AzureCognitiveSearch** | Azure 认知搜索（如果对技能组合使用索引器）。 | 两者同时 | 是 | 是 |
+| **AzureCognitiveSearch** | Azure 认知搜索。 <br/><br/>此标记或此标记涵盖的 IP 地址可用于授予索引器安全访问数据源的权限。 有关更多详细信息，请参阅[索引器连接文档](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 | 入站 | 否 | 否 |
 | **AzureConnectors** | 用于探测/后端连接的 Azure 逻辑应用连接器。 | 入站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
-| **AzureDatabricks** | Azure Databricks。 | 两者同时 | 是 | 是 |
-| **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 是 | 是 |
-| **AzureDataLake** | Azure Data Lake。 | 出站 | 是 | 是 |
-| **AzureEventGrid** | Azure 事件网格。 <br/><br/>*注意：* 此标记涵盖美国中南部、美国东部、美国东部2、美国西部2和美国中部的 Azure 事件网格端点。 | 两者同时 | 是 | 是 |
-| **AzureFrontDoor** | Azure 前门。 | 两者同时 | 是 | 是 |
-| **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记与**AzureActiveDirectory**和**AzureFrontDoor**标记相关。 还要将以下 Ip 列入允许列表： 13.107.6.181 & 13.107.9.181。 | 出站 | 是 | 是 |
-| **AzureIoTHub** | Azure IoT 中心。 | 出站 | 是 | 是 |
+| **AzureDatabricks** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
+| **AzureDataLake** | Azure Data Lake。 | 出站 | 否 | 是 |
+| **AzureEventGrid** | Azure 事件网格。 <br/><br/>*注意：* 此标记涵盖美国中南部、美国东部、美国东部2、美国西部2和美国中部的 Azure 事件网格端点。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureFrontDoor** | Azure 前门。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记与**AzureActiveDirectory**和**AzureFrontDoor**标记相关。 还要将以下 Ip 列入允许列表： 13.107.6.181 & 13.107.9.181。 | 出站 | 否 | 否 |
+| **AzureIoTHub** | Azure IoT 中心。 | 出站 | 否 | 否 |
 | **AzureKeyVault** | Azure Key Vault。<br/><br/>*注意：* 此标记依赖于**AzureActiveDirectory**标记。 | 出站 | 是 | 是 |
-| **AzureLoadBalancer** | Azure 基础结构负载均衡器。 标记将转换为 Azure 运行状况探测所源自的主机（168.63.129.16）的[虚拟 IP 地址](security-overview.md#azure-platform-considerations)。 这不包括与 Azure 负载均衡器资源的流量。 如果不使用 Azure 负载均衡器，则可以覆盖此规则。 | 两者同时 | 是 | 是 |
-| **AzureMachineLearning** | Azure 机器学习。 | 两者同时 | 是 | 是 |
-| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（g 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记依赖于**存储**标记。 | 出站 | 是 | 是 |
-| **AzurePlatformDNS** | 基本基础结构（默认） DNS 服务。<br/><br>您可以使用此标记来禁用默认 DNS。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 是 | 是 |
-| **AzurePlatformIMDS** | Azure 实例元数据服务（IMDS），它是一个基本基础结构服务。<br/><br/>您可以使用此标记来禁用默认 IMDS。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 是 | 是 |
-| **AzurePlatformLKM** | Windows 许可或密钥管理服务。<br/><br/>您可以使用此标记来禁用许可的默认值。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  我们还建议你在使用此标记之前执行测试。 | 出站 | 是 | 是 |
-| **AzureResourceManager** | Azure 资源管理器。 | 出站 | 是 | 是 |
-| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此标记依赖于**存储**、 **AzureActiveDirectory**和**EventHub**标记。 | 出站 | 是 | 是 |
-| **AzureTrafficManager** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅[Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | 是 | 是 |  
-| **BatchNodeManagement** | 专用于 Azure Batch 的部署的管理流量。 | 两者同时 | 是 | 是 |
-| **CognitiveServicesManagement** | Azure 认知服务的流量的地址范围。 | 出站 | 是 | 是 |
-| **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 是 |
-| **ElasticAFD** | 弹性 Azure 前门。 | 两者同时 | 是 | 是 |
+| **AzureLoadBalancer** | Azure 基础结构负载均衡器。 标记将转换为 Azure 运行状况探测所源自的主机（168.63.129.16）的[虚拟 IP 地址](security-overview.md#azure-platform-considerations)。 这不包括与 Azure 负载均衡器资源的流量。 如果不使用 Azure 负载均衡器，则可以覆盖此规则。 | 推送、请求和匿名 | 否 | 否 |
+| **AzureMachineLearning** | Azure 机器学习。 | 推送、请求和匿名 | 否 | 是 |
+| **AzureMonitor** | Log Analytics、Application Insights、AzMon 和自定义指标（g 终结点）。<br/><br/>*注意：* 对于 Log Analytics，此标记依赖于**存储**标记。 | 出站 | 否 | 是 |
+| **AzurePlatformDNS** | 基本基础结构（默认） DNS 服务。<br/><br>您可以使用此标记来禁用默认 DNS。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
+| **AzurePlatformIMDS** | Azure 实例元数据服务（IMDS），它是一个基本基础结构服务。<br/><br/>您可以使用此标记来禁用默认 IMDS。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。 我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
+| **AzurePlatformLKM** | Windows 许可或密钥管理服务。<br/><br/>您可以使用此标记来禁用许可的默认值。 使用此标记时要格外小心。 建议你阅读[Azure 平台注意事项](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)。  我们还建议你在使用此标记之前执行测试。 | 出站 | 否 | 否 |
+| **AzureResourceManager** | Azure 资源管理器。 | 出站 | 否 | 否 |
+| **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注意：* 此标记依赖于**存储**、 **AzureActiveDirectory**和**EventHub**标记。 | 出站 | 否 | 否 |
+| **AzureTrafficManager** | Azure 流量管理器探测 IP 地址。<br/><br/>有关流量管理器探测 IP 地址的详细信息，请参阅[Azure 流量管理器常见问题解答](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)。 | 入站 | 否 | 是 |  
+| **BatchNodeManagement** | 专用于 Azure Batch 的部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
+| **CognitiveServicesManagement** | Azure 认知服务的流量的地址范围。 | 出站 | 否 | 否 |
+| **Dynamics365ForMarketingEmail** | Dynamics 365 的营销电子邮件服务的地址范围。 | 出站 | 是 | 否 |
+| **ElasticAFD** | 弹性 Azure 前门。 | 推送、请求和匿名 | 否 | 否 |
 | **EventHub** | Azure 事件中心。 | 出站 | 是 | 是 |
-| **GatewayManager** | 针对专用于 Azure VPN 网关和应用程序网关的部署的管理流量。 | 入站 | 是 | 是 |
-| **GuestAndHybridManagement** | Azure 自动化和来宾配置。 | 出站 | 是 | 是 |
-| **HDInsight** | Azure HDInsight。 | 入站 | 是 | 是 |
-| **Internet** | 虚拟网络外部的 IP 地址空间，并可通过公共 internet 访问。<br/><br/>地址范围包括[Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 两者同时 | 是 | 是 |
-| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 出站 | 是 | 是 |
+| **GatewayManager** | 针对专用于 Azure VPN 网关和应用程序网关的部署的管理流量。 | 入站 | 否 | 否 |
+| **GuestAndHybridManagement** | Azure 自动化和来宾配置。 | 出站 | 否 | 是 |
+| **HDInsight** | Azure HDInsight。 | 入站 | 是 | 否 |
+| **Internet** | 虚拟网络外部的 IP 地址空间，并可通过公共 internet 访问。<br/><br/>地址范围包括[Azure 拥有的公共 IP 地址空间](https://www.microsoft.com/download/details.aspx?id=41653)。 | 推送、请求和匿名 | 否 | 否 |
+| **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 出站 | 否 | 否 |
 | **MicrosoftContainerRegistry** | Microsoft 容器映像的容器注册表。 <br/><br/>*注意：* 此外，请将以下 IP 列入允许列表：204.79.197.219。 | 出站 | 是 | 是 |
 | **ServiceBus** | 使用高级服务层的 Azure 服务总线通信。 | 出站 | 是 | 是 |
-| **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 这使客户能够从其 VNET （如终结点）为其 Service Fabric 群集执行管理操作。 https://westus.servicefabric.azure.com） | 两者同时 | 是 | 是 |
+| **ServiceFabric** | Azure Service Fabric。<br/><br/>*注意：* 此标记表示每个区域的控制平面的 Service Fabric 服务终结点。 这使客户能够从其 VNET （如终结点）为其 Service Fabric 群集执行管理操作。 https://westus.servicefabric.azure.com） | 推送、请求和匿名 | 否 | 否 |
 | **Sql** | Azure SQL 数据库、Azure Database for MySQL、Azure Database for PostgreSQL 和 Azure SQL 数据仓库。<br/><br/>*注意：* 此标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure SQL 数据库服务，但不能表示特定的 SQL 数据库或服务器。 | 出站 | 是 | 是 |
-| **SqlManagement** | 适用于 SQL 专用部署的管理流量。 | 两者同时 | 是 | 是 |
-| **存储** | Azure 存储空间。 <br/><br/>*注意：* 此标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
-| **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)虚拟网络、连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络、主机的[虚拟 IP 地址](security-overview.md#azure-platform-considerations)和[用户定义的路由](virtual-networks-udr-overview.md)上使用的地址前缀。 此标记可能还包含默认路由。 | 两者同时 | 是 | 是 |
+| **SqlManagement** | 适用于 SQL 专用部署的管理流量。 | 推送、请求和匿名 | 否 | 是 |
+| **存储** | Azure 存储。 <br/><br/>*注意：* 此标记表示服务，而不是特定于服务的实例。 例如，标记可表示 Azure 存储服务，但不能表示特定的 Azure 存储帐户。 | 出站 | 是 | 是 |
+| **VirtualNetwork** | 虚拟网络地址空间（为虚拟网络定义的所有 IP 地址范围）、所有连接的本地地址空间、[对等互连](virtual-network-peering-overview.md)虚拟网络、连接到[虚拟网络网关](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)的虚拟网络、主机的[虚拟 IP 地址](security-overview.md#azure-platform-considerations)和[用户定义的路由](virtual-networks-udr-overview.md)上使用的地址前缀。 此标记可能还包含默认路由。 | 推送、请求和匿名 | 否 | 否 |
 
 >[!NOTE]
 >在经典部署模型中（Azure 资源管理器之前），支持上表中列出的标记的子集。 这些标记的拼写不同：

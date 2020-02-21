@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 889699ab184b82a7c194043d15358ecdaab5d03d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/20/2020
+ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899638"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523758"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>复原能力和灾难恢复
 
@@ -27,9 +27,9 @@ ms.locfileid: "76899638"
 
 ## <a name="failover-between-configuration-stores"></a>配置存储之间的故障转移
 
-从技术上讲，应用程序不会执行故障转移。 它将会尝试同时从两个应用配置存储检索相同的配置数据集。 按以下方式安排代码：让代码先从辅助存储加载数据，再从主要存储加载数据。 此方法可确保只要主要存储中的配置数据可用就会优先进行加载。 以下代码片段演示如何在 .NET Core CLI 中实现这种安排：
+从技术上讲，应用程序不会执行故障转移。 它将会尝试同时从两个应用配置存储检索相同的配置数据集。 按以下方式安排代码：让代码先从辅助存储加载数据，再从主要存储加载数据。 此方法可确保只要主要存储中的配置数据可用就会优先进行加载。 下面的代码片段演示如何在 .NET Core 中实现这种排列：
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -44,7 +44,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
     
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -60,7 +60,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-请注意传入 `AddAzureAppConfiguration` 函数中的 `optional` 参数。 将此参数设置为 `true` 时，如果该函数无法加载配置数据，则此参数可防止应用程序无法继续。
+请注意传入 `optional` 函数中的 `AddAzureAppConfiguration` 参数。 将此参数设置为 `true` 时，如果该函数无法加载配置数据，则此参数可防止应用程序无法继续。
 
 ## <a name="synchronization-between-configuration-stores"></a>配置存储之间的同步
 
@@ -70,17 +70,18 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 转到“导入/导出”选项卡，然后依次选择“导出” > “应用配置” > “目标” > “选择资源”。
 
-2. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择“应用”。
+1. 在打开的新边栏选项卡中，指定辅助存储的订阅、资源组和资源名称，然后选择 "**应用**"。
 
-3. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 可将默认时间值保持原样，并将“原始标签”和“添加标签”设置为相同的值。 选择“应用”。
+1. UI 将会更新，使你可以选择要导出到辅助存储的配置数据。 可将默认时间值保持原样，并将“原始标签”和“添加标签”设置为相同的值。 选择“应用”。
 
-4. 针对所有配置更改重复执行上述步骤。
+1. 针对所有配置更改重复执行上述步骤。
 
 若要自动执行此导出过程，请使用 Azure CLI。 以下命令演示如何将单个配置更改从主要存储导出到辅助存储：
 
+```azurecli
     az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+```
 
 ## <a name="next-steps"></a>后续步骤
 
 本文已介绍如何增强应用程序，以便在应用程序配置运行时实现异地复原。 也可以在生成或部署时嵌入来自应用配置的配置数据。 有关详细信息，请参阅[与 CI/CD 管道集成](./integrate-ci-cd-pipeline.md)。
-

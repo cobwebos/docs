@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: fc95cae925e0961bb2f21397ebecb4db09117e11
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddebde842b5c63dcd5a46fc13e38f2df710a229e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271813"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485431"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虚拟机规模集的网络
 
@@ -64,6 +64,8 @@ az vmss create \
     --lb mylb \
     --backend-pool-name mybackendpool
 ```
+    >[!NOTE]
+    >After the scale set has been created, the backend port cannot be modified for a load balancing rule used by a health probe of the load balancer. To change the port, you can remove the health probe by updating the Azure virtual machine scale set, update the port and then configure the health probe again. 
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>创建引用应用程序网关的规模集
 若要创建使用应用程序网关的规模集，请在规模集的 ipConfigurations 节中引用应用程序网关的后端地址池，如此 ARM 模板配置所示：
@@ -177,7 +179,7 @@ Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 若要查询 [Azure 资源浏览器](https://resources.azure.com)，请执行以下操作：
 
 1. 在 Web 浏览器中打开 [Azure 资源浏览器](https://resources.azure.com)。
-1. 展开左侧的“订阅”，方法是单击其旁边的 *+* 。 如果在“订阅”下只有一个项，则“订阅”可能已展开。
+1. 展开左侧的“订阅”，方法是单击其旁边的 *。+* 如果在“订阅”下只有一个项，则“订阅”可能已展开。
 1. 展开订阅。
 1. 展开资源组。
 1. 展开提供程序。

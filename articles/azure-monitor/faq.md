@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986812"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485329"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题
 
@@ -36,7 +36,7 @@ ms.locfileid: "76986812"
 从 Azure 门户中的 "**监视**" 菜单访问所有 Azure Monitor 功能和数据。 对于不同的 Azure 服务，菜单的 "**监视**" 部分提供对相同工具的访问权限，并将数据筛选到特定资源。 使用 CLI、PowerShell 和 REST API 的各种情况下，也可以访问 Azure Monitor 数据。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure Monitor 的本地版本？
-不。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
+不是。 Azure Monitor 是一种可缩放的云服务，可处理和存储大量数据，不过 Azure Monitor 可以监视本地和其他云中的资源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>能否 Azure Monitor 监视本地资源？
 是的，除了收集 Azure 资源的监视数据以外，Azure Monitor 还可以从其他云和本地的虚拟机和应用程序中收集数据。 请参阅[Azure Monitor 的监视数据源](platform/data-sources.md)。
@@ -240,7 +240,7 @@ WireData
 
 [阅读定价计划](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="how-much-does-it-cost"></a>费用是多少？
+### <a name="how-much-does-it-cost"></a>成本是多少？
 
 * 在 Application Insights 资源中打开“使用情况和估算成本”页面。 此处提供了一个最近使用情况的图表。 如果愿意，可以设置数据上限。
 * 打开 [Azure 计费边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)查看所有资源的帐单。
@@ -548,7 +548,7 @@ ContainerLog
 
 ```
 
-#### <a name="option-2"></a>选项 2
+#### <a name="option-2"></a>方法 2
 
 为每个容器日志行的这些属性重新启用收集。
 
@@ -678,7 +678,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 不会，Windows 不包含单个处理器和逻辑处理器级别运行状况条件，仅默认监视 CPU 的总使用率，以根据 Azure VM 可用的逻辑 CPU 总数评估 CPU 压力。 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>是否所有运行状况条件阈值均可配置？  
-针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 **LessThan** 或 **GreaterThan** 的 *comparisonOperator* 值，以及阈值 **4**：
+针对 Windows VM 的运行状况条件的阈值不可修改，因为其运行状况状态已设置为“正在运行”或“可用”。 从[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 查询运行状态时，如果出现以下情况，则会服务或实例的 *LessThan* 或 **GreaterThan** 的 **comparisonOperator** 值，以及阈值 *4*：
    - DNS 客户端服务运行状况 - 服务未运行。 
    - DHCP 客户端服务运行状况 - 服务未运行。 
    - RPC 服务运行状况 - 服务未运行。 
@@ -688,7 +688,7 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
    - Windows 远程管理服务运行状况 - 服务未运行。 
    - 文件系统错误或损坏 - 逻辑磁盘不可用。
 
-以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 **LessThan** 的 *comparisonOperator* 以及阈值 **1**，具体取决于上下文：
+以下 Linux 运行状况条件的阈值不可修改，因为其运行状态已设置为 *true*。 从实体的工作负荷监视 API 查询时，运行状态会显示带有值 *LessThan* 的 **comparisonOperator** 以及阈值 *1*，具体取决于上下文：
    - 逻辑磁盘状态 - 逻辑磁盘未联机/不可用
    - 磁盘状态 - 磁盘未联机/不可用
    - 网络适配器状态 - 网络适配器已禁用
@@ -697,7 +697,10 @@ LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will 
 为每个运行状况条件定义的警报规则不会在 Azure 门户中显示。 只能在[工作负荷监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) 中启用或禁用运行状况警报规则。 此外，也无法在 Azure 门户中为运行状况警报分配 [Azure Monitor 操作组](platform/action-groups.md)。 只能使用通知设置 API 来配置在任何时候触发运行状况警报时要触发的操作组。 目前，可以针对 VM 分配操作组，以便针对 VM 激发的所有运行状况警报都会触发相同的操作组。 如传统的 Azure 警报不同，每个运行状况警报规则没有单独的操作组概念。 此外，触发运行状况警报时，仅支持配置为提供电子邮件或短信通知的操作组。 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我的 VM 性能图表中未显示某些数据，或未显示任何数据
+性能图表已更新为使用存储在*InsightsMetrics*表中的数据。  若要查看这些图表中的数据，需要升级才能使用新的 VM Insights 解决方案。  有关其他信息，请参阅我们的[GA 常见问题解答](insights/vminsights-ga-release-faq.md)。
+
 如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？
 用于 VM 的 Azure Monitor 映射功能基于服务映射，但存在以下差异：

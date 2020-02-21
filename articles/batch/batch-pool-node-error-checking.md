@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449787"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484122"
 ---
 # <a name="check-for-pool-and-node-errors"></a>检查池和节点错误
 
@@ -72,7 +72,7 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 如果已将节点配置为等待开始任务成功完成，但开始任务失败，该如何操作？ 在这种情况下，该节点将无法使用，但仍会产生费用。
 
-可以使用顶级 [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) 节点属性的 [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) 和 [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) 属性来检测开始任务是否失败。
+可以使用顶级 [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) 节点属性的 [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) 和 [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) 属性来检测开始任务是否失败。
 
 如果**waitForSuccess**设置为**true**，则失败的启动任务还会导致批处理将节点[状态](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate)设置为**starttaskfailed** 。
 
@@ -104,7 +104,7 @@ Batch 在删除过程中将[池状态](https://docs.microsoft.com/rest/api/batch
 
 - 由于基础结构故障或低级别的升级，移动了 VM。 Batch 会恢复节点。
 
-- VM 映像已经部署在不受支持的硬件上。 例如，尝试在[Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series) VM 上运行 CentOS HPC 映像。
+- VM 映像已经部署在不受支持的硬件上。 例如，尝试在[Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md) VM 上运行 CentOS HPC 映像。
 
 - Vm 位于[Azure 虚拟网络](batch-virtual-network.md)中，但流量已阻止到密钥端口。
 

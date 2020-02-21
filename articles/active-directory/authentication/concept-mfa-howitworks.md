@@ -1,6 +1,6 @@
 ---
 title: Azure MFA 的工作原理-Azure Active Directory
-description: Azure 多重身份验证可保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。
+description: Azure 多重身份验证可帮助保护对数据和应用程序的访问，同时可以满足用户对简单登录过程的需求。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848674"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484054"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>工作原理：Azure 多重身份验证
 
@@ -38,7 +38,7 @@ Azure 多重身份验证 (MFA) 有助于保护对数据和应用程序的访问�
 
 * **Azure Active Directory Premium**或**Microsoft 365 商业版**-使用条件性访问策略来要求执行多重身份验证的 Azure 多重身份验证的完整功能。
 
-* **Azure AD Free**或独立**Office 365**许可证-使用预先创建的[条件访问基线保护策略](../conditional-access/concept-baseline-protection.md)，要求用户和管理员进行多重身份验证。
+* **Azure AD Free**或独立**Office 365**许可证-使用[安全默认值](../fundamentals/concept-fundamentals-security-defaults.md)，要求用户和管理员进行多重身份验证。
 
 * **Azure Active Directory 全局管理员** - 提供 Azure 多重身份验证的部分功能，可用来保护全局管理员帐户。
 

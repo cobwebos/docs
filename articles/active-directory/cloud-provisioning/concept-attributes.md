@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022488"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484530"
 ---
 # <a name="understand-the-azure-ad-schema"></a>了解 Azure AD 架构
 Azure Active Directory （Azure AD）中的对象（如任意目录）是一个编程的高级数据构造，它表示用户、组和联系人等。 在 Azure AD 中创建新用户或联系人时，将创建该对象的新实例。 这些实例可根据其属性进行区分。
@@ -58,21 +58,24 @@ Azure AD 具有两种类型的属性：
 
 |本地 Active Directory|映射类型|Azure AD|
 |-----|-----|-----|
-|cn|Direct|commonName
-|countryCode|Direct|countryCode|
-|displayName|Direct|displayName|
-|givenName|Expression|givenName|
-|objectGUID|Direct|sourceAnchorBinary|  
-|userprincipalName|Direct|userPrincipalName|
-|ProxyAdress|Direct|ProxyAddress|
+|cn|直接|commonName
+|countryCode|直接|countryCode|
+|displayName|直接|displayName|
+|givenName|表达式|givenName|
+|objectGUID|直接|sourceAnchorBinary|  
+|userprincipalName|直接|userPrincipalName|
+|ProxyAdress|直接|ProxyAddress|
 
 ## <a name="view-the-schema"></a>查看架构
+> [!WARNING]
+> 云预配配置将创建服务主体。 服务主体在 Azure 门户中可见。 不应使用 Azure 门户中的服务主体体验来修改属性映射。  不支持此设置。
+
 若要查看并验证架构，请执行以下步骤。
 
 1.  请参阅[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 1.  用全局管理员帐户登录。
 1.  在左侧，选择 "**修改权限**"，并确保 "**所有**" 都*同意*。
-1.  运行查询 https://graph.microsoft.com/beta/serviceprincipals/? $filter = startswith （Displayname，"Active"）。 此查询返回已筛选的服务主体列表。
+1.  运行查询 https://graph.microsoft.com/beta/serviceprincipals/?$filter = startswith （Displayname，"Active"）。 此查询返回已筛选的服务主体列表。
 1.  找到 `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` 并记下 `"id"`的值。
     ```
     "value": [
