@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169209"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539133"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -35,7 +35,7 @@ ms.locfileid: "76169209"
     ![添加用户电子邮件地址](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. 选择“保存”。 可以在列表中看到用户的电子邮件地址及其状态（已注册或未注册）。 
 
-    ![用户列表](../media/how-to-configure-student-usage/users-list-new.png)
+    ![用户列表](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > 将用户注册到实验室后，列表中会显示其姓名。 列表中显示的名称是通过在 Azure Active Directory 中使用用户的名字和姓氏来构造的。 
@@ -101,11 +101,14 @@ ms.locfileid: "76169209"
 2. 在 "**用户注册**" 对话框中，选择 "**完成**"。 
 4. 向学生发送**注册链接**，以便学生可以注册该类。 
 
-## <a name="view-users-registered-with-the-lab"></a>查看注册到实验室的用户
+## <a name="view-registered-users"></a>查看注册用户
 
-在左侧的菜单上选择“用户”可查看已在实验室中注册的用户的列表。 
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 
+2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
+3. 在“我的实验室”页上，选择要跟踪其使用情况的实验室。 
+4. 选择左侧菜单上的“用户”，或选择“用户”磁贴。 此时会看到注册到实验室的学生。  
 
-![已在实验室中注册的用户的列表](../media/how-to-configure-student-usage/students-registered.png)
+    ![注册的用户](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>为用户设置配额
 可以使用以下步骤来设置每个用户的配额： 
@@ -115,7 +118,7 @@ ms.locfileid: "76169209"
 3. 在 "**每个用户的配额**" 页上，指定你想要在计划的类时间之外为每个用户（学生）指定的小时数，然后选择 "**保存**"。
 
     ![每个用户的配额](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. 现在，工具栏上已更改的值： "**每用户配额： \<小时数 >** 。 
+5. 现在，工具栏上已更改的值： "**每个用户的配额： \<小时数 >** 和" 用户 "列表中。
 
     ![每个用户的配额-之后](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

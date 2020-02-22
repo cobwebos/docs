@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522333"
+ms.locfileid: "77538169"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -1448,12 +1448,13 @@ Azure AD 애플리케이션 갤러리에 있는 "비-갤러리 애플리케이�
 ### <a name="gallery-onboarding-checklist"></a>库载入清单
 按照下面的清单，确保你的应用程序是载入可的，并且客户具有平稳的部署体验。 载入库时，将收集此信息。 
 > [!div class="checklist"]
-> * [支持 SCIM 2.0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) （必需）
+> * 支持[SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation)用户和组终结点（仅需要一个，但建议同时使用这两个）
 > * 支持每个租户每秒至少25个请求（必需）
-> * 支持架构发现（建议）
 > * 支持 OAuth 授权代码授予或长生存期令牌（必需）
 > * 建立工程和支持点联系以支持客户发布库载入（必需）
+> * 支持使用单个修补程序更新多个组成员身份（建议） 
 > * 公开记录你的 SCIM 终结点（建议） 
+> * [支持架构发现](https://tools.ietf.org/html/rfc7643#section-6)（建议）
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>在应用程序库中预配连接器的授权

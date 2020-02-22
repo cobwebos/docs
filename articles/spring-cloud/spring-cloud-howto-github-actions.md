@@ -6,18 +6,18 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776477"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538458"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>带有 GitHub 操作的 Azure 春季 CI/CD
 
 GitHub 操作支持自动化软件开发生命周期工作流。 借助适用于 Azure 春季云的 GitHub 操作，你可以在存储库中创建工作流，以生成、测试、打包、发布和部署到 Azure。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 此示例需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="set-up-github-repository-and-authenticate"></a>设置 GitHub 存储库并进行身份验证
@@ -79,6 +79,7 @@ az spring-cloud app create --name account-service
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ Az `run` 命令将使用最新版本的 Azure CLI。 如果有重大更改，还
 在存储库中创建 github/workflow/docker-compose.override.yml 文件：
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ jobs:
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:

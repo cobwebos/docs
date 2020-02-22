@@ -3,12 +3,12 @@ title: 修正不符合资源
 description: 本指南将指导你完成对 Azure 策略中的策略不符合的资源的修正。
 ms.date: 09/09/2019
 ms.topic: how-to
-ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873040"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544175"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -143,7 +143,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
    ![修正-选择要修正的资源](../media/remediate-resources/select-resources.png)
 
-1. 筛选资源后，通过单击“修正”来启动修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。
+1. 筛选资源后，通过单击“修正”来启动修正任务。 "策略符合性" 页将打开 "**修正任务**" 选项卡，以显示任务进度的状态。 由修正任务创建的部署将立即开始。
 
    ![修正-修正任务的进度](../media/remediate-resources/task-progress.png)
 

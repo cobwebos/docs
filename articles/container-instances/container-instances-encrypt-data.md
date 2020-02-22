@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934306"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544311"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -47,14 +47,14 @@ ms.locfileid: "76934306"
 az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
-运行此命令的输出应显示已设置了 "displayName"： "Azure 容器实例服务" 的服务主体。
+运行此命令的输出应显示已设置了 "displayName" 的服务主体："Azure 容器实例服务"。
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
 使用[Azure 门户](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault)、 [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)或[PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)创建 Azure Key Vault。 
 
 对于密钥保管库的属性，请使用以下准则： 
-* 名称：唯一名称是必需的。 
+* 姓名：必须提供唯一的名称。 
 * 订阅：选择订阅。
 * 在 "资源组" 下，选择现有资源组，或创建新资源组，并输入资源组名称。
 * 在“位置”下拉菜单中选择一个位置。
@@ -88,8 +88,8 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 > [!IMPORTANT]
 > 使用客户管理的密钥加密部署数据在当前推出的最新 API 版本（2019-12-01）中提供。在部署模板中指定此 API 版本。 如果你有任何问题，请联系 Azure 支持部门。
 
-设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 若要详细了解如何使用模板部署 ACI 资源，请[参阅教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)。 
-* 在 "`resources`" 下，将 `apiVersion` 设置为 "`2012-12-01`"。
+设置密钥保管库密钥和访问策略后，将以下属性添加到 ACI 部署模板。 有关使用 [教程中的模板部署 ACI 资源的详细信息，请参阅：使用资源管理器模板](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)部署多容器组。 
+* 在 "`resources`" 下，将 `apiVersion` 设置为 "`2019-12-01`"。
 * 在部署模板的容器组属性部分下，添加一个 `encryptionProperties`，其中包含以下值：
   * `vaultBaseUrl`：密钥保管库的 DNS 名称，可在门户中密钥保管库资源的 "概述" 边栏选项卡上找到。
   * `keyName`：之前生成的密钥的名称
@@ -121,7 +121,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ]
 ```
 
-下面是一个完整的模板，该模板在[教程：使用资源管理器模板部署多容器组](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)中的模板改编。 
+下面是一个完整的模板，与 [教程中的模板改编：使用资源管理器模板](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group)部署多容器组。 
 
 ```json
 {
@@ -219,7 +219,7 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 
 如果在桌面上创建并编辑了模板文件，则可以通过将文件拖动到 Cloud Shell 目录上，将其上传到该文件。 
 
-使用“[az group create][az-group-create]”命令创建资源组。
+使用[az group create][az-group-create]命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

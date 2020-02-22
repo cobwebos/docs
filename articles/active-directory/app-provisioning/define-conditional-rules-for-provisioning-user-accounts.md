@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522554"
+ms.locfileid: "77544260"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -98,10 +98,12 @@ ms.locfileid: "77522554"
    i. **Greater_Than。** 如果计算的属性大于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
    j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
+   
+   k. **涵盖.** 如果计算的属性包含字符串值（区分大小写），则子句返回 "true"，如[此处](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
 
 
 >[!IMPORTANT] 
-> 不支持包含和 IsMemberOf 筛选器。 它们很快会从 UI 中删除。
+> 当前不支持 IsMemberOf 筛选器。
 
 9. 可重复步骤 7-8 以添加其他范围子句。
 
@@ -118,7 +120,7 @@ ms.locfileid: "77522554"
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 操作员 | 值 | 说明|
+| 目标属性| 运算符 | 值 | 说明|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有 userPrincipal 域 @domain.com 的所有用户将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有 @domain.com 域的 userPrincipal 的所有用户将不在预配范围内|

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460785"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539393"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>向 Azure 认知搜索索引中的字符串字段添加语言分析器
 
@@ -44,7 +44,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
  
 + Lucene 的英语分析器扩展了标准分析器。 它从字词中删除所有格（尾部的 's）、根据 Porter 词干分解算法应用词干分解，并删除英语非索引字。  
 
-+ Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理曲折和不规则字词形式，从而产生相关度更高的搜索结果。 
++ Microsoft 的英语分析器执行词形还原，而不是词干分解。 这意味着它可以更好地处理变形和不规则的单词窗体，从而导致更相关的搜索结果 
 
 ## <a name="configuring-analyzers"></a>配置分析器
 
@@ -66,7 +66,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |--------------|-----------------------------|--------------------------|  
 |阿拉伯语|ar.microsoft|ar.lucene|  
 |亚美尼亚语||hy.lucene|  
-|Bangla|bn.microsoft||  
+|孟加拉语|bn.microsoft||  
 |巴斯克语||eu.lucene|  
 |保加利亚语|bg.microsoft|bg.lucene|  
 |加泰罗尼亚语|ca.microsoft|ca.lucene|  
@@ -92,7 +92,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |爱尔兰语||ga.lucene|  
 |意大利语|it.microsoft|it.lucene|  
 |日语|ja.microsoft|ja.lucene|  
-|卡纳达语|kn.microsoft||  
+|埃纳德语|kn.microsoft||  
 |韩语|ko.microsoft|ko.lucene|  
 |拉脱维亚语|lv.microsoft|lv.lucene|  
 |立陶宛语|lt.microsoft||  
@@ -123,7 +123,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 
  名称带有 **Lucene** 批注的所有分析器都由 [Apache Lucene 的语言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )提供支持。
 
-## <a name="see-also"></a>另请参阅  
+## <a name="see-also"></a>请参阅  
 
 + [创建索引&#40;Azure 认知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

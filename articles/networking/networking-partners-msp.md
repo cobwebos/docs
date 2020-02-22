@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 38711c9f1cee07b04dad0ccfeff5694e61dd5b53
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: ef9efcea1c06149e084dc261f5add7b408ae7b92
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484955"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539257"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
@@ -50,7 +50,7 @@ Azure 网络 Msp 是一套专用的托管服务提供商，可解决云和混合
 |[警惕 IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5天评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5天实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview);[Palo Alto 网络提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace 产品/服务包括新的托管安全服务，以及以下 Azure 网络 MSP 合作伙伴提供的托管 MEC 服务： [Amdocs](https://www.amdocs.com/);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);   [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx)
+Azure Marketplace 产品/服务包括新的托管安全服务，以及以下 Azure 网络 MSP 合作伙伴提供的托管 MEC 服务： [Amdocs](https://www.amdocs.com/);[CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html);   [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [技术 Mahindra](https://networkservices.techmahindra.com/pages/default.aspx);[联合无线](https://www.federatedwireless.com/caas/)
 
 ## <a name="expressroute"></a>ExpressRoute 合作伙伴
 

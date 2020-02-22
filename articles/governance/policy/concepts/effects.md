@@ -3,12 +3,12 @@ title: 了解效果的工作原理
 description: Azure 策略定义具有各种影响，决定了如何管理和报告合规性。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972814"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544124"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -28,7 +28,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-Azure Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。 Azure 策略将创建应用于该资源的所有分配的列表，并根据每个定义计算资源。 在将请求提交到相应的资源提供程序之前，Azure 策略将处理多个影响。 这样做可以防止资源提供程序在资源不符合 Azure 策略的设计调控控制时不必要地处理。
+通过 Azure 资源管理器创建或更新资源的请求优先于 Azure 策略进行评估。 Azure 策略将创建应用于该资源的所有分配的列表，并根据每个定义计算资源。 在将请求提交到相应的资源提供程序之前，Azure 策略将处理多个影响。 这样做可以防止资源提供程序在资源不符合 Azure 策略的设计调控控制时不必要地处理。
 
 - 首先检查**已禁用**以确定是否应评估策略规则。
 - 然后计算**追加**和**修改**。 由于可能会改变请求，所做的更改可能会阻止审核或拒绝的影响。
@@ -158,11 +158,11 @@ Modify 用于在创建或更新时在资源上添加、更新或删除标记。 
 
 **操作**属性具有以下选项：
 
-|操作 |Description |
+|操作 |说明 |
 |-|-|
 |addOrReplace |将已定义的标记和值添加到资源，即使已存在具有不同值的标记也是如此。 |
 |添加 |将已定义的标记和值添加到资源。 |
-|移除 |从资源中删除定义的标记。 |
+|删除 |从资源中删除定义的标记。 |
 
 ### <a name="modify-examples"></a>修改示例
 
@@ -327,11 +327,12 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 与 AuditIfNotExists 类似，DeployIfNotExists 策略定义在满足条件时执行模板部署。
 
 > [!NOTE]
-> **deployIfNotExists** 支持[嵌套模板](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支持[链接模版](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
+> [deployIfNotExists](../../../azure-resource-manager/templates/linked-templates.md#nested-template) 支持**嵌套模板**，但目前不支持[链接模版](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 评估
 
-DeployIfNotExists 在资源提供程序处理资源创建或更新请求并返回成功状态代码后运行。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
+在资源提供程序处理创建或更新资源请求并返回成功状态代码后，DeployIfNotExists 大约运行15分钟。 如果没有相关资源或如果由 **ExistenceCondition** 定义的资源未评估为 true，则会发生模板部署。
+部署持续时间取决于模板中包含的资源的复杂性。
 
 在评估周期中，具有与资源匹配的 DeployIfNotExists 效果的策略定义被标记为不合规，但不对该资源执行任何操作。
 

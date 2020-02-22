@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 中的 Apache Ambari 陈旧警报
-description: HDInsight 中的陈旧 Apache Ambari 警报的可能原因和解决方法的讨论和分析。
+description: HDInsight 中 Apache Ambari 陈旧警报的可能原因和解决方案的讨论和分析。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: f19d499b5e50fbb5030a0f396296eed46fc6eee3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722806"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539104"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>方案： Azure HDInsight 中的 Apache Ambari 陈旧警报
 
@@ -20,64 +20,70 @@ ms.locfileid: "76722806"
 
 ## <a name="issue"></a>问题
 
-在 Apache Ambari UI 中，你可能会看到类似于下图的警报：
+在 Apache Ambari UI 中，你可能会看到如下所示的警报：
 
 ![Apache Ambari 陈旧警报示例](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>原因
 
-Ambari 代理持续执行运行状况检查来监视多个资源的运行状况。 每个警报都配置为在预定义的时间间隔运行。 执行每个警报后，Ambari 代理会将状态报告回 Ambari 服务器。 此时，如果 Ambari server 检测到任何警报不能及时运行，则会触发 "Ambari 服务器警报"。 运行状况检查可能无法在其定义的时间间隔内执行的原因有多种：
+Ambari 代理持续监视多个资源的运行状况。 可以将*警报*配置为通知你特定群集属性是否在预先确定的阈值内。 每次运行资源检查后，如果满足警报条件，Ambari 代理会将状态报告回 Ambari 服务器，并触发警报。 如果警报未根据其警报配置文件中的间隔进行检查，则服务器将触发*Ambari Server 陈旧警报*警报。
 
-* 当主机的使用率很高（CPU 使用率高）时，Ambari 代理可能无法及时获得足够的系统资源来及时执行警报。
+运行状况检查可能无法在其定义的时间间隔内运行的原因有多种：
 
-* 在繁重负载期间，群集正在忙于执行许多作业/服务。
+* 主机的使用量较高（CPU 使用率高），因此 Ambari 代理无法获得足够的系统资源来按时运行警报。
 
-* 群集中的少数主机可能会托管多个组件，因此需要运行多个警报。 如果组件数量很大，警报作业可能会错过其计划间隔
+* 群集在繁重的负载期间正在忙于执行多个作业或服务。
+
+* 群集中的少量主机承载许多组件，因此需要运行多个警报。 如果组件数量很大，警报作业可能会错过计划的时间间隔。
 
 ## <a name="resolution"></a>解决方法
 
-### <a name="increase-alert-interval-time"></a>增加警报间隔时间
+请尝试以下方法来解决 Ambari 陈旧警报的问题。
 
-您可以选择根据群集的响应时间和负载增加单个警报间隔的值。
+### <a name="increase-the-alert-interval-time"></a>增加警报间隔时间
+
+你可以根据群集的响应时间和负载增加单个警报间隔的值：
 
 1. 在 Apache Ambari UI 中，选择 "**警报**" 选项卡。
 1. 选择所需的警报定义名称。
 1. 从定义中选择 "**编辑**"。
-1. 根据需要修改 "**检查间隔**" 值，然后选择 "**保存**"。
+1. 增大**检查间隔**值，然后选择 "**保存**"。
 
-### <a name="increase-alert-interval-time-for-ambari-server-alerts"></a>增加 Ambari 服务器警报的警报间隔时间
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>增加 Ambari 服务器警报的警报间隔时间
 
 1. 在 Apache Ambari UI 中，选择 "**警报**" 选项卡。
 1. 从 "**组**" 下拉列表中，选择 " **AMBARI 默认值**"。
-1. 选择 "警报**Ambari 服务器警报**"。
+1. 选择**Ambari 服务器警报**警报。
 1. 从定义中选择 "**编辑**"。
-1. 根据需要修改**检查间隔**值。
-1. 根据需要修改**间隔乘数**值，然后选择 "**保存**"。
+1. 增大**检查间隔**值。
+1. 增大 "**间隔乘数**" 值，然后选择 "**保存**"。
 
-### <a name="disable-and-enable-the-alert"></a>禁用并启用警报
+### <a name="disable-and-reenable-the-alert"></a>禁用并重新启用警报
 
-你可以禁用，然后再次启用该警报以丢弃任何过时警报。
+若要放弃过期警报，请禁用然后重新启用它：
 
 1. 在 Apache Ambari UI 中，选择 "**警报**" 选项卡。
 1. 选择所需的警报定义名称。
-1. 从定义中选择 "**已启用**" （位于最右侧）。
-1. 从**确认**弹出窗口中，选择 "**确认禁用**"。
-1. 请等待几秒钟，以便清除该页上显示的所有警报 "实例"。
-1. 从定义中选择 "**已禁用**" （位于最右侧）。
-1. 从**确认**弹出窗口中，选择 "**确认启用**"。
+1. 在该定义中，选择 UI 最右端的 "**启用**"。
+1. 在**确认**弹出窗口中，选择 "**确认禁用**"。
+1. 等待几秒钟，以便清除该页上显示的所有警报 "实例"。
+1. 在该定义中，选择 UI 最右端的 "**禁用**"。
+1. 在**确认**弹出窗口中，选择 "**确认启用**"。
 
-### <a name="increase-alert-grace-time"></a>增加警报宽限期
+### <a name="increase-the-alert-grace-period"></a>增加警报宽限期
 
-在 Ambari 代理报告已配置的警报丢失其计划之前，会应用一个宽限期。 即使警报丢失了计划时间，但在警报宽限期内触发了警报，也不会触发过时警报。
+在 Ambari 代理报告已配置的警报丢失其计划之前有一个宽限期。 如果警报丢失了计划时间，但在宽限期内运行，则不会生成过时警报。
 
-默认 `alert_grace_period` 值为5秒。 此 `alert_grace_period` 设置在 `/etc/ambari-agent/conf/ambari-agent.ini`中是可配置的。 对于定期触发陈旧警报的那些主机，请尝试将值增加到10。 然后重新启动 Ambari 代理
+默认 `alert_grace_period` 值为5秒。 可以在/etc/ambari-agent/conf/ambari-agent.ini. 中配置此设置。 对于定期发生陈旧警报的主机，请尝试将该值增加到10。 然后，重新启动 Ambari 代理。
 
 ## <a name="next-steps"></a>后续步骤
 
-如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
+如果此处未提及你的问题，或者你无法解决问题，请访问以下某个渠道获取更多支持：
 
-* 通过[Azure 社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
+* 在 azure[社区支持](https://azure.microsoft.com/support/community/)获得 azure 专家的解答。
 
-* 连接[@AzureSupport](https://twitter.com/azuresupport) -用于改善客户体验的官方 Microsoft Azure 帐户。 将 Azure 社区连接到正确的资源：答案、支持和专家。
+* 连接 Twitter 上的[@AzureSupport](https://twitter.com/azuresupport) 。 这是用于改善客户体验的官方 Microsoft Azure 帐户。 它将 Azure 社区连接到适当的资源：答案、支持和专家。
 
-* 如果需要更多帮助，可以从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 从菜单栏中选择 "**支持**" 或打开 "**帮助 + 支持**中心"。 有关更多详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 Microsoft Azure 订阅中包含对订阅管理和计费支持的访问权限，并且通过一个[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供技术支持。
+* 如果需要更多帮助，请从[Azure 门户](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支持请求。 若要实现此功能，请从门户菜单中选择 "帮助（ **？** ）"，或打开 "**帮助 + 支持**" 窗格。 有关详细信息，请参阅[如何创建 Azure 支持请求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)。 
+
+  Microsoft Azure 订阅中包含对订阅管理和计费的支持。 技术支持通过[Azure 支持计划](https://azure.microsoft.com/support/plans/)提供。

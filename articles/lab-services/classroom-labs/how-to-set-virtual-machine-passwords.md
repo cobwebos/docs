@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443221"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539427"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
 本文介绍如何执行以下任务：

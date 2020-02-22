@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 02/20/2020
 ms.author: cherylmc
-ms.openlocfilehash: e01b311d10dcf4216bfeea77ce8919f64ea2ef28
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f574576044b7e4ddd34289b5cc45fe5ca353f180
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080330"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538498"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且可复原的方式。 你可以从专用数据中心或公司网络访问多个 Microsoft 云服务，例如 Azure 和 Office 365。 例如，你可能在旧金山有一家分公司，其 ExpressRoute 线路位于硅谷，在伦敦有另一家分公司，其 ExpressRoute 线路位于同一城市。 这两个分公司都可以与美国西部和英国南部的 Azure 资源高速连接。 但是，分公司不能直接相互交换数据。 换句话说，10.0.1.0/24 可以将数据发送到 10.0.3.0/24 和 10.0.4.0/24，但不能发送到 10.0.2.0/24。
@@ -23,8 +23,8 @@ ExpressRoute 是用来将本地网络连接到 Microsoft 云的一种专用且�
 
 ![带有时][2]
 
-## <a name="use-case"></a>使用案例
-ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接你在世界各地的分公司。 例如，如果你的服务提供商主要在美国运营并且已连接你在美国的所有分公司，但服务提供商不在日本和中国香港运营，则可以使用 ExpressRoute Global Reach 与本地服务提供商合作，Microsoft 将使用 ExpressRoute 和我们的全球网络将你在那里的分公司连接到美国的分公司。
+## <a name="use-case"></a>用例
+ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接你在世界各地的分公司。 例如，如果你的服务提供商主要在美国运营并且已连接你在美国的所有分公司，但服务提供商不在日本和香港运营，则可以使用 ExpressRoute Global Reach 与本地服务提供商合作，Microsoft 将使用 ExpressRoute 和我们的全球网络将你在那里的分公司连接到美国的分公司。
 
 ![用例][3]
 
@@ -33,13 +33,14 @@ ExpressRoute Global Reach 旨在补充服务提供商的 WAN 实施，并连接�
 
 * 澳大利亚
 * 加拿大
-* 法国
-* 德国
-* 中国香港特别行政区
+* France
+* Germany
+* 香港特别行政区
 * 爱尔兰
 * 日本
-* 韩国
+* Korea
 * 荷兰
+* 新西兰
 * 新加坡
 * 瑞士
 * 英国

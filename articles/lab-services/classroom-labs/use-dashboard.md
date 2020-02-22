@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d1e34a493b747383ce479bcad638098b41e59d2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588182"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538934"
 ---
 # <a name="dashboard-for-classroom-labs"></a>用于课堂实验室的仪表板
 本文介绍了 Azure 实验室服务中的 "教室实验室" 的仪表板视图。 
 
-![仪表板](../media/use-dashboard/dashboard.png)
+![面板](../media/use-dashboard/dashboard.png)
 
 ## <a name="costs-and-billing-tile"></a>成本和计费磁贴
 此磁贴提供以下成本估算详细信息：

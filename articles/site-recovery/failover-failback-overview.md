@@ -3,12 +3,12 @@ title: 关于 Azure Site Recovery 中的故障转移和故障回复
 description: 了解 Azure Site Recovery 中的故障转移和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3c461d2de4f9ef8e8159c7b9c86f23a846421c5e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498275"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539512"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>关于本地灾难恢复故障转移/故障回复
 
@@ -23,7 +23,7 @@ Site Recovery 中的故障转移和故障回复具有四个阶段：
 - **阶段3：从 Azure 进行故障转移**：如果本地站点再次运行正常，则运行其他故障转移，这一次是将 Azure vm 故障回复到本地站点。 你可以故障回复到从中进行故障转移的原始位置，或故障回复到备用位置。
 - **阶段4：重新保护本地计算机**：故障回复后，再次启用将本地计算机复制到 Azure。
 
-## <a name="failover"></a>故障转移：
+## <a name="failover"></a>故障转移
 
 作为业务连续性和灾难恢复（BCDR）策略的一部分执行故障转移。
 
@@ -37,8 +37,8 @@ Site Recovery 中的故障转移和故障回复具有四个阶段：
 - **提交**：在故障转移后，请在 Azure 中验证 VM：
     - 然后，可以将故障转移提交到选定的恢复点，或选择其他提交点。
     - 提交故障转移后，无法更改恢复点。
-    
-    
+
+
 ## <a name="connect-to-azure-after-failover"></a>故障转移后连接到 Azure
 
 若要连接到使用 RDP/SSH 在故障转移后创建的 Azure Vm，有许多要求。
@@ -54,12 +54,12 @@ Site Recovery 中的故障转移和故障回复具有四个阶段：
 
 Site Recovery 提供不同的故障转移选项。
 
-**故障转移** | **详细信息** | **恢复** | **Workflow**
+**故障转移** | **详细信息** | **恢复** | **工作流**
 --- | --- | --- | ---
 **测试故障转移** | 用于运行验证 BCDR 策略的钻取，而不会丢失任何数据或停机时间。| 在 Azure 中创建 VM 的副本，而不会影响正在进行的复制或生产环境。 | 1. 在单个 VM 上或在恢复计划中的多个 Vm 上运行测试故障转移。<br/><br/> 2. 选择要用于测试故障转移的恢复点。<br/><br/> 3. 选择 azure VM 在故障转移后创建时将位于其中的 azure 网络。 网络仅用于测试故障转移。<br/><br/> 4. 验证钻取是否按预期方式工作。 Site Recovery 在钻取期间自动清理在 Azure 中创建的 Vm。
 **计划的故障转移-Hyper-v**  | 通常用于计划的停机时间。<br/><br/> 源 Vm 已关闭。 在启动故障转移之前，将同步最新的数据。 | 计划的工作流的零数据丢失。 | 1. 计划停机维护时段并通知用户。<br/><br/> 2. 使面向用户的应用脱机。<br/><br/> 3. 使用最新的恢复点启动计划的故障转移。 如果计算机未关闭或遇到错误，则故障转移不会运行。<br/><br/> 4. 在故障转移后，请检查副本 Azure VM 在 Azure 中是否处于活动状态。<br/><br/> 5. 提交故障转移以完成。 提交操作将删除所有恢复点。
 **故障转移-Hyper-v** | 通常在出现计划外中断或主站点不可用的情况下运行。<br/><br/> 可以选择关闭 VM，并在启动故障转移之前同步最终更改。  | 应用的最小数据丢失。 | 1. 启动你的 BCDR 计划。 <br/><br/> 2. 启动故障转移。 指定 Site Recovery 应关闭 VM，并在触发故障转移之前同步/复制最新更改。<br/><br/> 3. 你可以故障转移到多个恢复点选项，如下表中所示。<br/><br/> 如果未启用关闭 VM 的选项，或者如果 Site Recovery 无法关闭 VM，则使用最新的恢复点。<br/>即使无法关闭计算机，也会运行故障转移。<br/><br/> 4. 在故障转移后，请检查副本 Azure VM 在 Azure 中是否处于活动状态。<br/> 如果需要，你可以从保留时段选择不同的恢复点，时间为24小时。<br/><br/> 5. 提交故障转移以完成。 提交操作将删除所有可用的恢复点。
-**故障转移-VMware** | 通常在出现计划外中断或主站点不可用的情况下运行。<br/><br/> （可选）指定 Site Recovery 应尝试触发 VM 关闭，并在启动故障转移之前同步和复制最终更改。  | 应用的最小数据丢失。 | 1. 启动你的 BCDR 计划。 <br/><br/> 2. 从 Site Recovery 启动故障转移。 指定 Site Recovery 是否应在运行故障转移之前尝试触发 VM 关闭并进行同步。<br/> 即使无法关闭计算机，也会运行故障转移。<br/><br/> 3. 在故障转移后，请检查副本 Azure VM 在 Azure 中是否处于活动状态。 <br/>如果需要，可以从72小时的保留期窗口中选择其他恢复点。<br/><br/> 5. 提交故障转移以完成。 提交操作将删除所有恢复点。<br/> 对于 Windows Vm，Site Recovery 在故障转移过程中禁用 VMware 工具。 
+**故障转移-VMware** | 通常在出现计划外中断或主站点不可用的情况下运行。<br/><br/> （可选）指定 Site Recovery 应尝试触发 VM 关闭，并在启动故障转移之前同步和复制最终更改。  | 应用的最小数据丢失。 | 1. 启动你的 BCDR 计划。 <br/><br/> 2. 从 Site Recovery 启动故障转移。 指定 Site Recovery 是否应在运行故障转移之前尝试触发 VM 关闭并进行同步。<br/> 即使无法关闭计算机，也会运行故障转移。<br/><br/> 3. 在故障转移后，请检查副本 Azure VM 在 Azure 中是否处于活动状态。 <br/>如果需要，可以从72小时的保留期窗口中选择其他恢复点。<br/><br/> 5. 提交故障转移以完成。 提交操作将删除所有恢复点。<br/> 对于 Windows Vm，Site Recovery 在故障转移过程中禁用 VMware 工具。
 
 ## <a name="failover-processing"></a>故障转移处理
 
@@ -85,6 +85,8 @@ Site Recovery 提供不同的故障转移选项。
 **最新的多 VM 应用一致** |  此选项适用于包含一台或多台已启用多 VM 一致性的 VM 的恢复计划。 属于复制组的 VM 会故障转移到最新的常用多 VM 应用程序一致恢复点。 其他 VM 故障转移到其最新的应用程序一致恢复点。
 **自定义** | 使用此选项可将特定 VM 故障转移到特定的恢复点。 此选项不适用于恢复计划。
 
+> [!NOTE]
+> 恢复点无法迁移到另一个恢复服务保管库。
 
 ## <a name="reprotectionfailback"></a>重新保护/故障回复
 
@@ -136,17 +138,17 @@ Site Recovery 提供不同的故障转移选项。
 - 运行计划的从 Azure 到本地的故障回复。
 - 不需要为 Hyper-v VM 故障回复设置特定组件。
 - 在计划的故障转移期间，可以选择用于在故障回复前同步数据的选项：
-    - **在故障转移前同步数据**：此选项可最大程度地减少虚拟机的停机时间，因为它在不关闭虚拟机的情况下 
+    - **在故障转移前同步数据**：此选项可最大程度地减少虚拟机的停机时间，因为它在不关闭虚拟机的情况下
         - 阶段1：拍摄 Azure VM 的快照，并将其复制到本地 Hyper-v 主机。 计算机将继续在 Azure 中运行。
         - 阶段2：关闭 Azure VM，以便不会发生新的更改。 最终的增量更改集将传输到本地服务器，并启动本地 VM。
-    - **仅在故障转移期间同步数据**：此选项速度更快，因为我们预计磁盘的大部分已更改，因此不会执行校验和计算。 此选项会执行磁盘的下载。 如果 VM 已在 Azure 中运行了一段时间（一个月或更多），或者如果已删除了本地 VM，则建议使用此选项。  
+    - **仅在故障转移期间同步数据**：此选项速度更快，因为我们预计磁盘的大部分已更改，因此不会执行校验和计算。 此选项会执行磁盘的下载。 如果 VM 已在 Azure 中运行了一段时间（一个月或更多），或者如果已删除了本地 VM，则建议使用此选项。
 
 [详细了解](hyper-v-azure-failback.md)hyper-v 重新保护和故障回复。
 
 将 Azure Vm 重新保护到本地时，可以指定要故障回复到原始位置或备用位置。
 
 - **原始位置恢复**：这会从 Azure 故障回复到同一源本地计算机（如果存在）。 在这种情况下，你选择上一过程中所述的同步选项之一。
-- **备用位置恢复**：如果不存在本地计算机，可以从 Azure 故障回复到备用位置。 将 Azure VM 重新保护到本地时，会创建本地计算机。 如果选择此选项，我们建议选择用于在故障转移之前同步数据的选项 
+- **备用位置恢复**：如果不存在本地计算机，可以从 Azure 故障回复到备用位置。 将 Azure VM 重新保护到本地时，会创建本地计算机。 如果选择此选项，我们建议选择用于在故障转移之前同步数据的选项
 - [查看](hyper-v-azure-failback.md)位置故障回复的要求和限制。
 
 
@@ -156,7 +158,7 @@ Site Recovery 提供不同的故障转移选项。
 
 
 ## <a name="next-steps"></a>后续步骤
-- 故障转移[特定的 VMware vm](vmware-azure-tutorial-failover-failback.md) 
+- 故障转移[特定的 VMware vm](vmware-azure-tutorial-failover-failback.md)
 - 故障转移[特定 Hyper-v vm](hyper-v-azure-failover-failback-tutorial.md)。
 - [创建](site-recovery-create-recovery-plans.md)恢复计划。
 - 故障转移[恢复计划中的 vm](site-recovery-failover.md)。

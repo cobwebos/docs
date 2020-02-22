@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290370"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539495"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -16,7 +16,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 
 | 运行时版本 | 版本级别<sup>1</sup> | .NET 版本 | 
 | --------------- | ------------- | ------------ |
-| 3.x | GA | .NET Core 3.1 | 
+| 3.x | GA | .NET Core 3。1 | 
 | 2.x | GA | .NET Core 2.2 |
 | 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
@@ -182,7 +182,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 </configuration>
 ```
 
-## <a name="bindings"></a>绑定
+## <a name="bindings"></a>Bindings
 
 从版本2.x 开始，运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型具有以下优势：
 

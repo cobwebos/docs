@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756390"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539359"
 ---
 # <a name="message-browsing"></a>消息浏览
 
@@ -34,7 +34,7 @@ Peek 还会返回锁定的消息，以及当前由其他接收程序处理但尚
 
 ## <a name="peek-apis"></a>Peek API
 
-[Peek/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) 和 [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) 方法存在于所有 .NET 和 Java 客户端库以及所有接收程序对象中：MessageReceiver、MessageSession、QueueClient 和 SubscriptionClient。 Peek 适用于所有队列、订阅及其对应的死信队列。
+[速览/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync)和[PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_)方法存在于所有 .net 和 Java 客户端库以及所有接收方对象上： **MessageReceiver**、 **MessageSession**。 Peek 适用于所有队列、订阅及其对应的死信队列。
 
 如果重复调用，Peek 方法会按序号从低到高的顺序，枚举队列或订阅日志中的所有消息。 这是消息的排队顺序，并不是消息的最终检索顺序。
 

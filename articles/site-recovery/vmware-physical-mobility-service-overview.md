@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513552"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539376"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -21,6 +21,9 @@ ms.locfileid: "76513552"
 - [推送安装](#push-installation)：在通过 Azure 门户启用保护时，Site Recovery 将在服务器上安装移动代理。
 - 手动安装：可以通过[UI](#install-mobility-agent-through-ui)或[命令提示符](#install-mobility-agent-through-command-prompt)在每台计算机上手动安装移动服务。
 - [自动部署](vmware-azure-mobility-install-configuration-mgr.md)：你可以通过软件部署工具（例如 Configuration Manager）自动进行安装。
+
+> [!NOTE]
+> 移动代理在 VMware Vm 或物理计算机的源计算机上使用约 6%-10% 的内存。
 
 ## <a name="anti-virus-on-replicated-machines"></a>复制计算机上的防病毒
 
@@ -35,7 +38,7 @@ ms.locfileid: "76513552"
 
 以下部分介绍了推送安装工作流的详细信息。
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>从[9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)开始
+### <a name="from-923-version-onwards"></a>从[9.23 版](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery)开始
 
 在移动代理的推送安装过程中，执行以下步骤
 
@@ -44,8 +47,8 @@ ms.locfileid: "76513552"
 3. 作为移动代理安装的一部分，在服务器上安装 Azure Site Recovery VSS 提供程序。 此提供程序用于生成应用程序一致点。 如果 VSS 提供程序安装失败，则将跳过此步骤，并且代理安装将继续。
 4. 如果代理安装成功但 VSS 提供程序安装失败，作业状态将标记为 "警告"。 这不会影响故障一致性点生成。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 若要生成应用程序一致点，请参阅[我们的指南](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine)以手动完成 Site Recovery VSS 提供程序的安装。 </br>
-    b.保留“数据库类型”设置，即设置为“共享”。  如果你不希望生成应用程序一致的点，请[修改复制策略](vmware-azure-set-up-replication.md#create-a-policy)以关闭应用程序一致点。
+    a. 若要生成应用程序一致点，请参阅[我们的指南](vmware-physical-manage-mobility-service.md#install-site-recovery-vss-provider-on-source-machine)以手动完成 Site Recovery VSS 提供程序的安装。 </br>
+    b.  如果你不希望生成应用程序一致的点，请[修改复制策略](vmware-azure-set-up-replication.md#create-a-policy)以关闭应用程序一致点。
 
 ### <a name="before-922-versions"></a>9\.22 之前的版本
 
@@ -73,7 +76,7 @@ ms.locfileid: "76513552"
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. 在 "**配置服务器详细信息**" 中，指定配置的 IP 地址和密码。  
+5. 在 "**配置服务器详细信息**" 中，指定配置的 IP 地址和密码。
 
     ![“移动服务注册”页](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -115,7 +118,7 @@ ms.locfileid: "76513552"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安装位置 >/Platform "VmWare"/Silent
+用法 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安装位置 >/Platform "VmWare"/Silent
 安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
@@ -125,7 +128,7 @@ ms.locfileid: "76513552"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
+用法 | UnifiedAgentConfigurator/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 代理配置日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 下。
 /CSEndPoint | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 /PassphraseFilePath |  Mandatory。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
@@ -154,17 +157,17 @@ ms.locfileid: "76513552"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | /install \<安装位置 >-r \<MS/MT >-v VmWare-q
+用法 | /install \<安装位置 >-r \<MS/MT >-v VmWare-q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | Mandatory。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。
--S | 可选。 指定是否以静默模式运行安装程序。
+-q | 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
--o | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
+用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+-i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 -P |  Mandatory。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虚拟机代理

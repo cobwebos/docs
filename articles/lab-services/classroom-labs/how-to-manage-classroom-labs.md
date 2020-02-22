@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264825"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539444"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以根据[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)一文中的步骤将其他用户添加为“实验室创建者”角色。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
@@ -41,6 +41,9 @@ ms.locfileid: "76264825"
     6. 选择“保存”。
 
         ![“新建实验室”窗口](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > 如果实验室帐户已配置为[允许 lab creator 选取实验室 location](allow-lab-creator-pick-lab-location.md)选项，则会显示一个用于选择实验室位置的选项。 
 4. 在“虚拟机凭据”页上，指定实验室中所有 VM 的默认凭据。
     1. 指定实验室中所有 VM 的**用户名**。
     2. 指定用户的**密码**。 
@@ -52,12 +55,14 @@ ms.locfileid: "76264825"
         教师可以选择对实验室中的所有 Vm 使用相同的密码，或允许学生为其 Vm 设置密码。 默认情况下，所有 Windows 和 Linux 映像（Ubuntu 除外）都启用此设置。 选择**Ubuntu** VM 时，此设置会被禁用，因此在首次登录时，会提示学生设置密码。  
 
         ![“新建实验室”窗口](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > 记下用户名和密码。 这些信息不会再次显示。    
     4. 然后，在 "**虚拟机凭据**" 页上选择 "**下一步**"。 
-5. 在“实验室策略”页上，输入为每个用户分配的在实验室计划时间之外的小时数（**每个用户的配额**），然后选择“完成”。 
+5. 在 "**实验室策略**" 页上，执行以下步骤：
+    1. 输入在实验室的计划时间之外为每个用户分配的小时数（**每个用户的配额**）。 
+    2. 对于 "**自动关闭虚拟机**" 选项，请指定是否想要在用户断开连接时自动关闭 VM。 你还可以指定 VM 在自动关机之前应等待用户重新连接的时间。 有关详细信息，请参阅[在断开连接时启用 vm 自动关闭](how-to-enable-shutdown-disconnect.md)。
+    3. 然后选择 "**完成**"。 
 
-    ![每个用户的配额](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![每个用户的配额](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. 此时会看到以下屏幕，显示模板 VM 的创建状态。 在实验室中创建模板最长需要 20 分钟时间。 
 
     ![模板 VM 的创建状态](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -92,12 +97,12 @@ ms.locfileid: "76264825"
 
 ### <a name="vm-sizes"></a>VM 大小  
 
-| 大小 | 内核数 | RAM | Description | 
+| 大小 | 内核数 | RAM | 说明 | 
 | ---- | ----- | --- | ----------- | 
 | 小型 | 2 | 3.5 GB | 此大小最适用于命令行、打开 web 浏览器、低流量 web 服务器、小到中型数据库。 |
-| 中型 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
+| 中等 | 4 | 7 GB | 此大小最适合用于关系数据库、内存中缓存和分析 | 
 | 中（嵌套虚拟化） | 4 | 16 GB | 此大小最适合用于关系数据库、内存中缓存和分析。 此大小还支持嵌套虚拟化。 <p>如果每个学生都需要多个 Vm，则可以使用此大小。 教师可以使用嵌套虚拟化在虚拟机中设置几个小大小的嵌套虚拟机。 </p> |
-| 大 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
+| 大型 | 8 | 32 GB | 此大小最适用于需要更快的 Cpu、更好的本地磁盘性能、大型数据库、大内存缓存的应用程序。 此大小还支持嵌套虚拟化 |  
 | 小型 GPU （可视化效果） | 6 | 56 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 
 | 小型 GPU （计算） | 6 | 56 GB | 此大小最适用于计算密集型和网络密集型应用程序，如人工智能和深度学习应用程序。 | 
 | 中等 GPU （可视化效果） | 12 | 112 GB | 此大小最适合用于使用框架（如 OpenGL 和 DirectX）进行远程可视化、流式处理、游戏、编码。 | 

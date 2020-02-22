@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932593"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544226"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
 
@@ -26,18 +26,38 @@ ms.locfileid: "76932593"
 > * [AKS 支持策略](support-policies.md)
 > * [Azure 支持常见问题](faq.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Azure CLI 版本2.0.77 或更高版本，以及 Azure CLI AKS 预览版扩展版本0.4.18
 
 ## <a name="currently-supported-regions"></a>当前支持的区域
+
+* 澳大利亚东部
+* 澳大利亚东南部
+* 巴西南部
+* 加拿大中部
+* 加拿大东部
+* Cenral
+* 东亚
+* 美国东部
+* 美国东部 2
+* 美国东部 2 EUAP
+* 法国中部
+* 德国北部
+* 日本东部
+* 日本西部
+* 韩国中部
+* 韩国南部
+* 美国中北部
+* 北欧
+* 北欧
+* 美国中南部
+* 英国南部
+* 西欧
 * 美国西部
 * 美国西部 2
 * 美国东部 2
-* 加拿大中部
-* 北欧
-* 西欧
-* 澳大利亚东部
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安装最新 Azure CLI AKS 预览版扩展
 
@@ -106,17 +126,17 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
 
-1. 执行下列任一操作：
+1. 执行以下任一操作：
    * 在 AKS 群集所在的虚拟网络中创建 VM。  
    * 在不同的虚拟网络中创建一个 VM，并将此虚拟网络与 AKS 群集虚拟网络对等互连。
 
      如果在不同的虚拟网络中创建 VM，请在此虚拟网络与专用 DNS 区域之间设置链接。 为此，请执行以下操作：
     
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 中转到 Azure 门户中的 MC_ * 资源组。  
-     b.保留“数据库类型”设置，即设置为“共享”。 选择专用 DNS 区域。   
+     a. 中转到 Azure 门户中的 MC_ * 资源组。  
+     b. 选择专用 DNS 区域。   
      c. 在左窗格中，选择 "**虚拟网络**" 链接。  
-     d.单击“下一步”。 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接将需要几分钟的时间。  
-     e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 返回到 Azure 门户中的 MC_ * 资源组。  
+     d. 创建新链接，将 VM 的虚拟网络添加到专用 DNS 区域。 DNS 区域链接将需要几分钟的时间。  
+     e. 返回到 Azure 门户中的 MC_ * 资源组。  
      f. 在右侧窗格中，选择 "虚拟网络"。 虚拟网络名称的格式为 aks- *\** 。  
      g. 在左窗格中，选择 "**对等互连**"。  
      h. 选择 "**添加**"，添加 VM 的虚拟网络，然后创建对等互连。  

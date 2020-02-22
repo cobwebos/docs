@@ -1,29 +1,26 @@
 ---
 title: SharePoint 文件-QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 通过将受保护的 SharePoint 数据源添加到知识库，可以通过 Active Directory 的问题和答案来丰富知识库。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843286"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544158"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
-通过将受保护的 SharePoint 数据源添加到知识库，可以通过 Active Directory 的问题和答案来丰富知识库。
+将基于云的安全 SharePoint 数据源添加到知识库，以利用可以 Active Directory 的问题和答案来丰富知识库。
 
 在将受保护的 SharePoint 文档添加到知识库中时，必须为 QnA Maker 管理器请求 QnA Maker Active Directory 权限。 将此权限提供给 Active Directory 管理器以 QnA Maker 访问 SharePoint 后，就不必再次提供该权限。 添加到知识库的每个后续文档在同一 SharePoint 资源中时不需要授权。
 
 如果 QnA Maker 知识库管理器不是 Active Directory 管理器，则需要与 Active Directory 管理器进行通信以完成此过程。
+
+## <a name="prerequisites"></a>先决条件
+
+QnA Maker 使用 Microsoft Graph 权限。 如果你的 SharePoint 位于本地，你将无法从 SharePoint 中提取，因为 Microsoft Graph 无法确定权限。
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>将支持的文件类型添加到知识库
 
