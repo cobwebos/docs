@@ -350,8 +350,6 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 导出使用情况报表
-          href: view-usage-reports.md
         - name: 帐户管理
           href: manage-user-accounts-graph-api.md
         - name: 使用 Azure Pipelines 进行部署
