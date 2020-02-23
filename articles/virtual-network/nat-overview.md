@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 1bdd6552c3d418d761ffaf1df4ebb769421693f5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431411"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484989"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>什么是虚拟网络 NAT（公共预览版）？
 
@@ -199,7 +199,6 @@ NAT 网关通过两个单独的计量器来计费：
 - 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。
 - 使用 NAT 发往公共终结点的出站流不遵从子网或 NIC 上的 NSG。
 - 使用 NAT 时不支持 NSG 流日志记录。
-- 如果虚拟网络包含多个子网，可为每个子网配置不同的 NAT。
 - NAT 不能跨多个虚拟网络。
 
 ## <a name="next-steps"></a>后续步骤

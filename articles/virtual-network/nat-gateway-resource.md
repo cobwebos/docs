@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444377"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485006"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 网关资源设计虚拟网络（公共预览版）
 
@@ -341,7 +341,6 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 - 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。
 - 使用 NAT 发往公共终结点的出站流不遵从子网或 NIC 上的 NSG。
 - 使用 NAT 时不支持 NSG 流日志记录。
-- 如果虚拟网络包含多个子网，可为每个子网配置不同的 NAT。
 - NAT 不能跨多个虚拟网络。
 
 ## <a name="preview-participation"></a>预览版参与
