@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 01/27/2020
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 94fafd8b0411c1c7a4032769eec0eb5818844648
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118143"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482287"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>使用 REST API 和 Python 通过标签训练表单识别器模型
 
@@ -28,9 +28,13 @@ ms.locfileid: "77118143"
 - 安装 [Python](https://www.python.org/downloads/)（若要在本地运行此示例）。
 - 至少有六个相同类型的表单。 我们将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
+## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-training-data"></a>设置训练数据
 
-首先，需设置所需的输入数据。 标记的数据特征有特殊的输入要求（训练自定义模型所需的输入要求除外）。 
+接下来，需要设置所需的输入数据。 标记的数据特征有特殊的输入要求（训练自定义模型所需的输入要求除外）。 
 
 确保所有训练文档的格式相同。 如果有多种格式的表单，请根据通用格式将它们组织到子文件夹中。 训练时，需要将 API 定向到子文件夹。
 

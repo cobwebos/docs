@@ -2,17 +2,17 @@
 title: 什么是 Azure 预留项？
 description: 了解 Azure 预留项和定价以节省虚拟机、SQL 数据库、Azure Cosmos DB 和其他资源的成本。
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841874"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443629"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -32,16 +32,24 @@ ms.locfileid: "76841874"
 
 - **虚拟机预留实例** - 预留项仅涵盖虚拟机计算成本。 而不涵盖软件、网络或存储等其他费用。
 - **Azure 存储预留容量** - 该预留项涵盖用于 Blob 存储或 Azure Data Lake Gen2 存储的标准存储帐户的存储容量。 不涵盖带宽或事务费率。
-- **Azure 磁盘存储预留项** - 预留项仅包括大小为 P30 或更高级别的高级 SSD。 它不包括小于 P30 的任何其他磁盘类型或大小。
+- **Azure 磁盘存储预留项** - 预留项仅包括大小为 P30 或更高级别的高级 SSD。 它不涵盖小于 P30 的任何其他磁盘类型或大小。
 - **Azure Cosmos DB 预留容量** - 预留项涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。
 - **SQL 数据库预留 vCore** - 预留项仅包含计算成本。 许可证单独计费。
 - **SQL 数据仓库** - 预留项涵盖 cDWU 用量。 它不涵盖与 SQL 数据仓库用量相关的存储或网络费用。
 - **应用服务印花费** - 预留项涵盖印花使用费。 它不适用于辅助角色，因此与印花相关的任何其他资源将单独收费。
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Azure 数据资源管理器
+- **Azure Databricks** - 预留项仅涵盖 DBU 使用费。 计算、存储和网络等其他费用单独计收。
+- **Azure Database for MySQL** - 预留项仅包含计算费用。 预留容量不包括与 MySQL 数据库服务器关联的软件、网络或存储费用。
+- **Azure Database for PostgreSQL** - 预留项仅包含计算费用。 预留容量不包括与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。
+- **Azure Database for MariaDB** - 预留项仅包含计算费用。 预留容量不包括与 MariaDB 数据库服务器关联的软件、网络或存储费用。
+- **Azure 数据资源管理器** - 预留项涵盖标记费用。 预留项不涵盖与群集关联的计算、网络或存储费用。
+- **高级 SSD 托管磁盘** - 预留是针对指定的磁盘 SKU 做出的。 
 
+软件计划：
+
+- **SUSE Linux** - 预留项涵盖软件计划费用。 折扣仅适用于 SUSE 计量，而不适用于虚拟机的使用。
+- **Red Hat 计划** - 预留项涵盖软件计划费用。 折扣仅适用于 RedHat 计量，而不适用于虚拟机的使用。
+- **Azure VMware Solution by CloudSimple** - 预留项涵盖 VMWare CloudSimple 节点。 仍会收取额外的软件费用。
+- **Azure Red Hat OpenShift** - 预留项适用于 OpenShift 费用，而不适用于 Azure 基础结构费用。
 
 对于 Windows 虚拟机和 SQL 数据库，可以利用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来涵盖许可费用。
 

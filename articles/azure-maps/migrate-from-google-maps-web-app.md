@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086415"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208737"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>从 Google Maps 迁移 Web 应用
 
 使用 Google Maps 的大多数 Web 应用都是使用 Google Maps V3 JavaScript SDK。 Azure Maps Web SDK 是适合用于迁移目标的基于 Azure 的 SDK。 Azure Maps Web SDK 允许你使用自己的内容和图像自定义交互式地图。 你可以在 Web 或移动应用程序中运行自己的应用。 此控件使用 WebGL，因此可以渲染大型数据集，同时保持很高的性能。 使用 JavaScript 或 TypeScript 通过此 SDK 进行开发。
 
-如果迁移现有的 Web 应用程序，请检查该应用程序是否使用开源地图控件库。 开源地图控件库的示例包括：Cesium、Leaflet 和 OpenLayers。 如果应用程序使用开源地图控件库，而你不想要使用 Azure Maps Web SDK，也仍可以迁移。 在这种情况下，请将应用程序连接到 Azure Maps 图块服务（[道路图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)）。 下面指出了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
+如果迁移现有的 Web 应用程序，请检查该应用程序是否使用开源地图控件库。 开源地图控件库的示例包括：Cesium、Leaflet 和 OpenLayers。 即使应用程序使用开源地图控件库，而你不想要使用 Azure Maps Web SDK，也仍可以迁移该应用程序。 在这种情况下，请将应用程序连接到 Azure Maps 图块服务（[道路图块](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [卫星图块](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)）。 下面指出了有关如何在某些常用开源地图控件库中使用 Azure Maps 的详细信息。
 
 - Cesium - 适用于 Web 的 3D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文档](https://cesiumjs.org/)
 - Leaflet - 适用于 Web 的轻型 2D 地图控件。 [代码示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文档](https://leafletjs.com/)
@@ -80,7 +80,7 @@ ms.locfileid: "77086415"
 - 引用要在其中呈现地图的 `div` 元素时，Azure Maps 中的 `Map` 类只需要 `id` 值，而 Google Maps 需要 `HTMLElement` 对象。
 - Azure Maps 中的坐标定义为 Position 对象，可将这些对象指定为采用 `[longitude, latitude]` 格式的简单数字数组。
 - Azure Maps 中的缩放级别比 Google Maps 中的缩放级别要低一级。 之所以存在这种差异，是因为这两个平台之间的图块系统大小有差别。
-- Azure Maps 不会将任何导航控件添加到地图画布。 因此，默认情况下，地图中不提供缩放按钮和地图样式按钮。 但是，有一些控件可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
+- Azure Maps 不会将任何导航控件添加到地图画布。 因此，默认情况下，地图中不提供缩放按钮和地图样式按钮。 但是，有一些控制选项可用于添加地图样式选取器、缩放按钮、罗盘或旋转控件以及俯仰角控件。
 - Azure Maps 中添加了一个事件处理程序用于监视地图实例的 `ready` 事件。 在地图加载完 WebGL 上下文以及所需的所有资源后，将激发此事件。 可将地图完成加载后你要运行的任何代码添加到此事件处理程序。
 
 以下简单示例使用 Google Maps 加载中心点位于纽约坐标的地图。 经度：-73.985，纬度：40.747，地图缩放级别为 12。
@@ -212,7 +212,7 @@ ms.locfileid: "77086415"
 
 **后者：Azure Maps**
 
-Azure Maps 提供两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 *atlas* 命名空间，使应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为“auto”：
+Azure Maps 提供两种不同的方式来设置地图的语言和区域视图。 第一种做法是将此信息添加到全局 *atlas* 命名空间。 这会导致应用中的所有地图控件实例默认采用这些设置。 以下示例将语言设置为法语（“fr-FR”），将区域视图设置为“auto”：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ map = new atlas.Map('myMap', {
 
 ### <a name="setting-the-map-view"></a>设置地图视图
 
-在 Azure Maps 和 Google Maps 中，可以编程方式动态将地图移到新的地理位置。 为此，请调用 JavaScript 中的相应函数。 这些示例演示如何在 Google Maps 中使地图显示卫星航拍图像，将地图中心点置于某个位置，并将缩放级别更改为 15。 使用以下位置坐标：经度：-111.0225，纬度：35.0272。
+在 Azure Maps 和 Google Maps 中，可以编程方式动态将地图移到新的地理位置。 为此，请调用 JavaScript 中的相应函数。 该示例演示如何使地图显示卫星航拍图像，将地图中心点置于某个位置，并更改缩放级别。 使用以下位置坐标：经度：-111.0225，纬度：35.0272。
 
 > [!NOTE]
 > Google Maps 使用尺寸为 256 像素的图块，而 Azure Maps 则使用更大的 512 像素图块。 因此，在加载与 Google Maps 相同的地图区域时，Azure Maps 所需的网络请求数更少。 由于地图控件中图块金字塔的工作方式，Azure Maps 中更大的图块意味着在，在使用 Azure Maps 时，需要将 Google Maps 中使用的缩放级别减 1。 此算术运算确保 Azure Maps 中较大的图块呈现与 Google Maps 中相同的地图区域。
@@ -856,7 +856,7 @@ Google Maps 支持通过 `google.maps.Data` 类加载 GeoJSON 数据并动态设
 
 **后者：Azure Maps**
 
-GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFromUrl` 方法将其导入到数据源中。 使用气泡层可以提供基于数据源中特征的属性呈现缩放圆的功能。 它不使用回调函数，而是将业务逻辑转换为表达式，并将其传入样式选项。 表达式定义业务逻辑的工作方式。 可将表达式传入另一个线程，并针对特征数据进行评估。 可将多个数据源和层添加到 Azure Maps，其中每个数据源和层具有不同的业务逻辑。 使用此功能可以通过不同的方式在地图上呈现多个数据集。
+GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFromUrl` 方法将其导入到数据源中。 使用气泡层。 气泡层提供基于数据源中特征的属性呈现缩放圆的功能。 它不使用回调函数，而是将业务逻辑转换为表达式，并将其传入样式选项。 表达式定义业务逻辑的工作方式。 可将表达式传入另一个线程，并针对特征数据进行评估。 可将多个数据源和层添加到 Azure Maps，其中每个数据源和层具有不同的业务逻辑。 使用此功能可以通过不同的方式在地图上呈现多个数据集。
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ GeoJSON 是 Azure Maps 中的基础数据类型。 使用 `datasource.importFrom
 
 **前者：Google Maps**
 
-使用 MarkerCluster 库来聚类标记。 聚类图标限制为使用数字 1 到 5 作为名称的图像，驻留在同一目录中。
+使用 MarkerCluster 库来聚类标记。 聚类图标限制为在名称中包含数字 1 到 5 的图像。 它们驻留在同一目录中。
 
 ```html
 <!DOCTYPE html>

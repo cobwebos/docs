@@ -123,6 +123,8 @@
       items:
         - name: 使用 Azure AD 保护 API
           href: api-management-howto-protect-backend-with-aad.md
+        - name: 通过 Azure AD B2C 保护 SPA 后端 API
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: 连接到虚拟网络
           href: api-management-using-with-vnet.md
         - name: 连接到内部虚拟网络

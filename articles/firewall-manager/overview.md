@@ -5,22 +5,33 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 12/06/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869555"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443137"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>什么是 Azure 防火墙管理器预览版？
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure 防火墙管理器预览版是一种安全管理服务，可为基于云的安全外围提供中心安全策略和路由管理。 它适用于 [Azure 虚拟 WAN 中心](../virtual-wan/virtual-wan-about.md#resources)，后者是一种 Microsoft 托管资源，利用它可轻松创建中心辐射型体系结构。 当安全和路由策略与此类中心相关联时，它被称为[安全虚拟中心](secured-virtual-hub.md)  。 
+Azure 防火墙管理器预览版是一种安全管理服务，可为基于云的安全外围提供中心安全策略和路由管理。 
 
-![防火墙管理器](media/overview/firewallmanagerv3.png)
+防火墙管理器可为两种网络体系结构类型提供安全管理：
+
+- **安全虚拟中心**
+
+   [Azure 虚拟 WAN 中心](../virtual-wan/virtual-wan-about.md#resources)是一种 Microsoft 托管资源，可用于轻松创建中心辐射型体系结构。 当安全和路由策略与此类中心相关联时，它被称为[安全虚拟中心](secured-virtual-hub.md)  。 
+- **中心虚拟网络**
+
+   这是你自己创建并管理的标准 Azure 虚拟网络。 安全策略在与此类中心关联后，将称为中心虚拟网络。  目前仅支持 Azure 防火墙策略。 可将包含工作负荷服务器和服务的辐射虚拟网络对等互连。 还可以在未对等互连到任何辐射的独立虚拟网络中管理防火墙。
+
+有关安全虚拟中心与中心虚拟网络体系结构的详细比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)。  
+
+![防火墙管理器](media/overview/firewallmanagerv5.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Azure 防火墙管理器预览版功能
 
@@ -38,6 +49,8 @@ Azure 防火墙管理器预览版具有以下功能：
 
 除了 Azure 防火墙，还可以集成第三方安全即服务 (SECaaS) 提供程序，为 VNet 和分支 Internet 连接提供双重网络保护。
 
+此功能仅在安全虚拟中心部署中可用。
+
 - VNet 到 Internet (V2I) 流量筛选
 
    - 使用首选第三方安全提供程序筛选出站虚拟网络流量。
@@ -51,32 +64,29 @@ Azure 防火墙管理器预览版具有以下功能：
 
 ### <a name="centralized-route-management"></a>集中式路由管理
 
-可轻松将流量路由到安全中心进行筛选和记录，无需在辐射虚拟网络上手动设置用户定义路由 (UDR)。 可使用第三方提供程序对分支到 Internet (B2I) 流量进行筛选，同时使用 Azure 防火墙对分支到 VNet (B2V)、VNet 到 VNet (V2V) 以及 VNet 到 Internet (V2I) 流量进行筛选。 只要 B2V 或 V2V 无需 Azure 防火墙，还可以使用第三方提供程序对 V2I 流量进行筛选。 
+可轻松将流量路由到安全中心进行筛选和记录，无需在辐射虚拟网络上手动设置用户定义路由 (UDR)。 
+
+此功能仅在安全虚拟中心部署中可用。
+
+可使用第三方提供程序对分支到 Internet (B2I) 流量进行筛选，同时使用 Azure 防火墙对分支到 VNet (B2V)、VNet 到 VNet (V2V) 以及 VNet 到 Internet (V2I) 流量进行筛选。 只要 B2V 或 V2V 无需 Azure 防火墙，还可以使用第三方提供程序对 V2I 流量进行筛选。 
 
 ## <a name="region-availability"></a>上市区域
 
-公共预览版支持以下区域：
-
-- 西欧、北欧、法国中部、法国南部、英国南部、英国西部
-- 澳大利亚东部、澳大利亚中部、澳大利亚中部2、澳大利亚东南部
-- 加拿大中部
-- 美国东部、美国西部、美国东部 2、美国中南部、美国西部 2、美国中部、美国中北部、美国中西部
-
-只能在这些区域创建 Azure 防火墙策略，但可以跨区域使用这些策略。 例如，可以在美国西部创建一个策略，然后在美国东部使用它。 
+可以跨区域使用 Azure 防火墙策略。 例如，可以在美国西部创建一个策略，然后在美国东部使用它。 
 
 ## <a name="known-issues"></a>已知问题
 
 Azure 防火墙管理器预览版存在以下已知问题：
 
-|问题  |说明  |缓解措施  |
+|问题  |说明  |缓解操作  |
 |---------|---------|---------|
-|不支持手动创建的中央 VNet|当前，Azure 防火墙管理器支持通过虚拟中心创建的网络。 尚不支持使用自己手动创建的中心 VNet。|目前，Azure 防火墙管理器支持通过虚拟中心创建的中心辐射型网络。<br>正在修复。
 |第三方筛选限制|Azure 防火墙 B2V 和 V2V 不支持使用第三方提供程序筛选 V2I 流量。|当前正在调查。|
 |当前不支持流量拆分|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|当前正在调查中心的流量拆分。
-|每个区域一个中心|每个区域最多只有一个中心|可在一个区域中创建多个虚拟 WAN。|
+|每个区域一个安全虚拟中心|在每个区域最多只能使用一个安全虚拟中心|可在一个区域中创建多个虚拟 WAN。|
 |基本策略必须与本地策略位于同一区域中|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|当前正在调查。|
 |中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|当前正在调查。|
 |共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
+|防火墙策略不支持 IP 组|IP 组以公共预览版提供，目前仅支持与传统的防火墙规则配合使用|我们正在修复
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272111"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195787"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Azure AD B2B 协作注册的自助服务门户
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>用于 Azure AD B2B 协作注册的自助服务
 
-客户可借助通过 [Azure 门户](https://portal.azure.com)和面向最终用户的[应用程序访问面板](https://myapps.microsoft.com)公开的内置功能执行许多操作。 但你可能需要为 B2B 用户自定义载入工作流，以适应你组织的需求。 你可以使用[邀请 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) 执行该操作。
+客户可借助通过 [Azure 门户](https://portal.azure.com)和面向最终用户的[应用程序访问面板](https://myapps.microsoft.com)公开的内置功能执行许多操作。 但你可能需要为 B2B 用户自定义载入工作流，以适应你组织的需求。
 
-作为邀请方组织，你可能事先不知道需要访问你的资源的各个外部协作者是谁。 你需要为合作伙伴公司的用户提供一种方式，让你自行注册一套由邀请方组织控制的策略。 通过 API 有可能实现此方案。 [GitHub 上的一个示例项目](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web)就是这么做的。
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>用于 B2B 来宾用户注册的 Azure AD 权利管理
 
-此 GitHub 项目演示了组织如何使用 API 为你信任的合作伙伴提供基于策略的自助注册功能，而且包含确定他们可访问哪些应用的规则。 合作伙伴用户可以在需要时获取对资源的访问权限。 他们可安全地执行此操作，而无需邀请方组织手动将其载入。 可以轻松将项目部署到所选的 Azure 订阅中。
+作为邀请方组织，你可能事先不知道需要访问你的资源的各个外部协作者是谁。 需要为合作伙伴公司的用户提供一种方式，让他们根据你所控制的策略自行注册。 若要使其他组织的用户能够请求访问权限，并在批准后为他们预配来宾帐户并将其分配到组、应用和 SharePoint Online 站点，可以使用 [Azure AD 权利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)来配置用于[管理外部用户的访问权限](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)的策略。
 
-## <a name="as-is-code"></a>原样代码
+## <a name="azure-active-directory-b2b-invitation-api"></a>Azure Active Directory B2B 邀请 API
 
-此代码可作为一个示例，用于演示 Azure Active Directory B2B 邀请 API 的用法。 它应由开发团队或合作伙伴自定义，并且应在将其部署在生产方案中之前对其进行审查。
+组织可以使用 [Microsoft Graph 邀请管理器 API](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) 为 B2B 来宾用户构建自己的加入体验。 若要为 B2B 来宾用户提供自助服务注册，我们建议使用 [Azure AD 权利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)。 但是，若要构建自己的体验，可以使用类似于[创建邀请 API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) 的 API 自动将自定义的邀请电子邮件直接发送给 B2B 用户。 或者，应用可以使用创建响应中返回的 inviteRedeemUrl，将你自己的邀请（通过所选的通信机制）发送给受邀用户。
 
 ## <a name="next-steps"></a>后续步骤
 

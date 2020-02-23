@@ -3,18 +3,25 @@ title: Azure Kinect DK 硬件规格
 description: 了解 Azure Kinect DK 的组件、规范和功能。
 author: tesych
 ms.author: tesych
+ms.reviewer: jarrettr
 ms.prod: kinect-dk
-ms.date: 06/26/2019
+ms.date: 02/14/2020
 ms.topic: article
 keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列
-ms.openlocfilehash: f94a1da3ddc4166a4c8636c5f109af0cd611f01b
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.custom:
+- CI 114092
+- CSSTroubleshooting
+audience: ITPro
+manager: dcscontentpm
+ms.localizationpriority: high
+ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270549"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371296"
 ---
-# <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格 
+# <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格
 
 本文详细说明 Azure Kinect 硬件如何将 Microsoft 的最新传感器技术集成到单个已连接 USB 的附件。
 
@@ -198,6 +205,28 @@ Azure Kinect DK 未随附 Type-C 转 Type-C 线缆。
   - RGB 相机：2160p
   - 麦克风和 IMU 已启用
 
+## <a name="what-does-the-light-mean"></a>指示灯的含义是什么？
+
+电源指示灯是 Azure Kinect DK 背面的 LED。 该 LED 的颜色根据设备的状态而变化。
+
+![插图显示了 Azure Kinect DK 的背面。 有三个带编号的标注：一个表示 LED 指示灯，有两个表示其下方的线缆。](./media/quickstarts/azure-kinect-dk-power-indicator.png)
+
+此图标记了以下组件：
+
+1. 电源指示灯
+1. 电源线（连接电源）
+1. USB-C 数据线（连接电脑）
+
+请确保如图所示连接线缆。 然后，查看下表了解电源指示灯各种状态的含义。
+
+|指示灯状态： |含义： |应该： |
+| ---| --- | --- |
+|稳定白色 |设备已打开电源且在工作正常。 |使用设备。 |
+|未点亮 |设备未连接到电脑。 |确保圆形电源连接器线缆已连接到设备和 USB 电源适配器。<br /><br />确保将 USB 数据线连接到设备和电脑。 |
+|闪烁白色 |设备已打开电源，但尚未建立 USB 3.0 数据连接。 |确保圆形电源连接器线缆已连接到设备和 USB 电源适配器。<br /><br />确保将 USB-C 数据线连接到设备和电脑上的 USB 3.0 端口。<br /><br />将设备连接到电脑上的另一个 USB 3.0 端口。<br /><br />在电脑上打开设备管理器（“启动” > “控制面板” > “设备管理器”），检查电脑上是否装有受支持的 USB 3.0 主机控制器。    |
+|闪烁琥珀色 |设备电量不足，无法正常运行。 |确保圆形电源连接器线缆已连接到设备和 USB 电源适配器。<br /><br />确保将 USB 数据线连接到设备和电脑。 |
+|琥珀色，然后闪烁白色 |设备已打开电源并正在接收固件更新，或者设备正在还原出厂设置。 |等待电源指示灯变为稳定白色。 有关详细信息，请参阅[重置 Azure Kinect DK](reset-azure-kinect-dk.md)。 |
+
 ## <a name="power-consumption"></a>功耗
 
 Azure Kinect DK 的最大功率为 5.9W；具体的功耗与用例相关。
@@ -212,7 +241,7 @@ Azure Kinect DK 在出厂之前已校准。 可通过传感器 SDK 以编程方�
 
 ![Azure Kinect DK 恢复按钮](./media/resources/hardware-specs-media/recovery.png)
 
-若要恢复设备，请参阅[此处的说明](https://support.microsoft.com/help/4494277)。
+若要恢复设备，请参阅[此处的说明](reset-azure-kinect-dk.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

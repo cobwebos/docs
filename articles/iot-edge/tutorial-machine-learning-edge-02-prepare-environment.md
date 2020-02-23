@@ -8,12 +8,12 @@ ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 572441fe13dfeff550e2e541c3d775bd4c3d433e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722268"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482898"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>教程：在 IoT Edge 上设置机器学习环境
 
@@ -26,7 +26,7 @@ ms.locfileid: "76722268"
 
 此步骤通常由云开发人员执行。 其中一些软件也可能对数据科学家有所帮助。
 
-我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) 虚拟机大小。
+我们创建了一个 PowerShell 脚本，用于创建已配置多个先决条件的 Azure 虚拟机。 创建的 VM 必须能够处理[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)，因此我们要选择 [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md) 虚拟机大小。
 
 为开发 VM 设置以下项：
 
@@ -35,7 +35,7 @@ ms.locfileid: "76722268"
 * [适用于 Windows 的 Docker Desktop](https://www.docker.com/products/docker-desktop)
 * [Git for Windows](https://gitforwindows.org/)
 * [适用于 Windows 的 Git 凭据管理器](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)
-* [.Net Core SDK](https://dotnet.microsoft.com/)
+* [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
@@ -52,7 +52,7 @@ ms.locfileid: "76722268"
 
 1. 将[机器学习和 IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) 示例存储库克隆或下载到本地计算机。
 
-1. 以管理员身份打开 Powershell，导航到代码所下载到的根目录中的 **\IoTEdgeAndMlSample\DevVM** 目录。 我们将源的根目录称为 `srcdir`。
+1. 以管理员身份打开 PowerShell，导航到代码所下载到的根目录中的 **\IoTEdgeAndMlSample\DevVM** 目录。 我们将源的根目录称为 `srcdir`。
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM

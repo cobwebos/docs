@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118372"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485346"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -28,10 +28,14 @@ ms.locfileid: "77118372"
 
 - 至少有六个相同类型的表单。 你将使用此数据训练模型并测试表单。 在本快速入门中可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2090451)。 将训练文件上传到 Azure 存储帐户中 blob 存储容器的根目录。
 
+## <a name="create-a-form-recognizer-resource"></a>创建表单识别器资源
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具
 
 你将使用 Docker 引擎来运行示例标记工具。 请按以下步骤设置 Docker 容器。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
-1. 首先，在主计算机上安装 Docker。 主计算机可以是本地计算机（[Windows](https://docs.docker.com/docker-for-windows/)、[MacOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/)）。 或者，可以使用 Azure 中的 Docker 托管服务，例如 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/index)、[Azure 容器实例](https://docs.microsoft.com/azure/container-instances/index)或[部署到 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 Kubernetes 群集。 主计算机必须满足以下硬件要求：
+1. 首先，在主计算机上安装 Docker。 主计算机可以是本地计算机（[Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/)）。 或者，可以使用 Azure 中的 Docker 托管服务，例如 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/index)、[Azure 容器实例](https://docs.microsoft.com/azure/container-instances/index)或[部署到 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 Kubernetes 群集。 主计算机必须满足以下硬件要求：
 
     | 容器 | 最小值 | 建议|
     |:--|:--|:--|
@@ -155,7 +159,7 @@ ms.locfileid: "77118372"
 
 可能需要执行进一步的训练来改进模型，具体取决于报告的准确度。 完成预测后，检查每个已应用标记的置信度值。 如果平均准确度训练值高，但置信度分数低（或结果不准确），则应将用于预测的文件添加到训练集、进行标记并再次训练。
 
-如果要分析的文档不同于训练中使用的文档，则报告的平均准确度、置信度分数和实际准确性可能会不一致。 请记住，用户查看某些文档时，虽然看起来很相似，但在 AI 模型中却有明显的区别。 例如，你可以使用具有两种变体的表单类型进行训练，其中训练集由 20% 变体 A 和 80% 变体 B 组成。在预测过程中，变体 A 文档的置信度分数可能会较低。
+如果分析的文档不同于训练中使用的文档，则报告的平均准确度、置信度评分和实际准确度可能不一致。 请记住，用户查看某些文档时，虽然看起来很相似，但在 AI 模型中却有明显的区别。 例如，你可以使用具有两种变体的表单类型进行训练，其中训练集由 20% 变体 A 和 80% 变体 B 组成。在预测过程中，变体 A 文档的置信度分数可能会较低。
 
 ## <a name="save-a-project-and-resume-later"></a>保存项目并在稍后恢复
 
@@ -165,7 +169,7 @@ ms.locfileid: "77118372"
 转到项目设置页（滑块图标），并记下安全令牌名称。 然后，转到应用程序设置（齿轮图标），其中显示了当前浏览器实例中的所有安全令牌。 查找项目的安全令牌，并将其名称和密钥值复制到一个安全位置。
 
 ### <a name="restore-project-credentials"></a>还原项目凭据
-若要恢复项目，首先需要创建到同一 blob 存储容器的连接。 请照此处的步骤进行操作。 然后，转到应用程序设置页（齿轮图标），查看项目的安全令牌是否存在。 如果没有，请添加一个新的安全令牌，并复制上一步中的令牌名称和密钥。 然后单击“保存设置”。 
+若要恢复项目，首先需要创建到同一 blob 存储容器的连接。 为此，请重复上述步骤。 然后，转到应用程序设置页（齿轮图标），查看项目的安全令牌是否存在。 如果没有，请添加一个新的安全令牌，并复制上一步中的令牌名称和密钥。 然后单击“保存设置”。 
 
 ### <a name="resume-a-project"></a>恢复项目
 最后，转到主页（房子图标），然后单击“打开云项目”。 然后选择 blob 存储连接，并选择项目的 .vott 文件  。 应用程序将加载项目的设置，因为它具有安全令牌。
