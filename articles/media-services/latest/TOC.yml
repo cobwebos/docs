@@ -99,6 +99,8 @@
         - name: 流式处理终结点
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: 使用 CDN 缩放流式处理
+          href: scale-streaming-cdn.md
         - name: 流式处理定位符
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: 创建作业 - CLI
           href: cli-create-jobs.md
+        - name: 具有多个转换输出的作业
+          href: job-multiple-transform-outputs.md
     - name: 对内容进行编码
       items:
         - name: HTTPS 作为作业输入 - .NET

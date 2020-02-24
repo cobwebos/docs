@@ -64,6 +64,8 @@
   items:
     - name: 将基本公共负载均衡器升级到标准公共负载均衡器
       href: upgrade-basic-standard.md
+    - name: 将基本内部负载均衡器升级到标准内部负载均衡器
+      href: upgrade-basicInternal-standard.md
     - name: 配置出站规则
       items:
         - name: Azure CLI

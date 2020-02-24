@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208363"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486407"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -116,9 +116,9 @@ Azure 函数中的代码将检查车辆是否已离开地理围栏。 如果车�
 
 ### <a name="create-a-storage-account"></a>创建存储帐户
 
-为了记录事件数据，我们将在“ContosoRental”资源组中创建一个常规用途 **v2storage** 帐户，以将数据存储为 Blob。 若要创建存储帐户，请遵照[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)中的说明。 接下来，需要创建一个用于存储 Blob 的容器。 为此，请执行以下步骤：
+为了记录事件数据，我们将创建一个常规用途 v2storage，用于访问所有 Azure 存储服务：Blob、文件、队列、表和磁盘  。  我们需要将此存储帐户放置在“ContosoRental”资源组中，以便将数据存储为 Blob。 若要创建存储帐户，请遵照[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)中的说明。 接下来，需要创建一个用于存储 Blob 的容器。 为此，请执行以下步骤：
 
-1. 在存储帐户中导航到“容器”。
+1. 在“存储帐户 - Blob、文件、表、队列”中导航到“容器”。
 
     ![Blob](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -155,6 +155,9 @@ IoT 中心是云中的托管服务。 IoT 中心充当中央消息中心，用�
     
     ![register-device](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. 保存设备的**主连接字符串**，以便在一个需要使用此连接字符串更改占位符的稍后步骤中使用它。
+
+    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
 
 ## <a name="upload-geofence"></a>上传地理围栏
 
@@ -188,7 +191,7 @@ IoT 中心是云中的托管服务。 IoT 中心充当中央消息中心，用�
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. 复制状态 URI 并在其后追加一个 `subscription-key` 参数，其值为 Azure Maps 帐户订阅密钥。 状态 URI 格式应如下所示：
+6. 复制状态 URI 并将 `subscription-key` 参数追加到其后。 将 Azure Maps 帐户订阅密钥的值分配给 `subscription-key` 参数。 状态 URI 格式应如下所示，并且 `{Subscription-key}` 应替换为你的订阅密钥。
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -218,7 +221,7 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 
     ![create-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. 在“函数应用”创建页上为函数应用命名。  在“资源组”下选择“使用现有项”，然后从下拉列表中选择“ContosoRental”。   选择“.NET Core”作为运行时堆栈。 在“存储”下选择“使用现有项”，从下拉列表中选择“contosorentaldata”，然后选择“查看 + 创建”。   
+2. 在“函数应用”创建页上为函数应用命名。  在“资源组”下选择“使用现有项”，然后从下拉列表中选择“ContosoRental”。   选择“.NET Core”作为运行时堆栈。 在“承载”  下，对于“存储帐户”  ，请选择前面的步骤中的存储帐户名称。 在前面的步骤中，我们已将存储帐户命名为 **v2storage**。  然后，选择“查看 + 创建”  。
     
     ![create-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 5. 选择包含 **Azure 事件网格触发器**的模板。 根据提示安装扩展，将函数命名，然后选择“创建”。 
 
     ![function-template](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    **Azure 事件中心触发器**和 **Azure 事件网格触发器**具有相似的图标。 请确保选择“Azure 事件网格触发器”  。
 
-6. 将 [C# 代码](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)复制到函数中，然后单击“保存”。 
+6. 将 [C# 代码](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)复制到函数中。
  
-7. 在 C# 脚本中替换以下参数：
+7. 在 C# 脚本中替换以下参数。 单击“ **保存**”。 目前还不要单击“运行” 
     * 将 **SUBSCRIPTION_KEY** 替换为 Azure Maps 帐户主订阅密钥。
     * 将 **UDID** 替换为上传的地理围栏的 udId。 
     * 脚本中的 **CreateBlobAsync** 函数将为数据存储帐户中的每个事件创建一个 Blob。 将 **ACCESS_KEY**、**ACCOUNT_NAME** 和 **STORAGE_CONTAINER_NAME** 替换为存储帐户的访问密钥、帐户名称和数据存储容器。
@@ -245,7 +250,7 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. 填写订阅详细信息，在“事件订阅详细信息”下为订阅命名，并为“事件架构”选择“事件网格架构”。  在“主题详细信息”下选择“Azure IoT 中心帐户”作为主题类型。  选择用于创建资源组的同一订阅，选择“ContosoRental”作为“资源组”。 选择创建的 IoT 中心作为“资源”。 选择“设备遥测”作为“事件类型”。  选择这些选项后，“主题类型”会自动更改为“IoT 中心”。
+11. 填写订阅详细信息，在“事件订阅详细信息”下为你的事件订阅命名。  对于事件架构，请选择“事件网格架构”。 在“主题详细信息”下选择“Azure IoT 中心帐户”作为主题类型。  选择用于创建资源组的同一订阅，选择“ContosoRental”作为“资源组”。 选择创建的 IoT 中心作为“资源”。 选择“设备遥测”作为“事件类型”。  选择这些选项后，“主题类型”会自动更改为“IoT 中心”。
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  
@@ -263,7 +268,7 @@ Azure Functions 是一个无服务器计算服务，使用它可以按需运行�
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>将遥测数据发送到 IoT 中心
 
-Azure 函数启动并运行后，我们现在可将遥测数据发送到 IoT 中心，而 IoT 中心会将其路由到事件网格。 让我们使用一个 C# 应用程序来模拟出租汽车车内设备的定位数据。 若要运行该应用程序，需要在开发计算机上安装 .NET Core SDK 2.1.0 或更高版本。 遵循以下步骤将模拟的遥测数据发送到 IoT 中心。
+Azure 函数启动并运行后，我们现在可将遥测数据发送到 IoT 中心，而 IoT 中心会将其路由到事件网格。 让我们使用一个 C# 应用程序来模拟出租汽车的车内设备的定位数据。 若要运行该应用程序，需要在开发计算机上安装 .NET Core SDK 2.1.0 或更高版本。 遵循以下步骤将模拟的遥测数据发送到 IoT 中心。
 
 1. 下载 [rentalCarSimulation](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/tree/master/src/rentalCarSimulation) C# 项目。 
 

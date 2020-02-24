@@ -42,6 +42,8 @@
           href: deploy-windows-7-virtual-machine.md
         - name: 部署基于 GPU 的会话主机
           href: configure-vm-gpu.md
+        - name: 展开现有的主机池
+          href: expand-existing-host-pool.md
     - name: 创建配置文件容器
       items:
         - name: 使用基于 VM 的文件共享

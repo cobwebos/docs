@@ -1,0 +1,211 @@
+### YamlMime:Hub
+title: 语音服务文档
+summary: 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
+brand: azure
+metadata:
+  title: 语音服务文档 - 教程和 API 参考 - Azure 认知服务 | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: 识别语音、合成语音、获取实时翻译、听录对话，或将语音集成到机器人体验中。
+  author: IEvangelist
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563017"
+highlightedContent:
+  items:
+  - title: 什么是语音服务？
+    itemType: overview
+    url: overview.md
+  - title: 语音 SDK 发行说明
+    itemType: whats-new
+    url: releasenotes.md
+  - title: 语音服务中的语言支持
+    itemType: reference
+    url: language-support.md
+  - title: 创建语音服务资源
+    itemType: how-to-guide
+    url: get-started.md
+conceptualContent:
+  items:
+  - title: 语音转文本
+    links:
+    - itemType: quickstart
+      text: 识别来自麦克风输入的语音
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: 识别音频文件中的语音
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: quickstart
+      text: 识别存储在 Blob 存储中的语音
+      url: quickstarts/from-blob.md
+    footerLink:
+      text: 查看详细信息
+      url: index-speech-to-text.yml
+  - title: 文本转语音
+    links:
+    - itemType: quickstart
+      text: 将语音合成到扬声器
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: 将语音合成到音频文件
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: quickstart
+      text: 将语音合成为长格式音频
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    footerLink:
+      text: 查看详细信息
+      url: index-text-to-speech.yml
+  - title: 语音翻译
+    links:
+    - itemType: quickstart
+      text: 将语音翻译为文本
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: 将语音翻译为多种目标语言
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: quickstart
+      text: 将语音翻译为语音
+      url: quickstarts/translate-speech-to-speech.md
+    footerLink:
+      text: 查看详细信息
+      url: index-speech-translation.yml
+  - title: 意向识别
+    links:
+    - itemType: quickstart
+      text: 识别语音、意向和实体
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: 使用 LUIS 和 C# 识别语音意向
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: 语言理解 (LUIS) 门户
+      url: https://www.luis.ai
+    footerLink:
+      text: 查看详细信息
+      url: index-intent-recognition.yml
+  - title: 对话方案
+    links:
+    - itemType: overview
+      text: 关于对话听录
+      url: conversation-transcription.md
+    - itemType: overview
+      text: 关于多设备对话
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: 呼叫中心听录
+      url: call-center-transcription.md
+    footerLink:
+      text: 查看详细信息
+      url: index-conversation-scenarios.yml
+  - title: 语音助手
+    links:
+    - itemType: overview
+      text: 关于语音助手
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: 使用自定义命令创建语音助手
+      url: custom-commands.md
+    - itemType: get-started
+      text: 使用 Bot Framework 创建语音助手
+      url: direct-line-speech.md
+    footerLink:
+      text: 查看详细信息
+      url: index-voice-assistants.yml
+  - title: Hosting
+    links:
+    - itemType: how-to-guide
+      text: 语音服务容器
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: 语音服务容器与 Kubernetes
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Azure 容器实例中的语音服务容器
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: 查看详细信息
+      url: index-hosting.yml
+  - title: 设备
+    links:
+    - itemType: overview
+      text: 关于语音设备 SDK
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: 获取语音设备 SDK
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: 使用语音设备 SDK
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: 查看详细信息
+      url: index-devices.yml
+  - title: 迁移
+    links:
+    - itemType: how-to-guide
+      text: 从必应语音迁移
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: 从自定义语音服务迁移
+      url: how-to-migrate-from-custom-speech-service.md
+    - itemType: how-to-guide
+      text: 从语音翻译 API 迁移
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: 软件开发工具包 (SDK)
+  summary: 通过你喜欢的编程语言开始使用语音 SDK。
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C 和 Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
+  - items:
+    - title: REST API
+      links:
+      - text: 语音转文本
+        url: rest-speech-to-text.md
+      - text: 批量听录
+        url: batch-transcription.md
+      - text: 文本转语音
+        url: rest-text-to-speech.md
+      - text: 对话听录
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: 资源
+      links:
+      - text: 定价
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: 区域
+        url: regions.md
+      - text: 了解
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: 支持
+      links:
+      - text: 支持和帮助
+        url: support.md
+      - text: GitHub 问题
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: 堆栈溢出
+        url: https://aka.ms/SOspeechquestions
