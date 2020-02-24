@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700288"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194494"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft 标识平台 (v2.0) 概述
 
@@ -42,7 +42,11 @@ Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台�
 
 ## <a name="getting-started"></a>入门
 
-可以轻松使用标识。 选择适合你的[方案](authentication-flows-app-scenarios.md) - 每个方案路径都有一个快速入门和一个概述页面，可以通过它们在几分钟内实现正常运转：
+可以轻松使用标识。 
+
+观看 [Microsoft 标识平台视频](identity-videos.md)，了解基础知识。 
+
+选择适合你的[方案](authentication-flows-app-scenarios.md) - 每个方案路径都有一个快速入门和一个概述页面，可以通过它们在几分钟内实现正常运转：
 
 - [构建单页应用](scenario-spa-overview.md)
 - [构建用于让用户登录的 Web 应用](scenario-web-app-sign-user-overview.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086293"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209726"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>从 Google Maps 迁移 Android 应用
 
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 可以像添加任何其他层一样将图块层添加到地图中。 指定包含 x 轴、y 轴和缩放比例占位符的带格式 URL；`{x}`、`{y}`、`{z}` 分别用于告知层要在何处访问图块。 此外，Azure Maps 中的图块层支持 `{quadkey}`、`{bbox-epsg-3857}` 和 `{subdomain}` 占位符。 若要使图块层半透明，请使用不透明度值 0.8。 尽管不透明度和透明度相似，但两者应使用反值。 若要在这两个选项之间进行转换，请用数字 1 减去其值。
 
 > [!TIP]
-> 在 Azure Maps 中，可以方便地在其他层（包括基础地图层）下面呈现层。 通常，最好是在地图标签下面呈现图块层，以便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：`map.layers.add(myTileLayer, "labels");`
+> 在 Azure Maps 中，可以方便地在其他层（包括基础地图层）下面呈现层。 另外，通常情况下，最好是在地图标签下面呈现图块层，便于阅读。 `map.layers.add` 方法采用另一个参数，该参数是要在其中插入新层的层的 ID。 若要在地图标签下面插入图块层，可使用以下代码：`map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

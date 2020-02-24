@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658264"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443816"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -61,7 +61,7 @@ Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标�
 ## <a name="ingress-controller-for-aks"></a>AKS 的入口控制器
 应用程序网关入口控制器 (AGIC) 允许你使用应用程序网关作为 [Azure Kubernetes 服务 (AKS)](https://azure.microsoft.com/services/kubernetes-service/) 群集的入口。 
 
-入口控制器在 AKS 群集中以 pod 的形式运行，使用 [Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/) 并将其转换为应用程序网关配置，使网关可以将流量负载平衡到 Kubernetes pod。 入口控制器仅支持应用程序网关 V2 SKU。 
+入口控制器在 AKS 群集中以 pod 的形式运行，使用 [Kubernetes 入口资源](https://kubernetes.io/docs/concepts/services-networking/ingress/) 并将其转换为应用程序网关配置，使网关可以将流量负载平衡到 Kubernetes pod。 入口控制器仅支持应用程序网关 Standard_v2 和 WAF_v2 SKUs。 
 
 有关详细信息，请参阅[应用程序网关入口控制器 (AGIC)](ingress-controller-overview.md)。
 

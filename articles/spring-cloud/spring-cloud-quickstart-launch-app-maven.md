@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278929"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201419"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>快速入门：使用 Maven 插件启动 Azure Spring Cloud 应用
 
@@ -63,7 +63,7 @@ ms.locfileid: "76278929"
 ## <a name="set-up-your-configuration-server"></a>设置配置服务器
 
 1. 在服务的“概览”页上，选择“配置服务器”。  
-1. 在“默认存储库”部分，将“URI”设置为 **https://github.com/Azure-Samples/piggymetrics** ，将“标签”设置为“config”，然后选择“应用”以保存更改。     
+1. 在“默认存储库”部分，将“URI”设置为 **https://github.com/Azure-Samples/piggymetrics-config** ，然后选择“应用”以保存更改。   
 
     > [!div class="mx-imgBorder"]
     > ![定义和应用配置设置](media/maven-qs-apply-config.jpg)

@@ -1,20 +1,20 @@
 ---
 title: 教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接 | Microsoft Azure Maps
 description: 本教程介绍了如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989614"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208023"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>请求每日预报数据
 
-在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务的[每日预报 API](https://aka.ms/AzureMapsWeatherDailyForecast)，来获取每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
+在我们的方案中，我们希望请求每个传感器位置的每日预报数据。 以下脚本调用 Azure Maps 天气服务的[每日预报 API](https://aka.ms/AzureMapsWeatherDailyForecast)。 此 API 返回每个风力涡轮机在未来 15 天（自当前日期算起）的每日天气预报。
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![涡轮机位置](./media/weather-service-tutorial/location-map.png)
 
 
-我们会基于天气数据中心的工作站 ID 将预报数据与演示数据组合在一起。 此分组使用预报数据补充了演示数据。 
+我们会基于工作站 ID 将预报数据与演示数据组合在一起。 工作站 ID 适用于天气数据中心。 此分组使用预报数据补充了演示数据。
 
 ```python
 # Group forecasted data for all locations

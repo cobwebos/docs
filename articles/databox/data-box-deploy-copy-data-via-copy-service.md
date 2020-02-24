@@ -1,5 +1,6 @@
 ---
-title: 关于通过数据复制服务将数据复制到 Azure Data Box 设备的教程 | Microsoft Docs
+title: 教程：使用数据复制服务将数据复制到设备
+titleSuffix: Azure Data Box
 description: 本教程介绍如何通过数据复制服务将数据复制到 Azure Data Box 设备
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206051"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466971"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>教程：使用数据复制服务将数据复制到 Azure Data Box（预览）
 
@@ -24,12 +25,12 @@ ms.locfileid: "67206051"
 - 可在中间主机不可用的 NAS 环境中使用。
 - 可用于复制需要花费数周时间来引入和上传其中数据的小型文件。 数据复制服务能够大幅缩减小型文件的引入和上传时间。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将数据复制到 Data Box
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -67,7 +68,7 @@ ms.locfileid: "67206051"
     |**复制文件匹配模式**    | 可按以下两种方式输入文件名匹配模式：<ul><li>**使用通配符表达式：** 通配符表达式中仅支持 `*` 和 `?`。 例如，表达式 `*.vhd` 匹配扩展名为 `.vhd` 的所有文件。 类似地，`*.dl?` 匹配扩展名为 `.dl` 或以 `.dl` 开头的所有文件，例如 `.dll`。 同理，`*foo` 匹配名称以 `foo` 结尾的所有文件。<br>可以直接在该字段中输入通配符表达式。 默认情况下，在该字段中输入的值被视为通配符表达式。</li><li>**使用正则表达式：** 支持基于 POSIX 的正则表达式。 例如，正则表达式 `.*\.vhd` 匹配扩展名为 `.vhd` 的所有文件。 对于正则表达式，请直接提供 `<pattern>` 作为 `regex(<pattern>)`。 有关正则表达式的详细信息，请转到[正则表达式语言 - 快速参考](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)。</li><ul>|
     |**文件优化**              |启用此功能后，引入期间会打包小于 1 MB 的文件。 打包可以加快小型文件的数据复制速度。 如果文件数远远超出目录数，则打包还可以显著节省时间。        |
  
-4. 选择“启动”。  随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
+4. 选择“开始”  。 随后会验证输入，如果验证成功，则启动某个作业。 启动该作业可能需要花费几分钟时间。
 
     ![从“配置作业并启动”对话框启动作业](media/data-box-deploy-copy-data-via-copy-service/configure-and-start.png)
 
@@ -111,7 +112,7 @@ ms.locfileid: "67206051"
 
 6. 当作业正在进行时，在“复制数据”页上： 
 
-    - 在“状态”列中，可以查看复制作业的状态。  状态可能是：
+    - 在“状态”列中，可以查看复制作业的状态。  状态可以为：
         - **正在运行**
         - 失败 
         - 成功 

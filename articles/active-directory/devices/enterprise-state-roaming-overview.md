@@ -1,22 +1,22 @@
 ---
-title: 什么是 Azure Active Directory 中的企业状态漫游？ | Microsoft Docs
-description: 企业状态漫游可跨 Windows 设备为用户提供统一体验，并减少配置新设备所需的时间。
+title: 什么是 Azure Active Directory 中的企业状态漫游？
+description: 企业状态漫游可跨 Windows 设备为用户提供统一体验。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481913"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194273"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>什么是企业状态漫游？
 
@@ -28,13 +28,13 @@ ms.locfileid: "67481913"
 
 企业状态漫游可用于多个 Azure 区域。 可在 Azure Active Directory 下的“[Azure 服务（按区域）](https://azure.microsoft.com/regions/#services)”页找到更新的可用区域列表。
 
-| 文章 | 说明 |
+| 项目 | 说明 |
 | --- | --- |
-| [在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md) |企业状态漫游可供任何拥有高级 Azure Active Directory (Azure AD) 订阅的组织使用。 有关如何获取 Azure AD 订阅的更多详细信息，请参阅“[Azure AD 产品](https://azure.microsoft.com/services/active-directory)”页。 |
-| [Settings and data roaming FAQ](enterprise-state-roaming-faqs.md)（设置和数据漫游的常见问题） |本主题将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |
-| [Group policy and MDM settings for settings sync](enterprise-state-roaming-group-policy-settings.md)（设置同步的组策略和 MDM 设置） |Windows 10 提供了组策略和移动设备管理 (MDM) 策略设置以限制设置同步。 |
-| [Windows 10 roaming settings reference](enterprise-state-roaming-windows-settings-reference.md)（Windows 10 漫游设置参考） |以下为会在 Windows 10 中漫游和/或备份的所有设置的完整列表。 |
-| [故障排除](enterprise-state-roaming-troubleshooting.md) |本主题介绍故障排除的一些基本步骤，并包含已知问题列表。 |
+| [在 Azure Active Directory 中启用企业状态漫游](enterprise-state-roaming-enable.md) |企业状态漫游可供任何拥有高级 Azure Active Directory (Azure AD) 订阅的组织使用。 有关如何获取 Azure AD 订阅的详细信息，请参阅 [Azure AD 产品页](https://azure.microsoft.com/services/active-directory)。 |
+| [设置和数据漫游的常见问题](enterprise-state-roaming-faqs.md) |本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。 |
+| [设置同步的组策略和 MDM 设置](enterprise-state-roaming-group-policy-settings.md) |Windows 10 提供了组策略和移动设备管理 (MDM) 策略设置以限制设置同步。 |
+| [Windows 10 漫游设置参考](enterprise-state-roaming-windows-settings-reference.md) |将在 Windows 10 中漫游和/或备份的设置的列表。 |
+| [故障排除](enterprise-state-roaming-troubleshooting.md) |本文介绍故障排除的一些基本步骤，并包含已知问题列表。 |
 
 ## <a name="next-steps"></a>后续步骤
 

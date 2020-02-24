@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026330"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423679"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -40,7 +40,7 @@ ms.locfileid: "77026330"
 
 若要创建“S1 传感器”设备的设备模板： 
 
-1. 在左侧导航栏中，选择“设备模板”  。 然后选择 **+** 开始添加模板。
+1. 在左窗格中选择“设备模板”  。 然后选择 **+** 开始添加模板。
 
 1. 向下滚动，直到看到“S1 传感器”设备的磁贴。  选择该磁贴，然后选择“下一步:  自定义”。
 
@@ -48,7 +48,7 @@ ms.locfileid: "77026330"
 
 若要创建“RS40 占位传感器”设备的设备模板： 
 
-1. 在左侧导航栏中，选择“设备模板”  。 然后选择 **+** 开始添加模板。
+1. 在左窗格中选择“设备模板”  。 然后选择 **+** 开始添加模板。
 
 1. 向下滚动，直到看到“RS40 占位传感器”设备的磁贴。  选择该磁贴，然后选择“下一步:  自定义”。
 
@@ -65,7 +65,7 @@ ms.locfileid: "77026330"
 
 若要将新的网关设备模板添加到应用程序：
 
-1. 在左侧导航栏中，选择“设备模板”  。 然后选择 **+** 开始添加模板。
+1. 在左窗格中选择“设备模板”  。 然后选择 **+** 开始添加模板。
 
 1. 在“选择模板类型”页上选择“IoT 设备”磁贴，然后选择“下一步:    自定义”。
 

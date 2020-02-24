@@ -1,20 +1,20 @@
 ---
 title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
-description: 本教程将介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
-author: walsehgal
-ms.author: v-musehg
+description: 本教程介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986999"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209556"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -381,7 +381,7 @@ ms.locfileid: "76986999"
 
 现已完成用户界面中的所有设置。 我们仍需添加 JavaScript 来加载和分析数据，然后在地图上呈现数据。 若要开始，请打开 *index.js*，并按以下步骤中所述将代码添加到该文件。
 
-1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层、显示搜索区域中心点的 HTML 标记以及 Azure Maps 搜索服务客户端的实例定义变量。
+1. 添加全局选项，以便更轻松地更新设置。 为地图、弹出窗口、数据源、图标层和 HTML 标记定义变量。 将 HTML 标记设置为表示搜索区域的中心。 定义 Azure Maps 搜索服务客户端的实例。
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ ms.locfileid: "76986999"
 
 1. 将代码添加到 *index.js*。 以下代码初始化地图。 我们添加了一个[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，以等待页面加载完成。 然后，我们统合了事件以监视地图加载，并赋予搜索按钮和“我的位置”按钮的功能。
 
-   当用户选择搜索按钮，或者在搜索框中输入位置后按 Enter 时，会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
+   当用户选择搜索按钮时，或者在搜索框中键入位置后按 Enter 时，系统会针对用户的查询启动模糊搜索。 在 `countrySet` 选项中传入国家/地区 ISO 2 值的数组可将搜索结果限制为这些国家/地区。 限制搜索的国家/地区有助于提高返回结果的准确性。 
   
-   完成搜索后，请提取第一个结果，并在该区域上方设置地图相机。 当用户选择“我的位置”按钮时，应用程序将使用浏览器中内置的 HTML5 地理位置 API 来检索用户的位置，并将地图的中心点置于用户所在位置上。  
+   搜索完成后，请提取第一个结果，并在该区域上方设置地图相机。 当用户选择“我的位置”按钮时，请使用 HTML5 地理位置 API 检索用户的位置。 此 API 内置到浏览器中。 然后，将地图置于其位置中心。  
 
    > [!Tip]
    > 使用弹出窗口时，最好是创建单个 `Popup` 实例，并通过更新该实例的内容和位置来重复使用它。 对于添加到代码中的每个 `Popup` 实例，会将多个 DOM 元素添加到页面。 页面上的 DOM 元素越多，浏览器要跟踪的信息就越多。 如果项数过多，浏览器可能会变慢。
@@ -527,7 +527,7 @@ ms.locfileid: "76986999"
     map.markers.add(centerMarker);
     ```
 
-1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 这使用户体验变得更流畅，并可改善性能。
+1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 此行为提供了更好的用户体验，并提高了性能。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ ms.locfileid: "76986999"
 
 ![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口，其中显示了该位置的信息。
+如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口。 此弹出窗口显示所选位置的信息。
 
 <center>
 

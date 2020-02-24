@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849830"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425317"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教程：使用事件中心触发器和 Azure Cosmos DB 输出绑定在 Java 中创建函数
 
@@ -25,7 +25,7 @@ ms.locfileid: "74849830"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须安装以下各项：
 
@@ -36,6 +36,8 @@ ms.locfileid: "74849830"
 
 > [!IMPORTANT]
 > `JAVA_HOME` 环境变量必须设置为 JDK 的安装位置才能完成本教程。
+
+如果你更愿意直接使用本教程的代码，请参阅 [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) 示例存储库。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -54,7 +56,7 @@ ms.locfileid: "74849830"
 
 如果你使用的不是 Cloud Shell，则需要在本地使用 Azure CLI 来访问你的帐户。 使用 Bash 提示符下的 `az login` 命令启动基于浏览器的登录体验。 如果有权访问多个 Azure 订阅，则使用 `az account set --subscription` 后跟订阅 ID 来设置默认值。
 
-### <a name="set-environment-variables"></a>设置环境变量。
+### <a name="set-environment-variables"></a>设置环境变量
 
 接下来，为要创建的资源的名称和位置创建一些环境变量。 使用以下命令，将 `<value>` 占位符替换为你选择的值。 值应当符合 [Azure 资源的命名规则和限制](/azure/architecture/best-practices/resource-naming)。 对于 `LOCATION` 变量，使用 `az functionapp list-consumption-locations` 命令生成的值之一。
 
@@ -201,7 +203,7 @@ az functionapp config appsettings set \
 
 ## <a name="create-and-test-your-functions"></a>创建和测试函数
 
-接下来，你将在本地计算机上创建一个项目，添加 Java 代码并对其进行测试。 你将使用与适用于 Azure Functions 的 Maven 插件和 Azure Functions Core Tools 配合工作的命令。 你的函数将在本地运行，但将使用你创建的基于云的资源。 在本地运行函数后，可以使用 Maven 将其部署到云中，并监视数据和分析累积。
+接下来，你将在本地计算机上创建一个项目，添加 Java 代码并对其进行测试。 你将使用与适用于 Maven 的 Azure Functions 插件和 Azure Functions Core Tools 配合工作的命令。 你的函数将在本地运行，但将使用你创建的基于云的资源。 在本地运行函数后，可以使用 Maven 将其部署到云中，并监视数据和分析累积。
 
 如果使用 Cloud Shell 创建资源，则不会在本地连接到 Azure。 在这种情况下，请使用 `az login` 命令启动基于浏览器的登录过程。 然后，如有必要，使用 `az account set --subscription` 后跟订阅 ID 来设置默认订阅。 最后，运行以下命令，在本地计算机上重新创建一些环境变量。 将 `<value>` 占位符替换为之前使用的相同值。
 

@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108512"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468382"
 ---
 # <a name="import-an-openapi-specification"></a>导入 OpenAPI 规范
 
 本文介绍如何导入 https://conferenceapi.azurewebsites.net?format=json 中的“OpenAPI 规范”后端 API。 此后端 API 由 Microsoft 提供并托管在 Azure 上。 此外，介绍如何测试 APIM API。
 
 > [!IMPORTANT]
-> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)。
+> 如需与 OpenAPI 导入相关的重要信息和提示，请参阅此[文档](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/)。
 
 在本文中，学习如何：
 
@@ -33,9 +33,9 @@ ms.locfileid: "74108512"
 > * 在 Azure 门户中测试 API
 > * 在开发人员门户中测试 API
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
+请完成以下快速入门：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "74108512"
 
 1. 从“API”选项卡选择在上一步骤中创建的 API。 
 2. 按“测试”选项卡  。
-3. 单击“GetSpeakers”  。 该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，适用于和此 API 关联的产品订阅密钥。 将自动填充该密钥。
+3. 单击“GetSpeakers”  。 该页显示查询参数的字段（在此示例中为“无”），以及标头。 其中一个标头是“Ocp-Apim-Subscription-Key”，用于提供和此 API 关联的产品订阅密钥。 将自动填充该密钥。
 4. 按“发送”。 
 
     后端以“200 正常”和某些数据做出响应  。

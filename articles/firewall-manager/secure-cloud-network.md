@@ -1,41 +1,38 @@
 ---
-title: 教程：配合使用 Azure 防火墙管理器预览版和 Azure 门户以保护云网络
-description: 在本教程中，你将了解如何配合使用 Azure 防火墙管理器和 Azure 门户以保护云网络。
+title: 教程：使用 Azure 防火墙管理器预览版保护虚拟 WAN
+description: 本教程介绍如何在 Azure 门户中使用 Azure 防火墙管理器保护虚拟 WAN。
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510031"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443051"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>教程：配合使用 Azure 防火墙管理器预览版和 Azure 门户以保护云网络
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>教程：使用 Azure 防火墙管理器预览版保护虚拟 WAN 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-使用 Azure 防火墙管理器预览版，可以创建安全中心来保护发往专用 IP 地址、Azure PaaS 和 Internet 的云网络流量。 到防火墙的流量路由是自动的，因此无需创建用户定义的路由 (UDR)。
+使用 Azure 防火墙管理器预览版，可以创建安全虚拟中心来保护发往专用 IP 地址、Azure PaaS 和 Internet 的云网络流量。 到防火墙的流量路由是自动的，因此无需创建用户定义的路由 (UDR)。
 
 ![保护云网络](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>先决条件
+防火墙管理器还支持中心虚拟网络体系结构。 有关安全虚拟中心和中心虚拟网络体系结构类型的比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> 必须使用 `Register-AzProviderFeature` PowerShell 命令显式启用 Azure 防火墙管理器预览版。
+在本教程中，你将了解如何执行以下操作：
 
-从 PowerShell 命令提示符运行以下命令：
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-功能注册最多需要 30 分钟即可完成。 运行以下命令来检查注册状态：
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * 创建分支虚拟网络
+> * 创建安全虚拟中心
+> * 连接中心和辐射 VNet
+> * 创建防火墙策略并保护中心
+> * 将流量路由到中心
+> * 测试防火墙
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>创建中心和辐射体系结构
 
@@ -147,11 +144,11 @@ Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace M
 
    |设置  |值  |
    |---------|---------|
-   |Resource group     |**FW-Manager**|
+   |资源组     |**FW-Manager**|
    |虚拟机名称     |**Jump-Srv**|
    |区域     |**(美国)美国东部**|
    |管理员用户名     |**azureuser**|
-   |密码     |**Azure123456!** -|
+   |密码     |键入密码|
 
 4. 在“入站端口规则”  下，对于 **“公共入站端口”** ，请选择“允许所选端口”  。
 5. 对于“选择入站端口”，请选择“RDP (3389)”。  

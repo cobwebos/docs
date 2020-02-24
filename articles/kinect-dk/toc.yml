@@ -83,10 +83,16 @@
       href: multi-camera-sync.md
     - name: 与 Kinect for Windows 的比较
       href: windows-comparison.md
+    - name: 重置 Azure Kinect DK
+      href: reset-azure-kinect-dk.md
     - name: Azure Kinect 支持
       href: support.md
     - name: Azure Kinect 故障排除
       href: troubleshooting.md
+    - name: 保修、扩展服务计划以及条款和条件
+      href: 'https://support.microsoft.com/help/4493926/warranties-extended-service-plans-and-terms-conditions-for-your-device'
+    - name: 安全信息
+      href: 'https://support.microsoft.com/help/4023454/safety-information'
 - name: 参考
   items:
     - name: 传感器 API

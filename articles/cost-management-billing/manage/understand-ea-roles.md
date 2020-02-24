@@ -1,35 +1,31 @@
 ---
 title: 了解 Azure 中企业的管理员角色 | Microsoft Docs
 description: 了解 Azure 中的企业管理员角色。
-services: billing
-documentationcenter: ''
-author: adpick
-manager: adpick
-editor: ''
+author: bandersmsft
+ms.reviewer: adwise
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2020
+ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: ee918f0f49acf85486999fe9314758286bb57126
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023321"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462184"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Azure 企业协议管理角色
 
 签署了企业协议 (EA) 的 Azure 客户可以分配五个不同的管理角色，协助管理组织的使用情况和开支：
 
 - 企业管理员
-- 企业管理员（只读）
+- 企业管理员（只读）<sup>1</sup>
 - 部门管理员
 - 部门管理员（只读）
 - 帐户所有者
- 
+
+<sup>1</sup> EA 合同的“收票方”联系人将在此角色下。
+
 这些角色专用于管理 Azure 企业协议，是在 Azure 用于控制资源访问权限的内置角色的基础上添加的。 有关详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
 
 以下部分介绍每个角色的限制和功能。
@@ -42,9 +38,9 @@ ms.locfileid: "77023321"
 |企业管理员（只读）|无限制|
 |部门管理员|无限制|
 |部门管理员（只读）|无限制|
-|帐户所有者|每个帐户 1 个<sup>1</sup>|
+|帐户所有者|每个帐户 1 个<sup>2</sup>|
 
-<sup>1</sup> 每个帐户需要一个唯一的 Microsoft 帐户，或者工作或学校帐户。
+<sup>2</sup> 每个帐户需要唯一的 Microsoft 帐户，或者工作或学校帐户。
 
 ## <a name="organization-structure-and-permissions-by-role"></a>组织结构和权限（按角色）
 
@@ -52,17 +48,17 @@ ms.locfileid: "77023321"
 |---|---|---|---|---|---|
 |查看企业管理员|✔|✔|✘|✘|✘|
 |添加或删除企业管理员|✔|✘|✘|✘|✘|
-|查看通知联系人<sup>2</sup> |✔|✔|✘|✘|✘|
-|添加或删除通知联系人<sup>2</sup> |✔|✘|✘|✘|✘|
+|查看通知联系人<sup>3</sup> |✔|✔|✘|✘|✘|
+|添加或删除通知联系人<sup>3</sup> |✔|✘|✘|✘|✘|
 |创建并管理部门 |✔|✘|✘|✘|✘|
 |查看部门管理员|✔|✔|✔|✔|✘|
 |添加或删除部门管理员|✔|✘|✔|✘|✘|
-|查看注册的帐户 |✔|✔|✔<sup>3</sup>|✔<sup>3</sup>|✘|
-|将帐户添加到注册并更改帐户所有者|✔|✘|✔<sup>3</sup>|✘|✘|
+|查看注册的帐户 |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
+|将帐户添加到注册并更改帐户所有者|✔|✘|✔<sup>4</sup>|✘|✘|
 |创建并管理订阅和订阅权限|✘|✘|✘|✘|✔|
 
-- <sup>2</sup> 将会向通知联系人发送有关 Azure 企业协议的电子邮件通信。
-- <sup>3</sup> 任务局限于部门中的帐户。
+- <sup>3</sup> 将会向通知联系人发送有关 Azure 企业协议的电子邮件通信。
+- <sup>4</sup> 任务局限于部门中的帐户。
 
 
 ## <a name="usage-and-costs-access-by-role"></a>按角色访问使用情况和成本
@@ -73,11 +69,11 @@ ms.locfileid: "77023321"
 |查看部门支出配额|✔|✔|✘|✘|✘|
 |设置部门支出配额|✔|✘|✘|✘|✘|
 |查看组织的 EA 价目表|✔|✔|✘|✘|✘|
-|查看使用情况和成本详细信息|✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✔<sup>5</sup>|
+|查看使用情况和成本详细信息|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
 |管理 Azure 门户中的资源|✘|✘|✘|✘|✔|
 
-- <sup>4</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。  然后，部门管理员就可以查看部门的成本详细信息。
-- <sup>5</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。  然后，帐户所有者就可以查看帐户的成本详细信息。
+- <sup>5</sup> 要求企业管理员在企业门户中启用“DA 视图费用”策略。  然后，部门管理员就可以查看部门的成本详细信息。
+- <sup>6</sup> 要求企业管理员在企业门户中启用“AO 视图费用”策略。  然后，帐户所有者就可以查看帐户的成本详细信息。
 
 
 ## <a name="pricing-in-azure-portal"></a>Azure 门户中的定价

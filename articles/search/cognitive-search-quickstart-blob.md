@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720667"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472411"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure 认知搜索认知技能集
 
@@ -27,7 +27,7 @@ ms.locfileid: "76720667"
 
 本快速入门使用 Azure 认知搜索、[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/)和用于 AI 的 [Azure 认知服务](https://azure.microsoft.com/services/cognitive-services/)。 
 
-由于工作负荷很小，因此，在从 Azure 认知搜索调用认知服务时，认知服务在幕后会抽调一部分算力来免费处理事务（每天每个索引器最多 20 个）。 只要你使用我们提供的示例数据，就可以跳过创建或附加认知服务资源的过程。
+由于工作负载很小，因此，认知服务在幕后会抽调一部分算力来免费处理事务（最多 20 个）。 对于这样小的数据集，可以跳过创建或附加认知服务资源的过程。
 
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 解压缩文件。
 
@@ -170,12 +170,12 @@ ms.locfileid: "76720667"
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 
-> [!Tip]
-> 若要重复此练习或尝试其他 AI 扩充演练，请在门户中删除该索引器。 删除该索引器会将认知服务处理功能的每日免费事务计数器重置为零。
-
 ## <a name="next-steps"></a>后续步骤
 
 可以使用门户、.NET SDK 或 REST API 创建技能集。 若要学习更多的知识，请使用 Postman 和更多示例数据来尝试运行 REST API。
 
 > [!div class="nextstepaction"]
 > [教程：使用 REST API 从 JSON blob 提取文本和结构](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> 若要重复此练习或尝试其他 AI 扩充演练，请在门户中删除该索引器。 删除该索引器会将认知服务处理功能的每日免费事务计数器重置为零。

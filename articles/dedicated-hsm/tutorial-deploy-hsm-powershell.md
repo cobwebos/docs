@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2f605d5adda913fa465b43a85bd027458959c122
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 63c531cc0e600d82df74154adb212be76ba9b4de
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928092"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368539"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按以下入门说明操作：[Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -245,17 +245,18 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 
 ## <a name="delete-or-clean-up-resources"></a>删除或清理资源
 
-如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 若要删除敏感客户数据，应通过 Gemalto 客户端对设备进行出厂重置。 请参阅适用于 SafeNet 网络 Luna 7 设备的 Gemalto 管理员指南，并考虑按顺序执行以下命令。
-
-1. `hsm factoryReset -f`
-2. `sysconf config factoryReset -f -service all`
-3. `my file clear -f`
-4. `my public-key clear -f`
-5. `syslog rotate`
-
+如果已完成 HSM 设备的操作，则可将其作为资源删除，并让其返回到可用池中。 执行该操作时，最需要关注的问题是设备上的敏感客户数据。 将设备“归零”的最佳方式是让 HSM 管理员密码错误 3 次（注意：这不是设备管理员，而是实际的 HSM 管理员）。 在设备处于“已归零”状态之前，不能将其作为 Azure 资源删除，这是一种保护密钥材料的安全措施。
 
 > [!NOTE]
 > 如果有 Gemalto 设备配置的问题，则应联系 [Gemalto 客户支持](https://safenet.gemalto.com/technical-support/)。
+
+如果只想删除 Azure 中的 HSM 资源，则可使用以下命令，将“$”变量替换为唯一参数：
+
+```powershel
+
+Remove-AzureRmResource -Resourceid ` /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+
+```
 
 如果已完成此资源组中资源的相关操作，则可使用以下命令将其全部删除：
 
@@ -275,5 +276,5 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 * [高可用性](high-availability.md)
 * [物理安全性](physical-security.md)
 * [网络](networking.md)
-* [监视](monitoring.md)
+* [Monitoring](monitoring.md)
 * [可支持性](supportability.md)

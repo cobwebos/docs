@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843865"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470184"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
@@ -46,10 +46,14 @@ ms.locfileid: "76843865"
     | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
     | 类型          | 选择“公共”。                                         |
-    | SKU           | 选择“标准”或“基本”。   Microsoft 建议将“标准”用于生产工作负荷。  |
+    | SKU           | 选择“标准”或“基本”。   Microsoft 建议将“标准”用于生产工作负荷。 |
     | 公共 IP 地址 | 选择“新建”。  若要使用现有的公共 IP，请选择“使用现有项”  |
-    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   |
+    | 公共 IP 地址名称              | 在文本框中键入 myPublicIP  。   使用 ```-SKU Basic``` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。 |
     | 可用性区域 | 键入“区域冗余”以创建弹性负载均衡器。  若要创建区域负载均衡器，请选择特定的区域：1、2 或 3 |
+
+> [!IMPORTANT]
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
+
 
 3. 在“查看 + 创建”选项卡中，选择“创建”。     
 

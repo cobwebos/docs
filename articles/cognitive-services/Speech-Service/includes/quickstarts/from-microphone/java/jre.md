@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cd00fb2df0063bd8bc753f9078194648f6745f1b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: eb131f3f53e04809ca21efda7367f03a79081bbc
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156142"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446400"
 ---
 ## <a name="prerequisites"></a>必备条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "77156142"
 
 1. 将字符串 `YourSubscriptionKey` 替换为你的订阅密钥。
 
-1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“语音 SDK 参数”（例如，对于免费试用版订阅，为 `westus`）。
+1. 将字符串 `YourServiceRegion` 替换为与订阅关联的[区域](https://aka.ms/speech/sdkregion)中的“区域标识符”（例如，对于免费试用版订阅，为 `westus`）。 
 
 1. 保存对项目的更改。
 

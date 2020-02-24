@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4f6fea4ebf14830c11b40b5b069eb577defb1684
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c9f574a59f89fd7b158dacef91ea6bb6134d1622
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170325"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371118"
 ---
-|名称 |说明 |作用 |版本 |
+|名称 |说明 |效果 |版本 |源 |
 |---|---|---|---|
-|[应启用搜索服务的诊断日志](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json) |审核是否已启用诊断日志。 这样便可以在发生安全事件或网络受到威胁时重新创建活动线索以用于调查目的 |AuditIfNotExists, 已禁用 |2.0.0 |
+|[应启用搜索服务的诊断日志](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb4330a05-a843-4bc8-bf9a-cacce50c67f4) |审核是否已启用诊断日志。 这样便可以在发生安全事件或网络受到威胁时重新创建活动线索以用于调查目的 |AuditIfNotExists, 已禁用 |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_AuditDiagnosticLog_Audit.json)

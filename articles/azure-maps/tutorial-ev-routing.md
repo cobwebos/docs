@@ -1,24 +1,24 @@
 ---
 title: 教程：使用 Azure Notebooks (Python) 规划电动车路线 | Microsoft Azure Maps
 description: 使用 Microsoft Azure Maps 路线规划 API 和 Azure Notebooks 规划电动车路线。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844745"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208159"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks 规划电动车路线 (Python)
 
-Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 创建位置感知的应用、IoT、移动、物流与资产跟踪解决方案。 
+Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发人员、企业和 ISV 可以使用这些 API 开发位置感知应用、IoT、移动、物流与资产跟踪解决方案。 
 
 可以从 Python 和 R 等语言调用 Azure Maps REST API，以实现地理空间数据分析和机器学习方案。 Azure Maps 提供一组可靠的[路线 API](https://docs.microsoft.com/rest/api/maps/route)，让用户根据各种条件计算多个数据点之间的路线。 计算基于各种条件，例如车辆类型或可抵达区域。 
 
@@ -74,7 +74,7 @@ Azure Maps 是原生与 Azure 集成的地理空间服务 API 组合。 开发�
 
 1. 成功完成上传后，项目页中会显示你的文件。 双击该文件，将其作为 Jupyter Notebook 打开。
 
-为了更好地了解 Notebook 文件中实现的功能，请以每次一个单元的形式运行 Notebook 中的代码。 可以选择 Notebook 应用顶部的“运行”按钮来运行每个单元中的代码。 
+尝试了解笔记本文件中实现的功能。 以每次一个单元的形式运行笔记本文件中的代码。 可以选择 Notebook 应用顶部的“运行”按钮来运行每个单元中的代码。 
 
   ![“运行”按钮](./media/tutorial-ev-routing/run.png)
 
@@ -156,7 +156,7 @@ boundsData = {
 
 获取电动车的可抵达范围（等时线）后，可以在该范围内搜索充电站。 
 
-以下脚本调用 Azure Maps 的[在几何结构内发布搜索 API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。 它在汽车的最大可抵达范围边界内搜索电动车充电站，然后将响应分析成可抵达位置的数组。
+以下脚本调用 Azure Maps 的[在几何结构内发布搜索 API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。 它在汽车的最大可抵达范围边界内搜索电动车充电站。 然后，脚本将响应分析成可抵达位置的数组。
 
 若要在可抵达范围内搜索电动车充电站，请运行以下脚本：
 

@@ -1,20 +1,20 @@
 ---
 title: 教程：在地图上创建地理围栏并跟踪设备 | Microsoft Azure Maps
 description: 了解如何使用 Microsoft Azure Maps 空间服务设置地理围栏并跟踪相对于地理围栏的设备。
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899211"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370162"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -176,7 +176,7 @@ ms.locfileid: "76899211"
 
 我们将生成两项[逻辑应用](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)服务来处理进入和退出事件。 逻辑应用中的事件触发时，会按顺序触发更多事件。 可以向运营管理员发送警报（在本例中为电子邮件）。 下图演示了如何针对地域隔离区进入事件创建逻辑应用。 可按类似方式针对退出事件创建另一个逻辑应用。 有关详细信息，请参阅所有[支持的事件处理程序](https://docs.microsoft.com/azure/event-grid/event-handlers)。
 
-1. 在 Azure 门户中创建逻辑应用
+1. 在 Azure 门户中创建逻辑应用。 在 Azure 市场中选择逻辑应用。 然后，选择“创建”按钮。 
 
    ![创建 Azure 逻辑应用以处理地理围栏事件](./media/tutorial-geofence/logic-app.png)
 

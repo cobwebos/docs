@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016487"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426354"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>教程：在 IoT Central 中创建连接的废弃物管理应用程序
 
@@ -129,7 +129,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 如需查看设备模板：
 
-1. 在 IoT Central 中应用程序的左侧导航窗格中单击“设备模板”  。 
+1. 在 IoT Central 中应用程序的左窗格中单击“设备模板”  。 
 
     ![设备模板](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 
 ### <a name="to-view-the-devices"></a>要查看设备：
 
-1. 从 IoT Central 左侧导航窗格导航到“设备”  。 
+1. 从 IoT Central 左窗格导航到“设备”  。 
 
    ![设备](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 “连接的废弃物管理”应用程序有四个示例规则  。
 
 ### <a name="to-view-rules"></a>若要查看规则：
-1. 从 IoT Central 左侧导航窗格导航到“规则” 
+1. 从 IoT Central 左窗格导航到“规则” 
 
    ![规则](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Azure IoT Central 中的设备模板定义设备的功能，这些功能可以�
 > 每次满足条件后，应用程序都会发送电子邮件。 “禁用”该规则会停止从自动规则接收电子邮件  。 
   
 若要创建新规则： 
-1. 从左侧导航窗格中选择“规则”上的“+ 新建”   。
+1. 在左窗格的“规则”上选择“+新建”   。
 
 ## <a name="configure-jobs"></a>配置作业
 
 在 IoT Central 中，作业允许你在多个设备上触发设备或云属性更新。 除了属性外，还可以使用作业在多个设备上触发设备命令。 IoT Central 将自动执行工作流。 
 
-1. 从左侧导航窗格中，转到“作业”  。 
+1. 从左窗格转到“作业”。  
 2. 单击“+ 新建”并配置一个或多个作业  。 
 
 

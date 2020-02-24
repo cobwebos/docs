@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462574"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471867"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -129,7 +129,7 @@ ms.locfileid: "75462574"
 
    * 将 `<storage-account-name>` 占位符值替换为存储帐户的名称。
 
-   * 将 `<container-name>` 占位符替换为你要为容器指定的任何名称。
+   * 将 `<container-name>` 占位符替换为存储帐户中容器的名称。
 
 ## <a name="create-a-container-and-mount-it"></a>创建容器并将其装载
 
@@ -161,20 +161,7 @@ ms.locfileid: "75462574"
     extra_configs = configs)
     ```
 
-18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为在上一步中为容器指定的名称。
-
-使用这些值替换上述占位符。
-
-   * `appId` 和 `password` 来自在创建服务主体的过程中向 active directory 注册的应用。
-
-   * `tenant-id` 来自你的订阅。
-
-   * `storage-account-name` 是 Azure Data Lake Storage Gen2 存储帐户的名称。
-
-   * 将 `container-name` 占位符替换为你要为容器指定的任何名称。
-
-   > [!NOTE]
-   > 在生产设置中，请考虑将密码存储在 Azure Databricks 中。 然后，将查找密钥（而不是密码）添加到代码块中。 完成了本快速入门之后，请参阅 Azure Databricks 网站上的 [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) 一文以查看此方法的示例。
+18. 在此代码块中，请将 `appId`、`password`、`tenant` 和 `storage-account-name` 占位符值替换为在完成本教程的先决条件时收集的值。 将 `container-name` 占位符值替换为容器的名称。
 
 19. 按 **SHIFT + ENTER** 键，运行此块中的代码。
 

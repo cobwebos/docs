@@ -2,20 +2,16 @@
 title: Azure 预留的自助交换和退款
 description: 了解如何进行 Azure 预留的交换或退款。
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773885"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200429"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 预留的自助交换和退款
 
@@ -72,12 +68,10 @@ Azure 预留可以灵活地满足你不断变化的需求。 可以用一个预�
 - 进行交换时，没有罚金，也没有年度限制。
 
 **退款策略**
-- 如果取消预留，可能会产生 12% 的提前终止费。
-- 进行取消时收到的退款为按比例计算出的余额减去 12% 的提前终止费。 若要取消，请在 Azure 门户中访问该预留，并选择“退款”  。
+- 如果在未来取消，可能会产生 12% 的提前终止费。 目前我们不会实施此惩罚。
 - 在为期 12 个月的滚动时限中，总退款金额不能超过 50,000 美元。
 - 退款根据购买价格和当前预留价格中的最低者计算。
-- 只有预留所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
-- 对于任何退货，Microsoft 保留收取 12% 罚金的权利。 罚金目前不会收取，但会在以后收取。
+- 只有预留订单所有者可以处理退款。 [了解如何添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>以非高级存储交换高级存储
 

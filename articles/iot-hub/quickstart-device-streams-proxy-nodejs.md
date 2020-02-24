@@ -9,65 +9,60 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084281"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470677"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
+在本快速入门中，我们可以通过设备流将安全外壳 (SSH) 和远程桌面协议 (RDP) 流量发送到设备。 服务和设备应用程序可以使用 Azure IoT 中心设备流以安全且防火墙友好的方式进行通信。 本快速入门介绍如何执行一个在服务端运行的 Node.js 代理应用程序。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只会提供有关运行服务本地代理应用程序的说明。
+
+## <a name="prerequisites"></a>必备条件
+
+* 完成[使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)或[使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md)。
+
+* 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+
+* [Node.js 10+](https://nodejs.org)。
+
+* [一个示例 Node.js 项目](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
+
+可以使用以下命令验证开发计算机上 Node.js 的当前版本：
+
+```cmd/sh
+node --version
+```
+
 Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 
-
-本快速入门介绍如何执行一个在服务端运行的 Node.js 代理应用程序，以通过设备流将安全外壳 (SSH) 和远程桌面协议 (RDP) 流量发送到设备。 有关设置概述，请参阅[本地代理示例](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。 
-
-在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只会提供有关运行服务本地代理应用程序的说明。 若要运行设备本地代理应用程序，请参阅：  
-
-   * [使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)
-   * [使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md)
-
-本文将介绍 SSH 的设置（使用端口 22），然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是修改通信端口）来适应其他类型的客户端/服务器应用程序流量。
-
+> [!IMPORTANT]
+> 目前仅以下区域中创建的 IoT 中心支持设备流预览：
+>
+> * 美国中部
+> * 美国中部 EUAP
+> * 北欧
+> * 东南亚
+  
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
 
-## <a name="prerequisites"></a>先决条件
+运行以下命令，将用于 Azure CLI 的 Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
-* 目前仅以下区域中创建的 IoT 中心支持设备流预览：
-
-  * 美国中部
-  * 美国中部 EUAP
-  * 东南亚
-  * 北欧
-  
-
-* 若要运行本快速入门中所述的服务本地应用程序，需要在开发计算机上安装 Node.js v10.x.x 或更高版本。
-  * 下载适用于多个平台的 [Node.js](https://nodejs.org)。
-  * 使用以下命令验证开发计算机上 Node.js 的当前版本：
-
-   ```
-   node --version
-   ```
-
-* 运行以下命令，将用于 Azure CLI 的 Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* [下载示例 Node.js 项目](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)并解压缩 ZIP 存档（如果尚未这样做）。
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)，则可以跳过此步骤。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -100,7 +95,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
-在此部分，请建立一个端到端的流，通过隧道来传输 SSH 流量。
+在本部分中，你将建立一个端到端的流，通过隧道来传输 SSH 流量。
 
 ### <a name="run-the-device-local-proxy-application"></a>运行设备本地代理应用程序
 
@@ -109,9 +104,11 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
    * [使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)
    * [使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md) 
 
-在继续下一步之前，请确保设备本地代理应用程序正在运行。
+在继续下一步之前，请确保设备本地代理应用程序正在运行。 有关设置概述，请参阅[本地代理示例](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 ### <a name="run-the-service-local-proxy-application"></a>运行服务本地代理应用程序
+
+本文将介绍 SSH 的设置（使用端口 22），然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是修改通信端口）来适应其他类型的客户端/服务器应用程序流量。
 
 当设备本地代理应用程序正在运行时，请在本地终端窗口中执行以下操作，以便运行以 Node.js 编写的服务本地代理应用程序：
 

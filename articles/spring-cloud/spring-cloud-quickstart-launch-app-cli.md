@@ -4,14 +4,14 @@ description: 本快速入门介绍如何在 Azure CLI 中将示例应用程序�
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190776"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431243"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入门：使用 Azure CLI 启动 Java Spring 应用程序
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>将公共终结点分配到网关
 
-我们需要在 Web 浏览器通过某种方式来访问该应用程序。 网关应用程序需要一个面向公众的终结点，可以使用以下命令来分配该终结点：
+我们需要在 Web 浏览器通过某种方式来访问该应用程序。 网关应用程序需要一个面向公众的终结点。
+
+1. 使用以下命令分配终结点：
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. 查询**网关**应用程序的公共 IP，这样就可以验证该应用程序是否正在运行：
 
-最后，查询 **gateway** 应用程序的公共 IP，以便可以验证该应用程序是否正在运行：
-
+Linux：
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-导航到上一个命令提供的 URL，以运行 PiggyMetrics 应用程序。
+Windows：
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. 导航到上一个命令提供的 URL，以运行 PiggyMetrics 应用程序。
     ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 还可以导航 Azure 门户以查找 URL。 
 1. 导航到服务
-1. 选择“应用” 
-1. 选择“网关” 
+2. 选择“应用” 
+3. 选择“网关” 
 
     ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. 在“网关概述”  页上查找 URL ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+    
+4. 在“网关概述”  页上查找 URL ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [我遇到了问题](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

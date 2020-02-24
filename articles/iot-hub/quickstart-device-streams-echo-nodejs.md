@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083733"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471918"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+在本快速入门中，我们运行服务端应用程序，并使用设备流设置设备和服务之间的通信。 服务和设备应用程序可以使用 Azure IoT 中心设备流以安全且防火墙友好的方式进行通信。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只介绍如何运行服务端应用程序。
 
-服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只介绍如何运行服务端应用程序。 你应当运行下述快速入门之一附带的设备端应用程序：
+## <a name="prerequisites"></a>必备条件
 
-* [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
+* 完成[通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)或[通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)。
 
-* [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)。
+* 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-本快速入门中的服务端 Node.js 应用程序具有以下功能：
+* [Node.js 10+](https://nodejs.org)。
 
-* 创建发往 IoT 设备的设备流。
-
-* 从命令行读取输入，将其发送到设备应用程序，后者会将其回显。
-
-代码将演示设备流的启动过程，以及如何用其来发送和接收数据。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="prerequisites"></a>先决条件
-
-目前仅以下区域中创建的 IoT 中心支持设备流预览：
-
-  * 美国中部
-  * 美国中部 EUAP
-  * 北欧
-  * 东南亚
-
-若要运行本快速入门中所述的服务端应用程序，需要在开发计算机上安装 Node.js v10.x.x 或更高版本。
-
-可从 [Nodejs.org](https://nodejs.org) 为下载适用于多个平台的 Node.js。
+* [一个示例 Node.js 项目](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)。
 
 可以使用以下命令验证开发计算机上 Node.js 当前的版本：
 
@@ -59,19 +38,31 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 node --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 命令添加到 Azure CLI。
+Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+> [!IMPORTANT]
+> 目前仅以下区域中创建的 IoT 中心支持设备流预览：
+>
+> * 美国中部
+> * 美国中部 EUAP
+> * 北欧
+> * 东南亚
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 命令添加到 Azure CLI。
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
 
-如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下载示例 Node.js 项目并提取 ZIP 存档。
-
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
 如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)，则可以跳过此步骤。
 
-[!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>注册设备
 
@@ -109,13 +100,20 @@ az extension add --name azure-cli-iot-ext
 
 如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备端应用程序，请使用这些快速入门中提供的随附设备程序之一：
 
-   * [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
+* [通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)
 
-   * [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
+* [通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)
 
 在继续下一步之前，请确保设备端应用程序正在运行。
 
 ### <a name="run-the-service-side-application"></a>运行服务端应用程序
+
+本快速入门中的服务端 Node.js 应用程序具有以下功能：
+
+* 创建发往 IoT 设备的设备流。
+* 从命令行读取输入，将其发送到设备应用程序，后者会将其回显。
+
+代码将演示设备流的启动过程，以及如何用其来发送和接收数据。
 
 假设设备端应用程序正在运行，请在本地终端窗口中按照以下步骤使用 Node.js 运行服务端应用程序：
 

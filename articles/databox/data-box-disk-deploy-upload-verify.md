@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: e2851f7087151b09b5f859b7142aa28e5b18a4e5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3f89d713003f1f4265a7ab7c467454af750fab48
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514079"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200123"
 ---
 ::: zone target="docs"
 
@@ -100,7 +100,7 @@ ms.locfileid: "76514079"
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>从 Data Box 磁盘中擦除数据
 
-完成复制并已验证数据位于 Azure 存储帐户中后，请根据 NIST 标准安全擦除磁盘。
+上传到 Azure 完成后，Data Box Disk 将根据 [NIST SP 800-88](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) 标准擦除其磁盘上的数据。
 
 ::: zone target="docs"
 

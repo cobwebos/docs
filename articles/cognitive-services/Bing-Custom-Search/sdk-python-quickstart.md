@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.author: aahi
-ms.openlocfilehash: d67075fad719b1780682c705f0e17f15c5801559
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f4b6bad38992a9e0146d6324bc3a3fc7632ded2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136154"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201248"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>快速入门：使用 Python SDK 调用必应自定义搜索终结点 
 
@@ -47,17 +47,17 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="create-a-search-client-and-send-a-request"></a>创建搜索客户端并发送请求
 
-1. 为你的订阅密钥创建变量。
+1. 为你的订阅密钥和终结点创建变量。
 
     ```python
     subscription_key = 'your-subscription-key'
-    endpoint = 'your-custom-endpoint'
+    endpoint = 'your-endpoint'
     ```
 
 2. 将 `CognitiveServicesCredentials` 对象与订阅密钥配合使用，创建 `CustomSearchClient` 的实例。 
 
     ```python
-    client = CustomSearchClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 3. 发送包含 `client.custom_instance.search()` 的搜索请求。 将搜索词追加​​到 `query` 参数，并将 `custom_config` 设置为自定义配置 ID，以便使用搜索实例。 可以从[必应自定义搜索门户](https://www.customsearch.ai/)获取 ID，只需单击“生产”选项卡即可。 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846519"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470388"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建负载均衡器
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-使用 ```-SKU Basic``` 创建基本公共 IP。 Microsoft 建议将“标准”用于生产工作负载。
+使用 ```-SKU Basic``` 创建基本公共 IP。 基本公共 IP 与**标准**负载均衡器不兼容。 Microsoft 建议将“标准”用于生产工作负载。 
+
+> [!IMPORTANT]
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
 
 ## <a name="create-load-balancer"></a>创建负载均衡器
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 使用 ```-SKU Basic``` 创建基本负载均衡器。 Microsoft 建议将“标准”用于生产工作负载。
+
+> [!IMPORTANT]
+> 本快速入门的其余部分假定在上述 SKU 选择过程中选择了“标准”  SKU。
 
 ## <a name="create-network-resources"></a>创建网络资源
 必须创建支持网络资源（虚拟网络和虚拟 NIC），才能部署某些 VM 并测试均衡器。 

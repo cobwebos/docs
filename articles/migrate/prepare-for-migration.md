@@ -2,18 +2,18 @@
 title: 准备好要通过 Azure Migrate 进行迁移的计算机
 description: 了解如何准备好要通过 Azure Migrate 进行迁移的本地计算机。
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 02/17/2020
 ms.custom: MVC
-ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: adbe9e4b30bf57e8a2038b970306c126035abbe1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028747"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426242"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
-本文介绍在开始使用 [Azure Migrate 服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)功能将本地计算机迁移到 Azure 之前，如何准备好这些计算机。
+本文介绍在开始使用 [Azure Migrate：服务器迁移](migrate-services-overview.md#azure-migrate-server-migration-tool)功能将本地计算机迁移到 Azure 之前，如何准备好这些计算机。
 
 
 本文内容：
@@ -40,7 +40,7 @@ ms.locfileid: "76028747"
 
 ## <a name="check-whats-supported"></a>检查支持的操作
 
-- 对于 VMware VM，Azure Migrate 服务器迁移支持[无代理或基于代理的迁移](server-migrate-overview.md)。 验证 VMware VM [迁移要求和支持](migrate-support-matrix-vmware-migration.md)。
+- 对于 VMware VM，服务器迁移支持[无代理或基于代理的迁移](server-migrate-overview.md)。 验证 VMware VM [迁移要求和支持](migrate-support-matrix-vmware-migration.md)。
 - 验证 Hyper-V 的[迁移要求和支持](migrate-support-matrix-hyper-v-migration.md)。
 - 验证本地物理机或其他虚拟化服务器的[迁移要求和支持](migrate-support-matrix-physical-migration.md)。 
 

@@ -1,5 +1,6 @@
 ---
-title: 教程：使用 Azure Data Box Heavy 将数据从 VHD 复制到托管磁盘 | Microsoft Docs
+title: 教程：从 VHD 复制到托管磁盘
+titleSuffix: Azure Data Box Heavy
 description: 了解如何将数据从本地 VM 工作负荷中的 VHD 复制到 Azure Data Box Heavy
 services: databox
 author: alkohli
@@ -8,18 +9,18 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670839"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471323"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box Heavy 将数据作为托管磁盘导入
 
 本教程介绍如何在 Azure 中使用 Azure Data Box Heavy 将本地 VHD 迁移到托管磁盘。 本地 VM 中的 VHD 将作为页 Blob 复制到 Data Box Heavy，并作为托管磁盘上传到 Azure 中。 然后，可将这些托管磁盘附加到 Azure VM。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 查看先决条件
@@ -27,7 +28,7 @@ ms.locfileid: "67670839"
 > * 将数据复制到 Data Box Heavy
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 

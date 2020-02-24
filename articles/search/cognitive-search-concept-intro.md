@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837997"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472428"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -131,7 +131,7 @@ Azure 认知搜索中的认知技能基于认知服务 API 中预先训练的机
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)
 + [示例：创建 AI 扩充的自定义技能 (C#)](cognitive-search-create-custom-skill-example.md)
 
-我们建议将免费服务用于学习目的，但是，免费事务的数量限制为每天 20 个文档。 若要在一天内同时运行快速入门和教程，请使用较小的文件集（10 个文档），这样就可以同时进行这两个练习，也可以删除在快速入门或教程中使用的索引器，将计数器重置为零。
+我们建议将免费服务用于学习目的，但是，免费事务的数量限制为每天 20 个文档。 若要多次运行课程，请删除并重新创建索引器，将计数器重置为零。
 
 **步骤 3：查看 API**
 

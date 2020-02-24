@@ -1,5 +1,5 @@
 ---
-title: 使用虚拟网络对等互连连接虚拟网络 - 教程 - Azure 门户 | Microsoft Docs
+title: 使用 VNet 对等互连连接虚拟网络 - 教程 - Azure 门户
 description: 本教程介绍如何使用 Azure 门户通过虚拟网络对等互连来连接虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016045"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201292"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>教程：通过 Azure 门户使用虚拟网络对等互连连接虚拟网络
 
@@ -34,7 +34,7 @@ ms.locfileid: "77016045"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="log-in-to-azure"></a>登录 Azure 
+## <a name="log-in-to-azure"></a>登录 Azure
 
 通过 https://portal.azure.com 登录到 Azure 门户。
 

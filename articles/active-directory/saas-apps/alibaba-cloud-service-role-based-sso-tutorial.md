@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120774"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367939"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Alibaba Cloud Service (Role-based SSO) 的集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "71120774"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要开始操作，需备齐以下项目：
 
@@ -165,7 +165,7 @@ ms.locfileid: "71120774"
 
 7. 将 Alibaba Cloud RAM 角色 (AADrole) 与 Azure AD 用户 (u2) 相关联：若要将 RAM 角色与 Azure AD 用户相关联，必须执行以下步骤在 Azure AD 中创建一个角色：
 
-    a. 登录到 [Azure AD Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9)。
+    a. 登录到 [Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)。
 
     b. 单击“修改权限”以获取创建角色所需的权限。 
 
