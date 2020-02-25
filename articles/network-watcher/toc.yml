@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: 连接监视器（预览版）
-      href: connection-monitor-2-preview.md
+      href: connection-monitor-preview.md
     - name: 诊断 VM 流量筛选器问题 - 门户
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 诊断 VM 流量筛选器问题 - PowerShell
