@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: 会话方案文档
+summary: 浏览各种对话方案、对话脚本或多设备对话。
+metadata:
+  title: 会话方案文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562951"
+landingContent:
+- title: 对话听录
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于会话脚本
+      url: conversation-transcription.md
+  - linkListType: how-to-guide
+    links:
+    - text: 听录实时对话
+      url: how-to-use-conversation-transcription.md
+    - text: 异步听录对话
+      url: how-to-async-conversation-transcription.md
+    - text: 处理呼叫中心方案
+      url: call-center-transcription.md
+- title: 多设备对话
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于多设备对话
+      url: multi-device-conversation.md
+  - linkListType: quickstart
+    links:
+    - text: 启动和加入对话
+      url: quickstarts/multi-device-conversation.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 会话脚本语言支持
+      url: conversation-transcription.md#language-support
+    - text: 多设备对话语言支持
+      url: multi-device-conversation.md#language-support
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

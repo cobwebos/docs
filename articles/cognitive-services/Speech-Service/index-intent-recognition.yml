@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: 意向识别文档
+summary: 借助语音和语言理解（LUIS）服务的意向识别，可在识别意向和实体的同时，将音频流实时传输到文本中。
+metadata:
+  title: 意向识别文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 278dc182b682615d621bfd8a891cc77591a511f1
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562841"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 识别语音、意向和实体
+      url: quickstarts/intent-recognition.md
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 LUIS 和C#
+      url: how-to-recognize-intents-from-speech-csharp.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言理解 (LUIS) 门户
+      url: https://www.luis.ai
+    - text: LUIS 开发人员资源
+      url: ../luis/developer-reference-resource.md
+    - text: 语言支持
+      url: ../luis/luis-language-support.md#languages-supported
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

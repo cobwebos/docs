@@ -7,52 +7,40 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/22/2020
-ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/18/2020
+ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548809"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560076"
 ---
-# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中使用安全传输存储帐户创建 Apache Hadoop 群集
+# <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>在 Azure HDInsight 中具有安全传输存储帐户的 Apache Hadoop 群集
 
 [需要安全传输](../storage/common/storage-require-secure-transfer.md)功能强制提交到帐户的所有请求都通过安全连接来进行，从而增强 Azure 存储帐户的安全性。 仅 HDInsight 群集 3.6 或更高版本支持此功能和 wasbs 方案。
 
-**如果在创建群集后启用安全存储传输，则可能会导致使用存储帐户时出现错误，不建议使用此项。最好创建一个启用了属性的新群集。**
+> [!IMPORTANT]
+> 如果在创建群集后启用安全存储传输，则可能会导致使用存储帐户时出现错误，不建议使用此项。 最好使用已启用安全传输的存储帐户创建新群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="storage-accounts"></a>存储帐户
 
-在开始本文之前，必须具备：
+### <a name="azure-portal"></a>Azure 门户
 
-* Azure 订阅：若要创建一个月免费试用帐户，请浏览到[azure.microsoft.com/free](https://azure.microsoft.com/free)。
-* 启用安全传输的 Azure 存储帐户。 有关说明，请参阅[创建存储帐户](../storage/common/storage-account-create.md)和[需要安全传输](../storage/common/storage-require-secure-transfer.md)。 
-* 存储帐户上的 Blob 容器。
+默认情况下，在 Azure 门户中创建存储帐户时，将启用 "需要安全传输" 属性。
 
-## <a name="create-cluster"></a>创建群集
+若要使用 Azure 门户更新现有的存储帐户，请参阅[需要安全传输与 Azure 门户](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-for-an-existing-storage-account)。
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+### <a name="powershell"></a>PowerShell
 
-本部分介绍如何使用 [Azure 资源管理器模板](../azure-resource-manager/templates/deploy-powershell.md)在 HDInsight 中创建 Hadoop 群集。 该模板位于 [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/) 中。 本文不需要资源管理器模板体验。 有关其他群集创建方法并了解本文使用的属性，请参阅[创建 HDInsight 群集](hdinsight-hadoop-provision-linux-clusters.md)。
+对于 PowerShell cmdlet [AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)，请确保参数 `-EnableHttpsTrafficOnly` 设置为 `1`。
 
-1. 单击以下映像以登录到 Azure，并在 Azure 门户中打开 Resource Manager 模板。
+若要使用 PowerShell 更新现有的存储帐户，请参阅[要求使用 powershell 进行安全传输](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell)。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-existing-default-storage-account%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+### <a name="azure-cli"></a>Azure CLI
 
-2. 按说明遵循以下规范创建群集：
+对于 Azure CLI 命令[az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)，请确保参数 `--https-only` 设置为 `true`。
 
-    * 指定 HDInsight 版本 3.6。 3\.6 或更高版本是必需的。
-    * 指定启用安全传输的存储帐户。
-    * 对存储帐户使用短名称。
-    * 必须事先创建存储帐户和 blob 容器。
-
-      有关说明，请参阅[创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
-
-如果使用脚本操作来提供自己的配置文件，则必须在以下设置中使用 wasbs：
-
-* fs.defaultFS (core-site)
-* spark.eventLog.dir
-* spark.history.fs.logDirectory
+若要使用 Azure CLI 更新现有的存储帐户，请参阅[需要安全传输与 Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli)。
 
 ## <a name="add-additional-storage-accounts"></a>添加其他存储帐户
 
@@ -64,25 +52,6 @@ ms.locfileid: "76548809"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建 HDInsight 群集，以及如何启用到存储帐户的安全传输。
-
-有关如何使用 HDInsight 分析数据的详细信息，请参阅以下文章：
-
-* 若要详细了解如何将[Apache Hive](https://hive.apache.org/)与 hdinsight 配合使用（包括如何从 Visual Studio 中执行 Hive 查询），请参阅[将 Apache Hive 与 hdinsight 配合使用](hadoop/hdinsight-use-hive.md)。
-* 若要了解[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)（一种编写处理 Hadoop 上的数据的程序）的方法，请参阅[将 Apache Hadoop MapReduce 与 HDInsight 配合使用](hadoop/hdinsight-use-mapreduce.md)。
-* 若要了解如何使用用于 Visual Studio 的 HDInsight 工具来分析 HDInsight 数据，请参阅[开始使用 HDInsight 的 Visual Studio Apache Hadoop 工具](hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
-
-若要详细了解如何通过 HDInsight 来存储数据，或者如何将数据导入 HDInsight，请参阅以下文章：
-
+* 使用 Azure 存储 (WASB) 而非 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) 作为默认数据存储
 * 有关 HDInsight 如何使用 Azure 存储的信息，请参阅[将 Azure 存储与 HDInsight 配合使用](hdinsight-hadoop-use-blob-storage.md)。
 * 若要了解如何将数据上传到 HDInsight，请参阅[将数据上传到 HDInsight](hdinsight-upload-data.md)。
-
-若要详细了解如何创建或管理 HDInsight 群集，请参阅以下文章：
-
-* 要了解如何管理基于 Linux 的 HDInsight 群集，请参阅[使用 Apache Ambari 管理 HDInsight 群集](hdinsight-hadoop-manage-ambari.md)。
-* 有关可用于创建 HDInsight 群集的选项的详细信息，请参阅 [Creating HDInsight on Linux using custom options](hdinsight-hadoop-provision-linux-clusters.md)（使用自定义选项在 Linux 上创建 HDInsight）。
-* 如果熟悉 Linux 并 Apache Hadoop，但想要了解有关 HDInsight 上的 Hadoop 的具体信息，请参阅[在 Linux 上使用 HDInsight](hdinsight-hadoop-linux-information.md)。 此文提供了如下所述信息：
-
-  * 群集上托管的服务（例如 [Apache Ambari](https://ambari.apache.org/) 和 [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)）的 URL
-  * [Apache Hadoop](https://hadoop.apache.org/) 文件和示例在本地文件系统上的位置
-  * 使用 Azure 存储 (WASB) 而非 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) 作为默认数据存储

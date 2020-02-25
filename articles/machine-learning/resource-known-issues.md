@@ -10,18 +10,84 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 771ae508aaa46167413c2e701d8193790198cb68
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138005"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565904"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
 本文可帮助你查找和更正使用 Azure 机器学习时遇到的错误或故障。
 
-## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>中断： SR-IOV 升级到 AmlCompute 中的 NCv3 计算机
+## <a name="sdk-installation-issues"></a>SDK 安装问题
+
+**错误消息：无法卸载 'PyYAML'**
+
+用于 Python 的 Azure 机器学习 SDK： PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
+
+```Python
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
+
+错误消息： **`ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Anaconda 的 Python 3.7.4 分发有一个破坏 azureml-sdk 安装的缺陷。 此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题，可通过使用此命令创建新的 Conda 环境来解决此问题：
+```bash
+conda create -n <env-name> python=3.7.3
+```
+这将使用 Python 3.7.3 创建 Conda 环境，而3.7.4 中不存在安装问题。
+
+## <a name="training-and-experimentation-issues"></a>培训和试验问题
+
+### <a name="metric-document-is-too-large"></a>指标文档太大
+Azure 机器学习对可从定型运行一次记录的指标对象的大小进行内部限制。 如果在记录列表值指标时遇到 "指标文档太大" 错误，请尝试将列表拆分为较小的区块，例如：
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+在内部，Azure ML 会将具有相同指标名称的块连接到一个连续列表中。
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
+如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型运行的环境中安装包。 
+
+如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。 如果你有自己的 Azure ML 环境对象，而你想要重写估计器使用的默认图像，则可以通过估计器构造函数的 `environment` 参数指定该环境。
+
+Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装核心框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
+ 
+Azure ML 维护的 docker 映像，可以在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中查看其内容。
+特定于框架的依赖关系在各自的框架文档中列出- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
+
+> [!Note]
+> 如果你认为某个特定包的常用空间足以添加到 Azure ML 维护的映像和环境中，请在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
+ 
+### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError （未定义名称），AttributeError （对象没有属性）
+此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保在重新提交运行之前，查看训练脚本并修复错误。 
+
+### <a name="horovod-has-been-shut-down"></a>Horovod 已关闭
+在大多数情况下，如果遇到 "AbortedError： Horovod 已关闭"，则表示某个进程中存在一个导致 Horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以便更容易区分日志。 若要查找导致 Horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
+
+### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>AmlCompute 中的 NCv3 计算机上的 SR-IOV 可用性，用于分布式培训
+Azure 计算已推出 NCv3 计算机的[sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/)，客户可以利用它来利用 Azure ML 的托管计算产品/服务（AmlCompute）。 这些更新将支持整个 MPI 堆栈的支持，并可以使用不使用的 RDMA 网络来改进多节点分布式定型性能，尤其是对于深度学习。
+
+查看[更新计划](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/)，查看何时为你的区域推出支持。
+
+### <a name="run-or-experiment-deletion"></a>运行或试验删除
+可以通过使用[试验. archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)方法或通过 "存档试验" 按钮 Azure 机器学习 studio 客户端中的 "试验" 选项卡视图来存档试验。 此操作将从列表查询和视图中隐藏实验，但不会将其删除。
+
+当前不支持永久删除各个试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。
+
+## <a name="azure-machine-learning-compute-issues"></a>Azure 机器学习计算问题
+使用 Azure 机器学习计算（AmlCompute）的已知问题。
+
+### <a name="trouble-creating-amlcompute"></a>创建 AmlCompute 时遇到问题
+
+在 GA 版本之前，从 Azure 门户创建其 Azure 机器学习工作区的某些用户极有可能无法在该工作区中创建 AmlCompute。 你可以对服务提出支持请求，或者通过门户或 SDK 创建新的工作区以立即取消阻止。
+
+### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>中断： SR-IOV 升级到 AmlCompute 中的 NCv3 计算机
 
 Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所有 MPI 实现和版本，并提供适用于未受支持的虚拟机的 RDMA 谓词。 这将需要较短的停机时间-[详细了解 sr-iov 升级](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku)。
 
@@ -43,28 +109,6 @@ Azure 计算将更新从11月 2019 11 日年初开始的 NCv3 Sku，以支持所
 在修复之前，可以将数据集连接到任何数据转换模块（选择数据集中的列，编辑元数据，拆分数据等）并运行试验。 然后，可以可视化数据集。 
 
 下图显示了如何： ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
-
-## <a name="sdk-installation-issues"></a>SDK 安装问题
-
-**错误消息：无法卸载 'PyYAML'**
-
-用于 Python 的 Azure 机器学习 SDK： PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
-
-```Python
-pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
-```
-
-错误消息： **`ERROR: No matching distribution found for azureml-dataprep-native`**
-
-Anaconda 的 Python 3.7.4 分发有一个破坏 azureml-sdk 安装的缺陷。 此[GitHub 问题](https://github.com/ContinuumIO/anaconda-issues/issues/11195)中讨论了此问题，可通过使用此命令创建新的 Conda 环境来解决此问题：
-```bash
-conda create -n <env-name> python=3.7.3
-```
-这将使用 Python 3.7.3 创建 Conda 环境，而3.7.4 中不存在安装问题。
-
-## <a name="trouble-creating-azure-machine-learning-compute"></a>创建 Azure 机器学习计算时发生故障
-
-如果用户在 GA 发布之前已通过 Azure 门户创建了自己的 Azure 机器学习工作区，则他们很可能无法在该工作区中创建 Azure 机器学习计算。 可对服务提出支持请求，也可通过门户或 SDK 创建新的工作区以立即解除锁定。
 
 ## <a name="image-building-failure"></a>映像生成失败
 
@@ -255,38 +299,6 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >Kubernetes 以64编码格式存储密码。 在向 `attach_config.enable_ssl`提供机密之前，需要对 `cert.pem` 和机密的 `key.pem` 组件进行64解码。 
 
-## <a name="recommendations-for-error-fix"></a>错误修复建议
-基于常规观察，以下是 Azure ML 建议，用于修复 Azure ML 中的一些常见错误。
-
-### <a name="metric-document-is-too-large"></a>指标文档太大
-Azure 机器学习对可从定型运行一次记录的指标对象的大小进行内部限制。 如果在记录列表值指标时遇到 "指标文档太大" 错误，请尝试将列表拆分为较小的区块，例如：
-
-```python
-run.log_list("my metric name", my_metric[:N])
-run.log_list("my metric name", my_metric[N:])
-```
-
- 在内部，运行历史记录服务将具有相同指标名称的块连接到一个连续列表中。
-
-### <a name="moduleerrors-no-module-named"></a>ModuleErrors （没有名为的模块）
-如果在 Azure ML 中提交试验时运行到 ModuleErrors 中，则表示训练脚本需要安装一个包，但不会添加它。 提供包名称后，Azure ML 会在用于定型的环境中安装包。 
-
-如果使用[估算](concept-azure-machine-learning-architecture.md#estimators)提交试验，则可以通过基于要安装包的源中的估计器 `pip_packages` 或 `conda_packages` 参数指定包名称。 你还可以使用 `conda_dependencies_file`指定包含所有依赖项的 docker-compose.override.yml 文件，或者使用 `pip_requirements_file` 参数列出 txt 文件中的所有 pip 要求。
-
-Azure ML 还为 Tensorflow、PyTorch、Chainer 和 Spark-sklearn 提供框架特定的估算。 使用这些估算将确保在用于定型的环境中代表您安装框架依赖项。 您可以选择指定额外的依赖项，如上所述。 
- 
-Azure ML 维护的 docker 映像，可以在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中查看其内容。
-特定于框架的依赖关系在各自的框架文档中列出- [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、 [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、 [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、 [spark-sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)。
-
-> [!Note]
-> 如果你认为某个特定包的常用空间足以添加到 Azure ML 维护的映像和环境中，请在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 问题。 
- 
- ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError （未定义名称），AttributeError （对象没有属性）
-此异常应来自训练脚本。 你可以查看 Azure 门户的日志文件，以获取有关特定名称（未定义）或属性错误的详细信息。 从 SDK，你可以使用 `run.get_details()` 来查看错误消息。 这还将列出为运行生成的所有日志文件。 请确保查看训练脚本，并修复错误，然后重试。 
-
-### <a name="horovod-is-shut-down"></a>Horovod 已关闭
-在大多数情况下，此异常表示某个进程中存在导致 horovod 关闭的基础异常。 MPI 作业中的每个排名都在 Azure ML 中获得专用的日志文件。 这些日志命名为 `70_driver_logs`。 对于分布式培训，日志名称以 `_rank` 为后缀，以方便区分日志。 若要查找导致 horovod 关闭的确切错误，请浏览所有日志文件，并在 driver_log 文件的末尾查找 `Traceback`。 其中一项文件会为你带来实际的基础异常。 
-
 ## <a name="labeling-projects-issues"></a>标记项目问题
 
 标记项目的已知问题。
@@ -306,12 +318,6 @@ Azure ML 维护的 docker 映像，可以在[AzureML 容器](https://github.com/
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>如果在为对象检测标记时按 Esc 键，则会在左上角创建大小为零的标签。 提交处于此状态的标签失败。
 
 单击标签旁边的交叉标记，删除标签。
-
-## <a name="run-or-experiment-deletion"></a>运行或试验删除
-
-可以通过使用[试验. archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--)方法或 Azure 机器学习 studio 客户端中的实验选项卡视图来存档试验。 此操作将从列表查询和视图中隐藏实验，但不会将其删除。
-
-当前不支持永久删除各个试验或运行。 有关删除工作区资产的详细信息，请参阅[导出或删除机器学习服务工作区数据](how-to-export-delete-data.md)。
 
 ## <a name="moving-the-workspace"></a>移动工作区
 

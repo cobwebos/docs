@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500412"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565780"
 ---
 # <a name="what-is-azure-private-link-service"></a>什么是 Azure Private Link service？
 
@@ -111,6 +111,8 @@ Azure 专用链接服务是对你自己的、由 Azure 专用链接提供支持�
 |值  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID （0x01）|
 |  |4        |UINT32 （4个字节），表示专用终结点的 LINKID。 编码为 little endian 格式。|
 
+ > [!NOTE]
+ > 服务提供商负责确保标准负载均衡器后面的服务配置为在专用链接服务上启用代理协议时根据[规范](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt)分析代理协议标头。 如果在专用链接服务上启用了代理协议设置，但未将服务配置为解析标头，则请求将失败。 同样，如果在专用链接服务上未启用该设置，则当服务需要代理协议标头时，请求将失败。 一旦启用了代理协议设置，代理协议标头也将包含在从主机到后端虚拟机的 HTTP/TCP 运行状况探测中，即使标头中没有客户端信息也是如此。 
 
 ## <a name="limitations"></a>限制
 

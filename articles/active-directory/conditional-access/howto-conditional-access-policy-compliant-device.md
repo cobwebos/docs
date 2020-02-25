@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521908"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561606"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件性访问：需要相容的设备
 
@@ -29,7 +29,7 @@ ms.locfileid: "77521908"
 
 此策略符合性信息将转发到 Azure AD 其中条件访问可以决定是授予还是阻止对资源的访问。 有关设备符合性策略的详细信息，请参阅如何在[设备上设置规则以允许使用 Intune 访问组织中的资源](/intune/protect/device-compliance-get-started)
 
-## <a name="create-a-conditional-access-policy"></a>创建条件性访问策略
+## <a name="create-a-conditional-access-policy"></a>创建条件访问策略
 
 以下步骤将帮助创建条件性访问策略，以要求将访问资源的设备标记为符合组织的 Intune 合规性策略。
 
@@ -48,6 +48,9 @@ ms.locfileid: "77521908"
    1. 选择“选择”。
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以启用策略。
+
+> [!NOTE]
+> 即使你选择 "**要求设备标记为符合** **所有用户**和**所有云应用**" （使用上述步骤），也可以将新设备注册到 Intune。 **要求设备标记为合规**控制不阻止 Intune 注册。 
 
 ### <a name="known-behavior"></a>已知行为
 

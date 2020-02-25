@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa25a1b1d24c034a92a94ac9378bc4bff3947348
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639915"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559005"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -126,8 +126,8 @@ ms.locfileid: "75639915"
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
 同意任何委托的权限 | 云应用程序管理员 | 应用程序管理员
-同意应用程序权限（不包括 Microsoft Graph 或 Azure AD Graph） | 云应用程序管理员 | 应用程序管理员
-同意 Microsoft Graph 或 Azure AD Graph 的应用程序权限 | 全局管理员角色 | 
+同意不包括 Microsoft Graph 的应用程序权限 | 云应用程序管理员 | 应用程序管理员
+同意 Microsoft Graph 的应用程序权限 | 全局管理员角色 | 
 同意应用程序访问自己的数据 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建企业应用程序 | 云应用程序管理员 | 应用程序管理员
 管理应用程序代理 | 应用程序管理员 | 

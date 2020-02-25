@@ -1,5 +1,5 @@
 ---
-title: 使用指标监视 Azure 数据资源管理器性能、运行状况和使用情况
+title: 使用指标监视 Azure 数据资源管理器性能、运行状况 & 使用情况
 description: 了解如何使用 Azure 数据资源管理器度量值监视群集的性能、运行状况和使用情况。
 author: orspod
 ms.author: orspodek
@@ -7,20 +7,20 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: f8078d8bae00ac4789a679be4d7a1944c749cce6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423838"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560298"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>使用指标监视 Azure 数据资源管理器性能、运行状况和使用情况
 
 Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 Azure 数据资源管理器度量值提供有关群集资源的运行状况和性能的关键指标。 使用本文中详述的指标来监视 Azure 数据资源管理器群集的运行状况和性能，具体方案为独立的指标。 你还可以使用度量值作为运营[Azure 仪表板](/azure/azure-portal/azure-portal-dashboards)和[Azure 警报](/azure/azure-monitor/platform/alerts-metric-overview)的基础。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 订阅。 如果没有帐户，可以创建一个[免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有帐户，可以创建一个[免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 * [群集和数据库](create-cluster-database-portal.md)。
 
 ## <a name="using-metrics"></a>使用指标
@@ -52,7 +52,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 | 缓存利用率 | 百分比 | Avg、Max、Min | 群集当前正在使用的已分配缓存资源的百分比。 缓存是根据定义的缓存策略为用户活动分配的 SSD 大小。 对于群集，平均缓存利用率为80% 或更低。 如果平均缓存利用率高于80%，则应将群集[扩展](manage-cluster-vertical-scaling.md)到存储优化定价层，或[扩大](manage-cluster-horizontal-scaling.md)到更多实例。 或者，改编缓存策略（缓存中的天数更少）。 如果缓存利用率超过100%，则根据缓存策略缓存的数据大小越大，群集上的缓存的总大小就越大。 | 无 |
 | CPU | 百分比 | Avg、Max、Min | 群集中的计算机当前正在使用的已分配计算资源的百分比。 对于群集，平均 CPU 为80% 或更低。 CPU 的最大值为100%，这意味着没有额外的计算资源可用于处理数据。 当群集不能正常运行时，请检查 CPU 的最大值，以确定是否有特定的 Cpu 被阻止。 | 无 |
 | 引入利用率 | 百分比 | Avg、Max、Min | 用于从分配的资源（容量策略）中引入数据以执行引入的实际资源的百分比。 默认容量策略不超过512个并发引入操作或引入中投入的群集资源的75%。 80% 或更低的平均引入利用率是群集的可持续状态。 引入使用率的最大值为100%，这意味着使用所有群集引入能力，并且可能会导致引入队列。 | 无 |
-| 保持活动状态 | Count | 平均 | 跟踪群集的响应能力。 完全响应的群集返回值1，阻止或断开连接的群集返回0。 |
+| 保持活动状态 | Count | Avg | 跟踪群集的响应能力。 完全响应的群集返回值1，阻止或断开连接的群集返回0。 |
 | 阻止的命令总数 | Count | Avg、Max、Min、Sum | 由于已达到允许的最大并发（并行）命令数，导致群集中的限制（拒绝）命令数。 | 无 |
 | 总区数 | Count | Avg、Max、Min、Sum | 群集中的数据区总数。 此指标的变化可能意味着大规模的数据结构更改和群集上的高负载，因为合并数据区是一个 CPU 繁重的活动。 | 无 |
 | | | | |
@@ -63,7 +63,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 **指标** | **单位** | **聚合** | **指标描述** | **Dimensions** |
 |---|---|---|---|---|
-连续导出已导出记录的数目    | Count | Sum | 所有连续导出作业中导出的记录数。 | 无 |
+连续导出已导出记录的数目    | Count | SUM | 所有连续导出作业中导出的记录数。 | 无 |
 连续导出最大迟到 |    Count   | Max   | 群集中的连续导出作业报告的迟到（分钟）。 | 无 |
 连续导出挂起计数 | Count | Max   | 挂起的连续导出作业的数目。 这些作业已准备好运行，但在队列中等待，这可能是由于容量不足所致。 
 连续导出结果    | Count |   Count   | 每个连续导出运行的失败/成功结果。 | ContinuousExportName |
@@ -102,7 +102,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 流引入数据速率 |    Count   | RateRequestsPerSecond | 引入到群集的总数据量。 | 无 |
 流摄取持续时间   | 毫秒  | Avg、Max、Min | 所有流式处理引入请求的总持续时间。 | 无 |
 流式处理引入请求速率   | Count | Count、Avg、Max、Min、Sum | 流式引入请求总数。 | 无 |
-流式处理引入结果 | Count | 平均   | 按结果类型的流式引入请求总数。 | 结果 |
+流式处理引入结果 | Count | Avg   | 按结果类型的流式引入请求总数。 | 结果 |
 | | | | |
 
 有关[受支持的 Azure 数据资源管理器群集指标](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)的其他信息。

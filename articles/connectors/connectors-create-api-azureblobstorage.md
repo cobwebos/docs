@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789920"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566006"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Azure Blob 存储中的 blob
 
@@ -23,11 +23,11 @@ ms.locfileid: "74789920"
 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 [Azure Blob 存储连接器参考](https://docs.microsoft.com/connectors/azureblobconnector/)。
 
 > [!IMPORTANT]
-> 若要启用从 Azure 逻辑应用到防火墙后的存储帐户的访问，请参阅本主题后面的[访问防火墙后的存储帐户](#storage-firewalls)部分。
+> 如果逻辑应用位于同一区域中，则它们不能直接访问位于防火墙后面的存储帐户。 作为一种解决方法，你可以在不同区域中创建逻辑应用和存储帐户。 有关启用从 Azure 逻辑应用到防火墙后的存储帐户的访问的详细信息，请参阅本主题后面的[访问防火墙后的存储帐户](#storage-firewalls)部分。
 
 <a name="blob-storage-limits"></a>
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 * 默认情况下，Azure Blob 存储操作可以读取或写入*50 MB 或更小*的文件。 若要处理大于 50 MB 但高达 1024 MB 的文件，Azure Blob 存储操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 "**获取 blob 内容**" 操作隐式使用分块。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74789920"
 
   * 使用 Azure Blob 存储**获取 Blob 内容**操作执行触发器，该操作读取完整的文件并隐式使用分块。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "74789920"
 
 1. 当系统提示你创建连接时，请提供以下信息：
 
-   | properties | 需要 | Value | 描述 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <connection-name> | 为连接创建的名称 |
    | **存储帐户** | 是 | <*storage-account*> | 从列表中选择存储帐户。 |
@@ -129,7 +129,7 @@ ms.locfileid: "74789920"
 
    例如：
 
-   ![创建 Azure Blob 存储帐户连接](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![创建 Azure Blob 存储帐户连接](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. 准备就绪后，选择 "**创建**"
 
@@ -159,9 +159,12 @@ ms.locfileid: "74789920"
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>访问其他区域中的存储帐户
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>访问同一区域中的存储帐户时出现问题
 
-逻辑应用无法直接访问具有防火墙规则且位于同一区域中的存储帐户。 但是，如果你为[区域中的托管连接器允许访问出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)，则逻辑应用可以访问不同区域中的存储帐户，除非你使用 Azure 表存储连接器或 Azure 队列存储连接器。 若要访问表存储或队列存储，还可以使用内置的 HTTP 触发器和操作。
+如果逻辑应用位于同一区域中，则它们不能直接访问位于防火墙后面的存储帐户。 作为一种解决方法，请将逻辑应用置于不同于你的存储帐户的区域中，并为[你所在地区的托管连接器提供对出站 IP 地址](../logic-apps/logic-apps-limits-and-config.md#outbound)的访问权限。
+
+> [!NOTE]
+> 此解决方案不适用于 Azure 表存储连接器和 Azure 队列存储连接器。 相反，若要访问表存储或队列存储，请使用内置的 HTTP 触发器和操作。
 
 <a name="access-trusted-virtual-network"></a>
 

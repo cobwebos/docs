@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400801"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565547"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>如何升级用于 VM 的 Azure Monitor 依赖关系代理
 
@@ -39,16 +39,9 @@ ms.locfileid: "75400801"
 1. 使用具有管理权限的帐户登录到计算机。
 
 2. 执行**installdependencyagent-windows.exe**以启动安装向导。
+   
+3. 按照**Dependency Agent 安装**向导卸载以前版本的依赖关系代理，然后安装最新版本。
 
-3. 在**Dependency Agent 9.9.1 安装程序**"对话框中，单击"**我同意**接受许可协议 "。
-
-5. 在**Dependency Agent 9.9.0 卸载**"对话框中，单击"**下一步**"。 "状态" 页显示卸载以前版本的进度。
-
-6. 在**Dependency Agent 9.9.0 卸载**"对话框中，单击"**卸载**"以继续从对话框中指定的路径中卸载以前的版本。 
-
-7. 在**Dependency Agent 9.9.0 卸载**"对话框中，将显示卸载进度，完成后，将显示"**正在完成 Dependency Agent 卸载**"页。 单击“完成”。
-
-8. 在**Dependency Agent 9.9.1 设置**"对话框中，将显示安装进度。 当 "**正在完成 Dependency Agent 卸载**" 页出现时，单击 "**完成**"。 
 
 ### <a name="from-the-command-line"></a>从命令行
 

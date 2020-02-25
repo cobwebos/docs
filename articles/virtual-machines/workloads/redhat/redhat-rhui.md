@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368899"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562541"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -28,7 +28,7 @@ ms.locfileid: "77368899"
 可以在 [Red Hat Enterprise Linux Life Cycle](https://access.redhat.com/support/policy/updates/errata)（Red Hat Enterprise Linux 生命周期）页找到有关 RHEL 所有版本的 Red Hat 支持策略的信息。
 
 > [!IMPORTANT]
-> RHUI 仅适用于即用即付（PAYGO）映像。 对于自定义和黄金映像（也称为自带订阅（BYOS）），系统需要附加到 RHSM 或卫星才能接收更新。 有关更多详细信息，请参阅[Red Hat 文章](https://access.redhat.com/solutions/253273)。
+> RHUI 仅适用于即用即付（PAYG）映像。 对于自定义和黄金映像（也称为自带订阅（BYOS）），系统需要附加到 RHSM 或卫星才能接收更新。 有关更多详细信息，请参阅[Red Hat 文章](https://access.redhat.com/solutions/253273)。
 
 
 ## <a name="important-information-about-azure-rhui"></a>有关 Azure RHUI 的重要信息
@@ -105,7 +105,7 @@ RedHat:RHEL:7.6:7.6.2019062116
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. 锁定 releasever 变量（以 root 身份运行）：
+1. 锁定 `releasever` 变量（以 root 身份运行）：
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>将 RHEL VM 切换回非 EUS （删除版本锁）
 以 root 身份运行以下内容：
-1. 删除 releasever 文件：
+1. 删除 `releasever` 文件：
     ```bash
     rm /etc/yum/vars/releasever
      ```

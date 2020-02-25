@@ -4,20 +4,18 @@ description: 了解如何在 Azure Functions 的 Durable Functions 中处理人�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6a442ac0d515f9cca9201767087a9b59588edeed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769568"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562099"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions 中的人机交互 - 电话验证示例
 
 此示例演示如何生成涉及人机交互的 [Durable Functions](durable-functions-overview.md) 业务流程。 每当自动化过程中需要真人时，该过程需要能够以异步方式向人员发送通知和接收响应。 它还需要考虑该人员没有时间的可能。 （最后这一部分，超时变得很重要。）
 
 这个示例实现了基于短信的电话验证系统。 验证客户的电话号码或进行多重身份验证 (MFA) 时，经常使用这些类型的流。 这是一个功能强大的示例，因为整个实现是通过使用几个小型函数实现的。 无需外部数据存储（如数据库）。
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -37,26 +35,32 @@ ms.locfileid: "75769568"
 
 本文通过示例应用介绍了以下函数：
 
-* E4_SmsPhoneVerification
-* E4_SendSmsChallenge
+* `E4_SmsPhoneVerification`：执行电话验证过程的业务流程[协调程序函数](durable-functions-bindings.md#orchestration-trigger)，包括管理超时和重试次数。
+* `E4_SendSmsChallenge`：通过短信发送代码的业务流程[协调程序函数](durable-functions-bindings.md#activity-trigger)。
 
-以下部分介绍用于C#脚本编写和 JavaScript 的配置和代码。 文章末尾展示了用于 Visual Studio 开发的代码。
+### <a name="e4_smsphoneverification-orchestrator-function"></a>E4_SmsPhoneVerification orchestrator 函数
 
-## <a name="the-sms-verification-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>SMS 验证业务流程（Visual Studio Code 和 Azure 门户的示例代码）
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
+
+> [!NOTE]
+> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的，因为 `CurrentUtcDateTime` 属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保每次对 `Task.WhenAny`的重复调用都有相同的 `winner`，这一点很重要。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 function.json。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/function.json)]
 
 实现该函数的代码如下：
 
-### <a name="c-script"></a>C# 脚本
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
+
+> [!NOTE]
+> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的，因为 `currentUtcDateTime` 属性用于计算计时器过期时间，并在每次重播时在 orchestrator 代码中返回相同的值。 此行为对于确保每次对 `context.df.Task.any`的重复调用都有相同的 `winner`，这一点很重要。
+
+---
 
 启动后，该业务流程协调程序函数执行以下任务：
 
@@ -65,31 +69,33 @@ E4_SmsPhoneVerification 函数对业务流程协调程序函数使用标准的 f
 3. 创建可从当前时间开始触发 90 秒的持久计时器。
 4. 与计时器一起，等待来自用户的 SmsChallengeResponse 事件。
 
-用户会收到一条含 4 位数代码的短信。 用户需要在 90 秒内将相同的 4 位数代码发送回业务流程协调程序函数实例，以便完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
-
-> [!NOTE]
-> 起初可能并不明显，但这个业务流程协调程序函数是完全确定的函数。 它是确定性的，因为 `CurrentUtcDateTime` （.NET）和 `currentUtcDateTime` （JavaScript）属性用于计算计时器过期时间，在此时间段内，这两个属性在 orchestrator 代码中返回相同的值。 此行为对于确保每次对 `Task.WhenAny` （.NET）或 `context.df.Task.any` （JavaScript）的重复调用都是相同的 `winner`。
+用户会收到一条含 4 位数代码的短信。 它们有90秒的时间，可将相同的四位数代码发送回 orchestrator 函数实例，以完成验证过程。 如果提交的代码不正确，可额外尝试 3 次进行更正（在相同的 90 秒时间段内）。
 
 > [!WARNING]
 > 如果不再需要计时器到期，请务必[取消计时器](durable-functions-timers.md)，正如在上面的示例中收到质询响应后一样。
 
-## <a name="send-the-sms-message"></a>发送短信
+## <a name="e4_sendsmschallenge-activity-function"></a>E4_SendSmsChallenge 活动函数
 
-E4_SendSmsChallenge 函数使用 Twilio 绑定向最终用户发送包含 4 位数代码的短信。 function.json 定义如下：
+**E4_SendSmsChallenge**函数使用 Twilio 绑定将具有四位数代码的短信发送给最终用户。
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/function.json)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-以下代码可生成 4 位数质询代码和发送短信：
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=72-89)]
 
-### <a name="c-script"></a>C# 脚本
+> [!NOTE]
+> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 包以运行示例代码。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="javascript-functions-20-only"></a>JavaScript（仅限 Functions 2.0）
+function.json 定义如下：
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/function.json)]
+
+下面是生成四位数质询代码并发送短信的代码：
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
 
-E4_SendSmsChallenge 函数仅被调用一次，即使进程崩溃或进行重播也是如此。 因为不希望最终用户收到多条短信，所以这种设定非常合适。 `challengeCode` 返回值可自动保留，以便业务流程协调程序函数始终了解正确的代码。
+---
 
 ## <a name="run-the-sample"></a>运行示例
 
@@ -147,15 +153,6 @@ Content-Length: 145
 
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
-
-## <a name="visual-studio-sample-code"></a>Visual Studio 示例代码
-
-下面是 Visual Studio 项目中以单个 C# 文件形式提供的业务流程：
-
-> [!NOTE]
-> 你将需要安装 `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet 包以运行下面的示例代码。
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs)]
 
 ## <a name="next-steps"></a>后续步骤
 

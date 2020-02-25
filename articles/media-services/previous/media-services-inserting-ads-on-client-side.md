@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895972"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565734"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>在客户端上插入广告
 本文包含有关如何在客户端上插入各种类型的广告的信息。
@@ -276,7 +276,7 @@ VMAP 文件以 `<VMAP>` 元素开头，该元素包含一个或多个 `<AdBreak>
     </vmap:VMAP>
 ```
 
-有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅 http://iab.net/VMAP.pdf
+有关 <TrackingEvents> 元素及其子元素的详细信息，请参阅http://iab.net/VMAP.pdf
 
 ### <a name="using-a-media-abstract-sequencing-template-mast-file"></a>使用媒体摘要排序模板 (MAST) 文件
 MAST 文件允许指定定义何时显示广告的触发器。 以下是一个示例 MAST 文件，它包含前置式广告、中置式广告和后置式广告的触发器。
@@ -363,7 +363,7 @@ VPAID 是用于使可执行广告单元能够与视频播放器进行通信的 A
     </MediaFiles>
 ```
 
-可以使用 VAST 响应中 `<Linear>` 或 `<NonLinear>` 元素内的 `<AdParameters>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
+可以使用 VAST 响应中 `<AdParameters>` 或 `<Linear>` 元素内的 `<NonLinear>` 元素来初始化可执行广告。 有关 `<AdParameters>` 元素的详细信息，请参阅 [VAST 3.0](https://www.iab.net/media/file/VASTv3.0.pdf)。 有关 VPAID API 的详细信息，请参阅 [VPAID 2.0](https://www.iab.net/media/file/VPAID_2.0_Final_04-10-2012.pdf)。
 
 ## <a name="implementing-a-windows-or-windows-phone-8-player-with-ad-support"></a>实现带有支持广告的 Windows 或 Windows Phone 8 播放器
 Microsoft Media Platform：适用于 Windows 8 和 Windows Phone 8 的播放器框架包含示例应用程序集合，这些示例应用程序展示如何使用该框架实现视频播放器应用程序。 可以从[适用于 Windows 8 和 Windows Phone 8 的播放器框架](https://playerframework.codeplex.com)下载播放器框架和示例。
@@ -848,7 +848,3 @@ Microsoft Media Platform：适用于 iOS 的播放器框架包含示例应用程
 
 ## <a name="provide-feedback"></a>提供反馈
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-
-## <a name="see-also"></a>另请参阅
-[开发视频播放器应用程序](media-services-develop-video-players.md)
-

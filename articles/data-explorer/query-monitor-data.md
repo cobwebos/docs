@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据资源管理器查询 Azure Monitor 中的数据（预览版）
+title: 利用 Azure 数据资源管理器在 Azure Monitor 中查询数据（预览版）
 description: 在本主题中，通过使用 Application Insights 和 Log Analytics 为跨产品查询创建 Azure 数据资源管理器代理来查询 Azure Monitor 中的数据
 services: data-explorer
 author: orspod
@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d39ffa05448600fe3bd09baf6080aa1565ae19ba
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c7e98c31c0db1db3051ad66df6526dcbddb265c5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843561"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560416"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 数据资源管理器查询 Azure Monitor 中的数据（预览版）
 
@@ -23,7 +23,7 @@ Azure 数据资源管理器代理流：
 
 ![ADX 代理流](media/adx-proxy/adx-proxy-flow.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]
 > ADX 代理处于预览模式。 [连接到代理](#connect-to-the-proxy)以启用群集的 ADX 代理功能。 如有任何疑问，请联系[ADXProxy](mailto:adxproxy@microsoft.com)团队。
@@ -34,7 +34,7 @@ Azure 数据资源管理器代理流：
 
     ![ADX 本机群集](media/adx-proxy/web-ui-help-cluster.png)
 
-1. 在 Azure 数据资源管理器 UI （ https://dataexplorer.azure.com/clusters) 中，选择 "**添加群集**"。
+1. 在 Azure 数据资源管理器 UI （ https://dataexplorer.azure.com/clusters)中，选择 "**添加群集**"。
 
 1. 在 "**添加群集**" 窗口中，将 URL 添加到 LA 或 AI 群集。 
     

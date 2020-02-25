@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 02/21/2020
 ms.author: radeltch
-ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 8f2de656473d52c7a40bef83237bf2aed563e111
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212797"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566159"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 
@@ -575,6 +575,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
    sudo pcs constraint order g-<b>NW1</b>_ASCS then g-<b>NW1</b>_AERS kind=Optional symmetrical=false
+   sudo pcs constraint order start g-<b>NW1</b>_ASCS then stop g-<b>NW1</b>_AERS symmetrical=false
    
    sudo pcs node unstandby <b>nw1-cl-0</b>
    sudo pcs property set maintenance-mode=false
@@ -904,7 +905,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    <pre><code>[root@nw1-cl-0 ~]# pgrep ms.sapNW1 | xargs kill -9
    </code></pre>
 
-   如果仅终止消息服务器一次，则 sapstart 会重启它。 如果经常终止消息服务器，Pacemaker 会最终将 ASCS 实例移动到另一个节点。 运行以下命令作为根，清除测试后的 ASCS 和 ERS 实例的资源状态。
+   如果仅终止消息服务器一次，则 `sapstart`会重新启动该服务器。 如果经常终止消息服务器，Pacemaker 会最终将 ASCS 实例移动到另一个节点。 运行以下命令作为根，清除测试后的 ASCS 和 ERS 实例的资源状态。
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ASCS00
    [root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
@@ -990,7 +991,7 @@ Azure 市场中包含适用于 Red Hat Enterprise Linux 的映像，可以用于
    <pre><code>[root@nw1-cl-1 ~]# pgrep er.sapNW1 | xargs kill -9
    </code></pre>
 
-   如果仅运行该命令一次，则 sapstart 会重启该进程。 如果经常运行此命令，则 sapstart 不会重启该进程，且资源会处于停止状态。 运行以下命令作为根，清除测试后的 ERS 实例的资源状态。
+   如果只运行一次命令，`sapstart` 将重新启动此过程。 如果经常运行它，`sapstart` 将不会重新启动进程，并且资源将处于停止状态。 运行以下命令作为根，清除测试后的 ERS 实例的资源状态。
 
    <pre><code>[root@nw1-cl-0 ~]# pcs resource cleanup rsc_sap_NW1_ERS02
    </code></pre>

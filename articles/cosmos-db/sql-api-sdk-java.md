@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718167"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558922"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -42,6 +42,10 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 |受支持的最小运行时|[Java 开发工具包 (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4。7
+* 修复了连接池超时问题。
+* 修复内部重试时的身份验证令牌刷新。
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4。6
 * DatabaseAccount 上更新了正确的客户端副本策略标记，并从缓存中读取了 databaseAccount 配置。
@@ -259,8 +263,19 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |3月13日，2018 |--- |
-| [2.1.2](#2.1.2) |三月09，2018 |--- |
+| [2.4.7](#2.4.7) |2020年2月20日 |--- |
+| [2.4.6](#2.4.6) |Jan 24，2020 |--- |
+| [2.4.5](#2.4.5) |11月10日，2019 |--- |
+| [2.4.4](#2.4.4) |十月24，2019 |--- |
+| [2.4.2 sections](#2.4.2) |2019年9月26日 |--- |
+| [2.4.1](#2.4.1) |7月18日，2019 |--- |
+| [2.4.0](#2.4.0) |5月4日，2019 |--- |
+| [2.3.0](#2.3.0) |Apr 24，2019 |--- |
+| [2.2.3](#2.2.3) |Apr 16，2019 |--- |
+| [2.2.2](#2.2.2) |Apr 05，2019 |--- |
+| [2.2.0](#2.2.0) |3月27日，2019 |--- |
+| [2.1.3](#2.1.3) |3月13日，2019 |--- |
+| [2.1.2](#2.1.2) |三月09，2019 |--- |
 | [2.1.1](#2.1.1) |12月13日，2018 |--- |
 | [2.1.0](#2.1.0) |2018年11月20日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |

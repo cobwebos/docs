@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 82720a99128facee2d1617d69f1ed852b232de43
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3b1deceb8d5c6e2a22254b2719449e5adb069def
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493275"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565391"
 ---
 # <a name="nvv4-series-preview"></a>NVv4 系列（预览）
 
@@ -40,11 +40,11 @@ NVv4 系列虚拟机由[Amd Radeon INSTINCT MI25](https://www.amd.com/en/product
 
 若要利用运行 Windows、NVIDIA 或 AMD GPU 驱动程序的 Azure N 系列 Vm 的 GPU 功能，必须安装。
 
-[NVIDIA GPU 驱动程序扩展](/extensions/hpccompute-gpu-windows.md)可在 N 系列 VM 上安装适当的 NVIDIA CUDA 或 GRID 驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](/extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/extensions/overview.md)。
+[NVIDIA GPU 驱动程序扩展](/extensions/hpccompute-gpu-windows.md)在 Windows N 系列 VM 上安装合适的 nvidia CUDA 或网格驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](/extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/extensions/overview.md)。
 
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 n 系列 gpu 驱动程序设置](/windows/n-series-driver-setup.md)或适用于[Linux 的 n 系列 gpu 驱动程序设置](/linux/n-series-driver-setup)，以支持操作系统、驱动程序、安装和验证步骤。
+如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 N 系列 GPU 驱动程序设置](/windows/n-series-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
 
-若要手动安装 AMD GPU 驱动程序，请参阅适用于 Windows 的 N 系列[AMD gpu 驱动程序设置](/windows/n-series-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
+若要手动安装 AMD GPU 驱动程序，请参阅适用于[Windows 的 N 系列 AMD gpu 驱动程序设置](/windows/n-series-amd-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
 
 ## <a name="other-sizes"></a>其他大小
 

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: ac891e96e350f73b7728ee4b572d9e16a8794ff7
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460988"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561914"
 ---
-# <a name="speech-synthesis-markup-language-ssml"></a>语音合成标记语言 (SSML)
+# <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言（SSML）改善合成
 
 语音合成标记语言（SSML）是一种基于 XML 的标记语言，它允许开发人员使用文本到语音服务来指定如何将输入文本转换为合成语音。 与纯文本相比，SSML 允许开发人员精细调整文本到语音输出的音调、发音、语速、音量和更多内容。 正常标点，如在一个句点后暂停，或使用正确的 intonation，当以问号结束的句子将自动处理。
 

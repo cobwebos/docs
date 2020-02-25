@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843933"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564945"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -33,11 +33,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="overview"></a>概述
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 要开始使用 Azure 媒体服务，应该具备以下条件：
 
-* 一个 Azure 帐户。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
@@ -137,7 +137,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 以下主题提供了可用来开发自己的客户端应用程序（这些应用程序使用媒体服务中的流媒体）的 SDK 和播放器框架的链接。 有关详细信息，请参阅[开发视频播放器应用程序](media-services-develop-video-players.md)
+Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 
 
 ## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
@@ -169,7 +169,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 #### <a name="availability"></a>可用性
 
-若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/ ，并滚动到 MEDIA 表。
+若要确定数据中心是否提供媒体服务，请浏览到 https://azure.microsoft.com/status/，并滚动到 MEDIA 表。
 
 ### <a name="streaming-endpoints"></a>流式处理终结点 
 
@@ -179,8 +179,8 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 |名称|状态|数据中心
 |---|---|---|
-|标准|GA|所有|
-|高级|GA|所有|
+|Standard|GA|All|
+|Premium|GA|All|
 
 ### <a name="live-encoding"></a>实时编码
 
@@ -196,7 +196,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|所有|
+|媒体编码器标准版|GA|All|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -207,12 +207,12 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|所有|
-|Azure Media Indexer|GA|所有|
-|Azure Media Motion Detector|预览|所有|
-|Azure 媒体 OCR|预览|所有|
-|Azure 媒体编修器|GA|所有|
-|Azure 媒体视频缩略图|预览|所有|
+|Azure 媒体面部检测器|预览|All|
+|Azure 媒体索引器|GA|All|
+|Azure Media Motion Detector|预览|All|
+|Azure 媒体 OCR|预览|All|
+|Azure 媒体修订|GA|All|
+|Azure 媒体视频缩略图|预览|All|
 
 ### <a name="protection"></a>保护
 
@@ -222,10 +222,10 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |加密|状态|数据中心|
 |---|---|---| 
-|存储空间|GA|所有|
-|AES-128 密钥|GA|所有|
-|Fairplay|GA|所有|
-|PlayReady|GA|所有|
+|存储|GA|All|
+|AES-128 密钥|GA|All|
+|Fairplay|GA|All|
+|PlayReady|GA|All|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -248,7 +248,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|所有|
+|S1|GA|All|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 

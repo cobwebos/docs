@@ -1,5 +1,5 @@
 ---
-title: 使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统 |Microsoft Docs
+title: 在 SLES 上通过 Azure NetApp 文件 SAP HANA 扩展Microsoft Docs
 description: 适用于 sap NetWeaver 的高可用性指南，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896279"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565802"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure Vm 上使用备用节点部署 SAP HANA 扩展系统 
 
@@ -227,9 +227,9 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 2. 通过执行以下步骤创建三个虚拟机（**hanadb1**、 **hanadb2**、 **hanadb3**）：  
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 SAP HANA 支持的 Azure 库中使用使用 SLES4SAP 映像。 在此示例中，我们使用了使用 SLES4SAP 12 SP4 映像。  
+   a. 在 SAP HANA 支持的 Azure 库中使用使用 SLES4SAP 映像。 在此示例中，我们使用了使用 SLES4SAP 12 SP4 映像。  
 
-   b.保留“数据库类型”设置，即设置为“共享”。 选择之前为 SAP HANA 创建的可用性集。  
+   b. 选择之前为 SAP HANA 创建的可用性集。  
 
    c. 选择客户端 Azure 虚拟网络子网。 选择 "[加速网络](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)"。  
 
@@ -241,15 +241,15 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 5. 执行以下步骤，将新创建的虚拟网络接口附加到相应的虚拟机：  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在[Azure 门户](https://portal.azure.com/#home)中，请参阅虚拟机。  
+    a. 在[Azure 门户](https://portal.azure.com/#home)中，请参阅虚拟机。  
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择虚拟机。  
+    b. 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择虚拟机。  
 
     c. 在 "**概述**" 窗格中，选择 "**停止**" 以解除分配虚拟机。  
 
-    d.单击“下一步”。 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为 `storage` 和 `hana` 子网创建的网络接口。  
+    d. 选择 "**网络**"，然后连接网络接口。 在 "**附加网络接口**" 下拉列表中，选择已为 `storage` 和 `hana` 子网创建的网络接口。  
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择“保存”。 
+    e. 选择“保存”。 
  
     f. 对于剩余的虚拟机（在我们的示例中为**hanadb2**和**hanadb3**），重复步骤 b 到 e。
  
@@ -257,9 +257,9 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 6. 执行以下步骤，为 `storage` 的其他网络接口启用加速网络并 `hana` 子网：  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在[Azure 门户](https://portal.azure.com/#home)中打开[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 。  
+    a. 在[Azure 门户](https://portal.azure.com/#home)中打开[Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) 。  
 
-    b.保留“数据库类型”设置，即设置为“共享”。 执行以下命令，为附加到 `storage` 和 `hana` 子网的其他网络接口启用加速网络。  
+    b. 执行以下命令，为附加到 `storage` 和 `hana` 子网的其他网络接口启用加速网络。  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
@@ -274,9 +274,9 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 7. 执行以下步骤，启动虚拟机：  
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择它。  
+    a. 在左窗格中，选择 "**虚拟机**"。 筛选虚拟机名称（例如， **hanadb1**），然后选择它。  
 
-    b.保留“数据库类型”设置，即设置为“共享”。 在 "**概述**" 窗格中，选择 "**启动**"。  
+    b. 在 "**概述**" 窗格中，选择 "**启动**"。  
 
 ## <a name="operating-system-configuration-and-preparation"></a>操作系统配置和准备
 
@@ -543,13 +543,13 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 1. **[1]** 按照[SAP HANA 2.0 安装和更新指南](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)中的说明安装 SAP HANA。 在此示例中，我们将安装 master、一个辅助角色和一个备用节点 SAP HANA 扩展。  
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 从 HANA 安装软件目录启动**hdblcm**程序。 使用 `internal_network` 参数并传递子网的地址空间，用于内部 HANA 节点间通信。  
+   a. 从 HANA 安装软件目录启动**hdblcm**程序。 使用 `internal_network` 参数并传递子网的地址空间，用于内部 HANA 节点间通信。  
 
     <pre><code>
     ./hdblcm --internal_network=10.23.3.0/24
     </code></pre>
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在提示符下，输入以下值：
+   b. 在提示符下，输入以下值：
 
      * 对于 "**选择操作**"：输入**1** （用于安装）
      * 对于**安装的其他组件**：输入**2、3**
@@ -655,7 +655,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 1. 模拟 SAP HANA 辅助节点上的节点崩溃。 请执行以下操作： 
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在模拟节点崩溃之前，请运行以下命令作为**hn1**adm 来捕获环境状态：  
+   a. 在模拟节点崩溃之前，请运行以下命令作为**hn1**adm 来捕获环境状态：  
 
    <pre><code>
     # Check the landscape status
@@ -677,7 +677,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
    </code></pre>
 
-   b.保留“数据库类型”设置，即设置为“共享”。 若要模拟节点崩溃，请在辅助角色节点上以 root 身份运行以下命令，在本例中为**hanadb2** ：  
+   b. 若要模拟节点崩溃，请在辅助角色节点上以 root 身份运行以下命令，在本例中为**hanadb2** ：  
    
    <pre><code>
     echo b > /proc/sysrq-trigger
@@ -710,7 +710,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
 
 2. 通过执行以下操作来终止名称服务器：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在测试之前，请通过运行以下命令作为**hn1**adm 来检查环境的状态：  
+   a. 在测试之前，请通过运行以下命令作为**hn1**adm 来检查环境的状态：  
 
    <pre><code>
     #Landscape status 
@@ -732,7 +732,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在活动主节点上作为**hn1**adm 运行以下命令，在本例中为**hanadb1** ：  
+   b. 在活动主节点上作为**hn1**adm 运行以下命令，在本例中为**hanadb1** ：  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -788,7 +788,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   d.单击“下一步”。 同样，请在当前活动的主节点（即节点**hanadb3**）上终止名称服务器。  
+   d. 同样，请在当前活动的主节点（即节点**hanadb3**）上终止名称服务器。  
    
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
@@ -819,7 +819,7 @@ Azure NetApp 文件量的吞吐量是卷大小和服务级别的一项功能，�
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 启动**hanadb3**上的 SAP HANA，它将准备好用作备用节点。  
+   e. 启动**hanadb3**上的 SAP HANA，它将准备好用作备用节点。  
 
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start

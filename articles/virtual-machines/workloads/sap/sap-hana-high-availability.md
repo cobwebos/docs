@@ -1,23 +1,23 @@
 ---
-title: SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性 | Microsoft Docs
+title: SLES 上的 Azure Vm 上 SAP HANA 的高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/06/2019
-ms.author: sedusch
-ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: radeltch
+ms.openlocfilehash: 65ba7c0d8115e7125f1318e7fdca979cfab02474
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721505"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565836"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -150,7 +150,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
       1. 选择“添加虚拟机”。
       1. 选择 "虚拟机"。
       1. 选择 SAP HANA 群集的虚拟机及其 IP 地址。
-      1. 选择“添加”。
+      1. 选择 **添加** 。
    
    1. 接下来创建运行状况探测：
    
@@ -578,7 +578,7 @@ sudo crm configure rsc_defaults migration-threshold=5000
 #     rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
 </code></pre>
 
-## <a name="test-the-cluster-setup"></a>测试群集设置
+## <a name="test-the-cluster-setup"></a>测试群集设
 
 本部分介绍如何测试设置。 每项测试都假设你是 root 用户，且 SAP HANA 主机在 **hn1-db-0** 虚拟机上运行。
 

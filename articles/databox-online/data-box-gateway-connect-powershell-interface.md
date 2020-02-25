@@ -1,5 +1,5 @@
 ---
-title: 通过 Windows PowerShell 界面连接和管理 Microsoft Azure Data Box Gateway 设备 |Microsoft Docs
+title: 使用 Windows PowerShell 连接到 Azure Data Box Gateway 设备并对其进行管理
 description: 描述如何通过 Windows PowerShell 界面连接和管理 Data Box Gateway。
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775195"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561861"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>通过 Windows PowerShell 管理 Azure Data Box Gateway 设备
 
@@ -21,7 +21,7 @@ Azure Data Box Gateway 解决方案使你能够通过网络将数据发送到 Az
 
 本文重点介绍使用 PowerShell 接口执行的任务。
 
-本文包括以下过程:
+本文包括以下过程：
 
 - 连接到 PowerShell 接口
 - 创建支持包

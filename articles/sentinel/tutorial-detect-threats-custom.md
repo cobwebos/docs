@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
 ms.author: rkarlin
-ms.openlocfilehash: c643c037506725b1a48588ca779d074b6aecf7c2
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: bdd36e2f3c2b426f4bad3e787c12be2f7d09b303
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506082"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565513"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>教程：创建自定义分析规则以检测可疑威胁
 
@@ -40,7 +40,7 @@ ms.locfileid: "77506082"
 
     ![创建计划查询](media/tutorial-detect-threats-custom/create-scheduled-query.png)
 
-1. 在 "**常规**" 选项卡中，提供唯一**名称**和**描述**。 在 "**策略**" 字段中，可以从分类规则所依据的各种攻击类别中进行选择。 根据需要设置警报**严重性**。创建规则时，默认情况下会**启用**其**状态**，这意味着它将在创建完成后立即运行。 如果你不希望它立即运行，请选择 "**禁用**"，并且该规则将添加到 "**活动规则**" 选项卡中，你可以在需要时从该选项卡中启用它。
+1. 在 "**常规**" 选项卡中，提供唯一**名称**和**描述**。 在 "**策略**" 字段中，可以从分类规则所依据的各种攻击类别中进行选择。 根据需要设置警报**严重性**。 创建规则时，默认情况下会**启用**其**状态**，这意味着它将在创建完成后立即运行。 如果你不希望它立即运行，请选择 "**禁用**"，并且该规则将添加到 "**活动规则**" 选项卡中，你可以在需要时从该选项卡中启用它。
 
     ![开始创建自定义分析规则](media/tutorial-detect-threats-custom/general-tab.png)
 

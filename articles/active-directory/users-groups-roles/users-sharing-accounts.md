@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01ebde09517cbe7f093dd56a8a4116e76e64e38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736757"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565496"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -51,7 +51,7 @@ Azure AD 提供使用共享帐户的新方法，从而可以消除这些缺点�
 
 共享帐户不仅提高了监管力度和可用性，也增强了安全性。 有权使用凭据的用户看不到共享密码，而是通过协调的身份验证流程获取密码的使用权限。 此外，使用某些密码 SSO 应用程序可以选择让 Azure AD 定期滚动更新（更新）密码。 系统使用复杂的长密码来提高帐户安全性。 管理员可以轻松授予或吊销对应用程序的访问权限，还知道谁有权访问帐户以及谁曾经访问了帐户。
 
-对于所有类型的密码单一登录应用程序, Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计划的共享帐户。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/configure-single-sign-on-portal.md)自己的密码身份验证应用程序。
+对于所有类型的密码单一登录应用程序，Azure AD 支持任何企业移动性套件（EMS）或 Azure AD Premium 许可计划的共享帐户。 可以共享应用库中数千个预先集成的应用程序的帐户，并可使用[自定义 SSO 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)自己的密码身份验证应用程序。
 
 支持帐户共享的 Azure AD 功能包括：
 

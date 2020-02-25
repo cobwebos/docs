@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
+title: 使用 Powershell 创建 Azure 数据资源管理器群集 & DB
 description: 了解如何使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978337"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560569"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -24,9 +24,9 @@ ms.locfileid: "75978337"
 > * [Python](create-cluster-database-python.md)
 > * [ARM 模板](create-cluster-database-resource-manager.md)  
 
-Azure 数据资源管理器是一项快速、完全托管的数据分析服务，可实时分析从应用程序、网站和 IoT 设备等流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 本文介绍如何使用 Powershell 创建群集和数据库。 可以在 Windows、Linux 或 [Azure Cloud Shell](../cloud-shell/overview.md) 中使用 [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) 运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 数据资源管理器群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 本文介绍如何使用 Powershell 创建群集和数据库。 可以在 Windows、Linux 或 [Azure Cloud Shell](../cloud-shell/overview.md) 中使用 [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) 运行 PowerShell cmdlet 和脚本，以创建和配置 Azure 数据资源管理器群集和数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
    | 名称 | mykustocluster | 所需的群集名称。|
-   | Sku | *D13_v2* | 将用于群集的 SKU。 |
+   | SKU | *D13_v2* | 将用于群集的 SKU。 |
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
     可以使用其他可选参数，例如群集的容量。
@@ -79,7 +79,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
     Get-AzKustoCluster -Name mykustocluster -ResourceGroupName testrg
     ```
 
-如果结果包含带 `Succeeded` 值的 `provisioningState`，则表示已成功创建群集。
+如果结果包含带 `provisioningState` 值的 `Succeeded`，则表示已成功创建群集。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>在 Azure 数据资源管理器群集中创建数据库
 

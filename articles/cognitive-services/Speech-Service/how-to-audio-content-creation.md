@@ -3,27 +3,27 @@ title: 音频内容创建-语音服务
 titleSuffix: Azure Cognitive Services
 description: 音频内容创建是一个在线工具，可用于为应用和产品自定义和微调 Microsoft 的文本到语音输出。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806196"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561028"
 ---
-# <a name="audio-content-creation"></a>音频内容创建
+# <a name="improve-synthesis-with-audio-content-creation"></a>通过音频内容创建改善合成
 
 [音频内容创建](https://aka.ms/audiocontentcreation)是一个在线工具，可用于为应用和产品自定义和微调 Microsoft 的文本到语音输出。 您可以使用此工具来微调公共和自定义语音以获取更准确的自然表达式，并在云中管理输出。
 
 音频内容创建工具基于[语音合成标记语言（SSML）](speech-synthesis-markup.md)。 为了简化自定义和优化，音频内容创建使你能够以可视方式实时检查文本到语音输出。
 
-## <a name="how-does-it-work"></a>它是如何工作的？
+## <a name="how-does-it-work"></a>工作原理
 
 此图显示了优化和导出自定义的语音到文本输出所需要执行的步骤。 使用以下链接了解有关每个步骤的详细信息。
 
@@ -95,7 +95,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 2. 选择优化音频的输出格式。 下面提供了支持的格式和采样速率的列表。
 3. 可以在 "**导出任务**" 选项卡上查看任务的状态。如果任务失败，请参阅详细信息页获取完整的报表。
 4. 完成该任务后，可以在 "**音频库**" 选项卡上下载音频。
-5. 单击“**下载**”。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
+5. 单击“下载”。 现在，你已准备好在你的应用或产品中使用自定义的优化音频。
 
 ### <a name="supported-audio-formats"></a>支持的音频格式
 

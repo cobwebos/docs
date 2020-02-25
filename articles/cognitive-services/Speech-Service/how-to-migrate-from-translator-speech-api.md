@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805903"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560892"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>从语音翻译 API 迁移到语音服务
 
-本文介绍如何将应用程序从 Microsoft 语音翻译 API 迁移到[语音服务](index.md)。 本指南概述了语音翻译 API 和语音服务之间的差异，并提供了有关迁移应用程序的策略。
+本文介绍如何将应用程序从 Microsoft 语音翻译 API 迁移到[语音服务](index.yml)。 本指南概述了语音翻译 API 和语音服务之间的差异，并提供了有关迁移应用程序的策略。
 
 > [!NOTE]
 > 语音服务不会接受你的语音翻译 API 订阅密钥。 需要创建新的语音服务订阅。
 
 ## <a name="comparison-of-features"></a>功能比较
 
-| Feature                                           | 语音翻译API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
+| Feature                                           | 语音翻译 API                                  | 语音服务 | 详细信息                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 翻译为文本                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 翻译为语音                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ ms.locfileid: "74805903"
 | 连接时间限制                             | 90 分钟                                               | 使用 SDK 时，无限制。 使用 WebSocket 连接时，限制为 10 分钟。                                                                                                                                                                                                                                                                                   |
 | 头中的身份验证密钥                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 在一个请求中翻译多种语言 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 可用 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 请参阅适用于 Sdk 的[语音服务文档](index.md)。                                                                                                                                                    |
+| 可用 SDK                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 请参阅适用于 Sdk 的[语音服务文档](index.yml)。                                                                                                                                                    |
 | WebSocket 连接                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 语言 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 语音服务支持 "[转换器 API 语言参考](../translator-speech/languages-reference.md)" 一文中介绍的相同语言范围。 |
 | 猥亵内容筛选器和标记                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ ms.locfileid: "74805903"
 
 ## <a name="migration-strategies"></a>迁移策略
 
-如果你或你的组织在开发或生产环境中具有使用语音翻译 API 的应用程序，则应将其更新为使用语音服务。 请参阅[语音服务](index.md)文档，了解可用的 sdk、代码示例和教程。 迁移时请考虑以下事项：
+如果你或你的组织在开发或生产环境中具有使用语音翻译 API 的应用程序，则应将其更新为使用语音服务。 请参阅[语音服务](index.yml)文档，了解可用的 sdk、代码示例和教程。 迁移时请考虑以下事项：
 
 * 语音服务未提供全局终结点。 确定应用程序在使用一个区域终结点处理其所有流量的情况下，能否高效运行。 如果不能，则使用地理位置来确定最高效的终结点。
 

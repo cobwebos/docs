@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538766"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566040"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 优化虚拟机大小
 
@@ -31,7 +31,7 @@ GPU 优化 VM 大小是具有单个或多个 NVIDIA GPU 的专用虚拟机。 �
 
 - [NV 系列](nv-series.md)和[NVv3 系列](nvv3-series.md)大小经过优化，适用于使用 OpenGL 和 DirectX 等框架的远程可视化、流式处理、游戏、编码和 VDI 方案。 这些 VM 由 NVIDIA Tesla M60 GPU 提供支持。
 
-- [NVv4 系列](nvv4-series.md)VM 大小经过优化，适用于 VDI 和远程可视化。 对于分区 Gpu，NVv4 为需要较小 GPU 资源的工作负荷提供适当的大小。 这些 Vm 由 AMD Radeon Instinct MI25 GPU 支持。
+- [NVv4 系列](nvv4-series.md)VM 大小经过优化，适用于 VDI 和远程可视化。 对于分区 Gpu，NVv4 为需要较小 GPU 资源的工作负荷提供适当的大小。 这些 Vm 由 AMD Radeon Instinct MI25 GPU 支持。 NVv4 Vm 当前仅支持 Windows 来宾操作系统。
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 

@@ -1,23 +1,23 @@
 ---
-title: 什么是多设备对话（预览）-语音服务
+title: 关于多设备对话（预览版）-语音服务
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
-author: ralphe
-manager: cpoulain
+author: IEvangelist
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 1/15/2020
-ms.author: ralphe
-ms.openlocfilehash: 8d73c896f784507c2336a79130ff5f35aa61d30f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268071"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560807"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>什么是多设备对话（预览版）？
+# <a name="about-multi-device-conversation-preview"></a>关于多设备会话（预览）
 
 **多设备对话**使你可以轻松地在多个客户端之间创建语音或文本对话，并协调它们之间发送的消息。
 
@@ -62,7 +62,7 @@ ms.locfileid: "76268071"
 > [!NOTE]
 > 若要查看示例，请查看[演示文稿转换器](https://www.microsoft.com/translator/apps/presentation-translator/)，其中使用了多设备对话服务的 PowerPoint 外接程序。 可以在[此处](https://www.microsoft.com/download/details.aspx?id=55024)下载。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 所有客户端都将使用语音 SDK 来创建或加入会话。 语音 SDK 与多设备会话服务进行交互，该服务管理会话的生存期，包括参与者列表、每个客户端选择的语言以及发送的消息。  
 

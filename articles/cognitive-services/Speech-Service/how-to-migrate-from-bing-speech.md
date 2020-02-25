@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805937"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560927"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>从必应语音迁移到语音服务
 
@@ -47,11 +47,11 @@ C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech service 支持 Windows
 自定义语音模型 | :heavy_check_mark: | :heavy_check_mark: | 必应语音需要单独的自定义语音订阅。
 自定义语音字体 | :heavy_check_mark: | :heavy_check_mark: | 必应语音需要单独的自定义语音订阅。
 24-KHZ 语音 | :heavy_minus_sign: | :heavy_check_mark:
-语音意图识别 | 需要单独的 LUIS API 调用 | 已集成（与 SDK） |  可以将 LUIS 密钥用于语音服务。
+语音意向识别 | 需要单独的 LUIS API 调用 | 已集成（与 SDK） |  可以将 LUIS 密钥用于语音服务。
 简单意向识别 | :heavy_minus_sign: | :heavy_check_mark:
 批量听录长音频文件 | :heavy_minus_sign: | :heavy_check_mark:
 识别模式 | 通过终结点 URI 手动 | 自动 | 语音服务中不提供识别模式。
-终结点位置 | 全球 | 区域 | 区域终结点改善延迟。
+终结点位置 | Global | 区域 | 区域终结点改善延迟。
 REST API | :heavy_check_mark: | :heavy_check_mark: | 语音服务 REST Api 与必应语音（不同的终结点）兼容。 REST API 支持文本转语音以及限制的语音转文本功能。
 Websocket 协议 | :heavy_check_mark: | :heavy_check_mark: | 语音服务 Websocket API 与必应语音（不同的终结点）兼容。 在可能的情况下迁移到语音 SDK，以简化代码。
 服务到服务 API 调用 | :heavy_check_mark: | :heavy_minus_sign: | 通过 C# 服务库在必应语音中提供。
@@ -61,7 +61,7 @@ Websocket 协议 | :heavy_check_mark: | :heavy_check_mark: | 语音服务 Websoc
 
 ## <a name="migration-strategies"></a>迁移策略
 
-如果你或你的组织在开发或生产环境中具有使用必应语音 API 的应用程序，则应将其更新为尽快使用语音服务。 请参阅[语音服务文档](index.md)，了解可用的 sdk、代码示例和教程。
+如果你或你的组织在开发或生产环境中具有使用必应语音 API 的应用程序，则应将其更新为尽快使用语音服务。 请参阅[语音服务文档](index.yml)，了解可用的 sdk、代码示例和教程。
 
 语音服务[REST api](rest-apis.md)与必应语音 api 兼容。 如果当前正在使用必应语音 REST Api，只需更改 REST 终结点，并切换到语音服务订阅密钥。
 

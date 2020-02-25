@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192111"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561640"
 ---
 # <a name="conditional-access-grant"></a>条件性访问： Grant
 
@@ -55,13 +55,17 @@ ms.locfileid: "77192111"
 
 已部署 Microsoft Intune 的组织可以使用从其设备返回的信息来识别满足特定符合性要求的设备。 此策略符合性信息将从 Intune 转发到 Azure AD，在这种情况下，条件访问可以决定是允许还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅文章[使用 Intune 设置设备上的规则以允许访问你的组织中的资源](https://docs.microsoft.com/intune/protect/device-compliance-get-started)。
 
+设备可以被 Intune （适用于任何设备操作系统）或第三方 MDM 系统（适用于 Windows 10 设备）标记为合规。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。
+
+设备必须在 Azure AD 中进行注册，然后才能将其标记为合规。 有关设备注册的详细信息，请参阅[什么是设备标识](../devices/overview.md)。
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>需要混合 Azure AD 联接设备
 
 组织可以选择使用设备标识作为其条件性访问策略的一部分。 组织可以要求使用此复选框联接设备 Azure AD 混合。 有关设备标识的详细信息，请参阅[什么是设备标识？一](../devices/overview.md)文。
 
 ### <a name="require-approved-client-app"></a>需要批准的客户端应用
 
-组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。
+组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。 这些批准的客户端 ap 支持独立于任何移动设备管理（MDM）解决方案的[Intune 应用保护策略](/intune/app-protection-policy)。
 
 此设置适用于以下客户端应用：
 
@@ -102,9 +106,7 @@ ms.locfileid: "77192111"
 
 ### <a name="require-app-protection-policy"></a>需要应用保护策略
 
-在条件访问策略中，你可以要求在客户端应用上提供应用保护策略，然后才能访问所选的云应用。 
-
-![使用应用保护策略控制访问](./media/technical-reference/22.png)
+在条件访问策略中，你可以要求在客户端应用上提供[Intune 应用保护策略](/intune/app-protection-policy)，然后才能访问所选的云应用。 
 
 此设置适用于以下客户端应用：
 
@@ -118,6 +120,10 @@ ms.locfileid: "77192111"
 - 适用于应用保护策略的应用支持 Intune 移动应用程序管理功能与策略保护。
 - **需要应用保护策略**要求：
     - 仅支持 iOS 和 Android 设备平台条件。
+
+### <a name="terms-of-use"></a>使用条款
+
+如果你的组织已创建使用条款，则 "授权控制" 下可能会显示其他选项。 这些选项允许管理员要求确认使用条款，作为访问受策略保护的资源的条件。 有关使用条款的详细信息，请参阅[Azure Active Directory 使用条款](terms-of-use.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

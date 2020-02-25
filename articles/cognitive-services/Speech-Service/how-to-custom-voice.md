@@ -1,5 +1,5 @@
 ---
-title: 什么是自定义语音？ -语音服务
+title: 通过自定义语音语音服务改善合成
 titleSuffix: Azure Cognitive Services
 description: 自定义语音是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 开始使用的只是一些音频文件和关联的转录。 请按照以下链接开始创建自定义语音到文本体验。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424960"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562490"
 ---
 # <a name="get-started-with-custom-voice"></a>自定义语音入门
 

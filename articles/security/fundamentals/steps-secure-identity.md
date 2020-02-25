@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190894"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565530"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>保护标识基础结构的五个步骤
 
@@ -35,7 +35,7 @@ ms.locfileid: "77190894"
 在阅读此清单时，请确保跟踪已完成的功能和步骤。
 
 > [!NOTE]
-> 本文档中的许多建议仅适用于配置为使用 Azure Active Directory 作为标识提供者的应用程序。 在应用中配置单一登录可确保将凭据策略、威胁检测、审核和日志记录的优势及其他功能添加到这些应用程序。 [通过 Azure Active Directory 实现的单一登录](../../active-directory/manage-apps/configure-single-sign-on-portal.md)是基础 - 本文中的所有建议都立足于此。
+> 本文档中的许多建议仅适用于配置为使用 Azure Active Directory 作为标识提供者的应用程序。 在应用中配置单一登录可确保将凭据策略、威胁检测、审核和日志记录的优势及其他功能添加到这些应用程序。 [通过 Azure Active Directory 实现的单一登录](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)是基础 - 本文中的所有建议都立足于此。
 
 本文档中的建议符合[标识安全评分](../../active-directory/fundamentals/identity-secure-score.md)（Azure AD 租户的标识安全配置的自动评估）。 组织可以使用 Azure AD 门户中的 "标识" 安全分数页来找出当前安全配置的缺口，以确保它们遵循当前的 Microsoft[最佳安全方案](identity-management-best-practices.md)。 实施“安全评分”页中的每条建议可以提高评分和跟踪进度，并有助于将实施方案与其他类似规模的组织或行业进行比较。
 
@@ -199,7 +199,7 @@ Azure AD 使非管理员能够使用安全组、Office 365 组、应用程序角
 
 通过[Azure AD 访问评审](../../active-directory/governance/access-reviews-overview.md)，你可以管理访问包和组成员身份、访问企业应用程序和特权角色分配，以确保维护安全标准。  用户自身、资源所有者和其他审阅者进行定期监督，确保用户在不再需要访问权限时，不会长时间保留访问权限。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 保护安全标识基础结构涉及到很多方面，但此五步骤查检表可帮助你快速实现一个更可靠的安全标识基础结构：
 

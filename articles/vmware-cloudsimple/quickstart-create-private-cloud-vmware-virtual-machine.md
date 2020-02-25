@@ -1,6 +1,6 @@
 ---
-title: 快速入门-在 AVS 私有云上创建 VMware VM
-description: 介绍如何在 AVS 私有云上创建 VMware VM
+title: 快速入门-在私有云上创建 Azure VMware VM-Azure VMware 解决方案（按 CloudSimple）
+description: 介绍如何在 CloudSimple 私有云上创建 Azure VMware VM
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cbe88afc4f566bad4bacb408346d4dd25a2f6c96
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020057"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566142"
 ---
-# <a name="create-vmware-virtual-machines-on-your-avs-private-cloud"></a>在 AVS 私有云上创建 VMware 虚拟机
+# <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有云上创建 VMware 虚拟机
 
-若要在 AVS 私有云上创建虚拟机，请先从 Azure 门户访问 AVS 门户。
+若要在私有云上创建虚拟机，请首先从 Azure 门户访问 CloudSimple 门户。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="access-the-avs-portal"></a>访问 AVS 门户
+## <a name="access-the-cloudsimple-portal"></a>访问 CloudSimple 门户
 
 1. 选择“所有服务”。
-2. 搜索**AVS 服务**。
-3. 选择要在其上创建 AVS 私有云的 AVS 服务。
-4. 在 "**概述**" 页上，单击 **"前往 avs 门户"** 以打开适用于 avs 门户的新浏览器选项卡。 如果系统提示，请用 Azure 登录凭据登录。 
+2. 搜索 " **CloudSimple Services**"。
+3. 选择要在其上创建私有云的 CloudSimple 服务。
+4. 在 "**概述**" 页上，单击 **"CloudSimple 门户"** ，打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
 
-    ![启动 AVS 门户](media/launch-cloudsimple-portal.png)
+    ![启动 CloudSimple 门户](media/launch-cloudsimple-portal.png)
 
 ## <a name="launch-vcenter-web-ui"></a>启动 vCenter web-ui
 
 你现在可以启动 vCenter 来设置虚拟机和策略。
 
-若要访问 vCenter，请从 AVS 门户开始。 在主页上的 "**常见任务**" 下，单击 "**启动 vSphere 客户端**"。 选择 AVS 私有云，然后单击 "在 AVS 私有云上**启动 VSphere 客户端**"。
+若要访问 vCenter，请从 CloudSimple 门户启动。 在主页上的 "**常见任务**" 下，单击 "**启动 vSphere 客户端**"。  选择私有云，然后单击 "在私有云上**启动 VSphere 客户端**"。
 
    ![启动 vSphere 客户端](media/launch-vcenter-from-cloudsimple-portal.png)
 
 ## <a name="upload-an-iso-or-vsphere-template"></a>上传 ISO 或 vSphere 模板
 
   > [!WARNING]
-  > 对于 ISO 上传，请使用 vSphere HTML5 客户端。 使用 Flash 客户端可能会导致错误。
+  > 对于 ISO 上传，请使用 vSphere HTML5 客户端。  使用 Flash 客户端可能会导致错误。
 
 1. 获取要上传到 vCenter 的 ISO 或 vSphere 模板以创建 VM，并使其在本地系统上可用。
 2. 在 vCenter 中，单击 "**磁盘**" 图标并选择 " **vsanDatastore**"。 单击 "**文件**"，然后单击 "**新建文件夹**"。
@@ -78,7 +78,7 @@ ms.locfileid: "77020057"
 8. 选择要创建的 VM 的 ISO 来宾操作系统，然后单击 "**下一步**"。
     ![新 VM](media/vcvm07.png)
 
-9. 选择 "硬盘和网络选项"。 对于新的 CD/DVD 驱动器，请选择 "**数据存储 ISO 文件**"。 如果要允许来自公共 IP 地址的流量流向此 VM，请选择 "网络" 作为 " **vm-1**"。
+9. 选择 "硬盘和网络选项"。 对于新的 CD/DVD 驱动器，请选择 "**数据存储 ISO 文件**"。  如果要允许来自公共 IP 地址的流量流向此 VM，请选择 "网络" 作为 " **vm-1**"。
     ![新 VM](media/vcvm08.png)
 
 10. 此时将打开选择窗口。 选择之前上传到 Iso 和 Templates 文件夹的文件，然后单击 **"确定"** 。
@@ -90,19 +90,19 @@ ms.locfileid: "77020057"
 VM 现在已添加到工作负荷计算资源，可供使用。 
 ![新 VM](media/vcvm12.png)
 
-基本设置现已完成。 你可以开始使用你的 AVS 私有云，就像使用本地 VM 基础结构一样。
+基本设置现已完成。 你可以开始使用私有云，就像使用本地 VM 基础结构一样。
 
-对于 AVS 私有云工作负荷和修改默认网络配置，以下部分包含有关设置 DNS 和 DHCP 服务器的可选信息。
+以下部分包含有关为私有云工作负荷设置 DNS 和 DHCP 服务器以及修改默认网络配置的可选信息。
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>将用户和标识源添加到 vCenter （可选）
 
-AVS 使用用户名 `cloudowner@AVS.local`分配默认 vCenter 用户帐户。 不需要额外的帐户设置即可开始。 AVS 通常为管理员分配执行正常操作所需的特权。 将本地 active directory 或 Azure AD 设置为你的 AVS 私有云上的[其他标识源](set-vcenter-identity.md)。
+CloudSimple 分配 `cloudowner@cloudsimple.local`的默认 vCenter 用户帐户。 不需要额外的帐户设置即可开始。  CloudSimple 通常为管理员分配执行正常操作所需的特权。  将本地 active directory 或 Azure AD 设置为私有云上的[其他标识源](set-vcenter-identity.md)。
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>创建 DNS 和 DHCP 服务器（可选）
 
-在 AVS 私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需要适当的 DHCP 和 DNS 基础结构才能提供这些服务。 你可以在 vCenter 中配置虚拟机，以在你的 AVS 私有云环境中提供这些服务。
+在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需要适当的 DHCP 和 DNS 基础结构才能提供这些服务。 可以在 vCenter 中配置虚拟机，以在私有云环境中提供这些服务。
 
-必备组件
+必备条件
 
 * 配置了 VLAN 的分布式端口组
 
@@ -114,7 +114,7 @@ AVS 使用用户名 `cloudowner@AVS.local`分配默认 vCenter 用户帐户。 �
 
 #### <a name="linux-based-dns-server-setup"></a>基于 Linux 的 DNS 服务器设置
 
-Linux 提供了用于设置 DNS 服务器的各种包。 下面是有关设置开源绑定 DNS 服务器的说明的链接。
+Linux 提供了用于设置 DNS 服务器的各种包。  下面是有关设置开源绑定 DNS 服务器的说明的链接。
 
 [示例设置](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7)
 
@@ -128,11 +128,11 @@ Linux 提供了用于设置 DNS 服务器的各种包。 下面是有关设置�
 
 ## <a name="customize-networking-configuration-optional"></a>自定义网络配置（可选）
 
-AVS 门户中的网络页面允许你为 Vm 指定防火墙表和公共 IP 地址的配置。
+CloudSimple 门户中的 "网络" 页允许您为 Vm 指定防火墙表和公共 IP 地址的配置。
 
 ### <a name="allocate-public-ips"></a>分配公共 Ip
 
-1. 在 AVS 门户中导航到 "**网络 > 公共 IP** "。
+1. 在 CloudSimple 门户中导航到 "**网络 > 公共 IP** "。
 2. 单击 "**分配公共 IP**"。
 3. 输入一个名称以标识 IP 地址条目。
 4. 保留默认位置。
@@ -207,10 +207,10 @@ python3 -m http.server 80
 ```
 在桌面上启动浏览器，并将其指向公共 IP 地址的端口80，以浏览 VM 上的文件。
 
-### <a name="default-avs-firewall-rules-for-public-ip"></a>公共 IP 的默认 AVS 防火墙规则
+### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公共 IP 的默认 CloudSimple 防火墙规则
 
 * VPN 流量：允许 VPN 与所有工作负荷网络和管理网络之间的所有流量。
-* AVS 私有云内部流量：允许（from/to）工作负荷网络与管理网络（如上所示）之间的所有东西部流量。
+* 私有云内部流量：允许（from/to）工作负荷网络与管理网络（如上所示）之间的所有东西部流量。
 * Internet 流量：
   * 拒绝从 Internet 传入的所有流量到工作负载网络和管理网络。
   * 允许从工作负载网络或管理网络发往 Internet 的所有流量。
@@ -219,7 +219,7 @@ python3 -m http.server 80
 
 ## <a name="install-solutions-optional"></a>安装解决方案（可选）
 
-可以在 AVS 私有云上安装解决方案，充分利用 AVS 私有云 vCenter 环境。 可以设置备份、灾难恢复、复制和其他功能来保护虚拟机。 示例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam 备份 & 复制。
+可以在 CloudSimple 私有云上安装解决方案，充分利用私有云 vCenter 环境。 可以设置备份、灾难恢复、复制和其他功能来保护虚拟机。 示例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam 备份 & 复制。
 
 若要安装解决方案，必须在有限的时间段内请求其他权限。 请参阅[提升权限](escalate-private-cloud-privileges.md)。
 
@@ -227,4 +227,4 @@ python3 -m http.server 80
 
 * [在 Azure 上使用 VMware Vm](quickstart-create-vmware-virtual-machine.md)
 * [使用 Azure ExpressRoute 连接到本地网络](on-premises-connection.md)
-* [在 AVS 网络上设置 VPN 网关](vpn-gateway.md)
+* [在 CloudSimple 网络上设置 VPN 网关](vpn-gateway.md)

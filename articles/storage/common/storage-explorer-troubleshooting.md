@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931212"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561674"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 存储资源管理器疑难解答指南
 
@@ -60,6 +60,17 @@ RBAC 角色可以包含管理或数据层访问权限。 例如，"读者" 角�
 
 目前没有针对此问题的 RBAC 相关解决方案。 作为一种解决方法，你可以请求将 SAS URI[附加到资源](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri)。
 
+### <a name="recommended-built-in-rbac-roles"></a>推荐的内置 RBAC 角色
+
+有几个内置 RBAC 角色可以提供使用存储资源管理器所需的权限。 其中一些角色是：
+- [所有者](/azure/role-based-access-control/built-in-roles#owner)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
+- [参与者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有内容，包括对资源的访问权限。 **注意**：此角色将授予你密钥访问权限。
+- [读者](/azure/role-based-access-control/built-in-roles#reader)：读取和列出资源。
+- [存储帐户参与者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：完全管理存储帐户。 **注意**：此角色将授予你密钥访问权限。
+- [存储 Blob 数据所有者](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)：对 Azure 存储 blob 容器和数据的完全访问权限。
+- [存储 Blob 数据参与者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)：读取、写入和删除 Azure 存储容器和 blob。
+- [存储 Blob 数据读取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：读取和列出 Azure 存储容器和 blob。
+
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>错误：证书链中的自签名证书（和类似错误）
 
 证书错误通常发生在下列情况之一：
@@ -98,7 +109,7 @@ RBAC 角色可以包含管理或数据层访问权限。 例如，"读者" 角�
 1. 在左侧垂直工具栏上，打开 "**设置**"。 在 "设置" 面板中，切换到 "**应用程序** > **登录**"。 启用 **"使用设备代码流登录"** 。
 2. 打开 "**连接**" 对话框（通过左侧垂直条上的 "插入" 图标或选择 "帐户" 面板上的 "**添加帐户**"）。
 3. 选择要登录到的环境。
-4. 选择“登录”。
+4. 选择 **"登录"** 。
 5. 按照下一个面板上的说明进行操作。
 
 如果你无法登录要使用的帐户，因为默认浏览器已登录到不同的帐户，请执行以下操作之一：
@@ -114,7 +125,7 @@ RBAC 角色可以包含管理或数据层访问权限。 例如，"读者" 角�
 2. 从计算机中删除 .IdentityService 文件夹。 在 Windows 中，该文件夹位于 `C:\users\<username>\AppData\Local`。 对于 Mac 和 Linux，可以在用户目录的根目录中找到该文件夹。
 3. 如果运行的是 Mac 或 Linux，还需要从操作系统的密钥存储中删除 IdentityService 条目。 在 Mac 上，密钥存储是*Gnome 密钥链*应用程序。 在 Linux 中，应用程序通常称为_Keyring_，但该名称可能会因分发而有所不同。
 
-### <a name="conditional-access"></a>条件访问
+### <a name="conditional-access"></a>条件性访问
 
 由于存储资源管理器使用的 Azure AD 库中的限制，在 Windows 10、Linux 或 macOS 上使用存储资源管理器时不支持条件访问。
 
@@ -244,20 +255,20 @@ MacOS 密钥链有时可以输入导致存储资源管理器身份验证库出�
 
 完成所有连接后，对于所有未添加回的连接名称，必须清除损坏的数据（如果有），并使用存储资源管理器中的标准步骤将其添加回来：
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. 在 "**开始**" 菜单上，搜索 "**凭据管理器**" 并将其打开。
 2. 中转到 " **Windows 凭据**"。
 3. 在 "**一般凭据**" 下，查找具有 `<connection_type_key>/<corrupted_connection_name>` 密钥的条目（例如，`StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 4. 删除这些条目并重新添加连接。
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. 打开聚焦（命令 + 空格键），搜索**密钥链访问**。
 2. 查找具有 `<connection_type_key>/<corrupted_connection_name>` 密钥的条目（例如，`StorageExplorer_CustomConnections_Accounts_v1/account1`）。
 3. 删除这些条目并重新添加连接。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 本地凭据管理因 Linux 分发而异。 如果 Linux 发行版未提供用于本地凭据管理的内置 GUI 工具，则可以安装第三方工具来管理本地凭据。 例如，可以使用[Seahorse](https://wiki.gnome.org/Apps/Seahorse/)，它是用于管理 Linux 本地凭据的开源 GUI 工具。
 
@@ -309,7 +320,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 > [!NOTE]
 > 存储资源管理器版本1.7.0 和更早版本需要 .NET Core 2.0。 如果已安装较新版本的 .NET Core，则需要[修补存储资源管理器](#patching-storage-explorer-for-newer-versions-of-net-core)。 如果正在运行存储资源管理器1.8.0 或更高版本，则应最多使用 .NET Core 2.2。 目前尚未验证版本超过2.2 的版本。
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19.04](#tab/1904)
 
 1. 下载存储资源管理器。
 2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current)。
@@ -318,7 +329,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18.04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. 下载存储资源管理器。
 2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current)。
@@ -327,7 +338,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. 下载存储资源管理器。
 2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current)。
@@ -336,7 +347,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14.04](#tab/1404)
 
 1. 下载存储资源管理器。
 2. 安装[.Net Core 运行时](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current)。

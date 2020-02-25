@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425521"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562082"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
 
@@ -20,7 +20,7 @@ ms.locfileid: "77425521"
 > [!NOTE]
 > 此功能在所有 Azure Database for PostgreSQL 单一服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要逐步执行本操作方法指南，需要：
 
@@ -120,6 +120,9 @@ az resource show --ids $networkInterfaceId --api-version 2019-04-01 -o json
 az network private-dns record-set a create --name myserver --zone-name privatelink.postgres.database.azure.com --resource-group myResourceGroup  
 az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.postgres.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
+
+> [!NOTE] 
+> "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 

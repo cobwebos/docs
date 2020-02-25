@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 虚拟机 (VM) 上设置 SAP HANA 系统复制 | Microsoft Docs
+title: RHEL 上的 Azure Vm 上 SAP HANA 的高可用性 |Microsoft Docs
 description: 在 Azure 虚拟机 (VM) 上建立 SAP HANA 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/28/2020
 ms.author: radeltch
-ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5e3512ce86bdf96a5e6cfcf0e4459b656a5ac5bc
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837028"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565853"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -263,7 +263,7 @@ Azure 市场中包含适用于 SUSE Linux Red Hat Enterprise Linux 7.4 for SAP H
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   创建逻辑卷。 线性卷是使用不带 `-i` 开关的 `lvcreate` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
+   创建逻辑卷。 线性卷是使用不带 `lvcreate` 开关的 `-i` 创建的。 我们建议创建条带化卷以获得更好的 I/O 性能，`-i` 参数应是基础物理卷的数量。 在本文档中，两个物理卷用于数据卷，因此 `-i` 开关参数设置为 **2**。 一个物理卷用于日志卷，因此未显式使用 `-i` 开关。 对每个数据、日志或共享卷使用多个物理卷时，请使用 `-i` 开关，并将其设置为基础物理卷的数量。
 
    <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>

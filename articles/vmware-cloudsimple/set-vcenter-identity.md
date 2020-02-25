@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（AVS）-在 AVS 私有云上设置 vCenter 标识源
-description: 介绍如何将你的 AVS 私有云 vCenter 设置为通过 Active Directory 进行身份验证，以便 VMware 管理员可以访问 vCenter
+title: Azure VMware 解决方案（按 CloudSimple）-在私有云上设置 vCenter 标识源
+description: 描述如何设置私有云 vCenter 以使用 VMware 管理员访问 vCenter Active Directory 进行身份验证
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,27 +8,27 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad4a7b2bc67b7d50d9e9a5f8337a09dbe77366ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014209"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564017"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>设置要使用的 vCenter 标识源 Active Directory
 
 ## <a name="about-vmware-vcenter-identity-sources"></a>关于 VMware vCenter 标识源
 
-VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCenter 的用户进行身份验证。 你的 AVS 私有云 vCenter 可以设置为通过 Active Directory 进行身份验证，以便 VMware 管理员能够访问 vCenter。 安装完成后， **cloudowner**用户可以将标识源中的用户添加到 vCenter。 
+VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCenter 的用户进行身份验证。  你的 CloudSimple 私有云 vCenter 可以设置为使用 Active Directory 进行身份验证，以便 VMware 管理员可以访问 vCenter。 安装完成后， **cloudowner**用户可以将标识源中的用户添加到 vCenter。  
 
 可以通过以下任一方式设置 Active Directory 域和域控制器：
 
 * Active Directory 在本地运行的域和域控制器
 * Active Directory azure 订阅中作为虚拟机在 Azure 上运行的域和域控制器
-* 新 Active Directory 在你的 AVS 私有云中运行的域和域控制器
+* 新 Active Directory 在私有云中运行的域和域控制器
 * Azure Active Directory 服务
 
-本指南介绍了设置 Active Directory 域和域控制器的任务，这些任务在本地或作为订阅中的虚拟机运行。 如果要使用 Azure AD 作为标识源，请参阅[在 AVS 私有云上使用 Azure AD 作为 vCenter 的标识提供者](azure-ad.md)，详细说明设置标识源。
+本指南介绍了设置 Active Directory 域和域控制器的任务，这些任务在本地或作为订阅中的虚拟机运行。  如果要使用 Azure AD 作为标识源，请参阅[在 CloudSimple 私有云上使用 Azure AD 作为 vCenter 的标识提供者](azure-ad.md)，以获取有关设置标识源的详细说明。
 
 在[添加标识源](#add-an-identity-source-on-vcenter)之前，临时[升级 vCenter 权限](escalate-private-cloud-privileges.md)。
 
@@ -39,14 +39,14 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 ## <a name="identity-source-options"></a>标识源选项
 
 * [作为单一登录标识源添加本地 Active Directory](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)
-* [在 AVS 私有云上设置新 Active Directory](#set-up-new-active-directory-on-an-avs-private-cloud)
+* [在私有云上设置新 Active Directory](#set-up-new-active-directory-on-a-private-cloud)
 * [在 Azure 上设置 Active Directory](#set-up-active-directory-on-azure)
 
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>作为单一登录标识源添加本地 Active Directory
 
 若要将本地 Active Directory 设置为单一登录标识源，需要：
 
-* 从本地数据中心到 AVS 私有云的[站点到站点 VPN 连接](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
+* 从本地数据中心到私有云的[站点到站点 VPN 连接](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)。
 * 向 vCenter 和平台服务控制器（PSC）添加本地 DNS 服务器 IP。
 
 设置 Active Directory 域时，请使用下表中的信息。
@@ -55,7 +55,7 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 |------------|-----------------|
 | **名称** | 标识源的名称。 |
 | **用户的基本 DN** | 用户的基本可分辨名称。 |
-| **域名** | 域的 FDQN，例如 example.com。 不要在此文本框中提供 IP 地址。 |
+| **域名** | 域的 FQDN，例如，example.com。 不要在此文本框中提供 IP 地址。 |
 | **域别名** | 域 NetBIOS 名称。 如果使用的是 SSPI 身份验证，请将 Active Directory 域的 NetBIOS 名称添加为标识源的别名。 |
 | **组的基本 DN** | 组的基本可分辨名称。 |
 | **主服务器 URL** | 域的主域控制器 LDAP 服务器。<br><br>使用  或 `ldaps://hostname:port`格式 `ldap://hostname:port`。 端口通常为389，适用于 LDAP 连接，636用于 LDAPS 连接。 对于 Active Directory 多域控制器部署，端口通常为3268，适用于 LDAP，3269用于 LDAPS。<br><br>在主或辅助 LDAP URL 中使用 `ldaps://` 时，需要为 Active Directory 服务器的 LDAPS 终结点建立信任的证书。 |
@@ -69,9 +69,9 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 > [!TIP]
 > 你将在[VMware 文档页](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)上找到有关单一登录标识源的详细信息。
 
-## <a name="set-up-new-active-directory-on-an-avs-private-cloud"></a>在 AVS 私有云上设置新 Active Directory
+## <a name="set-up-new-active-directory-on-a-private-cloud"></a>在私有云上设置新 Active Directory
 
-可以在 AVS 私有云上设置新的 Active Directory 域，并将其用作单一登录的标识源。 Active Directory 域可以是现有 Active Directory 林的一部分，也可以设置为独立的林。
+你可以在私有云上设置新的 Active Directory 域，并将其用作单一登录的标识源。  Active Directory 域可以是现有 Active Directory 林的一部分，也可以设置为独立的林。
 
 ### <a name="new-active-directory-forest-and-domain"></a>新建 Active Directory 林和域
 
@@ -100,15 +100,15 @@ VMware vCenter 支持用于身份验证的不同标识源，以便对访问 vCen
 
 ## <a name="set-up-active-directory-on-azure"></a>在 Azure 上设置 Active Directory
 
-在 Azure 上运行 Active Directory 类似于在本地运行 Active Directory。 若要将在 Azure 上运行的 Active Directory 设置为 vCenter 上的单一登录标识源，vCenter 服务器和 PSC 必须与运行 Active Directory 服务的 Azure 虚拟网络建立网络连接。 可以使用[Azure 虚拟网络连接](azure-expressroute-connection.md)从 azure 虚拟网络使用 ExpressRoute 建立此连接，其中 Active Directory 服务运行到 AVS 私有云。
+在 Azure 上运行 Active Directory 类似于在本地运行 Active Directory。  若要将在 Azure 上运行的 Active Directory 设置为 vCenter 上的单一登录标识源，vCenter 服务器和 PSC 必须与运行 Active Directory 服务的 Azure 虚拟网络建立网络连接。  可以使用[Azure 虚拟网络连接](azure-expressroute-connection.md)，从运行 Active Directory 服务的 azure 虚拟网络连接到 CloudSimple 私有云，从而建立此连接。
 
-建立网络连接后，请按照[将本地 Active Directory 添加为单一登录标识源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)中的步骤将其添加为标识源。 
+建立网络连接后，请按照[将本地 Active Directory 添加为单一登录标识源](#add-on-premises-active-directory-as-a-single-sign-on-identity-source)中的步骤将其添加为标识源。  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>在 vCenter 上添加标识源
 
-1. [提升](escalate-private-cloud-privileges.md)你的 AVS 私有云上的权限。
+1. [提升](escalate-private-cloud-privileges.md)私有云上的权限。
 
-2. 登录到你的 AVS 私有云的 vCenter。
+2. 登录到你的私有云的 vCenter。
 
 3. 选择 "**家庭 > 管理**"。
 

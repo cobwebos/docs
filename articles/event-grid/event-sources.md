@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 31923e1cb69eb6681367ed6ea71c10564ae6d489
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d4a426ea1432d0266b7ae9344afefe8ddac1d030
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526376"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561759"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure 事件网格中的事件源
 
@@ -134,7 +134,7 @@ ms.locfileid: "77526376"
 订阅 Blob 存储事件即可响应创建的 Blob 和删除的事件。
 
 >[!NOTE]
-> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。 “存储(常规用途 v1)”不支持与事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。 **存储（常规用途 v1）** *不*支持与事件网格集成。
 
 |标题  |说明  |
 |---------|---------|

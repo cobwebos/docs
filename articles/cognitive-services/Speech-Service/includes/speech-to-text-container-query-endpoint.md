@@ -1,30 +1,28 @@
 ---
-title: 查询语音到文本容器终结点
-services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/15/2019
+ms.date: 01/21/2020
 ms.author: dapine
-ms.openlocfilehash: 2d96385f2d2d34d161739c55228220cf28871048
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9b4317064196c4ea3d761fd1a0bd43a764054fe6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "74132619"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77563315"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>语音到文本或自定义语音到文本
 
-容器提供基于 websocket 的查询终结点 Api，可通过[语音 SDK](../index.md)进行访问。 默认情况下，语音 SDK 使用联机语音服务。 若要使用该容器，需要更改初始化方法。
+容器提供基于 websocket 的查询终结点 Api，可通过[语音 SDK](../index.yml)进行访问。 默认情况下，语音 SDK 使用联机语音服务。 若要使用该容器，需要更改初始化方法。
 
 > [!TIP]
 > 使用带有容器的语音 SDK 时，无需提供 Azure 语音资源[订阅密钥或身份验证持有者令牌](../rest-speech-to-text.md#authentication)。
 
 请参阅下面的示例。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 请从使用此 Azure 云初始化调用：
 
@@ -38,7 +36,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 var config = SpeechConfig.FromHost(
     new Uri("ws://localhost:5000"));
 ```
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 请从使用此 Azure 云初始化调用：
 

@@ -3,12 +3,12 @@ title: 从 Durable Functions 发布到 Azure 事件网格（预览）
 description: 了解如何配置 Durable Functions 的自动 Azure 事件网格发布。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 5ee60dadc90af5a9b941ba890bddb9b96de3f35d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547466"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562152"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>从 Durable Functions 发布到 Azure 事件网格（预览）
 
@@ -18,24 +18,19 @@ ms.locfileid: "76547466"
 
 * **DevOps 应用场景，如蓝色/绿色部署**：在实施[并行部署策略](durable-functions-versioning.md#side-by-side-deployments)之前，你可能想要知道是否有任何任务在运行。
 
-* **高级监视和诊断支持**：可以在针对查询优化的外部存储（例如 SQL 数据库或 CosmosDB）中跟踪业务流程状态信息。
+* **高级监视和诊断支持**：可以跟踪为查询（例如 Azure SQL 数据库或 Azure Cosmos DB）优化的外部存储中的业务流程状态信息。
 
 * **长时间运行的后台活动**：如果对长时间运行的后台活动使用 Durable Functions，此功能有助于了解当前状态。
 
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 在 Durable Functions 项目中安装 " [DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) "。
-* 安装 [Azure 存储模拟器](../../storage/common/storage-use-emulator.md)。
+* 安装[Azure 存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows）或使用现有的 azure 存储帐户。
 * 安装 [Azure CLI ](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) 或使用 [Azure Cloud Shell](../../cloud-shell/overview.md)
 
 ## <a name="create-a-custom-event-grid-topic"></a>创建自定义事件网格主题
 
-创建用于从 Durable Functions 发送事件的事件网格主题。 以下说明介绍如何使用 Azure CLI 创建主题。 有关如何使用 PowerShell 或 Azure 门户执行此操作的信息，请参阅以下文章：
-
-* [事件网格快速入门：创建自定义事件 - PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
-* [事件网格快速入门：创建自定义事件 - Azure 门户](../../event-grid/custom-event-quickstart-portal.md)
+创建事件网格主题，以便从 Durable Functions 发送事件。 以下说明介绍如何使用 Azure CLI 创建主题。 还可以通过[使用 PowerShell](../../event-grid/custom-event-quickstart-powershell.md)或[使用 Azure 门户](../../event-grid/custom-event-quickstart-portal.md)来执行此操作。
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
@@ -47,7 +42,7 @@ az group create --name eventResourceGroup --location westus2
 
 ### <a name="create-a-custom-topic"></a>创建自定义主题
 
-事件网格主题提供用户定义的终结点，您可以将事件发布到该终结点。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
+事件网格主题提供用户定义的终结点，可向该终结点发布事件。 用主题的唯一名称替换 `<topic_name>`。 主题名称必须唯一，因为它将用作 DNS 条目。
 
 ```bash
 az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
@@ -69,11 +64,11 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 现在，可将事件发送到主题。
 
-## <a name="configure-azure-event-grid-publishing"></a>配置 Azure 事件网格发布
+## <a name="configure-event-grid-publishing"></a>配置事件网格发布
 
 在 Durable Functions 项目中，找到 `host.json` 文件。
 
-在 `durableTask` 属性中添加 `eventGridTopicEndpoint` 和 `eventGridKeySettingName`。
+在 `eventGridTopicEndpoint` 属性中添加 `eventGridKeySettingName` 和 `durableTask`。
 
 ```json
 {
@@ -99,11 +94,13 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 }
 ```
 
-确保[存储模拟器](../../storage/common/storage-use-emulator.md)正在运行。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
+如果使用的是[存储模拟器](../../storage/common/storage-use-emulator.md)（仅限 Windows），请确保它正常工作。 最好是在执行之前运行 `AzureStorageEmulator.exe clear all` 命令。
+
+如果使用现有的 Azure 存储帐户，请将 `local.settings.json` 中的 `UseDevelopmentStorage=true` 替换为其连接字符串。
 
 ## <a name="create-functions-that-listen-for-events"></a>创建用于侦听事件的函数
 
-创建函数应用。 最好将它放在与事件网格主题相同的区域中。
+使用 Azure 门户，创建另一个函数应用来侦听 Durable Functions 应用发布的事件。 最好将它放在与事件网格主题相同的区域中。
 
 ### <a name="create-an-event-grid-trigger-function"></a>创建事件网格触发器函数
 
@@ -111,7 +108,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 ![选择“创建自定义函数”。](./media/durable-functions-event-publishing/functions-portal.png)
 
-选择“事件网格触发器”，然后选择 `C#`。
+选择 "事件网格触发器"，然后选择一种语言。
 
 ![选择“事件网格触发器”。](./media/durable-functions-event-publishing/eventgrid-trigger.png)
 
@@ -121,15 +118,7 @@ az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "k
 
 创建包含以下代码的函数：
 
-#### <a name="precompiled-c"></a>预编译 C#
-```csharp
-public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
-#### <a name="c-script"></a>C# 脚本
+# <a name="c-script"></a>[C#脚本](#tab/csharp-script)
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -143,7 +132,18 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-选择 `Add Event Grid Subscription`。 此操作为您创建的事件网格主题添加事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+module.exports = async function(context, eventGridEvent) {
+    context.log(typeof eventGridEvent);
+    context.log(eventGridEvent);
+}
+```
+
+---
+
+选择 `Add Event Grid Subscription`。 此操作为添加的事件网格主题创建事件网格订阅。 有关详细信息，请参阅 [Azure 事件网格中的概念](https://docs.microsoft.com/azure/event-grid/concepts)。
 
 ![选择“事件网格触发器”链接。](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -153,69 +153,9 @@ public static void Run(JObject eventGridEvent, ILogger log)
 
 现已准备好接收生命周期事件。
 
-## <a name="create-durable-functions-to-send-the-events"></a>创建用于发送事件的 Durable Functions
+## <a name="run-durable-functions-app-to-send-the-events"></a>运行 Durable Functions 应用程序以发送事件
 
-在本地计算机上，在 Durable Functions 项目中开始调试。  以下代码与 Durable Functions 的模板代码相同。 已在本地计算机上配置 `host.json` 和 `local.settings.json`。
-
-### <a name="precompiled-c"></a>预编译 C#
-
-```csharp
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.DurableTask;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Azure.WebJobs.Host;
-using Microsoft.Extensions.Logging;
-
-namespace LifeCycleEventSpike
-{
-    public static class Sample
-    {
-        [FunctionName("Sample")]
-        public static async Task<List<string>> RunOrchestrator(
-            [OrchestrationTrigger] IDurableOrchestrationContext context)
-        {
-            var outputs = new List<string>();
-
-            // Replace "hello" with the name of your Durable Activity Function.
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Tokyo"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "Seattle"));
-            outputs.Add(await context.CallActivityAsync<string>("Sample_Hello", "London"));
-
-            // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
-            return outputs;
-        }
-
-        [FunctionName("Sample_Hello")]
-        public static string SayHello([ActivityTrigger] string name, ILogger log)
-        {
-            log.LogInformation($"Saying hello to {name}.");
-            return $"Hello {name}!";
-        }
-
-        [FunctionName("Sample_HttpStart")]
-        public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
-            [DurableClient] IDurableOrchestrationClient starter,
-            ILogger log)
-        {
-            // Function input comes from the request content.
-            string instanceId = await starter.StartNewAsync("Sample", null);
-            log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
-            return starter.CreateCheckStatusResponse(req, instanceId);
-        }
-    }
-}
-```
-
-> [!NOTE]
-> 前面的代码适用于 Durable Functions 1.x。 对于 Durable Functions 1.x，必须使用 `DurableOrchestrationContext` 而不是 `IDurableOrchestrationContext`、`OrchestrationClient` 特性而不是 `DurableClient` 属性，并且必须使用 `DurableOrchestrationClient` 参数类型，而不是 `IDurableOrchestrationClient`。 有关各版本之间的差异的详细信息，请参阅[Durable Functions 版本](durable-functions-versions.md)一文。
-
-如果使用 Postman 或浏览器调用 `Sample_HttpStart`，则 Durable Functions 会开始发送生命周期事件。 终结点通常是用于本地调试的 `http://localhost:7071/api/Sample_HttpStart`。
-
-查看在 Azure 门户中创建的函数发出的日志。
+在之前配置的 Durable Functions 项目中，开始在本地计算机上调试并启动业务流程。 应用程序将 Durable Functions 生命周期事件发布到事件网格。 验证 "事件网格" 是否通过在 Azure 门户中检查其日志来触发创建的侦听器函数。
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -262,7 +202,7 @@ namespace LifeCycleEventSpike
 以下列表解释了生命周期事件架构：
 
 * **`id`** ：事件网格事件的唯一标识符。
-* **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}`。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
+* **`subject`** ：事件主题的路径。 `durable/orchestrator/{orchestrationRuntimeStatus}` 列中的一个值匹配。 `{orchestrationRuntimeStatus}` 为 `Running`、`Completed`、`Failed` 和 `Terminated`。  
 * **`data`** ： Durable Functions 特定参数。
   * **`hubName`** ： [TaskHub](durable-functions-task-hubs.md)名称。
   * **`functionName`** ： Orchestrator 函数名称。

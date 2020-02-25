@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8cc6211f9ddecf21301765266b17e88e4e734eed
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 54c32a87b5afdf165be8187c7189a11c106bbd8f
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499959"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562337"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -27,7 +27,7 @@ ms.locfileid: "77499959"
 > * [第 2 版](media-services-overview.md)
 
 > [!NOTE]
-> 未向 Media Services v2 添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使开发人员能够生成可缩放的媒体管理和传送应用程序。 媒体服务基于 REST API，你可以使用这些 API 安全地上传、存储、编码和打包视频或音频内容，以供点播以及以实时流形式传送到各种客户端（例如，电视、电脑和移动设备）。
 
@@ -53,7 +53,7 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
     * 适用于 .NET 的 Azure 媒体服务 SDK
     
         * [NuGet 包](https://www.nuget.org/packages/windowsazure.mediaservices/)
-        * [Github 源代码](https://github.com/Azure/azure-sdk-for-media-services)
+        * [GitHub 源代码](https://github.com/Azure/azure-sdk-for-media-services)
     * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java)，
     * [Azure PHP SDK](https://github.com/Azure/azure-sdk-for-php)，
     * [适用于 Node.js 的 Azure 媒体服务](https://github.com/michelle-becker/node-ams-sdk/blob/master/lib/request.js) （这是 Node.js SDK 的非 Microsoft 版本。 它由社区维护，当前未包括所有的 AMS API）。

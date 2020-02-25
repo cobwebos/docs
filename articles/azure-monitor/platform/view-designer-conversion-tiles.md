@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 5bb02edce4a3aef30f8f9528a846c99d6d8d3b39
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b1cce6d1aafabda62b71ecd38ff5ac7df1033b26
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170859"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561980"
 ---
 # <a name="azure-monitor-view-designer-tile-conversions"></a>Azure Monitor 视图设计器磁贴转换
 [视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它允许您创建自定义视图来帮助您通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 它们将被分段并替换为提供其他功能的工作簿。 本文详细介绍了如何将不同的磁贴转换为工作簿。
@@ -62,8 +62,9 @@ search *
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type
+```
 
-Updated query
+更新的查询
 ```KQL
 search * 
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type

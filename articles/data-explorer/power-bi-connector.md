@@ -1,26 +1,26 @@
 ---
-title: 使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
-description: 本文介绍如何使用三个选项中的一个选项在 Power BI 中直观显示数据：Azure 数据资源管理器的 Power BI 连接器。
+title: 用 Azure 数据资源管理器连接器实现 Power BI 的数据的可视化效果
+description: 本文介绍如何使用以下三个选项之一在 Power BI 中直观呈现数据： Azure 数据资源管理器的 Power BI 连接器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024214"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560484"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何使用内置连接器获取数据并在 Power BI 报表中直观显示这些数据。 使用 Azure 数据资源管理器本机连接器创建 Power BI 仪表板非常简单。 Power BI 连接器支持[导入和直接查询连接模式](https://docs.microsoft.com/power-bi/desktop-directquery-about)。 您可以使用**导入**模式或**DirectQuery**模式来构建面板，具体取决于方案、规模和性能要求。 
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍了如何使用内置连接器获取数据，并在 Power BI 报表中对数据进行可视化处理。 使用 Azure 数据资源管理器本机连接器创建 Power BI 仪表板非常简单。 Power BI 连接器支持[导入和直接查询连接模式](https://docs.microsoft.com/power-bi/desktop-directquery-about)。 您可以使用**导入**模式或**DirectQuery**模式来构建面板，具体取决于方案、规模和性能要求。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本文，需要满足以下条件：
+若要完成本文，你需要以下各项：
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 一个属于 Azure Active Directory 成员的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器帮助群集](https://dataexplorer.azure.com/clusters/help/databases/samples)。
@@ -34,15 +34,15 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
     ![获取数据](media/power-bi-connector/get-data-more.png)
 
-1. 搜索“Azure 数据资源管理器”，选择“Azure 数据资源管理器”，然后选择“连接”。
+1. 搜索 " *azure 数据资源管理器*"，选择 " **azure 数据资源管理器**，然后单击"**连接**"。
 
     ![搜索和获取数据](media/power-bi-connector/search-get-data.png)
 
-1. 在“Azure 数据资源管理器(Kusto)”屏幕上，使用以下信息填写表单。
+1. 在 " **Azure 数据资源管理器（Kusto）** " 屏幕上，用以下信息填写表单。
 
     ![群集、数据库、表选项](media/power-bi-connector/cluster-database-table.png)
 
-    **设置** | **值** | 字段说明
+    **设置** | **值** | **字段说明**
     |---|---|---|
     | 群集 | *https://help.kusto.windows.net* | 帮助群集的 URL。 其他群集的 URL 采用 *https://\<ClusterName\>.\<区域\>.kusto.windows.net* 格式。 |
     | 数据库 | 留空 | 托管在要连接到的群集上的数据库。 我们会在后面的步骤中选择此项。 |
@@ -67,7 +67,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
     ![登录](media/power-bi-connector/sign-in.png)
 
-1. 在“导航器”屏幕上，展开 **Samples** 数据库，选择“StormEvents”，然后选择“编辑”。
+1. 在“导航器”屏幕上，展开**Samples** 数据库，选择“StormEvents”，然后选择“编辑”。
 
     ![选择表](media/power-bi-connector/select-table.png)
 
@@ -91,7 +91,7 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要为本文创建的报表，请删除 Power BI Desktop (.pbix) 文件。
+如果不再需要为本文创建的报表，请删除 Power BI Desktop （.pbix）文件。
 
 ## <a name="next-steps"></a>后续步骤
 

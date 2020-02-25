@@ -4,15 +4,15 @@ description: 了解如何与 Azure 防火墙集成，以保护从应用服务环
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513332"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565717"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -41,9 +41,11 @@ ASE 出站依赖项几乎完全是使用 FQDN 定义的，不附带任何静态�
 
 ## <a name="locking-down-inbound-management-traffic"></a>锁定入站管理流量
 
-如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则以允许来自端口454、455上名为 AppServiceManagement 的服务标记的流量。 这是公共 Ip 管理 ASE 所需的全部。 该服务标记后面的地址仅用于管理 Azure App Service。 流过这些连接的管理流量将使用身份验证证书进行加密和保护。 此通道上的典型流量包括客户启动的命令和运行状况探测等内容。 
+如果尚未为 ASE 子网分配 NSG，请创建一个。 在 NSG 中，设置第一个规则，以允许来自端口454、455上名为 AppServiceManagement 的服务标记的流量。 若要允许从 AppServiceManagement 标记进行访问，只需要公共 Ip 来管理 ASE。 该服务标记后面的地址仅用于管理 Azure App Service。 流过这些连接的管理流量将使用身份验证证书进行加密和保护。 此通道上的典型流量包括客户启动的命令和运行状况探测等内容。 
 
 使用包含新子网的门户生成的 Ase 的 NSG 包含 AppServiceManagement 标记的允许规则。  
+
+ASE 还必须允许来自端口16001上的负载均衡器标记的入站请求。 来自端口16001上的负载均衡器的请求会在负载均衡器和 ASE 前端之间保持活动状态检查。 如果端口16001被阻止，ASE 将变为不正常。
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>在 ASE 中配置 Azure 防火墙 
 
@@ -110,15 +112,15 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
-| Azure 存储器 |
+| Azure 存储 |
 | Azure 事件中心 |
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
@@ -135,7 +137,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -216,7 +218,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
@@ -226,7 +228,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -268,15 +270,30 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
-| Azure 存储器 |
+| Azure 存储 |
 | Azure 事件中心 |
+
+#### <a name="ip-address-dependencies"></a>IP 地址依赖项
+
+| 端点 | 详细信息 |
+|----------| ----- |
+| \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
+| \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
+| 40.77.24.27：80 | 需要监视 ASE 问题并发出警报 |
+| 40.77.24.27:443 | 需要监视 ASE 问题并发出警报 |
+| 13.90.249.229:80 | 需要监视 ASE 问题并发出警报 |
+| 13.90.249.229:443 | 需要监视 ASE 问题并发出警报 |
+| 104.45.230.69：80 | 需要监视 ASE 问题并发出警报 |
+| 104.45.230.69:443 | 需要监视 ASE 问题并发出警报 |
+| 13.82.184.151：80 | 需要监视 ASE 问题并发出警报 |
+| 13.82.184.151:443 | 需要监视 ASE 问题并发出警报 |
 
 #### <a name="dependencies"></a>依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |

@@ -1,30 +1,30 @@
 ---
-title: 在 Power BI 中使用 SQL 查询直观显示 Azure 数据资源管理器中的数据
-description: 本文介绍如何使用三个选项中的一个选项在 Power BI 中直观显示数据：针对 Azure 数据资源管理器群集进行 SQL 查询。
+title: 使用 Power BI SQL 查询直观显示 Azure 数据资源管理器中的数据
+description: 本文介绍如何使用以下三个选项之一在 Power BI 中对数据进行可视化：针对 Azure 数据资源管理器群集的 SQL 查询。
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024081"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560467"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>在 Power BI 中使用 SQL 查询直观显示 Azure 数据资源管理器中的数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。
 
-Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何使用 SQL 查询获取数据并在 Power BI 报表中直观显示这些数据。
+Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的选项：使用内置连接器、从 Azure 数据资源管理器导入查询，或者使用 SQL 查询。 本文介绍如何使用 SQL 查询获取数据并在 Power BI 报表中显示数据。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要完成本文，需要满足以下条件：
+若要完成本文，你需要以下各项：
 
 * 一个属于 Azure Active Directory 成员的组织电子邮件帐户，以便连接到 [Azure 数据资源管理器帮助群集](https://dataexplorer.azure.com/clusters/help/databases/samples)。
 
@@ -48,7 +48,7 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
     ![数据库、表、查询选项](media/power-bi-sql-query/database-table-query.png)
 
-    **设置** | **值** | 字段说明
+    **设置** | **值** | **字段说明**
     |---|---|---|
     | 服务器 | *help.kusto.windows.net* | 帮助群集的 URL（没有 *https://* ）。 其他群集的 URL 采用 *\<ClusterName\>.\<区域\>.kusto.windows.net* 格式。 |
     | 数据库 | *示例* | 托管在要连接到的群集上的示例数据库。 |
@@ -80,8 +80,8 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要为本文创建的报表，请删除 Power BI Desktop (.pbix) 文件。
+如果不再需要为本文创建的报表，请删除 Power BI Desktop （.pbix）文件。
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据](power-bi-connector.md)
+[使用 Azure 数据资源管理器连接器实现 Power BI 的数据的可视化效果](power-bi-connector.md)

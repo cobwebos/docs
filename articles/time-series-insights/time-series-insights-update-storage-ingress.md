@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c7f2de0a454dceeff1946a93801c20ad81ab0ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 44c942e43cd4be1d04f56e828e3e17c58713a706
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122520"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559838"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure 时序见解预览版中的数据存储和入口
 
@@ -171,12 +171,12 @@ Azure 时序见解预览版当前的**每个分区限制为 0.5 MBps**。
 
 ### <a name="data-availability"></a>数据可用性
 
-Azure 时序见解预览分区和索引数据以获得最佳查询性能。 索引数据后，可对其进行查询。 正在引入的数据量可能会影响此可用性。
+Azure 时序见解预览分区和索引数据以获得最佳查询性能。 为数据编制索引后，可以从热（如果启用）和冷存储进行查询。 正在引入的数据量可能会影响此可用性。
 
 > [!IMPORTANT]
 > 在预览期间，你可能会遇到长达60秒的时间，然后数据才可用。 如果遇到超过60秒的明显延迟，请通过 Azure 门户提交支持票证。
 
-## <a name="azure-storage"></a>Azure 存储空间
+## <a name="azure-storage"></a>Azure 存储
 
 本部分介绍 azure 时序见解预览版中的 Azure 存储空间详细信息。
 

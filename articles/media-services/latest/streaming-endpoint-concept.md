@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206100"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562354"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（源）
 
@@ -73,7 +73,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 <sup>1</sup>仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>
 
-## <a name="properties"></a>属性
+## <a name="streaming-endpoint-properties"></a>流式处理终结点属性
 
 本部分提供有关一些流式处理终结点的属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。
 
@@ -130,50 +130,36 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 - `scaleUnits`：提供可按 200 Mbps 的增量购买的专用出口容量。 如果需要转到高级类型，请调整 `scaleUnits`。
 
-## <a name="working-with-cdn"></a>配合 CDN 使用
+## <a name="why-use-multiple-streaming-endpoints"></a>为什么要使用多个流式处理终结点？
 
-在大多数情况下，应该启用 CDN。 但是，如果你要预测低于500查看器的最大并发性，则建议禁用 CDN，因为 CDN 会使用并发度进行缩放。
+单个流式处理终结点可以同时流式传输实时视频和点播视频，大多数客户只需使用一个流式处理终结点。 本部分提供了一些可能需要使用多个流式处理终结点的示例。
 
-### <a name="considerations"></a>注意事项
+* 每个保留单位都允许 200 Mbps 的带宽。 如果需要的带宽超过 2000 Mbps （2 Gbps），可以使用第二个流式处理终结点和负载平衡来给予额外的带宽。
 
-* 无论是否启用 CDN，流式处理终结点 `hostname` 和流式处理 URL 都是相同的。
-* 如果你需要能够通过或不通过 CDN 来测试你的内容，请创建另一个不启用 CDN 的流式处理终结点。
+    但是，CDN 是实现流式处理内容扩大的最佳方法，但如果要传送的内容太多，CDN 需要超过 2 Gbps，则可以添加更多的流式处理终结点（源）。 在这种情况下，需要将在两个流式处理终结点之间平衡的内容 Url 进行分发。 此方法比尝试对每个源随机发送请求（例如通过流量管理器）提供更好的缓存。 
+    
+    > [!TIP]
+    > 通常情况下，如果 CDN 正在拉取 2 Gbps 以上的内容，则可能是配置错误（例如，没有源屏蔽）。
+    
+* 对不同 CDN 提供程序进行负载平衡。 例如，可以设置默认的流式处理终结点以使用 Verizon CDN，并创建另一个使用 Akamai 的流式处理终结点。 然后在二者之间添加一些负载平衡，以实现多 CDN 平衡。 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>有关缓存工作原理的详细说明
+    但是，客户通常使用单个源跨多个 CDN 提供程序进行负载均衡。
+* 流式传输混合内容：实时和点播视频。 
 
-添加 CDN 时没有特定的带宽值，因为启用 CDN 的流式处理终结点所需的带宽量有所不同。 很大程度取决于内容类型、它的常用程度、比特率以及协议。 CDN 仅缓存正在请求的内容。 这意味着，只要缓存了视频片段，就会直接从 CDN 提供热门内容。 可能会缓存实时内容，因为通常会有很多人观看完全相同的内容。 按需内容可能有点棘手，因为你可能有一些常用的内容，某些内容并不是。 如果你有数百万个视频资产（一周内只有一位或两位观看者），但你有成千上万人观看了所有不同的视频，CDN 就变得不太有效了。 如果此缓存失误，则会增加流式处理终结点的负载。
+    实时内容和按需内容的访问模式差别很大。 实时内容往往会同时为同一内容获取大量需求。 视频点播内容（例如，实例的长尾部存档内容）对同一内容使用的使用率较低。 因此，缓存非常适合实时内容，但对于长的结尾内容也是如此。
 
-还需要考虑自适应流式处理的工作原理。 每个单独的视频片段都作为自己的实体进行缓存。 例如，假设您首次监视某个视频。 如果查看器仅在此处显示了几秒钟的时间，并且在那里只显示与所监视人员关联的视频碎片，则会在 CDN 中缓存。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人在观看一个比特率，而另一个用户正在观看不同的比特率，则它们分别在 CDN 中进行缓存。 即使两个用户观察到相同的比特率，也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
+    假设你的客户主要在观看实时内容，但只是偶尔观看点播内容并从同一个流式处理终结点提供服务。 按需内容的使用率较低会占用缓存空间，该空间可更好地保存用于实时内容。 在此方案中，我们建议从一个流式处理终结点和来自另一个流式处理终结点的长尾内容中提供实时内容。 这将提高实时事件内容的性能。
+    
+## <a name="scaling-streaming-with-cdn"></a>用 CDN 缩放流式处理
 
-### <a name="enable-azure-cdn-integration"></a>启用 Azure CDN 集成
+请参阅以下文章：
 
-> [!IMPORTANT]
-> 不能为试用版或学生版 Azure 帐户启用 CDN。
->
-> 所有 Azure 数据中心（美国联邦政府版和中国区域除外）均已启用 CDN 集成。
-
-启用 CDN 后，在设置了一个流式处理终结点后，在完成 DNS 更新以将流式处理终结点映射到 CDN 终结点之前，媒体服务会有一个定义的等待时间。
-
-如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，你可以在不中断流式处理终结点的情况下启动流式处理终结点和流，而在集成完成后，将从 CDN 传送流。 在设置期间，流式处理终结点将处于 "**正在启动**" 状态，你可能会看到性能下降。
-
-创建标准流式处理终结点时，默认情况下，它是使用标准 Verizon 进行配置的。 可以使用 REST Api 配置高级 Verizon 或标准 Akamai 提供程序。
-
-标准流式处理终结点可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。 可以使用所有 **Azure CDN 定价层和提供程序**配置高级流式处理终结点。 
-
-> [!NOTE]
-> 有关 Azure CDN 的详细信息，请参阅[CDN 概述](../../cdn/cdn-overview.md)。
-
-### <a name="determine-if-dns-change-was-made"></a>确定是否进行了 DNS 更改
-
-可以通过使用 https://www.digwebinterface.com来确定是否已在流式处理终结点（流量定向到 Azure CDN）上进行 DNS 更改。 如果结果中的 azureedge.net 域名，则流量现在指向 CDN。
+- [CDN 概述](../../cdn/cdn-overview.md)
+- [用 CDN 缩放流式处理](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 
 查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
-
-## <a name="see-also"></a>另请参阅
-
-[CDN 概述](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>后续步骤
 

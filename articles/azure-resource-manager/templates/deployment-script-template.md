@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251849"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561147"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "77251849"
 部署脚本的优点：
 
 - 易于编码、使用和调试。 你可以在最喜欢的开发环境中开发部署脚本。 脚本可以嵌入在模板或外部脚本文件中。
-- 可以指定脚本语言和平台。 目前仅支持 Linux 环境上的 Azure PowerShell 部署脚本。
+- 可以指定脚本语言和平台。 目前，支持 Linux 环境中的 Azure PowerShell 和 Azure CLI 部署脚本。
 - 允许指定用于执行脚本的标识。 目前仅支持[Azure 用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。
 - 允许将命令行参数传递给脚本。
 - 可以指定脚本输出，并将其传递回部署。
@@ -48,16 +48,29 @@ ms.locfileid: "77251849"
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  使用以下 PowerShell 脚本通过提供资源组名称和标识名称来获取 ID。
+  使用以下 CLI 或 PowerShell 脚本，通过提供资源组名称和标识名称来获取 ID。
+
+  # <a name="cli"></a>[CLI](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell 版本2.7.0、2.8.0 或 3.0.0**。 不需要这些版本来部署模板。 但在本地测试部署脚本需要这些版本。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 可以使用预配置的 Docker 映像。  请参阅[配置开发环境](#configure-development-environment)。
+- **Azure PowerShell 版本3.0.0、2.8.0 或 2.7.0**或**Azure CLI 版本2.0.80、2.0.79、2.0.78 或 2.0.77**。 不需要这些版本来部署模板。 但在本地测试部署脚本需要这些版本。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 可以使用预配置的 Docker 映像。  请参阅[配置开发环境](#configure-development-environment)。
 
 ## <a name="sample-template"></a>示例模板
 
@@ -67,9 +80,9 @@ ms.locfileid: "77251849"
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ ms.locfileid: "77251849"
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ ms.locfileid: "77251849"
 属性值详细信息：
 
 - **标识**：部署脚本服务使用用户分配的托管标识来执行脚本。 目前仅支持用户分配的托管标识。
-- **kind**：指定脚本的类型。 目前仅支持 Azure PowerShell 脚本。 值为**AzurePowerShell**。
+- **kind**：指定脚本的类型。 目前，Azure PowerShell 和 Azure CLI 脚本都是支持的。 值为**AzurePowerShell**和**AzureCLI**。
 - **forceUpdateTag**：在模板部署之间更改此值会强制重新执行部署脚本。 使用需要设置为参数的 defaultValue 的 newGuid （）或 utcNow （）函数。 若要了解详细信息，请参阅[多次运行脚本](#run-script-more-than-once)。
-- **azPowerShellVersion**：指定要使用的 Azure PowerShell 模块版本。 部署脚本当前支持版本2.7.0、2.8.0 和3.0.0。
+- **azPowerShellVersion**/**azCliVersion**：指定要使用的模块版本。 部署脚本目前支持 Azure PowerShell 版本2.7.0、2.8.0、3.0.0 和 Azure CLI 版本2.0.80、2.0.79、2.0.78、2.0.77。
 - **arguments**：指定参数值。 请以空格分隔这些值。
 - **scriptContent**：指定脚本内容。 若要运行外部脚本，请改用 `primaryScriptUri`。 有关示例，请参阅[使用内联脚本](#use-inline-scripts)和[使用外部脚本](#use-external-scripts)。
-- **primaryScriptUri**：使用受支持的 powershell 文件扩展名为主 powershell 脚本指定可公开访问的 Url。
-- **supportingScriptUris**：指定一个可公开访问的 url 数组，以支持将在 `ScriptContent` 或 `PrimaryScriptUri`中调用的 powershell 文件。
+- **primaryScriptUri**：使用受支持的文件扩展名指定可公开访问的主部署脚本 Url。
+- **supportingScriptUris**：指定一个可公开访问的 url 数组，该数组指向 `ScriptContent` 或 `PrimaryScriptUri`中调用的支持文件。
 - **timeout**：指定以[ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定的最大允许脚本执行时间。 默认值为 **P1D**。
 - **cleanupPreference**。 指定在脚本执行处于终端状态时清理部署资源的首选项。 默认设置**始终**为，这意味着，即使在终端状态（成功、失败、已取消）的情况下也删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 - **retentionInterval**：指定服务在部署脚本执行达到终端状态后保留部署脚本资源的时间间隔。 此持续时间到期时，将删除部署脚本资源。 持续时间基于[ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 默认值为**P1D**，这意味着七天。 当 cleanupPreference 设置为*OnExpiration*时，将使用此属性。 当前未启用*OnExpiration*属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
@@ -120,11 +133,11 @@ ms.locfileid: "77251849"
 [!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json?range=1-54)]
 
 > [!NOTE]
-> 由于内联部署脚本用双引号引起来，因此，需要将部署脚本内的字符串用单引号引起来。 PowerShell 的转义符是 **&#92;** 。 你还可以考虑使用字符串替换，如前面的 JSON 示例中所示。 请参阅 name 参数的默认值。
+> 由于内联部署脚本是用双引号括起来的，因此部署脚本内的字符串需要改用单引号括起来。 PowerShell 的转义字符是 **&#92;** 。 你还可以考虑使用字符串替换，如前面的 JSON 示例中所示。 请参阅 name 参数的默认值。
 
 脚本采用一个参数，并输出参数值。 **DeploymentScriptOutputs**用于存储输出。  在 "输出" 部分中，"**值**" 行显示了如何访问存储的值。 `Write-Output` 用于调试目的。 若要了解如何访问输出文件，请参阅[调试部署脚本](#debug-deployment-scripts)。  有关属性说明，请参阅[示例模板](#sample-template)。
 
-若要运行该脚本，请选择 "**尝试**" 以打开 Cloud shell，然后将以下代码粘贴到 "shell" 窗格中。
+若要运行该脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell，然后将以下代码粘贴到 "Shell" 窗格中。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>使用外部脚本
 
-除了内联脚本以外，还可以使用外部脚本文件。 目前仅支持具有**ps1**文件扩展名的 PowerShell 脚本。 若要使用外部脚本文件，请将 `scriptContent` 替换为 `primaryScriptUri`。 例如：
+除了内联脚本以外，还可以使用外部脚本文件。 仅支持具有**ps1**文件扩展名的主 PowerShell 脚本。 对于 CLI 脚本，只要脚本是有效的 bash 脚本，主脚本就可以有任何扩展名（或不带扩展名）。 若要使用外部脚本文件，请将 `scriptContent` 替换为 `primaryScriptUri`。 例如：
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ Write-Host "Press [ENTER] to continue ..."
 ],
 ```
 
-支持脚本文件可以从内联脚本和主脚本文件中进行调用。
+支持脚本文件可以从内联脚本和主脚本文件中进行调用。 支持脚本文件对文件扩展名没有限制。
 
 支持文件将复制到运行时的 azscripts/azscriptinput。 使用相对路径引用内联脚本和主脚本文件中的支持文件。
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>使用部署脚本的输出
+## <a name="work-with-outputs-from-powershell-script"></a>使用 PowerShell 脚本的输出
 
 以下模板演示了如何在两个 deploymentScripts 资源之间传递值：
 
@@ -185,6 +198,16 @@ Write-Host "Press [ENTER] to continue ..."
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>使用 CLI 脚本的输出
+
+与 PowerShell 部署脚本不同，CLI/bash 支持不会公开公用变量来存储脚本输出，而是使用一个名为**AZ_SCRIPTS_OUTPUT_PATH**的环境变量来存储脚本输出文件所在的位置。 如果部署脚本是从资源管理器模板运行的，则 Bash shell 会自动设置此环境变量。
+
+部署脚本输出必须保存在 AZ_SCRIPTS_OUTPUT_PATH 位置，并且输出必须为有效的 JSON 字符串对象。 必须将该文件的内容保存为键值对。 例如，字符串数组以 {"MyResult"： ["foo"，"bar"]} 的形式存储。  只存储数组结果（例如 ["foo"，"bar"]）是无效的。
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+前面的示例中使用了[jq](https://stedolan.github.io/jq/) 。 它附带了容器映像。 请参阅[配置开发环境](#configure-development-environment)。
 
 ## <a name="debug-deployment-scripts"></a>调试部署脚本
 
@@ -264,7 +287,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>配置开发环境
 
-目前，部署脚本支持 Azure PowerShell 版本2.7.0、2.8.0 和3.0.0。  如果你有 Windows 计算机，则可以安装一个受支持的 Azure PowerShell 版本，并开始开发和测试部署脚本。  如果没有 Windows 计算机，或者没有安装这些 Azure PowerShell 版本中的任何一个，则可以使用预配置的 docker 容器映像。 以下过程说明如何在 Windows 上配置 docker 映像。 对于 Linux 和 Mac，可以在 Internet 上找到信息。
+你可以使用预配置的 docker 容器映像作为部署脚本开发环境。 以下过程说明如何在 Windows 上配置 docker 映像。 对于 Linux 和 Mac，可以在 Internet 上找到信息。
 
 1. 在开发计算机上安装[Docker Desktop](https://www.docker.com/products/docker-desktop) 。
 1. 打开 Docker Desktop。
@@ -281,7 +304,15 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    该示例使用版本2.7.0。
+    该示例使用版本 PowerShell 2.7.0。
+
+    从 Microsoft 容器注册表（MCR）拉取 CLI 映像：
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    此示例使用版本 CLI 2.0.80。 部署脚本使用[此处](https://hub.docker.com/_/microsoft-azure-cli)的默认 CLI 容器映像。
 
 1. 在本地运行 docker 映像。
 
@@ -297,12 +328,18 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
     **-这**意味着使容器映像保持活动状态。
 
+    CLI 示例：
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. 在出现提示时选择 "**共享**"。
-1. 运行 PowerShell 脚本，如以下屏幕截图所示（假定 d:\docker 文件夹中有 helloworld 文件。）
+1. 以下屏幕截图显示了如何运行 PowerShell 脚本，假设你在 d:\docker 文件夹中具有 helloworld 文件。
 
     ![资源管理器模板部署脚本 docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-成功测试 PowerShell 脚本后，可以将其用作部署脚本。
+脚本成功测试后，可以将其用作部署脚本。
 
 ## <a name="next-steps"></a>后续步骤
 

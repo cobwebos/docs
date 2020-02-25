@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198660"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562014"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -76,7 +76,7 @@ ms.locfileid: "77198660"
 > | [备份操作员](#backup-operator) | 允许管理备份服务，但删除备份、创建保管库以及授予其他人访问权限除外 | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [备份读取器](#backup-reader) | 可以查看备份服务，但是不能进行更改 | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [计费读者](#billing-reader) | 允许对帐单数据进行读取访问 | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
-> | [BizTalk 参与者](#biztalk-contributor) | 允许你管理 BizTalk 服务，但不能访问它们。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [BizTalk 参与者](#biztalk-contributor) | 允许管理 BizTalk 服务，但不允许访问这些服务。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [区块链成员节点访问（预览）](#blockchain-member-node-access-preview) | 允许访问区块链成员节点 | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | [蓝图参与者](#blueprint-contributor) | 可以管理蓝图定义，但不能对其进行分配。 | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [蓝图操作员](#blueprint-operator) | 可以分配现有的已发布蓝图，但无法创建新的蓝图。 注意：仅当使用用户分配的托管标识完成分配时，此操作才有效。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
@@ -108,13 +108,14 @@ ms.locfileid: "77198660"
 > | [EventGrid EventSubscription 读者](#eventgrid-eventsubscription-reader) | 可以读取 EventGrid 事件订阅。 | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | [HDInsight 群集操作员](#hdinsight-cluster-operator) | 允许你读取和修改 HDInsight 群集配置。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
 > | [HDInsight 域服务参与者](#hdinsight-domain-services-contributor) | 可以读取、创建、修改和删除 HDInsight 企业安全性套餐所需的域服务相关操作 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
-> | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许你管理 Intelligent Systems 帐户，但不能访问它们。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | [智能系统帐户参与者](#intelligent-systems-account-contributor) | 允许管理智能系统帐户，但不允许访问这些帐户。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [密钥保管库参与者](#key-vault-contributor) | 允许管理密钥保管库，但不允许对其进行访问。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [实验室创建者](#lab-creator) | 允许在 Azure 实验室帐户下创建、管理、删除托管实验室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | [Log Analytics 参与者](#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 读者](#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [逻辑应用参与者](#logic-app-contributor) | 允许你管理逻辑应用，但不能更改它们的访问权限。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [逻辑应用操作员](#logic-app-operator) | 允许读取、启用和禁用逻辑应用，但不允许对其进行编辑或更新。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [托管应用程序参与者角色](#managed-application-contributor-role) | 允许创建托管应用程序资源。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [托管应用程序操作员角色](#managed-application-operator-role) | 可让你在托管应用程序资源上读取和执行操作 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [托管应用程序读者](#managed-applications-reader) | 允许读取托管应用中的资源和请求 JIT 访问。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [托管的标识参与者](#managed-identity-contributor) | 创建、读取、更新和删除用户分配的标识 | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -126,25 +127,26 @@ ms.locfileid: "77198660"
 > | [监视指标发布者](#monitoring-metrics-publisher) | 允许针对 Azure 资源发布指标 | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [监视查阅者](#monitoring-reader) | 可以读取所有监视数据（指标、日志等）。 另请参阅 [Azure Monitor 的角色、权限和安全入门](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [网络参与者](#network-contributor) | 允许管理网络，但不允许访问这些网络。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
-> | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。 | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | [New Relic APM 帐户参与者](#new-relic-apm-account-contributor) | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | [策略见解数据写入程序（预览）](#policy-insights-data-writer-preview) | 允许对资源策略的读取访问权限以及对资源组件策略事件的写入访问权限。 | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
 > | [读取器和数据访问](#reader-and-data-access) | 允许查看所有内容，但不允许删除或创建存储帐户或包含的资源。 它还允许使用存储帐户密钥对存储帐户中包含的所有数据进行读/写访问。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
-> | [Redis 缓存参与者](#redis-cache-contributor) | 允许你管理 Redis Cache，但不能访问它们。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | [Redis 缓存参与者](#redis-cache-contributor) | 允许管理 Redis 缓存，但不允许访问这些缓存。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | [资源策略参与者](#resource-policy-contributor) | 具有创建/修改资源策略、创建支持票证和读取资源/层次结构权限的用户。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
-> | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许你管理计划程序作业集合，但不能访问它们。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
-> | [搜索服务参与者](#search-service-contributor) | 允许你管理搜索服务，但不能访问它们。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [安全管理员](#security-admin) | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
-> | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员角色 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [安全读取者](#security-reader) | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [计划程序作业集合参与者](#scheduler-job-collections-contributor) | 允许管理计划程序作业集合，但不允许访问这些集合。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | [搜索服务参与者](#search-service-contributor) | 允许管理搜索服务，但不允许访问这些服务。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | [安全管理员](#security-admin) | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [安全评估参与者](#security-assessment-contributor) | 允许你将评估推送到安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | [安全管理器（旧版）](#security-manager-legacy) | 这是旧角色。 请改用安全管理员。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [安全读取者](#security-reader) | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Site Recovery 参与者](#site-recovery-contributor) | 允许管理除保管库创建和角色分配外的 Site Recovery 服务 | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Site Recovery 运算符](#site-recovery-operator) | 允许进行故障转移和故障回复，但不允许执行其他 Site Recovery 管理操作 | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery 读取器](#site-recovery-reader) | 允许查看 Site Recovery 状态，但不允许执行其他管理操作 | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | [空间锚定帐户参与者](#spatial-anchors-account-contributor) | 允许你管理帐户中的空间锚，但不能删除它们 | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [空间锚定帐户所有者](#spatial-anchors-account-owner) | 允许你管理帐户中的空间锚，包括删除它们 | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [空间锚定帐户读取器](#spatial-anchors-account-reader) | 允许您在帐户中查找和读取空间锚的属性 | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
-> | [SQL DB 参与者](#sql-db-contributor) | 允许你管理 SQL 数据库，但不能访问它们。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+> | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例和所需的网络配置，但不能向其他人提供访问权限。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | [SQL 安全管理器](#sql-security-manager) | 允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户。 提供对帐户密钥的访问权限，它可用于通过共享密钥授权访问数据。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [存储帐户密钥操作员服务角色](#storage-account-key-operator-service-role) | 允许列出和重新生成存储帐户访问密钥。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
@@ -161,15 +163,17 @@ ms.locfileid: "77198660"
 > | [存储队列数据读取器](#storage-queue-data-reader) | 阅读并列出 Azure 存储队列和队列消息。 若要了解给定数据操作所需的操作，请参阅[调用 blob 和队列数据操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | [支持请求参与者](#support-request-contributor) | 允许创建和管理支持请求 | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [流量管理器参与者](#traffic-manager-contributor) | 允许管理流量管理器配置文件，但不允许控制谁可以访问它们。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | [用户访问管理员](#user-access-administrator) | 允许你管理用户对 Azure 资源的访问权限。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | [用户访问管理员](#user-access-administrator) | 允许管理用户对 Azure 资源的访问权限。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | [虚拟机管理员登录](#virtual-machine-administrator-login) | 在门户中查看虚拟机并以管理员身份登录 | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [虚拟机参与者](#virtual-machine-contributor) | 允许管理虚拟机，但不允许访问这些虚拟机及其连接到的虚拟网络或存储帐户。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [虚拟机用户登录](#virtual-machine-user-login) | 在门户中查看虚拟机并以普通用户身份登录。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | [Web 计划参与者](#web-plan-contributor) | 允许你管理网站的 Web 计划，但不能访问它们。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-> | [网站参与者](#website-contributor) | 允许你管理网站（而非 Web 计划），但不能访问它们。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Web 计划参与者](#web-plan-contributor) | 允许管理网站的 Web 计划，但不允许访问这些计划。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [网站参与者](#website-contributor) | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [工作簿参与者](#workbook-contributor) | 可以保存共享的工作簿。 | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [工作簿读者](#workbook-reader) | 可以读取工作簿。 | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
-## <a name="owner"></a>所有者
+## <a name="owner"></a>“所有者”
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -184,7 +188,7 @@ ms.locfileid: "77198660"
 > | **NotDataActions** |  |
 > | *无* |  |
 
-## <a name="contributor"></a>Contributor
+## <a name="contributor"></a>参与者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -346,7 +350,7 @@ ms.locfileid: "77198660"
 > | Microsoft.ApiManagement/service/restore/action | 从用户提供的存储帐户中的指定容器还原 API 管理服务 |
 > | Microsoft.ApiManagement/service/updatecertificate/action | 上传 API 管理服务的 SSL 证书 |
 > | Microsoft.ApiManagement/service/updatehostname/action | 设置、更新或删除 API 管理服务的自定义域名 |
-> | Microsoft.ApiManagement/service/write | 创建 API 管理服务的新实例 |
+> | Microsoft.ApiManagement/service/write | 创建或更新 API 管理服务实例 |
 > | Microsoft.Authorization/*/read | 读取授权 |
 > | Microsoft.Insights/alertRules/* | 创建和管理警报规则 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
@@ -609,7 +613,7 @@ ms.locfileid: "77198660"
 > | **Id** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **操作** |  |
 > | HybridCompute/计算机/读取 | 读取任何 Azure Arc 计算机 |
-> | HybridCompute/计算机/写入 | 编写 Azure Arc 计算机 |
+> | HybridCompute/计算机/写入 | 写入 Azure Arc 计算机 |
 > | Microsoft.GuestConfiguration/guestConfigurationAssignments/read | 获取来宾配置分配。 |
 > | **不操作** |  |
 > | *无* |  |
@@ -626,7 +630,7 @@ ms.locfileid: "77198660"
 > | **Id** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **操作** |  |
 > | HybridCompute/计算机/读取 | 读取任何 Azure Arc 计算机 |
-> | HybridCompute/计算机/写入 | 编写 Azure Arc 计算机 |
+> | HybridCompute/计算机/写入 | 写入 Azure Arc 计算机 |
 > | HybridCompute/计算机/删除 | 删除 Azure Arc 计算机 |
 > | HybridCompute/计算机/重新连接/操作 | 重新连接 Azure Arc 计算机 |
 > | HybridCompute/*/read |  |
@@ -690,6 +694,7 @@ ms.locfileid: "77198660"
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **操作** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 列出托管群集的 clusterAdmin 凭据 |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | 使用列表凭据按角色名称获取托管的群集访问配置文件 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1080,7 +1085,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 BizTalk 服务，但不能访问它们。 |
+> | **说明** | 允许管理 BizTalk 服务，但不允许访问这些服务。 |
 > | **Id** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1540,6 +1545,8 @@ ms.locfileid: "77198660"
 > | Microsoft.Databox/jobs/listsecrets/action |  |
 > | Microsoft.Databox/jobs/listcredentials/action | 列出与订单相关的未加密凭据。 |
 > | Microsoft.Databox/locations/availableSkus/action | 此方法返回可用 SKU 列表。 |
+> | Databox/位置/validateInputs/action | 此方法进行所有类型的验证。 |
+> | Databox/位置/regionConfiguration/action | 此方法返回区域的配置。 |
 > | Microsoft.Databox/locations/validateAddress/action | 验证送货地址，并提供备用地址（如有）。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
@@ -1565,6 +1572,7 @@ ms.locfileid: "77198660"
 > | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
+> | Microsoft.EventGrid/eventSubscriptions/write | 创建或更新 eventSubscription |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -1801,7 +1809,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 Intelligent Systems 帐户，但不能访问它们。 |
+> | **说明** | 允许管理智能系统帐户，但不允许访问这些帐户。 |
 > | **Id** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -1851,6 +1859,8 @@ ms.locfileid: "77198660"
 > | Microsoft.LabServices/labAccounts/createLab/action | 在实验室帐户中创建实验室。 |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | 获取实验室帐户下配置的每个大小类别的区域可用性信息 |
+> | LabServices/labAccounts/getPricingAndAvailability/action | 获得实验室帐户的大小、地理位置和操作系统组合的定价和可用性。 |
+> | LabServices/labAccounts/getRestrictionsAndUsage/action | 获取此订阅的核心限制和使用情况 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
 > | Microsoft.Support/* | 创建和管理支持票证 |
 > | **不操作** |  |
@@ -1964,6 +1974,25 @@ ms.locfileid: "77198660"
 > | Microsoft.Web/connections/*/read | 读取连接。 |
 > | Microsoft.Web/customApis/*/read | 读取自定义 API。 |
 > | Microsoft.Web/serverFarms/read | 获取应用服务计划的属性 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="managed-application-contributor-role"></a>托管应用程序参与者角色
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许创建托管应用程序资源。 |
+> | **Id** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **操作** |  |
+> | */read | 读取除密码外的所有类型的资源。 |
+> | Microsoft. 解决方案/应用程序/* |  |
+> | Microsoft.Solutions/register/action | 注册到解决方案。 |
+> | Microsoft .Resources/订阅/resourceGroups/* |  |
+> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |
@@ -2198,7 +2227,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 New Relic 应用程序性能管理帐户和应用程序，但不能访问它们。 |
+> | **说明** | 允许管理 New Relic 应用程序性能管理帐户和应用程序，但不允许访问它们。 |
 > | **Id** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2254,7 +2283,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 Redis Cache，但不能访问它们。 |
+> | **说明** | 允许管理 Redis 缓存，但不允许访问这些缓存。 |
 > | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2295,7 +2324,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理计划程序作业集合，但不能访问它们。 |
+> | **说明** | 允许管理计划程序作业集合，但不允许访问这些集合。 |
 > | **Id** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2316,7 +2345,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理搜索服务，但不能访问它们。 |
+> | **说明** | 允许管理搜索服务，但不允许访问这些服务。 |
 > | **Id** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2337,7 +2366,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 仅在安全中心内：可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议 |
+> | **说明** | 可以查看安全策略、查看安全状态、编辑安全策略、查看警报和建议、关闭警报和建议。 |
 > | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2358,11 +2387,26 @@ ms.locfileid: "77198660"
 > | **NotDataActions** |  |
 > | *无* |  |
 
+## <a name="security-assessment-contributor"></a>安全评估参与者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 允许你将评估推送到安全中心 |
+> | **Id** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **操作** |  |
+> | Microsoft 安全/评估/写入 | 在订阅上创建或更新安全评估 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
 ## <a name="security-manager-legacy"></a>安全管理器（旧版）
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 这是旧角色。 请改用安全管理员角色 |
+> | **说明** | 这是旧角色。 请改用安全管理员。 |
 > | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2386,7 +2430,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 仅在安全中心内：可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改 |
+> | **说明** | 可以查看建议和警报、查看安全策略、查看安全状态，但不能进行更改。 |
 > | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2475,7 +2519,7 @@ ms.locfileid: "77198660"
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 读取任何可保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 应用还原点 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 故障转移提交 |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划的故障转移 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 计划内故障转移 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 读取任何受保护项 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 读取任何复制恢复点 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | 修复复制 |
@@ -2626,7 +2670,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 SQL 数据库，但不能访问它们。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 |
+> | **说明** | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 |
 > | **Id** | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取角色和角色分配 |
@@ -2702,7 +2746,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理 SQL 服务器和数据库与安全性相关的策略，但不能访问它们。 |
+> | **说明** | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 |
 > | **Id** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取 Microsoft 授权 |
@@ -3069,7 +3113,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理用户对 Azure 资源的访问权限。 |
+> | **说明** | 允许管理用户对 Azure 资源的访问权限。 |
 > | **Id** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **操作** |  |
 > | */read | 读取除密码外的所有类型的资源。 |
@@ -3114,6 +3158,9 @@ ms.locfileid: "77198660"
 > | Microsoft.Compute/locations/* | 创建和管理计算位置 |
 > | Microsoft.Compute/virtualMachines/* | 创建和管理虚拟机 |
 > | Microsoft.Compute/virtualMachineScaleSets/* | 创建和管理虚拟机规模集 |
+> | Microsoft.Compute/disks/write | 创建新的磁盘，或更新现有的磁盘 |
+> | Microsoft.Compute/disks/read | 获取磁盘的属性 |
+> | Microsoft.Compute/disks/delete | 删除磁盘 |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | 创建和管理 Insights 警报规则 |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | 加入应用程序网关后端地址池。 Not 可报警。 |
@@ -3177,7 +3224,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理网站的 Web 计划，但不能访问它们。 |
+> | **说明** | 允许管理网站的 Web 计划，但不允许访问这些计划。 |
 > | **Id** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取授权 |
@@ -3199,7 +3246,7 @@ ms.locfileid: "77198660"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **说明** | 允许你管理网站（而非 Web 计划），但不能访问它们。 |
+> | **说明** | 允许管理网站（而非 Web 计划），但不允许访问这些网站。 |
 > | **Id** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **操作** |  |
 > | Microsoft.Authorization/*/read | 读取授权 |
@@ -3214,6 +3261,38 @@ ms.locfileid: "77198660"
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | 获取应用服务计划的属性 |
 > | Microsoft.Web/sites/* | 创建和管理网站（站点创建还需要对关联应用服务计划有写入权限） |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="workbook-contributor"></a>工作簿参与者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以保存共享的工作簿。 |
+> | **Id** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **操作** |  |
+> | Microsoft Insights/工作簿/写入 | 创建或更新工作簿 |
+> | Microsoft Insights/工作簿/删除 | 删除工作簿 |
+> | Microsoft Insights/工作簿/读取 | 读取工作簿 |
+> | **不操作** |  |
+> | *无* |  |
+> | **DataActions** |  |
+> | *无* |  |
+> | **NotDataActions** |  |
+> | *无* |  |
+
+## <a name="workbook-reader"></a>工作簿读者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **说明** | 可以读取工作簿。 |
+> | **Id** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **操作** |  |
+> | microsoft insights/工作簿/读取 | 读取工作簿 |
 > | **不操作** |  |
 > | *无* |  |
 > | **DataActions** |  |

@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: 文本到语音文档
+summary: 通过语音服务的文本到语音转换，应用程序、工具或设备可以将文本转换为类似于用户的合成语音。
+metadata:
+  title: 文本到语音文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562896"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是文本转语音？
+      url: text-to-speech.md
+  - linkListType: quickstart
+    links:
+    - text: 将语音合成到扬声器
+      url: quickstarts/text-to-speech.md
+    - text: 将语音合成到音频文件
+      url: quickstarts/text-to-speech-audio-file.md
+    - text: 带有长格式音频的合成语音
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 通过 SSML 改进合成
+      url: speech-synthesis-markup.md
+    - text: 通过自定义语音改进合成
+      url: how-to-custom-voice.md
+    - text: 使用长音频 API 合成语音
+      url: long-audio-api.md
+    - text: 使用 REST 获取语音列表 (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: 使用 REST 将文本转换为语音 (Python)
+      url: quickstart-python-text-to-speech.md
+    - text: 通过音频内容创建改善合成
+      url: how-to-audio-content-creation.md
+  - linkListType: concept
+    links:
+    - text: 自定义语音入门
+      url: how-to-custom-voice.md
+    - text: 准备自定义语音数据
+      url: how-to-custom-voice-prepare-data.md
+    - text: 创建并使用自定义语音模型
+      url: how-to-custom-voice-create-voice.md
+    - text: 录制语音示例
+      url: record-custom-voice-samples.md
+    - text: 自定义关键字命名准则
+      url: speech-devices-sdk-kws-guidelines.md
+    - text: 自定义关键字发现
+      url: speech-devices-sdk-create-kws.md
+    - text: 自定义语音的限制
+      url: concepts-gating-overview.md
+    - text: 部署合成技术
+      url: concepts-guidelines-responsible-deployment-synthetic.md
+    - text: 披露设计准则
+      url: concepts-disclosure-guidelines.md
+    - text: 披露设计模式
+      url: concepts-disclosure-patterns.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md#text-to-speech
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 行为准则
+      url: https://aka.ms/custom-neural-code-of-conduct
+    - text: 为配音员披露
+      url: https://aka.ms/disclosure-voice-talent

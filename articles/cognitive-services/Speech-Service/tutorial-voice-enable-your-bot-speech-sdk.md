@@ -3,19 +3,19 @@ title: 教程：语音启用机器人使用语音 SDK-语音服务
 titleSuffix: Azure Cognitive Services
 description: 在本教程中，你将使用 Microsoft Bot Framework 创建一个回显机器人，将其部署到 Azure，并将其注册到机器人框架直接线路语音通道。 然后，你将配置一个适用于 Windows 的示例客户端应用程序，该应用程序可让你与机器人联系，并听到它回复你。
 services: cognitive-services
-author: dargilco
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: dcohen
-ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/21/2020
+ms.author: dapine
+ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495174"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562613"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -50,7 +50,7 @@ ms.locfileid: "75495174"
 > * 添加自定义关键字激活
 > * 了解如何更改识别语音的语言
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 下面是完成本教程所需的操作：
 
@@ -65,8 +65,7 @@ ms.locfileid: "75495174"
 
 你将在本教程中创建的客户端应用使用少量的 Azure 服务。 若要减少来自机器人的响应的往返时间，需要确保这些服务位于同一 Azure 区域。 在本部分中，你将在**美国西部**区域创建一个资源组。 此资源组将在为 Bot 框架、直接线路语音通道和语音服务创建单个资源时使用。
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 从左侧导航栏中选择 "**资源组**"。 然后单击 "**添加**" 以添加新的资源组。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">创建资源组<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. 系统将提示你提供一些信息：
    * 将 "**订阅**" 设置为 "**免费试用**" （也可以使用现有订阅）。
    * 输入**资源组**的名称。 建议**SpeechEchoBotTutorial**。
@@ -87,15 +86,13 @@ ms.locfileid: "75495174"
 
 ## <a name="create-resources"></a>创建资源
 
-在**美国西部**区域中有一个资源组后，下一步就是为你将在本教程中使用的每项服务创建单独的资源。
+现在，在受支持的区域中拥有资源组，下一步是为要在本教程中使用的每个服务创建单独的资源。
 
 ### <a name="create-a-speech-service-resource"></a>创建语音服务资源
 
 按照以下说明创建语音资源：
 
-1. 中转到[Azure 门户](https://portal.azure.com)，并从左侧导航栏中选择 "**创建资源**"。
-2. 在搜索栏中，键入 "**语音**"。
-3. 选择“语音”，然后单击“创建”。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">创建语音服务资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. 系统将提示你提供一些信息：
    * 为资源指定**名称**。 建议**SpeechEchoBotTutorial**
    * 对于 "**订阅**"，请确保选择 "**免费试用**"。
@@ -115,9 +112,7 @@ ms.locfileid: "75495174"
 
 下一步是创建应用服务计划。 应用服务计划为要运行的 Web 应用定义一组计算资源。
 
-1. 中转到[Azure 门户](https://portal.azure.com)，并从左侧导航栏中选择 "**创建资源**"。
-2. 在搜索栏中，键入 "**应用服务计划**"。 接下来，从搜索结果中找到并选择 "**应用服务计划**" 卡。
-3. 单击“创建”。
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">创建 Azure App Service 计划<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. 系统将提示你提供一些信息：
    * 将 "**订阅**" 设置为 "**免费试用**" （也可以使用现有订阅）。
    * 对于 "**资源组**"，选择 " **SpeechEchoBotTutorial**"。
@@ -157,11 +152,14 @@ ms.locfileid: "75495174"
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. 加载项目后，按 `F5` 生成并运行项目。
+4. 加载项目后，按<kbd>F5</kbd>生成并运行项目。
+5. 此时会启动浏览器，此时会看到与此类似的屏幕。
+    > [!div class="mx-imgBorder"]
+    > ![echobot-在本地主机上运行](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上运行的 EchoBot")
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>用 Bot Framework 模拟器测试机器人示例
 
-[机器人框架模拟器](https://github.com/microsoft/botframework-emulator)是一个桌面应用，允许机器人开发人员通过隧道本地或远程测试和调试 bot。 模拟器支持键入的文本（非语音）。 机器人将响应文本。 按照以下步骤操作，使用机器人框架模拟器测试在本地运行的、带有文本输入和文本输出的回显机器人。 部署机器人 Azure 后，将通过语音输入和语音输出对其进行测试。
+[机器人框架模拟器](https://github.com/microsoft/botframework-emulator)是一个桌面应用，允许机器人开发人员通过隧道本地或远程测试和调试 bot。 模拟器支持键入的文本（非语音）。 机器人将响应文本。 按照以下步骤操作，使用机器人框架模拟器测试在本地运行的、带有文本输入和文本输出的回显机器人。 将机器人部署到 Azure 后，我们将通过语音输入和语音输出对其进行测试。
 
 1. 安装[机器人 Framework 模拟器](https://github.com/Microsoft/BotFramework-Emulator/releases/latest)版本4.3.0 或更高版本
 2. 启动 Bot Framework 模拟器并打开机器人：
@@ -173,6 +171,7 @@ ms.locfileid: "75495174"
    ```
    然后按 "连接"。
 4. 机器人应立即 fibonacci 你 "Hello and 欢迎！" 。 键入任何短信，确认从机器人获得响应。
+5. 与 Echo Bot 实例通信的交换方式如下：![机器人-框架模拟器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "机器人框架模拟器")
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>将机器人部署到 Azure App Service
 
@@ -189,7 +188,7 @@ ms.locfileid: "75495174"
 
 1. 在**解决方案资源管理器**中，右键单击**EchoBot**项目，然后选择 "**发布 ...** "
 1. 将打开一个名为 "**选取" 的**新窗口。
-1. 从左侧导航栏中选择 "**应用服务**"，选择 "**新建**"，然后单击 "**发布**"。
+1. 从**Azure 服务**导航中选择 "**应用服务**"，选择 "**新建**"，然后单击 "**发布**"。
 1. "**创建应用服务**" 窗口出现时：
    * 单击 "**添加帐户**"，然后使用 Azure 帐户凭据登录。 如果已登录，请从下拉列表中选择所需的帐户。
    * 对于**应用程序名称**，需要输入机器人的全局唯一名称。 此名称用于创建唯一的机器人 URL。 将填充默认值，包括日期和时间（例如： "EchoBot20190805125647"）。 您可以使用本教程的默认名称。
@@ -218,10 +217,10 @@ ms.locfileid: "75495174"
 需要进行较小的配置更改，使机器人能够使用 web 套接字与直接线路语音通道通信。 按照以下步骤启用 web 套接字：
 
 1. 导航到[Azure 门户](https://portal.azure.com)，找到应用服务。 资源应命名为类似于**EchoBot20190805125647** （唯一的应用名称）。
-2. 在左侧导航栏中，在 "**设置**" 下单击 "**配置**"。
+2. 在**Azure 服务**导航中的 "**设置**" 下，单击 "**配置**"。
 3. 选择 "**常规设置**" 选项卡。
 4. 找到 " **Web 套接字**" 的切换，并将其设置为 **"开**"。
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 > [!TIP]
 > 您可以使用 Azure App Service 页顶部的控件来停止或重新启动该服务。 故障排除时，这可能很方便。
@@ -232,6 +231,8 @@ ms.locfileid: "75495174"
 
 > [!NOTE]
 > 如果要了解有关 bot 如何利用频道的详细信息，请参阅[将 Bot 连接到通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
+
+<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
 
 1. 第一步是为注册创建新的资源。 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源”。
 2. 在搜索栏类型**机器人**中显示结果后，选择 "**机器人频道注册**"。
@@ -253,7 +254,7 @@ ms.locfileid: "75495174"
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | 应用服务计划 | 美国西部 |
-| SpeechEchoBotTutorial-BotRegistration | 机器人通道注册 | 全球 |
+| SpeechEchoBotTutorial-BotRegistration | 机器人频道注册 | Global |
 | SpeechEchoBotTutorial-语音 | 认知服务 | 美国西部 |
 
 > [!IMPORTANT]
@@ -264,15 +265,15 @@ ms.locfileid: "75495174"
 现在是时候将机器人注册到了直接线路语音通道。 此通道用于在回显 bot 和使用语音 SDK 编译的客户端应用之间创建连接。
 
 1. 在[Azure 门户](https://portal.azure.com)中找到并打开**SpeechEchoBotTutorial-BotRegistration**资源。
-1. 从左侧导航栏中选择 "**频道**"。
+1. 在**Azure 服务**导航中，选择 "**通道**"。
    * 查找**更多通道**，找到并单击 "**直接连线语音**"。
    * 查看标题为 "**配置直接线路语音**" 的页面上的文本，然后展开标记为 "认知服务帐户" 的下拉菜单。
    * 从菜单中选择先前创建的语音资源（例如**SpeechEchoBotTutorial**），将机器人关联到语音订阅密钥。
-   * 单击“ **保存**”。
+   * 单击“保存”。
 
-1. 从左侧导航栏中，单击 "**设置**"。
+1. 在**Azure 服务**导航中，单击 "**设置**"。
    * 选中标记为**启用流式处理终结点**的框。 这是在机器人和直接线路语音通道之间启用基于 web 套接字构建的通信协议所必需的。
-   * 单击“ **保存**”。
+   * 单击“保存”。
 
 > [!TIP]
 > 若要了解详细信息，请参阅[连接机器人以定向语音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此页包含其他信息和已知问题。
@@ -295,7 +296,7 @@ ms.locfileid: "75495174"
 
 如果在主应用窗口中收到错误消息，请使用此表来确定并解决该错误：
 
-| 错误 | 该怎么办？ |
+| 错误 | 您该怎么办？ |
 |-------|----------------------|
 |错误 AuthenticationFailure： WebSocket 升级失败，出现身份验证错误（401）。 检查正确的订阅密钥（或授权令牌）和区域名称| 在应用的 "设置" 页中，确保已正确输入语音订阅密钥及其区域。<br>请确保正确输入了语音密钥和密钥区域。 |
 |错误 ConnectionFailure：远程主机关闭了连接。 错误代码：1011。 错误详细信息：无法在发送消息之前连接到机器人 | 请确保[已选中 "启用流式处理终结点"](#register-the-direct-line-speech-channel)框和/或将[ **Web 套接字**切换](#enable-web-sockets)到 "打开"。<br>请确保 Azure App Service 正在运行。 如果已启动，请尝试重新启动应用服务。|
@@ -432,7 +433,7 @@ ms.locfileid: "75495174"
 
 如果不打算继续使用本教程中部署的 echo 机器人，只需删除 Azure 资源组**SpeechEchoBotTutorial**，即可将其删除及其关联的所有 Azure 资源。
 
-1. 在[Azure 门户](https://portal.azure.com)中，单击左侧导航栏中的 "**资源组**"。
+1. 从 " [Azure 门户](https://portal.azure.com)中，单击" **Azure 服务**"导航中的"**资源组**"。
 2. 找到名为 " **SpeechEchoBotTutorial**" 的资源组。 单击三个点（...）。
 3. 选择“删除资源组”。
 

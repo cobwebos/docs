@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426201"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561793"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for MariaDB （预览版）的专用链接
 
@@ -20,7 +20,7 @@ ms.locfileid: "77426201"
 > [!NOTE]
 > 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要逐步执行本操作方法指南，需要：
 
@@ -121,6 +121,9 @@ az network private-dns record-set a create --name mydemoserver --zone-name priva
 az network private-dns record-set a add-record --record-set-name mydemoserver --zone-name privatelink.mariadb.database.windows.net --resource-group myResourceGroup -a <Private IP Address>
 ```
 
+> [!NOTE] 
+> "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
 从 Internet 连接到 VM *myVm*，如下所示：
@@ -168,7 +171,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
     | 设置 | 值 |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
-    | Hostname | 选择*mydemoserver.privatelink.mariadb.database.azure.com* |
+    | 主机名 | 选择*mydemoserver.privatelink.mariadb.database.azure.com* |
     | 用户名 | 输入用户名作为在 MariaDB 服务器创建过程中提供的 *username@servername* 。 |
     | 密码 | 输入在创建 MariaDB 服务器期间提供的密码。 |
     ||

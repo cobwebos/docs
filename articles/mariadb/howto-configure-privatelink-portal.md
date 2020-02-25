@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a9b3ae1ed28fc22d91760a4af3832a604a419a30
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425912"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561725"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>使用门户创建和管理 Azure Database for MariaDB （预览版）的专用链接
 
@@ -39,9 +39,9 @@ ms.locfileid: "77425912"
     | ------- | ----- |
     | 名称 | 输入 *MyVirtualNetwork*。 |
     | 地址空间 | 输入 10.1.0.0/16。 |
-    | 订阅 | 选择你的订阅。|
+    | 订阅 | 选择订阅。|
     | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | Location | 选择“西欧”。|
+    | 位置 | 选择“西欧”。|
     | 子网 - 名称 | 输入 *mySubnet*。 |
     | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
     |||
@@ -56,7 +56,7 @@ ms.locfileid: "77425912"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择你的订阅。 |
+    | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
@@ -106,13 +106,13 @@ ms.locfileid: "77425912"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择你的订阅。 |
+    | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **服务器详细信息** |  |
     |服务器名称  | 输入 *myserver*。 如果此名称已被使用，请创建唯一的名称。|
     | 管理员用户名| 输入所选的管理员名称。 |
     | 密码 | 输入所选密码。 密码长度必须至少为 8 个字符，且符合定义的要求。 |
-    | Location | 选择要在其中保存 MariaDB 服务器的 Azure 区域。 |
+    | 位置 | 选择要在其中保存 MariaDB 服务器的 Azure 区域。 |
     |版本  | 选择所需的 MariaDB 服务器的数据库版本。|
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
@@ -136,7 +136,7 @@ ms.locfileid: "77425912"
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | 订阅 | 选择你的订阅。 |
+    | 订阅 | 选择订阅。 |
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 名称 | 输入“myPrivateEndpoint”。 如果此名称已被使用，请创建唯一的名称。 |
@@ -148,7 +148,7 @@ ms.locfileid: "77425912"
     | 设置 | 值 |
     | ------- | ----- |
     |连接方法  | 选择“连接到我的目录中的 Azure 资源”。|
-    | 订阅| 选择你的订阅。 |
+    | 订阅| 选择订阅。 |
     | 资源类型 | 选择 " **DBforMariaDB/服务器**"。 |
     | 资源 |选择“myServer”|
     |目标子资源 |选择*mariadbServer*|
@@ -162,7 +162,7 @@ ms.locfileid: "77425912"
     | 虚拟网络| 选择“MyVirtualNetwork”。 |
     | 子网 | 选择“mySubnet”。 ** |
     |**专用 DNS 集成**||
-    |与专用 DNS 区域集成 |选择 **“是”** 。 |
+    |与专用 DNS 区域集成 |请选择“是”。 |
     |专用 DNS 区域 |选择 *（新的） privatelink* |
     |||
 
@@ -170,6 +170,9 @@ ms.locfileid: "77425912"
 2. 看到“验证通过”消息时，选择“创建”。 
 
     ![已创建专用链接](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
+
+    > [!NOTE] 
+    > "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
 
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>使用远程桌面 (RDP) 连接到 VM
 

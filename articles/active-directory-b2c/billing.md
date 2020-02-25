@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846856"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564767"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的计费模式
 
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）的使用费用按 Azure 订阅计�
 
 链接到 Azure AD B2C 租户的订阅可用于 Azure AD B2C 使用情况或其他 Azure 资源的计费，包括附加 Azure AD B2C 资源。 不能使用该订阅在 Azure AD B2C 租户中添加其他基于 Azure 许可证的服务或 Office 365 许可证。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 * [Azure 订阅](https://azure.microsoft.com/free/)
 * 要链接到订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)
@@ -140,4 +140,4 @@ Azure AD B2C 中支持 Azure 云解决方案提供商 (CSP) 订阅。 可以使�
 
 ## <a name="next-steps"></a>后续步骤
 
-除了查看所选 Azure 订阅中的使用情况和计费详细信息，还可以使用[使用情况报告 API](view-usage-reports.md)查看详细的每日使用情况报表。
+有关最新定价信息，请参阅[定价 Azure Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)。

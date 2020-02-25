@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268851"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565411"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>组织中的用户如何邀请来宾用户访问应用
 
@@ -73,7 +73,7 @@ ms.locfileid: "74268851"
 7. 选择“添加”，以自动向来宾用户发送邀请。 发送邀请后，该用户帐户将以来宾的形式自动添加到目录。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 自助服务应用管理要求全局管理员和 Azure AD 管理员完成一些初始设置。 在设置过程中，可为应用配置自助服务，并将某个组分配到应用程序所有者可以管理的应用。 此外，可将组配置为允许任何人请求成员身份，但需要组所有者的审批。 （详细了解[自助服务组管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-self-service-management)。） 
 
@@ -105,7 +105,7 @@ ms.locfileid: "74268851"
 2. 在导航窗格中选择“Azure Active Directory”。
 3. 在“管理”下，选择“企业应用程序” **“所有应用程序”**  > 。
 4. 在应用程序列表中，找到并打开该应用。
-5. 在“管理”下，选择“单一登录”，然后配置应用程序的单一登录。 （有关详细信息，请参阅[如何管理企业应用的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal)。）
+5. 在“管理”下，选择“单一登录”，然后配置应用程序的单一登录。 （有关详细信息，请参阅[如何管理企业应用的单一登录](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications)。）
 6. 在“管理”下，选择“自助服务”，然后设置自助服务应用访问权限。 （有关详细信息，请参阅[如何使用自助服务应用访问权限](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to)。） 
 
     > [!NOTE]

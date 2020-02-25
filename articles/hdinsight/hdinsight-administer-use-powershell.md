@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/09/2019
-ms.openlocfilehash: e37571b0078b4966aab9f505ddf88c2edb353197
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435631"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560348"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -23,7 +23,7 @@ Azure PowerShell 可用于在 Azure 中控制和自动执行工作负荷的部�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -73,47 +73,16 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
  有关缩放群集的详细信息，请参阅[缩放 HDInsight 群集](./hdinsight-scaling-best-practices.md)。
 
-## <a name="grantrevoke-access"></a>授予/撤消访问权限
-
-HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-默认情况下，将授权这些服务进行访问。 可以撤消/授予访问权限。 若要撤消：
-
-```powershell
-Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
-```
-
-若要授予：
-
-```powershell
-$clusterName = "<HDInsight Cluster Name>"
-
-# Credential option 1
-$hadoopUserName = "admin"
-$hadoopUserPassword = '<Enter the Password>'
-$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
-
-# Credential option 2
-#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
-
-Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
-```
-
-> [!NOTE]  
-> 授予/撤销访问权限时，将重设群集用户的用户名和密码。
-
-也可通过门户执行授予和撤消访问权限。 请参阅[使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集](hdinsight-administer-use-portal-linux.md)。
-
 ## <a name="update-http-user-credentials"></a>更新 HTTP 用户凭据
 
-这与授予/撤消 HTTP 访问权限的过程相同。 如果已授予群集 HTTP 访问权限，必须先撤销该权限。  然后再使用新的 HTTP 用户凭据授予访问权限。
+[AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential)设置 Azure HDInsight 群集的网关 HTTP 凭据。
+
+```powershell
+$clusterName = "CLUSTERNAME"
+$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+
+Set-AzHDInsightGatewayCredential -ClusterName $clusterName -HttpCredential $credential
+```
 
 ## <a name="find-the-default-storage-account"></a>查找默认存储帐户
 

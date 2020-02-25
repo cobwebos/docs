@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: 托管文档
+summary: 语音服务容器适用于语音到文本和文本到语音方案，涵盖标准或自定义模型。
+metadata:
+  title: 托管文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 1e8a57f6132af467975714e585f18059cf9b569e
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562940"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 语音服务容器
+      url: speech-container-howto.md
+    - text: 带有 Kubernetes 的语音服务容器
+      url: speech-container-howto-on-premises.md
+    - text: Azure 容器实例上的语音服务容器
+      url: deploy-speech-on-container-instances.md
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建 Azure 语音资源
+      url: get-started.md#create-a-speech-resource-in-azure
+    - text: 配置容器
+      url: speech-container-configuration.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 支持的区域
+      url: regions.md
+    - text: 主权云
+      url: sovereign-clouds.md

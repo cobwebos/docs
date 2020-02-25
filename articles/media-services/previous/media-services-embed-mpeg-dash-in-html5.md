@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464192"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564850"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>使用 DASH.js 在 HTML5 应用程序中嵌入 MPEG-DASH 自适应流式处理视频  
 
 ## <a name="overview"></a>概述
-MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为希望传送高质量自适应视频流式处理输出的开发人员提供了显著的好处。 使用 MPEG-DASH，当网络阻塞时，视频流会自动调整到较低清晰度。 这会减少在播放器下载下几秒钟要播放内容（又称缓冲）时观众看到“暂停”视频的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
+MPEG-DASH 是视频内容自适应流式处理的 ISO 标准，为希望传送高质量自适应视频流式处理输出的开发人员提供了显著的好处。 使用 MPEG-DASH，当网络阻塞时，视频流会自动调整到较低清晰度。 这会降低查看器在播放机下载接下来的几秒钟后播放 "暂停" 视频的可能性，这就减少了缓冲的可能性。 当网络拥塞减少时，视频播放器将转而恢复到较高质量的流。 这种适应所需带宽的能力也会导致视频开始的速度更快。 这意味着可以在快速下载较低质量段播放最初的几秒钟，并在已缓冲足够内容后提升到更高质量。
 
 Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标是提供可以在需要视频播放的应用程序中自由重用的功能强大的跨平台播放器。 它在支持 W3C 媒体源扩展 (MSE) 的任何浏览器（目前为 Chrome、Microsoft Edge 和 IE11，其他浏览器已指示有意支持 MSE）中提供 MPEG-DASH 播放。 有关 DASH.js、js 的详细信息，请参阅 GitHub dash.js 存储库。
 
@@ -55,7 +55,7 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 ```
 
 ## <a name="adding-the-dashjs-player"></a>添加 DASH.js 播放器
-要将 dash.js 引用实现添加到应用程序，需要从最新版本的 dash.js 项目中找到 dash.all.js 文件。 此文件应保存到应用程序的 JavaScript 文件夹中。 此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。 如果浏览 dash.js 存储库，将找到各个文件、测试代码以及更多内容，但如果只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
+若要向应用程序添加短线引用实现，需要从最新版本的短线项目中获取所有 .js 文件。 此文件应保存到应用程序的 JavaScript 文件夹中。 此文件是一个易用文件，将所有必要的 dash.js 代码一起提取到单个文件中。 如果浏览 dash.js 存储库，将找到各个文件、测试代码以及更多内容，但如果只想使用 dash.js，那么 dash.all.js 文件就是你所需的文件。
 
 要将 dash.js 播放器添加到应用程序，请将脚本标记添加到 basicPlayer.html 的 head 部分中：
 
@@ -113,7 +113,6 @@ Dash.js 是用 JavaScript 编写的开源 MPEG-DASH 视频播放器。 其目标
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>另请参阅
-[开发视频播放器应用程序](media-services-develop-video-players.md)
 
 [GitHub dash.js 存储库](https://github.com/Dash-Industry-Forum/dash.js) 
 

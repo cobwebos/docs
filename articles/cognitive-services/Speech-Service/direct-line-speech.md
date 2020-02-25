@@ -3,27 +3,27 @@ title: 直拨语音语音服务
 titleSuffix: Azure Cognitive Services
 description: 概述了语音助手使用语音软件开发工具包（SDK）的直接线路语音功能、功能和限制。
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806197"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562524"
 ---
 # <a name="about-direct-line-speech"></a>关于直接行语音
 
-[语音助手](voice-assistants.md)会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。 设备通过语音 SDK 的 `DialogServiceConnector` 对象连接到助手。
+**直接线路语音**是一种可靠的端到端解决方案，可用于创建灵活、可扩展的语音助手。 它由机器人框架和其直接线路语音通道提供支持，该通道经过优化，可用于与机器人的语音语音交互。
 
-**直接线路语音**是一种可靠的端到端解决方案，可用于创建灵活、可扩展的语音助手，并通过机器人框架和其直接线路语音通道提供支持，这些解决方案经过优化，可用于与机器人的语音语音交互。
+[语音助手](voice-assistants.md)会倾听用户的响应，并在响应时执行操作，这通常是一回谈话。 他们使用[语音到文本](speech-to-text.md)转录用户的语音，然后对文本的自然语言理解采取措施。 此操作通常包含用[文本到语音功能](text-to-speech.md)生成的助手的语音输出。
 
-直接连线语音提供语音助手的最高级别的自定义和复杂程度。 它非常适合用于与任务完成或命令和控制使用一起处于开放、自然或混合状态的会话方案。 这种高度的灵活性带来了更大的复杂性，并且通过自然语言输入以定义完善的任务为作用域的方案，可能需要考虑使用[自定义命令（预览版）](custom-commands.md)来简化解决方案的体验。
+直接连线语音提供语音助手的最高级别的自定义和复杂程度。 它适用于使用任务完成或命令和控制使用的开放、自然或混合两种会话方案。 这种高度的灵活性带来了更大的复杂性，并且通过自然语言输入以定义完善的任务为作用域的方案，可能需要考虑使用[自定义命令（预览版）](custom-commands.md)来简化解决方案的体验。
 
 ## <a name="getting-started-with-direct-line-speech"></a>直接行语音入门
 
@@ -31,17 +31,17 @@ ms.locfileid: "74806197"
 
    ![直接连线语音业务流程服务流的概念图](media/voice-assistants/overview-directlinespeech.png "语音通道流")
 
-有关使用直行语音创建简单语音助手的完整循序渐进指南，请参阅[语音教程教程，了解如何使用语音 SDK 和直接线路语音通道实现机器人](tutorial-voice-enable-your-bot-speech-sdk.md)。
+有关使用直行语音创建简单语音助手的完整循序渐进指南，请参阅[使用语音 SDK 和直接线路语音通道启用机器人的语音教程](tutorial-voice-enable-your-bot-speech-sdk.md)。
 
-我们还提供了一些快速入门，旨在让你在不到10分钟的时间内运行代码。 此表包含按语言组织的语音助手快速入门列表。
+我们还提供了快速入门，旨在让你快速运行代码和学习 Api。 此表包含按语言和平台组织的语音助手快速入门列表。
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#，UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#，UWP | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [“浏览”](https://aka.ms/csspeech/javaref) |
+| Java | Android | [“浏览”](https://aka.ms/csspeech/javaref) |
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 

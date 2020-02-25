@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure 的客户密码箱
 description: Microsoft Azure 的客户密码箱技术概述，在 Microsoft 可能需要访问客户数据时提供对云提供商访问的控制。
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466408"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561963"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客户密码箱
 
@@ -42,37 +42,37 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
     - 资源的范围
     - 请求者是隔离标识还是使用多重身份验证
     - 权限级别
-    
+
     此请求还可以基于 JIT 规则，包括来自内部 Microsoft 审批者的批准。 例如，审批者可以是客户支持主管或 DevOps 经理。
 
 6. 当请求需要直接访问客户数据时，将启动客户密码箱请求。 例如，对客户的虚拟机的远程桌面访问。
-    
+
     请求现在处于**客户通知**状态，在授予访问权限前等待客户的批准。
 
 7. 在客户组织中，拥有 Azure 订阅的[所有者角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)的用户将收到来自 Microsoft 的电子邮件，通知他们有关挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
-    
+
     示例电子邮件：
-    
+
     ![Azure 客户密码箱-电子邮件通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. 电子邮件通知提供 Azure 门户中**客户密码箱**边栏选项卡的链接。 使用此链接，指定的审批者可以登录到 Azure 门户，查看其组织为客户密码箱所做的任何挂起的请求：
-    
+
     ![Azure 客户密码箱-登陆页面](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    请求在客户队列中保留四天。 此时间过后，访问请求会自动过期，并且不会向 Microsoft 工程师授予任何访问权限。
 
 9. 若要获取待定请求的详细信息，指定的审批者可以从**挂起的请求**中选择密码箱请求：
-    
+
     ![Azure 客户密码箱-查看挂起的请求](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
 10. 指定的审批者还可以选择**服务请求 ID** ，以查看原始用户创建的支持票证请求。 此信息提供了有关 Microsoft 支持部门的原因以及所报告问题的历史记录的上下文。 例如：
-    
+
     ![Azure 客户密码箱-查看支持票证请求](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. 查看请求后，指定的审批者选择 "**批准**" 或 "**拒绝**"：
-    
+
     ![Azure 客户密码箱-选择 "批准" 或 "拒绝"](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     作为所选内容的结果：
     - **批准**：向 Microsoft 工程师授予访问权限。 在八小时的默认期限内授予访问权限。
     - **拒绝**： Microsoft 工程师的提升访问请求被拒绝，无需执行其他操作。
@@ -113,20 +113,20 @@ Microsoft Azure 的客户密码箱提供了一个界面，供客户查看和批�
 
 以下服务目前以预览版提供客户密码箱：
 
-- Azure 存储 
+- Azure 存储
 
-- Azure SQL 数据库 
+- Azure SQL DB
 
-- Azure 数据资源管理器 
+- Azure 数据资源管理器
 
-- 虚拟机（现在还包括对内存转储和托管磁盘的访问权限） 
+- 虚拟机（现在还包括对内存转储和托管磁盘的访问权限）
 
 - Azure 订阅传输
 
 若要为组织的这些预览版提供客户密码箱，请注册[Azure 公共预览版客户密码箱](https://aka.ms/customerlockbox/insiderprogram)。
 
 
-## <a name="exclusions"></a>排除项
+## <a name="exclusions"></a>免除
 
 不会在以下工程支持方案中触发客户密码箱请求：
 

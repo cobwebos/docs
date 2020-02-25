@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: 语音到文本文档
+summary: 来自语音服务的语音到文本（也称为语音识别）允许实时将音频流传输到文本中。
+metadata:
+  title: 语音到文本文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 2dd9fa8c9af53c69a1790dd890b48a7092f5a5da
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562929"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是语音转文本？
+      url: speech-to-text.md
+  - linkListType: quickstart
+    links:
+    - text: 识别来自麦克风输入的语音
+      url: quickstarts/speech-to-text-from-microphone.md
+    - text: 识别音频文件中的语音
+      url: quickstarts/speech-to-text-from-file.md
+    - text: 识别存储在 Blob 存储中的语音
+      url: quickstarts/from-blob.md
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 更改语音识别源语言
+      url: how-to-specify-source-language.md
+    - text: 选择语音识别模式
+      url: how-to-choose-recognition-mode.md
+    - text: 使用短语列表提高准确性
+      url: how-to-phrase-lists.md
+    - text: 使用租户模型提高准确性
+      url: tutorial-tenant-model.md
+    - text: 使用自定义语音提高准确性
+      url: how-to-custom-speech.md
+    - text: 选择特定的麦克风输入设备
+      url: how-to-select-audio-input-devices.md
+    - text: 使用自动源语言检测
+      url: how-to-automatic-language-detection.md
+    - text: 使用压缩的音频输入格式
+      url: how-to-use-codec-compressed-audio-input-streams.md
+    - text: 使用压缩的音频输入格式 (iOS)
+      url: how-to-use-codec-compressed-audio-input-streams-ios.md
+    - text: 使用压缩的音频输入格式 (Android)
+      url: how-to-use-codec-compressed-audio-input-streams-android.md
+  - linkListType: concept
+    links:
+    - text: 准备自定义语音数据
+      url: how-to-custom-speech-test-data.md
+    - text: 检查自定义语音数据
+      url: how-to-custom-speech-inspect-data.md
+    - text: 评估自定义语音准确性
+      url: how-to-custom-speech-evaluate-data.md
+    - text: 训练自定义模型
+      url: how-to-custom-speech-train-model.md
+    - text: 部署自定义模型
+      url: how-to-custom-speech-deploy-model.md
+    - text: 创建用户标记的听录内容
+      url: how-to-custom-speech-human-labeled-transcriptions.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: 语言支持
+      url: language-support.md#speech-to-text
+    - text: 定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 语音转文本常见问题解答
+      url: faq-stt.md

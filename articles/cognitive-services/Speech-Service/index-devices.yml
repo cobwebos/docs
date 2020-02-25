@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: 语音设备文档
+summary: 语音设备 SDK 是与特制的麦克风阵列开发工具包配对的一个预优化库。
+metadata:
+  title: 语音设备文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562852"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 关于语音设备 SDK
+      url: speech-devices-sdk.md
+  - linkListType: quickstart
+    links:
+    - text: 使用语音设备 SDK （Windows）
+      url: speech-devices-sdk-quickstart.md?pivots=platform-windows
+    - text: 使用语音设备 SDK （Linux）
+      url: speech-devices-sdk-quickstart.md?pivots=platform-linux
+    - text: 使用语音设备 SDK （Android）
+      url: speech-devices-sdk-quickstart.md?pivots=platform-android
+- title: 分步指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 设计麦克风阵列
+      url: speech-devices-sdk-microphone.md
+    - text: 设置 Roobo v1 工具包
+      url: speech-devices-sdk-roobo-v1.md
+- title: 参考
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 发行说明
+      url: devices-sdk-release-notes.md
+  - linkListType: reference
+    links:
+    - text: 故障排除
+      url: speech-devices-sdk-troubleshooting.md

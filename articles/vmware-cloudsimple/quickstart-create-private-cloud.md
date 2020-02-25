@@ -1,7 +1,7 @@
 ---
-title: Azure VMware 解决方案（AVS）快速入门-创建 AVS 私有云
-description: 了解如何使用 Azure VMware 解决方案（AVS）创建和配置 AVS 私有云
-titleSuffix: Azure VMware Solutions (AVS)
+title: 快速入门：创建私有云
+titleSuffix: Azure VMware Solutions by CloudSimple
+description: 了解如何通过 CloudSimple 使用 Azure VMware 解决方案创建和配置私有云
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cafcf04dac0542f1506980d8b9484b82b558e100
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018561"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564714"
 ---
-# <a name="quickstart---configure-an-avs-private-cloud-environment"></a>快速入门-配置 AVS 私有云环境
+# <a name="quickstart---configure-a-private-cloud-environment"></a>快速入门-配置私有云环境
 
-本文介绍如何创建 AVS 私有云并设置你的 AVS 私有云环境。
+本文介绍如何创建 CloudSimple 私有云并设置私有云环境。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -28,58 +28,58 @@ ms.locfileid: "77018561"
 
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
-## <a name="create-an-avs-private-cloud"></a>创建 AVS 私有云
+## <a name="create-a-private-cloud"></a>创建私有云
 
-AVS 私有云是一种独立的 VMware 堆栈，支持 ESXi 主机、vCenter、vSAN 和 NSX。
+私有云是支持 ESXi 主机、vCenter、vSAN 和 NSX 的独立 VMware 堆栈。
 
-AVS 私有云通过 AVS 门户进行管理。 它们在自己的管理域中具有自己的 vCenter 服务器。 堆栈在专用节点和隔离的裸机硬件节点上运行。
+私有云通过 CloudSimple 门户进行管理。 它们在自己的管理域中具有自己的 vCenter 服务器。 堆栈在专用节点和隔离的裸机硬件节点上运行。
 
 1. 选择“所有服务”。
-2. 搜索**AVS 服务**。
-3. 选择要在其上创建 AVS 私有云的 AVS 服务。
-4. 从 "**概述**" 中，单击 "**创建 avs 私有云**" 以打开适用于 AVS 门户的新浏览器选项卡。 如果系统提示，请用 Azure 登录凭据登录。 
+2. 搜索 " **CloudSimple Services**"。
+3. 选择要在其上创建私有云的 CloudSimple 服务。
+4. 从 "**概述**" 中，单击 "**创建私有云**" 以打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
 
-    ![从 Azure 创建 AVS 私有云](media/create-private-cloud-from-azure.png)
+    ![从 Azure 创建私有云](media/create-private-cloud-from-azure.png)
 
-5. 在 AVS 门户中，提供你的 AVS 私有云的名称。
-6. 选择你的 AVS 私有云的**位置**。
+5. 在 CloudSimple 门户中，提供私有云的名称。
+6. 选择私有云的**位置**。
 7. 选择 "**节点类型**"，与在 Azure 上预配的类型一致。
-8. 指定**节点计数**。 创建 AVS 私有云需要至少三个节点。
+8. 指定**节点计数**。  至少需要三个节点才能创建私有云。
 
-    ![创建 AVS 私有云-基本信息](media/create-private-cloud-basic-info.png)
+    ![创建私有云-基本信息](media/create-private-cloud-basic-info.png)
 
 9. 单击 "**下一步：高级选项**"。
 10. 输入 vSphere/vSAN 子网的 CIDR 范围。 请确保 CIDR 范围不与任何本地或其他 Azure 子网（虚拟网络）或网关子网重叠。
 
-    **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围最多支持26个节点，a/23 CIDR 范围最多支持58个节点，并且/22 和/21 CIDR 范围支持64节点（AVS 私有云中的最大节点数）。 若要了解详细信息、Vlan 和子网，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)。
+    **CIDR 范围选项：** /24、/23、/22 或/21。 A/24 CIDR 范围最多支持26个节点，/23 个 CIDR 范围最多支持58个节点，并且/22 和/21 CIDR 范围支持64节点（私有云中的最大节点数）。  若要了解详细信息、Vlan 和子网，请参阅[vlan 和子网概述](cloudsimple-vlans-subnets.md)。
 
       > [!IMPORTANT]
-      > VSphere/vSAN CIDR 范围中的 IP 地址保留供 AVS 私有云基础结构使用。 请勿在任何虚拟机上使用此范围内的 IP 地址。
+      > VSphere/vSAN CIDR 范围中的 IP 地址保留供私有云基础结构使用。  请勿在任何虚拟机上使用此范围内的 IP 地址。
 
 11. 单击 "**下一步"：查看和创建**。
 12. 查看设置。 如果需要更改任何设置，请单击 "**上一步**"。
 13. 单击“创建”。
 
-AVS 私有云预配过程开始。 预配 AVS 私有云可能需要长达两个小时。
+私有云预配过程开始。  预配私有云可能需要长达两个小时。
 
-## <a name="launch-avs-portal"></a>启动 AVS 门户
+## <a name="launch-cloudsimple-portal"></a>启动 CloudSimple 门户
 
-可以从 Azure 门户访问 AVS 门户。 将使用单一登录（SSO）通过 Azure 登录凭据启动 AVS 门户。 访问 AVS 门户要求你授权**Avs 服务授权**应用程序。 有关授予权限的详细信息，请参阅[许可到 AVS 服务授权应用程序](access-cloudsimple-portal.md#consent-to-avs-service-authorization-application)。
+可以从 Azure 门户访问 CloudSimple 门户。  将使用 Azure 登录凭据通过单一登录（SSO）启动 CloudSimple 门户。  若要访问 CloudSimple 门户，需要授权**CloudSimple Service 授权**应用程序。  有关授予权限的详细信息，请参阅[同意 CloudSimple 服务授权应用程序](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application)。
 
 1. 选择“所有服务”。
-2. 搜索**AVS 服务**。
-3. 选择要在其上创建 AVS 私有云的 AVS 服务。
-4. 从 "概述" 中，单击 **"前往 avs 门户"** 以打开适用于 avs 门户的新浏览器选项卡。 如果系统提示，请用 Azure 登录凭据登录。 
+2. 搜索 " **CloudSimple Services**"。
+3. 选择要在其上创建私有云的 CloudSimple 服务。
+4. 从 "概述" 中，单击 **"前往 CloudSimple 门户"** ，打开 CloudSimple 门户的新浏览器选项卡。  如果系统提示，请用 Azure 登录凭据登录。  
 
-    ![启动 AVS 门户](media/launch-cloudsimple-portal.png)
+    ![启动 CloudSimple 门户](media/launch-cloudsimple-portal.png)
 
 ## <a name="create-point-to-site-vpn"></a>创建点到站点 VPN
 
-点到站点 VPN 连接是从计算机连接到 AVS 私有云的最简单方法。 如果要远程连接到 AVS 私有云，请使用点到站点 VPN 连接。 若要快速访问 AVS 私有云，请遵循以下步骤。 可以使用[站点到站点 VPN](vpn-gateway.md)或[Azure ExpressRoute](on-premises-connection.md)来访问本地网络中的 AVS 区域。
+点到站点 VPN 连接是从计算机连接到私有云的最简单方法。 如果要远程连接到私有云，请使用点到站点 VPN 连接。  若要快速访问私有云，请遵循以下步骤。  可以使用[站点到站点 VPN](vpn-gateway.md)或[Azure ExpressRoute](on-premises-connection.md)来访问本地网络中的 CloudSimple 区域。
 
 ### <a name="create-gateway"></a>创建网关
 
-1. 启动 AVS 门户并选择 "**网络**"。
+1. 启动 CloudSimple 门户，然后选择 "**网络**"。
 2. 选择**VPN 网关**。
 3. 单击 "**新建 VPN 网关**"。
 
@@ -89,29 +89,29 @@ AVS 私有云预配过程开始。 预配 AVS 私有云可能需要长达两个�
 
     * 选择**点到站点 VPN**作为网关类型。
     * 输入名称以标识网关。
-    * 选择要在其中部署 AVS 服务的 Azure 位置。
-    * 为点到站点网关指定客户端子网。 当你连接时，将从此子网中指定 DHCP 地址。
+    * 选择要在其中部署 CloudSimple 服务的 Azure 位置。
+    * 为点到站点网关指定客户端子网。  当你连接时，将从此子网中指定 DHCP 地址。
 
 5. 对于 "**连接/用户**"，指定以下设置，然后单击 "**下一步**"。
 
-    * 若要自动允许当前和未来的所有用户通过此点到站点网关访问 AVS 私有云，请选择 "**自动添加所有用户**"。 如果选择此选项，则会自动选择 "用户" 列表中的所有用户。 您可以通过取消选择列表中的单个用户来覆盖 "自动" 选项。
+    * 若要自动允许当前和未来的所有用户通过此点到站点网关访问私有云，请选择 "**自动添加所有用户**"。 如果选择此选项，则会自动选择 "用户" 列表中的所有用户。 您可以通过取消选择列表中的单个用户来覆盖 "自动" 选项。
     * 若要仅选择单个用户，请单击 "用户" 列表中的复选框。
 
 6. 通过 "Vlan/子网" 部分，可以为网关和连接指定管理和用户 Vlan/子网。
 
     * **自动添加**选项设置此网关的全局策略。 这些设置将应用于当前的网关。 这些设置可在 "**选择**" 区域中被覆盖。
-    * 选择 "**添加 AVS 私有云的管理 vlan/子网**"。
+    * 选择 "**添加私有云的管理 vlan/子网**"。
     * 若要添加所有用户定义的 Vlan/子网，请单击 "**添加用户定义的 vlan/子网**"。
     * "**选择**设置" 在 "**自动添加**" 下覆盖全局设置。
 
 7. 单击 "**下一步**" 查看设置。 单击 "编辑" 图标进行任何更改。
 8. 单击 "**创建**"，创建 VPN 网关。
 
-### <a name="connect-to-avs-using-point-to-site-vpn"></a>使用点到站点 VPN 连接到 AVS
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>使用点到站点 VPN 连接到 CloudSimple
 
-从计算机连接到 AVS 需要 VPN 客户端。 下载适用于 Windows 的[OpenVPN client](https://openvpn.net/community-downloads/)或用于 MACOS 和 OS X 的[Viscosity](https://www.sparklabs.com/viscosity/download/) 。
+从计算机连接到 CloudSimple 时需要 VPN 客户端。  下载适用于 Windows 的[OpenVPN client](https://openvpn.net/community-downloads/)或用于 MACOS 和 OS X 的[Viscosity](https://www.sparklabs.com/viscosity/download/) 。
 
-1. 启动 AVS 门户并选择 "**网络**"。
+1. 启动 CloudSimple 门户，然后选择 "**网络**"。
 2. 选择**VPN 网关**。
 3. 在 VPN 网关列表中，单击 "点到站点 VPN 网关"。
 4. 选择“用户”。
@@ -124,49 +124,50 @@ AVS 私有云预配过程开始。 预配 AVS 私有云可能需要长达两个�
     * 有关[在 Windows 客户端上导入配置](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program)的说明
     * 有关[在 macOS 或 OS X 上导入配置](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection)的说明
 
-7. 连接到 AVS。
+7. 连接到 CloudSimple。
 
 ## <a name="create-a-vlan-for-your-workload-vms"></a>为工作负荷 Vm 创建 VLAN
 
-创建 AVS 私有云后，创建一个 VLAN，你将在其中部署工作负荷/应用程序 Vm。
+创建私有云之后，创建一个 VLAN，你将在其中部署工作负荷/应用程序 Vm。
 
-1. 在 AVS 门户中，选择 "**网络**"。
+1. 在 CloudSimple 门户中，选择 "**网络**"。
 2. 单击 " **VLAN/子网**"。
 3. 单击 "**创建 VLAN/子网**"。
 
     ![创建 VLAN/子网](media/create-new-vlan-subnet.png)
 
-4. 为新的 VLAN/子网选择**AVS 私有云**。
-5. 从列表中选择一个 VLAN ID。 
+4. 选择新 VLAN/子网的**私有云**。
+5. 从列表中选择一个 VLAN ID。  
 6. 输入子网名称以标识子网。
-7. 指定子网 CIDR 范围和掩码。 此范围不得与任何现有子网重叠。
+7. 指定子网 CIDR 范围和掩码。  此范围不得与任何现有子网重叠。
 8. 单击“提交”。
 
     ![创建 VLAN/子网详细信息](media/create-new-vlan-subnet-details.png)
 
-将创建 VLAN/子网。 你现在可以使用此 VLAN ID 在 AVS 私有云 vCenter 上创建分布式端口组。
+将创建 VLAN/子网。  你现在可以使用此 VLAN ID 在私有云 vCenter 上创建分布式端口组。
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>将环境连接到 Azure 虚拟网络
 
-AVS 为你的 AVS 私有云提供 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息，请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)中的步骤。
+CloudSimple 为你的私有云提供了 ExpressRoute 线路。 可以将 Azure 上的虚拟网络连接到 ExpressRoute 线路。 有关设置连接的完整详细信息，请遵循[使用 ExpressRoute 的 Azure 虚拟网络连接](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)中的步骤。
 
 ## <a name="sign-in-to-vcenter"></a>登录到 vCenter
 
 你现在可以登录到 vCenter 来设置虚拟机和策略。
 
-1. 若要访问 vCenter，请从 AVS 门户开始。 在主页上的 "**常见任务**" 下，单击 "**启动 vSphere 客户端**"。 选择 AVS 私有云，然后单击 "在 AVS 私有云上**启动 VSphere 客户端**"。
+1. 若要访问 vCenter，请从 CloudSimple 门户启动。 在主页上的 "**常见任务**" 下，单击 "**启动 vSphere 客户端**"。  选择私有云，然后单击 "在私有云上**启动 VSphere 客户端**"。
 
     ![启动 vSphere 客户端](media/launch-vcenter-from-cloudsimple-portal.png)
 
-2. 选择首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码进行登录。 默认值为：
-    * 用户名： **CloudOwner@AVS.local**
-    * 密码： **AVS123！**  
+2. 选择首选的 vSphere 客户端以访问 vCenter，并使用用户名和密码进行登录。  默认值为：
+    * 用户名： **CloudOwner\@cloudsimple**
+    * 密码： **CloudSimple123！**  
 
 下一过程中的 vCenter 屏幕来自 vSphere （HTML5）客户端。
 
 ## <a name="change-your-vcenter-password"></a>更改你的 vCenter 密码
 
-AVS 建议你在首次登录到 vCenter 时更改密码。 设置的密码必须满足以下要求：
+CloudSimple 建议你在首次登录到 vCenter 时更改密码。  
+设置的密码必须满足以下要求：
 
 * 最长生存期：密码每365天必须更改一次
 * 限制重复使用：用户无法重用前面的五个密码
@@ -188,12 +189,12 @@ AVS 建议你在首次登录到 vCenter 时更改密码。 设置的密码必须
 使用默认密码部署了 NSX 管理器。 
 
 * 用户名：**管理员**
-* 密码： **AVS123！**
+* 密码： **CloudSimple123！**
 
-可在 AVS 门户上查找 NSX 管理器的完全限定的域名（FQDN）和 IP 地址。
+可以在 CloudSimple 门户中找到 NSX 管理器的完全限定的域名（FQDN）和 IP 地址。
 
-1. 启动 AVS 门户并选择 "**资源**"。
-2. 单击要使用的 AVS 私有云。
+1. 启动 CloudSimple 门户并选择 "**资源**"。
+2. 单击要使用的私有云。
 3. 选择**vSphere 管理网络**
 4. 使用**NSX Manager**的 FQDN 或 IP 地址，并使用 web 浏览器进行连接。
 

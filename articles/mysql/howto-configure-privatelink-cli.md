@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426232"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561691"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL （预览版）的专用链接
 
@@ -20,7 +20,7 @@ ms.locfileid: "77426232"
 > [!NOTE]
 > 此功能适用于所有 Azure Database for MySQL 支持常规用途和内存优化定价层的 Azure 区域。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -117,6 +117,9 @@ az network private-dns record-set a create --name myserver --zone-name privateli
 az network private-dns record-set a add-record --record-set-name myserver --zone-name privatelink.mysql.database.azure.com --resource-group myResourceGroup -a <Private IP Address>
 ```
 
+> [!NOTE] 
+> "Customer DNS" 设置中的 FQDN 不会解析为配置的专用 IP。 需要为配置的 FQDN 设置 DNS 区域[，如下所示。](../dns/dns-operations-recordsets-portal.md)
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
 从 Internet 连接到 VM *myVm*，如下所示：
@@ -165,7 +168,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | 设置 | 值 |
     | ------- | ----- |
     | 连接名称| 选择所选的连接名称。|
-    | Hostname | 选择*mydemoserver.privatelink.mysql.database.azure.com* |
+    | 主机名 | 选择*mydemoserver.privatelink.mysql.database.azure.com* |
     | 用户名 | 输入用户名作为在创建 MySQL server 过程中提供 *username@servername* 。 |
     | 密码 | 输入在创建 MySQL server 期间提供的密码。 |
     ||
