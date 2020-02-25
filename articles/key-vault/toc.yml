@@ -72,12 +72,12 @@
       items:
         - name: 安全概述
           href: overview-security.md
+        - name: 安全基线
+          href: security-baseline.md
         - name: 安全体系
           href: key-vault-ovw-security-worlds.md
         - name: 保护密钥保管库
           href: key-vault-secure-your-key-vault.md
-        - name: 内置安全控件
-          href: key-vault-security-controls.md
     - name: 软删除
       href: key-vault-ovw-soft-delete.md
     - name: 监视 Key Vault 事件

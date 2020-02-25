@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186845"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561776"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -229,18 +229,6 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 
 6. 选择“创建”以应用脚本。 脚本完成后，可以使用 SSH 和新密码连接到群集。
-
-## <a name="grantrevoke-access"></a>授予/撤消访问权限
-
-HDInsight 群集提供以下 HTTP Web 服务（所有这些服务都有 REST 样式的终结点）：
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-默认情况下，将授权这些服务进行访问。 你可以使用[Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access)吊销/授予访问权限。
 
 ## <a name="find-the-subscription-id"></a>查找订阅 ID
 

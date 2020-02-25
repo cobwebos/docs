@@ -1,5 +1,5 @@
 ---
-title: 排查 Azure 虚拟机上 SLES 12 SP3 的 SAP HANA 2.0 横向扩展 HSR-Pacemaker 设置问题 | Microsoft Docs
+title: 在 Azure Vm 故障排除中 SAP HANA 向外扩展 HSR-PacemakerMicrosoft Docs
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 299fba8a082f19f17ab581a6ac2bfac9fd3f8cf1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099668"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566227"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 
@@ -43,14 +43,14 @@ ms.locfileid: "70099668"
 仅在 SAP HANA 2.0 上执行了结合 SAP HANA 系统复制和 Pacemaker 的所有 SAP HANA 横向扩展测试。 操作系统版本为 SUSE Linux Enterprise Server 12 SP3 for SAP Applications。 已使用 SUSE 的最新 RPM 包 SAPHanaSR-ScaleOut 来设置 Pacemaker 群集。
 SUSE 已发布[此性能优化的安装程序的详细说明][sles-hana-scale-out-ha-paper]。
 
-对于 SAP HANA 向外扩展所支持的虚拟机类型, 请查看[SAP HANA 认证的 IaaS 目录][sap-hana-iaas-list]。
+对于 SAP HANA 向外扩展所支持的虚拟机类型，请查看[SAP HANA 认证的 IaaS 目录][sap-hana-iaas-list]。
 
 结合多个子网和 vNIC 的SAP HANA 横向扩展以及 HSR 的设置存在一个技术问题。 必须使用其中已修复此问题的最新 SAP HANA 2.0 修补程序。 支持以下 SAP HANA 版本： 
 
 * rev2.00.024.04 或更高版本 
 * rev2.00.032 或更高版本
 
-如果需要 SUSE 支持, 请遵循本[指南][suse-pacemaker-support-log-files]。 请根据本文所述，收集有关 SAP HANA 高可用性 (HA) 群集的所有信息。 SUSE 支持需要使用此信息执行进一步的分析。
+如果需要 SUSE 支持，请遵循本[指南][suse-pacemaker-support-log-files]。 请根据本文所述，收集有关 SAP HANA 高可用性 (HA) 群集的所有信息。 SUSE 支持需要使用此信息执行进一步的分析。
 
 在内部测试期间，通过 Azure 门户正常关闭 VM 时发生了群集设置混淆的问题。 因此，建议通过其他方法测试群集故障转移。 使用强制内核崩溃等方法，或者关闭网络或迁移 msl 资源。 请参阅以下部分的详细信息。 假设有意执行了标准关机过程。 进行维护是有意关闭的最佳示例。 有关详细信息，请参阅[计划内维护](#planned-maintenance)。
 
@@ -93,7 +93,7 @@ SUSE 已发布[此性能优化的安装程序的详细说明][sles-hana-scale-ou
 
 有关与使用多个网络相关的 SAP HANA 配置的信息，请参阅 [SAP HANA global.ini](#sap-hana-globalini)。
 
-群集中的每个 VM 有三个 vNIC，这与子网数相对应。 [如何在 azure 中创建具有多个网络接口卡的 Linux 虚拟机][azure-linux-multiple-nics]介绍了在部署 linux VM 时 azure 上可能出现的路由问题。 此特定路由文章仅适用于使用多个 vNIC 的情况。 SUSE 在 SLES 12 SP3 中按默认方式解决了此问题。 有关详细信息, 请参阅[netconfig IN EC2 And Azure 中的多 NIC][suse-cloud-netconfig]。
+群集中的每个 VM 有三个 vNIC，这与子网数相对应。 [如何在 azure 中创建具有多个网络接口卡的 Linux 虚拟机][azure-linux-multiple-nics]介绍了在部署 linux VM 时 azure 上可能出现的路由问题。 此特定路由文章仅适用于使用多个 vNIC 的情况。 SUSE 在 SLES 12 SP3 中按默认方式解决了此问题。 有关详细信息，请参阅[netconfig IN EC2 And Azure 中的多 NIC][suse-cloud-netconfig]。
 
 
 若要验证 SAP HANA 是否已正确配置为使用多个网络，请运行以下命令。 首先，在 OS 级别检查所有三个子网的所有三个内部 IP 地址是否处于活动状态。 如果定义了使用不同 IP 地址范围的子网，则必须调整命令：
@@ -125,7 +125,7 @@ select * from "SYS"."M_SYSTEM_OVERVIEW"
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
 </code></pre>
 
-若要查找包括 SAP HANA 的 SAP 软件堆栈中使用的每个端口, 请搜索[所有 SAP 产品的 tcp/ip 端口][sap-list-port-numbers]。
+若要查找包括 SAP HANA 的 SAP 软件堆栈中使用的每个端口，请搜索[所有 SAP 产品的 tcp/ip 端口][sap-list-port-numbers]。
 
 如果 SAP HANA 2.0 测试系统中的实例编号是 00，则名称服务器的端口号是 30001。 用于 HSR 元数据通信的端口号是 40002。 一种做法是登录到工作节点，然后检查主节点服务。 本文通过尝试连接到站点 2 的主节点来检查站点 2 的工作节点 2。
 
@@ -725,7 +725,7 @@ Transition Summary:
 ## <a name="planned-maintenance"></a>计划内维护 
 
 计划内维护期间存在不同的用例。 问题是要确定这种维护是否只是涉及到 OS 级别的更改、磁盘配置或 HANA 升级之类的基础结构维护。
-你可以从 SUSE 的文档中找到其他信息, 如[零停机时间][sles-zero-downtime-paper]或[SAP HANA SR 性能优化方案][sles-12-for-sap]。 这些文档还包含有关演示如何手动迁移主要站点的示例。
+你可以从 SUSE 的文档中找到其他信息，如[零停机时间][sles-zero-downtime-paper]或[SAP HANA SR 性能优化方案][sles-12-for-sap]。 这些文档还包含有关演示如何手动迁移主要站点的示例。
 
 我们已执行密集的内部测试来验证基础结构维护用例。 为了避免出现与迁移主要站点相关的任何问题，我们决定始终先迁移主要站点，然后再将群集置于维护模式。 这样，就不需要让群集忘记以前的情况：哪一端是主要站点，哪一端是辅助站点。
 
@@ -963,7 +963,7 @@ https://&ltnode&gt:7630
 ![在 Hawk 中列出约束](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示。 请参阅 hb_report 以收集日志文件: 
+还可以在 Hawk 的“历史记录”下上传 hb_report 输出，如下方所示。 请参阅 hb_report 收集日志文件： 
 
 ![在 Hawk 中上传 hb_report 输出](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

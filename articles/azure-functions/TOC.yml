@@ -353,9 +353,27 @@
             - name: 输出
               href: functions-bindings-event-grid-output.md
         - name: 事件中心
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: 概述
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: 触发器
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: 输出
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT 中心
-          href: functions-bindings-event-iot.md
+          items:
+            - name: 概述
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: 触发器
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: 输出
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP 和 webhook
           items:
             - name: 概述

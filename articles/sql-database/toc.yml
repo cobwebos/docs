@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: 托管实例审核
               href: sql-database-managed-instance-auditing.md
+        - name: 安全基线
+          href: security-baseline.md
     - name: 连接和查询
       href: sql-database-connect-query.md
       items:

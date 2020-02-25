@@ -352,7 +352,7 @@
         - name: '将模板与 C# 配合使用'
           href: csharp-template.md
         - name: 使用 Chef 创建 VM
-          href: chef-automation.md
+          href: ../../chef/chef-automation.md
         - name: 使用 Java
           href: java.md
         - name: 使用 Python
