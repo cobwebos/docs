@@ -88,9 +88,9 @@ Azure CLI 要求你登录到 Azure 帐户。 Azure CLI Shell 会话与 IoT 中�
 若要创建和启动模拟设备，请执行以下操作：
 1. 在第一个 CLI 会话中运行 [az iot hub device-identity create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) 命令。 这会创建模拟设备标识。 
 
-    *YourIotHubName*。 将下面的占位符替换为你为 IoT 中心选择的名称。 
+    *YourIotHubName*: 将下面的占位符替换为你为 IoT 中心选择的名称。 
 
-    *simDevice*。 在本快速入门的其余部分中，可以直接将此名称用于模拟设备。 可使用其他名称。 
+    *simDevice*: 在本快速入门的其余部分中，可以直接将此名称用于模拟设备。 或者，也可使用其他名称。 
 
     ```azurecli
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
