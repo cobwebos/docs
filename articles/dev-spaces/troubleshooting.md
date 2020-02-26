@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548843"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539580"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -123,7 +123,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 当使用以这些语�
 
 当你尝试使用 Dev 空间运行配置为在[AKS 虚拟节点](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)上运行的服务时，将发生此超时。 开发人员空间目前不支持在虚拟节点上构建或调试服务。
 
-如果使用 `--verbose` 开关运行 `azds up`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
+如果使用 `azds up` 开关运行 `--verbose`，或在 Visual Studio 中启用详细日志记录，便会看到其他详细信息：
 
 ```cmd
 $ azds up --verbose
@@ -265,7 +265,7 @@ Service cannot be started.
 例如，若要停止并禁用*Windows BranchCache*服务，请执行以下操作：
 * 在命令提示符下运行 `services.msc`。
 * 右键单击*BranchCache* ，然后选择 "*属性*"。
-* 单击“停止”。
+* 单击 "*停止*"。
 * 或者，你可以通过将*启动类型*设置为 "*已禁用*" 来禁用它。
 * 单击“确定”。
 
@@ -304,7 +304,7 @@ Service cannot be started.
 
 运行 Visual Studio Code 调试程序时，可能会看到此错误。 默认情况下，VS Code 扩展使用 `src` 作为项目在容器上的工作目录。 如果你已更新了 `Dockerfile` 来指定一个不同的工作目录，则可能会看到此错误。
 
-若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `Dockerfile` 中定义的 `WORKDIR` 相同的目录。 可能还需要更新 `configurations->program` 指令。
+若要解决此问题，请更新项目文件夹的 `.vscode` 子目录下的 `launch.json` 文件。 更改 `configurations->cwd` 指令，以指向与在项目的 `WORKDIR` 中定义的 `Dockerfile` 相同的目录。 可能还需要更新 `configurations->program` 指令。
 
 ### <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>错误： "管道程序 ' azds ' 意外退出，代码为126。"
 
@@ -391,11 +391,11 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于 "*角色*"，请选择 "*参与者*" 或 "*所有者*"。
     * 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体”。
     * 对于 "*选择*"，请搜索要为其授予权限的用户。
-1. 单击“ *保存*”。
+1. 单击 *“保存”* 。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
-可以将 `--public` 开关指定为 `azds prep` 命令，或选中 Visual Studio 内的 `Publicly Accessible` 复选框，从而配置服务的公共 URL 终结点。 当你在 Dev Spaces 中运行服务时，公共 DNS 名称自动注册。 如果此 DNS 名称未注册，你在连接到公共 URL 时，在 Web 浏览器中看到“无法显示网页”或“无法访问网站”错误消息。
+可以将 `--enable-ingress` 开关指定为 `azds prep` 命令，或选中 Visual Studio 内的 `Publicly Accessible` 复选框，从而配置服务的公共 URL 终结点。 当你在 Dev Spaces 中运行服务时，公共 DNS 名称自动注册。 如果此 DNS 名称未注册，你在连接到公共 URL 时，在 Web 浏览器中看到“无法显示网页”或“无法访问网站”错误消息。
 
 解决此问题：
 
@@ -469,7 +469,7 @@ kubectl -n my-namespace delete pod --all
 
 若要在 AKS 群集上启用 Azure Dev Spaces，而这些群集节点的传出流量受到限制，则必须允许以下 Fqdn：
 
-| FQDN                                    | Port      | 使用      |
+| FQDN                                    | 端口      | 使用      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS:443 | 请求 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP：443 | 请求 helm/tiller 映像|
