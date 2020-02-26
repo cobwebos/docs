@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure AD Connect 云预配文档
-summary: 云预配通过将所有内容保存在云中来帮助简化和自动化本地用户管理。
+summary: 云预配通过用于从现有 AD 林同步 Azure AD 用户的云托管规则来帮助简化和自动化这些用户的管理。
 metadata:
   author: billmath
   description: 云预配通过用于从现有 AD 林同步 Azure AD 用户的云托管规则来帮助简化和自动化这些用户的管理。
@@ -11,12 +11,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
-  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.openlocfilehash: 83beffa0c0eb035c9cd5e30ec4644200b940dd6c
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74795235"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77620907"
 landingContent:
 - title: 关于云预配
   linkLists:

@@ -142,6 +142,9 @@
             - name: 变量
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: Outputs
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: 订阅级资源
           href: deploy-to-subscription.md
         - name: 管理组级资源

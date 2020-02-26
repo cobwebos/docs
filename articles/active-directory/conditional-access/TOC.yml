@@ -43,7 +43,7 @@
       href: location-condition.md
     - name: 假设分析工具
       href: what-if-tool.md
-    - name: 控制
+    - name: 自定义控件
       href: controls.md
     - name: 经典策略迁移
       href: policy-migration.md
