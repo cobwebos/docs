@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697211"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591568"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -40,9 +40,9 @@ ms.locfileid: "76697211"
 
 现已创建了 Azure AD 应用程序和服务主体。
 
-## <a name="assign-the-application-to-a-role"></a>将应用程序分配给角色
+## <a name="assign-a-role-to-the-application"></a>向应用程序分配角色
 
-要访问订阅中的资源，必须将应用程序分配到角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
+要访问订阅中的资源，必须为应用程序分配角色。 判定哪个角色能为应用程序提供适当的权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
 可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
@@ -62,7 +62,7 @@ ms.locfileid: "76697211"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
+1. 选择“保存”完成角色分配。 你会在具有该范围角色的用户列表中看到你的应用程序。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 下一部分演示如何获取以编程方式登录时所需的值。
 
@@ -112,7 +112,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 选择“客户端机密”->“新建客户端机密”。
 1. 提供机密的说明和持续时间。 完成后，选择“添加”。
 
-   保存客户端机密后，将显示客户端机密的值。 复制此值，因为稍后不能检索密钥。 提供密钥值及应用程序 ID，以该应用程序的身份登录。 将密钥值存储在应用程序可检索的位置。
+   保存客户端机密后，将显示客户端机密的值。 复制此值，因为稍后不能检索密钥。 你将提供密钥值，其中包含应用程序 ID 以作为应用程序登录。 将密钥值存储在应用程序可检索的位置。
 
    ![复制机密值，因为以后不再可以检索到此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 ## <a name="required-permissions"></a>所需的权限
 
-必须具有足够的权限向 Azure AD 租户注册应用程序，并将应用程序分配到 Azure 订阅中的角色。
+你必须具有足够的权限，才能将应用程序注册到 Azure AD 租户，并将 Azure 订阅中的角色分配给应用程序。
 
 ### <a name="check-azure-ad-permissions"></a>检查 Azure AD 权限
 
@@ -138,11 +138,11 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 在左窗格中，选择 "**用户设置**"。
 1. 检查“应用注册”设置。 只有管理员可设置此值。 如果设置为“是”，则 Active AD 租户中的任何用户都可以注册应用。
 
-如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果将帐户分配到“用户”角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配可以创建和管理应用注册的所有方面的管理员角色之一，或者让用户能够注册应用。
+如果应用注册设置设定为“否”，则只有具有管理员角色的用户才能注册这些类型的应用程序。 请参阅[可用角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)和[角色权限](../users-groups-roles/directory-assign-admin-roles.md#role-permissions)来了解 Azure AD 中的可用管理员角色以及授予每个角色的具体权限。 如果你的帐户分配了用户角色，但应用注册设置仅限于管理员用户，请要求管理员为你分配一个可创建和管理应用注册的所有方面的管理员角色，或允许用户注册应用.
 
 ### <a name="check-azure-subscription-permissions"></a>检查 Azure 订阅权限
 
-在 Azure 订阅中，帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限才能向角色分配 AD 应用。 通过[所有者](../../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。 如果将帐户分配到“参与者”角色，则没有足够权限。 尝试将服务主体分配到角色时，将收到错误。
+在 Azure 订阅中，你的帐户必须具有 `Microsoft.Authorization/*/Write` 访问权限，才能将角色分配给 AD 应用。 通过[所有者](../../role-based-access-control/built-in-roles.md#owner)角色或[用户访问管理员](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色授权此操作。 如果帐户分配有 "**参与者**" 角色，则没有足够的权限。 尝试向服务主体分配角色时，会收到错误。
 
 检查订阅权限的方法如下：
 
@@ -154,9 +154,9 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
    ![选择要在其中创建服务主体的订阅](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 选择 "**角色分配**" 以查看分配的角色，并确定是否有足够的权限向角色分配 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，用户分配到了“所有者”角色，这意味着该用户具有足够的权限。
+1. 选择 "**角色分配**" 以查看已分配的角色，并确定是否有足够的权限将角色分配给 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，为用户分配了 "所有者" 角色，这意味着用户拥有足够的权限。
 
-   ![此示例演示如何将用户分配到 "所有者" 角色](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![此示例显示已向用户分配所有者角色](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565072"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598810"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>适用于 SMB 访问的 Azure 文件基于标识的身份验证支持概述
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-若要了解如何为 Azure 文件共享启用 AD 身份验证，请参阅[通过 SMB 为 azure 文件共享启用 Active Directory 身份验证](storage-files-active-directory-domain-services-enable.md)。
+若要了解如何为 Azure 文件共享启用 AD 身份验证，请参阅[通过 SMB 为 azure 文件共享启用 Active Directory 身份验证](storage-files-identity-auth-active-directory-enable.md)。
 
-若要了解如何为 Azure 文件共享启用 Azure AD DS 身份验证，请参阅[通过 SMB 为 Azure 文件启用 Azure Active Directory 域服务身份验证](storage-files-active-directory-enable.md)。
+若要了解如何为 Azure 文件共享启用 Azure AD DS 身份验证，请参阅[在 Azure 文件上启用 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ## <a name="glossary"></a>术语表 
 了解与 Azure 文件共享的 SMB 的 Azure AD 域服务身份验证相关的一些关键术语，这会很有帮助。
@@ -98,7 +98,7 @@ Azure 文件共享支持 kerberos 身份验证，以便与 Azure AD DS （GA）�
 
 ### <a name="enable-identity-based-authentication"></a>启用基于标识的身份验证
 
-你可以在新的和现有的存储帐户上使用 Azure 文件共享的 Azure AD DS （GA）或 AD （预览版）来启用基于身份的身份验证。 在存储帐户上只能使用一个域服务进行文件访问身份验证，这种身份验证适用于帐户中的所有文件共享。 有关设置你的文件共享以便使用 Azure AD DS （GA）进行身份验证的详细分步指南在我们的文章中，[为 Azure 文件启用了 Azure Active Directory 域服务身份验证](storage-files-active-directory-enable.md)和 AD （预览版）的指南，并[通过 smb 为 Azure 文件共享启用 Active Directory](storage-files-active-directory-domain-services-enable.md)。
+你可以在新的和现有的存储帐户上使用 Azure 文件共享的 Azure AD DS （GA）或 AD （预览版）来启用基于身份的身份验证。 在存储帐户上只能使用一个域服务进行文件访问身份验证，这种身份验证适用于帐户中的所有文件共享。 有关设置你的文件共享以便使用 Azure AD DS （GA）进行身份验证的详细分步指南在我们的文章中，为[Azure 文件启用 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)和 AD （预览版）的指南，[启用对 azure 文件共享的 SMB 的 Active Directory 身份验证](storage-files-identity-auth-active-directory-enable.md)。
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>为 Azure 文件配置共享级别权限
 
@@ -126,6 +126,6 @@ Azure 文件共享在目录和文件级别（包括根目录）强制实施标�
 有关 Azure 文件的详细信息以及基于 SMB 的基于身份的身份验证，请参阅以下资源：
 
 - [规划 Azure 文件部署](storage-files-planning.md)
-- [启用对 Azure 文件共享的 SMB 的 Active Directory 身份验证](storage-files-active-directory-domain-services-enable.md)
-- [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-active-directory-enable.md)
+- [启用对 Azure 文件共享的 SMB 的 Active Directory 身份验证](storage-files-identity-auth-active-directory-enable.md)
+- [启用 Azure 文件上 Azure Active Directory 域服务身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常见问题](storage-files-faq.md)

@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198575"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592520"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -168,6 +168,8 @@ ms.locfileid: "77198575"
     - **位数**：32位或64位。
     - **WebSocket 协议**：对于[ASP.NET SignalR]或[socket.io](https://socket.io/)，例如。
     - **Always On**：即使在没有流量的情况，也要加载应用。 它对于连续 Web 作业或使用 CRON 表达式触发的 Web 作业是必需的。
+      > [!NOTE]
+      > 利用 Always On 功能，无法控制终结点。 它始终向应用程序根发送请求。
     - **托管管道版本**： IIS[管道模式]。 如果你有需要更早版本 IIS 的旧应用程序，则将其设置为 "**经典**"。
     - **HTTP 版本**：设置为**2.0**以启用对[HTTPS/2](https://wikipedia.org/wiki/HTTP/2)协议的支持。
     > [!NOTE]

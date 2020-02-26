@@ -3,16 +3,15 @@ title: 为 Azure Kubernetes 服务（AKS）自定义 CoreDNS
 description: 了解如何自定义 CoreDNS，以使用 Azure Kubernetes 服务（AKS）添加子域或扩展自定义 DNS 终结点
 services: container-service
 author: jnoller
-ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 7dd22a6803f5248298afddffaee9c4b83891f5f1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547908"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595818"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>通过 Azure Kubernetes 服务自定义 CoreDNS
 

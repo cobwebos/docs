@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028830"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598164"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>为物理服务器设置设备
 
 本文介绍了如何设置 Azure Migrate 设备，前提是你要用 Azure Migrate： Server 评估工具评估物理服务器。
-
-> [!NOTE]
-> 如果此处提到的功能在 Azure Migrate 门户中尚未显示，请稍候。 大约在一周后，它们就会出现。
 
 Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用于执行以下操作：
 
@@ -41,10 +38,10 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 下载设备的压缩文件。
 
 1. 在 "**迁移目标** > **服务器** > **Azure Migrate：服务器评估**中，单击"**发现**"。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“未虚拟化/其他”。
+2. 在“发现计算机” **“计算机是否已虚拟化?”中，单击“未虚拟化/其他”。**  > 
 3. 单击“下载”以下载压缩文件。
 
-    ![下载 VM](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![下载 VM](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>验证安全性
@@ -55,17 +52,12 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  对于最新设备版本，生成的哈希应与这些设置匹配。
-
-  **算法** | **哈希值**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  对于最新的设备版本，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)相符。
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>运行 Azure Migrate 安装程序脚本
-= 此安装程序脚本执行以下操作：
+此安装程序脚本执行以下操作：
 
 - 安装用于物理服务器发现和评估的代理和 Web 应用程序。
 - 安装 Windows 角色，包括 Windows 激活服务、IIS 和 PowerShell ISE。
@@ -80,13 +72,16 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 1. 将压缩文件解压缩到托管设备的服务器上的某个文件夹中。
 2. 使用管理（提升）权限在上述服务器上启动 PowerShell。
 3. 将 PowerShell 目录更改为从下载的压缩文件中提取内容的文件夹。
-4. 通过运行以下命令运行脚本：
+4. 通过运行以下命令，运行名为“AzureMigrateInstaller.ps1”的脚本：
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 脚本将在成功完成时启动设备 Web 应用程序。
 
+如果出现任何问题，可以访问位于 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log 的脚本日志以进行故障排除。
 
+> [!NOTE]
+> 请不要在现有的 Azure Migrate 设备上执行 Azure Migrate 安装程序脚本。
 
 ### <a name="verify-appliance-access-to-azure"></a>验证设备的 Azure 访问权限
 
@@ -102,7 +97,7 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate 服务器评估用
 2. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用检查 VM 是否可以访问 internet。 如果 VM 使用代理：
-        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
+        - 单击“代理设置”，并以 **或** 格式指定代理地址和侦听端口。 http://ProxyIPAddresshttp://ProxyFQDN
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
     - **时间同步**：时间已验证。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。

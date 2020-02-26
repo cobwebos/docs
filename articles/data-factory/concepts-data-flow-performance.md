@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773849"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587577"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -35,8 +35,8 @@ ms.locfileid: "76773849"
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>在 Azure Integration Runtime 中增加计算大小
 
 具有更多核心的 Integration Runtime 增加了 Spark 计算环境中节点的数量，并提供更多的处理能力来读取、写入和转换数据。
-* 如果希望处理速率高于输入速率，请尝试使用**计算优化**群集
-* 如果要将更多数据缓存在内存中，请尝试使用**内存优化**群集。
+* 如果希望处理速率高于输入速率，请尝试使用**计算优化**群集。
+* 如果要将更多数据缓存在内存中，请尝试使用**内存优化**群集。 内存优化比计算优化，每个核心的价格更高，但可能导致转换速度更快。
 
 ![新 IR](media/data-flow/ir-new.png "新 IR")
 
@@ -87,17 +87,24 @@ ms.locfileid: "76773849"
 
 在管道运行之前，计划调整源的大小并接收器 Azure SQL 数据库和 DW，以提高吞吐量，并在达到 DTU 限制后将 Azure 限制降到最低。 管道执行完成后，重新调整数据库的大小，使其正常运行。
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[仅适用于 Azure SQL DW]通过 Polybase 使用过渡批量加载数据
+* 对于包含887k 行和74列的 SQL DB 源表，具有单个派生列转换的 SQL DB 表大约需要3分钟的端到端使用内存优化 80-核心调试 Azure IRs。
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[仅限 Azure Synapse SQL DW]通过 Polybase 使用过渡批量加载数据
 
 若要避免逐行插入 DW，请选中 "在接收器设置中**启用过渡**"，以便 ADF 可以使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。 PolyBase 允许 ADF 大容量加载数据。
 * 从管道执行数据流活动时，需要选择一个 Blob 或 ADLS Gen2 存储位置，以便在大容量加载期间暂存数据。
 
+* 421Mb 文件的文件源（其中包含74列到 Synapse 表）和单个派生列转换大约需要4分钟的端到端使用内存优化 80-核心调试 Azure IRs。
+
 ## <a name="optimizing-for-files"></a>优化文件
 
-在每次转换时，可以在 "优化" 选项卡中设置希望数据工厂使用的分区方案。
+在每次转换时，可以在 "优化" 选项卡中设置希望数据工厂使用的分区方案。最好先测试基于文件的接收器，保留默认分区和优化。
+
 * 对于较小的文件，您可能会发现，选择*单个分区*有时可以比要求 Spark 对小型文件进行分区更好、更快。
 * 如果没有关于源数据的足够信息，请选择 "*轮循机制*分区" 并设置分区数。
 * 如果你的数据具有可以是良好哈希键的列，请选择 "*哈希分区*"。
+
+* 421Mb 文件的文件源包含74列，而单个派生列转换需要大约2分钟的端到端使用内存优化 80-核心调试 Azure IRs。
 
 在数据预览和管道调试中进行调试时，基于文件的源数据集的限制和采样大小仅适用于返回的行数，而不是读取的行数。 这可能会影响调试执行的性能，并且可能会导致流失败。
 * 默认情况下，调试群集是小型单节点群集，我们建议使用示例小文件进行调试。 使用临时文件，中转到 "调试设置" 并指向数据的一小部分。

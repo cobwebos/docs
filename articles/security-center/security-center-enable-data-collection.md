@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766984"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597025"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
@@ -83,7 +83,7 @@ ms.locfileid: "74766984"
 > 安全中心创建的工作区的 Log Analytics 定价层不会影响安全中心计费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案。 对于“免费层”，安全中心将在默认工作区中启用 *SecurityCenterFree* 解决方案。 对于“标准层”，安全中心将在默认工作区中启用 *Security* 解决方案。
 > 将数据存储在 Log Analytics 可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-有关现有 log analytics 帐户的详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
+有关现有 log analytics 帐户的详细信息，请参阅[现有 log analytics 客户](./faq-azure-monitor-logs.md)。
 
 ### <a name="using-an-existing-workspace"></a>使用现有工作区
 
@@ -125,7 +125,7 @@ ms.locfileid: "74766984"
 
 5. 为要设置 Log Analytics 代理的所需工作区选择定价层。 <br>若要使用现有工作区，请设置该工作区的定价层。 这会在该工作区中安装一个安全中心解决方案（如果尚不存在）。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择 "**定价 & 设置**"。
+    a.  在安全中心主菜单中，选择 "**定价 & 设置**"。
      
     b.  选择要在其中连接代理的所需工作区。
         ![选择工作区][7] c. 设置定价层。
@@ -145,14 +145,14 @@ ms.locfileid: "74766984"
 > 
 > 可以根据要在工作区中存储的四组事件为订阅和工作区选择正确的筛选策略： 
 
-- **无** - 禁用安全事件存储。 此设置为默认设置。
+- **无** - 禁用安全事件存储。 这是默认设置。
 - 最小 – 一个较小事件集，适合希望最大程度地减小事件量的客户。
 - 通用 – 这是一个事件集，可满足大多数客户的需求，使他们可以进行完整的审核跟踪。
 - 所有事件 - 适用于想要确保存储所有事件的客户。
 
 
 > [!NOTE]
-> 这些安全事件集仅在安全中心的标准层上可用。 请参阅[定价](security-center-pricing.md)，详细了解安全中心的定价层。
+> 这些安全事件集仅在安全中心的标准层上可用。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
 这些集合专门用于典型应用场景。 请务必先评估哪个事件集适合你的需求，再进行实现。
 >
 >
@@ -170,7 +170,7 @@ ms.locfileid: "74766984"
 | --- | --- |
 | 轻微 | 1102,4624,4625,4657,4663,4688,4700,4702,4719,4720,4722,4723,4724,4727,4728,4732,4735,4737,4739,4740,4754,4755, |
 | | 4756,4767,4799,4825,4946,4948,4956,5024,5033,8001,8002,8003,8004,8005,8006,8007,8222 |
-| 常见 | 1、299、300、324、340、403、404、410、411、412、413、431、500、501、1100、1102、1107、1108、4608、4610、4611、4614、4622、 |
+| 通用 | 1、299、300、324、340、403、404、410、411、412、413、431、500、501、1100、1102、1107、1108、4608、4610、4611、4614、4622、 |
 | |  4624,4625,4634,4647,4648,4649,4657,4661,4662,4663,4665,4666,4667,4688,4670,4672,4673,4674,4675,4689,4697, |
 | | 4700,4702,4704,4705,4716,4717,4718,4719,4720,4722,4723,4724,4725,4726,4727,4728,4729,4733,4732,4735,4737, |
 | | 4738,4739,4740,4742,4744,4745,4746,4750,4751,4752,4754,4755,4756,4757,4760,4761,4762,4764,4767,4768,4771, |
@@ -179,7 +179,7 @@ ms.locfileid: "74766984"
 | | 6273,6278,6416,6423,6424,8001,8002,8003,8004,8005,8006,8007,8222,26401,30004 |
 
 > [!NOTE]
-> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](security-center-faq.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
+> - 如果使用组策略对象 (GPO)，建议启用审核策略过程创建事件 4688 以及事件 4688 内的 CommandLine 字段。 有关过程创建事件 4688 的详细信息，请参阅安全中心的[常见问题解答](faq-data-collection-agents.md#what-happens-when-data-collection-is-enabled)。 有关这些审核策略的详细信息，请参阅[审核策略建议](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/audit-policy-recommendations)。
 > -  若要为[自适应应用程序控件](security-center-adaptive-application.md)启用数据收集，安全中心会在审核模式下配置本地 AppLocker 策略以允许所有应用程序。 这将导致 AppLocker 生成事件，然后由安全中心收集和利用这些事件。 请务必注意，不会在已配置 AppLocker 策略的任何计算机上配置此策略。 
 > - 若要收集 Windows 筛选平台[事件 ID 5156](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=5156)，需要启用[审核筛选平台连接](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection) (Auditpol /set /subcategory:"Filtering Platform Connection" /Success:Enable)
 >
@@ -211,7 +211,7 @@ ms.locfileid: "74766984"
 - 存在现有的 VM 扩展<br>
     - 当监视代理安装为扩展时，扩展配置仅允许向单个工作区进行报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心会在已连接的工作区中存储来自 VM 的安全数据，前提是已在其上安装了 "安全" 或 "securityFree" 解决方案。 在此过程中，安全中心可以将扩展版本升级到最新版本。  
     - 若要查看现有扩展将数据发送到哪个工作区，请运行测试来[验证与 Azure 安全中心的连接](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/)。 或者，你可以打开 Log Analytics 工作区，选择一个工作区，选择 VM，然后查看 Log Analytics 代理连接。 
-    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告，请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表，以确保你的操作系统受支持。 有关详细信息，请参阅[现有 log analytics 客户](security-center-faq.md#existingloganalyticscust)。
+    - 如果你的环境中的 Log Analytics 代理安装在客户端工作站上并向现有 Log Analytics 工作区报告，请查看[Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表，以确保你的操作系统受支持。 有关详细信息，请参阅[现有 log analytics 客户](./faq-azure-monitor-logs.md)。
  
 ### 关闭自动预配 <a name="offprovisioning"></a>
 随时可以关闭资源的自动预配，在安全策略中关闭此设置即可。 
@@ -231,7 +231,7 @@ ms.locfileid: "74766984"
 -   安全中心会停止从默认工作区收集数据。
  
 > [!NOTE]
->  禁用自动预配不会从预配代理的 Azure Vm 删除 Log Analytics 代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](security-center-faq.md#remove-oms)。
+>  禁用自动预配不会从预配代理的 Azure Vm 删除 Log Analytics 代理。 有关删除 OMS 扩展的信息，请参阅[如何删除安全中心安装的 OMS 扩展](faq-data-collection-agents.md#remove-oms)。
 >
     
 ## 手动代理预配 <a name="manual-agent"></a>
@@ -244,7 +244,7 @@ ms.locfileid: "74766984"
 1. 选择自动预配 - 关闭。
 2. 创建工作区，并为要设置 Log Analytics 代理的工作区设置定价层：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  在安全中心主菜单中，选择“安全策略”。
+   a.  在安全中心主菜单中，选择“安全策略”。
      
    b.  选择要在其中连接代理的工作区。 确保该工作区位于安全中心内所用的同一个订阅中，并且你对该工作区拥有读/写权限。
        ![选择工作区][8]
@@ -256,7 +256,7 @@ ms.locfileid: "74766984"
 
 4. 若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+   a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
     
    b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
 5. 若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。
@@ -312,9 +312,9 @@ ms.locfileid: "74766984"
 
 
 ## <a name="next-steps"></a>后续步骤
-本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下内容：
+本文介绍了数据收集和自动设置在安全中心中的工作方式。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
-* [Azure 安全中心常见问题解答](security-center-faq.md)-- 查找有关使用服务的常见问题。
+* [Azure 安全中心常见问题解答](faq-general.md)-- 查找有关使用服务的常见问题。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 
 

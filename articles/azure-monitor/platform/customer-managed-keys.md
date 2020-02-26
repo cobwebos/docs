@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 02/05/2020
-ms.openlocfilehash: eff751465c7b64429968b0305e6ad483943c374b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/24/2020
+ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048189"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592096"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
@@ -86,8 +86,8 @@ Azure Monitor 利用系统分配的托管标识授予对 Azure Key Vault 的访�
 1. 订阅允许列表--这是早期访问功能所必需的
 2. 创建 Azure Key Vault 和存储密钥
 3. 创建*群集*资源
-4. 授予 Key Vault 的权限
-5. Azure Monitor 数据存储（ADX 群集）预配
+4. Azure Monitor 数据存储（ADX 群集）预配
+5. 授予 Key Vault 的权限
 6. Log Analytics 工作区关联
 
 当前 UI 中不支持此过程，并且通过 REST API 执行设置过程。
@@ -135,7 +135,7 @@ CMK 功能是一项早期的访问功能。 你计划创建*群集*资源的订�
 
 ### <a name="create-cluster-resource"></a>创建*群集*资源
 
-此资源用作 Key Vault 与工作区之间的中间标识连接。 收到订阅处于允许列表状态的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。 Application Insights 和 Log Analytics 需要单独的群集资源。 群集资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "Applicationinsights.config" 来定义。 不能更改群集资源类型。
+此资源用作 Key Vault 与工作区之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在工作区所在的区域创建 Log Analytics*群集*资源。 Application Insights 和 Log Analytics 需要单独的群集资源。 *群集*资源的类型在创建时通过将 "clusterType" 属性设置为 "LogAnalytics" 或 "applicationinsights.config" 来定义。 不能更改群集资源类型。
 
 对于 Application Insights CMK 配置，请遵循此步骤的附录内容。
 
@@ -156,61 +156,73 @@ Content-type: application/json
    }
 }
 ```
+在创建时将标识分配给*群集*资源。
 对于 Application Insights CMK，"clusterType" 值为 "Applicationinsights.config"。
 
 **响应**
 
-在创建时将标识分配给*群集*资源。
+202已接受。 这是一个用于异步操作的标准资源管理器响应。
 
-```json
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
-  "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "LogAnalytics", 
-    "clusterId": "cluster-id"
-  },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",    //The cluster resource Id
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
-}
-
-```
-"principalId" 是由托管标识服务为*群集*资源生成的 GUID。
-
-> [!IMPORTANT]
-> 复制并保留 "cluster id" 值，因为在后续步骤中需要用到它。
-
-如果出于任何原因删除了*群集*资源（例如，使用不同的名称或 clusterType 创建该资源），请使用以下 API 调用：
+如果出于任何原因删除了*群集*资源（例如，使用不同的名称或 clusterType 创建该资源），请使用以下 REST API：
 
 ```rst
 DELETE
 https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
 ```
 
+### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor 数据存储（ADX 群集）预配
+
+在此功能的早期访问期内，在完成前面的步骤后，产品团队将手动设置 ADX 群集。 使用 Microsoft 随附的频道提供*群集*资源详细信息。 可以使用 GET REST API 检索 JSON 响应：
+
+```rst
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+Authorization: Bearer <token>
+```
+
+**响应**
+```json
+{
+  "identity": {
+    "type": "SystemAssigned",
+    "tenantId": "tenant-id",
+    "principalId": "principal-Id"
+    },
+  "properties": {
+    "provisioningState": "Succeeded",
+    "clusterType": "LogAnalytics", 
+    "clusterId": "cluster-id"
+    },
+  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
+  "name": "cluster-name",
+  "type": "Microsoft.OperationalInsights/clusters",
+  "location": "region-name"
+  }
+```
+
+"principalId" 是由托管标识服务为*群集*资源生成的 GUID。
+
+> [!IMPORTANT]
+> 复制并保留 "cluster id" 值，因为在后续步骤中需要用到它。
+
+
 ### <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
 
-更新 Key Vault 并为群集资源添加访问策略。 然后，将 Key Vault 的权限传播到 underlaying Azure Monitor 存储以用于数据加密。
+> [!IMPORTANT]
+> 此步骤应在你通过 Microsoft 通道从产品组收到确认 Azure Monitor 数据存储（ADX 群集）预配完成后执行。 在此设置之前更新 Key Vault 访问策略可能会失败。
+
+使用授予*群集*资源权限的新访问策略更新 Key Vault。 Underlaying Azure Monitor 存储使用这些权限进行数据加密。
 在 Azure 门户中打开你的 Key Vault，然后单击 "访问策略"，然后单击 "+ 添加访问策略"，使用以下设置创建新策略：
 
 - 密钥权限：选择 "获取"、"环绕键" 和 "解包密钥" 权限。
-
-- 选择主体：在上一步的响应中输入群集 id，即 "clusterId" 值。
+- 选择主体：输入在上一步的响应中返回的群集 id 值。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions.png)
 
 需要使用*Get*权限来验证 Key Vault 是否已配置为可恢复，以保护你的密钥和对你的 Azure Monitor 数据的访问。
 
-在 Azure 资源管理器中传播*群集*资源之前，会花费几分钟时间。 创建*群集*资源后立即配置此访问策略时，可能会发生暂时性错误。 在这种情况下，请在几分钟后重试。
-
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>更新具有密钥标识符详细信息的群集资源
 
-此步骤将在 Key Vault 中的后续密钥版本更新。 使用 Key Vault*密钥标识符*详细信息更新*群集*资源，以允许 Azure Monitor 存储使用新的密钥版本。 在 Azure Key Vault 中选择密钥的当前版本，以获取密钥标识符详细信息。
+此步骤适用于你的 Key Vault 中的后续密钥版本更新。 使用 Key Vault*密钥标识符*详细信息更新*群集*资源，以允许 Azure Monitor 存储使用新的密钥版本。 在 Azure Key Vault 中选择密钥的当前版本，以获取密钥标识符详细信息。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/key-identifier-8bit.png)
 
@@ -225,16 +237,16 @@ Content-type: application/json
 
 {
    "properties": {
-       "KeyVaultProperties": {
-            KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
-            KeyName: "<key-name>",
-            KeyVersion: "<current-version>"
-            },
+     "KeyVaultProperties": {
+       KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
+       KeyName: "<key-name>",
+       KeyVersion: "<current-version>"
+       },
    },
    "location":"<region-name>",
    "identity": { 
-        "type": "systemAssigned" 
-        }
+     "type": "systemAssigned" 
+     }
 }
 ```
 "KeyVaultProperties" 包含 Key Vault 密钥标识符详细信息。
@@ -264,44 +276,6 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-
-### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor 数据存储（ADX 群集）预配
-
-在此功能的早期访问期内，在完成前面的步骤后，产品团队将手动设置 ADX 群集。 使用 Microsoft 随附的频道提供以下详细信息：
-
-- 确认上述步骤已成功完成。
-
-- 上一步中的 JSON 响应。 使用 Get API 调用可随时检索它：
-
-   ```rst
-   GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
-   Authorization: Bearer <token>
-   ```
-
-   **响应**
-   ```json
-   {
-     "identity": {
-       "type": "SystemAssigned",
-       "tenantId": "tenant-id",
-       "principalId": "principal-Id"
-     },
-     "properties": {
-          "KeyVaultProperties": {
-               KeyVaultUri: "https://key-vault-name.vault.azure.net",
-               KeyName: "key-name",
-               KeyVersion: "current-version"
-               },
-       "provisioningState": "Succeeded",
-       "clusterType": "LogAnalytics", 
-       "clusterId": "cluster-id"
-     },
-     "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-     "name": "cluster-name",
-     "type": "Microsoft.OperationalInsights/clusters",
-     "location": "region-name"
-   }
-   ```
 
 ### <a name="workspace-association-to-cluster-resource"></a>与*群集*资源的工作区关联
 
@@ -512,7 +486,7 @@ Application Insights CMK 的配置与本文中所述的过程完全相同，包�
 
 ### <a name="create-a-cluster-resource"></a>创建*群集*资源
 
-此资源用作 Key Vault 与组件之间的中间标识连接。 收到订阅处于允许列表状态的确认后，请在组件所在的区域创建 Log Analytics*群集*资源。 *群集*资源的类型在创建时通过将*clusterType*属性设置为*LogAnalytics*或*applicationinsights.config*定义。 它应为 Application Insights CMK 的*applicationinsights.config* 。 配置后无法更改*clusterType*设置。
+此资源用作 Key Vault 与组件之间的中间标识连接。 收到订阅处于白名单状态的确认后，请在组件所在的区域创建 Log Analytics*群集*资源。 *群集*资源的类型在创建时通过将*clusterType*属性设置为*LogAnalytics*或*applicationinsights.config*定义。 它应为 Application Insights CMK 的*applicationinsights.config* 。 配置后无法更改*clusterType*设置。
 
 **创建**
 

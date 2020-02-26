@@ -3,7 +3,7 @@ title: 将 Windows 防火墙数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Windows 防火墙数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 5d2f68261143c3fc5bbcda0b739af17251eeee63
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610397"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588053"
 ---
 # <a name="connect-windows-firewall"></a>连接 Windows 防火墙
 

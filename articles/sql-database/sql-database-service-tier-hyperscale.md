@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845883"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587271"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -72,7 +72,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 - **存储**：
 
-  配置“超大规模”数据库时，无需指定最大数据大小。 超大规模层中根据实际分配量收取数据库存储费用。 存储在 40 GB 到 100 TB 之间自动分配，以 10 GB 为增量。 如果需要，多个数据文件可以同时增长。 创建的超大规模数据库的起始大小为 10 GB，每10分钟开始增加 10 GB，直到达到 40 GB 的大小。
+  配置“超大规模”数据库时，无需指定最大数据大小。 在超大规模层中，将根据实际分配对数据库的存储进行收费。 存储在 40 GB 到 100 TB 之间自动分配，以 10 GB 为增量。 如果需要，多个数据文件可以同时增长。 创建的超大规模数据库的起始大小为 10 GB，每10分钟开始增加 10 GB，直到达到 40 GB 的大小。
 
 有关“超大规模”服务层级定价的详细信息，请参阅 [Azure SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -112,7 +112,7 @@ Azure 存储包含数据库中的所有数据文件。 页面服务器将 Azure 
 
 ## <a name="create-a-hyperscale-database"></a>创建超大规模数据库
 
-可以使用[Azure 门户](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、 [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)创建超大规模数据库。 超大规模数据库仅可使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+可以使用[Azure 门户](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase)或[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)创建超大规模数据库。 超大规模数据库仅可使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 以下 T-SQL 命令可创建一个“超大规模”数据库。 必须在 `CREATE DATABASE` 语句中指定版本和服务目标。 有关有效服务目标的列表，请参阅[资源限制](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4)。
 
@@ -125,7 +125,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>将现有 Azure SQL 数据库迁移到“超大规模”服务层级
 
-可以使用 [Azure 门户](https://portal.azure.com)[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)[Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) 或者 [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)将现有的 Azure SQL 数据库迁移到“超大规模”层级。 目前，这是一个单向迁移。 除了导出和导入数据外，不能将数据库从超大规模移到其他服务层。 对于概念证明（Poc），我们建议创建生产数据库的副本，并将副本迁移到超大规模。 将现有 Azure SQL 数据库迁移到超大规模层是数据操作的大小。
+可以使用[Azure 门户](https://portal.azure.com)、 [t-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)、 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase)或[CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)将现有的 Azure SQL 数据库移动到超大规模。 目前，这是一个单向迁移。 除了导出和导入数据外，不能将数据库从超大规模移到其他服务层。 对于概念证明（Poc），我们建议创建生产数据库的副本，并将副本迁移到超大规模。 将现有 Azure SQL 数据库迁移到超大规模层是数据操作的大小。
 
 以下 T-SQL 命令可将数据库移动到“超大规模”服务层级。 必须在 `ALTER DATABASE` 语句中指定版本和服务目标。
 
@@ -192,54 +192,20 @@ Azure SQL Database 超大规模层目前在以下区域中提供：
 - 美国西部
 - 美国西部 2
 
-如果要在未列出为受支持的区域中创建超大规模数据库，可以通过 Azure 门户发送载入请求。 我们正在努力展开受支持区域的列表，请查看最新的地区列表。
+如果要在未列出为受支持的区域中创建超大规模数据库，可以通过 Azure 门户发送载入请求。 有关说明，请参阅[AZURE SQL 数据库的请求配额增加](quota-increase-request.md)，了解相关说明。 提交请求时，请遵循以下准则：
 
-请求在未列出的区域中创建超大规模数据库的功能：
-
-1. 导航到 " [Azure 帮助和支持" 边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-
-2. 单击 " [**新建支持请求**"](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
-
-    ![Azure "帮助和支持" 边栏选项卡](media/sql-database-service-tier-hyperscale/request-screen-1.png)
-
-3. 对于 "**问题类型**"，请选择 "**服务和订阅限制（配额）** "
-
-4. 选择要用于创建数据库的订阅
-
-5. 对于 "**配额类型**"，选择 " **SQL 数据库**"
-
-6. 单击 "**下一步：解决方案**"
-
-1. 单击 "**提供详细信息**"
-
-    ![问题详细信息](media/sql-database-service-tier-hyperscale/request-screen-2.png)
-
-8. 选择**SQL 数据库配额类型**：**其他配额请求**
-
-9. 填写以下模板：
-
-    ![配额详细信息](media/sql-database-service-tier-hyperscale/request-screen-3.png)
-
-    在模板中提供以下信息
-
-    > 请求在新区域中创建 Azure 超大规模 SQL 数据库<br/> 区域： [填写所需区域]  <br/>
-    > 计算 SKU/总内核数，包括可读副本 <br/>
-    > 估计的 TB 数 
-    >
-
-10. 选择“严重性 C”
-
-11. 选择适当的联系方法并填写详细信息。
-
-12. 单击 "**保存**并**继续**"
+- 使用[其他配额请求](quota-increase-request.md#other)SQL 数据库配额类型。
+- 在 "文本详细信息" 中，添加计算 SKU/总内核数，包括可读副本。
+- 还要指定估计的 TB。
 
 ## <a name="known-limitations"></a>已知的限制
+
 这是公开上市后超大规模服务层的当前限制。  我们正在努力尽可能多地删除这些限制。
 
-| 问题 | Description |
+| 问题 | 说明 |
 | :---- | :--------- |
 | 逻辑服务器的 "管理备份" 窗格不显示将从 SQL server 筛选超大规模数据库  | 超大规模具有用于管理备份的单独方法，因此，长期保留期和时间点备份保留设置不适用/无效。 相应地，“超大规模”数据库不会显示在“管理备份”窗格中。 |
-| 时间点还原 | 将数据库迁移到超大规模服务层后，不支持在迁移之前还原到某个时间点。|
+| 时点还原 | 将数据库迁移到超大规模服务层后，不支持在迁移之前还原到某个时间点。|
 | 将非超大规模 DB 还原到超大规模，反之亦然 | 不能将超大规模数据库还原到非超大规模数据库中，也不能将非超大规模数据库还原到超大规模数据库中。|
 | 如果数据库的一个或多个数据文件大于 1 TB，则迁移将失败 | 在某些情况下，可以通过将大文件收缩为小于 1 TB 来解决此问题。 如果迁移在迁移过程中使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | 托管实例 | 超大规模数据库当前不支持 Azure SQL 数据库托管实例。 |

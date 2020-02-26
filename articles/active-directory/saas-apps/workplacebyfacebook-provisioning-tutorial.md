@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 22576be8dec021f0f18a6e2dda16891ce70d4f13
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121447"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603204"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
@@ -46,12 +46,12 @@ https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOve
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>如何判断应用程序是否已迁移？ 
 当迁移应用程序时，将删除 "授权" 部分中有关 upcomming 更改的标题，并将 "机密令牌" 字段替换为 "蓝色授权" 按钮。 
 
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>"管理员凭据" 部分在我的应用程序上灰显，无法保存。 为什么?
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>"管理员凭据" 部分在我的应用程序上灰显，无法保存。 为什么？
 我们锁定了现有工作区客户的 "管理员凭据" 部分。 当你的租户已迁移到新的工作区应用程序后，你将能够再次更新 "管理员凭据" 部分。 如果无法等待，可以使用上述 URL 来编辑应用程序。 
 
  
 #### <a name="when-will-these-changes-happen"></a>何时会发生这些更改？
-工作区的所有新实例都已在使用新的集成/授权方法。 现有集成将于2月逐渐迁移。 该月结束后，将针对所有租户完成迁移。 
+工作区的所有新实例都已在使用新的集成/授权方法。 现有集成将逐步迁移。 工作区团队已提供截止时间2月28日到5月1日的截止时间扩展。 
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
@@ -60,7 +60,7 @@ https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOve
 > * 使用户属性在 Azure AD 和 Workplace by Facebook 之间保持同步
 > * 针对 Workplace by Facebook 的[单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)（建议）
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
@@ -89,7 +89,7 @@ https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOve
 
 *   将用户分配到 Workplace by Facebook 时，必须选择有效的用户角色。 “默认访问权限”角色不可用于预配。
 
-## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步骤 3。 从 Azure AD 应用程序库中添加 Workplace by Facebook
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库中添加 Workplace by Facebook
 
 从 Azure AD 应用程序库中添加 Workplace by Facebook，开始管理到 Workplace by Facebook 的预配。 如果以前已通过 Facebook 为 SSO 设置了 Workplace，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。
 
@@ -133,9 +133,9 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 
 9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Workplace BY Facebook API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-   |属性|类型|
+   |Attribute|类型|
    |---|---|
-   |userName 下方|String|
+   |userName|String|
    |displayName|String|
    |活动|Boolean|
    |title|Boolean|

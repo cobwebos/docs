@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172678"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586387"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 
@@ -80,7 +80,7 @@ ms.locfileid: "74172678"
 
 ### <a name="authentication-to-perform-critical-operations"></a>执行关键操作的身份验证
 
-在为关键操作添加额外身份验证层的过程中，在执行“停止保护并删除数据”和“更改密码”操作时，系统会提示输入安全 PIN。
+在为关键操作添加额外身份验证层的过程中，在执行**停止保护并删除数据**和**更改密码**操作时，系统会提示输入安全 PIN。
 
 > [!NOTE]
 >
@@ -120,5 +120,5 @@ ms.locfileid: "74172678"
 
 - [Azure 恢复服务保管库入门](backup-azure-vms-first-look-arm.md)，介绍如何启用这些功能。
 - [下载最新的 Azure 恢复服务代理](https://aka.ms/azurebackup_agent)，保护 Windows 计算机并防止备份数据受到攻击。
-- [下载最新的 Azure 备份服务器](https://aka.ms/latest_azurebackupserver)，保护工作负荷并防止备份数据受到攻击。
+- [下载最新的 Azure 备份服务器](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3)，保护工作负荷并防止备份数据受到攻击。
 - [下载适用于 System Center 2012 R2 Data Protection Manager 的 UR12](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) 或[下载适用于 System Center 2016 Data Protection Manager 的 UR2](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)，保护工作负荷和备份数据免受攻击。

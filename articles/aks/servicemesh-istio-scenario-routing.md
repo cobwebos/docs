@@ -2,17 +2,16 @@
 title: 使用 Istio 在 Azure Kubernetes 服务 (AKS) 中实现智能路由和 Canary 发布
 description: 了解如何使用 Istio 在 Azure Kubernetes 服务 (AKS) 群集中提供智能路由并部署 Canary 发布
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530285"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594090"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>借助 Istio 在 Azure Kubernetes 服务 (AKS) 中使用智能路由和 Canary 发布
 
@@ -31,9 +30,9 @@ ms.locfileid: "72530285"
 ## <a name="before-you-begin"></a>开始之前
 
 > [!NOTE]
-> 已针对 Istio 版本 `1.3.2` 测试了此方案。
+> 已针对 Istio 版本 `1.3.2`测试了此方案。
 
-本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 还需要在群集中安装 Istio。
+本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 此外，还需在群集内安装 Istio。
 
 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]和[在 AKS 指南中安装 Istio][istio-install] 。
 
@@ -85,7 +84,7 @@ kubectl label namespace voting istio-injection=enabled
 kubectl apply -f kubernetes/step-1-create-voting-app.yaml --namespace voting
 ```
 
-以下示例输出显示了要创建的资源：
+以下示例输出显示正在创建资源：
 
 ```console
 deployment.apps/voting-storage-1-0 created
@@ -143,13 +142,13 @@ voting-storage-1-0-5d8fcc89c4-2jhms     2/2       Running   0          39s   app
 > 
 > 虚拟服务将定义一组适用于一个或多个目标服务的路由规则。
 
-使用 `kubectl apply` 命令部署网关和虚拟服务 yaml。 请记住指定将这些资源部署到的命名空间。
+使用 `kubectl apply` 命令部署网关和虚拟服务 yaml。 请记得指定这些资源要部署到的命名空间。
 
 ```azurecli
 kubectl apply -f istio/step-1-create-voting-app-gateway.yaml --namespace voting
 ```
 
-以下示例输出显示了正在创建的新网关和虚拟服务：
+以下示例输出显示正在创建新的网关和虚拟服务：
 
 ```console
 virtualservice.networking.istio.io/voting-app created
@@ -188,7 +187,7 @@ kubectl get service istio-ingressgateway --namespace istio-system -o jsonpath='{
 kubectl apply -f kubernetes/step-2-update-voting-analytics-to-1.1.yaml --namespace voting
 ```
 
-以下示例输出显示了要创建的资源：
+以下示例输出显示正在创建资源：
 
 ```console
 deployment.apps/voting-analytics-1-1 created
@@ -249,7 +248,7 @@ deployment.apps/voting-analytics-1-1 created
 kubectl apply -f istio/step-2-update-and-add-routing-for-all-components.yaml --namespace voting
 ```
 
-以下示例输出显示了要更新/创建的新策略、目标规则和虚拟服务：
+以下示例输出显示正在更新/创建新策略、目标规则和虚拟服务：
 
 ```console
 virtualservice.networking.istio.io/voting-app configured
@@ -295,13 +294,13 @@ virtualservice.networking.istio.io/voting-storage created
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-现在，让我们确认 Istio 使用相互 TLS 来保护每个服务之间的通信。 为此，我们将使用身份验证的客户端二进制文件的 " [" tls 检查][istioctl-authn-tls-check]命令，该 `istioctl` 命令采用以下形式。
+现在，让我们确认 Istio 使用相互 TLS 保护各个服务之间的通信。 为此，我们将使用身份验证的客户端二进制文件的 " [" tls 检查][istioctl-authn-tls-check]命令，该 `istioctl` 命令采用以下形式。
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]
 ```
 
-此组命令提供有关对指定服务的访问的信息，这些信息来自命名空间中的所有 pod，并与一组标签匹配：
+此命令集提供有关从命名空间中的所有 Pod 访问指定服务的信息，并匹配一组标签：
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -321,7 +320,7 @@ istioctl authn tls-check <pod-name[.namespace]> [<service>]
 
 ::: zone-end
 
-下面的示例输出显示了对上述每个查询强制执行相互 TLS。 此输出还显示强制执行相互 TLS 的策略和目标规则：
+以下示例输出显示对上述每个查询强制实施了相互 TLS。 输出中还显示了强制实施相互 TLS 的策略和目标规则：
 
 ```console
 # mTLS configuration between istio ingress pods and the voting-app service
@@ -351,14 +350,14 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>推出应用程序的 Canary 发布
 
-现在，让我们部署 `voting-app`、`voting-analytics` 和 `voting-storage` 组件 `2.0` 的新版本。 新的 `voting-storage` 组件使用 MySQL 而不是 Redis，并更新 `voting-app` 和 `voting-analytics` 组件以允许它们使用这个新的 `voting-storage` 组件。
+现在，让我们部署 `voting-app`、`voting-analytics`和 `voting-storage` 组件 `2.0` 的新版本。 新的 `voting-storage` 组件使用 MySQL 而不是 Redis，并更新 `voting-app` 和 `voting-analytics` 组件以允许它们使用这个新的 `voting-storage` 组件。
 
-@No__t_0 组件现在支持功能标志功能。 可使用此功能标记针对用户子集测试 Istio 的 Canary 发布功能。
+`voting-app` 组件现在支持功能标志功能。 可使用此功能标记针对用户子集测试 Istio 的 Canary 发布功能。
 
-下图显示了你将在此部分结束时运行的内容。
+下图演示了本部分结束时要运行的内容。
 
-* @No__t_1 组件的版本 `1.0`、`voting-analytics` 组件的版本 `1.1` 以及 `1.0` 组件的版本 `voting-storage` 可以相互通信。
-* @No__t_1 组件的版本 `2.0`、`voting-analytics` 组件的版本 `2.0` 以及 `2.0` 组件的版本 `voting-storage` 可以相互通信。
+* `voting-app` 组件的版本 `1.0`、`voting-analytics` 组件的版本 `1.1` 以及 `1.0` 组件的版本 `voting-storage` 可以相互通信。
+* `voting-app` 组件的版本 `2.0`、`voting-analytics` 组件的版本 `2.0` 以及 `2.0` 组件的版本 `voting-storage` 可以相互通信。
 * 只有设置了特定功能标志的用户才能访问 `voting-app` 组件的版本 `2.0`。 此更改通过 cookie 使用功能标记管理。
 
 ![AKS 投票应用组件和路由。](media/servicemesh/istio/scenario-routing-components-03.png)
@@ -369,7 +368,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 kubectl apply -f istio/step-3-add-routing-for-2.0-components.yaml --namespace voting
 ```
 
-以下示例输出显示了要更新的目标规则和虚拟服务：
+以下示例输出显示正在更新目标规则和虚拟服务：
 
 ```console
 destinationrule.networking.istio.io/voting-app configured
@@ -425,7 +424,7 @@ kubectl get pods --namespace voting -w
 
 现在你已成功推出 AKS 投票应用的新版本。
 
-## <a name="clean-up"></a>清理 
+## <a name="clean-up"></a>清除 
 
 通过删除 `voting` 命名空间，可以从 AKS 群集中删除我们在此方案中使用的 AKS 投票应用程序，如下所示：
 
@@ -433,7 +432,7 @@ kubectl get pods --namespace voting -w
 kubectl delete namespace voting
 ```
 
-以下示例输出显示 AKS 投票应用程序的所有组件已从 AKS 群集中删除。
+以下示例输出显示已从 AKS 群集中删除 AKS 投票应用的所有组件。
 
 ```console
 namespace "voting" deleted

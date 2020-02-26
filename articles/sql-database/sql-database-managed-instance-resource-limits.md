@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526852"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605015"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
@@ -74,7 +74,7 @@ ms.locfileid: "77526852"
 | 每个实例的最大数据库文件数 | 最大为280，除非已达到实例存储大小或[Azure 高级磁盘存储空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)的限制。 | 每个数据库32767个文件，除非已达到实例存储大小限制。 |
 | 数据文件最大大小 | 仅限当前可用的实例存储大小（最大 2 TB-8 TB）和[Azure 高级磁盘存储分配空间](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)。 | 仅限当前可用的实例存储大小（最大为 1 TB-4 TB）。 |
 | 最大日志文件大小 | 仅限 2 TB 和当前可用的实例存储大小。 | 仅限 2 TB 和当前可用的实例存储大小。 |
-| 数据/日志 IOPS（近似） | 每个实例最多 30-40 K IOPS *，500-每文件7500<br/>\*[增加文件大小以获取更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 5.5 k-110 K （1375 IOPS/vCore）<br/>添加更多的 Vcore，以获得更好的 IO 性能。 |
+| 数据/日志 IOPS（近似） | 每个实例最多 30-40 K IOPS *，500-每文件7500<br/>\*[增加文件大小以获取更多 IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K （2500 IOPS/vCore）<br/>添加更多的 Vcore，以获得更好的 IO 性能。 |
 | 日志写入吞吐量限制（每个实例） | 3 MB/s（每个 vCore）<br/>最大 22 MB/秒 | 每 vCore 4 MB/秒<br/>最大 48 MB/s |
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[增加文件大小以获得更好的 IO 性能](#file-io-characteristics-in-general-purpose-tier) | 不受限制。 |
 | 存储 IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
@@ -107,7 +107,7 @@ ms.locfileid: "77526852"
 
 ## <a name="supported-regions"></a>支持的区域
 
-只能在[受支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中创建托管实例。 若要在当前不受支持的区域中创建托管实例，可以[通过 Azure 门户发送支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)。
+只能在[受支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中创建托管实例。 若要在当前不受支持的区域中创建托管实例，可以[通过 Azure 门户发送支持请求](quota-increase-request.md)。
 
 ## <a name="supported-subscription-types"></a>支持的订阅类型
 
@@ -122,13 +122,13 @@ ms.locfileid: "77526852"
 
 ## <a name="regional-resource-limitations"></a>区域资源限制
 
-支持的订阅类型针对每个区域可包含有限的资源数。 对于每个 Azure 区域，托管实例有两个默认限制（可以根据订阅类型的类型，通过在[Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)来增加按需增加）：
+支持的订阅类型针对每个区域可包含有限的资源数。 托管实例的每个 Azure 区域都有两个默认限制（可以根据订阅类型的类型，在 Azure 门户中创建一个特殊的[支持请求](quota-increase-request.md)来增加按需增加的限制：
 
 - **子网限制**：在单一区域中部署托管实例的子网数上限。
 - **vCore unit limit**：可在单个区域中的所有实例之间部署的 vCore 单元的最大数目。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用4个 vCore 单位。 实例的总数不受限于，只要它在 vCore 单元限制内。
 
 > [!Note]
-> 这些限制是默认设置，而不是技术限制。 如果在当前区域中需要更多的托管实例，则可以通过在[Azure 门户中创建特殊支持请求](#obtaining-a-larger-quota-for-sql-managed-instance)来提高限制。 作为替代方法，可以在另一个 Azure 区域中创建新的托管实例，而无需发送支持请求。
+> 这些限制是默认设置，而不是技术限制。 如果在当前区域中需要更多的托管实例，则可以通过在[Azure 门户中创建特殊支持请求](quota-increase-request.md)来提高限制。 作为替代方法，可以在另一个 Azure 区域中创建新的托管实例，而无需发送支持请求。
 
 下表显示了支持的订阅类型的**默认区域限制**（可以使用下面所述的支持请求扩展默认限制）：
 
@@ -146,39 +146,9 @@ ms.locfileid: "77526852"
 
 以下区域提供了 \*\* 更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>为 SQL 托管实例获取更大的配额
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>请求为 SQL 托管实例增加配额
 
-如果您在当前区域中需要更多的托管实例，则发送支持请求以便使用 Azure 门户扩展配额。
-若要启动获取更大配额的过程，请执行以下操作：
-
-1. 打开“帮助 + 支持”，单击“新建支持请求”。
-
-   ![帮助和支持](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. 在新支持请求的“基本信息”选项卡上：
-   - 对于“问题类型”，选择“服务和订阅限制(配额)”。
-   - 对于“订阅”，请选择自己的订阅。
-   - 对于“配额类型”，选择“SQL 数据库托管实例”。
-   - 对于“支持计划”，选择自己的支持计划。
-
-     ![问题类型配额](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. 单击“下一步”。
-4. 在新支持请求的 "**问题" 选项卡**上：
-   - 对于“严重性”，选择问题的严重性级别。
-   - 对于“详细信息”，提供有关问题的其他信息，包括错误消息。
-   - 对于“文件上传”，附加包含详细信息的文件（最多 4 MB）。
-
-     ![问题详细信息](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > 有效的请求应包括：
-     > - 需要增加订阅限制的区域。
-     > - 在配额增加后，现有子网中的每个服务层所需的 Vcore 数（如果需要扩展现有子网。
-     > - 新子网中所需的新子网数和每个服务层的 Vcore 总数（如果需要在新子网中部署托管实例）。
-
-5. 单击“下一步”。
-6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
-7. 单击“创建”。
+如果您在当前区域中需要更多的托管实例，则发送支持请求以便使用 Azure 门户扩展配额。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](quota-increase-request.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

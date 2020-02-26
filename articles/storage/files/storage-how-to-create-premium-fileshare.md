@@ -7,37 +7,37 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209540"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598657"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
-高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
+高级文件共享在固态磁盘（SSD）存储媒体上提供，适用于 IO 密集型工作负荷，包括宿主数据库和高性能计算（HPC）。 高级文件共享以特殊用途存储帐户类型（称为 FileStorage 帐户）托管。 高级文件共享旨在实现高性能和企业级应用程序，提供一致的低延迟、高 IOPS 和高吞吐量共享。
 
-本文介绍如何使用 [Azure 门户](https://portal.azure.com/)、Azure PowerShell 和 Azure CLI 创建此新帐户类型。
+本文介绍如何使用[Azure 门户](https://portal.azure.com/)、Azure PowerShell 和 Azure CLI 创建此新帐户类型。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-若要访问包含高级 Azure 文件共享的 Azure 资源，需要一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+若要访问包含高级 Azure 文件共享的 Azure 资源，你将需要一个 Azure 订阅。 如果还没有订阅，则请在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-a-premium-file-share-using-the-azure-portal"></a>使用 Azure 门户创建高级文件共享
 
 ### <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ### <a name="create-a-filestorage-storage-account"></a>创建 filestorage 存储帐户
 
-现在可以创建存储帐户。
+现在，你已准备好创建你的存储帐户。
 
-每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新资源组。
+每个存储帐户都必须属于 Azure 资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。 本文介绍如何创建新的资源组。
 
-1. 在 Azure 门户中，选择左侧菜单中的“存储帐户”。
+1. 在 Azure 门户的左侧菜单中，选择 "**存储帐户**"。
 
-    ![Azure 门户主页 - 选择存储帐户](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure 门户主页选择存储帐户](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
 1. 在显示的“存储帐户”窗口中，选择“添加”。
 1. 选择要在其中创建存储帐户的订阅。
@@ -45,9 +45,9 @@ ms.locfileid: "74209540"
 
 1. 然后，输入存储帐户的名称。 所选名称在 Azure 中必须唯一。 该名称还必须为 3 到 24 个字符，并且只能包含数字和小写字母。
 1. 选择存储帐户的位置或使用默认位置。
-1. 对于“性能”，请选择“高级”。
-1. 依次选择“帐户类型”、“FileStorage”。
-1. 将“复制”保留设置为默认值“本地冗余存储(LRS)”。
+1. 对于**性能**，请选择**高级**。
+1. 选择 "**帐户类型**"，然后选择 " **FileStorage**"。
+1. 将**复制**设置为其默认值 "**本地冗余存储（LRS）** "。
 
     ![如何创建高级文件共享的存储帐户](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 
@@ -58,18 +58,18 @@ ms.locfileid: "74209540"
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-1. 在存储帐户的左侧菜单中滚动到“文件服务”部分，然后选择“文件”。
+1. 在存储帐户的左侧菜单中，滚动到 "**文件服务**" 部分，然后选择 "**文件**"。
 1. 选择 "**文件共享**" 以创建高级文件共享。
-1. 输入文件共享的名称和所需配额，然后选择“创建”。
+1. 输入文件共享的名称和所需配额，然后选择 "**创建**"。
 
 > [!NOTE]
-> 预配的共享大小按共享配额指定，文件共享按预配大小计费。有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小由共享配额指定，文件共享按预配大小计费，有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
    ![创建高级文件共享](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
 
 ### <a name="clean-up-resources"></a>清理资源
 
-若要清理本文创建的资源，可以直接删除资源组。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
+如果要清理本文中创建的资源，只需删除资源组即可。 删除资源组也会删除相关联的存储帐户，以及与资源组相关联的任何其他资源。
 
 ## <a name="create-a-premium-file-share-using-powershell"></a>使用 PowerShell 创建高级文件共享
 
@@ -77,15 +77,15 @@ ms.locfileid: "74209540"
 
 首先，安装最新版本的 [PowerShellGet](/powershell/scripting/gallery/installing-psget) 模块。
 
-然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
+然后，升级 PowerShell 模块，登录到你的 Azure 订阅，创建一个资源组，然后创建一个存储帐户。
 
 ### <a name="upgrade-your-powershell-module"></a>升级 PowerShell 模块
 
-若要在 PowerShell 中与高级文件共享交互，需要安装 Az.Storage 模块版本1.4.0，或最新的 Az.Storage 模块。
+若要从 PowerShell 与高级文件共享交互，需要安装 Az. Storage module 版本1.4.0 或最新的 Az 模块。
 
 首先使用提升的权限打开 PowerShell 会话。
 
-安装 Az.Storage 模块：
+安装 Az 模块：
 
 ```powershell
 Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
@@ -113,7 +113,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ### <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
 
-若要通过 PowerShell 创建 filestorage 存储帐户，请使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 命令：
+若要从 PowerShell 创建 FileStorage 存储帐户，请使用[AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)命令：
 
 ```powershell
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
@@ -121,10 +121,10 @@ $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fil
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-创建 FileStorage 帐户后，接下来可以创建高级文件共享。 可使用 [New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) cmdlet 来创建。
+现在，你已有了 FileStorage 帐户，你可以创建高级文件共享。 使用[AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) cmdlet 创建一个。
 
 > [!NOTE]
-> 预配的共享大小按共享配额指定，文件共享按预配大小计费。有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小由共享配额指定，文件共享按预配大小计费，有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```powershell
 New-AzStorageShare `
@@ -162,7 +162,7 @@ az group create `
 
 ### <a name="create-a-filestorage-storage-account"></a>创建 FileStorage 存储帐户
 
-若要通过 Azure CLI 创建 FileStorage 存储帐户，请使用 [az storage account create](/cli/azure/storage/account) 命令。
+若要从 Azure CLI 创建 FileStorage 存储帐户，请使用[az storage account create](/cli/azure/storage/account)命令。
 
 ```azurecli-interactive
 az storage account create `
@@ -175,7 +175,7 @@ az storage account create `
 
 ### <a name="get-the-storage-account-key"></a>获取存储帐户密钥
 
-存储帐户密钥控制对存储帐户中的资源的访问，本文使用密钥来创建高级文件共享。 这些密钥是在创建存储帐户时自动创建的。 可以使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户的存储帐户密钥：
+存储帐户密钥控制对存储帐户中资源的访问，在本文中，我们将使用密钥来创建高级文件共享。 这些密钥是在创建存储帐户时自动创建的。 可以使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户的存储帐户密钥：
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -186,10 +186,10 @@ STORAGEKEY=$(az storage account keys list \
 
 ### <a name="create-a-premium-file-share"></a>创建高级文件共享
 
-创建 filestorage 帐户后，接下来可以创建高级文件共享。 可使用 [az storage share create](/cli/azure/storage/share) 命令来创建。
+现在，你已有了 filestorage 帐户，你可以创建高级文件共享。 使用[az storage share create](/cli/azure/storage/share)命令创建一个。
 
 > [!NOTE]
-> 预配的共享大小按共享配额指定，文件共享按预配大小计费。有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
+> 预配的共享大小由共享配额指定，文件共享按预配大小计费，有关更多详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/storage/files/)。
 
 ```azurecli-interactive
 az storage share create \
@@ -208,7 +208,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已创建一个高级文件共享。 若要了解此帐户提供的性能，请转到规划指南的“性能层”部分。
+本文介绍了如何创建高级文件共享。 若要了解此帐户所提供的性能，请继续阅读规划指南中的 "性能层" 部分。
 
 > [!div class="nextstepaction"]
-> [文件共享性能层](storage-files-planning.md#file-share-performance-tiers)
+> [文件共享层](storage-files-planning.md#storage-tiers)

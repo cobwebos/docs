@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: cd45d38759bcf41307ba42d68d504266719579d2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493418"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598011"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -210,6 +210,24 @@ ACU： 160-250 <sup>1</sup>
 <sup>1</sup> VM 系列可以运行于以下 CPU 之一： 2.2 GHz intel 强® E5-2660 v2、2.4 GHz intel 强® e5-2673 V3 （Haswell）或 2.3 GHZ Intel 强® E5-2673 V4 （Broadwell）  
 
 <br>
+
+## <a name="preview-dc-series"></a>预览： DC 系列
+
+高级存储：支持
+
+高级存储缓存：支持
+
+DC 系列使用最新版本的 3.7 GHz Intel 至强 E-2176G 处理器和 SGX 技术，使用 Intel Turbo 提升技术可以达到 4.7 GHz。 
+
+| 大小          | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000 / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+> [!IMPORTANT]
+>
+> DC 系列 Vm 是[第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，仅支持 `Gen2` 映像。
+
 
 ### <a name="ds-series"></a>DS 系列  
 

@@ -3,16 +3,15 @@ title: 使用 GitHub 操作生成、测试容器并将其部署到 Azure Kuberne
 description: 了解如何使用 GitHub 操作将容器部署到 Kubernetes
 services: container-service
 author: azooinmyluggage
-ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046347"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595359"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>用于部署到 Kubernetes 服务的 GitHub 操作
 

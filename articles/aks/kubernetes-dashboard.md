@@ -2,39 +2,36 @@
 title: 使用 Web 仪表板管理 Azure Kubernetes 服务群集
 description: 了解如何使用内置的 Kubernetes Web UI 仪表板管理 Azure Kubernetes 服务 (AKS) 群集
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: mlearned
-ms.openlocfilehash: f150103c8e9534bfd1bb93d20e3d65d715767184
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 15fcf765be0a754575713eebcdaa7d68e1c299b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996966"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595342"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
 Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此仪表板，可以查看应用程序的基本运行状况状态和指标，创建并部署服务，以及编辑现有应用程序。 本文介绍如何使用 Azure CLI 访问 Kubernetes 仪表板，然后引导你完成一些基本的仪表板操作。
 
-有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板][kubernetes-dashboard]。
+有关 Kubernetes 仪表板的详细信息，请参阅[Kubernetes WEB UI 仪表板][kubernetes-dashboard]。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文档详述的步骤假设你已创建 AKS 群集并已与该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [AKS 快速入门][aks-quickstart]。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅[AKS 快速入门][aks-quickstart]。
 
-另外，还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.46 或更高版本。 运行  `az --version`  即可查找版本。 如果需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="start-the-kubernetes-dashboard"></a>启动 Kubernetes 仪表板
 
-若要启动 Kubernetes 仪表板，请使用 [az aks browse][az-aks-browse] 命令。 以下示例将为 *myResourceGroup* 资源组中的 *myAKSCluster* 群集打开仪表板：
+若要启动 Kubernetes 仪表板，请使用[az aks browse][az-aks-browse]命令。 以下示例将为 *myResourceGroup* 资源组中的 *myAKSCluster* 群集打开仪表板：
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-此命令在开发系统与 Kubernetes API 之间创建一个代理，并在 Web 浏览器中打开 Kubernetes 仪表板。 如果 Web 浏览器未打开到 Kubernetes 仪表板，请复制并在 Azure CLI 中粘贴所记录的 URL 地址，通常为 `http://127.0.0.1:8001`。
+此命令在开发系统与 Kubernetes API 之间创建一个代理，并在 Web 浏览器中打开 Kubernetes 仪表板。 如果 web 浏览器未打开 Kubernetes 仪表板，请复制并粘贴 Azure CLI 中所述的 URL 地址，通常 `http://127.0.0.1:8001`。
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -70,13 +67,13 @@ After you choose a method to sign in, the Kubernetes dashboard is displayed. If 
 > [!IMPORTANT]
 > 如果 AKS 群集使用 RBAC，则必须先创建 *ClusterRoleBinding*，然后才能正确访问仪表板。 默认情况下，Kubernetes 仪表板是使用最小读取访问权限部署的，并且显示 RBAC 访问错误。 Kubernetes 仪表板当前不支持使用用户提供的凭据来确定访问权限级别，而是使用授予给服务帐户的角色。 群集管理员可以选择向 *kubernetes-dashboard* 服务帐户授予更多访问权限，但这可能会导致需要进行权限提升。 还可以集成 Azure Active Directory 身份验证来提供更精细的访问权限级别。
 > 
-> 若要创建绑定，请使用 [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] 命令。 以下示例说明如何创建示例绑定，但是，此示例绑定不会应用任何其他身份验证组件，并且可能导致不安全的使用。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
+> 若要创建绑定，请使用[kubectl create clusterrolebinding][kubectl-create-clusterrolebinding]命令。 下面的示例演示如何创建一个示例绑定，但是，此示例绑定不会应用任何其他身份验证组件，并可能导致使用不安全。 Kubernetes 仪表板将对有权访问该 URL 的任何人开放。 请勿公开 Kubernetes 仪表板。
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> 有关使用不同身份验证方法的详细信息，请参阅有关[访问控制][dashboard-authentication]的 Kubernetes 仪表板 wiki。
+> 若要详细了解如何使用不同的身份验证方法，请参阅[access 控件][dashboard-authentication]上的 Kubernetes 仪表板 wiki。
 
 ![Kubernetes Web 仪表板的概述页](./media/kubernetes-dashboard/dashboard-overview.png)
 
@@ -130,7 +127,7 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板][kubernetes-dashboard]。
+有关 Kubernetes 仪表板的详细信息，请参阅[Kubernetes WEB UI 仪表板][kubernetes-dashboard]。
 
 <!-- LINKS - external -->
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control

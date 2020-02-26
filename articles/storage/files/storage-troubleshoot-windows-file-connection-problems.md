@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544950"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597960"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
 本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 此外，还提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现错误 5
@@ -143,7 +140,7 @@ Azure 文件同步可以将本地 Windows Server 转换为 Azure 文件共享的
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现 "无法访问" 错误  
 尝试在门户中访问或删除 Azure 文件共享时，可能会收到以下错误：
 
-无法访问  
+无访问权限  
 错误代码：403 
 
 ### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因1：已在存储帐户上启用虚拟网络或防火墙规则
@@ -250,7 +247,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 -   从包含应用程序的同一用户帐户装载驱动器。 可以使用 PsExec 等工具。
 - 在 net use 命令的用户名和密码参数中传递存储帐户名称和密钥。
-- 使用 cmdkey 命令将凭据添加到凭据管理器中。 从命令行在服务帐户上下文中通过交互式登录或使用运行方式执行此操作。
+- 使用 cmdkey 命令将凭据添加到凭据管理器中。 通过交互式登录或使用 `runas`从服务帐户上下文下的命令行执行此步骤。
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - 不使用映射驱动器号直接映射共享。 某些应用程序可能无法正确地重新连接到驱动器号，因此使用完整的 UNC 路径可能会更可靠。 
@@ -300,7 +297,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 ### <a name="cause"></a>原因
 
-当你尝试为存储帐户上的[Azure 文件启用 Azure Active Directory 域服务（AAD ds）身份验证](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable)时，如果未在关联订阅的 aad 租户上创建[aad 域服务（aad ds）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ，则会发生错误 AadDsTenantNotFound。  
+当你尝试在存储帐户上[启用对 Azure 文件的 Azure Active Directory 域服务（AZURE AD DS）身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)时，会发生错误 AadDsTenantNotFound，在该帐户上，不会在关联订阅的 aad 租户上创建[aad 域服务（aad ds）](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) 。  
 
 ### <a name="solution"></a>解决方案
 

@@ -3,12 +3,12 @@ title: 使用恢复服务保管库的诊断设置
 description: 介绍如何使用 Azure 备份的新旧诊断事件的文章
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281098"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583939"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 
@@ -21,14 +21,15 @@ Azure 备份发送诊断事件，这些事件可收集并用于分析、警报�
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Azure 备份用户可用的诊断事件
 
 Azure 备份提供以下诊断事件，每个事件都提供一组特定的备份相关项目的详细数据：
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Azure 备份诊断事件的数据模型](https://aka.ms/diagnosticsdatamodel)
+[Azure 备份诊断事件的数据模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 这些事件的数据可以发送到存储帐户、LA 工作区或事件中心。 如果要将此数据发送到 "LA" 工作区，则需要在 "**诊断设置**" 屏幕中选择**特定于资源**的切换（有关详细信息，请参阅以下部分）。
 
@@ -37,6 +38,7 @@ Azure 备份提供以下诊断事件，每个事件都提供一组特定的备�
 利用 azure Log Analytics 路线图，Azure 备份现在允许将保管库诊断数据发送到专用的 LA 表以供备份。 这些表称为 "[资源特定表](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific)"。
 
 将保管库诊断数据发送到 LA：
+
 1.  导航到保管库，并单击 "**诊断设置**"。 单击 " **+ 添加诊断设置**"。
 2.  为诊断设置指定一个名称。
 3.  选中 "**发送到 Log Analytics** " 框，然后选择 "Log Analytics" 工作区。
@@ -84,4 +86,4 @@ Azure 备份和 Azure Site Recovery 事件是从同一恢复服务保管库发�
 
 ## <a name="next-steps"></a>后续步骤
 
-[了解诊断事件的 Log Analytics 数据模型](https://aka.ms/diagnosticsdatamodel)
+[了解诊断事件的 Log Analytics 数据模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

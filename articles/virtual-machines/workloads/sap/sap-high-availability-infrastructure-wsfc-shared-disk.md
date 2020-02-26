@@ -1,10 +1,10 @@
 ---
-title: 针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构 | Microsoft Docs
+title: 用于 SAP ASCS/SCS 和 WSFC & 共享磁盘的 Azure 基础结构 |Microsoft Docs
 description: 了解如何针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647639"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591925"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -164,7 +164,7 @@ ms.locfileid: "75647639"
 
 本文介绍使用群集共享磁盘作为群集化 SAP ASCS 实例的选项，在 Windows 故障转移群集上安装和配置高可用性 SAP 系统之前准备 Azure 基础结构所要执行的步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看以下文章：
 
@@ -188,7 +188,7 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 
   ![图 1：设置 SAP 高可用性 Azure 资源管理器参数][sap-ha-guide-figure-3000]
 
-图 1：设置 SAP 高可用性 Azure 资源管理器参数
+图 1 _**：设置 SAP 高可用性 Azure 资源管理器参数**_
 
 
   模板创建：
@@ -223,7 +223,7 @@ Azure 资源管理器中的三层模板还支持高可用性方案。 例如体�
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>部署带有公司网络连接的虚拟机（跨界）以在生产中使用
-对于生产 SAP 系统，使用 Azure VPN 网关或 Azure ExpressRoute 部署具有[企业网络连接（跨界）][planning-guide-2.2]的 Azure 虚拟机。
+对于生产 SAP 系统，使用 Azure VPN 网关或 Azure ExpressRoute 部署具有企业网络连接的 Azure 虚拟机。
 
 > [!NOTE]
 > 可使用 Azure 虚拟网络实例。 已创建并准备好虚拟网络与子网。
@@ -373,13 +373,13 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 1. 在 Azure 门户上的“DNS 服务器”窗格中，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
-   * [企业网络连接（跨界）][planning-guide-2.2]：添加本地 DNS 服务器的 IP 地址。  
+   * 添加本地 DNS 服务器的 IP 地址。  
    可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
    * 对于在 Azure 中隔离的 VM 部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
 
    ![图 2：为 Azure 虚拟网络配置 DNS 服务器][sap-ha-guide-figure-3001]
 
-   图 2：为 Azure 虚拟网络配置 DNS 服务器
+   图 2 _**：为 Azure 虚拟网络配置 DNS 服务器**_
 
    > [!NOTE]
    > 如果更改了 DNS 服务器的 IP 地址，则需要重新启动 Azure 虚拟机才能应用更改并传播新的 DNS 服务器。
@@ -410,7 +410,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 ## <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>设置 SAP 虚拟机的静态 IP 地址
 部署虚拟机以供在群集中使用后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
-1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
+1. 在 Azure 门户中，选择“资源组” **“网卡”** “设置” > “IP 地址”。 >  > 
 2. 在“IP 地址”窗格中的“分配”下面，选择“静态”。 在“IP 地址”框中，输入要使用的 IP 地址。
 
    > [!NOTE]
@@ -420,7 +420,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
    ![图 3：为每个虚拟机的网卡设置静态 IP 地址][sap-ha-guide-figure-3002]
 
-   图 3：为每个虚拟机的网卡设置静态 IP 地址
+   图 3 _**：为每个虚拟机的网卡设置静态 IP 地址**_
 
    为所有网络接口（即为所有虚拟机，包括要用于 Active Directory 或 DNS 服务的虚拟机）重复此步骤。
 
@@ -455,7 +455,7 @@ SAP Azure 资源管理器模板创建用于 SAP ASCS/SCS 实例群集和 DBMS �
 
    ![图 4：为 SAP ASCS/SCS 实例的内部负载均衡器设置静态 IP 地址][sap-ha-guide-figure-3003]
 
-   图 4：为 SAP ASCS/SCS 实例的内部负载均衡器设置静态 IP 地址
+   图 4 _**：为 SAP ASCS/SCS 实例的内部负载均衡器设置静态 IP 地址**_
 
 在本例中，有两个具有以下静态 IP 地址的 Azure 内部负载均衡器：
 
@@ -513,7 +513,7 @@ SAP Azure 资源管理器模板创建所需的端口：
 
 ![图 5：Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则][sap-ha-guide-figure-3004]
 
-图 5：Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则
+图 5 _**：Azure 内部负载均衡器的默认 ASCS/SCS 负载均衡规则**_
 
 将负载均衡器 pr1-lb-dbms 的 IP 地址设置为 DBMS 实例的虚拟主机名 IP 地址。
 
@@ -525,7 +525,7 @@ SAP Azure 资源管理器模板创建所需的端口：
 2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
    * 名称
-   * Port
+   * 端口
    * 后端端口
 
    例如，如果要将默认 ASCS 实例编号从 00 更改为 31，需要为表 1 中列出的所有端口进行更改。
@@ -534,7 +534,7 @@ SAP Azure 资源管理器模板创建所需的端口：
 
    ![图 6：更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则][sap-ha-guide-figure-3005]
 
-   图 6：更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则
+   图 6 _**：更改 Azure 内部负载均衡器的 ASCS/SCS 默认负载均衡规则**_
 
 ## <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>将 Windows 虚拟机添加到域
 
@@ -542,7 +542,7 @@ SAP Azure 资源管理器模板创建所需的端口：
 
 ![图 7：将虚拟机添加到域][sap-ha-guide-figure-3006]
 
-图 7：将虚拟机添加到域
+图 7 _**：将虚拟机添加到域**_
 
 ## <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>在 SAP ASCS/SCS 实例的两个群集节点上添加注册表项
 
@@ -586,25 +586,25 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 8：添加第一个群集节点的服务器或虚拟机名称][sap-ha-guide-figure-3007]
 
-   图 8：添加第一个群集节点的服务器或虚拟机名称
+   图 8 _**：添加第一个群集节点的服务器或虚拟机名称**_
 
 3. 输入群集的网络名称（虚拟主机名）。
 
    ![图 9：输入群集名称][sap-ha-guide-figure-3008]
 
-   图 9：输入群集名称
+   图 9 _**：输入群集名称**_
 
 4. 创建群集后，运行群集验证测试。
 
    ![图 10：运行群集验证检查][sap-ha-guide-figure-3009]
 
-   图 10：运行群集验证检查
+   图 10 _**：运行群集验证检查**_
 
    在过程中的此时点，可忽略关于磁盘的任何警告。 将稍后添加文件共享见证和 SIOS 共享磁盘。 在此阶段，无需担心是否具有仲裁。
 
    ![图 11：找不到任何仲裁磁盘][sap-ha-guide-figure-3010]
 
-   图 11：找不到任何仲裁磁盘
+   图 11 _**：找不到任何仲裁磁盘**_
 
    ![图 12：核心群集资源需要新 IP 地址][sap-ha-guide-figure-3011]
 
@@ -616,11 +616,11 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 13：在“属性”对话框中更改 IP 地址][sap-ha-guide-figure-3012]
 
-   图 13：在“属性”对话框中更改 IP 地址
+   图 13 _**：在“属性”** **对话框中更改 IP 地址**_
 
    ![图 14：分配为群集保留的 IP 地址][sap-ha-guide-figure-3013]
 
-   图 14：分配为群集保留的 IP 地址
+   图 14 _**：分配为群集保留的 IP 地址**_
 
 6. 将群集虚拟主机名联机。
 
@@ -634,13 +634,13 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 16：添加第二个群集节点][sap-ha-guide-figure-3015]
 
-   图 16：添加第二个群集节点
+   图 16 _**：添加第二个群集节点**_
 
 8. 输入第二个群集节点主机的名称。
 
    ![图 17：输入第二个群集节点主机名][sap-ha-guide-figure-3016]
 
-   图 17：输入第二个群集节点主机名
+   图 17 _**：输入第二个群集节点主机名**_
 
    > [!IMPORTANT]
    > 请确保“将所有符合条件的存储添加到群集”复选框*不*处于选中状态。  
@@ -649,13 +649,13 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 18：请勿选中复选框][sap-ha-guide-figure-3017]
 
-   图 18：请勿选中复选框
+   图 18 _**：请勿***选中复选框*_
 
    可以忽略关于仲裁和磁盘的警告。 稍后将设置仲裁并共享磁盘，如为[SAP ASCS/SCS 群集共享磁盘安装 SIOS DataKeeper Cluster Edition][sap-high-availability-infrastructure-wsfc-shared-disk-install-sios]中所述。
 
    ![图 19：忽略关于磁盘仲裁的警告][sap-ha-guide-figure-3018]
 
-   图 19：忽略关于磁盘仲裁的警告
+   图 19 _**：忽略关于磁盘仲裁的警告**_
 
 
 #### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>配置群集文件共享见证
@@ -682,7 +682,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 20：为群集名称对象分配共享权限][sap-ha-guide-figure-3019]
 
-   图 20：为群集名称对象分配共享权限
+   图 20 _**：为群集名称对象分配共享权限**_
 
    请确保权限包括针对群集名称对象（在本例中为 pr1-ascs-vir$）更改共享中的数据的授权。
 
@@ -694,7 +694,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 22：选中“计算机”复选框][sap-ha-guide-figure-3021]
 
-   图 22：选中“计算机”复选框
+   图 22 _**：选中“计算机”** **复选框**_
 
 4. 输入群集名称对象，如图 21 所示。 由于已创建记录，因此可更改权限，如图 20 所示。
 
@@ -702,7 +702,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 23：为文件共享仲裁上的群集名称对象设置安全属性][sap-ha-guide-figure-3022]
 
-   图 23：为文件共享仲裁上的群集名称对象设置安全属性
+   图 23 _**：为文件共享仲裁上的群集名称对象设置安全属性**_
 
 #### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>在故障转移群集管理器中设置文件共享见证仲裁
 
@@ -710,31 +710,31 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    ![图 24：启动“配置群集仲裁设置向导”][sap-ha-guide-figure-3023]
 
-   图 24：启动“配置群集仲裁设置向导”
+   图 24 _**：启动“配置群集仲裁设置向导”**_
 
 2. 上“选择仲裁配置选项”页上，选择“选择仲裁见证”。
 
    ![图 25：可供选择的仲裁配置][sap-ha-guide-figure-3024]
 
-   图 25：可供选择的仲裁配置
+   图 25 _**：可供选择的仲裁配置**_
 
 3. 在“选择仲裁见证”页上，选择“配置文件共享见证”。
 
    ![图 26：选择文件共享见证][sap-ha-guide-figure-3025]
 
-   图 26：选择文件共享见证
+   图 26 _**：选择文件共享见证**_
 
 4. 输入文件共享的 UNC 路径（在本例中为 \\domcontr-0\FSW）。 若要查看可进行的更改列表，请选择“下一步”。
 
    ![图 27：定义见证共享的文件共享位置][sap-ha-guide-figure-3026]
 
-   图 27：定义见证共享的文件共享位置
+   图 27 _**：定义见证共享的文件共享位置**_
 
 5. 选择所需的更改，并选择“下一步”。 需要成功重新配置群集配置，如图 28 中所示：  
 
    ![图 28：确认已重新配置群集][sap-ha-guide-figure-3027]
 
-   图 28：确认已重新配置群集
+   图 28 _**：确认已重新配置群集**_
 
 成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合 Azure 中的情况。 [优化故障转移群集网络阈值][tuning-failover-cluster-network-thresholds]中记录了要更改的参数。 假设构成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，则需要将以下参数更改为这些值：
 
@@ -794,31 +794,31 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
    ![图 31：SIOS DataKeeper 安装程序的第一页][sap-ha-guide-figure-3031]
 
-   图 31：SIOS DataKeeper 安装程序的第一页
+   图 31 _**：SIOS DataKeeper 安装程序的第一页**_
 
 2. 在对话框中，选择“是”。
 
    ![图 32：DataKeeper 通知将会禁用服务][sap-ha-guide-figure-3032]
 
-   图 32：DataKeeper 通知将会禁用服务
+   图 32 _**：DataKeeper 通知将会禁用服务**_
 
 3. 在对话框中，建议选中“域或服务器帐户”。
 
    ![图 33：用户为 SIOS DataKeeper 选中的选项][sap-ha-guide-figure-3033]
 
-   图 33：用户为 SIOS DataKeeper 选中的选项
+   图 33 _**：用户为 SIOS DataKeeper 选中的选项**_
 
 4. 输入为 SIOS DataKeeper 创建的域帐户用户名和密码。
 
    ![图 34：输入域用户名和密码以安装 SIOS DataKeeper][sap-ha-guide-figure-3034]
 
-   图 34：输入域用户名和密码以安装 SIOS DataKeeper
+   图 34 _**：输入域用户名和密码以安装 SIOS DataKeeper**_
 
 5. 如图 35 所示，安装 SIOS DataKeeper 实例的许可证密钥。
 
    ![图 35：输入 SIOS DataKeeper 许可证密钥][sap-ha-guide-figure-3035]
 
-   图 35：输入 SIOS DataKeeper 许可证密钥
+   图 35 _**：输入 SIOS DataKeeper 许可证密钥**_
 
 6. 根据提示重新启动虚拟机。
 
@@ -830,19 +830,19 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
    ![图 36：SIOS DataKeeper 管理和配置工具][sap-ha-guide-figure-3036]
 
-   图 36：SIOS DataKeeper 管理和配置工具
+   图 36 _**：SIOS DataKeeper 管理和配置工具**_
 
 2. 输入管理和配置工具应连接到的第一个节点的名称或 TCP/IP 地址，并在第二个步骤中，插入第二个节点的相关数据。
 
    ![图 37：插入管理和配置工具应连接到的第一个节点的名称或 TCP/IP 地址，并在第二步中插入第二个节点的相关数据][sap-ha-guide-figure-3037]
 
-   图 37：插入管理和配置工具应连接到的第一个节点的名称或 TCP/IP 地址，并在第二步中插入第二个节点的相关数据
+   图 37 _**：插入管理和配置工具应连接到的第一个节点的名称或 TCP/IP 地址，并在第二步中插入第二个节点的相关数据**_
 
 3. 在两个节点之间创建复制作业。
 
    ![图 38：创建复制作业][sap-ha-guide-figure-3038]
 
-   图 38：创建复制作业
+   图 38 _**：创建复制作业**_
 
    向导指导完成创建复制作业的过程。
 
@@ -850,11 +850,11 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
    ![图 39：定义复制作业的名称][sap-ha-guide-figure-3039]
 
-   图 39：定义复制作业的名称
+   图 39 _**：定义复制作业的名称**_
 
    ![图 40：定义节点（应为当前源节点）的基本数据][sap-ha-guide-figure-3040]
 
-   图 40：定义节点（应为当前源节点）的基本数据
+   图 40 _**：定义节点（应为当前源节点）的基本数据**_
 
 5. 定义目标节点的名称、TCP/IP 地址和磁盘卷。
 
@@ -868,25 +868,25 @@ Windows Server 2012 R2 上不会自动激活或安装 .NET Framework 3.5。 由�
 
    ![图 42：定义复制详细信息][sap-ha-guide-figure-3042]
 
-   图 42：定义复制详细信息
+   图 42 _**：定义复制详细信息**_
 
 8. 定义是否应向 Windows Server 故障转移群集配置将复制作业所复制的卷表示为共享磁盘。 对于 SAP ASCS/SCS 配置，选择“是”，以便 Windows 群集将复制的卷视为可用作群集卷的共享磁盘。
 
    ![图 43：选择“是”将复制的卷设置为群集卷][sap-ha-guide-figure-3043]
 
-   图 43：选择“是”将复制的卷设置为群集卷
+   图 43 _**：选择“是”** **将复制的卷设置为群集卷**_
 
    创建卷后，DataKeeper 管理和配置工具显示复制作业处于活动状态。
 
    ![图 44：SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像处于活动状态][sap-ha-guide-figure-3044]
 
-   图 44：SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像处于活动状态
+   图 44 _**：SAP ASCS/SCS 共享磁盘的 DataKeeper 同步镜像处于活动状态**_
 
    现在，故障转移群集管理器将磁盘显示为 DataKeeper 磁盘，如图 45 所示：
 
    ![图 45：故障转移群集管理器显示 DataKeeper 复制的磁盘][sap-ha-guide-figure-3045]
 
-   图 45：故障转移群集管理器显示 DataKeeper 复制的磁盘
+   图 45 _**：故障转移群集管理器显示 DataKeeper 复制的磁盘**_
 
 ## <a name="next-steps"></a>后续步骤
 

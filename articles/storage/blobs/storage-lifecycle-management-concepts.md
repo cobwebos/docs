@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939241"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598300"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -34,7 +34,7 @@ ms.locfileid: "76939241"
 
 生命周期管理策略可用于常规用途 v2 （GPv2）帐户、Blob 存储帐户和高级块 Blob 存储帐户。 在 Azure 门户中，你可以将现有常规用途（GPv1）帐户升级为 GPv2 帐户。 有关存储帐户的详细信息，请参阅 [Azure 存储帐户概述](../common/storage-account-overview.md)。  
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 生命周期管理功能免费。 客户需要支付[列出 Blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) 和[设置 Blob 层](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 调用的常规操作费用。 删除操作免费。 有关定价的详细信息，请参阅[块 Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "76939241"
 
 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 可以通过两种方法通过 Azure 门户添加策略。 
 
@@ -128,7 +128,7 @@ ms.locfileid: "76939241"
 
 6. 有关此 JSON 示例的详细信息，请参阅 "[策略](#policy)" 和 "[规则](#rules)" 部分。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 以下 PowerShell 脚本可用于将策略添加到存储帐户。 必须用资源组名称初始化 `$rgname` 变量。 必须用您的存储帐户名称初始化 `$accountName` 变量。
 
@@ -158,7 +158,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[模板](#tab/template)
+# <a name="template"></a>[模板](#tab/template)
 
 可以使用 Azure 资源管理器模板来定义生命周期管理。 下面是一个示例模板，用于部署 GRS GPv2 存储帐户和生命周期管理策略。
 
@@ -232,12 +232,12 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 策略内的每个规则都有多个参数：
 
-| 参数名称 | 参数类型 | 说明 | 需要 |
+| 参数名称 | 参数类型 | 说明 | 必选 |
 |----------------|----------------|-------|----------|
-| `name`         | String |规则名称最多可以包含256个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | 正确 |
-| `enabled`      | Boolean | 一个可选的布尔值，允许暂时禁用规则。 如果未设置，则默认值为 true。 | 错误 | 
-| `type`         | 枚举值 | 当前有效类型为 `Lifecycle`。 | 正确 |
-| `definition`   | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | 正确 |
+| `name`         | String |规则名称最多可以包含256个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
+| `enabled`      | Boolean | 一个可选的布尔值，允许暂时禁用规则。 如果未设置，则默认值为 true。 | False | 
+| `type`         | 枚举值 | 当前有效类型为 `Lifecycle`。 | True |
+| `definition`   | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | True |
 
 ## <a name="rules"></a>规则
 
@@ -300,18 +300,18 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 生命周期管理支持对 blob 和删除 blob 快照进行分层和删除。 在 Blob 或 Blob 快照中为每个规则至少定义一个操作。
 
-| 行动        | 基本 Blob                                   | 快照      |
+| 操作        | 基本 Blob                                   | 快照      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
 | tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |
-| delete        | 受支持                                   | 受支持     |
+| delete        | 支持                                   | 支持     |
 
 >[!NOTE]
 >如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
 
 运行条件基于年龄。 基本 Blob 使用上次修改时间来跟踪陈旧程度，Blob 快照使用快照创建时间来跟踪陈旧程度。
 
-| 操作运行条件             | 条件值                          | Description                             |
+| 操作运行条件             | 条件值                          | 说明                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 指示陈旧程度（天）的整数值 | 基本 blob 操作的条件     |
 | daysAfterCreationGreaterThan     | 指示陈旧程度（天）的整数值 | Blob 快照操作的条件 |
@@ -432,13 +432,13 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 }
 ```
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **我创建了一个新策略，为什么这些操作不会立即运行？**  
 平台每天运行一次生命周期策略。 配置策略后，第一次运行某些操作可能需要长达24小时。  
 
 **如果更新现有策略，运行操作需要多长时间？**  
-更新后的策略最多需要24小时才能生效。 策略生效后，运行操作可能需要长达24小时。 因此，此策略可能需要长达48小时才能执行。   
+更新后的策略最多需要24小时才能生效。 策略生效后，运行操作可能需要长达24小时。 因此，策略操作可能需要长达48小时才能完成。   
 
 **我手动解除冻结存档的 blob，如何防止它暂时移回存档层？**  
 将 blob 从一个访问层移到另一个访问层时，其上次修改时间将不会更改。 如果将存档的 blob 手动解除冻结到 "热" 层，则生命周期管理引擎会将该 blob 移回存档层。 禁用影响此 blob 的规则，以防止它再次存档。 当 blob 可以安全地移回存档层时，重新启用规则。 还可以将 blob 复制到其他位置，前提是该 blob 需要永久保留在 "热" 或 "冷" 层中。

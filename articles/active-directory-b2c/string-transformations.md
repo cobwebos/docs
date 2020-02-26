@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df0bd87fffba8ed70c60da358b38079d3d017c76
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505638"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585724"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -127,7 +127,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | 值 | 字符串 | 要设置的字符串 |
+| InputParameter | 值 | 字符串 | 要设置的字符串。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。 |
 | OutputClaim | createdClaim | 字符串 | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换设置一个字符串 ClaimType 值。
@@ -297,7 +297,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 |作为字符串格式 {0} 参数的 ClaimType。 |
-| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 |
+| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。  |
 | OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带一个参数 {0} 的字符串。 以下示例创建一个 userPrincipalName。 所有社交标识提供者技术配置文件（如 `Facebook-OAUTH`）都调用 CreateUserPrincipalName 来生成 userPrincipalName。
@@ -333,7 +333,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |字符串 | 作为字符串格式 {0} 参数的 ClaimType。 |
 | InputClaim | inputClaim | 字符串 | 作为字符串格式 {1} 参数的 ClaimType。 |
-| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 和 {1} 参数。 |
+| InputParameter | stringFormat | 字符串 | 字符串格式，包括 {0} 和 {1} 参数。 此输入参数支持[字符串声明转换表达式](string-transformations.md#string-claim-transformations-expressions)。   |
 | OutputClaim | outputClaim | 字符串 | 调用此声明转换后生成的 ClaimType。 |
 
 使用此声明转换格式化任何带两个参数 {0} 和 {1} 的字符串。 下面的示例创建带指定格式的 displayName：
@@ -925,3 +925,12 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
   - **分隔符**： "，"
 - 输出声明：
   - **outputClaim**： ["Admin"、"Author"、"Reader"]
+  
+## <a name="string-claim-transformations-expressions"></a>字符串声明转换表达式
+Azure AD B2C 自定义策略中的声明转换表达式提供了有关租户 ID 和技术配置文件 ID 的上下文信息。
+
+  | 表达式 | 说明 | 示例 |
+ | ----- | ----------- | --------|
+ | `{TechnicalProfileId}` | 技术配置文件 id 名称。 | Facebook-OAUTH |
+ | `{RelyingPartyTenantId}` | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
+ | `{TrustFrameworkTenantId}` | 信任框架的租户 ID。 | your-tenant.onmicrosoft.com |

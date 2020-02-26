@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754224"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603406"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -33,24 +33,24 @@ ms.locfileid: "75754224"
 
 ## 支持虚拟机/服务器的功能<a name="vm-server-features"></a>
 
-### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
+### <a name="windows"></a>[Windows](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
-|[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|标准|
+|[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|Standard|
 |[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔|✔|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|✔|✔|✔|标准|
-|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|标准|
-|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
-|[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|标准|
-|[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|标准|
-|[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|标准|
-|[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|标准|
-|[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|标准|
-|自适应网络控制|✔|✔|-|标准|
-|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
-|Docker 托管的 IaaS 容器上的建议和威胁检测|-|-|-|标准|
+|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
+|[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|自适应网络控制|✔|✔|-|Standard|
+|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Docker 托管的 IaaS 容器上的建议和威胁检测|-|-|-|Standard|
 |缺少操作系统修补程序评估|✔|✔|✔|免费|
 |安全错误配置评估|✔|✔|✔|免费|
 |[Endpoint protection 评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|免费|
@@ -59,24 +59,24 @@ ms.locfileid: "75754224"
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
 
 
-### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+### <a name="linux"></a>[Linux](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
-|[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|标准|
+|[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|Standard|
 |[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|-|-|-|标准|
-|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|标准|
-|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|标准|
-|[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|标准|
-|[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|标准|
-|[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|标准|
-|[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|标准|
-|[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|标准|
-|自适应网络控制|✔|✔|-|标准|
-|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|标准|
-|Docker 托管的 IaaS 容器上的建议和威胁检测|✔|✔|✔|标准|
+|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
+|[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[自适应应用程序控制](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[网络映射](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|自适应网络控制|✔|✔|-|Standard|
+|[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Docker 托管的 IaaS 容器上的建议和威胁检测|✔|✔|✔|Standard|
 |缺少操作系统修补程序评估|✔|✔|✔|免费|
 |安全错误配置评估|✔|✔|✔|免费|
 |[Endpoint protection 评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免费|
@@ -95,7 +95,7 @@ ms.locfileid: "75754224"
 
 有关为每个保护生成建议的时间的信息，请参阅[Endpoint Protection 评估和建议](security-center-endpoint-protection.md)。
 
-| Endpoint Protection| 平台 | 安全中心安装 | 安全中心发现 |
+| 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
 | Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
@@ -142,10 +142,10 @@ Azure 安全中心支持以下 PaaS 资源：
 |服务总线命名空间|✔|-|-|
 |流分析|✔|-|-|
 |事件中心命名空间|✔|-|-|
-|Logic Apps|✔|-|-|
+|逻辑应用|✔|-|-|
 |Redis 的缓存|✔|-|-|
-|Data Lake 分析|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
+|Data Lake Analytics|✔|-|-|
+|Azure Data Lake 存储|✔|-|-|
 |Key Vault|✔|✔ *|-|
 
 预览版当前支持这些功能 \*。
@@ -159,5 +159,5 @@ Azure 安全中心支持以下 PaaS 资源：
 - 了解如何[规划并理解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。
 - 查看[支持安全中心的平台](security-center-os-coverage.md)。
 - 详细了解[Azure 安全中心中的 vm & 服务器的威胁检测](security-center-alerts-iaas.md)。
-- 查找[有关使用 Azure 安全中心的常见问题](security-center-faq.md)。
+- 查找[有关 Azure 安全中心](faq-general.md)的常见问题。
 - 查找[关于 Azure 安全性和符合性的博客文章](https://blogs.msdn.com/b/azuresecurity/)。

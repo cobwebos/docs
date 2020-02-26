@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548877"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604943"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>创建多个适用于 Cosmos DB 的 Azure Functions 触发器
 
@@ -38,7 +38,7 @@ ms.locfileid: "76548877"
 
 ## <a name="configuring-a-shared-leases-container"></a>配置共享的租用容器
 
-若要配置共享租约容器，需要在触发器中进行的唯一额外配置是在使用C#或 `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)时添加 `LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations)（如果使用的是 JavaScript）。 属性的值应是特定触发器的逻辑描述符。
+若要配置共享租约容器，需要在触发器中进行的唯一额外配置是在使用C#或 `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)时添加 `LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations)（如果使用的是 JavaScript）。 属性的值应是特定触发器的逻辑描述符。
 
 例如，如果有三个触发器：一个发送电子邮件，一个执行聚合以创建具体化视图，一个将更改发送到另一个存储，供以后分析，那么可以将“电子邮件”的 `LeaseCollectionPrefix` 分配到第一个触发器，“具体化”分配到第二个触发器，“分析”分配到第三个触发器。
 
@@ -78,7 +78,7 @@ public static void MaterializedViews([CosmosDBTrigger(
 }
 ```
 
-对于 JavaScript，可以使用 `leaseCollectionPrefix` 属性在 `function.json` 文件上应用配置：
+对于 JavaScript，可以使用 `function.json` 属性在 `leaseCollectionPrefix` 文件上应用配置：
 
 ```json
 {
@@ -108,6 +108,6 @@ public static void MaterializedViews([CosmosDBTrigger(
 
 ## <a name="next-steps"></a>后续步骤
 
-* 请参阅[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)的完整配置
-* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)。
+* 请参阅[适用于 Cosmos DB 的 Azure Functions 触发器](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)的完整配置
+* 检查所有语言的扩展[示例列表](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)。
 * 使用 Azure Cosmos DB 和 Azure Functions [GitHub 存储库](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios)访问无服务器方案以获取更多示例。

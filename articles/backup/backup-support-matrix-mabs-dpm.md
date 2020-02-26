@@ -3,12 +3,12 @@ title: MABS & System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份 Server （MABS）或 System Center DPM 备份本地和 Azure 虚拟机资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444020"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582647"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure 备份 Server 或 System Center DPM 备份的支持矩阵
 
@@ -113,11 +113,34 @@ Azure 备份可以备份运行以下任意操作系统的 DPM/MABS 实例。 操
 
 DPM 服务器/MABS 需要以下 URL 的访问权限：
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支持
+
+可以通过公共对等互连（适用于旧线路）和 Microsoft 对等互连在 Azure ExpressRoute 上备份数据。 不支持通过专用对等互连进行备份。
+
+使用公共对等互连：确保访问以下域/地址：
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+对于 Microsoft 对等互连，请选择以下服务/区域和相关团体值：
+
+* Azure Active Directory （12076:5060）
+* Microsoft Azure 区域（根据恢复服务保管库的位置）
+* Azure 存储（根据恢复服务保管库的位置）
+
+有关更多详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+
+>[!NOTE]
+>新线路不推荐使用公共对等互连。
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM/MABS 与 Azure 备份的连接
 

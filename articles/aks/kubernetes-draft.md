@@ -3,16 +3,15 @@ title: 在 Azure Kubernetes Service （AKS）上进行开发，草稿
 description: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292956"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595215"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>快速入门：在 Azure Kubernetes Service （AKS）上进行开发，草稿
 
@@ -21,7 +20,7 @@ ms.locfileid: "76292956"
 本文介绍如何使用草稿打包并在 AKS 上运行应用程序。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 * [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -259,7 +258,7 @@ service:
 draft up
 ```
 
-服务可能需要几分钟才能返回公共 IP 地址。 若要监视进度，请结合 *watch* 参数使用 `kubectl get service` 命令：
+服务可能需要几分钟才能返回公共 IP 地址。 若要监视进度，请结合 `kubectl get service`watch*参数使用* 命令：
 
 ```console
 $ kubectl get service --watch

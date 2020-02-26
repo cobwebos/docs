@@ -3,7 +3,7 @@ title: 将 Azure Stack 虚拟机载入 Azure Sentinel |Microsoft Docs
 description: 本文介绍如何在 Azure Stack 虚拟机上预配 Azure Monitor、更新和配置管理虚拟机扩展，并通过 Sentinel 开始监视它们。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: a8213bd57936f95870324950204dbd6c1473739a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240757"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588512"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>将 Azure Stack 虚拟机连接到 Azure Sentinel
 
@@ -37,7 +37,7 @@ ms.locfileid: "71240757"
 1. 在新的浏览器选项卡中，登录到[Azure Stack 门户](https://docs.microsoft.com/azure-stack/user/azure-stack-use-portal#access-the-portal)。
 2. 请在 "**虚拟机**" 页上，选择要用 Azure Sentinel 保护的虚拟机。 有关如何在 Azure Stack 上创建虚拟机的信息，请参阅[使用 Azure Stack 门户创建 Windows SERVER vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)或[使用 Azure Stack 门户创建 Linux 服务器 vm](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)。
 3. 选择“扩展”。 此时将显示此虚拟机上安装的虚拟机扩展列表。
-4. 单击“添加”选项卡。此时会打开“新建资源”菜单边栏选项卡，其中显示了可用虚拟机扩展的列表。 
+4. 单击 "**添加**" 选项卡。此时将打开 "**新建资源**菜单" 边栏选项卡，其中显示可用虚拟机扩展的列表。 
 5. 选择**Azure Monitor、更新和配置管理**扩展，并单击 "**创建**"。 此时将打开 "**安装扩展**配置" 窗口。
 
    ![Azure Monitor、更新和配置管理设置](./media/connect-azure-stack/azure-monitor-extension-fix.png)  
@@ -68,6 +68,6 @@ ms.locfileid: "71240757"
 ## <a name="next-steps"></a>后续步骤
 
 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats-built-in.md)。
 - 将数据从[常见错误格式设备](connect-common-event-format.md)流式传输到 Azure Sentinel。

@@ -3,12 +3,12 @@ title: 为 Hyper-v 设置 Azure Migrate 设备
 description: 了解如何设置 Azure Migrate 设备来评估和迁移 Hyper-v Vm。
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029089"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598334"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>为 Hyper-v Vm 设置设备
 
@@ -34,7 +34,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 下载设备的压缩 VHD 模板。
 
 1. 在 "**迁移目标** > **服务器** > **Azure Migrate：服务器评估**中，单击"**发现**"。
-2. 在“发现计算机” > “计算机是否已虚拟化?”中，单击“是，使用 Hyper-V”。
+2. 在“发现计算机” **“计算机是否已虚拟化?”中，单击“是，使用 Hyper-V”。**  > 
 3. 单击“下载”以下载 VHD 文件。
 
     ![下载 VM](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
@@ -48,12 +48,8 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 2. 运行以下命令以生成 VHD 的哈希
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  对于设备版本2.19.11.12，生成的哈希应与这些设置相符。
+3.  对于设备版本2.19.11.12，生成的哈希应与这些[设置](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)相符。
 
-  **算法** | **哈希值**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
 
@@ -93,7 +89,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
 1. 在 Web 应用 >“设置必备组件”中执行以下操作：
     - **许可证**：接受许可条款，并阅读第三方信息。
     - **连接**：应用检查 VM 是否可以访问 internet。 如果 VM 使用代理：
-        - 单击“代理设置”，并以 http://ProxyIPAddress 或 http://ProxyFQDN 格式指定代理地址和侦听端口。
+        - 单击“代理设置”，并以 **或** 格式指定代理地址和侦听端口。 http://ProxyIPAddresshttp://ProxyFQDN
         - 如果代理需要身份验证，请指定凭据。
         - 仅支持 HTTP 代理。
     - **时间同步**：时间已验证。 设备上的时间应与 Internet 时间同步，这样才能正常发现 VM。
@@ -122,7 +118,7 @@ Hyper-v VM 设备是一种轻型设备，Azure Migrate 服务器评估/迁移来
     ```
 
 2. 或者，在设备上的本地组策略编辑器中执行此操作：
-    - 在“本地计算机策略” > “计算机配置”中，单击“管理模板” > “系统” > “凭据委托”。
+    - 在“本地计算机策略” **“计算机配置”中，单击“管理模板”** “系统” > “凭据委托”。 >  > 
     - 双击“允许委托新凭据”，并选择“已启用”。
     - 在“选项”中单击“显示”，将要发现的每台 Hyper-V 主机添加到列表中，并使用 wsman/ 作为前缀。
     - 在“凭据委托”中，双击“允许允许新凭据并使用仅限 NTLM 的服务器身份验证”。 再次将要发现的每台 Hyper-V 主机添加到列表中，并使用 **wsman/** 作为前缀。

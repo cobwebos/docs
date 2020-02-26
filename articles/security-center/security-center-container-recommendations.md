@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202390"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604268"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>了解 Azure 安全中心容器建议
 
@@ -42,9 +42,9 @@ Azure 安全中心提供以下功能来帮助保护容器：
 ## <a name="recommendations"></a>建议
 使用下表作为参考，帮助了解 IaaS Linux 计算机上托管的可用容器以及 Docker 配置的安全性评估。
 
-| 建议 | 描述 | 更正 |
+| 建议 | 说明 | 补救 |
 | --- | --- | --- |
-|修复容器安全配置中的漏洞 |根据配置的最佳做法修复容器安全配置中的漏洞。| 修复容器安全配置中的漏洞：<br>1.查看失败规则列表。<br>2.根据指定的说明修复每个规则。|
+|修复容器安全配置中的漏洞 |根据配置的最佳做法修复容器安全配置中的漏洞。| 修复容器安全配置中的漏洞：<br>1. 查看失败规则的列表。<br>2. 根据指定的说明修复每个规则。|
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -59,5 +59,3 @@ Azure 安全中心提供以下功能来帮助保护容器：
 * [在 Azure 安全中心保护计算机和应用程序](security-center-virtual-machine-protection.md)
 * [在 Azure 安全中心中设置安全策略](tutorial-security-policy.md) - 了解如何配置 Azure 订阅和资源组的安全策略。
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -- 了解如何管理和响应安全警报。
-* [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题。
-

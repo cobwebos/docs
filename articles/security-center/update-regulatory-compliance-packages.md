@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521782"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603225"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>在法规符合性仪表板中更新为动态符合性包（预览）
 
@@ -76,5 +76,4 @@ Azure cis 基准的动态符合性包： **AZURE cis 1.1.0 （新）** 通过以
 
 - [安全中心规章相容性仪表板](security-center-compliance-dashboard.md)
 - [使用安全策略](tutorial-security-policy.md)
-- [在 Azure 安全中心管理安全建议](security-center-recommendations.md)-了解如何使用 Azure 安全中心中的建议来帮助保护 azure 资源。
-- [Azure 安全中心常见问题解答](security-center-faq.md)-获取有关使用安全中心的常见问题的解答。
+- [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解如何使用 Azure 安全中心的建议来保护 Azure 资源。

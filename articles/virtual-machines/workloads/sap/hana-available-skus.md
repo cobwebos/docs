@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5ed903eefea3a8c13bb9e43f5ef71063b453d93
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f31d742dc78e16d4786216259a8fce5349152c63
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806637"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591245"
 ---
 # <a name="available-skus-for-hli"></a>对 HLI 可用的 SKU
 
@@ -45,7 +45,7 @@ ms.locfileid: "74806637"
 
 [经 SAP HANA 认证的 HANA 大型实例 SKU](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 列表如下：
 
-| SAP 解决方案 | CPU | 内存 | 存储空间 | 可用性 |
+| SAP 解决方案 | CPU | 内存 | 存储 | 可用性 |
 | --- | --- | --- | --- | --- |
 | 针对 OLAP 优化的：SAP BW、BW/4HANA<br /> 或 SAP HANA，适用于一般 OLAP 工作负荷 | Azure 上的 SAP HANA S72<br /> – 2 x Intel® Xeon® 处理器 E7-8890 v3<br /> 36 CPU 内核和 72 CPU 线程 |  768 GB |  3 TB | 不再提供 |
 | --- | Azure 上的 SAP HANA S144<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v3<br /> 72 CPU 内核和 144 CPU 线程 |  1.5 TB |  6 TB | 不再提供 |
@@ -55,6 +55,7 @@ ms.locfileid: "74806637"
 | 针对 OLTP 优化的：SAP HANA 或 S/4HANA 上的<br /> SAP Business Suite (OLTP)，<br /> 适用于一般 OLTP | Azure 上的 SAP HANA S72m<br /> – 2 x Intel® Xeon® 处理器 E7-8890 v3<br /> 36 CPU 内核和 72 CPU 线程 |  1.5 TB |  6 TB | 不再提供 |
 |---| Azure 上的 SAP HANA S144m<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v3<br /> 72 CPU 内核和 144 CPU 线程 |  3.0 TB |  12 TB | 不再提供 |
 |---| Azure 上的 SAP HANA S192m<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v4<br /> 96 CPU 内核和 192 CPU 线程  |  4.0 TB |  16 TB | 不再提供 |
+| --- | Azure S224m 上的 SAP HANA<br /> – 4 x Intel®强®白金8276处理器（也称为级联 lake）<br /> 112 CPU 核心数和 224 CPU 线程数 |  6.0 TB |  10.5 TB | 适用于 Revision3 和 Revision4 戳记  |
 |---| Azure 上的 SAP HANA S384m<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  6.0 TB |  18 TB | 可用于 Revision4 戳记|
 |---| Azure 上的 SAP HANA S384xm<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  8.0 TB |  22 TB |  可用于 Revision4 戳记 |
 |---| Azure 上的 SAP HANA S576m<br /> – 12 x Intel® Xeon® 处理器 E7-8890 v4<br /> 288 CPU 内核和 576 CPU 线程 |  12.0 TB |  28 TB | 可用于 Revision4 戳记|
@@ -69,12 +70,12 @@ ms.locfileid: "74806637"
 
 在许多情况下，这些客户特定的服务器配置所需的内存比通过 SAP 认证的服务器单元多。 使用 SAP 时，客户可获得 SAP 支持并对其特定于客户的规模调整服务器配置进行认证。 在 Azure 中，以下 HANA 大型实例标准 Sku 适用于此类 TDIv5 客户特定大小项目的 Microsoft 价目表。
 
-| SKU|CPU | 内存 | 存储空间 | 可用性 |
+| SKU|CPU | 内存 | 存储 | 可用性 |
 | ---| --- | --- | --- | --- |
 | S96 | Azure 上的 SAP HANA S96<br /> \- 2 x Intel® Xeon® 处理器 E7-8890 v4<br /> 48 CPU 内核和 96 CPU 线程 |  768 GB |  3 TB | 适用于 Revision3 和 Revision4 戳记|
 
 
-| 可在内存中 <br /> 扩展的原始 SKU | CPU | 内存 | 存储空间 | 可用性 |
+| 可在内存中 <br /> 扩展的原始 SKU | CPU | 内存 | 存储 | 可用性 |
 | --- | --- | --- | --- | --- |
 | S192m 可扩展为 | Azure 上的 SAP HANA S192xm<br /> – 4 x Intel® Xeon® 处理器 E7-8890 v4<br /> 96 CPU 内核和 192 CPU 线程 |  6.0 TB |  16 TB | 不再提供 |
 | S384xm 可扩展为 | Azure 上的 SAP HANA S384xxm<br /> – 8 x Intel® Xeon® 处理器 E7-8890 v4<br /> 192 CPU 内核和 384 CPU 线程 |  12.0 TB |  28 TB | 可用于 Revision4 戳记 |
@@ -90,7 +91,7 @@ ms.locfileid: "74806637"
 
 除特定于客户的规模调整项目的单元外，产品/服务的硬件基础均通过了 SAP HANA TDI 认证。 两种不同类的硬件将 SKU 分为：
 
-- S72、S72m、S96、S144、S144m、S192、S192m、S192xm 和 S224，它们被称为 Sku 的 "类型 I 类"。
+- S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 和 S224m，它们被称为 Sku 的 "类型 I 类"。
 - S384、S384m、S384xm、S384xxm、S576m、S576xm S768m、S768xm 和 S960m，它们被称为 Sku 的 "类型 II 类"。
 - 如果你对从 4.5 TB 到9TB 与 Optane 的其他 S224 Sku 的兴趣感兴趣，请联系你的 Microsoft 帐户团队获取详细信息。 
 

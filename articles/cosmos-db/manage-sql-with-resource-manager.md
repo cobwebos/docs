@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978733"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588781"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB SQL （内核） API 资源
 
-本文介绍如何使用 Azure 资源管理器模板来帮助自动管理 Azure Cosmos DB 帐户、数据库和容器。
+在本文中，你将了解如何使用 Azure 资源管理器模板来帮助自动管理 Azure Cosmos DB 帐户、数据库和容器。
 
 本文仅介绍适用于 SQL API 帐户的 Azure 资源管理器模板示例。 你还可以找到[Cassandra](manage-cassandra-with-resource-manager.md)、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)和[表](manage-table-with-resource-manager.md)api 的模板示例。
 
@@ -39,7 +39,7 @@ ms.locfileid: "75978733"
 > * 帐户名称限制为44个字符，全部小写。
 > * 若要更改吞吐量值，请用更新的 RU/s 重新提交模板。
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > 若要创建具有大分区键的容器，请修改上一个模板，使其包含 `partitionKey` 对象中的 `"version":2` 属性。
@@ -136,9 +136,9 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 * 或者，你可以访问[Azure 快速入门库](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/)并从 Azure 门户部署模板。
 * 还可以将模板下载到本地计算机，或者创建新模板，并使用 `--template-file` 参数指定本地路径。
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
-### <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+### <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 使用 PowerShell 部署 Azure 资源管理器模板：
 

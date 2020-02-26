@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698758"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585843"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：为 Azure AD 应用提供可选声明
 
@@ -37,8 +37,8 @@ ms.locfileid: "76698758"
 
 | 帐户类型 | v1.0 令牌 | v2.0 令牌  |
 |--------------|---------------|----------------|
-| Microsoft 个人帐户  | N/A  | 受支持 |
-| Azure AD 帐户      | 受支持 | 受支持 |
+| Microsoft 个人帐户  | 空值  | 支持 |
+| Azure AD 帐户      | 支持 | 支持 |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 可选声明集
 
@@ -49,7 +49,7 @@ ms.locfileid: "76698758"
 
 **表2：1.0 版和 v2.0 可选声明集**
 
-| 名称                       |  Description   | 令牌类型 | 用户类型 | 说明  |
+| 名称                       |  说明   | 令牌类型 | 用户类型 | 说明  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
@@ -78,7 +78,7 @@ ms.locfileid: "76698758"
 
 **表3：仅限 v2.0 的可选声明**
 
-| JWT 声明     | 名称                            | Description                                | 说明 |
+| JWT 声明     | 名称                            | 说明                                | 说明 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 地址                      | 客户端从中登录的 IP 地址。   |       |
 | `onprem_sid`  | 本地安全标识符 |                                             |       |
@@ -96,7 +96,7 @@ ms.locfileid: "76698758"
 
 **表4：用于配置可选声明的值**
 
-| 属性名称  | 附加属性名称 | Description |
+| 属性名称  | 附加属性名称 | 说明 |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
 |                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com` |             
@@ -186,7 +186,7 @@ ms.locfileid: "76698758"
 
 **表5： OptionalClaims 类型属性**
 
-| 名称        | 类型                       | Description                                           |
+| 名称        | 类型                       | 说明                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。 |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
@@ -199,7 +199,7 @@ ms.locfileid: "76698758"
 
 **表6： OptionalClaim 类型属性**
 
-| 名称                 | 类型                    | Description                                                                                                                                                                                                                                                                                                   |
+| 名称                 | 类型                    | 说明                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
@@ -207,7 +207,7 @@ ms.locfileid: "76698758"
 | `additionalProperties` | 集合 (Edm.String) | 声明的附加属性。 如果此集合中存在某个属性，该属性将修改 name 属性中指定的可选声明的行为。                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>配置目录扩展可选声明
 
-除了标准的可选声明集外，还可以将令牌配置为包括扩展。 有关详细信息，请参阅[使用扩展将自定义数据添加到资源](https://docs.microsoft.com/graph/extensibility-overview)。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 有关示例，请参阅本页底部的。
+除了标准的可选声明集外，还可以将令牌配置为包括扩展。 使用此功能可以附加应用可以使用的附加用户信息 – 例如，用户设置的附加标识符或重要配置选项。 有关示例，请参阅本页底部的。
 
 > [!NOTE]
 > - 目录架构扩展是一项仅限 Azure AD 的功能，因此，如果应用程序清单请求自定义扩展插件，并且 MSA 用户登录到应用，则将不会返回这些扩展。

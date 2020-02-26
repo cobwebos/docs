@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551839"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586081"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Service Fabric 应用程序设计最佳实践
 
@@ -30,7 +30,7 @@ ms.locfileid: "75551839"
 使用与后端服务通信的 API 网关服务，后者可以横向扩展。最常见的 API 网关服务是：
 
 - [与 Service Fabric 集成](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-api-management)的[Azure API 管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)。
-- [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或[azure 事件](https://docs.microsoft.com/azure/event-hubs/)中心，使用[ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor)从事件中心分区读取。
+- [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或[azure 事件](https://docs.microsoft.com/azure/event-hubs/)中心，使用[ServiceFabricProcessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor)从事件中心分区读取。
 - [Træfik 反向代理](https://blogs.msdn.microsoft.com/azureservicefabric/2018/04/05/intelligent-routing-on-service-fabric-with-traefik/)，使用[Azure Service Fabric 提供程序](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/)。
 - [Azure 应用程序网关](https://docs.microsoft.com/azure/application-gateway/)。
 

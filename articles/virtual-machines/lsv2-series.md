@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493691"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587254"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -23,7 +23,7 @@ Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC<sup>TM</sup>7551 处�
 >
 > 本地磁盘的高吞吐量和 IOPs 使 Lsv2 系列虚拟机非常适合于 NoSQL 存储，例如 Apache Cassandra 和 MongoDB，它们可跨多个 Vm 复制数据，从而在单个 VM 发生故障时保持持久性。
 >
-> 若要了解详细信息，请参阅[Lsv2 系列虚拟机上的优化性能](/linux/storage-performance.md)。  
+> 若要了解详细信息，请参阅 Lsv2 系列虚拟机上适用于[Windows](../virtual-machines/windows/storage-performance.md)或[Linux](../virtual-machines/linux/storage-performance.md)的优化性能。  
 
 ACU：150-175
 

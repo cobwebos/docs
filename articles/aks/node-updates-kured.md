@@ -2,17 +2,14 @@
 title: 用 Azure Kubernetes Service （AKS）中的 kured 更新和重新启动 Linux 节点
 description: 了解如何更新 Linux 节点并通过 Azure Kubernetes 服务（AKS）中的 kured 自动重新启动它们
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: mlearned
-ms.openlocfilehash: c9e7c23806d4a0a0e2c0b36122d9eb087c986556
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549166"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594934"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中将安全和内核更新应用于 Linux 节点
 

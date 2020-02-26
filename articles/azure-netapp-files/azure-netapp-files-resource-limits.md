@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/25/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7637d18017f5bdc76c8a271198a88f21a59a6aac
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976241"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604980"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp 文件的资源限制
 
@@ -34,15 +34,15 @@ ms.locfileid: "74976241"
 |  每个 Azure 区域的 NetApp 帐户数   |  10    |  是   |
 |  每个 NetApp 帐户的容量池数   |    25     |   是   |
 |  每个容量池的卷数量     |    500   |    是     |
-|  每个卷的快照数       |    255     |    No        |
-|  每个 Azure 虚拟网络委托给 Azure NetApp 文件（Microsoft NetApp/卷）的子网数    |   第   |    No    |
-|  可以访问 Azure NetApp 文件的 VNet 中的 Ip 数（包括对等互连 Vnet）   |    1000   |    是   |
-|  单个容量池的最小大小   |  4 TiB     |    No  |
-|  单个容量池的最大大小    |  500 TiB   |   No   |
-|  单个卷的最小大小    |    100 GiB    |    No    |
-|  单个卷的最大大小     |    100 TiB    |    No    |
+|  每个卷的快照数       |    255     |    否        |
+|  每个 Azure 虚拟网络委托给 Azure NetApp 文件（Microsoft NetApp/卷）的子网数    |   1   |    否    |
+|  在 VNet 中使用的 Ip 数（包括立即对等互连 Vnet）和 Azure NetApp 文件   |    1000   |    是   |
+|  单个容量池的最小大小   |  4 TiB     |    否  |
+|  单个容量池的最大大小    |  500 TiB   |   否   |
+|  单个卷的最小大小    |    100 GiB    |    否    |
+|  单个卷的最大大小     |    100 TiB    |    否    |
 |  每个卷的最大文件数（[maxfiles](#maxfiles)）     |    1 亿    |    是    |    
-|  单个文件的最大大小     |    16 TiB    |    No    |    
+|  单个文件的最大大小     |    16 TiB    |    否    |    
 
 ## Maxfiles 限制<a name="maxfiles"></a> 
 

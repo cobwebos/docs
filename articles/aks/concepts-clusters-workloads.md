@@ -2,17 +2,14 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 的 Kubernetes 基础知识
 description: 了解 Kubernetes 的基本群集和工作负荷组件以及它们与 Azure Kubernetes 服务 (AKS) 中各个功能的关系
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967551"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596226"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的 Kubernetes 核心概念
 
@@ -91,7 +88,7 @@ kubectl describe node [NODE_NAME]
 
 - **Cpu**预留 cpu 依赖于节点类型和群集配置，这可能会由于运行其他功能而导致 CPU allocatable
 
-| 主机上的 CPU 内核数 | 第 | 2 | 4 | 8 | 16 | 32|64|
+| 主机上的 CPU 内核数 | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
 |Kube （millicores）|60|100|140|180|260|420|740|
 
@@ -106,7 +103,7 @@ kubectl describe node [NODE_NAME]
     - 下一个 112 GB 内存的6% （最大为 128 GB）
     - 超过 128 GB 的任何内存的2%
 
-上述内存和 CPU 分配规则用于保持代理节点正常运行，某些托管系统箱对群集运行状况至关重要。 如果节点不是 Kubernetes 群集的一部分，则这些分配规则还会使节点报告的内存和 CPU allocatable 更少。 不能更改上述资源预订。
+上述内存和 CPU 分配规则用于使代理节点保持正常运行，其中包括一些对于群集运行状况至关重要的宿主系统箱。 如果节点不是 Kubernetes 群集的一部分，则这些分配规则还会使节点报告的内存和 CPU allocatable 更少。 不能更改上述资源预订。
 
 例如，如果某个节点提供 7 GB，则它将报告34% 的内存未 allocatable 在750Mi 硬逐出阈值的顶部。
 
@@ -224,7 +221,7 @@ Deployment 控制器使用 Kubernetes 计划程序在具有可用资源的任何
 
 ### <a name="statefulsets"></a>StatefulSet
 
-现代应用程序开发通常针对无状态应用程序，但 StatefulSet 可用于有状态应用程序（如包含数据库组件的应用程序）。 StatefulSet 是类似于创建和管理一个或多个相同 Pod 的部署。 StatefulSet 中的副本按照正常有序的方法来部署、缩放、升级和终止。 使用 StatefulSet，重新计划副本时，命名约定、网络名称和存储将保持不变。
+现代应用程序开发通常针对无状态应用程序，但 StatefulSet 可用于有状态应用程序（如包含数据库组件的应用程序）。 StatefulSet 是类似于创建和管理一个或多个相同 Pod 的部署。 StatefulSet 中的副本按照正常有序的方法来部署、缩放、升级和终止。 对于 StatefulSet （重新计划副本），命名约定、网络名称和存储将保持不变。
 
 使用 `kind: StatefulSet` 以 YAML 格式定义应用程序，然后 StatefulSet 控制器处理所需副本的部署和管理。 数据会写入到由 Azure 托管磁盘或 Azure 文件提供的永久性存储。 使用 StatefulSet，删除 StatefulSet 时，基础持久性存储仍然保持不变。
 

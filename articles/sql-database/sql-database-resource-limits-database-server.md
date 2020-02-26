@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638249"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587237"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL 数据库资源限制和资源调控
 
@@ -37,14 +37,14 @@ ms.locfileid: "75638249"
 | 每个服务器的最大池数 | 受限于 DTU 或 vCore 数。 例如，如果每个池是 1000 个 DTU，则一个服务器可以支持 54 个池。|
 |||
 
-> [!NOTE]
-> 若要获取更多的 DTU/eDTU 配额、vCore 配额或超过默认数量的服务器，可以在具有问题类型 "配额" 的订阅的 Azure 门户中提交新的支持请求。 每个服务器的 DTU/eDTU 配额和数据库限制会限制每个服务器的弹性池数目。
-
 > [!IMPORTANT]
 > 随着数据库的数量接近每个 SQL 数据库服务器的限制，可能出现以下情况：
 >
 > - 对主数据库运行查询的延迟增加。  这包括资源利用率统计信息的视图，如 sys.resource_stats。
 > - 管理操作和呈现门户视点（涉及枚举服务器中的数据库）的延迟增加。
+
+> [!NOTE]
+> 若要获取更多 DTU/eDTU 配额、vCore 配额或超过默认数量的服务器，请在 Azure 门户中提交新的支持请求。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](quota-increase-request.md)。
 
 ### <a name="storage-size"></a>存储大小
 
@@ -60,7 +60,7 @@ ms.locfileid: "75638249"
 - 提高数据库或弹性池的计算大小，为数据库提供更多计算资源。 请参阅[缩放单一数据库资源](sql-database-single-database-scale.md)和[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 优化查询，减少每个查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 
 当使用的数据库空间到达上限时，将无法进行增加数据大小的数据库插入和更新操作，客户端会收到[错误消息](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)。 SELECT 和 DELETE 语句将继续成功。
 

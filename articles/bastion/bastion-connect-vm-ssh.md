@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 堡垒连接到 Linux VM |Microsoft Docs
+title: 使用 Azure 堡垒连接到 Linux VM
 description: 本文介绍如何使用 Azure 堡垒连接到 Linux 虚拟机。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7fe1c2f74ca2a7b0fa4aefad934c45edd6f85a73
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990435"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596821"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>使用 Azure 堡垒通过 SSH 连接到 Linux 虚拟机
 
-本文介绍如何在 Azure 虚拟网络中安全且无缝地连接到 Linux Vm。 可通过 Azure 门户直接连接到 VM。 在使用 Azure Bastion 时，VM 无需客户端、代理和其他软件。 有关 Azure 堡垒的详细信息，请参阅[概述](bastion-overview.md)。
+本文介绍如何在 Azure 虚拟网络中安全且无缝地连接到 Linux Vm。 可以直接从 Azure 门户连接到 VM。 使用 Azure 堡垒时，Vm 不需要客户端、代理或其他软件。 有关 Azure 堡垒的详细信息，请参阅[概述](bastion-overview.md)。
 
 可以使用 Azure 堡垒连接到使用 SSH 的 Linux 虚拟机。 你可以使用用户名/密码和 SSH 密钥进行身份验证。 你可以使用 SSH 密钥连接到 VM，方法是使用：
 
@@ -45,34 +45,37 @@ SSH 私钥的格式必须以 `"-----BEGIN RSA PRIVATE KEY-----"` 开头，并以
 
 * 入站端口： SSH （22）
 
-
 ## <a name="username"></a>连接：使用用户名和密码
 
-1.   打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"。 使用 SSH 连接时，VM 应为 Linux 虚拟机。
-1. 单击 "连接" 后，将显示一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
+1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"，然后从下拉列表中选择 "**堡垒**"。
 
-   ![VM 连接](./media/bastion-connect-vm-ssh/bastion.png)
+   ![连接](./media/bastion-connect-vm-ssh/connect.png)
+1. 单击 "堡垒" 后，会出现一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
+
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. 输入用于 SSH 连接到虚拟机的用户名和密码。
 1. 输入密钥后，单击 "**连接**" 按钮。
 
 ## <a name="privatekey"></a>连接：手动输入私钥
 
-1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"。 使用 SSH 连接时，VM 应为 Linux 虚拟机。
-1. 单击 "连接" 后，将显示一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
+1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"，然后从下拉列表中选择 "**堡垒**"。
 
-   ![VM 连接](./media/bastion-connect-vm-ssh/bastion.png)
+   ![连接](./media/bastion-connect-vm-ssh/connect.png)
+1. 单击 "堡垒" 后，会出现一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
+
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. 输入用户名并选择 " **SSH 私钥**"。
 1. 将私钥输入到文本区域**SSH 私钥**中（或直接粘贴）。
 1. 输入密钥后，单击 "**连接**" 按钮。
 
 ## <a name="ssh"></a>连接：使用私钥文件
 
-1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"。 使用 SSH 连接时，VM 应为 Linux 虚拟机。
+1. 打开 [Azure 门户](https://portal.azure.com)。 导航到要连接到的虚拟机，然后单击 "**连接**"，然后从下拉列表中选择 "**堡垒**"。
 
-   ![VM 连接](./media/bastion-connect-vm-ssh/connect.png)
-1. 单击 "连接" 后，将显示一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
+   ![连接](./media/bastion-connect-vm-ssh/connect.png)
+1. 单击 "堡垒" 后，会出现一个侧栏，其中有三个选项卡-RDP、SSH 和堡垒。 如果已为虚拟网络预配了堡垒，则默认情况下，堡垒选项卡处于活动状态。 如果没有为虚拟网络预配堡垒，请参阅[配置堡垒](bastion-create-host-portal.md)。
 
-   ![VM 连接](./media/bastion-connect-vm-ssh/bastion.png)
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
 1. 输入用户名，并选择 "**本地文件中的 SSH 私钥**"。
 1. 单击 "**浏览**" 按钮（本地文件中的文件夹图标）。
 1. 浏览文件，然后单击 "**打开**"。

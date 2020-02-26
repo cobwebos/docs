@@ -8,12 +8,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
-ms.openlocfilehash: fb576b81adeec99e4080c744749097390d1add1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77111093"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586149"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Azure SQL 数据库的请求配额增加
 
@@ -90,7 +90,7 @@ ms.locfileid: "77111093"
 
 有关详细信息，请参阅[SQL 数据库资源限制和资源调控](sql-database-resource-limits-database-server.md)。
 
-### <a name="enable-subscription-access-to-a-region"></a>启用对区域的订阅访问
+### <a id="other"></a>启用对区域的订阅访问
 
 某些产品/服务类型在每个区域中都不可用。 你可能会看到如下所示的错误：
 

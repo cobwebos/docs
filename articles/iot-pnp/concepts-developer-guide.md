@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905788"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605226"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT 即插即用预览版建模开发人员指南
 
@@ -67,9 +67,9 @@ IoT 即插即用预览版允许构建将其功能公布到 Azure IoT 应用程�
 
 使用 DTDL，可以使用接口描述设备的功能。 接口描述设备的一部分实现的_属性_、_遥测_和_命令_：
 
-- `Properties`。 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 可以将属性声明为只读或可写。
-- `Telemetry`。 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
-- `Commands`。 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
+- `Properties` 列中的一个值匹配。 属性是表示设备状态的数据字段。 使用属性来表示设备的持久状态，如冷却剂泵的关闭状态。 属性还可以表示基本设备属性，例如设备的固件版本。 可以将属性声明为只读或可写。
+- `Telemetry` 列中的一个值匹配。 遥测字段表示传感器的度量。 如果设备采用传感器度量，应发送包含传感器数据的遥测事件。
+- `Commands` 列中的一个值匹配。 命令表示设备的用户可以在设备上执行的方法。 例如，使用 reset 命令或命令来打开或关闭风扇。
 
 以下示例显示了恒温器设备的接口：
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT 即插即用允许你使用已在 IoT 中心注册其功能的设备。 例如，你可以直接访问设备的属性和命令。
 
-若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。
+若要使用已连接到 IoT 中心的 IoT 即插即用设备，请使用 IoT 中心 REST API 或 IoT 语言 Sdk 之一。 以下示例使用 IoT 中心 REST API。 `2019-07-01-preview`当前版本的 API。 向 REST PI 调用追加 `?api-version=2019-07-01-preview`。
 
 若要获取设备属性的值，例如恒温器的 `DeviceInformation` 接口中的固件版本（`fwVersion`），请使用数字孪生 REST API。
 
-如果你的恒温器设备 `t-123`调用，你将获得设备使用 REST API GET 调用实现的所有属性：
+如果你的恒温器设备 `t-123`调用，你将获取设备使用 REST API GET 调用实现的所有接口的所有属性：
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-一般来说，所有属性都是通过此 REST API 模板访问的，其中 `{device-id}` 是设备的标识符：
+一般来说，所有接口上的所有属性都是通过此 REST API 模板访问的，其中 `{device-id}` 是设备的标识符：
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-如果知道接口的名称，并且想要获取该特定接口的属性，请按名称将请求按名称限定到特定的接口：
+如果知道接口的名称（例如 `deviceInformation`），并且想要获取该特定接口的属性，请按名称将请求按名称限定到特定的接口：
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 更常见的情况是，可以通过此 REST API 模板访问特定接口的属性，其中 `device-id` 是设备的标识符，`{interface-name}` 是接口的名称：

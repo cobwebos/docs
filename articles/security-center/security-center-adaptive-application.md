@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353443"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604672"
 ---
-# <a name="adaptive-application-controls"></a>自适应应用程序控件
+# <a name="adaptive-application-controls"></a>自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>安全中心的自适应应用程序控制是什么？
@@ -65,7 +65,7 @@ ms.locfileid: "75353443"
 
 1. 为包含应用程序控制建议的组列表选择 "**推荐**" 选项卡：
 
-   ![推荐](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
+   ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    此列表包括：
 
@@ -180,5 +180,4 @@ Azure 安全中心还可以在非推荐的 VM 组上定义应用程序允许列�
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
 * [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
-* [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。

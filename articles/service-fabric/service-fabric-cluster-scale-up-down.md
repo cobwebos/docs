@@ -3,12 +3,12 @@ title: 放大或缩小 Service Fabric 群集
 description: 通过为每个节点类型/虚拟机规模集设置自动缩放规则，缩小或缩小 Service Fabric 群集以满足需求。 在 Service Fabric 群集中添加或删除节点
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 26ef13f38d525e4e493ad933bfb906dd36ed0070
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774466"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587475"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -104,7 +104,7 @@ Service fabric 系统服务在群集中的主节点类型上运行。 缩小主�
 Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
-```azurecli
+```shell
 sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
@@ -184,9 +184,9 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点  **的 “node-name”值：** `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
-```azurecli
+```shell
 # Inform the node that it is going to be removed
 sfctl node disable --node-name _nt1vm_5 --deactivation-intent 4 -t 300
 

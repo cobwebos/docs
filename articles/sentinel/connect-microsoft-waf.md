@@ -1,20 +1,20 @@
 ---
 title: 将 Web 应用程序防火墙数据连接到 Azure Sentinel
 description: 了解如何将 Microsoft web 应用程序防火墙数据连接到 Azure Sentinel。
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 5461f2289a6c60d70efcbb3f7d4d9e7a4d6ee87a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563643"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588172"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>连接来自 Microsoft web 应用程序防火墙的数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "75563643"
 你可以通过 Azure 应用程序网关的 Microsoft web 应用程序防火墙（WAF）对日志进行流式处理。 此 WAF 保护应用程序免受常见 web 漏洞的影响，例如 SQL 注入和跨站点脚本，并允许你自定义规则以减少误报。 按照以下说明将 Microsoft Web 应用程序防火墙日志流式传输到 Azure Sentinel。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 现有的应用程序网关资源
 

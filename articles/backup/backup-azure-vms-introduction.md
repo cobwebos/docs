@@ -3,12 +3,12 @@ title: 关于 Azure VM 备份
 description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391899"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597246"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 备份概述
 
@@ -58,12 +58,7 @@ ms.locfileid: "75391899"
 
 Azure 备份根据备份计划拍摄快照。
 
-- **Windows vm：** 对于 Windows Vm，备份服务会与 VSS 协调使用 VM 磁盘的应用一致性快照。
-
-  - 默认情况下，Azure 备份会获取完整的 VSS 备份。 [了解详细信息](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx)。
-  - 若要更改此设置，以便 Azure 备份采用 VSS 副本备份，请从命令提示符处设置以下注册表项：
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**
+- **Windows vm：** 对于 Windows Vm，备份服务会与 VSS 协调使用 VM 磁盘的应用一致性快照。  默认情况下，Azure 备份会进行完整的 VSS 备份（它会在备份时截断应用程序的日志，如 SQL Server，以获取应用程序级别一致的备份）。  如果在 Azure VM 备份上使用 SQL Server 数据库，则可以修改设置以执行 VSS 副本备份（以保留日志）。 有关详细信息，请参阅[此文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)。
 
 - **Linux vm：** 若要获取 Linux Vm 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写你自己的自定义脚本，以确保一致性。
 
@@ -102,7 +97,7 @@ Azure 备份根据备份计划拍摄快照。
 - **磁盘改动：** 如果正在进行增量备份的受保护磁盘的每日改动超过 200 GB，则备份可能需要很长时间（超过8小时）才能完成。
 - **备份版本：** 最新版本的备份（称为即时还原版本）使用比校验和比较来识别更改的更优化的进程。 但是，如果使用的是即时还原，并且删除了备份快照，则备份将切换到校验和比较。 在这种情况下，备份操作将超过24小时（或失败）。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 配置 VM 备份时，我们建议遵循以下做法：
 
@@ -129,7 +124,7 @@ Azure 备份根据备份计划拍摄快照。
 --- | --- | ---
 OS 磁盘 | 32 TB | 17 GB
 本地/临时磁盘 | 135 GB | 5 GB（不包括在备份中）
-数据磁盘 1 | 32 TB| 30GB
+数据磁盘 1 | 32 TB| 30 GB
 数据磁盘 2 | 32 TB | 0 GB
 
 此示例中，VM 的实际大小为 17 GB + 30 GB + 0 GB = 47 GB。 此受保护实例的大小（47 GB）成为每月计费的基础。 随着 VM 中数据量的增长，用于计费更改的受保护实例大小将与之匹配。

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 97975d72214426907a2ab91f0d3cd98d0ce6734b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693483"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603430"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>安全警报地图和威胁智能
 本文可帮助你使用 Azure 安全中心安全警报冲突和基于安全事件的威胁智能地图来解决与安全相关的问题。
 
 > [!NOTE]
-> 安全*事件*映射按钮已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_securityeventsmap)。
+> 安全*事件*映射按钮已于2019年7月31日停用。 有关详细信息和替代服务，请参阅[停用安全中心功能（2019年7月）](security-center-features-retirement-july2019.md#menu_securityeventsmap)。
 
 
 ## <a name="how-the-security-alerts-map-works"></a>安全警报地图的工作原理
@@ -64,5 +64,3 @@ ms.locfileid: "73693483"
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
 * [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
-* [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找服务使用方面的常见问题解答。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。

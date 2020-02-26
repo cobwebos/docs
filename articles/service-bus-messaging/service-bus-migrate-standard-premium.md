@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790383"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587492"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure Service Bus 标准命名空间迁移到高级层
 以前，Azure 服务总线仅在标准层上提供了命名空间。 命名空间是多租户设置，针对低吞吐量和开发人员环境进行了优化。 高级层为每个命名空间提供专用资源，以实现可预测的延迟，并以固定价格增加吞吐量。 高级层针对需要其他企业功能的高吞吐量和生产环境进行了优化。
@@ -32,7 +32,7 @@ ms.locfileid: "72790383"
 - **高级**命名空间中**不应有任何实体**，以便迁移成功。 
 - 在迁移过程中，标准命名空间中的所有**实体**都将**复制**到高级命名空间。 
 - 在高级层上，迁移支持**每个消息传送单元1000个实体**。 若要确定所需的消息传送单元数，请从当前标准命名空间的实体数开始。 
-- 你不能直接从**基本层**迁移到**高级层**，但你可以通过从基本层迁移到标准层，然后在下一步中从标准层迁移到高级层来间接执行此操作。
+- 你不能直接从 "**基本" 层**迁移到 "高级"**层**，但你可以通过从 "基本" 升级到 "标准"，然后从标准迁移到 "高级"，然后在下一步中进行。
 
 ## <a name="migration-steps"></a>迁移步骤
 某些条件与迁移过程相关联。 熟悉以下步骤以减少出现错误的可能性。 这些步骤概述了迁移过程，后面的部分列出了分步详细说明。
@@ -132,7 +132,7 @@ Azure 服务总线高级层不支持 Azure 服务总线标准层提供的某些�
    
    如果使用 Azure 资源管理器（ARM）模板，请确保从部署配置中删除 "Microsoft.servicebus.messaging.queuedescription.enableexpress" 标志，以便自动执行的工作流不会出错。
 
-### <a name="partitioned-entities"></a>分区实体
+### <a name="partitioned-entities"></a>分区的实体
 
    在标准层中支持已分区实体，以在多租户设置中提供更好的可用性。 使用高级层中每个命名空间提供的专用资源，就不再需要。
    

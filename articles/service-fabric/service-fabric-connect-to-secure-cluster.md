@@ -3,12 +3,12 @@ title: 安全地连接到 Azure Service Fabric 群集
 description: 介绍如何对访问 Service Fabric 群集的客户端进行身份验证，以及如何保护客户端与群集之间的通信。
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458271"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587050"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 
@@ -24,7 +24,7 @@ ms.locfileid: "75458271"
 
 可以通过两种不同方式指定客户端证书：作为证书和密钥对，或作为单个 PFX 文件。 对于受密码保护的 PEM 文件，系统将自动提示你输入密码。 如果将客户端证书作为 PFX 文件获取，请先使用以下命令将 PFX 文件转换为 PEM 文件。 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pas
 
 若要将客户端证书指定为 pem 文件，请在 `--pem` 参数中指定文件路径。 例如：
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./clie
 
 若要指定证书，密钥对将使用 `--cert` 和 `--key` 参数来指定每个相应文件的文件路径。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./cli
 > [!WARNING]
 > 连接到生产 Service Fabric 群集时，不要使用 `no-verify` 选项。
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 此外，可以指定受信任 CA 证书或单个证书的目录的路径。 若要指定这些路径，请使用 `--ca` 参数。 例如：
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 
@@ -163,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用客户端证书连接到安全群集
 
-群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) 上设置的 [RemoteCommonNames 属性](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials)中。 按此过程操作就可以在客户端与群集节点之间进行相互身份验证。
+群集中的节点必须具有有效的证书，在 SAN 中，这些证书的公用名或 DNS 名出现在 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) 上设置的 [RemoteCommonNames 属性](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient)中。 按此过程操作就可以在客户端与群集节点之间进行相互身份验证。
 
 ```csharp
 using System.Fabric;

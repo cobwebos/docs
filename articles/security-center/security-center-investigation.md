@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202063"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603994"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>调查 Azure 安全中心的事件和警报（已停用）
 本文档可帮助你使用 Azure 安全中心的调查功能（预览版）来调查安全事件和警报。
 
 > [!NOTE]
-> 警报和事件调查（预览版）体验已于2019年7月31日停用。 有关详细信息和备用服务，请参阅用[安全中心功能的停用（2019 年 7 月）](security-center-features-retirement-july2019.md#menu_investigate)。
+> 警报和事件调查（预览版）体验已于2019年7月31日停用。 有关详细信息和替代服务，请参阅[停用安全中心功能（2019年7月）](security-center-features-retirement-july2019.md#menu_investigate)。
 
 ## <a name="what-is-investigation-in-security-center"></a>什么是安全中心调查？
 使用安全中心的调查功能，可以对潜在的[安全事件](https://docs.microsoft.com/azure/security-center/security-center-incident)进行会审，了解其范围并跟踪其根本原因。
@@ -34,7 +34,7 @@ ms.locfileid: "71202063"
 
 > [!NOTE]
 > * 安全中心的调查功能不支持[自定义警报](security-center-custom-alert.md)。
-> * 仅支持对基于从 Windows 服务器收集的数据的警报进行调查。
+> * 只有基于从 Windows server 收集的数据才支持调查。
 
 
 ## <a name="how-investigation-works"></a>如何进行调查？
@@ -47,7 +47,7 @@ ms.locfileid: "71202063"
 ### <a name="investigation-path"></a>调查路径
 用户在导航到不同的实体时，可以通过调查路径来跟踪调查上下文并进行快速导航。 包含调查结果的事件始终是调查路径中最左端的事件。
 
-![Path](./media/security-center-investigation/security-center-investigation-fig2.png)
+![路径](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>常规信息
 在关系图中呈现某个实体时，选项卡会显示该实体的其他信息。 “信息”选项卡提供实体的常规信息，这些信息来自不同的可用信息源。
@@ -72,11 +72,11 @@ ms.locfileid: "71202063"
 
 ### <a name="exploration"></a>浏览
 
-“浏览”选项卡允许调查者检查与各种问题相关的数据，而这些问题又与实体相关。 例如，对某台计算机进行调查时，浏览选项卡中会提供在该计算机中执行的进程的列表。某些情况下，浏览选项卡提供的数据可能指示存在可疑问题。 调查者可以在选项卡中检查数据，也可以在搜索屏幕中将其打开，以便检查大型数据集并使用高级搜索选项，例如“筛选”和“导出到 Excel”。
+“浏览”选项卡允许调查者检查与各种问题相关的数据，而这些问题又与实体相关。 例如，调查计算机后，在该计算机上执行的进程列表将显示在 "浏览" 选项卡中。在某些情况下，"浏览" 选项卡会显示可能表明存在可疑问题的数据。 调查者可以在选项卡中检查数据，也可以在搜索屏幕中将其打开，以便检查大型数据集并使用高级搜索选项，例如“筛选”和“导出到 Excel”。
 
 ![浏览](./media/security-center-investigation/security-center-investigation-fig6.png)
 
-### <a name="timeline"></a>日程表
+### <a name="timeline"></a>时间线
 
 在关系图和各个选项卡中提供的大多数数据是在特定时间段内相关。 此时间范围是使用关系图左上方的时间范围选择器设置的。 调查者可以使用多种方法来选择时间范围。
 
@@ -98,7 +98,7 @@ ms.locfileid: "71202063"
 
 ## <a name="how-to-perform-an-investigation"></a>如何进行调查？
 
-可以从安全事件或警报开始调查，所选选项视需求而变。 以下步骤用于从警报开始调查：
+可以从安全事件或警报开始调查，所选选项视需求而变。 下面的步骤用于从警报开始调查：
 
 1.  打开“安全中心”仪表板。
 2.  单击“安全警报”，选择要调查的事件。
@@ -112,12 +112,9 @@ ms.locfileid: "71202063"
 
 此时可以浏览涉及此事件的实体，以及每个实体的更多详细信息。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 本文档介绍了如何使用安全中心的调查功能。 若要了解有关安全中心的详细信息，请参阅以下文章：
 
 * [Managing and responding to security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)（管理和响应 Azure 安全中心的安全警报）。 了解如何管理警报并响应安全中心的安全事件。
 * [Security health monitoring in Azure Security Center](security-center-monitoring.md)（在 Azure 安全中心进行安全运行状况监视）。 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心中的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同类型的安全警报。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何排查安全中心的常见问题。
-* [Azure Security Center FAQ](security-center-faq.md)（Azure 安全中心常见问题）。 查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。

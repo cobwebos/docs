@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912812"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604533"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>保护 Azure App Service web 应用和 Api
 
@@ -64,5 +64,4 @@ Azure App Service 是一种完全托管的平台，用于生成和托管 web 应
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)：了解如何管理和响应安全警报。
 * [应用服务](security-center-virtual-machine-protection.md#app-services)：查看具有运行状况摘要的应用服务环境的列表。
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md)：了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题](security-center-faq.md)：查找有关使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/):.查找关于 Azure 安全性及合规性的博客文章

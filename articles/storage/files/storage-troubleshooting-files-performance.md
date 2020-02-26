@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708251"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598079"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件性能问题
 
@@ -22,7 +22,7 @@ ms.locfileid: "75708251"
 
 ### <a name="cause-1-share-experiencing-throttling"></a>原因1：共享遇到限制
 
-高级共享上的默认配额为 100 GiB，它提供100的基线 IOPS （可能会突然增长到300一小时）。 有关预配及其与 IOPS 的关系的详细信息，请参阅规划指南中的 "[预配共享](storage-files-planning.md#provisioned-shares)" 部分。
+高级共享上的默认配额为 100 GiB，它提供100的基线 IOPS （可能会突然增长到300一小时）。 有关预配及其与 IOPS 的关系的详细信息，请参阅规划指南中的 "[预配共享](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)" 部分。
 
 若要确认共享是否受到限制，可以在门户中利用 Azure 指标。
 
@@ -102,7 +102,7 @@ ms.locfileid: "75708251"
 
 - 跨多个 Vm 分散负载。
 - 在同一 VM 上，使用具有**nosharesock**选项的多个装入点，并将负载分散到这些装入点。
-- 在 Linux 上，尝试装载**nostrictsync**选项，以避免在每个 fsync 调用上强制进行 SMB 刷新。 对于 Azure 文件，此选项不会干扰数据 consistentcy，但可能会导致目录列表（**ls-l**命令）上的文件元数据过时。 直接查询文件的元数据（**stat**命令）将返回最新的文件元数据。
+- 在 Linux 上，尝试装载**nostrictsync**选项，以避免在每个**fsync**调用上强制进行 SMB 刷新。 对于 Azure 文件，此选项不会影响数据一致性，但可能会导致目录列表（**ls-l**命令）上的文件元数据过时。 直接查询文件的元数据（**stat**命令）将返回最新的文件元数据。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>涉及大量打开/关闭操作的元数据繁重工作负荷的高延迟。
 

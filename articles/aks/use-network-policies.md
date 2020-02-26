@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod
 description: 了解如何使用 Azure Kubernetes 服务（AKS）中的 Kubernetes 网络策略保护流入和流出 pod 的流量
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928494"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592860"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用网络策略保护 Pod 之间的流量
 
@@ -57,7 +54,7 @@ Azure 提供了两种实现网络策略的方式。 创建 AKS 群集时，可�
 | 支持的平台                      | Linux                      | Linux                       |
 | 支持的网络选项             | Azure CNI                  | Azure CNI 和 kubenet       |
 | 符合 Kubernetes 规范 | 支持的所有策略类型 |  支持的所有策略类型 |
-| 其他功能                      | None                       | 扩展策略模型，由全局网络策略、全局网络集和主机终结点组成。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅[calicoctl user reference][calicoctl]。 |
+| 其他功能                      | 无                       | 扩展策略模型，由全局网络策略、全局网络集和主机终结点组成。 有关使用 `calicoctl` CLI 管理这些扩展功能的详细信息，请参阅[calicoctl user reference][calicoctl]。 |
 | 支持                                  | 受 Azure 支持和工程团队支持 | Calico 社区支持。 有关其他付费支持的详细信息，请参阅[Project Calico 支持选项][calico-support]。 |
 | 日志记录                                  | IPTables 中添加/删除的规则记录在 */var/log/azure-npm.log*下的每个主机上。 | 有关详细信息，请参阅[Calico 组件日志][calico-logs] |
 
@@ -146,7 +143,7 @@ az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAM
 
 ## <a name="deny-all-inbound-traffic-to-a-pod"></a>拒绝流向 Pod 的所有入站流量
 
-定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 此策略为你提供了开始仅对所需流量进行允许列表的起点。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
+定义规则以允许特定网络流量之前，请首先创建用于拒绝所有流量的网络策略。 此策略为你提供了开始仅对所需流量进行白名单的起点。 此外，还可清楚看到，应用网络策略后，相关流量被丢弃。
 
 对于应用程序环境和流量规则示例，让我们首先创建一个名为 "*开发*" 的命名空间来运行示例 pod：
 

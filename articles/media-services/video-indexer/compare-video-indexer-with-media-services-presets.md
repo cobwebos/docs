@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: 2e2abd4ffe5a6d0a6336d811599db687da146f1e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: dcfc6ea4afe23424e72c625518356be52f62bc81
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513178"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602188"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>比较 Azure 媒体服务 v3 预设和视频索引器 
 
@@ -29,14 +29,14 @@ ms.locfileid: "76513178"
 
 ## <a name="compare"></a>比较
 
-|功能|视频索引器 API |媒体服务 v3 API 中的<br/>视频分析器和音频分析器预设|
+|Feature|视频索引器 API |媒体服务 v3 API 中的<br/>视频分析器和音频分析器预设|
 |---|---|---|
 |数据见解|[增强版](video-indexer-output-json-v2.md) |[基础知识](../latest/intelligence-concept.md)|
 |体验|查看支持的功能的完整列表： <br/> [概述](video-indexer-overview.md)|仅返回视频见解|
 |计费|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|合规|[Iso 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001)、 [iso 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018)、 [SOC 1、2、3](https://www.microsoft.com/TrustCenter/Compliance/SOC)、 [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa)、 [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp)、 [PCI](https://www.microsoft.com/trustcenter/compliance/pci)和[HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust)认证。 有关最新的更新，请访问[视频索引器的当前认证状态](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。|媒体服务符合许多认证。 请查看 [Azure 合规性产品.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)，并搜索“媒体服务”以查看是否符合相关证书的要求。|
-|免费试用|美国东部|不可用|
-|适用区域|美国东部2、美国中南部、美国西部2、北欧、西欧、东南亚、东亚和澳大利亚东部。  有关最新的更新，请访问[产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)）页。|请参阅 [Azure 状态](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)。|
+|合规性|若要获取最新的符合性更新，请访问[Azure 符合性产品/服务 pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) ，并搜索 "视频索引器" 以查看其是否符合感兴趣的证书。|若要获取最新的符合性更新，请访问[Azure 符合性产品](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf)/服务 pdf，搜索 "媒体服务" 以查看其是否符合相关证书。|
+|免费试用版|美国东部|不可用|
+|上市区域|[按区域查看认知服务可用性](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)|请参阅[媒体服务可用性（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)）。|
 
 ## <a name="next-steps"></a>后续步骤
 

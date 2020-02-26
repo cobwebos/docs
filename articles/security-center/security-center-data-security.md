@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 9dfed5ec14460c3c6213d528f59b86eda15aa1a7
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520880"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604175"
 ---
 # <a name="azure-security-center-data-security"></a>Azure 安全中心数据安全性
 为了帮助客户防止、检测和应对威胁，Azure 安全中心将收集和处理安全相关的数据，包括配置信息、元数据、事件日志、故障转储文件，等等。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。
@@ -47,11 +47,11 @@ Azure 安全中心将分析以下源中的数据，提供安全状态视图、�
 
 | VM 地区                              | 工作区地区 |
 |-------------------------------------|---------------|
-| 美国、巴西、南非 | 美国 |
-| 加拿大                              | 加拿大        |
+| 美国、巴西、南非 | United States |
+| Canada                              | Canada        |
 | 欧洲（英国除外）   | 欧洲        |
-| 英国                      | 英国 |
-| 亚洲（印度、日本、韩国、中国除外）   | 亚太区  |
+| United Kingdom                      | United Kingdom |
+| 亚洲（印度，日本，韩国，中国除外）   | 亚太区  |
 | 韩国                              | 亚太区  |
 | 印度                               | 印度         |
 | 日本                               | 日本         |
@@ -92,7 +92,6 @@ Microsoft Monitoring Agent 扫描各种安全相关配置和事件，并将其�
 
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md) - 了解如何规划和了解设计注意事项，以适应 Azure 安全中心。
 * [Azure 安全中心的安全性运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况
-* [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) （管理和响应 Azure 安全中心的安全警报）- 了解如何管理和响应安全警报
+* [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) - 了解如何管理和响应安全警报
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

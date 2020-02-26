@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: bb8cfae73d84135858733899e6441f564106e9d1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997218"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604326"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>停用安全中心功能（2019年7月）
 
@@ -105,7 +105,7 @@ Log Analytics 仪表板在单个工作区中显示了见解。 但是，本机�
 
 如果选择 "**中转到安全事件" 映射**按钮，则会打开 "（现已停用）" "威胁智能" 仪表板。
 
-![威胁智能仪表板][11]
+![“威胁智能”仪表板][11]
 
 选择工作区以查看其威胁智能仪表板时，将在 Log Analytics 中打开 "（现已停用）安全警报映射（预览版）" 屏幕。
 

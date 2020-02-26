@@ -1,14 +1,14 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure 资源关系图支持的资源管理器资源类型列表和更改历史记录。
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530219"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602570"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 资源关系图表和资源类型引用
 
@@ -116,6 +116,7 @@ Azure 资源 Graph 支持以下[azure 资源管理器](../../../azure-resource-m
 - sharedvmimages/计算
 - sharedvmimages/版本
 - microsoft. 计算/快照
+- sshpublickeys/计算
 - virtualmachines/计算
 - virtualmachines/扩展
 - virtualmachinescalesets/计算
@@ -277,6 +278,7 @@ Azure 资源 Graph 支持以下[azure 资源管理器](../../../azure-resource-m
 - firewallpolicies/网络
 - frontdoors/网络
 - frontdoorwebapplicationfirewallpolicies/网络
+- ipallocations/网络
 - ipgroups/网络
 - loadbalancers/网络
 - localnetworkgateways/网络

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836647"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581457"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -38,12 +38,12 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 用 SAML 汇总两个非独占核心方案：
 
-| 方案 | Azure AD B2C 角色 | 操作说明 |
+| 场景 | Azure AD B2C 角色 | 操作说明 |
 | -------- | ----------------- | ------- |
 | 我的应用程序需要 SAML 断言才能完成身份验证。 | **Azure AD B2C 充当标识提供者（IdP）**<br />Azure AD B2C 充当应用程序的 SAML IdP。 | 本文。 |
 | 我的用户需要使用与 SAML 兼容的标识提供程序（如 ADFS、Salesforce 或 Shibboleth）进行单一登录。  | **Azure AD B2C 充当服务提供商（SP）**<br />当连接到 SAML 标识提供者时，Azure AD B2C 充当服务提供商。 它是应用程序与 SAML 标识提供者之间的联合代理。  | <ul><li>[使用自定义策略将 ADFS 设置为 SAML IdP](identity-provider-adfs2016-custom.md)</li><li>[使用自定义策略设置 Salesforce SAML 提供程序登录](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 完成[Azure AD B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。 你需要从本文中讨论的自定义策略初学者包中*SocialAndLocalAccounts*自定义策略。
 * 基本了解安全断言标记语言（SAML）协议。
@@ -259,7 +259,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 保存更改并上传新的策略文件。 上传两个策略（扩展和信赖方文件）后，打开 web 浏览器并导航到策略元数据。
 
-以下 URL 提供了 Azure AD B2C 策略元数据。 将 `tenant-name` 替换为 Azure AD B2C 租户的名称，并将 `policy-name` 替换为策略的名称（ID）：
+Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提供者配置的信息。 元数据定义服务的位置，例如登录和注销、证书、登录方法和其他信息。 以下 URL 提供了 Azure AD B2C 策略元数据。 将 `tenant-name` 替换为 Azure AD B2C 租户的名称，并将 `policy-name` 替换为策略的名称（ID）：
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -321,7 +321,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 ],
 ```
 
-#### <a name="logouturl-optional"></a>LogoutUrl （可选）
+#### <a name="logouturl-optional"></a>logoutUrl （可选）
 
 此可选属性表示 `Logout` URL （`SingleLogoutService` 信赖方元数据中的 URL），这的 `BindingType` 假定为 `Http-Redirect`。
 

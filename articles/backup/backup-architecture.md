@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963931"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584381"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -135,7 +135,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份的计算机�
     - 快照数据可能不会立即复制到保管库。 在高峰时间，备份可能需要几个小时。 对于每日备份策略，VM 的总备份时间将小于24小时。
 1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照在删除前两天内保留。 此功能允许从这些快照还原操作，从而缩短还原时间。 它减少了从保管库转换和复制数据所需的时间。 请参阅[Azure 备份即时还原功能](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability)。
 
-Azure Vm 需要访问控制命令的 internet。 如果要备份 VM 内的工作负荷（例如 SQL Server 数据库备份），后端数据还需要 internet 访问权限。
+无需显式允许 internet 连接来备份 Azure Vm。
 
 ![备份 Azure VM](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -214,7 +214,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 - 查看支持矩阵，[了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
-  - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
+  - [备份 Azure vm](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。
   - [设置 MABS](backup-azure-microsoft-azure-backup.md) 以备份到 Azure，然后将工作负荷备份到 MABS。
   - [设置 DPM](backup-azure-dpm-introduction.md) 以备份到 Azure，然后将工作负荷备份到 DPM。

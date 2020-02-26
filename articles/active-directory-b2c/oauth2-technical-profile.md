@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f9db8fd0865b7dba869795526cf6b68f4ad3ffb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198014"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585775"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth2 技术配置文件
 
@@ -77,32 +77,33 @@ Azure Active Directory B2C （Azure AD B2C）提供对 OAuth2 协议标识提供
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
-| IdTokenAudience | 是 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
+| IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
 | authorization_endpoint | 是 | 符合 RFC 6749 规范的授权终结点的 URL。 |
 | AccessTokenEndpoint | 是 | 符合 RFC 6749 规范的令牌终结点的 URL。 |
 | ClaimsEndpoint | 是 | 符合 RFC 6749 规范的用户信息终结点的 URL。 |
-| AccessTokenResponseFormat | 是 | 访问令牌终结点调用的格式。 例如，Facebook 需要 HTTP GET 方法，但访问令牌响应采用 JSON 格式。 |
-| AdditionalRequestQueryParameters | 是 | 附加的请求查询参数。 例如，你可能需要向标识提供者发送更多参数。 可以使用逗号分隔符包含多个参数。 |
-| ClaimsEndpointAccessTokenName | 是 | 访问令牌查询字符串参数的名称。 某些标识提供者的声明终结点支持 GET HTTP 请求。 在这种情况下，将使用查询字符串参数而不是授权标头发送持有者令牌。 |
-| ClaimsEndpointFormatName | 是 | 格式查询字符串参数的名称。 例如，可在此 LinkedIn 声明终结点 `format` 中将名称设置为 `https://api.linkedin.com/v1/people/~?format=json`。 |
-| ClaimsEndpointFormat | 是 | 格式查询字符串参数的值。 例如，可在此 LinkedIn 声明终结点 `json` 中将值设置为 `https://api.linkedin.com/v1/people/~?format=json`。 |
-| ProviderName | 是 | 标识提供者的名称。 |
-| response_mode | 是 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
-| 作用域 | 是 | 根据 OAuth2 标识提供程序规范定义的请求的范围。 例如 `openid`、`profile` 和 `email`。 |
-| HttpBinding | 是 | 预期的 HTTP 绑定，绑定到访问令牌和声明令牌终结点。 可能的值：`GET` 或 `POST`。  |
-| ResponseErrorCodeParamName | 是 | 包含连同 HTTP 200 (Ok) 一起返回的错误消息的参数的名称。 |
-| ExtraParamsInAccessTokenEndpointResponse | 是 | 包含可在某些标识提供者的 **AccessTokenEndpoint** 响应中返回的附加参数。 例如，**AccessTokenEndpoint** 的响应包含 `openid` 等附加参数，在 **ClaimsEndpoint** 请求查询字符串中，除 access_token 以外，此参数也是必需的参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
-| ExtraParamsInClaimsEndpointRequest | 是 | 包含可在某些标识提供者的 **ClaimsEndpoint** 请求中返回的附加参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
-| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| AccessTokenResponseFormat | 否 | 访问令牌终结点调用的格式。 例如，Facebook 需要 HTTP GET 方法，但访问令牌响应采用 JSON 格式。 |
+| AdditionalRequestQueryParameters | 否 | 附加的请求查询参数。 例如，你可能需要向标识提供者发送更多参数。 可以使用逗号分隔符包含多个参数。 |
+| ClaimsEndpointAccessTokenName | 否 | 访问令牌查询字符串参数的名称。 某些标识提供者的声明终结点支持 GET HTTP 请求。 在这种情况下，将使用查询字符串参数而不是授权标头发送持有者令牌。 |
+| ClaimsEndpointFormatName | 否 | 格式查询字符串参数的名称。 例如，可在此 LinkedIn 声明终结点 `format` 中将名称设置为 `https://api.linkedin.com/v1/people/~?format=json`。 |
+| ClaimsEndpointFormat | 否 | 格式查询字符串参数的值。 例如，可在此 LinkedIn 声明终结点 `json` 中将值设置为 `https://api.linkedin.com/v1/people/~?format=json`。 |
+| ProviderName | 否 | 标识提供者的名称。 |
+| response_mode | 否 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
+| scope | 否 | 根据 OAuth2 标识提供程序规范定义的请求的范围。 例如 `openid`、`profile` 和 `email`。 |
+| HttpBinding | 否 | 预期的 HTTP 绑定，绑定到访问令牌和声明令牌终结点。 可能的值：`GET` 或 `POST`。  |
+| ResponseErrorCodeParamName | 否 | 包含连同 HTTP 200 (Ok) 一起返回的错误消息的参数的名称。 |
+| ExtraParamsInAccessTokenEndpointResponse | 否 | 包含可在某些标识提供者的 **AccessTokenEndpoint** 响应中返回的附加参数。 例如，**AccessTokenEndpoint** 的响应包含 `openid` 等附加参数，在 **ClaimsEndpoint** 请求查询字符串中，除 access_token 以外，此参数也是必需的参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
+| ExtraParamsInClaimsEndpointRequest | 否 | 包含可在某些标识提供者的 **ClaimsEndpoint** 请求中返回的附加参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| ResolveJsonPathsInJsonTokens  | 否 | 指示技术配置文件是否解析 JSON 路径。 可能的值： `true`或 `false` （默认值）。 使用此元数据从嵌套的 JSON 元素中读取数据。 在[OutputClaim](technicalprofiles.md#outputclaims)中，将 `PartnerClaimType` 设置为要输出的 JSON 路径元素。 例如： `firstName.localized`或 `data.0.to.0.email`。|
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果将元数据设置为 `id_token`，则可以省略加密密钥。 |
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167386"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591602"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
 
@@ -30,14 +30,14 @@ ms.locfileid: "76167386"
 
 如果你有本地 Active Directory （AD）环境，并且想要将已加入 AD 域的计算机加入到 Azure AD，则可以通过混合 Azure AD 加入来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 本文假设你熟悉[Azure Active Directory 中设备标识管理的简介](../device-management-introduction.md)。
 
 > [!NOTE]
 > Windows 10 混合 Azure AD 联接所需的最少域控制器版本为 Windows Server 2008 R2。
 
-## <a name="plan-your-implementation"></a>计划实施
+## <a name="plan-your-implementation"></a>规划实施
 
 若要规划混合 Azure AD 实现，应做好以下准备：
 
@@ -64,7 +64,7 @@ ms.locfileid: "76167386"
 ### <a name="windows-down-level-devices"></a>Windows 下层设备
 
 - Windows 8.1
-- Windows 7 支持于2020年1月14日结束。 有关详细信息，请参阅对[Windows 7 的支持已结束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
+- Windows 7 支持已于 2020 年 1 月 14 日结束。 有关详细信息，请参阅对[Windows 7 的支持已结束](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)。
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2。 有关 Windows Server 2008 和 2008 R2 的支持信息，请参阅[准备 Windows server 2008 支持结束](https://www.microsoft.com/cloud-platform/windows-server-2008)。
@@ -73,20 +73,21 @@ ms.locfileid: "76167386"
 
 ## <a name="review-things-you-should-know"></a>查看应该知道的事项
 
-如果你的环境包含将标识数据同步到多个 Azure AD 租户的单个 AD 林，则当前不支持混合 Azure AD 联接。
+### <a name="unsupported-scenarios"></a>不支持的方案
+- 如果你的环境包含将标识数据同步到多个 Azure AD 租户的单个 AD 林，则当前不支持混合 Azure AD 联接。
 
-如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+- 运行域控制器（DC）角色的 Windows Server 不支持混合 Azure AD 联接。
 
-对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 从 Windows 10 1903 版本开始，Tpm 1.2 不用于混合 Azure AD 联接，具有这些 Tpm 的设备将视为没有 TPM。
+- 使用凭据漫游或用户配置文件漫游或强制配置文件时，在 Windows 下层设备上不支持混合 Azure AD 联接。
 
-运行域控制器（DC）角色的 Windows Server 不支持混合 Azure AD 联接。
+### <a name="os-imaging-considerations"></a>OS 映像注意事项
+- 如果你依赖于系统准备工具（Sysprep），并且你使用的是**Windows 之前的 10 1809**映像进行安装，请确保映像不是从已注册到 Azure AD 混合 Azure AD 加入的设备。
 
-使用凭据漫游或用户配置文件漫游或强制配置文件时，在 Windows 下层设备上不支持混合 Azure AD 联接。
+- 如果你依赖于虚拟机（VM）快照来创建其他 Vm，请确保快照不是来自已注册到 Azure AD 的 VM，因为混合 Azure AD 加入。
 
-如果你依赖于系统准备工具（Sysprep），并且你使用的是**Windows 之前的 10 1809**映像进行安装，请确保映像不是从已注册到 Azure AD 混合 Azure AD 加入的设备。
+- 如果使用[统一写入筛选器](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter)和类似的技术，在重新启动时清除对磁盘的更改，则必须在设备混合 Azure AD 加入设备后应用。 在完成混合 Azure AD 联接之前启用此类技术将导致设备在每次重新启动时进行脱离
 
-如果你依赖于虚拟机（VM）快照来创建其他 Vm，请确保快照不是来自已注册到 Azure AD 的 VM，因为混合 Azure AD 加入。
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>处理 Azure AD 注册状态的设备
 如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到 Windows 10 1803 （应用了 KB4489894）或更高版本来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
 
 - <i>混合 Azure AD 加入设备后</i>，会自动删除任何现有 Azure AD 注册状态。
@@ -95,6 +96,11 @@ ms.locfileid: "76167386"
 
 > [!NOTE]
 > 如果 Azure AD 注册的设备由 Intune 管理，则将不会自动将其删除。
+
+### <a name="additional-considerations"></a>其他注意事项
+- 如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+
+- 对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 从 Windows 10 1903 版本开始，Tpm 1.2 不用于混合 Azure AD 联接，具有这些 Tpm 的设备将视为没有 TPM。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>查看混合 Azure AD 联接的受控验证
 
@@ -108,7 +114,7 @@ ms.locfileid: "76167386"
 
 ### <a name="managed-environment"></a>托管环境
 
-可使用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) 或[直通身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 来部署托管环境。
+可使用[无缝单一登录](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)通过[密码哈希同步 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) 或[直通身份验证 (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 来部署托管环境。
 
 这些方案不需要配置联合服务器进行身份验证。
 
@@ -125,7 +131,7 @@ ms.locfileid: "76167386"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” **“终结点”查看已启用哪些终结点。**  > 
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
@@ -146,7 +152,7 @@ ms.locfileid: "76167386"
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 
-| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | Description |
+| 本地 AD UPN 类型 | 域类型 | Windows 10 版本 | 说明 |
 | ----- | ----- | ----- | ----- |
 | 可路由的 | 联合 | 从 1703 版本开始 | 正式发布 |
 | 非可路由的 | 联合 | 从 1803 版本开始 | 正式发布 |

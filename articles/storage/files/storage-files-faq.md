@@ -3,16 +3,16 @@ title: Azure 文件常见问题解答 (FAQ) | Microsoft Docs
 description: 查看有关 Azure 文件的常见问题解答。
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565054"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598181"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -85,7 +85,7 @@ ms.locfileid: "77565054"
 
 * <a id="afs-region-availability"></a>
   **Azure 文件同步支持哪些区域？**  
-    可以在 Azure 文件同步规划指南的[区域可用性](storage-sync-files-planning.md#region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
+    可以在 Azure 文件同步规划指南的[区域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)部分中找到可用区域列表。 我们将继续添加对其他区域的支持，包括非公共区域。
 
 * <a id="cross-domain-sync"></a>
   **是否可以在同一个同步组中同时包含已加入域的服务器和未加入域的服务器？**  
@@ -155,13 +155,13 @@ ms.locfileid: "77565054"
 
     如果在文件同步托管文件共享上启用了 Azure 备份，则可以继续在备份还原工作流过程中还原文件 Acl。 这适用于整个共享或单个文件/目录。
 
-    如果使用快照作为由文件同步管理的文件共享的自托管备份解决方案的一部分，并且在2020年2月24日之前拍摄的快照，则可能无法正确地将 Acl 还原为 NTFS Acl。 如果发生这种情况，请考虑联系 Azure 支持部门。
+    如果使用快照作为由文件同步管理的文件共享的自托管备份解决方案的一部分，则在2020年2月24日之前，Acl 可能无法正确还原到 NTFS Acl。 如果发生这种情况，请考虑联系 Azure 支持部门。
     
 ## <a name="security-authentication-and-access-control"></a>安全性、身份验证和访问控制
 * <a id="ad-support"></a>
 **是 Azure 文件支持的基于身份的身份验证和访问控制？**  
     
-    是的，Azure 文件支持基于标识的身份验证和访问控制。 可以选择以下两种方法之一来使用基于标识的访问控制： Azure Active Directory 域服务（Azure AD DS）（GA）或 Active Directory （AD）（预览版）。 使用 Azure 文件的 SMB Azure AD DS 身份验证，可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 AD 支持在本地或 Azure 中使用已加入 AD 域的计算机进行身份验证，以通过 SMB 访问 Azure 文件共享。 有关更多详细信息，请参阅[Azure 文件基于标识的 Azure 文件身份验证支持概述](storage-files-active-directory-overview.md)。 
+    是的，Azure 文件支持基于标识的身份验证和访问控制。 可以选择以下两种方法之一来使用基于标识的访问控制： Active Directory （AD）（预览版）或 Azure Active Directory 域服务（Azure AD DS）（GA）。 AD 支持在本地或 Azure 中使用已加入 AD 域的计算机进行身份验证，以通过 SMB 访问 Azure 文件共享。 使用 Azure 文件的 SMB Azure AD DS 身份验证，可让已加入域的 Windows Vm Azure AD Windows Vm 使用 Azure AD 凭据访问共享、目录和文件。 有关更多详细信息，请参阅[Azure 文件基于标识的 Azure 文件身份验证支持概述](storage-files-active-directory-overview.md)。 
 
     Azure 文件还提供了另外两种方法来管理访问控制：
 
@@ -199,14 +199,12 @@ ms.locfileid: "77565054"
 * <a id="ad-multiple-forest"></a>**Azure 文件 ad 身份验证是否支持使用多个林与 AD 环境集成 
 ？**    
 
-    Azure 文件 AD 身份验证仅与存储帐户注册到的 AD 域服务的林集成。 若要支持其他 AD 林的身份验证，你的环境必须正确配置林信任。 Azure 文件注册到 AD 域服务与常规文件服务器几乎相同，后者在 AD 中创建一个帐户用于身份验证。 唯一的区别是，存储帐户的注册 SPN 以 "file.core.windows.net" 结尾，后者与域后缀不匹配。
-
-    请咨询域管理员，查看是否需要对 DNS 路由策略进行任何更新以启用多林身份验证。
+    Azure 文件 AD 身份验证仅与存储帐户注册到的 AD 域服务的林集成。 若要支持其他 AD 林的身份验证，你的环境必须正确配置林信任。 Azure 文件注册到 AD 域服务的方式与常规文件服务器大致相同，后者在 AD 中创建标识（计算机或服务登录帐户）用于身份验证。 唯一的区别是，存储帐户的注册 SPN 以 "file.core.windows.net" 结尾，后者与域后缀不匹配。 请咨询域管理员，查看是否需要对 DNS 路由策略进行任何更新以启用多林身份验证，因为存在不同的域后缀。
 
 * <a id=""></a>
 **哪些区域适用于 Azure 文件 AD 身份验证（预览版）？**
 
-    有关详细信息，请参阅[AD 区域可用性](storage-files-active-directory-domain-services-enable.md#regional-availability)。
+    有关详细信息，请参阅[AD 区域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
 
 * <a id="ad-aad-smb-afs"></a>
 **是否可以利用 Azure 文件同步管理的文件共享上的 Azure 文件 AZURE AD DS 身份验证或 Active Directory （AD）身份验证（预览版）？**
@@ -347,7 +345,7 @@ ms.locfileid: "77565054"
 
 * <a id="need-larger-share"></a>
 **适用于 Azure 文件共享的大小？**  
-    Azure 文件共享大小（高级和标准）最多可以扩展到 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享（标准层）](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) " 一节，了解如何向标准层的大型文件共享规划指南。
+    Azure 文件共享大小（高级和标准）最多可以扩展到 100 TiB。 请参阅 "规划指南" 中的 "[更大的文件共享（标准层）](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) " 一节，了解如何向标准层的大型文件共享规划指南。
 
 * <a id="lfs-performance-impact"></a>
 **扩展文件共享配额是否会影响我的工作负荷或 Azure 文件同步？**

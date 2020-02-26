@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/10/2019
+ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c6a230f6abeab45c56aab2db40b8b1defcc06d90
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099684"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598691"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -74,7 +74,7 @@ ms.locfileid: "70099684"
 | [2015553] | Azure 上的 SAP：支持先决条件 |
 | [2178632] | Azure 上的 SAP 的关键监视指标 |
 | [2191498] | 带有 Azure 的 Linux 上的 SAP：增强型监视 |
-| [2243692] | Azure (IaaS) VM 上的 Linux：SAP 许可证问题 |
+| [2243692] | Azure 上的 Linux （IaaS） VM： SAP 许可证问题 |
 | [2002167] | Red Hat Enterprise Linux 7.x：安装和升级 |
 | [2694118] | Azure 上的 Red Hat Enterprise Linux HA 附加项 |
 | [1999351] | 适用于 SAP 的增强型 Azure 监视故障排除 |
@@ -435,9 +435,14 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 ### <a name="configure-azure-load-balancer"></a>配置 Azure 负载均衡器
 若要配置 Azure 负载均衡器，建议使用[azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然后执行以下操作：
 
+> [!NOTE]
+> 标准负载均衡器 SKU 具有从负载均衡器下的节点访问公共 IP 地址的限制。 [使用 Azure 标准负载均衡器在 SAP 高可用性方案中的虚拟机的公共终结点连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)文章介绍了如何启用这些节点来访问公共 IP 地址
+
+
+
 1. 创建前端 IP 池：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**前端 IP 池**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**前端 IP 池**"，然后选择 "**添加**"。
 
    b. 输入新前端 IP 池的名称（例如， **Db2 连接**）。
 
@@ -449,7 +454,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 1. 创建后端池：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**后端池**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**后端池**"，然后选择 "**添加**"。
 
    b. 输入新后端池的名称（例如， **Db2-后**端）。
 
@@ -463,7 +468,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 1. 创建运行状况探测：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**运行状况探测**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**运行状况探测**"，然后选择 "**添加**"。
 
    b. 输入新运行状况探测的名称（例如， **Db2-hp**）。
 
@@ -473,7 +478,7 @@ Daemon 状态： corosync： active/disabled pacemaker： active/disabled pcsd�
 
 1. 创建负载均衡规则：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**负载均衡规则**"，然后选择 "**添加**"。
+   a. 在 Azure 门户中，打开 Azure 负载均衡器，选择 "**负载均衡规则**"，然后选择 "**添加**"。
 
    b. 输入新负载均衡器规则的名称（例如**Db2-SID**）。
 
@@ -499,7 +504,7 @@ sudo firewall-cmd --reload</code></pre>
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/global/db6/db2cli.ini
+/sapmnt/\<SID >/global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
@@ -525,7 +530,7 @@ j2ee/dbhost = db-virt-hostname
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. 选择“添加”。
+1. 选择 **添加** 。
 1. 若要保存所做的更改，请在左上角选择磁盘图标。
 1. 关闭配置工具。
 1. 重新启动 Java 实例。
@@ -543,7 +548,7 @@ j2ee/dbhost = db-virt-hostname
 - [Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux][anf-rhel]
 - [Azure NetApp 文件](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction)（用于创建 NFS 共享）
 
-## <a name="test-the-cluster-setup"></a>测试群集设置
+## <a name="test-the-cluster-setup"></a>测试群集设
 
 本部分介绍如何测试 Db2 HADR 设置。 每个测试都假设 IBM Db2 主副本正在*az idb01*虚拟机上运行。 必须使用具有 sudo 权限的用户或 root （不推荐）。
 

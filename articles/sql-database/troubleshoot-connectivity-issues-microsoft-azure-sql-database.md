@@ -9,12 +9,12 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 9ee43533532f51f6f0d2aa9d0d4e8d3993ccadb4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027732"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591228"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>解决连接问题和 Microsoft Azure SQL 数据库的其他错误
 
@@ -27,10 +27,10 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 ### <a name="list-of-transient-fault-error-codes"></a>暂时性故障错误代码的列表
 
 
-| 错误代码 | 严重性 | Description |
+| 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
 | 4060 |16 |无法打开该登录请求的数据库“%.&#x2a;ls”。 登录失败。 有关详细信息，请参阅[错误4000到 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |该服务在处理请求时遇到错误。 请稍后重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 错误40197的消息中嵌入的错误代码（% d）提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接到 SQL 数据库服务器会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，并尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
+| 40197 |17 |该服务在处理请求时遇到错误。 请重试。 错误代码 %d。<br/><br/>当服务由于软件或硬件升级、硬件故障或任何其他故障转移问题而关闭时，将收到此错误。 错误40197的消息中嵌入的错误代码（% d）提供有关所发生的故障或故障转移类型的其他信息。 错误 40197 的消息中嵌入的错误代码的一些示例有 40020、40143、40166 和 40540。<br/><br/>重新连接到 SQL 数据库服务器会将你自动连接到数据库的正常运行副本。 应用程序必须捕获错误 40197、记录该消息中嵌入的错误代码 (%d) 以供进行故障排除，并尝试重新连接到 SQL 数据库，直到资源可用且再次建立连接为止。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
 | 40501 |20 |服务当前正忙。 请在 10 秒钟后重试请求。 事件 ID：%ls。 代码：%d。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp;基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。|
 | 40613 |17 |数据库“%.&#x2a;ls”（在服务器“%.&#x2a;ls”上）当前不可用。 请稍后重试连接。 如果问题仍然存在，请与客户支持人员联系，并向其提供“%.&#x2a;ls”的会话追踪 ID。<br/><br/> 如果已经为数据库建立了现有的专用管理员连接（DAC），则可能出现此错误。 有关详细信息，请参阅[暂时性错误](sql-database-connectivity-issues.md#transient-errors-transient-faults)。|
 | 49918 |16 |无法处理请求。 没有足够的资源来处理请求。<br/><br/>服务当前正忙。 请稍后重试请求。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp;基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
@@ -44,7 +44,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 1. 查看 [Microsoft Azure 服务仪表板](https://azure.microsoft.com/status)以了解应用程序报告错误时出现的任何已知中断。
 2. 连接到云服务的应用程序（如 Azure SQL 数据库）应期望定期重新配置事件并实施重试逻辑来处理这些错误，而不是将它们作为应用程序错误展现给用户。 
 3. 由于数据库即将达到其资源限制，因此错误看起来像是暂时性连接问题。 请参阅[资源限制](sql-database-resource-limits-database-server.md#what-happens-when-database-resource-limits-are-reached)。
-4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 [Azure 支持](https://azure.microsoft.com/support/options)网站上选择“**获取支持**”提出 Azure 支持请求。
+4. 如果连接问题继续存在，或者应用程序发生错误的持续时间超过 60 秒或在特定的一天中看到错误多次发生，请通过在 **Azure 支持**网站上选择“[获取支持](https://azure.microsoft.com/support/options)”提出 Azure 支持请求。
 
 #### <a name="implementing-retry-logic"></a>实现重试逻辑
 强烈建议客户端程序包含重试逻辑，以便它可以提供一段时间来让暂时性故障纠正自身，并尝试重建连接。  我们建议在第一次重试前延迟 5 秒钟。 如果在少于 5 秒的延迟后重试，云服务有超载的风险。 对于后续的每次重试，延迟应以指数级增大，最大值为 60 秒。
@@ -56,7 +56,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 有关在应用程序评审中处理暂时性错误的其他信息
 * [排查 SQL 数据库的暂时性连接错误](sql-database-connectivity-issues.md)
 
-[SQL Server 连接池 (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx) 中提供了有关使用 ADO.NET 的客户端的*阻塞期*的说明。
+*SQL Server 连接池 (ADO.NET)* 中提供了有关使用 ADO.NET 的客户端的[阻塞期](https://msdn.microsoft.com/library/8xx3tyca.aspx)的说明。
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>建立与 SQL 数据库服务器的连接时出现与网络相关或特定于实例的错误
 
@@ -230,8 +230,8 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
    ```sql
    SELECT o.name,
-    a.SUM(p.row_count) AS 'Row Count',
-    b.SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
+    SUM(p.row_count) AS 'Row Count',
+    SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
@@ -297,7 +297,7 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>其他资源调控错误消息表
 
-| 错误代码 | 严重性 | Description |
+| 错误代码 | 严重性 | 说明 |
 | ---:| ---:|:--- |
 | 10928 |20 |资源 ID：%d。 数据库的 %s 限制是 %d 且已达到该限制。 有关详细信息，请参阅[单一数据库和共用数据库的 SQL 数据库资源限制](sql-database-resource-limits-database-server.md)。<br/><br/>资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。<br/><br/>有关此错误以及如何解决此错误的详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp;基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 |
 | 10929 |20 |资源 ID：%d。 %s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 资源 ID 指示已达到限制的资源。 对于工作线程，资源 ID = 1。 对于会话，资源 ID = 2。 有关详细信息，请参阅： <br/>&bull; &nbsp;[数据库服务器资源限制](sql-database-resource-limits-database-server.md)<br/>[为单一数据库 &bull; &nbsp;基于 DTU 的限制](sql-database-service-tiers-dtu.md)<br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[针对单个数据库 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-single-databases.md)<br/>[针对弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。 <br/>否则，请稍后重试。 |
@@ -312,11 +312,11 @@ Azure 基础结构能够在 SQL 数据库服务中出现大量工作负荷时动
 
 以下错误与创建和使用弹性池有关：
 
-| 错误代码 | 严重性 | Description | 纠正措施 |
+| 错误代码 | 严重性 | 说明 | 纠正措施 |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |弹性池已达到其存储限制。 弹性池的存储使用不能超过 (%d) MB。 达到弹性池的存储限制时，尝试向数据库写入数据。 有关资源限制的信息，请参阅： <br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[为弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> |在可能的情况下，考虑增加弹性池的 DTU 数并/或将存储添加到弹性池，以便提高其存储限制、减少弹性池中各数据库使用的存储，或者从弹性池中删除数据库。 有关弹性池缩放，请参阅[缩放弹性池资源](sql-database-elastic-pool-scale.md)。|
 | 10929 | 16 |%s 最小保证为 %d，最大限制为 %d，数据库的当前使用率为 %d。 但是，服务器当前太忙，无法支持针对该数据库的数目大于 %d 的请求。 有关资源限制的信息，请参阅： <br/>[为弹性池 &bull; &nbsp;基于 DTU 的限制](sql-database-dtu-resource-limits-elastic-pools.md)<br/>[为弹性池 &bull; &nbsp;基于 vCore 的限制](sql-database-vcore-resource-limits-elastic-pools.md)。 <br/> 否则，请稍后重试。 每个数据库的 DTU/vCore 最小值；每个数据库的 DTU/vCore 最大值。 弹性池中所有数据库上尝试的并发辅助进程（请求）总数超过池限制。 |在可能的情况下，考虑增加弹性池的 DTU 数或 vCores 数，以便提高其辅助角色限制，或者从弹性池中删除数据库。 |
-| 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |N/A |
+| 40844 | 16 |弹性池中数据库“%ls”（位于服务器“%ls”上）是“%ls”版本的数据库，不能有连续的复制关系。  |空值 |
 | 40857 | 16 |找不到服务器“%ls”的弹性池，弹性池名称：“%ls”。 指定的弹性池在指定的服务器中不存在。 | 提供有效的弹性池名称。 |
 | 40858 | 16 |弹性池“%ls”已存在于服务器“%ls”中。 指定的弹性池已存在于指定的 SQL 数据库服务器中。 | 提供新弹性池名称。 |
 | 40859 | 16 |弹性池不支持服务层级“%ls”。 进行弹性池预配时，不支持指定服务层级。 |提供正确的版本，或者将服务层级留空以使用默认服务层级。 |

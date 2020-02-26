@@ -3,12 +3,12 @@ title: 还原 Azure 文件共享
 description: 了解如何使用 Azure 门户从 Azure 备份创建的还原点还原整个文件共享或特定文件。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930707"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586813"
 ---
 # <a name="restore-azure-file-shares"></a>还原 Azure 文件共享
 
@@ -21,6 +21,7 @@ ms.locfileid: "76930707"
 * 跟踪还原操作状态。
 
 ## <a name="steps-to-perform-a-restore-operation"></a>执行还原操作的步骤
+
 若要执行还原操作，请执行以下步骤。
 
 ### <a name="select-the-file-share-to-restore"></a>选择要还原的文件共享
@@ -110,7 +111,7 @@ ms.locfileid: "76930707"
 
     ![项目级恢复的原始位置](./media/restore-afs/original-location-item-level.png)
 
-2. 选择 "**选择文件**" 以选择要还原的文件或文件夹。
+1. 选择 "**选择文件**" 以选择要还原的文件或文件夹。
 
     ![选择 "选择文件"](./media/restore-afs/select-file.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 46ed2af51f34a25c1cdc1abb6152169feedd989e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666289"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603859"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 
@@ -65,7 +65,7 @@ ms.locfileid: "75666289"
     > [!NOTE]
     >在某些情况下，源 IP 地址不可用，某些 Windows 安全事件日志不包含 IP 地址。
 
-1. 安全中心建议的修正步骤因安全警报而异。 对于每个警报，请遵循它们。 在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
+1. 安全中心建议的补救步骤根据安全警报而有所不同。 对于每个警报，请遵循它们。 在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
 
     以下主题将指导你根据资源类型来完成不同的警报：
     
@@ -85,5 +85,3 @@ ms.locfileid: "75666289"
 * [Azure 安全中心的安全警报](security-center-alerts-overview.md)。
 * [处理安全事件](security-center-incident.md)
 * [Azure 安全中心规划和操作指南](security-center-planning-and-operations-guide.md)
-* [Azure Security Center FAQ](security-center-faq.md) （Azure 安全中心常见问题）- 查找有关如何使用服务的常见问题。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章。

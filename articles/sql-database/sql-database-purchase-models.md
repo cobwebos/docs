@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964764"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587288"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>选择 vCore 和 DTU 购买模型
 
@@ -27,7 +27,7 @@ ms.locfileid: "76964764"
 
 不同的购买模型适用于不同的 Azure SQL 数据库部署模型：
 
-- [Azure SQL 数据库](sql-database-technical-overview.md)中的[单一数据库](sql-database-single-databases-manage.md)和[弹性池](sql-database-elastic-pool.md)部署选项提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+- [Azure SQL 数据库](sql-database-single-databases-manage.md)中的[单一数据库](sql-database-elastic-pool.md)和[弹性池](sql-database-technical-overview.md)部署选项提供[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 - Azure SQL 数据库中的[托管实例](sql-database-managed-instance.md)部署选项仅提供[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 - [超大规模服务层](sql-database-service-tier-hyperscale.md)适用于使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)的单一数据库。
 
@@ -77,7 +77,7 @@ ms.locfileid: "76964764"
 
 > [!IMPORTANT]
 > 计算资源、i/o 以及数据和日志存储按数据库或弹性池收费。 按每个数据库对备份存储收费。 有关托管实例费用的详细信息，请参阅[托管实例](sql-database-managed-instance.md)。
-> **区域限制：** 有关支持的区域的最新列表，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)）。 若要在当前不受支持的区域中创建托管实例，请[通过 Azure 门户发送支持请求](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)。
+> **区域限制：** 有关支持的区域的最新列表，请参阅[可用产品（按区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)）。 若要在当前不受支持的区域中创建托管实例，请[通过 Azure 门户发送支持请求](quota-increase-request.md)。
 
 如果单一数据库或弹性池消耗的 Dtu 超过300，则转换为基于 vCore 的购买模型可能会降低成本。 你可以使用选择的 API 或使用 Azure 门户进行转换，而无需停机。 但是，不需要进行转换，也不会自动执行转换。 如果基于 DTU 的购买模型可以满足性能和业务要求，应继续使用它。
 
@@ -147,7 +147,7 @@ Dtu 最适用于了解为不同计算大小和服务层的 Azure SQL 数据库�
 
 ### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-service-tier-to-a-vcore-based-service-tier"></a>我是否需要使应用程序脱机，以便从基于 DTU 的服务层转换到基于 vCore 的服务层？
 
-不。 无需使应用程序脱机。 新服务层提供了简单的在线转换方法，这类似于将数据库从标准升级到高级服务层的现有过程，以及其他方法。 您可以使用 Azure 门户、PowerShell、Azure CLI、T-sql 或 REST API 来启动此转换。 请参阅[管理单一数据库](sql-database-single-database-scale.md)和[管理弹性池](sql-database-elastic-pool.md)。
+不是。 无需使应用程序脱机。 新服务层提供了简单的在线转换方法，这类似于将数据库从标准升级到高级服务层的现有过程，以及其他方法。 您可以使用 Azure 门户、PowerShell、Azure CLI、T-sql 或 REST API 来启动此转换。 请参阅[管理单一数据库](sql-database-single-database-scale.md)和[管理弹性池](sql-database-elastic-pool.md)。
 
 ### <a name="can-i-convert-a-database-from-a-service-tier-in-the-vcore-based-purchasing-model-to-a-service-tier-in-the-dtu-based-purchasing-model"></a>是否可以将基于 vCore 的购买模型中的服务层的数据库转换为基于 DTU 的购买模型中的服务层？
 

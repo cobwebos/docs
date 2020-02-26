@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149824"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585979"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
@@ -95,7 +95,8 @@ Microsoft 正在使所有人都能使用安全默认值。 目标是确保所有
 
 如果用户未注册多重身份验证，则用户将需要使用 Microsoft Authenticator 应用进行注册，然后才能继续操作。 不会提供14天的多重身份验证注册期限。
 
-默认情况下，2017之前的 Exchange Online 租户已禁用新式身份验证。 为了避免登录循环在通过这些租户进行身份验证时的可能，必须[启用新式身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
+> [!NOTE]
+> 默认情况下，2017之前的 Exchange Online 租户已禁用新式身份验证。 为了避免登录循环在通过这些租户进行身份验证时的可能，必须[启用新式身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)。
 
 > [!NOTE]
 > Azure AD Connect 同步帐户将从安全默认值中排除，系统不会提示注册或执行多重身份验证。 组织不应出于其他目的使用此帐户。

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493314"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605437"
 ---
 # <a name="updated-ndv2-series-preview"></a>更新的 NDv2 系列（预览）
 
@@ -24,13 +24,16 @@ NDv2 实例可为使用 CUDA GPU 优化计算内核的 HPC 和 AI 工作负荷�
 
 严重而言，NDv2 是为计算强度向上扩展（为每个 VM 提供8个 Gpu）和向外扩展（跨多个 vm 工作）的。 NDv2 系列现在支持100千兆位的 ""，它类似于 HB-ACCT-WC 系列 HPC VM 提供的功能，从而为并行方案（包括 AI 和 ML 的分布式培训）提供高性能群集。 此后端网络支持所有主要的不受支持的协议（包括 NVIDIA 的 NCCL2 库使用的协议），从而允许对 Gpu 进行无缝群集。
 
+
+> [!NOTE]
 > 在 ND40rs_v2 VM 上[启用 "允许](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband)" 时，请使用 4.7-1.0.0.1 Mellanox OFED 驱动程序。
-
+>
 > 由于 GPU 内存增加，新的 ND40rs_v2 VM 需要使用[第2代 vm](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)和 marketplace 映像。 
-
+>
 > [注册以请求提前访问 NDv2 虚拟机预览版。](https://aka.ms/AzureNDrv2Preview)
-
+>
 > 请注意：具有 16 GB 的每个 GPU 内存的 ND40s_v2 不再可供预览，已被更新的 ND40rs_v2 取代。
+
 <br>
 
 高级存储：支持

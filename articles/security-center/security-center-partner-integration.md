@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530946"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603805"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>在 Azure 安全中心集成安全解决方案
 本文档介绍如何管理已连接到 Azure 安全中心的安全解决方案，以及如何添加新的安全解决方案。
@@ -129,13 +129,13 @@ Azure 安全中心的所有事件都将发布到 Azure Monitor 的 Azure[活动�
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>将 Azure 活动日志流式传输到事件中心
 
-请参阅以下文章：[将活动日志流式传输到事件中心](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+请参阅以下文章：[将活动日志流式传输到事件中心](../azure-monitor/platform/activity-logs-stream-event-hubs.md)。
 
 #### <a name="install-a-partner-siem-connector"></a>安装合作伙伴 SIEM 连接器 
 
 通过 Azure Monitor 将监视数据路由到事件中心，可与合作伙伴 SIEM 和监视工具轻松集成。
 
-请参阅以下文章，获取支持的[siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub)列表
+请参阅以下文章，获取支持的[siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)列表。
 
 ### <a name="example-for-querying-data"></a>查询数据示例 
 
@@ -153,5 +153,3 @@ Azure 安全中心的所有事件都将发布到 Azure Monitor 的 Azure[活动�
 本文介绍了如何在安全中心集成合作伙伴的解决方案。 若要详细了解安全中心，请参阅以下文章：
 
 * [在安全中心进行安全运行状况监视](security-center-monitoring.md)。 了解如何监视 Azure 资源的运行状况。
-* [Azure 安全中心常见问题解答](security-center-faq.md)。 获取安全中心使用方面的常见问题解答。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)。 查找关于 Azure 安全性及合规性的博客文章。

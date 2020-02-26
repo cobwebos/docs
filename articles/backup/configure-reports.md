@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份报告
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501116"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582698"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -41,11 +41,11 @@ ms.locfileid: "77501116"
 
 Azure 资源管理器资源，如恢复服务保管库，记录有关计划操作和用户触发的操作的信息（作为诊断数据）。 
 
-在恢复服务保管库的 "监视" 部分，选择 "**诊断设置**"，然后指定恢复服务保管库的诊断数据的目标。 [了解有关使用诊断事件的详细信息](https://aka.ms/AzureBackupDiagnosticDocs)。
+在恢复服务保管库的 "监视" 部分，选择 "**诊断设置**"，然后指定恢复服务保管库的诊断数据的目标。 [了解有关使用诊断事件的详细信息](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
 
 ![诊断设置边栏选项卡](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure 备份还提供内置的 Azure 策略，该策略自动配置给定范围内所有保管库的诊断设置。 请参阅以下文章，了解如何使用此策略：[大规模配置保管库诊断设置](https://aka.ms/AzureBackupDiagnosticsPolicyDocs)
+Azure 备份还提供内置的 Azure 策略，该策略自动配置给定范围内所有保管库的诊断设置。 请参阅以下文章，了解如何使用此策略：[大规模配置保管库诊断设置](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 3. **查看 Azure 门户上的报表：**
 
@@ -53,7 +53,7 @@ Azure 备份还提供内置的 Azure 策略，该策略自动配置给定范围�
 
 ![保管库仪表板](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-单击此链接将打开备份报表工作簿。 
+单击此链接将打开备份报表工作簿。
 
 > [!NOTE]
 > 当前，报表的初始加载最多可能需要1分钟。

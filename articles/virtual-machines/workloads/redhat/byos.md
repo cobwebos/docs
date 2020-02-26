@@ -14,16 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a53a27a92b393c38d1f49efbd50d91fa1a2e9657
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190500"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597688"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>在 Azure 中 Red Hat Enterprise Linux 自带订阅金牌映像
 
 Red Hat Enterprise Linux （RHEL）映像可通过即用即付（PAYG）或自带订阅（Red Hat 黄金图）模型在 Azure 中使用。 本文档概述了 Azure 中的 Red Hat 黄金映像。
+
+>[!NOTE]
+> RHEL BYOS 金牌映像在 Azure 公共（商业）和 Azure 政府云中提供。 它们在 Azure 中国或 Azure Blackforest 云中不可用。
 
 ## <a name="important-points-to-consider"></a>需要考虑的要点
 
