@@ -1235,8 +1235,6 @@
           href: platform/monitoring-classic-retirement.md
         - name: 切换日志警报 API 首选项
           href: platform/alerts-log-api-switch.md
-        - name: HockeyApp 数据
-          href: app/hockeyapp-bridge-app.md
         - name: Web 应用分析解决方案
           href: insights/azure-web-apps-analytics.md
         - name: Application Insights 连接器
