@@ -44,7 +44,7 @@
             - name: 将来自 GitHub 的应用部署到应用服务
               href: tutorial-jenkins-deploy-web-app-azure-app-service.md
         - name: 将 Jenkins 和 Azure DevOps 配合使用
-          href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+          href: tutorial-build-deploy-jenkins.md
           maintainContext: true
         - name: 部署到 Azure Functions
           href: jenkins-azure-functions-deploy.md
@@ -52,7 +52,7 @@
           href: /azure/storage/storage-java-jenkins-continuous-integration-solution
           maintainContext: true
         - name: CI/CD 到 Linux VM
-          href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+          href: tutorial-jenkins-github-docker-cicd.md
           maintainContext: true
         - name: CI/CD 到 Service Fabric
           href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins

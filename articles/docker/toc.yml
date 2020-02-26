@@ -12,8 +12,8 @@
     - name: 将 CI/CD 与 Docker Swarm 和 Azure DevOps 配合使用
       href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
     - name: 将 CI/CD 与 Docker、Jenkins 和 Linux 配合使用
-      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-- name: 操作指南
+      href: /azure/jenkins/tutorial-jenkins-github-docker-cicd
+- name: 操作方法指南
   items:
     - name: Docker VM 扩展
       href: /azure/virtual-machines/linux/dockerextension
