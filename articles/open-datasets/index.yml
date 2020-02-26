@@ -4,20 +4,18 @@ summary: Azure 开放数据集是经过特选和清理的数据（包括天气�
 metadata:
   title: 开放数据集文档 - 教程和 API 参考 - Azure
   description: Azure 开放数据集是经过特选和清理的数据（包括天气、人口普查和假日），你只需稍加准备即可使用这些数据来丰富 ML 模型。
-  services: machine-learning
-  ms.service: machine-learning
-  ms.subservice: data-science-vm
+  ms.service: open-datasets
   ms.topic: landing-page
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
   ms.date: 11/04/2019
-  ms.openlocfilehash: 76baa1362eb1eaa4c062fccd4eea84815cb08c50
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 2c99c349119dea148f9867817c81c22546099c13
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73603644"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77617516"
 landingContent:
 - title: 关于开放数据集
   linkLists:

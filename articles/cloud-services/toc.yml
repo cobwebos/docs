@@ -139,8 +139,6 @@
           href: cloud-services-allocation-failures.md
         - name: 云服务角色回收的常见原因
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: 应用程序不支持 TLS 1.2
-          href: applications-dont-support-tls-1-2.md
         - name: TEMP 文件夹的默认大小太小，不能用于角色
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: 常见部署问题

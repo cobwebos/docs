@@ -1,5 +1,5 @@
 - name: 移动应用文档
-  href: index.md
+  href: index.yml
 - name: 概述
   items:
     - name: 什么是移动应用？
