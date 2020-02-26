@@ -4,101 +4,99 @@ description: 了解规划 Azure 文件部署时应考虑的问题。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526472"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597769"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
+可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
 
-[Azure 文件](storage-files-introduction.md)在云中提供完全托管的文件共享，这些共享项可通过行业标准 SMB 协议进行访问。 由于 Azure 文件是完全托管的，因此在生产方案中对其进行部署比部署和管理文件服务器或 NAS 设备简单得多。 本文介绍在组织内部署 Azure 文件共享以供生产使用时应考虑的主题。
+- **直接装载 azure 文件共享**：由于 azure 文件提供 SMB 访问，你可以在本地或在云中使用 Windows、MacOS 和 Linux 中提供的标准 SMB 客户端装载 azure 文件共享。 由于 Azure 文件共享无服务器，因此在生产方案中部署不需要管理文件服务器或 NAS 设备。 这意味着无需应用软件修补程序或交换物理磁盘。 
+
+- **使用 Azure 文件同步在本地缓存 Azure 文件共享**： Azure 文件同步使你能够将组织的文件共享集中在 Azure 文件中，同时保持本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步将本地（或云） Windows Server 转换为 Azure 文件共享的快速缓存。 
+
+本文主要介绍有关将 Azure 文件共享部署为直接由本地或云客户端装载的部署注意事项。 若要规划 Azure 文件同步部署，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)。
 
 ## <a name="management-concepts"></a>管理概念
+[!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
- 下图说明了 Azure 文件管理构造：
+将 Azure 文件共享部署到存储帐户时，建议执行以下操作：
 
-![文件结构](./media/storage-files-introduction/files-concepts.png)
+- 仅将 Azure 文件共享部署到具有其他 Azure 文件共享的存储帐户。 尽管 GPv2 存储帐户允许使用混合用途的存储帐户，但由于 Azure 文件共享等存储资源和 blob 容器共享存储帐户的限制，因此混合使用资源可能会导致更难进行故障排除以后会出现性能问题。 
 
-* **存储帐户**：对 Azure 存储进行的所有访问都要通过存储帐户完成。 有关存储帐户容量的详细信息，请参阅[标准存储帐户的可伸缩性和性能目标](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+- 部署 Azure 文件共享时，请注意存储帐户的 IOPS 限制。 理想情况下，会将文件共享1:1 映射到存储帐户，但这并非总是可能的，因为不同的限制和限制均来自于你的组织和 Azure。 如果不能在一个存储帐户中部署一个文件共享，则可以考虑哪些共享将会非常活跃，哪些共享将不活动，以确保不会将最热门话题的文件共享放在同一存储帐户中。
 
-* **共享**：文件存储共享是 Azure 中的 SMB 文件共享。 所有目录和文件都必须在父共享中创建。 一个帐户可以包含无限数量的共享，一个共享可以存储无限数量的文件，直到达到文件共享的总容量。 高级和标准文件共享的总容量为 100 TiB。
+- 仅当在环境中找到 GPv2 和 FileStorage 帐户并升级 GPv1 和经典存储帐户时，才部署这些帐户。 
 
-* **目录**：可选的目录层次结构。
+## <a name="identity"></a>标识
+若要访问 Azure 文件共享，必须对文件共享的用户进行身份验证，并且有权访问该共享。 这是根据访问文件共享的用户的标识来完成的。 Azure 文件与三个主要标识提供者集成：
+- **客户拥有的 Active Directory** （预览版）： Azure 存储帐户可以是加入到客户拥有的 windows server Active Directory 的域，就像 windows server 文件服务器或 NAS 设备一样。 可以在本地、在 Azure VM 中部署 Active Directory 域控制器，甚至可以在其他云提供程序中部署为 VM：Azure 文件与托管 DC 的位置无关。 存储帐户加入域后，最终用户可以使用登录到其 PC 的用户帐户装载文件共享。 基于 AD 的身份验证使用 Kerberos 身份验证协议。
+- **Azure Active Directory 域服务（AZURE AD ds）** ： Azure AD ds 提供了可用于 Azure 资源的 Microsoft 托管的 Active Directory 域控制器。 将你的存储帐户加入到 Azure AD DS 的域可为加入到客户拥有的 Active Directory 的域提供类似的好处。 此部署选项最适用于需要基于 AD 的权限的应用程序提升和移动方案。 由于 Azure AD DS 提供了基于 AD 的身份验证，因此此选项还使用 Kerberos 身份验证协议。
+- **Azure 存储帐户密钥**：还可以使用 azure 存储帐户密钥装载 azure 文件共享。 为了以这种方式装载文件共享，将使用存储帐户名称作为用户名，并使用存储帐户密钥作为密码。 使用存储帐户密钥装载 Azure 文件共享实际上是一项管理员操作，因为已装载的文件共享对共享上的所有文件和文件夹都具有完全权限，即使这些文件和文件夹具有 Acl 也是如此。 使用存储帐户密钥通过 SMB 装载时，使用 NTLMv2 身份验证协议。
 
-* **文件**：共享中的文件。 文件大小最大可以为 1 TiB。
+对于从本地文件服务器迁移的客户，或在 Azure 文件中创建新的文件共享以与 Windows 文件服务器或 NAS 设备的行为类似，建议选择将存储帐户加入到**客户拥有的 Active Directory**域。 若要详细了解有关将存储帐户加入到客户拥有的 Active Directory 的域，请参阅[Azure 文件 Active Directory 概述](storage-files-active-directory-overview.md)。
 
-* **URL 格式**：对于使用文件 REST 协议向 Azure 文件共享提出的请求，可采用以下 URL 格式对文件进行寻址：
+如果要使用存储帐户密钥来访问 Azure 文件共享，我们建议使用 "[网络](#networking)" 部分中所述的服务终结点。
 
-    ```
-    https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
-    ```
+## <a name="networking"></a>网络
+可以从任何位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，经过身份验证的请求（如用户的登录标识所授权的请求）可从 Azure 内部或外部发起。 在许多客户环境中，本地工作站上的 Azure 文件共享的初始装载会失败，即使 Azure Vm 的装载成功。 这样做的原因是许多组织和 internet 服务提供商（Isp）会阻止 SMB 用来通信的端口，即端口445。 
 
-## <a name="data-access-method"></a>数据访问方法
+若要取消阻止对 Azure 文件共享的访问，有两个主要选项：
 
-Azure 文件提供两个内置的简便数据访问方法，用户可单独使用或结合使用这些方法来访问数据：
+- 为组织的本地网络取消阻止端口445。 Azure 文件共享仅可通过公共终结点使用 SMB 3.0 和 FileREST API 等 internet 安全协议进行外部访问。 这是从本地访问 Azure 文件共享的最简单方法，因为它不需要在更改组织的出站端口规则的情况下进行高级网络配置，但建议删除旧的和弃用的 SMB 版本协议，即 SMB 1.0。 若要了解如何执行此操作，请参阅[保护 Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)和[保护 Linux](storage-how-to-use-files-linux.md#securing-linux)。
 
-1. **直接云访问**：可使用行业标准服务器消息块 (SMB) 协议或通过文件 REST API，由 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和/或 [Linux](storage-how-to-use-files-linux.md) 装载任意 Azure 文件共享。 使用 SMB，可直接在 Azure 中的文件共享上读取和写入共享文件。 若要装载在 Azure VM 上，操作系统中的 SMB 客户端必须至少支持 SMB 2.1。 若要装载在本地（例如用户工作站），工作站支持的 SMB 客户端必须至少支持 SMB 3.0（已加密）。 除 SMB 以外，新应用程序或服务可通过文件 REST 直接访问文件共享，该文件 REST 为软件开发提供简单可缩放的应用程序编程接口。
-2. **Azure 文件同步**：可使用 Azure 文件同步将共享复制到本地或 Azure 中的 Windows Server。 用户可通过 SMB 或 NFS 共享等 Windows Server 访问文件共享。 这适用于要在远离 Azure 数据中心的位置访问和修改数据的方案，例如分支机构方案。 可在多个 Windows Server 终结点（例如多个分支机构）之间复制数据。 最后，可将数据分层到 Azure 文件，以便所有数据仍可通过 Server 进行访问，但 Server 没有完整的数据副本。 相反，数据由用户打开时会被无缝召回。
+- 通过 ExpressRoute 或 VPN 连接访问 Azure 文件共享。 通过网络隧道访问 Azure 文件共享时，可以装载 Azure 文件共享，如本地文件共享，因为 SMB 流量不遍历组织边界。   
 
-下表说明了用户和应用程序如何访问 Azure 文件共享：
+尽管从技术角度来看，通过公共终结点装载 Azure 文件共享相当容易，但我们希望大多数客户选择通过 ExpressRoute 或 VPN 连接来装载其 Azure 文件共享。 为此，你将需要为你的环境配置以下各项：  
 
-| | 直接云访问 | Azure 文件同步 |
-|------------------------|------------|-----------------|
-| 需使用哪些协议？ | Azure 文件支持 SMB 2.1、SMB 3.0 和文件 REST API。 | 通过 Windows Server 上支持的任意协议（SMB、NFS、FTPS 等）访问 Azure 文件共享 |  
-| 在何处运行工作负荷？ | **在 Azure 中**：Azure 文件支持直接访问数据。 | **网络速度慢的本地文件共享**：Windows、Linux 和 macOS 客户端可以将本地 Windows 文件共享装载为 Azure 文件共享的快速缓存。 |
-| 需要何种级别的 ACL？ | 共享和文件级别。 | 共享、文件和用户级别。 |
+- **使用 ExpressRoute、站点到站点或点到站点 VPN 的网络隧道：通过**隧道进入虚拟网络，可从本地访问 Azure 文件共享，即使阻止端口445也是如此。
+- **专用终结点**：专用终结点在虚拟网络的地址空间中为存储帐户指定一个专用的 IP 地址。 这使得网络隧道无需打开本地网络，直到 Azure 存储群集所拥有的所有 IP 地址范围。 
+- **DNS 转发**：配置本地 DNS 以解析存储帐户的名称（即，为公有云区域 `storageaccount.file.core.windows.net`），将其解析为专用终结点的 IP 地址。
 
-## <a name="data-security"></a>数据安全
+若要规划与部署 Azure 文件共享相关联的网络，请参阅[Azure 文件网络注意事项](storage-files-networking-overview.md)。
 
-Azure 文件提供可确保数据安全的几个内置选项：
+## <a name="encryption"></a>加密
+Azure 文件支持两种不同类型的加密：传输过程中的加密，它们与装载/访问 Azure 文件共享时使用的加密有关，后者与数据存储在磁盘上时加密的方式相关。 
 
-* 支持以下两种在线协议加密：SMB 3.0 加密和通过 HTTPS 的文件 REST。 默认情况下： 
-    * 支持 SMB 3.0 加密的客户端通过加密通道发送和接收数据。
-    * 不支持通过加密的 SMB 3.0 的客户端可以在不加密的情况下通过 SMB 2.1 或 SMB 3.0 进行数据中心通信。 不允许 SMB 客户端通过无加密功能的 SMB 2.1 或 SMB 3.0 进行数据中心内通信。
-    * 客户端可以通过 HTTP 或 HTTPS 与文件 REST 通信。
-* 静态加密（[Azure 存储服务加密](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)）：存储服务加密 (SSE) 对所有存储帐户启用。 静态数据使用完全托管的密钥进行加密。 静态加密不会增加存储成本，也不会降低性能。 
-* 加密数据在传输中的可选要求：选择此项时，Azure 文件将拒绝通过未加密的通道访问数据。 具体而言，仅允许具有加密连接的 HTTPS 和 SMB 3.0。
+### <a name="encryption-in-transit"></a>传输中加密
+默认情况下，所有 Azure 存储帐户均已启用传输中加密。 即通过 SMB 装载文件共享或通过 FileREST 协议（例如，通过 Azure门户、PowerShell/CLI 或 Azure SDK）访问文件共享时，Azure 文件存储仅允许通过加密或 HTTPS 使用 SMB 3.0 及更高版本建立的连接。 如果启用了传输中加密，则不支持 SMB 3.0 的客户端或支持 SMB 3.0 但不支持 SMB 加密的客户端将无法装载 Azure 文件共享。 要详细了解哪些操作系统支持具有加密功能的 SMB 3.0，请参阅适用于 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的详细文档。 PowerShell、CLI 和 SDK 的所有当前版本均支持 HTTPS。  
 
-    > [!Important]  
-    > 要求安全传输数据将导致较早的 SMB 客户端无法与 SMB 3.0 通信，进而造成加密失败。 有关详细信息，请参阅[在 Windows 上装载](storage-how-to-use-files-windows.md)、[在 Linux 上装载](storage-how-to-use-files-linux.md)和[在 macOS 上装载](storage-how-to-use-files-mac.md)。
+可以为 Azure 存储帐户禁用传输中加密。 禁用加密时，Azure 文件还将允许 SMB 2.1、不进行加密的 SMB 3.0 和通过 HTTP 进行的未加密 FileREST API 调用。 禁用传输中加密的主要原因是为了支持必须在更低版本的操作系统（例如，Windows Server 2008 R2 或更低版本的 Linux 发行版）上运行的旧版应用程序。 Azure 文件存储仅允许在与 Azure 文件共享相同的 Azure 区域内建立 SMB 2.1 连接；Azure 文件共享的 Azure 区域之外的 SMB 2.1 客户端（例如，本地或其他 Azure 区域）将无法访问文件共享。
 
-为了实现最大安全性，强烈建议始终启用这两个静态加密功能，并在使用新式客户端访问数据时启用数据传输加密。 例如，如需在仅支持 SMB 2.1 的 Windows Server 2008 R2 VM 上装载共享，则需要允许存储帐户接受未加密的流量，因为 SMB 2.1 不支持加密。
+强烈建议确保启用传输中数据的加密。
 
-如果使用 Azure 文件同步访问 Azure 文件共享，我们将始终使用 HTTPS 和加密的 SMB 3.0 将数据同步到 Windows Server，而不考虑是否需要对静态数据加密。
+有关传输中加密的详细信息，请参阅[要求在 Azure 存储中进行安全传输](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-## <a name="file-share-performance-tiers"></a>文件共享性能层
+### <a name="encryption-at-rest"></a>静态加密
+[!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
 
-Azure 文件提供两个性能层：标准和高级。
+## <a name="storage-tiers"></a>存储层
+[!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-### <a name="standard-file-shares"></a>标准文件共享
+通常，高级文件共享和标准文件共享之间的 Azure 文件功能和与其他服务的互操作性是相同的，但有几个重要的区别：
+- **计费模式**
+    - 高级文件共享使用预配的计费模式进行计费，这意味着你需要为预配的存储量而不是实际请求的存储量付费。 
+    - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 使用标准文件共享时，如果你使用（读取/写入/装载） Azure 文件共享，则你的帐单将会增加。
+- **冗余选项**
+    - 高级文件共享仅适用于本地冗余（LRS）和区域冗余（ZRS）存储。 
+    - 标准文件共享可用于本地冗余、区域冗余、异地冗余（GRS）和异地冗余（GZRS）存储。
+- **文件共享的最大大小**
+    - 高级文件共享最多可预配到 100 TiB，无需任何额外的工作。
+    - 默认情况下，标准文件共享仅可跨越最多5个 TiB，不过，通过选择 "*大文件共享*存储帐户" 功能标志，可以将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享最多只能跨越100个 TiB。 有关提高的详细信息  
+- **区域可用性**
+    - 高级文件共享在每个区域中都不可用，区域冗余支持在一小部分区域中提供。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 若要找出哪些区域支持 ZRS，请参阅[按区域的 Azure 可用性区域支持](../../availability-zones/az-overview.md#services-support-by-region)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
+    - 标准文件共享在每个 Azure 区域中可用。
+- Azure Kubernetes Service （AKS）支持版本1.13 及更高版本中的高级文件共享。
 
-标准文件共享支持硬盘驱动器（Hdd）。 标准文件共享为 IO 工作负荷提供可靠的性能，这些工作负荷对性能变化（如一般用途文件共享和开发/测试环境）不敏感。 标准文件共享只能在即用即付计费模型下使用。
+一旦将文件共享创建为高级或标准文件共享，就不能自动将其转换为另一层。 如果要切换到另一层，则必须在该层中创建新的文件共享，并手动将原始共享中的数据复制到所创建的新共享。 建议使用适用于 Windows 的 `robocopy` 或用于 macOS 和 Linux 的 `rsync` 来执行该复制。
 
-> [!IMPORTANT]
-> 如果要使用大于 5 TiB 的文件共享，请参阅板载[到较大的文件共享（标准层）](#onboard-to-larger-file-shares-standard-tier)部分，了解加入的步骤，以及区域可用性和限制。
-
-### <a name="premium-file-shares"></a>高级文件共享
-
-高级文件共享由固态硬盘（Ssd）支持。 对于 IO 密集型工作负荷，高级文件共享为大多数 IO 操作提供持续的高性能和低延迟。 这使得它们适用于各种工作负荷，如数据库、网站托管和开发环境。 高级文件共享只能在预配的计费模型下使用。 高级文件共享使用与标准文件共享分离的部署模型。
-
-Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.13 及更高版本中的高级文件共享。
-
-如果你想要了解如何创建高级文件共享，请参阅主题的文章：[如何创建 Azure 高级文件存储帐户](storage-how-to-create-premium-fileshare.md)。
-
-目前，不能在标准文件共享和高级文件共享之间直接转换。 如果要切换到任一层，必须在该层中创建新的文件共享，并手动将数据从原始共享复制到所创建的新共享。 可以使用支持的任何 Azure 文件复制工具（例如 Robocopy 或 AzCopy）来执行此操作。
-
-> [!IMPORTANT]
-> 在大多数区域中，LRS 提供高级文件共享，这些区域提供存储帐户，并在较小的区域部分中使用 ZRS。 若要确定高级文件共享当前是否在你的区域中可用，请参阅 Azure 的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)" 页。 有关支持 ZRS 的区域的信息，请参阅[Azure 存储冗余](../common/storage-redundancy.md)。
->
-> 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
-
-#### <a name="provisioned-shares"></a>预配的共享
-
+### <a name="understanding-provisioning-for-premium-file-shares"></a>了解高级文件共享的预配
 高级文件共享是基于固定的 GiB/IOPS/吞吐量比率预配的。 对于预配的每个 GiB，将向该共享分配 1 IOPS 和 0.1 MiB/秒的吞吐量，最多可达每个共享的最大限制。 允许的最小预配为 100 GiB 以及最小的 IOPS/吞吐量。
 
 最大限度地提供服务时，对于预配的存储，所有共享都可以突增到每 GiB 3 IOPS，持续 60 分钟或更长时间，具体取决于共享大小。 新共享将根据预配的容量以完全突增额度开始。
@@ -135,7 +133,6 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 > 文件共享性能受到计算机网络限制、可用网络带宽、IO 大小、并行性的限制，还有许多其他因素。 例如，基于具有8个 KiB 读取/写入 IO 大小的内部测试，通过 SMB 连接到高级文件共享的单个 Windows 虚拟机（*标准 F16s_v2*）可实现20K 读取 Iops 和15K 写入 iops。 对于 512 MiB 读取/写入 IO 大小，同一 VM 可以实现 1.1 GiB/s 出口和 370 MiB/秒的入口吞吐量。 若要实现最大性能规模，请将负载分散到多个 Vm。 请参阅[故障排除指南](storage-troubleshooting-files-performance.md)，了解一些常见问题和解决方法。
 
 #### <a name="bursting"></a>冲
-
 高级文件共享可能会将其 IOPS 突发为三倍。 突发是自动进行的，并基于信用系统运行。 突发会尽力工作，而突发限制并不保证，文件共享可能会突然*达到*限制。
 
 如果文件共享的流量低于基线 IOPS，信用额度会在突发桶中累积。 例如，100 GiB 共享有100的基线 IOPS。 如果共享上的实际流量为特定1秒间隔的 40 IOPS，则会将60未使用的 IOPS 贷记到突发桶。 以后在操作超过基线 IOPs 时，将使用这些信用额度。
@@ -153,51 +150,25 @@ Azure 备份适用于高级文件共享，Azure Kubernetes 服务支持版本1.1
 
 新文件共享在其突发桶中以全部信用额度开头。 如果由于服务器限制而导致共享 IOPS 低于基准 IOPS，则不会对爆发信用进行应计。
 
-## <a name="file-share-redundancy"></a>文件共享冗余
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>启用标准文件共享，跨越多达 100 TiB
+[!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+#### <a name="regional-availability"></a>区域可用性
+[!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
-如果选择使用读取访问异地冗余存储（GRS），则应知道 Azure 文件目前不支持任何区域的读取访问异地冗余存储（GRS）。 GRS 存储帐户中的文件共享的工作方式与其在 GRS 帐户中的工作方式相同，并按 GRS 价格收费。
+## <a name="redundancy"></a>冗余
+[!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-> [!Warning]  
-> 如果在 GRS 存储帐户中使用 Azure 文件共享作为云终结点，则不应启动存储帐户故障转移。 执行此操作将导致同步停止工作，并且还可能导致新分层的文件出现意外数据丢失。 对于 Azure 区域丢失，Microsoft 会以与 Azure 文件同步兼容的方式触发存储帐户故障转移。
+## <a name="migration"></a>迁移
+在许多情况下，你不会为你的组织建立 net 全新文件共享，而是将现有文件共享从本地文件服务器或 NAS 设备迁移到 Azure 文件。 Microsoft 和第三方均提供了许多工具来执行到文件共享的迁移，但它们大致分为两个类别：
 
-Azure 文件 premium 共享支持 LRS 和 ZRS，ZRS 目前在一小部分区域中提供。
+- **维护文件系统属性（如 acl 和时间戳）的工具**：
+    - **[Azure 文件同步](storage-sync-files-planning.md)** ： Azure 文件同步可用作将数据引入到 Azure 文件共享的方法，即使所需的最终部署不会保留本地状态也是如此。 可以在现有的 Windows Server 2012 R2、Windows Server 2016 和 Windows Server 2019 部署上就地安装 Azure 文件同步。 使用 Azure 文件同步作为摄取机制的一个优点是，最终用户可以继续使用现有的文件共享;在后台上传完所有数据之后，可以对 Azure 文件共享进行剪切。
+    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** ： Robocopy 是 Windows 和 windows Server 随附的众所周知的复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
 
-## <a name="onboard-to-larger-file-shares-standard-tier"></a>集成到较大的文件共享（标准层）
-
-本部分仅适用于标准文件共享。 所有高级文件共享都可用 100 TiB 容量。
-
-### <a name="restrictions"></a>限制
-
-- 对于启用了大文件共享的任何存储帐户，将无法 LRS/ZRS 转换为 GRS/GZRS 帐户转换。
-
-### <a name="regional-availability"></a>区域可用性
-
-100 TiB 容量限制的标准文件共享在所有 Azure 区域中全局可用-
-
-- LRS除南非北部、南非西部、德国中西部和德国北部以外的所有区域。
-- ZRS除日本东部、北欧、南非北部以外的所有区域。
-- GRS/GZRS：不受支持。
-
-### <a name="enable-and-create-larger-file-shares"></a>启用和创建更大的文件共享
-
-若要开始使用较大的文件共享，请参阅文章[如何启用和创建大型文件共享](storage-files-how-to-create-large-file-share.md)。
-
-## <a name="data-growth-pattern"></a>数据增长模式
-
-目前，Azure 文件共享的最大大小为 100 TiB。 鉴于此当前限制，必须考虑部署 Azure 文件共享时的预期数据增长。
-
-可使用 Azure 文件同步将多个 Azure 文件共享同步到单个 Windows 文件服务器。这可确保本地的较旧、大型文件共享能够导入到 Azure 文件同步。有关详细信息，请参阅[规划 Azure 文件同步部署](storage-files-planning.md)。
-
-## <a name="data-transfer-method"></a>数据传输方法
-
-可通过多种简单的选项将数据从现有文件共享（例如本地文件共享）批量传输到 Azure 文件。 几种常用选项包括（非详尽列表）：
-
-* **[Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** ：在 Azure 文件共享（“云终结点”）和 Windows 目录命名空间（“服务器终结点”）之间首次同步期间，Azure 文件同步将把现有文件共享中的所有数据复制到 Azure 文件。
-* **[Azure 导入/导出](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：使用 Azure 导入/导出服务，可将硬盘驱动器寄送到 Azure 数据中心，从而安全地将大量数据传输到 Azure 文件共享。 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** ：Robocopy 是 Windows 和 Windows Server 自带的一款知名复制工具。 Robocopy 可用于将数据传输到 Azure 文件，方法是在本地装载文件共享，然后使用装载位置作为 Robocopy 命令的目标位置。
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** ：AzCopy 是一个命令行实用程序，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据。
+- **不维护文件系统属性的工具**：
+    - **Data Box**： Data Box 提供将物理数据传输到 Azure 的脱机数据传输机制。 此方法旨在提高吞吐量和节省带宽，但目前不支持文件系统属性，例如时间戳和 Acl。
+    - **AzCopy[：AzCopy 是一个命令行实用工具，专用于使用具有优化性能的简单命令在 Azure 文件和 Azure Blob 存储中复制/粘贴数据](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** 。
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

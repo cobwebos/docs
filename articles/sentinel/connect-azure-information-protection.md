@@ -2,20 +2,20 @@
 title: 将 Azure 信息保护连接到 Azure Sentinel
 description: 了解如何在 Azure Sentinel 中连接 Azure 信息保护数据。
 services: sentinel
-author: cabailey
+author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: cabailey
-ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563677"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588546"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>连接 Azure 信息保护中的数据
 
@@ -35,7 +35,7 @@ ms.locfileid: "75563677"
     
     如果更改了工作区，则 Azure 信息保护的新报表数据现在将存储在用于 Azure Sentinel 的工作区中，而不能将历史数据提供给 Azure Sentinel 使用。 此外，如果为自定义查询、警报或 REST Api 配置了上一个工作区，则必须为 Azure Sentinel 工作区重新配置这些内容，前提是要使用它们进行 Azure 信息保护。 使用 Azure 信息保护的客户端和服务不需要重新配置。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 适用于你的租户的以下 Azure AD 管理员角色之一： 
     - Azure 信息保护管理员

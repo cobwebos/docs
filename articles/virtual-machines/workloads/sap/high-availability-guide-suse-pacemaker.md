@@ -1,10 +1,10 @@
 ---
-title: 在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker | Microsoft Docs
+title: 在 Azure 中的 SLES 上设置 Pacemaker |Microsoft Docs
 description: 在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.author: radeltch
+ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470830"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598436"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 

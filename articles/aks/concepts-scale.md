@@ -3,16 +3,15 @@ title: 概念 - 在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 description: 了解 Azure Kubernetes 服务 (AKS) 中的缩放，包括水平 Pod 自动缩放程序、群集自动缩放程序和 Azure 容器实例连接器。
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 396e5bc31723768ada334dd5043bca724af5e84f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768616"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595852"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中的应用程序缩放选项
 

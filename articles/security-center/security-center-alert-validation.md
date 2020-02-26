@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748462"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604566"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 安全中心的警报验证（EICAR 测试文件）
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -37,7 +37,7 @@ ms.locfileid: "73748462"
 
 在计算机上安装安全中心代理后，请在想要成为警报的受攻击资源的计算机上执行以下步骤：
 
-1. 将可执行文件（例如， **calc**）复制到计算机的桌面或其他便利目录，并将其重命名为**ASC_AlertTest_662jfi039N**。
+1. 将可执行文件（例如**calc**）复制到计算机的桌面或其他便利目录，并将其重命名为**ASC_AlertTest_662jfi039N。**
 1. 打开命令提示符并使用参数（只是伪参数名）执行此文件，例如： ```ASC_AlertTest_662jfi039N.exe -foo```
 1. 等待 5 到 10 分钟，然后打开安全中心警报。 应显示类似于以下[示例](#alert-validate)的警报：
 
@@ -49,7 +49,7 @@ ms.locfileid: "73748462"
 ## 验证 Linux Vm 上的警报<a name="validate-linux"></a>
 
 在计算机上安装安全中心代理后，请在想要成为警报的受攻击资源的计算机上执行以下步骤：
-1. 将可执行文件复制到一个方便的位置，并将其重命名为 **/asc_alerttest_662jfi039n**，例如：
+1. 将可执行文件复制到一个方便的位置，并将其重命名为 **./asc_alerttest_662jfi039n**，例如：
 
     ```cp /bin/echo ./asc_alerttest_662jfi039n```
 
@@ -79,5 +79,4 @@ ms.locfileid: "73748462"
 * [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)-了解不同类型的安全警报。
 * [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)-了解如何对安全中心的常见问题进行故障排除。
-* [Azure 安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)-查找有关 Azure 安全性和符合性的博客文章。

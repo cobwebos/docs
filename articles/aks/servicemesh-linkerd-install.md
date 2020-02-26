@@ -2,17 +2,16 @@
 title: 在 Azure Kubernetes Service （AKS）中安装 Linkerd
 description: 了解如何安装并使用 Linkerd 在 Azure Kubernetes 服务（AKS）群集中创建服务网格
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747710"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593699"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中安装 Linkerd
 
@@ -36,7 +35,7 @@ ms.locfileid: "73747710"
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文中详述的步骤假设已创建 AKS 群集（已启用 RBAC 的 Kubernetes `1.13` 及更高版本）并已与该群集建立 `kubectl` 连接。 如果需要帮助完成这些项目，请参阅 [AKS 快速入门][aks-quickstart]。
+本文详细介绍了如何创建 AKS 群集（Kubernetes `1.13` 及更高版本，启用 RBAC），并已与群集建立了 `kubectl` 连接。 如果需要有关这些项的帮助，请参阅[AKS 快速入门][aks-quickstart]。
 
 必须将所有 Linkerd pod 计划为在 Linux 节点上运行-此设置是下面详细说明的默认安装方法，不需要其他配置。
 

@@ -1,29 +1,31 @@
 ---
-title: 跨订阅、资源组或区域移动逻辑应用
+title: 跨订阅、资源组或区域迁移逻辑应用
 description: 将逻辑应用或集成帐户迁移到其他 Azure 订阅、资源组或位置（区域）
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965892"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605604"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>将逻辑应用资源移到其他 Azure 订阅、资源组或区域
 
-若要将逻辑应用或相关资源移到另一个 Azure 订阅、资源组或区域，可以通过多种方式来完成这些任务，如 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
+若要将逻辑应用或相关资源迁移到其他 Azure 订阅、资源组或区域，你可以通过多种方式完成这些任务，如 Azure 门户、Azure PowerShell、Azure CLI 和 REST API。 在移动资源之前，请查看以下注意事项： 
 
 * 只能在 Azure 资源组或订阅之间移动[特定逻辑应用资源类型](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)。
 
 * 检查 Azure 订阅和每个 Azure 区域中可包含的逻辑应用资源的数量[限制](../logic-apps/logic-apps-limits-and-config.md)。 这些限制会影响当区域在订阅或资源组中保持不变时，是否可以移动特定的资源类型。 例如，每个 Azure 订阅中的每个 Azure 区域只能有一个免费层集成帐户。
 
-* 移动资源时，Azure 会创建新的资源 Id。 因此，请确保改为使用新的 Id，并更新与所移动资源关联的任何脚本或工具。 在订阅、资源组或区域之间移动逻辑应用后，必须重新创建或重新授权任何基于 OAuth 的连接。
+* 在订阅、资源组或区域之间迁移逻辑应用后，必须重新创建或重新授权需要开放身份验证（OAuth）的任何连接。
 
-## <a name="prerequisites"></a>必备组件
+* 移动资源时，Azure 会创建新的资源 Id。 因此，请确保改为使用新的 Id，并更新与所移动资源关联的任何脚本或工具。
+
+## <a name="prerequisites"></a>必备条件
 
 * 用于创建逻辑应用或要移动的集成帐户的 Azure 订阅
 

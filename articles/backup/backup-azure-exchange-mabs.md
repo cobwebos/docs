@@ -4,18 +4,18 @@ description: 了解如何使用 Azure 备份服务器将 Exchange Server 备份�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173130"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583837"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 
 本文说明如何配置 Microsoft Azure 备份服务器 (MABS)，将 Microsoft Exchange Server 备份到 Azure。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在继续之前，请确保 Azure 备份服务器[已安装且已准备好](backup-azure-microsoft-azure-backup.md)。
 
@@ -23,8 +23,8 @@ ms.locfileid: "74173130"
 
 若要在 Exchange Server 上安装 MABS 保护代理，请遵循以下步骤：
 
-1. 确保已正确配置防火墙。 请参阅 [配置代理的防火墙异常](https://technet.microsoft.com/library/Hh758204.aspx)。
-2. 通过在 MABS 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 MABS 保护代理](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)。
+1. 确保已正确配置防火墙。 请参阅[配置代理的防火墙异常](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12))。
+2. 通过在 MABS 管理员控制台中单击“管理”>“代理”>“安装”，在 Exchange Server 上安装代理。 有关详细步骤，请参阅[安装 MABS 保护代理](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12))。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>为 Exchange Server 创建保护组
 
@@ -34,7 +34,7 @@ ms.locfileid: "74173130"
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://technet.microsoft.com/library/dn751029.aspx)。
+   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))。
    >
    >
 
@@ -76,7 +76,7 @@ ms.locfileid: "74173130"
     ![指定联机备份计划](./media/backup-azure-backup-exchange-server/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须将在线恢复点安排在针对快速完全恢复点指定的时间之后。
+    > 请注意，在线恢复点基于快速完全恢复点。 因此，必须会在线恢复点安排在针对快速完全恢复点指定的时间之后。
     >
     >
 16. 配置“**Azure 备份**”的保留策略，并单击“**下一步**”。

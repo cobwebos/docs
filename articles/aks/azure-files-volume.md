@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建用于多个 Pod 的静态卷
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 文件手动创建用于多个并发 Pod 的卷
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 7b5f7c25cd1627475d8e37a539956f01ae6151ab
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74914022"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596396"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 

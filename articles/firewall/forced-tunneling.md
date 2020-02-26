@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4093f91e55272a32ce7df4a78e2ee8b3ebed5fde
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e51f6de370a5340082f64a0ca15c61583f75962b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444467"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597264"
 ---
 # <a name="azure-firewall-forced-tunneling-preview"></a>Azure 防火墙强制隧道（预览）
 
@@ -27,11 +27,15 @@ ms.locfileid: "77444467"
 
 ## <a name="forced-tunneling-configuration"></a>强制隧道配置
 
-为了支持强制隧道，服务管理流量与客户流量分开。 需要一个名为*AzureFirewallManagementSubnet*的额外专用子网，其中包含其自身的关联公共 IP 地址。 此子网上允许的唯一路由是到 Internet 的默认路由，并且必须禁用 BGP 路由传播。
+为了支持强制隧道，服务管理流量与客户流量分开。 还需要一个名为*AzureFirewallManagementSubnet* （最小子网大小/26）的专用子网，其自身关联的公共 IP 地址。 此子网上允许的唯一路由是到 Internet 的默认路由，并且必须禁用 BGP 路由传播。
 
-如果有通过 BGP 播发的默认路由来强制向本地通信，则必须先创建*AzureFirewallSubnet*和*AzureFirewallManagementSubnet* ，然后再部署防火墙，并将 UDR 与 Internet 建立默认路由，并禁用虚拟网络网关路由传播。
+如果有通过 BGP 播发的默认路由来强制向本地通信，则必须先创建*AzureFirewallSubnet*和*AzureFirewallManagementSubnet* ，然后再部署防火墙，并将 UDR 与 Internet 建立默认路由，并禁用**虚拟网络网关路由传播**。
 
-在此配置中， *AzureFirewallSubnet*现在可以包含到任何本地防火墙或 NVA 的路由，以便在将流量传递到 Internet 之前处理流量。 如果在此子网上启用了虚拟网络网关路由传播，还可以通过 BGP 将这些路由发布到*AzureFirewallSubnet* 。
+在此配置中， *AzureFirewallSubnet*现在可以包含到任何本地防火墙或 NVA 的路由，以便在将流量传递到 Internet 之前处理流量。 如果在此子网上启用了**虚拟网络网关路由传播**，还可以通过 BGP 将这些路由发布到*AzureFirewallSubnet* 。
+
+例如，可以在*AzureFirewallSubnet*上创建一个默认路由，将 VPN 网关作为下一跃点来访问本地设备。 或者，你可以启用**虚拟网络网关路由传播**，以获取到本地网络的相应路由。
+
+![虚拟网络网关路由传播](media/forced-tunneling/route-propagation.png)
 
 一旦将 Azure 防火墙配置为支持强制隧道，就不能撤消配置了。 如果删除防火墙上的所有其他 IP 配置，也会删除管理 IP 配置，并解除防火墙的分配。 无法删除分配给管理 IP 配置的公共 IP 地址，但可以分配不同的公共 IP 地址。
 

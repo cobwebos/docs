@@ -4,12 +4,12 @@ description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 9dbb76b3c0bb6c0ff1f4fb51fbf4846b74a3a1f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019089"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597314"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -126,7 +126,7 @@ ms.locfileid: "77019089"
 2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书：
 
    * [在本地计算机控制台上打开证书](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。
-   * 在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。
+   * 在“个人” **“证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书** > 。
 3. 触发 VM 备份作业。
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState-扩展状态不适用于备份操作
@@ -191,7 +191,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | **错误代码**： ExtensionSnapshotFailedNoSecureNetwork <br/> **错误消息**：快照操作失败，因为创建安全网络通信通道失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”。 </ol>|
 | **错误代码**： ExtensionVCRedistInstallationFailure <br/> **错误消息**：快照操作失败，因为安装 visual Studio 2012 的C++ visual 可再发行组件失败。 | 导航到 C:\packages\plugins\microsoft.azure.recoveryservices.vmsnapshot\agentversion and install 并安装 vcredist2013_x64。<br/>确保将 "服务安装" 的注册表项值设置为正确的值。 也就是说，将**HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver**中的**开始**值设置为**3** ，而不是**4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务。  |
 
-## <a name="jobs"></a>工作
+## <a name="jobs"></a>作业
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
@@ -273,11 +273,11 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 * 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
 * VM 在高 CPU 或内存情况下运行。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它会超时。如果发生此问题，请尝试按需备份。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
 获取有关如何通过 PowerShell 设置静态 IP 的详细信息：
 
-* [如何向现有 VM 添加静态内部 IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [如何向现有 VM 添加静态内部 IP](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [更改分配给网络接口的专用 IP 地址的分配方法](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 

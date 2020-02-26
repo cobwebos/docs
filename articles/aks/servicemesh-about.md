@@ -2,16 +2,15 @@
 title: 关于服务网格
 description: 获取服务网格的概述、其体系结构和功能，以及在选择部署时应考虑的条件。
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530701"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594305"
 ---
 # <a name="about-service-meshes"></a>关于服务网格
 
@@ -51,7 +50,7 @@ ms.locfileid: "72530701"
 - **策略**–访问控制、速率限制、配额
 - **测试**-错误注入
 
-### <a name="security"></a>“安全”
+### <a name="security"></a>安全性
 
 - **加密**– mTLS，证书管理，外部 CA
 - **强标识**– SPIFFE 或类似

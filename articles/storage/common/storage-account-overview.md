@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157256"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597162"
 ---
 # <a name="storage-account-overview"></a>存储帐户概述
 
@@ -72,7 +72,7 @@ BlockBlobStorage 帐户目前不支持对 "热"、"冷" 或 "存档" 访问层�
 
 FileStorage 帐户是用于存储和创建高级文件共享的专用存储帐户。 此存储帐户类型支持文件，但不支持块 blob、追加 blob、页 blob、表或队列。
 
-FileStorage 帐户提供了独特的性能特征，例如 IOPS 突发。 有关这些特征的详细信息，请参阅文件规划指南中的[文件共享性能层](../files/storage-files-planning.md#file-share-performance-tiers)部分。
+FileStorage 帐户提供了独特的性能专用特性，例如 IOPS 突发。 有关这些特性的详细信息，请参阅文件计划指南中的[文件共享存储层](../files/storage-files-planning.md#storage-tiers)部分。
 
 ## <a name="naming-storage-accounts"></a>为存储帐户命名
 

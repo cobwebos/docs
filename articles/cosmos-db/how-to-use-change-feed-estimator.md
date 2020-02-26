@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092955"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585282"
 ---
 # <a name="use-the-change-feed-estimator"></a>使用更改源估算器
 
@@ -33,11 +33,11 @@ ms.locfileid: "70092955"
 
 例如，如果更改源处理器定义如下：
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
 那么，若要初始化某个估算器来度量该处理器，正确的方式是使用 `GetChangeFeedEstimatorBuilder`，如下所示：
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
 其中的处理器和估算器共享同一 `leaseContainer` 和同一名称。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70092955"
 
 例如，下面是用于接收估算的委托：
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 可以将此估算发送给监视解决方案，并通过它了解进度随时间的变化情况。
 

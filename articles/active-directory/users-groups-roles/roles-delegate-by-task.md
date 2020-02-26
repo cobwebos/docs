@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559005"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596753"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -45,14 +45,14 @@ ms.locfileid: "77559005"
 创建 Azure AD B2C 目录 | 所有非来宾用户（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建 B2C 应用程序 | 全局管理员角色 | 
 创建企业应用程序 | 云应用管理员 | 应用程序管理员
-创建、读取、更新和删除 B2C 策略 | 全局管理员角色 | 
-创建、读取、更新和删除标识提供者 | 全局管理员角色 | 
-创建、读取、更新和删除密码重置用户流 | 全局管理员角色 | 
-创建、读取、更新和删除配置文件编辑用户流 | 全局管理员角色 | 
-创建、读取、更新和删除登录用户流 | 全局管理员角色 | 
-创建、读取、更新和删除注册用户流 |全局管理员角色 | 
-创建、读取、更新和删除用户特性 | 全局管理员角色 | 
-创建、读取、更新和删除用户 | 全局管理员（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)）
+创建、读取、更新和删除 B2C 策略 | B2C IEF 策略管理员 | 
+创建、读取、更新和删除标识提供者 | 外部标识提供者管理员 | 
+创建、读取、更新和删除密码重置用户流 | B2C 用户流管理员 | 
+创建、读取、更新和删除配置文件编辑用户流 | B2C 用户流管理员 | 
+创建、读取、更新和删除登录用户流 | B2C 用户流管理员 | 
+创建、读取、更新和删除注册用户流 |B2C 用户流管理员 | 
+创建、读取、更新和删除用户特性 | B2C 用户流属性管理员 | 
+创建、读取、更新和删除用户 | 用户管理员
 读取所有配置 | 全局读取器 | 
 读取 B2C 审核日志 | 全局读者（[请参阅文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)） | 
 
@@ -127,7 +127,7 @@ ms.locfileid: "77559005"
 ---- | --------------------- | ----------------
 同意任何委托的权限 | 云应用程序管理员 | 应用程序管理员
 同意不包括 Microsoft Graph 的应用程序权限 | 云应用程序管理员 | 应用程序管理员
-同意 Microsoft Graph 的应用程序权限 | 全局管理员角色 | 
+同意 Microsoft Graph 的应用程序权限 | 特权角色管理员 | 
 同意应用程序访问自己的数据 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 创建企业应用程序 | 云应用程序管理员 | 应用程序管理员
 管理应用程序代理 | 应用程序管理员 | 
@@ -156,7 +156,7 @@ ms.locfileid: "77559005"
 创建组 | 用户管理员 | 
 创建、更新或删除组或应用的访问评审 | 用户管理员 | 
 管理组到期时间 | 用户管理员 | 
-管理组设置 | 全局管理员角色 | 
+管理组设置 | 组管理员 | 用户管理员 | 
 读取所有配置（隐藏成员身份除外） | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
 读取隐藏成员身份 | 组成员 | 组所有者，密码管理员，Exchange 管理员，SharePoint 管理员，团队管理员，用户管理员
 读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户管理员、团队管理员
@@ -234,7 +234,7 @@ ms.locfileid: "77559005"
 
 任务 | 最小特权角色 | 其他角色
 ---- | --------------------- | ----------------
-管理标识提供者 | 全局管理员角色 | 
+管理标识提供者 | 外部标识提供者管理员 | 
 管理设置 | 全局管理员角色 | 
 管理使用条款 | 全局管理员角色 | 
 读取所有配置 | 全局读取器 | 
@@ -330,11 +330,11 @@ ms.locfileid: "77559005"
 删除用户 | 用户管理员 | 
 使受限管理员的刷新令牌失效（请参阅文档） | 用户管理员 | 
 使非管理员的刷新令牌失效（请参阅文档） | 密码管理员 | 用户管理员
-使特权管理员的刷新令牌失效（请参阅文档） | 全局管理员角色 | 
+使特权管理员的刷新令牌失效（请参阅文档） | 特权身份验证管理员 | 
 读取基本配置 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 
 重置受限管理员的密码（请参阅文档） | 用户管理员 | 
 重置非管理员的密码（请参阅文档） | 密码管理员 | 用户管理员
-重置特权管理员的密码 | 全局管理员角色 | 
+重置特权管理员的密码 | 特权身份验证管理员 | 
 撤销许可证 | 许可证管理员 | 用户管理员
 更新除用户主体名称之外的所有属性 | 用户管理员 | 
 更新受限管理员的用户主体名称（请参阅文档） | 用户管理员 | 

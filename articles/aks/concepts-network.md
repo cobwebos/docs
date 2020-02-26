@@ -1,18 +1,15 @@
 ---
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的网络
 description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 和 Azure CNI、入口控制器、负载均衡器和静态 IP 地址。
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.author: mlearned
-ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084284"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596158"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -97,16 +94,16 @@ Kubenet 和 Azure CNI 都为你的 AKS 群集提供网络连接。 不过，每�
 
 Kubenet 和 Azure CNI 之间存在以下行为差异：
 
-| Capability                                                                                   | Kubenet   | Azure CNI |
+| 功能                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| 在现有的或新的虚拟网络中部署群集                                            | 已支持-Udr 手动应用 | 是否支持 |
-| Pod-pod 连接                                                                         | 是否支持 | 是否支持 |
+| 在现有的或新的虚拟网络中部署群集                                            | 已支持-Udr 手动应用 | 支持 |
+| Pod-pod 连接                                                                         | 支持 | 支持 |
 | Pod-VM 连接;同一虚拟网络中的 VM                                          | 由 pod 启动时工作 | 采用两种方式 |
 | Pod-VM 连接;对等互连虚拟网络中的 VM                                            | 由 pod 启动时工作 | 采用两种方式 |
 | 使用 VPN 或 Express Route 进行本地访问                                                | 由 pod 启动时工作 | 采用两种方式 |
-| 访问由服务终结点保护的资源                                             | 是否支持 | 是否支持 |
-| 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 是否支持 | 是否支持 |
-| 默认 Azure DNS 和专用区域                                                          | 是否支持 | 是否支持 |
+| 访问由服务终结点保护的资源                                             | 支持 | 支持 |
+| 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
+| 默认 Azure DNS 和专用区域                                                          | 支持 | 支持 |
 
 关于 DNS，同时使用 kubenet 和 Azure CNI 插件 DNS 由 CoreDNS 提供，后者是运行在 AKS 中的守护程序集。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅[自定义 DNS 服务](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 pod。
 

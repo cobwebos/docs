@@ -3,16 +3,15 @@ title: 检查 Azure 上的 Kubernetes 部署，确定最佳做法的实现情况
 description: 了解如何使用 kube-advisor 检查 Azure Kubernetes 服务上部署的最佳做法实现情况
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073762"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595427"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>检查 Kubernetes 群集中的最佳做法
 
@@ -20,9 +19,9 @@ ms.locfileid: "65073762"
 
 ## <a name="about-kube-advisor"></a>关于 kube-advisor
 
-[kube-advisor 工具][kube-advisor-github]是单个容器，为在群集上运行而设计。 它将查询 Kubernetes API 服务器，以了解你的部署，并返回一组建议的改进。
+[Kube 工具][kube-advisor-github]是设计为在群集上运行的单个容器。 它将查询 Kubernetes API 服务器，以了解你的部署，并返回一组建议的改进。
 
-Kube 顾问工具可报告资源请求和 PodSpecs 的 Windows 应用程序，以及 Linux 应用程序中缺少的限制，但 kube 顾问工具本身必须安排在 Linux pod。 您可以计划在特定 OS 使用的节点池上运行的 pod[节点选择器][ k8s-node-selector] pod 的配置中。
+Kube 工具可以报告 Windows 应用程序和 Linux 应用程序的 PodSpecs 中缺少的资源请求和限制，但必须在 Linux pod 上计划 kube 工具本身。 可以使用 pod 配置中的[节点选择器][k8s-node-selector]，将 pod 计划为使用特定 OS 在节点池上运行。
 
 > [!NOTE]
 > Microsoft 最大程度支持 kube-advisor 工具。 应在 GitHub 上提交的问题和建议。
@@ -53,7 +52,7 @@ kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --r
 
 ### <a name="resource-requests-and-limits"></a>资源请求和限制
 
-Kubernetes 支持定义[资源请求和对 pod 规范的限制][kube-cpumem]。 请求定义运行容器所需的最小 CPU 和内存。 限制定义应允许的最大 CPU 和内存。
+Kubernetes 支持定义[有关 pod 规范的资源请求和限制][kube-cpumem]。 请求定义运行容器所需的最小 CPU 和内存。 限制定义应允许的最大 CPU 和内存。
 
 默认情况下，未对 pod 规范设置任何请求或限制。 这可能导致节点被过度安排，而耗尽容器。 kube-advisor 工具可突出显示 pod，并且未设置请求和限制。
 

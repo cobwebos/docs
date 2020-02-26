@@ -1,36 +1,33 @@
 ---
-title: 将将容器注册表与 Azure Kubernetes 服务集成
-description: 了解如何将 Azure Kubernetes 服务 (AKS) 与 Azure 容器注册表 (ACR) 集成
+title: 将 Azure 容器注册表与 Azure Kubernetes 服务集成
+description: 了解如何将 Azure Kubernetes Service （AKS）与 Azure 容器注册表（ACR）集成
 services: container-service
-author: mlearned
 manager: gwallace
-ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: mlearned
-ms.openlocfilehash: ba52cac4ebe923b7217550ed90948d908d8daf7f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: b1f4449728589eca4f64035d7e70d01dbc187bc4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73900665"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596192"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>使用 Azure 容器注册表从 Azure Kubernetes 服务进行身份验证
 
 结合使用 Azure 容器注册表 (ACR) 和 Azure Kubernetes 服务 (AKS) 时，需要建立身份验证机制。 本文提供在这两个 Azure 服务之间配置身份验证的示例。
 
-可以使用 Azure CLI 通过几个简单的命令设置 AKS 与 ACR 的集成。
+可以通过 Azure CLI 几个简单的命令来设置 AKS 到 ACR 集成。
 
 ## <a name="before-you-begin"></a>开始之前
 
 这些示例需要：
 
-* **Azure 订阅**上的**所有者**或 **Azure 帐户管理员**角色
+* **Azure 订阅**上的**所有者**或**azure 帐户管理员**角色
 * Azure CLI 版本2.0.73 或更高版本
 
-## <a name="create-a-new-aks-cluster-with-acr-integration"></a>通过 ACR 集成创建新的 AKS 群集
+## <a name="create-a-new-aks-cluster-with-acr-integration"></a>使用 ACR 集成创建新的 AKS 群集
 
-可以在一开始创建 AKS 群集时设置 AKS 与 ACR 的集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory **服务主体**。 以下 CLI 命令允许你在订阅中授权现有 ACR，并为服务主体配置适当的 **ACRPull** 角色。 为下面的参数提供有效值。 
+你可以在最初创建 AKS 群集的过程中设置 AKS 和 ACR 集成。  若要允许 AKS 群集与 ACR 交互，请使用 Azure Active Directory**服务主体**。 使用以下 CLI 命令，可以授权订阅中的现有 ACR，并为服务主体配置适当的**ACRPull**角色。 请为以下参数提供有效值。 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
 MYACR=myContainerRegistry
@@ -52,9 +49,9 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 
 此步骤可能需要几分钟才能完成。
 
-## <a name="configure-acr-integration-for-existing-aks-clusters"></a>为现有的 AKS 群集配置 ACR 集成
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>配置现有 AKS 群集的 ACR 集成
 
-通过为 **acr-name** 或 **acr-resource-id** 提供有效值，将现有 ACR 与现有 AKS 群集集成，如下所示。
+通过为**ACR 名称**或**acr 资源 id**提供有效值（如下所示），将现有的 ACR 与现有的 AKS 群集集成。
 
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
@@ -64,7 +61,7 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
 
-还可以使用以下命令删除 ACR 与 AKS 群集之间的集成
+还可以使用以下项删除 ACR 与 AKS 群集之间的集成
 ```azurecli
 az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
 ```

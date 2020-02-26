@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474245"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608739"
 ---
 若要以一致的方式大规模创建和管理 Azure 虚拟机 (VM)，通常需要某种形式的自动化。 可以通过许多工具和解决方案来自动完成整个 Azure 基础结构部署和管理生命周期。 本文介绍了一些可以在 Azure 中使用的基础结构自动化工具。 这些工具通常适合以下某个方法：
 
@@ -40,7 +40,7 @@ ms.locfileid: "77474245"
 了解如何操作：
 
 - [从 Azure 市场部署 Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
-- [在 Windows 上安装 Chef 并创建 Azure VM](../articles/virtual-machines/windows/chef-automation.md)。
+- [在 Windows 上安装 Chef 并创建 Azure VM](../articles/chef/chef-automation.md)。
 
 
 ## <a name="puppet"></a>Puppet
@@ -128,7 +128,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何操作：
 
-- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md)。
+- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

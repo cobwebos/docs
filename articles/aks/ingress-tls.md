@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 群集中创建 HTTPS 入口
 description: 了解如何安装和配置 NGINX 入口控制器，该控制器使用在 Azure Kubernetes 服务（AKS）群集中生成的自动 TLS 证书。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898808"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595529"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -344,7 +341,7 @@ kubectl delete namespace ingress-basic
 
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
-- [cert-manager][cert-manager]
+- [证书管理器][cert-manager]
 
 你还可以：
 

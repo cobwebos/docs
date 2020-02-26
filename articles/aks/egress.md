@@ -1,40 +1,37 @@
 ---
 title: Azure Kubernetes 服务 (AKS) 中出口流量的静态 IP 地址
-description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中出口流量的静态公用 IP 地址
+description: 了解如何创建和使用 Azure Kubernetes 服务 (AKS) 群集中出口流量的静态公共 IP 地址
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696368"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595750"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用公用静态 IP 地址
+# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的出口流量使用静态公共 IP 地址
 
 默认情况下，Azure Kubernetes 服务 (AKS) 群集的出口 IP 地址是随机分配的。 例如，当需要标识用于访问外部服务的 IP 地址时，此配置是不理想的。 而是可能需要分配静态 IP 地址，此地址可被列入服务访问允许列表。
 
-本文介绍了如何创建和使用静态公用 IP 地址，以便用于 AKS 群集中的出口流量。
+本文介绍了如何创建和使用静态公共 IP 地址，以便用于 AKS 群集中的出口流量。
 
 ## <a name="before-you-begin"></a>开始之前
 
-本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
+本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门，并[使用 Azure CLI][aks-quickstart-cli]或[使用 Azure 门户][aks-quickstart-portal]。
 
-还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需要安装并配置 Azure CLI 版本2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="egress-traffic-overview"></a>出口流量概述
 
-来自 AKS 群集的出站流量遵循[Azure 负载均衡器约定][outbound-connections]。 在创建 `LoadBalancer` 类型的第一个 Kubernetes 服务之前，AKS 群集中的代理节点不是任何 Azure 负载均衡器池的一部分。 在此配置中，节点没有实例级公用 IP 地址。 Azure 将出站流转换为不可配置的或确定性的公用源 IP 地址。
+来自 AKS 群集的出站流量遵循[Azure 负载均衡器约定][outbound-connections]。 在创建 `LoadBalancer` 类型的第一个 Kubernetes 服务之前，AKS 群集中的代理节点不是任何 Azure 负载均衡器池的一部分。 在此配置中，节点没有实例级公共 IP 地址。 Azure 将出站流转换为不可配置的或确定性的公用源 IP 地址。
 
-创建 `LoadBalancer` 类型的 Kubernetes 服务后，会向 Azure 负载均衡器池添加代理节点。 对于出站流，Azure 将其转换为在负载均衡器上配置的第一个公用 IP 地址。 此公用 IP 地址仅对该资源的生命期有效。 如果删除 Kubernetes 负载均衡器服务，则会同时删除关联的负载均衡器和 IP 地址。 如果要分配特定 IP 地址或保留已重新部署的 Kubernetes 服务的 IP 地址，请创建并使用静态公用 IP 地址。
+创建 `LoadBalancer` 类型的 Kubernetes 服务后，会向 Azure 负载均衡器池添加代理节点。 对于出站流，Azure 将其转换为在负载均衡器上配置的第一个公共 IP 地址。 此公共 IP 地址仅对该资源的生命期有效。 如果删除 Kubernetes 负载均衡器服务，则会同时删除关联的负载均衡器和 IP 地址。 如果要分配特定 IP 地址或保留已重新部署的 Kubernetes 服务的 IP 地址，请创建并使用静态公共 IP 地址。
 
 ## <a name="create-a-static-public-ip"></a>创建静态公共 IP
 
-用[az aks show][az-aks-show]命令获取资源组名称, 并添加`--query nodeResourceGroup`查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
+用[az aks show][az-aks-show]命令获取资源组名称，并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取名为 myResourceGroup 的资源组中 AKS 群集名称 myAKSCluster 的节点资源组：
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -75,7 +72,7 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-with-the-static-ip"></a>使用静态 IP 创建服务
 
-若要使用静态公用 IP 地址创建服务，请将 `loadBalancerIP` 属性和静态公用 IP 地址的值添加到 YAML 清单。 创建名为 `egress-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公用 IP 地址。
+若要使用静态公共 IP 地址创建服务，请将 `loadBalancerIP` 属性和静态公共 IP 地址的值添加到 YAML 清单。 创建名为 `egress-service.yaml` 的文件，并将其复制到以下 YAML 中。 提供在前面的步骤中创建的你自己的公共 IP 地址。
 
 ```yaml
 apiVersion: v1
@@ -99,7 +96,7 @@ kubectl apply -f egress-service.yaml
 
 ## <a name="verify-egress-address"></a>验证出口地址
 
-若要验证是否正在使用静态公用 IP 地址，可以使用 DNS 查找服务，例如 `checkip.dyndns.org`。
+若要验证是否正在使用静态公共 IP 地址，可以使用 DNS 查找服务，例如 `checkip.dyndns.org`。
 
 启动并附加到基本 Debian pod：
 
@@ -113,7 +110,7 @@ kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
 apt-get update && apt-get install curl -y
 ```
 
-现在，使用 curl 访问 checkip.dyndns.org站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公用 IP 地址相匹配：
+现在，使用 curl 访问 checkip.dyndns.org站点。 将显示出口 IP 地址，如以下示例输出中所示。 此 IP 地址与为负载均衡器服务创建和定义的静态公共 IP 地址相匹配：
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -123,7 +120,7 @@ $ curl -s checkip.dyndns.org
 
 ## <a name="next-steps"></a>后续步骤
 
-若要避免在 Azure 负载均衡器上维护多个公用 IP 地址，可以使用入口控制器。 入口控制器提供的其他好处包括：SSL/TLS 终止、对 URI 重写的支持以及上游 SSL/TLS 加密。 有关详细信息, 请参阅[在 AKS 中创建基本入口控制器][ingress-aks-cluster]。
+若要避免在 Azure 负载均衡器上维护多个公共 IP 地址，可以使用入口控制器。 入口控制器提供的其他好处包括：SSL/TLS 终止、对 URI 重写的支持以及上游 SSL/TLS 加密。 有关详细信息，请参阅[在 AKS 中创建基本入口控制器][ingress-aks-cluster]。
 
 <!-- LINKS - internal -->
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create

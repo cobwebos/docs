@@ -2,17 +2,14 @@
 title: 创建专用的 Azure Kubernetes 服务群集
 description: 了解如何创建私有 Azure Kubernetes 服务（AKS）群集
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.author: mlearned
-ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544226"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594560"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
 
@@ -26,7 +23,7 @@ ms.locfileid: "77544226"
 > * [AKS 支持策略](support-policies.md)
 > * [Azure 支持常见问题](faq.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure CLI 版本2.0.77 或更高版本，以及 Azure CLI AKS 预览版扩展版本0.4.18
 
@@ -126,7 +123,7 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
 
-1. 执行以下任一操作：
+1. 执行下列任一操作：
    * 在 AKS 群集所在的虚拟网络中创建 VM。  
    * 在不同的虚拟网络中创建一个 VM，并将此虚拟网络与 AKS 群集虚拟网络对等互连。
 

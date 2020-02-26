@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013988"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597977"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -35,7 +35,7 @@ ms.locfileid: "77013988"
 --- | ---
 **VMware vCenter 服务器** | 版本5.5、6.0、6.5 或6.7。
 **VMware vSphere ESXI 主机** | 版本5.5、6.0、6.5 或6.7。
-**vCenter Server 权限** | 无代理迁移使用[迁移设备](migrate-appliance.md)。 设备需要以下权限：<br/><br/> - **数据存储。浏览**：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> **LowLevelFileOperations**：允许 "数据存储浏览器" 中的读/写/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine. DiskChangeTracking**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine： DiskLease**：允许 VM 使用磁盘租约操作，以便使用 VMware vSphere 虚拟磁盘开发工具包（VDDK）读取磁盘。<br/><br/> - **VirtualMachine. AllowReadOnlyDiskAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/> - **VirtualMachine. AllowVirtualMachineDownload**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *：允许创建和管理用于复制的 VM 快照。<br/><br/> - 的**虚拟机。** 关机：允许在迁移到 Azure 期间关闭 VM 的电源。
+**vCenter Server 权限** | 无代理迁移使用[迁移设备](migrate-appliance.md)。 设备需要以下权限：<br/><br/> - **数据存储。浏览**：允许浏览 VM 日志文件来排除快照创建和删除的故障。<br/><br/> - **LowLevelFileOperations**：允许在数据存储浏览器中进行读取/写入/删除/重命名操作，用于排查快照创建和删除的问题。<br/><br/> - **VirtualMachine. DiskChangeTracking**：允许启用或禁用 VM 磁盘的更改跟踪，以便在快照之间请求更改的数据块。<br/><br/> - **VirtualMachine： DiskLease**：允许 VM 使用磁盘租约操作，以便使用 VMware vSphere 虚拟磁盘开发工具包（VDDK）读取磁盘。<br/><br/> - **VirtualMachine. AllowDiskAccess**：（专用于 vSphere 6.0 及更高版本）允许在 VM 上打开磁盘，以便使用 VDDK 在磁盘上进行随机读取访问。<br/><br/> - **VirtualMachine. AllowReadOnlyDiskAccess**：允许在 VM 上打开磁盘，使用 VDDK 读取磁盘。<br/><br/>- **VirtualMachine. AllowVirtualMachineDownload**：允许对与 VM 关联的文件执行读取操作，下载日志，并在发生故障时进行故障排除。<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *：允许创建和管理用于复制的 VM 快照。<br/><br/> - 的**虚拟机。** 关机：允许在迁移到 Azure 期间关闭 VM 的电源。
 
 
 
@@ -110,7 +110,7 @@ vSphere/EXSI 主机 | TCP 端口902上的入站，用于从快照复制数据。
 **NFS** | 不会复制装载为 Vm 上的卷的 NFS 卷。
 **iSCSI 目标** | 具有 iSCSI 目标的 Vm 不支持无代理迁移。
 **多路径 IO** | 不支持。
-**存储 vMotion** | 受支持
+**存储 vMotion** | 支持
 **成组 Nic** | 不支持。
 **IPv6** | 不支持。
 
@@ -142,7 +142,7 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 来宾操作系统 | 验证支持迁移的 VMware VM 操作系统。<br/> 你可以迁移在受支持的操作系统上运行的任何工作负荷。 | 如果不支持，检查会失败。
 来宾操作系统体系结构 | 64 位。 | 如果不支持，检查会失败。
 操作系统磁盘大小 | 最大 2,048 GB。 | 如果不支持，检查会失败。
-操作系统磁盘计数 | 第 | 如果不支持，检查会失败。
+操作系统磁盘计数 | 1 | 如果不支持，检查会失败。
 数据磁盘计数 | 64 或更少。 | 如果不支持，检查会失败。
 数据磁盘大小 | 最大 4,095 GB | 如果不支持，检查会失败。
 网络适配器 | 支持多个适配器。 |
@@ -150,7 +150,7 @@ VM | Vm 上运行的移动服务与用于复制管理的端口 HTTPS 443 入站�
 FC 磁盘 | 不支持。 | 如果不支持，检查会失败。
 BitLocker | 不支持。 | 为计算机启用复制之前，必须先禁用 BitLocker。
 VM 名称 | 1 到 63 个字符。<br/> 限制为字母、数字和连字符。<br/><br/> 计算机名称必须以字母或数字开头和结尾。 |  请在 Site Recovery 中的计算机属性中更新该值。
-迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” > “允许的应用”中针对所有配置文件允许 RDP。<br/> 对于站点到站点 VPN 访问，在**Windows 防火墙**中启用 rdp 和允许 Rdp -> 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
+迁移后连接-Windows | 若要在迁移后连接到运行 Windows 的 Azure Vm：<br/> -迁移之前，在本地 VM 上启用 RDP。 请确保为“公共”配置文件添加了 TCP 和 UDP 规则，并确保在“Windows 防火墙” **“允许的应用”中针对所有配置文件允许 RDP** > 。<br/> 对于站点到站点 VPN 访问，在**Windows 防火墙**中启用 rdp 和允许 Rdp -> 允许用于**域和专用**网络的**应用和功能**。 此外，请检查操作系统的 SAN 策略是否设置为**OnlineAll**。 [了解详细信息](prepare-for-migration.md)。 |
 迁移后连接-Linux | 使用 SSH 迁移后连接到 Azure Vm：<br/> 在迁移之前，请在本地计算机上检查安全外壳服务是否设置为 "启动"，以及防火墙规则是否允许 SSH 连接。<br/> 故障转移后，在 Azure VM 上，允许已故障转移的 VM 上的网络安全组和连接到的 Azure 子网的 SSH 端口建立传入连接。 此外，为 VM 添加公共 IP 地址。 |  
 
 

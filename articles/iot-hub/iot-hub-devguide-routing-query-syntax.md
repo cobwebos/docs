@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e01be0442f6d968613ffd800f076705d33e3e16e
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064812"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598198"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中心消息路由查询语法
 
@@ -50,13 +50,13 @@ IoT 中心为所有设备到云的消息传送定义了[格式](iot-hub-devguide
 
 系统属性有助于标识消息的内容和源。 
 
-| 属性 | 类型 | 说明 |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| contentType | string | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
-| contentEncoding | string | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
-| iothub-connection-device-id | string | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
-| iothub-enqueuedtime | string | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
-| iothub-name | string | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
+| contentType | 字符串 | 用户指定消息的内容类型。 若要允许查询消息正文，此值应设置应用程序/JSON。 |
+| contentEncoding | 字符串 | 用户指定消息的编码类型。 如果 contentType 设置为应用程序/JSON，则允许的值为 UTF-8、UTF-16 和 UTF-32。 |
+| iothub-connection-device-id | 字符串 | 此值由 IoT 中心设置，标识设备的 ID。 若要查询，请使用 `$connectionDeviceId`。 |
+| iothub-enqueuedtime | 字符串 | 此值由 IoT 中心设置，表示 UTC 中消息排入队列的实际时间。 若要查询，请使用 `enqueuedTime`。 |
+| iothub-name | 字符串 | 此值由用户设置，表示实现遥测消息的数字克隆接口的名称。 若要查询，请使用 `$interfaceName`。 此功能在[IoT 即插即用公共预览版](../iot-pnp/overview-iot-plug-and-play.md)中提供。 |
 
 如 [IoT 中心消息](iot-hub-devguide-messages-construct.md)中所述，一条消息中还有其他系统属性。 除了 contentType，还可以查询 contentEncoding 和 enqueuedTime、connectionDeviceId 和 connectionModuleId。
 
@@ -88,7 +88,7 @@ $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 
 "[表达式和条件](iot-hub-devguide-query-language.md#expressions-and-conditions)" 中显示了支持的运算符和函数的完整列表。
 
-## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询 
+## <a name="message-routing-query-based-on-message-body"></a>基于消息正文的消息路由查询
 
 若要启用对消息正文的查询，消息应采用以 UTF-8、UTF-16 或 UTF-32 编码的 JSON 格式。 在系统属性中，`contentType` 必须设置为 `application/JSON`，而 `contentEncoding` 则设置为一个受支持的 UTF 编码。 如果未指定这些属性，IoT 中心将不会计算消息正文的查询表达式。 
 
@@ -140,6 +140,10 @@ deviceClient.sendEvent(message, (err, res) => {
     if (res) console.log('status: ' + res.constructor.name);
 });
 ```
+
+> [!NOTE] 
+> 这说明了如何处理 javascript 中正文的编码。 若要查看中C#的示例，请下载[Azure IoT C#示例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 解压缩 master.zip 文件。 Visual Studio 解决方案*SimulatedDevice*的 Program.cs 文件演示如何编码和将消息提交到 IoT 中心。 这是用于测试消息路由的相同示例，如[消息路由教程](tutorial-routing.md)中所述。 在 Program.cs 的底部，它还提供了一个方法，用于读取其中一个编码文件，对其进行解码，并将其写回作为 ASCII，以便您可以读取它。 
+
 
 ### <a name="query-expressions"></a>查询表达式
 

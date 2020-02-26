@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 68d37bfbc629062a788ba32793b95c6f1653ff42
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749657"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603374"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -83,7 +83,7 @@ ms.locfileid: "75749657"
 
 “监视状态”定义安全中心无法成功监视那些已针对自动预配初始化的 VM 和计算机的原因。 下表显示了“监视状态”的值、说明和解决步骤。
 
-| 监视状态 | Description | 解决步骤 |
+| 监视状态 | 说明 | 解决步骤 |
 |---|---|---|
 | 代理待安装 | Microsoft Monitoring Agent 安装仍在运行。  安装可能需要长达数小时的时间。 | 等待自动安装完成。 |
 | 电源状态为关闭 | VM 已停止。  Microsoft Monitoring Agent 只能安装在正在运行的 VM 上。 | 重启 VM。 |
@@ -154,5 +154,5 @@ ms.locfileid: "75749657"
 * [调查 Azure 安全中心内的事件和警报](security-center-investigation.md)
 * [Azure 安全中心检测功能](security-center-detection-capabilities.md)
 * [通过 Azure 安全中心监视合作伙伴解决方案](security-center-partner-solutions.md) - 了解如何监视合作伙伴解决方案的运行状态。
-* [Azure 安全中心常见问题解答](security-center-faq.md) - 查找有关使用服务的常见问题
+* [Azure 安全中心常见问题解答](faq-general.md) - 查找有关使用服务的常见问题
 * [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/) - 查找关于 Azure 安全性及合规性的博客文章

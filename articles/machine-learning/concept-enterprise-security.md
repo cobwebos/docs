@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486387"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605627"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure 机器学习的企业安全性
 
@@ -37,7 +37,6 @@ ms.locfileid: "77486387"
 [Azure 机器学习中的 ![身份验证](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 有关详细信息，请参阅[为 Azure 机器学习资源和工作流设置身份验证](how-to-setup-authentication.md)。 本文提供了有关身份验证的信息和示例，包括使用服务主体和自动化工作流。
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Web 服务部署的身份验证
 
@@ -77,6 +76,9 @@ ms.locfileid: "77486387"
 | 调用 web 服务 | ✓ | ✓ | ✓ |
 
 如果内置角色不能满足您的需要，则可以创建自定义角色。 自定义角色仅支持工作区上的操作和机器学习计算。 自定义角色可以对工作区和该工作区中的计算资源具有读取、写入或删除权限。 可以使角色在特定的工作区级别、特定的资源组级别或特定的订阅级别可用。 有关详细信息，请参阅[在 Azure 机器学习工作区中管理用户和角色](how-to-assign-roles.md)。
+
+> [!WARNING]
+> Azure Active Directory 企业到企业协作，目前不支持 Azure 机器学习。
 
 ### <a name="securing-compute-targets-and-data"></a>保护计算目标和数据
 

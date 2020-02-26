@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中创建内部负载均衡器
 description: 了解如何通过 Azure Kubernetes 服务 (AKS) 创建和使用内部负载均衡器以公开服务。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 8b0b0358534c30407c9841d5c23560623545cf64
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045002"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595461"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>使用包含 Azure Kubernetes 服务 (AKS) 的内部负载均衡器
 
@@ -56,7 +53,7 @@ kubectl apply -f internal-lb.yaml
 
 在节点资源组中创建 Azure 负载均衡器，并将其连接到与 AKS 群集相同的虚拟网络。
 
-查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中。 在此上下文中，*外部*与负载均衡器的外部接口相关，而不是接收到公共的外部 IP 地址。 可能需要一两分钟，IP 地址才会从 \<pending\> 更改为实际的内部 IP 地址，如以下示例所示：
+查看服务详细信息时，内部负载均衡器的 IP 地址显示在“EXTERNAL-IP”列中。 在此上下文中，*外部*与负载均衡器的外部接口相关，而不是接收到公共的外部 IP 地址。 可能需要一两分钟，IP 地址才会从 *pending\< 更改为实际的内部 IP 地址，如以下示例所示\>* ：
 
 ```
 $ kubectl get service internal-app

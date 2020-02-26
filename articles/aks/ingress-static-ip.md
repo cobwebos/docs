@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用静态 IP 地址创建 HTTP 入口控制器
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态公共 IP 地址安装和配置 NGINX 入口控制器。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 73798bf496f600e2ef98940051070a0ee117bdb3
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: a72312e2921b4721a4a5944cf62241b513da1e0a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261851"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595512"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -391,7 +388,7 @@ az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 - [Helm CLI][helm-cli]
 - [NGINX 入口控制器][nginx-ingress]
-- [cert-manager][cert-manager]
+- [证书管理器][cert-manager]
 
 你还可以：
 

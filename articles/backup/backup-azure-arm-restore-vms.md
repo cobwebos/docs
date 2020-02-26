@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d83c7dae65c214e546cf309bbefe507d3d591a2d
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 05ad6c4eab61ccf5bc0884da63ebda7ba76ac583
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371301"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597552"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -217,7 +217,7 @@ Azure 备份提供多种方法用于还原 VM。
 还原 VM 之后，还需要注意一些事项：
 
 - 将安装备份配置期间存在的扩展，但不会启用这些扩展。 如果出现问题，请重新安装这些扩展。
-- 如果备份的 VM 使用了静态 IP 地址，则还原的 VM 将使用动态 IP 地址，以避免冲突。 可[将静态 IP 地址添加到还原的 VM](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)。
+- 如果备份的 VM 使用了静态 IP 地址，则还原的 VM 将使用动态 IP 地址，以避免冲突。 可[将静态 IP 地址添加到还原的 VM](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)。
 - 还原的 VM 没有可用性集。 如果使用 "还原磁盘" 选项，则可以在使用提供的模板或 PowerShell 从磁盘创建 VM 时[指定可用性集](../virtual-machines/windows/tutorial-availability-sets.md)。
 - 如果使用基于 cloud-init 的 Linux 分发版（例如 Ubuntu），出于安全原因，还原后将阻止密码。 请在还原的 VM 上使用 VMAccess 扩展 [重置密码](../virtual-machines/linux/reset-password.md)。 我们建议在这些分发版中使用 SSH 密钥，这样，在还原后就无需重置密码。
 - 如果由于 VM 与域控制器断开关系而无法访问 VM，请按照以下步骤操作 VM：

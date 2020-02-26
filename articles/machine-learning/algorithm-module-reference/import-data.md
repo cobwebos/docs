@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163188"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598453"
 ---
 # <a name="import-data-module"></a>导入数据模块
 
@@ -48,9 +48,7 @@ ms.locfileid: "77163188"
 
 1. 将**导入数据**模块添加到管道。 可以在设计器的 "**数据输入和输出**" 类别中找到此模块。
 
-1. 单击 "**启动数据导入向导**"，使用向导配置数据源。
-
-    向导将获取帐户名称和凭据，并帮助您配置其他选项。 如果正在编辑现有配置，则会先加载当前值。
+1. 选择该模块以打开右窗格。
 
 1. 选择 "**数据源**"，然后选择数据源类型。 它可以是 HTTP 或数据存储。
 
@@ -60,6 +58,11 @@ ms.locfileid: "77163188"
 
     ![导入-数据-预览](media/module/import-data.png)
 
+1. 复选框 "**重新生成输出**" 决定是否执行模块以在运行时重新生成输出。 
+
+    默认情况下，它处于未选中状态，这意味着，如果已使用相同的参数执行了模块，则系统将重用上次运行的输出以缩短运行时间。 
+
+    如果选择此选项，系统将再次执行模块以重新生成输出。 因此，在更新存储中的基础数据时选择此选项，可以帮助获取最新数据。
 
 
 1. 运行管道。

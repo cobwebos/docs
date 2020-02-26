@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3a3e4c76463aaea0735d20d4fcc283aee460b48f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647656"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597518"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机高可用性
 
@@ -443,7 +443,7 @@ Azure 资源管理器中的三层模板还支持高可用性方案，例如体�
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>部署带有公司网络连接的虚拟机（跨界）以在生产中使用
-对于生产 SAP 系统，使用 Azure 站点到站点 VPN 或 Azure ExpressRoute 部署具有[企业网络连接（跨界）][planning-guide-2.2]的 azure 虚拟机。
+对于生产 SAP 系统，使用 Azure 站点到站点 VPN 或 Azure ExpressRoute 部署具有企业网络连接的 Azure 虚拟机。
 
 > [!NOTE]
 > 可使用 Azure 虚拟网络实例。 已创建并准备好虚拟网络与子网。
@@ -589,7 +589,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 
 1. 在 Azure 门户中的“DNS 服务器”边栏选项卡上，确保虚拟网络的“DNS 服务器”选项设置为“自定义 DNS”。
 2. 根据使用的网络类型选择设置。 有关详细信息，请参阅以下资源：
-   * [企业网络连接（跨界）][planning-guide-2.2]：添加本地 DNS 服务器的 IP 地址。  
+   * 添加本地 DNS 服务器的 IP 地址。  
    可将本地 DNS 服务器扩展到正在 Azure 中运行的虚拟机。 在该情况下，可添加运行 DNS 服务器的 Azure 虚拟机的 IP 地址。
    * 对于在 Azure 中隔离的 VM 部署：在充当 DNS 服务器的同一虚拟网络实例中部署其他虚拟机。 添加已设置为运行 DNS 服务的 Azure 虚拟机的 IP 地址。
 
@@ -626,7 +626,7 @@ ASCS/SCS 模板部署两个虚拟机，可以使用这些虚拟机创建用于�
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>设置 SAP 虚拟机的静态 IP 地址
 部署虚拟机以供在群集中使用后，需要为所有虚拟机设置静态 IP 地址。 请在 Azure 虚拟网络配置中而不是来宾操作系统中执行此操作。
 
-1. 在 Azure 门户中，选择“资源组” > “网卡” > “设置” > “IP 地址”。
+1. 在 Azure 门户中，选择“资源组” **“网卡”** “设置” > “IP 地址”。 >  > 
 2. 在“IP 地址”边栏选项卡中的“分配”下面，选择“静态”。 在“IP 地址”框中，输入要使用的 IP 地址。
 
    > [!NOTE]
@@ -737,11 +737,11 @@ SAP Azure 资源管理器模板创建所需的端口：
 
 如果想要将其他编号用于 SAP ASCS 或 SCS 实例，必须更改这些实例的名称和默认值。
 
-1. 在 Azure 门户中，依次选择“<SID>-lb-ascs 负载均衡器” > “负载均衡规则”。
+1. 在 Azure 门户中，依次选择“**SID>-lb-ascs 负载均衡器”<“负载均衡规则”**  > 。
 2. 对于属于 SAP ASCS 或 SCS 实例的所有负载均衡规则，请更改以下值：
 
    * 名称
-   * Port
+   * 端口
    * 后端端口
 
    例如，如果要将默认 ASCS 实例编号从 00 更改为 31，需要为表 1 中列出的所有端口进行更改。
@@ -952,7 +952,7 @@ Azure 负载均衡器具有内部负载均衡器，可在连接在一段固定�
 
    图 38：确认已重新配置群集
 
-成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合于 Azure 中的情况。 要更改的参数均记录在此博客中： https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ 。 假定用于生成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，需要将以下参数更改为这些值：
+成功安装 Windows 故障转移群集后，需要更改某些阈值，以使故障转移检测适合于 Azure 中的情况。 要更改的参数均记录在此博客中： https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/。 假定用于生成 ASCS/SCS 的 Windows 群集配置的两个 VM 位于同一子网中，需要将以下参数更改为这些值：
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 
@@ -1132,7 +1132,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
    > [!IMPORTANT]
-   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (<SID>-lb-ascs) 的 IP 地址相同。  
+   > 分配给 ASCS/SCS 实例虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器 (**SID>-lb-ascs) 的 IP 地址相同<** 。  
    >
    >
 
@@ -1142,7 +1142,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
    图 56：为 SAP ASCS/SCS 群集虚拟名称和 TCP/IP 地址定义 DNS 条目
 
-2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” > “域”。
+2. 若要定义分配给虚拟主机名的 IP 地址，请选择“DNS 管理器” **“域”。**  > 
 
    ![图 57：SAP ASCS/SCS 群集配置的新虚拟名称和 TCP/IP 地址][sap-ha-guide-figure-3047]
 
@@ -1292,7 +1292,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**ProbePort** 设置为 **62000**。 现在，可从其他主机（例如 **ascsha-dbas**）访问文件共享 **\\\ascsha-clsap\sapmnt**。
+**ProbePort** 设置为 **62000**。 现在，可从其他主机（例如 **ascsha-dbas\\）访问文件共享** **\ascsha-clsap\sapmnt**。
 
 ### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>安装数据库实例
 

@@ -1,10 +1,10 @@
 ---
-title: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性| Microsoft Docs
+title: SLES 上 Azure Vm 中的 NFS 的高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824859"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598725"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性
 

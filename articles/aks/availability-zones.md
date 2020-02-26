@@ -2,18 +2,15 @@
 title: 使用 Azure Kubernetes Service （AKS）中的可用性区域
 description: 了解如何创建在 Azure Kubernetes Service （AKS）中跨可用性区域分发节点的群集
 services: container-service
-author: mlearned
 ms.custom: fasttrack-edit
-ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mlearned
-ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086519"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596804"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务（AKS）群集
 

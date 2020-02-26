@@ -3,7 +3,7 @@ title: 删除 Azure Sentinel |Microsoft Docs
 description: 如何删除 Azure Sentinel 实例。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: d71a9fc21cca75312696a1bc17c4896c2e5bce2d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 4042f7b9d0f6fdf293f338c89d5783fe266c4edf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610347"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581678"
 ---
 # <a name="remove-azure-sentinel-from-your-workspace"></a>从工作区中删除 Azure Sentinel
 
@@ -44,7 +44,7 @@ ms.locfileid: "75610347"
 确定断开连接后，将开始脱离进程。
 
 **这些连接器的配置已删除：**
--   PowerApps
+-   Office 365
 
 -   AWS
 

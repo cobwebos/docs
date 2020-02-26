@@ -1,10 +1,10 @@
 ---
-title: 使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例 | Microsoft Docs
+title: 在 Azure 中使用共享磁盘群集 SAP ASCS/SCS 实例Microsoft Docs
 description: 了解如何使用群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637910"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598470"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -191,7 +191,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 故障转移群集是一组 1+n 个独立服务器（节点），这些服务器相互配合，共同提高应用程序和服务的可用性。 如果发生节点故障，Windows Server 故障转移群集会计算可能发生的故障数并保留正常运行的群集以提供应用程序和服务。 可从不同的仲裁模式中选择，以实现故障转移群集。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 在开始本文中的任务之前，请先查看以下文章：
 
 * [适用于 SAP NetWeaver 的 Azure 虚拟机高可用性体系结构和方案][sap-high-availability-architecture-scenarios]
@@ -227,7 +227,7 @@ SAP ASCS/SCS 实例具有以下组件：
   * 文件结构：S:\usr\sap\\&lt;SID&gt;\SYS\..
   * sapmnt 文件共享，可通过使用以下 UNC 路径实现对这些全局 S:\usr\sap\\&lt;SID&gt;\SYS\..文件的访问：
 
-    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\...
+    \\\\< ASCS/SCS 虚拟主机名\>\sapmnt\\&lt;SID&gt;\SYS\..。
 
 
 ![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]

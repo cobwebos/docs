@@ -1,5 +1,5 @@
 ---
-title: Azure 虚拟机上的 azure 虚拟机高可用性 Azure NetApp 文件 SUSE Linux Enterprise Server 上的 SAP NetWeaver |Microsoft Docs
+title: Azure 虚拟机上的 SAP NW 高可用性与 Azure NetApp 文件 |Microsoft Docs
 description: 适用于 sap NetWeaver 的高可用性指南，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990935"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598640"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Azure Vm 上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 SUSE Linux Enterprise Server
 
@@ -109,17 +109,17 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620&lt;nr&gt;
+  * 端口 620<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 36&lt;nr&gt; TCP
-    * 39&lt;nr&gt; TCP
-    * 81&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 36<strong>nr&lt; TCP&gt;</strong>
+    * 39<strong>nr&lt; TCP&gt;</strong>
+    * 81<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ### <a name="ers"></a>ERS
 
@@ -128,15 +128,15 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据�
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621&lt;nr&gt;
+  * 端口 621<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 33&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 33<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>设置 Azure NetApp 文件基础结构 
 

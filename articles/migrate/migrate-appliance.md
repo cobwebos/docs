@@ -3,12 +3,12 @@ title: Azure Migrate 设备
 description: 提供服务器评估和迁移中所使用的 Azure Migrate 设备的概述。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425453"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597535"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 设备
 
@@ -34,7 +34,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 **部署** | 将设备部署为 VMware VM。 VCenter Server 上需要足够的资源来分配具有 32 GB RAM 的 VM、8个 vcpu、大约 80 GB 的磁盘存储和外部虚拟交换机。<br/> 设备需要直接或通过代理访问 internet。<br/> 设备可以连接到单个 vCenter Server。
 **硬件** | VCenter 上的资源，用于分配含 32 GB RAM 8 个 vcpu 的 VM、大约 80 GB 的磁盘存储和外部虚拟交换机。 
-**哈希值** | MD5： c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256：4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)
 **vCenter 服务器/主机** | 设备 VM 必须部署在运行版本5.5 或更高版本的 ESXi 主机上。<br/><br/> 运行5.5、6.0、6.5 或 6.7 vCenter Server。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
 **发现** | 设备最多可在 vCenter Server 上发现 10000 VMware Vm。<br/> 设备可以连接到单个 vCenter Server。
@@ -52,7 +52,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **许可证** | 下载的设备模板附带了 Windows Server 2016 评估版许可证，该许可证在180天内有效。 如果评估期接近过期，我们建议你下载并部署新设备，或者激活设备 VM 的操作系统许可证。
 **设备部署**   |  将设备部署为 Hyper-v VM。<br/> Azure Migrate 提供的设备 VM 为 Hyper-v VM 版本5.0。<br/> Hyper-v 主机必须运行 Windows Server 2012 R2 或更高版本。<br/> 主机需要足够的空间来分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
 **硬件** | Hyper-v 主机上的资源，用于分配 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间，以及设备 VM 的外部交换机。
-**哈希值** | MD5：29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256：37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)
 **Hyper-V 主机** | 正在运行 Windows Server 2012 R2 或更高版本。
 **Azure Migrate 项目** | 设备可以与单个项目关联。 <br/> 可以将任意数量的设备与单个项目相关联。<br/> 
 **发现** | 一个设备最多可以发现5000个 Hyper-v Vm。<br/> 一个设备最多可以连接到300个 Hyper-v 主机。
@@ -67,7 +67,7 @@ Hyper-V VM | Azure Migrate：服务器评估 | 发现 Hyper-v Vm<br/><br/> 收�
 **下载链接** | [下载链接](https://go.microsoft.com/fwlink/?linkid=2105112)
 **下载大小** | 59.7 MB
 **硬件** | 专用物理计算机，或使用虚拟机。 运行设备的计算机需要 16 GB RAM、8个 vcpu、大约 80 GB 的存储空间和一个外部交换机。<br/> 设备需要静态或动态 IP 地址以及 internet 访问。
-**哈希值** | MD5：1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256： a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**哈希值** | 查看[此处](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)
 **操作系统** | 设备计算机应运行 Windows Server 2016。 
 **设备部署**   |  设备安装程序脚本是从门户下载的（在压缩文件夹中）。 <br/> 解压文件夹，并运行 PowerShell 脚本（AzureMigrateInstaller）。
 **发现** | 一个设备最多可以发现250个物理服务器。
@@ -108,7 +108,7 @@ download.microsoft.com/download | 允许从 Microsoft 下载下载。
 **数据** | **计数器** | **评估影响**
 --- | --- | ---
 CPU 使用率 | cpu.usage.average | 建议的 VM 大小/成本
-内存使用率 | mem.usage.average | 建议的 VM 大小/成本
+内存利用率 | mem.usage.average | 建议的 VM 大小/成本
 磁盘读取吞吐量（MB/秒） | virtualDisk.read.average | 磁盘大小、存储成本、VM 大小的计算
 磁盘写入吞吐量（MB/秒） | virtualDisk.write.average | 磁盘大小、存储成本、VM 大小的计算
 每秒磁盘读取操作数 | virtualDisk.numberReadAveraged.average | 磁盘大小、存储成本、VM 大小的计算
@@ -140,7 +140,7 @@ VM 说明 | vm.Summary.Config.Annotation
 磁盘大小列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualDisk)
 网络适配器列表 | vm.Config.Hardware.Device.ToList().FindAll(x => is VirtualEthernet).count
 CPU 使用率 | cpu.usage.average
-内存使用率 |mem.usage.average
+内存利用率 |mem.usage.average
 **每磁盘详细信息** | 
 磁盘密钥值 | disk.Key
 Dikunit 号 | disk.UnitNumber
@@ -216,9 +216,9 @@ VM 电源状态 | Msvm_ComputerSystem | EnabledState
 IP 地址（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | IPAddresses
 DHCP 已启用（合成 Nic） | Msvm_GuestNetworkAdapterConfiguration | DHCPEnabled
 NIC ID （合成 Nic） | Msvm_SyntheticEthernetPortSettingData | InstanceID
-NIC MAC 地址（合成 Nic） | Msvm_SyntheticEthernetPortSettingData | Address
+NIC MAC 地址（合成 Nic） | Msvm_SyntheticEthernetPortSettingData | 地址
 NIC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | InstanceID
-NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | Address
+NIC MAC ID （旧 Nic） | MsvmEmulatedEthernetPortSetting 数据 | 地址
 
 
 

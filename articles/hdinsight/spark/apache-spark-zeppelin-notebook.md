@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484802"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598266"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上的 Apache Spark 群集中使用 Apache Zeppelin 笔记本
 
@@ -150,6 +150,25 @@ Zeppelin 笔记本的保存位置为群集头节点。 因此，如果删除该�
 ![下载笔记本](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "下载笔记本")
 
 这会将笔记本作为 JSON 文件保存在下载位置。
+
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>使用 Shiro 配置对企业安全性套餐（ESP）群集中 Zeppelin 解释器的访问权限
+如上所述，从 HDInsight 4.0 开始不支持 `%sh` 解释器。 此外，由于 `%sh` 解释器引入了潜在的安全问题，例如使用 shell 命令访问 keytabs，因此还从 HDInsight 3.6 ESP 群集中删除了该问题。 这意味着，在默认情况下单击 "**创建新注释**" 或在解释器 UI 中，`%sh` 解释器不可用。 
+
+特权域用户可以利用 `Shiro.ini` 文件来控制对解释器 UI 的访问。 因此，只有这些用户可以创建新的 `%sh` 解释器并对每个新 `%sh` 解释器设置权限。 若要使用 `shiro.ini` 文件控制访问权限，请执行以下步骤：
+
+1. 使用现有的域组名称定义新的角色。 在下面的示例中，`adminGroupName` 是 AAD 中的一组特权用户。 不要在组名称中使用特殊字符或空格。 `=` 为此角色提供权限后的字符。 `*` 表示该组具有完全权限。
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. 添加新的角色以访问 Zeppelin 解释器。 在下面的示例中，`adminGroupName` 中的所有用户都被授予 Zeppelin 解释器的访问权限，并且可以创建新的解释器。 可以在 `roles[]`中的括号之间放置多个角色，用逗号分隔。 然后，具有必要权限的用户可以访问 Zeppelin 解释器。
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
 
 ## <a name="livy-session-management"></a>Livy 会话管理
 

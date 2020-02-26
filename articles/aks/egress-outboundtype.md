@@ -2,17 +2,14 @@
 title: 自定义 Azure Kubernetes 服务（AKS）中的用户定义路由（UDR）
 description: 了解如何在 Azure Kubernetes 服务中定义自定义传出路由（AKS）
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/31/2020
-ms.author: mlearned
-ms.openlocfilehash: bd55c7fbf017aec55cee4c9121ede606278a7334
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212940"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595801"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用用户定义的路由自定义群集传出（预览）
 

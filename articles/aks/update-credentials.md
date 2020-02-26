@@ -2,17 +2,14 @@
 title: 为 Azure Kubernetes 服务 (AKS) 群集重置凭据
 description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集更新或重置服务主体凭据
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 46665e78450538cdc473de32e6c2e9a418660af1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432916"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593064"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的服务主体更新或轮换凭据
 

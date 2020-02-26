@@ -1,5 +1,5 @@
 ---
-title: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的 Azure 虚拟机高可用性 | Microsoft Docs
+title: SLES 上的 SAP NetWeaver 的 Azure Vm 高可用性 |Microsoft Docs
 description: SUSE Linux Enterprise Server for SAP applications 上 SAP NetWeaver 的高可用性指南
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4dbce04df4a2542884f1f24b3207fe45fd4b26ae
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985511"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598232"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SUSE Linux Enterprise Server for SAP applications 上的 Azure VM 上 SAP NetWeaver 的高可用性
 
@@ -96,17 +96,17 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 620&lt;nr&gt;
+  * 端口 620<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 36&lt;nr&gt; TCP
-    * 39&lt;nr&gt; TCP
-    * 81&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 36<strong>nr&lt; TCP&gt;</strong>
+    * 39<strong>nr&lt; TCP&gt;</strong>
+    * 81<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ### <a name="ers"></a>ERS
 
@@ -115,15 +115,15 @@ NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 S
 * 后端配置
   * 连接到所有虚拟机（这些虚拟机应为 (A)SCS/ERS 群集的一部分）的主网络接口
 * 探测端口
-  * 端口 621&lt;nr&gt;
+  * 端口 621<strong>nr&lt;&gt;</strong>
 * 负载均衡规则
   * 如果使用标准负载均衡器，请选择 " **HA 端口**"
   * 如果使用基本负载均衡器，则为以下端口创建负载均衡规则
-    * 32&lt;nr&gt; TCP
-    * 33&lt;nr&gt; TCP
-    * 5&lt;nr&gt;13 TCP
-    * 5&lt;nr&gt;14 TCP
-    * 5&lt;nr&gt;16 TCP
+    * 32<strong>nr&lt; TCP&gt;</strong>
+    * 33<strong>nr&lt; TCP&gt;</strong>
+    * 5<strong>nr&lt;13 TCP&gt;</strong>
+    * 5<strong>nr&lt;14 TCP&gt;</strong>
+    * 5<strong>nr&lt;16 TCP&gt;</strong>
 
 ## <a name="setting-up-a-highly-available-nfs-server"></a>设置高度可用的 NFS 服务器
 
@@ -159,7 +159,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
    9. 管理员用户名和管理员密码  
       创建可用于登录计算机的新用户。
    10. 子网 ID  
-   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/&lt;订阅 ID&gt;/resourceGroups/&lt;资源组名称&gt;/providers/Microsoft.Network/virtualNetworks/&lt;虚拟网络名称&gt;/subnets/&lt;子网名称&gt;
+   如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：/subscriptions/**订阅 ID&lt;/resourceGroups/&gt;资源组名称**/providers/Microsoft.Network/virtualNetworks/**虚拟网络名称&lt;/subnets/&gt;子网名称** **&lt;&gt;** **&lt;&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux
 

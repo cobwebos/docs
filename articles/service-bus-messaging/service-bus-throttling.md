@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: aschhab
-ms.openlocfilehash: 21a3bfd09e83571e489e15e9351e12220a99e563
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f852ad70b2eb97e2b8b3e40d086e98b3836c3592
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301251"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598283"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure 服务总线上的限制操作
 
@@ -51,10 +51,15 @@ Azure 服务总线标准级别作为使用即用即付定价模型的多租户�
 
 并非所有操作都是相等的。 下面是每个操作的信用成本- 
 
-| 操作 | 信用成本|
+| Operation | 信用成本|
 |-----------|-----------|
 | 数据操作（发送、SendAsync、接收、ReceiveAsync、速览） |每条消息1个信用 |
 | 管理操作（创建、读取、更新、删除队列、主题、订阅、筛选器） | 10个信用 |
+
+> [!NOTE]
+> 请注意，发送到主题时，将根据筛选器评估每条消息，然后再将其提供给订阅。
+> 每个筛选器评估还会根据信用限制（即每个筛选器评估1个信用额度）进行计数。
+>
 
 ### <a name="how-will-i-know-that-im-being-throttled"></a>我如何知道我会受到限制？
 
@@ -99,7 +104,7 @@ The request was terminated because the entity is being throttled. Error code: 50
 
 可以通过创建可通过上述指标的更改触发的[runbook](../automation/automation-create-alert-triggered-runbook.md)来实现向上/向下扩展。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 ### <a name="how-does-throttling-affect-my-application"></a>限制如何影响应用程序？
 

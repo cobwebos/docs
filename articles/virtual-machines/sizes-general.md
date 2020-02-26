@@ -12,14 +12,14 @@ ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 674197bd4d1562d8492a2605d8929572d450af90
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493574"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597705"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 
@@ -31,7 +31,7 @@ ms.locfileid: "77493574"
 
 - [Dav4 和 Dasv4 系列](dav4-dasv4-series.md)是在多线程配置中利用 AMD 的 2.35 Ghz EPYC<sup>TM</sup> 7452 处理器的新大小，具有高达 256 MB 三级缓存，专用于 8 GB 的 l3 缓存到每8个内核，增加了用于运行常规用途工作负荷的客户选项。 Dav4 系列和 Dasv4 具有与 D & Dsv3 系列相同的内存和磁盘配置。
 
-- [DC 系列](dc-series.md)是 Azure 中的一系列虚拟机，在公有云中进行处理时，这些虚拟机可帮助保护你的数据和代码的机密性和完整性。 这些计算机由最新版本的 3.7 GHz Intel®至强®2176G 处理器提供 SGX 技术支持。 借助 Intel Turbo Boost Technology，这些虚拟机最高可以达到 4.7GHz。 客户使用 DC 系列实例可以构建安全的基于 enclave 的应用程序，以在使用该系列时保护其代码和数据。
+- 在公有云中处理数据和代码时， [DCv2 系列](dcv2-series.md)可帮助保护数据和代码的机密性和完整性。 这些计算机由最新的具有 SGX 技术的最新的 Intel 2288G 处理器生成提供支持。 利用 Intel Turbo 提升技术，这些计算机可以高达 5.0 GHz。 DCv2 系列实例使客户能够构建安全的基于 enclave 的应用程序，以在使用时保护其代码和数据。
 
 - [Dv2 和 Dsv2 系列](dv2-dsv2-series.md)Vm 是原始 D 系列的跟进，它具有更强大的 CPU 和最佳 CPU 到内存配置，使其适用于大多数生产工作负荷。 Dv2 系列比 D 系列快35%。 Dv2 系列在 Intel®强® 8171M 2.1 GHz （Skylake）、Intel®® E5-2673 v4 2.3 GHz （Broadwell）或 intel®至强® E5-2673 v3 2.4 GHz （Haswell）处理器上运行，并提供 Intel Turbo 提升技术2.0。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
