@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: 分组将计算机以进行评估
       href: how-to-create-a-group.md
-    - name: 使用依赖项可视化将计算机分组
+    - name: 分析计算机依赖项（基于代理）
       href: how-to-create-group-machine-dependencies.md
-    - name: 使用无代理依赖项可视化功能将计算机分组
+    - name: 分析计算机依赖项（无代理）
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: 创建评估
       href: how-to-create-assessment.md

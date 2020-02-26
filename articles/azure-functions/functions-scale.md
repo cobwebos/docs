@@ -5,16 +5,16 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024647"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584535"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三种托管计划可用于 Azure Functions：[消耗计划](#consumption-plan)、[高级计划](#premium-plan)和[专用（应用服务）计划](#app-service-plan)。
+在 Azure 中创建函数应用时，必须为应用选择托管计划。 有三个可用于 Azure Functions 的托管计划：[消耗计划](#consumption-plan)、[高级计划](#premium-plan)和[专用（应用服务）计划](#app-service-plan)。
 
 选择的托管计划将决定以下行为：
 
@@ -44,7 +44,7 @@ ms.locfileid: "77024647"
 
 ## <a name="consumption-plan"></a>消耗计划
 
-使用消耗计划时，会根据传入事件的数量动态添加和删除 Azure Functions 主机的实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
+使用消耗计划时，会根据传入事件的数量动态添加和删除 Azure Functions 主机的实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消耗计划中，函数执行在可配置的时间段后超时。
 
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页](https://azure.microsoft.com/pricing/details/functions/)。
 
@@ -158,7 +158,7 @@ Azure Functions 的小数位数是 function app。 横向扩展函数应用时�
 
 不同触发器还可能有不同的缩放限制，如下所述：
 
-* [事件中心](functions-bindings-event-hubs.md#trigger---scaling)
+* [事件中心](functions-bindings-event-hubs-trigger.md#scaling)
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 

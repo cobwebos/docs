@@ -4,12 +4,12 @@ description: 本文介绍如何排查 Azure 备份代理的安装和注册问题
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 06c741547e0206059195f481ed29dc8e69aa4dd3
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665320"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583803"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务（MARS）代理问题
 
@@ -20,11 +20,11 @@ ms.locfileid: "75665320"
 建议你在开始诊断 Microsoft Azure 恢复服务（MARS）代理之前检查以下内容：
 
 - [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)。
-- [确保 MARS 代理与 Azure 之间已建立网络连接](https://aka.ms/AB-A4dp50)。
+- [确保 MARS 代理与 Azure 之间已建立网络连接](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)。
 - 确保 MARS 正在运行（在服务控制台中）。 如果需要，请重新启动，然后重试该操作。
-- [确保暂存文件夹位置中有5% 到10% 的可用卷空间](https://aka.ms/AB-AA4dwtt)。
-- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://aka.ms/AB-AA4dwtk)。
-- 如果计划的备份失败但手动备份工作，请参阅[根据计划不运行备份](https://aka.ms/ScheduledBackupFailManualWorks)。
+- [确保暂存文件夹位置中有5% 到10% 的可用卷空间](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)。
+- [检查其他进程或防病毒软件是否正在干扰 Azure 备份](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)。
+- 如果计划的备份失败但手动备份工作，请参阅[根据计划不运行备份](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)。
 - 确保操作系统具有最新更新。
 - [确保不受支持的驱动器和具有不支持的属性的文件已从备份中排除](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)。
 - 确保将受保护系统上的时钟配置为正确的时区。
@@ -33,19 +33,19 @@ ms.locfileid: "75665320"
   - 请确保在服务器上卸载代理，并将其从门户中删除。
   - 使用最初用于注册服务器的相同密码。
 - 对于脱机备份，请确保在开始备份之前在源计算机和副本计算机上都安装 Azure PowerShell 3.7.0。
-- 如果备份代理在 Azure 虚拟机上运行，请参阅[此文](https://aka.ms/AB-AA4dwtr)。
+- 如果备份代理在 Azure 虚拟机上运行，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)。
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 
-**错误消息**：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 （ID：34513）
+**错误消息**：提供的保管库凭据无效。 该文件已损坏，或者没有与恢复服务关联的最新凭据。 (ID:34513）
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
 | **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或可能已过期。 （例如，在注册时间之前，它们可能下载了超过48小时。）| 在 Azure 门户上从恢复服务保管库下载新凭据。 （请参阅[下载 MARS agent](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分中的步骤6。）然后，根据需要执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在 "**操作**" 窗格中选择 "**注册服务器**"，以通过新凭据完成注册。 <br/> <li> 如果新的安装失败，请尝试重新安装新的凭据。</ul> **注意**：如果已下载多个保管库凭据文件，则在接下来的48小时内仅可使用最新的文件。 建议下载新的保管库凭据文件。
-| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**无 internet 连接** <br/><br/> 如果计算机或代理服务器的 internet 连接受到限制，并且不确保访问必要的 Url，则注册将失败。| 执行以下步骤：<br/> <ul><li> 与你的 IT 团队合作，确保系统具有 internet 连接。<li> 如果没有代理服务器，请确保在注册代理时未选择 "代理" 选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，请与你的网络团队合作，以确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，请尝试再次注册。
+| **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**无 internet 连接** <br/><br/> 如果计算机或代理服务器的 internet 连接受到限制，并且不确保访问必要的 Url，则注册将失败。| 执行以下步骤：<br/> <ul><li> 与你的 IT 团队合作，确保系统具有 internet 连接。<li> 如果没有代理服务器，请确保在注册代理时未选择 "代理" 选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，请与你的网络团队合作，以确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，请尝试再次注册。<br></br> 如果是通过 Azure ExpressRoute 进行连接，请确保按照[Azure expressroute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的说明配置设置。
 | **防病毒软件正在阻止注册** | 如果在服务器上安装了防病毒软件，请在防病毒扫描中添加这些文件和文件夹所需的排除规则： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> 暂存文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
 
-### <a name="additional-recommendations"></a>更多建议
+### <a name="additional-recommendations"></a>其他建议
 
 - 转到 C:/Windows/Temp，检查是否存在超过 60,000 或 65,000 个扩展名为 .tmp 的文件。 如果存在，请删除这些文件。
 - 确保计算机的日期和时间与本地时区匹配。
@@ -67,13 +67,13 @@ ms.locfileid: "75665320"
 
 | 错误   | 建议的操作 |
 | ---     | ---    |
-|未能下载保管库凭据文件。 （ID：403） | <ul><li> 尝试使用不同的浏览器下载保管库凭据，或执行以下步骤： <ul><li> 启动 Internet Explorer。 选择 "F12"。 </li><li> 请在 "**网络**" 选项卡上，清除缓存和 cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查订阅是否已禁用/已过期。<br></li> <li> 检查是否有任何防火墙规则正在阻止下载。 <br></li> <li> 确保你尚未用尽保管库的限制（每个保管库50台计算机）。<br></li>  <li> 确保用户具有下载保管库凭据所需的 Azure 备份权限，并向保管库注册服务器。 请参阅[使用基于角色的访问控制管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
+|未能下载保管库凭据文件。 (ID:403) | <ul><li> 尝试使用不同的浏览器下载保管库凭据，或执行以下步骤： <ul><li> 启动 Internet Explorer。 选择 "F12"。 </li><li> 请在 "**网络**" 选项卡上，清除缓存和 cookie。 </li> <li> 刷新页面。<br></li></ul> <li> 检查订阅是否已禁用/已过期。<br></li> <li> 检查是否有任何防火墙规则正在阻止下载。 <br></li> <li> 确保你尚未用尽保管库的限制（每个保管库50台计算机）。<br></li>  <li> 确保用户具有下载保管库凭据所需的 Azure 备份权限，并向保管库注册服务器。 请参阅[使用基于角色的访问控制管理 Azure 备份恢复点](backup-rbac-rs-vault.md)。</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 （ID：100050）检查你的网络设置，并确保你能够连接到 internet。<li>(407) 需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，依次访问 "**工具**" > **internet 选项**" > **Security** > **internet**"。 选择 "**自定义级别**"，并向下滚动到 "**文件下载**" 部分。 选择“启用”。<p>你可能还需要在 Internet Explorer 中将[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)添加到受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果在服务器上安装了防病毒软件，请从防病毒扫描中排除以下文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC。 在受影响的服务器上的所有版本的 .NET Framework 中排除 CSC 文件。 <li>暂存文件夹或缓存位置。 <br>暂存文件夹的默认位置或缓存路径为 "C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch."<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
+| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050）检查你的网络设置，并确保你能够连接到 internet。<li>（407）需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，依次访问 "**工具**" > **internet 选项**" > **Security** > **internet**"。 选择 "**自定义级别**"，并向下滚动到 "**文件下载**" 部分。 选择“启用”。<p>你可能还需要在 Internet Explorer 中将[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)添加到受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果在服务器上安装了防病毒软件，请从防病毒扫描中排除以下文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC。 在受影响的服务器上的所有版本的 .NET Framework 中排除 CSC 文件。 <li>暂存文件夹或缓存位置。 <br>暂存文件夹的默认位置或缓存路径为 "C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch."<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
 
@@ -157,7 +157,7 @@ Set-ExecutionPolicy Unrestricted
 
 8. 重启 Microsoft iSCSI 发起程序服务。 为此，请右键单击该服务，然后选择 "**停止**"。 然后再次右键单击，然后选择 "**启动**"。
 
-9. 使用[“即时还原”](backup-instant-restore-capability.md)重试恢复。
+9. 使用[即时还原](backup-instant-restore-capability.md)重试恢复。
 
 如果恢复仍失败，请重新启动服务器或客户端。 如果你不想重新启动，或者即使在重启服务器后恢复仍然失败，请尝试[从另一台计算机进行恢复](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
@@ -165,7 +165,7 @@ Set-ExecutionPolicy Unrestricted
 
 如果缓存文件夹（也称为暂存文件夹）配置不正确、缺少必备项或具有受限访问权限，则备份操作可能会失败。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>系统必备
 
 要使 MARS 代理操作成功，缓存文件夹需要符合以下要求：
 

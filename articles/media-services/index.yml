@@ -1,49 +1,110 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Hub
 title: Azure 媒体服务文档
+summary: Azure 媒体服务是一个基于云的媒体工作流平台，用于生成需要编码、打包、内容保护和直播活动广播的解决方案。
+brand: azure
 metadata:
-  title: Azure 媒体服务文档 | Microsoft Docs
-  description: Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。
+  title: Azure 媒体服务文档
+  description: Azure 媒体服务是一个基于云的媒体工作流平台，用于生成需要编码、打包、内容保护和直播活动广播的解决方案。
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.subservice: 
+  ms.topic: hub-page
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: Azure 媒体服务是一个基于云的媒体工作流平台，用于生成需要编码、打包、内容保护和直播活动广播的解决方案。 Azure 媒体服务无缝集成了 Azure CDN，可以通过 Akamai 和 Verizon 的 CDN 服务来缩放交付，让客户能够根据自己的需求（例如，跨内容分发网络实现负载均衡）选择适当的解决方案。 有了 Azure 媒体服务视频索引器，你就可以将 AI 与内置的视频和音频分析器预设配合使用，以便提取元数据和见解。 可以轻松地提高准确性，只需通过视频索引器 API 使用你自己的内容来训练提供的 AI 模型即可。
-sections:
+  ms.date: 07//2020
+  ms.openlocfilehash: ff7c361b402f38160b2693f2d22670a96881045b
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77587662"
+highlightedContent:
+  items:
+  - title: 关于 Azure 媒体服务 v3
+    itemType: overview
+    url: ./latest/media-services-overview.md
+  - title: Azure 媒体服务 v3 概念
+    itemType: concept
+    url: ./latest/concepts-overview.md
+  - title: 关于 Azure 媒体服务视频索引器
+    itemType: overview
+    url: ./video-indexer/video-indexer-overview.md
+  - title: 比较媒体服务 v3 预设和视频索引器
+    itemType: concept
+    url: ./video-indexer/compare-video-indexer-with-media-services-presets.md
+  - title: 关于 Azure 媒体服务 v2（旧版）
+    itemType: overview
+    url: ./previous/media-services-overview.md
+  - title: 将媒体服务 v2 迁移到 v3
+    itemType: concept
+    url: ./latest/migrate-from-v2-to-v3.md
+  - title: Azure 媒体服务规范
+    itemType: concept
+    url: media-services-specifications-live-timed-metadata.md
+conceptualContent:
+  items:
+  - title: 使用媒体服务 v3 API 进行开发
+    links:
+    - url: ./latest/media-services-apis-overview.md
+      itemType: concept
+      text: 使用媒体服务 v3 进行开发
+    - url: https://docs.microsoft.com/samples/browse/?products=azure-media-services
+      itemType: sample
+      text: 代码示例
+  - title: 实时流式处理
+    links:
+    - url: ./latest/live-streaming-overview.md
+      itemType: concept
+      text: 实时传送视频流
+    - url: ./latest/recommended-on-premises-live-encoders.md
+      itemType: concept
+      text: 建议的实时传送视频流编码器
+    - url: ./latest/stream-live-tutorial-with-api.md
+      itemType: tutorial
+      text: 实时流式处理
+  - title: 按需流式传输
+    links:
+    - url: ./latest/assets-concept.md
+      itemType: concept
+      text: 上传
+    - url: ./latest/encoding-concept.md
+      itemType: concept
+      text: 编码
+    - url: ./latest/stream-files-tutorial-with-rest.md
+      itemType: tutorial
+      text: 对远程文件进行编码并流式传输
+    - url: ./latest/stream-files-tutorial-with-api.md
+      itemType: tutorial
+      text: 对上传的文件进行编码并流式传输
+  - title: 加密内容
+    links:
+    - url: ./latest/content-protection-overview.md
+      itemType: concept
+      text: 保护
+    - url: ./latest/protect-with-aes128.md
+      itemType: tutorial
+      text: 通过 AES-128 进行动态加密
+    - url: ./latest/protect-with-drm.md
+      itemType: tutorial
+      text: 通过 DRM 进行动态加密
+  - title: 分析内容
+    links:
+    - url: ./latest/analyzing-video-audio-files-concept.md
+      itemType: concept
+      text: 媒体分析
+    - url: ./latest/analyze-videos-tutorial-with-api.md
+      itemType: tutorial
+      text: 分析视频
+additionalContent:
+  sections:
   - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/media-services/latest/
-            html: <p>使用媒体服务 v3 来编码、打包和保护内容；进行视频点播流式处理；实时广播和分析。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
-            title: Azure 媒体服务 v3
-          - href: /azure/media-services/previous/
-            html: <p>编码、打包、保护以及其他。 这是处于维护状态的旧服务。 建议客户迁移到媒体服务 v3 以利用其中的新功能和增强功能。</p>
-            image:
-              src: null
-            title: Azure 媒体服务 v2（旧版）
-          - href: /azure/cdn/
-            html: <p>借助 Azure CDN，使用 Akamai 和 Verizon 提供的服务对内容进行大规模流式处理，或者跨多个内容分发网络实现负载均衡。</p>
-            image:
-              src: /azure/cdn/media/index/cdn.svg
-            title: CDN
-          - href: 'https://amp.azure.net/libs/amp/latest/docs/index.html'
-            html: <p>在各种浏览器和设备中播放 Microsoft Azure 媒体服务提供的媒体内容。</p>
-            image:
-              src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
-            title: Azure Media Player
-          - href: /azure/media-services/video-indexer/
-            html: <p>使用视频索引器从视频和音频文件中提取见解。</p>
-            image:
-              src: media/index/AMSIcons-media_analytics.svg
-            title: Azure 媒体服务视频索引器
+    - title: Azure 存储
+      summary: 了解块 Blob 和容器
+      url: https://docs.microsoft.com/azure/storage/
+    - title: CDN
+      summary: 借助 Azure CDN 可使用 Akamai 和 Verizon 提供的服务对内容进行大规模流式处理，或者跨多个内容分发网络实现负载均衡
+      url: https://docs.microsoft.com/azure/cdn
+    - title: 事件网格
+      summary: 了解如何使用 Azure 事件网格响应相关事件
+      url: https://docs.microsoft.com/azure/event-grid/

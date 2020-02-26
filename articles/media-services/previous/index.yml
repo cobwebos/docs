@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure 媒体服务 v2（旧版）
+title: Azure 媒体服务 v2（旧版）文档
 summary: 媒体服务 v2 中未添加新功能。 请查看最新版本：媒体服务 v3。
 metadata:
-  title: Azure 媒体服务 v2 文档
+  title: Azure 媒体服务 v2（旧版）文档
   description: 了解如何使用媒体服务 v2 安全地流式传输广播质量的点播或直播视频。
   services: media-services
   ms.service: media-services
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
-  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.openlocfilehash: 6cd7d5d0ef9bd188b42ca893ffa2bacbda1bdbc8
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/20/2020
-  ms.locfileid: "77500767"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77589379"
 landingContent:
 - title: 关于 Azure 媒体服务 v2
   linkLists:

@@ -2,17 +2,14 @@
 title: 在 Azure Kubernetes 服务 (AKS) 中使用 Azure CLI 创建虚拟节点
 description: 了解如何通过 Azure CLI 创建使用虚拟节点运行 Pod 的 Azure Kubernetes 服务 (AKS) 群集。
 services: container-service
-author: mlearned
 ms.topic: conceptual
-ms.service: container-service
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2b726dff1e2c23b94118a11fb6b6ccf1f9622d4d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901507"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592738"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
@@ -60,7 +57,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 美国西部 (westus)
 * 美国西部 2 (westus2)
 
-## <a name="known-limitations"></a>已知的限制
+## <a name="known-limitations"></a>已知限制
 虚拟节点功能很大程度上依赖于 ACI 的功能集。 虚拟节点尚不支持以下方案
 
 * 使用服务主体拉取 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
@@ -81,7 +78,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用“[az group create][az-group-create]”命令创建资源组。 以下示例在 westus 位置创建名为 myResourceGroup 的资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 使用[az group create][az-group-create]命令创建资源组。 以下示例在 westus 位置创建名为 myResourceGroup 的资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus

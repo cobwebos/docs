@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: 渗透测试和红队练习
       href: security-control-penetration-tests-red-team-exercises.md
+- name: 安全基线
+  items:
+    - name: Azure 安全基线概述
+      href: security-baselines-overview.md
+    - name: Batch 安全基线
+      href: ../../batch/security-baseline.md
+    - name: Key Vault 安全基线
+      href: ../../key-vault/security-baseline.md
+    - name: HDInsight 安全基线
+      href: ../../hdinsight/security-baseline.md
+    - name: SQL 数据库安全基线
+      href: ../../sql-database/security-baseline.md

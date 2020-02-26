@@ -15,7 +15,7 @@
           href: ./hdinsight-administer-use-command-line.md
         - name: 管理 HDInsight 群集 - .NET SDK
           href: ./hdinsight-administer-use-dotnet-sdk.md
-        - name: 管理 HDInsight 群集 - Powershell
+        - name: 管理 HDInsight 群集 - PowerShell
           href: ./hdinsight-administer-use-powershell.md
         - name: 使用 Runbook 创建群集
           href: ./manage-clusters-runbooks.md
@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: 概念
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 企业安全常规指南
           href: ./domain-joined/general-guidelines.md
         - name: ESP 群集的计划

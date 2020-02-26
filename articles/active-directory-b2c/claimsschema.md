@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372988"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581100"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -175,6 +175,8 @@ Restriction 元素包含以下元素：
 
 #### <a name="enumeration"></a>枚举
 
+**枚举**元素定义用户在用户界面中选择声明的可用选项，如 `CheckboxMultiSelect`、`DropdownSingleSelect`或 `RadioSingleSelect`中的值。 或者，可以使用[LocalizedCollections](localization.md#localizedcollections)元素定义和本地化可用选项。 若要查找声明**枚举**集合中的项，请使用[GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection)声明转换。
+
 Enumeration 元素包含以下属性：
 
 | 特性 | 必需 | 说明 |
@@ -209,7 +211,7 @@ Pattern 元素可以包含以下属性：
 | 特性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | RegularExpression | 是 | 此类型的声明必须匹配才能有效的正则表达式。 |
-| HelpText | 否 | 此声明的模式或正则表达式。 |
+| HelpText | 否 | 如果正则表达式检查失败，则为用户提供一条错误消息。 |
 
 以下示例将配置具有正则表达式输入验证和帮助文本的 email 声明：
 
@@ -407,5 +409,3 @@ Paragraph 用户输入类型用于提供仅在段落标记中显示文本的字�
   </Restriction>
 </ClaimType>
 ```
-
-若要显示 responseMsg 声明中的 Enumeration 值之一，请使用 `GetMappedValueFromLocalizedCollection` 或 `CreateStringClaim` 声明转换。 有关详细信息，请参阅[字符串声明转换](string-transformations.md)

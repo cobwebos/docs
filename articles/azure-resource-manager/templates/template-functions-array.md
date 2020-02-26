@@ -3,12 +3,12 @@ title: 模板函数-数组和对象
 description: 介绍可在 Azure 资源管理器模板中用来处理数组和对象的函数。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: a38ab0fb2ddb15c3e853ae1b249df9a8364c6910
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1359951c00ba04e641ae84636459a8836924c729
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207360"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591177"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数组和对象函数
 
@@ -1067,7 +1067,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ## <a name="range"></a>range
 
-`range(startingInteger, numberOfElements)`
+`range(startIndex, count)`
 
 从起始整数创建整数数组并包含一些项。
 
@@ -1075,8 +1075,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
-| startingInteger |是 |int |数组中的第一个整数。 |
-| numberofElements |是 |int |数组中的整数个数。 |
+| startIndex |是 |int |数组中的第一个整数。 StartIndex 和计数的总和不得大于2147483647。 |
+| 计数 |是 |int |数组中的整数个数。 必须为非负整数，最大为10000。 |
 
 ### <a name="return-value"></a>返回值
 

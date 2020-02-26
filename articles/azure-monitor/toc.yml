@@ -890,8 +890,8 @@
                   href: log-query/examples.md
                 - name: 智能分析示例
                   href: log-query/smart-analytics.md
-                - name: 编写高效查询
-                  href: log-query/log-query-performance.md
+                - name: 优化查询
+                  href: log-query/query-optimization.md
                 - name: 分析文本数据
                   href: log-query/parse-text.md
         - name: Flow/逻辑应用
