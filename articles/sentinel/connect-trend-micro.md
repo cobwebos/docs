@@ -3,7 +3,7 @@ title: 将趋势微深度安全连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Trend 微深度安全连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: ba5b560f068d453f07e2dbbfdf5140ca1f4ac2b8
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: a25d76b4b8a6f516de70604146bd1b236ba3ca1e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610431"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588019"
 ---
 # <a name="connect-trend-micro-deep-security"></a>连接趋势微深度安全性
 
 趋势微 Deep Security 连接器可让你轻松地将深层安全日志与 Azure Sentinel 连接，以查看仪表板、创建自定义警报和改进调查。 这样，你就可以更深入地了解组织的网络和系统，并改进了安全操作功能。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - Azure Sentinel 工作区的读取和写入权限。
 

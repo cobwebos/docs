@@ -3,16 +3,15 @@ title: 排查常见的 Azure Kubernetes 服务问题
 description: 了解如何排查和解决在使用 Azure Kubernetes 服务 (AKS) 时遇到的常见问题
 services: container-service
 author: sauryadas
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209216"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593341"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 

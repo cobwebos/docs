@@ -3,7 +3,7 @@ title: 将适用于 IoT 的 Azure 安全中心连接到 Azure Sentinel |Microsof
 description: 了解如何将用于 IoT 数据的 Azure 安全中心连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
-ms.author: rkarlin
-ms.openlocfilehash: b68745f04a49565090b0f9b14331036f76e5f132
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501285"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588631"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>将数据从 Azure 安全中心连接到 Azure Sentinel 
 

@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806739"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591211"
 ---
 # <a name="know-the-terms"></a>了解术语
 
@@ -38,7 +38,7 @@ ms.locfileid: "74806739"
    本地域的域用户可以访问服务器，并可在这些 VM 上运行服务（例如 DBMS 服务）。 但无法在本地的 VM 和 Azure 部署的 VM 之间进行通信和名称解析。 这是大多数 SAP 资产的典型部署场景。 有关详细信息，请参阅[AZURE VPN 网关](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)和[使用 Azure 门户创建具有站点到站点连接的虚拟网络](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 - **租户**：在 HANA 大型实例模具中部署的客户会隔离到租户中。 租户在网络、存储和计算层中相互隔离。 分配给不同租户的存储和计算单元在 HANA 大型实例模具级别上无法相互看到或进行通信。 客户可以选择部署到不同的租户中。 即使这样，HANA 大型实例模具级别上的租户之间也不进行通信。
 - **SKU 类别**：对于 HANA 大型实例，提供以下两类 SKU。
-    - **类型 I 类**： S72、S72m、S96、S144、S144m、S192、S192m、S192xm 和 S224
+    - **类型 I 类**： S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224 和 S224m
     - **II 类**：S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm 和 S960m
 - **Stamp**：定义 HANA 大型实例的 Microsoft 内部部署大小。 在部署 HANA 大型实例单元之前，需要在数据中心位置部署由计算、网络和存储机架组成的 HANA 大型实例戳。 此类部署称为 HANA 大型实例标记或从修订版本4（请参阅下文），我们使用的是**大型实例行**的替代术语
 - **修订**： HANA 大型实例标记有两个不同的标记修订版本。 这两种体系结构和 Azure 虚拟机主机接近于 Azure

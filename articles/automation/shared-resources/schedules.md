@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849456"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592197"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
 
@@ -27,7 +27,7 @@ ms.locfileid: "74849456"
 
 下表中的 cmdlet 用于在 Azure 自动化中使用 PowerShell 创建和管理计划。 它们作为 [Azure PowerShell 模块](/powershell/azure/overview)的一部分提供。
 
-| Cmdlet | 描述 |
+| Cmdlet | 说明 |
 |:--- |:--- |
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |检索计划。 |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |创建新计划。 |
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 可为 Azure 自动化中的计划配置的最频繁间隔为一小时。 如果你需要执行比这更频繁的计划，有两个选项：
 
-* 为 Runbook 创建 [Webhook](../automation-webhooks.md)，并使用 [Azure 计划程序](../../scheduler/scheduler-get-started-portal.md)调用 Webhook。 定义计划时，Azure 计划程序可提供更细的粒度。
+* 为 runbook 创建[webhook](../automation-webhooks.md) ，并使用[Azure 逻辑应用](../../logic-apps/logic-apps-overview.md)调用 webhook。 定义计划时，Azure 逻辑应用提供更精细的粒度。
 
 * 创建四个计划，全部每隔一小时运行一次，每个运行 15 分钟。 此方案使用不同的计划，可让 Runbook 每隔 15 分钟运行一次。
 

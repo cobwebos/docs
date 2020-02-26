@@ -2,18 +2,19 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: b4338560d515289d3e9aedfa716ec7c3ace51131
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c1a52e1bc2dde74289cb270fcae832be24de5a06
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392255"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592405"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 每个资源[组](../articles/azure-resource-manager/management/overview.md#resource-groups)的资源数（按资源类型） |800 |某些资源类型可能超过800限制。 请参阅[每个资源组不限于800实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
+| 每个[资源组](../articles/azure-resource-manager/management/overview.md#resource-groups)的资源 | 空值 | 资源不受资源组限制。 相反，它们受资源组中的资源类型的限制。 请参阅下一行。 | 
+| 每个资源组的资源数（按资源类型） |800 |某些资源类型可能超过800限制。 请参阅[每个资源组不限于800实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |800 |
 | 每个部署的资源数 |800 |800 |
 | 每个唯一作用域的管理锁 |20 |20 |
@@ -27,7 +28,7 @@ ms.locfileid: "75392255"
 
 | 值 | 默认限制 | 最大限制 |
 | --- | --- | --- |
-| 参数 |256 |256 |
+| parameters |256 |256 |
 | 变量 |256 |256 |
 | 资源（包括副本计数） |800 |800 |
 | Outputs |64 |64 |

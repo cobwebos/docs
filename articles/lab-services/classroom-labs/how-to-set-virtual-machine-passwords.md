@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539427"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591517"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
 本文介绍如何执行以下任务：
@@ -58,6 +58,9 @@ ms.locfileid: "77539427"
 ![启动所选 Vm](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 同样，可以通过切换 "**状态**" 列中的按钮或在工具栏上选择 "**停止**" 来停止一个或多个 vm。 
+
+> [!NOTE]
+> 当教师开启学生 VM 时，该学生的配额不会受到影响。 用户配额指定在计划的类时间之外可供用户使用的实验室小时数。 有关配额的详细信息，请参阅为[用户设置配额](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="reset-vms"></a>重置 Vm
 要重置一个或多个 Vm，请在列表中将其选中，然后在工具栏上选择 "**重置**"。 

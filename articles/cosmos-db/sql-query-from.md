@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873363"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587679"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
@@ -79,9 +79,9 @@ FROM <from_specification>
   
   指定应从提供的别名定义的其他源中检索文档。  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  指定应通过访问由指定容器表达式检索的所有文档的 `property_name` 属性或 array_index 数组元素来检索文档。  
+  指定应通过访问 `property_name` 属性来检索文档。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -114,7 +114,7 @@ FROM 子句可以将源减少到更小的子集。 若要仅枚举每个项中�
     FROM Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -154,7 +154,7 @@ FROM 子句可以将源减少到更小的子集。 若要仅枚举每个项中�
     FROM Families.address.state
 ```
 
-其结果是：
+结果有：
 
 ```json
     [

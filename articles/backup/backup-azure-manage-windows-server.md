@@ -3,12 +3,12 @@ title: 管理 Azure 恢复服务保管库和服务器
 description: 本文介绍如何使用恢复服务保管库概述面板来监视和管理恢复服务保管库。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173045"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586438"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -81,7 +81,7 @@ ms.locfileid: "74173045"
 | ----------- | ----------- |
 | 严重 | 出现以下情况时，会收到严重警报：备份作业失败、恢复作业失败，以及在服务器上停止保护但保留了数据时。|
 | 警告 | 出现以下情况时，会收到警告性警报：备份作业完成但出现警告，例如，由于出现损坏问题，有 100 个以下的文件未备份；或者成功备份了 1,000,000 个以上的文件。 |
-| 信息性 | 目前未使用信息性警报。 |
+| 信息 | 目前未使用信息性警报。 |
 
 ### <a name="viewing-alert-details"></a>查看警报详细信息
 
@@ -95,7 +95,7 @@ ms.locfileid: "74173045"
 * 备份项
 * 受保护的服务器
 * 严重性
-* 持续时间
+* Duration
 * 创建时间
 * 状态
 * 最近发生时间
@@ -150,7 +150,7 @@ ms.locfileid: "74173045"
 
 ## <a name="manage-backup-items"></a>管理备份项
 
-恢复服务保管库保存许多类型的备份数据。 [详细了解](backup-overview.md#what-can-i-back-up)可以备份的内容。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。
+恢复服务保管库保存许多类型的备份数据。 [详细了解](backup-overview.md#what-can-i-back-up)可备份的内容。 若要管理各种服务器、计算机、数据库和工作负荷，请单击“备份项”磁贴查看保管库的内容。
 
 ![备份项磁贴](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -207,7 +207,7 @@ ms.locfileid: "74173045"
 * 所有项类型
 * Azure 虚拟机
 * 文件和文件夹
-* Azure 存储空间
+* Azure 存储
 * Azure 工作负荷
 
 #### <a name="operation"></a>Operation
@@ -229,7 +229,7 @@ ms.locfileid: "74173045"
 * 所有状态
 * 已完成
 * 正在进行
-* 已失败
+* 失败
 * 已取消
 * 已完成但出现警告
 
@@ -272,4 +272,4 @@ ms.locfileid: "74173045"
 
 * [从 Azure 还原 Windows Server 或 Windows 客户端](backup-azure-restore-windows-server.md)
 * 若要了解有关 Azure 备份的详细信息，请参阅 [Azure 备份概述](backup-introduction-to-azure-backup.md)
-* 访问 [Azure 备份论坛](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

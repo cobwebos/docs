@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/17/2020
+ms.date: 2/24/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444003"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586523"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -1251,7 +1251,7 @@ az group deployment create \
 
 若要详细了解 Azure Monitor 中的自定义指标，请参阅[Azure Monitor 中的自定义指标](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)。
 
-根据自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。
+根据自定义指标创建警报规则时，需要同时指定指标名称和指标命名空间。 你还应确保已报告自定义指标，因为你无法对尚不存在的自定义指标创建警报规则。
 
 出于本演练的目的，将下面的 json 保存为 customstaticmetricalert。
 

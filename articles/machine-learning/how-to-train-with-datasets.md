@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543301"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580479"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure 机器学习中的数据集定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,9 +27,9 @@ ms.locfileid: "76543301"
 
 - 选项2：如果使用非结构化数据，请创建 FileDataset，并将文件装载或下载到远程计算进行培训。
 
-Azure 机器学习数据集提供与[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)和[HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)等 Azure 机器学习训练产品的无缝集成。
+Azure 机器学习数据集提供与 Azure 机器学习定型产品（如[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估计器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、 [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)和[Azure 机器学习管道](how-to-create-your-first-pipeline.md)）的无缝集成。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要创建和训练数据集，需要：
 
@@ -100,11 +100,12 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>选项2：将文件装载到远程计算目标
 
 如果要将数据文件提供给计算目标以便进行培训，请使用[FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)来装载或下载它所引用的文件。
 
-### <a name="mount-vs-download"></a>装载 v.s。 下载
+### <a name="mount-vs-download"></a>装载与下载
 装载数据集时，请将数据集引用的文件附加到目录（装入点），并使其在计算目标上可用。 基于 Linux 的计算支持装载，包括 Azure 机器学习计算、虚拟机和 HDInsight。 如果数据大小超出计算磁盘大小，或者只是在脚本中加载部分数据集，则建议安装。 由于下载的数据集大于磁盘大小，因此在处理时，装载将只加载脚本使用的部分数据。 
 
 下载数据集时，数据集引用的所有文件都将下载到计算目标。 所有计算类型都支持下载。 如果你的脚本处理数据集引用的所有文件，并且你的计算磁盘可以适合你的完整数据集，则建议下载，以避免从存储服务传输数据的系统开销。
@@ -199,4 +200,4 @@ y_test = load_data(y_test, True).reshape(-1)
 
 * 用 FileDatasets[训练图像分类模型](https://aka.ms/filedataset-samplenotebook)
 
-* [创建和管理用于培训和部署的环境](how-to-use-environments.md)
+* [使用管道为数据集定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

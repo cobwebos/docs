@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525543"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580621"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 创建、运行和删除 Azure ML 资源
 
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 你应收到 `202 Accepted` 响应，并在返回的标头中 `Location` URI。 你可以获取此 URI 以获取有关部署的信息，包括有用的调试信息（如果某个依赖资源存在问题）（例如，如果你忘记在容器注册表中启用管理员访问权限）。 
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="resource-provider-errors"></a>资源提供程序错误
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>移动工作区
+
+> [!WARNING]
+> 不支持将 Azure 机器学习工作区移动到不同的订阅，或将拥有的订阅移动到新租户。 这样做可能会导致错误。
+
+### <a name="deleting-the-azure-container-registry"></a>删除 Azure 容器注册表
+
+Azure 机器学习工作区对某些操作使用 Azure 容器注册表（ACR）。 它首次需要时，它将自动创建一个 ACR 实例。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

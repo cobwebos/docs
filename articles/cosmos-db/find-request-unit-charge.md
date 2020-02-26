@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 86e9854cb5a522a56cca09a6e1ea155fd8a62f14
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240792"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585894"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中查找请求单位费用
 
@@ -25,7 +25,7 @@ ms.locfileid: "70240792"
 
 目前，在 Azure 门户中只能查找 SQL 查询的请求费用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)并在其中植入数据，或选择一个已包含数据的现有 Azure Cosmos 帐户。
 
@@ -79,9 +79,9 @@ while (query.HasMoreResults)
 
 从 [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 返回的对象公开 `RequestCharge` 属性：
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs" id="GetRequestCharge":::
 
-有关详细信息，请参阅[快速入门：在 Azure Cosmos DB 中使用 SQL API 帐户生成 .NET Web 应用](create-sql-api-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB 中的 SQL API 帐户生成 .net web 应用](create-sql-api-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
@@ -111,7 +111,7 @@ feedResponse.forEach(result -> {
 });
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Java 应用程序](create-sql-api-java.md)。
+有关详细信息，请参阅[快速入门：使用 AZURE COSMOS DB SQL API 帐户生成 Java 应用程序](create-sql-api-java.md)。
 
 ### <a name="use-the-nodejs-sdk"></a>使用 Node.js SDK
 
@@ -146,11 +146,11 @@ while (query.hasMoreResults()) {
 }
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Node.js 应用](create-sql-api-nodejs.md)。 
+有关详细信息，请参阅[快速入门：使用 AZURE COSMOS DB SQL API 帐户生成 node.js 应用](create-sql-api-nodejs.md)。 
 
 ### <a name="use-the-python-sdk"></a>使用 Python SDK
 
-从 [Python SDK](https://pypi.org/project/azure-cosmos/) 返回的 `CosmosClient` 对象公开 `last_response_headers` 字典，该字典可映射底层 HTTP API 针对上次执行的操作返回的所有标头。 请求费用显示在 `x-ms-request-charge` 键下：
+从 `CosmosClient`Python SDK[ 返回的 ](https://pypi.org/project/azure-cosmos/) 对象公开 `last_response_headers` 字典，该字典可映射底层 HTTP API 针对上次执行的操作返回的所有标头。 请求费用显示在 `x-ms-request-charge` 键下：
 
 ```python
 response = client.ReadItem(
@@ -162,17 +162,17 @@ response = client.ExecuteStoredProcedure(
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB SQL API 帐户生成 Python 应用](create-sql-api-python.md)。 
+有关详细信息，请参阅[快速入门：使用 AZURE COSMOS DB SQL API 帐户生成 Python 应用](create-sql-api-python.md)。 
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>用于 MongoDB 的 Azure Cosmos DB API
 
-RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](https://docs.mongodb.com/manual/reference/command/)公开。 该命令返回一个文档，其中包含上次执行的操作的名称、其请求费用和持续时间。 如果使用 Azure Cosmos DB API for MongoDB，则可以通过多个选项来检索 RU 费用。
+RU 费用由名为 [ 的自定义](https://docs.mongodb.com/manual/reference/command/)数据库命令`getLastRequestStatistics`公开。 该命令返回一个文档，其中包含上次执行的操作的名称、其请求费用和持续时间。 如果使用 Azure Cosmos DB API for MongoDB，则可以通过多个选项来检索 RU 费用。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 门户
 
 目前，在 Azure 门户中只能查找查询的请求费用。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)并在其中植入数据，或选择一个已包含数据的现有帐户。
 
@@ -188,7 +188,7 @@ RU 费用由名为 `getLastRequestStatistics` 的自定义[数据库命令](http
 
 ### <a name="use-the-mongodb-net-driver"></a>使用 MongoDB .NET 驱动程序
 
-使用[官方 MongoDB .NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)时，可以通过对 `IMongoDatabase` 对象调用 `RunCommand` 方法来执行命令。 此方法需要 `Command<>` 抽象类的实现：
+使用[官方 MongoDB .NET 驱动程序](https://docs.mongodb.com/ecosystem/drivers/csharp/)时，可以通过对 `RunCommand` 对象调用 `IMongoDatabase` 方法来执行命令。 此方法需要 `Command<>` 抽象类的实现：
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -203,23 +203,23 @@ Dictionary<string, object> stats = database.RunCommand(new GetLastRequestStatist
 double requestCharge = (double)stats["RequestCharge"];
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB API for MongoDB 生成 .NET Web 应用](create-mongodb-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用适用于 MongoDB 的 AZURE COSMOS DB API 生成 .net web 应用](create-mongodb-dotnet.md)。
 
 ### <a name="use-the-mongodb-java-driver"></a>使用 MongoDB Java 驱动程序
 
 
-使用[官方 MongoDB Java 驱动程序](https://mongodb.github.io/mongo-java-driver/)时，可以通过对 `MongoDatabase` 对象调用 `runCommand` 方法来执行命令：
+使用[官方 MongoDB Java 驱动程序](https://mongodb.github.io/mongo-java-driver/)时，可以通过对 `runCommand` 对象调用 `MongoDatabase` 方法来执行命令：
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
 Double requestCharge = stats.getDouble("RequestCharge");
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB API for MongoDB 和 Java SDK 生成 Web 应用](create-mongodb-java.md)。
+有关详细信息，请参阅[快速入门：使用适用于 MongoDB 和 JAVA SDK 的 AZURE COSMOS DB API 构建 web 应用](create-mongodb-java.md)。
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>使用 MongoDB Node.js 驱动程序
 
-使用[官方 MongoDB Node.js 驱动程序](https://mongodb.github.io/node-mongodb-native/)时，可以通过对 `db` 对象调用 `command` 方法来执行命令：
+使用[官方 MongoDB Node.js 驱动程序](https://mongodb.github.io/node-mongodb-native/)时，可以通过对 `command` 对象调用 `db` 方法来执行命令：
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -228,7 +228,7 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-有关详细信息，请参阅[快速入门：将现有的 MongoDB Node.js Web 应用迁移到 Azure Cosmos DB](create-mongodb-nodejs.md)。
+有关详细信息，请参阅[快速入门：将现有 MongoDB node.js web 应用迁移到 Azure Cosmos DB](create-mongodb-nodejs.md)。
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -236,7 +236,7 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
-使用 [.NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/) 时，可以在 `RowSet` 对象的 `Info` 属性下检索传入的有效负载：
+使用 [.NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/) 时，可以在 `Info` 对象的 `RowSet` 属性下检索传入的有效负载：
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
@@ -247,14 +247,14 @@ double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["Reques
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
-使用 [Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core) 时，可以通过对 `ResultSet` 对象调用 `getExecutionInfo()` 方法来检索传入的有效负载：
+使用 [Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core) 时，可以通过对 `getExecutionInfo()` 对象调用 `ResultSet` 方法来检索传入的有效负载：
 
 ```java
 ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
-有关详细信息，请参阅[快速入门：使用 Java SDK 和 Azure Cosmos DB 生成 Cassandra 应用](create-cassandra-java.md)。
+有关详细信息，请参阅[快速入门：使用 JAVA SDK 和 Azure Cosmos DB 生成 Cassandra 应用](create-cassandra-java.md)。
 
 ## <a name="gremlin-api"></a>Gremlin API
 
@@ -266,25 +266,25 @@ Gremlin API 返回的标头将映射到目前由 Gremlin .NET 和 Java SDK 公�
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
-使用 [Gremlin .NET SDK](https://www.nuget.org/packages/Gremlin.Net/) 时，状态特性将显示在 `ResultSet<>` 对象的 `StatusAttributes` 属性下：
+使用 [Gremlin .NET SDK](https://www.nuget.org/packages/Gremlin.Net/) 时，状态特性将显示在 `StatusAttributes` 对象的 `ResultSet<>` 属性下：
 
 ```csharp
 ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
-有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序](create-graph-dotnet.md)。
+有关详细信息，请参阅[快速入门：使用 Azure Cosmos DB GREMLIN API 帐户生成 .NET Framework 或 Core 应用程序](create-graph-dotnet.md)。
 
 ### <a name="use-the-java-sdk"></a>使用 Java SDK
 
-使用 [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) 时，可以通过对 `ResultSet` 对象调用 `statusAttributes()` 方法来检索状态特性：
+使用 [Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) 时，可以通过对 `statusAttributes()` 对象调用 `ResultSet` 方法来检索状态特性：
 
 ```java
 ResultSet results = client.submit("g.V().count()");
 Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
 ```
 
-有关详细信息，请参阅[快速入门：使用 Java SDK 在 Azure Cosmos DB 中创建图形数据库](create-graph-java.md)。
+有关详细信息，请参阅[快速入门：使用 JAVA SDK 在 Azure Cosmos DB 中创建图形数据库](create-graph-java.md)。
 
 ## <a name="table-api"></a>表 API
 

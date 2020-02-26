@@ -3,7 +3,7 @@ title: 使用基于 Azure Sentinel 中 Azure Monitor 工作簿的仪表板可视
 description: 本教程介绍如何使用基于 Azure Sentinel 中工作簿的仪表板来可视化数据。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/01/2020
-ms.author: rkarlin
-ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610448"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585214"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>教程：可视化和监视你的数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "75610448"
 > * 使用内置工作簿
 > * 创建新工作簿
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 对于 Azure Sentinel 工作区的资源组，您必须至少具有工作簿读取器或工作簿参与者权限。
 

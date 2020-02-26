@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486370"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589362"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
 本文介绍如何使用 Azure 机器学习来管理模型的生命周期。 Azure 机器学习使用机器学习操作（MLOps）方法。 MLOps 提高了机器学习解决方案的质量和一致性。 
 
+## <a name="what-is-mlops"></a>什么是 MLOps？
+
+机器学习操作（MLOps）基于[DevOps](https://azure.microsoft.com/overview/what-is-devops/)原则和提高工作流效率的实践。 例如，持续集成、交付和部署。 MLOps 将这些主体应用到机器学习过程中，目的是：
+
+* 更快地试验和开发模型
+* 更快地将模型部署到生产环境
+* 质量保证
+
 Azure 机器学习提供以下 MLOps 功能：
 
-- **创建可重复的 ML 管道**。 管道使你可以为数据准备、定型和评分过程定义可重复和可重复使用的步骤。
-- **从任何位置注册、打包和部署模型**，并跟踪使用该模型所需的相关元数据。
-- **捕获捕获端到端 ML 生命周期所需的管理数据**，包括发布模型的人员、进行更改的原因以及在生产环境中部署或使用模型的时间。
-- **通知和警报 ML 生命周期中的事件**，例如试验完成、模型注册、模型部署和数据偏差检测。
+- **创建可重复的 ML 管道**。 机器学习管道使你可以为数据准备、定型和评分过程定义可重复和可重复使用的步骤。
+- 为定型和部署模型**创建可重用的软件环境**。
+- **从任何位置注册、打包和部署模型**。 您还可以跟踪使用该模型所需的关联元数据。
+- **捕获用于端到端 ML 生命周期的管理数据**。 记录的信息可能包括发布模型的人员、发生更改的原因以及在生产环境中部署或使用模型的时间。
+- **通知和警报 ML 生命周期中的事件**。 例如，试验完成，模型注册，模型部署和数据偏移检测。
 - **监视 ml 应用程序的操作和 ml 相关的问题**。 比较定型与推理之间的模型输入，探索特定于模型的指标，并提供有关 ML 基础结构的监视和警报。
-- **通过 Azure 机器学习和 Azure DevOps 自动执行端到端 ML 生命周期**，以频繁更新模型、测试新模型，并随其他应用程序和服务一起不断推出新的 ML 模型。
+- **通过 Azure 机器学习和 Azure Pipelines 自动化端到端 ML 生命周期**。 使用管道，可以频繁地更新模型、测试新模型，并随其他应用程序和服务一起不断推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>创建可重复的 ML 管道
 
@@ -38,6 +47,12 @@ Azure 机器学习提供以下 MLOps 功能：
 ML 管道可包含从数据准备到功能提取到超参数优化到模型评估的步骤。 有关详细信息，请参阅[ML 管道](concept-ml-pipelines.md)。
 
 如果使用[设计器](concept-designer.md)创建 ML 管道，则可以随时单击设计器页右上角的 **"..."** ，然后选择 "**克隆**"。 通过克隆管道，可以在不丢失旧版本的情况下循环访问管道设计。  
+
+## <a name="create-reusable-software-environments"></a>创建可重用的软件环境
+
+Azure 机器学习环境允许跟踪和重现项目的软件依赖关系。 环境使你能够确保无需手动软件配置即可重现生成。
+
+环境描述了项目的 pip 和 Conda 依赖关系，并可用于模型的定型和部署。 有关详细信息，请参阅[什么是 Azure 机器学习的环境](concept-environments.md)。
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>从任何位置注册、打包和部署模型
 
@@ -82,7 +97,7 @@ Azure 机器学习可以使用分析来确定部署模型时要使用的理想 C
 
 * 用于对提交到服务/设备的数据进行评分的模型。
 * 一个项脚本。 此脚本接受请求，使用模型对数据进行评分并返回响应。
-* Conda 环境文件，用于描述模型和条目脚本所需的依赖项。
+* 一种 Azure 机器学习环境，用于描述模型和条目脚本所需的 pip 和 Conda 依赖关系。
 * 模型和输入脚本所需的任何其他资产，如文本、数据等。
 
 还提供目标部署平台的配置。 例如，在部署到 Azure Kubernetes 服务时，VM 家族类型、可用内存和核心数。
@@ -162,6 +177,8 @@ Azure ML 将关键事件发布到 Azure EventGrid，可用于在 ML 生命周期
 * 允许在定型管道中创建的定型模型触发发布管道。
 
 有关将 Azure Pipelines 与 Azure 机器学习配合使用的详细信息，请参阅使用 Azure Pipelines 文章和[Azure 机器学习 MLOps](https://aka.ms/mlops)存储库实现[ML 模型的持续集成和部署](/azure/devops/pipelines/targets/azure-machine-learning)。
+
+你还可以使用 Azure 数据工厂创建数据引入管道，以便准备用于定型的数据。 有关详细信息，请参阅[数据引入管道](how-to-cicd-data-ingestion.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

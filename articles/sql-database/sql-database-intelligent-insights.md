@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545154"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587322"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>智能见解使用 AI 监视数据库性能并对其进行故障排除（预览版）
 
@@ -48,7 +48,7 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 
 识别的 SQL 数据库性能降低问题记录在诊断日志中，包含由以下属性组成的智能项：
 
-| 属性             | 详细信息              |
+| properties             | 详细信息              |
 | :------------------- | ------------------- |
 | 数据库信息 | 关于在其上检测到见解的数据库的元数据，例如资源 URI。 |
 | 观察的时间范围 | 检测到的见解时段的开始和结束时间。 |
@@ -113,7 +113,7 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 
 ### <a name="set-up-with-azure-storage"></a>通过 Azure 存储进行设置
 
-若要将 Intelligent Insights 与存储配合使用，配置要流式传输到存储的 Intelligent Insights 日志数据，请参阅[流式传输到 Azure 存储](sql-database-metrics-diag-logging.md#stream-into-storage)。
+若要将 Intelligent Insights 与存储配合使用，配置要流式传输到存储的 Intelligent Insights 日志数据，请参阅[流式传输到 Azure 存储](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)。
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Intelligent Insights 日志的自定义集成
 

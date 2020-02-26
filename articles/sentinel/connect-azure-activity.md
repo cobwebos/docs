@@ -3,7 +3,7 @@ title: 将 Azure 活动数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Azure 活动数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 8c25baa8-b93b-41da-9e6c-15bb7b5c5511
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 107bbed8aea692a76f6d5bf6bbf1da26277b2c85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.author: yelevin
+ms.openlocfilehash: 28d5acd80deef193c7d2fea46f682f26abd756aa
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156567"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588597"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>连接 Azure 活动日志中的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "76156567"
 只需要单击一次即可将日志从[Azure 活动日志](../azure-monitor/platform/platform-logs-overview.md)流式传输到 azure Sentinel。 活动日志是一种订阅日志，可用于深入了解 Azure 中发生的订阅级别事件。 这包括从 Azure 资源管理器操作数据到服务运行状况事件更新的一系列数据。 使用活动日志，可以确定针对订阅中的资源执行的任何写入操作（PUT、POST、DELETE）的 "操作内容、操作人员和操作时间"。 还可以了解该操作和其他相关属性的状态。 活动日志不包括读取（GET）操作或针对使用经典/"RDFE" 模型的资源的操作。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 具有参与者权限的用户 Log Analytics 工作区 
 

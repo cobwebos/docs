@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587390"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>什么是 SQL 数据库实例池（预览版）？
 
@@ -108,7 +108,7 @@ ms.locfileid: "75552774"
 
 要求你选择特定值的可选功能或功能（例如，实例级别的排序规则、时区、数据流量的公共终结点、故障转移组）在实例级别配置，并且对于池中的每个实例都可能不同。
 
-## <a name="performance-considerations"></a>性能考虑
+## <a name="performance-considerations"></a>性能注意事项
 
 尽管池中的托管实例有专用的 vCore 和 RAM，但它们共享本地磁盘（用于 tempdb 使用情况）和网络资源。 这不太可能，但如果池中的多个实例同时消耗大量资源，则可能会遇到干扰性的*邻居*影响。 如果观察到此行为，请考虑将这些实例部署到更大的池或单个实例。
 
@@ -126,7 +126,7 @@ ms.locfileid: "75552774"
 
 如果遇到与池中的单个实例或数据库相关的问题，则应为 Azure SQL 数据库托管实例创建常规支持票证。
 
-若要创建更大的托管实例部署（具有或不具有实例池），可能需要获得更大的区域配额。 使用[标准托管实例过程来请求更大的配额](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)，但请注意，如果使用的是实例池，则部署逻辑会*将池级别的*vCore 总消耗量与配额进行比较，以确定是否允许创建新的资源，而无需进一步增加配额。
+若要创建更大的托管实例部署（具有或不具有实例池），可能需要获得更大的区域配额。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](quota-increase-request.md)。 请注意，如果使用的是实例池，则部署逻辑会*将池级别的*总 vCore 消耗与配额进行比较，以确定是否允许创建新的资源，而无需进一步增加配额。
 
 ## <a name="instance-pool-billing"></a>实例池计费
 

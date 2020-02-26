@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍如何准备环境，以使用 Microsoft Azure 备份 Server （MABS）保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425181"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586421"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -45,7 +45,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
 选择用于运行 Azure 备份服务器的服务器时，建议从 Windows Server 2016 Datacenter 或 Windows Server 2019 Datacenter 的库映像开始。 [在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)一文提供了如何在 Azure 中开始使用建议的虚拟机的教程，即使以前从未使用过 Azure 也没关系。 建议服务器虚拟机（VM）的最低要求为： Standard_A4_v2 具有四个核心和 8 GB RAM。
 
-使用 Azure 备份服务器保护工作负荷有许多细微差异需要注意。 可通过[将 DPM 安装为 Azure 虚拟机](https://technet.microsoft.com/library/jj852163.aspx)一文了解这些细微差异。 部署计算机前，请先阅读完本文。
+使用 Azure 备份服务器保护工作负荷有许多细微差异需要注意。 可通过[将 DPM 安装为 Azure 虚拟机](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))一文了解这些细微差异。 部署计算机前，请先阅读完本文。
 
 ### <a name="using-an-on-premises-server"></a>使用本地服务器
 
@@ -56,7 +56,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 | Windows Server 2019 |64 位 |Standard、Datacenter、Essentials |
 | Windows Server 2016 和最新的 SP |64 位 |Standard、Datacenter、Essentials  |
 
-可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](https://technet.microsoft.com/library/dn891438.aspx)如何配合工作的详细信息。
+可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12))如何配合工作的详细信息。
 
 > [!NOTE]
 > Azure 备份服务器设计为在专用的单一用途服务器上运行。 不能在以下计算机上安装 Azure 备份服务器：
@@ -88,7 +88,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
      ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-## <a name="software-package"></a>软件程序包
+## <a name="software-package"></a>软件包
 
 ### <a name="downloading-the-software-package"></a>下载软件包
 
@@ -196,7 +196,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://technet.microsoft.com/library/hh758075.aspx)。
+    备份到 Azure 需要有暂存位置。 请确保暂存位置的空间至少为要备份到云的数据的 5%。 在磁盘保护方面，安装完成之后需要配置独立的磁盘。 有关存储池的详细信息，请参阅[配置存储池和磁盘存储](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12))。
 5. 为受限的本地用户帐户提供强密码，并单击“**下一步**”。
 
     ![Microsoft Azure 备份先决条件 2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -305,6 +305,14 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 * \*.microsoftonline.com
 * \*.windows.net
 
+如果使用的是 ExpressRoute Microsoft 对等互连，请选择以下服务/区域：
+
+* Azure Active Directory （12076:5060）
+* Microsoft Azure 区域（根据恢复服务保管库的位置）
+* Azure 存储（根据恢复服务保管库的位置）
+
+有关更多详细信息，请访问[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+
 在 Azure 备份服务器计算机上还原与 Azure 的连接之后，可执行的操作取决于 Azure 订阅状态。 上表详细列出了有关计算机在“连接”之后允许的操作的信息。
 
 ### <a name="handling-subscription-states"></a>处理订阅状态
@@ -351,7 +359,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 ## <a name="next-steps"></a>后续步骤
 
-可以在 Microsoft TechNet 站点上获取有关[为 DPM 准备环境](https://technet.microsoft.com/library/hh758176.aspx)的详细信息。 其中还包含有关可在其上部署和使用 Azure 备份服务器的受支持配置的信息。 可以使用一系列 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 来执行各种操作。
+可在此处获取有关[为 DPM 准备环境的](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12))详细信息。 其中还包含有关可在其上部署和使用 Azure 备份服务器的受支持配置的信息。 可以使用一系列 [PowerShell cmdlet](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) 来执行各种操作。
 
 请参阅这些文章，以深入了解如何使用 Microsoft Azure 备份服务器来保护工作负荷。
 

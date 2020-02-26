@@ -3,12 +3,12 @@ title: 通过 MABS 备份 Hyper-v 虚拟机
 description: 本文包含使用 Microsoft Azure 备份 Server （MABS）对虚拟机进行备份和恢复的过程。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444054"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586506"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>备份具有 Azure 备份服务器的 Hyper-v 虚拟机
 
@@ -145,7 +145,7 @@ MABS 按如下所示执行 VSS 备份。 为清楚起见，此描述中的步骤
 
 3. 将 MABSMachineName $ 帐户作为 VMM 管理服务器上的只读管理员帐户进行分配。
 
-4. 将所有 Hyper-v 主机服务器连接到 `Set-DPMGlobalProperty` PowerShell cmdlet 的所有 MABS 服务器。 Cmdlet 接受多个 MABS 服务器名称。 使用以下格式：`Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`。 有关详细信息，请参阅[set-dpmglobalproperty](https://technet.microsoft.com/library/hh881752.aspx)。
+4. 将所有 Hyper-v 主机服务器连接到 `Set-DPMGlobalProperty` PowerShell cmdlet 的所有 MABS 服务器。 Cmdlet 接受多个 MABS 服务器名称。 使用以下格式：`Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`。 有关详细信息，请参阅[set-dpmglobalproperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)。
 
 5. 在 vmm 中发现 VMM 云中的 Hyper-v 主机上运行的所有虚拟机后，设置一个保护组，并添加要保护的虚拟机。 在虚拟机移动性方案下，应在保护组级别为保护启用自动一致性检查。
 

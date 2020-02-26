@@ -3,12 +3,12 @@ title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。 了解如何安装或升级到 Azure 备份服务器 V3。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172221"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582800"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Microsoft Azure 备份服务器中的新增功能
 
@@ -18,7 +18,7 @@ MABS V3 包含以下功能：
 
 ## <a name="volume-to-volume-migration"></a>卷到卷的迁移
 
-发布 MABS V2 中的新式备份存储 (MBS) 时，我们宣布推出了工作负荷感知的存储，在其中可以根据存储属性，将某些工作负荷配置为备份到特定的存储。 但是，在配置后，你可能发现，需要将某些数据源的备份移到其他存储，以优化资源利用率。 MABS V3 使你可以通过[三个步骤](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/)迁移备份并将其配置为存储到不同的卷。
+发布 MABS V2 中的新式备份存储 (MBS) 时，我们宣布推出了工作负荷感知的存储，在其中可以根据存储属性，将某些工作负荷配置为备份到特定的存储。 但是，在配置后，你可能发现，需要将某些数据源的备份移到其他存储，以优化资源利用率。 MABS V3 使你可以通过[三个步骤](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842)迁移备份并将其配置为存储到不同的卷。
 
 ## <a name="prevent-unexpected-data-loss"></a>防止意外的数据丢失
 

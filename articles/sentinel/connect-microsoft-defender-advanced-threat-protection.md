@@ -3,7 +3,7 @@ title: 将 Microsoft Defender ATP 数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Microsoft Defender 高级威胁防护数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
-ms.author: rkarlin
-ms.openlocfilehash: 19d496ebb61a3ceb47f69f661e30ab529dc64f3d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.author: yelevin
+ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256742"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588206"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>连接来自 Microsoft Defender 高级威胁防护的警报 
 
@@ -32,7 +32,7 @@ ms.locfileid: "72256742"
 
 只需要单击一次即可将警报从[Microsoft Defender 高级威胁防护](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)传输到 Azure Sentinel。 通过此连接，可将警报从 Microsoft Defender 高级威胁防护流式传输到 Azure Sentinel。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 按照[验证授权预配和完成 Microsoft Defender 高级威胁防护设置](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述启用的 Microsoft Defender 高级威胁防护的有效许可证。 
 - 你必须是 Azure Sentinel 租户的管理员或安全管理员。
@@ -52,5 +52,5 @@ ms.locfileid: "72256742"
 
 ## <a name="next-steps"></a>后续步骤
 本文档介绍了如何将 Microsoft Defender ATP 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
-- 了解如何了解[你的数据以及潜在的威胁](quickstart-get-visibility.md)。
-- 开始[通过 Azure Sentinel 检测威胁](tutorial-detect-threats.md)。
+- 了解如何[洞悉数据和潜在威胁](quickstart-get-visibility.md)。
+- 开始[使用 Azure Sentinel 检测威胁](tutorial-detect-threats.md)。

@@ -3,12 +3,12 @@ title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure 策略为在给定作用域中创建的所有 Vm 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450119"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584262"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
@@ -16,9 +16,9 @@ ms.locfileid: "75450119"
 
 目前，Azure 备份提供了一个内置策略（使用 Azure 策略），可以将其分配给**订阅或资源组中指定位置的所有 Azure vm**。 将此策略分配到给定作用域时，会自动将该作用域中创建的所有新 Vm 配置为备份到**同一位置和订阅中的现有保管库**。 用户可以指定保管库和备份 Vm 应关联到的保留策略。
 
-## <a name="supported-scenarios"></a>支持的方案 
+## <a name="supported-scenarios"></a>支持的方案
 
-* 目前只有 Azure Vm 支持内置策略。 用户必须小心，以确保在分配过程中指定的保留策略为 VM 保留策略。 请参阅[本](https://aka.ms/PolicySupportedSKUs)文档以查看此策略支持的所有 VM sku。
+* 目前只有 Azure Vm 支持内置策略。 用户必须小心，以确保在分配过程中指定的保留策略为 VM 保留策略。 请参阅[本](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus)文档以查看此策略支持的所有 VM sku。
 
 * 可以一次将策略分配到一个位置和订阅。 若要跨位置和订阅启用 Vm 备份，需要创建策略分配的多个实例，每个实例都适用于位置和订阅的每个组合。
 

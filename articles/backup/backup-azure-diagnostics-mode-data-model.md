@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500999"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586370"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -18,7 +18,7 @@ ms.locfileid: "77500999"
 
 > [!NOTE]
 >
-> 此数据模型引用向 Log Analytics （LA）发送诊断事件的 Azure 诊断模式。 若要了解新资源特定模式的数据模型，可以参阅以下文章： [Azure 备份诊断事件的数据模型](https://aka.ms/diagnosticsdatamodel)
+> 此数据模型引用向 Log Analytics （LA）发送诊断事件的 Azure 诊断模式。 若要了解新资源特定模式的数据模型，可以参阅以下文章： [Azure 备份诊断事件的数据模型](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 ## <a name="using-azure-backup-data-model"></a>使用 Azure 备份数据模型
 

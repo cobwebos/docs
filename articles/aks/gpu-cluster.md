@@ -3,16 +3,15 @@ title: 在 Azure Kubernetes 服务 (AKS) 上使用 GPU
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于高性能计算或图形密集型工作负荷
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: a68bd124f323225062a86a3e1fc178d2fc089c5d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 9179d8bbf16913b89f7384fcee7519f8a205012b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276016"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595580"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -129,7 +128,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-现在，使用[kubectl 说明 node][kubectl-describe]命令确认 gpu 是可计划的。 在“容量”部分下，GPU 应列为 `nvidia.com/gpu:  1`。
+现在，使用[kubectl 说明 node][kubectl-describe]命令确认 gpu 是可计划的。 在“容量”部分下，GPU 应列为`nvidia.com/gpu:  1`。
 
 以下精简示例显示了 GPU 在名为“aks-nodepool1-18821093-0”的节点上可用：
 
@@ -183,7 +182,7 @@ Non-terminated Pods:         (9 in total)
 
 ## <a name="run-a-gpu-enabled-workload"></a>运行启用了 GPU 的工作负荷
 
-若要查看 GPU 的运行情况，请通过相应的资源请求计划启用了 GPU 的工作负荷。 在此示例中，我们针对 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/)运行一个 [Tensorflow](https://www.tensorflow.org/) 作业。
+若要查看 GPU 的运行情况，请通过相应的资源请求计划启用了 GPU 的工作负荷。 在此示例中，我们针对 [MNIST 数据集](https://www.tensorflow.org/)运行一个 [Tensorflow](http://yann.lecun.com/exdb/mnist/) 作业。
 
 创建名为“samples-tf-mnist-demo.yaml”的文件并粘贴以下 YAML 清单。 以下作业清单包括资源限制 `nvidia.com/gpu: 1`：
 

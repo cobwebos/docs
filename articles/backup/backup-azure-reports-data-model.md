@@ -3,12 +3,12 @@ title: Azure 备份诊断事件的数据模型
 description: 此数据模型引用将诊断事件发送到 Log Analytics （LA）的资源特定模式。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: d38c9dedba7111923fa4f823d348d0783ac36681
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 267753ee1647739e36d92b64f50d8a8be87537d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500622"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583378"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure 备份诊断事件的数据模型
 
@@ -220,5 +220,5 @@ ms.locfileid: "77500622"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [了解如何将诊断数据发送到 Log Analytics](https://aka.ms/AzureBackupDiagnosticsDocs)
+- [了解如何将诊断数据发送到 Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
 - [了解如何编写针对特定于资源的表的查询](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)

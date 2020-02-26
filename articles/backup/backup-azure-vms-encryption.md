@@ -3,12 +3,12 @@ title: 备份和还原加密的 Azure Vm
 description: 介绍如何利用 Azure 备份服务备份和还原加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513773"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583168"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原加密的 Azure VM
 
@@ -28,9 +28,9 @@ Azure 备份可以使用包含或不带 Azure AD 应用的 ADE 来备份和还�
 **VM 磁盘类型** | **ADE （BEK/dm-dm-crypt）** | **ADE 和 KEK**
 --- | --- | ---
 **无** | 是 | 是
-**托管**  | 是 | 是
+**经过**  | 是 | 是
 
-- 详细了解[ADE](../security/azure-security-disk-encryption-overview.md)、 [Key Vault](../key-vault/key-vault-overview.md)和[kek](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/)。
+- 详细了解[ADE](../security/azure-security-disk-encryption-overview.md)、 [Key Vault](../key-vault/key-vault-overview.md)和[kek](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/)。
 - 阅读 Azure VM 磁盘加密的[常见问题解答](../security/azure-security-disk-encryption-faq.md)。
 
 ### <a name="limitations"></a>限制
@@ -82,7 +82,7 @@ Azure 备份可以使用包含或不带 Azure AD 应用的 ADE 来备份和还�
 
     - 如果收到此消息，则无需执行任何操作。
 
-        ![访问完成](./media/backup-azure-vms-encryption/access-ok.png)
+        ![访问正常](./media/backup-azure-vms-encryption/access-ok.png)
 
     - 如果收到此消息，则需要设置权限，如[以下过程](#provide-permissions)中所述。
 
@@ -99,7 +99,7 @@ Azure 备份可以使用包含或不带 Azure AD 应用的 ADE 来备份和还�
 3. 在 "**备份项**" 列表中，单击省略号（...）。
 4. 单击“立即备份”。
 5. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击“确定”。
-6. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。 创建初始备份可能需要一些时间，具体取决于 VM 的大小。
+6. 监视门户通知。 可以在保管库仪表板 >“备份作业” **“进行中”监视作业进度。**  >  创建初始备份可能需要一些时间，具体取决于 VM 的大小。
 
 ## <a name="provide-permissions"></a>提供权限
 

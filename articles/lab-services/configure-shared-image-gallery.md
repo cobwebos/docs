@@ -14,36 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389956"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589311"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
-开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时从共享位置访问映像。 它还可以帮助围绕自定义托管 VM 映像生成结构和组织。 共享映像库功能支持：
+开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
 
-- 映像的托管全局复制
-- 对映像进行版本控制和分组以简化管理
-- 在支持可用性区域的区域中通过区域冗余存储 (ZRS) 帐户使映像具有高可用性。 ZRS 可以更好地恢复映像，防止区域性故障。
-- 使用基于角色的访问控制 (RBAC) 跨订阅甚至租户共享映像。
+- 托管的映像全局复制
+- 对图像进行版本控制和分组以便于管理
+- 使映像在支持可用性区域的区域中使用区域冗余存储（ZRS）帐户高度可用。 ZRS 提供了针对区域性故障的更好的恢复能力。
+- 使用基于角色的访问控制（RBAC），在多个订阅之间共享，甚至在租户之间共享。
 
 有关详细信息，请参阅[共享映像库文档](../virtual-machines/windows/shared-image-galleries.md)。 
  
-如果你有大量的托管映像需要维护，并想要使其在整个公司中可用，可将共享映像库用作存储库，以便更轻松地更新和共享映像。 实验室所有者可以将现有的共享映像库附加到实验室。 附加此库后，实验室用户可以依据这些最新映像创建虚拟机。 此功能的一个主要优点是开发测试实验室现在可以利用跨实验室、跨订阅和跨区域共享的映像。 
+如果你有大量的托管映像需要维护，并想要使其在整个公司中可用，可将共享映像库用作存储库，以便更轻松地更新和共享映像。 作为实验室所有者，你可以将现有的共享映像库附加到实验室。 附加此库后，实验室用户可以从这些最新映像创建计算机。 此功能的一个主要优点是，开发测试实验室现在可以利用跨实验室、跨订阅和跨区域共享映像的优势。 
 
 > [!NOTE]
 > 若要了解与共享映像库服务相关的成本，请参阅[共享图像库的帐单](../virtual-machines/windows/shared-image-galleries.md#billing)。
 
 ## <a name="considerations"></a>注意事项
 - 一次只能将一个共享映像库附加到实验室。 如果要附加其他库，则需要分离现有库，并附加另一个库。 
+- 开发测试实验室目前仅支持共享映像库通用化映像。
 - 开发测试实验室当前不支持通过实验室向库上传图像。 
 - 使用共享映像库映像创建虚拟机时，开发测试实验室始终使用此映像的最新发布版本。 但是，如果映像有多个版本，则用户可以在虚拟机创建期间转到 "高级设置" 选项卡，选择从早期版本创建计算机。  
 - 尽管开发测试实验室会自动尽力确保共享图像库将图像复制到实验室所在的区域，但并不总是这样。 若要避免用户在从这些映像中创建 Vm 时遇到问题，请确保已将映像复制到实验室的区域。 "
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择左侧导航菜单中的 "**所有服务**"。
 1. 从列表中选择 "**开发测试实验室**"。
 1. 从实验室列表中，选择**实验室**。
@@ -116,4 +117,4 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解如何使用连接的共享映像库中的映像创建 VM：[使用库中的共享映像创建 VM](add-vm-use-shared-image.md)
+请参阅以下文章，了解如何使用连接的共享映像库中的映像创建 VM：[使用库中的共享映像创建 vm](add-vm-use-shared-image.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049891"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586593"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -45,7 +45,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
     |    AD Web 服务    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    不可用       |    回显回复    |
+    |    ICMPv4             |    空值       |    回显回复    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -70,7 +70,7 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
 
 * Azure NetApp 文件委托子网必须能够访问域中的所有 Active Directory 域服务（添加）域控制器，包括所有本地和远程域控制器。 否则，可能会发生服务中断。  
 
-    如果你的域控制器无法通过 Azure NetApp 文件委托子网访问，你可以提交 Azure 支持请求，将作用域从**全局**（默认）更改为**站点**。  Azure NetApp 文件只需与 Azure NetApp 文件委托子网地址空间所在的站点中的域控制器进行通信。
+    如果你的域控制器无法通过 Azure NetApp 文件委托子网访问，你可以在创建 Active Directory 连接期间指定 Active Directory 站点。  Azure NetApp 文件只需与 Azure NetApp 文件委托子网地址空间所在的站点中的域控制器进行通信。
 
     请参阅设计有关 AD 站点和服务[的站点拓扑](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
@@ -88,8 +88,10 @@ Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池
         这是 Active Directory 域加入和 SMB 身份验证操作所需的 DNS。 
     * **辅助 DNS**   
         这是确保冗余名称服务的辅助 DNS 服务器。 
-    * **域**  
+    * **AD DNS 域名**  
         这是你要加入的 Active Directory 域服务的域名。
+    * **AD 站点名称**  
+        这是域控制器发现将被限制到的站点名称。
     * **SMB 服务器（计算机帐户）前缀**  
         这是 Azure NetApp 文件将用于创建新帐户 Active Directory 中的计算机帐户的命名前缀。
 

@@ -6,14 +6,14 @@ manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
-ms.translationtype: HT
+ms.openlocfilehash: 9f8a14c348f4f8eddcd60c6946c831c90262757b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837784"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588988"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充文档资源
 
@@ -23,9 +23,9 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于查找非文本源�
 
 ## <a name="getting-started"></a>入门
 + [认知搜索中的 AI 简介](cognitive-search-concept-intro.md)
-+ [快速入门：在 Azure 门户中创建认知技能集](cognitive-search-quickstart-blob.md)
-+ [教程：使用 AI 扩充的索引](cognitive-search-tutorial-blob.md)
-+ [示例：创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
++ [快速入门：在 Azure 门户中创建认知技能组合](cognitive-search-quickstart-blob.md)
++ [教程：通过 AI 扩充索引](cognitive-search-tutorial-blob.md)
++ [示例：为 AI 扩充创建自定义技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>操作说明指南
 + [如何定义技能集](cognitive-search-defining-skillset.md)

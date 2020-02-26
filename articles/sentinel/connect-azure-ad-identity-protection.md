@@ -1,20 +1,20 @@
 ---
 title: 将 Azure AD Identity Protection 数据连接到 Azure Sentinel
 description: 了解如何将 Azure AD Identity Protection 数据连接到 Azure Sentinel。
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8d916606913b19a9eb15cb280defbeb0440565e4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563711"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588563"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>连接 Azure AD Identity Protection 的数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "75563711"
 可以将日志从[Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip)流式传输到 azure sentinel，以将警报流式传输到 azure sentinel，以查看仪表板、创建自定义警报和改进调查。 Azure Active Directory Identity Protection 提供了风险用户、风险检测和漏洞的综合视图，能够立即补救风险，并设置策略以自动修正将来的事件。 此服务构建在 Microsoft 的体验上，可保护使用者标识，并从超过13000000000的一天的信号中获得极大的准确性。 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 你必须具有[Azure Active Directory Premium P1 或 P2 许可证](https://azure.microsoft.com/pricing/details/active-directory/)
 - 具有全局管理员或安全管理员权限的用户

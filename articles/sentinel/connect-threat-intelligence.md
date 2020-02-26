@@ -2,7 +2,7 @@
 title: 将威胁智能数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将威胁智能数据连接到 Azure Sentinel。
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
-ms.author: cabailey
-ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.author: yelevin
+ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384125"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588036"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>连接威胁情报提供商提供的数据
 
@@ -54,13 +54,13 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>将 Azure Sentinel 连接到威胁情报平台
 
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备条件  
 
 - Azure AD "全局管理员" 或 "安全管理员" 的角色，以向提示产品或自定义应用程序授予使用与 Microsoft Graph Security tiIndicators API 的直接集成的权限。
 
 - 读取和写入 Azure Sentinel 工作区的权限，以存储威胁指标。
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 
 1. 在 Azure Active Directory 中[注册应用](/graph/auth-v2-service#1-register-your-app)程序以获取应用程序 id、应用程序机密和 AZURE ACTIVE DIRECTORY 租户 id。 在配置集成提示产品或使用与 Microsoft Graph Security tiIndicators API 的直接集成的应用时，需要这些值。
 
@@ -70,7 +70,7 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 4. 通过指定以下内容来配置提示产品或使用与 Microsoft Graph Security tiIndicators API 的直接集成的应用，将指示器发送到 Azure Sentinel：
     
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 已注册应用程序的 ID、机密和租户 ID 的值。
+    a. 已注册应用程序的 ID、机密和租户 ID 的值。
     
     b. 对于目标产品，请指定 Azure Sentinel。
     
@@ -84,13 +84,13 @@ Azure Sentinel 使你可以导入组织使用的威胁指标，这可以提高�
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>将 Azure Sentinel 连接到 TAXII 服务器
 
-## <a name="prerequisites"></a>先决条件  
+## <a name="prerequisites"></a>必备条件  
 
 - 读取和写入 Azure Sentinel 工作区的权限，以存储威胁指标。
 
 - TAXII 2.0 服务器 URI 和集合 ID。
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 
 1. 在 Azure 门户中，导航到 " **Azure Sentinel** > **数据连接器**"，然后选择 "**威胁 TAXII （预览版）** " 连接器。
 

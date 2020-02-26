@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036297"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587203"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>在网络观察程序中删除网络安全组流日志存储 blob
 
-目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 你现在必须运行 PowerShell 脚本, 手动删除存储帐户中的流日志, 如本文所述。
+目前存在一个问题，即：网络观察程序的[网络安全组 (NSG) 流日志](network-watcher-nsg-flow-logging-overview.md)未根据保留策略设置自动从 Blob 存储中删除。 你现在必须运行 PowerShell 脚本，手动删除存储帐户中的流日志，如本文所述。
 
 ## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>运行 PowerShell 脚本以删除 NSG 流日志
  
-将以下脚本复制并保存到某个位置, 例如当前工作目录。 
+将以下脚本复制并保存到某个位置，例如当前工作目录。 
 
 ```powershell
 # This powershell script deletes all NSG flow log blobs that should not be retained anymore as per configured retention policy.
@@ -124,17 +124,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. 根据需要在脚本中输入以下参数:
-   - **SubscriptionId**[必需]:要从中删除 NSG 流日志 blob 的订阅 ID。
-   - **位置**[必需]:要删除 NSG 流日志 blob 的 Nsg 区域的_位置字符串_。 你可以在 Azure 门户上或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此信息。
-   - **确认**[可选]:如果要手动确认删除每个存储 blob, 请传递确认标志。
+1. 根据需要在脚本中输入以下参数：
+   - **SubscriptionId** [必需]：要从中删除 NSG 流日志 blob 的订阅 ID。
+   - **Location** [必需]：要删除 NSG 流日志 Blob 的 nsg 区域的_位置字符串_。 你可以在 Azure 门户上或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此信息。
+   - **Confirm** [可选]：如果要手动确认删除每个存储 blob，请传递确认标志。
 
-1. 运行保存的脚本, 如以下示例中所示, 脚本文件保存为**Delete-NsgFlowLogsBlobs**:
+1. 运行保存的脚本，如以下示例中所示，脚本文件保存为**Delete-NsgFlowLogsBlobs**：
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>后续步骤
-- 客户可以使用[Azure 计划程序](https://azure.microsoft.com/services/scheduler/)或[azure 自动化](https://azure.microsoft.com/services/automation/)来自动运行脚本
-- 若要了解有关 NSG 日志记录的详细信息, 请参阅[网络安全组 (nsg) Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 客户可使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)或[azure 自动化](https://azure.microsoft.com/services/automation/)自动运行脚本
+- 若要了解有关 NSG 日志记录的详细信息，请参阅[网络安全组（nsg） Azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

@@ -3,7 +3,7 @@ title: 将 Azure ATP 数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Azure ATP 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610703"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588580"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>连接来自 Azure 高级威胁防护（ATP）的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "75610703"
 
 只需要单击一次即可将日志从[Azure 高级威胁防护](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp)流式传输到 azure Sentinel。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 具有全局管理员或安全管理员权限的用户
 - 你必须是 Azure ATP 的预览客户，并支持 Azure ATP 与 Microsoft Cloud App Security 之间的集成。 有关详细信息，请参阅[Azure 高级保护集成](https://docs.microsoft.com/cloud-app-security/aatp-integration)。

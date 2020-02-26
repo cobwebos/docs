@@ -4,14 +4,14 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67172971"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590739"
 ---
-将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则可能会遇到错误。 如果使用 `azure vm disk attach-new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 
+将数据磁盘添加到 Linux VM 时，如果 LUN 0 位置没有磁盘，则你可能会遇到错误。 如果使用 `az vm disk attach -new` 命令并指定 LUN (`--lun`) 来手动添加磁盘，而不是让 Azure 平台确定适当的 LUN，则请注意，LUN 0 已经有磁盘或者将有磁盘。 
 
 请考虑以下示例，其中显示了 `lsscsi` 输出的代码片段：
 

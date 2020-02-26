@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561147"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586700"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -42,7 +42,12 @@ ms.locfileid: "77561147"
 
 ## <a name="prerequisites"></a>必备条件
 
-- **在订阅级别具有参与者角色的用户分配的托管标识**。 此标识用来执行部署脚本。 若要创建一个，请参阅[使用 Azure 门户创建用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或通过使用[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)或[Azure PowerShell 使用](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 部署模板时需要此标识 ID。 标识符的格式为：
+- **用户分配的托管标识，其中包含参与者的角色到目标资源组**。 此标识用来执行部署脚本。 若要在资源组外部执行操作，需要授予其他权限。 例如，如果要创建新的资源组，请将该标识分配到订阅级别。
+
+  > [!NOTE]
+  > 部署脚本引擎需要在后台创建一个存储帐户和一个容器实例。  如果订阅尚未注册 Azure 存储帐户（Microsoft 存储）和 Azure 容器实例（ContainerInstance）资源，则需要用户分配的托管标识以及参与者在订阅级别的角色接口.
+
+  若要创建标识，请参阅[使用 Azure 门户创建用户分配的托管标识](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或通过使用[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)或[Azure PowerShell 使用](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 部署模板时需要此标识 ID。 标识符的格式为：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -99,8 +104,7 @@ ms.locfileid: "77561147"
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
-    ",
-    "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+    ", // or "primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
     "supportingScriptUris":[],
     "timeout": "PT30M",
     "cleanupPreference": "OnSuccess",
@@ -208,6 +212,12 @@ reference('<ResourceName>').output.text
 [!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
 
 前面的示例中使用了[jq](https://stedolan.github.io/jq/) 。 它附带了容器映像。 请参阅[配置开发环境](#configure-development-environment)。
+
+## <a name="handle-non-terminating-errors"></a>处理非终止错误
+
+您可以通过使用部署脚本中的[ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
+)变量来控制 PowerShell 如何响应非终止错误。 部署脚本引擎未设置/更改值。  尽管你为 $ErrorActionPreference 设置的值，但当脚本遇到错误时，部署脚本会将资源预配状态设置为 "*失败*"。
+
 
 ## <a name="debug-deployment-scripts"></a>调试部署脚本
 

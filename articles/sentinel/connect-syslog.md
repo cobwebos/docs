@@ -3,7 +3,7 @@ title: 将 Syslog 数据连接到 Azure Sentinel |Microsoft Docs
 description: 了解如何将 Syslog 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610465"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588070"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>使用 Syslog 连接外部解决方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "75610465"
 > [!NOTE]
 > 如果设备支持 Syslog CEF，则连接将更完整，应选择此选项，并按照[连接来自 CEF 的数据](connect-common-event-format.md)中的说明进行操作。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。
 

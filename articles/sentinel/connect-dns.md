@@ -3,7 +3,7 @@ title: 在 Azure Sentinel 中连接 DNS 数据 |Microsoft Docs
 description: 了解如何在 Azure Sentinel 中连接 DNS 数据。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 77af84f9-47bc-418e-8ce2-4414d7b58c0c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: 6d43b82ecd13ac5e082d270ee44ce61fef763d2c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190865"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588308"
 ---
 # <a name="connect-your-domain-name-server"></a>连接域名服务器
 
@@ -44,9 +44,9 @@ ms.locfileid: "77190865"
 | **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | [Windows 代理](../azure-monitor/platform/agent-windows.md) | 是 | 解决方案会从 Windows 代理收集 DNS 信息。 |
-| [Linux 代理](../azure-monitor/learn/quick-collect-linux-computer.md) | 是 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
+| [Linux 代理](../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从直接 Linux 代理收集 DNS 信息。 |
 | [System Center Operations Manager 管理组](../azure-monitor/platform/om-agents.md) | 是 | 解决方案会从连接的 Operations Manager 管理组中的代理收集 DNS 信息。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 数据将从管理组转发到 Log Analytics 工作区。 |
-| [Azure 存储帐户](../azure-monitor/platform/collect-azure-metrics-logs.md) | 是 | 解决方案不会使用 Azure 存储。 |
+| [Azure 存储帐户](../azure-monitor/platform/collect-azure-metrics-logs.md) | 否 | 解决方案不会使用 Azure 存储。 |
 
 ### <a name="data-collection-details"></a>数据收集详细信息
 

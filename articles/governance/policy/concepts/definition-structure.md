@@ -3,12 +3,12 @@ title: 策略定义结构的详细信息
 description: 介绍如何使用策略定义为组织中的 Azure 资源建立约定。
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461996"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587118"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -328,7 +328,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 **value** 可与任何支持的[条件](#conditions)配对。
 
 > [!WARNING]
-> 如果_模板函数_的结果为错误，则策略评估将失败。 失败评估是隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](#avoiding-template-failures)。
+> 如果模板函数的结果是一个错误，则策略评估会失败。 评估失败是一种隐式**拒绝**。 有关详细信息，请参阅[避免模板失败](#avoiding-template-failures)。 使用**DoNotEnforce**的[enforcementMode](./assignment-structure.md#enforcement-mode) ，以防止测试和验证新策略定义时对新的或更新的资源进行失败的评估的影响。
 
 #### <a name="value-examples"></a>Value 示例
 
@@ -372,7 +372,7 @@ Azure 策略为资源建立约定。 策略定义描述资源符合性[条件](#
 
 #### <a name="avoiding-template-failures"></a>避免模板失败
 
-使用中的_模板函数_可以**实现许多**复杂的嵌套函数。 如果_模板函数_的结果为错误，则策略评估将失败。 失败评估是隐式**拒绝**。 在某些情况下失败的**值**的示例：
+使用中的_模板函数_可以**实现许多**复杂的嵌套函数。 如果模板函数的结果是一个错误，则策略评估会失败。 评估失败是一种隐式**拒绝**。 在某些情况下失败的**值**的示例：
 
 ```json
 {
@@ -580,13 +580,22 @@ Azure 策略支持以下类型的影响：
 
 以下函数可在策略规则中使用，但不同于 Azure 资源管理器模板中的使用：
 
-- addDays(dateTime, numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **dateTime**： [Required] 通用 ISO 8601 dateTime 格式 "Yyyy-mm-dd-yyyy-mm-ddthh： MM： fffffffZ" 中的字符串
   - **numberOfDaysToAdd**： [必需] 整数-要添加的天数
-- utcNow （）-与资源管理器模板不同，此值可在 defaultValue 之外使用。
+- `utcNow()`-与资源管理器模板不同，此值可在 defaultValue 之外使用。
   - 返回一个字符串，该字符串设置为当前日期和时间，采用通用 ISO 8601 DateTime 格式 "yyyy-mm-dd-Yyyy-mm-ddthh： MM： fffffffZ"
 
-此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+以下函数仅适用于策略规则：
+
+- `field(fieldName)`
+  - **fieldName**： [必需] 字符串-要检索的[字段](#fields)的名称
+  - 返回由 If 条件计算的资源中该字段的值
+  - `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+- `requestContext().apiVersion`
+  - 返回触发了策略评估的请求的 API 版本（示例： `2019-09-01`）。 这将是用于在创建/更新资源时进行评估的 PUT/PATCH 请求中使用的 API 版本。 在对现有资源的符合性评估过程中始终使用最新的 API 版本。
+  
+
 
 #### <a name="policy-function-example"></a>策略函数示例
 

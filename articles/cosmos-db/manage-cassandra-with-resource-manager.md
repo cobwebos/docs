@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e3dd086108ba8c518bf7caf027f149de2ab70e57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980619"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588801"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Azure Cosmos DB Cassandra API 资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "75980619"
 > 帐户名称必须是小写、44或更少字符。
 > 若要更新 RU/秒，请用更新的吞吐量属性值重新提交模板。
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>部署 Azure CLI
 

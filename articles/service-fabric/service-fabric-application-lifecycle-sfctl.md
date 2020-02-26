@@ -5,18 +5,18 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610227"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589141"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl) 管理 Azure Service Fabric 应用程序
 
 了解如何创建和删除在 Azure Service Fabric 群集中运行的应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 安装 Service Fabric CLI。 然后选择 Service Fabric 群集。 有关详细信息，请参阅 [Service Fabric CLI 入门](service-fabric-cli.md)。
 
@@ -47,7 +47,7 @@ ms.locfileid: "75610227"
 
 例如，如果应用程序包在 `app_package_dir` 目录中，请使用以下命令上传该目录：
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ sfctl application upload --path ~/app_package_dir
 
 完成上传后，预配应用程序。 若要预配应用程序，请运行以下命令：
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ sfctl application provision --application-type-build-path app_package_dir
 
 若要从映像存储中删除应用程序包，请使用以下命令：
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 预配应用程序后，使用以下命令来命名并创建应用程序：
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 创建应用程序后，通过该应用程序创建服务。 在以下示例中，我们通过自己的应用程序创建新的无状态服务。 在前面预配的应用程序包中的服务清单内，定义可通过应用程序创建的服务。
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 要验证一切运行正常，请使用以下运行状况命令：
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 若要验证服务是否正常运行，请使用类似的命令检索服务和应用程序的运行状况：
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ sfctl service health --service-id TestApp/TestSvc
 
 若要删除应用程序，请使用以下命令：
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 删除应用程序后，如果不再需要它，可以取消预配应用程序类型。 若要取消预配应用程序类型，请使用以下命令：
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ sfctl application unprovision --application-type-name TestAppType --application-
 
 要执行升级，请首先使用与之前相同的命令预配应用程序的下一个版本：
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 建议随后执行受监视的自动升级，通过运行以下命令启动升级：
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

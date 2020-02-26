@@ -3,7 +3,7 @@ title: 用 Azure Sentinel 调查事件 |Microsoft Docs
 description: 使用本教程了解如何使用 Azure Sentinel 调查事件。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024612"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587186"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>教程：通过 Azure Sentinel 调查事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "72024612"
 
 事件可包含多个警报。 它是用于特定调查的所有相关证据的聚合。 事件是根据你在 "**分析**" 页中创建的分析规则创建的。 与警报相关的属性，例如严重性和状态，在事件级别设置。 让 Azure Sentinel 知道要查找的威胁种类以及如何找到它们后，可以通过调查事件来监视检测到的威胁。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 如果在设置分析规则时使用了实体映射字段，则只能调查事件。 调查图要求您的原始事件包含实体。
 
 ## <a name="how-to-investigate-incidents"></a>如何调查事件

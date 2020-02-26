@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561640"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585877"
 ---
 # <a name="conditional-access-grant"></a>条件性访问： Grant
 
@@ -65,7 +65,7 @@ ms.locfileid: "77561640"
 
 ### <a name="require-approved-client-app"></a>需要批准的客户端应用
 
-组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。 这些批准的客户端 ap 支持独立于任何移动设备管理（MDM）解决方案的[Intune 应用保护策略](/intune/app-protection-policy)。
+组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。 这些批准的客户端应用支持独立于任何移动设备管理（MDM）解决方案的[Intune 应用保护策略](/intune/app-protection-policy)。
 
 此设置适用于以下客户端应用：
 

@@ -4,12 +4,12 @@ description: 监视 Azure 备份工作负荷，并使用 Azure Monitor 创建自
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500670"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583856"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -29,11 +29,11 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 > [!IMPORTANT]
 > 有关创建此查询的成本的信息，请参阅[Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
 
-选择任意图表以打开 "Log Analytics" 工作区的 "**日志**" 部分。 在 "**日志**" 部分中，编辑查询并对其创建警报。
+打开 "Log Analytics" 工作区的 "**日志**" 部分，编写一个查询自己的日志。 选择 "**新建警报规则**" 时，将打开 "Azure Monitor 警报创建" 页，如下图所示。
 
-![在 Log Analytics 工作区中创建警报](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![在 Log Analytics 工作区中创建警报](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-选择 "**新建警报规则**" 时，将打开 "Azure Monitor 警报创建" 页，如下图所示。 此处的资源已标记为 Log Analytics 工作区，并且提供了操作组集成。
+此处的资源已标记为 Log Analytics 工作区，并且提供了操作组集成。
 
 ![Log Analytics 警报-创建页](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -122,6 +122,26 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
     )
     on BackupItemUniqueId
     ````
+
+- 每个备份项使用的备份存储
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>诊断数据更新频率
 

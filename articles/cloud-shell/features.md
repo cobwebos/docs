@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 60832f9438a602945c63910a436d7638f15a201d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969427"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586285"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -57,7 +57,7 @@ Cloud Shell 中的 PowerShell 包含 Exchange Online 模块的专用生成。  �
 
 ![](media/features-powershell/exchangeonline.png)
 
- 运行 `Get-Command -Module tmp_*`
+ `Get-Command -Module tmp_*`运行 {2}
 > [!NOTE]
 > 模块名称应以 `tmp_`开头，如果已使用相同的前缀安装了模块，则还会显示其 cmdlet。 
 
@@ -88,7 +88,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[6.2.3](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0-rc. 2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤

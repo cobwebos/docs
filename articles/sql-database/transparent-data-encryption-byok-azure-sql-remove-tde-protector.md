@@ -10,30 +10,30 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/24/2020
+ms.openlocfilehash: 811e3bc206b4d98106bdbb1ce2655cd69c8585a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201656"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589243"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>使用 PowerShell 删除透明数据加密 (TDE) 保护器
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 必须有一个 Azure 订阅，并且是该订阅的管理员
 - 必须安装并运行 Azure PowerShell。
 - 本操作方法指南假设已使用 Azure Key Vault 中的密钥作为 Azure SQL 数据库或数据仓库的 TDE 保护器。 有关详细信息，请参阅[支持 BYOK 的透明数据加密](transparent-data-encryption-byok-azure-sql.md)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
  有关 Az 模块安装说明，请参阅[安装 Azure PowerShell](/powershell/azure/install-az-ps)。 有关特定的 cmdlet，请参阅[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。
 
 > [!IMPORTANT]
 > Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令的参数完全相同。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 有关安装，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -43,11 +43,11 @@ ms.locfileid: "77201656"
 
 本操作指南介绍如何针对使用 TDE（支持“Azure 密钥保管库中的客户托管密钥 - 创建自己的密钥 [BYOK]”）的 Azure SQL 数据库或数据仓库，响应可能已泄露的 TDE 保护器。 若要详细了解 TDE 的 BYOK 支持，请参阅[概述页](transparent-data-encryption-byok-azure-sql.md)。
 
-只能在出现极端情况或者在测试环境中执行以下过程。 请仔细查看操作方法指南，因为从 Azure Key Vault 中删除正在使用的 TDE 保护器可能导致**数据丢失**。
+只能在出现极端情况或者在测试环境中执行以下过程。 仔细查看操作方法指南，因为从 Azure Key Vault 中删除积极使用的 TDE 保护程序将导致**数据库不可**用。
 
 如果怀疑某个密钥已泄露，以致某个服务或用户在未经授权的情况下访问该密钥，则最好是删除该密钥。
 
-请记住，在 Key Vault 中删除 TDE 保护器后，**将会阻止到该服务器中的加密数据库的所有连接，这些数据库会在 24 小时内脱机并被删除**。 使用已泄露的密钥加密的旧备份将不再可访问。
+请记住，在 Key Vault 中删除 TDE 保护程序后，在多达10分钟后，所有已加密数据库将开始拒绝所有连接与相应的错误消息，并将其状态更改为 "[不可访问](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)"。
 
 以下步骤概述了如何检查给定数据库的虚拟日志文件（VLF）仍在使用的 TDE 保护程序指纹。
 数据库的当前 TDE 保护程序的指纹，可以通过运行以下内容查找数据库 ID：
@@ -66,11 +66,11 @@ SELECT [database_id],
 SELECT * FROM sys.dm_db_log_info (database_id)
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell 命令**add-azurermsqlserverkeyvaultkey** 提供查询中使用的 TDE 保护程序的指纹，因此你可以查看要保留哪些项以及要在 AKV 中删除哪些键。 可以安全地从 Azure Key Vault 删除数据库中不再使用的密钥。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 PowerShell 命令**az sql server key show** 提供查询中使用的 TDE 保护程序的指纹，因此你可以查看要保留哪些键以及要在 AKV 中删除哪些键。 可以安全地从 Azure Key Vault 删除数据库中不再使用的密钥。
 
@@ -83,7 +83,7 @@ PowerShell 命令**az sql server key show** 提供查询中使用的 TDE 保�
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>使加密的资源保持可访问
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. [在 Key Vault 中创建新密钥](/powershell/module/az.keyvault/add-azkeyvaultkey)。 请务必在不包含可能已泄露的 TDE 保护器的另一个 Key Vault 中创建此新密钥，因为访问控制是在保管库级别预配的。
 
@@ -126,7 +126,7 @@ PowerShell 命令**az sql server key show** 提供查询中使用的 TDE 保�
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 有关命令参考，请参阅[Azure CLI keyvault](/cli/azure/keyvault/key)。
 

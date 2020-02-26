@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b3e4ff60ab290d25afb003f0753cf852cefffe1a
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 75297f15dbc0067767d97afd7c8aa16738f2fc1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069551"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581304"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -26,7 +26,7 @@ ms.locfileid: "77069551"
 
 有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../azure-resource-manager/templates/deploy-powershell.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77069551"
 
 * Azure 资源组
 * Azure 存储帐户
-* Azure 密钥保管库
+* Azure Key Vault
 * Azure Application Insights
 * Azure 容器注册表
 * Azure 机器学习工作区
@@ -63,9 +63,11 @@ ms.locfileid: "77069551"
     其他服务的名称将随机生成。
 
 > [!TIP]
-> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 如果工作区中存在容器注册表，则当你执行需要容器注册表的操作时，将创建一个。 例如，定型或部署模型。
+> 尽管与此文档关联的模板会创建新的 Azure 容器注册表，但你也可以创建新的工作区，而无需创建容器注册表。 当执行需要容器注册表的操作时，将创建一个。 例如，定型或部署模型。
 >
 > 你还可以在 Azure 资源管理器模板中引用现有的容器注册表或存储帐户，而不是创建一个新的容器。
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 有关模板的详细信息，请参阅以下文章：
 

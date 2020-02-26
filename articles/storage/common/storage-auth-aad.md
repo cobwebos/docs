@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965818"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588971"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 blob 和队列的访问权限
 
@@ -27,7 +27,7 @@ Azure 存储支持使用 Azure Active Directory （Azure AD）授权对 Blob 和
 
 Blob 存储还支持创建使用 Azure AD 凭据签名的共享访问签名（SAS）。 有关详细信息，请参阅[使用共享访问签名授予对数据的有限访问权限](storage-sas-overview.md)。
 
-对于已加入域的 Vm，Azure 文件仅支持通过 SMB Azure AD 的授权。 若要了解如何在 Azure 文件的 SMB 上使用 Azure AD，请参阅[Azure 文件的 smb 的 Azure Active Directory 授权概述](../files/storage-files-active-directory-overview.md)。
+Azure 文件仅支持通过 AD （预览版）或通过 SMB 为已加入域的 Vm Azure AD DS （GA）进行授权。 若要了解如何在 Azure 文件的 SMB 上使用 AD （预览版）或 Azure AD DS （GA），请参阅[smb 访问 Azure 文件基于标识的身份验证支持概述](../files/storage-files-active-directory-overview.md)。
 
 Azure 表存储不支持带有 Azure AD 的授权。 使用共享密钥对表存储的请求进行授权。
 

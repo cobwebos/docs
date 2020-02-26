@@ -1,20 +1,20 @@
 ---
 title: 将 Azure 安全中心数据连接到 Azure Sentinel
 description: 了解如何将 Azure 安全中心数据连接到 Azure Sentinel。
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.author: yelevin
+ms.openlocfilehash: e6e24a97a8b98bdd5447295880811914100563fe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190881"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588529"
 ---
 # <a name="connect-data-from-azure-security-center"></a>连接 Azure 安全中心的数据
 
@@ -24,7 +24,7 @@ ms.locfileid: "77190881"
 
 可以通过 azure Sentinel 连接[Azure 安全中心](../security-center/security-center-intro.md)的警报，并将其流式传输到 azure Sentinel。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 若要从 Azure 安全中心导出警报，你必须在你所流式传输的日志的订阅中具有安全读者角色。
 

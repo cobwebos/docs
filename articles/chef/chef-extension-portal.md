@@ -2,19 +2,19 @@
 title: 通过 Azure 门户安装 Chef 客户端
 description: 了解如何通过 Azure 门户部署和配置 Chef 客户端
 keywords: azure, chef, devops, 客户端, 安装, 门户
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158260"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586353"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>通过 Azure 门户安装 Chef 客户端
 可以从 Azure 门户将 Chef 客户端扩展直接添加到 Linux 或 Windows 计算机上。 本文逐步讲解如何使用新 Linux 虚拟机完成该过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - **Azure 订阅**：如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -79,24 +79,24 @@ ms.locfileid: "74158260"
 1. 在“安装扩展”选项卡上指定以下值，然后选择“确定”。
 
     - **Chef 服务器 URL** - 输入包含组织名称的 Chef 服务器 URL，例如 *https://api.chef.io/organization/mycompany* 。
-    - **Chef 节点名称** - 输入 Chef 节点名称。 这可以是任意值。
-    - **运行列表** - 输入已添加到计算机的 Chef 运行列表。 这可以保留为空。
-    - **验证客户端名称** - 输入 Chef 验证客户端名称。 例如，*tarcher-validator*。
+    - **Chef 节点名称**-输入 Chef 节点名称。
+    - **运行列表**-输入添加到计算机的 Chef 运行列表。 此值可留空。
+    - **验证客户端名称**-输入 Chef 验证客户端名称。 例如，`tarcher-validator`。
     - **验证密钥** - 选择包含启动计算机时使用的验证密钥的文件。
-    - **客户端配置文件** - 选择 Chef 客户端的配置文件。 这可以保留为空。
-    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 这可以保留为空。 空值将安装最新版本。
+    - **客户端配置文件**-选择 chef-客户端的配置文件。 此值可留空。
+    - **Chef 客户端版本** - 输入要安装的 Chef 客户端版本。 此值可留空，这将安装最新版本。
     - **SSL 验证模式** - 选择“无”或“对等”。 对于演示，选择了“无”。
-    - **Chef 环境** - 输入此节点所属的 Chef 环境。 这可以保留为空。
-    - **加密数据包机密** - 选择一个文件，其中包含此计算机应有权访问的加密数据包的机密。 这可以保留为空。
-    - **Chef 服务器 SSL 证书** - 选择分配给 Chef 服务器的 SSL 证书。 这可以保留为空。
+    - **Chef 环境** - 输入此节点所属的 Chef 环境。 此值可留空。
+    - **加密的数据包密码**-选择一个文件，该文件包含此计算机需要访问的加密数据包的机密。 此值可留空。
+    - **Chef 服务器 ssl 证书**-选择分配给 Chef 服务器的 SSL 证书。 此值可留空。
 
       ![在 Linux 虚拟机上安装 Chef 服务器](./media/chef-extension-portal/install-extension.png)
 
-1. 返回到“扩展”选项卡后，选择“确定”。
+1. 显示 "**扩展**" 选项卡时，请选择 **"确定"** 。
 
-1. 返回到“设置”选项卡后，选择“确定”。
+1. 显示 "**设置**" 选项卡时，请选择 **"确定"** 。
 
-1. 返回到“创建”选项卡后（此时会显示已选择和输入的选项的摘要），确认信息和**使用条款**，然后选择“创建”。
+1. 当 "**创建**" 选项卡显示时，你将看到你选择并输入的选项的摘要。 验证信息和**使用条款**，然后选择 "**创建**"。
 
 使用 Chef 扩展创建和部署虚拟机的过程完成后，会有一条通知指示该操作是成功还是失败。 此外，在创建新虚拟机后，其资源页会在 Azure 门户中自动打开。
 
@@ -104,4 +104,5 @@ ms.locfileid: "74158260"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 上使用 Chef 创建 Windows 虚拟机](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [在 Azure 上使用 Chef 创建 Windows 虚拟机](chef-automation.md)

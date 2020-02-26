@@ -1,17 +1,14 @@
 ---
 title: 有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 description: 查找有关 Azure Kubernetes 服务（AKS）的一些常见问题的解答。
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: mlearned
-ms.openlocfilehash: c2103952503a0a184fb970cd8d2326cc2764a223
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 8586ff1ae22bf188af3705434ed90e064ff33c0f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086510"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595665"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 的常见问题解答
 
@@ -66,7 +63,7 @@ AKS 基于多个 Azure 基础结构资源（包括虚拟机规模集、虚拟网
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我是否可以为 AKS 节点资源组提供自己的名称？
 
-可以。 默认情况下，AKS 会将节点资源组命名*MC_resourcegroupname_clustername_location*，但也可以提供自己的名称。
+是的。 默认情况下，AKS 会将节点资源组命名*MC_resourcegroupname_clustername_location*，但也可以提供自己的名称。
 
 若要指定自己的资源组名称，请安装[aks-preview][aks-preview-cli] Azure CLI extension *0.3.2*或更高版本。 使用[az AKS create][az-aks-create]命令创建 AKS 群集时，请使用 *--node.js*参数并指定资源组的名称。 如果[使用 Azure 资源管理器模板][aks-rm-template]来部署 AKS 群集，则可以使用*nodeResourceGroup*属性来定义资源组名称。
 
@@ -120,7 +117,7 @@ Windows Server 对节点池的支持在 Kubernetes 项目中包含属于上游 W
 
 在 AKS 中，可以在创建群集时使用 Azure CLI 和 Azure 资源管理器模板来设置 `maxPods` 值。 但是，Kubenet 和 Azure CNI 都需要一个*最小值*（在创建时验证）：
 
-| 联网 | 最低 | 最大值 |
+| 网络 | 最小值 | 最大值 |
 | -- | :--: | :--: |
 | Azure CNI | 30 | 250 |
 | Kubenet | 30 | 110 |

@@ -1,82 +1,58 @@
 ---
-title: 使用无代理依赖项可视化将计算机分组 Azure Migrate
-description: 描述如何使用计算机依赖项以无代理方式创建组。
-author: rayne-wiselman
-ms.service: azure-migrate
+title: 在 Azure Migrate 中设置无代理依赖项可视化
+description: 使用 Azure Migrate 服务器评估中的无代理依赖项可视化设置组。
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: hamusa
-ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 2/24/2020
+ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049752"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589124"
 ---
-# <a name="set-up-agentless-dependency-visualization-for-assessment"></a>设置无代理依赖项可视化以进行评估
+# <a name="set-up-agentless-dependency-visualization"></a>设置无代理依赖项可视化 
 
-本文介绍如何在 Azure Migrate：服务器评估中设置无代理依赖项映射。 
+本文介绍如何在 Azure Migrate：服务器评估中设置依赖项可视化。 [依赖关系可视化](concepts-dependency-visualization.md#what-is-dependency-visualization)可帮助你识别并了解你想要评估和迁移到 Azure 的计算机上的依赖关系。
+
+无代理依赖项可视化可以帮助你识别计算机依赖项，而无需在计算机上安装任何代理。 它的工作原理是从启用了它的计算机捕获 TCP 连接数据。
 
 > [!IMPORTANT]
-> 对于使用 Azure Migrate 设备发现的 Azure VMware Vm，无代理依赖项可视化目前处于预览阶段。
-> 某些功能可能不受支持或者受限。 此预览版涵盖客户支持，可用于生产工作负荷。
+> 无代理依赖项可视化目前仅适用于 Azure VMware Vm，并通过 Azure Migrate：服务器评估工具发现。
+> 功能可能会受到限制或不完整。
+> 此预览版涵盖客户支持，可用于生产工作负荷。
 > 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="about-dependency-mapping"></a>关于依赖项映射
-
-依赖关系映射有助于可视化要评估和迁移的计算机之间的依赖关系。 当您想要评估具有更高置信度的计算机时，通常使用依赖关系映射。
-
-- 在 Azure Migrate：服务器评估中，将计算机组合到一起进行评估。 组通常由要一起迁移的计算机组成，依赖关系映射有助于交叉检查计算机依赖项，以便可以精确地对计算机进行分组。
-- 使用映射，可以发现需要一起迁移的相互依赖的系统。 你还可以确定正在运行的系统是否仍在为用户提供服务，或者是否要解除授权而非迁移。
-- 可视化依赖项有助于确保不会遗留任何内容，并避免在迁移过程中出现意外中断。
-
-## <a name="about-agentless-visualization"></a>关于无代理可视化
-
-无代理依赖项可视化不需要在计算机上安装任何代理。 它的工作原理是从启用了它的计算机捕获 TCP 连接数据。
-
-- 启动依赖项发现后，设备会按5分钟的轮询间隔从计算机收集数据。
-- 收集以下数据：
-    - TCP 连接
-    - 具有活动连接的进程的名称
-    - 运行上述进程的已安装应用程序的名称
-    - No。 每个轮询间隔检测到的连接
 
 ## <a name="current-limitations"></a>当前限制
 
-- 无代理依赖项可视化目前仅适用于 VMware Vm。
 - 现在，你无法在 "依赖关系分析" 视图中添加或删除组中的服务器。
 - 一组服务器的依赖关系图当前不可用。
 - 目前，无法以表格格式下载依赖关系数据。
 
 ## <a name="before-you-start"></a>开始之前
 
+- [查看](concepts-dependency-visualization.md#agentless-visualization)与无代理依赖项可视化相关的要求和成本。
+- 查看设置无代理依赖项可视化效果的[支持要求](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
 - 请确保已[创建](how-to-add-tool-first-time.md)Azure Migrate 项目。
-- 无代理依赖项分析目前仅适用于 VMware 计算机。
 - 如果已创建项目，请确保已[添加](how-to-assess.md)Azure Migrate： Server 评估工具。
-- 请确保已在 Azure Migrate 中发现 VMware 计算机;为此，可以设置适用于[VMware](how-to-set-up-appliance-vmware.md)的 Azure Migrate 设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。 [了解详细信息](migrate-appliance.md)。
-- 查看设置无代理依赖项可视化[的要求](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
-
+- 请确保已将[Azure Migrate 设备](migrate-appliance.md)设置为发现本地计算机。 了解如何为[VMware](how-to-set-up-appliance-vmware.md) vm 设置设备。 设备将发现本地计算机，并将元数据和性能数据发送到 Azure Migrate：服务器评估。
 
 
 ## <a name="create-a-user-account-for-discovery"></a>创建用于发现的用户帐户
 
-设置具有所需权限的用户帐户，以便服务器评估可以访问 VM 以便发现。 您可以指定一个用户帐户。
+设置用户帐户，以便服务器评估可以访问 VM 以便发现。 您可以指定一个用户帐户。
 
-- **对 Windows vm 的必需权限**：用户帐户必须是本地管理员或域管理员。
-- **Linux vm 上的所需权限**：帐户需要 root 权限。 此外，用户帐户需要/bin/netstat 和/bin/ls 文件上的以下两个功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
+- **Windows vm**：用户帐户必须是本地管理员或域管理员。
+- **Linux vm**：帐户需要 root 权限。 此外，用户帐户需要/bin/netstat 和/bin/ls 文件上的以下两个功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 
 ## <a name="add-the-user-account-to-the-appliance"></a>将用户帐户添加到设备
 
-需要将用户帐户添加到设备。
+将用户帐户添加到设备。
 
-按如下所示添加帐户：
-
-1. 打开 "设备管理" 应用。 导航到 "**提供 vCenter 详细信息**" 面板。
-2. 在 "**发现应用程序和 vm 依赖关系**" 部分中，单击 "**添加凭据**"
-3. 选择**操作系统**。
-4. 提供帐户的友好名称。
-5. 提供**用户名**和**密码**
-6. 单击 **“保存”** 。
+1. 打开 "设备管理" 应用。 
+2. 导航到 "**提供 vCenter 详细信息**" 面板。
+3. 在 "**发现 vm 上的应用程序和依赖项**" 中，单击 "**添加凭据**"
+3. 选择**操作系统**，提供帐户的友好名称，**用户名**/**密码**
+6. 单击“保存”。
 7. 单击 "**保存并启动发现**"。
 
     ![添加 VM 用户帐户](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
@@ -94,17 +70,17 @@ ms.locfileid: "77049752"
 
     ![启动依赖项发现](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
-启动依赖项发现后，你将能够可视化依赖项6小时。
+启动依赖项发现后，你可以在六个小时内可视化依赖项。
 
 ## <a name="visualize-dependencies"></a>可视化依赖项
 
 1. 在**Azure Migrate：服务器评估**中，单击 "**发现的服务器**"。
-2. 搜索要查看其依赖关系映射的计算机。
-3. 单击 "**依赖关系**" 列中的 "**查看依赖关系**"。
+2. 搜索要查看的计算机。
+3. 在 "**依赖项**" 列中，单击 "**查看依赖项**"
 4. 使用 "**持续时间**" 下拉列表更改要查看其地图的时间段。
 5. 展开**客户端**组以列出依赖于所选计算机的计算机。
 6. 展开**端口**组以列出与所选计算机具有依赖关系的计算机。
-7. 若要导航到任何依赖计算机的映射视图，请单击计算机名称，然后单击 "**加载服务器映射**"。
+7. 若要导航到任何依赖计算机的映射视图，请单击计算机名称 > "**加载服务器映射**"
 
     ![展开服务器端口组和加载服务器映射](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)
 
@@ -131,4 +107,4 @@ ms.locfileid: "77049752"
 
 ## <a name="next-steps"></a>后续步骤
 
-[将计算机分组](how-to-create-a-group.md)
+[将计算机分组](how-to-create-a-group.md)以进行评估。
