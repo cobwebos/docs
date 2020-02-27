@@ -44,7 +44,7 @@ Java SDK | :heavy_check_mark: | :heavy_check_mark: | 语音服务支持 Android 
 C# SDK | :heavy_check_mark: | :heavy_check_mark: | Speech service 支持 Windows 10、通用 Windows 平台（UWP）和 .NET Standard 2.0。
 连续语音识别 | 10 分钟 | 无限制（使用 SDK） | 必应语音和语音服务 Websocket 协议最多支持10分钟的每个调用。 但是，语音 SDK 会在超时或断开时自动重新连接。
 部分或中期结果 | :heavy_check_mark: | :heavy_check_mark: | 使用 Websocket 协议或 SDK。
-自定义语音模型 | :heavy_check_mark: | :heavy_check_mark: | 必应语音需要单独的自定义语音订阅。
+自定义语音识别模型 | :heavy_check_mark: | :heavy_check_mark: | 必应语音需要单独的自定义语音识别订阅。
 自定义语音字体 | :heavy_check_mark: | :heavy_check_mark: | 必应语音需要单独的自定义语音订阅。
 24-KHZ 语音 | :heavy_minus_sign: | :heavy_check_mark:
 语音意向识别 | 需要单独的 LUIS API 调用 | 已集成（与 SDK） |  可以将 LUIS 密钥用于语音服务。

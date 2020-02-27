@@ -195,6 +195,8 @@
           href: setup-cicd-vs-code.md
         - name: 探索作业
           href: visual-studio-code-explore-jobs.md
+        - name: JobConfig.json 字段
+          href: job-config-json.md
     - name: 故障排除
       items:
         - name: 输入

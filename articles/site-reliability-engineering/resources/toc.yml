@@ -1,0 +1,11 @@
+- name: 站点可靠性工程文档
+  href: ../index.yml
+- name: 资源
+  expanded: true
+  items:
+    - name: SRE 书籍
+      href: books.md
+    - name: SRE 活动
+      href: events.md
+    - name: SRE 链接集合和摘要
+      href: links.md

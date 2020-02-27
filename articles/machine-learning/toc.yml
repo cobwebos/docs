@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: 排查问题和调试
           href: how-to-troubleshoot-deployment.md
-    - name: 使用 Web 服务
-      items:
-        - name: 实时使用
+        - name: 创建客户端
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: 设计器批量预测
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: 监视模型
-      items:
-        - name: 收集和评估模型数据
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: 检测数据偏差
-          href: how-to-monitor-data-drift.md
-        - name: 使用 Application Insights 进行监视
-          href: how-to-enable-app-insights.md
+        - name: 监视模型
+          items:
+            - name: 收集和评估模型数据
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: 检测数据偏差
+              href: how-to-monitor-data-drift.md
+            - name: 使用 Application Insights 进行监视
+              href: how-to-enable-app-insights.md
     - name: 构建并使用 ML 管道
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: 对并行运行步骤进行调试和故障排除
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: 设计器批量预测
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: 管理资源配额
       displayName: limits
       href: how-to-manage-quotas.md

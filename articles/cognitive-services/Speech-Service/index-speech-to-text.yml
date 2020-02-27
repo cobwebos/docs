@@ -45,7 +45,7 @@ landingContent:
       url: how-to-phrase-lists.md
     - text: 使用租户模型提高准确性
       url: tutorial-tenant-model.md
-    - text: 使用自定义语音提高准确性
+    - text: 使用自定义语音识别提高准确性
       url: how-to-custom-speech.md
     - text: 选择特定的麦克风输入设备
       url: how-to-select-audio-input-devices.md

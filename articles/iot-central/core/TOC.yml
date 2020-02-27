@@ -21,6 +21,8 @@
   items:
     - name: 建立连接
       items:
+        - name: 连接设备
+          href: tutorial-connect-device.md
         - name: 连接即插即用（预览版）设备
           href: tutorial-connect-pnp-device.md
         - name: 创建网关设备模板

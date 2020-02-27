@@ -82,7 +82,7 @@ ms.locfileid: "77168462"
 **答**：如果单独提交每个通道（每个通道位于其自己的文件中），则会根据每个文件的持续时间向你收费。 如果您提交一个文件，其中每个通道都多路复用，则会向您收取单个文件的持续时间。 有关定价的详细信息，请参阅[Azure 认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
-> 如果有禁止使用自定义语音服务的其他隐私问题，请联系其中一个支持渠道。
+> 如果有禁止使用自定义语音识别服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="increasing-concurrency"></a>增加并发
 

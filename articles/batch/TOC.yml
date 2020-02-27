@@ -59,6 +59,8 @@
       href: high-availability-disaster-recovery.md
     - name: 任务运行时环境变量
       href: batch-compute-node-environment-variables.md
+    - name: Batch 与 Azure Policy 的集成
+      href: batch-integration-policies.md
 - name: 操作方法指南
   items:
     - name: 管理 Batch 帐户

@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: 如何
   items:
-    - name: 将基本公共负载均衡器升级到标准公共负载均衡器
-      href: upgrade-basic-standard.md
-    - name: 将基本内部负载均衡器升级到标准内部负载均衡器
-      href: upgrade-basicInternal-standard.md
+    - name: 将基本负载均衡器升级到标准负载均衡器
+      items:
+        - name: 升级基本公共负载均衡器
+          href: upgrade-basic-standard.md
+        - name: 升级基本内部负载均衡器 - 无需出站连接
+          href: upgrade-basicInternal-standard.md
+        - name: 升级基本内部负载均衡器 - 需要出站连接
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: 配置出站规则
       items:
         - name: Azure 门户

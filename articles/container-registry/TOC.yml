@@ -141,15 +141,17 @@
       items:
         - name: 自动生成容器映像
           items:
-            - name: 从源上下文生成
+            - name: 1 - 从源上下文生成
               href: container-registry-tutorial-quick-task.md
-            - name: 提交代码时生成
+            - name: 2a - 提交代码时生成
               href: container-registry-tutorial-build-task.md
-            - name: 提交代码时执行多步骤任务
+            - name: 2b - 提交源代码时执行多步骤任务
               href: container-registry-tutorial-multistep-task.md
-            - name: 更新基础映像时生成
+            - name: 3a - 更新基础映像时生成
               href: container-registry-tutorial-base-image-update.md
-            - name: 计划任务
+            - name: 3b - 更新专用基础映像时生成
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4 - 按计划生成
               href: container-registry-tasks-scheduled.md
     - name: 示例
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: 多步骤任务
           href: container-registry-tasks-multi-step.md
+        - name: 基础映像更新
+          href: container-registry-tasks-base-images.md
     - name: 操作方法指南
       expanded: false
       items:

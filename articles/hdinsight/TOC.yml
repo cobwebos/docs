@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: 使用模板创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: 使用命令行创建群集
+            - name: 使用 Azure CLI 创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: 使用 Powershell 创建群集
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

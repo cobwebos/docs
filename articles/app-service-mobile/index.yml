@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure 移动应用文档
+summary: 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。
+metadata:
+  title: Azure 移动应用文档
+  description: 了解如何使用 Azure 应用服务中的移动应用，通过 Xamarin 或 Cordova 构建和托管本机 iOS、Android 或 Windows 应用，或者跨平台应用。
+  ms.topic: landing-page
+  ms.service: app-service-mobile
+  author: georgewallace
+  ms.author: gwallace
+  manager: gwallace
+  ms.date: 02/19/2020
+  ms.openlocfilehash: 024d1588a0897a6f312f25fa83c7e58f4e30aec2
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77617646"
+landingContent:
+- title: 概述
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是移动应用？
+      url: app-service-mobile-value-prop.md
+    - text: 应用服务计划
+      url: ../app-service/overview-hosting-plans.md
+    - text: 应用服务视频库
+      url: https://azure.microsoft.com/documentation/videos/index/?services=app-service
+- title: 快速入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Android 应用
+      url: app-service-mobile-android-get-started.md
+    - text: 创建 Apache Cordova 应用
+      url: app-service-mobile-cordova-get-started.md
+    - text: 创建 iOS 应用
+      url: app-service-mobile-ios-get-started.md
+    - text: 创建 Windows 应用
+      url: app-service-mobile-windows-store-dotnet-get-started.md
+    - text: 创建 Xamarin.Android 应用
+      url: app-service-mobile-xamarin-android-get-started.md
+    - text: 创建 Xamarin iOS 应用
+      url: app-service-mobile-xamarin-ios-get-started.md
+    - text: 创建 Xamarin.Forms 应用
+      url: app-service-mobile-xamarin-forms-get-started.md
+- title: 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET 后端 SDK
+      url: /dotnet/api/overview/azure/mobile
+    - text: Node.js 后端 SDK
+      url: https://azure.github.io/azure-mobile-apps-node/
+    - text: Android 客户端 SDK
+      url: https://azure.github.io/azure-mobile-apps-android-client/
+    - text: iOS 客户端 SDK
+      url: https://azure.github.io/azure-mobile-apps-ios-client/
+    - text: JavaScript/Cordova 客户端 SDK
+      url: https://azure.github.io/azure-mobile-apps-js-client/
+    - text: Windows/Xamarin 客户端 SDK
+      url: /dotnet/api/overview/azure/mobileapps/client

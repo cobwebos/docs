@@ -181,6 +181,20 @@
   items:
     - name: REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Azure 安全中心常见问题解答
+      items:
+        - name: 一般问题
+          href: faq-general.md
+        - name: 计费问题
+          href: faq-billing.md
+        - name: 权限问题
+          href: faq-permissions.md
+        - name: 数据收集和代理问题
+          href: faq-data-collection-agents.md
+        - name: 虚拟机问题
+          href: faq-vms.md
+        - name: Azure Log Analytics 的现有用户
+          href: faq-azure-monitor-logs.md
     - name: 发行说明
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 功能和 API 停用（2019 年 7 月）
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: 适用于 IoT 的 Azure 安全中心文档
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: 常见问题解答
-      href: security-center-faq.md
     - name: Azure 安全文档
       href: /azure/security/
     - name: Azure 更新

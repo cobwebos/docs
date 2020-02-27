@@ -1,0 +1,302 @@
+### YamlMime:Hub
+title: 站点可靠性工程文档
+summary: 站点可靠性工程是一门工程学科，旨在帮助组织可持续地实现系统、服务和产品的适当可靠性级别。
+brand: azure
+metadata:
+  title: 站点可靠性工程文档
+  description: 站点可靠性工程是一门工程学科，旨在帮助组织可持续地实现系统、服务和产品的适当可靠性级别。
+  services: site-reliability-engineering
+  ms.service: site-reliability-engineering
+  ms.topic: hub-page
+  author: dnblankedelman
+  ms.author: dnb
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a89b50cb23d87c9495b24e4ac2ae562b637ec6fa
+  ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77598929"
+highlightedContent:
+  items:
+  - title: SRE 简介：什么是 SRE？ (1/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-1/player
+  - title: SRE 简介：核心原则和实践 (2/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-2/player
+  - title: SRE 简介：如何入门 (3/3)
+    itemType: video
+    url: https://channel9.msdn.com/Shows/IT-Ops-Talk/Introduction-to-Site-Reliability-Engineering--Part-3/player
+productDirectory:
+  items:
+  - title: 通过现代操作实践提高可靠性
+    imageSrc: ./media/index/video.svg
+    links:
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82996
+      text: 为现代 ops 构建基础：监视
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82997
+      text: 响应事件
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82998
+      text: 从失败中学习
+    - url: https://myignite.techcommunity.microsoft.com/sessions/82999
+      text: 用于提高可靠性的部署实践
+    - url: https://myignite.techcommunity.microsoft.com/sessions/83001
+      text: 为增长做准备：容量规划和扩展
+  - title: SRE 在线课程简介
+    imageSrc: ./media/index/learn.svg
+    links:
+    - url: https://docs.microsoft.com/learn/modules/intro-to-site-reliability-engineering/
+      text: 在免费的在线课程中学习 SRE 的基础知识
+  - title: SRE 资源
+    imageSrc: ./media/index/reference.svg
+    links:
+    - url: resources/books.md
+      text: 书籍
+    - url: resources/events.md
+      text: 活动
+    - url: resources/links.md
+      text: 链接和摘要
+conceptualContent:
+  title: Azure 上的 SRE
+  summary: SRE 文档
+  items:
+  - title: 体系结构
+    links:
+    - url: https://docs.microsoft.com/azure/architecture/framework/
+      itemType: reference
+      text: Azure 体系结构框架
+    - url: https://docs.microsoft.com/azure/architecture/guide
+      itemType: reference
+      text: Azure 应用程序体系结构指南
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=reference-architecture
+      itemType: reference
+      text: 参考体系结构
+    - url: https://docs.microsoft.com/azure/architecture/cloud-adoption/
+      itemType: reference
+      text: 适用于 Azure 的 Microsoft 云采用框架
+    - url: https://docs.microsoft.com/azure/architecture/architectures/?filter=example-workload
+      itemType: reference
+      text: 示例工作负荷
+    - url: https://docs.microsoft.com/azure/architecture/microservices
+      itemType: reference
+      text: 在 Azure 上构建微服务
+    - url: https://docs.microsoft.com/azure/architecture/data-guide/
+      itemType: reference
+      text: Azure 数据架构指南
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/
+      itemType: reference
+      text: 云最佳做法
+    - url: https://docs.microsoft.com/azure/architecture/framework/resiliency/overview
+      itemType: reference
+      text: 设计可靠的 Azure 应用程序
+    - url: https://docs.microsoft.com/azure/architecture/patterns
+      itemType: reference
+      text: 云设计模式
+    - url: https://docs.microsoft.com/azure/architecture/aws-professional
+      itemType: reference
+      text: 面向 AWS 专业人员的 Azure
+    - url: https://docs.microsoft.com/azure/architecture/performance
+      itemType: reference
+      text: 性能调优
+    footerLink:
+      url: https://docs.microsoft.com/azure/architecture/
+      text: 在 Azure 体系结构中心中查看详细信息
+  - title: 监视
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/overview
+      itemType: get-started
+      text: Azure Monitor 概述
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics
+      itemType: get-started
+      text: 将指标与 Azure Monitor 配合使用
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs
+      itemType: get-started
+      text: 将日志与 Azure Monitor 配合使用
+    - url: https://docs.microsoft.com/azure/azure-monitor/azure-monitor-app-hub
+      itemType: get-started
+      text: 使用 Application Insights 管理应用程序性能
+    - url: https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing
+      itemType: get-started
+      text: 将分布式跟踪与 Azure Monitor 配合使用
+    footerLink:
+      url: https://docs.microsoft.com/en-us/azure/azure-monitor/
+      text: 查看有关 Azure Monitor 的详细信息
+  - title: 预配和交付
+    links:
+    - url: https://docs.microsoft.com/azure/azure-resource-manager/
+      itemType: get-started
+      text: Azure 资源管理器
+    - url: https://docs.microsoft.com/azure/terraform/
+      itemType: get-started
+      text: Azure 上的 Terraform
+    - url: https://help.github.com/actions
+      itemType: get-started
+      text: GitHub 操作
+    - url: https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops
+      itemType: get-started
+      text: Azure Pipelines
+  - title: 扩展
+    links:
+    - url: https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview
+      itemType: get-started
+      text: 自动缩放概述
+    - url: https://docs.microsoft.com/azure/architecture/best-practices/auto-scaling
+      itemType: get-started
+      text: 自动缩放指南
+    - url: https://www.pluralsight.com/courses/microsoft-azure-autoscaling-developing
+      itemType: get-started
+      text: 为自动缩放进行开发
+    - url: https://docs.microsoft.com/azure/architecture/framework/scalability/overview
+      itemType: get-started
+      text: Azure 体系结构可伸缩性构成要素
+    - url: https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out
+      itemType: get-started
+      text: 扩大式设计
+    - url: https://docs.microsoft.com/en-us/azure/architecture/patterns/category/performance-scalability
+      itemType: get-started
+      text: 性能和可伸缩性模式
+additionalContent:
+  sections:
+  - title: 来自 Microsoft 的 SRE 演讲
+    items:
+    - title: 环境
+      links:
+      - text: 站点可靠性工程的演变
+        url: https://www.usenix.org/conference/srecon18asia/presentation/purgason
+      - text: 构建 SRE：从外到内的文化
+        url: https://www.usenix.org/conference/srecon18asia/presentation/palino
+      - text: 多文化团队的文化细微差别和有效协作
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ravindran
+      - text: SRE 的演变以及对 SRE 促变因素日益增长的需求
+        url: https://www.usenix.org/conference/srecon18asia/presentation/ganeriwal
+      - text: 反馈循环：SRE 的优点以及实现其潜能所需满足的条件
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/tangi
+      - text: 了解业务指标可以实现更好的 SRE
+        url: https://www.usenix.org/conference/srecon19asia/presentation/suley
+      - text: 站点可靠性永不结束的故事
+        url: https://www.usenix.org/conference/srecon17europe/conference-program/presentation/andersen
+      - text: 在运营中，每天都是星期一
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/purgason
+    - title: 事件响应和事件后审查
+      links:
+      - text: 打造复原能力：如何从事件中了解详细信息
+        url: https://www.usenix.org/conference/srecon19emea/presentation/stenning
+      - text: 一个有关两次事后分析的故事：人为因素观点
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-postmortem
+      - text: 自动化的讽刺意味：三个部分的喜剧
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lund-comedy
+      - text: 针对待命：一次抨击
+        url: https://www.usenix.org/conference/srecon18europe/presentation/murphy
+      - text: 一对一的 SRE
+        url: https://www.usenix.org/conference/srecon19americas/presentation/tobey
+    - title: 监视和可观测性
+      links:
+      - text: 超过 6 亿个的成员和数百个微服务：我们如何扩展了监视系统以便同步前进
+        url: https://www.usenix.org/conference/srecon19asia/presentation/lamba
+      - text: 跳出常规：将可观测性焦点从服务移到客户
+        url: https://www.usenix.org/conference/lisa19/presentation/suley
+      - text: 你得到的是你所测量的 - 为何指标非常重要
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-metrics
+      - text: 平安渡过风暴：早期警告如何拯救农场
+        url: https://www.usenix.org/conference/srecon19emea/presentation/sherwin
+      - text: 捕获并分析数百万个查询而没有任何开销
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/appigatla
+      - text: 事件关联：用于降低 MTTR 的全新方法
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/rajan
+      - text: 可靠的监视功能如何为 LinkedIn 源的高可用性提供支持
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/barot
+      - text: 降低 MTTR 和错误上报数：Linkedin 上的事件关联
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe-0
+    - title: 实践和原则
+      links:
+      - text: 可用性 - 超越高可靠性指标而思考
+        url: https://www.usenix.org/conference/srecon19asia/presentation/srinivasamurthy
+      - text: 适用于 SRE 的心理模型
+        url: https://www.usenix.org/conference/srecon18asia/presentation/suley-mental
+      - text: 创建应用程序时优先考虑信任
+        url: https://www.usenix.org/conference/srecon19emea/presentation/davis
+      - text: Java 讨厌 Linux。 处理这个问题。
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/banks
+      - text: 理解 SRE 实践的阶段并描述其特征
+        url: https://www.usenix.org/conference/srecon18asia/presentation/andersen
+      - text: 安全性和 SRE：自然力乘数
+        url: https://www.usenix.org/conference/srecon18americas/presentation/scott
+      - text: 生产改进审查：显著降低修复债务
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/check
+      - text: 确保高性能应用程序的可靠性
+        url: https://www.usenix.org/conference/srecon18asia/presentation/nayak
+      - text: 服务评分卡 - 将卓越运营游戏化
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/lawrence
+      - text: 如何通过深挖并曝光服务问题来改善服务
+        url: https://www.usenix.org/conference/srecon16/program/presentation/dickson
+    - title: 团队和管理
+      links:
+      - text: 黄色警报：以巧妙的方式帮助运营任务最繁重的团队
+        url: https://www.usenix.org/conference/srecon19americas/presentation/kehoe
+      - text: 领导而不管理：成为 SRE 技术领导者
+        url: https://www.usenix.org/conference/srecon19asia/presentation/palino-leading
+      - text: 不同公司的 SRE 实现形式之间的差异
+        url: https://www.usenix.org/conference/srecon19americas/presentation/andersen
+      - text: 100 个团队，100 种失败方法
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/keiser
+      - text: 开始参与 SRE 的原因、内容和方式
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/clawson
+      - text: 建立并运转 SRE 团队
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/andersen
+      - text: 大学学生到 SRE：让你的入门级人才加入
+        url: https://www.usenix.org/conference/srecon16/program/presentation/kehoe
+      - text: LinkedIn SRE：从开始到全球规模
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/connelly
+      - text: 在全球最大的软件公司中拼接 SRE DNA 序列
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/splicing-sre-dna-sequences-biggest-software-company
+      - text: 将第 1 层毛虫转换为蝴蝶
+        url: https://www.usenix.org/conference/srecon16/program/presentation/mushiana
+    - title: 工具和技术
+      links:
+      - text: Azure SREBot：超过聊天机器人 - 可大幅减少缓解时间的智能机器人
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/guimaraes
+      - text: TrafficShift：避免大规模灾难
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/kehoe_trafficshift
+      - text: 让我们构建分布式文件系统
+        url: https://www.usenix.org/conference/srecon19asia/presentation/patel
+      - text: TCP - 体系结构、增强功能和优化
+        url: https://www.usenix.org/conference/srecon19asia/presentation/dhakal
+      - text: BGP - Internet 的主干
+        url: https://www.usenix.org/conference/srecon19asia/presentation/kehoe
+      - text: 无服务器模式下的 Ops
+        url: https://www.usenix.org/conference/srecon19americas/presentation/davis
+      - text: 我们如何使用 Kafka 扩展数据库基础结构
+        url: https://www.usenix.org/conference/srecon19asia/presentation/thambara
+      - text: 用于 SRE 的网络：排查应用程序问题需要了解什么
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/kehoe
+      - text: Ambry - LinkedIn 的分布式不可变对象存储
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/shenoy
+      - text: BPerf - 针对生产的 Bing.com 云分析
+        url: https://www.usenix.org/conference/srecon17americas/program/presentation/sabharwal
+      - text: DNS：针对现代问题的旧解决方案
+        url: https://www.usenix.org/conference/srecon16europe/program/presentation/jackson
+      - text: 在 LinkedIn 使用 Rum DNS 进行流量转向
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/rastogi
+    - title: 扩展
+      links:
+      - text: 流量预测和压力测试基础结构
+        url: https://www.usenix.org/conference/srecon19asia/presentation/sulakhe
+      - text: 大规模学习很困难！ 故障模式分析和脏数据
+        url: https://www.usenix.org/conference/srecon18americas/presentation/lund
+      - text: 缩放分布式有状态系统：LinkedIn 案例研究
+        url: https://www.usenix.org/conference/srecon18asia/presentation/kanuri
+      - text: 大规模调试 - 从单机到生产
+        url: https://www.usenix.org/conference/srecon18asia/presentation/srinivasamurthy-debugging
+      - text: 大规模构建集中式缓存基础结构
+        url: https://www.usenix.org/conference/srecon19asia/presentation/won
+      - text: 可缩放编码 - 找到错误
+        url: https://www.usenix.org/conference/srecon18europe/presentation/ebner-de-carvalho
+      - text: 在 LinkedIn 管理容量
+        url: https://www.usenix.org/conference/srecon17asia/program/presentation/harkare
+      - text: InStream：使用 BitTorrent、Python、Salt 和 Kafka 进行大规模分发
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/sharma
+      - text: 避免和打破容量束缚
+        url: https://www.usenix.org/conference/srecon17europe/program/presentation/welch
+      - text: 全球流量路由和故障转移的演变
+        url: https://www.usenix.org/conference/srecon16/program/presentation/heady

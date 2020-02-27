@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: 性能规模
           href: search-performance-optimization.md
+        - name: 跨区域移动服务
+          href: search-howto-move-across-regions.md
         - name: 多租户体系结构
           href: search-modeling-multitenant-saas-applications.md
     - name: 安全性
