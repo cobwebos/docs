@@ -2,15 +2,15 @@
 title: 教程 - 将资源添加到模板
 description: 介绍创建第一个 Azure 资源管理器模板的步骤。 了解模板文件语法，以及如何部署存储帐户。
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765591"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586676"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>教程：将资源添加到资源管理器模板
 
@@ -26,7 +26,10 @@ ms.locfileid: "76765591"
 
 若要将存储帐户定义添加到现有模板，请查看以下示例中突出显示的 JSON。 可以复制整个文件并使用其内容替换模板，而无需尝试复制模板的各个节。
 
-请将 **{provide-unique-name}** 替换为唯一的存储帐户名称。 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 可以尝试使用某种命名模式，例如，使用 **store1** 作为前缀，然后添加你的姓名首字母缩写和当天的日期。 例如，使用的名称类似于 **store1abc09092019**。
+请将 **{provide-unique-name}** 替换为唯一的存储帐户名称。
+
+> [!IMPORTANT]
+> 存储帐户名称在 Azure 中必须是唯一的。 该名称只能包含小写字母或数字。 其长度不能超过 24 个字符。 可以尝试使用某种命名模式，例如，使用 **store1** 作为前缀，然后添加你的姓名首字母缩写和当天的日期。 例如，使用的名称类似于 **store1abc09092019**。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ ms.locfileid: "76765591"
 
 如果尚未创建资源组，请参阅[创建资源组](template-tutorial-create-first-template.md#create-resource-group)。 此示例假设已根据[第一篇教程](template-tutorial-create-first-template.md#deploy-template)中所述，将 **templateFile** 变量设置为模板文件的路径。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \

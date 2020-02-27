@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 409e73f05366065f1c4159e9f1cd7e5bf8bb5ceb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 880f1c601cf4132fdec9e5d25b1bf1f2ff175ab7
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650531"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
 
@@ -136,7 +136,7 @@ Azure VM 上有三种主要磁盘类型：
      > [!WARNING]
      > 请在更改 Azure VM 磁盘的缓存设置时停止 SQL Server 服务，以免出现数据库损坏的情况。
 
-* **NTFS 分配单元大小**：当格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。
+* **NTFS 分配单元大小**：当格式化数据磁盘时，建议为数据和日志文件以及 TempDB 使用 64-KB 分配单元大小。 如果将 TempDB 放置在临时磁盘上（D:\驱动器）通过利用此驱动器获得的性能超出了对64个分配单元大小的需要。 
 
 * **磁盘管理最佳实践**：删除数据磁盘或更改其缓存类型时，请在更改过程中停止 SQL Server 服务。 在 OS 磁盘上更改缓存设置时，Azure 会先停止 VM，在更改缓存类型后再重新启动 VM。 更改数据磁盘的缓存设置时，不会停止 VM，但会在更改期间将数据磁盘从 VM 分离，完成后再重新附加该数据磁盘。
 

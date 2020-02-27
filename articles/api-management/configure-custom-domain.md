@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 887019bbdb92807d49c09af3a83313470f334a52
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251187"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649530"
 ---
 # <a name="configure-a-custom-domain-name"></a>配置自定义域名
 
@@ -52,7 +52,8 @@ ms.locfileid: "77251187"
     - **网关**（默认值为： `<apim-service-name>.azure-api.net`）、
     - **门户**（默认值为：`<apim-service-name>.portal.azure-api.net`），
     - **管理**（默认值为：`<apim-service-name>.management.azure-api.net`），
-    - **SCM**（默认值为：`<apim-service-name>.scm.azure-api.net`）。
+    - **SCM** （默认值为： `<apim-service-name>.scm.azure-api.net`）、
+    - **NewPortal** （默认值为： `<apim-service-name>.developer.azure-api.net`）。
 
     > [!NOTE]
     > 仅**网关**终结点可用于在消耗层中进行配置。

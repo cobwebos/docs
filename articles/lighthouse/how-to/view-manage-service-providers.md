@@ -1,29 +1,29 @@
 ---
 title: 查看和管理服务提供商
 description: 客户可以使用 Azure 门户中的“服务提供商”页面来查看有关服务提供商、服务提供商产品/服务和委派资源的信息。
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046121"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649732"
 ---
 # <a name="view-and-manage-service-providers"></a>查看和管理服务提供商
 
-客户可以使用 [Azure 门户](https://portal.azure.com)中的“服务提供商”页面查看有关服务提供商和服务提供商产品/服务的信息，通过 [Azure 委派资源管理](../concepts/azure-delegated-resource-management.md)委派特定资源，以及购买其他服务提供商的产品/服务。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
+客户可以使用[Azure 门户](https://portal.azure.com)中的 "**服务提供商**" 页面来查看有关服务提供商和服务提供商产品/服务的信息，通过[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)委托特定的资源，并为新的服务提供商提供优惠。 在此处我们将提到服务提供商和客户，但管理多个租户的企业可以使用相同的过程来整合其管理体验。
 
 要访问 Azure 门户中的“服务提供者”页面，客户可以选择“所有服务”，然后搜索“服务提供商”并选择它。 他们还可以通过在 Azure 门户顶部附近的搜索框中输入“服务提供商”进行查找。
 
-请记住，“服务提供商”页面仅显示有关可通过 Azure 委托资源管理访问客户的订阅或资源组的服务提供商的信息。 如果客户与不使用 Azure 委托资源管理访问客户资源的其他服务提供商合作，此处将不会显示有关这些服务提供商的信息。
+请记住，"**服务提供程序**" 页仅显示有关可通过 Azure 委托资源管理访问客户的订阅或资源组的服务提供商的信息。 如果客户与不使用 Azure 委托资源管理访问客户资源的其他服务提供商合作，此处将不会显示有关这些服务提供商的信息。
 
 > [!NOTE]
 > 服务提供商可以通过导航到 Azure 门户中的“我的客户”来查看有关其客户的信息。 有关详细信息，请参阅[查看和管理客户及委派资源](view-manage-customers.md)。
 
 ## <a name="view-service-provider-details"></a>查看服务提供商详情
 
-要查看有关客户所使用的服务提供商的信息，他们可以选择“服务提供商产品/服务”页面左侧的“提供商产品/服务”。
+若要查看有关服务提供商的信息，客户可以在 "**服务提供商**" 页面左侧选择 "**提供商产品**/服务"。
 
 对于每个服务提供商产品/服务，客户都可看到服务提供商的名称和与之关联的产品/服务，以及客户在登记过程中输入的名称。
 
@@ -59,12 +59,20 @@ ms.locfileid: "76046121"
 
 委派表示为客户委派的资源授予服务提供者权限的角色分配。 若要查看此信息，请选择“服务提供程序”页面左侧的“委派”。
 
-可通过页面顶部的筛选器对委派信息进行排序和分组，或者按特定的客户、产品/服务或关键字进行筛选。
+页面顶部的筛选器使你可以对委派信息进行排序和分组。 你还可以按特定的客户、产品/服务或关键字进行筛选。
 
 > [!NOTE]
 > 当查看 Azure 门户或通过 Api[中的委托作用域的角色分配信息](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope)时，客户不会看到这些角色分配，也不会看到已授予这些角色的服务提供商租户中的任何用户。
 
-## <a name="next-steps"></a>后续步骤
+## <a name="audit-delegations-in-your-environment"></a>审核环境中的委派
 
+客户可能需要了解已委派给[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)的服务提供商的订阅和/或资源组。 对于具有大量订阅的客户，或者拥有执行管理任务的多个用户，此操作特别有用。
+
+我们提供了一个[Azure 策略内置策略定义](../../governance/policy/samples/built-in-policies.md#lighthouse)，用于审核作用域到管理租户的委派。 你可以将此策略分配到包含你要审核的所有订阅的管理组。 检查与此策略的符合性时，任何委派的订阅和/或资源组（该策略所分配到的管理组内）将显示为不符合要求的状态。 然后，可以查看结果，并确认没有任何意外委托。
+
+有关如何分配策略和查看符合性状态结果的详细信息，请参阅[快速入门：创建策略分配](../../governance/policy/assign-policy-portal.md)。
+
+## <a name="next-steps"></a>后续步骤
+ 
 - 详细了解 [Azure Lighthouse ](../overview.md)。
 - 了解服务提供商如何通过访问 Azure 门户中的“我的客户”来[查看和管理客户](view-manage-customers.md)。

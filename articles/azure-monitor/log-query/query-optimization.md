@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.date: 02/25/2019
+ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589839"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622914"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
-Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-explorer/)来存储和管理日志和查询。 它为你创建、管理和维护 ADX 群集，并为日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储工作区的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，可以显著提高查询性能。 本文介绍了性能注意事项和解决这些问题的几种方法。
+Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-explorer/)来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并为日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，可以显著提高查询性能。 本文介绍了性能注意事项和解决这些问题的几种方法。
 
-大多数方法对于直接在 Azure 数据资源管理器上运行的查询和 Azure Monitor 日志是通用的，但此处讨论了几个独特的 Azure Monitor 日志注意事项。 有关更多 Azure 数据资源管理器优化提示，请参阅[查询最佳实践](/azure/kusto/query/best-practices)。
+大多数方法对于直接在 Azure 数据资源管理器和 Azure Monitor 日志上运行的查询是通用的，尽管此处讨论了几个独特的 Azure Monitor 日志注意事项。 有关更多 Azure 数据资源管理器优化提示，请参阅[查询最佳实践](/azure/kusto/query/best-practices)。
 
 优化的查询将：
 
 - 运行速度更快，缩短了查询执行的总持续时间。
 - 可能会受到限制或拒绝。
 
-应特别注意用于重复性和突发使用（如仪表板和 Power BI）的查询。 在这些情况下，无效查询造成的影响非常重要。
+应特别注意用于重复性和突发的查询，如仪表板、警报、逻辑应用和 Power BI。 在这些情况下，无效查询造成的影响非常重要。
 
 ## <a name="query-performance-pane"></a>查询性能窗格
 在 Log Analytics 中运行查询后，单击查询结果上方的向下箭头，查看 "查询性能" 窗格，其中显示查询的多个性能指标的结果。 下一节中介绍了这些性能指标。
@@ -38,11 +38,11 @@ Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-exp
 
 - [总 CPU](#total-cpu)：用于跨所有计算节点处理查询的总体计算。 它表示用于计算、分析和数据提取的时间。 
 
-- [用于处理查询的数据](#data-used-for-query-processing)：用于处理查询的总体数据。 受目标表的大小、使用的时间范围、应用的筛选器以及所引用的列数的影响。
+- [数据量](#data-volume)：用于处理查询的总体数据。 受目标表的大小、使用的时间范围、应用的筛选器以及所引用的列数的影响。
 
-- 已[处理查询的时间跨度](#time-range-of-the-data-processed)：用于处理查询的最新数据和最旧数据之间的间隔。 受查询显式时间范围和应用的筛选器的影响。 由于数据分区，它可能大于显式时间范围。
+- [时间范围](#time-range)：用于处理查询的最新数据和最旧的数据之间的间隔。 受为查询指定的显式时间范围影响。
 
-- [处理的数据的使用时间](#age-of-the-oldest-data-used)：目前和用于处理查询的最早的数据之间的差距。 它会极大影响数据提取的效率。
+- [数据的存在时间](#age-of-data)：目前和用于处理查询的最早数据之间的差距。 它会极大影响数据提取的效率。
 
 - [工作区数量](#number-of-workspaces)：由于隐式或显式选择，在查询处理期间访问了多少个工作区。
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-CPU 消耗还可能会受到需要密集型计算的条件或扩展列的影响。 所有普通的字符串比较（例如[等于 = =](/azure/kusto/query/datatypes-string-operators)和[startswith](/azure/kusto/query/datatypes-string-operators) ）都具有大约相同的 CPU 影响，而高级文本匹配会影响更大。 具体而言，has 运算符对于 contains 运算符更有效。 由于字符串处理技术，查找长度超过四个字符的字符串比短字符串更有效。
+CPU 消耗还可能会受到需要密集型计算的条件或扩展列的影响。 所有普通的字符串比较（例如[等于 = =](/azure/kusto/query/datatypes-string-operators)和[startswith](/azure/kusto/query/datatypes-string-operators) ）都具有大约相同的 CPU 影响，而高级文本匹配会影响更大。 具体而言， [has 运算符对于](/azure/kusto/query/datatypes-string-operators) [contains](/azure/kusto/query/datatypes-string-operators)运算符更有效。 由于字符串处理技术，查找长度超过四个字符的字符串比短字符串更有效。
 
 例如，以下查询将产生类似的结果，具体取决于计算机命名策略，但第二个查询更高效：
 
@@ -151,7 +151,7 @@ Heartbeat
 > 此指标仅显示来自即时群集的 CPU。 在多区域查询中，它只表示一个区域。 在多工作区查询中，它可能不包括所有工作区。
 
 
-## <a name="data-used-for-query-processing"></a>用于查询处理的数据
+## <a name="data-volume"></a>数据量
 
 查询处理中的一个重要因素是扫描并用于查询处理的数据量。 与其他数据平台相比，Azure 数据资源管理器使用严格的优化，大大减少了数据量。 尽管如此，查询中也存在一些重要因素，这些因素可能会影响所使用的数据量。
 在 Azure Monitor 日志中， **TimeGenerated**列用作数据的索引方式。 如果将**TimeGenerated**值限制为尽可能窄的范围，则可以显著地限制必须处理的数据量，从而显著提高查询性能。
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>处理的数据的时间范围
+## <a name="time-range"></a>时间范围
 
 将根据**TimeGenerated**列对 Azure Monitor 日志中的所有日志进行分区。 访问的分区数与时间跨度直接相关。 缩短时间范围是确保执行提示查询的最有效方法。
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-度量值始终大于指定的实际时间。 例如，如果查询的筛选器为7天，则系统可能会扫描7.5 或8.1 天。 这是因为系统会将数据分区到大小可变的块区。 为了确保扫描所有相关记录，它会扫描整个分区，该分区可能涵盖几个小时甚至超过一天。
+> [!IMPORTANT]
+> 此指标不适用于跨区域查询。
 
-在某些情况下，系统无法准确度量时间范围。 在大多数情况下，如果查询范围少于一天或多个工作区查询，就会发生这种情况。
-
-> [!NOTE]
-> 此指标仅显示立即群集中处理的数据。 在多区域查询中，它只表示一个区域。 在多工作区查询中，它可能不包括所有工作区。
-
-## <a name="age-of-the-oldest-data-used"></a>最早使用的数据的使用期限
+## <a name="age-of-data"></a>数据保留时间
 Azure 数据资源管理器使用多个存储层：内存中的本地 SSD 磁盘和更慢的 Azure Blob。 数据越新，就越有可能以较小的延迟存储在性能更高的层中，从而减少查询持续时间和 CPU。 除了数据本身以外，系统还具有元数据的缓存。 数据越旧，其元数据在缓存中的可能性就越小。
 
 尽管某些查询需要使用旧数据，但在某些情况下，会错误地使用旧数据。 如果执行查询时不在其元数据中提供时间范围，并且并非所有表引用都包括**TimeGenerated**列上的筛选器，则会发生这种情况。 在这些情况下，系统将扫描该表中存储的所有数据。 当数据保留时间较长时，它可能会涵盖长时间范围，以及与数据保持期相同的数据。
@@ -289,7 +285,7 @@ Azure 数据资源管理器使用多个存储层：内存中的本地 SSD 磁盘
 如果没有实际原因要扫描所有这些区域，则应调整范围，使其涵盖更少的区域。 如果资源范围已最小化但仍在使用多个区域，则可能是由于配置错误引起的。 例如，审核日志和诊断设置将发送到不同区域中的不同工作区，或者有多个诊断设置配置。 
 
 > [!IMPORTANT]
-> 在多个区域中运行查询时，CPU 和数据度量值将不准确，并且仅表示一个区域的度量值。
+> 此指标不适用于跨区域查询。
 
 ## <a name="number-of-workspaces"></a>工作区数量
 工作区是用于隔离和管理日志数据的逻辑容器。 后端优化所选区域内物理群集上的工作区放置。
@@ -305,7 +301,7 @@ Azure 数据资源管理器使用多个存储层：内存中的本地 SSD 磁盘
 > 在某些多工作区方案中，CPU 和数据度量值将不准确，只会将度量值仅表示给几个工作区。
 
 ## <a name="parallelism"></a>并行度
-Azure Monitor 日志使用 Azure 数据资源管理器的大型群集来执行查询。 这些群集在规模上各不相同，可能会获得最多140个计算节点。 系统会根据工作区位置逻辑和容量自动缩放群集。
+Azure Monitor 日志使用 Azure 数据资源管理器的大型群集来运行查询，这些群集的规模各不相同。 系统会根据工作区位置逻辑和容量自动缩放群集。
 
 为了有效地执行查询，将根据其处理所需的数据对其进行分区和分布。 在某些情况下，系统无法有效地执行此操作。 这可能会导致查询持续很长时间。 
 

@@ -4,7 +4,7 @@ description: 有关在 Azure 虚拟机上手动安装单实例 SAP HANA 的快�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0090ffe977dee3e493d726c9eb4d151bcbeb503f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750369"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617250"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>快速入门：在 Azure 虚拟机上手动安装单实例 SAP HANA
 ## <a name="introduction"></a>简介
@@ -29,7 +29,7 @@ ms.locfileid: "72750369"
 > [!NOTE]
 > 本指南介绍如何将 SAP HANA 部署到 Azure VM 中。 有关如何将 SAP HANA 部署到 HANA 大型实例的信息，请参阅[在 Azure 虚拟机上使用 SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)。
  
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 本指南假定你熟悉此类基础结构即服务（IaaS）基础知识，如下所示：
  * 如何通过 Azure 门户或 PowerShell 部署虚拟机（Vm）或虚拟网络。
  * Azure 跨平台命令行接口（CLI），其中包括使用 JavaScript 对象表示法（JSON）模板的选项。
@@ -61,19 +61,19 @@ ms.locfileid: "72750369"
 有关如何使用 SAP 云设备库部署 S/4HANA 或 BW/4HANA 的信息，请参阅[Microsoft Azure 上的部署 Sap S/4HANA 或 bw/4HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)。
 
 ### <a name="sap-hana-supported-operating-systems"></a>SAP HANA 支持的操作系统
-有关 SAP HANA 支持的操作系统的信息，请参阅[SAP 说明 2235581-SAP HANA：支持的操作系统](https://launchpad.support.sap.com/#/notes/2235581/E)。 Azure VM 仅支持其中的一部分操作系统。 支持使用以下操作系统在 Azure 上部署 SAP HANA： 
+有关 SAP HANA 支持的操作系统的信息，请参阅 [SAP 说明 2235581-SAP HANA：](https://launchpad.support.sap.com/#/notes/2235581/E)支持的操作系统。 Azure VM 仅支持其中的一部分操作系统。 支持使用以下操作系统在 Azure 上部署 SAP HANA： 
 
 * SUSE Linux Enterprise Server 12.x
 * Red Hat Enterprise Linux 7.2
 
 如需查看更多有关 SAP HANA 和其他 Linux 操作系统的 SAP 文档，请参阅：
 
-* [Sap 说明171356： Linux 上的 SAP 软件：常规信息](https://launchpad.support.sap.com/#/notes/1984787)。
-* [SAP 说明1944799： SAP HANA 适用于 SLES 操作系统安装的准则](http://service.sap.com/sap/support/notes/1944799)。
-* [Sap 说明2205917： SAP HANA DB 推荐适用于 SLES 12 FOR SAP 应用程序的 OS 设置](https://launchpad.support.sap.com/#/notes/2205917/E)。
-* [SAP 说明1391070： LINUX UUID 解决方案](https://launchpad.support.sap.com/#/notes/1391070)。
-* [SAP 说明2009879： Red Hat Enterprise Linux （RHEL）操作系统 SAP HANA 准则](https://launchpad.support.sap.com/#/notes/2009879)。
-* [SAP 说明2292690： SAP HANA DB：适用于 RHEL 7 的建议 OS 设置](https://launchpad.support.sap.com/#/notes/2292690/E)。
+* [SAP 说明171356：Linux 上的 SAP 软件：](https://launchpad.support.sap.com/#/notes/1984787)一般信息。
+* [SAP 说明1944799：SAP HANA SLES 操作系统安装](http://service.sap.com/sap/support/notes/1944799)的准则。
+* [SAP 说明2205917：SAP HANA DB 推荐适用于 SLES 12 for SAP 应用程序的 OS 设置](https://launchpad.support.sap.com/#/notes/2205917/E)。
+* [SAP 说明1391070：Linux UUID 解决方案](https://launchpad.support.sap.com/#/notes/1391070)。
+* [SAP 说明2009879：Red Hat Enterprise Linux （RHEL）操作系统](https://launchpad.support.sap.com/#/notes/2009879)SAP HANA 准则。
+* [SAP 说明2292690：SAP HANA DB：RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)的建议 OS 设置。
 
 ### <a name="sap-monitoring-in-azure"></a>Azure 中的 SAP 监视
 有关 Azure 中的 SAP 监视的信息：
@@ -85,7 +85,7 @@ ms.locfileid: "72750369"
 ### <a name="azure-vm-types"></a>Azure VM 类型
 适用于 SAP HANA 的 Azure VM 类型和 SAP 支持的工作负荷方案记录在[SAP 认证 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)中。 
 
-Sap[说明1928533： azure 上的 sap 应用程序：支持的产品和 AZURE vm 类型](https://launchpad.support.sap.com/#/notes/1928533/E)中介绍了由 SAP For sap NetWeaver 或 S/4HANA 应用程序层认证的 Azure VM 类型。
+Sap 中的 sap NetWeaver 或 S/4HANA 应用程序层认证的 Azure VM 类型已记录在 SAP 说明 1928533 [中：Azure 上的 SAP 应用程序：](https://launchpad.support.sap.com/#/notes/1928533/E)支持的产品和 Azure VM 类型。
 
 > [!NOTE]
 > SAP-Linux-Azure 集成仅在 Azure 资源管理器部署模型上受支持，在经典部署模型上不受支持。 
@@ -175,20 +175,20 @@ Sap[说明1928533： azure 上的 sap 应用程序：支持的产品和 AZURE vm
  `sudo zypper list-patches`
 
 根据问题种类，可按类别和严重性对修补程序进行分类。 类别的常用值包括： 
-- “安全”
-- 推荐
+- 安全性
+- 建议
 - 可选
-- Feature
-- 文档
+- 功能
+- Document
 - Yast
 
 严重性的常用值有：
 
-- 严重
-- 重要说明
+- 关键
+- 重要提示
 - 中等
 - 低
-- 未指定
+- “未指定”
 
 zypper 命令仅查找已安装的程序包的所需更新。 例如，可以使用以下命令：
 
@@ -358,7 +358,7 @@ IBM Java 版本和与 SLES/SLES for SAP Applications 一起提供的 openjdk 包
 
 ![SAP 管理控制台显示了使用绿色图标在应用服务器 VM 上安装的 ASCS 实例](./media/hana-get-started/image016.jpg)
 
-在应用服务器 VM 上，使用**rw**和**NO_ROOT_SQUASH**选项通过 NFS 共享/sapmnt 目录。 默认选项为“ro”和“root_squash”，这在安装数据库实例时可能会导致出现问题。
+在应用服务器 VM 上，使用 " **rw** " 和 " **no_root_squash** " 选项通过 NFS 共享/sapmnt 目录。 默认选项为“ro”和“root_squash”，这在安装数据库实例时可能会导致出现问题。
 
 ![通过 NFS 并使用 rw 和 no_root_squash 选项共享 /sapmnt 目录](./media/hana-get-started/image017b.jpg)
 
@@ -382,7 +382,7 @@ IBM Java 版本和与 SLES/SLES for SAP Applications 一起提供的 openjdk 包
 
 ![为 SAPABAP1 架构密码输入一个问题](./media/hana-get-started/image037b.jpg)
 
-每完成一个任务，DB 安装过程的每个阶段旁边都将显示一个绿色的对号。 消息 "执行 .。。数据库实例已完成 "。
+每完成一个任务，DB 安装过程的每个阶段旁边都将显示一个绿色的对号。 将显示消息“执行...数据库实例已完成”。
 
 ![包含确认消息的任务已完成窗口](./media/hana-get-started/image023.jpg)
 
@@ -419,7 +419,7 @@ IBM Java 版本和与 SLES/SLES for SAP Applications 一起提供的 openjdk 包
 * [SAP HANA 生命周期管理工具](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)。
 * [SAP HANA server 安装和更新指南](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)。
 
-你想要避免 `\<HANA SID\>adm user` 的默认组 ID 设置的问题，该设置由 HDBLCM 工具创建。 通过 HDBLCM 安装 SAP HANA 之前，请使用 "组 ID" `1001` 定义名为 `sapsys` 的新组：
+你想要避免 `\<HANA SID\>adm user`的默认组 ID 设置的问题，该设置由 HDBLCM 工具创建。 通过 HDBLCM 安装 SAP HANA 之前，请使用 "组 ID" `1001`定义名为 `sapsys` 的新组：
 
 ![使用组 ID 1001 定义的新组“sapsys”](./media/hana-get-started/image030.jpg)
 
@@ -432,7 +432,7 @@ IBM Java 版本和与 SLES/SLES for SAP Applications 一起提供的 openjdk 包
 > [!IMPORTANT]
 > 为 HANA 日志和数据卷命名的目录以及安装路径（在本示例中为/hana/shared）和/usr/sap 不能是根文件系统的一部分。 这些目录属于附加到 VM 的 Azure 数据磁盘。 有关详细信息，请参阅 "磁盘设置" 部分。 
 
-此方法有助于防止根文件系统耗尽空间。 请注意，HANA 系统管理员具有 `1005` 的用户 ID，并且是在安装之前定义的 ID 为 `1001` 的 `sapsys` 组的一部分。
+此方法有助于防止根文件系统耗尽空间。 请注意，HANA 系统管理员具有 `1005` 的用户 ID，并且是在安装之前定义的 ID 为 `1001`的 `sapsys` 组的一部分。
 
 ![之前选择的所有主要 SAP HANA 组件的列表](./media/hana-get-started/image032.jpg)
 

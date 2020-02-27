@@ -15,15 +15,15 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: e2faf3ad7ed41c14745337414703d9fb0db54152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 14e2cdd5d4a1662e86a055165fdd15a38d29225b
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033562"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651043"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
-以下 SPECInt 基准测试分数显示运行 Windows Server 的特定 Azure VM 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的计算基准测试分数。
+以下 SPECInt 基准测试分数显示了用于选择运行 Windows Server 的 Azure Vm 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的计算基准测试分数。
 
 
 ## <a name="av2---general-compute"></a>Av2 - 常规计算
@@ -51,7 +51,9 @@ ms.locfileid: "74033562"
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 104.5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 13 | 111.6 | 2.3 | 
 
-## <a name="b---burstable"></a>B - 可迸发
+注意： Av2 系列 Vm 可以部署在各种不同的硬件类型和处理器上（如上所示）。 Av2 系列 Vm 具有最适合于入门级工作负荷（如开发和测试）的 CPU 性能和内存配置。 大小被限制为为正在运行的实例提供相对一致的处理器性能，而不考虑部署它的硬件;但是，利用特定的较新处理器优化的软件可能会发现跨处理器类型的更大变化。
+
+## <a name="b---burstable"></a>B-可突增
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 6.3 | 0.2 | 
@@ -63,6 +65,10 @@ ms.locfileid: "74033562"
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
+
+注意： B 系列 Vm 适用于具有可突增性能要求的工作负荷。 当使用小于基线时，VM 实例累积了信用额度。 当 VM 具有累积信用额度时，VM 可能会在基线之上使用最多100% 的流量，以满足短 CPU 突发要求。 突发时间取决于可用信用额度，它是 VM 大小和时间的函数。  
+
+SPEC Int 是相当长的运行测试，通常用完可用的突发信用额度。  因此，上面的数字更接近于 VM 的基准性能（尽管它们可能反映了两次运行之间累积的某些突发时间）。  对于 short、突发、工作负荷（通常在 B 系列上），性能通常会更接近 Ds v3 系列。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 通用计算 + 高级存储
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -175,7 +181,7 @@ ms.locfileid: "74033562"
 | Standard_E64-16s_v3 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 3 | 334.3 | 1.5 | 
 | Standard_E64-32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 592.5 | 4.4 | 
 
-## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 - 内存优化 + 高级存储（独立）
+## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-内存选择 + 高级存储（独立）
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1073.9 | 5.7 | 
@@ -191,7 +197,7 @@ ms.locfileid: "74033562"
 | Standard_E32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 579.9 | 16.1 | 
 | Standard_E64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 1080.0 | 11.3 | 
 
-## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 - 内存优化（独立）
+## <a name="eiv3---memory-optimized-isolated"></a>Eiv3-内存优化（独立）
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64i_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1081.4 | 11.1 | 
@@ -305,21 +311,21 @@ ms.locfileid: "74033562"
 | Standard_M64ls | 64 | 2 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 1015.2 | 10.0 | 
 | Standard_M8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 158.2 | 5.5 | 
 
-## <a name="ncsv3---gpu-enabled"></a>NCSv3 - 支持 GPU
+## <a name="ncsv3---gpu-enabled"></a>NCSv3-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NC6s_v3 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 6 | 230.2 | 1.6 | 
-| Standard_NC12s_v3 | 12 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 7 | 425.0 | 3.6 | 
-| Standard_NC24rs_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 2 | 811.0 | 4.2 | 
-| Standard_NC24s_v3 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 3 | 809.3 | 2.3 | 
+| Standard_NC6s_v3 | 6 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 6 | 230.2 | 1.6 | 
+| Standard_NC12s_v3 | 12 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 7 | 425.0 | 3.6 | 
+| Standard_NC24rs_v3 | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 2 | 811.0 | 4.2 | 
+| Standard_NC24s_v3 | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 3 | 809.3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NC6s_v2 | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 227.0 | 6.2 | 
-| Standard_NC12s_v2 | 12 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 9 | 427.3 | 1.3 | 
-| Standard_NC24rs_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 12 | 811.0 | 5.4 | 
-| Standard_NC24s_v2 | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 811.5 | 4.4 | 
+| Standard_NC6s_v2 | 6 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 227.0 | 6.2 | 
+| Standard_NC12s_v2 | 12 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 9 | 427.3 | 1.3 | 
+| Standard_NC24rs_v2 | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 12 | 811.0 | 5.4 | 
+| Standard_NC24s_v2 | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 811.5 | 4.4 | 
 
 ## <a name="nc---gpu-enabled"></a>NC-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
@@ -332,10 +338,10 @@ ms.locfileid: "74033562"
 ## <a name="nds--gpu-enabled"></a>已启用 NDs-GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_ND6s | 6 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 8 | 230.1 | 1.2 | 
-| Standard_ND12s | 12 | 1 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 426.5 | 1.4 | 
-| Standard_ND24rs | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 10 | 811.4 | 3.5 | 
-| Standard_ND24s | 24 | 2 | Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz | 11 | 812.6 | 4.4 | 
+| Standard_ND6s | 6 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 8 | 230.1 | 1.2 | 
+| Standard_ND12s | 12 | 1 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 426.5 | 1.4 | 
+| Standard_ND24rs | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 10 | 811.4 | 3.5 | 
+| Standard_ND24s | 24 | 2 | Intel （R）至强（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 812.6 | 4.4 | 
 
 ## <a name="nv---gpu-enabled"></a>NV-已启用 GPU
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 

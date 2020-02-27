@@ -3,12 +3,12 @@ title: 限制和边界 - QnA Maker
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252002"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650361"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 
@@ -55,7 +55,7 @@ ms.locfileid: "77252002"
 
 ## <a name="metadata-limits"></a>元数据限制
 
-存储元数据，并以小写形式进行比较。
+元数据显示为基于文本的键：值对，如 `product:windows 10`。 它以小写形式存储和比较。
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>由 Azure 认知搜索定价层
 
@@ -71,8 +71,8 @@ ms.locfileid: "77252002"
 
 |Item|允许的字符|Regex 模式匹配|最大字符数|
 |--|--|--|--|
-|名称|可用<br>字母数字（字母和数字）<br>`_` （下划线）|`^[a-zA-Z0-9_]+$`|100|
-|值|允许除以外的所有内容<br>`:` （冒号）<br>`|` （垂直管道）|`^[^:|]+$`|500|
+|名称（键）|可用<br>字母数字（字母和数字）<br>`_` （下划线）<br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
+|值|允许除以外的所有内容<br>`:` （冒号）<br>`|` （垂直管道）<br>仅允许一个值。|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>知识库内容限制
@@ -103,4 +103,4 @@ ms.locfileid: "77252002"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解何时以及如何更改[服务定价层](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)。
+了解何时以及如何更改[服务定价层](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)。

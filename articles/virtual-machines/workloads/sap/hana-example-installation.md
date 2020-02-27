@@ -4,21 +4,21 @@ description: 如何在 Azure SAP HANA（大型实例）上安装 HANA。
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
-ms.author: rclaus
+ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d266f458894d93540977c995ff7e8ab71414083f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101276"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617215"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>在 Azure SAP HANA（大型实例）上安装 HANA
 
@@ -39,7 +39,7 @@ HANA 大型实例单元不会直接连接 Internet。 无法直接将安装包�
 
 需要以 SAP S 用户或其他用户的身份访问 SAP市场。
 
-1. 登录并转到 [SAP 服务市场](https://support.sap.com/en/index.html)。 选择“下载软件” > “安装和升级” > “按字母顺序排列的索引”。 然后选择“H 下 - SAP HANA 平台版本” > “SAP HANA 平台版 2.0” > “安装”。 下载以下屏幕截图中所示的文件。
+1. 登录并转到 [SAP 服务市场](https://support.sap.com/en/index.html)。 选择“下载软件” **“安装和升级”** “按字母顺序排列的索引”。 >  >  然后选择“H 下 - SAP HANA 平台版本” **“SAP HANA 平台版 2.0”** “安装”。 >  >  下载以下屏幕截图中所示的文件。
 
    ![要下载的文件屏幕截图](./media/hana-installation/image16_download_hana.PNG)
 

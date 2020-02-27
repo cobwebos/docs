@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: c6c07c48bf94b50d46a50a47f57857fdd15a0e8e
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8e428732fb49d27e3991071b87abee53b6e375b2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697228"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648371"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：使用 Azure PowerShell 创建具有证书的服务主体
 
@@ -50,7 +50,7 @@ ms.locfileid: "76697228"
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>使用自签名证书创建服务主体
 
-下面的示例介绍了简单的方案。 它使用[AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)创建具有自签名证书的服务主体，并使用[New-azurermroleassignment](/powershell/module/az.resources/new-azroleassignment)将 "[读取](/azure/role-based-access-control/built-in-roles#reader)者" 角色分配给服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
+下面的示例介绍了简单的方案。 它使用[AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)创建具有自签名证书的服务主体，并使用[AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)将 "[读取](/azure/role-based-access-control/built-in-roles#reader)者" 角色分配给服务主体。 角色分配的范围限定为当前所选 Azure 订阅。 若要选择其他订阅，请使用 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。
 
 > [!NOTE]
 > New-selfsignedcertificate cmdlet 和 PKI 模块目前在 PowerShell Core 中不受支持。 

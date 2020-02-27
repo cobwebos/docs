@@ -2,21 +2,21 @@
 title: Azure 数据库迁移服务的先决条件
 description: 了解使用 Azure 数据库迁移服务执行数据库迁移的先决条件的概述。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/25/2020
+ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748733"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651485"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务的先决条件概述
 
@@ -35,18 +35,25 @@ ms.locfileid: "75748733"
 * 按照[启用或禁用服务器网络协议](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)一文中的说明启用 TCP/IP 协议（在安装 SQL Server Express 时，会默认禁用它）。
 
     > [!IMPORTANT]
-    > 创建 Azure 数据库迁移服务的实例需要访问通常不在同一资源组中的虚拟 networt 设置。 因此，创建 DMS 实例的用户需要订阅级别的权限。 若要创建根据需要分配的必需角色，请运行以下脚本：
+    > 创建 Azure 数据库迁移服务的实例需要访问通常不在同一资源组中的虚拟网络设置。 因此，创建 DMS 实例的用户需要订阅级别的权限。 若要创建根据需要分配的必需角色，请运行以下脚本：
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -116,7 +123,7 @@ ms.locfileid: "75748733"
 
    > [!NOTE]
    > 有关使用 Azure 数据库迁移服务执行从 SQL Server 到 Azure SQL 数据库的迁移所需的先决条件的完整列表，请参阅教程[将 SQL Server 迁移到 Azure SQL 数据库](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)。
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>将 SQL Server 迁移到 Azure SQL 数据库托管实例的先决条件
 

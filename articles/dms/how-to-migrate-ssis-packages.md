@@ -3,21 +3,21 @@ title: 将 SSIS 包重新部署到 SQL 单一数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务和数据迁移助手将 SQL Server Integration Services 包和项目迁移或重新部署到 Azure SQL 数据库单一数据库。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437965"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648523"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>通过 Azure 数据库迁移服务将 SSIS 包重新部署到 Azure SQL 数据库
 
@@ -34,7 +34,7 @@ ms.locfileid: "75437965"
 > * 评估源 SSIS 项目/包。
 > * 将 SSIS 项目/包迁移到 Azure。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 
@@ -81,9 +81,9 @@ ms.locfileid: "75437965"
 8. 选择“**下一页**”。
 9. 在“选择目标”页上，指定项目目标。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 "服务器名称" 文本框中，输入完全限定的 Azure SQL 数据库服务器名称（< server_name ">"。
+    a. 在 "服务器名称" 文本框中，输入完全限定的 Azure SQL 数据库服务器名称（< server_name ">"。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 提供身份验证信息，然后选择“连接”。
+    b. 提供身份验证信息，然后选择“连接”。
 
     ![“部署向导选择目标”页](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-destination-page.png)
 
@@ -106,8 +106,8 @@ ms.locfileid: "75437965"
 13. 选择“部署”启动部署进程。
 
 14. 完成部署进程后，可查看“结果”页，其中显示每一次成功或失败的部署操作。
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 如果任何操作失败，请在“结果”列中选择“失败”以显示错误说明。
-    b.保留“数据库类型”设置，即设置为“共享”。 （可选）选择“保存报表”以将结果保存到 XML 文件。
+    a. 如果任何操作失败，请在“结果”列中选择“失败”以显示错误说明。
+    b. （可选）选择“保存报表”以将结果保存到 XML 文件。
 
 15. 选择“关闭”以退出 Integration Services 部署向导。
 

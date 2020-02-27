@@ -2,21 +2,21 @@
 title: 监视迁移活动-Azure 数据库迁移服务
 description: 了解如何使用 Azure 数据库迁移服务来监视迁移活动。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437937"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648506"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>使用 Azure 数据库迁移服务监视迁移活动
 本文介绍如何在数据库级别和表级别监视迁移进度。
@@ -63,11 +63,11 @@ ms.locfileid: "75437937"
       <td>DMS 管道正在运行并执行迁移。</td>
     </tr>
     <tr>
-      <td>完整性</td>
+      <td>完成</td>
       <td>迁移已完成。</td>
     </tr>
     <tr>
-      <td>已失败</td>
+      <td>失败</td>
       <td>迁移失败。 单击迁移详细信息可查看迁移错误。</td>
     </tr>
     <tr>
@@ -93,7 +93,7 @@ ms.locfileid: "75437937"
     </tr>
     <tr>
       <td rowspan="1" class="duration"><strong>Duration</strong></td>
-      <td>N/A</td>
+      <td>空值</td>
       <td>从迁移活动初始化到迁移完成或迁移出错的总时间。</td>
     </tr>
      </tbody>
@@ -108,7 +108,7 @@ ms.locfileid: "75437937"
 
 下表描述了表级别详细信息中显示的字段。
 
-| 字段名        | Description       |
+| 字段名        | 说明       |
 | ------------- | ------------- |
 | **完整加载已完成**      | 已完成完整数据加载的表数。 |
 | **完整加载已排队**      | 正在排队等待完整加载的表数。      |
@@ -129,7 +129,7 @@ ms.locfileid: "75437937"
 
 下表描述了表级别迁移进度中显示的字段。
 
-| 字段名        | Description       |
+| 字段名        | 说明       |
 | ------------- | ------------- |
 | **状态 - 正在同步**      | 连续同步正在运行。 |
 | **插入**      | 行中已应用到目标的 CDC 插入操作数目。      |

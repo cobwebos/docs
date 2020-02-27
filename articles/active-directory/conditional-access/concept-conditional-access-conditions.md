@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192228"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620733"
 ---
 # <a name="conditional-access-conditions"></a>条件性访问：条件
 
@@ -52,21 +52,35 @@ Azure AD 条件访问支持以下设备平台：
 
 当包含**任何位置**时，此选项包含 internet 上的任何 IP 地址，而不仅仅是配置的命名位置。 选择**任何位置**时，管理员可以选择排除**所有受信任**的或**选定的位置**。
 
-例如，某些组织可能会选择在其用户连接到受信任位置（如其物理总部）的网络时不需要多重身份验证。 管理员可以创建一个策略，该策略包括任何位置，但不包括其总部网络所选位置
+例如，某些组织可能会选择在其用户连接到受信任位置（如其物理总部）的网络时不需要多重身份验证。 管理员可以创建一个包含任何位置的策略，但不包括为其总部网络选择的位置。
+
+有关位置的详细信息，请参阅文章： [Azure Active Directory 条件访问中的位置条件](location-condition.md)。
 
 ## <a name="client-apps-preview"></a>客户端应用（预览）
 
 默认情况下，条件访问策略适用于基于浏览器的应用程序和使用新式身份验证协议的应用程序。 除了这些应用程序，管理员还可以选择包括 Exchange ActiveSync 客户端和使用旧协议的其他客户端。
 
-- 浏览器
+- 浏览者
    - 其中包括使用 SAML、WS 联合身份验证、OpenID Connect 或注册为 OAuth 机密客户端的服务等协议的基于 web 的应用程序。
 - 移动应用和桌面客户端
    - 新式身份验证客户端
       - 此选项包括 Office desktop 和 phone 应用程序之类的应用程序。
    - Exchange ActiveSync 客户端
+      - 默认情况下，这包括 Exchange ActiveSync （EAS）协议的所有使用。 将**策略仅应用到受支持的平台**会限制为 IOS、Android 和 Windows 等支持的平台。
       - 当策略阻止使用 Exchange ActiveSync 时，受影响的用户将收到单个隔离电子邮件。 此电子邮件提供了阻止阻止的原因，并提供了修正说明（如果可以）。
    - 其他客户端
-      - 此选项包括使用基本/旧身份验证协议（包括 IMAP、MAPI、POP、SMTP 以及不支持新式身份验证的旧版 Office 应用程序）的客户端。
+      - 此选项包括使用不支持新式身份验证的基本/旧身份验证协议的客户端。
+         - 经过身份验证的 SMTP-POP 和 IMAP 客户端使用它来发送电子邮件。
+         - 自动发现-由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。
+         - Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+         - Exchange Web 服务（EWS）-Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。
+         - IMAP4-由 IMAP 电子邮件客户端使用。
+         - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 及更高版本使用。
+         - 脱机通讯簿（OAB）-Outlook 下载并使用的地址列表集合的副本。
+         - Outlook Anywhere （RPC over HTTP）-由 Outlook 2016 及更早版本使用。
+         - Outlook 服务-适用于 Windows 10 的邮件和日历应用程序使用。
+         - POP3-由 POP 电子邮件客户端使用。
+         - 报表 Web 服务-用于在 Exchange Online 中检索报表数据。
 
 这些条件通常用于以下情况：需要托管设备、阻止旧身份验证和阻止 web 应用程序，但允许移动或桌面应用。
 
@@ -100,19 +114,19 @@ Azure AD 条件访问支持以下设备平台：
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | 名称 | 1 |
 | 类型 | REG_SZ (String) |
-| 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
+| data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
 对于 Windows 8.1 和 7 中的 Chrome 支持，请创建以下注册表项：
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | 名称 | 1 |
 | 类型 | REG_SZ (String) |
-| 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 这些浏览器支持设备身份验证，允许根据策略对设备进行识别和验证。 如果浏览器以专用模式运行，设备检查将失败。
 
@@ -139,7 +153,7 @@ Azure AD 条件访问支持以下设备平台：
 | Outlook 2016、Outlook 2013（采用新式身份验证）、Skype for Business（采用新式身份验证） | Office 365 Exchange Online | Windows 8.1、Windows 7 |
 | Outlook 移动应用 | Office 365 Exchange Online | Android、iOS |
 | Power BI 应用程序 | Power BI 服务 | Windows 10、Windows 8.1、Windows 7、Android 和 iOS |
-| Skype for Business | Office 365 Exchange Online| Android、IOS |
+| Skype for Business | Office 365 Exchange Online| Android、iOS |
 | Visual Studio Team Services 应用 | Visual Studio Team Services | Windows 10、Windows 8.1、Windows 7、iOS 和 Android |
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync 客户端

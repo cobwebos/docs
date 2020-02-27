@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: b7eed4089a65f62056027c70f08902f531567c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 742ef62895f3ef64e8fa22ab21d2947bee57776b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445271"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623355"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>将非分区容器迁移到已分区容器
 
-Azure Cosmos DB 支持不使用分区键创建容器。 目前，可以使用 Azure CLI 和 Azure Cosmos DB Sdk （.Net、Java、NodeJs）创建非分区容器，该版本的版本小于或等于2.x。 不能使用 Azure 门户创建未分区的容器。 但是，此类未分区容器不具有弹性，并且具有 10 GB 的固定存储容量，且吞吐量限制为 10K RU/s。
+Azure Cosmos DB 支持不使用分区键创建容器。 目前，可以使用 Azure CLI 和 Azure Cosmos DB Sdk （.Net、Java、NodeJs）创建非分区容器，该版本的版本小于或等于2.x。 不能使用 Azure 门户创建未分区的容器。 但是，此类未分区容器不具有弹性，具有 20 GB 的固定存储容量，且吞吐量限制为 10K RU/s。
 
 非分区容器是旧的，应将现有的非分区容器迁移到已分区容器，以缩放存储和吞吐量。 Azure Cosmos DB 提供了一种系统定义的机制，用于将未分区容器迁移到已分区容器。 本文档介绍如何将所有现有的非分区容器自动迁移到已分区容器。 仅当在所有语言中使用 Sdk 版本的 Sdk 时，才能利用自动迁移功能。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429058"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586999"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教程：使用 Azure 门户创建 NAT 网关并测试 NAT 服务
 
@@ -30,10 +30,7 @@ ms.locfileid: "77429058"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-> [!IMPORTANT]
-> 在订阅中启用虚拟网络 NAT [预览版](./nat-overview.md#enable-preview)后，使用 https://aka.ms/natportal 访问门户。
-
-登录 [Azure 门户](https://aka.ms/natportal)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>准备出站流量的源
 

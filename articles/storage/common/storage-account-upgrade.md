@@ -6,25 +6,25 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: eb3523ca55e67d7a26ae608da8963dbf6124f2f7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975828"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616832"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 
 常规用途 v2 存储帐户支持最新的 Azure 存储功能，并整合了常规用途 v1 和 Blob 存储帐户的所有功能。 建议将常规用途 v2 帐户用于大多数存储方案。 常规用途 v2 帐户为 Azure 存储提供最低的每 GB 容量价格，以及具有行业竞争力的事务处理价格。 常规用途 v2 帐户支持 "热"、"冷" 或 "存档" 之间的 "热"、"冷" 和 "blob" 级别分层的默认帐户访问层。
 
-从常规用途 v1 存储帐户或 Blob 存储帐户升级到常规用途 v2 存储帐户很简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。
+从常规用途 v1 或 Blob 存储帐户升级到常规用途 v2 存储帐户非常简单。 可以使用 Azure 门户、PowerShell 或 Azure CLI 进行升级。 升级到常规用途 v2 存储帐户时，不会造成数据丢失或数据丢失的风险。 帐户升级通过简单的 Azure 资源管理器操作进行，此操作可更改帐户类型。
 
 > [!IMPORTANT]
 > 将常规用途 v1 或 Blob 存储帐户升级为常规用途 v2 是永久性的，无法撤消。
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 导航到存储帐户。
@@ -35,7 +35,7 @@ ms.locfileid: "75975828"
 
     ![升级帐户种类](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "75975828"
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 将常规用途 v1 帐户升级为常规用途 v2 帐户，请先安装最新版的 Azure CLI。 请参阅 [Install the Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)（安装 Azure CLI 2.0），了解如何安装 CLI。
 

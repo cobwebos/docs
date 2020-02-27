@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 18b32c0fb0b2d203b3536e7a859e149da8453f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458112"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624138"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 调试 Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -78,7 +78,7 @@ ms.locfileid: "75458112"
     此操作将启动在群集节点上启用远程调试扩展的过程，以及所需的网络配置。
 2. 右键单击“**Cloud Explorer**”中的群集节点，并选择“**附加调试器**”。
    
-    ![附加调试器][attachdebugger]
+    ![附加调试程序][attachdebugger]
 3. 在“**附加到进程**”对话框中，选择想要调试的进程，并单击“**附加**”。
    
     ![选择进程][chooseprocess]

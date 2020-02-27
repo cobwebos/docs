@@ -8,16 +8,16 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 54a1d1183ac16f5ec3db5477cda75c6e1a776b3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786872"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647646"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
-若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/protocol/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/sftp/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
+若要使用[安全外壳 (SSH)](https://www.ssh.com/ssh/sftp/) 协议自动完成用于在[安全文件传输协议 (SFTP)](https://www.ssh.com/ssh/protocol/) 服务器上监视、创建、发送和接收文件的任务，可以使用 Azure 逻辑应用和 SFTP-SSH 连接器来生成并自动完成集成工作流。 SFTP 是通过任何可靠数据流提供文件访问、文件传输和文件管理的网络协议。 下面是可以自动完成的一些示例任务：
 
 * 添加或更改文件时进行监视。
 * 获取、创建、复制、重命名、更新、列出和删除文件。
@@ -25,11 +25,11 @@ ms.locfileid: "74786872"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 有关 SFTP SSH 连接器与 SFTP 连接器之间的差异，请参阅本主题后面的[比较 sftp-SSH 与 sftp](#comparison)部分。
 
-## <a name="limits"></a>Limits
+## <a name="limits"></a>限制
 
 * 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 为了处理大于 15 MB 的文件，SFTP SSH 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)，但 "复制文件" 操作除外，它只能处理 15 MB 的文件。 "**获取文件内容**" 操作隐式使用消息块。
 
@@ -57,7 +57,7 @@ ms.locfileid: "74786872"
 
 * 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 属性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -84,10 +84,10 @@ ms.locfileid: "74786872"
 
 SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上次轮询以来发生更改的任何文件。 某些工具允许保留文件更改时的时间戳。 在这种情况下，必须禁用此功能才能让触发器正常工作。 下面是一些常见设置：
 
-| SFTP 客户端 | 行动 |
+| SFTP 客户端 | 操作 |
 |-------------|--------|
-| Winscp | 转到“选项” > “首选项” > “传输” > “编辑” > “保留时间戳” > “禁用” |
-| FileZilla | 转到“传输” > “保留已传输文件的时间戳” > “禁用” |
+| Winscp | 转到“选项” **“首选项”** “传输” > “编辑” **“保留时间戳”** “禁用” >  >  >  >  |
+| FileZilla | 转到“传输” **“保留已传输文件的时间戳”** “禁用” >  >  |
 |||
 
 当触发器找到新文件时，会检查该新文件是否完整，以及是否未部分写入。 例如，当触发器检查文件服务器时，可能正在更改某个文件。 为了避免返回部分写入的文件，该触发器会记录具有最近更改的文件的时间戳，但不会立即返回该文件。 仅当再次轮询服务器时，触发器才会返回该文件。 有时，此行为可能会导致延迟，长达触发器轮询间隔的两倍。
@@ -134,7 +134,7 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 对于空白逻辑应用，请在搜索框中输入“sftp ssh”作为筛选器。 在触发器列表下，选择所需的触发器。
 
@@ -182,7 +182,10 @@ SFTP SSH 触发器的工作方式是轮询 SFTP 文件系统，并查找自上�
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/sftpconnector/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sftpwithssh/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

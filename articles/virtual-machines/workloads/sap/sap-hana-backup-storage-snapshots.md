@@ -4,34 +4,34 @@ description: 对于 Azure 虚拟机上的 SAP HANA，可以采用两种可行的
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078600"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617418"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 本文是有关 SAP HANA 备份的系列教程所包含的三篇文章中的一篇。 [Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)提供概述和入门信息，[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)介绍基于文件的备份选项。
 
-针对单实例多合一演示系统使用 VM 备份功能时，应该考虑执行 VM 备份，而不是在 OS 级别管理 HANA 备份。 创建 Azure Blob 快照的替代做法是为附加到虚拟机的单个虚拟磁盘创建副本，并保留 HANA 数据文件。 但一个要点是，在系统已启动并运行的情况下，应该在创建 VM 备份或磁盘快照时保持应用一致性。 请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_。 SAP HANA 提供了一项功能用于支持此类存储快照。
+针对单实例多合一演示系统使用 VM 备份功能时，应该考虑执行 VM 备份，而不是在 OS 级别管理 HANA 备份。 创建 Azure Blob 快照的替代做法是为附加到虚拟机的单个虚拟磁盘创建副本，并保留 HANA 数据文件。 但一个要点是，在系统已启动并运行的情况下，应该在创建 VM 备份或磁盘快照时保持应用一致性。 请参阅相关文章_Azure 虚拟机上的 SAP HANA 备份指南_中的[创建存储快照时保持 SAP HANA 数据一致性](sap-hana-backup-guide.md)。 SAP HANA 提供了一项功能用于支持此类存储快照。
 
 ## <a name="sap-hana-snapshots-as-central-part-of-application-consistent-backups"></a>作为应用程序一致性备份的核心部分的 SAP HANA 快照
 
 SAP HANA 中提供了一项用于支持创建存储快照的功能。 仅限于对单容器系统使用该功能。 具有多个租户的 SAP HANA MCS 方案不支持这种类型的 SAP HANA 数据库快照（请参阅[创建存储快照 (SAP HANA Studio)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a0/3f8f08501e44d89115db3c5aa08e3f/content.htm)）。
 
-其工作原理，如下所示：
+此功能的工作原理如下：
 
 - 通过启动 SAP HANA 快照来准备存储快照
 - 运行存储快照（例如 Azure Blob 快照）
@@ -49,7 +49,7 @@ SAP HANA 中提供了一项用于支持创建存储快照的功能。 仅限于�
 
 在磁盘上，该快照会显示在 SAP HANA 数据目录中。
 
-当 SAP HANA 处于快照准备模式时，在运行存储快照之前，用户还必须保证文件系统一致性。 请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_。
+当 SAP HANA 处于快照准备模式时，在运行存储快照之前，用户还必须保证文件系统一致性。 请参阅相关文章_Azure 虚拟机上的 SAP HANA 备份指南_中的[创建存储快照时保持 SAP HANA 数据一致性](sap-hana-backup-guide.md)。
 
 存储快照完成后，务必确认 SAP HANA 快照。 可以运行一个相应的 SQL 语句：BACKUP DATA CLOSE SNAPSHOT（请参阅 [BACKUP DATA CLOSE SNAPSHOT 语句（备份和恢复）](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/9739966f7f4bd5818769ad4ce6a7f8/content.htm)）。
 
@@ -74,7 +74,7 @@ _&quot;应用程序需要对还原的数据实施自身的&quot;修复&quot;机�
 
 该文章指出：
 
-_&quot;强烈建议在创建存储快照后，尽快确认或丢弃该快照。准备或创建存储快照时，快照相关的数据会被冻结。当快照相关的数据保持冻结状态时，仍可在数据库中进行更改。此类更改不会导致冻结的快照相关数据发生更改。这些更改将写入到数据区域中独立于存储快照的位置。另外，这些更改还会写入到日志中。但是，快照相关数据保持冻结的时间越长，增长的数据量可能越大。&quot;_
+_&quot;强烈建议您在创建存储快照之后尽快确认或放弃存储快照。准备或创建存储快照时，与快照相关的数据会被冻结。尽管快照相关数据保持冻结，但仍可以在数据库中进行更改。此类更改不会导致更改冻结快照相关数据。相反，所做的更改将写入不同于存储快照的数据区域中的位置。更改也会写入日志。但是，快照相关数据的冻结时间越长，数据量就越多。&quot;_
 
 Azure 备份通过 Azure VM 扩展来处理文件系统一致性。 这些扩展不可单独使用，只能与 Azure 备份服务结合使用。 但无论如何，都必须提供脚本才能创建和删除 SAP HANA 快照，以保证应用一致性。
 
@@ -134,7 +134,7 @@ Azure 备份最终会允许备份单个 Azure 虚拟磁盘，以及 VM 内部的
 
 - 在测试时，我们将两个 Azure 数据磁盘附加到了 VM，并在这些磁盘的顶层定义了软件 RAID 
 - 经确认，SAP HANA 快照功能能使 SAP HANA 保持一致状态
-- 文件系统冻结（请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_）
+- 文件系统冻结（请参阅相关文章_Azure 虚拟机上的 SAP HANA 备份指南_中的[创建存储快照时保持 SAP HANA 数据一致性](sap-hana-backup-guide.md)）
 - Blob 快照是从这两个数据磁盘创建的
 - 文件系统解冻
 - SAP HANA 快照确认
@@ -144,7 +144,7 @@ Azure 备份最终会允许备份单个 Azure 虚拟磁盘，以及 VM 内部的
 - 启动 VM 后，软件 RAID 中的所有组件都能正常工作，并已设置回到 Blob 快照时间
 - HANA 已设置回到 HANA 快照
 
-如果在创建 Blob 快照之前能够关闭 SAP HANA，则过程不会很复杂。 在这种情况下，可以跳过 HANA 快照；如果系统中没有其他正在进行的操作，则还可以跳过文件系统冻结。 如果在所有内容都联机的情况下需要执行快照，则复杂性会明显增大。 请参阅相关文章[Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)中的_创建存储快照时保持 SAP HANA 数据一致性_。
+如果在创建 Blob 快照之前能够关闭 SAP HANA，则过程不会很复杂。 在这种情况下，可以跳过 HANA 快照；如果系统中没有其他正在进行的操作，则还可以跳过文件系统冻结。 如果在所有内容都联机的情况下需要执行快照，则复杂性会明显增大。 请参阅相关文章_Azure 虚拟机上的 SAP HANA 备份指南_中的[创建存储快照时保持 SAP HANA 数据一致性](sap-hana-backup-guide.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)提供了概述和入门信息。

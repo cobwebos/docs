@@ -9,17 +9,17 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 3990a9d53a8e53ddd29683440917031bc1bb6448
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 39ab222f64d964e95b16e043c9cdeccd8170ace3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904650"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651009"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到 SAP 系统
 
 > [!IMPORTANT]
-> 之前的 SAP 应用程序服务器和 SAP 消息服务器连接器在2020年2月29日计划为弃用。 当前 SAP 连接器合并了这些以前的 SAP 连接器，因此你无需更改连接类型，与以前的连接器完全兼容，提供了许多附加功能，并继续使用 SAP .Net 连接器库（SAP NCo）。
+> 早于2020年2月29日的 SAP 应用程序服务器和 SAP 消息服务器连接器已弃用。 当前 SAP 连接器合并了这些以前的 SAP 连接器，因此你无需更改连接类型，与以前的连接器完全兼容，提供了许多附加功能，并继续使用 SAP .Net 连接器库（SAP NCo）。
 >
 > 对于使用较旧连接器的逻辑应用，请在弃用日期之前[迁移到最新的连接器](#migrate)。 否则，这些逻辑应用将会遇到执行失败，并且无法将消息发送到 SAP 系统。
 
@@ -39,7 +39,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 <a name="pre-reqs"></a>
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要遵循本文中的步骤，需准备好以下各项：
 
@@ -464,7 +464,7 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
    ![在连接中配置 SAP SNC](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | 属性 | Description |
+   | properties | 说明 |
    |----------| ------------|
    | **SNC 库路径** | 相对于 NCo 安装位置或绝对路径的 SNC 库名称或路径。 示例 `sapsnc.dll` 或 `.\security\sapsnc.dll` 或 `c:\security\sapsnc.dll`。 |
    | **SNC SSO** | 通过 SNC 连接时，SNC 标识通常用于对调用方进行身份验证。 另一种方法是重写，以便可以使用用户和密码信息对调用方进行身份验证，但行仍然是加密的。 |
@@ -556,7 +556,10 @@ SAP 连接器通过[本地数据网关](../logic-apps/logic-apps-gateway-connect
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关由连接器的 OpenAPI （以前为 Swagger）说明描述的触发器、操作和限制的技术详细信息，请查看[连接器的参考页](/connectors/sap/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/sap/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

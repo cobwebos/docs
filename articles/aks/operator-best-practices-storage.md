@@ -4,12 +4,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 6521655ded45f0a1d15c3ec40a44993d757b8854
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594662"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649613"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -35,7 +35,7 @@ ms.locfileid: "77594662"
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | 共享配置       | Azure 文件   | 是 | 是 | 是 | 是 |
 | 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  | 是 |
-| 非结构化的数据，文件系统操作 | [BlobFuse （预览版）][blobfuse] | 是 | 是 | 是 | 否 |
+| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | 是 | 是 | 是 | 否 |
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 

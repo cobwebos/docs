@@ -3,18 +3,18 @@ title: 定义变量的多个实例
 description: 在创建变量时，请使用 Azure 资源管理器模板中的复制操作多次迭代。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210809"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622885"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的变量迭代
 
 本文介绍如何为 Azure 资源管理器模板中的变量创建多个值。 通过将**copy**元素添加到模板的 variables 节，你可以在部署期间动态设置变量的项数。 还应避免重复模板语法。
 
-还可以对[资源中](copy-properties.md)的[资源](copy-resources.md)和属性使用 copy。
+你还可以使用包含[资源](copy-resources.md)的副本、[资源中的属性](copy-properties.md)和[输出](copy-outputs.md)。
 
 ## <a name="variable-iteration"></a>变量迭代
 
@@ -313,7 +313,10 @@ Copy 元素具有以下常规格式：
 ## <a name="next-steps"></a>后续步骤
 
 * 要查看教程，请参阅[教程：使用资源管理器模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关 copy 元素的其他用法，请参阅 azure[中的资源迭代资源管理器模板](copy-resources.md)和[azure 资源管理器模板中的属性迭代](copy-properties.md)。
+* 有关 copy 元素的其他用法，请参阅：
+  * [Azure 资源管理器模板中的资源迭代](copy-resources.md)
+  * [Azure 资源管理器模板中的属性迭代](copy-properties.md)
+  * [Azure 资源管理器模板中的输出迭代](copy-outputs.md)
 * 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。
 

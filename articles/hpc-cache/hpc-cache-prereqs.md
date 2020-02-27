@@ -4,14 +4,14 @@ description: 使用 Azure HPC 缓存的先决条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: rohogue
-ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251951"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651060"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 缓存的先决条件
 
@@ -95,7 +95,9 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 > [!NOTE]
 > 如果缓存对 NFS 存储系统的访问权限不足，则存储目标创建将失败。
 
-* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。
+有关[解决 NAS 配置和 NFS 存储目标问题](troubleshoot-nas.md)的详细信息。
+
+* **网络连接：** Azure HPC 缓存需要在缓存子网和 NFS 系统的数据中心之间进行高带宽的网络访问。 建议使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/)或类似的访问。 如果使用的是 VPN，你可能需要将其配置为将 TCP MSS 固定在1350，以确保不会阻止较大的数据包。 阅读[vpn 数据包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)，了解有关 vpn 设置疑难解答的详细信息。
 
 * **端口访问：** 缓存需要访问存储系统上的特定 TCP/UDP 端口。 不同类型的存储具有不同的端口要求。
 
@@ -109,6 +111,8 @@ Azure HPC 缓存需要具有以下特性的专用子网：
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
+  请确保 ``rpcinfo`` 查询返回的所有端口都允许来自 Azure HPC 缓存的子网的不受限制的流量。
+
   * 除了 `rpcinfo` 命令返回的端口，请确保这些常用端口允许入站和出站流量：
 
     | 协议 | 端口  | 服务  |
@@ -121,16 +125,20 @@ Azure HPC 缓存需要具有以下特性的专用子网：
 
   * 检查防火墙设置，以确保它们允许所有这些所需端口上的流量。 请确保检查 Azure 中使用的防火墙以及数据中心内的本地防火墙。
 
-* **目录访问：** 在存储系统上启用 `showmount` 命令。 Azure HPC 缓存使用此命令检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录（风险文件发生冲突）。
+* **目录访问：** 在存储系统上启用 `showmount` 命令。 Azure HPC 缓存使用此命令检查存储目标配置是否指向有效导出，并确保多个装载不会访问相同的子目录（发生文件冲突的风险）。
 
   > [!NOTE]
   > 如果你的 NFS 存储系统使用 NetApp 的 ONTAP 9.2 操作系统，请**不要启用 `showmount`** 。 [请与 Microsoft 服务和支持部门联系](hpc-cache-support-ticket.md)以获取帮助。
+
+  有关目录列表访问权限的详细信息，请参阅 NFS 存储目标[故障排除一文](troubleshoot-nas.md#enable-export-listing)。
 
 * **根访问：** 缓存以用户 ID 0 的形式连接到后端系统。 检查存储系统上的这些设置：
   
   * 启用 `no_root_squash`。 此选项可确保远程根用户可以访问 root 所拥有的文件。
 
   * 选中 "导出策略"，确保它们不包括缓存子网中的根访问限制。
+
+  * 如果你的存储具有作为另一个导出的子目录的任何导出，请确保缓存对路径的最小段具有根访问权限。 有关详细信息，请参阅 NFS 存储目标故障排除一文中[目录路径上的根访问权限](troubleshoot-nas.md#allow-root-access-on-directory-paths)。
 
 * NFS 后端存储必须是兼容的硬件/软件平台。 有关详细信息，请联系 Azure HPC 缓存团队。
 

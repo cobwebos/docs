@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份 DPM 工作负荷
 description: 了解如何使用 PowerShell 部署和管理 Data Protection Manager (DPM) 的 Azure 备份
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 06c138a4015a0b730369e091fc57a34d2190051d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583077"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616738"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>使用 PowerShell 部署和管理 Data Protection Manager (DPM) 服务器的 Azure 备份
 
@@ -234,7 +234,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 在本部分中，要将生产服务器添加到 DPM，然后分别在本地 DPM 存储和 Azure 备份中保护数据。 在示例中，我们将演示如何备份文件和文件夹。 可以轻松地延伸这种思路，以备份 DPM 支持的任何数据源。 所有 DPM 备份均受保护组 (PG) 控制，该组由四个部分构成：
 
-1. “组成员”是要在相同的保护组中保护的所有可保护对象的列表（在 DPM 中也称为“数据源”）。 例如，你可能想要保护一个保护组中的生产 VM 与另一个保护组中的 SQL Server 数据库，因为两者可能有不同的备份要求。 在可以备份生产服务器上的任何数据源之前，需要确保 DPM 代理已安装在服务器上并受 DPM 的管理。 遵循[安装 DPM 代理](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10))的步骤，并将代理链接到相应的 DPM 服务器。
+1. “组成员”是要在相同的保护组中保护的所有可保护对象的列表（在 DPM 中也称为“数据源”）。 例如，你可能想要保护一个保护组中的生产 VM 与另一个保护组中的 SQL Server 数据库，因为两者可能有不同的备份要求。 在可以备份生产服务器上的任何数据源之前，需要确保 DPM 代理已安装在服务器上并受 DPM 的管理。 遵循[安装 DPM 代理](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)的步骤，并将代理链接到相应的 DPM 服务器。
 2. **数据保护方法**指定目标备份位置 — 磁带、磁盘和云。 在本示例中，我们会在本地磁盘和云中保护数据。
 3. 一个**备份计划**，指定何时需要进行备份，以及应该在 DPM 服务器和生产服务器之间同步数据的频率。
 4. 一个**备份计划**，指定要在 Azure 中保留恢复点多长时间。

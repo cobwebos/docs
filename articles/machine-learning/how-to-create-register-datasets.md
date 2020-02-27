@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116707"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649084"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -32,11 +32,11 @@ ms.locfileid: "77116707"
 
 * 与其他用户共享数据和进行协作。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要创建和使用数据集，需要：
 
-* 一个 Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "77116707"
 
 可以通过 SDK 或 Azure 机器学习 studio 创建 TabularDatasets。 
 
-使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)方法可读取 .csv 或 tsv 格式的文件，以及创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。
+使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)方法可读取 .csv 或 tsv 格式的文件，以及创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -96,7 +96,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-默认情况下，当您创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，则可以使用以下代码指定列类型。 你还可以[了解有关支持的数据类型的详细信息](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+默认情况下，当您创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，则可以使用以下代码指定列类型。 如果存储位于虚拟网络或防火墙后面，请在 `from_delimited_files()` 方法中包含参数 `validate=False` 和 `infer_column_types=False`。 这会绕过初始验证检查，并确保可以从这些安全文件创建数据集。 你还可以[了解有关支持的数据类型的详细信息](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+
+> [!NOTE] 
+>参数 `infer_column_type` 仅适用于从分隔文件创建的数据集。 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -109,7 +112,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|因|Pclass|名称|性别|Age|SibSp|Parch|Ticket|费用|客舱|着手
+| |PassengerId|因|Pclass|名称|性别|年龄|SibSp|Parch|Ticket|费用|客舱|着手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
@@ -149,7 +152,7 @@ data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 
 #### <a name="create-a-filedataset"></a>创建 FileDataset
 
-使用 `FileDatasetFactory` 类的[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法以任意格式加载文件，并创建未注册的 FileDataset：
+使用 `FileDatasetFactory` 类的[`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)方法可加载任意格式的文件并创建未注册的 FileDataset。 如果存储位于虚拟网络或防火墙后面，请在 `from_files()` 方法中设置参数 `validate =False`。 这会绕过初始验证步骤，并确保可以从这些安全文件创建数据集。
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
@@ -225,7 +228,7 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 ![选择数据集](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-选择要在其下注册数据集的名称，并根据需要使用可用的筛选器来筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择 **“创建”** 。
+选择要在其下注册数据集的名称，并根据需要使用可用的筛选器来筛选数据。 在这种情况下，对于公共假日数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择“创建”。
 
 ![设置数据集参数并创建数据集](./media/how-to-create-register-datasets/open-datasets-3.png)
 

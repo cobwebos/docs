@@ -3,8 +3,8 @@ title: 在 Azure Vm 故障排除中 SAP HANA 向外扩展 HSR-PacemakerMicrosoft
 description: 本指南介绍如何检查和排查基于 Azure 虚拟机上运行的 SAP HANA 系统复制 (HSR) 和 Pacemaker on SLES 12 SP3 的复杂 SAP HANA 横向扩展高可用性配置
 services: virtual-machines-linux
 documentationcenter: ''
-author: hermannd
-manager: gwallace
+author: hermanndms
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb90bfff72f41d8d7ccc34d3ad6dd0e9206bb88e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566227"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617124"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>验证 SLES 12 SP3 上的 SAP HANA 横向扩展高可用性设置和排查其问题 
 

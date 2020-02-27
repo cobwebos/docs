@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: f47f112991a4fe2e5b245920db98e5ae7617161a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2694a5f250b746748a1b42ac4d211aa28ef1ebad
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704934"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613689"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域中的 DNS
 
@@ -52,7 +52,7 @@ ms.locfileid: "74704934"
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。
-1. 在 "**服务器选择**" 页上，从服务器池中选择当前 VM （如*myvm.aadds.contoso.com*），然后选择 "**下一步**"。
+1. 在 "**服务器选择**" 页上，从服务器池中选择当前 VM （如*myvm.aaddscontoso.com*），然后选择 "**下一步**"。
 1. 在“服务器角色”页上，单击“下一步”。
 1. 在“功能”页上，依次展开“远程服务器管理工具”节点和“角色管理工具”节点。 从角色管理工具列表中选择“DNS 服务器工具”功能。
 
@@ -69,7 +69,7 @@ ms.locfileid: "74704934"
 > 若要管理 Azure AD DS 托管域中的 DNS，你必须登录到作为*AAD DC 管理员*组成员的用户帐户。
 
 1. 从 "开始" 屏幕中，选择 "**管理工具**"。 显示了可用管理工具的列表，其中包括上一节中安装的**DNS** 。 选择 " **dns** " 启动 dns 管理控制台。
-1. 在 "**连接到 DNS 服务器**" 对话框中，选择 **"以下计算机**"，然后输入托管域的 DNS 域名，如*aadds.contoso.com*：
+1. 在 "**连接到 DNS 服务器**" 对话框中，选择 **"以下计算机**"，然后输入托管域的 DNS 域名，如*aaddscontoso.com*：
 
     ![在 DNS 控制台中连接到 Azure AD DS 托管域](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688919"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524081"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -23,7 +23,7 @@ ms.locfileid: "74688919"
 
 ![在 Azure 应用服务中运行的应用](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 SQL 数据库。
@@ -35,7 +35,7 @@ ms.locfileid: "74688919"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -295,7 +295,7 @@ dotnet ef database update
 
 打开 _Controllers\TodosController.cs_。
 
-找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
+找到 `Create()` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -343,7 +343,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它会在主页中显示为已完成的项。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 现在可以添加一个待办事项，并勾选“完成”  。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
@@ -353,7 +353,7 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` 完成后，请导航至 Azure 应用，并试用新功能。
+`git push` 完成后，请导航到 Azure 应用，并试用新功能。
 
 ![Code First 迁移后的 Azure 应用](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 

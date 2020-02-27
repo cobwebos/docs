@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: db30b18a7027a62e6cd5bb1ad8d069a41f8a943f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 372850975873c9a6af02846612445edc2899c308
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77370797"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495284"
 ---
 |名称 |说明 |效果 |版本 |源 |
 |---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "77370797"
 |[应当仅安装已批准的 VM 扩展](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |此策略约束未获批准的虚拟机扩展。 |Audit、Deny、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[要求自动在虚拟机规模集上执行 OS 映像修补](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |该策略可强制启用虚拟机规模集上的自动 OS 映像修补程序，以便通过应用每月的最新安全修补程序始终确保虚拟机安全。 |deny |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[应当加密未附加的磁盘](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |此策略会审核未启用加密的所有未附加磁盘。 |Audit、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[应将虚拟机迁移到新的 Azure 资源管理器资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |为虚拟机使用新的 Azure 资源管理器以提供安全增强功能，例如：更强的访问控制 (RBAC)、更好地审核、基于 Azure 资源管理器的部署和治理、托管标识访问权限、用于提供机密的 Key Vault 的访问权限、基于 Azure AD 的身份验证以及可实现更轻松安全管理的标记和资源组支持 |Audit、Deny、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[应将虚拟机迁移到新的 Azure 资源管理器资源](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |为虚拟机使用新的 Azure 资源管理器以提供安全增强功能，如: 更强的访问控制(RBAC)、更好地审核、基于 ARM 的部署和治理、托管标识访问权限、用于提供机密的密钥保管库的访问权限、基于 Azure AD 的身份验证以及可实现更轻松安全管理的标记和资源组支持 |Audit、Deny、Disabled |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

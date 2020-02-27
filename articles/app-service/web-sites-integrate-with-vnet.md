@@ -1,18 +1,18 @@
 ---
 title: 将应用与 Azure 虚拟网络集成
-description: 了解 Azure App Service 如何与 Azure 虚拟网络集成，以及如何将应用连接到虚拟网络。
+description: 将 Azure App Service 中的应用与 Azure 虚拟网络集成。
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 02/27/2020
 ms.author: ccompy
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.custom: seodec18
+ms.openlocfilehash: 76139716fe11536faa0ff792185ba1643801c641
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016963"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648976"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>将应用与 Azure 虚拟网络进行集成
 本文档介绍 Azure App Service 虚拟网络集成功能，以及如何在[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)中对应用进行设置。 使用[Azure 虚拟网络][VNETOverview]（vnet）可以将多个 Azure 资源置于非 internet 可路由网络中。  
@@ -22,33 +22,18 @@ Azure App Service 有两种变体。
 1. 支持除独立定价计划以外的全部定价计划的多租户系统
 2. 应用服务环境（ASE），它部署到 VNet 中并支持隔离的定价计划应用
 
-本文档将介绍两个 VNet 集成功能，这些功能在多租户应用服务中使用。 如果你的应用处于[应用服务环境][ASEintro]中，则它已在 vnet 中，无需使用 VNet 集成功能来访问同一 VNet 中的资源。 有关所有应用服务网络功能的详细信息，请参阅[应用服务网络功能](networking-features.md)
+本文档介绍 VNet 集成功能，该功能在多租户应用服务中使用。 如果你的应用处于[应用服务环境][ASEintro]中，则它已在 vnet 中，无需使用 VNet 集成功能来访问同一 VNet 中的资源。 有关所有应用服务网络功能的详细信息，请参阅[应用服务网络功能](networking-features.md)
 
-VNet 集成功能提供了两种形式
+VNet 集成允许 web 应用访问虚拟网络中的资源，但不会从 VNet 向你的 web 应用授予入站私有访问权限。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 VNet 集成仅适用于从应用到 VNet 的出站调用。 与同一区域中的 Vnet 和其他区域中的 Vnet 一起使用时，VNet 集成功能的行为方式有所不同。 VNet 集成功能具有两种变体。
 
-1. 一个版本可在同一区域中实现与 Vnet 的集成。 此功能的这种形式需要在同一区域中的 VNet 中有一个子网。 此功能仍处于预览阶段，但 Windows 应用生产工作负荷支持此功能，但有一些注意事项。
-2. 另一种版本允许与其他区域中的 Vnet 或通过经典 Vnet 进行集成。 此版本的功能要求在 VNet 中部署虚拟网络网关。 这是基于点到站点 VPN 的功能，仅在 Windows 应用中受支持。
-
-应用一次只能使用一种形式的 VNet 集成功能。 问题就是应该使用哪种功能。 您可以使用任何一种方法。 不过，清楚的区别在于：
-
-| 问题  | 解决方案 | 
-|----------|----------|
-| 希望在同一区域中访问 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域 VNet 集成 |
-| 想要在经典 VNet 中或另一个区域中的 VNet 中访问资源 | 网关所需的 VNet 集成 |
-| 想要跨 ExpressRoute 访问 RFC 1918 终结点 | 区域 VNet 集成 |
-| 希望跨服务终结点实现资源 | 区域 VNet 集成 |
-
-这两项功能都不允许跨 ExpressRoute 访问非 RFC 1918 地址。 为此，你现在需要使用 ASE。
-
-使用区域 VNet 集成不会将 VNet 连接到本地或配置服务终结点。 这是单独的网络配置。 区域 VNet 集成只是使应用程序能够在这些连接类型上进行调用。
-
-无论使用何种版本，VNet 集成都允许 web 应用访问虚拟网络中的资源，但不会向虚拟网络授予对 web 应用程序的入站私有访问权限。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 VNet 集成仅适用于从应用到 VNet 的出站调用。 
+1. 区域 VNet 集成-连接到同一区域中资源管理器 Vnet 时，必须在要与之集成的 VNet 中具有专用子网。 
+2. 网关所需的 VNet 集成-连接到其他区域中的 Vnet 或同一区域中的经典 VNet 时，需要在目标 VNet 中预配虚拟网络网关。
 
 VNet 集成功能：
 
-* 需要“标准”、“高级”或“高级 V2”定价计划 
+* 需要标准、高级、PremiumV2 或弹性高级定价计划 
 * 支持 TCP 和 UDP
-* 适用于应用服务应用和函数应用
+* 使用应用服务应用和函数应用
 
 VNet 集成不支持某些功能，其中包括：
 
@@ -56,169 +41,150 @@ VNet 集成不支持某些功能，其中包括：
 * AD 集成 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>区域 VNet 集成 
+网关所需的 VNet 集成仅提供对目标 VNet 中的资源的访问权限，或通过对等互连或 Vpn 连接到目标 VNet 的网络中的资源。 网关所需的 VNet 集成不允许访问通过 ExpressRoute 连接提供的资源，也不能与服务终结点一起使用。 
 
-> [!NOTE]
-> 对等互连对于基于 Linux 的应用服务尚不可用。
->
+无论使用何种版本，VNet 集成都允许 web 应用访问虚拟网络中的资源，但不会向虚拟网络授予对 web 应用程序的入站私有访问权限。 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 VNet 集成仅适用于从应用到 VNet 的出站调用。 
 
-在应用的同一区域中与 Vnet 一起使用 VNet 集成时，它要求使用至少包含32地址的委托子网。 子网不能用于其他任何内容。 从你的应用程序发出的出站调用将从委托子网中的地址进行。 当你使用此版本的 VNet 集成时，将从 VNet 中的地址进行调用。 使用 VNet 中的地址，你的应用可以：
+## <a name="enable-vnet-integration"></a>启用 VNet 集成 
 
-* 调用服务终结点保护服务
-* 跨 ExpressRoute 连接访问资源
-* 访问连接到的 VNet 中的资源
-* 跨对等互连连接（包括 ExpressRoute 连接）访问资源
+1. 在应用服务门户中转到 "网络 UI"。 在 "VNet 集成" 下，选择 *"单击此处进行配置"* 。 
 
-此功能处于预览阶段，但 Windows 应用生产工作负荷支持此功能，但具有以下限制：
+1. 选择“添加 VNet”。  
 
-* 只能访问 RFC 1918 范围内的地址。 它们是 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 地址块中的地址。
+   ![选择 VNet 集成][1]
+
+1. 下拉列表将在同一区域中包含订阅中的所有资源管理器 Vnet，以下是所有其他区域中所有资源管理器 Vnet 的列表。 选择要与之集成的 VNet。
+
+   ![选择 VNet][2]
+
+   * 如果 VNet 位于同一区域，则创建一个新的子网或选择一个空的预先存在的子网。 
+
+   * 若要选择另一个区域中的 VNet，必须启用 "点到站点" 设置的虚拟网络网关。
+
+   * 若要与经典 VNet 集成，请选择 "**单击此处以连接到经典 vnet**"，而不是单击 "vnet" 下拉。 选择所需的经典 VNet。 目标 VNet 必须已为启用了点到站点配置的虚拟网络网关。
+
+    ![选择经典 VNet][3]
+    
+在集成期间，应用会重启。  完成集成后，你将看到与集成的 VNet 有关的详细信息。 
+
+应用与 VNet 集成后，它将使用与 VNet 配置的 DNS 服务器相同的 DNS 服务器，除非 Azure DNS 专用区域。 目前不能将 VNet 与 Azure DNS 专用区域结合使用。
+
+## <a name="regional-vnet-integration"></a>区域 VNet 集成
+
+通过使用区域 VNet 集成，你的应用程序可以访问：
+
+* VNet 中与你集成的同一区域中的资源 
+* Vnet 对等互连中的资源位于同一区域中的 VNet
+* 服务终结点保护服务
+* 跨 ExpressRoute 连接的资源
+* 你连接到的 VNet 中的资源
+* 跨对等互连连接（包括 ExpressRoute 连接）的资源
+* 专用终结点 
+
+在同一区域中使用 VNet 与 Vnet 的集成时，可以使用以下 Azure 网络功能：
+
+* 网络安全组（Nsg）-可以使用放置在集成子网上的网络安全组来阻止出站流量。 由于无法使用 VNet 集成提供对 web 应用的入站访问权限，因此入站规则不适用。
+* 路由表（Udr）-可以将路由表放置在集成子网上，以便发送出站流量。 
+
+默认情况下，应用仅将 RFC1918 流量路由到 VNet。 如果要将所有出站流量路由到 VNet，请将应用设置 WEBSITE_VNET_ROUTE_ALL 应用到应用。 配置应用设置：
+
+1. 在应用门户中转到配置 UI。 选择**新应用程序设置**
+1. 在 "名称" 字段中键入 " **WEBSITE_VNET_ROUTE_ALL** ，在" 值 "字段中键入**1**
+
+   ![提供应用程序设置][4]
+
+1. 选择“确定”
+1. 选择“保存”
+
+如果将所有出站流量路由到 VNet，则会受到应用于集成子网的 Nsg 和 Udr 的限制。 当你将所有出站流量路由到 VNet 中时，你的出站地址仍将是应用程序属性中列出的出站地址，除非你提供将流量发送到其他位置的路由。 
+
+在同一区域中使用 VNet 与 Vnet 的集成存在一些限制：
+
 * 不能跨全局对等连接访问资源
-* 不能将来自应用的流量的路由设置到 VNet 中
-* 此功能仅适用于支持 PremiumV2 应用服务计划的更新的应用服务缩放单位。 请注意，这并不意味着你的应用程序必须在 PremiumV2 SKU 上运行，只是它必须在 PremiumV2 选项可用的应用服务计划上运行（这表示它是一个更新的缩放单元，其中也提供此 VNet 集成功能）。
+* 此功能仅适用于支持 PremiumV2 应用服务计划的更新的应用服务缩放单位。
 * 集成子网仅可由一个应用服务计划使用
 * 此功能不能由处于应用服务环境中的独立计划应用使用
-* 此功能要求使用的子网为/27，其中包含32地址或更大的资源管理器 VNet 中
+* 此功能需要一个不使用的子网，该子网为/27，其中包含32地址或更大的资源管理器 VNet
 * 应用和 VNet 必须位于同一区域中
-* 不能删除带有集成应用的 VNet。 必须先删除集成 
+* 不能删除带有集成应用的 VNet。 请在删除 VNet 之前删除集成。 
+* 只能与 web 应用相同的订阅中的 Vnet 集成
 * 对于每个应用服务计划，只能有一个区域 VNet 集成。 同一应用服务计划中的多个应用可以使用相同的 VNet。 
 * 当存在使用区域 VNet 集成的应用时，不能更改应用或应用服务计划的订阅
 
-为每个应用服务计划实例使用一个地址。 如果将应用扩展到5个实例，则使用5个地址。 由于在分配后无法更改子网大小，因此你必须使用足够大的子网来容纳你的应用程序可能会达到的任何规模。 建议大小为/26，其中包含64地址。 如果未更改应用服务计划的大小，则包含32地址的/27 将提供高级应用服务计划20个实例。 当你向上或向下缩放应用服务计划时，你需要在短时间内使用两个地址。 
+为每个应用服务计划实例使用一个地址。 如果将应用扩展到五个实例，则使用5个地址。 由于在分配后无法更改子网大小，因此你必须使用足够大的子网来容纳你的应用程序可能会达到的任何规模。 建议大小为/26，其中包含64地址。 带有64地址的/26 将容纳包含30个实例的高级应用服务计划。 当你向上或向下缩放应用服务计划时，你需要在短时间内使用两个地址。 
 
 如果希望其他应用服务计划中的应用连接到已由其他应用服务计划中的应用程序连接的 VNet，则需要选择与预先存在的 VNet 集成所使用的子网不同的子网。  
 
-此功能也适用于 Linux。 若要在同一区域中将 VNet 集成功能与资源管理器 VNet 一起使用：
+此功能在 Linux 中处于预览阶段。 此功能的 Linux 格式仅支持调用 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16）。
 
-1. 转至门户中的“网络 UI”。 如果你的应用程序能够使用新功能，则会看到一个用于添加 VNet （预览版）的选项。  
+### <a name="web-app-for-containers"></a>容器的 Web 应用
 
-   ![选择 VNet 集成][6]
-
-1. 选择“添加 VNet (预览)”。  
-
-1. 选择希望与之集成的资源管理器 VNet，然后新建一个子网或从预先存在的空子网中选择一个。 集成只需不到一分钟即可完成。 在集成期间，应用会重启。  集成完成后，将能查看所集成的子网的详细信息，同时顶部会出现显示该功能处于预览状态的横幅。
-
-   ![选择 VNet 和子网][7]
-
-当你的应用与 VNet 集成后，它将使用你的 VNet 配置的 DNS 服务器。 
-
-区域 VNet 集成要求将集成子网委托给 Microsoft。  VNet 集成 UI 会自动将子网委托给 Microsoft。 如果你的帐户没有足够的网络权限来进行设置，则你将需要可设置集成子网上属性的人员来委派子网。 若要手动委派集成子网，请参阅 Azure 虚拟网络子网 UI，并设置 Microsoft 的委派。
-
-若要从 VNet 断开应用，请选择“断开连接”。 该操作将重启 Web 应用。 
-
-
-#### <a name="web-app-for-containers"></a>容器的 Web 应用
-
-如果在 Linux 上使用带有内置映像的应用服务，则区域 VNet 集成功能无需进行其他更改即可工作。 如果使用用于容器的 Web 应用，则需要修改 docker 映像才能使用 VNet 集成。 在 docker 映像中，使用端口环境变量作为主 web 服务器的侦听端口，而不是使用硬编码的端口号。 在容器启动时，应用服务平台会自动设置端口环境变量。 如果你使用的是 SSH，则必须将 SSH 守护程序配置为侦听 SSH_PORT 环境变量在使用区域 VNet 集成时指定的端口号。
+如果在 Linux 上使用带有内置映像的应用服务，则区域 VNet 集成无需进行其他更改即可工作。 如果使用用于容器的 Web 应用，则需要修改 docker 映像才能使用 VNet 集成。 在 docker 映像中，使用端口环境变量作为主 web 服务器的侦听端口，而不是使用硬编码的端口号。 在容器启动时，应用服务平台会自动设置端口环境变量。 如果你使用的是 SSH，则必须将 SSH 守护程序配置为侦听 SSH_PORT 环境变量在使用区域 VNet 集成时指定的端口号。  在 Linux 上，不支持网关必需的 VNet 集成。 
 
 ### <a name="service-endpoints"></a>服务终结点
 
-通过新的 VNet 集成功能可以使用服务终结点。  若要将服务终结点和应用配合使用，请使用新的 VNet 集成连接至所选 VNet，然后在用于集成的子网上配置服务终结点。 
+通过区域 VNet 集成，可以使用服务终结点。  若要将服务终结点与应用程序一起使用，请使用区域 VNet 集成连接到选定的 VNet，然后在用于集成的子网中配置服务终结点。 
 
+### <a name="network-security-groups"></a>网络安全组
 
-### <a name="how-vnet-integration-works"></a>VNet 集成的工作原理
+网络安全组使你能够阻止到 VNet 中资源的入站和出站流量。 使用区域 VNet 集成的 web 应用可以使用[网络安全组][VNETnsg]来阻止到 VNet 或 internet 中的资源的出站流量。 若要阻止流量发送到公共地址，则必须将应用程序设置 WEBSITE_VNET_ROUTE_ALL 设置为1。 NSG 中的入站规则不适用于应用，因为 VNet 集成仅影响应用的出站流量。 若要控制到 web 应用的入站流量，请使用访问限制功能。 适用于你的集成子网的 NSG 将生效，而与任何应用到集成子网的路由无关。 如果 WEBSITE_VNET_ROUTE_ALL 设置为1，并且你的集成子网上没有任何影响公共地址流量的路由，则所有的出站流量仍需服从 Nsg 分配给集成子网。 如果 WEBSITE_VNET_ROUTE_ALL 未设置，则 Nsg 将仅应用于 RFC1918 的流量。
 
-应用服务中的应用托管在辅助角色上。 基本和更高的定价计划是专用的托管计划，其中不存在其他客户工作负荷在同一辅助角色上运行。 VNet 集成的工作方式是使用委托子网中的地址装载虚拟接口。 由于 "发件人" 地址在 VNet 中，因此它可以访问或通过 VNet 中的大部分功能，就像 VNet 中的 VM 一样。 网络实现不同于在 VNet 中运行 VM，这就是在使用此功能时某些网络功能尚不可用的原因。
+### <a name="routes"></a>路由
 
-![VNet 集成](media/web-sites-integrate-with-vnet/vnet-integration.png)
+使用路由表，你可以将应用程序的出站流量路由到所需的任何位置。 默认情况下，路由表只会影响 RFC1918 目标流量。  如果将 WEBSITE_VNET_ROUTE_ALL 设置为1，则将影响所有出站调用。 在集成子网上设置的路由不会影响对入站应用请求的答复。 常见目标可以包括防火墙设备或网关。 如果要将所有出站流量路由到本地，可以使用路由表将所有出站流量发送到 ExpressRoute 网关。 如果你确实要将流量路由到网关，请确保在外部网络中设置路由以发送任何回复。
 
-启用 VNet 集成后，应用仍将通过与普通通道相同的通道对 internet 进行出站调用。 应用属性门户中列出的出站地址仍是应用使用的地址。 应用的更改是：对服务终结点保护的服务或 RFC 1918 地址的调用将进入 VNet。 
+边界网关协议（BGP）路由也会影响应用程序流量。 如果你有来自 ExpressRoute 网关之类的 BGP 路由，你的应用程序出站流量将受到影响。 默认情况下，BGP 路由只会影响 RFC1918 目标流量。 如果 WEBSITE_VNET_ROUTE_ALL 设置为1，则可能会受到 BGP 路由影响的所有出站流量。 
+
+### <a name="how-regional-vnet-integration-works"></a>区域 VNet 集成的工作原理
+
+应用服务中的应用托管在辅助角色上。 基本和更高的定价计划是专用的托管计划，其中不存在其他客户工作负荷在同一辅助角色上运行。 区域 VNet 集成通过使用委托子网中的地址装载虚拟接口来工作。 由于 "发件人" 地址在 VNet 中，因此它可以在中或通过 VNet 访问大多数功能，就像 VNet 中的 VM 一样。 网络实现不同于在 VNet 中运行 VM，这就是在使用此功能时某些网络功能尚不可用的原因。
+
+![区域 VNet 集成的工作原理][5]
+
+启用区域 VNet 集成后，应用仍将通过与普通通道相同的通道对 internet 进行出站调用。 应用属性门户中列出的出站地址仍是应用使用的地址。 应用的更改是：对服务终结点保护的服务或 RFC 1918 地址的调用将进入 VNet。 如果 WEBSITE_VNET_ROUTE_ALL 设置为1，则可以将所有出站流量发送到 VNet 中。 
 
 此功能仅支持每个辅助角色一个虚拟接口。  每个辅助角色一个虚拟接口意味着每个应用服务计划一个区域 VNet 集成。 同一应用服务计划中的所有应用都可使用相同的 VNet 集成，但如果需要一个应用来连接到其他 VNet，则需要创建另一个应用服务计划。 使用的虚拟接口不是客户可直接访问的资源。
 
 由于此技术的工作原理，与 VNet 集成一起使用的流量不会在网络观察程序或 NSG 流日志中显示。  
 
-## <a name="gateway-required-vnet-integration"></a>网关所需的 VNet 集成 
+## <a name="gateway-required-vnet-integration"></a>网关所需的 VNet 集成
 
-网关所需的 VNet 集成功能：
+网关所需的 VNet 集成支持连接到另一区域中的 VNet，或连接到经典 VNet。 网关所需的 VNet 集成： 
 
-* 可用于连接到任何区域中的 Vnet （资源管理器或经典 Vnet）
 * 允许应用一次只连接到1个 VNet
-* 在应用服务计划中，最多支持五个 Vnet 的集成 
-* 允许应用服务计划中的多个应用使用同一个 VNet，而不会影响应用服务计划可以使用的总数。  如果在同一应用服务计划中有6个使用同一 VNet 的应用，则会将其计为使用1个 VNet。 
-* 需要使用点到站点 VPN 配置的虚拟网络网关
+* 允许在应用服务计划中集成最多5个 Vnet 
+* 允许应用服务计划中的多个应用使用同一个 VNet，而不会影响应用服务计划可以使用的总数。  如果在同一应用服务计划中有六个使用同一 VNet 的应用，则会将其计为使用1个 VNet。 
 * 由于网关上的 SLA，支持99.9% 的 SLA
+* 使你的应用能够使用配置了 VNet 的 DNS
+* 需要一个使用 SSTP 点到站点 VPN 配置的基于虚拟网络路由的网关，然后才能将它连接到应用。 
 
-此功能不支持：
-* 用于 Linux 应用
-* 跨 ExpressRoute 访问资源 
-* 跨服务终结点访问资源 
+不能使用网关所需的 VNet 集成：
 
-### <a name="getting-started"></a>入门
-
-将 Web 应用连接到虚拟网络之前，需要牢记以下几点：
-
-* 在将目标虚拟网络连接到应用之前，必须借助基于路由的网关启用点到站点 VPN。 
-* VNet 所在的订阅必须与应用服务计划 (ASP) 所在的订阅相同。
-* 与 VNet 集成的应用使用为该 VNet 指定的 DNS。
+* 与 Linux 应用
+* 使用与 ExpressRoute 连接的 VNet 
+* 访问服务终结点保护的资源
+* 使用支持 ExpressRoute 和点到站点/站点到站点 Vpn 的共存网关
 
 ### <a name="set-up-a-gateway-in-your-vnet"></a>在 VNet 中设置网关 ###
 
-如果已使用点到站点地址配置网关，则可以跳至“配置 VNet 与应用的集成”这一步。  
 若要创建网关，请执行以下操作：
 
 1. 在 VNet 中[创建网关子网][creategatewaysubnet]。  
 
 1. [创建 VPN 网关][creategateway]。 选择基于路由的 VPN 类型。
 
-1. [设置 "点到站点地址"][setp2saddresses]。 如果网关不在基本 SKU 中，则必须在点到站点配置中禁用 IKEV2 并选择 SSTP。 地址空间必须在 RFC 1918 地址块中，10.0.0.0/8、172.16.0.0/12、192.168.0.0/16
+1. [设置 "点到站点地址"][setp2saddresses]。 如果网关不在基本 SKU 中，则必须在 "点到站点配置" 中禁用 IKEV2，并且必须选择 SSTP。 点到站点地址空间必须在 RFC 1918 地址块中，10.0.0.0/8、172.16.0.0/12、192.168.0.0/16
 
 如果只是创建用于应用服务 VNet 集成的网关，则无需上载证书。 创建网关可能需要 30 分钟。 若要将应用与 VNet 集成，必须先预配网关。 
 
-### <a name="configure-vnet-integration-with-your-app"></a>使用应用配置 VNet 集成 
+### <a name="how-gateway-required-vnet-integration-works"></a>网关所需的 VNet 集成工作原理
 
-要在应用上启用 VNet 集成，请执行以下步骤： 
+网关需要在点到站点 VPN 技术之上构建的 VNet 集成。 点到站点 Vpn 将网络访问限制为仅托管应用的虚拟机。 应用受到限制，只能通过混合连接或 VNet 集成向外发送流量至 Internet。 当你的应用程序配置为使用网关所需的 VNet 集成时，会代表你自行管理一种复杂的协商，以便在网关和应用程序端创建和分配证书。 最终的结果是，用于托管应用程序的工作人员能够直接连接到所选 VNet 中的虚拟网络网关。 
 
-1. 在 Azure 门户中转到该应用并打开应用设置，然后选择“网络”>“VNet 集成”。 ASP 必须位于标准 SKU 中，或更好地使用 VNet 集成功能。 
- ![VNet 集成 UI][1]
+![网关所需的 VNet 集成工作原理][6]
 
-1. 选择“添加 VNet”。 
- ![添加 VNet 集成][2]
+### <a name="accessing-on-premises-resources"></a>访问本地资源
 
-1. 选择 VNet。 
-  ![选择 VNet][8]
-  
-完成最后一步后，应用将会重启。  
-
-### <a name="how-the-gateway-required-vnet-integration-feature-works"></a>网关所需的 VNet 集成功能的工作原理
-
-网关所需的 VNet 集成功能构建于点到站点 VPN 技术之上。 点到站点技术将网络访问限制于托管应用的虚拟机。 应用受到限制，只能通过混合连接或 VNet 集成向外发送流量至 Internet。 
-
-![VNet 集成的工作原理][3]
-
-## <a name="managing-vnet-integration"></a>管理 VNet 集成
-连接到 VNet 以及断开其连接的功能在应用级别执行。 可能影响多个应用的 VNet 集成的操作在应用服务计划级别执行。 从应用 > 网络 > VNet 集成门户，你可以获取有关 VNet 的详细信息。 你可以在 ASP > 网络 > VNet 集成门户中的 ASP 级别查看类似信息，其中包括该应用服务计划中使用给定集成的应用。
-
- ![VNet 详细信息][4]
-
-在 VNet 集成 UI 中提供的信息在应用程序与 ASP 门户之间是相同的。
-
-* VNet 名称 - 链接至虚拟网络 UI
-* 位置 - 反映 VNet 的位置。 与其他位置的 VNet 集成可能会导致应用出现延迟。 
-* 证书状态 - 反映证书在应用服务计划和 VNet 之间的同步状态。
-* 网关状态-如果你使用网关所需的 VNet 集成，你可以查看网关状态。
-* VNet 地址空间 - 显示 VNet 的 IP 地址空间。 
-* 点到站点地址空间 - 显示 VNet 的点到站点 IP 地址空间。 当使用 "需要网关" 功能在 VNet 中进行调用时，你的应用程序的地址将是这些地址之一。 
-* 站点到站点地址空间 - 可以使用站点到站点 VPN 将 VNet 连接到本地资源或其他 VNet。 使用该 VPN 连接定义的 IP 范围如下所示。
-* DNS 服务器 - 显示配置了 VNet 的 DNS 服务器。
-* 路由到 VNet 的 IP 地址 - 显示路由的地址块，这些地址块用于驱动流量进入 VNet 
-
-在 VNet 集成的应用视图中，能够执行的唯一操作是断开应用与当前所连接到的 VNet 的连接。 若要断开应用与 VNet 的连接，请选择“断开连接”。 在从 VNet 断开连接时，应用将会重启。 断开连接操作不会更改 VNet。 子网或网关未删除。 如果随后想要删除 VNet，需要先将应用从 VNet 断开连接，并删除其中的资源，例如网关。 
-
-若要访问 ASP VNet 集成 UI，请打开 ASP UI 并选择“网络”。  在 VNet 集成下，选择“单击此处可配置”以打开网络功能状态 UI。
-
-![ASP VNet 集成信息][5]
-
-ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看每个 VNet 的详细信息，请单击感兴趣的 VNet。 此处有两种操作可以执行。
-
-* **同步网络**。 同步网络操作仅适用于与网关相关的 VNet 集成功能。 执行同步网络操作可确保证书和网络信息同步。如果添加或更改 VNet 的 DNS，则需要执行**同步网络**操作。 此操作会重启所有使用此 VNet 的应用。
-* **添加路由** 添加路由会驱动出站流量进入 VNet。
-
-**路由** 在 VNet 中定义的路由，用于将流量从应用导入 VNet。 如果需要将其他出站流量发送到 VNet 中，则可以在此处添加地址块。 此功能仅适用于网关所需的 VNet 集成。
-
-**证书**当网关需要启用 VNet 集成时，需要使用证书交换以确保连接的安全性。 除了证书，还有 DNS 配置、路由以及其他类似的用于描述网络的内容。
-如果更改了证书或网络信息，则需单击“同步网络”。 单击“同步网络”会导致应用与 VNet 之间的连接出现短暂的中断。 虽然应用不会重启，但失去连接会导致站点功能失常。 
-
-## <a name="accessing-on-premises-resources"></a>访问本地资源
 应用可以通过与具备站点到站点连接的 VNet 集成来访问本地资源。 如果使用网关所需的 VNet 集成，则需要使用点到站点地址块来更新本地 VPN 网关路由。 先设置站点到站点 VPN，接着应通过用于配置该 VPN 的脚本来正确地设置路由。 如果在创建站点到站点地址后才添加点到站点 VPN，则需手动更新路由。 具体操作信息取决于每个网关，在此不作说明。 不能为 BGP 配置站点到站点 VPN 连接。
 
 区域 VNet 集成功能无需其他配置即可通过 VNet 和本地访问。 只需使用 ExpressRoute 或站点到站点 VPN 将 VNet 连接到本地。 
@@ -228,7 +194,8 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 > 
 > 
 
-## <a name="peering"></a>对等互连
+### <a name="peering"></a>对等互连
+
 如果使用与区域 VNet 集成的对等互连，则无需进行任何其他配置。 
 
 如果你使用的是网关，则需要配置其他一些项。 若要配置对等互连以使用应用，请执行以下操作：
@@ -237,6 +204,21 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 1. 在与所连接的 VNet 对等互连的 VNet 上添加对等互连连接。 在目标 VNet 上添加对等互连连接时，启用“允许虚拟网络访问”并单击“允许转发流量”和“允许远程网关”。
 1. 转到门户中的“应用服务计划”>“网络”>“VNet 集成 UI”。  选择应用连接的 VNet。 在路由部分下，添加与应用所连接的 VNet 对等互连的 VNet 的地址范围。  
 
+## <a name="managing-vnet-integration"></a>管理 VNet 集成 
+
+在应用级别连接和断开与 VNet 的连接。 可能影响多个应用的 VNet 集成的操作在应用服务计划级别执行。 从应用 > 网络 > VNet 集成门户，你可以获取有关 VNet 的详细信息。 可以在 asp > 网络 > VNet 集成门户中查看 ASP 级别的类似信息。
+
+在 VNet 集成的应用视图中，能够执行的唯一操作是断开应用与当前所连接到的 VNet 的连接。 若要断开应用与 VNet 的连接，请选择“断开连接”。 在从 VNet 断开连接时，应用将会重启。 断开连接操作不会更改 VNet。 子网或网关未删除。 如果随后想要删除 VNet，需要先将应用从 VNet 断开连接，并删除其中的资源，例如网关。 
+
+ASP VNet 集成 UI 将显示 ASP 中的应用使用的所有 VNet 集成。 要查看每个 VNet 的详细信息，请单击感兴趣的 VNet。 对于网关所需的 VNet 集成，可以在此处执行两个操作。
+
+* **同步网络**。 同步网络操作仅适用于与网关相关的 VNet 集成功能。 执行同步网络操作可确保证书和网络信息同步。如果添加或更改 VNet 的 DNS，则需要执行**同步网络**操作。 此操作会重启所有使用此 VNet 的应用。
+* **添加路由** 添加路由会驱动出站流量进入 VNet。 
+
+**网关所需的 VNet 集成路由**在 VNet 中定义的路由用于将流量从应用定向到 VNet。 如果需要将其他出站流量发送到 VNet 中，则可以在此处添加地址块。 此功能仅适用于网关所需的 VNet 集成。 当使用网关所需的 VNet 集成时，路由表不会影响应用程序流量，这与区域 VNet 集成的方式相同。
+
+**网关所需的 VNet 集成证书**当网关需要启用 VNet 集成时，需要使用证书交换以确保连接的安全性。 除了证书，还有 DNS 配置、路由以及其他类似的用于描述网络的内容。
+如果更改了证书或网络信息，则需单击“同步网络”。 单击“同步网络”会导致应用与 VNet 之间的连接出现短暂的中断。 虽然应用不会重启，但失去连接会导致站点功能失常。 
 
 ## <a name="pricing-details"></a>定价详细信息
 除了 ASP 定价层收费以外，区域 VNet 集成功能不收取额外费用。
@@ -247,12 +229,11 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 * 数据传输成本-即使 VNet 位于同一数据中心，也会对数据传出收费。 [数据传输定价详细信息][DataPricing]中介绍了这些费用。 
 * VPN 网关成本-对于点到站点 VPN，VNet 网关需要付费。 详细信息位于[VPN 网关定价][VNETPricing]页。
 
-
 ## <a name="troubleshooting"></a>故障排除
 虽然此功能容易设置，但这并不意味着你就不会遇到问题。 如果在访问所需终结点时遇到问题，可以使用某些实用程序来测试从应用控制台发出的连接。 可以使用两种控制台。 一种是 Kudu 控制台，另一种是 Azure 门户中的控制台。 若要访问应用中的 Kudu 控制台，请转到“工具”->“Kudu”。 你还可以在 [sitename] appname>.azurewebsites.net 上访问 Kudo 控制台。 网站加载后，请切换到 "调试控制台" 选项卡。若要转到 Azure 门户托管的控制台，请转到 "工具"-"> 控制台"。 
 
 #### <a name="tools"></a>工具
-由于存在安全约束，**ping**、**nslookup** 和 **tracert** 工具无法通过控制台来使用。 为了填补这方面的空白，我们添加了两种单独的工具。 为了测试 DNS 功能，我们添加了名为 nameresolver.exe 的工具。 语法为：
+由于安全约束， **ping**、 **nslookup**和**tracert**工具无法通过控制台工作。 为了填充 void，添加了两个单独的工具。 为了测试 DNS 功能，我们添加了名为 nameresolver.exe 的工具。 语法为：
 
     nameresolver.exe hostname [optional: DNS Server]
 
@@ -273,15 +254,17 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 如果这些项不能回答您的问题，请先查看以下内容： 
 
 **区域 VNet 集成**
-* 你的目标是 RFC 1918 地址
+* 你的目标是非 RFC1918 的地址，并且你没有将 WEBSITE_VNET_ROUTE_ALL 设置为1
 * 你的集成子网是否有 NSG 阻止出口
-* 如果要跨越 ExpressRoute 或 VPN，是否配置了本地网关，以将流量备份到 Azure？ 如果可以在 VNet 中访问终结点，但不能访问本地终结点，则需要进行检查。
+* 如果要跨越 ExpressRoute 或 VPN，是否配置了本地网关，以将流量备份到 Azure？ 如果可以访问 VNet 中的终结点，但不能访问本地终结点，请检查路由。
+* 你是否有足够的权限在集成子网上设置委派？ 在区域 VNet 集成配置期间，集成子网将委托给 Microsoft。 VNet 集成 UI 会自动将子网委托给 Microsoft。 如果你的帐户没有足够的网络权限来设置委派，你将需要可设置你的集成子网中的属性的用户来委派子网。 若要手动委派集成子网，请参阅 Azure 虚拟网络子网 UI，并设置 Microsoft 的委派。 
 
 **网关所需的 VNet 集成**
 * RFC 1918 范围内的点到站点地址范围（10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255）？
 * 网关在门户中是否显示为已启动？ 如果网关处于关闭状态，则将其重新启动。
 * 证书是否显示为同步或是否怀疑网络配置已更改？  如果你的证书不同步或者你怀疑已对 VNet 配置进行了不同步的更改，则会命中 "同步网络"。
-* 如果要跨越 ExpressRoute 或 VPN，是否配置了本地网关，以将流量备份到 Azure？ 如果可以在 VNet 中访问终结点，但不能访问本地终结点，则需要进行检查。
+* 如果通过 VPN，则配置了本地网关，以将流量路由到 Azure？ 如果可以访问 VNet 中的终结点，但不能访问本地终结点，请检查路由。
+* 是否在尝试使用支持点到站点和 ExpressRoute 的共存网关？ VNet 集成不支持共存网关 
 
 调试网络问题是一项挑战，因为看不到阻止访问特定主机的操作：端口组合。 部分原因包括：
 
@@ -314,20 +297,41 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 * 正在尝试使用区域 VNet 集成功能访问非 RFC 1918 地址
 
 
-## <a name="powershell-automation"></a>PowerShell 自动化
+## <a name="automation"></a>自动化
 
-可以使用 PowerShell 将应用服务与 Azure 虚拟网络集成。 对于准备好运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
+对于区域 VNet 集成，CLI 支持。 若要访问以下命令，请[安装 Azure CLI][installCLI]。 
+
+        az webapp vnet-integration --help
+
+        Group
+            az webapp vnet-integration : Methods that list, add, and remove virtual network integrations
+            from a webapp.
+                This command group is in preview. It may be changed/removed in a future release.
+        Commands:
+            add    : Add a regional virtual network integration to a webapp.
+            list   : List the virtual network integrations on a webapp.
+            remove : Remove a regional virtual network integration from webapp.
+
+        az appservice vnet-integration --help
+
+        Group
+            az appservice vnet-integration : A method that lists the virtual network integrations used in an
+            appservice plan.
+                This command group is in preview. It may be changed/removed in a future release.
+        Commands:
+            list : List the virtual network integrations used in an appservice plan.
+
+对于网关必需的 VNet 集成，你可以使用 PowerShell 将应用服务与 Azure 虚拟网络集成。 对于准备好运行的脚本，请参阅[将 Azure 应用服务中的应用连接到 Azure 虚拟网络](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
 
 
 <!--Image references-->
 [1]: ./media/web-sites-integrate-with-vnet/vnetint-app.png
 [2]: ./media/web-sites-integrate-with-vnet/vnetint-addvnet.png
-[3]: ./media/web-sites-integrate-with-vnet/vnetint-howitworks.png
-[4]: ./media/web-sites-integrate-with-vnet/vnetint-details.png
-[5]: ./media/web-sites-integrate-with-vnet/vnetint-aspdetails.png
-[6]: ./media/web-sites-integrate-with-vnet/vnetint-newvnet.png
-[7]: ./media/web-sites-integrate-with-vnet/vnetint-newvnetdetails.png
-[8]: ./media/web-sites-integrate-with-vnet/vnetint-selectvnet.png
+[3]: ./media/web-sites-integrate-with-vnet/vnetint-classic.png
+[4]: ./media/web-sites-integrate-with-vnet/vnetint-appsetting.png
+[5]: ./media/web-sites-integrate-with-vnet/vnetint-regionalworks.png
+[6]: ./media/web-sites-integrate-with-vnet/vnetint-gwworks.png
+
 
 <!--Links-->
 [VNETOverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-overview/ 
@@ -344,3 +348,6 @@ ASP VNet 集成 UI 会显示 ASP 中的应用使用的所有 VNet。 要查看�
 [creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
+[VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
+[installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/

@@ -4,12 +4,12 @@ description: 了解如何创建私有 Azure Kubernetes 服务（AKS）群集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594560"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649501"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>创建私有 Azure Kubernetes Service 群集（预览版）
 
@@ -55,6 +55,18 @@ ms.locfileid: "77594560"
 * 美国西部 2
 * 美国东部 2
 
+## <a name="currently-supported-availability-zones"></a>当前支持的可用性区域
+
+* 美国中部
+* 美国东部
+* 美国东部 2
+* 法国中部
+* 日本东部
+* 北欧
+* 东南亚
+* 英国南部
+* 西欧
+* 美国西部 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>安装最新 Azure CLI AKS 预览版扩展
 
@@ -115,6 +127,7 @@ az aks create \
 > 如果 Docker 桥地址 CIDR （172.17.0.1/16）与子网 CIDR 冲突，请相应地更改 Docker 桥地址。
 
 ## <a name="connect-to-the-private-cluster"></a>连接到专用群集
+
 API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络中创建 Azure 虚拟机（VM）并连接到 API 服务器。 为此，请执行以下操作：
 
 1. 获取用于连接到群集的凭据。
@@ -148,7 +161,8 @@ API 服务器终结点没有公共 IP 地址。 因此，必须在虚拟网络�
 * 若要使用自定义 DNS 服务器，请将具有 DNS 的 AD 服务器部署到此 IP 168.63.129.16
 
 ## <a name="limitations"></a>限制 
-* 目前仅支持美国东部2和美国西部2区域的可用性区域
+* IP 授权范围不能应用于专用 api 服务器终结点，它们仅适用于公共 API 服务器
+* 某些区域当前支持可用性区域，请参阅本文档的开头部分 
 * [Azure 专用链接服务限制][private-link-service]适用于专用群集、Azure 专用终结点和虚拟网络服务终结点，这些终结点当前在同一虚拟网络中不受支持。
 * 不支持专用群集中的虚拟节点在专用的 Azure 虚拟网络中实现专用 Azure 容器实例（ACI）
 * 不支持具有专用群集的现成的 Azure DevOps 集成

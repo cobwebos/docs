@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045207"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650293"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -31,12 +31,12 @@ VCore 模型中的服务层选项包括常规用途、业务关键和超大规�
 
 ||**常规用途**|**业务关键**|**超大规模**|
 |---|---|---|---|
-|最适用情况|大多数业务工作负荷。 提供面向预算、平衡和可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有高度可缩放的存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
-|存储空间|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**：<br/>5 GB-3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**：<br/>32 GB - 4 TB |根据需要灵活地自动增长存储。 最多支持 100 TB 的存储空间。 将本地 SSD 存储用于本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终长期数据存储。 |
+|最适用于|大多数业务工作负荷。 提供面向预算、平衡和可缩放的计算和存储选项。 |通过使用多个独立副本，为业务应用程序提供故障的最高复原能力，并为每个数据库副本提供最高的 i/o 性能。|具有高度可缩放的存储和读取缩放要求的大多数业务工作负荷。  允许配置多个独立的数据库副本，从而提供更高的故障恢复能力。 |
+|存储|使用远程存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**无服务器计算**：<br/>5 GB-3 TB<br/>**托管实例**： 32 GB-8 TB |使用本地 SSD 存储。<br/>**单一数据库和弹性池预配计算**：<br/>5 GB – 4 TB<br/>**托管实例**：<br/>32 GB - 4 TB |根据需要灵活地自动增长存储。 最多支持 100 TB 的存储空间。 将本地 SSD 存储用于本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终长期数据存储。 |
 |IOPS 和吞吐量（近似）|**单一数据库和弹性池**：请参阅[单一数据库](../sql-database/sql-database-vcore-resource-limits-single-databases.md)和[弹性池](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)的资源限制。<br/>**托管实例**：请参阅[概述 Azure SQL 数据库托管实例资源限制](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics)。|请参阅[单一数据库](../sql-database/sql-database-vcore-resource-limits-single-databases.md)和[弹性池](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md)的资源限制。|超大规模是具有多个级别的缓存的多层体系结构。 有效的 IOPS 和吞吐量将取决于工作负荷。|
 |可用性|1个副本，无读取缩放副本|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余高可用性（HA）|1个读写副本，加上 0-4[个读取缩放副本](sql-database-read-scale-out.md)|
 |备份|[读取访问异地冗余存储（GRS）](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为7天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份。 还原使用这些快照进行快速恢复。 备份是即时的，不会影响计算 i/o 性能。 还原速度很快，并且不是数据大小的操作（花费几分钟而不是几小时或几天）。|
-|内存中|不支持|受支持|不支持|
+|内存中|不支持|支持|不支持|
 |||
 
 
@@ -54,7 +54,7 @@ VCore 模型中的服务层选项包括常规用途、业务关键和超大规�
 VCore 模型中的计算层选项包括预配的和无服务器的计算层。
 
 
-### <a name="provisioned-compute"></a>已预配计算
+### <a name="provisioned-compute"></a>预配计算
 
 预配的计算层提供了一种特定数量的计算资源，这些资源的配置与工作负荷活动无关，并按固定价格（每小时）预配计算数量。
 
@@ -89,7 +89,7 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 - M 系列是内存优化硬件选项，适用于需要更多内存和更高计算限制的工作负荷，而不是由 Gen5 提供。
 - M 系列提供每 vCore 29 GB 和 128 Vcore，这会将相对于 Gen5 的内存限制增加到将近 4 TB。
 
-若要为订阅和区域启用 M 系列硬件，必须打开支持请求。 如果支持请求获得批准，M 系列的选择和预配体验将遵循与其他硬件代相同的模式。 对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
+若要为订阅和区域启用 M 系列硬件，必须打开支持请求。 订阅必须是付费产品/服务类型，包括即用即付或企业协议（EA）。  如果支持请求获得批准，M 系列的选择和预配体验将遵循与其他硬件代相同的模式。 对于 M 系列可用的区域，请参阅[m 系列可用性](#m-series)。
 
 
 ### <a name="compute-and-memory-specifications"></a>计算和内存规格
@@ -142,7 +142,7 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
   
 **更改现有托管实例的硬件生成**
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 从 "托管实例" 页上，选择 "设置" 部分下的 "**定价层**" 链接
 
@@ -150,43 +150,25 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 
 在 "**定价层**" 页上，你将能够按前面的步骤所述更改硬件生成。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell 脚本：
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-请确保输入托管实例的订阅 ID、名称和资源组。
+有关更多详细信息，请检查[AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)命令。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用以下 CLI 命令：
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+有关更多详细信息，请参阅[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)命令。
 
 ---
 
@@ -194,7 +176,7 @@ Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType
 
 #### <a name="gen4gen5-1"></a>Gen4/Gen5
 
-澳大利亚东部或巴西南部区域不再支持新的 Gen4 数据库。 
+Gen4 硬件正在被[淘汰](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/)，不再适用于新部署。 所有新数据库都必须部署在 Gen5 硬件上。
 
 Gen5 在世界各地的大多数区域中都可用。
 

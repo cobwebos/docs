@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792772"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651400"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>使用 Azure 逻辑应用连接到本地文件系统
 
-使用文件系统连接器和 Azure 逻辑应用，可以创建能够在本地文件共享中创建和管理文件的自动化任务与工作流，例如：  
+使用 Azure 逻辑应用和文件系统连接器，可以创建自动任务和工作流，用于创建和管理本地文件共享上的文件，例如：
 
 - 创建、获取、追加、更新和删除文件。
 - 列出文件夹或根文件夹中的文件。
@@ -25,7 +25,7 @@ ms.locfileid: "74792772"
 
 本文介绍如何根据本示例方案所述连接到本地文件系统：将上传至 Dropbox 的文件复制到文件共享，然后发送一封电子邮件。 为了安全连接和访问本地系统，逻辑应用将使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。 有关连接器特定的技术信息，请参阅[文件系统连接器参考](/connectors/filesystem/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "74792772"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 在搜索框中，输入“dropbox”作为筛选器。 在触发器列表中选择以下触发器：“创建文件时”
 
@@ -65,11 +65,11 @@ ms.locfileid: "74792772"
 
    ![创建连接](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | properties | 需要 | Value | 描述 |
+   | properties | 必选 | 值 | 说明 |
    | -------- | -------- | ----- | ----------- |
    | **连接名称** | 是 | <connection-name> | 连接使用的名称 |
    | **根文件夹** | 是 | <*root-folder-name*> | 文件系统的根文件夹，例如，如果安装了本地数据网关，比如安装了本地数据网关的计算机上的本地文件夹，或者计算机可以访问的网络共享文件夹。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根文件夹是主要的父文件夹，用作所有与文件有关的操作的相对路径。 |
-   | **身份验证类型** | No | <*auth-type*> | 文件系统使用的身份验证类型，例如 **Windows** |
+   | **身份验证类型** | 否 | <*auth-type*> | 文件系统使用的身份验证类型，例如 **Windows** |
    | **用户名** | 是 | <*domain*>\\<*username*> | 拥有文件系统的计算机用户名 |
    | **密码** | 是 | <*your-password*> | 拥有文件系统的计算机密码 |
    | **gateway** | 是 | <*installed-gateway-name*> | 以前安装的网关的名称 |
@@ -93,7 +93,10 @@ ms.locfileid: "74792772"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/fileconnector/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/fileconnector/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

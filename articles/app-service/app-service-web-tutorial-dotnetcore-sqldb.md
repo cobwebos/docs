@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f444ad9b32ca5da923ce5ac711c9947971c4d1e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672014"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500079"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -34,7 +34,7 @@ ms.locfileid: "74672014"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -268,7 +268,7 @@ http://<app_name>.azurewebsites.net
 
 ![在应用服务中运行的应用](./media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-**祝贺你！** 数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
+祝贺你！  数据驱动的 .NET Core 应用已经在你的应用服务中运行了。
 
 ## <a name="update-locally-and-redeploy"></a>在本地更新并重新部署
 
@@ -302,7 +302,7 @@ dotnet ef database update
 
 打开 _Controllers\TodosController.cs_。
 
-找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如以下代码所示：
+找到 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，并将 `Done` 添加到 `Bind` 属性中的属性列表。 完成后，`Create()` 方法签名应如下面的代码所示：
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
@@ -350,7 +350,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 dotnet run
 ```
 
-在浏览器中，导航到 `http://localhost:5000/`。 你现在可以添加一个待办事项，并检查**Done**。 然后，它会在主页中显示为已完成的项。 请牢记，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
+在浏览器中，导航到 `http://localhost:5000/`。 现在可以添加一个待办事项，并勾选“完成”  。 然后，它会在主页中显示为已完成的项。 请记住，由于未更改`Edit`视图，`Edit`视图不显示`Done`字段。
 
 ### <a name="publish-changes-to-azure"></a>发布对 Azure 所做的更改
 
