@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8700421551af227f158abaa38d5f96c8e2987ba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603406"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616370"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -39,9 +39,9 @@ ms.locfileid: "77603406"
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|Standard|
-|[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔|✔|✔|建议（免费）威胁检测（标准）|
+|[虚拟机行为分析威胁检测警报](threat-protection.md)|✔|✔|✔|建议（免费）威胁检测（标准）|
 |[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[基于网络的威胁检测警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -67,7 +67,7 @@ ms.locfileid: "77603406"
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|Standard|
 |[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
 |[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[基于网络的威胁检测警报](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[基于网络的威胁检测警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|

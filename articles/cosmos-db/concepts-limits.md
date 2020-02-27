@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460205"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623405"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -26,7 +26,7 @@ ms.locfileid: "77460205"
 | 每个容器的最大 ru 数（[专用吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
 | 每个数据库的最大每个 RUs （[共享吞吐量预配模式](databases-containers-items.md#azure-cosmos-containers)） | 默认值为1000000。 你可以通过[存档 Azure 支持票证](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)来增加它 |
 | 最大每（逻辑）分区键 | 10,000 |
-| 每个（逻辑）分区键的所有项的最大存储空间| 10 GB |
+| 每个（逻辑）分区键的所有项的最大存储空间| 20 GB |
 | 不同（逻辑）分区键的最大数目 | 无限制 |
 | 每个容器的最大存储 | 无限制 |
 | 每个数据库的最大存储 | 无限制 |

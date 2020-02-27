@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714488"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648419"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -41,11 +41,11 @@ ms.locfileid: "76714488"
  
 ## <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
-* **安全管理员**、**安全读者**、**报表读者**或**全局管理员**角色中的用户
+* **安全管理员**、**安全读者**、**报表读者**、**全局读者**或**全局管理员**角色中的用户
 
 ## <a name="audit-logs"></a>审核日志
 
-Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核数据，请在 **Azure Active Directory** 的“活动”部分中选择“审核日志”。 请注意，审核日志的滞后时间可能最长为一小时，因此，在完成任务后，在门户中显示审核活动数据可能需要较长时间。
+Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访问审核报告，请在**Azure Active Directory**的 "**监视**" 部分选择 "**审核日志**"。 请注意，审核日志的滞后时间可能最长为一小时，因此，在完成任务后，在门户中显示审核活动数据可能需要较长时间。
 
 
 
@@ -90,16 +90,20 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 使用**服务**筛选器可以从以下服务的下拉列表中进行选择：
 
 - All
+- AAD 管理 UX
 - 访问评审
-- 帐户预配 
-- 应用程序 SSO
+- 帐户预配
+- 应用程序代理
 - 身份验证方法
 - B2C
 - 条件性访问
 - 核心目录
 - 权利管理
+- 混合身份验证
 - 标识保护
 - 受邀用户
+- MIM 服务
+- MyApps
 - PIM
 - 自助服务组管理
 - 自助服务密码管理
@@ -110,7 +114,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - All
 - AdministrativeUnit
 - ApplicationManagement
-- 身份验证
+- Authentication
 - 授权
 - 联系人
 - 设备
@@ -118,7 +122,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- KeyManagement
+- Label
 - 其他
+- PermissionGrantPolicy
 - 策略
 - ResourceManagement
 - RoleManagement
@@ -134,14 +142,13 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 - Success
 - 失败
 
-**目标**筛选器允许你按名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 
+**目标**筛选器允许您通过名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 
 
-使用 "**启动者**" 筛选器可以定义参与者的名称或通用主体名称（UPN）。 名称和 UPN 区分大小写。
+通过筛选器**启动**的筛选器，您可以定义参与者名称或通用主体名称（UPN）的开头。 名称和 UPN 区分大小写。
 
 使用 "**日期范围**" 筛选器可以定义返回的数据的时间范围。  
 可能的值包括：
 
-- 1 个月
 - 7 天
 - 24 小时
 - 自定义
@@ -179,11 +186,11 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 - 向组或用户分配了哪些许可证？
 
-如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
+如果只想查看与用户相关的审核数据，则可以在 "**用户**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**UserManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/users.png "审核日志")
 
-如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**活动**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
+如果只想查看与组相关的审核数据，则可以在 "**组**" 选项卡的 "**监视**" 部分中的 "**审核日志**" 下找到筛选视图。此入口点已将**GroupManagement**作为预先选择的类别。
 
 ![审核日志](./media/concept-audit-logs/groups.png "审核日志")
 

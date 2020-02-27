@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793019"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651451"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 EDIFACT 消息以实现 B2B 企业集成
 
@@ -27,7 +27,7 @@ ms.locfileid: "74793019"
 下面是需要准备好的项：
 
 * 已定义的、与 Azure 订阅关联的[集成帐户](logic-apps-enterprise-integration-create-integration-account.md)  
-* 已在集成帐户中定义了至少两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
+* 已在集成帐户中至少定义了两个[合作伙伴](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
 > 创建协议时，与合作伙伴之间相互接收或发送的消息中的内容必须与协议类型匹配。
@@ -36,7 +36,7 @@ ms.locfileid: "74793019"
 
 ## <a name="create-an-edifact-agreement"></a>创建 EDIFACT 协议 
 
-1. 登录到 [Azure 门户](https://portal.azure.com "Azure 门户")。 
+1. 登录 [Azure 门户](https://portal.azure.com "Azure 门户")。 
 
 2. 在 Azure 主菜单中，选择“所有服务”。 在搜索框中输入“集成”，然后选择“集成帐户”。
 
@@ -61,7 +61,7 @@ ms.locfileid: "74793019"
 
    ![提供协议详细信息](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-   | properties | 描述 |
+   | properties | 说明 |
    | --- | --- |
    | 名称 |协议的名称 |
    | 协议类型 | 应为 EDIFACT |
@@ -90,21 +90,21 @@ ms.locfileid: "74793019"
 
 ### <a name="identifiers"></a>标识符
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | UNB6.1 (收件人引用密码) |输入范围在 1 到 14 个字符之间的字母数字值。 |
 | UNB6.2 (收件人引用限定符) |输入包含最少一个字符且最多二个字符的字母数字值。 |
 
 ### <a name="acknowledgments"></a>致谢
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | 接收消息(CONTRL) |选中此复选框可向交换发送方返回技术 (CONTRL) 确认。 该确认会基于协议的“发送设置”发送给交换发送方。 |
 | 确认(CONTRL) |选中此复选框可向交换发送方返回功能 (CONTRL) 确认。该确认会基于协议的“发送设置”发送给交换发送方。 |
 
 ### <a name="schemas"></a>架构
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | UNH2.1 (类型) |选择事务集类型。 |
 | UNH2.2 (版本) |输入消息版本号。 （最少一个字符；最多三个字符）。 |
@@ -112,10 +112,11 @@ ms.locfileid: "74793019"
 | UNH2.5 (协会分配的代码) |输入分配的代码。 （最多六个字符。 必须是字母数字）。 |
 | UNG2.1 (应用发送方 ID) |输入包含最少一个字符且最多 35 个字符的字母数字值。 |
 | UNG2.2 (应用发送方代码限定符) |输入包含最多四个字符的字母数字值。 |
-| 架构 |从关联的集成帐户中选择要使用的以前上传的架构。 |
+| SCHEMA |从关联的集成帐户中选择要使用的以前上传的架构。 |
 
 ### <a name="control-numbers"></a>控制编号
-| properties | 描述 |
+
+| properties | 说明 |
 | --- | --- |
 | 不允许交换控制编号重复项 |若要阻止重复交换，请选择此属性。 如果选中，则 EDIFACT 解码操作会检查收到的交换的交换控制编号 (UNB5) 是否与以前处理的交换控制编号不匹配。 如果检测到匹配项，则不处理交换。 |
 | 检查重复的 UNB5 的时间间隔为每(天) |如果选择禁止重复的交换控制编号，可以通过为此设置提供适当的值，来指定执行检查的间隔天数。 |
@@ -123,11 +124,11 @@ ms.locfileid: "74793019"
 | 不允许事务集控制编号重复项 |若要阻止具有重复事务集控制编号 (UNH1) 的交换，请选择此属性。 |
 | EDIFACT 确认控制编号 |若要指定要在确认中使用的事务集引用编号，请为前缀、引用编号的范围和后缀输入值。 |
 
-### <a name="validations"></a>验证
+### <a name="validation"></a>验证
 
 完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | 消息类型 |选择 EDI 消息类型。 |
 | EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -138,7 +139,7 @@ ms.locfileid: "74793019"
 
 ### <a name="internal-settings"></a>内部设置
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | 如果允许尾随分隔符，请创建空的 XML 标记 |选中此复选框可使交换发送方包含用于尾随分隔符的空 XML 标记。 |
 | 将交换拆分为事务集 - 出错时暂停事务集|通过将相应信封应用于事务集，将交换中的每个事务集分析为单独 XML 文档。 仅暂停未通过验证的事务集。 |
@@ -163,7 +164,7 @@ ms.locfileid: "74793019"
 
 ### <a name="identifiers"></a>标识符
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | UNB1.2 (语法版本) |选择介于 **1** 和 **4** 之间的值。 |
 | UNB2.3 (发件人反向路由地址) |输入包含最少一个字符且最多 14 个字符的字母数字值。 |
@@ -173,22 +174,25 @@ ms.locfileid: "74793019"
 | UNB7 (应用程序引用 ID) |输入包含最少一个字符且最多 14 个字符的字母数字值 |
 
 ### <a name="acknowledgment"></a>确认
-| properties | 描述 |
+
+| properties | 说明 |
 | --- | --- |
 | 接收消息(CONTRL) |如果宿主合作伙伴预期收到技术 (CONTRL) 确认，请选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
 | 确认(CONTRL) |如果主机合作伙伴期望收到功能 (CONTRL) 确认，则选中此复选框。 此设置指定发送消息的主机合作伙伴从来宾合作伙伴请求确认。 |
 | 为已接受的事务集生成 SG1/SG4 循环 |如果选择请求功能确认，则选中此复选框可强制为已接受的事务集在功能 CONTRL 确认中生成 SG1/SG4 循环。 |
 
 ### <a name="schemas"></a>架构
-| properties | 描述 |
+
+| properties | 说明 |
 | --- | --- |
 | UNH2.1 (类型) |选择事务集类型。 |
 | UNH2.2 (版本) |输入消息版本号。 |
 | UNH2.3 (发布) |输入消息发布号。 |
-| 架构 |选择要使用的架构。 架构位于集成帐户中。 要访问架构，请先将集成帐户链接到逻辑应用。 |
+| SCHEMA |选择要使用的架构。 架构位于集成帐户中。 要访问架构，请先将集成帐户链接到逻辑应用。 |
 
 ### <a name="envelopes"></a>信封
-| properties | 描述 |
+
+| properties | 说明 |
 | --- | --- |
 | UNB8 (Processing Priority Code) |输入长度不超过一个字符的字母数字值。 |
 | UNB10 (通信协议) |输入包含最少一个字符且最多 40 个字符的字母数字值。 |
@@ -200,7 +204,7 @@ ms.locfileid: "74793019"
 
 除了字符集，可以输入要用于每种消息类型的不同分隔符集。 如果没有为给定消息架构指定字符集，则使用默认字符集。
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | UNB1.1 (系统标识符) |选择要应用于传出交换的 EDIFACT 字符集。 |
 | 架构 |从下拉列表中选择架构。 完成每行后，会自动添加新行。 对于所选的架构，请根据以下分隔符说明选择要使用的分隔符集。 |
@@ -208,20 +212,21 @@ ms.locfileid: "74793019"
 | 组件分隔符 |若要分隔复合数据元素，请输入单个字符。 |
 | 数据元素分隔符 |若要分隔复合数据元素中的简单数据元素，请输入单个字符。 |
 | 段终止符 |若要指示 EDI 段的结尾，请输入单个字符。 |
-| 后缀 |选择与段标识符一起使用的字符。 如果指定了后缀，则段终止符数据元素可以为空。 如果段终止符保留为空，则必须指定后缀。 |
+| Suffix |选择与段标识符一起使用的字符。 如果指定了后缀，则段终止符数据元素可以为空。 如果段终止符保留为空，则必须指定后缀。 |
 
 ### <a name="control-numbers"></a>控制编号
-| properties | 描述 |
+
+| properties | 说明 |
 | --- | --- |
 | UNB5 (交换控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成传出交换。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增；前缀和后缀保持不变。 |
 | UNG5 (组控制编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成组控制编号。 前缀和后缀是可选的，而控制编号是必需的。 控制编号对于每个新消息递增，直到达到最大值；前缀和后缀保持不变。 |
 | UNH1 (消息标头引用编号) |输入前缀、交换控制编号的值范围和后缀。 这些值用于生成消息标头引用编号。 前缀和后缀是可选的，而引用编号是必需的。 引用编号对于每个新消息递增；前缀和后缀保持不变。 |
 
-### <a name="validations"></a>验证
+### <a name="validation"></a>验证
 
 完成每个验证行后，会自动添加另一行。 如果未指定任何规则，验证将使用“默认”行。
 
-| properties | 描述 |
+| properties | 说明 |
 | --- | --- |
 | 消息类型 |选择 EDI 消息类型。 |
 | EDI 验证 |根据架构的 EDI 属性、长度限制、空数据元素和尾部分隔符的定义，对数据类型执行 EDI 验证。 |
@@ -240,9 +245,13 @@ ms.locfileid: "74793019"
 
     ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>查看 Swagger 文件
-若要查看 EDIFACT 连接器的 Swagger 详细信息，请参阅 [EDIFACT](/connectors/edifact/)。
+## <a name="connector-reference"></a>连接器参考
 
-## <a name="learn-more"></a>了解更多
-* [了解有关 Enterprise Integration Pack 的详细信息](logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
+有关此连接器的更多技术详细信息（如连接器的 Swagger 文件所述的操作和限制），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/edifact/)。
 
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+
+## <a name="next-steps"></a>后续步骤
+
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

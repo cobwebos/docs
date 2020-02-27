@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905483"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617525"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 
@@ -36,7 +36,7 @@ ms.locfileid: "76905483"
 
 HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操作 URL。 当服务尝试访问脚本操作时，会收到前面的错误消息。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 - 对于 HTTP 或 HTTPS URL，请尝试从 incognito 浏览器窗口中转到该 URL。
 - 对于 WASB URL，请确保在请求中提供的存储帐户中存在该脚本。 另外，请确保此存储帐户的存储密钥是正确的。
@@ -58,7 +58,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操作 URL。 当服务尝试访问脚本操作时，会收到前面的错误消息。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 将相应的 Azure Data Lake Storage 第1代帐户添加到群集。 还要将访问 Data Lake Storage 第1代帐户的服务主体添加到群集。
 
@@ -74,7 +74,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 角色不允许您指定的虚拟机大小。 出现此错误的原因可能是 VM 大小值无法按预期工作，或者不适合计算机角色。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 错误消息将列出 VM 大小的有效值。 选择其中一个值，然后重试 "创建群集请求"。
 
@@ -90,7 +90,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 在群集创建过程中指定的**VirtualNetworkId**值的格式不正确。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 请确保**VirtualNetworkId**和子网的值格式正确。 若要获取**VirtualNetworkId**值：
 
@@ -114,7 +114,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 在创建群集请求过程中提供的自定义脚本在群集成功部署后执行。 此错误代码表示在执行名为 \<SCRIPT_NAME\>的自定义脚本期间出现错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 因为脚本是您的自定义脚本，所以我们建议您对问题进行故障排除，并根据需要重新运行脚本。 若要对脚本失败进行故障排除，请检查/var/lib/ambari-agent/* 文件夹中的日志。 或在 Ambari UI 中打开 "**操作**" 页，然后选择**run_customscriptaction**操作以查看错误详细信息。
 
@@ -130,7 +130,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 自定义元存储与所选 HDInsight 群集版本不兼容。 目前，HDInsight 4.0 群集仅支持元存储版本3.0 和更高版本，而 HDInsight 3.6 群集不支持元存储版本3.0 和更高版本。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 仅使用 HDInsight 群集版本支持的元存储版本。 如果未指定自定义元存储，HDInsight 将在内部创建元存储，然后在删除群集时将其删除。
 
@@ -146,7 +146,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 网络安全组（NSG）上的防火墙规则阻止了与关键 Azure 运行状况和管理服务的群集通信。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果你计划使用网络安全组来控制网络流量，请在安装 HDInsight 之前执行以下操作：
 
@@ -167,12 +167,12 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 你没有提供管理身份所需的权限。 用户分配的托管标识在 Azure Data Lake Storage Gen2 存储帐户上没有 Blob 存储参与者角色。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 打开 Azure 门户。
 1. 转到存储帐户。
 1. 查看 "**访问控制（IAM）** "。
-1. 请确保 "存储 Blob 数据参与者" 角色或 "存储 Blob 数据所有者" 角色具有对订阅的用户分配的托管标识的 "已分配" 访问权限。
+1. 请确保用户已为其分配存储 Blob 数据参与者角色或存储 Blob 数据所有者角色。
 
 有关详细信息，请参阅在[Data Lake Storage Gen2 帐户上设置托管标识的权限](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
@@ -188,7 +188,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 如果网络安全组或用户定义的路由（Udr）控制到 HDInsight 群集的入站流量，请确保群集可以与关键 Azure 运行状况和管理服务通信。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 如果你计划使用网络安全组来控制网络流量，请在安装 HDInsight 之前执行以下操作：
 
@@ -208,7 +208,7 @@ HDInsight 服务不能访问你在创建群集请求过程中提供的脚本操�
 
 通常，当发生暂时性问题或 Azure 中断时，会生成此错误。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 查看[azure 状态](https://status.azure.com)页，了解可能会影响群集部署的任何 azure 中断。 如果没有中断，请重试群集部署。
 

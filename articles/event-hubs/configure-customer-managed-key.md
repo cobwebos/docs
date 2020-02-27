@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903289"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621992"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>配置客户托管的密钥，以便通过使用 Azure 门户来加密静态 Azure 事件中心数据
 Azure 事件中心通过 Azure 存储服务加密（Azure SSE）提供静态数据的加密。 事件中心依赖于 Azure 存储来存储数据，默认情况下，使用 Microsoft 托管密钥对存储在 Azure 存储中的所有数据进行加密。 
@@ -99,7 +99,7 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 ## <a name="log-schema"></a>日志架构 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目都具有使用下表中描述的格式的字符串字段。 
 
-| 名称 | Description |
+| 名称 | 说明 |
 | ---- | ----------- | 
 | TaskName | 失败的任务的说明。 |
 | ActivityId | 用于跟踪的内部 ID。 |
@@ -144,12 +144,268 @@ Azure 事件中心现在支持通过 Microsoft 管理的密钥或客户托管的
 }
 ```
 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>使用资源管理器模板启用加密
+本部分演示如何使用**Azure 资源管理器模板**执行以下任务。 
+
+1. 使用托管服务标识创建**事件中心命名空间**。
+2. 创建**密钥保管库**，并向服务标识授予对密钥保管库的访问权限。 
+3. 用密钥保管库信息（键/值）更新事件中心命名空间。 
+
+
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>使用托管服务标识创建事件中心群集和命名空间
+本部分说明如何使用 Azure 资源管理器模板和 PowerShell 创建具有托管服务标识的 Azure 事件中心命名空间。 
+
+1. 创建 Azure 资源管理器模板，以使用托管服务标识创建事件中心命名空间。 将文件命名为： **CreateEventHubClusterAndNamespace**： 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/clusters",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('clusterName')]",
+             "location":"[parameters('location')]",
+             "sku":{
+                "name":"Dedicated",
+                "capacity":1
+             }
+          },
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             },
+             "dependsOn":[
+                "[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]"
+             ]
+          }
+       ],
+       "outputs":{
+          "EventHubNamespaceId":{
+             "type":"string",
+             "value":"[resourceId('Microsoft.EventHub/namespaces',parameters('namespaceName'))]"
+          }
+       }
+    }
+    ```
+2. 创建名为： **CreateEventHubClusterAndNamespaceParams**的模板参数文件。 
+
+    > [!NOTE]
+    > 请替换以下值： 
+    > - `<EventHubsClusterName>`-事件中心群集的名称    
+    > - `<EventHubsNamespaceName>`-事件中心命名空间的名称
+    > - `<Location>`-事件中心命名空间的位置
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          }
+       }
+    }
+    
+    ```
+3. 运行以下 PowerShell 命令以部署模板，以创建事件中心命名空间。 然后，检索事件中心命名空间的 ID 以供以后使用。 运行命令之前，请将 `{MyRG}` 替换为资源组的名称。  
+
+    ```powershell
+    $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
+
+    $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
+    ```
+ 
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>向事件中心命名空间标识授予对密钥保管库的访问权限
+
+1. 运行以下命令来创建启用了**清除保护**并启用**软删除**的密钥保管库。 
+
+    ```powershell
+    New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
+    ```     
+    
+    （或者）    
+    
+    运行以下命令更新**现有的密钥保管库**。 在运行命令之前，指定资源组和密钥保管库名称的值。 
+    
+    ```powershell
+    ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
+    ``` 
+2. 设置密钥保管库访问策略，以便事件中心命名空间的托管标识可以访问密钥保管库中的密钥值。 使用上一节中的事件中心命名空间的 ID。 
+
+    ```powershell
+    $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
+    
+    Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
+    ```
+
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>利用 key vault 中客户托管的密钥加密事件中心命名空间中的数据
+至此，你已完成以下步骤： 
+
+1. 使用托管标识创建高级命名空间。
+2. 创建密钥保管库，并向托管标识授予对密钥保管库的访问权限。 
+
+在此步骤中，将更新包含密钥保管库信息的事件中心命名空间。 
+
+1. 使用以下内容创建名为**CreateEventHubClusterAndNamespace**的 json 文件： 
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Event Hub cluster."
+             }
+          },
+          "namespaceName":{
+             "type":"string",
+             "metadata":{
+                "description":"Name for the Namespace to be created in cluster."
+             }
+          },
+          "location":{
+             "type":"string",
+             "defaultValue":"[resourceGroup().location]",
+             "metadata":{
+                "description":"Specifies the Azure location for all resources."
+             }
+          },
+          "keyVaultUri":{
+             "type":"string",
+             "metadata":{
+                "description":"URI of the KeyVault."
+             }
+          },
+          "keyName":{
+             "type":"string",
+             "metadata":{
+                "description":"KeyName."
+             }
+          }
+       },
+       "resources":[
+          {
+             "type":"Microsoft.EventHub/namespaces",
+             "apiVersion":"2018-01-01-preview",
+             "name":"[parameters('namespaceName')]",
+             "location":"[parameters('location')]",
+             "identity":{
+                "type":"SystemAssigned"
+             },
+             "sku":{
+                "name":"Standard",
+                "tier":"Standard",
+                "capacity":1
+             },
+             "properties":{
+                "isAutoInflateEnabled":false,
+                "maximumThroughputUnits":0,
+                "clusterArmId":"[resourceId('Microsoft.EventHub/clusters', parameters('clusterName'))]",
+                "encryption":{
+                   "keySource":"Microsoft.KeyVault",
+                   "keyVaultProperties":[
+                      {
+                         "keyName":"[parameters('keyName')]",
+                         "keyVaultUri":"[parameters('keyVaultUri')]"
+                      }
+                   ]
+                }
+             }
+          }
+       ]
+    }
+    ``` 
+
+2. 创建模板参数文件： **UpdateEventHubClusterAndNamespaceParams**。 
+
+    > [!NOTE]
+    > 请替换以下值： 
+    > - `<EventHubsClusterName>`-事件中心群集的名称。        
+    > - `<EventHubsNamespaceName>`-事件中心命名空间的名称
+    > - `<Location>`-事件中心命名空间的位置
+    > - `<KeyVaultName>`-密钥保管库的名称
+    > - `<KeyName>`-密钥保管库中密钥的名称
+
+    ```json
+    {
+       "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+       "contentVersion":"1.0.0.0",
+       "parameters":{
+          "clusterName":{
+             "value":"<EventHubsClusterName>"
+          },
+          "namespaceName":{
+             "value":"<EventHubsNamespaceName>"
+          },
+          "location":{
+             "value":"<Location>"
+          },
+          "keyName":{
+             "value":"<KeyName>"
+          },
+          "keyVaultUri":{
+             "value":"https://<KeyVaultName>.vault.azure.net"
+          }
+       }
+    }
+    ```             
+3. 运行以下 PowerShell 命令以部署资源管理器模板。 运行命令之前，请将 `{MyRG}` 替换为资源组的名称。 
+
+    ```powershell
+    New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
+    ```
+
 ## <a name="troubleshoot"></a>故障排除
 最佳做法是始终启用日志，如前一部分中所示。 启用 BYOK 加密后，它有助于跟踪活动。 它还有助于限制问题的范围。
 
 下面是启用 BYOK 加密时要查找的常见错误代码。
 
-| 行动 | 错误代码 | 数据的生成状态 |
+| 操作 | 错误代码 | 数据的生成状态 |
 | ------ | ---------- | ----------------------- | 
 | 从密钥保管库中删除包装/解包权限 | 403 |    Inaccessible |
 | 从授予了 "包装/解包" 权限的 AAD 主体中删除 AAD 角色成员身份 | 403 |  Inaccessible |

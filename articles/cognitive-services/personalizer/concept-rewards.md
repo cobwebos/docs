@@ -1,31 +1,26 @@
 ---
 title: 奖励评分 - 个性化体验创建服务
-titleSuffix: Azure Cognitive Services
 description: 奖励评分指示为用户生成的个性化选项 (RewardActionID) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。 个性化体验创建服务通过评估奖励来训练其机器学习模型。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
+ms.date: 02/20/2020
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: diberry
-ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 734e4d0fdcec25884f8535ec61ccd10569fa8890
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490891"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623786"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>奖励评分表示个性化的成败
 
 奖励评分指示为用户生成的个性化选项 ([RewardActionID](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/rank/rank#response)) 的好坏程度。 奖励评分值由业务逻辑根据用户行为的观察结果来确定。
 
-个性化体验创建服务通过评估奖励来训练其机器学习模型。 
+个性化体验创建服务通过评估奖励来训练其机器学习模型。
+
+了解[如何](how-to-settings.md#configure-rewards-for-the-feedback-loop)在 Personalizer 资源的 Azure 门户中配置默认奖励分数。
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>使用奖励 API 向个性化体验创建服务发送奖励评分
 
-奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是0和1之间的数字。 在某些情况下，可以使用值为-1 的负奖励，只应在有强化学习（RL）的情况下使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
+奖励由[奖励 API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) 发送到个性化体验创建服务。 通常，奖励是0到1之间的数字。 在某些情况下，可以使用值为-1 的负奖励，只应在有强化学习（RL）的情况下使用。 个性化体验创建服务将训练模型，以实现一段时间内可能的最高奖励总分。
 
 发生用户行为（这可能是几天以后的事）后，将发送奖励。 如果发生事件之前个性化体验创建服务等待了最长允许时间，则视为没有奖励。可以在 Azure 门户中使用[奖励等待时间](#reward-wait-time)配置默认奖励。
 
@@ -47,16 +42,16 @@ ms.locfileid: "73490891"
 
 必须在业务逻辑中计算奖励评分。 评分可以表示为：
 
-* 发送一次的单个数字 
+* 发送一次的单个数字
 * 立即发送的评分（例如 0.8），以及稍后发送的另一个评分（通常为 0.2）。
 
 ## <a name="default-rewards"></a>默认奖励
 
 如果在[奖励等待时间](#reward-wait-time)（自调用排名以来的持续时间）未收到奖励，个性化体验创建服务会向排名事件隐式应用**默认奖励**。
 
-## <a name="building-up-rewards-with-multiple-factors"></a>使用多种因素构成奖励  
+## <a name="building-up-rewards-with-multiple-factors"></a>使用多种因素构成奖励
 
-为实现有效的个性化，可以根据多个因素来构建奖励分数。 
+为实现有效的个性化，可以根据多个因素来构建奖励分数。
 
 例如，可应用以下规则来个性化视频内容的列表：
 
@@ -93,8 +88,8 @@ ms.locfileid: "73490891"
 * **考虑意想不到的后果**：创建奖励功能，使[道德和责任使用](ethics-responsible-use.md)成为责任。
 
 * **使用增量奖励**：为较小的用户行为添加部分奖励有助于 Personalizer 获得更好的回报。 此增量奖励可让算法知道它即将在最终的所需行为中与用户互动。
-    * 如果你正在显示电影列表，而用户将鼠标悬停在第一部电影上片刻时间以查看详细信息，则可以确定发生了某种用户互动。 可为该行为提供奖励评分 0.1。 
-    * 如果用户打开页面然后退出，则奖励评分可为 0.2。 
+    * 如果你正在显示电影列表，而用户将鼠标悬停在第一部电影上片刻时间以查看详细信息，则可以确定发生了某种用户互动。 可为该行为提供奖励评分 0.1。
+    * 如果用户打开页面然后退出，则奖励评分可为 0.2。
 
 ## <a name="reward-wait-time"></a>奖励等待时间
 
@@ -106,12 +101,12 @@ ms.locfileid: "73490891"
 
 请遵循以下建议来改善结果。
 
-* 请将奖励等待时间设置得尽量短，同时为获取用户反馈留出足够的时间。 
+* 请将奖励等待时间设置得尽量短，同时为获取用户反馈留出足够的时间。
 
 * 等待持续时间不应短于获取反馈所需的时间。 例如，如果某些奖励需要在用户观看视频 1 分钟后才会传入，则试验长度应至少是 2 分钟。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [强化学习](concepts-reinforcement-learning.md) 
+* [强化学习](concepts-reinforcement-learning.md)
 * [试用排名 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank/console)
 * [试用奖励 API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward)

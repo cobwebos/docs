@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466920"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616654"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>在 HDInsight 中通过 JDBC 驱动程序查询 Apache Hive
 
@@ -36,6 +36,18 @@ ms.locfileid: "77466920"
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
 将 `CLUSTERNAME` 替换为 HDInsight 群集的名称。
+
+或者，你可以通过**AMBARI UI 连接 > Hive > 配置 > 高级**。
+
+![通过 Ambari 获取 JDBC 连接字符串](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-get-connection-string-through-ambari.png)
+
+### <a name="host-name-in-connection-string"></a>连接字符串中的主机名
+
+连接字符串中的主机名 "CLUSTERNAME.azurehdinsight.net" 与群集 URL 相同。 可以通过 Azure 门户获取它。 
+
+### <a name="port-in-connection-string"></a>连接字符串中的端口
+
+只能使用**端口 443**从 Azure 虚拟网络外部的某些位置连接到群集。 HDInsight 是一种托管服务，这意味着与群集的所有连接都通过安全网关进行管理。 不能直接在端口10001或10000上连接到 HiveServer 2，因为这些端口不会向外部公开。 
 
 ## <a name="authentication"></a>Authentication
 
@@ -138,6 +150,15 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 1. 退出 SQuirreL，然后前往系统上安装 SQuirreL 的目录，可能 `C:\Program Files\squirrel-sql-4.0.0\lib`。 在 SquirreL 目录的 `lib` 目录下，将现有的 commons-codec.jar 替换为从 HDInsight 群集下载的文件。
 
 1. 重新启动 SQuirreL。 连接到 HDInsight 上的 Hive 时，应不再会出现该错误。
+
+### <a name="connection-disconnected-by-hdinsight"></a>通过 HDInsight 断开连接
+
+**症状**：尝试通过 JDBC/ODBC 下载大量数据（如几 gb）时，HDInsight 在下载时意外断开连接。 
+
+**原因**：此错误是由于网关节点上的限制引起的。 从 JDBC/ODBC 获取数据时，所有数据都需要通过网关节点。 但是，网关不能下载大量数据，因此，如果连接无法处理流量，则网关可能会关闭连接。
+
+**解决方法**：避免使用 JDBC/ODBC 驱动程序下载大量数据。 改为直接从 blob 存储复制数据。
+
 
 ## <a name="next-steps"></a>后续步骤
 

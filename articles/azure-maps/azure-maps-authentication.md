@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210117"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649817"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
 Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和 Azure Active Directory 身份验证。 本文介绍了这些身份验证方法，这些方法有助于指导你实现 Azure Maps 服务。
+
+> [!NOTE]
+> 为了改善与 Azure Maps 的安全通信，我们现在支持传输层安全（TLS）1.2，并且我们正在停用对 TLS 1.0 和1.1 的支持。 若要避免任何服务中断，请将**服务器和应用程序更新为使用1.2 年4月 2 2020 日之前的 TLS**。  如果你当前使用 TLS 1.x，请评估你的 TLS 1.2 准备情况，并使用[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)中所述的测试制定迁移计划。
 
 ## <a name="shared-key-authentication"></a>共享密钥身份验证
 

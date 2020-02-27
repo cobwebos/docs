@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720990"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623317"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -25,7 +25,36 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
 如果有“如何改善数据库性能？”的疑问， 请考虑以下选项：
 
-## <a name="networking"></a>联网
+## <a name="hosting-recommendations"></a>宿主建议
+
+1.  **对于查询密集型工作负荷，请使用 Windows 64 位而不是 Linux 或 Windows 32 主机处理**
+
+    建议使用 Windows 64 位主机处理以提高性能。 SQL SDK 包括一个本机 Microsoft.azure.documents.serviceinterop.dll，用于在本地分析和优化查询，仅在 Windows x64 平台上受支持。 对于 Linux 和其他不受支持的平台，如果 Microsoft.azure.documents.serviceinterop.dll 不可用，则会对网关执行额外的网络调用，以获取优化的查询。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
+
+    - 对于可执行应用程序，可以通过在 "**生成**" 选项卡上的 "**项目属性**" 窗口中将 "[平台目标](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019)" 设置为 " **x64** " 来完成此操作。
+
+    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”菜单选项中选择“测试”->“测试设置”->“默认处理器体系结构为 X64”来完成。
+
+    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” **“选项”** “项目和解决方案” **“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。** ->->->
+
+    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位平台”来完成。
+
+    > [!NOTE] 
+    > Visual studio 将新项目默认设置为任何 CPU。 建议将项目设置为 x64，以避免将其切换到 x86。 如果添加了仅为 x86 的任何依赖项，则任何 CPU 项目都可以轻松地切换到 x86。<br/>
+    > Microsoft.azure.documents.serviceinterop.dll 需要位于要从其执行 SDK dll 的同一文件夹中。 只需对用户手动操作 dll 或具有自定义生成/部署系统时才执行此操作。
+    
+2. **启用服务器端垃圾回收（GC）**
+
+    在某些情况下，降低垃圾收集的频率可能会有帮助。 在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。
+
+3. **增大客户端工作负荷**
+
+    如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
+
+    > [!NOTE] 
+    > 高 CPU 使用率可能导致延迟增加和请求超时异常。
+
+## <a name="networking"></a>网络
 <a id="direct-connection"></a>
 
 1. **连接策略：使用直接连接模式**
@@ -96,6 +125,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     ![Azure Cosmos DB 连接策略演示](./media/performance-tips/same-region.png)
    <a id="increase-threads"></a>
+
 4. **增加线程/任务数目**
 
     由于对 Azure Cosmos DB 的调用是通过网络执行的，因此，可能需要改变请求的并行度，以便最大程度地减少客户端应用程序等待请求的时间。 例如，如果使用的是 .NET 的[任务并行库](https://msdn.microsoft.com//library/dd460717.aspx)，请创建大约数百个读取或写入 Azure Cosmos DB 的任务。
@@ -121,9 +151,11 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     每个 DocumentClient 和 CosmosClient 实例都是线程安全的，在直接模式下操作时，它会执行高效的连接管理和地址缓存。 为了使 SDK 客户端能够实现高效的连接管理和更好的性能，建议在应用程序的生存期内使用每个 AppDomain 的单个实例。
 
    <a id="max-connection"></a>
+
 4. **在使用“网关”模式时增加每台主机的 System.Net MaxConnections**
 
-    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 设置为更大的值。   
+    使用“网关”模式时，Azure Cosmos DB 请求是通过 HTTPS/REST 发出的，并且受制于每个主机名或 IP 地址的默认连接限制。 可能需要将 MaxConnections 设置为较大的值 (100-1000)，以便客户端库能够同时利用多个连接来访问 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更高版本中，[ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) 的默认值为 50，要更改此值，可将 [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) 设置为更大的值。
+
 5. **优化分区集合的并行查询。**
 
      SQL .NET SDK 版本 1.9.0 和更高版本支持并行查询，使你能够并行查询分区集合。 有关详细信息，请参阅与使用这些 SDK 相关的[代码示例](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)。 并行查询旨改善查询延迟和串行配对物上的吞吐量。 并行查询提供两个参数，用户可以调整来适应自身的需求 (a) MaxDegreeOfParallelism：控制并行中运行的最大分区数 (b) MaxBufferedItemCount：控制预提取结果的数量。
@@ -135,10 +167,8 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     (b) 优化MaxBufferedItemCount ***并行查询专用于在客户端处理结果的当前批处理时预提取结果。\:*** 预提取帮助改进查询中的的总体延迟。 MaxBufferedItemCount 是限制预提取结果数目的参数。 将 MaxBufferedItemCount 设置为预期返回的结果数（或较大的数字）使查询从预提取获得最大的好处。
 
     不管并行度如何，预提取的工作方式都是相同的，并且所有分区中的数据都有一个缓冲区。  
-6. **打开服务器端 GC**
 
-    在某些情况下，降低垃圾收集的频率可能会有帮助。 在 .NET 中，应将 [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) 设置为 true。
-7. **按 RetryAfter 间隔实现退让**
+6. **按 RetryAfter 间隔实现退让**
 
     在性能测试期间，应该增加负载，直到系统对小部分请求进行限制为止。 如果受到限制，客户端应用程序应按照服务器指定的重试间隔在限制时退让。 遵循退让可确保最大程度地减少等待重试的时间。 重试策略支持包含在 SQL [.NET](sql-api-sdk-dotnet.md) 和 [Java](sql-api-sdk-java.md) 的 1.8.0 和更高版本、[Node.js](sql-api-sdk-node.md) 和 [Python](sql-api-sdk-python.md) 的 1.9.0 和更高版本以及所有受支持的 [.NET Core](sql-api-sdk-dotnet-core.md) SDK 版本中。 有关详细信息，请参阅 [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)。
     
@@ -147,16 +177,13 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
     readDocument.RequestDiagnosticsString 
     ```
-    
-8. **增大客户端工作负荷**
 
-    如果以高吞吐量级别（> 50,000 RU/秒）进行测试，客户端应用程序可能成为瓶颈，因为计算机的 CPU 或网络利用率将达到上限。 如果达到此上限，可以跨多个服务器横向扩展客户端应用程序以继续进一步推送 Azure Cosmos DB 帐户。
-9. **缓存较低读取延迟的文档 URI**
+7. **缓存较低读取延迟的文档 URI**
 
-    尽可能缓存文档 URI 以获得最佳读取性能。 创建资源时，必须定义逻辑才能缓存 resourceid。 基于 resourceid 的查找比基于名称的查找更快，因此缓存这些值可提高性能。 
+    尽可能缓存文档 URI 以获得最佳读取性能。 创建资源时，必须定义逻辑来缓存资源 ID。 基于资源 ID 的查找比基于名称的查找更快，因此缓存这些值可提高性能。 
 
    <a id="tune-page-size"></a>
-10. **调整查询/读取源的页面大小以获得更好的性能**
+8. **调整查询/读取源的页面大小以获得更好的性能**
 
    使用读取源功能（例如 ReadDocumentFeedAsync）执行批量文档读取，或发出 SQL 查询时，如果结果集太大，则会以分段方式返回结果。 默认情况下，以包括 100 个项的块或 1 MB 大小的块返回结果（以先达到的限制为准）。
 
@@ -173,21 +200,9 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
     
    执行查询时，将在 TCP 数据包中发送生成的数据。 如果为 `maxItemCount`指定太低的值，则在 TCP 数据包中发送数据所需的行程数很高，这会影响性能。 因此，如果您不确定为 `maxItemCount` 属性设置什么值，最好将其设置为-1，并让 SDK 选择默认值。 
 
-11. **增加线程/任务数目**
+9. **增加线程/任务数目**
 
     请参阅“网络”部分中的[增加线程/任务数目](#increase-threads)。
-
-12. **使用 64 位主机进程**
-
-    在使用 SQL .NET SDK 1.11.4 及更高版本时，SQL SDK 可以在 32 位的主机进程中运行。 但是，如果使用跨分区查询，建议使用 64 位主机进程来提高性能。 以下类型的应用程序默认为 32 位主机进程，为了将其更改为 64 位，请根据应用程序类型执行以下步骤：
-
-    - 对于可执行应用程序，在“生成”选项卡的“项目属性”窗口中，通过取消“首选 32 位”选项可实现以上目的。
-
-    - 对于基于 VSTest 的测试项目，可通过从“Visual Studio 测试”菜单选项中选择“测试”->“测试设置”->“默认处理器体系结构为 X64”来完成。
-
-    - 对于本地部署的 ASP.NET Web 应用程序，可以通过在“工具” **“选项”** “项目和解决方案” **“Web 项目”下勾选“对网站和项目使用 IIS Express 的 64 位版”来完成。** ->->->
-
-    - 对于部署在 Azure 上的 ASP.NET Web 应用程序，可以通过在 Azure 门户上的“应用程序设置”中选择“64 位平台”来完成。
 
 ## <a name="indexing-policy"></a>索引策略
  

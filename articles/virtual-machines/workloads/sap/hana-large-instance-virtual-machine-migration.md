@@ -4,7 +4,7 @@ description: 如何将 Azure 上的 SAP HANA 迁移到 Azure 虚拟机
 services: virtual-machines-linux
 documentationcenter: ''
 author: bentrin
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82d39ef9f0b9bfee15bb78e897b247426bf8e2a2
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369725"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617040"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>Azure 大型实例上的 SAP HANA 迁移到 Azure 虚拟机
 本文介绍了可能的 Azure 大型实例部署方案，并提供了最小化转换停机时间的规划和迁移方法

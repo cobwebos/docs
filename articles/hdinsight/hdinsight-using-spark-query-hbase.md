@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.custom: hdinsightactive
+ms.date: 02/24/2020
+ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937617"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623106"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
 通常使用 Apache HBase 的低级别 API（扫描、获取和放置）或者通过 Apache Phoenix 使用 SQL 语法来查询 Apache HBase。 Apache 还提供 Apache Spark HBase 连接器，这是一个查询并修改 HBase 存储的数据的方便且高效的替代方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 部署在同一虚拟网络中的两个单独的 HDInsight 群集。 一个HBase 和一个至少安装了 Spark 2.1 (HDInsight 3.6) 的 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
+* 同一[虚拟网络](./hdinsight-plan-virtual-network-deployment.md)中部署了两个单独的 HDInsight 群集。 一个 HBase 和至少安装了 Spark 2.1 （HDInsight 3.6）的一个 Spark。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
-* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这会 wasb://Azure Blob 存储，abfs://用于 Azure Data Lake Storage Gen2 或 adl://for Azure Data Lake Storage Gen1。 如果为 Blob 存储启用安全传输，则 URI 将为`wasbs://`。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 此方案适用于 wasb://的 Azure Blob 存储、abfs://Azure Data Lake Storage Gen2 或用于 Azure Data Lake Storage Gen1 的 adl://。 如果为 Blob 存储启用安全传输，则将 `wasbs://`URI。  另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 ## <a name="overall-process"></a>整体进程
 
@@ -40,9 +40,9 @@ ms.locfileid: "71937617"
 
 ## <a name="prepare-sample-data-in-apache-hbase"></a>在 Apache HBase 中准备示例数据
 
-此步骤中，将在 Apache HBase 中创建并填充一个表，然后可使用 Spark 对其进行查询。
+在此步骤中，将创建并填充 Apache HBase 中的表，然后可以使用 Spark 进行查询。
 
-1. 使用 `ssh` 命令连接到 HBase 群集。 编辑以下命令，将 `HBASECLUSTER` 替换为 HBase 群集的名称，然后输入该命令：
+1. 使用 `ssh` 命令连接到 HBase 群集。 将 `HBASECLUSTER` 替换为 HBase 群集的名称，然后输入以下命令，以编辑以下命令：
 
     ```cmd
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
@@ -54,13 +54,13 @@ ms.locfileid: "71937617"
     hbase shell
     ```
 
-3. 使用 `create` 命令创建包含双列系列的 HBase 表。 输入以下命令：
+3. 使用 `create` 命令创建包含两个列系列的 HBase 表。 输入以下命令：
 
     ```hbase
     create 'Contacts', 'Personal', 'Office'
     ```
 
-4. 使用 `put` 命令将指定列中的值插入特定表中的指定行。 输入以下命令：
+4. 使用 `put` 命令将值插入特定表中指定行的指定列中。 输入以下命令：
 
     ```hbase
     put 'Contacts', '1000', 'Personal:Name', 'John Dole'
@@ -81,13 +81,13 @@ ms.locfileid: "71937617"
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>将 hbase-site.xml 复制到 Spark 群集
 
-将 hbase-site.xml 从本地存储复制到 Spark 群集默认存储所在的根目录。  编辑以下命令以反映配置。  然后，在与 HBase 群集建立的 SSH 会话中输入该命令：
+将 hbase-site.xml 从本地存储复制到 Spark 群集的默认存储的根目录。  编辑以下命令以反映您的配置。  然后，从打开的 SSH 会话向 HBase 群集输入以下命令：
 
 | 语法值 | 新值|
 |---|---|
-|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改此值以反映存储。  以下语法适用于启用了安全传输的 Blob 存储。|
-|`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
-|`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
+|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改以反映你的存储。  以下语法适用于启用了安全传输的 blob 存储。|
+|`SPARK_STORAGE_CONTAINER`|将替换为用于 Spark 群集的默认存储容器名称。|
+|`SPARK_STORAGE_ACCOUNT`|将替换为用于 Spark 群集的默认存储帐户名称。|
 
 ```bash
 hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CONTAINER@SPARK_STORAGE_ACCOUNT.blob.core.windows.net/
@@ -95,11 +95,19 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 然后退出与 HBase 群集的 ssh 连接。
 
+```bash
+exit
+```
+
 ## <a name="put-hbase-sitexml-on-your-spark-cluster"></a>将 hbase-site.xml 放置于 Spark 集群上
 
-1. 使用 SSH 连接到 Spark 集群的头节点。
+1. 使用 SSH 连接到 Spark 集群的头节点。 将 `SPARKCLUSTER` 替换为 Spark 群集的名称，然后输入以下命令，以编辑以下命令：
 
-2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
+    ```cmd
+    ssh sshuser@SPARKCLUSTER-ssh.azurehdinsight.net
+    ```
+
+2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹：
 
     ```bash
     sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
@@ -107,7 +115,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>运行 Spark Shell，引用 Spark HBase 连接器
 
-1. 在与 Spark 群集建立的 SSH 会话中，输入以下命令以启动 Spark shell：
+1. 从打开的 SSH 会话到 Spark 群集，输入以下命令以启动 Spark shell：
 
     ```bash
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
@@ -128,7 +136,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     import spark.sqlContext.implicits._
     ```  
 
-2. 输入以下命令，以定义在 HBase 中创建的 Contacts 表的目录：
+1. 输入以下命令，为 HBase 中创建的 "联系人" 表定义目录：
 
     ```scala
     def catalog = s"""{
@@ -150,7 +158,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
      b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  
      c. Rowkey 还必须详细定义为具有 `rowkey` 的特定列族 `cf` 的命名列 (`rowkey`)。  
 
-3. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
+1. 输入下面的命令，定义一个方法，该方法在 HBase 中围绕 `Contacts` 表提供数据帧：
 
     ```scala
     def withCatalog(cat: String): DataFrame = {
@@ -162,40 +170,42 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
      }
     ```
 
-4. 创建 DataFrame 的实例：
+1. 创建 DataFrame 的实例：
 
     ```scala
     val df = withCatalog(catalog)
     ```  
 
-5. 查询 DataFrame：
+1. 查询 DataFrame：
 
     ```scala
     df.show()
     ```
 
-6. 应看到如下两行数据：
+    应看到如下两行数据：
 
-        +------+--------------------+--------------+-------------+--------------+
-        |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
-        +------+--------------------+--------------+-------------+--------------+
-        |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
-        |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
-        +------+--------------------+--------------+-------------+--------------+
+    ```output
+    +------+--------------------+--------------+-------------+--------------+
+    |rowkey|       officeAddress|   officePhone| personalName| personalPhone|
+    +------+--------------------+--------------+-------------+--------------+
+    |  1000|1111 San Gabriel Dr.|1-425-000-0002|    John Dole|1-425-000-0001|
+    |  8396|5415 San Gabriel Dr.|  230-555-0191|  Calvin Raji|  230-555-0191|
+    +------+--------------------+--------------+-------------+--------------+
+    ```
 
-7. 注册一个临时表，以便使用 Spark SQL 查询 HBase 表：
+1. 注册一个临时表，以便使用 Spark SQL 查询 HBase 表：
 
     ```scala
     df.createTempView("contacts")
     ```
 
-8. 针对 `contacts` 表发出 SQL 查询：
+1. 针对 `contacts` 表发出 SQL 查询：
 
     ```scala
     spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
-9. 应看到如下结果：
+    应看到如下结果：
 
     ```output
     +-------------+--------------------+
@@ -220,7 +230,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
         )
     ```
 
-2. 创建 `ContactRecord` 的实例并将其放在一个数组中：
+1. 创建 `ContactRecord` 的实例并将其放在一个数组中：
 
     ```scala
     val newContact = ContactRecord("16891", "40 Ellis St.", "674-555-0110", "John Jackson","230-555-0194")
@@ -229,19 +239,19 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     newData(0) = newContact
     ```
 
-3. 将新数据数组保存到 HBase：
+1. 将新数据数组保存到 HBase：
 
     ```scala
     sc.parallelize(newData).toDF.write.options(Map(HBaseTableCatalog.tableCatalog -> catalog, HBaseTableCatalog.newTable -> "5")).format("org.apache.spark.sql.execution.datasources.hbase").save()
     ```
 
-4. 检查结果：
+1. 检查结果：
 
     ```scala  
     df.show()
     ```
 
-5. 应看到如下输出：
+    应看到如下输出：
 
     ```output
     +------+--------------------+--------------+------------+--------------+
@@ -253,7 +263,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     +------+--------------------+--------------+------------+--------------+
     ```
 
-6. 通过输入以下命令关闭 spark shell：
+1. 输入以下命令，关闭 spark shell：
 
     ```scala
     :q

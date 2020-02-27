@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220d3adb31005551b6358034207f1071065b1a7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: da06112b0990898227191c919b209c8a95d15197
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692381"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616533"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中设计表
 
@@ -33,7 +33,7 @@ ms.locfileid: "73692381"
 - **集成表**为集成或暂存数据提供位置。 可以将集成表创建为常规表、外部表或临时表。 例如，可将数据加载到临时表，在暂存位置对数据执行转换，然后将数据插入生产表中。
 
 ## <a name="schema-and-table-names"></a>架构和表名称
-可通过架构将以相似方式使用的表组合在一起。  若要将多个数据库从本地解决方案迁移到 SQL 数据仓库，最好是将所有事实数据表、维度表和集成表迁移到 SQL 数据仓库中的一个架构内。 例如，可将所有表存储在 [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) 示例数据仓库中一个名为 wwi 的架构内。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql)。
+架构是一种对表进行分组的好方法，使用方式与此类似。  如果要将多个数据库从本地解决方案迁移到 SQL 数据仓库，最好将所有事实数据表、维度表和集成表迁移到 SQL 数据仓库中的一个架构。 例如，可将所有表存储在 [WideWorldImportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap) 示例数据仓库中一个名为 wwi 的架构内。 以下代码创建名为 wwi 的[用户定义的架构](/sql/t-sql/statements/create-schema-transact-sql)。
 
 ```sql
 CREATE SCHEMA wwi;
@@ -44,7 +44,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 表  | 表类型 | SQL 数据仓库 |
 |:-----|:-----|:------|:-----|
 | 城市 | 维度 | wwi.DimCity |
-| 顺序 | Fact | wwi.FactOrder |
+| 订单 | Fact | wwi.FactOrder |
 
 
 ## <a name="table-persistence"></a>表暂留 
@@ -60,7 +60,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>临时表
-临时表只在会话持续期间存在。 可以使用临时表来防止其他用户查看临时结果，以及减少清理需求。  临时表利用本地存储来提供快速操作的性能。  有关详细信息，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。
+临时表只在会话持续期间存在。 您可以使用临时表来阻止其他用户查看临时结果，还可以减少清除的需要。  临时表利用本地存储提供更快的性能。  有关详细信息，请参阅[临时表](sql-data-warehouse-tables-temporary.md)。
 
 ### <a name="external-table"></a>外部表
 外部表指向位于 Azure 存储 Blob 或 Azure Data Lake Store 中的数据。 与 CREATE TABLE AS SELECT 语句结合使用时，从外部表中选择数据可将数据导入到 SQL 数据仓库。 因此，外部表可用于加载数据。 有关加载教程，请参阅[使用 PolyBase 从 Azure Blob 存储加载数据](load-data-from-azure-blob-storage-using-polybase.md)。
@@ -69,10 +69,10 @@ CREATE TABLE MyTable (col1 int, col2 int );
 SQL 数据仓库支持最常用的数据类型。 有关受支持数据类型的列表，请参阅 CREATE TABLE 语句中的 [CREATE TABLE 引用中的数据类型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 有关使用数据类型的指导，请参阅[数据类型](sql-data-warehouse-tables-data-types.md)。
 
 ## <a name="distributed-tables"></a>分布式表
-SQL 数据仓库的一个基本功能是它可以跨[分布区](massively-parallel-processing-mpp-architecture.md#distributions)以特定方式对表进行存储和运算。  SQL 数据仓库支持使用以下三种方法来分配数据：轮询机制（默认）、哈希和复制。
+SQL 数据仓库的一项基本功能是它可以跨[分布](massively-parallel-processing-mpp-architecture.md#distributions)区存储和操作表。  SQL 数据仓库支持三种方法来分发数据、轮循机制（默认）、哈希和复制。
 
 ### <a name="hash-distributed-tables"></a>哈希分布表
-哈希分布表根据分布列中的值来分布行。 根据设计，在对大型表进行查询时，哈希分布表可以实现高性能。 选择分布列时，需考虑多项因素。 
+哈希分布式表根据分布列中的值来分配行。 哈希分布式表旨在实现针对大型表的查询的高性能。 选择分布列时，需要考虑几个因素。 
 
 有关详细信息，请参阅[分布式表的设计准则](sql-data-warehouse-tables-distribute.md)。
 
@@ -93,22 +93,22 @@ SQL 数据仓库的一个基本功能是它可以跨[分布区](massively-parall
 |:---------------|:--------------------|
 | Fact           | 结合聚集列存储索引使用哈希分布。 在同一个分布列中联接两个哈希表时，可以提高性能。 |
 | 维度      | 对小型表使用复制表。 如果表太大，以致无法在每个计算节点上存储，可以使用哈希分布式表。 |
-| 过渡        | 对临时表使用轮循机制表。 使用 CTAS 执行加载的速度较快。 将数据存储到临时表后，可以使用 INSERT...SELECT 将数据移到生产表。 |
+| 过渡        | 对临时表使用轮循机制表。 使用 CTAS 执行加载的速度较快。 将数据放入临时表后，使用 INSERT .。。选择此可将数据移到生产表中。 |
 
 ## <a name="table-partitions"></a>表分区
-分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。 还可以通过分区切换来维护数据。 由于 SQL 数据仓库中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](sql-data-warehouse-tables-partition.md)。  以分区切换的方式切换成不为空的表分区时，若要截断现有数据，可考虑在 [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql) 语句中使用 TRUNCATE_TARGET 选项。 以下代码将已转换的日常数据切换成 SalesFact，覆盖任何现有的数据。 
+分区表存储根据数据范围存储表行并对其执行操作。 例如，可以按日、月或年将某个表分区。 可以通过分区消除来提高查询性能，否则查询扫描范围将限制为分区中的数据。 还可以通过分区切换来维护数据。 由于 SQL 数据仓库中的数据已经是分布式的，过多的分区可能会降低查询性能。 有关详细信息，请参阅[分区指南](sql-data-warehouse-tables-partition.md)。  当分区切换到不为空的表分区时，如果现有数据将被截断，则考虑使用[ALTER table](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql)语句中的 TRUNCATE_TARGET 选项。 下面的代码将转换后的每日数据切换到 Prd.salesfact 覆盖任何现有数据。 
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
 ```
 
 ## <a name="columnstore-indexes"></a>列存储索引
-默认情况下，SQL 数据仓库将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。  堆表可能特别适用于加载临时数据，例如将转换成最终表的临时表。
+默认情况下，SQL 数据仓库将表存储为聚集列存储索引。 对于大型表而言，这种数据存储形式可以实现较高的数据压缩率和查询性能。  聚集列存储索引通常是最佳选择，但在某些情况下，聚集索引或堆是适当的存储结构。  堆表在加载暂时性数据时特别有用，例如，转换为最终表的临时表。
 
 有关列存储功能的列表，请参阅[列存储索引的新增功能](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)。 若要提高列存储索引性能，请参阅[最大化列存储索引的行组质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 ## <a name="statistics"></a>统计信息
-查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须有基于各个列（尤其是查询联接中使用的列）的统计信息。 [创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)的过程是自动发生的。  但是，更新统计信息的过程不会自动发生。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
+查询优化器在创建用于执行查询的计划时，使用列级统计信息。 若要提高查询性能，必须对单个列使用统计信息，尤其是查询联接中使用的列。 自动[创建统计信息](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)。  但是，不会自动更新统计信息。 添加或更改了大量的行之后更新统计信息。 例如，在执行加载后更新统计信息。 有关详细信息，请参阅[统计信息指南](sql-data-warehouse-tables-statistics.md)。
 
 ## <a name="primary-key-and-unique-key"></a>主键和唯一键
 仅当同时使用了非聚集和不强制时才支持 PRIMARY KEY。  仅使用不强制执行的唯一约束。  检查[SQL 数据仓库表约束](sql-data-warehouse-table-constraints.md)。
@@ -213,6 +213,7 @@ LEFT OUTER JOIN (select * from sys.pdw_column_distribution_properties where dist
 LEFT OUTER JOIN sys.columns c
     ON cdp.[object_id] = c.[object_id]
     AND cdp.[column_id] = c.[column_id]
+WHERE pn.[type] = 'COMPUTE'
 )
 , size
 AS

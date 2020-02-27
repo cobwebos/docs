@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 94af8dfc0171a5c27514b30968743f9788aee224
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588920"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616290"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>授权访问 Azure 存储中的数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "77588920"
 
 下表介绍了 Azure 存储提供的用于授权访问资源的选项：
 
-|  |共享密钥（存储帐户密钥）  |共享访问签名 (SAS)  |Azure Active Directory (Azure AD)  |Active Directory |匿名公共读取访问  |
+|  |共享密钥（存储帐户密钥）  |共享访问签名 (SAS)  |Azure Active Directory (Azure AD)  |Active Directory （预览） |匿名公共读取访问  |
 |---------|---------|---------|---------|---------|---------|
 |Azure Blob     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |[支持](storage-sas-overview.md)         |[支持](storage-auth-aad.md)         |不支持|[支持](../blobs/storage-manage-access-to-resources.md)         |
 |Azure 文件（SMB）     |[支持](/rest/api/storageservices/authorize-with-shared-key/)         |不支持         |[支持，仅适用于 AAD 域服务](../files/storage-files-active-directory-overview.md)         |[支持，凭据必须同步到 Azure AD](../files/storage-files-active-directory-overview.md)|不支持         |
@@ -35,9 +35,9 @@ ms.locfileid: "77588920"
 
 - Blob 和队列的**Azure Active Directory （Azure AD）集成**。 Azure AD 提供基于角色的访问控制 (RBAC)，用于精细地控制客户端对存储帐户中资源的访问权限。 有关 blob 和队列 Azure AD 集成的详细信息，请参阅[使用 Azure Active Directory 授予对 Azure blob 和队列的访问权限](storage-auth-aad.md)。
 
-- **Azure Active Directory 文件的域服务（AZURE AD DS）身份验证**。 Azure 文件通过 Azure AD DS 支持通过服务器消息块（SMB）进行基于标识的授权。 可以使用 RBAC 对客户端对存储帐户中的 Azure 文件资源的访问权限进行精细控制。 有关使用域服务进行 Azure 文件身份验证的详细信息，请参阅我们的[概述](../files/storage-files-active-directory-overview.md)。
+- Azure Active Directory Azure 文件的**域服务（AZURE AD DS）身份验证**。 Azure 文件通过 Azure AD DS 支持通过服务器消息块（SMB）进行基于标识的授权。 可以使用 RBAC 对客户端对存储帐户中的 Azure 文件资源的访问权限进行精细控制。 有关使用域服务进行 Azure 文件身份验证的详细信息，请参阅我们的[概述](../files/storage-files-active-directory-overview.md)。
 
-- 文件**Active Directory （AD）身份验证**。 Azure 文件支持通过 AD 通过 SMB 进行基于标识的授权。 AD 域服务可以托管在本地计算机上，也可以托管在 Azure Vm 中。 对于从本地或 Azure 中的已加入域的计算机，使用 AD 凭据支持对文件的 SMB 访问。 可以为共享级别访问控制和 NTFS Dacl 使用 RBAC，以实现目录/文件级权限强制。 有关使用域服务进行 Azure 文件身份验证的详细信息，请参阅我们的[概述](../files/storage-files-active-directory-overview.md)。
+- Azure 文件的**Active Directory （AD）身份验证（预览版）** 。 Azure 文件支持通过 AD 通过 SMB 进行基于标识的授权。 AD 域服务可以托管在本地计算机上，也可以托管在 Azure Vm 中。 对于从本地或 Azure 中的已加入域的计算机，使用 AD 凭据支持对文件的 SMB 访问。 可以为共享级别访问控制和 NTFS Dacl 使用 RBAC，以实现目录/文件级权限强制。 有关使用域服务进行 Azure 文件身份验证的详细信息，请参阅我们的[概述](../files/storage-files-active-directory-overview.md)。
 
 - 用于 blob、文件、队列和表的**共享密钥授权**。 使用共享密钥的客户端会随使用存储帐户访问密钥签名的每个请求传递一个标头。 有关详细信息，请参阅[通过共享密钥进行授权](/rest/api/storageservices/authorize-with-shared-key/)。
 - 用于 blob、文件、队列和表的**共享访问签名**。 共享访问签名 (SAS) 针对存储帐户中的资源提供有限的委托访问权限。 通过对签名的有效时间间隔或对它授予的权限添加约束，可灵活地管理访问权限。 有关详细信息，请参阅[使用共享访问签名 (SAS)](storage-sas-overview.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 216fdeca9893f4e290474512617f13382d22890f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772540"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614013"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>在 Azure Active Directory 域服务中配置 Kerberos 约束委派（KCD）
 
@@ -24,7 +24,7 @@ ms.locfileid: "76772540"
 
 本文介绍如何在 Azure AD DS 托管域中配置基于资源的 Kerberos 约束委派。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文，需要以下资源：
 
@@ -56,7 +56,7 @@ Windows Server 2012 和更高版本使服务管理员能够为其服务配置约
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>为计算机帐户配置基于资源的 KCD
 
-在此方案中，假设你有一个在名为*contoso-webapp.aadds.contoso.com*的计算机上运行的 web 应用。 Web 应用需要访问在域用户的上下文中名为*contoso-api.aadds.contoso.com*的计算机上运行的 web API。 完成以下步骤以配置此方案：
+在此方案中，假设你有一个在名为*contoso-webapp.aaddscontoso.com*的计算机上运行的 web 应用。 Web 应用需要访问在域用户的上下文中名为*contoso-api.aaddscontoso.com*的计算机上运行的 web API。 完成以下步骤以配置此方案：
 
 1. [创建自定义 OU](create-ou.md)。 你可以将管理此自定义 OU 的权限委派给 Azure AD DS 托管域中的用户。
 1. 域-将运行 web 应用的虚拟机以及运行 web API 的[虚拟机加入][create-join-windows-vm]到 Azure AD DS 托管域。 在上一步的自定义 OU 中创建这些计算机帐户。
@@ -67,8 +67,8 @@ Windows Server 2012 和更高版本使服务管理员能够为其服务配置约
 1. 最后，使用[Get-adcomputer][Set-ADComputer] PowerShell cmdlet 配置基于资源的 KCD。 在已加入域的管理 VM，并以作为*AZURE AD DC administrators*组成员的用户帐户登录，运行以下 cmdlet。 根据需要提供自己的计算机名称：
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
-    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aaddscontoso.com
+    Set-ADComputer contoso-api.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>为用户帐户配置基于资源的 KCD

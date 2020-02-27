@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589294"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616514"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure 安全中心的安全警报
 
@@ -98,14 +98,20 @@ Azure 安全中心的优势在于，在 Microsoft 的整个过程中，会持续
 
 以下主题将指导你根据资源类型来完成不同的警报：
 
-* [IaaS Vm 和服务器警报](security-center-alerts-iaas.md)
-* [本机计算警报](security-center-alerts-compute.md)
-* [数据服务警报](security-center-alerts-data-services.md)
+* [IaaS Windows 计算机的警报](threat-protection.md#windows-machines)
+* [IaaS Linux 计算机的警报](threat-protection.md#linux-machines)
+* [Azure App Service 的警报](threat-protection.md#app-services)
+* [Azure 容器警报](threat-protection.md#azure-containers)
+* [SQL 数据库和 SQL 数据仓库的警报](threat-protection.md#data-sql)
+* [Azure 存储的警报](threat-protection.md#azure-storage)
+* [Cosmos DB 的警报](threat-protection.md#cosmos-db)
 
 以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测，以便为 Azure 上部署的资源应用其他保护层：
 
-* [服务层警报](security-center-alerts-service-layer.md)
-* [Azure WAF 和 Azure DDoS 保护的威胁检测](security-center-alerts-integration.md)
+* [Azure 管理层警报（Azure 资源管理器）（预览版）](threat-protection.md#management-layer)
+* [Azure Key Vault 的警报（预览）](threat-protection.md#azure-keyvault)
+* [Azure 网络层警报](threat-protection.md#network-layer)
+* [来自其他服务的警报](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>什么是安全事件？
 

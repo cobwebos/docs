@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 514ead43159b416752f968da3883e644fb0ccc2f
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485040"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650889"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -149,11 +149,13 @@ Azure 逻辑应用支持通过网关执行的写入操作，包括插入和更�
 | 入站请求 | 120 秒 <br>（2分钟） | 240秒 <br>（4分钟） | 入站请求的示例包括请求触发器和 webhook 触发器接收到的调用。 <p><p>**注意**：对于原始调用方，若要获取响应，则响应中的所有步骤必须在限制范围内完成，除非调用另一个逻辑应用作为嵌套工作流。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
 |||||
 
+<a name="message-size-limits"></a>
+
 #### <a name="message-size"></a>消息大小
 
 | 名称 | 多租户限制 | Integration service 环境限制 | 说明 |
 |------|--------------------|---------------------------------------|-------|
-| 消息大小 | 100 MB | 200 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
+| 消息大小 | 100 MB | 200 MB | ISE 标记的连接器使用 ISE 限制，而不是其非 ISE 连接器限制。 <p><p>若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
 | 使用分块的消息大小 | 1 GB | 5 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 <p>对于 integration service 环境，逻辑应用引擎支持此限制，但连接器具有其自己的分块限制，直至引擎限制，例如，请参阅[Azure Blob 存储连接器的 API 参考](https://docs.microsoft.com/connectors/azureblob/)。 有关分块的详细信息，请参阅[处理包含分块的大消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
 |||||
 

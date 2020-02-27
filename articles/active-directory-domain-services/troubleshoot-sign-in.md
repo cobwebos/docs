@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827053"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612742"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>排查 Azure AD 域服务托管域中的帐户登录问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "71827053"
 
 根据目录的大小，可能需要一段时间，用户帐户和凭据哈希在 Azure AD DS 中可用。 对于大型目录，此初始单向 Azure AD 同步可能需要几个小时，并且最多可能需要一天或两天的时间。 请确保等待足够长的时间，然后重试身份验证。
 
-对于用户 Azure AD Connect 将本地目录数据同步到 Azure AD 的混合环境，请确保运行最新版本的 Azure AD Connect，并已将[Azure AD Connect 配置为在启用 Azure 后执行完全同步AD DS][azure-ad-connect-phs]。 如果禁用 Azure AD DS 然后重新启用，则必须再次执行这些步骤。
+对于用户 Azure AD Connect 将本地目录数据同步到 Azure AD 的混合环境，请确保运行最新版本的 Azure AD Connect，并将[Azure AD Connect 配置为在启用 AZURE AD DS 后执行完全同步][azure-ad-connect-phs]。 如果禁用 Azure AD DS 然后重新启用，则必须再次执行这些步骤。
 
 如果通过 Azure AD Connect 仍无法同步帐户的问题，请重新启动 Azure AD Sync 服务。 在安装了 Azure AD Connect 的计算机上，打开命令提示符窗口，并运行以下命令：
 
@@ -59,7 +59,7 @@ Azure AD DS 托管域，无需本地同步，只有 Azure AD 中的帐户也需�
     * [更改帐户的密码][enable-user-accounts]以生成所需的密码哈希，并等待15分钟，然后再尝试再次登录。
     * 如果禁用 Azure AD DS 然后重新启用，则每个帐户必须再次执行这些步骤以更改其密码并生成所需的密码哈希。
 * **是，密码已更改。**
-    * 尝试使用*UPN*格式（例如 `driley@contoso.com`，而不是*SAMAccountName*格式，如 `CONTOSO\deeriley`）登录。
+    * 尝试使用*UPN*格式（例如 `driley@aaddscontoso.com`）登录，而不是像 `AADDSCONTOSO\deeriley`这样的*SAMAccountName*格式。
     * 对于 UPN 前缀过长或与托管域上的其他用户相同的用户，可能会自动生成*SAMAccountName* 。 *UPN*格式保证在 Azure AD 租户中是唯一的。
 
 ## <a name="the-account-is-locked-out"></a>帐户已锁定

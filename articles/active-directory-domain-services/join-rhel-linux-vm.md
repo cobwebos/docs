@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 93cb200751c1c107ae844ffd274d83dd997293de
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1be9134ee217cb91461e89c9908b889a14ec0c3a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712597"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613796"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Red Hat Enterprise Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -61,15 +61,15 @@ ms.locfileid: "76712597"
 sudo vi /etc/hosts
 ```
 
-在*hosts*文件中，更新*localhost*地址。 在下例中：
+在*hosts*文件中，更新*localhost*地址。 在以下示例中：
 
-* *aadds.contoso.com*是 Azure AD DS 托管域的 DNS 域名。
+* *aaddscontoso.com*是 Azure AD DS 托管域的 DNS 域名。
 * *rhel*是你要加入到托管域的 rhel VM 的主机名。
 
 请用自己的值更新这些名称：
 
 ```console
-127.0.0.1 rhel rhel.aadds.contoso.com
+127.0.0.1 rhel rhel.aaddscontoso.com
 ```
 
 完成后，使用编辑器的 `:wq` 命令保存并退出*hosts*文件。
@@ -96,30 +96,30 @@ sudo yum install adcli sssd authconfig krb5-workstation
 
 ### <a name="rhel-7"></a>RHEL 7
 
-1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*AADDS。CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*AADDSCONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    如果 `realm discover` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
 
-    * 请确保可从 VM 访问域。 尝试 `ping aadds.contoso.com` 以查看是否返回了肯定回复。
+    * 请确保可从 VM 访问域。 尝试 `ping aaddscontoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
 1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aadds.contoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@AADDS.CONTOSO.COM`：
+1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@AADDSCONTOSO.COM`：
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM'
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
 将 VM 加入到 Azure AD DS 托管域需要一段时间。 以下示例输出显示 VM 已成功加入到 Azure AD DS 托管域：
@@ -130,26 +130,26 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>RHEL 6
 
-1. 使用 `adcli info` 命令发现 Azure AD DS 托管域。 以下示例发现领域*ADDDS。CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `adcli info` 命令发现 Azure AD DS 托管域。 以下示例发现领域*ADDDSCONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
-    sudo adcli info aadds.contoso.com
+    sudo adcli info aaddscontoso.com
     ```
 
    如果 `adcli info` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
 
-    * 请确保可从 VM 访问域。 尝试 `ping aadds.contoso.com` 以查看是否返回了肯定回复。
+    * 请确保可从 VM 访问域。 尝试 `ping aaddscontoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
 1. 首先，使用 `adcli join` 命令联接域，此命令还会创建 keytab 以对计算机进行身份验证。 使用属于 " *AAD DC 管理员*" 组成员的用户帐户。
 
     ```console
-    sudo adcli join aadds.contoso.com -U contosoadmin
+    sudo adcli join aaddscontoso.com -U contosoadmin
     ```
 
-1. 现在配置 `/ect/krb5.conf` 并创建 `/etc/sssd/sssd.conf` 文件，以使用 `aadds.contoso.com` Active Directory 域。
-   请确保将 `AADDS.CONTOSO.COM` 替换为你自己的域名：
+1. 现在配置 `/ect/krb5.conf` 并创建 `/etc/sssd/sssd.conf` 文件，以使用 `aaddscontoso.com` Active Directory 域。
+   请确保将 `AADDSCONTOSO.COM` 替换为你自己的域名：
 
     使用编辑器打开 `/ect/krb5.conf` 文件：
 
@@ -166,7 +166,7 @@ Successfully enrolled machine in realm
      admin_server = FILE:/var/log/kadmind.log
     
     [libdefaults]
-     default_realm = AADDS.CONTOSO.COM
+     default_realm = AADDSCONTOSO.COM
      dns_lookup_realm = true
      dns_lookup_kdc = true
      ticket_lifetime = 24h
@@ -174,14 +174,14 @@ Successfully enrolled machine in realm
      forwardable = true
     
     [realms]
-     AADDS.CONTOSO.COM = {
-     kdc = AADDS.CONTOSO.COM
-     admin_server = AADDS.CONTOSO.COM
+     AADDSCONTOSO.COM = {
+     kdc = AADDSCONTOSO.COM
+     admin_server = AADDSCONTOSO.COM
      }
     
     [domain_realm]
-     .CONTOSO.COM = AADDS.CONTOSO.COM
-     CONTOSO.COM = AADDS.CONTOSO.COM
+     .AADDSCONTOSO.COM = AADDSCONTOSO.COM
+     AADDSCONTOSO.COM = AADDSCONTOSO.COM
     ```
     
    创建 `/etc/sssd/sssd.conf` 文件：
@@ -196,9 +196,9 @@ Successfully enrolled machine in realm
     [sssd]
      services = nss, pam, ssh, autofs
      config_file_version = 2
-     domains = AADDS.CONTOSO.COM
+     domains = AADDSCONTOSO.COM
     
-    [domain/AADDS.CONTOSO.COM]
+    [domain/AADDSCONTOSO.COM]
     
      id_provider = ad
     ```
@@ -273,11 +273,11 @@ sudo getent passwd contosoadmin
     sudo visudo
     ```
 
-1. 将以下条目添加到 */etc/sudoers*文件的末尾。 *AAD DC 管理员*组的名称中包含空格，因此请在组名称中包含反斜杠转义符。 添加你自己的域名，例如*aadds.contoso.com*：
+1. 将以下条目添加到 */etc/sudoers*文件的末尾。 *AAD DC 管理员*组的名称中包含空格，因此请在组名称中包含反斜杠转义符。 添加你自己的域名，例如*aaddscontoso.com*：
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
-    %AAD\ DC\ Administrators@aadds.contoso.com ALL=(ALL) NOPASSWD:ALL
+    %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
     完成后，使用编辑器的 `:wq` 命令保存并退出编辑器。
@@ -286,10 +286,10 @@ sudo getent passwd contosoadmin
 
 若要验证 VM 是否已成功加入到 Azure AD DS 托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@aadds.contoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*rhel.aadds.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@aaddscontoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*rhel.aaddscontoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com rhel.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com rhel.aaddscontoso.com
     ```
 
 1. 成功连接到 VM 后，验证是否已正确初始化主目录：

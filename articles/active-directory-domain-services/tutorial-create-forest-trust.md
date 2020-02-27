@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931227"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612515"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>教程：在 Azure Active Directory 域服务（预览版）中创建对本地域的出站林信任
 
@@ -33,7 +33,7 @@ ms.locfileid: "76931227"
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -89,7 +89,7 @@ ms.locfileid: "76931227"
    > [!NOTE]
    > 如果看不到 "**信任**" 菜单选项，请在 "*林类型*" 的 "**属性**" 下查看。 只有*资源*林可以创建信任。 如果林类型是*用户*，则不能创建信任。 目前没有办法更改 Azure AD DS 托管域的林类型。 需要删除并重新创建托管域作为资源林。
 
-1. 在 Azure AD DS 域名上输入名称（例如*aadds.contoso.com*），然后选择 "**下一步**"
+1. 在 Azure AD DS 域名上输入名称（例如*aaddscontoso.com*），然后选择 "**下一步**"
 1. 选择用于创建**林信任**的选项，然后创建**一个方法：传入**信任。
 1. 选择**仅为此域**创建信任。 在下一步中，你将在 Azure AD DS 托管域的 Azure 门户中创建信任。
 1. 选择使用**全林性身份验证**，并输入并确认信任密码。 下一节中的 Azure 门户也会输入同一密码。
@@ -102,7 +102,7 @@ ms.locfileid: "76931227"
 
 若要为 Azure 门户中 Azure AD DS 托管域创建出站信任，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择 " **Azure AD 域服务**"，然后选择托管域，如*aadds.contoso.com*
+1. 在 Azure 门户中，搜索并选择 " **Azure AD 域服务**"，然后选择托管域，如*aaddscontoso.com*
 1. 在 Azure AD DS 托管域的左侧菜单中，选择 "**信任**"，然后选择 " **+ 添加**信任"。
 1. 输入标识信任的显示名称，然后输入本地受信任的林 DNS 名称，例如*onprem.contoso.com*
 1. 提供在上一节中为本地 AD DS 域配置入站林信任时使用的相同的信任密码。
@@ -194,7 +194,7 @@ ms.locfileid: "76931227"
 #### <a name="validate-cross-forest-authentication-to-a-resource"></a>验证资源的跨林身份验证
 
 1. 使用本地 Active Directory 中的用户帐户登录加入本地 Active Directory 的 Windows 计算机。
-1. 使用**Windows 资源管理器**，连接到使用完全限定的主机名和共享（例如 `\\fs1.aadds.contoso.com\CrossforestShare`）创建的共享。
+1. 使用**Windows 资源管理器**，连接到使用完全限定的主机名和共享（例如 `\\fs1.aaddscontoso.com\CrossforestShare`）创建的共享。
 1. 若要验证写入权限，请在文件夹中右键单击，选择 "**新建**"，然后选择 "**文本文档**"。 使用默认名称 "**新建文本文档**"。
 
     如果正确设置了写入权限，将创建一个新的文本文档。 以下步骤随后会根据需要打开、编辑和删除文件。

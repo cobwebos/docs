@@ -1,16 +1,16 @@
 ---
 title: 利用 Azure Monitor 日志监视 Azure Functions
 description: 了解如何在 Azure Functions 中使用 Azure Monitor 日志来监视函数执行。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: aelnably
-ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769092"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649868"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>利用 Azure Monitor 日志监视 Azure Functions
 
@@ -38,31 +38,31 @@ Azure Monitor 使用 Azure 数据资源管理器使用的 [Kusto 查询语言](/
 若要生成自定义日志，可以使用特定的日志记录语句，具体取决于你的语言，下面是示例代码片段：
 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 context.getLogger().info("My app logs here.");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 context.log('My app logs here.');
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 logging.info('My app logs here.')
@@ -96,7 +96,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 
 ```
 

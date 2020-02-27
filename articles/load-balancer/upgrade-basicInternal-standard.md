@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 8d3f4294a5c8b09a132d56cd72ccb36ce766e0dd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566395"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616722"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>将 Azure 内部负载均衡器从基本 SKU 升级到标准 SKU
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升级 Azure 内部负载均衡器-无需出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 若要了解有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
 升级分为两个阶段：
@@ -28,12 +28,12 @@ ms.locfileid: "77566395"
 
 可执行以下操作的 Azure PowerShell 脚本：
 
-* 在指定的资源组和位置中创建标准内部 SKU 负载均衡器。
-* 将基本 SKU 内部负载均衡器的配置无缝复制到新创建的标准内部负载均衡器。
+* 在指定的位置创建标准内部 SKU 负载均衡器。 请注意，标准内部负载均衡器不会提供[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)。
+* 将基本 SKU 负载均衡器的配置无缝复制到新创建的标准负载均衡器。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* 脚本仅支持内部负载均衡器升级。 对于内部基本负载均衡器升级，如果不需要出站连接，请创建标准内部负载均衡器，并创建标准内部负载均衡器和标准内部负载均衡器（如果需要出站连接）。
+* 脚本仅支持内部负载均衡器升级，无需任何出站连接。 如果需要某些 Vm 的[出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，请参阅此[页面](upgrade-InternalBasic-To-PublicStandard.md)了解相关说明。 
 * 标准负载均衡器具有新的公用地址。 不能将与现有基本负载均衡器关联的 IP 地址无缝移动到标准负载均衡器，因为它们具有不同的 Sku。
 * 如果在不同的区域中创建标准负载均衡器，则无法将旧区域中的 Vm 关联到新创建的标准负载均衡器。 若要解决此限制，请确保在新区域中创建新的 VM。
 * 如果你的负载均衡器没有任何前端 IP 配置或后端池，你可能会遇到运行脚本时遇到的错误。 请确保它们不为空。

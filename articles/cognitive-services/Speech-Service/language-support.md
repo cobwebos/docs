@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 02/25/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 13d12bfbf64af9e19b66e63c88c9d7e0534571f3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605732"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617281"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>语音服务的语言和区域支持
 
@@ -37,8 +37,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
  Locale | 语言 | 支持 | 自定义
 ------|------------|-----------|-------------
 `ar-AE` | 阿拉伯语（阿拉伯联合酋长国） | 是 | 否
-`ar-BH` | 阿拉伯语（巴林） | 是 | 语言模型
-`ar-EG` | 阿拉伯语(埃及)，现代标准 | 是 | 语言模型
+`ar-BH` | 阿拉伯语（巴林），现代标准 | 是 | 语言模型
+`ar-EG` | 阿拉伯语（埃及） | 是 | 语言模型
 `ar-KW` | 阿拉伯语（科威特） | 是 | 否
 `ar-QA` | 阿拉伯语（卡塔尔） | 是 | 否
 `ar-SA` | 阿拉伯语（沙特阿拉伯） | 是 | 否

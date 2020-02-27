@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423679"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623460"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 网关设备类型
 
@@ -207,4 +207,4 @@ ms.locfileid: "77423679"
 接下来可以：
 
 > [!div class="nextstepaction"]
-> [连接设备](tutorial-connect-pnp-device.md)
+> [连接设备](tutorial-connect-device.md)

@@ -2,21 +2,21 @@
 title: 使用混合模式时的已知问题/迁移限制
 description: 了解在混合模式下使用 Azure 数据库迁移服务时的已知问题/迁移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2019
-ms.openlocfilehash: 60d1fc46ada70dc67c161f048a0206e7081ba591
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483110"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649596"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>使用混合模式时的已知问题/迁移限制
 
@@ -67,17 +67,17 @@ ms.locfileid: "75483110"
 
 3. 在 "本地计算机证书的 certmgr.msc" 中，为**Dms 混合应用密钥**和**Dms 方案引擎密钥对**证书的新帐户提供私钥权限。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 打开 certmgr.msc 以查看以下项：
+    a. 打开 certmgr.msc 以查看以下项：
 
     - DMS 混合应用密钥
     - DMS 混合辅助角色安装密钥
     - DMS 方案引擎密钥对
 
-    b.保留“数据库类型”设置，即设置为“共享”。 右键单击 " **DMS 混合应用密钥**" 条目，指向 "**所有任务**"，然后选择 "**管理私钥**"。
+    b. 右键单击 " **DMS 混合应用密钥**" 条目，指向 "**所有任务**"，然后选择 "**管理私钥**"。
 
     c. 在 "**安全**" 选项卡上，选择 "**添加**"，然后输入帐户名称。
 
-    d.单击“下一步”。 使用相同的步骤为新帐户授予对**DMS 方案引擎密钥对**证书的私钥权限。
+    d. 使用相同的步骤为新帐户授予对**DMS 方案引擎密钥对**证书的私钥权限。
 
 ## <a name="unregistering-the-worker-manually"></a>手动注销辅助角色
 

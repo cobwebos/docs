@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424943"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623306"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -20,18 +20,16 @@ ms.locfileid: "77424943"
 
 当数据量增长到每个表的每秒 1 MB 以上时，使用经典（批量）引入而不是流式引入。 阅读[数据引入概述](/azure/data-explorer/ingest-data-overview)，了解有关引入的各种方法的详细信息。
 
-> [!NOTE]
-> 流式引入不支持以下功能：
-> * [数据库游标](/azure/kusto/management/databasecursor)。
-> * [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[WEB UI](https://dataexplorer.azure.com/)。
 * 创建[Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>在群集上启用流式引入
+
+> [!WARNING]
+> 请在启用传送视频流引入之前查看这些[限制](#limitations)。
 
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在 "**设置**" 中选择 "**配置**"。 
 1. 在 "**配置**" 窗格中，选择 **"打开"** 以启用**流式引入**。
@@ -49,8 +47,9 @@ ms.locfileid: "77424943"
 
 支持两种流式处理引入类型：
 
-* 用作数据源的[事件中心](/azure/data-explorer/ingest-data-event-hub)
-* 自定义引入要求你编写使用 Azure 数据资源管理器客户端库之一的应用程序。 有关示例应用程序，请参阅[流式处理引入示例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
+
+* 用作数据源的[**事件中心**](/azure/data-explorer/ingest-data-event-hub)
+* **自定义引入**要求你编写使用 Azure 数据资源管理器客户端库之一的应用程序。 有关示例应用程序，请参阅[流式处理引入示例](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample)。
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>选择适当的流式摄取类型
 
@@ -78,6 +77,10 @@ ms.locfileid: "77424943"
 * 架构更新（如创建和修改表和引入映射）可能需要长达5分钟的时间才能进入流式处理引入服务。
 * 即使数据不引入通过流式处理，也要在群集上启用流式引入，使用群集计算机的部分本地 SSD 磁盘来流式处理引入数据，并减少可用于热缓存的存储空间。
 * 无法在流式处理引入数据上设置[区标记](/azure/kusto/management/extents-overview.md#extent-tagging)。
+
+流式引入不支持以下功能：
+* [数据库游标](/azure/kusto/management/databasecursor)。
+* [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 055ba8b5050aef639bbe6527292a18c8b405065a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765719"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620258"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍 Azure Monitor 监视的各种应用程序和服务。 
@@ -20,11 +20,11 @@ ms.locfileid: "76765719"
 ## <a name="insights-and-core-solutions"></a>见解和核心解决方案
 核心见解和解决方案被视为 Azure Monitor 的一部分，并遵循 Azure 的支持和服务级别协议。 所有可用 Azure Monitor 的 Azure 区域都支持这些支持。
 
-### <a name="insights"></a>见解
+### <a name="insights"></a>洞察力
 
 Insights 提供针对特定应用程序和服务的自定义监视体验。 它们收集和分析日志和指标。
 
-| 见解 | Description |
+| 见解 | 说明 |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | 可扩展的应用程序性能管理（APM）服务，用于在任何平台上监视实时 web 应用程序。 |
 | [容器 Azure Monitor](insights/container-insights-overview.md) | 监视部署到 azure 容器实例或托管在 Azure Kubernetes 服务（AKS）上的托管 Kubernetes 群集的容器工作负荷的性能。 |
@@ -38,7 +38,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 
 解决方案基于针对特定应用程序或服务自定义的日志查询和视图。 它们只收集和分析日志，并在一段时间内弃用，以支持见解。
 
-| 解决方案 | Description |
+| 解决方案 | 说明 |
 |:---|:---|
 | [代理运行状况](insights/solution-agenthealth.md) | 分析 Log Analytics 代理的运行状况和配置。 |
 | [警报管理](platform/alert-management-solution.md) | 分析从 System Center Operations Manager、Nagios 或 Zabbix 收集的警报。 |
@@ -53,7 +53,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 - 日志-服务支持诊断设置，可收集平台日志和指标来 Azure Monitor 日志。
 - 见解-提供服务的自定义监视体验的服务可提供见解。
 
-| 服务 | 指标 | 日志 | 见解 | 说明 |
+| 服务 | 度量值 | 日志 | 见解 | 说明 |
 |:---|:---|:---|:---|:---|
 |Active Directory | 否 | 是 | [是](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | 否 | 否 | 否 |  |
@@ -61,7 +61,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |活动日志 | 否 | 是 | 否 | |
 |高级威胁防护 | 否 | 否 | 否 |  |
 |顾问 | 否 | 否 | 否 |  |
-|AI Builder | 否 | 否 | 否 |  |
+|AI 生成器 | 否 | 否 | 否 |  |
 |Analysis Services | 是 | 是 | 否 |  |
 |适用于 FHIR 的 API | 否 | 否 | 否 |  |
 |API 管理 | 是 | 是 | 否 |  |
@@ -73,18 +73,18 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |Azure Service Manager （RDFE） | 否 | 否 | 否 |  |
 |备份 | 否 | 是 | 否 |  |
 |Bastion | 否 | 否 | 否 |  |
-|批处理 | 是 | 是 | 否 |  |
+|Batch | 是 | 是 | 否 |  |
 |Batch AI | 否 | 否 | 否 |  |
 |区块链服务 | 否 | 是 | 否 |  |
 |蓝图 | 否 | 否 | 否 |  |
-|机器人服务 | 否 | 否 | 否 |  |
+|Bot 服务 | 否 | 否 | 否 |  |
 |云服务 | 是 | 是 | 否 | 监视来宾操作系统和工作流所需的代理。  |
 |Cloud Shell | 否 | 否 | 否 |  |
 |认知服务 | 是 | 是 | 否 |  |
 |容器实例 | 是 | 否 | 否 |  |
 |容器注册表 | 是 | 是 | 否 |  |
-|内容交付网络 (CDN) | 否 | 是 | 否 |  |
-|Azure Cosmos DB | 是 | 是 | [是](insights/cosmosdb-insights-overview.md) |  |
+|内容分发网络 (CDN) | 否 | 是 | 否 |  |
+|Cosmos DB | 是 | 是 | [是](insights/cosmosdb-insights-overview.md) |  |
 |成本管理 | 否 | 否 | 否 |  |
 |Data Box | 否 | 否 | 否 |  |
 |数据目录 Gen2 | 否 | 否 | 否 |  |
@@ -98,7 +98,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |数据库迁移服务 | 否 | 否 | 否 |  |
 |Databricks | 否 | 是 | 否 |  |
 |DDoS 保护 | 是 | 是 | 否 |  |
-|开发运营 | 否 | 否 | 否 |  |
+|DevOps | 否 | 否 | 否 |  |
 |DNS | 是 | 否 | 否 |  |
 |域名 | 否 | 否 | 否 |  |
 |分发 | 否 | 否 | 否 |  |
@@ -109,7 +109,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |ExpressRoute | 是 | 是 | 否 |  |
 |防火墙 | 是 | 是 | 否 |  |
 |Front Door | 是 | 是 | 否 |  |
-|Functions | 是 | 是 | 否 |  |
+|函数 | 是 | 是 | 否 |  |
 |HDInsight | 否 | 是 | 否 |  |
 |HPC 缓存 | 否 | 否 | 否 |  |
 |信息保护 | 否 | 是 | 否 |  |
@@ -119,7 +119,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |Key Vault | 是 | 是 | 否 |  |
 |Kubernetes 服务 (AKS) | 否 | 否 | [是](insights/container-insights-overview.md)  |  |
 |负载均衡器 | 是 | 是 | 否 |  |
-|Logic Apps | 是 | 是 | 否 |  |
+|逻辑应用 | 是 | 是 | 否 |  |
 |机器学习服务 | 否 | 否 | 否 |  |
 |托管应用程序  | 否 | 否 | 否 |  |
 |地图  | 否 | 否 | 否 |  |
@@ -127,7 +127,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |Microsoft Flow | 否 | 否 | 否 |  |
 |Microsoft 托管桌面 | 否 | 否 | 否 |  |
 |Microsoft PowerApps | 否 | 否 | 否 |  |
-|Microsoft Social Engagement | 否 | 否 | 否 |  |
+|Microsoft 社交合作 | 否 | 否 | 否 |  |
 |Microsoft Stream | 是 | 是 | 否 |  |
 |迁移 | 否 | 否 | 否 |  |
 |多重身份验证 | 否 | 是 | 否 |  |
@@ -142,22 +142,22 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 |Red Hat OpenShift | 否 | 否 | 否 |  |
 |Redis 缓存 | 是 | 是 | 否 |  |
 |Resource Graph | 否 | 否 | 否 |  |
-|Resource Manager | 否 | 否 | 否 |  |
+|资源管理器 | 否 | 否 | 否 |  |
 |零售搜索-按必应 | 否 | 否 | 否 |  |
 |搜索 | 是 | 是 | 否 |  |
 |服务总线 | 是 | 是 | 否 |  |
 |Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
-|Azure Site Recovery | 否 | 是 | 否 |  |
+|Site Recovery | 否 | 是 | 否 |  |
 |春季云服务 | 否 | 否 | 否 |  |
 |SQL 数据仓库 | 是 | 是 | 否 |  |
-|SQL Database | 是 | 是 | 否 |  |
+|SQL 数据库 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
-|堆栈 | 否 | 否 | 否 |  |
-|存储空间 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
+|Stack | 否 | 否 | 否 |  |
+|存储 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |存储缓存 | 否 | 否 | 否 |  |
 |存储同步服务 | 否 | 否 | 否 |  |
-|Stream Analytics | 是 | 是 | 否 |  |
+|流分析 | 是 | 是 | 否 |  |
 |时序见解 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
 |流量管理器 | 是 | 是 | 否 |  |
@@ -173,7 +173,7 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 ## <a name="product-integrations"></a>产品集成
 下表中的服务和解决方案将其数据存储在 Log Analytics 工作区中，以便可以使用 Azure Monitor 收集的其他日志数据对其进行分析。
 
-| 产品/服务 | Description |
+| 产品/服务 | 说明 |
 |:---|:---|
 | [Azure 自动化](/azure/automation/) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
 | [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/) | 对文档和电子邮件进行分类和（可选）保护。 请参阅[Azure 信息保护的集中报告](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
@@ -195,22 +195,22 @@ Insights 提供针对特定应用程序和服务的自定义监视体验。 它�
 ## <a name="other-solutions"></a>其他解决方案
 其他解决方案可用于监视不同的应用程序和服务，但活动开发已停止，并且可能无法在所有区域中使用。 它们由 Azure Log Analytics 数据引入服务级别协议涵盖。
 
-| 解决方案 | Description |
+| 解决方案 | 说明 |
 |:---|:---|
-| [Active Directory 评估](insights/ad-assessment.md) | 评估 Active Directory 环境的风险和运行状况。 |
+| [Active Directory 运行状况检查](insights/ad-assessment.md) | 评估 Active Directory 环境的风险和运行状况。 |
 | [Active Directory 复制状态](insights/ad-replication-status.md) | 定期监视 Active Directory 环境中的任何复制失败。 |
 | [活动 log analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | 使用预定义的日志查询和视图分析活动日志项。 |
 | [DNS Analytics （预览）](insights/dns-analytics.md) | 收集、分析和关联 Windows DNS 分析和审核日志以及来自 DNS 服务器的其他相关数据。 |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | 跨多个部署收集、查看和分析你的 Cloud Foundry 系统运行状况和性能指标。 |
 | [容器](insights/containers.md) | 查看和管理 Docker 和 Windows 容器主机。 |
 | [按需评估](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | 评估和优化本地、混合和云 Microsoft 技术环境的可用性、安全性和性能。 |
-| [SQL 评估](insights/sql-assessment.md) | 评估 SQL Server 环境的风险和运行状况。  |
+| [SQL 运行状况检查](insights/sql-assessment.md) | 评估 SQL Server 环境的风险和运行状况。  |
 | [传输数据](insights/wire-data.md) | 与 Log Analytics agent 一起从 Windows 连接的计算机和连接到 Linux 的计算机收集的合并网络和性能数据。 |
 
 
 ## <a name="third-party-integration"></a>第三方集成
 
-| 解决方案 | Description |
+| 解决方案 | 说明 |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | 使用 IT 服务管理连接器 (ITSMC) 可以连接 Azure 和支持的 IT 服务管理 (ITSM) 产品/服务。  |
 

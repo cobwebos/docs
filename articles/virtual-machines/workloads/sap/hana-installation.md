@@ -4,7 +4,7 @@ description: 如何在 Azure 上的 SAP HANA （大型实例）上安装 SAP HAN
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c08036f16cd30a1c10963accd8d486d77c9683ee
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264163"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617096"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何安装和配置 Azure 上的 SAP HANA（大型实例）
 
@@ -124,7 +124,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 因此，必须设置单独的时间服务器，供在 Azure VM 上运行的 SAP 应用程序服务器以及在 HANA 大型实例上运行的 SAP HANA 数据库实例使用。 大型实例阵列中的存储基础结构与 NTP 服务器进行时间同步。
 
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 假设已遵循以下文档中的建议设计了 Azure 虚拟网络并将这些虚拟网络连接到了 HANA 大型实例：
 
 - [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
@@ -134,7 +134,7 @@ HANA 大型实例单元可以连接到此 SMT 实例。 （有关详细信息，
 
 有关体系结构以太网的详细信息，请参阅 [HLI 支持的方案](hana-supported-scenario.md)。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 Azure 上的 SAP HANA （大型实例）的存储布局是通过 Azure `service management` 上的 SAP HANA 通过 SAP 推荐的指南配置的。 [SAP HANA 存储要求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮书中阐述了这些指导原则。 
 

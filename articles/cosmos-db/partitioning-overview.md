@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871986"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621871"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区
 
@@ -37,7 +37,7 @@ Azure Cosmos DB 使用基于哈希的分区将逻辑分区分散到物理分区�
 
 下面是有关选择分区键的好指导：
 
-* 单个逻辑分区的存储上限为 10 GB。  
+* 单个逻辑分区的存储上限为 20 GB。  
 
 * Azure Cosmos 容器的最小吞吐量为400个请求单位/秒（RU/s）。 如果在数据库上设置了吞吐量，则每个容器的最小每个 ru 为100个请求单位/秒（RU/s）。 对相同分区键的请求不能超过分配给分区的吞吐量。 如果请求超出分配的吞吐量，请求会受到速率限制。 请务必选择不会导致应用程序中产生“热点”的分区键。
 

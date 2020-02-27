@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/09/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 39b7e94747f556b61f661968f7126d122156d9cf
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031554"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622019"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自动缩放和区域冗余应用程序网关 v2 
 
@@ -26,8 +26,8 @@ ms.locfileid: "77031554"
   区域冗余仅适用于 Azure 区域可用的位置。 在其他区域中，支持所有其他功能。 有关详细信息，请参阅 [Azure 中的可用性区域是什么？](../availability-zones/az-overview.md#services-support-by-region)
 - **静态 vip**：应用程序网关 v2 SKU 仅支持静态 vip 类型。 这可以确保即使在重启后，与应用程序网关关联的 VIP 也不会在部署的生命周期内更改。  V1 中没有静态 VIP，因此你必须使用应用程序网关 URL，而不是通过应用程序网关将域名路由到应用服务的 IP 地址。
 - **标头重写**：通过应用程序网关，可以通过 v2 SKU 添加、删除或更新 HTTP 请求和响应标头。 有关详细信息，请参阅[在应用程序网关上重写 HTTP 标头](rewrite-http-headers.md)
-- **Key Vault 集成（预览版）** ：对于附加到启用 HTTPS 的侦听器的服务器证书，应用程序网关 v2 支持与 Key Vault （以公共预览版提供）集成。 有关详细信息，请参阅[SSL 终止，并 Key Vault 证书](key-vault-certs.md)。
-- **Azure Kubernetes 服务入口控制器（预览版）** ：应用程序网关 V2 入口控制器允许 Azure 应用程序网关用作 Azure Kubernetes 服务（AKS）的入口，称为 AKS 群集。 有关详细信息，请参阅[文档页](https://azure.github.io/application-gateway-kubernetes-ingress/)。
+- **Key Vault 集成**：对于附加到启用 HTTPS 的侦听器的服务器证书，应用程序网关 v2 支持与 Key Vault 集成。 有关详细信息，请参阅[SSL 终止，并 Key Vault 证书](key-vault-certs.md)。
+- **Azure Kubernetes 服务入口控制器**：应用程序网关 V2 入口控制器允许 Azure 应用程序网关用作 Azure Kubernetes 服务（AKS）的入口（称为 AKS 群集）。 有关详细信息，请参阅[什么是应用程序网关入口控制器？](ingress-controller-overview.md)。
 - **性能增强**：与标准/WAF sku 相比，v2 SKU 提供多达5倍的 SSL 卸载性能。
 - **更快的部署和更新时间**与标准/WAF SKU 相比，v2 SKU 提供更快的部署和更新时间。 这还包括 WAF 配置更改。
 
@@ -141,7 +141,7 @@ Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中�
 
 |                                                   | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
-| 自动扩展                                       |          | &#x2713; |
+| 自动缩放                                       |          | &#x2713; |
 | 区域冗余                                   |          | &#x2713; |
 | 静态 VIP                                        |          | &#x2713; |
 | Azure Kubernetes 服务（AKS）入口控制器 |          | &#x2713; |
@@ -167,15 +167,15 @@ Standard_v2 和 WAF_v2 SKU 在以下区域提供：美国中北部、美国中�
 
 |差别|详细信息|
 |--|--|
-|身份验证证书|不受支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
+|身份验证证书|不支持。<br>有关详细信息，请参阅[应用程序网关的端到端 SSL 概述](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)。|
 |在同一子网上混合使用 Standard_v2 和标准应用程序网关|不支持|
 |应用程序网关子网上的用户定义路由 (UDR)|不支持|
 |入站端口范围的 NSG| 对于 Standard_v2 SKU，为 - 65200 到 65535<br>对于标准 SKU，为 - 65503 到 65534<br>有关详细信息，请参阅[常见问题](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
-|Azure 诊断中的性能日志|不受支持。<br>应当使用 Azure 指标。|
+|Azure 诊断中的性能日志|不支持。<br>应当使用 Azure 指标。|
 |计费|计费计划于2019年7月1日开始。|
 |FIPS 模式|目前不支持。|
 |“仅 ILB”模式|目前不支持。 同时支持公共和 ILB 模式。|
-|Netwatcher 集成|不受支持。|
+|Netwatcher 集成|不支持。|
 |Azure 安全中心集成|尚不可用。
 
 ## <a name="migrate-from-v1-to-v2"></a>从 v1 迁移到 v2

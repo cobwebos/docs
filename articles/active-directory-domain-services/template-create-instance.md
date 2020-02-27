@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: iainfou
-ms.openlocfilehash: e63f330d463be21905467869474527fdf9d6abff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2daadb539bc08df37f15c187866b735e45309288
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030193"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612797"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建 Azure Active Directory 域服务托管域
 
@@ -23,7 +23,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 本文介绍如何使用 Azure 资源管理器模板启用 Azure AD DS。 支持资源使用 Azure PowerShell 创建。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要完成本文，需要以下资源：
 
@@ -40,23 +40,23 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 创建 Azure AD DS 实例时，请指定 DNS 名称。 选择此 DNS 名称时请注意以下事项：
 
-* **内置域名：** 默认情况下，将使用目录的内置域名（ *onmicrosoft.com*后缀）。 若要启用通过 Internet 对托管域进行安全 LDAP 访问，则不能创建数字证书来保护与此默认域建立的连接。 Microsoft 拥有 *.onmicrosoft.com* 域，因此，证书颁发机构 (CA) 不会颁发证书。
-* **自定义域名：** 最常见的方法是指定自定义域名，通常是已拥有且可路由的域名。 使用可路由的自定义域时，流量可根据需要正确传送，以支持你的应用程序。
-* **不可路由的域后缀：** 我们通常建议你避免使用不可路由的域名后缀，例如*contoso. local*。 *.local* 后缀不可路由，并可能导致 DNS 解析出现问题。
+* **内置域名：** 默认将使用目录的内置域名（带 *.onmicrosoft.com* 后缀）。 若要启用通过 Internet 对托管域进行安全 LDAP 访问，则不能创建数字证书来保护与此默认域建立的连接。 Microsoft 拥有 *.onmicrosoft.com* 域，因此，证书颁发机构 (CA) 不会颁发证书。
+* **自定义域名：** 最常见的方法是指定自定义域名，通常是你已拥有且可路由的域名。 使用可路由的自定义域时，流量可根据需要正确传送，以支持你的应用程序。
+* **不可路由的域后缀：** 一般情况下，我们建议避免使用不可路由的域名后缀，例如 *contoso.local*。 *.local* 后缀不可路由，并可能导致 DNS 解析出现问题。
 
 > [!TIP]
-> 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议为域名添加唯一的前缀。 例如，如果 DNS 根名称为 contoso.com，则使用自定义域名 corp.contoso.com 或 ds.contoso.com 创建 Azure AD DS 托管域。 在具有本地 AD DS 环境的混合环境中，这些前缀可能已在使用中。 对 Azure AD DS 使用唯一的前缀。
+> 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议使用独立于任何现有 Azure 或本地 DNS 命名空间的域名。
 >
-> 可以将根 DNS 名称用于 Azure AD DS 托管域，但是可能需要为环境中的其他服务创建一些其他 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
+> 例如，如果现有的 DNS 命名空间为*contoso.com*，请使用*aaddscontoso.com*的自定义域名创建一个 Azure AD DS 托管域。 如果需要使用安全 LDAP，则必须注册并拥有此自定义域名才能生成所需的证书。
 >
-> 在这些教程和操作指南文章中，我们使用自定义域 *aadds.contoso.com* 作为简短示例。 在所有命令中，指定你自己的域名，其中可以包含唯一的前缀。
+> 你可能需要为环境中的其他服务或环境中现有 DNS 名称空间之间的条件 DNS 转发器创建一些其他 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
 >
-> 有关详细信息，请参阅[为域选择命名前缀][naming-prefix]。
+> 在这些教程和操作方法文章中，将使用*aaddscontoso.com*的自定义域作为简短示例。 在所有命令中，指定你自己的域名。
 
 还存在以下 DNS 名称限制：
 
-* **域前缀限制：** 不能创建前缀长度超过15个字符的托管域。 指定域名的前缀（例如 *contoso.com* 域名中的 *contoso*）所包含的字符不得超过 15 个。
-* **网络名称冲突：** 托管域的 DNS 域名不应已存在于虚拟网络中。 具体而言，请检查可能导致名称冲突的以下情况：
+* **域前缀限制：** 不能创建前缀长度超过 15 个字符的托管域。 指定域名的前缀（例如*aaddscontoso.com*域名中的*aaddscontoso* ）必须包含15个或更少的字符。
+* **网络名称冲突：** 托管域的 DNS 域名不能已存在于虚拟网络中。 具体而言，请检查可能导致名称冲突的以下情况：
     * Azure 虚拟网络中是否已存在具有相同 DNS 域名的 Active Directory 域。
     * 计划在其中启用托管域的虚拟网络是否与本地网络建立了 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
     * 虚拟网络中是否存在具有该名称的 Azure 云服务。
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 创建*AAD DC 管理员*组后，使用[add-azureadgroupmember][Add-AzureADGroupMember] cmdlet 将该用户添加到该组。 首先，使用[get-azureadgroup][Get-AzureADGroup] Cmdlet 获取*AAD DC 管理员*组对象 Id，然后使用[get-azureaduser][Get-AzureADUser] cmdlet 获取所需用户的对象 id。
 
-在下面的示例中，`admin@contoso.onmicrosoft.com`的 UPN 的帐户的用户对象 ID。 将此用户帐户替换为要添加到*AAD DC 管理员*组的用户的 UPN：
+在下面的示例中，`admin@aaddscontoso.onmicrosoft.com`的 UPN 的帐户的用户对象 ID。 将此用户帐户替换为要添加到*AAD DC 管理员*组的用户的 UPN：
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -128,12 +128,12 @@ New-AzResourceGroup `
 | notificationSettings    | 如果在 Azure AD DS 托管域中生成了任何警报，则可以发送电子邮件通知。 <br />对于这些通知，可以*启用*Azure 租户的*全局管理员*和*AAD DC administrators*组的成员。<br /> 如果需要，你可以根据需要添加通知的其他收件人。|
 | domainConfigurationType | 默认情况下，Azure AD DS 托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。 无需指定*domainConfiguration*值即可创建用户林。<br /> *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 将值设置为*ResourceTrusting*可创建资源林。<br />有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。|
 
-下面的紧缩参数定义显示了如何声明这些值。 创建名为*aadds.contoso.com*的用户林，其中 Azure AD 同步到 Azure AD DS 托管域的所有用户：
+下面的紧缩参数定义显示了如何声明这些值。 创建名为*aaddscontoso.com*的用户林，其中 Azure AD 同步到 Azure AD DS 托管域的所有用户：
 
 ```json
 "parameters": {
     "domainName": {
-        "value": "aadds.contoso.com"
+        "value": "aaddscontoso.com"
     },
     "filteredSync": {
         "value": "Disabled"
@@ -176,7 +176,7 @@ New-AzResourceGroup `
 
 ## <a name="create-a-managed-domain-using-sample-template"></a>使用示例模板创建托管域
 
-以下完整资源管理器示例模板创建一个 Azure AD DS 托管域以及支持的虚拟网络、子网和网络安全组规则。 网络安全组规则是保护托管域所必需的，并且确保流量可以正确地流动。 将创建一个其 DNS 名称为*aadds.contoso.com*的用户林，并从 Azure AD 同步所有用户：
+以下完整资源管理器示例模板创建一个 Azure AD DS 托管域以及支持的虚拟网络、子网和网络安全组规则。 网络安全组规则是保护托管域所必需的，并且确保流量可以正确地流动。 将创建一个其 DNS 名称为*aaddscontoso.com*的用户林，并从 Azure AD 同步所有用户：
 
 ```json
 {
@@ -190,7 +190,7 @@ New-AzResourceGroup `
             "value": "FullySynced"
         },
         "domainName": {
-            "value": "aadds.contoso.com"
+            "value": "aaddscontoso.com"
         },
         "filteredSync": {
             "value": "Disabled"

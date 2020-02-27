@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f4e8450593b8ff0f73c09f236f17eb4ef09334c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549496"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620938"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安装 Azure AD Connect 云预配代理
 本文档将指导你完成 Azure Active Directory （Azure AD）连接预配代理的安装过程，以及如何在 Azure 门户中进行初始配置。
@@ -55,7 +55,7 @@ ms.locfileid: "75549496"
 
 1. 此操作完成后，应会看到**已成功验证代理配置**的通知。 选择 "**退出**"。
 
-   ![“退出”按钮](media/how-to-install/install5.png)</br>
+   ![退出按钮](media/how-to-install/install5.png)</br>
 1. 如果仍看到初始**Microsoft Azure AD 连接预配代理包**"屏幕，请选择"**关闭**"。
 
 ## <a name="verify-agent-installation"></a>验证代理安装
@@ -96,7 +96,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
     ![服务屏幕](media/how-to-troubleshoot/troubleshoot1.png)
 
 >[!IMPORTANT]
->已经安装了代理，但必须先对其进行配置和启用，然后才会开始同步用户。 若要配置新代理，请参阅[Azure AD Connect 云预配新的代理配置](how-to-configure.md)。
+>已经安装了代理，但必须先对其进行配置和启用，然后才会开始同步用户。 若要配置新代理，请参阅[为 Azure AD Connect 基于云的设置创建新配置](how-to-configure.md)。
 
 
 

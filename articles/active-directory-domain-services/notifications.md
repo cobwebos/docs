@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 140edb3162d4f76c741a5692faa19325581a3ba7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5507579338ad0d87bc6223b56283fe7ed46af7d8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704492"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613299"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务中的问题配置电子邮件通知
 
@@ -58,7 +58,7 @@ Azure AD DS 的电子邮件收件人列表应由能够管理和更改托管域�
 若要查看现有电子邮件通知收件人或添加其他收件人，请完成以下步骤：
 
 1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。
-1. 选择 Azure AD DS 托管域，如*aadds.contoso.com*。
+1. 选择 Azure AD DS 托管域，如*aaddscontoso.com*。
 1. 在 Azure AD DS 资源 "窗口的左侧，选择"**通知设置**"。 将显示电子邮件通知的现有收件人。
 1. 若要添加电子邮件收件人，请在 "其他收件人" 表中输入电子邮件地址。
 1. 完成后，在顶部导航栏中选择 "**保存**"。

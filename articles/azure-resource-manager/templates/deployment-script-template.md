@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: jgao
-ms.openlocfilehash: 19ef5a08b66b8d1a09ddf9a6b73a3856f745485d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e881cde36bc56c175004e8d6adb9b7b85e9b5454
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586700"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616311"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在模板中使用部署脚本（预览）
 
@@ -77,7 +77,7 @@ ms.locfileid: "77586700"
 
 - **Azure PowerShell 版本3.0.0、2.8.0 或 2.7.0**或**Azure CLI 版本2.0.80、2.0.79、2.0.78 或 2.0.77**。 不需要这些版本来部署模板。 但在本地测试部署脚本需要这些版本。 请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 可以使用预配置的 Docker 映像。  请参阅[配置开发环境](#configure-development-environment)。
 
-## <a name="sample-template"></a>示例模板
+## <a name="sample-templates"></a>示例模板
 
 下面的 json 是一个示例。  可在[此处](/azure/templates/microsoft.resources/deploymentscripts)找到最新的模板架构。
 
@@ -130,6 +130,15 @@ ms.locfileid: "77586700"
 - **cleanupPreference**。 指定在脚本执行处于终端状态时清理部署资源的首选项。 默认设置**始终**为，这意味着，即使在终端状态（成功、失败、已取消）的情况下也删除资源。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 - **retentionInterval**：指定服务在部署脚本执行达到终端状态后保留部署脚本资源的时间间隔。 此持续时间到期时，将删除部署脚本资源。 持续时间基于[ISO 8601 模式](https://en.wikipedia.org/wiki/ISO_8601)。 默认值为**P1D**，这意味着七天。 当 cleanupPreference 设置为*OnExpiration*时，将使用此属性。 当前未启用*OnExpiration*属性。 若要了解详细信息，请参阅[清理部署脚本资源](#clean-up-deployment-script-resources)。
 
+### <a name="additional-samples"></a>其他示例
+
+- [创建证书并将其分配到密钥保管库](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)
+
+- [创建用户分配的托管标识并将其分配给资源组，并运行部署脚本](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json)。
+
+> [!NOTE]
+> 建议创建用户分配的标识并提前授予权限。 如果在运行部署脚本的同一模板中创建标识并授予权限，可能会收到与登录和权限相关的错误。 需要一段时间才能使权限生效。
+
 ## <a name="use-inline-scripts"></a>使用内联脚本
 
 以下模板有一个用 `Microsoft.Resources/deploymentScripts` 类型定义的资源。
@@ -139,7 +148,7 @@ ms.locfileid: "77586700"
 > [!NOTE]
 > 由于内联部署脚本是用双引号括起来的，因此部署脚本内的字符串需要改用单引号括起来。 PowerShell 的转义字符是 **&#92;** 。 你还可以考虑使用字符串替换，如前面的 JSON 示例中所示。 请参阅 name 参数的默认值。
 
-脚本采用一个参数，并输出参数值。 **DeploymentScriptOutputs**用于存储输出。  在 "输出" 部分中，"**值**" 行显示了如何访问存储的值。 `Write-Output` 用于调试目的。 若要了解如何访问输出文件，请参阅[调试部署脚本](#debug-deployment-scripts)。  有关属性说明，请参阅[示例模板](#sample-template)。
+脚本采用一个参数，并输出参数值。 **DeploymentScriptOutputs**用于存储输出。  在 "输出" 部分中，"**值**" 行显示了如何访问存储的值。 `Write-Output` 用于调试目的。 若要了解如何访问输出文件，请参阅[调试部署脚本](#debug-deployment-scripts)。  有关属性说明，请参阅[示例模板](#sample-templates)。
 
 若要运行该脚本，请选择 "**尝试**" 以打开 Azure Cloud Shell，然后将以下代码粘贴到 "Shell" 窗格中。
 
@@ -217,7 +226,6 @@ reference('<ResourceName>').output.text
 
 您可以通过使用部署脚本中的[ **$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
 )变量来控制 PowerShell 如何响应非终止错误。 部署脚本引擎未设置/更改值。  尽管你为 $ErrorActionPreference 设置的值，但当脚本遇到错误时，部署脚本会将资源预配状态设置为 "*失败*"。
-
 
 ## <a name="debug-deployment-scripts"></a>调试部署脚本
 

@@ -3,21 +3,21 @@ title: Powershell：将 SQL Server 迁移到 SQL 数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何通过 Azure 数据库迁移服务使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL Database。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f67572adc3b40115b2c6d4618718867eacf8c95e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746299"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650684"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL 数据库
 
@@ -31,7 +31,7 @@ ms.locfileid: "75746299"
 > * 在 Azure 数据库迁移服务实例中创建迁移项目。
 > * 运行迁移。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 
@@ -122,7 +122,7 @@ $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
 
 创建 `AzDataMigrationDatabaseInfo` 对象的列表，以便指定 Azure 数据库迁移项目中的数据库（可以作为创建项目所需的参数提供）。 Cmdlet `New-AzDataMigrationDatabaseInfo` 可用于创建 AzDataMigrationDatabaseInfo。 
 
-以下示例为 **AdventureWorks2016** 数据库创建 `AzDataMigrationDatabaseInfo` 项目，并将其添加到列表，以便在创建项目时作为参数提供。
+以下示例为 `AzDataMigrationDatabaseInfo`AdventureWorks2016**数据库创建** 项目，并将其添加到列表，以便在创建项目时作为参数提供。
 
 ```powershell
 $dbInfo1 = New-AzDataMigrationDatabaseInfo -SourceDatabaseName AdventureWorks2016
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>创建项目对象
 
-最后即可使用 `New-AzDataMigrationProject` 并添加以前创建的源和目标连接以及要迁移的数据库的列表，在“美国东部”创建名为“MyDMSProject”的 Azure 数据库迁移项目。
+最后即可使用  *并添加以前创建的源和目标连接以及要迁移的数据库的列表，在“美国东部”创建名为“MyDMSProject”的 Azure 数据库迁移项目。* `New-AzDataMigrationProject`
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3cb57fae2b1c67ece321a294e56612f49358405a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512617"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612717"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的常见错误和故障排除步骤
 
@@ -30,7 +30,7 @@ ms.locfileid: "76512617"
 
 | **示例错误消息** | **解决方法** |
 | --- |:--- |
-| *此网络上已在使用该名称 contoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
+| *此网络上已在使用该名称 addscontoso.com。指定一个未使用的名称。* |[虚拟网络中的域名冲突](troubleshoot.md#domain-name-conflict) |
 | *无法在此 Azure AD 租户中启用域服务。服务对名为 "Azure AD 域服务同步" 的应用程序没有足够的权限。删除名为 "Azure AD 域服务同步" 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[域服务没有足够的权限访问 Azure AD 域服务同步应用程序](troubleshoot.md#inadequate-permissions) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中的域服务应用程序没有启用域服务所需的权限。使用应用程序标识符 d87dcbc6-a371-462e-88e3-28ad15ec4e64 删除应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Azure AD 租户中未正确配置域服务应用程序](troubleshoot.md#invalid-configuration) |
 | *无法在此 Azure AD 租户中启用域服务。Azure AD 租户中禁用 Microsoft Azure AD 应用程序。启用应用程序标识符为 00000002-0000-0000-c000-000000000000 的应用程序，然后尝试为 Azure AD 租户启用域服务。* |[Microsoft Graph 应用程序已在 Azure AD 租户中禁用](troubleshoot.md#microsoft-graph-disabled) |
@@ -39,11 +39,11 @@ ms.locfileid: "76512617"
 
 **错误消息**
 
-*此网络上已在使用该名称 contoso.com。指定一个未使用的名称。*
+*此网络上已在使用该名称 aaddscontoso.com。指定一个未使用的名称。*
 
 **解决方法**
 
-检查相同的或对等互连的虚拟网络上没有具有相同域名的现有 AD DS 环境。 例如，你可能有一个在 Azure Vm 上运行的名为*contoso.com*的 AD DS 域。 尝试在虚拟网络上启用具有相同域名*contoso.com*的 Azure AD DS 托管域时，请求的操作将失败。
+检查相同的或对等互连的虚拟网络上没有具有相同域名的现有 AD DS 环境。 例如，你可能有一个在 Azure Vm 上运行的名为*aaddscontoso.com*的 AD DS 域。 尝试在虚拟网络上启用具有相同域名*aaddscontoso.com*的 Azure AD DS 托管域时，请求的操作将失败。
 
 此失败是由虚拟网络上的域名冲突引起的。 DNS 查找检查现有 AD DS 环境是否响应请求的域名。 若要解决此失败，请使用其他名称设置 Azure AD DS 托管域，或取消预配现有 AD DS 域，然后重试以启用 Azure AD DS。
 
@@ -128,9 +128,9 @@ if ($sp -ne $null)
 
 如果 Azure AD 租户中的一个或多个用户无法登录到 Azure AD DS 托管域，请完成以下故障排除步骤：
 
-* **凭据格式**-尝试使用 UPN 格式指定凭据，如 `dee@contoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
+* **凭据格式**-尝试使用 UPN 格式指定凭据，如 `dee@aaddscontoso.onmicrosoft.com`。 UPN 格式是在 Azure AD DS 中指定凭据的建议方法。 请确保在 Azure AD 中正确配置了此 UPN。
 
-    如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，则可能会自动生成帐户的*SAMAccountName* （如*CONTOSO\driley* ）。 因此，你的帐户的*SAMAccountName*格式可能不同于你在本地域中的预期或使用的格式。
+    如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，则可能会自动生成帐户的*SAMAccountName* （如*AADDSCONTOSO\driley* ）。 因此，你的帐户的*SAMAccountName*格式可能不同于你在本地域中的预期或使用的格式。
 
 * **密码同步**-请确保已为[仅限云的用户][cloud-only-passwords]或[使用 Azure AD Connect 的混合环境][hybrid-phs]启用密码同步。
     * **混合同步帐户：** 如果受影响的用户帐户是从本地目录同步的，请验证以下方面：

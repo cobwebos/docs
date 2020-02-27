@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service （AKS）中创建和管�
 services: container-service
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 846425e6d36462636ea1f4e82d6c7233dcb28ac9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592877"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615697"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -29,8 +29,7 @@ ms.locfileid: "77592877"
 创建和管理支持多个节点池的 AKS 群集时，有以下限制：
 
 * 请参阅[Azure Kubernetes Service （AKS）中的配额、虚拟机大小限制和区域可用性][quotas-skus-regions]。
-* 不能删除默认（第一个）节点池。
-* 无法使用 HTTP 应用程序路由加载项。
+* 默认情况下，无法删除系统节点池。
 * AKS 群集必须使用标准 SKU 负载均衡器来使用多个节点池，但基本 SKU 负载均衡器不支持此功能。
 * AKS 群集必须使用节点的虚拟机规模集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。

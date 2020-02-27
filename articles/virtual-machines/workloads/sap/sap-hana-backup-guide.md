@@ -4,20 +4,20 @@ description: SAP HANA 备份指南介绍适用于 Azure 虚拟机上的 SAP HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 05a4b8e8034e1c354a4209244694aeb2fc2c6007
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: 8de83cbb7060e6ca5390720a4a241be71bb9dc92
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078749"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617428"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP HANA 备份指南
 
@@ -30,11 +30,11 @@ ms.locfileid: "70078749"
 - 将 HANA 备份到 Azure Linux 虚拟机中的文件系统（参阅[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)）
 - 使用 Azure 存储 Blob 快照功能以手动方式或者使用 Azure 备份服务进行基于存储快照的 HANA 备份（参阅[基于存储快照的 SAP HANA 备份](sap-hana-backup-storage-snapshots.md)）
 
-SAP HANA 提供一个备份 API，第三方备份工具可以借助此 API 来直接与 SAP HANA 集成。 （这不在本指南的介绍范畴内。）目前，无法基于此 API 将 SAP HANA 直接与 Azure 备份服务集成。
+SAP HANA 提供一个备份 API，第三方备份工具可以借助此 API 来直接与 SAP HANA 集成。 （这不在本指南的讨论范围内。）目前不会基于此 API 直接将 SAP HANA 与 Azure 备份服务集成。
 
 SAP HANA 受到了各种 Azure VM 类型的官方支持，例如 Azure M 系列。 有关 SAP HANA 认证的 Azure VM 的完整列表，请查看 [Find Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)（查找已认证的 IaaS 平台）。 随着 Azure 上的 SAP HANA 新产品的推出，本文将不断更新。
 
-Azure 上还提供了一个 SAP HANA 混合解决方案，其中的 SAP HANA 以非虚拟化的方式在物理服务器上运行。 但是，本 SAP HANA Azure 备份指南只涉及单纯的 Azure 环境，其中的 SAP HANA 在 Azure VM 中运行，而不是在&quot;大型实例&quot;上运行。有关在&quot;大型实例&quot;上基于存储快照使用此备份解决方案的详细信息，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](hana-overview-architecture.md)。
+Azure 上还提供了一个 SAP HANA 混合解决方案，其中的 SAP HANA 以非虚拟化的方式在物理服务器上运行。 不过，这 SAP HANA Azure 备份指南涵盖了一个纯 Azure 环境，其中 SAP HANA 在 Azure VM 中运行，而不是 SAP HANA &quot;大型实例上运行。&quot; 参见[Azure 上的 SAP HANA （大型实例）概述和体系结构](hana-overview-architecture.md)，以了解有关 &quot;大型&quot; 实例上基于存储快照的此备份解决方案的详细信息。
 
 有关 Azure 支持的 SAP 产品的一般信息，请参阅 [SAP 说明 1928533](https://launchpad.support.sap.com/#/notes/1928533)。
 
@@ -54,7 +54,7 @@ Azure 上还提供了一个 SAP HANA 混合解决方案，其中的 SAP HANA 以
 
 _&quot;是否可以在辅助端创建备份？_
 
-_目前不可以，只能在主端创建数据和日志的备份。如果已启用自动日志备份，则在切换到辅助端后，将在辅助端自动写入日志备份。&quot;_
+_不可以。目前只能在主端执行数据和日志备份。如果启用了自动日志备份，则在接管到辅助端后，会自动在该位置写入日志备份。&quot;_
 
 ## <a name="sap-resources-for-hana-backup"></a>用于 SAP HANA 备份的资源
 
@@ -89,13 +89,13 @@ SAP 不会在 HANA 备份与存储快照之间做出优先选择， 而是列出
 
 在 Azure 上，请注意这样一个事实：Azure Blob 快照功能无法保证文件系统一致性（请参阅[通过 PowerShell 使用 Blob 快照](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)）。 下一部分_创建存储快照时保持 SAP HANA 数据一致性_介绍了有关此功能的一些注意事项。
 
-此外, 还必须了解本文中所述的 blob 快照经常使用的计费含义:[了解快照如何产生费用](/rest/api/storageservices/understanding-how-snapshots-accrue-charges),&#39;与使用 Azure 虚拟磁盘一样明显。
+此外，必须了解频繁使用 Blob 快照产生的计费影响，如以下文章中所述：[Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)（了解快照计费方式）— 与使用 Azure 虚拟磁盘时相比，快照产生的费用不是很明显。
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>创建存储快照时保持 SAP HANA 数据一致性
 
 创建存储快照时，文件系统和应用程序一致性是个复杂的问题。 避免问题的最简单方法是关闭 SAP HANA 甚至整个虚拟机。 可以在演示或原型设计系统甚至开发系统中执行关闭，但在生产系统中请不要这样做。
 
-在 Azure 上，必须注意 Azure Blob 快照功能无法保证文件系统一致性。 但是，使用 SAP HANA 快照功能可以保证这种一致性，前提是只涉及到单个虚拟磁盘。 但即使使用单个磁盘，也必须检查其他项目。 [SAP 说明 2039883](https://launchpad.support.sap.com/#/notes/2039883) 提供了有关通过存储快照创建 SAP HANA 备份的重要信息。 例如，该文档提到，使用 XFS 文件系统时，必须先运行 **xfs\_freeze**，才能启动存储快照，以保证一致性（有关 **xfs\_freeze** 的详细信息，请参阅 [xfs\_freeze(8) - Linux 手册页](https://linux.die.net/man/8/xfs_freeze)）。
+在 Azure 上，必须注意 Azure Blob 快照功能无法保证文件系统一致性。 但是，使用 SAP HANA 快照功能可以保证这种一致性，前提是只涉及到单个虚拟磁盘。 但即使使用单个磁盘，也必须检查其他项目。 [SAP 说明 2039883](https://launchpad.support.sap.com/#/notes/2039883) 提供了有关通过存储快照创建 SAP HANA 备份的重要信息。 例如，该文档提到，使用 XFS 文件系统时，必须先运行 **xfs\_freeze**，才能启动存储快照，以保证一致性（有关 [xfs\_freeze](https://linux.die.net/man/8/xfs_freeze) 的详细信息，请参阅 **xfs\_freeze(8) - Linux 手册页**）。
 
 如果单个文件系统跨越多个磁盘/卷，一致性问题就会变得更棘手。 例如，需要使用 mdadm 或 LVM 和条带化。 上述 SAP 说明指出：
 
@@ -192,7 +192,7 @@ Azure 备份服务可以处理加密的 VM/磁盘（请参阅[如何使用 Azure
 
 ### <a name="test-backup-size-estimation"></a>测试备份大小估算
 
-必须估算 SAP HANA 的备份大小。 由于复制文件时可提供并行度，此估算值可以通过定义多个备份文件的最大备份文件大小来帮助提高性能。 （本文稍后介绍相关的详细信息。）此外，用户必须确定是要执行完整备份还是增量备份（递增式备份或差异备份）。
+必须估算 SAP HANA 的备份大小。 由于复制文件时可提供并行度，此估算值可以通过定义多个备份文件的最大备份文件大小来帮助提高性能。 （本文稍后将对这些详细信息进行说明。）还必须决定是执行完整备份还是增量备份（增量备份或差异备份）。
 
 幸运的是，有一个简单的 SQL 语句可以估算备份文件的大小：**select \* from M\_BACKUP\_SIZE\_ESTIMATIONS**（请参阅 [Estimate the Space Needed in the File System for a Data Backup](https://help.sap.com/saphelp_hanaplatform/helpdata/en/7d/46337b7a9c4c708d965b65bc0f343c/content.htm)（估算文件系统中数据备份所需的空间））。
 

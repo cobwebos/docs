@@ -3,8 +3,8 @@ title: 已知问题：联机迁移到 Azure Database for MySQL
 titleSuffix: Azure Database Migration Service
 description: 了解使用 Azure 数据库迁移服务时，联机迁移到 Azure Database for MySQL 的已知问题和迁移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -13,13 +13,13 @@ ms.custom:
 - seo-lt-2019
 - seo-dt-2019
 ms.topic: article
-ms.date: 11/08/2019
-ms.openlocfilehash: 905a14bd78d120e27ebc4d44ede86e9f0e3783cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: afbff1c0b001d00f2791a869850729171782701c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437845"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650242"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>联机迁移问题 & azure DB for MySQL 与 Azure 数据库迁移服务的限制
 

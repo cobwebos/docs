@@ -4,7 +4,7 @@ description: 使用 STONITH 在 SUSE 中为 Azure 上的 SAP HANA（大型实例
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f23fe2aa17934b967e7aecf41687cc555b9552c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71212530"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615085"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中进行高可用性设置
 本文档将针对如何使用 STONITH 设备在 SUSE 操作系统上设置高可用性，进行详细的分步说明。
@@ -154,7 +154,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-单击“确定”
+单击 **“确定”**
 
 使用 Csync2 中的 IP 地址和预共享密钥执行身份验证。 使用 csync2 -k /etc/csync2/key_hagroup 生成密钥文件。 在创建文件 key_hagroup 后，应将其手动复制到群集的所有成员。 确保将文件从 node1 复制到 node2。
 
@@ -333,10 +333,10 @@ Service pacemaker stop
 ```
 现在，停止 node2 上的 pacemaker 服务，资源已故障转移到 node1
 
-**故障转移之前**  
+故障转移前  
 ![Before-failover](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
-**故障转移之后**  
+故障转移后  
 ![after-failover](media/HowToHLI/HASetupWithStonith/after-failover.png)  
 ![crm-mon-after-failover](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 

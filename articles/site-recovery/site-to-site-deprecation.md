@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 29a939452d9b90bd8afda7db4e115d10956ee5e5
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606628"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623605"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（使用 VMM）之间弃用灾难恢复
 
@@ -26,9 +26,9 @@ ms.locfileid: "77606628"
 
 ## <a name="what-changes-should-you-expect"></a>你需要做哪些更改？
 
-- 从11月2019开始，这些方案不允许使用 boardings 的新用户。 **现有的复制和管理操作**（包括故障转移、测试故障转移、监视等）**不会受到影响**。
+- 从2020年3月开始，你将收到 Azure 门户通知 & 电子邮件通信，其中包含即将弃用的 Hyper-v Vm 站点到站点复制。 弃用计划于2023年3月。
 
-- 如果有现有配置，将无法注册新的 VMMs。
+- 如果有现有配置，则不会对设置产生任何影响。
 
 - 一旦这些方案被弃用，除非客户遵循备用方法，否则现有复制可能会中断。 客户无法通过 Azure 门户中的 Azure Site Recovery 体验来查看、管理或执行任何 DR 相关的操作。
  

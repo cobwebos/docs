@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/6/2019
 ms.author: iainfou
-ms.openlocfilehash: c0fcb8c2c5f9afa7fabe2ffa63a715ec24aa4a26
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720499"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613982"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>部署 Azure AD 应用程序代理以安全访问 Azure AD 域服务托管域中的内部应用程序
 
@@ -74,7 +74,7 @@ ms.locfileid: "73720499"
         > [!NOTE]
         > 用于注册连接器的全局管理员帐户必须属于你启用应用程序代理服务的同一目录。
         >
-        > 例如，如果 Azure AD 域为*contoso.com*，则全局管理员应 `admin@contoso.com` 或该域上的其他有效别名。
+        > 例如，如果 Azure AD 域为*aaddscontoso.com*，则全局管理员应 `admin@aaddscontoso.com` 或该域上的其他有效别名。
 
    * 如果为安装连接器的 VM 启用了 Internet Explorer 增强的安全配置，则可能会阻止注册屏幕。 若要允许访问，请按照错误消息中的说明进行操作，或在安装过程中关闭 Internet Explorer 增强的安全性。
    * 如果连接器注册失败，请参阅[应用程序代理故障排除](../active-directory/manage-apps/application-proxy-troubleshoot.md)。
@@ -99,16 +99,16 @@ ms.locfileid: "73720499"
 
 使用[get-adcomputer][Get-ADComputer]检索安装了 Azure AD 应用程序代理连接器的计算机的设置。 在已加入域的管理 VM，并以作为*AZURE AD DC administrators*组成员的用户帐户登录，运行以下 cmdlet。
 
-以下示例获取有关名为*appproxy.contoso.com*的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
+以下示例获取有关名为*appproxy.aaddscontoso.com*的计算机帐户的信息。 为在前面的步骤中配置的 Azure AD 应用程序代理 VM 提供自己的计算机名。
 
 ```powershell
-$ImpersonatingAccount = Get-ADComputer -Identity appproxy.contoso.com
+$ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-对于运行 Azure AD 应用程序代理后面的应用的每个应用程序服务器，请使用[Get-adcomputer][Set-ADComputer] PowerShell cmdlet 配置基于资源的 KCD。 在下面的示例中，Azure AD 应用程序代理连接器授予使用*appserver.contoso.com*计算机的权限：
+对于运行 Azure AD 应用程序代理后面的应用的每个应用程序服务器，请使用[Get-adcomputer][Set-ADComputer] PowerShell cmdlet 配置基于资源的 KCD。 在下面的示例中，Azure AD 应用程序代理连接器授予使用*appserver.aaddscontoso.com*计算机的权限：
 
 ```powershell
-Set-ADComputer appserver.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
 如果部署多个 Azure AD 应用程序代理连接器，则必须为每个连接器实例配置基于资源的 KCD。

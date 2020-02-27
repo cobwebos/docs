@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149501"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620611"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
@@ -33,7 +33,7 @@ ms.locfileid: "77149501"
 
 - 所有页面
   - 辅助功能修补程序
-  - 你现在可以在 HTML 标记中添加 `data-preload="true"` 特性来控制 CSS 和 JavaScript 的加载顺序。
+  - 你现在可以[在 HTML 标记中](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content)添加 `data-preload="true"` 特性来控制 CSS 和 JavaScript 的加载顺序。
     - 在 HTML 模板的同时加载链接的 CSS 文件，使其不会在加载文件之间 "闪烁"。
     - 控制在页面加载前提取和执行 `script` 标记的顺序。
   - 现在 `type=email` 电子邮件字段，移动键盘将提供正确的建议

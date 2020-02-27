@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 NGINX 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486196"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622423"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自定义 NGINX 入口控制器并配置 HTTPS
 
@@ -96,7 +96,11 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-打开[yaml][values-yaml]并将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*nginx。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 另外，请将*kubernetes.io/ingress.class： nginx-azds # Dev Spaces 指定*为*kubernetes.io/ingress.class： Nginx # Custom 入口*。 下面是更新的 `values.yaml` 文件的示例：
+打开[yaml][values-yaml]并进行以下更新：
+* 将 *< REPLACE_ME_WITH_HOST_SUFFIX >* 的所有实例替换为*nginx。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 
+* 替换*kubernetes.io/ingress.class： traefik-azds # Dev Spaces-特定于* *kubernetes.io/ingress.class： Nginx # 自定义入口*。 
+
+下面是更新的 `values.yaml` 文件的示例：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -149,6 +153,9 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
 通过 *命令打开公共 URL，导航到*bikesharingweb`azds list-uris` 服务。 在以上示例中，*bikesharingweb* 服务的公共 URL 为 `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/`。
+
+> [!NOTE]
+> 如果看到错误页面而不是*bikesharingweb*服务，请验证是否已在*yaml*文件**中更新** *kubernetes.io/ingress.class*批注和主机。
 
 使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子 dev 空间的 url。
 

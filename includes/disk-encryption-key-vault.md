@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72511449"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77618464"
 ---
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location eastus
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-## <a name="create-a-key-vault"></a>创建密钥保管库
+## <a name="create-a-key-vault"></a>创建 key vault
 
 *如果已有密钥保管库，则可以跳到[设置密钥保管库高级访问策略](#set-key-vault-advanced-access-policies)。*
 
@@ -59,7 +59,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "eastus" -EnabledForDiskEncryption
 ```
-### <a name="resource-manager-template"></a>Resource Manager 模板
+### <a name="resource-manager-template"></a>资源管理器模板
 
 你还可以使用[资源管理器模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)创建密钥保管库。
 
@@ -151,7 +151,7 @@ Azure 磁盘加密不支持将端口号指定为 Key Vault 机密和 KEK URL 的
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA-HSM
 ```
 
-.可以改为使用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)命令导入私钥：
+可以改为使用 Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import)命令导入私钥：
 
 无论是哪种情况，都需要将 KEK 的名称提供给 Azure CLI [az vm encryption enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) -密钥加密-密钥参数。 
 

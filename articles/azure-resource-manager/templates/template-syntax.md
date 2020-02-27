@@ -2,13 +2,13 @@
 title: 模板结构和语法
 description: 使用声明性 JSON 语法描述 Azure 资源管理器模板的结构和属性。
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 9cd602644ecf803e97254189cfc157d60713cc6c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/25/2020
+ms.openlocfilehash: 08c688da3e812a4a67070c926cf11512bfc60667
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209454"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622902"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
@@ -260,10 +260,14 @@ ms.locfileid: "77209454"
 
 ```json
 "outputs": {
-  "<output-name>" : {
+  "<output-name>": {
     "condition": "<boolean-value-whether-to-output-value>",
-    "type" : "<type-of-output-value>",
-    "value": "<output-value-expression>"
+    "type": "<type-of-output-value>",
+    "value": "<output-value-expression>",
+    "copy": {
+      "count": <number-of-iterations>,
+      "input": <values-for-the-variable>
+    }
   }
 }
 ```
@@ -273,7 +277,8 @@ ms.locfileid: "77209454"
 | 输出-名称 |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | 条件 (condition) |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 如果为输出类型指定**securestring** ，则值不会显示在部署历史记录中，也不能从另一个模板检索。 若要在多个模板中使用机密值，请在 Key Vault 中存储机密，并在参数文件中引用该机密。 有关详细信息，请参阅[在部署过程中使用 Azure 密钥保管库传递安全参数值](key-vault-parameter.md)。 |
-| 值 |是 |评估并作为输出值返回的模板语言表达式。 |
+| 值 |否 |评估并作为输出值返回的模板语言表达式。 请指定**value**或**copy**。 |
+| copy |否 | 用于为输出返回多个值。 指定**值**或**复制**。 有关详细信息，请参阅[Azure 资源管理器模板中的输出迭代](copy-outputs.md)。 |
 
 有关如何使用输出的示例，请参阅[Azure 资源管理器模板中的输出](template-outputs.md)。
 
@@ -379,7 +384,7 @@ ms.locfileid: "77209454"
 
 ## <a name="multi-line-strings"></a>多行字符串
 
-您可以将字符串拆分为多个行。 例如，location 属性和下面的 JSON 示例中的一个注释。
+您可以将字符串拆分为多个行。 例如，在下面的 JSON 示例中，请参阅 location 属性和注释之一。
 
 ```json
 {

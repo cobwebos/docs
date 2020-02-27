@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704384"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613043"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>将范围内的同步从 Azure AD 配置为 Azure Active Directory 域服务
 
@@ -40,7 +40,7 @@ ms.locfileid: "74704384"
 
 使用 Azure 门户或 PowerShell 配置作用域内同步设置：
 
-| 行动 | | |
+| 操作 | | |
 |--|--|--|
 | 创建 Azure AD DS 托管域并配置作用域同步 | [Azure 门户](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | 修改作用域同步 | [Azure 门户](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
@@ -70,7 +70,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 若要修改其用户应同步到 Azure AD DS 托管域的组的列表，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aadds.contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aaddscontoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 若要添加组，请选择顶部的 " **+ 选择组**"，然后选择要添加的组。
 1. 若要从同步作用域中删除组，请从当前同步的组列表中选择它，然后选择 "**删除组**"。
@@ -82,7 +82,7 @@ Azure AD DS 托管域最多可能需要一小时才能完成部署。 在 Azure 
 
 若要禁用 Azure AD DS 托管域的基于组的作用域同步，请完成以下步骤：
 
-1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aadds.contoso.com*。
+1. 在 Azure 门户中，搜索并选择**Azure AD 域服务**"。 选择实例，如*aaddscontoso.com*。
 1. 从左侧菜单中选择 "**同步**"。
 1. 将 "同步作用域"**设置为 "** **全部**作用域"，然后选择 "**保存同步作用域**"。
 
@@ -194,11 +194,11 @@ Write-Output "******************************************************************
 
 1. 现在，创建 Azure AD DS 托管域，并启用基于组的作用域同步。 在 *-Properties*参数中包括 *"filteredSync" = "Enabled"* 。
 
-    设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*aadds.contoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。 将资源组名称、虚拟网络名称和区域设置为之前步骤中使用的值，以创建支持的 Azure 资源：
+    设置你的 Azure 订阅 ID，然后为托管域提供一个名称，例如*aaddscontoso.com*。 可以使用[AzSubscription][Get-AzSubscription] cmdlet 获取订阅 ID。 将资源组名称、虚拟网络名称和区域设置为之前步骤中使用的值，以创建支持的 Azure 资源：
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "aadds.contoso.com"
+   $ManagedDomainName = "aaddscontoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"
@@ -221,7 +221,7 @@ Write-Output "******************************************************************
     * 若要创建网络安全组和所需的规则，请在门户中选择 Azure AD DS 托管域。 在 "**概述**" 窗口上，系统会提示自动创建和配置网络安全组。
 * [启用 "密码同步" Azure AD 域服务](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)，以便最终用户可以使用其公司凭据登录到托管域。
 
-## <a name="modify-scoped-synchronization-using-powershell"></a>使用 Powershell 修改作用域同步
+## <a name="modify-scoped-synchronization-using-powershell"></a>使用 PowerShell 修改作用域同步
 
 若要修改其用户应同步到 Azure AD DS 托管域的组的列表，请重新运行[PowerShell 脚本](#powershell-script-for-scoped-synchronization)并指定新的组列表。 在下面的示例中，要同步的组不再包括*GroupName2*，现在包括*GroupName3*。
 

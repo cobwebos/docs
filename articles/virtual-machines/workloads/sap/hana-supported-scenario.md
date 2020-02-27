@@ -4,7 +4,7 @@ description: Azure SAP HANA（大型实例）的支持方案及其体系结构�
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb8278b053ef52f43171137b02e729bfed085e67
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894696"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617177"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型实例的支持方案
 本文介绍 HANA 大型实例（B-HLI）的支持方案和体系结构详细信息。
@@ -50,7 +50,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 本文介绍了每个受支持的体系结构中的两个组件的详细信息：
 
 - 以太网
-- 存储空间
+- 存储
 
 ### <a name="ethernet"></a>以太网
 
@@ -67,10 +67,10 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点|
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | STONITH |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点|
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点|
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | STONITH |
 
 可以根据在 B-HLI 设备上配置的拓扑来选择接口。 例如，接口 "B" 设置为节点到节点的通信，这在配置了扩展拓扑时非常有用。 此接口不用于单节点、纵向扩展配置。 有关接口用法的详细信息，请查看所需方案（本文后面的部分）。 
 
@@ -96,7 +96,7 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 - 应专门使用以太网 "D" 来访问用于 Pacemaker 的 STONITH 设备。 当你配置 HANA 系统复制并想要使用基于 SBD 的设备实现操作系统的自动故障转移时，此接口是必需的。
 
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 存储基于请求的拓扑进行预配置。 根据服务器的数量、Sku 数量和配置的拓扑，卷大小和装入点会有所不同。 有关详细信息，请查看所需的方案（本文后面的部分）。 如果需要更多存储空间，可以按 1 TB 的增量购买。
 
 >[!NOTE]
@@ -139,12 +139,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -174,12 +174,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -214,12 +214,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -255,12 +255,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -310,12 +310,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 用于 STONITH |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 用于 STONITH |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 用于 STONITH |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -356,12 +356,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 用于 STONITH |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 用于 STONITH |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 用于 STONITH |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -415,12 +415,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -456,12 +456,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -492,12 +492,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -531,12 +531,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -576,12 +576,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI/HSR |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点在每个机架单元（主和灾难恢复）上预先配置：
 
 | 装入点 | 用例 | 
@@ -617,12 +617,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI/HSR |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -667,12 +667,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI/HSR |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -712,12 +712,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 已配置但未使用 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 已配置但未使用 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI/HSR |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 已配置但未使用 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 
@@ -763,12 +763,12 @@ HANA 大型实例支持各种体系结构，以帮助您满足您的业务需求
 | B | 第 I 类 | eth2.tenant | eno3.tenant | 节点到节点通信 |
 | C | 第 I 类 | eth1.tenant | eno2.tenant | 节点到存储 |
 | D | 第 I 类 | eth4.tenant | eno4.tenant | 已配置但未使用 |
-| A | 第 II 类 | vlan\<tenantNo> | team0.tenant | 客户端到 B-HLI/HSR |
-| B | 第 II 类 | vlan\<tenantNo+2> | team0.tenant+2 | 节点到节点通信 |
-| C | 第 II 类 | vlan\<tenantNo+1> | team0.tenant+1 | 节点到存储 |
-| D | 第 II 类 | vlan\<tenantNo+3> | team0.tenant+3 | 已配置但未使用 |
+| A | 第 II 类 | vlan\<tenantNo > | team0.tenant | 客户端到 B-HLI/HSR |
+| B | 第 II 类 | vlan\<tenantNo + 2 > | team0.tenant+2 | 节点到节点通信 |
+| C | 第 II 类 | vlan\<tenantNo + 1 > | team0.tenant+1 | 节点到存储 |
+| D | 第 II 类 | vlan\<tenantNo + 3 > | team0.tenant+3 | 已配置但未使用 |
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 以下装入点已预配置：
 
 | 装入点 | 用例 | 

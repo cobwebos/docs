@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705084"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613581"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域中的组策略
 
@@ -53,7 +53,7 @@ Azure Active Directory 域服务（Azure AD DS）中的用户和计算机对象�
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。
-1. 在 "**服务器选择**" 页上，从服务器池中选择当前 VM （如*myvm.aadds.contoso.com*），然后选择 "**下一步**"。
+1. 在 "**服务器选择**" 页上，从服务器池中选择当前 VM （如*myvm.aaddscontoso.com*），然后选择 "**下一步**"。
 1. 在“服务器角色”页上，单击“下一步”。
 1. 在“功能”页上，选择“组策略管理”功能。
 
@@ -76,7 +76,7 @@ Azure AD DS 托管域中的用户和计算机存在默认组策略对象（Gpo�
 
 Azure AD DS 托管域中有两个内置组策略对象（Gpo）-一个用于*AADDC 计算机*容器，另一个用于*AADDC 用户*容器。 你可以根据需要自定义这些 Gpo，以便在 Azure AD DS 托管域中配置组策略。
 
-1. 在**组策略管理**控制台中，展开 "**林： aadds.contoso.com** " 节点。 接下来，展开 "**域**" 节点。
+1. 在**组策略管理**控制台中，展开 "**林： aaddscontoso.com** " 节点。 接下来，展开 "**域**" 节点。
 
     *AADDC 计算机*和*AADDC 用户*有两个内置容器。 其中每个容器都应用了默认 GPO。
 

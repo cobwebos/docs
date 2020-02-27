@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d08c0b8817c0008a0ecfbab1a9d38243ec0bea79
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705677"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619880"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>视频索引器常见问题
 
@@ -71,11 +71,19 @@ ms.locfileid: "76705677"
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>是否可以创建自定义工作流来自动化视频索引器的流程？
 
-是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)可以找到有关适用于视频索引器的[逻辑应用](https://azure.microsoft.com/services/logic-apps/)和 [Flow](https://flow.microsoft.com/en-us/) 连接器的更多详细信息。 
+是的，可将视频索引器集成到逻辑应用、Flow 和 [Azure Functions](https://azure.microsoft.com/services/functions/) 等无服务器技术。 在[此处](https://azure.microsoft.com/services/logic-apps/)可以找到有关适用于视频索引器的[逻辑应用](https://flow.microsoft.com/en-us/)和 [Flow](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) 连接器的更多详细信息。 
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>视频索引器在哪些 Azure 区域是可用的？
 
 可在[区域](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services&regions=all)页上查看提供视频索引器的 Azure 区域。
+
+### <a name="can-i-customize-video-indexer-models-for-my-specific-use-case"></a>能否为特定用例自定义视频索引器模型？ 
+
+是的。 在 "视频索引器" 中，您可以自定义一些可用模型，以便更好地满足您的需求。 
+
+例如，我们的人员模型支持名人识别的现成1000000面，但你也可以训练它来识别不在该数据库中的其他人脸。 
+
+有关详细信息，请参阅有关自定义[人员](customize-person-model-overview.md)、[品牌](customize-brands-model-overview.md)和[语言](customize-language-model-overview.md)模型的文章。 
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>什么是适用于视频索引器的 SLA？
 
@@ -119,6 +127,21 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 视频索引器目前已通过 SOC 认证。 若要查看视频索引器通过的认证，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure)。
 
+### <a name="what-is-the-difference-between-private-and-public-videos"></a>专用视频和公用视频之间有何区别？ 
+
+将视频上传到视频索引器时，可以从两个隐私设置中选择 "专用" 和 "公共"。 公共视频可供任何人访问，包括匿名用户和不可识别的用户。 专用于帐户成员。 
+
+### <a name="i-tried-to-upload-a-video-as-public-and-it-was-flagged-for-inappropriate-or-offensive-content-what-does-that-mean"></a>我尝试以公共方式上传视频，并将其标记为不适当或冒犯性内容，这是什么意思？ 
+
+将视频上传到视频索引器时，会通过算法和模型执行自动内容分析，以确保不会公开公开不良内容。 如果发现视频包含了明确的内容，则无法将其设置为公共内容。 但是，帐户成员仍可将其作为专用视频访问（查看、下载见解和提取的项目，以及执行帐户成员可用的其他操作）。   
+
+若要将视频设置为公共访问，可以执行以下操作之一： 
+
+* 构建你自己的接口层（如应用或网站），并使用它与视频索引器服务交互。 通过这种方式，视频在门户中是专用的，用户可以通过界面与之交互。 例如，你仍可以在自己的界面中获得见解或允许观看视频。 
+* 请求人工审阅内容，这将导致删除限制，假定内容不是显式的。 
+
+    如果用户直接使用视频索引器网站作为接口层，则可以浏览此选项，并且可以查看公共（未经身份验证）。 
+
 ## <a name="api-questions"></a>API 问题
 
 ### <a name="what-apis-does-video-indexer-offer"></a>视频索引器提供哪些 API？
@@ -161,7 +184,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>我是在使用视频索引器时计费的？
 
-如果发送要编制索引的视频，用户会将索引定义为视频分析和/或音频分析。 这将决定对哪些 SKU 收费。 如果处理过程中发生严重级别错误，系统将返回错误代码作为响应。 在此情况下，不会计费。  关键错误可能是由代码中的 bug 导致，或者由服务内部依赖项的严重故障导致。 错误标识或见解提取等错误不会被视为关键错误，系统将返回响应。 如果返回有效（非错误代码）响应，系统将会计费。
+发送要编制索引的视频时，用户会将索引定义为视频分析、音频分析或两者。 这会确定将向哪个 Sku 收费。 如果在处理过程中出现严重级别错误，则错误代码将作为响应返回。 在这种情况下，不会计费。  关键错误可能是由于代码中的 bug 或该服务的内部依赖项中的严重故障引起的。 错误标识或见解提取等错误不被视为关键错误，并返回响应。 在返回有效（非错误代码）响应的任何情况下，将发生计费。
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>视频索引器是否提供免费试用版？
 

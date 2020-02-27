@@ -4,7 +4,7 @@ description: 了解如何将 SAP 软件部署到 Azure 中的 Linux 虚拟机。
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: e7a61cc64ae72adfcbeb347ddd076065ccc3a321
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 19dc9f25cc7355eb540b68f009a77b1ca1e5fb86
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645831"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614902"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -315,7 +315,7 @@ ms.locfileid: "75645831"
 
 本文介绍在 Azure 中的虚拟机 (VM) 上部署 SAP 应用程序的步骤，包括备用部署选项和故障排除。 本文基于[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的信息。 它还对 SAP 安装文档和 SAP 说明（指导安装和部署 SAP 软件的主要资源）进行了补充。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -876,8 +876,8 @@ azure --version
 必须正确设置代理设置，本地系统帐户才能访问 Internet。 如果没有通过组策略设置代理设置，则可以为本地系统帐户配置这些设置。
 
 1. 转到“开始”，输入 **gpedit.msc**，并选择 **Enter**。
-1. 选择“计算机配置” > “管理模板” > “Windows 组件” > “Internet Explorer”。 确保“按计算机进行代理设置(而不是按用户)”设置已禁用或者未配置。
-1. 在**控制面板**中，转到“网络和共享中心” > “Internet 选项”。
+1. 选择“计算机配置” **“管理模板”** “Windows 组件” > “Internet Explorer”。 >  >  确保“按计算机进行代理设置(而不是按用户)”设置已禁用或者未配置。
+1. 在**控制面板**中，转到“网络和共享中心” **“Internet 选项”。**  > 
 1. 在“连接”选项卡上，选择“局域网设置”按钮。
 1. 清除“自动检测设置”复选框。
 1. 选中“为 LAN 使用代理服务器”复选框，并输入代理地址和端口。
@@ -912,7 +912,7 @@ azure --version
 
   此外，还需要为 \\etc\\regionserverclnt.cfg 中列出的 IP 地址添加路由。 以下代码展示了一个示例：
 
-  ![强制的安全加密链路连接][deployment-guide-figure-50]
+  ![强制隧道][deployment-guide-figure-50]
 
 
 * **RHEL**
@@ -1026,7 +1026,7 @@ azure --version
 
 部署 Azure VM 并设置适用于 SAP 的相关 Azure 扩展后，请检查扩展的所有组件是否按预期方式工作。
 
-针对适用于[sap 的 Azure 扩展的就绪状态检查][deployment-guide-5.1]中所述，对适用于 Sap 的 azure 扩展运行就绪状态检查。 如果所有就绪状态检查结果都是肯定的并且所有相关的性能计数器都显示为 "正常"，则已成功设置适用于 SAP 的 Azure 扩展。 可以按照 [sap 说明][deployment-guide-2.2]中的 sap 说明中所述, 继续安装 SAP 主机代理。 如果就绪状态检查指出缺少计数器，请根据适用于[sap 的 Azure 扩展配置的运行状况检查][deployment-guide-5.2]中所述，对适用于 Sap 的 azure 扩展运行运行状况检查。 有关更多故障排除选项，请参阅[Azure Extension FOR SAP 的故障排除][deployment-guide-5.3]。
+针对适用于[sap 的 Azure 扩展的就绪状态检查][deployment-guide-5.1]中所述，对适用于 Sap 的 azure 扩展运行就绪状态检查。 如果所有就绪状态检查结果都是肯定的并且所有相关的性能计数器都显示为 "正常"，则已成功设置适用于 SAP 的 Azure 扩展。 可以按照 sap 说明中的 sap[说明中所][deployment-guide-2.2]述，继续安装 Sap 主机代理。 如果就绪状态检查指出缺少计数器，请根据适用于[sap 的 Azure 扩展配置的运行状况检查][deployment-guide-5.2]中所述，对适用于 Sap 的 azure 扩展运行运行状况检查。 有关更多故障排除选项，请参阅[Azure Extension FOR SAP 的故障排除][deployment-guide-5.3]。
 
 ### <a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>适用于 SAP 的 Azure 扩展的就绪状态检查
 
@@ -1036,7 +1036,7 @@ azure --version
 
 1. 登录到 Azure 虚拟机（不需要使用管理员帐户）。
 1. 打开命令提示符窗口。
-1. 在命令提示符下，将目录更改为适用于 SAP 的 Azure 扩展的安装文件夹： C：\\包\\插件\\AzureCATExtensionHandler\\&lt;\\删除
+1. 在命令提示符下，将目录更改为适用于 SAP 的 Azure 扩展的安装文件夹： C：\\包\\插件\\AzureCATExtensionHandler\\&lt;>\\删除
 
    扩展路径中的*版本*可能会有所不同。 如果在安装文件夹中看到扩展的多个版本的文件夹，请检查 AzureEnhancedMonitoring Windows 服务的配置，并切换到 "*可执行文件的路径*" 指示的文件夹。
 
@@ -1081,15 +1081,15 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
 1. 查看适用于 SAP 的 Azure 扩展的输出。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  `more /var/lib/AzureEnhancedMonitor/PerfCounters`运行 
+   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters`运行 {2}
 
    **预期结果**：返回性能计数器的列表。 文件不应为空。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`运行 
+   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error`运行 {2}
 
    **预期结果**：返回一个行，其中，错误为 **none**，例如 **3;config;Error;;0;0;none;0;1456416792;tst-servercs;**
 
-   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`运行 
+   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord`运行 {2}
 
    **预期结果**：返回为空或不存在。
 
@@ -1097,29 +1097,29 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
 1. 确保已安装并启用了 waagent。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  `sudo ls -al /var/lib/waagent/`运行 
+   a.  `sudo ls -al /var/lib/waagent/`运行 {2}
 
      **预期结果**：列出 waagent 目录的内容。
 
-   b.保留“数据库类型”设置，即设置为“共享”。  `ps -ax | grep waagent`运行 
+   b.  `ps -ax | grep waagent`运行 {2}
 
    **预期结果**：显示一个类似于以下内容的条目：`python /usr/sbin/waagent -daemon`
 
 1. 请确保已安装并运行适用于 SAP 的 Azure 扩展。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`运行 
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'`运行 {2}
 
    **预期结果**：列出适用于 SAP 的 Azure 扩展目录的内容。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 `ps -ax | grep AzureEnhanced`运行 
+   b. `ps -ax | grep AzureEnhanced`运行 {2}
 
    **预期结果**：显示一个类似于以下内容的条目：`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. 如 SAP 说明 [1031096] 中所述安装 SAP 主机代理，并检查 `saposcol` 的输出。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。  `/usr/sap/hostctrl/exe/saposcol -d`运行 
+   a.  `/usr/sap/hostctrl/exe/saposcol -d`运行 {2}
 
-   b.保留“数据库类型”设置，即设置为“共享”。  `dump ccm`运行 
+   b.  `dump ccm`运行 {2}
 
    c.  检查 **Virtualization_Configuration\Enhanced Monitoring Access** 度量值是否为 **true**。
 

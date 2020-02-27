@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983072"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620837"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -28,13 +28,13 @@ ms.locfileid: "76983072"
 
 执行两个布尔型 inputClaims 的 And 运算并使用运算结果设置 outputClaim。
 
-| 项目  | TransformationClaimType  | 数据类型  | 说明 |
+| Item  | TransformationClaimType  | 数据类型  | 说明 |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2  | boolean | 第二个要评估的 ClaimType。 |
 |OutputClaim | outputClaim | boolean | 调用此声明转换后将生成的 ClaimTypes（true 或 false）。 |
 
-以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `true`，则输出声明 `presentEmailSelfAsserted` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
+以下声明转换演示如何执行两个布尔型 ClaimTypes 的 And 运算：`isEmailNotExist` 和 `isSocialAccount`。 如果这两个输入声明的值为 `presentEmailSelfAsserted`，则输出声明 `true` 设置为 `true`。 在业务流程步骤中，只有在社交帐户电子邮件为空的情况下，才可以使用前置条件来预设自断言页。
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -61,7 +61,7 @@ ms.locfileid: "76983072"
 
 检查两个声明的布尔值是否相等，如果不等，将引发异常。
 
-| 项目 | TransformationClaimType  | 数据类型  | 说明 |
+| Item | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
@@ -118,11 +118,11 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩的结果。 
 
-| 项目 | TransformationClaimType  | 数据类型  | 说明 |
+| Item | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
-| inputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
+| InputClaim | inputClaim | boolean | 要断言的 ClaimType。 |
 | InputParameter |valueToCompareTo | boolean | 要比较的值（true 或 false）。 |
-| OutputClaim | inputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | compareResult | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 
 以下声明转换演示如何检查带 `true` 值的布尔型 ClaimType 的值。 如果 `IsAgeOver21Years` ClaimType 的值等于 `true`，则声明转换返回 `true`，否则 `false`。
@@ -156,7 +156,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 执行布尔型 inputClaim 的 Not 运算并使用运算结果设置 outputClaim。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | 要运算的声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType（true 或 false）。 |
@@ -184,7 +184,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 执行两个布尔型 inputClaims 的 Or 运算并使用运算结果设置 outputClaim。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | 第一个要评估的 ClaimType。 |
 | InputClaim | inputClaim2 | boolean | 第二个要评估的 ClaimType。 |

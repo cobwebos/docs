@@ -1,24 +1,24 @@
 ---
-title: 通过自定义策略进行电话注册和登录
+title: 通过自定义策略（预览版）进行电话注册和登录
 titleSuffix: Azure AD B2C
-description: 了解如何通过 Azure Active Directory B2C 中的自定义策略，将文本消息中的一次性密码发送到应用程序用户的手机。
+description: 通过 Azure Active Directory B2C 中的自定义策略，将文本消息中的一次性密码（OTP）发送到你的应用程序用户的手机。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840326"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647526"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>在 Azure AD B2C 中设置自定义策略的手机注册和登录
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>在 Azure AD B2C （预览版）中设置自定义策略的手机注册和登录
 
 通过在 Azure Active Directory B2C （Azure AD B2C）中进行电话注册和登录，用户可以通过使用短信发送到其手机的一次性密码（OTP）来注册应用程序并登录到你的应用程序。 一次性密码可帮助最大程度地减少用户忘记密码或密码泄露的风险。
 
@@ -26,7 +26,13 @@ ms.locfileid: "76840326"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="pricing"></a>定价
+
+一次性密码会通过使用短信发送给用户，并且你可能会对每个发送的消息付费。 有关定价信息，请参阅[Azure Active Directory B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)的**单独费用**部分。
+
+## <a name="prerequisites"></a>必备条件
+
+在设置 OTP 之前，需要准备好以下资源。
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)
 * 在租户中[注册的 Web 应用程序](tutorial-register-applications.md)
@@ -69,6 +75,22 @@ ms.locfileid: "76840326"
 1. 对于 "**选择回复 url**"，请选择 `https://jwt.ms`。
 1. 选择 "**立即运行**" 并使用电子邮件地址或电话号码进行注册。
 1. 选择 "**立即运行**" 并使用同一帐户登录，以确认配置正确。
+
+## <a name="get-user-account-by-phone-number"></a>按电话号码获取用户帐户
+
+使用电话号码注册但未提供恢复电子邮件地址的用户在 Azure AD B2C 目录中记录为其电话号码作为登录名。 如果用户希望更改其电话号码，则支持人员或支持团队必须首先查找其帐户，然后更新他们的电话号码。
+
+你可以使用[Microsoft Graph](manage-user-accounts-graph-api.md)按其电话号码（登录名）查找用户：
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+例如：
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2ea77be0a7aabefaf8f6ed9a5bd841ea1fdda263
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592096"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620308"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
@@ -172,7 +172,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor 数据存储（ADX 群集）预配
 
-在此功能的早期访问期内，在完成前面的步骤后，产品团队将手动设置 ADX 群集。 使用 Microsoft 随附的频道提供*群集*资源详细信息。 可以使用 GET REST API 检索 JSON 响应：
+在此功能的早期访问期内，在完成前面的步骤后，产品团队将手动设置 ADX 群集。 使用你的 Microsoft 渠道提供*群集*资源详细信息。 复制*群集*资源 GET REST API 的 JSON 响应：
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview

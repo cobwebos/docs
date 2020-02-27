@@ -1,30 +1,26 @@
 ---
-title: 教程：使用 Azure 应用程序配置将事件发送到 Web 终结点
-titleSuffix: Azure App Configuration
-description: 本教程介绍如何设置 Azure 应用程序配置事件订阅，以将键-值修改事件发送到 Web 终结点。
+title: 使用 Azure 应用配置将事件发送到 web 终结点
+description: 了解如何使用 Azure 应用配置事件订阅将键值修改事件发送到 web 终结点
 services: azure-app-configuration
-documentationcenter: ''
-author: jimmyca
-editor: ''
+author: lisaguthrie
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
-ms.topic: tutorial
-ms.date: 05/30/2019
+ms.topic: how-to
+ms.date: 02/25/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
-ms.translationtype: HT
+ms.openlocfilehash: 93700af5e7fb3a4a1253424996ed04532c01f88c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899698"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619594"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>快速入门：使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
+# <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 将 Azure 应用程序配置事件路由到 Web 终结点
 
-本快速入门介绍如何设置 Azure 应用程序配置事件订阅，以将键-值修改事件发送到 Web 终结点。 Azure 应用程序配置用户可以订阅每当键-值发生修改时发出的事件。 这些事件可以触发 Webhook、Azure Functions、Azure 存储队列，或 Azure 事件网格支持的任何其他事件处理程序。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
+本文介绍如何设置 Azure 应用配置事件订阅，以将键值修改事件发送到 web 终结点。 Azure 应用配置用户可以订阅在修改键值时发出的事件。 这些事件可触发 web 挂钩、Azure Functions、Azure 存储队列或 Azure 事件网格支持的任何其他事件处理程序。 通常，你会将事件发送到处理事件数据并执行操作的终结点。 但是，为了简化本文，你将事件发送到收集并显示消息的 Web 应用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>系统必备
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)。 可以选择使用 Azure Cloud Shell。
 
@@ -46,15 +42,16 @@ ms.locfileid: "76899698"
 az group create --name <resource_group_name> --location westus
 ```
 
-## <a name="create-an-app-configuration"></a>创建一个应用程序配置
+## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
-将 `<appconfig_name>` 替换为该应用程序配置的唯一名称，将 `<resource_group_name>` 替换为前面创建的资源组。 该名称必须唯一，因为它将用作 DNS 名称。
+将 `<appconfig_name>` 替换为配置存储的唯一名称，并使用之前创建的资源组 `<resource_group_name>`。 该名称必须唯一，因为它将用作 DNS 名称。
 
 ```azurecli-interactive
 az appconfig create \
   --name <appconfig_name> \
   --location westus \
-  --resource-group <resource_group_name>
+  --resource-group <resource_group_name> \
+  --sku free
 ```
 
 ## <a name="create-a-message-endpoint"></a>创建消息终结点
@@ -78,7 +75,7 @@ az group deployment create \
 
 [!INCLUDE [event-grid-register-provider-cli.md](../../includes/event-grid-register-provider-cli.md)]
 
-## <a name="subscribe-to-your-app-configuration"></a>订阅应用程序配置
+## <a name="subscribe-to-your-app-configuration-store"></a>订阅你的应用配置存储
 
 订阅主题，以告知事件网格要跟踪哪些事件以及要将这些事件发送到哪个位置。 以下示例订阅所创建的应用程序配置，并将 Web 应用中的 URL 作为事件通知的终结点传递。 将 `<event_subscription_name>` 替换为事件订阅的名称。 对于 `<resource_group_name>` 和 `<appconfig_name>`，请使用此前创建的值。
 
@@ -122,7 +119,6 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
   "dataVersion": "1",
   "metadataVersion": "1"
 }]
-
 ```
 
 ## <a name="clean-up-resources"></a>清理资源

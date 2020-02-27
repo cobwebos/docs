@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 179d0ff8143b526e100b89cffbbac0bbc29ca3e1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776659"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616752"
 ---
-# <a name="upgrade-azure-public-load-balancer-from-basic-sku-to-standard-sku"></a>将 Azure 公共负载均衡器从基本 SKU 升级到标准 SKU
+# <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 若要了解有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
 升级分为两个阶段：
@@ -28,8 +28,8 @@ ms.locfileid: "76776659"
 
 可执行以下操作的 Azure PowerShell 脚本：
 
-* 在资源组中创建标准公共 SKU 负载均衡器并指定位置。
-* 将基本 SKU 公共负载均衡器的配置无缝复制到新创建的标准公共负载均衡器。
+* 在指定的资源组和位置中创建标准 SKU 负载均衡器。
+* 将基本 SKU 负载均衡器的配置无缝复制到新创建的标准负载均衡器。
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
@@ -70,17 +70,8 @@ ms.locfileid: "76776659"
 
 1. 使用 `Import-Module Az` 导入 Az 模块。
 
-1. 运行 `Get-Help AzureLBUpgrade.ps1` 以检查所需的参数：
+1. 检查所需的参数：
 
-   ```
-   AzurePublicLBUpgrade.ps1
-    -oldRgName <name of the Resource Group where Basic Load Balancer exists>
-    -oldLBName <name of existing Basic Load Balancer>
-    -newrgName <Name of the Resource Group where the new Standard Load Balancer will be created>
-    -newlocation <Name of the location where the new Standard Load Balancer will be created>
-    -newLBName <Name of the Standard Load Balancer to be created>
-   ```
-   脚本的参数：
    * **oldRgName： [String]： Required** –这是要升级的现有基本负载均衡器的资源组。 若要查找此字符串值，请导航到 Azure 门户，选择你的基本负载均衡器源，并单击负载均衡器的**概述**。 资源组位于该页面上。
    * **oldLBName： [String]： Required** –这是要升级的现有基本均衡器的名称。 
    * **newrgName： [String]： Required** –这是将在其中创建标准负载均衡器的资源组。 它可以是新的资源组或现有的资源组。 如果选择现有的资源组，请注意，负载均衡器的名称在资源组中必须是唯一的。 
@@ -122,11 +113,11 @@ ms.locfileid: "76776659"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 脚本是否存在将配置从 v1 迁移到 v2 的任何限制？
 
-可以。 请参阅[注意事项/限制](#caveatslimitations)。
+是的。 请参阅[注意事项/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 脚本还会将我的基本负载均衡器中的流量切换到新创建的标准负载均衡器？
 
-不。 Azure PowerShell 脚本仅迁移配置。 实际的流量迁移是您在控制中的责任。
+不是。 Azure PowerShell 脚本仅迁移配置。 实际的流量迁移是您在控制中的责任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>使用此脚本时，我遇到了一些问题。 如何获取帮助？
   

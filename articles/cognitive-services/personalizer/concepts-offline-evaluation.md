@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 02/20/2020
 ms.author: diberry
-ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8ceef5e80bf15f0ba52a9c289e617018febfb5c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513603"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623585"
 ---
 # <a name="offline-evaluation"></a>脱机评估
 
@@ -49,6 +49,16 @@ ms.locfileid: "76513603"
 个性化体验创建服务可以使用脱机评估过程来自动发现更佳的学习策略。
 
 执行脱机评估后，可以看到个性化体验创建服务使用新策略与使用当前联机策略时的比较有效性。 然后，你可以应用该学习策略，使其立即在 Personalizer 中生效，方法是在模型和策略面板中下载它并将其上传。 你还可以下载它以供将来分析或使用。
+
+评估中包含的当前策略：
+
+| 学习设置 | 目的|
+|--|--|
+|**联机策略**| 个性化体验创建服务中当前使用的学习策略 |
+|**线**|应用程序的默认值（由排名调用中发送的第一个操作确定）|
+|**随机策略**|一个假想的排名行为，始终从提供的操作中返回随机操作选项。|
+|**自定义策略**|启动评估时上传的附加学习策略。|
+|**优化策略**|如果使用发现优化策略的选项启动了评估，则也会比较该策略，你可以下载该策略，或将其设为联机学习策略，以替换当前策略。|
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>了解脱机评估结果的相关性
 
@@ -92,7 +102,7 @@ ms.locfileid: "76513603"
 
 * 应用程序或系统可以连同更有效的特征线一起提供其他哪些附加特征？
 * 可以删除哪些低效的特征？ 低效特征会增大机器学习中的干扰。
-* 是否意外包含了任何特征？ 示例包括：个人身份信息 (PII)、重复的 ID，等等。
+* 是否意外包含了任何特征？ 这些示例包括：用户身份信息、重复 Id 等。
 * 出于法规或负责使用方面的考量，是否不应使用任何不需要的特征进行个性化？ 是否有特征可以代理（即，紧密镜像或关联）不需要的特征？
 
 

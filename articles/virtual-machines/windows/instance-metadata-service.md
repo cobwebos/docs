@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ab4569860d24a397816aa2e6c92f2e90f9a14ed1
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526529"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615937"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -134,6 +134,7 @@ HTTP 状态代码 | 原因
 400 错误请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少格式
 404 未找到 | 请求的元素不存在
 不允许使用 405 方法 | 仅支持 `GET` 请求
+410 不存在 | 在一段时间后重试，最大为70秒
 429 请求过多 | 目前该 API 每秒最多支持 5 个查询
 500 服务错误     | 请稍后重试
 
@@ -457,7 +458,7 @@ identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../ac
 instance | 请参阅[实例 API](#instance-api) | 2017-04-02
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>实例 API
+### <a name="instance-api"></a>实例 API
 
 可以通过实例 API 使用以下计算类别：
 
@@ -570,7 +571,6 @@ Nonce 是一个可选的10位字符串。 如果未提供，IMDS 将在其位置
 
 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、sku、nonce、subscriptionId、用于创建和过期文档的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 
-
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
 ### <a name="tracking-vm-running-on-azure"></a>跟踪 Azure 上正在运行的 VM
@@ -589,7 +589,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 5c08b38e-4d57-4c23-ac45-aca61037f084
 ```
 
-### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>基于容错/更新域放置容器、数据分区 
+### <a name="placement-of-containers-data-partitions-based-faultupdate-domain"></a>基于容错/更新域放置容器、数据分区
 
 对于某些方案，不同的数据副本的位置至关重要。 例如，对于 [HDFS 副本放置](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html#Replica_Placement:_The_First_Baby_Steps)或通过 [orchestrator](https://kubernetes.io/docs/user-guide/node-selection/) 实现容器放置时，需要知道正在运行 VM 的 `platformFaultDomain` 和 `platformUpdateDomain`。
 你还可以使用实例的[可用性区域](../../availability-zones/az-overview.md)来做出这些决策。
@@ -609,7 +609,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 ### <a name="getting-more-information-about-the-vm-during-support-case"></a>在支持案例期间获取有关 VM 的详细信息
 
-作为服务提供商，你可能会接到支持电话，会告知想要了解的有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以便支持专业人员了解有关 Azure 上的 VM 类型。 
+作为服务提供商，你可能会接到支持电话，会告知想要了解的有关 VM 的详细信息。 请求客户共享计算元数据可以提供基本信息，以便支持专业人员了解有关 Azure 上的 VM 类型。
 
 **请求**
 
@@ -839,10 +839,12 @@ sku | `2019-11-01` 中引入的 VM 映像的特定 SKU
 
  云 | 证书
 ---------|-----------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+用于签名的证书有一个已知问题。 对于公有云，证书可能不完全匹配 `metadata.azure.com`。 因此，证书验证应允许任何 `.metadata.azure.com` 子域中的公用名称。
 
 ```bash
 

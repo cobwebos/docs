@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2a5a66f2801804b354dd8945ea7d8eb565e82cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2ba69e6447c686230412c33e74196c4bb594e0de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702209"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611825"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>用于调用 web Api 的桌面应用：代码配置
 
@@ -29,7 +29,7 @@ ms.locfileid: "76702209"
 
 以下 Microsoft 身份验证库（MSALs）支持桌面应用程序。
 
-  Microsoft 身份验证库 | Description
+  Microsoft 身份验证库 | 说明
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支持在多个平台（如 Linux、Windows 和 macOS）中构建桌面应用程序。
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支持在多个平台中构建桌面应用程序。
@@ -40,7 +40,7 @@ ms.locfileid: "76702209"
 
 从代码角度来看，桌面应用程序是公用客户端应用程序。 根据是否使用交互式身份验证，配置将有所不同。
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 需要生成并操作 MSAL.NET `IPublicClientApplication`。
 
@@ -106,7 +106,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>了解更多
+### <a name="learn-more"></a>了解详细信息
 
 若要详细了解如何配置 MSAL.NET 桌面应用程序：
 
@@ -185,17 +185,17 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 在调用 `.Build()` 方法之前，可以通过调用 `.WithXXX` 方法来重写配置，如前文所述。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下面是 MSAL Java 开发示例中用于配置示例的类： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_COMMON)
+PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+        .authority(AUTHORITY)
         .build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -208,7 +208,7 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 下面的代码实例化公用客户端应用程序，并使用工作或学校帐户或个人 Microsoft 帐户 Microsoft Azure 公有云中的用户登录。
 

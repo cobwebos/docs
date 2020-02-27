@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034609"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605516"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教程：使用 Azure 安全中心监视 Linux 虚拟机
 
@@ -123,7 +123,7 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 ![RDP 攻击](./media/tutorial-azure-security/rdp-attack.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何：
+在本教程中，用户设置了安全中心，并查看了安全中心内的 VM。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置数据收集
@@ -134,5 +134,5 @@ Azure 安全中心可以帮助你深入了解 Azure 资源安全做法。 安全
 请继续学习下一教程，详细了解如何使用 Jenkins、GitHub 和 Docker 创建 CI/CD 管道。
 
 > [!div class="nextstepaction"]
-> [使用 Jenkins、GitHub 和 Docker 创建 CI/CD 基础结构](tutorial-jenkins-github-docker-cicd.md)
+> [使用 Jenkins、GitHub 和 Docker 创建 CI/CD 基础结构](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

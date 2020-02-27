@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教程 - 更新应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何使用新版应用程序代码将现有应用程序部署更新到 AKS。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b645fc9f67229d087a5d1655f733e2f3e50d4471
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d5457d790cd3c95bb23ec0c517097b443a2389ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614380"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593370"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中更新应用程序。
 
@@ -29,7 +26,7 @@ ms.locfileid: "67614380"
 
 ## <a name="before-you-begin"></a>开始之前
 
-上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，将应用程序部署到了 AKS 群集。
+上一教程中，应用程序已打包到容器映像中。 该映像已上传到 Azure容器注册表，同时，你创建了 AKS 群集。 然后，应用程序部署到了 AKS 群集。
 
 此外，还克隆了应用程序存储库，其中包括应用程序源代码和本教程中使用的预创建的 Docker Compose 文件。 验证是否已克隆存储库，并且是否已将目录更改为克隆的目录。 如果尚未完成这些步骤，并且想要逐一完成，请先阅读[教程 1 - 创建容器映像][aks-tutorial-prepare-app]。
 
@@ -53,7 +50,7 @@ VOTE2VALUE = 'Purple'
 SHOWHOST = 'false'
 ```
 
-保存并关闭该文件。 在 `vi` 中使用 `:wq`。
+保存并关闭该文件。 在 `vi` 中，使用 `:wq`。
 
 ## <a name="update-the-container-image"></a>更新容器映像
 
@@ -152,7 +149,7 @@ kubectl get service azure-vote-front
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何：
+在本教程中，你更新了一个应用程序并向 AKS 群集推出了此更新。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新前端应用程序代码

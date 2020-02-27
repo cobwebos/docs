@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c83caf31e25ae2212ed120e77e017ac3849898e8
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512658"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612915"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>已知问题： Azure Active Directory 域服务中的常见警报和解决方法
 
@@ -30,7 +30,7 @@ ms.locfileid: "76512658"
 
 *与托管域关联的 Azure AD 目录可能已被删除。托管域不再处于受支持的配置中。Microsoft 无法监视、管理、修补和同步托管域。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 此错误通常是在将 Azure 订阅移动到新的 Azure AD 目录，并且删除了与 Azure AD DS 关联的旧 Azure AD 目录时产生的。
 
@@ -42,7 +42,7 @@ ms.locfileid: "76512658"
 
 无法在 Azure AD B2C 目录中启用 Azure AD 域服务。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 Azure AD DS 会自动与 Azure AD 目录同步。 如果 Azure AD 目录配置为 B2C，则无法部署和同步 Azure AD DS。
 
@@ -60,7 +60,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 *已启用 Azure AD 域服务的虚拟网络的 IP 地址范围位于公共 IP 范围内。必须在具有专用 IP 地址范围的虚拟网络中启用 Azure AD 域服务。此配置影响 Microsoft 监视、管理、修补和同步托管域的能力。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 在开始之前，请确保了解[专用 IP v4 地址空间](https://en.wikipedia.org/wiki/Private_network#Private_IPv4_address_spaces)。
 
@@ -88,7 +88,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 *与托管域关联的 Azure 订阅已被删除。 Azure AD 域服务需要有效的订阅才能继续正常工作。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果删除了与 Azure AD DS 托管域关联的 Azure 订阅，则必须重新创建 Azure 订阅并 Azure AD DS 托管域。
 
@@ -102,7 +102,7 @@ Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 �
 
 *与托管域关联的 Azure 订阅未处于活动状态。 Azure AD 域服务需要有效的订阅才能继续正常工作。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的 Azure 订阅未处于活动状态，则必须续订该订阅以重新激活订阅。
 
@@ -117,7 +117,7 @@ Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的
 
 *Azure AD 域服务使用的订阅已移到另一个目录。Azure AD 域服务需要在同一目录中具有活动订阅才能正常工作。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 如果移动了与 Azure AD DS 托管域关联的 Azure 订阅，则将订阅移回上一个目录，或从现有目录中[删除托管域](delete-aadds.md)，并[在所选订阅中创建替换 Azure AD DS 托管域](tutorial-create-instance.md)。
 
@@ -127,13 +127,13 @@ Azure AD DS 要求使用有效的订阅，不能将其移动到其他订阅。 �
 
 *用于托管域的资源已被删除。此资源是 Azure AD 域服务正常运行所必需的。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、虚拟网络接口和负载均衡器。 如果删除这些资源中的任何一个，则托管域将处于不受支持的状态，并阻止对域进行管理。 有关这些资源的详细信息，请参阅[AZURE AD DS 使用的网络资源](network-considerations.md#network-resources-used-by-azure-ad-ds)。
 
 删除其中一个所需资源时，将生成此警报。 如果删除资源的时间不到4小时之前，Azure 平台可能会自动重新创建已删除的资源。 以下步骤概述了如何检查运行状况状态和资源删除的时间戳：
 
-1. 在 Azure 门户中，搜索并选择 "**域服务**"。 选择 Azure AD DS 托管域，如*aadds.contoso.com*。
+1. 在 Azure 门户中，搜索并选择 "**域服务**"。 选择 Azure AD DS 托管域，如*aaddscontoso.com*。
 1. 在左侧导航栏中，选择 "**运行状况**"。
 1. 在 "运行状况" 页上，选择 ID 为*AADDS109*的警报。
 1. 警报的时间戳是第一次找到它的时间。 如果时间戳不到4小时之前，Azure 平台可能会自动重新创建资源并自行解决警报。
@@ -146,7 +146,7 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 选择用于部署 Azure AD 域服务的子网已满，没有空间用于保留需要创建的其他域控制器。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 用于 Azure AD DS 的虚拟网络子网需要为自动创建的资源提供足够的 IP 地址。 此 IP 地址空间包括在出现维护事件时创建替换资源的需要。 若要最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如自己的 Vm）部署到与 Azure AD DS 相同的虚拟网络子网中。
 
@@ -158,7 +158,7 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 *Azure AD 域服务用来为你的域服务的服务主体无权管理 Azure 订阅上的资源。服务主体需要获取服务托管域的权限。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 某些自动生成的服务主体用于管理和创建 Azure AD DS 托管域的资源。 如果更改了其中一个服务主体的访问权限，则域无法正确管理资源。 以下步骤说明如何了解并向服务主体授予访问权限：
 
@@ -171,7 +171,7 @@ Azure AD DS 会创建更多的资源以正常运行，例如公共 IP 地址、�
 
 *我们确定此域中虚拟网络的子网可能没有足够的 IP 地址。Azure AD 域服务在启用它的子网中至少需要两个可用 IP 地址。建议在子网中至少具有3-5 个备用 IP 地址。如果在子网中部署了其他虚拟机，则可能会发生这种情况，从而耗尽可用 IP 地址的数目，或者如果对子网中可用 IP 地址的数量有限制。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 用于 Azure AD DS 的虚拟网络子网需要为自动创建的资源提供足够的 IP 地址。 此 IP 地址空间包括在出现维护事件时创建替换资源的需要。 若要最大程度地降低可用 IP 地址不足的风险，请不要将其他资源（如自己的 Vm）部署到与 Azure AD DS 相同的虚拟网络子网中。
 
@@ -194,7 +194,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 检测到 Azure AD 域服务使用的资源处于意外状态，且无法恢复。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，然后重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
@@ -204,7 +204,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 为 Azure AD 域服务部署选择的子网无效，且不可用。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 此错误无法恢复。 若要解决此警报，请[删除现有 AZURE AD DS 托管域](delete-aadds.md)，然后重新创建它。 如果在删除 Azure AD DS 托管域时遇到问题，请[打开 Azure 支持请求][azure-support]，以获取额外的故障排除帮助。
 
@@ -214,7 +214,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 由于目标范围已锁定，托管域使用的一个或多个网络资源无法运行。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可以将资源锁应用于 Azure 资源以防止更改或删除。 由于 Azure AD DS 是一种托管服务，Azure 平台需要能够进行配置更改。 如果对某些 Azure AD DS 组件应用资源锁，Azure 平台将无法执行其管理任务。
 
@@ -229,7 +229,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 由于策略限制，托管域使用的一个或多个网络资源无法运行。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 策略适用于控制允许哪些配置操作的 Azure 资源和资源组。 由于 Azure AD DS 是一种托管服务，Azure 平台需要能够进行配置更改。 如果在某些 Azure AD DS 组件上应用了策略，则 Azure 平台可能无法执行其管理任务。
 
@@ -244,7 +244,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 *托管域上次与 [date] 上的 Azure AD 同步。用户可能无法登录到托管域或组成员身份可能与 Azure AD 不同步。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 [检查 AZURE AD DS 运行状况](check-health.md)，以了解任何指示托管域配置问题的警报。 网络配置问题可能会阻止 Azure AD 的同步。 如果你能够解决指示配置问题的警报，请等待两个小时，然后返回以查看同步是否已成功完成。
 
@@ -259,7 +259,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 *托管域上次于 [date] 进行备份。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 [查看 AZURE AD DS 运行状况](check-health.md)，以获取指出托管域配置问题的警报。 网络配置问题可能会阻止 Azure 平台成功地进行备份。 如果你能够解决指示配置问题的警报，请等待两个小时，然后返回以查看同步是否已成功完成。
 
@@ -269,7 +269,7 @@ Azure AD DS 托管域的运行状况在两小时内自动更新，并删除警�
 
 *由于与域关联的 Azure 订阅未处于活动状态，托管域已暂停。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 > [!WARNING]
 > 如果 Azure AD DS 托管域长时间挂起，则会删除该域。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。
@@ -287,7 +287,7 @@ Azure AD DS 要求使用有效的订阅。 如果 Azure AD DS 托管域关联的
 
 *由于配置无效，托管域被挂起。服务无法长时间管理、修补或更新托管域的域控制器。*
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 > [!WARNING]
 > 如果 Azure AD DS 托管域长时间挂起，则会删除该域。 尽快解决挂起的原因。 有关详细信息，请参阅[了解 AZURE AD DS 的挂起状态](suspension.md)。

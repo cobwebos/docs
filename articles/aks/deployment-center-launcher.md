@@ -2,18 +2,16 @@
 title: 适用于 Azure Kubernetes 的部署中心
 description: Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure DevOps 管道的过程
 ms.author: puagarw
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972976"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596073"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>适用于 Azure Kubernetes 的部署中心
 
@@ -27,7 +25,7 @@ Azure DevOps 中的部署中心简化了为应用程序设置可靠的 Azure Dev
 > * 检查持续交付 (CD) 管道。
 > * 清理资源。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 可以通过 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免费获取一个。
 

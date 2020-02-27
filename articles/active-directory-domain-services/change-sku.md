@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 46557d802222190c0ed82f6243dd2a9b997ecaa5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960563"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614243"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>更改现有 Azure AD 域服务托管域的 SKU
 
@@ -46,7 +46,7 @@ ms.locfileid: "76960563"
 
 若要使用 Azure 门户更改 Azure AD DS 托管域的 SKU，请完成以下步骤：
 
-1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 从列表中选择托管域，如*aadds.contoso.com*。
+1. 在 Azure 门户顶部，搜索并选择**Azure AD 域服务**"。 从列表中选择托管域，如*aaddscontoso.com*。
 1. 在 Azure AD DS "页左侧的菜单中，选择"**设置 "> SKU**"。
 
     ![在 Azure 门户中选择 Azure AD DS 托管域的 SKU 菜单选项](media/change-sku/overview-change-sku.png)

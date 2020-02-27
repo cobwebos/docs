@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 9dc7e6341f77fc17ae26f34ea029b3eb5414dcbc
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705313"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614074"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>在 Azure AD 域服务中创建组托管服务帐户（gMSA）
 
@@ -65,32 +65,32 @@ ms.locfileid: "74705313"
 > [!TIP]
 > 若要完成这些步骤以创建 gMSA，请[使用管理 VM][tutorial-create-management-vm]。 此管理 VM 应已具有所需的 AD PowerShell cmdlet 并连接到托管域。
 
-以下示例在名为*aadds.contoso.com*的 Azure AD DS 托管域中创建名为*myNewOU*的自定义 OU。 使用你自己的 OU 和托管域名：
+以下示例在名为*aaddscontoso.com*的 Azure AD DS 托管域中创建名为*myNewOU*的自定义 OU。 使用你自己的 OU 和托管域名：
 
 ```powershell
-New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
 现在使用[uninstall-adserviceaccount][New-ADServiceAccount] Cmdlet 创建 gMSA。 定义以下示例参数：
 
 * **-Name**设置为*WebFarmSvc*
 * **-Path**参数指定上一步中创建的 gMSA 的自定义 OU。
-* 为*WebFarmSvc.aadds.contoso.com*设置 DNS 条目和服务主体名称
-* *CONTOSO-SERVER $* 中的主体允许检索使用标识的密码。
+* 为*WebFarmSvc.aaddscontoso.com*设置 DNS 条目和服务主体名称
+* *AADDSCONTOSO-SERVER $* 中的主体允许检索使用标识的密码。
 
 指定您自己的名称和域名。
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
-    -DNSHostName WebFarmSvc.aadds.contoso.com `
-    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -DNSHostName WebFarmSvc.aaddscontoso.com `
+    -Path "OU=MYNEWOU,DC=aaddscontoso,DC=com" `
     -KerberosEncryptionType AES128, AES256 `
     -ManagedPasswordIntervalInDays 30 `
-    -ServicePrincipalNames http/WebFarmSvc.aadds.contoso.com/aadds.contoso.com, `
-        http/WebFarmSvc.aadds.contoso.com/contoso, `
-        http/WebFarmSvc/aadds.contoso.com, `
-        http/WebFarmSvc/contoso `
-    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+    -ServicePrincipalNames http/WebFarmSvc.aaddscontoso.com/aaddscontoso.com, `
+        http/WebFarmSvc.aaddscontoso.com/aaddscontoso, `
+        http/WebFarmSvc/aaddscontoso.com, `
+        http/WebFarmSvc/aaddscontoso `
+    -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
 现在，可以根据需要将应用程序和服务配置为使用 gMSA。

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
-ms.openlocfilehash: 06fa98ae4acc2252d8866858ed0e2194ed84ff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60928272"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623334"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>停用 S1、S2 和 S3 性能级别
 
@@ -26,7 +26,7 @@ ms.locfileid: "60928272"
 - [我需要做些什么才能确保不间断地访问我的数据？](#uninterrupted-access)
 - [迁移后我的集合会发生怎样的变化？](#collection-change)
 - [迁移到单分区集合后，帐单会发生怎样的变化？](#billing-change)
-- [如果需要 10 GB 以上的存储该怎么办？](#more-storage-needed)
+- [如果需要超过 20 GB 的存储，应该怎么办？](#more-storage-needed)
 - [在计划的迁移期限之前，是否可以在 S1、S2 和 S3 性能级别之间切换？](#change-before)
 - [如何自行从 S1、S2、S3 性能级别迁移到单分区集合？](#migrate-diy)
 - [如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
@@ -39,16 +39,16 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 服务可提供的
 
 <a name="compare"></a>
 
-## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>单区集合和分区集合与 S1、S2、S3 性能级别有哪些区别？
+## <a name="how-do-single-partition-collections-and-partitioned-collections-compare-to-the-s1-s2-s3-performance-levels"></a>单分区集合和分区集合与 S1、S2、S3 性能级别相比存在哪些差别？
 
 下表对单分区集合和分区集合与 S1、S2、S3 性能级别提供的吞吐量及存储选项做了比较。 下面是美国东部 2 区域的一个示例：
 
 |   |分区集合|单分区集合|S1|S2|S3|
 |---|---|---|---|---|---|
-|最大吞吐量|不受限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
-|最小吞吐量|2.5 K RU/秒|400 RU/秒|250 RU/s|1 K RU/秒|2.5 K RU/秒|
-|最大存储|不受限制|10 GB|10 GB|10 GB|10 GB|
-|价格（每月）|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/s<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
+|最大吞吐量|无限制|10K RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|最小吞吐量|2.5 K RU/秒|400 RU/秒|250 RU/秒|1 K RU/秒|2.5 K RU/秒|
+|最大存储|无限制|20 GB|20 GB|20 GB|20 GB|
+|价格（每月）|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|吞吐量：6 美元/100 RU/秒<br><br>存储：0.25 美元/GB|25 美元|50 美元|100 美元|
 
 是 EA 客户？ 如果是，请参阅[如果我是 EA 客户，我会受到怎样的影响？](#ea-customer)
 
@@ -80,9 +80,9 @@ S1、S2 和 S3 性能级别无法提供标准 Azure Cosmos DB 服务可提供的
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>如果需要 10 GB 以上的存储该怎么办？
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果需要超过 20 GB 的存储，应该怎么办？
 
-无论使用的是 S1、S2 或 S3 性能级别的集合还是单分区集合，它们的可用存储都是 10 GB。可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到分区集合，它们的存储空间几乎无限。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](sql-api-partition-data.md)。 
+无论你具有 S1、S2 或 S3 性能级别的集合，还是具有单个分区集合（所有这些集合都具有 20 GB 的存储空间），都可以使用 Azure Cosmos DB 数据迁移工具将数据迁移到已分区集合无限制存储。 有关分区集合优势的信息，请参阅 [Azure Cosmos DB 中的分区和缩放](sql-api-partition-data.md)。 
 
 <a name="change-before"></a>
 

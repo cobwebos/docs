@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9d983015927d2635f69a327a9c5b168056542519
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509047"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613867"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>配置 Azure Active Directory 域服务以支持 SharePoint Server 的用户配置文件同步
 
@@ -62,7 +62,7 @@ SharePoint 服务器的服务帐户需要足够的权限来复制对目录所做
 
 1. 从 "开始" 屏幕中，选择 "**管理工具**"。 其中显示了在[创建管理 VM][tutorial-create-management-vm]教程中安装的可用管理工具列表。
 1. 若要管理组成员身份，请从管理工具列表中选择 " **Active Directory 管理中心**"。
-1. 在左窗格中，选择 Azure AD DS 托管域，如*aadds.contoso.com*。 将显示现有 Ou 和资源的列表。
+1. 在左窗格中，选择 Azure AD DS 托管域，如*aaddscontoso.com*。 将显示现有 Ou 和资源的列表。
 1. 选择 "**用户**" OU，然后选择 " *AAD DC 服务帐户*" 安全组。
 1. 选择 "**成员**"，然后选择 "**添加 ...** "。
 1. 输入 SharePoint 服务帐户的名称，然后选择 **"确定"** 。 在下面的示例中，SharePoint 服务帐户的名称为*spadmin*：

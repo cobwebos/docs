@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/20/2020
+ms.openlocfilehash: d711cc7e58fb055eda62cfc364a5552a7d10f7bd
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186880"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623155"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -82,20 +82,18 @@ Data Lake Storage Gen2 作为存储选项，几乎所有 Azure HDInsight 群集�
     ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. 选择“保存”。 所选的用户分配的标识现在列在所选角色下。
-1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”部分，选择以下选项：
+1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在 "群集创建" 菜单的 "**存储**" 选项卡中，选择以下选项：
 
     * 对于 "**主存储类型**"，请选择**Azure Data Lake Storage Gen2**。
-    * 在 "**选择存储帐户**" 下，搜索并选择新创建的 Data Lake Storage Gen2 存储帐户。
+    * 在 "**主存储帐户**" 下，搜索并选择新创建的 Data Lake Storage Gen2 存储帐户。
 
-        ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
+    * 在 "**标识**" 下，选择新创建的用户分配的托管标识。
 
-    * 在 "**标识**" 下，选择正确的订阅和新创建的用户分配的托管标识。
+        ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的存储设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/azure-portal-cluster-storage-gentwo.png)
 
-        ![将 Data Lake Storage Gen2 与 HDInsight 配合使用的标识设置](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-
-> [!NOTE]
-> * 若要在存储帐户级别添加辅助 Data Lake Storage Gen2 帐户，只需将之前创建的托管标识分配到要添加的新 Data Lake Storage Gen2 存储帐户。 请注意，不支持通过 HDInsight 上的 "其他存储帐户" 边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
-> * 可以在 HDInsight 使用的 Azure 存储帐户上启用 GRS 或 ZRS。 但是，不支持对 GRS 或 ZRS 辅助终结点创建群集。
+    > [!NOTE]
+    > * 若要在存储帐户级别添加辅助 Data Lake Storage Gen2 帐户，只需将之前创建的托管标识分配到要添加的新 Data Lake Storage Gen2 存储帐户。 请注意，不支持通过 HDInsight 上的 "其他存储帐户" 边栏选项卡添加辅助 Data Lake Storage Gen2 帐户。
+    > * 可以在 HDInsight 使用的 Azure 存储帐户上启用 GRS 或 ZRS。 但是，不支持对 GRS 或 ZRS 辅助终结点创建群集。
 
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>通过 Azure CLI Data Lake Storage Gen2 创建群集
@@ -108,7 +106,7 @@ Data Lake Storage Gen2 作为存储选项，几乎所有 Azure HDInsight 群集�
 | `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
 | `<MANAGEDIDENTITYNAME>` | 将获得 Azure Data Lake Storage Gen2 帐户的权限的托管标识的名称。 |
 | `<STORAGEACCOUNTNAME>` | 要创建的新 Azure Data Lake Storage Gen2 帐户。 |
-| `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
+| `<CLUSTERNAME>` | HDInsight 群集的名称。 |
 | `<PASSWORD>` | 使用 SSH 和 Ambari 仪表板登录到群集所用的密码。 |
 
 下面的代码片段执行以下初始步骤：
@@ -159,7 +157,7 @@ az group deployment create --name HDInsightADLSGen2Deployment \
 
 Data Lake Storage Gen2 使用支持基于角色的访问控制（RBAC）和类似 POSIX 的访问控制列表（Acl）的访问控制模型。 Data Lake Storage Gen1 仅支持访问控制列表，以便控制对数据的访问。
 
-RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用户、组和服务主体。 通常，这些 Azure 资源会被限制为顶级资源（例如，Azure 存储帐户）。 对于 Azure 存储，以及 Data Lake Storage Gen2，此机制已扩展到文件系统资源。
+RBAC 使用角色分配将权限集有效地应用于 Azure 资源的用户、组和服务主体。 通常情况下，这些 Azure 资源限制为顶级资源（例如，Azure 存储帐户）。 对于 Azure 存储，以及 Data Lake Storage Gen2，此机制已扩展到文件系统资源。
 
  有关使用 RBAC 的文件权限的详细信息，请参阅[Azure 基于角色的访问控制（RBAC）](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
 
@@ -205,7 +203,7 @@ Azure 服务具有两种类型的托管标识：系统分配和用户分配。 H
 
 #### <a name="a-few-hdfs-commands"></a>几个 hdfs 命令
 
-1. 在本地存储中创建一个简单文件。
+1. 在本地存储中创建文件。
 
     ```bash
     touch testFile.txt

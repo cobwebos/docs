@@ -2,13 +2,13 @@
 title: ACR 任务概述
 description: ACR 任务简介，Azure 容器注册表中的一套功能，可在云中提供安全、自动化的容器映像生成、管理和修补。
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938882"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615959"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>利用 ACR 任务自动生成和维护容器映像
 
@@ -56,7 +56,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 将 Git 存储库设置为任务的上下文时，ACR 任务支持以下触发器：
 
-| 触发器 | 默认情况下启用 |
+| 触发器 | 默认为启用 |
 | ------- | ------------------ |
 | Commit | 是 |
 | 拉取请求 | 否 |
@@ -70,26 +70,12 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 ## <a name="automate-os-and-framework-patching"></a>自动执行 OS 和框架修补
 
-真正增强容器生成工作流的 ACR 任务的强大之处在于，它能够检测基础映像的更新。 在将更新的基本映像推送到注册表时，或在公共存储库（如 Docker Hub）中更新基本映像时，ACR 任务可以根据它自动生成任何应用程序映像。
+用于真正增强容器生成工作流的 ACR 任务的强大功能来自其检测*基本映像*更新的能力。 基本映像是大多数容器映像的一项功能，它是一个或多个应用程序映像所基于的父映像。 基本映像通常包含操作系统和应用程序框架。 
 
-在广义上，可将容器映像分类为基本映像和应用程序映像。 基本映像通常包括应用程序所基于的操作系统和应用程序框架，以及其他自定义项。 这些基本映像通常基于公共上游映像，例如： [Alpine Linux][base-alpine]、 [Windows][base-windows]、 [.net][base-dotnet]或[node.js][base-node]。 多个应用程序映像可以共享一个通用基本映像。
+在生成应用程序映像时，可以设置一个 ACR 任务来跟踪基本映像上的依赖关系。 在将更新的基本映像推送到注册表时，或在公共存储库（如 Docker Hub）中更新基本映像时，ACR 任务可以根据它自动生成任何应用程序映像。
+通过这种自动检测和重新生成，ACR 任务能够节省在正常情况下手动跟踪和更新引用已更新基础映像的每个应用程序映像所需的时间和精力。
 
-当上游维护者更新 OS 或应用程序框架映像时（例如，使用关键 OS 安全修补），也必须更新基本映像以包含关键修复。 然后，还必须重新生成每个应用程序映像，以包含目前已包含在基础映像中的这些上游修复。
-
-由于 ACR 任务在生成容器映像时会动态发现基础映像依赖项，因此，ACR 任务可以检测到应用程序映像的基础映像何时发生了更新。 预配置一个[生成任务](container-registry-tutorial-base-image-update.md#create-a-task)后，ACR 任务会**自动重新生成每个应用程序映像**。 通过这种自动检测和重新生成，ACR 任务能够节省在正常情况下手动跟踪和更新引用已更新基础映像的每个应用程序映像所需的时间和精力。
-
-对于从 Dockerfile 生成的映像，ACR 任务会在基本映像位于以下位置之一时跟踪基本映像更新：
-
-* 运行任务所在的同一 Azure 容器注册表
-* 同一区域中的另一个 Azure 容器注册表 
-* Docker Hub 中的公共存储库
-* Microsoft 容器注册表中的公共存储库
-
-> [!NOTE]
-> * 默认情况下，在 ACR 任务中启用基本映像更新触发器。 
-> * 目前，ACR 任务只跟踪应用程序（*运行时*）映像的基本图像更新。 ACR 任务不跟踪多阶段 Dockerfile 中使用的中间（*buildtime*）映像的基本映像更新。 
-
-在第三个 ACR 任务教程中了解有关 OS 和 framework 修补的详细信息，请参阅[通过 Azure 容器注册表任务对基础映像更新进行自动构建映像](container-registry-tutorial-base-image-update.md)。
+了解有关 ACR 任务的[基础映像更新触发器](container-registry-tasks-base-images.md)的详细信息。 了解如何在[Azure 容器注册表中更新基本映像时](container-registry-tutorial-base-image-update.md)，将基本映像推送到教程中的容器注册表时触发映像生成
 
 ## <a name="schedule-a-task"></a>计划任务
 
@@ -116,7 +102,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 下表显示了 ACR 任务支持的上下文位置的几个示例：
 
-| 上下文位置 | Description | 示例 |
+| 上下文位置 | 说明 | 示例 |
 | ---------------- | ----------- | ------- |
 | 本地文件系统 | 本地文件系统上某个目录中的文件。 | `/home/user/projects/myapp` |
 | GitHub 主分支 | 公共或专用 GitHub 存储库的主分支（或其他默认分支）中的文件。  | `https://github.com/gituser/myapp-repo.git` |

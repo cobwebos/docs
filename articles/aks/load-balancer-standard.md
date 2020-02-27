@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3fe4de2b8b85e603bc200b27fa15c67f6cc05dd4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595091"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622184"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 
@@ -39,7 +39,7 @@ Azure 负载均衡器以两种 SKU 提供：“基本”和“标准”。 默�
 
 例如，如果在群集创建时只能定义群集的 `load-balancer-sku` 类型，则可以将蓝色/绿色部署迁移到群集。 但是，*基本*Sku 负载均衡器使用的*基本 sku* IP 地址与*标准 sku*负载平衡器不兼容，因为它们需要*标准 sku* ip 地址。 当迁移群集来升级负载平衡器 Sku 时，将需要一个具有兼容 IP 地址 SKU 的新 IP 地址。
 
-有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](acs-aks-migration.md)，以查看迁移时要考虑的重要主题的列表。 在 AKS 中使用标准 SKU 负载平衡器时，以下限制也是要注意的重要行为差异。
+有关如何迁移群集的更多注意事项，请访问[有关迁移注意事项的文档](aks-migration.md)，以查看迁移时要考虑的重要主题的列表。 在 AKS 中使用标准 SKU 负载平衡器时，以下限制也是要注意的重要行为差异。
 
 ### <a name="limitations"></a>限制
 

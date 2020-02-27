@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580662"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623680"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,13 +84,12 @@ Databricks&nbsp;文件&nbsp;系统| 无身份验证 | | ✓ * * | ✓ * * |✓ *
 
 所有寄存器方法都在[`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)类上，并将窗体 `register_azure_*`。
 
-您可以使用[Azure 门户](https://portal.azure.com)查找填充 `register()` 方法所需的信息：
+您可以找到在[Azure 门户](https://portal.azure.com)上填充 `register()` 方法所需的信息。
+选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 "**概述**" 页提供了帐户名称、容器和文件共享名称等信息。 
 
-1. 选择左窗格中的 "**存储帐户**"，并选择要注册的存储帐户。 
-2. 有关帐户名称、容器和文件共享名称等信息，请参阅**概述**页。 
-3. 对于身份验证信息，如帐户密钥或 SAS 令牌，请在 "**设置**" 窗格中转到 "**访问密钥**"。 
+* 对于身份验证项（如帐户密钥或 SAS 令牌），请在 "**设置**" 窗格中转到 "**帐户密钥**"。 
 
-4. 对于服务主体项（如 "租户 ID" 和 "客户端 ID"），请跳到**应用注册**的 "**概述**" 页。 
+* 对于服务主体项（如 "租户 ID" 和 "客户端 ID"），请使用**应用注册**，并选择要使用的应用。 其对应的 "**概述**" 页将包含这些项。
 
 > [!IMPORTANT]
 > 如果你的存储帐户位于虚拟网络中，则仅支持**通过 SDK**创建 Blob、文件共享、ADLS 第1代和 ADLS gen 2 数据存储。 若要向你的工作区授予对你的存储帐户的访问权限，请将参数 `grant_workspace_access` 设置为 `True`。
@@ -137,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage 第2代
 
-对于 Azure Data Lake Storage 第2代（ADLS 第2代）数据存储，请使用[register_azure_data_lake_gen2 （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-)来注册使用[服务主体权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)连接到 Azure DataLake Gen 2 存储的凭据数据存储。 若要利用你的服务主体，你需要[注册你的应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 详细了解[ADLS 第2代的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+对于 Azure Data Lake Storage 第2代（ADLS 第2代）数据存储，请使用[register_azure_data_lake_gen2 （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-)来注册使用[服务主体权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)连接到 Azure DataLake Gen 2 存储的凭据数据存储。 若要利用你的服务主体，你需要[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)并将角色分配设置为读取器和数据访问。 详细了解[ADLS 第2代的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 以下代码创建 `adlsgen2_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储通过使用所提供的服务主体凭据来访问 `account_name` 存储帐户的文件系统 `test`。
 
@@ -177,7 +176,7 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 * 对于身份验证项（如帐户密钥或 SAS 令牌），请在 "**设置**" 窗格中转到 "**帐户密钥**"。 
 
-* 对于服务主体项（如 "租户 ID" 和 "客户端 ID"），请跳到**应用注册**的 "**概述**" 页。 
+* 对于服务主体项（如 "租户 ID" 和 "客户端 ID"），请使用**应用注册**，并选择要使用的应用。 其对应的 "**概述**" 页将包含这些项。 
 
 下面的示例演示创建 Azure blob 数据存储时窗体的外观： 
     

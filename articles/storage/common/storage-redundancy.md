@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471340"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614278"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -61,12 +61,12 @@ LRS 是成本最低的冗余选项，并且与其他选项相比，其持久性�
 
 |    存储帐户类型    |    支持的区域    |    支持的服务    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    常规用途 v2<sup>1</sup>    | 亚洲东南部<br /> 欧洲北部<br />  西欧<br /> 法国中部<br /> 日本东部<br /> 英国南部<br /> 美国中部<br /> 美国东部<br /> 美国东部 2<br /> 美国西部 2    |    块 Blob<br /> 页 blob<sup>2</sup><br /> 文件共享（标准）<br /> 表<br /> 队列<br /> |
+|    常规用途 v2<sup>1</sup>    | 亚洲东南部<br /> 北欧<br />  西欧<br /> 法国中部<br /> 日本东部<br /> 英国南部<br /> 美国中部<br /> 美国东部<br /> 美国东部 2<br /> 美国西部 2    |    块 Blob<br /> 页 blob<sup>2</sup><br /> 文件共享（标准）<br /> 表<br /> 队列<br /> |
 |    BlockBlobStorage<sup>1</sup>    | 西欧<br /> 美国东部    |    仅块 Blob    |
 |    FileStorage    | 西欧<br /> 美国东部    |    仅限 Azure 文件    |
 
 <sup>1</sup> ZRS 帐户当前不支持存档层。<br />
-<sup>2</sup>虚拟机的 Azure 磁盘（包括托管磁盘和非托管磁盘）仅支持 LRS。 它们不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅[Azure 托管磁盘的定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
+<sup>2</sup>包含用于虚拟机的 Azure 托管磁盘的存储帐户始终使用 LRS。 Azure 非托管磁盘还应使用 LRS。 可以为使用 GRS 的 Azure 非托管磁盘创建存储帐户，但不建议这样做，因为异步异地复制的一致性可能会出现问题。 托管磁盘和非托管磁盘都不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅[Azure 托管磁盘的定价](https://azure.microsoft.com/pricing/details/managed-disks/)。
 
 有关哪些区域支持 ZRS 的信息，请参阅["Azure 可用性区域的内容"](../../availability-zones/az-overview.md)中**的 "按区域提供的服务支持**"。
 
@@ -74,7 +74,7 @@ LRS 是成本最低的冗余选项，并且与其他选项相比，其持久性�
 
 对于需要高可用性的应用程序，你可以选择另外将存储帐户中的数据复制到距离主要区域数百英里以外的次要区域。 如果你的存储帐户已复制到次要区域，则即使在发生整个区域中断或发生主要区域无法恢复的灾难时，数据也是持久的。
 
-创建存储帐户时，可以为帐户选择主区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的详细信息，请参阅[azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
+创建存储帐户时，可以为帐户选择主要区域。 配对的次要区域是根据主要区域确定的且无法更改。 有关 Azure 支持的区域的详细信息，请参阅[azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
 
 Azure 存储提供两个选项，将数据复制到次要区域：
 
@@ -107,7 +107,7 @@ GRS 和 GZRS 之间的主要区别在于如何在主要区域中复制数据。 
 GZRS 和 RA-GZRS 目前可用于以下区域：
 
 - 亚洲东南部
-- 欧洲北部
+- 北欧
 - 西欧
 - 英国南部
 - 美国东部
@@ -146,9 +146,9 @@ Microsoft 继续在其他 Azure 区域启用 GZRS 和 GZRS。 请定期查看[Az
 | 场景                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS （预览版）                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | 数据中心内的节点变为不可用                                                                 | 是                             | 是                              | 是                                  | 是                                  |
-| 整个数据中心（区域性或非区域性）不可用                                           | 是                              | 是                              | 是                                  | 是                                  |
-| 发生区域范围的故障                                                                                     | 是                              | 是                               | 是                                  | 是                                  |
-| 如果主要区域变得不可用，则对次要区域中的数据的读取访问权限 | 是                              | 是                               | 是（通过 GRS）                                   | 是（通过 GZRS）                                 |
+| 整个数据中心（区域性或非区域性）不可用                                           | 否                              | 是                              | 是                                  | 是                                  |
+| 发生区域范围的故障                                                                                     | 否                              | 否                               | 是                                  | 是                                  |
+| 如果主要区域变得不可用，则对次要区域中的数据的读取访问权限 | 否                              | 否                               | 是（通过 GRS）                                   | 是（通过 GZRS）                                 |
 | 给定<sup>年中</sup>对象的百分比持久性                                          | 至少为 99.999999999% (11 9's) | 至少为 99.9999999999% (12 9's) | 至少为 99.99999999999999% (16 9's) | 至少为 99.99999999999999% (16 9's) |
 | 支持的存储帐户类型<sup>2</sup>                                                                   | GPv2、GPv1、BlockBlobStorage、BlobStorage、FileStorage                | GPv2、BlockBlobStorage、FileStorage                             | GPv2、GPv1、BlobStorage                     | GPv2                     |
 | 读取请求的可用性 SLA<sup>1</sup>  | 至少为 99.9%（冷访问层为 99%） | 至少为 99.9%（冷访问层为 99%） | 对于 GRS，至少99.9% （对于冷访问层为99%）<br /><br />至少99.99% （对于 "冷" 访问层为99.9%） GRS | 对于 GZRS，至少99.9% （对于冷访问层为99%）<br /><br />至少99.99% （对于 "冷" 访问层为99.9%） GZRS |

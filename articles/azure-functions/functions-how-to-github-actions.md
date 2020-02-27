@@ -1,16 +1,16 @@
 ---
 title: 使用 GitHub 操作在 Azure Functions 中进行代码更新
 description: 了解如何在 GitHub 中使用 GitHub 操作来定义用于生成和部署 Azure Functions 项目的工作流。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: aelnably
-ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769143"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649902"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 操作进行持续交付
 
@@ -69,7 +69,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 使用特定于语言的 "发布" 设置操作来设置环境。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下面的示例演示工作流的一部分，该工作流使用 `actions/setup-node` 操作来设置环境：
 
@@ -84,7 +84,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         node-version: '10.x'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 下面的示例演示工作流的一部分，该工作流使用 `actions/setup-python` 操作来设置环境：
 
@@ -99,7 +99,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         python-version: 3.6
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 下面的示例演示工作流的一部分，该工作流使用 `actions/setup-dotnet` 操作来设置环境：
 
@@ -114,7 +114,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         dotnet-version: '2.2.300'
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 下面的示例演示工作流的一部分，该工作流使用 `actions/setup-java` 操作来设置环境：
 
@@ -138,7 +138,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
 
 下面的示例演示了生成函数应用的工作流的一部分，它是特定于语言的：
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -153,7 +153,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         popd
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -167,7 +167,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         popd
 ```
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -180,7 +180,7 @@ GitHub 现在可以在 Azure 中的函数应用上进行身份验证。
         popd
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'

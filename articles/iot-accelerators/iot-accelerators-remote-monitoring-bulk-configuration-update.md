@@ -1,19 +1,19 @@
 ---
 title: 批量管理连接到远程监视的设备 - Azure | Microsoft Docs
 description: 本教程介绍如何批量管理连接到远程监视解决方案的设备。
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980551"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565572"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教程：批量管理连接的设备
 
