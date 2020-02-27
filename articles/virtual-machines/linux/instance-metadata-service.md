@@ -11,15 +11,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525245"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615620"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -134,6 +134,7 @@ HTTP 状态代码 | 原因
 400 错误请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少格式
 404 未找到 | 请求的元素不存在
 不允许使用 405 方法 | 仅支持 `GET` 请求
+410 不存在 | 在一段时间后重试，最大为70秒
 429 请求过多 | 目前该 API 每秒最多支持 5 个查询
 500 服务错误     | 请稍后重试
 
@@ -457,7 +458,7 @@ identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../ac
 instance | 请参阅[实例 API](#instance-api) | 2017-04-02
 scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 
-#### <a name="instance-api"></a>实例 API
+### <a name="instance-api"></a>实例 API
 
 可以通过实例 API 使用以下计算类别：
 
@@ -569,7 +570,6 @@ Nonce 是一个可选的10位字符串。 如果未提供，IMDS 将在其位置
 ```
 
 签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、sku、nonce、subscriptionId、用于创建和过期文档的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
-
 
 ## <a name="example-scenarios-for-usage"></a>用法的示例方案  
 
@@ -717,9 +717,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 ```
 
 **响应**
+
 ```bash
 AzurePublicCloud
 ```
+
 下面列出了 Azure 环境和 Azure 环境的值。
 
  云   | Azure 环境
@@ -838,10 +840,12 @@ sku | `2019-11-01` 中引入的 VM 映像的特定 SKU
 
  云 | 证书
 ---------|-----------------
-[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | metadata.azure.com
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | *. metadata.azure.com
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | *. metadata.azure.us
+[Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | *. metadata.azure.cn
+[Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | *. metadata.microsoftazure.de
+
+用于签名的证书有一个已知问题。 对于公有云，证书可能不完全匹配 `metadata.azure.com`。 因此，证书验证应允许任何 `.metadata.azure.com` 子域中的公用名称。
 
 ```bash
 
@@ -871,7 +875,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 route print
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 为简单起见，启用了故障转移群集的 Windows Server VM 的以下示例输出仅包含 IPv4 路由表。
 
 ```bat

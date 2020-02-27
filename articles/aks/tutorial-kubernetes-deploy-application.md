@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教程 - 部署应用程序
 description: 在本 Azure Kubernetes 服务 (AKS) 教程中，请使用存储在 Azure 容器注册表中的自定义映像将多容器应用程序部署到群集。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 3b614fcb6692f35884af2fc4e19210267ab8ab04
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263873"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593268"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中运行应用程序
 
@@ -119,7 +116,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将示例 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 你已了解如何：
+在本教程中，已将示例 Azure 投票应用程序部署到 AKS 中的 Kubernetes 群集。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 更新 Kubernetes 清单文件

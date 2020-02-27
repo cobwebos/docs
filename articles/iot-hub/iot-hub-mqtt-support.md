@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111750"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648489"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -161,28 +161,27 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 **对于 Windows：**
 
-• TelemetryMQTTWin32：包含将遥测消息发送到 Azure IoT 中心、在 Windows 计算机上生成和运行的代码。
+* TelemetryMQTTWin32：包含将遥测消息发送到 Azure IoT 中心、在 Windows 计算机上生成和运行的代码。
 
-• SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心事件的代码。
+* SubscribeMQTTWin32：包含用于在 Windows 计算机上订阅给定 IoT 中心事件的代码。
 
-• DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备克隆事件的代码。
+* DeviceTwinMQTTWin32：包含用于在 Windows 计算机上查询和订阅 Azure IoT 中心内设备的设备克隆事件的代码。
 
-• PnPMQTTWin32：包含使用 IoT & 插件将遥测消息发送到 Azure IoT 中心的代码，在 Windows 计算机上生成并运行该功能。 有关 IoT 插件 & 的详细信息，请参阅[此处](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32：包含用 IoT 插头 & 播放预览版设备功能将遥测消息发送到 Azure IoT 中心的代码，在 Windows 计算机上生成并运行。 有关 IoT 插件 & 的详细信息，请参阅[此处](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **对于 Linux：**
 
-• MQTTLinux：包含要在 Linux 上运行的代码和生成脚本（WSL、Ubuntu 和 Raspbian 经过迄今为止的测试）。
+* MQTTLinux：包含要在 Linux 上运行的代码和生成脚本（目前已测试过 WSL、Ubuntu 和 Raspbian）。
 
-• LinuxConsoleVS2019：包含相同的代码，但在 VS2019 项目中面向 WSL （Windows Linux 子系统）。 此项目使你可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
+* LinuxConsoleVS2019：包含相同的代码，但在 VS2019 项目中面向 WSL （Windows Linux sub system）。 此项目使你可以从 Visual Studio 逐步调试在 Linux 上运行的代码。
 
 **对于 mosquitto_pub：**
 
-•此文件夹包含两个用于 Mosquitto.org 提供的 mosquitto_pub 实用工具工具的示例命令。
+此文件夹包含两个用于 Mosquitto.org 提供的 mosquitto_pub 实用工具工具的示例命令。
 
-Mosquitto_sendmessage：将简单的文本消息发送到充当设备的 Azure IoT 中心。
+* Mosquitto_sendmessage：将简单的文本消息发送到充当设备的 Azure IoT 中心。
 
-Mosquitto_subscribe：查看 Azure IoT 中心发生的事件。
-
+* Mosquitto_subscribe：查看 Azure IoT 中心发生的事件。
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>直接使用 MQTT 协议（作为模块）
 
@@ -342,7 +341,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 204 | 成功（不返回任何内容） |
+| 200 | Success |
 | 429 | 请求过多（受限），因为每个[IoT 中心限制](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 服务器错误 |
 
@@ -373,7 +372,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 |状态 | 说明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功（不返回任何内容） |
 | 400 | 错误的请求。 格式不正确的 JSON |
 | 429 | 请求过多（受限），因为每个[IoT 中心限制](iot-hub-devguide-quotas-throttling.md) |
 | 5** | 服务器错误 |

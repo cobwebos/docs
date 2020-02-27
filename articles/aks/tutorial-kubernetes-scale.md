@@ -2,18 +2,15 @@
 title: Kubernetes on Azure 教程 - 缩放应用程序
 description: 此 Azure Kubernetes 服务 (AKS) 教程介绍如何缩放 Kubernetes 中的节点和 Pod，以及如何实施水平 Pod 自动缩放。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b668d2bfecfba53c2a1b0904a8b6b77805ad965b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7db80e9bf0bd864762a88680132d77a3c5d21f19
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967421"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621095"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教程：在 Azure Kubernetes 服务 (AKS) 中缩放应用程序
 
@@ -57,7 +54,7 @@ kubectl scale --replicas=5 deployment/azure-vote-front
 再次运行 [kubectl get pods][kubectl-get]，验证 AKS 是否创建其他 Pod。 一分钟左右之后，其他 Pod 会在群集中提供：
 
 ```console
-$ kubectl get pods
+kubectl get pods
 
                                     READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
@@ -134,13 +131,13 @@ spec:
 使用 `kubectl apply` 应用 `azure-vote-hpa.yaml` 清单文件中定义的自动缩放程序。
 
 ```
-$ kubectl apply -f azure-vote-hpa.yaml
+kubectl apply -f azure-vote-hpa.yaml
 ```
 
 若要查看自动缩放程序的状态，请使用 `kubectl get hpa` 命令，如下所示：
 
 ```
-$ kubectl get hpa
+kubectl get hpa
 
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m

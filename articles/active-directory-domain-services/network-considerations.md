@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512770"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613327"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -60,7 +60,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 可以使用以下方法之一来连接其他 Azure 虚拟网络中托管的应用程序工作负荷：
 
 * 虚拟网络对等互连
-* 虚拟专用网络 (VPN)
+* 虚拟专用网络（VPN）
 
 ### <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -70,7 +70,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 有关详细信息，请参阅[Azure 虚拟网络对等互连概述](../virtual-network/virtual-network-peering-overview.md)。
 
-### <a name="virtual-private-networking-vpn"></a>虚拟专用网 (VPN)
+### <a name="virtual-private-networking-vpn"></a>虚拟专用网络（VPN）
 
 可以通过将虚拟网络配置为本地站点位置的相同方式将虚拟网络连接到另一个虚拟网络（VNet 到 VNet）。 这两个连接都使用 VPN 网关来创建使用 IPsec/IKE 的安全隧道。 此连接模型使你能够将 Azure AD DS 部署到 Azure 虚拟网络，然后连接到本地位置或其他云。
 
@@ -88,7 +88,7 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 在部署过程中，Azure AD DS 托管域会创建一些网络资源。 这些资源是成功操作和管理 Azure AD DS 托管域所必需的，不应进行手动配置。
 
-| Azure 资源                          | Description |
+| Azure 资源                          | 说明 |
 |:----------------------------------------|:---|
 | 网络接口卡                  | Azure AD DS 将托管域托管在 Windows Server 上作为 Azure Vm 运行的两个域控制器（Dc）上。 每个 VM 都有一个连接到虚拟网络子网的虚拟网络接口。 |
 | 动态标准公共 IP 地址      | Azure AD DS 使用标准 SKU 公共 IP 地址与同步和管理服务通信。 有关公共 IP 地址的详细信息，请参阅[Azure 中的 IP 地址类型和分配方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
@@ -105,12 +105,12 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则。 请勿编辑或删除 Azure AD DS 托管域部署到的虚拟网络子网的这些网络安全组规则。
 
-| 端口号 | 协议 | 源                             | 目标 | 行动 | 需要 | 用途 |
+| 端口号 | 协议 | 源                             | 目标 | 操作 | 必选 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | 允许  | 是      | 与 Azure AD 租户同步。 |
-| 3389        | TCP      | CorpNetSaw                         | Any         | 允许  | 是      | 域的管理。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | 允许  | 是      | 域的管理。 |
-| 636         | TCP      | Any                                | Any         | 允许  | 否       | 仅在配置安全 LDAP （LDAPS）时启用。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | 是      | 与 Azure AD 租户同步。 |
+| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | 是      | 域的管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | 是      | 域的管理。 |
+| 636         | TCP      | Any                                | Any         | Allow  | 否       | 仅在配置安全 LDAP （LDAPS）时启用。 |
 
 > [!WARNING]
 > 请不要手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与在其中部署 Azure AD DS 的子网相关联时，可能会中断 Microsoft 提供的服务和管理功能。 Azure AD 租户与 Azure AD DS 托管域之间的同步也会中断。
@@ -144,9 +144,9 @@ Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则�
 * 对于使用基于资源管理器的虚拟网络 Azure AD DS 托管域，你可以将此端口的入站访问限制为*AzureActiveDirectoryDomainServices*服务标记。
     * 对于使用基于经典的虚拟网络的旧式 Azure AD DS 托管域，你可以限制对此端口的入站访问以下源 IP 地址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
 
-## <a name="user-defined-routes"></a>用户定义的路由
+## <a name="user-defined-routes"></a>用户定义路由
 
-默认情况下不会创建用户定义的路由，因此 Azure AD DS 可以正常工作。 如果需要使用路由表，请避免对*0.0.0.0*路由进行任何更改。 对此路由所做的更改可能会中断 Azure AD 域服务。
+默认情况下不会创建用户定义的路由，因此 Azure AD DS 可以正常工作。 如果需要使用路由表，请避免对*0.0.0.0*路由进行任何更改。 更改此路由 Azure AD 域服务中断，并将托管域置于不受支持的状态。
 
 还必须将入站流量从各自的 Azure 服务标记中包含的 IP 地址路由到 Azure AD 域服务子网。 有关中服务标记及其关联的 IP 地址的详细信息，请参阅[AZURE IP 范围和服务标记-公有云](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。
 

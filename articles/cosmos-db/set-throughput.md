@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525509"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621949"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -108,7 +108,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 |分配或提供给特定容器的 RU 数|无保证。 为给定容器分配的 RU 数取决于多种属性。 属性可以是为共享吞吐量的容器选择的分区键、工作负荷的分布，以及容器的数量。 |对容器配置的所有 RU 专门保留给该容器使用。|
 |容器的最大存储|不受限制。|不受限制。|
 |容器的每个逻辑分区的最大吞吐量|10K RU|10K RU|
-|容器的每个逻辑分区的最大存储（数据 + 索引）|10 GB|10 GB|
+|容器的每个逻辑分区的最大存储（数据 + 索引）|20 GB|20 GB|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcc1c6ffe7cdec4aed325a67969235ae993a5109
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445534"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77614836"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB 的高级威胁防护（预览版）
 
@@ -105,7 +105,7 @@ ms.locfileid: "75445534"
 
 ## <a name="cosmos-db-atp-alerts"></a>Cosmos DB ATP 警报
 
- 若要查看 Azure Cosmos DB 帐户监视时生成的警报的列表，请参阅安全中心文档中的[Cosmos DB 警报](../security-center/security-center-alerts-data-services.md#cosmos-db)部分。
+ 若要查看 Azure Cosmos DB 帐户监视时生成的警报的列表，请参阅 Azure 安全中心文档中的[Cosmos DB 警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos)部分。
 
 ## <a name="next-steps"></a>后续步骤
 

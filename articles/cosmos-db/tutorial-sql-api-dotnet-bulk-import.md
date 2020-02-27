@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896283"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587560"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>使用 .NET SDK 将数据批量导入 Azure Cosmos DB SQL API 帐户
 
@@ -27,7 +27,7 @@ ms.locfileid: "74896283"
 > * 连接到启用了批量支持的 Azure Cosmos 帐户
 > * 通过并发创建操作执行数据导入
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在按照本文中的说明操作之前，请确保具备以下资源：
 
@@ -81,7 +81,7 @@ ms.locfileid: "74896283"
 
 此示例应用程序需对 Azure Cosmos 帐户进行身份验证。 为了进行身份验证，应将 Azure Cosmos 帐户凭据传递给应用程序。 按照以下步骤获取 Azure Cosmos 帐户凭据：
 
-1.  登录到 [Azure 门户](https://portal.azure.com/)。
+1.  登录 [Azure 门户](https://portal.azure.com/)。
 1.  导航到 Azure Cosmos 帐户。
 1.  打开“键”窗格，复制帐户的 URI 和主键    。
 
@@ -120,13 +120,13 @@ ms.locfileid: "74896283"
 
 在 `Main` 方法中，添加以下代码以初始化 CosmosClient 对象：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 启用批量执行后，CosmosClient 在内部将并发操作分组为单个服务调用。 通过这种方式，可以通过跨分区分发服务调用来优化吞吐量利用率，最后将各个结果分配给原始调用方。
 
 然后可以创建一个容器来存储所有项。  将 `/pk` 定义为分区键，将 50000 RU/s 定义为预配的吞吐量，并定义将排除所有字段以优化写入吞吐量的自定义索引策略。 在 CosmosClient 初始化语句后面添加以下代码：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>步骤 6：填充并发任务的列表
 
@@ -141,22 +141,22 @@ ms.locfileid: "74896283"
 
 定义要保存的项的定义。 需要在 `Program.cs` 文件中定义 `Item` 类：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 接下来，在 `Program` 类中创建一个 helper 函数。 此 helper 函数将获取你定义用于插入的项数并生成随机数据：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 使用 `System.Text.Json` 类读取项并将其序列化为流实例。 由于自动生成的数据的性质，因此需要将数据序列化为流。 还可以直接使用项实例，但通过将其转换为流，可以利用 CosmosClient 中流 API 的性能。 通常，只要知道分区键，就可以直接使用数据。 
 
 
 若要将数据转换为流实例，请在 `Main` 方法中，在创建容器后直接添加以下代码：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 接下来，使用数据流创建并发任务并填充任务列表以将项插入到容器中。 若要执行此操作，请将以下代码添加到 `Program` 类：
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 所有这些并发点操作将一起执行（批量），如简介部分中所述。
 

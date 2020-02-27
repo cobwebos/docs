@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429148"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588852"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>快速入门：使用 Azure CLI 创建 NAT 网关
 
@@ -33,8 +33,6 @@ ms.locfileid: "77429148"
 可以使用 Azure Cloud Shell 完成本教程，或者在本地运行相应的命令。  如果你未曾用过 Azure Cloud Shell，请[立即登录](https://shell.azure.com)以完成初始设置。
 如果选择在本地运行这些命令，则需要安装 CLI。  本教程要求运行 Azure CLI 2.0.71 或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI]( /cli/azure/install-azure-cli)。
 
-> [!IMPORTANT]
-> 在订阅中启用虚拟网络 NAT [预览版](./nat-overview.md#enable-preview)后，使用 https://aka.ms/natportal 访问门户。
 
 ## <a name="create-a-resource-group"></a>创建资源组
 

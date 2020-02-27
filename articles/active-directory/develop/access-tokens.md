@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161386"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620890"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -178,7 +178,7 @@ Azure AD 中间件具有验证访问令牌的内置功能，可以浏览我们�
 
 JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为**标头**，第二个称为**主体**，第三个称为**签名**。 签名段可用于验证令牌的真实性，使应用信任它。
 
-使用行业标准非对称加密算法（如 RSA 256）对 Azure AD 颁发的令牌进行签名。 JWT 标头包含有关用于对令牌进行签名的密钥和加密方法的信息：
+使用行业标准非对称加密算法（如 RS256）对 Azure AD 颁发的令牌进行签名。 JWT 标头包含有关用于对令牌进行签名的密钥和加密方法的信息：
 
 ```json
 {

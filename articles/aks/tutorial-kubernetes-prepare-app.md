@@ -2,18 +2,15 @@
 title: Azure 上的 Kubernetes 教程 - 准备应用程序
 description: 本 Azure Kubernetes 服务 (AKS) 教程介绍如何通过 Docker Compose 准备和生成一个多容器应用，以便能够随后将其部署到 AKS。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 3ff93d006b7599eaa3f97c33efb047ce480c301c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71264476"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593154"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教程：准备用于 Azure Kubernetes 服务 (AKS) 的应用程序
 
@@ -107,7 +104,7 @@ docker-compose down
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程测试了应用程序并针对应用程序创建了容器映像。 你已了解如何：
+本教程测试了应用程序并针对应用程序创建了容器映像。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 克隆 GitHub 中的示例应用程序源

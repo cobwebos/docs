@@ -1,10 +1,10 @@
 ---
-title: Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案 | Microsoft 文档
+title: SAP NetWeaver 的 Azure Vm HA 体系结构和方案 |Microsoft Docs
 description: Azure 虚拟机上 SAP NetWeaver 的高可用性体系结构和方案
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/25/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b974869d1462f449e8a241a5925ef345170b493a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291475"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623861"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver 的高可用性体系结构和方案
 
@@ -289,7 +289,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 
 
 ### <a name="azure-availability-zones"></a>Azure 可用性区域
-Azure 正在各个不同的 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)的概念。 提供可用性区域的 Azure 区域具有多个数据中心，这些数据中心独立提供电源、冷却和网络设备。 在单个 Azure 区域中提供不同区域的原因是为了能够跨越提供的两个或三个可用性区域部署应用程序。 假设电源和/或网络问题只会影响一个可用性区域基础结构，则 Azure 区域中的应用程序部署仍可完全正常运行。 最终会减少一些容量，因为一个区域中的某些 VM 可能会丢失。 但是，另外两个区域中的 VM 仍可保持正常运行。 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中列出了提供局部区域的 Azure 区域。
+Azure 正在各个不同的 [Azure 区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中推出 [Azure 可用性区域](https://azure.microsoft.com/global-infrastructure/regions/)的概念。 提供可用性区域的 Azure 区域具有多个数据中心，这些数据中心独立提供电源、冷却和网络设备。 在单个 Azure 区域中提供不同区域的原因是为了能够跨越提供的两个或三个可用性区域部署应用程序。 假设电源和/或网络问题只会影响一个可用性区域基础结构，则 Azure 区域中的应用程序部署仍可完全正常运行。 最终会减少一些容量，因为一个区域中的某些 VM 可能会丢失。 但是，另外两个区域中的 VM 仍可保持正常运行。 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)中列出了提供局部区域的 Azure 区域。
 
 使用可用性区域时需要注意一些事项。 注意事项列表如下：
 
@@ -391,6 +391,8 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 * **使用文件共享群集 SAP ASCS/scs 实例**：有关此体系结构的详细信息，请参阅[在 Windows 故障转移群集上使用文件共享来群集 SAP ASCS/scs 实例][sap-high-availability-guide-wsfc-file-share]。
 
+* **使用和 smb 共享群集 SAP ASCS/scs 实例**：有关此体系结构的详细信息，请参阅[使用和 SMB 文件共享在 Windows 故障转移群集上群集集群 ASCS/scs 实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)。
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux 上 SAP ASCS/SCS 实例的高可用性体系结构
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,20 @@ WSFC 解决方案可用于保护 SAP ASCS/SCS 实例。 该解决方案有两种
 
 > ![Windows][Logo_Windows] Windows
 > 
-> 目前，只能通过 WSFC 支持多 SID。 使用文件共享和共享磁盘支持多 SID。
+> 使用文件共享和共享磁盘，WSFC 支持多 SID。
 > 
-> 有关多 SID 高可用性体系结构的详细信息，请参阅：
+> 有关 Windows 上的多 SID 高可用性体系结构的详细信息，请参阅：
 
 * [适用于 Windows Server 故障转移群集和文件共享的 SAP ASCS/SCS 实例多 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [适用于 Windows Server 故障转移群集和共享磁盘的 SAP ASCS/SCS 实例多 SID 高可用性][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> 在适用于 SAP ASCS/ERS 的 Linux Pacemaker 群集上支持多 SID 群集，在同一群集上限制为**五个**sap sid。
+> 有关 Linux 上多 SID 高可用性体系结构的详细信息，请参阅：
+
+* [SLES for SAP 应用程序上的 Azure Vm 上的 SAP NW HA 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性 DBMS 实例
 
@@ -418,7 +427,7 @@ DBMS 也是 SAP 系统中的单一接触点。 需要使用高可用性解决方
 
 ![图 3：使用 SQL Server AlwaysOn 的高可用性 SAP DBMS 示例][sap-ha-guide-figure-2003]
 
-图 3：使用 SQL Server AlwaysOn 的高可用性 SAP DBMS 示例
+_**图 3：使用 SQL Server AlwaysOn 的高可用性 SAP DBMS 示例**_
 
 有关使用 Azure 资源管理器部署模型在 Azure 中群集化 SQL Server DBMS 的详细信息，请参阅下列文章：
 

@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424926"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623694"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>使用 Azure Cosmos DB 排查查询问题
 
@@ -22,6 +22,20 @@ ms.locfileid: "77424926"
 您可以在 Azure Cosmos DB 中广泛地分类查询优化：用于减少查询的请求单位（RU）费用的优化，以及只是减少延迟的优化。 通过减少查询的 RU 费用，几乎当然还会降低延迟。
 
 本文档将使用可以使用[营养](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json)数据集重新创建的示例。
+
+## <a name="important"></a>重要说明
+
+- 为了获得最佳性能，请遵循[性能提示](performance-tips.md)。
+    > [!NOTE] 
+    > 建议使用 Windows 64 位主机处理以提高性能。 SQL SDK 包括一个本机 Microsoft.azure.documents.serviceinterop.dll，用于在本地分析和优化查询，仅在 Windows x64 平台上受支持。 对于 linux 和其他不受支持的平台，如果 Microsoft.azure.documents.serviceinterop.dll 不可用，则会对网关执行额外的网络调用，以获取优化的查询。 
+- Cosmos DB 查询不支持最小项计数。
+    - 代码应处理从0到最大项计数的任何页大小
+    - 页面中的项目数不会有任何通知就会更改。
+- 查询应为空页，可以随时显示。 
+    - 在 Sdk 中公开空页的原因是它允许更多的机会来取消查询。 它还可以清楚地表明 SDK 正在进行多个网络调用。
+    - 空页可能会显示在现有工作负荷中，因为物理分区在 Cosmos DB 中拆分。 第一个分区现在有0个结果，导致空页。
+    - 空页面是由后端抢占查询引起的，因为查询在后端上花费的时间超过了一定的时间来检索文档。 如果 Cosmos DB 抢先于查询，它将返回一个继续标记，该标记将允许查询继续。 
+- 请确保完全排出查询。 查看 SDK 示例，并在 `FeedIterator.HasMoreResults` 上使用 while 循环来排出整个查询。
 
 ### <a name="obtaining-query-metrics"></a>获取查询度量值：
 
@@ -144,7 +158,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**Ru 费用：** 409.51 RU
+**RU 费用： 409.51 RU**
 
 ### <a name="optimized"></a>已优化
 
@@ -163,7 +177,7 @@ SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
 }
 ```
 
-**Ru 费用：** 2.98 RU
+**RU 费用： 2.98 RU**
 
 你可以随时向索引策略添加其他属性，而不会影响写入可用性或性能。 如果将新属性添加到索引中，则使用此属性的查询会立即利用新的可用索引。 生成查询时，查询将使用新索引。 因此，查询结果可能会不一致，因为正在重新生成索引。 如果为新属性编制了索引，则在重新生成索引时，仅使用现有索引的查询将不会受到影响。 您可以[跟踪索引转换进度](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)。
 
@@ -217,7 +231,7 @@ SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts 
 }
 ```
 
-**Ru 费用：** 44.28 RU
+**RU 费用： 44.28 RU**
 
 ### <a name="optimized"></a>已优化
 
@@ -257,7 +271,7 @@ ORDER BY c.foodGroup, c._ts ASC
 
 ```
 
-**Ru 费用：** 8.86 RU
+**RU 费用： 8.86 RU**
 
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>使用子查询优化联接表达式
 多值子查询可以优化 `JOIN` 表达式，方法是：在每个 select-多个表达式后推送谓词，而不是在 `WHERE` 子句中的所有交叉联接后推送。
@@ -274,7 +288,7 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Ru 费用：** 167.62 RU
+**RU 费用： 167.62 RU**
 
 对于此查询，该索引将匹配其标记名称为 "幼儿 formula"、nutritionValue 大于0且为大于1的值的任何文档。 此处的 `JOIN` 表达式将在应用任何筛选器之前，对每个匹配的文档执行标记、nutrients 和 servings 数组的所有项的叉积。 然后，`WHERE` 子句将对每个 `<c, t, n, s>` 元组应用筛选器谓词。
 
@@ -290,7 +304,7 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Ru 费用：** 22.17 RU
+**RU 费用： 22.17 RU**
 
 假设标记数组中只有一个项与筛选器匹配，并且 nutrients 和 servings 数组都有五项。 然后，`JOIN` 表达式将扩展到 1 x 1 x 5 x 5 = 25 项，而不是第一个查询中的1000项。
 

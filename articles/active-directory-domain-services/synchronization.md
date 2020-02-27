@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132205"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612929"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
 
@@ -38,7 +38,7 @@ ms.locfileid: "77132205"
 
 下表列出了一些常见的属性，以及如何将它们同步到 Azure AD DS。
 
-| Azure AD DS 中的属性 | 源 | 注意 |
+| Azure AD DS 中的属性 | 源 | 说明 |
 |:--- |:--- |:--- |
 | UPN | Azure AD 租户中的用户的*UPN*属性 | Azure AD 租户中的 UPN 属性按原样同步到 Azure AD DS。 登录到 Azure AD DS 托管域的最可靠方法是使用 UPN。 |
 | SAMAccountName | 用户在 Azure AD 租户中的*mailNickname*属性，或自动生成 | *SAMAccountName*属性源于 Azure AD 租户中的*mailNickname*属性。 如果多个用户帐户具有相同的*mailNickname*属性，则将自动生成*SAMAccountName* 。 如果用户的*mailNickname*或*UPN*前缀的长度超过20个字符，则将自动生成*samaccountname*以满足*SAMAccountName*属性的20个字符的限制。 |
@@ -47,9 +47,9 @@ ms.locfileid: "77132205"
 | 用户和组的 SID 历史记录 | 本地主用户和组 SID | Azure AD DS 中的用户和组的*SidHistory*属性设置为与本地 AD DS 环境中相应的主用户或组 SID 相匹配。 此功能可让本地应用程序的直接迁移和移动 Azure AD DS，因为无需重新创建 ACL 资源。 |
 
 > [!TIP]
-> **使用 UPN 格式登录到托管域**可以为 Azure AD DS 托管域中的某些用户帐户自动生成*SAMAccountName*属性，如 `CONTOSO\driley`。 用户自动生成的*SAMAccountName*可能不同于其 UPN 前缀，因此不一定是一种可靠的登录方式。
+> **使用 UPN 格式登录到托管域**可以为 Azure AD DS 托管域中的某些用户帐户自动生成*SAMAccountName*属性，如 `AADDSCONTOSO\driley`。 用户自动生成的*SAMAccountName*可能不同于其 UPN 前缀，因此不一定是一种可靠的登录方式。
 >
-> 例如，如果多个用户具有相同的*mailNickname*属性，或者用户的 UPN 前缀过长，则可能会自动生成这些用户的*SAMAccountName* 。 使用 UPN 格式（例如 `driley@contoso.com`）来可靠地登录到 Azure AD DS 托管域。
+> 例如，如果多个用户具有相同的*mailNickname*属性，或者用户的 UPN 前缀过长，则可能会自动生成这些用户的*SAMAccountName* 。 使用 UPN 格式（例如 `driley@aaddscontoso.com`）来可靠地登录到 Azure AD DS 托管域。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>用户帐户的属性映射
 
@@ -58,14 +58,14 @@ ms.locfileid: "77132205"
 | Azure AD 中的用户属性 | Azure AD DS 中的用户属性 |
 |:--- |:--- |
 | accountEnabled |userAccountControl（设置或清除 ACCOUNT_DISABLED 位） |
-| 城市 |l |
+| city |l |
 | country |co |
 | department |department |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |
-| 邮件 |邮件 |
+| mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | mailNickname |SAMAccountName （有时可能会自动生成） |
 | mobile |mobile |
@@ -89,7 +89,7 @@ ms.locfileid: "77132205"
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName （有时可能会自动生成） |
-| 邮件 |邮件 |
+| mail |mail |
 | mailNickname |msDS-AzureADMailNickname |
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
