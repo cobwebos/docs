@@ -27,14 +27,8 @@
           href: quickstarts/ruby.md
     - name: SDK
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
+        - name: 必应 Web 搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 构建单页 Web 应用
@@ -45,7 +39,7 @@
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'
     - name: SDK 示例
       href: sdk-samples.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 筛选答案
       href: filter-answers.md
@@ -67,7 +61,7 @@
       href: search-responses.md
     - name: 限制请求
       href: throttling-requests.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应 Web 搜索 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference'

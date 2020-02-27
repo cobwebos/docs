@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539580"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605253"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -24,7 +24,7 @@ ms.locfileid: "77539580"
 
 对于 Visual Studio 扩展，请将 `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 环境变量设置为 1。 请务必重新启动 Visual Studio 以使环境变量生效。 启用后，详细日志将写入到 `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` 目录。
 
-在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过从终端窗口运行 `echo $TMPDIR` 找到 TEMP 目录。 在 Linux 计算机上，TEMP 目录通常为 `/tmp`。
+在 CLI 中，可以通过使用 `--verbose` 切换在命令执行过程中输出更多信息。 还可以在 `%TEMP%\Azure Dev Spaces` 中浏览更详细的日志。 在 Mac 上，可以通过在终端窗口中运行 `echo $TMPDIR` 来找到*TEMP*目录。 在 Linux 计算机上， *TEMP*目录通常 `/tmp`。 此外，请验证[Azure CLI 配置文件](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)中是否已启用日志记录。
 
 调试单个实例或 pod 时，Azure Dev Spaces 也最适合。 `azds.yaml` 文件包含一个设置*replicaCount*，用于指示 Kubernetes 为服务运行的 pod 数。 如果更改*replicaCount*以将应用程序配置为针对给定服务运行多个 pod，则调试器将在按字母顺序列出时附加到第一个 pod。 如果回收原始 Pod，调试程序会附加到其他 pod，这可能会导致意外行为发生。
 
@@ -391,7 +391,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于 "*角色*"，请选择 "*参与者*" 或 "*所有者*"。
     * 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体”。
     * 对于 "*选择*"，请搜索要为其授予权限的用户。
-1. 单击 *“保存”* 。
+1. 单击“保存”。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
@@ -469,12 +469,12 @@ kubectl -n my-namespace delete pod --all
 
 若要在 AKS 群集上启用 Azure Dev Spaces，而这些群集节点的传出流量受到限制，则必须允许以下 Fqdn：
 
-| FQDN                                    | 端口      | 使用      |
+| FQDN                                    | 端口      | 用途      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS:443 | 请求 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP：443 | 请求 helm/tiller 映像|
 | storage.googleapis.com | HTTP：443 | 请求 helm/tiller 映像|
-| azds-<guid>。<location>. azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。|
+| azds-<guid>。<location>.azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>"找不到群集 \<群集\> 订阅中 \<subscriptionId"\>"
 

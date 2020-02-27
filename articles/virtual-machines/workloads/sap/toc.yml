@@ -225,6 +225,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
             - name: 将 SLES 与用于 A(SCS) 实例的 Pacemaker 多 SID 配合使用
               href: high-availability-guide-suse-multi-sid.md
+            - name: 将 RHEL 与用于 A(SCS) 实例的 Pacemaker 多 SID 配合使用
+              href: high-availability-guide-rhel-multi-sid.md
     - name: 使用 Azure Site Recovery 进行 SAP 灾难恢复
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: 用于最大程度地降低 SAP 应用程序网络延迟的 Azure 邻近放置组

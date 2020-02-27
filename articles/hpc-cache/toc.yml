@@ -8,9 +8,9 @@
   items:
     - name: 规划聚合命名空间
       href: hpc-cache-namespace.md
-- name: 操作指南
+- name: 操作方法指南
   items:
-    - name: 先决条件
+    - name: 必备条件
       href: hpc-cache-prereqs.md
     - name: 创建缓存
       href: hpc-cache-create.md
@@ -42,6 +42,8 @@
       href: hpc-cache-support-ticket.md
     - name: 解决 Blob 存储帐户防火墙设置问题
       href: hpc-cache-blob-firewall-fix.md
+    - name: 排查 NFS 存储目标创建问题
+      href: troubleshoot-nas.md
     - name: 区域性服务中断后进行恢复
       href: hpc-region-recovery.md
     - name: 将 Azure NetApp 文件和 Azure HPC 缓存搭配使用

@@ -23,8 +23,8 @@
       href: quick-create-net.md
     - name: .NET (SDK v3)
       href: quick-create-net-v3.md
-    - name: Azure 资源管理器模板
-      displayName: 'resource manager, resource manager template, arm'
+    - name: 资源管理器模板
+      displayName: ARM
       href: quick-create-template.md
 - name: 教程
   items:
@@ -58,6 +58,7 @@
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure 资源管理器模板
       href: ../azure-resource-manager/templates/key-vault-parameter.md
+      displayName: ARM
     - name: 设置密钥轮换和审核
       href: key-vault-key-rotation-log-monitoring.md
 - name: 示例
@@ -170,6 +171,7 @@
       href: key-vault-best-practices.md
     - name: 资源管理器模板
       href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
     - name: 身份验证、请求和响应
       href: authentication-requests-and-responses.md
     - name: 常见参数和标头

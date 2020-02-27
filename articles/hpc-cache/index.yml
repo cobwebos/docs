@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: rohogue
   ms.date: 11/07/2019
-  ms.openlocfilehash: 07a161066cdea57d42050986bc9e16d98a9310a6
-  ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+  ms.openlocfilehash: 3cee41dd9cb4852eab884345404ba89eff8d9d91
+  ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/19/2019
-  ms.locfileid: "74166505"
+  ms.lasthandoff: 02/27/2020
+  ms.locfileid: "77651026"
 landingContent:
 - title: 关于 Azure HPC 缓存
   linkLists:
@@ -53,7 +53,11 @@ landingContent:
       url: hpc-cache-edit-storage.md
     - text: 解决防火墙设置问题以创建 Blob 存储目标
       url: hpc-cache-blob-firewall-fix.md
+    - text: 排查 NFS 存储目标创建问题
+      url: troubleshoot-nas.md
   - linkListType: concept
     links:
     - text: 区域性服务中断后进行恢复
       url: hpc-region-recovery.md
+    - text: 使用 Azure NetApp 文件存储目标
+      url: hpc-cache-netapp.md

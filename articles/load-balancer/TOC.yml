@@ -12,8 +12,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 模板
+    - name: Azure 资源管理器模板
       href: quickstart-load-balancer-standard-public-template.md
+      displayName: ARM
 - name: 教程
   items:
     - name: 对传入 VM 的 Internet 流量进行负载均衡
@@ -84,16 +85,18 @@
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: 模板
+        - name: Azure 资源管理器模板
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          displayName: ARM
     - name: 配置内部负载均衡器
       items:
         - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 模板
+        - name: Azure 资源管理器模板
           href: load-balancer-get-started-ilb-arm-template.md
+          displayName: ARM
     - name: 配置负载均衡器的 TCP 空闲超时
       href: load-balancer-tcp-idle-timeout.md
     - name: 配置负载均衡器的分布模式
@@ -141,6 +144,9 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+    - name: 资源管理器模板
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      displayName: ARM
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
