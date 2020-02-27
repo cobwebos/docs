@@ -4,12 +4,12 @@ description: 本快速入门介绍如何使用客户端 SDK 创建和管理知�
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 730c58dbbe44fe56c0d5bc8f377a2c547b691351
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945997"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524404"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>快速入门：创建和管理知识库
 
@@ -19,12 +19,12 @@ QnA Maker 客户端库入门。 请按照以下步骤安装程序包并试用基
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
-[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>后续步骤

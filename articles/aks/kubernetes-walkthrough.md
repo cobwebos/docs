@@ -2,11 +2,8 @@
 title: 快速入门：部署 Azure Kubernetes 服务群集
 description: 了解如何使用 Azure CLI 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.author: mlearned
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -14,12 +11,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: f7e7804b2fc60976ef0ec9af9dcd22e2a2bd9db0
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3b4e09bb74b80f10bbc3cf497798f0c31fe51691
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929120"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595258"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -42,7 +39,7 @@ ms.locfileid: "73929120"
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-Azure 资源组是在其中部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
+Azure 资源组是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [az group create][az-group-create] 命令创建资源组。
 
 以下示例在“eastus”  位置创建名为“myResourceGroup”  的资源组。
 
@@ -78,7 +75,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 片刻之后，该命令将会完成，并返回有关群集的 JSON 格式信息。
 
-## <a name="connect-to-the-cluster"></a>连接至群集
+## <a name="connect-to-the-cluster"></a>连接到群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 若要在本地安装 `kubectl`，请使用 [az aks install-cli][az-aks-install-cli] 命令：
 
@@ -92,7 +89,7 @@ az aks install-cli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点的列表。
+若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 
 ```azurecli-interactive
 kubectl get nodes

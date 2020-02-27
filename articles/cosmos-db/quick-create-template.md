@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 01/21/2020
-ms.openlocfilehash: 12c2b0b089702b9e56ae099abbefd85769bc1d21
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549540"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587883"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>快速入门：使用 Azure 资源管理器模板创建 Azure Cosmos DB 和容器
 
@@ -34,7 +34,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)。
 
-[!code-json[<Resource Manager template create Azure Cosmos DB>](~/quickstart-templates/101-cosmosdb-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
 该模板中定义了三个 Azure 资源：
 
@@ -78,7 +78,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 可以使用 Azure 门户检查 Azure Cosmos 帐户、数据库和容器，或者使用以下 Azure CLI 或 Azure PowerShell 脚本列出创建的机密。
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -88,7 +88,7 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
@@ -103,7 +103,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 如果打算继续使用后续的教程，则可能需要保留这些资源。
 如果不再需要资源组，可以将其删除，这将删除 Azure Cosmos 帐户和相关的资源。 使用 Azure CLI 或 Azure PowerShell 删除资源组：
 
-# <a name="clitabcli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -112,7 +112,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

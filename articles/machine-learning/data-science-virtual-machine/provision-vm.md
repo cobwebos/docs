@@ -1,5 +1,6 @@
 ---
-title: 快速入门：创建 Windows DSVM
+title: 快速入门：创建 Windows Data Science Virtual Machine
+titleSuffix: Azure Data Science Virtual Machine
 description: 在 Azure 上配置和创建数据科学虚拟机，用于进行分析和机器学习。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611911"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525866"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入门：设置适用于 Windows 的 Data Science Virtual Machine
 

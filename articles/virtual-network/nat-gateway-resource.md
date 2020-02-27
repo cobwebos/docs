@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/19/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485006"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589464"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>使用 NAT 网关资源设计虚拟网络（公共预览版）
 
@@ -35,9 +35,6 @@ NAT 网关资源是[虚拟网络 NAT](nat-overview.md) 的一部分，为虚拟�
 
 >[!NOTE] 
 >虚拟网络 NAT 暂时以公共预览版提供。 目前它只能在有限的几个[区域](nat-overview.md#region-availability)中使用。 此预览版在提供时没有附带服务级别协议，不建议用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.comsupport/legal/preview-supplemental-terms)。
-
-> [!IMPORTANT]
-> 在订阅中启用虚拟网络 NAT [预览版](./nat-overview.md#enable-preview)后，使用 https://aka.ms/natportal 访问门户。
 
 ## <a name="how-to-deploy-nat"></a>如何部署 NAT
 
@@ -339,7 +336,6 @@ NAT 网关资源与 UDP 和 TCP 流的 IP 和 IP 传输标头交互，对应用�
 
 - NAT 与标准 SKU 公共 IP、公共 IP 前缀和负载均衡器资源兼容。   基本资源（例如基本负载均衡器）以及派生自这些资源的任何产品都与 NAT 不兼容。  必须将基本资源放在未配置 NAT 的子网中。
 - 支持 IPv4 地址系列。  NAT 不会与 IPv6 地址系列交互。
-- 使用 NAT 发往公共终结点的出站流不遵从子网或 NIC 上的 NSG。
 - 使用 NAT 时不支持 NSG 流日志记录。
 - NAT 不能跨多个虚拟网络。
 

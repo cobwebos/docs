@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846217"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622726"
 ---
 # <a name="what-is-personalizer"></a>什么是个性化体验创建服务？
 
@@ -63,7 +63,7 @@ Azure 个性化体验创建服务是基于云的 API 服务，有助于客户端
 
 当内容符合以下条件时，请使用个性化体验创建服务：
 
-* 可供选择的项数有限（最多为 50 左右）。 如果列表较大，请[使用建议引擎](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines)将列表缩小到 50 项。
+* 可供选择的项数有限（最多为 50 左右）。 如果列表较大，请[使用建议引擎](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)将列表缩小到 50 项。
 * 提供的信息描述了要排名的内容：包含特征的操作和上下文特征   。
 * 至少每天有大约 1000 个与内容相关的事件，否则个性化体验创建服务无法正常运行。 如果个性化体验创建服务未收到所需的最小流量，则该服务需要较长时间来确定单个最佳内容项。
 
