@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 083051fd621194d39d0092046e187e0809fd62d9
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77446517"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77520623"
 ---
 增量快照（预览版）是托管磁盘的时间点备份，在这种情况下，只包含自上一次快照以来所做的所有更改。 尝试下载或使用增量快照时，将使用完整的 VHD。 托管磁盘快照的这一新功能可能会使它们更加经济高效，因为你不再需要在每个单独的快照中存储整个磁盘，除非你选择。 与常规快照一样，增量快照可用于创建完全托管的磁盘，或创建一个常规快照。
 
@@ -21,10 +21,15 @@ ms.locfileid: "77446517"
 
 增量快照还提供了独特的功能，可用于托管磁盘。 它们使你能够在相同的托管磁盘的两个增量快照之间进行更改，减小到块级别。 跨区域复制快照时，可以使用此功能来减少数据占用量。
 
-## <a name="restrictions"></a>限制
+### <a name="supported-regions"></a>支持的区域
 
-- 增量快照目前仅在美国东部、美国东部2、美国中部、美国西部、加拿大东部、加拿大中部、北欧、南部东亚提供。
-- 更改磁盘大小时，当前无法创建增量快照。
+目前仅支持以下区域：
+
+- 在美国西部、加拿大东部、加拿大中部地区提供作为 GA 产品/服务。
+- 在美国东部、美国东部2、美国中部、北欧、南部东亚地区以公共预览版的形式提供。
+
+## <a name="restrictions"></a>限制
+- 更改磁盘大小（仅在预览期间）后，当前无法创建增量快照。
 - 当前不能在订阅之间移动增量快照。
 - 在任何给定时间，当前最多只能生成一个特定快照系列的最多五个快照的 SAS Uri。
 - 不能为该磁盘的订阅之外的特定磁盘创建增量快照。
