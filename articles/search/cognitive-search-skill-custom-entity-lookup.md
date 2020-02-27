@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960602"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651332"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>自定义实体查找认知技能（预览版）
 
@@ -36,7 +36,7 @@ CustomEntityLookupSkill。
 
 参数区分大小写。
 
-| 参数名称     | Description |
+| 参数名称     | 说明 |
 |--------------------|-------------|
 | entitiesDefinitionUri | JSON 或 CSV 文件的路径，该文件包含要匹配的所有目标文本。 在索引器运行开始时，将读取此实体定义;在后续运行之前，不会实现对此文件的任何更新。 此配置必须可通过 HTTPS 访问。 请参阅下面的 "[自定义实体定义](#custom-entity-definition-format)格式" 以了解预期的 CSV 或 JSON 架构。|
 |inlineEntitiesDefinition | 内联 JSON 实体定义。 如果存在，此参数将取代 entitiesDefinitionUri 参数。 以内联方式提供的配置不能超过 10 KB。 请参阅下面的[自定义实体定义](#custom-entity-definition-format)以获取预期的 JSON 架构。 |
@@ -45,7 +45,7 @@ CustomEntityLookupSkill。
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | Description                   |
+| 输入名称      | 说明                   |
 |---------------|-------------------------------|
 | text          | 要分析的文本。          |
 | languageCode  | 可选。 默认为 `"en"`。  |
@@ -54,7 +54,7 @@ CustomEntityLookupSkill。
 ## <a name="skill-outputs"></a>技能输出
 
 
-| 输出名称     | Description                   |
+| 输出名称     | 说明                   |
 |---------------|-------------------------------|
 | 实体 | 对象的数组，其中包含有关找到的匹配项和相关元数据的信息。 标识的每个实体可能包含以下字段：  <ul> <li> *名称*：标识的顶级实体。 实体表示 "规范化" 窗体。 </li> <li> *id*：用户在 "自定义实体定义格式" 中定义的实体的唯一标识符。</li> <li> *说明*：用户使用 "自定义实体定义格式" 定义的实体说明。 </li> <li> *键入：* 用户定义的实体类型，采用 "自定义实体定义格式"。</li> <li> *子类型：* 用户在 "自定义实体定义格式" 中定义的实体子类型。</li>  <li> *匹配*：描述源文本上该实体的每个匹配项的集合。 每个匹配项都具有以下成员： </li> <ul> <li> *text*：原始文本与源文档中的匹配项。 </li> <li> *offset*：在文本中找到匹配项的位置。 </li> <li> *长度*：匹配的文本的长度。 </li> <li> *matchDistance*：此匹配项不同于原始实体名称或别名的字符数。  </li> </ul> </ul>
   |
@@ -63,7 +63,7 @@ CustomEntityLookupSkill。
 
 有3种不同的方法可向自定义实体查找技能提供自定义实体的列表。 你可以在中提供列表。CSV 文件。作为技能定义的一部分的 JSON 文件或作为内联定义。  
 
-如果定义文件是一个。CSV 或。JSON 文件，需要将该文件的路径作为*entitiesDefitionUri*参数的一部分提供。 在这种情况下，将在每次索引器运行开始时下载该文件一次。 只要索引器打算运行，就必须能够访问该文件。
+如果定义文件是一个。CSV 或。JSON 文件，需要将该文件的路径作为*entitiesDefitionUri*参数的一部分提供。 在这种情况下，将在每次索引器运行开始时下载该文件一次。 只要索引器打算运行，就必须能够访问该文件。 此外，该文件必须采用 UTF-8 编码。
 
 如果以内联方式提供定义，则应将其作为*inlineEntitiesDefinition*技能参数的内容提供为内联。 
 
@@ -143,7 +143,7 @@ Satya Nadella
 
 下表更详细地介绍了在定义要匹配的实体时可以设置的不同配置参数：
 
-|  字段名  |        Description  |
+|  字段名  |        说明  |
 |--------------|----------------------|
 | name | 顶级实体描述符。 技能输出中的匹配项将按此名称进行分组，并且应表示所找到文本的 "已规范化" 窗体。  |
 | description  | 可有可无此字段可用作有关匹配文本的自定义元数据的传递。 此字段的值将随其在技能表中的实体的每个匹配项显示。 |
@@ -156,7 +156,7 @@ Satya Nadella
 | defaultFuzzyEditDistance | 可有可无更改此实体的默认模糊编辑距离值。 它可用于更改所有别名 fuzzyEditDistance 值的默认值。 |
 | 别名 | 可有可无可用于指定根实体名称的替代拼写或同义词的复杂对象数组。 |
 
-| 别名属性 | Description |
+| 别名属性 | 说明 |
 |------------------|-------------|
 | text  | 某些目标实体名称的替代拼写或表示形式。  |
 | caseSensitive | 可有可无与上面的根实体 "caseSensitive" 参数的作用相同，但仅适用于这一个别名。 |

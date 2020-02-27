@@ -3,18 +3,18 @@ title: 部署多个资源实例
 description: 使用 Azure 资源管理器模板中的复制操作和数组多次部署资源类型。
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210822"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620223"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Azure 资源管理器模板中的资源迭代
 
 本文介绍如何在 Azure 资源管理器模板中创建多个资源实例。 通过将**copy**元素添加到模板的 resources 节，可以动态设置要部署的资源数。 还应避免重复模板语法。
 
-你还可以使用具有[属性](copy-properties.md)和[变量](copy-variables.md)的 copy。
+你还可以使用具有[属性](copy-properties.md)、[变量](copy-variables.md)和[输出](copy-outputs.md)的副本。
 
 如需指定究竟是否部署资源，请参阅 [condition 元素](conditional-resource-deployment.md)。
 
@@ -130,6 +130,8 @@ Copy 元素具有以下常规格式：
   "outputs": {}
 }
 ```
+
+如果要从已部署的资源返回值，可以使用["输出" 部分中的 "复制"](copy-outputs.md)。
 
 ## <a name="serial-or-parallel"></a>串行或并行
 
@@ -279,7 +281,10 @@ mode 属性也接受 **parallel**（它是默认值）。
 ## <a name="next-steps"></a>后续步骤
 
 * 要查看教程，请参阅[教程：使用资源管理器模板创建多个资源实例](template-tutorial-create-multiple-instances.md)。
-* 有关 copy 元素的其他用法，请参阅 azure[中的属性迭代资源管理器模板](copy-properties.md)和[Azure 中的变量迭代资源管理器模板](copy-variables.md)。
+* 有关 copy 元素的其他用法，请参阅：
+  * [Azure 资源管理器模板中的属性迭代](copy-properties.md)
+  * [Azure 资源管理器模板中的变量迭代](copy-variables.md)
+  * [Azure 资源管理器模板中的输出迭代](copy-outputs.md)
 * 有关将 copy 与嵌套模板结合使用的信息，请参阅[使用副本](linked-templates.md#using-copy)。
 * 若要了解有关模板区段的信息，请参阅[创作 Azure 资源管理器模板](template-syntax.md)。
 * 若要了解如何部署模板，请参阅[使用 Azure 资源管理器模板部署应用程序](deploy-powershell.md)。

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166403"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622977"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB Azure Monitor （预览）
 
 Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互式体验，可查看所有 Azure Cosmos DB 资源的总体性能、故障、容量和操作运行状况。 本文将帮助你了解这一新的监视体验的好处，以及如何修改和调整体验以满足你的组织的独特需求。   
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 在深入体验之前，您应该了解它是如何呈现和可视化信息的。 
 
@@ -35,12 +35,39 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 >[!NOTE]
 >访问此功能并不收取任何费用，只需按[Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述，为你配置或启用 Azure Monitor 基本功能付费。
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>访问 Azure Cosmos DB 的 Azure Monitor
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+
+1. 从左侧导航栏中选择 "**监视器**"，然后选择 "**指标**"。
+
+   ![Azure Monitor 中的指标窗格](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. 从 "**指标**" 窗格中 >**选择资源**> 选择所需的**订阅**和**资源组**。 对于 "**资源类型**"，请选择 " **Azure Cosmos DB 帐户**"，选择一个现有的 Azure Cosmos 帐户，并选择 "**应用**"。
+
+   ![选择 Cosmos DB 帐户以查看指标](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. 接下来，您可以从可用指标列表中选择一个度量值。 你可以选择特定于请求单位、存储、延迟、可用性、Cassandra 等的指标。 若要详细了解此列表中的所有可用指标，请参阅[度量值（按类别](../../cosmos-db/monitor-cosmos-db-reference.md)）一文。 在此示例中，我们选择 "**请求单位**" 和 " **Avg** " 作为聚合值。
+
+   除这些详细信息外，还可以选择度量值的**时间范围**和**时间粒度**。 最大情况下，你可以查看过去30天的指标。  应用筛选器后，将根据筛选器显示图表。 您可以查看所选时间段内每分钟使用的请求单位平均数量。  
+
+   ![从 Azure 门户中选择一个度量值](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>向指标添加筛选器
+
+还可以筛选度量值和按特定的**CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**和**StatusCode**显示的图表。 若要筛选度量值，请选择 "**添加筛选器**" 并选择所需属性（如**OperationType** ），然后选择一个值，例如 "**查询**"。 然后，关系图显示所选时间段内查询操作使用的请求单位。 不会记录通过存储过程执行的操作，因此它们在 OperationType 指标下不可用。
+
+![添加筛选器以选择指标粒度](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+您可以使用 "**应用拆分**" 选项对度量值进行分组。 例如，可以将每个操作的请求单位分组，并一次查看所有操作的关系图，如下图所示：
+
+![添加应用拆分筛选器](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的利用率和性能指标
 
 若要查看所有订阅中的存储帐户的利用率和性能，请执行以下步骤。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 2. 搜索 "**监视器**"，然后选择 "**监视器**"。
 
@@ -74,15 +101,15 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
 ![按 HTTP 请求类型分类的故障的屏幕截图](./media/cosmosdb-insights-overview/failures.png)
 
-| 代码      |  描述       | 
+| 代码      |  说明       | 
 |-----------|:--------------------|
-| `200 OK`  | 以下 REST 操作之一已成功： </br>-获取资源。 </br> -对资源进行放置。 </br> -发布资源。 </br> -POST，用于执行存储过程的存储过程资源。|
+| `200 OK`  | 下列 REST 操作之一成功： </br>-获取资源。 </br> -对资源进行放置。 </br> -发布资源。 </br> -POST，用于执行存储过程的存储过程资源。|
 | `201 Created` | 创建资源的 POST 操作成功。 |
-| `404 Not Found` | 操作正在尝试对不再存在的资源执行操作。 例如，该资源可能已被删除。 |
+| `404 Not Found` | 此操作正在尝试对不再存在的资源执行操作。 例如，该资源可能已被删除。 |
 
 有关状态代码的完整列表，请参阅[AZURE COSMOS DB HTTP 状态代码](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)"一文。
 
-### <a name="capacity"></a>Capacity
+### <a name="capacity"></a>容量
 
 选择页面顶部的 "**容量**"，此时将打开工作簿模板的**容量**部分。 它向您展示了多少文档、您的文档随着时间推移的增长、数据使用情况以及您剩余的可用存储总量。  这可用于帮助识别潜在的存储和数据利用率问题。
 
@@ -90,7 +117,7 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
 与概述工作簿一样，在 "**订阅**" 列中选择 Azure Cosmos DB 资源旁边的下拉列表将显示组成数据库的各个容器的细分。
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>操作 
 
 选择页面顶部的 "**操作**"，将打开工作簿模板的 "**操作**" 部分。 它使你能够查看按发出的请求类型细分的请求。 
 

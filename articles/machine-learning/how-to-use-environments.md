@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 9d6c823b5dc85676b15188c8f1783e50e5ed441b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: cb76c7d7804a7d39e8a18c7a4cf41e9b4e0a7593
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717812"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623635"
 ---
 # <a name="reuse-environments-for-training-and-deployment-by-using-azure-machine-learning"></a>使用 Azure 机器学习使用培训和部署的环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -231,7 +231,7 @@ build.wait_for_completion(show_output=True)
 
  通过 Azure 机器学习 `Environment` 类的[`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) ，你可以精确地自定义和控制运行定型的来宾操作系统。
 
-`enable` Docker 时，服务将生成一个 Docker 映像。 它还会创建一个 Python 环境，该环境使用该 Docker 容器中的规范。 此功能为您的培训运行提供额外的隔离和可再现性。
+启用 Docker 后，服务将生成一个 Docker 映像。 它还会创建一个 Python 环境，该环境使用该 Docker 容器中的规范。 此功能为您的培训运行提供额外的隔离和可再现性。
 
 ```python
 # Creates the environment inside a Docker container.

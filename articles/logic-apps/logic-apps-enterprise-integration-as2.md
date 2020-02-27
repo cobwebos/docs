@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666697"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650550"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 AS2 消息以实现 B2B 企业集成
+
+> [!IMPORTANT]
+> 原始 AS2 连接器已被弃用，因此请确保改用**AS2 （v2）** 连接器。 此版本提供的功能与原版本相同，是逻辑应用运行时的本机功能，可在吞吐量和消息大小方面提供显著的性能改进。 此外，本机 v2 连接器不需要创建与集成帐户的连接。 相反，如先决条件中所述，请确保将集成帐户链接到计划使用连接器的逻辑应用。
 
 若要在 Azure 逻辑应用中使用 AS2 消息，可以使用 AS2 连接器，它提供用于管理 AS2 通信的触发器和操作。 例如，若要在传输消息时建立安全性和可靠性，可以使用以下操作：
 
@@ -46,10 +49,7 @@ ms.locfileid: "75666697"
 
 本文介绍如何向现有逻辑应用添加 AS2 编码和解码操作。
 
-> [!IMPORTANT]
-> 将弃用原始 AS2 连接器，因此请确保改用**AS2 （v2）** 连接器。 此版本提供的功能与原版本相同，是逻辑应用运行时的本机功能，可在吞吐量和消息大小方面提供显著的性能改进。 此外，本机 v2 连接器不需要创建与集成帐户的连接。 相反，如先决条件中所述，请确保将集成帐户链接到计划使用连接器的逻辑应用。
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -63,9 +63,9 @@ ms.locfileid: "75666697"
 
 * 如果使用[Azure Key Vault](../key-vault/key-vault-overview.md)进行证书管理，请检查保管库密钥是否允许**加密**和**解密**操作。 否则，编码和解码操作将失败。
 
-  在 Azure 门户中，请切换到密钥保管库，查看保管库密钥的**允许操作**，并确认已选择 "**加密**和**解密**" 操作。
+  在 Azure 门户中转到密钥保管库中的密钥，查看密钥**允许的操作**，并确认已选择 "**加密**和**解密**" 操作，例如：
 
-  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![检查保管库密钥操作](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -81,7 +81,7 @@ ms.locfileid: "75666697"
 
 1. 现在提供这些属性的信息：
 
-   | 属性 | Description |
+   | properties | 说明 |
    |----------|-------------|
    | **要编码的消息** | 消息负载 |
    | **AS2 来源** | AS2 协议指定的消息发送方的标识符 |
@@ -91,6 +91,9 @@ ms.locfileid: "75666697"
    例如：
 
    ![消息编码属性](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
+
+> [!TIP]
+> 如果在发送已签名或加密的消息时遇到问题，请考虑尝试不同的 SHA256 算法格式。 AS2 规范不提供有关 SHA256 格式的任何信息，因此每个提供程序都使用其自己的实现或格式。
 
 <a name="decode"></a>
 
@@ -116,8 +119,11 @@ ms.locfileid: "75666697"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/as2/)。
+有关此连接器的更多技术详细信息（如连接器的 Swagger 文件所述的操作和限制），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/as2/)。 
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的原始 ISE 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

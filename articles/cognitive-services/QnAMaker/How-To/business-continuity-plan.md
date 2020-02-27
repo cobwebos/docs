@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: a31076d17ebaf8020fe4b3f82594b98a7c3bde74
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977448"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650463"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>为 QnA Maker 服务创建业务连续性计划
 
@@ -25,7 +25,7 @@ ms.locfileid: "74977448"
 
 上述高级想法如下：
 
-1. 在 [Azure 配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中设置两个并行 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。
+1. 在 [Azure 配对区域](../How-To/set-up-qnamaker-service-azure.md)中设置两个并行 [QnA Maker 服务](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 2. 使主要和辅助 Azure 搜索索引保持同步。在[此处](https://github.com/pchoudhari/QnAMakerBackupRestore)使用 GitHub 示例，了解如何备份-还原 Azure 索引。
 
@@ -40,4 +40,4 @@ ms.locfileid: "74977448"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为 QnA Maker 开发选择容量](../Tutorials/choosing-capacity-qnamaker-deployment.md)
+> [选择 capactiy](./improve-knowledge-base.md)
