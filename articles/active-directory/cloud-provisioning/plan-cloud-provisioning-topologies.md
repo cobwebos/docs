@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 142974423816b07d754a5425017aedc3195e2f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793992"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620875"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect 云预配支持的拓扑和方案
 本文介绍使用 Azure AD Connect 云预配的各种本地和 Azure Active Directory （Azure AD）拓扑。 本文仅包括支持的配置和方案。
@@ -33,12 +33,16 @@ ms.locfileid: "74793992"
 - 将自动选择对象的源定位点。  它使用 Msds-consistencyguid （如果存在），否则使用 ObjectGUID。
 - 不能更改用于源锚点的属性。
 
+## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
+![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/single-forest.png)
+
+最简单的拓扑是具有一个或多个域的单个本地林，以及单个 Azure AD 租户。  有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的单个林](tutorial-single-forest.md)
 
 
 ## <a name="multi-forest-single-azure-ad-tenant"></a>多林、单个 Azure AD 租户
 ![多林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/multi-forest.png)
 
-最常见的拓扑是一个多个 AD 林，其中包含一个或多个域，一个 Azure AD 租户。  
+常见拓扑是一个多个 AD 林，其中包含一个或多个域，一个 Azure AD 租户。  
 
 ## <a name="existing-forest-with-azure-ad-connect-new-forest-with-cloud-provisioning"></a>具有 Azure AD Connect 的现有林，具有云预配的新林
 ![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/existing-forest-new-forest.png)
@@ -50,10 +54,7 @@ ms.locfileid: "74793992"
 
 有关此方案的示例，请参阅[教程：在现有同步的 AD 林中试点 Azure AD Connect 云预配](tutorial-pilot-aadc-aadccp.md)
 
-## <a name="single-forest-single-azure-ad-tenant"></a>单个林，单个 Azure AD 租户
-![单个林和单个租户的拓扑](media/plan-cloud-provisioning-topologies/single-forest.png)
 
-最简单的拓扑是具有一个或多个域的单个本地林，以及单个 Azure AD 租户。  有关此方案的示例，请参阅[教程：包含单个 Azure AD 租户的单个林](tutorial-single-forest.md)
 
 ## <a name="next-steps"></a>后续步骤 
 

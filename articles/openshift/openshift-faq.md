@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5901be713f686f0c7213449a775c86b9e346fe12
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275410"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619475"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常见问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "76275410"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>是否可以将群集部署到现有的虚拟网络？
 
-不。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
+不是。 但可以通过对等互连将 Azure Red Hat OpenShift 群集连接到现有 VNET。 有关详细信息，请参阅[将群集的虚拟网络连接到现有虚拟网络](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)。
 
 ## <a name="what-cluster-operations-are-available"></a>哪些群集操作可用？
 
@@ -55,23 +55,35 @@ ms.locfileid: "76275410"
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>管理员是否可以管理用户和配额？
 
-可以。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
+是的。 Azure Red Hat OpenShift 管理员可以管理用户和配额，还可以访问所有用户创建的项目。
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>是否可以将群集限制为仅限特定 Azure AD 的用户？
 
-可以。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅[如何：将应用限制到一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+是的。 你可以通过配置 Azure AD 应用程序限制用户可以登录到群集的 Azure AD。 有关详细信息，请参阅[如何：将应用限制到一组用户](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+
+## <a name="can-i-restrict-users-from-creating-projects"></a>可以限制用户创建项目吗？
+
+是的。 以 Azure Red Hat OpenShift 管理员身份登录到群集，并执行以下命令：
+
+```
+oc adm policy \
+    remove-cluster-role-from-group self-provisioner \
+    system:authenticated:oauth
+```
+
+有关详细信息，请参阅有关[禁用自我预配](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)的 OpenShift 文档。
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>群集是否可以跨多个 Azure 区域具有计算节点？
 
-不。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
+不是。 Azure Red Hat OpenShift 群集中的所有节点都必须源自同一 Azure 区域。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主节点和基础结构节点在与 Azure Kubernetes 服务（AKS）配合时是否会被抽象掉？
 
-不。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
+不是。 所有资源（包括群集主机）都在您的客户订阅中运行。 这些类型的资源置于只读资源组中。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是否支持 Azure （OSBA）的开放 Service Broker？
 
-可以。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
+是的。 可以将 OSBA 与 Azure Red Hat OpenShift 配合使用。 有关详细信息，请参阅[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
 
 ## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我尝试使用其他订阅中的虚拟网络，但收到 `Failed to get vnet CIDR` 错误。
 

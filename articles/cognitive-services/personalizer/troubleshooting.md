@@ -2,14 +2,14 @@
 title: 故障排除-Personalizer
 description: 本文包含有关 Personalizer 的常见问题的解答。
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650514"
 ---
 # <a name="personalizer-troubleshooting"></a>Personalizer 故障排除
 
@@ -32,6 +32,19 @@ ms.locfileid: "77469538"
 </details>
 
 ## <a name="learning-loop"></a>学习循环
+
+<details>
+<summary>
+<b>在没有 Personalizer 的情况下，学习循环与系统之间的匹配不会达到100%。如何实现解决此问题？</b></summary>
+
+**答**：您无法通过学习循环实现您的目标的原因：
+* 通过排名 API 调用发送的功能不足
+* 发送的功能中的 bug，例如，将非聚合功能数据（如时间戳）发送到排名 API
+* 具有循环处理的 bug，如不将奖励数据发送给用于事件的奖励 API
+
+若要解决此问题，需要更改处理方式：更改发送到循环的功能，或确保奖励是排名响应质量的正确评估。
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ ms.locfileid: "77469538"
 <details>
 <summary><b>如何实现导入学习策略吗？</b></summary>
 
-**解答**：了解有关[学习策略概念](concept-active-learning.md#understand-learning-policy-settings)以及[如何应用](how-to-learning-policy.md)新学习策略的详细信息。 如果你不想要选择学习策略，可以根据当前事件，使用[脱机评估](how-to-offline-evaluation.md)建议学习策略。
+**解答**：了解有关[学习策略概念](concept-active-learning.md#understand-learning-policy-settings)以及[如何应用](how-to-manage-model.md)新学习策略的详细信息。 如果你不想要选择学习策略，可以根据当前事件，使用[脱机评估](how-to-offline-evaluation.md)建议学习策略。
 
 </details>
 

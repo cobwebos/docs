@@ -2,21 +2,21 @@
 title: 常见问题解答-Azure 数据库迁移服务
 description: 有关使用 Azure 数据库迁移服务执行数据库迁移的常见问题。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f27d398af723a54443f531c05a503a5f2fbe13f6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/20/2020
+ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064829"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650975"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>有关使用 Azure 数据库迁移服务的常见问题解答
 
@@ -51,7 +51,7 @@ Azure 数据库迁移服务是用于大规模 Microsoft Azure 数据库迁移的
 **问： Azure 数据库迁移服务与 Azure Migrate 产品/服务有何不同？**
 Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估是否适合迁移以及需要根据性能进行哪些大小调整，并提供在 Azure 中运行本地虚拟机的成本估算。 Azure Migrate 适合用于将基于本地 VM 的工作负荷直接迁移到 Azure IaaS VM。 但是，与 Azure 数据库迁移服务不同，Azure Migrate 不是 Azure PaaS 关系数据库平台（如 Azure SQL 数据库或 Azure SQL 数据库托管实例）的专用数据库迁移服务。
 
-## <a name="setup"></a>安装
+## <a name="setup"></a>设置
 
 **问：使用 Azure 数据库迁移服务的先决条件是什么？**
 若要确保 Azure 数据库迁移服务在执行数据库迁移时顺利运行，需要满足几个先决条件。 某些先决条件适用于该服务支持的所有方案（源/目标对），而其他先决条件则是特定方案所特有的。
@@ -88,7 +88,7 @@ Azure Migrate 帮助将本地虚拟机迁移到 Azure IaaS。 该服务会评估
 **问：如何实现设置 Microsoft Azure 虚拟网络？**
 尽管有多个 Microsoft 教程可以指导你完成设置虚拟网络的过程，但官方文档出现在[Azure 虚拟网络](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)一文中。
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 **问：使用 Azure 数据库迁移服务执行数据库迁移所需的步骤摘要是什么？**
 在典型的简单数据库迁移过程中，需要：

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 9112c7070708f3b97d79c1978a9b7204721c3194
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562613"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616631"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -155,7 +155,7 @@ ms.locfileid: "77562613"
 4. 加载项目后，按<kbd>F5</kbd>生成并运行项目。
 5. 此时会启动浏览器，此时会看到与此类似的屏幕。
     > [!div class="mx-imgBorder"]
-    > ![echobot-在本地主机上运行](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上运行的 EchoBot")
+    > [![echobot-在本地主机上运行](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "在 localhost 上运行的 EchoBot")](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png#lightbox)
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>用 Bot Framework 模拟器测试机器人示例
 
@@ -171,7 +171,7 @@ ms.locfileid: "77562613"
    ```
    然后按 "连接"。
 4. 机器人应立即 fibonacci 你 "Hello and 欢迎！" 。 键入任何短信，确认从机器人获得响应。
-5. 与 Echo Bot 实例通信的交换方式如下：![机器人-框架模拟器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "机器人框架模拟器")
+5. 与 Echo Bot 实例通信的交换方式如下： [![机器人-框架模拟器](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "机器人框架模拟器")](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png#lightbox)
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>将机器人部署到 Azure App Service
 
@@ -188,13 +188,14 @@ ms.locfileid: "77562613"
 
 1. 在**解决方案资源管理器**中，右键单击**EchoBot**项目，然后选择 "**发布 ...** "
 1. 将打开一个名为 "**选取" 的**新窗口。
-1. 从**Azure 服务**导航中选择 "**应用服务**"，选择 "**新建**"，然后单击 "**发布**"。
+1. 从**Azure 服务**导航中选择 "**应用服务**"，选择 "**新建**"，然后单击 "**创建配置文件**"。
 1. "**创建应用服务**" 窗口出现时：
    * 单击 "**添加帐户**"，然后使用 Azure 帐户凭据登录。 如果已登录，请从下拉列表中选择所需的帐户。
    * 对于**应用程序名称**，需要输入机器人的全局唯一名称。 此名称用于创建唯一的机器人 URL。 将填充默认值，包括日期和时间（例如： "EchoBot20190805125647"）。 您可以使用本教程的默认名称。
    * 对于 "**订阅**"，将其设置为 "**免费试用**"
    * 对于 "**资源组**"，选择**SpeechEchoBotTutorial**
    * 对于**托管计划**，请选择**SpeechEchoBotTutorial-AppServicePlan**
+   * 对于**Application Insights**，请将其保留为 "**无**"
 1. 单击“创建”
 1. 在 Visual Studio 中应会看到如下所示的成功消息：
 
@@ -232,12 +233,9 @@ ms.locfileid: "77562613"
 > [!NOTE]
 > 如果要了解有关 bot 如何利用频道的详细信息，请参阅[将 Bot 连接到通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)。
 
-<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
 
-1. 第一步是为注册创建新的资源。 在 [Azure 门户](https://portal.azure.com)中，单击“创建资源”。
-2. 在搜索栏类型**机器人**中显示结果后，选择 "**机器人频道注册**"。
-3. 单击“创建”。
-4. 系统将提示你提供一些信息：
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">创建 Azure 机器人频道注册<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+2. 系统将提示你提供一些信息：
    * 对于**机器人句柄**，请输入**SpeechEchoBotTutorial-BotRegistration**。
    * 对于 "**订阅**"，请选择 "**免费试用**"。
    * 对于 "**资源组**"，选择 " **SpeechEchoBotTutorial**"。
@@ -254,7 +252,7 @@ ms.locfileid: "77562613"
 |------|-------|----------|
 | EchoBot20190805125647 | 应用服务 | 美国西部 |
 | SpeechEchoBotTutorial-AppServicePlan | 应用服务计划 | 美国西部 |
-| SpeechEchoBotTutorial-BotRegistration | 机器人频道注册 | Global |
+| SpeechEchoBotTutorial-BotRegistration | 机器人频道注册 | 全局 |
 | SpeechEchoBotTutorial-语音 | 认知服务 | 美国西部 |
 
 > [!IMPORTANT]
@@ -271,7 +269,7 @@ ms.locfileid: "77562613"
    * 从菜单中选择先前创建的语音资源（例如**SpeechEchoBotTutorial**），将机器人关联到语音订阅密钥。
    * 单击“保存”。
 
-1. 在**Azure 服务**导航中，单击 "**设置**"。
+1. 在**机器人管理**导航中，单击 "**设置**"。
    * 选中标记为**启用流式处理终结点**的框。 这是在机器人和直接线路语音通道之间启用基于 web 套接字构建的通信协议所必需的。
    * 单击“保存”。
 
@@ -310,6 +308,7 @@ ms.locfileid: "77562613"
 每个机器人发送和接收**活动**消息。 在直接语音语音客户端的 "**活动日志**" 窗口中，你将看到带有客户端从机器人接收到的每个活动的有时间戳的日志。 还可以查看客户端使用[`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync)方法发送到机器人的活动。 选择日志项时，它会将关联活动的详细信息显示为 JSON。
 
 下面是客户端收到的活动的示例 json：
+
 ```json
 {
     "attachments":[],
@@ -395,7 +394,6 @@ ms.locfileid: "77562613"
 1. 打开 "语音语音客户端应用"，单击 "设置" 按钮（右上角的齿轮图标），并在 "语言" 字段中输入 `de-de` （这是 "[语音到文本](language-support.md#speech-to-text)" 表中提到的 "区域设置" 值）。 这将设置要识别的口述语言，并覆盖默认 `en-us`。 这也指示 "直接线路语音频道" 使用默认的德语语音进行机器人回复。
 2. 关闭 "设置" 页，然后单击 "重新连接" 按钮，建立与 echo bot 的新连接。
 3. 单击麦克风按钮，并口述德语短语。 你将看到已识别的文本，并且 echo bot 将用默认的德语语音进行回复。
-
 
 ### <a name="change-the-default-bot-voice"></a>更改默认机器人语音
 

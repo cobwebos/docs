@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: ff723eb2ebe48a7019fecec9106c1618a636b94c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583102"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622810"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -403,34 +403,6 @@ State           : New
 PolicyState     : Valid
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>在 MABS 代理中备份 Windows Server 系统状态
-
-本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
-
-### <a name="schedule"></a>计划
-
-```powershell
-$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
-```
-
-### <a name="retention"></a>保留
-
-```powershell
-$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
-```
-
-### <a name="configuring-schedule-and-retention"></a>配置计划和保留期
-
-```powershell
-New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
- ```
-
-### <a name="verifying-the-policy"></a>验证策略
-
-```powershell
-Get-OBSystemStatePolicy
- ```
-
 ### <a name="applying-the-policy"></a>应用策略
 
 现在已完成策略对象，并且具有关联的备份计划、保留策略及文件包含/排除列表。 现在可以提交此策略以供 Azure 备份使用。 在应用新创建的策略之前，请使用[OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy?view=winserver2012-ps) cmdlet 确保没有任何现有备份策略与服务器相关联。 删除策略时，系统会提示确认。 若要跳过确认，请将 `-Confirm:$false` 标志与 cmdlet 一起使用。
@@ -565,6 +537,34 @@ Job completed.
 The backup operation completed successfully.
 ```
 
+## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>在 MABS 代理中备份 Windows Server 系统状态
+
+本部分介绍用于在 MABS 代理中设置系统状态的 PowerShell 命令
+
+### <a name="schedule"></a>计划
+
+```powershell
+$sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
+```
+
+### <a name="retention"></a>保留
+
+```powershell
+$rtn = New-OBRetentionPolicy -RetentionDays 32 -RetentionWeeklyPolicy -RetentionWeeks 13 -WeekDaysOfWeek Sunday -WeekTimesOfDay 2:00  -RetentionMonthlyPolicy -RetentionMonths 13 -MonthDaysOfMonth 1 -MonthTimesOfDay 2:00
+```
+
+### <a name="configuring-schedule-and-retention"></a>配置计划和保留期
+
+```powershell
+New-OBPolicy | Add-OBSystemState |  Set-OBRetentionPolicy -RetentionPolicy $rtn | Set-OBSchedule -Schedule $sched | Set-OBSystemStatePolicy
+ ```
+
+### <a name="verifying-the-policy"></a>验证策略
+
+```powershell
+Get-OBSystemStatePolicy
+ ```
+
 ## <a name="restore-data-from-azure-backup"></a>从 Azure 备份还原数据
 
 本部分将引导完成自动从 Azure 备份恢复数据的步骤。 此过程涉及以下步骤：
@@ -631,7 +631,7 @@ ItemLastModifiedTime :
 
 ### <a name="specifying-an-item-to-restore"></a>指定要还原的项
 
-若要还原特定的文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。 
+若要还原特定的文件，请指定与根卷相关的文件名。 例如，若要检索 C:\Test\Cat.job，请执行以下命令。
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE

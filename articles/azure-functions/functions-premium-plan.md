@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212474"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615684"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -107,28 +107,29 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |--| -- | -- |
 |澳大利亚中部| ✔<sup>1</sup> | |
 |澳大利亚中部 2| ✔<sup>1</sup> | |
-|澳大利亚东部| ✔ | |
+|澳大利亚东部| ✔ | ✔<sup>1</sup> |
 |澳大利亚东南部 | ✔ | ✔<sup>1</sup> |
 |巴西南部| ✔<sup>2</sup> |  |
-|加拿大中部| ✔ |  |
+|加拿大中部| ✔ | ✔<sup>1</sup> |
 |美国中部| ✔ |  |
 |东亚| ✔ |  |
 |美国东部 | ✔ | ✔<sup>1</sup> |
-|美国东部 2| ✔ |  |
+|美国东部 2| ✔ | ✔<sup>1</sup> |
 |法国中部| ✔ |  |
 |德国中西部| ✔ | |
 |日本东部| ✔ | ✔<sup>1</sup> |
-|日本西部| ✔ | |
-|韩国中部| ✔ |  |
+|日本西部| ✔ | ✔<sup>1</sup> |
+|韩国中部| ✔ | ✔<sup>1</sup> |
 |美国中北部| ✔ |  |
 |北欧| ✔ | ✔<sup>1</sup> |
 |美国中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
 |东南亚| ✔ | ✔<sup>1</sup> |
-|英国南部| ✔ | |
+|英国南部| ✔ | ✔<sup>1</sup> |
 |英国西部| ✔ |  |
 |西欧| ✔ | ✔<sup>1</sup> |
 |印度西部| ✔ |  |
+|美国中西部| | ✔<sup>1</sup> |
 |美国西部| ✔ | ✔<sup>1</sup> |
 |美国西部 2| ✔ |  |
 

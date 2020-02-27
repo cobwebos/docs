@@ -1,16 +1,16 @@
 ---
 title: 使用 Azure DevOps 连续更新函数应用代码
 description: 了解如何设置面向 Azure Functions 的 Azure DevOps 管道。
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834026"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649936"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 进行持续交付
 
@@ -25,11 +25,11 @@ ms.locfileid: "75834026"
 
 若要创建基于 YAML 的管道，请首先构建你的应用程序，然后部署该应用。
 
-### <a name="build-your-app"></a>构建你的应用程序
+### <a name="build-your-app"></a>生成应用
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于在 Azure 中部署函数应用。
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 可以使用以下示例创建 YAML 文件以生成 .NET 应用：
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 你可以使用以下示例创建 YAML 文件来构建 JavaScript 应用：
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 可以使用以下示例之一创建 YAML 文件，以便为特定 Python 版本生成应用。 Python 仅支持在 Linux 上运行的函数应用。
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 可以使用以下示例创建 YAML 文件以打包 PowerShell 应用。 只有 Windows Azure Functions 支持 PowerShell。
 
@@ -215,7 +215,7 @@ steps:
 
 Azure DevOps 中的模板是生成或部署应用的预定义任务组。
 
-### <a name="build-your-app"></a>构建你的应用程序
+### <a name="build-your-app"></a>生成应用
 
 在 Azure Pipelines 中构建应用程序的方式取决于应用程序的编程语言。 每种语言都有创建部署项目的特定生成步骤。 部署项目用于更新 Azure 中的函数应用。
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 114a460b3db67af278f813de2e7a18d571cf3c28
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161641"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613433"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>将 Azure AD 域服务从经典虚拟网络模型迁移到资源管理器
 
@@ -206,12 +206,12 @@ Azure PowerShell 用于为迁移准备 Azure AD DS 托管域。 这些步骤包�
     $creds = Get-Credential
     ```
 
-1. 现在，使用 *-Prepare*参数运行 `Migrate-Aadds` cmdlet。 为自己 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，例如*contoso.com*：
+1. 现在，使用 *-Prepare*参数运行 `Migrate-Aadds` cmdlet。 为自己 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，例如*aaddscontoso.com*：
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +219,7 @@ Azure PowerShell 用于为迁移准备 Azure AD DS 托管域。 这些步骤包�
 
 准备并备份 Azure AD DS 托管域后，可以迁移域。 此步骤使用资源管理器部署模型重新创建 Azure AD 域服务域控制器 Vm。 此步骤可能需要1到3小时才能完成。
 
-使用 *-Commit*参数运行 `Migrate-Aadds` cmdlet。 为在上一节中准备好 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，例如*contoso.com*：
+使用 *-Commit*参数运行 `Migrate-Aadds` cmdlet。 为在上一节中准备好 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，例如*aaddscontoso.com*：
 
 指定包含要迁移 Azure AD DS 的虚拟网络的目标资源组，如*myResourceGroup*。 提供目标虚拟网络（如*myVnet*）和子网（如*DomainServices*）。
 
@@ -228,7 +228,7 @@ Azure PowerShell 用于为迁移准备 Azure AD DS 托管域。 这些步骤包�
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +265,7 @@ Migrate-Aadds `
 
 1. 检查是否可以对其中一个域控制器的 IP 地址进行 ping 操作，例如 `ping 10.1.0.4`
     * 域控制器的 IP 地址显示在 Azure 门户中 Azure AD DS 托管域的 "**属性**" 页上。
-1. 验证托管域的名称解析，如 `nslookup contoso.com`
+1. 验证托管域的名称解析，如 `nslookup aaddscontoso.com`
     * 指定自己 Azure AD DS 托管域的 DNS 名称，以验证 DNS 设置是否正确以及是否可解决。
 
 迁移 cmdlet 完成后，第二个域控制器应在1-2 小时内可用。 若要查看第二个域控制器是否可用，请查看 Azure 门户中 Azure AD DS 托管域的**属性**页。 如果显示了两个 IP 地址，则第二个域控制器已准备就绪。
@@ -309,12 +309,12 @@ Azure AD DS 需要使用网络安全组来保护托管域所需的端口，并�
 
 如果在步骤2中运行 PowerShell cmdlet 准备迁移时出现错误，或者在步骤3中的迁移本身中出现错误，则 Azure AD DS 托管域可回滚到原始配置。 此回滚需要原始经典虚拟网络。 请注意，在回滚后，IP 地址可能仍会更改。
 
-使用 *-Abort*参数运行 `Migrate-Aadds` cmdlet。 为您自己的 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，该域是在上一节中准备的，如*contoso.com*和经典虚拟网络名称，例如*myClassicVnet*：
+使用 *-Abort*参数运行 `Migrate-Aadds` cmdlet。 为您自己的 Azure AD DS 托管域提供 *-ManagedDomainFqdn* ，该域是在上一节中准备的，如*aaddscontoso.com*和经典虚拟网络名称，例如*myClassicVnet*：
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

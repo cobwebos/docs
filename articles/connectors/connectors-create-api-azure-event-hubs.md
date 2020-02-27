@@ -7,18 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32fa54ef0d8eccaf8745ee37cb028d4f3c6d73eb
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446171"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650872"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
 
 本文演示如何使用 Azure 事件中心连接器监视和管理从逻辑应用发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)的事件。 通过这样的方式可以创建逻辑应用，从事件中心自动执行检查、发送和接收事件的任务和工作流。 有关连接器特定的技术信息，请参阅[Azure 事件中心连接器参考](https://docs.microsoft.com/connectors/eventhubs/)</a>。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "75446171"
 
    ![触发器属性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要监视的事件中心的名称 |
    | **内容类型** | 否 | 事件的内容类型。 默认为 `application/octet-stream`。 |
@@ -86,7 +86,7 @@ ms.locfileid: "75446171"
 
    **其他属性**
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **内容架构** | 否 | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只能为与架构匹配的事件触发逻辑应用。 |
    | **最小分区键** | 否 | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
@@ -130,7 +130,7 @@ ms.locfileid: "75446171"
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要在其中发送事件的事件中心 |
    | **内容** | 否 | 要发送的事件内容 |
@@ -152,7 +152,7 @@ ms.locfileid: "75446171"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | 属性 | 需要 | 值 | Description |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <connection-name> | 为连接创建的名称 |
    | **事件中心命名空间** | 是 | <event-hubs-namespace> | 选择要使用的事件中心命名空间。 |
@@ -173,8 +173,11 @@ ms.locfileid: "75446171"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/eventhubs/)。
+如需技术详细信息（例如触发器、操作和限制，如连接器的 Swagger 文件所述），请查看[连接器的参考页](https://docs.microsoft.com/connectors/eventhubs/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解其他[逻辑应用连接器](../connectors/apis-list.md)
+* 了解其他[逻辑应用连接器](../connectors/apis-list.md)

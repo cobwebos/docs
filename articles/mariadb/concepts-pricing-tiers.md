@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: e8f2b2661a07da43e924929df7666cfd970372b1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485448"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623901"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB 定价层
 
@@ -79,7 +79,7 @@ ms.locfileid: "77485448"
 
 ## <a name="backup"></a>备份
 
-服务自动对服务器进行备份。 备份的最短保留期为七天。 可以设置长达 35 天的保留期。 可以在服务器的生存期内随时对保留期进行调整。 可以在本地冗余备份和异地冗余备份之间进行选择。 异地冗余备份也存储在创建服务器时所在区域的[异地配对区域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中。 这种冗余可以在发生灾难时提供一定级别的保护。 也可获得将服务器还原到任何其他 Azure 区域的功能，前提是该区域提供的服务带有异地冗余备份。 创建服务器后，无法在这两个备份存储选项之间进行更改。
+服务自动对服务器进行备份。 你可以选择介于7到35天之间的保留期。 常规用途和内存优化服务器可以选择使用异地冗余存储进行备份。 在[概念一文](concepts-backup.md)中了解有关备份的详细信息。
 
 ## <a name="scale-resources"></a>缩放资源
 

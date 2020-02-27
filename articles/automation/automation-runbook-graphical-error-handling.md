@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ff30ed0f52bcbc174b99d2a96d6fdce95d390555
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620501"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649970"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -20,7 +20,10 @@ ms.locfileid: "77620501"
 
 图形 runbook 应包含错误处理代码来处理执行问题。 若要验证活动的输出或处理错误，可以使用 PowerShell 代码活动，在活动的输出链接上定义条件逻辑，或应用其他方法。
 
-Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。  
+Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。 
+
+>[!NOTE]
+>本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="powershell-error-types"></a>PowerShell 错误类型
 

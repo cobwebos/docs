@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6efad8160115347469fb387108812ddc9adecc1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77601940"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624173"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -34,23 +34,20 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 在 Azure 中托管 SAP 工作负荷方案还可以创建标识集成和单一登录的要求。 当你使用 Azure Active Directory （Azure AD）来连接不同的 SAP 组件和 SAP 软件即服务（SaaS）或平台即服务（PaaS）产品/服务（PaaS）产品/服务时，可能会出现这种情况。 "AAD SAP 标识集成和单一登录" 一节中介绍并记录了包含 Azure AD 和 SAP 实体的此类集成和单一登录方案的列表。
 
 ## <a name="changes-to-the-sap-workload-section"></a>SAP 工作负荷部分的更改
-本文末尾列出了 "Azure 上的 SAP 工作负荷" 部分中文档的更改。
+本文末尾列出了 "Azure 上的 SAP 工作负荷" 部分中文档的更改。 更改日志中的条目保存时间大约为180天。
 
+## <a name="you-want-to-know"></a>你想知道
+如果有特定的问题，我们将指向 "开始" 页的此部分中的特定文档或流。 您想知道：
 
+- 支持哪些 Azure Vm 和 HANA 大型实例单元的 SAP 软件版本以及哪些操作系统版本。 阅读本文档，了解[Azure 部署支持的 SAP 软件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)的答案和查找信息的过程
+- Azure Vm 和 HANA 大型实例支持的 SAP 部署方案。 可在以下文档中找到有关支持的方案的信息：
+    - [Azure 虚拟机支持的方案中的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-planning-supported-configurations)
+    - [HANA 大型实例支持的方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+
+ 
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure（大型实例）
 
-一系列文档将引导你完成 Azure （大型实例）上的 SAP HANA，或用于简短的 HANA 大型实例。 有关 HANA 大型实例的以下区域的信息，请参阅：
-
-- [Azure 上的 SAP HANA（大型实例）的概述](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
-- [Azure 上的 SAP HANA（大型实例）体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-architecture)
-- [Azure 上的 SAP HANA （大型实例）的基础结构和连接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- [在 Azure 上安装 SAP HANA （大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation)
-- [Azure 上的 SAP HANA （大型实例）的高可用性和灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
-- [Azure 上的故障排除和监视 SAP HANA （大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
-
-后续步骤：
-
-- 了解[Azure 上的 SAP HANA 的概述和体系结构（大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+一系列文档将引导你完成 Azure （大型实例）上的 SAP HANA，或用于简短的 HANA 大型实例。 有关 HANA 大型实例的信息，请参阅[Azure 上的 SAP HANA 文档概述和体系结构（大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) ，并浏览 HANA 大型实例部分的相关文档
 
 
 
@@ -120,7 +117,9 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
+- 02/25/2020：在[高可用性体系结构和方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)中更改 SAP 以添加到较新 HA 文章的链接
 - 02/25/2020：SUSE Linux Enterprise Server 上[的 Azure vm 上的 Azure vm 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)变化为 Pacemaker，指向介绍使用标准 Azure 负载均衡器访问公用终结点的文档
+- 02/21/2020：完成 sap [ASE Azure 虚拟机 DBMS 部署（适用于 sap 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)）的完整修订版
 - 02/21/2020：在[SAP HANA Azure 虚拟机存储配置](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)中进行更改，以表示/hana/data 的条带大小的新建议以及添加 i/o 计划程序的设置
 - 02/21/2020：HANA 大型实例文档中的更改，用于表示 S224 和 S224m 的新认证 Sku
 - 02/21/2020：在[rhel 上更改 Azure vm 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)和 azure vm 上的 sap NetWeaver 高可用性 Azure [NetApp 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)，用于调整排队服务器复制2体系结构（ENSA2）的群集约束

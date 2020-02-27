@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647996"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Azure 多重身份验证的功能和许可证
 
@@ -43,7 +43,7 @@ Azure 多重身份验证可以通过几种不同的方式使用和授权，具�
 
 | Feature | Azure AD Free-安全默认值 | Azure AD 全局管理员 Azure AD Free | Office 365 商业高级版、E3 版或 E5 版 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
-| 使用 MFA 保护 Azure AD 管理员帐户 | ● | ●（仅*Azure AD 全局管理员*帐户） | ● | ● |
+| 通过 MFA 保护 Azure AD 租户管理员帐户 | ● | ●（仅*Azure AD 全局管理员*帐户） | ● | ● |
 | 将移动应用用作第二个因素 | ● | ● | ● | ● |
 | 将电话呼叫用作第二个因素 | | ● | ● | ● |
 | 将短信用作第二个因素 | | ● | ● | ● |

@@ -1,31 +1,32 @@
 ---
-title: 与 Azure 托管身份集成
-description: 了解如何使用 Azure 托管标识进行身份验证，并获取对 Azure 应用配置的访问权限
+title: 使用 Azure 托管标识进行身份验证
+titleSuffix: Azure App Configuration
+description: 使用 Azure 托管标识对 Azure 应用配置进行身份验证
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
-ms.date: 12/29/2019
+ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2cdeb0d513230cac5d03f85f2189f15c818798fd
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 66bf27c1b1e8349c1a0e822c457412fdfca58e82
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500403"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619465"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
 
-Azure Active Directory [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)可帮助简化云应用程序的机密管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
+Azure Active Directory[托管标识](../active-directory/managed-identities-azure-resources/overview.md)简化了云应用程序的密钥管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
 
-Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库内置了托管标识支持。 尽管不需要使用它，但托管标识不再需要包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需担心泄露任何机密。
+Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库内置了托管标识支持。 尽管不需要使用它，但托管标识不再需要包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需公开任何机密。
 
-本教程演示如何利用托管标识访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 在继续操作之前，请先完成[使用应用程序配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
+本文说明如何利用托管标识访问应用配置。 它建立在快速入门中介绍的 Web 应用之上。 继续之前，请先[使用应用配置创建 ASP.NET Core 应用](./quickstart-aspnet-core-app.md)。
 
-本教程还演示了如何将托管标识与应用配置的 Key Vault 引用结合使用。 使用单个托管标识，你可以通过应用配置从 Key Vault 和配置值无缝访问这两个机密。 如果希望探索此功能，请先完成[使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
+本文还演示如何将托管标识与应用配置的 Key Vault 引用结合使用。 使用单个托管标识，你可以通过应用配置从 Key Vault 和配置值无缝访问这两个机密。 如果希望探索此功能，请先完成[使用 ASP.NET Core Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
 
 你可以使用任何代码编辑器执行本教程中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
 
-在本教程中，你将了解如何执行以下操作：
+在本文中，学习如何：
 
 > [!div class="checklist"]
 > * 授予对应用程序配置的托管身份访问权限。

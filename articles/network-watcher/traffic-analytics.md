@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47d9508c891d2b4fe74b42114783b02c58e8c91f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426218"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620010"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -83,7 +83,7 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 印度南部
 * 日本东部 
 * 日本西部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
 * 中国东部 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>支持的区域： Log Analytics 工作区
@@ -112,10 +112,10 @@ Log Analytics 工作区必须存在于以下区域中：
 * 韩国中部
 * 印度中部
 * 日本东部
-* 美国政府弗吉尼亚州
+* US Gov 弗吉尼亚州
 * 中国东部 2
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
@@ -123,8 +123,8 @@ Log Analytics 工作区必须存在于以下区域中：
 
 |部署模型   | 角色                   |
 |---------          |---------               |
-|资源管理器   | 所有者                  |
-|                   | Contributor            |
+|资源管理器   | “所有者”                  |
+|                   | 参与者            |
 |                   | 读取器                 |
 |                   | 网络参与者    |
 
@@ -201,7 +201,7 @@ New-AzStorageAccount `
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 
-在门户左侧选择“所有服务”，并在“筛选器”框中输入“监视”。 当“监视”出现在搜索结果中时，请选择它。 若要开始浏览流量分析及其功能，请依次选择“网络观察程序”、“流量分析”。
+若要查看流量分析，请在门户搜索栏中搜索 "**网络观察**程序"。 在网络观察程序内，若要浏览流量分析及其功能，请从左侧菜单中选择 "**流量分析**"。 
 
 ![访问流量分析仪表板](./media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 

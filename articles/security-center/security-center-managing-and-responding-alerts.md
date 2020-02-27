@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603859"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615986"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 
@@ -65,19 +65,27 @@ ms.locfileid: "77603859"
     > [!NOTE]
     >在某些情况下，源 IP 地址不可用，某些 Windows 安全事件日志不包含 IP 地址。
 
-1. 安全中心建议的补救步骤根据安全警报而有所不同。 对于每个警报，请遵循它们。 在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
+1. 安全中心建议的补救步骤根据安全警报而有所不同。 对于每个警报，请遵循它们。 
+
+    在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
 
     以下主题将指导你根据资源类型来完成不同的警报：
     
-    * [IaaS Vm 和服务器警报](security-center-alerts-iaas.md)
-    * [本机计算警报](security-center-alerts-compute.md)
-    * [数据服务警报](security-center-alerts-data-services.md)
-    
+    * [IaaS Windows 计算机的警报](threat-protection.md#windows-machines)
+    * [IaaS Linux 计算机的警报](threat-protection.md#linux-machines)
+    * [Azure App Service 的警报](threat-protection.md#app-services)
+    * [Azure 容器警报](threat-protection.md#azure-containers)
+    * [SQL 数据库和 SQL 数据仓库的警报](threat-protection.md#data-sql)
+    * [Azure 存储的警报](threat-protection.md#azure-storage)
+    * [Cosmos DB 的警报](threat-protection.md#cosmos-db)
+
     以下主题介绍安全中心如何使用它从与 Azure 基础结构集成所收集的不同遥测，以便为 Azure 上部署的资源应用其他保护层：
     
-    * [服务层警报](security-center-alerts-service-layer.md)
-    * [Azure WAF 和 Azure DDoS 保护的威胁检测](security-center-alerts-integration.md)
-    
+    * [Azure 管理层警报（Azure 资源管理器）（预览版）](threat-protection.md#management-layer)
+    * [Azure Key Vault 的警报（预览）](threat-protection.md#azure-keyvault)
+    * [Azure 网络层警报](threat-protection.md#network-layer)
+    * [来自其他服务的警报](threat-protection.md#alerts-other)    
+
 ## <a name="see-also"></a>另请参阅
 
 本文档中已经介绍了如何在安全中心配置安全策略。 若要了解有关安全中心的详细信息，请参阅以下文章：

@@ -3,21 +3,21 @@ title: PowerShell：将 SQL Server 迁移到 SQL 托管实例
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure PowerShell 和 Azure 数据库迁移服务从本地 SQL Server 迁移到 Azure SQL 数据库托管实例。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746627"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650718"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>通过 PowerShell & Azure 数据库迁移服务将 SQL Server 迁移到 SQL 数据库托管实例
 
@@ -35,7 +35,7 @@ ms.locfileid: "75746627"
 
 本文详细介绍了如何执行联机和脱机迁移。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成这些步骤，需满足以下条件：
 

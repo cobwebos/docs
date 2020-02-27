@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446185"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651375"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用访问和管理 IBM DB2 资源
 
@@ -47,7 +47,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 | 使用 DELETE 删除一行 | 删除行 |
 |||
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -80,7 +80,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 若要设置连接，请按提示提供以下连接详细信息，选择“创建”，然后保存逻辑应用：
 
-| 属性 | 需要 | Description |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **通过本地网关连接** | 否 | 仅适用于本地连接。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” |
@@ -100,7 +100,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 在创建连接之前，必须已安装本地数据网关。 否则无法完成连接设置。 如果已安装网关，请继续提供这些连接详细信息，然后选择“创建”。
 
-| 属性 | 需要 | Description |
+| properties | 必选 | 说明 |
 |----------|----------|-------------|
 | **通过本地网关连接** | 是 | 适用于创建本地连接，将显示本地连接属性。 |
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” | 
@@ -151,7 +151,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 1. 指定所有必需属性 (*) 的值。 选择一个表后，该操作会显示特定于该表中的记录的相关属性。
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 包含所需记录的表，在本示例中为“AREA” |
    | **地区 ID** | 是 | 所需记录的 ID，在本示例中为“99999” |
@@ -231,7 +231,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要将记录添加到的表，例如“AREA” |
    | **地区 ID** | 是 | 要添加的地区的 ID，例如“99999” |
@@ -278,7 +278,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中更新记录的表，例如“AREA” |
    | **行 ID** | 是 | 要更新的记录的 ID，例如“99999” |
@@ -326,7 +326,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
    本示例的属性如下：
 
-   | 属性 | 需要 | Description |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中删除记录的表，例如“AREA” |
    | **行 ID** | 是 | 要删除的记录的 ID，例如“99999” |
@@ -359,7 +359,10 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的 OpenAPI （以前的 Swagger）文件所述的技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](/connectors/db2/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/db2/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

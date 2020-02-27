@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 8eb115497427338599db08e8c7bbdd55c5a158fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807953"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624153"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
@@ -119,7 +119,7 @@ ms.locfileid: "73807953"
 
 ![方案 3. 美国东部主服务器配置。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-a.png)
 
-一天结束时（例如当地时间晚上 11 点），应将活跃数据库切换至下一个区域（北欧）。 此任务可通过使用 [Azure 计划服务](../scheduler/scheduler-intro.md)实现完全的自动化。  此任务涉及以下步骤：
+在一天结束时（例如，本地时间为11：11：晚上11：1），活动数据库应切换到下一个区域（北欧）。 此任务可通过使用[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)来实现完全自动化。 此任务涉及以下步骤：
 
 * 使用友好故障转移将故障转移组中的主服务器切换至北欧 (1)
 * 删除美国东部和北欧之间的故障转移组
@@ -130,7 +130,7 @@ ms.locfileid: "73807953"
 
 ![方案 3. 将主服务器切换至北欧。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-假如，北欧发生中断，故障转移组启动自动数据库故障转移，可有效将应用程序提前移至下一个区域 (1)。  在此情况下，在北欧回到联机状态前，美国东部是唯一的辅助服务器区域。 剩下两个区域通过转换角色为三个地理区域中的所有用户提供服务。 须相应调整 Azure 计划程序。 由于剩余的区域从欧洲获取额外的用户流量，所以应用程序性能不仅受额外延迟的影响，还受增加的最终用户连接的影响。 北欧的中断问题缓解后，当地的辅助数据库会立即与当前主数据库同步。 下图说明了北欧的服务中断：
+假如，北欧发生中断，故障转移组启动自动数据库故障转移，可有效将应用程序提前移至下一个区域 (1)。  在此情况下，在北欧回到联机状态前，美国东部是唯一的辅助服务器区域。 剩下两个区域通过转换角色为三个地理区域中的所有用户提供服务。 必须相应地调整 Azure 逻辑应用。 由于剩余的区域从欧洲获取额外的用户流量，所以应用程序性能不仅受额外延迟的影响，还受增加的最终用户连接的影响。 北欧的中断问题缓解后，当地的辅助数据库会立即与当前主数据库同步。 下图说明了北欧的服务中断：
 
 ![方案 3. 北欧中断。](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

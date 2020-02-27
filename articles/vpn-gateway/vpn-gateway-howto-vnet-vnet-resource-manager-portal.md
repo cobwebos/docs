@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: b98fb4044028ec9b335dc314732da04d18a3e2f9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b26947f2dd25f950b2d69d58321582a503aea83d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894957"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619703"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -103,7 +103,7 @@ ms.locfileid: "75894957"
    - **地址空间**：输入*10.41.0.0/16*。
    - **订阅**：选择要使用的订阅。
    - **资源组**：输入*TestRG4*。
-   - **位置**：选择“美国西部”。
+   - **位置**：选择 "**美国西部**"。
    - **子网** 
       - **名称**：输入*前端*。
       - **地址范围**：输入*10.41.0.0/24*。
@@ -183,7 +183,7 @@ TestVNet1 和 TestVNet4 的虚拟网络网关创建完成后，可以开始创�
 
 数据开始流动后，会看到“输入数据”和“输出数据”的值。
 
-![基础知识](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "要素")
+![概述](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/essentials.png "Essentials")
 
 ## <a name="add-additional-connections"></a>添加其他连接
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 02/25/2020
+ms.openlocfilehash: 3e6dfd5882e49ad903e8cff6f0ec7f3d6bd4a8b7
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769857"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619629"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL-单服务器中的备份和还原
 
@@ -20,6 +20,8 @@ Azure Database for PostgreSQL 可自动创建服务器备份并将其存储在�
 ## <a name="backups"></a>备份
 
 Azure Database for PostgreSQL 获取数据文件和事务日志的备份。 根据所支持的最大存储大小，我们可以进行完整备份和差异备份（4 TB 最大存储服务器）或快照备份（最多 16 TB 的存储服务器）。 可以通过这些备份将服务器还原到所配置的备份保留期中的任意时间点。 默认的备份保留期为七天。 可以选择将其配置为长达 35 天。 所有备份都使用 AES 256 位加密进行加密。
+
+无法导出这些备份文件。 备份仅可用于 Azure Database for PostgreSQL 中的还原操作。 您可以使用[pg_dump](howto-migrate-using-dump-and-restore.md)来复制数据库。
 
 ### <a name="backup-frequency"></a>备份频率
 
@@ -52,7 +54,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 > [!IMPORTANT]
 > 删除的服务器无法还原。 如果删除服务器，则属于该服务器的所有数据库也会被删除且不可恢复。 为了防止服务器资源在部署后遭意外删除或意外更改，管理员可以利用[管理锁](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)。
 
-### <a name="point-in-time-restore"></a>时间点还原
+### <a name="point-in-time-restore"></a>时点还原
 
 可以还原到备份保留期中的任意时间点，不管备份冗余选项如何。 新服务器在原始服务器所在的 Azure 区域中创建。 它在创建时，使用原始服务器在定价层、计算的代、vCore 数、存储大小、备份保留期和备份冗余选项方面的配置。
 
@@ -60,7 +62,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 
 可能需要等到下一个事务日志备份进行后，才能还原到上一个五分钟内的某个时间点。
 
-### <a name="geo-restore"></a>异地还原
+### <a name="geo-restore"></a>地域恢复
 
 如果已将服务器配置为进行异地冗余备份，则可将服务器还原到另一 Azure 区域，只要服务在该区域可用即可。 支持多达 4 TB 存储的服务器可以还原到异地配对区域，也可以还原到支持高达 16 TB 存储的任何区域。 对于支持高达 16 TB 存储空间的服务器，还可以在支持 16 TB 服务器的任何区域还原异地备份。 查看[Azure Database For PostgeSQL 定价层](concepts-pricing-tiers.md)以获取受支持区域的列表。
 
@@ -73,7 +75,7 @@ Azure Database for PostgreSQL 最高可以提供 100% 的已预配服务器存�
 从任一恢复机制还原后，都应执行以下任务，然后用户和应用程序才能重新运行：
 
 - 如果需要使用新服务器来替换原始服务器，则请将客户端和客户端应用程序重定向到新服务器
-- 对于要进行连接的用户，请确保设置适当的服务器级防火墙规则
+- 确保用户可以连接到适当的服务器级防火墙和 VNet 规则。 不会从原始服务器复制这些规则。
 - 确保设置适当的登录名和数据库级权限
 - 视情况配置警报
 

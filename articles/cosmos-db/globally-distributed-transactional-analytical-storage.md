@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445399"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623385"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Azure Cosmos 容器的全球分布式事务和分析存储
 
@@ -27,16 +27,16 @@ Azure Cosmos 容器由两个存储引擎（在个人预览版中）内部支持�
 事务存储引擎受本地 Ssd 的支持，而分析存储则存储在群集以外的 SSD 存储上。 下表捕获了事务存储与分析存储之间的明显差异。
 
 
-|功能  |事务存储  |分析存储 |
+|Feature  |事务存储  |分析存储 |
 |---------|---------|---------|
 |每个 Azure Cosmos 容器的最大存储空间 |   无限制      |    无限制     |
-|每个逻辑分区键的最大存储空间   |   10 GB      |   无限制      |
+|每个逻辑分区键的最大存储空间   |   20 GB      |   无限制      |
 |存储编码  |   使用内部格式的行方向。   |   使用 Apache Parquet 格式面向列。 |
 |存储区域 |   由本地/内部群集 Ssd 支持的复制存储。 |  廉价远程/脱离群集 Ssd 支持的复制存储。       |
 |持续性  |    99.99999 （7-9 秒）     |  99.99999 （7-9 秒）       |
 |访问数据的 Api  |   SQL、MongoDB、Cassandra、Gremlin、Tables 和 etcd。       | Apache Spark         |
 |保留期（生存时间或 TTL）   |  策略驱动，在 Azure Cosmos 容器上通过使用 `DefaultTimeToLive` 属性进行配置。       |   策略驱动，在 Azure Cosmos 容器上通过使用 `ColumnStoreTimeToLive` 属性进行配置。      |
-|每 GB 的价格    |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
+|每 GB 价格    |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)     |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 |存储事务的价格    |  请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)         |   请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)        |
 
 ## <a name="benefits-of-transactional-and-analytical-storage"></a>事务性和分析存储的优点

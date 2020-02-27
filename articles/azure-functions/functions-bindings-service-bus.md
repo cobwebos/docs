@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b505a90057a213d7f64d4d168a6a70da0ff03c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485295"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621073"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions 的 Azure 服务总线绑定
 
@@ -30,11 +30,11 @@ Azure Functions 通过[触发器和绑定](./functions-triggers-bindings.md)与[
 
 | 语言                                        | 添加依据 。                                   | 备注 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | 安装[NuGet 包]版本2。x | |
+| C#                                              | 安装[NuGet 包]版本4。x | |
 | C#脚本、Java、JavaScript、Python、PowerShell | 注册[扩展捆绑]          | 建议将[Azure 工具扩展]用于 Visual Studio Code。 |
 | C#脚本（仅在 Azure 门户中为联机）         | 添加绑定                            | 若要更新现有绑定扩展，而不必重新发布函数应用，请参阅[更新扩展]。 |
 
-[NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus
+[NuGet 包]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [扩展捆绑]: ./functions-bindings-register.md#extension-bundles
 [更新扩展]: ./install-update-binding-extensions-manual.md

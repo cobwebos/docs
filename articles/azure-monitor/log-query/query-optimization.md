@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: cd48f29d1f3866a4cd6893746dc44999b8aba24b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
-ms.translationtype: HT
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622914"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648829"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-explorer/)来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并为日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，可以显著提高查询性能。 本文介绍了性能注意事项和解决这些问题的几种方法。
@@ -38,11 +38,11 @@ Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-exp
 
 - [总 CPU](#total-cpu)：用于跨所有计算节点处理查询的总体计算。 它表示用于计算、分析和数据提取的时间。 
 
-- [数据量](#data-volume)：用于处理查询的总体数据。 受目标表的大小、使用的时间范围、应用的筛选器以及所引用的列数的影响。
+- [用于处理查询的数据](#data-used-for-processed-query)：用于处理查询的总体数据。 受目标表的大小、使用的时间范围、应用的筛选器以及所引用的列数的影响。
 
-- [时间范围](#time-range)：用于处理查询的最新数据和最旧的数据之间的间隔。 受为查询指定的显式时间范围影响。
+- 已[处理查询的时间跨度](#time-span-of-the-processed-query)：用于处理查询的最新数据和最旧数据之间的间隔。 受为查询指定的显式时间范围影响。
 
-- [数据的存在时间](#age-of-data)：目前和用于处理查询的最早数据之间的差距。 它会极大影响数据提取的效率。
+- [处理的数据的使用时间](#age-of-processed-data)：目前和用于处理查询的最早的数据之间的差距。 它会极大影响数据提取的效率。
 
 - [工作区数量](#number-of-workspaces)：由于隐式或显式选择，在查询处理期间访问了多少个工作区。
 
@@ -151,7 +151,7 @@ Heartbeat
 > 此指标仅显示来自即时群集的 CPU。 在多区域查询中，它只表示一个区域。 在多工作区查询中，它可能不包括所有工作区。
 
 
-## <a name="data-volume"></a>数据量
+## <a name="data-used-for-processed-query"></a>用于已处理查询的数据
 
 查询处理中的一个重要因素是扫描并用于查询处理的数据量。 与其他数据平台相比，Azure 数据资源管理器使用严格的优化，大大减少了数据量。 尽管如此，查询中也存在一些重要因素，这些因素可能会影响所使用的数据量。
 在 Azure Monitor 日志中， **TimeGenerated**列用作数据的索引方式。 如果将**TimeGenerated**值限制为尽可能窄的范围，则可以显著地限制必须处理的数据量，从而显著提高查询性能。
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range"></a>时间范围
+## <a name="time-span-of-the-processed-query"></a>已处理查询的时间跨度
 
 将根据**TimeGenerated**列对 Azure Monitor 日志中的所有日志进行分区。 访问的分区数与时间跨度直接相关。 缩短时间范围是确保执行提示查询的最有效方法。
 
@@ -262,7 +262,7 @@ by Computer
 > [!IMPORTANT]
 > 此指标不适用于跨区域查询。
 
-## <a name="age-of-data"></a>数据保留时间
+## <a name="age-of-processed-data"></a>处理的数据的期限
 Azure 数据资源管理器使用多个存储层：内存中的本地 SSD 磁盘和更慢的 Azure Blob。 数据越新，就越有可能以较小的延迟存储在性能更高的层中，从而减少查询持续时间和 CPU。 除了数据本身以外，系统还具有元数据的缓存。 数据越旧，其元数据在缓存中的可能性就越小。
 
 尽管某些查询需要使用旧数据，但在某些情况下，会错误地使用旧数据。 如果执行查询时不在其元数据中提供时间范围，并且并非所有表引用都包括**TimeGenerated**列上的筛选器，则会发生这种情况。 在这些情况下，系统将扫描该表中存储的所有数据。 当数据保留时间较长时，它可能会涵盖长时间范围，以及与数据保持期相同的数据。

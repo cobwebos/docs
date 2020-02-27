@@ -2,13 +2,13 @@
 title: 模板中的输出
 description: 介绍如何在 Azure 资源管理器模板中定义输出值。
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 7244e1ac0eff973d550a2bae8a70fa5055ca2248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: ec96b45cdc5ccf488d46c2d8da03caf16d002dfa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483916"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622837"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure 资源管理器模板中的输出
 
@@ -43,7 +43,25 @@ ms.locfileid: "75483916"
 
 有关条件输出的简单示例，请参阅[条件输出模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)。
 
-## <a name="linked-templates"></a>链接的模板
+## <a name="dynamic-number-of-outputs"></a>动态输出数量
+
+在某些情况下，在创建模板时，您不知道需要返回的值的实例数。 您可以使用**copy**元素返回值的可变数量。
+
+```json
+"outputs": {
+  "storageEndpoints": {
+    "type": "array",
+    "copy": {
+      "count": "[parameters('storageCount')]",
+      "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+    }
+  }
+}
+```
+
+有关详细信息，请参阅[在 Azure 资源管理器模板中输出迭代](copy-outputs.md)。
+
+## <a name="linked-templates"></a>链接模板
 
 若要从链接模板中检索输出值，请使用父模板中的[reference](template-functions-resource.md#reference)函数。 父模板中的语法为：
 
@@ -61,7 +79,7 @@ ms.locfileid: "75483916"
 }
 ```
 
-不能在[嵌套模板](linked-templates.md#nested-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
+不能在`reference`嵌套模板[的 outputs 节中使用 ](linked-templates.md#nested-template) 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
 ## <a name="get-output-values"></a>获取输出值
 
@@ -69,7 +87,7 @@ ms.locfileid: "75483916"
 
 若要从部署历史记录中获取输出值，可以使用脚本。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -77,7 +95,7 @@ ms.locfileid: "75483916"
   -Name <deployment-name>).Outputs.resourceID.value
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group deployment show \
@@ -92,7 +110,7 @@ az group deployment show \
 
 下面的示例演示使用输出的方案。
 
-|模板  |Description  |
+|模板  |说明  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |

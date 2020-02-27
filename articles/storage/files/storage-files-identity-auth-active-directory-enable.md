@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 6dba1dcbfd5d8b957565dcd1353af6e37a57a81d
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599244"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651077"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>启用对 Azure 文件共享的 SMB 的 Active Directory 身份验证
 
@@ -68,6 +68,7 @@ Azure 文件 AD 身份验证在[大多数公共区域](https://azure.microsoft.c
 - 美国西部 2
 - 美国东部
 - 美国东部 2
+- 美国中南部
 - 西欧
 - 北欧
 
@@ -158,7 +159,7 @@ join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Na
 ```PowerShell
 #Set the feature flag on the target storage account and provide the required AD domain information
 
-Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServiesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStirageSid "<your-storage-account-sid>"
+Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServiesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
 ```
 
 

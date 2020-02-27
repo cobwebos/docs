@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581457"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647598"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -276,7 +276,6 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 1. 输入应用程序的“名称”。 例如， *SAMLApp1*。
 1. 在 "**支持的帐户类型**" 下，选择 "**仅限此组织目录中的帐户**"
 1. 在 "**重定向 URI**" 下，选择 " **Web**"，然后输入 `https://localhost`。 稍后会在应用程序注册的清单中修改此值。
-1. 选择 "**将管理员同意授予 openid 并 offline_access 权限**"。
 1. 选择“注册”。
 
 ### <a name="42-update-the-app-manifest"></a>4.2 更新应用程序清单
@@ -338,7 +337,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 通常需要以下部分或全部内容：
 
 * **元数据**： `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **颁发者**： `https://tenant-name.onmicrosoft.com/policy-name`
+* **颁发者**： `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **登录 url/saml 终结点/Saml url**：检查元数据文件中的值
 * **证书**：此项*B2C_1A_SamlIdpCert*，但没有私钥。 获取证书的公钥：
 

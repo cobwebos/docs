@@ -3,21 +3,21 @@ title: 已知问题：联机迁移到 SQL 数据库
 titleSuffix: Azure Database Migration Service
 description: 了解使用 Azure 数据库迁移服务在线迁移到 Azure SQL Database 时的已知问题/迁移限制。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437826"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650769"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>联机迁移到 Azure SQL Database 时的已知问题/迁移限制
 

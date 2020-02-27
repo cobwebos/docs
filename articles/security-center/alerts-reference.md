@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499949"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623972"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -33,7 +33,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-windows"></a>Windows 计算机的警报
 
-[更多详细信息和说明](security-center-alerts-iaas.md#windows-)
+[更多详细信息和说明](threat-protection.md#windows-machines)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -124,7 +124,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-linux"></a>适用于 Linux 计算机的警报
 
-[更多详细信息和说明](security-center-alerts-iaas.md#linux-)
+[更多详细信息和说明](threat-protection.md#linux-machines)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -213,7 +213,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azureappserv"></a>Azure App Service 的警报
 
-[更多详细信息和说明](security-center-alerts-compute.md#azure-app-service-)
+[更多详细信息和说明](threat-protection.md#app-services)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -238,7 +238,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-akscluster"></a>容器警报-Azure Kubernetes Service 群集
 
-[更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)
+[更多详细信息和说明](threat-protection.md#azure-containers)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -253,7 +253,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-containerhost"></a>容器警报-主机级别
 
-[更多详细信息和说明](security-center-alerts-compute.md#azure-containers-)
+[更多详细信息和说明](threat-protection.md#azure-containers)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -269,7 +269,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-sql-db-and-warehouse"></a>SQL 数据库和 SQL 数据仓库的警报
 
-[更多详细信息和说明](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[更多详细信息和说明](threat-protection.md#data-sql)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -287,7 +287,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azurestorage"></a>Azure 存储的警报
 
-[更多详细信息和说明](security-center-alerts-data-services.md#azure-storage-)
+[更多详细信息和说明](threat-protection.md#azure-storage)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -308,7 +308,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azurecosmos"></a>Azure Cosmos DB 的警报（预览）
 
-[更多详细信息和说明](security-center-alerts-data-services.md#azure-cosmos-db)
+[更多详细信息和说明](threat-protection.md#cosmos-db)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -319,7 +319,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azurenetlayer"></a>Azure 网络层警报
 
-[更多详细信息和说明](security-center-alerts-service-layer.md#azure-network-layer)
+[更多详细信息和说明](threat-protection.md#network-layer)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -344,7 +344,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azureresourceman"></a>Azure 资源管理器的警报（预览版）
 
-[更多详细信息和说明](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[更多详细信息和说明](threat-protection.md#management-layer)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -363,7 +363,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azurekv"></a>Azure Key Vault 的警报（预览）
 
-[更多详细信息和说明](security-center-alerts-service-layer.md#azure-keyvault)
+[更多详细信息和说明](threat-protection.md#azure-keyvault)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -381,7 +381,7 @@ ms.locfileid: "77499949"
 
 ## <a name="alerts-azureddos"></a>Azure DDoS 保护警报
 
-[更多详细信息和说明](security-center-alerts-integration.md#azure-ddos)
+[更多详细信息和说明](threat-protection.md#azure-ddos)
 
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
@@ -418,6 +418,7 @@ ms.locfileid: "77499949"
 ## <a name="next-steps"></a>后续步骤
 若要了解有关警报的详细信息，请参阅以下内容：
 
+* [Azure 安全中心的威胁防护](threat-protection.md)
 * [Azure 安全中心中的安全警报](security-center-alerts-overview.md)
 * [在 Azure 安全中心内管理和响应安全警报](security-center-managing-and-responding-alerts.md)
 * [导出安全警报和建议（预览）](continuous-export.md)

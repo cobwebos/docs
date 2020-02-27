@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 1cf1a97ed6350174511d61d924f893bb209736c2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 09654132b6e10f9905f79d1eb50f9bce220a7ab7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712579"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613774"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -61,15 +61,15 @@ ms.locfileid: "76712579"
 sudo vi /etc/hosts
 ```
 
-在*hosts*文件中，更新*localhost*地址。 在下例中：
+在*hosts*文件中，更新*localhost*地址。 在以下示例中：
 
-* *aadds.contoso.com*是 Azure AD DS 托管域的 DNS 域名。
+* *aaddscontoso.com*是 Azure AD DS 托管域的 DNS 域名。
 * *ubuntu*是你要加入到托管域的 ubuntu VM 的主机名。
 
 请用自己的值更新这些名称：
 
 ```console
-127.0.0.1 ubuntu.aadds.contoso.com ubuntu
+127.0.0.1 ubuntu.aaddscontoso.com ubuntu
 ```
 
 完成后，使用编辑器的 `:wq` 命令保存并退出*hosts*文件。
@@ -78,7 +78,7 @@ sudo vi /etc/hosts
 
 VM 需要其他一些包才能将 VM 加入到 Azure AD DS 托管域。 若要安装和配置这些包，请使用 `apt-get` 更新和安装域加入工具
 
-在 Kerberos 安装过程中， *krb5.conf*包会提示所有大写的领域名称。 例如，如果 Azure AD DS 托管域的名称为*aadds.contoso.com*，请输入*aadds。CONTOSO.COM*作为领域。 安装会在 */etc/krb5.conf*配置文件中写入 `[realm]` 和 `[domain_realm]` 部分。 请确保将整个领域指定为全部大写：
+在 Kerberos 安装过程中， *krb5.conf*包会提示所有大写的领域名称。 例如，如果 Azure AD DS 托管域的名称为*aaddscontoso.com*，请输入*AADDSCONTOSO.COM*作为领域。 安装会在 */etc/krb5.conf*配置文件中写入 `[realm]` 和 `[domain_realm]` 部分。 请确保将整个领域指定为全部大写：
 
 ```console
 sudo apt-get update
@@ -95,10 +95,10 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     sudo vi /etc/ntp.conf
     ```
 
-1. 在*ntp*文件中，创建一个行以添加 Azure AD DS 托管域的 DNS 名称。 在下面的示例中，添加了*aadds.contoso.com*的条目。 使用自己的 DNS 名称：
+1. 在*ntp*文件中，创建一个行以添加 Azure AD DS 托管域的 DNS 名称。 在下面的示例中，添加了*aaddscontoso.com*的条目。 使用自己的 DNS 名称：
 
     ```console
-    server aadds.contoso.com
+    server aaddscontoso.com
     ```
 
     完成后，使用编辑器的 `:wq` 命令保存并退出*ntp.*
@@ -113,7 +113,7 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
     ```console
     sudo systemctl stop ntp
-    sudo ntpdate aadds.contoso.com
+    sudo ntpdate aaddscontoso.com
     sudo systemctl start ntp
     ```
 
@@ -121,30 +121,30 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
 
 现在，已在 VM 上安装了所需的包，并且已配置了 NTP，接下来将 VM 加入 Azure AD DS 托管域。
 
-1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*AADDS。CONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
+1. 使用 `realm discover` 命令发现 Azure AD DS 托管域。 以下示例发现领域*AADDSCONTOSO.COM*。 以全部大写的形式指定你自己 Azure AD DS 托管域名：
 
     ```console
-    sudo realm discover AADDS.CONTOSO.COM
+    sudo realm discover AADDSCONTOSO.COM
     ```
 
    如果 `realm discover` 命令找不到你的 Azure AD DS 托管域，请查看以下故障排除步骤：
 
-    * 请确保可从 VM 访问域。 尝试 `ping aadds.contoso.com` 以查看是否返回了肯定回复。
+    * 请确保可从 VM 访问域。 尝试 `ping aaddscontoso.com` 以查看是否返回了肯定回复。
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
 1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aadds.contoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
 
     ```console
-    kinit contosoadmin@AADDS.CONTOSO.COM
+    kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@AADDS.CONTOSO.COM`：
+1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@AADDSCONTOSO.COM`：
 
     ```console
-    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM' --install=/
+    sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/
     ```
 
 将 VM 加入到 Azure AD DS 托管域需要一段时间。 以下示例输出显示 VM 已成功加入到 Azure AD DS 托管域：
@@ -248,10 +248,10 @@ VM 加入到 Azure AD DS 托管域并配置为进行身份验证时，需要完�
 
 若要验证 VM 是否已成功加入到 Azure AD DS 托管域，请使用域用户帐户启动新的 SSH 连接。 确认已创建主目录，并且已应用域的组成员身份。
 
-1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@aadds.contoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*ubuntu.aadds.contoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
+1. 从控制台创建新的 SSH 连接。 使用 "`ssh -l`" 命令（如 `contosoadmin@aaddscontoso.com`）使用属于托管域的域帐户，然后输入 VM 的地址，例如*ubuntu.aaddscontoso.com*。 如果使用 Azure Cloud Shell，请使用 VM 的公共 IP 地址，而不使用内部 DNS 名称。
 
     ```console
-    ssh -l contosoadmin@AADDS.CONTOSO.com ubuntu.aadds.contoso.com
+    ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com
     ```
 
 1. 成功连接到 VM 后，验证是否已正确初始化主目录：

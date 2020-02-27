@@ -3,8 +3,8 @@ title: Azure SAP HANA（大型实例）概述 | Microsoft Docs
 description: 有关如何部署 Azure SAP HANA（大型实例）的概述。
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: gwallace
+author: msjuergent
+manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea337101a5fe44e42ce85c17fec32028c75d3b85
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101171"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616955"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什么是 Azure 上的 SAP HANA（大型实例）？
 
@@ -26,20 +26,20 @@ Azure 上的 SAP HANA（大型实例）是一种针对 Azure 的独特解决方�
 
 基础结构模具中的客户隔离在租户中执行，详细情况如下所示：
 
-- **网络**：通过每个客户分配的租户的虚拟网络在基础结构堆栈内隔离客户。 一个租户分配给单个客户。 一个客户可以具有多个租户。 租户的网络隔离禁止基础结构模具级别中的租户之间进行网络通信，即使租户属于同一个客户。
-- **存储组件**:通过分配了存储卷的存储虚拟机进行隔离。 存储卷只能分配给一个存储虚拟机。 存储虚拟机以独占方式分配给 SAP HANA TDI 认证的基础结构堆栈中的单个租户。 因此，只能在一个特定相关租户中访问分配给存储虚拟机的存储卷。 这些存储卷在部署的不同租户之间不可见。
-- **服务器或主机**:服务器或主机单位不在客户或租户之间共享。 部署到客户的服务器或主机是分配给单个租户的原子裸机计算单元。 不使用硬件分区或软分区，这可能会导致某个客户与其他客户共享主机或服务器。 分配给特定租户的存储虚拟机的存储卷会装载到这类服务器。 可以按独占方式向一个租户分配具有不同 SKU 的一个到多个服务器单元。
+- **网络**：对于分配了租户的每个客户，通过虚拟网络实现基础结构堆栈中的客户隔离。 一个租户分配给单个客户。 一个客户可以具有多个租户。 租户的网络隔离禁止基础结构模具级别中的租户之间进行网络通信，即使租户属于同一个客户。
+- **存储组件**：通过分配了存储卷的存储虚拟机实现隔离。 存储卷只能分配给一个存储虚拟机。 存储虚拟机以独占方式分配给 SAP HANA TDI 认证的基础结构堆栈中的单个租户。 因此，只能在一个特定相关租户中访问分配给存储虚拟机的存储卷。 这些存储卷在部署的不同租户之间不可见。
+- **服务器或主机**：服务器或主机单元不在客户或租户之间进行共享。 部署到客户的服务器或主机是分配给单个租户的原子裸机计算单元。 不使用硬件分区或软分区，这可能会导致某个客户与其他客户共享主机或服务器。 分配给特定租户的存储虚拟机的存储卷会装载到这类服务器。 可以按独占方式向一个租户分配具有不同 SKU 的一个到多个服务器单元。
 - 在 Azure 上的 SAP HANA（大型实例）基础结构模具中，会部署许多不同的租户，并通过网络、存储和计算级别上的租户概念使它们相互隔离。 
 
 
 仅支持这些裸机服务器单元运行 SAP HANA。 SAP 应用层或工作负荷中间软件层在虚拟机中运行。 运行 Azure 上的 SAP HANA（大型实例）单元的基础结构模具连接到 Azure 网络服务骨干网。 因此可提供 Azure 上的 SAP HANA（大型实例）单元与 Azure 虚拟机之间的那种低延迟连接。
 
-截止2019年7月, 我们将不同的 HANA 大型实例标记和部署位置的两个不同版本区分开来:
+截止2019年7月，我们将不同的 HANA 大型实例标记和部署位置的两个不同版本区分开来：
 
-- "修订版本 3" (修订版 3):是可供客户在2019年7月之前部署的 stamp
-- "修订版本 4" (Rev 4):部署在接近 Azure VM 主机和迄今为止的 Azure VM 主机上的新的戳记设计在以下 Azure 区域发布:
+- "修订版本 3" （修订版3）：是在2019年7月之前供客户部署的 stamp
+- "修订版本 4" （Rev 4）：在接近 Azure VM 主机的情况中部署的新的戳记设计，到目前为止，在 Azure 区域中发布：
     -  美国西部 2 
-    -  East US 
+    -  美国东部 
     -  西欧
     -  北欧
 

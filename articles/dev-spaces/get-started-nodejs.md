@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Node.js 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: de60a45126539cdd39b951eeb503fc349004797a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 1ad30a5dd7504c7e224e4b2d26d1f5a4fe1da38a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121349"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602873"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Node.js 与 Azure Dev Spaces 结合使用
 
@@ -61,7 +61,7 @@ az group create --name MyResourceGroup --location <region>
 使用以下命令创建 Kubernetes 群集：
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 创建群集需要几分钟时间。
@@ -98,7 +98,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --g
 1. 运行此命令（确保 **webfrontend** 是当前文件夹）：
 
     ```cmd
-    azds prep --public
+    azds prep --enable-ingress
     ```
 
 Azure CLI 的 `azds prep` 命令使用默认设置生成 Docker 和 Kubernetes 资产：

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907044"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617111"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure 虚拟机上 SQL server 的高级数据安全性（预览版）
 Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全功能的统一包。 此预览功能包含用于识别和缓解潜在的数据库漏洞并检测可能指示数据库威胁的异常活动的功能。 
@@ -61,7 +61,7 @@ Azure 虚拟机上的 SQL Server 高级数据安全是适用于高级 SQL 安全
 若要将 SQL Server 的主机连接到工作区，请按照[将 Windows 计算机连接到 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)中的说明进行操作。
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>为 ATP 警报设置电子邮件通知 
+## <a name="set-up-email-notification-for-security-alerts"></a>设置安全警报的电子邮件通知 
 
 可以设置在生成安全中心警报时接收电子邮件通知的收件人列表。 电子邮件包含指向 Azure 安全中心中的警报的直接链接，其中包含所有相关的详细信息。 
 

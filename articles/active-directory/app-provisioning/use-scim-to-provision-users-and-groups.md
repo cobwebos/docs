@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 3dbe5871a78634d2866ec1a3d1455492762ff2aa
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538169"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619248"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -966,6 +966,9 @@ netsh http add sslcert ipport=0.0.0.0:443 certhash=0000000000003ed9cd0c315bbb6dc
 
 Azure Active Directory에서 요청은 OAuth 2.0 전달자 토큰을 포함합니다.   接收请求的任何服务应对颁发者进行身份验证，使其能够 Azure Active Directory 用于预期的 Azure Active Directory 租户，以便访问 Microsoft Graph API 服务。  在令牌中，颁发者由 iss 声明标识，如 "iss"： "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ "。  在此示例中，声明值的基址 https://sts.windows.net 将 Azure Active Directory 标识为颁发者，而相对地址段 cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 是颁发令牌的 Azure Active Directory 租户的唯一标识符。 令牌的受众将是库中应用的应用程序模板 ID。 所有自定义应用的应用程序模板 ID 都是8adf8e6e-67b2-4cf2-a259-e3dc5476c621。 库中每个应用的应用程序模板 ID 各不相同。 有关库应用程序的应用程序模板 ID 的问题，请联系 ProvisioningFeedback@microsoft.com。 在单个租户中注册的每个应用程序可能会收到与 SCIM 请求相同的 `iss` 声明。
 
+   > [!NOTE]
+   > 建议***不要***将此字段留空，并依赖于 Azure AD 生成的令牌。 此选项主要用于测试目的。
+
 使用 Microsoft 提供的 CLI 库生成 SCIM 服务的开发人员可以通过执行以下步骤，使用 Owin 包对来自 Azure Active Directory 的请求进行身份验证： 
 
 首先，在提供程序中，通过使其返回每次启动服务时要调用的方法，实现 Microsoft.systemforcrossdomainidentitymanagement. 每 microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior. Microsoft.systemforcrossdomainidentitymanagement.iprovider.startupbehavior 属性： 
@@ -1450,6 +1453,8 @@ Azure AD 애플리케이션 갤러리에 있는 "비-갤러리 애플리케이�
 > [!div class="checklist"]
 > * 支持[SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation)用户和组终结点（仅需要一个，但建议同时使用这两个）
 > * 支持每个租户每秒至少25个请求（必需）
+> * 建立工程和支持联系人，指导客户发布库载入（必需）
+> * 3应用程序的不过期测试凭据（必需）
 > * 支持 OAuth 授权代码授予或长生存期令牌（必需）
 > * 建立工程和支持点联系以支持客户发布库载入（必需）
 > * 支持使用单个修补程序更新多个组成员身份（建议） 

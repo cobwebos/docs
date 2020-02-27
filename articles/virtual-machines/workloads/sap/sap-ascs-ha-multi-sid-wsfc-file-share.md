@@ -3,8 +3,8 @@ title: 在 Azure 上使用 Windows Server 故障转移群集和文件共享实�
 description: 在 Azure 上使用 Windows Server 故障转移群集和文件共享实现 SAP ASCS/SCS 实例的多 SID 高可用性
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: rclaus
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5638d71748c485c593dde8d9876400a40821ca28
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2c12372dbc47548755c0680b0acb7a93360a0987
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75643145"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617488"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -217,7 +217,7 @@ ms.locfileid: "75643145"
 
 有关负载均衡器限制的详细信息，请参阅[网络限制： Azure 资源管理器][networking-limits-azure-resource-manager]中的 "每个负载均衡器的专用前端 IP" 部分。 还可考虑使用 [Azure 标准负载均衡器 SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) 而不是 Azure 负载均衡器的基本 SKU。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 已配置 WSFC 群集，通过文件共享用于一个 SAP ASCS/SCS 实例，如下图所示。
 
@@ -246,7 +246,7 @@ _图 2：两个群集中的 SAP 多 SID 配置_
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>在域控制器上准备基础结构
 
-创建域组 \<Domain>\SAP_\<SID2>_GlobalAdmin（例如，\<SID2> = PR2）。 域组名称是 \<Domain>\SAP_PR2_GlobalAdmin。
+创建域组 **Domain>\SAP_\<SID2>_GlobalAdmin（例如，\<SID2> = PR2）** \<。 域组名称是 \<Domain>\SAP_PR2_GlobalAdmin。
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>在 ASCS/SCS 群集上准备基础结构
 
@@ -267,8 +267,8 @@ _图 2：两个群集中的 SAP 多 SID 配置_
 _图 3：多 SID SOFS 使用相同的 SAP 全局主机名_
 
 > [!IMPORTANT]
->对于第二个 SAP \<SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称。
->因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 \<SAPGlobalHost> 网络名称，则必须使用相同 Volume1.
+>对于第二个 SAP **SID2> 系统，使用相同的 Volume1 和 \<SAPGlobalHost> 网络名称** **\<** 。
+>因为已经设置了 SAPMNT 作为各种 SAP 系统的共享名称，若要重复使用 **SAPGlobalHost> 网络名称，则必须使用相同 Volume1** **\<** .
 >
 >\<SID2 > 全局主机的文件路径是 C:\ClusterStorage\\**Volume1**\USR\SAP\<SID2 > \SYS\.
 >
@@ -326,7 +326,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 ### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>通过使用不同的 SAP 全局主机，在 SOFS 群集上准备基础结构
 
-可以配置第二个 SOFS（例如，第二个 SOFS 群集角色，其中为第二个 \<SID2> 配置 \<SAPGlobalHost2> 和不同的 Volume2）。
+可以配置第二个 SOFS（例如，第二个 SOFS 群集角色，其中为第二个 **SID2> 配置 \<SAPGlobalHost2> 和不同的 Volume2** **\<** ）。
 
 ![图 4：多 SID SOFS 使用相同的 SAP 全局主机名 2][sap-ha-guide-figure-8015]
 
@@ -393,13 +393,13 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-若要在 Volume2 上为第二个 SAP \<SID2> 创建使用 \<SAPGlobalHost2> 主机名的 SAPMNT 文件共享，请在故障转移群集管理器中启动“添加文件共享”向导。
+若要在 Volume2 上为第二个 SAP *SID2> 创建使用 \<SAPGlobalHost2> 主机名的 SAPMNT 文件共享，请在故障转移群集管理器中启动“添加文件共享”向导*\<。
 
 右键单击 saoglobal2 SOFS 群集组，然后选择“添加文件共享”。
 
 ![图 6：启动“添加文件共享”向导][sap-ha-guide-figure-8017]
 
-图 6：启动“添加文件共享”向导
+图 6 _**：启动“添加文件共享”向导**_
 
 <br>
 
@@ -423,12 +423,12 @@ _图 9：将文件共享名设置为“sapmnt”_
 
 ![图 10：禁用所有设置][sap-ha-guide-figure-8021]
 
-图 10：禁用所有设置
+图 10 _**：禁用所有设置**_
 
 <br>
 
 为以下项分配对文件和 sapmnt 共享的“完全控制”权限：
-* SAP_\<SID>_GlobalAdmin 域用户组
+* SAP_**SID>_GlobalAdmin 域用户组\<**
 * ASCS/SCS 群集节点 ascs-1$ 和 ascs-2$ 的计算机对象
 
 ![图 11：为用户组和计算机帐户分配完全控制权限][sap-ha-guide-figure-8022]

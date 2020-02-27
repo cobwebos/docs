@@ -4,7 +4,7 @@ description: 在 Azure VM 上部署 SAP S/4HANA 或 BW/4HANA
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101443"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616212"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署 S/4HANA。 若要部署其他基于 SAP HANA 的解决方案（如 BW/4HANA），请按照相同的步骤执行。

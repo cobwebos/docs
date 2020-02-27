@@ -3,12 +3,12 @@ title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526206"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649783"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -16,7 +16,7 @@ ms.locfileid: "77526206"
 
 如果要为多位客户管理资源，可重复此过程。 随后，当授权用户登录到你的租户时，可跨客户租赁范围向此用户授权，使其无需登录到每个单独的客户租户即可执行管理操作。
 
-若要跟踪客户约定和接收识别的影响，请将 Microsoft 合作伙伴网络（MPN） ID 与载入订阅相关联。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](../../billing/billing-partner-admin-link-started.md)。 请注意，你需要在服务提供商租户中执行此关联。
+若要跟踪客户约定和接收识别的影响，请将 Microsoft 合作伙伴网络（MPN） ID 与至少一个可访问每个载入订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中执行此关联。 为简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并授予它对你所登记的每个客户的读者访问权限。 有关详细信息，请参阅将[合作伙伴 ID 链接到 Azure 帐户](../../billing/billing-partner-admin-link-started.md)。 
 
 > [!NOTE]
 > 在客户购买你发布到 Azure 市场的托管服务产品（公共或专用）时也可将其加入。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 你还可以使用此处所述的载入流程以及发布到 Azure Marketplace 的产品/服务。

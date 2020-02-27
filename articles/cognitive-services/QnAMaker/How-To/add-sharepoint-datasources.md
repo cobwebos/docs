@@ -3,12 +3,12 @@ title: SharePoint 文件-QnA Maker
 description: 通过将受保护的 SharePoint 数据源添加到知识库，可以通过 Active Directory 的问题和答案来丰富知识库。
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544158"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650429"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>向知识库添加受保护的 SharePoint 数据源
 
@@ -18,9 +18,10 @@ ms.locfileid: "77544158"
 
 如果 QnA Maker 知识库管理器不是 Active Directory 管理器，则需要与 Active Directory 管理器进行通信以完成此过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-QnA Maker 使用 Microsoft Graph 权限。 如果你的 SharePoint 位于本地，你将无法从 SharePoint 中提取，因为 Microsoft Graph 无法确定权限。
+* 基于云的 SharePoint-QnA Maker 使用 Microsoft Graph 权限。 如果你的 SharePoint 位于本地，你将无法从 SharePoint 中提取，因为 Microsoft Graph 无法确定权限。
+* URL 格式-QnA Maker 仅支持为共享生成的 SharePoint url，其格式为 https：//*。
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>将支持的文件类型添加到知识库
 

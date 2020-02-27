@@ -9,19 +9,19 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789233"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647659"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>使用 azure 逻辑应用和 IBM 3270 连接器将 IBM 大型机上的3270屏幕驱动的应用集成到 Azure 中
 
 > [!NOTE]
 > 此连接器为[*公共预览版*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
 
-使用 Azure 逻辑应用和 IBM 3270 连接器，你可以通过在3270仿真器屏幕上导航来访问和运行通常驱动的 IBM 大型机应用。 通过这种方式，你可以通过使用 Azure 逻辑应用创建自动化工作流，将 IBM 大型机应用与 Azure、Microsoft 及其他应用、服务和系统集成。 连接器通过使用 TN3270 协议与 IBM 大型机通信，并在除 Azure 政府版和 Azure 中国世纪以外的所有 Azure 逻辑应用区域中提供。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+使用 Azure 逻辑应用和 IBM 3270 连接器，你可以通过在3270仿真器屏幕上导航来访问和运行通常驱动的 IBM 大型机应用。 通过这种方式，你可以通过使用 Azure 逻辑应用创建自动化工作流，将 IBM 大型机应用与 Azure、Microsoft 及其他应用、服务和系统集成。 连接器通过使用 TN3270 协议与 IBM 大型机通信，并在除 Azure 政府版和 Azure 中国世纪以外的所有 Azure 逻辑应用区域中提供。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
 本文介绍使用3270连接器的以下方面： 
 
@@ -39,7 +39,7 @@ ms.locfileid: "74789233"
 
 从设计工具生成元数据文件后，可以将该文件添加到 Azure 中的集成帐户。 这样一来，逻辑应用就可以在添加3270连接器操作时访问应用的元数据。 连接器从集成帐户中读取元数据文件，处理通过3270屏幕的导航，并动态显示3270连接器操作的参数。 然后，可以向宿主应用程序提供数据，连接器会将结果返回给逻辑应用。 通过这种方式，你可以将旧版应用与 azure 逻辑应用支持的 Azure、Microsoft 和其他应用、服务和系统集成。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -182,11 +182,11 @@ ms.locfileid: "74789233"
 
 1. 在 "**选择新计划名称**" 下，输入计划的名称。 从 "**类型**" 列表中，选择计划类型：
 
-   | 计划类型 | 描述 |
+   | 计划类型 | 说明 |
    |-----------|-------------|
-   | **过程** | 对于独立或合并计划 |
-   | **连接** | 对于连接计划 |
-   | **取消** | 对于断开连接计划 |
+   | **处理** | 对于独立或合并计划 |
+   | **“连接”** | 对于连接计划 |
+   | **断开连接** | 对于断开连接计划 |
    |||
 
 1. 从 "**主机屏幕**" 窗格中，将捕获的缩略图拖动到**导航**窗格中的导航计划图面。
@@ -218,13 +218,13 @@ ms.locfileid: "74789233"
 
 同时假设您重复这些步骤，但您输入了不正确的数据，以便您可以捕获显示错误的屏幕。 下面是您捕获的屏幕：
 
-* 消息-10
+* MSG-10
 * CICS 欢迎
 * 空
 * WBGB_1 （输入）
 * WBGB_2 （错误）
 * Empty_1
-* 消息-10_1
+* MSG-10_1
 
 尽管此处的许多屏幕都有唯一的名称，但有些屏幕是相同的屏幕，例如，"MSG-10" 和 "Empty"。 对于重复屏幕，你的计划中只使用该屏幕的一个实例。 以下示例演示了独立计划、连接计划、断开连接计划和组合计划的外观：
 
@@ -288,9 +288,9 @@ ms.locfileid: "74789233"
 
 1. 添加所有方法的参数后，为每个参数定义以下属性：
 
-   | 属性名称 | 可能的值 | 
+   | 属性名称 | 可能值 | 
    |---------------|-----------------|
-   | 数据类型 | Byte、Date Time、Decimal、Int、Long、Short、String |
+   | **数据类型** | Byte、Date Time、Decimal、Int、Long、Short、String |
    | **字段填充方法** | 参数支持这些填充类型，并在必要时填充空白： <p><p>- **类型**：按顺序在字段中输入字符。 <p>- **填充**：将字段内容替换为字符，如有必要，用空格填充。 <p>- **EraseEofType**：清除字段，然后在字段中按顺序输入字符。 |
    | **格式字符串** | 某些参数数据类型使用格式字符串，该字符串通知3270连接器如何将文本从屏幕转换为 .NET 数据类型： <p><p>- **datetime**： datetime 格式字符串遵循[.net 自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 例如，`06/30/2019` 日期使用 `MM/dd/yyyy`格式字符串。 <p>- **decimal**： decimal 格式字符串使用[COBOL Picture 子句](https://www.ibm.com/support/knowledgecenter/SS6SG3_5.2.0/com.ibm.cobol52.ent.doc/PGandLR/ref/rlddepic.html)。 例如，`100.35` 的数字使用 `999V99`格式字符串。 |
    |||
@@ -345,7 +345,7 @@ ms.locfileid: "74789233"
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. 登录 [Azure门户](https://portal.azure.com)，然后在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
+1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
 1. 在要添加操作的最后一个步骤下，选择 "**新建步骤**"，并选择 "**添加操作**"。 
 
@@ -358,18 +358,18 @@ ms.locfileid: "74789233"
 
 1. 如果尚未建立连接，请提供连接所需的信息，然后选择 "**创建**"。
 
-   | properties | 需要 | Value | 描述 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <connection-name> | 连接名称 |
    | **集成帐户 ID** | 是 | <integration-account-name> | 集成帐户的名称 |
    | **集成帐户 SAS URL** | 是 | <*集成--SAS-URL*> | 集成帐户的共享访问签名（SAS） URL，可从 Azure 门户中的集成帐户的设置生成。 <p>1. 在集成帐户菜单的 "**设置**" 下，选择 "**回调 URL**"。 <br>2. 在右侧窗格中，复制 "生成的**回调 URL** " 值。 |
-   | **服务器** | 是 | <*TN3270*> | TN3270 服务的服务器名称 |
-   | 端口 | No | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，连接器将使用 `23` 作为默认值。 |
-   | **设备类型** | No | <*IBM 终端模型*> | 要模拟的 IBM 终端的型号名称或编号。 如果留空，连接器将使用默认值。 |
-   | **代码页** | No | <*代码-页码*> | 宿主的代码页号。 如果留空，连接器将使用 `37` 作为默认值。 |
-   | **逻辑单元名称** | No | <*逻辑单元名称*> | 要从主机请求的特定逻辑单元名称 |
-   | **启用 SSL?** | No | 打开或关闭 | 启用或禁用 SSL 加密。 |
-   | **验证主机 ssl 证书？** | No | 打开或关闭 | 打开或关闭服务器证书验证。 |
+   | **Server** | 是 | <*TN3270*> | TN3270 服务的服务器名称 |
+   | 端口 | 否 | <*TN3270-端口*> | TN3270 服务器使用的端口。 如果留空，连接器将使用 `23` 作为默认值。 |
+   | **设备类型** | 否 | <*IBM 终端模型*> | 要模拟的 IBM 终端的型号名称或编号。 如果留空，连接器将使用默认值。 |
+   | **代码页** | 否 | <*代码-页码*> | 宿主的代码页号。 如果留空，连接器将使用 `37` 作为默认值。 |
+   | **逻辑单元名称** | 否 | <*逻辑单元名称*> | 要从主机请求的特定逻辑单元名称 |
+   | **启用 SSL?** | 否 | 打开或关闭 | 启用或禁用 SSL 加密。 |
+   | **验证主机 ssl 证书？** | 否 | 打开或关闭 | 打开或关闭服务器证书验证。 |
    ||||
 
    例如：
@@ -378,7 +378,7 @@ ms.locfileid: "74789233"
 
 1. 提供操作所需的信息：
 
-   | properties | 需要 | Value | 描述 |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **Hidx 名称** | 是 | <*HIDX*> | 选择要使用的 3270 HIDX 文件。 |
    | **方法名称** | 是 | <*方法-name*> | 选择要使用的 HIDX 文件中的方法。 选择方法后，将显示 "**添加新参数**" 列表，以便您可以选择要用于该方法的参数。 |
@@ -409,7 +409,10 @@ ms.locfileid: "74789233"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关由连接器的 OpenAPI （以前为 Swagger）说明描述的触发器、操作和限制的技术详细信息，请查看[连接器的参考页](/connectors/si3270/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/si3270/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>后续步骤
 

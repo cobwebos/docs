@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158843"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651583"
 ---
 下表列出了特定于 Azure 服务总线消息传送的配额信息。 有关服务总线的定价和其他配额的信息，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "76158843"
 | 每个主题的 SQL 筛选器数 |实体 |将拒绝后续的在主题中创建附加筛选器的请求，且调用代码会收到异常。 |2,000 |
 | 每个主题的相关性筛选器数 |实体 |将拒绝后续的在主题中创建附加筛选器的请求，且调用代码会收到异常。 |100,000 |
 | SQL 筛选器或操作的大小 |命名空间 |将拒绝后续的创建附加筛选器请求，且调用代码会收到异常。 |筛选条件字符串的最大长度：1024（1 K）。<br /><br />规则操作字符串的最大长度：1024（1 K）。<br /><br />每个规则操作的最大表达式数：32。 |
-| 每个命名空间、队列或主题的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则数 |实体、命名空间 |将拒绝后续的创建附加规则的请求，且调用代码会收到异常。 |最大规则数：12。 <br /><br /> 在服务总线命名空间中配置的规则适用于该命名空间中的所有队列和主题。 |
+| 每个命名空间、队列或主题的 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 规则数 |实体、命名空间 |将拒绝后续的创建附加规则的请求，且调用代码会收到异常。 |每个实体类型的最大规则数：12。 <br /><br /> 在服务总线命名空间上配置的规则适用于所有类型：队列和主题。 |
 | 每个事务的消息数 | 事务 | 将拒绝其他传入消息，并且调用代码将收到指示 "无法在单个事务中发送超过100条消息" 的异常。 | 100 <br /><br /> 适用于 Send() 和 SendAsync() 操作。 |
 | 虚拟网络和 IP 筛选器规则的数量 | 命名空间 | &nbsp; | 128 | 
 

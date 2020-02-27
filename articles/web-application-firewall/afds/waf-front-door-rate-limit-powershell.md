@@ -5,34 +5,34 @@ author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b034159c3d12927f6425b3dc3c5b5609af9b0b76
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186629"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649358"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>使用 Azure PowerShell 配置 Web 应用程序防火墙速率限制规则
-Azure 前门的 Azure Web 应用程序防火墙（WAF）速率限制规则控制单个客户端 IP 在一分钟的时间内允许的请求数。
-本文介绍如何配置 WAF rate 限制规则，该规则使用 Azure PowerShell 控制从单个客户端到包含 URL 中的 */promo*的 web 应用程序的请求数。
+Azure 前门的 Azure Web 应用程序防火墙（WAF）速率限制规则控制在一分钟的时间内客户端允许的请求数。
+本文介绍如何使用 Azure PowerShell 来配置 WAF 速率限制规则，该规则控制允许从客户端到包含 URL 中 */promo*的 web 应用程序的请求数。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在开始设置速率限制策略之前，请设置 PowerShell 环境，并创建前门配置文件。
 ### <a name="set-up-your-powershell-environment"></a>设置 PowerShell 环境
 Azure PowerShell 提供一组可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模型管理 Azure 资源的 cmdlet。 
 
 可以在本地计算机上安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) 并在任何 PowerShell 会话中使用它。 按照页面上的说明，用 Azure 凭据登录，并安装 Az PowerShell 模块。
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用交互式登录对话框连接到 Azure
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用用于登录的交互式对话连接到 Azure
 ```
 Connect-AzAccount
 
 ```
-在安装 Front Door 模块之前，请确保安装最新版本的 PowerShellGet。 运行下面的命令，重新打开 PowerShell。
+安装前门模块之前，请确保已安装 PowerShellGet 的当前版本。 运行以下命令，然后重新打开 PowerShell。
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber

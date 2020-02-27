@@ -3,47 +3,47 @@ title: 教程-计划 ACR 任务
 description: 在本教程中，了解如何通过设置一个或多个计时器触发器按定义的计划运行 Azure 容器注册表任务
 ms.topic: article
 ms.date: 06/27/2019
-ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4c0962a38cca73e4a03a7417baaa595cf0d97009
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454676"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617440"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>按定义的计划运行 ACR 任务
 
-本教程介绍如何按计划运行[ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个计时器触发器来计划任务。 计时器触发器可以单独使用，也可以与其他任务触发器一起使用。
+本教程介绍如何按计划运行[ACR 任务](container-registry-tasks-overview.md)。 通过设置一个或多个*计时器触发器*来计划任务。 计时器触发器可以单独使用，也可以与其他任务触发器一起使用。
 
 在本教程中，了解计划任务和：
 
 > [!div class="checklist"]
-> * 创建具有计时器触发器的任务
+> * 使用计时器触发器创建任务
 > * 管理计时器触发器
 
-任务计划适用于如下所述的方案：
+计划任务适用于如下方案：
 
-* 运行容器工作负荷来执行计划性维护操作。 例如，运行容器化应用以从注册表中删除不需要的映像。
-* 在工作日针对要在现场监视的生产映像运行一组测试。
+* 运行容器工作负荷以执行计划的维护操作。 例如，运行容器化应用程序从注册表中删除不需要的映像。
+* 在 workday 期间在生产映像中运行一组测试，作为实时站点监视的一部分。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 若要在本地使用 Azure CLI，需要安装 2.0.68 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 如果要在本地使用，则需要版本2.0.68 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 
 ## <a name="about-scheduling-a-task"></a>关于计划任务
 
-* **使用 cron 表达式的触发器** - 任务的计时器触发器使用 cron 表达式。 该表达式是包含五个字段的字符串，这些字段指定要触发任务的分钟、小时、日期、月份和星期。 支持的最高频率为每分钟一次。
+* **使用 cron 表达式触发**-任务的计时器触发器使用*cron 表达式*。 表达式是一个字符串，其中包含五个字段，用于指定要触发任务的分钟、小时、日、月和日。 支持频率为每分钟一次。
 
-  例如，表达式 `"0 12 * * Mon-Fri"` 在每个工作日的中午（UTC 时间）触发任务。 请参阅本文稍后所述的[详细信息](#cron-expressions)。
-* **多个计时器触发器** - 允许将多个计时器添加到g wh 任务，前提是计划不同。
-    * 可在创建任务时指定多个计时器触发器，也可以在以后添加。
-    * （可选）为触发器命名以便于管理，否则 ACR 任务将提供默认的触发器名称。
-    * 如果多个计时器计划在某个时间发生重叠，ACR 任务将在每个计时器的计划时间触发任务。
-* **其他任务触发器** - 在计时器触发的任务中，还可以基于[源代码提交](container-registry-tutorial-build-task.md)或[基础映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样，也可以[手动触发][az-acr-task-run]计划任务。
+  例如，表达式 `"0 12 * * Mon-Fri"` 在每个工作日的中午 UTC 触发任务。 请参阅本文后面的[详细信息](#cron-expressions)。
+* **多个计时器触发器**-允许将多个计时器添加到任务，前提是计划不同。
+    * 创建任务时指定多个计时器触发器，或稍后添加它们。
+    * 选择性地命名触发器以便于管理，或者 ACR 任务将提供默认的触发器名称。
+    * 如果计时器计划每次重叠，则 ACR 任务会在计划的时间为每个计时器触发任务。
+* **其他任务触发器**-在计时器触发的任务中，还可以基于[源代码提交](container-registry-tutorial-build-task.md)或[基本映像更新](container-registry-tutorial-base-image-update.md)启用触发器。 与其他 ACR 任务一样，你也可以[手动触发][az-acr-task-run]计划任务。
 
-## <a name="create-a-task-with-a-timer-trigger"></a>创建具有计时器触发器的任务
+## <a name="create-a-task-with-a-timer-trigger"></a>使用计时器触发器创建任务
 
-使用 [az acr task create][az-acr-task-create] 命令创建任务时，可以选择性地添加计时器触发器。 添加 `--schedule` 参数并为计时器传递 cron 表达式。
+使用[az acr task create][az-acr-task-create]命令创建任务时，可以选择添加计时器触发器。 添加 `--schedule` 参数，并为计时器传递 cron 表达式。
 
-举个简单的例子，以下命令将会触发每天 21:00（UTC 时间）从 Docker Hub 运行 `hello-world` 映像的任务。 该任务无需源代码上下文即可运行。
+作为一个简单的示例，下面的命令将从每天 21:00 UTC 开始，从 Docker 中心运行 `hello-world` 映像。 该任务在没有源代码上下文的情况下运行。
 
 ```azurecli
 az acr task create \
@@ -54,7 +54,7 @@ az acr task create \
   --context /dev/null
 ```
 
-运行 [az acr task show][az-acr-task-show] 命令查看该计时器触发器是否已配置。 默认情况下，还启用了基础映像更新触发器。
+运行[az acr task show][az-acr-task-show]命令以查看计时器触发器是否已配置。 默认情况下，基本映像更新触发器也处于启用状态。
 
 ```console
 $ az acr task show --name mytask --registry registry --output table
@@ -63,13 +63,13 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 mytask    linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-使用 [az acr task run][az-acr-task-run] 手动触发任务，以确保正确设置该任务：
+用[az acr 任务运行][az-acr-task-run]手动触发任务，以确保正确设置该任务：
 
 ```azurecli
 az acr task run --name mytask --registry myregistry
 ```
 
-如果容器成功运行，输出将如下所示：
+如果容器成功运行，则输出类似于以下内容：
 
 ```console
 Queued a run with ID: cf2a
@@ -84,13 +84,13 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-在计划的时间之后，运行 [az acr task list-runs][az-acr-task-list-runs] 命令验证计时器是否按预期触发了任务：
+在计划的时间之后，运行[az acr task list-][az-acr-task-list-runs] run 命令，以验证计时器是否按预期触发任务：
 
 ```azurecli
 az acr task list-runs --name mytask --registry myregistry --output table
 ```
 
-如果计时器成功，输出将如下所示：
+当计时器成功时，输出类似于以下内容：
 
 ```console
 RUN ID    TASK     PLATFORM    STATUS     TRIGGER    STARTED               DURATION
@@ -102,11 +102,11 @@ cf2a      mytask   linux       Succeeded  Manual     2019-06-28T20:53:23Z  00:00
 
 ## <a name="manage-timer-triggers"></a>管理计时器触发器
 
-使用 [az acr task timer][az-acr-task-timer] 命令管理 ACR 任务的计时器触发器。
+使用[az acr task timer][az-acr-task-timer]命令可以管理 acr 任务的计时器触发器。
 
 ### <a name="add-or-update-a-timer-trigger"></a>添加或更新计时器触发器
 
-创建任务后，可以选择性地使用 [az acr task timer add][az-acr-task-timer-add] 命令添加计时器触发器。 以下示例将名为 *timer2* 的计时器触发器添加到前面创建的 *mytask*。 此计时器每日 10:30（UTC 时间）触发任务。
+创建任务后，可以选择使用[az acr task timer add][az-acr-task-timer-add]命令添加计时器触发器。 下面的示例将计时器触发器名称*timer2*添加到之前创建的*mytask* 。 此计时器每日触发任务 10:30 UTC。
 
 ```azurecli
 az acr task timer add \
@@ -116,7 +116,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-使用 [az acr task timer update][az-acr-task-timer-update] 命令更新现有触发器的计划或更改其状态。 例如，更新名为 *timer2* 的触发器，以在 11:30（UTC 时间）触发任务：
+使用[az acr task timer update][az-acr-task-timer-update]命令更新现有触发器的计划或更改其状态。 例如，更新名为*timer2*的触发器以触发 11:30 UTC 时间的任务：
 
 ```azurecli
 az acr task timer update \
@@ -128,7 +128,7 @@ az acr task timer update \
 
 ### <a name="list-timer-triggers"></a>列出计时器触发器
 
-[az acr task timer list][az-acr-task-timer-list] 命令可显示针对任务设置的计时器触发器：
+[Az acr task timer list][az-acr-task-timer-list]命令显示为任务设置的计时器触发器：
 
 ```azurecli
 az acr task timer list --name mytask --registry myregistry
@@ -153,7 +153,7 @@ az acr task timer list --name mytask --registry myregistry
 
 ### <a name="remove-a-timer-trigger"></a>删除计时器触发器
 
-使用 [az acr task timer remove][az-acr-task-timer-remove] 命令从任务中删除计时器触发器。 以下示例从 *mytask* 中删除 *timer2* 触发器：
+使用[az acr task timer remove][az-acr-task-timer-remove]命令从任务中删除计时器触发器。 下面的示例从*mytask*中删除*timer2*触发器：
 
 ```azurecli
 az acr task timer remove \
@@ -164,24 +164,24 @@ az acr task timer remove \
 
 ## <a name="cron-expressions"></a>Cron 表达式
 
-ACR 任务使用 [NCronTab](https://github.com/atifaziz/NCrontab) 库来解释 cron 表达式。 ACR 任务支持的表达式包含空格分隔的五个必需字段：
+ACR 任务使用[NCronTab](https://github.com/atifaziz/NCrontab)库来解释 cron 表达式。 ACR 任务中支持的表达式包含由空格分隔的五个必需字段：
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制。
+用于 cron 表达式的时区是协调世界时（UTC）。 小时数为24小时格式。
 
 > [!NOTE]
-> ACR 任务不支持在 cron 表达式中使用 `{second}` 或 `{year}` 字段。 如果复制其他系统中使用的 cron 表达式，请确保删除这些字段（如果已使用）。
+> ACR 任务不支持 cron 表达式中的 `{second}` 或 `{year}` 字段。 如果复制在其他系统中使用的 cron 表达式，请确保删除这些字段（如果使用）。
 
 每个字段可以具有下列类型之一的值：
 
 |类型  |示例  |何时触发  |
 |---------|---------|---------|
-|一个具体值 |<nobr>`"5 * * * *"`</nobr>|每小时的第 5 分钟|
-|所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|从 5:00 UTC 开始每隔一分钟（每天 60 次）|
-|一个范围（`-` 运算符）|<nobr>`"0 1-3 * * *"`</nobr>|每天 1:00、2:00 和 3:00 UTC，触发 3 次|
-|一组值（`,` 运算符）|<nobr>`"20,30,40 * * * *"`</nobr>|每小时的第 20 分钟、30 分钟和 40 分钟，触发 3 次|
-|一个间隔值（`/` 运算符）|<nobr>`"*/10 * * * *"`</nobr>|每小时的第 10 分钟、20 分钟...，触发 6 次
+|一个具体值 |<nobr>`"5 * * * *"`</nobr>|每小时的时间晚5分钟|
+|所有值 (`*`)|<nobr>`"* 5 * * *"`</nobr>|一小时中每分钟开始 5:00 UTC （每日60次）|
+|一个范围（`-` 运算符）|<nobr>`"0 1-3 * * *"`</nobr>|每天3次，1:00，2:00，3:00 UTC|
+|一组值（`,` 运算符）|<nobr>`"20,30,40 * * * *"`</nobr>|每小时3次，20分钟，30分钟，超过40分钟|
+|一个间隔值（`/` 运算符）|<nobr>`"*/10 * * * *"`</nobr>|每小时6次，在10分钟，20分钟后，过去一小时
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -192,11 +192,19 @@ cron 表达式使用的时区为协调世界时 (UTC)。 时间为 24 小时制�
 |`"*/5 * * * *"`|每五分钟一次|
 |`"0 * * * *"`|每小时一次（在每小时的开头）|
 |`"0 */2 * * *"`|每两小时一次|
-|`"0 9-17 * * *"`|从 9:00 到 17:00 UTC 每小时触发一次|
-|`"30 9 * * *"`|每天 9:30 UTC|
-|`"30 9 * * 1-5"`|每个工作日的 9:30 UTC|
-|`"30 9 * Jan Mon"`|一月份的每个星期一 9:30 UTC|
+|`"0 9-17 * * *"`|每小时从9:00 到 17:00 UTC|
+|`"30 9 * * *"`|每日 9:30 UTC|
+|`"30 9 * * 1-5"`|每个工作日 9:30 UTC|
+|`"30 9 * Jan Mon"`|1月每星期一 9:30 UTC|
 
+## <a name="clean-up-resources"></a>清理资源
+
+若要删除在本系列教程中创建的所有资源，包括容器注册表、注册表、容器实例、key vault 和服务主体，请发出以下命令：
+
+```azurecli-interactive
+az group delete --resource-group $RES_GROUP
+az ad sp delete --id http://$ACR_NAME-pull
+```
 
 ## <a name="next-steps"></a>后续步骤
 

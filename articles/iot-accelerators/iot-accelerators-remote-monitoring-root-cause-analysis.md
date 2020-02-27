@@ -1,19 +1,19 @@
 ---
 title: 对警报执行根本原因分析 - Azure | Microsoft Docs
 description: 在本教程中，你将了解如何使用 Azure 时序见解对警报执行根本原因分析。
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284552"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565462"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>教程：对警报执行根本原因分析
 
@@ -36,25 +36,25 @@ ms.locfileid: "52284552"
 
 ## <a name="choose-the-devices-to-display"></a>选择要显示的设备
 
-若要选择想要在“仪表板”页上显示的联网设备，请使用筛选器。 如果只想显示“卡车”设备，请在筛选器下拉列表中选择内置的“卡车”筛选器：
+若要选择想要在“仪表板”页上显示的联网设备，请使用筛选器。  如果只想显示“卡车”设备，请在筛选器下拉列表中选择内置的“卡车”筛选器：  
 
 [![在仪表板上筛选卡车](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-应用某个筛选器时，只有与筛选条件匹配的设备才会显示在“仪表板”的地图上和遥测数据面板中。 你可以看到有两辆卡车连接到了解决方案加速器，包括 truck-02：
+应用某个筛选器时，只有与筛选条件匹配的设备才会显示在“仪表板”的地图上和遥测数据面板中。  你可以看到有两辆卡车连接到了解决方案加速器，包括 truck-02  ：
 
 ## <a name="view-real-time-telemetry"></a>查看实时遥测数据
 
-解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。 默认情况下，图表将显示随时间变化的海拔遥测数据。
+解决方案加速器会在“仪表板”页上的图表中绘制实时遥测数据。  默认情况下，图表将显示随时间变化的海拔遥测数据。
 
 [![卡车海拔遥测数据绘图](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/trucks-moving-expanded.png#lightbox)
 
-若要查看卡车的温度遥测数据，请单击“遥测面板”中的“温度”。 可以查看两辆卡车的温度在过去 15 分钟内是如何变化的。 还可以在警报窗格中看到为 delivery-truck-02 触发了一次低温警报。
+若要查看卡车的温度遥测数据，请单击“遥测面板”中的“温度”   。 可以查看两辆卡车的温度在过去 15 分钟内是如何变化的。 还可以在警报窗格中看到为 delivery-truck-02 触发了一次低温警报。
 
 [![含低温警报的 RM 仪表板](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/low-temp-alert-expanded.png#lightbox)
 
 ## <a name="explore-the-data"></a>浏览数据
 
-要确定低温警报的原因，请在时序见解资源管理器中打开运货卡车遥测数据。 单击仪表板上的任意“在时序见解中探索”链接：
+要确定低温警报的原因，请在时序见解资源管理器中打开运货卡车遥测数据。 单击仪表板上的任意“在时序见解中探索”  链接：
 
 [![突出显示 TSI 链接的 RM 仪表板](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/explore-tsi-expanded.png#lightbox)
 
@@ -62,7 +62,7 @@ ms.locfileid: "52284552"
 
 [![TSI 资源管理器初始视图](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-在筛选器框中通过键入“delivery-truck”来筛选设备，然后在左侧面板中选择“温度”作为“度量值”：
+在筛选器框中通过键入“delivery-truck”  来筛选设备，然后在左侧面板中选择“温度”  作为“度量值”  ：
 
 [![TSI 资源管理器卡车温度](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
@@ -70,19 +70,19 @@ ms.locfileid: "52284552"
 
 [![TSI 资源管理器缩放](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
-你还可以添加来自卡车的其他遥测数据流。 单击左上角的“添加”按钮。 此时出现新的窗格：
+你还可以添加来自卡车的其他遥测数据流。 单击左上角的“添加”  按钮。 此时出现新的窗格：
 
 [![显示新窗格的 TSI 资源管理器](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-在新窗格中，将新标签的名称更改为“设备”以便其匹配先前的名称。 选择“海拔”作为“度量值”并选择“iothub-connection-device-id”作为“拆分依据”值，以将海拔遥测数据添加到视图中：
+在新窗格中，将新标签的名称更改为“设备”  以便其匹配先前的名称。 选择“海拔”  作为“度量值”  并选择“iothub-connection-device-id”  作为“拆分依据”  值，以将海拔遥测数据添加到视图中：
 
 [![具有温度和海拔数据的 TSI 资源管理器](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>诊断警报
 
-在当前视图中查看数据流时，可以看到两个卡车的海拔剖面图并不相同。 此外，delivery-truck-02 的温度降低发生在卡车到达高海拔时。 你对此发现很震惊，因为两辆卡车计划采取的是相同的路线。
+在当前视图中查看数据流时，可以看到两个卡车的海拔剖面图并不相同。 此外，delivery-truck-02 的温度降低发生在卡车到达高海拔时  。 你对此发现很震惊，因为两辆卡车计划采取的是相同的路线。
 
-为了确认卡车走了不同的行程路线这一怀疑，使用“添加”按钮向侧边面板添加另一个窗格。 在新窗格中，将新标签的名称更改为“设备”以便其匹配先前的名称。 选择“经度”作为“度量值”并选择“iothub-connection-device-id”作为“拆分依据”值，以将经度遥测数据添加到视图中。 通过查看经度数据流之间的区别，可以知道卡车确实采取了不同的路线：
+为了确认卡车走了不同的行程路线这一怀疑，使用“添加”  按钮向侧边面板添加另一个窗格。 在新窗格中，将新标签的名称更改为“设备”  以便其匹配先前的名称。 选择“经度”  作为“度量值”  并选择“iothub-connection-device-id”  作为“拆分依据”  值，以将经度遥测数据添加到视图中。 通过查看经度  数据流之间的区别，可以知道卡车确实采取了不同的路线：
 
 [![具有温度、海拔和经度数据的 TSI 资源管理器](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-longitude-expanded.png#lightbox)
 

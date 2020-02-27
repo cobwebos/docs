@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754820"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587424"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>教程：使用 JavaScript SDK 生成 Node.js 控制台应用以管理 Azure Cosmos DB SQL API 数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "72754820"
 > * 向容器添加项。
 > * 对项、容器和数据库执行基本操作。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 请确保具有以下资源：
 
@@ -61,7 +61,7 @@ ms.locfileid: "72754820"
 2. 找到想要在其中保存 Node.js 应用程序的文件夹或目录。
 3. 使用以下命令创建两个空的 JavaScript 文件：
 
-   * Windows:
+   * Windows：
      * ```fsutil file createnew app.js 0```
      * ```fsutil file createnew config.js 0```
 
@@ -69,10 +69,10 @@ ms.locfileid: "72754820"
      * ```touch app.js```
      * ```touch config.js```
 
-4. 创建并初始化 `package.json` 文件。 请使用以下命令：
+4. 创建并初始化 `package.json` 文件。 使用以下命令：
    * ```npm init -y```
 
-5. 通过 npm 安装 @azure/cosmos 模块。 请使用以下命令：
+5. 通过 npm 安装 @azure/cosmos 模块。 使用以下命令：
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>设置应用的配置
@@ -95,7 +95,7 @@ ms.locfileid: "72754820"
 
 1. 复制 ```database```、```container``` 和 ```items``` 数据并将其粘贴到在其中设置了 ```config.endpoint``` 和 ```config.key``` 属性的 ```config``` 对象（见下）。 如果已有要在数据库中存储的数据，则可以使用 Azure Cosmos DB 中的数据迁移工具，而不是在此处定义数据。 config.js 文件应包含以下代码：
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    JavaScript SDK 使用通用术语“容器”和“项”。   容器可以是集合、图或表。 项可以是文档、边缘/顶点或行，是容器中的内容。 
    
@@ -602,7 +602,7 @@ Azure Cosmos DB 支持删除 JSON 项。
 
 总起来看，代码应如下所示：
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 在终端中，找到 ```app.js``` 文件并运行以下命令： 
 
@@ -658,7 +658,7 @@ node app.js
 * 一个 [Azure Cosmos DB 帐户][create-account]。 
 * GitHub 上提供的[入门](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)解决方案。 
 
-通过 npm 安装项目的依赖项。 请使用以下命令： 
+通过 npm 安装项目的依赖项。 使用以下命令： 
 
 * ```npm install``` 
 

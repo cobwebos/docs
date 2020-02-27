@@ -4,15 +4,15 @@ description: 了解 Azure App Service 中的网络功能，以及网络所需的
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 02/27/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971751"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649220"
 ---
 # <a name="app-service-networking-features"></a>应用服务网络功能
 
@@ -28,7 +28,7 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 |---------------------|-------------------|
 | 应用分配的地址 | 混合连接 |
 | 访问限制 | 网关所需的 VNet 集成 |
-| 服务终结点 | VNet 集成（预览版） |
+| 服务终结点 | VNet 集成 |
 
 除非另有说明，否则所有功能都可以一起使用。 可以混合使用这些功能来解决各种问题。
 
@@ -41,10 +41,10 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 支持应用的基于 IP 的 SSL 需求 | 应用分配的地址 |
 | 不共享、应用的专用入站地址 | 应用分配的地址 |
 | 从一组定义完善的地址限制对应用的访问 | 访问限制 |
-| 在 VNet 中的专用 Ip 上公开我的应用 | ILB ASE </br> 具有服务终结点的应用程序网关 |
+| 在 VNet 中的专用 Ip 上公开我的应用 | ILB ASE </br> 包含服务终结点的应用程序网关 |
 | 限制从 VNet 中的资源对应用的访问 | 服务终结点 </br> ILB ASE |
 | 在 VNet 中的专用 IP 上公开我的应用 | ILB ASE </br> 使用服务终结点的应用程序网关上的入站专用 IP |
-| 使用 WAF 保护我的应用程序 | 应用程序网关 + ILB ASE </br> 具有服务终结点的应用程序网关 </br> 具有访问限制的 Azure 前门 |
+| 使用 WAF 保护我的应用程序 | 应用程序网关 + ILB ASE </br> 包含服务终结点的应用程序网关 </br> 具有访问限制的 Azure 前门 |
 | 对不同区域中的应用的流量进行负载均衡 | 具有访问限制的 Azure 前门 | 
 | 在同一区域对流量进行负载均衡 | [具有服务终结点的应用程序网关][appgwserviceendpoints] | 
 
@@ -56,7 +56,9 @@ Azure App Service 是一种分布式系统。 处理传入 HTTP/HTTPS 请求的�
 | 网络流入量不同的区域访问 Azure 虚拟中的资源 | 网关所需的 VNet 集成 </br> ASE 和 VNet 对等互连 |
 | 访问通过服务终结点保护的资源 | VNet 集成 </br> ASE |
 | 访问未连接到 Azure 的专用网络中的资源 | 混合连接 |
-| 跨 ExpressRoute 线路访问资源 | VNet 集成（目前限制为 RFC 1918 地址） </br> ASE | 
+| 跨 ExpressRoute 线路访问资源 | VNet 集成 </br> ASE | 
+| 保护来自 web 应用的出站流量 | VNet 集成和网络安全组 </br> ASE | 
+| 从 web 应用路由出站流量 | VNet 集成和路由表 </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>默认网络行为
@@ -146,15 +148,17 @@ Azure App Service 扩展单元支持每个部署中的多个客户。 免费和�
 
 ### <a name="vnet-integration"></a>VNet 集成
 
-网关所需的 VNet 集成功能非常有用，但仍不能解决跨 ExpressRoute 访问资源的情况。 在需要跨 ExpressRoute 连接的情况下，应用程序需要能够对服务终结点保护服务进行调用。 若要解决这两个附加需求，添加了另一个 VNet 集成功能。 利用新的 VNet 集成功能，你可以将应用程序的后端置于同一区域中资源管理器 VNet 的子网中。 此功能在已在 VNet 中的应用服务环境不可用。 此功能支持：
+网关所需的 VNet 集成功能非常有用，但仍不能解决跨 ExpressRoute 访问资源的情况。 在需要跨 ExpressRoute 连接的情况下，应用程序需要能够对服务终结点保护服务进行调用。 若要解决这两个附加需求，添加了另一个 VNet 集成功能。 利用新的 VNet 集成功能，你可以将应用程序的后端置于同一区域中资源管理器 VNet 的子网中。 此功能在已在 VNet 中的应用服务环境不可用。 此功能启用：
 
 * 在同一区域中访问资源管理器 Vnet 中的资源
 * 访问通过服务终结点保护的资源 
 * 访问可跨 ExpressRoute 或 VPN 连接访问的资源
+* 保护所有出站流量 
+* 强制隧道所有出站流量。 
 
 ![VNet 集成](media/networking-features/vnet-integration.png)
 
-此功能为预览版，不应用于生产工作负荷。 若要了解有关此功能的详细信息，请阅读[应用服务 VNet 集成][vnetintegration]中的文档。
+若要了解有关此功能的详细信息，请阅读[应用服务 VNet 集成][vnetintegration]中的文档。
 
 ## <a name="app-service-environment"></a>应用服务环境 
 

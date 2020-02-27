@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 8913c956554fa7bf1d0362b44dc6f8031ffd74f9
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429128"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588733"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 NAT 网关
 
@@ -30,11 +30,7 @@ ms.locfileid: "77429128"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-> [!IMPORTANT]
-> 在订阅中启用虚拟网络 NAT [预览版](./nat-overview.md#enable-preview)后，使用 https://aka.ms/natportal 访问门户。
-
-登录 [Azure 门户](https://aka.ms/natportal)。
-
+登录 [Azure 门户](https://portal.azure.com)。
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 

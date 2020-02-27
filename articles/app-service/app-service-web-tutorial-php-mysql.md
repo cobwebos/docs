@@ -6,12 +6,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: d827270c89160097f76a7fdb36f9a6f97525064b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9375a59fedcd134a64cfa3bf8b92e33d326ee925
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671989"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500035"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>教程：在 Azure 中构建 PHP 和 MySQL 应用
 
@@ -19,11 +19,11 @@ ms.locfileid: "74671989"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_ 上的应用服务，请参阅[在 Linux 上的 Azure 应用服务中生成 PHP 和 MySQL 应用](./containers/tutorial-php-mysql-app.md)。
 >
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本教程介绍如何在 Azure 中创建 PHP 应用，并将其连接到 MySQL 数据库。 完成本教程后，Azure 应用服务中将会运行一个 [Laravel](https://laravel.com/) 应用。
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。 本教程介绍如何在 Azure 中创建 PHP 应用，并将其连接到 MySQL 数据库。 完成本教程后，Azure 应用服务中将会运行一个 [Laravel](https://laravel.com/) 应用。
 
 ![在 Azure 应用服务中运行的 PHP 应用](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 MySQL 数据库
@@ -35,7 +35,7 @@ ms.locfileid: "74671989"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -599,7 +599,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 转到 [Azure 门户](https://portal.azure.com)管理已创建的应用。
 
-在左侧菜单中单击“应用程序服务”  ，然后单击 Azure 应用的名称。
+在左侧菜单中单击**应用程序服务**，然后单击 Azure 应用的名称。
 
 ![在门户中导航到 Azure 应用](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
@@ -615,7 +615,7 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 中创建 MySQL 数据库

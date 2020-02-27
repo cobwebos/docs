@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: f9889f58ead8d1dd35ceb50fa100b2b466cbe7cf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d97b63aa87bfd8cf8ca1a3f5b213d6b16ca066df
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022386"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616845"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>配置 Azure 存储的高级威胁防护
 
@@ -31,7 +31,7 @@ ms.locfileid: "77022386"
 
 可以通过多种方式来配置高级威胁防护，如以下部分中所述。
 
-### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 启动 [Azure 门户](https://portal.azure.com/)。
 1. 导航到你的 Azure 存储帐户。 在 "**设置**" 下，选择 "**高级安全**"。
@@ -41,7 +41,7 @@ ms.locfileid: "77022386"
 
     ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="azure-security-centertabazure-security-center"></a>[Azure 安全中心](#tab/azure-security-center)
+### <a name="azure-security-center"></a>[Azure 安全中心](#tab/azure-security-center)
 
 当你订阅 Azure 安全中心的 "标准" 层时，会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护，如下所示：
 
@@ -55,13 +55,13 @@ ms.locfileid: "77022386"
 1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中，单击 "**已启用**" 或 "**已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
-### <a name="templatetabtemplate"></a>[模板](#tab/template)
+### <a name="template"></a>[模板](#tab/template)
 
 使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息，请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
-### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
+### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 使用 Azure 策略在特定订阅或资源组中的存储帐户之间启用高级威胁防护。
 
@@ -79,14 +79,14 @@ ms.locfileid: "77022386"
 
     !["策略定义" 页](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="rest-apitabrest-api"></a>[REST API](#tab/rest-api)
+### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
 使用 Rest API 命令创建、更新或获取特定存储帐户的高级威胁防护设置。
 
 * [高级威胁防护-创建](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [高级威胁防护-获取](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用以下 PowerShell cmdlet：
 
@@ -116,9 +116,9 @@ ms.locfileid: "77022386"
 
 ![Azure 存储高级威胁防护警报电子邮件](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 
-## <a name="protection-alerts"></a>保护警报
+## <a name="security-alerts"></a>安全警报
 
-警报是因访问或攻击存储帐户的异常且可能有害的尝试而生成的。 有关 Azure 存储的警报的列表，请参阅[Azure 安全中心中的数据服务威胁检测](../../security-center/security-center-alerts-data-services.md#azure-storage)警报中的**存储**部分。
+警报是因访问或攻击存储帐户的异常且可能有害的尝试而生成的。 有关 Azure 存储的警报列表，请参阅[Azure 安全中心中的数据服务威胁防护](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurestorage)中的**存储**部分。
 
 ## <a name="next-steps"></a>后续步骤
 

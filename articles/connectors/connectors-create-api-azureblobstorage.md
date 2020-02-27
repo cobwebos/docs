@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566006"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650855"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建和管理 Azure Blob 存储中的 blob
 
@@ -137,7 +137,10 @@ ms.locfileid: "77566006"
 
 ## <a name="connector-reference"></a>连接器参考
 
-如连接器的开放 API （以前的 Swagger）文件所述，有关技术详细信息（如触发器、操作和限制），请参阅[连接器的参考页](https://docs.microsoft.com/connectors/azureblobconnector/)。
+有关此连接器的更多技术详细信息，如连接器的 Swagger 文件所述的触发器、操作和限制，请参阅[连接器的参考页](https://docs.microsoft.com/connectors/azureblobconnector/)。
+
+> [!NOTE]
+> 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 <a name="storage-firewalls"></a>
 
