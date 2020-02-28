@@ -1,18 +1,14 @@
 ---
 title: Java web 应用性能监视-Azure 应用程序 Insights
 description: 使用 Application Insights 监视 Java 网站的扩展性能和使用情况。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/10/2019
-ms.openlocfilehash: 8194c4b16d114be9b2b95ff56dea59d98cfdae10
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931145"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657021"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 Java web 应用中监视依赖项、捕获的异常和方法执行时间
 
@@ -90,8 +86,8 @@ ms.locfileid: "74931145"
 
 键： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
-对于最新版本的 Java 代理, 请查看 [此](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)处的版本。 
+对于最新版本的 Java 代理，请查看[此处](https://github.com/Microsoft/ApplicationInsights-Java/releases
+)的版本。 
 
 代理必须打包为项目中的资源，以使其在 D：/home/site/wwwroot/目录中结束。 可以通过转到 "**开发工具**" > "**高级工具**" > **调试控制台**并检查站点目录的内容来确认代理是否位于正确的应用服务目录中。    
 
@@ -117,7 +113,7 @@ ms.locfileid: "74931145"
 
 理想情况下，所有服务都已更新为支持 W3C 协议的较新版 SDK 时，就会出现这种情况。 强烈建议尽快迁移到提供 W3C 支持的新版 SDK。
 
-请确保[传入](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)和传出（代理）配置完全相同。
+请确保**传入[和传出（代理）配置完全相同](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)** 。
 
 ## <a name="view-the-data"></a>查看数据
 在 Application Insights 资源中，聚合的远程依赖项和方法执行时间显示[在 "性能" 磁贴下][metrics]。

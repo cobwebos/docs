@@ -2,21 +2,21 @@
 title: 操作组中的短信警报行为
 description: 短信格式，以及回复短信以取消订阅、重新订阅或请求帮助。
 author: dkamstra
+ms.author: dukek
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/16/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346291"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665300"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>操作组中的短信通知行为
-## <a name="overview"></a>概述 ##
+
+## <a name="overview"></a>概述 
 通过操作组可以配置操作列表。 在定义警报时将使用这些组；确保警报被触发时向特定操作组发送通知。 支持的操作之一是短信；短信通知支持双向通信。 用户可以对短信做出响应来执行以下操作：
 
 - **取消订阅警报：** 用户可以为所有操作组或单个操作组取消订阅所有短信警报。
@@ -30,7 +30,7 @@ ms.locfileid: "60346291"
 * 此警报发送到的操作组的短名称
 * 警报的标题
 
-| 回复 | 描述 |
+| 回复 | 说明 |
 | ----- | ----------- |
 | DISABLE `<Action Group Short name>` | 禁用来自操作组的进一步短信 |
 | ENABLE `<Action Group Short name>` | 重新启用来自操作组的短信 |

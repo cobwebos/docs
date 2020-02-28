@@ -3,17 +3,16 @@ title: 利用模板 Azure Monitor 收集 Windows VM 指标
 description: 使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364112"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657361"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>使用 Windows 虚拟机的资源管理器模板将来宾 OS 指标发送到 Azure Monitor 指标存储
 
@@ -27,7 +26,7 @@ ms.locfileid: "75364112"
 
 如果你不熟悉资源管理器模板，请了解[模板部署](../../azure-resource-manager/management/overview.md)及其结构和语法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 你的订阅必须已注册到 [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)。
 
@@ -285,7 +284,7 @@ Azure 诊断扩展使用名为“数据接收器”的功能将指标和日志�
 
 6. 在命名空间下拉菜单中，选择“azure.vm.windows.guest”
 
-7. 在指标下拉菜单中，选择“内存”\%“已提交的使用字节数”。
+7. 在指标下拉菜单中，选择“内存” **“已提交的使用字节数”\%** 。
 
 
 ## <a name="next-steps"></a>后续步骤

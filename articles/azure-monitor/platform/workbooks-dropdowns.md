@@ -4,18 +4,17 @@ description: 通过包含 dropdown 参数的预生成的自定义参数化工作
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: df30b71e6ec9e982988ed75b187db08255e24b61
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872870"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658274"
 ---
 # <a name="workbook-drop-down-parameters"></a>工作簿下拉参数
 
@@ -133,7 +132,7 @@ dependencies
 | `{DependencyName:label}` | 所选标签 | 🌐获取 fabrikamaccount |
 | `{DependencyName:value}` | 选定值 | 获取 fabrikamaccount |
 
-## <a name="multiple-selection"></a>多选
+## <a name="multiple-selection"></a>多重选择
 到目前为止，这些示例将参数显式设置为仅在下拉中选择一个值。 下拉参数还支持 `multiple selection`-启用此功能与检查 `Allow multiple selection` 选项一样简单。 
 
 用户还可以选择通过 "`delimiter`" 和 "`quote with`" 设置来指定结果集的格式。 默认情况下，在此窗体中以集合的形式返回值： "a"、"b"、"c"。 它们还可以选择限制选择的数目。

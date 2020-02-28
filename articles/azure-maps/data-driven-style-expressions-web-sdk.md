@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189655"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657097"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式（Web SDK）
 
@@ -81,16 +81,18 @@ Azure Maps Web SDK 支持多种类型的表达式。 表达式可以单独使用
 
 数据表达式提供对功能中的属性数据的访问。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['at', number, array]` | 对象 | 从数组中检索项。 |
-| `['geometry-type']` | string | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
+| `['at', number, array]` | 对象 (object) | 从数组中检索项。 |
+| `['geometry-type']` | 字符串 | 获取功能的几何图形类型： Point、MultiPoint、LineString、MultiLineString、多边形、MultiPolygon。 |
 | `['get', string]` | 值 | 从当前功能的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['get', string, object]` | 值 | 从提供的对象的属性获取属性值。 如果缺少请求的属性，则返回 null。 |
 | `['has', string]` | boolean | 确定功能的属性是否具有指定的属性。 |
 | `['has', string, object]` | boolean | 确定对象的属性是否具有指定的属性。 |
 | `['id']` | 值 | 获取功能的 ID （如果有）。 |
-| `['length', string | array]` | number | 获取字符串或数组的长度。 |
+| `['length', string | array]` | 数字 | 获取字符串或数组的长度。 |
+| `['in', boolean | string | number, array]` | boolean | 确定某一项是否存在于数组中 |
+| `['in', substring, string]` | boolean | 确定字符串中是否存在子字符串 |
 
 **示例**
 
@@ -139,34 +141,34 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 数学表达式提供数学运算符，用于在 expression framework 内执行数据驱动的计算。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | number | 计算指定数字的和。 |
-| `['-', number]` | number | 将0减去指定数字。 |
-| `['-', number, number]` | number | 用第二个数字减去第一个数字。 |
-| `['*', number, number, …]` | number | 将指定的数字相乘。 |
-| `['/', number, number]` | number | 将第一个数字除以第二个数字。 |
-| `['%', number, number]` | number | 计算第一个数字除以第二个数字时的余数。 |
-| `['^', number, number]` | number | 计算第一个值的值，该值为第二个数字的幂。 |
-| `['abs', number]` | number | 计算指定数字的绝对值。 |
-| `['acos', number]` | number | 计算指定数字的反余弦值。 |
-| `['asin', number]` | number | 计算指定数字的反正弦值。 |
-| `['atan', number]` | number | 计算指定数字的反正切值。 |
-| `['ceil', number]` | number | 将数字向上舍入到下一个整数。 |
-| `['cos', number]` | number | 计算指定数字的 cos。 |
-| `['e']` | number | 返回数学常量 `e`。 |
-| `['floor', number]` | number | 将数字向下舍入到上一个整数。 |
-| `['ln', number]` | number | 计算指定数字的自然对数。 |
-| `['ln2']` | number | 返回数学常量 `ln(2)`。 |
-| `['log10', number]` | number | 计算指定数字的以10为底的对数。 |
-| `['log2', number]` | number | 计算指定数字的以2为底的对数。 |
-| `['max', number, number, …]` | number | 计算指定的一组数字中的最大数目。 |
-| `['min', number, number, …]` | number | 计算指定的一组数字中的最小数目。 |
-| `['pi']` | number | 返回数学常量 `PI`。 |
-| `['round', number]` | number | 将数字舍入到最接近的整数。 将值从零向外舍入。 例如，`['round', -1.5]` 的计算结果为-2。 |
-| `['sin', number]` | number | 计算指定数字的正弦值。 |
-| `['sqrt', number]` | number | 计算指定数字的平方根。 |
-| `['tan', number]` | number | 计算指定数值的正切值。 |
+| `['+', number, number, …]` | 数字 | 计算指定数字的和。 |
+| `['-', number]` | 数字 | 将0减去指定数字。 |
+| `['-', number, number]` | 数字 | 用第二个数字减去第一个数字。 |
+| `['*', number, number, …]` | 数字 | 将指定的数字相乘。 |
+| `['/', number, number]` | 数字 | 将第一个数字除以第二个数字。 |
+| `['%', number, number]` | 数字 | 计算第一个数字除以第二个数字时的余数。 |
+| `['^', number, number]` | 数字 | 计算第一个值的值，该值为第二个数字的幂。 |
+| `['abs', number]` | 数字 | 计算指定数字的绝对值。 |
+| `['acos', number]` | 数字 | 计算指定数字的反余弦值。 |
+| `['asin', number]` | 数字 | 计算指定数字的反正弦值。 |
+| `['atan', number]` | 数字 | 计算指定数字的反正切值。 |
+| `['ceil', number]` | 数字 | 将数字向上舍入到下一个整数。 |
+| `['cos', number]` | 数字 | 计算指定数字的 cos。 |
+| `['e']` | 数字 | 返回数学常量 `e`。 |
+| `['floor', number]` | 数字 | 将数字向下舍入到上一个整数。 |
+| `['ln', number]` | 数字 | 计算指定数字的自然对数。 |
+| `['ln2']` | 数字 | 返回数学常量 `ln(2)`。 |
+| `['log10', number]` | 数字 | 计算指定数字的以10为底的对数。 |
+| `['log2', number]` | 数字 | 计算指定数字的以2为底的对数。 |
+| `['max', number, number, …]` | 数字 | 计算指定的一组数字中的最大数目。 |
+| `['min', number, number, …]` | 数字 | 计算指定的一组数字中的最小数目。 |
+| `['pi']` | 数字 | 返回数学常量 `PI`。 |
+| `['round', number]` | 数字 | 将数字舍入到最接近的整数。 将值从零向外舍入。 例如，`['round', -1.5]` 的计算结果为-2。 |
+| `['sin', number]` | 数字 | 计算指定数字的正弦值。 |
+| `['sqrt', number]` | 数字 | 计算指定数字的平方根。 |
+| `['tan', number]` | 数字 | 计算指定数值的正切值。 |
 
 ## <a name="aggregate-expression"></a>聚合表达式
 
@@ -188,13 +190,13 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 如果数据集中的所有功能都有一个 `revenue` 属性，该属性是一个数字。 然后，可以计算群集中从数据集创建的所有点的总收入。 此计算使用以下聚合表达式完成： `['+', 0, ['get', 'revenue']]`
 
-## <a name="boolean-expressions"></a>Boolean 表达式
+## <a name="boolean-expressions"></a>布尔表达式
 
 布尔表达式提供一组用于计算布尔值比较的布尔运算符表达式。
 
 比较值时，将严格类型化比较。 不同类型的值始终被视为不相等。 在分析时已知不同类型的情况被视为无效，并将生成分析错误。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | 逻辑求反。 如果输入 `false`，则返回 `true`; 如果 `true`，则返回 `false`。 |
 | `['!= ', value, value]` | boolean | 返回 `true` 如果输入值不相等，则返回 `false` 否则为。 |
@@ -397,15 +399,15 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 类型表达式提供了用于测试和转换不同数据类型（如字符串、数字和布尔值）的工具。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | 数组 \| 对象 | 返回文本数组或对象值。 使用此表达式可防止将数组或对象作为表达式进行计算。 当表达式需要返回数组或对象时，这是必需的。 |
-| `['image', string]` | string | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
+| `['image', string]` | 字符串 | 检查是否已将指定的映像 ID 加载到 maps 图像 sprite。 如果为，则返回 ID，否则返回 null。 |
 | `['to-boolean', value]` | boolean | 将输入值转换为布尔值。 如果输入为空字符串、`0`、`false`、`null`或 `NaN`，则结果 `false`;否则，其 `true`。 |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | 颜色 | 将输入值转换为颜色。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 如果可能，将输入值转换为数字。 如果输入是 `null` 或 `false`，则结果为0。 如果输入 `true`，则结果为1。 如果输入是字符串，则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
-| `['to-string', value]` | string | 将输入值转换为字符串。 如果输入 `null`，则结果为 `""`。 如果输入为布尔值，则结果为 `"true"` 或 `"false"`。 如果输入是一个数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则会将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"`。 否则，使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
-| `['typeof', value]` | string | 返回一个字符串，该字符串描述给定值的类型。 |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 将输入值转换为颜色。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 数字 | 如果可能，将输入值转换为数字。 如果输入是 `null` 或 `false`，则结果为0。 如果输入 `true`，则结果为1。 如果输入是字符串，则使用 ECMAScript 语言规范的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字符串函数将其转换为数字。 如果提供了多个值，则将按顺序对每个值进行计算，直到获取第一个成功的转换。 如果没有任何输入可转换，则表达式为错误。 |
+| `['to-string', value]` | 字符串 | 将输入值转换为字符串。 如果输入 `null`，则结果为 `""`。 如果输入为布尔值，则结果为 `"true"` 或 `"false"`。 如果输入是一个数字，则使用 ECMAScript 语言规范的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函数将其转换为字符串。 如果输入是一种颜色，则会将其转换为 CSS RGBA 颜色字符串 `"rgba(r,g,b,a)"`。 否则，使用 ECMAScript 语言规范的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函数将输入转换为字符串。 |
+| `['typeof', value]` | 字符串 | 返回一个字符串，该字符串描述给定值的类型。 |
 
 > [!TIP]
 > 如果浏览器控制台中出现类似于 `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` 的错误消息，则表示代码中的某个位置有一个数组，该表达式的第一个值没有字符串。 如果希望表达式返回数组，请使用 `literal` 表达式包装数组。 下面的示例通过使用 `match` 表达式根据点功能的 `entityType` 属性的值在两个偏移值之间进行选择，将符号层的图标 `offset` 选项设置为一个包含两个数字的数组。
@@ -433,10 +435,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 颜色表达式使您可以更轻松地创建和操作颜色值。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | 颜色 | 从*红色*、*绿色*和*蓝色*分量创建颜色值，该颜色值必须介于 `0` 和 `255`之间，并且是 `1`的 alpha 分量。 如果任何组件超出范围，则表达式为错误。 |
-| `['rgba', number, number, number, number]` | 颜色 | 根据必须介于 `0` 和 `255`之间的*红色*、*绿色*和*蓝色*分量创建颜色值，并从 `0` 和 `1`范围内的 alpha 分量创建一个颜色值。 如果任何组件超出范围，则表达式为错误。 |
+| `['rgb', number, number, number]` | color | 从*红色*、*绿色*和*蓝色*分量创建颜色值，该颜色值必须介于 `0` 和 `255`之间，并且是 `1`的 alpha 分量。 如果任何组件超出范围，则表达式为错误。 |
+| `['rgba', number, number, number, number]` | color | 根据必须介于 `0` 和 `255`之间的*红色*、*绿色*和*蓝色*分量创建颜色值，并从 `0` 和 `1`范围内的 alpha 分量创建一个颜色值。 如果任何组件超出范围，则表达式为错误。 |
 | `['to-rgba']` | \[number、number、number、number\] | 返回一个由四个元素组成的数组，其中包含输入颜色的*红色*、*绿色*、*蓝色*和*alpha*分量，按顺序排列。 |
 
 **示例**
@@ -461,11 +463,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 字符串运算符表达式对字符串执行转换操作，例如连接和转换大小写。 
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | string | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
-| `['downcase', string]` | string | 将指定的字符串转换为小写。 |
-| `['upcase', string]` | string | 将指定的字符串转换为大写。 |
+| `['concat', string, string, …]` | 字符串 | 将多个字符串连接在一起。 每个值必须是字符串。 如果需要，请使用 `to-string` 类型表达式将其他值类型转换为字符串。 |
+| `['downcase', string]` | 字符串 | 将指定的字符串转换为小写。 |
+| `['upcase', string]` | 字符串 | 将指定的字符串转换为大写。 |
 
 **示例**
 
@@ -821,10 +823,10 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 变量绑定表达式将计算结果存储在变量中。 因此，可以多次在表达式中的其他地方引用计算结果。 对于涉及许多计算的表达式，它是一个有用的优化。
 
-| Expression | 返回类型 | 说明 |
+| 表达式 | 返回类型 | 说明 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"let"，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1： any，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2： string，<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;。<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 将一个或多个值作为变量存储，以供返回结果的子表达式中的 `var` 表达式使用。 |
-| `['var', name: string]` | 任意 | 引用使用 `let` 表达式创建的变量。 |
+| `['var', name: string]` | any | 引用使用 `let` 表达式创建的变量。 |
 
 **示例**
 

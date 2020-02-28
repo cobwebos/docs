@@ -1,22 +1,21 @@
 ---
 title: Azure Log Analytics 中的网络性能监视器解决方案中的性能监视器功能 | Microsoft Docs
 description: 借助网络性能监视器中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 745ec6ee8e69ad911e42b6360b3408d79d660718
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898831"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654522"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>网络性能监视器解决方案：性能监视
 
-借助[网络性能监视器](network-performance-monitor.md)中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。 使用性能监视器，可以在你的用户产生抱怨之前检测到网络问题。 主要优势包括： 
+借助[网络性能监视器](network-performance-monitor.md)中的性能监视器功能可以监视网络中各个位置的网络连接。 可以监视云部署和本地位置、多个数据中心和分支机构、任务关健型多层应用程序或微服务。 使用性能监视器，可以在用户产生抱怨之前检测到网络问题。 主要优势包括： 
 
 - 跨各种子网监视数据丢失和延迟情况并设置警报。
 - 监视网络上的所有路径（包括冗余路径）。
@@ -95,7 +94,7 @@ ms.locfileid: "72898831"
 
 如果在部署期间选择使用 ICMP，可以随时通过编辑默认监视规则来切换到 TCP。
 
-1. 转到 ”**网络性能**”   > ” **监视**”   > ” **配置**”   > ” **监视**” 。 然后选择  **“默认规则”** 。 
+1. 转到 ”**网络性能**”  > ” **监视**”  > ” **配置**”  > ” **监视**” 。 然后选择  **“默认规则”** 。 
 2. 滚动到“协议”部分，并选择要使用的协议。 
 3. 选择“保存”以应用设置。 
 

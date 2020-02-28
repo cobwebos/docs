@@ -4,18 +4,17 @@ description: 利用通过 Azure 资源管理器模板部署的预生成的自定
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872904"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658398"
 ---
 # <a name="programmatically-manage-workbooks"></a>以编程方式管理工作簿
 
@@ -113,7 +112,7 @@ ms.locfileid: "74872904"
 ### <a name="workbook-types"></a>工作簿类型
 工作簿类型指定新工作簿实例将在其下显示的工作簿库类型。 选项包括：
 
-| Type | 库位置 |
+| 类型 | 库位置 |
 | :------------- |:-------------|
 | `workbook` | 大多数报表中使用的默认值，包括 Application Insights、Azure Monitor 等的工作簿库。  |
 | `tsg` | 疑难解答指南库中的 Application Insights |

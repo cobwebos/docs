@@ -1,18 +1,17 @@
 ---
 title: 监视 Azure Cosmos DB Azure Monitor Cosmos DB （预览版） |Microsoft Docs
 description: 本文介绍 Cosmos DB 功能的 Azure Monitor，该功能提供 Cosmos DB 所有者快速了解 CosmosDB 帐户的性能和使用问题。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: dece5b0bb0508e2d83ee184e71ef0b4364d25ac8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622977"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657378"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB Azure Monitor （预览）
 

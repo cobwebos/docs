@@ -1,19 +1,15 @@
 ---
 title: Azure Monitor Application Insights 依赖关系数据模型
 description: 适用于依赖项遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872632"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671913"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依赖项遥测：Application Insights 数据模型
 
@@ -27,21 +23,21 @@ ms.locfileid: "74872632"
 
 依赖项调用实例的标识符。 用于与此依赖项调用所对应的请求遥测项关联。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
-## <a name="data"></a>数据
+## <a name="data"></a>data
 
 此依赖项调用启动的命令。 示例包括使用所有查询参数的 SQL 语句和 HTTP URL。
 
-## <a name="type"></a>Type
+## <a name="type"></a>类型
 
 依赖项类型名称。 低基数值，用于对依赖项进行逻辑分组和解释 commandName 和 resultCode 等其他字段。 示例包括 SQL、Azure 表和 HTTP。
 
-## <a name="target"></a>确定目标
+## <a name="target"></a>目标
 
 依赖项调用的目标站点。 示例包括服务器名称、主机地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
 ## <a name="duration"></a>Duration
 
-采用 `DD.HH:MM:SS.MMMMMM` 格式的请求持续时间。 必须小于 `1000` 天。
+请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须小于 `1000` 天。
 
 ## <a name="result-code"></a>结果代码
 
@@ -65,5 +61,5 @@ ms.locfileid: "74872632"
 - 为 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 设置依赖项跟踪。
 - 为 [Java](../../azure-monitor/app/java-agent.md) 设置依赖项跟踪。
 - [编写自定义依赖项遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

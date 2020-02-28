@@ -1,19 +1,15 @@
 ---
 title: 请求遥测的数据模型-Azure 应用程序 Insights
 description: 适用于请求遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928843"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671896"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>请求遥测：Application Insights 数据模型
 
@@ -23,7 +19,7 @@ ms.locfileid: "74928843"
 
 ## <a name="name"></a>名称
 
-请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `id` 值的 `GET /values/{id}`。
+请求的名称表示用于处理该请求的代码路径。 较小的基数值对请求分组更有利。 对于 HTTP 请求，该名称表示 HTTP 方法和 URL 路径模板，例如，不带实际 `GET /values/{id}` 值的 `id`。
 
 在字母大小写方面，Application Insights Web SDK 会“按原样”发送请求名称。 UI 上的分组区分大小写，因此 `GET /Home/Index` 被视为不同于 `GET /home/INDEX`，即使两者通常生成相同的控制器和操作执行。 原因在于，URL 往往[区分大小写](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)。 可能想要确定所有 `404` 是否发生在以大写形式键入的 URL 上。 可以通过[博客文章](https://apmtips.com/blog/2015/02/23/request-name-and-url/)中的 ASP.NET Web SDK 在请求名称集合中阅读更多详细信息。
 
@@ -41,7 +37,7 @@ ms.locfileid: "74928843"
 
 最大长度：2048 个字符
 
-## <a name="source"></a>Source
+## <a name="source"></a>源
 
 请求的源。 示例包括调用方的检测密钥或调用方的 IP 地址。 有关详细信息，请参阅[关联](../../azure-monitor/app/correlation.md)页。
 
@@ -49,7 +45,7 @@ ms.locfileid: "74928843"
 
 ## <a name="duration"></a>Duration
 
-采用 `DD.HH:MM:SS.MMMMMM` 格式的请求持续时间。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
+请求持续时间，格式为：`DD.HH:MM:SS.MMMMMM`。 必须是正数且小于 `1000` 天。 此字段是必填的，因为请求遥测表示具有开始和结束时间的操作。
 
 ## <a name="response-code"></a>响应代码
 
@@ -78,6 +74,6 @@ ms.locfileid: "74928843"
 ## <a name="next-steps"></a>后续步骤
 
 - [编写自定义请求遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - 了解如何使用 Application Insights [配置 ASP.NET Core](../../azure-monitor/app/asp-net.md) 应用程序。
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 进行使用情况分析 | Microsoft docs
 description: 了解用户，以及他们将应用用于哪些目的。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f34267a1820f8b2365a41569bd3c8eaed9f2f9c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884823"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671012"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights 使用分析
 
@@ -38,7 +34,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
     </script>
     ```
 
-    若要了解更多用于监视网站的高级配置，请查看 [JavaScript SDK 参考文章](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
+    若要了解有关监视网站的更多高级配置，请查看[JAVASCRIPT SDK 参考文章](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
 3. **移动应用代码：** 通过[按照此指南操作](../../azure-monitor/learn/mobile-center-quickstart.md)，使用 App Center SDK 收集应用中的事件，然后将这些事件的副本发送到 Application Insights 进行分析。
 
@@ -75,7 +71,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 
 ![保留](./media/usage-overview/retention.png) 
 
-使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回归。  
+使用顶部的保留控件可以定义特定的事件和时间范围来计算保留。 中间的图表根据指定的时间范围提供总体保留百分比的视觉表示形式。 底部的图表显示给定时间段内的各个保留。 这种详细程度可让你更细致地了解用户正在做什么，以及哪些因素可能会影响用户回头。  
 
 [有关保留工具的详细信息](usage-retention.md)
 
@@ -157,7 +153,7 @@ Web 或移动应用有哪些最热门的功能？ 用户是否使用应用实现
 > [!NOTE]
 > 使用 `ApplicationInsights.config` 或使用 `TelemetryConfiguration.Active` 添加初始值设定项对于 ASP.NET Core 应用程序无效。 
 
-对于 [ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) 应用程序，添加新的 `TelemetryInitializer` 是通过将其添加到依赖项注入容器来完成的，如下所示。 这是在 `ConfigureServices` 类的 `Startup.cs` 方法中完成的。
+对于[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers)应用程序，通过将新 `TelemetryInitializer` 添加到依赖关系注入容器来添加新，如下所示。 这是在 `Startup.cs` 类 `ConfigureServices` 方法中完成的。
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

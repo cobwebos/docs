@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660030"
 ---
 # <a name="linux-support"></a>Linux 支持
 
@@ -21,6 +21,9 @@ ms.locfileid: "77049668"
 ## <a name="what-is-the-linux-sdk"></a>什么是 Linux SDK？
 
 你可以使用 SDK Api 来检索资源源、连接到桌面或远程应用程序会话，并使用我们的第一方客户端支持的多个重定向。
+
+> [!NOTE]
+> SDK 目前正在开发中。 我们将使用可访问 SDK 的说明来更新本文档。
 
 ### <a name="supported-linux-distributions"></a>支持的 Linux 分发版
 
@@ -54,8 +57,6 @@ SDK 还支持多个监视器显示配置，前提是你为会话选择的监视�
 2. 测试可用的第一方客户端，以熟悉 Windows 虚拟桌面用户体验。
 
 ## <a name="next-steps"></a>后续步骤
-
-SDK 目前正在开发中。 我们将使用可访问 SDK 的说明来更新本文档。
 
 请查看以下客户端的文档：
 

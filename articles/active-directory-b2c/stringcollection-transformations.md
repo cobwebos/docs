@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8f91db91eff3320691a5979d9453bf515ccd59a2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982288"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656086"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -26,13 +26,13 @@ ms.locfileid: "76982288"
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-将字符串声明添加到新的 stringCollection 声明。
+将字符串声明添加到新的 stringCollection 声明的唯一值。 
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
-| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | collection | stringCollection | 在调用此声明转换之后生成的 ClaimType，并在输入声明中指定了值。 |
 
 使用此声明转换将字符串添加到新的或现有的 stringCollection。 它通常用于 AAD-UserWriteUsingAlternativeSecurityId 技术配置文件。 在创建新的社交帐户之前，CreateOtherMailsFromEmail 声明转换会读取 ClaimType，并将值添加到 otherMails ClaimType。
 
@@ -60,13 +60,13 @@ ms.locfileid: "76982288"
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-将字符串参数添加到新的 stringCollection 声明。
+将字符串参数添加到新的 stringCollection 声明的唯一值。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | InputParameter | item | 字符串 | 要添加到输出声明的值。 |
-| OutputClaim | collection | stringCollection | 调用此 ClaimsTransformation 后将生成的 ClaimTypes。 |
+| OutputClaim | collection | stringCollection | 调用此声明转换后生成的 ClaimType，其值在输入参数中指定。 |
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。
 
@@ -97,7 +97,7 @@ ms.locfileid: "76982288"
 
 从提供的字符串集合中获取第一项。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
 | OutputClaim | extractedItem | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
@@ -127,7 +127,7 @@ ms.locfileid: "76982288"
 
 检查 StringCollection 声明类型是否包含元素
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | stringCollection | 要搜索的声明类型。 |
 |InputParameter|item|字符串|要搜索的值。|

@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 中创建管理解决方案文件 | Microsoft Docs
 description: 管理解决方案提供打包的管理方案，客户可将其添加到 Azure 环境。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977697"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662531"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -44,7 +43,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
        "outputs": {  }
     }
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 [parameters](../../azure-resource-manager/templates/template-syntax.md#parameters) 是你在用户安装管理解决方案时从用户请求的值。  存在所有解决方案均具有的标准参数，你也可以根据特定解决方案的需要添加其他参数。  用户安装解决方案时提供参数值的方式取决于特定参数和解决方案安装方式。
 
 用户通过 Azure 市场或 Azure 快速入门模板[安装管理解决方案](solutions.md#install-a-monitoring-solution)时，系统会提示他们选择 [Log Analytics 工作区和自动化帐户](solutions.md#log-analytics-workspace-and-automation-account)。  这些用于填充每个标准参数的值。  系统不提示用户直接提供标准参数的值，但会提示他们提供任何其他参数的值。
@@ -62,7 +61,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 下表描述了参数属性。
 
-| Attribute | Description |
+| Attribute | 说明 |
 |:--- |:--- |
 | type |参数的数据类型。 向用户显示的输入控件取决于数据类型。<br><br>bool - 下拉框<br>string - 文本框<br>int - 文本框<br>securestring - 密码字段<br> |
 | category |参数的可选类别。  相同类别中的参数分到一组。 |
@@ -77,7 +76,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 >
 >
 
-| 参数 | 类型 | Description |
+| 参数 | 类型 | 说明 |
 |:--- |:--- |:--- |
 | accountName |字符串 |Azure 自动化帐户名称。 |
 | pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
@@ -159,7 +158,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 
 ### <a name="dependencies"></a>依赖项
-**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#automation-jobs)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#runbooks)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
+**dependsOn** 元素指定对另一个资源的[依赖](../../azure-resource-manager/templates/define-resource-dependency.md)。  安装解决方案时，资源的所有依赖均已创建后才能创建资源。  例如，如果解决方案使用[作业资源](solutions-resources-automation.md#runbooks)安装，则该解决方案需要[启动 runbook](solutions-resources-automation.md#automation-jobs)。  作业资源将依赖于 runbook 资源，以确保在创建作业之前创建 runbook。
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics 工作区和自动化帐户
 管理解决方案需要 [Log Analytics 工作区](../../azure-monitor/platform/manage-access.md)来包含视图，也需要[自动化帐户](../../automation/automation-security-overview.md#automation-account-overview)来包含 runbook 和相关资源。  这些内容在解决方案中的资源创建之前必须已经存在，并且不能在解决方案本身中定义。  部署解决方案时，用户将[指定工作区和帐户](solutions.md#log-analytics-workspace-and-automation-account)，但作为作者，应考虑以下几点。
@@ -205,18 +204,18 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 ### <a name="properties"></a>属性
 解决方案资源具有下表中的属性。  这包括由用于定义安装解决方案后如何管理资源的解决方案引用和包含的资源。  解决方案中的每个资源应在 **referencedResources** 或 **containedResources** 属性中列出。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | workspaceResourceId |以\<资源组 ID 形式 Log Analytics 工作区的 ID *>/providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>* 。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 
-上面的示例适用于具有 runbook、计划和视图的解决方案。  在 **properties** 元素中*引用* 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
+上面的示例适用于具有 runbook、计划和视图的解决方案。  在 *properties* 元素中**引用** 计划和 runbook，这样它们就不会随解决方案一起删除。  *包含*视图，以便它将随解决方案一起删除。
 
-### <a name="plan"></a>套餐
+### <a name="plan"></a>计划
 解决方案资源的 **plan** 实体具有下表中的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | name |解决方案名称。 |
 | 版本 |由作者确定的解决方案版本。 |

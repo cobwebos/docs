@@ -1,19 +1,15 @@
 ---
 title: 利用 ILogger Insights 浏览 .NET 跟踪日志 Azure 应用程序
 description: 将 Azure 应用程序 Insights ILogger 提供程序与 ASP.NET Core 和控制台应用程序结合使用的示例。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2b306670c43722279327301b15630f96da50ea5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716023"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659928"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core ILogger 日志
 
@@ -396,7 +392,7 @@ ASP.NET Core *ILogger*具有用于应用[日志筛选](https://docs.microsoft.co
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新到[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，并自动捕获来自 ILogger 的日志。 如何实现完全关闭此功能？
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新到[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，并自动捕获来自 ILogger 的日志。 如何实现完全关闭此功能？
 
 请参阅[控件日志记录级别](../../azure-monitor/app/ilogger.md#control-logging-level)部分，了解如何筛选日志。 若要关闭 ApplicationInsightsLoggerProvider，请使用 `LogLevel.None`：
 

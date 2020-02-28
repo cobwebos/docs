@@ -1,18 +1,17 @@
 ---
 title: 将 Linux 计算机连接到 Azure Monitor |Microsoft Docs
 description: 本文介绍如何将在其他云中或本地托管的 Linux 计算机连接到与适用于 Linux 的 Log Analytics 代理 Azure Monitor。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668700"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>将 Linux 计算机连接到 Azure Monitor
 

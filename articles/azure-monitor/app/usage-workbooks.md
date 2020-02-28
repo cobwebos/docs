@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure Monitor 工作簿创建交互式报表 | Microsoft docs
 description: 使用预先构建的自定义参数化工作簿简化复杂的报表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8e14b065132e648f9c800655cfe69e5a2ec80c41
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432260"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670995"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿创建交互式报表
 
@@ -72,7 +70,7 @@ ms.locfileid: "75432260"
 
 * 使用率下降的同一时段内，网站引发了多少异常？
 * 用户查看某个页面的页面加载时间分布是什么样的？
-* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解你是否有使用不同网站功能子集的用户群集（在 [Kusto 查询语言](/azure/kusto/query/)中使用具有 `kind=leftanti` 修饰符的 `join` 运算符）。
+* 有多少用户在网站上查看了某组页面，而没有查看其它组页面？ 这有助于了解你是否有使用不同网站功能子集的用户群集（在 `join`Kusto 查询语言`kind=leftanti`中使用具有 [ 修饰符的 ](/azure/kusto/query/) 运算符）。
 
 此外，你还不仅限于通过工作簿启动的应用程序的上下文中进行查询。 只要你有权访问这些资源，就可跨多个受 Application Insights 监视的应用，以及 Log Analytics 工作区进行查询。
 

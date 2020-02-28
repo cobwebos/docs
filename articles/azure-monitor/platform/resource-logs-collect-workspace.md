@@ -3,17 +3,16 @@ title: Log Analytics 工作区收集 Azure 资源日志
 description: 了解如何将 Azure 资源日志流式传输到 Azure Monitor 中的 Log Analytics 工作区。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750363"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658993"
 ---
 # <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中 Log Analytics 工作区收集 Azure 平台日志
 Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。 本文介绍如何在 Log Analytics 工作区中收集资源日志，以便使用功能强大的日志查询在 Azure Monitor 日志中收集的其他监视数据对其进行分析，还可以 Azure Monitor 利用警报和可视化效果. 
@@ -26,7 +25,7 @@ Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日�
 * **警报**-使用[Azure Monitor 中的日志警报](alerts-log.md)，获取资源日志中标识的关键条件和模式的主动通知。
 * **可视化效果**-将日志查询的结果固定到 Azure 仪表板，或将其作为交互式报表的一部分包含在工作簿中。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 如果尚未[创建新的工作区](../learn/quick-create-workspace.md)，则需要创建一个。 只要配置设置的用户具有对这两个订阅的相应 RBAC 访问权限，工作区就不必与资源发送日志位于同一订阅中。
 
 ## <a name="create-a-diagnostic-setting"></a>创建诊断设置
@@ -74,24 +73,24 @@ AzureDiagnostics 表将如下所示：
 
     | 资源提供程序 | 类别 | A | B | C |
     | -- | -- | -- | -- | -- |
-    | 服务 1 | AuditLogs | x1 | y1 | z1 |
-    | 服务 1 | AuditLogs | x5 | y5 | z5 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x5 | y5 | z5 |
     | ... |
 
 - 表*Service1ErrorLogs*如下所示：  
 
     | 资源提供程序 | 类别 | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | 服务 1 | ErrorLogs |  q1 | w1 | e1 |
-    | 服务 1 | ErrorLogs |  q2 | w2 | e2 |
+    | Service1 | ErrorLogs |  q1 | w1 | e1 |
+    | Service1 | ErrorLogs |  q2 | w2 | e2 |
     | ... |
 
 - 表*Service2AuditLogs*如下所示：  
 
     | 资源提供程序 | 类别 | G | H | I |
     | -- | -- | -- | -- | -- |
-    | 服务2 | AuditLogs | j1 | k1 | l1|
-    | 服务2 | AuditLogs | j3 | k3 | l3|
+    | Service2 | AuditLogs | j1 | k1 | l1|
+    | Service2 | AuditLogs | j3 | k3 | l3|
     | ... |
 
 

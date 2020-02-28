@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429743"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656568"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 本文提供了 "登录" 报告的概述。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>访问登录活动需要什么 Azure AD 许可证？
 
-* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)入门，升级 Azure Active Directory 版本。 升级到高级许可证后，在升级到无需数据活动的高级许可证后，数据会显示在报表中。
+* 租户必须具有与之关联的 Azure AD Premium 许可证，才能查看包含所有登录活动的报告。 请参阅 [Azure Active Directory Premium 入门](../fundamentals/active-directory-get-started-premium.md)来升级 Azure Active Directory 版本。 升级到高级许可证后，在升级到无需数据活动的高级许可证后，数据会显示在报表中。
 
 ## <a name="sign-ins-report"></a>登录报告
 
@@ -101,59 +101,90 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="filter-sign-in-activities"></a>筛选登录活动
 
-首先，将报告的数据缩小到适合您的级别。 其次，使用 date 字段作为默认筛选器筛选登录数据。 Azure AD 提供了可设置的各种附加筛选器。
+首先，将报告的数据缩小到适合您的级别。 其次，使用 date 字段作为默认筛选器筛选登录数据。 Azure AD 提供了可设置的各种附加筛选器：
 
 ![登录活动](./media/concept-sign-ins/04.png "登录活动")
 
-“用户”筛选器用于指定所关注的用户的名称或用户主体名称 (UPN)。
+**请求 id** -你关心的请求的 id。
 
-“应用程序”筛选器用于指定所关注的应用程序的名称。
+**User** -你关注的用户的名称或用户主体名称（UPN）。
 
-“登录状态”筛选器用于选择：
+**应用程序**-目标应用程序的名称。
+ 
+**状态**-你关注的登录状态：
 
-- 所有
 - Success
+
 - 失败
 
-使用“条件访问”筛选器可以选择登录的 CA 策略状态：
+- 中断
 
-- 所有
-- 未应用
+
+**Ip 地址**-用于连接到租户的设备的 ip 地址。
+
+**位置**-启动连接的位置：
+
+- 城市
+
+- 省/市/自治区
+
+- 国家/地区
+
+
+**资源**-用于登录的服务的名称。
+
+
+**资源 id** -用于登录的服务的 ID。
+
+
+**客户端应用**-用于连接到租户的客户端应用的类型：
+
+![客户端应用筛选器](./media/concept-sign-ins/client-app-filter.png)
+
+
+|名称|新式身份验证|说明|
+|---|:-:|---|
+|经过身份验证的 SMTP| |由 POP 和 IMAP 客户端用于发送电子邮件。|
+|自动| |由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。|
+|Exchange ActiveSync| |此筛选器显示已尝试 EAS 协议的所有登录尝试。|
+|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 web 浏览器进行的所有登录尝试|
+|Exchange ActiveSync| | 显示用户具有使用 Exchange ActiceSync 连接到 Exchange Online 的客户端应用的所有登录尝试|
+|Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。|
+|IMAP4| |使用 IMAP 检索电子邮件的旧版邮件客户端。|
+|HTTP 上的 MAPI| |由 Outlook 2010 和更高版本使用。|
+|移动应用和桌面客户端|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用移动应用和桌面客户端进行的所有登录尝试。|
+|脱机通讯簿| |Outlook 下载并使用的地址列表集合的副本。|
+|Outlook Anywhere （RPC over HTTP）| |由 Outlook 2016 和更早版本使用。|
+|Outlook 服务| |由适用于 Windows 10 的邮件和日历应用程序使用。|
+|POP3| |使用 POP3 检索电子邮件的旧版邮件客户端。|
+|报表 Web 服务| |用于在 Exchange Online 中检索报表数据。|
+|其他客户端| |显示用户的所有登录尝试，其中客户端应用不包括或未知。|
+
+
+
+**操作系统**-在设备上运行的用于登录租户的操作系统。 
+
+
+**设备浏览器**-如果连接是从浏览器启动的，则可以使用此字段通过浏览器名称进行筛选。
+
+
+**相关性 id** -活动的相关性 id。
+
+
+**条件性访问**-应用的条件性访问规则的状态
+
+- 未应用 
+
 - Success
+
 - 失败
 
-“日期”筛选器用于定义已返回数据的时间范围。  
-可能的值包括：
 
-- 一个月
-- 7 天
-- 24 小时
-- 自定义时间范围
 
-选择自定义时间范围时，可以配置开始时间和结束时间。
 
-如果向登录视图添加其他字段，这些字段会自动添加到筛选器列表。 例如，如果向列表添加“客户端应用”字段，则还会获得另一筛选器选项，用于设置以下筛选器：  
-![登录活动](./media/concept-sign-ins/12.png "登录活动")
 
-- **浏览器**  
-    此筛选器显示尝试使用浏览器流尝试登录的所有事件。
-- **Exchange ActiveSync （支持）**  
-    此筛选器显示从支持的平台（如 iOS、Android 和 Windows Phone）尝试 Exchange ActiveSync （EAS）协议的所有登录尝试。
-- **Exchange ActiveSync （不支持）**  
-    此筛选器显示从 Linux 发行版等不受支持的平台尝试 EAS 协议的所有登录尝试。
-- **移动应用和桌面客户端**筛选器显示未使用浏览器流的所有登录尝试。 例如，使用任何协议的任何平台上的移动应用，或来自 Windows 或 MacOS 上的 Office 的桌面客户端应用。
-  
-- **其他客户端**
-    - **IMAP**  
-        使用 IMAP 检索电子邮件的旧版邮件客户端。
-    - **MAPI**  
-        Office 2013，其中 ADAL 处于启用状态，并且使用 MAPI。
-    - **旧 Office 客户端**  
-        Office 2013 在其默认配置中，ADAL 未启用且正在使用 MAPI，或 Office 2016，其中 ADAL 已禁用。
-    - **弹出**  
-        使用 POP3 检索电子邮件的旧版邮件客户端。
-    - **SMTP**  
-        使用 SMTP 发送电子邮件的旧版邮件客户端。
+
 
 ## <a name="download-sign-in-activities"></a>下载登录活动
 
@@ -228,7 +259,7 @@ Azure AD 和 Azure 门户均提供额外的登录数据入口点：
 
 如果需要，可以将焦点设置在特定应用程序上。
 
-![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "报告")
+![Reporting](./media/concept-sign-ins/single-app-usage-graph.png "报表")
 
 单击应用程序使用情况图中的某一天时，可以获取登录活动的详细列表。
 

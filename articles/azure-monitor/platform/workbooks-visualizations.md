@@ -4,18 +4,17 @@ description: 了解所有 Azure Monitor 工作簿可视化组件，包括文本�
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394489"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658024"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor 工作簿可视化效果
 
@@ -138,7 +137,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 6. 将可视化效果设置为**磁贴**
 7. 单击 "**磁贴设置**" 按钮可打开 "设置" 窗格
 8. 在 "**磁贴字段**" 中，设置：
-    * 标题：`name`
+    * 标题： `name`
     * Left： `Requests`，呈现器： `Big Number`，调色板： `Green to Red`，最小值： `0`
     * 下： `appName`
 9. 单击窗格底部的 "**保存并关闭**" 按钮。
@@ -205,7 +204,7 @@ Azure Monitor 工作簿支持多种不同的可视化样式，以满足您的报
 
 ![磁贴摘要视图的屏幕截图](./media/workbooks-visualizations/graph.png)
 
-### <a name="adding-a-graph"></a>添加图表
+### <a name="adding-a-graph"></a>添加关系图
 1. 单击 "_编辑_" 工具栏项，将工作簿切换到编辑模式。
 2. 使用 "**添加查询**" 链接向工作簿添加日志查询控件。 
 3. 选择 "**日志**"、"资源类型" （例如 Application Insights）和 "要作为目标的资源" 的查询类型。

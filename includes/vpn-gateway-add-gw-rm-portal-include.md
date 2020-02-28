@@ -5,20 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/04/2019
+ms.date: 02/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12c28969ed00a1370b90e06e9d57cd666c50ea29
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1d4c50766fea5f4c562dc6a9661945713a41f53
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522321"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654706"
 ---
 1. 从 " [Azure 门户](https://portal.azure.com)" 菜单中，选择 "**创建资源**"。 
 
    ![在 Azure 门户中创建资源](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
-2. 在 "**搜索 marketplace** " 字段中，键入 "虚拟网络网关"。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 在“虚拟网络网关”页上，单击“创建”。 这会打开“创建虚拟网关”页。
+2. 在 "**搜索 Marketplace** " 字段中，键入 "虚拟网络网关"。 在搜索返回结果中找到“虚拟网络网关”，并单击该条目。 在 "**虚拟网络网关**" 页上，单击 "**创建**"。 这会打开“创建虚拟网关”页。
 
    !["创建虚拟网络网关" 页字段](./media/vpn-gateway-add-gw-rm-portal-include/p2sgw.png ""创建虚拟网络网关" 页字段")
 
@@ -32,9 +32,9 @@ ms.locfileid: "73522321"
 
    **实例详细信息**
 
-   - **名称**：为网关命名。 为网关命名与为网关子网命名不同。 它是要创建的网关对象的名称。
+   - **名称**：为网关命名。 命名网关不同于命名网关子网。 它是要创建的网关对象的名称。
    - **区域**：选择要在其中创建此资源的区域。 网关的区域必须与虚拟网络相同。
-   - **网关类型**：选择“VPN”。 VPN 网关使用虚拟网络网关类型“VPN”。 
+   - **网关类型**：选择“VPN”。 VPN 网关使用虚拟网络网关类型“VPN”。
    - **VPN 类型**：选择为配置指定的 VPN 类型。 大多数配置要求基于路由的 VPN 类型。
    - **SKU**：从下拉列表中选择网关 SKU。 下拉列表中列出的 SKU 取决于选择的 VPN 类型。 有关网关 SKU 的详细信息，请参阅[网关 SKU](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku)。
 
@@ -52,6 +52,6 @@ ms.locfileid: "73522321"
 
    让“配置 BGP ASN”保留取消选中状态，除非你的配置特别需要此设置。 如果确实需要此设置，则默认 ASN 为 65515，但可以更改此值。
 
-4. 单击“查看 + 创建”以运行验证。 验证通过后，单击“创建”以部署 VPN 网关。 网关可能需要长达 45 分钟才能完全创建和部署。 可以在网关的“概述”页上查看部署状态。
+4. 单击 "**查看 + 创建**" 以运行验证。 验证通过后，单击 "**创建**" 以部署 VPN 网关。 网关最多可能需要45分钟才能完成创建和部署。 可以在网关的 "概述" 页上查看部署状态。
 
 创建网关后，可以通过在门户中查看虚拟网络，来查看已分配给网关的 IP 地址。 网关显示为连接的设备。

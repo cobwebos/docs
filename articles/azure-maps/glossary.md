@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657038"
 ---
 # <a name="glossary"></a>术语表
 
@@ -47,9 +47,9 @@ ms.locfileid: "77198235"
 
 <a name="asynchronous-request"></a>**异步请求**：打开连接并向返回异步请求标识符的服务器发出请求的 HTTP 请求，然后关闭连接。 服务器继续处理请求，用户可以使用标识符检查状态。 当请求完成处理后，用户可以下载响应。 此类请求用于长时间运行的进程。
 
-<a name="autocomplete"></a>**自动完成**：应用程序中的一项功能可预测用户正在键入的单词的其余部分。 
+<a name="autocomplete"></a>**自动完成**：应用程序中的一项功能，可预测用户正在键入的单词的其余部分。 
 
-<a name="autosuggest"></a>**自动建议**：应用程序中的一项功能可预测用户键入内容的逻辑可能性。
+<a name="autosuggest"></a>**自动建议**：应用程序中的一项功能，可预测用户键入内容的逻辑可能性。
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location Based Services （磅）** ：在预览时 Azure Maps 的以前名称。
 

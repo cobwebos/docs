@@ -1,14 +1,14 @@
 ---
 title: 用 ServiceNow 发送 Azure 服务运行状况警报
 description: 获取有关发送到 ServiceNow 实例的服务运行状况事件的个性化通知。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551601"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654097"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>使用 webhook 通过 ServiceNow 发送 Azure 服务运行状况警报
 
@@ -26,7 +26,7 @@ ms.locfileid: "75551601"
  
     ![ServiceNow 中的“新建脚本 REST API”按钮](./media/webhook-alerts/servicenow-new-button.png)
 
-1.  为 REST API 添加“名称”，然后将“API ID”设置为 `azureservicehealth`。
+1.  为 REST API 添加“名称”，然后将“API ID”设置为 **。** `azureservicehealth`
 
 1.  选择“提交”。
 
@@ -36,7 +36,7 @@ ms.locfileid: "75551601"
 
     ![ServiceNow 中的“资源选项卡”](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  为新资源 `event`**命名**，然后将“HTTP 方法”更改为 `POST`。
+1.  为新资源命名`event`，然后将“HTTP 方法”更改为 **。** `POST`
 
 1.  在“脚本”部分，添加以下 JavaScript 代码：
 
@@ -150,9 +150,9 @@ ms.locfileid: "75551601"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 ServiceNow **集成 URL**。
+    b. **详细信息：** 前面保存的 ServiceNow **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
@@ -167,9 +167,9 @@ ms.locfileid: "75551601"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 ServiceNow **集成 URL**。
+    b. **详细信息：** 前面保存的 ServiceNow **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 

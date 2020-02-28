@@ -1,19 +1,18 @@
 ---
 title: 管理解决方案中的 Azure 自动化资源 | Microsoft Docs
 description: 管理解决方案通常在 Azure 自动化中包含 Runbook 以自动执行各种进程，例如收集和处理监控数据。  本文介绍如何在解决方案中包含 Runbook 和其相关资源。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401825"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663056"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>将 Azure 自动化资源添加到管理解决方案（预览版）
 > [!NOTE]
@@ -26,7 +25,7 @@ ms.locfileid: "75401825"
 > 本文中的示例使用管理解决方案需要或通用的参数和变量，[在 Azure 中设计和开发解决方案]( solutions-creating.md)中对它们进行了介绍 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文假设已熟悉以下信息。
 
 - 如何[创建管理解决方案]( solutions-creating.md)。
@@ -69,7 +68,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了 runbook 的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | runbookType |指定 Runbook 的类型。 <br><br> 脚本 - PowerShell 脚本 <br>PowerShell - PowerShell 工作流 <br> GraphPowerShell - 图形 PowerShell 脚本 Runbook <br> GraphPowerShellWorkflow - 图形 PowerShell 工作流 Runbook |
 | logProgress |指定是否应为 Runbook 生成[进度记录](../../automation/automation-runbook-output-and-messages.md)。 |
@@ -105,7 +104,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了自动化作业的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | Runbook |包含要启动的 Runbook 名称的单个 name 实体。 |
 | parameters |Runbook 所需的每个参数值的实体。 |
@@ -136,7 +135,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了证书资源的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | base64Value |证书的 Base 64 值。 |
 | thumbprint |证书的指纹。 |
@@ -163,7 +162,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了凭据资源的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | userName |凭据的用户名。 |
 | password |凭据的密码。 |
@@ -191,7 +190,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了计划资源的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | description |计划的可选说明。 |
 | startTime |指定计划的开始时间作为 DateTime 对象。 如果它可以转换为有效的 DateTime，则可以提供一个字符串。 |
@@ -234,7 +233,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了作业计划的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | 计划名称 |包含计划名称的单个 **name** 实体。 |
 | runbook 名称  |包含 Runbook 名称的单个 **name** 实体。  |
@@ -261,7 +260,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了变量资源的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
@@ -273,7 +272,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 如果设置变量的初始值，则该值必须配置为正确的数据类型。  下表提供了允许的不同数据类型及其语法。  请注意，JSON 中的值应始终使用引号括起来，任何特殊字符位于引号内。  例如，字符串值应通过将字符串用引号括起来进行指定（使用转义字符 (\\)），而数字值应使用一组引号进行指定。
 
-| 数据类型 | Description | 示例 | 解析为 |
+| 数据类型 | 说明 | 示例 | 解析为 |
 |:--|:--|:--|:--|
 | 字符串   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
 | numeric  | 用单引号将数字值括起来。| “64” | 64 |
@@ -301,7 +300,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 下表介绍了模块资源的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | contentLink |指定模块的内容。 <br><br>uri - 模块内容的 URI。  这会是 PowerShell 和脚本 Runbook 的 .ps1 文件，以及为图形 Runbook 导出的图形 Runbook 文件。  <br> version - 自己跟踪的模块版本。 |
 

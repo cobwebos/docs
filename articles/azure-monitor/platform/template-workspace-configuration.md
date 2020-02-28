@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用 Azure 资源管理器模板创建和配置 Log Analytics 工作区。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 5fb33a592601a0511fa2523ee0cf8114bc66ca99
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591947"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658891"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 

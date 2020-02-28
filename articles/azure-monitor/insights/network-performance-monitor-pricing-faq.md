@@ -1,18 +1,17 @@
 ---
 title: Azure 网络性能监视器的定价常见问题解答 | Microsoft Docs
 description: 常见问题解答 - Azure 网络性能监视器
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: agummadi
 ms.author: agummadi
 ms.date: 04/02/2018
-ms.openlocfilehash: 3d69637c2851764363209ed8dfbe8c24c636ffba
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c5a80c7ff6d08ce601a6c2bbb0db0ef866d3b425
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898792"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654386"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
@@ -25,7 +24,7 @@ ms.locfileid: "72898792"
 
 以下各部分介绍了 NPM 组件的定价变化。
 
-## <a name="performance-monitor"></a>性能监视
+## <a name="performance-monitor"></a>性能监视器
 
 **在旧模型中如何计收性能监视器的使用费？**
 
@@ -48,7 +47,7 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 **我有两个子网（A 和 B），并且在每个子网中都有多个代理。性能监视器监视子网 A 上的所有代理与子网 B 上的所有代理的连接。是否会根据子网间连接的数量向我收费？**
 
-不。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
+不是。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
 **监视子网链接的费用是多少？**
 

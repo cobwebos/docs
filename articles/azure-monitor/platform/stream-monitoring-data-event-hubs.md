@@ -3,17 +3,16 @@ title: 将 Azure 监视数据流式传输到事件中心
 description: 了解如何将 Azure 监视数据流式传输到事件中心，以将数据导入到合作伙伴的 SIEM 或分析工具。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750336"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658857"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
 Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和本地的完整堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将其用于不同的监视方案，你可能需要将其发送到环境中的其他监视工具。 在大多数情况下，最有效的方法是将监视数据流式处理到外部工具使用[Azure 事件中心](/azure/event-hubs/)。 本文简要介绍了如何将来自不同源的监视数据流式传输到事件中心，并提供详细指南链接。
@@ -33,7 +32,7 @@ Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和�
 ## <a name="monitoring-data-available"></a>可用的监视数据
 [Azure Monitor 的监视数据源](data-sources.md)介绍了适用于 Azure 应用程序的数据层和每个数据的监视数据的不同层。 下表列出了每个层，并说明了如何将数据流式传输到事件中心。 请按照提供的链接了解更多详细信息。
 
-| 层 | 数据 | 方法 |
+| 层 | data | 方法 |
 |:---|:---|:---|
 | [Azure 租户](data-sources.md#azure-tenant) | Azure Active Directory 审核日志 | 在 AAD 租户上配置租户诊断设置。 有关详细信息，请参阅[教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。 |
 | [Azure 订阅](data-sources.md#azure-subscription) | Azure 活动日志 | 创建日志配置文件，将活动日志事件导出到事件中心。  有关详细信息，请参阅[将 Azure 活动日志导出到存储或 Azure 事件中心](activity-log-export.md)。 |
@@ -49,7 +48,7 @@ Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和�
 
 使用 Azure Monitor 将监视数据路由到事件中心，可以轻松地与外部 SIEM 和监视工具集成。 Azure Monitor 集成的工具示例包括：
 
-| 工具 | 托管在 Azure 中 | Description |
+| 工具 | 托管在 Azure 中 | 说明 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 和 Microsoft Azure 事件中心协议可从 [IBM 支持网站](https://www.ibm.com/support)下载。 可在[QRADAR DSM 配置](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)中了解有关与 Azure 的集成的详细信息。 |
 | Splunk | 否 | [Splunk 的 Azure Monitor 外接](https://splunkbase.splunk.com/app/3534/)程序是 Splunkbase 中可用的开放源代码项目。 [Splunk 的 Azure Monitor 加载](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)项中提供了文档。<br><br> 如果无法在 Splunk 实例中安装外接程序，如使用代理或在 Splunk 云上运行，则可以使用[Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)（由事件中心中的新消息触发）将这些事件转发到 Splunk HTTP 事件收集器。 |

@@ -1,23 +1,22 @@
 ---
 title: 将 Configuration Manager 连接到 Azure Monitor |Microsoft Docs
 description: 本文介绍了将 Configuration Manager 连接到 Azure Monitor 和开始分析数据的工作区的步骤。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513639"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655250"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>将 Configuration Manager 连接到 Azure Monitor
 你可以将 Microsoft 端点 Configuration Manager 环境连接到 Azure Monitor，以便同步设备集合数据并在 Azure Monitor 和 Azure 自动化中引用这些集合。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 Azure Monitor 支持 Configuration Manager 当前分支，版本1606及更高版本。
 
@@ -80,8 +79,8 @@ Azure Monitor 支持 Configuration Manager 当前分支，版本1606及更高版
 
 4. 在 Azure 服务向导的 "Azure 服务" 页上：
 
-    1. 指定 Configuration Manager 中的对象名称。
-    2. 指定可选说明以帮助标识服务。
+    1. 为 Configuration Manager 中的对象指定**名称**。
+    2. 指定可选**描述**，以帮助你标识服务。
     3. 选择 Azure 服务**OMS 连接器**。
 
     >[!NOTE]

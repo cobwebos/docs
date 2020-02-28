@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f3c16e6fe1855cf7882d83e620c70d15ce3cb92
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378375"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657492"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心的已删除通知
 
@@ -41,7 +41,7 @@ ms.locfileid: "75378375"
 
 下一部分介绍可能会删除通知的情况，范围从常见到罕见。
 
-## <a name="notification-hubs-misconfiguration"></a>通知中心配置错误 ##
+## <a name="notification-hubs-misconfiguration"></a>通知中心配置错误
 
 若要将通知发送到相应的推送通知服务，通知中心必须在应用程序的上下文中对其自身进行身份验证。 必须使用目标平台的通知服务（Microsoft、Apple、Google 等）创建开发人员帐户。 然后，你必须将应用程序注册到操作系统，你可以在其中获取用于处理目标 PNS 的令牌或密钥。
 
@@ -54,19 +54,20 @@ ms.locfileid: "75378375"
 ### <a name="notification-hub-name-location"></a>通知中心名称位置
 
 确保以下各个位置中的通知中心名称（不含错字）均相同：
-   * 你从客户端注册的位置
-   * 从后端发送通知的位置
-   * 配置推送通知服务凭据的位置
+
+* 你从客户端注册的位置
+* 从后端发送通知的位置
+* 配置推送通知服务凭据的位置
 
 确保在客户端和应用程序后端上使用正确的共享访问签名配置字符串。 通常，必须在客户端上使用**DefaultListenSharedAccessSignature** ，并在应用程序后端上使用**DefaultFullSharedAccessSignature** 。 这会授予将通知发送到通知中心的权限。
 
-### <a name="apn-configuration"></a>接入点配置 ###
+### <a name="apn-configuration"></a>接入点配置
 
 您必须维护两个不同的中心：一个用于生产，另一个用于测试。 您必须将您在沙盒环境中使用的证书上载到不同于要在生产中使用的证书/中心的中心。 请勿尝试将不同类型的证书上传到相同的中心。 这将导致通知失败。
 
 如果无意中将不同类型的证书上传到相同的中心，则应删除该中心，并使用新的集线器重新开始。 如果由于某种原因无法删除中心，则必须至少从中心删除所有现有注册。
 
-### <a name="fcm-configuration"></a>FCM 配置 ###
+### <a name="fcm-configuration"></a>FCM 配置
 
 1. 确保从 Firebase 获取的*服务器密钥*与你在 Azure 门户中注册的服务器密钥匹配。
 
@@ -76,9 +77,9 @@ ms.locfileid: "75378375"
 
    ![Firebase 项目 ID][1]
 
-## <a name="application-issues"></a>应用程序问题 ##
+## <a name="application-issues"></a>应用程序问题
 
-### <a name="tags-and-tag-expressions"></a>标记和标记表达式 ###
+### <a name="tags-and-tag-expressions"></a>标记和标记表达式
 
 如果使用标记或标记表达式来细分受众，发送通知时可能会找不到目标。 此错误基于发送调用中指定的标记或标记表达式。
 
@@ -86,11 +87,11 @@ ms.locfileid: "75378375"
 
 例如，假设你使用通知中心的所有注册均使用 "政治" 标记。 如果随后使用 "体育" 标记发送通知，则该通知将不会发送到任何设备。 复杂的情况可能涉及使用 "Tag A"*或*"tag b" 注册的标记表达式，但目标是 "标记 & & 标记 b"。 本文后面的自我诊断提示部分介绍了如何查看注册及其标记。
 
-### <a name="template-issues"></a>模板问题 ###
+### <a name="template-issues"></a>模板问题
 
 如果使用模板，请确保遵循[模板]中所述的准则。
 
-### <a name="invalid-registrations"></a>注册无效 ###
+### <a name="invalid-registrations"></a>注册无效
 
 如果通知中心配置正确，并且正确使用了标记或标记表达式，则会找到有效目标。 应将通知发送到这些目标。 接着，通知中心会并行启动几个处理批次。 每个批次将消息发送到一组注册。
 
@@ -121,13 +122,13 @@ ms.locfileid: "75378375"
 
 下面是诊断通知中心中删除通知的根本原因的路径。
 
-### <a name="verify-credentials"></a>验证凭据 ###
+### <a name="verify-credentials"></a>验证凭据
 
-#### <a name="push-notification-service-developer-portal"></a>推送通知服务开发人员门户 ####
+#### <a name="push-notification-service-developer-portal"></a>推送通知服务开发人员门户
 
 在各自的推送通知服务开发人员门户（APNs、FCM、Windows 通知服务等）中验证凭据。 有关详细信息，请参阅[教程：使用 Azure 通知中心将通知发送到通用 Windows 平台应用](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)。
 
-#### <a name="azure-portal"></a>Azure 门户 ####
+#### <a name="azure-portal"></a>Azure 门户
 
 若要查看凭据并将其与从推送通知服务开发人员门户获取的凭据进行匹配，请访问 Azure 门户中的 "**访问策略**" 选项卡。
 
@@ -135,46 +136,48 @@ ms.locfileid: "75378375"
 
 ### <a name="verify-registrations"></a>验证注册
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 在 Visual Studio 中，可以通过服务器资源管理器连接到 Azure，以便查看和管理多个 Azure 服务（包括通知中心）。 此快捷方式主要用于开发/测试环境。
 
 ![Visual Studio 服务器资源管理器][9]
 
+![服务器资源管理器](media/notification-hubs-push-notification-fixer/vsserverexplorer2.png)
+
 你可以查看和管理中心内的所有注册。 可以按平台、本机或模板注册、标记、推送通知服务标识符、注册 ID 和到期日期对注册进行分类。 还可以在此页面中编辑注册。 它特别适用于编辑标记。
 
 在**服务器资源管理器**中右键单击通知中心，然后选择 "**诊断**"。 
 
-![Visual Studio 服务器资源管理器：诊断菜单](./media/notification-hubs-diagnosing/diagnose-menu.png)
+![Visual Studio 服务器资源管理器：诊断菜单](./media/notification-hubs-push-notification-fixer/diagnose-menu.png)
 
 你会看到以下页面：
 
-![Visual Studio：诊断页](./media/notification-hubs-diagnosing/diagnose-page.png)
+![Visual Studio：诊断页](./media/notification-hubs-push-notification-fixer/diagnose-page.png)
 
 切换到 "**设备注册**" 页：
 
-![Visual Studio：设备注册](./media/notification-hubs-diagnosing/VSRegistrations.png)
+![Visual Studio：设备注册](./media/notification-hubs-push-notification-fixer/VSRegistrations.png)
 
 您可以使用 "**测试发送**" 页发送测试通知消息：
 
-![Visual Studio：测试发送](./media/notification-hubs-diagnosing/test-send-vs.png)
+![Visual Studio：测试发送](./media/notification-hubs-push-notification-fixer/test-send-vs.png)
 
 > [!NOTE]
 > 仅在开发/测试期间使用有限数量的注册来使用 Visual Studio 编辑注册。 如果需要批量编辑注册，请考虑使用[如何：批量导出和修改注册](https://msdn.microsoft.com/library/dn790624.aspx)中所述的导出和导入注册功能。
 
-#### <a name="service-bus-explorer"></a>服务总线资源管理器 ####
+#### <a name="service-bus-explorer"></a>服务总线资源管理器
 
 许多客户使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer)来查看和管理通知中心。 服务总线资源管理器是一个开源项目。 
 
 ### <a name="verify-message-notifications"></a>验证消息通知
 
-#### <a name="azure-portal"></a>Azure 门户 ####
+#### <a name="azure-portal"></a>Azure 门户
 
 若要向客户端发送测试通知，而不启动和运行服务后端，请在“支持 + 故障排除”下选择“测试发送”。
 
 ![Azure 中的测试发送功能][7]
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio
 
 也可以从 Visual Studio 发送测试通知。
 
@@ -188,7 +191,7 @@ ms.locfileid: "75378375"
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>调试失败的通知和查看通知结果
 
-#### <a name="enabletestsend-property"></a>EnableTestSend 属性 ####
+#### <a name="enabletestsend-property"></a>EnableTestSend 属性
 
 当你通过通知中心发送通知时，通知将最初排队。 通知中心确定正确的目标后，便将通知发送到推送通知服务。 如果使用的是 REST API 或任何客户端 Sdk，则发送调用的返回仅表示消息已使用通知中心排队。 它不提供通知中心最终将通知发送到推送通知服务时所发生的情况的见解。
 
@@ -202,7 +205,7 @@ ms.locfileid: "75378375"
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
 ```
 
-#### <a name="net-sdk-example"></a>.NET SDK 示例 ####
+#### <a name="net-sdk-example"></a>.NET SDK 示例
 
 下面是使用 .NET SDK 发送本机弹出 (toast) 通知的示例：
 
@@ -214,7 +217,7 @@ Console.WriteLine(result.State);
 
 在执行结束时，`result.State` 只表示 `Enqueued`。 结果不会深入了解推送通知发生了什么情况。
 
-接下来，可以使用 `EnableTestSend` 布尔属性。 初始化 `NotificationHubClient` 时，可使用 `EnableTestSend` 属性获取有关发送通知时出现的推送通知服务错误的详细状态。 发送调用需要更多时间才能返回，因为它首先需要通知中心将通知传递到推送通知服务。
+接下来，可以使用 `EnableTestSend` 布尔属性。 初始化 `EnableTestSend` 时，可使用 `NotificationHubClient` 属性获取有关发送通知时出现的推送通知服务错误的详细状态。 发送调用需要更多时间才能返回，因为它首先需要通知中心将通知传递到推送通知服务。
 
 ```csharp
     bool enableTestSend = true;
@@ -229,7 +232,7 @@ Console.WriteLine(result.State);
     }
 ```
 
-#### <a name="sample-output"></a>示例输出 ####
+#### <a name="sample-output"></a>示例输出
 
 ```text
 DetailedStateAvailable
@@ -243,9 +246,9 @@ The Token obtained from the Token Provider is wrong
 > [!NOTE]
 > 使用 `EnableTestSend` 属性受到严重限制。 只能在开发/测试环境中使用此选项，并使用一组有限的注册。 调试通知只发送到10个设备。 在处理调试发送时也有限制，每分钟10次。
 
-### <a name="review-telemetry"></a>查看遥测 ###
+### <a name="review-telemetry"></a>查看遥测
 
-#### <a name="azure-portal"></a>Azure 门户 ####
+#### <a name="azure-portal"></a>Azure 门户
 
 在该门户中，可以快速了解通知中心的所有活动。
 
@@ -261,7 +264,7 @@ The Token obtained from the Token Provider is wrong
 
 4. 如果通知中心的身份验证设置不正确，则出现“PNS 身份验证错误”消息。 最好是检查推送通知服务凭据。
 
-#### <a name="programmatic-access"></a>编程访问 ####
+#### <a name="programmatic-access"></a>以编程方式访问
 
 有关以编程方式访问的详细信息，请参阅[编程访问](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100))。
 
@@ -271,16 +274,16 @@ The Token obtained from the Token Provider is wrong
 > 若要使用遥测相关功能，请首先确保 Azure 门户使用的是标准服务层。  
 
 <!-- IMAGES -->
-[0]: ./media/notification-hubs-diagnosing/Architecture.png
-[1]: ./media/notification-hubs-diagnosing/FCMConfigure.png
-[3]: ./media/notification-hubs-diagnosing/FCMServerKey.png
+[0]: ./media/notification-hubs-push-notification-fixer/Architecture.png
+[1]: ./media/notification-hubs-push-notification-fixer/FCMConfigure.png
+[3]: ./media/notification-hubs-push-notification-fixer/FCMServerKey.png
 [4]: ../../includes/media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png
-[5]: ./media/notification-hubs-diagnosing/PortalDashboard.png
-[6]: ./media/notification-hubs-diagnosing/PortalAnalytics.png
+[5]: ./media/notification-hubs-push-notification-fixer/PortalDashboard.png
+[6]: ./media/notification-hubs-push-notification-fixer/PortalAnalytics.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-[8]: ./media/notification-hubs-diagnosing/VSRegistrations.png
-[9]: ./media/notification-hubs-diagnosing/VSServerExplorer.png
-[10]: ./media/notification-hubs-diagnosing/VSTestNotification.png
+[8]: ./media/notification-hubs-push-notification-fixer/VSRegistrations.png
+[9]: ./media/notification-hubs-push-notification-fixer/vsserverexplorer.png
+[10]: ./media/notification-hubs-push-notification-fixer/VSTestNotification.png
 
 <!-- LINKS -->
 [通知中心概述]: notification-hubs-push-notification-overview.md

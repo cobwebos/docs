@@ -2,13 +2,13 @@
 title: 完整模式删除
 description: 显示资源类型如何在 Azure 资源管理器模板中进行完全模式删除。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207802"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664400"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 
@@ -141,7 +141,6 @@ ms.locfileid: "77207802"
 > - [ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [SecurityGraph](#microsoftsecuritygraph)
@@ -297,6 +296,9 @@ ms.locfileid: "77207802"
 > | automationAccounts | 是 |
 > | automationAccounts/配置 | 是 |
 > | automationAccounts/作业 | 否 |
+> | automationAccounts/privateEndpointConnectionProxies | 否 |
+> | automationAccounts/privateEndpointConnections | 否 |
+> | automationAccounts/privateLinkResources | 否 |
 > | automationAccounts/runbook | 是 |
 > | automationAccounts/softwareUpdateConfigurations | 否 |
 > | automationAccounts/webhook | 否 |
@@ -716,6 +718,7 @@ ms.locfileid: "77207802"
 > | 注册表/importImage | 否 |
 > | 注册表/privateEndpointConnectionProxies | 否 |
 > | 注册表/privateEndpointConnectionProxies/验证 | 否 |
+> | 注册表/privateEndpointConnections | 否 |
 > | 注册表/privateLinkResources | 否 |
 > | 注册表/queueBuild | 否 |
 > | 注册表/regenerateCredential | 否 |
@@ -1057,6 +1060,7 @@ ms.locfileid: "77207802"
 > | partnerNamespaces/eventChannels | 否 |
 > | partnerRegistrations | 是 |
 > | partnerTopics | 是 |
+> | partnerTopics/eventSubscriptions | 否 |
 > | systemTopics | 是 |
 > | systemTopics/eventSubscriptions | 否 |
 > | topics | 是 |
@@ -1293,6 +1297,7 @@ ms.locfileid: "77207802"
 > | ------------- | ----------- |
 > | getEntities | 否 |
 > | managementGroups | 否 |
+> | managementGroups/settings | 否 |
 > | 资源 | 否 |
 > | startTenantBackfill | 否 |
 > | tenantBackfillStatus | 否 |
@@ -1554,6 +1559,7 @@ ms.locfileid: "77207802"
 > | legacyPeerings | 否 |
 > | peerAsns | 否 |
 > | 对等互连 | 是 |
+> | peeringServiceCountries | 否 |
 > | peeringServiceProviders | 否 |
 > | peeringServices | 是 |
 
@@ -1678,13 +1684,6 @@ ms.locfileid: "77207802"
 > | ------------- | ----------- |
 > | 应用程序 | 是 |
 > | saasresources | 否 |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 完整模式删除 |
-> | ------------- | ----------- |
-> | jobcollections | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2015,6 +2014,7 @@ ms.locfileid: "77207802"
 > | 资源类型 | 完整模式删除 |
 > | ------------- | ----------- |
 > | devices | 是 |
+> | registeredSubscriptions | 否 |
 > | 供应商 | 否 |
 > | 供应商/sku | 否 |
 > | 供应商/vnfs | 否 |

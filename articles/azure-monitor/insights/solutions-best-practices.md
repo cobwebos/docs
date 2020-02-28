@@ -1,22 +1,21 @@
 ---
 title: Azure 中管理解决方案的最佳做法 | Microsoft Docs
 description: ''
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553932"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663192"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>在 Azure 中创建管理解决方案的最佳做法（预览版）
 > [!NOTE]
-> 这是在 Azure 中创建管理解决方案的初步文档，当前仅提供预览版。 如下所述的全部架构均会有变动。  
+> 这是在 Azure 中创建管理解决方案（当前处于预览状态）的初步文档。 如下所述的全部架构均会有变动。  
 
 本文提供在 Azure 中[创建管理解决方案文件](solutions-solution-file.md)的最佳做法。  发现其他最佳做法后，将更新此信息。
 

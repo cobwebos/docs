@@ -1,18 +1,15 @@
 ---
 title: 与 Azure Monitor 集成的合作伙伴
 description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文档，以便与它们的产品集成。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023865"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659452"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -89,7 +86,7 @@ Dynatrace OneAgent 通过 Azure 扩展机制来与 Azure VM 和应用服务集�
 
 [请参阅文档。][dynatrace-doc]
 
-## <a name="elastic"></a>灵活
+## <a name="elastic"></a>Elastic
 
 ![弹性徽标](./media/partners/elastic.png)
 
@@ -140,7 +137,7 @@ Microfocus **ArcSight**具有智能连接器，适用于 Azure Monitor 事件中
 
 Microfocus**操作桥**会自动监视所有混合 IT 资源（任何设备、操作系统、数据库、应用程序或服务），而不考虑其运行位置，并将 AIOps 应用于所有数据类型-事件、指标、日志和依赖项。 它提供服务监视质量的独特组合，与深层应用程序运行状况分析相结合，并包括对 Microsoft Azure 服务的全面性能和可用性监视。 使用操作桥，客户可以在任何设备上使用浏览器提供单一界面，在任何设备上都能理解。
 
-了解更多
+了解详细信息
 - [OB 套件概述](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [下载](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [SiteScope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -SiteScope 是操作桥套件中的一个组件。
@@ -247,7 +244,7 @@ Sumo Logic 是一项安全的云本机计算机数据分析服务，可实时、
 
 ![Turbonomic 徽标](./media/partners/Turbonomic.png)
 
-Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优化性能、成本和符合性。 Turbonomic 可持续优化资产，帮助组织在 Azure 资产方面获得弹性，确保应用程序可以持续获得所需的资源来履行 SLA，同时，对于 IaaS 和 PaaS 层，不需要进一步配置计算、存储和网络资源。 组织可以模拟迁移、合理缩放工作负荷以及淘汰数据中心资源，以便在预算范围内按时可靠迁移到 Azure，同时确保性能和符合性不受影响。 Turbonomic 是由 Azure 和本地中的无代理 VM 驱动并以其作为身份而运行的 API。
+Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优化性能、成本和符合性。 Turbonomic 可持续优化资产，帮助组织在 Azure 资产方面获得弹性，确保应用程序可以持续获得所需的资源来履行 SLA，同时，对于 IaaS 和 PaaS 层，不需要进一步配置计算、存储和网络资源。 组织可以模拟迁移、合理缩放工作负荷以及淘汰数据中心资源，以便在预算范围内按时可靠迁移到 Azure，同时确保性能和符合性不受影响。 Turbonomic 由 API 驱动，作为 Azure 中和本地的无代理 VM 运行。
 
 [了解详细信息。][turbonomic-doc]
 

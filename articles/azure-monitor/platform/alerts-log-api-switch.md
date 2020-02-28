@@ -2,18 +2,16 @@
 title: 从旧 Log Analytics 警报 API 切换到新 Azure 警报 API
 description: 基于旧的基于 savedSearch Log Analytics 警报 API 和处理将警报规则切换到新 ScheduledQueryRules API 的过程的概述，并提供了解决常见客户问题的详细信息。
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425145"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668003"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切换日志警报的 API 首选项
 

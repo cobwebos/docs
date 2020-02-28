@@ -4,17 +4,16 @@ description: 使用预先构建的自定义参数化工作簿简化复杂的报�
 author: mrbullwinkle
 manager: carmonm
 services: azure-monitor
-ms.service: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: cf11ce3a77fb47b7d8586ef56141a72cd0a10c2e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 29e675f3ae35df9211f58d45ad8450566d67a588
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872853"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658228"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor 工作簿
 
@@ -43,9 +42,9 @@ ms.locfileid: "74872853"
 * [Text](workbooks-visualizations.md#text)
 * [图表](workbooks-visualizations.md#charts)
 * [置](workbooks-visualizations.md#grids)
-* [磁贴](workbooks-visualizations.md#tiles)
+* [平铺](workbooks-visualizations.md#tiles)
 * [林中](workbooks-visualizations.md#trees)
-* [图表](workbooks-visualizations.md#graphs)
+* [关系图](workbooks-visualizations.md#graphs)
 
 ![示例工作簿可视化效果](./media/workbooks-overview/visualizations.png)
 

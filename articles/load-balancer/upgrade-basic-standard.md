@@ -7,20 +7,21 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 83cac961eb3cd700451f16c684c64185b35e9bd3
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616752"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659945"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升级 Azure 公共负载均衡器
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 若要了解有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
 
-升级分为两个阶段：
+升级分为三个阶段：
 
 1. 迁移配置
 2. 将 Vm 添加到标准负载均衡器的后端池
+3. 为出站连接在负载均衡器上创建出站规则
 
 本文介绍了配置迁移。 根据特定环境，将 Vm 添加到后端池可能会有所不同。 不过，[还提供了](#add-vms-to-backend-pools-of-standard-load-balancer)一些高级建议。
 
@@ -82,7 +83,7 @@ ms.locfileid: "77616752"
     **示例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 Vm 添加到标准负载均衡器的后端池
@@ -108,6 +109,12 @@ ms.locfileid: "77616752"
 
 * **创建新的 vm 以添加到新创建的标准公共负载均衡器的后端池**。
     * 可在[此处](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)找到有关如何创建 VM 并将其与标准负载均衡器相关联的详细说明。
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>为出站连接创建出站规则
+
+按照[说明](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)创建出站规则，以便可以
+* 从头开始定义出站 NAT。
+* 缩放和调整现有出站 NAT 的行为。
 
 ## <a name="common-questions"></a>常见问题
 

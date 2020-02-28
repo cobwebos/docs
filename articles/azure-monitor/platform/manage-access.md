@@ -1,18 +1,17 @@
 ---
 title: 管理 Azure Monitor 中的 Log Analytics 工作区 | Microsoft Docs
 description: 可以使用资源、工作区或表级权限管理对 Azure Monitor 中的 Log Analytics 工作区中存储的数据的访问。 本文详细介绍了如何完成此操作。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289112"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672100"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区的访问权限
 
@@ -104,7 +103,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 
 以下活动也需要 Azure 权限：
 
-|行动 |所需 Azure 权限 |说明 |
+|操作 |所需 Azure 权限 |说明 |
 |-------|-------------------------|------|
 | 添加和删除监视解决方案 | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | 需要在资源组或订阅级别授予这些权限。 |
 | 更改定价层 | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -132,12 +131,12 @@ Log Analytics 读者角色的成员可以：
 
 Log Analytics 读者角色包括以下 Azure 操作：
 
-| 类型    | 权限 | Description |
+| 类型    | 权限 | 说明 |
 | ------- | ---------- | ----------- |
-| 行动 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区，它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
-| 行动 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 不推荐使用，无需将其分配给用户。 |
-| 行动 | `Microsoft.OperationalInsights/workspaces/search/action` | 不推荐使用，无需将其分配给用户。 |
-| 行动 | `Microsoft.Support/*` | 能够打开支持案例 |
+| 操作 | `*/read`   | 能够查看所有 Azure 资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区，它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
+| 操作 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 不推荐使用，无需将其分配给用户。 |
+| 操作 | `Microsoft.OperationalInsights/workspaces/search/action` | 不推荐使用，无需将其分配给用户。 |
+| 操作 | `Microsoft.Support/*` | 能够打开支持案例 |
 |非操作 | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | 防止读取工作区密钥，该密钥是使用数据集合 API 和安装代理所必需的。 这可以防止用户向工作区添加新资源 |
 
 Log Analytics 参与者角色的成员可以：
@@ -160,7 +159,7 @@ Log Analytics 参与者角色的成员可以：
 
 Log Analytics 参与者角色包括以下 Azure 操作：
 
-| 权限 | Description |
+| 权限 | 说明 |
 | ---------- | ----------- |
 | `*/read`     | 能够查看所有资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置。 <br> 对于工作区，它允许完全无限制的权限来读取工作区设置并对数据执行查询。 请参阅上面更细化的选项。 |
 | `Microsoft.Automation/automationAccounts/*` | 能够创建和配置 Azure 自动化帐户，包括添加和编辑 runbook |
@@ -187,7 +186,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 当用户使用资源上下文访问从工作区查询日志时，他们将对资源具有以下权限：
 
-| 权限 | Description |
+| 权限 | 说明 |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>示例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 能够查看资源的所有日志数据。  |
 | `Microsoft.Insights/diagnosticSettings/write` | 能够将诊断设置配置为允许设置此资源的日志。 |

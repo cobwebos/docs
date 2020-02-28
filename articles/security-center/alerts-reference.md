@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623972"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661953"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -399,8 +399,8 @@ ms.locfileid: "77623972"
 
 |Intent|说明|
 |------|-------|
-|**探测**|探测可以是尝试访问某个资源，而不考虑恶意意向，或尝试获取目标系统的访问权限，以在利用之前收集信息。 通常，此步骤被检测为从网络外部发起的尝试，用于扫描目标系统并标识入口点。|
-|**受到**|利用这一阶段，攻击者可设法获得攻击资源的据点。 此阶段与计算主机和资源（例如用户帐户、证书等）相关。威胁参与者在此阶段之后常常能够控制资源。|
+|**PreAttack**</br>（替换探测）|PreAttack 可以是尝试访问某个资源，而不考虑恶意意向，或尝试获取目标系统的访问权限，以在利用之前收集信息。 通常，此步骤被检测为从网络外部发起的尝试，用于扫描目标系统并标识入口点。</br>有关 PreAttack 阶段的更多详细信息，请参阅[MITRE 的页面](https://attack.mitre.org/matrices/pre/)。|
+|**InitialAccess**</br>（替代利用）|InitialAccess 是攻击者设法获取据点的受攻击资源的阶段。 此阶段与计算主机和资源（例如用户帐户、证书等）相关。威胁参与者在此阶段之后常常能够控制资源。|
 |**保持**|持久性是对系统的任何访问、操作或配置更改，使威胁参与者在该系统上具有持久的状态。 威胁参与者通常需要通过中断来维护对系统的访问，例如系统重启、丢失凭据或其他可能需要远程访问工具重启的故障，或者提供备用后门来重新获得访问权限。|
 |**PrivilegeEscalation**|权限升级是允许攻击者在系统或网络上获取更高级别的权限的操作结果。 某些工具或操作需要更高级别的特权才能工作，并且在操作过程中有可能在多个点执行此操作。 有权访问特定系统或执行攻击者所需的特定功能的用户帐户也可能被视为权限提升。|
 |**DefenseEvasion**|防御规避包含一种技巧，攻击者可使用这些技术规避检测或避免其他防御措施。 有时，这些操作与其他类别中的技术（或不同的变体）相同，这些技术具有额外的破坏。|

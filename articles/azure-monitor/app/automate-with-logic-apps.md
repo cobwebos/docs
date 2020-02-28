@@ -1,18 +1,14 @@
 ---
 title: 使用逻辑应用自动执行 Azure 应用程序 Insights 过程
 description: 了解如何通过将 Application Insights 连接器添加到逻辑应用来快速自动执行可重复的过程。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407520"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654998"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用逻辑应用自动执行 Application Insights 过程
 
@@ -96,13 +92,13 @@ ms.locfileid: "75407520"
 
 1. 在“发送电子邮件”窗口中，执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 键入收件人的电子邮件地址。
+   a. 键入收件人的电子邮件地址。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 键入电子邮件的主题。
+   b. 键入电子邮件的主题。
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
     
-   d.单击“下一步”。 单击 "**添加新参数**" 下拉箭头，然后选择 "附件" 和 "HTML"。
+   d. 单击 "**添加新参数**" 下拉箭头，然后选择 "附件" 和 "HTML"。
 
       ![Office 365 Outlook 配置](./media/automate-with-logic-apps/10emailbody.png)
 
@@ -110,9 +106,9 @@ ms.locfileid: "75407520"
 
 1. 在动态内容菜单上执行以下操作：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“附件名称”。
+    a. 选择“附件名称”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“附件内容”。
+    b. 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 

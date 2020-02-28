@@ -1,15 +1,14 @@
 ---
 title: 使用 webhook 通过 OpsGenie 发送 Azure 服务运行状况警报
 description: 获取有关发送到 OpsGenie 实例的服务运行状况事件的个性化通知。
-ms.service: service-health
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465230"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654131"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>使用 webhook 通过 OpsGenie 发送 Azure 服务运行状况警报
 
@@ -30,7 +29,7 @@ ms.locfileid: "75465230"
 
 1.  填写其他字段，例如“收件人”、“启用”、“禁止显示通知”。
 
-1.  复制并保存“集成 URL”，其中应该已经包含追加到末尾的 `apiKey`。
+1.  复制并保存“集成 URL”，其中应该已经包含追加到末尾的 **。** `apiKey`
 
     ![OpsGenie 中的“集成 URL”](./media/webhook-alerts/opsgenie-integration-url.png)
 
@@ -42,9 +41,9 @@ ms.locfileid: "75465230"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 OpsGenie **集成 URL**。
+    b. **详细信息：** 前面保存的 OpsGenie **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
@@ -59,9 +58,9 @@ ms.locfileid: "75465230"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 OpsGenie **集成 URL**。
+    b. **详细信息：** 前面保存的 OpsGenie **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 

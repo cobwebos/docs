@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics 中的网络性能监视器解决方案 | Microsoft 文档
 description: 使用网络性能监视器中的 ExpressRoute 监视器功能通过 Azure ExpressRoute 监视分支办事处与 Azure 之间的端到端连接和性能。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898884"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660744"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
@@ -110,7 +109,7 @@ ms.locfileid: "72898884"
 
 可通过 LogAnalytics 查看通知代码并设置警报。 在“NPM 诊断”页面上，可看到触发的每条诊断消息的说明。
 
-| 通知代码（日志） | 描述 |
+| 通知代码（日志） | 说明 |
 | --- | --- |
 | 5501 | 无法遍历 ExpressRoute 线路的辅助连接 |
 | 5502 | 无法遍历 ExpressRoute 线路的主连接 |

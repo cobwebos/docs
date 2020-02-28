@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161726"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659707"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -58,8 +58,9 @@ Azure 中的所有 VM 大小（Mv2 系列 Vm 除外）都支持第1代 Vm。 Azu
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04、18.04、19.04、19.10 
-* RHEL 8.0、7.6、7.5、7.4、7。0
-* 美分 OS 8。0
+* RHEL 8.1、8.0、7.7、7.6、7.5、7.4、7。0
+* O o 8.0、7.7、7.6、7.5、7。4
+* Oracle Linux 7.7，7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>本地与 Azure 第2代 Vm
 

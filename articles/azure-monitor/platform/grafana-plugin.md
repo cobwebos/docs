@@ -1,21 +1,18 @@
 ---
 title: 使用 Grafana 监视 Azure 服务和应用程序
 description: 路由 Azure Monitor 和 Application Insights 数据，以便在 Grafana 中进行查看。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 11/06/2017
-ms.openlocfilehash: f5464710d5c7908eeec5dd917bfeff4756ff4e80
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552093"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672202"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
-你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
+你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/)从 [Grafana](https://grafana.com/plugins/grafana-azure-monitor-datasource) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
 
 使用以下步设置 Grafana 服务器，并通过 Azure Monitor 为指标和日志生成仪表板。
 
@@ -45,7 +42,7 @@ ms.locfileid: "72552093"
 
 ## <a name="sign-in-to-grafana"></a>登录到 Grafana
 
-1. 使用服务器的 IP 地址在浏览器中打开登录页 http://\<IP 地址\>:3000 或 \<DNSName>\:3000。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
+1. 使用服务器的 IP 地址在浏览器中打开登录页 http://*IP 地址\<:3000 或 \>DNSName>* 3000 *\<\:* 。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
 
     ![Grafana 登录屏幕](./media/grafana-plugin/grafana-login-screen.png)
 
@@ -94,7 +91,7 @@ ms.locfileid: "72552093"
 4. 选择已配置的 Azure Monitor 数据源。
    * 收集 Azure Monitor 指标 - 在服务下拉列表中选择“Azure Monitor”。 随即将显示选择器列表，可在其中选择此图表中要监视的资源和指标。 若要收集 VM 的指标，请使用命名空间 Microsoft.Compute/VirtualMachines。 选择 VM 和指标后，即可开始在仪表板中查看其数据。
      ![适用于 Azure Monitor 的 Grafana 图形配置](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-   * 收集 Azure Monitor 日志数据-选择 "服务" 下拉列表中的 " **Azure Log Analytics** "。 选择要查询的工作区并设置查询文本。 可以在此处复制已有的任何日志查询，也可以创建一个新查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化类型“时间序列表”，并运行查询。
+   * 收集 Azure Monitor 日志数据-选择 "服务" 下拉列表中的 " **Azure Log Analytics** "。 选择要查询的工作区并设置查询文本。 可以在此处复制已有的任何日志查询，也可以创建一个新查询。 在查询中键入时，IntelliSense 将显示并建议自动完成选项。 选择可视化效果类型、**时序** **表**，并运行查询。
     
      > [!NOTE]
      >

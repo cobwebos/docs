@@ -1,18 +1,17 @@
 ---
 title: OMS 门户即将转移到 Azure | Microsoft Docs
 description: OMS 门户即将被淘汰，其所有功能将转移到 Azure 门户。 本文提供有关此项过渡的详细信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 170973d15b5f49021a0507bdd2fd6a2632777d48
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 680cd9b44cc447f9bdea38cb9d04fc661fba9c79
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659248"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 门户即将转移到 Azure
 
@@ -33,7 +32,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 - [OMS 移动应用](#oms-mobile-app)即将弃用。 
 - [NSG 解决方案即将被取代](#azure-network-security-group-analytics)为通过流量分析解决方案提供的增强功能。
 - 从 System Center Operations Manager 到 Log Analytics 的新连接需要[更新的管理包](#system-center-operations-manager)。
-- 有关改用[更新管理](../../automation/automation-update-management.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 有关改用[更新管理](../../automation/migrate-oms-update-deployments.md)的详细信息，请参阅[将 OMS 更新部署迁移到 Azure](../../automation/automation-update-management.md)。
 
 
 ## <a name="what-should-i-do-now"></a>现在应该做些什么？
@@ -61,7 +60,7 @@ Azure 门户是所有 Azure 服务的中心，提供丰富的管理体验和功�
 |:---|:---|
 | ReadOnly | Log Analytics 读者 |
 | 参与者 | Log Analytics 参与者 |
-| 管理员 | 所有者 | 
+| 管理员 | “所有者” | 
  
 
 ## <a name="new-workspaces"></a>新工作区

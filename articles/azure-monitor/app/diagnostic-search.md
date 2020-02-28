@@ -1,18 +1,14 @@
 ---
 title: 在 Azure Application Insights 中使用搜索 | Microsoft Docs
 description: 搜索和筛选由 Web 应用发送的原始遥测数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678074"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669669"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 
@@ -26,7 +22,7 @@ ms.locfileid: "72678074"
 
 可以从应用程序的 "Application Insights 概述" 选项卡（位于顶部栏中）或在左侧的 "调查" 下打开诊断搜索。
 
-![搜索选项卡](./media/diagnostic-search/view-custom-events.png)
+![“搜索”选项卡](./media/diagnostic-search/view-custom-events.png)
 
 请访问 "事件类型" 下拉菜单，查看遥测项列表-服务器请求、页面视图、已编码的自定义事件等。 "结果" 列表的顶部是一个摘要图表，显示一段时间内的事件计数。
 
@@ -70,7 +66,7 @@ ms.locfileid: "72678074"
 
 ## <a name="filter-on-property-values"></a>按属性值筛选
 
-可以按事件的属性值筛选事件。 可用的属性取决于所选的事件类型。 单击 "筛选器" 图标 ![筛选器图标](./media/diagnostic-search/filter-icon.png) 开始。
+可以按事件的属性值筛选事件。 可用的属性取决于所选的事件类型。 单击 "筛选器" 图标 ![“筛选器”图标](./media/diagnostic-search/filter-icon.png) 开始。
 
 不选择特定属性的任何值与选择所有值的效果相同； 这会关闭根据该属性进行筛选的功能。
 
@@ -96,14 +92,14 @@ ms.locfileid: "72678074"
 
 搜索完整单词，而不搜索子字符串。 使用引号将特殊字符引起来。
 
-| 字符串 | 找*不*到 | 已找到 |
+| String | 找*不*到 | 已找到 |
 | --- | --- | --- |
 | HomeController.About |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
-|美国|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
+|United States|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 下面是可以使用的搜索表达式：
 
-| 示例查询 | 作用 |
+| 示例查询 | 效果 |
 | --- | --- |
 | `apple` |在时间范围中查找字段包含“apple”一词的所有事件 |
 | `apple AND banana` <br/>`apple banana` |查找同时包含这两个词的事件。 应使用大写“AND”，而不是“and”。 <br/>简格式。 |

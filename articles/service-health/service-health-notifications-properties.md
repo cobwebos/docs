@@ -1,14 +1,14 @@
 ---
 title: 什么是 Azure 服务运行状况通知？
 description: 借助服务运行状况通知，可以查看由 Microsoft Azure 发布的服务运行状况消息。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451555"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653962"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>使用 Azure 门户查看服务运行状况通知
 
@@ -24,7 +24,7 @@ ms.locfileid: "75451555"
 
 每个服务运行状况通知将包含有关适用范围和资源所受影响的详细信息。 详细信息包括：
 
-属性名称 | Description
+属性名称 | 说明
 -------- | -----------
 channels | 以下值之一：“Admin”、“Operation”。
 correlationId | 通常为字符串格式的 GUID。 属于同一操作的事件通常共享相同的 correlationId。

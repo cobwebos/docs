@@ -9,31 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07859299805c5f7be869350adbdbfa675775888c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404807"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656936"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>将敏感度标签分配到 Azure Active Directory 中的 Office 365 组（预览）
 
-Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。
+Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。 有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)。
 
 > [!IMPORTANT]
-> 使用 Office 365 组 Azure AD 敏感度标签需要 Azure Active Directory Premium P1 许可证。
-
-## <a name="group-settings-controlled-by-labels"></a>按标签控制的组设置
-
-可以将两个设置与标签关联：
-
-- **隐私**：管理员可以将隐私设置与标签相关联，以控制组是公用组还是专用组。
-- **来宾访问**：管理员可对分配了标签的所有组强制执行来宾策略。 此策略指定来宾是否可以添加为成员。 如果为标签配置了来宾策略，则向其分配标签的任何组都不允许更改 AllowToAddGuests 设置。
+> 若要配置此功能，你的 Azure AD 组织中必须至少有一个活动 Azure Active Directory Premium P1 许可证。
 
 ## <a name="enable-sensitivity-label-support-in-powershell"></a>在 PowerShell 中启用敏感度标签支持
 
@@ -87,11 +80,11 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 
 1. 保存更改，然后选择 "**创建**"。
 
-创建组后，将自动强制实施与选定标签关联的策略。
+创建组后，将自动强制实施与选定标签关联的站点和组设置。
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>为 Azure 门户中的现有组分配标签
 
-1. 使用全局管理员帐户或组管理员帐户或作为组所有者登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
+1. 使用组管理员帐户或组所有者登录到[Azure AD 管理中心](https://aad.portal.azure.com)。
 1. 选择“组”。
 1. 从 "**所有组**" 页中，选择要标记的组。
 1. 在选定组的页上，选择 "**属性**"，然后从列表中选择一个灵敏度标签。
@@ -109,24 +102,11 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 1. 选择“删除”。
 1. 单击“保存”应用所做的更改。
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>适用于敏感度标签的 Office 365 应用支持
-
-以下 Office 365 应用和服务支持此预览版中的灵敏度标签：
-
-- Azure AD 管理中心
-- Microsoft 365 相容性中心
-- SharePoint
-- Web 上的 Outlook
-- 团队
-- SharePoint 管理中心
-
-有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)。
-
 ## <a name="using-classic-azure-ad-classifications"></a>使用经典 Azure AD 分类
 
-启用此功能后，Office 365 不再支持新组的 "经典" 分类。 经典分类是通过在 Azure AD PowerShell 中为 `ClassificationList` 设置定义值来设置的旧分类。 启用此功能后，这些分类将不会应用于组。
+启用此功能后，组的 "经典" 分类将仅显示现有组和站点，并且仅当在不支持敏感度标签的应用中创建组时，才应将其用于新组。 如果需要，你的管理员可以稍后将其转换为敏感性标签。 经典分类是通过在 Azure AD PowerShell 中为 `ClassificationList` 设置定义值来设置的旧分类。 启用此功能后，这些分类将不会应用于组。
 
-## <a name="troubleshooting-issues"></a>排查问题
+## <a name="troubleshooting-issues"></a>解决问题
 
 ### <a name="sensitivity-labels-are-not-available-for-assignment-on-a-group"></a>敏感度标签不适用于组
 
@@ -136,9 +116,7 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 1. 启用此功能后，PowerShell 中的 EnableMIPLabels 设置为 True。
 1. 组是 Office 365 组。
 1. 租户具有活动的 Azure Active Directory Premium P1 许可证。
-1. 当前已登录用户有权访问已发布标签。
 1. 当前登录的用户具有足够的权限来分配标签。 用户必须是全局管理员、组管理员或组所有者。
-1. 当前已登录用户分配了 Office 365 许可证。 有关许可证要求的详细信息，请参阅[Office 应用中的敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps)。
 
 请确保满足所有条件，以便将标签分配给组。
 
@@ -149,7 +127,7 @@ Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](ht
 - 此标签可能不会在 Microsoft 365 相容性中心发布。 这也适用于不再发布的标签。 请咨询管理员以获取详细信息。
 - 但可以发布标签，而不能用于已登录的用户。 有关如何访问标签的详细信息，请咨询管理员。
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>如何更改组中的标签？
+### <a name="how-to-change-the-label-on-a-group"></a>如何更改组中的标签
 
 可以使用将标签分配给现有组的相同步骤随时交换标签，如下所示：
 

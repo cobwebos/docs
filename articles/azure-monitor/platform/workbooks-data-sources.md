@@ -5,18 +5,17 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872887"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658365"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor 工作簿数据源
 
@@ -35,7 +34,7 @@ ms.locfileid: "74872887"
 
 工作簿作者可以轻松地跨多个资源进行查询，从而创建真正统一的丰富报告体验。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 Azure 资源发出可通过工作簿访问的[指标](data-platform-metrics.md)。 可以通过专用控件在工作簿中访问指标，该控件可用于指定目标资源、所需指标和聚合。 然后，可以在图表或网格中绘制这些数据。
 

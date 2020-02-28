@@ -1,18 +1,14 @@
 ---
 title: 在 Java Web 项目中排查 Application Insights 问题
 description: 故障排除指南 - 使用 Application Insights 监视实时 Java 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432541"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657174"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>用于 Java 的 Application Insights 的故障排除与常见问题解答
 [Java 中的 Azure 应用程序 Insights][java]的问题或问题？ 请参考下面的提示。
@@ -180,7 +176,7 @@ java -Dapplicationinsights.logger.console.level=trace -jar MyApp.jar
 Application Insights 使用 `org.apache.http`。 这将在命名空间 `com.microsoft.applicationinsights.core.dependencies.http` 下的 Application Insights 核心 jar 中重定位。 这将允许 Application Insights 处理一段基本代码中存在不同版本的同一 `org.apache.http` 的方案。
 
 >[!NOTE]
->如果为应用中的所有命名空间启用了调试级别日志记录，则所有执行中模块（包括重命名为 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`）都将遵循它。 Application Insights 将无法为这些调用应用筛选，因为进行日志调用的是 Apache 库。 调试级别日志记录将生成大量日志数据，因此不建议在实时生产实例中使用。
+>如果为应用中的所有命名空间启用了调试级别日志记录，则所有执行中模块（包括重命名为 `org.apache.http` 的 `com.microsoft.applicationinsights.core.dependencies.http`）都将遵循它。 Application Insights 将无法为这些调用应用筛选，因为进行日志调用的是 Apache 库。 调试级别日志记录将生成大量日志数据，因此不建议在实时生产实例中使用。
 
 
 ## <a name="next-steps"></a>后续步骤

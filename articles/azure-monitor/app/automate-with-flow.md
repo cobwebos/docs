@@ -1,18 +1,14 @@
 ---
 title: 使用 Microsoft Flow自动执行 Azure Application Insights 过程
 description: 了解如何通过 Microsoft Flow 使用 Application Insights 连接器快速自动执行可重复的过程。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7566ae87f92707180b09d50eb6e5eeccedae85b9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407547"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655085"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>使用 Microsoft Flow 的连接器自动执行 Azure Application Insights 过程
 
@@ -97,19 +93,19 @@ ms.locfileid: "75407547"
 
 1. 在 "**发送电子邮件**" 窗口中：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 键入收件人的电子邮件地址。
+   a. 键入收件人的电子邮件地址。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 键入电子邮件的主题。
+   b. 键入电子邮件的主题。
 
    c. 单击“正文”框中的任意位置，然后在右侧打开的动态内容菜单中选择“正文”。
 
-   e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 选择 "**显示高级选项**"
+   e. 选择 "**显示高级选项**"
 
 1. 在 "动态内容" 菜单上：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择“附件名称”。
+    a. 选择“附件名称”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 选择“附件内容”。
+    b. 选择“附件内容”。
     
     c. 在“是否为 HTML”框中选择“是”。
 
@@ -117,7 +113,7 @@ ms.locfileid: "75407547"
 
 ### <a name="step-7-save-and-test-your-flow"></a>步骤 7：保存并测试流
 
-单击“ **保存**”。
+单击“保存”。
 
 可以等待触发器运行此操作，或单击顶部的 "![烧杯测试" 图标](./media/automate-with-flow/testicon.png)**测试**。
 

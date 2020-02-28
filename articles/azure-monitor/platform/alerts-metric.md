@@ -2,17 +2,16 @@
 title: 使用 Azure Monitor 创建、查看和管理指标警报
 description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理指标警报规则。
 author: harelbr
-ms.service: azure-monitor
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372759"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664705"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -54,7 +53,7 @@ Azure Monitor 中的指标警报提供了一种方法，以便在某个指标超
 
 10. 还可以通过调整**聚合粒度**和**计算频率**来优化条件。 
 
-11. 单击 **“完成”** 。
+11. 单击“完成”。
 
 12. （可选）若要监视复杂的预警规则，请添加另一个条件。 目前，用户可以将包含动态阈值条件的预警规则用作单一条件。
 

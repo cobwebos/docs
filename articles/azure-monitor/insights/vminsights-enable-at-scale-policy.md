@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 策略启用用于 VM 的 Azure Monitor |Microsoft Docs
 description: 本文介绍如何使用 Azure 策略为多个 Azure 虚拟机或虚拟机规模集启用用于 VM 的 Azure Monitor。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365812"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656222"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>使用 Azure 策略启用用于 VM 的 Azure Monitor （预览版）
 
@@ -51,7 +50,7 @@ ms.locfileid: "75365812"
 
 下表提供了 "策略覆盖范围" 页上提供的信息的细目，以及如何对其进行解释。
 
-| 函数 | Description | 
+| 函数 | 说明 | 
 |----------|-------------| 
 | **范围** | 您拥有或继承的管理组和订阅，可以向下钻取管理组层次结构。|
 | **角色** | 角色的作用域，该作用域可能是读取者、所有者或参与者。 在某些情况下，它可能会显示为空，指示你可能有权访问订阅，但不能访问其所属的管理组。 其他列中的信息根据你的角色而有所不同。 角色是确定你可以查看的数据的关键，以及你可以在分配策略或计划（所有者）、编辑它们或查看符合性方面执行的操作。 |
@@ -77,7 +76,7 @@ ms.locfileid: "75365812"
 
 下表列出了 Azure VM 的策略定义。
 
-|名称 |Description |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |\[预览\]：启用用于 VM 的 Azure Monitor |为指定作用域（管理组、订阅或资源组）中的虚拟机启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 |计划 |
 |\[预览\]：审核依赖关系代理部署–未列出 VM 映像（OS） |如果未在列表中定义 VM 映像（OS），并且未安装代理，则将 Vm 报告为不符合要求。 |策略 |
@@ -91,7 +90,7 @@ ms.locfileid: "75365812"
 
 下表列出了 Azure 虚拟机规模集的策略定义。
 
-|名称 |Description |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |\[预览\]：启用虚拟机规模集的 Azure Monitor |为指定作用域（管理组、订阅或资源组）中的虚拟机规模集启用 Azure Monitor。 将 Log Analytics 工作区用作参数。 注意：如果规模集升级策略设置为 "手动"，则通过对其调用升级来将扩展应用到集中的所有 Vm。 在 CLI 中，这是 `az vmss update-instances`。 |计划 |
 |\[预览\]：虚拟机规模集中的审核依赖关系代理部署–未列出 VM 映像（OS） |如果未在列表中定义 VM 映像（OS），并且未安装代理，则将虚拟机规模集报告为不符合要求。 |策略 |
@@ -103,7 +102,7 @@ ms.locfileid: "75365812"
 
 以下介绍独立策略（未包含在计划中）：
 
-|名称 |Description |类型 |
+|名称 |说明 |类型 |
 |-----|------------|-----|
 |\]\[预览：审核 VM Log Analytics 工作区–报表不匹配 |如果 Vm 未记录到策略或计划分配中指定的 Log Analytics 工作区，则将其报告为不符合要求。 |策略 |
 
@@ -143,24 +142,24 @@ ms.locfileid: "75365812"
 
 下表映射了该计划的每个可能的符合性状态。  
 
-| 符合性状态 | Description | 
+| 符合性状态 | 说明 | 
 |------------------|-------------|
-| **符合** | 范围内的所有 Vm 都部署了 Log Analytics 和依赖项代理。|
+| **要求** | 范围内的所有 Vm 都部署了 Log Analytics 和依赖项代理。|
 | **不符合** | 并非范围内的所有 Vm 都部署了 Log Analytics 和依赖关系代理，可能需要进行修正。|
 | **未启动** | 添加了新分配。 |
-| **Lock** | 你没有足够的权限来管理组。<sup>1</sup> | 
+| **住** | 你没有足够的权限来管理组。<sup>1</sup> | 
 | **空白** | 未分配策略。 | 
 
 <sup>1</sup>如果您无权访问管理组，请要求所有者提供访问权限。 或者，通过子管理组或订阅查看符合性和管理分配。 
 
 下表映射计划的每个可能的分配状态。
 
-| 分配状态 | Description | 
+| 分配状态 | 说明 | 
 |------------------|-------------|
 | **Success** | 范围内的所有 Vm 都部署了 Log Analytics 和依赖项代理。|
 | **警告** | 订阅不在管理组下。|
 | **未启动** | 添加了新分配。 |
-| **Lock** | 你没有足够的权限来管理组。<sup>1</sup> | 
+| **住** | 你没有足够的权限来管理组。<sup>1</sup> | 
 | **空白** | 不存在 Vm 或未分配策略。 | 
 | **Action** | 分配策略或编辑分配。 | 
 
@@ -195,10 +194,10 @@ ms.locfileid: "75365812"
 向管理组或订阅分配计划后，你可以随时对其进行编辑，以修改以下属性：
 
 - 分配名称
-- Description
-- 分配者:
+- 说明
+- 分配者
 - Log Analytics 工作区
-- 异常
+- 例外
 
 ## <a name="next-steps"></a>后续步骤
 
