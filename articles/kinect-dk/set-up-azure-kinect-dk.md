@@ -42,7 +42,7 @@ ms.locfileid: "77209129"
 
 3. 验证电源指示器 LED（USB 电缆旁边）是否为纯白。
   
-   设备通电需要几秒钟时间。 当正面的流 LED 指示灯熄灭时，表示设备可供使用。  
+   设备通电需要几秒钟时间。 当前置 LED 流指示灯熄灭时，表示设备可供使用。  
 
    有关电源指示器 LED 的详细信息，请参阅[光的含义是什么？](hardware-specification.md#what-does-the-light-mean)
 

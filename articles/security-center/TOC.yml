@@ -49,7 +49,7 @@
           href: azure-container-registry-integration.md
         - name: 与 Azure Kubernetes 服务集成
           href: azure-kubernetes-service-integration.md
-    - name: 威胁检测警报和事件
+    - name: 威胁防护和安全警报
       items:
         - name: 安全警报概述
           href: security-center-alerts-overview.md
@@ -59,16 +59,8 @@
           href: security-center-managing-and-responding-alerts.md
         - name: 管理安全事件
           href: security-center-incident.md
-        - name: VM 和服务器的威胁检测
-          href: security-center-alerts-iaas.md
-        - name: 针对云应用和容器的威胁检测
-          href: security-center-alerts-compute.md
-        - name: 数据服务的威胁检测
-          href: security-center-alerts-data-services.md
-        - name: Azure 服务层的威胁检测
-          href: security-center-alerts-service-layer.md
-        - name: 来自 Azure WAF 和 Azure DDoS 防护的威胁检测警报
-          href: security-center-alerts-integration.md
+        - name: Azure 安全中心的威胁防护
+          href: threat-protection.md
         - name: 云智能警报关联（事件）
           href: security-center-alerts-cloud-smart.md
         - name: 安全警报地图和威胁智能

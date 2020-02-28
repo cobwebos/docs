@@ -499,7 +499,7 @@
           href: data-flow-new-branch.md
         - name: 透视
           href: data-flow-pivot.md
-        - name: 选择
+        - name: Select
           href: data-flow-select.md
         - name: 接收器
           href: data-flow-sink.md
@@ -515,6 +515,8 @@
           href: data-flow-unpivot.md
         - name: 窗口
           href: data-flow-window.md
+        - name: 平展
+          href: data-flow-flatten.md
     - name: 参数化
       items:
         - name: 将链接的服务参数化

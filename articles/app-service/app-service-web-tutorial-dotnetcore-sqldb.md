@@ -36,7 +36,7 @@ ms.locfileid: "77500079"
 
 ## <a name="prerequisites"></a>必备条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 .NET Core](https://www.microsoft.com/net/core/)
@@ -49,7 +49,7 @@ ms.locfileid: "77500079"
 
 在终端窗口中，通过 `cd` 转到工作目录。
 
-运行以下命令来克隆示例存储库，并更改为其根。
+运行以下命令来克隆示例存储库，并转到其根目录。
 
 ```bash
 git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
@@ -256,9 +256,9 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
-使用 Web 浏览器浏览到已部署的应用。
+使用 Web 浏览器转到已部署的应用。
 
 ```bash
 http://<app_name>.azurewebsites.net

@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 01/21/2020
-  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 6f49c2e645ba0ecf48c8c111b9afd7c12722f4ad
+  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77560756"
+  ms.lasthandoff: 02/28/2020
+  ms.locfileid: "77919322"
 highlightedContent:
   items:
   - title: 什么是认知服务？
@@ -114,36 +114,6 @@ conceptualContent:
     - url: ./Bing-web-search/index.yml
       itemType: overview
       text: 必应搜索 API 中心页
-    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
-      itemType: overview
-      text: 自动建议搜索词
-    - url: ./bing-custom-search/overview.md
-      itemType: overview
-      text: 自定义搜索
-    - url: ./bing-entities-search/overview.md
-      itemType: overview
-      text: 实体搜索
-    - url: ./bing-image-search/overview.md
-      itemType: overview
-      text: 图像搜索
-    - url: ./bing-local-business-search/overview.md
-      itemType: overview
-      text: 当地企业搜索（预览版）
-    - url: ./bing-news-search/search-the-web.md
-      itemType: overview
-      text: 新闻搜索
-    - url: ./bing-spell-check/overview.md
-      itemType: overview
-      text: 拼写检查
-    - url: ./Bing-Video-Search/overview.md
-      itemType: overview
-      text: 视频搜索
-    - url: ./bing-visual-search/overview.md
-      itemType: overview
-      text: 视觉搜索
-    - url: ./bing-web-search/overview.md
-      itemType: overview
-      text: Web 搜索
   - title: 认知服务容器
     summary: Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可用的 API 一样丰富的 API，并能够灵活地选择在何处部署和托管随 Docker 容器提供的服务。
     links:

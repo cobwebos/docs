@@ -150,7 +150,7 @@
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Azure 负载均衡器反馈
