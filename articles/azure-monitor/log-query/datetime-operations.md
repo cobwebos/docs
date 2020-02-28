@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 日志查询中使用日期时间值 | Microsoft Docs
 description: 介绍如何在 Azure Monitor 日志查询中使用日期和时间数据。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365336"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655372"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure Monitor 日志查询中使用日期时间值
 
@@ -35,7 +34,7 @@ Kusto 查询语言主要具有两种与日期和时间相关的数据类型：�
 |h           | hour         |
 |m           | minute       |
 |s           | second       |
-|ms          | 毫秒  |
+|毫秒          | millisecond  |
 |微秒 | 微秒  |
 |时钟周期        | 纳秒   |
 
@@ -85,7 +84,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-`timeAgo` 列包含如下所示的值： "00：09： 31.5118992"，这意味着它们的格式为 hh： mm： fffffff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
+`timeAgo` 列包含以下值：“00:09:31.5118992”，这意味着它们的格式为 hh:mm:ss.fffffff。 如果要将这些值的格式设置为自开始时间以来的 `numver` 分钟数，则用该值除以“1 分钟”：
 
 ```Kusto
 Event
@@ -111,12 +110,12 @@ Event
 
 |TimeGenerated(UTC)|events_count|
 |--|--|
-|2018-08-01T09：30：00.000|54|
-|2018-08-01T09：35：00.000|41|
-|2018-08-01T09：40：00.000|42|
-|2018-08-01T09：45：00.000|41|
-|2018-08-01T09：50：00.000|41|
-|2018-08-01T09：55：00.000|16|
+|2018-08-01T09:30:00.000|54|
+|2018-08-01T09:35:00.000|41|
+|2018-08-01T09:40:00.000|42|
+|2018-08-01T09:45:00.000|41|
+|2018-08-01T09:50:00.000|41|
+|2018-08-01T09:55:00.000|16|
 
 还可使用函数（例如 `startofday`）来创建结果存储桶：
 
@@ -130,11 +129,11 @@ Event
 
 |timestamp|count_|
 |--|--|
-|2018-07-28T00：00：00.000|7,136|
-|2018-07-29T00：00：00.000|12,315|
-|2018-07-30T00：00：00.000|16,847|
-|2018-07-31T00：00：00.000|12,616|
-|2018-08-01T00：00：00.000|5,416|
+|2018-07-28T00:00:00.000|7,136|
+|2018-07-29T00:00:00.000|12,315|
+|2018-07-30T00:00:00.000|16,847|
+|2018-07-31T00:00:00.000|12,616|
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>时区
@@ -147,15 +146,13 @@ Event
 
 ## <a name="related-functions"></a>相关函数
 
-| 类别 | 函数 |
+| 类别 | Functions |
 |:---|:---|
 | 转换数据类型 | [system.xml.xmlconvert.todatetime](/azure/kusto/query/todatetimefunction)  [system.xml.xmlconvert.totimespan](/azure/kusto/query/totimespanfunction)  |
 | 将值舍入到箱大小 | [bin](/azure/kusto/query/binfunction) |
-| 获取特定的日期或时间 | [现](/azure/kusto/query/agofunction) [在](/azure/kusto/query/nowfunction)
-   |
+| 获取特定的日期或时间 | [前](/azure/kusto/query/agofunction) [现在](/azure/kusto/query/nowfunction)   |
 | 获取部分值 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| 获取相对日期值  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth startofyear](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction)
- |
+| 获取相对日期值  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth startofyear](/azure/kusto/query/startofmonthfunction) [](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>后续步骤
 请参阅有关将 [Kusto 查询语言](/azure/kusto/query/)与 Azure Monitor 日志数据配合使用的其他课程：

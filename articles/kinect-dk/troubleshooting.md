@@ -24,7 +24,7 @@ ms.locfileid: "76718201"
   - 使用 Microsoft USB 驱动程序可以解决某些问题
   - 许多电脑提供备选的主控制器，更改 USB3 端口可能会有所帮助
 
-有关其他传感器 SDK 相关问题，请查看 [GitHub 问题](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/issues)
+有关传感器 SDK 的更多问题，请查看 [GitHub 问题](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/issues)
 
 ## <a name="collecting-logs"></a>收集日志
 

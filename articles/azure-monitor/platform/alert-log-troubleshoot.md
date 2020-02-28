@@ -2,18 +2,16 @@
 title: Azure Monitor 中的日志警报进行故障排除 |Microsoft Docs
 description: Azure 中日志警报规则的常见问题、错误和解决方法。
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 10/29/2018
 ms.author: yalavi
+ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: aa2f3481b63c98ec23e1db8213939278684a4cd6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 10/29/2018
+ms.openlocfilehash: acb9784b745fa90fc9cd264162930020e6d64751
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977641"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668496"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报进行故障排除  
 
@@ -26,7 +24,7 @@ ms.locfileid: "75977641"
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
-下面是[Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)的状态在不显示时所显示的[ ](../platform/alerts-managing-alert-states.md)一些常见原因。
+下面是[Azure Monitor 中配置的日志警报规则](../platform/alerts-log.md)的状态在不显示时所显示的[*一些常见原因*](../platform/alerts-managing-alert-states.md)。
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
