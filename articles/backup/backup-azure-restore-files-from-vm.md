@@ -3,12 +3,12 @@ title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660914"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -161,7 +161,7 @@ mount [RAID Disk Path] [/mountpath]
 
 下表显示了服务器与计算机操作系统之间的兼容性。 恢复文件时，不能将文件还原到更旧或更新的操作系统版本。 例如，不能将文件从 Windows Server 2016 VM 还原到 Windows Server 2012 或 Windows 8 计算机。 可将 VM 中的文件还原到相同的服务器操作系统，或还原到兼容的客户端操作系统。
 
-|服务器操作系统 | 兼容的客户端 OS  |
+|服务器 OS | 兼容的客户端 OS  |
 | --------------- | ---- |
 | Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
@@ -181,7 +181,7 @@ mount [RAID Disk Path] [/mountpath]
 | Debian | 7 及更高版本 |
 | Oracle Linux | 6.4 及更高版本 |
 | SLES | 12 及更高版本 |
-| openSUSE | 42.2 及更高版本 |
+| OpenSUSE | 42.2 及更高版本 |
 
 > [!NOTE]
 > 我们发现，在使用 SLES 12 SP4 操作系统的计算机上运行文件恢复脚本时，我们发现了一些问题，我们正在使用 SLES 团队进行调查。
@@ -193,7 +193,7 @@ mount [RAID Disk Path] [/mountpath]
 |组件 | 版本  |
 | --------------- | ---- |
 | bash | 4 及更高版本 |
-| python | 2.6.6 及更高版本  |
+| Python | 2.6.6 及更高版本  |
 | TLS | 应支持 1.2  |
 
 ## <a name="access-requirements"></a>访问要求
@@ -206,7 +206,7 @@ mount [RAID Disk Path] [/mountpath]
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> （适用于 Azure 中国世纪互联）
   - <https://pod01-rec2.geo-name.backup.windowsazure.us>（适用于 Azure 美国政府）
   - <https://pod01-rec2.geo-name.backup.windowsazure.de>（适用于 Azure 德国）
-- 出站端口 3260
+- 出站端口53（DNS）、443、3260
 
 > [!NOTE]
 >

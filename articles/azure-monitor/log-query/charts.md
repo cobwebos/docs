@@ -1,18 +1,17 @@
 ---
 title: 通过 Azure Monitor 日志查询创建图表和关系图 | Microsoft Docs
 description: 介绍在 Azure Monitor 中以不同的方式显示日志数据时的各种可视化效果。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: ca60ed68277486ca5ed7d7d90ad72506a4844936
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8a515f01bfa9f8ec579c51b806c997d79b629250
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398088"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670315"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>通过 Azure Monitor 日志查询创建图表和关系图
 
@@ -70,7 +69,7 @@ Perf
 ![参考线](media/charts/charts-and-diagrams-multiSeriesThreshold.png)
 
 ## <a name="multiple-dimensions"></a>多个维度
-`summarize` 的 `by` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
+`by` 的 `summarize` 字句中的多个表达式在结果中创建多个行，每个值组合对应一行。
 
 ```Kusto
 SecurityEvent

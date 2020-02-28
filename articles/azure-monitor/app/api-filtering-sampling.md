@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights SDK 中的筛选和预处理 | Microsoft Docs
 description: 为 SDK 编写遥测处理器和遥测初始值设定项，以在将遥测发送到 Application Insights 门户之前筛选属性或将其添加到数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: dcc71739d859fb9cf4e03e5d3540d3cdbc69ac49
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031537"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666456"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 中的筛选和预处理遥测 | Microsoft Azure
 
@@ -29,7 +25,7 @@ ms.locfileid: "77031537"
 
 <a name="filtering"></a>
 
-## <a name="filtering"></a>筛选
+## <a name="filtering"></a>Filtering
 
 此方法可让你直接控制遥测流中包含或排除的内容。 筛选可用于删除从发送到 Application Insights 的遥测项。 可以将其与采样结合使用，也可以单独使用。
 

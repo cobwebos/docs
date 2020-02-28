@@ -1,19 +1,17 @@
 ---
 title: 使用 Application Insights 探查实时 Azure 应用服务应用 | Microsoft Docs
 description: 使用 Application Insights Profiler 探查 Azure 应用服务上的实时应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d463732fc8e8f488851a57fe520f138b101eb6cf
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ba9a2aca73dbdb8de298b68670fd6ab16f810a4d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899943"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671536"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>使用 Application Insights 探查实时 Azure 应用服务应用
 
@@ -45,7 +43,7 @@ Application Insights Profiler 作为应用服务运行时的一部分预安装�
 可以通过创建 Azure App Service 的应用设置来启用 Application Insights Profiler。 上面显示的选项的页面会为你创建这些应用设置。 但你可以使用模板或其他方法自动创建这些设置。 如果 Application Insights 资源与 Azure App Service 不同的订阅，则这些设置也将起作用。
 下面是启用探查器所需的设置：
 
-|应用设置    | Value    |
+|应用设置    | 值    |
 |---------------|----------|
 |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
 |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |

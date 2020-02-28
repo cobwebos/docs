@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 视图中的筛选器 |Microsoft Docs
 description: 使用 Azure Monitor 视图中的筛选器，用户可以通过特定属性的值筛选视图中的数据，而无需修改视图本身。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931983"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658568"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Azure Monitor 视图中的筛选器
 使用[Azure Monitor 视图](view-designer.md)中的**筛选器**，用户可以通过特定属性的值筛选视图中的数据，而无需修改视图本身。  例如，可以允许视图的用户在视图中筛选仅来自特定计算机或特定计算器组的数据。  可以在单个视图上创建多个筛选器，以便用户按多个属性筛选数据。  本文介绍如何使用筛选器并添加一个筛选器到自定义视图。
@@ -38,7 +37,7 @@ ms.locfileid: "72931983"
 
 下表描述了筛选器的设置。
 
-| 设置 | 描述 |
+| 设置 | 说明 |
 |:---|:---|
 | 字段名称 | 用于筛选的字段的名称。  此字段必须与**查询值**的 "汇总" 字段相匹配。 |
 | 查询值 | 运行查询以填充用户的筛选器下拉列表。  此查询必须使用[汇总](/azure/kusto/query/summarizeoperator)或[distinct](/azure/kusto/query/distinctoperator)来提供特定字段的唯一值，并且必须与**字段名称**匹配。  可以使用 [sort](/azure/kusto/query/sortoperator) 对显示给用户的值进行排序。 |
@@ -51,8 +50,8 @@ ms.locfileid: "72931983"
 | 字段名称 | 查询值 | 标记 |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | 计算机 |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
+| EventLevelName | Event &#124; distinct EventLevelName | severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

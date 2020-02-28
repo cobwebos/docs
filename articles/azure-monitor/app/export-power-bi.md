@@ -1,18 +1,14 @@
 ---
 title: 从 Azure Application Insights 导出到 Power BI | Microsoft Docs
 description: 可以在 Power BI 中显示分析查询。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668012"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663991"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>从 Application Insights 向 Power BI 馈送数据
 [Power BI](https://www.powerbi.com/) 是一套商业工具，可帮助分析数据及分享见解。 每个设备上都提供了丰富的仪表板。 可以结合许多源的数据，包括来自 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 的数据。
@@ -103,7 +99,7 @@ ms.locfileid: "73668012"
 1. 创建 [API 密钥](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)。
 2. 通过将 Azure 资源管理器 URL 替换为 Application Insights API，更新从分析中导出的 Power BI M 脚本。
    * 替换**https：\//management.azure.com/subscriptions/**
-   * 替换为 **https:\//api.applicationinsights.io/beta/apps/...**
+   * 对于， **https：\//api.applicationinsights.io/beta/apps/...**
 3. 最后，将凭据更新为基本凭据，再使用 API 密钥。
 
 **现有脚本**
@@ -122,8 +118,8 @@ ms.locfileid: "73668012"
 此方法可以自动创建完整的遥测仪表板。 初始数据集是预定义的，但可以在其中添加更多数据。
 
 ### <a name="get-the-adapter"></a>获取适配器
-1. 登录 [Power BI](https://app.powerbi.com/)。
-2. 打开“获取数据”![左下角的“获取数据”图标的屏幕截图](./media/export-power-bi/001.png)，“服务”。
+1. 登录到 [Power BI](https://app.powerbi.com/)。
+2. 打开 "**获取数据**" ![左下角](./media/export-power-bi/001.png)、**服务**的 "有状态" 图标的屏幕截图。
 
     ![从 Application Insights 数据源获取数据的屏幕截图](./media/export-power-bi/002.png)
 

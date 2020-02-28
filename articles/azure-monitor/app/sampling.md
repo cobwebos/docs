@@ -1,20 +1,16 @@
 ---
 title: Azure Application Insights 中的遥测采样 | Microsoft 文档
 description: 如何使受控制的遥测数据的卷。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989971"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671488"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -353,7 +349,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 > 固定速率采样不适用于指标导出程序。 这意味着自定义度量值是唯一不能配置采样的遥测类型。 度量值导出程序将发送它跟踪的所有遥测数据。
 
 #### <a name="fixed-rate-sampling-for-tracing"></a>用于跟踪的固定速率采样 ####
-可以在 `Tracer` 配置中指定 `sampler`。 如果未提供显式采样器，则默认情况下将使用 `ProbabilitySampler`。 默认情况下，`ProbabilitySampler` 使用的速率为1/10000，这意味着每个10000请求中的一个将发送到 Application Insights。 如需指定采样率，请参阅下文。
+可以在 `sampler` 配置中指定 `Tracer`。 如果未提供显式采样器，则默认情况下将使用 `ProbabilitySampler`。 默认情况下，`ProbabilitySampler` 使用的速率为1/10000，这意味着每个10000请求中的一个将发送到 Application Insights。 如需指定采样率，请参阅下文。
 
 若要指定采样率，请确保您的 `Tracer` 指定采样速率介于0.0 和1.0 之间（含这两个值）。 采样率1.0 表示100%，这意味着所有请求都将作为遥测发送到 Application Insights。
 
@@ -510,7 +506,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *遥测是否可以进行多次采样？*
 
-* 不。 如果已对项进行了采样，SamplingTelemetryProcessors 将忽略样本注意事项中的项。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
+* 不是。 如果已对项进行了采样，SamplingTelemetryProcessors 将忽略样本注意事项中的项。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
 
 *为何不采样简单“收集每个遥测类型 %X”？*
 

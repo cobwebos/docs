@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/30/2019
+ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bfbb466b7679e841c9c0154dbe28de14574d4282
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 4133c081823f1cc319480c1bc847b672df0374d4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553457"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660608"
 ---
 # <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 凭据运行 Azure CLI 命令来访问 blob 或队列数据
 
@@ -59,7 +59,7 @@ Azure CLI 支持 blob 和队列数据操作的 `--auth-mode` 参数：
         --name <storage-account> \
         --resource-group sample-resource-group-cli \
         --location eastus \
-        --sku Standard_LRS \
+        --sku Standard_ZRS \
         --encryption-services blob
     ```
 
@@ -71,8 +71,8 @@ Azure CLI 支持 blob 和队列数据操作的 `--auth-mode` 参数：
 1. 调用[az storage container create](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)命令，并将 `--auth-mode` 参数设置为 `login`，以便使用您的 Azure AD 凭据创建容器：
 
     ```azurecli
-    az storage container create \ 
-        --account-name <storage-account> \ 
+    az storage container create \
+        --account-name <storage-account> \
         --name sample-container \
         --auth-mode login
     ```

@@ -1,14 +1,14 @@
 ---
 title: 通过 PagerDuty 发送 Azure 服务运行状况警报
 description: 获取有关发送到 PagerDuty 实例的服务运行状况事件的个性化通知。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 746113622b746949a0fae3fd0d7f1f9c7d170707
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551646"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654063"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>使用 webhook 通过 PagerDuty 发送 Azure 服务运行状况警报
 
@@ -25,9 +25,9 @@ ms.locfileid: "75551646"
 
 1.  在“集成设置”中，选择以下项：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **集成类型**：Microsoft Azure
+    a. **集成类型**：Microsoft Azure
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **集成名称**：\<名称\>
+    b. **集成名称**：\<名称\>
 
     ![PagerDuty 中的“集成设置”](./media/webhook-alerts/pagerduty-integration-settings.png)
 
@@ -43,9 +43,9 @@ ms.locfileid: "75551646"
 
 1. 在“操作”列表中定义：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 PagerDuty **集成 URL**。
+    b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 
@@ -60,9 +60,9 @@ ms.locfileid: "75551646"
 
 1. 添加到“操作”列表：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 **操作类型：** *Webhook*
+    a. **操作类型：** *Webhook*
 
-    b.保留“数据库类型”设置，即设置为“共享”。 **详细信息：** 前面保存的 PagerDuty **集成 URL**。
+    b. **详细信息：** 前面保存的 PagerDuty **集成 URL**。
 
     c. **名称：** Webhook 的名称、别名或标识符。
 

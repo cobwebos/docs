@@ -1,24 +1,22 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoring。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dccd7e617174bef4a85cb6293cbcc459542310f9
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899710"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671301"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights 代理 API： ApplicationInsightsMonitoring
 
 本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 在目标计算机上启用 IIS 应用的无代码置备连接监视。
 
@@ -52,7 +50,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 - `AppFilter='WebAppExclude'` 提供 `null` 检测密钥。 不会检测指定的应用。
 - `AppFilter='WebAppOne'` 为指定的应用指定唯一的检测密钥。
 - `AppFilter='WebAppTwo'` 为指定的应用指定唯一的检测密钥。
-- 最后，`AppFilter` 还使用 `'.*'` 通配符来匹配之前的规则不匹配的所有 web 应用，并分配默认的检测密钥。
+- 最后，`AppFilter` 还使用 `'.*'` 通配符来匹配所有与先前的规则不匹配的 web 应用，并分配默认的检测密钥。
 - 添加空格以便于阅读。
 
 ```powershell

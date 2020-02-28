@@ -1,19 +1,16 @@
 ---
 title: 排查 Azure 应用程序 Insights Snapshot Debugger
 description: 本文介绍了疑难解答步骤和信息，以帮助在启用或使用 Application Insights Snapshot Debugger 时遇到问题的开发人员。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
-ms.author: mbullwin
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4544f42e7c024b21c4ae050d9b11e0f9e2786d57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432324"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671403"
 ---
 # <a id="troubleshooting"></a>排查 Application Insights Snapshot Debugger 或查看快照时的问题
 如果为应用程序启用了 Application Insights Snapshot Debugger，但没有看到用于例外的快照，则可以使用这些说明进行故障排除。 可能有许多不同的原因导致不生成快照。 可以运行快照运行状况检查来确定可能的一些常见原因。

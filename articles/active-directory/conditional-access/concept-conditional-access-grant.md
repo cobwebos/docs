@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585877"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656307"
 ---
 # <a name="conditional-access-grant"></a>条件性访问： Grant
 
@@ -55,7 +55,7 @@ ms.locfileid: "77585877"
 
 已部署 Microsoft Intune 的组织可以使用从其设备返回的信息来识别满足特定符合性要求的设备。 此策略符合性信息将从 Intune 转发到 Azure AD，在这种情况下，条件访问可以决定是允许还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅文章[使用 Intune 设置设备上的规则以允许访问你的组织中的资源](https://docs.microsoft.com/intune/protect/device-compliance-get-started)。
 
-设备可以被 Intune （适用于任何设备操作系统）或第三方 MDM 系统（适用于 Windows 10 设备）标记为合规。 不支持除 Windows 10 以外的设备 OS 类型的第三方 MDM 系统。
+设备可以被 Intune （适用于任何设备操作系统）或第三方 MDM 系统（适用于 Windows 10 设备）标记为合规。 Jamf pro 是唯一受支持的第三方 MDM 系统。 有关集成的详细信息，请参阅将[Jamf Pro 与 Intune 集成以实现符合性](/intune/protect/conditional-access-integrate-jamf)。
 
 设备必须在 Azure AD 中进行注册，然后才能将其标记为合规。 有关设备注册的详细信息，请参阅[什么是设备标识](../devices/overview.md)。
 

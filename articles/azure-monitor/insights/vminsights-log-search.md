@@ -1,18 +1,17 @@
 ---
 title: 如何从用于 VM 的 Azure Monitor（预览版）查询日志 | Microsoft Docs
 description: 用于 VM 的 Azure Monitor 解决方案将指标和日志数据收集到，本文将介绍这些记录，并提供示例查询。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399317"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670706"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
 
@@ -48,11 +47,11 @@ ms.locfileid: "75399317"
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内对以下属性共用相同值的物理网络连接聚合到 VMConnection 中的一个逻辑记录内。 
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |方向 |连接方向，值为 *inbound* 或 *outbound* |
 |计算机 |计算机 FQDN |
-|流程 |进程或进程组的标识，状态为正在启动/接受连接 |
+|进程 |进程或进程组的标识，状态为正在启动/接受连接 |
 |SourceIp |源的 IP 地址 |
 |DestinationIp |目标的 IP 地址 |
 |DestinationPort |目标的端口号 |
@@ -60,7 +59,7 @@ ms.locfileid: "75399317"
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |LinksEstablished |在报告时间范围内建立的物理网络连接数 |
 |LinksTerminated |在报告时间范围内终止的物理网络连接数 |
@@ -71,7 +70,7 @@ ms.locfileid: "75399317"
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |BytesSent |在报告时间范围内发送的字节总数 |
 |BytesReceived |在报告时间范围内接收的字节总数 |
@@ -99,7 +98,7 @@ ms.locfileid: "75399317"
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |RemoteCountry |托管 RemoteIp 的国家/地区的名称。  例如 *United States* |
 |RemoteLatitude |地理位置的纬度。 例如 *47.68* |
@@ -109,11 +108,11 @@ ms.locfileid: "75399317"
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |MaliciousIp |RemoteIp 地址 |
 |IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
-|Description |观察到的威胁说明。 |
+|说明 |观察到的威胁说明。 |
 |TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
 |置信度 |值介于 0 和 100 之间。 |
 |严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
@@ -129,11 +128,11 @@ ms.locfileid: "75399317"
 
 VMBoundPort 中的每个记录都由以下字段标识： 
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
-|流程 | 与端口关联的进程（或进程组）的标识。|
+|进程 | 与端口关联的进程（或进程组）的标识。|
 |Ip | 端口 IP 地址（可以是通配符 IP， *0.0.0.0*） |
-|Port |端口号 |
+|端口 |端口号 |
 |协议 | 协议。  例如， *tcp*或*udp* （当前仅支持*tcp* ）。|
  
 标识 a 端口派生自上述五个字段，存储在 PortId 属性中。 此属性可用于跨时间快速查找特定端口的记录。 
@@ -157,7 +156,7 @@ VMBoundPort 中的每个记录都由以下字段标识：
 
 类型为*VMComputer*的记录具有具有依赖关系代理的服务器的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
@@ -169,7 +168,7 @@ VMBoundPort 中的每个记录都由以下字段标识：
 |FullDisplayName | 完整显示名称 | 
 |HostName | 不带域名的计算机的名称 |
 |BootTime | 计算机启动时间（UTC） |
-|时区 | 规范化时区 |
+|TimeZone | 规范化时区 |
 |VirtualizationState | *虚拟* *机监控程序*、*物理* |
 |Ipv4Addresses | IPv4 地址的数组 | 
 |Ipv4SubnetMasks | IPv4 子网掩码的数组（顺序与 Ipv4Addresses 相同）。 |
@@ -181,7 +180,7 @@ VMBoundPort 中的每个记录都由以下字段标识：
 |OperatingSystemFamily | *Linux*、 *Windows* |
 |OperatingSystemFullName | 操作系统的全名 | 
 |PhysicalMemoryMB | 物理内存（以 mb 为单位） | 
-|Cpu | 处理器的数目 | 
+|Cpu | 处理器数 | 
 |CpuSpeed | CPU 速度（以 MHz 为单位） | 
 |VirtualMachineType | *hyperv*、 *vmware*、 *xen* |
 |VirtualMachineNativeId | 由虚拟机监控程序分配的 VM ID | 
@@ -219,7 +218,7 @@ VMBoundPort 中的每个记录都由以下字段标识：
 
 类型为*VMProcess*的记录具有具有依赖关系代理的服务器上的 TCP 连接进程的清单数据。 这些记录的属性在下表中列出：
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
 |TenantId | 工作区的唯一标识符 |
 |SourceSystem | *Insights* | 
@@ -227,14 +226,14 @@ VMBoundPort 中的每个记录都由以下字段标识：
 |Computer | 计算机 FQDN | 
 |AgentId | Log Analytics 代理的唯一 ID |
 |计算机 | ServiceMap 公开的计算机的 Azure 资源管理器资源的名称。 它的格式为*m-{GUID}* ，其中*Guid*是与 AgentId 相同的 guid。 | 
-|流程 | 服务映射进程的唯一标识符。 它采用*p-{GUID}* 的形式。 
+|进程 | 服务映射进程的唯一标识符。 它采用*p-{GUID}* 的形式。 
 |ExecutableName | 进程可执行文件的名称 | 
 |DisplayName | 进程显示名称 |
 |角色 | 进程角色： *web*服务器、 *microsoft.windows.appserver.2008*、 *databaseServer*、 *ldapServer*、 *smbServer* |
 |组 | 进程组名称。 同一组中的进程在逻辑上是相关的，例如同一个产品或系统组件的一部分。 |
 |StartTime | 进程池启动时间 |
 |FirstPid | 进程池中的第一个 PID |
-|Description | 进程说明 |
+|说明 | 进程说明 |
 |CompanyName | 公司名称 |
 |InternalName | 内部名称 |
 |ProductName | 产品名称 |

@@ -1,19 +1,17 @@
 ---
 title: 使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用 | Microsoft Docs
 description: 有关如何使用 Application Insights Profiler 的概念概述和分步教程。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a300aa066bdef40c4768ac5e278537aec1a8b3b7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820554"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671709"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -25,7 +23,7 @@ ms.locfileid: "72820554"
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 以下说明适用于所有 Windows、Linux 和 Mac 开发环境：
 
 * 安装 [.NET Core SDK 2.1.2 或更高版本](https://dotnet.microsoft.com/download/archives)。
@@ -127,7 +125,7 @@ ms.locfileid: "72820554"
     git push azure master
     ```
 
-应会看到类似于以下示例的输出：
+应会看到与如下示例类似的输出：
 
     ```
     Counting objects: 9, done.

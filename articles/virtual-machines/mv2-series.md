@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: caa80443a189874bfd699dba412fb749c8711556
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493392"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655661"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -33,7 +33,7 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 | Standard_M416ms_v2<sup>1、2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
 | Standard_M416s_v2<sup>1、2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000 / 2000 | 8 / 32000 |
 
-<sup>1</sup> Mv2 系列 vm 仅为第2代。 如果你使用的是 Linux，请参阅对[Azure 上的第2代 vm 的支持](/linux/generation-2.md)，了解有关如何查找并选择映像的说明。
+<sup>1</sup> Mv2 系列 vm 仅为第2代。 如果你使用的是 Linux，请参阅对[Azure 上的第2代 vm 的支持](./linux/generation-2.md)，了解有关如何查找并选择映像的说明。
 
 <sup>2</sup>对于 "M416ms_v2" 和 "M416s_v2" 大小，请注意，对于以下映像仅提供初始支持： "GEN2： SUSE LINUX ENTERPRISE SERVER （SLES） 12 SP4 For SAP 应用程序"。
 

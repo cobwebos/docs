@@ -1,18 +1,17 @@
 ---
 title: 使用 Log Analytics 网关连接计算机 |Microsoft Docs
 description: 使用 Log Analytics 的网关将数据发送到 Azure 自动化，并 Operations Manager 监视的计算机，以便在无法访问 internet 时将数据发送到 Azure 自动化和 Log Analytics 服务。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6c5325a21ffa74f5679a74b991f1c814eadc64ff
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773293"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672287"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>使用 Azure Monitor 中的 Log Analytics 网关连接无 internet 访问的计算机
 
@@ -69,8 +68,8 @@ Log Analytics 网关直接将数据从代理传输到服务。 它不会分析�
 
 Log Analytics 网关提供以下语言版本：
 
-- 简体中文
-- 繁体中文
+- 中文(简体)
+- 中文(繁体)
 - 捷克语
 - 荷兰语
 - 英语
@@ -99,7 +98,7 @@ Log Analytics 网关仅支持传输层安全性（TLS）1.0、1.1 和1.2。  它
 |网关 |支持的代理（大致）|  
 |--------|----------------------------------|  
 |CPU： Intel 强处理器 E5-2660 v3 \@ 2.6 GHz 2 核心<br> 内存： 4 GB<br> 网络带宽： 1 Gbps| 600|  
-|CPU： Intel 强处理器 E5-2660 v3 \@ 2.6 GHz 4 核心<br> 内存： 8 GB<br> 网络带宽： 1 Gbps| 1000|  
+|CPU： Intel 强处理器 E5-2660 v3 \@ 2.6 GHz 4 核心<br> 内存：8 GB<br> 网络带宽： 1 Gbps| 1000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>下载 Log Analytics 网关
 
@@ -132,10 +131,10 @@ Log Analytics 网关仅支持传输层安全性（TLS）1.0、1.1 和1.2。  它
 1. 在 "**许可协议**" 页上，选择 **"我接受许可协议中的条款**以同意 Microsoft 软件许可条款"，然后选择 "**下一步**"。
 1. 在“端口和代理地址”页上执行以下操作：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 输入要用于网关的 TCP 端口号。 安装程序使用此端口号在 Windows 防火墙上配置入站规则。  默认值为 8080。
+   a. 输入要用于网关的 TCP 端口号。 安装程序使用此端口号在 Windows 防火墙上配置入站规则。  默认值为 8080。
       端口号的有效范围为1到65535。 如果输入的端口号不在此范围内，会出现一条错误消息。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 如果安装网关的服务器需要通过代理进行通信，请输入网关需要连接到的代理地址。 例如，输入 `http://myorgname.corp.contoso.com:80`。  如果将此字段留空，网关将尝试直接连接到 internet。  如果代理服务器要求身份验证，请输入用户名和密码。
+   b. 如果安装网关的服务器需要通过代理进行通信，请输入网关需要连接到的代理地址。 例如，输入 `http://myorgname.corp.contoso.com:80`。  如果将此字段留空，网关将尝试直接连接到 internet。  如果代理服务器要求身份验证，请输入用户名和密码。
 
    c. 选择“**下一页**”。
 
@@ -154,7 +153,7 @@ Log Analytics 网关仅支持传输层安全性（TLS）1.0、1.1 和1.2。  它
  
 下表突出显示了安装程序支持的参数。
 
-|参数| 说明|
+|parameters| 说明|
 |----------|------| 
 |PORTNUMBER | 要侦听的网关的 TCP 端口号 |
 |代理 | 代理服务器的 IP 地址 |
@@ -253,9 +252,9 @@ Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROX
 
 1. 打开提升的命令提示符：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 选择 "**启动**"，然后输入**cmd**。  
+   a. 选择 "**启动**"，然后输入**cmd**。  
 
-   b.保留“数据库类型”设置，即设置为“共享”。 右键单击 "**命令提示符**"，然后选择 "以**管理员身份运行**"。  
+   b. 右键单击 "**命令提示符**"，然后选择 "以**管理员身份运行**"。  
 
 1. 输入以下命令：
 

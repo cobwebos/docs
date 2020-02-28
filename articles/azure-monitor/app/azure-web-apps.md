@@ -1,18 +1,14 @@
 ---
 title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 图表加载和响应时间、依赖关系信息，并设置性能警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189588"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655781"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -39,7 +35,7 @@ ms.locfileid: "77189588"
 
 ## <a name="enable-agent-based-monitoring"></a>启用基于代理的监视
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > 不支持 APPINSIGHTS_JAVASCRIPT_ENABLED 和 Urlcompression> 的组合。 有关详细信息，请参阅[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)中的说明。
@@ -75,7 +71,7 @@ ms.locfileid: "77189588"
 
     * 有关支持的自适应采样遥测处理器设置的列表，可以查阅[代码](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)和[相关文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 支持以下版本的 .NET Core： ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2 ASP.NET Core 3。0
 
@@ -96,15 +92,15 @@ ms.locfileid: "77189588"
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 从应用服务 web 应用中的 "**设置**" > **选择 "Application Insights** " > **启用**"。 基于 node.js 代理的监视目前处于预览阶段。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 基于 Java 应用服务的 web 应用程序当前不支持基于自动代理/扩展的监视。 若要为 Java 应用程序启用监视，需要[手动检测你的应用程序](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 基于 Python 应用服务的 web 应用程序当前不支持基于自动代理/扩展的监视。 若要为你的 Python 应用程序启用监视，需要[手动检测你的应用程序](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)。
 
@@ -112,7 +108,7 @@ ms.locfileid: "77189588"
 
 ## <a name="enable-client-side-monitoring"></a>启用客户端监视
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 客户端监视适用于 ASP.NET。 启用客户端监视：
 
@@ -129,7 +125,7 @@ ms.locfileid: "77189588"
 
 若要禁用客户端监视，请从应用程序设置中删除关联的键值对，或将值设置为 false。
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 **默认情况**下，使用**建议集合**为 .net Core 应用启用客户端监视，而不考虑应用设置 "APPINSIGHTS_JAVASCRIPT_ENABLED" 是否存在。
 
@@ -146,15 +142,15 @@ ms.locfileid: "77189588"
 
 ![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 若要为 node.js 应用程序启用客户端监视，需要[手动将客户端 JAVASCRIPT SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 若要为 Java 应用程序启用客户端监视，需要[手动将客户端 JAVASCRIPT SDK 添加到应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 若要为你的 Python 应用程序启用客户端监视，你需要[手动将客户端 JAVASCRIPT SDK 添加到你的应用程序](https://docs.microsoft.com/azure/azure-monitor/app/javascript)。
 
@@ -168,7 +164,7 @@ ms.locfileid: "77189588"
 
 ### <a name="application-settings-definitions"></a>应用程序设置定义
 
-|应用设置名称 |  Definition | 值 |
+|应用设置名称 |  定义 | 值 |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | 主扩展，控制运行时监视。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  仅在默认模式下，启用了基本功能，以便确保最佳性能。 | `default` 或 `recommended`。 |
@@ -379,7 +375,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 下表提供了有关这些值的含义、其根本原因和推荐修补程序的更详细说明：
 
-|问题值|说明|修复
+|问题值|说明|Fix
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值指示该扩展已检测到 SDK 的某个方面已经存在于应用程序中，并将进行回退。 这可能是由于引用 `System.Diagnostics.DiagnosticSource`、`Microsoft.AspNet.TelemetryCorrelation`或 `Microsoft.ApplicationInsights`  | 删除引用。 某些 Visual studio 模板默认情况下会添加其中的某些引用，较旧版本的 Visual Studio 可能会添加对 `Microsoft.ApplicationInsights`的引用。
 |`AppAlreadyInstrumented:true` | 如果应用程序面向 .NET Core 2.1 或2.2，并引用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.All) ，则会将其引入 Application Insights，扩展将会关闭。 | [建议](https://github.com/aspnet/Announcements/issues/287)使用 .net Core 2.1、2.2 的客户改为使用 AspNetCore 元包。|

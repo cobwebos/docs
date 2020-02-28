@@ -2,13 +2,13 @@
 title: 资源的标记支持
 description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服务的详细信息。
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 09dd71ef8c3ac4803a988dffbdca47116c967a0e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/26/2020
+ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207921"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657567"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](tag-resources.md)。 标记为**支持标记**的列指示资源类型是否具有标记的属性。 标记为 **"成本报表中的标记**" 的列指示该资源类型是否将标记传递给成本报告。 你可以在[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)和[Azure 计费发票和每日使用数据](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中按标记查看成本。
@@ -116,8 +116,8 @@ ms.locfileid: "77207921"
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft 笔记本](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft 笔记本](#microsoftnotebooks)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [ObjectStore](#microsoftobjectstore)
 > - [OffAzure](#microsoftoffazure)
@@ -136,7 +136,6 @@ ms.locfileid: "77207921"
 > - [ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [SecurityGraph](#microsoftsecuritygraph)
@@ -292,6 +291,9 @@ ms.locfileid: "77207921"
 > | automationAccounts | 是 | 是 |
 > | automationAccounts/配置 | 是 | 是 |
 > | automationAccounts/作业 | 否 | 否 |
+> | automationAccounts/privateEndpointConnectionProxies | 否 | 否 |
+> | automationAccounts/privateEndpointConnections | 否 | 否 |
+> | automationAccounts/privateLinkResources | 否 | 否 |
 > | automationAccounts/runbook | 是 | 是 |
 > | automationAccounts/softwareUpdateConfigurations | 否 | 否 |
 > | automationAccounts/webhook | 否 | 否 |
@@ -711,6 +713,7 @@ ms.locfileid: "77207921"
 > | 注册表/importImage | 否 | 否 |
 > | 注册表/privateEndpointConnectionProxies | 否 | 否 |
 > | 注册表/privateEndpointConnectionProxies/验证 | 否 | 否 |
+> | 注册表/privateEndpointConnections | 否 | 否 |
 > | 注册表/privateLinkResources | 否 | 否 |
 > | 注册表/queueBuild | 否 | 否 |
 > | 注册表/regenerateCredential | 否 | 否 |
@@ -1052,6 +1055,7 @@ ms.locfileid: "77207921"
 > | partnerNamespaces/eventChannels | 否 | 否 |
 > | partnerRegistrations | 是 | 是 |
 > | partnerTopics | 是 | 是 |
+> | partnerTopics/eventSubscriptions | 否 | 否 |
 > | systemTopics | 是 | 是 |
 > | systemTopics/eventSubscriptions | 否 | 否 |
 > | topics | 是 | 是 |
@@ -1288,6 +1292,7 @@ ms.locfileid: "77207921"
 > | ------------- | ----------- | ----------- |
 > | getEntities | 否 | 否 |
 > | managementGroups | 否 | 否 |
+> | managementGroups/settings | 否 | 否 |
 > | 资源 | 否 | 否 |
 > | startTenantBackfill | 否 | 否 |
 > | tenantBackfillStatus | 否 | 否 |
@@ -1395,15 +1400,7 @@ ms.locfileid: "77207921"
 > | netAppAccounts | 是 | 否 |
 > | netAppAccounts / capacityPools | 是 | 否 |
 > | netAppAccounts/capacityPools/卷 | 是 | 否 |
-> | netAppAccounts/capacityPools/卷集/mountTargets | 是 | 否 |
-> | netAppAccounts/capacityPools/卷/快照 | 是 | 否 |
-
-## <a name="microsoftnotebooks"></a>Microsoft 笔记本
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 成本报表中的标记 |
-> | ------------- | ----------- | ----------- |
-> | NotebookProxies | 否 | 否 |
+> | netAppAccounts/capacityPools/卷/快照 | 否 | 否 |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -1495,6 +1492,13 @@ ms.locfileid: "77207921"
 > 对于 Azure 前门服务，可以在创建资源时应用标记，但目前不支持更新或添加标记。
 
 
+## <a name="microsoftnotebooks"></a>Microsoft 笔记本
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 支持标记 | 成本报表中的标记 |
+> | ------------- | ----------- | ----------- |
+> | NotebookProxies | 否 | 否 |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1556,6 +1560,7 @@ ms.locfileid: "77207921"
 > | legacyPeerings | 否 | 否 |
 > | peerAsns | 否 | 否 |
 > | 对等互连 | 是 | 是 |
+> | peeringServiceCountries | 否 | 否 |
 > | peeringServiceProviders | 否 | 否 |
 > | peeringServices | 是 | 是 |
 
@@ -1680,13 +1685,6 @@ ms.locfileid: "77207921"
 > | ------------- | ----------- | ----------- |
 > | 应用程序 | 是 | 是 |
 > | saasresources | 否 | 否 |
-
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 支持标记 | 成本报表中的标记 |
-> | ------------- | ----------- | ----------- |
-> | jobcollections | 是 | 是 |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
@@ -2026,6 +2024,7 @@ ms.locfileid: "77207921"
 > | 资源类型 | 支持标记 | 成本报表中的标记 |
 > | ------------- | ----------- | ----------- |
 > | devices | 是 | 是 |
+> | registeredSubscriptions | 否 | 否 |
 > | 供应商 | 否 | 否 |
 > | 供应商/sku | 否 | 否 |
 > | 供应商/vnfs | 否 | 否 |

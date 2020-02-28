@@ -1,18 +1,17 @@
 ---
 title: 监视 Azure 存储服务的存储 Azure Monitor （预览版） |Microsoft Docs
 description: 本文介绍存储功能的 Azure Monitor，该功能可让存储管理员快速了解 Azure 存储帐户的性能和利用率问题。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401128"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662513"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>监视存储服务的存储 Azure Monitor （预览版）
 

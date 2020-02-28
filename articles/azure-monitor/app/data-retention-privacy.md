@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights 中的数据保留和存储 | Microsoft Docs
 description: 保留和隐私政策声明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: ba8a76cd4d3804bcb062ae0554e3fe7002804ed2
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031674"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669652"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -98,7 +94,7 @@ Microsoft 只使用这些数据来向你提供服务。
 * 创建新的 Application Insights 资源时，可以选择存储位置。 [在此处](https://azure.microsoft.com/global-infrastructure/services/?products=all)了解有关每个区域 Application Insights 可用性的详细信息。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>这是否意味着应用必须托管在美国、欧洲或东南亚？
-* No。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
+* 不是。 应用程序可在任何位置运行，不管是在自己的本地主机中还是云中。
 
 ## <a name="how-secure-is-my-data"></a>数据的安全性如何？
 Application Insights 是一项 Azure 服务。 [Azure Security, Privacy, and Compliance white paper](https://go.microsoft.com/fwlink/?linkid=392408)（Azure 安全性、隐私性和遵从性白皮书）中介绍了安全政策。
@@ -211,7 +207,7 @@ AzureLogHandler(
 | Windows Server 2012 - 2016 | 受支持，并且默认已启用。 | 确认是否仍在使用[默认设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 和 Windows Server 2008 R2 SP1 | 受支持，但默认未启用。 | 有关启用方法的详细信息，请参阅[传输层安全性 (TLS) 注册表设置](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)页。  |
 | Windows Server 2008 SP2 | 对 TLS 1.2 的支持需要更新。 | 请参阅 Windows Server 2008 SP2 中的[更新以添加对 TLS 1.2 的支持](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)。 |
-|Windows Vista | 不提供支持。 | 不可用
+|Windows Vista | 不提供支持。 | 空值
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>检查 Linux 分发版正在运行哪个 OpenSSL 版本
 
@@ -245,10 +241,10 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 
 | 操作 | 收集的数据类（参阅下一表格） |
 | --- | --- |
-| [将 Application Insights SDK 添加到 .NET web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>请求<br/>**异常**<br/>会话<br/>users |
+| [将 Application Insights SDK 添加到 .NET web 项目][greenbrown] |ServerContext<br/>推断<br/>性能计数器<br/>Requests<br/>**异常**<br/>会话<br/>users |
 | [在 IIS 上安装状态监视器][redfield] |依赖项<br/>ServerContext<br/>推断<br/>性能计数器 |
 | [将 Application Insights SDK 添加到 Java web 应用][java] |ServerContext<br/>推断<br/>请求<br/>会话<br/>users |
-| [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>页面<br/>ClientPerf<br/>Ajax |
+| [将 JavaScript SDK 添加到网页][client] |ClientContext <br/>推断<br/>页<br/>ClientPerf<br/>Ajax |
 | [定义默认属性][apiproperties] |所有标准事件和自定义事件的**属性** |
 | [调用 TrackMetric][api] |数值<br/>**属性** |
 | [呼叫曲目 *][api] |事件名称<br/>**属性** |
@@ -268,11 +264,11 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 | ServerContext |计算机名称、区域性、OS、设备、用户会话、用户上下文、操作 |
 | 推断 |IP 地址中的地理位置、时间戳、OS、浏览器 |
 | 度量值 |指标名称和值 |
-| Events |事件名称和值 |
+| 事件 |事件名称和值 |
 | PageViews |URL 和页面名称或屏幕名称 |
 | 客户端性能 |URL/页面名称、浏览器加载时间 |
 | Ajax |从网页到服务器的 HTTP 调用 |
-| 请求 |URL、持续时间、响应代码 |
+| Requests |URL、持续时间、响应代码 |
 | 依赖项 |类型（SQL、HTTP、...）、连接字符串或 URI、同步/异步、持续时间、成功、SQL 语句（带有状态监视器） |
 | **异常** |类型、**消息**、调用堆栈、源文件、行号 `thread id` |
 | 崩溃 |`Process id`、`parent process id``crash thread id`;应用程序修补程序，`id`，生成; 异常类型，地址，原因;模糊符号和寄存器、二进制起始和结束地址、二进制名称和路径、cpu 类型 |
@@ -286,7 +282,7 @@ SDK 根据平台的不同而异，可以安装多个组件。 （请参阅[Appli
 > [!NOTE]
 > 客户端 IP 用于推断地理位置，但默认情况下，不再存储 IP 数据且将所有的零写入关联的字段。 若要了解有关个人数据处理的详细信息，推荐参阅这一篇[文章](../../azure-monitor/platform/personal-data-mgmt.md#application-data)。 如果需要存储 IP 地址数据，我们的[ip 地址收集一文](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)将指导你完成选择。
 
-## <a name="credits"></a>学分
+## <a name="credits"></a>致谢
 此产品包含 MaxMind 创建的 GeoLite2 数据，可从 [https://www.maxmind.com](https://www.maxmind.com) 获取。
 
 
