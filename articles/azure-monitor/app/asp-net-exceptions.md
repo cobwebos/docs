@@ -1,18 +1,14 @@
 ---
 title: 通过 Azure 应用程序 Insights 诊断故障和异常
 description: 从 ASP.NET 应用中捕获异常以及请求遥测。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/11/2019
-ms.openlocfilehash: f89149de9b1173a659176f686053e8dc564ab85c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432655"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666150"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>使用 Application Insights 诊断 Web 应用中的异常
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可报告实时 Web 应用中的异常。 可以将失败的请求与异常关联到客户端和服务器上的其他事件，从而快速诊断原因。
@@ -96,7 +92,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 ## <a name="exceptions"></a>捕获异常和相关的诊断数据
 首先，不会在门户中看到在应用中导致失败的所有异常。 将显示所有浏览器异常（如果在网页中使用 [JavaScript SDK](../../azure-monitor/app/javascript.md)）， 但大多数服务器异常由 IIS 导致，必须编写几行代码才能看到它们。
 
-你可以：
+可以：
 
 * 通过在异常处理程序中插入代码来**显式记录异常**，从而报告这些异常。
 * 通过配置 ASP.NET 框架**自动捕获异常**。 框架类型不同，必要的附加内容也不同。

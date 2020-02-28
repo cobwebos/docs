@@ -1,24 +1,20 @@
 ---
 title: 使用 Azure Application Insights 进行 OpenCensus Go 跟踪 | Microsoft Docs
 description: 提供有关将 OpenCensus Go 跟踪与本地转发器和 Application Insights 集成的说明
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432547"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669975"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
 Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./opencensus-local-forwarder.md)集成来对 Go 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Go 并将跟踪数据提供给 Application Insights 的过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 需要一个 Azure 订阅。
 - 应该安装 Go，本文使用版本 1.11 [去下载](https://golang.org/dl/)。
@@ -43,7 +39,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
 
    此时会显示配置对话框，请使用下表填写输入字段。
 
-   | 设置        | 值           | Description  |
+   | 设置        | 值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 全局唯一值 | 标识所监视的应用的名称 |
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |

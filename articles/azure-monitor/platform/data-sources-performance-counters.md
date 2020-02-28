@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集和分析性能计数器 | Microsoft Docs
 description: 性能计数器由 Azure Monitor 收集，用于分析 Windows 和 Linux 代理的性能。  本文介绍了如何为 Windows 和 Linux 代理配置性能计数器收集、这些性能计数器在工作区中的存储详情和如何在 Azure 门户中对其进行分析。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363823"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670536"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 和 Linux 性能数据源
 Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和应用程序性能的见解。  除聚合性能数据以用于长期分析和报告外，Azure Monitor 还可以定期收集性能计数器以进行近实时 (NRT) 分析。
@@ -26,7 +25,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 对于 Windows 性能计数器，可以为每个性能计数器选择一个特定实例。 对于 Linux 性能计数器，选择的每个计数器的实例会应用于父计数器的所有子计数器。 下表显示 Linux 和 Windows 性能计数器的可用通用实例。
 
-| 实例名称 | Description |
+| 实例名称 | 说明 |
 | --- | --- |
 | \_Total |所有实例的总计 |
 | \* |所有实例 |
@@ -74,7 +73,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 
 下表介绍了此元素中的参数。
 
-| 参数 | Description |
+| parameters | 说明 |
 |:--|:--|
 | object\_name | 收集的对象名称。 |
 | instance\_regex |  用于定义要收集的实例的*正则表达式*。 值 `.*` 指定所有实例。 要仅收集 \_Total 实例的处理器指标，可以指定 `_Total`。 要仅收集 crond 或 sshd 实例的进程指标，可以指定 `(crond\|sshd)`。 |
@@ -116,14 +115,14 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 网络 | Rx 错误数总计 |
 | 网络 | Tx 错误数总计 |
 | 网络 | 冲突数总计 |
-| 物理磁盘 | 每次读取的平均磁盘扇区数 |
+| 物理磁盘 | Avg. Disk sec/Read |
 | 物理磁盘 | Avg. Disk sec/Transfer |
-| 物理磁盘 | 每次写入的平均磁盘扇区数 |
+| 物理磁盘 | Avg. Disk sec/Write |
 | 物理磁盘 | 物理磁盘字节数/秒 |
-| 流程 | 特权时间百分比 |
-| 流程 | 用户时间百分比 |
-| 流程 | 已用内存 KB 数 |
-| 流程 | 虚拟共享内存 |
+| 进程 | 特权时间百分比 |
+| 进程 | 用户时间百分比 |
+| 进程 | 已用内存 KB 数 |
+| 进程 | 虚拟共享内存 |
 | 处理器 | DPC 时间百分比 |
 | 处理器 | 空闲时间百分比 |
 | 处理器 | 中断时间百分比 |
@@ -135,7 +134,7 @@ Windows 和 Linux 中的性能计数器提供对硬件组件、操作系统和�
 | 系统 | 可用物理内存 |
 | 系统 | 分页文件中的可用空间 |
 | 系统 | 可用虚拟内存 |
-| 系统 | 流程 |
+| 系统 | 进程 |
 | 系统 | 分页文件中存储的大小 |
 | 系统 | 运行时间 |
 | 系统 | 用户 |
@@ -181,7 +180,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="performance-record-properties"></a>性能记录属性
 性能记录具有 **Perf** 类型，并且具有下表中的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | CounterName |性能计数器的名称 |
@@ -200,7 +199,7 @@ Azure Monitor 以指定的采样间隔在已安装相应计数器的所有代理
 ## <a name="log-queries-with-performance-records"></a>使用性能记录的日志查询
 下表提供了检索性能记录的不同日志查询的示例。
 
-| 查询 | Description |
+| 查询 | 说明 |
 |:--- |:--- |
 | 性能 |所有性能数据 |
 | Perf &#124; where Computer == "MyComputer" |特定计算机中的所有性能数据 |

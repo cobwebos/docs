@@ -1,19 +1,17 @@
 ---
 title: 设置 Azure 应用程序 Insights 的可用性警报 |Microsoft Docs
 description: 在 Application Insights 中设置 Web 测试。 当网站不可用或响应速度缓慢时接收警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a1637ac82c33c2a541bcec9f2848a248c29d56ca
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654947"
 ---
 # <a name="availability-alerts"></a>可用性警报
 
@@ -26,7 +24,7 @@ ms.locfileid: "74872666"
 ![创建体验](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
+>  对于[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)，**必须**在警报体验中配置警报规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
 
@@ -73,4 +71,4 @@ ms.locfileid: "74872666"
 ## <a name="next-steps"></a>后续步骤
 
 * [多步骤 web 测试](availability-multistep.md)
-* [URL ping Web 测试](monitor-web-app-availability.md)
+* [Url ping web 测试](monitor-web-app-availability.md)

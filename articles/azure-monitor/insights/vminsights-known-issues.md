@@ -1,24 +1,23 @@
 ---
 title: 用于 VM 的 Azure Monitor（预览版）的已知问题 | Microsoft Docs
 description: 本文介绍了用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它组合了 Azure VM 操作系统的运行状况、应用程序依赖项发现和性能监视功能。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 711b3707d536c4858578817589670edf0f467b64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450679"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670723"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
 本文介绍了用于 VM 的 Azure Monitor 的已知问题。用于 VM 的 Azure Monitor 是 Azure 中的一个解决方案，它组合了 Azure VM 操作系统的运行状况、应用程序组件发现和性能监视功能。 
 
-## <a name="health"></a>医疗业 
+## <a name="health"></a>运行状况 
 下面是“运行状况”功能的当前版本的已知问题：
 
 - 如果删除了某个 Azure VM，该 VM 会在 VM 列表视图中显示一段时间。 此外，单击已删除 VM 的状态会打开“运行状况诊断”视图，然后启动加载循环。 选择已删除 VM 的名称会打开一个窗格，其中显示一条指出该 VM 已被删除的消息。

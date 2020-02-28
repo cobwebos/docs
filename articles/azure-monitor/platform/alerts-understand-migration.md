@@ -1,18 +1,17 @@
 ---
 title: 了解自愿迁移工具如何处理 Azure Monitor 警报
 description: 了解警报迁移工具的工作原理，并解决问题。
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680675"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665266"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
 
@@ -165,7 +164,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 | Success | 维度为 "ResponseType" 的事务度量值为 "Success" | |
 | TotalBillableRequests| 事务 | |
 | TotalEgress | 流出量 | |
-| TotalIngress | 入口 | |
+| TotalIngress | 流入量 | |
 | TotalRequests | 事务 | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft.insights/components
@@ -227,7 +226,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 > [!NOTE]
 > 经典警报在用于通知经典管理员角色时，根据经典管理员的区域设置发送本地化电子邮件。 新警报电子邮件是通过操作组发送的，并且仅以英语表示。
 
-## <a name="rollout-phases"></a>实施阶段
+## <a name="rollout-phases"></a>推出阶段
 
 迁移工具正在逐步推出使用经典警报规则的客户。 订阅所有者将在订阅准备好使用该工具进行迁移时收到一封电子邮件。
 

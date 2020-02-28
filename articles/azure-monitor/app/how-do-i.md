@@ -1,18 +1,14 @@
 ---
 title: 如何在 Azure Application Insights 中执行... | Microsoft Docs
 description: 有关 Application Insights 的常见问题解答。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928421"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663851"
 ---
 # <a name="how-do-i--in-application-insights"></a>如何在 Application Insights 中执行...？
 ## <a name="get-an-email-when-"></a>... 时收到电子邮件
@@ -26,7 +22,7 @@ ms.locfileid: "73928421"
 
 应用还可能通过返回失败代码来表明资源紧张的迹象。 针对“失败的请求”设置警报。
 
-如果想要针对“服务器异常”设置警报，可能需要执行**其他一些设置**才能看到数据。[](../../azure-monitor/app/asp-net-exceptions.md)
+如果想要针对“服务器异常”设置警报，可能需要执行[其他一些设置](../../azure-monitor/app/asp-net-exceptions.md)才能看到数据。
 
 ### <a name="email-on-exceptions"></a>发生异常时发送电子邮件
 1. [设置异常监视](../../azure-monitor/app/asp-net-exceptions.md)
@@ -39,7 +35,7 @@ ms.locfileid: "73928421"
 
     telemetry.TrackMetric("Alarm", 10);
 
-或：
+或者：
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
@@ -77,8 +73,8 @@ ms.locfileid: "73928421"
 
 ## <a name="separate-telemetry-from-different-versions"></a>不同版本中的单独遥测
 
-* 应用中的多个角色：使用单个 Application Insights 资源，并按[cloud_Rolename](../../azure-monitor/app/app-map.md)进行筛选。
-* 分隔开发、测试和发布版本：使用不同 Application Insights 资源。 从 web.config 选取检测密钥。[了解更多](../../azure-monitor/app/separate-resources.md)
+* 应用中的多个角色：使用一个 Application Insights 资源，对 [cloud_Rolename](../../azure-monitor/app/app-map.md) 进行筛选。
+* 开发、测试和发布版本相互独立：使用不同的 Application Insights 资源。 从 web.config 中选取检测密钥。[了解详细信息](../../azure-monitor/app/separate-resources.md)
 * 报告生成版本：使用遥测初始值设定项添加属性。 [了解详细信息](../../azure-monitor/app/separate-resources.md)
 
 ## <a name="monitor-backend-servers-and-desktop-apps"></a>监视后端服务器和桌面应用
@@ -141,15 +137,15 @@ ms.locfileid: "73928421"
 ```
 
 ### <a name="other-applications"></a>其他应用程序
-建议不要在控制台或 ASP.NET Core 应用程序中使用 `TelemetryConfiguration.Active` 单一实例。
-如果自行创建了 `TelemetryConfiguration` 实例，请将 `DisableTelemetry` 设置为 `true`。
+不建议使用控制台上 `TelemetryConfiguration.Active` 单一实例或 ASP.NET Core 应用程序。
+如果自行创建 `TelemetryConfiguration` 实例-将 `DisableTelemetry` 设置为 "`true`"。
 
-对于 ASP.NET Core 应用程序，可以使用 `TelemetryConfiguration`ASP.NET Core 依赖项注入[来访问 ](/aspnet/core/fundamentals/dependency-injection/) 实例。 请在[适用于 ASP.NET Core 应用程序的 Application Insights](../../azure-monitor/app/asp-net-core.md)一文中找到更多详细信息。
+对于 ASP.NET Core 应用程序，你可以使用[ASP.NET Core 依赖关系注入](/aspnet/core/fundamentals/dependency-injection/)访问 `TelemetryConfiguration` 实例。 请在[applicationinsights.config for ASP.NET Core 应用程序](../../azure-monitor/app/asp-net-core.md)一文中找到更多详细信息。
 
 ## <a name="disable-selected-standard-collectors"></a>禁用选定的标准收集器
-可以禁用标准收集器（例如，性能计数器、HTTP 请求或依赖项）
+可以禁用标准收集器（例如性能计数器、HTTP 请求或依赖项）
 
-* **ASP.NET 应用程序** - 删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相关行
+* **ASP.NET 应用程序**-在[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中删除或注释掉相关行
 * **ASP.NET Core 应用程序**-遵循 applicationinsights.config 中的遥测模块配置选项[ASP.NET Core](../../azure-monitor/app/asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
 ## <a name="view-system-performance-counters"></a>查看系统性能计数器

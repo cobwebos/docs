@@ -2,18 +2,16 @@
 title: Azure Monitor 中的日志警报
 description: 当满足指定的分析查询条件时，Azure 警报会触发电子邮件、通知、调用网站 URL (Webhook) 或自动化。
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396484"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665215"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报
 
@@ -138,7 +136,7 @@ ms.locfileid: "75396484"
 | ------- | ----------| ----------| ------- 
 | 1:05 PM | 0条记录 | 0不 > 0，因此为 FALSE |  不会触发警报。 未调用任何操作。
 | 1:10 PM | 2条记录 | 2 > 0，因此为 TRUE  | 触发警报和调用的操作组。 警报状态处于活动状态。
-| 下午 1:15 | 5条记录 | 5 > 0，因此为 TRUE  | 触发警报和调用的操作组。 警报状态处于活动状态。
+| 1:15 PM | 5条记录 | 5 > 0，因此为 TRUE  | 触发警报和调用的操作组。 警报状态处于活动状态。
 | 1:20 PM | 0条记录 | 0不 > 0，因此为 FALSE |  不会触发警报。 未调用任何操作。 警报状态保持为活动状态。
 
 使用上例作为示例：
@@ -162,7 +160,7 @@ ms.locfileid: "75396484"
 若要删除使用[旧 Log Analytics API](api-alerts.md) 为警报规则的计费创建的隐藏 scheduleQueryRules 资源，用户可以执行以下任一操作：
 
 - 用户可以[在 Log Analytics 工作区上切换警报规则的 API 首选项](../../azure-monitor/platform/alerts-log-api-switch.md)，并且可以切换到 Azure 资源管理器兼容的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 而不丢失其警报规则或监视功能。 因此，这不需要创建用于计费的隐藏伪警报规则。
-- 或者，如果用户不希望切换 API 首选项，则用户将需要使用[旧 Log Analytics API](api-alerts.md)**删除**原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
+- 或者，如果用户不希望切换 API 首选项，则用户将需要使用**旧 Log Analytics API**[删除](api-alerts.md)原始计划和警报操作，或者[在 Azure 门户中删除原始日志警报规则](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal)
 
 此外，对于使用[旧版 LOG ANALYTICS API](api-alerts.md)为警报规则计费创建的隐藏 scheduleQueryRules 资源，任何修改操作（如 PUT）都将失败。 作为 `microsoft.insights/scheduledqueryrules` 类型，伪规则用于对使用[旧 LOG ANALYTICS API](api-alerts.md)创建的警报规则进行计费。 任何警报规则修改都应使用[旧的 LOG ANALYTICS api](api-alerts.md) （或）用户可以[切换 api 首选项，以便警报规则](../../azure-monitor/platform/alerts-log-api-switch.md)改用[scheduledQueryRules api](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 。
 

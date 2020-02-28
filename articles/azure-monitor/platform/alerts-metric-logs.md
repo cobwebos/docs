@@ -2,18 +2,16 @@
 title: 在 Azure Monitor 中创建日志的指标警报
 description: 有关针对常用 Log Analytics 数据创建近实时指标警报的教程。
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c50c6f91daef35906dec9c0648dfe38fb2f1de85
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977600"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662226"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>在 Azure Monitor 中创建日志的指标警报
 
@@ -56,8 +54,8 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 在针对 Log Analytics 数据收集的日志指标正常工作之前，必须设置以下各项，并确保这些项可用：
 
 1. **活动的 Log Analytics 工作区**：有效且活动的 Log Analytics 工作区必须存在。 有关详细信息，请参阅[在 Azure 门户中创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。
-2. 为**Log Analytics 工作区配置代理**：需要为 Azure vm （和/或）本地 vm 配置代理，以便将数据发送到在前面的步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](../../azure-monitor/platform/agents-overview.md)。
-3. **已安装支持的 Log Analytics 解决方案**： Log Analytics 解决方案应配置并将数据发送到 Log Analytics 工作区支持的解决方案是[Windows & Linux 的性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)、[代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)、[更新管理](../../automation/automation-update-management.md)和[事件数据](../../azure-monitor/platform/data-sources-windows-events.md)。
+2. **为 Log Analytics 工作区配置了代理**：需要为 Azure Vm （和/或）本地 Vm 配置代理，以便将数据发送到在前面的步骤中使用的 Log Analytics 工作区。 有关详细信息，请参阅 [Log Analytics - 代理概述](../../azure-monitor/platform/agents-overview.md)。
+3. **安装受支持的 Log Analytics 解决方案**：应配置 Log Analytics 解决方案，并将数据发送到 Log Analytics 工作区支持的解决方案是[Windows & Linux 的性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)、代理运行状况、[更新管理](../../automation/automation-update-management.md)和[事件数据](../../azure-monitor/platform/data-sources-windows-events.md)[的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)。
 4. **配置为发送日志的 Log Analytics 解决方案**：Log Analytics 解决方案应已启用与 [Log Analytics 工作区支持的指标](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces)对应的所需日志/数据。 例如，必须先在[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)解决方案中配置它的“可用内存百分比”计数器。
 
 ## <a name="configuring-metric-alert-for-logs"></a>配置日志的指标警报

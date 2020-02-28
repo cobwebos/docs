@@ -1,18 +1,16 @@
 ---
 title: Azure 应用程序 Insights 代理概述 |Microsoft Docs
 description: Application Insights 代理的概述。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899597"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671165"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>为本地服务器部署 Azure Monitor Application Insights 代理
 
@@ -28,12 +26,12 @@ Application Insights 代理（以前称为状态监视器 V2）是发布到[Powe
 
 ## <a name="powershell-gallery"></a>PowerShell 库
 
-Application Insights 代理位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor 。
+Application Insights 代理位于此处： https://www.powershellgallery.com/packages/Az.ApplicationMonitor。
 
 ![PowerShell 库](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>说明
+## <a name="instructions"></a>Instructions
 - 请参阅[入门说明](status-monitor-v2-get-started.md)，开始学习简洁的代码示例。
 - 有关如何开始使用的详细说明，请参阅[详细说明](status-monitor-v2-detailed-instructions.md)。
 

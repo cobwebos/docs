@@ -1,18 +1,17 @@
 ---
 title: 管理解决方案中的视图 | Microsoft Docs
 description: '管理解决方案通常包括一个或多个用来可视化数据的视图。  本文介绍如何导出视图设计器所创建的视图，并将其包含在管理解决方案中。 '
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553898"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663039"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理解决方案（预览版）中的视图
 > [!NOTE]
@@ -26,11 +25,11 @@ ms.locfileid: "72553898"
 >
 >
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文假设已经熟悉如何[创建管理解决方案](solutions-creating.md)及解决方案文件的结构。
 
 ## <a name="overview"></a>概述
-若要在管理解决方案中包含视图，则需要在[解决方案文件](solutions-creating.md)中为其创建**资源**。  描述视图详细配置的 JSON 通常很复杂，普通的解决方案作者无法手动进行创建。  最常见方法是使用 [视图设计器](../../azure-monitor/platform/view-designer.md)创建视图，并将其导出，然后再将其详细配置添加到解决方案。
+若要在管理解决方案中包含视图，则需要在**解决方案文件**中为其创建[资源](solutions-creating.md)。  描述视图详细配置的 JSON 通常很复杂，普通的解决方案作者无法手动进行创建。  最常见方法是使用 [视图设计器](../../azure-monitor/platform/view-designer.md)创建视图，并将其导出，然后再将其详细配置添加到解决方案。
 
 将视图添加到解决方案的基本步骤如下所示。  每个步骤都在后续相应部分进行了详细介绍。
 
@@ -87,10 +86,10 @@ ms.locfileid: "72553898"
 
  下表指定了旧版和升级版工作区中视图的 Log Analytics API 版本： 
 
-| 工作区版本 | API 版本 | Query |
+| 工作区版本 | API 版本 | 查询 |
 |:---|:---|:---|
-| v1（旧版）   | 2015-11-01-预览版 | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
-| v2（升级版） | 2015-11-01-预览版 | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
+| v1（旧版）   | 2015-11-01-preview | 旧版格式。<br> 示例：Type=Event EventLevelName = Error  |
+| v2（升级版） | 2015-11-01-preview | 旧版格式。  在安装时转换为升级版格式。<br> 示例：Type=Event EventLevelName = Error<br>转换为：Event &#124; where EventLevelName == "Error"  |
 | v2（升级版） | 2017-03-03-preview | 升级版格式。 <br>示例：Event &#124; where EventLevelName == "Error"  |
 
 

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 resource （）表达式 |Microsoft Docs
 description: 资源表达式用于以资源为中心 Azure Monitor 日志查询，以检索多个资源中的数据。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 370b2547c9e726ab4f5ebc4dd732cc0bfa17f760
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933019"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665693"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>Azure Monitor 日志查询中的 resource （）表达式
 
@@ -27,7 +26,7 @@ ms.locfileid: "72933019"
 
 - *标识符*：资源的资源 ID。
 
-| 标识符 | 描述 | 示例
+| 标识符 | 说明 | 示例
 |:---|:---|:---|
 | 资源 | 包含资源的数据。 | 资源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/providers/microsoft.compute/virtualmachines/myvm"） |
 | 资源组或订阅 | 包含资源的数据以及它包含的所有资源。  | 资源（"/subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup"） |

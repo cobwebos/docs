@@ -1,19 +1,15 @@
 ---
 title: 诊断实时指标流 Azure 应用程序 Insights
 description: 通过自定义指标实时监视 Web 应用，使用实时失败、跟踪和事件源以诊断问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea0d786d0b8b96941d791bcc8e92fad9a869c5f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406750"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670094"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -33,7 +29,7 @@ ms.locfileid: "75406750"
 
 目前支持 ASP.NET、ASP.NET Core、Azure Functions、Java 和 node.js 应用的实时指标。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 1. 如果尚未在 Web 应用中[安装 Application Insights](../../azure-monitor/azure-monitor-app-hub.yml)，现在请进行安装。
 2. 若要启用实时指标流，除了标准 Application Insights 包之外，还需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)。
@@ -55,7 +51,7 @@ ms.locfileid: "75406750"
 |---|---|---|
 |延迟|在一秒内显示数据|在几分钟聚合|
 |无保留期|当数据在图表上显示时会得到保留，不显示时将被丢弃。|[数据会保留 90 天](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|点播|打开实时指标时会流式处理数据|每当安装并启用 SDK 时会发送数据|
+|按需|打开实时指标时会流式处理数据|每当安装并启用 SDK 时会发送数据|
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
 |控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信是到门户的一种方式|
@@ -188,7 +184,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 | .NET                             | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +） | 支持（V 2.7.2 +）  |
 | .NET Core （target = .NET Framework）| 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | 支持（V 2.4.1 +）  |
 | .NET Core （target = NET.TCP Core）     | 支持（V 2.4.1 +） | 支持*          | 支持（V 2.4.1 +） | 支持（V 2.4.1 +） | **不支持**    |
-| Azure Functions v2               | 受支持           | 受支持           | 受支持           | 受支持           | **不支持**    |
+| Azure Functions v2               | 支持           | 支持           | 支持           | 支持           | **不支持**    |
 | Java                             | 支持（V 2.0.0 +） | 支持（V 2.0.0 +） | **不支持**   | **不支持**   | **不支持**    |
 | Node.js                          | 支持（V 1.3.0 +） | 支持（V 1.3.0 +） | **不支持**   | 支持（V 1.3.0 +） | **不支持**    |
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 68d975a1b8bb8d47011bb292d3cf897956b31712
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623605"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661664"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（使用 VMM）之间弃用灾难恢复
 
@@ -36,10 +36,8 @@ ms.locfileid: "77623605"
 
 下面是客户可以选择的替代方案，以确保在方案被弃用后，其 DR 策略不会受到影响。 
 
-- 选项1（推荐）：选择[开始使用 Azure 作为 hyper-v 主机上的 vm 的 DR 目标](hyper-v-azure-tutorial.md)。
+- 选项1（推荐）：选择[开始使用 Azure 作为 DR 目标](hyper-v-vmm-azure-tutorial.md)。
 
-    > [!IMPORTANT]
-    > 请注意，你的本地环境仍可以有 SCVMMM，但你需要将 ASR 配置为仅引用 Hyper-v 主机。
 
 - 选项2：选择使用基础[Hyper-v 副本解决方案](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)继续进行站点到站点复制，但你将无法使用 Azure 门户中的 Azure Site Recovery 来管理 DR 配置。 
 
@@ -50,15 +48,11 @@ ms.locfileid: "77623605"
 
 1. [禁用与 VMMs 关联的所有虚拟机的保护](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-secondary-vmm-server-using-the-system-center-vmm-to-vmm-scenario)。 使用 "**禁用复制并删除**" 选项或运行提到的脚本，确保清理本地的复制设置。 
 
-2. [注销所有 VMM 服务器](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)
+2. 从站点到站点复制配置中[注销所有 VMM 服务器](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server)。
 
 3. [准备 Azure 资源](tutorial-prepare-azure-for-hyperv.md)以启用 vm 复制。
 4. [准备本地 Hyper-v 服务器](hyper-v-prepare-on-premises-tutorial.md)
-
-> [!IMPORTANT]
-> 请注意，不需要执行 "准备 VMM" 下的步骤。
-
-5. [为 Vm 设置复制](hyper-v-azure-tutorial.md)
+5. [在 VMM 云中为 Vm 设置复制](hyper-v-vmm-azure-tutorial.md)
 6. 可选，但建议使用：[运行 DR 演练](tutorial-dr-drill-azure.md)
 
 如果选择使用 Hyper-v 副本的选项2，请执行以下步骤：

@@ -1,18 +1,14 @@
 ---
 title: 排查无数据问题 - 用于 .NET 的 Application Insights
 description: 在 Azure Application Insights 中看不到数据？ 试试这里。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889169"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665895"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排查 .NET/.NET Core 无数据 Application Insights 问题
 
@@ -63,7 +59,7 @@ ms.locfileid: "74889169"
 
 * 检查是否为适当的 Azure 帐户提供了登录凭据。
 * 在浏览器中，检查是否可以访问 [Azure 门户](https://portal.azure.com)。 打开“设置”并查看是否有任何限制。
-* [将 Application Insights 添加到现有项目](../../azure-monitor/app/asp-net.md)：在解决方案资源管理器中右键单击项目，然后选择“添加 Application Insights”。
+* [将 Application Insights 添加到现有项目](../../azure-monitor/app/asp-net.md)：在解决方案资源管理器中右键单击项目，并选择“添加 Application Insights”。
 
 ## <a name="emptykey"></a>遇到错误“检测密钥不能为空”
 可能是在安装 Application Insights 或日志记录适配器时发生了问题。
@@ -90,7 +86,7 @@ ms.locfileid: "74889169"
 * 选择“工具”、“扩展和更新”，检查“开发人员分析工具”是否已安装并启用。 如果是，请单击“更新”查看是否有可用的更新。
 * 在解决方案资源管理器中右键单击项目。 如果看到命令“Application Insights”>“配置 Application Insights”，请使用它将项目连接到 Application Insights 服务中的资源。
 
-否则，开发人员分析工具不会直接支持你的项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，并选择应用程序。
+否则，开发人员分析工具不会直接支持你的项目类型。 要查看遥测数据，请登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中选择“Application Insights”，然后选择应用程序。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>从 Visual Studio 打开 Application Insights 时出现“拒绝访问”
 *使用“打开 Application Insights”菜单命令时转到了 Azure 门户，但同时出现“拒绝访问”错误。*
@@ -115,12 +111,12 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 解决方法：
 
 * 在解决方案资源管理器中右键单击项目，并依次选择“Application Insights”、“配置 Application Insights”。 在对话框中，可以选择将遥测数据发送到现有资源，或创建新资源。 或：
-* 直接打开资源。 登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中单击“Application Insights”，并选择应用。
+* 直接打开资源。 登录到 [Azure 门户](https://portal.azure.com)，在左侧导航栏中单击“Application Insights”，然后选择应用。
 
 ## <a name="where-do-i-find-my-telemetry"></a>在哪里可以找到我的遥测数据？
 *我登录到[Microsoft Azure 门户](https://portal.azure.com)，并查看 Azure 主页仪表板。在哪里能找到我的 Application Insights 数据？*
 
-* 在左侧导航栏中单击“Application Insights”，然后选择应用名称。 如果未看到任何项目，则需要[在 Web 项目中添加或配置 Application Insights](../../azure-monitor/app/asp-net.md)。  
+* 在左侧导航栏中单击“Application Insights”，并选择应用名称。 如果未看到任何项目，则需要[在 Web 项目中添加或配置 Application Insights](../../azure-monitor/app/asp-net.md)。  
   然后，会看到一些摘要图表。 可以逐个单击这些图表查看详细信息。
 * 在 Visual Studio 中调试应用时，请单击“Application Insights”按钮。
 
@@ -215,7 +211,7 @@ ApplicationInsights.config 中的检测密钥控制遥测数据发送到的位�
 
 最新版本的 Applicationinsights.config 是2.8.2，它是指 Applicationinsights.config 版本2.11.2。 因此，要安装的 Applicationinsights.config 版本应为2.11.2。
 
-2. 修改 `Startup.cs` 类中的 `ConfigureServices` 方法：
+2. 修改 `ConfigureServices` 类中的 `Startup.cs` 方法：
 
     ```csharp
     services.AddSingleton<ITelemetryModule, FileDiagnosticsTelemetryModule>();
@@ -248,7 +244,7 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 - **NoGui**。 将此参数设置为在没有 Gui 的情况下收集日志。
 
 
-有关详细信息，请参阅相关主题。
+有关详细信息，
 - [记录带有 PerfView 的性能跟踪](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
 - [Application Insights 事件源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 

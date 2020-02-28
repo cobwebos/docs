@@ -2,20 +2,19 @@
 title: 在 Azure Monitor 中使用经典指标警报调用 webhook
 description: 了解如何将 Azure 指标警报重新路由到其他非 Azure 系统。
 author: harelbr
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705507"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665062"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中使用经典指标警报调用 webhook
+
 可以使用 Webhook 将 Azure 警报通知路由到其他系统，以便进行后续处理或自定义操作。 可以针对警报使用 Webhook，以将警报路由到可以发送短信的服务，以记录 Bug、通过聊天/消息服务通知团队，或进行各种其他操作。 
 
 本文介绍如何针对 Azure 指标警报设置 Webhook。 此外，还说明向 Webhook 发出的 HTTP POST 的有效负载的大致形式。 有关 Azure 活动日志警报（事件警报）的设置和架构的信息，[针对 Azure 活动日志警报调用 Webhook](alerts-log-webhook.md)。
@@ -69,23 +68,23 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 ```
 
 
-| 字段 | 必需 | 一组固定值 | 说明 |
+| 字段 | Mandatory | 一组固定值 | 注释 |
 |:--- |:--- |:--- |:--- |
-| status |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
-| 上下文 |Y | |警报上下文。 |
+| 状态 |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
+| context |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
-| description |Y | |警报的说明。 |
+| description |Y | |警报的描述。 |
 | conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
-| 条件 (condition) |Y | |要基于 **conditionType** 值检查的特定字段。 |
+| condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
 | metricUnit |用于指标警报 |“Bytes”、“BytesPerSecond”、“Count”、“CountPerSecond”、“Percent”、“Seconds” |指标中允许使用的单位。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
 | metricValue |用于指标警报 | |导致警报的实际度量值。 |
-| 阈值 |用于指标警报 | |会激活警报的阈值。 |
+| threshold |用于指标警报 | |会激活警报的阈值。 |
 | windowSize |用于指标警报 | |用于根据阈值监视警报活动的时间段。 此值必须介于 5 分钟到 1 天之间。 此值必须采用 ISO 8601 持续时间格式。 |
 | timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
-| operator |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
+| 操作员 |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
 | subscriptionId |Y | |Azure 订阅 ID。 |
 | resourceGroupName |Y | |受影响资源的资源组名称。 |
 | resourceName |Y | |受影响资源的资源名称。 |

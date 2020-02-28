@@ -1,18 +1,17 @@
 ---
 title: Azure Log Analytics 中与 IT Service Management Connector 的手支持连接 | Microsoft Docs
 description: 本文提供了有关如何将 ITSM 产品/服务与 Azure Monitor 中的 IT 服务管理连接器 (ITSMC) 相连接，以集中监视和管理 ITSM 工作项的信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: a4b8e1ca245d90018647577f338ed0833cbaf324
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c6cad29b6cc392746a2e56323302521302835b2f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990277"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665861"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>将 ITSM 产品/服务与 IT 服务管理连接器相连接
 本文介绍如何配置 ITSM 产品/服务与 Log Analytics 中的 IT 服务管理连接器 (ITSMC) 之间的连接，以便集中管理工作项。 有关 ITSMC 的详细信息，请参阅[概述](../../azure-monitor/platform/itsmc-overview.md)。
@@ -32,7 +31,7 @@ ms.locfileid: "76990277"
 
 以下部分提供有关如何将 System Center Service Manager 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 请确保满足以下先决条件：
 
@@ -109,8 +108,8 @@ ms.locfileid: "76990277"
 
 **检查 Web 应用安装**
 
-1. 转到“Azure 门户” > “资源”。
-2. 选择 Web 应用，并单击“设置” > “应用程序设置”。
+1. 转到“Azure 门户” **“资源”。**  > 
+2. 选择 Web 应用，并单击“设置” **“应用程序设置”。**  > 
 3. 确认有关通过脚本部署应用时提供的 Service Manager 实例的信息。
 
 ### <a name="configure-the-hybrid-connection"></a>配置混合连接
@@ -118,7 +117,7 @@ ms.locfileid: "76990277"
 按照以下过程配置混合连接，将 Service Manager 实例与 Azure 中的 ITSMC 连接。
 
 1. 在“Azure 资源”下面找到 Service Manager Web 应用。
-2. 单击“设置” > “网络”。
+2. 单击“设置” **“网络”。**  > 
 3. 在“混合连接”下面，单击“配置混合连接终结点”。
 
     ![混合连接网络](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
@@ -160,7 +159,7 @@ ms.locfileid: "76990277"
 
 3. 请使用 Azure 凭据登录，并选择在其中创建了混合连接的订阅。
 
-4. 单击“ **保存**”。
+4. 单击“保存”。
 
 现已成功连接到混合连接。
 
@@ -177,7 +176,7 @@ ms.locfileid: "76990277"
 
 以下部分提供有关如何将 ServiceNow 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 请确保满足以下先决条件：
 - 已安装 ITSMC。 详细信息：[添加 IT Service Management Connector 解决方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支持的版本：纽约、马德里、伦敦、Kingston、雅加达、伊斯坦布尔、赫尔辛基、Geneva。
@@ -283,7 +282,7 @@ ms.locfileid: "76990277"
 以下部分提供有关如何将 Provance 产品连接到 Azure 中的 ITSMC 的详细信息。
 
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 请确保满足以下先决条件：
 
@@ -336,7 +335,7 @@ ms.locfileid: "76990277"
 
 以下部分提供有关如何将 Cherwell 产品连接到 Azure 中的 ITSMC 的详细信息。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 请确保满足以下先决条件：
 
@@ -389,8 +388,8 @@ ms.locfileid: "76990277"
 若要为 Cherwell 生成客户端 ID/密钥，请使用以下过程：
 
 1. 以管理员身份登录到 Cherwell 实例。
-2. 单击“安全性” > “编辑 REST API 客户端设置”。
-3. 选择“创建新客户端” > “客户端机密”。
+2. 单击“安全性” **“编辑 REST API 客户端设置”。**  > 
+3. 选择“创建新客户端” **“客户端机密”。**  > 
 
     ![Cherwell 用户 ID](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

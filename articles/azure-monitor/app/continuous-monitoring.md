@@ -1,18 +1,14 @@
 ---
 title: 利用 Azure Pipelines 和 Azure 应用程序 Insights 持续监视 DevOps release 管道 |Microsoft Docs
 description: 提供有关快速设置持续监视 Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677516"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655389"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>向发布管道添加连续监视
 
@@ -24,7 +20,7 @@ Azure Pipelines 与 Azure 应用程序 Insights 集成，以允许在整个软�
 
 1. 在[Azure DevOps](https://dev.azure.com)中，选择组织和项目。
    
-1. 在 "项目" 页的左侧菜单中，选择 "**管道**"  > **版本**。 
+1. 在 "项目" 页的左侧菜单中，选择 "**管道**" > **版本**。 
    
 1. 下拉到 "**新建**" 旁边的箭头，然后选择 "**新发布管道**"。 或者，如果还没有管道，请在显示的页面上选择 "**新建管道**"。
    
@@ -38,7 +34,7 @@ Azure Pipelines 与 Azure 应用程序 Insights 集成，以允许在整个软�
 
 1. 在 "**阶段 1** " 配置窗格中，填写以下字段： 
 
-    | 参数        | Value |
+    | 参数        | 值 |
    | ------------- |:-----|
    | **阶段名称**      | 提供阶段名称，或将其保留在第**1 阶段**。 |
    | **Azure 订阅** | 下拉，并选择要使用的链接的 Azure 订阅。|
