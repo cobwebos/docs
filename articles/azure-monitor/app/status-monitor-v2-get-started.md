@@ -1,18 +1,16 @@
 ---
 title: Azure 应用程序 Insights 代理-入门 |Microsoft Docs
 description: Application Insights 代理的快速入门指南。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ef354bc61d849a4d536bd26355ef21b0f1c0035
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899617"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671182"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>开始 Azure Monitor 本地服务器 Application Insights 代理
 
@@ -26,7 +24,7 @@ ms.locfileid: "72899617"
 
 ## <a name="download-and-install-via-powershell-gallery"></a>通过 PowerShell 库下载和安装
 
-### <a name="install-prerequisites"></a>安装必备组件
+### <a name="install-prerequisites"></a>安装先决条件
 以管理员身份运行 PowerShell。
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force

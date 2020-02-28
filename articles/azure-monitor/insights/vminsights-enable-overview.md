@@ -1,18 +1,17 @@
 ---
 title: 启用用于 VM 的 Azure Monitor （预览版）概述 |Microsoft Docs
 description: 了解如何部署和配置用于 VM 的 Azure Monitor。 找出系统要求。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400624"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669567"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>启用用于 VM 的 Azure Monitor （预览）概述
 
@@ -25,7 +24,7 @@ ms.locfileid: "75400624"
 * 使用 PowerShell 跨指定的订阅或资源组启用两个或更多 Azure VM，或启用虚拟机规模集。
 * 启用用于 VM 的 Azure Monitor 以监视公司网络或其他云环境中托管的 Vm 或物理计算机。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保理解以下部分中的信息。 
 
@@ -166,7 +165,7 @@ ms.locfileid: "75400624"
 
 下表描述了映射功能在混合环境中支持的连接源。
 
-| 连接的源 | 受支持 | Description |
+| 连接的源 | 支持 | 说明 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 除了适用于[windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)，windows 代理还需要依赖项代理。 有关详细信息，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | Linux 代理与[适用于 linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)一起需要依赖项代理。 有关详细信息，请参阅[支持的操作系统](#supported-operating-systems)。 |
@@ -189,7 +188,7 @@ ms.locfileid: "75400624"
 
 使用此表中所述的方法之一启用用于 VM 的 Azure Monitor：
 
-| 部署状态 | 方法 | Description |
+| 部署状态 | 方法 | 说明 |
 |------------------|--------|-------------|
 | 单个 Azure VM 或虚拟机规模集 | [从 VM 启用](vminsights-enable-single-vm.md) | 可以通过直接从 VM 或虚拟机规模集选择 "**见解（预览版）** " 来启用单个 Azure VM。 |
 | 多个 Azure Vm 或虚拟机规模集 | [通过 Azure 策略启用](vminsights-enable-at-scale-policy.md) | 可以使用 Azure 策略和可用策略定义启用多个 Azure Vm。 |
@@ -208,9 +207,9 @@ ms.locfileid: "75400624"
 |对象名称 |计数器名称 |
 |------------|-------------|
 |LogicalDisk |可用空间百分比 |
-|LogicalDisk |每次读取的平均磁盘扇区数 |
+|LogicalDisk |Avg. Disk sec/Read |
 |LogicalDisk |Avg. Disk sec/Transfer |
-|LogicalDisk |每次写入的平均磁盘扇区数 |
+|LogicalDisk |Avg. Disk sec/Write |
 |LogicalDisk |磁盘字节/秒 |
 |LogicalDisk |磁盘读取字节数/秒 |
 |LogicalDisk |磁盘读取数/秒 |

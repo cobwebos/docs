@@ -1,18 +1,17 @@
 ---
 title: 通过更新逻辑应用和 runbook，为 Azure Monitor 经典警报迁移做准备
-author: yanivlavi
 description: 了解如何修改 webhook、逻辑应用和 runbook，以便为自愿迁移做准备。
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705558"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665586"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>为经典警报规则的迁移准备逻辑应用和 runbook
 
@@ -31,7 +30,7 @@ ms.locfileid: "76705558"
 
 |         |经典警报  |新的指标警报 |
 |---------|---------|---------|
-|REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|REST API     | [microsoft insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [microsoft insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [az monitor 警报](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor 指标警报](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [参考](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure 资源管理器模板 | [对于经典警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[对于新的指标警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
@@ -44,26 +43,26 @@ ms.locfileid: "76705558"
 
 |  |经典警报  |新的指标警报 |
 |---------|---------|---------|
-|警报是否已激活或已解决？    | **status**       | **data.status** |
-|有关警报的上下文信息     | **context**        | **data.context**        |
-|激活或解决警报的时间戳     | **context.timestamp**       | **data.context.timestamp**        |
+|警报是否已激活或已解决？    | **status**       | **数据。状态** |
+|有关警报的上下文信息     | **context**        | **数据。上下文**        |
+|激活或解决警报的时间戳     | **context。 timestamp**       | **data. context.subname**        |
 | 警报规则 ID | **context.id** | **data.context.id** |
 | 警报规则名称 | **context.name** | **data.context.name** |
-| 警报规则的说明 | **context.description** | **data.context.description** |
-| 警报规则条件 | **context.condition** | **data.context.condition** |
-| 指标名称 | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
+| 警报规则的说明 | **context。说明** | **数据。上下文。说明** |
+| 警报规则条件 | **context。条件** | **data. context。 condition** |
+| 指标名称 | **metricName** | **allOf [0]. metricName** |
 | 时间聚合（度量值的聚合方式）| **timeAggregation** | **timeAggregation** |
-| 评估期 | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| 运算符（聚合指标值如何与阈值进行比较） | **context.condition.operator** | **data.context.condition.operator** |
-| 阈值 | **context.condition.threshold** | **data.context.condition.allOf[0].threshold** |
-| 指标值 | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| 订阅 ID | **context.subscriptionId** | **data.context.subscriptionId** |
-| 受影响资源的资源组 | **context.resourceGroup** | **data.context.resourceGroup** |
-| 受影响资源的名称 | **context.resourceName** | **data.context.resourceName** |
-| 受影响资源的类型 | **context.resourceType** | **data.context.resourceType** |
-| 受影响资源的资源 ID | **context.resourceId** | **data.context.resourceId** |
-| 指向门户资源摘要页的直接链接 | **context.portalLink** | **data.context.portalLink** |
-| 要传递到 webhook 或逻辑应用的自定义负载字段 | **properties** | **data.properties** |
+| 评估期 | **windowSize** | **data. windowSize** |
+| 运算符（聚合指标值如何与阈值进行比较） | **context. condition 运算符** | **data. context.subname. 运算符** |
+| 阈值 | **context。 condition。阈值** | **allOf [0]。阈值** |
+| 指标值 | **metricValue** | **allOf [0]. metricValue** |
+| 订阅 ID | **context.subname** | **data. Context.subscriptionid** |
+| 受影响资源的资源组 | **context.subname** | **数据. 资源组** |
+| 受影响资源的名称 | **Context.resourcename** | **Context.resourcename** |
+| 受影响资源的类型 | **context.subname** | **数据. resourceType** |
+| 受影响资源的资源 ID | **上下文 resourceId** | **数据. 上下文 Id** |
+| 指向门户资源摘要页的直接链接 | **portalLink** | **portalLink** |
+| 要传递到 webhook 或逻辑应用的自定义负载字段 | **properties** | **data. properties** |
 
 有效负载类似，如您所见。 以下部分提供了：
 

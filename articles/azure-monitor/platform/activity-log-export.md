@@ -3,17 +3,16 @@ title: 导出 Azure 活动日志
 description: 将 Azure 活动日志导出到存储，以便存档或 Azure 事件中心导出到 Azure 之外。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845462"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668955"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>将 Azure 活动日志导出到存储或 Azure 事件中心
 
@@ -31,7 +30,7 @@ ms.locfileid: "76845462"
 * **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和 Log Analytics 解决方案。
 * **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="storage-account"></a>存储帐户
 如果要存档活动日志，则需要[创建一个存储帐户](../../storage/common/storage-account-create.md)（如果尚未安装）。 不应使用存储在其中的其他非监视数据的现有存储帐户，以便您可以更好地控制对监视数据的访问。 不过，如果还将日志和指标存档到存储帐户，则可以选择使用同一个存储帐户将所有监视数据都保存在一个中央位置。
@@ -118,7 +117,7 @@ ms.locfileid: "76845462"
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | 属性 | 需要 | Description |
+    | properties | 必选 | 说明 |
     | --- | --- | --- |
     | 名称 |是 |日志配置文件的名称。 |
     | StorageAccountId |否 |应将活动日志保存到其中的存储帐户的资源 ID。 |
@@ -161,7 +160,7 @@ ms.locfileid: "76845462"
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | 属性 | 需要 | Description |
+    | properties | 必选 | 说明 |
     | --- | --- | --- |
     | name |是 |日志配置文件的名称。 |
     | storage-account-id |是 |活动日志应保存到的存储帐户的资源 ID。 |

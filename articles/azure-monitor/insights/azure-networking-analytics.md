@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 中的 Azure 网络分析解决方案 |Microsoft Docs
 description: 可以使用 Azure Monitor 中的 Azure 网络分析解决方案查看 Azure 网络安全组日志和 Azure 应用程序网关日志。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893308"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667085"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络监视解决方案
 
@@ -130,7 +129,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 
 在“Azure 应用程序网关分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，然后单击一项摘要，在日志搜索页查看其详细信息。
 
-在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
+在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Monitor 中的 Azure 网络安全组分析解决方案
@@ -196,7 +195,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 在“Azure 网络安全组分析”仪表板上，查看其中一个边栏选项卡中的摘要信息，并单击一项摘要，在日志搜索页查看其详细信息。
 
-在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 还可以按方面进行筛选以缩减搜索结果。
+在任何日志搜索页上，都可以按时间、详细结果和日志搜索历史记录查看结果。 也可以按方面进行筛选以缩减搜索结果。
 
 ## <a name="migrating-from-the-old-networking-analytics-solution"></a>从旧的网络分析解决方案迁移
 2017年1月，从 Azure 应用程序网关和 Azure 网络安全组向 Log Analytics 工作区发送日志的支持方式已更改。 这些更改带来了以下优势：
@@ -213,7 +212,7 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 3. 更新所有已保存的查询、仪表板或警报，以使用的新数据类型
    + 新类型为 AzureDiagnostics。 可以使用 ResourceType 筛选 Azure 网络日志。
 
-     | 不要使用： | 使用： |
+     | 不是： | 使用： |
      | --- | --- |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayAccess" |
      | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; ，其中 ResourceType = = "APPLICATIONGATEWAYS"，OperationName = = "ApplicationGatewayPerformance" |

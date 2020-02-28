@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 6b4050918251d35a460d232dddc0c3113f163ec8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f00f70e674ac0b83b737d6b2a4bf9d20400736fc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895078"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672015"
 ---
 # <a name="scenario-apache-hive-view-times-out-when-fetching-a-query-result-in-azure-hdinsight"></a>方案：在 Azure HDInsight 中提取查询结果时 Apache Hive 查看超时
 
@@ -31,14 +31,14 @@ java.util.concurrent.TimeoutException: deadline passed
 
 Hive 视图默认超时值可能不适用于正在运行的查询。 指定的时间段对于 Hive 视图而言太短，无法提取查询结果。
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
 通过在 `/etc/ambari-server/conf/ambari.properties`中设置以下属性来增加 Apache Ambari Hive 视图超时。
 
 ```
 views.ambari.request.read.timeout.millis=300000
 views.request.read.timeout.millis=300000
-views.ambari.hive<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
+views.ambari.hive.<HIVE_VIEW_INSTANCE_NAME>.result.fetch.timeout=300000
 ```
 
 在 Hive 视图 URL 的末尾提供 `HIVE_VIEW_INSTANCE_NAME` 的值。

@@ -1,18 +1,15 @@
 ---
 title: 如何将常见的警报架构与逻辑应用集成
 description: 了解如何创建利用通用警报架构处理所有警报的逻辑应用。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555652"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668224"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>如何将常见的警报架构与逻辑应用集成
 
@@ -23,7 +20,7 @@ ms.locfileid: "72555652"
 [常见的警报架构](https://aka.ms/commonAlertSchemaDocs)在所有不同的警报类型中提供标准化且可扩展的 JSON 架构。 当以编程方式使用时，常见的警报架构最有用–通过 webhook、runbook 和逻辑应用。 本文演示如何编写单个逻辑应用来处理所有警报。 同样的原则也适用于其他编程方法。 本文中所述的逻辑应用为["基本" 字段](alerts-common-schema-definitions.md#essentials)创建了明确定义的变量，并且还介绍了如何处理特定于[警报类型](alerts-common-schema-definitions.md#alert-context)的逻辑。
 
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>必备条件 
 
 本文假定读者熟悉 
 * 设置预警规则（[指标](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)、[日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)和[活动日志](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)）
@@ -112,7 +109,7 @@ ms.locfileid: "72555652"
         }
     ```
 
-1. 依次选择“+ 新建步骤”、“添加操作”。
+1. 选择 **+** **新步骤**，然后选择 "**添加操作**"。
 
     ![添加操作](media/action-groups-logic-app/add-action.png "添加操作")
 

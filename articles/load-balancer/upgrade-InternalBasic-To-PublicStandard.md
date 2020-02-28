@@ -7,21 +7,22 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f5ff4ca94f9e9c6bd03cde6b948331e42cc6225a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77618199"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659979"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升级 Azure 内部负载均衡器-需要出站连接
 [Azure 标准负载均衡器](load-balancer-overview.md)通过区域冗余提供丰富的功能集和高可用性。 若要了解有关负载均衡器 SKU 的详细信息，请参阅[比较表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由于标准内部负载均衡器不提供出站连接，因此我们提供了一个解决方案来改为创建标准的公共负载均衡器。
 
-升级分为三个阶段：
+升级分为以下四个阶段：
 
 1. 将配置迁移到标准的公共负载均衡器
 2. 将 Vm 添加到标准公共负载均衡器的后端池
-3. 为应从/向 Internet 迄今为止的子网/Vm 设置 NSG 规则
+3. 为出站连接在负载均衡器上创建出站规则
+4. 为应从/向 Internet 迄今为止的子网/Vm 设置 NSG 规则
 
 本文介绍了配置迁移。 根据特定环境，将 Vm 添加到后端池可能会有所不同。 不过，[还提供了](#add-vms-to-backend-pools-of-standard-load-balancer)一些高级建议。
 
@@ -83,7 +84,7 @@ ms.locfileid: "77618199"
     **示例**
 
    ```azurepowershell
-   ./AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>将 Vm 添加到标准负载均衡器的后端池
@@ -109,6 +110,12 @@ ms.locfileid: "77618199"
 
 * **创建新的 vm 以添加到新创建的标准公共负载均衡器的后端池**。
     * 可在[此处](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)找到有关如何创建 VM 并将其与标准负载均衡器相关联的详细说明。
+
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>为出站连接创建出站规则
+
+按照[说明](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)创建出站规则，以便可以
+* 从头开始定义出站 NAT。
+* 缩放和调整现有出站 NAT 的行为。
 
 ### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>为虚拟机创建 NSG 规则，以避免 Internet 之间的通信
 如果要避免 Internet 流量到达 Vm，可以在 Vm 的网络接口上创建[NSG 规则](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。

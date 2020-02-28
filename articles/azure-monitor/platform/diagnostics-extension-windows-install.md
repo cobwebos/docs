@@ -3,22 +3,21 @@ title: 安装和配置 Windows Azure 诊断扩展（WAD）
 description: 了解如何在 Azure 存储帐户中收集 Azure 诊断数据，以便你可以使用多种可用工具之一查看该数据。
 services: azure-monitor
 author: bwren
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.openlocfilehash: 5b3cc4cbaa663b7932609e85c544378a7cca69ef
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 929ab4109eb8d0e90b6c561a2135c0b7dd4205bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472682"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672253"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>安装和配置 Windows Azure 诊断扩展（WAD）
 Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作系统中的监视数据以及 Azure 虚拟机和其他计算资源的工作负荷。 本文详细介绍了如何安装和配置 Windows 诊断扩展，以及如何将数据存储在和 Azure 存储帐户中的说明。
 
-诊断扩展在 Azure 中实现为[虚拟机扩展](/virtual-machines/extensions/overview)，因此，它支持使用资源管理器模板、POWERSHELL 和 CLI 的相同安装选项。 有关安装和维护虚拟机扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](/virtual-machines/extensions/features-windows)。
+诊断扩展在 Azure 中实现为[虚拟机扩展](../../virtual-machines/extensions/overview.md)，因此，它支持使用资源管理器模板、POWERSHELL 和 CLI 的相同安装选项。 有关安装和维护虚拟机扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](../../virtual-machines/extensions/features-windows.md)。
 
 ## <a name="install-with-azure-portal"></a>安装 Azure 门户
 可以在 Azure 门户中的单个虚拟机上安装和配置诊断扩展，此操作提供了一个接口，而不是直接使用该配置。 启用诊断扩展后，它会自动使用最常见性能计数器和事件的默认配置。 你可以根据特定要求修改此默认配置。

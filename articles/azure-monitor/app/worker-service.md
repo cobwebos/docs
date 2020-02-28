@@ -1,18 +1,14 @@
 ---
 title: 辅助角色服务应用的 Application Insights （非 HTTP 应用）
 description: 利用 Azure Monitor Application Insights 监视 .NET Core/.NET Framework 非 HTTP 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/16/2019
-ms.openlocfilehash: bea30ade6d9f6eb77d18c671b824b138ba94fddb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2d4b3a38b059d603c96fc9267b44707ed32c8c1d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406190"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669329"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>辅助角色服务应用程序的 Application Insights （非 HTTP 应用程序）
 
@@ -24,7 +20,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 [辅助角色服务的 APPLICATION INSIGHTS SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService)最适用于非 HTTP 应用程序，无论它们在何处运行，都是如此。 如果你的应用程序正在运行，并且已通过网络连接到 Azure，则可以收集遥测数据。 支持 .NET Core 的任何地方都支持 Application Insights 监视。 此包可用于新引入的[.Net Core 3.0 辅助服务](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances)、 [Asp.Net Core 2.1/2.2](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2)、控制台应用（.net Core/.NET Framework）等中的后台任务。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 有效的 Application Insights 检测密钥。 需要此密钥才能将任何遥测数据发送到 Application Insights。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
@@ -355,7 +351,7 @@ Application Insights 发布名为 `Microsoft.ApplicationInsights.WorkerService`�
 
 `ApplicationInsightsServiceOptions` 中的常用设置
 
-|设置 | Description | 默认
+|设置 | 说明 | 默认
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | 启用/禁用 LiveMetrics 功能 | true
 |EnableAdaptiveSampling | 启用/禁用自适应采样 | true
@@ -506,11 +502,11 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>能否使用状态监视器等工具启用 Application Insights 监视？
 
-不。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前仅支持 ASP.NET 4.x。
+不是。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前仅支持 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中运行我的应用程序，是否支持所有功能？
 
-可以。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
+是的。 此 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
 
 * 性能计数器仅在 Windows 中受支持，但在实时指标中显示的进程 CPU/内存除外。
 * 即使默认情况下启用 `ServerTelemetryChannel`，如果应用程序在 Linux 或 MacOS 中运行，则通道不会自动创建本地存储文件夹，以在出现网络问题时暂时保留遥测数据。 由于存在此限制，因此当存在暂时性网络或服务器问题时，遥测将丢失。 若要解决此问题，请配置通道的本地文件夹：

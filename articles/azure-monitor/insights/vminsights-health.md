@@ -1,18 +1,17 @@
 ---
 title: 了解 Azure 虚拟机的运行状况 |Microsoft Docs
 description: 本文介绍如何通过用于 VM 的 Azure Monitor 了解虚拟机和基础操作系统的运行状况。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cecb04a4f299051860c45425f0fc4e13c3722ea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399796"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656290"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>了解 Azure 虚拟机的运行状况
 
@@ -49,9 +48,9 @@ Azure 包括监视空间中特定角色或任务的服务，但它不提供在 A
 | 操作系统处理器时间百分比总计 | 5 | 10 | >= | 95% | 严重 | Sev1 | Linux | 
 | CPU 利用率百分比总计 | 5 | 10 | >= | 95% | 严重 | Sev1 | Windows | 
 | 文件系统错误或损坏 | 60 | 60 | <> | 4 | 严重 | Sev1 | Windows | 
-| 每次读取的平均逻辑磁盘秒数 | 第 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
-| 每次传输的平均逻辑磁盘秒数 | 第 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
-| 每次写入逻辑磁盘的平均时间（逻辑磁盘） | 第 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
+| 每次读取的平均逻辑磁盘秒数 | 1 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
+| 每次传输的平均逻辑磁盘秒数 | 1 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
+| 每次写入逻辑磁盘的平均时间（逻辑磁盘） | 1 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
 | 当前磁盘队列长度（逻辑磁盘） | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
 | 逻辑磁盘可用空间（MB） | 15 | 60 | > | 500 MB 警告<br> 300 MB 关键 | 严重 | Sev1<br> Sev2 | Windows | 
 | 逻辑磁盘可用空间（%） | 15 | 60 | > | 10% 警告<br> 5% 严重 | 严重 | Sev1<br> Sev2 | Windows |
@@ -70,8 +69,8 @@ Azure 包括监视空间中特定角色或任务的服务，但它不提供在 A
 | 可用系统页表项 | 5 | 10 | <= | 5000 | 严重 | Sev1 | Windows | 
 | 每秒内存页面数 | 5 | 10 | >= | 5000/秒 | 警告 | Sev1 | Windows | 
 | 使用的已提交内存百分比 | 5 | 10 | > | 80% | 严重 | Sev1 | Windows | 
-| 每次传输的平均磁盘秒数 | 第 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
-| 每次写入磁盘的平均时间 | 第 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
+| 每次传输的平均磁盘秒数 | 1 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
+| 每次写入磁盘的平均时间 | 1 | 15 | > | 0.04s | 警告 | Sev2 | Windows | 
 | Current Disk Queue Length | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
 | 磁盘空闲时间百分比 | 5 | 60 | >= | 20% | 警告 | Sev2 | Windows | 
 
@@ -300,7 +299,7 @@ Azure Monitor "页中的"**虚拟机（预览）** "显示 VM 和警报的汇总
 
 您可以通过在页面顶部的下拉菜单中选择值来筛选此视图。
 
-|柱形图​​ |Description |
+|列 |说明 |
 |-------|------------|
 |订阅 |选择 Azure 订阅。 只有选定订阅中的警报才会包含在视图中。 |
 |资源组 |选择单个资源组。 只有包含选定资源组中的目标的警报才会包含在视图中。 |
@@ -325,7 +324,7 @@ Azure Monitor "页中的"**虚拟机（预览）** "显示 VM 和警报的汇总
 您可以通过选择一个或多个警报来更改警报状态，然后从左上角的 "**所有警报**" 页中选择 "**更改状态**"。 在 "**更改警报状态**" 窗格中选择一个状态，在 "**注释**" 字段中添加更改说明，然后选择 **"确定"** 提交更改。 验证信息并应用所做的更改后，请在菜单中的 "**通知**" 下跟踪进度。
 
 ### <a name="configure-alerts"></a>配置警报
-无法从 Azure 门户管理某些警报管理任务。 必须通过使用[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)来执行这些任务。 具体如下：
+无法从 Azure 门户管理某些警报管理任务。 必须通过使用[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)来执行这些任务。 具体来说：
 
 - 启用或禁用运行状况条件的警报
 - 设置运行状况条件警报的通知

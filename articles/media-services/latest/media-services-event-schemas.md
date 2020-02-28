@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750853"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665743"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>媒体服务事件的 Azure 事件网格架构
 
@@ -32,7 +32,7 @@ ms.locfileid: "75750853"
 
 ### <a name="monitoring-job-state-changes"></a>监视作业状态更改
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobStateChange| 获取所有作业状态更改的事件。 |
 | Microsoft.Media.JobScheduled| 获取当作业转换为已计划状态时的事件。 |
@@ -52,7 +52,7 @@ ms.locfileid: "75750853"
 
 `JobFinished`，`JobCanceled`中的错误消息 `JobError` 输出每个作业输出的聚合结果（当所有作业都完成时）。 而作业输出事件会在每个任务完成时触发。 例如，如果你有一个编码输出，后跟视频分析输出，则会在最后一个 JobFinished 事件引发前将两个事件作为作业输出事件触发，并使用聚合数据。
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputStateChange| 获取所有作业输出状态更改的事件。 |
 | Microsoft.Media.JobOutputScheduled| 获取当作业输出转换为已计划状态时的事件。 |
@@ -66,7 +66,7 @@ ms.locfileid: "75750853"
 
 ### <a name="monitoring-job-output-progress"></a>监视作业输出进度
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.JobOutputProgress| 此事件反映了作业处理进度，从 0% 到 100%。 如果进度值增加了 5% 或更多，或者自上次事件（检测信号）以来已超过 30 秒，则服务会尝试发送事件。 无法保证进度值从 0% 开始或达到 100%，也无法保证其随时间推移而以恒定速率增加。 此事件不应用于确定是否已经完成处理 – 要实现此目的，请改用状态更改事件。|
 
@@ -80,7 +80,7 @@ ms.locfileid: "75750853"
 
 按流或连接引发流级事件。 每个事件具有一个用于标识连接或流的 `StreamId` 参数。 每个流或连接具有一个或多个不同类型的轨迹。 例如，来自编码器的一个连接可能具有一个音频轨迹和四个视频轨迹。 流事件类型包括：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | 编码器的连接尝试被拒绝。 |
 | Microsoft.Media.LiveEventEncoderConnected | 编码器与直播活动建立连接。 |
@@ -97,7 +97,7 @@ ms.locfileid: "75750853"
 
 跟踪级别事件类型为：
 
-| 事件类型 | Description |
+| 事件类型 | 说明 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒体服务器删除了数据区块，因为该区块的抵达时间过迟，或者带有重叠的时间戳（新数据区块的时间戳小于前一数据区块的结束时间）。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒体服务器收到流或连接中每个轨迹的第一个数据区块。 |
@@ -134,7 +134,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | previousState | 字符串 | 事件发生前的作业状态。 |
 | state | 字符串 | 此事件中通知的作业的新状态。 例如，"已计划：作业已准备就绪，或已完成：作业已完成"。|
@@ -204,9 +204,9 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| outputs | 数组 | 获取作业输出。|
+| outputs | Array | 获取作业输出。|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -320,7 +320,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | 字符串 | 直播活动提供的引入 URL。 |  
@@ -328,18 +328,7 @@ ms.locfileid: "75750853"
 | encoderPort | 字符串 | 此流的来源编码器的端口。 |
 | resultCode | 字符串 | 拒绝连接的原因。 下表中列出了结果代码。 |
 
-结果代码为：
-
-| 结果代码 | Description |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | 引入 URL 不正确 |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | 编码器 IP 在配置的 IP 允许列表中不存在 |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | 编码器未发送有关流的元数据。 |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | 不支持指定的编解码器。 |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | 在接收该流的标头之前收到一个片段。 |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | 指定的质量数目超过了允许的最大限制。 |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | 聚合比特率超过了允许的最大限制。 |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP 编码器中视频或音频 FLVTag 的时间戳无效。 |
+可在[实时事件错误代码](live-event-error-codes.md)中找到错误结果代码。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -367,7 +356,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中提供此 ID。 |
 | ingestUrl | 字符串 | 直播活动提供的引入 URL。 |
@@ -401,7 +390,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | streamId | 字符串 | 流或连接的标识符。 编码器或客户负责在引入 URL 中添加此 ID。 |  
 | ingestUrl | 字符串 | 直播活动提供的引入 URL。 |  
@@ -409,18 +398,11 @@ ms.locfileid: "75750853"
 | encoderPort | 字符串 | 此流的来源编码器的端口。 |
 | resultCode | 字符串 | 编码器断开连接的原因。 可能是正常断开连接，或者是由于出错而断开连接。 下表中列出了结果代码。 |
 
-错误结果代码为：
-
-| 结果代码 | Description |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | 在空闲时间达到允许的时间限制后，RTMP 会话超时。 |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | RTMP 编码器中视频或音频 FLVTag 的时间戳无效。 |
-| MPE_CAPACITY_LIMIT_REACHED | 编码器发送数据的频率过快。 |
-| 未知错误代码 | 这些错误代码的范围可能包括内存错误、哈希映射中包含重复条目，等等。 |
+可在[实时事件错误代码](live-event-error-codes.md)中找到错误结果代码。
 
 正常断开连接结果代码为：
 
-| 结果代码 | Description |
+| 结果代码 | 说明 |
 | ----------- | ----------- |
 | S_OK | 编码器已成功断开连接。 |
 | MPE_CLIENT_TERMINATED_SESSION | 编码器已断开连接 (RTMP)。 |
@@ -458,7 +440,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨道名称。 |
@@ -498,7 +480,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -537,7 +519,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | minLastTimestamp | 字符串 | 所有轨迹（音频或视频）中最后一个时间戳的最小值。 |
 | typeOfTrackWithMinLastTimestamp | 字符串 | 最后一个时间戳最小的轨迹的类型（音频或视频）。 |
@@ -573,7 +555,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | firstTimestamp | 字符串 | 收到视频类型的某个轨迹/质量级别的时间戳。 |
 | firstDuration | 字符串 | 具有第一个时间戳的数据区块的持续时间。 |
@@ -615,7 +597,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -659,7 +641,7 @@ ms.locfileid: "75750853"
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | trackType | 字符串 | 轨道类型（音频/视频）。 |
 | trackName | 字符串 | 轨迹的名称（由编码器提供；对于 RTMP，由服务器以 *TrackType_Bitrate* 格式生成）。 |
@@ -673,14 +655,14 @@ ms.locfileid: "75750853"
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | Description |
+| properties | 类型 | 说明 |
 | -------- | ---- | ----------- |
 | 主题 | 字符串 | EventGrid 主题。 此属性包含媒体服务帐户的资源 ID。 |
 | subject | 字符串 | 媒体服务帐户下媒体服务通道的资源路径。 连接主题和使用者可以获得作业的资源 ID。 |
 | eventType | 字符串 | 此事件源的一个注册事件类型。 例如，“Microsoft.Media.JobStateChange”。 |
 | EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
-| data | 对象 | 媒体服务事件数据。 |
+| data | 对象 (object) | 媒体服务事件数据。 |
 | dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
 | metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
@@ -692,3 +674,4 @@ ms.locfileid: "75750853"
 
 - [包含媒体服务事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒体服务事件的定义](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [实时事件错误代码](live-event-error-codes.md)

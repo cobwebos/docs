@@ -3,17 +3,16 @@ title: Azure 活动日志事件架构
 description: 介绍 Azure 活动日志中每个类别的事件架构。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ccbb4175701c3535b790f25c9ed522911dda6707
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749461"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668836"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 [Azure 活动日志](platform-logs-overview.md)可深入了解 Azure 中发生的任何订阅级别事件。 本文介绍每个类别的事件架构。 
@@ -112,7 +111,7 @@ ms.locfileid: "75749461"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | authorization |包含事件的 RBAC 属性的 Blob。 通常包括“action”、“role”和“scope”属性。 |
 | caller |执行操作（UPN 声明或 SPN 声明，具体取决于可用性）的用户的电子邮件地址。 |
@@ -259,7 +258,7 @@ ms.locfileid: "75749461"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终是“Admin, Operation” |
 | correlationId | 字符串格式的 GUID。 |
@@ -352,7 +351,7 @@ ms.locfileid: "75749461"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/alertRules |
 | channels | 始终是“Admin, Operation” |
@@ -378,7 +377,7 @@ ms.locfileid: "75749461"
 该属性字段包含不同的值，具体取决于警报事件的源。 两种常见警报事件提供程序是活动日志警报和指标警报。
 
 #### <a name="properties-for-activity-log-alerts"></a>活动日志警报的属性
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | properties.subscriptionId | 激活活动日志预警规则的活动日志事件的订阅 ID。 |
 | properties.eventDataId | 激活活动日志预警规则的活动日志事件的事件数据 ID。 |
@@ -389,7 +388,7 @@ ms.locfileid: "75749461"
 | properties.status | 激活活动日志预警规则的活动日志事件的状态。|
 
 #### <a name="properties-for-metric-alerts"></a>指标警报的属性
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | properties.RuleUri | 指标预警规则自身的资源 ID。 |
 | properties.RuleName | 指标预警规则的名称。 |
@@ -401,7 +400,7 @@ ms.locfileid: "75749461"
 | properties.MetricName | 计算指标预警规则所用的指标的指标名称。 |
 | properties.MetricUnit | 计算指标预警规则所用的指标的指标单位。 |
 
-## <a name="autoscale"></a>自动扩展
+## <a name="autoscale"></a>自动缩放
 此类别包含基于在订阅中定义的任何自动缩放设置的自动缩放引擎操作相关的事件记录。 可在此类别中看到的事件类型示例如“自动缩放扩展操作失败”。 使用自动缩放，可在支持的资源类型中，通过自动缩放设置基于日期和/或负载（指标）数据来自动增加或减少实例的数量。 满足纵向扩展或缩减条件时，开始、成功或失败的事件将记录到此类别中。
 
 ### <a name="sample-event"></a>示例事件
@@ -462,7 +461,7 @@ ms.locfileid: "75749461"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | caller | 始终是 Microsoft.Insights/autoscaleSettings |
 | channels | 始终是“Admin, Operation” |
@@ -552,7 +551,7 @@ ms.locfileid: "75749461"
 ```
 
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -633,7 +632,7 @@ ms.locfileid: "75749461"
 
 ```
 ### <a name="property-descriptions"></a>属性说明
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | channels | 始终为“运行” |
 | correlationId | 字符串格式的 GUID。 |
@@ -743,7 +742,7 @@ ms.locfileid: "75749461"
 
 ### <a name="policy-event-property-descriptions"></a>Policy 事件属性说明
 
-| 元素名称 | Description |
+| 元素名称 | 说明 |
 | --- | --- |
 | authorization | 事件的 RBAC 属性数组。 对于新资源，这是触发评估的请求的操作和范围。 对于现有资源，操作是“Microsoft.Resources/checkPolicyCompliance/read”。 |
 | caller | 对于新资源，为启动部署的标识。 对于现有资源，为 Microsoft Azure Policy Insights RP 的 GUID。 |
@@ -790,12 +789,12 @@ ms.locfileid: "75749461"
 | resultType | status.value | |
 | resultSignature | substatus.value | |
 | resultDescription | description |  |
-| durationMs | N/A | 始终为 0 |
+| durationMs | 空值 | 始终为 0 |
 | callerIpAddress | httpRequest.clientIpAddress |  |
 | correlationId | correlationId |  |
-| 标识 | 声明和授权属性 |  |
+| identity | 声明和授权属性 |  |
 | 级别 | 级别 |  |
-| location | N/A | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
+| location | 空值 | 处理事件的位置。 *这不是资源的位置，而是处理事件的位置。此属性将在将来的更新中删除。* |
 | 属性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |

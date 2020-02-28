@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560450"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664127"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>管理 Azure 数据资源管理器中的群集横向缩放（扩大）以适应不断变化的需求
 
@@ -59,13 +59,14 @@ ms.locfileid: "77560450"
 * 群集实例的数量低于用户定义的最大实例数。
 * 缓存利用率长达一小时。
 * CPU 长达一小时。
+* 引入利用率长达一小时。
 
 > [!NOTE]
 > Scale out 逻辑目前不考虑引入利用率指标。 如果此指标对用例非常重要，则使用[自定义自动缩放](#custom-autoscale)。
 
 **缩小**
 
-当群集接近利用率的状态时，请将其缩小以降低成本，但保持性能。 使用多种指标来验证是否可以在群集中进行缩放。 以下规则将在执行 scale 后的7天内评估：
+当群集接近利用率的状态时，请将其缩小以降低成本，但保持性能。 使用多种指标来验证是否可以在群集中进行缩放。 以下规则在执行 scale in 之前，每小时计算6小时：
 * 实例数超过2个，并且大于定义的最小实例数。
 * 若要确保不会对资源进行任何重载，必须在执行 scale in 之前验证以下度量值： 
     * 缓存利用率不高

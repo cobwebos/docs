@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983089"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656732"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重定向 URI/答复 URL 限制和局限
 
@@ -30,7 +30,7 @@ ms.locfileid: "76983089"
 
 下表显示了在注册应用程序时可添加的重定向 Uri 的最大数目。
 
-| 已登录的帐户 | 重定向 Uri 的最大数目 | Description |
+| 已登录的帐户 | 重定向 Uri 的最大数目 | 说明 |
 |--------------------------|---------------------------------|-------------|
 | 任何组织的 Azure Active Directory （Azure AD）租户中的 Microsoft 工作或学校帐户 | 256 | 应用程序清单中 `signInAudience` "字段设置为*AzureADMyOrg*或*AzureADMultipleOrgs* |
 | 个人 Microsoft 帐户、工作和学校帐户 | 100 | 应用程序清单中 `signInAudience` 字段设置为*AzureADandPersonalMicrosoftAccount* |
@@ -54,7 +54,7 @@ Azure AD 应用程序模型不支持配置为登录个人 Microsoft 帐户和工
 > [!NOTE]
 > 新的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验不允许开发人员在 UI 上添加通配符 uri。 仅通过应用程序清单编辑器为登录工作或学校帐户的应用添加通配符 URI。 今后，新应用无法在重定向 URI 中使用通配符。 但是，重定向 Uri 中包含通配符的旧应用将继续工作。
 
-如果你的方案需要的重定向 Uri 超过允许的最大限制，请考虑以下方法之一，而不是添加通配符重定向 URI。
+如果你的方案需要的重定向 Uri 超过允许的最大限制，请考虑以下方法，而不是添加通配符重定向 URI。
 
 ### <a name="use-a-state-parameter"></a>使用 state 参数
 
@@ -70,10 +70,6 @@ Azure AD 应用程序模型不支持配置为登录个人 Microsoft 帐户和工
 
 > [!NOTE]
 > 此方法允许受损的客户端修改 state 参数中发送的其他参数，从而将用户重定向到其他 URL，该 URL 是 RFC 6819 中所述的[开放重定向程序威胁](https://tools.ietf.org/html/rfc6819#section-4.2.4)。 因此，客户端必须通过加密状态或通过其他一些方式来验证这些参数，如根据令牌验证重定向 URI 中的域名。
-
-### <a name="add-redirect-uris-to-service-principals"></a>向服务主体添加重定向 Uri
-
-另一种方法是在任何 Azure AD 租户中将重定向 Uri 添加到代表应用注册的[服务主体](app-objects-and-service-principals.md#application-and-service-principal-relationship)。 当无法使用状态参数或方案时，你可以使用此方法，要求你为你支持的每个新租户将新的重定向 Uri 添加到你的应用注册。 
 
 ## <a name="next-steps"></a>后续步骤
 

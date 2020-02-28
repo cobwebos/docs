@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: fc1f81c616dc6ee664bb5be924f2a1586646d16d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279161"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662121"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -25,12 +25,12 @@ ms.locfileid: "76279161"
 
 ## <a name="logs"></a>日志
 
-|日志 | Description |
+|日志 | 说明 |
 |----|----|
 | **ApplicationConsole** | 所有客户应用程序的控制台日志。 | 
 | **SystemLogs** | 目前，只有此类别中的 "[春季 Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) " 日志。 |
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 有关度量值的完整列表，请参阅[春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 
@@ -114,7 +114,7 @@ ms.locfileid: "76279161"
 1. 若要查看应用程序日志，请搜索名为 " **applicationconsole**" 的容器。
 1. 若要查看应用程序指标，请搜索名为 " **pt1m**" 的容器。
 
-若要了解有关将诊断信息发送到存储帐户的详细信息，请参阅[在 Azure 存储中存储和查看诊断数据](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage)。
+若要了解有关将诊断信息发送到存储帐户的详细信息，请参阅[在 Azure 存储中存储和查看诊断数据](../storage/common/storage-introduction.md)。
 
 ### <a name="use-your-event-hub"></a>使用事件中心
 

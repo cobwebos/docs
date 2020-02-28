@@ -1,22 +1,20 @@
 ---
 title: Azure Monitor 中的活动日志警报
 description: 当活动日志中出现某些事件时，通过 SMS、Webhook、短信、电子邮件等方式进行通知。
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/17/2018
-ms.openlocfilehash: c42f72800a93de714f0cc126939a28a8a6b5fce4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 26ecfdb33b92c91010af63ec14089dd148d6bad0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669007"
 ---
-# <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
+# <a name="alerts-on-activity-log"></a>根据活动日志发出警报
 
 ## <a name="overview"></a>概述
+
 活动日志警报是发生了与警报中指定的条件相匹配的新[活动日志事件](activity-log-schema.md)时激活的警报。 根据在[Azure 活动日志](platform-logs-overview.md)中记录的事件的顺序和数量，将触发警报规则。 活动日志警报规则是 Azure 资源，因此可以使用 Azure 资源管理器模板来创建它们。 此外，还可以在 Azure 门户中创建、更新或删除它们。 本文介绍活动日志警报背后的概念。 有关创建或使用活动日志警报规则的详细信息，请参阅[创建和管理活动日志警报](alerts-activity-log.md)。
 
 > [!NOTE]
@@ -50,7 +48,7 @@ ms.locfileid: "75747523"
 > [!NOTE]
 > 在一个订阅中最多有 100 条警报规则可以针对以下任一范围活动创建：单个资源、资源组中的所有资源（或）整个订阅级别。
 
-活动日志警报激活后会使用操作组生成操作或通知。 操作组是一组可重用的通知接收方，例如电子邮件地址、Webhook URL 或短信电话号码。 可以从多个警报中引用接收方，以集中和分组通知通道。 在定义活动日志警报时，有两个选项。 你可以：
+活动日志警报激活后会使用操作组生成操作或通知。 操作组是一组可重用的通知接收方，例如电子邮件地址、Webhook URL 或短信电话号码。 可以从多个警报中引用接收方，以集中和分组通知通道。 在定义活动日志警报时，有两个选项。 可以：
 
 * 在活动日志警报中使用现有操作组。
 * 创建新的操作组。

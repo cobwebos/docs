@@ -1,18 +1,15 @@
 ---
 title: Azure Monitor 警报的操作规则
 description: 了解 Azure Monitor 中的操作规则以及如何配置和管理它们。
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767681"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668462"
 ---
 # <a name="action-rules-preview"></a>操作规则（预览）
 
@@ -82,7 +79,7 @@ ms.locfileid: "74767681"
 
 接下来，为警报抑制或操作组支持配置操作规则。 不能同时选择两者。 此配置作用于与以前定义的作用域和筛选器匹配的所有警报实例。
 
-#### <a name="suppression"></a>隐含
+#### <a name="suppression"></a>抑制
 
 如果**选择 "取消"，** 请配置禁止显示操作和通知的持续时间。 选择以下选项之一：
 * **从现在（总是）** ：无限期地取消所有通知。
@@ -105,7 +102,7 @@ ms.locfileid: "74767681"
 最后，为操作规则配置以下详细信息：
 * 名称
 * 保存它的资源组
-* 描述 
+* 说明 
 
 ## <a name="example-scenarios"></a>示例方案
 

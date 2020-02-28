@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的 app() 表达式 | Microsoft Docs
 description: 应用表达式用于 Azure Monitor 日志查询中，以从同一资源组、另一资源组或其他订阅中的特定 Application Insights 应用程序检索数据。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933084"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670247"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor 查询中的 app() 表达式
 
@@ -29,7 +28,7 @@ ms.locfileid: "72933084"
 
 - 标识符：使用下表中的某种格式标识应用。
 
-| 标识符 | 描述 | 示例
+| 标识符 | 说明 | 示例
 |:---|:---|:---|
 | 资源名称 | 人工可读的应用名称（又称“组件名称”） | app("fabrikamapp") |
 | 限定的名称 | 窗体中应用的完整名称：“subscriptionName/resourceGroup/componentName” | app('AI-Prototype/Fabrikam/fabrikamapp') |

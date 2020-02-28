@@ -1,18 +1,14 @@
 ---
 title: Azure 应用程序 Insights 覆盖默认 SDK 终结点
 description: 为 Azure 政府等区域修改默认 Azure Monitor Application Insights SDK 终结点。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432590"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671981"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights 重写默认终结点
 
@@ -195,7 +191,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 目前，只有[Azure 政府](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)版和[azure 中国](https://docs.microsoft.com/azure/china/resources-developer-guide)版才需要修改终结点。
 
-|地区 |  终结点名称 | 值 |
+|区域 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | 遥测通道 | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure 中国 | QuickPulse （实时指标） |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -207,7 +203,7 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 如果你当前使用的是通常通过 "api.applicationinsights.io" 访问的[Application Insights REST API](https://dev.applicationinsights.io/
 ) ，你将需要使用区域的本地终结点：
 
-|地区 |  终结点名称 | 值 |
+|区域 |  终结点名称 | 值 |
 |-----------------|:------------|:-------------|
 | Azure 中国 | REST API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST API | `api.applicationinsights.us`|

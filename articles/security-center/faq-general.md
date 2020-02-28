@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604798"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661833"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>常见问题解答-有关 Azure 安全中心的一般问题
 
@@ -38,16 +38,17 @@ Azure 安全中心监视以下 Azure 资源：
 * 虚拟机 (VM)（包括 [云服务](../cloud-services/cloud-services-choose-me.md)）
 * 虚拟机规模集
 * Azure 虚拟网络
+* 容器
 * Azure SQL 服务
 * Azure 存储帐户
 * [应用服务环境](../app-service/environment/intro.md) 中的 Azure Web 应用
 * 与 Azure 订阅集成的合作伙伴解决方案，例如 VM 和应用服务环境上的 Web 应用程序防火墙
 
-此外，Azure 安全中心还可以监视非 Azure （包括本地）计算机（支持[Windows 计算机](./quick-onboard-windows-computer.md)和[Linux 计算机](./quick-onboard-linux-computer.md)）
+此外，Azure 安全中心还可以监视非 Azure （包括本地）计算机。 支持[Windows 计算机](./quick-onboard-windows-computer.md)和[Linux 计算机](./quick-onboard-linux-computer.md)。
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>如何查看 Azure 资源当前安的全状态？
-"**安全中心概述**" 页显示了你的环境的总体安全状况，按计算、网络、存储 & 数据和应用程序细分。 每个资源类型都有一个指示符，该指示符显示是否已发现潜在安全漏洞。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
+"**安全中心概述**" 页显示了你的环境的总体安全状况，按计算、网络、存储 & 数据和应用程序细分。 每个资源类型都有一个指示安全漏洞的指示器。 单击每个磁贴可显示安全中心发现的安全问题列表和订阅中的资源清单。
 
 
 

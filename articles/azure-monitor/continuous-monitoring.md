@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure Monitor 进行持续监视 | Microsoft Docs
 description: 介绍使用 Azure Monitor 在整个工作流中启用持续监视的具体步骤。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 7dc8001d74ea026625d7496fb84053b4e9109dce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406158"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667187"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure Monitor 进行持续监视
 
@@ -29,7 +28,7 @@ ms.locfileid: "75406158"
 - [Azure DevOps Projects](../devops-project/overview.md) 提供一种简化的体验，在其中可以使用现有的代码和 Git 存储库，或者选择一个示例应用程序，来与 Azure 建立持续集成 (CI) 和持续交付 (CD) 管道。
 - 使用 [DevOps 发布管道中的持续监视](../azure-monitor/app/continuous-monitoring.md)可以基于监视数据限制或回滚部署。
 - 使用 [Status Monitor](../azure-monitor/app/monitor-performance-live-website-now.md) 可以配合 Azure Application Insights 检测 Windows 上的实时 .NET 应用，而无需修改或重新部署代码。
-- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/learn/quick-monitor-portal.md)、[Java](../azure-monitor/app/java-get-started.md)、[Node.js](../azure-monitor/learn/nodejs-quick-start.md)或[其他任何编程语言](../azure-monitor/app/platforms.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
+- 如果你有权访问应用程序的代码，则可以通过安装适用于 [.NET](../azure-monitor/app/app-insights-overview.md)、[Java](../azure-monitor/learn/quick-monitor-portal.md)、[Node.js](../azure-monitor/app/java-get-started.md)或[其他任何编程语言](../azure-monitor/learn/nodejs-quick-start.md)的 Azure Monitor Application Insights SDK，使用 [Application Insights](../azure-monitor/app/platforms.md) 启用完全监视。 这样可以指定与应用程序和业务相关的自定义事件、指标或页面视图。
 
 
 
@@ -67,7 +66,7 @@ ms.locfileid: "75406158"
 
 - 基于日志和指标[在 Azure Monitor 中创建警报](../azure-monitor/platform/alerts-overview.md)可以识别到可预测的故障状态。 在使所有警报可操作方面应有一个目标，即，这些警报表示实际的关键状况，并且应该尽量减少误报。 使用[动态阈值](platform/alerts-dynamic-thresholds.md)可基于指标数据自动计算基线，而无需定义自己的静态阈值。 
 - 为警报定义操作可以使用最有效的方式来通知管理员。 可用的[通知操作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括短信、电子邮件、推送通知或语音呼叫。
-- 使用更高级的操作可以通过 [Webhook](platform/activity-log-alerts-webhook.md)[连接到 ITSM 工具](platform/itsmc-overview.md)或其他警报管理系统。
+- 使用更高级的操作可以通过 [Webhook](platform/itsmc-overview.md)[连接到 ITSM 工具](platform/activity-log-alerts-webhook.md)或其他警报管理系统。
 - 还可以使用 [Azure 自动化 Runbook](../automation/automation-webhooks.md) 或[逻辑应用](/connectors/custom-connectors/create-webhook-trigger)（可以通过 Webhook 从警报启动）来修正警报中识别到的问题。 
 - 使用[自动缩放](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md)可以根据收集的指标动态增加和减少计算资源。
 

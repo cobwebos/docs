@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure Monitor 监视 Active Directory 复制状态 | Microsoft Docs
 description: Active Directory 复制状态解决方案包定期监视 Active Directory 环境中是否有任何复制失败。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 31e6d0c8b374bd494ae8fda36f4f38aabb1ac96b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfc9572e8b21692a386c510ffd3409c571eff8f4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406097"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667170"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -27,7 +26,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 ## <a name="installing-and-configuring-the-solution"></a>安装和配置解决方案
 使用以下信息安装和配置解决方案。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 * AD 复制状态解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.6.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。
@@ -53,7 +52,7 @@ AD 复制状态解决方案定期监视 Active Directory 环境中是否有任�
 ## <a name="ad-replication-status-data-collection-details"></a>AD 复制状态数据收集详细信息
 下表显示了 AD 复制状态的数据收集方法和其他数据收集方式的详细信息。
 
-| 平台 | 直接代理 | SCOM 代理 | Azure 存储器 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
+| 平台 | 直接代理 | SCOM 代理 | Azure 存储 | 是否需要 SCOM？ | 通过管理组发送的 SCOM 代理数据 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |每隔五天 |
 

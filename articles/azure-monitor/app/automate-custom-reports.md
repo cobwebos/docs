@@ -1,19 +1,15 @@
 ---
 title: 使用 Azure Application Insights 数据自动化自定义报表
 description: 使用 Azure Application Insights 数据自动化自定义每日/每周/每月报表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: d91595a863901fcc420611ac644c7856e74320dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677627"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655117"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>使用 Azure Application Insights 数据自动化自定义报表
 
@@ -74,7 +70,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Application Insights 计划的摘要报表
 
-1. 在 Azure 门户中，选择“创建资源” > “计算” > “Function App”。
+1. 在 Azure 门户中，选择“创建资源” **“计算”** “Function App”。 >  > 
 
    ![“创建 Azure 资源函数应用”屏幕截图](./media/automate-custom-reports/function-app-01.png)
 
@@ -91,7 +87,7 @@ availabilityResults
 5. 选择“Application Insights 计划的摘要模板”。
 
      > [!NOTE]
-     > 默认情况下，将使用运行时版本2.x 创建函数应用。 必须以[Azure Functions 运行时版本1.x 为目标](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 计划摘要模板。  ![runtime 屏幕快照 ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > 默认情况下，将使用运行时版本2.x 创建函数应用。 必须以[Azure Functions 运行时版本1.x 为目标](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **，才能**使用 Application Insights 计划摘要模板。  ![运行时屏幕截图](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -101,7 +97,7 @@ availabilityResults
 
    ![“函数设置”屏幕截图](./media/automate-custom-reports/function-app-05.png)
 
-7. 选择你的**函数应用** > “平台功能” > “应用程序设置”。
+7. 选择你的**函数应用** > “平台功能” **“应用程序设置”。**  > 
 
     ![“Azure 函数应用程序设置”屏幕截图](./media/automate-custom-reports/function-app-07.png)
 
@@ -146,7 +142,7 @@ availabilityResults
 
      ![“设置 > API 密钥”屏幕截图](./media/automate-custom-reports/function-app-14.png)
 
-3. 这将启动 SendGrid 的站点。 选择“设置” > “API 密钥”。
+3. 这将启动 SendGrid 的站点。 选择“设置” **“API 密钥”。**  > 
 
      ![“创建并查看 API 密钥应用”屏幕截图](./media/automate-custom-reports/function-app-15.png)
 
@@ -160,7 +156,7 @@ availabilityResults
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解有关创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)的详细信息。
+* 详细了解如何创建 [Analytics 查询](../../azure-monitor/log-query/get-started-queries.md)。
 * 详细了解[采用编程方式查询 Application Insights 数据](https://dev.applicationinsights.io/)
 * 了解有关[逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的详细信息。
 * 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。

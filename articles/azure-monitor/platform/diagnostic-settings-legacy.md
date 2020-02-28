@@ -2,17 +2,16 @@
 title: 通过诊断设置收集 Azure 活动日志（预览版）-Azure Monitor |Microsoft Docs
 description: 使用诊断设置将 Azure 活动日志转发到 Azure Monitor 日志、Azure 存储或 Azure 事件中心。
 author: bwren
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016249"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670332"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>更新到 Azure 活动日志收集和导出
 [Azure 活动日志](platform-logs-overview.md)是一个[平台日志](platform-logs-overview.md)，可用于深入了解 Azure 中发生的订阅级别事件。 将活动日志条目发送到[事件中心或存储帐户](activity-log-export.md)或[Log Analytics 工作区](activity-log-collect.md)的方法已更改为使用[诊断设置](diagnostic-settings.md)。 本文介绍方法之间的差异，以及如何在准备更改为诊断设置时清除旧设置。

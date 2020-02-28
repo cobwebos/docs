@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 监视实时 ASP.NET Web 应用 | Microsoft 文档
 description: 在不重新部署网站的情况下监视网站性能。 使用托管在本地或 VM 中的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820750"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670043"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在运行时通过 Application Insights 无代码置备附加来检测 web 应用
 
@@ -47,10 +43,10 @@ ms.locfileid: "72820750"
 | [更详细异常](../../azure-monitor/app/asp-net-exceptions.md) | |是 |
 | [依赖项诊断](../../azure-monitor/app/asp-net-dependencies.md) |在 NET 4.6+ 上，但更少详细信息 |是，完整的详细信息：结果代码、SQL 命令文本、HTTP 谓词|
 | [系统性能计数器](../../azure-monitor/app/performance-counters.md) |是 |是 |
-| [自定义遥测的 API][api] |是 |No |
-| [跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md) |是 |No |
-| [页面视图和用户数据](../../azure-monitor/app/javascript.md) |是 |No |
-| 需要重新生成代码 |是 | No |
+| [自定义遥测的 API][api] |是 |否 |
+| [跟踪日志集成](../../azure-monitor/app/asp-net-trace-logs.md) |是 |否 |
+| [页面视图和用户数据](../../azure-monitor/app/javascript.md) |是 |否 |
+| 需要重新生成代码 |是 | 否 |
 
 
 
@@ -264,7 +260,7 @@ IIS 支持：IIS 7、7.5、8、8.5（必须有 IIS）
 
 ### <a name="can-i-close-it-after-it-runs"></a>可以在它运行后关闭它吗？
 
-可以。 在它检测所选网站后，即可将其关闭。
+是的。 在它检测所选网站后，即可将其关闭。
 
 它不会自行收集遥测。 它只配置 Web 应用并设置某些权限。
 

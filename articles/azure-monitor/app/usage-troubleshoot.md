@@ -1,19 +1,17 @@
 ---
 title: 用户分析工具疑难解答-Azure 应用程序 Insights
 description: 故障排除指南 - 通过 Application Insights 分析站点和应用使用情况。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: aa540cdaef1af3016d87ab93768ceb30802cef0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432278"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670910"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights 中用户行为分析工具的故障排除
 是否对 [Application Insights 中的用户行为分析工具](usage-overview.md)：[用户、会话、事件](usage-segmentation.md)、[漏斗图](usage-funnels.md)、[用户流](usage-flows.md)、[保留期](usage-retention.md)或队列存在疑问？ 请参考下面的解答。
@@ -44,7 +42,7 @@ Application Insights 中的所有遥测事件都具有[匿名用户 ID](../../az
 
 * 如果是由 Application Insights JavaScript SDK 自动发送页面视图名称，则可以更改页标题或切换为手动发送页面视图名称。 默认情况下，SDK 发送每页的[标题](https://developer.mozilla.org/docs/Web/HTML/Element/title)作为页面视图名称。 可将标题更改为更加常规的标题，但请留意 SEO 和此更改可能产生的其他影响。 通过 `trackPageView` API 手动指定的页面视图名称将替代自动收集的名称，因此可在遥测中发送更宽泛的名称，而无需更改页标题。   
 
-如果应用发送过多自定义事件名称，将代码中的名称更改为不太具体的名称。 同样，避免将 URL 和其他每页或动态信息直接放入自定义事件名称中。 而是应使用 `trackEvent` API 将这些详细信息移动到自定义事件的自定义属性中。 例如，建议使用 `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`，而不是 `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`。
+如果应用发送过多自定义事件名称，将代码中的名称更改为不太具体的名称。 同样，避免将 URL 和其他每页或动态信息直接放入自定义事件名称中。 而是应使用 `trackEvent` API 将这些详细信息移动到自定义事件的自定义属性中。 例如，建议使用 `appInsights.trackEvent("Edit button clicked on http://www.contoso.com/index")`，而不是 `appInsights.trackEvent("Edit button clicked", { "Source URL": "http://www.contoso.com/index" })`。
 
 ## <a name="next-steps"></a>后续步骤
 

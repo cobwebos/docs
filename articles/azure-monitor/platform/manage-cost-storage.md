@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8c4169ccfb35b74b92ea4996cbc779bac35d6ccb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dc784fa2dd5317932294af6e9c9d36dcce7d32f1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715865"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672066"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本
 
@@ -208,123 +208,120 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 使用量较高是由下面的一个或两个原因引起的：
 - 与将数据发送到 Log Analytics 工作区相比，需要更多节点
-- 超出了发送到 Log Analytics 工作区所需的数据
+- 超出了发送到 Log Analytics 工作区所需的数据（可能是由于开始使用新的解决方案或对现有解决方案的配置更改而导致的）
 
 ## <a name="understanding-nodes-sending-data"></a>了解发送数据的节点
 
-若要了解上个月每天报告检测信号的计算机数，请使用
+若要了解上个月每天从代理报告检测信号的节点数，请使用
 
 ```kusto
-Heartbeat | where TimeGenerated > startofday(ago(31d))
-| summarize dcount(Computer) by bin(TimeGenerated, 1d)    
+Heartbeat 
+| where TimeGenerated > startofday(ago(31d))
+| summarize nodes = dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart
 ```
-
-若要获取将按节点计费的计算机的列表（如果工作区位于 "基于每个节点的旧版" 定价层中），请查找发送**计费数据类型**的节点（某些数据类型是免费的）。 为此，请使用 `_IsBillable`[属性](log-standard-properties.md#_isbillable)，并使用完全限定的域名最左边的字段。 这会返回包含计费数据的计算机的列表：
+可以使用以下内容确定获取发送数据的节点计数： 
 
 ```kusto
 union withsource = tt * 
-| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodes = dcount(computerName)
+```
+
+若要获取发送任何数据的节点（以及每个发送的数据量）的列表，可以使用以下查询：
+
+```kusto
+union withsource = tt * 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-可查看的可计费节点数估算如下： 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName)
-```
-
 > [!NOTE]
 > 请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 此查询替代了使用使用情况数据类型查询每台计算机的信息的旧方法。  
 
-更准确地计算实际将计费的内容是获取每小时发送计费数据类型的计算机的计数。 （对于旧的按节点定价层中的工作区，Log Analytics 计算需要按小时计费的节点数。） 
-
-```kusto
-union withsource = tt * 
-| where _IsBillable == true 
-| extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| where computerName != ""
-| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
-```
-
 ## <a name="understanding-ingested-data-volume"></a>了解引入数据量
 
-在“使用情况和预估成本”页上，“单个解决方案的数据引入”图表显示发送的总数据量以及每个解决方案发送的量。 这样就可以确定趋势，例如总数据使用量（或特定解决方案的使用量）是正在增长、保持平稳还是正在下降。 用于生成此指标的查询是：
+在“使用情况和预估成本”页上，“单个解决方案的数据引入”图表显示发送的总数据量以及每个解决方案发送的量。 这样就可以确定趋势，例如总数据使用量（或特定解决方案的使用量）是正在增长、保持平稳还是正在下降。 
+
+### <a name="data-volume-by-solution"></a>按解决方案统计的数据量
+
+用于按解决方案查看计费数据量的查询是
 
 ```kusto
-Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution | render barchart
 ```
 
-请注意，子句“where IsBillable = true”从某些解决方案中筛选掉没有引入费用的数据类型。 
+请注意，子句 `where IsBillable = true` 筛选出某些解决方案中没有引入费用的数据类型。 
 
-可以进一步钻取，以查看特定数据类型的数据趋势，例如，可以研究 IIS 日志的数据：
+### <a name="data-volume-by-type"></a>按类型的数据量
+
+您可以进一步钻取，以查看数据类型的数据趋势：
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), DataType | render barchart
+```
+
+或者查看上个月的按解决方案和类型显示的表，
+
+```kusto
+Usage 
+| where TimeGenerated > startofday(ago(31d))
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 
-若要查看每台计算机的可计费事件引入**大小**，请使用 `_BilledSize` 属性，该[属性](log-standard-properties.md#_billedsize)以字节为单位提供大小：
+`Usage` 数据类型不包含其完成注册级别的信息。 若要查看每台计算机的引入数据**大小**，请使用 `_BilledSize` 属性，该[属性](log-standard-properties.md#_billedsize)以字节为单位提供大小：
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize Bytes=sum(_BilledSize) by  computerName | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
 `_IsBillable`[属性](log-standard-properties.md#_isbillable)指定引入数据是否会产生费用。
 
-若要查看每台计算机引入的可**计费**事件计数，请使用 
+若要查看每台计算机引入的可计费事件**计数**，请使用 
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
-| summarize eventCount=count() by computerName  | sort by eventCount nulls last
-```
-
-若要查看向特定计算机发送数据的计费数据类型计数，请使用：
-
-```kusto
-union withsource = tt *
-| where Computer == "computer name"
-| where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last
+| summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>按 Azure 资源、资源组或订阅的数据量
 
-对于在 Azure 中托管的节点的数据，可以获取__每台计算机__的可计费事件引入的**大小**，使用 _ResourceId 属性，该[属性](log-standard-properties.md#_resourceid)提供资源的完整路径：
+对于 Azure 中托管的节点的数据，可以获取__每台计算机__的引入数据**大小**，使用 _ResourceId[属性](log-standard-properties.md#_resourceid)，该属性提供资源的完整路径：
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-对于 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的可计费事件引入的**大小**，将 `_ResourceId` 属性分析为：
+对于 Azure 中托管的节点的数据，可以获取__每个 azure 订阅__的引入数据**大小**，并将 `_ResourceId` 属性分析为：
 
 ```kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
 将 `subscriptionId` 更改为 `resourceGroup` 会按 Azure 资源组显示可计费引入数据量。 
-
 
 > [!NOTE]
 > 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。
@@ -361,6 +358,18 @@ union withsource = tt *
 | Syslog                     | 更改 [syslog 配置](data-sources-syslog.md)如下： <br> - 减少收集的设施数 <br> - 仅收集必需的事件级别。 例如，不收集“信息”和“调试”级别事件 |
 | AzureDiagnostics           | 更改资源日志集合，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
+
+### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>在每个节点定价层中按计费方式获取节点
+
+若要获取将按节点计费的计算机的列表（如果工作区位于 "基于每个节点的旧版" 定价层中），请查找发送**计费数据类型**的节点（某些数据类型是免费的）。 为此，请使用 `_IsBillable`[属性](log-standard-properties.md#_isbillable)，并使用完全限定的域名最左边的字段。 这将返回每小时计费数据的计算机计数（这是对节点进行计数和计费的粒度）：
+
+```kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc
+```
 
 ### <a name="getting-security-and-automation-node-counts"></a>获取安全和自动化节点计数
 

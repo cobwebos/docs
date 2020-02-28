@@ -1,18 +1,17 @@
 ---
 title: 常见问题解答 - Azure 中的网络性能监视器解决方案 | Microsoft Docs
 description: 本文捕获有关 Azure 中网络性能监视器的常见问题。 网络性能监视器（NPM）可帮助用户近乎实时地监视网络性能，检测并找到网络性能瓶颈。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538187"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654427"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -138,7 +137,7 @@ Microsoft 对等互连
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-可以。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
+是的。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。
@@ -225,7 +224,7 @@ HopLatencyValues 是源到终结点。
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>为何发现不了我的所有 ExpressRoute 线路和对等互连？
 NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线路和对等连接。 选择链接 Express Route 资源的所有订阅，并为发现的每个资源启用监视。 NPM 在发现专用对等互连时查找连接对象，因此请检查 VNET 是否与对等互连关联。
 
-### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 遵守法规又意味着什么？
+### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>ER 监视器功能发出了诊断消息“流量无法通过任何线路”。 这是什么意思？
 
 可能存在这种情况：本地与 Azure 节点之间建立了正常的连接，但流量不能通过配置为由 NPM 监视的 ExpressRoute 线路。 
 
@@ -258,7 +257,7 @@ NPM 现在可以在用户有权访问的所有订阅中发现 ExpressRoute 线�
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>在服务连接监视器功能中，服务响应时间为“不适用”，但网络丢包和延迟有效
 如果目标服务不是 Web 应用程序，但测试配置为 Web 测试，则可能会发生这种情况。 编辑测试配置，选择“网络”而不是“Web”作为测试类型。
 
-## <a name="miscellaneous"></a>其他
+## <a name="miscellaneous"></a>杂项
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>用于监视的节点的性能是否受影响？
 NPM 进程配置为当它的主机 CPU 资源利用率超过 5% 时停止。 这是为了确保可以持续使用这些节点来处理其常规工作负荷，而不会影响性能。

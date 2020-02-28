@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019411"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656919"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 云服务配置和管理问题：常见问题解答 (FAQ)
 
@@ -137,7 +137,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 * 增加本地资源的配额限制。
 
 有关详细信息，请参阅以下文档：
-* [在 Azure 存储中存储和查看诊断数据](cloud-services-dotnet-diagnostics-storage.md)
+* [在 Azure 存储中存储和查看诊断数据](/azure/storage/common/storage-introduction)
 * [IIS 日志停止写入到云服务中](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>如何为云服务启用 WAD 日志记录？
@@ -231,7 +231,7 @@ Microsoft 遵循严格的流程，未经所有者或其被委派者书面许可�
 1. 右键单击下载的 RDP 文件，然后选择“编辑”。
 2. 在 username 前面添加“&#92;”作为前缀。 例如，使用 **.\username**，而不是 **username**。
 
-## <a name="scaling"></a>缩放
+## <a name="scaling"></a>扩展
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>无法扩展到 X 个实例以上
 Azure 订阅对可使用的核心数量有限制。 如果已使用所有可用的核心，将无法进行扩展。 例如，如果限制为 100 个核心，则意味着云服务可以有 100 个 A1 大小的虚拟机实例或 50 个 A2 大小的虚拟机实例。
@@ -314,7 +314,7 @@ Azure 不会将任何内容写入 %approot% 驱动器。 从 .cspkg 创建 VHD �
 |值|含义|
 ------|------
 |0|没有 SNI|
-|第|已启用 SNI|
+|1|已启用 SNI|
 |2|使用中心证书存储的非 SNI 绑定|
 |3|使用中心证书存储的 SNI 绑定|
  

@@ -2,18 +2,17 @@
 title: 使用 Resource Manager 模板创建指标警报
 description: 了解如何使用资源管理器模板创建指标警报。
 author: harelbr
+ms.author: harelbr
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664830"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 

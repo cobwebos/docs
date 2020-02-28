@@ -1,18 +1,16 @@
 ---
-title: 管理 Azure Log Analytics 代理 | Microsoft Docs
+title: 管理 Azure Log Analytics 代理
 description: 本文介绍在计算机上部署 Log Analytics Windows 或 Linux 代理的生命周期中通常会执行的不同管理任务。
-ms.service: azure-monitor
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364775"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668683"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>管理并维护 Windows 和 Linux 的 Log Analytics 代理
 
@@ -58,7 +56,7 @@ ms.locfileid: "75364775"
 
 4. 在 " **Microsoft Monitoring Agent 安装**" 对话框中，单击 "**我同意**接受许可协议"。
 
-5. 在“Microsoft Monitoring Agent 安装程序” 对话框中，单击“升级”。 状态页面将显示升级的进度。
+5. 在 " **Microsoft Monitoring Agent 设置**" 对话框中，单击 "**升级**"。 状态页面将显示升级的进度。
 
 6. 如果**Microsoft Monitoring Agent 配置已成功完成。** 页，单击 "**完成**"。
 
@@ -68,7 +66,7 @@ ms.locfileid: "75364775"
 
 2. 若要提取代理安装文件，请在提升的命令提示符处运行 `MMASetup-<platform>.exe /c`，这会提示要将文件提取到的路径。 或者，可以通过传递参数 `MMASetup-<platform>.exe /c /t:<Full Path>` 来指定路径。
 
-3. 运行以下命令，其中 D:\ 是升级日志文件的位置。
+3. 运行以下命令，其中 D:\升级日志文件的位置。
 
     ```dos
     setup.exe /qn /l*v D:\logs\AgentUpgrade.log AcceptEndUserLicenseAgreement=1
@@ -238,7 +236,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 3. 在“程序和功能”中依次单击“Microsoft Monitoring Agent”、“卸载”、“是”。
 
 >[!NOTE]
->还可以通过双击“MMASetup-\<platform\>.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载。
+>还可以通过双击“MMASetup-**platform\<.exe”运行代理安装向导，该程序可从 Azure 门户中的工作区下载\>** 。
 
 #### <a name="uninstall-from-the-command-line"></a>从命令行卸载
 下载的代理文件是使用 IExpress 创建的独立安装包。 代理和支持文件的安装程序包含在该包中，需要提取才能使用以下示例中所示的命令行正确卸载。

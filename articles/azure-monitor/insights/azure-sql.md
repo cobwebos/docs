@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor 中的 Azure SQL Analytics 解决方案 |Microsoft Docs
 description: Azure SQL Analytics 解决方案可帮助你管理 Azure SQL 数据库
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 8b1eeb94c035df7e5e5e1bb4668b7086eab49b45
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 921a05c4dc6c1d5cfa663ac71b469573b8f1925b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544277"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667034"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -35,10 +34,10 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 连接的源 | 支持 | 说明 |
 | --- | --- | --- |
 | [诊断设置](../platform/diagnostic-settings.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Azure Monitor 日志。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 是 | Azure Monitor 不会从存储帐户读取数据。 |
-| [Windows 代理](../platform/agent-windows.md) | 是 | Azure SQL Analytics 不使用直接 Windows 代理。 |
-| [Linux 代理](../learn/quick-collect-linux-computer.md) | 是 | Azure SQL Analytics 不使用直接 Linux 代理。 |
-| [System Center Operations Manager 管理组](../platform/om-agents.md) | 是 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
+| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure Monitor 不会从存储帐户读取数据。 |
+| [Windows 代理](../platform/agent-windows.md) | 否 | Azure SQL Analytics 不使用直接 Windows 代理。 |
+| [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | Azure SQL Analytics 不使用直接 Linux 代理。 |
+| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | Azure SQL Analytics 不使用从 Operations Manager 代理到 Azure Monitor 的直接连接。 |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics 选项
 
@@ -49,9 +48,9 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持所有 Azure
 | 资源（按类型） | 对监视的所有资源进行计数的透视。 | 是 | 是 |
 | 洞察力 | 提供对性能智能见解的分层向下钻取。 | 是 | 是 |
 | 错误 | 提供对数据库上发生的 SQL 错误的分层向下钻取。 | 是 | 是 |
-| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 是 |
-| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 是 |
-| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 是 |
+| 超时 | 提供对数据库上发生的 SQL 超时的分层向下钻取。 | 是 | 否 |
+| 阻止 | 提供对数据库上发生的 SQL 阻止的分层向下钻取。 | 是 | 否 |
+| 数据库等待 | 提供对数据库级别上的 SQL 等待统计信息的分层向下钻取。 包含总等待时间汇总和每个类型的等待时间。 |是 | 否 |
 | 查询持续时间 | 提供对查询执行统计信息的分层向下钻取，例如查询持续时间、CPU 使用情况、数据 IO 使用情况和日志 IO 使用情况。 | 是 | 是 |
 | 查询等待 | 按等待类型提供对查询等待统计信息的分层向下钻取。 | 是 | 是 |
 

@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | Microsoft 文档
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677669"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665912"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -20,7 +16,7 @@ ms.locfileid: "72677669"
 
 在 Visual Studio 中单击几下即可完成安装。 可以选择对遥测量进行限制，从而避免付费。 此功能可让你进行试验和调试，或监视不包含多个用户的站点。 如果认为需要前进一步，对生产站点进行监视，则可轻松地在以后提高该限制。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 若要要将 Application Insights 添加到 ASP.NET 网站，需要：
 
 - 安装[适用于 Windows 的 Visual Studio 2019](https://www.visualstudio.com/downloads/) ，其工作负荷如下：
@@ -34,7 +30,7 @@ ms.locfileid: "72677669"
 > [!IMPORTANT]
 > 本示例中的屏幕截图基于 Visual Studio 2017 版本15.9.9 和更高版本。 添加 Application Insights 的体验因 Visual Studio 的各个版本以及 ASP.NET 模板类型的不同而不同。 旧版本可能包含备用文本，如 "配置 Application Insights"。
 
-右键单击 "解决方案资源管理器中的 web 应用名称，然后选择"**添加** >  "**Application Insights 遥测**
+右键单击 "解决方案资源管理器中的 web 应用名称，然后选择"**添加** > " **Application Insights 遥测**
 
 ![解决方案资源管理器的屏幕截图，其中突出显示了“配置 Application Insights”](./media/asp-net/add-telemetry-new.png)
 
@@ -72,7 +68,7 @@ Visual Studio 中会显示已记录的事件数。
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>在 Visual Studio 中查看遥测
 
-在 Visual Studio 中查看 Application Insights 数据。  选择“解决方案资源管理器” > “连接的服务”，右键单击“Application Insights”，然后单击“搜索实时遥测”。
+在 Visual Studio 中查看 Application Insights 数据。  选择“解决方案资源管理器” **“连接的服务”，右键单击“Application Insights”，然后单击“搜索实时遥测”。**  > 
 
 在 Visual Studio Application Insights 搜索窗口中，可以看到应用程序的服务器端生成的遥测数据。 使用这些筛选器进行试验，并单击任何事件以查看更多详细信息。
 
@@ -88,7 +84,7 @@ Visual Studio 中会显示已记录的事件数。
 
 还可以在 Application Insights Web 门户中查看遥测（除非选择仅安装 SDK）。 该门户中的图表、分析工具和跨组件视图比 Visual Studio 中的多。 此门户还提供警报。
 
-打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” > “连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。 > 
+打开 Application Insights 资源。 登录到 [Azure 门户](https://portal.azure.com/)并在其中找到所需的资源，或者选择“解决方案资源管理器” **“连接的服务”，然后右键单击“Application Insights”并选择“打开 Application Insights 门户”，以转到相应的资源。**  >  > 
 
 门户将从应用打开遥测视图。
 

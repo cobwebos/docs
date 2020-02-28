@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志的结构 |Microsoft Docs
 description: 需要执行日志查询来检索 Azure Monitor 提供的日志数据。  本文介绍新的日志查询在 Azure Monitor 中的用法以及创建搜索之前需要了解的概念。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893631"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662070"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor 日志的结构
 使用[日志查询](log-query-overview.md)快速获取数据的见解是 Azure Monitor 的一项强大功能。 若要创建有效的有用查询，您应该了解一些基本概念，如您所需的数据所在的位置和结构的结构。 本文提供了入门所需的基本概念。
@@ -53,13 +52,13 @@ union withsource = table *
 
 与 Log Analytics 工作区不同，Application Insights 应用程序具有一组固定的表。 不能将其他数据源配置为写入应用程序，因此不能创建其他表。 
 
-| 表 | 描述 | 
+| 表 | 说明 | 
 |:---|:---|
 | availabilityResults | 来自可用性测试的摘要数据。 |
 | browserTimings      | 有关客户端性能的数据，例如处理传入数据所用的时间。 |
 | customEvents        | 应用程序创建的自定义事件。 |
 | customMetrics       | 应用程序创建的自定义指标。 |
-| 依赖项        | 从应用程序到外部组件的调用。 |
+| 依赖关系        | 从应用程序到外部组件的调用。 |
 | 异常          | 应用程序运行时引发的异常。 |
 | pageViews           | 有关每个网站视图的数据与浏览器信息。 |
 | performanceCounters | 支持应用程序的计算资源的性能度量。 |
@@ -73,10 +72,10 @@ union withsource = table *
 ## <a name="standard-properties"></a>标准属性
 虽然 Azure Monitor 日志中的每个表都有其自己的架构，但所有表均共享了标准属性。 有关每个的详细信息，请参阅[Azure Monitor 日志中的标准属性](../platform/log-standard-properties.md)。
 
-| Log Analytics 工作区 | Application Insights 应用程序 | 描述 |
+| Log Analytics 工作区 | Application Insights 应用程序 | 说明 |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | 创建记录的日期和时间。 |
-| Type          | itemType   | 从中检索记录的表的名称。 |
+| 类型          | itemType   | 从中检索记录的表的名称。 |
 | _ResourceId   |            | 与记录关联的资源的唯一标识符。 |
 | _IsBillable   |            | 指定引入数据是否可计费。 |
 | _BilledSize   |            | 指定将计费的数据的大小（以字节为单位）。 |

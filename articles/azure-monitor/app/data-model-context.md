@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 遥测上下文 | Microsoft Docs
 description: Application Insights 遥测上下文数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 861e8fc115165214db5d01cb142a2980ba08bf53
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 8a2e3296643b13a54c4fceb11f044a2808cf2877
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467363"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671857"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>遥测上下文：Application Insights 数据模型
 

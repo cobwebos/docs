@@ -1,24 +1,22 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 开始跟踪。 从状态监视器和 Application Insights SDK 收集 ETW 日志。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899656"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671216"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights 代理 API： ApplicationInsightsMonitoringTrace
 
 本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 从无代码置备附加运行时收集[ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 此 cmdlet 是运行[PerfView](https://github.com/microsoft/perfview)的替代方法。
 
@@ -48,7 +46,7 @@ ms.locfileid: "72899656"
 
 收集事件时有三个选项：
 1. 使用开关 `-CollectSdkEvents` 收集从 Application Insights SDK 发出的事件。
-2. 使用开关 `-CollectRedfieldEvents` 收集由状态监视器和 Redfield 运行时发出的事件。 当诊断 IIS 和应用程序启动时，这些日志非常有用。
+2. 使用开关 `-CollectRedfieldEvents` 收集状态监视器和 Redfield 运行时发出的事件。 当诊断 IIS 和应用程序启动时，这些日志非常有用。
 3. 使用这两个开关来收集两个事件类型。
 4. 默认情况下，如果未指定任何开关，则将收集两个事件类型。
 

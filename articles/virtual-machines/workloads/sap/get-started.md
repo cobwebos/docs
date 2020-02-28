@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/25/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9d287d5bfc091fcbbff46095da5458fa08de73d
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 5b9e7e165998e1e4c45379fb5a8ca22edc194efe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624173"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661373"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -117,6 +117,10 @@ Azure for SAP HANA 的唯一性是将 Azure 分开的一个产品/服务。 为�
 
 
 ## <a name="change-log"></a>更改日志
+- 02/26/2020：更改[azure 虚拟机存储配置 SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ，以便在 azure 上阐明 HANA 的文件系统选择
+- 02/25/2020：适用于[sap 的高可用性体系结构和方案更改，](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)包括到 RHEL 多 SID 指南中的 Azure vm 上的高可用性 sap NetWeaver 的链接
+- 02/26/2020：针对[Azure vm 上的 SAP nw 的高可用性，适用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)于 sap 应用程序的高可用性，适用于 sap 应用程序的 azure vm 上的 sap nw 的高可用性，适用于 sap 应用程序的 azure vm 上的 sap [nw 具有](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)高可用性，在 rhel 上，azure vm[高](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)可用性适用于[azure NetApp 文件](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)，用于删除不支持多 SID ASCS/ERS 群集的语句和
+- 02/26/2020：[RHEL 多 sid 指南中的 Azure vm 上的 SAP NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)发布，添加指向 SUSE 多 sid 群集指南的链接
 - 02/25/2020：在[高可用性体系结构和方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)中更改 SAP 以添加到较新 HA 文章的链接
 - 02/25/2020：SUSE Linux Enterprise Server 上[的 Azure vm 上的 Azure vm 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)变化为 Pacemaker，指向介绍使用标准 Azure 负载均衡器访问公用终结点的文档
 - 02/21/2020：完成 sap [ASE Azure 虚拟机 DBMS 部署（适用于 sap 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)）的完整修订版

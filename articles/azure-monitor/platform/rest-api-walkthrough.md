@@ -1,18 +1,15 @@
 ---
 title: Azure 监视 REST API 演练
 description: 如何对请求进行身份验证，以及如何使用 Azure Monitor REST API 检索可用的指标定义和指标值。
-ms.service: azure-monitor
-ms.subservice: ''
+ms.subservice: metrics
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: bdf867d6ae21eda4f9e9f4283542e422cf4d2d94
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162253"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659027"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 

@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209777"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672457"
 ---
 # <a name="building-an-accessible-application"></a>构建可访问的应用程序
 
@@ -32,9 +32,11 @@ Azure Maps Web SDK 预建了许多辅助功能，例如：
 可在[此处](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)找到所有 Microsoft 产品的完整辅助功能一致性详细信息。 搜索 "Azure Maps web"，查找专用于 Azure Maps Web SDK 的文档。 
 
 ## <a name="navigating-the-map"></a>导航地图
+
 可以通过多种不同的方式来缩放、平移、旋转和音调地图。 下面详细介绍了导航地图的所有不同方式。
 
 **缩放地图**
+
 - 使用鼠标双击地图，在一个级别中进行缩放。
 - 使用鼠标滚动滚轮来缩放地图。
 - 使用触摸屏，用两根手指触摸地图，同时缩小，使手指缩小，使手指缩小。
@@ -45,23 +47,46 @@ Azure Maps Web SDK 预建了许多辅助功能，例如：
 - 按住 "`Shift`" 按钮，然后在地图上按下鼠标左键，并拖动鼠标以绘制一个区域，将地图放大到其中。
 
 **平移地图**
+
 - 使用鼠标在地图上按下鼠标左键，并向任意方向拖动。
 - 使用触摸屏，按下地图并向任意方向拖动。
 - 在地图上，使用箭头键移动地图。
 
 **旋转地图**
+
 - 使用鼠标在地图上按下鼠标右键，并向左或向右拖动。 
 - 使用触摸屏，用两根手指和旋转来触摸地图。
 - 以地图为重点，使用 shift 键和向左键或向右键。
 - 通过鼠标、触摸或键盘 tab/enter 键使用旋转控件。
 
 **螺距地图**
+
 - 使用鼠标在地图上按下鼠标右键，然后向上或向下拖动。 
 - 使用触摸屏，用两根手指触摸地图，并将它们向上或向下拖动。
 - 将地图集中在一起后，请使用 shift 键和向上键或向下键。 
 - 通过鼠标、触摸或键盘 tab/enter 键使用螺距控件。
 
-**更改地图样式**并非所有开发人员都希望在应用程序中提供所有可能的地图样式。 开发人员可以通过编程方式设置和更改地图样式。 如果开发人员显示了地图的样式选取器控件，则用户可以使用鼠标、触控或使用 tab 或 enter 键的键盘来更改地图样式。 开发人员可以在地图样式选取器控件中指定要提供的地图样式。 
+## <a name="change-the-map-style"></a>更改地图样式
+
+并非所有开发人员都希望在应用程序中提供所有可能的地图样式。 如果开发人员显示了地图的样式选取器控件，则用户可以使用鼠标、触控或使用 tab 或 enter 键的键盘来更改地图样式。 开发人员可以在地图样式选取器控件中指定要提供的地图样式。 此外，开发人员还可以通过编程方式设置和更改地图样式。
+
+**使用高对比度**
+
+- 加载地图控件后，它将检查是否已启用高对比度并且浏览器是否支持高对比度。
+- 地图控件不监视设备的高对比度模式。 如果设备模式发生更改，则不会映射。 因此，用户将需要通过刷新页面来重新加载该映射。
+- 检测到高对比度时，地图样式会自动切换到高对比度，所有内置控件都将使用高对比度样式。 例如，ZoomControl、PitchControl、CompassControl、StyleControl 和其他内置控件将使用高对比度样式。
+- 有两种类型的高对比度：浅色和深色。 如果地图控件可以检测到高对比度的类型，则映射的行为将相应地进行调整。 如果是浅，则将加载 grayscale_light 的映射样式。 如果无法检测到该类型或该类型为深色，则将加载 high_contrast_dark 样式。
+- 如果创建自定义控件，了解内置控件是否使用高对比度样式会很有用。 开发人员可以在地图容器 div 上添加 css 类以进行检查。 要添加的 css 类 `high-contrast-dark` 和 `high-contrast-light`。 若要使用 JavaScript 进行检查，请使用：
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+或者，使用：
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>键盘快捷方式
 

@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure Monitor 优化 Active Directory 环境 | Microsoft Docs
 description: 可以使用 Active Directory 运行状况检查解决方案定期评估环境的风险和运行状况。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 57c474c8391168702154b71e0c454253ab921dc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167834"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667221"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -34,7 +33,7 @@ ms.locfileid: "76167834"
 
 ![AD 运行状况检查仪表板的图像](./media/ad-assessment/ad-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Active Directory 运行状况检查解决方案要求在每台具有适用于 Windows 的 Log Analytics 代理（也称为 Microsoft Monitoring Agent （MMA））的计算机上安装 .NET Framework 4.6.2 或更高版本的受支持版本。  代理由 System Center 2016-Operations Manager、Operations Manager 2012 R2 和 Azure Monitor 使用。
 * 该解决方案支持运行 Windows Server 2008 和 2008 R2、Windows Server 2012 和 2012 R2 以及 Windows Server 2016 的域控制器。

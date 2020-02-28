@@ -1,24 +1,22 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoringStatus。 监视网站性能而不重新部署网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
+description: Application Insights 代理 API 参考。 Get-ApplicationInsightsMonitoringStatus. 监视网站性能而不重新部署网站。 使用托管在本地、VM 或 Azure 上的 ASP.NET Web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899694"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671250"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights 代理 API： ApplicationInsightsMonitoringStatus
 
 本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 此 cmdlet 提供有关状态监视器的疑难解答信息。
 使用此 cmdlet 调查 PowerShell 模块的监视状态、版本，并检查正在运行的进程。
@@ -77,7 +75,7 @@ AppAlreadyInstrumented : true
 
 ### <a name="example-powershell-module-information"></a>示例： PowerShell 模块信息
 
-运行命令 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 以显示当前模块的相关信息：
+运行命令 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 以显示有关当前模块的信息：
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -177,24 +175,24 @@ listdlls64.exe -accepteula w3wp
 
 
 ### <a name="-powershellmodule"></a>-PowerShellModule
-可选。 使用此开关报告监视所需的 Dll 的版本号和路径。
+**可选**。 使用此开关报告监视所需的 Dll 的版本号和路径。
 如果需要确定任何 DLL （包括 Application Insights SDK）的版本，请使用此选项。
 
 ### <a name="-inspectprocess"></a>-InspectProcess
 
-可选。 使用此开关报告 IIS 是否正在运行。
+**可选**。 使用此开关报告 IIS 是否正在运行。
 它还将下载外部工具来确定是否将必要的 Dll 加载到 IIS 运行时。
 
 
 如果此过程出于任何原因而失败，则可以手动运行以下命令：
-- iisreset/status
-- [handle64](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 Applicationinsights.config
+- iisreset.exe /status
+- [handle64](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 ApplicationInsights"
 - [listdlls64](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp.exe |findstr/I "InstrumentationEngine AI Applicationinsights.config"
 
 
 ### <a name="-force"></a>-Force
 
-可选。 仅与 InspectProcess 一起使用。 使用此开关可以跳过显示其他工具之前显示的用户提示。
+**可选**。 仅与 InspectProcess 一起使用。 使用此开关可以跳过显示其他工具之前显示的用户提示。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,18 +1,16 @@
 ---
 title: Azure 应用程序 Insights 中的依赖关系跟踪与 OpenCensus Python |Microsoft Docs
 description: 通过 OpenCensus Python 监视 Python 应用的依赖项调用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 6217798f8175e7ecc1c1ec4068d7765444e4d2a2
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368288"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669924"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>跟踪 OpenCensus Python 的依赖项
 

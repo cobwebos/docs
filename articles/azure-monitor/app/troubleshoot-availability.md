@@ -1,19 +1,17 @@
 ---
 title: Azure 应用程序 Insights 可用性测试疑难解答 |Microsoft Docs
 description: Azure 应用程序 Insights 中的 web 测试疑难解答。 当网站不可用或响应速度缓慢时接收警报。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899533"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671097"
 ---
 # <a name="troubleshooting"></a>故障排除
 
@@ -43,12 +41,12 @@ ms.locfileid: "72899533"
 
 |症状/错误消息| 可能的原因| 可能的解决方法 |
 |----|---------|-----|
-|服务器提交了协议冲突。 节 = ResponseHeader 详细信息 = CR 必须后跟 LF | 如果检测到格式错误的标头，则会发生这种情况 具体说来，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，但无法通过格式不正确的标头进行响应。| a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 请联系网站主机提供商/CDN 提供程序来修复有问题的服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁用依赖请求的分析。 请记住，如果您这样做，您将失去监视这些文件的可用性的能力。
+|服务器提交了协议冲突。 节 = ResponseHeader 详细信息 = CR 必须后跟 LF | 如果检测到格式错误的标头，则会发生这种情况 具体说来，某些标头可能没有使用 CRLF 来指示行尾，这违反了 HTTP 规范。 Application Insights 强制实施此 HTTP 规范，但无法通过格式不正确的标头进行响应。| a. 请联系网站主机提供商/CDN 提供程序来修复有问题的服务器。 <br> b. 如果失败的请求是资源（例如，样式文件、图像、脚本），则可以考虑禁用依赖请求的分析。 请记住，如果您这样做，您将失去监视这些文件的可用性的能力。
 
 > [!NOTE]
 > 在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>常见疑难解答问题
+## <a name="common-troubleshooting-questions"></a>常见的故障排除问题
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>网站看起来正常，但看到测试失败了吗？ 为什么 Application Insights 通知我？
 
@@ -83,7 +81,7 @@ ms.locfileid: "72899533"
 
 ### <a name="can-i-call-code-from-my-web-test"></a>能否从 web 测试调用代码？
 
-不。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+不是。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>"Web 测试" 和 "可用性测试" 之间是否存在差异？
@@ -92,7 +90,7 @@ ms.locfileid: "72899533"
 
 ### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>我想在防火墙后面运行的内部服务器上使用可用性测试。
 
-   有两个可能的解决方案：
+   下面是两种可能的解决方案：
 
    * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)发出的传入请求。
    * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果将显示在 "可用性 web 测试" 边栏选项卡中，但通过门户创建的测试的体验会略有简化。 自定义可用性测试还会在分析、搜索和指标中显示为可用性结果。
@@ -126,7 +124,7 @@ ms.locfileid: "72899533"
 > [!NOTE]
 > 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
-如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色的用户配置电子邮件通知（不作为单一选项组合在一起）。
+如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
 ## <a name="next-steps"></a>后续步骤
 

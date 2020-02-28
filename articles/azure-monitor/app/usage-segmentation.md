@@ -1,19 +1,17 @@
 ---
 title: Azure 应用程序 Insights 中的用户、会话和事件分析
 description: 对 Web 应用的用户进行人口统计学分析。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: dbda6debe2412f1756bc707cf3b587c77f466fdc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 56059304026b060e2215ce73e0e94e3200573a14
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670978"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>在 Application Insights 中进行用户、会话和事件分析
 
@@ -21,7 +19,7 @@ ms.locfileid: "75432319"
 
 ![Application Insights 用户的屏幕截图](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 如果在 Application Insights 门户的“用户”、“会话”或“事件”边栏选项卡中没有看到数据，请[了解如何开始使用“使用情况”工具](usage-overview.md)。
 

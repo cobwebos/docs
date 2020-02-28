@@ -1,18 +1,14 @@
 ---
 title: 在 Azure Application Insights 中浏览指标 | Microsoft Docs
 description: 如何解释指标资源管理器上的图表，以及如何自定义指标资源管理器边栏选项卡。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820788"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670162"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>在 Application Insights 中浏览指标
 [Application Insights][start]中的度量值是从应用程序发送的遥测数据的值和计数。 它们可帮助检测性能问题，观察应用程序的用法趋势。 标准指标的范围很广泛，也可以创建自己的自定义指标和事件。
@@ -173,13 +169,13 @@ ms.locfileid: "72820788"
 [详细了解警报][alerts]。
 
 
-## <a name="continuous-export"></a>持续导出
+## <a name="continuous-export"></a>连续导出
 如果想要连续导出数据以便在外部进行处理，请考虑使用[连续导出](../../azure-monitor/app/export-telemetry.md)。
 
 ### <a name="power-bi"></a>Power BI
 如果想要获得数据的更丰富视图，可以[导出到 Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)。
 
-## <a name="analytics"></a>分析
+## <a name="analytics"></a>Analytics
 [Analytics](../../azure-monitor/app/analytics.md) 是使用强大查询语言来分析遥测数据的更灵活方式。 如果想要合并或计算指标的结果或执行应用程序近期性能的深入分析，可以使用该功能。 
 
 在指标图表中，可以单击“分析”图标，直接访问等效的分析查询。

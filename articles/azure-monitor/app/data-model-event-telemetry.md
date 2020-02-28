@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights 遥测数据模型 - 事件遥测 | Microsoft Docs
 description: 适用于事件遥测的 Application Insights 数据模型
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678151"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671874"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>事件遥测：Application Insights 数据模型
 
@@ -37,6 +33,6 @@ ms.locfileid: "72678151"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请参阅[数据模型](data-model.md)，了解 Application Insights 的类型和数据模型。
+- 有关 Application Insights 的类型和数据模型，请参阅[数据模型](data-model.md)。
 - [编写自定义事件遥测](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
 - 查看 Application Insights 支持的[平台](../../azure-monitor/app/platforms.md)。

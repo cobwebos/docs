@@ -1,33 +1,29 @@
 ---
 title: 通过多步骤 web 测试进行监视-Azure 应用程序 Insights
 description: 设置多步骤 web 测试，以便通过 Azure 应用程序 Insights 监视 web 应用程序
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 8e630f324a7a0ebdfcc74941e760b80fabefa8d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b8baad127b16a1bd9d071d0c3d4df68da8c3304
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928969"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655934"
 ---
 # <a name="multi-step-web-tests"></a>多步骤 Web 测试
 
 可以通过多步骤 Web 测试监视记录的一系列 URL 以及与网站的交互。 本文将详细介绍使用 Visual Studio Enterprise 创建多步骤 Web 测试的过程。
 
 > [!NOTE]
-> 多步骤 web 测试依赖于 Visual Studio webtest 文件。 已[公布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是具有 webtest 功能的最新版本。 必须了解的是，尽管不会添加任何新功能，但目前仍支持 Visual Studio 2019 中的 webtest 功能，并且在产品的支持生命周期内仍将继续提供支持。 Azure Monitor 产品团队已经[解决了有关将来的多步骤可用性测试的问题](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)。  
+> 多步骤 web 测试依赖于 Visual Studio webtest 文件。 已[公布](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)，Visual Studio 2019 将是具有 webtest 功能的最新版本。 必须了解的是，尽管不会添加任何新功能，但目前仍支持 Visual Studio 2019 中的 webtest 功能，并且在产品的支持生命周期内仍将继续提供支持。 Azure Monitor 产品团队已经解决了有关将来的多步骤[可用性测试的](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)问题。  
 
-## <a name="pre-requisites"></a>必备组件
+## <a name="pre-requisites"></a>先决条件
 
 * Visual Studio 2017 Enterprise 或更高版本。
 * Visual Studio Web 性能和负载测试工具。
 
-查找测试工具先决条件。 启动“Visual Studio 安装程序” > “各个组件” > “调试和测试” > “Web 性能和负载测试工具”。
+查找测试工具先决条件。 启动**Visual Studio 安装程序** > **各个组件**， > **调试和测试** > **Web 性能和负载测试工具**。
 
 ![Visual Studio 安装程序 UI 的屏幕截图，已选中“各个组件”，并且在“Web 性能和负载测试工具”对应的项旁白有一个复选框](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -43,7 +39,7 @@ ms.locfileid: "74928969"
 
 ## <a name="upload-the-web-test"></a>上传 Web 测试
 
-1. 在 Application Insights 门户的“可用性”窗格中，选择“创建测试” > “测试类型” > “多步骤 Web 测试”。
+1. 在 Application Insights 门户中的 "可用性" 窗格上，选择 "**创建测试** > **测试类型** > **多步骤 web 测试**"。
 
 2. 设置测试位置、频率和警报参数。
 
@@ -52,9 +48,9 @@ ms.locfileid: "74928969"
 |设置| 说明
 |----|----|----|
 |**测试频率**| 设置从每个测试位置运行测试的频率。 如果有五个测试位置，且默认频率为五分钟，则平均每隔一分钟测试站点一次。|
-|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议最低测试位置数目为 5**，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
+|**测试位置**| 是服务器从其将 Web 请求发送到 URL 的位置。 **建议的最小测试位置数为 5** ，以确保可以将网站中的问题与网络问题区分开来。 最多可以选择 16 个位置。
 
-### <a name="success-criteria"></a>成功标准
+### <a name="success-criteria"></a>成功条件
 
 |设置| 说明
 |----|----|----|
@@ -66,9 +62,9 @@ ms.locfileid: "74928969"
 
 |设置| 说明
 |----|----|----|
-|**近实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
+|**近乎实时（预览）** | 我们建议使用近实时警报。 在创建可用性测试后会配置此类警报。  |
 |**经典** | 我们不再建议对新的可用性测试使用经典警报。|
-|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数目之间的最佳关系是警报位置阈值  =  测试位置数 - 2，至少有 5 个测试位置。|
+|**警报位置阈值**|建议最少 3/5 个位置。 警报位置阈值和测试位置数量之间的最佳关系是**警报位置阈值** = **测试位置数-2，最少有5个测试位置。**|
 
 ## <a name="configuration"></a>配置
 
@@ -96,7 +92,7 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 
     ![StartTime](./media/availability-multistep/app-insights-72webtest-plugins.png)
 
-现在，将测试上传到门户。 每次运行测试时，它将使用动态值。
+现在，将测试上传到门户。 它会在每次运行测试时使用动态值。
 
 ### <a name="dealing-with-sign-in"></a>处理登录
 
@@ -104,22 +100,22 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 
 在所有情况下，应该只针对测试目的在应用程序中创建帐户。 如果可能，请限制此测试帐户的权限，以便 Web 测试不会影响实际用户。
 
-**简单的用户名和密码** 以普通方式录制 Web 测试。 先删除 Cookie。
+**简单的用户名和密码**以常规方式记录 web 测试。 先删除 Cookie。
 
 **SAML 身份验证**
 
-|属性名称| 描述|
+|属性名称| 说明|
 |----|-----|
 | 受众 Uri | SAML 标记的受众 URI。  这是访问控制服务（ACS）的 URI，包括 ACS 命名空间和主机名。 |
 | 证书密码 | 将授予对嵌入私钥的访问权限的客户端证书的密码。 |
 | 客户端证书  | 具有 Base64 编码格式的私钥的客户端证书值。 |
 | 名称标识符 | 标记的名称标识符 |
-| 不晚于 | 标记有效的时间跨度。  默认值为 5 分钟。 |
+| 不晚 | 标记有效的时间跨度。  默认为 5 分钟。 |
 | 不早于 | 在过去创建的标记将有效的时间跨度（用于处理时间偏差）。  默认值为（负）5分钟。 |
 | 目标上下文参数名称 | 将接收生成的断言的上下文参数。 |
 
 
-**客户端机密** 如果应用的某个登录路由涉及到客户端机密，请使用该路由。 例如，Azure Active Directory (AAD) 就是提供客户端机密登录的服务。 在 AAD 中，客户端机密是应用密钥。
+**客户端密码**如果你的应用有涉及客户端机密的登录路由，请使用该路由。 例如，Azure Active Directory (AAD) 就是提供客户端机密登录的服务。 在 AAD 中，客户端机密是应用密钥。
 
 下面是使用应用密钥的 Azure Web 应用的 Web 测试示例：
 
@@ -148,4 +144,4 @@ Web 测试日期时间插件提供处理时间参数化的方式。
 ## <a name="next-steps"></a>后续步骤
 
 * [可用性警报](availability-alerts.md)
-* [URL ping Web 测试](monitor-web-app-availability.md)
+* [Url ping web 测试](monitor-web-app-availability.md)

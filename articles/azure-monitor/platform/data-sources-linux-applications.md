@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集 Linux 应用程序性能数据 | Microsoft Docs
 description: 本文提供了有关对 Log Analytics Linux 代理进行配置以收集 MySQL 和 Apache HTTP Server 的性能计数器的详细信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395833"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670553"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure Monitor 中收集 Linux 应用程序的性能计数器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -42,9 +41,9 @@ MySQL 身份验证文件存储在 `/var/opt/microsoft/mysql-cimprov/auth/omsagen
 
 下表描述了身份验证文件中的条目。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--|:--|
-| Port | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
+| 端口 | 表示 MySQL 实例正在侦听的当前端口。 端口 0 指定后面的属性用于默认实例。 |
 | 绑定地址| 当前 MySQL 绑定地址。 |
 | username| 用来监视 MySQL 服务器实例的 MySQL 用户。 |
 | Base64 编码的密码| MySQL 监视用户的密码（采用 Base64 编码）。 |
@@ -55,7 +54,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了示例实例设置 
 
-| Description | 文件 |
+| 说明 | 文件 |
 |:--|:--|
 | 默认实例和端口为 3308 的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 默认实例和端口为 3308 且采用不同用户名和密码的实例。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -71,7 +70,7 @@ MySQL OMI 身份验证文件可以定义一个默认的实例和端口号，以�
 
 下表提供了有关 mycimprovauth 的使用语法的详细信息。
 
-| 操作 | 示例 | Description
+| Operation | 示例 | 说明
 |:--|:--|:--|
 | autoupdate *false or true* | mycimprovauth autoupdate false | 设置在重新启动或更新时是否会自动更新身份验证文件。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | 在 MySQL OMI 身份验证文件中设置默认实例。<br>应当以纯文本输入密码字段 - MySQL OMI 身份验证文件中的密码将是 Base 64 编码的。 |

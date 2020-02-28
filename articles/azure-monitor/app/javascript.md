@@ -1,18 +1,16 @@
 ---
 title: 适用于 JavaScript web 应用的 Azure 应用程序 Insights
 description: 获取页面视图和会话计数、web 客户端数据、单页面应用程序（SPA）和跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276786"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661339"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -63,7 +61,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测发送到 Azure 门户
 
-默认情况下，Application Insights JavaScript SDK autocollects 许多遥测项，有助于确定应用程序的运行状况和基础用户体验。 具体包括：
+默认情况下，Application Insights JavaScript SDK autocollects 许多遥测项，有助于确定应用程序的运行状况和基础用户体验。 其中包括：
 
 - 在应用中未捕获到的**异常**，包括有关
     - 堆栈跟踪
@@ -100,7 +98,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>配置
 大多数配置字段的名称都可以默认为 false。 除 `instrumentationKey`之外，所有字段都是可选的。
 
-| 名称 | 默认 | Description |
+| 名称 | 默认 | 说明 |
 |------|---------|-------------|
 | instrumentationKey | Null | **必需**<br>从 Azure 门户获取的检测密钥。 |
 | accountId | Null | 可选帐户 ID （如果你的应用将用户分组到帐户中）。 无空格、逗号、分号、等于或竖线 |
@@ -112,7 +110,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | disableTelemetry | false | 如果为 true，则不收集或发送遥测数据。 默认值为 false。 |
 | enableDebug | false | 如果为 true，则**内部**调试数据将作为异常引发，**而不**是记录，不管 SDK 日志记录设置如何。 默认值为 false。 <br>***注意：*** 如果启用此设置，则在发生内部错误时，将导致丢弃遥测数据。 这对于快速识别配置或使用 SDK 的问题很有用。 如果你不希望在调试时丢失遥测数据，请考虑使用 `consoleLoggingLevel` 或 `telemetryLoggingLevel` 而不是 `enableDebug`。 |
 | loggingLevelConsole | 0 | 将**内部**Application Insights 错误记录到控制台。 <br>0：关， <br>1：仅严重错误， <br>2：所有内容（错误 & 警告） |
-| loggingLevelTelemetry | 第 | 将**内部**Application Insights 错误作为遥测数据发送。 <br>0：关， <br>1：仅严重错误， <br>2：所有内容（错误 & 警告） |
+| loggingLevelTelemetry | 1 | 将**内部**Application Insights 错误作为遥测数据发送。 <br>0：关， <br>1：仅严重错误， <br>2：所有内容（错误 & 警告） |
 | diagnosticLogInterval | 10000 | internal内部日志记录队列的轮询间隔（毫秒） |
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为100，表示发送所有事件。 如果希望为大型应用程序保留数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则在 pageview 上，将跟踪以前检测的页面的视图时间并将其作为遥测发送，并为当前 pageview 启动新的计时器。 默认值为 false。 |
@@ -175,7 +173,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>分析 
+### <a name="analytics"></a>Analytics 
 
 若要查询 JavaScript SDK 收集的遥测数据，请**在 "日志（分析）** " 按钮中选择 "查看"。 通过添加 `client_Type == "Browser"`的 `where` 语句，你只会看到来自 JavaScript SDK 的数据，其他 Sdk 收集的任何服务器端遥测都将被排除。
  
@@ -254,7 +252,7 @@ SDK V2 版本中的重大更改：
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-最新✔ |  Firefox 最新✔ | IE 9 + & Microsoft Edge✔ | Opera 最新✔ | Safari 最新✔ |
+最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔ | Opera 最新✔ | Safari 最新✔ |
 
 ## <a name="open-source-sdk"></a>开源 SDK
 

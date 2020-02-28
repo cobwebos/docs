@@ -1,19 +1,15 @@
 ---
 title: Application Insights 中的智能检测 - 失败异常 | Microsoft 文档
 description: 将针对到 Web 应用的失败请求速率的异常变化向用户发出警报，并提供诊断分析。 无需进行配置。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912844"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671743"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智能检测 - 失败异常
 如果你的 web 应用遇到失败请求率的异常上升， [Application Insights](../../azure-monitor/app/app-insights-overview.md)会以近乎实时的速度自动向你发出警报。 它会对 HTTP 请求速率或报告为失败的依赖项调用的异常上升进行检测。 对于请求，失败的请求通常具有400或更高版本的响应代码。 为了帮助你诊断和诊断问题，警报详细信息中提供了对失败和相关应用程序数据特征的分析。 还提供指向 Application Insights 门户的链接，以供进一步诊断。 该功能不需要任何设置或配置，因为它使用机器学习算法来预测正常的失败率。
@@ -37,7 +33,7 @@ ms.locfileid: "75912844"
 ## <a name="benefits-of-smart-detection"></a>智能检测的优点
 普通[指标警报](../../azure-monitor/app/alerts.md)会通知你可能存在问题。 但智能检测会为你启动诊断工作，并执行大量分析，否则你将需要自己执行此操作。 结果将整齐地打包，以帮助你快速找到问题的根源。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 智能检测监视从应用收到的数据，尤其是失败率。 此规则计算 `Successful request` 属性为 False 的请求数，和 `Successful call` 属性为 False 的依赖项调用数。 对于请求而言，默认情况下，`Successful request == (resultCode < 400)`（除非已将自定义代码写入[筛选器](../../azure-monitor/app/api-filtering-sampling.md#filtering)或生成自己的 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 调用）。 
 
 应用性能具有典型的行为模式。 某些请求或依赖项调用更容易出现失败，而且总体失败率可能会随着负载的增加而上升。 智能检测使用机器学习来查找这些异常。
@@ -336,11 +332,11 @@ ms.locfileid: "75912844"
 
 *那么，您正在查看我的应用程序数据？*
 
-* 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+* 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 
 *是否需要订阅此警报？*
 
-* 不。 每个发送请求数据的应用程序都有智能检测警报规则。
+* 不是。 每个发送请求数据的应用程序都有智能检测警报规则。
 
 *是否可以取消订阅或者获取已发送至同事的通知？*
 

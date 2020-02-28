@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 中的线路数据解决方案 |Microsoft Docs
 description: 线路数据是具有 Log Analytics 代理的计算机提供的整合网络和性能数据。 网络数据与日志数据结合在一起，可帮助将数据相关联。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365795"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670638"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 Wire Data 2.0 （预览版）解决方案
 
@@ -74,7 +73,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 Dependency Agent �
 
 如果你的 Windows 或 Linux 计算机无法直接连接到服务，则需要使用 Log Analytics 网关配置 Log Analytics 代理以连接到 Azure Monitor。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -256,7 +255,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>期望状态配置
+### <a name="desired-state-configuration"></a>Desired State Configuration
 
 若要通过所需状态配置部署依赖关系代理，可以使用 xPSDesiredStateConfiguration 模块和类似于下面的代码：
 
@@ -382,7 +381,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 将为每种输入数据创建 _WireData_ 类型的记录。 WireData 记录具有下表中所示的属性：
 
-| 属性 | Description |
+| properties | 说明 |
 |---|---|
 | Computer | 从中收集了数据的计算机名称 |
 | TimeGenerated | 记录的时间 |

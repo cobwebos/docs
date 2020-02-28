@@ -1,23 +1,22 @@
 ---
 title: Azure Monitor 中的代理运行状况解决方案 |Microsoft Docs
 description: 本文旨在帮助你了解如何使用此解决方案来监视代理的运行状况，这些代理直接向 Log Analytics 或 System Center Operations Manager 报告。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062126"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663247"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor 中直接向 Log Analytics 工作区进行报告的所有代理，或连接到 Azure Monitor 的 System Center Operations Manager 管理组，这是无响应的，正在提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../../log-analytics/log-analytics-windows-agent.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)报告。
 
 ## <a name="solution-components"></a>解决方案组件
@@ -68,7 +67,7 @@ Azure 中的代理运行状况解决方案可帮助你了解在 Azure Monitor �
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。  这些记录的属性在下表中列出。  
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | `Type` | Heartbeat|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|

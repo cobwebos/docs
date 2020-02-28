@@ -1,18 +1,18 @@
 ---
 title: 修正不符合资源
 description: 本指南将指导你完成对 Azure 策略中的策略不符合的资源的修正。
-ms.date: 09/09/2019
+ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544175"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670791"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
-不符合**deployIfNotExists**或**修改**策略的资源可通过**修正**置于符合状态。 修正是通过指示 Azure 策略对现有资源运行**deployIfNotExists**效果或已分配策略的标记**操作**来完成的。 本文介绍了了解和完成 Azure 策略更正所需的步骤。
+不符合**deployIfNotExists**或**修改**策略的资源可通过**修正**置于符合状态。 更正是通过指导 Azure 策略对现有资源运行已分配策略的**deployIfNotExists**效果或标记**操作**来实现的，无论该分配是对管理组、订阅、资源组还是单个资源。 本文介绍了了解和完成 Azure 策略更正所需的步骤。
 
 ## <a name="how-remediation-security-works"></a>修正安全的工作原理
 

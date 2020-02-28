@@ -1,18 +1,17 @@
 ---
 title: Windows Azure 诊断扩展（WAD）配置架构版本历史记录
 description: 有关收集 Azure 虚拟机、VM 规模集、Service Fabric 和云服务中的性能计数器的信息。
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 20d9cdf264e62bc901c8e821065527a1d067b2db
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 4dd91363cdebf18e6303238816e8269065a6a317
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472539"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672236"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Windows Azure 诊断扩展（WAD）配置架构版本和历史记录
 本文提供作为 Microsoft Azure SDK 的一部分提供的[Windows Azure 诊断扩展](diagnostics-extension-overview.md)的版本历史记录。  

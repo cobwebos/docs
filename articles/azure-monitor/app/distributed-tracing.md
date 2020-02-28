@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 中的分布式跟踪 | Microsoft Docs
 description: 介绍 Microsoft 如何在 OpenCensus 项目中通过本地转发器和合作伙伴关系提供对分布式跟踪的支持
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242452"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669584"
 ---
 # <a name="what-is-distributed-tracing"></a>什么是分布式跟踪？
 
@@ -40,7 +38,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python （预览）](opencensus-python.md)
+* [Python（预览版）](opencensus-python.md)
 
 安装并配置适当的 Application Insights SDK 以后，系统就会通过 SDK 依赖项自动收集器自动收集常用框架、库和技术的跟踪信息。 [依赖项自动收集文档](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)中提供支持的技术的完整列表。
 
@@ -50,7 +48,7 @@ Azure Monitor 还提供[应用程序映射](https://docs.microsoft.com/azure/app
 
 除了 Application Insights SDK，Application Insights 还可以通过 [OpenCensus](https://opencensus.io/) 来支持分布式跟踪。 OpenCensus 是库的单发行版，开源且不局限于供应商，可以针对服务进行指标收集和分布式跟踪。 它还允许开源社区针对 Redis、Memcached 或 MongoDB 之类的常用技术启用分布式跟踪。 [Microsoft 与多个其他的监视项目和云项目合作伙伴进行 OpenCensus 协作](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)。
 
-[Python （预览）](opencensus-python.md) 
+[Python（预览版）](opencensus-python.md) 
 
 OpenCensus 网站保留了 [Python](https://opencensus.io/api/python/trace/usage.html) 和 [Go](https://godoc.org/go.opencensus.io) 的 API 参考文档，此外还有各种不同的 OpenCensus 使用指南。 
 

@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集自定义 JSON 数据 | Microsoft Docs
 description: 可以使用适用于 Linux 的 Log Analytics 代理将自定义 JSON 数据源收集到 Azure Monitor 中。  这些自定义数据源可以是返回 JSON 的简单脚本，例如 curl 或 FluentD 的 300 多个插件之一。 本文介绍此数据收集所需的配置。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e636fef31951e172f57c715ac7e080b35a978bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450610"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662155"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure Monitor 中使用适用于 Linux 的 Log Analytics 代理收集自定义 JSON 数据源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -29,7 +28,7 @@ ms.locfileid: "75450610"
 
 要在 Azure Monitor 中收集 JSON 数据，请将 `oms.api.` 添加到输入插件中 FluentD 标记的起始位置。
 
-例如，下面是 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 中一个单独的配置文件 `exec-json.conf`。  此配置文件使用 FluentD 插件 `exec` 每隔 30 秒运行一个 curl 命令。  此命令的输出由 JSON 输出插件收集。
+例如，下面是 `exec-json.conf` 中一个单独的配置文件 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`。  此配置文件使用 FluentD 插件 `exec` 每隔 30 秒运行一个 curl 命令。  此命令的输出由 JSON 输出插件收集。
 
 ```
 <source>
@@ -83,7 +82,7 @@ ms.locfileid: "75450610"
 ## <a name="output"></a>输出
 数据将以记录类型 `<FLUENTD_TAG>_CL` 收集到 Azure Monitor 中。
 
-例如，Azure Monitor 中具有 `tomcat_CL` 记录类型的自定义标记 `tag oms.api.tomcat`。  可以使用以下日志查询检索此类型的所有记录。
+例如，Azure Monitor 中具有 `tag oms.api.tomcat` 记录类型的自定义标记 `tomcat_CL`。  可以使用以下日志查询检索此类型的所有记录。
 
     Type=tomcat_CL
 

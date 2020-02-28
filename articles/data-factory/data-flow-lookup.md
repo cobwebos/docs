@@ -6,19 +6,19 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655051"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
 
 使用“查找”将其他源的参考数据添加到数据流中。 查找转换需要一个定义的源，它指向你的引用表并匹配关键字段。
 
-![Lookup Transformation](media/data-flow/lookup1.png "查找")
+![查找转换](media/data-flow/lookup1.png "查找")
 
 选择要在传入流字段和参考源字段之间匹配的关键字段。 必须先在数据流设计画布上创建一个新源，以在右侧用于查找。
 
@@ -36,9 +36,19 @@ ms.locfileid: "74930320"
 
 ## <a name="first-or-last-value"></a>第一个或最后一个值
 
-如果有多个匹配项与查找相匹配，则可能需要选取第一个或最后一个匹配项来减少多个匹配行。 您可以在查找后使用聚合转换来执行此操作。
+查找转换以左外部联接的形式实现。 如果你有多个匹配项与查找，则可能需要选取第一个匹配行、最后一个匹配项或任意随机行来减少多个匹配行。
 
-在这种情况下，会使用一个名为 ```PickFirst``` 的聚合转换选取查找匹配项中的第一个值。
+### <a name="option-1"></a>选项 1
+
+![单行查找](media/data-flow/singlerowlookup.png "单行查找")
+
+* 匹配多个行：将其留空可返回单个行匹配
+* 匹配时间：选择第一个、最后一个或任意匹配
+* 排序条件：如果选择 "第一个" 或 "最后一个"，则 ADF 要求对数据进行排序，以便在第一个和最后一个逻辑后面出现逻辑
+
+### <a name="option-2"></a>方法 2
+
+您还可以在查找后使用聚合转换来执行此操作。 在这种情况下，会使用一个名为 ```PickFirst``` 的聚合转换选取查找匹配项中的第一个值。
 
 ![查找聚合](media/data-flow/lookup333.png "查找聚合")
 

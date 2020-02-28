@@ -1,18 +1,17 @@
 ---
 title: 使用 PowerShell 创建和配置 Log Analytics 工作区 | Microsoft 文档
 description: Azure Monitor 将数据存储在本地或云基础结构中的服务器上，Log Analytics 工作区。 当由 Azure 诊断生成时，可从 Azure 存储收集计算机数据。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363517"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659265"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>使用 PowerShell 管理 Azure Monitor 中的 Log Analytics 工作区
 
@@ -37,7 +36,7 @@ ms.locfileid: "75363517"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 这些示例适用于 Microsoft.operationalinsights 模块的1.0.0 版或更高版本。
 
 
@@ -212,7 +211,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | IoT 中心                |     | 是 |
 | Key Vault               | 是 | |
 | 负载均衡器          | 是 | |
-| Logic Apps              | 是 | 是 |
+| 逻辑应用              | 是 | 是 |
 | 网络安全组 | 是 | |
 | 用于 Redis 的 Azure 缓存             |     | 是 |
 | 搜索服务         | 是 | 是 |

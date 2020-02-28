@@ -1,18 +1,17 @@
 ---
 title: Azure 诊断扩展概述
 description: 使用 Azure 诊断在云服务、虚拟机和 Service Fabric 中进行调试、性能度量、监视和流量分析
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467987"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672372"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure 诊断扩展概述
 Azure 诊断扩展是[Azure Monitor 中](agents-overview.md)的一个代理，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文概述了 Azure 诊断扩展，其中包括它支持的特定功能以及用于安装和配置的选项。 
@@ -86,7 +85,7 @@ LAD 将数据写入 Azure 存储中的表。 它支持下表中的接收器。
 
 
 ## <a name="installation-and-configuration"></a>安装和配置
-诊断扩展在 Azure 中实现为[虚拟机扩展](/virtual-machines/extensions/overview)，因此，它支持使用资源管理器模板、POWERSHELL 和 CLI 的相同安装选项。 有关安装和维护虚拟机扩展的常规详细信息，请参阅适用[于 Windows 的虚拟机扩展和功能](/virtual-machines/extensions/features-windows)以及适用于[Linux 的虚拟机扩展和功能](/virtual-machines/extensions/features-linux)。
+诊断扩展在 Azure 中实现为[虚拟机扩展](../../virtual-machines/extensions/overview.md)，因此，它支持使用资源管理器模板、POWERSHELL 和 CLI 的相同安装选项。 有关安装和维护虚拟机扩展的常规详细信息，请参阅适用[于 Windows 的虚拟机扩展和功能](../../virtual-machines/extensions/features-windows.md)以及适用于[Linux 的虚拟机扩展和功能](../../virtual-machines/extensions/features-linux.md)。
 
 你还可以在虚拟机菜单的 "**监视**" 部分下的 "**诊断设置**" 下的 "Azure 门户中安装和配置 Windows 和 Linux 诊断扩展。
 

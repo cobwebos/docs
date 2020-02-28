@@ -1,18 +1,16 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
 description: Application Insights 代理 API 参考。 Set-ApplicationInsightsMonitoringConfig. 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 45dcd2374fc5be40f86d403f8daccf4a6f1d6997
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1226b3e10adf786ed3335844a5d3f4e530911705
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189425"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671233"
 ---
 # <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
 
@@ -53,7 +51,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
           @{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault'}})
 ```
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 ### <a name="-instrumentationkey"></a>-InstrumentationKey
 **必需。** 此参数用于提供单个检测密钥，供目标计算机上的所有应用使用。
@@ -82,7 +80,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 **通用参数。** 使用此开关显示详细日志。
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>输出
 
 默认情况下，没有输出。
 

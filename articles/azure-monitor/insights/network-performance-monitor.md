@@ -1,18 +1,17 @@
 ---
 title: Azure 中的网络性能监视器解决方案 | Microsoft Docs
 description: Azure 中的网络性能监视器可以近乎实时地监视网络性能，以检测并找到网络性能瓶颈。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403148"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654471"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -171,7 +170,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 下表显示了数据收集方法，以及有关如何为网络性能监视器收集数据的其他详细信息。
 
-| 平台 | 直接代理 | System Center Operations Manager 代理 | Azure 存储器 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
+| 平台 | 直接代理 | System Center Operations Manager 代理 | Azure 存储 | 需要 Operations Manager？ | Operations Manager 代理数据通过管理组发送 | 收集频率 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |每隔 5 秒发送 TCP 握手/ICMP ECHO 消息，每隔 3 分钟发送数据 |
  
@@ -276,7 +275,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 通知将按照 [Azure Monitor 定价页中的通知定价](https://azure.microsoft.com/pricing/details/monitor/)单独收费。
 
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 [联机](network-performance-monitor-pricing-faq.md)提供了有关定价的信息。
 

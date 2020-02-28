@@ -3,17 +3,16 @@ title: Azure Monitor 指标图表的疑难解答
 description: 排查创建、自定义或解释指标图表时遇到的问题
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974875"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659656"
 ---
 # <a name="troubleshooting-metrics-charts"></a>指标图表疑难解答
 
@@ -29,7 +28,7 @@ ms.locfileid: "75974875"
 
 1. 确保已选择正确的资源组。
     > [!WARNING]
-    > 为了获得最佳性能，在首次打开指标资源管理器时，"**资源组**" 下拉列表中没有预先选择的资源组。 必须先选择至少一个组才会显示资源。
+    > 为达到最佳性能，首次打开指标资源管理器时，“资源组”下拉列表中没有预先选择的资源组。 必须先选择至少一个组才会显示资源。
 
 ## <a name="chart-shows-no-data"></a>图表未显示数据
 

@@ -1,23 +1,21 @@
 ---
 title: 为 Azure Service Fabric、云服务和虚拟机中的 .NET 应用启用 Snapshot Debugger |Microsoft Docs
 description: 为 Azure Service Fabric、云服务和虚拟机中的 .NET 应用启用 Snapshot Debugger
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 98ceeeb8efb11e2caeffadeb48270c419cc7e430
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 194a2da23c8fb405c492df8f6ee173cc97fde4ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899816"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671330"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>为 Azure Service Fabric、云服务和虚拟机中的 .NET 应用启用 Snapshot Debugger
 
-如果 ASP.NET 或 ASP.NET 核心应用程序 Azure App Service 中运行，强烈建议[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 但是，如果应用程序需要自定义的 Snapshot Debugger 配置或 .NET core 的预览版本，则***除了***[通过 Application Insights 门户启用的说明外，还应遵循此说明页面](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。
+如果 ASP.NET 或 ASP.NET 核心应用程序 Azure App Service 中运行，强烈建议[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 但是，如果应用程序需要自定义的 Snapshot Debugger 配置，或 .NET core 的预览版本，则除了[通过 Application Insights 门户页启用](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的说明***外，还***应遵循以下说明。
 
 如果你的应用程序在 Azure Service Fabric、云服务、虚拟机或本地计算机中运行，则应使用以下说明。 
     

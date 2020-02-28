@@ -2,13 +2,13 @@
 title: 按资源类型移动操作支持
 description: 列出了可移动到新资源组或订阅的 Azure 资源类型。
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 3fe404b8b501056f75ac45ccebc5bdbed1acbe43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/26/2020
+ms.openlocfilehash: 8ab194ad240e4f3e0994314ef9ade3bc7159cf81
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705473"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671840"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 它还提供有关移动资源时要考虑的特殊情况的信息。
@@ -76,6 +76,7 @@ ms.locfileid: "76705473"
 > - [DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [DigitalTwins](#microsoftdigitaltwins)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
@@ -86,8 +87,7 @@ ms.locfileid: "76705473"
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
 > - [Microsoft.HDInsight](#microsofthdinsight)
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute
-](#microsofthybridcompute)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
@@ -134,7 +134,6 @@ ms.locfileid: "76705473"
 > - [ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [SecurityInsights](#microsoftsecurityinsights)
@@ -480,7 +479,7 @@ ms.locfileid: "76705473"
 > | reservationtransactions | 否 | 否 |
 > | 标记 | 否 | 否 |
 > | tenants | 否 | 否 |
-> | 规定 | 否 | 否 |
+> | terms | 否 | 否 |
 > | usagedetails | 否 | 否 |
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
@@ -538,10 +537,10 @@ ms.locfileid: "76705473"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | alerts | 否 | 否 |
+> | 警报 | 否 | 否 |
 > | 预算 | 否 | 否 |
 > | 连接器 | 是 | 是 |
-> | 方面 | 否 | 否 |
+> | 维数 | 否 | 否 |
 > | 导出 | 否 | 否 |
 > | externalsubscriptions | 否 | 否 |
 > | 预测 | 否 | 否 |
@@ -563,7 +562,7 @@ ms.locfileid: "76705473"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 相关性 | 否 | 否 |
+> | 关联 | 否 | 否 |
 > | resourceproviders | 是 | 是 |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
@@ -733,6 +732,13 @@ ms.locfileid: "76705473"
 > | 实验室/virtualmachines | 是 | 否 |
 > | schedules | 是 | 是 |
 
+## <a name="microsoftdigitaltwins"></a>DigitalTwins
+
+> [!div class="mx-tableFixed"]
+> | 资源类型 | 资源组 | 订阅 |
+> | ------------- | ----------- | ---------- |
+> | digitaltwinsinstances | 否 | 否 |
+
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -847,7 +853,6 @@ ms.locfileid: "76705473"
 > | actiongroups | 是 | 是 |
 > | activitylogalerts | 否 | 否 |
 > | alertrules | 是 | 是 |
-> | automatedexportsettings | 否 | 否 |
 > | autoscalesettings | 是 | 是 |
 > | baseline | 否 | 否 |
 > | calculatebaseline | 否 | 否 |
@@ -862,8 +867,9 @@ ms.locfileid: "76705473"
 > | metricbaselines | 否 | 否 |
 > | metricdefinitions | 否 | 否 |
 > | metricnamespaces | 否 | 否 |
-> | 指标 | 否 | 否 |
+> | metrics | 否 | 否 |
 > | myworkbooks | 否 | 否 |
+> | privatelinkscopes | 是 | 是 |
 > | scheduledqueryrules | 是 | 是 |
 > | 拓扑 | 否 | 否 |
 > | 事务 | 否 | 否 |
@@ -995,6 +1001,7 @@ ms.locfileid: "76705473"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | workspaces | 否 | 否 |
+> | 工作区/计算 | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -1079,8 +1086,10 @@ ms.locfileid: "76705473"
 > | dnszones | 是 | 是 |
 > | expressroutecircuits | 否 | 否 |
 > | expressroutegateways | 否 | 否 |
+> | firewallpolicies | 是 | 是 |
 > | frontdoors | 否 | 否 |
 > | frontdoorwebapplicationfirewallpolicies | 否 | 否 |
+> | ipgroups | 是 | 是 |
 > | loadbalancers | 是-基本 SKU<br>无标准 SKU | 是-基本 SKU<br>无标准 SKU |
 > | localnetworkgateways | 是 | 是 |
 > | networkexperimentprofiles | 是 | 是 |
@@ -1088,11 +1097,11 @@ ms.locfileid: "76705473"
 > | networkinterfaces | 是 | 是 |
 > | networkprofiles | 否 | 否 |
 > | networksecuritygroups | 是 | 是 |
-> | networkwatchers | 是 | 是 |
-> | networkwatchers / connectionmonitors | 是 | 是 |
-> | networkwatchers / flowlogs | 是 | 是 |
-> | networkwatchers/重用功能区 | 是 | 是 |
-> | networkwatchers / pingmeshes | 是 | 是 |
+> | networkwatchers | 是 | 否 |
+> | networkwatchers / connectionmonitors | 是 | 否 |
+> | networkwatchers / flowlogs | 是 | 否 |
+> | networkwatchers/重用功能区 | 是 | 否 |
+> | networkwatchers / pingmeshes | 是 | 否 |
 > | p2svpngateways | 否 | 否 |
 > | privatednszones | 是 | 是 |
 > | privatednszones / virtualnetworklinks | 是 | 是 |
@@ -1275,13 +1284,6 @@ ms.locfileid: "76705473"
 > | ------------- | ----------- | ---------- |
 > | 应用程序 | 是 | 否 |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | 资源类型 | 资源组 | 订阅 |
-> | ------------- | ----------- | ---------- |
-> | jobcollections | 是 | 是 |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1300,12 +1302,11 @@ ms.locfileid: "76705473"
 > | adaptivenetworkhardenings | 否 | 否 |
 > | advancedthreatprotectionsettings | 否 | 否 |
 > | assessmentmetadata | 否 | 否 |
-> | 风险 | 否 | 否 |
+> | 个评估 | 否 | 否 |
 > | 自动化 | 是 | 是 |
 > | complianceresults | 否 | 否 |
 > | 符合性要求 | 否 | 否 |
 > | datacollectionagents | 否 | 否 |
-> | datacollectionresults | 否 | 否 |
 > | devicesecuritygroups | 否 | 否 |
 > | informationprotectionpolicies | 否 | 否 |
 > | iotsecuritysolutions | 是 | 是 |
@@ -1316,14 +1317,16 @@ ms.locfileid: "76705473"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | 聚合 | 否 | 否 |
+> | aggregations | 否 | 否 |
 > | alertrules | 否 | 否 |
 > | alertruletemplates | 否 | 否 |
 > | 书签 | 否 | 否 |
 > | cases | 否 | 否 |
 > | dataconnectors | 否 | 否 |
+> | dataconnectorscheckrequirements | 否 | 否 |
 > | 实体 | 否 | 否 |
 > | entityqueries | 否 | 否 |
+> | 发生 | 否 | 否 |
 > | officeconsents | 否 | 否 |
 > | 设置 | 否 | 否 |
 
@@ -1353,6 +1356,7 @@ ms.locfileid: "76705473"
 > | containergroups | 否 | 否 |
 > | containergroupsets | 否 | 否 |
 > | edgeclusters | 否 | 否 |
+> | managedclusters | 否 | 否 |
 > | networks | 否 | 否 |
 > | secretstores | 否 | 否 |
 > | volumes | 否 | 否 |
@@ -1409,6 +1413,8 @@ ms.locfileid: "76705473"
 > | 服务器 | 是 | 是 |
 > | 服务器/数据库 | 是 | 是 |
 > | 服务器/elasticpools | 是 | 是 |
+> | 服务器/jobaccounts | 是 | 是 |
+> | 服务器/jobagents | 是 | 是 |
 > | virtualclusters | 是 | 是 |
 
 > [!IMPORTANT]
@@ -1497,7 +1503,6 @@ ms.locfileid: "76705473"
 > [!div class="mx-tableFixed"]
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
-> | createsupportticket | 否 | 否 |
 > | supporttickets | 否 | 否 |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
@@ -1530,8 +1535,8 @@ ms.locfileid: "76705473"
 > | 资源类型 | 资源组 | 订阅 |
 > | ------------- | ----------- | ---------- |
 > | account | 否 | 否 |
-> | 帐户/扩展 | 否 | 否 |
-> | 帐户/项目 | 否 | 否 |
+> | 帐户/扩展 | 是 | 是 |
+> | 帐户/项目 | 是 | 是 |
 
 > [!IMPORTANT]
 > 若要更改 Azure DevOps 的订阅，请参阅[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)。

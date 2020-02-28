@@ -1,32 +1,28 @@
 ---
 title: 适用于 Azure 云服务的 Application Insights | Microsoft Docs
 description: 使用 Application Insights 有效监视 Web 角色和辅助角色
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979856"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655831"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>适用于 Azure 云服务的 Application Insights
 [Application Insights][start]可以通过将来自 Application Insights sdk 的数据与云服务中的[Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)数据相结合，监视[Azure 云服务应用](https://azure.microsoft.com/services/cloud-services/)的可用性、性能、故障和使用情况。 通过收到的有关应用在现实中的性能和有效性的反馈，可以针对每个开发生命周期确定合理的设计方向。
 
 ![“概述”仪表板](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 开始前，需要具备：
 
 * 一个 [Azure](https://azure.com) 订阅。 使用 Windows、XBox Live 或其他 Microsoft 云服务的 Microsoft 帐户登录。 
 * Microsoft Azure Tools 2.9 或更高版本。
 * Developer Analytics Tools 7.10 或更高版本。
 
-## <a name="get-started-quickly"></a>快速启动
+## <a name="get-started-quickly"></a>快速入门
 使用 Application Insights 监视云服务的最快、最简单方法是将服务发布到 Azure 时选择 Application Insights 选项。
 
 ![示例“诊断设置”页](./media/cloudservices/azure-cloud-application-insights.png)
@@ -86,7 +82,7 @@ ms.locfileid: "75979856"
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>为每个角色设置 Azure 诊断
 设置此选项可以使用 Application Insights 监视应用。 对于 Web 角色，此选项可提供性能监视、警报、诊断以及使用情况分析。 对于其他角色，可以搜索和监视 Azure 诊断信息，例如重启、性能计数器和对 System.Diagnostics.Trace 的调用。 
 
-1. 在 Visual Studio 解决方案资源管理器中的“\<YourCloudService>” > “角色”下面，打开每个角色的属性。
+1. 在 Visual Studio 解决方案资源管理器中的“**YourCloudService>”\<“角色”下面，打开每个角色的属性。**  > 
 
 1. 在“配置”中，选中“将诊断数据发送到 Application Insights”复选框，然后选择前面创建的 Application Insights 资源。
 
@@ -107,22 +103,22 @@ ms.locfileid: "75979856"
 
 1. 配置**辅助角色**： 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 右键单击项目，并选择“管理 NuGet 包”。
+    a. 右键单击项目，并选择“管理 NuGet 包”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
+    b. 添加[适用于 Windows Server 的 Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)。
 
     ![搜索“Application Insights”](./media/cloudservices/04-ai-nuget.png)
 
 1. 将 SDK 配置为向 Application Insights 资源发送数据：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在适当的启动函数中，通过 *.cscfg* 文件中的配置设置指定检测密钥：
+    a. 在适当的启动函数中，通过 *.cscfg* 文件中的配置设置指定检测密钥：
  
     ```csharp
    
      TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
     ```
    
-    b.保留“数据库类型”设置，即设置为“共享”。 针对应用中的每个角色重复“步骤 a”。 参阅示例：
+    b. 针对应用中的每个角色重复“步骤 a”。 参阅示例：
    
     * [Web 角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
     * [辅助角色](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
@@ -208,13 +204,13 @@ ms.locfileid: "75979856"
 * [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 有关如何从不同的 Web 应用类型收集未经处理的异常的信息，请参阅[在 Application Insights 中监视异常](../../azure-monitor/app/asp-net-exceptions.md)。
 
 该示例 Web 角色包含 MVC5 和 Web API 2 控制器。 可使用以下处理程序捕获这两个控制器的未经处理的异常：
 
-* [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12)设置 MVC5 控制器的 [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) 
-* [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25)设置 Web API 2 控制器的 [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) 
+* [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs)设置 MVC5 控制器的 [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
+* [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs)设置 Web API 2 控制器的 [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) 
 
 对于辅助角色，可通过两种方式跟踪异常：
 
@@ -250,7 +246,7 @@ ms.locfileid: "75979856"
 
 * [按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36)，将 correlationId 设置到 CallContext 中。 本例使用请求 ID 作为 correlationId。
 * 添加自定义 TelemetryInitializer 实现，将 Operation.Id 设置为前面所设置的 correlationId。 有关示例，请参阅 [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)。
-* 添加自定义遥测初始值设定项。 可[按此示例所示](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)，在 *ApplicationInsights.config* 文件或代码中执行此操作。
+* 添加自定义遥测初始值设定项。 可*按此示例所示*，在 [ApplicationInsights.config](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233) 文件或代码中执行此操作。
 
 ## <a name="client-telemetry"></a>客户端遥测数据
 若要获取基于浏览器的遥测数据（例如页面视图计数、页面加载时间或脚本异常），并在页面脚本中编写自定义遥测，请参阅[将 JAVASCRIPT SDK 添加到网页][client]。

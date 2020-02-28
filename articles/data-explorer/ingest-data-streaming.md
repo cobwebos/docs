@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4a0593ccd6bdf37520e73ba8ed421ec4b10ea52c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623306"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664926"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -76,7 +76,7 @@ ms.locfileid: "77623306"
 * 每个摄取请求的数据大小限制为 4 MB。
 * 架构更新（如创建和修改表和引入映射）可能需要长达5分钟的时间才能进入流式处理引入服务。
 * 即使数据不引入通过流式处理，也要在群集上启用流式引入，使用群集计算机的部分本地 SSD 磁盘来流式处理引入数据，并减少可用于热缓存的存储空间。
-* 无法在流式处理引入数据上设置[区标记](/azure/kusto/management/extents-overview.md#extent-tagging)。
+* 无法在流式处理引入数据上设置[区标记](/azure/kusto/management/extents-overview#extent-tagging)。
 
 流式引入不支持以下功能：
 * [数据库游标](/azure/kusto/management/databasecursor)。

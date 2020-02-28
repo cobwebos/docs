@@ -1,18 +1,16 @@
 ---
 title: 快速入门：带 Azure 应用程序 Insights 的 Java web 应用分析
 description: '使用 Application Insights 监视 Java Web 应用的应用程序性能。 '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963676"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670077"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>快速入门：在 Java web 项目中开始使用 Application Insights
 
@@ -20,7 +18,7 @@ ms.locfileid: "76963676"
 
 Application Insights 是面向 web 开发人员的可扩展分析服务，可帮助你了解实时应用程序的性能和使用情况。 Application Insights 支持 Linux、Unix 或 Windows 上运行的 Java 应用。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * 正常运行的 Java 应用程序。
@@ -38,7 +36,7 @@ Application Insights 是面向 web 开发人员的可扩展分析服务，可帮
 
 *选择项目类型。*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 如果你的项目已设置为使用 Maven 进行生成，请将以下代码合并到*pom .xml*文件。
 
@@ -56,7 +54,7 @@ Application Insights 是面向 web 开发人员的可扩展分析服务，可帮
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 如果你的项目已设置为使用 Gradle 进行生成，请将以下代码合并到*Gradle*文件中。
 
@@ -70,7 +68,7 @@ Application Insights 是面向 web 开发人员的可扩展分析服务，可帮
     }
 ```
 
-# <a name="other-typestabother"></a>[其他类型](#tab/other)
+# <a name="other-types"></a>[其他类型](#tab/other)
 
 请下载[最新版本](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)，将所需文件复制到项目中，替换以前的版本。
 

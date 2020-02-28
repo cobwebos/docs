@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591568"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656377"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -85,7 +85,7 @@ ms.locfileid: "77591568"
 
 ### <a name="upload-a-certificate"></a>上传证书
 
-如果有证书，可以使用现有证书。  还可以根据需要创建自签名证书以用于测试目的。 打开 PowerShell 并使用以下参数运行[new-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，在计算机上的用户证书存储中创建自签名证书： 
+如果有证书，可以使用现有证书。  或者，你可以创建一个自签名证书，*仅用于测试目的*。 打开 PowerShell 并使用以下参数运行[new-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，在计算机上的用户证书存储中创建自签名证书： 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 使用 Windows 控制面板中的 "[管理用户证书](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)" mmc 管理单元将此证书导出到文件。
 
+1. 从 "**开始**" 菜单中选择 "**运行**"，然后输入**certmgr.msc**。
+
+   此时会显示当前用户的证书管理器工具。
+
+1. 若要查看证书，请在左窗格中的 "**证书-当前用户**" 下，展开 "**个人**" 目录。
+1. 右键单击创建的证书，选择 "**所有任务-> 导出**"。
+1. 遵循 "证书导出向导"。  导出私钥，为证书文件指定密码，并将其导出到文件。
+
 上载证书：
 
+1. 选择“Azure Active Directory”。
+1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 选择“证书和机密”。
 1. 选择 "**上传证书**"，并选择证书（现有证书或已导出的自签名证书）。
 
@@ -146,15 +156,21 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 检查订阅权限的方法如下：
 
-1. 在右上角选择你的帐户，然后选择 " **..." > 我的权限**。
+1. 搜索并选择**订阅**，或在**主页**上选择 "**订阅**"。
 
-   ![选择你的帐户和你的用户权限](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![搜索](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. 从下拉列表中，选择要在其中创建服务主体的订阅。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
+1. 选择要在其中创建服务主体的订阅。
+
+   ![选择要分配的订阅](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   如果未看到所需订阅，请选择“全局订阅筛选器”。 请确保已为该门户选择所需的订阅。
+
+1. 选择“我的权限”。 然后，选择“单击此处查看此订阅的完整访问详细信息”。
 
    ![选择要在其中创建服务主体的订阅](./media/howto-create-service-principal-portal/view-details.png)
 
-1. 选择 "**角色分配**" 以查看已分配的角色，并确定是否有足够的权限将角色分配给 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，为用户分配了 "所有者" 角色，这意味着用户拥有足够的权限。
+1. 在 "**角色分配**" 中选择 "**查看**" 以查看已分配的角色，并确定是否有足够的权限将角色分配给 AD 应用。 如果没有，请要求订阅管理员你将添加到用户访问管理员角色。 在下图中，为用户分配了 "所有者" 角色，这意味着用户拥有足够的权限。
 
    ![此示例显示已向用户分配所有者角色](./media/howto-create-service-principal-portal/view-user-role.png)
 

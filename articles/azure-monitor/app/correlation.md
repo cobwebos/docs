@@ -1,19 +1,17 @@
 ---
 title: Azure Application Insights 遥测关联 | Microsoft Docs
 description: Application Insights 遥测关联
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951320"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672049"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -29,7 +27,7 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 每个传出操作（例如，对另一个组件的 HTTP 调用）是由[依赖项遥测](../../azure-monitor/app/data-model-dependency-telemetry.md)表示的。 依赖项遥测还定义其自己的 `id`，这是全局唯一的。 此依赖项调用发起的请求遥测将此 `id` 用作其 `operation_parentId`。
 
-可以结合 `dependency.id` 使用 `operation_Id`、`operation_parentId` 和 `request.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
+可以结合 `operation_Id` 使用 `operation_parentId`、`request.id` 和 `dependency.id`，生成分布式逻辑操作的视图。 这些字段还定义了遥测调用的因果关系顺序。
 
 在微服务环境中，来自组件的跟踪可能会进入不同的存储项。 每个组件可能在 Application Insights 中具有其自身的检测密钥。 若要获取逻辑操作的遥测数据，请 Application Insights 查询每个存储项的数据。 当存储项的数量很大时，你需要在下一步查找的位置提示。 Application Insights 数据模型定义了以下两个字段来解决此问题：`request.source` 和 `dependency.target`。 第一个字段标识启动依赖关系请求的组件。 第二个字段标识哪个组件返回依赖项调用的响应。
 
@@ -206,11 +204,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`，`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
+| `Request`、`PageView`                 | 带 `Span` 的 `span.kind = server`                  |
+| `Dependency`                          | 带 `Span` 的 `span.kind = client`                  |
+| `Id` 和 `Request` 的 `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
+| `Operation_ParentId`                  | `Reference` 类型的 `ChildOf`（父级范围）   |
 
 有关详细信息，请参阅[Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。
 
@@ -267,7 +265,7 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 
 `operation_ParentId` 字段采用 `<trace-id>.<parent-id>`格式，其中 `trace-id` 和 `parent-id` 都取自请求中传递的跟踪标头。
 
-### <a name="log-correlation"></a>日志相关性
+### <a name="log-correlation"></a>日志关联
 
 OpenCensus Python 使你可以通过将跟踪 ID、跨度 ID 和采样标志添加到日志记录来关联日志。 可以通过安装 OpenCensus[日志记录集成](https://pypi.org/project/opencensus-ext-logging/)来添加这些属性。 以下属性将添加到 Python `LogRecord` 对象： `traceId`、`spanId`和 `traceSampled`。 请注意，这仅对在集成后创建的记录器有效。
 

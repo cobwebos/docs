@@ -1,18 +1,17 @@
 ---
 title: 在 Log Analytics 工作区中收集和分析 Azure 活动日志 |Microsoft Docs
 description: 收集 Azure 活动日志 Azure Monitor 日志，并使用监视解决方案跨所有 Azure 订阅分析和搜索 Azure 活动日志。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977659"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668972"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 中 Log Analytics 工作区中的 Azure 活动日志
 
@@ -65,7 +64,7 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ![Azure 活动日志仪表板](media/collect-activity-logs/activity-log-dash.png)
 
-| 可视化部件 | Description |
+| 可视化部件 | 说明 |
 | --- | --- |
 | Azure 活动日志条目 | 显示所选日期范围的排名靠前的 Azure 活动日志条目的条形图，并显示前10个活动调用方的列表。 单击该条形图可针对 `AzureActivity` 运行日志搜索。 单击 "调用方" 项可运行日志搜索，返回该项目的所有活动日志条目。 |
 | 按状态分类的活动日志 | 显示所选日期范围的 Azure 活动日志状态的圆环图以及前十种状态记录的列表。 单击该图表以运行 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`的日志查询。 单击某一状态项可运行日志搜索，返回该状态记录的所有活动日志条目。 |

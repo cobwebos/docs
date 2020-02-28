@@ -1,18 +1,16 @@
 ---
 title: Azure 应用程序 Insights 代理疑难解答和已知问题 |Microsoft Docs
 description: Application Insights 代理和故障排除示例的已知问题。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899589"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671148"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights 代理（以前称为状态监视器 v2）的疑难解答
 
@@ -26,9 +24,9 @@ ms.locfileid: "72899589"
 
 如果这些 Dll 中有任何一个存在于 bin 目录中，则监视可能会失败：
 
-- Applicationinsights.config
-- TelemetryCorrelation .dll
-- DiagnosticSource .dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 其中一些 Dll 包含在 Visual Studio 默认应用程序模板中，即使你的应用程序不使用它们也是如此。
 你可以使用故障排除工具来查看症状行为：
@@ -88,7 +86,7 @@ SDK 配置未向最终用户公开，版本为1.0。
 ### <a name="troubleshooting-powershell"></a>PowerShell 疑难解答
 
 #### <a name="determine-which-modules-are-available"></a>确定可用的模块
-你可以使用 `Get-Module -ListAvailable` 命令确定安装了哪些模块。
+您可以使用 `Get-Module -ListAvailable` 命令来确定安装了哪些模块。
 
 #### <a name="import-a-module-into-the-current-session"></a>将模块导入到当前会话中
 如果某个模块尚未加载到 PowerShell 会话中，则可以使用 `Import-Module <path to psd1>` 命令手动加载该模块。
@@ -97,7 +95,7 @@ SDK 配置未向最终用户公开，版本为1.0。
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Application Insights 代理模块疑难解答
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>列出 Application Insights 代理模块中可用的命令
-运行命令 `Get-Command -Module Az.ApplicationMonitor` 获取可用命令：
+运行命令 `Get-Command -Module Az.ApplicationMonitor` 以获取可用命令：
 
 ```
 CommandType     Name                                               Version    Source
@@ -113,7 +111,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 ```
 
 #### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>确定 Application Insights 代理模块的当前版本
-运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令以显示有关该模块的下列信息：
+运行 `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` 命令以显示有关该模块的以下信息：
    - PowerShell 模块版本
    - Application Insights SDK 版本
    - PowerShell 模块的文件路径
@@ -126,7 +124,7 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 您可以检查已检测计算机上的进程，以确定是否加载了所有 Dll。
 如果监视正常工作，则应加载至少12个 Dll。
 
-使用 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` 命令检查 Dll。
+使用 `Get-ApplicationInsightsMonitoringStatus -InspectProcess` 命令来检查 Dll。
 
 查看[API 参考](status-monitor-v2-api-get-status.md)，了解有关如何使用此 cmdlet 的详细说明。
 
@@ -137,10 +135,10 @@ Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az
 
 1. 从[GitHub](https://github.com/Microsoft/perfview/releases)下载 PerfView 和 PerfView64。
 2. 启动 PerfView64。
-3. 展开 "**高级选项**"。
+3. 展开“高级选项”。
 4. 清除以下复选框：
     - **Zip**
-    - **Merge**
+    - **合并**
     - **.NET 符号集合**
 5. 设置以下**其他提供程序**： `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 

@@ -3,17 +3,16 @@ title: 查看 Azure Monitor 中的 Azure 活动日志事件
 description: 查看 Azure Monitor 中的 Azure 活动日志，并通过 PowerShell、CLI 和 REST API 检索。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749516"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668819"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 
@@ -40,13 +39,13 @@ ms.locfileid: "75749516"
 ## <a name="categories-in-the-activity-log"></a>活动日志中的类别
 活动日志中的每个事件都具有下表中描述的特定类别。 有关这些类别的架构的完整详细信息，请参阅 [Azure 活动日志事件架构](activity-log-schema.md)。 
 
-| 类别 | Description |
+| 类别 | 说明 |
 |:---|:---|
 | 管理 | 包含通过资源管理器执行的所有创建、更新、删除和操作操作的记录。 管理事件的示例包括 "_创建虚拟机_" 和 "_删除网络安全组_"。<br><br>使用资源管理器的用户或应用程序执行的每个操作都作为对特定资源类型的操作进行建模。 如果操作类型为 "_写入_"、"_删除_" 或 "_操作_"，则会在 "管理" 类别中记录该操作的开始、成功或失败记录。 管理事件还包括对订阅中基于角色的访问控制进行的任何更改。 |
 | 服务运行状况 | 包含 Azure 中发生的任何服务运行状况事件的记录。 美国东部 SQL Azure 的服务运行状况事件的一个示例_是遇到停机_。 <br><br>服务运行状况事件分为六个种类：需要执行的_操作_、_辅助恢复_、_事件_、_维护_、_信息_或_安全性_。 仅当订阅中有某个资源受事件影响时，才会创建这些事件。
 | 资源运行状况 | 包含已发生到 Azure 资源的任何资源运行状况事件的记录。 资源运行状况事件的一个示例是_虚拟机运行状况状态更改为 "不可用_"。<br><br>资源运行状况事件可以表示四种运行状况状态之一：_可用_、_不可用_、已_降级_和_未知_。 此外，资源运行状况事件可分类为 "_启动平台_" 或 "_用户已启动_"。 |
 | 警报 | 包含 Azure 警报的激活记录。 警报事件的一个示例是_myVM 上的 CPU% 过去5分钟超过 80_。|
-| 自动扩展 | 包含任何与自动缩放引擎操作相关的事件的记录，这些事件基于您在订阅中定义的任何自动缩放设置。 自动缩放事件的示例是_自动缩放扩展操作失败_。 |
+| 自动缩放 | 包含任何与自动缩放引擎操作相关的事件的记录，这些事件基于您在订阅中定义的任何自动缩放设置。 自动缩放事件的示例是_自动缩放扩展操作失败_。 |
 | 建议 | 包含来自 Azure 顾问的建议事件。 |
 | 安全性 | 包含 Azure 安全中心生成的任何警报的记录。 安全事件的一个示例是 "_可疑的双扩展文件已执行_"。 |
 | 策略 | 包含 Azure 策略执行的所有效果操作操作的记录。 策略事件的示例包括 "_审核_" 和 "_拒绝_"。 Policy 执行的每个操作建模为对资源执行的操作。 |
@@ -174,7 +173,7 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 ## <a name="activity-logs-analytics-monitoring-solution"></a>活动日志分析监视解决方案
 Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于分析 Log Analytics 工作区中的活动日志记录。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 你必须创建一个诊断设置，以便将你的订阅的活动日志发送到 Log Analytics 工作区。 请参阅[在 Azure Monitor 中 Log Analytics 工作区收集 Azure 平台日志](resource-logs-collect-workspace.md)。
 
 ### <a name="install-the-solution"></a>安装解决方案
@@ -190,7 +189,7 @@ Azure Log Analytics 监视解决方案包含多个日志查询和视图，用于
 
 ![Azure 活动日志仪表板](media/collect-activity-logs/activity-log-dash.png)
 
-| 可视化部件 | Description |
+| 可视化部件 | 说明 |
 | --- | --- |
 | Azure 活动日志条目 | 显示所选日期范围的排名靠前的 Azure 活动日志条目的条形图，并显示前10个活动调用方的列表。 单击该条形图可针对 `AzureActivity` 运行日志搜索。 单击 "调用方" 项可运行日志搜索，返回该项目的所有活动日志条目。 |
 | 按状态分类的活动日志 | 显示所选日期范围的 Azure 活动日志状态的圆环图以及前十种状态记录的列表。 单击该图表以运行 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`的日志查询。 单击某一状态项可运行日志搜索，返回该状态记录的所有活动日志条目。 |

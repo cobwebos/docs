@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435727"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663739"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>将 Apache Beeline 客户端与 Apache Hive 配合使用
 
 了解如何使用 [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) 在 HDInsight 上运行 Apache Hive 查询。
 
-Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 若要在本地安装 Beeline，请参阅下面的[安装 Beeline 客户端](#install-beeline-client)。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供最常见的连接字符串，用于从 Beeline 连接到 HDInsight：
+Beeline 是一个 Hive 客户端，包含在 HDInsight 群集的头节点上。 若要在本地安装 Beeline，请参阅下面的[安装 Beeline 客户端](#install-beeline-client)。 Beeline 使用 JDBC 连接到 HiveServer2，后者是 HDInsight 群集上托管的一项服务。 还可以使用 Beeline 通过 Internet 远程访问 Hive on HDInsight。 以下示例提供了最常见的连接字符串，用于从 Beeline 连接到 HDInsight。
 
 ## <a name="types-of-connections"></a>连接类型
 
@@ -59,7 +59,9 @@ beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD
 
 ### <a name="over-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口 `443` 建立，并使用 SSL 进行加密：
+使用公共或专用终结点连接到群集时，必须提供群集登录帐户名（默认 `admin`）和密码。 例如，使用 Beeline 从客户端系统连接到 `clustername.azurehdinsight.net` 地址。 此连接通过端口 `443`建立，并使用 SSL 进行加密。
+
+将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN （例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
@@ -71,19 +73,17 @@ beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportM
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN （例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
-
 专用终结点指向基本负载均衡器，只能从同一区域的 Vnet 对等互连访问。 有关详细信息，请参阅[全局 VNet 对等互连和负载均衡](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)器的约束。 在使用 beeline 之前，可以使用带 `-v` 选项的 `curl` 命令对公共或专用终结点的任何连接问题进行故障排除。
 
 ---
 
-### <a id="sparksql"></a>将 Beeline 与 Apache Spark 配合使用
+### <a name="use-beeline-with-apache-spark"></a>将 Beeline 与 Apache Spark 配合使用
 
 Apache Spark 提供自己的 HiveServer2 实现（有时称为 Spark Thrift 服务器）。 此服务使用 Spark SQL 而不是 Hive 来解析查询，并且可以根据查询改善性能。
 
 #### <a name="through-public-or-private-endpoints"></a>通过公共或专用终结点
 
-使用的连接字符串略有不同。 不包含 `httpPath=/hive2` `httpPath/sparkhive2`：
+使用的连接字符串略有不同。 不包含 `httpPath=/hive2` `httpPath/sparkhive2`。 将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN （例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportM
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-将 `clustername` 替换为 HDInsight 群集的名称。 将 `admin` 替换为群集的群集登录帐户。 对于 ESP 群集，请使用完整的 UPN （例如 user@domain.com）。 将 `password` 替换为群集登录帐户的密码。
 
 专用终结点指向基本负载均衡器，只能从同一区域的 Vnet 对等互连访问。 有关详细信息，请参阅[全局 VNet 对等互连和负载均衡](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)器的约束。 在使用 beeline 之前，可以使用带 `-v` 选项的 `curl` 命令对公共或专用终结点的任何连接问题进行故障排除。
 
@@ -111,7 +109,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ---
 
-## <a id="prereq"></a>先决条件
+## <a name="prerequisites-for-examples"></a>先决条件示例
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -121,7 +119,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 * 选项2：本地 Beeline 客户端。
 
-## <a id="beeline"></a>运行 Hive 查询
+## <a name="run-a-hive-query"></a>运行 Hive 查询
 
 此示例基于使用 SSH 连接中的 Beeline 客户端。
 
@@ -188,24 +186,21 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     这些语句执行以下操作：
 
-    * `DROP TABLE`-如果表存在，则将其删除。
-
-    * `CREATE EXTERNAL TABLE` - 在 Hive 中创建一个**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。
-
-    * `ROW FORMAT` - 如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。
-
-    * `STORED AS TEXTFILE LOCATION` - 数据存储位置和文件格式。
-
-    * `SELECT` - 选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3**，因为有三行包含此值。
-
-    * `INPUT__FILE__NAME LIKE '%.log'` - Hive 会尝试向目录中的所有文件应用架构。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。
+    |语句 |说明 |
+    |---|---|
+    |DROP TABLE|如果该表存在，则将其删除。|
+    |CREATE EXTERNAL TABLE|在 Hive 中创建**外部**表。 外部表只会在 Hive 中存储表定义。 数据将保留在原始位置。|
+    |行格式|如何设置数据的格式。 在此情况下，每个日志中的字段以空格分隔。|
+    |存储为 TEXTFILE 位置|数据的存储位置和文件格式。|
+    |SELECT|选择 **t4** 列包含值 **[ERROR]** 的所有行的计数。 此查询返回值 **3**，因为有三行包含此值。|
+    |INPUT__FILE__NAME 如 "% .log"|Hive 尝试将架构应用到目录中的所有文件。 在这种情况下，目录包含与架构不匹配的文件。 为防止结果中包含垃圾数据，此语句指示 Hive 应当仅返回以 .log 结尾的文件中的数据。|
 
    > [!NOTE]  
    > 如果希望通过外部源更新基础数据，应使用外部表。 例如，自动化数据上传进程或 MapReduce 操作。
@@ -236,7 +231,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. 若要退出 Beeline，请使用 `!exit`。
+6. 退出 Beeline：
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>运行 HiveQL 文件
 
@@ -248,7 +247,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     nano query.hql
     ```
 
-2. 将以下文本用作文件的内容。 此查询创建名为 **errorLogs** 的新“内部”表：
+1. 将以下文本用作文件的内容。 此查询创建名为 **errorLogs** 的新“内部”表：
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
     这些语句执行以下操作：
 
-   * **CREATE TABLE （如果不存在**）-如果该表尚不存在，则创建它。 由于不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。
-   * **STORED AS ORC**：以优化行纵栏表 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。
-   * **插入覆盖 .。。SELECT** -从包含 **[ERROR]** 的**log4jLogs**表中选择行，然后将数据插入**errorLogs**表中。
+    |语句 |说明 |
+    |---|---|
+    |CREATE TABLE （如果不存在）|如果该表尚不存在，则创建它。 由于不使用**EXTERNAL**关键字，所以此语句创建一个内部表。 内部表存储在 Hive 数据仓库中，由 Hive 全权管理。|
+    |存储为 ORC|以优化的行纵栏式 (ORC) 格式存储数据。 ORC 格式是高度优化且有效的 Hive 数据存储格式。|
+    |插入覆盖 .。。单击|从包含 **[ERROR]** 的 **log4jLogs** 表中选择行，然后将数据插入 **errorLogs** 表中。|
 
     > [!NOTE]  
     > 与外部表不同，删除内部表会同时删除基础数据。
 
-3. 若要保存文件，请使用**Ctrl**+**X**，并输入**Y**，最后**输入**。
+1. 若要保存文件，请使用**Ctrl**+**X**，并输入**Y**，最后**输入**。
 
-4. 使用以下命令以通过 Beeline 运行该文件：
+1. 使用以下命令以通过 Beeline 运行该文件：
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
     > [!NOTE]  
     > `-i` 参数将启动 Beeline，并运行 `query.hql` 文件中的语句。 查询完成后，会出现 `jdbc:hive2://headnodehost:10001/>` 提示符。 还可以使用 `-f` 参数运行文件，该参数在查询完成后会退出 Beeline。
 
-5. 若要验证是否已创建 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
+1. 若要验证是否已创建 **errorLogs** 表，请使用以下语句从 **errorLogs** 返回所有行：
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. 修改 .bashrc 文件（通常位于 ~/.bashrc 中）。 用 `nano ~/.bashrc` 打开该文件，然后在该文件的末尾添加以下行：
+    1. 打开 .bashrc 文件（通常在 ~/.bashrc 中找到）： `nano ~/.bashrc`。
+
+    1. 修改 .bashrc 文件。 在文件末尾添加以下行：
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 1. 进一步修改 .bashrc 文件。 你需要确定存档解压缩到的路径。 如果使用[适用于 Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/install-win10)，并严格执行了步骤，则路径将 `/mnt/c/Users/user/`，其中 `user` 是你的用户名。
 
     1. 打开文件： `nano ~/.bashrc`
+
     1. 用适当的路径修改下面的命令，并将其输入到 .bashrc 文件的末尾：
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

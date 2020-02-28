@@ -1,18 +1,17 @@
 ---
 title: 为评估启用用于 VM 的 Azure Monitor （预览版） |Microsoft Docs
 description: 了解如何在单个 Azure 虚拟机或虚拟机规模集上评估用于 VM 的 Azure Monitor。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400595"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664605"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>启用用于评估的用于 VM 的 Azure Monitor （预览版）
 

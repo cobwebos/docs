@@ -2,18 +2,15 @@
 title: 可通过诊断设置导出 Azure Monitor 平台指标
 description: 可在 Azure Monitor 中为每种资源类型使用的指标的列表。
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368233"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661356"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>可通过诊断设置导出 Azure Monitor 平台指标
 

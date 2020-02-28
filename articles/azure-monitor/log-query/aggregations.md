@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 日志查询中的聚合 | Microsoft Docs
 description: 介绍 Azure Monitor 日志查询中的聚合函数，这些函数提供了有用的数据分析方式。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 86b84e76b4716c1fddda23a6d52c65c0700c5663
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900416"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670298"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的聚合
 
@@ -25,7 +24,7 @@ ms.locfileid: "72900416"
 
 ## <a name="counts"></a>计数
 
-### <a name="count"></a>计数
+### <a name="count"></a>count
 在应用任一筛选器后，计算结果集中的行数。 以下示例返回过去 30 分钟内 Perf 表中的总行数。 结果将在名为“count_”的列中返回，除非为其指定特定名称：
 
 
@@ -83,10 +82,10 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|美国    | 19                  |
-|加拿大           | 3                   |
+|United States    | 19                  |
+|Canada           | 3                   |
 |爱尔兰          | 0                   |
-|英国   | 0                   |
+|United Kingdom   | 0                   |
 |荷兰      | 2                   |
 
 

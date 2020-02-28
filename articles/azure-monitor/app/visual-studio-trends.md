@@ -1,20 +1,18 @@
 ---
 title: 在 Visual Studio 中分析趋势 | Microsoft Docs
 description: 在 Visual Studio 中分析、可视化和浏览 Application Insights 遥测的趋势。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: da1cd3ed9d07b1eb1304f6b26999af92d2704537
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670859"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趋势
 Application Insights 趋势工具以可视化方式呈现 Web 应用程序在各时间段的重要遥测事件变化，帮助快速识别问题和异常。 “趋势”提供更详细诊断信息的链接，可帮助改进应用程序性能、跟踪异常的原因，以及从自定义事件中找到见解。
@@ -71,7 +69,7 @@ Application Insights 趋势基于应用的遥测数据创建时序视觉效果�
 > 
 > 
 
-## <a name="filter"></a>筛选
+## <a name="filter"></a>“筛选器”
 使用窗口底部的筛选控件发现更明确的趋势。 若要应用某个筛选器，请单击其名称。 可以快速切换不同的筛选器，发现可能隐藏在遥测特定维度中的趋势。 如果在某个维度（例如异常类型）中应用筛选器，其他维度中的筛选器仍可单击，即使它们显示为灰色。若要取消应用某个筛选器，请再次单击该筛选器。 在按住 Ctrl 的同时单击可以选择同一维度中的多个筛选器。
 
 ![趋势筛选器](./media/visual-studio-trends/TrendsFiltering-750.png)

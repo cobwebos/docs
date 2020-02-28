@@ -1,18 +1,17 @@
 ---
 title: 将用于 VM 的 Azure Monitor 映射与 Operations Manager 集成 |Microsoft Docs
 description: 用于 VM 的 Azure Monitor 自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文介绍如何使用地图功能在 Operations Manager 中自动创建分布式应用程序关系图。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402622"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663447"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>将 System Center Operations Manager 与用于 VM 的 Azure Monitor 映射功能集成
 
@@ -21,7 +20,7 @@ ms.locfileid: "75402622"
 >[!NOTE]
 >如果已部署服务映射，则可以在用于 VM 的 Azure Monitor 中查看映射，其中包括用于监视 VM 运行状况和性能的其他功能。 用于 VM 的 Azure Monitor 的映射功能旨在替换独立的服务映射解决方案。 若要了解详细信息，请参阅[面向 VM 的 Azure Monitor 概述](vminsights-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * System Center Operations Manager 管理组（2012 R2 或更高版本）。
 * 配置为支持用于 VM 的 Azure Monitor 的 Log Analytics 工作区。
@@ -107,7 +106,7 @@ ms.locfileid: "75402622"
 
 ## <a name="edit-or-delete-the-workspace"></a>编辑或删除工作区
 
-可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” > “服务映射”）。
+可以通过“服务映射概述”窗格编辑或删除配置的工作区（“管理”窗格 >“Operations Management Suite” **“服务映射”）。**  > 
 
 >[!NOTE]
 >[Operations Management Suite 是一组服务](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)，其中包括 Log Analytics，后者现在是 [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) 的一部分。

@@ -1,18 +1,16 @@
 ---
 title: 排查 Windows Log Analytics 代理问题
 description: 介绍 Azure Monitor 中适用于 Windows 的 Log Analytics 代理最常见问题的症状、原因和解决方法。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397455"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668785"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何排查适用于 Windows 的 Log Analytics 代理问题 
 
@@ -28,7 +26,7 @@ ms.locfileid: "75397455"
 
  为了帮助解决与 Windows Log Analytics 代理相关的问题，代理将事件记录到 Windows 事件日志中，特别是在*Application and Services\Operations Manager*下。  
 
-## <a name="connectivity-issues"></a>连接性问题
+## <a name="connectivity-issues"></a>连接问题
 
 如果代理通过代理服务器或防火墙进行通信，则存在阻止源计算机与 Azure Monitor 服务的通信的就地限制。 如果通信被阻止，由于配置错误，在尝试安装代理时，与工作区的注册可能会失败，或将代理安装后配置为向其他工作区报告。 注册成功后，代理通信可能会失败。 本部分介绍了在 Windows 代理中对此类问题进行故障排除的方法。
 
@@ -62,7 +60,7 @@ ms.locfileid: "75397455"
 
 - 按**事件源**筛选*Operations Manager*事件日志 - "*运行状况服务模块*"、"*运行状况服务*" 和 "*服务连接器*"，并按**事件级别**"*警告*" 和 "*错误*" 进行筛选，以确认它是否已从下表中写入事件。 如果是，请查看每个可能事件中包含的解决步骤。
 
-    |事件 ID |源 |Description |分辨率 |
+    |事件 ID |源 |说明 |解决方法 |
     |---------|-------|------------|-----------|
     |2133 & 2129 |运行状况服务 |从代理连接到服务失败 |当代理无法直接或通过防火墙/代理服务器与 Azure Monitor 服务通信时，会发生此错误。 验证代理的代理设置或网络防火墙/代理是否允许从计算机到服务的 TCP 流量。|
     |2138 |运行状况服务模块 |代理要求身份验证 |配置代理的代理设置，并指定在代理服务器上进行身份验证所需的用户名/密码。 |
@@ -70,7 +68,7 @@ ms.locfileid: "75397455"
     |2127 |运行状况服务模块 |发送数据失败，错误代码为 |如果只是在一天内定期发生，则可能是可以忽略的随机异常。 监视，了解它的发生频率。 如果经常发生这种情况，请先检查网络配置和代理设置。 如果说明中包含 HTTP 错误代码404，并且它是第一次尝试将数据发送到服务的时间，则它将包含500错误，其中包含内部404错误代码。 404表示找不到，这表示仍在设置新工作区的存储区域。 下一次重试时，数据会按预期成功写入工作区。 HTTP 错误403可能指示权限或凭据问题。 403错误中提供了更多的信息，以帮助解决此问题。|
     |4000 |服务连接器 |DNS 名称解析失败 |计算机无法解析向服务发送数据时使用的 Internet 地址。 这可能是你的计算机上的 DNS 解析器设置、不正确的代理设置或提供程序的暂时性 DNS 问题。 如果定期发生，则可能是由与网络相关的暂时性问题导致的。|
     |4001 |服务连接器 |与服务的连接失败。 |当代理无法直接或通过防火墙/代理服务器与 Azure Monitor 服务通信时，会发生此错误。 验证代理的代理设置或网络防火墙/代理是否允许从计算机到服务的 TCP 流量。|
-    |4002 |服务连接器 |服务响应查询，返回了 HTTP 状态代码 403。 请咨询服务管理员以了解服务的运行状况。 稍后将重试查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL： *https://\<> workspaceID/AgentService/AgentTopologyRequest*。 错误代码403表示禁止，可能是由于工作区 ID 或密钥键入错误，或者计算机上的数据和时间不正确引起的。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
+    |4002 |服务连接器 |服务返回 HTTP 状态代码403以响应查询。 请咨询服务管理员以了解服务的运行状况。 稍后将重试查询。 |此错误是在代理初始注册阶段写入的，你将看到类似于以下内容的 URL： *https://\<> workspaceID/AgentService/AgentTopologyRequest*。 错误代码403表示禁止，可能是由于工作区 ID 或密钥键入错误，或者计算机上的数据和时间不正确引起的。 如果时间比当前时间快/慢 15 分钟，则载入失败。 若要更正此错误，请更新 Windows 计算机的日期和/或时区。|
 
 ## <a name="data-collection-issues"></a>数据收集问题
 
@@ -100,7 +98,7 @@ Heartbeat
 
 3. 几分钟后，如果您在查询结果或可视化中看不到预期的数据，则根据您是从解决方案还是从见解中查看数据而定，请在*Operations Manager*事件日志中搜索 "**事件源***运行状况服务*" 和 "*运行状况服务模块*"，并按**事件级别**"*警告*" 和 "*错误*" 进行筛选，以确认它是否已从下表中写入事件。
 
-    |事件 ID |源 |Description |分辨率 |
+    |事件 ID |源 |说明 |解决方法 |
     |---------|-------|------------|
     |8000 |HealthService |如果与所收集的性能、事件或其他数据类型相关的工作流无法转发到该服务以引入到工作区，则此事件将指定。 | 源运行状况服务中的事件 ID 2136 与此事件一起写入，并可指示代理无法与服务进行通信，这可能是由于代理和身份验证设置配置错误、网络中断或网络防火墙/代理不允许从计算机到服务的 TCP 流量。| 
     |10102和10103 |运行状况服务模块 |工作流无法解析数据源。 |如果计算机上不存在指定的性能计数器或实例，或者工作区数据设置中定义不正确，则会发生这种情况。 如果这是用户指定的[性能计数器](data-sources-performance-counters.md#configuring-performance-counters)，请验证指定的信息的格式是否正确，以及目标计算机上是否存在该信息。 |

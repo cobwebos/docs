@@ -1,18 +1,15 @@
 ---
 title: Azure monitor 警报的常见警报架构
 description: 了解常见的警报架构、为什么应使用它以及如何启用它
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552457"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668173"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -34,9 +31,9 @@ ms.locfileid: "72552457"
 
 常见的警报架构将主要在警报通知中进行清单。 下面列出了你将看到的增强功能：
 
-| 行动 | 增强功能|
+| 操作 | 增强功能|
 |:---|:---|
-| 短信 | 适用于所有警报类型的一致短信模板。 |
+| SMS | 适用于所有警报类型的一致短信模板。 |
 | 电子邮件 | 一个一致且详细的电子邮件模板，使您可以轻松地快速诊断问题。 嵌入的深层链接到门户上的警报实例以及受影响的资源确保你可以快速跳转到修正过程。 |
 | Webhook/逻辑应用/Azure Function/Automation Runbook | 适用于所有警报类型的一致性 JSON 结构，使你能够轻松地跨不同的警报类型构建集成。 |
 

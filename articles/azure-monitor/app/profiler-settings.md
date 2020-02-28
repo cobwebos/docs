@@ -1,24 +1,22 @@
 ---
 title: 使用 Azure Application Insights Profiler 设置窗格 | Microsoft Docs
 description: 查看 Profiler 状态并启动分析会话
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820486"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671624"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
 ## <a name="updated-profiler-agent"></a>已更新探查器代理
-触发器功能仅适用于版本2.6 或更高版本的探查器代理。 如果运行的是 Azure App Service，则代理将自动更新。 如果你访问网站的 Kudu URL 并将 \DiagnosticServices 附加到其末尾，则可以查看正在运行的代理的版本，如下所示： https://yourwebsite.scm.azurewebsites.net/diagnosticservices 。 Application Insights Profiler Webjob 应为2.6 版或更高版本。 可以通过重新启动 web 应用来强制升级。 
+触发器功能仅适用于版本2.6 或更高版本的探查器代理。 如果运行的是 Azure App Service，则代理将自动更新。 如果你访问网站的 Kudu URL 并将 \DiagnosticServices 附加到其末尾，则可以查看正在运行的代理的版本，如下所示： https://yourwebsite.scm.azurewebsites.net/diagnosticservices。 Application Insights Profiler Webjob 应为2.6 版或更高版本。 可以通过重新启动 web 应用来强制升级。 
 
 如果在 VM 或云服务上运行探查器，则需要安装 Windows Azure 诊断（WAD）扩展版本16.0.4 或更高版本。 可以通过登录到 VM 并查看以下目录来检查 WAD 的版本： C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4。 目录名称是安装的 WAD 的版本。 当新版本可用时，Azure VM 代理会自动更新 WAD。
 
@@ -65,7 +63,7 @@ Cooldown | 设置探查器在其触发之后再次检查内存或 CPU 使用情�
 触发者 | 会话的启动方式，可以是触发器、立即配置文件或默认采样。 
 应用程序名称 | 已分析的应用程序的名称。
 计算机实例 | 探查器代理运行所在的计算机的名称。
-Timestamp | 捕获配置文件的时间。
+时间戳 | 捕获配置文件的时间。
 Tracee | 附加到各个请求的跟踪数。
 CPU % | 探查器运行时所使用的 CPU 的百分比。
 记忆 | 探查器运行时所使用的内存的百分比。
@@ -80,7 +78,7 @@ CPU % | 探查器运行时所使用的 CPU 的百分比。
 
 如果 Web 应用已有传入流量或者你就是希望手动生成流量，请跳过本部分并转到步骤 2。
 
-1. 在 Application Insights 门户中，选择“配置” > “性能测试”。 
+1. 在 Application Insights 门户中，选择“配置” **“性能测试”**  > 。 
 
 1. 若要启动新的性能测试，请选择“新建”按钮。
 

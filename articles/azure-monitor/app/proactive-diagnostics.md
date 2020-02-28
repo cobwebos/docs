@@ -1,18 +1,14 @@
 ---
 title: Azure Application Insights 中的智能检测 | Microsoft Docs
 description: Application Insights 执行应用遥测的自动深入分析，并在有潜在问题时发出警告。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/07/2019
-ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818820"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671794"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights 中的智能检测
  智能检测会自动警告你的 web 应用程序中存在潜在的性能问题和失败异常。 它会对应用发送至 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的遥测数据执行主动分析。 如果失败率中存在骤升或者客户端或服务器性能中存在异常模式，将收到警报。 此功能不需要任何配置。 它会在应用程序发送足够的遥测时运行。

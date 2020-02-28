@@ -1,19 +1,17 @@
 ---
 title: 管理 Azure Application Insights 的使用情况和成本 | Microsoft docs
 description: 在 Application Insights 中管理遥测量并监视成本。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845638"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669771"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -131,25 +129,25 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 
 可以使用以下方法管理发送的数据量：
 
-* **采样：** 可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](../../azure-monitor/app/sampling.md)的详细信息。
+* **采样**：可以使用采样减少从服务器和客户端应用发送的遥测量，同时最大程度减小指标失真。 采样是你可用来调整发送数据量的主要工具。 了解有关[采样功能](../../azure-monitor/app/sampling.md)的详细信息。
 
-* **限制 ajax 调用**：可以限制每个页面视图中[可报告的 ajax 调用数](../../azure-monitor/app/javascript.md#configuration)，或关闭 ajax 报表。
+* **限制 Ajax 调用**：可以限制每个页面视图中[可报告的 ajax 调用数](../../azure-monitor/app/javascript.md#configuration)，或关闭 ajax 报告。
 
-* **禁用**不需要的模块：[编辑 applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)以关闭不需要的收集模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
+* **禁用不需要的模块**：[编辑 ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 关闭不需要的集合模块。 例如，用户可能认为不再需要性能计数器或依赖项数据。
 
-* **预先聚合的度量值**：如果在应用程序中放置对 TrackMetric 的调用，则可以使用接受计算一批度量值的平均偏差和标准偏差的重载来减少流量。 也可使用[预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
+* **预先聚合的度量值**：如果将对 TrackMetric 的调用放在应用中，则可通过使用重载降低流量，这种重载接受对一批度量值的平均偏差和标准偏差的计算结果。 也可使用[预先聚合包](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
  
-* **每日上限：** 在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
+* **每日上限**：在 Azure 门户中创建 Application Insights 资源时，每日上限设置为 100 GB/天。 在 Visual Studio 中创建 Application Insights 资源时，默认值很小（只有 32.3 MB/天）。 设置每日上限默认值，以便进行测试。 可预期用户在将应用部署到生产环境之前，会提高每日上限。 
 
     除非为高流量应用程序请求了更高的最大值，否则最大上限是 1000 GB/天。 
     
-    有关每日上限的警告电子邮件将发送到作为 Application Insights 资源的这些角色的成员的帐户： "ServiceAdmin"、"全局"、"CoAdmin"、"Owner"。
+    有关每日上限的警告电子邮件将发送到作为 Application Insights 资源的这些角色的成员的帐户："ServiceAdmin"，"全局"，"CoAdmin"，"Owner"。
 
     设置每日上限时，务必小心。 你的目标应该是“永远不会达到每日上限”。 如果达到每日上限，会丢失当天剩余时间的数据，无法监视应用程序。 若要更改每日上限，请使用“每日容量上限”选项。 可在“使用情况和预估成本”窗格中访问此选项（本文后面会详述）。
     
     对于具有无法用于 Application Insights 的额度的某些订阅类型，我们已去除此限制。 以前，如果订阅有支出限制，“每日上限”对话框将提供如何去除此限制，并使每日上限提高到超过 32.3 MB/天的说明。
     
-* **限制**：此项将数据速率限制为每秒 32,000 个事件，取每个检测密钥 1 分钟的平均值。 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 将缓冲数据，然后尝试重新发送该数据。 它会在几分钟内出现传播高峰。 如果应用连续以超出限制的速率发送数据，一些数据会被丢弃。 （ASP.NET、Java 和 JavaScript Sdk 会尝试以这种方式重新发送数据; 其他 Sdk 可能只是删除已限制的数据。）如果发生限制，则会出现一个通知警告，通知你已发生此情况。
+* **限制**：此项将数据速率限制为每秒 32,000 个事件，取每个检测密钥 1 分钟的平均值。 每分钟会评估一次应用发送的数据量。 如果超出一分钟内的平均每秒速率，服务器将拒绝某些请求。 SDK 将缓冲数据，然后尝试重新发送该数据。 它会在几分钟内出现传播高峰。 如果应用连续以超出限制的速率发送数据，一些数据会被丢弃。 （ASP.NET、Java 和 JavaScript SDK 会尝试以这种方式重新发送；其他 SDK 可能会只是丢弃超出限制的数据。）如果发生超出限制的情况，会显示一个通知，警告发生了这种情况。
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>管理每日最大数据量
 
@@ -219,7 +217,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>旧企业（按节点）定价层
 
-对于 Azure 应用程序 Insights 的早期采用者，仍有两个可能的定价层： "基本" 和 "企业"。 基本定价层与上文所述相同，是默认层。 它包括所有企业级功能，无需额外付费。 基本层帐单主要针对引入的数据量。 
+对于 Azure 应用程序 Insights 的早期采用者，仍有两个可能的定价层：基本计划和企业计划。 基本定价层与上文所述相同，是默认层。 它包括所有企业级功能，无需额外付费。 基本层帐单主要针对引入的数据量。 
 
 > [!NOTE]
 > 这些旧的定价层已重命名。 现在，**按节点**调用企业定价层，基本定价层现在称为**每 GB**。 这些新名称在下面和 Azure 门户中使用。  
@@ -255,7 +253,7 @@ Application Insights 资源的默认保留期为90天。 可以为每个 Applica
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>演示如何确定不同节点计数的示例
 
-| 方案                               | 每日节点计数总数 |
+| 应用场景                               | 每日节点计数总数 |
 |:---------------------------------------|:----------------:|
 | 1 个应用程序使用 3 个 Azure 应用服务实例和 1 个虚拟服务器 | 4 |
 | 3个运行在2个 Vm 上的应用程序;这些应用程序的 Application Insights 资源位于同一订阅和每个节点层中 | 2 | 

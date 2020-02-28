@@ -1,19 +1,15 @@
 ---
 title: Azure 应用程序 Insights OpenCensus 本地转发器（预览）
 description: 将 Python 和 Go 等语言的 OpenCensus 分布式跟踪与范围转发到 Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406611"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669958"
 ---
 # <a name="local-forwarder-preview"></a>本地转发器（预览）
 
@@ -55,7 +51,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 3. **右键单击**新的本地转发器并选择“启动”。 现在，该服务将进入运行状态。
 
-4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” > “恢复”来配置发生服务故障时的自动响应方式。
+4. 默认情况下，创建的服务不提供任何恢复操作。 可以**单击右键**，并选择“属性” **“恢复”来配置发生服务故障时的自动响应方式。**  > 
 
     或者，如果你偏向于以编程方式设置发生故障时的自动恢复选项，可以使用：
 

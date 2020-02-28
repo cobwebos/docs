@@ -1,18 +1,17 @@
 ---
 title: 用于 VM 的 Azure Monitor 工作簿创建交互式报表 |Microsoft Docs
 description: 通过用于 VM 的 Azure Monitor 的预定义和自定义参数化工作簿，简化复杂报表。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: b89e61f0c268df0ed6dd69ae1c6d97f00678fc32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365914"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670657"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>用于 VM 的 Azure Monitor 工作簿创建交互式报表
 
@@ -27,7 +26,7 @@ ms.locfileid: "75365914"
 
 用于 VM 的 Azure Monitor 包括多个工作簿以使你入门，下表对它们进行了总结。
 
-| 工作簿 | Description | 范围 |
+| 工作簿 | 说明 | 范围 |
 |----------|-------------|-------|
 | 性能 | 在单个工作簿中提供了一个可自定义的版本，其中包含已启用的所有 Log Analytics 性能计数器。| 大规模 |
 | 性能计数器 | 跨各种性能计数器的前 N 个图表视图。 | 大规模 |

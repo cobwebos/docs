@@ -1,18 +1,17 @@
 ---
 title: 将 blob 存储用于 IIS 和表存储 Azure Monitor 中的事件 |Microsoft Docs
 description: Azure Monitor 可以读取将诊断写入到表存储或写入到 blob 存储的 IIS 日志的 Azure 服务的日志。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 7edf778dc2429cc1054d1550a513d7461f8e7928
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 44368ab90abd189c6a8a0792494828c87142eb20
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472552"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672389"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>将 Azure 诊断扩展中的数据收集到 Azure Monitor 日志
 Azure 诊断扩展是[Azure Monitor 中](agents-overview.md)的一个代理，可从 Azure 计算资源（包括虚拟机）的来宾操作系统中收集监视数据。 本文介绍如何从 Azure 存储收集诊断扩展收集的数据，以便 Azure Monitor 日志。

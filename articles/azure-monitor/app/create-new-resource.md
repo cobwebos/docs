@@ -1,24 +1,20 @@
 ---
 title: 新建 Azure Application Insights 资源 | Microsoft Docs
 description: 为新的实时应用程序手动设置 Application Insights 监视。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/02/2019
-ms.openlocfilehash: 1ba6d6e1774db4e9c95b107e1482a0c6ce532bb5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432617"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672032"
 ---
 # <a name="create-an-application-insights-resource"></a>创建 Application Insights 资源
 
 Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程序的数据。 因此创建新资源是[设置监视新应用程序 Application Insights][start]的一部分。 创建新资源后，可以获取其检测密钥，并使用它来配置 Application Insights SDK。 检测密钥会将遥测数据链接到资源。
 
-## <a name="sign-in-to-microsoft-azure"></a>登录 Microsoft Azure
+## <a name="sign-in-to-microsoft-azure"></a>登录到 Microsoft Azure
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
@@ -28,7 +24,7 @@ Azure Application Insights 在 Microsoft Azure *资源*中显示有关应用程�
 
 ![单击左上角的 "+" 号。 选择开发人员工具后跟 Application Insights](./media/create-new-resource/new-app-insights.png)
 
-   | 设置        |  值           | Description  |
+   | 设置        |  值           | 说明  |
    | ------------- |:-------------|:-----|
    | **名称**      | 唯一值 | 标识要监视的应用程序的名称。 |
    | **资源组**     | myResourceGroup      | 新的或现有资源组的名称以托管 App Insights 数据。 |

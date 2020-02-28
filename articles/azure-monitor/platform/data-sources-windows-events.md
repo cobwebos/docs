@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集和分析 Windows 事件日志 | Microsoft Docs
 description: 介绍了如何通过 Azure Monitor 配置 Windows 事件日志的收集，以及它们创建的记录的详细信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932408"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670502"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -22,7 +21,7 @@ ms.locfileid: "72932408"
 ## <a name="configuring-windows-event-logs"></a>配置 Windows 事件日志
 可以从[“高级设置”中的“数据”菜单](agent-data-sources.md#configuring-data-sources)配置 Windows 事件日志。
 
-Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“+”添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
+Azure Monitor 仅从在设置中指定的 Windows 事件日志收集事件。  可以通过键入日志名称并单击“ **”+** 添加事件日志。  对于每个日志，仅收集具有所选严重级别的事件。  检查要收集的特定日志的严重级别。  不能向筛选事件提供任何其他条件。
 
 键入事件日志名称时，Azure Monitor 会提供常见事件日志名称的建议。 如果要添加的日志未显示在列表中，仍可以通过键入日志全名添加。 可以使用事件查看器查找日志全名。 在事件查看器中，打开日志的“属性”页面，并从“全名”字段复制字符串。
 
@@ -41,7 +40,7 @@ Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严
 ## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
 Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
 
-| properties | 描述 |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
@@ -53,15 +52,15 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | ParameterXml |XML 格式的事件参数值。 |
 | ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，此值为 `AOI-<workspace ID>` |
 | RenderedDescription |具有参数值的事件描述 |
-| Source |事件源。 |
+| 源 |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
 | TimeGenerated |在 Windows 中创建事件的日期和时间。 |
-| Username |记录事件的帐户的用户名。 |
+| UserName |记录事件的帐户的用户名。 |
 
 ## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的日志查询
 下表提供了检索 Windows 事件记录的不同日志查询的示例。
 
-| Query | 描述 |
+| 查询 | 说明 |
 |:---|:---|
 | 事件 |所有 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件与错误的严重性。 |

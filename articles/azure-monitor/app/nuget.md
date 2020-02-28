@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor Application Insights NuGet 包
 description: 针对 ASP.NET、ASP.NET Core、Python Azure Monitor Application Insights NuGet 包列表
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: reference
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/16/2018
-ms.openlocfilehash: 0bac42242bc08fcc07bba12847a4aeb79424dc78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669992"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 包
 
@@ -20,7 +16,7 @@ ms.locfileid: "75406574"
 
 ## <a name="common-packages-for-aspnet"></a>适用于 ASP.NET 的常用包
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights | 2.12.0 | 提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
 |Microsoft.ApplicationInsights.Agent.Intercept | 2.4.0 | 可拦截方法调用 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent.Intercept/) |
@@ -32,7 +28,7 @@ ms.locfileid: "75406574"
 
 ## <a name="common-packages-for-aspnet-core"></a>适用于 ASP.NET Core 的常用包
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AspNetCore | 2.5.0 | 适用于 ASP.NET Core Web 应用程序的 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) |
 | Microsoft.ApplicationInsights | 2.12.0 | 此包提供用于所有 Application Insights 遥测类型传输的核心功能，且作为所有其他 Application Insights 包的依赖包 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) |
@@ -42,7 +38,7 @@ ms.locfileid: "75406574"
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | 向 Application Insights Windows Server SDK 提供遥测渠道，此 SDK 将保留脱机方案中的遥测数据。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
 ## <a name="common-packages-for-python-using-opencensus"></a>使用 OpenCensus 的 Python 的常用包
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | opencensus-azure | 1.0.0 | Application Insights 通过 OpenCensus Azure Monitor 下的 Python 应用程序。 | [下载包](https://pypi.org/project/opencensus-ext-azure/) |
 | opencensus-django | 0.7.2 | 此包提供与 Python [django](https://pypi.org/project/django/)库的集成。 | [下载包](https://pypi.org/project/opencensus-ext-django/) |
@@ -59,7 +55,7 @@ ms.locfileid: "75406574"
 
 ## <a name="listenerscollectorsappenders"></a>侦听器/收集器/追加器
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.DiagnosticSourceListener | 2.7.2 |  允许将 DiagnosticSource 中的事件转发给 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/) |
 | Microsoft.ApplicationInsights.EventSourceListener | 2.7.2 | Application Insights EventSourceListener 可用于将 EventSource 事件中的数据发送到 Application Insights。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) |
@@ -71,14 +67,14 @@ ms.locfileid: "75406574"
 
 ## <a name="service-fabric"></a>Service Fabric
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.ServiceFabric | 2.2.0 | 此包使用运行应用程序的 Service Fabric 上下文自动修饰遥测数据。 请不要对 Service Fabric 本机应用程序使用此 NuGet。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric/) |
 | Microsoft.ApplicationInsights.ServiceFabric.Native | 2.2.0 | 适用于 Service Fabric 应用程序的 Application Insights 模块。 此 NuGet 仅用于 Service Fabric 本机应用程序。 对于在容器中运行的应用程序，请使用 Microsoft.ApplicationInsights.ServiceFabric 包。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.ServiceFabric.Native/) |  
 
 ## <a name="status-monitor"></a>状态监视器
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  为 x64 应用程序启用运行时数据收集功能 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  为 x86 应用程序启用运行时数据收集功能。 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
@@ -87,7 +83,7 @@ ms.locfileid: "75406574"
 
 ## <a name="additional-packages"></a>其他包
 
-| 包名称 | 稳定版本 | Description | 下载 |
+| 包名称 | 稳定版本 | 说明 | 下载 |
 |-------------------------------|-----------------------|------------|----|
 | Microsoft.ApplicationInsights.AzureWebSites | 2.6.5 | 此扩展将在 Azure 应用服务上启用 Application Insights 监视功能。 SDK 版本 2.6.1。 说明：使用 ikey 添加“APPINSIGHTS_INSTRUMENTATIONKEY”应用程序设置，再重启 Web 应用使其生效。| [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AzureWebSites/) |
 | Microsoft.ApplicationInsights.Injector | 2.6.7 | 此包具有在不使用代码的情况下注入 Application Insights 时所需的文件 | [下载包](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Injector/) |

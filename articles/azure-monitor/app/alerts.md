@@ -1,21 +1,19 @@
 ---
-title: 在 Azure Application Insights 中设置警报 | Microsoft Docs
+title: Azure 应用程序 Insights 中设置警报
 description: 响应速度变慢、发生异常以及 Web 应用中出现其他性能或用法变化时接收通知。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678407"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666711"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
+
 [Azure 应用程序 Insights][start]可以通知你 web 应用中的性能或使用情况指标发生变化。 
 
 Application Insights 在[各种平台][platforms]上监视实时应用，帮助诊断性能问题并了解使用模式。
@@ -28,6 +26,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 * [**主动诊断**](../../azure-monitor/app/proactive-diagnostics.md)：由系统自动配置，通知出现了异常的性能模式。
 
 ## <a name="set-a-metric-alert"></a>设置指标警报
+
 打开 "警报规则" 选项卡，然后使用 "添加" 按钮。
 
 ![在 "警报规则" 选项卡中，选择 "添加警报"。 将应用设置为要测量的资源，提供警报的名称，然后选择指标。](./media/alerts/01-set-metric.png)
@@ -169,7 +168,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 > [!NOTE]
 > 如果当前使用“批/组”复选框选项并禁用它，则无法还原更改。
 
-如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色的用户配置电子邮件通知（不作为单一选项组合在一起）。
+如果需要根据用户角色通知用户，请使用新的警报体验/近实时警报。 使用[操作组](../platform/action-groups.md)，可以为具有任何参与者/所有者/读者角色（未融合为单一选项）的用户配置电子邮件通知。
 
 ## <a name="automation"></a>自动化
 * [使用 PowerShell 自动设置警报](../../azure-monitor/app/powershell-alerts.md)

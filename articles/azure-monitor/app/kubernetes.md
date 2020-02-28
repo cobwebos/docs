@@ -1,18 +1,16 @@
 ---
 title: 使用 Application Insights 来监视 Azure Kubernetes 服务（AKS）或其他 Kubernetes 托管的应用程序-Azure Monitor |Microsoft Docs
 description: Azure Monitor 使用 Kubernetes 群集上的服务网格技术 Istio 为任何 Kubernetes 托管的应用程序提供应用程序监视。 这使你可以收集与群集中正在运行的 pod 的传入和传出请求相关的 Application Insights 遥测数据。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432527"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666780"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes 托管应用程序的零检测应用程序监视
 
@@ -26,7 +24,7 @@ Azure Monitor 现在利用 Kubernetes 群集上的服务网格技术，为任何
 > [!NOTE]
 > 这是在 Kubernetes 上执行应用程序监视的多种方式之一。 你还可以使用[APPLICATION INSIGHTS SDK](../../azure-monitor/azure-monitor-app-hub.yml)来检测在 Kubernetes 中托管的任何应用，而无需服务网格。 若要在不使用 SDK 检测应用程序的情况下监视 Kubernetes，可以使用以下方法。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - [Kubernetes 群集](https://docs.microsoft.com/azure/aks/concepts-clusters-workloads)。
 - 对要运行*kubectl*的群集的控制台访问。
@@ -129,7 +127,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
    ```
    查找任何错误，尤其是与*applicationinsightsadapter*适配器的通信有关。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 有关此项目上进度的最新信息，请访问适用于[Istio 混音器项目 GitHub 的 Application Insights 适配器](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq)。
 

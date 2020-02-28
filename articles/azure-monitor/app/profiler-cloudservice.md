@@ -1,19 +1,17 @@
 ---
 title: 使用 Application Insights 分析实时 Azure 云服务 | Microsoft Docs
 description: 对 Azure 云服务启用 Application Insights Profiler。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3fbeb1120e97a884135cd4622a49ef97fd43e58e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820497"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671658"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -39,7 +37,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
 1. 配置 Azure 诊断扩展以启用探查器：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 找到应用程序角色的 [Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) diagnostics.wadcfgx 文件，如下所示：  
+    a. 找到应用程序角色的[Azure 诊断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx*文件，如下所示：  
 
       ![诊断配置文件的位置](./media/profiler-cloudservice/cloudservice-solutionexplorer.png)  
 
@@ -65,7 +63,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
     > * ApplicationInsights 接收器使用的密钥。 
     > * ApplicationInsightsProfiler 接收器使用的密钥。 
     >
-    > 可以在 *ServiceConfiguration.\*.cscfg* 文件中找到 `ApplicationInsights` 接收器使用的实际检测密钥值。 
+    > 可以在 `ApplicationInsights`ServiceConfiguration. *.cscfg\* 文件中找到*  接收器使用的实际检测密钥值。 
     > 继 Visual Studio 15.5 Azure SDK 版本之后，只有该应用程序和 ApplicationInsightsProfiler 接收器使用的检测密钥才需相互匹配。
 
 1. 为你的服务部署新的诊断配置，Application Insights Profiler 就可以配置为在该服务上运行了。

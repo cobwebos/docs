@@ -1,18 +1,14 @@
 ---
 title: 监视 Windows 桌面应用的使用情况和性能
 description: 使用 Application Insights 分析 Windows 桌面应用的使用情况和性能。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/29/2019
-ms.openlocfilehash: a9dfc32a0f33db5639d5f74667a90a248dc358a1
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052461"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670825"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>监视经典 Windows 桌面应用中的使用情况和性能
 
@@ -24,7 +20,7 @@ ms.locfileid: "73052461"
 3. 在 Visual Studio 中，编辑应用项目的 NuGet 包，并添加 Microsoft.ApplicationInsights.WindowsServer。 （或者，如果只需要逻辑 API，而无需标准遥测收集模块，则选择 Microsoft.ApplicationInsights。）
 4. 在代码中设置检测密钥：
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *你的密钥* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*密钥*`";`
    
     或在 ApplicationInsights.config 中设置检测密钥（如果已安装标准遥测包之一）：
    

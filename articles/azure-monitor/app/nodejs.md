@@ -1,18 +1,14 @@
 ---
 title: 使用 Azure Application Insights 监视 Node.js 服务 | Microsoft Docs
 description: 使用 Application Insights 监视 Node.js 服务的性能并诊断其问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820723"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670009"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 监视 Node.js 服务和应用
 
@@ -24,11 +20,11 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 
 可以使用 TelemetryClient API 手动检测和监视应用和系统的其他方面。 本文后面会更详细地介绍 TelemetryClient API。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 请完成以下任务，为应用或服务设置监视。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保拥有 Azure 订阅，或[免费获取一个新][azure-free-offer]订阅。 如果你的组织已经拥有 Azure 订阅，管理员可以按照[这些说明][add-aad-user]将你添加到其中。
 
@@ -39,7 +35,7 @@ Node.js SDK 可以自动监视传入和传出的 HTTP 请求、异常和某些�
 ### <a name="resource"></a> 设置 Application Insights 资源
 
 
-1. 登录到 [Azure 门户][portal]。
+1. 登录 [Azure 门户][portal]。
 2. 选择“创建资源” > “开发人员工具” > “Application Insights”。 该资源包括用于接收遥测数据的终结点、用于该数据的存储、保存的报告和仪表板、规则和警报配置等。
 
 3. 在资源创建页的“应用程序类型”框中选择“Node.js 应用程序”。 应用类型决定了创建的默认仪表板和报告。 （任何 Application Insights 资源都可以收集任何语言和平台的数据。）

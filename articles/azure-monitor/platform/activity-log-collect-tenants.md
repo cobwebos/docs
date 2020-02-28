@@ -1,18 +1,17 @@
 ---
 title: 跨 Azure 租户将 Azure 活动日志收集到 Log Analytics 工作区 |Microsoft Docs
 description: 使用事件中心和逻辑应用收集 Azure 活动日志中的数据，并将其发送到不同租户中 Azure Monitor 的 Log Analytics 工作区。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: e3b368f8a59d201f70bfad05125ed59b4b8551c5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529994"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669261"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>跨 Azure Active Directory 租户 Azure Monitor 收集 Azure 活动日志（旧）
 
@@ -52,7 +51,7 @@ ms.locfileid: "75529994"
 
 <!-- Follow the steps in [how to create an Event Hubs namespace and Event Hub](../../event-hubs/event-hubs-create.md) to create your event hub. -->
 
-1. 在 Azure 门户中，选择“创建资源” > “物联网” > “事件中心”。
+1. 在 Azure 门户中，选择“创建资源” **“物联网”** “事件中心”。 >  > 
 
    ![市场 - 新建事件中心](media/collect-activity-logs-subscriptions/marketplace-new-event-hub.png)
 
@@ -79,7 +78,7 @@ ms.locfileid: "75529994"
 
 可以使用与发出日志的订阅不在同一个订阅中的事件中心命名空间，但是，这两个订阅必须位于同一个 Azure Active Directory 中。 配置此设置的用户必须对上述两个订阅拥有相应的 RBAC 访问权限。 
 
-1. 在 Azure 门户中，选择“Monitor” > “活动日志”。
+1. 在 Azure 门户中，选择“Monitor” **“活动日志”。**  > 
 3. 单击页面顶部的“导出”按钮。
 
    ![导航窗格中的 Azure Monitor 插图](media/collect-activity-logs-subscriptions/activity-log-blade.png)
@@ -117,7 +116,7 @@ ms.locfileid: "75529994"
 
 ### <a name="create-a-new-blank-logic-app"></a>创建新的空白逻辑应用
 
-1. 在 Azure 门户中，选择“创建资源” > “企业集成” > “逻辑应用”。
+1. 在 Azure 门户中，选择“创建资源” **“企业集成”** “逻辑应用”。 >  > 
 
     ![市场 - 新建逻辑应用](media/collect-activity-logs-subscriptions/marketplace-new-logic-app.png)
 
@@ -125,7 +124,7 @@ ms.locfileid: "75529994"
 
     ![创建逻辑应用](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
-   |设置 | Description  |
+   |设置 | 说明  |
    |:---|:---|
    | 名称           | 逻辑应用的唯一名称。 |
    | 订阅   | 选择将要包含该逻辑应用的 Azure 订阅。 |
@@ -156,7 +155,7 @@ ms.locfileid: "75529994"
 
    ![当事件可用时对话框](media/collect-activity-logs-subscriptions/logic-apps-event-hub-read-events.png)
 
-5. 展开“显示高级选项”，将“内容类型”更改为 *application/json*
+5. 展开“显示高级选项”，将“内容类型”更改为 **application/json**
 
    ![事件中心配置对话框](media/collect-activity-logs-subscriptions/logic-apps-event-hub-configuration.png)
 
@@ -164,7 +163,7 @@ ms.locfileid: "75529994"
 
 事件中心提供的输出包含一个带有记录数组的 JSON 有效负载。 [PARSE JSON](../../logic-apps/logic-apps-content-type.md)操作用于仅提取记录的数组，以便发送到 Log Analytics 工作区。
 
-1. 单击“新建步骤” > “添加操作”。
+1. 单击“新建步骤” **“添加操作”。**  > 
 2. 在搜索框中，键入“分析 JSON”作为筛选器。 选择“数据操作 - 分析 JSON”操作。
 
    ![在逻辑应用中添加“分析 JSON”操作](media/collect-activity-logs-subscriptions/logic-apps-add-parse-json-action.png)
@@ -276,7 +275,7 @@ ms.locfileid: "75529994"
 ### <a name="add-compose-action"></a>添加“撰写”操作
 [撰写](../../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)操作提取 JSON 输出，并创建可供 Log Analytics 操作使用的对象。
 
-1. 单击“新建步骤” > “添加操作”。
+1. 单击“新建步骤” **“添加操作”。**  > 
 2. 键入“撰写”作为筛选器，然后选择“数据操作 - 撰写”操作。
 
     ![添加“撰写”操作](media/collect-activity-logs-subscriptions/logic-apps-add-compose-action.png)
@@ -287,7 +286,7 @@ ms.locfileid: "75529994"
 ### <a name="add-log-analytics-send-data-action"></a>添加 Log Analytics 发送数据操作
 [Azure Log Analytics 数据收集器](https://docs.microsoft.com/connectors/azureloganalyticsdatacollector/)操作将从 "撰写" 操作获取对象并将其发送到 Log Analytics 工作区。
 
-1. 单击“新建步骤” > “添加操作”。
+1. 单击“新建步骤” **“添加操作”。**  > 
 2. 键入 *log analytics* 作为筛选器，然后选择“Azure Log Analytics 数据收集器 - 发送数据”操作。
 
    ![在逻辑应用中添加 Log Analytics 发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
@@ -300,11 +299,11 @@ ms.locfileid: "75529994"
 
     ![配置发送数据操作](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |设置        | 值           | Description  |
+   |设置        | 值           | 说明  |
    |---------------|---------------------------|--------------|
    |JSON 请求正文  | **撰写**操作提供的**输出** | 从“撰写”操作的正文中检索记录。 |
    | 自定义日志名称 | AzureActivity | 要在 Log Analytics 工作区中创建以保存导入数据的自定义日志表的名称。 |
-   | Time-generated-field | time | 不要选择 **time** 对应的 JSON 字段 - 只需键入世界时间。 如果选择该 JSON 字段，则设计器会在 *For Each* 循环中插入“发送数据”数据，而这不是我们想要的。 |
+   | Time-generated-field | time | 不要选择 **time** 对应的 JSON 字段 - 只需键入世界时间。 如果选择该 JSON 字段，则设计器会在 **For Each** 循环中插入“发送数据”数据，而这不是我们想要的。 |
 
 
 

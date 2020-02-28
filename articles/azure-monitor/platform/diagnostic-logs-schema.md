@@ -1,18 +1,15 @@
 ---
 title: Azure 资源日志支持的服务和架构
 description: 了解 Azure 资源日志支持的服务和事件架构。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-author: rboucher
-ms.author: robb
-ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120139"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670383"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure 资源日志支持的服务、架构和类别
 
@@ -25,21 +22,21 @@ ms.locfileid: "76120139"
 
 ## <a name="top-level-resource-logs-schema"></a>顶级资源日志架构
 
-| 名称 | 必需/可选 | Description |
+| 名称 | 必需/可选 | 说明 |
 |---|---|---|
-| time | 需要 | 事件时间戳 (UTC)。 |
-| resourceId | 需要 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
+| time | 必选 | 事件时间戳 (UTC)。 |
+| resourceId | 必选 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
 | tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
-| operationName | 需要 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
+| operationName | 必选 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果使用 API 执行 operationName，则 api-version 与该操作关联（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
-| category | 需要 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
+| category | 必选 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
 | resultType | 可选 | 事件的状态。 典型值包括“Started”、“In Progress”、“Succeeded”、“Failed”、“Active”和“Resolved”。 |
 | resultSignature | 可选 | 事件的子状态。 如果此操作对应于 REST API 调用，则这是相应 REST 调用的 HTTP 状态代码。 |
 | resultDescription | 可选 | 此操作的静态文本说明，例如 “获取存储文件”。 |
 | durationMs | 可选 | 操作持续时间，以毫秒为单位。 |
 | callerIpAddress | 可选 | 调用方 IP 地址，如果该操作对应于来自具有公开 IP 地址的实体的 API 调用。 |
 | correlationId | 可选 | 用于将一组相关事件组合在一起的 GUID。 通常情况下，如果两个事件具有相同 operationName，但具有两个不同状态（例如 “Started”和“Succeeded”），则它们共享相同的关联 ID。 这也可以代表事件之间的其他关系。 |
-| 标识 | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
+| identity | 可选 | 描述执行操作的用户或应用程序的标识的 JSON Blob。 通常，这将包括 Active Directory 中的授权和声明/JWT 令牌。 |
 | 级别 | 可选 | 事件的严重级别。 必须是信息性、警告、错误或严重。 |
 | location | 可选 | 发出事件的资源区域，例如 “美国东部”或“法国南部” |
 | properties | 可选 | 与此特定类别的事件相关的任何扩展属性。 所有自定义/唯一属性都必须放入此架构的“B 部分”。 |
@@ -63,24 +60,24 @@ ms.locfileid: "76120139"
 | 内容分发网络 | [用于 CDN 的 Azure 日志](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 日志记录](../../cosmos-db/logging.md) |
 | 数据工厂 | [使用 Azure Monitor 监视数据工厂](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake 分析 |[访问 Azure Data Lake Analytics 的日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| Data Lake Analytics |[访问 Azure Data Lake Analytics 的日志](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[访问 Azure Data Lake Store 的日志](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中心 |[Azure 事件中心日志](../../event-hubs/event-hubs-diagnostic-logs.md) |
-| 快速路由 | 架构不可用。 |
+| Express Route | 架构不可用。 |
 | Azure 防火墙 | 架构不可用。 |
 | IoT 中心 | [IoT 中心操作](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure 密钥保管库日志记录](../../key-vault/key-vault-logging.md) |
 | Kubernetes 服务 |[Azure Kubernetes 日志记录](../../aks/view-master-logs.md#log-event-schema) |
 | 负载均衡器 |[Azure 负载均衡器的 Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
-| Logic Apps |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
+| 逻辑应用 |[逻辑应用 B2B 自定义跟踪架构](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 网络安全组 |[网络安全组 (NSG) 的 Log Analytics](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS 保护 | [管理 Azure DDoS 防护标准](../../virtual-network/manage-ddos-protection.md) |
 | Power BI 专用 | [在 Azure 中记录 Power BI Embedded](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | 恢复服务 | [Azure 备份的数据模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜索 |[允许并使用搜索流量分析](../../search/search-traffic-analytics.md) |
 | 服务总线 |[Azure 服务总线日志](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL Database 日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
-| Stream Analytics |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
+| SQL 数据库 | [Azure SQL Database 日志记录](../../sql-database/sql-database-metrics-diag-logging.md) |
+| 流分析 |[作业日志](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | 流量管理器 | [流量管理器日志架构](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 虚拟网络 | 架构不可用。 |
 | 虚拟网络网关 | 架构不可用。 |
@@ -140,9 +137,9 @@ ms.locfileid: "76120139"
 |Microsoft.DataFactory/factories|PipelineRuns|管道运行日志|
 |Microsoft.DataFactory/factories|TriggerRuns|触发器运行日志|
 |Microsoft.DataLakeAnalytics/accounts|审核|审核日志|
-|Microsoft.DataLakeAnalytics/accounts|请求|请求日志|
+|Microsoft.DataLakeAnalytics/accounts|Requests|请求日志|
 |Microsoft.DataLakeStore/accounts|审核|审核日志|
-|Microsoft.DataLakeStore/accounts|请求|请求日志|
+|Microsoft.DataLakeStore/accounts|Requests|请求日志|
 |DataShare/帐户|共享|共享|
 |DataShare/帐户|ShareSubscriptions|共享订阅|
 |DataShare/帐户|SentShareSnapshots|已发送共享快照|
@@ -190,7 +187,7 @@ ms.locfileid: "76120139"
 |Microsoft.DocumentDB/databaseAccounts|ControlPlaneRequests|ControlPlaneRequests|
 |EnterpriseKnowledgeGraph/服务|AuditEvent|AuditEvent 日志|
 |EnterpriseKnowledgeGraph/服务|DataIssue|DataIssue 日志|
-|EnterpriseKnowledgeGraph/服务|请求|配置日志|
+|EnterpriseKnowledgeGraph/服务|Requests|配置日志|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
 |Microsoft.EventHub/namespaces|OperationalLogs|操作日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
@@ -205,7 +202,7 @@ ms.locfileid: "76120139"
 |Microsoft.IoTSpaces/Graph|可运行|可运行|
 |Microsoft.IoTSpaces/Graph|审核|审核|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
-|Microsoft.IoTSpaces/Graph|入口|入口|
+|Microsoft.IoTSpaces/Graph|流入量|流入量|
 |Microsoft.IoTSpaces/Graph|流出量|流出量|
 |Microsoft.KeyVault/vaults|AuditEvent|审核日志|
 |Microsoft.Kusto/Clusters|SucceededIngestion|成功引入操作|

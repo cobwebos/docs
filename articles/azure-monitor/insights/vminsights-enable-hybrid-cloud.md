@@ -1,18 +1,17 @@
 ---
 title: 为混合环境启用 Azure Monitor （预览版） |Microsoft Docs
 description: 本文介绍如何为包含一个或多个虚拟机的混合云环境启用用于 VM 的 Azure Monitor。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 0afc67bf6d9e997ef615ecadc6836b36ed73e2ea
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969680"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669618"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>启用混合环境的用于 VM 的 Azure Monitor （预览版）
 
@@ -20,7 +19,7 @@ ms.locfileid: "75969680"
 
 本文介绍如何为你的数据中心或其他云环境中托管的虚拟机或物理计算机启用用于 VM 的 Azure Monitor （预览版）。 在此过程结束时，你将成功地开始监视环境中的虚拟机，并了解它们是否遇到任何性能或可用性问题。
 
-在开始之前，请务必查看[先决条件](vminsights-enable-overview.md)，并验证你的订阅和资源是否满足要求。 查看 [Log Analytics Linux 和 Windows 代理](../../log-analytics/log-analytics-agent-overview.md)的要求与部署方法。
+在开始之前，请务必查看[先决条件](vminsights-enable-overview.md)，并验证你的订阅和资源是否符合要求。 查看 [Log Analytics Linux 和 Windows 代理](../../log-analytics/log-analytics-agent-overview.md)的要求与部署方法。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -49,7 +48,7 @@ ms.locfileid: "75969680"
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | Description |
+| 参数 | 说明 |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -66,7 +65,7 @@ ms.locfileid: "75969680"
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | Description |
+| 参数 | 说明 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -S | 执行无提示安装，无用户提示。 |
@@ -107,7 +106,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>期望状态配置
+## <a name="desired-state-configuration"></a>Desired State Configuration
 
 若通过期望状态配置 (DSC) 部署 Dependency Agent，可通过如下示例代码使用 xPSDesiredStateConfiguration 模块：
 

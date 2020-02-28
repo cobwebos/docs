@@ -1,22 +1,20 @@
 ---
 title: 在 Azure Monitor 中创建、查看和管理活动日志警报
 description: 使用 Azure 门户、Azure 资源管理器模板和 Azure PowerShell 创建活动日志警报。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969519"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668479"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理活动日志警报  
 
 ## <a name="overview"></a>概述
+
 活动日志警报是新发生的活动日志事件与警报中指定的条件匹配时激活的警报。
 
 这些警报适用于 Azure 资源，可通过使用 Azure 资源管理器模板来创建。 此外，还可以在 Azure 门户中创建、更新或删除它们。 通常，你可以创建活动日志警报，以便在 Azure 订阅中的资源发生特定更改时接收通知。 警报通常作用于特定的资源组或资源。 例如，你可能想要在删除示例资源组**myProductionResourceGroup**中的任何虚拟机时获得通知。 或者，如果将任何新角色分配到订阅中的用户，你可能希望收到通知。
@@ -30,7 +28,6 @@ ms.locfileid: "75969519"
 - 条件必须是在其上配置警报的 "级别"、"状态"、"调用方"、"资源组"、"资源 ID" 或 "资源类型" 事件类别。
 - 警报配置 JSON 中没有 "anyOf" 条件或嵌套条件。 基本上，只允许一个 "allOf" 条件，无需进一步的 "allOf" 或 "anyOf" 条件。
 - 当类别是 "管理" 时，必须在警报中至少指定上述条件之一。 不能创建每次在活动日志中创建事件时激活的警报。
-
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -92,7 +89,7 @@ ms.locfileid: "75969519"
 5. 在“操作组”下，从下拉菜单中指定要分配到此新警报规则的操作组。 或者，[创建一个新的操作组](../../azure-monitor/platform/action-groups.md)，并将其分配给新规则。 若要创建新组，请选择 " **+ 新建组**"。
 
 6. 若要在创建规则后启用规则，请在 "**创建时启用规则**" 选项中选择 **"是"** 。
-7. 选择“创建预警规则”。
+7. 选择 "**创建警报规则**"。
 
     将创建活动日志的新警报规则，并在窗口的右上角出现一条确认消息。
 

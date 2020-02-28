@@ -1,18 +1,16 @@
 ---
 title: 使用 Azure Functions 创建和运行自定义可用性测试
 description: 本文档将介绍如何创建包含 TrackAvailability （）的 Azure 函数，该函数将根据 TimerTrigger 函数中给定的配置定期运行。 此测试的结果将发送到 Application Insights 资源，你可以在其中查询可用性结果数据并对其发出警报。 自定义测试使你可以编写比使用门户 UI 更复杂的可用性测试、监视 Azure VNET 内的应用、更改终结点地址，或者在你的区域中不可用时创建可用性测试。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
-ms.openlocfilehash: c7a8ffb9873fd70353f38bb2b2bbfdb584992377
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815627"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665793"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 创建和运行自定义可用性测试
 
@@ -39,7 +37,7 @@ ms.locfileid: "74815627"
     - 默认情况下，在创建 Azure Functions 应用程序时，它将为你创建一个 Application Insights 资源。
     - 按照有关如何[创建 Azure Functions 资源和计时器触发函数](https://docs.microsoft.com/azure/azure-functions/functions-create-scheduled-function)（在清理之前停止）的说明进行操作。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 将下面的代码复制到 run.csx 文件中（这将替换预先存在的代码）。 为此，请进入 Azure Functions 应用程序，并选择左侧的计时器触发器函数。
 

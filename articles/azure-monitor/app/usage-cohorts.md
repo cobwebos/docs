@@ -1,19 +1,17 @@
 ---
 title: 在 Azure Application Insights 中使用队列 | Microsoft Docs
 description: 分析具有某种共性的不同集、用户、会话、事件或操作
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671080"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights 队列
 
@@ -131,7 +129,7 @@ _我已经定义了某个国家/地区的用户队列。在 "用户" 工具中�
 * 队列版本将显示在当前时间范围内从英国发送了一个或多个事件的用户的所有事件。 如果按国家或地区拆分，可能会看到许多国家和地区。
 * 筛选器版本只显示来自英国的事件。 不过，如果按国家或地区拆分，则只会看到“英国”。
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 
 * [Analytics 查询语言](https://go.microsoft.com/fwlink/?linkid=856587)
 * [用户、会话、事件](usage-segmentation.md)

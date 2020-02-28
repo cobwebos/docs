@@ -1,18 +1,17 @@
 ---
 title: 查看用于 VM 的 Azure Monitor 的应用依赖项（预览）
 description: Map 是用于 VM 的 Azure Monitor 的一项功能。 它会自动发现 Windows 和 Linux 系统上的应用程序组件，并映射服务之间的通信。 本文提供了有关如何在各种情况下使用地图功能的详细信息。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450706"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670740"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor （预览版）的地图功能了解应用程序组件
 在用于 VM 的 Azure Monitor 中，可以查看在 Azure 或环境中运行的 Windows 和 Linux 虚拟机（Vm）上发现的应用程序组件。 可以通过两种方式观察 Vm。 直接从 VM 查看地图，或从 Azure Monitor 查看地图，查看跨 Vm 组的组件。 本文将帮助你了解这两种查看方法，以及如何使用地图功能。 
@@ -35,7 +34,7 @@ ms.locfileid: "75450706"
 
 选择 VM 时，右侧的 "**属性**" 窗格将显示 vm 的属性。 属性包括操作系统报告的系统信息、Azure VM 的属性，以及汇总发现的连接的圆环图。 
 
-![“属性”窗格](./media/vminsights-maps/properties-pane-01.png)
+!["属性" 窗格](./media/vminsights-maps/properties-pane-01.png)
 
 在窗格的右侧，选择 "**日志事件**" 以显示 VM 发送到 Azure Monitor 的数据列表。 此数据可用于查询。  选择 "任何记录类型" 打开 "**日志**" 页，您可以在其中看到该记录类型的结果。 还会看到根据 VM 筛选的预配置查询。  
 

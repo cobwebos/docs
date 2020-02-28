@@ -1,18 +1,14 @@
 ---
 title: 用于处理自定义事件和指标的 Application Insights API | Microsoft 文档
 description: 在设备、桌面应用、网页或服务中插入几行代码，即可跟踪使用情况和诊断问题。
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432673"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666490"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>用于处理自定义事件和指标的 Application Insights API
 
@@ -68,7 +64,7 @@ ms.locfileid: "75432673"
 private TelemetryClient telemetry = new TelemetryClient();
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Private Dim telemetry As New TelemetryClient
@@ -126,7 +122,7 @@ appInsights.trackEvent({name:"WinGame"});
 telemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackEvent("WinGame")
@@ -312,7 +308,7 @@ appInsights.trackPageView("tab1");
 telemetry.TrackPageView("GameReviewPage");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 telemetry.TrackPageView("GameReviewPage")
@@ -574,11 +570,11 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 记录诊断事件，例如进入或离开某个方法。
 
- 参数 | Description
+ 参数 | 说明
 ---|---
 `message` | 诊断数据。 可以比名称长很多。
-`properties` | 字符串到字符串的映射：用于筛选门户中的[异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
-`severityLevel` | 支持的值： [SeverityLevel](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
+`properties` | 字符串到字符串的映射：用于在门户中[筛选异常](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)的其他数据。 默认为空。
+`severityLevel` | 支持的值：[SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 可以搜索消息内容，但是（不同于属性值）无法在其中进行筛选。
 
@@ -837,7 +833,7 @@ var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCoun
 telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 ' Set up some properties:
@@ -968,7 +964,7 @@ gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
@@ -1037,7 +1033,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*禁用选定的标准收集*器（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉[applicationinsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的相关行。例如，如果想要发送自己的 TrackRequest 数据，可以执行此操作。
+若要*禁用选定的标准收集器*（例如性能计数器、HTTP 请求或依赖项），请删除或注释掉 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 中的相关行。例如，如果想要发送自己的 TrackRequest 数据，则可以这样做。
 
 *Node.js*
 
@@ -1069,7 +1065,7 @@ applicationInsights.setup()
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 ```
 
-Visual Basic
+*Visual Basic*
 
 ```vb
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
@@ -1158,15 +1154,15 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * **Component**：应用及其版本。
 * **Device**：有关正在运行应用的设备的数据。 （在 Web 应用中，是指从其中发送遥测的服务器或客户端设备。）
-* **InstrumentationKey**： Azure 中显示遥测数据的 Application Insights 资源。 通常可从 ApplicationInsights.config 中选择。
-* **Location**：设备的地理位置。
+* **InstrumentationKey**：Azure 中显示遥测数据的 Application Insights 资源。 通常可从 ApplicationInsights.config 中选择。
+* **位置**：设备的地理位置。
 * **Operation**：在 Web 应用中，为当前的 HTTP 请求。 在其他应用类型中，可将此属性设置为将事件分组在一起。
-  * **ID**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以查找相关项目。
-  * **Name**：一个标识符，通常是 HTTP 请求的 URL。
-  * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为傀儡或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
-* **Properties**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
-* **Session**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
-* **User**：用户信息。
+  * **ID**：一个生成的值，它将不同的事件关联在一起，以便在诊断搜索中检查任何事件时，可以发现相关项。
+  * **名称**：一个标识符，通常是 HTTP 请求的 URL。
+  * **SyntheticSource**：如果不为 null 或空，则此字符串表示请求的源已标识为机器人或 Web 测试。 默认情况下，该属性会从指标资源管理器的计算中排除。
+* **属性**：与所有遥测数据一起发送的属性。 可在单个 Track* 调用中重写。
+* **会话一致性**：用户的会话。 ID 设置为生成的值，当用户有一段时间处于非活动状态时，此值会更改。
+* **用户**：用户信息。
 
 ## <a name="limits"></a>限制
 

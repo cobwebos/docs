@@ -1,24 +1,22 @@
 ---
 title: Azure 应用程序 Insights 代理 API 参考
-description: Application Insights 代理 API 参考。 ApplicationInsightsMonitoringConfig。 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
-ms.service: azure-monitor
-ms.subservice: application-insights
+description: Application Insights 代理 API 参考。 Get-ApplicationInsightsMonitoringConfig. 监视网站性能而不重新部署网站。 适用于托管在本地、Vm 或 Azure 上的 ASP.NET web 应用。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 91e7bcbe79dfde8bbd4011748b40b692015af1c2
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 93ab8f613e5634b2eabe7c02189e223d3dfbb0a8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899735"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671267"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringconfig"></a>Application Insights 代理 API： ApplicationInsightsMonitoringConfig
 
 本文介绍了一个 cmdlet，它是[ApplicationMonitor PowerShell 模块](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成员。
 
-## <a name="description"></a>描述
+## <a name="description"></a>说明
 
 获取配置文件并将值输出到控制台。
 

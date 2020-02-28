@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840989"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670757"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 可以使用[流量分析](traffic-analytics.md)来分析流日志并获取网络流量的见解。
 
-适用于其他日志的保留策略也适用于流日志。 可以将日志保留策略从1天设置为365天。 如果未设置保留策略，日志将一直保留。
-
-> [!NOTE] 
-> 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。
-
+适用于其他日志的保留策略也适用于流日志。 可以将日志保留策略从1天设置为365天。 如果未设置保留策略，则会永久保留日志。
 
 ## <a name="log-file"></a>日志文件
 

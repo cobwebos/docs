@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 中生成管理解决方案 | Microsoft Docs
 description: 管理解决方案包括 Azure 中打包的管理方案，客户可将其添加到 Log Analytics 工作区。  本文提供有关如何创建要在自己的环境中使用或可供客户使用的管理解决方案的详细信息。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969697"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663209"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中设计和生成管理解决方案（预览）
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "75969697"
 基本策略是通过在 Azure 环境中生成各个组件来启动管理解决方案。  功能正常以后，即可将其打包到[管理解决方案文件]( solutions-solution-file.md)中。 
 
 
-## <a name="design-your-solution"></a>设计你的解决方案
+## <a name="design-your-solution"></a>设计解决方案
 管理解决方案的最常见模式如下图所示。  下面介绍了此模式中的不同组件。
 
 ![管理解决方案概述](media/solutions-creating/solution-overview.png)

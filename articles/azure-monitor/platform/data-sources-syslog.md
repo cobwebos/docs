@@ -1,18 +1,17 @@
 ---
 title: 在 Azure Monitor 中收集和分析 Syslog 消息 | Microsoft Docs
 description: Syslog 是普遍适用于 Linux 的事件日志记录协议。 本文介绍了如何在 Log Analytics 中配置 Syslog 消息集合以及它们创建的记录的详细信息。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670485"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Syslog 数据源
 Syslog 是普遍适用于 Linux 的事件日志记录协议。 应用程序将发送可能存储在本地计算机或传递到 Syslog 收集器的消息。 安装适用于 Linux 的 Log Analytics 代理后，它将配置本地 Syslog 后台程序，以将消息转发到此代理。 然后，此代理将消息发送到 Azure Monitor，将在后者中创建相应的记录。  
@@ -195,7 +194,7 @@ Log Analytics 代理在端口 25224 侦听本地客户端上的 Syslog 消息。
 ## <a name="syslog-record-properties"></a>Syslog 记录属性
 record 记录的类型为 **Syslog**，并且具有下表中的属性。
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机。 |
 | 设施 |定义生成消息的系统部分。 |
@@ -209,7 +208,7 @@ record 记录的类型为 **Syslog**，并且具有下表中的属性。
 ## <a name="log-queries-with-syslog-records"></a>具有 Syslog 记录的日志查询
 下表提供了检索 Syslog 记录的不同日志查询示例。
 
-| 查询 | Description |
+| 查询 | 说明 |
 |:--- |:--- |
 | Syslog |所有 Syslog。 |
 | Syslog &#124; where SeverityLevel == "error" |具有错误严重级别的所有 Syslog 记录。 |
