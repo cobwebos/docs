@@ -16,7 +16,7 @@ ms.locfileid: "73931696"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect 传感器 SDK 下载
 
-本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了全部所需的文件用于 Azure Kinect 方面的开发。
+本页提供各版本 Azure Kinect 传感器 SDK 的下载链接。 安装程序提供了 Azure Kinect 开发所需的所有文件。
 
 ## <a name="azure-kinect-sensor-sdk-contents"></a>Azure Kinect 传感器 SDK 的内容
 

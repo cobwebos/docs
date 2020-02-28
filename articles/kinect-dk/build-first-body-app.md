@@ -19,7 +19,7 @@ ms.locfileid: "76756238"
 
 想要开始使用人体跟踪 SDK？ 本快速入门可帮助你启动并运行人体跟踪！ 可以在此 [Azure-Kinect-Sample 存储库](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples)中找到更多示例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [设置 Azure Kinect DK](set-up-azure-kinect-dk.md)
 - [设置人体跟踪 SDK](body-sdk-setup.md)
@@ -36,7 +36,7 @@ ms.locfileid: "76756238"
   - [k4abt_tracker_shutdown()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_ga94036969ef94cbc414c78b3f6d04bfa5.html#ga94036969ef94cbc414c78b3f6d04bfa5)
   - [k4abt_tracker_destroy()](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/group__btfunctions_gab2c9afca092130976cd66077c0557ed1.html#gab2c9afca092130976cd66077c0557ed1)
 
-## <a name="headers"></a>标头
+## <a name="headers"></a>头文件
 
 人体跟踪使用单个标头 `k4abt.h`。 请包含此标头以及 `k4a.h`。 确保所选的编译器已针对传感器 SDK 和人体跟踪 SDK `lib` 与 `include` 文件夹进行设置。 还需要链接到 `k4a.lib` 和 `k4abt.lib` 文件。 运行该应用程序需要 `k4a.dll`、`k4abt.dll`、`onnxruntime.dll` 和 `dnn_model.onnx` 位于应用程序执行路径中。
 
@@ -90,7 +90,7 @@ k4a_device_get_capture(device, &capture, TIMEOUT_IN_MS);
 
 ## <a name="enqueue-the-capture-and-pop-the-results"></a>将捕获排入队列并弹出结果
 
-跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 下一步是使用 `k4abt_tracker_enqueue_capture()` 函数将新的捕获添加到输入队列。 使用 `k4abt_tracker_pop_result()` 函数弹出输出队列的结果。 超时值与应用程序相关，控制排队等待时间。
+跟踪器在内部维护一个输入队列和一个输出队列，以便更有效地以异步方式处理 Azure Kinect DK 捕获。 下一步是使用 `k4abt_tracker_enqueue_capture()` 函数将新的捕获添加到输入队列。 使用 `k4abt_tracker_pop_result()` 函数弹出输出队列的结果。 超时值与应用程序相关，控制队列等待时间。
 
 第一个人体跟踪应用程序使用实时处理模式。 有关其他模式的详细说明，请参阅[获取人体跟踪结果](get-body-tracking-results.md)。
 

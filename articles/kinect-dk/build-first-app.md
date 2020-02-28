@@ -34,7 +34,7 @@ ms.locfileid: "70099456"
 1. [设置 Azure Kinect DK 设备](set-up-azure-kinect-dk.md)。
 2. [下载](sensor-sdk-download.md)并安装 Azure Kinect 传感器 SDK。
 
-## <a name="headers"></a>标头
+## <a name="headers"></a>头文件
 
 只需要一个标头，即 `k4a.h`。 请确保所选的编译器设置为使用 SDK 的库并包含文件夹。 此外，需要链接 `k4a.lib` 和 `k4a.dll` 文件。 建议参阅[将Azure Kinect 库添加到项目](add-library-to-project.md)。
 
