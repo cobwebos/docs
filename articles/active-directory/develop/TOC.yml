@@ -29,9 +29,9 @@
           href: quickstart-v2-javascript.md
     - name: Web 应用
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP .NET Core
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -42,9 +42,9 @@
           href: quickstart-v2-python-webapp.md
     - name: Web API
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: ASP .NET Core
+        - name: ASP.NET Core
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
     - name: 移动和桌面应用
       items:
@@ -70,7 +70,7 @@
           href: tutorial-v2-javascript-spa.md
     - name: Web 应用
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
     - name: 移动和桌面应用
       items:
@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: 迁移
           items:
+            - name: 概述
+              href: msal-migration.md
             - name: 迁移到 MSAL.NET
               href: msal-net-migration.md
             - name: 迁移到 MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
             - name: 迁移到 MSAL.Android
               href: migrate-android-adal-msal.md
-            - name: 迁移到 MSAL.iOS/MacOS
+            - name: 迁移到 MSAL.iOS/macOS
               href: migrate-objc-adal-msal.md
             - name: 迁移到 MSAL Python
               href: migrate-python-adal-msal.md

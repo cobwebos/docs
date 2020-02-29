@@ -77,6 +77,8 @@
           href: known-issues-azure-postgresql-online.md
         - name: 已知问题 - 从 Oracle 联机迁移到 Azure DB for PostgreSQL 单一服务器
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: 已知问题 - 从 MongoDB 迁移到 Azure Cosmos DB API for MongoDB
+          href: tutorial-mongodb-cosmos-db.md
         - name: 已知问题 - 使用混合模式
           href: known-issues-dms-hybrid-mode.md
     - name: 视频

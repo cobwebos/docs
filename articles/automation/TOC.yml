@@ -4,6 +4,8 @@
   items:
     - name: 什么是自动化？
       href: automation-intro.md
+    - name: 常见问题解答
+      href: automation-faq.md
 - name: 自动化帐户
   items:
     - name: 创建自动化帐户
@@ -136,6 +138,8 @@
       displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
     - name: 登记
       items:
+        - name: 使用资源管理器模板
+          href: automation-update-management-deploy-template.md
         - name: 从门户载入多个 VM
           href: automation-onboard-solutions-from-browse.md
         - name: 从 Azure VM 载入

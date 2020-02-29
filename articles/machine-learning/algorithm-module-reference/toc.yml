@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: 在数据集中选择列
       href: select-columns-in-dataset.md
+    - name: 拆分数据
+      href: split-data.md
 - name: 特征选择
   items:
     - name: 基于筛选器的特征选择
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: 训练 SVD 推荐器
       href: train-svd-recommender.md
+- name: 异常检测
+  items:
+    - name: 基于 PCA 的异常情况检测
+      href: pca-based-anomaly-detection.md
+    - name: 训练异常情况检测模型
+      href: train-anomaly-detection-model.md
 - name: 模块错误和故障排除
   href: designer-error-codes.md

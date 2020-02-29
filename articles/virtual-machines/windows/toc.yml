@@ -366,6 +366,24 @@
           href: hybrid-use-benefit-licensing.md
         - name: 使用用于 Windows 10 的多租户托管权限
           href: windows-desktop-multitenant-hosting-deployment.md
+    - name: 从经典部署迁移到 Azure 资源管理器部署
+      items:
+        - name: 从 2023 年 3 月 1 日开始停用
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 概述
+          href: migration-classic-resource-manager-overview.md
+        - name: 深入了解迁移
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: 规划迁移
+          href: migration-classic-resource-manager-plan.md
+        - name: 使用 PowerShell 迁移
+          href: migration-classic-resource-manager-ps.md
+        - name: 常见的迁移错误
+          href: migration-classic-resource-manager-errors.md
+        - name: 用于迁移的社区工具
+          href: migration-classic-resource-manager-community-tools.md
+        - name: 常见问题解答
+          href: migration-classic-resource-manager-faq.md
     - name: 保护 VM
       items:
         - name: 建议
@@ -677,7 +695,7 @@
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: 使用 VM 扩展
       href: ../extensions/overview.md
-    - name: 移动和迁移 VM
+    - name: 移动 VM
       items:
         - name: 更改订阅或资源组
           href: move-vm.md
@@ -694,21 +712,6 @@
               href: aws-to-azure.md
             - name: 使用 Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 从经典部署迁移到 Azure 资源管理器部署
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: 深入了解迁移
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: 规划迁移
-              href: migration-classic-resource-manager-plan.md
-            - name: 使用 PowerShell 迁移
-              href: migration-classic-resource-manager-ps.md
-            - name: 常见的迁移错误
-              href: migration-classic-resource-manager-errors.md
-            - name: 用于迁移的社区工具
-              href: migration-classic-resource-manager-community-tools.md
-            - name: 常见问题解答
-              href: migration-classic-resource-manager-faq.md
 - name: 故障排除
   href: ../troubleshooting/index.yml
 - name: 参考

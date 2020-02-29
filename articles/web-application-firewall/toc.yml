@@ -50,6 +50,8 @@
       items:
         - name: 自定义规则
           href: ./afds/waf-front-door-custom-rules.md
+        - name: 排除列表
+          href: ./afds/waf-front-door-exclusion.md
         - name: 策略设置
           href: ./afds/waf-front-door-policy-settings.md
         - name: 地区筛选

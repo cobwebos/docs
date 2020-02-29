@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: 教程
   items:
-    - name: '创建第一个 C# 应用'
+    - name: '创建 C# 应用'
       items:
         - name: 1 - 基本搜索页
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5 - 添加结果排序
           href: tutorial-csharp-orders.md
-    - name: 编制 Azure SQL 数据库索引
-      href: search-indexer-tutorial.md
-    - name: 为 Azure JSON blob 编制索引
-      href: search-semi-structured-data.md
-    - name: 为多个 Azure 数据源编制索引
-      href: tutorial-multiple-data-sources.md
-    - name: 使用 AI（认知搜索）扩充
+    - name: 为 Azure 数据编制索引
+      items:
+        - name: 编制 Azure SQL 数据库索引
+          href: search-indexer-tutorial.md
+        - name: 为 Azure JSON blob 编制索引
+          href: search-semi-structured-data.md
+        - name: 为多个 Azure 数据源编制索引
+          href: tutorial-multiple-data-sources.md
+    - name: 使用 AI 创建内容
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md

@@ -116,6 +116,8 @@
           items:
             - name: 诊断和审核日志（预览版）
               href: container-registry-diagnostics-audit-logs.md
+            - name: 使用 Azure Policy 审核符合性（预览版）
+              href: container-registry-azure-policy.md
         - name: 故障排除
           expanded: false
           items:

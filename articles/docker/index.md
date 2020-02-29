@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 429494b829d1307b4f89dbf746d24135a4322a97
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605568"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164451"
 ---
 <div class="content">
    <h1>Azure 上的 Docker</h1>   
@@ -31,9 +31,8 @@ Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和
 <h2>分步教程</h2>
 <p>了解如何在应用程序中使用 Docker，以及如何将 Docker 用作 CI/CD 管道的一部分：</p>
 <ol>
-  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">使用 Docker 生成 Python 和 PostgreSQL 应用</a></li>
-  <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">将 CI/CD 与 Docker Swarm 和 Azure DevOps Services 配合使用</a></li>
-  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">集成 Docker、Jenkins 和 Linux VM</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">在 Azure 应用服务中使用 PostgreSQL 运行 Python (Django) Web 应用</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构</a></li>
 </ol>
 <h2>资源</h2>
 <p>请参阅以下链接，了解其他有关在 Azure 上使用 Docker 的参考资料和工具。</p>

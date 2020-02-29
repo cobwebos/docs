@@ -103,7 +103,7 @@
   items:
     - name: 规划和配置
       items:
-        - name: 虚拟网络
+        - name: 计划虚拟网络
           href: virtual-network-vnet-plan-design-arm.md
         - name: VM 和云服务的名称解析
           href: virtual-networks-name-resolution-for-vms-and-role-instances.md
@@ -213,37 +213,60 @@
               href: virtual-network-network-interface-addresses.md
     - name: 安全性
       items:
-        - name: 管理 DDoS 防护
-          href: manage-ddos-protection.md
-        - name: 管理网络安全组
-          href: manage-network-security-group.md
-        - name: 让合作伙伴可以使用“DDoS 防护标准”
-          href: ddos-protection-partner-onboarding.md
-        - name: 使用网络安全组筛选网络流量
+        - name: 使用网络安全组限制访问权限
           items:
+            - name: Azure 门户
+              href: tutorial-restrict-network-access-to-resources.md
+            - name: Azure PowerShell
+              href: tutorial-restrict-network-access-to-resources-powershell.md
+            - name: Azure CLI
+              href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: 管理网络安全组
+              href: manage-network-security-group.md
+        - name: 筛选网络流量
+          items:
+            - name: Azure 门户
+              href: tutorial-filter-network-traffic.md
             - name: Azure PowerShell
               href: tutorial-filter-network-traffic-powershell.md
             - name: Azure CLI
               href: tutorial-filter-network-traffic-cli.md
-        - name: 使用 NVA 路由流量
+        - name: 网络隔离
           items:
+            - name: 使用专用终结点
+              items:
+                - name: Azure 门户
+                  href: ../private-link/create-private-endpoint-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure PowerShell
+                  href: ../private-link/create-private-endpoint-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+                - name: Azure CLI
+                  href: ../private-link/create-private-endpoint-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+            - name: 使用服务终结点
+              items:
+                - name: Azure 门户
+                  href: tutorial-restrict-network-access-to-resources.md
+                - name: Azure PowerShell
+                  href: tutorial-restrict-network-access-to-resources-powershell.md
+                - name: Azure CLI
+                  href: tutorial-restrict-network-access-to-resources-cli.md
+            - name: 创建终结点策略
+              href: virtual-network-service-endpoint-policies-portal.md
+        - name: 路由网络流量
+          items:
+            - name: Azure 门户
+              href: tutorial-create-route-table-portal.md
             - name: Azure PowerShell
               href: tutorial-create-route-table-powershell.md
             - name: Azure CLI
               href: tutorial-create-route-table-cli.md
             - name: Ansible
               href: /azure/ansible/ansible-create-configure-route-table
-              maintainContext: true
-        - name: 管理路由表
-          href: manage-route-table.md
-        - name: 使用服务终结点
-          items:
-            - name: Azure PowerShell
-              href: tutorial-restrict-network-access-to-resources-powershell.md
-            - name: Azure CLI
-              href: tutorial-restrict-network-access-to-resources-cli.md
-        - name: 创建服务终结点策略 - 门户
-          href: virtual-network-service-endpoint-policies-portal.md
+            - name: 管理路由表
+              href: manage-route-table.md
+        - name: 管理 DDoS 防护
+          href: manage-ddos-protection.md
+        - name: 让合作伙伴可以使用“DDoS 防护标准”
+          href: ddos-protection-partner-onboarding.md
         - name: 安全方案
           items:
             - name: 使用虚拟设备保护网络
@@ -272,6 +295,12 @@
               href: virtual-networks-static-private-ip-arm-ps.md
             - name: Azure CLI
               href: virtual-networks-static-private-ip-arm-cli.md
+        - name: 创建 VM - 静态专用 IP（经典）
+          items:
+            - name: Azure 门户
+              href: virtual-networks-static-private-ip-classic-pportal.md
+            - name: Azure PowerShell
+              href: virtual-networks-static-private-ip-classic-ps.md
         - name: 创建 VM - 多个 IP
           items:
             - name: Azure 门户

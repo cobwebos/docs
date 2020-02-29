@@ -77,6 +77,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: 端到端 MLOps 示例
       href: 'https://github.com/microsoft/MLOps'
+    - name: 设计器示例数据集
+      href: designer-sample-datasets.md
 - name: 概念
   items:
     - name: 工作区

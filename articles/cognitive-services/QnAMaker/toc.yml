@@ -88,6 +88,8 @@
         - name: 开发生命周期
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: 使用主动学习建议进行改进
+          href: Concepts/active-learning-suggestions.md
     - name: 查询知识库
       items:
         - name: 获取答案
@@ -151,7 +153,7 @@
       href: How-To/get-analytics-knowledge-base.md
 - name: 参考
   items:
-    - name: 语言
+    - name: Languages
       href: Overview/language-support.md
     - name: 限制
       href: limits.md

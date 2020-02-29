@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: 快速入门
   items:
-    - name: 创建专用终结点
-      items:
-        - name: Azure 门户
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: 创建专用链接服务
-      items:
-        - name: Azure 门户
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: 创建专用终结点 - 门户
+      href: create-private-endpoint-portal.md
+    - name: 创建专用终结点 - PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: 创建专用终结点 - Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: 创建专用链接服务 - 门户
+      href: create-private-link-service-portal.md
+    - name: 创建专用链接服务 - PowerShell
+      href: create-private-link-service-powershell.md
+    - name: 创建专用链接服务 - Azure CLI
+      href: create-private-link-service-cli.md
 - name: 概念
   items:
     - name: 专用终结点
