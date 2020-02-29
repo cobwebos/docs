@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794225"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194336"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 认知搜索中的同义词
 
@@ -45,7 +45,7 @@ ms.locfileid: "72794225"
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 可在服务下添加或更新同义词映射。
 
-使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中可为每个同义词映射定义最多 5,000 条规则，在所有其他 SKU 中可定义最多 10,000 条规则。 每条规则可包含最多 20 个扩展。
+使用 POST 或 PUT 可将同义词映射上传到服务。 每个规则必须通过换行符（“\n”）进行分隔。 在免费服务中，最多可以为每个同义词映射定义5000个规则，在所有其他 Sku 中定义20000个规则。 每条规则可包含最多 20 个扩展。
 
 同义词映射的格式必须为 Apache Solr，以下对此进行了解释。 如果现有的同义词字典具有不同格式，并且希望直接使用它，请在 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 上向我们反馈。
 

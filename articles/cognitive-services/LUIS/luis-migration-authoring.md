@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 6e1005e3d9c3769de3249f3244d65a656edc963e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec6f9592a4c149be382fab66cca27d929644d988
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891739"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194503"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -74,7 +74,7 @@ ms.locfileid: "74891739"
 
 请按照[以下迁移步骤](luis-migration-authoring-steps.md)操作。
 
-### <a name="after-you-migrate"></a>迁移之后
+### <a name="after-you-migrate"></a>迁移后
 
 迁移过程完成后，所有 LUIS 应用现已分配给单个 LUIS 创作资源。
 
@@ -82,7 +82,7 @@ ms.locfileid: "74891739"
 
 您可以在该资源的 "**访问控制（IAM）** " 页上，将参与者添加到_Azure 门户_中的创作资源。 有关详细信息，请参阅[添加参与者访问](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|门户|用途|
+|门户|目的|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* 创建预测和创作资源。<br>* 分配参与者。|
 |[LUIS](https://www.luis.ai)|* 迁移到新的创作资源。<br>* 通过 "**管理-> Azure 资源**" 页为应用分配预测和创作资源。|
@@ -104,12 +104,20 @@ LUIS 的每个用户都需要迁移，包括协作者/参与者。 协作者必�
 
 迁移过程完成后，LUIS 门户的 "**我的应用**" 页上提供了你拥有的任何应用。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting-the-migration-process-for-luis-authoring"></a>排查 LUIS 创作的迁移过程
 
-* 迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需完成迁移过程。
+* 迁移过程完成后，LUIS 创作密钥仅在 LUIS 门户中可见。 如果创建了创作密钥，例如 with LUIS CLI，则用户仍需在 LUIS 门户中完成迁移过程。
 * 如果已迁移的用户在其 azure 资源上添加了非迁移用户作为参与者，则未迁移的用户将无法访问应用，除非他们迁移。
-* 如果非迁移的用户不是任何应用的所有者，但他是其他用户拥有的其他应用的协作者，且这些所有者已完成迁移过程，则此用户需要迁移才能访问应用。
+* 如果非迁移的用户不是任何应用的所有者，而是其他用户拥有的其他应用的协作者，且这些所有者已完成迁移过程，则此用户需要迁移才能访问应用。
 * 如果非迁移的用户将其他已迁移用户添加为其应用的协作者，则会发生错误，因为无法将迁移的用户作为协作者添加到应用中。 然后，非迁移的用户必须完成迁移过程，并创建 azure 资源并将迁移的用户作为参与者添加到该资源。
+
+如果出现下列情况，则在迁移过程中会收到错误：
+* 你的订阅不会授权你创建认知服务资源
+* 迁移会对任何应用程序运行时产生负面影响。 迁移时，会从应用中删除任何协作者，并将其作为协作者从其他应用中删除。 此过程表明，分配的密钥也会删除。 如果已在其他应用中分配密钥，则迁移将被阻止。 在迁移之前，请删除安全指定的密钥。 如果你知道在运行时中未使用分配的密钥，则需要将其删除才能在迁移过程中进行。
+
+使用以下 URL 格式访问应用的 Azure 资源列表：
+
+`https://www.luis.ai/applications/REPLACE-WITH-YOUR-APP-ID/versions/REPLACE-WITH-YOUR-VERSION-ID/manage/resources`
 
 ## <a name="next-steps"></a>后续步骤
 

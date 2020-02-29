@@ -3,20 +3,20 @@ title: 启用一次性密码（OTP）验证
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure AD B2C 自定义策略设置一次性密码（OTP）方案。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114055"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184020"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -51,9 +51,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims**元素包含发送到一次性密码协议提供程序所需的声明的列表。 你还可以将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必需 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 标识符 | 是 | 标识稍后需要验证代码的用户的标识符。 它通常用作代码传递到的目标的标识符，例如电子邮件地址或电话号码。 |
+| 标识符 (identifier) | 是 | 标识稍后需要验证代码的用户的标识符。 它通常用作代码传递到的目标的标识符，例如电子邮件地址或电话号码。 |
 
 **InputClaimsTransformations**元素可包含**InputClaimsTransformation**元素的集合，这些元素用于修改输入声明，或在发送到一次性密码协议提供程序之前生成新声明。
 
@@ -61,7 +61,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **OutputClaims**元素包含由一次性密码协议提供程序生成的声明列表。 你还可以将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必需 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | otpGenerated | 是 | Azure AD B2C 管理其会话的生成代码。 |
 
@@ -71,14 +71,14 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 以下设置可用于配置代码生成和维护：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | 是 | 代码过期之前的时间（秒）。 最小值： `60`;最大值： `1200`;默认值： `600`。 |
-| CodeLength | 是 | 代码的长度。 默认值是 `6`。 |
-| CharacterSet | 是 | 代码的字符集，格式设置为在正则表达式中使用。 例如，`a-z0-9A-Z` 。 默认值是 `0-9`。 字符集必须在指定的集中至少包含10个不同的字符。 |
-| NumRetryAttempts | 是 | 代码被视为无效之前的验证尝试次数。 默认值是 `5`。 |
-| 操作 | 是 | 要执行的操作。 可能的值： `GenerateCode`或 `VerifyCode`。 |
-| ReuseSameCode | 是 | 当给定代码未过期且仍然有效时，是否应提供重复的代码，而不是生成新代码。 默认值是 `false`。 |
+| CodeExpirationInSeconds | 否 | 代码过期之前的时间（秒）。 最小值： `60`;最大值： `1200`;默认值： `600`。 |
+| CodeLength | 否 | 代码的长度。 默认值是 `6`。 |
+| CharacterSet | 否 | 代码的字符集，格式设置为在正则表达式中使用。 例如，`a-z0-9A-Z` 。 默认值是 `0-9`。 字符集必须在指定的集中至少包含10个不同的字符。 |
+| NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值是 `5`。 |
+| Operation | 是 | 要执行的操作。 可能的值： `GenerateCode`或 `VerifyCode`。 |
+| ReuseSameCode | 否 | 当给定代码未过期且仍然有效时，是否应提供重复的代码，而不是生成新代码。 默认值是 `false`。 |
 
 ### <a name="returning-error-message"></a>返回错误消息
 
@@ -117,9 +117,9 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 **InputClaims**元素包含发送到一次性密码协议提供程序所需的声明的列表。 你还可以将声明名称映射到下面定义的名称。
 
-| ClaimReferenceId | 必需 | 说明 |
+| ClaimReferenceId | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 标识符 | 是 | 标识之前已生成代码的用户的标识符。 它通常用作代码传递到的目标的标识符，例如电子邮件地址或电话号码。 |
+| 标识符 (identifier) | 是 | 标识之前已生成代码的用户的标识符。 它通常用作代码传递到的目标的标识符，例如电子邮件地址或电话号码。 |
 | otpToVerify | 是 | 用户提供的验证码。 |
 
 **InputClaimsTransformations**元素可包含**InputClaimsTransformation**元素的集合，这些元素用于修改输入声明，或在发送到一次性密码协议提供程序之前生成新声明。
@@ -134,11 +134,11 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 以下设置可用于配置在代码验证失败时显示的错误消息：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | 是 | 在代码验证会话过期时向用户显示的消息。 代码已过期，或者从未为给定标识符生成了代码。 |
-| UserMessageIfMaxRetryAttempted | 是 | 当用户超过允许的最大验证尝试次数时向用户显示的消息。 |
-| UserMessageIfInvalidCode | 是 | 如果用户提供的代码无效，则向用户显示消息。 |
+| UserMessageIfSessionDoesNotExist | 否 | 在代码验证会话过期时向用户显示的消息。 代码已过期，或者从未为给定标识符生成了代码。 |
+| UserMessageIfMaxRetryAttempted | 否 | 当用户超过允许的最大验证尝试次数时向用户显示的消息。 |
+| UserMessageIfInvalidCode | 否 | 如果用户提供的代码无效，则向用户显示消息。 |
 
 ### <a name="returning-error-message"></a>返回错误消息
 

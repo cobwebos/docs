@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717684"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191939"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>& 分类的 Azure SQL 数据库和 SQL 数据仓库数据发现
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>& 分类的 azure SQL 数据库和 Azure Synapse Analytics 数据发现
 
 数据发现 & 分类提供了内置于 Azure SQL 数据库的高级功能，用于**发现**、**分类**、**标记** & **报告**数据库中的敏感数据。
 
@@ -32,7 +33,7 @@ ms.locfileid: "76717684"
 数据发现 & 分类是[高级数据安全](sql-database-advanced-data-security.md)（ADS）产品/服务的一部分，它是一个用于高级 SQL 安全功能的统一包。 可通过中心 SQL ADS 门户访问和管理数据发现和分类。
 
 > [!NOTE]
-> 本文档与 Azure SQL 数据库和 Azure SQL 数据仓库相关。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。 有关 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文档与 Azure SQL 数据库和 Azure Synapse 相关。 为简单起见，在同时引用 SQL 数据库和 Azure Synapse 时使用 SQL 数据库。 有关 SQL Server （本地），请参阅[SQL 数据发现和分类](https://go.microsoft.com/fwlink/?linkid=866999)。
 
 ## <a id="subheading-1"></a>什么是数据发现和分类
 
@@ -138,7 +139,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 
 ## <a id="subheading-5"></a>管理分类
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 可以使用 T-SQL 添加/删除列分类，以及检索整个数据库的所有分类。
 
 > [!NOTE]
@@ -148,7 +149,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - 删除一列或多列分类：[删除敏感度分类](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - 查看数据库上的所有分类：[sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rest Api](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[Rest Api](#tab/azure-rest-api)
 可以使用 REST Api 以编程方式管理分类和建议。 已发布的 REST API 支持以下操作：
 
 - [创建或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)-创建或更新给定列的敏感度标签
@@ -159,7 +160,7 @@ SQL 数据发现和分类附带了一组内置的敏感度标签和一组内置�
 - [按数据库列出当前项](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 获取给定数据库的当前敏感度标签
 - [数据库推荐的列表](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)-获取给定数据库的建议敏感度标签
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[PowerShell Cmdlet](#tab/azure-powelshell)
 可以使用 PowerShell 管理 Azure SQL 数据库和托管实例的分类和建议。
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 PowerShell Cmdlet

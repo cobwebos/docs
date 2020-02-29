@@ -1,6 +1,6 @@
 ---
 title: 分布式表设计指南
-description: 有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
+description: 在 SQL Analytics 中设计哈希分布式和轮循机制分布式表的建议。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049117"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199438"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>有关如何在 Azure SQL 数据仓库中设计分布式表的指南
-有关如何在 Azure SQL 数据仓库中设计哈希分布式表和轮循机制分布式表的一些建议。
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>在 SQL Analytics 中设计分布式表的指南
+在 SQL Analytics 中设计哈希分布式和轮循机制分布式表的建议。
 
-本文假设读者熟悉 SQL 数据仓库中的数据分布和数据移动概念。  有关详细信息，请参阅[AZURE SQL 数据仓库-大规模并行处理（MPP）体系结构](massively-parallel-processing-mpp-architecture.md)。 
+本文假定你熟悉 SQL Analytics 中的数据分布和数据移动概念。  有关详细信息，请参阅[SQL Analytics 大规模并行处理（MPP）体系结构](massively-parallel-processing-mpp-architecture.md)。 
 
 ## <a name="what-is-a-distributed-table"></a>什么是分布式表？
 分布式表显示为单个表，但表中的行实际存储在 60 个分布区中。 这些行使用哈希或轮循机制算法进行分布。  
@@ -34,15 +34,15 @@ ms.locfileid: "74049117"
 
 - 表有多大？   
 - 表的刷新频率是多少？   
-- 数据仓库中有事实数据表和维度表吗？   
+- SQL Analytics 数据库中是否有事实数据表和维度表？   
 
 
 ### <a name="hash-distributed"></a>哈希分布
-哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，来跨计算节点分布表行。 
+哈希分布表通过使用确定性的哈希函数将每一行分配给一个[分布区](massively-parallel-processing-mpp-architecture.md#distributions)，实现表行的跨计算节点分布。 
 
 ![分布式表](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "分布式表")  
 
-由于相同的值始终哈希处理到相同的分布区，因此，数据仓库本身就具有行位置方面的信息。 SQL 数据仓库利用此信息最大程度地减少查询期间的数据移动，从而提高查询性能。 
+由于相同的值始终哈希处理到相同的分布，因此 SQL Analytics 具有行位置的内置知识。 SQL Analytics 使用这一知识来最大程度地减少查询期间的数据移动，从而提高查询性能。 
 
 哈希分布表适用于星型架构中的大型事实数据表。 它们可以包含大量行，但仍实现高性能。 当然，用户应该了解一些设计注意事项，它们有助于获得分布式系统本应具有的性能。 本文所述的选择合适的分布列就是其中之一。 
 
@@ -58,14 +58,14 @@ ms.locfileid: "74049117"
 
 在以下情况下，考虑对表使用轮循机制分布：
 
-- 从一个简单的起点入门时，因为该分布是默认选项
+- 在最开始将其用作一个简单的起点，因为该分布是默认选项
 - 没有明显的联接键时
 - 如果没有合适的候选列可对表进行哈希分布
 - 表没有与其他表共享通用的联接键时
 - 该联接比查询中的其他联接更不重要时
 - 表是临时过渡表时
 
-教程[将纽约出租车数据加载到 Azure SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了将数据加载到轮循机制临时表的示例。
+教程[Load 纽约出租车数据](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)提供了一个示例，说明如何将数据加载到 SQL Analytics 的轮循机制临时表中。
 
 
 ## <a name="choosing-a-distribution-column"></a>选择分布列
@@ -109,7 +109,7 @@ WITH
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>选择能最大程度减少数据移动的分布列
 
-为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择能最大程度减少数据移动的分布列，是优化 SQL 数据仓库性能最重要的策略之一。
+为了获取正确的查询结果，查询可能将数据从一个计算节点移至另一个计算节点。 当查询对分布式表执行联接和聚合操作时，通常会发生数据移动。 选择有助于最大程度减少数据移动的分布列是优化 SQL 分析数据库性能的最重要策略之一。
 
 若要最大程度减少数据移动，请选择符合以下条件的分布列：
 
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要创建分布式表，请使用以下语句之一：
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)（CREATE TABLE AS SELECT（Azure SQL 数据仓库））
+- [CREATE TABLE （SQL Analytics）](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT （SQL Analytics）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

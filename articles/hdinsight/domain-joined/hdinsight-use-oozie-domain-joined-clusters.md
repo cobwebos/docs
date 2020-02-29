@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
-ms.openlocfilehash: ecc4d5053ef6d9194f09b8a5aa6ba1528f9d94fa
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920718"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194897"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight Hadoop 群集中运行 Apache Oozie
 
@@ -232,7 +232,7 @@ Oozie 工作流定义是用 Apache Hadoop 过程定义语言 (hPDL) 编写的。
 
    - 如果主群集存储是 Azure Data Lake Storage Gen1，则将 `adl://home` URI 用于 `nameNode` 属性。 如果使用的是 Azure Blob 存储，请将其更改为 `wasb://home`。 如果使用 Azure Data Lake Storage Gen2，则将其更改为 `abfs://home`。
    - 将 `domainuser` 替换为你的域用户名。  
-   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net，`clustershortname` 为群集的前 6 个字符：sechad。  
+   - 将 `ClusterShortName` 替换为群集的短名称。 例如，如果群集名称为 https:// [example link] sechadoopcontoso.azurehdisnight.net， *为群集的前 6 个字符：sechad*`clustershortname`。  
    - 将 `jdbcurlvalue` 替换为 Hive 配置中的 JDBC URL。 例如，jdbc:hive2://headnodehost:10001/;transportMode=http。
    - 若要保存文件，请按 Ctrl+X，输入 `Y`，再按 **Enter**。
 
@@ -348,4 +348,4 @@ Oozie Web UI 提供基于 Web 的视图来显示群集上 Oozie 作业的状态�
 ## <a name="next-steps"></a>后续步骤
 
 - [在基于 Linux 的 Azure HDInsight 中将 Apache Oozie 与 Apache Hadoop 配合使用以定义和运行工作流](../hdinsight-use-oozie-linux-mac.md)。
-- [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+- [使用 SSH 连接到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。

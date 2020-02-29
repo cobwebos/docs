@@ -11,14 +11,15 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+tags: azure-synapse
+ms.openlocfilehash: 89ec405a348e3ace851fd5f5e17283a8036692a5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153275"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199404"
 ---
-# <a name="secure-a-database-in-sql-data-warehouse"></a>保护 SQL 数据仓库中的数据库
+# <a name="secure-a-database-in-azure-synapse"></a>保护 Azure Synapse 中的数据库
 > [!div class="op_single_selector"]
 > * [安全概述](sql-data-warehouse-overview-manage-security.md)
 > * [身份验证](sql-data-warehouse-authentication.md)
@@ -47,7 +48,7 @@ Azure Synapse Analytics 使用服务器级 IP 防火墙规则。 它不支持数
 
 但是，组织的用户最好使用不同的帐户进行验证。 这样，便可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 
 
-若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好同时在 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。
+若要创建 SQL Server 验证的用户，请使用服务器管理员登录名连接到服务器上的 **master** 数据库，并创建新的服务器登录名。  最好还在 master 数据库中创建一个用户。 在 master 中创建用户以后，用户即可使用 SSMS 之类的工具登录，不需指定数据库名称。  此外，用户还可以使用对象资源管理器查看 SQL Server 上的所有数据库。
 
 ```sql
 -- Connect to master database and create a login
@@ -58,7 +59,7 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 然后，使用服务器管理员登录名连接到**SQL 池数据库**，并根据所创建的服务器登录名创建数据库用户。
 
 ```sql
--- Connect to SQL DW database and create a database user
+-- Connect to the database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
@@ -76,7 +77,7 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 用于连接的服务器管理员帐户是 db_owner 所有者的成员，该帐户有权在数据库中执行任何操作。 请保存此帐户，以便部署架构升级并执行其他管理操作。 权限受到更多限制的“ApplicationUser”帐户可让用户使用应用程序所需的最低权限从应用程序连接到数据库。
 
-有多种方法可以进一步限制用户可在数据仓库中执行的操作：
+有多种方法可以进一步限制用户可在数据库中执行的操作：
 
 * 精细[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15)可让你控制可以对数据库中的单个列、表、视图、架构、过程和其他对象执行的操作。 使用细化的权限可以进行最精细的控制，可以根据用户需要授予其最低权限。 
 * 除 db_datareader 和 db_datawriter 以外的[数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15)可用于创建权限较大的应用程序用户帐户或权限较小的管理帐户。 内置的固定的数据库角色可以方便地用来授予权限，但可能会导致所授权限超出需要的情况。

@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure 门户 & SSMS 加载数据
-description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure blob 加载到 Azure SQL 数据仓库。
+description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure blob 加载到 Azure Synapse Analytics Sql 池。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370130"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193536"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>教程：将数据加载到 Azure SQL 数据仓库
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics Sql 池
 
-本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure SQL 数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作：
+本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure Synapse Analytics SQL 池中的数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作：
 
 > [!div class="checklist"]
-> * 在 Azure 门户中创建数据仓库
+> * 在 Azure 门户中使用 SQL 池创建数据仓库
 > * 在 Azure 门户中设置服务器级防火墙规则
-> * 使用 SSMS 连接到数据仓库
+> * 用 SSMS 连接到 SQL 池
 > * 创建专用于加载数据的用户
 > * 创建使用 Azure Blob 作为数据源的外部表
 > * 使用 CTAS T-SQL 语句将数据加载到数据仓库
@@ -43,33 +43,30 @@ ms.locfileid: "75370130"
 
 登录 [Azure 门户](https://portal.azure.com/)。
 
-## <a name="create-a-blank-sql-data-warehouse"></a>创建空白 SQL 数据仓库
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>在 SQL 池中创建空白数据仓库
 
-使用一组定义好的[计算资源](memory-concurrency-limits.md)创建 Azure SQL 数据仓库。 数据库在 [Azure 资源组](../azure-resource-manager/management/overview.md)和 [Azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
+Sql 池是使用一组定义的[计算资源](memory-concurrency-limits.md)创建的。 SQL 池在[azure 资源组](../azure-resource-manager/management/overview.md)和[azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
 
-按照以下步骤创建空白 SQL 数据仓库。 
+按照以下步骤创建一个空白 SQL 池。 
 
-1. 在 Azure 门户的左上角单击“创建资源”。
+1. 在 Azure 门户中选择 "**创建资源**"。
 
-2. 从“新建”页中选择“数据库”，然后从“新建”页的“特色”下选择“SQL 数据仓库”。
+1. 从**新**页中选择 "**数据库**"，然后在 "**新建**" 页上的 "**功能**" 下选择 " **Azure Synapse 分析**"。
 
-    ![创建数据仓库](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![创建 SQL 池](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. 使用以下信息填写“SQL 数据仓库”表单：   
+1. 填写 "**项目详细信息**" 部分，其中包含以下信息：   
 
-   | 设置 | 建议的值 | Description | 
-   | ------- | --------------- | ----------- | 
-   | **数据库名称** | SampleDW | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 | 
+   | 设置 | 示例 | 说明 | 
+   | ------- | --------------- | ----------- |
    | **订阅** | 订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | SampleRG | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
-   | **选择源** | 空白数据库 | 指定创建空白数据库。 请注意，数据仓库是一种数据库。|
+   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 |
 
-    ![创建数据仓库](media/load-data-wideworldimportersdw/create-data-warehouse.png)
+1. 在 " **sql 池详细信息**" 下，提供 sql 池的名称。 接下来，从下拉菜单中选择现有的服务器，或选择 "**服务器**设置" 下的 "**新建**" 以创建新服务器。 使用以下信息填写窗体： 
 
-4. 单击“服务器”，为新数据库创建并配置新服务器。 使用以下信息填写“新建服务器”窗体： 
-
-    | 设置 | 建议的值 | Description | 
+    | 设置 | 建议的值 | 说明 | 
     | ------- | --------------- | ----------- |
+    |**SQL 池名称**|SampleDW| 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 | 
     | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming)（命名规则和限制）。 | 
     | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。|
     | **密码** | 任何有效的密码 | 密码必须至少有八个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
@@ -77,67 +74,52 @@ ms.locfileid: "75370130"
 
     ![创建数据库服务器](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. 单击“选择”。
+1. **选择 "性能级别**"。 默认情况下，滑块设置为**DW1000c**。 向上和向下移动滑块以选择所需的性能缩放。 
 
-6. 单击 "**性能层**" 以指定数据仓库是 Gen1、Gen2 还是数据仓库单位数。 
+    ![创建数据库服务器](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. 对于本教程，请选择 " **Gen1** " 服务层。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
+1. 在 "**其他设置**" 页上，将 "**使用现有数据**" 设置为 "无"，并将**排序规则**保留*SQL_Latin1_General_CP1_CI_AS*默认值。 
 
-    ![配置性能](media/load-data-wideworldimportersdw/configure-performance.png)
+1. 选择 "查看" 和 "**创建**" 以查看设置，然后选择 "**创建**" 以创建数据仓库。 可以通过从 "**通知**" 菜单打开 "**正在进行的部署**" 页来监视进度。 
 
-8. 单击“应用”。
-9. 在“SQL 数据仓库”页中，为空白数据库选择“排序规则”。 对于本教程，请使用默认值。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
-
-11. 完成 SQL 数据库表单后，即可单击“创建”对数据库进行预配。 预配需要数分钟。 
-
-    ![单击“创建”](media/load-data-wideworldimportersdw/click-create.png)
-
-12. 在工具栏上，单击“通知”可监视部署过程。
-    
      ![通知](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>创建服务器级防火墙规则
 
-SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 
+Azure Synapse Analytics 服务在服务器级别创建防火墙，阻止外部应用程序和工具连接到服务器或服务器上的任何数据库。 要启用连接，可以添加防火墙规则，为特定 IP 地址启用连接。  按照以下步骤为客户端的 IP 地址创建[服务器级防火墙规则](../sql-database/sql-database-firewall-configure.md)。 
 
 > [!NOTE]
-> SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
+> Azure Synapse Analytics SQL 池通过端口1433进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 >
 
-1. 部署完成后，在左侧菜单中单击“SQL 数据库”，然后在“SQL 数据库”页上单击“SampleDW”。 此时会打开数据库的概览页，其中显示了完全限定的服务器名称（例如 **sample-svr.database.windows.net**），并提供了其他配置的选项。 
 
-2. 在后续的快速入门中，请复制此完全限定的服务器名称，将其用于连接到服务器及其数据库。 若要打开服务器设置，请单击服务器名称。
+1. 部署完成后，在 "导航" 菜单的搜索框中搜索池名称，然后选择 "SQL 池资源"。 选择服务器名称。 
 
-    ![查找服务器名称](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![中转到你的资源](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. 若要打开服务器设置，请单击服务器名称。
+1. 选择服务器名称。 
+    服务器名称![](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. 选择 "**显示防火墙设置**"。 此时将打开 Sql 池服务器的 "**防火墙设置**" 页。 
 
     ![服务器设置](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. 单击“显示防火墙设置”。 此时会打开 SQL 数据库服务器的“防火墙设置”页。 
+1. 在 "**防火墙和虚拟网络**" 页上，选择 "**添加客户端 IP** "，将当前的 ip 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
 
     ![服务器防火墙规则](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  在工具栏上单击“添加客户端 IP”，将当前的 IP 地址添加到新的防火墙规则。 防火墙规则可以针对单个 IP 地址或一系列 IP 地址打开端口 1433。
+1. 选择“保存”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
 
-5. 单击“ **保存**”。 此时会针对当前的 IP 地址创建服务器级防火墙规则，在逻辑服务器上打开 端口 1433。
-
-6. 单击“确定”，然后关闭“防火墙设置”页。
-
-现在，可使用此 IP 地址连接到 SQL Server 及其数据仓库。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，使用之前创建的 serveradmin 帐户。  
+你现在可以使用客户端 IP 地址连接到 SQL server。 可从 SQL Server Management Studio 或另一种所选工具进行连接。 连接时，使用之前创建的 serveradmin 帐户。  
 
 > [!IMPORTANT]
 > 默认情况下，所有 Azure 服务都允许通过 SQL 数据库防火墙进行访问。 单击此页上的“关闭”，然后单击“保存”，对所有 Azure 服务禁用防火墙。
 
 ## <a name="get-the-fully-qualified-server-name"></a>获取完全限定的服务器名称
 
-请在 Azure 门户中获取 SQL Server 的完全限定的服务器名称。 稍后，在连接到服务器时，将使用该完全限定的名称。
+完全限定的服务器名称是用于连接到服务器的名称。 中转到 Azure 门户中的 SQL 池资源，然后在 "**服务器名称**" 下查看完全限定的名称。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-2. 从左侧菜单中选择“SQL 数据库”，并单击“SQL 数据库”页上的数据库。 
-3. 在数据库的“Azure 门户”页的“概要”窗格中，找到并复制“服务器名称”。 在此示例中，完全限定的名称为 mynewserver-20171113.database.windows.net。 
-
-    ![连接信息](media/load-data-wideworldimportersdw/find-server-name.png)  
+![服务器名称](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
@@ -147,11 +129,11 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 2. 在“连接到服务器”对话框中，输入以下信息：
 
-    | 设置      | 建议的值 | Description | 
+    | 设置      | 建议的值 | 说明 | 
     | ------------ | --------------- | ----------- | 
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
-    | 服务器名称 | 完全限定的服务器名称 | 例如，**sample-svr.database.windows.net** 就是完全限定的服务器名称。 |
-    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+    | 服务器名称 | 完全限定的服务器名称 | 例如， **sqlpoolservername.database.windows.net**是完全限定的服务器名称。 |
+    | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
     | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
@@ -165,7 +147,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="create-a-user-for-loading-data"></a>创建用于加载数据的用户
 
-服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 内存最大值是根据所用 SQL 数据仓库的代系、[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[资源类](resource-classes-for-workload-management.md)定义的。 
+服务器管理员帐户用于执行管理操作，不适合对用户数据运行查询。 加载数据是一种内存密集型操作。 根据所使用的 SQL 池、[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)和[资源类](resource-classes-for-workload-management.md)的生成定义内存最大内存。 
 
 最好创建专用于加载数据的登录名和用户。 然后，将加载用户添加到启用相应最大内存分配的[资源类](resource-classes-for-workload-management.md)。
 
@@ -216,7 +198,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
 ## <a name="create-external-tables-and-objects"></a>创建外部表和对象
 
-已准备好开始将数据加载到新的数据仓库。 今后若要了解如何将数据移入 Azure Blob 存储，或者将数据直接从源载入 SQL 数据仓库，请参阅[有关加载的概述](sql-data-warehouse-overview-load.md)。
+已准备好开始将数据加载到新的数据仓库。 若要了解如何将数据导入 Azure Blob 存储，或者要将数据直接从源载入 SQL 池中，请参阅[加载概述](sql-data-warehouse-overview-load.md)。
 
 运行以下 SQL 脚本，指定有关想要加载的数据的信息。 此信息包括数据所在的位置、数据内容的格式以及数据的表定义。 数据位于全局 Azure Blob 中。
 
@@ -266,7 +248,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     CREATE SCHEMA wwi;
     ```
 
-7. 创建外部表。 表定义存储在 SQL 数据仓库中，但表引用数据存储在 Azure Blob 存储中。 运行以下 T-SQL 命令创建若干外部表，这些表都指向之前在外部数据源中定义的 Azure Blob。
+7. 创建外部表。 表定义存储在数据库中，但这些表引用存储在 Azure blob 存储中的数据。 运行以下 T-SQL 命令创建若干外部表，这些表都指向之前在外部数据源中定义的 Azure Blob。
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
 
     ![查看外部表](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>将数据加载到数据仓库
+## <a name="load-the-data-into-sql-pool"></a>将数据加载到 SQL 池中
 
-本部分使用定义的外部表将示例数据从 Azure Blob 加载到 SQL 数据仓库。  
+本部分使用定义的外部表将示例数据从 Azure Blob 加载到 SQL 池中。  
 
 > [!NOTE]
 > 本教程直接将数据加载到最终表。 在生产环境中，通常使用 CREATE TABLE AS SELECT 将数据加载到临时表。 数据在临时表中时，可以执行任何必要的转换。 要将临时表中的数据追加到生产表，可以使用 INSERT...SELECT 语句。 有关详细信息，请参阅[将数据插入到生产表](guidance-for-loading-data.md#inserting-data-into-a-production-table)。
 > 
 
-下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表进行选择时，SQL 数据仓库将数据导入数据仓库中的关系表。 
+下面的脚本使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 语句将数据从 Azure 存储 Blob 加载到数据仓库中的新表。 CTAS 基于 select 语句的结果创建新表。 新表包含与 select 语句结果相同的列和数据类型。 当 select 语句从外部表中选择数据时，数据将被导入到数据仓库中的关系表。 
 
 此脚本不会将数据加载到 dimension_Date wwi 表和 fact_Sale wwi 表中。 稍后的步骤会生成这些表，使表中包含数目可调整的行。
 
@@ -704,7 +686,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     ;
     ```
 
-2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 在 SampleDW 中打开新查询窗口，并运行以下查询显示负载状态。 开始查询后，在 SQL 数据仓库执行繁重任务的同时，可享用咖啡和小吃。
+2. 在加载数据的同时查看数据。 假设要加载几个 GB 的数据，并将其压缩成高性能群集列存储索引。 在 SampleDW 中打开新查询窗口，并运行以下查询显示负载状态。 开始查询后，在 SQL 池执行一些繁重的工作时，抓住咖啡和 snack.style。
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>填充复制表缓存
-SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对该表运行查询时，将会填充缓存。 因此，针对复制表运行的第一个查询可能需要花费额外的时间来填充缓存。 填充缓存后，针对复制表运行查询的速度会加快。
+
+SQL 池通过将数据缓存到每个计算节点来复制表。 针对该表运行查询时，将会填充缓存。 因此，针对复制表运行的第一个查询可能需要花费额外的时间来填充缓存。 填充缓存后，针对复制表运行查询的速度会加快。
 
 运行这些 SQL 查询可填充计算节点上的复制表缓存。 
 
@@ -1112,16 +1095,16 @@ SQL 数据仓库通过将数据缓存到每个计算节点来复制表。 针对
 
 完成了以下操作：
 > [!div class="checklist"]
-> * 在 Azure 门户中创建数据仓库
+> * 在 Azure 门户中使用 SQL 池创建了数据仓库
 > * 在 Azure 门户中设置服务器级防火墙规则
-> * 使用 SSMS 连接到数据仓库
+> * 已通过 SSMS 连接到 SQL 池
 > * 创建了专用于加载数据的用户
 > * 在 Azure 存储 Blob 中为数据创建了外部表
 > * 使用 CTAS T-SQL 语句将数据加载到数据仓库
 > * 查看了正在加载的数据的进度
 > * 创建了新加载的数据的统计信息
 
-转到开发概述，了解如何将现有数据库迁移到 SQL 数据仓库。
+转到开发概述，了解如何将现有数据库迁移到 Azure Synapse SQL 池。
 
 > [!div class="nextstepaction"]
->[将现有数据库迁移到 SQL 数据仓库的设计决策](sql-data-warehouse-overview-develop.md)
+>[将现有数据库迁移到 SQL 池的设计决策](sql-data-warehouse-overview-develop.md)

@@ -3,20 +3,20 @@ title: 用 Azure Monitor 监视 Azure AD B2C
 titleSuffix: Azure AD B2C
 description: 了解如何使用委托的资源管理来记录 Azure Monitor 的 Azure AD B2C 事件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121374"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190052"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>用 Azure Monitor 监视 Azure AD B2C
 
@@ -30,7 +30,7 @@ ms.locfileid: "77121374"
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本文中的步骤，请使用 Azure PowerShell 模块部署 Azure 资源管理器模板。
 
@@ -74,7 +74,7 @@ Azure AD B2C 目录的**目录 id** （也称为租户 id）。
 
 若要加入你的 Azure AD 租户（**客户**），请为你的产品/服务创建一个[Azure 资源管理器模板](../lighthouse/how-to/onboard-customer.md)，其中包含以下信息。 在 Azure 门户的 "[服务提供程序" 页](../lighthouse/how-to/view-manage-service-providers.md)中查看产品/服务详细信息时，`mspOfferName` 和 `mspOfferDescription` 值可见。
 
-| 字段   | Definition |
+| 字段   | 定义 |
 |---------|------------|
 | `mspOfferName`                     | 描述此定义的名称。 例如， *Azure AD B2C 托管服务*。 此值将作为产品/服务的标题显示给客户。 |
 | `mspOfferDescription`              | 产品/服务的简短说明。 例如，*启用 Azure AD B2C 中的 Azure Monitor*。|

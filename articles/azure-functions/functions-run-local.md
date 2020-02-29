@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523265"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190783"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -463,7 +463,7 @@ Azure Functions Core Tools 支持两种类型的部署：通过[Zip](functions-d
 
 项目文件夹可能包含不应发布的特定于语言的文件和目录。 排除的项在根项目文件夹中的 funcignore 文件中列出。     
 
-### <a name="project-file-deployment"></a>部署（项目文件）
+### <a name="project-file-deployment"></a>部署项目文件
 
 若要将本地代码发布到 Azure 中的函数应用，请使用 `publish` 命令：
 
@@ -500,7 +500,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--no-build`** | 不要生成 .NET 类库函数。 |
 | **`--dotnet-cli-params`** | 发布编译的 C# (.csproj) 函数时，Core Tools 将调用“dotnet build --output bin/publish”。 传递到此选项的任何参数将追加到命令行。 |
 
-### <a name="deployment-custom-container"></a>部署（自定义容器）
+### <a name="deploy-custom-container"></a>部署自定义容器
 
 Azure Functions 允许在[自定义 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函数项目。 有关详细信息，请参阅[使用自定义映像在 Linux 上创建函数](functions-create-function-linux-custom-image.md)。 自定义容器必须有一个 Dockerfile。 若要创建具有 Dockerfile 的应用，请在 `func init`上使用--Dockerfile 选项。
 

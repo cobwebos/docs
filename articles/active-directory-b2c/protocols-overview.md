@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 中的身份验证协议 | Microsoft Docs
 description: 如何使用 Azure Active Directory B2C 支持的协议直接构建应用。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7d5ff0fa22f3ded559a5c6cd726e7ae5e12dd92c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848780"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183898"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C：身份验证协议
 通过支持两种行业标准协议（OpenID Connect 和 OAuth 2.0），Azure Active Directory B2C (Azure AD B2C) 为应用提供标识即服务。 这是符合标的服务，但这些协议的任意两个实现之间仍然存在微妙的差异。

@@ -1,6 +1,6 @@
 ---
 title: 使用 IDENTITY 创建代理键
-description: 关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
+description: 在 SQL Analytics 中使用 IDENTITY 属性创建表的代理键的建议和示例。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692470"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199421"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>使用 IDENTITY 在 Azure SQL 数据仓库中创建代理键
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>在 SQL Analytics 中使用 IDENTITY 创建代理键
 
-关于如何使用 IDENTITY 属性在 Azure SQL 数据仓库中创建基于表的代理键的建议和示例。
+在 SQL Analytics 中使用 IDENTITY 属性创建表的代理键的建议和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 
-基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
+基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者喜欢在设计 SQL 分析模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 
-IDENTITY 属性设计为能够在数据仓库的所有分发中扩展，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
+标识属性设计为横向扩展 SQL 分析数据库中的所有分布区，而不会影响负载性能。 因此，IDENTITY 的实现旨在实现这些目标。
 
 在首次使用类似以下语句的语法创建表时，可以将表定义为具有 IDENTITY 属性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的分配
 
-IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 Azure SQL 数据仓库中，保证的缺乏更为明显。
+IDENTITY 属性不保证分配代理值的顺序，这反映了 SQL Server 和 Azure SQL 数据库的行为。 但是，在 SQL 分析中，不一定会有更多的保障。
 
 下面的示例进行了说明：
 
@@ -77,22 +77,22 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配不是连续的。 这是设计的行为。
+在前面的示例中，两行位于分布 1 中。 第一行在列 `C1` 中包含代理值 1，且第二行包含代理值 61。 这两个值均由 IDENTITY 属性生成。 但是，值的分配是不连续的。 这是设计的行为。
 
-### <a name="skewed-data"></a>倾斜的数据
+### <a name="skewed-data"></a>偏斜数据
 
-数据类型的值范围在各个分布区之间是均匀分配的。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 为此，IDENTITY 属性仅限于 `INT` 和 `BIGINT` 数据类型。
+数据类型的值范围跨分发均匀分配。 如果分布式表受偏斜数据的影响，则可用于数据类型的值范围可能会过早耗尽。 例如，如果所有数据最终都会处于单个分发中，则表实际上只能访问六十分之一的数据类型值。 为此，IDENTITY 属性仅限于 `INT` 和 `BIGINT` 数据类型。
 
 ### <a name="selectinto"></a>SELECT..INTO
 
 在将现有的 IDENTITY 列选入新表时，新列将继承该 IDENTITY 属性，除非下列条件之一为 true：
 
-- SELECT 语句包含联接。
-- 使用 UNION 联接多个 SELECT 语句。
+- SELECT 语句包含一个联接。
+- 多个 SELECT 语句由 UNION 联接。
 - IDENTITY 列在 SELECT 列表中多次列出。
 - IDENTITY 列是表达式的一部分。
 
-如果其中的任一条件为 true，则创建属性为 NOT NULL 的列，而不继承 IDENTITY 属性。
+如果这些条件中的一个为真，列将被创建为 NOT NULL 而不继承 IDENTITY 属性。
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 遵循 SELECT..INTO 中记录的相同 SQL Server 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>将值显式插入到 IDENTITY 列
 
-SQL 数据仓库支持 `SET IDENTITY_INSERT <your table> ON|OFF` 语法。 可以使用此语法将值显式插入 IDENTITY 列。
+SQL Analytics 支持 `SET IDENTITY_INSERT <your table> ON|OFF` 语法。 可以使用此语法将值显式插入 IDENTITY 列。
 
 许多数据建模者喜欢在其维度中为某些行使用预定义的负值。 例如，-1 或“未知成员”行。
 
@@ -129,7 +129,7 @@ IDENTITY 属性的存在对数据加载代码有一定影响。 本节重点介�
 
 若要使用 IDENTITY 将数据加载到表中并生成代理键，请创建表，然后使用 INSERT..SELECT 或 INSERT..VALUES 执行加载。
 
-下面的示例重点介绍了基本模式：
+以下示例重点介绍基本模式：
 
 ```sql
 --CREATE TABLE with IDENTITY
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 在将数据加载到包含 IDENTITY 列的表时，当前无法使用 `CREATE TABLE AS SELECT`。
 >
 
-有关如何加载数据的详细信息，请参阅[为 Azure SQL 数据仓库设计提取、加载和转换 (ELT)](design-elt-data-loading.md) 和[有关加载的最佳做法](guidance-for-loading-data.md)。
+有关加载数据的详细信息，请参阅[为 SQL Analytics 设计提取、加载和转换（ELT）](design-elt-data-loading.md)和[加载最佳实践](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系统视图
 
@@ -195,7 +195,7 @@ AND     tb.name = 'T1'
 - 当列也同样是分发键时
 - 当表是外部表时
 
-SQL 数据仓库中不支持以下相关函数：
+SQL Analytics 中不支持以下相关函数：
 
 - [IDENTITY()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)
@@ -242,5 +242,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>后续步骤
 
 - [表概述](/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [CREATE TABLE (Transact-SQL) IDENTITY (Property)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
+- [CREATE TABLE （Transact-sql）标识（属性）](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)
 - [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql)

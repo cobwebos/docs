@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621949"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194863"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -63,7 +63,8 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 共享吞吐量数据库中的容器共享分配给该数据库的吞吐量（RU/s）。 在数据库上最多可以有四个包含 400 RU/s 的容器。 前四个之后的每个新容器都需要至少 100 RU/s。 例如，如果你有一个包含八个容器的共享吞吐量数据库，则数据库上的最小 RU/秒将为 800 RU/s。
 
 > [!NOTE]
-> 在共享的吞吐量数据库中，最多可以有25个容器。 如果共享吞吐量数据库中已有25个以上的容器，则在容器计数小于25之前，将无法创建其他容器。
+> 2020年2月，我们引入了一项更改，允许在共享吞吐量数据库中最多有25个容器，从而更好地启用跨容器共享的吞吐量。 在前25个容器之后，只有在为数据库[预配专用吞吐量](#set-throughput-on-a-database-and-a-container)时，才可以将更多的容器添加到数据库中，这不同于数据库的共享吞吐量。<br>
+如果 Azure Cosmos DB 帐户已包含 > = 25 个容器的共享吞吐量数据库，则同一 Azure 订阅中的帐户和所有其他帐户将不受此更改的干扰。 如果有反馈或问题，请[与产品支持联系](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 
 
 如果工作负荷涉及删除和重新创建数据库中的所有集合，建议删除空数据库，并在创建集合之前重新创建新数据库。 下图显示了物理分区如何托管属于数据库中不同容器的一个或多个逻辑分区：
 

@@ -1,30 +1,30 @@
 ---
 title: 用于工作负荷管理的资源类
-description: 有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。
+description: 有关使用资源类来管理 Azure Synapse 分析中查询的并发和计算资源的指南。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548163"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195985"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse 分析中的资源类管理工作负荷
 
-有关在 Azure SQL 数据仓库中使用资源类管理查询内存和并发性的指导。  
+有关使用资源类管理 Azure Synapse 中 SQL Analytics 查询的内存和并发性的指南。  
 
 ## <a name="what-are-resource-classes"></a>什么是资源类
 
-查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以通过对分配给每个查询的计算资源上并发运行的查询数设置限制，来帮助你为查询配置资源。  内存与并发性之间的权衡。
+查询的性能容量由用户的资源类决定。  资源类是 SQL Analytics 中预确定的资源限制，用于管理计算资源和执行查询的并发性。 资源类可以通过对分配给每个查询的计算资源上并发运行的查询数设置限制，来帮助你为查询配置资源。  内存与并发性之间的权衡。
 
 - 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
 - 较大的资源类会增加每个查询的最大内存，但会降低并发性。
@@ -82,7 +82,7 @@ ms.locfileid: "76548163"
 
 默认情况下，每个用户都是动态资源类 (**smallrc**) 的成员。
 
-服务管理员的资源类在 smallrc 中是固定的，不可更改。  服务管理员是预配过程中创建的用户。  在使用新服务器创建新的 SQL 数据仓库实例时，此上下文中的服务管理员是为“服务器管理员登录”指定的登录名。
+服务管理员的资源类在 smallrc 中是固定的，不可更改。  服务管理员是预配过程中创建的用户。  当使用新服务器创建新的 SQL Analytics 实例时，此上下文中的服务管理员是为 "服务器管理员登录名" 指定的登录名。
 
 > [!NOTE]
 > 定义为 Active Directory 管理员的用户或组也是服务管理员。
@@ -143,7 +143,7 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>并发槽位
 
-使用并发槽位可以方便地跟踪可用于执行查询的资源。 这些槽位就像是演唱会的门票，因为席位有限，必须预订。 每个数据仓库的并发性槽位总数由服务级别决定。 在查询可以开始执行之前，必须预留足够的并发槽位。 查询完成后，会释放其并发槽位。  
+使用并发槽位可以方便地跟踪可用于执行查询的资源。 这些槽位就像是演唱会的门票，因为席位有限，必须预订。 每个数据仓库的并发性槽位总数由服务级别决定。 在查询可以开始执行之前，必须预留足够的并发槽位。 查询完成后，它将释放其并发槽。  
 
 - 使用 10 个并发槽位运行的查询可以访问的计算资源，是使用 2 个并发槽位运行的查询的 5 倍。
 - 如果每个查询需要 10 个并发槽位并且有 40 个并发槽位，则只有 4 个查询可以并发运行。
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>后续步骤
 
-有关如何管理数据库用户和安全性的详细信息，请参阅[保护 SQL 数据仓库中的数据库](./sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+有关管理数据库用户和安全性的详细信息，请参阅[在 SQL Analytics 中保护数据库](./sql-data-warehouse-overview-manage-security.md)。 有关较大资源类如何改进聚集列存储索引质量的详细信息，请参阅[列存储压缩的内存优化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 

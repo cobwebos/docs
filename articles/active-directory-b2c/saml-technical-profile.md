@@ -3,20 +3,20 @@ title: 在自定义策略中定义 SAML 技术配置文件
 titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/13/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a3df4d3a955926381a664ab872e03ae987f0839
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77197963"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183833"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
@@ -38,7 +38,7 @@ Azure Active Directory B2C （Azure AD B2C）为 SAML 2.0 标识提供程序提�
 https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
-替换以下值：
+请替换以下值：
 
 - 将 **your-tenant-name** 替换为你的租户名称，例如 fabrikam.b2clogin.com。
 - 将 your-policy 替换为你的策略名称。 使用配置 SAML 提供者技术配置文件的策略或从该策略继承的策略。
@@ -121,31 +121,31 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
-| WantsSignedRequests | 是 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值是 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中**WantsSignedRequests**的值设置为 `false` 并且标识提供程序元数据**WantAuthnRequestsSigned**设置为 `false` 或未指定，则 Azure AD B2C 不会对请求进行签名。 |
-| XmlSignatureAlgorithm | 是 | Azure AD B2C 用于对 SAML 请求进行签名的方法。 此元数据控制 SAML 请求中 SigAlg参数（查询字符串或 post 参数）的值。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 |
-| WantsSignedAssertions | 是 | 指示技术配置文件是否要求对所有传入断言进行签名。 可能的值：`true` 或 `false`。 默认值是 `true`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的所有断言部分 `saml:Assertion` 必须进行签名。 如果该值设置为 `false`，则身份提供程序不应对断言进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 此元数据还控制元数据标记的 WantsAssertionsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果禁用断言验证，则还可能想要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
-| ResponsesSigned | 是 | 可能的值：`true` 或 `false`。 默认值是 `true`。 如果该值设置为 `false`，则身份提供程序不应对 SAML 响应进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的 SAML 响应已签名，且必须进行验证。 如果禁用 SAML 响应验证，则还可能想要禁用断言签名验证（有关详细信息，请参阅 WantsSignedAssertions）。 |
-| WantsEncryptedAssertions | 是 | 指示技术配置文件是否要求对所有传入断言进行加密。 可能的值：`true` 或 `false`。 默认值是 `false`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的断言必须进行签名，并且需要指定 SamlAssertionDecryption加密密钥。 如果该值设置为 `true`，则 Azure AD B2C 技术配置文件的元数据要包括“加密”部分。 身份提供程序读取元数据并使用 Azure AD B2C 技术配置文件的元数据中提供的公钥加密 SAML 响应断言。 如果启用断言加密，则还可能需要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
-| IdpInitiatedProfileEnabled | 是 | 指示是否启用由 SAML 身份提供程序配置文件启动的单一登录会话配置文件。 可能的值：`true` 或 `false`。 默认为 `false`。 在由身份提供程序启动的流程中，用户在外部进行身份验证，并向 Azure AD B2C 发送未经请求的响应，然后 Azure AD B2C 使用令牌，执行业务流程步骤，然后向信赖方应用发送响应。 |
-| NameIdPolicyFormat | 是 | 指定要使用的名称标识符上的约束，使之代表请求的主题。 如果省略此项，则可使用请求的主题对应的标识提供者支持的任何类型的标识符。 例如，`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。 **NameIdPolicyFormat** 可以与 **NameIdPolicyAllowCreate** 配合使用。 查看标识提供者的文档，了解哪些名称 ID 策略受支持。 |
-| NameIdPolicyAllowCreate | 是 | 使用 **NameIdPolicyFormat** 时，也可指定 `AllowCreate`NameIDPolicy**的** 属性。 此元数据的值为 `true` 或 `false`，表示是否允许标识提供者在登录流程中创建新帐户。 请查看你的身份提供程序的文档，以获取有关如何执行此操作的指导。 |
-| AuthenticationRequestExtensions | 是 | Azure AD BC 和标识提供者认可的可选协议消息扩展元素。 此扩展以 XML 格式呈现。 将 XML 数据添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 中。 检查标识提供者的文档，看扩展元素是否受支持。 |
-| IncludeAuthnContextClassReferences | 是 | 指定一个或多个可标识身份验证上下文类的 URI 引用。 例如，如果只允许用户使用用户名和密码登录，请将值设置为 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。 若要允许用户在受保护会话 (SSL/TLS) 期间通过用户名和密码登录，请指定 `PasswordProtectedTransport`。 查看标识提供者的文档，了解受支持的 **AuthnContextClassRef** URI。 指定多个 Uri 作为以逗号分隔的列表。 |
-| IncludeKeyInfo | 是 | 指定在将绑定设置为 `HTTP-POST` 时，SAML 身份验证请求是否包含证书的公钥。 可能的值：`true` 或 `false`。 |
-| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值是 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中**WantsSignedRequests**的值设置为 `false` 并且标识提供程序元数据**WantAuthnRequestsSigned**设置为 `false` 或未指定，则 Azure AD B2C 不会对请求进行签名。 |
+| XmlSignatureAlgorithm | 否 | Azure AD B2C 用于对 SAML 请求进行签名的方法。 此元数据控制 SAML 请求中 SigAlg参数（查询字符串或 post 参数）的值。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 |
+| WantsSignedAssertions | 否 | 指示技术配置文件是否要求对所有传入断言进行签名。 可能的值：`true` 或 `false`。 默认值是 `true`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的所有断言部分 `saml:Assertion` 必须进行签名。 如果该值设置为 `false`，则身份提供程序不应对断言进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 此元数据还控制元数据标记的 WantsAssertionsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果禁用断言验证，则还可能想要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
+| ResponsesSigned | 否 | 可能的值：`true` 或 `false`。 默认值是 `true`。 如果该值设置为 `false`，则身份提供程序不应对 SAML 响应进行签名，但即使这样做，Azure AD B2C 也不会验证签名。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的 SAML 响应已签名，且必须进行验证。 如果禁用 SAML 响应验证，则还可能想要禁用断言签名验证（有关详细信息，请参阅 WantsSignedAssertions）。 |
+| WantsEncryptedAssertions | 否 | 指示技术配置文件是否要求对所有传入断言进行加密。 可能的值：`true` 或 `false`。 默认值是 `false`。 如果该值设置为 `true`，则身份提供程序发送到 Azure AD B2C 的断言必须进行签名，并且需要指定 SamlAssertionDecryption加密密钥。 如果该值设置为 `true`，则 Azure AD B2C 技术配置文件的元数据要包括“加密”部分。 身份提供程序读取元数据并使用 Azure AD B2C 技术配置文件的元数据中提供的公钥加密 SAML 响应断言。 如果启用断言加密，则还可能需要禁用响应签名验证（有关详细信息，请参阅 ResponsesSigned）。 |
+| IdpInitiatedProfileEnabled | 否 | 指示是否启用由 SAML 身份提供程序配置文件启动的单一登录会话配置文件。 可能的值：`true` 或 `false`。 默认为 `false`。 在由身份提供程序启动的流程中，用户在外部进行身份验证，并向 Azure AD B2C 发送未经请求的响应，然后 Azure AD B2C 使用令牌，执行业务流程步骤，然后向信赖方应用发送响应。 |
+| NameIdPolicyFormat | 否 | 指定要使用的名称标识符上的约束，使之代表请求的主题。 如果省略此项，则可使用请求的主题对应的标识提供者支持的任何类型的标识符。 例如，`urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`。 **NameIdPolicyFormat** 可以与 **NameIdPolicyAllowCreate** 配合使用。 查看标识提供者的文档，了解哪些名称 ID 策略受支持。 |
+| NameIdPolicyAllowCreate | 否 | 使用 **NameIdPolicyFormat** 时，也可指定 `AllowCreate`NameIDPolicy**的** 属性。 此元数据的值为 `true` 或 `false`，表示是否允许标识提供者在登录流程中创建新帐户。 请查看你的身份提供程序的文档，以获取有关如何执行此操作的指导。 |
+| AuthenticationRequestExtensions | 否 | Azure AD BC 和标识提供者认可的可选协议消息扩展元素。 此扩展以 XML 格式呈现。 将 XML 数据添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 中。 检查标识提供者的文档，看扩展元素是否受支持。 |
+| IncludeAuthnContextClassReferences | 否 | 指定一个或多个可标识身份验证上下文类的 URI 引用。 例如，如果只允许用户使用用户名和密码登录，请将值设置为 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。 若要允许用户在受保护会话 (SSL/TLS) 期间通过用户名和密码登录，请指定 `PasswordProtectedTransport`。 查看标识提供者的文档，了解受支持的 **AuthnContextClassRef** URI。 指定多个 Uri 作为以逗号分隔的列表。 |
+| IncludeKeyInfo | 否 | 指定在将绑定设置为 `HTTP-POST` 时，SAML 身份验证请求是否包含证书的公钥。 可能的值：`true` 或 `false`。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必需 | 说明 |
+| Attribute |必选 | 说明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |
-| MetadataSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。  |
+| MetadataSigning |否 | X509 证书（RSA 密钥集），用于对 SAML 元数据进行签名。 Azure AD B2C 使用此密钥对元数据进行签名。  |
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,26 +1,26 @@
 ---
-title: 工作负载重要性
-description: 有关为 Azure SQL 数据仓库中的查询设置重要性的指南。
+title: 工作负荷重要性
+description: 在 Azure Synapse 分析中设置 SQL Analytics 查询重要性的指南。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351430"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191756"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL 数据仓库工作负荷重要性
+# <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse 分析工作负荷重要性
 
-本文介绍工作负荷重要性如何影响 SQL 数据仓库请求的执行顺序。
+本文介绍工作负荷重要性如何影响 Azure Synapse 中 SQL Analytics 请求的执行顺序。
 
 ## <a name="importance"></a>Importance
 
@@ -38,7 +38,7 @@ ms.locfileid: "75351430"
 
 ### <a name="locking"></a>锁定
 
-对读取和写入活动的锁定的访问是一种自然争用区域。 [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重命名对象](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)等活动需要提升的锁定。  如果没有工作负荷重要性，SQL 数据仓库将针对吞吐量进行优化。 针对吞吐量进行优化意味着在运行和排队请求具有相同的锁定需求和资源时，排队的请求可以绕过传入请求队列的更高锁定需求的请求。 一旦将工作负荷重要性应用于具有更高锁定需求的请求。 重要性较高的请求会在具有较低重要性的请求之前运行。
+对读取和写入活动的锁定的访问是一种自然争用区域。 [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重命名对象](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest)等活动需要提升的锁定。  如果没有工作负荷重要性，Azure Synapse 中的 SQL Analytics 会优化吞吐量。 针对吞吐量进行优化意味着在运行和排队请求具有相同的锁定需求和资源时，排队的请求可以绕过传入请求队列的更高锁定需求的请求。 一旦将工作负荷重要性应用于具有更高锁定需求的请求。 重要性较高的请求会在具有较低重要性的请求之前运行。
 
 请考虑以下示例：
 
@@ -50,7 +50,7 @@ ms.locfileid: "75351430"
 
 ### <a name="non-uniform-requests"></a>非统一请求
 
-如果提交具有不同资源类的请求，则重要性有助于满足查询要求的另一个方案是。  如前所述，SQL 数据仓库在相同的重要性下进行优化，以提高吞吐量。 当混合大小请求（如 smallrc 或 mediumrc）排队时，SQL 数据仓库将选择适合可用资源的最早到达请求。 如果应用工作负荷重要性，则计划下一个重要性最高的请求。
+如果提交具有不同资源类的请求，则重要性有助于满足查询要求的另一个方案是。  如前所述，在同一重要性下，Azure Synapse 中的 SQL Analytics 会优化吞吐量。 当混合大小请求（如 smallrc 或 mediumrc）排队时，SQL Analytics 将选择适合可用资源的最早到达请求。 如果应用工作负荷重要性，则计划下一个重要性最高的请求。
   
 请在 DW500c 上考虑以下示例：
 
@@ -63,7 +63,7 @@ ms.locfileid: "75351430"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关创建分类器的详细信息，请参阅[创建工作负荷分类器（transact-sql）](/sql/t-sql/statements/create-workload-classifier-transact-sql)。  
-- 有关 SQL 数据仓库工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
+- 有关工作负荷分类的详细信息，请参阅[工作负荷分类](sql-data-warehouse-workload-classification.md)。  
 - 有关如何创建工作负荷分类器的详细说明，请参阅快速入门[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。 
 - 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)和[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。
 - 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) 以查看查询和分配的重要性。

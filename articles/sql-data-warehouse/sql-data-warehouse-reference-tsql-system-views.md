@@ -1,6 +1,6 @@
 ---
 title: 系统视图
-description: 有关 Azure SQL 数据仓库支持的系统视图的文档的链接。
+description: SQL Analytics 中支持的系统视图的文档链接。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: query
 ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 36f0738dc478d7a1144527acb29118a7a99ef5ac
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.custom: azure-synapse
+ms.openlocfilehash: 694bb1d970f7f5c36b074e64ee41c3d34b55c482
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690766"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198297"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库支持的系统视图
-有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
+# <a name="system-views-supported-in-sql-analytics"></a>SQL Analytics 中支持的系统视图
+SQL Analytics 中支持的 T-sql 语句的文档链接。
 
-## <a name="sql-data-warehouse-catalog-views"></a>SQL 数据仓库目录视图
+## <a name="sql-analytics-catalog-views"></a>SQL Analytics 目录视图
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -65,8 +65,8 @@ ms.locfileid: "75690766"
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys. dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) （预览版）
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>适用于 SQL 数据仓库的 SQL Server DMV
-以下 DMV 适用于 SQL 数据仓库，但必须在连接到 **master** 数据库后才能执行。
+## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>适用于 SQL Analytics SQL Server Dmv
+以下 Dmv 适用于 SQL Analytics，但必须通过连接到**master**数据库来执行。
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -145,17 +145,17 @@ ms.locfileid: "75690766"
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL 数据仓库中提供的 SQL Server DMV
-SQL 数据仓库公开许多 SQL Server 动态管理视图 (DMV)。 在 SQL 数据仓库中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
+## <a name="sql-server-dmvs-available-in-sql-analytics"></a>在 SQL Analytics 中提供 SQL Server Dmv
+SQL Analytics 公开了许多 SQL Server 动态管理视图（Dmv）。 当在 SQL Analytics 中查询这些视图时，它们将报告分布区上运行的 SQL 数据库的状态。
 
-SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
+SQL Analytics 和并行数据仓库（PDW）使用相同的系统视图。 每个 DMV 都有名为 pdw_node_id（它是计算节点的标识符）的列。 
 
 > [!NOTE]
 > 若要使用这些视图，请在名称中插入“pdw_nodes_”，如下表所示：
 > 
 > 
 
-| SQL 数据仓库中的 DMV 名称 | SQL Server Transact-SQL 文章|
+| SQL Analytics 中的 DMV 名称 | SQL Server Transact-SQL 文章|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +217,8 @@ SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL 数据仓库中提供的 SQL Server 2016 PolyBase DMV
-以下 DMV 适用于 SQL 数据仓库，但必须在连接到 **master** 数据库后才能执行。
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>可在 SQL Analytics 中使用 SQL Server 2016 PolyBase Dmv
+以下 Dmv 适用于 SQL Analytics，但必须通过连接到**master**数据库来执行。
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -243,4 +243,4 @@ SQL 数据仓库和分析平台系统的并行数据仓库 (PDW) 使用相同的
 * [VIEWS](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关更多参考信息，请参阅 [Azure SQL 数据仓库中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)以及 [Azure SQL 数据仓库中的 T-SQL 语句元素](sql-data-warehouse-reference-tsql-language-elements.md)。
+有关详细参考信息，请参阅 sql [analytics 中的 t-sql 语句](sql-data-warehouse-reference-tsql-statements.md)和[sql Analytics 中的 t-sql 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)。

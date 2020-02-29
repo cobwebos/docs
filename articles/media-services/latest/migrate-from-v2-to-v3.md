@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/02/2019
+ms.date: 02/28/2020
 ms.author: juliako
-ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505775"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197855"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -77,7 +77,26 @@ ms.locfileid: "77505775"
 * 实时输出在创建时启动，在删除后停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
 * 若要获取有关作业的信息，需要知道在其下创建作业的转换名称。 
 * 在 v2 中，XML[输入](../previous/media-services-input-metadata-schema.md)和[输出](../previous/media-services-output-metadata-schema.md)元数据文件作为编码作业的结果生成。 在 v3 中，元数据格式已从 XML 转换为 JSON。 
+* 在 Media Services v2 中，可以指定初始化向量（IV）。 在媒体服务 v3 中，无法指定 FairPlay IV。 尽管这不会影响使用媒体服务进行打包和许可证传递的客户，但在使用第三方 DRM 系统提供 FairPlay 许可证（混合模式）时可能会遇到问题。 在这种情况下，请务必知道，FairPlay IV 派生自 cbc 密钥 ID，可以使用以下公式检索：
 
+    ```
+    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
+    ```
+
+    替换为
+
+    ``` 
+    public static byte[] HexStringToByteArray(string hex)
+    {
+        return Enumerable.Range(0, hex.Length)
+            .Where(x => x % 2 == 0)
+            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+            .ToArray();
+    }
+    ```
+
+    有关详细信息，请参阅[实时C#和 VOD 操作的混合模式下的媒体服务 v3 Azure Functions 代码](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)。
+ 
 > [!NOTE]
 > 查看适用于[媒体服务 v3 资源](media-services-apis-overview.md#naming-conventions)的命名约定。 还要查看[命名 blob](assets-concept.md#naming)。
 

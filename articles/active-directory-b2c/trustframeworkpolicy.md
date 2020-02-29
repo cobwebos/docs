@@ -2,20 +2,20 @@
 title: TrustFrameworkPolicy - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 TrustFrameworkPolicy 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/31/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982409"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186380"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,7 +38,7 @@ ms.locfileid: "76982409"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| Attribute | 必选 | 说明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory B2C （Azure AD B2C）租户的唯一对象标识符。 |
@@ -88,7 +88,7 @@ ms.locfileid: "76982409"
 
 **BasePolicy** 元素包含以下元素：
 
-| 元素 | 出现次数 | Description |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
 | PolicyId | 1:1 | 父策略的标识符。 |
@@ -118,7 +118,7 @@ ms.locfileid: "76982409"
 
 信赖方应用程序（例如 Web、移动或桌面应用程序）调用[信赖方 (RP) 策略](relyingparty.md)。 RP 策略文件执行特定任务，例如登录、重置密码，或编辑配置文件。 RP 策略将信赖方应用程序收到的声明列表配置为所颁发令牌的一部分。 多个应用程序可以使用同一策略。 所有应用程序都接收与声明相同的令牌，并且用户会经历相同的用户旅程。 单个应用程序可以使用多个策略。
 
-在 RP 策略文件中，指定指向 [UserJourney](userjourneys.md) 的 **DefaultUserJourney** 元素。 用户旅程通常在基本或扩展策略中定义。
+在 RP 策略文件中，指定指向 **UserJourney** 的 [DefaultUserJourney](userjourneys.md) 元素。 用户旅程通常在基本或扩展策略中定义。
 
 B2C_1A_signup_signin 策略：
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 用户旅程定义用户所要经历的业务逻辑。 每个用户旅程是按顺序执行一系列操作，以进行身份验证和收集信息的一组业务流程步骤。
 
-[初学者包](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可以为其他方案添加更多用户旅程，例如更改电子邮件地址或链接和取消链接社交帐户。
+**初学者包**中的 [SocialAndLocalAccounts](custom-policy-get-started.md#custom-policy-starter-pack) 策略文件包含 SignUpOrSignIn、ProfileEdit 和 PasswordReset 用户旅程。 可以为其他方案添加更多用户旅程，例如更改电子邮件地址或链接和取消链接社交帐户。
 
 业务流程步骤可以调用[技术配置文件](technicalprofiles.md)。 技术配置文件提供带有内置机制的框架来与不同类型的参与方通信。 例如，技术配置文件可执行以下操作：
 

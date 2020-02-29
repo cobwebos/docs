@@ -1,22 +1,23 @@
 ---
 title: 使用 Azure 机器学习分析数据
-description: 使用 Azure 机器学习，基于存储在 Azure SQL 数据仓库中的数据生成预测机器学习模型。
+description: 使用 Azure 机器学习基于 Azure Synapse 中存储的数据生成预测机器学习模型。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721279"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195883"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure 机器学习分析数据
 > [!div class="op_single_selector"]
@@ -28,16 +29,16 @@ ms.locfileid: "76721279"
 > 
 > 
 
-本教程使用 Azure 机器学习功能，根据存储在 Azure SQL 数据仓库中的数据，生成预测机器学习模型。 具体而言，这就是通过预测客户是否有可能购买自行车，为自行车商店 Adventure Works 打造的有针对性的市场营销活动。
+本教程使用 Azure 机器学习基于 Azure Synapse 中存储的数据生成预测机器学习模型。 具体而言，这就是通过预测客户是否有可能购买自行车，为自行车商店 Adventure Works 打造的有针对性的市场营销活动。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>必备条件
-若要逐步完成本教程，你需要：
+要逐步完成本教程，需要以下各项：
 
-* 随 AdventureWorksDW 示例数据预先加载的 SQL 数据仓库。 若要完成此预配，请参阅 [创建 SQL 数据仓库](create-data-warehouse-portal.md) ，并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以 [手动加载示例数据](sql-data-warehouse-load-sample-databases.md)。
+* 使用 AdventureWorksDW 示例数据预先加载的 SQL 池。 若要设置此设置，请参阅[创建 SQL 池](create-data-warehouse-portal.md)并选择加载示例数据。 如果已有数据仓库但没有示例数据，可以 [手动加载示例数据](sql-data-warehouse-load-sample-databases.md)。
 
 ## <a name="1-get-the-data"></a>1. 获取数据
 数据位于 AdventureWorksDW 数据库的 dbo.vTargetMail 视图中。 若要读取此数据：
@@ -46,7 +47,7 @@ ms.locfileid: "76721279"
 2. 单击屏幕左下角的 " **+ 新建**"，并选择 "**空白试验**"。
 3. 输入试验名称：目标营销。
 4. 将 "**导入数据**" 模块从 "模块" 窗格中的 "**数据输入" 和 "输出**" 拖到画布中。
-5. 在“属性”窗格中指定 SQL 数据仓库数据库的详细信息。
+5. 在 "属性" 窗格中指定 SQL 池的详细信息。
 6. 指定数据库 **查询** 以读取所需的数据。
 
 ```sql
@@ -123,12 +124,12 @@ FROM [dbo].[vTargetMail]
 
 ![可视化评分结果](media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png)
 
-你将看到另外两个列已添加到测试数据集。
+会看到另外两个列已添加到测试数据集。
 
 * 评分概率：客户购买自行车的可能性。
 * 评分标签：模型执行的分类 – 自行车的购买者 (1) 或不是购买者 (0)。 标签的概率阈值设置为 50%，并可以调整。
 
-比较 BikeBuyer（实际）列和评分标签（预测），可以看到模型的执行效果。 接下来，可以使用此模型对新客户进行预测，并将此模型发布为 web 服务，或将结果写回到 SQL 数据仓库。
+比较 BikeBuyer（实际）列和评分标签（预测），可以看到模型的执行效果。 接下来，可以使用此模型对新客户进行预测，并将此模型发布为 web 服务，或将结果写回 Azure Synapse。
 
 ## <a name="next-steps"></a>后续步骤
 若要深入了解如何构建预测性机器学习模型，请参阅 [Azure 上的机器学习简介](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/)。

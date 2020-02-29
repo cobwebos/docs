@@ -3,20 +3,20 @@ title: Cookie 定义
 titleSuffix: Azure AD B2C
 description: 为 Azure Active Directory B2C 中使用的 cookie 提供定义。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908864"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189508"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Azure AD B2C 的 cookie 定义
 
@@ -39,7 +39,7 @@ Microsoft Azure AD B2C 服务与 SameSite 浏览器配置兼容，其中包括�
 
 下表列出了 Azure AD B2C 中使用的 cookie。
 
-| 姓名 | Domain | 超时 | 用途 |
+| 名称 | 域 | 过期时间 | 目的 |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | [浏览器会话](session-behavior.md)结束 | 跨租户保存用户成员身份数据。 用户是其成员的租户和成员资格级别（管理员或用户）。 |
 | `x-ms-cpim-slice` | b2clogin.com、login.microsoftonline.com、署名域 | [浏览器会话](session-behavior.md)结束 | 用于将请求路由到相应的生产实例。 |

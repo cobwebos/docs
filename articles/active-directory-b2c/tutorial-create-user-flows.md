@@ -2,20 +2,20 @@
 title: 教程-创建用户流-Azure Active Directory B2C
 description: 了解如何在 Azure 门户中创建用户流，以便在 Azure Active Directory B2C 中为你的应用程序启用注册、登录和用户配置文件编辑。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840139"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183561"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -32,7 +32,7 @@ ms.locfileid: "76840139"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [注册](tutorial-register-applications.md)属于要创建的用户流的应用程序。
 
@@ -68,7 +68,7 @@ ms.locfileid: "76840139"
 ### <a name="test-the-user-flow"></a>测试用户流
 
 1. 选择您创建的用户流以打开其 "概述" 页，然后选择 "**运行用户流**"。
-1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 **webapp1** 的 Web 应用程序。 “回复 URL”应显示为 **。** `https://jwt.ms`
 1. 单击“运行用户流”，然后选择“立即注册”。
 
     ![选中 "运行用户流" 按钮的门户中的 "运行用户流" 页面](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
@@ -92,7 +92,7 @@ ms.locfileid: "76840139"
 ### <a name="test-the-user-flow"></a>测试用户流
 
 1. 选择您创建的用户流以打开其 "概述" 页，然后选择 "**运行用户流**"。
-1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 **webapp1** 的 Web 应用程序。 “回复 URL”应显示为 **。** `https://jwt.ms`
 1. 单击“运行用户流”，然后使用前面创建的帐户登录。
 1. 现在，你可以更改用户的显示名称和职务。 单击 **“继续”** 。 令牌将返回到 `https://jwt.ms` 并显示出来。
 
@@ -111,7 +111,7 @@ ms.locfileid: "76840139"
 ### <a name="test-the-user-flow"></a>测试用户流
 
 1. 选择您创建的用户流以打开其 "概述" 页，然后选择 "**运行用户流**"。
-1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 **webapp1** 的 Web 应用程序。 “回复 URL”应显示为 **。** `https://jwt.ms`
 1. 单击 "**运行用户流**"，验证你之前创建的帐户的电子邮件地址，然后选择 "**继续**"。
 1. 现在可以更改用户的密码。 更改密码并选择 "**继续**"。 令牌将返回到 `https://jwt.ms` 并显示出来。
 

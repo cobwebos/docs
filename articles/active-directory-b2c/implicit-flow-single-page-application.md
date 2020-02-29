@@ -3,20 +3,20 @@ title: 使用隐式流的单页登录
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure Active Directory B2C 的 OAuth 2.0 隐式流添加单页面登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: efef55ab42313854ab27d323824a76488d520ad1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3e77e597fbd33a1f1358ecaa2d2aea3fe075a70f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847376"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187723"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OAuth 2.0 隐式流的单页登录
 
@@ -51,7 +51,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 |组织| 是 | Azure AD B2C 租户的名称|
 |政策| 是| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
@@ -81,7 +81,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | access_token | 应用请求的访问令牌。 |
 | token_type | 令牌类型值。 Azure AD 唯一支持的类型是 Bearer。 |
@@ -100,7 +100,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | error | 用于对发生的错误类型进行分类的代码。 |
 | error_description | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -124,7 +124,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
-若要确定对 ID 令牌签名所用的用户流（以及提取元数据的位置），共有两个选择。 第一种方法，用户流名称包含在 `id_token` 的 `acr` 声明中。 有关如何从 ID 令牌中分析声明的信息，请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。 另一个方法是在发出请求时在 `state` 参数的值中对用户流进行编码。 然后对 `state` 参数进行解码以确定所使用的用户流。 任意一种方法均有效。
+若要确定对 ID 令牌签名所用的用户流（以及提取元数据的位置），共有两个选择。 第一种方法，用户流名称包含在 `acr` 的 `id_token` 声明中。 有关如何从 ID 令牌中分析声明的信息，请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。 另一个方法是在发出请求时在 `state` 参数的值中对用户流进行编码。 然后对 `state` 参数进行解码以确定所使用的用户流。 任意一种方法均有效。
 
 从 OpenID Connect 元数据终结点获取元数据文档后，可以使用 RSA-256 公钥（位于此终结点上）来验证 ID 令牌的签名。 在任何给定的时间，此终结点上可能列出多个密钥，每个密钥使用 `kid` 进行标识。 `id_token` 的标头还包含 `kid` 声明。 它指示这些键中的哪一个用于对 ID 令牌进行签名。 有关详细信息（包括了解[验证令牌](tokens-overview.md)），请参阅 [Azure AD B2C 令牌参考](tokens-overview.md)。
 <!--TODO: Improve the information on this-->
@@ -164,20 +164,20 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &prompt=none
 ```
 
-| 参数 | 必需？ | Description |
+| 参数 | 必需？ | 说明 |
 | --- | --- | --- |
-|组织| 需要 | Azure AD B2C 租户的名称|
-政策| 需要| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
-| client_id |需要 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
-| response_type |需要 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
-| redirect_uri |推荐 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
-| scope |需要 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
-| response_mode |推荐 |指定用于将生成的令牌送回到应用的方法。 对于隐式流，请使用 `fragment`。 可以指定两种其他模式： `query` 和 `form_post`，但在隐式流中不起作用。 |
-| state |推荐 |随令牌响应返回的请求中所包含的值。  它可以是你想要使用的任何内容的字符串。  随机生成的唯一值通常用于防止跨站点请求伪造攻击。  它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户之前所在的页面或视图。 |
-| nonce |需要 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
-| prompt |需要 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
-| login_hint |需要 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 你可以使用 `preferred_username` 声明从以前的登录提取用户名（需要 `profile` 范围才能接收 `preferred_username` 声明）。 |
-| domain_hint |需要 |可以是 `consumers` 或 `organizations`。  若要刷新并获取隐藏的 iframe 中的令牌，请在请求中包括 `domain_hint` 值。  从以前登录的 ID 令牌中提取 `tid` 声明，以确定要使用的值（需要 `profile` 范围才能接收 `tid` 声明）。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
+|组织| 必选 | Azure AD B2C 租户的名称|
+政策| 必选| 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
+| client_id |必选 |在 [Azure 门户](https://portal.azure.com)中分配给应用的应用程序 ID。 |
+| response_type |必选 |必须包含 OpenID Connect 登录的 `id_token`。  也可能包含响应类型 `token`。 如果在此处使用 `token`，应用能够立即从授权终结点接收访问令牌，而无需向授权终结点发出第二次请求。 如果使用 `token` 响应类型，`scope` 参数必须包含一个范围，以指出要对哪个资源发出令牌。 |
+| redirect_uri |建议 |应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 |
+| scope |必选 |范围的空格分隔列表。  若要获取令牌，请包含相应资源所需的所有范围。 |
+| response_mode |建议 |指定用于将生成的令牌送回到应用的方法。 对于隐式流，请使用 `fragment`。 可以指定两种其他模式： `query` 和 `form_post`，但在隐式流中不起作用。 |
+| state |建议 |随令牌响应返回的请求中所包含的值。  它可以是你想要使用的任何内容的字符串。  随机生成的唯一值通常用于防止跨站点请求伪造攻击。  它还可用于在身份验证请求发生前，对有关用户在应用中的状态信息进行编码。 例如，用户之前所在的页面或视图。 |
+| nonce |必选 |由应用生成且包含在请求中的值，以声明方式包含在生成的 ID 令牌 中。  应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机产生的唯一字符串，可识别请求的来源。 |
+| prompt |必选 |若要刷新并获取隐藏的 iframe 中的令牌，请使用 `prompt=none` 以确保 iframe 会立即返回，而不会停滞在登录页面上。 |
+| login_hint |必选 |若要刷新并获取隐藏的 iframe 中的令牌，请在此提示中加入用户的用户名，以便区分用户在给定时间内可能具有的多个会话。 你可以使用 `preferred_username` 声明从以前的登录提取用户名（需要 `profile` 范围才能接收 `preferred_username` 声明）。 |
+| domain_hint |必选 |可以是 `consumers` 或 `organizations`。  若要刷新并获取隐藏的 iframe 中的令牌，请在请求中包括 `domain_hint` 值。  从以前登录的 ID 令牌中提取 `tid` 声明，以确定要使用的值（需要 `profile` 范围才能接收 `tid` 声明）。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，请使用 `domain_hint=consumers`。  否则使用 `domain_hint=organizations`。 |
 
 通过设置 `prompt=none` 参数，此请求会立即成功或立即失败，并返回到应用程序。  成功的响应会通过 `response_mode` 参数中指定的方法，发送到位于所指示的重定向 URI 的应用。
 
@@ -193,7 +193,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | access_token |应用请求的令牌。 |
 | token_type |令牌类型始终是“持有者”。 |
@@ -210,7 +210,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | error |错误代码字符串，可用于对发生的错误类型进行分类。 还可使用该字符串对错误作出响应。 |
 | error_description |可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -223,13 +223,13 @@ ID 令牌和访问令牌在较短时间后都会过期。 应用必须准备好�
 ## <a name="send-a-sign-out-request"></a>发送注销请求
 如果要从应用中注销用户，请将用户重定向到 Azure AD 以注销。如果你不重定向用户，则他们可以在不输入其凭据的情况下重新进行身份验证，而无需再次输入其凭据，因为他们具有 Azure AD 的有效单一登录会话。
 
-只需将用户重定向到[验证 ID 令牌](#validate-the-id-token)中所述的相同 OpenID Connect 元数据文档中列出的 `end_session_endpoint`。 例如：
+只需将用户重定向到`end_session_endpoint`验证 ID 令牌[中所述的相同 OpenID Connect 元数据文档中列出的 ](#validate-the-id-token)。 例如：
 
 ```HTTP
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |

@@ -2,20 +2,20 @@
 title: 启用 Azure Active Directory B2C 中的年龄限制 | Microsoft Docs
 description: 学习如何辨别使用应用程序的未成年人。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836230"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189967"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>启用 Azure Active Directory B2C 中的年龄限制
 
@@ -42,13 +42,13 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | CM | 喀麦隆 | 无 | 21 |
 | CY | 塞浦路斯 | 16 | 18 |
 | CZ | 捷克共和国 | 16 | 18 |
-| 德国 | 德国 | 16 | 18 |
+| DE | 德国 | 16 | 18 |
 | DK | 丹麦 | 16 | 18 |
 | EE | 爱沙尼亚 | 16 | 18 |
 | EG | 埃及 | 无 | 21 |
 | ES | 西班牙 | 13 | 18 |
 | FR | 法国 | 16 | 18 |
-| GB | 英国 | 13 | 18 |
+| GB | United Kingdom | 13 | 18 |
 | GR | 希腊 | 16 | 18 |
 | HR | 克罗地亚 | 16 | 18 |
 | HU | 匈牙利 | 16 | 18 |
@@ -59,7 +59,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | LU | 卢森堡 | 16 | 18 |
 | LV | 拉脱维亚 | 16 | 18 |
 | MT | 马耳他 | 16 | 18 |
-| 不可用 | 纳米比亚 | 无 | 21 |
+| NA | 纳米比亚 | 无 | 21 |
 | NL | 荷兰 | 16 | 18 |
 | PL | 波兰 | 13 | 18 |
 | PT | 葡萄牙 | 16 | 18 |
@@ -70,8 +70,8 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 | SK | 斯洛伐克 | 16 | 18 |
 | TD | 乍得 | 无 | 21 |
 | TH | 泰国 | 无 | 20 |
-| TW | 台湾 | 无 | 20 |
-| 美国 | 美国 | 13 | 18 |
+| TW | 中国台湾 | 无 | 20 |
+| 美国 | United States | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年龄限制选项
 
@@ -103,7 +103,7 @@ Azure AD B2C 使用用户输入的信息来确定他们是否是未成年人。 
 1. 创建启用了年龄限制的用户流。
 2. 创建用户流后，在菜单中选择“属性”。
 3. 在“年龄限制”部分，选择“已启用”。
-4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 `Allow minors to access your application` 或 `Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
+4. 然后确定如何管理标识为未成年人的用户。 对于“注册或登录”，可以选择 **或**`Allow minors to access your application``Block minors from accessing your application`。 如果选择阻止未成年人，则选择 `Send a JSON back to the application` 或 `Show an error message`。
 
 
 

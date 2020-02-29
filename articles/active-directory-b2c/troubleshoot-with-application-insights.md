@@ -3,20 +3,20 @@ title: 自定义策略与 Application Insights 疑难解答
 titleSuffix: Azure AD B2C
 description: 如何设置 Application Insights 来跟踪自定义策略的执行。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 403dbe6106cb7a1d277ba672112d2bc45dbc2987
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848143"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186261"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>利用 Application Insights 收集 Azure Active Directory B2C 日志
 
@@ -93,7 +93,7 @@ ms.locfileid: "76848143"
 
 下面是可用于查看日志的查询列表：
 
-| 查询 | Description |
+| 查询 | 说明 |
 |---------------------|--------------------|
 `traces` | 查看 Azure AD B2C 生成的所有日志 |
 `traces | where timestamp > ago(1d)` | 查看 Azure AD B2C 为前一天生成的所有日志

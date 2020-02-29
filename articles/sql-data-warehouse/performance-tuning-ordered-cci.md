@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686004"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200543"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>具有有序聚集列存储索引的性能优化  
 
-当用户查询 Azure SQL 数据仓库中的列存储表时，优化器会检查每个段中存储的最小值和最大值。  超出查询谓词范围的段不会从磁盘读取到内存。  如果要读取的段数和总大小较小，查询可以获得更快的性能。   
+当用户在 SQL Analytics 中查询列存储表时，优化器会检查每个段中存储的最小值和最大值。  超出查询谓词范围的段不会从磁盘读取到内存。  如果要读取的段数和总大小较小，查询可以获得更快的性能。   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>已排序和未排序的聚集列存储索引 
-默认情况下，对于不使用索引选项创建的每个 Azure 数据仓库表，内部组件（索引生成器）将在其上创建未排序的聚集列存储索引（CCI）。  每列中的数据将压缩为单独的 CCI 行组段。  对于每个段的值范围，都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词范围的段。  CCI 提供最高级别的数据压缩，并减小段的大小以进行读取，以便查询可以更快地运行。 但是，因为在将数据压缩为段之前，索引生成器不会对数据进行排序，所以，可能会出现具有重叠值范围的段，从而导致查询读取磁盘中的更多段并花费更长时间才能完成。  
+默认情况下，对于每个未使用索引选项创建的 SQL 分析表，内部组件（索引生成器）都将在其上创建未排序的聚集列存储索引（CCI）。  每列中的数据将压缩为单独的 CCI 行组段。  对于每个段的值范围，都有元数据，因此，在执行查询期间，不会从磁盘中读取超出查询谓词范围的段。  CCI 提供最高级别的数据压缩，并减小段的大小以进行读取，以便查询可以更快地运行。 但是，因为在将数据压缩为段之前，索引生成器不会对数据进行排序，所以，可能会出现具有重叠值范围的段，从而导致查询读取磁盘中的更多段并花费更长时间才能完成。  
 
-创建有序的 CCI 时，Azure SQL 数据仓库引擎会按顺序键对内存中的现有数据进行排序，然后索引生成器将这些数据压缩到索引段。  使用已排序的数据时，段重叠会减少，使查询更有效地消除段，从而提高性能，因为要从磁盘读取的段数越小。  如果所有数据都可以在内存中同时进行排序，则可以避免进行分段重叠。  由于数据仓库表中的数据大小较大，因此不经常发生这种情况。  
+创建有序的 CCI 时，SQL 分析引擎会按顺序键对内存中的现有数据进行排序，然后索引生成器将这些数据压缩到索引段。  使用已排序的数据时，段重叠会减少，使查询更有效地消除段，从而提高性能，因为要从磁盘读取的段数越小。  如果所有数据都可以在内存中同时进行排序，则可以避免进行分段重叠。  由于 SQL 分析表中的数据大小较大，因此不经常发生这种情况。  
 
 若要检查列的段范围，请使用表名称和列名称运行此命令：
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> 在有序的 CCI 表中，在该批次中对相同的 DML 或数据加载操作生成的新数据进行排序，表中的所有数据没有全局排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  在 Azure SQL 数据仓库中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次重新生成一个分区。  重新生成的分区中的数据处于 "脱机" 状态，并且在该分区的重建完成前不可用。 
+> 在有序的 CCI 表中，在该批次中对相同的 DML 或数据加载操作生成的新数据进行排序，表中的所有数据没有全局排序。  用户可以重新生成按序的 CCI 来对表中的所有数据进行排序。  在 SQL Analytics 中，列存储索引重新生成是一项脱机操作。  对于已分区的表，每次重新生成一个分区。  重新生成的分区中的数据处于 "脱机" 状态，并且在该分区的重建完成前不可用。 
 
 ## <a name="query-performance"></a>查询性能
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- 在将数据加载到 Azure SQL 数据仓库表之前，按排序关键字预先对数据进行排序。
+- 在将数据加载到 SQL Analytics 表之前，按排序关键字预先对数据进行排序。
 
 
 下面是一个有序的 CCI 表分布的示例，该分发具有与上述建议重叠的零段。 有序的 CCI 表是使用 MAXDOP 1 和 xlargerc 通过 CTAS 从 20 GB 堆表中创建的，在 DWU1000c 数据库中创建的。  CCI 在不包含重复项的 BIGINT 列上排序。  
@@ -120,12 +120,12 @@ OPTION (MAXDOP 1);
 ## <a name="create-ordered-cci-on-large-tables"></a>对大型表创建按序的 CCI
 创建按序的 CCI 是一种脱机操作。  对于没有分区的表，用户在按序的 CCI 创建过程完成之前，不能访问数据。   对于已分区表，因为引擎按分区创建按序排序的 CCI 分区，所以用户仍可以访问未处理顺序的 CCI 的分区中的数据。   可以使用此选项最大限度地减少在大表上排序的 CCI 创建过程中的停机时间： 
 
-1.  在目标大表上创建分区（称为 Table_A）。
-2.  创建具有与表 A 相同的表和分区架构的空顺序 CCI 表（称为 Table_B）。
+1.  在目标大型表（称为 Table_A）上创建分区。
+2.  使用与表 A 相同的表和分区架构创建一个空的顺序 CCI 表（名为 Table_B）。
 3.  将一个分区从表 A 切换到表 B。
-4.  在表 B 上的 < Table_B > REBUILD PARTITION = < Partition_ID > 上运行 ALTER INDEX < Ordered_CCI_Index >，以重新生成已切换的分区。  
+4.  运行 ALTER INDEX < Ordered_CCI_Index > 上的 < Table_B > REBUILD PARTITION = < 表 B 上的 Partition_ID > 重建已切换的分区。  
 5.  对 Table_A 中的每个分区重复步骤3和4。
-6.  将所有分区从 Table_A 切换到 Table_B，并已重新生成后，请删除 Table_A，并重命名 Table_B 到 Table_A。 
+6.  将所有分区从 Table_A 切换到 Table_B 并重新生成后，请将 Table_B Table_A 和重命名为 Table_A。 
 
 ## <a name="examples"></a>示例
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关更多开发技巧，请参阅 [SQL 数据仓库开发概述](sql-data-warehouse-overview-develop.md)。
+有关更多开发技巧，请参阅[开发概述](sql-data-warehouse-overview-develop.md)。

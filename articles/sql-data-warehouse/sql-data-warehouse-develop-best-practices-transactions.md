@@ -1,6 +1,6 @@
 ---
 title: 优化事务
-description: 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
+description: 了解如何在 SQL Analytics 中优化事务性代码的性能，同时最大程度地降低长时间回退的风险。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692857"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195832"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
-了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。
+# <a name="optimizing-transactions-in-sql-analytics"></a>优化 SQL Analytics 中的事务
+了解如何在 SQL Analytics 中优化事务性代码的性能，同时最大程度地降低长时间回退的风险。
 
 ## <a name="transactions-and-logging"></a>事务和日志记录
-事务是关系数据库引擎的一个重要组成部分。 SQL 数据仓库在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
+事务是关系数据库引擎的一个重要组成部分。 SQL Analytics 在数据修改期间使用事务。 这些事务可以是显式或隐式。 单个 INSERT、UPDATE 和 DELETE 语句都是隐式事务的示例。 显式事务使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 显式事务通常用于多个修改语句需要绑定在单个原子单元的时候。 
 
-Azure SQL 数据仓库使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
+SQL Analytics 使用事务日志将更改提交到数据库。 每个分布区都具有其自己的事务日志。 事务日志写入都是自动的。 无需任何配置。 尽管此过程可保证写入，但它确在系统中引入一项开销。 编写事务性高效的代码，可以尽量减少这种影响。 事务性高效的代码大致分为两类。
 
 * 尽可能使用最少日志记录构造
 * 使用限定范围的批来处理数据，避免单数形式的长时运行事务
@@ -68,17 +68,17 @@ CTAS 和 INSERT...SELECT 都是批量加载操作。 但两者都受目标表定
 
 | 主索引 | 加载方案 | 日志记录模式 |
 | --- | --- | --- |
-| 堆 |任意 |**最少** |
+| 堆 |Any |**最少** |
 | 聚集索引 |空目标表 |**最少** |
 | 聚集索引 |加载的行不与目标中现有页面重叠 |**最少** |
-| 聚集索引 |加载的行与目标中现有页面重叠 |完整 |
+| 聚集索引 |加载的行与目标中现有页面重叠 |完全 |
 | 聚集列存储索引 |批大小 >= 102,400/每分区对齐的分布区 |**最少** |
-| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完整 |
+| 聚集列存储索引 |批大小 < 102,400/每分区对齐的分布区 |完全 |
 
-值得注意的是，任何更新辅助或非聚集索引的写入都会始终是完整记录的操作。
+值得注意的是，任何更新辅助或非聚集索引的写入都将始终是完整记录的操作。
 
 > [!IMPORTANT]
-> SQL 数据仓库具有 60 个分布区。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
+> SQL Analytics 数据库具有60分发版。 因此，假设所有行均匀分布且处于单个分区中，批在写入到聚集列存储索引时会需有 6,144,000 行（或更多）要按最少记录的方式记入日志。 如果对表进行分区且正插入的行跨越分区边界，则每个分区边界都需 6,144,000 行，假定数据分布很均匀。 每个分布区的每个分区各自必须超过 102,400 行的阈值，从而使插入以最少记录的方式记录到分布区中。
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 重新创建大型表可以受益于使用 SQL 数据仓库工作负荷管理功能。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
+> 重新创建大型表可以受益于使用 SQL 分析工作负荷管理功能。 有关详细信息，请参阅[用于工作负荷管理的资源类](resource-classes-for-workload-management.md)。
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>暂停和缩放指南
-借助 Azure SQL 数据仓库，可以根据需要[暂停、恢复和缩放](sql-data-warehouse-manage-compute-overview.md)数据仓库。 暂停或缩放 SQL 数据仓库时，一定要了解会立即终止任何正在处理的事务；导致回退所有未决事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放 Azure SQL 数据仓库数据库所花费的时间。 
+SQL Analytics 允许你根据需要[暂停、恢复和缩放](sql-data-warehouse-manage-compute-overview.md)SQL 池。 暂停或缩放 SQL 池时，必须了解任何正在进行的事务立即终止，这一点很重要。导致回滚所有打开的事务。 如果工作负荷在暂停或缩放操作前已发出数据修改在长时间运行之后仍未完成的指示，则需要撤消此项工作。 此撤消操作可能会影响暂停或缩放 SQL 池所用的时间。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整记录的操作，因此这些撤消/重做操作相比同等最少记录的操作可能要花费更长的时间。 
 > 
 > 
 
-最佳方案是在暂停或缩放 SQL 数据仓库前就完成正提交的数据修改事务。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
+最佳方案是在暂停或缩放 SQL 池之前，使数据修改事务完成。 但是，此方案不一定始终可行。 若要降低长时间回退的风险，请考虑以下选项之一：
 
 * 使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 重新编写长时间运行的操作
 * 将该操作分解为多个块；针对行的子集进行操作
 
 ## <a name="next-steps"></a>后续步骤
-参阅 [SQL 数据仓库中的事务](sql-data-warehouse-develop-transactions.md)，以便详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
+请参阅[SQL Analytics 中的事务](sql-data-warehouse-develop-transactions.md)，详细了解隔离级别和事务限制。  有关其他最佳实践的概述，请参阅 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)。
 

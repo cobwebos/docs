@@ -1,5 +1,5 @@
 ---
-title: 教程：在 JSON blob 中索引半 strutured 数据
+title: 教程：在 JSON blob 中索引半结构化数据
 titleSuffix: Azure Cognitive Search
 description: 了解如何使用 Azure 认知搜索 REST API 和 Postman 为半结构化 Azure JSON Blob 编制索引以及搜索此类数据。
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251985"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196937"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST 教程：在 Azure 认知搜索中索引和搜索半结构化数据（JSON blob）
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教程：使用 REST 为 Azure 存储中的 JSON blob 编制索引
 
 Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引器](search-indexer-overview.md)来编制 Azure blob 存储中 JSON 文档和数组的索引。 半结构化数据包含用于分隔数据中的内容的标记或标签。 它的本质是提供必须全面索引的非结构化数据和符合数据模型的正式结构化数据之间的一个折中，例如可以按字段编制索引的关系数据库架构。
 
-在本教程中，使用 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 和 REST 客户端执行以下任务：
+本教程使用 Postman 和[搜索 REST api](https://docs.microsoft.com/rest/api/searchservice/)来执行以下任务：
 
 > [!div class="checklist"]
 > * 为 Azure blob 容器配置 Azure 认知搜索数据源
@@ -27,15 +27,18 @@ Azure 认知搜索可使用一个知晓如何读取半结构化数据的[索引�
 > * 配置和运行索引器以读取容器和从 Azure blob 存储中提取可搜索内容
 > * 搜索刚刚创建的索引
 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 ## <a name="prerequisites"></a>必备条件
 
-本快速入门使用以下服务、工具和数据。 
++ [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Postman 桌面应用](https://www.getpostman.com/)
++ [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-[创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。 
+> [!Note]
+> 您可以使用本教程的免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保你已在服务上实现了接受新资源的空间。
 
-[创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。
-
-[Postman 桌面应用](https://www.getpostman.com/)，用户将请求发送到 Azure 认知搜索。
+## <a name="download-files"></a>下载文件
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) 包含本教程使用的数据。 请下载此文件并将其解压缩到其自身的文件夹。 数据源自 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)，已为本教程转换为 JSON。
 
@@ -283,13 +286,27 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 `$filter` 参数只适用于在创建索引时标记为可筛选的元数据。
 
+## <a name="reset-and-rerun"></a>重置并重新运行
+
+在开发的早期实验阶段，设计迭代的最实用方法是从 Azure 认知搜索中删除对象，并允许你的代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+
+可以使用门户删除索引、索引器和数据源。 或使用**DELETE**并为每个对象提供 url。 以下命令删除一个索引器。
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+成功删除后会返回状态代码 204。
+
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 认知搜索服务的“概述”页上。
+在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+
+使用左侧导航窗格中的 "所有资源" 或 "资源组" 链接，可以在门户中查找和管理资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-要编制 JSON Blob 的索引，有多种方法和多个选项。 下一步，查看并测试各种选项，找到最适合自己的方案。
+现在，你已熟悉 Azure Blob 索引的基本知识，接下来让我们详细了解索引器配置。
 
 > [!div class="nextstepaction"]
-> [如何使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
+> [配置 Azure Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)

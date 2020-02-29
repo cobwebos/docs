@@ -3,20 +3,20 @@ title: 自定义用户界面
 titleSuffix: Azure AD B2C
 description: 了解如何自定义使用 Azure Active Directory B2C 的应用程序的用户界面。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373152"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189049"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>自定义用户界面 Azure Active Directory B2C
 
@@ -61,7 +61,7 @@ ms.locfileid: "77373152"
 
 接下来，从列表中选择一个模板。 下面是每个模板的登录页面示例：
 
-| 海蓝 | 石板灰色 | Classic |
+| 海蓝 | 石板灰色 | 经典 |
 |:-:|:-:|:-:|
 |!["注册登录" 页上呈现的海蓝色模板的示例](media/customize-ui-overview/template-ocean-blue.png)|![在注册登录页上呈现的石板灰色模板的示例](media/customize-ui-overview/template-slate-gray.png)|![在注册登录页上呈现的经典模板的示例](media/customize-ui-overview/template-classic.png)|
 

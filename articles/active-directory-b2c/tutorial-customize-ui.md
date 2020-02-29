@@ -3,20 +3,20 @@ title: 教程：自定义用户界面
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面（UI）。
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840122"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186244"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户体验的接口
 
@@ -31,7 +31,7 @@ ms.locfileid: "76840122"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -71,11 +71,11 @@ ms.locfileid: "76840122"
 
     ![Azure 门户中的 Azure Blob 存储中的 CORS 配置页](./media/tutorial-customize-ui/enable-cors.png)
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ### <a name="create-the-customization-files"></a>创建自定义文件
 
-若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为 `api`。 例如，`<div id="api"></div>` 。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
+若要自定义注册体验的 UI，首先要创建一个简单的 HTML 和 CSS 文件。 可以根据需要配置 HTML，但其中必须具有“div”元素，其标识符为`api`。 例如，`<div id="api"></div>` 。 显示页面时，Azure AD B2C 会将元素注入 `api` 容器。
 
 1. 在本地文件夹中，创建以下文件，并确保将 `your-storage-account` 更改为存储帐户的名称，并将 `your-container` 更改为所创建容器的名称。 例如，`https://store1.blob.core.windows.net/b2c/style.css` 。
 

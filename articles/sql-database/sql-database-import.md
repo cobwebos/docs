@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 8d147248245ca06c145c68ee8ca9cfd02015aa9c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929193"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191868"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>快速入门：将 BACPAC 文件导入到 Azure SQL 数据库中的数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "74929193"
 > 导入的数据库的兼容性级别基于源数据库的兼容性级别。
 
 > [!IMPORTANT]
-> 导入数据库后，可选择以当前兼容级别（对于 AdventureWorks2008R2 数据库是级别 100）或更高级别操作数据库。 有关在特定兼容级别操作数据库的影响和选项的详细信息，请参阅 [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)（更改数据库兼容级别）。 另请参阅 [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)，了解与兼容性级别相关的其他数据库级别设置。
+> 导入数据库后，可选择以当前兼容级别（对于 AdventureWorks2008R2 数据库是级别 100）或更高级别操作数据库。 有关在特定兼容级别操作数据库的影响和选项的详细信息，请参阅 [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level)（更改数据库兼容级别）。 有关与兼容级别相关的其他数据库级别设置的信息，另请参阅 [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql)（更改数据库范围的配置）。
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
 
@@ -34,7 +34,7 @@ ms.locfileid: "74929193"
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-[Azure 门户](https://portal.azure.com)仅支持在 Azure SQL 数据库中创建单个数据库，并且仅从存储在 Azure Blob 存储中的 BACPAC 文件中创建。
+[Azure 门户](https://portal.azure.com)*仅*支持在 azure SQL 数据库中创建一个数据库，并且*仅*支持从存储在 azure Blob 存储中的 BACPAC 文件创建一个数据库。
 
 当前不支持使用 Azure PowerShell 从 BACPAC 文件将数据库迁移到[托管实例](sql-database-managed-instance.md)。 请改用 SQL Server Management Studio 或 SQLPackage。
 
@@ -51,7 +51,7 @@ ms.locfileid: "74929193"
 
    ![数据库 import2](./media/sql-database-import/sql-server-import-database-settings.png)
 
-1. 单击 **“确定”** 。
+1. 单击“确定”。
 
 1. 若要监视导入的进度，请打开数据库的服务器页，然后在“设置”下，选择“导入/导出历史记录”。 成功导入后，状态为“已完成”。
 
@@ -88,7 +88,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > 处理通过门户或 Powershell 提交的导入/导出请求的计算机需要存储 bacpac 文件以及由数据层应用程序框架（DacFX）生成的临时文件。 所需的磁盘空间在大小相同的数据库之间发生了重大变化，并且最多可能需要3倍的数据库大小。 运行导入/导出请求的计算机仅具有450GB 的本地磁盘空间。 因此，某些请求可能会失败，出现 "磁盘空间不足" 错误。 在这种情况下，解决方法是在具有足够的本地磁盘空间的计算机上运行 sqlpackage。 导入/导出大于 150 GB 的数据库时，请使用 SqlPackage 来避免此问题。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > Azure SQL 数据库仍支持 PowerShell Azure 资源管理器（RM）模块，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块将继续收到 bug 修复，直到至少12月2020。  Az 模块和 AzureRm 模块中的命令的参数完全相同。 有关其兼容性的详细信息，请参阅[新 Azure PowerShell Az Module 简介](/powershell/azure/new-azureps-module-az)。
@@ -123,18 +123,18 @@ while ($importStatus.Status -eq "InProgress") {
 $importStatus
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 使用[az-sql-db 导入](/cli/azure/sql/db#az-sql-db-import)命令将导入数据库请求提交到 Azure sql 数据库服务。 根据数据库大小，导入操作可能需要一些时间才能完成。
 
-```azure-cli
+```azurecli
 # get the storage account key
-az storage account keys list --resource-group "<resourceGroupName>" --account-name "<storageAccountName>"
+az storage account keys list --resource-group "<resourceGroup>" --account-name "<storageAccount>"
 
-az sql db import --resource-group "<resourceGroupName>" --server "<serverName>" --name "<databaseName>" `
+az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "<database>" `
     --storage-key-type "StorageAccessKey" --storage-key "<storageAccountKey>" `
     --storage-uri "https://myStorageAccount.blob.core.windows.net/importsample/sample.bacpac" `
-    -u "<userId>" -p $(ConvertTo-SecureString -String "<password>" -AsPlainText -Force)
+    -u "<userId>" -p "<password>"
 ```
 
 * * *

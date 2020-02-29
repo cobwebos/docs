@@ -1,18 +1,18 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 59cf0b81363c724d709d85105525bece13743f26
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: mimart
+ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474840"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183361"
 ---
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 选择“应用程序”。 
 1. 选择“webapi1”  应用程序以打开其属性页。 
@@ -21,7 +21,7 @@ ms.locfileid: "73474840"
 1. 在“范围”中输入 `demo.write`，在“说明”中输入 `Write access to the web API`。  
 1. 选择“保存”。 
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册(预览版)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 选择“应用注册(预览版)”  。
 1. 选择“webapi1”  应用程序以打开其“概览”页。 

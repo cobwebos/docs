@@ -3,20 +3,20 @@ title: 自定义策略的布尔声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的标识体验框架（IEF）架构的布尔声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 130fca4d5894316e7684270ff9d6361e9d9f9dd3
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 65f5b9bc09bb74ccbc63a457ba8e5681de8eefab
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620837"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189935"
 ---
 # <a name="boolean-claims-transformations"></a>布尔型声明转换
 
@@ -116,7 +116,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩的结果。 
+检查声明的布尔值是否等于 `true` 或 `false`，并返回压缩的结果。
 
 | Item | TransformationClaimType  | 数据类型  | 说明 |
 | ---- | ------------------------ | ---------- | ----- |
@@ -148,7 +148,7 @@ AssertBooleanClaimIsEqualToValue 声明转换始终从[验证技术配置文件]
 - 输入参数：
     - **valueToCompareTo**: true
 - 输出声明：
-    - **compareResult**： false 
+    - **compareResult**： false
 
 
 

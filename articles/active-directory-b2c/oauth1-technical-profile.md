@@ -3,20 +3,20 @@ title: 在自定义策略中定义 OAuth1 技术配置文件
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth 1.0 技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840377"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184071"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
@@ -68,7 +68,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 ## <a name="metadata"></a>元数据
 
-| Attribute | 需要 | Description |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -82,7 +82,7 @@ Azure Active Directory B2C （Azure AD B2C）提供对[OAuth 1.0 协议](https:/
 
 **CryptographicKeys** 元素包含以下属性：
 
-| Attribute | 需要 | Description |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   |
 

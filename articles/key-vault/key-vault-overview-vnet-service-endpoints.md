@@ -7,13 +7,14 @@ ms.author: ambapat
 manager: rkarlin
 ms.date: 01/02/2019
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: b9c458b42f7436377d41cf5095d404dedbe0ffd1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 47dc1a84fbc80925e5b65db8c03683f9f026271b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191612"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194982"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -70,7 +71,7 @@ ms.locfileid: "77191612"
 |Azure 信息保护|允许访问 [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)的租户密钥。|
 |Azure 应用服务|[通过 Key Vault 部署 Azure Web 应用证书](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html)。|
 |Azure SQL 数据库|[使用 Azure SQL 数据库和数据仓库的“创建自己的密钥”支持进行透明数据加密](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
-|Azure 存储空间|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
+|Azure 存储|[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|[在 Azure Data Lake Store 中使用客户托管密钥进行数据加密](../data-lake-store/data-lake-store-encryption.md)。|
 |Azure Databricks|[基于 Apache Spark 的快速、简单、协作分析服务](../azure-databricks/what-is-azure-databricks.md)|
 |Azure API 管理|[使用 MSI 从 Key Vault 部署自定义域证书](../api-management/api-management-howto-use-managed-service-identity.md#use-the-managed-service-identity-to-access-other-resources)|

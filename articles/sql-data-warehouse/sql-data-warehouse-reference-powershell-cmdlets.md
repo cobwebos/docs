@@ -1,6 +1,6 @@
 ---
-title: PowerShell cmdlet
-description: 了解 Azure SQL 数据仓库的最常用 PowerShell cmdlet，包括如何暂停和恢复数据库。
+title: PowerShell & REST Api
+description: 查找适用于 Azure Synapse Analytics 的顶层 PowerShell cmdlet SQL 池，包括如何暂停和恢复数据库。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c5f85f102d72ac2e4a0315109748d48573f49407
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c0c8b1e9b7526bd45d037f053715613b53ec163f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721177"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198450"
 ---
-# <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 PowerShell cmdlet 和 REST API
-可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  有关一些更好的 REST 示例，请参阅[通过 REST 管理可伸缩性](sql-data-warehouse-manage-compute-rest-api.md)一文。
+# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>用于 Azure Synapse Analytics SQL 池的 PowerShell & REST Api
+
+许多 Azure Synapse Analytics SQL 池管理任务可使用 Azure PowerShell cmdlet 或 REST Api 进行管理。  下面是如何使用 PowerShell 命令自动执行 SQL 池中常见任务的一些示例。  有关一些更好的 REST 示例，请参阅[通过 REST 管理可伸缩性](sql-data-warehouse-manage-compute-rest-api.md)一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-started-with-azure-powershell-cmdlets"></a>Azure PowerShell cmdlet 入门
+
 1. 打开 Windows PowerShell。
 2. 在 PowerShell 提示符下，运行以下命令以登录到 Azure 资源管理器，然后选择订阅。
    
@@ -33,12 +35,13 @@ ms.locfileid: "76721177"
     Select-AzSubscription -SubscriptionName "MySubscription"
     ```
 
-## <a name="pause-sql-data-warehouse-example"></a>暂停 SQL 数据仓库示例
+## <a name="pause-data-warehouse-example"></a>暂停数据仓库示例
 暂停名为“Server01”的服务器上托管的名为“Database02”的数据库。  该服务器位于名为“ResourceGroup1”的 Azure 资源组中。
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
+
 变体，此示例将检索到的对象传递给[AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/suspend-azsqldatabase)。  因此会暂停该数据库。 最后一个命令显示结果。
 
 ```Powershell
@@ -47,7 +50,8 @@ $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
 ```
 
-## <a name="start-sql-data-warehouse-example"></a>启动 SQL 数据仓库示例
+## <a name="start-data-warehouse-example"></a>启动数据仓库示例
+
 恢复“Server01”的服务器上托管的“Database02”数据库的运行。 该服务器包含在名为“ResourceGroup1”的资源组中。
 
 ```Powershell
@@ -67,7 +71,7 @@ $resultDatabase = $database | Resume-AzSqlDatabase
 > 
 
 ## <a name="other-supported-powershell-cmdlets"></a>其他支持的 PowerShell cmdlet
-Azure SQL 数据仓库支持以下 PowerShell cmdlet。
+Azure Synapse Analytics 数据仓库支持这些 PowerShell cmdlet。
 
 * [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase)
 * [Get-AzSqlDeletedDatabaseBackup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup)
@@ -83,7 +87,7 @@ Azure SQL 数据仓库支持以下 PowerShell cmdlet。
 ## <a name="next-steps"></a>后续步骤
 有关更多的 PowerShell 示例，请参阅：
 
-* [使用 PowerShell 创建 SQL 数据仓库](create-data-warehouse-powershell.md)
+* [使用 PowerShell 创建数据仓库](create-data-warehouse-powershell.md)
 * [数据库还原](sql-data-warehouse-restore-database-powershell.md)
 
-有关可通过 PowerShell 自动执行的其他任务，请参阅[AZURE SQL 数据库 cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。 Azure SQL 数据仓库并非支持全部 Azure SQL 数据库 cmdlet。  有关可以使用 REST 自动执行的任务的列表，请参阅[AZURE SQL 数据库的操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)。
+有关可通过 PowerShell 自动执行的其他任务，请参阅[AZURE SQL 数据库 cmdlet](https://docs.microsoft.com/powershell/module/az.sql)。 Azure Synapse 分析数据仓库并非支持所有 Azure SQL 数据库 cmdlet。  有关可以使用 REST 自动执行的任务的列表，请参阅[AZURE SQL 数据库的操作](/rest/api/sql/)。

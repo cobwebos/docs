@@ -2,21 +2,21 @@
 title: 通过 OpenID Connect 进行 Web 登录-Azure Active Directory B2C
 description: 在 Azure Active Directory B2C 中使用 OpenID Connect 身份验证协议生成 web 应用程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f601fc2e415e22bdbb9e0a4d4d2072a0a33ac22e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848819"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183986"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用 OpenID Connect 进行 Web 登录
 
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 要运行的用户流。 指定在 Azure AD B2C 租户中创建的用户流的名称。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或 `b2c_1_edit_profile`。 |
@@ -71,7 +71,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | id_token | 应用程序请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 |
 | 代码 | 如果使用 `response_type=code+id_token`，则为应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码通常在大约10分钟后过期。 |
@@ -86,7 +86,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | error | 可用于分类发生的错误类型的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的特定错误消息。 |
@@ -96,7 +96,7 @@ error=access_denied
 
 仅收到一个 ID 令牌并不表示可以对用户进行身份验证。 验证 ID 令牌的签名，并根据应用程序的要求验证令牌中的声明。 Azure AD B2C 使用 [JSON Web 令牌 (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) 和公钥加密对令牌进行签名并验证其是否有效。 有许多开放源代码库可用于验证 JWT，具体取决于首选语言。 我们建议使用这些库，而不是实施自己的验证逻辑。
 
-Azure AD B2C 具有 OpenID Connect 元数据终结点，该终结点允许应用程序在运行时获取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 用户流的元数据文档位于：
+Azure AD B2C 具有 OpenID Connect 元数据终结点，该终结点允许应用程序在运行时获取有关 Azure AD B2C 的信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 租户中的每个用户流都有一个 JSON 元数据文档。 例如，`b2c_1_sign_in` 中 `fabrikamb2c.onmicrosoft.com` 用户流的元数据文档位于：
 
 ```HTTP
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
@@ -114,7 +114,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 
 若要验证令牌 Azure AD B2C，需要使用指数（e）和取模（n）生成公钥。 你需要根据相应的编程语言来确定如何执行此操作。 可在此处找到有关通过 RSA 协议生成公钥的官方文档： https://tools.ietf.org/html/rfc3447#section-3.1
 
-验证 ID 令牌的签名后，还有几项声明需要验证。 对于实例：
+验证 ID 令牌的签名后，还有几项声明需要验证。 例如：
 
 - 验证 `nonce` 声明以防止令牌重放攻击。 其值应为在登录请求中指定的内容。
 - 验证 `aud` 声明，以确保为你的应用程序颁发了 ID 令牌。 其值应为应用程序的应用程序 ID。
@@ -132,7 +132,7 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/disco
 
 如果你需要 web 应用程序才能运行用户流，则可以跳过下面几节。 这些部分仅适用于需要对 web API 进行经过身份验证的调用的 web 应用程序，并且还受 Azure AD B2C 保护。
 
-通过将 `POST` 请求发送到 `/token` 终结点，可以将获取的授权代码（通过 `response_type=code+id_token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中，可以通过在请求中指定其作用域，照常[请求其他 api 的访问令牌](access-tokens.md#request-a-token)。
+通过将 `response_type=code+id_token` 请求发送到 `POST` 终结点，可以将获取的授权代码（通过 `/token` 获取）兑换为所需资源的令牌。 在 Azure AD B2C 中，可以通过在请求中指定其作用域，照常[请求其他 api 的访问令牌](access-tokens.md#request-a-token)。
 
 你还可以通过使用应用的客户端 ID 作为请求的作用域来为你的应用程序的后端 Web API 请求访问令牌（这会导致使用该客户端 ID 的访问令牌为 "受众"）：
 
@@ -144,7 +144,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取授权代码的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
@@ -168,7 +168,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一受支持的类型。 |
@@ -186,7 +186,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | error | 可用于对发生的错误类型进行分类的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的消息。 |
@@ -213,7 +213,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 用于获取原始刷新令牌的用户流。 不能在此请求中使用其他用户流。 将此参数添加到查询字符串中，而不是添加到 POST 正文。 |
@@ -237,7 +237,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | not_before | epoch 时间中令牌被视为有效的时间。 |
 | token_type | 令牌类型值。 `Bearer` 是唯一受支持的类型。 |
@@ -255,7 +255,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --------- | ----------- |
 | error | 可用于对发生的错误类型进行分类的代码。 |
 | error_description | 可帮助识别身份验证错误根本原因的消息。 |
@@ -270,7 +270,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| 参数 | 需要 | Description |
+| 参数 | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | 组织 | 是 | Azure AD B2C 租户的名称 |
 | 政策 | 是 | 想要用于从应用程序中注销用户的用户流。 |

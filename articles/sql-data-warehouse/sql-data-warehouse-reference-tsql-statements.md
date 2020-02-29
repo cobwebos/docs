@@ -1,6 +1,6 @@
 ---
 title: T-SQL 语句
-description: 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
+description: SQL Analytics 中支持的 T-sql 语句的文档链接。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,40 +10,40 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685517"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198348"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语句
-有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>SQL Analytics 中支持的 t-sql 语句
+SQL Analytics 中支持的 T-sql 语句的文档链接。
 
 ## <a name="data-definition-language-ddl-statements"></a>数据定义语言 (DDL) 语句
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
-* [ALTER MATERIALIZED VIEW](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest)（预览版） 
+* [ALTER 具体化视图](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest)（预览版） 
 * [ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
 * [ALTER SCHEMA](https://msdn.microsoft.com/library/ms173423.aspx)
 * [ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx)
 * [CREATE COLUMNSTORE INDEX](https://msdn.microsoft.com/library/gg492153.aspx)
 * [CREATE DATABASE](https://msdn.microsoft.com/library/mt204021.aspx)
-* [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
-* [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)（创建外部数据源）
+* [创建数据库范围的凭据](https://msdn.microsoft.com/library/mt270260.aspx)
+* [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
 * [CREATE EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/dn935026.aspx)
 * [创建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
 * [CREATE FUNCTION](https://msdn.microsoft.com/library/mt203952.aspx)
-* [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
-* [CREATE MATERIALIZED VIEW AS SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)（预览版） 
+* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
+* [创建具体化视图为 SELECT](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) （预览） 
 * [CREATE PROCEDURE](https://msdn.microsoft.com/library/ms187926.aspx)
 * [CREATE SCHEMA](https://msdn.microsoft.com/library/ms189462.aspx)
 * [CREATE STATISTICS](https://msdn.microsoft.com/library/ms188038.aspx)
 * [CREATE TABLE](https://msdn.microsoft.com/library/mt203953.aspx)
 * [CREATE TABLE AS SELECT](https://msdn.microsoft.com/library/mt204041.aspx)
 * [CREATE VIEW](https://msdn.microsoft.com/library/ms187956.aspx)
-* [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql)
+* [创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)
 * [DROP EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/mt146367.aspx)
 * [DROP EXTERNAL FILE FORMAT](https://msdn.microsoft.com/library/mt146379.aspx)
 * [DROP EXTERNAL TABLE](https://msdn.microsoft.com/library/mt130698.aspx)
@@ -53,9 +53,9 @@ ms.locfileid: "73685517"
 * [DROP TABLE](https://msdn.microsoft.com/library/ms173790.aspx)
 * [DROP SCHEMA](https://msdn.microsoft.com/library/ms186751.aspx)
 * [DROP VIEW](https://msdn.microsoft.com/library/ms173492.aspx)
-* [DROP WORKLOAD CLASSIFIER](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
+* [DROP 工作负荷分类器](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [RENAME](https://msdn.microsoft.com/library/mt631611.aspx)
-* [SET RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
+* [设置 RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
@@ -66,12 +66,12 @@ ms.locfileid: "73685517"
 
 ## <a name="database-console-commands"></a>数据库控制台命令
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
-* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)（预览版）
+* [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) （预览版）
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
-* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql)（预览版）
+* [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) （预览版）
 * [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
@@ -120,4 +120,4 @@ ms.locfileid: "73685517"
 * [OPEN MASTER KEY](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细参考信息，请参阅 [Azure SQL 数据仓库中的 T-SQL 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)以及 [Azure SQL 数据仓库中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。
+有关更多参考信息，请参阅[Sql analytics 中的 t-sql 语言元素](sql-data-warehouse-reference-tsql-language-elements.md)和[sql Analytics 中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。

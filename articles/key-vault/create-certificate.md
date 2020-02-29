@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769249"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194451"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -79,7 +80,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 ## <a name="partnered-ca-providers"></a>配合使用的 CA 提供程序
 可手动完成或使用“Self”证书颁发者来完成证书创建过程。 Key Vault 也可以与某些证书颁发者提供者配合使用，从而简化证书创建过程。 可为具有这些合作伙伴证书颁发者提供者的密钥保管库订购以下类型的证书。  
 
-|提供商|证书类型|  
+|提供程序|证书类型|  
 |--------------|----------------------|  
 |DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书|
 |GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书|

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851496"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196999"
 ---
 # <a name="onboarding-and-installing"></a>载入和安装
 
@@ -30,24 +30,29 @@ Microsoft 安全代码分析入门的先决条件：
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>载入 Microsoft 安全代码分析扩展
 
-- 如果你有以下支持服务之一，请联系你的技术客户经理，以购买或交换现有小时以访问扩展：
-  - 统一支持高级层
-  - 统一的支持性能级别
-  - 面向开发人员的顶级支持
-  - 合作伙伴顶级支持
-  - 适用于企业的顶级支持
-- 如果你安装了以下支持服务之一或没有 Microsoft 支持计划，则必须升级到符合条件的支持产品/服务：
-  - 针对合作伙伴的 Azure 支持
-  - Azure 基本支持
-  - Azure 开发人员支持
-  - Azure 标准支持
-  - Azure 专业直接
-  - 统一的支持核心层
-- 若要购买合格的支持产品/服务，请参阅我们的[支持服务主页](https://www.microsoft.com/enterprise/services/support)。
-- 支持合同准备就绪后，请与你的技术客户经理联系以帮助你开始使用并帮助你收集所有必需的详细信息。
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>对购买 Microsoft 安全代码分析扩展感兴趣吗？
 
->[!NOTE]
->如果你没有支持合同，我们也会致力于合作伙伴购买计划，在此计划中，你可以利用第三方合作伙伴来购买扩展，而无需购买统一的支持计划。 请[向我们发送电子邮件](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request)。 告诉我们你对此选项感兴趣。 我们会记下你的兴趣，并在此选项可用时立即返回给你。
+如果你有以下支持服务之一，请联系你的技术客户经理，以购买或交换现有小时以访问扩展：
+
+- 统一支持高级层
+- 统一的支持性能级别
+- 面向开发人员的顶级支持
+- 合作伙伴顶级支持
+- 适用于企业的顶级支持
+
+如果你没有上述支持协议中的一种，你可以从我们的合作伙伴之一购买此扩展。
+
+**后续步骤：**
+
+与以下列表中的合作伙伴联系，要求购买 Microsoft 安全代码分析扩展。
+
+>**群体**
+
+- 区域-联系人详细信息： cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>成为合作伙伴
+
+Microsoft 安全代码分析团队正在寻求加入合作伙伴协议顶级支持的加入合作伙伴。 合作伙伴将通过向要购买客户的客户销售扩展来帮助 Azure DevOps 客户更安全地进行开发，但不会与 Microsoft 建立企业支持协议。 相关合作伙伴可[在此处](http://www.microsoftpartnersupport.com/msrd/opin)注册。
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>安装 Microsoft 安全代码分析扩展
 

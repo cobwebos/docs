@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587288"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192381"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>选择 vCore 和 DTU 购买模型
 
@@ -142,6 +142,20 @@ Dtu 最适用于了解为不同计算大小和服务层的 Azure SQL 数据库�
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>受益于资源弹性池的工作负荷
 
 池非常适用于资源利用率较低且利用率相对较少的数据库。 有关详细信息，请参阅[何时应考虑使用 SQL 数据库弹性池？](sql-database-elastic-pool.md)。
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>基于 DTU 的购买模型中的硬件代
+
+在基于 DTU 的购买模型中，客户无法选择用于其数据库的硬件生成。 虽然给定的数据库通常会长时间（通常为多个月）在特定的硬件上生成，但有一些事件会导致数据库移到另一个硬件生成。
+
+例如，如果数据库将扩展或缩减到不同的服务目标，或者数据中心的当前基础结构正在接近其容量限制，或者当前使用的硬件正在运行，则可以将该数据库移到不同的硬件生成中因为其生命周期结束而停止。
+
+如果将数据库移到不同的硬件上，工作负荷性能可能会改变。 DTU 模型保证当数据库移动到不同的硬件生成时[dtu 基准](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark)工作负荷的吞吐量和响应时间将保持完全相同，前提是其服务目标（dtu 数）保持不变。 
+
+但是，在 Azure SQL 数据库中运行的各种客户工作负荷中，对相同服务目标使用不同硬件的影响可能更明显。 不同的工作负荷将受益于不同的硬件配置和功能。 因此，对于 DTU 基准以外的工作负荷，如果数据库从一个硬件生成移到另一个，则可能会看到性能差异。
+
+例如，对网络延迟敏感的应用程序可以在 Gen5 硬件与 Gen4 上看到更好的性能，因为使用 Gen5 中的加速网络，但使用大量读取 IO 的应用程序可以在 Gen4 硬件和 Gen5 上看到更好的性能，因为Gen4 上的每个核心比率更高的内存。
+
+如果客户的工作负荷对硬件的更改或希望控制其数据库的硬件生成选择的客户，则可以使用[vCore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore)模型在数据库创建和缩放期间选择其首选的硬件生成。 在 vCore 模型中，为[单个数据库](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)和[弹性池](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)记录每个硬件生成上每个服务目标的资源限制。 有关 vCore 模型中的硬件生成的详细信息，请参阅[硬件代](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations)。
 
 ## <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 

@@ -6,15 +6,16 @@ author: amitbapat
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: d22231541a7fe29d4517985742d4bf88dc4c3fa7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eac3850cfa0684bd1751cf7b88b4ff8e92667293
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980440"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197430"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -51,7 +52,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 下表显示了用于管理平面和数据平面的终结点。
 
-| 访问&nbsp;平面 | 访问终结点 | Operations | 访问&nbsp;控制机制 |
+| 访问&nbsp;平面 | 访问终结点 | 操作 | 访问&nbsp;控制机制 |
 | --- | --- | --- | --- |
 | 管理平面 | **全球：**<br> management.azure.com:443<br><br> **Azure 中国世纪互联：**<br> management.chinacloudapi.cn:443<br><br> **Azure US Government：**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> management.microsoftazure.de:443 | 创建、读取、更新和删除密钥保管库<br><br>设置密钥保管库访问策略<br><br>设置密钥保管库标记 | Azure 资源管理器 RBAC |
 | 数据平面 | **全球：**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure 中国世纪互联：**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure US Government：**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany：**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | 密钥：解密、加密，<br> 解包、包装、验证、签名，<br> 获取、列出、更新、创建，<br> 导入、删除、备份、还原<br><br> 机密：获取、列出、设置、删除 | Key Vault 访问策略 |

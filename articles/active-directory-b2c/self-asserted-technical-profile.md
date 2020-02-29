@@ -3,20 +3,20 @@ title: 在自定义策略中定义自断言技术配置文件
 titleSuffix: Azure AD B2C
 description: 定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425589"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183799"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 中自定义策略的自断言技术配置文件
 
@@ -187,21 +187,21 @@ ms.locfileid: "77425589"
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| 设置。 operatingMode <sup>1</sup>| 是 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
-| AllowGenerationOfClaimsWithNullValues| 是| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
+| 设置。 operatingMode <sup>1</sup>| 否 | 对于登录页面，此属性可控制用户名字段的行为，如输入验证和错误消息。 预期的值为 `Username` 或 `Email`。  |
+| AllowGenerationOfClaimsWithNullValues| 否| 允许生成 null 值声明。 例如，如果用户未选中复选框，则为。|
 | ContentDefinitionReferenceId | 是 | 与此技术配置文件关联的[内容定义](contentdefinitions.md)的标识符。 |
-| EnforceEmailVerification | 是 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
-| setting.retryLimit | 是 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
-| SignUpTarget <sup>1</sup>| 是 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
-| setting.showCancelButton | 是 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
-| setting.showContinueButton | 是 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 showSignupLink <sup>2</sup>| 是 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
-| 设置。 forgotPasswordLinkLocation <sup>2</sup>| 是| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。| 
-| IncludeClaimResolvingInClaimsHandling  | 是 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
+| EnforceEmailVerification | 否 | 对于注册或配置文件编辑，强制实施电子邮件验证。 可能的值为 `true`（默认）或 `false`。 |
+| setting.retryLimit | 否 | 控制用户可以尝试提供数据的次数，所提供数据将根据验证技术配置文件进行检查。 例如，用户尝试注册已经存在的帐户，而且一直尝试，直到达到限制。
+| SignUpTarget <sup>1</sup>| 否 | 注册目标交换标识符。 当用户单击“注册”按钮时，Azure AD B2C 将执行指定的交换标识符。 |
+| setting.showCancelButton | 否 | 显示“取消”按钮。 可能的值为 `true`（默认）或 `false` |
+| setting.showContinueButton | 否 | 显示“继续”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置。 showSignupLink <sup>2</sup>| 否 | 显示“注册”按钮。 可能的值为 `true`（默认）或 `false` |
+| 设置。 forgotPasswordLinkLocation <sup>2</sup>| 否| 显示 "忘记密码" 链接。 可能的值： `AfterInput` （默认值）该链接显示在页面底部，或者 `None` 删除 "忘记密码" 链接。|
+| IncludeClaimResolvingInClaimsHandling  | 否 | 对于输入和输出声明，指定技术配置文件中是否包含[声明解析](claim-resolver-overview.md)。 可能的值： `true`或 `false` （默认值）。 如果要使用技术配置文件中的声明解析程序，请将此项设置为 `true`。 |
 
-注：
+说明：
 1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。
 1. 可用于内容定义[DataUri](contentdefinitions.md#datauri)类型的 `unifiedssp`或 `unifiedssd`。 [页面布局版本](page-layout.md)1.1.0 及更高版本。
 

@@ -3,20 +3,20 @@ title: 教程：将标识提供程序添加到应用
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应用程序添加标识提供程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 07/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840156"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183510"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 中的应用程序
 
@@ -33,7 +33,7 @@ ms.locfileid: "76840156"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -140,7 +140,7 @@ ms.locfileid: "76840156"
 ## <a name="test-the-user-flow"></a>测试用户流
 
 1. 在创建的用户流的“概述”页上，选择“运行用户流”。
-1. 对于“应用程序”，请选择前面已注册的名为 *webapp1* 的 Web 应用程序。 “回复 URL”应显示为 `https://jwt.ms`。
+1. 对于“应用程序”，请选择前面已注册的名为 **webapp1** 的 Web 应用程序。 “回复 URL”应显示为 **。** `https://jwt.ms`
 1. 选择 "**运行用户流**"，然后使用之前添加的标识提供者登录。
 1. 对添加的其他标识提供程序重复执行第 1 步到第 3 步。
 

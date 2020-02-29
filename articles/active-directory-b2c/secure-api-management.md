@@ -2,54 +2,54 @@
 title: 使用 Azure Active Directory B2C 保护 Azure API 管理 API
 description: 了解如何使用 Azure Active Directory B2C 颁发的访问令牌来保护 Azure API 管理 API 终结点。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641617"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186924"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保护 Azure API 管理 API
 
-了解如何将 Azure API 管理 (APIM) API 的访问权限限制给已使用 Azure Active Directory B2C (Azure AD B2C) 进行身份验证的客户端。 请遵循本文中的步骤在 APIM 中创建并测试一个入站策略，用于将访问权限限制给包含 Azure AD B2C 所颁发的有效访问令牌的请求。
+了解如何限制对使用 Azure Active Directory B2C （Azure AD B2C）进行身份验证的客户端的 Azure API 管理（APIM） API 的访问。 按照本文中的步骤创建和测试 APIM 中的入站策略，以将访问权限限制为仅包含有效 Azure AD B2C 颁发的访问令牌的请求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在继续执行本文中的步骤之前，需要准备好以下资源：
 
 * [Azure AD B2C 租户](tutorial-create-tenant.md)
 * 在租户中[注册的应用程序](tutorial-register-applications.md)
 * 在租户中[创建的用户流](tutorial-create-user-flows.md)
-* Azure API 管理中[发布的 API](../api-management/import-and-publish.md)
-* 用于测试安全访问的 [Postman](https://www.getpostman.com/)（可选）
+* Azure API 管理中[已发布的 API](../api-management/import-and-publish.md)
+* 用于测试安全访问的[Postman](https://www.getpostman.com/) （可选）
 
 ## <a name="get-azure-ad-b2c-application-id"></a>获取 Azure AD B2C 应用程序 ID
 
-使用 Azure AD B2C 保护 Azure API 管理中的 API 时，需要为 APIM 中创建的[入站策略](../api-management/api-management-howto-policies.md)提供多个值。 首先，请记下以前在 Azure AD B2C 租户中创建的应用程序的 ID。 如果使用的是在先决条件中创建的应用程序，请使用 *webbapp1* 的应用程序 ID。
+使用 Azure AD B2C 在 Azure API 管理中保护 API 时，需要为在 APIM 中创建的[入站策略](../api-management/api-management-howto-policies.md)提供多个值。 首先，记录你之前在 Azure AD B2C 租户中创建的应用程序的应用程序 ID。 如果使用的是在先决条件中创建的应用程序，请使用*webbapp1*的应用程序 ID。
 
 你可以使用当前**应用程序**体验或我们的新统一**应用注册（预览版）** 体验获取应用程序 ID。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
-1. 在“管理”下选择“应用程序”。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
+1. 在 "**管理**" 下，选择 "**应用程序**"。
 1. 记录*webapp1*的 "**应用程序 ID** " 列中的值或之前创建的其他应用程序。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器，然后选择包含 Azure AD B2C 租户的目录。
-1. 在左侧菜单中，选择 " **Azure AD B2C**"。 或者选择 "**所有服务**"，搜索并选择 " **Azure AD B2C**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 在顶部菜单中选择“目录 + 订阅”筛选器，然后选择包含Azure AD B2C 租户的目录。
+1. 在左侧菜单中，选择“Azure AD B2C”。 或者，选择“所有服务”并搜索并选择“Azure AD B2C”。
 1. 选择**应用注册（预览）** ，然后选择 "**拥有的应用程序**" 选项卡。
 1. 在*webapp1*的**应用程序（客户端） ID**列中记录值，或者在前面创建的其他应用程序中记录值。
 
@@ -57,23 +57,23 @@ ms.locfileid: "73641617"
 
 ## <a name="get-token-issuer-endpoint"></a>获取令牌颁发者终结点
 
-接下来，获取某个 Azure AD B2C 用户流的已知配置 URL。 还需要获取要在 Azure API 管理中支持的令牌颁发者终结点 URI。
+接下来，获取某个 Azure AD B2C 用户流的已知配置 URL。 还需要在 Azure API 管理中支持令牌颁发者终结点 URI。
 
-1. 在 [Azure 门户](https://portal.azure.com)中浏览到你的 Azure AD B2C 租户。
-1. 在“策略”下，选择“用户流(策略)”。
-1. 选择现有的策略（例如 *B2C_1_signupsignin1*），然后选择“运行用户流”。
-1. 记下页面顶部附近的“运行用户流”标题下显示的超链接中的 URL。 此 URL 是用户流的 OpenID Connect 已知发现终结点，在下一部分，当你在 Azure API 管理中配置入站策略时，将要使用此 URL。
+1. 浏览到[Azure 门户](https://portal.azure.com)中的 Azure AD B2C 租户。
+1. 在 "**策略**" 下，选择 "**用户流（策略）** "。
+1. 选择现有策略（例如*B2C_1_signupsignin1*），然后选择 "**运行用户流**"。
+1. 在页面顶部附近的 "**运行用户流**" 标题下显示的超链接中记录 URL。 此 URL 是用户流的 OpenID Connect 众所周知的发现终结点，当你在 Azure API 管理中配置入站策略时，将在下一部分中使用此 URL。
 
-    ![Azure 门户的“立即运行”页中的“已知 URI”超链接](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
+    ![Azure 门户的 "立即运行" 页中的已知 URI 超链接](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
 
-1. 选择该超链接以浏览到“OpenID Connect 已知配置”页。
-1. 在浏览器中打开的页上，记下 `issuer` 值，例如：
+1. 选择超链接，浏览到 OpenID Connect 众所周知的配置页。
+1. 在浏览器中打开的页面上，记录 `issuer` 值，例如：
 
     `https://your-b2c-tenant.b2clogin.com/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/v2.0/`
 
-    在下一部分，当你在 Azure API 管理中配置 API 时，将要使用此值。
+    在 Azure API 管理中配置 API 时，将在下一部分中使用此值。
 
-现在，你应已记下了要在下一部分使用的两个 URL：OpenID Connect 已知配置终结点 URL，以及颁发者 URI。 例如：
+你现在应记录了两个 Url 以供下一部分使用： OpenID Connect 众所周知的配置终结点 URL 和颁发者 URI。 例如：
 
 ```
 https://yourb2ctenant.b2clogin.com/yourb2ctenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_signupsignin1
@@ -82,18 +82,18 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ## <a name="configure-inbound-policy-in-azure-api-management"></a>在 Azure API 管理中配置入站策略
 
-现已准备好在 Azure API 管理中添加用于验证 API 调用的入站策略。 通过添加用于验证访问令牌中的受众和颁发者的 [JWT 验证](../api-management/api-management-access-restriction-policies.md#ValidateJWT)策略，可以确保仅接受具有有效令牌的 API 调用。
+你现在已准备好在 Azure API 管理中添加用于验证 API 调用的入站策略。 通过添加用于验证访问令牌中的受众和颁发者的[JWT 验证](../api-management/api-management-access-restriction-policies.md#ValidateJWT)策略，可以确保只接受带有有效令牌的 API 调用。
 
 1. 在 [Azure 门户](https://portal.azure.com)中浏览到自己的 Azure API 管理实例。
 1. 选择“API”。
-1. 选择要使用 Azure AD B2C 保护的 API。
+1. 选择要用 Azure AD B2C 保护的 API。
 1. 选择“设计”选项卡。
-1. 在“入站处理”下，选择 **\</ 打开策略代码编辑器。\>**
-1. 将以下 `<validate-jwt>` 标记放入 `<inbound>` 策略。
+1. 在 "**入站处理**" 下，选择 **\</"\>** 打开" 策略代码编辑器 "。
+1. 在 `<inbound>` 策略中放置以下 `<validate-jwt>` 标记。
 
-    1. 使用策略的已知配置 URL 更新 `url` 元素中的 `<openid-config>` 值。
-    1. 使用以前在 B2C 租户中创建的应用程序（例如 `<audience>`webapp1 *）的 ID 更新*  元素。
-    1. 使用前面记下的令牌颁发者终结点更新 `<issuer>` 元素。
+    1. 将 `<openid-config>` 元素中的 `url` 值更新为策略的众所周知的配置 URL。
+    1. 用你之前在 B2C 租户中创建的应用程序 ID 更新 `<audience>` 元素（例如*webapp1*）。
+    1. 用先前记录的令牌颁发者终结点更新 `<issuer>` 元素。
 
     ```xml
     <policies>
@@ -117,59 +117,59 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ## <a name="validate-secure-api-access"></a>验证安全 API 访问
 
-若要确保只有经过身份验证的调用方可以访问你的 API，可以使用 [Postman](https://www.getpostman.com/) 调用该 API，以此验证 Azure API 管理配置。
+若要确保只有经过身份验证的调用方可以访问你的 API，你可以通过使用[Postman](https://www.getpostman.com/)调用 API 来验证 Azure API 管理配置。
 
-若要调用 API，需要使用 Azure AD B2C 颁发的访问令牌以及 APIM 订阅密钥。
+若要调用 API，需要 Azure AD B2C 颁发的访问令牌和 APIM 订阅密钥。
 
 ### <a name="get-an-access-token"></a>获取访问令牌
 
-首先需要获取 Azure AD B2C 颁发的令牌，该令牌将在 Postman 的 `Authorization` 标头中使用。 可以使用注册/登录用户流（作为先决条件之一，应该事先创建该用户流）的“立即运行”功能获取该令牌。
+首先需要一个由 Azure AD B2C 颁发的令牌，以便在 Postman 的 `Authorization` 标头中使用。 你可以通过使用注册/登录用户流的 "**立即运行**" 功能来获取一个，你应该将其创建为先决条件之一。
 
-1. 在 [Azure 门户](https://portal.azure.com)中浏览到你的 Azure AD B2C 租户。
-1. 在“策略”下，选择“用户流(策略)”。
-1. 选择现有的注册/登录用户流，例如 *B2C_1_signupsignin1*。
-1. 对于“应用程序”，请选择“webapp1”。
-1. 对于“回复 URL”，请选择 **。** `https://jwt.ms`
+1. 浏览到[Azure 门户](https://portal.azure.com)中的 Azure AD B2C 租户。
+1. 在 "**策略**" 下，选择 "**用户流（策略）** "。
+1. 选择现有的注册/登录用户流，例如*B2C_1_signupsignin1*。
+1. 对于**应用程序**，请选择 " *webapp1*"。
+1. 对于 "**答复 URL**"，请选择 `https://jwt.ms`。
 1. 选择“运行用户流”。
 
-    ![Azure 门户中注册/登录用户流的“运行用户流”页](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
+    ![运行用户流页面，用于在 Azure 门户中注册登录用户流](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
-1. 完成登录过程。 你应会重定向到 `https://jwt.ms`。
-1. 记下浏览器中显示的已编码令牌值。 此令牌值将用于 Postman 中的 Authorization 标头。
+1. 完成登录过程。 应重定向到 `https://jwt.ms`。
+1. 记录浏览器中显示的编码标记值。 将此令牌值用于 Postman 中的 Authorization 标头。
 
-    ![jwt.ms 中显示的已编码令牌值](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
+    ![Jwt.ms 上显示的编码标记值](media/secure-apim-with-b2c-token/jwt-ms-01-token.png)
 
 ### <a name="get-api-subscription-key"></a>获取 API 订阅密钥
 
-调用已发布 API 的客户端应用程序（在本例中为 Postman）必须在其对该 API 发出的 HTTP 请求中包含有效的 API 管理订阅密钥。 若要获取 Postman HTTP 请求中包含的订阅密钥：
+调用已发布的 API 的客户端应用程序（在本例中为 Postman）必须在其 HTTP 请求中包含有效的 API 管理订阅密钥。 获取要包含在 Postman HTTP 请求中的订阅密钥：
 
-1. 在 [Azure 门户](https://portal.azure.com)中浏览到你的 Azure API 管理服务实例。
+1. 浏览到[Azure 门户](https://portal.azure.com)中的 Azure API 管理服务实例。
 1. 选择 **订阅**。
 1. 选择 "**产品：无限制**" 的省略号，然后选择 "**显示/隐藏密钥**"。
-1. 记下产品的“主密钥”。 此密钥将用于 Postman 的 HTTP 请求中的 `Ocp-Apim-Subscription-Key` 标头。
+1. 记录产品**的主密钥**。 在 Postman 的 HTTP 请求中，将此项用于 `Ocp-Apim-Subscription-Key` 标头。
 
-![Azure 门户中的“订阅密钥”页，其中已选择“显示/隐藏密钥”](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
+![在 Azure 门户中选择 "显示/隐藏密钥" 的 "订阅密钥" 页](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
 
-### <a name="test-a-secure-api-call"></a>测试安全 API 调用
+### <a name="test-a-secure-api-call"></a>测试安全的 API 调用
 
-记下访问令牌和 APIM 订阅密钥后，可以开始测试是否正确配置了对 API 的安全访问。
+在记录了 "访问令牌" 和 "APIM" 订阅密钥后，你就可以测试是否已正确配置对 API 的安全访问。
 
-1. 在 `GET`Postman[ 中创建新的 ](https://www.getpostman.com/) 请求。 对于请求 URL，请指定作为先决条件之一发布的 API 的发言人列表终结点。 例如：
+1. 在[Postman](https://www.getpostman.com/)中创建新的 `GET` 请求。 对于 "请求 URL"，请将所发布 API 的 "发言人列表" 终结点指定为先决条件之一。 例如：
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
-1. 接下来添加以下标头：
+1. 接下来，添加以下标头：
 
-    | 键 | 值 |
+    | 密钥 | 值 |
     | --- | ----- |
-    | `Authorization` | 前面记下的已编码令牌值，带有 `Bearer ` 前缀（请在“Bearer”后面包含空格） |
-    | `Ocp-Apim-Subscription-Key` | 前面记下的 APIM 订阅密钥 |
+    | `Authorization` | 之前记录的编码标记值，以 `Bearer ` 为前缀（在 "持有者" 后包括空格） |
+    | `Ocp-Apim-Subscription-Key` | 之前记录的 APIM 订阅密钥 |
 
-    **GET** 请求 URL 和**标头**应类似于：
+    **GET**请求 URL 和**标头**应类似于：
 
     ![显示 GET 请求 URL 和标头的 Postman UI](media/secure-apim-with-b2c-token/postman-01-headers.png)
 
-1. 在 Postman 中选择“发送”按钮以执行该请求。 如果配置全部正确，你应会看到一个 JSON 响应，以及一系列会议发言人（此处的内容已截断）：
+1. 选择 Postman 中的 "**发送**" 按钮以执行请求。 如果已正确配置所有内容，则应该会看到一个 JSON 响应，其中包含一组会议扬声器（此处显示为已截断）：
 
     ```JSON
     {
@@ -198,13 +198,13 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ### <a name="test-an-insecure-api-call"></a>测试不安全的 API 调用
 
-成功发出请求后，接下来请测试失败案例，以确保按预期拒绝使用无效令牌对 API 发出调用。 一种测试方法是在令牌值中添加或更改几个字符，然后执行与前面所述相同的 `GET` 请求。
+现在，你已成功完成请求，请测试故障情况，以确保使用*无效*令牌对 API 进行的调用被视为预期的情况。 执行测试的一种方法是在令牌值中添加或更改几个字符，然后执行与之前相同的 `GET` 请求。
 
-1. 在令牌值中添加几个字符以模拟无效令牌。 例如，将“INVALID”添加到令牌值：
+1. 向标记值添加几个字符以模拟无效标记。 例如，将 "无效" 添加到令牌值：
 
-    ![Postman UI 的“标头”部分，其中显示已将 INVALID 添加到令牌](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
+    ![显示添加到标记无效的 Postman UI 的标头部分](media/secure-apim-with-b2c-token/postman-02-invalid-token.png)
 
-1. 选择“发送”按钮以执行该请求。 使用无效令牌时，预期的结果是 `401` 未授权状态代码：
+1. 选择 "**发送**" 按钮执行请求。 如果令牌无效，预期的结果是 `401` 未经授权的状态代码：
 
     ```JSON
     {
@@ -213,11 +213,11 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
     }
     ```
 
-如果看到 `401` 状态代码，则可以确认，只有具有 Azure AD B2C 所颁发的有效访问令牌的调用方才能向你的 Azure API 管理 API 成功发出请求。
+如果你看到 `401` 状态代码，你已经验证，只有具有 Azure AD B2C 颁发的有效访问令牌的调用方才能向你的 Azure API 管理 API 发出成功的请求。
 
 ## <a name="support-multiple-applications-and-issuers"></a>支持多个应用程序和颁发者
 
-往往会有多个应用程序与单个 REST API 交互。 要使 API 接受用于多个应用程序的令牌，请将其应用程序 ID 添加到 APIM 入站策略中的 `<audiences>` 元素。
+几个应用程序通常与单个 REST API 交互。 若要使 API 接受用于多个应用程序的令牌，请将其应用程序 Id 添加到 APIM 入站策略中的 `<audiences>` 元素。
 
 ```XML
 <!-- Accept tokens intended for these recipient applications -->
@@ -227,7 +227,7 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 </audiences>
 ```
 
-同样，若要支持多个令牌颁发者，请将其终结点 URI 添加到 APIM 入站策略中的 `<issuers>` 元素。
+同样，若要支持多个令牌颁发者，请将其终结点 Uri 添加到 APIM 入站策略中的 `<issuers>` 元素。
 
 ```XML
 <!-- Accept tokens from multiple issuers -->
@@ -241,7 +241,7 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 如果你有一个验证旧 `login.microsoftonline.com` 终结点颁发的令牌的 APIM API，你应该迁移该 API 和调用它的应用程序以使用[b2clogin.com](b2clogin.md)颁发的令牌。
 
-可以遵循以下一般过程来执行分阶段的迁移：
+你可以遵循此常规过程来执行分阶段迁移：
 
 1. 为 b2clogin.com 和 login.microsoftonline.com 颁发的令牌添加 APIM 入站策略支持。
 1. 一次更新一个应用程序，以从 b2clogin.com 终结点获取令牌。
@@ -273,6 +273,6 @@ https://yourb2ctenant.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure API 管理策略的更多详细信息，请参阅 [APIM 策略参考索引](../api-management/api-management-policies.md)。
+有关 Azure API 管理策略的更多详细信息，请参阅[APIM 策略参考索引](../api-management/api-management-policies.md)。
 
 有关将基于 OWIN 的 web Api 及其应用程序迁移到 b2clogin.com 中的信息，请查看将[基于 OWIN 的 WEB Api 迁移到 b2clogin.com](multiple-token-endpoints.md)。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 22e235b16f834198f5edc2f9365d2b13e1e9c49f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2685b9b519eaac453726f4923c46f1604cbd4681
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031736"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197821"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "74031736"
 
 * 单个 VNet 可最多连接到 4 条 ExpressRoute 线路。 使用本文中的步骤为要连接的每条 ExpressRoute 线路创建新的连接对象。 ExpressRoute 线路可在同一订阅、不同订阅或两者兼有。
 
-* 如果已启用 ExpressRoute 高级加载项，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络，或者将更多虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题](expressroute-faqs.md)。
+* 如果已启用 ExpressRoute 高级加载项，则可以链接 ExpressRoute 线路的地缘政治区域外部的虚拟网络，或者将更多虚拟网络连接到 ExpressRoute 线路。 有关高级外接程序的更多详细信息，请参阅[常见问题解答](expressroute-faqs.md)。
 
 
 ## <a name="before-you-begin"></a>开始之前
@@ -73,7 +73,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>管理 - 线路所有者和线路用户
 
-“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可供“线路用户”兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
+“线路所有者”是 ExpressRoute 线路资源的已授权超级用户。 线路所有者可以创建可由线路用户兑换的授权。 线路用户是虚拟网络网关的所有者（这些网关与 ExpressRoute 线路位于不同的订阅中）。 线路用户可以兑现授权（每个虚拟网络需要一个授权）。
 
 线路所有者有权随时修改和撤消授权。 撤消授权将导致从撤消了访问权限的订阅中删除所有链路连接。
 
@@ -149,7 +149,7 @@ Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 
 **若要兑换连接授权**
 
-线路用户可以通过运行以下 cmdlet 兑现链接授权：
+线路用户可以通过运行以下 cmdlet 来兑现链接授权：
 
 ```azurepowershell-interactive
 $id = "/subscriptions/********************************/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/MyCircuit"    
@@ -159,7 +159,7 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 
 **若要释放连接授权**
 
-可以通过删除 ExpressRoute 线路与虚拟网络之间的连接来释放授权。
+可以通过删除 ExpressRoute 线路与虚拟网络之间的连接释放授权。
 
 ## <a name="modify-a-virtual-network-connection"></a>修改虚拟网络连接
 可以更新虚拟网络连接的某些属性。 
@@ -179,15 +179,20 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 ## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
 如果 ExpressRoute 线路在[Expressroute 直接](expressroute-erdirect-about.md)上且虚拟网络网关是超高性能或 ErGw3AZ，则可以启用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可提高数据路径性能，如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
 
-> [!NOTE] 
-> 如果已有虚拟网络连接，但未启用 FastPath，则需要删除虚拟网络连接并创建一个新连接。 
-> 
->  
+**在新连接上配置 FastPath**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
 $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
+
+**更新现有连接以启用 FastPath**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
 
 ## <a name="next-steps"></a>后续步骤

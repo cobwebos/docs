@@ -3,20 +3,20 @@ title: 自定义策略的 StringCollection 声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的标识体验框架（IEF）架构的 StringCollection 声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3ce7ff633f41ccfe6faa3cc1dba1020e74459aa
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6aea537ebff4ae61e00861e6cafe742a7feb165e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656086"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186771"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -26,7 +26,7 @@ ms.locfileid: "77656086"
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-将字符串声明添加到新的 stringCollection 声明的唯一值。 
+将字符串声明添加到新的 stringCollection 声明的唯一值。
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
@@ -147,7 +147,7 @@ ms.locfileid: "77656086"
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919645"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183289"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -232,7 +232,7 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 ## <a id="september_changes_15"></a>2015 年 9 月版本
 媒体服务现在提供通过 Widevine 模块化 DRM 技术保护点播视频和实时流的功能。 可以通过以下交付服务合作伙伴来交付 Widevine 许可证：
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 

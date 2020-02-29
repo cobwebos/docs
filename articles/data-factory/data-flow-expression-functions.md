@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 5492850944b04ea4b4d30dd206e7b297b34c075c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 8e607a4447448ee0e822dbee721b701d677d4f63
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062840"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197447"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式 
 
@@ -142,7 +142,7 @@ ___
 ___
 ### <code>currentDate</code>的指纹 
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false``
+当此作业开始运行时获取当前日期。 可以“GMT”、“PST”、“UTC”、“America/Cayman”格式传递可选的时区。 本地时区用作默认时区。有关可用格式，请参阅 Java 的 SimpleDateFormat。 （ https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``
 * ``currentDate('PST')  == toDate('2250-12-31') -> false``
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``
 ___

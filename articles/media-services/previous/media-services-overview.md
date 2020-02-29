@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2019
 ms.author: juliako
-ms.openlocfilehash: 54c32a87b5afdf165be8187c7189a11c106bbd8f
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1c2d6287a89c7816c30cf26978859c07dba0251d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562337"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197498"
 ---
 # <a name="azure-media-services-overview"></a>Azure 媒体服务概述 
 
@@ -33,6 +33,15 @@ Microsoft Azure 媒体服务 (AMS) 是一个可扩展的基于云的平台，使
 
 可以完全使用媒体服务构建端到端工作流。 也可以选择使用第三方组件来构建工作流的某些组成部分。 例如，使用第三方编码器进行编码。 然后，使用媒体服务进行上传、保护、打包和传送。 可以选择实时流式播放你的内容，或者根据点播情况交付内容。 
 
+
+## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+
+作为一项重要提醒，你必须遵守你使用 Azure 媒体服务时的所有适用法律，并且你不能以违反他人权限的方式使用媒体服务或任何 Azure 服务，或者可能会对其他人造成损害。
+
+在将任何视频/图像上传到媒体服务之前，您必须具有正确的权限才能使用视频/图像，包括在媒体服务和 Azure 中使用、处理和存储其数据时，法律所需的所有必要同意（如果有）。 某些司法辖区可能对集合、联机处理和存储某些类别的数据（如生物识别数据）施加特殊的法律要求。 在使用媒体服务和 Azure 来处理和存储任何受特定法律要求的数据之前，必须确保符合任何可能适用于你的法律要求。
+
+若要了解媒体服务中的合规性、隐私性和安全性，请访问 Microsoft[信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 有关 Microsoft 的隐私义务、数据处理和保留实践（包括如何删除数据），请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 使用媒体服务即表示你同意受 OST、DPA 和隐私声明约束。
+ 
 ## <a name="prerequisites"></a>必备条件
 
 要开始使用 Azure 媒体服务，应该具备以下条件：

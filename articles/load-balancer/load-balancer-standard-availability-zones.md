@@ -13,82 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 0d61ad33b97b97c3a45334704544d72809e56848
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715275"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197141"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>标准负载均衡器和可用性区域
 
 Azure 标准负载均衡器支持[可用性区域](../availability-zones/az-overview.md)方案。 你可以使用标准负载均衡器在端到端方案中优化可用性，方法是将资源与区域对齐并跨区域分布。  查看[可用性区域](../availability-zones/az-overview.md)，获取有关可用性区域的指导、当前支持可用性区域的区域以及其他相关概念和产品。 可用性区域与标准负载均衡器结合在一起，这是一个可创建多种不同方案的大规模而灵活的功能集。  请查看本文档了解这些[概念](#concepts)和基本场景的[设计指南](#design)。
 
->[!IMPORTANT]
->查看[可用性区域](../availability-zones/az-overview.md)相关主题，包括任何特定于区域的信息。
-
 ## <a name="concepts"></a> 适用于负载均衡器的可用性区域概念
 
-负载均衡器资源与实际基础结构之间不存在直接的关系，创建负载均衡器不会创建实例。 负载均衡器资源是一些对象，可在其中表述 Azure 应如何设定其预建的多租户基础结构，以实现想要创建的场景。  这在可用性区域的上下文中非常重要，因为单个负载均衡器资源可以控制多个可用性区域中的基础结构的编程，而区域冗余服务作为从客户的观点显示的一个资源。  
-
-负载均衡器资源本身是区域性的，而永远不会是局域性的。  另外，VNet 和子网始终区域性的，而永远不会是局域性的。 你可以配置的内容的粒度受前端、规则和后端池定义的每个配置约束。
-
+负载均衡器资源本身是区域性的，而永远不会是局域性的。 你可以配置的内容的粒度受前端、规则和后端池定义的每个配置约束。
 在可用性区域的上下文中，负载均衡器规则的行为和属性被描述为区域冗余或区域。  区域冗余和局域性描述属性的局域性。  在负载均衡器的上下文中，区域冗余始终表示*多个区域*，而区域是指将服务隔离到一个*区域*。
-
 公共负载均衡器和内部负载均衡器都支持区域冗余和局域性场景，并且两者都可根据需要跨区域定向流量（跨区域负载均衡）。 
 
 ### <a name="frontend"></a>前端
 
 负载均衡器前端是指引用虚拟网络资源子网中的公共 IP 地址资源或专用 IP 地址的前端 IP 配置。  它构成了公开服务的负载均衡终结点。
+负载均衡器资源可以同时包含带有区域和区域冗余前端的规则。 当向某个区域保证了公共 IP 资源或专用 IP 地址时，局域性（或缺少其情况）不是可变的。  如果要更改或省略公共 IP 或专用 IP 地址前端的局域性，则需要在相应的区域中重新创建公共 IP。  可用性区域不会更改多个前端的约束，请查看[多个前端的负载均衡器](load-balancer-multivip-overview.md)，了解此功能的详细信息。
 
-负载均衡器资源可以同时包含带有区域和区域冗余前端的规则。 
+#### <a name="zone-redundant"></a>区域冗余 
 
-当向某个区域保证了公共 IP 资源或专用 IP 地址时，局域性（或缺少其情况）不是可变的。  如果要更改或省略公共 IP 或专用 IP 地址前端的局域性，则需要在相应的区域中重新创建公共 IP。  可用性区域不会更改多个前端的约束，请查看[多个前端的负载均衡器](load-balancer-multivip-overview.md)，了解此功能的详细信息。
-
-#### <a name="zone-redundant-by-default"></a>默认的区域冗余
-
-在具有可用性区域的区域中，默认情况下，标准负载均衡器前端是区域冗余的。  区域冗余指区域中的多个可用性区域同时使用单个 IP 地址提供所有入站或出站流。 不需要 DNS 冗余方案。 单个前端 IP 地址可以在区域故障后出现，并且可用于访问所有（不受影响）的后端池成员，而不考虑区域。 一个或多个可用性区域可能会失败，并且数据路径置，只要区域中的一个区域仍处于正常状态。 前端的单个 IP 地址由多个可用性区域中的多个独立基础结构部署同时提供服务。  这并不意味着意味着数据路径，但任何重试或重新建立都将在不受区域故障影响的其他区域成功。   
-
-以下摘录说明了如何定义公共 IP，以用于公用标准负载均衡器的区域冗余的公共 IP 地址。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-以下摘录说明了如何为内部标准负载均衡器定义区域冗余的前端 IP 地址。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-前面的摘录不是完整的模板，但旨在说明如何表达可用性区域属性。  需要将这些语句合并到模板中。
+在具有可用性区域的区域中，标准负载均衡器前端可以是区域冗余的。  区域冗余指区域中的多个可用性区域同时使用单个 IP 地址提供所有入站或出站流。 不需要 DNS 冗余方案。 单个前端 IP 地址可以在区域故障后出现，并且可用于访问所有（不受影响）的后端池成员，而不考虑区域。 一个或多个可用性区域可能会失败，并且数据路径置，只要区域中的一个区域仍处于正常状态。 前端的单个 IP 地址由多个可用性区域中的多个独立基础结构部署同时提供服务。  这并不意味着意味着数据路径，但任何重试或重新建立都将在不受区域故障影响的其他区域成功。   
 
 #### <a name="optional-zone-isolation"></a>可选区域隔离
 
@@ -101,49 +50,6 @@ Azure 标准负载均衡器支持[可用性区域](../availability-zones/az-over
 对于公共负载均衡器前端，请将*区域*参数添加到由各自规则使用的前端 IP 配置所引用的公共 ip 资源。
 
 对于内部负载均衡器前端，需将 *zones* 参数添加到内部负载均衡器前端 IP 配置。 局域性前端能使负载均衡器保证某个子网中的 IP 地址位于特定的区域。
-
-以下摘录说明了如何在可用性区域1中定义区域性标准公共 IP 地址。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-以下摘录说明了如何在可用性区域1中定义内部标准负载均衡器前端。 如果在配置中使用现有的资源管理器模板，请将 sku 部分添加到这些模板中。 此外，在子资源的前端 IP 配置中定义 **zones** 属性。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-前面的摘录不是完整的模板，但旨在说明如何表达可用性区域属性。  需要将这些语句合并到模板中。
 
 ### <a name="cross-zone-load-balancing"></a>跨区域负载均衡
 
@@ -201,14 +107,6 @@ SNAT 端口预先分配算法与或没有可用性区域相同。
   - 当区域恢复正常时，应用程序是否知道如何安全聚合？
 
 查看[Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/)，以提高应用程序在故障情况下的复原能力。
-
-### <a name="zonalityguidance"></a>区域冗余与局域性
-
-区域冗余可以通过区域不可知的选项，并且可以在具有服务的单个 IP 地址的同一时间弹性选项上简化。  因而它可以降低复杂性。  区域冗余还具有跨区域的机动性，可以针对任何区域中的资源安全使用。  此外，还将在不包含可用性区域的区域中进行身份验证，这可以限制在某个区域获取可用性区域后所需的更改。  区域冗余 IP 地址或前端的配置语法在任何区域（包括没有可用性区域的区域）都成功：资源的区域：属性内未指定区域。
-
-区域性可以向区域提供显式保证，并与区域的运行状况明确共享命运。 如果附加资源是同一区域中的区域虚拟机，则创建具有区域性 IP 地址前端或区域性内部负载均衡器前端的负载均衡器规则是理想的做法。  或者，您的应用程序可能需要明确了解资源在哪个区域中的位置，并且您希望在单独的区域中显式了解可用性。  可以选择针对跨区域分布的端到端服务公开多个局域性前端（即，将每个区域的局域性前端用于多个局域性虚拟机规模集）。  如果局域性前端是公共 IP 地址，则可以通过[流量管理器](../traffic-manager/traffic-manager-overview.md)使用多个局域性前端来公开服务。  或者，可以通过第三方监视解决方案使用多个局域性前端来获取每个区域的运行状况和性能见解，并使用区域冗余的前端公开整个服务。 只能使用适应同一区域的局域性前端来为局域性资源提供服务，并避免对局域性资源使用潜在有害的跨区域场景。  仅存在可用性区域的区域中存在区域性资源。
-
-在不了解服务体系结构的情况下，无法遵循任何常规指导来做出更好的选择。  查看[Azure 云设计模式](https://docs.microsoft.com/azure/architecture/patterns/)，以提高应用程序在故障情况下的复原能力。
 
 ## <a name="next-steps"></a>后续步骤
 - 详细了解[可用性区域](../availability-zones/az-overview.md)

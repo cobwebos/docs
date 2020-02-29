@@ -1,5 +1,5 @@
 ---
-title: 什么是 SQL 数据仓库的列级安全性？
+title: Azure Synapse 的列级安全性是什么？
 description: 列级安全性使客户能够根据用户的执行上下文或组成员身份来控制对数据库表列的访问，从而简化应用程序中的安全性设计和编码，并使你能够对列实施限制access.
 services: sql-data-warehouse
 author: julieMSFT
@@ -7,16 +7,17 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/02/2019
+ms.date: 02/05/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+tags: azure-synapse
+ms.openlocfilehash: aa9791f019436cc5c7effc9bce197d89131a6557
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513042"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199965"
 ---
 # <a name="column-level-security"></a>列级别安全性
 
@@ -24,7 +25,7 @@ ms.locfileid: "76513042"
 
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-由于此视频已发布，因此[行级别安全性](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)可用于 SQL 数据仓库。 
+由于此视频已发布，因此[行级别安全性](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)可用于 Azure Synapse。 
 
 列级安全性简化了应用程序中安全性的设计和编码，使你能够限制列访问权限以保护敏感数据。 例如，确保具体用户只能访问表中与其部门相关的特定列。 访问限制逻辑位于数据库层中，而不是在另一个应用层中远离数据。 每次尝试从任何层进行数据访问时，数据库将应用访问限制。 此限制通过减少整体安全系统的外围应用，使你的安全性更可靠、更可靠。 此外，列级安全性还消除了引入视图的需要，以筛选出用于对用户施加访问限制的列。
 

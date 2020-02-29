@@ -3,20 +3,20 @@ title: 自定义策略的字符串声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的标识体验框架（IEF）架构的字符串声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585724"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183697"
 ---
 # <a name="string-claims-transformations"></a>字符串声明转换
 
@@ -363,7 +363,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 - 输出声明：
     - outputClaim: Joe Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 将本地化的字符串复制到声明。
 
@@ -428,9 +428,9 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 
 - 输出声明：
   - **subject**： Contoso 帐户电子邮件验证码
-  - **消息**：感谢验证你的帐户！ 
-  - **codeIntro**：你的代码是 
-  - **签名**：此致  
+  - **消息**：感谢验证你的帐户！
+  - **codeIntro**：你的代码是
+  - **签名**：此致
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -618,7 +618,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | OutputClaim | outputClaim | 字符串 | 如果正则表达式匹配，此输出声明将包含 `outputClaimIfMatched` 输入参数的值。 如果没有匹配项，则为 null。 |
 | OutputClaim | regexCompareResultClaim | boolean | 正则表达式匹配结果输出声明类型，该类型根据匹配结果设置为 `true` 或 `false`。 |
 
-例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。  
+例如，根据电话号码正则表达式模式检查提供的电话号码是否有效。
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 使用此声明转换来检查字符串声明类型是否包含子字符串。 下面的示例检查 `roles` 字符串声明类型是否包含**admin**的值。
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
     - **包含**： "admin"
     - ignoreCase: true
 - 输出声明：
-    - **outputClaim**: true 
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputParameter | 长度 | int | 子字符串中的字符数。 |
 | OutputClaim | outputClaim | boolean | 一个字符串，该字符串等效于此实例中以 startIndex 开始的长度的子字符串; 如果 startIndex 等于此实例的长度并且 length 为零，则为空。 |
 
-例如，获取电话号码的国家/地区前缀。  
+例如，获取电话号码的国家/地区前缀。
 
 
 ```XML
@@ -828,7 +828,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputParameter | newValue | 字符串 | 用于替换所有出现的 `oldValue` 的字符串 |
 | OutputClaim | outputClaim | boolean | 一个字符串，该字符串等效于当前字符串，只不过 oldValue 的所有实例都将替换为 newValue。 如果在当前实例中找不到 oldValue，则方法返回未更改的当前实例。 |
 
-例如，通过删除 `-` 字符来标准化电话号码  
+例如，通过删除 `-` 字符来标准化电话号码
 
 
 ```XML
@@ -864,7 +864,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputClaim | inputClaim | stringCollection | 一个包含要串联的字符串的集合。 |
 | InputParameter | delimiter | 字符串 | 要用作分隔符的字符串，如逗号 `,`。 |
 | OutputClaim | outputClaim | 字符串 | 由 `inputClaim` 字符串集合的成员组成的字符串，由 `delimiter` 输入参数分隔。 |
-  
+
 下面的示例使用用户角色的字符串集合，并将其转换为逗号分隔符字符串。 您可以使用此方法在 Azure AD 用户帐户中存储字符串集合。 稍后，当你从目录中读取帐户时，使用 `StringSplit` 将逗号分隔符字符串转换回字符串集合。
 
 ```XML
@@ -900,7 +900,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
 | InputClaim | inputClaim | 字符串 | 一个字符串声明类型，其中包含要拆分的子字符串。 |
 | InputParameter | delimiter | 字符串 | 要用作分隔符的字符串，如逗号 `,`。 |
 | OutputClaim | outputClaim | stringCollection | 一个字符串集合，其元素包含此字符串中的子字符串，这些子字符串由 `delimiter` 输入参数分隔。 |
-  
+
 下面的示例使用用户角色的逗号分隔符字符串，并将其转换为字符串集合。
 
 ```XML
@@ -925,7 +925,7 @@ login-NonInteractive 验证技术配置文件调用 AssertEmailAndStrongAuthenti
   - **分隔符**： "，"
 - 输出声明：
   - **outputClaim**： ["Admin"、"Author"、"Reader"]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>字符串声明转换表达式
 Azure AD B2C 自定义策略中的声明转换表达式提供了有关租户 ID 和技术配置文件 ID 的上下文信息。
 

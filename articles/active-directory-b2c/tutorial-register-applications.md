@@ -3,20 +3,20 @@ title: 教程：注册应用程序
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中注册 Web 应用程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840105"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183085"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "76840105"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 如果尚未创建自己的 [Azure AD B2C 租户](tutorial-create-tenant.md)，请立即创建一个。 可以使用现有的 Azure AD B2C 租户。
 
@@ -38,7 +38,7 @@ ms.locfileid: "76840105"
 
 若要在 Azure AD B2C 租户中注册应用程序，可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
@@ -57,7 +57,7 @@ ms.locfileid: "76840105"
 
 1. 选择 "**创建**" 以完成应用程序注册。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在门户工具栏中选择 "**目录 + 订阅**" 图标，然后选择包含 Azure AD B2C 租户的目录。
@@ -90,13 +90,13 @@ ms.locfileid: "76840105"
 
 如果你的应用程序交换访问令牌的授权代码，则需要创建应用程序机密。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 在 " **Azure AD B2C 应用**程序" 页中，选择你创建的应用程序，例如*webapp1*。
 1. 选择 "**密钥**"，然后选择 "**生成密钥**"。
 1. 选择“保存”以查看密钥。 记下“应用密钥”值。 在应用程序代码中使用此值作为应用程序机密。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 在 " **Azure AD B2C 应用注册（预览）** " 页中，选择你创建的应用程序，例如*webapp1*。
 1. 在“管理”下，选择“证书和机密”。

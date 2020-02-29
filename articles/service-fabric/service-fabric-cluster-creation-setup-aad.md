@@ -3,12 +3,12 @@ title: 为客户端身份验证设置 Azure Active Directory
 description: 了解如何设置 Azure Active Directory (Azure AD) 来对 Service Fabric 群集的客户端进行身份验证。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843814"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193368"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -26,7 +26,7 @@ Service Fabric 群集提供其管理功能的各种入口点，包括基于 Web 
 
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文假设已创建了一个租户。 如果未创建，请先阅读[如何获取 Azure Active Directory 租户][active-directory-howto-tenant]。
 
 为了简化涉及到配置 Azure AD 与 Service Fabric 群集的一些步骤，我们创建了一组 Windows PowerShell 脚本。
@@ -49,7 +49,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > 对于国家/地区云（例如，Azure 政府、Azure 中国、Azure 德国），还应指定 `-Location` 参数。
 
-执行 PowerShell 命令 `Get-AzureSubscription`，可找到 TenantId。 执行此命令，为每个订阅显示 TenantId。
+执行 PowerShell 命令 *，可找到 TenantId*`Get-AzureSubscription`。 执行此命令，为每个订阅显示 TenantId。
 
 将 ClusterName 用作脚本创建的 Azure AD 应用程序的前缀。 它不需要完全匹配实际的群集名称。 旨在更加轻松地将 Azure AD 项目映射到其配合使用的 Service Fabric 群集。
 
@@ -104,7 +104,7 @@ Azure AD 的设置和使用可能有一定难度，可以参考下面的一些�
 代表 Service Fabric Explorer 的群集 (web) 应用程序尝试针对 Azure AD 进行身份验证，在执行请求的过程中提供了重定向返回 URL。 但是，该 URL 并未列在 Azure AD 应用程序的“回复 URL”列表中。
 
 #### <a name="solution"></a>解决方案
-在 "Azure AD" 页上，选择 "**应用注册**"，选择群集应用程序，然后选择 "**答复 url**"。 在 "**答复 url** " 窗格中，将 Service Fabric Explorer URL 添加到列表，或替换列表中的某个项。 保存所做更改。
+在群集的 "Azure AD 应用注册" 页上，选择 "**身份验证**"，然后在 "**重定向 uri** " 部分下，将 Service Fabric Explorer URL 添加到列表。 保存所做更改。
 
 ![Web 应用程序回复 URL][web-application-reply-url]
 
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 若要了解详细信息，请参阅 [Connect-ServiceFabricCluster cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>是否可将同一个 Azure AD 租户用于多个群集？
-可以。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
+是的。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>为何启用 Azure AD 时仍然需要服务器证书？
 FabricClient 和 FabricGateway 执行相互身份验证。 在 Azure AD 身份验证过程中，Azure AD 集成向服务器提供客户端标识，并且客户端使用服务器证书来验证服务器的标识。 有关 Service Fabric 证书的详细信息，请参阅[x.509 证书和 Service Fabric][x509-certificates-and-service-fabric]。
