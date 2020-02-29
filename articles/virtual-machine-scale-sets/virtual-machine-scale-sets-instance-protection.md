@@ -1,28 +1,26 @@
 ---
 title: Azure 虚拟机规模集实例的实例保护
 description: 了解如何通过扩展和规模集操作来保护 Azure 虚拟机规模集实例。
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.author: manayar
-ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 021faad28fb575c4ffeb4d895ad451d8cd82b1a5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275793"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919849"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虚拟机规模集实例的实例保护（预览版）
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 虚拟机规模集实例的实例保护
+
 Azure 虚拟机规模集通过[自动缩放](virtual-machine-scale-sets-autoscale-overview.md)为工作负荷提供更好的弹性，因此，你可以配置你的基础结构何时向外扩展以及何时扩展。 规模集还允许通过不同的[升级策略](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)设置集中管理、配置和更新大量 vm。 如果已将升级策略设置为 "自动" 或 "滚动"，则可以在规模集模型上配置更新，并将新配置自动应用于每个规模集实例。
 
 当你的应用程序处理流量时，可能会出现以下情况：你需要将特定实例视为不同于规模集实例的其余部分。 例如，规模集中的某些实例可能正在执行长时间运行的操作，并且你不希望在操作完成之前对这些实例进行扩展。 您还可以在规模集中专门使用几个实例来执行其他任务或不同于规模集的其他成员。 需要将这些 "特殊" Vm 替换为规模集中的其他实例。 实例保护提供了其他控件来实现应用程序的这些方案和其他方案。
 
 本文介绍如何将不同的实例保护功能应用于规模集实例并使用这些功能。
-
-> [!NOTE]
->实例保护当前为公共预览版。 使用下述公共预览功能无需使用选择过程。 实例保护预览版仅支持 API 版本2019-03-01 和使用托管磁盘的规模集。
 
 ## <a name="types-of-instance-protection"></a>实例保护类型
 规模集提供了两种类型的实例保护功能：
@@ -44,6 +42,17 @@ Azure 虚拟机规模集通过[自动缩放](virtual-machine-scale-sets-autoscal
 实例保护可以在创建实例后应用于规模集实例。 仅对[实例模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view)而不是[规模集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model)应用和修改保护。
 
 可以通过多种方法在规模集实例上应用扩展保护，如以下示例中所述。
+
+### <a name="azure-portal"></a>Azure 门户
+
+可以通过 Azure 门户向规模集中的实例应用 "缩小" 保护。 不能一次调整多个实例。 为要保护的每个实例重复这些步骤。
+ 
+1. 请参阅现有虚拟机规模集。
+1. 从左侧菜单的 "**设置**" 下，选择 "**实例**"。
+1. 选择要保护的实例的名称。
+1. 选择 "**保护策略**" 选项卡。
+1. 在 "**保护策略**" 边栏选项卡中，选择 "**从刻度保护**" 选项。
+1. 选择“保存”。 
 
 ### <a name="rest-api"></a>REST API
 
@@ -101,6 +110,17 @@ az vmss update \
 通过规模集操作保护实例，还可以防止实例自动缩放启动的缩放。
 
 在规模集实例上应用规模集操作保护有多种方法，如以下示例中所述。
+
+### <a name="azure-portal"></a>Azure 门户
+
+可以通过 Azure 门户向规模集中的实例应用规模集操作保护。 不能一次调整多个实例。 为要保护的每个实例重复这些步骤。
+ 
+1. 请参阅现有虚拟机规模集。
+1. 从左侧菜单的 "**设置**" 下，选择 "**实例**"。
+1. 选择要保护的实例的名称。
+1. 选择 "**保护策略**" 选项卡。
+1. 在 "**保护策略**" 边栏选项卡中，选择 "**防止规模集操作**" 选项。
+1. 选择“保存”。 
 
 ### <a name="rest-api"></a>REST API
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152289"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917401"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 **执行 r 脚本**模块可以返回多个输出，但它们必须作为 R 数据帧提供。 数据帧会自动转换为设计器中的数据集，以便与其他模块兼容。
 
 来自 R 的标准消息和错误将返回到模块的日志中。
+
+如果你需要在 R 脚本中打印结果，你可以在模块的右面板中的 "**输出 + 日志**" 选项卡下的**70_driver_log**中找到打印结果。
 
 ## <a name="sample-scripts"></a>示例脚本
 

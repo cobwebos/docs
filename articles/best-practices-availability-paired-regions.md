@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718747"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163042"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>业务连续性和灾难恢复 (BCDR)：Azure 配对区域
 
@@ -24,6 +24,9 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
+> [!NOTE]
+> 无法修改分配的 Azure 区域对。
+
 图 1 – Azure 区域对
 
 | 地理位置 | 配对区域 |  |
@@ -32,7 +35,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 澳大利亚 |澳大利亚东部 |澳大利亚东南部 |
 | 澳大利亚 |澳大利亚中部 |澳大利亚中部 2 |
 | 巴西 |巴西南部 |美国中南部 |
-| 加拿大 |加拿大中部 |加拿大东部 |
+| Canada |加拿大中部 |加拿大东部 |
 | 中国 |中国北部 |中国东部|
 | 中国 |中国北部 2 |中国东部 2|
 | 欧洲 |北欧（爱尔兰） |西欧（荷兰） |
@@ -48,7 +51,7 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 | 北美 |美国西部 2 |美国中西部 
 | 南非 | 南非北部 | 南非西部
 | 英国 |英国西部 |英国南部 |
-| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿拉伯联合酋长国中部
+| 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | 阿联酋中部
 | 美国国防部 |US DoD 东部 |US DoD 中部 |
 | 美国政府 |US Gov 亚利桑那州 |US Gov 德克萨斯州 |
 | 美国政府 |US Gov 爱荷华州 |US Gov 弗吉尼亚州 |
@@ -75,13 +78,13 @@ Azure 在世界各地的多个地理位置运营。 Azure 地理位置是至少�
 ## <a name="cross-region-activities"></a>跨区域活动
 如图 2 所示。
 
-![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算 (IaaS)** - 必须提前预配附加的计算资源，以确保在发生灾难期间另一个区域可以提供资源。 有关详细信息，请参阅 [Azure resiliency technical guidance](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure 计算（IaaS）** –必须事先预配额外的计算资源，以确保在发生灾难期间另一个区域中的资源可用。 有关详细信息，请参阅 [Azure resiliency technical guidance](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)（Azure 复原技术指南）。
 
 ![存储](./media/best-practices-availability-paired-regions/2Green.png) **Azure 存储**-如果使用托管磁盘，请参阅使用 Azure 备份进行[跨区域备份](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)，并使用 Azure Site Recovery 将 vm 从一个区域[复制](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)到另一个区域。 如果使用的是存储帐户，则在创建 Azure 存储帐户时，将默认配置异地冗余存储（GRS）。 使用 GRS 时，数据会在主要区域自动复制三次，并在配对区域复制三次。 有关详细信息，请参阅 [Azure 存储冗余选项](storage/common/storage-redundancy.md)。
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL 数据库** – 使用 Azure SQL 数据库异地复制，可以将事务的异步复制配置到全球任何区域；但是，我们建议在配对区域中为大多数灾难恢复方案部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
+![azure sql](./media/best-practices-availability-paired-regions/3Green.png) **AZURE Sql 数据库**-利用 Azure Sql 数据库异地复制，可以配置将事务异步复制到世界上任何区域的情况;但是，对于大多数灾难恢复方案，我们建议在配对区域中部署这些资源。 有关详细信息，请参阅 [Azure SQL 数据库中的异地复制](sql-database/sql-database-geo-replication-overview.md)。
 
-![资源管理器](./media/best-practices-availability-paired-regions/4Green.png)**Azure 资源管理器** - 资源管理器原本就能跨区域提供组件的逻辑隔离。 这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
+![资源管理器](./media/best-practices-availability-paired-regions/4Green.png) **Azure 资源管理器**-资源管理器原本提供跨区域的组件的逻辑隔离。 这意味着某个区域发生逻辑故障不太可能会影响另一个区域。
 
 ## <a name="benefits-of-paired-regions"></a>配对区域的优势
 如图 2 所示。  

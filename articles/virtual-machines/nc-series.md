@@ -2,17 +2,17 @@
 title: NC 系列-Azure 虚拟机
 description: NC 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: ddd529510ed2eb2080956c26a0ce20c50c2242eb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: eab7dfe79aa5cdf234c8bc9472387214f7df3563
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661097"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164519"
 ---
 # <a name="nc-series"></a>NC 系列
 
@@ -21,6 +21,10 @@ NC 系列 Vm 由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solu
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 |---|---|---|---|---|---|---|---|

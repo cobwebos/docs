@@ -2,17 +2,17 @@
 title: Lsv2 系列-Azure 虚拟机
 description: Lsv2 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: sasha-melamed
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587254"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164026"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -30,6 +30,10 @@ ACU：150-175
 高级存储：支持
 
 高级存储缓存：不支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 | 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup> （读取 IOPS/MBps） | 最大非缓存数据磁盘吞吐量（IOPs/MBps）<sup>4</sup> | 最大数据磁盘 | 最大 NIC 数/预期网络带宽 (MBps) |
 |---|---|---|---|---|---|---|---|---|

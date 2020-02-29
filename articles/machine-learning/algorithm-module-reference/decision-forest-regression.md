@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 3c412937e59927a9f3f3218b0da3382f0b67c230
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6d326b3cb5a964e43ce77ee459533a4271d5ed73
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152374"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919934"
 ---
 # <a name="decision-forest-regression-module"></a>决策林回归模块
 
@@ -59,6 +59,8 @@ ms.locfileid: "77152374"
     - **单个参数**
 
       如果你知道如何配置模型，可以提供一组特定值作为参数。 你可能已经通过试验了解这些值，或者从指导中收到了这些值。
+
+    - **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。 
 
 
 

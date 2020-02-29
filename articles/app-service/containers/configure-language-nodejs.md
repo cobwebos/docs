@@ -4,12 +4,12 @@ description: 了解如何为应用程序配置预建 node.js 容器。 本文介
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670267"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920019"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux node.js 应用
 
@@ -43,6 +43,32 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 > [!NOTE]
 > 应在项目的 `package.json`中设置 node.js 版本。 部署引擎在单独的容器中运行，其中包含所有受支持的 node.js 版本。
+
+## <a name="customize-build-automation"></a>自定义生成自动化
+
+如果在启用了生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务将通过以下顺序生成自动化步骤：
+
+1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+1. 无需任何标志即可运行 `npm install`，其中包括 npm `preinstall` 和 `postinstall` 脚本，还会安装 `devDependencies`。
+1. 如果在*包*中指定了生成脚本，则运行 `npm run build`。
+1. 如果生成，请运行 `npm run build:azure`： azure 脚本是在*包 json*中指定的。
+1. 如果 `POST_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+
+> [!NOTE]
+> 如[npm 文档](https://docs.npmjs.com/misc/scripts)中所述，名为 `prebuild` 和 `postbuild` 的脚本分别在 `build`之前和之后运行（如果已指定）。 `preinstall` 和 `postinstall` 分别在 `install`之前和之后运行。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是默认情况下为空的环境变量。 若要运行预生成命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。
+
+下面的示例为一系列命令指定了两个变量，用逗号分隔。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+有关自定义生成自动化的其他环境变量，请参阅[Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+若要详细了解应用服务的运行方式以及如何在 Linux 中生成 node.js 应用，请参阅[Oryx 文档：如何检测和生成 node.js 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)。
 
 ## <a name="configure-nodejs-server"></a>配置 node.js 服务器
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888886"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161480"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>与来宾用户的 AD FS 和第三方提供程序的直接联合（预览）
 |     |
@@ -64,9 +64,13 @@ ms.locfileid: "75888886"
 
 ### <a name="limit-on-federation-relationships"></a>联合关系限制
 目前最多支持1000个联合关系。 此限制包括[内部联合](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)和直接联合。
+
+### <a name="limit-on-multiple-domains"></a>多个域的限制
+目前，我们不支持同一个租户中的多个域的直接联合。
+
 ## <a name="frequently-asked-questions"></a>常见问题
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>是否可以设置与非托管（电子邮件验证）租户所在的域的直接联合？ 
-可以。 如果未验证域并且租户尚未完成[管理员接管](../users-groups-roles/domains-admin-takeover.md)，可以设置与该域的直接联合。 未经管理或通过电子邮件验证的租户，当用户兑换 B2B 邀请或使用当前不存在的域对 Azure AD 执行自助注册时，会创建租户。 你可以设置与这些域的直接联合。 如果尝试通过 DNS 验证的域设置直接联合身份验证，请在 "Azure 门户" 或 "通过 PowerShell" 中看到一个错误。
+是的。 如果未验证域并且租户尚未完成[管理员接管](../users-groups-roles/domains-admin-takeover.md)，可以设置与该域的直接联合。 未经管理或通过电子邮件验证的租户，当用户兑换 B2B 邀请或使用当前不存在的域对 Azure AD 执行自助注册时，会创建租户。 你可以设置与这些域的直接联合。 如果尝试通过 DNS 验证的域设置直接联合身份验证，请在 "Azure 门户" 或 "通过 PowerShell" 中看到一个错误。
 ### <a name="if-direct-federation-and-email-one-time-passcode-authentication-are-both-enabled-which-method-takes-precedence"></a>如果同时启用了直接联合身份验证和电子邮件一次性密码身份验证，则哪个方法优先？
 与合作伙伴组织建立直接联合时，它将优先于该组织中的新来宾用户的电子邮件一次性密码身份验证。 如果来宾用户在设置直接联合之前使用一次性密码身份验证兑换了邀请，则他们将继续使用一次性密码身份验证。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>是否由于部分同步的租户导致了直接联合地址登录问题？
@@ -93,7 +97,7 @@ Azure AD B2B 可以配置为与使用 SAML 协议的标识提供者联合，该�
 |Attribute  |值  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|受众     |`urn:federation:MicrosoftOnline`         |
+|读者     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
@@ -119,7 +123,7 @@ Azure AD B2B 可以配置为与使用 WS 送单协议的标识提供者联合，
 |Attribute  |值  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|受众     |`urn:federation:MicrosoftOnline`         |
+|读者     |`urn:federation:MicrosoftOnline`         |
 |颁发者     |合作伙伴 IdP 的颁发者 URI，例如 `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 IdP 颁发的 WS-AT 令牌所需的声明：

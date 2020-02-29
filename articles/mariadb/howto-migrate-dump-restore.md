@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775999"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164536"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>使用转储和还原将 MariaDB 数据库迁移到 Azure Database for MariaDB
 本文介绍了在 Azure Database for MariaDB 中备份和还原数据库的两种常见方式
@@ -22,10 +22,10 @@ ms.locfileid: "74775999"
 若要逐步执行本操作方法指南，需要具备以下条件：
 - [创建 Azure Database for MariaDB 服务器 - Azure 门户](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - 已在计算机上安装 [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) 命令行实用程序。
-- 用于执行转储和还原命令的 MySQL Workbench [MySQL Workbench 下载](https://dev.mysql.com/downloads/workbench/)、Toad、Navicat 或其他第三方 MySQL 工具。
+- MySQL 工作台[Mysql 工作台下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具来执行转储和还原命令。
 
 ## <a name="use-common-tools"></a>使用常用工具
-使用常见的实用程序和工具（例如 MySQL Workbench、mysqldump、Toad 或 Navicat）进行远程连接，并将数据还原到 Azure Database for MariaDB 中。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MariaDB。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MariaDB 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MariaDB 时，无需将转储文件移到任何特殊的云位置。 
+使用常见的实用工具和工具（如 MySQL 工作台或 mysqldump）远程连接数据并将其还原到 Azure Database for MariaDB。 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MariaDB。 使用具有 SSL 加密的连接是最安全的做法，另请参阅[在 Azure Database for MariaDB 中配置 SSL 连接](concepts-ssl-connection-security.md)。 迁移到 Azure Database for MariaDB 时，无需将转储文件移到任何特殊的云位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>转储和还原的常见用途
 在几个常见方案中，可使用 mysqldump、mysqlpump 等 MySQL 实用程序以将数据库转储和加载到 Azure Database for MariaDB 服务器。 
@@ -41,7 +41,7 @@ ms.locfileid: "74775999"
    ```
 - 若要避免任何兼容性问题，请确保转储数据库时，源和目标系统上所使用的 MariaDB 版本相同。 例如，如果现有 MariaDB 服务器版本是 10.2，那么应迁移到配置为运行版本 10.2 的 Azure Database for MariaDB 中。 在 Azure Database for MariaDB 服务器中，`mysql_upgrade` 命令不起作用，也不受支持。 如果需要跨 MariaDB 版本进行升级，应先将低版本数据库转储或导出到自己环境中更高版本的 MariaDB 中。 然后运行 `mysql_upgrade`，再尝试迁移到 Azure Database for MariaDB 中。
 
-## <a name="performance-considerations"></a>性能考虑
+## <a name="performance-considerations"></a>性能注意事项
 若要优化性能，请在转储大型数据库时留意这些注意事项：
 -   转储数据库时，请使用 mysqldump 中的 `exclude-triggers` 选项。 从转储文件中排除触发器，避免在还原数据期间触发触发器命令。 
 -   使用 `single-transaction` 选项，将事务隔离模式设置为 REPEATABLE READ 并在转储数据之前将 START TRANSACTION SQL 语句发送到服务器。 在单个事务中转储多个表会在还原过程中占用一些额外的存储空间。 选项 `single-transaction` 和 `lock-tables` 互斥，因为 LOCK TABLES 导致所有挂起的事务均为隐式提交。 若要转储大型表，请结合使用选项 `single-transaction` 和 `quick`。 
@@ -81,7 +81,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>在目标服务器上创建数据库
-在要迁移数据的 Azure Database for MariaDB 目标服务器上创建一个空数据库。 使用 MySQL Workbench、Toad 或 Navicat 等工具创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
+在要迁移数据的 Azure Database for MariaDB 目标服务器上创建一个空数据库。 使用 MySQL 工作台等工具来创建数据库。 数据库名称可与包含转储数据的数据库名称相同，或可以创建一个不同名称的数据库。
 
 若要获取连接，请在 Azure Database for MariaDB 的“概述”中找到连接信息。
 

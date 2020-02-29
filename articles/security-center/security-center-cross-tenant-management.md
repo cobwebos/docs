@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 482154a37334b056719a18355f87b467d4fe95c7
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604254"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919475"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租户管理
 
@@ -50,7 +50,7 @@ ms.locfileid: "77604254"
 - **修正建议**：一次监视和修正来自不同租户的多个资源的[建议](security-center-recommendations.md)。 然后，你可以立即解决所有租户面临的风险最高的漏洞。
 - **管理警报**：在不同租户中检测[警报](security-center-alerts-overview.md)。 对不符合可操作[更正步骤](security-center-managing-and-responding-alerts.md)的资源执行操作。
 
-- **管理高级云防御功能等**：管理各种威胁检测和保护服务，例如实时[（JIT） VM 访问](security-center-just-in-time.md)、[自适应网络强化](security-center-adaptive-network-hardening.md)、[自适应应用程序控件](security-center-adaptive-application.md)等。
+- **管理高级云防御功能等**：管理各种威胁防护服务，例如实时[（JIT） VM 访问](security-center-just-in-time.md)、[自适应网络强化](security-center-adaptive-network-hardening.md)、[自适应应用程序控件](security-center-adaptive-application.md)等。
  
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在安全中心进行跨租户管理。 若要了解有关安全中心的详细信息，请参阅以下文章：

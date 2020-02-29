@@ -3,12 +3,12 @@ title: 常见问题-Azure Migrate 中的发现、评估和依赖项分析
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589226"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918540"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>有关发现、评估和依赖关系分析的常见问题
 
@@ -100,7 +100,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。 但评估是�
 
 ## <a name="can-i-automate--mmadependency-agent-installation"></a>能否自动执行 MMA/依赖项代理安装？
 
-使用此[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。 按照这些说明操作，使用命令行或自动化[来安装 MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) 。 对于 MMA，请使用[此脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
+使用此[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。 按照这些说明操作，使用命令行或自动化[来安装 MMA](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) 。 对于 MMA，请使用[此脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 
 除了脚本以外，还可以使用部署工具（如 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) ）来部署代理。
 

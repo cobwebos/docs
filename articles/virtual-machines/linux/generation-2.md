@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: dce01cb8ed6043193878551207eeca3d573f9d4d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 8b1acb4676d97ff16410543828493428059ad0fb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672474"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919883"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>支持 Azure 上的第2代 Vm
 
@@ -33,18 +33,18 @@ Azure 上现在提供对第2代虚拟机（Vm）的支持。 创建虚拟机后�
 Azure 中的所有 VM 大小（Mv2 系列 Vm 除外）都支持第1代 Vm。 Azure 现在为以下选定 VM 系列提供第2代支持：
 
 * [B 系列](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
-* [Dsv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv2-series)和[Dsv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dsv3-series-1)
-* [Esv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#esv3-series)
-* [Fsv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-compute#fsv2-series-1)
+* [DC 系列](../dcv2-series.md)
+* [DSv2 系列](../dv2-dsv2-series.md)和[Dsv3 系列](../dv3-dsv3-series.md)
+* [Esv3 系列](../ev3-esv3-series.md)
+* [Fsv2 系列](../fsv2-series.md)
 * [GS 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#gs-series)
-* [HB-ACCT-WC 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hb-series)
-* [HC 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#hc-series)
-* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)和[Lsv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-storage#lsv2-series)
-* [Mv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series)
-* [NCv2 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series)和[NCv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
-* [ND 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
-* [NVv3 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+* [HB-ACCT-WC 系列](../hb-series.md)
+* [HC 系列](../hc-series.md)
+* [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-previous-gen#ls-series)和[Lsv2 系列](../lsv2-series.md)
+* [Mv2 系列](../mv2-series.md)
+* [NCv2 系列](../ncv2-series.md)和[NCv3 系列](../ncv3-series.md)
+* [ND 系列](../nd-series.md)
+* [NVv3 系列](../nvv3-series.md)
 
 > [!NOTE]
 > 由于 Mv2 系列仅适用于第2代 VM 映像，因此 Mv2 系列 vm 的第2代 VM 映像已正式发布。 Mv2 系列 Vm 不支持第1代 VM 映像。 

@@ -2,17 +2,17 @@
 title: M 系列-Azure 虚拟机
 description: M 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: lahugh
-ms.openlocfilehash: 49b12341e5ca119ee20c7e509d9bbef64d4d5b37
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493665"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164043"
 ---
 # <a name="m-series"></a>M 系列
 
@@ -25,6 +25,10 @@ ACU：160-180
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 写入加速器：[支持](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

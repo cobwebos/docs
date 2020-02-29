@@ -1,31 +1,41 @@
 ---
 title: Azure 虚拟机规模集实例的终止通知
 description: 了解如何为 Azure 虚拟机规模集实例启用终止通知
-author: shandilvarun
+author: avirishuv
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.author: vashan
-ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 02/26/2020
+ms.author: avverma
+ms.openlocfilehash: 6023e9bf7539b79446d0135ba731b61be166dd6e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271754"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919815"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 虚拟机规模集实例的终止通知（预览）
-规模集实例可以选择接收实例终止通知，并将预定义的延迟超时设置为终止操作。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 预览解决方案会将另一个事件（终止–）添加到 Scheduled Events 列表中，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Azure 虚拟机规模集实例的终止通知
+规模集实例可以选择接收实例终止通知，并将预定义的延迟超时设置为终止操作。 终止通知通过 Azure Metadata Service 发送– [Scheduled Events](../virtual-machines/windows/scheduled-events.md)，它提供有影响力操作（如重新启动和重新部署）的通知。 解决方案将另一个事件（终止–）添加到 Scheduled Events 列表，而终止事件的关联延迟将取决于其规模集模型配置中用户指定的延迟限制。
 
 向功能注册后，规模集实例无需等待指定的超时过期就会被删除。 接收到终止通知后，在终止超时过期之前，可以选择随时删除该实例。
 
-> [!IMPORTANT]
-> 规模集实例的终止通知当前为公共预览版。 使用下述公共预览功能无需使用选择过程。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 ## <a name="enable-terminate-notifications"></a>启用终止通知
 可以通过多种方法在规模集实例上启用终止通知，如以下示例中所述。
+
+### <a name="azure-portal"></a>Azure 门户
+
+在创建新的规模集时，以下步骤启用了终止通知。 
+
+1. 请参阅**虚拟机规模集**。
+1. 选择 " **+ 添加**" 创建新的规模集。
+1. 请参阅 "**管理**" 选项卡。 
+1. 找到 "**实例终止**" 部分。
+1. 对于**实例终止通知**，请选择 **"打开"** 。
+1. 对于 "**终止延迟（分钟）** "，设置所需的默认超时值。
+1. 创建新规模集后，请选择 "**查看 + 创建**" 按钮。 
+
+> [!NOTE]
+> 无法在 Azure 门户中的现有规模集上设置终止通知
 
 ### <a name="rest-api"></a>REST API
 
@@ -59,22 +69,19 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 >仅可通过 API 版本2019-03-01 及更高版本启用规模集实例上的终止通知
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-创建新规模集时，可以使用[AzVmss](/powershell/module/az.compute/new-azvmss) cmdlet 在规模集上启用终止通知。
+创建新规模集时，可以使用[AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 在规模集上启用终止通知。
+
+此示例脚本演示如何使用配置文件创建规模集和关联的资源：[创建一个完整的虚拟机规模集](./scripts/powershell-sample-create-complete-scale-set.md)。 可以通过将参数*TerminateScheduledEvents*和*TerminateScheduledEventNotBeforeTimeoutInMinutes*添加到用于创建规模集的配置对象来提供配置终止通知。 下面的示例启用此功能，延迟超时为10分钟。
 
 ```azurepowershell-interactive
-New-AzVmss `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "EastUS" `
-  -VMScaleSetName "myScaleSet" `
-  -VirtualNetworkName "myVnet" `
-  -SubnetName "mySubnet" `
-  -PublicIpAddressName "myPublicIPAddress" `
-  -LoadBalancerName "myLoadBalancer" `
+New-AzVmssConfig `
+  -Location "VMSSLocation" `
+  -SkuCapacity 2 `
+  -SkuName "Standard_DS2" `
   -UpgradePolicyMode "Automatic" `
-  -TerminateScheduledEvents
+  -TerminateScheduledEvents $true `
+  -TerminateScheduledEventNotBeforeTimeoutInMinutes 10
 ```
-
-上面的示例创建了一个新的规模集，其中启用了终止通知，默认超时为5分钟。 创建新规模集时，参数*TerminateScheduledEvents*不需要值。 若要更改超时值，请通过*TerminateScheduledEventNotBeforeTimeoutInMinutes*参数指定所需的超时值。
 
 使用[AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 在现有规模集上启用终止通知。
 
@@ -89,6 +96,33 @@ Update-AzVmss `
 
 在规模集模型中启用计划事件并设置超时后，将各个实例更新为[最新模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)以反映所做的更改。
 
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+以下示例用于在创建新规模集时启用终止通知。
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --terminate-notification-time 10
+```
+
+上面的示例首先创建一个资源组，然后创建一个新的规模集，该规模集具有启用了终止通知的默认超时值。
+
+以下示例用于在现有规模集中启用终止通知。
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --enable-terminate-notification true \
+  --terminate-notification-time 10
+```
+
 ## <a name="get-terminate-notifications"></a>获取终止通知
 
 终止通知通过[Scheduled Events](../virtual-machines/windows/scheduled-events.md)提供，这是一个 Azure 元数据服务。 Azure 元数据服务使用可从 VM 内访问的 REST 终结点公开有关正在运行的虚拟机的信息。 此信息通过不可路由的 IP 提供，因此不会在 VM 外部公开。
@@ -100,8 +134,8 @@ Update-AzVmss `
 ### <a name="endpoint-discovery"></a>终结点发现
 对于启用 VNET 的 Vm，元数据服务可从静态不可路由的 IP 169.254.169.254 获得。
 
-此预览版 Scheduled Events 的最新版本的完整终结点是：
-> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+最新版本的计划事件的完整终结点是：
+> 'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="query-response"></a>查询响应
 响应包含计划事件的数组。 空数组表示目前没有计划事件。
@@ -122,7 +156,7 @@ Update-AzVmss `
     ]
 }
 ```
-DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查自上次查询以来事件有效负载是否已更改。
+*DocumentIncarnation*是一个 ETag，它提供了一种简单的方法来检查事件负载自上次查询后是否已更改。
 
 有关上述每个字段的详细信息，请参阅适用于[Windows](../virtual-machines/windows/scheduled-events.md#event-properties)和[Linux](../virtual-machines/linux/scheduled-events.md#event-properties)的 Scheduled Events 文档。
 
@@ -147,18 +181,18 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 ## <a name="tips-and-best-practices"></a>提示和最佳实践
 -   仅在 "删除" 操作上终止通知–如果规模集已启用*scheduledEventsProfile* ，则所有删除操作（手动删除或自动缩放启动的扩展）将生成终止事件。 其他操作（例如重新启动、重置映像、重新部署和停止/解除分配）不会生成终止事件。 不能为低优先级 Vm 启用终止通知。
 -   无强制等待超时–您可以在收到事件之后、事件的*NotBefore*时间到期之前随时开始终止操作。
--   在超时时间强制删除–预览不提供在生成事件后扩展超时值的任何功能。 超时到期后，将处理挂起的终止事件，并删除 VM。
+-   在超时时必需删除–生成事件后，不能扩展超时值。 超时到期后，将处理挂起的终止事件，并删除 VM。
 -   可修改超时值–可以在删除实例之前随时修改超时值，方法是修改规模集模型中的*notBeforeTimeout*属性，并将 VM 实例更新到最新模型。
 -   批准所有挂起的删除-如果 VM_1 上有一个挂起的删除未批准，并且你已在 VM_2 上批准了另一个终止事件，则在 VM_1 的 "终止" 事件被批准或已过超时之前，不会删除 VM_2。 批准 VM_1 的终止事件之后，将删除 VM_1 和 VM_2。
 -   批准所有同时删除–扩展上面的示例，如果 VM_1 和 VM_2 具有相同的*NotBefore*时间，则必须批准两个终止事件，否则在超时过期之前，都不会删除 VM。
 
 ## <a name="troubleshoot"></a>故障排除
 ### <a name="failure-to-enable-scheduledeventsprofile"></a>未能启用 scheduledEventsProfile
-如果在 "VirtualMachineProfile" 类型的对象上出现 "BadRequest" 错误，并显示一条错误消息，指出 "找不到成员 ' scheduledEventsProfile '"，请检查用于规模集操作的 API 版本。 此预览版需要计算 API 版本**2019-03-01**或更高版本。
+如果在 "VirtualMachineProfile" 类型的对象上出现 "BadRequest" 错误，并显示一条错误消息，指出 "找不到成员 ' scheduledEventsProfile '"，请检查用于规模集操作的 API 版本。 需要计算 API 版本**2019-03-01**或更高版本。 
 
 ### <a name="failure-to-get-terminate-events"></a>未能获取终止事件
 如果未通过 Scheduled Events 获取任何**终止**事件，请检查用于获取事件的 API 版本。 终止事件需要元数据服务 API 版本**2019-01-01**或更高版本。
->'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
+>'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01'
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>用不正确的 NotBefore 时间获取终止事件  
 对规模集模型启用*scheduledEventsProfile*并设置*notBeforeTimeout*后，将各个实例更新为[最新模型](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)以反映所做的更改。

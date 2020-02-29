@@ -2,17 +2,17 @@
 title: NV 系列-Azure 虚拟机
 description: NV 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 5b530fe33d28d6059c72a6a4ee6f14beee532fee
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a36911d147e64a54b5a15d3925e93188373c6429
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666890"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161918"
 ---
 # <a name="nv-series"></a>NV 系列
 
@@ -23,6 +23,10 @@ NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可�
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 | 虚拟工作站 | 虚拟应用程序 |
 |---|---|---|---|---|---|---|---|---|---|

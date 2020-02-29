@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086532"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919594"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -90,13 +90,13 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 
 ### <a name="can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>是否可将多个应用程序网关资源部署到单个子网？
 
-可以。 除了给定应用程序网关部署的多个实例，你还可以将另一个唯一的应用程序网关资源预配到包含不同应用程序网关资源的现有子网。
+是的。 除了给定应用程序网关部署的多个实例，你还可以将另一个唯一的应用程序网关资源预配到包含不同应用程序网关资源的现有子网。
 
 单个子网不能同时支持 Standard_v2 和标准应用程序网关。
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>应用程序网关是否支持 x-forwarded-for 标头？
 
-可以。 请参阅[对请求所做的修改](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)。
+是的。 请参阅[对请求所做的修改](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request)。
 
 ### <a name="how-long-does-it-take-to-deploy-an-application-gateway-will-my-application-gateway-work-while-its-being-updated"></a>部署应用程序网关需要多长时间？ 在更新应用程序网关时，应用程序网关是否正常工作？
 
@@ -106,7 +106,7 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>是否可以使用 Exchange Server 作为应用程序网关的后端？
 
-No。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。 
+不是。 应用程序网关不支持电子邮件协议，如 SMTP、IMAP 和 POP3。 
 
 ## <a name="performance"></a>性能
 
@@ -126,21 +126,21 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手动或自动缩放是否会导致停机？
 
-No。 实例将跨升级域和容错域分布。
+不是。 实例将跨升级域和容错域分布。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
-可以。 可以在不中断的情况下，设置连接排出以更改后端池内的成员。 有关详细信息，请参阅[应用程序网关的连接排出部分](overview.md#connection-draining)。
+是的。 可以在不中断的情况下，设置连接排出以更改后端池内的成员。 有关详细信息，请参阅[应用程序网关的连接排出部分](overview.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 
-可以。
+是的。
 
 ## <a name="configuration"></a>配置
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>是否始终要将应用程序网关部署在虚拟网络中？
 
-可以。 应用程序网关始终部署在虚拟网络子网中。 此子网只能包含应用程序网关。 有关详细信息，请参阅[虚拟网络和子网要求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)。
+是的。 应用程序网关始终部署在虚拟网络子网中。 此子网只能包含应用程序网关。 有关详细信息，请参阅[虚拟网络和子网要求](https://docs.microsoft.com/azure/application-gateway/configuration-overview#azure-virtual-network-and-dedicated-subnet)。
 
 ### <a name="can-application-gateway-communicate-with-instances-outside-of-its-virtual-network-or-outside-of-its-subscription"></a>应用程序网关是否能够与其虚拟网络外部的实例通信？
 
@@ -148,7 +148,7 @@ No。 实例将跨升级域和容错域分布。
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在应用程序网关子网中部署其他任何组件？
 
-No。 但你可以在子网中部署其他应用程序网关。
+不是。 但你可以在子网中部署其他应用程序网关。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>应用程序网关子网是否支持网络安全组？
 
@@ -164,11 +164,11 @@ No。 但你可以在子网中部署其他应用程序网关。
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>是否可以同时对外部和内部流量使用应用程序网关？
 
-可以。 应用程序网关支持每个应用程序网关有一个内部 IP 和一个外部 IP。
+是的。 应用程序网关支持每个应用程序网关有一个内部 IP 和一个外部 IP。
 
 ### <a name="does-application-gateway-support-virtual-network-peering"></a>应用程序网关是否支持虚拟网络对等互连？
 
-可以。 虚拟网络对等互连有助于对其他虚拟网络中的流量进行负载均衡。
+是的。 虚拟网络对等互连有助于对其他虚拟网络中的流量进行负载均衡。
 
 ### <a name="can-i-talk-to-on-premises-servers-when-theyre-connected-by-expressroute-or-vpn-tunnels"></a>当使用 ExpressRoute 或 VPN 隧道连接本地服务器时，是否可以与这些服务器通信？
 
@@ -180,7 +180,7 @@ No。 但你可以在子网中部署其他应用程序网关。
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自定义探测是否支持对响应数据创建通配符或正则表达式？
 
-No。 
+不是。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>如何在应用程序网关上处理路由规则？
 
@@ -192,15 +192,15 @@ Host 字段指定在应用程序网关上配置了多站点时将探测发送到
 
 ### <a name="can-i-allow-application-gateway-access-to-only-a-few-source-ip-addresses"></a>是否可以允许应用程序网关访问仅有几个源 IP 地址？
 
-可以。 请参阅[限制对特定源 ip 的访问权限](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)。
+是的。 请参阅[限制对特定源 ip 的访问权限](https://docs.microsoft.com/azure/application-gateway/configuration-overview#allow-application-gateway-access-to-a-few-source-ips)。
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>能否对面向公众的和面向专用的侦听器使用相同的端口？
 
-No。
+不是。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
-可以。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
+是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
 
 ### <a name="does-application-gateway-support-ipv6"></a>应用程序网关是否支持 IPv6？
 
@@ -249,15 +249,15 @@ No。
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>应用程序网关是否支持重新加密发送到后端的流量？
 
-可以。 应用程序网关支持 SSL 卸载和端到端 SSL，这重新加密了到后端的流量。
+是的。 应用程序网关支持 SSL 卸载和端到端 SSL，这重新加密了到后端的流量。
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>是否可以配置 SSL 策略来控制 SSL 协议版本？
 
-可以。 你可以将应用程序网关配置为拒绝 TLS 1.0、TLS 1.1 和 TLS 1.2。 默认情况下，SSL 2.0 和3.0 已禁用并且不可配置。
+是的。 你可以将应用程序网关配置为拒绝 TLS 1.0、TLS 1.1 和 TLS 1.2。 默认情况下，SSL 2.0 和3.0 已禁用并且不可配置。
 
 ### <a name="can-i-configure-cipher-suites-and-policy-order"></a>我是否可以配置密码套件和策略顺序？
 
-可以。 在应用程序网关上，可以[配置密码套件](application-gateway-ssl-policy-overview.md)。 若要定义自定义策略，请启用以下至少一个密码套件。 
+是的。 在应用程序网关上，可以[配置密码套件](application-gateway-ssl-policy-overview.md)。 若要定义自定义策略，请启用以下至少一个密码套件。 
 
 * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
@@ -292,7 +292,7 @@ No。
 
 ### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>WAF SKU 是否提供标准 SKU 中提供的所有功能？
 
-可以。 WAF 支持标准 SKU 中的所有功能。
+是的。 WAF 支持标准 SKU 中的所有功能。
 
 ### <a name="how-do-i-monitor-waf"></a>如何监视 WAF？
 
@@ -300,11 +300,11 @@ No。
 
 ### <a name="does-detection-mode-block-traffic"></a>检测模式是否会阻止流量？
 
-No。 检测模式仅记录触发 WAF 规则的流量。
+不是。 检测模式仅记录触发 WAF 规则的流量。
 
 ### <a name="can-i-customize-waf-rules"></a>我可以自定义 WAF 规则吗？
 
-可以。 有关详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)。
+是的。 有关详细信息，请参阅[自定义 WAF 规则组和规则](application-gateway-customize-waf-rules-portal.md)。
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>哪些规则当前可用于 WAF？
 
@@ -322,11 +322,11 @@ WAF 目前支持 CRS [2.2.9](../web-application-firewall/ag/application-gateway-
 
 ### <a name="does-waf-support-ddos-protection"></a>WAF 是否支持 DDoS 保护？
 
-可以。 可以在部署了应用程序网关的虚拟网络上启用 DDoS 保护。 此设置可确保 Azure DDoS 保护服务也保护应用程序网关虚拟 IP （VIP）。
+是的。 可以在部署了应用程序网关的虚拟网络上启用 DDoS 保护。 此设置可确保 Azure DDoS 保护服务也保护应用程序网关虚拟 IP （VIP）。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可从 v1 SKU 迁移到 v2 SKU 的指导？
 
-可以。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
+是的。 有关详细信息，请参阅[将 Azure 应用程序网关和 Web 应用程序防火墙从 V1 迁移到 v2](migrate-v1-v2.md)。
 
 ## <a name="configuration---ingress-controller-for-aks"></a>AKS 的配置入口控制器
 
@@ -367,7 +367,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>是否可以使用应用程序网关设置警报？
 
-可以。 在应用程序网关上，会在指标上配置警报。 有关详细信息，请参阅[应用程序网关度量值](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
+是的。 在应用程序网关上，会在指标上配置警报。 有关详细信息，请参阅[应用程序网关度量值](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)和[接收警报通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>如何分析应用程序网关的流量统计信息？
 
@@ -381,7 +381,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 ### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>是否存在 NSG 流日志不显示允许的流量的情况？
 
-可以。 如果配置与以下方案匹配，则不会在 NSG 流日志中看到允许的流量：
+是的。 如果配置与以下方案匹配，则不会在 NSG 流日志中看到允许的流量：
 - 你已部署应用程序网关 v2
 - 应用程序网关子网上有 NSG
 - 已启用该 NSG 上的 NSG 流日志
@@ -409,6 +409,8 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 
 仅适用于专用 ip 的 NSG 配置示例：仅限专用 IP 访问的 ![应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 cookie 是否支持 SameSite 属性？
+是的， [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP cookie 的强制要求，无 SameSite 特性被视为 SameSite = 宽松。 这意味着，浏览器不会将应用程序网关关联 cookie 发送到第三 pary 的上下文中。 若要支持此方案，应用程序网关会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。  这些 cookie 类似，但*ApplicationGatewayAffinityCORS* cookie 添加了另外两个属性： *SameSite = None;安全*。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 cookie 的相似性部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>后续步骤
 

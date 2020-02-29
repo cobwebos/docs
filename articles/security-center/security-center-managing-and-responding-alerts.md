@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 5c199d074a6655ad14a0c66925e4302f70424970
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615986"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912267"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 
@@ -67,7 +67,7 @@ ms.locfileid: "77615986"
 
 1. 安全中心建议的补救步骤根据安全警报而有所不同。 对于每个警报，请遵循它们。 
 
-    在某些情况下，若要缓解威胁检测警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
+    在某些情况下，为了缓解安全警报，可能需要使用其他 Azure 控件或服务来实施建议的修正。 
 
     以下主题将指导你根据资源类型来完成不同的警报：
     

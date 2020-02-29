@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 02/24/2020
+ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137549"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917420"
 ---
 # <a name="evaluate-model-module"></a>评估模型模块
 
@@ -25,7 +25,8 @@ ms.locfileid: "77137549"
  "**评估模型**" 返回的指标取决于您要评估的模型的类型：  
   
 -   **分类模型**    
--   **回归模型**    
+-   **回归模型**  
+-   **聚类分析模型**  
 
 
 > [!TIP]
@@ -72,7 +73,7 @@ ms.locfileid: "77137549"
 
 例如，下图表示对相同数据生成的两个聚类分析模型的结果进行比较，但使用不同的参数。  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 因为这是聚类分析模型，所以，计算结果不同于比较两个回归模型中的分数或比较两个分类模型。 不过，整体显示是相同的。 
 
@@ -82,10 +83,11 @@ ms.locfileid: "77137549"
 
 + [分类模型](#metrics-for-classification-models)
 + [回归模型](#metrics-for-regression-models)
++ [聚类分析模型](#metrics-for-clustering-models)
 
 ### <a name="metrics-for-classification-models"></a>分类模型的指标
 
-评估分类模型时，将报告以下度量值。 如果比较模型，则按您选择进行评估的指标对它们进行排序。  
+评估分类模型时，将报告以下度量值。
   
 -   **准确性**衡量分类模型在总体事例中的结果比例。  
   
@@ -105,7 +107,7 @@ ms.locfileid: "77137549"
  
 为回归模型返回的度量值旨在估算错误量。  如果观测值和预测值之间的差异很小，则将模型视为适合数据。 不过，查看残差的模式（任何一个预测点和其对应的实际值之间的差异）可以告诉你有关模型中的潜在偏差的很多信息。  
   
- 报告以下指标用于评估回归模型。 在比较模型时，将按您选择进行评估的指标对它们进行排序。  
+ 报告以下指标用于评估回归模型。
   
 - **平均绝对错误（MAE）** 度量预测对实际结果的接近程度;因此，分数越低越好。  
   
@@ -118,6 +120,30 @@ ms.locfileid: "77137549"
 
   
 - **确定系数**（通常称为 R<sup>2</sup>）表示模型的预测能力，其值介于0和1之间。 如果为零，则表示模型是随机的（说明 nothing）;1表示有合适的大小。 不过，应小心解释 R<sup>2</sup>值，因为低值可能是完全正常的，很大的值可能是可疑的。
+
+###  <a name="metrics-for-clustering-models"></a>聚类分析模型的度量值
+
+由于聚类分析模型的不同之处在于分类和回归模型，因此，"[评估模型](evaluate-model.md)" 还会返回一组不同的聚类分析模型。  
+  
+ 为聚类分析模型返回的统计信息描述分配给每个分类的数据点的数量、群集之间的隔离量以及每个分类中数据点的 bunched 程度。  
+  
+ 对整个数据集进行聚类分析模型的统计信息，其中包含每个分类的统计信息的附加行。  
+  
+报告了以下用于评估聚类分析模型的指标。
+    
+-   列中的分数与**其他中心的平均距离**，表示每个分类中的每个点平均接近于所有其他分类的质心。   
+
+-   列中的分数与**群集中心的平均距离**，表示群集中所有点到该分类的质心的靠近程度。  
+  
+-   "**点数**" 列显示分配给每个分类的数据点的数量，以及任何群集中数据点的总数目。  
+  
+     如果分配给分类的数据点的数目小于可用的数据点数总数，则意味着无法将数据点分配给群集。  
+  
+-   列中的分数（**与群集中心**的最大距离）表示每个点与该点的分类的质心之间的距离之和。  
+  
+     如果此数字较高，则可能表示群集分布广泛。 应查看此统计信息，以及与**群集中心之间的平均距离**，以确定群集的传播。   
+
+-   结果的每个部分底部的**组合计算**分数列出了在该特定模型中创建的群集的平均分数。  
   
 
 ## <a name="next-steps"></a>后续步骤

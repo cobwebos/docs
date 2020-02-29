@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615684"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161561"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -109,29 +109,30 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |澳大利亚中部 2| ✔<sup>1</sup> | |
 |澳大利亚东部| ✔ | ✔<sup>1</sup> |
 |澳大利亚东南部 | ✔ | ✔<sup>1</sup> |
-|巴西南部| ✔<sup>2</sup> |  |
+|巴西南部| ✔<sup>2</sup> | ✔<sup>1</sup> |
 |加拿大中部| ✔ | ✔<sup>1</sup> |
-|美国中部| ✔ |  |
-|东亚| ✔ |  |
+|美国中部| ✔ | ✔<sup>1</sup> |
+|东亚| ✔ | ✔<sup>1</sup> |
 |美国东部 | ✔ | ✔<sup>1</sup> |
 |美国东部 2| ✔ | ✔<sup>1</sup> |
-|法国中部| ✔ |  |
+|法国中部| ✔ | ✔<sup>1</sup> |
 |德国中西部| ✔ | |
 |日本东部| ✔ | ✔<sup>1</sup> |
 |日本西部| ✔ | ✔<sup>1</sup> |
 |韩国中部| ✔ | ✔<sup>1</sup> |
-|美国中北部| ✔ |  |
+|美国中北部| ✔ | ✔<sup>1</sup> |
 |北欧| ✔ | ✔<sup>1</sup> |
+|挪威东部| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |美国中南部| ✔ | ✔<sup>1</sup> |
 |印度南部 | ✔ | |
 |东南亚| ✔ | ✔<sup>1</sup> |
 |英国南部| ✔ | ✔<sup>1</sup> |
-|英国西部| ✔ |  |
+|英国西部| ✔ | ✔<sup>1</sup> |
 |西欧| ✔ | ✔<sup>1</sup> |
-|印度西部| ✔ |  |
-|美国中西部| | ✔<sup>1</sup> |
+|印度西部| ✔ | ✔<sup>1</sup> |
+|美国中西部| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |美国西部| ✔ | ✔<sup>1</sup> |
-|美国西部 2| ✔ |  |
+|美国西部 2| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup>最大扩大范围限制为20个实例。  
 <sup>2</sup>最大扩大规模限制为60实例。

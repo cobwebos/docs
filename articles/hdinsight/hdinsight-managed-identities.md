@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905601"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919214"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -21,7 +21,7 @@ ms.locfileid: "76905601"
 
 托管标识在 Azure HDInsight 中用于访问 Azure AD 域服务，或在需要时访问 Azure Data Lake Storage Gen2 中的文件。
 
-有两种类型的托管标识：用户分配的和系统分配的标识。 Azure HDInsight 使用用户分配的托管标识。 用户分配的托管标识是作为独立的 Azure 资源创建的，你可以将其分配给一个或多个 Azure 服务实例。 与此相反，系统分配的托管标识在 Azure AD 中创建，然后在特定的 Azure 服务实例上自动启用。 系统分配的托管标识的生命周期将与启用它的服务实例的生存期相关联。
+有两种类型的托管标识：用户分配的和系统分配的标识。 Azure HDInsight 仅支持用户分配的托管标识。 HDInsight 不支持系统分配的托管标识。 用户分配的托管标识是作为独立的 Azure 资源创建的，你可以将其分配给一个或多个 Azure 服务实例。 与此相反，系统分配的托管标识在 Azure AD 中创建，然后在特定的 Azure 服务实例上自动启用。 系统分配的托管标识的生命周期将与启用它的服务实例的生存期相关联。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight 托管标识实现
 
@@ -46,7 +46,7 @@ ms.locfileid: "76905601"
 * [企业安全性套餐](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka 创建自己的密钥（BYOK）](kafka/apache-kafka-byok.md#get-started-with-byok)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果在创建群集后删除托管标识，会发生什么情况？
 需要托管标识时，群集将会遇到问题。 创建群集后，当前没有办法更新或更改 "管理标识"。 建议确保在群集运行时不删除托管标识。 或者，你可以重新创建群集并分配一个新的托管标识。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564945"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920580"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -202,6 +202,9 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 ### <a name="analytics-media-processors"></a>分析媒体处理器
 
 媒体分析是语音和视觉组件的集合，便于组织和企业从视频文件中汲取可以实施的见解。 有关详细信息，请参阅 [Azure 媒体服务分析概述](media-services-analytics-overview.md)。
+
+> [!NOTE]
+> 将停用一些分析媒体处理器。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 #### <a name="availability"></a>可用性
 

@@ -2,17 +2,17 @@
 title: Av2 系列-Azure 虚拟机
 description: Av2 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1e14c633ed11bb628a68756e72e78073603643a1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: fe27a1cc78d1f37d535f364c03803a5196090a3a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493847"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163941"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -23,6 +23,10 @@ ACU：100
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量： IOPS/读取 MBps/写入 MBps | 最大数据磁盘/吞吐量： IOPS | 最大 Nic 数/预期网络带宽（Mbps） |
 |---|---|---|---|---|---|---|

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: reference
 author: peterclu
 ms.author: peterlu
-ms.date: 12/17/2019
-ms.openlocfilehash: d3feb62c0c7fa24dd998add08d17ebd1d4e9ee6c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/22/2020
+ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162576"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920087"
 ---
-# <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Azure 机器学习设计器的算法 & 模块引用
+# <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的算法 & 模块参考（预览版）
 
 此参考内容在 Azure 机器学习设计器（预览版）中提供的每个机器学习算法和模块上都提供了技术背景。
 
@@ -57,6 +57,7 @@ ms.locfileid: "77162576"
 | R 语言 | 编写代码，并将其嵌入到模块中，以便将 R 与管道集成。 | [执行 R 脚本](execute-r-script.md) |
 | 文本分析 | 提供专门用于处理结构化和非结构化文本的计算工具。 | [从文本提取 N 元语法特征](extract-n-gram-features-from-text.md) <br/> [功能哈希](feature-hashing.md) <br/> [预处理文本](preprocess-text.md) |
 | 建议 | 生成建议模型。 | [评估推荐器](evaluate-recommender.md) <br/> [评分 SVD 推荐器](score-svd-recommender.md) <br/> [训练 SVD 推荐器](train-SVD-recommender.md) |
+| 异常检测 | 生成异常情况检测模型。 | [基于 PCA 的异常情况检测](pca-based-anomaly-detection.md) <br/> [训练异常检测模型](train-anomaly-detection-model.md) |
 
 ## <a name="error-messages"></a>错误消息
 

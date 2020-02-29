@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 69959418c52eb7324efe19ca41481e426b822ab4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842345"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913202"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>将应用服务应用配置为使用 Azure AD 登录
 
@@ -25,6 +25,9 @@ ms.locfileid: "76842345"
 - 避免在环境之间通过单独的部署槽位使用单独的应用注册来共享权限。 测试新代码时，这种做法可帮助防止问题影响生产应用。
 
 ## <a name="express"></a>用快速设置进行配置
+
+> [!NOTE]
+> "**快速**" 选项不适用于政府云。 
 
 1. 在[Azure 门户]中，搜索并选择 "**应用服务**"，然后选择应用。
 2. 从左侧导航栏中选择 "**身份验证/授权** >  **"** 。
@@ -90,7 +93,7 @@ ms.locfileid: "76842345"
 1. 在“身份验证提供程序”下，选择“Azure Active Directory”。
 1. 在 "**管理模式**" 中，选择 "**高级**"，并根据下表配置应用服务身份验证：
 
-    |字段|Description|
+    |字段|说明|
     |-|-|
     |客户端 ID| 使用应用注册的**应用程序（客户端） ID** 。 |
     |颁发者 ID| 使用 `https://login.microsoftonline.com/<tenant-id>`，并将 *\<租户 id >* 替换为应用注册的**目录（租户） id** 。 |

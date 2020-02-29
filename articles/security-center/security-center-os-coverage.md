@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603751"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921294"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -126,4 +126,4 @@ Azure 安全中心支持以下 Azure PaaS 资源：
 - 了解[安全中心如何管理和保护数据](security-center-data-security.md)。
 - 了解如何[规划并理解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。
 - 了解[不同云环境的可用功能](security-center-services.md)。
-- 详细了解[Azure 安全中心中的 vm & 服务器的威胁检测](security-center-alerts-iaas.md)。
+- 详细了解[Azure 安全中心中的 Windows 和 Linux 计算机的威胁保护](threat-protection.md#windows-machines)。

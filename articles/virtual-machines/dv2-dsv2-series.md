@@ -2,17 +2,17 @@
 title: Dv2 和 Dsv2 系列-Azure 虚拟机
 description: Dv2 和 Dsv2 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: cdfb8e333e3834adf242029e9e00eac9cf9abebe
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493093"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164417"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
@@ -27,6 +27,10 @@ ACU：210-250
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量： IOPS/读取 MBps/写入 MBps | 最大数据磁盘数 | 吞吐量：IOPS | 最大 Nic 数/预期网络带宽（Mbps） |
 |---|---|---|---|---|---|---|---|
@@ -45,6 +49,10 @@ ACU：210-250
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量： IOPS/MBps （GiB 中的缓存大小） | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 Nic 数/预期网络带宽（Mbps） |
 |---|---|---|---|---|---|---|---|

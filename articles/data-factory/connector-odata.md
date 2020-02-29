@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892377"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163924"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源复制数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "75892377"
 
 以下活动支持此 OData 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 
 可以将数据从 OData 源复制到任何支持的接收器数据存储。 有关复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
@@ -38,13 +38,13 @@ ms.locfileid: "75892377"
 具体而言，此 OData 连接器支持：
 
 - OData 3.0 和 4.0 版。
-- 使用以下一种身份验证复制数据：**匿名**、**基本**、 **Windows**、 **AAD 服务主体**和**Azure 资源的托管标识**。
+- 使用以下身份验证之一复制数据：**匿名**、**基本**、 **Windows**和**AAD 服务主体**。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -54,11 +54,11 @@ ms.locfileid: "75892377"
 
 OData 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 OData。 |是 |
 | url | OData 服务的根 URL。 |是 |
-| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为“Anonymous”、“Basic”、“Windows”、“AadServicePrincipal”和“ManagedServiceIdentity”。 不支持基于用户的 OAuth。 | 是 |
+| authenticationType | 用于连接 OData 源的身份验证类型。 允许的值为**Anonymous**、 **Basic**、 **Windows**和**AadServicePrincipal**。 不支持基于用户的 OAuth。 | 是 |
 | userName | 如果使用 Basic 或 Windows 身份验证，请指定用户名。 | 否 |
 | password | 指定为 userName 指定的用户帐户的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 否 |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 否 |
@@ -203,7 +203,7 @@ OData 链接的服务支持以下属性：
 
 要从 OData 复制数据，请将数据集的 type 属性设置为“ODataResource”。 支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 ODataResource。 | 是 |
 | 路径 | OData 资源的路径。 | 是 |
@@ -239,7 +239,7 @@ OData 链接的服务支持以下属性：
 
 若要从 OData 复制数据，复制活动**源**部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的**type**属性必须设置为**ODataSource**。 | 是 |
 | query | 用于筛选数据的 OData 查询选项。 示例：`"$select=Name,Description&$top=5"`。<br/><br/>请注意，OData 连接器会从组合 URL 复制数据：`[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`。 有关详细信息，请参阅 [OData URL 组件](https://www.odata.org/documentation/odata-version-3-0/url-conventions/)。 | 否 |
@@ -287,11 +287,11 @@ OData 链接的服务支持以下属性：
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | 日期/时间 |
+| Edm.DateTime | DateTime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
-| Edm.Single | 单一 |
-| Edm.Guid | GUID |
+| Edm.Single | Single |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |

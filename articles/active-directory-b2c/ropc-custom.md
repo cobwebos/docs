@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840258"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917384"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>使用自定义策略在 Azure Active Directory B2C 中配置资源所有者密码凭据流
 
@@ -24,19 +24,9 @@ ms.locfileid: "76840258"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，资源所有者密码凭据（ROPC）流是 OAuth 标准身份验证流。 在此流中，应用程序（也称为信赖方）为令牌交换有效凭据。 凭据包括用户 ID 和密码。 返回的令牌为 ID 令牌、访问令牌和刷新令牌。
 
-ROPC 流支持以下选项：
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-- **本机客户端**：当代码在用户端设备上运行时，将在身份验证期间进行用户交互。
-- **公共客户端流**：只有通过应用程序收集的用户凭据才会在 API 调用中发送。 不会发送应用程序的凭据。
-- **添加新声明**：可更改 ID 令牌内容以添加新的声明。
-
-不支持以下流：
-
-- **服务器到服务器**：标识保护系统在交互过程中需要从调用方（本地客户端）收集的可靠 IP 地址。 在服务器端 API 调用中，仅使用服务器的 IP 地址。 如果登录失败次数过多，标识保护系统可能会将重复的 IP 地址视为攻击者。
-- **单页面应用程序**：主要使用 JavaScript 编写的前端应用程序。 通常，该应用程序通过 AngularJS、Ember.js 或 Durandal 等框架编写。
-- **机密客户端流**：应用程序客户端 ID 已验证，但应用程序密钥未验证。
-
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -96,7 +86,7 @@ ROPC 流支持以下选项：
     </ClaimsTransformations>
     ```
 
-4. 找到 **DisplayName** 为 `Local Account SignIn` 的 **ClaimsProvider** 元素，并添加以下技术配置文件：
+4. 找到 **DisplayName** 为 **的**ClaimsProvider`Local Account SignIn` 元素，并添加以下技术配置文件：
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -228,7 +218,7 @@ ROPC 流支持以下选项：
     ```
 
 7. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-8. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+8. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 9. 单击“上载” 。
 
 ## <a name="create-a-relying-party-file"></a>创建信赖方文件

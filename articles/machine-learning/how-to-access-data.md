@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.author: keli19
+author: likebupt
 ms.reviewer: nibaccam
-ms.date: 01/15/2020
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: b31d0237f04ef535fa6528d5b3a04e5ee7256e22
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623680"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164860"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -186,6 +186,10 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 <a name="get"></a>
 
 ## <a name="get-datastores-from-your-workspace"></a>从工作区获取数据存储
+
+> [!IMPORTANT]
+> 当你在设计器主页中打开一个示例时，Azure 机器学习设计器（预览）将自动创建一个名为**azureml_globaldatasets**的数据存储。 此数据存储仅包含示例数据集。 请**不要将此数据存储用于任何**机密数据访问！
+> 为设计器示例数据集 ![自动创建的数据存储](media/how-to-access-data/datastore-designer-sample.png)
 
 若要获取在当前工作区中注册的特定数据存储，请对 `Datastore` 类使用[`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-)静态方法：
 

@@ -1,6 +1,6 @@
 ---
 title: Web 地图控件入门 |Microsoft Azure 映射
-description: 了解如何使用 Microsoft Azure map map control 客户端 Javascript 库，将地图和嵌入 Azure Maps 功能呈现到 web 或移动应用程序中。
+description: 了解如何使用 Microsoft Azure map map control 客户端 JavaScript 库，将地图和嵌入 Azure Maps 功能呈现到 web 或移动应用程序中。
 author: farah-alyasari
 ms.author: v-faalya
 ms.date: 01/15/2020
@@ -8,52 +8,53 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209811"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913934"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
-可通过 Map Control 客户端 Javascript 库呈现地图，并将 Azure Maps 功能嵌入到 Web 或移动应用中。
+Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在网页中创建新地图
 
-通过使用 Map Control 客户端 Javascript 库，可以在网页中嵌入地图。
+您可以通过使用 Map Control 的客户端 JavaScript 库，将地图嵌入到网页中。
 
 1. 创建新的 HTML 文件。
 
 2. 载入 Azure Maps Web SDK。 您可以选择以下两个选项之一：
 
-a. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
+   1. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
 
-```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
-b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
+   1. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
 
-> **npm 安装 azure-maps**
+      > **npm 安装 azure-maps**
 
-然后，在该文件的 `<head>` 元素中添加对 Azure Maps 样式表和脚本源的引用：
+   然后，在该文件的 `<head>` 元素中添加对 Azure Maps 样式表和脚本源的引用：
 
-```HTML
-    <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-    <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-```
+      ```HTML
+       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+      ```
 
-    >[!Note]
-    > Typescript definitions can be imported into your application by adding the following code:
+    > [!Note]
+    > 可以通过添加以下代码将 Typescript 定义导入到应用程序中：
+    >
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
 3. 若要以填满整个页面正文的方式呈现地图，请向 `<style>` 元素中添加以下 `<head>` 元素。
 
-```HTML
+   ```HTML
     <style>
         html, body {
             margin: 0;
@@ -64,23 +65,23 @@ b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) 
             width: 100vw;
         }
     </style>
-```
+   ```
 
 4. 在页面的正文中，添加一个 `<div>` 元素并将其 `id` 指定为 **myMap**。
 
-```HTML
+   ```HTML
     <body>
         <div id="myMap"></div>
     </body>
-```
+   ```
 
 5. 若要初始化地图控件，请在 html 正文中定义一个新的脚本标记。 在创建 `Map` 类的实例时，将映射的 `id` 传入 `<div>` 或 `HTMLElement` （例如 `document.getElementById('myMap')`）作为第一个参数。 通过[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据对地图进行身份验证。 
 
-如果需要创建帐户或查找密钥，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取](quick-demo-map-app.md#get-the-primary-key-for-your-account)主密钥中的说明进行操作。 
+   如果需要创建帐户或查找密钥，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)和[获取](quick-demo-map-app.md#get-the-primary-key-for-your-account)主密钥中的说明进行操作。 
 
-**language** 选项指定用于地图标签和控件的语言。 有关支持的语言的详细信息，请参阅[支持的语言](supported-languages.md)。如果使用订阅密钥进行身份验证，请使用以下内容：
+   **language** 选项指定用于地图标签和控件的语言。 有关支持的语言的详细信息，请参阅[支持的语言](supported-languages.md)。如果使用订阅密钥进行身份验证，请使用以下内容：
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -92,11 +93,11 @@ b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) 
             }
         });
     </script>
- ```
+    ```
 
-如果使用 Azure Active Directory （AAD）进行身份验证，请使用以下内容：
+   如果使用 Azure Active Directory （AAD）进行身份验证，请使用以下内容：
 
-```HTML
+   ```HTML
     <script type="text/javascript">
         var map = new atlas.Map('myMap', {
             center: [-122.33, 47.6],
@@ -110,25 +111,25 @@ b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) 
             }
         });
     </script>
-```
+   ```
 
-此列表显示了如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例可[在此处](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到。 
+   此列表显示了如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例可[在此处](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到。 
     
-有关详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档和[Azure Maps Azure AD 身份验证示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
+   有关详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档和[Azure Maps Azure AD 身份验证示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
 
-6. 此外，你可能会发现将下列 meta 标记元素添加到页面的开头非常有用：
+6. （可选）在页面的头部添加以下元标记元素，你会发现这比较有用：
 
-```HTML
+   ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
     <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
     <!-- Ensures the web page looks good on all screen sizes. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-```
+   ```
 
-7. 将所有 HTML 文件放在一起应类似于以下代码：
+7. 将 HTML 文件放在一起应类似于以下代码：
 
-```HTML
+   ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -174,11 +175,11 @@ b. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) 
         </script>
     </body>
     </html>
- ```
+    ```
 
 8. 在 Web 浏览器中打开该文件并查看呈现的地图。 它应该如下图所示：
 
-![显示呈现结果的地图图像](./media/how-to-use-map-control/map-of-seattle.png)
+   ![显示呈现结果的地图图像](./media/how-to-use-map-control/map-of-seattle.png)
 
 ## <a name="localizing-the-map"></a>本地化地图
 

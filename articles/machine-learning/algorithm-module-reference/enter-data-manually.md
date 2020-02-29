@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152340"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917469"
 ---
 # <a name="enter-data-manually-module"></a>手动输入数据模块
 
@@ -36,13 +36,13 @@ ms.locfileid: "77152340"
   
 2.  对于**DataFormat**，请选择以下选项之一。 这些选项确定应该如何分析你提供的数据。 每种格式的要求差别很大，因此请务必阅读相关主题。  
   
-    -   **ARFF**。 Weka 使用的属性关系文件格式。   
+    -   **ARFF**： Weka 使用的属性关系文件格式。   
   
-    -   **CSV**。 逗号分隔值格式。 有关详细信息，请参阅[转换为 CSV](./convert-to-csv.md)。  
+    -   **CSV**：逗号分隔值格式。 有关详细信息，请参阅[转换为 CSV](./convert-to-csv.md)。  
   
-    -   **SVMLight**。 Vowpal Wabbit 和其他机器学习框架使用的格式。  
+    -   **SVMLight**： Vowpal Wabbit 和其他机器学习框架使用的格式。  
   
-    -   **TSV**。 制表符分隔值格式。
+    -   **TSV**：制表符分隔值格式。
 
      如果选择格式，而不提供满足格式规范的数据，则会发生运行时错误。
   

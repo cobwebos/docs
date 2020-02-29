@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102086"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918370"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>连接到 Azure 上的 SQL Server 虚拟机
 
@@ -39,7 +39,7 @@ ms.locfileid: "70102086"
 
 用于连接的选项包括：
 
-| 选项 | 描述 |
+| 选项 | 说明 |
 |---|---|
 | 公共 | 通过 Internet 连接到 SQL Server |
 | 专用 | 连接到同一虚拟网络中的 SQL Server |
@@ -97,11 +97,11 @@ Server=mysqlvm;Integrated Security=true
 
 可以更改 Azure 门户中的 SQL Server 虚拟机的连接设置。
 
-1. 在 Azure 门户中, 选择 " **SQL 虚拟机**"。
+1. 在 Azure 门户中，选择 " **SQL 虚拟机**"。
 
 2. 选择 SQL Server VM。
 
-3. 在 "**设置**" 下, 选择 "**安全性**"。
+3. 在 "**设置**" 下，选择 "**安全性**"。
 
 4. 将“SQL 连接级别”更改为所需设置。 可以选择性使用此区域来更改 SQL Server 端口或 SQL 身份验证设置。
 
@@ -123,7 +123,7 @@ Server=mysqlvm;Integrated Security=true
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-with-ssms"></a>使用 SSMS 进行连接
+## <a name="connect-with-ssms"></a>与 SSMS 连接
 
 以下步骤演示如何为 Azure VM 创建可选 DNS 标签，然后与 SQL Server Management Studio (SSMS) 进行连接。
 
@@ -135,9 +135,9 @@ Server=mysqlvm;Integrated Security=true
 
 下表列出了连接到在 Azure VM 中运行的 SQL Server 的要求。
 
-| 要求 | 描述 |
+| 要求 | 说明 |
 |---|---|
-| [启用 SQL Server 身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | 除非已在虚拟网络上配置 Active Directory，否则需要进行 SQL Server 身份验证才能连接到远程 VM。 |
+| [启用 SQL Server 身份验证模式](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | 除非已在虚拟网络上配置 Active Directory，否则需要进行 SQL Server 身份验证才能连接到远程 VM。 |
 | [创建 SQL 登录名](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | 如果使用的是 SQL 身份验证，则需要提供 SQL 登录名，并且用户名和密码还有权访问目标数据库。 |
 | [启用 TCP/IP 协议](#manualtcp) | SQL Server 必须允许通过 TCP 连接。 |
 | [启用 SQL Server 端口的防火墙规则](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | VM 上的防火墙必须允许 SQL Server 端口（默认为 1433）上的入站流量。 |

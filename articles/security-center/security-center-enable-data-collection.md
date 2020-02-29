@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 71c30e0a86f67a2e2826859032144aa491c0cee1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597025"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919509"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机（Vm）、虚拟机规模集、IaaS 容器和非 Azure （包括本地）计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，它从计算机读取各种安全相关配置和事件日志，并将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Log Analytics 代理还将故障转储文件复制到工作区。
 
-需要收集数据才能查看缺少的更新、配置错误的 OS 安全设置、endpoint protection 状态和运行状况和威胁检测。 
+需要收集数据才能查看缺少的更新、配置错误的 OS 安全设置、endpoint protection 状态以及健康和威胁防护。 
 
 本文介绍如何安装 Log Analytics 代理，以及如何设置 Log Analytics 工作区来存储所收集的数据。 这两项操作都需要启用数据收集。 
 
@@ -139,7 +139,7 @@ ms.locfileid: "77597025"
 
 
 ## <a name="data-collection-tier"></a>数据收集层
-在 Azure 安全中心选择数据收集层只会影响 Log Analytics 工作区中安全事件的存储。 Log Analytics 代理仍将收集和分析 Azure 安全中心威胁检测所需的安全事件，而不考虑你选择在 Log Analytics 工作区中存储的安全事件层（如果有）。 选择在工作区中存储安全事件将允许在工作区中调查、搜索和审核这些事件。 
+在 Azure 安全中心选择数据收集层只会影响 Log Analytics 工作区中安全事件的存储。 Log Analytics 代理仍将收集和分析 Azure 安全中心的威胁防护所需的安全事件，而不考虑你选择在 Log Analytics 工作区中存储哪一层安全事件（如果有）。 选择在工作区中存储安全事件将允许在工作区中调查、搜索和审核这些事件。 
 > [!NOTE]
 > 在 log analytics 中存储数据可能会产生额外的数据存储费用。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 > 

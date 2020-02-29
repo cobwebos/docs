@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981786"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919458"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
 本文介绍如何排查连接到 Azure 虚拟机 (VM) 时远程桌面服务 (TermService) 不启动或无法启动的问题。
 
-> [!NOTE]  
-> Azure 提供两种不同的部署模型用于创建和处理资源：[Azure 资源管理器模型和经典模型](../../azure-resource-manager/management/deployment-models.md)。 本文介绍资源管理器部署模型的用法。 建议为新部署使用此模型，而不是使用经典部署模型。
 
 ## <a name="symptoms"></a>症状
 
@@ -65,7 +63,7 @@ ms.locfileid: "75981786"
 
 ### <a name="use-serial-console"></a>使用串行控制台
 
-1. 选择“支持和故障排除” > “串行控制台”来访问 [串行控制台](serial-console-windows.md)。 如果在 VM 上启用了该功能，则可以成功连接 VM。
+1. 选择“支持和故障排除”[“串行控制台”来访问 ](serial-console-windows.md)串行控制台 **。**  >  如果在 VM 上启用了该功能，则可以成功连接 VM。
 
 2. 为 CMD 实例创建新通道。 输入 **CMD** 启动通道，并获取通道名称。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425640"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161595"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -75,6 +75,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 | {OIDC:Prompt} | `prompt` 查询字符串参数。 | login |
 | {OIDC:Resource} |`resource` 查询字符串参数。 | 不可用 |
 | {OIDC:scope} |`scope` 查询字符串参数。 | openid |
+| {OIDC： RedirectUri} |`redirect_uri` 查询字符串参数。 | https://jwt.ms |
 
 ### <a name="context"></a>上下文
 
@@ -85,7 +86,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 | {Context:DateTimeInUtc} |UTC 格式的日期时间。  | 2018/10/10 中午 12:00 |
 | {Context:DeploymentMode} |策略部署模式。  | 生产 |
 | {Context:IPAddress} | 用户 IP 地址。 | 11.111.111.11 |
-
+| {Context： KMSI} | 指示是否选中["使我保持登录状态"](custom-policy-keep-me-signed-in.md)复选框。 |  true |
 
 ### <a name="non-protocol-parameters"></a>非协议参数
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2020
-ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655051"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164672"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure 数据工厂映射数据流查找转换
 
@@ -45,6 +45,9 @@ ms.locfileid: "77655051"
 * 匹配多个行：将其留空可返回单个行匹配
 * 匹配时间：选择第一个、最后一个或任意匹配
 * 排序条件：如果选择 "第一个" 或 "最后一个"，则 ADF 要求对数据进行排序，以便在第一个和最后一个逻辑后面出现逻辑
+
+> [!NOTE]
+> 如果需要控制要从查找返回哪一个值，则只对单行选择器使用第一个或最后一个选项。 使用 "任何" 或多行查找的速度将更快。
 
 ### <a name="option-2"></a>方法 2
 

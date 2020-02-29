@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068461"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912558"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>迁移所需的时间是多少？
+
+迁移的规划和执行很大程度取决于体系结构的复杂性，可能需要几个月的时间。  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>新客户在 IaaS Vm （经典）上的定义是什么？
+
+在 Febrauary 2020 （开始弃用之前的一个月）的订阅中没有 IaaS Vm （经典）的客户被视为新客户。 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-No。 VM（经典）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。
+不到3月1日，为 IaaS Vm （经典）2023。 IaaS Vm （经典）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 2023年3月1日，这些 Vm 将被完全停用，并且任何活动或分配的 Vm 都将停止 & 解除分配。 这不会影响到其他经典资源，如云服务（经典）、存储帐户（经典）等。   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
-我们近期不会淘汰现有的经典 API 和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 强烈建议查看 Resource Manager 下 IaaS 包含的[一些改进](../articles/azure-resource-manager/management/deployment-models.md)。
+2023年3月1日，IaaS Vm （经典）将完全停用，任何活动或分配的 Vm 都将停止 & 解除分配。 为了防止业务影响，我们在2023年3月1日之前开始规划迁移并完成迁移，这是我们的 recomment。 我们不会弃用现有的经典 Api、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 建议你开始计划将这些资源迁移到 Azure 资源管理器。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 
@@ -37,11 +45,11 @@ No。 VM（经典）是公开上市的完全受支持的服务。 可以继续�
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>提交操作失败时，是否可以回滚迁移？ 
 
-如果提交操作失败，就无法中止迁移。 包括提交操作在内的所有迁移操作都是幂等的。 因此，建议在片刻之后重试操作。 如果仍遇到错误，请创建支持票证，或在[Microsoft Q &](https://docs.microsoft.com/answers/index.html)上创建论坛帖子。
+如果提交操作失败，就无法中止迁移。 包括提交操作在内的所有迁移操作都是幂等的。 因此，建议在片刻之后重试操作。 如果仍遇到错误，请创建支持票证。
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-No。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
@@ -52,7 +60,7 @@ No。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移�
 将 VM 从经典模式迁移到资源管理器模式时，迁移之前执行的备份不会迁移到新迁移资源管理器 VM。 但是，如果希望保留经典 VM 的备份，请在迁移之前执行以下步骤。 
 
 1. 在恢复服务保管库中，转到“受保护的项”选项卡并选择 VM。 
-2. 单击“停止保护”。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
+2. 单击停止保护。 将“ *删除关联的备份数据* ”选项保留为 **取消选中**状态。
 
 > [!NOTE]
 > 在保留数据前将收取备份实例成本。 备份副本将按保持期进行删除。 但是，最后的备份副本会始终保留，直至你显式删除备份数据。 建议检查虚拟机的保留期，并在保留期结束后对保管库中受保护项触发“删除备份数据”。 
@@ -68,7 +76,7 @@ No。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移�
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以验证订阅或资源，以查看其是否能够迁移？ 
 
-可以。 在平台支持的迁移选项中，准备迁移的第一个步骤，就是验证资源是否能够进行迁移。 如果验证操作失败，用户会收到包含无法完成迁移的所有原因的消息。
+是的。 在平台支持的迁移选项中，准备迁移的第一个步骤，就是验证资源是否能够进行迁移。 如果验证操作失败，用户会收到包含无法完成迁移的所有原因的消息。
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>如果我在准备要迁移的 IaaS 资源时遇到配额错误，会发生什么情况？ 
 

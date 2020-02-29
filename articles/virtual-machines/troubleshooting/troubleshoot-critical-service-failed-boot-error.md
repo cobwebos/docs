@@ -12,24 +12,22 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981368"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921447"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
 
-> [!NOTE] 
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用 Resource Manager 部署模型。建议对新部署使用该模型，而不是经典部署模型。
 
 ## <a name="symptom"></a>症状 
 
 Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动屏幕截图时，在蓝色屏幕中看到以下错误消息之一：
 
-- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 https://windows.com/stopcode 。 如果你呼叫支持人员，请向其提供以下信息: 停止代码: 关键服务失败” 
+- “你的电脑遇到问题，需要重启。 你可以重启。 有关此问题和可能的修复项的详细信息，请访问 https://windows.com/stopcode。 如果你呼叫支持人员，请向其提供以下信息: 停止代码: 关键服务失败” 
 - “你的电脑遇到问题，需要重启。 我们将收集一些错误信息，然后我们将为你重启。 如果想了解更多信息，稍后可以联机搜索以下错误: CRITICAL_SERVICE_FAILED”
 
 ## <a name="cause"></a>原因
@@ -110,7 +108,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 1. 将 OS 磁盘附加到恢复 VM。
 2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config**。如果需要回滚，请将所有文件复制为备份。
 3. 启动**注册表编辑器** (regedit.exe)。
-4. 选择“HKEY_LOCAL_MACHINE”项。 在菜单上，选择“文件” > “加载配置单元”。
+4. 选择“HKEY_LOCAL_MACHINE”项。 在菜单上，选择“文件” **“加载配置单元”。**  > 
 5. 浏览到已附加 OS 磁盘上的 **\windows\system32\config\SYSTEM** 文件夹。 输入“BROKENSYSTEM”作为配置单元名称。 新的注册表配置单元将显示在“HKEY_LOCAL_MACHINE”项之下。
 6. 浏览到 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 并进行以下更改：
 

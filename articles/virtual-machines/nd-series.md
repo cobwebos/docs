@@ -2,17 +2,17 @@
 title: ND 系列-Azure 虚拟机
 description: ND 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 5f2e6775e0c1dbe094ed24554d2feac1da915511
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 31783b95b0816478b895086ddb47abf74503480e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661016"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162060"
 ---
 # <a name="nd-series"></a>ND 系列
 
@@ -21,6 +21,10 @@ ND 系列虚拟机是针对 AI 和深度学习工作负荷设计的 GPU 系列�
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 > [!IMPORTANT]
 > 对于此 VM 系列，订阅中每个区域的 vCPU （核心）配额最初设置为0。 在[可用区域](https://azure.microsoft.com/regions/services/)中请求此系列的[vCPU 配额增加](../azure-supportability/resource-manager-core-quotas-request.md)。

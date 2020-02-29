@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664926"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921090"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -80,7 +80,7 @@ ms.locfileid: "77664926"
 
 流式引入不支持以下功能：
 * [数据库游标](/azure/kusto/management/databasecursor)。
-* [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
+* [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/create-ingestion-mapping-command)数据映射。 
 
 ## <a name="next-steps"></a>后续步骤
 

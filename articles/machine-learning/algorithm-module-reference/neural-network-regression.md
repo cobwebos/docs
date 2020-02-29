@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 97095e4802373a1dd3f7b795c2fe567b778d2d5e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153819"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920376"
 ---
 # <a name="neural-network-regression-module"></a>神经网络回归模块
 
@@ -56,7 +56,9 @@ ms.locfileid: "77153819"
   
 2. 通过设置 "**创建培训人员模式**" 选项来指示要如何训练模型。  
   
-    -   **单个参数**：如果您已经知道要如何配置模型，请选择此选项。  
+    -   **单个参数**：如果您已经知道要如何配置模型，请选择此选项。
+
+    -   **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。   
 
 3.  在 "**隐藏层规范**" 中，选择 "**完全连接的大小写**"。 此选项使用默认的神经网络体系结构创建一个模型，该模型对于神经网络回归模型具有以下属性：  
   
@@ -72,7 +74,6 @@ ms.locfileid: "77153819"
 
 6.  对于 "**学习迭代数**"，指定算法处理定型事例的最大次数。
 
-7.  对于 * * 初始学习权重直径，在学习过程开始时，键入一个确定节点权重的值。
 
 8.  对于**动量**，请在学习过程中键入一个要应用于先前迭代中节点上的权重的值。
 

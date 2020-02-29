@@ -3,18 +3,18 @@ title: 关于在 Azure Vm 中 SAP HANA 数据库备份
 description: 本文介绍如何备份 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586557"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918506"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于在 Azure Vm 中 SAP HANA 数据库备份
 
 SAP HANA 数据库是需要低恢复点目标（RPO）和快速恢复时间目标（RTO）的任务关键型工作负荷。 你现在可以使用[Azure 备份](https://docs.microsoft.com/azure/backup/backup-overview)来[备份 Azure vm 上运行的 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)。
 
-Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)，通过利用 SAP HANA 的本机 api 提供本机备份支持。 Azure 备份中的此产品/服务可与 Azure 备份的**零基础结构**备份口头禅，从而无需部署和管理备份基础结构。 你现在可以无缝备份和还原 SAP HANA 在 Azure Vm 上运行的数据库（现在还支持[M 系列 vm](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) ！），并利用 Azure 备份提供的企业管理功能。
+Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)，通过利用 SAP HANA 的本机 api 提供本机备份支持。 Azure 备份中的此产品/服务可与 Azure 备份的**零基础结构**备份口头禅，从而无需部署和管理备份基础结构。 你现在可以无缝备份和还原 SAP HANA 在 Azure Vm 上运行的数据库（现在还支持[M 系列 vm](../virtual-machines/m-series.md) ！），并利用 Azure 备份提供的企业管理功能。
 
 ## <a name="added-value"></a>添加的值
 

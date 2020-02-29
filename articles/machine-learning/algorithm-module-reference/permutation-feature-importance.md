@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314940"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920359"
 ---
 # <a name="permutation-feature-importance"></a>排列特征重要性
 
-本文介绍如何使用 Azure 机器学习设计器中的 "排列功能重要性" 模块来计算数据集的一组功能重要性分数。 使用这些分数有助于确定要在模型中使用的最佳功能。
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用排列功能重要性模块来计算数据集的一组功能重要性分数。 使用这些分数有助于确定要在模型中使用的最佳功能。
 
 在此模块中，功能值随机随机打乱，一次一列。 模型的性能在前后测量。 您可以选择一个标准指标来衡量性能。
 
@@ -46,7 +46,7 @@ ms.locfileid: "76314940"
 
     -   **分类**
 
-        准确性、精度、回调、平均日志丢失  
+        准确性、精度和召回  
 
     -   **回归**
 

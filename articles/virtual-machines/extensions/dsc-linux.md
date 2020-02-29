@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969936"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921515"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展（Microsoft.ostcextensions. DSCForLinux）
 
@@ -38,13 +38,13 @@ DSCForLinux 扩展已发布并受 Microsoft 支持。 该扩展在 Azure 虚拟�
 
  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
 DSC Linux 扩展支持所有[在 Azure 上认可的 Linux 分发版](/azure/virtual-machines/linux/endorsed-distros)，除了以下这些：
 
-| 分配 | 版本 |
+| 分发 | 版本 |
 |---|---|
 | Debian | 所有版本 |
 | Ubuntu| 18.04 |
@@ -290,6 +290,9 @@ $publicConfig = '{
 在部署 DSCForLinux 扩展之前，请根据第3部分中的不同方案配置 `public.json` 和 `protected.json`。
 
 #### <a name="classic"></a>经典
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 经典部署模式也称为 Azure 服务管理模式。 可运行以下命令切换到该模式：
 ```
 $ azure config mode asm
@@ -306,7 +309,7 @@ $ azure vm extension set <vm-name> DSCForLinux Microsoft.OSTCExtensions <version
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>资源管理器
 可运行以下命令切换到 Azure 资源管理器模式：
 ```
 $ azure config mode arm
@@ -363,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Resource Manager
+#### <a name="resource-manager"></a>资源管理器
 
 可以通过运行以下操作，在 Azure 资源管理器模式下登录 Azure 帐户：
 

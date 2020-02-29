@@ -2,17 +2,17 @@
 title: Dv3 和 Dsv3 系列-Azure 虚拟机
 description: Dv3 和 Dsv3 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493756"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164400"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
@@ -33,6 +33,10 @@ ACU：160-190
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大临时存储吞吐量： IOPS/读取 MBps/写入 MBps | 最大 Nic/网络带宽 |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU：160-190
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量： IOPS/MBps （GiB 中的缓存大小） | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 Nic 数/预期网络带宽（Mbps） |
 |---|---|---|---|---|---|---|---|

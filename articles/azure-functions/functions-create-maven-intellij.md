@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230730"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913236"
 ---
-# <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 创建第一个 Azure 函数
+# <a name="create-your-first-azure-function-with-java-and-intellij"></a>通过 Java 和 IntelliJ 创建第一个 Azure 函数
 
 本文将介绍以下内容：
 - 如何使用 IntelliJ IDEA 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/overview/serverless-computing/)函数项目
@@ -42,7 +42,7 @@ ms.locfileid: "74230730"
 
 1. 在 IntelliJ IDEA 中选择“新建项目”。  
 1. 在“新建项目”窗口中选择左窗格中的“Maven”。
-1. 为 **azure-functions-archetype** 选中“通过 archetype 创建”复选框，然后选择“添加 Archetype”[](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)。
+1. 为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 选中“通过 archetype 创建”复选框，然后选择“添加 Archetype”。
 1. 在“添加 Archetype”窗口中按以下说明填写各个字段：
     - _GroupId_：com.microsoft.azure
     - _ArtifactId_：azure-functions-archetype
@@ -61,7 +61,7 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 1. 手动导入更改或启用[自动导入](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html)。
 1. 打开“Maven 项目”工具栏。
 1. 展开“生命周期”然后打开“包”。 该解决方案是在新创建的目标目录中生成和打包的。
-1. 展开“插件” **“azure-functions”，并打开“azure-functions:run”以启动 Azure Functions 本地运行时** > 。  
+1. 展开“插件” > “azure-functions”，并打开“azure-functions:run”以启动 Azure Functions 本地运行时。  
   ![Azure Functions 的 Maven 工具栏](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
 1. 完成函数测试后关闭运行对话框。 一次只能有一个函数主机处于活动状态并在本地运行。
@@ -81,13 +81,11 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 1. 填写“名称”和“设置”字段，然后选择“确定”以保存配置。
 1. 在设置后，选择“调试<远程配置名称>”或在键盘上按 Shift+F9 以启动调试。
 
-   ![在 IntelliJ 中调试函数](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
-
 1. 完成后，请停止调试器和正在运行的进程。 一次只能有一个函数主机处于活动状态并在本地运行。
 
 ## <a name="deploy-the-function-to-azure"></a>将函数部署到 Azure
 
-1. 在向 Azure 部署函数之前，必须[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
+1. 在将函数部署到 Azure 之前，必须[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
    ``` azurecli
    az login

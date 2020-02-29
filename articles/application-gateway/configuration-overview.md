@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485074"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913253"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -256,14 +256,14 @@ Azure 应用程序网关使用网关托管 cookie 来维护用户会话。 当�
 
 如果要在同一台服务器上保存用户会话，并在服务器上为用户会话保存会话状态时，此功能很有用。 如果应用程序无法处理基于 cookie 的关联，则无法使用此功能。 若要使用它，请确保客户端支持 cookie。
 
-从**2020 年2月 17**日开始， [Chromium](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)带来了一个强制要求，其中不含 SameSite 特性的 HTTP cookie 被视为 SameSite = 宽松。 在 CORS （跨源资源共享）请求的情况下，如果必须在第三方上下文中发送 cookie，则必须使用 "SameSite = None;安全的 "属性，只应通过 HTTPS 发送。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 cookie。 此更新从 Chrome 的目标是增强安全性并避免跨站点请求伪造（CSRF）攻击。 
+[Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)带来了一个强制要求，其中不含[SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7)特性的 HTTP Cookie 必须被视为 SameSite = 宽松。 对于 CORS （跨源资源共享）请求，如果必须在第三方上下文中发送 cookie，则必须使用*SameSite = None;安全*特性仅应通过 HTTPS 发送。 否则，在仅限 HTTP 的方案中，浏览器不会在第三方上下文中发送 cookie。 此更新从 Chrome 的目标是增强安全性并避免跨站点请求伪造（CSRF）攻击。 
 
-若要支持此更改，应用程序网关（所有 SKU 类型）将注入另一个名为**ApplicationGatewayAffinityCORS**的相同 cookie 以及现有的**ApplicationGatewayAffinity** cookie，但这一点类似，但此 cookie 现在将有两个以上的属性 **"SameSite = None"。"安全"** 添加到其中，以便即使对于跨源请求也能维持粘滞会话。
+若要支持此更改，从2月17日2020开始，应用程序网关（所有 SKU 类型）将会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。 *ApplicationGatewayAffinityCORS* cookie 添加了两个以上的属性（ *"SameSite = None;安全 "* ），以便即使对于跨源请求，也会保留粘滞会话。
 
-请注意，默认关联 cookie 名称为**ApplicationGatewayAffinity** ，用户可以更改此名称。 如果你使用的是自定义相关性 cookie 名称，将使用 CORS 作为后缀添加额外的 cookie，例如， **CustomCookieNameCORS**。
+请注意，默认关联 cookie 名称为*ApplicationGatewayAffinity* ，你可以对其进行更改。 如果你使用的是自定义相关性 cookie 名称，则会添加一个具有 CORS 作为后缀的附加 cookie。 例如， *CustomCookieNameCORS*。
 
 > [!NOTE]
-> 如果设置了属性**SameSite = None** ，cookie 还应包含**Secure**标志，并且应通过**HTTPS**发送。 因此，如果需要通过 CORS 进行会话相关性，则必须将工作负荷迁移到 HTTPS。 请参阅此处的应用程序网关的 SSL 卸载和端到端 SSL 文档–[概述](ssl-overview.md)，[如何配置 SSL 卸载](create-ssl-portal.md)，[如何配置端到端 ssl](end-to-end-ssl-portal.md)。
+> 如果设置了属性*SameSite = None* ，则 cookie 还必须包含*安全*标志，并且必须通过 HTTPS 发送。  如果通过 CORS 需要会话相关性，则必须将工作负荷迁移到 HTTPS。 请参阅此处的应用程序网关的 SSL 卸载和端到端 SSL 文档–[概述](ssl-overview.md)，[如何配置 SSL 卸载](create-ssl-portal.md)，[如何配置端到端 ssl](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>连接清空
 

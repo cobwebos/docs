@@ -2,17 +2,17 @@
 title: NCv3 系列-Azure 虚拟机
 description: NCv3 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 363f8d2aae4e77453b8291637f2f6067d24bb80b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1f93fd3c293f8f6108d7c5fbcd83f2f7a8b8f5d9
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661118"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162156"
 ---
 # <a name="ncv3-series"></a>NCv3 系列
 
@@ -21,6 +21,10 @@ NCv3 系列 VM 采用 [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tes
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 > [!IMPORTANT]
 > 对于此 VM 系列，订阅中的 vCPU （核心）配额最初在每个区域中都设置为0。 在[可用区域](https://azure.microsoft.com/regions/services/)中请求此系列的[vCPU 配额增加](../azure-supportability/resource-manager-core-quotas-request.md)。

@@ -3,12 +3,12 @@ title: 在 Azure Migrate 中设置依赖项可视化
 description: 描述 Azure Migrate 服务器评估中的设置依赖项可视化。
 ms.topic: article
 ms.date: 2/24/2020
-ms.openlocfilehash: f5b0682adf345681c03bb6dbf14e9a0d9ba1fd58
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 054e2301160a885909630c2968863e5f9e25af69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589028"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916279"
 ---
 # <a name="set-up-dependency-visualization"></a>设置依赖项可视化
 
@@ -76,7 +76,7 @@ ms.locfileid: "77589028"
 5. 单击“添加”以添加 Log Analytics 工作区。 粘贴从门户复制的工作区 ID 和密钥。 单击“下一步”。
 
 你可以从命令行安装代理，也可以使用自动方法（如 Configuration Manager 或[Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)）来安装代理。
-- [详细了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)如何使用这些方法安装 MMA 代理。
+- [详细了解](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)如何使用这些方法安装 MMA 代理。
 - 还可使用此[脚本](https://go.microsoft.com/fwlink/?linkid=2104394)安装 MMA 代理。
 - [了解](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems)有关 MMA 支持的 Windows 操作系统的详细信息。
 

@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 机器学习设计器重新定型模型
+title: 使用 Azure 机器学习设计器进行重新训练模型（预览）
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Azure 机器学习设计器中通过已发布的管道重新训练模型。
+description: 了解如何在 Azure 机器学习设计器（预览版）中通过已发布的管道重新训练模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311863"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921584"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>与 Azure 机器学习设计器重新定型模型
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的重新训练模型（预览版）
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 在本操作方法指南中，你将了解如何使用 Azure 机器学习设计器重新训练机器学习模型。 了解如何使用已发布管道自动执行机器学习工作流以进行重新训练。
 
@@ -29,7 +29,7 @@ ms.locfileid: "76311863"
 > * 发布定型管道。
 > * 重新训练模型。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请创建一个[免费帐户](https://aka.ms/AMLFree)。
 
@@ -69,11 +69,11 @@ ms.locfileid: "76311863"
 
 1. 选择**训练模型**模块。
 
-1. 在 "设置" 窗格中，选择 "**输出**"。
+1. 在 "设置" 窗格中，选择 "**输出 + 日志**"。
 
-1. 选择**Trained_model**以下载模型。
+1. 单击 "**查看输出**" 图标，然后按照弹出窗口中的说明查找训练的模型。
 
-![显示如何下载定型模型的屏幕截图](./media/how-to-retrain-designer/download-model.png)
+![显示如何下载定型模型的屏幕截图](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>创建管道参数
 

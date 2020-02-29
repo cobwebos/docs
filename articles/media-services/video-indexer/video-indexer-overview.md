@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/02/2020
 ms.author: juliako
-ms.openlocfilehash: aee4390d9b892eddbd7dc59887f5268e4c35d3f7
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989784"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163584"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -27,9 +27,14 @@ ms.locfileid: "76989784"
 
 ![Azure 媒体服务视频索引器流程图](./media/video-indexer-overview/model-chart.png)
 
-## <a name="compliance-privacy-and-security"></a>合规性、隐私性和安全性
- 
-作为一项重要提醒，你必须遵守对你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何其他 Azure 服务，可能会对其他人造成损害。 在将任何视频（包括任何生物识别数据）上传到视频索引器服务进行处理和存储之前，你必须拥有所有正确的权限，包括来自视频中个人的所有适当的同意。 若要了解 Microsoft[认知服务条款](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)，请参阅有关视频索引器的隐私和安全性。 若要获得 Microsoft 的隐私义务并处理数据，请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 其他隐私信息（包括数据保留、删除/销毁）在 OST 和[此处](faq.md)提供。 通过使用视频索引器，你同意遵守认知服务条款、OST、DPA 和隐私声明。
+
+## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+
+作为一项重要提醒，你必须遵守你使用视频索引器的所有适用法律，并且你不能以违反他人权限的方式使用视频索引器或任何 Azure 服务，或者可能会对其他人造成损害。
+
+在将任何视频/图像上传到视频索引器之前，您必须具有正确的权限才能使用视频/图像，包括在视频/视频中使用、处理和存储其数据的所有必需的同意（如有）。 某些司法辖区可能对集合、联机处理和存储某些类别的数据（如生物识别数据）施加特殊的法律要求。 在使用视频索引器和 Azure 来处理和存储任何受特定法律要求的数据之前，必须确保符合任何可能适用于你的法律要求。
+
+若要了解有关符合性、视频索引器中的隐私和安全性的信息，请访问 Microsoft[信任中心](https://www.microsoft.com/TrustCenter/CloudServices/Azure/default.aspx)。 有关 Microsoft 的隐私义务、数据处理和保留实践（包括如何删除数据），请查看 Microsoft[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[在线服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（"OST"）和[数据处理补充](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)条款（"DPA"）。 使用视频索引器即表示你同意受 OST、DPA 和隐私声明约束。
 
 ## <a name="what-can-i-do-with-video-indexer"></a>我可以使用视频索引器进行哪些操作？
 

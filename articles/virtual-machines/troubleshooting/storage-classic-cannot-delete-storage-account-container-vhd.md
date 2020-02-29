@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64926235"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915023"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>排查经典存储资源删除错误
 请遵循本文中的指导排查在尝试删除 Azure 存储帐户、容器或 *.vhd 页 Blob 文件时发生的以下错误之一。 
@@ -30,6 +30,10 @@ ms.locfileid: "64926235"
 
 
 ## <a name="steps-while-deleting-a-classic-virtual-machine"></a>删除经典虚拟机的步骤 
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+
 1. 删除经典虚拟机。
 2. 如果已选中“磁盘”复选框，则与页 Blob *.vhd 关联的**磁盘租约**（如上图所示）将会中断。 实际的页 Blob *.vhd 文件仍在存储帐户中存在。
 ![门户屏幕截图，其中显示（经典）虚拟机的“删除”错误窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/steps_while_deleting_classic_vm.jpg) 
@@ -44,7 +48,7 @@ ms.locfileid: "64926235"
 当用户尝试删除不再需要的经典存储帐户时，可能会看到以下行为。
 
 #### <a name="azure-portal"></a>Azure 门户 
-当用户在 [Azure 门户](https://portal.azure.com)中导航到经典存储帐户并单击“删除”时，会看到以下消息：  
+当用户在 [Azure 门户](https://portal.azure.com)中导航到经典存储帐户并单击“删除”时，会看到以下消息： 
 
 磁盘“已附加”到虚拟机
 
@@ -61,7 +65,7 @@ ms.locfileid: "64926235"
 
 > <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
 > 
-> <span style="color:red">Remove-AzureStorageAccount :BadRequest:存储帐户 myclassicaccount 包含一些活动的映像和/或磁盘，例如  
+> <span style="color:red">New-azurestorageaccount： BadRequest：存储帐户 myclassicaccount 有一些活动的映像和/或磁盘，例如  
 > myclassicaccount。 删除此存储帐户前，请确保删除这些映像和/或磁盘。</span>
 
 ## <a name="unable-to-delete-storage-container"></a>无法删除存储容器
@@ -79,7 +83,7 @@ ms.locfileid: "64926235"
 
 > <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
 > 
-> <span style="color:red">Remove-AzureStorageContainer :远程服务器返回错误：(412)容器中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：容器中当前包含租约，但请求中未指定任何租约 ID。</span>
+> <span style="color:red">New-azurestoragecontainer：远程服务器返回错误：（412）当前容器上有租约，但请求中未指定任何租约 ID。HTTP 状态代码： 412-HTTP 错误消息：当前容器上有租约，但请求中未指定任何租约 ID。</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>无法删除 VHD 
 
@@ -101,7 +105,7 @@ ms.locfileid: "64926235"
 
 > <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"** </span>
 > 
-> <span style="color:red">Remove-AzureStorageBlob :远程服务器返回错误：(412) Blob 中当前包含租约，但请求中未指定任何租约 ID。HTTP 状态代码：412 - HTTP 错误消息：Blob 中当前包含租约，但请求中未指定任何租约 ID。</span>
+> <span style="color:red">Get-azurestorageblob：远程服务器返回错误：（412）当前 blob 上有租约，但请求中未指定任何租约 ID。HTTP 状态代码： 412-HTTP 错误消息：目前 blob 上有租约，但请求中未指定任何租约 ID。</span>
 
 
 ## <a name="resolution-steps"></a>解决步骤
@@ -110,7 +114,7 @@ ms.locfileid: "64926235"
 在 Azure 门户中执行以下步骤：
 1.  导航到 [Azure 门户](https://portal.azure.com)。
 2.  导航到“磁盘(经典)”。 
-3.  单击“磁盘”选项卡。![门户屏幕截图，其中显示容器 Blob“列表”窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  单击 "磁盘" 选项卡，![门户的屏幕截图，并打开容器 blob "列表" 窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  选择数据磁盘，并单击“删除磁盘”。
  ![门户屏幕截图，其中显示容器 Blob“列表”窗格已打开](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)

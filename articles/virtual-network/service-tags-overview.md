@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 47488403a10a6b955e15b0048d455cc17016f009
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 7f5f75385374b6949ee3ef5e5ef298b8d54cc36e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526240"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163244"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "77526240"
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
 | **AzureDatabricks** | Azure Databricks。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureDataExplorerManagement** | Azure 数据资源管理器管理。 | 入站 | 否 | 否 |
-| **AzureDataLake** | Azure Data Lake。 | 出站 | 否 | 是 |
+| **AzureDataLake** | Azure Data Lake Storage Gen1。 | 出站 | 否 | 是 |
 | **AzureEventGrid** | Azure 事件网格。 <br/><br/>*注意：* 此标记涵盖美国中南部、美国东部、美国东部2、美国西部2和美国中部的 Azure 事件网格端点。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureFrontDoor** | Azure 前门。 | 推送、请求和匿名 | 否 | 否 |
 | **AzureInformationProtection** | Azure 信息保护。<br/><br/>*注意：* 此标记与**AzureActiveDirectory**和**AzureFrontDoor**标记相关。 还要将以下 Ip 列入允许列表： 13.107.6.181 & 13.107.9.181。 | 出站 | 否 | 否 |

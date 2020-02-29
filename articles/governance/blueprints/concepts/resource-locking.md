@@ -1,14 +1,14 @@
 ---
 title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057339"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919866"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -33,6 +33,56 @@ ms.locfileid: "77057339"
 通常可以允许在订阅上具有合适的[基于角色的访问控制](../../../role-based-access-control/overview.md) (RBAC) 的某人（例如“所有者”角色）更改或删除任何资源。 当蓝图在已部署的分配中应用了锁定时，无法进行此访问。 如果使用“只读”或“不要删除”选项设置了分配，则即使订阅所有者也无法对受保护资源执行阻止的操作。
 
 此安全措施可以保护已定义的蓝图与设计用于通过意外或以编程方式删除或更改创建的环境之间的一致性。
+
+### <a name="assign-at-management-group"></a>在管理组分配
+
+阻止订阅所有者删除蓝图分配的另一个选项是将蓝图分配到管理组。 在此方案中，只有管理组的**所有者**具有删除蓝图分配所需的权限。
+
+若要将蓝图分配到管理组而不是订阅，REST API 调用会更改为如下所示：
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+`{assignmentMG}` 定义的管理组必须位于管理组层次结构中，或者是保存蓝图定义的同一管理组。
+
+蓝图分配的请求正文如下所示：
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+此请求正文中的主要差异和分配给订阅的主要区别是 `properties.scope` 属性。 此必需属性必须设置为适用于蓝图分配的订阅。 订阅必须是存储蓝图分配的管理组层次结构的直接子项。
 
 ## <a name="removing-locking-states"></a>删除锁定状态
 
@@ -61,7 +111,7 @@ ms.locfileid: "77057339"
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>从拒绝分配中排除主体
 
-在某些设计或安全方案中，可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 这是在 REST API 中完成的，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多五个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面是包含**excludedPrincipals**的请求正文示例：
+在某些设计或安全方案中，可能需要将主体从蓝图分配创建的[拒绝分配](../../../role-based-access-control/deny-assignments.md)中排除。 此步骤在 REST API 中完成，方法是在[创建分配](/rest/api/blueprints/assignments/createorupdate)时，将最多5个值添加到 "**锁定**" 属性中的**excludedPrincipals**数组。 下面的分配定义是包含**excludedPrincipals**的请求正文示例：
 
 ```json
 {

@@ -3,12 +3,12 @@ title: Azure Functions 运行时版本概述
 description: Azure Functions 支持多个版本的运行时。 了解这些版本之间的差异以及如何选择最适合你的版本。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539495"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919747"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 运行时版本概述
 
@@ -26,7 +26,7 @@ Azure Functions 运行时的主版本与运行时所基于的 .NET 版本相关�
 
 本文详细介绍了不同版本之间的一些差异，如何创建每个版本，以及如何更改版本。
 
-## <a name="languages"></a>语言
+## <a name="languages"></a>Languages
 
 从版本2.x 开始，运行时使用语言扩展性模型，函数应用中的所有函数必须共享同一语言。 函数应用中的函数语言是在创建应用时选择的，并且在[\_WORKER\_运行时](functions-app-settings.md#functions_worker_runtime)设置的函数中维护。 
 
@@ -58,7 +58,7 @@ Azure Functions 1.x 的实验性语言不能使用新模型，因此在2.x 中�
 
 在版本 2.x 中做出了以下更改：
 
-* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本 1.x 中，密钥默认存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
+* 用于调用 HTTP 终结点的密钥始终以加密方式存储在 Azure Blob 存储中。 在版本1.x 中，默认情况下密钥存储在 Azure 文件存储中。 将应用从版本 1.x 升级到版本 2.x 时，将重置文件存储中的现有机密。
 
 * 2\.x 版运行时不包含对 Webhook 提供程序的内置支持。 做出此项更改的目的是提高性能。 仍可以使用 HTTP 触发器作为 Webhook 的终结点。
 
@@ -182,7 +182,7 @@ Azure 中已发布的应用使用的 Functions 运行时版本由 [`FUNCTIONS_EX
 </configuration>
 ```
 
-## <a name="bindings"></a>Bindings
+## <a name="bindings"></a>绑定
 
 从版本2.x 开始，运行时使用新的[绑定扩展性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，该模型具有以下优势：
 

@@ -1,22 +1,14 @@
 ---
 title: 知识库生命周期 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/27/2020
+ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843399"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914946"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
 QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。
@@ -24,7 +16,7 @@ QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查�
 ![创作周期](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>创建 QnA Maker 知识库
-QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供匹配度最高的答案。 创建知识库是向问题、答案和相关元数据设置内容存储库的一次性操作。 可以通过提取预先存在的内容（例如常见问题解答页面、产品手册或结构化问-答对）创建知识库。 了解如何[创建知识库](../quickstarts/create-publish-knowledge-base.md)。
+QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供匹配度最高的答案。 创建知识库是用于设置问题、解答和相关元数据的内容存储库的一次性操作。 可以通过提取预先存在的内容（例如常见问题解答页面、产品手册或结构化问-答对）创建知识库。 了解如何[创建知识库](../quickstarts/create-publish-knowledge-base.md)。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>测试和更新知识库
 
@@ -87,4 +79,4 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [置信度分数](./confidence-score.md)
+> [活动学习建议](./active-learning-suggestions.md)

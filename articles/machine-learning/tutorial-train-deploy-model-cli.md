@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087022"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920937"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教程：从 CLI 训练和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,9 +35,9 @@ ms.locfileid: "77087022"
 > * 将模型部署为 Web 服务
 > * 使用 web 服务对数据进行评分
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * 若要在**本地环境**中使用本文档中的 CLI 命令，需要[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
@@ -68,12 +68,12 @@ git clone https://github.com/microsoft/MLOps.git
 存储库包含以下文件，这些文件用于将训练的模型部署为 web 服务：
 
 * `aciDeploymentConfig.yml`：__部署配置__文件。 此文件定义模型所需的宿主环境。
-* `inferenceConfig.yml`： configuration__ 文件的推理。 此文件定义了服务用来对模型中的数据进行评分的软件环境。
+* `inferenceConfig.yml`：__推理配置__文件。 此文件定义了服务用来对模型中的数据进行评分的软件环境。
 * `score.py`：用于接受传入数据的 python 脚本，使用该模型对其进行评分，然后返回响应。
 * `scoring-env.yml`：运行模型和 `score.py` 脚本所需的 conda 依赖项。
 * `testdata.json`：可用于测试已部署 web 服务的数据文件。
 
-## <a name="connect-to-your-azure-subscription"></a>连接到你的 Azure 订阅
+## <a name="connect-to-your-azure-subscription"></a>连接到 Azure 订阅
 
 可以通过多种方法从 CLI 对 Azure 订阅进行身份验证。 最基本的使用浏览器进行交互身份验证。 若要以交互方式进行身份验证，请打开命令行或终端并使用以下命令：
 

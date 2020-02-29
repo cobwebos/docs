@@ -4,12 +4,12 @@ description: 了解如何为应用配置预建 ASP.NET Core 容器。 本文介�
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 30cd6ad1b5516eb3bc7e858ae364a88ace1b93b3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768412"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917623"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux ASP.NET Core 应用
 
@@ -38,6 +38,28 @@ az webapp list-runtimes --linux | grep DOTNETCORE
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|2.1"
 ```
+
+## <a name="customize-build-automation"></a>自定义生成自动化
+
+如果在启用了生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务将通过以下顺序生成自动化步骤：
+
+1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+1. 运行 `dotnet restore` 以还原 NuGet 依赖项。
+1. 运行 `dotnet publish` 以生成用于生产的二进制文件。
+1. 如果 `POST_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是默认情况下为空的环境变量。 若要运行预生成命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。
+
+下面的示例为一系列命令指定了两个变量，用逗号分隔。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+有关自定义生成自动化的其他环境变量，请参阅[Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+若要详细了解如何在 Linux 中运行应用服务并构建 ASP.NET Core 应用，请参阅[Oryx 文档：如何检测和生成 .Net Core 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
@@ -82,9 +104,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要知道用户请求是否已加密，请在*Startup.cs*中配置转发的标头中间件：
 
-- 使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 配置中间件，以转接 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 标头。
+- 将中间件配置为[ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) ，以便在 `Startup.ConfigureServices`中转发 `X-Forwarded-For` 和 `X-Forwarded-Proto` 标头。
 - 向已知网络添加专用 IP 地址范围，以便中间件可以信任应用服务负载均衡器。
-- 调用其他中间件之前, 调用`Startup.Configure`中的 [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) 方法。
+- 调用其他中间件之前，在 `Startup.Configure` 中调用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法。
 
 将所有这三个元素放在一起，代码类似于以下示例：
 
@@ -113,7 +135,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-有关详细信息，请参阅[配置 ASP.NET Core 以使用代理服务器和负载均衡器](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)。
+有关详细信息，请参阅[将 ASP.NET Core 配置为使用代理服务器和负载均衡](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)器。
 
 ## <a name="deploy-multi-project-solutions"></a>部署多项目解决方案
 

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623405"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916500"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -168,6 +168,9 @@ Cosmos DB 支持针对 MongoDB 编写的应用程序的 MongoDB 线路协议。 
 | --- | --- |
 | 最大 MongoDB 查询内存大小 | 40 MB |
 | MongoDB 操作的最长执行时间| 30 秒 |
+| 服务器端连接闭包的空闲连接超时值 * | 30 分钟 |
+
+\* 建议客户端应用程序将驱动程序设置中的空闲连接超时设置为2-3 分钟，因为[Azure LoadBalancer 的默认超时为4分钟](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout)。  此超时将确保客户端计算机与 Azure Cosmos DB 之间的中间负载均衡器不会关闭空闲连接。
 
 ## <a name="try-cosmos-db-free-limits"></a>试用 Cosmos DB 可用限制
 

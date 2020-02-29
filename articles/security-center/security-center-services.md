@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616370"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921260"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
 
@@ -38,10 +38,10 @@ ms.locfileid: "77616370"
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
-|[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|Standard|
-|[虚拟机行为分析威胁检测警报](threat-protection.md)|✔|✔|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[基于网络的威胁检测警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔</br>（支持的版本）|✔</br>（支持的版本）|✔|Standard|
+|[虚拟机行为分析（和安全警报）](threat-protection.md)|✔|✔|✔|建议（免费） </br></br> 安全警报（标准）|
+|[Fileless 安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[基于网络的安全警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -50,7 +50,7 @@ ms.locfileid: "77616370"
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |自适应网络控制|✔|✔|-|Standard|
 |[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker 托管的 IaaS 容器上的建议和威胁检测|-|-|-|Standard|
+|Docker 托管的 IaaS 容器上的建议和威胁防护|-|-|-|Standard|
 |缺少操作系统修补程序评估|✔|✔|✔|免费|
 |安全错误配置评估|✔|✔|✔|免费|
 |[Endpoint protection 评估](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|免费|
@@ -65,9 +65,9 @@ ms.locfileid: "77616370"
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|Standard|
-|[虚拟机行为分析威胁检测警报](security-center-alerts-iaas.md)|✔（在支持的版本上）|✔（在支持的版本上）|✔|建议（免费）威胁检测（标准）|
-|[Fileless 威胁检测警报](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[基于网络的威胁检测警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[虚拟机行为分析（和安全警报）](security-center-alerts-iaas.md)|✔</br>（支持的版本）|✔</br>（支持的版本）|✔|建议（免费） </br></br> 安全警报（标准）|
+|[Fileless 安全警报](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[基于网络的安全警报](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[实时 VM 访问](security-center-just-in-time.md)|✔|-|-|Standard|
 |[本机漏洞评估](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[文件完整性监视](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -76,7 +76,7 @@ ms.locfileid: "77616370"
 |[自适应网络强化](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
 |自适应网络控制|✔|✔|-|Standard|
 |[合规性仪表板 & 报表](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
-|Docker 托管的 IaaS 容器上的建议和威胁检测|✔|✔|✔|Standard|
+|Docker 托管的 IaaS 容器上的建议和威胁防护|✔|✔|✔|Standard|
 |缺少操作系统修补程序评估|✔|✔|✔|免费|
 |安全错误配置评估|✔|✔|✔|免费|
 |[Endpoint protection 评估](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|免费|
@@ -116,7 +116,7 @@ ms.locfileid: "77616370"
 
 Azure 安全中心支持以下 PaaS 资源：
 
-|服务|建议（免费）|威胁检测警报（标准）|漏洞评估（标准）|
+|服务|建议（免费）|安全警报（标准）|漏洞评估（标准）|
 |----|:----:|:----:|:----:|
 |SQL 数据库|✔|✔|✔|
 |Azure 容器注册表|-|-|✔|
@@ -158,6 +158,5 @@ Azure 安全中心支持以下 PaaS 资源：
 - 了解[安全中心如何管理和保护数据](security-center-data-security.md)。
 - 了解如何[规划并理解设计注意事项，以便采用 Azure 安全中心](security-center-planning-and-operations-guide.md)。
 - 查看[支持安全中心的平台](security-center-os-coverage.md)。
-- 详细了解[Azure 安全中心中的 vm & 服务器的威胁检测](security-center-alerts-iaas.md)。
+- 详细了解[Azure 安全中心中的 Windows 和 Linux 计算机的威胁保护](threat-protection.md#windows-machines)。
 - 查找[有关 Azure 安全中心](faq-general.md)的常见问题。
-- 查找[关于 Azure 安全性和符合性的博客文章](https://blogs.msdn.com/b/azuresecurity/)。

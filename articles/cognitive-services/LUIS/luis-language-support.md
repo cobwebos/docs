@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: f6b95f76af4c83459ac81ff1703d8588f649326c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970536"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916585"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -36,16 +36,16 @@ LUIS 理解以下语言：
 | 阿拉伯语（预览版-新式标准阿拉伯语） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷兰语 |`nl-NL` |✔|  -   |-|✔|
-| 法语(法国) |`fr-FR` |✔| ✔ |✔ |✔|
-| 法语(加拿大) |`fr-CA` |-|   -   |-|✔|
+| 法语（法国） |`fr-FR` |✔| ✔ |✔ |✔|
+| 法语（加拿大） |`fr-CA` |-|   -   |-|✔|
 | 德语 |`de-DE` |✔| ✔ |✔ |✔|
-| 印地语 | `hi-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|-|-|-|
 | 意大利语 |`it-IT` |✔| ✔ |✔|✔|
 | *[日语](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|仅关键短语|
 | 韩语 |`ko-KR` |✔|   -   |-|仅关键短语|
 | 葡萄牙语（巴西） |`pt-BR` |✔| ✔ |✔ |并非所有亚区域性|
 | 西班牙语(西班牙) |`es-ES` |✔| ✔ |✔|✔|
-| 西班牙语(墨西哥)|`es-MX` |-|  -   |✔|✔|
+| 西班牙语（墨西哥）|`es-MX` |-|  -   |✔|✔|
 | 土耳其语 | `tr-TR` |✔|-|-|仅情绪|
 
 [预生成实体](luis-reference-prebuilt-entities.md)和[预生成域](luis-reference-prebuilt-domains.md)具有不同的语言支持。
@@ -61,7 +61,7 @@ LUIS 理解以下语言：
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>语音 API 支持的语言
-请参阅语音[支持的语言](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode)，了解语音听写模式语言。
+请参阅语音[支持的语言](../speech-service/speech-to-text.md)，了解语音听写模式语言。
 
 ### <a name="bing-spell-check-supported-languages"></a>必应拼写检查支持的语言
 请参阅必应拼写检查[支持的语言](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)，了解支持的语言和状态。
@@ -86,7 +86,7 @@ LUIS 理解以下语言：
 |法语 (fr-FR)|✔||||
 |法语 (fr-CA)|✔||||
 |德语|||✔|✔|
-| 印地语 |✔|-|-|-|-|
+| Hindi |✔|-|-|-|-|
 |意大利语|✔||||
 |日语||||✔|
 |韩语||✔||✔|
@@ -98,7 +98,7 @@ LUIS 理解以下语言：
 
 以下区域性具有自定义标记器版本：
 
-|区域性|版本|用途|
+|环境|版本|目的|
 |--|--|--|
 |德语<br>`de-de`|1.0.0|使用尝试将组合词分解为其单个组件的基于机器学习的标记器来切分单词。<br>如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，则会将其转换为 `Ich fahre einen kranken wagen`。 允许标记 `kranken` 和 `wagen` 独立于不同的实体。|
 |德语<br>`de-de`|1.0.2|通过将单词拆分在空格上来切分。<br> 如果用户以查询文本的形式输入 `Ich fahre einen krankenwagen`，它将保持为单个令牌。 因此 `krankenwagen` 被标记为单个实体。 |

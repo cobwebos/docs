@@ -2,17 +2,17 @@
 title: Fsv2 系列-Azure 虚拟机
 description: Fsv2 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: brbell
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 47ddd4733e4778493ad5e3671ae9c914176de33f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493080"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164842"
 ---
 # <a name="fsv2-series"></a>Fsv2 系列
 
@@ -25,6 +25,10 @@ ACU：195 - 210
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 缓存和临时存储的最大吞吐量： IOPS/MBps （GiB 中的缓存大小） | 最大非缓存磁盘吞吐量： IOPS/MBps | 最大 Nic 数/预期网络带宽（Mbps） |
 |---|---|---|---|---|---|---|---|

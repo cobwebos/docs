@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201486"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921141"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>了解和调整流式处理单元
 
@@ -32,7 +32,7 @@ SU % 利用率指标（范围从 0% 到 100%）描述了工作负载的内存使
     ![Azure 门户流分析作业配置][img.stream.analytics.preview.portal.settings.scale]
     
 4. 使用滑块设置作业的 SU。 请注意，只能设置特定的 SU。 
-5. 即使作业正在运行，也可以更改分配给该作业的 SUs 的数目。 如果作业使用[非分区的输出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)，或者包含[具有不同的分区 BY 值的多步骤查询](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，则无法执行此操作。 作业运行时，你的作业还应该至少有6个 SUs 才能更改此设置。 在作业运行时，你可能会限制从一组 SU 值中进行选择。 
+5. 即使作业正在运行，也可以更改分配给该作业的 SUs 的数目。 如果作业使用[非分区的输出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)，或者包含[具有不同的分区 BY 值的多步骤查询](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)，则无法执行此操作。 在作业运行时，你可能会限制从一组 SU 值中进行选择。 
 
 ## <a name="monitor-job-performance"></a>监视作业性能
 使用 Azure 门户时，可以跟踪作业的吞吐量：

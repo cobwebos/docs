@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313903"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920785"
 ---
 # <a name="train-svd-recommender"></a>训练 SVD 推荐器
 
-本文介绍如何在 Azure 机器学习设计器中使用训练 SVD 推荐器模块。 使用此模块可以基于单值分解（SVD）算法为建议模型定型。  
+本文介绍如何在 Azure 机器学习设计器（预览版）中使用训练 SVD 推荐器模块。 使用此模块可以基于单值分解（SVD）算法为建议模型定型。  
 
 训练 SVD 推荐器模块读取用户-项-分级三元组的数据集。 它将返回训练的 SVD 推荐器。 然后，可以使用训练的模型通过[评分 SVD 推荐器](score-svd-recommender.md)模块预测评级或生成建议。  
 
@@ -48,14 +48,11 @@ SVD 推荐器使用用户和项的标识符，以及用户向这些项提供的�
 + 第二列包含项标识符。
 + 第三列包含用户/项目对的评级。 评分值必须为数值类型。  
 
-Azure 机器学习设计器中的**餐馆分级**数据集（选择**保存的数据集**，然后选择**示例**）演示了预期的格式：
+Azure 机器学习设计器中的**电影分级**数据集（选择**数据集**，然后是**示例**）演示了预期的格式：
 
-|userID|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![电影分级](media/module/movie-ratings-dataset.png)
 
-在此示例中，你可以看到一个用户已将两个不同的餐厅分级。 
+在此示例中，可以看到一个用户已对多个电影评级。 
 
 ### <a name="train-the-model"></a>定型模型
 

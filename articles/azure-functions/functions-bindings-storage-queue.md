@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482252"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164587"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>用于 Azure Functions 概述的 Azure 队列存储触发器和绑定
 
@@ -20,7 +20,7 @@ Azure Functions 可以在创建新的 Azure 队列存储消息时运行，并可
 | 操作 | 类型 |
 |---------|---------|
 | 将函数作为队列存储数据更改运行 | [触发器](./functions-bindings-storage-queue-trigger.md) |
-| 写入队列存储消息 |[输出绑定](./functions-bindings-storage-blob-output.md) |
+| 写入队列存储消息 |[输出绑定](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>添加到函数应用
 
@@ -49,4 +49,4 @@ Azure Functions 可以在创建新的 Azure 队列存储消息时运行，并可
 ## <a name="next-steps"></a>后续步骤
 
 - [将函数作为队列存储数据更改运行（触发器）](./functions-bindings-storage-queue-trigger.md)
-- [写入队列存储消息（输出绑定）](./functions-bindings-storage-blob-output.md)
+- [写入队列存储消息（输出绑定）](./functions-bindings-storage-queue-output.md)

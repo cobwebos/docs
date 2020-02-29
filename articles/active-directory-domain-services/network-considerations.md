@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a5aba6f8a357f33fd921ee12aac7e45f9b581ff
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613327"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917333"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -143,6 +143,11 @@ Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则�
 * 如果不访问此端口，则无法更新、配置、备份或监视 Azure AD DS 托管域。
 * 对于使用基于资源管理器的虚拟网络 Azure AD DS 托管域，你可以将此端口的入站访问限制为*AzureActiveDirectoryDomainServices*服务标记。
     * 对于使用基于经典的虚拟网络的旧式 Azure AD DS 托管域，你可以限制对此端口的入站访问以下源 IP 地址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18*和*104.40.87.209*。
+
+    > [!NOTE]
+    > 在2017中，Azure AD 域服务变为可在 Azure 资源管理器网络中托管。 自那时起，我们能够使用 Azure 资源管理器的新式功能构建更安全的服务。 由于 Azure 资源管理器部署完全取代了经典部署，Azure AD DS 经典虚拟网络部署将于2023年3月1日停用。
+    >
+    > 有关详细信息，请参阅[官方弃用通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>用户定义路由
 

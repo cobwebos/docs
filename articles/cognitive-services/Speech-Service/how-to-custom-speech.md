@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 4a2887ef8b264628128872730422fd38d6b0ac0f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e30587ed4d09ba792516ebc7b16529a6ee5ac57c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424994"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918948"
 ---
 # <a name="what-is-custom-speech"></a>什么是自定义语音？
 
@@ -43,7 +43,7 @@ ms.locfileid: "77424994"
 
 ## <a name="set-up-your-azure-account"></a>设置你的 Azure 帐户
 
-需要语音服务订阅，然后才能使用[自定义语音门户](https://speech.microsoft.com/customspeech)创建自定义模型。 按照以下说明创建标准语音服务订阅：[创建语音订阅](get-started.md#try-the-speech-service-using-a-new-azure-account)。
+需要语音服务订阅，然后才能使用[自定义语音门户](https://speech.microsoft.com/customspeech)创建自定义模型。 按照以下说明创建标准语音服务订阅：[创建语音订阅](get-started.md#new-resource)。
 
 > [!NOTE]
 > 请确保创建标准（S0）订阅，不支持免费试用（F0）订阅。

@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647646"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161868"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -31,7 +31,28 @@ ms.locfileid: "77647646"
 
 ## <a name="limits"></a>限制
 
-* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。 为了处理大于 15 MB 的文件，SFTP SSH 操作支持[消息分块](../logic-apps/logic-apps-handle-large-messages.md)，但 "复制文件" 操作除外，它只能处理 15 MB 的文件。 "**获取文件内容**" 操作隐式使用消息块。
+* 支持[分块](../logic-apps/logic-apps-handle-large-messages.md)的 sftp ssh 操作可处理高达 1 GB 的文件，而不支持分块的 sftp ssh 操作可处理最大为 50 MB 的文件。 尽管默认块区大小为 15 MB，但根据网络延迟、服务器响应时间等因素，此大小可以从 5 MB 开始动态更改，并逐渐增加到最大 50 MB。
+
+  > [!NOTE]
+  > 对于[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的逻辑应用，此连接器的 ise 标记版本会改用[ise 消息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+
+  块区大小与连接相关联，这意味着，可以对支持分块的操作使用相同的连接，并对不支持分块的操作使用同一个连接。 在这种情况下，不支持分块的操作的区块大小范围从 5 MB 到 50 MB。 下表显示了哪些 SFTP SSH 操作支持分块：
+
+  | 操作 | 分块支持 |
+  |--------|------------------|
+  | **复制文件** | 否 |
+  | **创建文件** | 是 |
+  | **创建文件夹** | 不适用 |
+  | **删除文件** | 不适用 |
+  | **将存档提取到文件夹** | 不适用 |
+  | **获取文件内容** | 是 |
+  | **使用路径获取文件内容** | 是 |
+  | **获取文件元数据** | 不适用 |
+  | **使用路径获取文件元数据** | 不适用 |
+  | **列出文件夹中的文件** | 不适用 |
+  | **重命名文件** | 不适用 |
+  | **更新文件** | 否 |
+  |||
 
 * SFTP SSH 触发器不支持分块。 请求文件内容时，触发器仅选择 15 MB 或更小的文件。 若要获取大于 15 MB 的文件，请改用此模式：
 
@@ -46,10 +67,6 @@ ms.locfileid: "77647646"
 下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
 
 * 使用[SSH.NET 库](https://github.com/sshnet/SSH.NET)，它是支持 .net 的开源安全外壳（SSH）库。
-
-* 默认情况下，SFTP SSH 操作可以读取或写入*大小为 1 GB 或更小*，但每次只显示*15 MB*的文件。
-
-  若要处理大于 15 MB 的文件，SFTP SSH 操作可以使用[消息块](../logic-apps/logic-apps-handle-large-messages.md)。 但是，复制文件操作仅支持 15 MB 的文件，因为该操作不支持消息块。 SFTP SSH 触发器不支持分块。 若要上传大型文件，需要对 SFTP 服务器上的根文件夹具有读取和写入权限。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 

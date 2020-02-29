@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150674"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920393"
 ---
 # <a name="normalize-data-module"></a>规范化数据模块
 
@@ -104,7 +104,7 @@ ms.locfileid: "77150674"
 
 - 若要保存转换，以便可以将相同的规范化方法应用到另一个数据集，请选择该模块，然后在右侧面板中的 "**输出**" 选项卡下选择 "**注册数据集**"。
 
-    然后，可以从左侧导航窗格的 "**转换**" 组加载保存的转换，并使用[/Apply 转换](apply-transformation.md)将其应用到具有相同架构的数据集。  
+    然后，可以从左侧导航窗格的 "**转换**" 组加载保存的转换，并通过使用 "[应用转换](apply-transformation.md)" 将其应用到具有相同架构的数据集。  
 
 
 ## <a name="next-steps"></a>后续步骤

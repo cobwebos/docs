@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201645"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921311"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -39,17 +39,17 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 
 ## <a name="roles-and-allowed-actions"></a>角色和允许的操作
 
-下表显示安全中心的角色和允许的操作。 X 指示允许该角色执行该操作。
+下表显示安全中心的角色和允许的操作。
 
-| Role | 编辑安全策略 | 应用资源的安全建议 | 关闭警报和建议 | 查看警报和建议 |
+| 角色 | 编辑安全策略 | 应用资源的安全建议</br> （包括 with "Quick Fix！"） | 关闭警报和建议 | 查看警报和建议 |
 |:--- |:---:|:---:|:---:|:---:|
-| 订阅所有者 | X | X | X | X |
-| 订阅参与者 | -- | X | X | X |
-| 资源组所有者 | -- | X | -- | X |
-| 资源组参与者 | -- | X | -- | X |
-| 读者 | -- | -- | -- | X |
-| 安全管理员 | X | -- | X | X |
-| 安全读取者 | -- | -- | -- | X |
+| 订阅所有者 | ✔ | ✔ | ✔ | ✔ |
+| 订阅参与者 | -- | ✔ | ✔ | ✔ |
+| 资源组所有者 | -- | ✔ | -- | ✔ |
+| 资源组参与者 | -- | ✔ | -- | ✔ |
+| 读取器 | -- | -- | -- | ✔ |
+| 安全管理员 | ✔ | -- | ✔ | ✔ |
+| 安全读取者 | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > 对于需要完成任务的用户，建议尽可能为其分配权限最小的角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。

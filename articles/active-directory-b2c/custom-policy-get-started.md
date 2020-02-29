@@ -1,5 +1,6 @@
 ---
-title: 自定义策略入门-Azure Active Directory B2C
+title: 自定义策略入门
+titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中开始自定义策略。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 02/28/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114031"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161663"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -23,11 +24,11 @@ ms.locfileid: "77114031"
 
 [自定义策略](custom-policy-overview.md)是定义 Azure Active Directory B2C （Azure AD B2C）租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 你还要准备好环境以添加标识提供者。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 如果还没有，请创建一个链接到 Azure 订阅的[Azure AD B2C 租户](tutorial-create-tenant.md)。
 - 在所创建的租户中[注册应用程序](tutorial-register-applications.md)，以便它可以与 Azure AD B2C 通信。
-- 完成[设置使用 facebook 帐户的注册和登录](identity-provider-facebook.md)中的步骤，以配置 facebook 应用程序。
+- 完成[设置使用 facebook 帐户的注册和登录](identity-provider-facebook.md)中的步骤，以配置 facebook 应用程序。 尽管使用自定义策略不需要 Facebook 应用程序，但在本演练中，此应用程序用于演示如何在自定义策略中启用社交登录。
 
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
@@ -43,7 +44,7 @@ ms.locfileid: "77114031"
 1. 在“名称”中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ### <a name="create-the-encryption-key"></a>创建加密密钥
 
@@ -52,7 +53,7 @@ ms.locfileid: "77114031"
 1. 在“名称”中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
 1. 对于“密钥类型”，请选择“RSA”。
 1. 对于“密钥用法”，请选择“加密”。
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ### <a name="create-the-facebook-key"></a>创建 Facebook 密钥
 
@@ -63,7 +64,7 @@ ms.locfileid: "77114031"
 1. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
 1. 在 "**密钥**" 中，输入 Facebook 应用程序在 developers.facebook.com 中的*应用机密*。 此值是机密，而不是应用程序 ID。
 1. 对于“密钥用法”，请选择“签名”。
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
@@ -75,7 +76,7 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 
 若要在 Azure AD B2C 租户中注册应用程序，可以使用**应用注册（旧）** 体验，或我们的新的统一**应用注册（预览版）** 体验。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户中，搜索并选择“Azure Active Directory”。
@@ -84,9 +85,9 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“Web 应用/API”。
 1. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。 现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
-1. 选择 **“创建”** 。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 对于“名称”，请输入 `IdentityExperienceFramework`。
@@ -110,19 +111,19 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>注册 ProxyIdentityExperienceFramework 应用程序
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 在**应用注册（旧版）** 中，选择 "**新应用程序注册**"。
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 1. 对于“应用程序类型”，请选择“本机”。
 1. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户。
-1. 选择 **“创建”** 。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+1. 选择“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 1. 选择 "**设置**"，然后选择 "**所需权限**"，然后选择 "**添加**"。
 1. 选择 "**选择 API**"，搜索并选择 " **IdentityExperienceFramework**"，然后单击 "**选择**"。
 1. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
 1. 选择 "**授予权限**"，然后选择 **"是"** 进行确认。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 选择“应用注册(预览版)”，然后选择“新建注册”。
 1. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
@@ -221,6 +222,8 @@ Azure AD B2C 要求注册两个应用程序，该应用程序使用本地帐户�
 1. 使用相同的帐户登录，以确认配置正确。
 
 ## <a name="add-facebook-as-an-identity-provider"></a>将 Facebook 添加为标识提供者
+
+如[先决条件](#prerequisites)中所述，使用自定义策略时*不*需要 Facebook，但此处使用的是演示如何在自定义策略中启用联合社交登录。
 
 1. 在 `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** 文件中，将 `client_id` 的值替换为 Facebook 应用程序 ID：
 

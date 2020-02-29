@@ -4,12 +4,12 @@ description: 了解如何为应用程序配置预先构建的 PHP 容器。 本�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671838"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913865"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux PHP 应用
 
@@ -39,52 +39,26 @@ az webapp list-runtimes --linux | grep PHP
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>运行编辑器
+## <a name="customize-build-automation"></a>自定义生成自动化
 
-默认情况下，Kudu 不会运行[编辑器](https://getcomposer.org/)。 若要在 Kudu 部署过程中启用编辑器自动化，需要提供一个[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。
+如果在启用了生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务将通过以下顺序生成自动化步骤：
 
-在本地终端窗口中，将目录更改为存储库根目录。 按照[命令行安装步骤](https://getcomposer.org/download/)下载*composer.phar*。
+1. 如果 `PRE_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
+1. 运行 `php composer.phar install`。
+1. 如果 `POST_BUILD_SCRIPT_PATH`指定，则运行自定义脚本。
 
-运行以下命令：
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是默认情况下为空的环境变量。 若要运行预生成命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+下面的示例为一系列命令指定了两个变量，用逗号分隔。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-除了*composer.phar*： *. deployment*和*deploy.sh*外，你的存储库根现在还具有两个新文件。这些文件适用于 Windows 和 Linux 应用服务的风格。
+有关自定义生成自动化的其他环境变量，请参阅[Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
 
-打开*deploy.sh*并找到 `Deployment` 部分。 将整个节替换为以下代码：
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-提交所有更改并重新部署代码。 书写器现在应作为部署自动化的一部分运行。
+若要详细了解应用服务的运行方式以及如何在 Linux 中生成 PHP 应用，请参阅[Oryx 文档：如何检测和构建 php 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)。
 
 ## <a name="customize-start-up"></a>自定义启动
 

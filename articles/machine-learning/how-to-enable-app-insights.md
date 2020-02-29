@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 6498717f5d542be228483b9c323dbd8f3ca2ff00
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 621188b3901bdea1a7ae50ac49c0e6f625a3e79a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251917"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915752"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视和收集 ML web 服务终结点中的数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,39 +43,6 @@ ms.locfileid: "77251917"
 
 与 web 服务元数据和模型的预测对应的服务的元数据和响应记录到消息 `"model_data_collection"`下的 Azure 应用程序 Insights 跟踪。 可以直接查询 Azure 应用程序 Insights 以访问此数据，或设置[连续导出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)到存储帐户，以便进行更长的保留或进一步处理。 然后，可以在 Azure 机器学习中使用模型数据来设置标签、重新训练、explainability、数据分析或其他用途。 
 
-## <a name="use-the-azure-portal-to-configure"></a>使用 Azure 门户配置
-
-可以在 Azure 门户中启用和禁用 Azure 应用程序见解。 
-
-1. 在[Azure 门户](https://portal.azure.com)中，打开工作区
-
-1. 在 "**部署**" 选项卡上，选择要在其中启用 Azure 应用程序 Insights 的服务
-
-   [![“部署”选项卡上的服务列表](./media/how-to-enable-app-insights/Deployments.PNG)](././media/how-to-enable-app-insights/Deployments.PNG#lightbox)
-
-3. 选择 "**编辑**"
-
-   [![编辑按钮](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. 在 "**高级设置**" 中，选中 "**启用 AppInsights 诊断**" 复选框
-
-   [![已选中启用诊断的复选框](./media/how-to-enable-app-insights/AdvancedSettings.png)](././media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. 选择屏幕底部的 "**更新**" 以应用更改
-
-### <a name="disable"></a>禁用
-
-1. 在[Azure 门户](https://portal.azure.com)中，打开工作区
-1. 选择 "**部署**"，选择服务，然后选择 "**编辑**"
-
-   [![使用编辑按钮](././media/how-to-enable-app-insights/Edit.PNG)](./././media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. 在 "**高级设置**" 中，清除 "**启用 AppInsights 诊断**" 复选框
-
-   [![已清除启用诊断的复选框](./media/how-to-enable-app-insights/uncheck.png)](././media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. 选择屏幕底部的 "**更新**" 以应用更改
- 
 ## <a name="use-python-sdk-to-configure"></a>使用 Python SDK 进行配置 
 
 ### <a name="update-a-deployed-service"></a>更新已部署的服务

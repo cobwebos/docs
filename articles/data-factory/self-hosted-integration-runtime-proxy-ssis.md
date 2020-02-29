@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187688"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160805"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>在 Azure 数据工厂中将自承载 IR 配置为 Azure-SSIS IR 的代理
 
@@ -124,7 +124,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ![启用 ConnectByProxy 属性](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-你还可以在运行现有包时启用此属性，而无需逐个手动更改。  有两个选项：
+你还可以在运行现有包时启用此属性，而无需逐个手动更改。  存在两个选项：
 - **选项 A**：打开、重新生成并重新部署包含这些包的项目，其中包含要在 Azure-SSIS IR 上运行的最新 SSDT。 然后，可以通过将相应的连接管理器的属性设置为*True*来启用属性。 当他们从 SSMS 运行包时，这些连接管理器将出现在 "**执行包**" 弹出窗口的 "**连接管理器**" 选项卡上。
 
   ![Enable ConnectByProxy property2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -165,7 +165,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="current-limitations"></a>当前限制
 
-- 目前仅支持具有开放式数据库连接（ODBC）、OLEDB 或平面文件连接管理器以及 ODBC、OLEDB 和平面文件源或 OLEDB 目标的数据流任务。 
+- 目前仅支持具有开放式数据库连接（ODBC）、OLEDB 或平面文件连接管理器以及 ODBC、OLEDB 或平面文件源的数据流任务。 
 - 目前仅支持使用*帐户密钥*、*共享访问签名（SAS） URI*或*服务主体*身份验证配置的 Azure Blob 存储链接服务。
 
 ## <a name="next-steps"></a>后续步骤

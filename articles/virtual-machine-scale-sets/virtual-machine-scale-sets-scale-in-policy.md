@@ -1,32 +1,32 @@
 ---
 title: 使用 Azure 虚拟机规模集的自定义扩展策略
 description: 了解如何在 Azure 虚拟机规模集（使用自动缩放配置来管理实例计数）中使用自定义的扩展策略
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271765"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919832"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>预览：使用 Azure 虚拟机规模集的自定义扩展策略
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虚拟机规模集的自定义扩展策略
 
 虚拟机规模集部署可根据指标（包括平台和用户定义的自定义指标）进行横向扩展或缩小。 虽然横向扩展基于规模集模型创建新的虚拟机，但放大规模会影响在规模集工作负载变化时可能具有不同配置和/或功能的虚拟机。 
 
-"扩展策略" 功能为用户提供了一种配置虚拟机扩展顺序的方法。 预览引入了三个扩展配置： 
+"扩展策略" 功能为用户提供了一种方法，用于通过三个扩展配置来配置虚拟机的缩小顺序： 
 
 1. 默认
 2. NewestVM
 3. OldestVM
-
-***提供此预览功能不带服务级别协议，不建议用于生产工作负荷。***
 
 ### <a name="default-scale-in-policy"></a>默认的扩展策略
 
@@ -54,6 +54,17 @@ ms.locfileid: "76271765"
 
 可以通过以下方式在虚拟机规模集模型上定义扩展策略：
 
+### <a name="azure-portal"></a>Azure 门户
+ 
+以下步骤定义了创建新规模集时的 "扩展策略"。 
+ 
+1. 请参阅**虚拟机规模集**。
+1. 选择 " **+ 添加**" 创建新的规模集。
+1. 中转到 "**缩放**" 选项卡。 
+1. 找到 "**扩展策略**" 部分。
+1. 从下拉范围中选择 "扩展策略"。
+1. 创建新规模集后，请选择 "**查看 + 创建**" 按钮。
+
 ### <a name="using-api"></a>使用 API
 
 使用 API 2019-03-01 对虚拟机规模集执行 PUT 操作：
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+创建一个资源组，然后创建一个将扩展策略设置为*OldestVM*的新规模集。
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下面的示例在创建新规模集时添加一个扩展策略。 首先，创建一个资源组，然后使用 " *OldestVM*" 作为 "扩展" 策略创建新的规模集。 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用模板
@@ -94,6 +132,15 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 修改扩展策略后跟应用扩展策略的过程相同。 例如，如果在上述示例中，你想要将策略从 "OldestVM" 更改为 "NewestVM"，则可以通过以下方法执行此操作：
 
+### <a name="azure-portal"></a>Azure 门户
+
+可以通过 Azure 门户修改现有规模集的扩展策略。 
+ 
+1. 在现有的虚拟机规模集中，从左侧菜单中选择 "**缩放**"。
+1. 选择 "**扩展策略**" 选项卡。
+1. 从下拉范围中选择 "扩展策略"。
+1. 完成后，请选择 "**保存**"。 
+
 ### <a name="using-api"></a>使用 API
 
 使用 API 2019-03-01 对虚拟机规模集执行 PUT 操作：
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure PowerShell
+
+更新现有规模集的扩展策略：
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+下面是更新现有规模集的扩展策略的示例： 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>使用模板
@@ -169,7 +237,7 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
 
 ## <a name="troubleshoot"></a>故障排除
 
-1. 如果在 "properties" 类型的对象上出现 "BadRequest" 错误，并显示错误消息 "找不到成员 ' scaleInPolicy '"，则无法启用 scaleInPolicy，然后检查用于虚拟机规模集的 API 版本。 此预览版需要 API 版本2019-03-01 或更高版本。
+1. 如果在 "properties" 类型的对象上出现 "BadRequest" 错误，并显示错误消息 "找不到成员 ' scaleInPolicy '"，则无法启用 scaleInPolicy，然后检查用于虚拟机规模集的 API 版本。 此功能需要 API 版本2019-03-01 或更高版本。
 
 2. 用于扩展的 Vm 选择错误，请参阅上述示例。 如果虚拟机规模集是一个区域部署，则先将扩展策略应用于不均衡区域，然后在规模集中对其进行区域平衡。 如果按比例调整的顺序与上述示例不一致，请使用虚拟机规模集团队引发查询进行故障排除。
 
