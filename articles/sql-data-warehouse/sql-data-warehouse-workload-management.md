@@ -1,22 +1,22 @@
 ---
-title: 工作负载管理
-description: 在 Azure SQL 数据仓库中实施工作负荷管理的指南。
+title: 工作负荷管理
+description: 在 Azure Synapse Analytics 中实施工作负荷管理的指南。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935412"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197651"
 ---
 # <a name="what-is-workload-management"></a>什么是工作负荷管理？
 
@@ -36,11 +36,11 @@ ms.locfileid: "76935412"
 
 
 ## <a name="workload-management-concepts"></a>工作负荷管理概念
-过去，通过[资源类](resource-classes-for-workload-management.md)管理 SQL 数据仓库中的查询性能。  允许将内存分配给基于角色成员身份的查询的资源类。  资源类的主要挑战是，一旦配置后，就不会控制工作负荷。  
+过去，对于 Azure Synapse 中的 SQL Analytics，你通过[资源类](resource-classes-for-workload-management.md)管理了查询性能。  允许将内存分配给基于角色成员身份的查询的资源类。  资源类的主要挑战是，一旦配置后，就不会控制工作负荷。  
 
 例如，如果将即席用户角色成员资格授予 smallrc，则允许该用户使用系统上的100% 内存。  对于资源类，无法预留和确保资源可用于关键工作负荷。
 
-SQL 数据仓库中的工作负荷管理包括三个高级概念：[工作负荷分类](sql-data-warehouse-workload-classification.md)、[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  这些功能使你可以更好地控制工作负荷使用系统资源的方式。
+Azure Synapse 中的 SQL Analytics 工作负荷管理包括三个高级概念：[工作负荷分类](sql-data-warehouse-workload-classification.md)、[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷隔离](sql-data-warehouse-workload-isolation.md)。  这些功能使你可以更好地控制工作负荷使用系统资源的方式。
 
 工作负荷分类是将请求分配到工作负荷组并设置重要性级别的概念。  过去，此分配通过使用[sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class)的角色成员身份完成。  现在可以通过[CREATE 工作负荷 CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)完成此操作。  分类功能提供了更丰富的选项，如标签、会话和对请求进行分类的时间。
 

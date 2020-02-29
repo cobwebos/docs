@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7f32664f4bb9407d915b7909f9ecdeebe96bd551
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 03ad504258dd9448753f37402067a0da3e0a2c00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771932"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197634"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault 基本概念
 
@@ -42,7 +43,7 @@ Azure Key Vault 是一个用于安全地存储和访问机密的工具。 机密
 
     ![Azure 资源的托管标识的工作原理示意图](./media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 若要对 Key Vault 执行任何操作，首先需要对其进行身份验证。 有三种方法可以对 Key Vault 进行身份验证：
 
 - [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)：在 azure 中的虚拟机上部署应用时，可以将标识分配给可访问 Key Vault 的虚拟机。 你还可以将标识分配给[其他 Azure 资源](../active-directory/managed-identities-azure-resources/overview.md)。 此方法的优点是应用或服务未管理第一个机密的旋转。 Azure 会自动轮换标识。 建议使用此方法作为最佳做法。 

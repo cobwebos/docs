@@ -2,13 +2,13 @@
 title: 配置和管理 Azure Notebooks 预览
 description: 了解如何通过 Azure Notebooks UI 和直接终端访问管理项目元数据、项目文件、项目的环境和设置步骤。
 ms.topic: how-to
-ms.date: 05/13/2019
-ms.openlocfilehash: 5c97372133315e6f0bcd3b854793b6b4746b5ba5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/28/2020
+ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646256"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197685"
 ---
 # <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> 在 Azure Notebooks 预览中管理和配置项目
 
@@ -37,7 +37,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 在项目面板中，选择“项目设置”，再选择“信息”选项卡，该选项卡包含下表所含的项目元数据。 可随时更改项目元数据。
 
-| 设置 | Description |
+| 设置 | 说明 |
 | --- | --- |
 | 项目名称 | 项目的友好名称，Azure Notebooks 显示该名称。 例如“Python 中的 Hello World”。 |
 | 项目 ID | 自定义标识符，是用于共享项目的 URL 的一部分。 此 ID 只能使用字母、数字和连字符，不能超过30个字符，且不能是[保留的项目 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果不确定使用什么内容，可按惯例使用小写的项目名且将空格转换为连字符，例如“my-notebook-project”（根据需要截断，以满足长度限制）。 |
@@ -56,7 +56,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 “+ 新建”命令（键盘快捷方式：n）用于创建新的文件或文件夹。 使用该命令时，首先选择要创建的项的类型：
 
-| 项类型 | Description | 命令行为 |
+| 项类型 | 说明 | 命令行为 |
 | --- | --- | --- |
 | **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
 | **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
@@ -73,7 +73,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 ![文件上下文菜单上的命令](media/project-file-commands.png)
 
-| 命令 | 键盘快捷键 | 行动 |
+| Command | 键盘快捷键 | 操作 |
 | --- | --- | --- |
 | 运行 | r（或单击） | 运行笔记本文件。 其他文件类型打开供查看。  |
 | 复制链接 | y | 将文件链接复制到剪贴板。 |
@@ -82,7 +82,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 | 编辑文件 | i | 打开文件进行编辑。 |
 | 下载 | d | 下载 zip 文件，它包含文件夹的文件或内容。 |
 | 重命名 | （英文）。 | 提示输入文件或文件夹的新名称。 |
-| 删除 | 不可以 | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
+| 删除 | x | 提示确认，然后从项目中永久地删除文件。 删除不可撤消。 |
 | 移动 | m | 将文件移到同一项目的其他文件夹中。 |
 
 #### <a name="preview"></a>预览
@@ -91,7 +91,7 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 预览页支持以下几个具有键盘快捷方式的工具栏命令：
 
-| 命令 | 键盘快捷键 | 行动 |
+| Command | 键盘快捷键 | 操作 |
 | --- | --- | --- |
 | 共享 | s | 显示共享弹出式菜单，可从中获取链接、共享至社交媒体、获取用于嵌入的 HTML 以及发送电子邮件。 |
 | 克隆 | c  | 将笔记本克隆到你的帐户。 |
@@ -126,11 +126,14 @@ Azure Notebooks 中的项目仪表板，可通过它管理文件和配置项目�
 
 稍后呈现的信息取决于你所选的操作类型：
 
-- **要求 .txt**：在第二个下拉列表中，选择项目中已存在的 "*要求 .txt* " 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行 `pip install -r`。 不需要在笔记本内显式安装程序包。
+- **要求 .txt**：在第二个下拉列表中，选择项目中已存在的 "*要求 .txt* " 文件。 然后从显示的第三个下拉列表中选择 Python 版本。 若使用 requirements.txt 文件，Azure Notebooks 会在启动笔记本服务器时通过 requirements.txt 运行`pip install -r`。 不需要在笔记本内显式安装程序包。
 
 - **Shell 脚本**：在第二个下拉列表中，选择项目中的 bash Shell 脚本（通常为扩展名为 *. sh*的文件），其中包含要运行以初始化环境的任何命令。
 
 - **Docker-compose.override.yml**：在第二个下拉列表中，选择用于使用 conda 环境的 Python 项目的*docker-compose.override.yml*文件。
+
+   > [!WARNING]
+   > 由于这是一个在开发中的预览服务，当前存在一个已知问题，即 `Environment.yml` 设置不会按预期方式应用到您的项目。 中的项目和 Jupyter 笔记本不会加载当前指定的环境文件。
 
 完成添加步骤后，选择“保存”。
 

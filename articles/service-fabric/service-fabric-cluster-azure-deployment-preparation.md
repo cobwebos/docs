@@ -3,12 +3,12 @@ title: 规划 Azure Service Fabric 群集部署
 description: 了解如何规划和准备生产 Service Fabric 群集部署到 Azure。
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834444"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193470"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>规划和准备群集部署
 
@@ -20,7 +20,7 @@ ms.locfileid: "76834444"
 ## <a name="select-the-os-for-the-cluster"></a>选择群集的 OS
 使用 Service Fabric 可在运行 Windows Server 或 Linux 的任何 VM 或计算机上创建 Service Fabric 群集。  在部署群集之前，必须选择操作系统： Windows 或 Linux。  群集中的每个节点（虚拟机）都运行相同的操作系统，不能在同一个群集中混合使用 Windows 和 Linux 虚拟机。
 
-## <a name="capacity-planning"></a>容量规则
+## <a name="capacity-planning"></a>容量计划
 对于任何生产部署，容量规划都是一个重要的步骤。 下面是在规划过程中必须注意的一些事项。
 
 * 群集的初始节点类型数 
@@ -77,7 +77,6 @@ ms.locfileid: "76834444"
         "virtualMachineProfile": {
             "storageProfile": {
                 "osDisk": {
-                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
                         "caching": "ReadOnly",
                         "createOption": "FromImage",
                         "diffDiskSettings": {

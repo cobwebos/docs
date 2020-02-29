@@ -3,20 +3,20 @@ title: 显示控件引用
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 显示控件的参考。 使用 "显示控件" 自定义自定义策略中定义的用户旅程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136341"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188726"
 ---
 # <a name="display-controls"></a>显示控件
 
@@ -30,7 +30,7 @@ ms.locfileid: "77136341"
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
  在[自断言技术配置文件](self-asserted-technical-profile.md)的 "[元数据](self-asserted-technical-profile.md#metadata)" 部分中，引用的[ContentDefinition](contentdefinitions.md)需要将 `DataUri` 设置为页面协定版本2.0.0 或更高版本。 例如：
 
@@ -46,7 +46,7 @@ ms.locfileid: "77136341"
 
 **DisplayControl**元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于显示控件的标识符。 可以[引用](#referencing-display-controls)它。 |
 | UserInterfaceControlType | 是 | 显示控件的类型。 目前支持[VerificationControl](display-control-verification.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "77136341"
 | InputClaims | 0:1 | **InputClaims**用于预填充要从用户收集的声明的值。 |
 | DisplayClaims | 0:1 | **DisplayClaims**用于表示要从用户收集的声明。 |
 | OutputClaims | 0:1 | **OutputClaims**用于表示要为此显示**控件**暂时保存的声明。 |
-| Actions | 0:1 | **操作**用于列出要为前端发生的用户操作调用的验证技术配置文件。 |
+| 操作 | 0:1 | **操作**用于列出要为前端发生的用户操作调用的验证技术配置文件。 |
 
 ### <a name="input-claims"></a>输入声明
 

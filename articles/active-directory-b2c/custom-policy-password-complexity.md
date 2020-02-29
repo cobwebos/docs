@@ -3,20 +3,20 @@ title: 使用自定义策略配置密码复杂性
 titleSuffix: Azure AD B2C
 description: 如何在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性要求。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d0caa029bd33da499db23f218b2392344c4585ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849066"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189134"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849066"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，你可以为用户在创建帐户时提供的密码配置复杂性要求。 默认情况下，Azure AD B2C 使用“强”密码。 本文介绍如何在[自定义策略](custom-policy-overview.md)中配置密码复杂性。 还有可能在[用户流](user-flow-password-complexity.md)中配置密码复杂性。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -32,7 +32,7 @@ ms.locfileid: "76849066"
 
 1. 复制随初学者包下载的 *SignUpOrSignIn.xml* 文件，并将其命名为 *SingUpOrSignInPasswordComplexity.xml*。
 2. 打开 *SingUpOrSignInPasswordComplexity.xml* 文件，并将 **PolicyId** 和 **PublicPolicyUri** 更改为新的策略名称。 例如，*B2C_1A_signup_signin_password_complexity*。
-3. 添加标识符为 `newPassword` 和 `reenterPassword` 的以下 **ClaimType** 元素：
+3. 添加标识符为 **和** 的以下 `newPassword`ClaimType`reenterPassword` 元素：
 
     ```XML
     <ClaimsSchema>
@@ -117,13 +117,13 @@ ms.locfileid: "76849066"
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 *SingUpOrSignInPasswordComplexity.xml* 文件。
+6. 选择“覆盖策略(若存在)”，然后搜索并选择 **SingUpOrSignInPasswordComplexity.xml** 文件。
 7. 单击“上载” 。
 
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_signup_signin_password_complexity*。
-2. 对于“应用程序”，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示 `https://jwt.ms`。
+2. 对于“应用程序”，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示`https://jwt.ms`。
 3. 单击“立即运行”。
 4. 选择“立即注册”，输入电子邮件地址，并输入新密码。 密码限制中会显示相关指导。 完成输入用户信息，然后单击“创建”。 应看到返回的令牌的内容。
 

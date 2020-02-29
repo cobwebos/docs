@@ -4,19 +4,19 @@ description: 将 Azure 应用程序 Insights ILogger 提供程序与 ASP.NET Cor
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: e2b306670c43722279327301b15630f96da50ea5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659928"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192466"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core ILogger 日志
 
 ASP.NET Core 支持使用各种内置和第三方日志记录提供程序的日志记录 API。 日志记录是通过在*ILogger*实例上调用**日志（）** 或其变体来完成的。 本文演示如何使用*ApplicationInsightsLoggerProvider*来捕获控制台和 ASP.NET Core 应用程序中的 ILogger 日志。 本文还介绍了 ApplicationInsightsLoggerProvider 如何与其他 Application Insights 遥测数据集成。
 有关详细信息，请参阅[登录 ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
 
-## <a name="aspnet-core-applications"></a>ASP.NET Core 应用程序
+## <a name="aspnet-core-applications"></a>ASP.NET Core应用程序
 
 默认情况下，ApplicationInsightsLoggerProvider 在[APPLICATIONINSIGHTS.CONFIG SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1 （及更高版本）中通过以下任一标准方法启用常规 Application Insights 监视：
 
@@ -426,7 +426,7 @@ Application Insights 通过使用用于每个其他遥测的相同 TelemetryConf
 ```csharp
 public class MyController : ApiController
 {
-   // This telemtryclient can be used to track additional telemetry using TrackXXX() api.
+   // This telemetryclient can be used to track additional telemetry using TrackXXX() api.
    private readonly TelemetryClient _telemetryClient;
    private readonly ILogger _logger;
 

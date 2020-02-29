@@ -1,6 +1,6 @@
 ---
 title: 视频
-description: 指向 Azure SQL 数据仓库的各种视频播放列表的链接。
+description: Azure Synapse Analytics 的各种视频播放列表的链接。
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692436"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192160"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL 数据仓库-视频
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse 分析-SQL 池视频
 
-观看最新的 Azure SQL 数据仓库视频，了解新功能和性能改进。 
+观看最新的 Azure Synapse SQL pool 视频，了解新功能和性能改进。 
 
-若要开始，请选择以下概述视频以了解 Azure SQL 数据仓库的新更新。 另外，了解如何使用新式数据仓库模式来应对网络犯罪等真实情况。
+若要开始，请选择下面的概述视频，了解 Azure Synapse SQL 池的新更新。 另外，了解如何使用新式数据仓库模式来应对网络犯罪等真实情况。
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

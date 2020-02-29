@@ -1,6 +1,6 @@
 ---
 title: T-SQL 语言元素
-description: 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。
+description: SQL Analytics 中支持的 T-sql 语句的文档链接。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692525"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198416"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语言元素
-有关 Azure SQL 数据仓库中支持的 T-SQL 语言元素文档的链接。
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL Analytics 中支持的 t-sql 语言元素
+SQL Analytics 中支持的 T-sql 语言元素的文档链接。
 
 ## <a name="core-elements"></a>核心元素
 * [语法约定](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -53,7 +53,7 @@ ms.locfileid: "73692525"
 * [-（负）](https://msdn.microsoft.com/library/ms189480.aspx)
 * [-（减）](https://msdn.microsoft.com/library/ms189518.aspx)
 * [*（乘）](https://msdn.microsoft.com/library/ms176019.aspx)
-* [/（除）](https://msdn.microsoft.com/library/ms175009.aspx)
+* [/ (Divide)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [取模](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>要匹配的通配符
@@ -71,7 +71,7 @@ ms.locfileid: "73692525"
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
 * [LIKE](https://msdn.microsoft.com/library/ms179859.aspx)
 * [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
-* [或](https://msdn.microsoft.com/library/ms188361.aspx)
+* [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>位运算符
 * [&（位与）](https://msdn.microsoft.com/library/ms174965.aspx)
@@ -230,7 +230,7 @@ ms.locfileid: "73692525"
 * [事务](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>诊断会话
-* [创建诊断会话](https://msdn.microsoft.com/library/mt204029.aspx)
+* [CREATE DIAGNOSTICS SESSION](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>过程
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
@@ -278,5 +278,5 @@ ms.locfileid: "73692525"
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>后续步骤
-有关详细参考信息，请参阅 [Azure SQL 数据仓库中的 T-SQL 语句](sql-data-warehouse-reference-tsql-statements.md)以及 [Azure SQL 数据仓库中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。
+有关更多参考信息，请参阅[Sql analytics 中的 t-sql 语句](sql-data-warehouse-reference-tsql-statements.md)和[sql Analytics 中的系统视图](sql-data-warehouse-reference-tsql-system-views.md)。
 

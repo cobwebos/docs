@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722333"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199710"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric 节点类型与虚拟机规模集
 
-[虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 Azure Service Fabric 群集中定义的每个节点类型均设置了独立的规模集。 Service Fabric 运行时安装在由*ServiceFabric*虚拟机扩展的规模集中的每个虚拟机上。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
+[虚拟机规模集](/azure/virtual-machine-scale-sets)是一种 Azure 计算资源。 可使用规模集以集的形式部署和管理虚拟机集合。 在 Azure Service Fabric 群集中定义的每个节点类型都只设置一个规模集：多个节点类型不能由同一规模集支持，一个节点类型不应（在大多数情况下）由多个规模集支持。 这种情况的一个例外是，在[垂直缩放](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)节点类型的极少数情况下，当你使用相同的 `nodeTypeRef` 值临时具有两个规模集，同时将副本从原始迁移到已升级的规模集。
+
+Service Fabric 运行时安装在由*ServiceFabric*虚拟机扩展的规模集中的每个虚拟机上。 可独立增加或减少每个节点类型、更改每个群集节点上运行的 OS SKU、打开不同的端口集，并使用不同的容量指标。
 
 下图显示了一个具有两个节点类型的群集，分别名为*前端*和*后端*。 每个节点类型具有五个节点。
 
@@ -74,12 +76,12 @@ Service Fabric 虚拟机扩展用于启动向 Azure 虚拟机 Service Fabric，�
 | --- | --- | --- | --- |
 | name | 字符串 | 扩展的唯一名称 |
 | type | "ServiceFabricLinuxNode" 或 "ServiceFabricWindowsNode" | 标识要引导的操作系统 Service Fabric |
-| autoUpgradeMinorVersion | true 或 false | 启用 SF 运行时次要版本自动升级 |
+| autoUpgradeMinorVersion | True 或 False | 启用 SF 运行时次要版本自动升级 |
 | 发布者 | Microsoft.Azure.ServiceFabric | Service Fabric 扩展发布服务器的名称 |
 | clusterEndpont | 字符串 | URI：端口到管理终结点 |
-| nodeTypeRef | 字符串 | nodeType 的名称 |
+| nodeTypeRef | 字符串 | NodeType 的名称 |
 | durabilityLevel | 青铜，银，黄金，白金 | 允许暂停不可变的 Azure 基础结构的时间 |
-| enableParallelJobs | true 或 false | 在同一规模集中并行启用计算 ParallelJobs，如删除 VM 和重新启动 VM |
+| enableParallelJobs | True 或 False | 在同一规模集中并行启用计算 ParallelJobs，如删除 VM 和重新启动 VM |
 | nicPrefixOverride | 字符串 | 子网前缀，如 "10.0.0.0/24" |
 | commonNames | string[] | 已安装群集证书的公用名称 |
 | x509StoreName | 字符串 | 安装了群集证书的存储的名称 |

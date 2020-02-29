@@ -1,5 +1,5 @@
 ---
-title: 加载 Contoso 零售数据
+title: 将 Contoso 零售数据加载到 SQL Analytics 数据仓库
 description: 使用 PolyBase 和 T-sql 命令可将两个表从 Contoso 零售数据加载到 Azure SQL Analytics 中。
 services: sql-data-warehouse
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: af505d7614b527d6dc7e1ce54136578d67824cf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4da4ea54de5517864567583cc6853df40b4370a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721160"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197294"
 ---
 # <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>将 Contoso 零售数据加载到 SQL Analytics 数据仓库
 
@@ -29,12 +29,15 @@ ms.locfileid: "76721160"
 3. 完成加载后执行优化。
 
 ## <a name="before-you-begin"></a>开始之前
+
 若要运行本教程，需要一个已有 SQL Analytics 数据仓库的 Azure 帐户。 如果尚未预配数据仓库，请参阅[创建数据仓库和设置服务器级防火墙规则](create-data-warehouse-portal.md)。
 
-## <a name="1-configure-the-data-source"></a>1. 配置数据源
+## <a name="configure-the-data-source"></a>配置数据源
+
 PolyBase 使用 T-SQL 外部对象来定义外部数据的位置和属性。 外部对象定义存储在 SQL Analytics 数据仓库中。 数据存储在外部。
 
-### <a name="11-create-a-credential"></a>1.1. 创建凭据
+## <a name="create-a-credential"></a>创建凭据
+
 如果要加载 Contoso 公共数据，**请跳过此步骤**。 不需要安全访问公共数据，因为任何人都可以访问它。
 
 如果使用本教程作为模板来加载自己的数据，**请不要跳过此步骤**。 若要通过凭据访问数据，请使用以下脚本创建数据库范围的凭据。 然后在定义数据源的位置时使用。
@@ -72,7 +75,8 @@ WITH (
 );
 ```
 
-### <a name="12-create-the-external-data-source"></a>1.2. 创建外部数据源
+## <a name="create-the-external-data-source"></a>创建外部数据源
+
 使用[CREATE EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15)命令存储数据的位置和数据类型。 
 
 ```sql
@@ -87,9 +91,9 @@ WITH
 > [!IMPORTANT]
 > 如果选择公开 azure blob 存储容器，请记住，由于是数据所有者，因此在数据离开数据中心时，需要支付数据传出费用。 
 > 
-> 
 
-## <a name="2-configure-data-format"></a>2. 配置数据格式
+## <a name="configure-the-data-format"></a>配置数据格式
+
 数据存储在 Azure Blob 存储中的文本文件内，每个字段以分隔符隔开。 在 SSMS 中，运行以下 CREATE EXTERNAL FILE FORMAT 命令，指定文本文件中数据的格式。 Contoso 数据未压缩，以坚线分隔。
 
 ```sql
@@ -104,10 +108,10 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>3. 创建外部表
+## <a name="create-the-external-tables"></a>创建外部表
 现在您已经指定了数据源和文件格式，接下来可以创建外部表了。 
 
-### <a name="31-create-a-schema-for-the-data"></a>3.1. 创建数据的架构。
+## <a name="create-a-schema-for-the-data"></a>为数据创建架构
 若要创建一个位置用于存储数据库中的 Contoso 数据，请创建架构。
 
 ```sql
@@ -115,7 +119,8 @@ CREATE SCHEMA [asb]
 GO
 ```
 
-### <a name="32-create-the-external-tables"></a>3.2. 创建外部表。
+## <a name="create-the-external-tables"></a>创建外部表
+
 运行以下脚本以创建 DimProduct 和 FactOnlineSales 外部表。 在此，您只需定义列名和数据类型，并将其绑定到 Azure blob 存储文件的位置和格式即可。 定义存储在 SQL Analytics 数据仓库中，数据仍位于 Azure 存储 Blob 中。
 
 **LOCATION** 参数是 Azure 存储 Blob 中根文件夹下的文件夹。 每个表位于不同的文件夹中。
@@ -202,10 +207,11 @@ WITH
 ;
 ```
 
-## <a name="4-load-the-data"></a>4. 加载数据
+## <a name="load-the-data"></a>加载数据
 可以通过不同的方式来访问外部数据。  您可以直接从外部表查询数据，将数据加载到数据仓库中的新表，或者将外部数据添加到现有数据仓库表中。  
 
-### <a name="41-create-a-new-schema"></a>4.1. 创建新架构
+###  <a name="create-a-new-schema"></a>创建新架构
+
 CTAS 可创建包含数据的新表。  首先，请创建 contoso 数据的架构。
 
 ```sql
@@ -213,7 +219,8 @@ CREATE SCHEMA [cso]
 GO
 ```
 
-### <a name="42-load-the-data-into-new-tables"></a>4.2. 将数据载入新表
+### <a name="load-the-data-into-new-tables"></a>将数据载入新表
+
 若要将数据从 Azure blob 存储加载到数据仓库表中，请使用[CREATE TABLE AS SELECT （transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7)语句。 通过[CTAS](sql-data-warehouse-develop-ctas.md)加载将利用已创建的强类型化外部表。 若要将数据加载到新表中，请对每个表使用一个 CTAS 语句。 
  
 CTAS 将创建新表，并在该表中填充 select 语句的结果。 CTAS 将新表定义为包含与 select 语句结果相同的列和数据类型。 如果选择了外部表中的所有列，新表将是外部表中的列和数据类型的副本。
@@ -228,7 +235,8 @@ CREATE TABLE [cso].[DimProduct]            WITH (DISTRIBUTION = HASH([ProductKey
 CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey]  ) ) AS SELECT * FROM [asb].[FactOnlineSales]        OPTION (LABEL = 'CTAS : Load [cso].[FactOnlineSales]        ');
 ```
 
-### <a name="43-track-the-load-progress"></a>4.3 跟踪加载进度
+### <a name="track-the-load-progress"></a>跟踪加载进度
+
 可使用动态管理视图 (DMV) 跟踪加载操作的进度。 
 
 ```sql
@@ -264,7 +272,8 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="5-optimize-columnstore-compression"></a>5. 优化列存储压缩
+## <a name="optimize-columnstore-compression"></a>优化列存储压缩
+
 默认情况下，SQL Analytics 数据仓库将表存储为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  出现这种情况的原因有多种。 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
 若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。 
@@ -279,7 +288,8 @@ ALTER INDEX ALL ON [cso].[FactOnlineSales]          REBUILD;
 
 有关维护列存储索引的详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)一文。
 
-## <a name="6-optimize-statistics"></a>6. 优化统计信息
+## <a name="optimize-statistics"></a>优化统计信息
+
 最好在负载后立即创建单列统计信息。 如果知道某些列不会在查询谓词中，则可以跳过对这些列创建统计信息。 如果对每个列创建单列统计信息，则重新生成所有统计信息可能需要较长时间。 
 
 如果决定针对每个表的每个列创建单列统计信息，可以使用 `prc_sqldw_create_stats`statistics[（统计信息）一文中的存储过程代码示例 ](sql-data-warehouse-tables-statistics.md)。
@@ -329,7 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>大功告成！
-已成功将公共数据加载到 SQL Analytics 数据仓库中。 干得不错！
+已成功将公共数据加载到数据仓库中。 干得不错！
 
 你现在可以开始查询表以浏览数据。 运行以下查询以找出每个品牌的总销售额：
 

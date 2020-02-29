@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 316b28faa458b03431cb48f02a8087116415b061
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d35241850d60e82b79bba0384f60c40e3ecd6427
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075903"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192517"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -34,7 +34,7 @@ ms.locfileid: "74075903"
 - 应如何分配[出站 SNAT 端口](load-balancer-outbound-connections.md#snat)。
 - 要为哪些协议提供出站转换。
 - 用于出站连接空闲超时的持续时间（4-120 分钟）。
-- 空闲超时时是否要发送 TCP 重置（公共预览版功能）。 
+- 是否在空闲超时后发送 TCP 重置
 
 出站规则扩展了[出站连接](load-balancer-outbound-connections.md#lb)一文中所述的[方案 2](load-balancer-outbound-connections.md)，方案优先顺序保持不变。
 
@@ -95,7 +95,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a>启用空闲超时时的 TCP 重置（预览版）
+### <a name="tcprst"></a><a name="tcpreset"></a>启用处于空闲超时的 TCP 重置
 
 负载均衡器的默认行为是在达到出站空闲超时时以静默方式丢弃流。  使用 enableTCPReset 参数可以启用更有预测性的应用程序行为，并控制在发生出站空闲超时时，是否要发送双向 TCP 重置 (TCP RST)。 
 
@@ -103,7 +103,7 @@ API 版本“2018-07-01”允许按如下所示构建出站规则定义：
 
            "enableTcpReset": true
 
-查看[空闲超时时的 TCP 重置（预览版）](https://aka.ms/lbtcpreset)了解详细信息，包括区域可用性。
+有关详细信息（包括区域可用性），请查看有关[空闲超时的 TCP 重置](https://aka.ms/lbtcpreset)。
 
 ### <a name="proto"></a>支持具有单个规则的 TCP 和 UDP 传输协议
 
@@ -207,7 +207,7 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 - 可配置的出站空闲超时范围为 4 到 120 分钟（240 到 7200 秒）。
 - 负载均衡器不支持将 ICMP 用于出站 NAT。
 - 不能使用门户来配置或查看出站规则。  请改为使用模板、REST API、Az CLI 2.0 或 PowerShell。
-- 出站规则只能应用于 NIC 的主 IP 配置。  支持多个 NIC。
+- 出站规则只能应用于 NIC 的主 IP 配置。  支持多个 Nic。
 
 ## <a name="next-steps"></a>后续步骤
 

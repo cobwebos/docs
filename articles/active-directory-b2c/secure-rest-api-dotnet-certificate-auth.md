@@ -3,20 +3,20 @@ title: 使用客户端证书保护 RESTful 服务
 titleSuffix: Azure AD B2C
 description: 使用客户端证书保护 Azure AD B2C 中的自定义 REST API 声明交换
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b6f4c24bb5587ca67fd2de0d8aad2c6f5218a41b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 98606443707c183a15a4bacd26646c3eac6c8a69
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848507"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186907"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>使用客户端证书保护 RESTful 服务
 
@@ -34,7 +34,7 @@ ms.locfileid: "76848507"
 * 将证书上传到 Azure AD B2C 策略密钥。
 * 将自定义策略配置为使用客户端证书。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 * 完成[集成 REST API 声明交换](rest-api-claims-exchange-dotnet.md)一文中所述的步骤。
 * 获取有效的证书（包含私钥的 .pfx 文件）。
 
@@ -49,7 +49,7 @@ ms.locfileid: "76848507"
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>步骤 2：将证书上传到 Azure AD B2C 策略密钥
 将 `clientCertEnabled` 设置为 *true* 之后，与 RESTful API 之间的通信需要客户端证书。 若要获取、上传以及在 Azure AD B2C 租户中存储客户端证书，请执行以下操作：
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” **“标识体验框架”。**  > 
 
 2. 若要查看租户中的可用密钥，请选择“策略密钥”。
 
@@ -76,7 +76,7 @@ ms.locfileid: "76848507"
 
 1. 在工作目录中，打开 *TrustFrameworkExtensions.xml* 扩展策略文件。
 
-2. 搜索包含 `Id="REST-API-SignUp"` 的 `<TechnicalProfile>` 节点。
+2. 搜索包含 `<TechnicalProfile>` 的 `Id="REST-API-SignUp"` 节点。
 
 3. 找到 `<Metadata>` 元素。
 

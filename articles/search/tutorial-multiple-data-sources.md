@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/28/2020
+ms.openlocfilehash: 6408689deec7de365ede86665a0eaeb0bd0de64b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495028"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196563"
 ---
-# <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#教程：将来自多个数据源的数据合并到一个 Azure 认知搜索索引中
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教程：从多个数据源中检索数据C#
 
 Azure 认知搜索可导入、分析多个数据源的数据并将其编入单个合并的搜索索引。 这适合以下情况：其中结构化数据是使用来自文本、HTML 或 JSON 文档等其他源的结构化程度较低或甚至纯文本数据来聚合的。
 
 本教程介绍如何为来自 Azure Cosmos DB 数据源的酒店数据编制索引并将其与来自 Azure Blob 存储文档的酒店房间详细信息整合。 其结果将是包含复杂数据类型的合并的酒店搜索索引。
 
-本教程使用 C#、适用于 Azure 认知搜索的 .NET SDK 以及 Azure 门户执行以下任务：
+本教程使用C#和[.net SDK](https://aka.ms/search-sdk)执行以下任务：
 
 > [!div class="checklist"]
 > * 上传示例数据和创建数据源
@@ -30,19 +30,19 @@ Azure 认知搜索可导入、分析多个数据源的数据并将其编入单�
 > * 为来自 Azure Cosmos DB 的酒店数据编制索引
 > * 合并来自 Blob 存储的酒店房间数据
 
-## <a name="prerequisites"></a>必备组件
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-本快速入门使用以下服务、工具和数据。 
+## <a name="prerequisites"></a>必备条件
 
-- [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
++ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
++ [Azure 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Visual Studio 2019](https://visualstudio.microsoft.com/)
++ [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-- [创建一个 Cosmos DB 帐户](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)，用于存储示例酒店数据。
+> [!Note]
+> 您可以使用本教程的免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保你已在服务上实现了接受新资源的空间。
 
-- [创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)来存储示例房间数据。
-
-- [安装 Visual Studio 2019](https://visualstudio.microsoft.com/) ，将其用作 IDE。
-
-### <a name="install-the-project-from-github"></a>从 GitHub 安装项目
+## <a name="download-files"></a>下载文件
 
 1. 找到 GitHub 上的示例存储库：[azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples)。
 1. 选择“克隆或下载”，制作项目的专用本地副本。
@@ -58,7 +58,7 @@ Azure 认知搜索可导入、分析多个数据源的数据并将其编入单�
 
 1. 登录到[Azure 门户](https://portal.azure.com/)，并在 "搜索服务**概述**" 页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” **“密钥”中，获取有关该服务的完全权限的管理员密钥** > 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
 ![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
 
@@ -340,13 +340,23 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 
 单击列表中的 hotel-rooms-sample 索引。 随即会显示索引的“搜索资源管理器”界面。 输入一个词（如“奢华”）进行查询。 得到的结果中至少会显示一个文档，此文档的房间数组中会显示一系列房间对象。
 
+## <a name="reset-and-rerun"></a>重置并重新运行
+
+在开发的早期实验阶段，设计迭代的最实用方法是从 Azure 认知搜索中删除对象，并允许你的代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+
+本教程的示例代码检查现有对象并将其删除，以便您可以重新运行代码。
+
+还可以使用门户删除索引、索引器和数据源。
+
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务的资源组。 现在，可以删除资源组以永久删除其中的所有内容。 在门户中，资源组名称显示在 Azure 认知搜索服务的“概述”页上。
+在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+
+使用左侧导航窗格中的 "所有资源" 或 "资源组" 链接，可以在门户中查找和管理资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-要编制 JSON Blob 的索引，有多种方法和多个选项。 如果源数据包含 JSON 内容，可以查看这些选项，选择最适合自己方案的选项。
+现在你熟悉了来自多个源的引入数据概念，接下来让我们详细了解索引器配置，从 Cosmos DB 开始。
 
 > [!div class="nextstepaction"]
-> [如何使用 Azure 认知搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)
+> [配置 Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)

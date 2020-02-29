@@ -3,20 +3,20 @@ title: 将应用程序和 Api 迁移到 b2clogin.com
 titleSuffix: Azure AD B2C
 description: 了解在 Azure Active Directory B2C 的重定向 URL 中使用 b2clogin.com。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa1e6d8705cf4aed975ed0940087f243a06a9019
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 64b440054795670b99a22e37dec7188f3e1cd74c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372697"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189984"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>将 Azure Active Directory B2C 的重定向 URL 设置为 b2clogin.com
 

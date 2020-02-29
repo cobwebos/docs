@@ -3,20 +3,20 @@ title: 通过自定义策略将访问令牌传递给应用
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中通过自定义策略将 OAuth 2.0 标识提供者的访问令牌传递给应用程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 697c904f98ea29395d5c4e95abe27556c06bb479
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76839085"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187775"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略将访问令牌传递给应用程序
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-poli
 
 Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Connect](openid-connect.md) 标识提供者的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 自定义策略使用 OAuth 2.0 或 OpenID Connect 标识提供者进行配置。
 
@@ -89,7 +89,7 @@ Azure AD B2C 支持传递 [OAuth 2.0](authorization-code-flow.md) 和 [OpenID Co
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
+6. 选择“覆盖策略(若存在)”，然后搜索并选择 **TrustframeworkExtensions.xml** 文件。
 7. 选择“上传”。
 8. 针对信赖方文件（例如 *SignUpOrSignIn.xml*）重复步骤 5 到 7。
 

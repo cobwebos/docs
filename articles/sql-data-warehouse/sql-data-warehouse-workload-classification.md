@@ -1,26 +1,26 @@
 ---
 title: 工作负荷分类
-description: 有关使用分类来管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指南。
+description: 使用分类来管理 Azure Synapse 分析中查询的并发性、重要性和计算资源的指南。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/27/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.custom: azure-synapse
+ms.openlocfilehash: f350885c2d25860c7dc83310534ca9d8c9d72555
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768829"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191753"
 ---
-# <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL 数据仓库工作负荷分类
+# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse 分析工作负荷分类
 
-本文介绍为传入请求分配资源类和重要性的 SQL 数据仓库工作负荷分类过程。
+本文介绍使用 Azure Synapse 中的 SQL Analytics 向传入请求分配工作负荷组和重要性的工作负荷分类过程。
 
 ## <a name="classification"></a>分类
 
@@ -36,7 +36,7 @@ ms.locfileid: "76768829"
 
 ## <a name="classification-process"></a>分类过程
 
-现在，通过将用户分配到具有分配给[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)它的对应资源类的角色，可以在 SQL 数据仓库中进行分类。 将请求的特征化超出了资源类登录名的能力仅限于此功能。 "[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)" 语法现在提供了更丰富的分类方法。  使用此语法，SQL 数据仓库用户可以通过 `workload_group` 参数分配重要性和分配给请求的系统资源量。 
+现在，通过将用户分配到具有分配给它的对应资源类[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)的角色，可立即实现 Azure Synapse 中的 SQL Analytics 分类。 将请求的特征化超出了资源类登录名的能力仅限于此功能。 "[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)" 语法现在提供了更丰富的分类方法。  使用此语法，SQL Analytics 用户可以通过 `workload_group` 参数分配重要性和分配给请求的系统资源量。 
 
 > [!NOTE]
 > 分类按请求进行评估。 单个会话中的多个请求可以不同地分类。

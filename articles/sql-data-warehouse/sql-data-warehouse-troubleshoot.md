@@ -1,51 +1,51 @@
 ---
 title: 故障排除
-description: 排查 Azure SQL 数据仓库问题。
+description: Azure Synapse Analytics 故障排除。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/25/2019
+ms.date: 02/04/2019
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 4eec340a04b9cdbc85a2c8712a11d31132766206
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 085b907b6a848fb534df63b5465948864048cc19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153360"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199863"
 ---
-# <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
+# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure Synapse 中的 SQL Analytics 疑难解答
 本文列出了常见的故障排除问题。
 
 ## <a name="connecting"></a>Connecting
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 (Microsoft SQL Server，错误: 18456) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
-| 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 (Microsoft SQL Server，错误: 916) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要纠正此问题，可以在连接时指定要连接到的 SQL 数据仓库，也可以将用户添加到 master 数据库。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
-| CTAIP 错误                                                  | 当登录名已在 SQL Server master 数据库中创建，但未在 SQL 数据仓库数据库中时，可能会出现此错误。  如果遇到此错误，请参阅[安全性概述](sql-data-warehouse-overview-manage-security.md)一文。  本文介绍如何在 master 中创建登录名和用户，以及如何在 SQL 数据仓库数据库中创建用户。 |
-| 被防火墙阻止                                          | 为了确保只有已知的 IP 地址可以访问数据库，Azure SQL 数据库受到服务器和数据库级别的防火墙保护。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置防火墙的访问权限，请遵循[预配说明](sql-data-warehouse-get-started-provision.md)中的[为客户端 IP 配置服务器防火墙访问权限](sql-data-warehouse-get-started-provision.md)中所述的步骤。 |
-| 无法使用工具或驱动程序进行连接                           | SQL 数据仓库建议使用[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)、[用于 Visual Studio 的 SSDT](sql-data-warehouse-install-visual-studio.md)或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)来查询数据。 有关驱动程序和连接到 SQL 数据仓库的详细信息，请参阅[AZURE Sql 数据仓库驱动程序](sql-data-warehouse-connection-strings.md)和[连接到 Azure sql 数据仓库](sql-data-warehouse-connect-overview.md)文章。 |
+| 用户 “NT AUTHORITY\ANONYMOUS LOGON” 登录失败。 (Microsoft SQL Server，错误: 18456) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要更正此问题，请在连接时指定要连接到的 SQL 池，或者将该用户添加到 master 数据库中。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
+| 服务器主体“MyUserName”无法在当前的安全上下文下访问数据库“master”。 无法打开用户默认数据库。 登录失败。 用户“MyUserName”的登录失败。 (Microsoft SQL Server，错误: 916) | 当 AAD 用户尝试连接到 master 数据库，但 master 中没有用户时，会发生此错误。  若要更正此问题，请在连接时指定要连接到的 SQL 池，或者将该用户添加到 master 数据库中。  有关更多详细信息，请参阅 [Security overview](sql-data-warehouse-overview-manage-security.md)（安全性概述）一文。 |
+| CTAIP 错误                                                  | 如果已在 SQL server master 数据库中创建登录名，但在 SQL 数据库中创建了该登录名，则会发生此错误。  如果遇到此错误，请参阅[安全性概述](sql-data-warehouse-overview-manage-security.md)一文。  本文介绍如何在 master 中创建登录名和用户，以及如何在 SQL 数据库中创建用户。 |
+| 被防火墙阻止                                          | SQL 池受防火墙保护，以确保只有已知的 IP 地址可以访问数据库。 默认情况下，防火墙是安全的，这意味着，需要显式启用单个 IP 地址或地址范围才能进行连接。  若要配置防火墙的访问权限，请遵循[预配说明](sql-data-warehouse-get-started-provision.md)中的[为客户端 IP 配置服务器防火墙访问权限](sql-data-warehouse-get-started-provision.md)中所述的步骤。 |
+| 无法使用工具或驱动程序进行连接                           | SQL Analytics 建议使用[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)、 [SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)或[sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)来查询数据。 有关驱动程序和连接到 Azure Synapse 的详细信息，请参阅[Azure Synapse 的驱动程序](sql-data-warehouse-connection-strings.md)和[连接到 azure Synapse](sql-data-warehouse-connect-overview.md)文章。 |
 
 ## <a name="tools"></a>工具
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio 对象资源管理器缺少 AAD 用户           | 这是一个已知问题。  解决方法是在 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15) 中查看这些用户。  要详细了解如何将 Azure Active Directory 用于 SQL 数据仓库，请参阅[向 Azure SQL 数据仓库进行身份验证](sql-data-warehouse-authentication.md)。 |
+| Visual Studio 对象资源管理器缺少 AAD 用户           | 这是一个已知问题。  解决方法是在 [sys.database_principals](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15) 中查看这些用户。  请参阅[Azure Synapse 的身份验证](sql-data-warehouse-authentication.md)，了解有关在 SQL Analytics 中使用 Azure Active Directory 的详细信息。 |
 | 手动编写脚本、使用脚本向导或通过 SSMS 进行连接的速度缓慢、无响应或产生错误 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
-| 在 SSMS 中生成脚本失败                               | 如果 "生成依赖对象的脚本" 选项设置为 "True"，则为 SQL 数据仓库生成脚本失败。 一种解决方法是，用户必须手动 **> 选项-> SQL Server 对象资源管理器-> 为依赖选项生成脚本并将其设置为 false** |
+| 在 SSMS 中生成脚本失败                               | 如果 "生成依赖对象的脚本" 选项设置为 "True"，则为 SQL Analytics 生成脚本失败。 一种解决方法是，用户必须手动 **> 选项-> SQL Server 对象资源管理器-> 为依赖选项生成脚本并将其设置为 false** |
 
 ## <a name="performance"></a>性能
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 查询性能故障排除                            | 如果要尝试对特定查询进行故障排除，请从 [Learning how to monitor your queries](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-query-execution)（学习如何监视查询）开始。 |
-| TempDB 空间问题 | [监视 TempDB](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb)空间使用情况。  淘汰 TempDB 空间的常见原因包括：<br>-分配给查询的资源不足，导致数据溢出到 TempDB。  请参阅[工作负荷管理](resource-classes-for-workload-management.md) <br>-统计信息缺失或过期，导致数据移动过多。  有关如何创建统计信息的详细信息，请参阅[维护表统计信息](sql-data-warehouse-tables-statistics.md)<br>-TempDB 空间为每个服务级别分配。  将[SQL 数据仓库缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute)为更高的 DWU 设置将分配更多 TempDB 空间。|
+| TempDB 空间问题 | [监视 TempDB](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md#monitor-tempdb)空间使用情况。  淘汰 TempDB 空间的常见原因包括：<br>-分配给查询的资源不足，导致数据溢出到 TempDB。  请参阅[工作负荷管理](resource-classes-for-workload-management.md) <br>-统计信息缺失或过期，导致数据移动过多。  有关如何创建统计信息的详细信息，请参阅[维护表统计信息](sql-data-warehouse-tables-statistics.md)<br>-TempDB 空间为每个服务级别分配。  将[SQL 池缩放](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md#scaling-compute)为更高的 DWU 设置将分配更多 TempDB 空间。|
 | 查询性能和计划不佳通常是由于缺少统计信息 | 性能不佳的最常见原因是缺少数据表的统计信息。  请参阅[维护表统计](sql-data-warehouse-tables-statistics.md)信息，了解有关如何创建统计信息的详细信息以及它们对性能至关重要的原因。 |
 | 低并发性/查询排队                             | 若要了解如何利用并发性平衡内存分配，了解[工作负荷管理](resource-classes-for-workload-management.md)很重要。 |
-| 如何实施最佳做法                              | 开始了解如何提高查询性能的最好地方是 [SQL 数据仓库最佳实践](sql-data-warehouse-best-practices.md)一文。 |
-| 如何通过缩放提高性能                      | 有时，改进性能的解决方案只需通过[缩放 SQL 数据仓库](sql-data-warehouse-manage-compute-overview.md)来提升查询的计算能力。 |
+| 如何实施最佳做法                              | 要开始了解提高查询性能的方法的最佳位置是[SQL Analytics 最佳实践](sql-data-warehouse-best-practices.md)一文。 |
+| 如何通过缩放提高性能                      | 有时，改进性能的解决方案只是通过[缩放 SQL 池](sql-data-warehouse-manage-compute-overview.md)来向查询添加更多计算能力。 |
 | 由于索引质量不佳导致查询性能不佳     | 由于[列存储索引质量不佳](../sql-data-warehouse/sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)，某些时间查询可能会减慢。  有关详细信息以及如何[重建索引以提高段质量](../sql-data-warehouse/sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)，请参阅本文。 |
 
 ## <a name="system-management"></a>系统管理

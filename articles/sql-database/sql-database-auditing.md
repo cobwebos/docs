@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212890"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184751"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
-针对 Azure [SQL 数据库](sql-database-technical-overview.md)和[SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核将跟踪数据库事件，并将它们写入 Azure 存储帐户中的审核日志，Log Analytics 工作区或事件中心。 审核还可：
+针对 Azure [SQL 数据库](sql-database-technical-overview.md)和[azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的审核可以跟踪数据库事件，并将这些事件写入 Azure 存储帐户中的审核日志，Log Analytics 工作区或事件中心。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
@@ -26,7 +27,7 @@ ms.locfileid: "77212890"
 
 
 > [!NOTE] 
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本主题适用于 Azure SQL server，以及 SQL 数据库和 azure Synapse Analytics 数据库（在 Azure SQL server 上创建）。 为简单起见，在同时引用 SQL 数据库和 Azure Synapse 时使用 SQL 数据库。
 
 ## <a id="subheading-1"></a>Azure SQL 数据库审核概述
 
@@ -80,6 +81,16 @@ ms.locfileid: "77212890"
 
     ![“导航”窗格][3]
 
+5. **新建** - 现在有多个选项，可以用来配置审核日志将写入到的位置。 你可以将日志写入 Azure 存储帐户、Azure Monitor 日志的 Log Analytics 工作区，或使用事件中心进行消耗的事件中心。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
+  
+   > [!NOTE]
+   > 如果客户想要为其服务器配置不可变的日志存储，或数据库级审核事件，则应遵循[Azure 存储提供的说明](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
+  
+   > [!WARNING]
+   > 根据引入速率，启用 Log Analytics 审核会产生成本。 请注意，使用此[选项](https://azure.microsoft.com/pricing/details/monitor/)时的关联成本，或考虑将审核日志存储在 Azure 存储帐户中。
+
+   ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">审核到存储目标</a>
 
 若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击“确定”。 早于保留期的日志会被删除。
@@ -105,9 +116,22 @@ ms.locfileid: "77212890"
 
 ### <a id="audit-event-hub-destination">审核到事件中心目标</a>
 
+< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> 不能对已暂停的 SQL 池启用审核。 若要启用它，请取消暂停 SQL 池。
+
+> [!WARNING]
+> 如果在具有 SQL 池的服务器上启用审核，则**会导致 SQL 池恢复，并再次重新暂停，** 这可能会产生费用。
+< < < < < < < HEAD = = = = = = =：若要配置向事件中心写入审核日志，请选择 "**事件中心（预览版）** "，并打开 "**事件中心详细信息**"。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 若要配置将审核日志写入事件中心的操作，请选择“事件中心(预览版)”，打开“事件中心详细信息”。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 

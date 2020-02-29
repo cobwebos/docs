@@ -4,12 +4,12 @@ description: 了解控制 Azure Kubernetes Service （AKS）中的出口流量�
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: a76f4eb8680d07193feb29450fdba7bb2a710a68
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595002"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191293"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service （AKS）中群集节点的出口流量
 
@@ -143,7 +143,7 @@ AKS 群集需要以下出站端口/网络规则：
 | cloudflare.docker.com | HTTPS:443 | 此地址用于请求 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP：443 | 此地址用于请求 helm/tiller 映像 |
 | storage.googleapis.com | HTTP：443 | 此地址用于请求 helm/tiller 映像 |
-| azds-<guid>。<location>. azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。 |
+| azds-\<guid\>。\<location\>. azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。 |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>启用了 Azure 策略的 AKS 群集所需的地址和端口（在公共预览版中）
 
@@ -156,7 +156,7 @@ AKS 群集需要以下出站端口/网络规则：
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | 此地址用于正确操作 Azure 策略。 （目前在 AKS 中为预览版） |
 | raw.githubusercontent.com | HTTPS:443 | 此地址用于从 GitHub 请求内置策略，以确保 Azure 策略的正确操作。 （目前在 AKS 中为预览版） |
-| \* gk。<location>. azmk8s.io | HTTPS:443 | 与在主服务器上运行的网关审核终结点通信以获取审核结果的 Azure 策略附加项。 |
+| \* gk。\<location\>. azmk8s.io | HTTPS:443   | 与在主服务器上运行的网关审核终结点通信以获取审核结果的 Azure 策略附加项。 |
 | dc.services.visualstudio.com | HTTPS:443 | 向 application insights 终结点发送遥测数据的 Azure 策略外接程序。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已启用基于 Windows Server 的节点（公共预览版中）的要求

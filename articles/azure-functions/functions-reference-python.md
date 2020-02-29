@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921795"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190698"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -22,25 +22,9 @@ Azure Functions 要求函数在 Python 脚本中作为无状态方法来处理�
 
 通过使用*函数 json*文件中定义的 `name` 属性，可通过方法属性将触发器和绑定中的数据绑定到函数。 例如，下面的_函数。 json_描述了一个简单的函数，该函数由名为 `req`的 HTTP 请求触发：
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-`__init__.py` 文件包含以下函数代码：
+根据此定义，包含函数代码的 `__init__.py` 文件可能类似于以下示例：
 
 ```python
 def main(req):
@@ -178,7 +162,7 @@ def main(req: func.HttpRequest,
 
 输出可以在返回值和输出参数中进行表示。 如果只有一个输出，则建议使用返回值。 对于多个输出，必须使用输出参数。
 
-若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `function.json` 中设置为 `$return`。
+若要使用函数的返回值作为输出绑定的值，则绑定的 `name` 属性应在 `$return` 中设置为 `function.json`。
 
 若要生成多个输出，请使用[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)接口提供的 `set()` 方法为绑定分配值。 例如，以下函数可以将消息推送到队列，还可返回 HTTP 响应。
 
@@ -236,7 +220,7 @@ def main(req):
 
 有其他日志记录方法可用于在不同跟踪级别向控制台进行写入：
 
-| 方法                 | Description                                |
+| 方法                 | 说明                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | 在根记录器中写入具有 CRITICAL 级别的消息。  |
 | **`error(_message_)`**   | 在根记录器中写入具有 ERROR 级别的消息。    |
@@ -248,7 +232,7 @@ def main(req):
 
 ## <a name="http-trigger-and-bindings"></a>HTTP 触发器和绑定
 
-HTTP 触发器在函数 jon 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。 在前面的示例中，使用了一个绑定名称 `req`。 此参数是一个[HttpRequest]对象，并返回一个[HttpResponse]对象。
+HTTP 触发器在函数 jon 文件中定义。 绑定的 `name` 必须与函数中的命名参数匹配。 在前面的示例中，使用了一个绑定名称 `req`。 此参数是一个[HttpRequest]对象，并返回一个[httpresponse.cache]对象。
 
 通过[HttpRequest]对象，可以获取请求标头、查询参数、路由参数和消息正文。 
 
@@ -278,7 +262,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在此函数中，`name` 查询参数的值是从[HttpRequest]对象的 `params` 参数获取的。 使用 `get_json` 方法读取 JSON 编码的消息正文。 
 
-同样，也可以在返回的[HttpResponse]对象中设置响应消息的 `status_code` 和 `headers`。
+同样，也可以在返回的[httpresponse.cache]对象中设置响应消息的 `status_code` 和 `headers`。
 
 ## <a name="scaling-and-concurrency"></a>缩放和并发
 
@@ -582,7 +566,7 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
-## <a name="temporary-files"></a>“临时文件”
+## <a name="temporary-files"></a>临时文件
 
 `tempfile.gettempdir()` 方法返回一个临时文件夹，在 Linux 上 `/tmp`该文件夹。 应用程序可以使用此目录来存储在执行期间由函数生成和使用的临时文件。 
 
@@ -657,4 +641,4 @@ Web 浏览器使用此 HTTP 方法来协商允许的来源列表。
 
 
 [HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[Httpresponse.cache]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

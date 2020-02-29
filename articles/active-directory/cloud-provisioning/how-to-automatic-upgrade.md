@@ -15,16 +15,16 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3786386f75f4b85fe89562254eab63471de6cb2
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f09b2fc685881aa8a7bd87b6a855c657af9ef43d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549391"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190307"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-agent-automatic-upgrade"></a>Azure AD Connect 云预配代理：自动升级
 
-通过自动升级功能，确保 Azure Active Directory （Azure AD）连接云预配代理安装始终是最新的。 此功能在默认情况下是启用的，不能禁用。
+通过自动升级功能，确保 Azure Active Directory （Azure AD）连接云预配代理安装始终是最新的。
 
 代理安装在以下位置： "Program files\Azure AD Connect 预配 Agent\AADConnectProvisioningAgent.exe"
 

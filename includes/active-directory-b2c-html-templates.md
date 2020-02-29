@@ -1,16 +1,16 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
-ms.author: marsma
-ms.openlocfilehash: 264604bfdf0c514e6464854f431addbc9d2dcdef
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.author: mimart
+ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373095"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189001"
 ---
 ## <a name="sample-templates"></a>示例模板
 可以在以下位置找到用于 UI 自定义的示例模板：
@@ -32,7 +32,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
 
-    至 
+    目标
     ```html
     <link href="https://your-storage-account.blob.core.windows.net/your-container/css/assets.css" rel="stylesheet" type="text/css" />
     ```

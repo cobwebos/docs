@@ -3,20 +3,20 @@ title: 自定义策略的 JSON 声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的标识体验框架（IEF）架构的 JSON 声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56c46b8f2804e37544c94ec2d6ced7e8879b1ffa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367121"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187587"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "75367121"
 
 使用声明值或常量生成 JSON 字符串。 后随点表示法的路径字符串用于指示将数据插入 JSON 字符串的位置。 按点拆分后，任何整数被解释为 JSON 数组的索引，而非整数被解释为 JSON 对象的索引。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 后随点表示法的任何字符串 | 字符串 | JSON 的 JsonPath，声明值将插入到其中。 |
 | InputParameter | 后随点表示法的任何字符串 | 字符串 | 要将常量字符串值插入到其中的 JSON 的 JsonPath。 |
@@ -94,7 +94,7 @@ ms.locfileid: "75367121"
 
 从 JSON 数据中获取指定的元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | 字符串 | 由声明转换用于获取项的 ClaimTypes。 |
 | InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
@@ -130,7 +130,7 @@ ms.locfileid: "75367121"
 
 从 Json 数据中获取指定元素列表。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | jsonSourceClaim | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
@@ -184,7 +184,7 @@ ms.locfileid: "75367121"
 
 从 JSON 数据中获取指定的数值 (long) 元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
 | InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
@@ -227,7 +227,7 @@ ms.locfileid: "75367121"
 
 从 JSON 数据数组中获取第一个元素。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJsonClaim | 字符串 | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
 | OutputClaim | extractedClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
@@ -256,7 +256,7 @@ ms.locfileid: "75367121"
 
 将 XML 数据转换为 JSON 格式。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | xml | 字符串 | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
 | OutputClaim | json | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |

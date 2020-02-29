@@ -3,20 +3,20 @@ title: 使用自定义策略管理 SSO 和令牌自定义
 titleSuffix: Azure AD B2C
 description: 了解在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 299ab8ec4f6f8f74cccef15720622e0638285a63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ff9f57af92c50c0df6f628113bd9490ca83e1310
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846583"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189287"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略管理 SSO 和令牌自定义
 
@@ -90,7 +90,7 @@ ms.locfileid: "76846583"
 
 ## <a name="session-behavior-and-sso"></a>会话行为和 SSO
 
-若要更改会话行为和 SSO 配置，需要在 [RelyingParty](relyingparty.md) 元素内添加 **UserJourneyBehaviors** 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
+若要更改会话行为和 SSO 配置，需要在 **RelyingParty** 元素内添加 [UserJourneyBehaviors](relyingparty.md) 元素。  **UserJourneyBehaviors** 元素必须紧跟在 **DefaultUserJourney** 之后。 **UserJourneyBehavors** 元素的内部看起来应当如以下示例所示：
 
 ```XML
 <UserJourneyBehaviors>

@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552010"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194626"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>迁移到 Azure 创作资源的步骤
 
 从语言理解（LUIS）门户中，迁移所有拥有的应用以使用 Azure 创作资源。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * **（可选**）通过导出每个应用或使用导出[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)，从 LUIS 门户的 "应用" 列表备份应用。
 * **还可以选择**保存每个应用的 collaborator's 列表。 在迁移过程中，可向所有协作者发送电子邮件。
@@ -32,7 +32,10 @@ ms.locfileid: "75552010"
 
 ## <a name="access-the-migration-process"></a>访问迁移过程
 
-每周一次，系统都会提示您迁移应用程序。 无需迁移即可取消此窗口。 如果要在下一个计划的时间段之前迁移，可以从 LUIS 门户顶部工具栏上的 "**锁定**" 图标开始迁移过程。
+每周一次，系统都会提示您迁移应用程序。 无需迁移即可取消此窗口。 如果要在下一个计划的时间段之前迁移，可以从 LUIS 门户顶部工具栏上的**Azure**图标开始迁移过程。
+
+> [!div class="mx-imgBorder"]
+> ![迁移 "图标](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>应用所有者开始迁移过程
 

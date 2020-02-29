@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 7847e76c8f0354e3a17c7df5f3ce9227dcf0e6ce
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: azure-synapse
+ms.openlocfilehash: a225c375d877ae44c2b21ea8e79e31f17db36878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526410"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198178"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics （以前称为 SQL DW）容量限制
 
@@ -30,16 +31,18 @@ Azure Synapse 的各种组件允许的最大值。
 | 数据库连接 |并发打开的并发会话数 |1024<br/><br/>并发打开的会话数会根据所选的 DWU 而有所不同。 DWU600c 及更高版本最多支持1024个打开的会话。 DWU500c 和更高的并发打开会话限制为512。 请注意，可并发执行的查询数量是有限制的。 当超出并发限制时，请求将进入内部队列等待处理。 |
 | 数据库连接 |预处理语句的最大内存 |20 MB |
 | [工作负荷管理](resource-classes-for-workload-management.md) |最大并行查询 |128<br/><br/>  最多可执行128个并发查询，其余查询将排队。<br/><br/>将用户分配到更高的资源类或当[数据仓库单位](memory-concurrency-limits.md)设置降低时，并发查询数可能会降低。 某些查询（例如 DMV 查询）始终允许运行，并且不会影响并发查询限制。 有关并发查询执行的更多详细信息，请参阅[并发最大值](memory-concurrency-limits.md)一文。 |
-| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100 399 GB。 因此，在 DWU1000 的情况下，tempdb 的大小为 3.99 TB。 |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |最大 GB |每 DW100c 399 GB。 因此，在 DWU1000c，tempdb 的大小调整为 3.99 TB。 |
+||||
 
 ## <a name="database-objects"></a>数据库对象
+
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
-| 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> 第 2 代：240TB 用于行存储，无限存储空间用于列存储表 |
-| 表 |最大大小 | 对于列存储表，没有 uppper 的限制。 <br/><br/>对于行存储表，在磁盘上压缩 60 TB |
+| 数据库 |最大大小 | 第 1 代：磁盘压缩后为 240TB。 此空间与 tempdb 或日志空间无关，因此，此空间专用于永久表。  聚集列存储压缩率估计为 5 倍。  此压缩率允许数据库在所有表都为聚集列存储（默认表类型）的情况下增长到大约 1 PB。 <br/><br/> Gen2：列存储表的无限制存储。  数据库的行存储部分仍限制为在磁盘上压缩 240 TB。 |
+| 表 |最大大小 |列存储表的大小不受限制。 <br>磁盘上压缩的行存储表的 60 TB。 |
 | 表 |每个数据库的表数 | 100,000 |
 | 表 |每个表的列数 |1024 个列 |
-| 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 char 数据类型的限制为 8000，nvarchar 数据类型的限制为 4000，MAX 数据类型的限制为 2 GB。 |
+| 表 |每个列的字节数 |取决于列[数据类型](sql-data-warehouse-tables-data-types.md)。 对于字符数据类型，MAX 限制可以存储多达 2 GB 的 off page （行溢出）存储空间。  在数据页中，非 Unicode 字符（如 char 或 varchar limit）为8000，数据页中的 Unicode 字符（如 nchar 或 nvarchar 限制）为4000。  使用数据页存储大小来提高性能。 |
 | 表 |每行的字节数，定义的大小 |8060 字节<br/><br/>每行字节数的计算方式同于使用页面压缩的 SQL Server。 与 SQL Server 一样，支持行溢出存储，这使得**可变长度列**被推送到行外。 对可变长度行进行拖行推送时，只将 24 字节的根存储在主记录中。 有关详细信息，请参阅[超过 8-KB 的行溢出数据](https://msdn.microsoft.com/library/ms186981.aspx)。 |
 | 表 |每个表的分区数 |15,000<br/><br/>为了实现高性能，建议在满足业务需求的情况下尽量减少所需的分区数。 随着分区数目的增长，数据定义语言 (DDL) 和数据操作语言 (DML) 操作的开销也会增长，导致性能下降。 |
 | 表 |每个分区边界值的字符数。 |4000 |
@@ -52,13 +55,17 @@ Azure Synapse 的各种组件允许的最大值。
 | 统计信息 |每个表的列上创建的统计信息条数。 |30,000 |
 | 存储过程 |最大嵌套级数。 |8 |
 | 查看 |每个视图的列数 |1,024 |
+||||
 
 ## <a name="loads"></a>加载
+
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 加载小于 1 MB 的行。 不支持将 LOB 数据类型加载到具有聚集列存储索引（CCI）的表中。<br/><br/> |
+||||
 
 ## <a name="queries"></a>查询
+
 | 类别 | 说明 | 最大值 |
 |:--- |:--- |:--- |
 | 查询 |用户表的排队查询数。 |1000 |
@@ -73,8 +80,10 @@ Azure Synapse 的各种组件允许的最大值。
 | SELECT |每个 ORDER BY 列的字节数 |8060 字节<br/><br/>ORDER BY 子句中的列的字节数最大为 8060 字节 |
 | 每个语句的标识符数 |被引用的标识符数 |65,535<br/><br/> 查询的单个表达式中可包含的标识符数量是有限的。 超过此数字将导致 SQL Server 错误 8632。 有关详细信息，请参阅 [Internal error: An expression services limit has been reached](https://support.microsoft.com/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a)（内部错误：已达到表达式服务限制）。 |
 | 字符串文本 | 一个语句中字符串文本的数量 | 20,000 <br/><br/>查询的单个表达式中的字符串常量数量是有限的。 超过此数字将导致 SQL Server 错误 8632。|
+||||
 
 ## <a name="metadata"></a>元数据
+
 | 系统视图 | 最大行数 |
 |:--- |:--- |
 | sys.dm_pdw_component_health_alerts |10,000 |
@@ -86,6 +95,8 @@ Azure Synapse 的各种组件允许的最大值。
 | sys.dm_pdw_request_steps |sys.dm_pdw_exec_requests 中存储的最近 1000 个 SQL 请求的步骤总数。 |
 | sys.dm_pdw_os_event_logs |10,000 |
 | sys.dm_pdw_sql_requests |sys.dm_pdw_exec_requests 中存储的最近 1000 个 SQL 请求。 |
+|||
 
 ## <a name="next-steps"></a>后续步骤
+
 有关使用 Azure Synapse 的建议，请参阅备忘[单](cheat-sheet.md)。

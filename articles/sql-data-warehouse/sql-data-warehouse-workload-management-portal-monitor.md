@@ -7,24 +7,24 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029940"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193792"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics –工作负荷管理门户监视（预览版）
-本文介绍如何监视[工作负荷组](sql-data-warehouse-workload-isolation.md#workload-groups)资源使用情况和查询活动。 有关如何配置 Azure 指标资源管理器的详细信息，请参阅[azure 入门指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)文章。  有关如何监视系统资源使用情况的详细信息，请参阅 Azure SQL 数据仓库监视文档中的[资源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
+本文介绍如何监视[工作负荷组](sql-data-warehouse-workload-isolation.md#workload-groups)资源使用情况和查询活动。 有关如何配置 Azure 指标资源管理器的详细信息，请参阅[azure 入门指标资源管理器](../azure-monitor/platform/metrics-getting-started.md)文章。  有关如何监视系统资源使用情况的详细信息，请参阅 Azure Synapse Analytics 监视文档中的[资源利用率](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization)部分。
 提供了两种不同类别的工作负荷组指标用于监视工作负荷管理：资源分配和查询活动。  可以按工作负荷组拆分和筛选这些指标。  根据度量值是系统定义的（资源类工作负荷组）还是用户定义的（用户使用[CREATE 工作负荷组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法创建），可以对其进行拆分和筛选。
 
 ## <a name="workload-management-metric-definitions"></a>工作负荷管理指标定义
 
-|标准名称                    |Description  |聚合类型 |
+|标准名称                    |说明  |聚合类型 |
 |-------------------------------|-------------|-----------------|
 |有效上限资源百分比 | *有效上限资源百分比*是工作负荷组可访问的资源百分比的硬性限制，考虑为其他工作负荷组分配的*有效的最小资源百分比*。 *有效上限资源百分比*指标是使用[CREATE 工作负荷组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中的 `CAP_PERCENTAGE_RESOURCE` 参数配置的。  此处描述了有效值。<br><br>例如，如果工作负荷组 `DataLoads` 是使用 `CAP_PERCENTAGE_RESOURCE` = 100 创建的，并且创建了另一个工作负荷组，其有效的最小资源百分比为25%，则 `DataLoads` 工作负荷组的*有效上限资源百分比*为75%。<br><br>*有效的上限资源百分比*确定工作负荷组可以实现的并发（因而可能是吞吐量）的上限。  如果 "*有效上限资源百分比*" 指标当前所报告的内容超出了所需的吞吐量，请增加 `CAP_PERCENTAGE_RESOURCE`，减少其他工作负荷组的 `MIN_PERCENTAGE_RESOURCE`，或纵向扩展实例以添加更多资源。  降低 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 会提高并发性，但可能不会提高整体吞吐量。| 最小值、平均值、最大值 |
 |有效的最小资源百分比 |"*有效的最小资源百分比*" 是指为工作负荷组预留和隔离的资源的最小百分比，最小值为服务级别。  有效的最小资源百分比指标是使用[CREATE 工作负荷组](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)语法中的 `MIN_PERCENTAGE_RESOURCE` 参数配置的。  [此处](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values)描述了有效值。<br><br>如果未筛选此指标，请使用 Sum 聚合类型，并撤消以监视系统上配置的总工作负荷隔离。<br><br>*有效的最小资源百分比*确定工作负荷组可以实现的有保证并发性（从而保证吞吐量）。  如果需要的其他保证资源超出了 "*有效的最小资源百分比*" 度量值当前报告的范围，请增加为工作负荷组配置的 `MIN_PERCENTAGE_RESOURCE` 参数。  降低 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 会提高并发性，但可能不会提高整体吞吐量。 |最小值、平均值、最大值|

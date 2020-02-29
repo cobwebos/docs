@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526121"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190341"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -150,6 +150,14 @@ ms.locfileid: "77526121"
 在比较模型**a**和**B**时，模型**a**是更好的模型，因为它具有更高的测试准确性，但在95% 的测试准确性略有降低，这并不是建议过度调整的重要差异。 不只是因为定型和测试准确性更接近一起选择模型**B** 。
 
 模型**C**表示过度拟合的清晰大小写;训练准确性非常高，但测试准确性并不接近任何位置。 这种区别很主观，但却是您的问题和数据的知识，而度的错误是可接受的。 
+
+## <a name="classification--regression"></a>分类 & 回归
+
+分类和回归是最常见的机器学习任务类型。 这两者都是监视使用定型数据的模型，并将这些知识应用于新数据的监控类型。 Azure 机器学习为这些任务专门提供 featurizations，例如分类的深层神经网络文本 featurizers。 了解有关[特征化选项](how-to-create-portal-experiments.md#featurization)的详细信息。 
+
+分类模型的主要目标是根据知识的定型数据来预测新数据将归入的类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  了解更多详细信息，并查看[使用自动机器学习进行分类](tutorial-train-models-with-aml.md)的示例。
+
+不同于分类的预测输出值是分类的，回归模型基于独立预测值预测数值输出值。 在回归中，目标是通过估计一个变量如何影响其他变量来帮助建立这些独立预测器变量之间的关系。 例如，基于诸如、气体里程、安全评级等功能的汽车价格。 了解更多详细信息，并查看[自动机器学习的回归](tutorial-auto-train-models.md)示例。
 
 ## <a name="time-series-forecasting"></a>时序预测
 

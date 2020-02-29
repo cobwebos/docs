@@ -3,20 +3,20 @@ title: 自定义电子邮件验证
 titleSuffix: Azure AD B2C
 description: 了解如何自定义在客户注册使用您 Azure AD B2C 的应用程序时发送给他们的验证电子邮件。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045943"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189525"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义电子邮件验证
 
@@ -45,7 +45,7 @@ ms.locfileid: "77045943"
 1. 输入策略密钥的**名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入前面记录的应用程序机密。
 1. 在“密钥用法”处选择 **。** `Signature`
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ## <a name="create-sendgrid-template"></a>创建 SendGrid 模板
 

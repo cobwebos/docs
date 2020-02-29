@@ -1,31 +1,31 @@
 ---
 title: 可管理性和监视-查询活动，资源利用率
-description: 了解可以使用哪些功能来管理和监视 Azure SQL 数据仓库。 使用 Azure 门户和动态管理视图 (DMV) 来了解数据仓库的查询活动和资源利用率。
+description: 了解可用于管理和监视 Azure Synapse 分析的功能。 使用 Azure 门户和动态管理视图 (DMV) 来了解数据仓库的查询活动和资源利用率。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024535"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195917"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>监视 Azure SQL 数据仓库中的资源利用率和查询活动
-Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 门户还使你可以与其他 Azure 监视服务（如 Operations Management Suite （OMS）和 Azure Monitor （日志））集成，以提供全面的监视体验，不仅针对数据仓库，还提供整个 Azure 分析集成监视体验的平台。 本文档介绍可在 SQL 数据仓库中使用哪些监视功能来优化和管理分析平台。 
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse 分析中的资源利用率和查询活动
+Azure Synapse Analytics 在 Azure 门户内提供丰富的监视体验，以将见解深入到数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 门户还使你可以与其他 Azure 监视服务（如 Operations Management Suite （OMS）和 Azure Monitor （日志））集成，以提供全面的监视体验，不仅针对数据仓库，还提供整个 Azure 分析集成监视体验的平台。 本文档介绍可用于优化和管理使用 SQL Analytics 分析平台的监视功能。 
 
 ## <a name="resource-utilization"></a>资源利用率 
-Azure 门户中提供了以下可用于 SQL 数据仓库的指标。 这些指标通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) 显示。
+SQL Analytics Azure 门户中提供了以下指标。 这些指标通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) 显示。
 
 
-| 标准名称             | Description                                                  | 聚合类型 |
+| 标准名称             | 说明                                                  | 聚合类型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU 百分比          | 数据仓库所有节点的 CPU 利用率      | Avg、Min、Max    |
 | 数据 IO 百分比      | 数据仓库所有节点的 IO 利用率       | Avg、Min、Max    |
@@ -49,12 +49,12 @@ Azure 门户中提供了以下可用于 SQL 数据仓库的指标。 这些指�
 
 
 ## <a name="query-activity"></a>查询活动
-为了让用户通过 T-SQL 以编程方式监视 SQL 数据仓库，该服务提供了一系列动态管理视图 (DMV)。 在主动排查和识别工作负荷的性能瓶颈时，这些视图非常有用。
+对于通过 T-sql 监视 SQL Analytics 时的编程体验，该服务提供了一组动态管理视图（Dmv）。 在主动排查和识别工作负荷的性能瓶颈时，这些视图非常有用。
 
-若要查看 SQL 数据仓库提供的 DMV 列表，请参阅此[文档](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)。 
+若要查看 SQL Analytics 提供的 Dmv 列表，请参阅此[文档](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)。 
 
 ## <a name="metrics-and-diagnostics-logging"></a>指标和诊断日志记录
-指标和日志都可以导出到 Azure Monitor，特别是[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)组件，可以通过[日志查询](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)以编程方式访问。 SQL 数据仓库的日志延迟约为10-15 分钟。 有关影响延迟的因素的详细信息，请访问以下文档。
+指标和日志都可以导出到 Azure Monitor，特别是[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)组件，可以通过[日志查询](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)以编程方式访问。 SQL Analytics 的日志延迟约为10-15 分钟。 有关影响延迟的因素的详细信息，请访问以下文档。
 
 
 ## <a name="next-steps"></a>后续步骤

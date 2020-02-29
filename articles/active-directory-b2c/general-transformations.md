@@ -3,20 +3,20 @@ title: 自定义策略的一般声明转换示例
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 的标识体验框架（IEF）架构的一般声明转换示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 98d9730168764f0ba683a246f9ac224c13d3bf31
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: afdf2f531ede30d868123d89cac94fcfae070384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982800"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188539"
 ---
 # <a name="general-claims-transformations"></a>常规声明转换
 
@@ -28,7 +28,7 @@ ms.locfileid: "76982800"
 
 将声明的值复制到另一个声明。 这两个声明的类型必须相同。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | string、int | 要复制的声明类型。 |
 | OutputClaim | outputClaim | string、int | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -36,13 +36,13 @@ ms.locfileid: "76982800"
 使用此声明转换将值从字符串或数值声明复制到另一声明。 下面的示例将 externalEmail 声明值复制到电子邮件声明。
 
 ```XML
-<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim"> 
+<ClaimsTransformation Id="CopyEmailAddress" TransformationMethod="CopyClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="externalEmail" TransformationClaimType="inputClaim"/>
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="email" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -51,13 +51,13 @@ ms.locfileid: "76982800"
 - 输入声明：
     - **inputClaim**: bob@contoso.com
 - 输出声明：
-    - outputClaim: bob@contoso.com 
+    - outputClaim: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 检查 inputClaim 是否存在并将 outputClaim 相应地设置为 true 或 false。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |Any | 需要验证是否存在的输入声明。 |
 | OutputClaim | outputClaim | boolean | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
@@ -86,7 +86,7 @@ ms.locfileid: "76982800"
 
 使用加密盐和机密对提供的纯文本执行哈希。 使用的哈希算法是 SHA-256。
 
-| 项目 | TransformationClaimType | 数据类型 | 说明 |
+| Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 明文 | 字符串 | 要加密的输入声明 |
 | InputClaim | 加密盐 | 字符串 | 加密盐参数。 可以使用 `CreateRandomString` 声明转换创建随机值。 |

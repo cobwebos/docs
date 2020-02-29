@@ -3,20 +3,20 @@ title: 通过 OpenID Connect 设置注册和登录
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中设置任何 OpenID Connect 标识提供者（IdP）的注册和登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7896e0385978c4221edc233c931bad720c60f8a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847597"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188250"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 OpenID Connect 注册与登录
 

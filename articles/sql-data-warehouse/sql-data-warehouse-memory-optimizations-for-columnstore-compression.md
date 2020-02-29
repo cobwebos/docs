@@ -1,6 +1,6 @@
 ---
 title: 提高列存储索引性能
-description: Azure SQL 数据仓库减少内存需求或增加可用内存，使列存储索引压缩到每个行组的行数最大化。
+description: 减少内存需求或增加可用内存，使每个行组中的行数最大化。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685659"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197192"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
@@ -34,13 +34,13 @@ ms.locfileid: "73685659"
 
 批量加载或重建列存储索引期间，有时可能因内存不足而无法压缩为每个行组指定的所有行。 如果出现内存压力，列存储索引将修剪行组大小，以便能成功将行组压缩到列存储中。 
 
-如果内存不足，无法将至少 10,000 个行压缩到每个行组中，SQL 数据仓库将生成错误。
+如果内存不足，无法将至少10000行压缩到每个行组中，则会生成错误。
 
 有关批量加载的详细信息，请参阅 [Bulk load into a clustered columnstore index](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )（批量加载到聚集列存储索引中）。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（[sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) 包含可以将 SQL DB 与 SQL 数据仓库匹配的视图定义），用于公开一些有用信息，例如行组中的行数，以及修整原因（如果有修整）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.databases dm_pdw_nodes_db_column_store_row_group_physical_stats （[sys.databases dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含与 SQL db 匹配的视图定义），用于公开有用信息，如行组中的行数，以及在发生修整时进行修整的原因。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -68,7 +68,7 @@ from cte;
 ```
 
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
-- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批负荷，使之包含更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
+- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在这种情况下，请考虑增加批处理负载以便包含更多行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
 - MEMORY_LIMITATION：要创建具有 100 万行的行组，引擎需要一定量的工作内存。 当加载会话的可用内存小于所需的工作内存时，将提前修整行组。 以下各部分说明如何估计所需内存和分配更多内存。
 - DICTIONARY_SIZE：此修整原因指示，由于至少有一个字符串列具有宽和/或高基数字符串，因此发生行组修整。 字典大小的内存限制为 16 MB，一旦达到此限制，将压缩行组。 如果遇到这种情况，请考虑将有问题的列隔离到单独的表中。
 
@@ -81,15 +81,15 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 压缩单个行组所需的最大内存大约为
 
 - 72 MB +
-- \#rows \* \#columns \* 8 字节 +
-- \#rows \* \#short-string-columns \* 32 字节 +
+- \#行 \* \#列 \* 8 字节 +
+- \#行 \* \#短字符串列 \* 32 字节 +
 - \#long-string-columns \* 16 MB 用于压缩字典
 
 其中，short-string-columns 使用 <= 32 字节的字符串数据类型，long-string-columns 使用 > 32 字节的字符串数据类型。
 
-使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个词典。
+使用专为压缩文本设计的压缩方法来压缩长字符串。 此压缩方法使用*字典*来存储文本模式。 字典最大大小为 16 MB。 行组中每个长字符串列只能有一个字典。
 
-有关列存储内存需求的深入讨论，请观看视频 [Azure SQL Data Warehouse scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)（Azure SQL 数据仓库缩放：配置和指南）。
+有关列存储内存需求的深入讨论，请参阅视频[SQL Analytics 缩放：配置和指南](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)。
 
 ## <a name="ways-to-reduce-memory-requirements"></a>减少内存需求的方法
 
@@ -109,7 +109,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 ### <a name="avoid-over-partitioning"></a>避免过度分区
 
-列存储索引会为每个分区创建一个或多个行组。 在 SQL 数据仓库中，由于将分发数据并将每次分发分区，因此分区数将快速增加。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
+列存储索引会为每个分区创建一个或多个行组。 对于 Azure Synapse 分析中的数据仓库，分区数量会迅速增长，因为数据会分布，并对每个分布进行分区。 如果表中分区过多，可能没有足够行来填充行组。 如果缺少行，在压缩过程中不会产生内存不足的情况，但是这会导致行组无法实现最佳列存储查询性能。
 
 要避免过度分区的另一个原因是，在分区表上将行加载到列存储索引中会产生内存开销。 在加载期间，多数分区可能会收到传入行，它们会保存在内存中，直到每个分区都有足够行可进行压缩。 如果分区过多，可能产生额外的内存压力。
 
@@ -117,7 +117,7 @@ To view an estimate of the memory requirements to compress a rowgroup of maximum
 
 数据库会在查询的所有运算符之间共享查询的内存授予。 如果加载查询的排序和联接复杂，可用于压缩的内存将减少。
 
-请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，并将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
+请仅针对加载查询而设计加载查询。 如果要对数据运行转换，请与加载查询分开来运行转换。 例如，将数据暂存在一个堆表中，运行转换，然后将临时表加载到列存储索引中。 也可先加载数据，然后使用 MPP 系统来转换数据。
 
 ### <a name="adjust-maxdop"></a>调整 MAXDOP
 
@@ -141,5 +141,4 @@ DWU 大小和用户资源类共同确定用户查询可用的内存量。 若要
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解提升 SQL 数据仓库中性能的更多方法，请参阅[性能概述](sql-data-warehouse-overview-manage-user-queries.md)。
-
+若要查找更多提高 SQL Analytics 性能的方法，请参阅[性能概述](sql-data-warehouse-overview-manage-user-queries.md)。

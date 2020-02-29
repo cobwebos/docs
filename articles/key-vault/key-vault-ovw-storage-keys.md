@@ -4,16 +4,17 @@ description: 存储帐户密钥在 Azure Key Vault 和基于密钥的访问权�
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
+ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 104f3423b07eaa3269ffccc054cd2f779bbdabf8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980465"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199812"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>用 Key Vault 和 Azure CLI 管理存储帐户密钥
 
@@ -47,7 +48,7 @@ Key Vault 是在所有 Azure AD 租户中预先注册的 Microsoft 应用程序�
 | Azure AD | Azure 公共 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本指南，必须首先执行以下操作：
 

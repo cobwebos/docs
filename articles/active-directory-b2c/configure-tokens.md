@@ -2,26 +2,26 @@
 title: 配置令牌-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中配置令牌生存期和兼容性设置。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d6b18596082df6f1cfbe2a47627712b8b69cb355
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836603"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189611"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中配置令牌
 
 本文介绍如何在 Azure Active Directory B2C （Azure AD B2C）中配置[令牌的生存期和兼容性](tokens-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 
@@ -39,7 +39,7 @@ ms.locfileid: "76836603"
 
     ![Azure 门户中的令牌生存期属性设置](./media/configure-tokens/token-lifetime.png)
 
-8. 单击“ **保存**”。
+8. 单击“保存”。
 
 ## <a name="configure-token-compatibility"></a>配置令牌兼容性
 
@@ -50,7 +50,7 @@ ms.locfileid: "76836603"
 
     ![Azure 门户中的令牌兼容性属性设置](./media/configure-tokens/token-compatibility.png)
 
-5. 单击“ **保存**”。
+5. 单击“保存”。
 
 ## <a name="next-steps"></a>后续步骤
 

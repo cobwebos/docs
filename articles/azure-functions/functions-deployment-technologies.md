@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210151"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190747"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
@@ -104,7 +104,7 @@ Azure Functions 中提供了以下部署方法。
 
 使用 zip 部署将包含 function app 的 .zip 文件推送到 Azure。 或者，你可以将应用程序设置为[从包开始运行](run-functions-from-deployment-package.md)，或指定发生[远程生成](#remote-build)。
 
->__如何使用：__ 使用喜爱的客户端工具进行部署： [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)、 [Azure Functions Core Tools](functions-run-local.md)或[Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 在部署到 Linux 时，核心工具和 Visual Studio Code 扩展都支持[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请按照[使用 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明进行操作。
+>__如何使用：__ 使用喜爱的客户端工具进行部署： [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure)、 [Visual Studio](functions-develop-vs.md#publish-to-azure)或使用[Azure Functions Core Tools](functions-run-local.md#project-file-deployment)从命令行进行部署。 默认情况下，这些工具使用 zip 部署并[从包运行](run-functions-from-deployment-package.md)。 在部署到 Linux 时，核心工具和 Visual Studio Code 扩展都支持[远程生成](#remote-build)。 若要手动将 .zip 文件部署到函数应用，请按照[使用 .zip 文件或 URL 进行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)中的说明进行操作。
 
 >使用 zip 部署进行部署时，可以将应用设置为[从包中运行](run-functions-from-deployment-package.md)。 若要从包中运行，请将 `WEBSITE_RUN_FROM_PACKAGE` 应用程序设置值设置为 `1`。 建议部署 zip。 它为应用程序生成更快的加载时间，它是 VS Code、Visual Studio 和 Azure CLI 的默认值。 
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435871"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196920"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>在具有企业安全性套餐的 HDInsight 中配置 Apache Hive 策略
 
 了解如何为 Apache Hive 配置 Apache Ranger 策略。 本文将创建两个 Ranger 策略来限制对 hivesampletable 的访问。 HDInsight 群集附带 hivesampletable。 配置策略后，使用 Excel 和 ODBC 驱动程序连接到 HDInsight 中的 Hive 表。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 具有企业安全性套餐的 HDInsight 群集。 请参阅[配置具有 ESP 的 HDInsight 群集](apache-domain-joined-configure.md)。
 * 装有 Office 2016、Office 2013 Professional Plus、Office 365 Pro Plus、Excel 2013 Standalone 或 Office 2010 Professional Plus 的工作站。
@@ -52,7 +52,7 @@ ms.locfileid: "75435871"
 2. 选择 " **CLUSTERNAME_Hive**"，然后单击 " **Hive**"。 应会看到两个预配置策略。
 3. 选择 "**添加新策略**"，然后输入以下值：
 
-    |属性 |值 |
+    |properties |值 |
     |---|---|
     |策略名称|hivesampletable-all|
     |Hive 数据库|default|
@@ -70,7 +70,7 @@ ms.locfileid: "75435871"
 
 5. 重复最后两个步骤，创建具有以下属性的另一个策略：
 
-    |属性 |值 |
+    |properties |值 |
     |---|---|
     |策略名称|hivesampletable-devicemake|
     |Hive 数据库|default|
@@ -83,11 +83,11 @@ ms.locfileid: "75435871"
 
 可以在 [Create Hive ODBC data source](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（创建 Hive ODBC 数据源）中找到说明。  
 
- | 属性  |Description |
+ | properties  |说明 |
  | --- | --- |
  | 数据源名称 | 为数据源提供名称 |
  | 主机 | 输入 CLUSTERNAME.azurehdinsight.net。 例如，myHDICluster.azurehdinsight.net |
- | Port | 使用 **443**。 （此端口已从 563 更改为 443。） |
+ | 端口 | 使用 **443**。 （此端口已从 563 更改为 443。） |
  | 数据库 | 使用“默认”。 |
  | Hive 服务器类型 | 选择“Hive Server 2” |
  | 机制 | 选择“Azure HDInsight 服务” |
@@ -103,7 +103,7 @@ ms.locfileid: "75435871"
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
 
-1. 在“数据”选项卡中，导航到“获取数据” > “从其他源” > “从 ODBC”来启动“从 ODBC”窗口。
+1. 在“数据”选项卡中，导航到“获取数据” **“从其他源”** “从 ODBC”来启动“从 ODBC”窗口 >  > 。
 
     ![打开数据连接向导](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "75435871"
 
         SELECT * FROM "HIVE"."default"."hivesampletable"
 
-    更改为：
+    修改为：
 
         SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
 
@@ -152,7 +152,7 @@ ms.locfileid: "75435871"
 
 * 有关使用企业安全性套餐配置 HDInsight 群集的信息，请参阅[使用 ESP 配置 HDInsight 群集](apache-domain-joined-configure.md)。
 * 有关管理具有 ESP 的 HDInsight 群集的信息，请参阅[管理具有 ESP 的 HDInsight 群集](apache-domain-joined-manage.md)。
-* 有关在具有 ESP 的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。
+* 有关在具有 ESP 的 HDInsight 群集上使用 SSH 运行 Hive 查询，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。
 * 若要使用 Hive JDBC 连接 Hive，请参阅 [Connect to Apache Hive on Azure HDInsight using the Hive JDBC driver](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md)（使用 Hive JDBC 驱动程序连接到 Azure HDInsight 上的 Apache Hive）
 * 若要使用 Hive ODBC 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Apache Hadoop with the Microsoft Hive ODBC drive](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)（使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Apache Hadoop）
 * 若要使用 Power Query 将 Excel 连接到 Hadoop，请参阅 [Connect Excel to Apache Hadoop by using Power Query](../hadoop/apache-hadoop-connect-excel-power-query.md)（使用 Power Query 将 Excel 连接到 Apache Hadoop）

@@ -1,6 +1,6 @@
 ---
 title: 对表进行分区
-description: 在 Azure SQL 数据仓库中使用表分区的建议和示例。
+description: 在 SQL Analytics 中使用表分区的建议和示例
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,24 +10,24 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ec313094a9ebc05f966e0c49f44284909ca778f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 25485502ff1ae6858ee7d0f840c22940dc3ab9b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685422"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192143"
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
-在 Azure SQL 数据仓库中使用表分区的建议和示例。
+# <a name="partitioning-tables-in-sql-analytics"></a>对 SQL Analytics 中的表进行分区
+在 SQL Analytics 中使用表分区的建议和示例。
 
 ## <a name="what-are-table-partitions"></a>什么是表分区？
-表分区可将数据分成更小的数据组。 大多数情况下，表分区都是根据日期列进行创建。 所有 SQL 数据仓库表类型（包括聚集列存储、聚集索引和堆）都支持分区。 所有分布类型（包括哈希分布或轮循机制分布）也都支持分区。  
+表分区可将数据分成更小的数据组。 大多数情况下，表分区都是根据日期列进行创建。 所有 SQL 分析表类型都支持分区;包括聚集列存储、聚集索引和堆。 所有分布类型（包括哈希分布或轮循机制分布）也都支持分区。  
 
 分区可能有利于数据维护和查询性能。 分区是对二者都有利还是只对其中之一有利取决于数据加载方式，以及是否可以将同一个列用于两种目的，因为只能根据一个列来进行分区。
 
 ### <a name="benefits-to-loads"></a>对加载的好处
-在 SQL 数据仓库中分区的主要好处是通过分区删除、切换和合并来提高数据加载效率和性能。 大多数情况下，数据是根据日期列来分区的，而日期列与数据加载到数据库中的顺序密切相关。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
+在 SQL Analytics 中分区的主要好处是通过使用分区删除、切换和合并来提高数据加载效率和性能。 大多数情况下，数据是根据日期列来分区的，而日期列与数据加载到数据库中的顺序密切相关。 使用分区来维护数据的最大好处之一是可以避免事务日志记录。 虽然直接插入、更新或删除数据可能是最直接的方法，但如果在加载过程中使用分区，则只需付出一点点思考和努力就可以大大改进性能。
 
 可以使用分区切换来快速删除或替换表的一部分。  例如，销售事实表可能仅包含过去 36 个月的数据。 在每个月月底，便从表删除最旧月份的销售数据。  删除该数据时，可以使用 delete 语句删除最旧月份的数据。 但是，使用 delete 语句逐行删除大量数据可能需要极长的时间，同时还会有执行大型事务的风险，这些大型事务在出现错误时进行回退的时间会很长。 更理想的方式是删除最旧的数据分区。 如果在某种情况下删除各个行可能需要数小时，则删除整个分区可能只需数秒钟。
 
@@ -37,10 +37,10 @@ ms.locfileid: "73685422"
 ## <a name="sizing-partitions"></a>调整分区大小
 虽然在某些情况下可以使用分区来改进性能，但如果在创建表时使用**过多**分区，则在某些情况下可能会降低性能。  对于聚集列存储表，尤其要考虑到这一点。 若要使数据分区有益于性能，务必了解使用数据分区的时机，以及要创建的分区的数目。 对于多少分区属于分区过多并没有简单的硬性规定，具体取决于数据，以及要同时加载多少分区。 一个成功的分区方案通常只有数十到数百的分区，没有数千个。
 
-在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 在创建分区之前，SQL 数据仓库已将每个表细分到 60 个分布式数据库中。 向表添加的任何分区都是基于在后台创建的分布。 根据此示例，如果销售事实表包含 36 个月的分区，并假设 SQL 数据仓库有 60 个分布区，则销售事实表每个月应包含 6000 万行，或者在填充所有月份时包含 21 亿行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
+在“聚集列存储”表上创建分区时，务请考虑每个分区可容纳的行数。 对于聚集列存储表来说，若要进行最合适的压缩并获得最佳性能，则每个分布和分区至少需要 1 百万行。 创建分区之前，SQL Analytics 已将每个表分成60分布式数据库。 向表添加的任何分区都是基于在后台创建的分布。 在此示例中，如果销售事实表包含36个月的分区，并假设 SQL 分析数据库有60个分布区，则销售事实表应包含每个月的60000000行或在填充所有月份时包含2100000000行。 如果表包含的行数少于每个分区行数的最小建议值，可考虑使用较少的分区，以增加每个分区的行数。 有关详细信息，请参阅[索引编制](sql-data-warehouse-tables-index.md)一文，其中包含的查询可用于评估群集列存储索引的质量。
 
 ## <a name="syntax-differences-from-sql-server"></a>与 SQL Server 的语法差异
-SQL 数据仓库引入了一种定义比 SQL Server 简单的分区的方法。 在 SQL 数据仓库中不像在 SQL Server 中一样使用分区函数和方案。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 SQL 数据仓库支持一个表一个分区列，后者可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes)。
+SQL Analytics 引入了一种定义比 SQL Server 简单的分区的方法。 在 SQL 分析中不使用分区函数和方案，因为它们处于 SQL Server 中。 只需识别分区列和边界点。 尽管分区的语法可能与 SQL Server 稍有不同，但基本概念是相同的。 SQL Server 和 SQL Analytics 支持每个表有一个分区列，可以是范围分区。 若要详细了解分区，请参阅[已分区表和已分区索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes)。
 
 下例使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) 语句根据 OrderDateKey 列对 FactInternetSales 表进行分区：
 
@@ -69,12 +69,12 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>从 SQL Server 迁移分区
-要将 SQL Server 分区定义迁移到 SQL 数据仓库，只需执行以下操作即可：
+仅将 SQL Server 分区定义迁移到 SQL Analytics：
 
 - 消除 SQL Server [分区方案](/sql/t-sql/statements/create-partition-scheme-transact-sql)。
 - 将[分区函数](/sql/t-sql/statements/create-partition-function-transact-sql)定义添加到 CREATE TABLE。
 
-如果要从 SQL Server 实例迁移分区的表，则可使用以下 SQL 来算出每个分区中的行数。 请记住，如果在 SQL 数据仓库上使用相同的分区粒度，则每个分区的行数会下降到原来的 1/60。  
+如果要从 SQL Server 实例迁移分区的表，则可使用以下 SQL 来算出每个分区中的行数。 请记住，如果在 SQL 分析上使用相同的分区粒度，则每个分区的行数将减小系数60。  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -111,7 +111,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="partition-switching"></a>分区切换
-SQL 数据仓库支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) 语句执行。
+SQL Analytics 支持分区拆分、合并和切换。 这些函数每个都使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) 语句执行。
 
 若要在两个表之间切换分区，必须确保分区对齐其各自的边界，并且表定义匹配。 由于检查约束不可用于强制实施表中的值范围，因此源表必须包含与目标表相同的分区边界。 如果那时分区边界不相同，则分区切换会失败，因为分区元数据不会同步。
 
@@ -171,7 +171,7 @@ WHERE t.[name] = 'FactInternetSales'
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。 仅当表上存在列存储索引时，才可以拆分空分区。 请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，并在 ALTER PARTITION 完成后重建列存储索引。
+消息 35346，级别 15，状态 1，行 44: ALTER PARTITION 语句的 SPLIT 子句失败，因为分区不为空。 如果表中存在列存储索引，则只能拆分空的分区。 请考虑在发出 ALTER PARTITION 语句前禁用列存储索引，并在 ALTER PARTITION 完成后重建列存储索引。
 
 但是，可以使用 `CTAS` 创建新表以保存数据。
 
@@ -226,8 +226,8 @@ ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.Fa
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
-将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 SQL 数据仓库中，支持在 `TRUNCATE_TARGET` 命令中使用 `ALTER TABLE` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>在一个步骤中将新数据加载到包含数据的分区中
+通过分区切换将数据加载到分区中，可以方便地在表中暂存新数据，而用户不会看到新数据。  对于繁忙的系统来说，处理与分区切换相关的锁定争用可能会很困难。  若要清除分区中的现有数据，需要使用 `ALTER TABLE` 来切换数据。  然后，需要另一个 `ALTER TABLE` 来切换新数据。  在 SQL Analytics 中，`ALTER TABLE` 命令支持 `TRUNCATE_TARGET` 选项。  利用 `TRUNCATE_TARGET` `ALTER TABLE` 命令用新数据覆盖分区中的现有数据。  下面的示例使用 `CTAS` 创建包含现有数据的新表、插入新数据，然后将所有数据切换回目标表，并覆盖现有数据。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -328,7 +328,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-使用这种方法时，源代码管理中的代码将保持静态，允许动态的分区边界值，并不断地与仓库一起演进。
+使用此方法时，源代码管理中的代码将保持静态，而分区边界值允许动态;随着时间的推移，数据库不断发展。
 
 ## <a name="next-steps"></a>后续步骤
 有关开发表的详细信息，请参阅[表概述](sql-data-warehouse-tables-overview.md)上的文章。

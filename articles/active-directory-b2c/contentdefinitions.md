@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ContentDefinitions 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425623"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189576"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -61,7 +61,7 @@ ms.locfileid: "77425623"
 
 **ContentDefinition** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 内容定义标识符。 其值为本页稍后的“内容定义 ID”部分指定的值。 |
 
@@ -133,21 +133,21 @@ ms.locfileid: "77425623"
 
 | 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
-| 项 | 0:n | 与内容定义相关的元数据。 |
+| Item | 0:n | 与内容定义相关的元数据。 |
 
 **Metadata** 元素的 **Item** 元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| Key | 是 | 元数据密钥。  |
+| 密钥 | 是 | 元数据密钥。  |
 
 #### <a name="metadata-keys"></a>元数据密钥
 
-内容定义支持以下元数据项： 
+内容定义支持以下元数据项：
 
-| Key | 必需 | 说明 |
+| 密钥 | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| DisplayName | 是 | 一个字符串，其中包含内容定义的名称。 |
+| DisplayName | 否 | 一个字符串，其中包含内容定义的名称。 |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -159,9 +159,9 @@ ms.locfileid: "77425623"
 
 **LocalizedResourcesReference**元素包含以下属性：
 
-| 属性 | 必需 | 说明 |
+| Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
-| Language | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
+| 语言 | 是 | 一个字符串，包含符合 RFC 5646“用于标识语言的标记”的策略支持的语言。 |
 | LocalizedResourcesReferenceId | 是 | **LocalizedResources** 元素的标识符。 |
 
 以下示例演示包含对英语、法语和西班牙语本地化的引用的注册或登录内容定义：

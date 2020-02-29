@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e53fb46b7c13e1feb0cc24663fb0782b4de06f2b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650293"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198025"
 ---
 # <a name="vcore-model-overview"></a>vCore 模型概述
 
@@ -98,10 +98,11 @@ VCore 模型中的硬件生成选项包括 Gen 4/5、M 系列（预览版）和 
 |硬件代次  |计算  |内存  |
 |:---------|:---------|:---------|
 |Gen4     |-Intel E5-2673 v3 （Haswell） 2.4 GHz 处理器<br>-预配多达24个 Vcore （1 vCore = 1 个物理内核）  |-每个 vCore 7 GB<br>-预配高达 168 GB|
-|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
+|Gen5     |**预配计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 处理器<br>-预配多达 80 Vcore （1 vCore = 1 个超线程）<br><br>**无服务器计算**<br>-Intel E5-2673 v4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake） * 处理器<br>-自动缩放多达16个 Vcore （1 vCore = 1 个超线程）|**预配计算**<br>-5.1 GB/vCore<br>-预配高达 408 GB<br><br>**无服务器计算**<br>-每 vCore 自动扩展到 24 GB<br>-自动缩放最大为 48 GB|
 |Fsv2 系列     |-Intel 至强白金8168（SkyLake）处理器<br>-将所有核心 turbo 时钟速度保持为 3.4 GHz，最大单一核心 turbo 时钟速度为 3.7 GHz。<br>-设置 72 Vcore （1 vCore = 1 个超线程）|-1.9 GB/vCore<br>-预配 136 GB|
 |M 系列     |-Intel E7-8890 v3 2.5 GHz 处理器<br>-设置 128 Vcore （1 vCore = 1 个超线程）|-每个 vCore 29 GB<br>-预配 3.7 TB|
 
+[Dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database)在 Gen5 动态管理视图中 \*，使用 Intel sp-1-8160 （Skylake）处理器的数据库的硬件生成将显示为 Gen6。 不管处理器类型如何（Broadwell 或 Skylake），所有 Gen5 数据库的资源限制都是相同的。
 
 有关资源限制的详细信息，请参阅[单一数据库的资源限制（vCore）](sql-database-vcore-resource-limits-single-databases.md)或[弹性池的资源限制（vCore）](sql-database-vcore-resource-limits-elastic-pools.md)。
 

@@ -10,28 +10,36 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 924705b7ce1d324583077797714491bdf3fc5cc9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 257b33802ea95138ef8149ef9302b14ca379e7ac
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721211"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195532"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>如何监视 Gen2 缓存
-Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。 本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。  
+
+本文介绍如何监视和排查查询性能下降的问题，只需确定工作负荷是否在充分利用 Gen2 缓存即可。
+
+Gen2 存储体系结构自动将最常查询的列存储段归类到特定的缓存中，该缓存位于基于 NVMe 且专为 Gen2 数据仓库设计的 SSD 中。 如果查询检索驻留在缓存中的段，则可提高性能。
+ 
 ## <a name="troubleshoot-using-the-azure-portal"></a>使用 Azure 门户进行故障排除
-可以使用 Azure Monitor 来查看 Gen2 缓存指标，以便排查查询性能问题。 首先转到 Azure 门户，然后单击“监视”：
 
-![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache_0.png)
+可以使用 Azure Monitor 来查看 Gen2 缓存指标，以便排查查询性能问题。 首先，请单击 "Azure 门户"，然后单击 "**监视器**"、"**度量值**" 和 "**选择作用域**"：
 
-选择 "指标" 按钮，并填写数据仓库的 "**订阅**"、"**资源** **组**"、"**资源类型**" 和 "**资源名称**"。
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-0.png)
 
-排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。 配置 Azure 指标图表，以便显示这两个指标。
+使用 "搜索" 和下拉栏定位到数据仓库。 然后选择 "应用"。
 
-![缓存指标](./media/sql-data-warehouse-cache-portal/cache_1.png)
+![Azure Monitor](./media/sql-data-warehouse-cache-portal/cache-1.png)
 
+排查 Gen2 缓存问题时，关键指标是“缓存命中百分比”和“缓存使用百分比”。 选择 "**缓存命中百分比**"，然后使用 "**添加度量值**" 按钮添加**使用的缓存百分比**。 
+
+![缓存指标](./media/sql-data-warehouse-cache-portal/cache-2.png)
 
 ## <a name="cache-hit-and-used-percentage"></a>缓存命中和使用百分比
+
 下表根据缓存指标的值对场景进行了说明：
 
 |                                | **缓存命中百分比高** | **缓存命中百分比低** |

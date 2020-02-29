@@ -3,20 +3,20 @@ title: 错误代码参考
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 服务可返回的错误代码的列表。
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735074"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188658"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>错误代码： Azure Active Directory B2C
 
@@ -44,9 +44,9 @@ Azure Active Directory B2C 服务可返回以下错误。
 | `AADB2C90027` | 为 "{0}" 指定的基本凭据无效。 检查凭据是否正确以及资源是否已授予访问权限。 |
 | `AADB2C90028` | 为 "{0}" 指定的客户端证书无效。 检查证书是否正确，是否包含私钥，以及该资源是否已授予访问权限。 |
 | `AADB2C90031` | 策略 "{0}" 未指定默认用户旅程。 确保策略或其父项将默认用户旅程指定为信赖方部分的一部分。 |
-| `AADB2C90035` | 该服务暂时不可用。 请在几分钟后重试。 |
+| `AADB2C90035` | 服务暂时不可用。 请在几分钟后重试。 |
 | `AADB2C90036` | 请求不包含用于将用户重定向到注销的 URL。 在 post_logout_redirect_uri 参数字段中指定 URI。 |
-| `AADB2C90037` | 在处理请求时出错。 请与你尝试访问的站点的管理员联系。 |
+| `AADB2C90037` | 处理请求时出错。 请与你尝试访问的站点的管理员联系。 |
 | `AADB2C90039` | 请求包含客户端断言，但租户 "{1}" 中提供的策略 "{0}" 缺少 RelyingPartyPolicy 中的 client_secret。 |
 | `AADB2C90040` | 用户旅程 "{0}" 不包含 "发送声明" 步骤。 |
 | `AADB2C90043` | 请求中包含的提示包含无效值。 应为 "none"、"login"、"同意" 或 "select_account"。 |
@@ -58,10 +58,10 @@ Azure Active Directory B2C 服务可返回以下错误。
 | `AADB2C90052` | 无效的用户名或密码。 |
 | `AADB2C90053` | 找不到具有指定凭据的用户。 |
 | `AADB2C90054` | 无效的用户名或密码。 |
-| `AADB2C90055` | 请求中提供的范围 "{0}" 必须指定资源，例如 "https://example.com/calendar.read "。 |
+| `AADB2C90055` | 请求中提供的范围 "{0}" 必须指定资源，例如 "https://example.com/calendar.read"。 |
 | `AADB2C90057` | 提供的应用程序未配置为允许 OAuth 隐式流。 |
 | `AADB2C90058` | 提供的应用程序未配置为允许公用客户端。 |
-| `AADB2C90067` | 注销后重定向 URI "{0}" 的格式无效。 指定基于 https 的 URL （例如 "https://example.com/return "）或本机客户端使用 IETF native client URI "urn： ietf： wg： oauth：2.0： oob"。 |
+| `AADB2C90067` | 注销后重定向 URI "{0}" 的格式无效。 指定基于 https 的 URL （例如 "https://example.com/return"）或本机客户端使用 IETF native client URI "urn： ietf： wg： oauth：2.0： oob"。 |
 | `AADB2C90068` | 提供的 ID 为 "{0}" 的应用程序对此服务无效。 请使用通过 B2C 门户创建的应用程序，然后重试。 |
 | `AADB2C90075` | 步骤 "{1}" 中指定的声明交换 "{0}" 返回了代码为 "{2}" 并原因为 "{3}" 的 HTTP 错误响应。 |
 | `AADB2C90077` | 用户没有现有会话，请求提示参数的值为 "{0}"。 |
@@ -145,7 +145,7 @@ Azure Active Directory B2C 服务可返回以下错误。
 | `AADB2C90289` | 连接到标识提供程序时遇到错误。 请稍后重试。 |
 | `AADB2C90296` | 应用程序配置不正确。 请与你尝试访问的站点的管理员联系。 |
 | `AADB2C99005` | 请求包含无效的作用域参数，该参数包含非法字符 "{0}"。 |
-| `AADB2C99006` | Azure AD B2C 找不到应用 id 为 "{0}" 的扩展应用。 有关详细信息，请访问 https://go.microsoft.com/fwlink/?linkid=851224 。 |
+| `AADB2C99006` | Azure AD B2C 找不到应用 id 为 "{0}" 的扩展应用。 有关详细信息，请访问 https://go.microsoft.com/fwlink/?linkid=851224。 |
 | `AADB2C99011` | 未在策略 "{2}" 中的技术配置文件 "{1}" 中指定元数据值 "{0}"。 |
 | `AADB2C99013` | 不支持提供的 grant_type [{0}] 和 token_type [{1}] 组合。 |
 | `AADB2C99015` | 租户 "{2}" 中的策略 "{1}" 中的配置文件 "{0}" 缺少资源所有者密码凭据流所需的所有 InputClaims。 |

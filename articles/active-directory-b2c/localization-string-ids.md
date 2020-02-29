@@ -2,20 +2,20 @@
 title: 本地化字符串 ID - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中使用自定义策略的 api.signuporsignin ID 指定内容定义的 ID。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982851"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187485"
 ---
 # <a name="localization-string-ids"></a>本地化字符串 ID
 
@@ -33,7 +33,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **logonIdentifier_email** | 电子邮件地址 |
 | **requiredField_email** | 请输入电子邮件地址 |
 | **invalid_email** | 请输入有效的电子邮件地址 |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
+| **email_pattern** | ^ [A-za-z0-9.！# $% & "' *+/=？ ^ _\`{\|} ~-] + @ [a-za-z0-9-] + （？：\\。 [A-za-z0-9-] +）* $ |
 | **local_intro_username** | 使用用户名登录 |
 | **logonIdentifier_username** | 用户名 |
 | **requiredField_username** | 请输入用户名 |
@@ -43,7 +43,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **forgotpassword_link** | 忘记密码了? |
 | **createaccount_intro** | 没有帐户？ |
 | **createaccount_link** | 立即注册 |
-| **divider_title** | 或者 |
+| **divider_title** | 或 |
 | **cancel_message** | 用户忘记了密码 |
 | **button_signin** | 登录 |
 | **social_intro** | 使用社交帐户登录 |
@@ -104,28 +104,28 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **ver_but_send** | 发送验证代码 |
 | **alert_yes** | 是 |
 | **error_fieldIncorrect** | 一个或多个字段填写不正确。 请检查条目并重试。 |
-| **year** | 年 |
+| **year** | 年龄 |
 | **verifying_blurb** | 正在处理你的信息，请稍候。 |
 | **button_cancel** | 取消 |
 | **ver_fail_no_retry** | 你进行不正确尝试的次数过多。 请稍后重试。 |
-| month | 月 |
+| month | 月份 |
 | **ver_success_msg** | 已验证电子邮件地址。 现在可以继续。 |
 | **months** | 一月、二月、三月、四月、五月、六月、七月、八月、九月、十月、十一月、十二月 |
 | **ver_fail_server** | 我们无法验证你的电子邮件地址。 请输入有效的电子邮件地址，然后重试。 |
 | **error_requiredFieldMissing** | 缺少必填字段。 请填写所有必填字段，然后重试。 |
 | **initial_intro** | 请提供以下详细信息。 |
 | **ver_but_resend** | 发送新验证码 |
-| **button_continue** | Create |
+| **button_continue** | 创建 |
 | **error_passwordEntryMismatch** | 密码输入字段不一致。 请在这两个字段中输入相同密码，然后重试。 |
 | **ver_incorrect_format** | 格式错误。 |
 | **ver_but_edit** | 更改电子邮件 |
 | **ver_but_verify** | 验证验证码 |
 | **alert_no** | 否 |
 | **ver_info_msg** | 验证码已发送到收件箱。 请将其复制到下面的输入框。 |
-| day | 天 |
+| day | 日期 |
 | **ver_fail_throttled** | 用于验证此电子邮件地址的请求过多。 请稍等片刻，然后重试。 |
 | **helplink_text** | 这是什么？ |
-| **ver_fail_retry** | 验证码不正确。 请稍后重试。 |
+| **ver_fail_retry** | 验证码不正确。 请重试。 |
 | **alert_title** | 取消输入详细信息 |
 | **required_field** | 此信息是必需的。 |
 | **alert_message** | 确实要取消输入详细信息吗? |
@@ -170,7 +170,7 @@ Localization 元素使你能够在用户旅程的策略中支持多个区域设�
 | **requiredField_code** | 请输入收到的验证码 |
 | **invalid_code** | 请输入收到的 6 位验证码 |
 | **button_cancel** | 取消 |
-| **local_number_input_placeholder_text** | 手机号码 |
+| **local_number_input_placeholder_text** | 电话号码 |
 | **button_retry** | 重试 |
 | **alternative_text** | 我没有电话 |
 | **intro_phone_p** | 我们记录了以下号码。 选择一个号码，以便我们能够通过电话来验证你的身份。 |

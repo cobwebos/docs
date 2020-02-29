@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837500"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199829"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供具有托管标识的 Key Vault 身份验证
 
@@ -25,16 +26,16 @@ ms.locfileid: "73837500"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 若要完成本指南，你必须拥有以下资源。 
 
-- 密钥保管库。 你可以使用现有的密钥保管库，或者按照以下快速入门之一中的步骤创建一个新的密钥保管库：
-   - [使用 Azure CLI 创建密钥保管库](quick-create-cli.md)
-   - [使用 Azure PowerShell 创建密钥保管库](quick-create-powershell.md)
-   - [使用 Azure 门户创建密钥保管库](quick-create-portal.md)。
+- 一个 Key Vault。 可以使用现有的 Key Vault，或者遵循以下快速入门之一中的步骤创建一个新的 Key Vault：
+   - [使用 Azure CLI 创建 Key Vault](quick-create-cli.md)
+   - [使用 Azure PowerShell 创建 Key Vault](quick-create-powershell.md)
+   - [使用 Azure 门户创建 Key Vault](quick-create-portal.md)
 - 要向其授予密钥保管库访问权限的现有应用服务应用程序。 可以按照[应用服务文档](../app-service/overview.md)中的步骤来快速创建一个。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用[Azure 门户](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/overview)。 或者，可以使用 [Azure 门户](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>添加系统分配的标识 
@@ -55,7 +56,7 @@ ms.locfileid: "73837500"
 
 ### <a name="azure-cli"></a>Azure CLI
 
-本快速入门需要 Azure CLI 版本2.0.4 或更高版本。 运行 `az --version` 即可查找当前版本。 如需安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
+本快速入门需要 Azure CLI 版本2.0.4 或更高版本。 运行 `az --version` 即可查找当前版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
 若要使用 Azure CLI 登录，请使用[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login)命令：
 
@@ -114,6 +115,6 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 - [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
 - [提供访问控制策略 Key Vault 身份验证](key-vault-group-permissions-for-apps.md)
 - [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
-- [保护密钥保管库](key-vault-secure-your-key-vault.md)。
+- [保护 Key Vault](key-vault-secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](key-vault-developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](key-vault-best-practices.md)

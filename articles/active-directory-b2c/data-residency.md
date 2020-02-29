@@ -3,20 +3,20 @@ title: 区域可用性和数据驻留
 titleSuffix: Azure AD B2C
 description: 区域可用性、数据驻留以及有关 Azure Active Directory B2C 预览版租户的信息。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 532136be69356b634959a762f4eeb1c1c4af5a82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849170"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188842"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：区域可用性和数据驻留
 
@@ -28,7 +28,7 @@ Azure AD B2C 在**全球范围内公开提供**，在**美国、欧洲或亚太*
 
 [数据驻留](#data-residency)是指存储用户数据的位置。
 
-## <a name="region-availability"></a>适用区域
+## <a name="region-availability"></a>上市区域
 
 Azure AD B2C 可通过 Azure 公有云在全球通用。
 

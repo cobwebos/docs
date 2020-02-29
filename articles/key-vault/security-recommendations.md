@@ -5,16 +5,17 @@ services: key-vault
 author: barclayn
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 5aa3ebc602396bc2d7f83150c66535039b1389e6
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171340"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192364"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault 的安全性建议
 
@@ -32,7 +33,7 @@ Azure 安全中心会自动监视本文中包含的一些建议。 Azure 安全�
 |启用软删除 | [软删除](key-vault-ovw-soft-delete.md)使你可以恢复已删除的保管库和保管库对象 |  - |
 | 限制对保管库数据的访问  | 遵循最低权限原则，并限制组织的哪些成员有权访问保管库数据 |  - |
 
-## <a name="identity-and-access-management"></a>身份和访问管理
+## <a name="identity-and-access-management"></a>标识和访问管理
 
 | 建议 | 注释 | 安全中心 |
 |-|----|--|

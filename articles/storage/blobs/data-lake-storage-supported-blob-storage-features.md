@@ -8,28 +8,28 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: debc674184e6846128b0b8cff857c75a805e365a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925691"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196002"
 ---
-# <a name="blobstoragefeaturesavailableinazuredatalakestoragegen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
+# <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
-Blob 存储功能（如 [诊断日志记录](../common/storage-analytics-logging.md)、 [访问层](storage-blob-storage-tiers.md)和 [blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在适用于具有分层命名空间的帐户。 因此，你可以在 Blob 存储帐户上启用分层命名空间，而不会失去对这些功能的访问权限。
+Blob 存储功能（如[诊断日志记录](../common/storage-analytics-logging.md)、[访问层](storage-blob-storage-tiers.md)和 [blob 存储生命周期管理策略](storage-lifecycle-management-concepts.md)）现在适用于具有分层命名空间的帐户。 因此，你可以在 Blob 存储帐户上启用分层命名空间，而不会失去对这些功能的访问权限。
 
 此表列出了可用于 Azure Data Lake Storage Gen2 的 Blob 存储功能。 当支持持续扩展时，这些表中出现的项将随时间而改变。
 
-## <a name="supportedblobstoragefeatures"></a>支持的 Blob 存储功能
+## <a name="supported-blob-storage-features"></a>支持的 Blob 存储功能
 
 > [!NOTE]
 > 支持级别仅引用 Data Lake Storage Gen2 支持此功能的方式。
 
-|Blob 存储功能 |支持级别 |相关文章 |
+|Blob 存储功能 |支持级别 |相关文章 |
 |---------------|-------------------|---|
-|热访问层 |正式发布|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
-|冷访问层 |正式发布|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
+|热访问层|正式发布|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
+|冷访问层|正式发布|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |事件|正式发布|[响应 Blob 存储事件](storage-blob-event-overview.md)|
 |指标（经典）|正式发布|[Azure 存储分析指标（经典）](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure Monitor 中的指标|正式发布|[Azure Monitor 中的 Azure 存储指标](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|

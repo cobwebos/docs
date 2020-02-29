@@ -3,20 +3,20 @@ title: 使用 HTTP 基本身份验证保护 RESTful 服务
 titleSuffix: Azure AD B2C
 description: 使用 HTTP 基本身份验证保护 Azure AD B2C 中的自定义 REST API 声明交换。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986ad1845fa2699bb3462dceb3865300a035cb71
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 505d92e33606dac327778cae179df44efbfdf853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848533"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183850"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -28,7 +28,7 @@ ms.locfileid: "76848533"
 
 有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](rest-api-claims-exchange-dotnet.md)一文中所述的步骤。
 
@@ -69,7 +69,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="step-13-add-an-authentication-middleware-class"></a>步骤 1.3：添加身份验证中间件类
 
-在 *App_Start* 文件夹下添加 `ClientAuthMiddleware.cs` 类。 为此，请执行以下操作：
+在 `ClientAuthMiddleware.cs`App_Start*文件夹下添加* 类。 为此，请执行以下操作：
 
 1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。
 
@@ -233,7 +233,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>步骤 3.1：添加 RESTful 服务客户端 ID
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” **“标识体验框架”。**  > 
 
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
@@ -255,7 +255,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>步骤 3.2：添加 RESTful 服务客户端机密
 
-1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
+1. 在 Azure AD B2C 租户中，选择“B2C 设置” **“标识体验框架”。**  > 
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
@@ -278,7 +278,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 
-2. 搜索包含 `Id="REST-API-SignUp"` 的 `<TechnicalProfile>` 节点。
+2. 搜索包含 `<TechnicalProfile>` 的 `Id="REST-API-SignUp"` 节点。
 
 3. 找到 `<Metadata>` 元素。
 

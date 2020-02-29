@@ -3,21 +3,21 @@ title: 将 Azure AD B2C 配置为应用程序的 SAML IdP
 title-suffix: Azure AD B2C
 description: 如何配置 Azure AD B2C 以向应用程序提供 SAML 协议断言（服务提供程序）。 Azure AD B2C 将充当 SAML 应用程序的单个标识提供者（IdP）。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912234"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189644"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -63,7 +63,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 ## <a name="1-set-up-certificates"></a>1. 设置证书
 
-若要在服务提供商与 Azure AD B2C 之间建立信任关系，则需要提供 X509 证书及其私钥。
+若要在服务提供商与 Azure AD B2C 之间建立信任关系，需要提供 web 应用 X509 证书。
 
 * **服务提供商证书**
   * 具有存储在 Web 应用中的私钥的证书。 服务提供商使用此证书对发送到 Azure AD B2C 的 SAML 请求进行签名。 Azure AD B2C 从服务提供程序元数据读取公钥来验证签名。

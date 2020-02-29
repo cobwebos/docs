@@ -3,20 +3,20 @@ title: 使用自定义策略设置 LinkedIn 帐户登录
 titleSuffix: Azure AD B2C
 description: 使用自定义策略在 Azure Active Directory B2C 中设置 LinkedIn 帐户的登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f4ad74104d34e7e2c3f4d6aafc05b36574f8e287
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 80bd1b65d04ea49fc742033e1850d95a85021c9f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847428"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188165"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "76847428"
 
 本文说明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，为 LinkedIn 帐户中的用户启用登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 - LinkedIn 帐户-如果你还没有帐户，请[创建一个帐户](https://www.linkedin.com/start/join)。
@@ -68,7 +68,7 @@ ms.locfileid: "76847428"
 6. 对于“选项”，请选择 `Manual`。
 7. 输入策略密钥的**名称**。 例如，`LinkedInSecret` 。 前缀*B2C_1A_* 会自动添加到密钥名称。
 8. 在 "**密钥**" 中，输入你之前记录的客户端密码。
-9. 在“密钥用法”处选择 `Signature`。
+9. 在“密钥用法”处选择 **。** `Signature`
 10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
@@ -77,7 +77,7 @@ ms.locfileid: "76847428"
 
 通过将 LinkedIn 帐户添加到策略扩展文件中的**ClaimsProviders**元素，将其定义为声明提供程序。
 
-1. 在编辑器中打开*SocialAndLocalAccounts/ **trustframeworkextensions.xml*** 文件。 此文件位于[自定义策略初学者包][starter-pack]中，你可以在其中一个必备组件中下载。
+1. 在编辑器中打开*SocialAndLocalAccounts/* * trustframeworkextensions.xml** * 文件。 此文件位于[自定义策略初学者包][starter-pack]中，你可以在其中一个必备组件中下载。
 1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
 1. 如下所示添加新的 **ClaimsProvider**：
 
@@ -177,7 +177,7 @@ LinkedIn 技术配置文件需要将**ExtractGivenNameFromLinkedInResponse**和*
 你现在已配置了一个策略，以便 Azure AD B2C 知道如何与 LinkedIn 帐户通信。 尝试上传策略的扩展文件，以确认它目前不会有任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+2. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 3. 单击“上载” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
@@ -185,7 +185,7 @@ LinkedIn 技术配置文件需要将**ExtractGivenNameFromLinkedInResponse**和*
 此时，标识提供者已设置，但在任何注册或登录屏幕上都不可用。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 LinkedIn 标识提供者。
 
 1. 打开初学者包中的*trustframeworkbase.xml*文件。
-2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+2. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 5. 重命名用户旅程的 ID。 例如，`SignUpSignInLinkedIn` 。
@@ -194,7 +194,7 @@ LinkedIn 技术配置文件需要将**ExtractGivenNameFromLinkedInResponse**和*
 
 **ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 LinkedIn 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在创建的用户旅程中找到包含 **的**OrchestrationStep`Order="1"` 元素。
 2. 在 **ClaimsProviderSelections** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `LinkedInExchange`：
 
     ```XML
@@ -205,7 +205,7 @@ LinkedIn 技术配置文件需要将**ExtractGivenNameFromLinkedInResponse**和*
 
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 LinkedIn 帐户通信以接收令牌。
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
@@ -246,7 +246,7 @@ LinkedIn 最近[将其 api 从1.0 版更新到](https://engineering.linkedin.com
 <Item Key="scope">r_emailaddress r_basicprofile</Item>
 ```
 
-改为：
+更改为：
 
 ```XML
 <Item Key="ClaimsEndpoint">https://api.linkedin.com/v2/me</Item>
@@ -272,7 +272,7 @@ LinkedIn 最近[将其 api 从1.0 版更新到](https://engineering.linkedin.com
 <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
 ```
 
-改为：
+更改为：
 
 ```XML
 <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName.localized" />

@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806671"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197362"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -40,7 +41,7 @@ Key Vault 最初创建时具有[Azure Key Vault 服务限制](key-vault-service-
 
 | 保管库名称 | 保管库区域 | 对象类型（Secret、Key 或 Cert） | 操作 * | 键类型 | 密钥长度或曲线 | HSM 密钥？| 需要稳定状态 RPS | 需要的最大 RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | 密钥 | 签名 | EC | P-256 | No | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | 密钥 | 签名 | EC | P-256 | 否 | 200 | 1000 |
 
 \* 获取可能值的完整列表，请参阅[Azure Key Vault 操作](/rest/api/keyvault/key-operations)。
 

@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164560"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190273"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>如何：使用 ADAL 在 iOS 上启用跨应用 SSO
 
@@ -109,7 +109,7 @@ Microsoft 为每个移动平台提供了应用程序，可在来自不同供应�
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>我们如何确保应用程序有效
 
-确保调用中转站的应用程序标识有效的需求对于我们在中转站辅助的登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时我们始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 下面详细讨论了开发人员应如何设计此重定向 URI。 此自定义重定向 URI 包含应用程序的捆绑 ID，并由 Apple App Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 iOS 操作系统为其提供调用中转站的捆绑 ID。 在调用我们的标识系统时，中转站会向 Microsoft 提供此捆绑 ID。 如果应用程序的捆绑 ID 与开发人员在注册期间提供给我们的捆绑 ID 不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
+确保调用 broker 的应用程序的标识对我们在 broker 辅助登录中提供的安全性至关重要。 iOS 和 Android 都不会强制实施仅对给定应用程序有效的唯一标识符，因此恶意应用程序可能“假冒”合法应用程序的标识符，并接收对合法应用程序适用的令牌。 为了确保在运行时我们始终与适当的应用程序进行通信，我们会要求开发人员在将其应用程序注册到 Microsoft 时提供自定义重定向 URI。 下面详细讨论了开发人员应如何设计此重定向 URI。 此自定义重定向 URI 包含应用程序的捆绑 ID，并由 Apple App Store 确保其对应用程序是唯一的。 当应用程序调用中转站时，中转站会请求 iOS 操作系统为其提供调用中转站的捆绑 ID。 在调用我们的标识系统时，中转站会向 Microsoft 提供此捆绑 ID。 如果应用程序的捆绑 ID 与开发人员在注册期间提供给我们的捆绑 ID 不匹配，我们将拒绝应用程序访问所请求的资源的令牌。 此检查可确保只有开发人员注册的应用程序收到令牌。
 
 **开发人员可以选择 SDK 是调用中转站，还是使用非中转站辅助的流。** 但是，如果开发人员选择不使用中转站辅助的流，他们会失去使用用户可能已添加到设备的 SSO 凭据的优势，并阻止其应用程序使用 Microsoft 为客户提供的业务功能，例如条件访问、Intune 管理功能和基于证书的身份验证。
 

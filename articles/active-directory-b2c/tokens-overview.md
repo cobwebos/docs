@@ -2,20 +2,20 @@
 title: 令牌概述-Azure Active Directory B2C
 description: 了解 Azure Active Directory B2C 中使用的令牌。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 543a3558333933e9d8d6262c76c1e6e9419be877
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848182"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186482"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌概述
 
@@ -50,9 +50,9 @@ ID 令牌中的声明不按任何特定顺序返回。 可随时在 ID 令牌中
 
 下表列出了可在 Azure AD B2C 颁发的 ID 令牌和访问令牌中使用的声明。
 
-| 名称 | 声明 | 示例值 | Description |
+| 名称 | 声明 | 示例值 | 说明 |
 | ---- | ----- | ------------- | ----------- |
-| 受众 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是应用程序 ID。 应用程序应该验证此值并在令牌不匹配时拒绝令牌。 受众是资源的同义词。 |
+| 读者 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是应用程序 ID。 应用程序应该验证此值并在令牌不匹配时拒绝令牌。 受众是资源的同义词。 |
 | 颁发者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | 标识构造并返回令牌的安全令牌服务 (STS)。 它还标识用户进行身份验证的目录。 应用程序应该验证颁发者声明，以确保令牌来自适当的终结点。 |
 | 颁发时间 | `iat` | `1438535543` | 颁发令牌的时间，以纪元时间表示。 |
 | 过期时间 | `exp` | `1438539443` | 令牌失效的时间，以纪元时间表示。 应用程序应使用此声明来验证令牌生存期的有效性。 |

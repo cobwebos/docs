@@ -1,6 +1,6 @@
 ---
 title: 高级威胁防护
-description: 高级威胁防护会检测异常的数据库活动，指出 Azure SQL 数据库中的潜在安全威胁。
+description: 高级威胁防护检测异常的数据库活动，指示 Azure SQL 数据库中潜在的安全威胁。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,32 +10,33 @@ ms.topic: conceptual
 author: monhaber
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
-ms.date: 03/31/2019
-ms.openlocfilehash: d09cc202c3f7e18358ec693d1cfe4bd2648811ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: 473c58fa5097c4f4e318543c59ad1cf3a3899594
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820699"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194081"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Azure SQL 数据库的高级威胁防护
 
-适用于 [Azure SQL 数据库](sql-database-technical-overview.md)和 [SQL 数据仓库](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的高级威胁防护可检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。
+适用于[AZURE SQL 数据库](sql-database-technical-overview.md)和[azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的高级威胁防护可检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试。
 
-高级威胁防护包含在[高级数据安全性](sql-database-advanced-data-security.md) (ADS) 产品/服务中，是一个针对高级 SQL 安全功能的统一软件包。 可通过中心 SQL ADS 门户访问和管理高级威胁防护。
+高级威胁防护是[高级的数据安全](sql-database-advanced-data-security.md)（ADS）产品/服务的一部分，它是高级 SQL 安全功能的统一包。 高级威胁防护可通过中央 SQL 广告门户进行访问和管理。
 
 > [!NOTE]
-> 本主题适用于 Azure SQL 服务器，同时也适用于在 Azure SQL 服务器中创建的 SQL 数据库和 SQL 数据仓库数据库。 为简单起见，在提到 SQL 数据库和 SQL 数据仓库时，本文统称 SQL 数据库。
+> 本主题适用于 Azure SQL server 以及在 Azure SQL server 上创建的 SQL 数据库和 Azure Synapse。 为简单起见，在同时引用 SQL 数据库和 Azure Synapse 时使用 SQL 数据库。
 
 ## <a name="what-is-advanced-threat-protection"></a>什么是高级威胁防护
 
- 高级威胁防护提供新的安全层，在发生异常活动时会提供安全警报，让客户检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护将警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包含可疑活动的详细信息以及有关如何调查和缓解威胁的建议操作。 不必是安全专家，也不需要管理先进的安全监视系统，就能使用高级威胁防护轻松解决数据库的潜在威胁。
+ 高级威胁防护提供了一个新的安全层，它使客户能够通过提供针对异常活动的安全警报来检测潜在威胁并做出响应。 出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护功能将警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，其中包括可疑活动的详细信息以及如何调查和缓解威胁的建议操作。 利用高级威胁防护，无需成为安全专家或管理高级安全监视系统，就可以轻松地解决数据库的潜在威胁。
 
 为了提供完整的调查体验，建议启用 [SQL 数据库审核](sql-database-auditing.md)，它会将数据库事件写入到 Azure 存储帐户中的审核日志。  
 
 ## <a name="advanced-threat-protection-alerts"></a>高级威胁防护警报
 
-适用于 Azure SQL 数据库的高级威胁防护可检测异常活动（指示异常和可能有害的数据库访问或使用企图），并可触发以下警报：
+适用于 Azure SQL 数据库的高级威胁防护可检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试，并且它可能会触发以下警报：
 
 - **SQL 注入漏洞**：当应用程序在数据库中生成错误的 SQL 语句时，将触发此警报。 此警报会指示可能存在易受 SQL 注入攻击的漏洞。 生成错误语句的可能原因有两个：
 
@@ -64,19 +65,19 @@ ms.locfileid: "73820699"
 
    ![特定警报](./media/sql-database-threat-detection/specific_alert.png)
 
-## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>在 Azure 门户中浏览针对数据库发出的高级威胁防护警报
+## <a name="explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal"></a>浏览 Azure 门户中数据库的高级威胁防护警报
 
-高级威胁防护将其警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 Azure 门户中“数据库和 SQL ADS”边栏选项卡内的“实时 SQL 高级威胁防护”磁贴会跟踪活动威胁的状态。
+高级威胁防护将其警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成。 "数据库中的实时 SQL 高级威胁防护" 磁贴和 "Azure 门户跟踪活动威胁的状态。
 
-单击“高级威胁防护警报”以启动“Azure 安全中心警报”页，并获取在数据库或数据仓库中检测到的活动 SQL 威胁的概述。
+单击 "**高级威胁防护警报**" 以启动 "Azure 安全中心警报" 页，并获取在数据库上检测到的活动 SQL 威胁的概述。
 
    ![高级威胁防护警报](./media/sql-database-threat-detection/threat_detection_alert.png)
 
-   ![高级威胁防护警报 2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
+   ![高级威胁防护 alert2](./media/sql-database-threat-detection/threat_detection_alert_atp.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[单一数据库和共用数据库中的高级威胁防护](sql-database-threat-detection.md)。
+- 详细了解[单数据库和池中数据库的高级威胁防护](sql-database-threat-detection.md)。
 - 详细了解[托管实例中的高级威胁防护](sql-database-managed-instance-threat-detection.md)。
 - 详细了解[高级数据安全性](sql-database-advanced-data-security.md)。
 - 详细了解 [Azure SQL 数据库审核](sql-database-auditing.md)

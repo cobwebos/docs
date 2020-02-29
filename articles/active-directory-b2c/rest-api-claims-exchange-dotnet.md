@@ -3,20 +3,20 @@ title: 在用户旅程中集成 REST API 声明交换
 titleSuffix: Azure AD B2C
 description: 将 Azure AD B2C 用户旅程中的 REST API 声明交换集成为用户输入验证。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 780d575bd7f035673510d5b1e62cff4dfd6ede16
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5976b6ef747b27a5a04c755d47ae4383fc4b2447
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848754"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187349"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -24,7 +24,7 @@ ms.locfileid: "76848754"
 
 使用构成 Azure Active Directory B2C (Azure AD B2C) 基础的标识体验框架，可在用户旅程中与 RESTful API 相集成。 本演练将会介绍 Azure AD B2C 如何与 .NET Framework RESTful 服务 (Web API) 交互。
 
-## <a name="introduction"></a>简介
+## <a name="introduction"></a>介绍
 
 使用 Azure AD B2C 可以通过调用 RESTful 服务，将自己的业务逻辑添加到用户旅程中。 标识体验框架在“输入声明”集合中将数据发送到 RESTful 服务，在“输出声明”集合中接收 RESTful 返回的数据。 使用 RESTful 服务集成，可以：
 
@@ -57,15 +57,15 @@ ms.locfileid: "76848754"
 * 发回会员号
 * 将会员号添加到 JSON Web 令牌（JWT）
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成[自定义策略入门](custom-policy-get-started.md)一文中的步骤。
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>步骤 1：创建 ASP.NET Web API
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”来创建项目。
-1. 在“新建项目”窗口中，选择“Visual C#” > “Web” > “ASP.NET Web 应用程序(.NET Framework)”。
-1. 在“名称”框中为该应用程序命名（例如 *Contoso.AADB2C.API*），选择“确定”。
+1. 在 Visual Studio 中，选择“文件” **“新建”** “项目”来创建项目。 >  > 
+1. 在“新建项目”窗口中，选择“Visual C#” **“Web”** “ASP.NET Web 应用程序(.NET Framework)”。 >  > 
+1. 在“名称”框中为该应用程序命名（例如 **Contoso.AADB2C.API**），选择“确定”。
 
     ![在 Visual Studio 中创建新的 Visual Studio 项目](./media/rest-api-claims-exchange-dotnet/aadb2c-ief-rest-api-netfw-create-project.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "76848754"
 
 执行以下操作，创建一个代表输入声明的模型：
 
-1. 如果解决方案资源管理器尚未打开，请选择“视图” > “解决方案资源管理器”。
+1. 如果解决方案资源管理器尚未打开，请选择“视图” **“解决方案资源管理器”。**  > 
 1. 在“解决方案资源管理器”中，右键单击“模型”文件夹，选择“添加”，并选择“类”。
 
     ![在 Visual Studio 中选择的添加类菜单项](./media/rest-api-claims-exchange-dotnet/aadb2c-ief-rest-api-netfw-add-model.png)

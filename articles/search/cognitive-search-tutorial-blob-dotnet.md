@@ -8,18 +8,18 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.openlocfilehash: 85fb709dfcca45b6ca8141c6d3de1941044f5ee5
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0c37f1ce2f173f4bf527e7cca30f010101b01720
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78163194"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190681"
 ---
 # <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用C#和 AI 从 Azure blob 生成可搜索内容
 
 如果在 Azure Blob 存储中有非结构化的文本或图像， [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建适用于全文搜索或知识挖掘方案的新内容。 在本C#教程中，对图像应用光学字符识别（OCR）并执行自然语言处理，以创建可在查询、方面和筛选器中使用的新字段。
 
-在本教程中， C#请使用和[.net SDK](https://aka.ms/search-sdk)执行以下任务：
+本教程使用C#和[.net SDK](https://aka.ms/search-sdk)执行以下任务：
 
 > [!div class="checklist"]
 > * 从 Azure Blob 存储中的应用程序文件和映像开始。
@@ -929,11 +929,11 @@ catch (Exception e)
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 
-在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 认知搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+在开发的早期实验阶段，设计迭代的最实用方法是从 Azure 认知搜索中删除对象，并允许你的代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
-本教程涵盖了如何检查是否有现有索引器和索引，并删除它们（若有），以便能够重新运行代码。
+本教程的示例代码检查现有对象并将其删除，以便您可以重新运行代码。
 
-也可以使用门户来删除索引、索引器和技能集。
+还可以使用门户删除索引、索引器、数据源和技能集。
 
 ## <a name="takeaways"></a>要点
 
@@ -945,11 +945,13 @@ catch (Exception e)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务和 Azure Blob 服务的资源组。 假设已将这两个服务放在同一个组中，则删除该资源组会永久删除其中的所有内容，包括在本教程中创建的服务和任何存储内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
+在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+
+使用左侧导航窗格中的 "所有资源" 或 "资源组" 链接，可以在门户中查找和管理资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用自定义技能自定义或扩展管道。 创建自定义技能并将其添加到技能集可以载入自己编写的文本或图像分析代码。
+现在你熟悉了 AI 扩充管道中的所有对象，接下来让我们详细了解一下技能组合定义和个人技能。
 
 > [!div class="nextstepaction"]
-> [示例：为 AI 扩充创建自定义技能](cognitive-search-create-custom-skill-example.md)
+> [如何创建技能组合](cognitive-search-defining-skillset.md)

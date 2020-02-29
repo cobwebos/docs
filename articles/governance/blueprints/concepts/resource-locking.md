@@ -3,12 +3,12 @@ title: 了解资源锁定
 description: 了解 Azure 蓝图中的锁定选项，以在分配蓝图时保护资源。
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919866"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199693"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -83,6 +83,9 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 ```
 
 此请求正文中的主要差异和分配给订阅的主要区别是 `properties.scope` 属性。 此必需属性必须设置为适用于蓝图分配的订阅。 订阅必须是存储蓝图分配的管理组层次结构的直接子项。
+
+> [!NOTE]
+> 分配到管理组作用域的蓝图仍作为订阅级别蓝图分配运行。 唯一的区别是，存储蓝图的位置可防止订阅所有者删除分配和关联的锁。
 
 ## <a name="removing-locking-states"></a>删除锁定状态
 

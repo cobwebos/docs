@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6e4b5bc6d30f6caa2809b7aa1e72be70ae12dbc1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720310"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193028"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics （以前称为 SQL DW）体系结构 
 
@@ -25,7 +25,7 @@ Azure Synapse 是一种无限制的分析服务，它将企业数据仓库和大
 - SQL Analytics：完整的 T-sql 分析 
     - SQL 池（按预配的 DWU 付费）-正式发布
     - SQL 随选（按处理的 TB 付费）-（预览）
-- Spark：深度集成的 Apache Spark （预览） 
+- Spark：深度集成的 Apache Spark （预览）
 - 数据集成：混合数据集成（预览版）
 - Studio：统一的用户体验。  （预览版）
 

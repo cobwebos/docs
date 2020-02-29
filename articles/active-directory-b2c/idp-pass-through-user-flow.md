@@ -3,20 +3,20 @@ title: 通过用户流将访问令牌传递到你的应用
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中，以用户流中的声明的形式传递 OAuth 2.0 标识提供程序的访问令牌。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/17/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 312d093548b6e3cf3654f45d7610e8fc474a87b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838949"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187773"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[用户流](user-flow-overvie
 
 Azure AD B2C 当前仅支持传递 [OAuth 2.0](authorization-code-flow.md) 标识提供者（这包括 [Facebook](identity-provider-facebook.md) 和 [Google](identity-provider-google.md)）的访问令牌。 对于所有其他标识提供者，声明将返回空白。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 应用程序必须使用 [v2 用户流](user-flow-versions.md)。
 * 用户流是使用 OAuth 2.0 标识提供者配置的。

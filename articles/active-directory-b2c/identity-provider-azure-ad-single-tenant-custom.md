@@ -3,20 +3,20 @@ title: 使用自定义策略设置 Azure AD 帐户登录
 titleSuffix: Azure AD B2C
 description: 使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136312"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188404"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "77136312"
 
 本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，从 Azure Active Directory （Azure AD）组织中启用用户登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
@@ -61,7 +61,7 @@ ms.locfileid: "77136312"
 1. 选择 "**添加可选声明**"。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 单击 **“添加”** 。
+1. 单击“添加”。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -75,7 +75,7 @@ ms.locfileid: "77136312"
 1. 输入策略密钥的**名称**。 例如，`ContosoAppSecret` 。  创建前缀后，前缀 `B2C_1A_` 会自动添加到密钥的名称中，因此，在下一部分的 XML 中，其引用为*B2C_1A_ContosoAppSecret*。
 1. 在 "**密钥**" 中，输入你之前记录的客户端密码。
 1. 在“密钥用法”处选择 **。** `Signature`
-1. 选择 **“创建”** 。
+1. 选择“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -149,7 +149,7 @@ ms.locfileid: "77136312"
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
 1. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
-1. 单击 **“上载”** 。
+1. 单击“上载” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
 

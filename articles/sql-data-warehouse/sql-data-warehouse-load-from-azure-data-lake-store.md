@@ -1,43 +1,43 @@
 ---
 title: 教程从 Azure Data Lake Storage 加载数据
-description: 使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。
+description: 使用 PolyBase 外部表加载 SQL analytics Azure Data Lake Storage 的数据。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923627"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194574"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>将数据从 Azure Data Lake Storage 加载到 SQL 数据仓库
-本指南概述了如何使用 PolyBase 外部表将数据从 Azure Data Lake Storage 加载到 Azure SQL 数据仓库。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议将数据导入 SQL 数据仓库以获得最佳性能。 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>从 SQL Analytics Azure Data Lake Storage 加载数据
+本指南概述了如何使用 PolyBase 外部表从 Azure Data Lake Storage 中加载数据。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议导入数据以获得最佳性能。 
 
 > [!NOTE]  
-> 加载的替代方法是当前在公共预览版中的[复制语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。 若要提供有关 COPY 语句的反馈，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com。
+> 加载的替代方法是当前在公共预览版中的[复制语句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)。  COPY 语句提供最大的灵活性。 若要提供有关 COPY 语句的反馈，请将电子邮件发送到以下通讯组列表： sqldwcopypreview@service.microsoft.com。
 >
 > [!div class="checklist"]
 
 > * 创建从 Data Lake Storage 加载所需的数据库对象。
 > * 连接到 Data Lake Storage 目录。
-> * 将数据载入 Azure SQL 数据仓库。
+> * 将数据加载到数据仓库中。
 
-如果没有 Azure 订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="before-you-begin"></a>开始之前
 开始本教程之前，请下载并安装最新版 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)。
 
 若要运行本教程，需要：
 
-* Azure SQL 数据仓库。 请参阅[创建和查询 Azure SQL 数据仓库](create-data-warehouse-portal.md)。
+* SQL 池。 请参阅[创建 SQL 池和查询数据](create-data-warehouse-portal.md)。
 * Data Lake Storage 帐户。 请参阅[Azure Data Lake Storage 入门](../data-lake-store/data-lake-store-get-started-portal.md)。 对于此存储帐户，你将需要配置或指定以下要加载的凭据之一：存储帐户密钥、Azure 目录应用程序用户，或拥有存储帐户的相应 RBAC 角色的 AAD 用户。 
 
 ##  <a name="create-a-credential"></a>创建凭据
@@ -194,7 +194,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>优化列存储压缩
-默认情况下，SQL 数据仓库将表存储为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  发生这种情况的原因多种多样。 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
+默认情况下，表定义为聚集列存储索引。 加载完成后，某些数据行可能未压缩到列存储中。  发生这种情况的原因多种多样。 若要了解详细信息，请参阅[管理列存储索引](sql-data-warehouse-tables-index.md)。
 
 若要在加载后优化查询性能和列存储压缩，请重新生成表，以强制列存储索引压缩所有行。
 
@@ -207,24 +207,25 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 ## <a name="optimize-statistics"></a>优化统计信息
 最好是在加载之后马上创建单列统计信息。 对于统计信息，可以使用多个选项。 例如，如果针对每个列创建单列统计信息，则重新生成所有统计信息可能需要花费很长时间。 如果知道某些列不会在查询谓词中使用，可以不创建有关这些列的统计信息。
 
-如果决定针对每个表的每个列创建单列统计信息，可以使用 [statistics](sql-data-warehouse-tables-statistics.md)（统计信息）一文中的存储过程代码示例 `prc_sqldw_create_stats`。
+如果决定针对每个表的每个列创建单列统计信息，可以使用 `prc_sqldw_create_stats`statistics[（统计信息）一文中的存储过程代码示例 ](sql-data-warehouse-tables-statistics.md)。
 
 以下示例是创建统计信息的不错起点。 它会针对维度表中的每个列以及事实表中的每个联接列创建单列统计信息。 以后，随时可以将单列或多列统计信息添加到其他事实表列。
 
 ## <a name="achievement-unlocked"></a>大功告成！
-已成功地将数据载入 Azure SQL 数据仓库。 干得不错！
+已成功将数据加载到数据仓库中。 干得不错！
 
 ## <a name="next-steps"></a>后续步骤 
 在本教程中，创建了外部表以定义 Data Lake Storage Gen1 中存储的数据的结构，然后使用了 PolyBase CREATE TABLE AS SELECT 语句将数据加载到数据仓库。 
 
 完成了以下操作：
 > [!div class="checklist"]
+>
 > * 已创建从 Data Lake Storage 加载所需的数据库对象。
 > * 已连接到 Data Lake Storage 目录。
-> * 将数据加载到了 Azure SQL 数据仓库。
+> * 已将数据加载到数据仓库中。
 >
 
-加载数据是使用 SQL 数据仓库开发数据仓库解决方案的第一步。 请查看我们的开发资源。
+加载数据是使用 Azure Synapse Analytics 开发数据仓库解决方案的第一步。 请查看我们的开发资源。
 
 > [!div class="nextstepaction"]
-> [了解如何在 SQL 数据仓库中开发表](sql-data-warehouse-tables-overview.md)
+> [了解如何为数据仓库开发表](sql-data-warehouse-tables-overview.md)

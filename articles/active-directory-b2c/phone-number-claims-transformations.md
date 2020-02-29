@@ -3,20 +3,20 @@ title: 自定义策略中的电话号码声明转换
 titleSuffix: Azure AD B2C
 description: Azure AD B2C 中电话号码声明转换的自定义策略参考。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/26/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 34a6d15090cd13a775ad3faa694718ec58738471
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: bd26b2b475e293a1fda1b007289ba7c3eef35136
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620631"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183919"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>在 Azure AD B2C 中定义电话号码声明转换
 
@@ -107,7 +107,7 @@ ms.locfileid: "77620631"
 
 - 输入声明：
   - **phoneNumberString**： + 1 （123）456-7890
-- 输出声明： 
+- 输出声明：
   - **outputClaim**： + 11234567890
 
 

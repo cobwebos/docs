@@ -2,20 +2,20 @@
 title: 请求访问令牌-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何从 Azure Active Directory B2C 请求访问令牌。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d808bca17012d46d1c32658ec0069ca2e2e6a3ac
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962027"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184411"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>请求中的访问令牌 Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ ms.locfileid: "76962027"
 > [!NOTE]
 > **Web API 链（代理）不受 Azure AD B2C 支持。** -许多体系结构包含需要调用另一个下游 web API 的 web API，这两者都受 Azure AD B2C 保护。 此方案常见于具有 web API 后端的客户端，后者又调用另一个服务。 可以使用 OAuth 2.0 JWT 持有者凭据授权（也称为代理流）来支持这种链接的 Web API 方案。 但是，Azure AD B2C 中目前尚未实现代理流。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - [创建用户流](tutorial-create-user-flows.md)，以便用户能够注册并登录应用程序。
 - 如果尚未这样做，请[将 WEB API 应用程序添加到 Azure Active Directory B2C 租户](add-web-application.md)。

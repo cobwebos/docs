@@ -3,20 +3,20 @@ title: REST API 声明交换作为验证
 titleSuffix: Azure AD B2C
 description: 用于创建与 RESTful services 交互的 Azure AD B2C 用户旅程的演练。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 209cddcc8648f7d396f048057bb4367e2ae9f66c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846609"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189066"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>演练：在 Azure AD B2C 用户旅程中以用户输入验证的形式集成 REST API 声明交换
 
@@ -37,7 +37,7 @@ IEF 在声明中发送数据，同时也在声明中接收数据。 与 API 的�
 
 我们可以验证用户在配置文件编辑中提供的名称是否为排除列表的一部分。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 根据[入门](custom-policy-get-started.md)中所述配置一个 Azure AD B2C 租户，以完成本地帐户注册/登录。
 - 要交互的 REST API 终结点。 对于本演练，我们设置了一个名为 [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) 且包含 REST API 服务的演示站点。

@@ -3,20 +3,20 @@ title: 用显示控件验证声明
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure AD B2C 显示控件验证自定义策略提供的用户旅程中的声明。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4d7deb02e28734eb2b4c42bad566fdfd0d380682
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff2a8ad05e26ea31fc8100d4000171313881f4e1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479080"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188777"
 ---
 # <a name="verification-display-control"></a>验证显示控件
 

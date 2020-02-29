@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905760"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191786"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览：创建 Azure 映像生成器模板 
 
@@ -88,7 +88,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
  },
 ```
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 这些是可为生成的映像指定的键/值对。
 
@@ -102,7 +102,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
 
 有关详细信息，请参阅[定义资源依赖项](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
 
-## <a name="identity"></a>身份标识
+## <a name="identity"></a>标识
 默认情况下，图像生成器支持使用脚本，或从多个位置（例如 GitHub 和 Azure 存储）复制文件。 若要使用这些功能，必须可公开访问。
 
 你还可以使用由你定义的 Azure 用户分配的托管标识，以允许映像生成器访问 Azure 存储，前提是该标识已在 Azure 存储帐户中至少授予 "存储 Blob 数据读取器"。 这意味着，无需使存储 blob 可供外部访问，也无需安装 SAS 令牌。
@@ -301,7 +301,7 @@ Shell 定制器支持运行 shell 脚本，这些脚本必须可公开访问，I
 
             {
                 "type": "WindowsRestart",
-                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCommand": "shutdown /r /f /t 0", 
                 "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
                 "restartTimeout": "5m"
             }

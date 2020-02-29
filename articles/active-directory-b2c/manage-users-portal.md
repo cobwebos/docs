@@ -2,20 +2,20 @@
 title: 创建 & 删除 Azure 门户中 Azure AD B2C 使用者用户帐户
 description: 了解如何使用 Azure 门户在 Azure AD B2C 目录中创建和删除使用者用户。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c8fad8b5bd2dccba36c0c6888712fa806f3cbfc8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840411"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187213"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>使用 Azure 门户在 Azure AD B2C 中创建和删除使用者用户
 
@@ -31,7 +31,7 @@ ms.locfileid: "76840411"
 
 * Work
 * 来宾
-* 消费者
+* 使用者
 
 本文重点介绍如何在 Azure 门户中使用**使用者帐户**。 有关创建和删除工作帐户和来宾帐户的信息，请参阅[使用 Azure Active Directory 添加或删除用户](../active-directory/fundamentals/add-users-azure-active-directory.md)。
 

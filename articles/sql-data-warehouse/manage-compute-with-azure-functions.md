@@ -1,6 +1,6 @@
 ---
 title: 教程：管理具有 Azure Functions 的计算
-description: 如何使用 Azure Functions 管理数据仓库的计算。
+description: 如何使用 Azure 函数在 Azure Synapse Analytics 中管理 SQL 池的计算。
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693022"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193111"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>使用 Azure Functions 管理 Azure SQL 数据仓库中的计算资源
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 管理 Azure Synapse Analytics SQL 池中的计算资源
 
-本教程使用 Azure Functions 管理 Azure SQL 数据仓库中的数据仓库计算资源。
+本教程使用 Azure Functions 在 Azure Synapse Analytics 中管理 SQL 池的计算资源。
 
-若要将 Azure Function App 与 SQL 数据仓库配合使用，必须在数据仓库实例所在的订阅下创建具有参与者访问权限的[服务主体帐户](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)。 
+若要将 Azure Function App 与 SQL 池一起使用，必须创建一个[服务主体帐户](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)，该帐户具有与 sql 池实例相同的订阅中的参与者访问权限。 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署基于计时器的缩放
 
 若要部署该模板，需提供以下信息：
 
-- SQL DW 实例所在资源组的名称
-- SQL DW 实例所在逻辑服务器的名称
-- SQL DW 实例的名称
+- SQL 池实例所在的资源组的名称
+- SQL 池实例所在的逻辑服务器的名称
+- SQL 池实例的名称
 - Azure Active Directory 的租户 ID（目录 ID）
 - 订阅 ID 
 - 服务主体应用程序 ID
@@ -119,17 +119,17 @@ ms.locfileid: "73693022"
 5. 将操作变量设置为所需行为，如下所示：
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ ms.locfileid: "73693022"
 
 详细了解 Azure Functions 的[计时器触发器](../azure-functions/functions-create-scheduled-function.md)。
 
-查看 SQL 数据仓库[示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。
+签出 SQL 池[示例存储库](https://github.com/Microsoft/sql-data-warehouse-samples)。
 
 
 

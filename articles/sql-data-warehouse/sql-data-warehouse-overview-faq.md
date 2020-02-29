@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759476"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197175"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics （以前称为 SQL DW）常见问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "76759476"
 
 Q. 什么是 Azure Synapse？
 
-A. Azure Synapse 是一个无限制的分析服务，它将数据仓库和大数据分析集中在一起。 它可让你随意使用无服务器点播或预配的资源按比例查询数据。 Azure Synapse 将这两个领域紧密结合，以统一的经验引入、准备、管理和服务数据，满足即时 BI 和机器学习的需求。 有关详细信息，请参阅[什么是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是一个无限制的分析服务，它将数据仓库和大数据分析集中在一起。 它可让你随意使用无服务器点播或预配的资源按比例查询数据。 Azure Synapse 将这两个世界结合在一起，可引入、准备、管理和提供数据以满足即时的 BI 和机器学习需求。 有关详细信息，请参阅[什么是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
 
 Q. Azure SQL 数据仓库发生了什么情况？
 
@@ -47,7 +47,7 @@ A. 请访问 [Microsoft 符合性](https://www.microsoft.com/trustcenter/complia
 
 Q. 能否连接 Power BI？
 
-A. 可以！ 尽管 Power BI 支持直接查询 Azure Synapse，但并不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 顶层使用 Power BI。
+A. 能！ 尽管 Power BI 支持直接查询 Azure Synapse，但并不适合大量用户或实时数据。 若要进一步优化 Power BI 性能，请考虑在 Azure Analysis Services 或 Analysis Service IaaS 顶层使用 Power BI。
 
 Q. 什么是 SQL Analytics 容量限制？
 
@@ -85,10 +85,10 @@ A. 支持许多功能。 不受支持的功能可以在[不支持的表功能](s
 
 Q. SQL Analytics 是否支持 REST Api？
 
-A. 可以。 Sql Analytics 还提供了可与 SQL 数据库一起使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
+A. 是的。 Sql Analytics 还提供了可与 SQL 数据库一起使用的大多数 REST 功能。 可以在 REST 文档页或 [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx) 中找到 API 信息。
 
 
-## <a name="loading"></a>正在加载
+## <a name="loading"></a>加载
 
 Q. 支持哪些客户端驱动程序？
 
@@ -108,7 +108,7 @@ A. 可以在 "[连接字符串](sql-data-warehouse-connection-strings.md)" 页�
 
 问：能否连接到 HDI？
 
-答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果将两者中任意一种作为 HDFS 层，可以将该数据加载到 SQL DW。 但是，无法生成 HDI 实例的下推计算。 
+答：HDI 可使用 ADLS 或 WASB 作为 HDFS 层。 如果你有一个作为 HDFS 层，可以将该数据加载到 SQL Analytics 数据仓库中。 但是，无法生成 HDI 实例的下推计算。 
 
 ## <a name="next-steps"></a>后续步骤
 有关 Azure Synapse 的详细信息，请参阅[概述](sql-data-warehouse-overview-faq.md)页。

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112082"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190647"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>如何在 Azure 中实现分面导航认知搜索
 
@@ -21,7 +21,7 @@ ms.locfileid: "74112082"
 
  ![Azure 认知搜索作业门户演示](media/search-faceted-navigation/azure-search-faceting-example.png "Azure 认知搜索作业门户演示")
 
-分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，分面允许公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
+分面导航是一个备用的搜索入口点。 它可以方便地替代手动键入复杂的搜索表达式。 分面可帮助你查找所需的内容，同时确保获取相关结果。 作为开发人员，您可以使用方面来公开用于导航搜索索引的最有用的搜索条件。 在在线零售应用程序中，分面导航通常基于品牌、分类（童鞋）、尺寸、价格、受欢迎程度和评级生成。 
 
 搜索技术不同，分面导航的实现也不同。 在 Azure 认知搜索中，分面导航在查询时生成，使用之前在架构中特性化的字段。
 
@@ -34,9 +34,9 @@ ms.locfileid: "74112082"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅和测试[Azure 认知搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的联机工作演示。
+- 请参阅和测试[Azure 认知搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的联机工作演示。
 
--   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
+- 从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
 ## <a name="get-started"></a>入门
 如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选的深化搜索体验，用于通过点击操作快速缩小搜索结果范围。 
@@ -243,7 +243,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>提示和最佳做法
+## <a name="tips-and-best-practices"></a>提示和最佳实践
 
 ### <a name="indexing-tips"></a>索引编制提示
 **如果不使用搜索框，请提高索引效率**
@@ -321,7 +321,7 @@ if (businessTitleFacet != "")
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
-尽管此行为可能随时更改，但如果现在遇到此行为，可通过以下方式解决它：人为地将 count:\<number> 扩大到较大的值，以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
+尽管此行为可能随时更改，但如果你目前遇到此行为，可以通过人为因为这样做的计数：\<号 > 为较大的数字，从每个分片强制执行完整报告，来解决此问题。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
 
 ### <a name="user-interface-tips"></a>用户界面提示
 **为分面导航中的每个字段添加标签**
