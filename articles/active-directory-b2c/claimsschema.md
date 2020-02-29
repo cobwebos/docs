@@ -2,20 +2,20 @@
 title: ClaimsSchema - Azure Active Directory B2C | Microsoft Docs
 description: 在 Azure Active Directory B2C 中指定自定义策略的 ClaimsSchema 元素。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581100"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189918"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的�
 **DataType**元素支持以下值：
 
 | Type | 说明 |
-| ------- | ----------- | 
+| ------- | ----------- |
 |boolean|表示布尔值（`true` 或 `false`）。|
 |date| 表示时间上的一刻，通常表示为一天中的日期。 日期的值遵循 ISO 8601 约定。|
 |dateTime|表示时间上的一刻，通常以日期和当天的时间表示。 日期的值遵循 ISO 8601 约定。|

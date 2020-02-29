@@ -3,20 +3,20 @@ title: 自定义策略中的声明解析程序
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自定义策略中的声明解析程序。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161595"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189831"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -117,9 +117,9 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 | {SAML： ForceAuthn} | 来自 SAML 请求的 `AuthnRequest` 元素的 `ForceAuthN` 属性值。 | True |
 | {SAML： ProviderName} | 来自 SAML 请求的 `AuthnRequest` 元素的 `ProviderName` 属性值。| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>使用声明解析程序 
+## <a name="using-claim-resolvers"></a>使用声明解析程序
 
-可以将声明解析程序用于以下元素： 
+可以将声明解析程序用于以下元素：
 
 | Item | 元素 | 设置 |
 | ----- | ----------------------- | --------|
@@ -135,7 +135,7 @@ Azure Active Directory B2C （Azure AD B2C）[自定义策略](custom-policy-ove
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile)技术配置文件| `OutputClaim`| 2 |
 
-设置： 
+设置：
 1. `IncludeClaimResolvingInClaimsHandling` 的元数据必须设置为 `true`。
 1. 输入或输出声明特性 `AlwaysUseDefaultValue` 必须设置为 `true`。
 
@@ -195,7 +195,7 @@ Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终�
 
 ### <a name="content-definition"></a>内容定义
 
-在[ContentDefinition](contentdefinitions.md) `LoadUri`中，可以发送声明解析程序，根据所使用的参数从不同位置拉取内容。 
+在[ContentDefinition](contentdefinitions.md) `LoadUri`中，可以发送声明解析程序，根据所使用的参数从不同位置拉取内容。
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Azure AD B2C 使你能够将查询字符串参数传递到 HTML 内容定义终�
 
 ### <a name="relying-party-policy"></a>信赖方策略
 
-在[信赖方](relyingparty.md)策略技术配置文件中，你可能需要将租户 id 或相关 ID 发送到 JWT 中的信赖方应用程序。 
+在[信赖方](relyingparty.md)策略技术配置文件中，你可能需要将租户 id 或相关 ID 发送到 JWT 中的信赖方应用程序。
 
 ```XML
 <RelyingParty>
