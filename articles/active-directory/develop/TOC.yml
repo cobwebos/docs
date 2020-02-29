@@ -405,6 +405,8 @@
           href: v2-admin-consent.md
         - name: 应用程序同意体验
           href: application-consent-experience.md
+    - name: 条件性访问
+      href: v2-conditional-access-dev-guide.md
     - name: 国家云
       items:
         - name: 概述
