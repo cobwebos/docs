@@ -3,20 +3,20 @@ title: 使用自定义策略设置使用 Amazon 帐户登录
 titleSuffix: Azure AD B2C
 description: 使用自定义策略在 Azure Active Directory B2C 中设置 Amazon 帐户登录。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a0767938f8a470c63ec7fe3d7789212b1baf871
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846622"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188505"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置 Amazon 帐户登录
 
@@ -24,7 +24,7 @@ ms.locfileid: "76846622"
 
 本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)，从 Amazon 帐户启用用户登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 完成[自定义策略入门](custom-policy-get-started.md)中的步骤。
 - 如果还没有 Amazon 帐户，请在 [https://www.amazon.com/](https://www.amazon.com/) 上创建一个。
@@ -38,8 +38,8 @@ ms.locfileid: "76846622"
 3. 选择“注册新应用程序”。
 4. 输入“名称”、“说明”、和“隐私声明 URL”，然后单击“保存”。 隐私声明是你管理的页面，用于向用户提供隐私信息。
 5. 在“Web 设置”部分中，复制“客户端 ID”的值。 选择“显示机密”来获取客户端机密，然后复制它。 将 Amazon 帐户配置为租户中的标识提供者时需要这两个值。 “客户端密钥”是一个重要的安全凭据。
-6. 在“Web 设置”部分中，选择“编辑”，然后在“允许的 JavaScript 来源”中输入 `https://your-tenant-name.b2clogin.com`并在“允许的返回 URL”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-7. 单击“ **保存**”。
+6. 在“Web 设置”部分中，选择“编辑”，然后在“允许的 JavaScript 来源”`https://your-tenant-name.b2clogin.com`**中输入** 并在“允许的返回 URL”`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`**中输入** 。 将 `your-tenant-name` 替换为租户的名称。 输入租户名称时，全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
+7. 单击“保存”。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
 
@@ -53,7 +53,7 @@ ms.locfileid: "76846622"
 6. 对于“选项”，请选择 `Manual`。
 7. 输入策略密钥的**名称**。 例如，`AmazonSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
-9. 在“密钥用法”处选择 `Signature`。
+9. 在“密钥用法”处选择 **。** `Signature`
 10. 单击“创建”。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
@@ -114,7 +114,7 @@ ms.locfileid: "76846622"
 现已配置策略，因此 Azure AD B2C 知道如何与 Azure AD 目录通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+2. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 3. 单击“上载” 。
 
 ## <a name="register-the-claims-provider"></a>注册声明提供程序
@@ -122,7 +122,7 @@ ms.locfileid: "76846622"
 此时，标识提供者已设置，但不会出现在任何注册/登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 Amazon 标识提供者。
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+2. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 5. 重命名用户旅程的 ID。 例如，`SignUpSignInAmazon` 。
@@ -131,7 +131,7 @@ ms.locfileid: "76846622"
 
 **ClaimsProviderSelection** 元素类似于注册/登录屏幕上的标识提供者按钮。 如果为 Amazon 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在创建的用户旅程中找到包含 **的**OrchestrationStep`Order="1"` 元素。
 2. 在 **ClaimsProviderSelects** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `AmazonExchange`：
 
     ```XML
@@ -142,7 +142,7 @@ ms.locfileid: "76846622"
 
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Amazon 帐户通信以接收令牌。
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML

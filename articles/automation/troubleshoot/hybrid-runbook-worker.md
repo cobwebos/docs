@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030721"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190970"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>对混合 Runbook 辅助角色进行故障排除
 
@@ -54,7 +54,7 @@ Runbook 在尝试执行三次后会立即挂起。 存在可中断 runbook 完�
 
 确认运行混合 Runbook 辅助角色功能的计算机满足最低硬件要求。 如果满足，请监视 CPU 和内存使用，以确定混合 Runbook 辅助角色进程的性能和 Windows 之间的任何关联。 任何内存或 CPU 压力都可能表明需要升级资源。 你还可以选择支持最低要求的其他计算资源，并在工作负荷需求指示需要增加时进行缩放。
 
-检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 导致此错误的原因是，你尚未在 runbook 中配置身份验证，或者未为混合辅助角色组指定运行方式凭据。 查看[runbook 权限](../automation-hrw-run-runbooks.md#runbook-permissions)，确认已正确为 runbook 配置身份验证。
+检查 **Microsoft-SMA** 事件日志中是否有描述为 Win32 Process Exited with code [4294967295] 的相应事件。 导致此错误的原因是，你尚未在 runbook 中配置身份验证，或者未为混合 Runbook 辅助角色组指定运行方式凭据。 查看在[混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)中的 runbook 权限，确认已正确为 runbook 配置身份验证。
 
 ### <a name="no-cert-found"></a>方案：混合 Runbook 辅助角色上的证书存储中找不到证书
 

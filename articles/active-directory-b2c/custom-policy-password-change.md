@@ -3,20 +3,20 @@ title: 使用自定义策略配置密码更改
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自定义策略让用户更改其密码。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6bb4b762fead279bcc8492cb902e2059d7cfc68c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848936"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189168"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码更改
 
@@ -24,13 +24,13 @@ ms.locfileid: "76848936"
 
 在 Azure Active Directory B2C （Azure AD B2C）中，你可以让使用本地帐户登录的用户更改其密码，而不必通过电子邮件验证来证明其真实性。 如果会话在用户到达密码更改流时已过期，则系统会提示用户重新登录。 本文介绍如何在[自定义策略](custom-policy-overview.md)中配置密码更改。 还有可能为用户流配置[自助密码重置](user-flow-self-service-password-reset.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成 [Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 
 ## <a name="add-the-elements"></a>添加元素
 
-1. 打开 *TrustframeworkExtensions.xml* 文件，向 [ClaimsSchema](claimsschema.md) 元素中添加标识符为 `oldPassword` 的以下 **ClaimType** 元素：
+1. 打开 *TrustframeworkExtensions.xml* 文件，向 **ClaimsSchema** 元素中添加标识符为 `oldPassword` 的以下 [ClaimType](claimsschema.md) 元素：
 
     ```XML
     <BuildingBlocks>
@@ -123,7 +123,7 @@ ms.locfileid: "76848936"
 
     将 `IdentityExperienceFrameworkAppId` 替换为先决条件教程中创建的 IdentityExperienceFramework 应用程序的应用程序 ID。 将 `ProxyIdentityExperienceFrameworkAppId` 替换为也在之前创建的 ProxyIdentityExperienceFramework 应用程序的应用程序 ID。
 
-3. [UserJourney](userjourneys.md) 元素定义用户与应用程序进行交互时使用的路径。 如果 **UserJourneys** 元素不具有标识为 `PasswordChange` 的 **UserJourney**，则添加一个：
+3. [UserJourney](userjourneys.md) 元素定义用户与应用程序进行交互时使用的路径。 如果 **UserJourneys** 元素不具有标识为 **的**UserJourney`PasswordChange`，则添加一个：
 
     ```XML
     <UserJourneys>
@@ -154,7 +154,7 @@ ms.locfileid: "76848936"
 4. 保存 *TrustFrameworkExtensions.xml* 策略文件。
 5. 复制随初学者包下载的 *ProfileEdit.xml* 文件，并将其命名为 *ProfileEditPasswordChange.xml*。
 6. 打开新文件，并使用唯一值更新 **PolicyId** 属性。 此值是策略的名称。 例如，*B2C_1A_profile_edit_password_change*。
-7. 修改 `<DefaultUserJourney>` 中的 **ReferenceId** 属性，使其与创建的新用户旅程的 ID 匹配。 例如，*PasswordChange*。
+7. 修改 **中的**ReferenceId`<DefaultUserJourney>` 属性，使其与创建的新用户旅程的 ID 匹配。 例如，*PasswordChange*。
 8. 保存所做更改。
 
 可在[此处](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)找到示例策略。
@@ -170,14 +170,14 @@ ms.locfileid: "76848936"
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“标识体验框架”。
 5. 在“自定义策略”页上，单击“上传策略”。
-6. 选择“覆盖策略(若存在)”，然后搜索并选择 *TrustframeworkExtensions.xml* 文件。
+6. 选择“覆盖策略(若存在)”，然后搜索并选择 **TrustframeworkExtensions.xml** 文件。
 7. 单击“上载” 。
 8. 针对信赖方文件（例如 *ProfileEditPasswordChange.xml*）重复步骤 5 到 7。
 
 ### <a name="run-the-policy"></a>运行策略
 
 1. 打开你更改的策略。 例如，*B2C_1A_profile_edit_password_change*。
-2. 对于“应用程序”，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示 `https://jwt.ms`。
+2. 对于“应用程序”，选择你之前注册的应用程序。 若要查看令牌，“回复 URL”应当显示`https://jwt.ms`。
 3. 单击“立即运行”。 使用之前创建的帐户登录。 现在应该有机会更改密码。
 
 ## <a name="next-steps"></a>后续步骤

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 771ae508aaa46167413c2e701d8193790198cb68
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 2522b31788df294c37db4326985edd6c85774561
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565904"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191837"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知问题和故障排除 Azure 机器学习
 
@@ -191,6 +191,14 @@ Databricks 笔记本不支持 Azure 机器学习 SDK 小组件，因为笔记本
 
 ```
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+```
+
+### <a name="import-error-cannot-import-name-timedelta-from-pandas_libstslibs"></a>导入错误：无法从 "pandas _libs. tslibs" 导入名称 "Timedelta"
+
+如果你在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
+```
+%sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+%sh /databricks/python/bin/pip install pandas==0.23.4
 ```
 
 ### <a name="import-error-no-module-named-pandascoreindexes"></a>导入错误：没有名为 "pandas" 的模块

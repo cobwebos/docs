@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422558"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190579"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>查看 Azure AD 权利管理中的报告和日志
 
@@ -109,5 +109,6 @@ Azure AD 将在请求进行时写入其他审核记录，其中包括：
 
 ## <a name="next-steps"></a>后续步骤
 
+- [存档报表和日志](entitlement-management-logs-and-reporting.md)
 - [Azure AD 权限管理疑难解答](entitlement-management-troubleshoot.md)
 - [常见方案](entitlement-management-scenarios.md)

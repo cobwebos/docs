@@ -1,22 +1,22 @@
 ---
 title: 客户托管的透明数据加密（TDE）
-description: SQL 数据库和数据仓库 Azure Key Vault 的透明数据加密 (TDE) 的“创建自己的密钥”(BYOK) 支持。 支持 BYOK 的 TDE 概述、优势、工作原理、注意事项和建议。
+description: 创建自己的密钥（BYOK）对透明数据加密（TDE）的支持，支持 SQL 数据库和 Azure Synapse 的 Azure Key Vault。 支持 BYOK 的 TDE 概述、优势、工作原理、注意事项和建议。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/12/2020
-ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: a29466ad5b261e1e2ce818d7b4a18260e35caaec
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201504"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192738"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL 透明数据加密与客户托管的密钥
 
@@ -24,7 +24,7 @@ Azure SQL[透明数据加密（TDE）](https://docs.microsoft.com/sql/relational
 
 在此方案中，用于加密数据库加密密钥（DEK）（称为 TDE 保护程序）的密钥是客户托管的非对称密钥，存储在客户拥有的和客户管理的[Azure Key Vault （AKV）](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中，后者是基于云的外部密钥管理系统。 Key Vault 是适用于 RSA 加密密钥的高度可用且可缩放的安全存储，可选择通过 FIPS 140-2 第2级验证的硬件安全模块（Hsm）进行支持。 它不允许直接访问存储的密钥，但使用授权实体的密钥提供加密/解密服务。 密钥保管库可以从本地 HSM 设备生成密钥保管库，将其导入或[传输到密钥保管库](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)。
 
-对于 Azure SQL 数据库和 Azure SQL 数据仓库，将在逻辑服务器级别设置 TDE 保护程序，并将其继承给与该服务器关联的所有加密数据库。 对于 Azure SQL 托管实例，TDE 保护程序在实例级别设置，并由该实例上的所有加密数据库继承。 在整个文档中，术语 "*服务器*" 同时引用 SQL 数据库逻辑服务器和托管实例，除非另行说明。
+对于 Azure SQL 数据库和 Azure Synapse，TDE 保护程序在逻辑服务器级别设置，并由与该服务器关联的所有加密数据库继承。 对于 Azure SQL 托管实例，TDE 保护程序在实例级别设置，并由该实例上的所有加密数据库继承。 在整个文档中，术语 "*服务器*" 同时引用 SQL 数据库逻辑服务器和托管实例，除非另行说明。
 
 > [!IMPORTANT]
 > 对于使用服务托管的 TDE 的用户，如果想要开始使用客户管理的 TDE，则在切换的过程中数据将保持加密，且不会造成停机，也不会重新加密数据库文件。 从服务托管的密钥切换到客户托管的密钥只需要重新加密 DEK，这是一项快速、联机的操作。
@@ -163,7 +163,7 @@ Key vault 管理员还可以[对 key vault 审核事件启用日志记录](https
 
 若要缓解这种情况，请运行面向目标的 SQL 数据库逻辑服务器的[AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) cmdlet 或目标托管实例的[AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) ，以返回可用密钥列表并标识缺失的密钥列表。 若要确保可以还原所有备份，请确保还原目标服务器有权访问所需的所有密钥。 这些密钥无需标记为 TDE 保护程序。
 
-若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要详细了解 SQL 数据仓库的备份恢复，请参阅[恢复 Azure SQL 数据仓库](../sql-data-warehouse/backup-and-restore.md)。 有关使用托管实例进行 SQL Server 的本机备份/还原，请参阅[快速入门：将数据库还原到托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
+若要详细了解 SQL 数据库的备份恢复，请参阅[恢复 Azure SQL 数据库](sql-database-recovery-using-backups.md)。 若要了解有关 SQL 池备份恢复的详细信息，请参阅[恢复 Sql 池](../sql-data-warehouse/backup-and-restore.md)。 有关使用托管实例进行 SQL Server 的本机备份/还原，请参阅[快速入门：将数据库还原到托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
 
 日志文件的其他注意事项：已备份的日志文件仍然使用原始 TDE 保护程序进行加密，即使它已被旋转并且数据库现在使用新的 TDE 保护程序。  还原时，需要使用这两个密钥来还原数据库。  如果日志文件使用存储在 Azure Key Vault 中的 TDE 保护程序，则还原时需要此密钥，即使数据库在此期间已更改为使用服务托管的 TDE。
 

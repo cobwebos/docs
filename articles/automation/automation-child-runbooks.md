@@ -5,23 +5,23 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6acf66e01c4f7b4bd2735687f542a0dbf472cfb4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500195"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191157"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
-建议在 Azure 自动化中使用由其他 runbook 调用的离散函数编写可重用、模块化 runbook。 父 Runbook 通常会调用一个或多个子 Runbook 来执行所需的功能。 可以通过两种方法来调用子 runbook，还应了解不同的差异，以便确定哪种方法最适合你的方案。
+建议在 Azure 自动化中使用由其他 runbook 调用的离散函数编写可重用、模块化 runbook。 父 Runbook 通常会调用一个或多个子 Runbook 来执行所需的功能。 可以通过两种方法来调用子 runbook，并且你应该理解哪些不同的差异才能确定哪种方法最适合你的方案。
 
 >[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>使用内联执行调用子 Runbook
 
-若要从另一个 Runbook 调用某个内嵌 Runbook，请使用被调用 Runbook 的名称并提供其参数值，就像使用活动或 cmdlet 时一样。  同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 runbook 将等待子 runbook 完成，然后再移到下一行，并直接向父级返回任何输出。
+若要从另一个 runbook 中内联调用 runbook，请使用 runbook 的名称并提供其参数的值，就像使用活动或 cmdlet 一样。 同一自动化帐户中的所有 Runbook 可按此方式相互使用。 父 runbook 将等待子 runbook 完成，然后再移到下一行，并且任何输出都会直接返回给父级。
 
 在调用某个内联 Runbook 时，它会在与父 Runbook 所在的同一个作业中运行。 子 runbook 的作业历史记录中没有任何指示。 来自子 runbook 的任何异常和任何流输出都与父项关联。 此行为将导致作业较少，并使其更易于跟踪和进行故障排除。
 
@@ -41,7 +41,7 @@ ms.locfileid: "77500195"
 
 Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
 
-当 runbook 使用内联执行调用图形或 PowerShell 工作流子 runbook 时，它将使用 runbook 的名称。 名称必须以 "开头。\\"指定脚本位于本地目录中。
+当 runbook 使用内联执行调用图形或 PowerShell 工作流子 runbook 时，它将使用 runbook 的名称。 名称必须以 **.\\** 以指定该脚本位于本地目录中。
 
 ### <a name="example"></a>示例
 
@@ -64,15 +64,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > 如果 runbook 使用带有*Wait*参数的**AzAutomationRunbook** cmdlet 调用子 runbook，并且子 runbook 生成对象结果，则操作可能会遇到错误。 若要解决此错误，请参阅[具有对象输出的子 runbook](troubleshoot/runbooks.md#child-runbook-object) ，了解如何使用[AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) cmdlet 实现逻辑来轮询结果。
 
-可以使用**AzAutomationRunbook**启动 runbook，如[使用 Windows PowerShell 启动 runbook](start-runbooks.md#start-a-runbook-with-powershell)中所述。 使用此 cmdlet 的模式有两种。 在一种模式下，该 cmdlet 会在为子 runbook 创建子作业时返回作业 ID。 在您的脚本通过指定*Wait*参数启用的其他模式下，该 cmdlet 会等待子作业完成，并返回子 runbook 的输出。
+可以使用**AzAutomationRunbook**启动 runbook，如[使用 Windows PowerShell 启动 runbook](start-runbooks.md#start-a-runbook-with-powershell)中所述。 使用此 cmdlet 的模式有两种。 在一种模式下，该 cmdlet 会在为子 runbook 创建作业时返回作业 ID。 在您的脚本通过指定*Wait*参数启用的其他模式下，该 cmdlet 会等待子作业完成，并返回子 runbook 的输出。
 
-使用 cmdlet 启动的子 runbook 中的作业在与父 runbook 作业不同的作业中运行。 此行为会导致更多的作业，而不是以内联方式启动 runbook，并使作业更难以跟踪。父项可以异步启动多个子 runbook，而无需等待每个子 runbook 完成。 对于调用内联子 runbook 的并行执行，父 runbook 必须使用[parallel 关键字](automation-powershell-workflow.md#parallel-processing)。
+使用 cmdlet 启动的子 runbook 中的作业独立于父 runbook 作业运行。 此行为会导致更多的作业，而不是以内联方式启动 runbook，并使作业更难以跟踪。父项可以异步启动多个子 runbook，而无需等待每个子 runbook 完成。 对于调用内联子 runbook 的并行执行，父 runbook 必须使用[parallel 关键字](automation-powershell-workflow.md#parallel-processing)。
 
-由于时间的原因，子 runbook 输出不会可靠地返回给父 runbook。 此外，一些变量（例如 $VerbosePreference、$WarningPreference 和其他）可能不会传播到子 runbook。 若要避免这些问题，可以使用**AzAutomationRunbook**和*Wait*参数作为单独的自动化作业启动子 runbook。 此方法会阻止父 runbook，直到子 runbook 完成。
+由于计时，子 runbook 输出不会可靠地返回到父 runbook。 此外，一些变量（例如 *$VerbosePreference*、 *$WarningPreference*和其他）可能不会传播到子 runbook。 若要避免这些问题，可以使用**AzAutomationRunbook**和*Wait*参数作为单独的自动化作业启动子 runbook。 此方法会阻止父 runbook，直到子 runbook 完成。
 
 如果你不希望在等待时阻止父 runbook，则可以使用**AzAutomationRunbook**启动子 runbook，而无需使用*Wait*参数。 在这种情况下，runbook 必须使用[AzAutomationJob](/powershell/module/az.automation/get-azautomationjob)来等待作业完成。 它还必须使用[AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput)和[AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord)来检索结果。
 
-使用 cmdlet 启动的子 runbook 的参数以哈希表形式提供，如[Runbook 参数](start-runbooks.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
+使用 cmdlet 启动的子 runbook 的参数以哈希表形式提供，如[runbook 参数](start-runbooks.md#runbook-parameters)中所述。 只能使用简单数据类型。 如果 Runbook 的参数使用复杂数据类型，则必须内联调用该 Runbook。
 
 将子 Runbook 作为单独作业启动时，可能会丢失订阅上下文。 要使子 runbook 针对特定 Azure 订阅执行 Az module cmdlet，子 runbook 必须独立于父 runbook 向此订阅进行身份验证。
 
