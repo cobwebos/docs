@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023695"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917492"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 池中预配 Linux 计算节点
 
@@ -33,7 +33,7 @@ ms.locfileid: "77023695"
 ## <a name="virtual-machine-configuration"></a>虚拟机配置
 在 Batch 中创建计算节点池时，可以使用两个选项来选择节点大小和操作系统：“云服务配置”和“虚拟机配置”。
 
-“云服务配置”*只*提供 Windows 计算节点。 [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md)（云服务的大小）中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了可用的操作系统。 创建包含 Azure 云服务节点的池时，需指定上述文章中所述的节点大小和 OS 系列。 对于 Windows 计算节点池，最常使用的是云服务。
+“云服务配置”**只**提供 Windows 计算节点。 [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md)（云服务的大小）中列出了可用的计算节点大小，[Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md)（Azure 来宾 OS 版本和 SDK 兼容性对照表）中列出了可用的操作系统。 创建包含 Azure 云服务节点的池时，需指定上述文章中所述的节点大小和 OS 系列。 对于 Windows 计算节点池，最常使用的是云服务。
 
 “虚拟机配置”为计算节点提供 Linux 和 Windows 映像。 [Sizes for virtual machines in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)（Azure 中虚拟机的大小）(Linux) 和  [Sizes for virtual machines in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（Azure 中虚拟机的大小）(Windows) 中列出了可用的计算节点大小。 创建包含虚拟机配置节点的池时，必须指定节点的大小、虚拟机映像引用，以及要在节点上安装的 Batch 节点代理 SKU。
 
@@ -46,8 +46,8 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-mac
 | **映像引用属性** | **示例** |
 | --- | --- |
 | 发布者 |Canonical |
-| 产品 |UbuntuServer |
-| SKU |14.04.4-LTS |
+| 产品/服务 |UbuntuServer |
+| SKU |18.04-LTS |
 | 版本 |最新 |
 
 > [!TIP]
@@ -58,7 +58,7 @@ Batch 服务使用[虚拟机规模集](../virtual-machine-scale-sets/virtual-mac
 ### <a name="node-agent-sku"></a>节点代理 SKU
 Batch 节点代理是一个程序，它在池中的每个节点上运行，并在节点与 Batch 服务之间提供命令和控制接口。 节点代理对于不同操作系统有不同的实现（称为 SKU）。 从根本上讲，在创建虚拟机配置时，需要先指定虚拟机映像引用，然后指定要在其上安装映像的代理节点。 通常，每个节点代理 SKU 与多个虚拟机映像兼容。 下面是节点代理 SKU 的几个示例：
 
-* batch.node.ubuntu 14.04
+* batch. node.js 18.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
@@ -70,7 +70,7 @@ Batch 节点代理是一个程序，它在池中的每个节点上运行，并�
 ## <a name="create-a-linux-pool-batch-python"></a>创建 Linux 池：Batch Python
 以下代码片段演示了如何使用[适用于 Python 的 Microsoft Azure Batch 客户端库][py_batch_package]创建 Ubuntu Server 计算节点池。 有关 Batch Python 模块的参考文档，请参阅 azure 上的[azure batch 包][py_batch_docs]。
 
-此代码片段显式创建[ImageReference][py_imagereference] ，并指定其每个属性（发布者、产品/服务、SKU 和版本）。 但在生产代码中，我们建议使用[list_node_agent_skus][py_list_skus]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
+此代码片段显式创建[ImageReference][py_imagereference] ，并指定其每个属性（发布者、产品/服务、SKU 和版本）。 但在生产代码中，我们建议使用[list_supported_images][py_list_supported_images]方法在运行时从可用映像和节点代理 SKU 组合中进行确定和选择。
 
 ```python
 # Import the required modules from the
@@ -86,7 +86,7 @@ batch_url = "<batch-account-url>"
 
 # Pool settings
 pool_id = "LinuxNodesSamplePoolPython"
-vm_size = "STANDARD_A1"
+vm_size = "STANDARD_D2_V3"
 node_count = 1
 
 # Initialize the Batch client
@@ -109,7 +109,7 @@ new_pool.start_task = start_task
 ir = batchmodels.ImageReference(
     publisher="Canonical",
     offer="UbuntuServer",
-    sku="14.04.2-LTS",
+    sku="18.04-LTS",
     version="latest")
 
 # Create the VirtualMachineConfiguration, specifying
@@ -117,7 +117,7 @@ ir = batchmodels.ImageReference(
 # be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference=ir,
-    node_agent_sku_id="batch.node.ubuntu 14.04")
+    node_agent_sku_id="batch.node.ubuntu 18.04")
 
 # Assign the virtual machine configuration to the pool
 new_pool.virtual_machine_configuration = vmc
@@ -126,64 +126,65 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-如前所述，我们建议你使用[list_node_agent_skus][py_list_skus]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
+如前所述，我们建议你使用[list_supported_images][py_list_supported_images]方法从当前支持的节点代理/应用商店映像组合中动态选择，而不是显式创建[ImageReference][py_imagereference] 。 以下 Python 代码片段演示如何使用此方法。
 
 ```python
-# Get the list of node agents from the Batch service
-nodeagents = client.account.list_node_agent_skus()
+# Get the list of supported images from the Batch service
+images = client.account.list_supported_images()
 
-# Obtain the desired node agent
-ubuntu1404agent = next(
-    agent for agent in nodeagents if "ubuntu 14.04" in agent.id)
+# Obtain the desired image reference
+image = None
+for img in images:
+  if (img.image_reference.publisher.lower() == "canonical" and
+        img.image_reference.offer.lower() == "ubuntuserver" and
+        img.image_reference.sku.lower() == "18.04-lts"):
+    image = img
+    break
 
-# Pick the first image reference from the list of verified references
-ir = ubuntu1404agent.verified_image_references[0]
+if image is None:
+  raise RuntimeError('invalid image reference for desired configuration')
 
 # Create the VirtualMachineConfiguration, specifying the VM image
 # reference and the Batch node agent to be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
-    image_reference=ir,
-    node_agent_sku_id=ubuntu1404agent.id)
+    image_reference=image.image_reference,
+    node_agent_sku_id=image.node_agent_sku_id)
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>创建 Linux 池：Batch .NET
 下面的代码片段演示了如何使用[Batch .net][nuget_batch_net]客户端库创建 Ubuntu Server 计算节点池的示例。 可以在 docs.microsoft.com 上找到[Batch .net 参考文档][api_net]。
 
-下面的代码段使用[PoolOperations][net_pool_ops]。要从当前支持的 Marketplace 映像和节点代理 SKU 组合列表中选择的[ListNodeAgentSkus][net_list_skus]方法。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
+下面的代码段使用[PoolOperations][net_pool_ops]。要从当前支持的 Marketplace 映像和节点代理 SKU 组合列表中选择的[ListSupportedImages][net_list_supported_images]方法。 这种做法非常有效，因为支持的组合列表可能随着时间改变。 通常情况下，添加支持的组合。
 
 ```csharp
 // Pool settings
 const string poolId = "LinuxNodesSamplePoolDotNet";
-const string vmSize = "STANDARD_A1";
+const string vmSize = "STANDARD_D2_V3";
 const int nodeCount = 1;
 
 // Obtain a collection of all available node agent SKUs.
 // This allows us to select from a list of supported
 // VM image/node agent combinations.
-List<NodeAgentSku> nodeAgentSkus =
-    batchClient.PoolOperations.ListNodeAgentSkus().ToList();
+List<ImageInformation> images =
+    batchClient.PoolOperations.ListSupportedImages().ToList();
 
-// Define a delegate specifying properties of the VM image
-// that we wish to use.
-Func<ImageReference, bool> isUbuntu1404 = imageRef =>
-    imageRef.Publisher == "Canonical" &&
-    imageRef.Offer == "UbuntuServer" &&
-    imageRef.Sku.Contains("14.04");
-
-// Obtain the first node agent SKU in the collection that matches
-// Ubuntu Server 14.04. Note that there are one or more image
-// references associated with this node agent SKU.
-NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
-    sku.VerifiedImageReferences.Any(isUbuntu1404));
-
-// Select an ImageReference from those available for node agent.
-ImageReference imageReference =
-    ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
+// Find the appropriate image information
+ImageInformation image = null;
+foreach (var img in images)
+{
+    if (img.ImageReference.Publisher == "Canonical" &&
+        img.ImageReference.Offer == "UbuntuServer" &&
+        img.ImageReference.Sku == "18.04-LTS")
+    {
+        image = img;
+        break;
+    }
+}
 
 // Create the VirtualMachineConfiguration for use when actually
 // creating the pool
 VirtualMachineConfiguration virtualMachineConfiguration =
-    new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
+    new VirtualMachineConfiguration(image.ImageReference, image.NodeAgentSkuId);
 
 // Create the unbound pool object using the VirtualMachineConfiguration
 // created above
@@ -197,53 +198,18 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-尽管前面的代码段使用[PoolOperations][net_pool_ops]。[ListNodeAgentSkus][net_list_skus]方法若要动态列出并从支持的映像和节点代理 SKU 组合中进行选择（建议使用），还可以显式配置[ImageReference][net_imagereference] ：
+尽管前面的代码段使用[PoolOperations][net_pool_ops]。[ListSupportedImages][net_list_supported_images]方法若要动态列出并从支持的映像和节点代理 SKU 组合中进行选择（建议使用），还可以显式配置[ImageReference][net_imagereference] ：
 
 ```csharp
 ImageReference imageReference = new ImageReference(
     publisher: "Canonical",
     offer: "UbuntuServer",
-    sku: "14.04.2-LTS",
+    sku: "18.04-LTS",
     version: "latest");
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>虚拟机映像列表
-下表列出了本文上次更新时，与可用 Batch 节点代理兼容的市场虚拟机映像。 请务必注意，此列表并非永久不变，因为可能随时会添加或删除映像和节点代理。 建议 Batch 应用程序和服务始终使用[list_node_agent_skus][py_list_skus] （Python）或[ListNodeAgentSkus][net_list_skus] （Batch .net）来确定和选择当前可用的 sku。
-
-> [!WARNING]
-> 以下列表可随时更改。 请始终使用 Batch API 中提供的列出节点代理 SKU 方法来列出运行 Batch 作业时兼容的虚拟机和节点代理 SKU。
->
->
-
-| **发布者** | **产品** | **映像 SKU** | **版本** | **节点代理 SKU ID** |
-| ------------- | --------- | ------------- | ----------- | --------------------- |
-| batch | rendering-centos73 | 呈现 | 最新 | batch.node.centos 7 |
-| batch | rendering-windows2016 | 呈现 | 最新 | batch.node.windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | 最新 | batch.node.ubuntu 16.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | 最新 | batch.node.ubuntu 14.04 |
-| Credativ | Debian | 9 | 最新 | batch.node.debian 9 |
-| Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | 最新 | batch.node.centos 7 |
-| microsoft-ads | standard-data-science-vm | standard-data-science-vm | 最新 | batch.node.windows amd64 |
-| microsoft-azure-batch | centos-container | 7-4 | 最新 | batch.node.centos 7 |
-| microsoft-azure-batch | centos-container-rdma | 7-4 | 最新 | batch.node.centos 7 |
-| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | 最新 | batch.node.ubuntu 16.04 |
-| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | 最新 | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-with-Containers | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | 最新 | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | 最新 | batch.node.windows amd64 |
-| OpenLogic | CentOS | 7.4 | 最新 | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.4 | 最新 | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.3 | 最新 | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | 最新 | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.4 | 最新 | batch.node.centos 7 |
-| SUSE | SLES-HPC | 12-SP2 | 最新 | batch.node.opensuse 42.1 |
+若要获取 Batch 服务及其相应节点代理的所有支持的 Marketplace 虚拟机映像的列表，请在所选的相应语言 SDK 中利用[list_supported_images][py_list_supported_images] （Python）、 [ListSupportedImages][net_list_supported_images] （Batch .net）或相应的 API。
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>使用 SSH 连接到 Linux 节点
 在开发期间或进行故障排除时，可能会发现需要登录到池中的节点。 不同于 Windows 计算节点，无法使用远程桌面协议 (RDP) 连接到 Linux 节点。 相反，Batch 服务在每个节点上启用 SSH 访问以建立远程连接。
@@ -319,10 +285,10 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 
 在节点上创建用户时不需要指定密码，而可以指定 SSH 公钥。 在 Python SDK 中，使用[ComputeNodeUser][py_computenodeuser]上的**ssh_public_key**参数。 在 .NET 中，使用[ComputeNodeUser][net_computenodeuser]。[SshPublicKey][net_ssh_key]属性。
 
-## <a name="pricing"></a>价格
-Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身是免费提供的，这意味着，只需支付 Batch 解决方案使用的计算资源费用。 选择 "**云服务配置**" 时，会根据[云服务定价][cloud_services_pricing]结构收费。 选择 "**虚拟机配置**" 时，将根据[虚拟机定价][vm_pricing]结构收费。 
+## <a name="pricing"></a>定价
+Azure Batch 构建在 Azure 云服务和 Azure 虚拟机技术基础之上。 Batch 服务本身是免费提供的，这意味着你只需为你的 Batch 解决方案使用的计算资源（以及需要的相关成本）收费。 选择 "**云服务配置**" 时，会根据[云服务定价][cloud_services_pricing]结构收费。 选择 "**虚拟机配置**" 时，将根据[虚拟机定价][vm_pricing]结构收费。
 
-如果使用[应用程序包](batch-application-packages.md)将应用程序部署到 Batch 节点，系统还会对应用程序包使用的 Azure 存储资源收费。 通常，Azure 存储的成本是最低的。 
+如果使用[应用程序包](batch-application-packages.md)将应用程序部署到 Batch 节点，系统还会对应用程序包使用的 Azure 存储资源收费。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -340,7 +306,7 @@ GitHub 上的[azure 批处理][github_samples]存储库中的[Python 代码示�
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
 [net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
-[net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
+[net_list_supported_images]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
 [net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
@@ -351,6 +317,6 @@ GitHub 上的[azure 批处理][github_samples]存储库中的[Python 代码示�
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
+[py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

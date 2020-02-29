@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838541"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913474"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -32,7 +32,7 @@ ms.locfileid: "76838541"
 
 从 API 版本 `2019-05-06`开始，会构建项级索引器错误和警告，使其更清晰地围绕原因和后续步骤。 它们包含以下属性：
 
-| 属性 | Description | 示例 |
+| properties | 说明 | 示例 |
 | --- | --- | --- |
 | key | 受错误或警告影响的文档的文档 ID。 | https：\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | name | 描述错误或警告出现位置的操作名称。 这是由以下结构生成的： [category]。[子类别]。[resourceType]。ResourceName | DocumentExtraction myBlobContainerName 扩充. WebApiSkill mySkillName SearchIndex OutputFieldMapping myOutputFieldName SearchIndex MergeOrUpload myIndexName.KnowledgeStore. myTableName |
@@ -46,7 +46,7 @@ ms.locfileid: "76838541"
 
 索引器无法从数据源中读取文档。 这可能是由于以下原因导致的：
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 不同文档中的字段类型不一致 | 值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在作者列中。  预期类型为 JArray。 | 确保每个字段的类型在不同的文档中是相同的。 例如，如果第一个文档 `'startTime'` 字段是日期时间，在第二个文档中为字符串，则会命中此错误。 |
 | 来自数据源的基础服务的错误 | （从 Cosmos DB） `{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
@@ -57,7 +57,7 @@ ms.locfileid: "76838541"
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>错误：无法从文档中提取内容或元数据
 具有 Blob 数据源的索引器无法从文档中提取内容或元数据（例如，PDF 文件）。 这可能是由于以下原因导致的：
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | blob 大于大小限制 | 文档是 `'150441598'` 字节，超过了当前服务层的文档提取的最大大小 `'134217728'` 字节。 | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | blob 的内容类型不受支持 | 文档具有不受支持的内容类型 `'image/png'` | [blob 索引错误](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,19 +69,19 @@ ms.locfileid: "76838541"
 ## <a name="error-could-not-parse-document"></a>错误：无法分析文档
 索引器从数据源中读取文档，但将文档内容转换为指定的字段映射架构时出现问题。 这可能是由于以下原因导致的：
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 缺少文档键 | 文档键不能为空或为空 | 确保所有文档都具有有效的文档键 |
 | 文档键无效 | 文档键的长度不能超过1024个字符 | 修改文档键以满足验证要求。 |
 | 未能将字段映射应用于字段 | 无法将映射函数 `'functionName'` 应用于字段 `'fieldName'`。 数组不能为 null。 参数名称：字节 | 仔细检查在索引器上定义的[字段映射](search-indexer-field-mappings.md)，并将与已失败文档的指定字段的数据进行比较。 可能需要修改字段映射或文档数据。 |
-| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-现有连接被远程主机强行关闭。） | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
+| 无法读取字段值 | 无法在索引 `'fieldIndex'`读取列 `'fieldName'` 的值。 在接收来自服务器的结果时发生传输级错误。 (访问接口: TCP 访问接口，错误: 0 - 现有连接已被远程主机强行关闭。) | 这些错误通常是由于数据源的基础服务的意外连接问题导致的。 稍后再次尝试通过索引器运行文档。 |
 
 <a name="could-not-execute-skill"/>
 
 ## <a name="error-could-not-execute-skill"></a>错误：无法执行技能
 索引器无法在技能组合中运行技能。
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 暂时性连接问题 | 发生暂时性错误。 请稍后重试。 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 | 潜在的产品 bug | 发生了意外错误。 | 这表示未知的失败类别，并可能表示存在产品错误。 请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)以获得帮助。 |
@@ -140,7 +140,7 @@ ms.locfileid: "76838541"
 
 文档已读取并处理，但索引器无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 字段包含的字词太大 | 文档中的术语大于[32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 可以确保字段未配置为可筛选、可查找或可排序，从而避免此限制。
 | 文档太大，无法建立索引 | 文档大于[最大 api 请求大小](search-limits-quotas-capacity.md#api-request-limits) | [如何为大型数据集编制索引](search-howto-large-index.md)
@@ -152,9 +152,9 @@ ms.locfileid: "76838541"
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>错误：无法对文档编制索引，因为索引编制索引的数据无效
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>错误：无法对文档编制索引，因为某些文档的数据无效
 
-文档已读取和处理，但由于索引字段的配置与索引器提取的数据的性质不匹配，因此无法将其添加到搜索索引。 这可能是由于以下原因导致的：
+文档由索引器读取和处理，但由于索引字段的配置与索引器提取并处理的数据不匹配，因此无法将其添加到搜索索引。 这可能是由于以下原因导致的：
 
 | 原因 | 详细信息/示例
 | --- | ---
@@ -166,12 +166,11 @@ ms.locfileid: "76838541"
 
 在所有这些情况下，请参考索引器[支持的数据类型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)和[数据类型映射](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)，以确保正确生成索引架构，并设置相应的[索引器字段映射](search-indexer-field-mappings.md)。 错误消息将包括有助于跟踪不匹配源的详细信息。
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>错误：无法使用集成的更改跟踪策略，因为表具有复合主键
 
 这适用于 SQL 表，通常在该键定义为组合键时，或在表定义唯一聚集索引（如 SQL 索引，而不是 Azure 搜索索引）时发生。 主要原因是在[唯一聚集索引](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15)的情况下，将键属性修改为组合主键。 在这种情况下，请确保您的 SQL 表不具有唯一的聚集索引，或者您将键字段映射到一个字段，该字段保证不包含重复值。
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>错误：无法在索引器最大运行时间内处理文档
 
@@ -183,7 +182,7 @@ ms.locfileid: "76838541"
 
 当索引器尝试将[数据投影到知识存储区](knowledge-store-projection-overview.md)中，并且我们尝试执行此操作时，会出现此错误。  此故障可能是一致且可修复的，或者是可能需要等待并重试才能解决的投影输出接收器导致的暂时性故障。  下面是一组已知的失败状态和可能的解决方法。
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 无法在容器 `'containerName'` 中更新投影 blob `'blobUri'` |指定的容器不存在。 | 索引器将检查是否已创建了指定的容器，并在必要时创建它，但它只会在每个索引器运行时执行此检查一次。 此错误表示在执行此步骤后删除了容器。  若要解决此错误，请尝试以下操作：仅保留存储帐户信息，等待索引器完成，然后重新运行索引器。 |
 | 无法在容器 `'containerName'` 中更新投影 blob `'blobUri'` |无法将数据写入传输连接：现有连接被远程主机强行关闭。 | 这应该是 Azure 存储的暂时性故障，因此应通过重新运行索引器来解决此问题。 如果持续遇到此错误，请提交[支持票证](https://ms.portal.azure.com/#create/Microsoft.Support)，以便进一步调查。  |
@@ -220,7 +219,7 @@ ms.locfileid: "76838541"
 }
 ```
 
-| 原因 | 详细信息/示例 | 分辨率 |
+| 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
 | 技能输入的类型错误 | "所需的技能输入不属于预期的类型 `String`。 名称： `text`，源： `/document/merged_content`。 "  "所需的技能输入不是预期的格式。 名称： `text`，源： `/document/merged_content`。 "  "无法循环访问非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`。"  "无法在非数组 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`中选择 `0`" | 某些技能需要特定类型的输入，例如，[情绪技能](cognitive-search-skill-sentiment.md)要求 `text` 是一个字符串。 如果输入指定非字符串值，则不会执行技能，也不会生成任何输出。 确保你的数据集在类型中具有一致的输入值，或使用[自定义的 WEB API 技能](cognitive-search-custom-skill-web-api.md)对输入进行预处理。 如果要在数组上循环访问技能，请检查技能上下文和输入在正确位置 `*`。 通常，上下文和输入源都应以数组的 `*` 结束。 |
 | 缺少技能输入 | "缺少所需的技能输入。 名称： `text`，源： `/document/merged_content`"" 缺少值 `/document/normalized_images/0/imageTags`"。  "无法在 `/document/pages` 长度 `0`的数组中选择 `0`。" | 如果你的所有文档均收到此警告，则很可能是输入路径中有一个拼写错误，你应仔细检查属性名称大小写、在路径中有多余的或缺失的 `*`，并确保数据源中的文档提供所需的输入。 |

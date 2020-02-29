@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
-ms.translationtype: HT
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203820"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911723"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -50,7 +50,7 @@ Data Box 设备由以下功能提供保护：
 - 仅运行 Data Box 特定的软件。
 - 在锁定状态下启动。
 - 通过设备解锁密码控制设备访问。
-- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”  页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
+- 访问凭据，用于将数据复制到和复制出设备。 对 Azure 门户中的“设备凭据”页面的所有访问都将记录在[活动日志](data-box-logs.md#query-activity-logs-during-setup)中。
 
 ### <a name="data-box-data-protection"></a>Data Box 数据保护
 

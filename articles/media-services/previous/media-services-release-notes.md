@@ -13,19 +13,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: cfe5ea47ad2cbed7bd2779ee535d7bef447475e5
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 91578b5c840f589f3e49737b71e63f4d5e82a126
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500349"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919645"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
 这些 Azure 媒体服务发行说明汇总了与以前版本相比的变更之处和已知的问题。
 
 > [!NOTE]
-> 未向 Media Services v2 添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒体服务 v2 中未添加新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 我们希望能够倾听客户的心声，以便努力解决对客户造成影响的问题。 要报告问题或提出问题，请将在 [Azure 媒体服务 MSDN 论坛]提交问题。 
 
@@ -45,6 +45,10 @@ ms.locfileid: "77500349"
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
+
+## <a name="february-2020"></a>2020 年 2 月
+
+将停用一些分析媒体处理器。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 ## <a name="september-2019"></a>2019 年 9 月
 

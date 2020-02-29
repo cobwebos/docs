@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: acf0409459994adf5dde98fb3b1a8ab2e280df76
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: c9388da449e75dee00fd43af9a4e0407c46f597a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153700"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916704"
 ---
 # <a name="two-class-decision-forest-module"></a>双类决策林模块
 
@@ -66,6 +66,8 @@ ms.locfileid: "77153700"
 3.  通过设置 "**创建训练人员模式**" 选项，指定要如何定型模型。  
   
     -   **单个参数**：如果你知道要如何配置模型，则可以提供一组特定值作为参数。
+
+    -   **参数范围**：如果您不能确定最佳参数，可以使用 "[优化模型超参数](tune-model-hyperparameters.md)" 模块找到最佳参数。 提供一定范围的值，而讲师会循环访问设置的多个组合，以确定产生最佳结果的值的组合。
   
 4.  对于 "**决策树的数量**"，请键入可在系综中创建的决策树的最大数目。 通过创建更多决策树，你可能获得更好的覆盖范围，但训练时间会增加。  
   

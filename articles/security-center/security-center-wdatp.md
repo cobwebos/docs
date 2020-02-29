@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 46b9fe5c6a038aa98cf8df64c40bf8ea1747efec
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e735495038f0e5c28af31aa79a45c71225502b3c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663611"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918149"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure 安全中心的 Microsoft Defender 高级威胁防护
 
@@ -95,12 +95,14 @@ Azure 安全中心现在提供了以下功能：
 
 生成良性的 Microsoft Defender ATP 测试警报：
 
-1. 使用远程桌面访问 Windows Server 2012 R2 VM 或 Windows Server 2016 VM。 打开命令提示符窗口。
+1. 创建文件夹 "C:\test-MDATP-test"。
 
-2. 在提示符下，复制并运行以下命令。 命令提示符窗口将自动关闭。
+1. 使用远程桌面访问 Windows Server 2012 R2 VM 或 Windows Server 2016 VM。 打开命令行窗口。
+
+1. 在提示符下，复制并运行以下命令。 命令提示符窗口将自动关闭。
 
     ```
-    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-WDATP-test\\invoice.exe'); Start-Process 'C:\\test-WDATP-test\\invoice.exe'
+    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
 
    ![包含上述命令的命令提示符窗口](media/security-center-wdatp/image4.jpeg)

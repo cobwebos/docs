@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: a2adf59a542f695b7845e1a871c0b297b0790fec
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 045f3ccdc8dc09bf657ab39ce15a0d0524c73fcb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672151"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162956"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -749,7 +749,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="authorization-keys"></a>授权密钥
 
-Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。  标准 HTTP 触发器可能会要求在请求中出现此类 API 密钥。 
+Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终结点。  除非 HTTP 触发的函数上的 HTTP 授权级别设置为 `anonymous`，否则请求中必须包含 API 密钥。 
 
 > [!IMPORTANT]
 > 虽然密钥可以帮助你在开发过程中对 HTTP 终结点进行模糊处理，它们不应作为一种方法来保护生产环境中的 HTTP 触发器。 若要了解详细信息，请参阅[在生产环境中保护 HTTP 终结点](#secure-an-http-endpoint-in-production)。
@@ -757,14 +757,19 @@ Functions 允许使用密钥使其难以在开发过程中访问 HTTP 函数终�
 > [!NOTE]
 > 在 Functions 1.x 运行时中，Webhook 提供程序可以使用密钥以多种方式对请求授权，具体取决于提供程序支持何种方式。 [Webhook 和密钥](#webhooks-and-keys)对此进行了说明。 版本2.x 和更高版本中的函数运行时不包括对 webhook 提供程序的内置支持。
 
-有两种类型的密钥：
+#### <a name="authorization-scopes-function-level"></a>授权范围（函数级别）
 
-* **主机密钥**：由 Function App 中的所有函数共享这些密钥。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。
-* **函数密钥**：这些密钥仅适用于在其下定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
+有两个用于函数级别键的授权作用域：
+
+* **函数**：这些键仅适用于在其上定义它们的特定函数。 这些密钥用作 API 密钥时，只允许访问该函数。
+
+* **Host**：具有主机作用域的密钥可用于访问函数应用中的所有函数。 这些密钥用作 API 密钥时，可以访问 Function App 中的任何函数。 
 
 命名每个密钥方便引用，并且在函数和主机级别存在名为“default”的默认密钥。 函数密钥优先于主机密钥。 如果为两个密钥定义的名称相同，则使用函数密钥。
 
-每个函数应用也有一个特殊的主密钥。 此密钥是名为 `_master` 的主机密钥，提供对运行时 API 的管理访问权限。 无法撤消此密钥。 当设置 `admin` 授权级别，请求必须使用主密钥；任何其他密钥会导致授权失败。
+#### <a name="master-key-admin-level"></a>主密钥（管理员级别） 
+
+每个函数应用还具有一个名为 `_master`的管理级主机密钥。 除了为应用中的所有函数提供主机级别的访问权限外，主密钥还提供对运行时 REST Api 的管理访问权限。 无法撤消此密钥。 当设置 `admin` 授权级别，请求必须使用主密钥；任何其他密钥会导致授权失败。
 
 > [!CAUTION]  
 > 由于函数应用中提升的权限由主密钥所授予，因此不应与第三方共享此密钥或在本机客户端应用程序中分发此密钥。 选择管理员授权级别时，请务必审慎行事。

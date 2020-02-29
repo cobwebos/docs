@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260077"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915701"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET 中使用依赖关系注入 Azure Functions
 
@@ -21,11 +21,11 @@ Azure Functions 支持依赖关系注入（DI）软件设计模式，这是在�
 
 - 对于依赖关系注入的支持从 Azure Functions 1.x 开始。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 使用依赖关系注入之前，必须安装以下 NuGet 包：
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft。](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - 1\.0.28[包](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/)版本或更高版本
 
@@ -130,16 +130,16 @@ Azure Functions 应用提供与[ASP.NET 依赖关系注入](https://docs.microso
 
 > [!WARNING]
 > - 不要将 `AddApplicationInsightsTelemetry()` 添加到服务集合，因为它注册的服务与环境提供的服务发生冲突。
-> - 如果使用内置的 Application Insights 功能，请勿注册您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。
+> - 如果使用内置的 Application Insights 功能，请勿注册您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果需要配置自己的 `TelemetryClient` 实例，请通过插入的 `TelemetryConfiguration` 创建一个实例，如[监视器 Azure Functions](./functions-monitoring.md#version-2x-and-later-2)中所示。
 
 ## <a name="function-app-provided-services"></a>函数应用提供的服务
 
 函数主机将注册多个服务。 以下服务可作为依赖项在应用程序中安全执行：
 
-|服务类型|生存期|Description|
+|服务类型|生存期|说明|
 |--|--|--|
-|`Microsoft.Extensions.Configuration.IConfiguration`|单一实例|运行时配置|
-|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|单一实例|负责提供主机实例的 ID|
+|`Microsoft.Extensions.Configuration.IConfiguration`|实体|运行时配置|
+|`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|实体|负责提供主机实例的 ID|
 
 如果有其他服务要依赖于其他服务，请[在 GitHub 上创建一个问题并对其进行建议](https://github.com/azure/azure-functions-host)。
 

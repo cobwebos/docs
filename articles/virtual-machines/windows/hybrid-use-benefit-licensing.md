@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461153"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911775"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 的 Azure 混合权益
 对于有软件保障的客户，Windows Server 的 Azure 混合权益可让你使用本地 Windows Server 许可证，并以较低成本在 Azure 中运行 Windows 虚拟机。 可以使用 Windows Server 的 Azure 混合权益部署 Windows OS 的新虚拟机。 本文介绍如何使用 Windows Server 的 Azure 混合权益部署新的 VM 的步骤，以及如何更新现有正在运行的 VM 的步骤。 有关 Windows Server 的 Azure 混合权益许可和成本节约方面的更多信息，请参阅[“Windows Server 的 Azure 混合权益许可”页](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
-> [!Important]
-> 每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
->
+每个双处理器许可证或每组 16 核心许可证均可授权用于多达 8 核心的两个实例，或用于多达 16 核心的一个实例。 Standard Edition 许可证的 Azure 混合权益仅可在本地或 Azure 中使用一次。 Datacenter Edition 权益允许同时在本地和 Azure 中使用。
 
-> [!Important]
-> 所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
->
+所有区域现在都支持将 Windows Server 的 Azure 混合权益用于运行 Windows Server OS 的任何 VM，其中包括具有其他软件（如 SQL Server 或第三方市场软件）的 VM。 
 
-> [!NOTE]
-> 对于经典 Vm，仅支持从本地自定义映像部署新 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
->
 
+## <a name="classic-vms"></a>经典 VM
+
+对于经典 Vm，仅支持从本地自定义映像部署新 VM。 若要使用本文支持的功能，必须首先将经典 VM 迁移到资源管理器模型。
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>使用 Windows Server 的 Azure 混合权益的方式

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77198218"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用图像模板
@@ -111,7 +111,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 | 名称 | 返回类型 | 说明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 向塔命名空间添加自定义 SVG 图像模板。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | 按名称检索 SVG 模板。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| 字符串 | 按名称检索 SVG 模板。 |
 | `getAllImageTemplateNames()` | string[] |  按名称检索 SVG 模板。 |
 
 SVG 图像模板支持以下占位符值：
@@ -154,7 +154,7 @@ SVG 图像模板支持以下占位符值：
 | 六边形 | 六边形-粗 | 六边形-圆形 | 六边形-粗 |
 | ![六边形图标](./media/image-templates/hexagon.png) | ![六边形-厚图标](./media/image-templates/hexagon-thick.png) | ![六边形圆形图标](./media/image-templates/hexagon-rounded.png) | ![六边形-粗图标](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
-| 固定 | 固定 | 圆角正方形 | 圆方形-粗 |
+| pin | 固定 | 圆角正方形 | 圆方形-粗 |
 | ![固定图标](./media/image-templates/pin.png) | ![固定线图标](./media/image-templates/pin-round.png) | ![圆角图标](./media/image-templates/rounded-square.png) | ![圆角方形-粗图标](./media/image-templates/rounded-square-thick.png) |
 ||||
 | 向上箭头 | 向上箭头-细 | 汽车 ||

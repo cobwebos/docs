@@ -1,6 +1,6 @@
 ---
 title: 排查在 Azure 中部署 Windows 虚拟机时遇到的问题 | Microsoft Docs
-description: 排查在 Azure 资源管理器部署模型中部署 Windows 虚拟机时遇到的问题。
+description: 排查 Azure 资源管理器部署模型中的 Windows 虚拟机部署问题。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058034"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921405"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>排查在 Azure 中部署 Windows 虚拟机时遇到的问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "71058034"
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>群集无法支持请求的 VM 大小
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<属性 supportTopicIds = "123456789" resourceTags = "windows" productPesIds = "1234，5678"/>
 - 以更小的 VM 大小重试请求。
 - 如果无法更改请求的 VM 大小：
     - 停止可用性集中的所有 VM。 依次单击“资源组”> 资源组 >“资源”> 可用性集 >“虚拟机”> 虚拟机 >“停止”。
@@ -40,7 +40,7 @@ ms.locfileid: "71058034"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>群集没有可用资源
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<属性 supportTopicIds = "123456789" resourceTags = "windows" productPesIds = "1234，5678"/>
 - 请稍后重试请求。
 - 如果新 VM 属于不同的可用性集
     - 在同一区域的其他可用性集中创建 VM。
@@ -86,9 +86,9 @@ ms.locfileid: "71058034"
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>在我的 N 系列 VM 中找不到 GPU 实例
 
-若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 可获取 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 的驱动程序安装信息。
+若要利用运行 Windows Server 2016 或 Windows Server 2012 R2 的 Azure N 系列 VM 的 GPU 功能，在部署后必须在每个 VM 上安装 NVIDIA 图形驱动程序。 针对 [Windows VM](../windows/n-series-driver-setup.md) 和 [Linux VM](../linux/n-series-driver-setup.md) 提供了驱动程序安装信息。
 
-## <a name="is-n-series-vms-available-in-my-region"></a>我所在的区域是否支持 N 系列 VM？
+## <a name="is-n-series-vms-available-in-my-region"></a>我所在的地区是否提供 N 系列 VM？
 
 可以从[可用产品(按区域)](https://azure.microsoft.com/regions/services) 以及[此处](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)的定价来查看可用性。
 
@@ -107,6 +107,8 @@ ms.locfileid: "71058034"
 
 - 对于在经典部署模型中部署的 VM，必须删除并重新部署云服务部署，才能将 VM 大小更改为其他大小系列。
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - 对于在 Resource Manager 部署模型中部署的 VM，必须先停止可用性集中的所有 VM，才能更改可用性集中任何 VM 的大小。
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>在可用性集中部署时，列出的 VM 大小不受支持。
@@ -115,7 +117,7 @@ ms.locfileid: "71058034"
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>是否可以将现有的经典 VM 添加到可用性集？
 
-是。 可以将现有经典 VM 添加到新的或现有的可用性集。 有关详细信息，请参阅[将现有虚拟机添加到可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
+是的。 可以将现有经典 VM 添加到新的或现有的可用性集。 有关详细信息，请参阅[将现有虚拟机添加到可用性集](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)。
 
 
 ## <a name="next-steps"></a>后续步骤

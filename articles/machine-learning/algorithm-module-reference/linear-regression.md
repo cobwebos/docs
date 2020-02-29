@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152187"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912783"
 ---
 # <a name="linear-regression-module"></a>线性回归模块
 本文介绍 Azure 机器学习设计器（预览版）中的模块。
@@ -51,17 +51,15 @@ ms.locfileid: "77152187"
 
 此模块支持使用两种方法来为回归模型提供不同的选项：
 
-+ [使用在线梯度下降创建回归模型](#bkmk_GradientDescent)
++ [使用普通最小二乘法调整回归模型](#create-a-regression-model-using-ordinary-least-squares)
+
+    对于小型数据集，最好选择一般的最小二乘法。 这应该向 Excel 产生类似的结果。
+    
++ [使用在线梯度下降创建回归模型](#create-a-regression-model-using-online-gradient-descent)
 
     对于更加复杂的模型，或者在给定变量数的前提下具有极少训练数据的模型，梯度下降是较好的丢失函数。
 
-
-
-+ [使用普通最小二乘法调整回归模型](#bkmk_OrdinaryLeastSquares)
-
-    对于小型数据集，最好选择一般的最小二乘法。 这应该向 Excel 产生类似的结果。
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>使用普通最小二乘法创建回归模型
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>使用普通最小二乘法创建回归模型
 
 1. 在设计器中，将 "**线性回归模型**" 模块添加到管道。
 
@@ -86,7 +84,7 @@ ms.locfileid: "77152187"
 
 8. 运行管道。
 
-## <a name="results-for-ordinary-least-squares-model"></a>普通最小二乘法模型的结果
+### <a name="results-for-ordinary-least-squares-model"></a>普通最小二乘法模型的结果
 
 训练完成后：
 
@@ -94,7 +92,7 @@ ms.locfileid: "77152187"
 + 若要进行预测，请将训练的模型连接到 "[评分模型](./score-model.md)" 模块，同时将一个数据集连接到一个新值的数据集。 
 
 
-## <a name="bkmk_GradientDescent"></a>使用在线梯度下降创建回归模型
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>使用在线梯度下降创建回归模型
 
 1. 在设计器中，将 "**线性回归模型**" 模块添加到管道。
 
@@ -105,6 +103,8 @@ ms.locfileid: "77152187"
 3. 对于 "**创建训练**人员" 模式，指示您是要使用一组预定义的参数来定型模型，还是要使用参数扫描来优化模型。
 
     + **单个参数**：如果你知道要如何配置线性回归网络，则可以提供一组特定值作为参数。
+    
+    + **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
    
 4. 对于 "**学习速率**"，请指定随机梯度下降优化器的初始学习速率。
@@ -133,7 +133,7 @@ ms.locfileid: "77152187"
 
 13. 运行管道。
 
-## <a name="results-for-online-gradient-descent"></a>在线梯度下降结果
+### <a name="results-for-online-gradient-descent"></a>在线梯度下降结果
 
 训练完成后：
 

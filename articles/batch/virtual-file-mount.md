@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: labrenne
-ms.openlocfilehash: a22117505dff35f9b92e3dd3c91dc8540557b218
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bdf0b3bfc955d8a2e2ce1b363c8699ca719b957c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023032"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918999"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>在 Batch 池中装载虚拟文件系统
 
@@ -88,9 +88,6 @@ new PoolAddParameter
 另一种方法是通过[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)使用 Azure Blob 存储。 装载 blob 文件系统需要为存储帐户 `AccountKey` 或 `SasKey`。 有关获取这些密钥的信息，请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)或[使用共享访问签名（SAS）](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 有关使用 blobfuse 的详细信息，请参阅 blobfuse[问题解答常见问题解答](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)。 若要获取对 blobfuse 装载目录的默认访问权限，请以**管理员身份**运行该任务。 Blobfuse 会在用户空间装载目录，并在创建池时将其作为根挂载。 在 Linux 中，所有**管理员**任务都是 root。 熔断器[参考页](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)中介绍了保险丝模块的所有选项。
 
 除了故障排除指南之外，blobfuse 存储库中的 GitHub 问题也是查看当前 blobfuse 问题和解决方法的有用方法。 有关详细信息，请参阅[blobfuse 问题](https://github.com/Azure/azure-storage-fuse/issues)。
-
-> [!NOTE]
-> Blobfuse 目前不支持 Debian。 有关详细信息，请参阅[支持的 sku](#supported-skus) 。
 
 ```csharp
 new PoolAddParameter
@@ -170,11 +167,12 @@ new PoolAddParameter
 
 ## <a name="supported-skus"></a>支持的 SKU
 
-| 发布者 | 产品 | SKU | Azure 文件共享 | Blobfuse | NFS 装载 | CIFS 装载 |
+| 发布者 | 产品/服务 | SKU | Azure 文件共享 | Blobfuse | NFS 装载 | CIFS 装载 |
 |---|---|---|---|---|---|---|
-| batch | rendering-centos73 | 呈现 | :heavy_check_mark: <br>注意：与 CentOS 7.7 兼容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 批处理 | rendering-centos73 | 呈现 | :heavy_check_mark: <br>注意：与 CentOS 7.7 兼容</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16.04-LTS、18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8、9 | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>注意：与 CentOS 7.4 兼容。 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>注意：支持 A_8 或9个存储</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |

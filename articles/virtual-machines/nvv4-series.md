@@ -2,17 +2,17 @@
 title: NVv4 系列-Azure 虚拟机
 description: NVv4 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 2afec4dc89c8d8892356888ec3404d36ba929d23
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669635"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161850"
 ---
 # <a name="nvv4-series-preview"></a>NVv4 系列（预览）
 
@@ -24,6 +24,10 @@ NVv4 系列虚拟机由[Amd Radeon INSTINCT MI25](https://www.amd.com/en/product
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：不支持
+
+内存保留更新：不支持
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | GPU | GPU 内存：GiB | 最大数据磁盘数 | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- | --- |

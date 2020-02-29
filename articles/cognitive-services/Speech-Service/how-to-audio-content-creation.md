@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: dapine
-ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4785356963e7df1d7b175ac21ceebc921f851ffb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561028"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913644"
 ---
 # <a name="improve-synthesis-with-audio-content-creation"></a>通过音频内容创建改善合成
 
@@ -43,7 +43,7 @@ ms.locfileid: "77561028"
 
 按照以下步骤创建语音资源，并将其连接到 Speech Studio。
 
-1. 按照以下说明[注册 Azure 帐户](get-started.md#try-the-speech-service-using-a-new-azure-account)并[创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
+1. 按照以下说明[注册 Azure 帐户](get-started.md#new-resource)并[创建语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)。 请确保定价层设置为**S0**。 如果正在使用其中一个神经声音，请确保在[受支持的区域](regions.md#standard-and-neural-voices)中创建资源。
 2. 登录到[音频内容创建](https://aka.ms/audiocontentcreation)。
 3. 选择一个现有项目，或单击 "**新建**"。
 4. 你随时都可以通过 "**设置**" 选项修改订阅，该选项位于顶部导航栏中。

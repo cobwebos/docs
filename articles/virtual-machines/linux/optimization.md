@@ -1,5 +1,5 @@
 ---
-title: 优化 Azure 上的 Linux VM
+title: 在 Azure 上优化 Linux VM
 description: 了解一些优化提示，以确保正确设置 Linux VM，从而在 Azure 上获得最佳性能
 keywords: linux 虚拟机,虚拟机 linux,ubuntu 虚拟机
 services: virtual-machines-linux
@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934722"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918047"
 ---
-# <a name="optimize-your-linux-vm-on-azure"></a>优化 Azure 上的 Linux VM
+# <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上优化 Linux VM
 通过命令行或门户创建运行 Linux 虚拟机 (VM) 是一项很简单的操作。 本教程说明如何在 Microsoft Azure 平台上设置 VM 以确保优化其性能。 本主题使用 Ubuntu Server VM，不过你也可以[将自己的映像作为模板](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)来创建 Linux 虚拟机。  
 
-## <a name="prerequisites"></a>必备组件
-本主题假设用户已有一个有效的 Azure 订阅（[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)），并已在 Azure 订阅中预配 VM。 在[创建 VM](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 之前，请确保已安装最新的 [Azure CLI](/cli/azure/install-az-cli2) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 订阅。
+## <a name="prerequisites"></a>必备条件
+本主题假设用户已有一个有效的 Azure 订阅（[注册免费试用版](https://azure.microsoft.com/pricing/free-trial/)），并已在 Azure 订阅中预配 VM。 在[创建 VM](/cli/azure/install-az-cli2) 之前，请确保已安装最新的 [Azure CLI](/cli/azure/reference-index) 并使用 [az login](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 登录到 Azure 订阅。
 
 ## <a name="azure-os-disk"></a>Azure OS 磁盘
 在 Azure 中创建 Linux VM 后，它将具有两个与之关联的磁盘。 **/dev/sda** 是 OS 磁盘， **/dev/sdb** 是临时磁盘。  请勿将主要 OS 磁盘 ( **/dev/sda**) 用于操作系统以外的用途，因为它已针对快速启动 VM 进行优化，无法为工作负荷提供良好的性能。 要获得持久且经过优化的数据存储，可以将一个或多个磁盘附加到 VM。 
@@ -135,5 +135,4 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 其他有用资源的链接：
 
 * [Azure Linux 代理用户指南](../extensions/agent-linux.md)
-* [优化 Azure Linux VM 上的 MySQL 性能](classic/optimize-mysql.md)
 * [在 Linux 上配置软件 RAID](configure-raid.md)

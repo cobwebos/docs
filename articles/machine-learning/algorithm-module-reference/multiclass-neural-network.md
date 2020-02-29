@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152085"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920410"
 ---
 # <a name="multiclass-neural-network-module"></a>多类神经网络模块
 
@@ -46,7 +46,7 @@ ms.locfileid: "77152085"
 
     - **单个参数**：如果您已经知道要如何配置模型，请选择此选项。
 
-    
+    - **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
 3. **隐藏层规范**：选择要创建的网络体系结构类型。
 

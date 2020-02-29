@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 8b651d6e5ca9262d38f5bfb9e10c404e2614809e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 0fe04941821de2ac6e4e873e8d073c3e9b9d9508
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77055662"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919373"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>使用 Azure 门户将托管数据磁盘附加到 Windows VM
 
@@ -33,7 +33,7 @@ ms.locfileid: "77055662"
 
 ## <a name="initialize-a-new-data-disk"></a>初始化新的数据磁盘
 
-1. 连接到虚拟机。
+1. 连接到 VM。
 1. 在正在运行的 VM 中选择 Windows“开始”菜单，然后在搜索框中输入 **diskmgmt.msc**。 此时会打开“磁盘管理”控制台。
 2. “磁盘管理”识别出新的未初始化磁盘，并显示“初始化磁盘”窗口。
 3. 请确保选择新磁盘，然后选择“确定”对其进行初始化。
@@ -48,4 +48,4 @@ ms.locfileid: "77055662"
 ## <a name="next-steps"></a>后续步骤
 
 - 还可以[使用 PowerShell 附加数据磁盘](attach-disk-ps.md)。
-- 如果应用程序需要使用 *D:* 盘存储数据，可以[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
+- 如果应用程序需要使用 *D:* 盘存储数据，可以[更改 Windows 临时磁盘的驱动器号](change-drive-letter.md)。

@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084625"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919289"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>使用 Azure 媒体分析检测面部和情绪
+
+> [!NOTE]
+> **Azure Media Face Detector**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 
@@ -66,7 +69,7 @@ ms.locfileid: "74084625"
 [输入视频](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>任务配置（预设）
-使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于面部检测。
+使用 **Azure Media Face Detector** 创建任务时，必须指定配置预设。 以下配置预设仅适用于人脸检测。
 
 ```json
     {
@@ -80,7 +83,7 @@ ms.locfileid: "74084625"
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
 | --- | --- |
-| Mode |快速 - 处理速度快，但准确度较低（默认）。|
+| “模式” |快速 - 处理速度快，但准确度较低（默认）。|
 
 ### <a name="json-output"></a>JSON 输出
 下面是 JSON 输出被截断的示例。
@@ -155,7 +158,7 @@ ms.locfileid: "74084625"
 #### <a name="attribute-descriptions"></a>属性说明
 | 属性名称 | 说明 |
 | --- | --- |
-| Mode |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
+| “模式” |Faces：仅人脸检测。<br/>PerFaceEmotion：独立返回每个人脸检测的情绪。<br/>AggregateEmotion：返回帧中所有面部的平均情绪值。 |
 | AggregateEmotionWindowMs |在已选择 AggregateEmotion 模式时使用。 指定用于生成每个聚合结果的视频的长度，以毫秒为单位。 |
 | AggregateEmotionIntervalMs |在已选择 AggregateEmotion 模式时使用。 指定生成聚合结果的频率。 |
 
@@ -165,7 +168,7 @@ ms.locfileid: "74084625"
 || 默认值 | 最大值 | 最小值 |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0.5 |2 |0.25|
-| AggregateEmotionIntervalMs |0.5 |1 个 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON 输出
 聚合情绪的 JSON 输出（已截断）：

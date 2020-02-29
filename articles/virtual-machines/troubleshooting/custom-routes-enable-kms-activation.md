@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748635"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920155"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>在强制隧道方案中，Windows 激活失败
 
@@ -26,7 +26,7 @@ ms.locfileid: "73748635"
 
 ## <a name="symptom"></a>症状
 
-在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有 Internet 绑定的流量定向回本地网络。 在此方案中，运行 Windows 的 Azure 虚拟机 (VM) 无法激活 Windows。
+在 Azure 虚拟网络子网上启用[强制隧道](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以将所有 Internet 绑定的流量定向回本地网络。 在此方案中，运行 Windows 的 Azure 虚拟机（Vm）无法激活 Windows。
 
 ## <a name="cause"></a>原因
 
@@ -53,7 +53,7 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
  
 
 > [!NOTE] 
-> 激活使用公共 IP 地址，并将受标准 SKU 负载均衡器配置的影响。 请仔细查看 [Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)以了解要求。
+> 激活使用公共 IP 地址，并受标准 SKU 负载平衡器配置的影响。 仔细查看[Azure 中的出站连接](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)，了解要求。
 
 1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：
@@ -84,6 +84,8 @@ Azure 全球云的 KMS 服务器的 IP 地址为 23.102.135.246。 其 DNS 名�
 4. 尝试激活 Windows 并查看问题是否得以解决。
 
 ### <a name="for-classic-vms"></a>对于经典 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 1. 打开 Azure PowerShell，然后[登录到 Azure 订阅](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
 2. 运行以下命令：

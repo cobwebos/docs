@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 684e4a410ac8624066c897b4078ea4044a965357
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f331a537c80628a386525e29743807a70a163f0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848910"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914314"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -24,7 +24,7 @@ ms.locfileid: "76848910"
 
 本文介绍如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自定义策略](custom-policy-overview.md)来启用 ADFS 用户帐户登录。 可以通过将 [SAML 技术配置文件](saml-technical-profile.md)添加到自定义策略来实现登录。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 完成 [Azure Active Directory B2C 中的自定义策略入门](custom-policy-get-started.md)中的步骤。
 - 请确保你有权访问包含私钥的证书 .pfx 文件。 可以生成自己的签名证书并将其上传到 Azure AD B2C。 Azure AD B2C 使用此证书对发送到 SAML 标识提供者的 SAML 请求进行签名。
@@ -48,11 +48,11 @@ ms.locfileid: "76848910"
 
 如果希望用户使用 ADFS 帐户登录，需将该帐户定义为 Azure AD B2C 可通过终结点与其进行通信的声明提供程序。 该终结点将提供一组声明，Azure AD B2C 使用这些声明来验证特定的用户是否已完成身份验证。
 
-可以通过在策略的扩展文件中将 ADFS 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。
+可以通过在策略的扩展文件中将 ADFS 帐户添加到 **ClaimsProvider** 元素，将该帐户定义为声明提供程序。 有关详细信息，请参阅[定义 SAML 技术配置文件](saml-technical-profile.md)。
 
 1. 打开 *TrustFrameworkExtensions.xml*。
-2. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
-3. 如下所示添加新的 **ClaimsProvider**：
+1. 找到 **ClaimsProviders** 元素。 如果该元素不存在，请在根元素下添加它。
+1. 如下所示添加新的 **ClaimsProvider**：
 
     ```xml
     <ClaimsProvider>
@@ -87,21 +87,40 @@ ms.locfileid: "76848910"
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. 将 `your-ADFS-domain` 替换为你的 ADFS 域的名称，将 **identityProvider** 输出声明的值替换为你的 DNS（表示你的域的任意值）。
-5. 保存文件。
+1. 将 `your-ADFS-domain` 替换为你的 ADFS 域的名称，将 **identityProvider** 输出声明的值替换为你的 DNS（表示你的域的任意值）。
+
+1. 找到 "`<ClaimsProviders>`" 部分并添加以下 XML 代码片段。 如果策略已包含 `SM-Saml-idp` 技术配置文件，请跳到下一步。 有关详细信息，请参阅[单一登录会话管理](custom-policy-reference-sso.md)。
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+1. 保存文件。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上传扩展文件以进行验证
 
 现在，你已配置了策略，因此 Azure AD B2C 知道如何与 ADFS 帐户进行通信。 请尝试上传该策略的扩展文件，这只是为了确认它到目前为止不会出现任何问题。
 
 1. 在 Azure AD B2C 租户中的“自定义策略”页上，选择“上传策略”。
-2. 启用“覆盖策略(若存在)”，然后浏览到 *TrustFrameworkExtensions.xml* 文件并选中该文件。
+2. 启用“覆盖策略(若存在)”，然后浏览到 **TrustFrameworkExtensions.xml** 文件并选中该文件。
 3. 单击“上载” 。
 
 > [!NOTE]
@@ -113,7 +132,7 @@ ms.locfileid: "76848910"
 此时，标识提供者已设置，但不会出现在任何注册或登录屏幕中。 若要使其可用，需要创建现有模板用户旅程的副本，并对其进行修改，使其具有 ADFS 标识提供者。
 
 1. 打开初学者包中的 *TrustFrameworkBase.xml* 文件。
-2. 找到并复制包含 `Id="SignUpOrSignIn"` 的 **UserJourney** 元素的完整内容。
+2. 找到并复制包含 **的**UserJourney`Id="SignUpOrSignIn"` 元素的完整内容。
 3. 打开 *TrustFrameworkExtensions.xml* 并找到 **UserJourneys** 元素。 如果该元素不存在，请添加一个。
 4. 将复制的 **UserJourney** 元素的完整内容粘贴为 **UserJourneys** 元素的子级。
 5. 重命名用户旅程的 ID。 例如，`SignUpSignInADFS` 。
@@ -122,7 +141,7 @@ ms.locfileid: "76848910"
 
 **ClaimsProviderSelection** 元素类似于注册或登录屏幕上的标识提供者按钮。 如果为 ADFS 帐户添加 **ClaimsProviderSelection** 元素，则当用户进入页面时，会显示一个新按钮。
 
-1. 在创建的用户旅程中找到包含 `Order="1"` 的 **OrchestrationStep** 元素。
+1. 在创建的用户旅程中找到包含 **的**OrchestrationStep`Order="1"` 元素。
 2. 在 **ClaimsProviderSelections** 下，添加以下元素。 将 **TargetClaimsExchangeId** 设置为适当的值，例如 `ContosoExchange`：
 
     ```XML
@@ -133,7 +152,7 @@ ms.locfileid: "76848910"
 
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 ADFS 帐户通信以接收令牌。
 
-1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
+1. 在用户旅程中找到包含 **的**OrchestrationStep`Order="2"`。
 2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
@@ -183,7 +202,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
     请注意，这些名称将不会显示在 "传出声明类型" 下拉列表中。 需要在中手动键入。 （下拉列表实际上可编辑）。
 
-12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 `SHA-256`，然后单击“确定”。
+12.  根据证书类型，可能需要设置哈希算法。 在信赖方信任（B2C 演示）属性窗口上，选择“高级”选项卡并将“安全哈希算法”更改为 **，然后单击“确定”** `SHA-256`。
 13. 在“服务器管理器”中，选择“工具”，然后选择“ADFS 管理”。
 14. 选择所创建的信赖方信任，选择“从联合元数据更新”，然后单击“更新”。
 

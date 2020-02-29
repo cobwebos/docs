@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: be0f61b1458fa8bd63d85669c7956a789892996a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981334"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918251"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
 本文描述在 Microsoft Azure 中尝试连接到虚拟机 (VM) 时可能遇到的错误。
-> [!NOTE]
-> Azure 具有用于创建和处理资源的两个不同的部署模型： [Resource Manager 和经典](../../azure-resource-manager/management/deployment-models.md)。 本文介绍如何使用资源管理器部署模型。建议对新部署使用该模型，而不要使用经典部署模型。
+
 
 ## <a name="symptoms"></a>症状
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 80b13cb9a926837604e2a10fed75b976ba3393b6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bf4c7e9fc623ad7dc74b6da943232d5c558d43a4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934925"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920257"
 ---
 # <a name="custom-script-extension-for-windows"></a>适用于 Windows 的自定义脚本扩展
 
@@ -23,7 +23,7 @@ ms.locfileid: "76934925"
 
 本文档详细说明如何通过 Azure PowerShell 模块、Azure 资源管理器模板使用自定义脚本扩展，同时详细说明 Windows 系统上的故障排除步骤。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 > [!NOTE]  
 > 不要在将同一 VM 作为参数的情况下使用自定义脚本扩展运行 Update-AzVM，因为它将等待它本身响应。  
@@ -273,6 +273,8 @@ The response content cannot be parsed because the Internet Explorer engine is no
 若要在规模集上部署自定义脚本扩展，请参阅[AzVmssExtension](https://docs.microsoft.com/powershell/module/az.compute/add-azvmssextension?view=azps-3.3.0)
 
 ## <a name="classic-vms"></a>经典 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 若要在经典 Vm 上部署自定义脚本扩展，可以使用 Azure 门户或经典 Azure PowerShell cmdlet。
 

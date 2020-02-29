@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: c87673fef0079ff1b04b0840da0434b090cda67c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 03e6c2ecbf8fa0c5f71218d29b67cb03cdf3d5db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153649"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916789"
 ---
 # <a name="two-class-neural-network-module"></a>双类神经网络模块
 
@@ -42,7 +42,9 @@ ms.locfileid: "77153649"
   
 2.  通过设置 "**创建训练人员模式**" 选项，指定要如何定型模型。  
   
-    -   **单个参数**：如果您已经知道要如何配置模型，请选择此选项。  
+    -   **单个参数**：如果您已经知道要如何配置模型，请选择此选项。
+
+    -   **参数范围**：如果您不能确定最佳参数，可以使用 "[优化模型超参数](tune-model-hyperparameters.md)" 模块找到最佳参数。 提供一定范围的值，而讲师会循环访问设置的多个组合，以确定产生最佳结果的值的组合。  
 
 3.  对于 "**隐藏层规范**"，选择要创建的网络体系结构类型。  
   

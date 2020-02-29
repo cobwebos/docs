@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 755ea3ea3c246a1fa9fb7d514569c6fcecc0c04c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 398575cc5c3dea96aa644533eb6ce8a262d1981c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598708"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164485"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure 中 Windows 虚拟机的大小
 
@@ -27,12 +27,12 @@ ms.locfileid: "77598708"
 
 | 类型 | 大小 | 说明 |
 |------|-------|-------------|
-| [常规用途](../sizes-general.md) | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
+| [常规用途](../sizes-general.md) | B、Dsv3、Dv3、Dasv4、Dav4、DSv2、Dv2、Av2、DC、DCv2 | CPU 与内存之比平衡。 适用于测试和开发、小到中型数据库和低到中等流量 Web 服务器。 |
 | [计算优化](../sizes-compute.md) | Fsv2 | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 |
 | [内存优化](../sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Mv2、M、DSv2、Dv2 | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。 |
 | [存储优化](../sizes-storage.md)  | Lsv2 | 较高的磁盘吞吐量和 IO，是大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库的理想之选。  |
 | [GPU](../sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 （预览版）、NV、NVv3、NVv4 | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。 |
-| [高性能计算](../sizes-hpc.md) | HB-ACCT-WC、HC、H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
+| [高性能计算](../sizes-hpc.md) | HB-ACCT-WC、HBv2、HC、H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
 
 - 有关不同大小的定价信息，请参阅[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。
 - 若要查看 Azure VM 的一般限制，请参阅 [Azure 订阅和服务限制、配额与约束](../../azure-subscription-service-limits.md)。

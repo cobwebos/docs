@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0bcca16bd89781428773eda168e6ee3c2f5784ef
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 7d51e3007b7773e28d846f8d30178426f5668cfb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152170"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920053"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多类提升决策树
 
@@ -35,25 +35,26 @@ ms.locfileid: "77152170"
 1.  通过设置 "**创建培训人员模式**" 选项指定您希望模型的定型方式。
 
     + **单个参数**：如果你知道要如何配置模型，则可以提供一组特定值作为参数。
-
-
-    *  **每个树的最大叶数**限制可以在任何树中创建的最大终端节点（叶）数。
     
-        通过增加此值，可能会增加树的大小并实现更高的精度，同时降低过度拟合和定型时间。
+    + **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
+
+1. **每个树的最大叶数**限制可以在任何树中创建的最大终端节点（叶）数。
+    
+        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
   
-    * **每个叶节点的最小样本数**指示在树中创建任何终端节点（叶）所需的事例数。  
+1. **每个叶节点的最小样本数**指示在树中创建任何终端节点（叶）所需的事例数。  
 
-         通过增加此值，你可以增加用于创建新规则的阈值。 例如，默认值为 1 时，甚至单个案例也会导致创建新规则。 如果您将此值增大至 5，则定型数据中至少必须包含 5 个符合相同条件的用例。
+         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
 
-    * **学习速率**定义学习时的步长大小。 输入介于0和1之间的数字。
+1. **学习速率**定义学习时的步长大小。 输入介于0和1之间的数字。
 
-         学习速率确定学习器在最佳解决方案上聚合的速度和速度。 如果步长太大，则可能超过最佳解决方案。 如果步长太小，训练将花费更长的时间来聚合最佳解决方案。
+         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
 
-    * **构造的树数**指示在系综中创建的决策树的总数。 通过创建多个决策树，你可能获得更好的覆盖范围，但训练时间会增加。
+1. **构造的树数**指示在系综中创建的决策树的总数。 通过创建多个决策树，你可能获得更好的覆盖范围，但训练时间会增加。
 
-    *  **随机数字种子**可以选择设置非负整数作为随机种子值。 指定种子可确保跨运行的可再现性具有相同的数据和参数。  
+1. **随机数字种子**可以选择设置非负整数作为随机种子值。 指定种子可确保跨运行的可再现性具有相同的数据和参数。  
 
-         默认情况下，随机种子设置为42。 使用不同随机种子的后续运行的结果可能不同。
+         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
 
 > [!Note]
 > 如果将 "**创建训练人员模式**" 设置为 "**单个参数**"，则连接标记的数据集和[训练模型](./train-model.md)模块。

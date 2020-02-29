@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073039"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915480"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>适用于 Linux 的网络观察程序代理虚拟机扩展
 
@@ -29,7 +29,7 @@ ms.locfileid: "74073039"
 
 本文详细介绍适用于 Linux 的网络观察程序代理 VM 扩展支持的平台和部署选项。 安装代理时不会中断，也不会需要重新启动 VM。 可以将扩展部署到所部署的虚拟机。 如果 Azure 服务部署了虚拟机，请查看该服务的文档以确定它是否允许在虚拟机中安装扩展。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -88,6 +88,8 @@ ms.locfileid: "74073039"
 
 ## <a name="azure-classic-cli-deployment"></a>Azure 经典 CLI 部署
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 下面的示例将网络观察程序代理 VM 扩展部署到通过经典部署模型部署的现有 VM：
 
 ```azurecli
@@ -109,18 +111,6 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 可以从 Azure 门户或 Azure CLI 检索有关扩展部署状态的数据。
 
-下面的示例演示使用 Azure 经典 CLI 通过经典部署模型部署的 VM 扩展的部署状态：
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-扩展执行输出将记录到在以下目录中发现的文件：
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
-
 下面的示例演示使用 Azure CLI 通过资源管理器部署的 VM 的 NetworkWatcherAgentLinux 扩展的部署状态：
 
 ```azurecli
@@ -129,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容不了解，可以参阅[网络观察程序文档](/azure/network-watcher/)或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请参阅 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容不了解，可以参阅[网络观察程序文档](/azure/network-watcher/)或联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请参阅 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

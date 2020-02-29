@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/01/2019
-ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152255"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912199"
 ---
 # <a name="feature-hashing-module-reference"></a>功能哈希模块引用
 
@@ -111,7 +111,7 @@ ms.locfileid: "77152255"
 
 在您创建转换后的数据集之后，您可以将其用作 "定型模型" 模块的输入。
  
-### <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳做法
 
 以下最佳实践可帮助你充分利用功能哈希模块：
 

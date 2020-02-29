@@ -14,13 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 55d4971a8e25c07dfe2a1cfa5855d21efcc95b33
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121997"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912590"
 ---
+> [!IMPORTANT]
+> 目前，大约90% 的 IaaS Vm 正在使用[Azure 资源管理器](https://azure.microsoft.com/features/resource-manager/)。 截至2020年2月28日，经典 Vm 已弃用，并将在2023年3月1日完全停用。 [了解]( https://aka.ms/classicvmretirement)有关此过时的详细信息以及[它对你有何影响](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me)。
+
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>规划将 IaaS 资源从经典部署模型迁移到 Azure 资源管理器
 尽管 Azure Resource Manager 提供了大量令人惊叹的功能，但规划好迁移过程以确保一切顺利仍至关重要。 花时间进行规划可确保执行迁移活动时不会遇到问题。
 
@@ -114,10 +117,10 @@ ms.locfileid: "77121997"
     >
 
   - 网络接口
-  - 负载平衡器
+  - 负载均衡器
   - 公共 IP
   - 静态公共 IP
-  - 内核数
+  - 核心数
   - 网络安全组
   - 路由表
 

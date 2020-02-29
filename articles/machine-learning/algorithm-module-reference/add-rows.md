@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152459"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918489"
 ---
 # <a name="add-rows-module"></a>添加行模块
 
@@ -32,7 +32,7 @@ ms.locfileid: "77152459"
 
 若要连接两个数据集中的行，这些行必须具有完全相同的架构。 这意味着列的列数和列中的数据类型相同。
 
-1.  将 "**添加行**" 模块拖放到管道中，可以在 "**操作**" 类别中的 "**数据转换**" 下找到它。
+1.  将 "**添加行**" 模块拖放到管道中，可以在 "**数据转换**" 下找到它。
 
 2. 将数据集连接到两个输入端口。 要追加的数据集应连接到第二个（右）端口。 
   

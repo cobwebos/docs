@@ -12,14 +12,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d43176e04337c2faf7be0bea682428056bc4ab46
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 20e64e5225987a8045e406a0e8fcae098c580c61
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059197"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913372"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>针对经典部署模型中的分配失败情况进行故障排除的步骤
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 以下是造成分配请求被固定的常见分配案例。 我们会在本文稍后深入探讨每一个案例。
 
@@ -50,30 +52,30 @@ Upgrade_VMSizeNotSupported 或 GeneralError
 
 **解决方法**
 
-如果错误是 Upgrade_VMSizeNotSupported*，请尝试使用不同的 VM 大小。 如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。 如果现有的云服务未使用区域虚拟网络，用户仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
+如果错误是 Upgrade_VMSizeNotSupported\*，请尝试使用不同的 VM 大小。 如果使用不同的 VM 大小不可行，但可接受使用不同的虚拟 IP 地址 (VIP)，则创建新的云服务来托管新的 VM，并将新的云服务添加到运行现有 VM 的区域虚拟网络中。 如果现有的云服务未使用区域虚拟网络，用户仍然可以为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 
-如果错误是 GeneralError*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。 类似上述，通过创建新的云服务（请注意，新的云服务必须使用不同的 VIP）尝试添加所需的计算资源，并使用区域虚拟网络连接云服务。
+如果错误是 GeneralError\*，很可能是因为群集虽然支持资源的类型（例如特定的 VM 大小），但群集目前没有可用的资源。 类似上述，通过创建新的云服务（请注意，新的云服务必须使用不同的 VIP）尝试添加所需的计算资源，并使用区域虚拟网络连接云服务。
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>重新启动部分停止（已解除分配）的 VM
 **错误**
 
-GeneralError*
+GeneralError\*
 
 **群集固定的原因**
 
-部分解除分配表示已停止（解除分配）云服务中的一或多个 VM，但不是全部。 停止（解除分配）VM 时会释放相关联的资源。 因此，重启已停止（解除分配）的 VM 是一项新的分配请求。 重新启动已部分解除分配的云服务中的 VM 相当于向现有云服务添加 VM。 必须在托管现有云服务的原始群集上尝试发出分配请求。 创建不同云服务可让 Azure 平台查找其他有可用资源或支持所请求的 VM 大小的群集。
+部分解除分配表示已停止（解除分配）云服务中的一或多个 VM，但不是全部。 停止（解除分配）VM 时会释放相关联的资源。 因此，重新启动已停止（解除分配）的 VM 是一项新的分配请求。 重新启动已部分解除分配的云服务中的 VM 相当于向现有云服务添加 VM。 必须在托管现有云服务的原始群集上尝试发出分配请求。 创建不同云服务可让 Azure 平台查找其他有可用资源或支持所请求的 VM 大小的群集。
 
 **解决方法**
 
 如果可接受使用不同的 VIP，请删除已停止（解除分配）的 VM（但保留相关联的磁盘），并通过不同的云服务加回 VM。 使用区域虚拟网络连接云服务：
 
 * 如果现有的云服务使用区域虚拟网络，只要将新的云服务添加到相同的虚拟网络即可。
-* 如果现有的云服务未使用区域虚拟网络，请为新的云服务创建新的虚拟网络，并 [将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
+* 如果现有的云服务未使用区域虚拟网络，请为新的云服务创建新的虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>重新启动完全停止（已解除分配）的 VM
 **错误**
 
-GeneralError*
+GeneralError\*
 
 **群集固定的原因**
 
@@ -86,7 +88,7 @@ GeneralError*
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>过渡/生产环境部署（仅适用于平台即服务）
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General\* 或 New_VMSizeNotSupported\*
 
 **群集固定的原因**
 
@@ -99,7 +101,7 @@ New_General* 或 New_VMSizeNotSupported*
 ## <a name="affinity-group-vmservice-proximity"></a>地缘组（VM/服务邻近性）
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General\* 或 New_VMSizeNotSupported\*
 
 **群集固定的原因**
 
@@ -112,15 +114,15 @@ New_General* 或 New_VMSizeNotSupported*
 ## <a name="affinity-group-based-virtual-network"></a>基于地缘组的虚拟网络
 **错误**
 
-New_General* 或 New_VMSizeNotSupported*
+New_General\* 或 New_VMSizeNotSupported\*
 
 **群集固定的原因**
 
-在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。 因此，放置在地缘组中的计算资源受与 "分配方案：相关性组（VM/服务邻近性） "一节。 计算资源已绑定到一个群集。
+在引入区域虚拟网络之前，必须先将虚拟网络与地缘组进行关联。 这样，便会根据上一部分“分配案例：地缘组：（VM/服务邻近性）”中所述的相同约束，绑定已放入地缘组中的计算资源。 计算资源已绑定到一个群集。
 
 **解决方法**
 
-如果不需要地缘组，请为要添加的新资源创建新的区域虚拟网络，并 [将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
+如果不需要地缘组，请为要添加的新资源创建新的区域虚拟网络，然后[将现有虚拟网络连接到新的虚拟网络](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)。 详细了解[区域虚拟网络](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)。
 
 此外，也可以[将基于地缘组的虚拟网络迁移到区域虚拟网络](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)，然后重新添加所需的资源。
 

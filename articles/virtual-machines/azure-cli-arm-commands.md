@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122452"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919764"
 ---
 # <a name="azure-classic-cli-commands"></a>Azure 经典 CLI 命令 
 
-> [!IMPORTANT]
-> 本主题介绍如何安装 Azure 经典 CLI。 此经典 CLI 已弃用，只能与经典部署模型配合使用。
-> 对于所有其他部署，使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+本主题介绍如何安装 Azure 经典 CLI。 此经典 CLI 已弃用，只能与经典部署模型配合使用。 对于所有其他部署，使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
 
 本文提供了用于创建和管理 Azure 资源的 Azure 经典命令行接口（CLI）命令的语法和选项。 本参考内容并不完整，CLI 版本可能会显示略微不同的命令或参数。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "77122452"
 
 
 ## <a name="account-information"></a>帐户信息
-该工具使用你的 Azure 订阅信息连接到你的帐户。
+该工具使用 Azure 订阅信息连接到帐户。
 
 **列出导入的订阅**
 
@@ -625,7 +625,7 @@ ms.locfileid: "77122452"
 <BR>
 
     network lb list [options] <resource-group>
-列出资源组中的负载平衡器资源。
+列出资源组中的负载均衡器资源。
 
     azure network lb list myresourcegroup
 
@@ -1249,7 +1249,7 @@ ms.locfileid: "77122452"
 **用于管理公共 IP 地址的命令**
 
     network public-ip create [options] <resource-group> <name> <location>
-创建公共 IP 资源。 你将要创建公共 IP 资源并将其关联到一个域名。
+创建公共 IP 资源。 将要创建公共 IP 资源并将其关联到一个域名。
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create

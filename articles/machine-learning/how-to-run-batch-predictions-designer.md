@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: peterlu
 author: peterclu
-ms.date: 01/13/2020
+ms.date: 02/24/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 95a3c1b892cacd802f359fdc03de74fa60a1e118
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: fdda35d3a617a30169748f4f6b42c8726e7e3512
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138110"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920682"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器运行批量预测
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure 机器学习设计器运行批量预测（预览版）
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 本文介绍如何使用设计器创建批处理预测管道。 批处理预测使你可以使用可从任何 HTTP 库触发的 web 服务连续评分大数据集。
 
@@ -31,7 +31,7 @@ ms.locfileid: "77138110"
 
 若要了解如何使用 SDK 设置批处理计分服务，请参阅随附的操作[方法](how-to-run-batch-predictions.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本操作说明假定你已经有了一个训练管道。 有关设计器的指导介绍，请完成[部分设计器教程](tutorial-designer-automobile-price-train-score.md)。 
 

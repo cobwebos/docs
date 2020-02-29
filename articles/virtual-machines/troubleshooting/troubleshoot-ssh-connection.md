@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: f0a79fb0f90a633095343c162ccdc80ebc48f1d4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1194b2d90e5a12b1ecf3664a48055ca763f31a4f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747671"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919441"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>针对通过 SSH 连接到 Azure Linux VM 时发生的失败、错误或被拒绝问题进行故障排除
 尝试连接到 Linux 虚拟机 (VM) 时，可能会由于安全外壳 (SSH) 错误、SSH 连接失败或 SSH 被拒绝而发生问题，本文可帮助你查找并更正这些问题。 可以使用 Azure 门户、Azure CLI 或适用于 Linux 的 VM 访问扩展来排查和解决连接问题。
@@ -46,7 +46,7 @@ ms.locfileid: "75747671"
 可以使用以下方法之一重置凭据或 SSH 配置：
 
 * [Azure 门户](#use-the-azure-portal) - 如果需要快速重置 SSH 配置或 SSH 密钥，并且没有安装 Azure 工具，则很适合使用此方法。
-* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux)-无论 SSH 配置如何，vm 串行控制台都可正常工作，并向你的 vm 提供交互式控制台。 事实上，"不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 详情见下文。
+* [AZURE Vm 串行控制台](https://aka.ms/serialconsolelinux)-无论 SSH 配置如何，vm 串行控制台都可正常工作，并向你的 vm 提供交互式控制台。 事实上，"不能 SSH" 情况是串行控制台旨在帮助解决的具体情况。 更多详细信息。
 * [Azure CLI](#use-the-azure-cli) - 如果已打开命令行，则可以快速重置 SSH 配置或凭据。 如果要处理经典 VM，则可以使用 [Azure 经典 CLI](#use-the-azure-classic-cli)。
 * [Azure VMAccessForLinux 扩展](#use-the-vmaccess-extension) - 创建和重复使用 json 定义文件来重置 SSH 配置或用户凭据。
 
@@ -60,10 +60,10 @@ ms.locfileid: "75747671"
 ![在 Azure 门户中重置 SSH 配置或凭据](./media/troubleshoot-ssh-connection/reset-credentials-using-portal.png)
 
 ### <a name="a-idreset-config-reset-the-ssh-configuration"></a><a id="reset-config" />重置 SSH 配置
-若要重置 SSH 配置，请如上面的屏幕截图所示在“模式”部分中选择“`Reset configuration only`”，然后选择“更新”。 完成此操作后，再次尝试访问 VM。
+若要重置 SSH 配置，请如上面的屏幕截图所示在“模式”`Reset configuration only`**部分中选择“** ”，然后选择“更新”。 完成此操作后，再次尝试访问 VM。
 
 ### <a name="a-idreset-credentials-reset-ssh-credentials-for-a-user"></a><a id="reset-credentials" />重置用户的 SSH 凭据
-若要重置现有用户的凭据，请在“模式”部分中选择“`Reset SSH public key`”或“`Reset password`”，如上面的屏幕截图中所示。 指定用户名和 SSH 密钥或新密码，然后选择“更新”。
+若要重置现有用户的凭据，请在“模式”`Reset SSH public key``Reset password`部分中选择“ **”或“** ”，如上面的屏幕截图中所示。 指定用户名和 SSH 密钥或新密码，然后选择“更新”。
 
 还可以通过此菜单在 VM 上创建具有 sudo 权限的用户。 输入新用户名和关联的密码或 SSH 密钥，然后选择“更新”。
 
@@ -102,21 +102,21 @@ Port 22
 
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 最初可尝试将 SSH 配置重置为默认值，然后重新启动 VM 上的 SSH 服务器。 这不会更改用户帐户名、密码或 SSH 密钥。
-以下示例使用 [az vm user reset-ssh](/cli/azure/vm/user)，在 `myResourceGroup` 中名为 `myVM` 的 VM 上重置 SSH 配置。 请如下所示使用自己的值：
+以下示例使用 [az vm user reset-ssh](/cli/azure/vm/user)，在 `myVM` 中名为 `myResourceGroup` 的 VM 上重置 SSH 配置。 请如下所示使用自己的值：
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>重置用户的 SSH 凭据
-以下示例使用 [az vm user update](/cli/azure/vm/user)，在 `myResourceGroup` 中名为 `myVM` 的 VM 上， 将 `myUsername` 的凭据重置为 `myPassword` 中指定的值。 请如下所示使用自己的值：
+以下示例使用 [az vm user update](/cli/azure/vm/user)，在 `myUsername` 中名为 `myPassword` 的 VM 上， 将 `myVM` 的凭据重置为 `myResourceGroup` 中指定的值。 请如下所示使用自己的值：
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
      --username myUsername --password myPassword
 ```
 
-如果使用 SSH 密钥身份验证，可以重置给定用户的 SSH 密钥。 以下示例在 `myResourceGroup` 中名为 `myVM` 的 VM 上，使用 **az vm access set-linux-user** 更新存储在 `~/.ssh/id_rsa.pub` 中的用户名为 `myUsername` 的 SSH 密钥。 请如下所示使用自己的值：
+如果使用 SSH 密钥身份验证，可以重置给定用户的 SSH 密钥。 以下示例在 **中名为** 的 VM 上，使用 `~/.ssh/id_rsa.pub`az vm access set-linux-user`myUsername` 更新存储在 `myVM` 中的用户名为 `myResourceGroup` 的 SSH 密钥。 请如下所示使用自己的值：
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -135,7 +135,7 @@ az vm user update --resource-group myResourceGroup --name myVM \
 }
 ```
 
-使用 Azure CLI，并调用 `VMAccessForLinux` 扩展并指定 json 文件来重置 SSHD 连接。 以下示例使用 [az vm extension set](/cli/azure/vm/extension)，在 `myResourceGroup` 中名为 `myVM` 的 VM 上重置 SSHD。 请如下所示使用自己的值：
+使用 Azure CLI，并调用 `VMAccessForLinux` 扩展并指定 json 文件来重置 SSHD 连接。 以下示例使用 [az vm extension set](/cli/azure/vm/extension)，在 `myVM` 中名为 `myResourceGroup` 的 VM 上重置 SSHD。 请如下所示使用自己的值：
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -151,7 +151,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 }
 ```
 
-若要重置用户的 SSH 密钥，请先创建名为 `settings.json` 的文件。 以下示例在 `myResourceGroup` 中名为 `myVM` 的 VM 上，将 `myUsername` 的凭据重置为 `myPassword` 中指定的值。 在 `settings.json` 文件中使用自己的值输入以下行：
+若要重置用户的 SSH 密钥，请先创建名为 `settings.json` 的文件。 以下示例在 `myUsername` 中名为 `myPassword` 的 VM 上，将 `myVM` 的凭据重置为 `myResourceGroup` 中指定的值。 在 `settings.json` 文件中使用自己的值输入以下行：
 
 ```json
 {
@@ -159,7 +159,7 @@ az vm extension set --resource-group philmea --vm-name Ubuntu \
 }
 ```
 
-创建 json 文件之后，使用 Azure CLI 调用 `VMAccessForLinux` 扩展并指定 json 文件来重置 SSH 用户凭据。 以下示例重置 `myResourceGroup` 中名为 `myVM` 的 VM 上的凭据。 请如下所示使用自己的值：
+创建 json 文件之后，使用 Azure CLI 调用 `VMAccessForLinux` 扩展并指定 json 文件来重置 SSH 用户凭据。 以下示例重置 `myVM` 中名为 `myResourceGroup` 的 VM 上的凭据。 请如下所示使用自己的值：
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -178,7 +178,7 @@ azure config mode arm
 ### <a name="reset-ssh-configuration"></a>重置 SSH 配置
 SSHD 配置本身可能有误或服务遇到错误。 可以重置 SSHD 以确保 SSH 配置本身是有效的。 要执行的第一个故障排除步骤应该是重置 SSHD。
 
-以下示例重置 `myResourceGroup` 资源组中名为 `myVM` 的 VM 上的 SSHD。 请使用自己的 VM 和资源组名称，如下所示：
+以下示例重置 `myVM` 资源组中名为 `myResourceGroup` 的 VM 上的 SSHD。 请使用自己的 VM 和资源组名称，如下所示：
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -186,14 +186,14 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>重置用户的 SSH 凭据
-如果 SSHD 看上去运行正常，可以重置给定用户的密码。 以下示例在 `myResourceGroup` 中名为 `myVM` 的 VM 上，将 `myUsername` 的凭据重置为 `myPassword` 中指定的值。 请如下所示使用自己的值：
+如果 SSHD 看上去运行正常，可以重置给定用户的密码。 以下示例在 `myUsername` 中名为 `myPassword` 的 VM 上，将 `myVM` 的凭据重置为 `myResourceGroup` 中指定的值。 请如下所示使用自己的值：
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
      --user-name myUsername --password myPassword
 ```
 
-如果使用 SSH 密钥身份验证，可以重置给定用户的 SSH 密钥。 以下示例在 `myResourceGroup` 中名为 `myVM` 的 VM 上，更新 `~/.ssh/id_rsa.pub` 中为用户 `myUsername` 存储的 SSH 密钥。 请如下所示使用自己的值：
+如果使用 SSH 密钥身份验证，可以重置给定用户的 SSH 密钥。 以下示例在 `~/.ssh/id_rsa.pub` 中名为 `myUsername` 的 VM 上，更新 `myVM` 中为用户 `myResourceGroup` 存储的 SSH 密钥。 请如下所示使用自己的值：
 
 ```azurecli
 azure vm reset-access --resource-group myResourceGroup --name myVM \
@@ -209,14 +209,17 @@ azure vm reset-access --resource-group myResourceGroup --name myVM \
 ![在 Azure 门户中重新启动 VM](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-以下示例使用 [az vm restart](/cli/azure/vm) 重新启动名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM。 请如下所示使用自己的值：
+以下示例使用 [az vm restart](/cli/azure/vm) 重新启动名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM。 请如下所示使用自己的值：
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-classic-cli"></a>Azure 经典 CLI
-以下示例重新启动 `myResourceGroup` 资源组中名为 `myVM` 的 VM。 请如下所示使用自己的值：
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
+以下示例重新启动 `myVM` 资源组中名为 `myResourceGroup` 的 VM。 请如下所示使用自己的值：
 
 ```azurecli
 azure vm restart --resource-group myResourceGroup --name myVM
@@ -236,20 +239,24 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ![在 Azure 门户中重新部署 VM](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-以下示例使用 [az vm redeploy](/cli/azure/vm) 重新部署名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM。 请如下所示使用自己的值：
+以下示例使用 [az vm redeploy](/cli/azure/vm) 重新部署名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM。 请如下所示使用自己的值：
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-classic-cli"></a>Azure 经典 CLI
-以下示例重新部署 `myResourceGroup` 资源组中名为 `myVM` 的 VM。 请如下所示使用自己的值：
+
+以下示例重新部署 `myVM` 资源组中名为 `myResourceGroup` 的 VM。 请如下所示使用自己的值：
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="vms-created-by-using-the-classic-deployment-model"></a>使用经典部署模型创建的 VM
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 若要解决使用经典部署模型创建的 VM 中最常见的 SSH 连接失败问题，请尝试以下步骤。 在执行每个步骤之后，请尝试重新连接到 VM。
 
 * 从 [Azure 门户](https://portal.azure.com)重置远程访问。 在 Azure 门户中，选择你的 VM，然后选择“重置远程...”。
@@ -264,7 +271,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
   * 创建 *sudo* 用户帐户。
   * 重置 SSH 配置。
 * 检查 VM 的资源运行状况，了解是否存在任何平台问题。<br>
-     选择 VM 并向下滚动到“设置” > “检查运行状况”。
+     选择 VM 并向下滚动到“设置” **“检查运行状况”**  > 。
 
 ## <a name="additional-resources"></a>其他资源
 * 如果在执行后续步骤之后仍然无法通过 SSH 连接到 VM，请参阅[更详细的故障排除步骤](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，查看其他可以解决问题的步骤。

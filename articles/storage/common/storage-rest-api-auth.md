@@ -10,22 +10,22 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5c6125b850062450516e7fc0b19c2e0d5d6f577
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965724"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916058"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>通过共享密钥授权调用 REST API 操作
 
 本文介绍如何调用 Azure 存储空间 REST Api，包括如何构成 Authorization 标头。 它是从对 REST 一无所知的开发人员角度编写的，并不知道如何进行 REST 调用。 了解如何调用 REST 操作后，可以利用此知识来使用任何其他 Azure 存储 REST 操作。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 示例应用程序列出了存储帐户的 blob 容器。 若要尝试本文中的代码，需准备以下各项：
 
-- 安装包含 **Azure 开发**工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)。
+- 安装包含 [Azure 开发](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)工作负荷的 **Visual Studio 2019**。
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -410,7 +410,7 @@ internal static AuthenticationHeaderValue GetAuthorizationHeader(
 
     // This is the actual header that will be added to the list of request headers.
     AuthenticationHeaderValue authHV = new AuthenticationHeaderValue("SharedKey",
-        storageAccountName + ":" + Convert.ToBase64String(SHA256.ComputeHash(SignatureBytes)));
+        storageAccountName + ":" + signature);
     return authHV;
 }
 ```
@@ -563,7 +563,7 @@ Content-Length: 1135
 </EnumerationResults>
 ```
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 本文介绍了如何发出 REST API blob 存储的请求。 使用请求时，可以检索容器的列表或容器中的 blob 列表。 已了解如何创建 REST API 调用的授权签名，以及如何在 REST 请求中使用它。 最后，您学习了如何检查响应。
 

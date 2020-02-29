@@ -1,5 +1,5 @@
 ---
-title: 为 Azure Key Vault 设置高级威胁防护
+title: Azure Key Vault 威胁防护
 description: 本文介绍如何在 Azure 安全中心为 Azure Key Vault 设置高级威胁防护
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 3ca3026a259e7f23bbfa01398a96cbdbfae1321c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 449096590df6145c9f80dcf2c97726931909a2ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623983"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914800"
 ---
 # <a name="threat-protection-for-azure-key-vault-preview"></a>Azure Key Vault 的威胁防护（预览版）
 

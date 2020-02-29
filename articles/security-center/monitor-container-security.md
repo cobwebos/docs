@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431561"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919526"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>监视容器的安全性
 
@@ -29,7 +29,7 @@ Azure 安全中心涵盖了容器安全的以下三个方面：
 
 - **强化 Azure Kubernetes 服务群集**-安全中心在 Azure Kubernetes service 群集的配置中发现漏洞时提供了建议。 有关可能出现的具体建议的详细信息，请参阅[Kubernetes 服务建议](recommendations-reference.md#recs-containers)。
 
-- **运行时保护**-如果你位于安全中心的标准定价层，你将获得容器化环境的实时威胁检测。 安全中心为主机和 AKS 群集级别的可疑活动生成警报。 有关可能出现的相关安全警报的详细信息，请参阅警报引用表的[Azure Kubernetes Service 群集](alerts-reference.md#alerts-akscluster)和[容器的警报-主机级别](alerts-reference.md#alerts-containerhost)部分的警报。
+- **运行时保护**-如果你位于安全中心的标准定价层，你将获得容器化环境的实时威胁防护。 安全中心为主机和 AKS 群集级别的可疑活动生成警报。 有关可能出现的相关安全警报的详细信息，请参阅警报引用表的[Azure Kubernetes Service 群集](alerts-reference.md#alerts-akscluster)和[容器的警报-主机级别](alerts-reference.md#alerts-containerhost)部分的警报。
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>针对漏洞扫描基于 ARM 的容器注册表 
 

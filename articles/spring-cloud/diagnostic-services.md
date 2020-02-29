@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 90ff59bb76bceaacc7b0528ed0461b76832dc7fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662121"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920036"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>通过诊断设置分析日志和指标
 
@@ -32,7 +32,7 @@ ms.locfileid: "77662121"
 
 ## <a name="metrics"></a>度量值
 
-有关度量值的完整列表，请参阅[春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
+有关度量值的完整列表，请参阅[春季 Cloud 指标](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options)。
 
 若要开始，请启用其中一项服务来接收数据。 若要了解如何配置 Log Analytics，请参阅[Azure Monitor 中的 Log Analytics 入门](../azure-monitor/log-query/get-started-portal.md)。 
 

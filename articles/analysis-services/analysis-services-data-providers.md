@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 006e1fb3fcef1ebcd0e09dffb79149e75eec622a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f099546ced64bd911916164879cd533329761c66
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713174"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914664"
 ---
-# <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>用于连接到 Azure Analysis Services 的客户端库
+# <a name="client-libraries-for-connecting-to-analysis-services"></a>用于连接到 Analysis Services 的客户端库
 
 客户端应用程序和工具连接到 Analysis Services 服务器时需要使用客户端库。 Microsoft 客户端应用程序（例如 Power BI Desktop、Excel、SQL Server Management Studio （SSMS））和 Visual Studio 的 Analysis Services 项目扩展安装所有三个客户端库，并随常规应用程序更新一起更新它们。 在某些情况下，可能需要安装较新版本的客户端库。 自定义客户端应用程序还需要安装客户端库。
 
@@ -31,7 +31,7 @@ ms.locfileid: "76713174"
 
 Analysis Services 管理对象（AMO）和 ADOMD 客户端库作为[NuGet.org](https://www.nuget.org/)中的可安装包提供。建议你迁移到 NuGet 引用，而不是使用 Windows Installer。 
 
-|包  | 产品版本  | 
+|程序包  | 产品版本  | 
 |---------|---------|
 |[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.4.0.5     |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.4.0.5      |

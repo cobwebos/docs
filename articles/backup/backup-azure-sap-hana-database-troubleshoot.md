@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何对使用 Azure 备份来备份 SAP HANA 数据库时可能发生的常见错误进行故障排除。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664592"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916857"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上 SAP HANA 数据库的备份问题
 
@@ -16,9 +16,16 @@ ms.locfileid: "75664592"
 
 ## <a name="prerequisites-and-permissions"></a>先决条件和权限
 
-在配置备份之前，请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[设置权限](tutorial-backup-sap-hana-db.md#setting-up-permissions)部分。
+在配置备份之前，请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[预注册脚本执行的](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)操作部分。
 
 ## <a name="common-user-errors"></a>常见用户错误
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **错误消息**      | <span style="font-weight:normal">Azure 备份没有执行备份所需的角色权限</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **可能的原因**    | 该角色可能已被覆盖。                          |
+| **建议的操作** | 若要解决此问题，请从 "**发现数据库**" 窗格中运行该脚本，或在[此处](https://aka.ms/scriptforpermsonhana)下载它。 或者，将 "SAP_INTERNAL_HANA_SUPPORT" 角色添加到工作负荷备份用户（AZUREWLBACKUPHANAUSER）。 |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 

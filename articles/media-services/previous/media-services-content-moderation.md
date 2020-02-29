@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896000"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914307"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒体内容审查器检测可能的成人和猥亵内容 
+
+> [!NOTE]
+> **Azure 媒体内容审查器**媒体处理器将停用。 有关停用日期，请参阅[旧组件](legacy-components.md)主题。
 
 ## <a name="overview"></a>概述
 借助 **Azure 媒体内容审查器**媒体处理器 (MP)，你可以对视频使用机器辅助审查。 例如，你可能希望检测视频中可能存在的成人和猥亵内容，以及复查由人工审查团队标记出的内容。
@@ -44,7 +47,7 @@ ms.locfileid: "74896000"
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 | --- | --- |
 | 版本 |内容审查器的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
@@ -57,7 +60,7 @@ ms.locfileid: "74896000"
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
-|元素|描述|
+|元素|说明|
 |---|---|
 | start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |
@@ -66,7 +69,7 @@ ms.locfileid: "74896000"
 
 ### <a name="events-json-elements"></a>事件 JSON 元素
 
-|元素|描述|
+|元素|说明|
 |---|---|
 | reviewRecommended | `true` 或 `false`，具体取决于 **adultScore** 或 **racyScore** 是否超出了内部阈值。 |
 | adultScore | 可能的成人内容的可信度分数，范围为 0.00 到 0.99。 |
@@ -234,6 +237,6 @@ The following example of a Content Moderator JSON output was truncated.
 
 从[视频审查快速入门](../../cognitive-services/Content-Moderator/video-moderation-api.md)获取完整的源代码和 Visual Studio 项目。 
 
-了解如何采用 .NET 基于审查输出和[审查脚本](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md)生成[视频复查](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md)。
+了解如何采用 .NET 基于审查输出和[审查脚本](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md)生成[视频复查](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md)。
 
 查看详细的 .NET [视频审查和复查教程](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md)。 

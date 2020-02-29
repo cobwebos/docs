@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980107"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918353"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -39,7 +39,7 @@ Azure 支持以下类型的对等互连：
 
 对等虚拟网络之间的网络流量是专用的。 虚拟网络之间的流量仅限于 Microsoft 主干网络。 在虚拟网络之间通信不需公共 Internet、网关或加密。
 
-## <a name="connectivity"></a>连接性
+## <a name="connectivity"></a>连接
 
 对于对等互连虚拟网络，任一虚拟网络中的资源可以直接与对等互连虚拟网络中的资源进行连接。
 
@@ -97,14 +97,14 @@ Azure 支持以下类型的对等互连：
 
 若要了解创建虚拟网络对等互连所需的权限，请参阅[权限](virtual-network-manage-peering.md#permissions)。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 使用虚拟网络对等互连连接的入口和出口流量需要支付极少的费用。 有关详细信息，请参阅[虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-网关传输是一种对等互连属性，使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关。 网关传输适用于跨界连接和网络到网络连接。 到对等互连虚拟网络中的网关（入站或出站）的流量产生虚拟网络对等互连费用。 有关详细信息，请参阅 vpn 网关[定价](https://azure.microsoft.com/pricing/details/vpn-gateway/)和 expressroute 网关定价以获得 expressroute 网关费用。
+网关传输是一种对等互连属性，使虚拟网络能够在对等互连虚拟网络中使用 VPN/ExpressRoute 网关。 网关传输适用于跨界连接和网络到网络连接。 到对等互连虚拟网络中的网关（入站或出站）的流量会在辐射 VNet （或非网关 VNet）上产生虚拟网络对等互连费用。 有关详细信息，请参阅 vpn 网关[定价](https://azure.microsoft.com/pricing/details/vpn-gateway/)和 expressroute 网关定价以获得 expressroute 网关费用。
 
 >[!NOTE]
-> 本文档的以前版本指出，不会将虚拟网络对等互连费用用于网关传输。 它现在按定价页反映准确的定价。
+> 本文档的以前版本指出，在使用网关传输时，不会在辐射 VNet （或非网关 VNet）上应用虚拟网络对等互连费用。 它现在按定价页反映准确的定价。
 
 ## <a name="next-steps"></a>后续步骤
 

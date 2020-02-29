@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770945"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163720"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用导入和导出迁移 MySQL 数据库
 本文介绍通过使用 MySQL Workbench 将数据导入和导出到 Azure Database for MySQL 服务器的两种常用方法。 
@@ -19,10 +19,10 @@ ms.locfileid: "74770945"
 ## <a name="before-you-begin"></a>开始之前
 若要逐步执行本操作方法指南，需要：
 - 按照[使用 Azure 门户创建 Azure Database for MySQL 服务器](quickstart-create-mysql-server-database-using-azure-portal.md)所述创建的 Azure Database for MySQL 服务器。
-- [下载的](https://dev.mysql.com/downloads/workbench/) MySQL Workbench，或用于导入和导出的其他 MySQL 工具。
+- MySQL 工作台[Mysql 工作台下载](https://dev.mysql.com/downloads/workbench/)或其他第三方 mysql 工具来执行导入/导出。
 
 ## <a name="use-common-tools"></a>使用常用工具
-使用常用工具（例如 MySQL Workbench、Toad 或 Navicat）进行远程连接，并将数据导入或导出到 Azure Database for MySQL。 
+使用常见的实用工具和工具（如 MySQL 工作台或 mysqldump）远程连接数据，并将数据导入或导出 Azure Database for MySQL。 
 
 在具有 Internet 连接的客户端计算机上使用此类工具连接到 Azure Database for MySQL。 如[在 Azure Database for MySQL 中配置 SSL 连接](concepts-ssl-connection-security.md)中所述，使用具有 SSL 加密的连接是最安全的做法。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74770945"
 ## <a name="determine-when-to-use-import-and-export-techniques-instead-of-a-dump-and-restore"></a>确定何时使用导入和导出技术（而不是转储和还原技术）
 在以下情况下，使用 MySQL 工具将数据库导入和导出到 Azure MySQL 数据库中。 而在其他情况下，使用[转储和还原](concepts-migrate-dump-restore.md)可能更有益。 
 
-- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 [mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) 的 `--include-tables` 或 `--exclude-tables` switch 语句以及带有 [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) 的 `--tables` switch 语句。
+- 需要有选择性地选择要从现有 MySQL 数据库导入到 Azure MySQL 数据库的几个表时，最好使用导入和导出技术。  这样做，可以在迁移过程中省略任何不需要的表，从而节省时间和资源。 例如，使用带有 `--include-tables`mysqlpump`--exclude-tables` 的 [ 或 ](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) switch 语句以及带有 `--tables`mysqldump[ 的 ](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) switch 语句。
 - 移动表以外的数据库对象时，显式创建这些对象。 包括约束（主键、外键、索引）、视图、函数、过程、触发器和想要迁移的任何其他数据库对象。
 - 从 MySQL 数据库以外的外部数据源迁移数据时，使用 [mysqlimport](https://dev.mysql.com/doc/refman/5.7/en/mysqlimport.html) 创建平面文件并导入它们。
 

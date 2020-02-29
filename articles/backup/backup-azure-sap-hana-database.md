@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a5fd09e0e487d103e8bd78964c11b572a62e28fa
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765513"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164604"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -28,9 +28,9 @@ SAP HANA 数据库是需要低恢复点目标（RPO）和长期保留的关键�
 >Azure vm**中的 SQL Server 软删除和 AZURE vm 工作负荷中 SAP HANA 的软删除**现已在预览版中提供。<br>
 >若要注册预览版，请在 AskAzureBackupTeam@microsoft.com 写信
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-若要设置用于备份的数据库，请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[设置权限](tutorial-backup-sap-hana-db.md#setting-up-permissions)部分。
+请参阅[先决条件](tutorial-backup-sap-hana-db.md#prerequisites)和[预注册脚本执行](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)的操作部分，以设置要备份的数据库。
 
 ### <a name="set-up-network-connectivity"></a>设置网络连接
 
@@ -88,23 +88,6 @@ SAP HANA 数据库是需要低恢复点目标（RPO）和长期保留的关键�
 使用 NSG 服务标记 | 由于范围更改会自动合并，因此更易于管理 <br/><br/> 无额外成本 <br/><br/> | 仅可与 NSG 配合使用 <br/><br/> 提供对整个服务的访问权限
 使用 Azure 防火墙 FQDN 标记 | 自动管理必需的 FQDN，因此更易于管理 | 仅可与 Azure 防火墙配合使用
 使用 HTTP 代理 | 允许在代理中对存储 URL 进行精细控制 <br/><br/> 对 VM 进行单点 Internet 访问 <br/><br/> 不受 Azure IP 地址变化的影响 | 通过代理软件运行 VM 带来的额外成本
-
-## <a name="onboard-to-the-public-preview"></a>加入公共预览版
-
-加入公共预览版的方式如下：
-
-* 在门户中，按照[本文](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal)所述操作，将订阅 ID 注册到恢复服务服务提供程序。
-* 对于 PowerShell 中的 "Az" 模块，运行此 cmdlet。 完成时应显示“已注册”。
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* 如果在 PowerShell 中使用 "AzureRM" 模块，请运行此 cmdlet。 完成时应显示“已注册”。
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -202,7 +185,7 @@ SAP HANA 数据库是需要低恢复点目标（RPO）和长期保留的关键�
 1. 在保管库菜单中，单击“备份项”。
 2. 在 "**备份项目**" 中，选择运行 SAP HANA 数据库的 VM，然后单击 "**立即备份**"。
 3. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击“确定”。
-4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。 创建初始备份可能需要一些时间，具体取决于数据库的大小。
+4. 监视门户通知。 可以在保管库仪表板 >“备份作业” **“进行中”监视作业进度。**  >  创建初始备份可能需要一些时间，具体取决于数据库的大小。
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA Studio 备份
 

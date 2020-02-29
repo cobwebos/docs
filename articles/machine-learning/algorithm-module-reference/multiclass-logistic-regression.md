@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: a697c1e43ccd486f8c98399ea9065902bd247f7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152136"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920427"
 ---
 # <a name="multiclass-logistic-regression-module"></a>多类逻辑回归模块
 
@@ -40,7 +40,7 @@ Azure 机器学习还提供了[双类逻辑回归](./two-class-logistic-regressi
 
     + **单个参数**：如果你知道想要如何配置模型，并提供一组特定值作为参数，请使用此选项。
 
-    + **参数范围**：如果你不确定最佳参数，并想要使用参数扫描，请使用此选项。
+    + **参数范围**：如果你不确定最佳参数，并想要运行参数扫描，请选择此选项。 选择要循环访问的值的范围，[调整模型超参数](tune-model-hyperparameters.md)循环访问提供的设置的所有可能组合，以确定产生最佳结果的超参数。  
 
 3. **优化容差**：指定优化器收敛的阈值。 如果迭代间的改进低于阈值，则算法将会停止并将返回当前模型。
 

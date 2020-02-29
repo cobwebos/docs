@@ -2,17 +2,17 @@
 title: Dav4 和 Dasv4 系列-Azure 虚拟机
 description: Dav4 和 Dasv4 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: f371281e4072902f9946eb9fd107b68a1e4bf4f6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 809843bddc4216df4dab44330172d36778248b1a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493873"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162173"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 和 Dasv4 系列
 
@@ -25,6 +25,10 @@ ACU：230-260
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 Dav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率。 Dav4 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储的组合。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Dasv4 大小。 Dasv4 大小的定价和计费标准与 Dav4 系列相同。
 
@@ -48,6 +52,10 @@ ACU：230-260
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 Dasv4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Dasv4 系列大小为大多数生产工作负荷提供 vCPU、内存和临时存储的组合。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51b7b37466ae8a6988ee4bfa85a054fb42d23124
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905572"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920750"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 文件同步代理发行说明
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 Windows Server 安装可转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上提供的任意协议（包括 SMB、NFS 和 FTPS）以本地方式访问数据， 并且可以根据需要在世界各地设置多个缓存。
@@ -23,24 +23,24 @@ ms.locfileid: "76905572"
 ## <a name="supported-versions"></a>支持的版本
 以下版本是 Azure 文件同步代理支持的：
 
-| 里程碑 | 代理版本号 | 发行日期 | 状态 |
+| 里程碑 | 代理版本号 | 发布日期 | 状态 |
 |----|----------------------|--------------|------------------|
-| 2019年12月更新汇总- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 受支持 |
-| V9.x 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 受支持 |
-| V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 受支持 |
-| 2019年7月更新汇总- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019 年 7 月 24 日 | 受支持 |
-| 2019年7月更新汇总- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 受支持 |
-| V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 受支持 |
-| 2019年6月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 受支持 |
-| 2019年6月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019年6月13日 | 受支持 |
-| 5月2019更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 5月7日，2019 | 受支持 |
-| V6 版本- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 受支持 |
-| 2019年4月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支持的代理版本将于2020年2月12日过期 |
-| 2019年3月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支持的代理版本将于2020年2月12日过期 |
-| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持的代理版本将于2020年2月12日过期 |
-| V4 版本 | 4.0.1.0 - 4.3.0.0 | N/A | 不支持-代理版本在2019年11月6日过期 |
-| V3 版本 | 3.1.0.0-为3.4.0。0 | N/A | 不支持-代理版本在2019年8月19日过期 |
-| 预发行版代理 | 1.1.0.0 - 3.0.13.0 | N/A | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
+| 2019年12月更新汇总- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支持 |
+| V9.x 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支持 |
+| V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支持 |
+| 2019年7月更新汇总- [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 2019年7月24日 | 支持 |
+| 2019年7月更新汇总- [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 2019年7月12日 | 支持 |
+| V7 版本- [KB4490495](https://support.microsoft.com/help/4490495)| 7.0.0.0 | 2019年6月19日 | 支持 |
+| 2019年6月更新汇总- [KB4489739](https://support.microsoft.com/help/4489739)| 6.3.0.0 | 2019年6月27日 | 支持 |
+| 2019年6月更新汇总- [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019年6月13日 | 支持 |
+| 5月2019更新汇总- [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 5月7日，2019 | 支持 |
+| V6 版本- [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019年4月21日 | 支持 |
+| 2019年4月更新汇总- [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019年4月4日 | 支持的代理版本将于2020年3月18日过期 |
+| 2019年3月更新汇总- [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019年3月7日 | 支持的代理版本将于2020年3月18日过期 |
+| V5 版本 - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019 年 2 月 12 日 | 支持的代理版本将于2020年3月18日过期 |
+| V4 版本 | 4.0.1.0 - 4.3.0.0 | 空值 | 不支持-代理版本在2019年11月6日过期 |
+| V3 版本 | 3.1.0.0-为3.4.0。0 | 空值 | 不支持-代理版本在2019年8月19日过期 |
+| 预发行版代理 | 1.1.0.0 - 3.0.13.0 | 空值 | 不支持 - 代理版本于 2018 年 10 月 1 日到期 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure 文件同步代理更新策略
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -234,7 +234,7 @@ ms.locfileid: "76905572"
 ### <a name="improvements-and-issues-that-are-fixed"></a>改进和已解决的问题
 
 - 支持较大的文件共享大小
-    - 预览更大的 Azure 文件共享，我们也增加了对文件同步的支持限制。 在第一步中，Azure 文件同步现在最多可在一个同步命名空间中支持 25 TB 和50000000文件。 若要申请大型文件共享预览，请填写此表单 https://aka.ms/azurefilesatscalesurvey 。 
+    - 预览更大的 Azure 文件共享，我们也增加了对文件同步的支持限制。 在第一步中，Azure 文件同步现在最多可在一个同步命名空间中支持 25 TB 和50000000文件。 若要申请大型文件共享预览，请填写此表单 https://aka.ms/azurefilesatscalesurvey。 
 - 支持存储帐户上的防火墙和虚拟网络设置
     - Azure 文件同步现在支持存储帐户上的防火墙和虚拟网络设置。 若要将部署配置为使用防火墙和虚拟网络设置，请参阅[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)。
 - 用于立即同步 Azure 文件共享中已更改文件的 PowerShell cmdlet

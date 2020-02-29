@@ -11,11 +11,11 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1717897261404a2ab8df723c280c9be6a2dacea4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77196127"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure Active Directory B2B 协作的限制
@@ -32,22 +32,6 @@ Azure AD B2B 受制于 Azure AD 服务目录限制。 有关用户可以创建�
 
 ## <a name="national-clouds"></a>国家云
 [国家云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)是 Azure 的物理上独立的实例。 不支持跨国家云边界的 B2B 协作。 例如，如果你的 Azure 租户位于公共全球云，则你无法邀请其帐户位于全国云中的用户。 若要与用户协作，请让他们使用其他电子邮件地址，或在目录中为他们创建成员用户帐户。
-
-## <a name="azure-us-government-clouds"></a>Azure 美国政府云
-在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请某个租户中的某个用户不属于 Azure 美国政府云，或者该用户尚不支持 B2B 协作，则邀请将失败，否则用户将无法兑换该邀请。 有关其他限制的详细信息，请参阅[Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
-
-### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>如何判断我的 Azure 美国政府租户是否可以使用 B2B 协作？
-若要查明 Azure 美国政府云租户是否支持 B2B 协作，请执行以下操作：
-
-1. 在浏览器中，使用以下 URL 替换 *&lt;tenantname&gt;* 的租户名称：
-
-   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
-
-2. 在 JSON 响应中查找 `"tenant_region_scope"`：
-
-   - 如果出现 `"tenant_region_scope":"USGOV”`，则支持 B2B。
-   - 如果出现 `"tenant_region_scope":"USG"`，则不支持 B2B。
- 
 
 ## <a name="next-steps"></a>后续步骤
 

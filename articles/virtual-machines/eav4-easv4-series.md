@@ -2,17 +2,17 @@
 title: Eav4 系列和 Easv4 系列-Azure 虚拟机
 description: Eav4 和 Easv4 系列 Vm 的规格。
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 96cd7b4f4627e7c0335df9c745d8193a3dac7044
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493769"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164383"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -25,6 +25,10 @@ ACU： 230-260
 高级存储：不支持
 
 高级存储缓存：不支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 Eav4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Eav4 系列大小适用于内存密集型企业应用程序。 数据磁盘存储与虚拟机分开计费。 若要使用高级 SSD，请使用 Easv4 系列大小。 Easv4 大小的定价和计费标准与 Eav3 系列相同。
 
@@ -49,6 +53,10 @@ ACU： 230-260
 高级存储：支持
 
 高级存储缓存：支持
+
+实时迁移：支持
+
+内存保留更新：受支持
 
 Easv4 系列大小基于 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 处理器，可实现 3.35 ghz 的提升最大频率，并使用高级 SSD。 Easv4 系列大小适用于内存密集型企业应用程序。
 

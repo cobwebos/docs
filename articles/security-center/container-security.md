@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 62728f5b66825eb6698e37bb7ad3adbad831b465
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cd9907d041562d23bc487de319a17d36b68db6f3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615332"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916111"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -61,9 +61,9 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 
 有关可能为此功能显示的相关安全中心建议的详细信息，请参阅 "建议参考" 表的 "[容器" 部分](recommendations-reference.md#recs-containers)。
 
-## <a name="run-time-protection---real-time-threat-detection"></a>运行时保护-实时威胁检测
+## <a name="run-time-protection---real-time-threat-protection"></a>运行时保护-实时威胁防护
 
-安全中心为容器化环境提供实时威胁检测，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+安全中心为容器化环境提供实时威胁保护，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
 我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁防护](threat-protection.md#azure-containers)。
 

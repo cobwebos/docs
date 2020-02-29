@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c23a06c502bd43b52cb35220b711084c7c8c1c7a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121842"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916076"
 ---
 # <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 处理计划内维护
 
 **本文适用于运行 Linux 和 Windows 的虚拟机。**
 
-可以使用 Azure Powershell 来查看何时计划进行[维护](maintenance-notifications.md)的 vm。 使用 [ 参数时可通过 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` cmdlet 获得计划内维护信息。
+你可以使用 Azure PowerShell 来查看何时计划[维护](maintenance-notifications.md)vm。 使用 [ 参数时可通过 ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)Get-AzVM`-status` cmdlet 获得计划内维护信息。
   
 仅当有计划内维护时，才会返回维护信息。 如果未计划任何影响 VM 的维护，该 cmdlet 不返回任何维护信息。 
 
@@ -83,6 +83,8 @@ Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceG
 ```
 
 ## <a name="classic-deployments"></a>经典部署
+
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
 如果你仍在使用由经典部署模型部署的旧 VM，则可以使用 PowerShell 查询 VM，并启动维护。
 

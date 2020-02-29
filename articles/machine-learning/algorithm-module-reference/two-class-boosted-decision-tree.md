@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 985417200737e00ddbda4194cf7596b11c74ac10
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 1d144a48f79e59b35c88c5b338747d3186ebceda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153717"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920733"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>双类提升决策树模块
 
@@ -38,6 +38,7 @@ ms.locfileid: "77153717"
   
     + **单个参数**：如果你知道要如何配置模型，则可以提供一组特定值作为参数。
   
+    + **参数范围**：如果您不能确定最佳参数，可以使用 "[优化模型超参数](tune-model-hyperparameters.md)" 模块找到最佳参数。 提供一定范围的值，而讲师会循环访问设置的多个组合，以确定产生最佳结果的值的组合。
   
 3.  对于**每个树的最大叶数**，指示可在任何树中创建的终端节点（叶）的最大数目。
   

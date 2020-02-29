@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152204"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921158"
 ---
 # <a name="module-k-means-clustering"></a>模块： K 平均值聚类
 
@@ -107,11 +107,11 @@ K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用
   
     -   如果将 "**创建训练人员模式**" 设置为 "**单个参数**"，请添加标记数据集，并使用 "[训练聚类模型](train-clustering-model.md)" 模块来训练该模型。  
   
-### <a name="results"></a>结果
+## <a name="results"></a>结果
 
 完成配置和定型模型后，您可以使用一个模型来生成分数。 不过，有多种方法来训练模型，以及查看和使用结果的方式有多种： 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>捕获工作区中模型的快照
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>捕获工作区中模型的快照
 
 如果使用了 "[训练聚类模型](train-clustering-model.md)" 模块：
 
@@ -121,7 +121,7 @@ K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用
 
 保存的模型表示保存模型时的定型数据。 如果以后更新了管道中使用的定型数据，则不会更新已保存的模型。 
 
-#### <a name="see-the-clustering-result-dataset"></a>查看聚类分析结果数据集 
+### <a name="see-the-clustering-result-dataset"></a>查看聚类分析结果数据集 
 
 如果使用了 "[训练聚类模型](train-clustering-model.md)" 模块：
 
@@ -142,3 +142,7 @@ K 平均值是最简单的*无人监督*学习算法之一。 可以将算法用
 -   创建多个模型，改变指标或循环访问。  
   
 通常，对于聚类分析模型，任何给定的配置都可能会导致本地优化群集集。 换句话说，模型返回的一组分类只适合当前数据点，而不能归纳为其他数据。 如果使用不同的初始配置，则 K 平均值方法可能会发现不同的高级配置。 
+
+## <a name="next-steps"></a>后续步骤
+
+查看可用于 Azure 机器学习[的模块集](module-reference.md)。 

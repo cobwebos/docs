@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603733"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920648"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure 安全中心规划和操作指南
 本指南适用于信息技术（IT）专业人员、IT 架构师、信息安全分析师和云管理员，计划使用 Azure 安全中心。
@@ -179,7 +179,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 
 解决所有建议的问题以后，所有已解决问题的资源的“预防”部分应显示为绿色。 此时进行持续监视会变得更容易，因为用户只需根据“资源安全运行状况和建议”磁贴中的变化进行操作。
 
-“检测”部分更具响应性。这些是与问题相关的警报，这些问题可能发生在现在，也可能发生在过去，并且被安全中心控件和第三方系统检测到过。 “安全警报”磁贴所显示的条形图代表检测到威胁的警报数，这些警报每天都会出现，分布在不同的严重性类别（低、中、高）。 有关安全警报的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
+“检测”部分更具响应性。这些是与问题相关的警报，这些问题可能发生在现在，也可能发生在过去，并且被安全中心控件和第三方系统检测到过。 "安全警报" 磁贴将显示一个条形图，表示每天发现的警报数，以及它们在不同严重性类别（低、中、高）之间的分布。 有关安全警报的详细信息，请参阅[管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)。
 
 计划在进行日常安全操作时，访问[威胁智能](https://docs.microsoft.com/azure/security-center/security-center-threat-intel)选项。 可以在其中确定对环境的安全威胁，例如，确定特定计算机是否为僵尸网络的一部分。
 
@@ -211,7 +211,7 @@ Azure 安全中心使用 Microsoft Monitoring Agent-这是 Azure Monitor 服务�
 
 
 ## <a name="incident-response"></a>事件响应
-安全中心会检测威胁并在威胁出现时向用户发出警报。 组织应监视是否有新的安全警报，并根据需要采取行动，进一步进行调查，或采取应对攻击的补救措施。 有关安全中心威胁检测的工作原理的详细信息，请阅读[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
+安全中心会检测威胁并在威胁出现时向用户发出警报。 组织应监视是否有新的安全警报，并根据需要采取行动，进一步进行调查，或采取应对攻击的补救措施。 有关安全中心威胁保护的工作原理的详细信息，请阅读[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
 
 虽然本文不会协助用户创建自己的事件响应计划，但仍会在云的生命周期中使用 Microsoft Azure 安全响应作为事件响应阶段的基础。 下图显示了这些阶段：
 

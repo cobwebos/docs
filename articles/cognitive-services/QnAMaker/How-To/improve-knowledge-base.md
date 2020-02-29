@@ -8,51 +8,21 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/27/2020
 ms.author: diberry
-ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901714"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914987"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用主动学习改进知识库
 
-通过主动学习，可以根据用户提交的内容为问题和答案对提供替代问题建议，从而提高知识库的质量。 查看这些建议后，可以将其添加到现有问题，也可以拒绝它们。
+利用[活动学习](../Concepts/active-learning-suggestions.md)，你可以通过基于用户提交的问题和答案对来建议替代问题，从而提高知识库的质量。 查看这些建议后，可以将其添加到现有问题，也可以拒绝它们。
 
 知识库不会自动更改。 要使更改生效，必须接受建议。 这些建议会添加问题，但不会更改或删除现有问题。
 
-## <a name="what-is-active-learning"></a>什么是活动学习？
-
-QnA Maker 通过隐式和显式反馈学习新的问题变体。
-
-* [隐式反馈](#how-qna-makers-implicit-feedback-works)–当用户问题有多个答案，其中包含非常接近的分数并将此视为反馈时，ranker 可以理解。 无需执行任何操作即可执行此操作。
-* [明确反馈](#how-you-give-explicit-feedback-with-the-train-api)–当从知识库返回分数变小的多个答案时，客户端应用程序会询问用户哪个问题是正确的问题。 将用户的显式反馈发送到带有[训练 API](#train-api)QnA Maker。
-
-这两种方法都为 ranker 提供了聚集的类似查询。
-
-## <a name="how-active-learning-works"></a>主动学习的工作原理
-
-活动学习是根据 QnA Maker 返回的前几个答案的分数来触发的。 如果分数差异在一个较小的范围内，则查询将被视为可能的每个 QnA 对的建议（作为替代问题）。 接受特定 QnA 对的建议问题后，其他对将拒绝该问题。 在接受建议后，需要记住保存和训练。
-
-在终结点获得合理数量和类型的使用查询的情况下，主动学习可提供最佳建议。 如果有5个或更多个类似查询被聚集，每30分钟 QnA Maker 建议向知识库设计器提供基于用户的问题，以接受或拒绝。 所有建议通过相似度聚集在一起，并且根据最终用户的特定查询频率显示替代问题排名靠前的建议。
-
-在 QnA Maker 门户中建议问题后，需要查看并接受或拒绝这些建议。 没有用于管理建议的 API。
-
-## <a name="how-qna-makers-implicit-feedback-works"></a>QnA Maker 的隐式反馈如何工作
-
-QnA Maker 的隐式反馈使用算法来确定接近的分数，并做出积极的学习建议。 用于确定置信度的算法并不是一个简单的计算。 以下示例中的范围并不是固定的，而应作为指导来了解算法的影响。
-
-当问题的分数置信度很高（例如 80%）时，考虑进行主动学习的分数范围较广，大约在 10% 以内。 随着置信度分数降低（例如 40%），分数范围也会降低，大约在 4% 以内。
-
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>如何向训练 API 提供显式反馈
-
-QnA Maker 获取有关哪种答案是最佳答案的明确反馈，这一点很重要。 如何确定最好的答案取决于你，并可包括：
-
-* 用户反馈，选择其中一个答案。
-* 业务逻辑，例如确定可接受的分数范围。
-* 用户反馈和业务逻辑的组合。
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>升级运行时版本以使用活动学习
 
@@ -187,7 +157,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|名称|类型|用途|
+|HTTP 请求属性|名称|类型|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
 |自定义子域|QnAMaker 资源名称|字符串|资源名称用作 QnA Maker 的自定义子域。 发布知识库后，可以在 "设置" 页上找到此功能。 它作为 `host`列出。|
@@ -197,7 +167,7 @@ Content-Type: application/json
 
 JSON 正文具有几个设置：
 
-|JSON 正文属性|类型|用途|
+|JSON 正文属性|类型|目的|
 |--|--|--|--|
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|字符串|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
@@ -399,7 +369,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

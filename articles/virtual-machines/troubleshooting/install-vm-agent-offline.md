@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059237"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920852"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>在脱机模式下安装 Azure 虚拟机代理 
 
@@ -35,13 +35,13 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 
 可以使用以下步骤，在脱机模式下安装 VM 代理。
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>步骤 1：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>第 1 步：将 VM 的 OS 磁盘作为数据磁盘附加到另一 VM
 
 1. 为受影响的 VM 的 OS 磁盘拍摄快照，从快照创建磁盘，然后将该磁盘附加到故障排除 VM。 有关详细信息，请参阅[使用 Azure 门户将 OS 磁盘附加到恢复 VM，对 WINDOWS VM 进行故障排除](troubleshoot-recovery-disks-portal-windows.md)。 对于经典 VM，请删除 VM 并保留 OS 磁盘，然后将 OS 磁盘附加到故障排除 VM。
 
-2.  连接到故障排除 VM。 转到“计算机管理” > “磁盘管理”。 确认 OS 磁盘处于联机状态，并且已将驱动器号分配到磁盘分区。
+2.  连接到故障排除 VM。 转到“计算机管理” **“磁盘管理”。**  >  确认 OS 磁盘处于联机状态，并且已将驱动器号分配到磁盘分区。
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>步骤 2：修改 OS 磁盘以安装 Azure VM 代理
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>第 2 步：修改 OS 磁盘以安装 Azure VM 代理
 
 1.  远程桌面连接到故障排除 VM。
 
@@ -66,7 +66,7 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  将故障排除 VM 上的现有文件用作 VM 代理安装的存储库。 完成以下步骤：
+8.  将故障排除 VM 上的现有文件用作 VM 代理安装的存储库。 请完成下列步骤：
 
     1. 从故障排除 VM 中，以注册表格式 (.reg) 导出以下子项： 
         - HKEY_LOCAL_MACHINE  \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
@@ -105,6 +105,8 @@ Azure 虚拟机代理（VM 代理）可提供多种有用的功能，例如本�
 如果使用资源管理器部署模型创建了 VM，则无需再进行额外操作。
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>对于经典 VM，使用 ProvisionGuestAgent 属性
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 如果使用经典模型创建了 VM，请使用 Azure PowerShell 模块更新 ProvisionGuestAgent 属性。 该属性会通知 Azure 该 VM 已安装 VM 代理。
 

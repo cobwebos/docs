@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 10e1081c7a91c65c21ffcb3da66930fb7c6e73bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f8b4063d87fa9a89dccd42eddea644609bd6ff27
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603445"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921243"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure 安全中心威胁智能报告
 本文档介绍 Azure 安全中心威胁智能报告如何能够帮助了解有关生成了安全警报的威胁的详细信息。
 
 ## <a name="what-is-a-threat-intelligence-report"></a>什么是威胁智能报告？
-安全中心可以监视 Azure 资源、网络以及连接的合作伙伴解决方案中的安全信息，从而对威胁进行检测。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
+安全中心威胁保护的工作原理是监视 Azure 资源、网络和连接的合作伙伴解决方案中的安全信息。 分析该信息（通常需将多个来源的信息关联起来）即可确定威胁。 有关详细信息，请参阅[Azure 安全中心如何检测和响应威胁](security-center-alerts-overview.md#detect-threats)。
 
 当安全中心识别到威胁时，它将触发[安全警报](security-center-managing-and-responding-alerts.md)，其中包含有关特定事件的详细信息，包括修复建议。 为帮助事件响应团队调查和修复威胁，安全中心包括了威胁智能报告，其中包含有关已检测到的威胁的信息，包括如下信息：
 

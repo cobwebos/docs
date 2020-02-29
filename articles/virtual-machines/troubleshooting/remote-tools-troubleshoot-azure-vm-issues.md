@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: 3f028431fcd4b338d2e610ce1828a02b753c4d32
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b86b1a2d8a49554cc3df99e0a32a2c0ccaacb560
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483698"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920002"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>使用远程工具排查 Azure VM 问题
 
@@ -39,7 +39,7 @@ psexec \\<computer>-u user -s cmd
 
 >[!NOTE]
 >* 此命令必须在同一虚拟网络中的计算机上运行。
->* 可以使用 DIP 或主机名来替换 \<computer>。
+>* 可以使用 DIP 或 HostName 来替换 \<计算机 >。
 >* -s 参数确保使用系统帐户（管理员权限）调用命令。
 >* PsExec 使用 TCP 端口 135 和 445。 因此，必须在防火墙上打开两个端口。
 
@@ -60,6 +60,9 @@ psexec \\<computer>-u user -s cmd
 将脚本上传到存储帐户，并生成自己的容器。 然后，在已连接到 VM 的计算机上的 Azure PowerShell 中运行以下脚本。
 
 ### <a name="for-classic-deployment-model-vms"></a>对于经典部署模型 Vm
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 
 ```powershell
 #Set up the basic variables.

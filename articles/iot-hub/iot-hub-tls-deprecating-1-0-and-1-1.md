@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 95733f579740f2928cda917eec0023bf00d53076
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722780"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912148"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>弃用 IoT 中心和设备预配服务中的 TLS 1.0 和1。1
 
@@ -25,12 +25,12 @@ ms.locfileid: "76722780"
 
 ## <a name="supported-ciphers"></a>支持的密码
 
-TLS 握手期间只允许使用以下密码：
+TLS 握手中使用的各种密码可用性的时间线如下所示：
 
-* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 （当前支持）
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 （将在2020的下半年支持）
+* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 （将在2020的下半年支持）
+* TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 （将在2020的下半年支持）
 
 
 ## <a name="customer-feedback"></a>客户反馈

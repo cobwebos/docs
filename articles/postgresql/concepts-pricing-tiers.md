@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 9ce88c687df4e329acd2949d0b26033dc10c94ea
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619472"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164468"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的定价层-单服务器
 
@@ -67,7 +67,7 @@ ms.locfileid: "77619472"
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-对于预配存储不到 100 GB 的服务器，如果可用存储少于 512MB 或预配存储大小的 5%，则会将其标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
+如果可用存储空间小于 512 MB 的预配存储大小，则具有小于等于 10 GB 预配存储的服务器将被标记为只读。 如果可用存储小于预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
 
 例如，如果你预配了 110 GB 的存储，而实际利用率超过 105 GB，则服务器将标记为只读。 或者，如果你预配了 5 GB 的存储，则当可用存储空间小于 512 MB 时，服务器将标记为只读。
 
@@ -79,7 +79,7 @@ ms.locfileid: "77619472"
 
 ### <a name="storage-auto-grow"></a>存储自动增长
 
-存储自动增长可防止服务器在存储空间外运行并使其变为只读。 如果启用了存储自动增长，则存储将自动增长，而不会影响工作负荷。 对于预配的存储小于 100 GB 的服务器，预配的存储大小将在可用存储小于 1 GB 或10% 的预配存储空间后立即增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用存储空间低于预配的存储大小的5% 时，预配的存储大小将增加5%。 以上指定的最大存储限制适用。
+存储自动增长可防止服务器在存储空间外运行并使其变为只读。 如果启用了存储自动增长，则存储将自动增长，而不会影响工作负荷。 对于低于等于 100 GB 预配存储的服务器，只要可用存储低于预配存储的 1 GB 或10%，预配的存储大小将增加 5 GB。 对于预配存储超过 100 GB 的服务器，当可用存储空间低于 10 GB 或预配的存储大小的5% 时，预配的存储大小将增加5%。 以上指定的最大存储限制适用。
 
 例如，如果你预配了 1000 GB 的存储空间，并且实际利用率超过 950 GB，则服务器存储大小将增加到 1050 GB。 或者，如果你预配了 10 GB 的存储空间，则当可用空间小于 1 GB 时，存储大小将增加到 15 GB。
 
