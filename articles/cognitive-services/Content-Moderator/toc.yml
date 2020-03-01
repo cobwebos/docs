@@ -1,6 +1,7 @@
 - name: 内容审查器文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是内容审查器？
       href: overview.md
@@ -37,7 +38,7 @@
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 审阅、工作流和作业
       href: review-api.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 审查内容
       items:
@@ -85,7 +86,7 @@
       href: Review-Tool-User-Guide/Configure.md
     - name: 导出或删除帐户数据
       href: ./export-delete-data.md
-- name: 引用
+- name: 参考
   items:
     - name: 内容审查器 API
       href: api-reference.md

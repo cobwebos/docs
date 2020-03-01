@@ -6,17 +6,17 @@ metadata:
   description: Azure 表单识别器是一个认知服务，它使用机器学习技术从表与表单中识别和提取键值对。 然后，它会输出包含原始文件中的关系的结构化数据。 非监督式学习可让模型了解布局和字段数据，而无需手动标记数据或进行繁琐的编程。 也可使用手动标记的数据进行监督式学习。 使用标记的数据训练的模型性能更佳且适用于更复杂的文档。
   services: cognitive-services
   ms.service: cognitive-services
-  ms.subservice: form-recognizer
+  ms.subservice: forms-recognizer
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 1fe0aee8967a0072a7ae01abc5791e7a3fd0834d
-  ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+  ms.openlocfilehash: de869fd9beb66a4122c1204648d17cff480e4b7f
+  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 01/13/2020
-  ms.locfileid: "75921492"
+  ms.lasthandoff: 03/01/2020
+  ms.locfileid: "78206480"
 landingContent:
 - title: 关于表单识别器
   linkLists:

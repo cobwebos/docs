@@ -1,9 +1,12 @@
 - name: 自定义影像服务文档
   href: index.yml
 - name: 概述
+  expanded: true
   items:
     - name: 什么是自定义视觉？
       href: home.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
     - name: 使用 Web 门户

@@ -5,6 +5,8 @@
   items:
     - name: 什么是计算机视觉？
       href: Home.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   items:
     - name: 使用客户端 SDK
