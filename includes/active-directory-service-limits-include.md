@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 2e06a6c8dd7eb58769f504db9f96e0303c3e9f4c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 5356252432b70654648a832f9ac27698f29b6327
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748772"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202534"
 ---
 下面是 Azure Active Directory (Azure AD) 服务的使用限制和其他服务限制。
 
@@ -21,7 +21,7 @@ ms.locfileid: "76748772"
 | --- | --- |
 | 目录 | 单个用户最多可以是 500 个 Azure AD 目录的成员或来宾。<br/>单个用户最多可以创建 20 个目录。 |
 | 域 | 可以添加不超过 900 个的托管域名。 如果将所有域设置为与本地 Active Directory 联合，则可在每个目录中添加不超过 450 个域名。 |
-|资源 |<ul><li>默认情况下，每个免费版 Azure Active Directory 的用户最多可以在单个目录中创建 50000 Azure AD 资源。 如果至少有一个已验证的域，Azure AD 中的默认目录服务配额将扩展为 300000 Azure AD 资源。 </li><li>非管理员用户最多可以创建250个 Azure AD 资源。 可用来还原的活动资源和已删除资源均计入此配额。 仅已删除的已删除 Azure AD 资源可用于还原。 删除 Azure AD 的资源，这些资源在30天的一个季度内，不能再还原到此配额的计数。 如果你的开发人员可能会在其常规职责的过程中反复超过此配额，则可以[创建并分配一个自定义角色，该角色](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)有权创建无限数量的应用注册。</li></ul> |
+|资源 |<ul><li>默认情况下，每个免费版 Azure Active Directory 的用户最多可以在单个目录中创建 50000 Azure AD 资源。 如果至少有一个已验证的域，则组织的默认 Azure AD 服务配额将扩展为 300000 Azure AD 资源。 此服务限制与 Azure AD 定价页上500000资源的定价层限制无关。 若要超过默认配额，必须联系 Microsoft 支持部门。</li><li>非管理员用户最多可以创建250个 Azure AD 资源。 可用来还原的活动资源和已删除资源均计入此配额。 仅已删除的已删除 Azure AD 资源可用于还原。 删除 Azure AD 的资源，这些资源在30天的一个季度内，不能再还原到此配额的计数。 如果你的开发人员可能会在其常规职责的过程中反复超过此配额，则可以[创建并分配一个自定义角色，该角色](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md)有权创建无限数量的应用注册。</li></ul> |
 | 架构扩展 |<ul><li>字符串类型扩展最多只能有 256 个字符。 </li><li>二进制类型扩展限制在 256 字节以内。</li><li>在*所有*类型和*所有*应用程序中，只能将100扩展值写入任何单个 Azure AD 资源。</li><li>仅“用户”、“组”、“TenantDetail”、“设备”、“应用程序”和“ServicePrincipal”实体可以用字符串类型或二进制类型单一值属性进行扩展。</li><li>架构扩展仅在 Graph API 1.21 预览版中可用。 必须授予应用程序编写访问注册扩展的权限。</li></ul> |
 | 应用程序 |最多有 100 位用户可以是单一应用程序的所有者。 |
 |应用程序清单 |最多可在应用程序清单中添加1200个条目。 |
