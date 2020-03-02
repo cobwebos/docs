@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 5e969ed4f525d0b3d17339b9f9a6111ad81b0125
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e3f09d4e2500b98a7ce68139cd97a04c0d60d73e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931644"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612551"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务实例
 
@@ -69,17 +69,17 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 * **不可路由的域后缀：** 一般情况下，我们建议避免使用不可路由的域名后缀，例如 *contoso.local*。 *.local* 后缀不可路由，并可能导致 DNS 解析出现问题。
 
 > [!TIP]
-> 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议为域名添加唯一的前缀。 例如，如果 DNS 根名称为 contoso.com  ，则使用自定义域名 corp.contoso.com  或 ds.contoso.com  创建 Azure AD DS 托管域。 在具有本地 AD DS 环境的混合环境中，这些前缀可能已在使用中。 对 Azure AD DS 使用唯一的前缀。
+> 如果创建自定义域名，请注意现有的 DNS 命名空间。 建议使用独立于任何现有 Azure 或本地 DNS 命名空间的域名。
 >
-> 可以将根 DNS 名称用于 Azure AD DS 托管域，但是可能需要为环境中的其他服务创建一些其他 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
+> 例如，如果现有的 DNS 命名空间为 *contoso.com*，则使用自定义域名 corp.contoso.com*aaddscontoso.com* 创建 Azure AD DS 托管域。 如果需要使用安全 LDAP，则必须注册并拥有此自定义域名才能生成所需的证书。
 >
-> 在这些教程和操作指南文章中，我们使用自定义域 *aadds.contoso.com* 作为简短示例。 在所有命令中，指定你自己的域名，其中可以包含唯一的前缀。
+> 可能需要为环境中的其他服务或环境中现有 DNS 名称空间之间的条件 DNS 转发器创建一些其他的 DNS 记录。 例如，如果运行使用根 DNS 名称托管站点的 Web 服务器，则可能存在命名冲突，从而需要其他 DNS 条目。
 >
-> 有关详细信息，请参阅[为域选择命名前缀][naming-prefix]。
+> 在这些教程和操作指南文章中，我们使用自定义域 *aaddscontoso.com* 作为简短示例。 在所有命令中，指定你自己的域名。
 
 还存在以下 DNS 名称限制：
 
-* **域前缀限制：** 不能创建前缀长度超过 15 个字符的托管域。 指定域名的前缀（例如 *contoso.com* 域名中的 *contoso*）所包含的字符不得超过 15 个。
+* **域前缀限制：** 不能创建前缀长度超过 15 个字符的托管域。 指定域名的前缀（例如 *aaddscontoso.com* 域名中的 *aaddscontoso*）所包含的字符不得超过 15 个。
 * **网络名称冲突：** 托管域的 DNS 域名不能已存在于虚拟网络中。 具体而言，请检查可能导致名称冲突的以下情况：
     * Azure 虚拟网络中是否已存在具有相同 DNS 域名的 Active Directory 域。
     * 计划在其中启用托管域的虚拟网络是否与本地网络建立了 VPN 连接。 在此方案中，确保在本地网络上没有具有相同 DNS 域名的域。
@@ -170,7 +170,7 @@ Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围�
 
     ![Azure 门户中显示的“正在部署”通知](./media/tutorial-create-instance-advanced/deployment-in-progress.png)
 
-1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *aadds.contoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
+1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *aaddscontoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
 
     ![预配期间的域服务状态](./media/tutorial-create-instance-advanced/provisioning-in-progress.png)
 

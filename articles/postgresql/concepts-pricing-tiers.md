@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164468"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208876"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL 中的定价层-单服务器
 
@@ -67,7 +67,7 @@ ms.locfileid: "78164468"
 
 ### <a name="reaching-the-storage-limit"></a>达到存储限制
 
-如果可用存储空间小于 512 MB 的预配存储大小，则具有小于等于 10 GB 预配存储的服务器将被标记为只读。 如果可用存储小于预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
+如果可用存储小于512MB 或预配的存储大小的5%，则小于等于 100 GB 预配存储的服务器将标记为只读。 对于预配存储超出 100 GB 的服务器，如果可用存储少于 5 GB，则会将其标记为只读。
 
 例如，如果你预配了 110 GB 的存储，而实际利用率超过 105 GB，则服务器将标记为只读。 或者，如果你预配了 5 GB 的存储，则当可用存储空间小于 512 MB 时，服务器将标记为只读。
 

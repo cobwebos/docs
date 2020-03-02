@@ -9,26 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 00f95fb249c80dffacdb10f6679f310dce218118
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ce67b5e254a62def5f8b024e960cea7f8780e8b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976679"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605489"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>快速入门：使用适用于 Azure IoT 中心设备预配服务的 Java 设备 SDK 创建和预配模拟的 TPM 设备
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-以下步骤演示了如何在运行 Windows OS 的开发计算机上创建模拟设备、如何将 Windows TPM 模拟器作为设备的[硬件安全模块 (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) 运行，以及如何使用代码示例通过设备预配服务和 IoT 中心连接该模拟设备。 
+在本快速入门中，我们在 Windows 计算机上创建一台模拟 IoT 设备。 此模拟设备包含用作硬件安全模块 (HSM) 的 TPM 模拟器。 我们使用设备预配服务 (DPS) 的单个注册，通过设备示例 Java 代码将此模拟设备连接到 IoT 中心。
 
-如果不熟悉自动预配过程，还务必查看[自动预配概念](concepts-auto-provisioning.md)。 另外，在继续操作之前，请确保已完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)中的步骤。 
+## <a name="prerequisites"></a>必备条件
 
-Azure IoT 设备预配服务支持两类注册：
-- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
-- [单独注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
-
-本文将演示单个注册。
+- 查看[自动预配概念](concepts-auto-provisioning.md)。
+- 完成[通过 Azure 门户设置 IoT 中心设备预配服务](./quick-setup-auto-provision.md)。
+- 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+- [Java SE 开发工具包 8](https://aka.ms/azure-jdks)。
+- [Maven](https://maven.apache.org/install.html)。
+- [Git](https://git-scm.com/download/)。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -46,7 +47,7 @@ Azure IoT 设备预配服务支持两类注册：
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
 
-1. 运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器。 单击“允许访问”，以便更改“Windows 防火墙”设置。   该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此窗口；本快速入门指南自始至终都需让该模拟器保持运行状态。 
+1. 运行 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 模拟器作为模拟设备的 [HSM](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)。 单击“允许访问”，以便更改“Windows 防火墙”设置。   该模拟器通过套接字在端口 2321 和 2322 上进行侦听。 请勿关闭此窗口；本快速入门指南自始至终都需让该模拟器保持运行状态。 
 
     ```cmd/sh
     .\azure-iot-sdk-java\provisioning\provisioning-tools\tpm-simulator\Simulator.exe
@@ -94,6 +95,13 @@ Azure IoT 设备预配服务支持两类注册：
     
 
 ## <a name="create-a-device-enrollment-entry"></a>创建设备注册项
+
+Azure IoT 设备预配服务支持两类注册：
+
+- [注册组](concepts-service.md#enrollment-group)：用于注册多个相关设备。
+- [个人注册](concepts-service.md#individual-enrollment)：用于注册单个设备。
+
+本文演示单个注册。
 
 1. 登录到 Azure 门户，选择左侧菜单上的“所有资源”按钮，打开设备预配服务  。
 

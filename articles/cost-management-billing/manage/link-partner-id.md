@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199664"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651349"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
@@ -29,6 +29,8 @@ Microsoft 合作伙伴提供的服务可帮助客户使用 Microsoft 产品实�
 - **目录帐户**：客户可以为你在其自己的目录中创建用户帐户，并分配任何 RBAC 角色。
 
 - **服务主体**：客户可在其目录中为你的组织添加一个应用或脚本，并分配任何 RBAC 角色。 该应用或脚本的标识称为服务主体。
+
+- **Azure Lighthouse**：你的客户可以委托一个订阅（或资源组），这样你的用户就可以通过你的租户在其上工作。 有关详细信息，请参阅 [Azure 委托资源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
 
 ## <a name="link-to-a-partner-id"></a>链接到合作伙伴 ID
 
@@ -154,3 +156,7 @@ C:\ az managementpartner delete --partner-id 12345
 **链接合作伙伴 ID 是否适用于 Azure Stack？**
 
 适用，可以为 Azure Stack 链接合作伙伴 ID。
+
+**如果我的公司使用 [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) 访问客户资源，则如何关联我的合作伙伴 ID？**
+
+如果[将托管服务套餐发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)，以便将客户加入 Azure 委托的资源管理，则 MPN ID 会自动进行关联。 如果[通过部署 Azure 资源管理器模板来加入客户](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer)，则需将 Microsoft 合作伙伴网络 (MPN) ID 与至少一个可访问每个载入的订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中这样做。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并授予它对你载入的每个客户的“读者”访问权限。

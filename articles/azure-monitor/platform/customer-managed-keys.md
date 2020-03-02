@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663941"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208553"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-"principalId" 是由托管标识服务为*群集*资源生成的 GUID。
+"主体-id" 是由托管标识服务为*群集*资源生成的 GUID。
 
 > [!IMPORTANT]
-> 复制并保留 "cluster id" 值，因为在后续步骤中需要用到它。
+> 复制并保留 "principal-id" 值，因为在后续步骤中需要用到它。
 
 
 ### <a name="grant-key-vault-permissions"></a>授予 Key Vault 权限
@@ -213,7 +213,7 @@ Authorization: Bearer <token>
 在 Azure 门户中打开你的 Key Vault，然后单击 "访问策略"，然后单击 "+ 添加访问策略"，使用以下设置创建新策略：
 
 - 密钥权限：选择 "获取"、"环绕键" 和 "解包密钥" 权限。
-- 选择主体：输入在上一步的响应中返回的群集 id 值。
+- 选择主体：输入在上一步的响应中返回的主体 id 值。
 
 ![授予 Key Vault 权限](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ Content-type: application/json
   "location": "region-name"
 }
 ```
-"principalId" 是由托管标识服务生成的 GUID。
+"主体 id" 是托管标识服务生成的 GUID。
 
 > [!IMPORTANT]
-> 复制并保留 "cluster id" 值，因为在后续步骤中需要用到它。
+> 复制并保留 "主体 id" 值，因为在后续步骤中需要用到它。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用[组件-创建或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API 将组件关联到*群集*资源
 

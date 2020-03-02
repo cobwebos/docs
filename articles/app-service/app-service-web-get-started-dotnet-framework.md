@@ -43,7 +43,7 @@ ms.locfileid: "74671393"
 
 4. 可将任何类型的 ASP.NET Web 应用部署到 Azure。 对于本快速入门，请选择“MVC”模板。 
 
-5. 确保身份验证设置为“无身份验证”  。 选择“创建”  。
+5. 确保身份验证设置为“不进行身份验证”  。 选择“创建”  。
 
    ![创建 ASP.NET Web 应用程序](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 

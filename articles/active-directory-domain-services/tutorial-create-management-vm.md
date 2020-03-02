@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931581"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612212"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -44,6 +44,8 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 * 已加入 Azure AD DS 托管域的 Windows Server VM。
     * 如果需要，请参阅上一教程[创建 Windows Server VM 并将其加入到托管域][create-join-windows-vm]。
 * 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。 
+* 部署在 Azure AD DS 虚拟网络中的 Azure Bastion 主机。
+    * 根据需要[创建 Azure Bastion 主机][azure-bastion]。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -84,16 +86,15 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 若要开始，请按如下所述连接到该 Windows Server VM：
 
 1. 在 Azure 门户的左侧选择“资源组”。  选择在其中创建了该 VM 的资源组（例如 *myResourceGroup*），然后选择该 VM（例如 *myVM*）。
-1. 在 VM 的“概述”窗口中，选择“连接”。  
+1. 在 VM 的“概览”  窗格中选择“连接”  ，然后选择“Bastion”  。
 
-    ![在 Azure 门户连接到 Windows 虚拟机](./media/tutorial-create-management-vm/connect-vm.png)
+    ![在 Azure 门户中使用 Bastion 连接到 Windows 虚拟机](./media/join-windows-vm/connect-to-vm.png)
 
-    还可[创建和使用 Azure Bastion 主机（目前为预览版）][azure-bastion]，以便仅允许在 Azure 门户中通过 SSL 进行访问。
+1. 输入 VM 的凭据，然后选择“连接”  。
 
-1. 选择“下载 RDP 文件”选项。  将此 RDP 文件保存到 Web 浏览器中。
-1. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，选择“连接”  。
-1. 输入“Azure AD DC 管理员”组中某个用户的凭据，例如 *contoso\dee* 
-1. 如果在登录过程中看到证书警告，请选择“是”或“继续”进行连接。  
+   ![在 Azure 门户中通过 Bastion 主机进行连接](./media/join-windows-vm/connect-to-bastion.png)
+
+在需要的情况下，允许 Web 浏览器打开要显示的 Bastion 连接的弹出窗口。 连接到 VM 需要几秒钟的时间。
 
 ## <a name="install-active-directory-administrative-tools"></a>安装 Active Directory 管理工具
 
@@ -105,7 +106,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
 1. 在“服务器管理器”窗口的“仪表板”窗格中，选择“添加角色和功能”。   
 1. 在“添加角色和功能向导”的“准备工作”页上，选择“下一步”。   
 1. 对于“安装类型”，请保留选中“基于角色或基于功能的安装”选项，然后选择“下一步”。   
-1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.aadds.contoso.com*），然后选择“下一步”。  
+1. 在“服务器选择”页上，从服务器池中选择当前的 VM（例如 *myvm.aaddscontoso.com*），然后选择“下一步”。  
 1. 在“服务器角色”  页上，单击“下一步”  。
 1. 在“功能”页上，依次展开“远程服务器管理工具”节点和“角色管理工具”节点。   
 
@@ -125,7 +126,7 @@ Azure AD DS 托管域处于锁定状态，因此你不拥有在该域上执行�
     ![在服务器上安装的管理工具列表](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. 选择“Active Directory 管理中心”。 
-1. 若要浏览 Azure AD DS 托管域，请在左窗格中选择域名（例如 *aadds.contoso.com*）。 列表顶部显示了名为“AADDC 计算机”和“AADDC 用户”的两个容器。  
+1. 若要浏览 Azure AD DS 托管域，请在左窗格中选择域名（例如 *aaddscontoso.com*）。 列表顶部显示了名为“AADDC 计算机”和“AADDC 用户”的两个容器。  
 
     ![列出 Azure AD DS 托管域的可用容器部分](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57ad9992bec3f070366134d8dfbcdafa8f2e16d4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 1858b221418e6cc59c6441e0653299710b5c7e72
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209845"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208638"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
@@ -103,7 +103,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     </FrameLayout>
     ```
 
-4. 在**MainActivity**文件中，需要执行以下操作：
+4. 在 **MainActivity.java** 文件中，需要：
     
     * 添加 Azure Maps SDK 的 import 语句
     * 设置 Azure Maps 身份验证信息
@@ -111,7 +111,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
 
     使用 `setSubscriptionKey` 或 `setAadProperties` 方法全局设置 `AzureMaps` 类的身份验证信息，这样就无需在每个视图上添加身份验证信息。 
 
-    Map 控件包含自己的生命周期方法来管理 Android 的 OpenGL 生命周期。 必须直接从包含活动中调用这些生命周期方法。 若要让应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 而且，您必须调用各自的 map 控制方法。 
+    地图控件包含自身的生命周期方法用于管理 Android 的 OpenGL 生命周期。 必须直接从包含活动中调用这些生命周期方法。 若要让应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 而且，您必须调用各自的 map 控制方法。 
 
     * onCreate （捆绑包） 
     * onStart （） 
@@ -127,7 +127,9 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     ```java
     package com.example.myapplication;
 
-    import android.support.v7.app.AppCompatActivity;
+    //For older versions use: import android.support.v7.app.AppCompatActivity;
+    import androidx.appcompat.app.AppCompatActivity;
+
     import android.os.Bundle;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;

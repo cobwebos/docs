@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: d74a7d2171f926a7a97562339d4cab36b354bfbe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441976"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565598"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>快速入门：使用 Azure Cosmos DB Gremlin API 帐户生成 .NET Framework 或 Core 应用程序
 
@@ -83,74 +83,21 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 以下代码片段全部摘自 Program.cs 文件。
 
-* 跟踪上面创建的帐户设置连接参数（第 19 行）： 
+* 跟踪上面创建的帐户设置连接参数： 
 
-    ```csharp
-    private static string hostname = "your-endpoint.gremlin.cosmosdb.azure.com";
-    private static int port = 443;
-    private static string authKey = "your-authentication-key";
-    private static string database = "your-database";
-    private static string collection = "your-graph-container";
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* 要执行的 Gremlin 命令列在字典中（第 26 行）：
+* 要执行的 Gremlin 命令列在字典中：
 
-    ```csharp
-    private static Dictionary<string, string> gremlinQueries = new Dictionary<string, string>
-    {
-        { "Cleanup",        "g.V().drop()" },
-        { "AddVertex 1",    "g.addV('person').property('id', 'thomas').property('firstName', 'Thomas').property('age', 44).property('pk', 'pk')" },
-        { "AddVertex 2",    "g.addV('person').property('id', 'mary').property('firstName', 'Mary').property('lastName', 'Andersen').property('age', 39).property('pk', 'pk')" },
-        { "AddVertex 3",    "g.addV('person').property('id', 'ben').property('firstName', 'Ben').property('lastName', 'Miller').property('pk', 'pk')" },
-        { "AddVertex 4",    "g.addV('person').property('id', 'robin').property('firstName', 'Robin').property('lastName', 'Wakefield').property('pk', 'pk')" },
-        { "AddEdge 1",      "g.V('thomas').addE('knows').to(g.V('mary'))" },
-        { "AddEdge 2",      "g.V('thomas').addE('knows').to(g.V('ben'))" },
-        { "AddEdge 3",      "g.V('ben').addE('knows').to(g.V('robin'))" },
-        { "UpdateVertex",   "g.V('thomas').property('age', 44)" },
-        { "CountVertices",  "g.V().count()" },
-        { "Filter Range",   "g.V().hasLabel('person').has('age', gt(40))" },
-        { "Project",        "g.V().hasLabel('person').values('firstName')" },
-        { "Sort",           "g.V().hasLabel('person').order().by('firstName', decr)" },
-        { "Traverse",       "g.V('thomas').out('knows').hasLabel('person')" },
-        { "Traverse 2x",    "g.V('thomas').out('knows').hasLabel('person').out('knows').hasLabel('person')" },
-        { "Loop",           "g.V('thomas').repeat(out()).until(has('id', 'robin')).path()" },
-        { "DropEdge",       "g.V('thomas').outE('knows').where(inV().has('id', 'mary')).drop()" },
-        { "CountEdges",     "g.E().count()" },
-        { "DropVertex",     "g.V('thomas').drop()" },
-    };
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
+* 使用上面提供的参数创建新的 `GremlinServer` 和 `GremlinClient` 连接对象：
 
-* 使用上面提供的参数创建 `GremlinServer` 连接对象（第 52 行）：
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-    ```csharp
-    var gremlinServer = new GremlinServer(hostname, port, enableSsl: true, 
-                                                    username: "/dbs/" + database + "/colls/" + collection, 
-                                                    password: authKey);
-    ```
+* 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询。 可以从上一步中定义的字典读取 Gremlin 查询，并执行它们。 稍后使用 Newtonsoft.Json 包中的 `JsonSerializer` 类，获取结果并读取已格式化为字典的值：
 
-* 创建新的 `GremlinClient` 对象（第 56 行）：
-
-    ```csharp
-    var gremlinClient = new GremlinClient(gremlinServer, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType);
-    ```
-
-* 通过将 `GremlinClient` 对象与异步任务配合使用来执行每一个 Gremlin 查询（第 63 行）。 此时会从上面定义的字典中读取 Gremlin 查询（第 26 行）：
-
-    ```csharp
-    var results = await gremlinClient.SubmitAsync<dynamic>(query.Value);
-    ```
-
-* 使用 Newtonsoft.Json 中的 `JsonSerializer` 类，检索结果并读取已格式化为字典的值：
-
-    ```csharp
-    foreach (var result in results)
-    {
-        // The vertex results are formed as dictionaries with a nested dictionary for their properties
-        string output = JsonConvert.SerializeObject(result);
-        Console.WriteLine(String.Format("\tResult:\n\t{0}", output));
-    }
-    ```
+   :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
@@ -164,29 +111,22 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
     ![复制终结点](./media/create-graph-dotnet/endpoint.png)
 
-   若要运行此示例，请复制 **Gremlin 终结点**值，删除末尾的端口号，也就是说，URI 将变为 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`
+   若要运行此示例，请复制 **Gremlin 终结点**值，删除末尾的端口号，也就是说，URI 将变为 `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`。 终结点值应类似于 `testgraphacct.gremlin.cosmosdb.azure.com`
 
-2. 在 Program.cs 中粘贴该值，使之覆盖第 19 行的 `hostname` 变量中的 `your-endpoint`。 
+1. 接下来，从 Azure 门户中导航到“密钥”选项卡并复制“主密钥”值。   
 
-    `"private static string hostname = "<your cosmos db account name>.gremlin.cosmosdb.azure.com";`
+1. 复制帐户的 URI 和主键以后，请将其保存到运行应用程序的本地计算机的新环境变量中。 若要设置环境变量，请打开命令提示符窗口，并运行以下命令。 确保替换 <Your_Azure_Cosmos_account_URI> 和 <Your_Azure_Cosmos_account_PRIMARY_KEY> 值。
 
-    终结点值现在应如下所示：
+   ```console
+   setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
+   setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
+   ```
 
-    `"private static string hostname = "testgraphacct.gremlin.cosmosdb.azure.com";`
+1. 打开 *Program.cs* 文件，将 "database" 和 "container" 变量更新为在上面创建的数据库和容器的名称（也是图形名称）。
 
-3. 接下来，从门户中导航到“密钥”选项卡并复制“主密钥”值，将其粘贴到 `authkey` 变量中，替换第 21 行中的 `"your-authentication-key"` 占位符。   
+    `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
-    `private static string authKey = "your-authentication-key";`
-
-4. 根据上面创建的数据库的信息，将数据库名称粘贴到第 22 行的 `database` 变量中。 
-
-    `private static string database = "your-database";`
-
-5. 同样，根据上面创建的容器的信息，将集合（也是图形名称）粘贴到第 23 行的 `collection` 变量中。 
-
-    `private static string collection = "your-collection-or-graph";`
-
-6. 保存 Program.cs 文件。 
+1. 保存 Program.cs 文件。 
 
 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
 

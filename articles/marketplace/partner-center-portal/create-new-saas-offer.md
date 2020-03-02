@@ -7,17 +7,17 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705813"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208859"
 ---
 # <a name="create-a-new-saas-offer"></a>创建新的 SaaS 产品/服务
 
-若要开始创建 "软件即服务" (SaaS) 产品/服务, 请确保先[创建合作伙伴中心帐户](./create-account.md), 并打开 [Commercial Marketplace 仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), "概述" 选项卡, 并选择 "**概述**" 选项卡。
+若要开始创建 "软件即服务" （SaaS）产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)，并打开 "概述" 选项[卡，并](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)选择 "**概述**" 选项卡。
 
 ![合作伙伴中心的商业应用商店仪表板](./media/new-offer-overview.png)
 
@@ -134,16 +134,7 @@ SaaS 使用按流量计费服务，根据固定费用、每用户或消耗费用
 
 通过启用 "测试驱动器"，系统将要求你配置演示环境，让客户在固定时间段内试用你的产品/服务。 
 
-### <a name="type-of-test-drive"></a>测试驱动器的类型
-
-- **[Azure 资源管理器](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** ：包含构成解决方案的所有 Azure 资源的部署模板。 适用于此方案的产品只使用 Azure 资源。
-- **[Dynamics 365 For Business central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** ： Microsoft 托管并维护企业中心企业资源规划系统（财务、运营、供应链、CRM 等）的测试驱动器服务（包括预配和部署）。  
-- **[Dynamics 365 For Customer engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** ： Microsoft 托管并维护客户参与系统（销售、服务、项目服务、现场服务等）的测试驱动器服务（包括预配和部署）。  
-- **[Dynamics 365 For Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** ： Microsoft 托管并维护针对财务和运营企业资源规划系统（财务、运营、制造、供应链等）的测试驱动器服务（包括预配和部署）。 
-- **[逻辑应用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** ：包含所有复杂解决方案体系结构的部署模板。 任何自定义产品都应使用这种类型的测试驱动器。
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** ：指向自定义生成的仪表板的嵌入链接。 要演示交互 Power BI 视觉对象的产品应使用此类型的测试驱动器。 此处只需要上传你的嵌入式 Power BI URL。
-
-#### <a name="additional-test-drive-resources"></a>其他测试驱动器资源
+#### <a name="test-drive-resources"></a>测试驱动器资源
 - [测试驱动器技术最佳方案](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [试用版销售最佳实践](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Test Drive 概述 One 寻呼](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -183,7 +174,7 @@ Microsoft 提供了标准合同模板。
 
 - **使用 Microsoft 商业应用商店的标准约定？**
 
-为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 为 Microsoft 商用 marketplace 提供了标准合同，有助于促进 marketplace 中的交易。 商业 marketplace 发布者可以选择以标准合同提供其软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。 可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178 。
+为了简化客户的采购过程并降低软件供应商的法律复杂性，Microsoft 为 Microsoft 商用 marketplace 提供了标准合同，有助于促进 marketplace 中的交易。 商业 marketplace 发布者可以选择以标准合同提供其软件，而客户只需来审查并接受一次，而不是手工编写自定义条款和条件。 可在此处找到标准协定： https://go.microsoft.com/fwlink/?linkid=2041178。
 
 您可以选择使用标准合同，而不是通过选择 "为商业应用商店使用标准协定" 复选框来提供自己的自定义条款和条件。
 
@@ -234,7 +225,7 @@ Microsoft 提供了标准合同模板。
 - **名称**（必需）：此处定义的名称将显示为你选择的 marketplace 中的产品/服务列表的标题。 该名称根据你以前的**新产品/服务**条目预填充。 名称可以是商标字。 它不能包含表情符号（除非它们是商标和版权符号），并且必须限制为50个字符。
 - **摘要**（必需）：提供产品/服务的简短说明，用于应用商店列表搜索结果。 最多可在此字段中输入100个字符的文本。
 - **说明**（必需）：提供产品/服务的说明，以便在 marketplace 列表概述中显示。 考虑包括价值主张、关键优势、任何类别或行业关联、应用内购买机会、任何所需的披露，以及用于了解详细信息的链接。
-最多可在此字段中输入3000个字符的文本。 有关更多提示，请参阅文章[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
+此字段中最多可以输入3000个字符（包括标记）。 有关更多提示，请参阅文章[编写出色的应用说明](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)。
 - **搜索关键字**：最多输入三个搜索关键字，客户可以使用这些关键字在 marketplace 中查找你的产品/服务。
 - **入门说明**（必需）：说明如何配置和开始为潜在客户使用应用。  此快速入门可以包含指向更详细的联机文档的链接。 最多可在此字段中输入3000个字符的文本。
 
@@ -277,7 +268,7 @@ Microsoft 提供了标准合同模板。
 - **CSP 计划营销材料**（可选）：如果你选择将你的产品/服务扩展到[云解决方案提供商（CSP）](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers)计划，请提供营销材料的链接。 CSP 通过使 CSP 合作伙伴捆绑、营销和转售你的产品/服务，将你的产品/服务扩展到更广泛的合格客户。 这些分销商需要访问产品/服务的营销材料。 有关详细信息，请参阅[市场推广服务](https://partner.microsoft.com/reach-customers/gtm)。
 - **有用的链接**（可选）：通过提供**标题**和**URL**来列出你的应用或相关服务的可选补充联机文档。 单击 " **+ 添加 URL**"，添加其他有用的链接。
 
-#### <a name="contact-information"></a>联系人信息
+#### <a name="contact-information"></a>联系信息
 
 - **联系人**：对于每个客户联系人，请提供员工**姓名**、**电话号码**和**电子邮件**地址。  （这些*将不*会公开显示）。 **支持联系人**组也需要**支持 URL** 。  （*将*公开显示此信息）。
 
@@ -290,7 +281,7 @@ Microsoft 提供了标准合同模板。
 #### <a name="files-and-images"></a>文件和映像
 
 - **文档**（必需）：以 PDF 格式为产品/服务添加相关的营销文档，每个产品/服务最少提供一（1）个文档，最多提供三（3）个文档。
-- **图像**（可选）：在多个位置，产品/服务的徽标图像可能会出现在整个市场中，需要以下尺寸：--小型： 48 x 48 像素 _（必需）、_ 中： 90 x 90 像素、大： 216 x 216 像素 _（必需）、_ 宽： 255 x 115 像素和英雄： 815 x 290 像素。 所有映像都必须在中。PNG 格式。
+- **图像**（可选）：在多个位置，产品/服务的徽标图像可能会出现在整个市场中，要求以下大小：--小号： 48 x 48 像素 _（必需_）、中： 90 x _90 像素（必需）、大_： 216 x 216 像素 _（必需）、_ 宽： 255 x 115 像素和英雄： 815 x 290 像素。 所有映像都必须在中。PNG 格式。
 - **屏幕截图**（必需）：添加演示产品/服务的屏幕截图。 最多可添加五（5）个屏幕截图，大小应为 1280 x 720 像素。 所有映像都必须在中。PNG 格式。
 - **视频**（可选）：添加指向演示产品/服务的视频的链接。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 还需要输入视频的缩略图，大小为 1280 x 720 像素，格式为 PNG。 每个产品/服务最多可显示四个视频。
 
@@ -389,7 +380,7 @@ Microsoft 提供了标准合同模板。
 
 如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 在发布前，应始终查看每个市场的价格。 保存更改后，可以通过使用 "导出价格（.xlsx）" 链接来查看定价。
 
-#### <a name="pricing"></a>价格
+#### <a name="pricing"></a>定价
 
 - **定价模型**：平面速率或基于座位
 
@@ -406,7 +397,7 @@ Microsoft 提供了标准合同模板。
 - **价格**：每月 usd 或每年美元
 
 使用在安装过程中可用的当前汇率，使用当地货币（USD = 美国美元）将价格设置为所有所选市场的本地货币。 在发布之前通过导出定价电子表格并查看每个市场中的价格来验证这些价格。 如果要在单个市场中设置自定义价格，请修改并导入定价电子表格。 你负责验证此定价并拥有这些设置。
-*\*必须先保存定价更改, 才能导出定价数据。*
+*\*必须先保存定价更改才能启用定价数据的导出。*
 
 发布之前请仔细查看你的价格，因为发布计划后，有一些限制会发生变化：
 

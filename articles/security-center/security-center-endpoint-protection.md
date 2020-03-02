@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552927"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208536"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心的 Endpoint protection 评估和建议
 
-Azure 安全中心为 Endpoint protection 解决方案[支持](security-center-services.md#supported-endpoint-protection-solutions-)的版本提供运行状况评估。 本文介绍领导安全中心生成以下两个建议的方案：
+Azure 安全中心为 Endpoint protection 解决方案[支持](security-center-services.md#endpoint-supported)的版本提供运行状况评估。 本文介绍领导安全中心生成以下两个建议的方案：
 
 * **在虚拟机上安装 endpoint protection 解决方案**
 * **解决计算机上的 endpoint protection 运行状况问题**
@@ -79,7 +79,7 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](security-center-s
     
             **AntivirusSignatureAge**
 
-## <a name="trend-micro"></a>Trend Micro
+## <a name="trend-micro"></a>走向微
 
 * 当不满足以下任何检查时，安全中心建议你 **"在虚拟机上安装 endpoint protection 解决方案"** ：
     * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全代理**已存在
@@ -92,13 +92,13 @@ Azure 安全中心为 Endpoint protection 解决方案[支持](security-center-s
 
 * **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 或
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 安全中心建议在不满足以下任何检查时， **"解决计算机上的 endpoint protection 运行状况问题"** ：
 

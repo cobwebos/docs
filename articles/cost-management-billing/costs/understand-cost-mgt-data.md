@@ -4,17 +4,17 @@ description: 本文帮助你更好地了解 Azure 成本管理中包含的数据
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199885"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560603"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -135,9 +135,9 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 - 将标记 API 与 Query 或 UsageDetails 结合使用，根据当前标记获取所有成本。
 
 
-**从免费试用到即用即付的升级**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>从免费试用到即用即付的升级
 
-将免费试用套餐 (044P) 转换为 PAYG 套餐 (003P) 的客户可以在免费试用期内查看其使用情况。 但在转换后，客户无法查看免费试用版的使用情况。 转换后，只在成本管理中显示 PAYG 的使用情况和成本。
+若要了解从免费试用版升级到即用即付定价后免费层服务的可用性，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。
 
 ## <a name="rated-usage-data-refresh-schedule"></a>用量计费数据刷新计划
 
@@ -157,6 +157,17 @@ Azure 成本管理接收标记，作为各个服务提交的每个使用记录�
 ### <a name="rerated-data"></a>重新计费数据
 
 无论是使用[成本管理 API](../index.yml)、Power BI 还是 Azure 门户检索数据，当前计费周期的费用预期都会重新计算，因此，在结算发票之前，此费用将会更改。
+
+## <a name="cost-rounding"></a>成本舍入
+
+成本管理中显示的成本是舍入的。 查询 API 返回的成本不舍入。 例如：
+
+- Azure 门户中的成本分析 - 使用标准舍入规则对费用进行舍入：大于或等于 0.5 的值向上舍入，其余值向下舍入。 仅在显示值时才进行舍入。 在数据处理和聚合过程中不会发生舍入。 例如，成本分析会按如下所示聚合成本：
+  - 费用 1：$0.004
+  - 费用 2：$0.004
+  - 得到的聚合费用：0.004 + 0.004 = 0.008。 显示的费用为 $0.01。
+- 查询 API - 按 8 个小数位数显示费用，不舍入。
+
 
 ## <a name="usage-data-update-frequency-varies"></a>用量数据的更新频率存在变化
 

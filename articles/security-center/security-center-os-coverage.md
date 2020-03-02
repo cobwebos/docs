@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921294"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208809"
 ---
 # <a name="supported-platforms"></a>支持的平台 
 
@@ -35,7 +35,6 @@ ms.locfileid: "77921294"
 
 > [!NOTE]
 > 若要接收整套安全功能，您必须具有[Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)，该代理由 Azure 安全中心使用，并已安装并[正确配置为将数据发送到 Azure 安全中心](security-center-enable-data-collection.md#manual-agent)。
-
 
 以下部分列出了 Azure 安全中心使用的[Log Analytics 代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)可以运行的受支持的服务器操作系统。
 
@@ -85,38 +84,6 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 ### 云服务<a name="cloud-services"></a>
 
 还支持在云服务中运行的虚拟机。 仅监视云服务 Web 和在生产槽运行的辅助角色。 若要了解有关云服务的详细信息，请参阅[云服务概述](../cloud-services/cloud-services-choose-me.md)。
-
-## PaaS 服务<a name="paas-services"></a>
-
-Azure 安全中心支持以下 Azure PaaS 资源：
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* 存储帐户
-* 应用服务
-* 函数
-* 云服务
-* VNet
-* 子网
-* NIC
-* NSG
-* 批处理帐户
-* Service fabric 帐户
-* 自动化帐户
-* 负载均衡器
-* 搜索
-* 服务总线命名空间
-* 流分析
-* 事件中心命名空间
-* 逻辑应用
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* 密钥保管库
-
-若要详细了解适用于上述 PaaS 资源列表的支持的功能，请参阅[paas 服务支持的功能](security-center-services.md#paas-services)。
 
 还支持对驻留在 Azure Stack 中的虚拟机进行保护。 有关安全中心与 Azure Stack 的集成的详细信息，请参阅将[Azure Stack 虚拟机加入到安全中心](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)。
 

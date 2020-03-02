@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: a711303b95eb4acb9c226ce052466bf65d15a038
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549442"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612768"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教程：为 Azure Active Directory 域服务托管域配置安全 LDAP
 
@@ -63,16 +63,16 @@ ms.locfileid: "75549442"
 
 * **受信任的颁发者** - 证书必须由使用安全 LDAP 连接到托管域的计算机所信任的颁发机构颁发。 此颁发机构可以是公共 CA 或受计算机信任的企业 CA。
 * **生存期** - 证书必须至少在接下来的 3 到 6 个月内保持有效。 证书过期后，安全 LDAP 不再可以访问托管域。
-* **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为 aadds.contoso.com，则证书的使用者名称必须是 *.aadds.contoso.com。  
+* **使用者名称** - 证书上的使用者名称必须是你的托管域。 例如，如果域名为 aaddscontoso.com，则证书的使用者名称必须是 *.aaddscontoso.com。  
     * 证书的 DNS 名称或使用者备用名称必须是通配符证书，以确保安全 LDAP 在 Azure AD 域服务中正常工作。 域控制器使用随机名称；可以删除或添加域控制器来确保服务保持可用。
 * **密钥用途** - 必须将证书配置用于数字签名和密钥加密。  
 * **证书目的** - 证书必须有效，可用于 SSL 服务器身份验证。
 
-在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aadds.contoso.com*：
+在本教程中，让我们使用 [New-SelfSignedCertificate][New-SelfSignedCertificate] cmdlet 为安全 LDAP 创建自签名证书。 以**管理员**身份打开 PowerShell 窗口并运行以下命令。 将 *$dnsName* 变量替换为你自己的托管域使用的 DNS 名称，例如 *aaddscontoso.com*：
 
 ```powershell
 # Define your own DNS name used by your Azure AD DS managed domain
-$dnsName="aadds.contoso.com"
+$dnsName="aaddscontoso.com"
 
 # Get the current date to set a one-year expiration
 $lifetime=Get-Date
@@ -94,7 +94,7 @@ PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 
 Thumbprint                                Subject
 ----------                                -------
-959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aadds.contoso.com
+959BD1531A1E674EB09E13BD8534B2C76A45B3E6  CN=aaddscontoso.com
 ```
 
 ## <a name="understand-and-export-required-certificates"></a>了解和导出所需的证书
@@ -125,7 +125,7 @@ Thumbprint                                Subject
 
     ![在 Microsoft 管理控制台中打开个人证书存储](./media/tutorial-configure-ldaps/open-personal-store.png)
 
-1. 此时会显示上一步骤中创建的自签名证书，例如 *aadds.contoso.com*。 右键单击此证书，然后选择“所有任务”>“导出...”。 
+1. 此时会显示上一步骤中创建的自签名证书，例如 *aaddscontoso.com*。 右键单击此证书，然后选择“所有任务”>“导出...”。 
 
     ![在 Microsoft 管理控制台中导出证书](./media/tutorial-configure-ldaps/export-cert.png)
 
@@ -150,7 +150,7 @@ Thumbprint                                Subject
 
 客户端计算机必须信任安全 LDAP 证书的颁发者，才能成功使用 LDAPS 连接到托管域。 客户端计算机需要使用一个证书才能成功加密 Azure AD DS 解密的数据。 如果你使用公共 CA，计算机应会自动信任这些证书颁发者，并获得相应的证书。 本教程使用自签名证书，并生成一个包含上一步骤中创建的私钥的证书。 现在，让我们导出该自签名证书，然后将其安装到客户端计算机上的受信任证书存储中。
 
-1. 返回到“证书(本地计算机)”>“个人”>“证书”存储的 MMC。  此时会显示上一步骤中创建的自签名证书，例如 *aadds.contoso.com*。 右键单击此证书，然后选择“所有任务”>“导出...”。 
+1. 返回到“证书(本地计算机)”>“个人”>“证书”存储的 MMC。  此时会显示上一步骤中创建的自签名证书，例如 *aaddscontoso.com*。 右键单击此证书，然后选择“所有任务”>“导出...”。 
 1. 在“证书导出向导”中，选择“下一步”。  
 1. 由于不需要对客户端使用私钥，因此请在“导出私钥”页上，依次选择“否，不导出私钥”、“下一步”。   
 1. 在“导出文件格式”页上，选择“Base-64 编码 X.509 (.CER)”作为导出证书的文件格式：  
@@ -180,7 +180,7 @@ Thumbprint                                Subject
 
     ![在 Azure 门户中搜索并选择 Azure AD DS 托管域](./media/tutorial-configure-ldaps/search-for-domain-services.png)
 
-1. 选择你的托管域，例如 *aadds.contoso.com*。
+1. 选择你的托管域，例如 *aaddscontoso.com*。
 1. 在 Azure AD DS 窗口的左侧，选择“安全 LDAP”。 
 1. 默认情况下，已禁用对托管域的安全 LDAP 访问。 将“安全 LDAP”切换为“启用”   。
 1. 默认情况下，已禁用通过 Internet 对托管域的安全 LDAP 访问。 启用公共安全 LDAP 访问后，域很容易受到来自 Internet 的密码暴力破解攻击。 下一步骤将配置一个网络安全组，以仅限所需的源 IP 地址范围进行访问。
@@ -235,10 +235,10 @@ Thumbprint                                Subject
 
 配置外部 DNS 提供程序，以创建一条可解析为此外部 IP 地址的主机记录（例如 *ldaps*）。 若要先在计算机本地进行测试，可在 Windows hosts 文件中创建一个条目。 若要成功编辑本地计算机上的 hosts 文件，请以管理员身份打开“记事本”，然后打开文件 *C:\Windows\System32\drivers\etc*。 
 
-外部 DNS 提供程序或本地 hosts 文件中的以下示例 DNS 条目将 *ldaps.aadds.contoso.com* 的流量解析为外部 IP 地址 *40.121.19.239*：
+外部 DNS 提供程序或本地 hosts 文件中的以下示例 DNS 条目将 *ldaps.aaddscontoso.com* 的流量解析为外部 IP 地址 *40.121.19.239*：
 
 ```
-40.121.19.239    ldaps.aadds.contoso.com
+40.121.19.239    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>测试对托管域的查询
@@ -246,13 +246,13 @@ Thumbprint                                Subject
 若要连接并绑定到 Azure AD DS 托管域并通过 LDAP 进行搜索，请使用 *LDP.exe* 工具。 此工具已包含在远程服务器管理工具 (RSAT) 包中。 有关详细信息，请参阅[安装远程服务器管理工具][rsat]。
 
 1. 打开 *LDP.exe* 并连接到托管域。 依次选择“连接”、“连接...”。  
-1. 输入在上一步骤中为托管域创建的安全 LDAP DNS 域名，例如 *ldaps.aadds.contoso.com*。 若要使用安全 LDAP，请将“端口”设置为 *636*，然后选中“SSL”框。  
+1. 输入在上一步骤中为托管域创建的安全 LDAP DNS 域名，例如 *ldaps.aaddscontoso.com*。 若要使用安全 LDAP，请将“端口”设置为 *636*，然后选中“SSL”框。  
 1. 选择“确定”连接到托管域。 
 
 接下来，绑定到 Azure AD DS 托管域。 如果你在 Azure AD DS 实例上禁用了 NTLM 密码哈希同步，则用户（和服务帐户）将无法执行 LDAP 简单绑定。 有关禁用 NTLM 密码哈希同步的详细信息，请参阅[保护 Azure AD DS 托管域][secure-domain]。
 
 1. 选择“连接”菜单选项，然后选择“绑定...”。  
-1. 提供属于“AAD DC 管理员”组的用户帐户的凭据，例如 *contosoadmin*。  输入用户帐户的密码，然后输入域，例如 *aadds.contoso.com*。
+1. 提供属于“AAD DC 管理员”组的用户帐户的凭据，例如 *contosoadmin*。  输入用户帐户的密码，然后输入域，例如 *aaddscontoso.com*。
 1. 对于“绑定类型”，请选择“使用凭据绑定”选项。  
 1. 选择“确定”绑定到 Azure AD DS 托管域。 
 
@@ -265,7 +265,7 @@ Thumbprint                                Subject
 
     ![使用 LDP.exe 搜索 Azure AD DS 托管域中的对象](./media/tutorial-configure-ldaps/ldp-query.png)
 
-若要直接查询特定的容器，可以通过“视图”>“树”菜单指定一个“基础 DN”，例如“OU=AADDC Users,DC=CONTOSO,DC=COM”或“OU=AADDC Computers,DC=CONTOSO,DC=COM”。     有关如何格式化和创建查询的详细信息，请参阅 [LDAP 查询基础知识][ldap-query-basics]。
+若要直接查询特定的容器，可以通过“视图”>“树”菜单指定一个“基础 DN”，例如“OU=AADDC Users,DC=AADDSCONTOSO,DC=COM”或“OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM”。     有关如何格式化和创建查询的详细信息，请参阅 [LDAP 查询基础知识][ldap-query-basics]。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -273,7 +273,7 @@ Thumbprint                                Subject
 
 1. 在本地计算机上，以管理员身份打开“记事本” 
 1. 浏览到并打开文件 *C:\Windows\System32\drivers\etc*
-1. 删除所添加的记录对应的行，例如 `40.121.19.239    ldaps.aadds.contoso.com`
+1. 删除所添加的记录对应的行，例如 `40.121.19.239    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>后续步骤
 

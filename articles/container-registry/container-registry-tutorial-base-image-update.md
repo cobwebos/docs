@@ -1,25 +1,27 @@
 ---
 title: 教程 - 在基础映像更新时触发映像生成
-description: 本教程介绍在更新基础映像时，如何配置 Azure 容器注册表任务以自动触发云中的容器映像生成。
+description: 本教程介绍在更新同一注册表中的基础映像时，如何配置 Azure 容器注册表任务以自动触发云中的容器映像生成。
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 01/22/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b89bf0364165822368647b4c5b773bf422902aec
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 23f77cb4f4c14f052d8ecdb23beed21263623d3e
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456141"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617501"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
-ACR 任务支持在容器基础映像更新时自动化的生成执行，例如在某个基础映像中修补 OS 或应用程序框架时。 本教程介绍当容器基础映像已推送到注册表时，如何在 ACR 任务中创建在云中触发生成的任务。
+ACR 任务支持在容器的[基础映像更新](container-registry-tasks-base-images.md)时自动化容器映像生成，例如在某个基础映像中修补 OS 或应用程序框架时。 
 
-本教程（教程系列的最后一部分）的内容包括：
+本教程介绍将容器的基础映像推送到同一注册表时，如何创建在云中触发生成的 ACR 任务。 还可以尝试一个用于创建 ACR 任务的教程，以便在将基本映像推送到[其他 Azure 容器注册表](container-registry-tutorial-private-base-image-update.md)时触发映像生成。 
+
+本教程的内容：
 
 > [!div class="checklist"]
 > * 生成基础映像
-> * 创建应用程序映像生成任务
+> * 在同一注册表中创建应用程序映像以跟踪基础映像 
 > * 更新基础映像以触发应用程序映像任务
 > * 显示已触发的任务
 > * 验证已更新的应用程序映像
@@ -28,7 +30,7 @@ ACR 任务支持在容器基础映像更新时自动化的生成执行，例如�
 
 如果想本地使用 Azure CLI，则必须已安装 Azure CLI 版本 **2.0.46** 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="complete-the-previous-tutorials"></a>完成前一篇教程
 
@@ -39,7 +41,7 @@ ACR 任务支持在容器基础映像更新时自动化的生成执行，例如�
 * 克隆示例存储库
 * 创建 GitHub 个人访问令牌
 
-如果尚未完成以上步骤，请在继续之前先完成前两个教程步骤：
+如果尚未完成以上步骤，请在继续之前先完成以下教程：
 
 [使用 Azure 容器注册表任务在云中生成容器映像](container-registry-tutorial-quick-task.md)
 
@@ -47,7 +49,7 @@ ACR 任务支持在容器基础映像更新时自动化的生成执行，例如�
 
 ### <a name="configure-the-environment"></a>配置环境
 
-使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果没有填充这些环境变量，示例命令中出现时则必须手动替换每个值。
+使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -55,46 +57,16 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 ```
 
-## <a name="base-images"></a>基础映像
-
-定义大部分容器映像的 Dockerfile 指定它所基于的父级映像，通常称为它的基础映像  。 基础映像通常包含操作系统，例如 [Alpine Linux][base-alpine] 或 [Windows Nano Server][base-windows]，其余的容器层应用于这些操作系统上。 这些映像可能还包括应用程序框架，例如 [Node.js][base-node] 或 [.NET Core][base-dotnet]。
-
-### <a name="base-image-updates"></a>基础映像更新
-
-基础映像通常通过映像维护程序更新，以将 OS 或框架的新功能或改进添加进该映像中。 安全补丁是更新基础映像的另一常见原因。
-
-基础映像更新时，将提示需要重新生成注册表中基于该映像的任何容器映像，以添加新功能和修补。 更新容器的基础映像时，ACR 任务能够自动生成映像。
-
-### <a name="tasks-triggered-by-a-base-image-update"></a>基础映像更新触发的任务
-
-* 对于从 Dockerfile 生成的映像，ACR 任务将在以下位置检测对基础映像的依赖关系：
-
-  * 运行任务所在的同一 Azure 容器注册表
-  * 同一区域中的另一个 Azure 容器注册表 
-  * Docker Hub 中的公共存储库 
-  * Microsoft 容器注册表中的公共存储库
-
-   如果 `FROM` 语句中指定的基础映像驻留在上述某个位置，则 ACR 任务会添加一个挂钩，以确保它的基础映像更新时会重新生成该映像。
-
-* 目前，ACR 任务仅跟踪应用程序（*运行时*）映像的基础映像更新。 它不跟踪多阶段 Dockerfile 中使用的中间 (buildtime  ) 映像的基础映像更新。  
-
-* 使用 [az acr task create][az-acr-task-create] 命令创建某个 ACR 任务时，默认会启用该任务，以便在更新基础映像时触发。  即，`base-image-trigger-enabled` 属性设置为 True。 若要在任务中禁用此行为，请将该属性更新为 False。 例如，运行以下 [az acr task update][az-acr-task-update] 命令：
-
-  ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
-  ```
-
-* 若要启用某个 ACR 任务来确定并跟踪容器映像的依赖项（包含其基础映像），首先必须触发该任务**至少一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令手动触发该任务。
-
-* 若要在更新基础映像时触发任务，基础映像必须有一个稳定的标记，例如 `node:9-alpine`。  在将 OS 和框架修补到最新稳定版本时会更新的基础映像往往带有此标记。 如果使用新的版本标记更新基础映像，则不会触发任务。 有关映像标记的详细信息，请参阅[最佳做法指南](container-registry-image-tag-version.md)。 
 
 ### <a name="base-image-update-scenario"></a>基础映像更新方案
 
-本教程将指导完成基础映像更新方案。 [代码示例][code-sample]包括两个 Dockerfile：一个应用程序映像和一个它指定为其基础的映像。 在后续部分，我们将创建一个 ACR 任务，它会在新版本基础映像推送到同一容器注册表时自动触发应用程序映像的生成。
+本教程将指导你完成基础映像更新方案，在单个注册表中维护基础映像和应用程序映像。 
 
-[Dockerfile-app][dockerfile-app]：小型 Node.js Web 应用程序，它呈现一个静态 Web 页面，其中显示该应用程序所基于的 Node.js 版本。 该版本字符串是模拟的：显示基础映像中定义的环境变量和 `NODE_VERSION` 的内容。
+[代码示例][code-sample]包括两个 Dockerfile：一个应用程序映像和一个它指定为其基础的映像。 在后续部分，我们将创建一个 ACR 任务，它会在新版本基础映像推送到同一容器注册表时自动触发应用程序映像的生成。
 
-[Dockerfile-base][dockerfile-base]：`Dockerfile-app` 指定为其基础的映像。 它本身基于[节点][base-node]映像，并且包括 `NODE_VERSION` 环境变量。
+* [Dockerfile-app][dockerfile-app]：小型 Node.js Web 应用程序，它呈现一个静态 Web 页面，其中显示该应用程序所基于的 Node.js 版本。 该版本字符串是模拟的：显示基础映像中定义的环境变量和 `NODE_VERSION` 的内容。
+
+* [Dockerfile-base][dockerfile-base]：`Dockerfile-app` 指定为其基础的映像。 它本身基于[节点][base-node]映像，并且包括 `NODE_VERSION` 环境变量。
 
 在以下部分，我们将创建一个任务，在基础映像 Dockerfile 中更新 `NODE_VERSION` 值，并使用 ACR 任务来生成基础映像。 ACR 任务将新基础映像推送到注册表时，它会自动触发应用程序映像的生成。 可选择本地运行应用程序容器映像，在生成的映像中查看不同版本字符串。
 
@@ -102,7 +74,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="build-the-base-image"></a>生成基础映像
 
-首先使用 ACR 任务的快速任务来生成基础映像  。 如本系列教程的[第一篇教程](container-registry-tutorial-quick-task.md)中所述，如果生成成功，则此过程不仅会生成映像，还会将其推送到容器注册表。
+首先使用 [az acr build][az-acr-build] 通过 ACR 任务的快速任务来生成基础映像  。 如本系列教程的[第一篇教程](container-registry-tutorial-quick-task.md)中所述，如果生成成功，则此过程不仅会生成映像，还会将其推送到容器注册表。
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -123,10 +95,7 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-> [!IMPORTANT]
-> 如果以前在预览期使用 `az acr build-task` 创建了任务，则需要使用 [az acr task][az-acr-task] 命令重新创建这些任务。
-
-此任务类似于[上一篇教程](container-registry-tutorial-build-task.md)中创建的快速任务。 将提交内容推送到 `--context` 指定的存储库时，生成任务会指示 ACR 任务触发映像生成。 在前一篇教程用于生成映像的 Dockerfile 指定了公共基础映像 (`FROM node:9-alpine`)，而此任务中的 Dockerfile [Dockerfile-app][dockerfile-app] 指定的是同一注册表中的基础映像：
+此任务类似于[上一篇教程](container-registry-tutorial-build-task.md)中创建的任务。 将提交内容推送到 `--context` 指定的存储库时，生成任务会指示 ACR 任务触发映像生成。 在前一篇教程用于生成映像的 Dockerfile 指定了公共基础映像 (`FROM node:9-alpine`)，而此任务中的 Dockerfile [Dockerfile-app][dockerfile-app] 指定的是同一注册表中的基础映像：
 
 ```Dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
@@ -136,7 +105,7 @@ FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 
 ## <a name="build-the-application-container"></a>生成应用程序容器
 
-使用 [az acr task run][az-acr-task-run] 手动触发任务并生成应用程序映像。 此步骤确保该任务跟踪应用程序映像对基础映像的依赖性。
+使用 [az acr task run][az-acr-task-run] 手动触发任务并生成应用程序映像。 此步骤是必需的，这样该任务才能跟踪应用程序映像对基础映像的依赖性。
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -256,15 +225,6 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 docker stop updatedapp
 ```
 
-## <a name="clean-up-resources"></a>清理资源
-
-若要删除本系列教程中创建的所有资源，包括容器注册表、容器实例、密钥保管库和服务主体，请运行以下命令：
-
-```azurecli-interactive
-az group delete --resource-group $RES_GROUP
-az ad sp delete --id http://$ACR_NAME-pull
-```
-
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，我们已了解在更新映像的基础映像后，如何使用任务来自动触发容器映像生成。 现在，请转到下一个教程学习如何按照定义的计划触发任务。
@@ -283,7 +243,7 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build-run
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
 [az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
 [az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run

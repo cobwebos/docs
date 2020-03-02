@@ -11,33 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 03/01/2020
 ms.author: memildin
-ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9d3fa1e0b62ea6f4762c3df6ac7da310d5703807
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921260"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208779"
 ---
-# <a name="supported-features-available-in-azure-security-center"></a>Azure 安全中心提供支持的功能
+# <a name="feature-coverage-for-machines"></a>计算机的功能覆盖率
 
-> [!NOTE]
->某些功能仅适用于标准层。 如果尚未注册安全中心的标准层，则可以使用免费试用期。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+下表显示了可用于虚拟机和服务器的 Azure 安全中心功能。
 
-以下部分介绍了可用于[支持的平台](security-center-os-coverage.md)的安全中心功能。
+## 支持的虚拟机和服务器功能<a name="vm-server-features"></a>
 
-* [虚拟机/服务器](#vm-server-features)
-* [PaaS 服务](#paas-services)
-
-
-## 支持虚拟机/服务器的功能<a name="vm-server-features"></a>
-
-### <a name="windows"></a>[Windows](#tab/features-windows)
+### <a name="windows-machines"></a>[Windows 计算机](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
+|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|✔</br>（支持的版本）|✔</br>（支持的版本）|✔|Standard|
 |[虚拟机行为分析（和安全警报）](threat-protection.md)|✔|✔|✔|建议（免费） </br></br> 安全警报（标准）|
 |[Fileless 安全警报](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
@@ -59,11 +52,11 @@ ms.locfileid: "77921260"
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
 
 
-### <a name="linux"></a>[Linux](#tab/features-linux)
+### <a name="linux-machines"></a>[Linux 计算机](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
-||**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
+|**功能**|**Azure 虚拟机**|**Azure 虚拟机规模集**|**非 Azure 计算机**|**定价**
 |[Microsoft Defender ATP 集成](security-center-wdatp.md)|-|-|-|Standard|
 |[虚拟机行为分析（和安全警报）](security-center-alerts-iaas.md)|✔</br>（支持的版本）|✔</br>（支持的版本）|✔|建议（免费） </br></br> 安全警报（标准）|
 |[Fileless 安全警报](alerts-reference.md#alerts-windows)|-|-|-|Standard|
@@ -85,6 +78,11 @@ ms.locfileid: "77921260"
 |[网络安全评估](security-center-network-recommendations.md)|✔|✔|-|免费|
 
 --- 
+
+
+> [!TIP]
+>若要试验仅适用于标准定价层的功能，免费级别用户可以在30天内注册。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
 
 ## 支持的 endpoint protection 解决方案<a name="endpoint-supported"></a>
 
@@ -111,46 +109,6 @@ ms.locfileid: "77921260"
 > - 在 Windows Server 2008 R2 虚拟机上检测 System Center Endpoint Protection (SCEP) 需要在 PowerShell 3.0（或更高版本）之后安装 SCEP。
 > - 深度安全代理支持检测趋势微保护。  不支持 OfficeScan 代理。
 
-
-## PaaS 服务支持的<a name="paas-services"></a>功能
-
-Azure 安全中心支持以下 PaaS 资源：
-
-|服务|建议（免费）|安全警报（标准）|漏洞评估（标准）|
-|----|:----:|:----:|:----:|
-|SQL 数据库|✔|✔|✔|
-|Azure 容器注册表|-|-|✔|
-|Azure Kubernetes 服务|✔|✔|-|
-|Azure Database for PostgreSQL *|✔|✔|-|
-|Azure Database for MySQL *|✔|✔|-|
-|Azure CosmosDB *|-|✔|-|
-|存储帐户|✔|-|-|
-|Blob 存储|✔|✔|-|
-|应用服务|✔|✔|-|
-|函数应用|✔|-|-|
-|云服务|✔|-|-|
-|虚拟网络|✔|-|-|
-|子网|✔|-|-|
-|NIC|✔|-|-|
-|网络安全组|✔|-|-|
-|订阅|✔ **|✔|-|
-|批处理帐户|✔|-|-|
-|Service Fabric 帐户|✔|-|-|
-|自动化帐户|✔|-|-|
-|负载均衡器|✔|-|-|
-|认知搜索|✔|-|-|
-|服务总线命名空间|✔|-|-|
-|流分析|✔|-|-|
-|事件中心命名空间|✔|-|-|
-|逻辑应用|✔|-|-|
-|Redis 的缓存|✔|-|-|
-|Data Lake Analytics|✔|-|-|
-|Azure Data Lake 存储|✔|-|-|
-|Key Vault|✔|✔ *|-|
-
-预览版当前支持这些功能 \*。
-
-\*\* Azure Active Directory （Azure AD）建议仅适用于标准订阅。
 
 ## <a name="next-steps"></a>后续步骤
 

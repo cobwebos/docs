@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93baf275e93c28283836a92c71eb9b24151392fc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699596"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598552"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理 Azure 文件共享
 本指南介绍通过 Azure CLI 来使用 [Azure 文件共享](storage-files-introduction.md)的基本知识。 Azure 文件共享与其他文件共享一样，只不过是存储在云中并由 Azure 平台提供支持。 Azure 文件共享支持行业标准 SMB 协议，可以跨多个计算机、应用程序和实例进行文件共享。 
@@ -25,43 +25,49 @@ ms.locfileid: "68699596"
 
 默认情况下，Azure CLI 命令返回 JavaScript 对象表示法 (JSON)。 JSON 是通过 REST API 发送和接收消息的标准方式。 为了便于处理 JSON 响应，本文中的某些示例使用基于 Azure CLI 命令的 *query* 参数。 该参数使用 [JMESPath 查询语言](http://jmespath.org/)来分析 JSON。 若要详细了解如何按照 JMESPath 查询语言的规范来使用 Azure CLI 命令的结果，请参阅 [JMESPath tutorial](http://jmespath.org/tutorial.html)（JMESPath 教程）。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
-如果在本地使用 Azure CLI，请打开一个提示符窗口并登录到 Azure（如果尚未这样做）。
-
-```bash 
-az login
-```
-
 ## <a name="create-a-resource-group"></a>创建资源组
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 如果还没有 Azure 资源组，可以使用 [az group create](/cli/azure/group) 命令创建一个。 
 
-以下示例在“美国东部”  位置创建名为“myResourceGroup”  的资源组：
+以下示例在“美国西部 2”  位置创建名为“myResourceGroup”  的资源组：
 
 ```azurecli-interactive 
-az group create --name myResourceGroup --location eastus
+export resourceGroupName="myResourceGroup"
+region="westus2"
+
+az group create \
+    --name $resourceGroupName \
+    --location $region \
+    --output none
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
-存储帐户是一个存储共享池，在其中可以部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个文件共享。 一个共享可以存储无数个文件，直到达到存储帐户的容量限制为止。
+存储帐户是一个存储共享池，在其中可以部署 Azure 文件共享或其他存储资源，例如 Blob 或队列。 一个存储帐户可以包含无数个文件共享。 一个共享可以存储无数个文件，直至达到存储帐户的容量限制为止。
 
-以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建名为  mystorageaccount\<随机数字\> 的存储帐户，然后将该存储帐户的名称置于 `$STORAGEACCT` 变量中。 存储帐户名称必须是唯一的，因此请确保将“mystorageacct”替换为唯一名称。
+以下示例使用 [az storage account create](/cli/azure/storage/account) 命令创建一个存储帐户。 存储帐户名称必须唯一，因此请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
 ```azurecli-interactive 
-STORAGEACCT=$(az storage account create \
-    --resource-group "myResourceGroup" \
-    --name "mystorageacct" \
-    --location eastus \
+export storageAccountName="mystorageacct$RANDOM"
+
+az storage account create \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
+    --location $region \
+    --kind StorageV2 \
     --sku Standard_LRS \
-    --query "name" | tr -d '"')
+    --enable-large-file-share \
+    --output none
 ```
+
+> [!Note]  
+> 超过 5 TiB（每个共享最多100 TiB）的共享仅适用于本地冗余 (LRS) 和区域冗余 (ZRS) 存储帐户。 若要创建异地冗余 (GRS) 或异地区域冗余 (GZRS) 存储帐户，请删除 `--enable-large-file-share` 参数。
 
 ### <a name="get-the-storage-account-key"></a>获取存储帐户密钥
 存储帐户密钥控制对存储帐户中资源的访问。 这些密钥是在创建存储帐户时自动创建的。 可以使用 [az storage account keys list](/cli/azure/storage/account/keys) 命令获取存储帐户的存储帐户密钥： 
 
 ```azurecli-interactive 
-STORAGEKEY=$(az storage account keys list \
-    --resource-group "myResourceGroup" \
-    --account-name $STORAGEACCT \
+export storageAccountKey=$(az storage account keys list \
+    --resource-group $resourceGroupName \
+    --account-name $storageAccountName \
     --query "[0].value" | tr -d '"')
 ```
 
@@ -69,10 +75,14 @@ STORAGEKEY=$(az storage account keys list \
 现在可以创建第一个 Azure 文件共享了。 请使用 [az storage share create](/cli/azure/storage/share) 命令创建文件共享。 以下示例创建名为 *myshare* 的 Azure 文件共享： 
 
 ```azurecli-interactive
+shareName="myshare"
+
 az storage share create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" 
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
+    --quota 1024 \
+    --output none
 ```
 
 共享名称只能包含小写字母、数字和单个连字符（但不能以连字符开头）。 有关为文件共享和文件命名的完整详细信息，请参阅 [命名和引用共享、目录、文件和元数据](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)。
@@ -91,8 +101,8 @@ Azure 文件提供两种在 Azure 文件共享中使用文件和文件夹的方�
 我们预计，在使用 Azure 文件时，大多数情况下需要通过 SMB 协议来使用 Azure 文件共享，因为这样可以使用那些预期可以使用的现有应用程序和工具，但某些情况下，使用文件 REST API 比使用 SMB 更具优势，例如：
 
 - 需要通过 Azure Bash Cloud Shell（不能通过 SMB 来装载文件共享）来浏览文件共享。
-- 需在无法装载 SMB 共享的客户端（例如未将端口 445 解除阻止的本地客户端）中执行脚本或应用程序。
 - 需利用无服务器资源，例如 [Azure Functions](../../azure-functions/functions-overview.md)。 
+- 你将创建将与许多 Azure 文件共享进行交互的增值服务，例如执行备份或防病毒扫描。
 
 以下示例介绍如何使用 Azure CLI 通过文件 REST 协议来操作 Azure 文件共享。 
 
@@ -101,23 +111,25 @@ Azure 文件提供两种在 Azure 文件共享中使用文件和文件夹的方�
 
 ```azurecli-interactive
 az storage directory create \
-   --account-name $STORAGEACCT \
-   --account-key $STORAGEKEY \
-   --share-name "myshare" \
-   --name "myDirectory" 
+   --account-name $storageAccountName \
+   --account-key $storageAccountKey \
+   --share-name $shareName \
+   --name "myDirectory" \
+   --output none
 ```
 
 ### <a name="upload-a-file"></a>上传文件
 若要演示如何使用 [`az storage file upload`](/cli/azure/storage/file) 命令来上传文件，请首先在 Cloud Shell 暂存驱动器上创建要上传的文件。 以下示例创建并上传该文件：
 
 ```azurecli-interactive
-date > ~/clouddrive/SampleUpload.txt
+cd ~/clouddrive/
+date > SampleUpload.txt
 
 az storage file upload \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --source "~/clouddrive/SampleUpload.txt" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --source "SampleUpload.txt" \
     --path "myDirectory/SampleUpload.txt"
 ```
 
@@ -127,9 +139,9 @@ az storage file upload \
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
     --path "myDirectory" \
     --output table
 ```
@@ -139,37 +151,43 @@ az storage file list \
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
-rm -rf ~/clouddrive/SampleDownload.txt
+rm -f SampleDownload.txt
 
 az storage file download \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
     --path "myDirectory/SampleUpload.txt" \
-    --dest "~/clouddrive/SampleDownload.txt"
+    --dest "SampleDownload.txt" \
+    --output none
 ```
 
 ### <a name="copy-files"></a>复制文件
-一项常见的任务是将文件从一个文件共享复制到另一个文件共享，或者将文件在文件共享和 Azure Blob 存储容器之间来回复制。 为了演示此功能，请创建一个新的共享。 请使用 [az storage file copy](/cli/azure/storage/file/copy) 命令将上传的文件复制到该新共享： 
+一项常见的任务是将文件从一个文件共享复制到另一个文件共享。 为了演示此功能，请创建一个新的共享。 请使用 [az storage file copy](/cli/azure/storage/file/copy) 命令将上传的文件复制到该新共享： 
 
 ```azurecli-interactive
+otherShareName="myshare2"
+
 az storage share create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare2"
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $otherShareName \
+    --quota 1024 \
+    --output none
 
 az storage directory create \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare2" \
-    --name "myDirectory2"
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $otherShareName \
+    --name "myDirectory2" \
+    --output none
 
 az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --source-share "myshare" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --source-share $shareName \
     --source-path "myDirectory/SampleUpload.txt" \
-    --destination-share "myshare2" \
+    --destination-share $otherShareName \
     --destination-path "myDirectory2/SampleCopy.txt"
 ```
 
@@ -177,38 +195,41 @@ az storage file copy start \
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare2" \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $otherShareName \
+    --path "myDirectory2" \
     --output table
 ```
 
-虽然 `az storage file copy start` 命令可以方便地用于 Azure 文件共享和 Azure Blob 存储容器之间的文件移动，但我们仍建议你使用 AzCopy 进行较大型 （就要移动的文件的数量或大小而言）的移动。详细了解 [Linux 版 AzCopy](../common/storage-use-azcopy-linux.md) 和 [Windows 版 AzCopy](../common/storage-use-azcopy.md)。 AzCopy 必须安装在本地。 AzCopy 在 Cloud Shell 中不可用。 
+虽然 `az storage file copy start` 命令可以方便地用于 Azure 文件共享之间的文件移动，但对于迁移和更大的数据移动，我们建议在 macOS 和 Linux 上使用 `rsync`，在 Windows 上使用 `robocopy`。 `rsync` 和 `robocopy` 使用 SMB 而不是 FileREST API 来执行数据移动。
 
 ## <a name="create-and-manage-share-snapshots"></a>创建和管理共享快照
 可以通过 Azure 文件共享执行的另一项有用的任务是创建共享快照。 快照保存 Azure 文件共享在某个时间点的副本。 共享快照类似于你可能已经熟悉的某些操作系统技术：
 
 - 适用于 Linux 系统的[逻辑卷管理器 (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) 快照。
-- 适用于 macOS 的 [Apple 文件系统 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照
-- 适用于 Windows 文件系统（例如 NTFS 和 ReFS）的[卷影复制服务 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) 可以使用 [`az storage share snapshot`](/cli/azure/storage/share) 命令创建共享快照：
+- 适用于 macOS 的 [Apple 文件系统 (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) 快照。
+- 适用于 Windows 文件系统（例如 NTFS 和 ReFS）的[卷影复制服务 (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)。
+ 
+可以使用 [`az storage share snapshot`](/cli/azure/storage/share) 命令创建共享快照：
 
 ```azurecli-interactive
-SNAPSHOT=$(az storage share snapshot \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
+snapshot=$(az storage share snapshot \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
     --query "snapshot" | tr -d '"')
 ```
 
 ### <a name="browse-share-snapshot-contents"></a>浏览共享快照内容
-可以浏览共享快照的内容，只需将变量 `$SNAPSHOT` 中捕获的共享快照的时间戳传递给 `az storage file list` 命令即可：
+可以浏览共享快照的内容，只需将变量 `$snapshot` 中捕获的共享快照的时间戳传递给 `az storage file list` 命令即可：
 
 ```azurecli-interactive
 az storage file list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --snapshot $SNAPSHOT \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --snapshot $snapshot \
     --output table
 ```
 
@@ -217,10 +238,11 @@ az storage file list \
 
 ```azurecli-interactive
 az storage share list \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
     --include-snapshot \
-    --query "[? name=='myshare' && snapshot!=null]" | tr -d '"'
+    --query "[? name== '$shareName' && snapshot!=null].snapshot" \
+    --output tsv
 ```
 
 ### <a name="restore-from-a-share-snapshot"></a>从共享快照还原
@@ -229,22 +251,26 @@ az storage share list \
 ```azurecli-interactive
 # Delete SampleUpload.txt
 az storage file delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --share-name "myshare" \
-    --path "myDirectory/SampleUpload.txt"
- # Build the source URI for a snapshot restore
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --share-name $shareName \
+    --path "myDirectory/SampleUpload.txt" \
+    --output none
+
+# Build the source URI for a snapshot restore
 URI=$(az storage account show \
-    --resource-group "myResourceGroup" \
-    --name $STORAGEACCT \
+    --resource-group $resourceGroupName \
+    --name $storageAccountName \
     --query "primaryEndpoints.file" | tr -d '"')
- URI=$URI"myshare/myDirectory/SampleUpload.txt?sharesnapshot="$SNAPSHOT
- # Restore SampleUpload.txt from the share snapshot
+
+URI=$URI$shareName"/myDirectory/SampleUpload.txt?sharesnapshot="$snapshot
+
+# Restore SampleUpload.txt from the share snapshot
 az storage file copy start \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
     --source-uri $URI \
-    --destination-share "myshare" \
+    --destination-share $shareName \
     --destination-path "myDirectory/SampleUpload.txt"
 ```
 
@@ -253,46 +279,47 @@ az storage file copy start \
 
 ```azurecli-interactive
 az storage share delete \
-    --account-name $STORAGEACCT \
-    --account-key $STORAGEKEY \
-    --name "myshare" \
-    --snapshot $SNAPSHOT
+    --account-name $storageAccountName \
+    --account-key $storageAccountKey \
+    --name $shareName \
+    --snapshot $snapshot \
+    --output none
 ```
 
 ## <a name="clean-up-resources"></a>清理资源
 完成后，可以使用 [`az group delete`](/cli/azure/group) 命令删除资源组和所有相关的资源： 
 
 ```azurecli-interactive 
-az group delete --name "myResourceGroup"
+az group delete --name $resourceGroupName
 ```
 
 也可逐一删除资源。
 - 若要删除为本文创建的 Azure 文件共享，请执行以下命令：
 
     ```azurecli-interactive
-    az storage share delete \
-        --account-name $STORAGEACCT \
-        --account-key $STORAGEKEY \
-        --name "myshare" \
-        --delete-snapshots include
-
-    az storage share delete \
-        --account-name $STORAGEACCT \
-        --account-key $STORAGEKEY \
-        --name "myshare2" \
-        --delete-snapshots include
+    az storage share list \
+            --account-name $storageAccountName \
+            --account-key $storageAccountKey \
+            --query "[].name" \
+            --output tsv | \
+        xargs -L1 bash -ec '\
+            az storage share delete \
+                --account-name "$storageAccountName" \
+                --account-key "$storageAccountKey" \
+                --name $0 \
+                --delete-snapshots include \
+                --output none'
     ```
 
 - 若要删除存储帐户本身，请执行以下命令 （这会隐式删除已创建的 Azure 文件共享，以及任何其他可能已创建的存储资源，例如 Azure Blob 存储容器）：
 
     ```azurecli-interactive
     az storage account delete \
-        --resource-group "myResourceGroup" \
-        --name $STORAGEACCT \
+        --resource-group $resourceGroupName \
+        --name $storageAccountName \
         --yes
     ```
 
 ## <a name="next-steps"></a>后续步骤
-
 > [!div class="nextstepaction"]
 > [什么是 Azure 文件？](storage-files-introduction.md)

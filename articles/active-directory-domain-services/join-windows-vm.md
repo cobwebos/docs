@@ -7,29 +7,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d15877107e49c57f8f33b8ec41caeb7d48230b91
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474694"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77613885"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>教程：将 Windows Server 虚拟机加入托管域
 
 Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active Directory 完全兼容的托管域服务，例如域加入、组策略、LDAP、Kerberos/NTLM 身份验证。 借助 Azure AD DS 托管域，可向 Azure 中的虚拟机 (VM) 提供域加入功能和管理。 本教程演示如何创建 Windows Server VM，然后将其加入 Azure AD DS 托管域。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Windows Server VM
-> * 连接到 Azure 虚拟网络的 Windows Server VM
+> * 将 Windows Server VM 连接到 Azure 虚拟网络
 > * 将 VM 加入 Azure AD DS 托管域
 
-如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，需要以下各资源：
 
@@ -39,8 +39,10 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
-* 用户帐户是 Azure AD 租户中 Azure AD DC 管理员组的成员  。
+* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。 
     * 请确保已执行 Azure AD Connect 密码哈希同步或自自助式密码重置，以便帐户能够登录到 Azure AD DS 托管域。
+* 部署在 Azure AD DS 虚拟网络中的 Azure Bastion 主机。
+    * 根据需要[创建 Azure Bastion 主机][azure-bastion]。
 
 如果已有要加入域的 VM，请跳到[将 VM 加入 Azure AD DS 托管域](#join-the-vm-to-the-azure-ad-ds-managed-domain)部分。
 
@@ -64,19 +66,19 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     | 参数            | 建议的值   |
     |----------------------|-------------------|
-    | Resource group       | 选择或创建资源组，如 myResourceGroup  |
+    | 资源组       | 选择或创建资源组，如 myResourceGroup  |
     | 虚拟机名称 | 输入 VM 的名称，如 myVM  |
     | 区域               | 选择要在其中创建 VM 的区域，如“美国东部”  |
     | 用户名             | 输入要在 VM 上创建的本地管理员帐户的用户名，如 azureuser  |
     | 密码             | 输入，然后确认要在 VM 上创建的本地管理员的安全密码。 请不要指定域用户帐户的凭据。 |
 
-1. 默认情况下，在 Azure 中创建的 VM 无法从 Internet 进行访问。 此配置有助于提高 VM 的安全性并减小潜在攻击的范围。 在本教程的下一步中，需要使用远程桌面协议 (RDP) 连接到 VM，然后将 Windows Server 加入 Azure AD DS 托管域。
+1. 默认情况下，可以使用 RDP 从 Internet 访问在 Azure 中创建的 VM。 启用 RDP 后，可能会发生自动登录攻击，这可能会因为多次尝试连续登录失败而禁用具有常见名称（如 admin 或 administrator）的帐户   。
 
-    启用 RDP 后，可能会发生自动登录攻击，这可能会因为多次尝试连续登录失败而禁用具有常见名称（如 admin 或 administrator）的帐户   。 应仅在需要时启用 RDP，并将其限制为一组已授权 IP 范围。 作为 Azure 安全中心一部分的 [Azure 即时 VM 访问][jit-access]可以启用这些短期受限制的 RDP 会话。 还可[创建和使用 Azure Bastion 主机（目前为预览版）][azure-bastion]，以仅允许通过 SSL 上的 Azure 门户进行访问。
+    应仅在需要时启用 RDP，并将其限制为一组已授权 IP 范围。 此配置有助于提高 VM 的安全性并减小潜在攻击的范围。 也可创建并使用 Azure Bastion 主机，只允许在 Azure 门户中通过 SSL 进行访问。 在本教程的下一步，我们使用 Azure Bastion 主机安全地连接到 VM。
 
-    对于本教程，请手动启用到 VM 的 RDP 连接。
+    现在，请禁用到 VM 的直接 RDP 连接。
 
-    在“公共入站端口”下，请选择“允许所选端口”的选项   。 从“选择入站端口”的下拉菜单中，选择“RDP (3389)”   。
+    在“公共入站端口”下，选择“无”。  
 
 1. 完成后，选择“下一步: **磁盘”** 。
 1. 从“OS 磁盘类型”的下拉菜单中，选择“标准 SSD”，然后选择“下一步:    网络”。
@@ -120,20 +122,23 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="connect-to-the-windows-server-vm"></a>连接到 Windows Server VM
 
-现在，让我们使用 RDP 连接到新建的 Windows Server VM，并加入 Azure AD DS 托管域。 使用在上一步中创建 VM 时指定的本地管理员凭据，而不是任何现有的域凭据。
+若要安全地连接到 VM，请使用 Azure Bastion 主机。 使用 Azure Bastion 时，托管主机部署到虚拟网络中，并提供到 VM 的基于 Web 的 RDP 或 SSH 连接。 不需要为 VM 使用公共 IP 地址，也不需要为外部远程流量打开网络安全组规则。 我们在 Web 浏览器中使用 Azure 门户连接到 VM。
 
-1. 在“概述”  页面上，选择“连接”  。
+若要使用 Bastion 主机连接到 VM，请完成以下步骤：
 
-    ![在 Azure 门户连接到 Windows 虚拟机](./media/join-windows-vm/connect-to-vm.png)
+1. 在 VM 的“概览”  窗格中选择“连接”  ，然后选择“Bastion”  。
 
-1. 选择“下载 RDP 文件”的选项  。 将此 RDP 文件保存到 Web 浏览器中。
-1. 若要连接到 VM，请打开下载的 RDP 文件。 出现提示时，选择“连接”  。
-1. 输入在上一步中输入的用于创建 VM 的本地管理员凭据，如 localhost\azureuser 
-1. 如果在登录过程中看到证书警告，请选择“是”或“继续”以进行连接   。
+    ![在 Azure 门户中使用 Bastion 连接到 Windows 虚拟机](./media/join-windows-vm/connect-to-vm.png)
+
+1. 输入在上一部分指定的 VM 的凭据，然后选择“连接”  。
+
+   ![在 Azure 门户中通过 Bastion 主机进行连接](./media/join-windows-vm/connect-to-bastion.png)
+
+在需要的情况下，允许 Web 浏览器打开要显示的 Bastion 连接的弹出窗口。 连接到 VM 需要几秒钟的时间。
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>将 VM 加入 Azure AD DS 托管域
 
-创建 VM 并建立 RDP 连接后，接下来将 Windows Server 虚拟机加入 Azure AD DS 托管域。 此过程与连接到常规本地 Active Directory 域服务域的计算机相同。
+使用 Azure Bastion 创建 VM 并建立基于 Web 的 RDP 连接后，接下来将 Windows Server 虚拟机加入 Azure AD DS 托管域。 此过程与连接到常规本地 Active Directory 域服务域的计算机相同。
 
 1. 如果在登录 VM 时服务器管理器  默认情况下未打开，请选择“开始”  菜单，然后选择“服务器管理器”  。
 1. 在“服务器管理器”窗口的左窗格中选择“本地服务器”。   在右侧窗格的“属性”下选择“工作组”   。
@@ -144,16 +149,16 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![选择更改工作组或域属性](./media/join-windows-vm/change-domain.png)
 
-1. 在“域”框中指定 Azure AD DS 托管域的名称（如 contoso.com），然后选择“确定”    。
+1. 在“域”框中指定 Azure AD DS 托管域的名称（如 aaddscontoso.com），然后选择“确定”    。
 
     ![指定要加入的 Azure AD DS 托管域](./media/join-windows-vm/join-domain.png)
 
 1. 输入域凭据以加入域。 使用属于 Azure AD DC 管理员组的用户的凭据  。 只有此组的成员才有权将计算机加入 Azure AD DS 托管域。 此帐户必须属于 Azure AD DS 托管域或 Azure AD 租户 - 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。 可以通过以下某种方式指定帐户凭据：
 
-    * **UPN 格式**（推荐）- 输入在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 例如，用户 contosoadmin 的 UPN 后缀为 `contosoadmin@contoso.onmicrosoft.com`  。 有几种常见的用例，可以可靠地使用 UPN 格式登录到域而不是使用 SAMAccountName 格式  ：
+    * **UPN 格式**（推荐）- 输入在 Azure AD 中为用户帐户配置的用户主体名称 (UPN) 后缀。 例如，用户 contosoadmin 的 UPN 后缀为 `contosoadmin@aaddscontoso.onmicrosoft.com`  。 有几种常见的用例，可以可靠地使用 UPN 格式登录到域而不是使用 SAMAccountName 格式  ：
         * 如果用户的 UPN 前缀过长（如 deehasareallylongname），服务可能会自动生成 SAMAccountName   。
         * 如果 Azure AD 租户中有多个用户具有相同的 UPN 前缀（如 dee），服务可能会自动生成其 SAMAccountName 格式   。
-    * **SAMAccountName 格式** - 以 SAMAccountName 格式输入帐户名  。 例如，用户 contosoadmin 的 SAMAccountName 将为 `CONTOSO\contosoadmin`   。
+    * **SAMAccountName 格式** - 以 SAMAccountName 格式输入帐户名  。 例如，用户 contosoadmin 的 SAMAccountName 将为 `AADDSCONTOSO\contosoadmin`   。
 
 1. 加入 Azure AD DS 托管域需要几秒钟时间。 完成后，将出现以下消息欢迎你访问该域：
 
@@ -164,9 +169,9 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 1. 若要完成加入 Azure AD DS 托管域的过程，请重启 VM。
 
 > [!TIP]
-> 可以通过 PowerShell 使用 [Add-Computer][add-computer] cmdlet 将 VM 加入域。 以下示例加入 CONTOSO 域，然后重启 VM  。 出现提示时，输入属于 Azure AD DC 管理员组的用户的凭据  ：
+> 可以通过 PowerShell 使用 [Add-Computer][add-computer] cmdlet 将 VM 加入域。 以下示例加入 AADDSCONTOSO 域，然后重启 VM  。 出现提示时，输入属于 Azure AD DC 管理员组的用户的凭据  ：
 >
-> `Add-Computer -DomainName CONTOSO -Restart`
+> `Add-Computer -DomainName AADDSCONTOSO -Restart`
 >
 > 若要在不连接到 VM 并手动配置连接的情况下将 VM 加入域，可以使用 [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell cmdlet。
 
@@ -174,22 +179,13 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在下一个教程中，你将使用此 Windows Server VM 安装管理工具，以便管理 Azure AD DS 托管域。 如果不想继续学习本系列教程，请查看以下清理步骤，以[禁用 RDP](#disable-rdp) 或[删除 VM](#delete-the-vm)。 否则，[请继续学习下一个教程](#next-steps)。
+在下一个教程中，你将使用此 Windows Server VM 安装管理工具，以便管理 Azure AD DS 托管域。 如果不想继续学习本系列教程，请查看以下清理步骤，以便[删除 VM](#delete-the-vm)。 否则，[请继续学习下一个教程](#next-steps)。
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>将 VM 取消加入 Azure AD DS 托管域
 
 若要从 Azure AD DS 托管域中删除 VM，请再次执行[将 VM 加入域](#join-the-vm-to-the-azure-ad-ds-managed-domain)的步骤。 不要加入 Azure AD DS 托管域，而是选择加入工作组，例如默认的 WORKGROUP  。 VM 重新启动后，将从 Azure AD DS 托管域中删除计算机对象。
 
 如果你[删除 VM](#delete-the-vm) 而未取消加入域，则 Azure AD DS 中将保留一个孤立的计算机对象。
-
-### <a name="disable-rdp"></a>禁用 RDP
-
-如果继续使用本教程中创建的 Windows Server VM 来运行自己的应用程序或工作负载，请记住 RDP 是通过 Internet 打开的。 若要提高安全性并降低遭受攻击的风险，应通过 Internet 禁用 RDP。 若要通过 Internet 禁用 Windows Server VM 的 RDP，请完成以下步骤：
-
-1. 从左侧菜单中，选择“资源组” 
-1. 选择资源组，如 myResourceGroup  。
-1. 选择 VM（如 myVM），然后选择“网络”   。
-1. 在网络安全组的“入站网络安全规则”下，选择允许 RDP 的规则，然后选择“删除”   。 删除入站安全规则需要几秒钟的时间。
 
 ### <a name="delete-the-vm"></a>删除 VM
 
@@ -211,7 +207,7 @@ Windows Server VM 应成功加入 Azure AD DS 托管域，加入方式与常规�
 请尝试执行每个故障排除步骤后，再次将 Windows Server VM 加入托管域。
 
 * 请验证 VM 是否已连接到启用 Azure AD DS 的同一虚拟网络，或者是否具有对等网络连接。
-* 请尝试 ping 托管域的 DNS 域名，例如 `ping contoso.com`。
+* 请尝试 ping 托管域的 DNS 域名，例如 `ping aaddscontoso.com`。
     * 如果 ping 请求失败，请尝试 ping 托管域的 IP 地址，例如 `ping 10.0.0.4`。 从 Azure 资源列表中选择 Azure AD DS 托管域时，环境的 IP 地址将显示在“属性”页上  。
     * 如果能够 ping 通该 IP 地址，但无法 ping 通域，则表示 DNS 的配置可能不正确。 确认已将托管域的 IP 地址配置为虚拟网络的 DNS 服务器。
 * 请尝试使用 `ipconfig /flushdns` 命令刷新虚拟机上的 DNS 解析程序缓存。
@@ -224,13 +220,13 @@ Windows Server VM 应成功加入 Azure AD DS 托管域，加入方式与常规�
 
 * 确保指定的用户帐户属于 AAD DC 管理员组  。
 * 确认该帐户属于 Azure AD DS 托管域或 Azure AD 租户。 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。
-* 请尝试使用 UPN 格式指定凭据。例如 `contosoadmin@contoso.onmicrosoft.com`。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName  。 在这些情况下，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式  。
+* 请尝试使用 UPN 格式指定凭据。例如 `contosoadmin@aaddscontoso.onmicrosoft.com`。 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，系统可能会自动生成帐户的 SAMAccountName  。 在这些情况下，帐户的 SAMAccountName 格式可能不同于所需的格式或者在本地域中使用的格式  。
 * 检查托管域是否已[启用密码同步][password-sync]。 如果没有此配置步骤，Azure AD DS 托管域中将不会出现所需的密码哈希，因此无法正确验证登录尝试。
 * 等待密码同步完成。 更改用户帐户的密码后，Azure AD 的自动后台同步将更新 Azure AD DS 中的密码。 密码需要一段时间才能用于加入域。
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 创建 Windows Server VM
@@ -249,6 +245,5 @@ Windows Server VM 应成功加入 Azure AD DS 托管域，加入方式与常规�
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension
