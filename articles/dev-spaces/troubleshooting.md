@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605253"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662461"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -474,7 +474,7 @@ kubectl -n my-namespace delete pod --all
 | cloudflare.docker.com | HTTPS:443 | 请求 linux alpine 和其他 Azure Dev Spaces 映像 |
 | gcr.io | HTTP：443 | 请求 helm/tiller 映像|
 | storage.googleapis.com | HTTP：443 | 请求 helm/tiller 映像|
-| azds-<guid>。<location>.azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。|
+| azds-<guid>。<location>. azds.io | HTTPS:443 | 与控制器的 Azure Dev Spaces 后端服务进行通信。 可以在% USERPROFILE%\.azds\settings.json 的 "dataplaneFqdn" 中找到准确的 FQDN。|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>"找不到群集 \<群集\> 订阅中 \<subscriptionId"\>"
 
@@ -484,3 +484,14 @@ kubectl -n my-namespace delete pod --all
 
 * 使用 `az aks use-dev-spaces -g <resource group name> -n <cluster name>` 更新当前上下文。 此命令还会启用 AKS 群集上的 Azure Dev Spaces （如果尚未启用）。 或者，您可以使用 `kubectl config use-context <cluster name>` 更新当前上下文。
 * 使用 `az account show` 显示目标为当前 Azure 订阅，并验证此是否正确。 您可以使用 `az account set`更改目标订阅。
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>旋转 AKS 证书后使用 Dev 空格时出错
+
+在[AKS 群集中旋转证书](../aks/certificate-rotation.md)后，某些操作（如 `azds space list` 和 `azds up`）将会失败。 在群集上循环证书后，还需要刷新 Azure Dev Spaces 控制器上的证书。
+
+若要解决此问题，请确保你的*kubeconfig*已使用 `az aks get-credentials` 的证书，然后运行 `azds controller refresh-credentials` 命令。 例如：
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```

@@ -3,17 +3,16 @@ title: 如何使用 Azure Monitor 警报触发复杂操作
 description: 了解如何创建逻辑应用操作处理 Azure Monitor 警报。
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ad196f52935af4ab4aa7af1b80183161065d4b4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669125"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>如何使用 Azure Monitor 警报触发复杂操作
 
@@ -285,7 +284,7 @@ Azure Service Health 条目包含在活动日志中。 创建警报的过程类�
 
       !["指标警报事实 post 操作"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "指标警报事实 post 操作")
 
-  1. 在 "**如果为 false** " 条件下，定义 Microsoft 团队操作以传达指标警报并不匹配逻辑应用的预期。 包含 JSON 有效负载。 注意如何在 `json()` 表达式中引用 `triggerBody` 动态内容。
+  1. 在 "**如果为 false** " 条件下，定义 Microsoft 团队操作以传达指标警报并不匹配逻辑应用的预期。 包含 JSON 有效负载。 注意如何在 `triggerBody` 表达式中引用 `json()` 动态内容。
 
       !["指标警报错误情况 post 操作"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "指标警报错误情况 post 操作")
 
