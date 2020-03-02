@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: a98c8b5d7c312582cf6644f74bda664c5031468b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166155"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616332"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>快速入门：使用适用于 Java 的自定义视觉 SDK 创建对象检测项目
 
@@ -25,24 +25,27 @@ ms.locfileid: "76166155"
 
 - 所选 Java IDE
 - 已安装 [JDK 7 或 8](https://aka.ms/azure-jdks)。
-- 已安装 Maven
+- 已安装 [Maven](https://maven.apache.org/)
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
 
 若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些包将包含在要下载的示例项目中，但你可以在此处逐个访问它们。
 
-可从 maven 中央存储库安装自定义影像 SDK：
+可在 maven 中央存储库中找到自定义视觉 SDK：
 - [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [预测 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 克隆或下载[认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)项目。 导航到 **Vision/CustomVision/** 文件夹。
 
-此 Java 项目创建新的名为“示例 Java OD 项目”  的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定树是铁杉树  还是日本樱花树  。
+此 Java 项目创建新的名为“示例 Java OD 项目”  的自定义视觉对象检测项目，该项目可以通过[自定义视觉网站](https://customvision.ai/)进行访问。 然后，它上传图像以定型和测试分类器。 在此项目中，分类器用于确定对象是**叉子**还是**剪刀**。
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-程序已经过配置，可以将密钥数据存储为环境变量。 导航到 PowerShell 中的 **Vision/CustomVision** 文件夹，设置这些变量。 然后输入命令：
+程序已经过配置，可以将密钥数据作为环境变量引用。 导航到 **Vision/CustomVision** 文件夹，然后输入以下 PowerShell 命令来设置环境变量。 
+
+> [!NOTE]
+> 如果使用的是非 Windows 操作系统，请参阅[配置环境变量](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication)，了解相关说明。
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -94,9 +97,9 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-若要使用 maven 来编译和运行解决方案，请在 PowerShell 的项目目录中运行以下命令：
+若要使用 maven 编译并运行解决方案，请在命令提示符下导航到项目目录 (**Vision/CustomVision**)，并执行运行命令：
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 
