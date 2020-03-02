@@ -4,12 +4,12 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248985"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649529"
 ---
 ## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>APIM 代理服务器在 TLS 握手中如何通过 SSL 证书进行响应
 
@@ -20,7 +20,7 @@ ms.locfileid: "66248985"
 如果客户使用不发送 [SNI](https://tools.ietf.org/html/rfc6066#section-3) 标头的客户端，则 APIM 会根据以下逻辑创建响应：
 
 * 如果服务仅为代理配置了一个自定义域，则默认证书是已颁发给代理自定义域的证书。
-* 如果服务为代理配置了多个域（只有**高级**层才支持），则客户可以指定哪个证书应当作为默认证书。 若要设置默认证书，[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) 属性应当设置为 true ("defaultSslBinding":"true")。 如果客户未设置该属性，则默认证书是颁发给 *.azure api.net 上托管的默认代理域的证书。
+* 如果服务已为代理配置了多个自定义域（在**开发人员**和**高级**层中受支持），则客户可以指定哪个证书应为默认证书。 若要设置默认证书，[defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) 属性应当设置为 true ("defaultSslBinding":"true")。 如果客户未设置该属性，则默认证书是颁发给 *.azure api.net 上托管的默认代理域的证书。
 
 ## <a name="support-for-putpost-request-with-large-payload"></a>对包含大型有效负载的 PUT/POST 请求的支持
 

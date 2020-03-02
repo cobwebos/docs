@@ -1,5 +1,5 @@
 ---
-title: 什么是地理人工智能 DSVM？
+title: 什么是地理人工智能 Data Science Virtual Machine？
 titleSuffix: Azure Data Science Virtual Machine
 description: 地理人工智能 Data Science Virtual Machine 提供 ArcGIS Pro 用于处理地理数据，并提供 Python、R 和数据科学工具包用于处理机器学习和人工智能。
 keywords: 深度学习, AI, 数据科学工具, 数据科学虚拟机, 地理空间分析
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899908"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526055"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>什么是地理人工智能 Data Science Virtual Machine？
 

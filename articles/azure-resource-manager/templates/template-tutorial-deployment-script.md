@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5454d2f80d1febccb0c57ecf2e80d930bb5cb761
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 21725e64bb359b2f11086baceb186605f010b796
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988798"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561453"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教程：使用部署脚本创建自签名证书（预览版）
 
@@ -266,13 +266,13 @@ ms.locfileid: "76988798"
     * **timeout**：指定 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)中指定的脚本执行最大允许时间。 默认值为 **P1D**。
     * **arguments**：指定参数值。 请以空格分隔这些值。
     * **scriptContent**：指定脚本内容。 若要运行外部脚本，请改用 **primaryScriptURI**。 有关详细信息，请参阅[使用外部脚本](./deployment-script-template.md#use-external-scripts)。
-        仅当在本地计算机上测试脚本时，才需要声明 **$DeploymentScriptOutputs**。 通过声明该变量，可在本地计算机和 deploymentScript 资源中运行脚本，而无需进行更改。 分配给 $DeploymentScriptOutputs 的值可用作部署中的输出。 有关详细信息，请参阅[使用部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
+        仅当在本地计算机上测试脚本时，才需要声明 **$DeploymentScriptOutputs**。 通过声明该变量，可在本地计算机和 deploymentScript 资源中运行脚本，而无需进行更改。 分配给 $DeploymentScriptOutputs 的值可用作部署中的输出。 有关详细信息，请参阅[使用 PowerShell 部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-powershell-script)或[使用 CLI 部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-cli-script)。
     * **cleanupPreference**：指定有关何时删除部署脚本资源的首选项。  默认值为 **Always**，这意味着不管最终状态如何（成功、失败、已取消），都会删除部署脚本资源。 在本教程中，将使用 **OnSuccess**，以便你有机会查看脚本执行结果。
     * **retentionInterval**：指定服务在达到最终状态后保留脚本资源的时间间隔。 在此持续时间到期时，将删除资源。 持续时间基于 ISO 8601 模式。 本教程使用 P1D，这意味着只有一天的时间。  当 **cleanupPreference** 设置为 **OnExpiration** 时将使用此属性。 当前未启用此属性。
 
     部署脚本采用三个参数：密钥保管库名称、证书名称和使用者名称。  它将创建一个证书，然后将该证书添加到密钥保管库。
 
-    **$DeploymentScriptOutputs** 用来存储输出值。  若要了解详细信息，请参阅[使用部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-deployment-scripts)。
+    **$DeploymentScriptOutputs** 用来存储输出值。  若要了解详细信息，请参阅[使用 PowerShell 部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-powershell-script)或[使用 CLI 部署脚本的输出](./deployment-script-template.md#work-with-outputs-from-cli-script)。
 
     可在[此处](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault.json)找到完成的模板。
 

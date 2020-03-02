@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982583"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623632"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -260,7 +260,7 @@ Azure 机器学习管道可将多个机器学习和数据处理步骤组织成�
 
 ## <a name="run-the-pipeline"></a>运行管道
 
-完成管道的所有设置后，可以提交管道运行。
+完成管道的所有设置后，可以提交管道运行来训练机器学习模型。 在设计器中生成管道时，可以随时提交管道运行。 你可以这样做，以便边运行边检查自己的工作，并验证管道功能是否按预期工作。
 
 1. 在画布顶部选择“运行”。 
 

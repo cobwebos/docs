@@ -1,36 +1,34 @@
 ---
 title: Azure CLI 脚本示例 - 在应用配置存储区中使用密钥值
 titleSuffix: Azure App Configuration
-description: 提供有关如何处理 Azure 应用配置存储区中的密钥值的信息
+description: 使用 Azure CLI 脚本在应用配置存储中创建、查看、更新和删除密钥值
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 11/08/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1a4edabe666a554ccd01d110f0f71226221dfc67
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468144"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523637"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>处理 Azure 应用配置存储区中的密钥值
 
-此示例脚本在 Azure 应用配置存储区中创建新密钥值，列出所有现有密钥值，更新新创建的密钥的值，最后删除它。
+此示例脚本演示如何：
+* 创建新的键值对
+* 列出所有现有的键值对
+* 更新新建的密钥的值
+* 删除新的键值对
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 2.0 版或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+本文需要 Azure CLI 2.0 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -81,13 +79,13 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>脚本说明
 
-此脚本使用以下命令对应用程序配置存储区中的密钥值执行操作。 表中的每条命令均链接到特定于命令的文档。
+下表列出了我们的示例脚本中所用的命令。 
 
 | Command | 说明 |
 |---|---|
-| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | 创建或更新密钥值。 |
-| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | 列出应用程序配置存储区中的密钥值。 |
-| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | 删除密钥值。 |
+| [az appconfig kv set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | 创建或更新键值对。 |
+| [az appconfig kv list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | 列出应用配置存储中的键值对。 |
+| [az appconfig kv delete](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | 删除键值对。 |
 
 ## <a name="next-steps"></a>后续步骤
 

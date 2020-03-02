@@ -5,13 +5,13 @@ author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
-ms.date: 02/24/2019
-ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.date: 02/19/2020
+ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467549"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523469"
 ---
 # <a name="what-is-azure-app-configuration"></a>什么是 Azure 应用程序配置？
 
@@ -19,9 +19,9 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 
 ## <a name="why-use-app-configuration"></a>为何要使用应用程序配置？
 
-基于云的应用程序通常在多个区域中的多个虚拟机或容器上运行，并且使用多个外部服务。 创建可靠且可伸缩的分发式应用程序是一项挑战。
+基于云的应用程序通常在多个区域中的多个虚拟机或容器上运行，并且使用多个外部服务。 在分布式环境中创建可靠且可缩放的应用程序会带来巨大的挑战。
 
-各种编程方法可帮助开发人员应对应用程序构建日益复杂的问题。 例如，[十二要素应用](https://12factor.net/)描述了很多经过良好测试的架构模式和云应用程序的最佳配用做法。 本指南中的一个关键建议是将配置从代码中分离出来。 在本例中，应用程序的配置设置应保留在其可执行文件的外部，并从其运行时环境或外部源进行读取。
+各种编程方法可帮助开发人员应对应用程序构建日益复杂的问题。 例如，[十二要素应用](https://12factor.net/)描述了很多经过良好测试的架构模式和云应用程序的最佳配用做法。 本指南中的一个关键建议是将配置从代码中分离出来。 应用程序的配置设置应保留在其可执行文件的外部，并从其运行时环境或外部源进行读取。
 
 当应用程序可使用应用程序配置时，可参见以下示例，了解使用它可让哪些类型的应用程序受益：
 
@@ -38,7 +38,7 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 * 用于功能标志管理的专用 UI
 * 可比较自定义维度上的两组配置
 * 通过 Azure 托管的标识增强了安全性
-* 完整数据加密（无论是静态数据还是运输中的数据）
+* 对静态和传输中的敏感信息进行加密
 * 与热门框架的本机集成
 
 应用程序配置可实现 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)，后者用于存储应用程序密钥。 借助应用程序配置，可更轻松地实现以下场景：
@@ -49,7 +49,7 @@ Azure 应用程序配置提供一项可集中管理应用程序设置和功能�
 
 ## <a name="use-app-configuration"></a>使用应用程序配置
 
-将应用程序配置存储区添加到应用程序的最简单方法是通过 Microsoft 提供的客户端库。 根据编程语言和框架，你可使用以下最佳方法。
+将应用配置存储添加到应用程序的最简单方法是通过 Microsoft 提供的客户端库。 以下方法可用于与应用程序连接，具体取决于所选的语言和框架
 
 | 编程语言和框架 | 如何连接 |
 |---|---|

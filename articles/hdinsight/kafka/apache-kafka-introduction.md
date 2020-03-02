@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960093"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560093"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Kafka
 
@@ -94,6 +94,8 @@ Kafka 将记录（数据）存储在主题中  。 记录由生成者  生成，
 使用以下链接了解如何使用 Apache Kafka on HDInsight：
 
 * [快速入门：创建 Apache Kafka on HDInsight](apache-kafka-get-started.md)
+
+* [将 Kafka 与 REST 代理配合使用](rest-proxy.md)
 
 * [教程：将 Apache Spark 与 Apache Kafka on HDInsight 配合使用](../hdinsight-apache-spark-with-kafka.md)
 

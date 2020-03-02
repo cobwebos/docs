@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757793"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605675"
 ---
 # <a name="load-balancer-components-and-limitations"></a>负载均衡器组件和限制
 Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以通过 Azure 门户、Azure CLI 或 Azure PowerShell 在你的订阅中配置这些组件。  
@@ -73,7 +73,9 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 
 下图显示了基于哈希的分配：
 
-  ![基于哈希的分发](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="基于哈希的分发">
+</p>
 
   图：  基于哈希的分发
 
@@ -132,9 +134,11 @@ Azure 负载均衡器包含几个关键组件，用于执行其操作。  可以
 
 下图显示了公共端口和 TCP 端口 80 之间的 Web 流量的负载均衡终结点，该流量由三个 VM 共享。 三个 VM 位于负载均衡集中。
 
-![公共负载均衡器示例](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="公共负载均衡器">
+</p>
 
-图：*使用公共负载均衡器对 Web 流量进行均衡*
+图：  使用公共负载均衡器均衡 Web 流量
 
 Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共 IP 地址。 Azure 负载均衡器在负载平衡集内的三个 VM 之间分配请求。 有关负载均衡器算法的详细信息，请参阅[负载均衡器的概念](concepts-limitations.md#load-balancer-concepts)。
 
@@ -151,7 +155,10 @@ Internet 客户端将网页请求发送到 TCP 端口 80 上 Web 应用的公共
 * **对于多层应用程序**：针对面向 Internet 的多层应用程序进行负载均衡，其中后端层不面向 Internet。 后端层需要针对面向 Internet 的层发出的流量进行负载均衡。 请参阅下一个图。
 * **对于业务线应用程序**：使托管在 Azure 中的业务线应用程序实现负载均衡，而无需其他负载均衡器硬件或软件。 此方案将本地服务器包含在一组流量已实现负载均衡的计算机中。
 
-![内部负载均衡器示例](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="公共负载均衡器">
+</p>
 
 图：*使用公共和内部负载均衡器对多层应用程序进行均衡*
 

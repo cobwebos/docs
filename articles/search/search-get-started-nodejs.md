@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406936"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623996"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>快速入门：使用 REST API 在 Node.js 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -29,21 +29,26 @@ ms.locfileid: "74406936"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-本快速入门使用以下服务、工具和数据。
+我们使用了以下软件和服务来构建和测试本快速入门：
 
-+ [Node.js](https://nodejs.org)。
-+ [NPM](https://www.npmjs.com) 应由 Node.js 安装。
-+ 本文或[存储库中的 **quickstart** 目录](https://github.com/Azure-Samples/azure-search-javascript-samples/)提供了示例索引结构和匹配的文档。
++ [Node.js](https://nodejs.org)
+
++ [NPM](https://www.npmjs.com) 应由 Node.js 安装
+
++ 本文提供了一个示例索引结构和与之匹配的文档，这些内容也可以从[存储库的**快速入门**目录](https://github.com/Azure-Samples/azure-search-javascript-samples/)中获得
+
 + [创建 Azure 认知搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 建议：
 
-* [Visual Studio Code](https://code.visualstudio.com)。
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * VSCode 的 [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 和 [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 扩展。
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>获取密钥和 URL
 
 对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
@@ -58,7 +63,7 @@ ms.locfileid: "74406936"
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="set-up-your-environment"></a>设置环境
+## <a name="set-up-your-environment"></a>设置你的环境
 
 首先打开 Powershell 控制台或者安装了 Node.js 的其他环境。
 
@@ -108,16 +113,17 @@ ms.locfileid: "74406936"
       }
     }
     ```
-创建用于保存搜索服务数据的 **azure_search_config.json** 文件：
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. 创建用于保存搜索服务数据的 **azure_search_config.json** 文件：
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 请将 `[SERVICE_NAME]` 值替换为搜索服务的名称。 将 `[ADMIN_KEY]` 和 `[QUERY_KEY]` 替换为前面记下的密钥值。 
 
@@ -403,7 +409,7 @@ const AzureSearchClient = require('./AzureSearchClient.js');
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ function sleep(ms) {
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();

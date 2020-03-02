@@ -1,21 +1,21 @@
 ---
-title: 教程：通过 Azure 事件网格监视 Key Vault
-description: 教程：使用 Azure 事件网格订阅 Key Vault 事件
-services: media-services
+title: 通过 Azure 事件网格监视 Key Vault
+description: 使用 Azure 事件网格订阅 Key Vault 事件
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133347"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650735"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>教程：通过 Azure 事件网格监视 Key Vault（预览版）
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>通过 Azure 事件网格监视 Key Vault（预览版）
 
 与事件网格的 Key Vault 集成目前处于预览阶段。 用户可以通过它在 Key Vault 中存储的机密状态发生更改时收到通知。 状态更改定义为即将过期的机密（在 30 天内到期）、已过期的机密或具有可用新版本的机密。 支持所有三种机密类型（密钥、证书和机密）的通知。
 
@@ -27,10 +27,10 @@ ms.locfileid: "74133347"
 
 有关详细信息，请参阅 [Key Vault 事件架构](../event-grid/event-schema-key-vault.md)。
 
-> [!NOTE]
-> 仅在设置订阅后创建的机密版本（所有三个类型）才会触发事件。
->
-> 对于现有的机密，必须生成新的版本。
+> [!WARNING]
+> 通知事件仅在新版本的机密、密钥和证书上触发，并且你必须先在密钥保管库中订阅该事件才能接收这些通知。
+> 
+> 仅当根据为证书指定的策略自动续订证书时，才会收到有关证书的通知事件。
 
 ## <a name="practices-for-consuming-events"></a>使用事件的做法
 

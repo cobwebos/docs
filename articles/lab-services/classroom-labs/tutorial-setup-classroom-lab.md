@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134067"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592214"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -72,7 +72,7 @@ ms.locfileid: "77134067"
     4. **停止**模板 VM。  
 
 ## <a name="publish-the-template-vm"></a>发布模板 VM
-在此步骤中，我们发布模板 VM。 发布过程创建的实验室 VM 基本上是模板 VM 的副本。 
+在此步骤中，我们发布模板 VM。 你发布模板 VM 时，Azure 实验室服务会使用该模板在实验室中创建 VM。 所有虚拟机的配置都与模板相同。
 
 1. 在“模板”页上的工具栏中选择“发布”  。  
 
@@ -89,6 +89,9 @@ ms.locfileid: "77134067"
 4. 等待发布完成，然后选择左侧菜单上的“虚拟机”或选择“虚拟机”磁贴，切换到“虚拟机池”页。     确认看到这些虚拟机处于“未分配”状态。 这些 VM 尚未分配给学生。 它们应该处于“已停止”状态。  可以在此页上启动学生 VM，连接到该 VM，停止该 VM，然后删除该 VM。 你可以在此页中启动这些 VM，也可以让你的学生启动它们。 
 
     ![处于已停止状态的虚拟机](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)   
+
+    > [!NOTE]
+    > 当教师打开学生 VM 时，该学生的配额不会受到影响。 用户配额指定用户在计划上课时间之外可用的实验室小时数。 有关配额的详细信息，请参阅[为用户设置配额](how-to-configure-student-usage.md?#set-quotas-for-users)。
 
 ## <a name="set-a-schedule-for-the-lab"></a>为实验室设置计划
 为实验室创建计划事件，这样实验室中的 VM 就会在特定时间自动启动/停止。 此前指定的用户配额（默认值：10 小时）是在此计划时间之外为每个用户分配的额外时间。 

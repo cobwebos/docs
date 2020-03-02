@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0a705ad81925491fe054d846143472c6e4432b69
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846540"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561896"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>在 Azure DevOps 中通过 Azure Cosmos DB 模拟器生成任务设置 CI/CD 管道
 
@@ -73,7 +73,7 @@ Start-CosmosDbEmulator
 
 现在需配置测试，以便使用模拟器。 模拟器生成任务导出环境变量“CosmosDbEmulator.Endpoint”，生成管道中的任何其他任务都可以针对其发出请求。 
 
-在本教程中，我们将使用 [Visual Studio 测试任务](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)运行通过 **.runsettings** 文件配置的单元测试。 若要详细了解单元测试设置，请访问此[文档](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)。 本文档中使用的完整 Todo 应用程序代码示例可在 [Github](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 上找到
+在本教程中，我们将使用 [Visual Studio 测试任务](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md)运行通过 **.runsettings** 文件配置的单元测试。 若要详细了解单元测试设置，请访问此[文档](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017)。 本文档中使用的完整 Todo 应用程序代码示例可在 [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 上找到
 
 下面是一个 **.runsettings** 文件的示例，该文件定义需传递到应用程序的单元测试中的参数。 请注意，所使用的 `authKey` 变量是模拟器的[已知密钥](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests)。 此 `authKey` 是模拟器生成任务预期使用的密钥，应该在 **.runsettings** 文件中定义。
 

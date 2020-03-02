@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276969"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615501"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享 Azure 空间定位点
 
@@ -44,13 +44,13 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 ## <a name="deploy-your-sharing-anchors-service"></a>部署共享定位点服务
 
-## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/VS)
+## <a name="visual-studio"></a>[Visual Studio](#tab/VS)
 
 打开 Visual Studio，然后在 `Sharing\SharingServiceSample` 文件夹中打开项目。
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="visual-studio-codetabvsc"></a>[Visual Studio Code](#tab/VSC)
+## <a name="visual-studio-code"></a>[Visual Studio Code](#tab/VSC)
 
 在 VS Code 中部署服务之前，需要创建资源组和应用服务计划。
 
@@ -89,6 +89,12 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 ## <a name="deploy-the-sample-app"></a>部署示例应用
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由于中断性变更，目前不支持 Unity 2019.3。 请使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

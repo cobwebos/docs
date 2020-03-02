@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371350"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558894"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -26,7 +26,7 @@ ms.locfileid: "77371350"
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
 
-在本教程中，你将创建一个包含三个子网的单个简化 VNet，以便于部署。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
+在本教程中，你将创建一个包含三个子网的单个简化 VNet，以便于部署。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)。 防火墙位于其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
@@ -60,7 +60,7 @@ ms.locfileid: "77371350"
 2. 在 Azure 门户菜单上，选择“资源组”或从任意页面搜索并选择“资源组”   。 然后选择“添加”  。
 3. 对于“资源组名称”，请输入“Test-FW-RG”   。
 4. 对于“订阅”，请选择自己的订阅。 
-5. 对于“资源组位置”，请选择一个位置。  创建的所有后续资源必须位于同一位置。
+5. 对于“资源组位置”，请选择一个位置。  你创建的所有其他资源必须位于同一位置。
 6. 选择“创建”  。
 
 ### <a name="create-a-vnet"></a>创建 VNet
@@ -193,10 +193,11 @@ ms.locfileid: "77371350"
 6. 对于“优先级”，请键入 **200**。 
 7. 对于“操作”，请选择“允许”。  
 8. 在“规则”  >“目标 FQDN”  下，键入 **Allow-Google** 作为**名称**。
-9. 对于“源地址”，请键入 **10.0.2.0/24**。 
-10. 对于“协议:端口”，请键入 **http, https**。 
-11. 对于“目标 FQDN”，请键入 **www.google.com** 
-12. 选择 **添加** 。
+9. 对于**源类型**，请选择“IP 地址”  。
+10. 对于**源**，请键入 **10.0.2.0/24**。
+11. 对于“协议:端口”，请键入 **http, https**。 
+12. 对于“目标 FQDN”，请键入 **www.google.com** 
+13. 选择 **添加** 。
 
 Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则集合。 这些 FQDN 特定于平台，不能用于其他目的。 有关详细信息，请参阅[基础结构 FQDN](infrastructure-fqdns.md)。
 
@@ -209,10 +210,11 @@ Azure 防火墙包含默认情况下允许的基础结构 FQDN 的内置规则�
 3. 对于“名称”，请键入 **Net-Coll01**。 
 4. 对于“优先级”，请键入 **200**。 
 5. 对于“操作”，请选择“允许”。  
-6. 在“规则”下，为“名称”键入 **Allow-DNS**。  
+6. 在“规则”下，对于“名称”键入 **Allow-DNS**。   
 7. 对于“协议”，请选择“UDP”。  
-8. 对于“源地址”，请键入 **10.0.2.0/24**。 
-9. 对于“目标地址”，请键入 **209.244.0.3,209.244.0.4**
+9. 对于**源类型**，请选择“IP 地址”  。
+1. 对于**源**，请键入 **10.0.2.0/24**。
+2. 对于**目标地址**，请键入 **209.244.0.3,209.244.0.4**
 
    这些是由 CenturyLink 操作的公共 DNS 服务器。
 1. 对于“目标端口”，请键入 **53**。 

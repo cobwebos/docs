@@ -1,14 +1,14 @@
 ---
 title: 蓝图示例的索引
 description: 用于通过 Azure 蓝图部署环境、策略和云采用框架基础的符合性和标准示例的索引。
-ms.date: 02/11/2020
+ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 88dde10efefd8153eff9aa6ad2ea47a1e00e2c87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150453"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196818"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
@@ -28,6 +28,7 @@ ms.locfileid: "77150453"
 | [ISO 27001](./iso27001/index.md) | 提供用于符合 ISO 27001 的规范措施。 |
 | [ISO 27001 共享服务](./iso27001-shared/index.md) | 提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 |
 | [ISO 27001 应用服务环境/SQL 数据库工作负荷](./iso27001-ase-sql-workload/index.md) | 为 [ISO 27001 共享服务](./iso27001-shared/index.md)蓝图示例提供了其他基础结构。 |
+| [介质](./media/index.md) | 提供了一组策略以帮助符合媒体 MPAA。 |
 | [NIST SP 800-53 R4](./nist-sp-800-53-rev4/index.md) | 提供用于符合 NIST SP 800-53 R4 的规范措施。 |
 | [PCI-DSS v3.2.1](./pci-dss-3.2.1/index.md) | 提供一组策略以帮助用户符合 PCI-DSS v3.2.1。 |
 | [SWIFT CSP-CSCF v2020](./swift-2020/index.md) | 帮助用户符合 SWIFT CSP-CSCF v2020。 |

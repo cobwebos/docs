@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210323"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560824"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 
@@ -100,6 +100,12 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+
+如果希望仅删除数据库并在将来使用 Azure Cosmos 帐户，则可以通过以下步骤删除数据库：
+
+* 转到 Azure Cosmos 帐户。
+* 打开**数据资源管理器**，右键单击要删除的数据库，然后选择“删除数据库”  。
+* 输入数据库 ID/数据库名称以确认删除操作。 
 
 ## <a name="next-steps"></a>后续步骤
 

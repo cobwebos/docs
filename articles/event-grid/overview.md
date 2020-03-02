@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437310"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505911"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -39,11 +39,15 @@ ms.locfileid: "75437310"
 * [自定义主题](event-sources.md#custom-topics)
 * [事件中心](event-sources.md#event-hubs)
 * [IoT 中心](event-sources.md#iot-hub)
+* [Key Vault（预览版）](event-sources.md#key-vault-preview)
 * [媒体服务](event-sources.md#media-services)
 * [资源组（管理操作）](event-sources.md#resource-groups)
 * [服务总线](event-sources.md#service-bus)
 * [存储 Blob](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
+* [应用配置](event-sources.md#app-configuration)
+* [Signal R](event-sources.md#azure-signalr)
+* [机器学习](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>事件处理程序
 
@@ -55,8 +59,8 @@ ms.locfileid: "75437310"
 * [混合连接](event-handlers.md#hybrid-connections)
 * [逻辑应用](event-handlers.md#logic-apps)
 * [Power Automate（之前称为 Microsoft Flow）](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [队列存储](event-handlers.md#queue-storage)
 * [服务总线](event-handlers.md#service-bus)
+* [队列存储](event-handlers.md#queue-storage)
 * [WebHook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念

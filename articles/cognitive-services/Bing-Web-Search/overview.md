@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892985"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650276"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>什么是必应 Web 搜索 API？
 
@@ -40,7 +40,7 @@ ms.locfileid: "74892985"
 
 ## <a name="workflow"></a>工作流
 
-可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索 SDK](web-sdk-python-quickstart.md) 进行访问。
+可以轻松地通过任何编程语言调用必应 Web 搜索 API，只要该语言能够发出 HTTP 请求和分析 JSON 响应即可。 此服务可以通过 [REST API](quickstarts/python.md) 或[必应 Web 搜索客户端库](./quickstarts/client-libraries.md)进行访问。
 
 1. 为必应搜索 API [创建 Azure 资源](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果没有 Azure 订阅，可以[创建一个免费帐户](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)。  
 2. [向必应 Web 搜索 API 发送请求](quickstarts/python.md)。
@@ -48,7 +48,7 @@ ms.locfileid: "74892985"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 根据 [Python 快速入门](quickstarts/python.md)中的说明对必应 Web 搜索 API 进行第一次调用。  
+* 根据 [Python 快速入门](./quickstarts/client-libraries.md?pivots=programming-language-python)中的说明对必应 Web 搜索 API 进行第一次调用。  
 * [生成单页 Web 应用](tutorial-bing-web-search-single-page-app.md)。
 * 查看 [Web 搜索 API v7 参考](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)文档。  
 * 详细了解必应 Web 搜索的[使用和显示要求](UseAndDisplayRequirements.md)。  

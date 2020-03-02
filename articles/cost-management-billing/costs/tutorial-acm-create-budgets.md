@@ -4,17 +4,17 @@ description: 本教程介绍如何对所使用的 Azure 服务进行成本计划
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/10/2020
+ms.date: 02/23/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3b479f85475be6409a6fa6621357400e954d22c8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132103"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582376"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -34,7 +34,7 @@ ms.locfileid: "77132103"
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算
 > * 通过 PowerShell 创建和编辑预算
-> * 编辑预算
+> * 使用 Azure 资源管理器模板创建预算
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -160,6 +160,16 @@ $ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -N
 
 New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
+## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建预算
+
+可以使用 Azure 资源管理器模板创建预算。 该模板可帮助你在资源组下创建预算。 该模板仅支持企业协议客户。
+
+选择下图登录到 Azure 门户并打开模板：
+
+[![将创建预算模板部署到 Azure](./media/tutorial-acm-create-budgets/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
+
+若要查看所有模板参数及其说明的列表，请参阅[创建预算](https://azure.microsoft.com/resources/templates/create-budget/)模板。
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -168,7 +178,7 @@ New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -Star
 > [!div class="checklist"]
 > * 在 Azure 门户中创建预算
 > * 通过 PowerShell 创建和编辑预算
-> * 编辑预算
+> * 使用 Azure 资源管理器模板创建预算
 
 请继续学习下一教程，了解如何针对成本管理数据创建定期导出。
 

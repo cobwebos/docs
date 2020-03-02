@@ -3,7 +3,7 @@ title: 将数据源连接到 Azure Sentinel | Microsoft Docs
 description: 了解如何将数据源连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
-ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.author: yelevin
+ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462541"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588325"
 ---
 # <a name="connect-data-sources"></a>连接数据源
 
@@ -45,35 +45,46 @@ Azure Sentinel 支持以下数据连接方法：
 
 - **服务到服务集成**：<br> 有些服务是本机互连的（如 AWS 和 Microsoft 服务），这些服务利用 Azure 基础进行现成集成，只需单击几次即可连接以下解决方案：
     - [Amazon Web Services - CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Azure AD 审核日志和登录](connect-azure-active-directory.md)
     - [Azure 活动](connect-azure-activity.md)
+    - [Azure AD 审核日志和登录](connect-azure-active-directory.md)
     - [Azure AD 标识保护](connect-azure-ad-Identity-protection.md)
-    - [Azure 安全中心](connect-azure-security-center.md)
-    - [Azure 信息保护](connect-azure-information-protection.md)
     - [Azure 高级威胁防护](connect-azure-atp.md)
+    - [Azure 信息保护](connect-azure-information-protection.md)
+    - [Azure 安全中心](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [域名服务器](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Microsoft Web 应用程序防火墙](connect-microsoft-waf.md)
     - [Windows 安全事件](connect-windows-security-events.md) 
     - [Windows 防火墙](connect-windows-firewall.md)
+    - [Windows 安全事件](connect-windows-security-events.md)
 
 - **通过 API 连接外部解决方案**：可以使用联网数据源提供的 API 连接某些数据源。 一般情况下，大多数安全技术都会提供一组 API，通过这些 API 可以检索事件日志。这些 API 连接到 Azure Sentinel，收集特定的数据类型并将其发送到 Azure Log Analytics。 通过 API 连接的设备包括：
     - [Barracuda](connect-barracuda.md)
-    - [Symantec](connect-symantec.md)
+    - [Barracuda CloudGen 防火墙](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics（安全）](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies secRMM](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **通过代理连接外部解决方案**：可以通过代理使用 Syslog 协议将 Azure Sentinel 连接到可执行实时日志流式处理的其他所有数据源。 <br>大部分设备使用 Syslog 协议发送包含日志本身以及日志相关数据的事件消息。 日志格式各不相同，但大部分设备都支持基于通用事件格式 (CEF) 的日志数据格式。 <br>基于 Log Analytics 代理的 Azure Sentinel 代理会将 CEF 格式的日志转换为可供 Log Analytics 引入的格式。 根据设备类型，可以直接在设备上安装代理，或者在专用的 Linux 服务器上安装代理。 适用于 Linux 的代理通过 UDP 从 Syslog 守护程序接收事件，但如果预期 Linux 计算机需要收集大量的 Syslog 事件，则会通过 TCP 将这些事件从 Syslog 守护程序发送到代理，然后从代理发送到 Log Analytics。
     - 防火墙、代理和终结点：
-        - [F5](connect-f5.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop Reveal(x)](connect-extrahop.md)
+        - [F5](connect-f5.md)
+        - [Forcepoint 产品](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [One Identity Safeguard](connect-one-identity.md)
         - [其他 CEF 设备](connect-common-event-format.md)
         - [其他 Syslog 设备](connect-syslog.md)
-        - [Barracuda CloudGen 防火墙](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop Reveal(x)](connect-extrahop.md)
-        - [One Identity Safeguard](connect-one-identity.md)
         - [Trend Micro Deep Security](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - DLP 解决方案
     - [威胁智能提供程序](connect-threat-intelligence.md)
     - [DNS 计算机](connect-dns.md) - 直接安装在 DNS 计算机上的代理

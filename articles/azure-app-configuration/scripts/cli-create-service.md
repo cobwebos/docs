@@ -1,23 +1,23 @@
 ---
 title: Azure CLI 脚本示例 - 创建 Azure 应用配置存储区
 titleSuffix: Azure App Configuration
-description: Azure CLI 脚本示例 - 创建 Azure 应用配置存储区
+description: 使用 Azure CLI 脚本创建 Azure 应用配置存储
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468314"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623081"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>创建 Azure 应用配置存储区
 
-此示例脚本在名称随机生成的新资源组中创建 Azure 应用配置的新实例。
+此示例脚本在新资源组中创建 Azure 应用配置的新实例。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,9 @@ appConfigHostname=$(az appconfig create \
   --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
-  -o tsv)
+  --sku free \
+  -o tsv
+  )
 
 # Get the AppConfig connection string 
 appConfigConnectionString=$(az appconfig credential list \

@@ -43,6 +43,8 @@
       href: active-directory-data-storage-australia-newzealand.md
     - name: Microsoft 365 政府版中的新增功能
       href: whats-new-microsoft-365-government.md
+    - name: 将 Azure AD 与 ADDS 进行比较
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure AD 操作参考
       items:
         - name: 介绍

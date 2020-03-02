@@ -3,16 +3,16 @@ title: Azure EA 虚拟机预留实例
 description: 本文总结了针对 VM 预留实例的 Azure 预留如何帮助你节省企业注册的费用。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/14/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3eceef9dc0bc29f7e105ac0b110bd2550413fa61
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53af5e69a90eb376c28ef364e7d9c5b29287790c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200704"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560571"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA 虚拟机预留实例
 
@@ -57,10 +57,12 @@ ms.locfileid: "77200704"
 
 ### <a name="how-can-i-change-the-subscription-associated-with-reserved-instance-or-transfer-my-reserved-instance-benefits-to-a-subscription-under-the-same-account"></a>如何更改与我的预留实例关联的订阅或者将预留实例权益转让给同一帐户下的某个订阅？
 
-在任何特定的时间，只有一个订阅可以收到预留实例权益。 可以通过以下方式更改接收预留实例权益的订阅：
+可以通过以下方式更改接收预留实例权益的订阅：
 
 - 登录到 [Azure 门户](https://aka.ms/reservations)。
-- 在同一帐户下关联一个不同的订阅，通过这种方式来更新已应用的订阅范围。
+- 通过关联同一帐户下的不同订阅来更新所应用的订阅范围。
+
+有关更改预留范围的详细信息，请参阅[更改预留范围](../reservations/manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 ### <a name="how-to-view-reserved-instance-usage-details"></a>如何查看预留实例使用情况详细信息
 

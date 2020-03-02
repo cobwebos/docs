@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024120"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589398"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -39,8 +39,12 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 - 作业不支持复杂类型。
 - 不支持数组架构类型。
 - 仅支持 C 设备 SDK 以及 Node.js 设备和服务 SDK。
-- 仅在美国和欧洲地区提供。
+- 它仅在美国、欧洲、亚太和澳大利亚位置可用。
 - 必须在同一文件中以内联方式定义设备功能模型的所有接口。
+- 对 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)的支持处于预览状态，并且仅在选定区域受支持。
+
+    > [!NOTE]
+    > 请与技术支持联系，以获取创建支持 IoT 即插即用设备的预览应用程序的访问权限。
 
 ## <a name="personas"></a>角色
 

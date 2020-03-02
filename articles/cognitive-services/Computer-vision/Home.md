@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772504"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565955"
 ---
 # <a name="what-is-computer-vision"></a>什么是计算机视觉？
 
@@ -48,7 +48,7 @@ ms.locfileid: "76772504"
 
 ## <a name="extract-text-from-images"></a>从图像中提取文本
 
-可以使用计算机视觉[读取](concept-recognizing-text.md#read-api) API 将印刷文本和手写文本从图像中提取到计算机可读的字符流中。 该读取 API 使用最新的模型，适用于各种表面和背景（如收据、海报、名片、信件和白板）上的文本。 目前，英语是唯一受支持的语言。
+可以使用计算机视觉[读取](concept-recognizing-text.md#read-api) API 将印刷文本和手写文本从图像中提取到计算机可读的字符流中。 该读取 API 使用最新的模型，适用于各种表面和背景（如收据、海报、名片、信件和白板）上的文本。 当前，仅支持英语和西班牙语。
 
 还可以使用[光学字符识别 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) API 提取多种语言的印刷文本。 如果需要，OCR 会校正已识别文本的旋转角度并提供每个词的帧坐标。 OCR 支持 25 种语言，并会自动检测已识别文本的语言。
 

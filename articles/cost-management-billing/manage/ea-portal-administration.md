@@ -3,16 +3,16 @@ title: Azure EA 门户管理
 description: 本文介绍管理员可在 Azure EA 门户中完成的常见任务。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 142ef421599cef4083efdf8b9ed700d2baa152b3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1da26b3a1c028a49655b9089ac0119e3274e37a4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199766"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598385"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA 门户管理
 
@@ -118,6 +118,8 @@ Azure EA 帐户是 Azure EA 门户中的一个组织单位，用于管理订阅�
 
 帐户转移将帐户所有者从一个注册移动到另一个注册。 帐户所有者下的所有相关订阅都将移动到目标注册。 如果具有多个有效注册，且只想移动选定的帐户所有者，则可执行此操作。
 
+此部分仅供参考，因为企业管理员无法执行该操作。 需要支持请求才能将企业帐户转移到新注册。
+
 将企业帐户转移到新注册时，请记住以下几点：
 
 - 仅转移请求中指定的帐户。 如果选择所有帐户，会转移所有这些帐户。
@@ -147,6 +149,8 @@ Azure EA 帐户是 Azure EA 门户中的一个组织单位，用于管理订阅�
 - 当前注册的承诺期限已到期。
 - 注册处于到期/延期状态，且新协议正在商定中。
 - 如果具有多个注册，并希望合并单个注册下的所有帐户和账单。
+
+此部分仅供参考，因为企业管理员无法执行该操作。 需要支持请求才能将企业注册转移到新注册。
 
 请求将整个企业注册转移到某个注册时，将发生以下操作：
 

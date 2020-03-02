@@ -4,16 +4,16 @@ description: 本文介绍如何在 Azure 成本管理中获取常见成本分析
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199970"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562575"
 ---
 # <a name="common-cost-analysis-uses"></a>常见成本分析的使用
 
@@ -83,6 +83,9 @@ Azure 成本管理用户通常需要那些对许多其他人提出的问题的�
 ## <a name="view-monthly-ea-cost-breakdown"></a>查看每月 EA 成本细分
 
 EA 注册累积整个组织的成本。 了解成本如何累积以及如何按时间开票，这样有助于你与相应的利益干系人合作，确保对成本进行负责的管理。
+
+仅针对活动注册显示成本。 如果已将一个注册（非活动）转移到一个新注册（活动），则前一注册的成本不会显示在“成本管理”中。
+
 
 1. 在 Azure 门户中，导航到“成本管理 + 计费”   >   “概览”。
 1. 单击当月的“细目”  ，查看货币承诺尚未完成的部分。  

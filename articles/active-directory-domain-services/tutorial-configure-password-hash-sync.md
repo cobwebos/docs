@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132221"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612568"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -68,7 +68,7 @@ ms.locfileid: "77132221"
 
     此示例屏幕截图中使用了以下连接器：
 
-    * Azure AD 连接器名为 *contoso.onmicrosoft.com - AAD*
+    * Azure AD 连接器名为“aaddscontoso.onmicrosoft.com - AAD” 
     * 本地 AD DS 连接器名为 *onprem.contoso.com*
 
 1. 将以下 PowerShell 脚本复制并粘贴到安装了 Azure AD Connect 的计算机上。 该脚本触发完全密码同步（包括旧密码哈希）。 使用上一步骤中的连接器名称更新 `$azureadConnector` 和 `$adConnector` 变量。

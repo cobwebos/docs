@@ -3,12 +3,12 @@ title: 通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Space
 description: 了解如何在持续集成管道中使用 Azure Dev Spaces 插件。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209673"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619984"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教程：通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74209673"
 
 本教程假设你具备核心 Azure 服务、AKS、ACR、Azure Dev Spaces、Jenkins [管道](https://jenkins.io/doc/book/pipeline/)和插件以及 GitHub 的中级知识。 基本熟悉支持工具（如 kubectl 和 Helm）是有帮助的。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用适用于 Jenkins 的 Azure Dev Spaces 插件和 Azure 容器注册表插件来生成代码并部署到开发空间。
-
-下面的资源列表提供了关于 Azure Dev Spaces、ACR 任务以及 CI/CD 与 Jenkins 配合使用的更多信息。
-
-Azure Dev Spaces：
-* [Azure Dev Spaces如何工作和配置](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR 任务：
-* [使用 ACR 任务自动执行 OS 和框架修补](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [提交源代码时自动生成](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-在 Azure 上将 CI/CD 与 Jenkins 配合使用：
-* [Jenkins 持续部署](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [在 Azure 上使用 Jenkins 进行 CI/CD](jenkins-continuous-deployment.md)

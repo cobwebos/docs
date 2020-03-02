@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online | Microsoft Docs
+title: 使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online
 description: 本教程介绍如何使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325273"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560042"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>使用 Azure Data Box Heavy 将文件共享内容迁移到 SharePoint Online
 

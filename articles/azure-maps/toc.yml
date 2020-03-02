@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: 添加图块层
           href: how-to-add-tile-layer-android-map.md
+        - name: 显示交通情况数据
+          href: how-to-show-traffic-android.md
     - name: 提供数据反馈
       href: how-to-use-feedback-tool.md
 - name: 参考

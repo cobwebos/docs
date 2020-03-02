@@ -42,6 +42,8 @@
     - name: 使用 Flask 翻译文本、分析情绪以及合成语音
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: 使用 Power Automate 在 Excel 中提取信息
+      href: tutorials/extract-excel-information.md
 - name: 操作方法指南
   items:
     - name: 调用文本分析 API

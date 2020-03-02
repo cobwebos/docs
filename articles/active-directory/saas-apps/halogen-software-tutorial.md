@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/15/2020
+ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef7d5ec33786c3c4c38525cd5ab15bee53b3493
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 76c13a649e1c1888a11e02b83d969255615cdc67
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373240"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561319"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-saba-talentspace"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Saba TalentSpace 的集成
 
@@ -44,7 +44,7 @@ ms.locfileid: "77373240"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Saba TalentSpace 支持 **SP** 发起的 SSO
-* 配置 Saba TalentSpace 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Saba TalentSpace 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-saba-talentspace-from-the-gallery"></a>从库中添加 Saba TalentSpace
 
@@ -86,8 +86,10 @@ ms.locfileid: "77373240"
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/metadata` 
 
+    c. 在“回复 URL (断言使用者服务 URL)”  文本框中，使用以下模式键入 URL：`https://global.hgncloud.com/[companyname]/saml/SSO`
+
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Saba TalentSpace 客户端支持团队](https://support.halogensoftware.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Saba TalentSpace 客户端支持团队](https://support.saba.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 

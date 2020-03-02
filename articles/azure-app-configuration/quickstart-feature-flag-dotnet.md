@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120863"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619322"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>快速入门：向 .NET Framework 应用添加功能标志
 
@@ -31,11 +31,18 @@ ms.locfileid: "76120863"
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. 选择“功能管理器” > “+添加”以添加名为 `Beta` 的功能标志。  
+
+    > [!div class="mx-imgBorder"]
+    > ![启用名为 Beta 的功能标志](media/add-beta-feature-flag.png)
+
+    暂时不定义 `label`。
 
 ## <a name="create-a-net-console-app"></a>创建 .NET 控制台应用
 
@@ -43,7 +50,7 @@ ms.locfileid: "76120863"
 
 1. 在**创建新项目**中，针对“控制台”  项目类型进行筛选，然后单击“控制台应用(.NET Framework)”  。 单击“下一步”。 
 
-1. 在**配置新项目**中，输入项目名称。 在“框架”  下，选择“.NET Framework 4.7.1”  或更高版本。 单击“创建”。 
+1. 在**配置新项目**中，输入项目名称。 在“Framework”  下，选择“.NET Framework 4.8”  或更高版本。 单击“创建”。 
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
@@ -67,13 +74,8 @@ ms.locfileid: "76120863"
 1. 更新 `Main` 方法以连接到应用程序配置，指定 `UseFeatureFlags` 选项以检索功能标志。 若启用 `Beta` 功能标志，将显示一条消息。
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

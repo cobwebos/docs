@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: 购买虚拟机预留
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: 购买专用主机预留
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
         - name: Azure 磁盘存储
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: 购买 Azure 存储预留
@@ -42,10 +44,12 @@
           href: view-reservations.md
     - name: 概念
       items:
-        - name: 虚拟机预留实例折扣
-          href: ../manage/understand-vm-reservation-charges.md
         - name: 如何创建预预留建议
           href: reserved-instance-purchase-recommendations.md
+        - name: 虚拟机预留实例折扣
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: 预留专用主机折扣
+          href: billing-understand-dedicated-hosts-reservation-charges.md
         - name: Azure 存储预留容量折扣
           href: understand-storage-charges.md
         - name: Azure 磁盘存储预留折扣

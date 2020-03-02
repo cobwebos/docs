@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200395"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587084"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>通过按月付款的方式购买预留
 
@@ -62,7 +62,7 @@ ms.locfileid: "77200395"
 
 交换一个按月付款的预留时，新购买的生存期费用总计应该大于已取消的针对退回的预留的剩余付款。 对于交换，没有任何其他限制或费用。 可以交换一个提前付款的预留，购买一个新的按月计费的预留。 但是，新预留的生存期价值应该大于退回的预留的按比例计算的价值。
 
-如果取消按月付费的预留，Microsoft 可能会对已取消的未来承诺付款收取一项取消费。 剩余的承诺付款存在 50,000 美元的退款限制。
+如果你取消了按月付费的预留，Microsoft 可能会对取消的承诺付款收取 12% 的取消费用。 不过，Microsoft 目前并没有收取罚款。 取消的承诺付款会累计入 50,000 美元的退款限额。 如果收取取消罚款，则不会影响退款限额。
 
 有关交换和退款的详细信息，请参阅 [Azure 预留的自助交换和退款](exchange-and-refund-azure-reservations.md)。
 

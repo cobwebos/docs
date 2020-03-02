@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199103"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598215"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -55,7 +55,7 @@ ms.locfileid: "77199103"
     - Visual Studio Professional（每年）
 - **市场费用**：组织的额度不涵盖 Azure 市场购买和使用。 因此，不管信用余额如何，都会收到市场费用的发票。 在 Enterprise Portal 中，企业管理员可以启用和禁用市场购买。
 
-你的发票会显示你的所有 Azure 使用情况，然后显示任何市场费用。 如果你有额度余额，它将应用于 Azure 使用。
+你的发票将首先显示Azure 使用费用及其相关成本，然后显示任何市场费用。 如果你有额度余额，它将其应用于 Azure 使用情况，并且发票将显示 Azure 使用情况和市场使用情况，而不会产生任何费用。
 
 将 Enterprise Portal 的“报告” > “使用情况摘要”中显示的合计总金额与 Azure 发票进行比较。   “使用情况摘要”  中的金额不含税。
 

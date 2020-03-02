@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/27/2020
-ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 837174b3ccc08a74583587cb9efd34f8f720aec5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772873"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589447"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教程：从 Azure 流分析作业运行 Azure Functions 
 
@@ -191,11 +191,16 @@ ms.locfileid: "76772873"
 
 如果在将事件发送到 Azure Functions 时失败，流分析会重试大多数操作。 将会重试所有 http 异常，直至成功，但 http 错误 413（实体太大）除外。 实体太大错误被视为数据错误，遵循[重试或删除策略](stream-analytics-output-error-policy.md)。
 
+> [!NOTE]
+> 从流分析到 Azure Functions 的 HTTP 请求的超时设置为 100 秒。 如果 Azure Functions 应用处理批处理所用的时间超过100 秒，则流分析会出错。
+
 ## <a name="known-issues"></a>已知问题
 
 在 Azure 门户中，尝试将最大批次大小/最大批次数值重置为空（默认），值将在保存时改回上次输入的值。 这时，请手动输入这些字段的默认值。
 
-流分析当前不支持在 Azure Functions 上使用 [Http 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+流分析当前不支持在 Azure Functions 上使用 [HTTP 路由](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)。
+
+不支持连接到虚拟网络中托管的 Azure Functions。
 
 ## <a name="clean-up-resources"></a>清理资源
 

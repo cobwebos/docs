@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371296"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619963"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Azure Kinect DK 硬件规格
 
@@ -71,7 +71,7 @@ Azure Kinect DK 集成了 Microsoft 设计的 1 兆像素时差测距 (ToF) 深�
 | WFOV 非装箱   | 1024x1024  | 120°x120° | 0、5、15           | 0.25 - 2.21 米      | 20.3 毫秒        |
 | 被动 IR      | 1024x1024  | 空值       | 0、5、15、30       | 空值              | 1.6 毫秒         |
 
-\*850nm 时 15% 到 95% 的反射率，2.2 μW/cm<sup>2</sup>/nm，随机误差标准偏差 ≤ 17 mm，典型系统误差 < 11 mm + 0.1% 的距离（无多路径干扰）。 超出指示范围的深度取决于对象反射率。
+\*850nm 时 15% 到 95% 的反射率，2.2 μW/cm<sup>2</sup>/nm，随机误差标准偏差 ≤ 17 mm，典型系统误差 < 11 mm + 0.1% 的距离（无多路径干扰）。 可以在上面指示的操作范围之外提供深度。 这取决于对象的反射率。
 
 ## <a name="color-camera-supported-operating-modes"></a>彩色相机支持的工作模式
 

@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 1d0264a0b7ac4e97d9a2811ba61ab64fcedd6fb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460529"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587543"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>映射数据流视频教程
 
-下面是由 Azure 数据工厂团队创建的映射数据流教程视频列表。
+下面是由 Azure 数据工厂团队创建的映射数据流教程视频列表。 
 
 随着产品的不断更新，当前 Azure 数据工厂用户体验中已添加了一些功能或不同功能。
 
@@ -32,6 +32,8 @@ ms.locfileid: "77460529"
 [数据预览快速操作](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
 [监视和管理映射数据流性能](https://www.youtube.com/watch?v=fktIWdJiqTk)
+
+[基准计时](http://youtu.be/6CSbWm4lRhw?hd=1)
 
 ## <a name="transformation-overviews"></a>转换概述
 
@@ -100,6 +102,8 @@ ms.locfileid: "77460529"
 [缩短启动时间](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [SQL DB 性能](https://youtu.be/iyZT5CY3V_4)
+
+[日志记录和审核](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>映射数据流方案
 

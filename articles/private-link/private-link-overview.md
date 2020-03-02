@@ -8,15 +8,18 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 452202555734a208a9f32d6f8899e1f679df4a68
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aea424d4e74f0744f5891a0d7b3b08008fa227b5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443986"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562031"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
 使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
+
+> [!IMPORTANT]
+> Azure 专用链接现在是正式发布的功能。 专用终结点和专用链接服务（标准负载均衡器后的服务）都已正式发布。 不同的 Azure PaaS 会按不同计划加入 Azure 专用链接。 请查看下面的[可用性](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)部分，了解专用链接上 Azure PaaS 的准确状态。 有关已知的限制，请参阅[专用终结点](private-endpoint-overview.md#limitations)和[专用链接服务](private-link-service-overview.md#limitations)。 
 
 ![专用终结点概述](media/private-link-overview/private-endpoint.png)
 
@@ -37,16 +40,16 @@ Azure 专用链接提供以下优势：
 
 |场景  |支持的服务  |可用区域 | 状态  |
 |:---------|:-------------------|:-----------------|:--------|
-|客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 所有公共区域  | 预览  |
-|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)。  |
-|  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)。  |
-|  |  Azure SQL 数据库         | 所有公共区域      |   预览      |
-||Azure SQL 数据仓库| 所有公共区域 |预览|
-||Azure Cosmos DB| 美国中西部、美国西部、美国中北部 |预览|
-|  |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |   预览      |
-|  |  Azure Database for MySQL         | 所有公共区域      |   预览      |
-|  |  Azure Database for MariaDB         | 所有公共区域      |   预览      |
-|  |  Azure Key Vault         | 所有公共区域      |   预览      |
+|客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
+|  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
+|  |  Azure SQL 数据库         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+||Azure SQL 数据仓库| 所有公共区域 |预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+||Azure Cosmos DB| 美国中西部、美国西部、美国中北部 |预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |  Azure Database for PostgreSQL - 单一服务器         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  |  Azure Database for MySQL         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  |  Azure Database for MariaDB         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  |  Azure Key Vault         | 所有公共区域      |   预览   <br/> [了解详细信息](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 
 有关最新通知，请查看 [Azure 虚拟网络更新页](https://azure.microsoft.com/updates/?product=virtual-network)。
 
@@ -67,6 +70,9 @@ Azure 专用链接与 Azure Monitor 集成，使你能够在存储帐户中存�
  
 ## <a name="limits"></a>限制  
 有关限制，请参阅 [Azure 专用链接的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)。
+
+## <a name="service-level-agreement"></a>服务级别协议
+有关 SLA，请参阅 [Azure 专用链接的 SLA](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
 - [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)

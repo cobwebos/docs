@@ -1,140 +1,203 @@
 ---
-title: 跨多个 Azure Kinect DK 进行同步
-description: 本文探讨多设备同步的优点，以及有关其执行方式的所有机密信息。
+title: 同步多个 Azure Kinect DK 设备
+description: 本文探讨多设备同步的优势，以及如何设置要同步的设备。
 author: tesych
 ms.author: tesych
 ms.prod: kinect-dk
-ms.date: 01/10/2020
+ms.date: 02/20/2020
 ms.topic: article
-keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 颜色, RGB, IMU, 麦克风, 阵列, 多, 同步
-ms.openlocfilehash: 91703e86153f98e5a60e13a635f2ed48f66311ff
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+keywords: azure, kinect, 规格, 硬件, DK, 功能, 深度, 彩色, RGB, IMU, 阵列, 多, 同步
+ms.openlocfilehash: 77f31611f504641e2dc7f5bedc478e6568f78621
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279222"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602217"
 ---
-# <a name="synchronization-across-multiple-azure-kinect-dk-devices"></a>跨多个 Azure Kinect DK 设备进行同步
+# <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步多个 Azure Kinect DK 设备
 
-本文探讨多设备同步的优点及其详细信息。
+每个 Azure Kinect DK 设备附带 3.5 毫米同步端口（**输入同步**和**输出同步**），可将多个单元链接在一起。 链接后，软件可以协调多个深度相机和 RGB 相机的触发定时。 
 
-在开始之前，请务必查看 [Azure Kinect DK 硬件规格](hardware-specification.md)和[多相机硬件设置](https://support.microsoft.com/help/4494429)。 
+本文将介绍同步多个设备所带来的一些优势，并提供有关如何连接设备的说明。
 
-开始多相机安装之前，需考虑几个重要事项。 
+## <a name="why-use-multiple-azure-kinect-dk-devices"></a>为何要使用多个 Azure Kinect DK 设备？
 
-- 如果要控制每个设备的精确计时，建议使用手动曝光设置。 自动曝光允许每个彩色相机动态更改曝光，因此，两个设备之间的计时不可能完全保持相同。
-- 使用主模式或从属模式时，针对图像报告的设备时间戳会将含义从“帧中心”变为“帧起始”。
-- 避免不同相机之间出现 IR 相机干扰。 使用 ```depth_delay_off_color_usec``` 或 ```subordinate_delay_off_master_usec``` 来确保每种 IR 激光都在其自己的 160 微秒时间范围内触发，或者具有不同的视野。
-- 确保使用最新的固件版本。
-- 不要在图像捕获循环中重复设置相同的曝光设置。 
-- 在需要时设置曝光，只调用 API 一次。
+使用多个 Azure Kinect DK 设备的原因有很多。 这方面的例子有：
 
+- 填补遮挡区域。 遮挡是指前景对象阻挡了两个相机之一的背景对象的部分视角。 在生成的彩色图像中，前景对象看上去像是在背景对象上投射了一个阴影。 尽管 Azure Kinect DK 数据转换生成的是单个图像，但两个相机（深度和 RGB 相机）实际上保持着较小的一段距离。 这种偏移使得遮挡成为可能。  
+   例如，在下图中，左侧相机可看到灰色像素“P2”。 但是，白色的前景对象阻挡了右侧相机的红外光束。 右侧相机无法获取“P2”的数据。  
+   ![遮蔽](./media/occlusion.png)  
+   附加的同步设备可以填补遮挡的数据。
+- 扫描三维对象。
+- 将有效帧速率提升至 30 帧/秒 (FPS) 以上。
+- 捕获同一场景的多个 4K 彩色图像，所有图像在曝光开始后的 100 微秒 (&mu;s) 内对齐。
+- 增大相机的空间覆盖范围。
 
-## <a name="why-to-use-multiple-azure-kinect-dk-devices"></a>为什么要使用多个 Azure Kinect DK 设备？
+## <a name="plan-your-multi-device-configuration"></a>规划多设备配置
 
-使用多个 Azure Kinect DK 设备的原因有很多。 下面是一些示例：
-- 填充遮蔽区域
-- 三维对象扫描 
-- 提高有效帧速率，使之大于 30 FPS
-- 对同一场景进行多个 4K 彩色图像的捕获，这些图像在从曝光起始点算起的 100 微秒范围内对齐
-- 加大相机的空间覆盖范围
+在开始之前，请务必查看 [Azure Kinect DK 硬件规格](hardware-specification.md)和 [Azure Kinect DK 深度相机](depth-camera.md)。
 
-### <a name="solve-for-occlusion"></a>解决遮蔽问题
+### <a name="select-a-device-configuration"></a>选择设备配置
 
-遮蔽是指你想要看的东西因存在某种阻碍而看不到。 在我们的示例中，Azure Kinect DK 设备有两台不共享同一原点的相机（深度相机和彩色相机），因此，一台相机可以看到另一台相机看不到的物体部分。 因此，将深度图像转换为彩色图像时，可能会在物体周围看到阴影。
-在下图中，左相机可以看到灰色像素 P2，但从右相机到 P2 的光线会遇到白色前景物体。 因此，右相机无法看到 P2。
+可以使用两种不同的方法来完成设备配置：
 
- ![遮蔽](./media/occlusion.png)
+- **菊花链配置**。 同步一个主设备以及最多八个从属设备。  
+   ![展示如何在菊花链配置中连接 Azure Kinect DK 设备的插图。](./media/multicam-sync-daisychain.png)
+- **星形配置**。 同步一个主设备以及最多两个从属设备。  
+   ![展示如何在星形配置中设置多个 Azure DK 设备的插图。](./media/multicam-sync-star.png)
 
-使用额外的 Azure Kinect DK 设备可以解决此问题并解决遮蔽区域的数据填充问题。
+#### <a name="using-an-external-sync-trigger"></a>使用外部同步触发器
 
-## <a name="set-up-multiple-azure-kinect-dk-devices"></a>设置多个 Azure Kinect DK 设备
+在前面所述的两种配置中，主设备提供从属设备的触发信号。 但是，可将自定义的外部源用于同步触发器。 例如，可以使用此选项同步其他设备的图像捕获信号。 在菊花链配置或星形配置中，外部触发器源将连接到主设备。
 
-请确保查看[多相机硬件设置文章](https://support.microsoft.com/help/4494429)，其中描述了硬件设置的不同选项。 
+外部触发器源的工作方式必须与主设备相同：必须提供一个具有以下特征的同步信号：
 
-### <a name="synchronization-cables"></a>同步线缆
+- 活动程度高
+- 脉冲宽度：大于 8&mu;s
+- 5V TTL/CMOS
+- 最大驱动容量：不小于 8 毫安 (mA)
+- 频率支持：精确到 30 FPS、15 FPS 和 5 FPS（彩色相机主 VSYNC 信号的频率）
 
-Azure Kinect DK 包含 3.5 毫米同步端口，可以用来将多个单元链接到一起。 链接后，相机可以协调深度相机和 RGB 相机的触发时间。 设备上专门配备了同步输入和同步输出端口，可以轻松组建菊花链。 兼容的线缆未随设备附送，必须单独购买。
+触发器源必须使用 3.5 毫米音频线将信号传送到主设备的**输入同步**端口。 可以使用立体声或单声道音频线。 Azure Kinect DK 会将音频线连接器的所有套管和套环短接到一起，并将其接地。 如下图所示，设备只从连接器尖端接收同步信号。
 
-线缆要求：
+![外部触发器信号的线缆配置](./media/resources/camera-trigger-signal.jpg)
 
-- 3.5 毫米公对公线缆（“3.5 毫米音频线”）
-- 最大线缆长度应小于 10 米
-- 支持立体声和单音线缆类型
+有关使用外部设备的详细信息，请参阅[将 Azure Kinect 录制器与外部同步设备配合使用](record-external-synchronized-units.md)
 
-在同步捕获中使用多个深度相机时，深度相机捕获应相互偏移 160 微秒或更多，以避免深度相机干扰。
+### <a name="plan-your-camera-settings-and-software-configuration"></a>规划相机设置和软件配置
 
-> [!NOTE]
-> 请确保移除外罩以显示同步端口。
+有关如何设置软件来控制相机以及如何使用图像数据的信息，请参阅 [Azure Kinect 传感器 SDK](about-sensor-sdk.md)。
 
-### <a name="cross-device-calibration"></a>跨设备校准
+本部分探讨影响已同步设备（而不是单独的设备）的多种因素。 软件应考虑到这些因素。
 
-在单设备深度和 RGB 相机中，使用工厂校准。 但在使用多个设备时，需考虑新的校准要求，确定如何将图像从捕获时所在的相机域转换为要在其中处理图像的相机域。
-可以使用多个选项来交叉校准设备，但在 GitHub 绿屏代码示例中，我们使用 OpenCV 方法。可以使用多个选项来交叉校准设备，但在 [GitHub 绿屏代码示例](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/green_screen)中，我们使用 OpenCV 方法。
+#### <a name="exposure-considerations"></a>曝光考虑因素
+若要控制每个设备的精确定时，我们建议使用手动曝光设置。 使用自动曝光设置时，每个彩色相机可能会动态更改实际曝光。 由于曝光会影响定时，此类更改很快就会使相机失去同步。
 
-### <a name="usb-memory-on-ubuntu"></a>Ubuntu 上的 USB 内存
+避免在图像捕获循环中重复指定相同的曝光设置。 必要时，只需调用 API 一次即可。
 
-如果要在 Linux 上设置多相机同步，则默认情况下，仅为 USB 控制器分配 16 MB 的内核内存，用于处理 USB 传输。 通常情况下，该内存足够支持单个 Azure Kinect DK，但若要支持多个设备，则需更多内存。 若要增加内存，请执行以下步骤：
-- 编辑 /etc/default/grub
-- 将 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" 行替换为 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.usbfs_memory_mb=32"。 在此示例中，我们将 USB 内存设置为 32 MB（二倍于默认值），但也可为其设置大得多的值。 选择适合解决方案的值。
-- 运行 sudo update-grub
-- 重启计算机
+#### <a name="timestamp-considerations"></a>时间戳考虑因素
+充当主角色或从属角色的设备根据“帧起点”而不是“帧中点”来报告图像时间戳。  
 
-### <a name="verify-two-azure-kinect-dks-synchronization"></a>验证两个 Azure Kinect DK 的同步
+#### <a name="avoiding-interference-between-multiple-depth-cameras"></a>避免多个深度相机之间产生干扰
 
-在设置硬件并将主设备的同步输出端口连接到从属设备的同步输入端口后，可以使用 [Azure Kinect 查看器](azure-kinect-viewer.md)来验证设备设置。 也可对两个以上的设备执行此操作。
+如果多个深度相机对重叠的视场成像，每个相机必须对其自身关联的激光成像。 为了防止激光相互干扰，相机捕获应相互偏离 160μs 或以上。
 
-> [!NOTE]
-> 从属设备是连接到“同步输入”引脚的设备。
-> 主设备是连接到“同步输出”引脚的设备。
+对于每次深度相机捕获，激光会打开 9 次，每次只保持活动状态 125&mu;s。 然后，激光将空闲 14505&mu;s 或 23905&mu;s，具体取决于工作模式。 此行为意味着，偏移量计算的起点为 125&mu;s。
 
-1. 获取每个设备的序列号。
-2. 打开两个 [Azure Kinect 查看器](azure-kinect-viewer.md)实例
-3. 首先打开从属 Azure Kinect DK 设备。 导航到 Azure Kinect 查看器，在“打开设备”部分选择从属设备：
+此外，相机时钟与设备固件时钟之差会将最小偏移量增大至 160&mu;s。 若要根据配置计算出更精确的偏移量，请注意所用的深度模式，并参考[深度传感器原始定时表](hardware-specification.md#depth-sensor-raw-timing)。 参考此表中的数据可以使用以下公式计算最小偏移量（每个相机的曝光时间）：
 
+> 曝光时间 = (红外脉冲 &times; 脉冲宽度) + (空闲周期 &times; 空闲时间)     
 
-      ![打开设备](./media/open-devices.png)
+使用 160&mu;s 偏移量时，最多可以配置 9 个额外的深度相机，以便在每束激光触发时，其他激光保持空闲状态。
 
-4. 在“外部同步”部分选择“从属”选项，然后启动此设备。 由于此设备在等待来自主设备的同步脉冲，因此在点击“启动”后，图像不会发送到从属设备。
+在软件中，使用 ```depth_delay_off_color_usec``` 或 ```subordinate_delay_off_master_usec``` 来确保每束红外激光在其自身的 160&mu;s 时限内触发，或者提供不同的视场。
 
+## <a name="prepare-your-devices-and-other-hardware"></a>准备设备和其他硬件
 
-      ![从属相机的启动](./media/sub-device-start.png)
+除了配置多个 Azure Kinect DK 设备以外，可能还需要获得其他主机和其他硬件才能支持你要构建的配置。 在开始设置之前，请使用本部分中的信息来确保所有设备和硬件已准备就绪。
 
-5. 导航到 Azure Kinect 查看器的另一实例，打开主 Azure Kinect KD 设备。
-6. 在“外部同步”部分选择“主”选项，然后启动此设备。
+### <a name="azure-kinect-dk-devices"></a>Azure Kinect DK 设备
 
-> [!NOTE]
-> 主设备必须总是最后启动，才能在所有设备之间精确地进行图像捕获对齐。
+对于要同步的每个 Azure Kinect DK 设备，请采取以下措施：
 
-启动 Azure Kinect 主设备时，应该会显示两个 Azure Kinect 设备中的已同步图像。
+- 确保设备上已安装最新的固件。 有关更新设备的详细信息，请参阅[更新 Azure Kinect DK 固件](update-device-firmware.md)。 
+- 卸下设备护盖，露出同步端口。
+- 记下每个设备的序列号。 在稍后的设置过程中需使用此编号。
 
-### <a name="avoiding-interference-from-other-depth-cameras"></a>避免来自其他深度相机的干扰
+### <a name="host-computers"></a>主机
 
-当深度传感器的 ToF 激光与另一深度相机的激光同时出现时，会发生干扰。
-为了避免出现这种情况，那些感兴趣区域重叠的相机需要按“激光开启时间”进行时移，这样就不会同时开启激光。  每次捕获时，激光会开启 9 次，但处于活动状态的时间仅为 125 微秒，然后处于空闲状态 1450 微秒或2390 微秒，具体取决于操作模式。 因此，深度相机需要将其“激光开启时间”时移至少 125 微秒，并且该开启时间需要处于其他正在使用的深度传感器的空闲时间范围内。 
+每个 Azure Kinect DK 通常使用自身的主机。 你可以根据设备的使用方式以及通过 USB 传输的数据量使用专用主机。 
 
-由于固件所用时钟和相机所用时钟之间存在差异，因此不能直接使用 125 微秒， 而只能使用 160 微秒，这是确保没有相机干扰所需的软件设置。 这样就可以将另外 9 个深度相机安排到 1450 微秒的 NFOV 空闲时间范围内。 确切的计时因所用深度模式而异。
+确保每台主机上安装了 Azure Kinect 传感器 SDK。 有关安装传感器 SDK 的详细信息，请参阅[快速入门：设置 Azure Kinect DK](set-up-azure-kinect-dk.md)。 
 
-根据[深度传感器原始计时表](hardware-specification.md)，曝光时间可按以下方式计算：
+#### <a name="linux-computers-usb-memory-on-ubuntu"></a>Linux 计算机：Ubuntu 上的 USB 内存
 
-> [!NOTE]
-> 曝光时间 = (IR 脉冲 * 脉冲宽度) + (空闲周期 * 空闲时间)
+默认情况下，基于 Linux 的主机只为 USB 控制器分配 16 MB 的内核内存用于处理 USB 传输。 此内存量通常足以支持单个 Azure Kinect DK。 但是，若要支持多个设备，USB 控制器必须有更多的内存。 若要增大内存，请执行以下步骤：
 
-## <a name="triggering-with-custom-source"></a>使用自定义源进行触发
+1. 编辑 **/etc/default/grub**。
+1. 替换以下行：
+   ```cmd
+   GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+   ```
+   替换为以下代码行：
+   ```cmd
+   GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.usbfs_memory_mb=32"
+   ```
+   这些命令会将 USB 内存设置为 32 MB。 此值是默认值的两倍。 可以设置大得多的值。 请使用适合解决方案的值。
+1. 运行 **sudo update-grub**。
+1. 重新启动计算机。
 
-自定义同步源可用于替换主 Azure Kinect DK。 当图像捕获需要与其他设备同步时，这非常有用。 自定义触发器必须通过 3.5 毫米端口创建与主设备类似的同步信号。
+### <a name="cables"></a>线缆
 
-- SYNC 信号为高电平有效信号，脉冲宽度应大于8 微秒。
-- 频率支持必须精确到 30 fps、15 fps 和 5 fps，这是彩色相机的主 VSYNC 信号的频率。
-- 来自板的 SYNC 信号应为 5 伏 TTL/CMOS，最大驱动容量不小于 8 毫安。
-- 3\.5 毫米端口的所有样式（包括未绘图的“单音”类型）都可以与 Kinect DK 配合使用。 所有套筒和环都在 Kinect DK 内进行短路连接，它们连接到主 Azure Kinect DK 的地线。 尖端为同步信号。
+若要将设备相互连接并连接到主机，需要使用 3.5 毫米公对公线缆（也称为 3.5 毫米音频线）。 线缆长度应小于 10 米，可以是立体声或单声道音频线。
 
-![外部相机触发器信号](./media/resources/camera-trigger-signal.jpg)
+所需的线缆数取决于所用的设备数以及具体的设备配置。 Azure Kinect DK 机箱中未随附线缆 &mdash; 必须单独购买。
+
+如果在星形配置中连接设备，则还需要一个耳机分线器。
+
+## <a name="connect-your-devices"></a>连接数据
+
+**在菊花链配置中连接 Azure Kinect DK 设备**
+
+1. 将每个 Azure Kinect DK 连接到电源。
+1. 将每个设备连接到其自身的主机。 
+1. 选择一个设备充当主设备，并将 3.5 毫米音频线插入该设备的**输出同步**端口。
+1. 将该线缆的另一端插入第一个从属设备的**输入同步**端口。
+1. 若要连接另一个设备，请将另一根线缆插入第一个从属设备的**输出同步**端口，将另一端插入下一个设备的**输入同步**端口。
+1. 重复上述步骤，直到所有设备都已连接。 最后一个设备的**输入同步**端口中应插入了一根线缆，其**输出同步**端口应是空的。
+
+**在星形配置中连接 Azure Kinect DK 设备**
+
+1. 将每个 Azure Kinect DK 连接到电源。
+1. 将每个设备连接到其自身的主机。 
+1. 选择一个设备充当主设备，将耳机分线器的单体端插入其**输出同步**端口。
+1. 将 3.5 毫米音频线连接到耳机分线器的“分接”端。
+1. 将每根线缆的另一端插入某个从属设备的**输入同步**端口。
+
+## <a name="verify-that-the-devices-are-connected-and-communicating"></a>验证设备是否已连接并可通信
+
+若要验证设备是否已正确连接，请使用 [Azure Kinect 查看器](azure-kinect-viewer.md)。 根据需要重复此过程，以结合主设备测试每个从属设备
+
+> [!IMPORTANT]  
+> 在测试过程中，需要提供每个 Azure Kinect DK 的序列号。
+
+1. 打开 Azure Kinect 查看器的两个实例。
+1. 在“打开设备”下，选择要测试的从属设备的序列号。   
+   ![打开设备](./media/open-devices.png)
+   > [!IMPORTANT]  
+   > 若要使所有设备的图像捕获保持精确同步，必须最后启动主设备。  
+1. 在“外部同步”下，选择“从属设备”。    
+   ![启动从属相机](./media/sub-device-start.png)
+1.  选择“开始”  。  
+    > [!NOTE]  
+    > 由于这是一个从属设备，在设备启动后，Azure Kinect 查看器不会显示图像。 在从属设备收到主设备发出的同步信号之前不会显示图像。
+1. 启动从属设备后，使用 Azure Kinect 查看器的另一实例打开主设备。
+1. 在“外部同步”下，选择“主设备”。  
+1. 选择“开始”  。
+
+Azure Kinect 主设备启动后，Azure Kinect 查看器的两个实例应显示图像。
+
+## <a name="calibrate-the-devices-as-a-synchronized-set"></a>根据同步设置校准设备
+
+验证设备可正确通信后，接下来可对其进行校准，以便在单个域中生成图像。
+
+在单个设备中，深度相机和 RGB 相机已经过出厂校准，可以协同工作。 但是，如果必须一同使用多个设备，则需要对这些设备进行校准，以确定如何将图像从捕获它时所在的相机域转换为用于处理图像的相机域。
+
+可以使用多个选项来交叉校准设备。 Microsoft 提供了使用 OpenCV 方法的 [GitHub 绿屏代码示例](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/green_screen)。 此代码示例的自述文件提供了有关校准设备的更多详细信息和说明。
+
+有关校准的其他一般信息，请参阅[使用 Azure Kinect 校准功能](use-calibration-functions.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure Kinect 传感器 SDK](about-sensor-sdk.md)
-- [捕获 Azure Kinect 设备同步](capture-device-synchronization.md)
-- [设置硬件](set-up-azure-kinect-dk.md)
+设置已同步的设备后，还可以了解如何使用
+> [!div class="nextstepaction"]
+> [Azure Kinect 传感器 SDK 录制和播放 API](record-playback-api.md)
 
+## <a name="related-topics"></a>相关主题
 
+- [关于 Azure Kinect 传感器 SDK](about-sensor-sdk.md)
+- [Azure Kinect DK 硬件规格](hardware-specification.md) 
+- [快速入门：设置 Azure Kinect DK](set-up-azure-kinect-dk.md) 
+- [更新 Azure Kinect DK 固件](update-device-firmware.md) 
+- [重置 Azure Kinect DK](reset-azure-kinect-dk.md) 
+- [Azure Kinect 查看器](azure-kinect-viewer.md) 

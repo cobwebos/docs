@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ea82d88099b0f5fdd00624db4417bbb02777581
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a427eab107c70b19932b7b8ddc5a7fc531ef19a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457780"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615430"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 Unity HoloLens 应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "75457780"
 
 完成本快速入门教程需要：
 
-- 需要一个已安装 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1</a> 或更高版本以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 Visual Studio 安装必须包括“通用 Windows 平台开发”  工作负载和 **Windows 10 SDK（10.0.18362.0 或更高版本）** 组件。 还必须安装 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
+- 需要一台安装了 <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 或 2019.2</a> 或更高版本以及 <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> 或更高版本的 Windows 计算机。 Visual Studio 安装必须包括“通用 Windows 平台开发”  工作负载和 **Windows 10 SDK（10.0.18362.0 或更高版本）** 组件。 还必须安装 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> 和 <a href="https://git-lfs.github.com/">Git LFS</a>。
 - 需要一台启用了[开发者模式](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)的 HoloLens 设备。 [Windows 10 2018 年 10 月更新](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018)（也称为 RS5）必须安装在此设备上。 若要在 HoloLens 上更新为最新版本，请打开“设置”应用，转到“更新和安全”，然后选择“检查更新”    。
 - 在应用上，需要启用“SpatialPerception”功能  。 此设置在“生成设置” > “播放机设置” > “发布设置” > “功能”中     。
 - 在应用上，需要通过“Windows 混合现实 SDK”启用“支持的虚拟现实”   。 此设置在“生成设置” > “播放机设置” > “XR 设置”中    。
@@ -89,6 +89,12 @@ ms.locfileid: "75457780"
 按照应用中的说明，放置并重新调用定位点。
 
 在 Visual Studio 中，选择“停止调试”或 Shift+F5 停止应用  。
+
+## <a name="troubleshooting"></a>故障排除
+
+### <a name="unity-20193"></a>Unity 2019.3
+
+由于中断性变更，目前不支持 Unity 2019.3。 请使用 Unity 2019.1 或 2019.2。
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

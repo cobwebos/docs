@@ -1,112 +1,156 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Linux 应用服务文档
+### YamlMime:Landing
+title: “Linux 上的应用服务”文档
+summary: 使用 Azure 应用服务可以采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 metadata:
-  title: Linux 容器 - 教程和参考
-  meta.description: Learn how to build Linux websites and web applications in App Service. Run your code in a default Docker container or run a custom container.
+  title: “Linux 上的应用服务”文档
+  description: 了解如何在应用服务中构建 Linux 网站和 Web 应用程序。 在默认 Docker 容器中运行代码，或者运行自定义容器。
   ms.topic: landing-page
-  ms.date: 09/05/2017
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
-            text: .NET Core
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-dotnetcore'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
-            text: Node.js
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-nodejs'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
-            text: PHP
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-php'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
-            text: Java
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-java'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg'
-            text: Python
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-python'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ruby.svg'
-            text: Ruby
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-            text: Docker
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
-      - type: paragraph
-        text: 了解如何进行持续部署：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/zip.svg
-            text: ZIP/WAR
-            href: ../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/ftp.svg
-            text: FTP
-            href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/git-icon.svg
-            text: 本地 Git
-            href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
-            text: Azure DevOps
-            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
-          - image:
-              src: ../media/index/github-octicons.svg
-            text: GitHub
-            href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/bitbucket.svg
-            text: Bitbucket
-            href: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/dropbox.svg
-            text: DropBox 同步
-            href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-          - image:
-              src: ../media/index/onedrive.svg
-            text: OneDrive 同步
-            href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何在 Linux 上的应用服务中部署、管理和监视安全的 Web 应用程序
-      - type: list
-        style: ordered
-        items:
-          - html: 通过<a href="/azure/app-service/containers/tutorial-dotnetcore-sqldb-app">将 .NET Core 与 Azure SQL DB 配合使用</a>、<a href="/azure/app-service/containers/tutorial-java-enterprise-postgresql-app">将 Java Enterpise 与 PostgreSQL 配合使用</a>或<a href="/azure/app-service/containers/tutorial-nodejs-mongodb-app">将 Node.js 与 MongoDB 配合使用</a>来创建应用程序
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">将现有自定义域映射到应用程序</a>
-          - html: <a href="/azure/app-service/configure-ssl-bindings">在 Azure 应用服务中使用 SSL 绑定保护自定义 DNS 名称</a>
-          - html: <a href="/azure/cdn/cdn-add-to-web-app">将 CDN 添加到应用程序</a>
-  - title: 示例
-    items:
-      - type: paragraph
-        text: 查找脚本来管理常见任务。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-          - html: <a href="/cli/azure/appservice">Azure CLI</a>
-  - title: 参考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/appservice">REST API 参考</a></p>
+  ms.service: app-service
+  ms.date: 02/26/2020
+  ms.openlocfilehash: dfaea2e99aa67d13fc737294219e557fb624a5ec
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78191242"
+landingContent:
+- title: 关于 Linux 上的应用服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Linux 上的应用服务？
+      url: app-service-linux-intro.md
+    - text: Windows 上的应用服务
+      url: /azure/app-service/
+    - text: 应用服务环境
+      url: ../environment/intro.md
+    - text: 比较托管选项
+      url: /azure/architecture/guide/technology-choices/compute-decision-tree
+  - linkListType: whats-new
+    links:
+    - text: 服务更新
+      url: https://azure.microsoft.com/updates/?product=app-service
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 第一个 Linux ASP.NET Core 应用
+      url: quickstart-dotnetcore.md
+    - text: 第一个 Linux Node.js 应用
+      url: quickstart-nodejs.md
+    - text: 第一个 Linux PHP 应用
+      url: quickstart-php.md
+    - text: 第一个 Linux Java 应用
+      url: quickstart-java.md
+    - text: 第一个 Linux Python (Flask) 应用
+      url: quickstart-python.md
+    - text: 第一个 Linux Ruby 应用
+      url: quickstart-ruby.md
+- title: 常见任务
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将自定义域映射到应用
+      url: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 使用 SSL 绑定确保自定义域安全
+      url: ../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 在过渡环境中运行应用
+      url: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 启用诊断日志
+      url: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 通过 SSH 连接到容器
+      url: app-service-linux-ssh-support.md
+    - text: 将活动域迁移到应用服务
+      url: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: 上传代码或内容
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: 使用 FTP 上传内容
+      url: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 将内容作为 zip 包上传
+      url: ../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 从本地计算机进行 Git 推送
+      url: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 与 OneDrive 或 Dropbox 同步内容
+      url: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 从 GitHub、BitBucket 等存储库进行 CI/CD
+      url: ../deploy-continuous-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: 将 CRUD 应用与数据库配合使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 ASP.NET Core 应用与 SQL 数据库配合使用
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: 将 PHP (Laravel) 应用与 Azure MySQL 配合使用
+      url: tutorial-php-mysql-app.md
+    - text: 将 Node.js (MEAN.js) 应用与 MongoDB 配合使用
+      url: tutorial-nodejs-mongodb-app.md
+    - text: 将 Java (Spring Boot) 应用与 Cosmos DB 配合使用
+      url: tutorial-java-spring-cosmosdb.md
+    - text: 将 Python (Django) 应用与 PostgreSQL 配合使用
+      url: tutorial-python-postgresql-app.md
+    - text: 将 Ruby (Rails) 应用与 PostgreSQL 配合使用
+      url: tutorial-ruby-postgres-app.md
+- title: 运行自定义容器
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 运行自定义 Linux 容器
+      url: quickstart-docker.md
+    - text: 运行多容器 (Docker Compose) 应用
+      url: quickstart-multi-container.md
+  - linkListType: tutorial
+    links:
+    - text: 从 Azure 容器注册表运行容器
+      url: tutorial-custom-docker-image.md
+  - linkListType: how-to-guide
+    links:
+    - text: CI/CD 到自定义容器
+      url: app-service-linux-ci-cd.md
+    - text: 将容器连接到存储文件
+      url: how-to-serve-content-from-azure-storage.md
+- title: 管理和集成
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 管理应用服务计划
+      url: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: 将 CDN 添加到应用程序
+      url: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 对用户进行身份验证
+      url: tutorial-auth-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: 使用流量管理器进行负载均衡
+      url: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: 将应用备份到存储 Blob
+      url: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+- title: 更多资源
+  linkLists:
+  - linkListType: video
+    links:
+    - text: 应用服务视频库
+      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
+    - text: PluralSight 视频培训
+      url: https://www.pluralsight.com/search?q=azure%20app%20service
+  - linkListType: sample
+    links:
+    - text: Azure CLI 示例
+      url: ../samples-cli.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - text: Azure PowerShell 示例
+      url: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/appservice
+    - text: Azure PowerShell
+      url: /powershell/module/az.websites/#app_service
+    - text: REST API
+      url: /rest/api/appservice/
+    - text: 资源管理器
+      url: /azure/templates/microsoft.web/allversions

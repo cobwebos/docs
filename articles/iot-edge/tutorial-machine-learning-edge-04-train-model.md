@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133517"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650752"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>教程：训练和部署 Azure 机器学习模型
 
@@ -83,7 +83,7 @@ Azure Notebooks 利用 Azure 机器学习工作区，该工作区是用于试验
 * **01-turbofan\_regression.ipynb：** 此 Notebook 使用机器学习服务工作区来创建并运行机器学习试验。 概括而言，该 Notebook 执行以下步骤：
 
   1. 从 Azure 存储帐户下载设备装备生成的数据。
-  1. 探索和准备用于训练的数据以及分类器和模型。
+  1. 浏览并准备数据，然后使用数据训练分类器模型。
   1. 使用测试数据集 (Test\_FD003.txt) 通过试验评估模型。
   1. 将最佳的分类器模型发布到机器学习服务工作区。
 

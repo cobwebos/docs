@@ -79,7 +79,7 @@
       href: system-requirements.md
     - name: 硬件规格
       href: hardware-specification.md
-    - name: 多相机同步
+    - name: 同步多个设备
       href: multi-camera-sync.md
     - name: 与 Kinect for Windows 的比较
       href: windows-comparison.md

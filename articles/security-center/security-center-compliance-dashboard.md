@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112311"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604456"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>教程：提高合规性
 ---
 
 Azure 安全中心使用合规性仪表板，可以根据合规性要求简化相关过程  。 在仪表板中，安全中心会对你的 Azure 环境进行持续的评估，以便了解你的符合性情况。 安全中心根据安全最佳做法分析混合云环境中的风险因素。 这些评估会从支持的一组标准映射到符合性控件。 在合规性仪表板中，可以查看在特定的法规标准下，环境中所有评估的状态。 针对建议进行操作并减少环境中的风险因素以后，合规性情况得到了改善。
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 -   使用合规性仪表板评估合规性
 
@@ -33,7 +33,7 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要逐步执行本教程中介绍的功能，必须有安全中心的“标准”定价层。 可以免费试用安全中心标准版。
 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 快速入门教程“[将 Azure 订阅载入到安全中心标准版](https://docs.microsoft.com/azure/security-center/security-center-get-started)”详细介绍了如何升级到标准版。
@@ -103,6 +103,4 @@ Azure 安全中心使用合规性仪表板，可以根据合规性要求简化�
 
 -   [管理 Azure 安全中心安全建议](security-center-recommendations.md) - 了解如何使用 Azure 安全中心的建议来保护 Azure 资源。
 
--   [提高 Azure 安全中心的安全分数](security-center-secure-score.md) - 了解如何确定漏洞和安全建议的优先级，以便最大程度地改善安全情况。
-
--   [Azure 安全中心常见问题](security-center-faq.md) - 查找有关如何使用服务的常见问题。
+-   [提高 Azure 安全中心的安全分数](security-center-secure-score.md) - 了解如何确定漏洞和安全建议的优先级，以便最大程度地改善安全状况。

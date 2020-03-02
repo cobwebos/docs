@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442575"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561436"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>教程：使用 Azure 门户在混合网络中部署和配置 Azure 防火墙
 
@@ -179,9 +179,10 @@ ms.locfileid: "77442575"
 6. 对于“操作”，请选择“允许”。  
 6. 在“规则”下，为“名称”键入 **AllowWeb**。  
 7. 对于“协议”，请选择“TCP”。  
-8. 对于“源地址”，请键入 **192.168.1.0/24**。 
-9. 对于“目标地址”，请键入 **10.6.0.0/16**
-10. 对于“目标端口”，请键入 **80**。 
+8. 对于**源类型**，请选择“IP 地址”  。
+9. 对于**源**，请键入 **192.168.1.0/24**。
+10. 对于**目标地址**，请键入 **10.6.0.0/16**
+11. 对于“目标端口”，请键入 **80**。 
 
 现在添加一个规则以允许 RDP 流量。
 
@@ -189,10 +190,11 @@ ms.locfileid: "77442575"
 
 1. 对于“名称”，请键入 **AllowRDP**。 
 2. 对于“协议”，请选择“TCP”。  
-3. 对于“源地址”，请键入 **192.168.1.0/24**。 
-4. 对于“目标地址”，请键入 **10.6.0.0/16**
-5. 对于“目标端口”，请键入 **3389**。 
-6. 选择 **添加** 。
+3. 对于**源类型**，请选择“IP 地址”  。
+4. 对于**源**，请键入 **192.168.1.0/24**。
+5. 对于**目标地址**，请键入 **10.6.0.0/16**
+6. 对于“目标端口”，请键入 **3389**。 
+7. 选择 **添加** 。
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>创建并连接 VPN 网关
 

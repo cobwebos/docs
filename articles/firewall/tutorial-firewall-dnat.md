@@ -1,25 +1,25 @@
 ---
-title: 在门户中通过 Azure 防火墙 DNAT 筛选入站流量
+title: 在门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
 description: 本教程介绍如何使用 Azure 门户部署和配置 Azure 防火墙 DNAT。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1528087ced54ddcab2e3dd44b65fb3411cae3004
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195735"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621787"
 ---
-# <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：使用 Azure 门户通过 Azure 防火墙 DNAT 筛选入站流量
+# <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教程：在 Azure 门户中通过 Azure 防火墙 DNAT 筛选入站 Internet 流量
 
-可以对 Azure 防火墙目标网络地址转换 (DNAT) 进行配置，以便转换和筛选到子网的入站流量。 配置 DNAT 时，NAT 规则收集操作设置为“Dnat”。  然后，可以使用 NAT 规则集合中的每个规则将防火墙公用 IP 和端口转换为专用 IP 和端口。 DNAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+可以配置 Azure 防火墙目标网络地址转换 (DNAT)，以转换和筛选到子网的入站 Internet 流量。 配置 DNAT 时，NAT 规则收集操作设置为“Dnat”。  然后，可以使用 NAT 规则集合中的每个规则将防火墙公用 IP 和端口转换为专用 IP 和端口。 DNAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置测试网络环境
@@ -151,9 +151,9 @@ ms.locfileid: "74195735"
 
    |设置  |值  |
    |---------|---------|
-   |Name     |FW-DNAT-test|
-   |Subscription     |\<用户的订阅\>|
-   |Resource group     |**使用现有项**：RG-DNAT-Test |
+   |名称     |FW-DNAT-test|
+   |订阅     |\<用户的订阅\>|
+   |资源组     |**使用现有项**：RG-DNAT-Test |
    |位置     |选择前面使用的同一位置|
    |选择虚拟网络     |**使用现有项**：VN-Hub|
    |公共 IP 地址     |**新建**。 公共 IP 地址必须为“标准 SKU”类型。|
@@ -201,7 +201,7 @@ ms.locfileid: "74195735"
 6. 在“规则”下，对于“名称”，键入 **RL-01**。  
 7. 对于“协议”，请选择“TCP”。  
 8. 对于“源地址”，键入 *。  
-9. 对于“目标地址”  ，键入防火墙的公用 IP 地址。 
+9. 对于“目标地址”  ，键入防火墙的公共 IP 地址。 
 10. 对于“目标端口”，键入 **3389**。  
 11. 对于“已翻译的地址”  ，键入 Srv-Workload 虚拟机的专用 IP 地址。 
 12. 对于“已翻译的端口”  ，键入 **3389**。 
@@ -218,7 +218,7 @@ ms.locfileid: "74195735"
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何：
+在本教程中，你了解了如何执行以下操作：
 
 > [!div class="checklist"]
 > * 设置测试网络环境

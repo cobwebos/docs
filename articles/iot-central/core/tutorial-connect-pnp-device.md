@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026370"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602594"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教程：使用设备功能模型创建 IoT 即插即用（预览版）设备并将其连接到 IoT Central 应用程序
 
 _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)设备的功能。 当设备首次进行连接时，IoT Central 可以使用 DCM 为设备创建设备模板和可视化效果。
+
+对 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)的支持处于预览状态，并且仅在选定区域受支持。
+
+> [!NOTE]
+> 请与技术支持联系，以获取创建支持 IoT 即插即用设备的预览应用程序的访问权限。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -80,7 +85,7 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 
 若要将设备连接到 IoT Central 应用程序，需要生成一个设备密钥。 若要生成设备密钥：
 
-1. 登录到使用[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门中的“自定义应用”>“预览应用程序”模板创建的 IoT Central 应用程序  。
+1. 登录到使用[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门中的“自定义应用程序”模板创建的 IoT Central 应用程序  。
 
 1. 转到“管理”页并选择“设备连接”。  
 

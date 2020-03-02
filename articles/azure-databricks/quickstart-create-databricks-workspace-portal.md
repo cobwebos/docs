@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 46bad14978957ab474cfc0eda3e523874246d3f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263195"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586217"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Databricks 上运行 Spark 作业
 
@@ -55,7 +55,7 @@ ms.locfileid: "76263195"
     |**位置**     | 选择“美国西部 2”  。 有关其他可用区域，请参阅[各区域推出的 Azure 服务](https://azure.microsoft.com/regions/services/)。        |
     |**定价层**     |  在“标准”、“高级”和“试用”之间进行选择。    有关这些层的详细信息，请参阅 [Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。       |
 
-4. 选择“查看 + 创建”，然后选择“创建”   。 创建工作区需要几分钟时间。 创建工作区时，可以在“通知”中查看部署状态。 
+3. 选择“查看 + 创建”，然后选择“创建”   。 创建工作区需要几分钟时间。 创建工作区时，可以在“通知”中查看部署状态。  完成此过程后，你的用户帐户将自动添加为工作区的管理员用户。
 
     ![Databricks 部署磁贴](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks 部署磁贴")
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 759cc3f22d8b57036bad48326ffec1d6fca42696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939438"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604063"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -81,7 +81,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 ![安全中心网络映射](media/security-center-intro/sc-net-map.png)
 
-通过添加安全分数，安全中心可以更轻松地一步缓解安全警报  。 安全分数现在与你接收的每项建议相关联，有助于了解每项建议对总体安全状况的重要程度。 这一点在你设置安全工作的优先级时至关重要  。
+通过添加安全分数，安全中心可以更轻松地一步缓解安全警报  。 现在，安全分数已与你收到的每条建议相关联，以帮助你了解每条建议对你的整体安全状况有多重要。 这一点在你设置安全工作的优先级时至关重要  。
 
 ![安全中心安全分数](media/security-center-intro/sc-secure-score.png)
 

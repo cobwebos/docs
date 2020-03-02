@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964441"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621851"
 ---
 # <a name="what-is-azure-data-share"></a>什么是 Azure Data Share？
 
@@ -23,7 +23,7 @@ ms.locfileid: "76964441"
 
 数据提供者可以指定其数据共享的使用条款，这样就可以始终控制其数据的处理方式。 数据使用者必须接受这些条款才能接收数据。 数据提供者可以指定其数据使用者接收更新的频率。 数据提供者可以随时撤销对新更新的访问权限。 
 
-可以使用 Azure Data Share 轻松地组合使用第三方提供的数据来丰富分析和 AI 方案，使见解更有说服力。 可以轻松地利用 Azure 分析工具来准备、处理和分析通过 Azure Data Share 共享的数据。 
+可以使用 Azure Data Share 轻松地组合使用第三方提供的数据来丰富分析和 AI 方案，使见解更有说服力。 轻松利用 Azure 分析工具的强大功能来准备、处理和分析通过 Azure Data Share 共享的数据。 
 
 数据提供者和数据使用者都必须拥有 Azure 订阅才能共享和接收数据。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/)。
 

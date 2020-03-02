@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: 支持的平台
       href: security-center-os-coverage.md
-    - name: 支持的功能
-      href: security-center-services.md
+    - name: 安全中心功能
+      items:
+        - name: 适用于 VM 的功能覆盖范围
+          href: security-center-services.md
+        - name: 适用于 Azure PaaS 资源的功能覆盖范围
+          href: features-paas.md
+    - name: 安全建议
+      href: recommendations-reference.md
+    - name: 安全警报和意向攻击链
+      href: alerts-reference.md
 - name: 快速入门
   expanded: true
   items:

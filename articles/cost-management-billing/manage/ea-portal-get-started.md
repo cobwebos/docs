@@ -3,16 +3,16 @@ title: Azure Enterprise 门户入门
 description: 本文介绍 Azure 企业协议 (Azure EA) 客户如何使用 Azure Enterprise 门户。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: fa55eebe6d051addcb5249908fd52e7e6ce44f12
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200823"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598402"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise 门户入门
 
@@ -559,7 +559,7 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 
 创建部门和订阅后，可以在使用情况报表中看到数据。 这些信息有助于在部门级别跟踪使用情况和管理成本与支出。
 
-还可以通过报告 API 访问使用情况数据。 有关详细信息和示例代码，请参阅[报告 API 文档](https://ea.azure.com/helpdocs/reportingAPI)。
+还可以通过报告 API 访问使用情况数据。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>是否可以设置支出配额，并在即将达到限制时收到警报？
 
@@ -571,7 +571,7 @@ Azure Enterprise 门户为企业客户提供两种类型的订阅：
 
 如果你使用了资源组和标记，则会在服务级别跟踪此信息，可以在下载的详细使用情况 (CSV) 文件中访问此信息。   请参阅 Azure Enterprise 门户中的[下载使用情况报表](https://ea.azure.com/report/downloadusage)。
 
-也可以通过 API 访问使用情况。 有关详细信息和示例代码，请参阅 Azure Enterprise 门户文档中的[报告 API](https://ea.azure.com/helpdocs/reportingAPI)。
+也可以通过 API 访问使用情况。 有关详细信息和示例代码，请参阅 [Azure Enterprise REST API](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis)。
 
 > [!NOTE]
 > 只能将标记应用到支持 Azure 资源管理器操作的资源。 如果是通过经典部署模型（如通过经典门户）创建的虚拟机、虚拟网络或存储，则无法向该资源应用标记。 必须通过资源管理器重新部署这些资源才支持标记。 所有其他资源均支持标记。

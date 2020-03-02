@@ -1,5 +1,6 @@
 ---
 title: 快速入门：创建 CentOS Data Science Virtual Machine
+titleSuffix: Azure Data Science Virtual Machine
 description: 配置和创建适用于 Linux (CentOS) 的数据科学虚拟机，进行分析和机器学习。
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,18 +8,18 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204166"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526019"
 ---
 # <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>快速入门：在 Azure 中设置 CentOS (Linux) Data Science Virtual Machine
 
 启动并运行基于 CentOS 的 Data Science Virtual Machine。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要创建 CentOS Data Science Virtual Machine，必须具备 **Azure 订阅**。 [创建免费订阅](https://azure.com/free)。
 
@@ -33,7 +34,7 @@ ms.locfileid: "71204166"
 
 1. 在随后的窗口中，选择“创建”  。
 
-    [![](media/linux-dsvm-intro/create-centos.png "用于创建 CentOS 虚拟机的按钮")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    
@@ -48,7 +49,7 @@ ms.locfileid: "71204166"
        * **虚拟机名称**：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
        * **区域**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
        * **映像**：保留默认值。
-       * **大小**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **Size**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
        * **身份验证类型**：为了更快地设置，请选择“密码”。 
          
          > [!NOTE]

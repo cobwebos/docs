@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure 数据资源管理器文档
 metadata:
-  title: 快速入门、教程和语言/API 文档 - Azure 数据资源管理器
+  title: Azure 数据资源管理器快速入门、教程、查询语言和 API 文档
   description: Azure 数据资源管理器是针对临时大数据查询进行了优化的日志分析云平台。
   author: orspod
   ms.author: orspodek

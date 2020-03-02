@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/20/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977346"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587152"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -42,34 +42,10 @@ ms.locfileid: "75977346"
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>创建启用了 Kafka 的事件中心命名空间
+当你创建**标准**层事件中心命名空间时，系统会自动为该命名空间启用 Kafka 终结点。 可以将事件从使用 Kafka 协议的应用程序流式传输到标准层事件中心。 按照[使用 Azure 门户创建事件中心](event-hubs-create.md)中的分步说明创建**标准**层事件中心命名空间。 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)，单击屏幕左上角的“创建资源”  。
-2. 搜索“事件中心”  并选择此处显示的选项：
-    
-    ![在门户中搜索事件中心](./media/event-hubs-kafka-stream-analytics/select-event-hubs.png) 
-3. 在“事件中心”  页上，选择“创建”  。
-4. 在“创建命名空间”页上，执行以下操作  ： 
-    1. 为命名空间提供唯一名称  。 
-    2. 选择“定价层”  。 
-    3. 选择“启用 Kafka”  。 此步骤是一个重要  步骤。 
-    4. 选择想在其中创建事件中心命名空间的订阅  。 
-    5. 创建新的资源组  ，或选择现有资源组。 
-    6. 选择一个位置  。 
-    7. 单击“创建”。 
-    
-        ![创建命名空间](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
-4. 在“通知消息”  中，选择“资源组名称”  。 
-
-    ![创建命名空间](./media/event-hubs-kafka-stream-analytics/creation-station-message.png)
-1. 在资源组中，选择“事件中心命名空间”  。 
-2. 创建命名空间后，在“设置”  下选择“共享访问策略”  。
-
-    ![单击“共享访问策略”](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
-5. 你可以选择默认的 RootManageSharedAccessKey  ，或添加新策略。 单击策略名称，复制连接字符串  。 使用连接字符串来配置 Kafka 客户端。 
-    
-    ![选择策略](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
-
-现在，可以从使用 Kafka 协议的应用程序，将事件流式传输到事件中心。
+> [!NOTE]
+> Kafka 的事件中心仅在**标准**和**专用**层上可用。 **基本** 层不支持事件中心上的 Kafka。
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>在事件中心内使用 Kafka 发送消息
 
