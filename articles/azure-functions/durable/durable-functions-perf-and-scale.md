@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486254"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204508"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -220,7 +220,7 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
-如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 启用扩展会话后，orchestrator 函数实例将保留在内存中，并且无需重播全部历史记录即可处理新消息。
+如前所述，业务流程协调程序函数是使用“历史记录”表的内容重播的。 默认情况下，每当从控制队列中取消一批消息的排队时，都会重播业务流程协调程序函数代码。 即使使用扇出，扇入模式并等待完成所有任务（例如，使用 .NET 中的 `Task.WhenAll` 或 JavaScript 中的 `context.df.Task.all`），在一段时间内处理任务响应的批处理时，会发生重播。 启用扩展会话后，orchestrator 函数实例将保留在内存中，并且无需重播全部历史记录即可处理新消息。
 
 在以下情况下，通常会出现扩展会话的性能改进：
 

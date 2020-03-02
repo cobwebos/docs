@@ -4,12 +4,12 @@ description: 了解如何使用 azure 备份通过 Azure 导入/导出服务从�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 60295d1c534dbd1181533190df260ed4507ec11f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1359616e074f36a1324a418d5b2c889076ced52d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197109"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206752"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 备份中的脱机备份工作流
 
@@ -42,7 +42,7 @@ Azure 备份的脱机种子设定过程与[Azure 导入/导出服务](../storage
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
   > [!NOTE]
   > 以下先决条件和工作流仅适用于使用[最新的 Azure 恢复服务代理](https://aka.ms/azurebackup_agent)对文件和文件夹进行脱机备份。 若要使用 System Center DPM 或 Azure 备份服务器为工作负荷执行脱机备份，请参阅[DPM 和 Azure 备份服务器的脱机备份工作流](backup-azure-backup-server-import-export-.md)。
@@ -116,7 +116,7 @@ Azure 备份的脱机种子设定过程与[Azure 导入/导出服务](../storage
 
 *AzureOfflineBackupDiskPrep* 实用工具会准备送到最近 Azure 数据中心的 SATA 驱动器。 此实用程序在 Azure 备份代理安装目录的以下路径中提供：
 
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+```*\Microsoft Azure Recovery Services Agent\Utils\\*```
 
 1. 中转到该目录，然后将*AzureOfflineBackupDiskPrep*目录复制到连接 SATA 驱动器的另一台计算机。 在连接了 SATA 驱动器的计算机上，确保：
 

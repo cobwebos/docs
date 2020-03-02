@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: cd9907d041562d23bc487de319a17d36b68db6f3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916111"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205970"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -33,7 +33,7 @@ Azure 安全中心是 Azure 本机解决方案，适用于容器安全性。 安
 
 有关如何使用这些功能的说明，请参阅[监视容器的安全性](monitor-container-security.md)。
 
-## <a name="vulnerability-management---scanning-container-images-preview"></a>漏洞管理-扫描容器映像（预览版）
+## <a name="vulnerability-management---scanning-container-images"></a>漏洞管理-扫描容器映像
 若要监视基于 ARM 的 Azure 容器注册表，请确保在安全中心的标准层上（请参阅[定价](/azure/security-center/security-center-pricing)）。 然后启用可选的容器注册表绑定。 推送新映像后，安全中心将使用行业领先漏洞扫描供应商 Qualys 中的扫描仪扫描映像。
 
 当通过 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 对于每个漏洞，安全中心都提供可操作的建议，以及严重性分类和有关如何修正问题的指南。 有关安全中心建议容器的详细信息，请参阅[建议的参考列表](recommendations-reference.md#recs-containers)。
@@ -82,7 +82,7 @@ Qualys 扫描程序不支持超级最简单映像（例如[Docker 暂存](https:
 每次推送时都会触发图像扫描。
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
-是的。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
+可以。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
  
 
 ## <a name="next-steps"></a>后续步骤

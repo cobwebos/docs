@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919214"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206004"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的托管标识
 
@@ -44,11 +44,11 @@ ms.locfileid: "77919214"
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [企业安全性套餐](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka 创建自己的密钥（BYOK）](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [客户托管的密钥磁盘加密](disk-encryption.md)
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>如果在创建群集后删除托管标识，会发生什么情况？
-需要托管标识时，群集将会遇到问题。 创建群集后，当前没有办法更新或更改 "管理标识"。 建议确保在群集运行时不删除托管标识。 或者，你可以重新创建群集并分配一个新的托管标识。
+需要托管标识时，群集将会遇到问题。 创建群集后，当前没有办法更新或更改管理标识。 建议确保在群集运行时不删除托管标识。 或者，你可以重新创建群集并分配一个新的托管标识。
 
 ## <a name="next-steps"></a>后续步骤
 

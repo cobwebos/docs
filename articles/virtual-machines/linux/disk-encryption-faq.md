@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45febcffed747f75b6c8b78c2e4b93a047f81b0a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036350"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205868"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -100,7 +100,7 @@ Azure 磁盘加密具有先决条件。 请参阅[包含 Azure AD 内容的 Azur
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>是否可以向使用 yum 更新的 Linux Red Hat VM 应用更新？
 
-是的，可以在 Red Hat Linux VM 上执行 yum 更新。  有关详细信息，请参阅[防火墙后面的 Linux 包管理](disk-encryption-troubleshooting.md#linux-package-management-behind-a-firewall)。
+是的，可以在 Red Hat Linux VM 上执行 yum 更新。  有关详细信息，请参阅[隔离网络上的 Azure 磁盘加密](disk-encryption-isolated-network.md)。
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>对于 Linux，应使用哪种 Azure 磁盘加密工作流？
 
@@ -131,7 +131,7 @@ Azure 磁盘加密使用256位卷主密钥的解密默认值 xts-plain64。
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>是否可以备份和还原已加密的 VM？ 
 
-Azure 备份提供了一种机制，用于在同一订阅和区域中备份和还原加密的 VM。  有关说明，请参阅[使用 Azure 备份来备份和还原已加密的虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。  当前不支持将加密的 VM 还原到其他区域。  
+Azure 备份提供了一种机制，用于在同一订阅和区域中备份和还原加密的 VM。  有关说明，请参阅[利用 Azure 备份来备份和还原加密的虚拟机](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。  当前不支持将加密的 VM 还原到其他区域。  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>可以在何处提问或提供反馈？
 

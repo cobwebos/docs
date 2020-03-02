@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: c1c144ac9db040bfac45ecc7838401ae09c9e2c4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 7d529335d18f9016ea7a02ac9b03461e3784b08e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137990"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204440"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>使用 PowerShell 将 Vm 部署到邻近位置组
 
@@ -78,7 +78,7 @@ $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
-Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
 ### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>将现有 VM 移出邻近位置组
@@ -91,7 +91,7 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 $vm.ProximityPlacementGroupId = ""
 Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
-Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```
 
 
@@ -158,7 +158,7 @@ $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
 $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
 Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
-Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
 ### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>将现有规模集移出邻近感应布局组
@@ -168,7 +168,7 @@ $vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScal
 Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 $vmss.ProximityPlacementGroup = ""
 Update-AzVmss -VirtualMachineScaleSet $vmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName  
-Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Start-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
 ```
 
 ## <a name="next-steps"></a>后续步骤

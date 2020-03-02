@@ -3,14 +3,14 @@ title: 配置 Twitter 身份验证
 description: 了解如何将 Twitter 身份验证配置为应用服务应用的标识提供者。
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 02/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670800"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207127"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>将应用服务应用配置为使用 Twitter 登录
 
@@ -20,28 +20,27 @@ ms.locfileid: "74670800"
 
 若要完成本文中的过程，需要一个包含已验证电子邮件地址和电话号码的 Twitter 帐户。 若要创建新的 Twitter 帐户，请转至 [twitter.com]。
 
-## <a name="register"> </a>向 Twitter 注册应用程序
+## <a name="register"></a>向 Twitter 注册应用程序
 
 1. 登录到[Azure 门户]并中转到你的应用程序。 复制 **URL**。 你将使用它来配置你的 Twitter 应用。
-1. 请前往[Twitter 开发人员]网站，用你的 Twitter 帐户凭据登录，并选择 "**创建新应用**"。
-1. 输入新应用的**名称**和**描述**。 将应用程序的**URL**粘贴到 "**网站**" 字段。 在 "**回调 url** " 字段中，输入应用服务应用的 URL，并将路径追加 `/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。 请确保使用 HTTPS 方案。
-1. 在页面底部，阅读并接受条款。 选择 "**创建 Twitter 应用程序**"。 将显示应用程序详细信息。
-1. 选择 "**设置**" 选项卡，选中 "**允许使用此应用程序通过 Twitter 登录**"，然后选择 "**更新设置**"。
+1. 请前往[Twitter 开发人员]网站，使用你的 Twitter 帐户凭据登录，然后选择 "**创建应用**"。
+1. 输入新应用的**应用名称**和**应用程序说明**。 将应用程序的**url**粘贴到 "**网站 url** " 字段。 在 "**回调 url** " 部分中，输入应用服务应用的 HTTPS URL，并将路径追加 `/.auth/login/twitter/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/twitter/callback` 。
+1. 在页面底部的 "**告诉我们如何使用此应用**" 中键入至少100个字符，然后选择 "**创建**"。 在弹出窗口中再次单击 "**创建**"。 将显示应用程序详细信息。
 1. 选择“密钥和访问令牌”选项卡。
 
    记下以下值：
-   - 使用者密钥（API 密钥）
-   - 使用者机密（API 机密）
+   - API 密钥
+   - API 密钥
 
    > [!NOTE]
-   > 使用者机密是一个非常重要的安全凭据。 请勿与任何人分享此密钥或将密钥随应用分发。
+   > API 密钥是重要的安全凭据。 请勿与任何人分享此密钥或将密钥随应用分发。
 
-## <a name="secrets"></a>向应用程序添加 Twitter 信息
+## <a name="secrets"></a>将 Twitter 信息添加到应用程序
 
 1. 在[Azure 门户]中转到你的应用程序。
 1. 选择 "**设置**" > "**身份验证/授权**"，并确保 "**应用服务身份验证** **" 已打开**。
 1. 选择 " **Twitter**"。
-1. 粘贴你之前获取的 `API Key` 和 `API Secret` 值。
+1. 粘贴你之前获取的 `API key` 和 `API secret key` 值。
 1. 选择“确定”。
 
    ![移动应用 Twitter 设置的屏幕截图][1]

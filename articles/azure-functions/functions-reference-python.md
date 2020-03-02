@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190698"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206327"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -101,7 +101,7 @@ from __app__.SharedCode import myFirstHelperFunction
 from . import example
 ```
 
-将项目部署到 Azure 中的函数应用时， *FunctionApp*文件夹的整个内容应包含在包中，而不是文件夹本身。 建议在与项目文件夹不同的文件夹中维护测试，在此示例中 `tests`。 这使你可以在应用中部署测试代码。 有关详细信息，请参阅[单元测试](#unit-testing)。
+在将项目部署到 Azure 中的函数应用时，会在包中包含主项目（ *\_\_app\_\_* ）文件夹的全部内容，但不应包括文件夹本身。 建议在与项目文件夹不同的文件夹中维护测试，在此示例中 `tests`。 这使你可以在应用中部署测试代码。 有关详细信息，请参阅[单元测试](#unit-testing)。
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
@@ -276,7 +276,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在这种情况下，你可以通过使用异步模式和使用多个语言辅助进程进一步提高性能。
 
-### <a name="async"></a>异步
+### <a name="async"></a>Async
 
 由于 Python 是单线程运行时，因此用于 Python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来提高性能。
 
@@ -323,7 +323,7 @@ def main(req: azure.functions.HttpRequest,
 在其中运行函数的目录。
 
 `function_name`  
-函数的名称。
+函数名称。
 
 `invocation_id`  
 当前函数调用的 ID。

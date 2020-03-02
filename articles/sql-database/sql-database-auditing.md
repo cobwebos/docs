@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184751"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206599"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -93,7 +93,7 @@ ms.locfileid: "78184751"
    
 ### <a id="audit-storage-destination">审核到存储目标</a>
 
-若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击“确定”。 早于保留期的日志会被删除。
+若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击 **“确定”** 。 早于保留期的日志会被删除。
 
    > [!IMPORTANT]
    > - 保持期的默认值为0（无限制保留期）。 在配置存储帐户进行审核时，可以通过移动**存储设置**中的 "**保留期（天）** " 滑块来更改此值。
@@ -116,22 +116,15 @@ ms.locfileid: "78184751"
 
 ### <a id="audit-event-hub-destination">审核到事件中心目标</a>
 
-< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > 不能对已暂停的 SQL 池启用审核。 若要启用它，请取消暂停 SQL 池。
 
 > [!WARNING]
-> 如果在具有 SQL 池的服务器上启用审核，则**会导致 SQL 池恢复，并再次重新暂停，** 这可能会产生费用。
-< < < < < < < HEAD = = = = = = =：若要配置向事件中心写入审核日志，请选择 "**事件中心（预览版）** "，并打开 "**事件中心详细信息**"。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
+> 如果在具有 SQL 池的服务器上启用审核，则会**导致 SQL 池恢复，并再次重新暂停，** 这可能会产生计费费用。
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 若要配置将审核日志写入事件中心的操作，请选择“事件中心(预览版)”，打开“事件中心详细信息”。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>分析审核日志和报告
 

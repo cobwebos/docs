@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "77013693"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208194"
 ---
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
 - 支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
 
-## <a name="benefits"></a>优势 
+## <a name="benefits"></a>优点 
 
 保留整个主机具有以下优势：
 
@@ -89,7 +89,7 @@ ms.locfileid: "77013693"
 
 免费试用版和 MSDN 订阅没有 Azure 专用主机的配额。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 无论部署多少个 Vm，都按专用主机对用户收费。 在你的月度语句中，你将看到新的可计费资源类型。 专用主机上的 Vm 仍会显示在你的声明中，但将具有0价格。
 
@@ -98,6 +98,8 @@ ms.locfileid: "77013693"
 软件许可、存储和网络使用情况与主机和 Vm 分开计费。 不会更改这些可计费项。
 
 有关详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
+
+还可以使用 [Azure 专用主机的保留实例] （。/articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
  
 ## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬件代
 
@@ -115,7 +117,7 @@ SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单�
 
 Azure 监视和管理主机的运行状况状态。 查询主机时，将返回以下状态：
 
-| 运行状况状态   | Description       |
+| 运行状况状态   | 说明       |
 |----------|----------------|
 | 主机可用     | 主机没有已知问题。   |
 | 正在调查的主机  | 我们正在寻找的主机遇到一些问题。 这是 Azure 尝试并确定确定的问题的范围和根本原因所需的过渡状态。 主机上运行的虚拟机可能会受到影响。 |

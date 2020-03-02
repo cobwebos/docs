@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313989"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206701"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>将其他存储帐户添加到 HDInsight
 
@@ -21,13 +21,13 @@ ms.locfileid: "76313989"
 > [!IMPORTANT]  
 > 本文档中的信息介绍了如何在创建群集后将其他存储帐户添加到群集。 有关如何在创建群集期间添加存储帐户的信息，请参阅[使用 Apache Hadoop、Apache Spark、Apache Kafka 等设置 HDInsight 中的群集](hdinsight-hadoop-provision-linux-clusters.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 上的 Hadoop 群集。 请参阅 [Linux 上的 HDInsight 入门](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 * 存储帐户名称和密钥。 请参阅[管理存储帐户访问密钥](../storage/common/storage-account-keys-manage.md)。
 * 如果使用 PowerShell，则需要 AZ 模块。  请参阅[Azure PowerShell 的概述](https://docs.microsoft.com/powershell/azure/overview)。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 处理过程中，此脚本执行以下操作：
 
@@ -46,7 +46,7 @@ ms.locfileid: "76313989"
 
 ## <a name="add-storage-account"></a>添加存储帐户
 
-使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)来应用更改，但需注意以下事项：
+使用[脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)来应用更改，但需注意以下事项：
 
 |属性 | 值 |
 |---|---|

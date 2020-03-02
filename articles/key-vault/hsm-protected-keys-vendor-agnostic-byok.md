@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566108"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207024"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>将受 HSM 保护的密钥导入到 Key Vault（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "77566108"
 * KEK 必须位于将导入目标密钥的同一密钥保管库中。
 * 将 BYOK 文件上传到 Key Vault 时，Key Vault HSM 使用 KEK 私钥来解密目标密钥材料，并将其作为 HSM 密钥导入。 此操作完全在 Key Vault HSM 内发生。 目标密钥始终保留在 HSM 保护边界内。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 下表列出了在 Azure Key Vault 中使用 BYOK 的先决条件：
 
@@ -90,6 +90,9 @@ KEK 必须是：
 - 在你打算导入目标密钥的同一密钥保管库中生成
 - 已使用允许的密钥操作设置为 `import`
 
+> [!NOTE]
+> KEK 必须具有 "import" 作为唯一允许的键操作。 "import" 与所有其他键操作是互相排斥的。
+
 使用[az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create)命令创建具有设置为 `import`的关键操作的 KEK。 记录从以下命令返回的密钥标识符（`kid`）。 （你将在[步骤 3](#step-3-generate-and-prepare-your-key-for-transfer)中使用 `kid` 值。）
 
 ```azurecli
@@ -115,7 +118,7 @@ az keyvault key download --name KEKforBYOK --vault-name ContosoKeyVaultHSM --fil
 > [!NOTE] 
 > 不支持导入 RSA 1024 位密钥。 当前不支持导入椭圆曲线（EC）键。
 > 
-> **已知问题**：从 SafeNet Luna hsm 导入 RSA 4k 目标密钥失败。 解决问题后，将更新本文。
+> **已知问题**：仅固件 v7.4.0 或更高版本支持从 SafeNet Luna hsm 导入 RSA 4k 目标密钥。
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>步骤4：将密钥传输到 Azure Key Vault
 

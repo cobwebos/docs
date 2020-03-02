@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b813c1caa02ce3ffd3ab0579849dff47252e7d63
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559158"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207041"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "77559158"
 
 分配到全局管理员角色的用户可以读取和修改 Azure AD 组织中的每个管理设置。 默认情况下，会向注册 Azure 订阅的人员分配 Azure AD 组织的全局管理员角色。 只有全局管理员和特权角色管理员才能委派管理员角色。 为了降低业务风险，我们建议你将此角色分配给组织中尽可能少的人员。
 
-作为最佳做法，我们建议你将此角色分配给组织中少于5人的人员。 如果你的组织中有5个以上的用户分配到全局管理员角色，则可以通过以下方法减少其使用。
+作为最佳做法，我们建议你将此角色分配给组织中少于五名人员的人。 如果你的组织中的全局管理员角色分配了五个以上的管理员，则可通过以下方式降低其使用。
 
 ### <a name="find-the-role-you-need"></a>查找所需的角色
 
@@ -43,7 +43,7 @@ ms.locfileid: "77559158"
 
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](directory-manage-roles-portal.md)。
 
-## <a name="available-roles"></a>可用的角色
+## <a name="available-roles"></a>可用角色
 
 提供以下管理员角色：
 
@@ -121,7 +121,7 @@ ms.locfileid: "77559158"
 
 ### <a name="billing-administrator"></a>[计费管理员](#billing-administrator-permissions)
 
-进行采购、管理订阅、管理支持票证，以及监视服务运行状况。
+采购物品、管理订阅、管理支持票证并监视服务运行状况。
 
 ### <a name="cloud-application-administrator"></a>[云应用程序管理员](#cloud-application-administrator-permissions)
 
@@ -219,7 +219,7 @@ In | 有权执行的操作
 
 ### <a name="global-administrator--company-administrator"></a>[全局管理员/公司管理员](#company-administrator-permissions)
 
-具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
+具有此角色的用户有权访问 Azure Active Directory 以及使用 Azure Active Directory 标识的服务（例如 Microsoft 365 安全中心、Microsoft 365 合规中心、Exchange Online、SharePoint Online 和 Skype for Business Online）中的所有管理功能。 注册 Azure Active Directory 租户的人员将成为全局管理员。 你的公司中可以有多个全局管理员。 全局管理员可以为任何用户和所有其他管理员重置密码。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，此角色标识为 "公司管理员"。 它是 [Azure 门户](https://portal.azure.com)中的“全局管理员”。
@@ -238,7 +238,7 @@ In | 有权执行的操作
 >- [Azure AD 门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)-全局读取器无法读取企业应用的预配模式。
 >- [M365 管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage)-全局读者无法读取客户密码箱请求。 在 M365 管理中心的左窗格中，你将找不到 "**支持**" 下的 "**客户密码箱请求**" 选项卡。
 >- [M365 安全中心](https://security.microsoft.com/homepage)-全球读者无法读取敏感度和保留标签。 在 M365 安全中心的左窗格中找不到**灵敏度标签**、**保留标签**和**标签分析**选项卡。
->- [Office 安全与合规中心](https://sip.protection.office.com/homepage)-全局读取器无法读取 SCC 审核日志或执行内容搜索。
+>- [Office 安全与合规中心](https://sip.protection.office.com/homepage)-全局读者无法读取 SCC 审核日志、执行内容搜索或查看安全分数。
 >- [团队管理员中心](https://admin.teams.microsoft.com)-全球读者无法阅读**团队生命周期**、**分析 & 报表**、 **IP 电话设备管理**和**应用程序目录**。
 >- [Privileged Access Management （PAM）](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview)不支持全局读者角色。
 >- [Azure 信息保护](https://docs.microsoft.com/azure/information-protection/what-is-information-protection)-仅支持[适用于中央报告的](https://docs.microsoft.com/azure/information-protection/reports-aip)全局读取器，以及在 Azure AD 组织不在[统一标签平台](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)上时。
@@ -1012,7 +1012,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 当你在 Windows Defend
 | allTasks/identityProviders/ | 在 Azure Active Directory B2C 中读取和配置标识提供者。 |
 
 ### <a name="global-reader-permissions"></a>全局读者权限
-可以读取全局管理员可以使用的所有内容，但不能编辑任何内容。 
+可以读取全局管理员可以使用的所有内容，但不能编辑任何内容。
 
 > [!NOTE]
 > 此角色拥有 Azure Active Directory 外部的其他权限。 有关详细信息，请参阅上面的[角色说明](#global-reader)。
@@ -1742,7 +1742,7 @@ Power Platform 管理员 | Power 平台管理员 | 11648597-926c-4cf3-9c36-bcebb
 安全操作员 | 安全操作员 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 安全读取者 | 安全读取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 服务支持管理员 | 服务管理员 | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint 服务管理员 | SharePoint 管理员 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint 服务管理员 | SharePoint administrator | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams 通信管理员 | Teams 通信管理员 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Teams 通信支持工程师 | Teams 通信支持工程师 | f70938a0-fc10-4177-9e90-2178f8765737
 Teams 通信支持专家 | Teams 通信支持专家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12

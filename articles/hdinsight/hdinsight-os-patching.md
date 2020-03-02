@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/21/2020
-ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f8e694f658d6e9de04c92001214ecd5c32ff7753
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514691"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206854"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>为基于 Linux 的 HDInsight 群集配置 OS 修补计划
 
@@ -28,7 +28,7 @@ HDInsight 支持你在群集上执行常见任务，例如安装 OS 修补程序
 > [!NOTE]  
 > 脚本操作不会自动对所有将来的更新周期应用更新。 每次必须应用新更新以安装更新，然后重启 VM 时运行脚本。
 
-## <a name="preparation"></a>准备工作
+## <a name="preparation"></a>准备
 
 在部署到生产环境之前，在有代表性的非生产环境中进行修补。 制定计划，在实际修补之前充分测试系统。
 
@@ -47,9 +47,9 @@ Run 'do-release-upgrade' to upgrade it
 
 `schedule-reboots script` 接受一个数字参数：
 
-| 参数 | 接受的值 | 定义 |
+| 参数 | 接受的值 | Definition |
 | --- | --- | --- |
-| 要执行的重新启动类型 | 1 或 2 | 如果值为1，则启用计划重新启动（以12-24 小时为单位）。 如果值为2，则允许立即重新启动（5分钟）。 如果未提供任何参数，则默认值为1。 |  
+| 要执行的重新启动类型 | 1或2 | 如果值为1，则启用计划重新启动（以12-24 小时为单位）。 如果值为2，则允许立即重新启动（5分钟）。 如果未提供任何参数，则默认值为1。 |  
 
 ## <a name="install-updates-and-restart-nodes"></a>安装更新并重启节点
 
@@ -57,7 +57,7 @@ Run 'do-release-upgrade' to upgrade it
 
 `install-updates-schedule-reboots` 脚本接受两个数值参数，如下表中所述：
 
-| 参数 | 接受的值 | 定义 |
+| 参数 | 接受的值 | Definition |
 | --- | --- | --- |
 | 要安装的更新的类型 | 0、1或2 | 值0仅安装内核更新。 如果值为1，则安装所有更新，而2仅安装内核 + 安全更新。 如果未提供任何参数，则默认值为0。 |
 | 要执行的重新启动类型 | 0、1或2 | 值0将禁用 restart。 如果值为1，则启用计划重新启动，而2则启用立即重启。 如果未提供任何参数，则默认值为0。 用户必须将输入参数1更改为输入参数2。 |
@@ -69,5 +69,5 @@ Run 'do-release-upgrade' to upgrade it
 
 有关使用脚本操作的特定步骤，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)中的以下部分：
 
-- [在创建群集期间使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-- [将脚本操作应用到正在运行的群集](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [在创建群集期间使用脚本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-during-cluster-creation)
+- [将脚本操作应用到正在运行的群集](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)

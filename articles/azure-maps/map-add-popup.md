@@ -3,18 +3,18 @@ title: 向地图上的点添加弹出项 |Microsoft Azure 映射
 description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将 popup 添加到某个点。
 author: jingjing-z
 ms.author: jinzh
-ms.date: 07/29/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e44b6fe8341e40fb68fdbf153bf4f4bc5fec7acb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933357"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206565"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -80,16 +80,16 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <br/>
 
-<iframe height='500' scrolling='no' title='使用 Azure Maps 添加弹出窗口' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>Add a pop up using Azure Maps</a>（使用 Azure Maps 添加弹出窗口）。
+<iframe height='500' scrolling='no' title='使用 Azure Maps 添加弹出窗口' src='//codepen.io/azuremaps/embed/MPRPvz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/MPRPvz/'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io'>Add a pop up using Azure Maps</a>（使用 Azure Maps 添加弹出窗口）。
 </iframe>
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>重复使用具有多个点的弹出窗口
 
-如果有大量的点，并且只想一次显示一个弹出窗口，最佳方法就是创建一个弹出窗口并重复使用。 通过重复使用弹出式窗口，应用程序创建的 DOM 元素数量大大降低，从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
+在某些情况下，最好的方法是创建一个弹出窗口并重复使用它。 例如，你可能有大量点，并且希望一次只显示一个弹出窗口。 通过重复使用弹出式窗口，应用程序创建的 DOM 元素数量大大减少，从而提供更好的性能。 下面的示例创建了3个点特征。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io/azuremaps/pen/rQbjvK/'>重复使用具有多个固定项的弹出窗口</a> Pen。
+<iframe height='500' scrolling='no' title='重复使用具有多个固定项的弹出窗口' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>CodePen</a> 上 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 的<a href='https://codepen.io'>重复使用具有多个固定项的弹出窗口</a> Pen。
 </iframe>
 
 ## <a name="customizing-a-popup"></a>自定义弹出项
@@ -100,6 +100,143 @@ map.events.add('mouseleave', symbolLayer, function (){
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自定义弹出窗口" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 通过<a href='https://codepen.io'>CodePen</a>上的 Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义的弹出窗口</a>。
+</iframe>
+
+## <a name="add-popup-templates-to-the-map"></a>向映射添加弹出项模板
+
+Popup 模板使你可以轻松地为弹出窗口创建数据驱动布局。 以下各节演示了如何使用各种弹出式模板来使用功能的属性生成格式化内容。
+
+### <a name="string-template"></a>字符串模板
+
+字符串模板会将占位符替换为功能属性的值。 此功能的属性不必赋给 String 类型的值。 例如，`value1` 保留一个整数。 然后，将这些值传递到 `popupTemplate`的 content 属性。 
+
+`numberFormat` 选项指定要显示的数字的格式。 如果未指定 `numberFormat`，则代码将使用 popup 模板日期格式。 `numberFormat` 选项使用[toLocaleString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函数对数字进行格式设置。 若要格式化大数字，请考虑将 `numberFormat` 选项与[intl.numberformat](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/NumberFormat/format)中的函数结合使用。 例如，下面的代码段使用 `maximumFractionDigits` 将小数位位数限制为两个数字。
+
+> [!Note]
+> 只有一种方法，字符串模板可以呈现图像。 首先，字符串模板中需要有一个图像标记。 传递给图像标记的值应为指向图像的 URL。 然后，字符串模板需要在 `HyperLinkFormatOptions`中将 `isImage` 设置为 true。 `isImage` 选项指定超链接用于图像，并将超链接加载到图像标记中。 单击超链接时，将打开该图像。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([-20, -20]), {
+    title: 'Template 1 - String template',
+    value1: 1.2345678,
+    value2: {
+        subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    popupTemplate: {
+        content: 'This template uses a string template with placeholders.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+        numberFormat: {
+            maximumFractionDigits: 2
+        }
+    }
+}),
+```
+
+### <a name="propertyinfo-template"></a>PropertyInfo 模板
+
+PropertyInfo 模板显示功能的可用属性。 `label` 选项指定向用户显示的文本。 如果未指定 `label`，则将显示超链接。 如果超链接为图像，则将显示分配给 "alt" 标记的值。 `dateFormat` 指定日期的格式，并且如果未指定日期格式，则该日期将呈现为字符串。 `hyperlinkFormat` 选项可呈现可单击的链接，同样，`email` 选项可用于呈现可单击的电子邮件地址。
+
+在 PropertyInfo 模板向最终用户显示这些属性之前，它会以递归方式检查是否确实为该功能定义了属性。 它还会忽略显示样式和标题属性。 例如，它不会显示 `color`、`size`、`anchor`、`strokeOpacity`和 `visibility`。 因此，在后端中完成属性路径检查后，PropertyInfo 模板以表格式显示内容。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([20, -20]), {
+    title: 'Template 2 - PropertyInfo',
+    createDate: new Date(),
+    dateNumber: 1569880860542,
+    url: 'https://aka.ms/AzureMapsSamples',
+    email: 'info@microsoft.com',
+    popupTemplate: {
+        content: [{
+    propertyPath: 'createDate',
+    label: 'Created Date'
+    },
+    {
+    propertyPath: 'dateNumber',
+    label: 'Formatted date from number',
+    dateFormat: {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    }
+    },
+    {
+    propertyPath: 'url',
+    label: 'Code samples',
+    hideLabel: true,
+    hyperlinkFormat: {
+        lable: 'Go to code samples!',
+        target: '_blank'
+    }
+    },
+    {
+    propertyPath: 'email',
+    label: 'Email us',
+    hideLabel: true,
+    hyperlinkFormat: {
+        target: '_blank',
+        scheme: 'mailto:'
+        }
+    }
+        ]
+    }
+}),
+
+```
+
+### <a name="multiple-content-templates"></a>多个内容模板
+
+功能还可以结合使用字符串模板和 PropertyInfo 模板来显示内容。 在这种情况下，字符串模板在白色背景上呈现占位符值。  而且，PropertyInfo 模板将在表中呈现宽度的宽度图像。 此示例中的属性与我们在前面的示例中介绍的属性类似。
+
+```javascript
+new atlas.data.Feature(new atlas.data.Point([0, 0]), {
+    title: 'Template 3 - Multiple content template',
+    value1: 1.2345678,
+    value2: {
+    subValue: 'Pizza'
+    },
+    arrayValue: [3, 4, 5, 6],
+    imageLink: 'https://azuremapscodesamples.azurewebsites.net/common/images/Pike_Market.jpg',
+    popupTemplate: {
+    content: [
+      'This template has two pieces of content; a string template with placeholders and a array of property info which renders a full width image.<br/><br/> - Value 1 = {value1}<br/> - Value 2 = {value2/subValue}<br/> - Array value [2] = {arrayValue/2}',
+      [{
+        propertyPath: 'imageLink',
+        label: 'Image',
+        hideImageLabel: true,
+        hyperlinkFormat: {
+          isImage: true
+        }
+      }]
+    ],
+    numberFormat: {
+      maximumFractionDigits: 2
+    }
+    }
+    }),
+]);
+```
+
+### <a name="points-without-a-defined-template"></a>没有定义的模板的点
+
+如果 Popup 模板未定义为字符串模板、PropertyInfo 模板或二者的组合，则将使用默认设置。 当 `title` 和 `description` 是唯一分配的属性时，popup 模板会显示一个白色背景，即右上角的 "关闭" 按钮。 在中小型屏幕上，它会在底部显示一个箭头。 除 `title` 和 `description`之外的所有属性在表中显示默认设置。 即使回退到默认设置，也仍可通过编程方式操作 popup 模板。 例如，用户可以关闭超链接检测，默认设置仍适用于其他属性。
+
+在 CodePen 中单击地图上的点。 以下每个弹出式模板的地图上都有一个点：字符串模板、PropertyInfo 模板和多内容模板。 还可以使用三个点来显示模板如何使用默认设置进行呈现。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> by Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+</iframe>
+
+## <a name="reuse-popup-template"></a>重复使用弹出项模板
+
+与重复使用 popup 类似，你可以重复使用弹出式模板。 当你只想要为多个点同时显示一个弹出模板时，此方法非常有用。 通过重复使用 popup 模板，应用程序创建的 DOM 元素的数目会减少，从而提高应用程序的性能。 下面的示例对三个点使用同一个弹出模板。 单击其中任何一个特征时，都会显示一个弹出窗口，其中包含该点特征的内容。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> by Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 ## <a name="popup-events"></a>弹出项事件

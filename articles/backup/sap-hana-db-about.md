@@ -3,12 +3,12 @@ title: 关于在 Azure Vm 中 SAP HANA 数据库备份
 description: 本文介绍如何备份 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 53fd87f0de48d56d696abcf5484908060225cb3d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918506"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207007"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于在 Azure Vm 中 SAP HANA 数据库备份
 
@@ -33,7 +33,7 @@ Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d
 
 * 备份过程首先在 Azure 中[创建恢复服务保管库](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault)。 此保管库将用于存储一段时间内创建的备份和恢复点。
 * 运行 SAP HANA server 的 Azure VM 向保管库注册，并[发现](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases)要备份的数据库。 若要使 Azure 备份服务能够发现数据库，必须在 HANA 服务器上以 root 用户身份运行[预先注册脚本](https://aka.ms/scriptforpermsonhana)。
-* 此脚本在**hdbuserstore**中创建**AZUREWLBACKUPHANAUSER** DB 用户和具有相同名称的相应键。 若要详细了解脚本的作用，请参阅[设置权限部分](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions)。
+* 此脚本在**hdbuserstore**中创建**AZUREWLBACKUPHANAUSER** DB 用户和具有相同名称的相应键。 若要详细了解脚本的作用，请参阅[注册前脚本](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 * Azure 备份服务现在在已注册的 SAP HANA 服务器上安装**适用于 HANA 的 Azure 备份插件**。
 * 由预先注册脚本创建的**AZUREWLBACKUPHANAUSER** DB 用户由用于**HANA 的 Azure 备份插件**用于执行所有备份和还原操作。 如果尝试在不运行此脚本的情况下为 SAP HANA Db 配置备份，可能会收到以下错误： **UserErrorHanaScriptNotRun**。
 * 若要在发现的数据库上[配置备份](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup)，请选择所需的备份策略并启用备份。

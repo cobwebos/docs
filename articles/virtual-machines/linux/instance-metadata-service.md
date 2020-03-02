@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 22f50a6d5136eaff457c24864dae71261a20e13e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b0d4d1d13a329b0d95fcd0358f6141486b4435e5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615620"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205001"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -50,7 +50,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 有关如何查询 IMDS 的更多示例，请参阅[Azure 实例元数据示例](https://github.com/microsoft/azureimds)
 
-## <a name="usage"></a>使用情况
+## <a name="usage"></a>用法
 
 ### <a name="versioning"></a>版本控制
 
@@ -314,144 +314,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 }
 ```
 
-#### <a name="retrieving-metadata-in-windows-virtual-machine"></a>在 Windows 虚拟机中检索元数据
-
-**请求**
-
-可通过 Powershell 实用工具 `curl` 在 Windows 中检索实例元数据： 
-
-```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
-```
-
-或通过 `Invoke-RestMethod` cmdlet 检索：
-
-```powershell
-
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get 
-```
-
-**响应**
-
-> [!NOTE]
-> 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
-
-```json
-{
-  "compute": {
-    "azEnvironment": "AzurePublicCloud",
-    "customData": "",
-    "location": "centralus",
-    "name": "negasonic",
-    "offer": "lampstack",
-    "osType": "Linux",
-    "placementGroupId": "",
-    "plan": {
-        "name": "5-6",
-        "product": "lampstack",
-        "publisher": "bitnami"
-    },
-    "platformFaultDomain": "0",
-    "platformUpdateDomain": "0",
-    "provider": "Microsoft.Compute",
-    "publicKeys": [],
-    "publisher": "bitnami",
-    "resourceGroupName": "myrg",
-    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "5-6",
-    "storageProfile": {
-        "dataDisks": [
-          {
-            "caching": "None",
-            "createOption": "Empty",
-            "diskSizeGB": "1024",
-            "image": {
-              "uri": ""
-            },
-            "lun": "0",
-            "managedDisk": {
-              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-              "storageAccountType": "Standard_LRS"
-            },
-            "name": "exampledatadiskname",
-            "vhd": {
-              "uri": ""
-            },
-            "writeAcceleratorEnabled": "false"
-          }
-        ],
-        "imageReference": {
-          "id": "",
-          "offer": "UbuntuServer",
-          "publisher": "Canonical",
-          "sku": "16.04.0-LTS",
-          "version": "latest"
-        },
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage",
-          "diskSizeGB": "30",
-          "diffDiskSettings": {
-            "option": "Local"
-          },
-          "encryptionSettings": {
-            "enabled": "false"
-          },
-          "image": {
-            "uri": ""
-          },
-          "managedDisk": {
-            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
-            "storageAccountType": "Standard_LRS"
-          },
-          "name": "exampleosdiskname",
-          "osType": "Linux",
-          "vhd": {
-            "uri": ""
-          },
-          "writeAcceleratorEnabled": "false"
-        }
-    },
-    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Test;Role:WebRole",
-    "version": "7.1.1902271506",
-    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmScaleSetName": "",
-    "vmSize": "Standard_A1_v2",
-    "zone": "1"
-  },
-  "network": {
-    "interface": [
-      {
-        "ipv4": {
-          "ipAddress": [
-            {
-              "privateIpAddress": "10.0.1.4",
-              "publicIpAddress": "X.X.X.X"
-            }
-          ],
-          "subnet": [
-            {
-              "address": "10.0.1.0",
-              "prefix": "24"
-            }
-          ]
-        },
-        "ipv6": {
-          "ipAddress": []
-        },
-        "macAddress": "002248020E1E"
-      }
-    ]
-  }
-}
-```
-
 ## <a name="metadata-apis"></a>元数据 Api
 
 以下 Api 可通过元数据终结点获得：
 
-data | 说明 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -465,11 +332,11 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 > [!NOTE]
 > 通过元数据终结点，可通过实例/计算访问以下类别
 
-data | 说明 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 在其中运行的 Azure 环境 | 2018-10-01
 customData | 此功能当前处于禁用状态，我们将在此文档可用时更新它 | 2019-02-01
-location | 正在运行 VM 的 Azure 区域 | 2017-04-02
+位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息，并且仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
@@ -487,18 +354,18 @@ storageProfile | 请参阅[存储配置文件](#storage-profile) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
-版本 | VM 映像的版本 | 2017-04-02
+version | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的虚拟机规模集[名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
-区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
+Zone — 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 
 以下网络类别可通过实例 API 使用：
 
 > [!NOTE]
 > 通过元数据终结点，可通过实例/网络/接口访问以下类别
 
-data | 说明 | 引入的版本
+数据 | 说明 | 引入的版本
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
@@ -524,38 +391,6 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 ```
 
 Api-版本为必填字段。 有关支持的 API 版本，请参阅[服务可用性部分](#service-availability)。
-Nonce 是一个可选的10位字符串。 如果未提供，IMDS 将在其位置返回当前 UTC 时间戳。 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
-
- **响应**
-
-> [!NOTE]
-> 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
-
- ```json
-{
- "encoding":"pkcs7","signature":"MIIEEgYJKoZIhvcNAQcCoIIEAzCCA/8CAQExDzANBgkqhkiG9w0BAQsFADCBugYJKoZIhvcNAQcBoIGsBIGpeyJub25jZSI6IjEyMzQ1NjY3NjYiLCJwbGFuIjp7Im5hbWUiOiIiLCJwcm9kdWN0IjoiIiwicHVibGlzaGVyIjoiIn0sInRpbWVTdGFtcCI6eyJjcmVhdGVkT24iOiIxMS8yMC8xOCAyMjowNzozOSAtMDAwMCIsImV4cGlyZXNPbiI6IjExLzIwLzE4IDIyOjA4OjI0IC0wMDAwIn0sInZtSWQiOiIifaCCAj8wggI7MIIBpKADAgECAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBBAUAMCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tMB4XDTE4MTEyMDIxNTc1N1oXDTE4MTIyMDIxNTc1NlowKzEpMCcGA1UEAxMgdGVzdHN1YmRvbWFpbi5tZXRhZGF0YS5henVyZS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAML/tBo86ENWPzmXZ0kPkX5dY5QZ150mA8lommszE71x2sCLonzv4/UWk4H+jMMWRRwIea2CuQ5RhdWAHvKq6if4okKNt66fxm+YTVz9z0CTfCLmLT+nsdfOAsG1xZppEapC0Cd9vD6NCKyE8aYI1pliaeOnFjG0WvMY04uWz2MdAgMBAAGjYDBeMFwGA1UdAQRVMFOAENnYkHLa04Ut4Mpt7TkJFfyhLTArMSkwJwYDVQQDEyB0ZXN0c3ViZG9tYWluLm1ldGFkYXRhLmF6dXJlLmNvbYIQZ8VuSofHbJRAQNBNpiASdDANBgkqhkiG9w0BAQQFAAOBgQCLSM6aX5Bs1KHCJp4VQtxZPzXF71rVKCocHy3N9PTJQ9Fpnd+bYw2vSpQHg/AiG82WuDFpPReJvr7Pa938mZqW9HUOGjQKK2FYDTg6fXD8pkPdyghlX5boGWAMMrf7bFkup+lsT+n2tRw2wbNknO1tQ0wICtqy2VqzWwLi45RBwTGB6DCB5QIBATA/MCsxKTAnBgNVBAMTIHRlc3RzdWJkb21haW4ubWV0YWRhdGEuYXp1cmUuY29tAhBnxW5Kh8dslEBA0E2mIBJ0MA0GCSqGSIb3DQEBCwUAMA0GCSqGSIb3DQEBAQUABIGAld1BM/yYIqqv8SDE4kjQo3Ul/IKAVR8ETKcve5BAdGSNkTUooUGVniTXeuvDj5NkmazOaKZp9fEtByqqPOyw/nlXaZgOO44HDGiPUJ90xVYmfeK6p9RpJBu6kiKhnnYTelUk5u75phe5ZbMZfBhuPhXmYAdjc7Nmw97nx8NnprQ="
-}
-```
-
-签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书和 VM 详细信息，如 vmId、sku、nonce、subscriptionId、用于创建和过期文档的时间戳以及有关映像的计划信息。 计划信息只针对 Azure 市场映像填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
-
-#### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>检索 Windows 虚拟机中的证明元数据
-
- **请求**
-
-可通过 Powershell 实用工具 `curl` 在 Windows 中检索实例元数据：
-
- ```powershell
-curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
-```
-
- 或通过 `Invoke-RestMethod` cmdlet 检索：
-
- ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" -Method get
-```
-
-Api-版本为必填字段。 有关支持的 API 版本，请参阅服务可用性部分。
 Nonce 是一个可选的10位字符串。 如果未提供，IMDS 将在其位置返回当前 UTC 时间戳。 由于 IMDS 的缓存机制，可能会返回以前缓存的 nonce 值。
 
  **响应**
@@ -821,7 +656,7 @@ Verification successful
 }
 ```
 
-data | 说明
+数据 | 说明
 -----|------------
 nonce | 用户提供了带有请求的可选字符串。 如果请求中未提供 nonce，则返回当前 UTC 时间戳
 计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者
@@ -863,51 +698,6 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 
 如果在验证期间由于网络限制而无法下载中间证书，则可以固定中间证书。 但是，Azure 将根据标准 PKI 实践滚动更新证书。 发生滚动更新时，需要更新固定的证书。 每当计划更新中间证书的更改时，将更新 Azure 博客并通知 Azure 客户。 可在[此处](https://www.microsoft.com/pki/mscorp/cps/default.htm)找到中间证书。 每个区域的中间证书可能不同。
 
-### <a name="failover-clustering-in-windows-server"></a>Windows Server 中的故障转移群集
-
-在某些情况下，在使用故障转移群集查询实例元数据服务时，必须向路由表添加路由。
-
-1. 使用管理员特权打开命令提示符。
-
-2. 运行以下命令，并记下 IPv4 路由表中网络目标 (`0.0.0.0`) 接口的地址。
-
-```bat
-route print
-```
-
-> [!NOTE]
-> 为简单起见，启用了故障转移群集的 Windows Server VM 的以下示例输出仅包含 IPv4 路由表。
-
-```bat
-IPv4 Route Table
-===========================================================================
-Active Routes:
-Network Destination        Netmask          Gateway       Interface  Metric
-          0.0.0.0          0.0.0.0         10.0.1.1        10.0.1.10    266
-         10.0.1.0  255.255.255.192         On-link         10.0.1.10    266
-        10.0.1.10  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.15  255.255.255.255         On-link         10.0.1.10    266
-        10.0.1.63  255.255.255.255         On-link         10.0.1.10    266
-        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
-        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
-  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-      169.254.0.0      255.255.0.0         On-link     169.254.1.156    271
-    169.254.1.156  255.255.255.255         On-link     169.254.1.156    271
-  169.254.255.255  255.255.255.255         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
-        224.0.0.0        240.0.0.0         On-link     169.254.1.156    271
-        224.0.0.0        240.0.0.0         On-link         10.0.1.10    266
-  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
-  255.255.255.255  255.255.255.255         On-link     169.254.1.156    271
-  255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
-```
-
-1. 运行以下命令并使用网络目标 (`0.0.0.0`) 接口的地址，在此示例中为 `10.0.1.10`。
-
-```bat
-route add 169.254.169.254/32 10.0.1.10 metric 1 -p
-```
-
 ### <a name="storage-profile"></a>存储配置文件
 
 实例元数据服务可以提供有关与 VM 关联的存储磁盘的详细信息。 此数据可在实例/计算/storageProfile 终结点上找到。
@@ -916,23 +706,23 @@ VM 的存储配置文件分为三个类别：映像引用、操作系统磁盘�
 
 Image reference 对象包含有关 OS 映像的以下信息：
 
-data    | 说明
+数据    | 说明
 --------|-----------------
 id      | 资源 ID
 offer   | 平台或 marketplace 映像的产品/服务
 发布者 | 映像发布者
 sku     | 图像 sku
-版本 | 平台或 marketplace 映像的版本
+version | 平台或 marketplace 映像的版本
 
 OS 磁盘对象包含有关 VM 使用的 OS 磁盘的以下信息：
 
-data    | 说明
+数据    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小（GB）
-image   | 源用户映像虚拟硬盘
+图像   | 源用户映像虚拟硬盘
 lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
@@ -941,14 +731,14 @@ writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 
 数据磁盘数组包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象都包含以下信息：
 
-data    | 说明
+数据    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小（GB）
 encryptionSettings | 磁盘的加密设置
-image   | 源用户映像虚拟硬盘
+图像   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 osType  | 磁盘中包含的操作系统类型
@@ -1026,10 +816,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>在 VM 内使用不同语言调用元数据服务的示例
 
-语言 | 示例
+Language | 示例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+开始  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -1041,9 +831,9 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
-1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这是什么意思呢？
+1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这意味着什么？
    * 实例元数据服务要求将标头 `Metadata: true` 传入请求。 将此标头传入 REST 调用即可访问实例元数据服务。
 2. 为什么我无法获取我的 VM 的计算信息？
    * 目前，实例元数据服务仅支持使用 Azure 资源管理器创建的实例。 将来可能会添加对云服务 VM 的支持。

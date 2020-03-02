@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: a8814030e6c4345227ec05ea1554104e0b21efbc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c80c667cb281168de6f11bbb6a536c01fefb7935
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076544"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206956"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 将虚拟网络连接到 ExpressRoute 线路
 
@@ -32,7 +32,7 @@ ms.locfileid: "74076544"
 
 * 在开始配置之前，需要查看[先决条件](expressroute-prerequisites.md)、[路由要求](expressroute-routing.md)和[工作流](expressroute-workflows.md)。
 
-* 必须有一个活动的 ExpressRoute 线路。 
+* 你必须有一个活动的 ExpressRoute 线路。 
   * 请按说明[创建 ExpressRoute 线路](howto-circuit-cli.md)，并通过连接提供商启用该线路。 
   * 请确保为线路配置 Azure 专用对等互连。 有关路由说明，请参阅[配置路由](howto-routing-cli.md)一文。 
   * 请确保已配置 Azure 专用对等互连。 必须运行网络和 Microsoft 之间的 BGP 对等互连，使你能够启用端到端的连接。
@@ -155,15 +155,17 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 ## <a name="configure-expressroute-fastpath"></a>配置 ExpressRoute FastPath 
 如果 ExpressRoute 线路在[Expressroute 直接](expressroute-erdirect-about.md)上且虚拟网络网关是超高性能或 ErGw3AZ，则可以启用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 改进了数据路径性能，例如每秒数据包数，以及本地网络与虚拟网络之间每秒的连接数。 
 
-> [!NOTE] 
-> 如果已有虚拟网络连接，但未启用 FastPath，则需要删除虚拟网络连接并创建一个新连接。 
-> 
->  
+**在新连接上配置 FastPath**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
+**更新现有连接以启用 FastPath**
+
+```azurecli
+az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
+```
 
 ## <a name="next-steps"></a>后续步骤
 

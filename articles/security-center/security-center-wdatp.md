@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: e735495038f0e5c28af31aa79a45c71225502b3c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918149"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206259"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure 安全中心的 Microsoft Defender 高级威胁防护
 
@@ -109,7 +109,7 @@ Azure 安全中心现在提供了以下功能：
 
 3. 如果此命令成功，你将在 Azure 安全中心仪表板和 Microsoft Defender ATP 门户上看到新警报。 此警报可能要在几分钟之后才显示。
 
-4. 若要在安全中心查看该警报，请转到“安全警报” **“可疑的 Powershell 命令行”。**  > 
+4. 若要查看安全中心的警报，请参阅**安全警报** > **可疑的 PowerShell 命令行**。
 
 5. 从调查窗口中，选择要前往 Microsoft Defender ATP 门户的链接。
 

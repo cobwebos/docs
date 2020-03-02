@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498969"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205018"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中配置 Azure AD 角色设置
 
@@ -107,7 +107,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 ## <a name="require-approval-to-activate"></a>需要批准才能激活
 
-如果要求批准以激活角色，请按照以下步骤操作。
+如果设置多个审批者，则审批会在其中一项批准或拒绝后立即完成。 你不能至少需要两个用户的批准。 若要要求批准激活角色，请执行以下步骤。
 
 1. 选中“需要批准以激活”复选框。
 
@@ -131,7 +131,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 1. 选择**Azure AD 角色**。
 
-1. 选择“设置”。
+1. 单击“设置”。
 
     ![Azure AD 角色-设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
@@ -163,7 +163,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
 
 使用 "**事件/请求票证**" 开关来要求符合条件的管理员在激活其角色时包括票证编号。 这种做法可以使角色访问审核更为有效。
 
-## <a name="multi-factor-authentication"></a>多重身份验证
+## <a name="multi-factor-authentication"></a>多因素身份验证
 
 使用“多重身份验证”开关指定是否要求用户在激活其角色之前，先使用 MFA 验证其身份。 它们只需在每个会话中验证其标识一次，而不是每次都激活角色。 启用 MFA 时，请记住两点提示：
 
@@ -184,7 +184,7 @@ Privileged Identity Management 提供了两种不同的可选 Azure 多重身份
   - Power BI 管理员
   - 特权角色管理员
   - 安全管理员
-  - SharePoint 管理员
+  - SharePoint administrator
   - Skype for Business 管理员
   - 用户管理员
 

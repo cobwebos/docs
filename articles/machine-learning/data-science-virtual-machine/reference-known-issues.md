@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526537"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206514"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine 的已知问题和故障排除
 
-本文可帮助你查找和更正使用 Azure Data Science Virtual Machine 时遇到的错误或故障。
+本文可帮助你查找和更正使用 Azure Data Science Virtual Machine 时可能遇到的错误或故障。
 
 ## <a name="python-package-installation-issues"></a>Python 包安装问题
 
@@ -30,13 +30,18 @@ ms.locfileid: "77526537"
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Ubuntu DSVM 上的磁盘加密失败
 
-Ubuntu DSVM 目前不支持 Azure 磁盘加密（ADE）。 作为一种解决方法，请考虑[使用客户管理的密钥配置 Azure 存储加密](../../storage/common/storage-encryption-keys-portal.md)。
+Ubuntu DSVM 目前不支持 Azure 磁盘加密（ADE）。 作为一种解决方法，请考虑配置[Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)。
 
 ## <a name="tool-appears-disabled"></a>工具显示已禁用
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Hyper-v 在 Windows DSVM 上不起作用
 
-这是预期的行为，因为对于启动性能，我们已禁用某些服务。 若要重新启用，请打开 Windows DSVM 上的搜索栏，键入 "Services"，将所有 Hyper-v 服务设置为 "手动"，并将 "Hyper-v 虚拟机管理" 设置为 "自动"。
+Hyper-v 最初无法在 Windows 上运行，这是预期的行为。 对于启动性能，我们已禁用某些服务。 启用 Hyper-v：
+
+1. 在 Windows DSVM 中打开搜索栏
+1. 键入 "Services"。
+1. 将所有 Hyper-v 服务设置为 "手动"
+1. 将 "Hyper-v 虚拟机管理" 设置为 "自动"
 
 最终屏幕应如下所示：
 

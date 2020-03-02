@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901498"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206106"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>在 Azure Active Directory 中搜索组和成员（预览）
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>在 Azure Active Directory 中搜索组和成员（预览）
 
 本文介绍如何在 Azure Active Directory （Azure AD）门户中搜索组的成员和所有者，以及如何使用搜索筛选器作为组改善预览的一部分。 组经验中提供了许多改进，可帮助你快速、轻松地管理组，包括成员和所有者。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70901498"
 
 ## <a name="group-search-and-sorting"></a>组搜索和排序
 
-已对组列表搜索进行了增强，以便当你可以输入搜索字符串时，会自动在`startswith`组名称的列表中执行 a 和 substring 搜索。 子字符串搜索仅对整个单词执行，不包含特殊字符。
+已对组列表搜索进行了增强，以便在可以输入搜索字符串时，搜索将自动对组名称列表执行 `startswith` 和子字符串搜索。 子字符串搜索仅对整个单词执行，不包含特殊字符。 子字符串搜索区分大小写。
 
 !["所有组" 页上的新子字符串搜索](./media/groups-members-owners-search/groups-search-preview.png)
 

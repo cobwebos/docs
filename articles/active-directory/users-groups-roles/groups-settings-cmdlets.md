@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656868"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206446"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>用于配置组设置的 Azure Active Directory cmdlet
 
@@ -152,7 +152,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>EnableGroupCreation<li>类型：布尔值<li>默认值：True |指明是否允许非管理员用户在目录中创建 Office 365 组的标志。 此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GroupCreationAllowedGroupId<li>类型：字符串<li>默认值：“” |安全组的 GUID，允许该组的成员创建 Office 365 组，即使 EnableGroupCreation == false。 |
 |  <ul><li>UsageGuidelinesUrl<li>类型：字符串<li>默认值：“” |组使用准则链接。 |
-|  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>其中，分类匹配 ClassificationList 中的字符串。<br>当 EnableMIPLabels = = True 时，此设置不适用。|
+|  <ul><li>ClassificationDescriptions<li>类型：字符串<li>默认值：“” | 以逗号分隔的分类说明列表。 ClassificationDescriptions 的值仅以此格式有效：<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>其中，分类匹配 ClassificationList 中的条目。<br>当 EnableMIPLabels = = True 时，此设置不适用。|
 |  <ul><li>DefaultClassification<li>类型：字符串<li>默认值：“” | 如果未指定，则为要用作组的默认分类的分类。<br>当 EnableMIPLabels = = True 时，此设置不适用。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>类型：字符串<li>默认值：“” | 最大长度为 64 个字符的字符串，用于定义为 Office 365 组配置的命名约定。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
 | <ul><li>CustomBlockedWordsList<li>类型：字符串<li>默认值：“” | 逗号分隔字符串，用于列出不允许用户在组名称或别名中使用的短语。 有关详细信息，请参阅[对 Office 365 组强制实施命名策略](groups-naming-policy.md)。 |
@@ -161,7 +161,7 @@ Office365 组设置使用 Settings 对象和 SettingsTemplate 对象配置。 �
 |  <ul><li>AllowGuestsToAccessGroups<li>类型：布尔值<li>默认值：True | 一个布尔值，指示来宾用户是否可以访问 Office 365 组的内容。  此设置不需要 Azure Active Directory Premium P1 许可证。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>类型：字符串<li>默认值：“” | 指向来宾使用指南的链接的 URL。 |
 |  <ul><li>AllowToAddGuests<li>类型：布尔值<li>默认值：True | 一个布尔值，该值指示是否允许将来宾添加到此目录。 <br>如果将*EnableMIPLabels*设置为*True* ，并且来宾策略与分配给组的敏感度标签相关联，则此设置可能会被重写，并且变为只读。 |
-|  <ul><li>ClassificationList<li>类型：字符串<li>默认值：“” |一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 <br>当 EnableMIPLabels = = True 时，此设置不适用。|
+|  <ul><li>ClassificationList<li>类型：字符串<li>默认值：“” | 一个逗号分隔列表，用于列出可以应用于 Office 365 组的有效分类值。 <br>当 EnableMIPLabels = = True 时，此设置不适用。|
 |  <ul><li>EnableMIPLabels<li>类型：布尔值<li>默认值：“False” |该标志指示 Microsoft 365 符合性中心发布的敏感度标签是否可应用于 Office 365 组。 有关详细信息，请参阅为[Office 365 组分配敏感度标签](groups-assign-sensitivity-labels.md)。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>示例：在目录级别为组配置来宾策略

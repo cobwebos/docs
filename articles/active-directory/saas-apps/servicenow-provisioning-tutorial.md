@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e954de97e6573e330c42915b44bbc0c40abc54d
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 9e93d4b3f1880f2ac56a32a7b85aa6801fb7c14e
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063237"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205091"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -142,7 +142,7 @@ Azure AD 预配服务允许你确定将根据分配给应用程序的人员，�
 * **EntryJoiningPropertyValueIsMissing：** 查看[属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)以标识匹配的属性。 要尝试预配的用户或组必须有此值。 
 * 查看[SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html)以了解任何要求或限制（例如，为用户指定国家/地区代码的格式）
 * 某些 ServiceNow 部署需要允许 Azure AD 预配服务的 IP 范围。 可以在 "AzureActiveDirectoryDomainServices" 下的[此处](https://www.microsoft.com/download/details.aspx?id=56519)找到 Azure AD 预配服务的保留 IP 范围。
-* 目前不支持将用户预配到 ServiceNow 政府版云。
+* 默认情况下，预配请求将发送到 https：//{你的实例名称}. 服务-now/{表名称}。 如果需要自定义租户 URL，可以在 "实例名称" 字段中提供整个 URL。
 
 ## <a name="additional-resources"></a>其他资源
 

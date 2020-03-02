@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1e96a3acf2a576e0656afb3abea9dd787bf989a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750067"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205902"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 
@@ -96,21 +96,7 @@ ProgressMessage            : OS disk successfully encrypted, please reboot the V
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>防火墙保护下的 Azure 磁盘加密故障排除
 
-如果连接受到防火墙、代理要求或网络安全组 (NSG) 设置的限制，扩展执行所需任务的能力可能会受到干扰。 此干扰可能会导致出现类似于“VM 上未提供扩展状态”的状态消息。 在预期方案中，将无法完成加密。 以下部分描述了可能需要调查的一些常见防火墙问题。
-
-### <a name="network-security-groups"></a>网络安全组
-应用的任何网络安全组设置仍必须允许终结点满足所述的与磁盘加密相关的网络配置[先决条件](disk-encryption-overview.md#networking-requirements)。
-
-### <a name="azure-key-vault-behind-a-firewall"></a>防火墙保护下的 Azure Key Vault
-
-使用 [Azure AD 凭据](disk-encryption-linux-aad.md#)启用加密时，目标 VM 必须允许连接到 Azure Active Directory 终结点和密钥保管库终结点。 当前 Azure Active Directory 身份验证终结点在 [Office 365 URL 和 IP 地址范围](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges)文档中的第 56 和 59 节中进行维护。 在有关如何[访问防火墙保护下的 Azure 密钥保管库](../../key-vault/key-vault-access-behind-firewall.md)的文档中提供了密钥保管库说明。
-
-### <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务 
-VM 必须能够访问这样的 [Azure 实例元数据服务](../windows/instance-metadata-service.md)终结点：该终结点使用只能从 VM 内访问的已知不可路由 IP 地址 (`169.254.169.254`)。  不支持将本地 HTTP 流量更改为此地址的代理配置（例如，添加 X 转发的标头）。
-
-### <a name="linux-package-management-behind-a-firewall"></a>防火墙保护下的 Linux 程序包管理
-
-在运行时，启用加密之前，适用于 Linux 的 Azure 磁盘加密依赖于目标分发版的程序包管理系统来安装所需的必备组件。 如果防火墙设置阻止 VM 下载并安装这些组件，则后续的失败就在意料之中。 配置此程序包管理系统的步骤会因分发版而异。 在 Red Hat 上，如果需要代理，则必须确保正确设置订阅管理器和 yum。 有关详细信息，请参阅[如何排除有关订阅管理器和 yum 的问题](https://access.redhat.com/solutions/189533)。  
+参阅[隔离网络上的磁盘加密](disk-encryption-isolated-network.md)
 
 ## <a name="troubleshooting-encryption-status"></a>加密状态故障排除 
 
