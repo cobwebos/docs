@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11e4768c5cf6df784c8f32aff2f884adfa6b68ab
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: HT
+ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204848"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208706"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -755,72 +755,7 @@ TLS 1.2 密码套件最小栏：
 现在，你已将架构 desidned 并了解 Azure AD SCIM 实现，接下来可以开始开发 SCIM 终结点。 您可以依赖于由 SCIM commuinty 发布的多个开源 SCIM 库，而不是从头开始创建并完全生成实现。  
 Azure AD 预配团队发布的开源 .NET Core[参考代码](https://aka.ms/SCIMReferenceCode)是可以立即开始开发的一种资源。 生成 SCIM 终结点后，需要对其进行测试。你可以使用作为引用代码一部分提供的[postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)的集合，或通过[上面](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的示例请求/响应来运行。  
 
-작동 방식은 다음과 같습니다.
-
-1. Azure AD 提供了一个名为 Microsoft.systemforcrossdomainidentitymanagement 的公共语言基础结构（CLI）库，其中包含下面的代码示例。 系统集成商和开发人员可以使用此库来创建和部署基于 SCIM 的 web 服务终结点，该终结点可将 Azure AD 连接到任何应用程序的标识存储。
-2. 매핑은 웹 서비스에서 구현되어 스키마에 애플리케이션에서 필요한 사용자 스키마 및 프로토콜에 표준화된 사용자 스키마를 매핑합니다. 
-3. 엔드포인트 URL은 애플리케이션 갤러리에서 사용자 지정 애플리케이션의 일부로 Azure AD에 등록됩니다.
-4. 사용자 및 그룹은 Azure AD에서 이 애플리케이션에 할당됩니다. 分配后，它们将被放入队列中，以同步到目标应用程序。 큐를 처리하는 동기화 프로세스는 40분마다 실행됩니다.
-
-### <a name="code-samples"></a>코드 샘플
-
-为了简化此过程，我们提供了[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)，用于创建 SCIM web 服务终结点并演示自动预配。 该示例是一个提供程序，它维护一个文件，其中包含以逗号分隔的行表示用户和组的值。
-
-**필수 구성 요소**
-
-* Visual Studio 2013 이상
-* [Azure SDK for .NET](https://azure.microsoft.com/downloads/)
-* ASP.NET framework 4.5를 SCIM 엔드포인트로 사용하도록 지원하는 Windows 컴퓨터입니다. 必须能够从云访问此计算机。
-* [Azure AD Premium의 평가판 또는 사용이 허가된 버전의 Azure 구독](https://azure.microsoft.com/services/active-directory/)
-
-### <a name="getting-started"></a>시작
-
-Azure AD에서 프로비전 요청을 수락할 수 있는 SCIM 엔드포인트를 구현하는 가장 쉬운 방법은 쉼표로 구분된 값(CSV) 파일에 프로비전된 사용자를 출력하는 코드 샘플을 빌드하고 배포하는 것입니다.
-
-#### <a name="to-create-a-sample-scim-endpoint"></a>샘플 SCIM 엔드포인트를 만들려면
-
-1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)에서 코드 샘플 패키지를 다운로드합니다.
-1. 패키지의 압축을 풀고 C:\AzureAD-BYOA-Provisioning-Samples와 같은 위치에서 Windows 컴퓨터에 넣습니다.
-1. Visual Studio에서 이 폴더의 FileProvisioning\Host\FileProvisioningService.csproj 프로젝트를 시작합니다.
-1.  > **NuGet 包管理器**" > **包管理器控制台**中选择"**工具**"，然后对 FileProvisioningService 项目执行以下命令以解析解决方案引用：
-
-   ```powershell
-    Update-Package -Reinstall
-   ```
-
-1. FileProvisioningService 프로젝트를 빌드합니다.
-1. Windows에서 명령 프롬프트 애플리케이션을 관리자 권한으로 시작하고, **cd** 명령을 사용하여 디렉터리를 **\AzureAD-BYOA-Provisioning-Samples\FileProvisioning\Host\bin\Debug** 폴더로 변경합니다.
-1. 运行以下命令，将 `<ip-address>` 替换为 Windows 计算机的 IP 地址或域名：
-
-   ```
-    FileSvc.exe http://<ip-address>:9000 TargetFile.csv
-   ```
-
-1. 在 windows " **Windows 设置**" 下的 " > **网络 & Internet 设置**" 下，选择 " **Windows 防火墙**" > "**高级" 设置**，并创建允许入站访问端口9000的**入站规则**。
-1. 如果 Windows 计算机位于路由器后面，则需要将路由器配置为在向 internet 公开的端口9000和 Windows 计算机上的端口9000之间运行网络访问转换。 此配置是 Azure AD 在云中访问此终结点所必需的。
-
-#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Azure AD에서 샘플 SCIM 엔드포인트를 등록하려면
-
-1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
-1. 从左窗格中选择 "**企业应用程序**"。 将显示所有已配置应用的列表，包括从库中添加的应用。
-1. 选择 " **+ 新建应用程序** > **所有** > **的非库应用程序**。
-1. 输入应用程序的名称，然后选择 "**添加**" 以创建应用对象。 만든 애플리케이션 개체는 SCIM 엔드포인트뿐 아니라 Single Sign-On을 프로비전하고 구현하려는 대상 앱을 나타내는 데 사용됩니다.
-1. 在应用管理屏幕的左侧面板中，选择 "**预配**"。
-1. **프로비전 모드** 메뉴에서 **자동**을 선택합니다.    
-1. **테넌트 URL** 필드에 애플리케이션의 SCIM 엔드포인트 URL을 입력합니다. 예: https://api.contoso.com/scim/
-
-1. SCIM 엔드포인트에 Azure AD가 아닌 다른 발급자의 OAuth 전달자 토큰이 필요한 경우 필요한 OAuth 전달자 토큰을 **비밀 토큰** 필드(선택 사항)에 복사합니다. 如果此字段保留为空，则 Azure AD 包括每个请求 Azure AD 颁发的 OAuth 持有者令牌。 ID 공급자로 Azure AD를 사용하는 앱은 Azure AD에서 발급한 토큰의 유효성을 검사할 수 있습니다.
-1. 选择 "**测试连接**"，Azure Active Directory 尝试连接到 SCIM 终结点。 如果尝试失败，将显示错误消息。  
-
-    > [!NOTE]
-    > **테스트 연결**은 Azure AD 구성에서 선택된 일치하는 속성으로 임의 GUID를 사용하여 존재하지 않는 사용자의 SCIM 엔드포인트를 쿼리합니다. 예상되는 올바른 응답은 SCIM ListResponse 메시지가 비어 있는 HTTP 200 OK입니다.
-1. 如果尝试连接到应用程序成功，请选择 "**保存**" 以保存管理员凭据。
-1. **매핑** 섹션에는 선택 가능한 특성 매핑 집합이 두 개 있는데, 하나는 사용자 개체용이고 다른 하나는 그룹 개체용입니다. 각 특성 매핑을 선택하여 Azure Active Directory에서 앱으로 동기화되는 특성을 검토합니다. **일치** 속성으로 선택한 특성은 업데이트 작업 시 앱의 사용자와 그룹을 일치시키는 데 사용됩니다. 변경 내용을 커밋하려면 **저장**을 선택합니다.
-1. **설정** 아래의 **범위** 필드는 동기화되는 사용자 및 그룹을 정의합니다. 选择 **"仅同步分配的用户和组**（推荐）"，以便仅同步 "**用户和组**" 选项卡中分配的用户和组。
-1. 配置完成后，将设置**状态**设置为 **"开**"。
-1. 选择 "**保存**" 以启动 Azure AD 预配服务。
-1. 如果仅同步分配的用户和组（推荐），请确保选择 "**用户和组**" 选项卡并分配要同步的用户或组。初始周期开始后，可以在左侧面板中选择 "**审核日志**" 来监视进度，其中显示了预配服务对应用执行的所有操作。 Azure AD 프로비저닝 로그를 읽는 방법에 대한 자세한 내용은 [자동 사용자 계정 프로비저닝에 대한 보고](check-status-user-account-provisioning.md)를 참조하세요.
-이 샘플을 확인하는 마지막 단계는 Windows 컴퓨터에서 \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug 폴더에 TargetFile.csv 파일을 여는 것입니다. 프로비전 프로세스가 실행되면 이 파일은 할당되고 프로비전된 모든 사용자 및 그룹의 세부 사항을 표시합니다.
+注意:参考代码旨在帮助你开始生成 SCIM 终结点，并按 "原样" 提供。 来自社区的贡献欢迎使用来帮助生成和维护代码。 
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>步骤 4：将 SCIM 终结点与 Azure AD SCIM 客户端集成
 

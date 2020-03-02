@@ -20,7 +20,7 @@ ms.locfileid: "73931693"
 
 ## <a name="k4a_transformation-functions"></a>k4a_transformation 函数
 
- 所有以 *k4a_transformation* 为前缀的函数都对整个图像进行操作。 它们需要通过 [k4a_transformation_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10) 获取的转换句柄 [k4a_transformation_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__transformation__t.html)，并通过 [k4a_transformation_destroy()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7d3ecaae66f26c1a89da9042b1bc6d44.html#ga7d3ecaae66f26c1a89da9042b1bc6d44) 取消分配. 你还可以参考 SDK [转换示例](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation)，其中演示了如何使用本主题所述的三个函数。
+ 所有以 *k4a_transformation* 为前缀的函数都对整个图像进行操作。 它们需要通过 [k4a_transformation_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10) 获取转换句柄 [k4a_transformation_t](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__transformation__t.html)，并通过 [k4a_transformation_destroy()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7d3ecaae66f26c1a89da9042b1bc6d44.html#ga7d3ecaae66f26c1a89da9042b1bc6d44) 取消分配. 你还可以参考 SDK [转换示例](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/transformation)，其中演示了如何使用本主题所述的三个函数。
 
 本文将介绍以下函数：
 
@@ -34,23 +34,23 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="overview"></a>概述
 
- 函数 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 将深度图从深度相机的视点转换为彩色相机的视点。 此函数旨在生成所谓的 RGB-D 图像，其中，D 表示录制深度值的附加图像通道。 在下图中可以看到，[k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 的彩色图像和输出如同它们取自同一视点（即，彩色相机的视点）。
+ 函数 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 将深度图从深度相机的视点转换为彩色相机的视点。 此函数旨在生成所谓的 RGB-D 图像，其中，D 表示录制深度值的附加图像通道。 在下图中可以看到，[k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 的彩色图像和输出如同它们取自同一视点（即彩色相机视点）。
 
    ![图像转换](./media/how-to-guides/image-transformation.png)
 
 #### <a name="implementation"></a>实现
 
- 此转换函数比单纯针对每个像素调用 [k4a_calibration_2d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) 更为复杂。 它将深度相机几何结构中的三角网格扭曲成彩色相机的几何结构。 使用三角网格可以避免转换的深度图像出现孔洞。 Z 缓冲区确保正确处理遮挡物。 默认已为此函数启用 GPU 加速。
+ 此转换函数比单纯针对每个像素调用 [k4a_calibration_2d_to_2d()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) 更为复杂。 它将三角形网格从深度相机的几何形状扭曲成彩色相机的几何形状。 使用三角网格可以避免转换的深度图像出现孔洞。 Z 缓冲区确保正确处理遮挡物。 默认已为此函数启用 GPU 加速。
 
 #### <a name="parameters"></a>参数
 
- 输入参数是转换句柄和深度图像。 深度图像的分辨率必须与创建转换句柄时指定的 ```depth_mode``` 相匹配。 例如，如果转换句柄是使用 1024x1024 ```K4A_DEPTH_MODE_WFOV_UNBINNED``` 模式创建的，则深度图像的分辨率必须是 1024x1024 像素。 输出是需要由用户调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 分配的已转换深度图像。 已转换的深度图像的分辨率必须与创建转换句柄时指定的 ```color_resolution``` 相匹配。 例如，如果颜色分辨率设置为 `K4A_COLOR_RESOLUTION_1080P`，则输出图像的分辨率必须是 1920x1080 像素。 输出图像步幅设置为 `width * sizeof(uint16_t)`，因为图像存储 16 位深度值。
+ 输入参数是转换句柄和深度图像。 深度图像的分辨率必须与创建转换句柄时指定的 ```depth_mode``` 相匹配。 例如，如果转换句柄是使用 1024x1024 ```K4A_DEPTH_MODE_WFOV_UNBINNED``` 模式创建的，则深度图像的分辨率必须是 1024x1024 像素。 输出是转换后的深度图像，需要由用户通过调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 来分配。 已转换的深度图像的分辨率必须与创建转换句柄时指定的 ```color_resolution``` 相匹配。 例如，如果颜色分辨率设置为 `K4A_COLOR_RESOLUTION_1080P`，则输出图像的分辨率必须是 1920x1080 像素。 输出图像步幅设置为 `width * sizeof(uint16_t)`，因为图像存储 16 位深度值。
 
 ### <a name="k4a_transformation_depth_image_to_color_camera_custom"></a>k4a_transformation_depth_image_to_color_camera_custom
 
 #### <a name="overview"></a>概述
 
- 函数 [k4a_transformation_depth_image_to_color_camera_custom()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gac00dd00e7612a86382e3d0a130f276bb.html#gac00dd00e7612a86382e3d0a130f276bb) 将深度图和自定义图像从深度相机的视点转换为彩色相机的视点。 作为 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 的扩展，此函数旨在生成对应的自定义图像，其中每个像素与除了转换的深度图像之外的彩色相机的相应像素坐标相匹配。
+ 函数 [k4a_transformation_depth_image_to_color_camera_custom()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gac00dd00e7612a86382e3d0a130f276bb.html#gac00dd00e7612a86382e3d0a130f276bb) 将深度图和自定义图像从深度相机的视点转换为彩色相机的视点。 作为 [k4a_transformation_depth_image_to_color_camera()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) 的扩展，此函数旨在生成对应的自定义图像，其中每个像素与彩色相机的对应像素坐标相匹配（除转换后的深度图像）。
 
 #### <a name="implementation"></a>实现
 
@@ -72,7 +72,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="parameters"></a>参数
 
-输入参数是转换句柄、深度图像和彩色图像。 深度图像和彩色图像的分辨率必须与创建转换句柄时指定的 depth_mode 和 color_resolution 相匹配。 输出是需要由用户调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 分配的已转换彩色图像。 已转换的彩色图像的分辨率必须与创建转换句柄时指定的 depth_resolution 相匹配。 输出图像存储四个 8 位值（表示每个像素的 BGRA）。 因此，图像的步幅为 ```width * 4 * sizeof(uint8_t)```。 数据顺序为像素交错式，即，蓝色值 - 像素 0，绿色值 - 像素 0，红色值 - 像素 0，alpha 值 - 像素 0，蓝色值 - 1，依此类推。
+输入参数是转换句柄、深度图像和彩色图像。 深度图像和彩色图像的分辨率必须与创建转换句柄时指定的 depth_mode 和 color_resolution 相匹配。 输出是转换后的彩色图像，需要由用户通过调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 来分配。 已转换的彩色图像的分辨率必须与创建转换句柄时指定的 depth_resolution 相匹配。 输出图像存储四个 8 位值（表示每个像素的 BGRA）。 因此，图像的步幅为 ```width * 4 * sizeof(uint8_t)```。 数据顺序为像素交错式，即，蓝色值 - 像素 0，绿色值 - 像素 0，红色值 - 像素 0，alpha 值 - 像素 0，蓝色值 - 1，依此类推。
 
 ### <a name="k4a_transformation_depth_image_to_point_cloud"></a>k4a_transformation_depth_image_to_point_cloud
 
@@ -86,7 +86,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
 #### <a name="parameters"></a>参数
 
- 输入参数是转换句柄、相机说明符和深度图像。 如果相机说明符设置为深度，则深度图像的分辨率必须与创建转换句柄时指定的 depth_mode 相匹配。 否则，如果说明符设置为彩色相机，则分辨率必须与所选 color_resolution 的分辨率相匹配。 输出参数是需要由用户调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 分配的 XYZ 图像。 该 XYZ 图像的分辨率必须与输入的深度图的分辨率相匹配。 我们将为每个像素存储三个带符号的 16 位坐标值（以毫米为单位）。 因此，XYZ 图像步幅设置为 `width * 3 * sizeof(int16_t)`。 数据顺序为像素交错式，即，X 坐标 – 像素 0，Y 坐标 – 像素 0，Z 坐标 – 像素 0，X 坐标 – 像素 1，依此类推。 如果无法将某个像素转换为 3D，该函数将为该像素分配值 `[0,0,0]`。
+ 输入参数是转换句柄、相机说明符和深度图像。 如果相机说明符设置为深度，则深度图像的分辨率必须与创建转换句柄时指定的 depth_mode 相匹配。 此外，如果说明符设置为彩色相机，则分辨率必须与所选 color_resolution 的分辨率相匹配。 输出参数是 XYZ 图像，需要由用户调用 [k4a_image_create()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef) 来分配。 该 XYZ 图像的分辨率必须与输入的深度图的分辨率相匹配。 我们将为每个像素存储三个带符号的 16 位坐标值（以毫米为单位）。 因此，XYZ 图像步幅设置为 `width * 3 * sizeof(int16_t)`。 数据顺序为像素交错式，即，X 坐标 – 像素 0，Y 坐标 – 像素 0，Z 坐标 – 像素 0，X 坐标 – 像素 1，依此类推。 如果无法将某个像素转换为 3D，该函数将为该像素分配值 `[0,0,0]`。
 
 ## <a name="samples"></a>示例
 

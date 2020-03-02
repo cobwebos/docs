@@ -52,7 +52,7 @@ Azure Service Fabric 是一款分布式系统平台，可用于部署和管理�
 > 尽管这在此特定快速入门中并非必要，但在创建群集时运行 Docker 是一种最佳做法。
 > 若要测试 Docker 是否正在运行，请打开一个终端窗口，运行 `docker ps` 并查看是否出错。 如果响应中未指示错误，则表示 Docker 正在运行，可以生成群集。
 >
-> [为容器设置 Windows 10 或 Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [设置 Windows 10 或 Windows Server 用以运行容器](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. 以管理员身份打开权限提升的新 PowerShell 窗口。
 2. 运行以下 PowerShell 命令创建开发群集：
@@ -82,9 +82,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 右键单击“开始”菜单中的 Visual Studio 图标，再选择“以管理员身份运行”  。 若要将调试程序附加到服务，需要以管理员身份运行 Visual Studio。
 
-从克隆的存储库中打开 Voting.sln  Visual Studio 解决方案。
+从克隆的存储库中打开“Voting.sln” Visual Studio 解决方案。 
 
-默认情况下，Voting 应用程序在端口 8080 上侦听。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改了应用程序端口，请将本文中的“8080”替换为新的应用程序端口值。
+默认情况下，Voting 应用程序侦听 8080 端口。  应用程序端口在 */VotingWeb/PackageRoot/ServiceManifest.xml* 文件中进行设置。  可以通过更新**终结点**元素的 **Port** 属性来更改应用程序端口。  若要在本地部署和运行应用程序，应用程序端口必须为打开状态且在你的计算机上可用。  如果更改了应用程序端口，请将本文中的“8080”替换为新的应用程序端口值。
 
 若要部署应用程序，请按 F5  。
 
@@ -139,8 +139,8 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
      ![添加投票后端服务](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-   - 在方法 (1) 的第一行  ，`StateManager` 获取或添加一个可靠字典 `counts`。
-   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句（图中标识为2）  负责创建此事务。
+   - 在方法的第一行 (1)  ，`StateManager` 获取或添加一个可靠字典 `counts`。
+   - 与可靠字典中的值进行的所有交互都需要使用事务，这个 using 语句 (2)  负责创建此事务。
    - 在事务中更新投票选项的相关键值，并提交操作  (3)。 提交方法返回后，便会更新字典中的数据，并将数据复制到群集中的其他节点。 数据现在安全地存储在群集中，并且后端服务可以故障转移到其他节点，同时数据仍可用。
 5. 按 F5  以继续操作
 
@@ -171,7 +171,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
     运行升级期间，仍可以使用应用程序。 由于在群集中运行的服务有两个实例，因此一些请求可能会获取升级版应用程序，另一些请求可能仍获取旧版应用程序。
 
 11. 打开浏览器，并转到 19080 端口上的群集地址。 例如，`http://localhost:19080/` 。
-12. 单击树视图中的“应用程序”  节点，再单击右侧窗格中的“进行中的升级”  。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
+12. 单击树视图中的“应用程序”  节点，再单击右侧窗格中的“正在进行的升级”  。 可以了解如何通过群集中的升级域滚动升级，同时确保在继续执行下一步之前每个域都能够正常运行。 在验证域运行状况后，进度栏中的升级域将显示为绿色。
     ![Service Fabric Explorer 中的升级视图](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Service Fabric 在升级群集中每个节点上的服务后等待两分钟，从而确保升级安全性。 预计整个更新大约需要 8 分钟的时间。

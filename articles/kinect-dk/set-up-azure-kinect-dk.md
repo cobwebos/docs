@@ -22,7 +22,7 @@ ms.locfileid: "77209129"
 ---
 # <a name="quickstart-set-up-your-azure-kinect-dk"></a>快速入门：设置 Azure Kinect DK
 
-本快速入门提供有关如何设置 Azure Kinect DK 的指导。 其中介绍了如何测试传感器流可视化和使用 [Azure Kinect 查看器](azure-kinect-viewer.md)。
+本快速入门提供有关如何设置 Azure Kinect DK 的指导。 其中介绍了如何测试传感器流可视化以及如何使用 [Azure Kinect 查看器](azure-kinect-viewer.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

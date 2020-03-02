@@ -63,9 +63,9 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 选择左侧的“笔记本”  。
 
-1. 打开“示例”文件夹  。
+1. 打开“Samples”文件夹  。
 
-1. 打开 Python 文件夹  。
+1. 打开“Python”文件夹  。
 
 1. 打开包含版本号的文件夹。  此数字表示 Python SDK 的当前版本。
 
@@ -73,11 +73,11 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
     ![克隆文件夹](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“教程”文件夹克隆到其中的文件夹  。
+1. 将显示文件夹列表，其中显示了访问工作区的每个用户。  选择要将“tutorials”文件夹克隆到其中的文件夹  。
 
 ### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">打开克隆的笔记本
 
-1. 在“用户文件”下打开你的文件夹，然后打开克隆的 **tutorials** 文件夹。 
+1. 在“用户文件”下打开你的文件夹，然后打开克隆的“tutorials”文件夹。  
 
     ![打开 tutorials 文件夹](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
 

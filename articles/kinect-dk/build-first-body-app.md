@@ -38,7 +38,7 @@ ms.locfileid: "76756238"
 
 ## <a name="headers"></a>头文件
 
-人体跟踪使用单个标头 `k4abt.h`。 请包含此标头以及 `k4a.h`。 确保所选的编译器已针对传感器 SDK 和人体跟踪 SDK `lib` 与 `include` 文件夹进行设置。 还需要链接到 `k4a.lib` 和 `k4abt.lib` 文件。 运行该应用程序需要 `k4a.dll`、`k4abt.dll`、`onnxruntime.dll` 和 `dnn_model.onnx` 位于应用程序执行路径中。
+人体跟踪使用单个头文件 `k4abt.h`。 请包含此头文件以及 `k4a.h`。 确保所选的编译器已针对传感器 SDK 和人体跟踪 SDK `lib` 与 `include` 文件夹进行设置。 还需要链接到 `k4a.lib` 和 `k4abt.lib` 文件。 运行该应用程序需要 `k4a.dll`、`k4abt.dll`、`onnxruntime.dll` 和 `dnn_model.onnx` 位于应用程序执行路径中。
 
 ```C
 #include <k4a/k4a.h>
