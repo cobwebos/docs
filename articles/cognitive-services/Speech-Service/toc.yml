@@ -33,7 +33,7 @@
           href: how-to-specify-source-language.md
         - name: 选择语音识别模式
           href: how-to-choose-recognition-mode.md
-        - name: 使用自定义语音提高准确性
+        - name: 使用自定义语音识别提高准确性
           href: how-to-custom-speech.md
         - name: 使用短语列表提高准确性
           href: how-to-phrase-lists.md
@@ -193,6 +193,10 @@
           items:
             - name: 文本转语音 REST API
               href: rest-text-to-speech.md
+        - name: 音素集用法
+          items:
+            - name: 语音 API (SAPI) 音素集用法
+              href: sapi-phoneset-usage.md
     - name: 资源
       items:
         - name: 文本转语音常见问题解答
@@ -411,7 +415,7 @@
           items:
             - name: 语音助手常见问题解答
               href: faq-voice-assistants.md
-- name: 承载
+- name: Hosting
   expanded: false
   items:
     - name: “承载”文档
@@ -513,7 +517,7 @@
   items:
     - name: 从必应语音
       href: how-to-migrate-from-bing-speech.md
-    - name: 从自定义语音服务
+    - name: 从自定义语音识别服务
       href: how-to-migrate-from-custom-speech-service.md
     - name: 从语音翻译 API
       href: how-to-migrate-from-translator-speech-api.md

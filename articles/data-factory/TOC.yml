@@ -625,7 +625,7 @@
           href: solution-template-migration-s3-azure.md
         - name: 移动文件
           href: solution-template-move-files.md
-        - name: 使用 Databricks 转换数据
+        - name: 使用 Azure Databricks 进行转换
           href: solution-template-databricks-notebook.md
     - name: 疑难解答指南
       items:
