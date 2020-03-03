@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662461"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197991"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -391,7 +391,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
     * 对于 "*角色*"，请选择 "*参与者*" 或 "*所有者*"。
     * 对于“分配访问权限至”，选择“Azure AD 用户、组或服务主体”。
     * 对于 "*选择*"，请搜索要为其授予权限的用户。
-1. 单击“保存”。
+1. 单击“ *保存*”。
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>对与 Dev Spaces 服务关联的公用 URL 进行 DNS 名称解析失败
 
@@ -422,9 +422,8 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 解决此问题：
 
 1. 如果容器正在生成/部署过程中，则可等待 2-3 秒，然后尝试再次访问服务。 
-1. 检查端口配置。 指定的端口号应在下面的所有资产中都完全相同：
-    * **Dockerfile：** 通过 `EXPOSE` 指令指定。
-    * **[Helm 图表](https://docs.helm.sh)：** 通过服务的 `externalPort` 和 `internalPort` 值（通常位于 `values.yml` 文件中）指定。
+1. 检查以下资产中的端口配置：
+    * **[Helm 图](https://docs.helm.sh)：** 由 `service.port` 通过 `azds prep` 命令的 yaml 基架中的 `deployment.containerPort` 指定。
     * 在应用程序代码（例如，Node.js 的 `var server = app.listen(80, function () {...}` ）中打开的任何端口
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>找不到类型或命名空间名称 "Mylibrary.dll"
