@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 87c95d8bbf199f232eca5475f4d8f0c64427a198
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680879"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227880"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 在函数应用或容器化的应用服务应用中（例如在 [Linux 上的应用服务](containers/app-service-linux-intro.md)上）不支持本地缓存。
+> 函数应用或容器化应用服务应用中不支持本地缓存，如[Windows 容器](app-service-web-get-started-windows-container.md)中或[Linux 应用服务](containers/app-service-linux-intro.md)。
 
 
 Azure 应用服务内容存储在 Azure 存储中，作为内容共享持续提供。 此设计旨在兼容各种应用，具有以下特点：  
@@ -88,13 +88,13 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 ## <a name="best-practices-for-using-app-service-local-cache"></a>使用应用服务本地缓存的最佳实践
 建议将本地缓存与[过渡环境](../app-service/deploy-staging-slots.md)功能结合在一起使用。
 
-* 将值为 `Always` 的*粘性*应用设置 `WEBSITE_LOCAL_CACHE_OPTION` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
+* 将值为  *的*粘性`WEBSITE_LOCAL_CACHE_OPTION`应用设置 `Always` 添加到**生产**槽。 如果使用的是 `WEBSITE_LOCAL_CACHE_SIZEINMB`，也可将其作为粘性设置添加到“生产”槽。
 * 创建**过渡**槽，并发布到过渡槽。 如果获得了生产槽的本地缓存优势，则要想通过无缝的“构建-部署-测试”生命周期进行过渡，通常不需要将过渡槽设置为使用本地缓存。
 * 针对“过渡”槽来测试站点。  
 * 准备就绪以后，在过渡槽和生产槽之间执行[交换操作](../app-service/deploy-staging-slots.md#Swap)。  
 * 粘性设置包含名称，会粘到某个槽上。 因此，将“过渡”槽交换成“生产”槽以后，该槽会继承本地缓存应用设置。 新交换的“生产”槽会在几分钟后以本地缓存为基础运行，并会在交换后进行槽预热的过程中预热。 因此，在槽交换完成后，“生产”槽会在本地缓存的基础上运行。
 
-## <a name="frequently-asked-questions-faq"></a>常见问题解答 (FAQ)
+## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>如何确定本地缓存是否适用于应用？
 如果应用需要高性能且可靠的内容存储，在运行时不使用内容存储来写入关键数据，并且总大小不到 2 GB，则可确定本地缓存适用于应用。 可通过站点扩展“Azure Web 应用磁盘使用情况”获取 /site 和 /siteextensions 文件夹的总大小。

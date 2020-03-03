@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec1430e7dd79378473cce9dbb77bedecd14600c8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894820"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228274"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中的托管实例的连接体系结构
 
@@ -103,20 +103,20 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于实例的
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制入站安全规则 
 
-| 名称       |Port                        |协议|源           |目标|行动|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |允许 |
-|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |允许 |
-|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16、94.245.87.0/24|MI SUBNET  |允许 |
-|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |允许 |
-|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |允许 |
+|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |65.55.188.0/24、167.220.0.0/16、131.107.0.0/16、94.245.87.0/24|MI SUBNET  |Allow |
+|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的强制出站安全规则 
 
-| 名称       |Port          |协议|源           |目标|行动|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
-|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |允许 |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
+|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服务辅助子网配置的用户定义路由 
 
@@ -277,7 +277,7 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于实例的
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
-\* MI 子网指的是子网的 IP 地址范围，格式为 4.x/y。 可以在 Azure 门户的 "子网属性" 中找到此信息。
+\* MI 子网是指采用 x.x.x.x/y 格式的子网的 IP 地址范围。 可以在 Azure 门户的 "子网属性" 中找到此信息。
 
 此外，还可以向路由表添加条目，以通过虚拟网络网关或虚拟网络设备（NVA）将具有本地专用 IP 范围的流量路由为目标。
 
@@ -298,23 +298,23 @@ Microsoft 使用管理终结点管理托管实例。 此终结点位于实例的
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |Port                        |协议|源           |目标|行动|
+| 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |允许 |
-|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |允许 |
-|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |允许 |
+|管理  |9000、9003、1438、1440、1452|TCP     |Any              |MI SUBNET  |Allow |
+|mi_subnet   |Any                         |Any     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|Any                         |Any     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |Port          |协议|源           |目标|行动|
+| 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允许 |
-|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |允许 |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
+|mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |
 
 > [!IMPORTANT]
 > 确保端口9000、9003、1438、1440、1452和端口 "443" 的出站规则只有一个入站规则。 如果为每个端口单独配置入站和出站规则，则通过 Azure 资源管理器部署托管实例预配会失败。 如果这些端口在不同的规则中，部署将失败，并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
-\* MI 子网指的是子网的 IP 地址范围，格式为 4.x/y。 可以在 Azure 门户的 "子网属性" 中找到此信息。
+\* MI 子网是指采用 x.x.x.x/y 格式的子网的 IP 地址范围。 可以在 Azure 门户的 "子网属性" 中找到此信息。
 
 > [!IMPORTANT]
 > 虽然必需的入站安全规则允许来自端口9000、9003、1438、1440和1452的_任何_源的流量，但这些端口受内置防火墙保护。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 499770b664757ec0f3a0bd3b26e0de36007741b6
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561914"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228065"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言（SSML）改善合成
 
@@ -347,6 +347,103 @@ speechConfig!.setPropertyTo(
     </voice>
 </speak>
 ```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
+
+TTS 有时不能准确地发音某个词，例如，公司或外部名称。 开发人员可以使用 `phoneme` 和 `sub` 标记在 SSML 中定义这些实体的读取，或使用 `lexicon` 标记来引用自定义词典文件来定义多个实体的读取。
+
+**语法**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**属性**
+
+| Attribute | 说明 | 必需/可选 |
+|-----------|-------------|---------------------|
+| `uri` | 外部 PLS 文档的地址。 | 必需。 |
+
+**使用情况**
+
+步骤1：定义自定义词典 
+
+可以按自定义字典项的列表（存储为 .xml 或 pls 文件）定义实体的读取。
+
+**示例**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+每个 `lexeme` 元素都是一个词典项。 `grapheme` 包含描述 `lexeme`的 orthograph 的文本。 读出窗体可作为 `alias`提供。 可以在 `phoneme` 元素中提供手机字符串。
+
+`lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素都包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alais`和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"> </span></a>的文本。 `alias` 元素用于指示首字母缩写词或缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 的发音方式的文本。
+
+有关自定义词典文件的详细信息，请参阅 W3C 网站上的[发音词典规范（PLS）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/) 。
+
+步骤2：上传在步骤1中创建的自定义词典文件，你可以将其存储在任何位置，并且建议将其存储在 Microsoft Azure 中，例如[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+
+步骤3：在 SSML 中引用自定义词典文件
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+"顺便" 将以 "方式" 读取。 将用提供的 IPA "bɛˈ ni ː nji" 读取 "Benigni"。  
+
+**限制**
+- 文件大小：自定义词典文件大小最大限制为100KB，如果超过此大小，合成请求将会失败。
+- 词典缓存刷新：首次加载时，自定义词典将用 URI 作为其上的密钥来缓存该服务。 不会在15分钟内重新加载具有相同 URI 的字典，因此自定义词典更改需要等待15分钟才能生效。
+
+**SAPI 手机集**
+
+在上面的示例中，我们使用的是国际拼音协会（IPA）电话集。 我们建议开发人员使用 IPA，因为 IPA 是国际标准。 
+
+考虑到 IPA 不容易记住，Microsoft 将为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义 SAPI 手机集。 有关字母表中的详细信息，请参阅[拼音字母参考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。
+
+可以按如下所示将 SAPI 手机集用于自定义词典。 用**sapi**设置字母值。
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias> By the way </alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+有关详细信息的 SAPI 字母表的详细信息，请参阅[Sapi 字母参考](sapi-phoneset-usage.md)。
 
 ## <a name="adjust-prosody"></a>调整诗体论
 

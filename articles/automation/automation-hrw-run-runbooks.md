@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31ced19e164d50030386064a81edf3322b12855d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c67fff32770446cac3adef8af50c9e5733077bc7
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191123"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226286"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>在混合 Runbook 辅助角色上运行 runbook
 
@@ -166,7 +166,7 @@ Get-AzAutomationAccount | Select-Object AutomationAccountName
 
 1. 使用 ps1 扩展名将**export-runascertificatetohybridworker** runbook 保存到计算机 **。**
 2. 将其导入自动化帐户。
-3. 编辑 runbook，将变量的值 *$Password*更改为你自己的密码。 
+3. 编辑 runbook，更改*密码*变量的值 o 你自己的密码。 
 4. 发布 runbook。
 5. 运行 runbook，将运行的混合 Runbook 辅助角色组作为目标，并使用运行方式帐户对 runbook 进行身份验证。 
 6. 检查作业流以查看它是否报告了将证书导入到本地计算机存储区中的尝试，以及是否有多个行。 此行为取决于你在你的订阅中定义的自动化帐户数量以及身份验证的成功程度。

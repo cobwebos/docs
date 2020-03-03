@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660013"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226720"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>高性能计算 VM 大小
 
@@ -46,6 +46,10 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
   
 - **虚拟网络** – Azure [虚拟网络](https://azure.microsoft.com/documentation/services/virtual-network/)不需要使用计算密集型实例。 但是，对于许多部署来说，如果需要访问本地资源，则可能至少需要一个基于云的 Azure 虚拟网络或站点到站点连接。 需要时，请创建一个新的虚拟网络来部署实例。 不支持将计算密集型 VM 添加到地缘组中的虚拟网络。
 - **调整大小** - 考虑到专用硬件，可以只对同一大小系列（H 系列或计算密集型 A 系列）内的计算密集型实例进行大小调整。 例如，可仅将 H 系列 VM 的大小从一个 H 系列大小调整为另一个。 此外，不支持从非计算密集型大小调整为计算密集型大小。  
+
+> [!NOTE]
+> A8 – A11 Vm 计划于3/2021 停用。 有关详细信息，请参阅[HPC 迁移指南](https://azure.microsoft.com/resources/hpc-migration-guide/)。
+
 ## <a name="rdma-capable-instances"></a>支持 RDMA 的实例
 
 计算密集型实例（A8、A9、H16r、H16mr、HB-ACCT-WC 和 HC）的一个子集为远程直接内存访问（RDMA）连接提供网络接口。 所选的 N 系列大小为 "r" （如 NC24rs 配置（NC24rs_v2 和 NC24rs_v3））也支持 RDMA 功能。 此接口是对可供其他 VM 大小使用的标准 Azure 网络接口的补充。
@@ -78,7 +82,7 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
   } 
   ```
 
-  以下命令在名为*myResourceGroup*的资源组中部署的名为*MYVMSS*的现有 vm 规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.0 InfiniBandDriverWindows 扩展。
+  以下命令在名为*myResourceGroup*的资源组中部署的名为*myVMSS*的现有虚拟机规模集中的所有支持 RDMA 的 vm 上安装最新版本 1.0 InfiniBandDriverWindows 扩展。
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -99,7 +103,7 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 - **虚拟机规模**集-在虚拟机规模集中，确保将部署限制为单个放置组。 例如，在资源管理器模板中，将 `singlePlacementGroup` 属性设置为 `true`。 
 
-- **虚拟机**之间的 mpi-如果虚拟机（vm）之间需要 mpi 通信，请确保 vm 处于同一可用性集或虚拟机相同规模集。
+- **虚拟机**之间的 mpi-如果虚拟机（vm）之间需要 mpi 通信，请确保 vm 处于相同的可用性集或虚拟机相同规模集。
 
 - **Azure CycleCloud**：在 [Azure CycleCloud](/azure/cyclecloud/) 中创建 HPC 群集，以在 Windows 节点上运行 MPI 作业。
 

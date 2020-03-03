@@ -3,24 +3,31 @@ title: 将 Windows 更新设置配置为使用 Azure 更新管理
 description: 本文介绍配置为使用 Azure 更新管理的 Windows 更新设置。
 services: automation
 ms.subservice: update-management
-ms.date: 10/02/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366849"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226265"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>为更新管理配置 Windows 更新设置
 
-Azure 更新管理依赖于 Windows 更新下载和安装 Windows 更新。 因此，更新管理会考虑 Windows 更新使用的许多设置。 如果使用设置来启用非 Windows 更新，更新管理还将管理这些更新。 如果你想要在更新部署发生之前允许下载更新，则更新部署可能会更快、更高效，且不太可能超过维护时段。
+Azure 更新管理依赖于[Windows 更新客户端](https://docs.microsoft.com//windows/deployment/update/windows-update-overview)下载和安装 Windows 更新。 Windows 更新客户端在连接到 Windows Server Update Services （WSUS）或 Windows 更新时使用特定设置。 其中的许多设置可以通过来管理：
+
+- 本地组策略编辑器
+- 组策略
+- PowerShell
+- 直接编辑注册表
+
+更新管理规定了许多指定用于控制 Windows 更新客户端的设置。 如果使用设置来启用非 Windows 更新，更新管理还将管理这些更新。 如果你想要在更新部署发生之前允许下载更新，则更新部署可能会更快、更高效，且不太可能超过维护时段。
 
 ## <a name="pre-download-updates"></a>下载前更新
 
-若要在组策略中配置自动下载更新，请将[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)为**3**。 此设置允许在后台下载所需的更新，但不安装它们。 这样，更新管理仍可控制计划，但可以在更新管理维护时段之外下载更新。 此行为可防止更新管理中出现 "维护时段超出" 错误。
+若要配置自动下载更新，但不自动安装更新，可以使用组策略将[配置自动更新设置](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates##configure-automatic-updates)为**3**。 此设置允许在后台下载所需更新，并通知你更新已准备好安装。 这样，更新管理仍可控制计划，但可以在更新管理维护时段之外下载更新。 此行为可防止**维护时段超出**更新管理的错误。
 
-还可以通过在要配置自动下载更新的系统上运行以下 PowerShell 命令来启用此设置：
+可以通过运行以下命令，使用 PowerShell 启用此设置设置：
 
 ```powershell
 $WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
@@ -28,22 +35,15 @@ $WUSettings.NotificationLevel = 3
 $WUSettings.Save()
 ```
 
-## <a name="disable-automatic-installation"></a>禁用自动安装
-
-默认情况下，会在 Azure 虚拟机（Vm）上启用更新的自动安装。 这可能会导致在计划安装之前安装更新，更新管理。 您可以通过将 `NoAutoUpdate` 的注册表项设置为 `1`来禁用此行为。 以下 PowerShell 代码片段显示了如何执行此操作：
-
-```powershell
-$AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
-Set-ItemProperty -Path $AutoUpdatePath -Name NoAutoUpdate -Value 1
-```
-
 ## <a name="configure-reboot-settings"></a>配置重新启动设置
 
-[通过编辑](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)[用于管理重启](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)的注册表和注册表项来配置自动更新中列出的注册表项可能会导致计算机重新启动，即使在**更新部署**设置中指定了 "**从不重新启动**" 也是如此。 应将这些注册表项配置为最适合您的环境。
+[通过编辑](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)[用于管理重启](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)的注册表和注册表项来配置自动更新中列出的注册表项可能会导致计算机重新启动，即使在**更新部署**设置中指定了 "**从不重新启动**" 也是如此。 配置这些注册表项以最适合您的环境。
 
 ## <a name="enable-updates-for-other-microsoft-products"></a>启用其他 Microsoft 产品的更新
 
-默认情况下，Windows 更新仅为 Windows 提供更新。 如果在 "更新 Windows" 设置后启用 "**向我提供其他 Microsoft 产品的更新**" 设置，则还会收到其他产品的更新，包括 Microsoft SQL Server 和其他 Microsoft 软件的安全修补程序。 不能通过组策略配置此选项。 在要启用其他 Microsoft 更新的系统上运行以下 PowerShell 命令。 更新管理将符合此设置。
+默认情况下，Windows 更新客户端配置为仅提供 Windows 更新。 如果在 "更新 Windows" 设置后启用 "**向我提供其他 Microsoft 产品的更新**" 设置，则还会收到其他产品的更新，包括 Microsoft SQL Server 和其他 Microsoft 软件的安全修补程序。 如果已下载并复制适用于 Windows 2016 和更高版本的最新[管理模板文件](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)，则可以配置此选项。
+
+如果运行的是 Windows Server 2012 R2，则组策略无法配置此设置。 在这些计算机上运行以下 PowerShell 命令。 更新管理符合此设置。
 
 ```powershell
 $ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
@@ -54,11 +54,13 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="wsus-configuration-settings"></a>WSUS 配置设置
 
-更新管理符合 Windows Server Update Services （WSUS）设置。 下面列出了可以配置的用于处理更新管理的 WSUS 设置。
+更新管理支持 WSUS 设置。 下面列出了可以配置的用于处理更新管理的 WSUS 设置。
 
 ### <a name="intranet-microsoft-update-service-location"></a>Intranet Microsoft 更新服务位置
 
-你可以在 "[指定 intranet Microsoft 更新服务位置](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)" 下指定用于扫描和下载更新的源。
+你可以在 "[指定 intranet Microsoft 更新服务位置](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)" 下指定用于扫描和下载更新的源。 默认情况下，Windows 更新客户端配置为从 Windows 更新下载更新。 当你将 WSUS 服务器指定为计算机的源时，如果更新未在 WSUS 中获得批准，则更新部署将失败。 
+
+若要将计算机限制为仅限内部更新服务，请将配置为[不连接到任何 Windows 更新 Internet 位置](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations)。 
 
 ## <a name="next-steps"></a>后续步骤
 

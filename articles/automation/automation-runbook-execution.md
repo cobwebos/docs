@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191140"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226473"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 本部分介绍在 runbook 中处理异常或间歇问题的一些方法。
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-[$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference)变量确定 PowerShell 如何响应非终止错误。 终止错误始终终止，并不受 *$ErrorActionPreference*的影响。
+[ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference)变量确定 PowerShell 如何响应非终止错误。 终止错误始终终止，不受*ErrorActionPreference*影响。
 
-当 runbook 使用 *$ErrorActionPreference*时，**通常的非**终止错误（如**PathNotFound** ）会阻止 runbook 完成。 下面的示例演示如何使用 *$ErrorActionPreference*。 当脚本停止时，最终的**写入输出**命令永远不会执行。
+当 runbook 使用*ErrorActionPreference*时，通常的非终止错误（例如**get-childitem** cmdlet 中的**PathNotFound** ）会阻止 runbook 完成。 下面的示例演示如何使用*ErrorActionPreference*。 当脚本停止时，最终的**写入输出**命令永远不会执行。
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'

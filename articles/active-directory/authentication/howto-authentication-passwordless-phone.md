@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848470"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227060"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
@@ -29,7 +29,7 @@ ms.locfileid: "74848470"
 > [!NOTE]
 > 自2017年3月起，此功能已在 Microsoft Authenticator 应用中，因此，如果为目录启用了该策略，用户可能会立即遇到此流，如果策略未启用，则会看到一条错误消息。 请注意这一点，并让用户为此更改做好准备。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - Azure 多重身份验证，允许将推送通知作为验证方法 
 - 已在运行 iOS 8.0 或更高版本或者 Android 6.0 或更高版本的设备上安装最新版本的 Microsoft Authenticator。
@@ -93,6 +93,10 @@ ms.locfileid: "74848470"
 ### <a name="device-registration"></a>设备注册
 
 创建此新的强凭据的先决条件之一是，安装 Microsoft Authenticator 应用的设备还必须在 Azure AD 租户内注册到单个用户。 由于当前设备注册限制，只能在单个租户中注册设备。 此项限制意味着，只能为 Microsoft Authenticator 应用中的一个工作或学校帐户启用手机登录。
+
+### <a name="intune-mobile-application-management"></a>Intune 移动应用程序管理 
+
+受要求移动应用程序管理（MAM）的策略的最终用户无法在 Microsoft Authenticator 应用中注册无密码凭据。 
 
 > [!NOTE]
 > 设备注册不同于设备管理或 "MDM"。 它仅将设备 ID 和用户 ID 在 Azure AD 目录中一起关联。  

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 600ca893e6d6b81fe24626a99cc1f6de80efb3e8
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661339"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228134"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -214,10 +214,12 @@ npm i --save @microsoft/applicationinsights-web-basic
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>从旧版本的 Application Insights 升级
 
 SDK V2 版本中的重大更改：
-- 为了实现更好的 API 签名，某些 API 调用（如 trackPageView、trackException）已更新。 不支持在 IE8 或更低版本的浏览器中运行。
+- 为了实现更好的 API 签名，某些 API 调用（例如 trackPageView 和 trackException）已更新。 不支持在 Internet Explorer 8 和早期版本的浏览器中运行。
 - 由于数据架构更新，遥测信封具有字段名称和结构更改。
-- 已将 `context.operation` 移动到 `context.telemetryTrace`中。 还更改了某些字段（`operation.id` --> `telemetryTrace.traceID`）
-  - 若要手动刷新当前 pageview ID （例如，在 SPA 应用中），可以通过 `appInsights.properties.context.telemetryTrace.traceID = Util.newId()`
+- 已将 `context.operation` 移动到 `context.telemetryTrace`中。 还更改了某些字段（`operation.id` --> `telemetryTrace.traceID`）。
+  - 若要手动刷新当前 pageview ID （例如，在 SPA 应用中），请使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`。
+    > [!NOTE]
+    > 若要使跟踪 ID 保持唯一，你以前使用 `Util.newId()`，现在请使用 `Util.generateW3CId()`。 最终最终都是操作 ID。
 
 如果你使用的是当前 application insights 生产 SDK （1.0.20），并且想要查看新的 SDK 在运行时是否正常工作，请根据当前的 SDK 加载方案更新 URL。
 

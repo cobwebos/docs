@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: fdc6834f3fb5ee97f27a6397645b965863e90a6b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190541"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228349"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 Vm 上安装 AMD GPU 驱动程序
 
@@ -31,13 +31,18 @@ ms.locfileid: "77190541"
 
 | OS | 驱动程序 |
 | -------- |------------- |
-| Windows 10 EVD-内部版本1903 <br/><br/>Windows 10-内部版本1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [19. q 4.1](https://download.microsoft.com/download/7/e/5/7e558ac0-3fff-413d-af62-800285a2fc53/Radeon-Pro-Software-for-Enterprise-19.Q4.1-Technical-Preview.exe) （.exe） |
+| Windows 10 EVD-内部版本1903 <br/><br/>Windows 10-内部版本1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) （.exe） |
+
 
 ## <a name="driver-installation"></a>驱动程序安装
 
 1. 通过远程桌面连接到每个 NVv4 系列 VM。
 
-1. 下载并提取驱动程序安装程序文件。 导航到文件夹并运行 "setup.exe"，以安装 Windows 操作系统支持的驱动程序。
+2. 如果你是 NVv4 preview 客户，请停止 VM，并等待它移动到 "已停止（已解除分配）" 状态。
+
+3. 请启动 VM，然后通过运行位于文件夹 ". ..\AMDCleanUninstallUtility" 的 "amdcleanuputility-x64" 来卸载预览驱动程序。 确切的路径将取决于先前驱动程序安装文件的位置。  
+
+4. 下载并安装最新的驱动程序。
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 

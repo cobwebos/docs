@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f61ab87a3eb1bd4b81a8e67a182a4cb6a09aa069
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4a3eb121b68311084fd516c6abb7e00ad70eba8b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888963"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226829"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -106,6 +106,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
    * 每个此类服务只能提供单个林的密码策略。 主计算机必须加入到该林的域中。 同时支持根域和子域。 在林的每个域中至少有一个 DC 与密码保护计算机之间需要网络连接。
    * 您可以在域控制器上运行代理服务，以便进行测试。 但该域控制器需要建立 internet 连接，这可能是一个安全问题。 建议仅对此配置进行测试。
    * 为实现冗余，建议至少有两个代理服务器。 请参阅[高可用性](howto-password-ban-bad-on-premises-deploy.md#high-availability)。
+   * 不支持在只读域控制器上运行代理服务。
 
 1. 使用 `AzureADPasswordProtectionProxySetup.exe` 软件安装程序安装 Azure AD 密码保护代理服务。
    * 安装该软件不需要重新启动。 可以使用标准的 MSI 过程将软件安装自动化，例如：
@@ -124,7 +125,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
    * 若要检查服务是否正在运行，请使用以下 PowerShell 命令：
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`。
+      `Get-Service AzureADPasswordProtectionProxy | fl` 列中的一个值匹配。
 
      结果应显示 "正在运行"**状态**。
 
@@ -133,7 +134,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 
      `Register-AzureADPasswordProtectionProxy`
 
-     此 cmdlet 需要 Azure 租户的全局管理员凭据。 还需要在目录林根级域中本地 Active Directory 域管理员权限。 还必须使用具有本地管理员权限的帐户运行此 cmdlet。
+     此 cmdlet 需要 Azure 租户的全局管理员凭据。 还需要在目录林根级域中本地 Active Directory 域管理员权限。 此 cmdlet 还必须使用具有本地管理员权限的帐户运行。
 
      在此命令对代理服务成功执行一次后，对它的其他调用将成功，但没有必要。
 
@@ -179,7 +180,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
    > 在第一次为特定 Azure 租户运行此 cmdlet 时，可能会出现明显的延迟。 除非报告失败，否则不必担心这一延迟。
 
 1. 注册林。
-   * 必须使用 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 来初始化本地 Active Directory 林，其中包含所需的凭据才能与 Azure 进行通信。
+   * 使用 `Register-AzureADPasswordProtectionForest` PowerShell cmdlet 初始化本地 Active Directory 林，其中包含所需的凭据以便与 Azure 进行通信。
 
       Cmdlet 需要 Azure 租户的全局管理员凭据。  还必须使用具有本地管理员权限的帐户运行此 cmdlet。 它还需要本地 Active Directory 企业管理员权限。 针对每个林运行此步骤一次。
 
@@ -266,7 +267,7 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
    代理服务不支持使用特定凭据连接到 HTTP 代理。
 
 1. 可选：将代理服务配置为使用密码保护来侦听特定端口。
-   * 域控制器上的用于密码保护的 DC 代理软件使用 TCP 上的 RPC 来与代理服务通信。 默认情况下，代理服务会侦听任何可用的动态 RPC 终结点。 但是，你可以将服务配置为侦听特定的 TCP 端口，前提是由于你的环境中的网络拓扑或防火墙要求而必须这样做。
+   * 域控制器上的用于密码保护的 DC 代理软件使用 TCP 上的 RPC 来与代理服务通信。 默认情况下，代理服务会侦听任何可用的动态 RPC 终结点。 可以将服务配置为在特定 TCP 端口上侦听，如有必要，因为网络拓扑或环境中的防火墙要求。
       * <a id="static" /></a>将服务配置为在静态端口下运行，请使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet。
 
          ```powershell
@@ -343,6 +344,8 @@ Azure AD 密码保护有两个必需的安装程序。 可从[Microsoft 下载�
 ## <a name="read-only-domain-controllers"></a>只读域控制器
 
 不会在只读域控制器（Rodc）上处理和保存密码更改/集。 它们将转发给可写的域控制器。 因此，不需要在 Rodc 上安装 DC 代理软件。
+
+不支持在只读域控制器上运行代理服务。
 
 ## <a name="high-availability"></a>高可用性
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964577"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226694"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虚拟机的云初始化支持
 本文介绍了在 Azure 中设置时，[云初始化](https://cloudinit.readthedocs.io)用于配置虚拟机（VM）或虚拟机规模集的支持。 一旦 Azure 预配了资源，这些云初始化配置就会在首次启动时运行。  
@@ -34,7 +34,7 @@ Azure 支持两种预配代理：[云初始化](https://cloudinit.readthedocs.io
 
 云初始化也可跨分布工作。 例如，不要使用 apt-get 安装或 yum 安装来安装包。 可定义要安装的程序包的列表。 cloud init 自动为你选择的发行版使用本机包管理工具。
 
-我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 最初，我们与认可的 Linux 发行版合作伙伴和上游协作，以确保 Azure 上的操作系统具有云初始化功能，然后更新包，并使其在发行版包存储库中公开提供。 
+我们正在积极地与我们认可的 Linux 发行版合作伙伴合作，以便在 Azure 市场中提供已启用 cloud-init 的映像。 这些映像可使 cloud-init 部署和配置无缝地应用于 VM 和虚拟机规模集。 最初，我们与经认可的 Linux 发行版合作伙伴和上游协作，以确保 Azure 上的操作系统具有云初始化功能，然后更新包并将其公开在发行版包存储库中。 
 
 提供两个阶段，使云初始化可用于 Azure 上认可的 Linux 发行版操作系统、包支持和映像支持：
 * "Azure 上的云 init 包支持" 记录了支持或以预览版提供的云 init 包，因此你可以在自定义映像中将这些包与 OS 一起使用。
@@ -42,14 +42,14 @@ Azure 支持两种预配代理：[云初始化](https://cloudinit.readthedocs.io
 
 
 ### <a name="canonical"></a>Canonical
-| 发布者/版本| 产品 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
+| 发布者/版本| 产品/服务 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |规范18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
 |规范16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
 |规范14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
 
 ### <a name="rhel"></a>RHEL
-| 发布者/版本 | 产品 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是-包版本支持： *18.2-el7_6。 2*|
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是（请注意，这是预览图像，一旦所有 RHEL 7.7 映像都支持云初始化，这将会被2020删除，但会向你提供通知） | 是-包版本支持： *18.5-3. el7*|
@@ -60,7 +60,7 @@ Azure 支持两种预配代理：[云初始化](https://cloudinit.readthedocs.io
 
 ### <a name="centos"></a>CentOS
 
-| 发布者/版本 | 产品 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |OpenLogic 7。7 |CentOS |7-CI |7.7.20190920 |是（请注意，这是一个预览图像，一旦所有 CentOS 7.7 映像都支持云初始化，这将会被2020删除，但会向你提供通知） | 是-包版本支持： *18.5-3. el7. centos*|
 
@@ -68,7 +68,7 @@ Azure 支持两种预配代理：[云初始化](https://cloudinit.readthedocs.io
 
 ### <a name="oracle"></a>Oracle
 
-| 发布者/版本 | 产品 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
+| 发布者/版本 | 产品/服务 | SKU | 版本 | 映像云初始化就绪 | Azure 上的云 init 包支持|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7。7 |Oracle-Linux |77-ci |7.7.01| 预览图像（请注意，这是预览图像，在所有 Oracle 7.7 映像都支持云初始化后，这将会被2020删除，但会提供通知） | 不，在预览版中，package 为： *18.5-el7*
 

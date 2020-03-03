@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649970"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226526"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 runbook 中的错误处理
 
 为 Azure 自动化图形 runbook 考虑的关键设计原则是确定 runbook 在执行期间可能会遇到的问题。 这些情况可能包括：成功、预计的错误状态，以及意外的错误条件。
 
@@ -20,14 +20,14 @@ ms.locfileid: "77649970"
 
 图形 runbook 应包含错误处理代码来处理执行问题。 若要验证活动的输出或处理错误，可以使用 PowerShell 代码活动，在活动的输出链接上定义条件逻辑，或应用其他方法。
 
-Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。 
+Azure 自动化图形 runbook 已改进，能够包含错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。 
 
 >[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="powershell-error-types"></a>PowerShell 错误类型
 
-Runbook 执行期间可能会发生的 PowerShell 错误类型包括：终止错误和非终止错误。
+Runbook 执行期间可能会发生的 PowerShell 错误的类型将终止错误和非终止错误。
  
 ### <a name="terminating-error"></a>终止错误
 
@@ -50,11 +50,11 @@ Runbook 执行期间可能会发生的 PowerShell 错误类型包括：终止错
 
 一种解决方法是在 runbook 中包含一个指向处理第一步的活动的错误链接。 例如，runbook 可以将**写入警告**cmdlet 连接到步骤2的活动，例如[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet。
 
-你还可以通过将这两个活动放在单独的错误处理 runbook 中来通用化此行为以供许多 runbook 使用，请遵循前面所述的指导。 在原始 runbook 调用此错误处理 runbook 之前，它可以从其数据构造自定义消息，然后将其作为参数传递给错误处理 runbook。
+你还可以通过将这两个活动放在单独的错误处理 runbook 中来通用化此行为以供许多 runbook 使用。 在原始 runbook 调用此错误处理 runbook 之前，它可以从其数据构造自定义消息，然后将其作为参数传递给错误处理 runbook。
 
 ## <a name="how-to-use-error-handling"></a>如何使用错误处理
 
-Runbook 中的每个活动都有一个将异常转换为非终止错误的配置设置。 此设置默认已禁用。 建议在 runbook 处理错误的任何活动上启用此设置。 启用此配置可确保 runbook 使用错误链接将活动中的终止和非终止错误作为非终止错误处理。  
+Runbook 中的每个活动都有一个将异常转换为非终止错误的配置设置。 此设置默认已禁用。 建议在 runbook 处理错误的任何活动上启用此设置。 此设置可确保 runbook 使用错误链接将活动中的终止和非终止错误作为非终止错误处理。  
 
 启用配置设置后，让 runbook 创建处理错误的活动。 如果活动生成任何错误，则会遵循传出错误链接。 不遵循常规链接，即使活动同时生成了常规输出。<br><br> ![自动化 Runbook 错误链接示例](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -62,10 +62,10 @@ Runbook 中的每个活动都有一个将异常转换为非终止错误的配置
 
 **Get-automationvariable**活动和[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 配置为将异常转换为错误。 如果获取变量或启动 VM 时出现问题，则代码将生成错误。<br><br> ![自动化 runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-错误链接从这些活动流向单个**错误管理**代码活动。 此活动使用简单的 PowerShell 表达式进行配置，该表达式使用*Throw*关键字来停止处理，并使用 `$Error.Exception.Message` 获取描述当前异常的消息。<br><br> ![自动化 runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+错误链接从这些活动流向单个**错误管理**代码活动。 此活动使用简单的 PowerShell 表达式进行配置，该表达式使用**throw**关键字来停止处理，并使用 `$Error.Exception.Message` 获取描述当前异常的消息。<br><br> ![自动化 runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解图形 Runbook 中的链接和链接类型，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
+* 若要详细了解图形 runbook 中的链接和链接类型，请参阅[Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
 
 * 若要详细了解 runbook 执行、runbook 作业的监视和其他技术详细信息，请参阅[在 Azure 自动化中执行 runbook](automation-runbook-execution.md)。

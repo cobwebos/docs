@@ -1,5 +1,5 @@
 ---
-title: 使用 TensorFlow 训练神经网络
+title: 训练和部署 TensorFlow 模型
 titleSuffix: Azure Machine Learning
 description: 了解如何使用 Azure 机器学习大规模运行 TensorFlow 训练脚本。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114383"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228306"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 TensorFlow 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "77114383"
 
 了解有关[深度学习与机器学习](concept-deep-learning-vs-machine-learning.md)的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在以下任一环境中运行此代码：
 
@@ -305,11 +305,11 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
-## <a name="deployment"></a>部署
+## <a name="deploy-a-tensorflow-model"></a>部署 TensorFlow 模型
 
 你刚注册的模型可以采用与 Azure 机器学习中任何其他已注册模型完全相同的方式进行部署，无论你使用哪种估计器进行定型。 部署操作方法包含有关注册模型的部分，但你可以直接跳到创建用于部署的[计算目标](how-to-deploy-and-where.md#choose-a-compute-target)，因为你已有一个已注册的模型。
 
-### <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
+## <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
 
 除了传统的部署路由，还可以使用 Tensorflow 的非代码部署功能（预览版）。 通过向上面所示的 `model_framework`、`model_framework_version`和 `resource_configuration` 参数注册模型，只需使用 `deploy()` 静态函数部署模型即可。
 

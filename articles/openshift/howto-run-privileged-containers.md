@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069657"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228248"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
 
@@ -113,20 +113,25 @@ oc get route aqua-web -n aqua-security
 
 | 字段          | 值         |
 | -------------- | ------------- |
-| Orchestrator   | OpenShift     |
+| 业务流程协调程序   | OpenShift     |
 | ServiceAccount | 浅绿-帐户  |
-| 项目        | 浅绿色-安全性 |
+| Project        | 浅绿色-安全性 |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Prisma Cloud/Twistlock 的特定于产品的步骤
 
 我们要修改的基本说明可在[Prisma Cloud 部署文档](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html)中找到
 
-首先创建一个新的 OpenShift 项目
+首先安装 `twistcli` 工具，如 "安装 Prisma Cloud" 和 "下载 Prisma Cloud software" 部分所述。
+
+创建新的 OpenShift 项目
 ```
 oc new-project twistlock
 ```
 
-你可以按照文档中的说明操作，直到出现 "安装控制台" 部分，使用 Prisma 云容器注册表而不是创建内部容器。
+跳过可选部分 "将 Prisma 云映像推送到专用注册表"。 它不适用于 Azure Red Hat Openshift。 改为使用联机注册表。
+
+在应用以下所述的更正时，可以遵循官方文档。
+从 "安装控制台" 部分开始。
 
 ### <a name="install-console"></a>安装控制台
 

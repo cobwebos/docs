@@ -3,15 +3,15 @@ title: Microsoft Azure FXT Edge Filer 规格 | Microsoft Docs
 description: Azure FXT Edge Filer 硬件的物理和环境规格
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
-ms.translationtype: HT
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254713"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227484"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer 规格
 
@@ -36,8 +36,8 @@ ms.locfileid: "72254713"
 
 | 驱动器编号    |  用途   |  规范 |
 |------------------|--------|-----------------|
-| 0、1             | 操作系统     | 480 GB SATA SSD |
-| 2、3、4、5、6、7、8、9 | 数据   | FXT 6600：3.2 TB NVMe SSD <br> FXT 6400：1.6 TB NVMe SSD |
+| 0、1             | OS     | 480 GB SATA SSD |
+| 2、3、4、5、6、7、8、9 | data   | FXT 6600： 3.2 TB NVMe SSD <br> FXT 6400： 1.6 TB NVMe SSD |
 
 
 ## <a name="dimensions-and-weight"></a>尺寸和重量
@@ -68,7 +68,7 @@ Azure FXT Edge Filer 适用于标准 19 英寸设备机架，其高度为一个�
 |-------------------|-------------|--------|
 | 高度            | 311.2       | 12.25" |
 | 宽度             | 642.8       | 25.31" |
-| Length            | 1,051.1     | 41.38" |
+| 长度            | 1,051.1     | 41.38" |
 
 ## <a name="power-and-thermal-specifications"></a>功与热规格
 
@@ -144,11 +144,11 @@ Azure FXT Edge Filer 节点使用变速风扇，因此功率取决于温度和�
 | 海拔高度                  | 上限为 3048 米（10,000 英尺），额定温度将受到影响，如下所示 | 上限为 12,000 米（39,370 英尺） |
 
 > [!NOTE] 
-> **海拔高度影响最高额定温度：** 950 米（3,117 英尺）以上，每升高 300 米，最高温度降低 1°C（每升高 547 英尺降低 1°F）。
+> **温度解除评分：** 最大温度降低了950米（3117英尺）以上的1° C/300 m （1° F/547 ft）。
 
 ### <a name="airflow-shock-and-vibration"></a>气流、撞击和振动 
 
-| 属性         | 规格 |
+| Attribute         | 规格 |
 |-------------------|---------------|
 | 气流                    | 系统气流的方向是从前到后。 系统必须以低压、后排气的安装方式运行。 |
 | 撞击，可运行         | 6 G/11 毫秒（以 6 个方向测试） |

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189100"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226795"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -124,20 +124,19 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-此提供程序用于管理信赖方应用程序或联合 SAML 标识提供程序之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，必须将 `IncludeSessionIndex` 和 `RegisterServiceProviders` 设置为 `false`。 以下 `SM-Saml-idp` 技术配置文件由[SAML 技术配置文件](saml-technical-profile.md)使用。
+此提供程序用于管理信赖方应用程序或联合 SAML 标识提供程序之间的 Azure AD B2C SAML 会话。 使用 SSO 提供程序存储 SAML 标识提供者会话时，`RegisterServiceProviders` 必须设置为 `false`。 以下 `SM-Saml-idp` 技术配置文件由[SAML 技术配置文件](saml-technical-profile.md)使用。
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-使用提供程序存储 B2C SAML 会话时，`IncludeSessionIndex` 和 `RegisterServiceProviders` 必须设置为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
+使用提供程序存储 B2C SAML 会话时，`RegisterServiceProviders` 必须设置为 `true`。 需要 `SessionIndex` 和 `NameID` 才能完成 SAML 会话注销。
 
 以下 `SM-Saml-idp` 技术配置文件由[SAML 颁发者技术配置文件](connect-with-saml-service-providers.md)使用
 
@@ -151,7 +150,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 | Attribute | 必选 | 说明|
 | --- | --- | --- |
-| IncludeSessionIndex | 否 | 向提供程序指出应存储会话索引。 可能的值为 `true`（默认）或 `false`。|
+| IncludeSessionIndex | 否 | 当前未使用，可以忽略。|
 | RegisterServiceProviders | 否 | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 可能的值为 `true`（默认）或 `false`。|
 
 

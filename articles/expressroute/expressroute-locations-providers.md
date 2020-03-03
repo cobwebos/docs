@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: a46bdb47ee92a422d10aad5b41487530d23d1ec9
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 45c7fd5fd3737c21a03700b2e560944921a2558d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484683"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228176"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -203,7 +203,7 @@ Azure 国内云彼此独立，并来自全球商业 Azure。 一个 Azure 云的
 ## <a name="c1partners"></a>通过其他服务提供商的连接
 | **位置** | **Exchange** | **连接提供程序** |
 | --- | --- | --- |
-| **阿姆斯特丹** | Equinix，Interxion，Level 3 通信 | BICS、CloudXpress、Eurofiber、Fastweb s.p.a、、、Kalaam 电信巴林 b. C、MainOne、Nianet、电信 Proximus、Erhverv、TDC Italia、电信 Telekom 火花、Deutschland GmbH Telia、 |
+| **阿姆斯特丹** | Equinix，Interxion，Level 3 通信 | BICS、CloudXpress、Eurofiber、Fastweb s.p.a、、Kalaam 电信巴林 b. C、MainOne、Nianet、电信电信、Proximus、RETN、TDC Erhverv、电信 Italia 火花、Telekom Deutschland GmbH、Telia |
 | **亚特兰大** | Equinix| 王冠城堡
 | **开普敦** | Teraco | MTN |
 | **芝加哥** | Equinix| 王冠城堡，Windstream |
