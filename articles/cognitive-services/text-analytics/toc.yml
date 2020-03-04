@@ -44,6 +44,12 @@
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
     - name: 使用 Power Automate 在 Excel 中提取信息
       href: tutorials/extract-excel-information.md
+- name: 概念
+  items:
+    - name: 命名实体类型
+      href: named-entity-types.md
+    - name: 语言和区域支持
+      href: language-support.md
 - name: 操作方法指南
   items:
     - name: 调用文本分析 API
@@ -104,16 +110,10 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: 资源
   items:
-    - name: 使用 MS Flow 识别 Yammer 组中的评论情绪
-      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
     - name: 外部和社区内容
       href: text-analytics-resource-external-community.md
     - name: 常见问题解答
       href: text-analytics-resource-faq.md
-    - name: 语言和区域支持
-      href: language-support.md
-    - name: 命名实体类型
-      href: named-entity-types.md
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: 区域可用性
@@ -122,9 +122,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 堆栈溢出
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: 订阅密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
+    - name: 发送反馈
       href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
