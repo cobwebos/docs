@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何在启用和使用时对常见问题进行故障排除和解决 Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8eb7b07622a989bc78637b1601ba68b9b5f6f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197991"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251125"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑难解答
 
@@ -44,7 +44,7 @@ azds remove -g <resource group name> -n <cluster name>
 
 如果尚未安装 Azure Dev Spaces CLI，可以先使用以下命令安装它，然后删除控制器：
 
-```cmd
+```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
@@ -80,8 +80,8 @@ Azure Dev Spaces 无法在 AKS 群集上创建控制器，因为它找不到*就
 
 Azure Dev Spaces CLI 的更新更改了它的安装路径。 如果你使用的 Azure CLI 版本早于2.0.63，则可能会看到此错误。 若要显示 Azure CLI 的版本，请使用 `az --version`。
 
-```bash
-$ az --version
+```azurecli
+az --version
 azure-cli                         2.0.60 *
 ...
 ```
@@ -223,7 +223,7 @@ azds up --verbose --output json
 
 如果尝试在删除并重新创建与此群集关联的 Azure Dev Spaces 控制器后重新运行服务，看到错误消息“无法启动服务”。 在这种情况下，详细输出包含以下文本：
 
-```cmd
+```output
 Installing Helm chart...
 Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
@@ -329,7 +329,7 @@ Service cannot be started.
 1. 检查位置% ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI for `azds.exe`。 如果它在那里，将该位置添加到 PATH 环境变量。
 2. 如果未安装 `azds.exe`，请运行以下命令：
 
-    ```cmd
+    ```azurecli
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
 
@@ -337,13 +337,13 @@ Service cannot be started.
 
 必须对 Azure 订阅拥有“所有者”或“参与者”访问权限，才能管理 Azure Dev Spaces。 如果尝试管理开发共享空间，并且没有*所有者*或*参与者*访问关联的 Azure 订阅，可能会出现授权错误。 例如：
 
-```console
+```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
 ```
 
 若要解决此问题，请使用具有*所有者*或*参与者*访问 Azure 订阅的帐户，手动注册 `Microsoft.DevSpaces` 命名空间：
 
-```console
+```azurecli
 az provider register --namespace Microsoft.DevSpaces
 ```
 
@@ -359,7 +359,7 @@ kubectl get pods --all-namespaces --include-uninitialized
 
 若要解决此问题，请将[Dev SPACES CLI 更新到最新版本](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools)，然后从 Azure Dev Spaces 控制器中删除*azds InitializerConfiguration* ：
 
-```bash
+```azurecli
 az aks get-credentials --resource-group <resource group name> --name <cluster name>
 kubectl delete InitializerConfiguration azds
 ```
@@ -456,9 +456,12 @@ azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"}
 
 若要在 AKS 群集中的现有命名空间上启用 Azure Dev Spaces，请运行 `use-dev-spaces` 并使用 `kubectl` 重新启动该命名空间中的所有 pod。
 
-```console
+```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+```
+
+```console
 kubectl -n my-namespace delete pod --all
 ```
 
