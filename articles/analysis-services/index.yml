@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Azure Analysis Services 文档
+title: Azure Analysis Services文档
 summary: 了解如何在云中使用 Analysis Services 设置数据建模。 文档介绍了如何使用表格数据模型创建企业 BI 解决方案。
 metadata:
   title: Azure Analysis Services 文档 | Microsoft Docs
@@ -11,12 +11,12 @@ metadata:
   ms.author: owend
   manager: mtillman
   ms.date: 10/30/2019
-  ms.openlocfilehash: db43da63ab9382d71c812c97dcef6048b89a9626
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8c0d92cc7f50ec72b33d86335291580a477db056
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73572208"
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273673"
 landingContent:
 - title: 关于 Azure Analysis Services
   linkLists:
@@ -63,4 +63,4 @@ landingContent:
     - text: REST API
       url: /rest/api/analysisservices/
     - text: 表格模型脚本语言 (TMSL)
-      url: /bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference
+      url: /analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference

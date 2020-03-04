@@ -32,7 +32,7 @@
       href: data-catalog-how-to-discover.md
     - name: 批注数据源
       href: data-catalog-how-to-annotate.md
-    - name: 阐述数据源
+    - name: 记录数据源
       href: data-catalog-how-to-documentation.md
     - name: 连接到数据源
       href: data-catalog-how-to-connect.md
@@ -52,7 +52,7 @@
       href: data-catalog-how-to-view-related-data-assets.md
     - name: 故障排除
       href: troubleshoot-policy-configuration.md
-- name: 引用
+- name: 参考
   items:
     - name: 代码示例
       href: data-catalog-samples.md

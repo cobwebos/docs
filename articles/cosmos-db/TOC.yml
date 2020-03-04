@@ -136,7 +136,7 @@
           href: provision-throughput-autopilot.md
         - name: Autopilot 常见问题解答
           href: autopilot-faq.md
-    - name: SQL 查询参考
+    - name: SQL 查询 (SQL query)
       items:
         - name: 入门
           displayName: 'sql query, query basics'
@@ -437,6 +437,9 @@
             - name: 为地理空间数据编制索引
               displayName: 'geospatial, spatial, index'
               href: sql-query-geospatial-index.md
+        - name: DateTime
+          displayName: 'datetime, date, time'
+          href: working-with-dates.md
         - name: 参数化查询
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
@@ -464,10 +467,6 @@
             - name: 索引策略
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: 数据类型
-          items:
-            - name: DateTime
-              href: working-with-dates.md
         - name: 生存时间
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md

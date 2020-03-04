@@ -106,7 +106,7 @@ ms.locfileid: "78201184"
 单击 "**选择上一步中的输出**"。 在出现的 "动态内容" 框中，选择 "**值**"。
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="从 excel 文件中选择 "输出"。":::
+> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="从 excel 文件中选择 输出。":::
 
 ## <a name="send-a-request-to-the-text-analytics-api"></a>向文本分析 API 发送请求
 

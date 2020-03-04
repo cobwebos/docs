@@ -84,7 +84,7 @@
             - name: 从 Webhook 启动 Runbook
               href: automation-webhooks.md
             - name: 配置 Runbook 输入参数
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: 子 Runbook
               href: automation-child-runbooks.md
             - name: 将 JSON 对象传递到 Azure 自动化 Runbook

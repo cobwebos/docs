@@ -5,6 +5,7 @@
     - name: 什么是 Azure Front Door 服务？
       href: front-door-overview.md
 - name: 快速入门
+  expanded: true
   items:
     - name: 创建 Front Door
       href: quickstart-create-front-door.md
@@ -48,7 +49,7 @@
       href: front-door-url-rewrite.md
     - name: URL 重定向
       href: front-door-url-redirect.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 重定向流量
       items:
@@ -68,7 +69,7 @@
   items:
     - name: Front Door 常见问题解答
       href: front-door-faq.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure CLI
       href: /cli/azure/ext/front-door/
