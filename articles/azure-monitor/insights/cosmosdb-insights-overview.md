@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657378"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250679"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>探索 Azure Cosmos DB Azure Monitor （预览）
 
@@ -33,34 +33,6 @@ Azure Monitor for Azure Cosmos DB （预览版）提供了一个统一的交互�
 
 >[!NOTE]
 >访问此功能并不收取任何费用，只需按[Azure Monitor 定价详细信息](https://azure.microsoft.com/pricing/details/monitor/)页中所述，为你配置或启用 Azure Monitor 基本功能付费。
-
-## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
-
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-
-1. 从左侧导航栏中选择 "**监视器**"，然后选择 "**指标**"。
-
-   ![Azure Monitor 中的指标窗格](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
-
-1. 从 "**指标**" 窗格中 >**选择资源**> 选择所需的**订阅**和**资源组**。 对于 "**资源类型**"，请选择 " **Azure Cosmos DB 帐户**"，选择一个现有的 Azure Cosmos 帐户，并选择 "**应用**"。
-
-   ![选择 Cosmos DB 帐户以查看指标](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
-
-1. 接下来，您可以从可用指标列表中选择一个度量值。 你可以选择特定于请求单位、存储、延迟、可用性、Cassandra 等的指标。 若要详细了解此列表中的所有可用指标，请参阅[度量值（按类别](../../cosmos-db/monitor-cosmos-db-reference.md)）一文。 在此示例中，我们选择 "**请求单位**" 和 " **Avg** " 作为聚合值。
-
-   除这些详细信息外，还可以选择度量值的**时间范围**和**时间粒度**。 最大情况下，你可以查看过去30天的指标。  应用筛选器后，将根据筛选器显示图表。 您可以查看所选时间段内每分钟使用的请求单位平均数量。  
-
-   ![从 Azure 门户中选择一个度量值](./media/cosmosdb-insights-overview/metric-types.png)
-
-### <a name="add-filters-to-metrics"></a>向指标添加筛选器
-
-还可以筛选度量值和按特定的**CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**和**StatusCode**显示的图表。 若要筛选度量值，请选择 "**添加筛选器**" 并选择所需属性（如**OperationType** ），然后选择一个值，例如 "**查询**"。 然后，关系图显示所选时间段内查询操作使用的请求单位。 不会记录通过存储过程执行的操作，因此它们在 OperationType 指标下不可用。
-
-![添加筛选器以选择指标粒度](./media/cosmosdb-insights-overview/add-metrics-filter.png)
-
-您可以使用 "**应用拆分**" 选项对度量值进行分组。 例如，可以将每个操作的请求单位分组，并一次查看所有操作的关系图，如下图所示：
-
-![添加应用拆分筛选器](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
 
 ## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的利用率和性能指标
 

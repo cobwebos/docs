@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134519"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251616"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>为 P2S OpenVPN 协议连接配置 VPN 客户端： Azure AD 身份验证
 
@@ -28,7 +28,7 @@ ms.locfileid: "77134519"
 
 ### <a name="to-download-the-azure-vpn-client"></a>下载 Azure VPN 客户端
 
-使用此[链接](https://go.microsoft.com/fwlink/?linkid=2117554)下载 Azure VPN 客户端。
+使用[此链接](https://go.microsoft.com/fwlink/?linkid=2117554)下载 Azure VPN 客户端。
 
 ### <a name="cert"></a>创建基于证书的客户端配置文件
 
@@ -50,65 +50,65 @@ ms.locfileid: "77134519"
 
 1. 突出显示要导出的 VPN 客户端配置文件，选择 " **...** "，然后选择 "**导出**"。
 
-    ![export](./media/openvpn-azure-ad-client/export/export1.jpg)
+    ![导出](./media/openvpn-azure-ad-client/export/export1.jpg)
 
 2. 选择要将此配置文件保存到的位置，将 "文件名" 保留原样，然后选择 "**保存**" 以保存 xml 文件。
 
-    ![export](./media/openvpn-azure-ad-client/export/export2.jpg)
+    ![导出](./media/openvpn-azure-ad-client/export/export2.jpg)
 
 ### <a name="import"></a>导入客户端配置文件
 
 1. 在页面上，选择“导入”。
 
-    ![导入](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![进口](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. 浏览到 XML 配置文件并将其选中。 选择该文件后，选择“打开”。
 
-    ![导入](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![进口](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. 指定配置文件的名称，并选择“保存”。
 
-    ![导入](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![进口](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. 选择“连接”以连接到 VPN。
 
-    ![导入](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![进口](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. 连接后，图标将变为绿色并指示“已连接”。
 
-    ![导入](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![进口](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>删除客户端配置文件
 
 1. 选择要删除的客户端配置文件旁边的省略号。 然后选择“删除”。
 
-    ![删除](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. 选择“删除”以删除配置文件。
 
-    ![删除](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="connection"></a>创建连接
 
 1. 在 "" 页上，选择 " **+** "，然后单击 " **+ 添加**"。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create1.jpg)
+    ![连接](./media/openvpn-azure-ad-client/create/create1.jpg)
 
 2. 填写连接信息。 如果你不确定这些值，请与你的管理员联系。 填写值后，选择 "**保存**"。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create2.jpg)
+    ![连接](./media/openvpn-azure-ad-client/create/create2.jpg)
 
 3. 选择“连接”以连接到 VPN。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create3.jpg)
+    ![连接](./media/openvpn-azure-ad-client/create/create3.jpg)
 
 4. 选择正确的凭据，并选择 "**继续**"。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create4.jpg)
+    ![连接](./media/openvpn-azure-ad-client/create/create4.jpg)
 
 5. 成功连接后，该图标将变为绿色，并指示**已连接**。
 
-    ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
+    ![连接](./media/openvpn-azure-ad-client/create/create5.jpg)
 
 ### <a name="autoconnect"></a>自动连接
 
@@ -148,7 +148,7 @@ ms.locfileid: "77134519"
 
     ![诊断](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>如何实现将 DNS 后缀添加到 VPN 客户端？
 
@@ -168,9 +168,26 @@ ms.locfileid: "77134519"
 </azvpnprofile>
 ```
 
+### <a name="how-do-i-add-custom-dns-servers-to-the-vpn-client"></a>如何实现将自定义 DNS 服务器添加到 VPN 客户端？
+
+可以修改下载的配置文件 XML 文件，并添加 **\<dnsservers >\<dnsserver > \</dnsserver >\</dnsservers >** 标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnsservers>
+        <dnsserver>x.x.x.x</dnsserver>
+        <dnsserver>y.y.y.y</dnsserver>
+    </dnsservers>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何实现将自定义路由添加到 VPN 客户端？
 
-您可以修改下载的配置文件 XML 文件，并添加 **\<路由 >\<includeroutes >\<目标 >\<掩码 > \<>\<>/includeroutes\<>/destination\<>/mask**标记
+您可以修改下载的配置文件 XML 文件，并添加 **\<的 includeroutes >\<路由 >\<目标 >\<掩码 > \<>\<>/mask\<>/route\<>/includeroutes**标记
 
 ```
 <azvpnprofile>
@@ -181,6 +198,24 @@ ms.locfileid: "77134519"
             <destination>x.x.x.x</destination><mask>24</mask>
         </route>
     </includeroutes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>从 VPN 客户端如何实现阻止（排除）路由？
+
+您可以修改下载的配置文件 XML 文件，并添加 **\<的 excluderoutes >\<路由 >\<目标 >\<掩码 > \<>\<>/mask\<>/route\<>/excluderoutes**标记
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <excluderoutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </excluderoutes>
     
 </clientconfig>
 </azvpnprofile>

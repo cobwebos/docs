@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656307"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249107"
 ---
 # <a name="conditional-access-grant"></a>条件性访问： Grant
 
@@ -67,35 +67,7 @@ ms.locfileid: "77656307"
 
 组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。 这些批准的客户端应用支持独立于任何移动设备管理（MDM）解决方案的[Intune 应用保护策略](/intune/app-protection-policy)。
 
-此设置适用于以下客户端应用：
-
-- Microsoft Azure 信息保护
-- Microsoft 预订
-- Microsoft Cortana
-- Microsoft Dynamics 365
-- Microsoft Edge
-- Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
-- Microsoft Invoicing
-- Microsoft Kaizala
-- Microsoft Launcher
-- Microsoft OneDrive
-- Microsoft OneNote
-- Microsoft Outlook
-- Microsoft Planner
-- Microsoft PowerApps
-- Microsoft Power BI
-- Microsoft PowerPoint
-- Microsoft SharePoint
-- Microsoft Skype for Business
-- Microsoft StaffHub
-- Microsoft Stream
-- Microsoft Teams
-- 微软待办
-- Microsoft Visio
-- Microsoft Word
-- Microsoft Yammer
+受支持的应用程序可在[Microsoft Intune 受保护的应用](/intune/apps/apps-supported-intune-apps)程序一文中找到。
 
 **注释**
 
@@ -108,12 +80,7 @@ ms.locfileid: "77656307"
 
 在条件访问策略中，你可以要求在客户端应用上提供[Intune 应用保护策略](/intune/app-protection-policy)，然后才能访问所选的云应用。 
 
-此设置适用于以下客户端应用：
-
-- Microsoft Cortana
-- Microsoft OneDrive
-- Microsoft Outlook
-- Microsoft Planner
+受支持的应用程序可在[Microsoft Intune 受保护的应用](/intune/apps/apps-supported-intune-apps)程序一文中找到。
 
 **注释**
 

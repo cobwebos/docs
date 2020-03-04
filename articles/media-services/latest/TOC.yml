@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: 实时听录
           href: live-transcription.md
-        - name: 功能比较
+        - name: 直播活动类型比较
           href: live-event-types-comparison.md
         - name: 状态和计费
           href: live-event-states-billing.md
         - name: 延迟
           href: live-event-latency.md
+        - name: 成为本地编码器合作伙伴
+          href: become-on-premises-encoder-partner.md
         - name: 直播活动错误代码
           href: live-event-error-codes.md
     - name: 打包和交付

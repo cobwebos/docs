@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e9e2fe92939088420f973c5ca112b5f59d07f212
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906589"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252684"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 存储中的静态网站托管
 
@@ -92,11 +92,17 @@ ms.locfileid: "76906589"
 > [!TIP]
 > 考虑在 Azure 上托管域。 有关详细信息，请参阅[在 Azure DNS 中托管你的域](../../dns/dns-delegate-domain-azure-dns.md)。
 
-## <a name="pricing"></a>价格
+## <a name="adding-http-headers"></a>添加 HTTP 标头
+
+无法将标头配置为静态网站功能的一部分。 但是，可以使用 Azure CDN 来添加标头和追加（或覆盖）标头值。 请参阅[标准规则引擎参考 Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)。
+
+如果要使用标头来控制缓存，请参阅[使用缓存规则控制 Azure CDN 缓存行为](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)。
+
+## <a name="pricing"></a>定价
 
 可以免费启用静态网站托管。 仅对你的站点利用的 blob 存储和运营成本计费。 如需详细了解 Azure Blob 存储价格，请参阅 [Azure Blob 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="metrics"></a>指标
+## <a name="metrics"></a>度量值
 
 可以在静态网站页面上启用指标。 一旦启用了指标，就会在 "指标" 仪表板中报告 **$web**容器中的文件的流量统计信息。
 

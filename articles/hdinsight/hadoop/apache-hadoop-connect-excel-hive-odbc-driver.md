@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 12/11/2019
-ms.openlocfilehash: 883192e1d041014c23445b7a2fa0ece45eb76f10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/02/2020
+ms.openlocfilehash: f356009197c0446efa2ea2d7f0e90040229df47b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435816"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251070"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Azure HDInsight 中的 Apache Hadoop
 
@@ -23,7 +23,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 还可以使用用于 Excel 的 Microsoft Power Query 外接程序从 Excel 连接与 HDInsight 群集和其他数据源（包括其他非 HDInsight Hadoop 群集）关联的数据。 有关安装和使用 Power Query 的信息，请参阅[使用 Power Query 将 Excel 连接到 HDInsight](../hdinsight-connect-excel-power-query.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始阅读本文前，必须具有以下项目：
 
@@ -48,11 +48,11 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 1. 键入或选择以下值：
 
-   | 属性 | Description |
+   | properties | 说明 |
    | --- | --- |
    |  数据源名称 |为数据源提供名称 |
    |  主机 |输入 `HDInsightClusterName.azurehdinsight.net`。 例如，`myHDICluster.azurehdinsight.net` 。 注意：只要客户端 VM 对等互连到同一个虚拟网络，就支持 `HDInsightClusterName-int.azurehdinsight.net`。 |
-   |  Port |使用 **443**。 （此端口已从 563 更改为 443。） |
+   |  端口 |使用 **443**。 （此端口已从 563 更改为 443。） |
    |  数据库 |使用“默认”。 |
    |  机制 |选择“Windows Azure HDInsight 服务” |
    |  用户名 |输入 HDInsight 群集 HTTP 用户的用户名。 默认的用户名为 **admin**。 |
@@ -60,7 +60,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 1. 可选：选择**高级选项 ...**  
 
-   | 参数 | Description |
+   | 参数 | 说明 |
    | --- | --- |
    |  使用本机查询 |当此项处于选中状态时，ODBC 驱动程序不会尝试将 TSQL 转换为 HiveQL。 仅当你是100% 时才应使用此方法。请确保提交的是纯 HiveQL 语句。 连接 SQL Server 或 Azure SQL 数据库时，应将此项保留为未选中状态。 |
    |  每块提取的行数 |提取大量记录时，可能需要调整此参数以确保最佳性能。 |
@@ -82,7 +82,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 1. 在 Excel 中打开新工作簿或现有工作簿。
 
-2. 在“数据”选项卡中，导航到“获取数据” > “从其他源” > “从 ODBC”来启动“从 ODBC”窗口。
+2. 在“数据”选项卡中，导航到“获取数据” **“从其他源”** “从 ODBC”来启动“从 ODBC”窗口 >  > 。
 
     ![打开 Excel 数据连接向导](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "打开 Excel 数据连接向导")
 
@@ -90,7 +90,7 @@ Microsoft 的大数据解决方案可将 Microsoft 商业智能 (BI) 组件与�
 
 4. 第一次使用时， **ODBC 驱动程序**对话框将打开。 从左侧菜单中选择 " **Windows** "。 然后选择 "**连接**" 以打开 "**导航器**" 窗口。
 
-5. 在“导航器”中，导航到“HIVE” > “默认” > “hivesampletable”，然后选择“加载”。 需要一段时间才能将数据导入到 Excel 中。
+5. 在“导航器”中，导航到“HIVE” **“默认”** “hivesampletable”，然后选择“加载” >  > 。 需要一段时间才能将数据导入到 Excel 中。
 
     ![HDInsight Excel Hive ODBC 导航器](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC 导航器")
 

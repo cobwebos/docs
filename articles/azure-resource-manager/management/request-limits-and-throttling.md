@@ -1,15 +1,15 @@
 ---
-title: 请求限制和限制
+title: 请求限制
 description: 介绍在达到订阅限制时，如何对 Azure 资源管理器请求使用限制。
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129ca3ba32d48345bde931c6bd2084c3da79be39
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43ccf4f2e8098f6577f18943c4ab4132884b66f2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659366"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251344"
 ---
 # <a name="throttling-resource-manager-requests"></a>限制 Resource Manager 请求
 
@@ -25,7 +25,7 @@ ms.locfileid: "75659366"
 
 下表显示了每小时的默认限制限制。
 
-| 范围 | Operations | 限制 |
+| 范围 | 操作 | 限制 |
 | ----- | ---------- | ------- |
 | 订阅 | reads | 12000 |
 | 订阅 | deletes | 15000 |
@@ -51,10 +51,10 @@ ms.locfileid: "75659366"
 
 Microsoft 网络资源提供程序应用以下限制：
 
-| 操作 | 限制 |
+| Operation | 限制 |
 | --------- | ----- |
 | 写入/删除（PUT） | 每5分钟1000 |
-| 读取 (GET) | 每5分钟10000 |
+| 读取（GET） | 每5分钟10000 |
 
 ### <a name="compute-throttling"></a>计算限制
 
@@ -84,7 +84,7 @@ Microsoft 网络资源提供程序应用以下限制：
 
 可以通过检查响应标头来确定剩余的请求数。 读取请求会在标头中返回剩余读取请求数的值。 写入请求包含剩余写入请求数的值。 下表描述了可在其中检查这些值的标头：
 
-| 响应标头 | Description |
+| 响应标头 | 说明 |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |划归到订阅的剩余读取数。 执行读取操作时返回此值。 |
 | x-ms-ratelimit-remaining-subscription-writes |划归到订阅的剩余写入数。 执行写入操作时返回此值。 |
@@ -162,7 +162,7 @@ az group list --verbose --debug
 
 这会返回许多值，包括以下值：
 
-```azurecli
+```output
 msrest.http_logger : Response status: 200
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'
@@ -182,7 +182,7 @@ az group create -n myresourcegroup --location westus --verbose --debug
 
 这会返回许多值，包括以下值：
 
-```azurecli
+```output
 msrest.http_logger : Response status: 201
 msrest.http_logger : Response headers:
 msrest.http_logger :     'Cache-Control': 'no-cache'

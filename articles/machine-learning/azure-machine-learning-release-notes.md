@@ -10,18 +10,56 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f244fc057638bc94a94c150d9333435c0197a74
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462167"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249747"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**主要 sdk For Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-03-02"></a>2020-03-02
+
+### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>用于 Python 1.1.2 rc0 的 Azure 机器学习 SDK
+
++ **Bug 修复和改进**
+  + **automl-核心**
+    + 为 automl ONNX 模型启用了批处理模式推理（一次只接受多行）
+    + 提高了对数据集的频率的检测，缺少数据或包含不规则的数据点
+    + 添加了删除不符合主导 frequrncy 的数据点的功能。
+  + **automl-运行时**
+    + 修复了在测试集中出现定型集不存在的颗粒时引发的错误的问题
+    + 删除预测服务评分期间的 y_query 要求
+  + **contrib-mir**
+    + 添加 MirWebservice 类中的功能以检索访问令牌
+  + **azureml 核心**
+    + 部署的 AzureML Webservices 现在将默认 `INFO` 日志记录。 这可以通过在已部署的服务中设置 `AZUREML_LOG_LEVEL` 环境变量来控制。
+    + 修复了对 `Dataset.get_all` 的迭代，以返回已注册到工作区的所有数据集。
+    + 当向数据集创建 Api `path` 参数传递无效类型时，请改进错误消息。
+    + Python sdk 使用发现服务来使用 "api" 终结点，而不使用 "管道"。
+    + 交换到所有 SDK 调用中的新路由
+    + 将对 ModelManagementService 的调用路由到新的统一结构
+      + 公开提供工作区更新方法。
+      + 已在工作区更新方法中添加 image_build_compute 参数，以允许用户更新映像生成的计算
+    +  将弃用消息添加到旧的分析工作流。 固定分析 cpu 和内存限制
+  + **azureml-解释**
+    + 更新 azureml-解释为解读-社区 0.6. *
+  + **azureml-mlflow**
+    + 向 azureml 添加对主权云的支持。 mlflow
+  + **azureml-管道-步骤**
+    + 已将 `AutoMLStep` 移动到 `azureml-pipeline-steps package`中。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+  + **azureml-automl-客户端**
+    + 解决了某些包可能安装在远程运行的不正确版本的问题。
+  + **azureml-automl-运行时**
+    + 解决了远程运行中的频率检测问题
+    + 已将 `AutoMLStep` 移动到 `azureml-pipeline-steps package`中。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+  + **azureml-核心**
+    + 已将 `AutoMLStep` 移动到 `azureml-pipeline-steps package`中。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
 
 ## <a name="2020-02-18"></a>2020-02-18
 

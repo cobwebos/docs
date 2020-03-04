@@ -3,7 +3,7 @@ title: 创建并上传 Oracle Linux VHD
 description: 了解如何创建和上传包含 Oracle Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 240333e55f23f2536d3cf14d2bb817e5776c8139
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747730"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251602"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>为 Azure 准备 Oracle Linux 虚拟机
 
@@ -37,7 +37,7 @@ ms.locfileid: "75747730"
 * 请确保已启用 `Addons` 存储库。 编辑文件 `/etc/yum.repos.d/public-yum-ol6.repo`（Oracle Linux 6）或 `/etc/yum.repos.d/public-yum-ol7.repo`（Oracle Linux 7），将行 `enabled=0` 更改为此文件中的 **[`enabled=1`]** 或 **[ol6_addons]** 下的 ol7_addons。
 
 ## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6.4 及更高版本
-你必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
+必须在操作系统中完成特定的配置步骤才能使虚拟机在 Azure 中运行。
 
 1. 在 Hyper-V 管理器的中间窗格中，选择虚拟机。
 2. 单击“连接”打开虚拟机窗口。
@@ -46,11 +46,11 @@ ms.locfileid: "75747730"
         # sudo rpm -e --nodeps NetworkManager
    
     **注意：** 如果尚未安装此包，则此命令会失败，并显示一条错误消息。 这是正常情况。
-4. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
+4. 在包含以下文本的 **目录中创建一个名为**network`/etc/sysconfig/` 的文件：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. 在包含以下文本的 `/etc/sysconfig/network-scripts/` 目录中创建一个名为 **ifcfg-eth0** 的文件：
+5. 在包含以下文本的 **目录中创建一个名为**ifcfg-eth0`/etc/sysconfig/network-scripts/` 的文件：
    
         DEVICE=eth0
         ONBOOT=yes
@@ -97,7 +97,7 @@ ms.locfileid: "75747730"
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-13. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+13. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
@@ -119,11 +119,11 @@ ms.locfileid: "75747730"
 
 1. 在 Hyper-V 管理器中，选择虚拟机。
 2. 单击“连接”打开该虚拟机的控制台窗口。
-3. 在包含以下文本的 `/etc/sysconfig/` 目录中创建一个名为 **network** 的文件：
+3. 在包含以下文本的 **目录中创建一个名为**network`/etc/sysconfig/` 的文件：
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. 在包含以下文本的 `/etc/sysconfig/network-scripts/` 目录中创建一个名为 **ifcfg-eth0** 的文件：
+4. 在包含以下文本的 **目录中创建一个名为**ifcfg-eth0`/etc/sysconfig/network-scripts/` 的文件：
    
         DEVICE=eth0
         ONBOOT=yes
@@ -173,7 +173,7 @@ ms.locfileid: "75747730"
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-14. 运行以下命令可取消对虚拟机的设置并且对其进行准备以便在 Azure 上进行设置：
+14. 运行以下命令可取消对虚拟机的预配并且对其进行准备以便在 Azure 上进行预配：
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0

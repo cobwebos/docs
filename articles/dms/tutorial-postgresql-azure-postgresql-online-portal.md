@@ -3,8 +3,8 @@ title: 教程：通过 Azure 门户将 PostgreSQL 迁移到 Azure DB for Postgre
 titleSuffix: Azure Database Migration Service
 description: 了解如何通过 Azure 门户使用 Azure 数据库迁移服务，从本地 PostgreSQL 联机迁移到 Azure Database for PostgreSQL。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 7c496d4c1bdc29064e4ec1d3d0150cf5186ca701
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 67eced7f647d50733dc8d273bdd9cd8a31b7b6dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472773"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255504"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>教程：通过 Azure 门户将 PostgreSQL 迁移到 Azure DB for PostgreSQL online
 

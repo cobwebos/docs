@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979421"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250994"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>在 Azure 逻辑应用中创建和管理 B2B 企业集成的集成帐户
 
-你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-enterprise-integration-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。
+你需先创建一个集成帐户，然后才能使用 [Azure 逻辑应用](../logic-apps/logic-apps-enterprise-integration-overview.md)构建[企业集成和 B2B 解决方案](../logic-apps/logic-apps-overview.md)。该集成帐户是一个单独的 Azure 资源，该资源为你定义并用于逻辑应用工作流的集成项目提供安全、可缩放和可管理的容器。
 
 例如，您可以创建、存储和管理 B2B 项目，例如贸易合作伙伴、协议、地图、架构、证书和批配置。 此外，你必须先将[集成帐户链接](#link-account)到逻辑应用，然后才能使用这些项目并使用逻辑应用 B2B 连接器。 集成帐户和逻辑应用必须位于*同一*位置或区域。
 
@@ -33,7 +33,7 @@ ms.locfileid: "75979421"
 * 将集成帐户移到另一个 Azure 资源组或订阅。
 * 删除集成帐户。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "75979421"
 
    ![提供集成帐户详细信息](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | 属性 | 需要 | 值 | Description |
+   | properties | 必选 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | <integration-account-name> | 集成帐户的名称，只能包含字母、数字、连字符（`-`）、下划线（`_`）、括号（`(`、`)`）和句点（`.`）。 此示例使用 "Fabrikam-集成"。 |
    | **订阅** | 是 | <*Azure-subscription-name*> | Azure 订阅的名称 |
@@ -140,13 +140,13 @@ ms.locfileid: "75979421"
 
 1. 在命令提示符下，输入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将 `skuName` 设置为所需的更高级别。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
    ```
   
    例如，如果具有基本层，则可以将 `skuName` 设置为 `Standard`：
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Standard
    ```
 
@@ -164,13 +164,13 @@ ms.locfileid: "75979421"
 
 1. 在命令提示符下，输入[ **az resource**命令](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)，并将 `skuName` 设置为所需的较低层。
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
    ```
   
    例如，如果您具有标准层，则可以将 `skuName` 设置为 `Basic`：
 
-   ```Azure CLI
+   ```azurecli
    az resource update --resource-group FabrikamIntegration-RG --resource-type Microsoft.Logic/integrationAccounts --name Fabrikam-Integration --subscription XXXXXXXXXXXXXXXXX --set sku.name=Basic
    ```
 

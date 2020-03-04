@@ -4,14 +4,14 @@ description: 了解如何通过 Active Directory 通过 SMB 为 Azure 文件共�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/23/2020
+ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921549"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78256065"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>启用对 Azure 文件共享的 SMB 的 Active Directory 身份验证
 
@@ -62,13 +62,13 @@ ms.locfileid: "77921549"
 
 ## <a name="regional-availability"></a>区域可用性
 
-Azure 文件 AD 身份验证（预览版）在[大多数公共区域](https://azure.microsoft.com/global-infrastructure/regions/)中可用，但以下情况除外：
+Azure 文件 AD 身份验证（预览版）在[大多数公共区域](https://azure.microsoft.com/global-infrastructure/regions/)中都可用。
 
+Azure 文件 AD 身份验证在中不可用：
 - 美国西部
 - 美国西部 2
 - 美国东部
 - 美国东部 2
-- 美国中南部
 - 西欧
 - 北欧
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191157"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246554"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure 自动化中的子 Runbook
 
@@ -39,7 +39,7 @@ ms.locfileid: "78191157"
 
 发布订单重要的时间
 
-Runbook 的发布顺序仅对于 PowerShell 工作流和图形 PowerShell 工作流 Runbook 重要。
+Runbook 的发布顺序仅适用于 PowerShell 工作流和图形 PowerShell 工作流 runbook。
 
 当 runbook 使用内联执行调用图形或 PowerShell 工作流子 runbook 时，它将使用 runbook 的名称。 名称必须以 **.\\** 以指定该脚本位于本地目录中。
 

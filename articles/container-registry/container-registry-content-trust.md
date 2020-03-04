@@ -3,12 +3,12 @@ title: 管理签名的映像
 description: 了解如何为 Azure 容器注册表启用内容信任，并推送并请求已签名的映像。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 0418b13c352dc3b81d34501e7e76be6c54615a83
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ce1e9e5cce0de58703e69df8db14cfbf3ecf04f3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456456"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249923"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure 容器注册表中的内容信任
 
@@ -99,7 +99,9 @@ az role assignment create --scope <registry ID> --role AcrImageSigner --assignee
 REGISTRY=myregistry
 USER=$(az account show --query user.name --output tsv)
 REGISTRY_ID=$(az acr show --name $REGISTRY --query id --output tsv)
+```
 
+```azurecli
 az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee $USER
 ```
 

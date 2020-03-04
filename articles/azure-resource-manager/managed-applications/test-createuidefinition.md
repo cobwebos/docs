@@ -5,18 +5,18 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: fe6fbb2c27dcc18cca114e6d10cd382d376a27e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2d075a58872f9337c7d1faa642a48047e2f9ddf
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651301"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250177"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>测试 Azure 托管应用程序的门户接口
 
 为托管应用程序[创建 createUiDefinition 文件](create-uidefinition-overview.md)后，需测试用户体验。 若要简化测试，请使用在门户中加载文件的沙盒环境。 不需要真正部署该托管应用程序。 沙盒提供当前全屏门户体验中的用户界面。 或者，您可以使用脚本来测试接口。 本文对这两种方法都进行了介绍。 建议使用沙盒预览接口。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **createUiDefinition.json** 文件。 如果没有此文件，请复制[示例文件](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "75651301"
 
 对于 Azure CLI，请使用：
 
-```azurecli
+```bash
 ./sideload-createuidef.sh \
   -l southcentralus \
   -a .\100-Marketplace-Sample
@@ -84,7 +84,7 @@ ms.locfileid: "75651301"
 
 对于 Azure CLI，请使用：
 
-```azurecli
+```bash
 ./sideload-createuidef.sh
 ```
 

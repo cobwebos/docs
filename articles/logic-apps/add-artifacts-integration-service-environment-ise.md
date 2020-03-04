@@ -1,27 +1,29 @@
 ---
-title: 向集成服务环境添加项目
+title: 将资源添加到 integration service 环境
 description: 将逻辑应用、集成帐户、自定义连接器和托管连接器添加到 integration service 环境（ISE）
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191679"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250924"
 ---
-# <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure 逻辑应用中将项目添加到 integration service 环境（ISE）
+# <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>将资源添加到 Azure 逻辑应用中的 integration service 环境（ISE）
 
-创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等项目，以便它们可以访问 Azure 虚拟网络中的资源。 例如，在创建 ISE 后变为可用的托管 ISE 连接器不会自动显示在逻辑应用设计器中。 在可以使用这些 ISE 连接器之前，必须手动[将这些连接器添加并部署到 ISE](#add-ise-connectors-environment) ，使其显示在逻辑应用设计器中。
+创建[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)后，添加逻辑应用、集成帐户和连接器等资源，以便它们可以访问 Azure 虚拟网络中的资源。 例如，在创建 ISE 后变为可用的托管 ISE 连接器不会自动显示在逻辑应用设计器中。 在可以使用这些 ISE 连接器之前，必须手动[将这些连接器添加并部署到 ISE](#add-ise-connectors-environment) ，使其显示在逻辑应用设计器中。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 你创建的用于运行逻辑应用的 ISE。 如果没有 ISE，请[先创建 ise](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+
+* 若要创建、添加或更新部署到 ISE 的资源，需要向 ise 分配 "所有者" 或 "参与者" 角色，或者拥有通过 Azure 订阅或与 ISE 关联的 Azure 资源组继承的权限。 对于没有所有者、参与者或继承权限的人员，可以为其分配集成服务环境参与者角色或集成服务环境开发人员角色。 有关基于角色的访问控制（RBAC）的详细信息，请参阅[什么是 Azure 资源的基于角色的访问控制（rbac）](../role-based-access-control/overview.md)？
 
 <a name="create-logic-apps-environment"></a>
 
@@ -37,7 +39,7 @@ ms.locfileid: "77191679"
 
    ![选择集成服务环境](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-   | 属性 | 必需 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的逻辑应用的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -69,7 +71,7 @@ ms.locfileid: "77191679"
 
    ![选择集成服务环境](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-   | 属性 | 必需 | 说明 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **名称** | 是 | 要创建的集成帐户的名称 |
    | **订阅** | 是 | 要使用的 Azure 订阅的名称 |
@@ -82,7 +84,7 @@ ms.locfileid: "77191679"
 
 1. [以常规方式将逻辑应用链接到集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)。
 
-1. 继续操作，方法是将项目添加到集成帐户，如[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)。
+1. 继续将资源添加到集成帐户，如[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)和[协议](../logic-apps/logic-apps-enterprise-integration-agreements.md)。
 
 1. 若要管理 ISE 中的集成帐户，请参阅[管理 integration service 环境](../logic-apps/ise-manage-integration-service-environment.md)。
 
@@ -96,7 +98,7 @@ ms.locfileid: "77191679"
 
    ![查看托管连接器](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择 **“创建”** 。
+1. 在 "**添加新的托管连接器**" 窗格中，打开 "**查找连接器**" 列表。 选择要使用、但尚未部署在 ISE 中的 ISE 连接器。 选择“创建”。
 
    ![选择要在 ISE 中部署的 ISE 连接器](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 

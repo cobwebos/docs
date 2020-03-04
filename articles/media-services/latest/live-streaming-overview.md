@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 93005b181075ac671af6c8d73a3f2a06ed9eb0d8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977737"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244663"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -44,7 +44,7 @@ ms.locfileid: "74977737"
 动态加密可让你通过 AES-128 或三个主要数字版权管理（DRM）系统（Microsoft PlayReady、Google Widevine 和 Apple FairPlay）中的任何一个来动态加密你的实时或点播内容。 媒体服务还提供了用于向已授权客户端传送 AES 密钥和 DRM（PlayReady、Widevine 和 FairPlay）许可证的服务。 有关详细信息，请参阅[动态加密](content-protection-overview.md)。
 
 > [!NOTE]
-> Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+> Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="dynamic-manifest"></a>动态清单
 
@@ -52,7 +52,7 @@ ms.locfileid: "74977737"
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 实时事件可以是以下两种类型之一：传递和实时编码。 有关媒体服务 v3 中的实时流式处理的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
+[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 可以将实时事件设置为*传递*（本地实时编码器发送多比特率流）或*实时编码*（本地实时编码器发送单比特率流）。 有关媒体服务 v3 中的实时流式处理的详细信息，请参阅[实时事件和实时输出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>直通
 
@@ -117,7 +117,7 @@ Live 脚本是一项功能，可将其用于传递或实时编码的实时事件
 - [使用云 DVR](live-event-cloud-dvr.md)
 - [实时事件类型功能比较](live-event-types-comparison.md)
 - [状态和计费](live-event-states-billing.md)
-- [延迟](live-event-latency.md)
+- [滞后时间](live-event-latency.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>提出问题、提供反馈、获取更新
 

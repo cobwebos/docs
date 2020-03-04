@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7d27256f64e09a4d4ba3dbf1544eaec4715f6d88
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669907"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250757"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -132,11 +132,20 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
         main()
     ```
 
-4. 现在，运行 Python 脚本时，系统仍会提示输入值，但会仅在 shell 中打印值。 创建的 `SpanData` 将发送到 Azure Monitor。 您可以在 `dependencies`下找到已发出的范围数据。
+4. 现在，运行 Python 脚本时，系统仍会提示输入值，但会仅在 shell 中打印值。 创建的 `SpanData` 将发送到 Azure Monitor。 您可以在 `dependencies`下找到已发出的范围数据。 有关传出请求的更多详细信息，请参阅 OpenCensus Python[依赖项](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency)。
+有关传入请求的更多详细信息，请参阅 OpenCensus Python[请求](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request)。
 
-5. 有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+#### <a name="sampling"></a>采样
 
-6. 有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="trace-correlation"></a>跟踪关联
+
+有关跟踪数据中遥测关联的详细信息，请参阅 OpenCensus Python[遥测关联](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="metrics"></a>度量值
 
@@ -240,6 +249,32 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     ```
 
 4. 导出程序会按固定的时间间隔将指标数据发送到 Azure Monitor。 默认值为每15秒。 我们正在跟踪单个度量值，因此，每个间隔将发送此指标数据，其中包含其包含的任何值和时间戳。 可以在 `customMetrics`下查找数据。
+
+#### <a name="standard-metrics"></a>标准指标
+
+默认情况下，度量值导出程序会将一组标准指标发送到 Azure Monitor。 可以通过将 `enable_standard_metrics` 标志设置为度量值导出程序的构造函数中 `False` 来禁用此设置。
+
+    ```python
+    ...
+    exporter = metrics_exporter.new_metrics_exporter(
+      enable_standard_metrics=False,
+      connection_string='InstrumentationKey=<your-instrumentation-key-here>')
+    ...
+    ```
+下面列出了当前发送的标准指标：
+
+- 可用内存（字节）
+- CPU 处理器时间（百分比）
+- 传入请求速率（每秒）
+- 传入请求平均执行时间（毫秒）
+- 传出请求速率（每秒）
+- 进程 CPU 使用率（百分比）
+- 处理专用字节数（字节）
+
+你应该能够在 `performanceCounters`中看到这些指标。 传入请求速率将受 `customMetrics`。
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ### <a name="logs"></a>日志
 
@@ -360,8 +395,17 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
     except Exception:
     logger.exception('Captured an exception.', extra=properties)
     ```
+#### <a name="sampling"></a>采样
 
-7. 有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+有关 OpenCensus 中采样的详细信息，请参阅[OpenCensus 中的采样](sampling.md#configuring-fixed-rate-sampling-for-opencensus-python-applications)。
+
+#### <a name="log-correlation"></a>日志关联
+
+有关如何利用跟踪上下文数据丰富日志的详细信息，请参阅 OpenCensus Python[日志集成](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)。
+
+#### <a name="modify-telemetry"></a>修改遥测
+
+有关如何在将跟踪的遥测发送到 Azure Monitor 之前修改它们的详细信息，请参阅 OpenCensus Python[遥测处理器](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors)。
 
 ## <a name="view-your-data-with-queries"></a>通过查询查看数据
 

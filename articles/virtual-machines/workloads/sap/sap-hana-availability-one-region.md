@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5e4f9853a68b7b4d8b97cc76032cfa88708c097
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ef7161e653ec582708f242b67c643d960d75e27f
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842676"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255462"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)中，并使用 HANA 系统复制来实现可用性。 
@@ -108,7 +108,7 @@ SAP HANA 横向扩展配置的高可用性依赖于 Azure VM 的服务修复，�
 
 ### <a name="sap-hana-system-replication-with-automatic-failover"></a>在使用自动故障转移的情况下执行 SAP HANA 系统复制
 
-在一个 Azure 区域内的标准和最常见可用性配置中，运行 SLES Linux 的两个 Azure VM 上定义了故障转移群集。 SLES Linux 群集基于 [Pacemaker](http://www.linux-ha.org/wiki/Pacemaker) 框架，与 [STONITH](http://www.linux-ha.org/wiki/STONITH) 设备相结合。 
+在一个 Azure 区域内的标准和最常见可用性配置中，运行 SLES Linux 的两个 Azure VM 上定义了故障转移群集。 SLES Linux 群集基于 [Pacemaker](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) 框架，与 [STONITH](/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) 设备相结合。 
 
 从 SAP HANA 的角度看，使用的复制模式是同步的，并且配置了自动故障转移。 在第二个 VM 中，SAP HANA 实例充当热备用节点。 备用节点从主 SAP HANA 实例接收同步的更改记录流。 应用程序在 HANA 主节点上提交事务后，HANA 主节点会一直等待确认提交到应用程序，直到 SAP HANA 辅助节点确认收到提交记录。 SAP HANA 提供两种同步复制模式。 有关这两种同步复制模式的详细信息和差异说明，请参阅 SAP 文章 [SAP HANA 系统复制的复制模式](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/c039a1a5b8824ecfa754b55e0caffc01.html)。
 

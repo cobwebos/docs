@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 870d6f8441bf395ba0c02dccf8f3d1c6434410c6
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78208194"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246205"
 ---
 ## <a name="limitations"></a>限制
 
@@ -99,7 +99,7 @@ ms.locfileid: "78208194"
 
 有关详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
-还可以使用 [Azure 专用主机的保留实例] （。/articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md).
+你还可以使用[Azure 专用主机的保留实例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)节省成本。
  
 ## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬件代
 

@@ -2,13 +2,13 @@
 title: 将资源移到新的订阅或资源组
 description: 使用 Azure 资源管理器将资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: c91081ee25a3b98fa25b8b9b9047da186b22181b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891359"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250172"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>将资源移到新的资源组或订阅
 
@@ -24,7 +24,7 @@ ms.locfileid: "75891359"
 
 1. 要移动的资源必须支持移动操作。 有关支持移动的资源的列表，请参阅[移动操作对资源的支持](move-support-resources.md)。
 
-1. 某些服务在移动资源时有特定的限制或要求。 如果你移动了以下任何服务，请在移动之前查看此指南。
+1. 某些服务在移动资源时有特定的限制或要求。 如果移动的是以下任何服务，请在移动之前查看指南。
 
    * [应用服务移动指南](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services 移动指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)

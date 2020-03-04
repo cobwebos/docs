@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 51263af978ed599d7a7b8a2159c0c9c3c25b33a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558827"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251307"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>适用于文本分析认知服务的外部和社区内容
 
@@ -33,7 +33,11 @@ ms.locfileid: "68558827"
 
 + [Dynamics 365 CRM Online 的情绪分析（MSDN 博客）](https://blogs.msdn.microsoft.com/geoffreyinnis/2016/07/11/sentiment-analysis-in-usd-with-cognitive-services-text-analytics/) 
 
-+ PowerBI 博客：从 Facebook 消息提取关键短语：[第 1 部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第 2 部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)
++ Power BI 博客：从 Facebook 消息中提取关键短语：[第1部分](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88483)和[第 2](https://community.powerbi.com/t5/Community-Blog/Text-Analytics-in-Power-BI-Extraction-of-key-phrases-from/ba-p/88487)部分
+
++ [使用 MS Flow 识别 Yammer 组中的注释情绪（Microsoft 技术社区）](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure)
+
+
 
 ## <a name="videos"></a>视频
 
@@ -47,7 +51,7 @@ ms.locfileid: "68558827"
 
 你是否在寻找我们未涵盖的相关功能或用例信息？ 请考虑在我们的 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 发起请求或投票。 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
  [StackOverflow：Azure 文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：Azure 认知服务](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

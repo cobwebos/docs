@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e3937241724aab63f770ad56cbf96d2e1b45f00e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546038"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251359"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>媒体服务中的实时事件和实时输出
 
@@ -34,7 +34,7 @@ Azure 媒体服务可让你向 Azure 云中的客户提供实时事件。 若要
 
 ## <a name="live-event-types"></a>实时事件类型
 
-[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)可以是以下两种类型之一：传递或实时编码。 使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)在创建过程中设置这些类型：
+可以将[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)设置为*传递*（本地实时编码器发送多比特率流）或*实时编码*（本地实时编码器发送单比特率流）。 使用[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)在创建过程中设置这些类型：
 
 * **LiveEventEncodingType**：本地实时编码器发送多比特率流。 引入流通过实时事件而不进行任何进一步处理。 也称为直通模式。
 * **LiveEventEncodingType**：本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 如果贡献源的分辨率为720p 或更高，则**Default720p**预设将编码一组6分辨率/比特率对。
@@ -78,7 +78,7 @@ Azure 媒体服务可让你向 Azure 云中的客户提供实时事件。 若要
 
     有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
 
-* 对引入和预览的 IP 限制。 可定义允许向该直播活动引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有四个数字的 IpV4 地址或 CIDR 地址范围。
+* 对引入和预览的 IP 限制。 可定义允许向该直播活动引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有四个数字或 CIDR 地址范围的 IpV4 地址。
 
     如果要在自己的防火墙上启用特定的 Ip，或者想要将实时事件的输入限制为 Azure IP 地址，请从[Azure 数据中心 IP 地址范围](https://www.microsoft.com/download/details.aspx?id=41653)下载 JSON 文件。 有关此文件的详细信息，请选择页面上的 "**详细信息**" 部分。
     

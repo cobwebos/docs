@@ -3,12 +3,12 @@ title: 使用 PowerShell 自动化 Azure Application Insights | Microsoft Docs
 description: 使用 Azure 资源管理器模板自动创建和管理 PowerShell 中的资源、警报和可用性测试。
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669788"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250783"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>使用 PowerShell 管理 Application Insights 资源
 
@@ -128,7 +128,7 @@ New-AzApplicationInsights -ResourceGroupName <resource group> -Name <resource na
             },
             "dailyQuotaResetTime": {
                 "type": "int",
-                "defaultValue": 24,
+                "defaultValue": 0,
                 "metadata": {
                     "description": "Enter daily quota reset hour in UTC (0 to 23). Values outside the range will get a random reset hour."
                 }
@@ -320,16 +320,30 @@ Set-ApplicationInsightsRetention `
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> | Format-List
 ```
 
-若要设置每日上限属性，请使用相同的 cmdlet。 例如，要将 cap 设置为 300 GB/天， 
+若要设置每日上限属性，请使用相同的 cmdlet。 例如，要将 cap 设置为 300 GB/天，
 
 ```PS
 Set-AzApplicationInsightsDailyCap -ResourceGroupName <resource group> -Name <resource name> -DailyCapGB 300
 ```
 
+还可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置每日上限参数。  若要获取当前值，请使用：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+## <a name="set-the-daily-cap-reset-time"></a>设置每日上限重置时间
+
+若要设置每日上限重置时间，可以使用[ARMClient](https://github.com/projectkudu/ARMClient)。 下面是使用 `ARMClient`将重置时间设置为新小时的示例（在此示例中为 12:00 UTC）：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview "{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'ResetTime':12}}"
+```
+
 <a id="price"></a>
 ## <a name="set-the-pricing-plan"></a>设置定价计划 
 
-若要获取当前定价计划，请使用[AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet： 
+若要获取当前定价计划，请使用[AzApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/az.applicationinsights/Set-AzApplicationInsightsPricingPlan) cmdlet：
 
 ```PS
 Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <resource name> | Format-List
@@ -350,10 +364,27 @@ Set-AzApplicationInsightsPricingPlan -ResourceGroupName <resource group> -Name <
                -appName myApp
 ```
 
+`priceCode` 定义为：
+
 |价格代码|计划|
 |---|---|
 |1|每 GB （以前称为基本计划）|
 |2|每节点（以前称为企业计划）|
+
+最后，你可以使用[ARMClient](https://github.com/projectkudu/ARMClient)来获取和设置定价计划和每日上限参数。  若要获取当前值，请使用：
+
+```PS
+armclient GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+```
+
+您可以使用设置所有这些参数：
+
+```PS
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/microsoft.insights/components/MyResourceName/CurrentBillingFeatures?api-version=2018-05-01-preview
+"{'CurrentBillingFeatures':['Basic'],'DataVolumeCap':{'Cap':200,'ResetTime':12,'StopSendNotificationWhenHitCap':true,'WarningThreshold':90,'StopSendNotificationWhenHitThreshold':true}}"
+```
+
+这会将每日上限设置为 200 GB/天，将每日上限重置时间配置为 12:00 UTC，当达到上限并达到警告级别时发送电子邮件，并将警告阈值设置为达到 cap 的90%。  
 
 ## <a name="add-a-metric-alert"></a>添加指标警报
 

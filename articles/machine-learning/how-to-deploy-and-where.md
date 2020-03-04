@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3353451057037e5f3fd94347a007a9d3b2c0e15
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 388f1cf0231d0a7eae7b059656186b067f537d2e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193078"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250966"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>部署模型与 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -159,12 +159,6 @@ ms.locfileid: "78193078"
 
 <a name="target"></a>
 
-## <a name="choose-a-compute-target"></a>选择计算目标
-
-你可以使用以下计算目标或计算资源来托管你的 web 服务部署：
-
-[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
-
 ## <a name="single-versus-multi-model-endpoints"></a>单个和多模型终结点
 Azure ML 支持在单个终结点后部署单个或多个模型。
 
@@ -172,9 +166,9 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
 
 有关演示如何使用单个容器化终结点后面的多个模型的 E2E 示例，请参阅[此示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model)
 
-## <a name="prepare-deployment-artifacts"></a>准备部署项目
+## <a name="prepare-to-deploy"></a>准备部署
 
-若要部署模型，需要以下各项：
+若要将模型部署为服务，需要以下组件：
 
 * **& 源代码依赖项的条目脚本**。 此脚本接受请求，使用模型为请求评分，并返回结果。
 
@@ -187,11 +181,9 @@ Azure ML 支持在单个终结点后部署单个或多个模型。
     >
     >   可能适用于你的方案的一种替代方法是[批处理预测](how-to-use-parallel-run-step.md)，它在评分期间提供对数据存储区的访问。
 
-* **推理环境**。 运行模型所需的已安装包依赖项的基本映像。
+* **推理配置**。 推理配置指定以服务形式运行模型所需的环境配置、入口脚本和其他组件。
 
-* 托管已部署模型的计算目标的**部署配置**。 此配置描述运行模型所需的内存和 CPU 需求等因素。
-
-这些项封装为*推理配置*和*部署配置*。 推理配置引用入口脚本和其他依赖项。 使用 SDK 执行部署时，以编程方式定义这些配置。 使用 CLI 时，可在 JSON 文件中定义它们。
+获得必要的组件后，可以分析将创建的服务，该服务将作为部署模型的结果来了解其 CPU 和内存要求。
 
 ### <a id="script"></a>1. 定义条目脚本和依赖项
 
@@ -267,33 +259,7 @@ model_path = Model.get_model_path('sklearn_mnist')
 * `pyspark`
 * 标准 Python 对象
 
-若要使用架构生成，请将 `inference-schema` 包包含在 Conda 环境文件中。 有关此包的详细信息，请参阅[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。
-
-##### <a name="example-dependencies-file"></a>示例依赖关系文件
-
-以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须使用版本 > = 1.0.45 作为 pip 依赖项指示 azureml 默认值，因为它包含将模型托管为 web 服务所需的功能。
-
-```YAML
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - scikit-learn=0.20.0
-  - pip:
-      # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
-```
-
-> [!IMPORTANT]
-> 如果依赖关系通过 Conda 和 pip （来自 PyPi）提供，Microsoft 建议使用 Conda 版本，因为 Conda 包通常附带预生成的二进制文件，使安装更可靠。
->
-> 有关详细信息，请参阅[了解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
->
-> 若要通过 Conda 检查依赖关系是否可用，请使用 `conda search <package-name>` 命令，或使用[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)的包索引。
-
-如果要使用自动架构生成，则入口脚本必须导入 `inference-schema` 包。
-
-定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，表示 web 服务的请求和响应格式。 在 `run()` 函数的 input 和 output 函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成。
+若要使用架构生成，请将 `inference-schema` 包包含在依赖项文件中。 有关此包的详细信息，请参阅[https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)。 定义 `input_sample` 和 `output_sample` 变量中的输入和输出示例格式，表示 web 服务的请求和响应格式。 在 `run()` 函数的 input 和 output 函数修饰器中使用这些示例。 以下 scikit-learn 示例使用架构生成。
 
 ##### <a name="example-entry-script"></a>示例条目脚本
 
@@ -485,24 +451,52 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inference-environment"></a>2. 定义推理环境
+### <a name="2-define-your-inference-configuration"></a>2. 定义推理配置
 
-推理配置介绍了如何配置模型以便进行预测。 此配置不是你的输入脚本的一部分。 它引用您的条目脚本，并用于查找部署所需的所有资源。 稍后在部署模型时使用。
+推理配置描述了如何设置包含模型的 web 服务。 它不是你的输入脚本的一部分。 它引用您的条目脚本，并用于查找部署所需的所有资源。 稍后在部署模型时使用。
 
-推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 下面的示例演示如何从工作区加载环境，并将其用于推理配置：
+推理配置使用 Azure 机器学习环境来定义部署所需的软件依赖项。 利用环境，你可以创建、管理和重复使用培训和部署所需的软件依赖项。 你可以从自定义依赖项文件创建环境，或使用特选 Azure 机器学习环境之一。 以下 YAML 是用于推理的 Conda 依赖项文件的一个示例。 请注意，必须使用版本 > = 1.0.45 作为 pip 依赖项指示 azureml 默认值，因为它包含将模型托管为 web 服务所需的功能。 如果要使用自动生成架构，则入口脚本还必须导入 `inference-schema` 包。
+
+```YAML
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - scikit-learn=0.20.0
+  - pip:
+      # You must list azureml-defaults as a pip dependency
+    - azureml-defaults>=1.0.45
+    - inference-schema[numpy-support]
+```
+
+> [!IMPORTANT]
+> 如果依赖关系通过 Conda 和 pip （来自 PyPi）提供，Microsoft 建议使用 Conda 版本，因为 Conda 包通常附带预生成的二进制文件，使安装更可靠。
+>
+> 有关详细信息，请参阅[了解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
+>
+> 若要通过 Conda 检查依赖关系是否可用，请使用 `conda search <package-name>` 命令，或使用[https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo)和[https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)的包索引。
+
+您可以使用依赖项文件创建环境对象并将其保存到工作区以供将来使用：
+
+```python
+from azureml.core.environment import Environment
+
+
+myenv = Environment.from_conda_specification(name = 'myenv',
+                                             file_path = 'path-to-conda-specification-file'
+myenv.register(workspace=ws)
+```
+
+下面的示例演示如何从工作区加载环境，并将其用于推理配置：
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.model import InferenceConfig
 
-myenv = Environment.get(workspace=ws, name="myenv", version="1")
-inference_config = InferenceConfig(entry_script="x/y/score.py",
+
+myenv = Environment.get(workspace=ws, name='myenv', version='1')
+inference_config = InferenceConfig(entry_script='path-to-score.py',
                                    environment=myenv)
 ```
-
-有关环境的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
-
-你还可以直接指定依赖关系，而无需使用环境。 下面的示例演示如何创建从 Conda 文件加载软件依赖项的推理配置：
 
 有关环境的详细信息，请参阅[创建和管理用于定型和部署的环境](how-to-use-environments.md)。
 
@@ -510,7 +504,7 @@ inference_config = InferenceConfig(entry_script="x/y/score.py",
 
 有关将自定义 Docker 映像与推理配置配合使用的信息，请参阅[如何使用自定义 docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig 的 CLI 示例
+#### <a name="cli-example-of-inferenceconfig"></a>InferenceConfig 的 CLI 示例
 
 [!INCLUDE [inference config](../../includes/machine-learning-service-inference-config.md)]
 
@@ -528,7 +522,93 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 有关将自定义 Docker 映像与推理配置配合使用的信息，请参阅[如何使用自定义 docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
-### <a name="3-define-your-deployment-configuration"></a>3. 定义部署配置
+### <a id="profilemodel"></a>3. 分析模型，确定资源利用率
+
+注册模型并准备好部署所需的其他组件后，可以确定部署的服务将需要的 CPU 和内存。 分析测试运行模型并返回诸如 CPU 使用情况、内存使用情况和响应延迟等信息的服务。 它还提供基于资源使用情况的 CPU 和内存的建议。
+
+为了分析你的模型，你将需要：
+* 已注册的模型。
+* 基于输入脚本和推理环境定义的推理配置。
+* 单列表格数据集，其中每行都包含一个表示示例请求数据的字符串。
+
+> [!IMPORTANT]
+> 此时，我们仅支持分析预期其请求数据为字符串的服务，例如：字符串序列化的 json、文本、字符串序列化图像等。数据集的每一行的内容（字符串）都将放入 HTTP 请求的正文中，并将其发送到该服务，以对模型进行评分。
+
+下面是一个示例，说明如何构造用于分析服务的输入数据集，该服务要求其传入的请求数据包含序列化的 json。 在此示例中，我们创建了一个基于数据集的同一请求数据内容的100实例。 在实际方案中，我们建议你使用包含各种输入的更大数据集，尤其是在模型资源使用/行为是依赖于输入的情况下。
+
+```python
+import json
+from azureml.core import Datastore
+from azureml.core.dataset import Dataset
+from azureml.data import dataset_type_definitions
+
+input_json = {'data': [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                       [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
+# create a string that can be utf-8 encoded and
+# put in the body of the request
+serialized_input_json = json.dumps(input_json)
+dataset_content = []
+for i in range(100):
+    dataset_content.append(serialized_input_json)
+dataset_content = '\n'.join(dataset_content)
+file_name = 'sample_request_data.txt'
+f = open(file_name, 'w')
+f.write(dataset_content)
+f.close()
+
+# upload the txt file created above to the Datastore and create a dataset from it
+data_store = Datastore.get_default(ws)
+data_store.upload_files(['./' + file_name], target_path='sample_request_data')
+datastore_path = [(data_store, 'sample_request_data' +'/' + file_name)]
+sample_request_data = Dataset.Tabular.from_delimited_files(
+    datastore_path, separator='\n',
+    infer_column_types=True,
+    header=dataset_type_definitions.PromoteHeadersBehavior.NO_HEADERS)
+sample_request_data = sample_request_data.register(workspace=ws,
+                                                   name='sample_request_data',
+                                                   create_new_version=True)
+```
+
+拥有包含示例请求数据的数据集后，创建推理配置。 推理配置基于 score.py 和环境定义。 下面的示例演示如何创建推理配置和运行分析：
+
+```python
+from azureml.core.model import InferenceConfig, Model
+from azureml.core.dataset import Dataset
+
+
+model = Model(ws, id=model_id)
+inference_config = InferenceConfig(entry_script='path-to-score.py',
+                                   environment=myenv)
+input_dataset = Dataset.get_by_name(workspace=ws, name='sample_request_data')
+profile = Model.profile(ws,
+            'unique_name',
+            [model],
+            inference_config,
+            input_dataset=input_dataset)
+
+profile.wait_for_completion(True)
+
+# see the result
+details = profile.get_details()
+```
+
+以下命令演示如何使用 CLI 分析模型：
+
+```azurecli-interactive
+az ml model profile -g <resource-group-name> -w <workspace-name> --inference-config-file <path-to-inf-config.json> -m <model-id> --idi <input-dataset-id> -n <unique-name>
+```
+
+## <a name="deploy-to-target"></a>部署到目标
+
+部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的情况略有不同，因为必须提供对 AKS 群集的引用。
+
+### <a name="choose-a-compute-target"></a>选择计算目标
+
+你可以使用以下计算目标或计算资源来托管你的 web 服务部署：
+
+[!INCLUDE [aml-compute-target-deploy](../../includes/aml-compute-target-deploy.md)]
+
+### <a name="define-your-deployment-configuration"></a>定义部署配置
 
 在部署您的模型之前，您必须定义部署配置。 *部署配置特定于将托管 web 服务的计算目标。* 例如，当你在本地部署模型时，必须指定服务接受请求的端口。 部署配置不是你的输入脚本的一部分。 它用于定义将托管模型和条目脚本的计算目标的特征。
 
@@ -547,10 +627,6 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-## <a name="deploy-to-target"></a>部署到目标
-
-部署使用推理配置部署配置来部署模型。 不管计算目标如何，部署过程都是类似的。 部署到 AKS 的情况略有不同，因为必须提供对 AKS 群集的引用。
 
 ### <a name="securing-deployments-with-ssl"></a>用 SSL 保护部署
 
@@ -1076,7 +1152,7 @@ docker kill mycontainer
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署故障排除](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
-* [使用部署为 web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
+* [使用部署为 Web 服务的 Azure 机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 

@@ -4,12 +4,12 @@ description: 了解如何为应用程序配置预建 node.js 容器。 本文介
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920019"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255858"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux node.js 应用
 
@@ -271,6 +271,8 @@ if (req.secure) {
     - 某些 web 框架可以在生产模式下以不同的方式部署静态文件。
     - 在生产模式下运行时，某些 web 框架可能使用自定义的启动脚本。
 - 在开发模式下，在应用服务中运行应用。 例如[，在中](https://meanjs.org/)，可以通过[设置 "`NODE_ENV` 应用" 设置](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)，将应用程序设置为运行时中的开发模式。
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

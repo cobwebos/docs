@@ -3,8 +3,8 @@ title: 教程：将 RDS SQL Server 联机迁移到 SQL 数据库
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 RDS SQL Server 到 Azure SQL 数据库单一数据库或托管实例的联机迁移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 52a6ee282e12f0ece5f16c1fa67c38f07f9d86e7
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: db561761acbd5ff991f88cfd18cec8d4625336f2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751292"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255525"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)或 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
@@ -42,7 +42,7 @@ ms.locfileid: "75751292"
 
 本文介绍如何从 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 要完成本教程，需要：
 
 * 创建 [RDS SQL Server 数据库](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)。
@@ -247,7 +247,7 @@ ms.locfileid: "75751292"
 
 4. 设置以下“高级联机迁移设置”后，选择“保存”。
 
-    | 设置 | Description |
+    | 设置 | 说明 |
     | ------------- | ------------- |
     | **可并行加载的最大表数目** | 指定 DMS 在迁移期间并行执行的表数。 默认值为 5，但可以根据任何 POC 迁移方案的具体迁移需求，将其设置为最佳值。 |
     | **截断源表时** | 指定 DMS 在迁移期间是否截断目标表。 如果在迁移过程中截断了一个或多个表，此设置可能有所帮助。 |

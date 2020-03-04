@@ -1,9 +1,9 @@
 ---
-title: 在 Azure 中创建和上载 Linux VHD
+title: 在 Azure 中创建和上传 Linux VHD
 description: 了解如何创建和上传包含 Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: virtual-machines-linux
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7f2422df3a2449999e086e74e9446d125ffecbda
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155547"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251664"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>有关未认可分发版的信息
 

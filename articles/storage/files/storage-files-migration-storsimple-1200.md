@@ -4,25 +4,19 @@ description: 了解如何将 StorSimple 1200 系列虚拟设备迁移到 Azure �
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 2/14/2020
+ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 815fda861748f1011eab22ef75fa7e933ca64c55
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78209475"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252662"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 到 Azure 文件同步的迁移
 
-StorSimple 1200 系列是在本地数据中心运行的虚拟设备。
-随着 31 2022 年12月发布的 StorSimple 产品系列的服务使用寿命，此虚拟设备连接到的云服务将停止工作。
-
-需要将充足的时间从任何 StorSimple 设备迁移到备用设备。
-Azure 文件同步是自然的后续技术，具有比 StorSimple 产品更多功能和更大的灵活性。
-
-本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+StorSimple 1200 系列是在本地数据中心运行的虚拟设备。 可以将此设备中的数据迁移到 Azure 文件同步的环境。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
 

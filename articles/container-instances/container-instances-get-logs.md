@@ -4,12 +4,12 @@ description: 了解如何在 Azure 容器实例中检索容器日志和事件以
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: fe30ab875aa6cd7f465ffe69672a771e18134e1c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 0991b9cb1f99606910dbdf2c87b111f67da6da7b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664739"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249995"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>在 Azure 容器实例中检索容器日志和事件
 
@@ -21,8 +21,11 @@ ms.locfileid: "75664739"
 
 下面是在使用命令行重写提供无效 URL 之后，在[容器实例中设置命令行](container-instances-start-command.md#azure-cli-example)中基于示例任务的容器的日志输出：
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container logs --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Traceback (most recent call last):
   File "wordcount.py", line 11, in <module>
     urllib.request.urlretrieve (sys.argv[1], "foo.txt")
@@ -49,8 +52,11 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 例如，以下是在提供要处理的大型文本文件的有效 URL 之后，在[容器实例中设置命令行](container-instances-start-command.md#azure-cli-example)的基于任务的容器的输出：
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```azurecli
+az container attach --resource-group myResourceGroup --name mycontainer
+```
+
+```output
 Container 'mycontainer' is in state 'Unknown'...
 Container 'mycontainer' is in state 'Waiting'...
 Container 'mycontainer' is in state 'Running'...

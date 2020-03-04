@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: bae957eba627be7fa3b968585a03d28aa5b0af56
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591602"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255005"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 联接实现
 
@@ -79,6 +79,8 @@ ms.locfileid: "77591602"
 - 运行域控制器（DC）角色的 Windows Server 不支持混合 Azure AD 联接。
 
 - 使用凭据漫游或用户配置文件漫游或强制配置文件时，在 Windows 下层设备上不支持混合 Azure AD 联接。
+
+- 服务器核心操作系统不支持任何类型的设备注册。
 
 ### <a name="os-imaging-considerations"></a>OS 映像注意事项
 - 如果你依赖于系统准备工具（Sysprep），并且你使用的是**Windows 之前的 10 1809**映像进行安装，请确保映像不是从已注册到 Azure AD 混合 Azure AD 加入的设备。

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 80f8d66795971c6a5c84be7088387e63d7acd7a7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185542"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248685"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD 应用程序代理配置自定义域
 
@@ -87,7 +87,7 @@ ms.locfileid: "77185542"
    
 4. 在 "**外部 Url** " 字段中，下拉列表并选择要使用的自定义域。
    
-5. 选择“添加”。
+5. 选择 **添加** 。
    
    ![选择自定义域](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -97,7 +97,7 @@ ms.locfileid: "77185542"
    
 7. 在 " **SSL 证书**" 页上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择 "**上传证书**"。 有关证书的详细信息，请参阅 "[自定义域的证书](#certificates-for-custom-domains)" 部分。
    
-   ![上载证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
+   ![上传证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > 自定义域只需上载一次证书。 之后，在将自定义域用于其他应用时，将自动应用上传的证书。
@@ -130,9 +130,9 @@ ms.locfileid: "77185542"
 
 只要通配符与外部 URL 匹配，就可以使用通配符证书。 必须为[通配符应用程序](application-proxy-wildcard.md)使用通配符证书。 如果要使用证书还访问子域，则必须在同一证书中将子域通配符作为使用者备用名称添加。 例如，除非你 *\*添加 apps.adventure-works.com*作为使用者备用名称，否则 *\** 的证书将不能 *\*用于 apps.adventure-works.com。* 
 
-如果证书链安装在客户端设备上，则可以使用自己的公钥基础结构（PKI）颁发的证书。 Intune 可以将这些证书部署到托管设备。 对于非托管设备，必须手动安装这些证书。
+如果证书链安装在客户端设备上，则可以使用自己的公钥基础结构（PKI）颁发的证书。 Intune 可以将这些证书部署到托管设备。 对于非托管设备，必须手动安装这些证书。 
 
-最好不要使用专用根 CA。 还需要将专用根 CA 推送到客户端计算机，这会带来许多挑战。 
+不建议使用专用根 CA，因为还需要将专用根 CA 推送到客户端计算机，这可能会带来许多挑战。
 
 ### <a name="certificate-management"></a>证书管理
 

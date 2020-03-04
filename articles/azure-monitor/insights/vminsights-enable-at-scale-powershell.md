@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 236d5a28b167e16c9614119a59fd8a99e012e9dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656528"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251437"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor （预览版）
 
@@ -99,7 +99,7 @@ ms.locfileid: "77656528"
 
         配置更改可能需要几分钟才能完成。 完成后，将显示一条类似于以下内容的消息，其中包括结果：
 
-        ```powershell
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -113,7 +113,7 @@ ms.locfileid: "77656528"
 
         配置更改可能需要几分钟才能完成。 完成后，将显示一条类似于以下内容的消息，其中包括结果：
 
-        ```azurecli
+        ```output
         provisioningState       : Succeeded
         ```
 
@@ -154,7 +154,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 ```
 配置更改可能需要几分钟才能完成。 完成后，将显示一条类似于以下内容的消息，其中包括结果：
 
-```powershell
+```output
 provisioningState       : Succeeded
 ```
 
@@ -170,7 +170,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 
 输出如下所示：
 
-```azurecli
+```output
 provisioningState       : Succeeded
 ```
 

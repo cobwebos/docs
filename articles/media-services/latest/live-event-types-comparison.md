@@ -1,6 +1,6 @@
 ---
 title: Azure 媒体服务 LiveEvent 类型 | Microsoft Docs
-description: 在 Azure 媒体服务中，实时事件可以是以下两种类型之一：实时编码和传递。 本文显示比较实时事件类型的详细表。
+description: 在 Azure 媒体服务中，可以将实时事件设置为*传递*或*实时编码*。 本文显示比较实时事件类型的详细表。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a28d4d96f643c12eeb6aa542db2c6af06f4fd954
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543046"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244644"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
-在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)可以是下述两种类型之一：实时编码和直通。 
+在 Azure 媒体服务中，可以将[实时事件](https://docs.microsoft.com/rest/api/media/liveevents)设置为*传递*（本地实时编码器发送多比特率流）或*实时编码*（本地实时编码器发送单比特率流）。 
+
+本文对实时事件类型的功能进行了比较。
 
 ## <a name="types-comparison"></a>类型比较 
 
@@ -32,13 +34,13 @@ ms.locfileid: "76543046"
 * **LiveEventEncodingType** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 如果贡献源的分辨率为720p 或更高，则**Default720p**预设将编码一组6分辨率/比特率对（详细信息将在本文稍后介绍）。
 * **LiveEventEncodingType. Premium1080p** -本地实时编码器将单比特率流发送到实时事件，媒体服务将创建多比特率流。 Default1080p 预设指定分辨率/比特率对的输出集（详细信息将在本文稍后介绍）。 
 
-| 功能 | 直通直播活动 | 标准或 Premium1080p 实时事件 |
+| Feature | 直通直播活动 | 标准或 Premium1080p 实时事件 |
 | --- | --- | --- |
 | 单比特率输入在云中被编码为多比特率 |否 |是 |
 | 贡献源的最大视频分辨率 |4K（4096x2160，60 帧/秒） |1080p（1920x1088，30 帧/秒）|
 | 贡献源中建议的最大层数|最大为 12|1 个音频|
 | 输出中的最大层数| 与输入相同|最多6个（请参阅下面的系统预设）|
-| 贡献源的最大聚合带宽|60 Mbps|N/A|
+| 贡献源的最大聚合带宽|60 Mbps|空值|
 | 贡献中单个层的最大比特率 |20 Mbps|20 Mbps|
 | 支持多语言音轨|是|否|
 | 支持的输入视频编解码器 |H.264/AVC 和 H.265/HEVC|H.264/AVC|
@@ -72,7 +74,7 @@ ms.locfileid: "76543046"
 
 如果贡献源的分辨率为720p 或更高，则**Default720p**预设会将源编码到以下6层中。 在下表中，比特率为 kbps，MaxFPS 表示允许的最大帧速率（在帧/秒）中，配置文件表示使用的 H-p 配置文件。
 
-| Bitrate | 宽度 | 高度 | MaxFPS | 个人资料 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |高 |
 | 2200 |960 |540 |30 |高 |
@@ -89,7 +91,7 @@ ms.locfileid: "76543046"
 
 如果贡献源的分辨率为1080p，则**Default1080p**预设会将源编码到以下6层中。
 
-| Bitrate | 宽度 | 高度 | MaxFPS | 个人资料 |
+| Bitrate | 宽度 | 高度 | MaxFPS | 配置文件 |
 | --- | --- | --- | --- | --- |
 | 5500 |1920 |1080 |30 |高 |
 | 3000 |1280 |720 |30 |高 |

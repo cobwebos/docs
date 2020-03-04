@@ -3,12 +3,12 @@ title: 部署具有 Azure CLI 和模板的资源
 description: 使用 Azure 资源管理器和 Azure CLI 将资源部署到 Azure。 资源在 Resource Manager 模板中定义。
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 242b9f2a4bc39f8aa083d9c89d3dd7ed850b3489
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 64f60a6e15a0c51e5ee506340c064804f7588693
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154289"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250660"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -63,7 +63,7 @@ az group deployment create \
 
 部署可能需要几分钟才能完成。 完成后，会看到一条包含结果的消息：
 
-```azurecli
+```output
 "provisioningState": "Succeeded",
 ```
 
@@ -95,7 +95,7 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 若要传递参数值，可以使用内联参数或参数文件。
 
@@ -183,7 +183,7 @@ az group deployment validate \
 
 如果未检测到错误，则该命令将返回有关测试部署的信息。 需要特别注意的是，**error** 值为 null。
 
-```azurecli
+```output
 {
   "error": null,
   "properties": {
@@ -192,7 +192,7 @@ az group deployment validate \
 
 如果检测到错误，则该命令将返回一条错误消息。 例如，如果为存储帐户 SKU 传递不正确的值，将返回以下错误：
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",
@@ -208,7 +208,7 @@ az group deployment validate \
 
 如果模板有语法错误，该命令将返回一个错误，指示它无法分析该模板。 该消息会指出分析错误的行号和位置。
 
-```azurecli
+```output
 {
   "error": {
     "code": "InvalidTemplate",

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7a0d94522e478a69f70167183e4c0d60d0d85060
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226537"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255992"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -25,7 +25,7 @@ Azure 自动化中的所有 runbook 都是 Windows PowerShell 工作流。 图�
 
 ## <a name="overview-of-graphical-editor"></a>图形编辑器概述
 
-通过创建或编辑图形 runbook，可以在 Azure 门户中打开图形编辑器。
+通过创建或编辑图形 Runbook，可以在 Azure 门户中打开图形编辑器。
 
 ![图形工作区](media/automation-graphical-authoring-intro/runbook-graphical-editor.png)
 
@@ -52,7 +52,7 @@ Azure 自动化中的所有 runbook 都是 Windows PowerShell 工作流。 图�
 
 ### <a name="test-control"></a>测试控件
 
-首次启动图形编辑器时，不显示测试控件。 它在你以交互方式测试图形 runbook 时打开。
+首次启动图形编辑器时，不显示测试控件。 它会在你以交互方式测试图形 Runbook 时打开。
 
 ## <a name="activities"></a>活动
 
@@ -146,7 +146,7 @@ $DateTimeStart
 
 ## <a name="links-and-workflow"></a>链接和工作流
 
-图形 runbook 中的链接用于连接两个活动。 它作为箭头显示在画布上，从源活动指向目标活动。 活动按箭头的方向运行，源活动完成后才会开始目标活动。
+图形 Runbook 中的链接用于连接两个活动。 它作为箭头显示在画布上，从源活动指向目标活动。 活动按箭头的方向运行，源活动完成后才会开始目标活动。
 
 ### <a name="link-creation"></a>链接创建
 
@@ -163,7 +163,7 @@ $DateTimeStart
 
 ### <a name="start-of-activity"></a>活动的开始
 
-图形 runbook 以任何没有传入链接的活动开头。 通常只有一个活动充当 runbook 的启动活动。 如果多个活动没有传入链接，则 runbook 将开始并行运行它们。 然后，它会在每个活动完成时，按链接来运行其他活动。
+图形 Runbook 会通过任何没有传入链接的活动启动。 通常只有一个活动充当 runbook 的启动活动。 如果多个活动没有传入链接，则 runbook 将开始并行运行它们。 然后，它会在每个活动完成时，按链接来运行其他活动。
 
 ### <a name="link-conditions"></a>链接条件
 
@@ -241,7 +241,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ### <a name="checkpoints"></a>检查点
 
-可以通过在任何活动上选择[检查点 Runbook](automation-powershell-workflow.md#checkpoints)，在图形 PowerShell 工作流 Runbook 中设置**检查点**。 这会导致在运行活动之后设置检查点。
+可以通过在任何活动上选择**检查点 runbook** ，在图形 PowerShell 工作流 runbook 中设置[检查点](automation-powershell-workflow.md#checkpoints)。 这会导致在运行活动之后设置检查点。
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
@@ -249,7 +249,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ## <a name="runbook-input-and-output"></a>Runbook 输入和输出
 
-### < 名称-"runbook-input" ></a>Runbook 输入
+### Runbook 输入<a name="runbook-input"></a>
 
 Runbook 需要从通过 Azure 门户启动 runbook 的用户或从另一个 runbook （如果当前的 runbook 用作子 runbook）进行输入。 例如，对于创建虚拟机的 runbook，用户可能需要在每次启动 runbook 时提供此类信息作为虚拟机的名称和其他属性。
 
@@ -407,15 +407,15 @@ Runbook 必须在其开始和每个检查点之后进行身份验证。 因此�
 
 ![活动输出](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
-## <a name="exporting-and-importing-a-graphical-runbook"></a>导出和导入图形 runbook
+## <a name="exporting-and-importing-a-graphical-runbook"></a>导出和导入图形 Runbook
 
-您只能导出图形 runbook 的已发布版本。 如果尚未发布 runbook，则将禁用 "**导出**" 按钮。 单击 "**导出**" 按钮时，runbook 将下载到本地计算机。 文件的名称与 runbook 的名称匹配，扩展名为 **.graphrunbook** 。
+可以只导出图形 Runbook 的已发布版本。 如果尚未发布 runbook，则将禁用 "**导出**" 按钮。 单击 "**导出**" 按钮时，runbook 将下载到本地计算机。 文件的名称与 runbook 的名称匹配，扩展名为 **.graphrunbook** 。
 
-可以在添加 Runbook 时选择“导入”选项，将图形 Runbook 或图形 PowerShell 工作流 Runbook 文件导入。 选择要导入的文件时，可以保留相同的名称，也可以提供一个新的名称。 " **Runbook 类型**" 字段会在评估所选文件后显示 runbook 的类型。 如果尝试选择不正确的其他类型，则图形编辑器会显示一条消息，指出存在潜在的冲突，在转换过程中可能会出现语法错误。
+添加 runbook 时，可以通过选择 "**导入**" 选项来导入图形或图形 PowerShell 工作流 runbook 文件。 选择要导入的文件时，可以保留相同的名称，也可以提供一个新的名称。 " **Runbook 类型**" 字段会在评估所选文件后显示 runbook 的类型。 如果尝试选择不正确的其他类型，则图形编辑器会显示一条消息，指出存在潜在的冲突，在转换过程中可能会出现语法错误。
 
 ![导入 Runbook](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
 
-## <a name="testing-a-graphical-runbook"></a>测试图形 runbook
+## <a name="testing-a-graphical-runbook"></a>测试图形 Runbook
 
 Azure Automation 中的每个图形 runbook 都有草稿版本和已发布的版本。 您只能运行已发布的版本，而您只能编辑草稿版本。 已发布版不受对草稿版所做的任何更改的影响。 当草稿版本可供使用时，可以发布它，从而使用草稿版本覆盖当前发布的版本。
 
@@ -423,7 +423,7 @@ Azure Automation 中的每个图形 runbook 都有草稿版本和已发布的版
 
 打开用于编辑的 runbook，然后单击 "**测试窗格**"，打开图形 Runbook 的测试控件。 测试控件会提示输入参数，可以通过单击 "**启动**" 来启动 runbook。
 
-## <a name="publishing-a-graphical-runbook"></a>发布图形 runbook
+## <a name="publishing-a-graphical-runbook"></a>发布图形 Runbook
 
 打开要编辑的 runbook，然后单击 "**发布**"，发布图形 runbook。 Runbook 的可能状态如下：
 

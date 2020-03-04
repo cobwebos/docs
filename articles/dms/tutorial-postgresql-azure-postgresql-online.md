@@ -3,8 +3,8 @@ title: 教程：通过 Azure CLI 将 PostgreSQL 迁移到 Azure Database for Pos
 titleSuffix: Azure Database Migration Service
 description: 了解如何通过 CLI 使用 Azure 数据库迁移服务，从本地 PostgreSQL 联机迁移到 Azure Database for PostgreSQL。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470932"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255642"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>教程：通过 Azure CLI 将 PostgreSQL 迁移到 Azure DB for PostgreSQL online
 
@@ -38,7 +38,7 @@ ms.locfileid: "77470932"
 > [!IMPORTANT]
 > 为获得最佳迁移体验，Microsoft 建议在目标数据库所在的 Azure 区域中创建 Azure 数据库迁移服务的实例。 跨区域或地理位置移动数据可能会减慢迁移过程并引入错误。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 
@@ -182,7 +182,7 @@ ms.locfileid: "77470932"
        ```
        az extension list -otable
        ```
-       您应看到下列输出：
+       应该会看到以下输出：
 
        ```
        ExtensionType    Name
@@ -361,7 +361,7 @@ ms.locfileid: "77470932"
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
-   或者
+   或
 
     ```
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output

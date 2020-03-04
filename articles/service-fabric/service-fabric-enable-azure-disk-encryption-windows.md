@@ -3,12 +3,12 @@ title: 为 Windows 群集启用磁盘加密
 description: 本文介绍如何使用 Azure 资源管理器中的 Azure Key Vault 为 Azure Service Fabric 群集节点启用磁盘加密。
 ms.topic: article
 ms.date: 03/22/2019
-ms.openlocfilehash: 24405c3c34bfd7b88932101c42a8d0fc96c90fa1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b08cdb63aa6f334c5a6f7c230b1624d232206c3b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614445"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251820"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-windows"></a>在 Windows 中启用 Azure Service Fabric 群集节点的磁盘加密 
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75614445"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 **自注册** 
 
@@ -51,7 +51,7 @@ ms.locfileid: "75614445"
 2. 安装最新版本的[Azure CLI](/cli/azure/install-azure-cli)，其中包含新的加密命令。
 3. 从 Azure PowerShell 版本安装最新版本的[AZURE SDK](https://github.com/Azure/azure-powershell/releases) 。 下面是虚拟机规模集的 Azure 磁盘加密 cmdlet，可在规模集实例上启用（[设置](/powershell/module/az.compute/set-azvmssdiskencryptionextension)）加密、检索（[获取](/powershell/module/az.compute/get-azvmssvmdiskencryption)）加密状态以及删除（[禁用](/powershell/module/az.compute/disable-azvmssdiskencryption)）加密。
 
-| 命令 | 版本 |  源  |
+| Command | 版本 |  源  |
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 或更高版本 | Az.Compute |
@@ -200,7 +200,7 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssNam
 
 ```
 
-```CLI
+```azurecli
 
 az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 

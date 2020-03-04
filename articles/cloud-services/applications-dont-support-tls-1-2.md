@@ -3,7 +3,7 @@ title: 排查不支持 TLS 1.2 的应用程序导致的问题 |Microsoft Docs
 description: 排查不支持 TLS 1.2 的应用程序导致的问题
 services: cloud-services
 documentationcenter: ''
-author: MicahMcKittrick-MSFT
+author: mimckitt
 manager: vashan
 editor: ''
 tags: top-support-issue
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 161c24b4e751eea9477e9d338722629daa97e193
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425028"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250435"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>排除不支持 TLS 1.2 的应用程序的故障
 本文介绍如何在 Windows Server 2019 云服务 web 角色和辅助角色上启用较旧的 TLS 协议（TLS 1.0 和1.1），并应用旧密码套件以支持其他协议。 

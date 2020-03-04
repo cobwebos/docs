@@ -3,8 +3,8 @@ title: 教程：将 RDS PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务执行从 RDS PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: 1bc3f3d8c0f8992927acc3247e94a984e1653deb
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 33d39be071591071d88bb5a95c3cfcbb458d85a8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471039"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255709"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>教程：使用 DMS 将 RDS PostgreSQL 迁移到 Azure DB for PostgreSQL online
 
@@ -43,7 +43,7 @@ ms.locfileid: "77471039"
 
 本文介绍如何从 PostgreSQL 的本地实例联机迁移到 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 要完成本教程，需要：
 

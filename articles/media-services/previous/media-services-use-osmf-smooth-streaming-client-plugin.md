@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c40d8b93a7487619cc94586c7e6b4cdc550435cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60825523"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255114"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>如何使用适用于 Adobe Open Source Media Framework 的 Microsoft 平滑流式处理插件  
 ## <a name="overview"></a>概述
@@ -30,7 +30,7 @@ SS for OSMF 包括两个版本的插件：
 * 适用于 OSMF 的静态平滑流式处理插件 (.swc)
 * 适用于 OSMF 的动态平滑流式处理插件 (.swf)
 
-本文档假设读者具有 OSMF 和 OSMF 插件方面的一般实践知识。有关 OSMF 的详细信息，请参阅 [OSMF 官方网站](http://osmf.org/)上的文档。
+本文档假设读者具有 OSMF 和 OSMF 插件的常规工作知识。有关 OSMF 的详细信息，请参阅[官方 OSMF 站点](http://osmf.org/)上的文档。
 
 ### <a name="smooth-streaming-plugin-for-osmf-20"></a>适用于 OSMF 2.0 的平滑流式处理插件
 该插件支持通过以下功能加载和播放按需平滑流式处理内容：
@@ -47,7 +47,7 @@ SS for OSMF 包括两个版本的插件：
 * 此版本仅支持 OSMF 2.0。
 
 ## <a name="supported-features-and-known-issues"></a>支持的功能和已知问题
-有关支持的功能、不支持的功能和已知问题的完整列表，请参阅[本文档](https://download.microsoft.com/download/3/1/B/31B63D97-574E-4A8D-BF8D-170744181724/Smooth_Streaming_Plugin_for_OSMF.pdf)。
+有关支持的功能、不支持的功能和已知问题的完整列表，请参阅[本文档](https://azure.microsoft.com/blog/microsoft-adaptive-streaming-plugin-for-osmf-update/)。
 
 ## <a name="loading-the-plugin"></a>加载插件
 可静态（在编译时）或动态（在运行时）加载 OSMF 插件。 适用于 OSMF 的平滑流式处理插件的下载内容包括动态和静态版本。

@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9024f120e0a55162a1f6dba0cd9cbda97f5eebc
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342874"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250296"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
-本文详细介绍了可能会在 Azure Cosmos DB SQL 查询中使用的关键字。
+本文详细介绍了可在 Azure Cosmos DB SQL 查询中使用的关键字。
 
-## <a name="between"></a>之间
+## <a name="between"></a>BETWEEN
 
-与在 ANSI SQL 中一样，可以使用 BETWEEN 关键字来对字符串或数字值的范围表达查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
+与在 ANSI SQL 中一样，您可以使用 BETWEEN 关键字来针对字符串或数值范围表达查询。 例如，以下查询将返回第一个子级别为1-5 （含）的所有项。
 
 ```sql
     SELECT *
@@ -26,30 +26,30 @@ ms.locfileid: "67342874"
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-与在 ANSI-SQL 中不同，你还可以在 FROM 子句中使用 BETWEEN 子句，如以下示例所示。
+与在 ANSI SQL 中不同，还可以使用 FROM 子句中的 BETWEEN 子句，如以下示例中所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-与 ANSI SQL 不同，在 SQL API 中，可以针对混合类型的属性表达范围查询。 例如，在某些项中，`grade` 可能是类似于 `5` 的数字；而在其他一些项中，它可能是类似于 `grade4` 的字符串。 在这些情况下（与在 JavaScript 中一样），两个不同类型之间的比较会生成 `Undefined`，因此会跳过该项。
+与 ANSI SQL 不同，在 SQL API 中，可以对混合类型的属性进行范围查询。 例如，`grade` 可能是某些项中 `5` 之类的数字，如其他项中的 `grade4`。 在这些情况下，如同在 JavaScript 中一样，两种不同类型之间的比较导致 `Undefined`，因此跳过了该项。
 
 > [!TIP]
-> 为了更快地执行查询，请创建一个索引策略，该策略针对 BETWEEN 子句筛选的任何数字属性或路径使用范围索引类型。
+> 为获得更快的查询执行时间，请创建索引策略，该策略对 BETWEEN 子句筛选器的任何数值属性或路径使用范围索引类型。
 
 ## <a name="distinct"></a>DISTINCT
 
-DISTINCT 关键字消除了查询投影中的重复项。
+DISTINCT 关键字可消除查询投影中的重复项。
+
+在此示例中，查询将为每个姓氏输入值：
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-在此示例中，查询将投影每个姓氏的值。
-
-其结果是：
+结果有：
 
 ```json
 [
@@ -57,14 +57,14 @@ FROM Families f
 ]
 ```
 
-也可以投影唯一对象。 在本例中，两个文档中的一个文档不存在 lastName 对象，因此查询将返回一个空对象。
+您还可以投影唯一对象。 在这种情况下，这两个文档中不存在 lastName 字段，因此查询返回空对象。
 
 ```sql
 SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -75,16 +75,16 @@ FROM Families f
 ]
 ```
 
-还可以在子查询内的投影中使用 DISTINCT：
+DISTINCT 还可以在子查询的投影中使用：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-此查询投影包含每个孩子的 givenName 的数组，并删除了重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
+此查询投影一个数组，其中包含每个子级的 givenName，并删除重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
 
-其结果是：
+结果有：
 
 ```json
 [
@@ -101,9 +101,16 @@ FROM f
     }
 ]
 ```
-## <a name="in"></a> IN
 
-使用 IN 关键字可以检查指定的值是否与列表中的任一值匹配。 例如，以下查询返回 `id` 为 `WakefieldFamily` 或 `AndersenFamily` 的所有家庭项。
+不支持带有聚合系统函数和具有 DISTINCT 的子查询的查询。 例如，不支持以下查询：
+
+```sql
+SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
+```
+
+## <a name="in"></a>中
+
+使用 IN 关键字检查指定的值是否与列表中的任何值匹配。 例如，下面的查询将返回 `id` `WakefieldFamily` 或 `AndersenFamily`的所有家族项。
 
 ```sql
     SELECT *
@@ -111,7 +118,7 @@ FROM f
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-以下示例返回状态为任何指定值的所有项：
+下面的示例返回状态为任何指定值的所有项：
 
 ```sql
     SELECT *
@@ -119,20 +126,20 @@ FROM f
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 提供支持[遍历 JSON 数组](sql-query-object-array.md#Iteration)，与通过 in 关键字 FROM 源中添加新的构造。 
+SQL API 为[循环访问 JSON 数组](sql-query-object-array.md#Iteration)提供了支持，并通过 FROM source 中的 in 关键字添加了一个新构造。 
 
 ## <a name="top"></a>返回页首
 
-TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是结合使用 TOP 与 ORDER BY 子句，将结果限制为前 `N` 个有序值。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。
+TOP 关键字返回未定义顺序的第一个 `N` 查询结果数。 最佳做法是将 TOP 与 ORDER BY 子句结合使用，将结果限制为有序值的第一个 `N`。 将这两个子句组合在一起是以可预测的方式指示顶级影响哪些行。
 
-可以结合一个常量值使用 TOP（如以下示例中所示），或者在参数化查询中结合一个变量值使用 TOP。
+可以将 TOP 与常量值（如下面的示例所示）或使用参数化查询的变量值一起使用。
 
 ```sql
     SELECT TOP 1 *
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{

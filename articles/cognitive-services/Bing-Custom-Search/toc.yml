@@ -27,12 +27,8 @@
               href: call-endpoint-python.md
         - name: SDK 中 IsInRole 中的声明
           items:
-            - name: '使用 C#'
-              href: sdk-csharp-quick-start.md
-            - name: 使用 Python
-              href: sdk-python-quickstart.md
-            - name: 使用 Java
-              href: sdk-java-quickstart.md
+            - name: 必应自定义搜索客户端库
+              href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 构建自定义搜索网页
@@ -41,7 +37,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 配置自定义搜索体验
       href: define-your-custom-view.md
@@ -63,7 +59,7 @@
     - name: 翻页浏览搜索结果
       href: ../Bing-Web-Search/paging-search-results.md
       maintainContext: true
-- name: 引用
+- name: 参考
   items:
     - name: 必应自定义自动建议 API 参考
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-autosuggest-api-v7-reference'

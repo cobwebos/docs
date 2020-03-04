@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4d7c094904529323b0665d14255d1eb76cb78bd3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/02/2020
+ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891909"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250291"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 SFTP 服务器复制数据
 
@@ -31,7 +31,7 @@ ms.locfileid: "75891909"
 
 以下活动支持此 SFTP 连接器：
 
-- 带有[支持的源或接收器矩阵](copy-activity-overview.md)的[复制活动](copy-activity-overview.md)
+- [复制活动](copy-activity-overview.md)与[支持的源/接收器矩阵](copy-activity-overview.md)
 - [Lookup 活动](control-flow-lookup-activity.md)
 - [GetMetadata 活动](control-flow-get-metadata-activity.md)
 - [删除活动](delete-activity.md)
@@ -41,11 +41,11 @@ ms.locfileid: "75891909"
 - 使用**Basic**或**SshPublicKey** AUTHENTICATION 从/向 SFTP 复制文件。
 - 按原样复制文件，或者使用[支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析/生成文件。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "75891909"
 
 SFTP 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | type 属性必须设置为：**Sftp**。 |是 |
 | host | SFTP 服务器的名称或 IP 地址。 |是 |
@@ -69,7 +69,7 @@ SFTP 链接的服务支持以下属性：
 
 要使用基本身份验证，请将“authenticationType”属性设置为“基本”，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户。 |是 |
 | password | 用户 (userName) 的密码。 将此字段标记为 SecureString 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -106,7 +106,7 @@ SFTP 链接的服务支持以下属性：
 
 要使用 SSH 公钥身份验证，请将“authenticationType”属性设置为“SshPublicKey”，并指定除上一部分所述 SFTP 连接器泛型属性以外的下列属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | userName | 有权访问 SFTP 服务器的用户 |是 |
 | privateKeyPath | 指定集成运行时可以访问的私钥文件的绝对路径。 仅当在“connectVia”中指定自承载类型的集成运行时时适用。 | 指定 `privateKeyPath` 或 `privateKeyContent`。  |
@@ -183,7 +183,7 @@ SFTP 链接的服务支持以下属性：
 
 在基于格式的数据集的 `location` 设置下，SFTP 支持以下属性：
 
-| 属性   | Description                                                  | 需要 |
+| properties   | 说明                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Dataset 中 `location` 下的 type 属性必须设置为**SftpLocation**。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符筛选文件夹，请跳过此设置并在活动源设置中指定。 | 否       |
@@ -225,7 +225,7 @@ SFTP 链接的服务支持以下属性：
 
 在基于格式的复制源中 `storeSettings` 设置下，SFTP 支持以下属性：
 
-| 属性                 | Description                                                  | 需要                                      |
+| properties                 | 说明                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**SftpReadSettings**。 | 是                                           |
 | recursive                | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 请注意，当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 允许的值为 **true**（默认值）和 **false**。 | 否                                            |
@@ -282,12 +282,16 @@ SFTP 链接的服务支持以下属性：
 
 在基于格式的复制接收器的 `storeSettings` 设置下，SFTP 支持以下属性：
 
-| 属性                 | Description                                                  | 需要 |
+| properties                 | 说明                                                  | 必选 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | `storeSettings` 下的 type 属性必须设置为**SftpWriteSettings**。 | 是      |
 | copyBehavior             | 定义以基于文件的数据存储中的文件为源时的复制行为。<br/><br/>允许值包括：<br/><b>- PreserveHierarchy（默认值）</b>：保留目标文件夹中的文件层次结构。 指向源文件夹的源文件相对路径与指向目标文件夹的目标文件相对路径相同。<br/><b>- FlattenHierarchy</b>：源文件夹中的所有文件都位于目标文件夹的第一级。 目标文件具有自动生成的名称。 <br/><b>- MergeFiles</b>：将源文件夹中的所有文件合并到一个文件中。 如果指定了文件名，则合并文件的名称为指定名称。 否则，它是自动生成的文件名。 | 否       |
 | maxConcurrentConnections | 并发连接到数据存储的连接数。 仅在要限制与数据存储的并发连接时指定。 | 否       |
+| useTempFileRename | 指示是上传到临时文件、重命名还是直接写入目标文件夹/文件位置。 默认情况下，ADF 首先写入临时文件，然后在上传完成时进行文件重命名，如果你有其他进程写入同一文件，则应避免冲突写入导致文件损坏; 2）确保文件的原始版本在整个传输。 如果 SFTP 服务器不支持重命名操作，请禁用此选项，确保不会对目标文件进行并发写入。 请参阅此表下面的故障排除提示。 | 不是。 默认值为 true。 |
 | operationTimeout | 每次向 SFTP 服务器发出写入请求之前的等待时间。默认值为60分钟（01:00:00）。|否 |
+
+>[!TIP]
+>如果在向 SFTP 写入数据时遇到了 "UserErrorSftpPathNotFound"、"UserErrorSftpPermissionDenied" 或 "SftpOperationFail" 错误，并且所使用的 SFTP 用户具有适当的权限，请检查 SFTP 服务器是否支持文件重命名操作-如果不支持，请禁用 "上传临时文件" （`useTempFileRename`）选项，然后重试。 从上表中了解有关此属性的详细信息。 如果使用自承载 Integration Runtime 进行复制，请确保使用版本4.6 或更高版本。
 
 **示例：**
 
@@ -354,7 +358,7 @@ SFTP 链接的服务支持以下属性：
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为：FileShare |是 |
 | folderPath | 文件夹路径。 支持通配符筛选器，允许的通配符为：`*`（匹配零个或更多个字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -403,7 +407,7 @@ SFTP 链接的服务支持以下属性：
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为：FileSystemSource |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制/创建空的文件夹/子文件夹。<br/>允许的值为：true（默认）、false | 否 |

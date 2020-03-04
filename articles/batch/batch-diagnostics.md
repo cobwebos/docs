@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 70c53ea9a8fc64615a9a493efc42405631a3f06d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 68d5976a5a79dbde88b7f80b02b39793ffc86de9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025157"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254862"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>用于诊断评估和监视的 Batch 指标、警报和日志
 
@@ -44,12 +44,17 @@ ms.locfileid: "77025157"
 
 查看所有 Batch 帐户指标： 
 
-1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
+1. 在门户中，单击“所有服务” **“Batch 帐户”，然后单击 Batch 帐户的名称。**  > 
 2. 在“监视”下，单击“指标”。
 3. 选择一个或多个指标。 如果需要，请使用“订阅”、“资源组”、“资源类型”和“资源”下拉菜单选择其他资源指标。
     * 对于基于计数的指标（如 "专用核心计数" 或 "低优先级节点计数"），请使用 "平均" 聚合。 对于基于事件的指标（如 "池调整大小完成事件"），请使用 "计数" 聚合。
 
-    ![Batch 指标](media/batch-diagnostics/metrics-portal.png)
+> [!WARNING]
+> 不要使用 "Sum" 聚合，这会增加在图表时间段内收到的所有数据点的值
+> 
+> 
+
+    ![Batch metrics](media/batch-diagnostics/metrics-portal.png)
 
 若要以编程方式检索指标，请使用 Azure Monitor API。 有关示例，请参阅[使用 .NET 检索 Azure Monitor 指标](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)。
 
@@ -68,10 +73,10 @@ ms.locfileid: "77025157"
 在门户中配置指标警报：
 
 1. 单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
-2. 在“监视”下，单击“警报规则” > “添加指标警报”。
+2. 在“监视”下，单击“警报规则” **“添加指标警报”。**  > 
 3. 选择一个指标、一个警报条件（例如，在某个时间段内当某个指标超过特定的值时）和一个或多个通知。
 
-还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)
+还可以使用 [REST API](https://docs.microsoft.com/rest/api/monitor/) 配置准实时警报。 有关详细信息，请参阅[警报概述](../azure-monitor/platform/alerts-overview.md)。 若要在警报中包含作业、任务或特定于池的信息，请参阅[响应带有 Azure Monitor 警报的事件](../azure-monitor/learn/tutorial-response.md)中的搜索查询信息
 
 ## <a name="batch-diagnostics"></a>Batch 诊断
 
@@ -99,8 +104,8 @@ ms.locfileid: "77025157"
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>启用 Batch 诊断日志的收集
 
-1. 在门户中，单击“所有服务” > “Batch 帐户”，然后单击 Batch 帐户的名称。
-2. 在“监视”下，单击“诊断日志” > “启用诊断”。
+1. 在门户中，单击“所有服务” **“Batch 帐户”，然后单击 Batch 帐户的名称。**  > 
+2. 在“监视”下，单击“诊断日志” **“启用诊断”。**  > 
 3. 在 "**诊断设置**" 中，输入设置的名称，并选择日志目标（现有的存储帐户、事件中心或 Azure Monitor 日志）。 选择“ServiceLog”和/或“AllMetrics”。
 
     选择存储帐户时，请选择性地设置保留策略。 如果未指定保留天数，则数据在存储帐户的生存期内会一直保留。

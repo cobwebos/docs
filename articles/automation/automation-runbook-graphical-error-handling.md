@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226526"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246278"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 runbook 中的错误处理
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
 为 Azure 自动化图形 runbook 考虑的关键设计原则是确定 runbook 在执行期间可能会遇到的问题。 这些情况可能包括：成功、预计的错误状态，以及意外的错误条件。
 
@@ -20,7 +20,7 @@ ms.locfileid: "78226526"
 
 图形 runbook 应包含错误处理代码来处理执行问题。 若要验证活动的输出或处理错误，可以使用 PowerShell 代码活动，在活动的输出链接上定义条件逻辑，或应用其他方法。
 
-Azure 自动化图形 runbook 已改进，能够包含错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。 
+Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现在可以将例外变成非终止性错误，并在活动之间创建错误链接。 改进的过程允许您的 runbook 捕获错误并管理已实现或意外的情况。 
 
 >[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](automation-update-azure-modules.md)，将模块更新到最新版本。
@@ -66,6 +66,6 @@ Runbook 中的每个活动都有一个将异常转换为非终止错误的配置
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要详细了解图形 runbook 中的链接和链接类型，请参阅[Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
+* 若要详细了解图形 Runbook 中的链接和链接类型，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
 
 * 若要详细了解 runbook 执行、runbook 作业的监视和其他技术详细信息，请参阅[在 Azure 自动化中执行 runbook](automation-runbook-execution.md)。

@@ -4,12 +4,12 @@ description: 了解 Azure Service Fabric 网格的常见问题和解答。
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 3fe6289ad7616dec97706c2f1779a74c508a0f76
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461995"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252489"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>有关 Service Fabric 网格的常见问题
 
@@ -27,7 +27,7 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 ### <a name="is-there-a-quota-limit-of-the-number-of-cores-and-ram"></a>内核和 RAM 的数量是否有配额限制？
 
-可以。 每个订阅的配额是：
+是的。 每个订阅的配额是：
 
 - 应用程序数量：5
 - 每个应用程序的内核数：12
@@ -46,8 +46,11 @@ Azure Service Fabric 网格是一个完全托管的服务，由此开发者可�
 
 例如： 
 
-```cli
-~$ az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```azurecli
+az mesh app show --resource-group myResourceGroup --name helloWorldApp
+```
+
+```output
 {
   "debugParams": null,
   "description": "Service Fabric Mesh HelloWorld Application!",
@@ -120,7 +123,7 @@ Azure 网格目前不支持跨应用程序进行 DNS 解析。
 
 有关在 Windows 10 上运行 Service Fabric 开发群集的其他已知 DNS 问题，请参阅：[调试 windows 容器](/azure/service-fabric/service-fabric-how-to-debug-windows-containers)和[已知 DNS 问题](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)。
 
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 
 在本地计算机上运行应用时，ServiceFabric 网络 NAT 可能会消失。 若要诊断是否发生了这种情况，请从命令提示符处运行以下命令：
 

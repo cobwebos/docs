@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 8cff61d547e75b186869b3ab4d57c5eb12e6e2f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935469"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255537"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>在 Azure 中选择正确的 MySQL Server 选项
 
@@ -33,7 +33,7 @@ ms.locfileid: "76935469"
 
 |            | Azure Database for MySQL | Azure Vm 上的 MySQL    |
 |:-------------------|:-----------------------------|:--------------------|
-| 服务级别协议 (SLA)                | 提供99.99% 可用性的 SLA| 同一可用性集中的两个或更多实例的可用性最高可达99.95%。<br/><br/>使用高级存储的单个实例 VM 的可用性为99.9%。<br/><br/>使用可用性区域在多个可用性集中具有多个实例的99.99%。<br/><br/>请参阅[虚拟机 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
+| 服务级别协议（SLA）                | 提供99.99% 可用性的 SLA| 同一可用性集中的两个或更多实例的可用性最高可达99.95%。<br/><br/>使用高级存储的单个实例 VM 的可用性为99.9%。<br/><br/>使用可用性区域在多个可用性集中具有多个实例的99.99%。<br/><br/>请参阅[虚拟机 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。 |
 | 操作系统修补        | 自动  | 由客户管理 |
 | MySQL 修补     | 自动  | 由客户管理 |
 | 高可用性 | 高可用性（HA）模型基于内置故障转移机制，适用于发生节点级中断的时间。 在这种情况下，服务将自动创建一个新实例，并将存储附加到此实例。 | 客户构建、测试和维护高可用性。 功能可能包括群集、复制等。|
@@ -49,7 +49,7 @@ ms.locfileid: "76935469"
 
 有多种因素可能会影响选择 PaaS 或 IaaS 来托管 MySQL 数据库的决策。
 
-### <a name="cost"></a>费用
+### <a name="cost"></a>成本
 
 有限的资金通常是确定用于托管数据库的最佳解决方案的主要考虑因素。 无论你是在一家已建立的公司中使用极少的现金或团队，还是在超出预算限制的情况下启动的，都是如此。 本部分介绍 Azure 中的计费和许可基础知识，因为它们适用于 Azure Vm 上的 Azure Database for MySQL 和 MySQL。
 
@@ -102,4 +102,4 @@ Azure Database for MySQL 为任何类型的节点级别中断提供内置的高�
 ## <a name="next-steps"></a>后续步骤
 
 * 请参阅[Azure Database for MySQL 定价](https://azure.microsoft.com/pricing/details/MySQL/)。
-* 从[创建第一个服务器](https://review.docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)开始。
+* 从[创建第一个服务器](https://docs.microsoft.com/azure/MySQL/quickstart-create-MySQL-server-database-using-azure-portal)开始。

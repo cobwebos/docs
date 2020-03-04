@@ -5,14 +5,14 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708302"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252067"
 ---
-# <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
+# <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题
 
 本文介绍有关 Azure 容器注册表的常见问题和已知问题。
 
@@ -28,11 +28,11 @@ ms.locfileid: "75708302"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>能否使用资源管理器模板创建 Azure 容器注册表？
 
-可以。 下面是[一个](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)可用于创建注册表的模板。
+是的。 下面是[一个](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)可用于创建注册表的模板。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>对于 ACR 中的图像，是否存在安全漏洞扫描？
 
-可以。 请参阅[Azure 安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[浅绿](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)中的文档。
+是的。 请参阅[Azure 安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[浅绿](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)中的文档。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何实现将 Kubernetes 配置为 Azure 容器注册表？
 
@@ -114,13 +114,13 @@ ACR 支持 Docker 注册表 HTTP API V2。 可在 `https://<your registry login 
 
 如果你在 bash 上：
 
-```bash
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
 ```
 
 对于 Powershell：
 
-```powershell
+```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
@@ -151,13 +151,13 @@ docker push myregistry.azurecr.io/1gb:latest
 
 你应该能够看到存储使用量在 Azure 门户中已增加，或者你可以使用 CLI 查询使用情况。
 
-```bash
+```azurecli
 az acr show-usage -n myregistry
 ```
 
 使用 Azure CLI 或门户删除映像，并在几分钟内检查更新的使用情况。
 
-```bash
+```azurecli
 az acr repository delete -n myregistry --image 1gb
 ```
 
@@ -186,7 +186,7 @@ az acr login -n MyRegistry
 使用任何最近的 docker 客户端（版本18.03.0 及更高版本）启用 TLS 1.2。 
 
 > [!IMPORTANT]
-> 从2020年1月13日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接使用 TLS 1.2。 将停用对 TLS 1.0 和1.1 的支持。
+> 从 2020 年 1 月 13 日开始，Azure 容器注册表将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Azure 容器注册表是否支持内容信任？
 
@@ -216,12 +216,12 @@ ACR 支持提供不同级别的权限的[自定义角色](container-registry-rol
   然后，可以将 `AcrPull` 或 `AcrPush` 角色分配给用户（以下示例使用 `AcrPull`）：
 
   ```azurecli
-    az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
-    ```
+  az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
+  ```
 
   或者，将角色分配给由其应用程序 ID 标识的服务主体：
 
-  ```
+  ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
   ```
 
@@ -239,9 +239,9 @@ ACR 支持提供不同级别的权限的[自定义角色](container-registry-rol
   az acr repository list -n myRegistry
   ```
 
- 提取映像：
-    
-  ```azurecli
+* 提取映像：
+
+  ```console
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -275,9 +275,10 @@ ACR 支持提供不同级别的权限的[自定义角色](container-registry-rol
  - 如果 `docker pull` 连续失败，则 Docker 守护程序可能会出现问题。 通常可以通过重新启动 Docker 守护程序来缓解此问题。 
  - 如果在重新启动 Docker 守护程序后仍然看到此问题，则问题可能是计算机的某些网络连接问题。 若要检查计算机上的常规网络是否正常，请运行以下命令来测试终结点连接。 包含此连接性检查命令的最小 `az acr` 版本为2.2.9。 如果使用的是较旧版本，请升级 Azure CLI。
  
-   ```azurecli
-    az acr check-health -n myRegistry
-    ```
+  ```azurecli
+  az acr check-health -n myRegistry
+  ```
+
  - 应始终对所有 Docker 客户端操作使用重试机制。
 
 ### <a name="docker-pull-is-slow"></a>Docker 拉取速度缓慢
@@ -360,10 +361,10 @@ sudo service docker restart
 
 ### <a name="new-user-permissions-may-not-be-effective-immediately-after-updating"></a>新用户权限在更新后可能不会立即生效
 
-向服务主体授予新权限时，更改可能不会立即生效。 可能有两种原因：
+向服务主体授予新权限时，更改可能不会立即生效。 有两个可能的原因：
 
 * Azure Active Directory 角色分配延迟。 通常，这是快速的，但由于传播延迟，这可能需要几分钟的时间。
-* ACR 标记服务器上的权限延迟。 这最多可能需要 10 分钟。 若要缓解这种情况，你可以 `docker logout`，然后在1分钟后再次向同一个用户进行身份验证：
+* ACR 标记服务器上的权限延迟。 这可能需要长达10分钟的时间。 若要缓解这种情况，你可以 `docker logout`，然后在1分钟后再次向同一个用户进行身份验证：
 
   ```bash
   docker logout myregistry.azurecr.io
@@ -424,7 +425,7 @@ curl $redirect_url
 * 缺少网络连接
 * 防火墙
 * Ad 阻止程序
-* 复制卷
+* DNS 错误
 
 请与网络管理员联系，或检查网络配置和连接。 尝试运行 `az acr check-health -n yourRegistry` 使用 Azure CLI 检查您的环境是否能够连接到容器注册表。 此外，你还可以在浏览器中尝试 incognito 或私有会话，以避免任何过时的浏览器缓存或 cookie。
 
@@ -437,7 +438,7 @@ curl $redirect_url
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何实现在 Windows 上收集 http 跟踪？
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>必备条件
 
 - 在 fiddler 中启用解密 https： <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - 启用 Docker 以通过 Docker ui 使用代理： <https://docs.docker.com/docker-for-windows/#proxies>

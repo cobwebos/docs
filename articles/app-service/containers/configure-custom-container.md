@@ -3,12 +3,12 @@ title: 配置自定义 Linux 容器
 description: 了解如何在 Azure App Service 中配置自定义 Linux 容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: d9d6311e69ba4e3893da81a16b06c8baed78cdcd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6baa1fbd4932aa83a54081ff166dcae7f258fff9
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671869"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255868"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure App Service 配置自定义 Linux 容器
 
@@ -159,6 +159,8 @@ wordpress:
 ## <a name="configure-vnet-integration"></a>配置 VNet 集成
 
 将自定义容器与 VNet 集成结合使用时，可能需要额外的容器配置。 请参阅[将应用与 Azure 虚拟网络集成](../web-sites-integrate-with-vnet.md)。
+
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

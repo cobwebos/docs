@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 03/03/2020
 ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 873898ce321100edbaa800d2436d0413c06ce175
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168324"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255673"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -54,6 +54,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 | `language` | 标识所要识别的口语。 请参阅[支持的语言](language-support.md#speech-to-text)。 | 必选 |
 | `format` | 指定结果格式。 接受的值为 `simple` 和 `detailed`。 简单结果包括 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 详细响应包括多个具有置信度值的结果，以及四种不同的表示形式。 默认设置为 `simple`。 | 可选 |
 | `profanity` | 指定如何处理识别结果中的不雅内容。 接受的值为 `masked`，它将猥亵替换为星号 `removed`，这会从结果中删除所有猥亵或 `raw`，其中包括结果中的猥亵语言。 默认设置为 `masked`。 | 可选 |
+| `cid` | 使用[自定义语音门户](how-to-custom-speech.md)创建自定义模型时，可以通过在 "**部署**" 页中找到的**终结点 ID**来使用自定义模型。 使用**终结点 ID**作为 `cid` 查询字符串参数的参数。 | 可选 |
 
 ## <a name="request-headers"></a>请求标头
 
@@ -72,10 +73,10 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 在 HTTP `POST` 请求的正文中发送音频。 它必须采用下表中的格式之一：
 
-| 格式 | 编解码器 | Bitrate | 采样率 |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 位 | 16 kHz，单声道 |
-| OGG | OPUS | 16 位 | 16 kHz，单声道 |
+| 格式 | 编解码器 | Bitrate | 采样率  |
+|--------|-------|---------|--------------|
+| WAV    | PCM   | 16 位  | 16 kHz，单声道 |
+| OGG    | OPUS  | 16 位  | 16 kHz，单声道 |
 
 >[!NOTE]
 >通过语音服务 REST API 和 WebSocket 支持上述格式。 [语音 SDK](speech-sdk.md)当前支持带有 PCM 编解码器和[其他格式](how-to-use-codec-compressed-audio-input-streams.md)的 WAV 格式。
@@ -100,50 +101,43 @@ Expect: 100-continue
 
 | HTTP 状态代码 | 说明 | 可能的原因 |
 |------------------|-------------|-----------------|
-| 100 | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输配合使用。） |
-| 200 | OK | 请求成功；响应正文是一个 JSON 对象。 |
-| 400 | 错误的请求 | 语言代码未提供、不支持的语言、无效的音频文件等。 |
-| 401 | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
-| 403 | 禁止 | 缺少订阅密钥或授权令牌。 |
+| `100` | 继续 | 已接受初始请求。 继续发送剩余的数据。 （与分块传输一起使用） |
+| `200` | OK | 请求成功；响应正文是一个 JSON 对象。 |
+| `400` | 错误的请求 | 语言代码未提供、不支持的语言、无效的音频文件等。 |
+| `401` | 未授权 | 指定区域中的订阅密钥或授权令牌无效，或终结点无效。 |
+| `403` | 禁止 | 缺少订阅密钥或授权令牌。 |
 
 ## <a name="chunked-transfer"></a>分块传输
 
 分块传输（`Transfer-Encoding: chunked`）有助于降低识别延迟。 它允许语音服务在传输音频文件时开始处理该文件。 REST API 不提供部分结果或临时结果。
 
-此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到相应 REST 终结点的 HTTPWebRequest 对象。 `audioFile` 是音频文件在磁盘上的路径。
+此代码示例演示如何以块的形式发送音频。 只有第一个区块应该包含音频文件的标头。 `request` 是连接到适当 REST 终结点的 `HttpWebRequest` 对象。 `audioFile` 是音频文件在磁盘上的路径。
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }

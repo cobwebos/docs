@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 165e87b47deca2b7f175ec07b5c615ac25db0dd2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367197"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251750"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项
 
@@ -26,10 +26,11 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 
 |功能|Azure 文件|Azure NetApp 文件|存储空间直通|
 |--------|-----------|------------------|---------------------|
+|用例|常规用途|从本地 NetApp 进行超高性能或迁移|跨平台|
 |平台服务|是，Azure-本机解决方案|是，Azure-本机解决方案|不，自我管理|
 |区域可用性|所有区域|[选择区域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|所有区域|
 |冗余|本地冗余/区域冗余/异地冗余|本地冗余|本地冗余/区域冗余/异地冗余|
-|层和性能|标准<br>高级<br>每个共享最大为每个共享的最大 100k IOPS 约3毫秒，延迟|标准<br>高级<br>黑体<br>每卷 4.5 GBps 到320k （16K）的 IOPS 约1毫秒，延迟|标准 HDD：每个磁盘最多 500 IOPS<br>标准 SSD：最多为 4k IOPS 每个磁盘的限制<br>高级 SSD：每个磁盘的最大 IOPS 限制<br>建议存储空间直通的高级磁盘|
+|层和性能|Standard<br>Premium<br>每个共享最大为每个共享的最大 100k IOPS 约3毫秒，延迟|Standard<br>Premium<br>黑体<br>每卷 4.5 GBps 到320k （16K）的 IOPS 约1毫秒，延迟|标准 HDD：每个磁盘最多 500 IOPS<br>标准 SSD：最多为 4k IOPS 每个磁盘的限制<br>高级 SSD：每个磁盘的最大 IOPS 限制<br>建议存储空间直通的高级磁盘|
 |容量|100每个共享 TiB|100 TiB 每个卷，每个订阅最多12.5 个 PiB|每个磁盘最多 32 TiB|
 |必需的基础结构|最小共享大小 1 GiB|最小容量池 4 TiB，最小卷大小 100 GiB|Azure IaaS 上的两个 Vm （+ 云见证服务器）或至少三个 Vm，磁盘不含和费用|
 |协议|SMB 2.1/3。 和 REST|NFSv3、NFSv 4.1 （预览版）、SMB 2.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
@@ -41,7 +42,7 @@ Windows 虚拟桌面提供 FSLogix 的配置文件容器作为建议的用户配
 |访问|云、本地和混合（Azure 文件同步）|云，本地（通过 ExpressRoute）|云，本地|
 |备份|Azure 备份快照集成|Azure NetApp 文件快照|Azure 备份快照集成|
 |安全和符合性|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 已完成|[所有 Azure 支持的证书](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory 集成|Azure Active Directory 和 Azure Active Directory 域服务|[Azure Active Directory 域服务和本机 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|仅限本机 Active Directory 或 Azure Active Directory 域服务支持|
+|Azure Active Directory 集成|[本机 Active Directory 和 Azure Active Directory 域服务](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory 域服务和本机 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|仅限本机 Active Directory 或 Azure Active Directory 域服务支持|
 
 选择存储方法后，请查看[Windows 虚拟桌面定价](https://azure.microsoft.com/pricing/details/virtual-desktop/)，了解有关定价计划的信息。
 

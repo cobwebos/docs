@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158904"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252650"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
 
@@ -136,4 +136,4 @@ Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有专用终结点的子网的网络安全组规则
 
-目前，无法为具有专用终结点的子网配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。
+目前，无法为专用终结点配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则和用户定义的路由。 应用于托管专用终结点的子网的 NSG 规则应用到专用终结点。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。

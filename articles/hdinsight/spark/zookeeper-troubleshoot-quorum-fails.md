@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
-ms.openlocfilehash: a0874826529b5c9ca5d6d4107fe820cd522d81d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894033"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250241"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server 无法在 Azure HDInsight 中形成仲裁
 
@@ -20,24 +20,31 @@ ms.locfileid: "75894033"
 
 ## <a name="issue"></a>问题
 
-Apache ZooKeeper 服务器运行不正常，则可能出现以下症状：资源管理器/名称节点处于备用模式，简单 HDFS 操作无效，`zkFailoverController` 已停止且无法启动，Yarn/Spark/Livy 作业因 Zookeeper 错误而失败。 你可能会看到类似于以下内容的错误消息：
+Apache ZooKeeper 服务器运行不正常，则可能出现以下症状：资源管理器/名称节点处于备用模式，简单 HDFS 操作无效，`zkFailoverController` 已停止且无法启动，Yarn/Spark/Livy 作业因 Zookeeper 错误而失败。 在安全 Spark 或交互式 Hive 群集上，LLAP 守护程序也可能无法启动。 你可能会看到类似于以下内容的错误消息：
 
 ```
 19/06/19 08:27:08 ERROR ZooKeeperStateStore: Fatal Zookeeper error. Shutting down Livy server.
 19/06/19 08:27:08 INFO LivyServer: Shutting down Livy server.
 ```
 
+在 Zookeeper 服务器上的 Zookeeper 主机上，在/var/log/zookeeper/zookeeper-zookeeper-server-\*，你还可能会看到以下错误：
+
+```
+2020-02-12 00:31:52,513 - ERROR [CommitProcessor:1:NIOServerCnxn@178] - Unexpected Exception:
+java.nio.channels.CancelledKeyException
+```
+
 ## <a name="cause"></a>原因
 
 如果快照文件的量很大或快照文件已损坏，ZooKeeper server 将无法形成仲裁，这将导致 ZooKeeper 相关服务运行不正常。 ZooKeeper 服务器不会从其数据目录中删除旧的快照文件，而是由用户定期执行任务来维护 ZooKeeper 的正常。 有关详细信息，请参阅[ZooKeeper 的优势和限制](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)。
 
-## <a name="resolution"></a>分辨率
+## <a name="resolution"></a>解决方法
 
-检查 ZooKeeper data directory `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2`，查明快照文件的大小是否大。 如果存在较大的快照，请执行以下步骤：
+检查 ZooKeeper data directory `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeeper/version-2`，查明快照文件的大小是否大。 如果存在较大的快照，请执行以下步骤：
 
-1. 备份 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2`中的快照。
+1. 备份 `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeeper/version-2`中的快照。
 
-1. `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeepe/version-2`中清理快照。
+1. `/hadoop/zookeeper/version-2` 和 `/hadoop/hdinsight-zookeeper/version-2`中清理快照。
 
 1. 从 Apache Ambari UI 重启所有 ZooKeeper 服务器。
 

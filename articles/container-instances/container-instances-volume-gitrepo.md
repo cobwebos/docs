@@ -3,12 +3,12 @@ title: 将 gitRepo 卷装载到容器组
 description: 了解如何在容器实例中装载 gitRepo 卷以克隆 Git 存储库
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533215"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252086"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器实例中装载 gitRepo 卷
 
@@ -23,11 +23,11 @@ ms.locfileid: "74533215"
 
 装载 *gitRepo* 卷时，可以设置三个属性以对卷进行配置：
 
-| properties | 需要 | 描述 |
+| properties | 必选 | 说明 |
 | -------- | -------- | ----------- |
 | `repository` | 是 | 要克隆的 Git 存储库的完整 URL，包括 `http://` 或 `https://`。|
-| `directory` | No | 存储库应克隆到的目录。 路径不得包含“`..`”，也不能以其开头。  如果指定“`.`”，存储库将克隆到卷的目录。 否则，Git 存储库将克隆到卷目录中给定名称的子目录。 |
-| `revision` | No | 要克隆的修订的提交哈希。 如果未指定，则克隆 `HEAD` 修订。 |
+| `directory` | 否 | 存储库应克隆到的目录。 路径不得包含“`..`”，也不能以其开头。  如果指定“`.`”，存储库将克隆到卷的目录。 否则，Git 存储库将克隆到卷目录中给定名称的子目录。 |
+| `revision` | 否 | 要克隆的修订的提交哈希。 如果未指定，则克隆 `HEAD` 修订。 |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>装载 gitRepo 卷：Azure CLI
 
@@ -48,8 +48,11 @@ az container create \
 
 若要验证是否已装载 gitRepo 卷，请使用[az container exec][az-container-exec]在容器中启动 shell，并列出该目录：
 
-```console
-$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```azurecli
+az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+```
+
+```output
 /usr/src/app # ls -l /mnt/aci-helloworld/
 total 16
 -rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
@@ -60,7 +63,7 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 ## <a name="mount-gitrepo-volume-resource-manager"></a>装载 gitRepo 卷：资源管理器
 
-在使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)部署容器实例时若要装载 gitRepo 卷，请首先填充模板的容器组 `properties` 节中的 `volumes` 数组。 然后，针对容器组中希望装载 *gitRepo* 卷的每个容器，在容器定义的 `properties` 节中填充 `volumeMounts` 数组。
+在使用 [Azure 资源管理器模板](/azure/templates/microsoft.containerinstance/containergroups)部署容器实例时若要装载 gitRepo 卷，请首先填充模板的容器组 `volumes` 节中的 `properties` 数组。 然后，针对容器组中希望装载 *gitRepo* 卷的每个容器，在容器定义的 `volumeMounts` 节中填充 `properties` 数组。
 
 例如，以下资源管理器模板创建了一个包含单个容器的容器组。 该容器克隆由 *gitRepo* 卷块指定的两个 GitHub 存储库。 第二个卷包括其他属性以指定要克隆到的目录和要克隆的特定修订的提交哈希。
 
@@ -82,13 +85,13 @@ drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
 
 例如，专用 GitHub 存储库的 Azure CLI `--gitrepo-url` 参数将类似于以下内容（其中“gituser”是 GitHub 用户名，“abcdef1234fdsa4321abcdef”是用户的个人访问令牌）：
 
-```azurecli
+```console
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
 对于 Azure Repos Git 存储库，请指定任何用户名（可以使用“azurereposuser”，如下例所示）并结合有效的 PAT：
 
-```azurecli
+```console
 --gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 

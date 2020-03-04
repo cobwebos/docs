@@ -3,8 +3,8 @@ title: 教程：将 Oracle online 迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 数据库迁移服务将本地或虚拟机中的 Oracle 联机迁移到 Azure Database for PostgreSQL。
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
-ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 14db95adccf5118321bc763cbe599e19febc7eac
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759903"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255565"
 ---
-# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS 将 Oracle 迁移到 Azure Database for PostgreSQL online （预览版）
+# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>教程：使用 DMS（预览版）将 Oracle 联机迁移到 Azure Database for PostgreSQL
 
 可以使用 Azure 数据库迁移服务在尽量缩短停机时间的情况下，将本地或虚拟机中的 Oracle 数据库迁移到 [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)。 换而言之，完成这种迁移只会对应用程序造成极短暂的停机。 本教程介绍如何使用 Azure 数据库迁移服务中的联机迁移活动，将 **HR** 示例数据库从 Oracle 11g 的本地或虚拟机实例迁移到 Azure Database for PostgreSQL。
 
@@ -43,7 +43,7 @@ ms.locfileid: "76759903"
 
 本文介绍如何从 Oracle 联机迁移到 Azure Database for PostgreSQL。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 要完成本教程，需要：
 
@@ -174,7 +174,7 @@ ms.locfileid: "76759903"
 
 大多数客户会花费相当多的时间来审阅评估报告以及考虑自动和手动转换工作量。
 
-若要配置并运行 ora2pg 以创建评估报表，请参阅[Oracle to Azure Database for PostgreSQL 食谱](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的 "预**迁移：评估**" 一节。 [此处](https://ora2pg.darold.net/report.html)提供了一份示例 ora2pg 评估报告用于参考。
+若要配置并运行 ora2pg 来创建评估报告，请参阅[有关从 Oracle 迁移到 Azure Database for PostgreSQL 的 Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)中的“迁移前：评估”部分。 [此处](https://ora2pg.darold.net/report.html)提供了一份示例 ora2pg 评估报告用于参考。
 
 ## <a name="export-the-oracle-schema"></a>导出 Oracle 架构
 
@@ -192,7 +192,7 @@ psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d 
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-若要配置和运行用于架构转换的 ora2pg，请参阅[Oracle to Azure Database for PostgreSQL 食谱](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)的 "**迁移：架构和数据**" 部分。
+若要配置并运行 ora2pg 来转换架构，请参阅[有关从 Oracle 迁移到 Azure Database for PostgreSQL 的 Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)中的“迁移：架构和数据”部分。
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>在 Azure Database for PostgreSQL 中设置架构
 
@@ -231,7 +231,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 > [!IMPORTANT]
 > Azure 数据库迁移服务要求使用 Azure 数据库迁移服务或 ora2pg 等工具（而非同时使用两者）以相同的方式创建所有表。
 
-开始使用：
+开始操作：
 
 1. 根据应用程序的要求，在目标数据库中创建架构。 默认情况下，PostgreSQL 表架构和列名称采用小写。 而 Oracle 表架构和列默认全部采用大写。
 2. 在“选择架构”步骤中，指定目标数据库和目标架构。
@@ -322,7 +322,7 @@ Azure 数据库迁移服务还可以创建 PostgreSQL 表架构。 该服务访�
 
 ## <a name="upload-oracle-oci-driver"></a>上传 Oracle OCI 驱动程序
 
-1. 选择 "**保存**"，然后在 "**安装 OCI 驱动程序**" 屏幕上，登录到你的 Oracle 帐户，并从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序**instantclient-basiclite-windows. X64-12.2.0.1.0** （37128586字节）（SHA1 校验和：865082268）。
+1. 选择“保存”，然后在“安装 OCI 驱动程序”屏幕上，登录到你的 Oracle 帐户并从[此处](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)下载驱动程序“instantclient-basiclite-windows.x64-12.2.0.1.0.zip”（37,128,586 字节）（SHA1 校验和：865082268）。
 2. 将该驱动程序下载到某个共享文件夹中。
 
    确保该文件夹已与使用最低只读访问权限指定的用户名共享。 Azure 数据库迁移服务将访问并读取该共享，以通过模拟指定的用户名将 OCI 驱动程序上传到 Azure。

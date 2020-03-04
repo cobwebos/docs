@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5044f8b85e59911633a4ffab509efc000948144a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb8b23513738a6696d65bf7f06a741be2ada7a93
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65832584"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250247"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>创建并测试新的模拟设备
 
@@ -32,7 +32,7 @@ ms.locfileid: "65832584"
 
 | 名称                     | 值                      |
 | ------------------------ | --------------------------- |
-| 颜色                    | 白、红、蓝            |
+| Color                    | 白、红、蓝            |
 | 亮度               | 0 到 100                    |
 | 估计剩余生命 | 从 10,000 小时开始倒计数 |
 
@@ -49,7 +49,7 @@ ms.locfileid: "65832584"
 > [!NOTE]
 > 对于所有模拟类型来说，**联机**遥测值是必需的。
 
-方法
+*方法*
 
 下表显示了新设备支持的操作：
 
@@ -76,7 +76,7 @@ ms.locfileid: "65832584"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 按照本操作方法指南操作需要：
 
@@ -107,11 +107,11 @@ ms.locfileid: "65832584"
 
 在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
-打开**storage-adapter/WebService/appsettings.ini**文件，并将分配到 Cosmos DB 连接字符串**documentDBConnectionString**变量。
+打开**storage-adapter/WebService/appsettings**文件，并将 Cosmos DB 连接字符串分配到**documentDBConnectionString**变量。
 
 要在本地运行微服务，请单击“调试”>“启动调试”。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)。 导航到此地址时，状态应显示为“正常:活动且正常”。
+Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -123,7 +123,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 1. 将以下文件从设备模拟微服务的已下载副本复制到新文件夹：
 
-    | source | 目标 |
+    | 源 | 目标 |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
@@ -424,7 +424,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
-打开**WebService/appsettings.ini**文件，并将分配到 Cosmos DB 连接字符串**documentdb_connstring**变量，以及修改的设置，如下所示：
+打开**WebService/appsettings**文件并将 Cosmos DB 连接字符串分配给**documentdb_connstring**变量，并按如下所述修改设置：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -446,7 +446,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test

@@ -109,7 +109,7 @@
           href: connect-virtual-network-vnet-isolated-environment.md
         - name: 为多个集成服务环境设置访问权限
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
-        - name: 向集成服务环境添加项目
+        - name: 向集成服务环境添加资源
           href: add-artifacts-integration-service-environment-ise.md
         - name: 为集成服务环境设置客户管理的加盟密钥
           href: customer-managed-keys-integration-service-environment.md
@@ -221,8 +221,6 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHub
           href: ../connectors/connectors-create-api-github.md
-        - name: Google Drive
-          href: ../connectors/connectors-create-api-googledrive.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

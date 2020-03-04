@@ -1,18 +1,16 @@
 ---
 title: 使用 PowerShell 克隆应用
 description: 了解如何使用 PowerShell 将“应用服务”应用克隆到新的应用。 涵盖各种克隆方案，包括流量管理器集成。
-author: ahmedelnably
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
-ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 332f7a562fc8c1d7b2bbebb0e596a068797c2ce3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967207"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255191"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>使用 PowerShell 克隆 Azure 应用服务应用
 
@@ -75,7 +73,7 @@ $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name d
 ## <a name="cloning-an-existing-app-slot"></a>克隆现有的应用槽
 方案：你要将应用的现有部署槽克隆到新应用或新槽。 新的应用可与原始应用槽位于相同或不同的区域。
 
-如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取与 `source-app` 相关的源应用的槽位信息（在本例中，该应用名为 `source-appslot`）：
+如果知道包含源应用的资源组名称，就可以使用以下 PowerShell 命令来获取与 `source-appslot` 相关的源应用的槽位信息（在本例中，该应用名为 `source-app`）：
 
 ```powershell
 $srcappslot = Get-AzWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-app -Slot source-appslot

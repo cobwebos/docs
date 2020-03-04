@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b7a50a2dabc9503ca5dbdd3388e29cfc69963885
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028574"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252602"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>使用 Azure Private Link 将专用连接到 Azure Cosmos 帐户
 
@@ -25,26 +25,22 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
 
 ## <a name="create-a-vm"></a>创建 VM
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分中，将创建一个虚拟网络和子网来托管用于访问专用链接资源的 VM （本示例中为 Azure Cosmos 帐户）。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”。
+在本部分中，你将需要在步骤中将以下参数替换为以下信息：
 
-1. 在“创建虚拟网络”中，输入或选择以下信息：
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<资源组名称 >**  | myResourceGroup|
+| **\<虚拟网络名称 >** | myVirtualNetwork         |
+| **\<区域名称 >**          | 美国中西部     |
+| **\<IPv4 地址-空间 >**   | 10.1.0.0 \ 16          |
+| **\<子网-名称 >**          | mySubnet        |
+| **\<子网地址范围 >** | 10.1.0.0 \ 24          |
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
-    | 位置 | 选择“WestCentralUS”。|
-    | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
-    |||
-
-1. 将其余的设置保留默认值，然后选择“创建”。
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-the-virtual-machine"></a>创建虚拟机
 
@@ -59,9 +55,9 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
-    | 地区 | 选择“WestCentralUS”。 |
+    | 区域 | 选择“WestCentralUS”。 |
     | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
-    | 图像 | 选择“Windows Server 2019 Datacenter”。 |
+    | 映像 | 选择“Windows Server 2019 Datacenter”。 |
     | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选的用户名。 |
@@ -118,7 +114,7 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它使 Az
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据。
+        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
 
 1. 选择“确定”。
 

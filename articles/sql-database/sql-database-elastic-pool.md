@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901178"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252706"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -117,7 +117,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 1. 通过如下方式来估算池所需的 eDTU 或 vCore：
 
    对于基于 DTU 的购买模型：MAX(<数据库的总数目 X 每一数据库的平均 DTU 使用率>、<br>  
-   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率 ）
+   <并发高峰数据库的数目 X 每一数据库的高峰 DTU 使用率）
 
    对于基于 vCore 的购买模型：MAX(&lt;数据库的总数目 X 每一数据库的平均 vCore 使用率&gt;,<br>  
    <并发高峰数据库的数目 X 每一数据库的高峰 vCore 使用率)
@@ -222,6 +222,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ## <a name="next-steps"></a>后续步骤
 
+- 有关定价信息，请参阅[弹性池定价](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
 - 若要缩放弹性池，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)和[缩放弹性池 - 示例代码](scripts/sql-database-monitor-and-scale-pool-powershell.md)
 - 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。

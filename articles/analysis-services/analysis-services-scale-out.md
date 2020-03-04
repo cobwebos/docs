@@ -4,15 +4,15 @@ description: 复制 Azure Analysis Services 服务器，并向外扩展。然后
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/02/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310180"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247995"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services 横向扩展
 
@@ -30,7 +30,7 @@ ms.locfileid: "76310180"
 
 横向扩展时，可能需要长达五分钟的时间，新的查询副本才能增量添加到查询池中。 当所有新的查询副本都启动并运行时，新的客户端连接将跨查询池中的资源进行负载平衡。 现有的客户端连接不会从当前连接到的资源更改。 向内扩展时，将终止与正在从查询池中删除的查询池资源的任何现有客户端连接。 客户端可以重新连接到其他查询池资源。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 首次配置横向扩展时，主服务器上的模型数据库会*自动*与新查询池中的新副本同步。 自动同步只发生一次。 在自动同步期间，主服务器的数据文件（在 blob 存储中的静态加密）将复制到另一个位置，同时在 blob 存储中进行静态加密。 然后，将查询池中的副本与第二组文件中的数据*解冻*。 
 
@@ -74,19 +74,23 @@ ms.locfileid: "76310180"
 
 ## <a name="monitor-qpu-usage"></a>监视 QPU 使用情况
 
-若要确定服务器是否必须进行横向扩展，请在 Azure 门户中使用指标监视服务器。 如果 QPU 经常超过上限，则表示针对模型的查询数量超出了计划的 QPU 限制。 查询线程池队列中的查询数量超过可用的 QPU 时，查询池作业队列长度指标也会增加。 
+若要确定是否需要向外扩展服务器，请使用指标在 Azure 门户中[监视服务器](analysis-services-monitor.md)。 如果 QPU 经常超过上限，则表示针对模型的查询数量超出了计划的 QPU 限制。 查询线程池队列中的查询数量超过可用的 QPU 时，查询池作业队列长度指标也会增加。 
 
 要监视的另一个良好的指标是平均 QPU （ServerResourceType）。 此指标将主服务器的平均 QPU 与查询池进行比较。 
 
 ![查询 scale out 度量值](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
-### <a name="to-configure-qpu-by-serverresourcetype"></a>通过 ServerResourceType 配置 QPU
+**通过 ServerResourceType 配置 QPU**
+
 1. 在指标折线图中，单击 "**添加度量值**"。 
 2. 在 **"资源**" 中，选择你的服务器，然后在 "**指标命名空间**" 中选择 " **Analysis Services 标准指标**"，然后在 "**指标**" 中选择**QPU**，然后在 "**聚合**" 中选择**Avg**。 
 3. 单击 "**应用拆分**"。 
 4. 在 "**值**" 中，选择**ServerResourceType**。  
 
-有关详细信息，请参阅[监视服务器指标](analysis-services-monitor.md)。
+### <a name="detailed-diagnostic-logging"></a>详细诊断日志记录
+
+使用 Azure Monitor 日志来更详细地诊断横向扩展服务器资源。 借助日志，你可以使用 Log Analytics 查询按服务器和副本细分 QPU 和内存。 若要了解详细信息，请参阅[Analysis Services 诊断日志记录](analysis-services-logging.md#example-queries)中的示例查询。
+
 
 ## <a name="configure-scale-out"></a>配置横向扩展
 
@@ -127,13 +131,13 @@ ms.locfileid: "76310180"
 返回状态代码：
 
 
-|代码  |Description  |
+|代码  |说明  |
 |---------|---------|
 |-1     |  无效       |
 |0     | Replicating        |
-|第     |  解除冻结       |
+|1     |  解除冻结       |
 |2     |   已完成       |
-|3     |   已失败      |
+|3     |   失败      |
 |4     |    正在完成     |
 |||
 

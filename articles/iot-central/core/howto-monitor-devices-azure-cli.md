@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 3f18537b4b038844c9aa824593e354c23c792370
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6af6f01449f2f43e6799ef6d7821b9d71b24e603
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026778"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252340"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>使用 Azure CLI 监视设备连接
 
@@ -23,7 +23,7 @@ ms.locfileid: "77026778"
 
 [有关更多详细信息，请访问 Azure CLI 扩展参考](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/central)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 + Azure CLI 安装，且版本2.0.7 或更高版本。 通过运行 `az --version`检查 Azure CLI 的版本。 了解如何从[Azure CLI 文档](https://docs.microsoft.com/cli/azure/install-azure-cli)进行安装和更新
 + Azure 中的工作或学校帐户，作为用户添加到 IoT Central 的应用程序中。
@@ -33,16 +33,19 @@ ms.locfileid: "77026778"
 从命令行运行以下命令以安装：
 
 ```cmd/sh
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
 
-通过运行查看扩展的版本 
+通过运行以下内容检查扩展的版本：
+
 ```cmd/sh
 az --version
 ```
-应会看到 "azure cli-iot 扩展" 扩展0.8.1 或更高版本。 如果不是，则运行
+
+应会看到 azure iot 扩展为0.8.1 或更高版本。 如果不是，请运行：
+
 ```cmd/sh
-az extension update --name azure-cli-iot-ext
+az extension update --name azure-iot
 ```
 
 ## <a name="using-the-extension"></a>使用扩展

@@ -1,19 +1,19 @@
 ---
 title: 使用外部元数据存储 - Azure HDInsight
-description: 将外部元数据存储与 Azure HDInsight 群集一起使用以及最佳做法。
+description: 在 Azure HDInsight 群集中使用外部元数据存储，并使用最佳做法。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/29/2019
-ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/02/2020
+ms.openlocfilehash: edb2d256d3e5d98c52dbdff1162e0e030ebe2be3
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327364"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251055"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>使用外部元数据存储 - Azure HDInsight
 
@@ -55,6 +55,8 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 可按需增加元存储。
 
+* 群集和外部元存储必须托管在同一区域中。
+
 ![HDInsight Hive 元数据存储使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
 ### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>为自定义元存储创建和配置 Azure SQL 数据库
@@ -71,7 +73,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在群集创建期间选择自定义元存储
 
-可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 通过 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，依次访问“存储”和“元存储”设置来指定此选项。
+可在群集创建期间将群集指向之前所创建的 Azure SQL 数据库，还可在创建群集之后配置 SQL 数据库。 在从 Azure 门户创建新的 Hadoop、Spark 或交互式 Hive 群集时，此选项与**存储 > 元存储设置**一起指定。
 
 ![HDInsight Hive 元数据存储 Azure 门户](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
@@ -95,7 +97,7 @@ HDInsight 还支持自定义元存储，建议对生产群集使用此项：
 
 * 如果在多个群集之间共享元存储，请确保所有群集都采用相同的 HDInsight 版本。 不同的 Hive 版本使用不同的元存储数据库架构。 例如，不能跨 Hive 2.1 和 Hive 3.1 版本控制群集共享元存储。
 
-* 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表位于 Spark 目录中。 Hive 创建的表位于 Hive 目录中。 这与 HDInsight 3.6 不同，在 HDInsight 3.6 中，Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 Hive 和 Spark 集成依赖于 Hive 仓库连接器 (HWC)。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
+* 在 HDInsight 4.0 中，Spark 和 Hive 使用独立目录来访问 SparkSQL 或 Hive 表。 Spark 创建的表驻留在 Spark 目录中。 Hive 创建的表驻留在 Hive 目录中。 这不同于 HDInsight 3.6，其中 Hive 和 Spark 共享公共目录。 HDInsight 4.0 中的 hive 和 Spark 集成依赖于 Hive 仓库连接器（HWC）。 HWC 在 Spark 和 Hive 之间起到桥梁作用。 [了解 Hive 仓库连接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie 元存储
 

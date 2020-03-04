@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834971"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255660"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 本文介绍了在开发云应用程序时要考虑的安全活动和控制措施。 介绍了在 Microsoft[安全开发生命周期（SDL）](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx)的实施和验证阶段中要考虑的安全问题和概念。 其目标是帮助你定义可用于开发更安全的应用程序的活动和 Azure 服务。
@@ -99,7 +99,7 @@ Azure Marketplace 提供[开发人员工具](https://azuremarketplace.microsoft.
 
 如果你的应用程序允许上[传文件](https://www.owasp.org/index.php/Unrestricted_File_Upload)，请考虑你可以对此风险活动采取一些预防措施。 在许多攻击中，第一步是在受到攻击的系统中获取一些恶意代码。 使用文件上传可帮助攻击者实现此目的。 OWASP 提供验证文件的解决方案，以确保要上载的文件是安全的。
 
-反恶意软件防护有助于识别和删除病毒、间谍软件和其他恶意软件。 你可以安装[Microsoft 反恶意软件](../fundamentals/antimalware.md)或 microsoft 合作伙伴的 endpoint protection 解决方案（[走向微](https://www.trendmicro.com/azure/)、 [Symantec](https://www.symantec.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)和[Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)）。
+反恶意软件防护有助于识别和删除病毒、间谍软件和其他恶意软件。 你可以安装[Microsoft 反恶意软件](../fundamentals/antimalware.md)或 microsoft 合作伙伴的 endpoint protection 解决方案（[走向微](https://www.trendmicro.com/azure/)、 [Broadcom](https://www.broadcom.com/products)、 [McAfee](https://www.mcafee.com/us/products.aspx)、 [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)和[Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)）。
 
 [Microsoft 反恶意软件](../fundamentals/antimalware.md)包括实时保护、计划扫描、恶意软件修正、签名更新、引擎更新、示例报告以及排除事件收集等功能。 可将 Microsoft 反恶意软件和合作伙伴解决方案与 [Azure 安全中心](../../security-center/security-center-partner-integration.md)集成，以方便部署和内置检测（警报和事件）。
 

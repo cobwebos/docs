@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, 用于 Azure 的 Open Service Broker
-ms.openlocfilehash: 3d0ab0b27d77e45d779227d30c5a8e4f824ba62a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ddaa3b9aa198bc142e1bcbcab6b7b1e028eff2aa
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277702"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247922"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>将现有的 MongoDB 应用程序与用于 MongoDB 的 Azure Cosmos DB API 和用于 Azure 的 Open Service Broker (OSBA) 集成
 
@@ -21,13 +21,13 @@ Azure Cosmos DB 是一种全球分布式多模型数据库服务。 它还提供
 
 本文使用现有的 Java 应用程序，该应用程序使用 MongoDB 数据库并对其进行更新，以便使用 Cosmos DB 数据库，而后者又使用 Open Service Broker for Azure。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在继续操作之前，必须满足以下条件：
     
 * 创建 [Azure Kubernetes 服务群集](kubernetes-walkthrough.md)。
 * [在 AKS 群集上安装并配置 Open Service Broker for Azure](integrate-azure.md)。 
-* 安装并配置运行 `svcat` 命令所需的[服务目录 CLI](https://svc-cat.io/docs/install/)。
+* 安装并配置运行 [ 命令所需的](https://svc-cat.io/docs/install/)服务目录 CLI`svcat`。
 * 有一个现有的 [MongoDB](https://www.mongodb.com/) 数据库。 例如，可以让 MongoDB 在[开发计算机](https://docs.mongodb.com/manual/administration/install-community/)上或 [Azure VM](../virtual-machines/linux/install-mongodb.md) 中运行。
 * 通过某种方式（例如 [mongo shell](https://docs.mongodb.com/manual/mongo/)）连接到 MongoDB 数据库并对其进行查询。
 
@@ -191,7 +191,7 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 若要在 AKS 群集中启用 Azure Dev Spaces，请执行以下操作：
 
-```cmd
+```azurecli
 az aks enable-addons --addons http_application_routing -g MyResourceGroup -n MyAKS
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
 ```
@@ -206,7 +206,7 @@ azds prep --public
 
 在项目的根目录中创建名为 *Dockerfile* 且包含以下内容的文件：
 
-```Dockerfile
+```dockerfile
 FROM openjdk:8-jdk-alpine
 EXPOSE 8080
 WORKDIR /app

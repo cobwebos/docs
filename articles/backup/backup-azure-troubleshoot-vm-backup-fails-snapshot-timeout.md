@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 1ed0ce94074e3d0ed03c0a0dc4c276d71da7059b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921005"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255735"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -43,9 +43,7 @@ Azure VM 代理可能已停止、过时、状态不一致或未安装。 这些�
 
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
-**原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**
-
-**原因5：[未设置 VM 代理配置选项（适用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+**原因4：[未设置 VM 代理配置选项（适用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed-VM 处于失败预配状态
 
@@ -86,10 +84,9 @@ Azure VM 代理可能已停止、过时、状态不一致或未安装。 这些�
 **错误代码**：ExtensionSnapshotFailedNoNetwork<br>
 **错误消息**：由于虚拟机未建立网络连接，快照操作失败<br>
 
-注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：
+注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 完成以下故障排除步骤，然后重试操作：
 
-**原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
+**[无法检索快照状态或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks-VMSnapshot 扩展操作失败
 
@@ -98,9 +95,8 @@ Azure VM 代理可能已停止、过时、状态不一致或未安装。 这些�
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展通信来获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
 **原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 4：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因2：[代理安装在 VM 中，但无响应（针对 Windows vm）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 3：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
@@ -111,8 +107,7 @@ Azure VM 代理可能已停止、过时、状态不一致或未安装。 这些�
 **原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
 **原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因5：备份服务由于资源组锁定而无权删除旧的还原点** <br>
+**原因4：[备份服务由于资源组锁定而无权删除旧的还原点](#remove_lock_from_the_recovery_point_resource_group)**<br>
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-Azure 备份当前不支持配置的磁盘大小
 
@@ -212,26 +207,6 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 | --- | --- |
 | 由于在远程桌面协议 (RDP) 中关闭了 VM，VM 状态报告不正确。 | 如果在 RDP 中关闭了 VM，请检查门户，确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
 | VM 无法从 DHCP 获取主机或结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果 VM 无法从 DHCP 响应 245 获取主机或结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP，应通过**Azure 门户**或**PowerShell**进行配置，并确保已启用 VM 内的 DHCP 选项。 [详细了解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何使用 PowerShell 设置静态 IP 地址。
-
-### <a name="the-backup-extension-fails-to-update-or-load"></a>无法更新或加载备份扩展
-
-如果无法加载扩展，则会由于无法创建快照而导致备份失败。
-
-#### <a name="solution"></a>解决方案
-
-卸载扩展以强制重新加载 VMSnapshot 扩展。 下一次备份尝试将重新加载扩展。
-
-卸载扩展：
-
-1. 在 [Azure 门户](https://portal.azure.com/)中，找到备份失败的 VM。
-2. 选择“设置”。
-3. 选择“扩展”。
-4. 选择 "**快照扩展**"。
-5. 选择“卸载”。
-
-对于 Linux VM，如果 Azure 门户中未显示 VMSnapshot 扩展，请[更新 Azure Linux 代理](../virtual-machines/linux/update-agent.md)，并运行备份。
-
-完成这些步骤可在下一次备份期间重新安装扩展。
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 

@@ -3,12 +3,12 @@ title: Azure Application Insights 中的数据保留和存储 | Microsoft Docs
 description: 保留和隐私政策声明
 ms.topic: conceptual
 ms.date: 09/29/2019
-ms.openlocfilehash: 0b266eb0674f6de7dfb20311bba95bc7f4697f61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 30878eecf795c85713b9f09b8325b326416022b8
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669652"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254877"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights 中的数据收集、保留和存储
 
@@ -170,6 +170,12 @@ services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {
 默认情况下，`%TEMP%/appInsights-node{INSTRUMENTATION KEY}` 用于暂留数据。 只有当前用户和管理员，才有权访问此文件夹。 （请参阅此处的[实现](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts)。）
 
 可更改 `appInsights-node`Sender.ts`Sender.TEMPDIR_PREFIX` 中的静态变量 [ 的运行时值，以替代文件夹前缀 ](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384)。
+
+### <a name="javascript-browser"></a>JavaScript （浏览器）
+
+[HTML5 会话存储](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage)用于持久保存数据。 使用两个单独的缓冲区： `AI_buffer` 和 `AI_sent_buffer`。 批处理并等待发送的遥测数据存储在 `AI_buffer`中。 刚刚发送的遥测数据将置于 `AI_sent_buffer`，直到引入服务器响应已成功接收。 成功接收遥测后，将从所有缓冲区中删除遥测数据。 发生暂时性故障（例如，用户失去网络连接）时，遥测数据将保留在 `AI_buffer` 中，直到成功接收或引入服务器响应遥测无效（例如，架构错误或过旧）。
+
+可以通过将[`enableSessionStorageBuffer`](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/JavaScript/JavaScriptSDK.Interfaces/IConfig.ts#L31)设置为 `false`来禁用遥测缓冲区。 关闭会话存储时，会将本地阵列改为用作永久性存储。 由于 JavaScript SDK 在客户端设备上运行，因此用户可以通过浏览器的开发人员工具访问此存储位置。
 
 ### <a name="opencensus-python"></a>OpenCensus Python
 

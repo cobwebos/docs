@@ -4,12 +4,12 @@ description: 了解如何为应用程序配置预先构建的 PHP 容器。 本�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913865"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255838"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure App Service 配置 Linux PHP 应用
 
@@ -204,15 +204,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
     - 在生产模式下运行时，某些 web 框架可能使用自定义的启动脚本。
 - 在调试模式下，在应用服务中运行应用。 例如，在[Laravel](https://meanjs.org/)中，可以将应用配置为在生产中输出调试消息，方法是[将 `APP_DEBUG` 应用设置设置为 `true`](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)。
 
-### <a name="robots933456"></a>robots933456
-
-你可能会在容器日志中看到以下消息：
-
-```
-2019-04-08T14:07:56.641002476Z "-" - - [08/Apr/2019:14:07:56 +0000] "GET /robots933456.txt HTTP/1.1" 404 415 "-" "-"
-```
-
-您可以放心地忽略此消息。 `/robots933456.txt` 是应用服务用于检查容器能否为请求提供服务的虚拟 URL 路径。 404响应只是指示该路径不存在，但它允许应用服务知道容器处于正常状态，并且可以响应请求。
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

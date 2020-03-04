@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445178"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250402"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>监视 Azure Cosmos DB
 如果你有依赖于 Azure 资源的关键应用程序和业务流程，则需要监视这些资源的可用性、性能和操作。 本文介绍 Azure Cosmos 数据库生成的监视数据，以及如何使用 Azure Monitor 的功能对此数据进行分析和发出警报。
@@ -36,6 +36,38 @@ Azure Cosmos DB 使用[Azure Monitor](../azure-monitor/overview.md)创建监视�
 
 ![Cosmos DB 的 Azure Monitor](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的操作级别指标
+
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+
+1. 从左侧导航栏中选择 "**监视器**"，然后选择 "**指标**"。
+
+   ![Azure Monitor 中的指标窗格](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+
+1. 从 "**指标**" 窗格中 >**选择资源**> 选择所需的**订阅**和**资源组**。 对于 "**资源类型**"，请选择 " **Azure Cosmos DB 帐户**"，选择一个现有的 Azure Cosmos 帐户，并选择 "**应用**"。
+
+   ![选择 Cosmos DB 帐户以查看指标](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+
+1. 接下来，您可以从可用指标列表中选择一个度量值。 你可以选择特定于请求单位、存储、延迟、可用性、Cassandra 等的指标。 若要详细了解此列表中的所有可用指标，请参阅[度量值（按类别](monitor-cosmos-db-reference.md)）一文。 在此示例中，我们选择 "**请求单位**" 和 " **Avg** " 作为聚合值。
+
+   除这些详细信息外，还可以选择度量值的**时间范围**和**时间粒度**。 最大情况下，你可以查看过去30天的指标。  应用筛选器后，将根据筛选器显示图表。 您可以查看所选时间段内每分钟使用的请求单位平均数量。  
+
+   ![从 Azure 门户中选择一个度量值](./media/monitor-cosmos-db/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>向指标添加筛选器
+
+还可以筛选度量值和按特定的**CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**和**StatusCode**显示的图表。 若要筛选度量值，请选择 "**添加筛选器**" 并选择所需属性（如**OperationType** ），然后选择一个值，例如 "**查询**"。 然后，关系图显示所选时间段内查询操作使用的请求单位。 不会记录通过存储过程执行的操作，因此它们在 OperationType 指标下不可用。
+
+![添加筛选器以选择指标粒度](./media/monitor-cosmos-db/add-metrics-filter.png)
+
+您可以使用 "**应用拆分**" 选项对度量值进行分组。 例如，可以将每个操作的请求单位分组，并一次查看所有操作的关系图，如下图所示：
+
+![添加应用拆分筛选器](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+
+下面是另一个示例，用于查看特定数据库、容器或操作的服务器端延迟指标：
+
+![服务器端延迟指标](./media/monitor-cosmos-db/serverside-latency-metric.png)
+
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>监视从 Azure Cosmos DB 收集的数据
 
 Azure Cosmos DB 收集相同种类的监视数据，如[监视 Azure 资源](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中的数据中所述的其他 azure 资源。 有关 Azure Cosmos DB 创建的日志和指标的详细参考信息，请参阅[Azure Cosmos DB 监视数据参考](monitor-cosmos-db-reference.md)。
@@ -53,14 +85,14 @@ Azure Cosmos DB 提供了使用指标的自定义体验。 有关使用此体验
 - CollectionName
 - DatabaseName
 - OperationType
-- 地区
+- 区域
 - StatusCode
 
 
 ## <a name="analyzing-log-data"></a>分析日志数据
 Azure Monitor 日志中的数据存储在表中，每个表都具有自己的唯一属性集。 Azure Cosmos DB 将数据存储在下表中。
 
-| 表 | Description |
+| 表 | 说明 |
 |:---|:---|
 | AzureDiagnostics | 多个服务用来存储资源日志的公用表。 Azure Cosmos DB 中的资源日志可通过 `MICROSOFT.DOCUMENTDB`标识。   |
 | AzureActivity    | 用于存储活动日志中所有记录的公用表。 

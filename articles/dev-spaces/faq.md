@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: 查找有关 Azure Dev Spaces 的一些常见问题的解答
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 964fa9ec4948bf178c310af8e35913fda5f70c0f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 285fdb7892d2da40dd50e025cb1dd7644ec17ae0
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934188"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255727"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>常见问题 Azure Dev Spaces
 
@@ -64,6 +64,14 @@ ms.locfileid: "76934188"
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>能否在群集节点的受限制传出流量的 AKS 群集上使用 Azure Dev Spaces？
 
 是的，一旦允许使用正确的 Fqdn，你就可以在具有[受限制的群集节点流量的][aks-restrict-egress-traffic]AKS 群集上使用 Azure Dev Spaces。 若要详细了解如何对启用了 Azure Dev Spaces 的群集节点使用具有受限传出流量的 AKS[群集。](configure-networking.md#ingress-and-egress-network-traffic-requirements)
+
+## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>能否在启用 RBAC 的 AKS 群集上使用 Azure Dev Spaces？
+
+是的，可以在启用了 RBAC 的情况下，在 AKS 群集上使用 Azure Dev Spaces。
+
+## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>在 Visual Studio 中为项目启用入口后会出现什么情况？
+
+使用 Visual Studio 准备项目时，可以选择为服务启用入口。 启用入口会创建一个公共终结点，以便在 AKS 群集上运行时访问该服务，这是可选的。 如果不启用入口，则只能从 AKS 群集内访问服务。
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled

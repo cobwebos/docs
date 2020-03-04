@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: e2b6f47483d2c7b6c4970dac531bada1cecd279e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196546"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252376"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
@@ -39,7 +39,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 
 创建 Azure 容器注册表（ACR）：
 
-```cmd
+```azurecli
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
@@ -52,7 +52,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 
 使用[az ad sp 创建-rbac][az-ad-sp-create-for-rbac]创建服务主体。 例如：
 
-```cmd
+```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
@@ -60,19 +60,19 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 
 使用[az aks show][az-aks-show]显示 aks 群集的*ID* ：
 
-```cmd
+```azurecli
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
 使用[az acr show][az-acr-show]显示 Acr 的*ID* ：
 
-```cmd
+```azurecli
 az acr show --name <acrName> --query id
 ```
 
 使用[az role 分配 create][az-role-assignment-create]为*参与者*授予对你的 AKS 群集的访问权限，并*AcrPush*对你的 ACR 的访问权限。
 
-```cmd
+```azurecli
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
 az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
@@ -158,7 +158,7 @@ git push origin bike-images
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

@@ -3,8 +3,8 @@ title: 数据库迁移方案状态
 titleSuffix: Azure Database Migration Service
 description: 了解 Azure 数据库迁移服务支持的迁移方案的状态。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437676"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78254916"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
 
@@ -45,7 +45,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 下表显示了 Azure 数据库迁移服务对脱机迁移的支持。
 
-| 确定目标  | 源 | 支持 | 状态 |
+| 目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
@@ -65,7 +65,7 @@ Azure 数据库迁移服务支持的迁移方案的状态随时间而变化。 �
 
 下表显示了 Azure 数据库迁移服务对联机迁移的支持。
 
-| 确定目标  | 源 | 支持 | 状态 |
+| 目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |

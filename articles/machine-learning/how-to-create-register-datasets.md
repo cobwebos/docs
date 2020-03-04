@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 6b6d63d956f46587d89edf1b080f1bb9bd3ca67e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 003924c42a1a7e428a3a11f21a4cfe782c12e859
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649084"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255797"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -57,7 +57,7 @@ ms.locfileid: "77649084"
 
 ## <a name="create-datasets"></a>创建数据集
 
-通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本。 您可以使用 Python SDK 或工作区登陆页面（预览版）创建 `TabularDataset` 和 `FileDataset` 数据集。
+通过创建数据集，可以创建对数据源位置的引用以及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本。 您可以使用 Python SDK 或 https://ml.azure.com创建 `TabularDataset` 和 `FileDataset` 数据集。
 
 要使数据可 Azure 机器学习访问，必须从[Azure 数据存储](how-to-access-data.md)或公共 web url 中的路径创建数据集。
 
@@ -73,8 +73,6 @@ ms.locfileid: "77649084"
 
 
 #### <a name="create-a-tabulardataset"></a>创建 TabularDataset
-
-可以通过 SDK 或 Azure 机器学习 studio 创建 TabularDatasets。 
 
 使用 `TabularDatasetFactory` 类的[`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-)方法可读取 .csv 或 tsv 格式的文件，以及创建未注册的 TabularDataset。 如果要从多个文件读取，结果将聚合为一个表格表示形式。 
 
@@ -96,10 +94,10 @@ datastore_paths = [(datastore, 'ather/2018/11.csv'),
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
-默认情况下，当您创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，则可以使用以下代码指定列类型。 如果存储位于虚拟网络或防火墙后面，请在 `from_delimited_files()` 方法中包含参数 `validate=False` 和 `infer_column_types=False`。 这会绕过初始验证检查，并确保可以从这些安全文件创建数据集。 你还可以[了解有关支持的数据类型的详细信息](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
+默认情况下，当您创建 TabularDataset 时，将自动推断列数据类型。 如果推断出的类型与预期不符，则可以使用以下代码指定列类型。 参数 `infer_column_type` 仅适用于从分隔文件创建的数据集。你还可以[了解有关支持的数据类型的详细信息](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.datatype?view=azure-ml-py)。
 
-> [!NOTE] 
->参数 `infer_column_type` 仅适用于从分隔文件创建的数据集。 
+> [!IMPORTANT] 
+> 如果存储位于虚拟网络或防火墙后面，则仅支持通过 SDK 创建数据集。 若要创建数据集，请确保在 `from_delimited_files()` 方法中包含参数 `validate=False` 和 `infer_column_types=False`。 这会绕过初始验证检查，并确保可以从这些安全文件创建数据集。 
 
 ```Python
 from azureml.data.dataset_factory import DataType
@@ -117,6 +115,32 @@ titanic_ds.take(3).to_pandas_dataframe()
 0|1|False|3|Braund，Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs Bradley （Florence Briggs 。|女|38.0|1|0|电脑17599|71.2833|C85|C
 2|3|True|3|Heikkinen，未命中。 Laina|女|26.0|0|0|STON/O2。 3101282|7.9250||S
+
+
+若要在内存 pandas 数据帧中创建数据集，请将数据写入本地文件（例如 csv），并从该文件创建数据集。 下面的代码演示了此工作流。
+
+```python
+local_path = 'data/prepared.csv'
+dataframe.to_csv(local_path)
+upload the local file to a datastore on the cloud
+# azureml-core of version 1.0.72 or higher is required
+# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Dataset
+
+subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
+resource_group = 'xxxxxx'
+workspace_name = 'xxxxxxxxxxxxxxxx'
+
+workspace = Workspace(subscription_id, resource_group, workspace_name)
+
+# get the datastore to upload prepared data
+datastore = workspace.get_default_datastore()
+
+# upload the local file from src_dir to the target_path in datastore
+datastore.upload(src_dir='data', target_path='data')
+create a dataset referencing the cloud location
+dataset = Dataset.Tabular.from_delimited_files(datastore.path('data/prepared.csv'))
+```
 
 使用 `TabularDatasetFactory` 类的[`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-)方法从 Azure SQL 数据库读取：
 

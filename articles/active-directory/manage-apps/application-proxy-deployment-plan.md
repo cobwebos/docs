@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033632"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248362"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>规划 Azure AD 应用程序代理部署
 
@@ -34,7 +34,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 以下部分提供了关键规划元素的广泛视图，这些元素将为你提供高效的部署体验。 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 
 在开始实施之前，需要满足以下先决条件。 在本[教程](application-proxy-add-on-premises-application.md)中，可以查看有关设置环境的详细信息，包括这些先决条件。
 
@@ -50,7 +50,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
      * 如果可能，请在与后端 web 应用程序服务器[相同的网络](application-proxy-network-topology.md)和网段中部署连接器。 在完成应用程序发现后，最好部署连接器。
      * 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。 查看[连接器容量表](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)，以帮助确定要在其上安装连接器的计算机的类型。 计算机越大，连接器的缓冲区和性能就越多。
 
-* **网络访问设置**：Azure AD 应用程序代理连接器[通过 HTTPS （Tcp 端口443）和 HTTP （Tcp 端口80）连接到 Azure](application-proxy-add-on-premises-application.md)。 
+* **网络访问设置**： Azure AD 应用程序代理连接器[通过 HTTPS （tcp 端口443）和 HTTP （tcp 端口80）连接到 Azure](application-proxy-add-on-premises-application.md)。 
 
    * 不支持终止连接器 TLS 流量，并且会阻止连接器使用各自的 Azure 应用代理终结点建立安全通道。
 
@@ -64,13 +64,13 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 *  **Azure 载入**：在部署应用程序代理之前，必须从本地目录同步用户标识，或直接在 Azure AD 租户中创建用户标识。 标识同步允许 Azure AD 在授予用户对应用代理发布的应用程序的访问权限之前对用户进行预身份验证，并获得执行单一登录 (SSO) 所需的用户标识符信息。
 
-* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。 
+* **条件性访问要求**：我们不建议使用应用程序代理进行 intranet 访问，因为这会增加会影响用户的延迟。 建议将应用程序代理与预身份验证和条件访问策略一起使用，以便从 internet 进行远程访问。  提供 intranet 使用条件性访问的方法是实现应用程序的现代化，使其能够直接使用 AAD 进行身份验证。 有关详细信息，请参阅将[应用程序迁移到 AAD 的资源](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources)。 
 
-* **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置的限制限制。 若要查看这些限制，请参阅[Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
+* **服务限制**：若要防止单个租户过度资源，有每个应用程序和租户设置限制限制。 若要查看这些限制，请参阅[Azure AD 服务限制和限制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)。 这些限制基于比典型的使用量更高的基准，并为大多数部署提供充足的缓冲区。
 
-* **公共证书**：如果你使用的是自定义域名，则必须获得由非 Microsoft 可信证书颁发机构颁发的公共证书。 根据组织的要求，获取证书可能需要一些时间，我们建议尽早开始此过程。 Azure 应用程序 Proxy 支持标准、[通配符](application-proxy-wildcard.md)或基于 SAN 的证书。
+* **公共证书**：如果你使用的是自定义域名，则必须购买 SSL 证书。 根据组织的要求，获取证书可能需要一些时间，我们建议尽早开始此过程。 Azure 应用程序 Proxy 支持标准、[通配符](application-proxy-wildcard.md)或基于 SAN 的证书。 有关更多详细信息，请参阅[Azure AD 应用程序代理配置自定义域](application-proxy-configure-custom-domain.md)。
 
-* **域要求**：使用 Kerberos 约束委派（KCD）的已发布应用程序的单一登录要求运行连接器的服务器和运行该应用程序的服务器都已加入域，并且属于同一个域或信任域。
+* **域要求**：使用 Kerberos 约束委派（KCD）单一登录到已发布的应用程序要求运行连接器的服务器和运行该应用程序的服务器都已加入域，并且属于同一域或信任域。
 有关该主题的详细信息，请参阅[KCD for 单一登录](application-proxy-configure-single-sign-on-with-kcd.md)和应用程序代理。 连接器服务在本地系统的上下文中运行，不应配置为使用自定义标识。
 
 * **Url 的 DNS 记录**
@@ -85,7 +85,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
    * **应用程序发布和管理**需要*应用程序管理员*角色。 应用程序管理员可以管理目录中的所有应用程序，包括注册、SSO 设置、用户和组分配以及许可、应用程序代理设置和许可。 它不能授予管理条件访问的能力。 *云应用程序管理员*角色具有应用程序管理员的所有功能，但它不允许管理应用程序代理设置。
 
-* **许可**：可以通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。  
+* **许可**：可通过 Azure AD Premium 订阅获取应用程序代理。 有关许可选项和功能的完整列表，请参阅[Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory/)。  
 
 ### <a name="application-discovery"></a>应用程序发现
 
@@ -93,17 +93,17 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 | 信息类型| 要收集的信息 |
 |---|---|
-| 服务类型| 例如：SharePoint，SAP，CRM，自定义 Web 应用程序，API |
-| 应用程序平台 | 例如：Windows IIS，Linux 上的 Apache，Tomcat，NGINX |
+| 服务类型| 例如： SharePoint、SAP、CRM、自定义 Web 应用程序、API |
+| 应用程序平台 | 例如： Windows IIS、Linux 上的 Apache、Tomcat、NGINX |
 | 域成员身份| Web 服务器的完全限定的域名（FQDN） |
 | 应用程序位置 | Web 服务器或场位于你的基础结构中的位置 |
 | 内部访问 | 内部访问应用程序时使用的准确 URL。 <br> 如果在场，使用哪种类型的负载平衡？ <br> 应用程序是否从本身的源中提取内容。<br> 确定应用程序是否在 Websocket 上运行。 |
 | 外部访问 | 应用程序已从外部公开到的供应商解决方案。 <br> 要用于外部访问的 URL。 如果是 SharePoint，请确保根据[本指南](https://docs.microsoft.com/SharePoint/administration/configure-alternate-access-mappings)配置备用访问映射。 如果没有，则需要定义外部 Url。 |
-| 公共证书 | 如果使用自定义域，则使用相应的使用者名称购买证书。 如果证书存在，请记下可获取该证书的序列号和位置。 |
+| 公用证书 | 如果使用自定义域，则使用相应的使用者名称购买证书。 如果证书存在，请记下可获取该证书的序列号和位置。 |
 | 身份验证类型| 应用程序支持的身份验证类型，如基本、Windows 集成身份验证、基于窗体、基于标头和声明。 <br>如果将应用程序配置为在特定的域帐户下运行，请注意服务帐户的完全限定的域名（FQDN）。<br> 如果基于 SAML，则为标识符和回复 Url。 <br> 如果基于标头，则为供应商解决方案和处理身份验证类型的特定要求。 |
 | 连接器组名称 | 将指定向此后端应用程序提供管道和 SSO 的连接器组的逻辑名称。 |
 | 用户/组访问权限 | 将被授予对应用程序的外部访问权限的用户或用户组。 |
-| 其他要求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
+| 其他需求 | 请注意发布应用程序时应考虑的任何其他远程访问或安全要求。 |
 
 您可以下载此[应用程序清单电子表格](https://aka.ms/appdiscovery)来清点您的应用程序。
 
@@ -125,7 +125,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 * 只有通过组成员身份或单独分配到应用程序的用户可以访问这些应用程序。
 
-**性能**
+**“性能”**
 
 * 与从内部网络访问应用程序相比，应用程序性能不会有所下降。
 
@@ -149,11 +149,11 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 **应用程序管理**：
 
-* 你的员工最有可能记得某个外部 URL 熟悉且相关。 避免使用预定义的 msappproxy.net 或 onmicrosoft.com 后缀发布应用程序。 相反，请提供熟悉的顶级验证域，并以逻辑主机名（例如 intranet）作为前缀 *。 < customers_domain > .com*。
+* 你的员工最有可能记得某个外部 URL 熟悉且相关。 避免使用预定义的 msappproxy.net 或 onmicrosoft.com 后缀发布应用程序。 相反，请提供熟悉的顶级验证域，并以逻辑主机名（例如 intranet）作为前缀 *。 < customers_domain >。*
 
 * 通过隐藏其在 Azure MyApps 门户中的 "启动" 图标，限制试点应用程序的图标对试点组的可见性。 准备好生产时，可以将应用范围限定为其相应的目标受众，无论是在同一预生产租户中，还是在生产租户中发布应用程序。
 
-**单一登录设置**：一些 SSO 设置具有特定的依赖关系，可能需要一些时间来进行设置，因此请确保提前解决依赖关系，从而避免更改控制延迟。 这包括域加入连接器主机使用 Kerberos 约束委派（KCD）执行 SSO，并负责处理其他耗时的活动。 例如，如果需要基于标头的 SSO，则设置 PING 访问实例。
+**单一登录设置**：某些 SSO 设置具有特定的依赖关系，可能需要一些时间进行设置，因此请确保提前解决依赖关系，从而避免更改控制延迟。 这包括域加入连接器主机使用 Kerberos 约束委派（KCD）执行 SSO，并负责处理其他耗时的活动。 例如，如果需要基于标头的 SSO，则设置 PING 访问实例。
 
 **连接器主机和目标应用程序之间的 SSL**：安全性非常重要，因此应始终使用连接器主机和目标应用程序之间的 TLS。 特别是，如果为基于窗体的身份验证（FBA）配置了 web 应用程序，则会有效地以明文形式传输用户凭据。
 
@@ -164,7 +164,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 3. 然后添加应用程序的 SSO 方法，并再次测试以验证访问权限。
 4. 根据需要应用条件性访问和 MFA 策略。 测试和验证访问权限。
 
-**故障排除工具**：在进行故障排除时，请始终先通过从连接器主机上的浏览器验证已发布应用程序的访问权限，并确认应用程序按预期方式工作。 你的设置越简单，确定根本原因会更容易，因此请考虑尝试使用最小配置（例如仅使用单个连接器，而不使用 SSO）重现问题。 在某些情况下，web 调试工具（如 Telerik 的 Fiddler）可以在通过代理访问的应用程序中排除访问或内容问题的不需要。 Fiddler 还可以充当代理来帮助跟踪和调试移动平台（如 iOS 和 Android）的流量，以及可以配置为通过代理进行路由的几乎所有内容。 有关详细信息，请参阅[故障排除指南](application-proxy-troubleshoot.md)。
+**故障排除工具**：故障排除时，请始终先通过从连接器主机上的浏览器验证对已发布应用程序的访问权限，并确认应用程序按预期方式工作。 你的设置越简单，确定根本原因会更容易，因此请考虑尝试使用最小配置（例如仅使用单个连接器，而不使用 SSO）重现问题。 在某些情况下，web 调试工具（如 Telerik 的 Fiddler）可以在通过代理访问的应用程序中排除访问或内容问题的不需要。 Fiddler 还可以充当代理来帮助跟踪和调试移动平台（如 iOS 和 Android）的流量，以及可以配置为通过代理进行路由的几乎所有内容。 有关详细信息，请参阅[故障排除指南](application-proxy-troubleshoot.md)。
 
 ## <a name="implement-your-solution"></a>实现你的解决方案
 
@@ -182,23 +182,23 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 * **使用连接器组**：分配已指定用于发布每个单独的应用程序的连接器组。 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。 此外，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)，了解如何使用连接器组按网络或位置对连接器进行分段。
 
-* **设置后端应用程序超时**：当应用程序在处理客户端事务时可能需要超过75秒时，此设置很有用。 例如，当客户端将查询发送到充当数据库前端的 web 应用程序时。 前端将此查询发送到其后端数据库服务器并等待响应，但在收到响应时，会话的客户端将超时。将 "超时" 设置为 "长" 可提供180秒，以完成较长的事务。
+* **设置后端应用程序超时**：如果应用程序可能需要超过75秒的时间来处理客户端事务，则此设置非常有用。 例如，当客户端将查询发送到充当数据库前端的 web 应用程序时。 前端将此查询发送到其后端数据库服务器并等待响应，但在收到响应时，会话的客户端将超时。将 "超时" 设置为 "长" 可提供180秒，以完成较长的事务。
 
 * **使用适当的 Cookie 类型**
 
-   * **仅限 HTTP 的 Cookie**：通过让应用程序代理在 set-cookie HTTP 响应标头中包含 HTTPOnly 标志来提供额外的安全性。 此设置有助于缓解攻击，如跨站点脚本（XSS）。 对于需要访问会话 cookie 的客户端/用户代理，将此设置为 "否"。 例如，RDP/MTSC 客户端连接到通过应用程序代理发布的远程桌面网关。
+   * **仅限 HTTP 的 Cookie**：通过让应用程序代理在 set-Cookie HTTP 响应标头中包含 HTTPOnly 标志来提供额外的安全性。 此设置有助于缓解攻击，如跨站点脚本（XSS）。 对于需要访问会话 cookie 的客户端/用户代理，将此设置为 "否"。 例如，RDP/MTSC 客户端连接到通过应用程序代理发布的远程桌面网关。
 
-   * **安全 Cookie**：当使用 Secure 特性设置 cookie 时，如果通过 TLS 安全通道传输请求，则用户代理（客户端应用）将仅在 HTTP 请求中包含 cookie。 这有助于降低 cookie 在明文通道上泄露的风险，因此应启用此功能。
+   * **安全 cookie**：当使用 secure 特性设置 cookie 时，如果通过 TLS 安全通道传输请求，则用户代理（客户端应用）将仅在 HTTP 请求中包含 cookie。 这有助于降低 cookie 在明文通道上泄露的风险，因此应启用此功能。
 
-   * **永久性 Cookie**：允许应用程序代理会话 cookie 在浏览器闭包之间保持不变，直至过期或删除为止。 用于富应用程序（如 office）访问已发布的 web 应用程序中的文档，而无需重新提示用户进行身份验证。 使用时务必小心，因为如果不将服务与其他补偿控制结合使用，则持久性 cookie 最终会使服务面临未经授权的访问的风险。 此设置应该仅用于无法在进程之间共享 cookie 的较旧的应用程序。 更好的做法是，更新应用程序以处理进程之间的共享 cookie，而不是使用此设置。
+   * **永久性 Cookie**：允许应用程序代理会话 Cookie 在浏览器闭包之间保持不变，直至过期或删除为止。 用于富应用程序（如 office）访问已发布的 web 应用程序中的文档，而无需重新提示用户进行身份验证。 使用时务必小心，因为如果不将服务与其他补偿控制结合使用，则持久性 cookie 最终会使服务面临未经授权的访问的风险。 此设置应该仅用于无法在进程之间共享 cookie 的较旧的应用程序。 更好的做法是，更新应用程序以处理进程之间的共享 cookie，而不是使用此设置。
 
-* **转换标头中的 url**：在无法配置内部 DNS 以匹配组织的公共命名空间（即，拆分 DNS）的情况下，将启用此设置。 除非你的应用程序需要客户端请求中的原始主机标头，否则请将此值设置为 "是"。 另一种方法是让连接器使用内部 URL 中的 FQDN 来路由实际流量，并使用外部 URL 中的 FQDN 作为主机标头。 在大多数情况下，这种替代方法应允许应用程序在远程访问时正常工作，但用户失去了在 URL 外 & 匹配的好处。
+* **转换标头中的 url**：在无法配置内部 DNS 以匹配组织的公共命名空间（a k. a Split dns）的情况下启用此操作。 除非你的应用程序需要客户端请求中的原始主机标头，否则请将此值设置为 "是"。 另一种方法是让连接器使用内部 URL 中的 FQDN 来路由实际流量，并使用外部 URL 中的 FQDN 作为主机标头。 在大多数情况下，这种替代方法应允许应用程序在远程访问时正常工作，但用户失去了在 URL 外 & 匹配的好处。
 
-* **转换应用程序主体中的 URL**：当你希望将来自该应用的链接转换回客户端时，请打开应用的应用程序正文链接转换。 如果启用此功能，则会尽力转换应用代理在 HTML 和返回到客户端的 CSS 响应中查找的所有内部链接。 当发布包含内容中硬编码的绝对或 NetBIOS 短名称链接的应用程序或包含链接到其他本地应用程序的内容的应用时，此方法非常有用。
+* **转换应用程序主体中的 url**：如果想要将应用程序中的链接从该应用转换回客户端，请打开应用的应用程序正文链接转换。 如果启用此功能，则会尽力转换应用代理在 HTML 和返回到客户端的 CSS 响应中查找的所有内部链接。 当发布包含内容中硬编码的绝对或 NetBIOS 短名称链接的应用程序或包含链接到其他本地应用程序的内容的应用时，此方法非常有用。
 
 对于发布的应用链接到其他已发布应用的方案，为每个应用程序启用链接转换，以便您可以在每个应用程序级别控制用户体验。
 
-例如，假设有三个通过应用程序代理发布的应用程序，这些应用程序均彼此链接：权益、费用和旅行，外加第四个不通过应用程序代理发布的应用。
+例如，假设你有三个通过应用程序代理发布的应用程序，所有这些应用程序都链接在一起：权益、支出和旅行，外加第四个不通过应用程序代理发布的应用。
 
 ![图片1](media/App-proxy-deployment-plan/link-translation.png)
 
@@ -227,7 +227,7 @@ Azure Active Directory （Azure AD）应用程序代理是一种安全且经济�
 
 如果将此选项设置为 "否"，则用户无需权限即可通过 Azure AD 应用代理访问本地应用程序，因此请谨慎使用。
 
-发布应用程序后，应该可以通过在浏览器中键入其外部 URL，或通过其在上[https://myapps.microsoft.com](https://myapps.microsoft.com/)键入其图标来访问该应用程序。
+发布应用程序后，应该可以通过在浏览器中键入其外部 URL 或[https://myapps.microsoft.com](https://myapps.microsoft.com/)上的图标来访问该应用程序。
 
 ### <a name="enable-pre-authentication"></a>启用预身份验证
 
@@ -263,15 +263,15 @@ Azure AD 应用程序代理还可以支持开发使用 Azure AD 身份验证库�
 
 以下功能可用于支持 Azure AD 应用程序代理：
 
-* 基于用户和位置的条件访问：通过基于地理位置或[基于位置的条件访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)限制用户访问来保护敏感数据。
+* 基于用户和位置的条件访问：使用[基于位置的条件性访问策略](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-locations)限制基于地理位置或 IP 地址的用户访问来保护敏感数据。
 
 * 基于设备的条件性访问：确保只有已注册、已批准和合规的设备才能使用[基于设备的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)来访问公司数据。
 
 * 基于应用程序的条件性访问：如果用户不在公司网络上，则不需要停止工作。 [安全访问公司云和本地应用](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)，并使用条件访问维护控制。
 
-* 基于风险的条件性访问：使用基于风险的条件性访问策略（无论是在本地还是云中），使用[基于风险的条件性访问策略](https://www.microsoft.com/cloud-platform/conditional-access)来保护数据免受恶意黑客的攻击。
+* 基于风险的条件性访问：使用基于风险的条件性访问策略（无论是在本地还是在云中），使用[基于风险的条件性访问策略](https://www.microsoft.com/cloud-platform/conditional-access)来保护数据免受恶意黑客的攻击。
 
-* Azure AD 访问面板：部署应用程序代理服务并安全发布应用程序后，为用户提供一个简单的中心来发现和访问其所有应用程序。 使用自助服务功能提高工作效率，如通过[访问面板](https://aka.ms/AccessPanelDPDownload)请求访问新的应用程序和组或代表其他用户管理对这些资源的访问权限。
+* Azure AD 访问面板：通过部署的应用程序代理服务和安全发布的应用程序，为用户提供一个简单的中心，用于发现和访问其所有应用程序。 使用自助服务功能提高工作效率，如通过[访问面板](https://aka.ms/AccessPanelDPDownload)请求访问新的应用程序和组或代表其他用户管理对这些资源的访问权限。
 
 ## <a name="manage-your-implementation"></a>管理实现
 
@@ -282,13 +282,13 @@ Microsoft 在为 Azure AD 提供执行所需任务的最低权限的原则。 [�
 | 业务角色| 业务任务| Azure AD 角色 |
 |---|---|---|
 | 咨询台管理员 | 通常限制为仅限制最终用户报告的问题并执行有限的任务，例如更改用户的密码、使刷新令牌失效以及监视服务运行状况。 | 支持管理员 |
-| 标识管理员| 阅读 Azure AD 登录报表和审核日志以调试应用程序代理相关的问题。| 安全读者 |
+| 标识管理员| 阅读 Azure AD 登录报表和审核日志以调试应用程序代理相关的问题。| 安全读取者 |
 | 应用程序所有者| 创建和管理企业应用程序、应用程序注册和应用程序代理设置的所有方面。| 应用程序管理员 |
 | 基础结构管理 | 证书滚动更新所有者 | 应用程序管理员 |
 
 最大程度地减少有权访问安全信息或资源的人员的数量，有助于减少恶意执行组件获取未经授权的访问或被授权的用户无意中影响敏感资源的可能性。 
  
-但是，用户仍需要执行日常的特权操作，因此强制基于实时（JIT）的[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)策略来提供对 Azure 资源的按需特权访问，Azure AD 是我们建议的方法有效管理管理访问和审核。
+但是，用户仍需要执行日常的特权操作，因此强制基于实时（JIT）的[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)策略来提供对 Azure 资源和 Azure AD 的按需权限访问，这是我们建议的方法，以便有效地管理管理访问和审核。
 
 ### <a name="reporting-and-monitoring"></a>报告和监视
 
@@ -302,7 +302,7 @@ Azure AD 通过[审核日志和报告，](../reports-monitoring/concept-provisio
 
 连接器和服务负责处理所有的高可用性任务。 可以通过 Azure AD 门户中的 "应用程序代理" 页来监视连接器的状态。 有关连接器维护的详细信息，请参阅[了解 Azure AD 应用程序代理连接器](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#maintenance)。
 
-![例如：Azure AD 应用程序代理连接器](./media/application-proxy-connectors/app-proxy-connectors.png)
+![示例： Azure AD 应用程序代理连接器](./media/application-proxy-connectors/app-proxy-connectors.png)
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows 事件日志和性能计数器
 
@@ -310,7 +310,7 @@ Azure AD 通过[审核日志和报告，](../reports-monitoring/concept-provisio
 
 ### <a name="troubleshooting-guide-and-steps"></a>疑难解答指南和步骤
 
-详细了解常见问题, 以及如何[解决](application-proxy-troubleshoot.md)这些问题。 
+详细了解常见问题，以及[如何解决这些](application-proxy-troubleshoot.md)问题。 
 
 以下文章介绍了一些常见方案，这些方案还可用于为你的支持组织创建故障排除指南。 
 

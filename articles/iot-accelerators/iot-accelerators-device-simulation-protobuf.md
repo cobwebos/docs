@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: 79517ffd68c501203ea9c02f3a3276973d4a8a56
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982147"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250213"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用协议缓冲区将遥测数据序列化
 
@@ -32,7 +32,7 @@ ms.locfileid: "75982147"
 1. 生成 Protobuf 类
 1. 本地测试
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要遵循本操作指南中的步骤，需要：
 
@@ -68,7 +68,7 @@ ms.locfileid: "75982147"
 > [!NOTE]
 > 在计算机本地运行微服务时，它仍然需要 Azure 中的 Cosmos DB 实例才能正常运行。
 
-若要在本地运行存储适配器微服务，请单击“调试”\>“开始调试”。
+若要在本地运行存储适配器微服务，请单击“调试” **“开始调试”\>** 。
 
 Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：<http://127.0.0.1:9022/v1/status>。 导航到此地址时，状态应显示为“正常: 活动且正常”。
 
@@ -145,7 +145,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 创建设备模型并确定消息格式后，可以创建 **proto** 文件。 在 **proto** 文件中，添加：
 
-* 与设备模型中 **ClassName** 属性匹配的 `csharp_namespace`。
+* 与设备模型中 `csharp_namespace`ClassName**属性匹配的**。
 * 要序列化的每个数据结构的消息。
 * 该消息中每个字段的名称和类型。
 
@@ -217,7 +217,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 </None>
 ```
 
-若要在本地运行微服务，请单击“调试”\>“开始调试”。
+若要在本地运行微服务，请单击“调试” **“开始调试”\>** 。
 
 Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出。
 
@@ -231,7 +231,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 
 # Monitor telemetry sent to your hub
 az iot hub monitor-events --hub-name device-simulation-test
@@ -247,9 +247,9 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 在本地计算机上打开 Postman。
 
-1. 单击“文件”\>“导入”。 然后单击“选择文件”。
+1. 单击“文件” **“导入”\>** 。 然后单击“选择文件”。
 
-1. 选择“Azure IoT 设备模拟解决方案 accelerator.postman\_collection”和“Azure IoT 设备模拟解决方案 accelerator.postman\_environment”，然后单击“打开”。
+1. 选择“Azure IoT 设备模拟解决方案 accelerator.postman**collection”和“Azure IoT 设备模拟解决方案 accelerator.postman\_environment”，然后单击“打开”** **\_** 。
 
 1. 展开“Azure IoT 设备模拟解决方案加速器”以查看可发送的请求。
 
@@ -267,7 +267,7 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 ### <a name="clean-up-resources"></a>清理资源
 
-可在相应的 Visual Studio Code 实例中停止这两个本地运行的微服务（“调试”\>“停止调试”）。
+可在相应的 Visual Studio Code 实例中停止这两个本地运行的微服务（“调试” **“停止调试”）\>** 。
 
 如果不再需要 IoT 中心和 Cosmos DB 实例，请从 Azure 订阅中将其删除，以避免产生任何不必要的费用。
 

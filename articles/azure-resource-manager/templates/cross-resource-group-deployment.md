@@ -3,12 +3,12 @@ title: 部署资源跨订阅 & 资源组
 description: 介绍如何在部署期间将多个 Azure 订阅和资源组作为目标。
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8f5fbd51456003059f6a32fc32b32194a936434a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 47573fedd7915d95d6ed98e3fd0aaf840331552b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154204"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250605"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>将 Azure 资源部署到多个订阅或资源组
 
@@ -119,7 +119,7 @@ ms.locfileid: "76154204"
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要将两个存储帐户部署到**同一订阅**中的两个资源组，请使用：
 
@@ -209,11 +209,11 @@ az group deployment create \
 
 下表显示了函数是解析为父资源组还是嵌入资源组和订阅。
 
-| 模板类型 | 范围 | 分辨率 |
+| 模板类型 | 范围 | 解决方法 |
 | ------------- | ----- | ---------- |
 | 嵌套        | 外部（默认值） | 父资源组 |
 | 嵌套        | 内部 | 子资源组 |
-| 链表        | N/A   | 子资源组 |
+| 链表        | 空值   | 子资源组 |
 
 下面的[示例模板](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json)显示：
 
@@ -317,7 +317,7 @@ az group deployment create \
 
 若要测试上述模板并查看结果，请使用 PowerShell 或 Azure CLI。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -340,7 +340,7 @@ New-AzResourceGroupDeployment `
  linkedRG         String                     Linked resource group is linkedgroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -355,7 +355,7 @@ az group deployment create \
 
 前述示例的输出为：
 
-```azurecli
+```output
 "outputs": {
   "defaultScopeRG": {
     "type": "String",

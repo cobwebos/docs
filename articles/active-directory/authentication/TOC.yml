@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: 启用向本地进行密码写回
       href: tutorial-enable-sspr-writeback.md
+    - name: 配置自定义禁止密码列表
+      href: tutorial-configure-custom-password-protection.md
     - name: 集成 Azure 标识保护
       href: tutorial-risk-based-sspr-mfa.md
 - name: 概念
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD 密码保护
       items:
-        - name: 配置禁止的密码列表
-          href: howto-password-ban-bad-configure.md
         - name: 本地集成
           items:
             - name: 部署 Azure AD 密码保护
