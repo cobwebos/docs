@@ -26,6 +26,8 @@
           href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: 购买 Azure Databricks 预留
           href: prepay-databricks-reserved-capacity.md
+        - name: 购买 Azure Cache for Redis 预留
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/billing/TOC.json
         - name: 购买应用服务预留
           href: prepay-app-service-isolated-stamp.md
         - name: 购买 Azure 软件计划预留

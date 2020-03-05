@@ -1,45 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Front Door 服务文档
+summary: Azure Front Door 是一个可缩放的安全入口点，用于快速交付全局 Web 应用程序。
 metadata:
   title: Azure Front Door 服务文档
-  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
+  description: Azure Front Door 服务提供可缩放的安全入口点，可快速交付全局 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
   services: frontdoor
-  author: dlepow
   ms.service: frontdoor
   ms.topic: landing-page
-  ms.date: 9/14/2018
-  ms.author: danlep
-abstract:
-  description: Azure Front Door 服务提供可缩放的安全入口点，可快速交付全局 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 创建 Front Door，以实现高度可用的全局 Web 应用程序。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure 门户
-            href: quickstart-create-front-door.md
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何配置 Azure Front Door 服务以满足需求。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="front-door-custom-domain.md">将自定义域添加到 Front Door</a>
-          - html: <a href="front-door-custom-domain-https.md">为自定义域启用 HTTPS</a>
-  - title: 引用
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+  author: vhorne
+  ms.author: victorh
+  ms.date: 03/03/2020
+  ms.openlocfilehash: 7fdf859bc3d8f970fe16bd031d4fd60919c49a92
+  ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/04/2020
+  ms.locfileid: "78273273"
+landingContent:
+- title: 了解 Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure Front Door？
+      url: front-door-overview.md
+- title: 创建 Front Door
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 创建 Front Door
+      url: quickstart-create-front-door.md
+- title: 添加自定义域
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将自定义域添加到 Front Door
+      url: front-door-custom-domain.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在 Front Door 上载入根或顶点域
+      url: front-door-how-to-onboard-apex-domain.md
+- title: 了解地区筛选
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 什么是域中的地区筛选？
+      url: front-door-geo-filtering.md
+  - linkListType: tutorial
+    links:
+    - text: 设置地区筛选 WAF 策略
+      url: front-door-tutorial-geo-filtering.md
+- title: 配置 HTTPS
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 在 Front Door 自定义域中配置 HTTPS
+      url: front-door-custom-domain-https.md
+- title: Azure Front Door 故障排除
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 常见路由问题
+      url: front-door-troubleshoot-routing.md
+    - text: 允许的证书颁发机构
+      url: front-door-troubleshoot-allowed-ca.md
+- title: 了解 Azure 负载均衡
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 负载均衡
+      url: front-door-lb-with-azure-app-delivery-suite.md

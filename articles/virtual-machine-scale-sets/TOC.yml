@@ -247,6 +247,8 @@
           href: virtual-machine-scale-sets-networking.md
         - name: 自动 OS 升级
           href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: 自动实例修复（预览版）
+          href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: 实例保护
           href: virtual-machine-scale-sets-instance-protection.md
         - name: 缩小策略
