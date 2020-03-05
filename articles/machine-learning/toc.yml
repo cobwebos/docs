@@ -208,6 +208,9 @@
         - name: 创建带标签的数据集
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: 使用 Azure 数据工厂进行数据引入
+          displayName: 'data, ingestion, adf'
+          href: how-to-data-ingest-adf.md
         - name: 用于数据引入的 DevOps
           displayName: 'data, ingestion, devops'
           href: how-to-cicd-data-ingestion.md
