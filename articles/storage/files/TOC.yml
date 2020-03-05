@@ -119,8 +119,6 @@
       items:
         - name: 迁移到 Azure 文件同步
           href: storage-sync-offline-data-transfer.md
-        - name: 从 StorSimple 迁移到 Azure 文件同步
-          href: storage-sync-files-storsimple-migration.md
         - name: StorSimple 8100 和 8600 迁移指南
           href: storage-files-migration-storsimple-8000.md
         - name: StorSimple 1200 迁移指南

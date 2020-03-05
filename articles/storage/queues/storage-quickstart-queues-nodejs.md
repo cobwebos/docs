@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9f666376020d36bd57b2cc9e78a0704a8ec47b4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358746"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199778"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入门：适用于 JavaScript 的 Azure 队列存储客户端库 v12
 
@@ -28,9 +28,9 @@ ms.locfileid: "75358746"
 * 删除队列中的消息
 * 删除队列
 
-[API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-queue) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)
+[API 参考文档](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-queue) | [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

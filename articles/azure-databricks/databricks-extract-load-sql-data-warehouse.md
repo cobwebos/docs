@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8c7c9c2e3a1195422db30ba913b1cea3a1a360e4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249839"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301686"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -59,7 +59,7 @@ ms.locfileid: "78249839"
 
    在执行该文中的步骤时，需要完成一些特定的事项。
 
-   * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给 Data Lake Storage Gen2 帐户的作用域中的服务主体  。 如果将角色分配给父资源组或订阅，那么在这些角色分配传播到存储帐户之前，会收到与权限相关的错误。
+   * 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给 Data Lake Storage Gen2 帐户的作用域中的服务主体  。 如果将角色分配给父资源组或订阅，那么在这些角色分配传播到存储帐户之前，会收到与权限相关的错误。
 
       如果想使用访问控制列表 (ACL) 来关联服务主体和特定的文件或目录，请参考 [Azure Data Lake Storage Gen2 中的访问控制](../storage/blobs/data-lake-storage-access-control.md)。
 

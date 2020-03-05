@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303913"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>将 Azure VM 移动到另一个 Azure 区域
 
@@ -70,7 +70,7 @@ ms.locfileid: "74092181"
    - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
    - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   对于其他任何网络组件，请参阅 [Azure 网络文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。 
+   对于其他任何网络组件，请参阅 [Azure 网络文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。 
 
 4. 若要在执行移动之前测试配置，请在目标区域中手动[创建非生产网络](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)。 测试设置可以尽量减少对生产环境造成的干扰，也是建议的做法。
     
@@ -108,7 +108,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 
 1. 转到保管库。 在“设置” > “复制的项”中，选择要移到目标区域的虚拟机。   然后选择“测试故障转移”  。
-2. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
+2. 在“测试故障转移”中，选择要用于故障转移的恢复点  ：
 
    - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
    - **最新的应用一致**：将所有 VM 故障转移到最新的应用一致性恢复点。 将显示时间戳。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137959"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197464"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>如何：使用文本分析 API 检测情绪
 
@@ -50,7 +50,7 @@ ms.locfileid: "77137959"
 | 情绪标记                        |                       | X                     |
 | 模型版本控制                   |                       | X                     |
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>情绪评分
 
@@ -76,10 +76,10 @@ ms.locfileid: "77137959"
 
 ### <a name="example-c-code"></a>示例 C# 代码
 
-可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs) 上查找一个可调用此版情绪分析的示例 C# 应用程序。
+可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs) 上查找一个可调用此版情绪分析的示例 C# 应用程序。
 
 
-#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+#### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 ### <a name="sentiment-scoring"></a>情绪评分
 
@@ -101,11 +101,11 @@ ms.locfileid: "77137959"
 
 创建 POST 请求。 可[使用 Postman](text-analytics-how-to-call-api.md) 或以下参考链接中的“API 测试控制台”来快速构建并发送请求  。 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 [情绪分析 v3 参考](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+#### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 [情绪分析 v2 参考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
@@ -116,11 +116,11 @@ ms.locfileid: "77137959"
 > [!NOTE]
 > 可以在 Azure 门户上找到文本分析资源的密钥和终结点。 它们将位于资源的“快速启动”  页上的“资源管理”  下。 
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+#### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
@@ -162,7 +162,7 @@ ms.locfileid: "77137959"
 
 系统会立即返回输出。 可将结果流式传输到接受 JSON 的应用程序，或者将输出保存到本地系统上的文件中。 然后，将输出导入到可以用来对数据进行排序、搜索和操作的应用程序。
 
-#### <a name="version-30-previewtabversion-3"></a>[版本 3.0-preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[版本 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>情绪分析 v3 示例响应
 
@@ -238,7 +238,7 @@ ms.locfileid: "77137959"
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[版本 2.1](#tab/version-2)
+#### <a name="version-21"></a>[版本 2.1](#tab/version-2)
 
 ### <a name="sentiment-analysis-v2-example-response"></a>情绪分析 v2 示例响应
 

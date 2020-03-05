@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 5e7d01c5383898fb14f57188cd1bee7ea64e8263
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5e1117bdefc4916fedc5c316632641d77c2f09d3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200959"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206021"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -65,7 +65,7 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 - **超出预算时采取措施** – 成本管理参与者还需要拥有创建和/或管理操作组以自动对超额问题做出反应的访问权限。 请考虑将[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予某个资源组，该资源组包含超出预算阈值时要使用的操作组。 自动执行特定的操作需要所用特定服务（例如自动化和 Azure Functions）的其他角色。
 - **计划成本数据导出** – 成本管理参与者还需要以下访问权限：管理存储帐户，以计划通过导出将数据复制到存储帐户。 请考虑将[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予某个资源组，该资源组包含要将成本数据导出到的存储帐户。
-- **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。  但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#built-in-role-descriptions)。
+- **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。  但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#descriptions-and-ids)。
 
 ## <a name="enterprise-agreement-scopes"></a>企业协议范围
 

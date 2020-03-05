@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: dd0d53fb89df5372d3974b85cdb659f6cfbbedd8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 61d47c2f308555265ccabad4d7456026ee9a639c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299306"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>教程：查看 Microsoft 合作伙伴协议发票
 
@@ -30,7 +30,7 @@ ms.locfileid: "77199086"
 > * 查看未结费用以估算下一份发票
 > * 分析 Azure 使用费
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你必须能够访问 Microsoft 合作伙伴协议的计费帐户。
 
@@ -38,7 +38,7 @@ ms.locfileid: "77199086"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-- 通过 https://portal.azure.com 登录到 Azure 门户。
+- 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查对 Microsoft 客户协议的访问权限
 

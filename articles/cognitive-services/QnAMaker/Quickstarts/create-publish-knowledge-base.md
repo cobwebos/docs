@@ -3,18 +3,18 @@ title: 快速入门：创建、训练和发布知识库 - QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: quickstart
 ms.date: 02/08/2020
-ms.openlocfilehash: a4c4d9b2e8f4b816510fb35a75b3c9b8b2afa5e2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: fd4e6a4c4288caaf714f4bfc15282b6c4b1e1111
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108724"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299085"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
 > * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -143,7 +143,7 @@ ms.locfileid: "77108724"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不继续完成下一快速入门，请删除 Azure 门户中的 QnA Maker 和 Bot Framework 资源。
+如果你不继续学习下一个快速入门，请在 Azure 门户中删除 QnA Maker 和 Bot 框架资源。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -154,6 +154,5 @@ ms.locfileid: "77108724"
 
 * [答案中的 Markdown 格式](../reference-markdown-format.md)
 * QnA Maker [数据源](../concepts/knowledge-base.md)。
-* [机器人资源配置设置](../tutorials/create-qna-bot.md)。
 
 

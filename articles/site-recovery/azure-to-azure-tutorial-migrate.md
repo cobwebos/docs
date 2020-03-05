@@ -8,31 +8,31 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 00fc836f098f3c03afc9adebe2450f00750eb5ff
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4882206692c334d6ab6af28feb5d2cba5277eea1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303930"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
 在许多场景中，你希望将现有 Azure IaaS 虚拟机 (VM) 从一个区域移动到另一个区域。 例如，想要提高现有 VM 的可靠性和可用性，提高可管理性，或者出于治理原因而移动。 有关详细信息，请参阅 [Azure VM 移动概述](azure-to-azure-move-overview.md)。 
 
-可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理 Azure VM 移动到次要区域。
+可以使用 [Azure Site Recovery](site-recovery-overview.md) 服务来管理和协调本地计算机和 Azure VM 灾难恢复，以实现业务连续性和灾难恢复 (BCDR)。 此外可以使用 Site Recovery 来管理将 Azure VM 移动到次要区域的过程。
 
 在本教程中，将：
 
 > [!div class="checklist"]
 > 
-> * 验证先决条件以进行移动
+> * 验证进行移动的先决条件
 > * 准备源 VM 和目标区域
 > * 复制数据和启用复制
 > * 测试配置和执行移动
 > * 删除源区域中的资源
 > 
 > [!NOTE]
-> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 移动到其他区域中的区域固定 VM 来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
+> 本教程演示如何将 Azure VM 按原样从一个区域移到另一个区域。 如果需要通过将可用性集中的 VM 以区域固定 VM 的形式移动到其他区域中来提高可用性，请参阅[将 Azure VM 移动到可用性区域教程](move-azure-vms-avset-azone.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -73,7 +73,7 @@ ms.locfileid: "73954104"
     - [网络安全组](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
     -  [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
-    - 对于其他任何网络组件，请参阅[网络文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。
+    - 对于其他任何网络组件，请参阅[网络文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
 
 
 
@@ -120,11 +120,11 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 如果已检查移动的 VM 并且需要更改为故障转移点，或者想要返回到以前的点，请在“复制的项”  中，右键选择“VM”>“更改恢复点”  。 此步骤提供了指定其他恢复点并故障转移到该恢复点的选项。 
 
 
-## <a name="commit"></a>提交 
+## <a name="commit"></a>Commit 
 
 检查了移动的 VM 并准备好提交更改后，请在“复制的项”  中，右键选择“VM”>“提交”  。 此步骤会完成移到目标区域的过程。 请等待提交作业完成。
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 以下步骤将指导你完成如何清理源区域以及用于移动的相关资源。
 
