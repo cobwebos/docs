@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 Azure Monitor Application Insights 监视 Node.js
 description: 提供有关快速设置 Node.js Web 应用以使用 Azure Monitor Application Insights 进行监视的说明
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660217"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入门：使用 Azure Application Insights 开始监视 Node.js Web 应用程序
 
@@ -21,7 +20,7 @@ ms.locfileid: "76963523"
 
 使用 Azure Application Insights，可轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。 使用 0.20 版 SDK 发行版及更高版本，可以监视常见的第三方包，包括 MongoDB、MySQL 和 Redis。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 * 正常运行的 Node.js 应用程序。

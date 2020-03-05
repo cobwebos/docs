@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Java 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: d81b0227a627593b16bd07f4cfcf4c1b6d61f84b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 352671b2fe31095b0ffcaffb49195071a456a892
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438155"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245011"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>通过 Azure Dev Spaces 使用 Java 和 Visual Studio Code 进行团队开发
 
@@ -166,6 +166,9 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

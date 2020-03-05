@@ -3,8 +3,8 @@ title: 快速入门：使用 Azure 门户创建混合模式实例
 titleSuffix: Azure Database Migration Service
 description: 使用 Azure 门户在混合模式下创建 Azure 数据库迁移服务的实例。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/21/2019
-ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8dba12fc2c3777c2c45315f1805fa7ec8f1d8b83
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274812"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255044"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>快速入门：使用 Azure 门户和 Azure 数据库迁移服务创建混合模式实例
 

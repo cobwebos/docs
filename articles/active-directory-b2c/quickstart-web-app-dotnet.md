@@ -3,20 +3,20 @@ title: 快速入门：为 ASP.NET Web 应用设置登录
 titleSuffix: Azure AD B2C
 description: 本快速入门运行一个使用 Azure Active Directory B2C 提供帐户登录的示例 ASP.NET Web 应用。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ee56e69befb220a742077326956efa996979105
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841355"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187196"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为 ASP.NET 应用程序设置登录
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
 - Facebook、Google 或 Microsoft 中的社交帐户。

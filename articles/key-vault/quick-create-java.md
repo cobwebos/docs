@@ -5,13 +5,14 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b5748824590f40e30af8f462d4c8ff25521cfd94
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: be76a274671b0112ca0a5e326f6bb6bb8852842b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136087"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197549"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>快速入门：适用于 Java 的 Azure Key Vault 客户端库
 
@@ -27,7 +28,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 [源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API 参考文档](https://azure.github.io/azure-sdk-for-java) | [产品文档](index.yml) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - [Java 开发工具包 (JDK)](/java/azure/jdk/?view=azure-java-stable) 8 或更高版本

@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 2bbd66257e1ccd81f1dac7d775b4dd6ccc39189a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358766"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199795"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入门：适用于 Java 的 Azure 队列存储客户端库 v12
 
@@ -27,9 +27,9 @@ ms.locfileid: "75358766"
 * 接收和删除队列中的消息
 * 删除队列
 
-[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [示例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples)
+[API 参考文档](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [库源代码](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [包 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 8 或更高版本
 * [Apache Maven](https://maven.apache.org/download.cgi)

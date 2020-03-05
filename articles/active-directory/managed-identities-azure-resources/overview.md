@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f89a21eb0cebf30dac2bb55ae1b642a2ff756ead
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468668"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78248321"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -140,6 +140,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 * [Azure Kubernetes 服务](/azure/aks/use-managed-identity)
 * [Azure 逻辑应用](/azure/logic-apps/create-managed-service-identity)
 * [Azure 服务总线](../../service-bus-messaging/service-bus-managed-service-identity.md)
+* [Azure 数据工厂](../../data-factory/data-factory-service-identity.md)
 
 
 ## 哪些 Azure 服务支持此功能？<a name="which-azure-services-support-managed-identity"></a>

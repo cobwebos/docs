@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: be5a2f76a99149fde378d29f2ef7748ebe60b038
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471867"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303233"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>教程：Azure Data Lake Storage Gen2、Azure Databricks & Spark
 
@@ -28,7 +28,7 @@ ms.locfileid: "77471867"
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 创建 Azure Data Lake Storage Gen2 帐户。
 
@@ -42,7 +42,7 @@ ms.locfileid: "77471867"
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
-  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
+  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
 
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。

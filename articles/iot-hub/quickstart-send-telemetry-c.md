@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: ec4b80971a27553fb4967a85e5f47cf11e40c3b2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 9870d61ff2e7b9d0259dd853b88411a5f175388e
+ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110356"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78255294"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (C)
 
@@ -31,11 +31,11 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 安装 [Visual Studio 2019](https://www.visualstudio.com/vs/) 并启用[“使用 C++ 的桌面开发”](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作负荷。
 * [安装最新版本的 Git](https://git-scm.com/download/)。
-* 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+* 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71326990"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303301"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>教程：实现数据湖捕获模式以更新 Databricks Delta 表
 
@@ -42,7 +42,7 @@ ms.locfileid: "71326990"
 
   在执行该文中的步骤时，需要完成一些特定的事项。
 
-  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
+  :heavy_check_mark:执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”  角色分配给服务主体。
 
   > [!IMPORTANT]
   > 请确保在 Data Lake Storage Gen2 存储帐户的范围内分配角色。 可以将角色分配给父资源组或订阅，但在这些角色分配传播到存储帐户之前，你将收到与权限相关的错误。

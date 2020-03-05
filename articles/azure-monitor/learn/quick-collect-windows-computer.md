@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398946"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659843"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>使用 Azure Monitor 从混合环境中的 Windows 计算机收集数据
 

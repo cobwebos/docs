@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor 文档中的新增内容
 description: Azure Monitor 文档每月都有重大更新。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2020
-ms.openlocfilehash: f390de40504d4d6065705ca23555ac2164c9847b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: ecee13850e735f827a5465e0f49039f514afe233
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064999"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657735"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。

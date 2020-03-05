@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 03/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1003b862d7fbe19545cf705570866479132c1f03
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845484"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273176"
 ---
 ::: zone target="chromeless"
 
@@ -34,7 +34,7 @@ ms.locfileid: "76845484"
 > * 将 Data Box 磁盘寄送到 Microsoft
 > * 在不同区域中提取 Data Box Disk
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保已完成[教程：将数据复制到 Azure Data Box Disk 并进行验证](data-box-disk-deploy-copy-data.md)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76845484"
 
 接下来的步骤根据在何处退回设备而定。 对于美国/加拿大、欧盟 (EU)、澳大利亚或亚洲国家/地区，说明会有所不同。
 
-### <a name="in-us-or-canadatabin-us-or-canada"></a>[在美国或加拿大](#tab/in-us-or-canada)
+### <a name="in-us-or-canada"></a>[在美国或加拿大](#tab/in-us-or-canada)
 
 如果在美国或加拿大退回设备，请执行以下步骤。
 
@@ -67,7 +67,7 @@ ms.locfileid: "76845484"
     - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
     - 也可以在最近的卸货位置放置 Data Box Disk，而不是安排提货。
 
-### <a name="in-europetabin-europe"></a>[在欧洲](#tab/in-europe)
+### <a name="in-europe"></a>[在欧洲](#tab/in-europe)
 
 如果在欧洲退回设备，请执行以下步骤。
 
@@ -80,7 +80,7 @@ ms.locfileid: "76845484"
 4. 转到 DHL Express 运营国家/地区的网站，选择“Book a Courier Collection > eReturn Shipment”（“预订快递取件”>“eReturn 发货”）。     
 3. 指定运单号，然后单击“Schedule Pickup”（安排提货）以安排提货。 
 
-### <a name="in-australiatabin-australia"></a>[在澳大利亚](#tab/in-australia)
+### <a name="in-australia"></a>[在澳大利亚](#tab/in-australia)
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 对于澳大利亚的取件，请执行以下步骤。
 
@@ -88,7 +88,7 @@ ms.locfileid: "76845484"
 3. 将标签粘贴在盒子上。 
 4. 打开链接 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ，在线预约取件。 
 
-### <a name="in-japantabin-japan"></a>[在日本](#tab/in-japan)
+### <a name="in-japan"></a>[在日本](#tab/in-japan)
 
 1. 在托运单上写下公司名称和地址信息作为发件人信息。
 2. 使用以下电子邮件模板将电子邮件发送给 Quantium Solution。
@@ -115,7 +115,7 @@ ms.locfileid: "76845484"
 - 电子邮件：Customerservice.JP@quantiumsolutions.com 
 - 电话：03-5755-0150 
 
-### <a name="in-koreatabin-korea"></a>[在韩国](#tab/in-korea)
+### <a name="in-korea"></a>[在韩国](#tab/in-korea)
 
 1. 请务必附上退还托运单。
 2. 若要在提供有托运单的情况下请求取件，请执行以下操作：
@@ -130,7 +130,7 @@ ms.locfileid: "76845484"
     4. 如果请求是通过电话进行的，你会收到口头确认。
 
 
-### <a name="in-singaporetabin-singapore"></a>[在新加坡](#tab/in-singapore)
+### <a name="in-singapore"></a>[在新加坡](#tab/in-singapore)
 
 1. 打印发货标签并将其贴在盒子上。 如果标签受损或丢失：
     - 转至“概述”>“下载发货标签”  并获取退件发货标签。
@@ -157,7 +157,7 @@ ms.locfileid: "76845484"
 
 3. 转交给快递员。
 
-### <a name="in-self-managedtabin-selfmanaged"></a>[在自托管中](#tab/in-selfmanaged)
+### <a name="in-self-managed"></a>[在自托管中](#tab/in-selfmanaged)
 
 如果在日本、新加坡、韩国和西欧使用 Data Box Disk，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
@@ -175,8 +175,6 @@ ms.locfileid: "76845484"
 3. Azure Data Box 运营团队会与你协作安排送货到 Azure 数据中心。
 
 ::: zone target="docs"
-
----
 
 ## <a name="next-steps"></a>后续步骤
 

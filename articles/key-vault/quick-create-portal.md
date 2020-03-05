@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a57370b7bf63ad73318ba13eff1b554aead7e186
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490417"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197753"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -34,7 +35,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 3. 从结果列表中选择“Key Vault”  。
 4. 在“Key Vault”部分，选择“创建”  。
 5. 在“创建密钥保管库”部分，提供以下信息： 
-    - **名称**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
+    - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
     - **订阅**：选择订阅。
     - 在“资源组”  下选择“新建”  ，然后输入资源组名称。
     - 在“位置”下拉菜单中选择一个位置。 
@@ -58,7 +59,7 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 2. 单击“生成/导入”  。
 3. 在“创建机密”  屏幕上，选择以下值：
     - **上传选项**：手动。
-    - **名称**：ExamplePassword。
+    - **Name**：ExamplePassword。
     - **值**：hVFkk965BuUv
     - 让其他值保留默认设置。 单击“创建”。 
 

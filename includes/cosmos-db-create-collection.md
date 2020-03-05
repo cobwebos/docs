@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 45fa6a332697cf298b2446212701025007682357
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 9bc5be37f3892186233fac197c08066dbfacb43f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754263"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780308"
 ---
 现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
 
@@ -27,7 +27,7 @@ ms.locfileid: "66754263"
 
     |设置|建议的值|说明
     |---|---|---|
-    |**数据库 ID**|任务|输入 ToDoList  作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
     |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
     |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
     |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|

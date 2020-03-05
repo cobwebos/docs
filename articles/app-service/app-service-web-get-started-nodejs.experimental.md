@@ -7,12 +7,12 @@ ms.date: 08/23/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: c02caf7c70dfe88bd3312742fce08137bc360a2e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 585eb1f11a285722e34c6dd084f4c6cb26a06249
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671411"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247622"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用
 
@@ -20,7 +20,7 @@ ms.locfileid: "74671411"
 > 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在基于 Linux 的 Azure 应用服务中创建 Node.js Web 应用](./containers/quickstart-nodejs.md)。
 >
 
-[Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 你会使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 创建 Web 应用，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。 使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) 命令将示例 Node.js 代码部署到 Web 应用。  
+[Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门演示如何将 Node.js 应用部署到 Azure 应用服务中。 你会使用 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 创建 Web 应用，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli) 在本地运行这些命令。 使用 [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) 命令将示例 Node.js 代码部署到 Web 应用。  
 
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "74671411"
 
 在 Cloud Shell 中，创建一个 quickstart 目录，然后切换到该目录。
 
-```azurecli-interactive
+```console
 mkdir quickstart
 
 cd $HOME/quickstart
@@ -42,13 +42,13 @@ cd $HOME/quickstart
 
 接下来请运行以下命令，将示例应用存储库克隆到快速入门目录。
 
-```azurecli-interactive
+```console
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
 运行时，该命令会显示类似于以下示例的信息：
 
-```bash
+```output
 Cloning into 'nodejs-docs-hello-world'...
 remote: Counting objects: 40, done.
 remote: Total 40 (delta 0), reused 0 (delta 0), pack-reused 40
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
 
-在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在 `myAppServicePlan` 应用服务计划中创建一个 Web 应用。
+在 Cloud Shell 中，使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) 命令在应用服务计划 `myAppServicePlan` 中创建一个 Web 应用。
 
 在以下示例中，将 `<app_name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）。
 
@@ -102,7 +102,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 浏览到新建的 Web 应用。 将 `<app_name>` 替换为唯一应用名称。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -112,7 +112,7 @@ http://<app_name>.azurewebsites.net
 
 在 Cloud Shell 中，导航到应用程序的根目录，为示例项目创建新的 ZIP 文件。
 
-```azurecli-interactive
+```console
 cd nodejs-docs-hello-world  
 
 zip -r myUpdatedAppFiles.zip *.*
@@ -130,7 +130,7 @@ az webapp deployment source config-zip --resource-group myResourceGroup --name <
 
 使用 Web 浏览器浏览到已部署的应用程序。
 
-```
+```http
 http://<app_name>.azurewebsites.net
 ```
 
@@ -139,7 +139,7 @@ Node.js 示例代码在 Azure 应用服务 Web 应用中运行。
 ![在 Azure 中运行应用的示例](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
 > [!NOTE]
-> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录包含一个 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
+> 在 Azure 应用服务中，此应用在 IIS 中使用 [iisnode](https://github.com/Azure/iisnode) 运行。 为了让应用能够使用 iisnode 运行，根应用目录要包含 web.config 文件。 此文件可以由 IIS 读取，与 iisnode 相关的设置记录在 [iisnode GitHub 存储库](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)中。
 
 祝贺你！  现已将第一个 Node.js 应用部署到应用服务。
 

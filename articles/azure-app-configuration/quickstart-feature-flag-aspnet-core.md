@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: 106085c4c528e42d4f559b92585be2f4e0a2f98a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: a4fbba65af5afbd27a3fd2c7d41858e33b4d812c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498664"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163873"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -19,7 +19,7 @@ ms.locfileid: "77498664"
 
 .NET Core 功能管理库使用全面的功能标志支持扩展了该框架。 这些库在 .NET Core 配置系统的基础上构建。 它们可以通过其 .NET Core 配置提供程序无缝集成到应用程序配置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)。
@@ -91,7 +91,7 @@ ms.locfileid: "77498664"
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
+    dotnet add package Microsoft.FeatureManagement.AspNetCore
     ```
 
 1. 运行以下命令，还原项目包：

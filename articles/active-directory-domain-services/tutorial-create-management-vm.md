@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f422d1dd6c76d78448ae4fb1012a5dae8d6108b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612212"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299068"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建一个管理 VM 用于配置和管理 Azure Active Directory 域服务托管域
 
@@ -31,7 +31,7 @@ Azure Active Directory 域服务 (AD DS) 提供与 Windows Server Active Directo
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -59,7 +59,6 @@ Azure AD DS 为用户、应用程序和服务提供一个托管域供其使用�
 
 “AAD DC 管理员”组的成员被授予 Azure AD DS 托管域上的相应特权，可执行如下所述的任务： 
 
-* 将计算机加入托管域。
 * 配置托管域中“AADDC 计算机”和“AADDC 用户”容器的内置组策略对象 (GPO)。  
 * 管理托管域上的 DNS。
 * 创建和管理托管域上的自定义组织单位 (OU)。

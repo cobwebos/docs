@@ -10,27 +10,27 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e4174ba19d518b4b1dfef9921fe39b0c76f6d1e3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 8d1349c096b6a6c9bffef38a8b8b3c7ea6bbd432
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169281"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301805"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
 在本快速入门中，请使用 Azure 人脸 REST API 和 C# 检测图像中的人脸。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 人脸订阅密钥。 可以从[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=face-api)获取免费试用的订阅密钥。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅人脸服务并获取密钥。
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
-1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。 
+1. 在 Visual Studio 中创建新的**控制台应用 (.NET Framework)** 项目并将其命名为 **FaceDetection**。
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
 
 ## <a name="add-face-detection-code"></a>添加人脸检测代码
@@ -44,6 +44,7 @@ ms.locfileid: "76169281"
 ```csharp
 using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -63,7 +64,7 @@ namespace DetectFace
 
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
-        
+
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
             "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
@@ -76,6 +77,10 @@ namespace DetectFace
 ```csharp
         static void Main(string[] args)
         {
+
+            // Explicitly set TLS 1.2.
+            ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
+                SecurityProtocolType.Tls12;
 
             // Get the path and filename to process from the user.
             Console.WriteLine("Detect faces:");

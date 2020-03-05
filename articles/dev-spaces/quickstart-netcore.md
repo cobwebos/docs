@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c2d84e823d028f542c5ab852be2ea68a5abafe93
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f3e91ec11e054e0a069eb97a3700b051476be0a1
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605288"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251989"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 - [Node.js 和 Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core 和 Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
 - [已安装 Visual Studio Code](https://code.visualstudio.com/download)。
@@ -37,7 +37,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 
 需要在[支持的区域][supported-regions]中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
@@ -49,9 +49,11 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 > [!NOTE]
 > `use-dev-spaces` 命令还将安装 Azure Dev Spaces CLI（如果尚未安装）。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
 
-```cmd
-$ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```
 
+```output
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
 Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
@@ -158,7 +160,7 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 ## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

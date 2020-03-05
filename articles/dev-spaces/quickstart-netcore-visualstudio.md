@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm,
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: de830d07010037793eaf7471fc1147a42081b09c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770588"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245038"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -28,7 +28,7 @@ Azure Dev Spaces 还允许使用以下方法进行调试和迭代：
 - [Node.js 和 Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core 和 Visual Studio Code](quickstart-netcore.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有帐户，可以[创建一个免费帐户](https://azure.microsoft.com/free)。
 - 已安装包含“Azure 开发”工作负荷的 Windows 版 Visual Studio 2019。 还可以使用安装了“Web 开发”工作负荷和 [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) 的 Windows 版 Visual Studio 2017。 如果尚未安装 Visual Studio，请在[此处](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)下载。
@@ -124,7 +124,7 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 
 在 Azure 门户中导航到你的资源组，然后单击“删除资源组”。  或者，可以使用 [az aks delete](/cli/azure/aks#az-aks-delete) 命令：
 
-```cmd
+```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 

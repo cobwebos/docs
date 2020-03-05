@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 2a1a9b1973ded5db7182fb1898fc7222904c39c3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 09002a8c0999dc137ca3386ca7392a566d323e8a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863955"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196051"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -29,11 +29,11 @@ ms.locfileid: "75863955"
 * 将 blob 下载到本地计算机
 * 删除容器
 
-[API 参考文档](/dotnet/api/azure.storage.blobs) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+[API 参考文档](/dotnet/api/azure.storage.blobs) | [库源代码](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [包 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -85,7 +85,6 @@ dotnet add package Azure.Storage.Blobs
 代码如下：
 
 ```csharp
-using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using System;
@@ -181,7 +180,7 @@ BlobContainerClient containerClient = await blobServiceClient.CreateBlobContaine
 
 1. 在本地 data 目录中创建文本文件  。
 1. 对在[创建容器](#create-a-container)部分创建的容器调用 [GetBlobClient](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobclient) 方法，获取对 [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) 对象的引用。
-1. 通过调用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
+1. 通过调用 [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync#Azure_Storage_Blobs_BlobClient_UploadAsync_System_IO_Stream_System_Boolean_System_Threading_CancellationToken_) 方法将本地文本文件上传到 blob。 此方法将创建 Blob（如果该 Blob 尚不存在），或者覆盖 Blob（如果该 Blob 已存在）。
 
 将此代码添加到 `Main` 方法的末尾：
 
@@ -201,7 +200,7 @@ Console.WriteLine("Uploading to Blob storage as blob:\n\t {0}\n", blobClient.Uri
 
 // Open the file and upload its data
 using FileStream uploadFileStream = File.OpenRead(localFilePath);
-await blobClient.UploadAsync(uploadFileStream);
+await blobClient.UploadAsync(uploadFileStream, true);
 uploadFileStream.Close();
 ```
 

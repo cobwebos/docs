@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c9513ca38c665a53bc14f284e87a1cc01035d135
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5728ce7125695b191de4f91d5bd9003384f428a7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693182"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298296"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>将 Azure VM 移到可用性区域中
 数据中心发生故障时，Azure 中的可用性区域可帮助保护应用程序和数据。 每个可用性区域都由一个或多个数据中心组成，这些数据中心都配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 数据中心发生故障时，区域中的可用性区域的物理隔离可帮助保护应用程序和数据。 随着可用性区域的推出，Azure 可为虚拟机 (VM) 的运行时间提供 99.99% 的服务级别协议 (SLA)。 [什么是 Azure 中的可用性区域？](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)中所述的选定区域支持可用性区域。
@@ -70,7 +70,7 @@ ms.locfileid: "73693182"
     - [负载均衡器](https://docs.microsoft.com/azure/load-balancer)
     - [公共 IP](../virtual-network/virtual-network-public-ip-address.md)
     
-   对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/#pivot=products&panel=network)。
+   对于其他任何网络组件，请参阅网络[文档](https://docs.microsoft.com/azure/?pivot=products&panel=network)。
 
     > [!IMPORTANT]
     > 确保在目标中使用区域冗余的负载均衡器。 可在[标准负载均衡器和可用性区域](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)中了解详细信息。
@@ -85,7 +85,7 @@ ms.locfileid: "73693182"
 
 1. 在 Azure 门户中选择“虚拟机”，然后选择要移到可用性区域中的 VM。 
 2. 在“操作”中，选择“灾难恢复”   。
-3. 在“配置灾难恢复”   > “目标区域”  中，选择要复制到的目标区域。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)可用性区域。
+3. 在“配置灾难恢复” > “目标区域”中，选择要复制到的目标区域   。 确保此区域[支持](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)可用性区域。
 
     ![选择目标区域](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -112,7 +112,7 @@ ms.locfileid: "73693182"
 
 1. 在虚拟机菜单中，选择“灾难恢复”。 
 2. 选择“测试故障转移”图标。 
-3. 在“测试故障转移”  中，选择要用于故障转移的恢复点：
+3. 在“测试故障转移”中，选择要用于故障转移的恢复点  ：
 
    - **最新处理**：将 VM 故障转移到由 Site Recovery 服务处理的最新恢复点。 将显示时间戳。 使用此选项时，无需费时处理数据，因此恢复时间目标 (RTO) 会较低。
    - **最新的应用一致**：此选项将所有 VM 故障转移到最新的应用一致恢复点。 将显示时间戳。

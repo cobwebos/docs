@@ -7,12 +7,12 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a34fdc2f6d6698f53dc2ff7fdc11d0a985b23415
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358756"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199761"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入门：适用于 Python 的 Azure 队列存储客户端库 v12
 
@@ -28,9 +28,9 @@ ms.locfileid: "75358756"
 * 删除队列中的消息
 * 删除队列
 
-[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-queue/) | [示例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)
+[API 参考文档](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [库源代码](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [包 （Python 包索引）](https://pypi.org/project/azure-storage-queue/) | [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 * Azure 存储帐户 - [创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

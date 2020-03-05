@@ -3,16 +3,16 @@ title: Azure EA 协议和修正合同
 description: 本文介绍 Azure EA 协议和修订如何影响 Azure EA 门户的使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: c38f28120b7c84077d8d5012c4be4698680e5fdb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200806"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301414"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -25,10 +25,6 @@ Azure 客户做出任何修订都需要与其合作伙伴或 Microsoft 帐户团
 ## <a name="enrollment-provisioning-status"></a>注册预配状态
 
 新货币承诺的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的货币承诺订单是在 UTC 时区中处理的，因此你如果在不同的区域处理货币承诺采购订单，可能会遇到延迟。 [https://www.explore.ms](https://www.explore.ms ) 上的采购订单中的履行开始日期显示货币承诺的开始日期。 履行开始日期是指在 Azure EA 门户中显示货币承诺的时间。
-
-## <a name="special-pricing-and-azure-commitment-discount-amendments"></a>对特价和 Azure 承诺折扣的修订
-
-如果需要修订特价和 Azure 承诺折扣 (ACD)，需要与帐户团队协商。 修订受到商务组的处理并呈报给 Azure 运营团队后，Azure 运营团队可以应用 ACD。 ACD 折扣仅适用于当前月份。 以前的所有月份将通过既往额度得到补偿。 
 
 ## <a name="support-offer-not-provisioned"></a>未预配支持套餐
 

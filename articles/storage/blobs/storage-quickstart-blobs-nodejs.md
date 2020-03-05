@@ -7,20 +7,20 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b53896896ecd4b0e577e8d2c5ec13e00ce6fab30
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906460"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191920"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入门：在 Node.js 中使用 JavaScript v12 SDK 管理 blob
 
 本快速入门介绍如何使用 Node.js 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
 
-[API 参考文档](/javascript/api/@azure/storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-blob) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+[API 参考文档](/javascript/api/@azure/storage-blob) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [包（节点包管理器）](https://www.npmjs.com/package/@azure/storage-blob) | [示例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - 一个 Azure 存储帐户。 [创建存储帐户](../common/storage-account-create.md)。
