@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7d6b4f8a7965a7cbcab2616650b40ed93087072b
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589969"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271855"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>适用于 HDInsight 的 Azure 安全基线
 
@@ -65,7 +65,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 web 应用程序
 
-**指南**：不可用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指南**：不适用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -125,7 +125,7 @@ HDInsight 管理 IP 地址： https://docs.microsoft.com/azure/hdinsight/hdinsig
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 应用程序的流量
 
-**指南**：不可用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指南**：不适用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
 
 **Azure 安全中心监视**：不适用
 
@@ -331,7 +331,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -491,7 +491,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-use
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -713,7 +713,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Azure 安全中心监视**：当前不可用
 
-**责任**：客户
+**责任**：共享
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密静态敏感信息
 
@@ -779,7 +779,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 如何手动安装 Rapid7 代理：
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/azure-security-center
 
 
 如何手动安装 Qualys 代理：
@@ -926,11 +926,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 不允许的资源类型
 - 允许的资源类型
 
-使用 Azure 资源关系图查询/发现订阅中的资源。  确保环境中存在的所有 Azure 资源都已获得批准。
+使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源都已获得批准。
 
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 如何通过 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 **Azure 安全中心监视**：当前不可用
 
@@ -972,7 +973,9 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 - 不允许的资源类型
 - 允许的资源类型
 
+
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何使用 Azure 策略拒绝特定的资源类型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
@@ -993,9 +996,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 **指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问来限制用户与 Azure 资源管理器的交互能力。
 
 
-如何配置条件访问以阻止访问 Azure 资源管理器：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何配置条件访问以阻止访问 Azure 资源管理器： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1003,7 +1004,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
-**指南**：不可用;这不适用于 Azure HDInsight，因为群集的用户（非管理员）不需要访问各个节点即可运行作业。 群集管理器具有对所有群集节点的根访问权限。
+**指南**：不适用;这不适用于 Azure HDInsight，因为群集的用户（非管理员）不需要访问各个节点即可运行作业。 群集管理器具有对所有群集节点的根访问权限。
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1011,7 +1012,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：对高风险应用程序进行物理或逻辑分离
 
-**指南**：不可用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
+**指南**：不适用;基准设计适用于 Azure 应用服务或托管 web 应用程序的计算资源。
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1095,7 +1096,7 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：不可用;自定义映像不适用于 Azure HDInsight。
+**指南**：不适用;自定义映像不适用于 Azure HDInsight。
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1343,7 +1344,7 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **指南**：安全中心将严重性分配给警报，以帮助你确定参与每个警报的顺序的优先级，以便在资源泄露时可以立即访问。 严重性取决于安全中心在查找或用于发出警报的分析中的置信度，以及导致警报的活动的恶意意图的置信度。
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -1421,3 +1422,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 列中的一个
 
 **责任**：共享
 
+## <a name="next-steps"></a>后续步骤
+
+- 请参阅[Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 了解有关[Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)的详细信息

@@ -5,12 +5,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e864d67e0126edf9138ff0d811331829bc758030
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69434c6168bfadbf3291c6efe85fb2f1934c8d11
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438147"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251966"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-code-with-azure-dev-spaces"></a>通过 Azure Dev Spaces 使用 .NET Core 和 Visual Studio Code 进行团队开发
 
@@ -164,6 +164,9 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562130"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199659"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -22,7 +23,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 - 支持 Key Vault 的可恢复删除
 - 支持密钥保管库对象、密钥、机密和证书的可恢复删除
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

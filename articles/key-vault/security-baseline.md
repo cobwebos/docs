@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9b767693691557f684bee59aa1764395dc42bffe
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: 03b2312b554743d83eff268876be1f20be595290
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77590034"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267528"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>适用于 Key Vault 的 Azure 安全基线
 
@@ -110,9 +110,7 @@ Azure 安全中心检测到异常活动时，会显示警报。 它还向订阅�
 **指南**：对于需要访问 Azure Key Vault 实例的资源，请使用 Azure 服务标记 Azure Key Vault 来定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 ApiManagement），可以允许或拒绝相应服务的流量。 Microsoft 管理服务标记包含的地址前缀，并在地址更改时自动更新服务标记。
 
 
-Azure 服务标记概述：
-
-https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Azure 服务标记概述： https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 **Azure 安全中心监视**：不适用
 
@@ -309,13 +307,9 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 （AzResource-ResourceId [KeyVaultResourceID]）。AccessPolicies
 
-向 Azure Active Directory 注册应用程序：
+将应用程序注册到 Azure Active Directory： https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
-
-保护对密钥保管库的访问：
-
-https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+保护对密钥保管库的访问： https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **Azure 安全中心监视**：是
 
@@ -376,12 +370,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：将特权访问工作站（PAW）与 Azure 多重身份验证（MFA）结合使用，配置为登录并配置已启用 Key Vault 的资源。
-
+**指南**：将特权访问工作站（PAW）与 Azure 多重身份验证（MFA）结合使用，配置为登录并配置已启用 Key Vault 的资源。 
 
 特权访问工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
 规划基于云的 Azure 多重身份验证部署： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+
 
 **Azure 安全中心监视**：不适用
 
@@ -391,32 +385,20 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **指南**：在环境中发生可疑或不安全活动时，使用 AZURE ACTIVE DIRECTORY （AAD） PRIVILEGED IDENTITY MANAGEMENT （PIM）来生成日志和警报。 使用 AAD 风险检测来查看警报和报告有风险的用户行为。 对于其他日志记录，请将 Azure 安全中心风险检测警报发送到 Azure Monitor，并使用操作组配置自定义警报/通知。
 
-
 为 Azure Key Vault 启用高级威胁防护（ATP）以生成可疑活动的警报。
 
-
-部署 Azure AD Privileged Identity Management （PIM）：
-
-https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+部署 Azure AD Privileged Identity Management （PIM）： https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
 为 Azure Key Vault （预览版）设置高级威胁防护： https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
+Azure Key Vault 的警报（预览版）： https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Azure Key Vault 的警报（预览版）：
+Azure Active Directory 风险检测： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
-
-
-Azure Active Directory 风险检测：
-
-https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+在 Azure 门户中创建和管理操作组： https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
-在 Azure 门户中创建和管理操作组：
-
-https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
-
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -426,6 +408,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 Azure Active Directory 条件访问中的位置条件是什么？： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
+
 **Azure 安全中心监视**：当前不可用
 
 **责任**：客户
@@ -433,6 +416,8 @@ Azure Active Directory 条件访问中的位置条件是什么？： https://doc
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
 **指南**：使用 AZURE ACTIVE DIRECTORY （AAD）作为 Azure 资源（如 Key Vault）的集中身份验证和授权系统。 这允许基于角色的访问控制（RBAC）管理敏感资源。
+
+ 
 
 快速入门：在 Azure Active Directory 中创建新租户： https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
@@ -445,10 +430,14 @@ Azure Active Directory 条件访问中的位置条件是什么？： https://doc
 **指南**：查看 AZURE ACTIVE DIRECTORY （AAD）日志，以帮助发现具有 Azure Key Vault 管理角色的过时帐户。 此外，还可以使用 AAD 访问评审来有效地管理组成员身份、访问可用于访问 Azure Key Vault 和角色分配的企业应用程序。 应定期查看用户访问权限，如每90天，确保只有正确的用户才能继续访问。
 
 
-Azure Active Directory 报表和监视文档： https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure Active Directory 报表和监视文档：
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-什么是 Azure AD 访问评审？： https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+什么是 Azure AD 访问评审？
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure 安全中心监视**：是
 
@@ -460,7 +449,7 @@ Azure Active Directory 报表和监视文档： https://docs.microsoft.com/azure
 
 将 Azure AD 日志与 Azure Monitor 日志集成： https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-从旧的 Key Vault 解决方案迁移： https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution       
+从旧的 Key Vault 解决方案迁移： https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 **Azure 安全中心监视**：是
 
@@ -468,17 +457,13 @@ Azure Active Directory 报表和监视文档： https://docs.microsoft.com/azure
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帐户登录行为偏差的警报
 
-**指南**：使用 Azure Active Directory 的标识保护和风险检测功能来配置对检测到的与 Azure Key Vault 受保护资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。
-
+**指南**：使用 Azure Active Directory 的标识保护和风险检测功能来配置对检测到的与 Azure Key Vault 受保护资源相关的可疑操作的自动响应。 应通过 Azure Sentinel 启用自动响应，以实现组织的安全响应。 
 
 Azure Active Directory 门户中的 "有风险的登录" 报告： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
 
 如何：配置和启用风险策略： https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-
-如何载入 Azure Sentinel：
-
-https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何载入 Azure Sentinel： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure 安全中心监视**：是
 
@@ -501,10 +486,10 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：维护敏感信息的清单
 
-**指南**：使用标记来帮助跟踪 Azure 资源，这些资源可存储或处理有关已启用 Azure Key Vault 资源的敏感信息。
-
+**指南**：使用标记来帮助跟踪 Azure 资源，这些资源可存储或处理有关已启用 Azure Key Vault 资源的敏感信息。 
 
 使用标记来组织 Azure 资源： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
 
 **Azure 安全中心监视**：不适用
 
@@ -514,13 +499,12 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **指南**：通过使用配置为限制对特定子网的访问的虚拟网络服务终结点，你可以保护对 Azure Key Vault 的访问。
 
-
 防火墙规则生效后，只能在请求源自允许的子网或 IP 地址范围时执行 Azure Key Vault 数据平面操作。 这也适用于 Azure 门户中的 Azure Key Vault 访问。 虽然你可以从 Azure 门户浏览到密钥保管库，但如果你的客户端计算机不在允许列表中，则你可能无法列出密钥、机密或证书。 这也会影响 Azure Key Vault 选取器和其他 Azure 服务。 如果防火墙规则阻止你的客户端计算机这样做，则可以看到密钥保管库列表，但不能看到列表密钥。
-
 
 配置 Azure Key Vault 防火墙和虚拟网络： https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
 Azure Key Vault 的虚拟网络服务终结点： https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+
 
 **Azure 安全中心监视**：当前不可用
 
@@ -536,16 +520,17 @@ Azure Key Vault 的虚拟网络服务终结点： https://docs.microsoft.com/azu
 
 Azure Key Vault 日志记录： https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
+
 **Azure 安全中心监视**：是
 
 **责任**：客户
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：要 Azure Key Vault 进行身份验证、管理和数据平面访问的所有流量都经过加密，并通过 HTTPS：端口443进行。 （但是，对于 CRL，有时会出现 HTTP [端口 80] 通信。）
-
+**指南**：要 Azure Key Vault 进行身份验证、管理和数据平面访问的所有流量都经过加密，并通过 HTTPS：端口443进行。 （但是，对于 CRL，有时会出现 HTTP [端口 80] 通信。） 
 
 访问防火墙后 Azure Key Vault： https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+
 
 **Azure 安全中心监视**：不适用
 
@@ -652,7 +637,7 @@ Azure Monitor 中的 Azure Key Vault 分析解决方案： https://docs.microsof
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
@@ -729,6 +714,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 快速入门：使用 Azure 资源关系图资源管理器运行第一个资源关系图查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -768,6 +754,7 @@ https://docs.microsoft.com/azure/governance/management-groups/create
 
 Azure 策略示例： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -782,7 +769,8 @@ Azure 策略示例： https://docs.microsoft.com/azure/governance/policy/samples
 
 ### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11：限制用户通过脚本与 AzureResources Manager 交互的能力
 
-**指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问限制用户与 Azure 资源管理器的交互能力。 这可以防止在高安全性环境（如 Key Vault 配置的环境）中创建和更改资源。
+**指南**：使用 azure 条件性访问，通过为 "Microsoft Azure 管理" 应用配置 "阻止访问" 限制用户与 Azure 资源管理器（ARM）的交互能力。 这可以防止在高安全性环境（如 Key Vault 配置的环境）中创建和更改资源。
+
 
 使用条件性访问管理对 Azure 管理的访问权限： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
@@ -814,17 +802,29 @@ Azure 策略示例： https://docs.microsoft.com/azure/governance/policy/samples
 
 **指南**：使用 "KeyVault" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Key Vault 实例的配置。 你还可以将内置的 Azure 策略定义用于 Azure Key Vault 例如：
 
-- 应可恢复 Key Vault 对象
-- 将 Key Vault 的诊断设置部署到 Log Analytics 工作区
-- 应启用 Key Vault 中的诊断日志
-- Key Vault 应使用虚拟网络服务终结点
-- 将 Key Vault 的诊断设置部署到事件中心
+
+应可恢复 Key Vault 对象
+
+将 Key Vault 的诊断设置部署到 Log Analytics 工作区
+
+应启用 Key Vault 中的诊断日志
+
+Key Vault 应使用虚拟网络服务终结点
+
+将 Key Vault 的诊断设置部署到事件中心
+
 
 使用 Azure 安全中心提供的建议作为 Azure Key Vault 实例的安全配置基线。
 
-如何查看可用的 Azure 策略别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-教程：创建和管理策略以强制实施符合性： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何查看可用的 Azure 策略别名：
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+
+
+教程：创建和管理策略以强制实施符合性：
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 安全中心监视**：是
 
@@ -867,7 +867,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地存储 Azure 资源的配置
 
-**指南**：如果对已启用的 Azure Key Vault 资源使用自定义 azure 策略定义，请使用 Azure DevOps/存储库来安全地存储和管理你的代码。
+**指南**：如果为已启用 Azure Key Vault 的资源使用自定义 Azure 策略定义，请使用 Azure Repos 安全地存储和管理你的代码。
 
 
 如何在 Azure DevOps 中存储代码： 
@@ -1050,6 +1050,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 
 如何启用 Azure 备份： https://docs.microsoft.com/azure/backup
 
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -1103,6 +1104,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
 **指南**：确保为 Azure Key Vault 启用软删除。 软删除可恢复已删除的密钥保管库和保管库对象，例如密钥、机密和证书。 
+
 
 如何使用 Azure Key Vault 软删除： 
 
@@ -1199,7 +1201,7 @@ https://docs.microsoft.com/azure/security-center/continuous-export
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure 安全中心监视**：不适用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -1213,7 +1215,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 安全中心监视**：不适用
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -1239,3 +1241,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **责任**：共享
 
+## <a name="next-steps"></a>后续步骤
+
+- 请参阅[Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 了解有关[Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)的详细信息

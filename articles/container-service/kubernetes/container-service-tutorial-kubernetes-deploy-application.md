@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275487"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274049"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>（已弃用）在 Kubernetes 中运行应用程序
 
@@ -70,13 +70,13 @@ containers:
 
 使用 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) 命令运行该应用程序。 此命令分析清单文件并创建定义的 Kubernetes 对象。
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote-all-in-one-redis.yml
 ```
 
 输出：
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -89,13 +89,13 @@ service "azure-vote-front" created
 
 若要监视进度，请将 [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令与 `--watch` 参数配合使用。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
 `azure-vote-front` 服务的  EXTERNAL-IP 一开始显示为 `pending`。 当 EXTERNAL-IP 地址从 `pending` 变成 `IP address` 后，立即运行 `CTRL-C` 停止 kubectl 监视进程。
 
-```bash
+```output
 NAME               CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
 azure-vote-front   10.0.42.158   <pending>     80:31873/TCP   1m
 azure-vote-front   10.0.42.158   52.179.23.131 80:31873/TCP   2m

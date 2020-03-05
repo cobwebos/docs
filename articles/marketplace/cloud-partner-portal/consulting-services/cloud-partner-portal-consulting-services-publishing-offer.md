@@ -6,18 +6,18 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.author: pabutler
-ms.openlocfilehash: 506b34281ba8ab5b669c87b4699fb8b138c8734a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/27/2020
+ms.author: evansma
+ms.openlocfilehash: d744c0bdcae177ca5cee5617622f04da7312e15f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819190"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268300"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure 和 Dynamics 365 咨询服务产品/服务
 
-本文介绍了如何将咨询服务产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource</a>。 基于 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、<a href="https://powerbi.microsoft.com">Power BI</a> 和 <a href="https://powerapps.microsoft.com">PowerApps</a> 的解决方案可以在 AppSource 中列出。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐可以在 Azure 市场中列出。
+本文介绍了如何将咨询服务产品/服务发布到 Microsoft <a href="https://azuremarketplace.microsoft.com">Azure 市场</a>或 <a href="https://appsource.microsoft.com">AppSource</a>。 基于 Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365</a>、 <a href="https://powerbi.microsoft.com">Power BI</a>和<a href="https://powerapps.microsoft.com">Power Apps</a>的解决方案可在 AppSource 上列出。 基于其他 Microsoft <a href="https://azure.microsoft.com/services">Azure 服务</a>的其他套餐可以在 Azure 市场中列出。
 
 ## <a name="publishing-benefits"></a>发布的好处
 
@@ -35,11 +35,13 @@ ms.locfileid: "73819190"
 - [咨询服务先决条件](./cpp-consulting-service-prerequisites.md)列出了发布咨询服务产品/服务的要求：
  
     - Microsoft Azure
-    - Dynamics 365 for Customer Engagement 
-    - Dynamics 365 for Finance & Operations 
+    - Dynamics 365 客户参与 
+    - Dynamics 365 财务 & 操作 
+    - Dynamics 365 Customer Insights
     - Dynamics 365 Business Central 
     - Power BI 
-    - PowerApps
+    - Power Apps
+    - Power Automate
 - [创建新产品/服务](./cpp-consulting-service-create-offer.md)列出了通过使用云合作伙伴门户创建咨询服务产品/服务项时需要执行的步骤：
     - [定义产品/服务设置](./cpp-consulting-service-define-offer-settings.md)。
     - [输入店面详细信息，以及是要在 Azure 市场还是 AppSource 中发布。](./cpp-consulting-service-storefront-details.md)

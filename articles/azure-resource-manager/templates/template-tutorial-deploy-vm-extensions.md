@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 82b6e3c1a3c17c624dec67093379e8a493b7264f
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 30b7aeaed0bfc2621cb2c71ab3f5e618771a1c26
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561521"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250084"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板部署虚拟机扩展
 
@@ -27,14 +27,14 @@ ms.locfileid: "77561521"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

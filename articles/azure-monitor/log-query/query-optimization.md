@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/28/2019
-ms.openlocfilehash: 4fad7d1e3359264c647ffc2d5f67dc547c87a13a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196648"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269064"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-explorer/)来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并为日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器使用许多自动查询优化机制。 虽然自动优化可显著提高性能，但在某些情况下，可以显著提高查询性能。 本文介绍了性能注意事项和解决这些问题的几种方法。
@@ -63,7 +63,7 @@ Azure Monitor 日志使用[Azure 数据资源管理器（ADX）](/azure/data-exp
 
 这些函数将 CPU 与正在处理的行数成正比。 最有效的优化是在查询中提前添加 where 条件，在执行 CPU 密集型函数之前，可以筛选出尽可能多的记录。
 
-例如，下面的查询生成完全相同的结果，但第二个查询的结果是最有效的，因为分析之前[的条件不]()包括许多记录：
+例如，下面的查询生成完全相同的结果，但第二个查询的结果是最有效的，因为分析之前[的条件不](/azure/kusto/query/whereoperator)包括许多记录：
 
 ```Kusto
 //less efficient

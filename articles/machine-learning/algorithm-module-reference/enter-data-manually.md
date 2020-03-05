@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 949cdb4c53531a548380a6f0116fb45f91d7ba66
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917469"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268774"
 ---
 # <a name="enter-data-manually-module"></a>手动输入数据模块
 
@@ -89,11 +89,9 @@ ms.locfileid: "77917469"
         |0.00016|0.004|0.999961|0.00784|1|  
         |0|0.004|0.999955|0.008615|1|  
   
-4.  在每一行后按 ENTER 以开始新行。  
-  
-     **请确保在最后一行后按 ENTER 键。** 
+4.  在每一行后按 ENTER 以开始新行。      
      
-     如果按 ENTER 多次来添加多个空尾随行，则会删除最终的空行，但会将其他空行视为缺失值。  
+     如果按 ENTER 多次来添加多个空尾随行，则将删除空行。  
   
      如果创建缺少值的行，则可以在以后随时对其进行筛选。  
   

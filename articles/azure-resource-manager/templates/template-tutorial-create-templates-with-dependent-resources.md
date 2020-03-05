@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f60f248ec3fbbe5adfb61bf361546d1d5e238f54
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834368"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250205"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>教程：创建包含依赖的资源的 Azure 资源管理器模板
 
@@ -29,14 +29,14 @@ ms.locfileid: "75834368"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     Azure Key Vault 旨在保护加密密钥和其他机密。 有关详细信息，请参阅[教程：在资源管理器模板部署中集成 Azure Key Vault](./template-tutorial-use-key-vault.md)。 我们还建议你每三个月更新一次密码。

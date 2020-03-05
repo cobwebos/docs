@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ddb08f774bbb8aa3bc4b10bcd0dd213c8583465e
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249791"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273654"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -148,19 +148,19 @@ Param
 * **Azure 资源管理器 cmdlet：** 可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0
 )启动在资源组中创建的自动化 runbook。
 
-```powershell
-  $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
   
-  Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
-```
+     Start-AzAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" –ResourceGroupName $resourceGroupName -Parameters $params
+   ```
 
 * **Azure 经典部署模型 cmdlet**：可以使用 [Start-AzureAutomationRunbook](/powershell/module/servicemanagement/azure/start-azureautomationrunbook) 启动在默认资源组中创建的自动化 Runbook。
   
-```powershell
-  $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
+   ```powershell
+     $params = @{"VMName"="WSVMClassic"; "ServiceName"="WSVMClassicSG"}
   
-  Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
-```
+     Start-AzureAutomationRunbook -AutomationAccountName "TestAutomation" -Name "Get-AzureVMGraphical" -Parameters $params
+   ```
 
 > [!NOTE]
 > 使用 PowerShell cmdlet 启动 runbook 时，将使用值**PowerShell**创建默认参数*将 microsoftapplicationmanagementstartedby*。 您可以在 "作业详细信息" 窗格中查看此参数。  
@@ -169,7 +169,7 @@ Param
 
 * **Azure 资源管理器方法：** 可以使用编程语言的 SDK 启动 runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。  
 
-  ```csharp
+   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
       {
         var response = AutomationClient.Jobs.Create(resourceGroupName, automationAccount, new JobCreateParameters
@@ -185,11 +185,11 @@ Param
          });
       return response.Job;
       }
-  ```
+   ```
 
 * **Azure 经典部署模型方法：** 可使用编程语言的 SDK 启动 Runbook。 以下 C# 代码段用于在自动化帐户中启动 Runbook。 可以在 [GitHub 存储库](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)中查看完整代码。
 
-  ```csharp
+   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
     {
       var response = AutomationClient.Jobs.Create(automationAccount, new JobCreateParameters
@@ -205,20 +205,20 @@ Param
        });
       return response.Job;
     }
-  ```
+   ```
 
-  若要启动此方法，请创建一个字典来存储 runbook 参数*VMName*和*resourceGroupName*及其值。 然后启动 Runbook。 以下 C# 代码段用于调用上面定义的方法。
+   若要启动此方法，请创建一个字典来存储 runbook 参数*VMName*和*resourceGroupName*及其值。 然后启动 Runbook。 以下 C# 代码段用于调用上面定义的方法。
 
-  ```csharp
-  IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
+   ```csharp
+   IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
   
-  // Add parameters to the dictionary.
+   // Add parameters to the dictionary.
   RunbookParameters.Add("VMName", "WSVMClassic");
-  RunbookParameters.Add("resourceGroupName", "WSSC1");
+   RunbookParameters.Add("resourceGroupName", "WSSC1");
   
-  //Call the StartRunbook method with parameters
-  StartRunbook("Get-AzureVMGraphical", RunbookParameters);
-  ```
+   //Call the StartRunbook method with parameters
+   StartRunbook("Get-AzureVMGraphical", RunbookParameters);
+   ```
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>使用 REST API 启动 runbook 并分配参数
 
@@ -238,7 +238,7 @@ Param
 
 如果要启动前面使用*VMName*和*ResourceGroupName*创建的**get-azurevmtextual** runbook 作为参数，请对请求正文使用以下 JSON 格式。
 
-   ```json
+```json
     {
       "properties":{
         "runbook":{
@@ -248,7 +248,7 @@ Param
          "resourceGroupName":"ContosoSales"}
         }
     }
-   ```
+```
 
 如果成功创建了作业，将返回 HTTP 状态代码 201。 有关响应标头和响应正文的详细信息，请参阅[使用 REST API 创建 runbook 作业](/rest/api/automation/job/create)。
 
@@ -260,13 +260,13 @@ Param
 
 ### <a name="link-a-schedule-to-a-runbook-and-assign-parameters"></a>将计划链接到 Runbook 并分配参数
 
-可[将计划链接](automation-schedules.md)到 Runbook，以便在特定的时间启动 Runbook。 创建计划时将指定输入参数，Runbook 在按计划启动时，将使用这些值。 只有在提供所有必需参数值之后，才可以保存计划。
+可[将计划链接](automation-schedules.md)到 Runbook，以便在特定的时间启动 Runbook。 创建计划时将指定输入参数，Runbook 在按计划启动时，将使用这些值。 在提供所有必需的参数值之前，无法保存计划。
 
 ![计划并分配参数](media/automation-runbook-input-parameters/automation-07-scheduleandassignparameters.png)
 
 ### <a name="create-a-webhook-for-a-runbook-and-assign-parameters"></a>创建 Runbook 的 Webhook 并分配参数
 
-可为 Runbook 创建 [Webhook](automation-webhooks.md) 并配置 Runbook 输入参数。 只有在提供所有必需参数值之后，才可以保存 Webhook。
+可为 Runbook 创建 [Webhook](automation-webhooks.md) 并配置 Runbook 输入参数。 在提供所有必需的参数值之前，无法保存 webhook。
 
 ![创建 webhook 并分配参数](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
@@ -330,7 +330,7 @@ Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
     >[!NOTE]
     >对于 PowerShell runbook， **AzAccount**和**add-azurermaccount**是**AzAccount**的别名。 请注意，这些别名不可用于图形 runbook。 图形 runbook 只能使用**AzAccount**本身。
 
-2. 获取已保存 JSON 文件的内容，并将其转换为字符串。 `JsonPath` 是保存 JSON 文件的位置路径。
+1. 获取已保存 JSON 文件的内容，并将其转换为字符串。 `JsonPath` 是保存 JSON 文件的位置路径。
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -354,7 +354,7 @@ Start-AzVM -Name $json.VMName -ResourceGroupName $json.ResourceGroup
    ```
 
    请注意，你要将*参数*的值设置为包含 JSON 文件中的值的 PowerShell 对象。
-1. 启动 Runbook
+1. 启动 runbook。
 
    ```powershell
    $job = Start-AzAutomationRunbook @RBParams

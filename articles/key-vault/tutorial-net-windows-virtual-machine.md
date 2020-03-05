@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9d3e9484fc6726241ff9bc1eafc56fce92d711cd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845294"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198093"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的 Windows 虚拟机配合使用
 
@@ -37,7 +38,7 @@ Azure Key Vault 可以帮助保护机密，例如访问应用程序、服务和 
 
 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 对于 Windows、Mac 和 Linux：
   * [Git](https://git-scm.com/downloads)

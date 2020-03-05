@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 527002bee1bec4097cf62155efebae06880bad97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bae67b0177823ab4558085db67423edea062fa3c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470862"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250059"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>教程：在你的资源管理器模板部署中集成 Azure 密钥保管库
 
@@ -35,14 +35,14 @@ ms.locfileid: "75470862"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要增强安全性，请使用为 VM 管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
     验证生成的密码是否符合 VM 密码要求。 每个 Azure 服务具有特定的密码要求。 有关 VM 密码要求，请参阅[创建 VM 时，密码有什么要求？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。

@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 NGINX 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 2debe6daf409200059f28aef52202223193e8f0c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622423"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270047"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>使用自定义 NGINX 入口控制器并配置 HTTPS
 
@@ -23,7 +23,7 @@ ms.locfileid: "77622423"
 * [启用 Azure Dev Spaces 的 Azure Kubernetes 服务（AKS）群集][qs-cli]。
 * 已安装[kubectl][kubectl] 。
 * [已安装 Helm 3][helm-installed]。
-* [一个自定义域][custom-domain]，其中包含与你的 AKS 群集位于同一资源组中的[DNS 区域][dns-zone]。
+* 具有[DNS 区域][dns-zone]的[自定义域][custom-domain]。  本文假定自定义域和 DNS 区域与 AKS 群集位于同一资源组中，但可以在不同的资源组中使用自定义域和 DNS 区域。
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>配置自定义 NGINX 入口控制器
 

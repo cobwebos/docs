@@ -3,17 +3,16 @@ title: 教程 - 在 Azure Monitor 中创建指标图表
 description: 了解如何使用 Azure 指标资源管理器创建第一个指标图表。
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: bwren
-ms.openlocfilehash: 7d9360840912614b6ae89d958d90de962b36506d
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: be4f026ba20ce1582f5626ec7483740831c25c1a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689955"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661458"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教程：在 Azure Monitor 中创建指标图表
 指标资源管理器是 Azure 门户中 Azure Monitor 的一项功能，通过它可以根据指标值创建图表，直观地关联趋势，以及调查指标值中的高峰和凹陷。 使用指标资源管理器调查 Azure 资源的运行状况和利用率，或根据自定义指标绘制图表。 
@@ -25,7 +24,7 @@ ms.locfileid: "75689955"
 > * 执行不同的指标值聚合
 > * 修改图表的时间范围和粒度
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要一个要监控的 Azure 资源。 可以使用 Azure 订阅中支持指标的任何资源。 若要确定资源是否支持指标，请在 Azure 门户中前往其菜单，并验证菜单的“监视”部分中是否有“指标”选项   。
 

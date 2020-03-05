@@ -7,18 +7,17 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 0295ed7d44d64fcc1aeb68e1beaa37987b177edb
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161850"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273850"
 ---
-# <a name="nvv4-series-preview"></a>NVv4 系列（预览）
+# <a name="nvv4-series"></a>NVv4 系列 
 
 NVv4 系列虚拟机由[Amd Radeon INSTINCT MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 AMD EPYC 7V12 （罗马） cpu 提供支持。 借助 NVv4 系列，Azure 引入了包含部分 Gpu 的虚拟机。 从 GPU 的 1/8 开始，为 GPU 加速图形应用程序和虚拟桌面选取适当大小的虚拟机，并将 2 GiB 帧缓冲到带有 16 GiB 帧缓冲区的完整 GPU。 NVv4 虚拟机当前仅支持 Windows 来宾操作系统。
 
-[注册并在预览期访问这些虚拟机](https://aka.ms/nvv4signup)。
 <br>
 
 高级存储：支持
@@ -42,11 +41,7 @@ NVv4 系列虚拟机由[Amd Radeon INSTINCT MI25](https://www.amd.com/en/product
 
 ## <a name="supported-operating-systems-and-drivers"></a>支持的操作系统和驱动程序
 
-若要利用运行 Windows、NVIDIA 或 AMD GPU 驱动程序的 Azure N 系列 Vm 的 GPU 功能，必须安装。
-
-[NVIDIA GPU 驱动程序扩展](./extensions/hpccompute-gpu-windows.md)在 Windows N 系列 VM 上安装合适的 nvidia CUDA 或网格驱动程序。 请使用 Azure 门户或工具（例如 Azure PowerShell 或 Azure 资源管理器模板）安装或管理该扩展。 有关受支持的操作系统和部署步骤，请参阅 [NVIDIA GPU 驱动程序扩展文档](./extensions/hpccompute-gpu-windows.md)。 有关 VM 扩展的常规信息，请参阅 [Azure 虚拟机扩展和功能](/.extensions/overview.md)。
-
-如果选择手动安装 NVIDIA GPU 驱动程序，请参阅适用于[Windows 的 N 系列 GPU 驱动程序设置](./windows/n-series-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
+若要利用运行 Windows 的 Azure NVv4 系列 Vm 的 GPU 功能，必须安装 AMD GPU 驱动程序。
 
 若要手动安装 AMD GPU 驱动程序，请参阅适用于[Windows 的 N 系列 AMD gpu 驱动程序设置](./windows/n-series-amd-driver-setup.md)以获取支持的操作系统、驱动程序、安装和验证步骤。
 

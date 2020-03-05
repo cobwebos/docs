@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
-ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 8e7874ec2a0ea160d29f8755ca8680c4dfbeec1d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921584"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268505"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的重新训练模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -119,7 +119,7 @@ ms.locfileid: "77921584"
 
 1. 选择要运行的管道。
 
-1. 选择“运行”。
+1. 选择“提交”。
 
 1. 在 "设置" 对话框中，可以指定新的输入数据路径值，该值指向新的数据集。
 
@@ -127,7 +127,9 @@ ms.locfileid: "77921584"
 
 ### <a name="submit-runs-with-code"></a>提交运行代码
 
-可以通过多种方式按编程方式访问 REST 终结点，具体取决于你的开发环境。 可以在管道的 "**使用**" 选项卡中找到演示如何使用参数提交管道运行的代码示例。
+可以在 "概述" 面板中找到已发布管道的 REST 终结点。 通过调用终结点，你可以重新训练已发布的管道。
+
+若要进行 REST 调用，你将需要 OAuth 2.0 持有者类型身份验证标头。 请参阅以下[教程部分](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)，以详细了解如何设置工作区的身份验证并进行参数化 REST 调用。
 
 ## <a name="next-steps"></a>后续步骤
 

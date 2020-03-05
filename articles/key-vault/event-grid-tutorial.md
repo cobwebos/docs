@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5c959dc7fa36fb41307d286b1e7d0b475d5b56c6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5eaf4cf702e56df932a61ab277dff6b34d97854d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988458"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185023"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>通过 Azure 事件网格接收和响应 Key Vault 通知（预览版）
 
@@ -22,7 +23,7 @@ ms.locfileid: "76988458"
 
 本指南描述如何通过事件网格接收 Key Vault 通知，以及如何通过 Azure 自动化对状态更改做出响应。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Azure 订阅中的 Key Vault。 可以按照[使用 Azure CLI 在 Azure Key Vault 中设置和检索机密](quick-create-cli.md)中的步骤来快速创建新的 Key Vault。

@@ -2,20 +2,20 @@
 title: 教程：从桌面应用程序授予对 Node.js Web API 的访问权限
 description: 有关如何从 .NET 桌面应用使用 Active Directory B2C 保护 .Node.js Web API 并调用该 API 的教程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849867"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183360"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>教程：从桌面应用使用 Azure Active Directory B2C 授予对 Node.js Web API 的访问权限
 
@@ -29,7 +29,7 @@ ms.locfileid: "76849867"
 > * 授予 Web API 权限
 > * 将示例更新为使用该应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成[教程：在本机桌面客户端中对用户进行身份验证](tutorial-desktop-app.md)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "76849867"
 
 在先决条件教程中，你注册了名为“nativeapp1”  的本机客户端应用程序。 以下步骤使用你向上述部分中“webapi1”  公开的 API 范围来配置本机应用程序注册。 这允许桌面应用程序从 Azure AD B2C 获取访问令牌，Web API 可以使用该令牌来验证和提供对其资源的作用域访问。 在本教程的后面部分，你将配置并运行桌面应用程序和 Web API 代码示例。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 依次选择“应用程序”、“nativeapp1”   。
 1. 选择“API 访问”，然后选择“添加”   。
@@ -59,7 +59,7 @@ ms.locfileid: "76849867"
 1. 在“选择范围”  下拉列表中，选择先前定义的范围。 例如，*demo.read* 和 *demo.write*。
 1. 选择“确定”  。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 选择“应用注册(预览版)”  ，然后选择应该有权访问 API 的 本机客户端应用程序。 例如，“nativeapp1”  。
 1. 在“管理”下选择“API 权限”  。 

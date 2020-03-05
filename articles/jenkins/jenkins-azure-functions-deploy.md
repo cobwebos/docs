@@ -4,18 +4,18 @@ description: 了解如何使用 Jenkins Azure Functions 插件部署到 Azure Fu
 keywords: jenkins, azure, devops, java, azure functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 731bac13a596bbeaf970b3f6ce976a582d1f11ae
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470660"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250910"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>使用 Jenkins Azure Functions 插件部署到 Azure Functions
 
 [Azure Functions](/azure/azure-functions/) 是一个无服务器计算服务。 使用 Azure Functions 可以按需运行代码，而无需预配或管理基础结构。 本教程演示如何使用 Azure Functions 插件将 Java 函数部署到 Azure Functions。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - **Jenkins 服务器**：如果未安装 Jenkins 服务器，请参阅文章[在 Azure 上创建 Jenkins 服务器](./install-jenkins-solution-template.md)。
@@ -31,19 +31,19 @@ ms.locfileid: "77470660"
 
 1. 创建资源组，将 &lt;resource_group>  占位符替换资源组名称。
 
-    ```cli
+    ```azurecli
     az group create --name <resource_group> --location eastus
     ```
 
 1. 创建 Azure 存储帐户，将占位符替换为适当的值。
  
-    ```cli
+    ```azurecli
     az storage account create --name <storage_account> --location eastus --resource-group <resource_group> --sku Standard_LRS    
     ```
 
 1. 创建测试函数应用，将占位符替换为适当的值。
 
-    ```cli
+    ```azurecli
     az functionapp create --resource-group <resource_group> --consumption-plan-location eastus --name <function_app> --storage-account <storage_account>
     ```
 
@@ -148,7 +148,7 @@ ms.locfileid: "77470660"
 
 如果不打算继续使用此应用程序，请按以下步骤删除创建的资源：
 
-```cli
+```azurecli
 az group delete -y --no-wait -n <resource_group>
 ```
 

@@ -4,12 +4,12 @@ description: 了解如何使用 Jenkins 和蓝/绿部署模式部署到 Azure Ku
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, 蓝绿部署, 持续交付, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: ae9c496cd820bf1263cac50fb676990ed65ed0ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158556"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251474"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>使用 Jenkins 和蓝/绿部署模式部署到 Azure Kubernetes 服务 (AKS)
 
@@ -82,21 +82,21 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>使用 Azure CLI 2.0 创建托管的 Kubernetes 群集
 若要使用 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 创建托管的 Kubernetes 群集，请务必使用 Azure CLI 2.0.25 或更高版本。
 
-1. 登录到 Azure 帐户。 输入以下命令后，会收到有关如何完成登录的说明。 
+1. 登录 Azure 帐户。 输入以下命令后，会收到有关如何完成登录的说明。 
     
-    ```bash
+    ```azurecli
     az login
     ```
 
 1. 在上一步骤中运行 `az login` 命令时，会显示所有 Azure 订阅的列表（及其订阅 ID）。 此步骤设置默认的 Azure 订阅。 请将 &lt;your-subscription-id> 占位符替换为所需的 Azure 订阅 ID。 
 
-    ```bash
+    ```azurecli
     az account set -s <your-subscription-id>
     ```
 
 1. 创建资源组。 请将 &lt;your-resource-group-name> 占位符替换为新资源组的名称，将 &lt;your-location> 占位符替换为位置。 命令 `az account list-locations` 显示所有 Azure 位置。 在 AKS 预览版中，并非所有位置都可用。 如果输入目前无效的位置，错误消息会列出可用的位置。
 
-    ```bash
+    ```azurecli
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
@@ -120,7 +120,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
      ![bash 中 setup.sh 脚本的屏幕截图，其中突出显示了多个占位符](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
-1. 运行设置脚本。
+1. 运行安装脚本。
 
     ```bash
     sh setup.sh
@@ -129,7 +129,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 #### <a name="set-up-a-kubernetes-cluster-manually"></a>手动设置 Kubernetes 群集 
 1. 将 Kubernetes 配置下载到 profile 文件夹。
 
-    ```bash
+    ```azurecli
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
@@ -157,13 +157,13 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
     
     使用以下命令更新相应 IP 地址的 DNS 名称：
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
     针对 `todoapp-test-blue` 和 `todoapp-test-green` 重复调用：
 
-    ```bash
+    ```azurecli
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
 
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -175,13 +175,13 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 1. 运行 `az acr create` 命令创建容器注册表的实例。 在下一部分，可以使用 `login server` 作为 Docker 注册表 URL。
 
-    ```bash
+    ```azurecli
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
 1. 运行 `az acr credential` 命令显示容器注册表凭据。 记下 Docker 注册表用户名和密码，因为在下一部分需要用到。
 
-    ```bash
+    ```azurecli
     az acr credential show -n <your-registry-name>
     ```
 
@@ -224,7 +224,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 1. 在自己的存储库中转到 `/deploy/aks/`，并打开 `Jenkinsfile`。
 
-2. 按如下所示更新该文件：
+2. 按如下所示更新文件：
 
     ```groovy
     def servicePrincipalId = '<your-service-principal>'
@@ -255,7 +255,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 ## <a name="run-the-job"></a>运行作业
 
-1. 验证是否可以成功在本地环境中运行项目。 方法如下：[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
+1. 验证是否可以成功在本地环境中运行项目。 以下是操作方法：[在本地计算机上运行项目](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it)。
 
 1. 运行 Jenkins 作业。 首次运行该作业时，Jenkins 会将待办事项应用部署到蓝色环境（默认的非活动环境）。 
 
@@ -276,7 +276,7 @@ GitHub 上的 Microsoft 存储库中提供了一个演示如何使用 Jenkins �
 
 不再需要本教程中创建的资源时，可将其删除。
 
-```bash
+```azurecli
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 

@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b77486064139895799ac5a48327377154f75da6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008339"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273840"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“有风险的登录”报告
 
 Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑操作。 对于检测到的每个操作，都会创建一个名为 "**风险检测**" 的记录。 有关更多详细信息，请参阅[Azure AD 风险检测](concept-risk-events.md)。 
 
-你可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
+可以从 [Azure 门户](https://portal.azure.com)中通过选择“Azure Active Directory”边栏选项卡并导航到“安全性”部分来访问安全报告。 
 
 根据风险检测来计算两个不同的安全报告：
 
@@ -52,15 +52,15 @@ Azure Active Directory (Azure AD) 可以检测到与用户帐户相关的可疑�
 
 所有版本的 Azure AD 都提供风险登录报告。 但是，各版本的报表粒度级别有所不同： 
 
-- 在 **Azure Active Directory 免费版和基本版**中，你将得到其中包含风险登录的列表。 
+- 在**Azure Active Directory Free 版本**中，你将获得有风险登录的列表。 
 
 - 此外， **Azure Active Directory Premium 1**版使你可以检查已为每个报告检测到的某些底层风险检测。 
 
 - **Azure Active Directory Premium 2**版本提供有关所有底层风险检测的最详细信息，并且还允许您配置自动响应已配置风险级别的安全策略。
 
-## <a name="risky-sign-ins-report-for-azure-ad-free-and-basic-edition"></a>Azure AD 免费版和基本版的风险登录报告
+## <a name="risky-sign-ins-report-for-azure-ad-free-edition"></a>Azure AD 免费版的 "有风险的登录" 报告
 
-Azure AD 免费版和基本版提供针对用户检测到的有风险的登录列表。 每个记录包含以下属性：
+Azure AD 免费版提供已为用户检测到的风险登录的列表。 每个记录包含以下属性：
 
 - **用户** - 在登录操作期间使用的用户的名称。
 - **IP** - 用于连接到 Azure Active Directory 的设备的 IP 地址。

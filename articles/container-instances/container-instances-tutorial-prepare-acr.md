@@ -4,12 +4,12 @@ description: Azure 容器实例教程第 2 部分（共 3 部分）- 准备 Azur
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 131ea39b382735423a1edff72774313c4096ea2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 1a5b9555572264b6a00b4ce73eaa0719d94fd99b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552406"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252160"
 ---
 # <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>教程：创建 Azure 容器注册表并推送容器映像
 
@@ -46,8 +46,7 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 下面是名为 *mycontainerregistry082* 的新 Azure 容器注册表的示例输出（此处显示的内容已截断）：
 
-```console
-$ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --sku Basic
+```output
 ...
 {
   "creationDate": "2018-03-16T21:54:47.297875+00:00",
@@ -78,10 +77,15 @@ $ az acr create --resource-group myResourceGroup --name mycontainerregistry082 -
 az acr login --name <acrName>
 ```
 
+例如：
+
+```azurecli
+az acr login --name mycontainerregistry082
+```
+
 该命令在完成后返回 `Login Succeeded`：
 
-```console
-$ az acr login --name mycontainerregistry082
+```output
 Login Succeeded
 ```
 
@@ -97,8 +101,11 @@ az acr show --name <acrName> --query loginServer --output table
 
 例如，如果注册表名为 *mycontainerregistry082*：
 
-```console
-$ az acr show --name mycontainerregistry082 --query loginServer --output table
+```azurecli
+az acr show --name mycontainerregistry082 --query loginServer --output table
+```
+
+```output
 Result
 ------------------------
 mycontainerregistry082.azurecr.io
@@ -165,8 +172,11 @@ az acr repository list --name <acrName> --output table
 
 例如：
 
-```console
-$ az acr repository list --name mycontainerregistry082 --output table
+```azurecli
+az acr repository list --name mycontainerregistry082 --output table
+```
+
+```output
 Result
 ----------------
 aci-tutorial-app
@@ -181,7 +191,7 @@ az acr repository show-tags --name <acrName> --repository aci-tutorial-app --out
 会得到类似于下面的输出：
 
 ```console
-$ az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
+az acr repository show-tags --name mycontainerregistry082 --repository aci-tutorial-app --output table
 Result
 --------
 v1

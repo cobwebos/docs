@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/03/2020
 ms.author: helohr
-ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 9e42ff0ec5b44dca743d2ec1470c2eef655b9436
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368846"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273106"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -128,10 +128,9 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 若要确保你的应用注册具有 API 权限：
 
 1. 打开浏览器并使用管理帐户连接到[Azure 门户](https://portal.azure.com/)。
-2. 请参阅**应用注册**，查找 Azure AD 应用注册。
-
-      !["API 权限" 页。](media/api-permissions-page.png)
-
+2. 请参阅**Azure Active Directory**。
+3. 请参阅**应用注册**，并选择 "**所有应用程序**"。
+4. 使用在[创建 Azure Active Directory 应用注册](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)的步骤5中输入的相同应用名称查找 Azure AD 应用注册。
 
 ### <a name="review-your-log-analytics-workspace"></a>查看 Log Analytics 工作区
 

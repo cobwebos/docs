@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901493"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273704"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -25,7 +25,7 @@ ms.locfileid: "76901493"
 *  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
 *  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-创建表格模型项目时，可以使用 Visual Studio 中的角色管理器和 Analysis Services 项目，创建角色并向这些角色添加用户或组。 部署到服务器时，可以使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格模型脚本语言](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）来添加或删除角色和用户成员。
+创建表格模型项目时，可以使用 Visual Studio 中的角色管理器和 Analysis Services 项目，创建角色并向这些角色添加用户或组。 部署到服务器时，可以使用 SQL Server Management Studio （SSMS）、 [Analysis Services PowerShell cmdlet](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)或[表格模型脚本语言](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)（TMSL）来添加或删除角色和用户成员。
 
 **安全组**必须[启用邮件](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups)，并将 `MailEnabled` 属性设置为 `True`。 按电子邮件地址指定组时，请使用 `obj:groupid@tenantid`。
 
@@ -42,7 +42,7 @@ ms.locfileid: "76901493"
   
 4.  选择以下权限之一：  
   
-    |权限|Description|  
+    |权限|说明|  
     |----------------|-----------------|  
     |无|成员无法读取或修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
@@ -71,7 +71,7 @@ ms.locfileid: "76901493"
 
 3. 选择权限。
 
-   |权限|Description|  
+   |权限|说明|  
    |----------------|-----------------|  
    |**完全控制(管理员)**|成员可以修改模型架构，处理并查询所有数据。| 
    |**处理数据库**|成员可以运行“处理”和“全部处理”操作。 不能修改模型架构且不能查询数据。|  
@@ -85,7 +85,7 @@ ms.locfileid: "76901493"
 
 ## <a name="to-add-roles-and-users-by-using-a-tmsl-script"></a>使用 TMSL 脚本添加角色和用户
 
-可在 SSMS 中的 XMLA 窗口中运行 TMSL 脚本或使用 PowerShell。 使用 [CreateOrReplace](https://docs.microsoft.com/bi-reference/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/bi-reference/tmsl/roles-object-tmsl) 对象。
+可在 SSMS 中的 XMLA 窗口中运行 TMSL 脚本或使用 PowerShell。 使用 [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) 命令和 [Roles](https://docs.microsoft.com/analysis-services/tmsl/roles-object-tmsl) 对象。
 
 **示例 TMSL 脚本**
 
@@ -121,7 +121,7 @@ ms.locfileid: "76901493"
 
 [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
-|Cmdlet|Description|
+|Cmdlet|说明|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|向数据库角色添加成员。| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|从数据库角色删除成员。|   
@@ -139,7 +139,7 @@ ms.locfileid: "76901493"
   
 |表|DAX 表达式|  
 |-----------|--------------------|  
-|地区|=Region[Country]="USA"|  
+|区域|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  
 |事务|=Transactions[Year]=2016|  
   
@@ -151,5 +151,5 @@ ms.locfileid: "76901493"
 
   [管理服务器管理员](analysis-services-server-admins.md)   
   [使用 PowerShell 管理 Azure Analysis Services](analysis-services-powershell.md)  
-  [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
+  [表格模型脚本语言 (TMSL) 参考](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference)
 

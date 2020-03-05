@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03ea130011b23704731d68e5685e4ea0938e19b5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e6b2f73540a0af7ed9c12469406a77d1bed8a2b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771796"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268461"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>监视 Azure ML 试验运行和指标
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "75771796"
 |列表|函数：<br>`run.log_list(name, value, description='')`<br><br>示例：<br>run.log_list("accuracies", [0.6, 0.7, 0.87]) | 使用给定名称将值列表记录到运行中。|
 |行|函数：<br>`run.log_row(name, description=None, **kwargs)`<br>示例：<br>run.log_row("Y over X", x=1, y=0.4) | 使用 log_row 创建包含多个列的指标，如 kwargs 中所述。 每个命名的参数会生成一个具有指定值的列。  可调用 log_row 一次，记录一个任意元组，或在一个循环中调用多次，生成一个完整表格。|
 |表|函数：<br>`run.log_table(name, value, description='')`<br><br>示例：<br>run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]}) | 使用给定名称将字典对象记录到运行中。 |
-|图像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
+|映像|函数：<br>`run.log_image(name, path=None, plot=None)`<br><br>示例：<br>`run.log_image("ROC", plot=plt)` | 将图像记录到运行记录中。 使用 log_image 在运行中记录图像文件或 matplotlib 图。  运行记录中可显示和比较这些图像。|
 |标记一个运行|函数：<br>`run.tag(key, value=None)`<br><br>示例：<br>run.tag("selected", "yes") | 使用一个字符串键和可选字符串值标记运行。|
 |上传文件或目录|函数：<br>`run.upload_file(name, path_or_stream)`<br> <br> 示例：<br>run.upload_file("best_model.pkl", "./model.pkl") | 将文件上传到运行记录。 在指定输出目录中自动运行捕获文件，对于大多数运行类型，该目录默认为 "./outputs"。  仅当需要上传其他文件或未指定输出目录时使用 upload_file。 建议在名称中添加 `outputs` 以便将其上传到输出目录。 可通过调用 `run.get_file_names()` 列出与此运行记录关联的所有文件|
 
@@ -297,7 +297,7 @@ ms.locfileid: "75771796"
 可以使用 ```run.get_metrics()``` 查看训练的模型的指标。 现在可以获取上面示例中记录的所有指标以确定最佳模型。
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>在[Azure 机器学习 studio](https://ml.azure.com)中查看工作区中的试验
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studio"></a>在[Azure 机器学习 studio](https://ml.azure.com)中查看工作区中的试验
 
 当实验完成运行时，可浏览到试验运行记录。 可以从[Azure 机器学习 studio](https://ml.azure.com)访问历史记录。
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921090"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270160"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -37,7 +37,7 @@ ms.locfileid: "77921090"
  
     ![流式引入](media/ingest-data-streaming/streaming-ingestion-on.png)
  
-1. 在[WEB UI](https://dataexplorer.azure.com/)中，定义将接收流式处理数据的一个或多个表的[流式处理引入策略](/azure/kusto/concepts/streamingingestionpolicy)。 
+1. 在[WEB UI](https://dataexplorer.azure.com/)中，定义将接收流式处理数据的一个或多个表的[流式处理引入策略](/azure/kusto/management/streamingingestionpolicy)。 
 
     > [!NOTE]
     > * 如果策略是在数据库级别定义的，则将为流式引入启用数据库中的所有表。
@@ -63,7 +63,7 @@ ms.locfileid: "77921090"
 > [!WARNING]
 > 禁用流引入可能需要几个小时。
 
-1. 从所有相关的表和数据库中删除[流式处理引入策略](/azure/kusto/concepts/streamingingestionpolicy)。 流式处理引入策略删除触发从初始存储到列存储中的永久存储（区或分片）的流引入数据移动。 数据移动可能会持续几秒钟到几个小时，具体取决于初始存储中的数据量以及群集如何使用 CPU 和内存。
+1. 从所有相关的表和数据库中删除[流式处理引入策略](/azure/kusto/management/streamingingestionpolicy)。 流式处理引入策略删除触发从初始存储到列存储中的永久存储（区或分片）的流引入数据移动。 数据移动可能会持续几秒钟到几个小时，具体取决于初始存储中的数据量以及群集如何使用 CPU 和内存。
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在 "**设置**" 中选择 "**配置**"。 
 1. 在 "**配置**" 窗格中，选择 "**关闭**" 以禁用**流式引入**。
 1. 选择“保存”。

@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: a80a1567c84ff3c2eda8ad22391aa862bb7d9d82
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963336"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915820"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器训练并比较多个回归模型来预测汽车价格
 
@@ -31,7 +31,7 @@ ms.locfileid: "76963336"
 
 [![管道图形](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png)](./media/how-to-designer-sample-regression-automobile-price-compare-algorithms/graph.png#lightbox)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -62,7 +62,7 @@ ms.locfileid: "76963336"
 
 机器学习问题各有不同。 常见的机器学习任务包括分类、聚类、回归和推荐器系统，每个系统可能需要不同的算法。 选择哪个算法通常取决于用例的要求。 选取算法后，需要优化其参数，以训练更准确的模型。 然后，需要基于指标（例如准确度、可理解性和效率）评估所有模型。
 
-由于此管道的目标是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。 考虑到特征数目相对较少（小于 100），且这些特征不是稀疏的，因此决策边界很可能是非线性的。
+由于此管道的目标是预测汽车价格，并且由于标签列（价格）包含实数，因此回归模型是一个不错的选择。
 
 为了比较不同算法的性能，我们将使用两个非线性算法（“提升决策树回归”和“决策林回归”）来生成模型   。 这两种算法都具有可更改的参数，但此示例使用了此管道的默认值。
 

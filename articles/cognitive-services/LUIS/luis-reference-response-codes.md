@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 43fbca732bbd281ad980ae86e4a89f446fdb69bc
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945862"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270251"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>常见的 API 响应代码及其含义
 
-[创作](https://go.microsoft.com/fwlink/?linkid=2092087)和[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。 
+[创作](https://go.microsoft.com/fwlink/?linkid=2092087)和[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API 返回 HTTP 响应代码。 响应消息包含特定于某个请求的信息，而 HTTP 响应状态代码是通用的。
 
 ## <a name="common-status-codes"></a>常见状态代码
 下表列出了[创作](https://go.microsoft.com/fwlink/?linkid=2092087)和[终结点](https://go.microsoft.com/fwlink/?linkid=2092356) API 最常见的一些 HTTP 响应状态代码：
@@ -35,9 +35,9 @@ ms.locfileid: "68945862"
 |401|创作|你不是所有者或协作者|
 |401|创作|API 调用的顺序无效|
 |403|创作、终结点|超出了每月密钥配额总限制|
-|409|终结点|应用程序仍在加载|
-|410|终结点|需要重新训练和重新发布应用程序|
-|414|终结点|查询超过最大字符限制|
+|409|端点|应用程序仍在加载|
+|410|端点|需要重新训练和重新发布应用程序|
+|414|端点|查询超过最大字符限制|
 |429|创作、终结点|超出速率限制（请求数/秒）|
 
 ## <a name="next-steps"></a>后续步骤

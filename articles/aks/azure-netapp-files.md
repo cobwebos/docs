@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596634"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273750"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>将 Azure NetApp 文件与 Azure Kubernetes 服务集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "77596634"
 
 注册*Microsoft NetApp*资源提供程序：
 
-```azure-cli
+```azurecli
 az provider register --namespace Microsoft.NetApp --wait
 ```
 
@@ -52,14 +52,16 @@ az provider register --namespace Microsoft.NetApp --wait
 创建用于 AKS 的 Azure NetApp 帐户时，需要在**节点**资源组中创建该帐户。 首先，通过[az aks show][az-aks-show]命令获取资源组名称，并添加 `--query nodeResourceGroup` 查询参数。 以下示例获取资源组名称*myResourceGroup*中名为*myAKSCluster*的 AKS 群集的节点资源组：
 
 ```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
+```
 
+```output
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 使用[az netappfiles account create][az-netappfiles-account-create]在**节点**资源组和与 AKS 群集相同的区域中创建 Azure NetApp 文件帐户。 以下示例在*MC_myResourceGroup_myAKSCluster_eastus*资源组和*eastus*区域中创建名为*myaccount1*的帐户：
 
-```azure-cli
+```azurecli
 az netappfiles account create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -68,7 +70,7 @@ az netappfiles account create \
 
 使用[az netappfiles pool create][az-netappfiles-pool-create]创建新的容量池。 以下示例创建一个名为*mypool1*且大小为 4 TB、*高级*服务级别为的新容量池：
 
-```azure-cli
+```azurecli
 az netappfiles pool create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --location eastus \
@@ -80,7 +82,7 @@ az netappfiles pool create \
 
 使用[az network vnet subnet create][az-network-vnet-subnet-create]创建要[委派给 Azure NetApp 文件][anf-delegate-subnet]的子网。 *此子网必须与 AKS 群集位于同一虚拟网络中。*
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 VNET_NAME=$(az network vnet list --resource-group $RESOURCE_GROUP --query [].name -o tsv)
 VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -95,7 +97,7 @@ az network vnet subnet create \
 
 使用[az netappfiles volume create][az-netappfiles-volume-create]创建卷。
 
-```azure-cli
+```azurecli
 RESOURCE_GROUP=MC_myResourceGroup_myAKSCluster_eastus
 LOCATION=eastus
 ANF_ACCOUNT_NAME=myaccount1
@@ -125,9 +127,12 @@ az netappfiles volume create \
 ## <a name="create-the-persistentvolume"></a>创建 PersistentVolume
 
 使用[az netappfiles volume show][az-netappfiles-volume-show]列出卷的详细信息
-```azure-cli
-$ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
 
+```azurecli
+az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_ACCOUNT_NAME --pool-name $POOL_NAME --volume-name "myvol1"
+```
+
+```output
 {
   ...
   "creationToken": "myfilepath2",
@@ -245,7 +250,9 @@ kubectl describe pod nginx-nfs
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash
+```
 
+```output
 root@nginx-nfs:/# df -h
 Filesystem             Size  Used Avail Use% Mounted on
 ...

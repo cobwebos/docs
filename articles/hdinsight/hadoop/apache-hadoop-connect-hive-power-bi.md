@@ -1,20 +1,19 @@
 ---
 title: 使用 Power BI 直观显示 Apache Hive 数据 - Azure HDInsight
 description: 了解如何使用 Microsoft Power BI 直观显示 Azure HDInsight 已处理的 Hive 数据。
-keywords: hdinsight,hadoop,hive,交互式查询,交互式 hive,LLAP,odbc
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/02/2020
+ms.openlocfilehash: 5bc36c0a52515e1801886a0c3959e29c14da3fe5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529533"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267799"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>在 Azure HDInsight 中通过 Microsoft Power BI 使用 ODBC 直观显示 Apache Hive 数据
 
@@ -29,13 +28,13 @@ ms.locfileid: "72529533"
 
 这些信息也适用于新的[交互式查询](../interactive-query/apache-interactive-query-get-started.md)群集类型。 有关如何使用直接查询连接到 HDInsight 交互式查询的信息，请参阅[在 Azure HDInsight 中通过 Microsoft Power BI 使用直接查询可视化交互式查询 Hive 数据](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始阅读本文前，必须具备以下项：
 
-* **HDInsight 群集**。 该群集可以是包含 Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
+* HDInsight 群集。 该群集可以是包含 Hive 的 HDInsight 群集，也可以是新发布的交互式查询群集。 有关创建群集的信息，请参阅[创建群集](apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
 
-* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331)下载副本。
+* [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)。 可从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=45331)下载副本。
 
 ## <a name="create-hive-odbc-data-source"></a>创建 Hive ODBC 数据源
 
@@ -47,7 +46,7 @@ ms.locfileid: "72529533"
 
 1. 开始 Power BI Desktop。
 
-1. 在顶部菜单中，导航到**Home**  > **获取数据** > **更多 ...** "。
+1. 在顶部菜单中，导航到**Home** > **获取数据** > **更多 ...** "。
 
     ![HDInsight Excel Power BI 打开数据](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
@@ -73,7 +72,7 @@ ms.locfileid: "72529533"
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  若要了解更多信息，请参阅下列文章：
+本文介绍了如何使用 Power BI 直观显示 HDInsight 中的数据。  若要了解详细信息，请参阅以下文章：
 
 * [在 Azure HDInsight 中使用 Apache Zeppelin 运行 Apache Hive 查询](../interactive-query/hdinsight-connect-hive-zeppelin.md)。
 * [使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 HDInsight](./apache-hadoop-connect-excel-hive-odbc-driver.md)。

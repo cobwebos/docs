@@ -3,12 +3,12 @@ title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666252"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269215"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 应用程序的 Application Insights
 
@@ -158,6 +158,14 @@ ms.locfileid: "77666252"
     ```cshtml
         @Html.Raw(JavaScriptSnippet.FullScript)
         </head>
+    ```
+    
+或者，若要使用 `FullScript` `ScriptBody` 可从 SDK v 2.14 开始使用。 如果需要控制 `<script>` 标记来设置内容安全策略，请使用此操作：
+
+    ```cshtml
+        <script> // apply custom changes to this script tag.
+            @Html.Raw(JavaScriptSnippet.ScriptBody)
+        </script>
     ```
 
 前面引用的 `.cshtml` 文件名来自默认 MVC 应用程序模板。 最终，若要为应用程序正确启用客户端监视，JavaScript 代码段必须出现在你要监视的应用程序的每一页的 "`<head>`" 部分中。 可以通过将 JavaScript 代码片段添加到 `_Layout.cshtml`来完成此应用程序模板的目标。 

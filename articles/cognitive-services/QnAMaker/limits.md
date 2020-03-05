@@ -1,14 +1,14 @@
 ---
 title: 限制和边界 - QnA Maker
 description: QnA Maker 对部分知识库和服务具有元限制。 为了测试和发布，请务必将知识库保留在这些限制内。
-ms.topic: article
+ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650361"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273339"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知识库限制和边界
 

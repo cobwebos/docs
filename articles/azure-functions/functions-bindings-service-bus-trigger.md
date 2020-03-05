@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 3aba570bd7f80eab205fe52a731a1be933067012
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493197"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273568"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 服务总线触发器
 
@@ -369,9 +369,6 @@ Functions 运行时以 [PeekLock 模式](../service-bus-messaging/service-bus-pe
 |`To`|`string`|发送到地址。|
 |`Label`|`string`|应用程序特定的标签。|
 |`CorrelationId`|`string`|相关 ID。|
-
-> [!NOTE]
-> 目前，适用于已启用会话的队列和订阅的服务总线触发器处于预览状态。 请跟踪[此项目](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458)以了解有关此内容的任何进一步更新。 
 
 请参阅在本文的前面部分使用这些属性的[代码示例](#example)。
 

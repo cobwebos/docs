@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure Application Insights 诊断性能问题| Microsoft Docs
 description: 本教程介绍如何使用 Azure Application Insights 查找和诊断应用程序中的性能问题。
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398620"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661560"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>使用 Azure Application Insights 查找和诊断性能问题
 
@@ -26,9 +25,9 @@ Azure Application Insights 从应用程序收集遥测，以帮助分析操作�
 > * 使用查询语言分析页面视图的详细信息
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 - 使用以下工作负荷安装 [Visual Studio 2019](https://www.visualstudio.com/downloads/)：
     - ASP.NET 和 Web 开发

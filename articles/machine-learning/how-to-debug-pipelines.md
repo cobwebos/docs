@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c81d4db5798c15327e06471f1cb0da4841bd61b2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485363"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268516"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>调试机器学习管道并对其进行故障排除
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -283,7 +283,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>配置 ML 管道
 
-若要提供启动 PTVSD 和获取运行上下文所需的 Python 包，请创建[环境]()并设置 `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`。 更改 SDK 版本，使其与你正在使用的版本匹配。 下面的代码段演示如何创建环境：
+若要提供启动 PTVSD 和获取运行上下文所需的 Python 包，请创建环境并设置 `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`。 更改 SDK 版本，使其与你正在使用的版本匹配。 下面的代码段演示如何创建环境：
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.

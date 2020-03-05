@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976293"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197311"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -150,7 +151,7 @@ az keyvault key recover --name ContosoFirstKey --vault-name ContosoVault
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-“恢复”和“清除”操作在密钥保管库访问策略中各自具有相关联的权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
+“恢复”和“清除”操作具有与密钥保管库访问策略相关的各自权限   。 用户或服务主体如果要执行“恢复”或“清除”操作，必须拥有该密钥或机密的相应权限   。 默认情况下，使用“全部”快捷方式授予所有权限时，“清除”不会添加到密钥保管库访问策略中  。 必须明确授予“清除”权限  。 
 
 #### <a name="set-a-key-vault-access-policy"></a>设置密钥保管库访问策略
 

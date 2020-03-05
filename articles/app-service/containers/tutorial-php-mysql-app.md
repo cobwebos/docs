@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 89b8d9fb1d929e0598469ba582049c61216e923a
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: cdac051e8f80186f7089996d931f02453128fdda
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523975"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913066"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure 应用服务中生成 PHP 和 MySQL 应用
 
@@ -34,9 +34,9 @@ ms.locfileid: "77523975"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)
 * [安装 PHP 5.6.4 或更高版本](https://php.net/downloads.php)
@@ -403,17 +403,17 @@ remote: Running deployment command...
 < Output has been truncated for readability >
 ```
 
-> [!NOTE]
-> 你可能会发现，部署过程在即将结束时会安装 [Composer](https://getcomposer.org/) 包。 应用服务在默认部署期间不会运行这些自动化任务，因此该示例存储库的根目录中提供了两个附加的文件用于运行这些任务：
+<!-- > [!NOTE]
+> You may notice that the deployment process installs [Composer](https://getcomposer.org/) packages at the end. App Service does not run these automations during default deployment, so this sample repository has three additional files in its root directory to enable it:
 >
-> - `.deployment` - 此文件告知应用服务以自定义部署脚本运行 `bash deploy.sh`。
-> - `deploy.sh` - 自定义部署脚本。 查看该文件时可以看到，它会先运行 `npm install`，再运行 `php composer.phar install`。
-> - `composer.phar` - Composer 包管理器。
+> - `.deployment` - This file tells App Service to run `bash deploy.sh` as the custom deployment script.
+> - `deploy.sh` - The custom deployment script. If you review the file, you will see that it runs `php composer.phar install` after `npm install`.
+> - `composer.phar` - The Composer package manager.
 >
-> 可使用此方法将任何步骤添加到应用服务中的基于 Git 的部署。 有关详细信息，请参阅[运行 Composer](configure-language-php.md#run-composer)。
->
+> You can use this approach to add any step to your Git-based deployment to App Service. For more information, see [Run Composer](configure-language-php.md#run-composer). -->
+> 
 
-### <a name="browse-to-the-azure-app"></a>浏览到 Azure 应用
+### <a name="browse-to-the-azure-app"></a>转到 Azure 应用
 
 浏览到 `http://<app-name>.azurewebsites.net` 并在列表中添加一些任务。
 

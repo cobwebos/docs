@@ -3,18 +3,17 @@ title: 使用 Azure 存储将 Azure 指标和日志数据存档
 description: 将 Azure 资源生成的日志和指标数据存档到存储帐户。
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979813"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661719"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>使用 Azure 存储将 Azure 指标和日志数据存档
 

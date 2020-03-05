@@ -3,20 +3,20 @@ title: 教程：在单页应用中启用身份验证
 titleSuffix: Azure AD B2C
 description: 本教程介绍如何使用 Azure Active Directory B2C 为基于 JavaScript 的单页应用程序 (SPA) 提供用户登录功能。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/14/2019
 ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f66d8e229535346525f117d8ebbfb37b893fe022
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 435800d9c6bfd9131d50681a9808f9836104fac0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849807"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183325"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>教程：使用 Azure Active Directory B2C (Azure AD B2C) 在单页应用程序中启用身份验证
 
@@ -31,7 +31,7 @@ ms.locfileid: "76849807"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在继续执行本教程中的步骤以前，需将以下 Azure AD B2C 资源准备到位：
 
@@ -51,7 +51,7 @@ ms.locfileid: "76849807"
 
 你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
@@ -61,7 +61,7 @@ ms.locfileid: "76849807"
 1. 选择“保存”。 
 1. 在属性页上记录“应用程序 ID”。  在后面的步骤中，当你在单页 Web 应用程序中更新代码时，需使用此应用 ID。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。

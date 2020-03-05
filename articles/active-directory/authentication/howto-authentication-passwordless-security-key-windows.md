@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522027"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269356"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>使用 Azure Active Directory （预览版）启用无密码安全密钥登录到 Windows 10 设备
 
@@ -35,7 +35,7 @@ ms.locfileid: "77522027"
 | [组合安全信息注册预览](concept-registration-mfa-sspr-combined.md) | X | X |
 | 兼容的[FIDO2 安全密钥](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN 需要 Windows 10 版本1809或更高版本 | X | X |
-| [Azure AD 联接的设备](../devices/concept-azure-ad-join.md)需要 Windows 10 版本1809或更高版本 | X |   |
+| [Azure AD 联接的设备](../devices/concept-azure-ad-join.md)需要 Windows 10 版本1903或更高版本 | X |   |
 | [混合 Azure AD 联接的设备](../devices/concept-azure-ad-join-hybrid.md)需要 Windows 10 预览体验内部版本18945或更高版本 |   | X |
 | 已充分修补 Windows Server 2016/2019 域控制器。 |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)版本1.4.32.0 或更高版本 |   | X |
@@ -54,6 +54,7 @@ ms.locfileid: "77522027"
 - 使用安全密钥登录到服务器。
 - 如果你未使用安全密钥在联机时登录到你的设备，则无法使用它来登录或脱机解锁。
 - 使用包含多个 Azure AD 帐户的安全密钥登录或解锁 Windows 10 设备。 此方案利用最后添加到安全密钥的帐户。 WebAuthN 允许用户选择他们想要使用的帐户。
+- 解锁运行 Windows 10 版本1809的设备。 为获得最佳体验，请使用 Windows 10 版本1903或更高版本。
 
 ## <a name="prepare-devices-for-preview"></a>为预览版准备设备
 

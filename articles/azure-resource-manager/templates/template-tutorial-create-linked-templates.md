@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e8f95f4987d0ce421defaed63ed9a587233d2bf4
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: dab69c32f7277cd5d746e001b36118e673401bca
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561572"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250135"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>教程：创建链接的 Azure 资源管理器模板
 
@@ -35,14 +35,14 @@ ms.locfileid: "77561572"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](use-vs-code-to-create-template.md)。
 * 若要提高安全性，请使用为虚拟机管理员帐户生成的密码。 以下是密码生成示例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

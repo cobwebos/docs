@@ -5,12 +5,12 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 500e07296040305f1e469fde78988f2551440e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 27ac4b67aa19aa59abe80ccf9409acf7b587a22b
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471192"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250095"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
 
@@ -29,14 +29,14 @@ ms.locfileid: "75471192"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本文，需要做好以下准备：
 
 * 包含资源管理器工具扩展的 Visual Studio Code。 请参阅[使用 Visual Studio Code 创建 Azure 资源管理器模板](./use-vs-code-to-create-template.md)。
 * 要增强安全性，请使用为 Azure SQL Server 管理员帐户生成的密码。 以下是可用于生成密码的示例：
 
-    ```azurecli-interactive
+    ```console
     openssl rand -base64 32
     ```
 

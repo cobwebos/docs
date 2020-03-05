@@ -3,12 +3,12 @@ title: 部署的链接模板
 description: 介绍如何使用 Azure 资源管理器模板中的链接模板创建一个模块化的模板的解决方案。 演示如何传递参数值、指定参数文件和动态创建的 URL。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: c6a5dced0f8607e760422bebd114a08ca0a238e3
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207598"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272579"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -707,7 +707,7 @@ done
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  "containerSasToken": { "type": "string" }
+  "containerSasToken": { "type": "securestring" }
   },
   "resources": [
   {

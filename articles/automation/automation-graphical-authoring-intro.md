@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 15f63544a98c6d7bb7171081d9c3e084890e15ec
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255992"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272969"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -380,7 +380,7 @@ $h
 
 ## <a name="authenticating-to-azure-resources"></a>通过 Azure 资源进行身份验证
 
-Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](automation-create-runas-account.md)（也称为服务主体）是自动化 runbook 用来访问订阅中的 Azure 资源管理器资源的默认机制。 可以通过将使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**连接资产添加到画布，将此功能添加到图形 runbook。 还可以添加[AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet。 下面的示例阐释了这种情况。
+Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](automation-create-runas-account.md)（也称为服务主体）是自动化 runbook 用来访问订阅中的 Azure 资源管理器资源的默认机制。 可以通过将使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**连接资产添加到画布，将此功能添加到图形 runbook。 还可以添加[AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 下面的示例阐释了这种情况。
 
 ![运行方式身份验证活动](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C 代码示例 | Microsoft Docs
 description: Azure Active Directory B2C 移动、桌面、Web 和单页应用程序的代码示例。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: d0a5790e84364bf34072977d5d3976fd880996bb
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: fc37e594984aa4c13fc9e770129a0423ba512737
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620575"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189678"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 代码示例
 
@@ -29,7 +29,7 @@ ms.locfileid: "77620575"
 | [android-native-msal](https://github.com/Azure-Samples/active-directory-b2c-android-native-msal) | 一个简单的 Android 应用，它展示了如何使用 MSAL 来通过 Azure Active Directory B2C 对用户进行身份验证，并使用生成的令牌访问一个 Web API。 |
 | [ios-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-ios-native-appauth) | 此示例展示了如何利用第三方库来使用 Objective-C 开发 iOS 应用程序，用以通过我们的 Azure AD B2C 标识服务对 Microsoft 标识用户进行身份验证。 |
 | [android-native-appauth](https://github.com/Azure-Samples/active-directory-b2c-android-native-appauth) | 此示例展示了如何利用第三方库来开发 Android 应用程序，用以通过我们的 B2C 标识服务对 Microsoft 标识用户进行身份验证并使用 OAuth 2.0 访问令牌调用一个 Web API。 |
-| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | 此示例展示了 Windows Desktop .NET (WPF) 应用程序如何使用 Azure AD B2C 完成用户登录，使用 MSAL.NET 获取访问令牌，并调用一个 API。 | 
+| [dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) | 此示例展示了 Windows Desktop .NET (WPF) 应用程序如何使用 Azure AD B2C 完成用户登录，使用 MSAL.NET 获取访问令牌，并调用一个 API。 |
 | [xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | 一个简单的 Xamarin Forms 应用，它展示了如何使用 MSAL 来通过 Azure Active Directory B2C 对用户进行身份验证，并使用生成的令牌访问一个 Web API。 |
 
 ## <a name="web-apps-and-apis"></a>Web 应用和 API
@@ -46,5 +46,5 @@ ms.locfileid: "77620575"
 
 | 示例 | 说明 |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 身份验证是利用 MSAL.js 通过 Azure AD B2C 执行的。 | 
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 调用了一个 Web API 的单页应用程序 (SPA)。 身份验证是利用 MSAL.js 通过 Azure AD B2C 执行的。 |
 | [javascript-hellojs-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-hellojs-singlepageapp) | 一个单页应用，其中实现了一个 ASP.NET Web API 后端，使用 Azure AD B2C 完成用户注册和登录，并使用 OAuth 2.0 访问令牌调用 Web API。 |

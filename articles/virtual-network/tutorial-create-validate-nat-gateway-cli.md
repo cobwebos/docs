@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 988bd6dbb157276a9ee37c8ca3051a808f8b6499
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587016"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661067"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教程：使用 Azure CLI 创建 NAT 网关并测试 NAT 服务
 
@@ -62,7 +62,7 @@ ms.locfileid: "77587016"
 
 ### <a name="create-a-public-ip-prefix"></a>创建公共 IP 前缀
 
-可对 NAT 网关使用一个或多个公共 IP 地址资源和/或公共 IP 前缀。 为方便演示，我们将一个公共 IP 前缀资源添加到此方案。   使用 [az network public-ip prefix create](https://docs.microsoft.com/cli/azure/network/public-ip-prefix) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefixsource** 的公共 IP 前缀资源。
+可对 NAT 网关使用一个或多个公共 IP 地址资源和/或公共 IP 前缀。 为方便演示，我们将一个公共 IP 前缀资源添加到此方案。   使用 [az network public-ip prefix create](/cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-create) 在 **myResourceGroupNAT** 中创建名为 **myPublicIPprefixsource** 的公共 IP 前缀资源。
 
 ```azurecli-interactive
   az network public-ip prefix create \

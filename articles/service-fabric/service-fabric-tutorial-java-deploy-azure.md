@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7754a289c06dff37aedcf8da76d35dfac4b183d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465275"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252806"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教程：将 Java 应用程序部署到 Azure 中的 Service Fabric 群集
 
@@ -32,7 +32,7 @@ ms.locfileid: "75465275"
 > * [设置监视和诊断应用程序](service-fabric-tutorial-java-elk.md)
 > * [设置 CI/CD](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
@@ -53,13 +53,13 @@ ms.locfileid: "75465275"
 
 2. 登录到 Azure 帐户
 
-    ```bash
+    ```azurecli
     az login
     ```
 
 3. 设置需要用于创建资源的 Azure 订阅
 
-    ```bash
+    ```azurecli
     az account set --subscription [SUBSCRIPTION-ID]
     ```
 
@@ -73,7 +73,7 @@ ms.locfileid: "75465275"
 
     上述命令返回以下信息，该信息应该记下来供以后使用。
 
-    ```
+    ```output
     Source Vault Resource Id: /subscriptions/<subscription_id>/resourceGroups/testkeyvaultrg/providers/Microsoft.KeyVault/vaults/<name>
     Certificate URL: https://<name>.vault.azure.net/secrets/<cluster-dns-name-for-certificate>/<guid>
     Certificate Thumbprint: <THUMBPRINT>
@@ -81,7 +81,7 @@ ms.locfileid: "75465275"
 
 5. 为存储日志的存储帐户创建一个资源组
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name teststorageaccountrg
@@ -89,7 +89,7 @@ ms.locfileid: "75465275"
 
 6. 创建一个存储帐户，用来存储要生成的日志
 
-    ```bash
+    ```azurecli
     az storage account create -g [RESOURCE-GROUP-NAME] -l [REGION] --name [STORAGE-ACCOUNT-NAME] --kind Storage
 
     Example: az storage account create -g teststorageaccountrg -l westus --name teststorageaccount --kind Storage
@@ -101,13 +101,13 @@ ms.locfileid: "75465275"
 
 8. 复制帐户 SAS URL，留待创建 Service Fabric 群集之用。 它类似于以下 URL：
 
-    ```
+    ```output
     ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. 创建包含事件中心资源的资源组。 事件中心用于将消息从 Service Fabric 发送到运行 ELK 资源的服务器。
 
-    ```bash
+    ```azurecli
     az group create --location [REGION] --name [RESOURCE-GROUP-NAME]
 
     Example: az group create --location westus --name testeventhubsrg
@@ -115,7 +115,7 @@ ms.locfileid: "75465275"
 
 10. 使用以下命令创建事件中心资源。 按提示输入 namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule 和 receiveAuthorizationRule 的详细信息。
 
-    ```bash
+    ```azurecli
     az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
@@ -158,7 +158,7 @@ ms.locfileid: "75465275"
 
     复制返回的 JSON 中的 **sr** 字段的值。 **sr** 字段值是 EventHubs 的 SAS 令牌。 以下 URL 是 **sr** 字段的示例：
 
-    ```bash
+    ```output
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
@@ -185,7 +185,7 @@ ms.locfileid: "75465275"
 
 14. 运行以下命令，创建 Service Fabric 群集
 
-    ```bash
+    ```azurecli
     az sf cluster create --location 'westus' --resource-group 'testlinux' --template-file sfdeploy.json --parameter-file sfdeploy.parameters.json --secret-identifier <certificate_url_from_step4>
     ```
 

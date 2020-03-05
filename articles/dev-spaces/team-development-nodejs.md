@@ -5,12 +5,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教程介绍如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Node.js 应用程序进行团队开发
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: e2124d6c3f903f6a9faa6c41a2015b7198faf42d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: abcf4934af056d508ac136f80758597294d40b1a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438118"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251938"
 ---
 # <a name="team-development-using-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>使用 Node.js 和 Visual Studio Code 通过 Azure Dev Spaces 进行团队开发
 
@@ -162,6 +162,9 @@ http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 下面的示例列出你的活动订阅中的 Azure Dev Spaces 控制器，然后删除与资源组“myaks-rg”中的 AKS 群集“myaks”关联的 Azure Dev Spaces 控制器。
 
 ```cmd
-    azds controller list
-    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+azds controller list
+```
+
+```azurecli
+az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```

@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: a505145eeba47eda9950c5a4c8221e4c9ae4b3a4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9cab78e85b8644f29bfcd067b104b1b5c10c2266
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024069"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249839"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>教程：使用 Azure Databricks 提取、转换和加载数据
 
@@ -43,7 +43,7 @@ ms.locfileid: "77024069"
 > 不能使用 Azure 免费试用订阅完成本教程  。
 > 如果你有免费帐户，请转到个人资料并将订阅更改为“即用即付”  。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。 然后，[移除支出限制](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)，并为你所在区域的 vCPU [请求增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 创建 Azure Databricks 工作区时，可以选择“试用版(高级 - 14天免费 DBU)”  定价层，让工作区访问免费的高级 Azure Databricks DBU 14 天。
      
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始本教程之前，完成以下任务：
 
@@ -227,7 +227,7 @@ ms.locfileid: "77024069"
     ```
    会显示类似于以下代码片段的输出：
 
-   ```bash
+   ```output
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
    |               artist|     auth|firstName|gender|itemInSession|  lastName|   length|  level|            location|method|    page| registration|sessionId|                song|status|           ts|userId|
    +---------------------+---------+---------+------+-------------+----------+---------+-------+--------------------+------+--------+-------------+---------+--------------------+------+-------------+------+
@@ -253,7 +253,7 @@ ms.locfileid: "77024069"
 
    接收的输出如以下代码片段所示：
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----+
    |firstname|  lastname|gender|            location|level|
    +---------+----------+------+--------------------+-----+
@@ -289,7 +289,7 @@ ms.locfileid: "77024069"
 
    接收的输出如以下代码片段所示。
 
-   ```bash
+   ```output
    +---------+----------+------+--------------------+-----------------+
    |firstname|  lastname|gender|            location|subscription_type|
    +---------+----------+------+--------------------+-----------------+

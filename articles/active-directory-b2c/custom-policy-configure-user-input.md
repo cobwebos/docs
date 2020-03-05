@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 737f373fb71494492f633d3297463cbef797f3d6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2d279a2a368e606e036b24172eb94b667b3255db
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189542"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267953"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加声明和自定义用户输入
 
@@ -264,7 +264,7 @@ ms.locfileid: "78189542"
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 在顶部菜单中选择 "**目录 + 订阅**" 筛选器并选择包含 Azure AD 租户的目录，确保使用的是包含 Azure AD 租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“应用注册”。
-4. 选择“Identity Experience Framework (预览)”。
+4. 选择“标识体验框架”。
 5. 选择“上传自定义策略”，然后上传已更改的两个策略文件。
 2. 选择已上传的注册或登录策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址注册。

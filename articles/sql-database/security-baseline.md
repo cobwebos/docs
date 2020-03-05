@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e1323467db875968f45557c6a7c0afdfee5e4221
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: MT
+ms.openlocfilehash: dd9b82cbb2984386059988496c550123a8e67a3f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589930"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273081"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 azure 安全基线
 
@@ -124,10 +124,7 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 **指南**：为 Azure SQL 数据库启用高级威胁防护（ATP）。  出现可疑数据库活动、潜在漏洞、SQL 注入攻击和异常数据库访问和查询模式时，用户将收到警报。 高级威胁防护还将警报与 Azure 安全中心集成。
 
-
-了解并使用适用于 Azure SQL 数据库的高级威胁防护：
-
-https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
+了解并使用适用于 Azure SQL 数据库的高级威胁防护： https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview
 
 **Azure 安全中心监视**：是
 
@@ -164,11 +161,14 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：通过 azure 策略为 Azure SQL 数据库服务器实例定义和实施网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或者使用为 Azure SQL 数据库服务器网络保护设计的任何内置策略定义。 适用于 Azure SQL 数据库服务器的适用内置网络安全策略的一个示例是： "SQL Server 应使用虚拟网络服务终结点"
+**指南**：通过 azure 策略为 Azure SQL 数据库服务器实例定义和实施网络安全配置。 你可以使用 "Sql-dmo" 命名空间来定义自定义策略定义，或者使用为 Azure SQL 数据库服务器网络保护设计的任何内置策略定义。 适用于 Azure SQL 数据库服务器的适用内置网络安全策略的一个示例是： "SQL Server 应使用虚拟网络服务终结点"。
+ 
 
 使用 Azure 蓝图可以通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理模板、基于角色的访问控制（RBAC）和策略）来简化大规模的 Azure 部署。 轻松地将蓝图应用到新的订阅和环境，并通过版本控制来微调控制和管理。
 
+
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何创建 Azure 蓝图： https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -457,13 +457,27 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **指南**：在环境中发生可疑活动或不安全活动时，使用 Azure Active Directory 安全报告生成日志和警报。
 
+
+
 使用适用于 Azure SQL 数据库的高级威胁防护来检测异常活动，这些活动表明访问或利用数据库的异常和潜在有害尝试。
 
-如何确定标记为有风险活动 Azure AD 用户： https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-如何在 Azure 安全中心监视用户的标识和访问活动： https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-查看高级威胁防护和潜在警报： https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
+如何确定标记为有风险活动 Azure AD 用户：
+
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+
+
+
+如何在 Azure 安全中心监视用户的标识和访问活动：
+
+https://docs.microsoft.com/azure/security-center/security-center-identity-access
+
+
+
+查看高级威胁防护和潜在警报：
+
+https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts
 
 
 **Azure 安全中心监视**：是
@@ -473,6 +487,7 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
 **指南**：使用条件访问命名位置，仅允许从 IP 地址范围或国家/地区的特定逻辑分组访问门户和 Azure 资源管理。
+
 
 如何在 Azure 中配置命名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -714,7 +729,7 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -774,7 +789,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
 
-**Azure 安全中心监视**：是
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
@@ -796,11 +811,15 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源（包括 Azure SQL Server 实例）。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅以及订阅中的资源。
 
+
 虽然可通过资源图发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+
 
 如何通过 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
+
 如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+
 
 了解 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -812,7 +831,11 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指南**：将标记应用于 Azure 资源，使元数据以逻辑方式将它们组织到分类。
 
-如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+
+
+如何创建和使用标记：
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure 安全中心监视**：当前不可用
 
@@ -822,11 +845,23 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 **指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪资产。 定期协调清点，并确保及时地从订阅中删除未经授权的资源。
 
-如何创建其他 Azure 订阅： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何创建管理组： https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何创建和使用标记： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何创建其他 Azure 订阅：
+
+https://docs.microsoft.com/azure/billing/billing-create-subscription
+
+
+
+如何创建管理组：
+
+https://docs.microsoft.com/azure/governance/management-groups/create
+
+
+
+如何创建和使用标记：
+
+https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 **Azure 安全中心监视**：当前不可用
 
@@ -894,6 +929,7 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 
 如何使用 Azure 策略拒绝特定的资源类型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
+
 **Azure 安全中心监视**：不适用
 
 **责任**：客户
@@ -911,9 +947,7 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 **指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问来限制用户与 Azure 资源管理器的交互能力。
 
 
-如何配置条件访问以阻止访问 Azure 资源管理器：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何配置条件访问以阻止访问 Azure 资源管理器： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1152,7 +1186,7 @@ https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resou
 
 https://docs.microsoft.com/azure/sql-database/sql-database-business-continuity
 
-**Azure 安全中心监视**：不适用
+**Azure 安全中心监视**：是
 
 **责任**：共享
 
@@ -1204,7 +1238,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backup
 
 https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -1292,7 +1326,7 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 安全中心监视**：是
+**Azure 安全中心监视**：当前不可用
 
 **责任**：客户
 
@@ -1314,3 +1348,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1 列中的一个
 
 **责任**：共享
 
+## <a name="next-steps"></a>后续步骤
+
+- 请参阅[Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 了解有关[Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)的详细信息

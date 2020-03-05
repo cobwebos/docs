@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 827c76610162d74c5283177fef4989204321f44b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152119"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268701"
 ---
 # <a name="partition-and-sample-module"></a>分区和示例模块
 
@@ -154,9 +154,9 @@ ms.locfileid: "77152119"
 
 5. 如果使用多个分区，则必须添加**分区和示例**模块的其他实例来处理每个分区。
 
-    例如，假设之前已使用 age 将患者分区为四个折叠。 若要处理每个折叠，需要**分区和示例**模块的四个副本，并在每个副本中选择不同的折叠，如下所示。 使用 "**分配到折叠**" 输出是不正确的。  
+    例如，第二行中的**分区和示例**模块设置为 "**分配给折叠**"，第三行中的模块设置为 "**选择折叠**"。   
 
-    [![分区和示例](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
+    ![分区和采样](./media/module/partition-and-sample.png)
 
 5. 运行管道。
 

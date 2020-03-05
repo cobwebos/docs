@@ -3,20 +3,20 @@ title: 教程：在 Web 应用程序中启用身份验证
 titleSuffix: Azure AD B2C
 description: 有关如何使用 Azure Active Directory B2C 为 ASP.NET Web 应用程序提供用户登录功能的教程。
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/14/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 2f9a678ae8fea95f842f30234229c648e1966d40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849927"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183307"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>教程：使用 Azure Active Directory B2C 在 Web 应用程序中启用身份验证
 
@@ -31,7 +31,7 @@ ms.locfileid: "76849927"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * [创建用户流](tutorial-create-user-flows.md)，以便在应用程序中启用用户体验。
 * 安装带有 ASP.NET 和 Web 开发  工作负荷的 [Visual Studio 2019](https://www.visualstudio.com/downloads/)。
@@ -44,7 +44,7 @@ ms.locfileid: "76849927"
 
 你可以使用当前的“应用程序”体验，或者使用我们新推出的统一“应用注册(预览版)”体验来更新应用程序   。 [详细了解此新体验](https://aka.ms/b2cappregintro)。
 
-#### <a name="applicationstabapplications"></a>[应用程序](#tab/applications/)
+#### <a name="applications"></a>[应用程序](#tab/applications/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请确保使用包含 Azure AD B2C 租户的目录，方法是选择顶部菜单中的“目录 + 订阅”筛选器，然后选择包含租户的目录  。
@@ -54,7 +54,7 @@ ms.locfileid: "76849927"
 1. 选择“保存”。 
 1. 在属性页上，记录应用程序 ID，以便在稍后配置 Web 应用程序时使用。
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[应用注册（预览版）](#tab/app-reg-preview/)
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在顶部菜单中选择“目录 + 订阅”  筛选器，然后选择包含Azure AD B2C 租户的目录。

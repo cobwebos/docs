@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003373"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198110"
 ---
 # <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>教程：如何将 Azure Key Vault 与 .NET Azure Web 应用配合使用
 

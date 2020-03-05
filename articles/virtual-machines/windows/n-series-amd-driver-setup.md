@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6dc8c54b9d138ab62e086cca59cd5b4801fa6130
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228349"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269438"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在运行 Windows 的 N 系列 Vm 上安装 AMD GPU 驱动程序
 
@@ -43,6 +43,8 @@ ms.locfileid: "78228349"
 3. 请启动 VM，然后通过运行位于文件夹 ". ..\AMDCleanUninstallUtility" 的 "amdcleanuputility-x64" 来卸载预览驱动程序。 确切的路径将取决于先前驱动程序安装文件的位置。  
 
 4. 下载并安装最新的驱动程序。
+
+5. 重启 VM。
 
 ## <a name="verify-driver-installation"></a>验证驱动程序安装
 

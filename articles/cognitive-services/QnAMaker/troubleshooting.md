@@ -1,15 +1,15 @@
 ---
 title: 故障排除-QnA Maker
 description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 9032f2cdc134289fef6c0cbc2e874198aefa90ee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650378"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273398"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 

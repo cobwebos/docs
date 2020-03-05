@@ -4,12 +4,12 @@ description: 了解 Azure App Service 如何更新 OS 和运行时、应用的�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 02fa89305c19ee4ec5e151ad36f7f5fa3e130f63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846246"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273633"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -51,11 +51,11 @@ Azure 管理两个级别的 OS 修补：运行应用服务资源的物理服务�
 
 ### <a name="new-patch-updates"></a>新的修补更新
 
-对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 可以通过[站点扩展](https://www.siteextensions.net/packages?q=Tags%3A%22python%22)，与内置的 Python 安装一并手动安装新的 Python 修补版本。
+对 .NET、PHP、Java SDK 或 Tomcat/Jetty 版本所做的修补更新会通过将现有版本覆盖为新版本来自动应用。 Node.js 修补更新将与现有版本一并安装（类似于下一部分中的主要版本和次要版本）。 可以通过[站点扩展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)手动安装新的 python 修补程序版本，并与内置的 Python 安装并行安装。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要版本和次要版本
 
-添加新的主要版本或次要版本后，该版本与现有版本一并安装。 可将应用手动升级到新版本。 如果在配置文件（例如 `web.config` 和 `package.json`）中配置了运行时版本，则需要使用相同的方法升级。 如果使用应用服务设置配置了运行时版本，则可以在 [Azure 门户](https://portal.azure.com)中或者在 [Cloud Shell](../cloud-shell/overview.md) 中运行 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 命令来更改此版本，如以下示例所示：
+添加新的主要版本或次要版本后，该版本与现有版本一并安装。 可将应用手动升级到新版本。 如果在配置文件（例如 `web.config` 和 `package.json`）中配置了运行时版本，则需要使用相同的方法升级。 如果使用应用服务设置配置了运行时版本，则可以在 [Azure 门户](https://portal.azure.com)中或者在 [Cloud Shell](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 中运行 [Azure CLI](../cloud-shell/overview.md) 命令来更改此版本，如以下示例所示：
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>

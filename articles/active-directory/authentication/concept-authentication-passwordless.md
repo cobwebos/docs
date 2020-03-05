@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: ffe3d359dffea3278337de00bea42e0b959e10f6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505764"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269513"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -90,7 +90,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 - 最终用户可以在其帐户门户中注册和管理这些无密码 authentication 方法
 - 最终用户可以用这些无密码身份验证方法登录
    - Microsoft Authenticator 应用：在使用 Azure AD 身份验证的情况下工作，包括在所有浏览器中、在 Windows 10 开箱（OOBE）安装期间以及在任何操作系统上集成的移动应用。
-   - 安全密钥：在受支持的浏览器（如 Microsoft Edge）中使用针对 Windows 10 和 web 的锁屏界面。
+   - 安全密钥：在受支持的浏览器（例如，旧边缘和新边缘）中，在 Windows 10 和 web 的锁定屏幕上工作。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Node.js 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 1ad30a5dd7504c7e224e4b2d26d1f5a4fe1da38a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 916f2b1449e9d1a29fde94be05e03c3e8211af8c
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602873"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252024"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Node.js 与 Azure Dev Spaces 结合使用
 
@@ -29,7 +29,7 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间�
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：
 
-```cmd
+```azurecli
 az login
 ```
 
@@ -39,14 +39,14 @@ az login
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果有多个 Azure 订阅...
 通过运行以下命令可以查看订阅： 
 
-```cmd
+```azurecli
 az account list --output table
 ```
 
 找到 *IsDefault* 为 *True* 的订阅。
 如果这不是你想要使用的订阅，可以更改默认订阅：
 
-```cmd
+```azurecli
 az account set --subscription <subscription ID>
 ```
 
@@ -54,13 +54,13 @@ az account set --subscription <subscription ID>
 
 在命令提示符处，在[支持 Azure Dev Spaces 的区域][supported-regions]中创建资源组。
 
-```cmd
+```azurecli
 az group create --name MyResourceGroup --location <region>
 ```
 
 使用以下命令创建 Kubernetes 群集：
 
-```cmd
+```azurecli
 az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
@@ -70,7 +70,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 使用包含 AKS 群集的资源组和 AKS 群集名称输入以下 Azure CLI 命令。 此命令将群集配置为支持 Azure Dev Spaces。
 
-   ```cmd
+   ```azurecli
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
 

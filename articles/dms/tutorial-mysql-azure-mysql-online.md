@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: e0a2c9f4dd229353ef3d4dc06f7bb965d15814d9
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 50787a5bbfdc9baddfa4307247e8b505be6e3003
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255551"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273243"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL
 
@@ -224,6 +224,8 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
     如果目标数据库包含的数据库名称与源数据库的相同，则 Azure 数据库迁移服务默认会选择目标数据库。
 
     ![映射到目标数据库](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
+   > [!NOTE] 
+   > 尽管可以在此步骤中选择多个数据库，但 Azure 数据库迁移服务的每个实例最多支持四个数据库以进行并发迁移。 此外，订阅中每个区域的 Azure 数据库迁移服务有两个实例的限制。 例如，如果你要迁移40个数据库，则仅可以同时迁移其中的8个，并且仅当你创建了两个 Azure 数据库迁移服务实例时。
 
 3. 选择“保存”，在“迁移摘要”屏幕上的“活动名称”文本框中指定迁移活动的名称，然后查看摘要，确保源和目标详细信息与此前指定的信息相符。
 

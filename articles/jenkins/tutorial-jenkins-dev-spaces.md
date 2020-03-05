@@ -3,12 +3,12 @@ title: 通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Space
 description: 了解如何在持续集成管道中使用 Azure Dev Spaces 插件。
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 7b23893eb331f55ff41992a2ca660e79f44a609a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77619984"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250901"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>教程：通过 Azure Kubernetes 服务使用适用于 Jenkins 的 Azure Dev Spaces 插件 
 
@@ -26,7 +26,7 @@ ms.locfileid: "77619984"
 
 本教程假设你具备核心 Azure 服务、AKS、ACR、Azure Dev Spaces、Jenkins [管道](https://jenkins.io/doc/book/pipeline/)和插件以及 GitHub 的中级知识。 基本熟悉支持工具（如 kubectl 和 Helm）是有帮助的。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 一个 Azure 帐户。 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -53,26 +53,26 @@ ms.locfileid: "77619984"
 
 1. 创建资源组。
 
-    ```bash
+    ```azurecli
     az group create --name MyResourceGroup --location westus2
     ```
 
 2. 创建 AKS 群集。 在[支持 Dev Spaces 的区域](../dev-spaces/about.md#supported-regions-and-configurations)创建 AKS 群集。
 
-    ```bash
+    ```azurecli
     az aks create --resource-group MyResourceGroup --name MyAKS --location westus2 --kubernetes-version 1.11.9 --enable-addons http_application_routing --generate-ssh-keys --node-count 1 --node-vm-size Standard_D1_v2
     ```
 
 3. 配置 AKS 以使用 Dev Spaces。
 
-    ```bash
+    ```azurecli
     az aks use-dev-spaces --resource-group MyResourceGroup --name MyAKS
     ```
     此步骤安装 `azds` CLI 扩展。
 
 4. 创建容器注册表。
 
-    ```bash
+    ```azurecli
     az acr create -n MyACR -g MyResourceGroup --sku Basic --admin-enabled true
     ```
 
@@ -225,7 +225,7 @@ ms.locfileid: "77619984"
 
 3. 若要显示 ACR 凭据，请运行以下命令：
 
-    ```bash
+    ```azurecli
     az acr credential show -n <yourRegistryName>
     ```
 
@@ -251,7 +251,7 @@ ms.locfileid: "77619984"
 
 5. 设置一个 AKS 凭据。 在 Jenkins 中添加 Kubernetes 配置 (kubeconfig) 凭据类型（使用“直接输入”选项）  。 若要获取 AKS 群集的访问凭据，请运行以下命令：
 
-    ```cmd
+    ```azurecli
     az aks get-credentials -g MyResourceGroup -n <yourAKSName> -f -
     ```
 
@@ -403,7 +403,7 @@ stage('smoketest') {
 
 示例应用程序使用完成后，通过删除资源组来清理 Azure 资源：
 
-```bash
+```azurecli
 az group delete -y --no-wait -n MyResourceGroup
 ```
 

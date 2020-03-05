@@ -3,12 +3,12 @@ title: 教程 - 在 Azure Kubernetes 服务中创建应用程序网关入口控�
 description: 演示如何创建包含 Azure Kubernetes 服务和用作入口控制器的应用程序网关的 Kubernetes 群集的教程
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 14b8f6ba74a06c126da239671cbb2053df19af7d
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472258"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251757"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>教程：在 Azure Kubernetes 服务中创建应用程序网关入口控制器
 
@@ -25,7 +25,7 @@ ms.locfileid: "77472258"
 > * 使用 Terraform 和 AKS 创建 Kubernetes 群集。
 > * 使用 kubectl 工具测试 Kubernetes 群集的可用性。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - **Azure 订阅**：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -765,7 +765,7 @@ kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/maste
 
 将占位符替换为相应的值。 将删除指定资源组中的所有资源。
 
-```bash
+```azurecli
 az group delete -n <resource-group>
 ```
 

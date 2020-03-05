@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 43d2a56757948f6005420d2b44f9bea963613d17
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252174"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268194"
 ---
-# <a name="recommended-live-streaming-encoders"></a>建议的实时传送视频流编码器
+# <a name="recommended-on-premises-live-streaming-encoders"></a>推荐的本地实时流式处理编码器
 
 在 Azure 媒体服务中，[直播活动](https://docs.microsoft.com/rest/api/media/liveevents)（频道）表示用于处理实时传送视频流内容的管道。 直播活动通过以下两种方式之一接收实时输入流。
 

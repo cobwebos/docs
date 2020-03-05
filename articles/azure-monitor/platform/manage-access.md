@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672100"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272627"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区的访问权限
 
@@ -88,6 +88,7 @@ if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null
 else
     { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+}
 ```
 
 ### <a name="using-a-resource-manager-template"></a>使用资源管理器模板

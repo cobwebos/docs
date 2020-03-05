@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 3370fc72b45720e2aae5731623843a1bc498911c
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
-ms.translationtype: MT
+ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77652069"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268544"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure 机器学习中的数据引入
 
@@ -55,7 +55,7 @@ Azure 数据工厂的嵌入数据沿袭功能数据流|
 
 ## <a name="use-the-python-sdk"></a>使用 Python SDK 
 
-使用[PYTHON SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py)，你可以将数据引入任务合并到[Azure 机器学习管道](how-to-create-your-first-pipeline.md)步骤中。
+使用[PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)，你可以将数据引入任务合并到[Azure 机器学习管道](how-to-create-your-first-pipeline.md)步骤中。
 
 下表总结了使用 SDK 的专业人员和职业以及用于数据引入任务的 ML 管道步骤。
 

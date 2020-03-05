@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ddd4f45e88c0bcc63fb62cc816fae4dbad255841
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 602f5a794f90e52ac80ea71ea2ed3656a7e0e5e7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157578"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269462"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure 存储简介
 
@@ -134,14 +134,14 @@ Azure 存储客户端库提供了一些方法，用于在通过网络发送数�
 
 ## <a name="storage-apis-libraries-and-tools"></a>存储 API、库和工具
 
-Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储空间还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
+Azure 存储资源可以通过任何发出 HTTP/HTTPS 请求的语言来进行访问。 另外，Azure 存储还为多种主流语言提供了编程库。 这些库通过对细节进行处理简化了使用 Azure 存储的许多方面，这些细节包括同步和异步调用、操作的批处理、异常管理、自动重试、操作行为，等等。 这些库当前可供下列语言和平台以及正在筹备的其他语言和平台使用：
 
 ### <a name="azure-storage-data-api-and-library-references"></a>Azure 存储数据 API 和库参考
 
 - [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/)
 - [适用于 .NET 的 Azure 存储客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 - [适用于 Java/Android 的 Azure 存储客户端库](https://docs.microsoft.com/java/api/overview/azure/storage)
-- [用于 node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage)
+- [用于 node.js 的 Azure 存储客户端库](https://docs.microsoft.com/javascript/api/overview/azure/storage-overview)
 - [用于 Python 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-python)
 - [用于 PHP 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-php)
 - [用于 Ruby 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-ruby)

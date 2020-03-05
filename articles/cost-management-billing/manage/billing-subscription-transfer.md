@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188394"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245388"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅的计费所有权转移到另一帐户
 
@@ -45,7 +45,7 @@ ms.locfileid: "77188394"
 
     > [!IMPORTANT]
     >
-    > 如果选择将订阅移到新帐户的 Azure AD 租户，将会永久删除用于管理订阅中的资源的所有[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)分配。 只有新帐户中接受了转移请求的用户才有权管理订阅中的资源。 有关详细信息，请参阅[将订阅转移到另一个 Azure AD 租户中的用户](../../cognitive-services/acoustics/known-issues.md)。 或者，可以取消选中“订阅”Azure AD 租户对应的框，以便在不将订阅移到新帐户的租户的情况下转移计费所有权。 这会保留现有的管理 Azure 资源的 RBAC 权限。
+    > 如果选择将订阅移到新帐户的 Azure AD 租户，将会永久删除用于管理订阅中的资源的所有[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)分配。 只有新帐户中接受了转移请求的用户才有权管理订阅中的资源。 有关详细信息，请参阅[将订阅转移到另一个 Azure AD 租户中的用户](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)。 或者，可以取消选中“订阅”Azure AD 租户对应的框，以便在不将订阅移到新帐户的租户的情况下转移计费所有权。 这会保留现有的管理 Azure 资源的 RBAC 权限。
 
     ![“发送转移请求”页](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
 

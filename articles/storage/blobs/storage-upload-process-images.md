@@ -8,24 +8,24 @@ ms.topic: tutorial
 ms.date: 11/16/2019
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 1c06cf12ac3264e77934a71426f9194136074e71
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: e4a2b1ee1b2b2726b7e0a807a965dbf4bc6b9500
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132975"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196971"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教程：使用 Azure 存储在云中上传图像数据
 
 本教程是一个系列中的第一部分。 在本教程中，你将了解如何部署一个 Web 应用，它使用 Azure 存储客户端库将图像上传到存储帐户。 完成后，你将具有一个通过 Azure 存储来存储和显示图像的 Web 应用。
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 ![.NET 中的图像调整器应用](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 ![Node.js V2 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![Node.js V10 中的图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -50,7 +50,7 @@ ms.locfileid: "74132975"
 
 ## <a name="create-a-resource-group"></a>创建资源组 
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
+使用“[az group create](/cli/azure/group)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。  
 
 以下示例创建名为 `myResourceGroup` 的资源组。
 
@@ -69,7 +69,7 @@ az group create --name myResourceGroup --location southeastasia
 在以下命令中，请将 `<blob_storage_account>` 占位符替换为你自己的 Blob 存储帐户的全局唯一名称。
 
 ```azurecli-interactive
-$blobStorageAccount="<blob_storage_account>"
+blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia --resource-group myResourceGroup --sku Standard_LRS --kind blobstorage --access-tier hot
 
@@ -84,7 +84,7 @@ az storage account create --name $blobStorageAccount --location southeastasia --
 *images* 容器的公共访问权限设置为 `off`。 *thumbnails* 容器的公共访问权限设置为 `container`。 `container` 公共访问权限设置允许访问网页的用户查看缩略图。
 
 ```azurecli-interactive
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup -n $blobStorageAccount --query [0].value --output tsv)
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup -n $blobStorageAccount --query "[0].value" --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount --account-key $blobStorageAccountKey --public-access off
 
@@ -103,7 +103,7 @@ echo $blobStorageAccountKey
 
 使用 [az appservice plan create](/cli/azure/appservice/plan) 命令创建应用服务计划。
 
-以下示例在免费  定价层中创建名为 `myAppServicePlan` 的应用服务计划：
+以下示例在免费定价层中创建名为 `myAppServicePlan` 的应用服务计划： 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
@@ -117,7 +117,7 @@ Web 应用为从 GitHub 示例存储库部署的示例应用代码提供承载�
 在以下命令中，将 `<web_app>` 替换为唯一名称。 有效的字符是 `a-z`、`0-9` 和 `-`。 如果 `<web_app>` 不唯一，将收到错误消息：_具有给定名称 `<web_app>` 的网站已存在。_ Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。  
 
 ```azurecli-interactive
-$webapp="<web_app>"
+webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 
@@ -125,7 +125,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>从 GitHub 存储库部署示例应用
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。
 
@@ -136,7 +136,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。 
 
 ```azurecli-interactive
@@ -144,7 +144,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 应用服务支持通过多种方式将内容部署到 Web 应用。 在本教程中，将从[公共 GitHub 示例存储库](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10)部署 Web 应用。 使用 [az webapp deployment source config](/cli/azure/webapp/deployment/source) 命令配置 Web 应用的 GitHub 部署。 
 
 ```azurecli-interactive
@@ -156,7 +156,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>配置 Web 应用设置
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 示例 Web 应用使用 [Azure 存储客户端库](/dotnet/api/overview/azure/storage)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
@@ -165,18 +165,18 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 ```
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 
 示例 Web 应用使用 [Azure 存储客户端库](https://docs.microsoft.com/javascript/api/azure-storage)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
+storageConnectionString=$(az storage account show-connection-string --resource-group resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
 
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup --settings AzureStorageConfig__ImageContainer=images AzureStorageConfig__ThumbnailContainer=thumbnails AzureStorageConfig__AccountName=$blobStorageAccount AzureStorageConfig__AccountKey=$blobStorageAccountKey AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
 
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 示例 Web 应用使用 [Azure 存储客户端库](https://github.com/Azure/azure-storage-js)请求用于上传图像的访问令牌。 存储 SDK 使用的存储帐户凭据是在 Web 应用的应用设置中设置的。 使用 [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) 命令将应用设置添加到已部署的应用。
 
@@ -193,7 +193,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 若要测试 Web 应用，请浏览到已发布应用的 URL。 Web 应用的默认 URL 为 `https://<web_app>.azurewebsites.net`。
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 
 选择“上传照片”  区域以选择并上传文件，或者将文件拖放到该区域上。 如果成功上传，图像会消失。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。
 
@@ -236,7 +236,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 |[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer)    | [GetBlockBlobReference](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getblockblobreference)        |
 |[CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob)     | [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.file.cloudfile.uploadfromstreamasync)        |
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 
 选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
@@ -300,7 +300,7 @@ router.post('/', uploadStrategy, (req, res) => {
 });
 ```
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 选择“选择文件”  以选择文件，然后单击“上传图像”  。 “生成的缩略图”  部分将保持为空，直到我们稍后在本主题中对其进行测试为止。 
 
@@ -382,7 +382,7 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>验证图像是否显示在存储帐户中
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器   。
+登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“图像”容器   。
 
 验证图像是否显示在该容器中。
 
@@ -392,19 +392,19 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 为了测试缩略图查看，你将把图像上传到 **thumbnails** 容器，以检查应用可以读取 **thumbnails** 容器。
 
-登录到 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器   。 选择“上传”  以打开“上传 blob”  窗格。
+登录 [Azure 门户](https://portal.azure.com)。 从左侧菜单中，选择“存储帐户”  ，然后选择你的存储帐户的名称。 选择“容器”，然后选择“缩略图”容器   。 选择“上传”  以打开“上传 blob”  窗格。
 
 使用文件选取器选择文件，然后选择“上传”  。
 
 导航回到应用，以验证上传到 **thumbnails** 容器的图像是否可见。
 
-# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+# <a name="net"></a>[\.NET](#tab/dotnet)
 ![显示新图像的 .NET 图像调整器应用](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+# <a name="nodejs-v2-sdk"></a>[Node.js V2 SDK](#tab/nodejs)
 ![显示新图像的 Node.js V2 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
-# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![显示新图像的 Node.js V10 图像调整器应用](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

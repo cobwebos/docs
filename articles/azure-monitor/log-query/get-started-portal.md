@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor Log Analytics 入门 | Microsoft Docs
 description: 本文提供有关在 Azure 门户中使用 Log Analytics 编写查询的教程。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933054"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670230"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics 入门
 
@@ -106,7 +105,7 @@ Log Analytics 按以下依据自动限定结果的范围：
 
 单击列标题旁边的“筛选”图标，然后在弹出窗口中选择以文本 _error_ 开头的值： 
 
-![筛选器](media/get-started-portal/filter.png)
+![“筛选器”](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>排序和分组结果

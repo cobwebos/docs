@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587577"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273217"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
@@ -59,6 +59,9 @@ ms.locfileid: "77587577"
 
 ![源部分](media/data-flow/sourcepart3.png "源部分")
 
+> [!NOTE]
+> 有助于选择源的分区数的好指导取决于你为 Azure Integration Runtime 设置的内核数，并将该数字乘以5。 例如，如果要转换 ADLS 文件夹中的一系列文件，并且要利用32核心 Azure IR，则目标分区数量为 32 x 5 = 160 个分区。
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>源批大小、输入和隔离级别
 
 在源转换的 "**源选项**" 下，下列设置可能会影响性能：
@@ -100,7 +103,7 @@ ms.locfileid: "77587577"
 
 在每次转换时，可以在 "优化" 选项卡中设置希望数据工厂使用的分区方案。最好先测试基于文件的接收器，保留默认分区和优化。
 
-* 对于较小的文件，您可能会发现，选择*单个分区*有时可以比要求 Spark 对小型文件进行分区更好、更快。
+* 对于较小的文件，可能会发现更少的分区比请求 Spark 分区小型文件更好、速度更快。
 * 如果没有关于源数据的足够信息，请选择 "*轮循机制*分区" 并设置分区数。
 * 如果你的数据具有可以是良好哈希键的列，请选择 "*哈希分区*"。
 

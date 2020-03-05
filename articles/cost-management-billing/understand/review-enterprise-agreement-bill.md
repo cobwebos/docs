@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/24/2020
+ms.date: 03/03/2020
 ms.author: banders
-ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ca1064ce3414f4a796110c022125b68c0674e0d6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598215"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270193"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>了解 Azure 企业协议帐单
 
@@ -30,7 +30,7 @@ ms.locfileid: "77598215"
 > * 查看服务超额费用
 > * 查看市场发票
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 只有企业管理员才能查看和确认发票上的费用。 有关详细信息，请参阅[了解 Azure 中的 Azure 企业协议管理角色](../manage/understand-ea-roles.md)。 如果你不知道谁是组织的企业管理员，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 

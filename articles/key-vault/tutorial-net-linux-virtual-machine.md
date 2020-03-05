@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003354"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198161"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>教程：使用 Linux VM 和 .NET 应用在 Azure Key Vault 中存储机密
 
@@ -149,7 +150,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>为 VM 标识提供 Key Vault 访问权限
 
-现在可以向所创建的标识提供密钥保管库权限。 运行以下命令：
+现在可以向所创建的标识提供 Key Vault 权限。 运行以下命令：
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list

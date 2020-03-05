@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275438"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274008"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>（已弃用）在 Azure 容器服务中部署 Kubernetes 群集
 
@@ -40,7 +40,7 @@ Kubernetes 为容器化应用程序提供一个分布式平台。 通过 Azure �
 
 下面的示例在 `myResourceGroup` 资源组中创建 `myK8sCluster` 群集。 此资源组是在[上一教程](./container-service-tutorial-kubernetes-prepare-acr.md)中进行创建。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
@@ -52,11 +52,11 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 若要从客户端计算机连接到 Kubernetes 群集，请使用 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)（Kubernetes 命令行客户端）。 
 
-如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
+如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 如果想在本地安装，请使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 如果在 Linux 或 macOS 中运行，则可能需要使用 sudo 进行运行。 在 Windows 上，确保以管理员身份运行 shell。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes install-cli 
 ```
 
@@ -66,19 +66,19 @@ az acs kubernetes install-cli
 
 若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 若要验证与群集之间的连接，请运行 [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 输出：
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-98dc3136-0    Ready                      5m        v1.6.2
 k8s-agent-98dc3136-1    Ready                      5m        v1.6.2

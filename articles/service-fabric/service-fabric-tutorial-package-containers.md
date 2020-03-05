@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 554590a065214c17de0acdea3207876f113b3caf
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614020"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252743"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>教程：使用 Yeoman 将容器打包并部署为 Service Fabric 应用程序
 
@@ -25,7 +25,7 @@ ms.locfileid: "75614020"
 > * 部署并运行应用程序
 > * 清理应用程序
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 会使用已推送至在本教程系列[第 1 部分](service-fabric-tutorial-create-container-images.md)中所创建的 Azure 容器注册表的容器映像。
 * 会[设置](service-fabric-tutorial-create-container-images.md) Linux 开发环境。
@@ -114,7 +114,7 @@ ApplicationManifest.xml azurevotefrontPkg azurevotebackPkg
 
 登录到 ACR 实例。 使用 **az acr login** 命令完成此操作。 请提供创建容器注册表时所使用的唯一名称。
 
-```bash
+```azurecli
 az acr login --name <acrName>
 ```
 
@@ -122,7 +122,7 @@ az acr login --name <acrName>
 
 接下来，运行以下命令以获取容器注册表的密码。 此密码供 Service Fabric 用于对 ACR 进行验证以提取容器映像。
 
-```bash
+```azurecli
 az acr credential show -n <acrName> --query passwords[0].value
 ```
 
@@ -199,7 +199,7 @@ az acr credential show -n <acrName> --query passwords[0].value
 
 前端服务读取环境变量以了解 Redis 实例的 DNS 名称。 用于生成 Docker 映像的 Dockerfile 中已定义了此环境变量，因此此处不需要执行任何操作。
 
-```Dockerfile
+```dockerfile
 ENV REDIS redisbackend.testapp
 ```
 

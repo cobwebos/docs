@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
-ms.openlocfilehash: 8c29ebd675bb6af66203c13824dacbe9ea2421a2
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732789"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270733"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的 DatetimeV2 预生成实体
 
@@ -31,7 +31,7 @@ ms.locfileid: "75732789"
 
 `8am on may 2nd 2019`
 
-#### <a name="v3-responsetab1-1"></a>[V3 响应](#tab/1-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/1-1)
 
 ```json
 "entities": {
@@ -53,7 +53,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v3-verbose-responsetab1-2"></a>[V3 详细响应](#tab/1-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/1-2)
 
 ```json
 
@@ -91,7 +91,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v2-responsetab1-3"></a>[V2 响应](#tab/1-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/1-3)
 
 ```json
 "entities": [
@@ -154,7 +154,7 @@ ms.locfileid: "75732789"
 
 **datetimeV2** 支持以下范围内的日期：
 
-| Min | 最多 |
+| Min | Max |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
@@ -170,7 +170,7 @@ ms.locfileid: "75732789"
 * 如果今天的日期是 2017 年 5 月 1 日，则 LUIS 会提供“2016-05-02”和“2017-05-02”作为值。
 
 以下示例显示了实体“5 月 2 日”的解析。 此解析假设今天的日期是 2017 年 5 月 2 日和 2018 年 5 月 1 日之间的某个日期。
-在 `timex` 字段中包含 `X` 的字段是未在陈述中显式指定的日期的一部分。
+在 `X` 字段中包含 `timex` 的字段是未在陈述中显式指定的日期的一部分。
 
 ## <a name="date-resolution-example"></a>日期解析示例
 
@@ -179,7 +179,7 @@ ms.locfileid: "75732789"
 
 `May 2nd`
 
-#### <a name="v3-responsetab2-1"></a>[V3 响应](#tab/2-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/2-1)
 
 ```json
 "entities": {
@@ -204,7 +204,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v3-verbose-responsetab2-2"></a>[V3 详细响应](#tab/2-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/2-2)
 
 ```json
 "entities": {
@@ -244,7 +244,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v2-responsetab2-3"></a>[V2 响应](#tab/2-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/2-3)
 
 ```json
   "entities": [
@@ -280,7 +280,7 @@ ms.locfileid: "75732789"
 
 `May 2nd to May 5th`
 
-#### <a name="v3-responsetab3-1"></a>[V3 响应](#tab/3-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/3-1)
 
 ```json
 
@@ -309,7 +309,7 @@ ms.locfileid: "75732789"
 ```
 
 
-#### <a name="v3-verbose-responsetab3-2"></a>[V3 详细响应](#tab/3-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/3-2)
 
 ```json
 
@@ -352,7 +352,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v2-responsetab3-3"></a>[V2 响应](#tab/3-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/3-3)
 
 ```json
 "entities": [
@@ -384,7 +384,7 @@ ms.locfileid: "75732789"
 
 `Tuesday to Thursday`
 
-#### <a name="v3-responsetab4-1"></a>[V3 响应](#tab/4-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/4-1)
 
 ```json
 "entities": {
@@ -411,7 +411,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v3-verbose-responsetab4-2"></a>[V3 详细响应](#tab/4-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/4-2)
 
 ```json
 "entities": {
@@ -453,7 +453,7 @@ ms.locfileid: "75732789"
 }
 ```
 
-#### <a name="v2-responsetab4-3"></a>[V2 响应](#tab/4-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/4-3)
 
 ```json
   "entities": [
@@ -492,7 +492,7 @@ API V2 中的更改：
 
 `from 6pm to 7pm`
 
-#### <a name="v3-responsetab5-1"></a>[V3 响应](#tab/5-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/5-1)
 
 以下 JSON 是将 `verbose` 参数设置为 `false`的：
 
@@ -517,7 +517,7 @@ API V2 中的更改：
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab5-2"></a>[V3 详细响应](#tab/5-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/5-2)
 
 以下 JSON 是将 `verbose` 参数设置为 `true`的：
 
@@ -557,7 +557,7 @@ API V2 中的更改：
     }
 }
 ```
-#### <a name="v2-responsetab5-3"></a>[V2 响应](#tab/5-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/5-3)
 
 ```json
   "entities": [
@@ -588,7 +588,7 @@ API V2 中的更改：
 
 `8am`
 
-#### <a name="v3-responsetab6-1"></a>[V3 响应](#tab/6-1)
+#### <a name="v3-response"></a>[V3 响应](#tab/6-1)
 
 ```json
 "entities": {
@@ -609,7 +609,7 @@ API V2 中的更改：
     ]
 }
 ```
-#### <a name="v3-verbose-responsetab6-2"></a>[V3 详细响应](#tab/6-2)
+#### <a name="v3-verbose-response"></a>[V3 详细响应](#tab/6-2)
 
 ```json
 "entities": {
@@ -645,7 +645,7 @@ API V2 中的更改：
     }
 }
 ```
-#### <a name="v2-responsetab6-3"></a>[V2 响应](#tab/6-3)
+#### <a name="v2-response"></a>[V2 响应](#tab/6-3)
 
 ```json
 "entities": [

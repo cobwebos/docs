@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 529e188d1a4ee00cee7f3d023ab45a48dd0d3c5f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428395"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268655"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Linux Data Science Virtual Machine 进行数据科学
 
@@ -24,7 +24,7 @@ ms.locfileid: "75428395"
 
 在本演练中，我们将分析[spambase](https://archive.ics.uci.edu/ml/datasets/spambase)数据集。 Spambase 是一组标记为垃圾邮件或 ham （而不是垃圾邮件）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论统计信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 使用 Linux DSVM 之前，必须具备以下先决条件：
 
@@ -187,6 +187,8 @@ ms.locfileid: "75428395"
    ![Azure 机器学习 Studio （经典）主授权令牌](./media/linux-dsvm-walkthrough/workspace-token.png)
 1. 加载**AzureML**包，然后在 DSVM 上的 R 会话中将变量的值设置为令牌和工作区 ID：
 
+        if(!require("devtools")) install.packages("devtools")
+        devtools::install_github("RevolutionAnalytics/AzureML")
         if(!require("AzureML")) install.packages("AzureML")
         require(AzureML)
         wsAuth = "<authorization-token>"
@@ -206,9 +208,23 @@ ms.locfileid: "75428395"
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
+1. 为此工作区创建一个 json 文件：
+
+        vim ~/.azureml/settings.json
+
+1. 请确保将以下内容置于设置中。 json：
+
+         {"workspace":{
+           "id": "<workspace-id>",
+           "authorization_token": "<authorization-token>",
+           "api_endpoint": "https://studioapi.azureml.net",
+           "management_endpoint": "https://management.azureml.net"
+         }
+
 
 1. 使用**publishWebService**函数将**predictSpam**函数发布到 AzureML：
 
+        ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
 1. 此函数采用**predictSpam**函数，创建名为**spamWebService**的 web 服务，该服务定义了输入和输出，然后返回有关新终结点的信息。

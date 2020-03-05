@@ -5,15 +5,15 @@ author: msmbaldwin
 manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/22/2020
+ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4094ace5772b99c646a31d6a4722bbb080fbfff7
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589878"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273546"
 ---
 # <a name="azure-security-baseline-for-batch"></a>适用于 Batch 的 Azure 安全基线
 
@@ -59,7 +59,7 @@ https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -271,7 +271,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
 
 https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -323,7 +323,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **指南**：如果使用的是 Linux，请在单独的批处理节点上使用 windows Defender，或者提供自己的反恶意软件解决方案。
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -466,7 +466,7 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-use
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -511,7 +511,7 @@ https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -524,7 +524,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -551,7 +551,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **责任**：客户
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持方案中为 Microsoft 提供对相关客户数据的访问权限
+### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13： <div>在支持方案中为 Microsoft 提供对相关客户数据的访问权限<br></div>
 
 **指南**：不可用;客户密码箱尚不支持 Azure Batch。 客户密码箱支持的服务列表： https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
@@ -614,9 +614,9 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure 安全中心监视**：是
+**Azure 安全中心监视**：当前不可用
 
-**责任**：客户
+**责任**：共享
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
@@ -654,7 +654,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
-**Azure 安全中心监视**：是
+**Azure 安全中心监视**：当前不可用
 
 **责任**：共享
 
@@ -690,7 +690,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure 安全中心监视**：是
+**Azure 安全中心监视**：当前不可用
 
 **责任**：共享
 
@@ -704,7 +704,7 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -728,7 +728,7 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -751,7 +751,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **指南**： Microsoft 维护和更新基本 Azure Batch 池节点映像。 确保 Azure Batch 池节点的操作系统在群集生存期内保持修补，这可能需要启用自动更新、监视节点或定期执行重启。
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：共享
 
@@ -788,7 +788,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 **指南**：使用 Azure 资源关系图查询/发现订阅中的所有资源（如计算、存储、网络等）。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅以及订阅中的资源。
 
 
-虽然可通过资源图发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+虽然可通过资源图发现经典 Azure 资源，但强烈建议创建并使用 Azure 资源管理器（ARM）资源。
 
 
 如何通过 Azure Graph 创建查询：
@@ -863,9 +863,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - 不允许的资源类型
 - 允许的资源类型
 
+
 使用 Azure 资源关系图查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源都已获得批准。
 
+
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 如何通过 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -901,16 +904,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **指南**：使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型：
 
+
 - 不允许的资源类型
 - 允许的资源类型
 
-如何配置和管理 Azure 策略：
 
-https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 策略拒绝特定的资源类型：
 
-https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+如何使用 Azure 策略拒绝特定的资源类型： https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 **Azure 安全中心监视**：当前不可用
 
@@ -924,14 +926,12 @@ https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-
 
 **责任**：客户
 
-### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager-via-scripts"></a>6.11：限制用户通过脚本与 Azure 资源管理器进行交互的能力
+### <a name="611-divlimit-users-ability-to-interact-with-azure-resource-manager-via-scriptsdiv"></a>6.11： <div>限制用户通过脚本与 Azure 资源管理器进行交互的能力</div>
 
 **指南**：通过为 "Microsoft Azure 管理" 应用配置 "阻止访问"，使用 Azure 条件访问来限制用户与 Azure 资源管理器的交互能力。
 
 
-如何配置条件访问以阻止访问 Azure 资源管理器：
-
-https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何配置条件访问以阻止访问 Azure 资源管理器： https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 **Azure 安全中心监视**：当前不可用
 
@@ -949,9 +949,7 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：对高风险应用程序进行物理或逻辑分离
 
-**指南**：不可用，
-
-基准设计适用于在 Azure App Service 或 IaaS 实例上运行的 web 应用程序。
+**指南**：不适用，基准设计适用于在 Azure App Service 或 IaaS 实例上运行的 web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -966,10 +964,14 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 **指南**：使用 "Microsoft Batch" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Batch 帐户和池的配置。
 
 
-如何查看可用的 Azure 策略别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何查看可用的 Azure 策略别名：
+
+https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何配置和管理 Azure 策略：
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure 安全中心监视**：不适用
 
@@ -991,7 +993,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 - Microsoft.Storage
 - Microsoft.Network
 
+
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 了解 Azure 策略影响： https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -1009,11 +1013,17 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地存储 Azure 资源的配置
 
-**指南**：如果将自定义 azure 策略定义用于 Azure Batch 帐户、池或相关资源，请使用 Azure DevOps/存储库来安全地存储和管理你的代码。
+**指南**：如果将自定义 Azure 策略定义用于 Azure Batch 帐户、池或相关资源，请使用 Azure Repos 安全地存储和管理你的代码。
 
-如何在 Azure DevOps 中存储代码： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+如何在 Azure DevOps 中存储代码：
+
+https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+
+
+Azure Repos 文档：
+
+https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Azure 安全中心监视**：不适用
 
@@ -1024,9 +1034,14 @@ Azure Repos 文档： https://docs.microsoft.com/azure/devops/repos/index?view=a
 **指南**：如果对 Azure Batch 池使用自定义映像，请使用基于角色的访问控制（RBAC），以确保只有经过授权的用户才能访问这些映像。
 
 
-了解 Azure 中的 RBAC： https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+了解 Azure 中的 RBAC：
 
-如何在 Azure 中配置 RBAC： https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
+https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
+
+
+如何在 Azure 中配置 RBAC：
+
+https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal
 
 **Azure 安全中心监视**：当前不可用
 
@@ -1058,8 +1073,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **指南**：使用 "Microsoft Batch" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Batch 实例的配置。 你还可以使用专门为 Azure Batch 或 Azure Batch 使用的资源创建的任何内置策略，例如：
 
-- 子网应与网络安全组关联
-- 存储帐户应使用虚拟网络服务终结点
+- 子网应与网络安全组关联-存储帐户应使用虚拟网络服务终结点
 - 应启用 Batch 帐户中的诊断日志
 
 如何查看可用的 Azure 策略别名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
@@ -1098,7 +1112,7 @@ https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -1187,7 +1201,7 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -1205,7 +1219,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：不适用
 
 **责任**：客户
 
@@ -1218,7 +1232,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：是
 
 **责任**：客户
 
@@ -1324,3 +1338,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **责任**：共享
 
+## <a name="next-steps"></a>后续步骤
+
+- 请参阅[Azure 安全基准](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 了解有关[Azure 安全基线](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)的详细信息

@@ -8,29 +8,29 @@ ms.custom: seodec18
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8c15ebacd0fd959fe789d7f3a9b33b16ee29a1b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933622"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78270678"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS 应用中已弃用的预生成实体
 以下预构建实体已被弃用，不能添加到新的 LUIS 应用中。
 
-* **Datetime**：使用 datetime 的现有 LUIS 应用应当迁移到 datetimeV2，虽然 datetime 实体在使用它的现存应用中可以继续工作。
-* **Geography**：使用 geography 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
-* **Encyclopedia**：使用 encyclopedia 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Datetime**：使用 **datetime** 的现有 LUIS 应用应当迁移到 **datetimeV2**，虽然 datetime 实体在使用它的现存应用中可以继续工作。
+* **Geography**：使用 **geography** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
+* **Encyclopedia**：使用 **encyclopedia** 的现有 LUIS 应用在 2018 年 12 月之前一直受支持。
 
 ## <a name="geography-culture"></a>Geography 语言区域
 **Geography** 仅在 `en-us` 区域设置中可用。
 
 #### <a name="3-geography-subtypes"></a>3 个 Geography 子类型
 
-预构建实体   |   示例陈述   |   JSON
+预生成实体   |   示例陈述   |   JSON
 ------|------|------|
 `builtin.geography.city`   |  `seattle`    |`{ "type": "builtin.geography.city", "entity": "seattle" }`|
 `builtin.geography.city`   |  `paris`    |`{ "type": "builtin.geography.city", "entity": "paris" }`|
@@ -43,7 +43,7 @@ ms.locfileid: "68933622"
 **Encyclopedia** 仅在 `en-US` 区域设置中可用。
 
 #### <a name="encyclopedia-subtypes"></a>Encyclopedia 子类型
-Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyclopedia 实体经常映射到多种类型。 例如，查询 Ronald Reagan 产生以下项： 
+Encyclopedia 内置实体包括下表中的 100 多个子类型；此外，encyclopedia 实体通常映射到多个类型。 例如，查询 Ronald Reagan 产生以下项：
 
 ```json
 {
@@ -65,7 +65,7 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
  ```
 
 
-预构建实体   |   预构建实体（子类型）   |   示例陈述
+预生成实体   |   预构建实体（子类型）   |   示例陈述
 ------|------|------|
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.people.person`| `bryan adams` |
 `builtin.encyclopedia.people.person`| `builtin.encyclopedia.film.producer`| `walt disney` |
@@ -163,5 +163,5 @@ Encyclopedia 内置实体包括下表中的 100 多个子类型：此外，encyc
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。 
+了解[维度](luis-reference-prebuilt-dimension.md)、[电子邮件](luis-reference-prebuilt-email.md)实体和[数字](luis-reference-prebuilt-number.md)。
 

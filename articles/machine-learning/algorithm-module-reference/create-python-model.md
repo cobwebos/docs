@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: e26ae7ded47a235ecf1829946c1cc79af9a0fb8c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 26bcd855dbe2ea85df9fb6aca74f8b52e8ce8e46
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152391"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78268929"
 ---
 # <a name="create-python-model"></a>创建 Python 模型
 
@@ -35,7 +35,7 @@ ms.locfileid: "77152391"
 
 本文介绍如何使用简单管道**创建 Python 模型**。 下面是管道的关系图。
 
-![create-python-model](./media/module/aml-create-python-model.png)
+![create-python-model](./media/module/create-python-model.png)
 
 1.  单击 "**创建 Python 模型**"，编辑脚本以实现建模或数据管理过程。 可以在 Azure 机器学习环境中包含在 Python 包中的任何学习器基础上建模。
 

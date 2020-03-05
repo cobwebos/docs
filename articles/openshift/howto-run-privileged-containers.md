@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: aro、openshift、aquasec、twistlock、red hat
-ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: e1c1dd9f27a207f78dd22e271f6b070c7f92f622
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228248"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271374"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中运行特权容器
 
@@ -137,6 +137,8 @@ oc new-project twistlock
 
 在步骤2中 `oc create -f twistlock_console.yaml` 期间，你将在创建命名空间时收到错误。
 您可以放心地忽略该命名空间，先前已通过 `oc new-project` 命令创建了该命名空间。
+
+将 `azure-disk` 用于存储类型。
 
 ### <a name="create-an-external-route-to-console"></a>创建到控制台的外部路由
 
