@@ -12,7 +12,8 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 创建负载均衡器 - PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 创建负载均衡器 - 模板
+    - name: 创建负载均衡器 - ARM 模板
+      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
 - name: 教程
