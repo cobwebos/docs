@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: a7bb74c09b45429a160a3ec481c23073575cfe3c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892506"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394240"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>使用 Azure 数据工厂从 MongoDB 复制数据
 
@@ -32,7 +32,7 @@ ms.locfileid: "75892506"
 
 具体而言，此 MongoDB 连接器最高支持版本 3.4。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -46,11 +46,11 @@ ms.locfileid: "75892506"
 
 MongoDB 链接的服务支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |Type 属性必须设置为： **MongoDbV2** |是 |
 | connectionString |指定 MongoDB 连接字符串，例如 `mongodb://[username:password@]host[:port][/[database][?options]]`。 请参阅 [MongoDB 连接字符串手册](https://docs.mongodb.com/manual/reference/connection-string/)获取详细信息。 <br/><br /> 你还可以在 Azure Key Vault 中放置一个密码，并从连接字符串中请求 `password` 配置。 有关更多详细信息，请参阅 [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)。 |是 |
-| 数据库 | 要访问的数据库的名称。 | 是 |
+| database | 要访问的数据库的名称。 | 是 |
 | connectVia | 用于连接到数据存储的[集成运行时](concepts-integration-runtime.md)。 从[必备组件](#prerequisites)部分了解详细信息。 如果未指定，则使用默认 Azure Integration Runtime。 |否 |
 
 **示例：**
@@ -76,7 +76,7 @@ MongoDB 链接的服务支持以下属性：
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集和链接服务](concepts-datasets-linked-services.md)。 MongoDB 数据集支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为： **MongoDbV2Collection** | 是 |
 | collectionName |MongoDB 数据库中集合的名称。 |是 |
@@ -108,7 +108,7 @@ MongoDB 链接的服务支持以下属性：
 
 复制活动源部分支持以下属性：
 
-| 属性 | Description | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为： **MongoDbV2Source** | 是 |
 | filter | 使用查询运算符指定选择筛选器。 若要返回集合中的所有文档，请省略此参数或传递空文档 ({})。 | 否 |

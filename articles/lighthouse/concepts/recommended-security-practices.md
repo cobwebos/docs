@@ -4,11 +4,11 @@ description: 使用 Azure 委派资源管理时，请务必考虑安全性和访
 ms.date: 07/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8972d6548eccb1006d90bfcbb4dba8c01b05a981
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456879"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394058"
 ---
 # <a name="recommended-security-practices"></a>建议的安全做法
 
@@ -28,12 +28,12 @@ ms.locfileid: "75456879"
 
 例如，建议使用如下结构：
 
-|组名称  |类型  |principalId  |角色定义  |角色定义 ID  |
+|组名  |类型  |principalId  |角色定义  |角色定义 ID  |
 |---------|---------|---------|---------|---------|
-|架构师     |用户组         |\<principalId\>         |参与者         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|架构师     |用户组         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |评估     |用户组         |\<principalId\>         |读取器         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
 |VM 专家     |用户组         |\<principalId\>         |VM 参与者         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|自动化     |服务主体名称 (SPN)         |\<principalId\>         |参与者         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|自动化     |服务主体名称 (SPN)         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
 创建这些组之后，即可根据需要分配用户。 仅添加真正需要访问权限的用户。 请确保定期查看组成员身份，并删除不再适合或不再需要的任何用户。
 

@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396079"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>了解和使用 Azure IoT 中心 SDK
 
 有两种类别的软件开发工具包 (SDK) 适用于 IoT 中心：
 
-* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端，为 [Azure IoT Edge 运行时](../iot-edge/about-iot-edge.md)创建[模块](../iot-edge/iot-edge-modules.md)。
+* **IoT 中心设备 SDK**：可用于使用设备客户端或模块客户端构建在 IoT 设备上运行的应用。 这些应用将遥测发送到 IoT 中心，并可以选择从 IoT 中心接收消息、作业、方法或孪生更新。  还可以使用模块客户端，为 [Azure IoT Edge 运行时](../iot-edge/iot-edge-modules.md)创建[模块](../iot-edge/about-iot-edge.md)。
 
 * **IoT 中心服务 SDK**：可用于构建后端应用程序来管理 IoT 中心，并视需要发送消息、计划作业、调用直接方法或向 IoT 设备或模块发送相应属性更新。
 

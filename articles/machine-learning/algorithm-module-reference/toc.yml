@@ -144,11 +144,5 @@
       href: score-svd-recommender.md
     - name: 训练 SVD 推荐器
       href: train-svd-recommender.md
-- name: 异常检测
-  items:
-    - name: 基于 PCA 的异常情况检测
-      href: pca-based-anomaly-detection.md
-    - name: 训练异常情况检测模型
-      href: train-anomaly-detection-model.md
 - name: 模块错误和故障排除
   href: designer-error-codes.md

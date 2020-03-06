@@ -17,18 +17,18 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 74da5b84fafd7f7c60d07fc90b05c051c1fa2a3e
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b4479436077dbad8cf2fb4dc40954194c138981
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164391"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377689"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-可以使用 Microsoft Azure Active Directory (Azure AD) 向 web 应用程序和 web API 添加身份验证和授权。
+你可以使用 Microsoft Azure Active Directory (Azure AD) 向你的 web 应用程序和 web API 添加身份验证和授权。
 
 此部分提供可用于详细了解 Azure AD v1.0 终结点的示例链接。 这些示例将展示其工作原理以及可以在应用程序中使用的代码片段。 在代码示例页上，可以找到在要求、安装和设置方面提供帮助的详细自述主题。 并且代码带有注释，可以帮助你理解关键部分。
 
@@ -54,7 +54,7 @@ ms.locfileid: "77164391"
 
 以下示例说明了 Web 应用程序签名用户。 其中一些应用程序还以已登录用户的名义调用 Microsoft Graph 或你自己的 Web API。
 
- 平台 | 仅让用户登录 | 调用 Microsoft Graph 或 AAD Graph| 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API
+ 平台 | 仅让用户登录 | 调用 Microsoft Graph | 调用另一个 ASP.NET 或 ASP.NET Core 2.0 Web API
  -------- | ------------------- | --------------------- | -------------------------
 ![此图像显示 ASP.NET 徽标](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2.0 | [dotnet-webapp-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [webapp-webapi-multitenant-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD Graph) | [dotnet-webapp-webapi-openidconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
 ![此图像显示 ASP.NET 徽标](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [webapp-WSFederation-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [dotnet-webapp-webapi-oauth2-useridentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [dotnet-webapp-multitenant-openidconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD Graph) |
@@ -74,18 +74,18 @@ ms.locfileid: "77164391"
 
 以下示例说明了公共客户端应用程序（桌面/pmobile 应用程序），这些应用程序访问 Microsoft Graph 或用户名称中的 Web API。 根据设备和平台，应用程序可以用不同方式（流/授权）让用户登录：
 
-- 交互
+- 交互式
 - 以静默方式（在 Windows 上集成 Windows 身份验证，或用户名/密码）
 - 通过将交互式登录委托给另一个设备（在不提供 web 控件的设备上使用的设备代码流）
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET 或 ASP.NET Core 2.x Web API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 桌面 (WPF)           | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png)  | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) 的一部分 | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-移动 (UWP)            | 。![此图显示 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
+移动 (UWP)            | .![此图显示 .NET/C#/UWP](media/sample-v2-code/logo-windows.png)   | 交互 | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) </p> 此示例使用 [WAM](/windows/uwp/security/web-account-manager)，而不是 [ADAL.NET](https://aka.ms/adalnet)|  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store)（使用 ADAL.NET 调用单租户 Web API 的 UWP 应用程序） </p> [dotnet-webapi-multite nant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store)（使用 ADAL.NET 调用多租户 Web API 的 UWP 应用程序）|
 移动（Android、iOS、UWP）   | ![此图显示 .NET/C# （Xamarin）](media/sample-v2-code/logo-xamarin.png) | 交互 | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
 移动 (Android)           | ![此图像显示 Android 徽标](media/sample-v2-code/logo-android.png) | 交互 |   [android](https://github.com/Azure-Samples/active-directory-android) |
 移动 (iOS)           | ![此图显示了 iOS/目标 C 或 Swift](media/sample-v2-code/logo-ios.png) | 交互 |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
-桌面（控制台）          | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png) | 用户名/密码 </p>  Windows 集成身份验证 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
+桌面（控制台）          | ![此图显示 .NET/C#徽标](media/sample-v2-code/logo-net.png) | 用户名/密码 </p>  集成 Windows 身份验证 | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 桌面（控制台）          | ![此图显示了 Java 徽标](media/sample-v2-code/logo-java.png) | 用户名/密码 | | [java-native-headless](https://github.com/Azure-Samples/active-directory-java-native-headless)
 桌面（控制台）           | ![此图显示 .NET Core/C#徽标](media/sample-v2-code/logo-netcore.png) | 设备代码流 | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
@@ -125,10 +125,6 @@ ASP.NET Web 应用  | ![此图显示 .NET 徽标](media/sample-v2-code/logo-netf
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure Active Directory 开发人员指南](v1-overview.md)
-
-[Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)
-
-[Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
-
-[Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+- [Azure Active Directory 开发人员指南](v1-overview.md)
+- [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)
+- [Microsoft Graph API 概念和参考](https://docs.microsoft.com/graph/use-the-api)

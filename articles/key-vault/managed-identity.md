@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 36a4871339401629300eedd77b6441aed10aabf3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199829"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395933"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供具有托管标识的 Key Vault 身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "78199829"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 若要完成本指南，你必须拥有以下资源。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "78199829"
 
 1. 选择“托管标识”。 
 
-1. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击“保存”。 
+1. 在“系统分配的”选项卡中，将“状态”切换为“启用”。 单击 **“保存”** 。 
 
     ![](./media/managed-identity-system-assigned.png)
 

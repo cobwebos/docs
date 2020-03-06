@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561776"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361322"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -225,7 +225,7 @@ HDInsight 群集可以有两个用户帐户。 HDInsight 群集用户帐户（HT
    | 名称 |“更改 ssh 密码” |
    | Bash 脚本 URI |changepassword.sh 文件的 URI |
    | 节点类型：（Head、Worker、Nimbus、监察员或 Zookeeper。） |✓ 适用于所有列出的节点类型 |
-   | parameters |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
+   | 参数 |输入 SSH 用户名和新密码。 用户名与密码之间应有一个空格。 |
    | 保留此脚本操作... |将此字段保留未选中状态。 |
 
 6. 选择“创建”以应用脚本。 脚本完成后，可以使用 SSH 和新密码连接到群集。

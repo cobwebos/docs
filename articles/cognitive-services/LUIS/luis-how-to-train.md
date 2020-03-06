@@ -1,5 +1,5 @@
 ---
-title: 训练应用 - LUIS
+title: 训练应用-LUIS
 titleSuffix: Azure Cognitive Services
 description: 训练是向语言理解 (LUIS) 应用版本进行教学以提高其自然语言理解能力的过程。 对模型进行更新（例如添加、编辑、标记或删除实体、意向或陈述）后，请对 LUIS 应用进行训练。
 services: cognitive-services
@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
 ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143692"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361073"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>训练 LUIS 应用的有效版本 
 
@@ -30,7 +30,7 @@ ms.locfileid: "74143692"
 
 若要在 [LUIS 门户中](https://www.luis.ai)启动迭代过程，首先需要将 LUIS 应用训练至少一次。 在训练之前，请确保每个意向具有至少一个陈述。
 
-1. 在“我的应用”页面选择应用的名字以访问应用。 
+1. 在“我的应用”页面上选择应用名称以访问应用。 
 
 1. 在应用中，在顶部的面板中选择“训练”。 
 

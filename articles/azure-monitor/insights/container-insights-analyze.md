@@ -4,11 +4,11 @@ description: 本文介绍如何使用容器 Azure Monitor 来查看和分析 Kub
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731010"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385543"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>利用容器 Azure Monitor 来监视 Kubernetes 群集性能
 
@@ -75,7 +75,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 | |未知 |如果未在过去 30 分钟报告 |  
 |**系统 pod**| | |  
 | |正常 |100% |
-| |警告 |N/A |
+| |警告 |空值 |
 | |严重 |<100% |
 | |未知 |如果未在过去 30 分钟报告 |
 |**Node** | | |
@@ -91,7 +91,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 通过从左窗格中选择 " **Insights** > **群集**"，或者从多群集视图中选择群集，可以直接从 AKS 群集访问对容器 Azure Monitor。 有关群集的信息分为四个方面：
 
 - 群集
-- 节点数 
+- Nodes 
 - 控制器 
 - 容器
 
@@ -117,7 +117,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 在指标资源管理器中，可以查看容器 Azure Monitor 的聚合节点和 pod 利用率指标。 下表总结了详细信息，以帮助你了解如何使用指标图表来可视化容器指标。
 
-|命名空间 | 度量值 | Description | 
+|命名空间 | 指标 | 说明 | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | 整个群集中 CPU 使用率的聚合度量值。 它是 CPU 核心拆分为1000单位（milli = 1000）。 用于确定在多个应用程序可能使用一个内核的容器中内核的使用情况。| 
@@ -189,7 +189,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看 "**节点**" 选项卡时显示的信息。
 
-| 柱形图​​ | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 主机的名称。 |
 | 状态 | 节点状态的 Kubernetes 视图。 |
@@ -218,7 +218,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看控制器时显示的信息。
 
-| 柱形图​​ | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器在运行完成后的汇总状态，状态为 *"正常"、"* 已*终止*" *、* "*已停止*" 或 "已*暂停*"。 如果容器正在运行，但状态未正确显示，或者代理未获取该状态，且未响应30分钟以上，则状态为 "*未知*"。 下表提供了状态图标的其他详细信息。|
@@ -255,7 +255,7 @@ Azure Monitor 提供了一个多群集视图，其中显示了在订阅中跨资
 
 下表描述了查看容器时显示的信息。
 
-| 柱形图​​ | Description | 
+| 列 | 说明 | 
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 容器状态（如果有）。 接下来的表格提供状态图标的更多详细信息。|

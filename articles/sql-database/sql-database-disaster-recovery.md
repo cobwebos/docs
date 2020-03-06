@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826583"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359173"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>还原 Azure SQL 数据库或故障转移到辅助数据库
 
@@ -33,11 +33,11 @@ Azure SQL 数据库提供以下功能，以便在服务中断后进行恢复：
 > 如果使用区域冗余高级或业务关键数据库或池，将自动执行恢复过程，此材料的其余部分将不适用。
 
 > [!NOTE]
-> 主数据库和辅助数据库都需要有相同的服务层级。 另外，强烈建议创建与主数据库具有相同计算大小（DTU 或 vCore）的辅助数据库。 有关详细信息，请参阅[作为主数据库进行升级或降级](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database)。
+> 主数据库和辅助数据库都需要有相同的服务层级。 此外，强烈建议使用与主数据库相同的计算大小（Dtu 或 Vcore）创建辅助数据库。 有关详细信息，请参阅[作为主数据库升级或降级](sql-database-active-geo-replication.md#upgrading-or-downgrading-primary-database)。
 
 > [!NOTE]
 > 使用一个或多个故障转移组来管理多个数据库的故障转移。
-> 如果将现有的异地复制关系添加到故障转移组，请确保使用与主数据库相同的服务层级和计算大小来配置异地辅助数据库。 有关详细信息，请参阅[使用自动故障转移组可以实现多个数据库的透明、协调式故障转移](sql-database-auto-failover-group.md)。
+> 如果将现有的异地复制关系添加到故障转移组，请确保使用与主数据库相同的服务层级和计算大小来配置异地辅助数据库。 有关详细信息，请参阅[使用自动故障转移组启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md)。
 
 ## <a name="prepare-for-the-event-of-an-outage"></a>准备好应对中断情况
 
@@ -79,7 +79,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 - [使用 Azure 门户故障转移到异地复制的辅助服务器](sql-database-geo-replication-portal.md)
 - [使用 PowerShell 故障转移到辅助服务器](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [使用 Transact-SQL (T-SQL) 故障转移到辅助服务器](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
+- [使用 Transact-sql 故障转移到辅助服务器（T-sql）](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#e-failover-to-a-geo-replication-secondary)
 
 ## <a name="recover-using-geo-restore"></a>使用异地还原进行恢复
 
@@ -114,7 +114,7 @@ Azure 团队会努力尽快还原服务可用性，但视根本原因而定，�
 
 ### <a name="enable-auditing"></a>启用审核
 
-如果需要通过审核来访问数据库，则需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
+如果需要通过审核来访问数据库，需要在恢复数据库后启用审核。 有关详细信息，请参阅[数据库审核](sql-database-auditing.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

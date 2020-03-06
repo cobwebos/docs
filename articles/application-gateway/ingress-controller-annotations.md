@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796002"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373493"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>应用程序网关入口控制器的批注 
 
@@ -24,7 +24,7 @@ ms.locfileid: "73796002"
 
 对于要由 AGIC 观察的入口资源，必须使用 `kubernetes.io/ingress.class: azure/application-gateway`对其进行**批注**。 只有 AGIC 将与相关的入口资源一起工作。
 
-| 批注键 | 值类型 | 默认值 | 允许值
+| 批注键 | 值类型 | 默认值 | 允许的值
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
 | [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |

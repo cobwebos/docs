@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176645"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374459"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的问题模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -98,12 +98,12 @@ ms.locfileid: "73176645"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Issues`|[问题](api-management-template-data-model-reference.md#Issue)实体的集合。|对当前用户可见的问题。|  
 |`Paging`|[分页](api-management-template-data-model-reference.md#Paging)实体。|应用程序集合的分页信息。|  
-|`IsAuthenticated`|布尔值|当前用户是否登录到开发人员门户。|  
-|`CanReportIssues`|布尔值|当前用户是否有权提出问题。|  
+|`IsAuthenticated`|boolean|当前用户是否登录到开发人员门户。|  
+|`CanReportIssues`|boolean|当前用户是否有权提出问题。|  
 |`Search`|字符串|此属性已弃用，不应使用。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  

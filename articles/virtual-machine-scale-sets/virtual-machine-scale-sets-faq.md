@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
 ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275901"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394645"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "76275901"
 
 ### <a name="are-data-disks-supported-within-scale-sets"></a>规模集是否支持数据磁盘？
 
-可以。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
+是的。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
 
 * Azure 文件（SMB 共享驱动器）
 * OS 驱动器
@@ -61,10 +61,10 @@ ms.locfileid: "76275901"
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>规模集是否可以与 Azure 可用性区域配合使用？
 
-可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
-## <a name="autoscale"></a>自动扩展
+## <a name="autoscale"></a>自动缩放
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure 自动缩放的最佳做法是什么？
 
@@ -76,7 +76,7 @@ ms.locfileid: "76275901"
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>基于 Azure 服务总线主题和队列长度的自动缩放是否有任何示例可供参考？
 
-可以。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 对于服务总线队列，请使用以下 JSON：
 
@@ -117,7 +117,7 @@ ms.locfileid: "76275901"
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms)和 [Linux VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms)。
+可以选择任何 VM 性能计数器作为要对其设置警报的指标。 有关详细信息，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms)中的[基于 Resource Manager 的 Windows VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms)和 [Linux VM 的来宾 OS 指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>如何使用 PowerShell 对虚拟机规模集设置自动缩放？
 
@@ -126,7 +126,7 @@ ms.locfileid: "76275901"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
 
-不。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
+不是。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 
@@ -170,7 +170,7 @@ az sf cluster create -h
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
-可以。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
+是的。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
 
 在模板中包括 **osProfile**：
 
@@ -221,7 +221,7 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名称 | 需要 | 类型 | Description
+linuxConfiguration 元素名称 | 必选 | 类型 | 说明
 --- | --- | --- | ---
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
 路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
@@ -331,9 +331,9 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 有关详细信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/PCI)。
 
-### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
 
-可以。 可在适用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入门模板中查看一些示例 MSI 模板。
+是的。 可在适用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入门模板中查看一些示例 MSI 模板。
 
 ## <a name="deleting"></a>正在删除 
 
@@ -462,11 +462,11 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-可以。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
 
 ```json
 "networkProfile": {
@@ -520,7 +520,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
-可以。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
+是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如：
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -561,9 +561,9 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>能否配置与多个应用程序网关配合使用的规模集？
 
-可以。 可以将多个应用程序网关后端地址池的资源 Id 添加到规模集网络配置文件的 " _ipconfiguration_ " 部分的_applicationGatewayBackendAddressPools_列表中。
+是的。 可以将多个应用程序网关后端地址池的资源 Id 添加到规模集网络配置文件的 " _ipconfiguration_ " 部分的_applicationGatewayBackendAddressPools_列表中。
 
-## <a name="scale"></a>调整规模
+## <a name="scale"></a>缩放
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>在哪些情况下我会创建包含少于两个 VM 的虚拟机规模集？
 
@@ -677,7 +677,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>如何在不发出多个调用的情况下获取每个 VM 的属性信息？ 例如，对于虚拟机规模集中的 100 个 VM，如何获取每个 VM 的容错域？
 
-若要在不发出多个调用的情况下获取每个 VM 的属性信息，通过在以下资源 URI 上执行 REST API `GET`调用 `ListVMInstanceViews`：
+若要在不发出多个调用的情况下获取每个 VM 的属性信息，通过在以下资源 URI 上执行 REST API `ListVMInstanceViews`调用 `GET`：
 
 /subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines?$expand=instanceView&$select=instanceView
 

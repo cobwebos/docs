@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350689"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385032"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 从自定义磁盘创建 Linux VM
 
@@ -31,7 +31,7 @@ ms.locfileid: "75350689"
 若要从自定义磁盘创建多个 VM，请先从 VM 或 VHD 创建映像。 有关详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 
 可使用两个选项创建自定义磁盘：
-* 上载 VHD
+* 上传 VHD
 * 复制现有的 Azure VM
 
 
@@ -65,7 +65,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES 和 openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [其他：非认可分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [其他：非认可的分发版](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 另请参阅 [Linux 安装说明](create-upload-generic.md#general-linux-installation-notes)，获取更多有关如何为 Azure 准备 Linux 映像的一般提示。
 
@@ -78,7 +78,7 @@ Azure 支持各种 Linux 分发（请参阅 [Endorsed Distributions](endorsed-di
 
 你现在可以将 VHD 直接上传到托管磁盘。 有关说明，请参阅[使用 Azure CLI 将 VHD 上传到 Azure](disks-upload-vhd-to-managed-disk-cli.md)。
 
-## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有 VM
+## <a name="option-2-copy-an-existing-vm"></a>选项 2：复制现有的 VM
 
 也可以在 Azure 中创建自定义的 VM，然后复制 OS 磁盘并将其附加到新 VM 以创建另一个副本。 这种做法在测试中不会有任何问题，但若要将现有 Azure VM 作为多个新 VM 的模型，请改为创建映像。 有关从现有 Azure VM 创建映像的详细信息，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。
 

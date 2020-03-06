@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073023"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383394"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>适用于 Windows 的 NVIDIA GPU 驱动程序扩展
 
@@ -29,7 +29,7 @@ ms.locfileid: "74073023"
 [此处](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-driver-setup)提供了有关手动安装驱动程序和当前支持的版本的说明。
 此扩展也可用于在 [Linux N 系列 VM](hpccompute-gpu-linux.md) 上安装 NVIDIA GPU 驱动程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -73,7 +73,7 @@ ms.locfileid: "74073023"
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
+| apiVersion | 2015-06-15 | date |
 | 发布者 | Microsoft.HpcCompute | 字符串 |
 | type | NvidiaGpuDriverWindows | 字符串 |
 | typeHandlerVersion | 1.2 | int |
@@ -171,7 +171,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
 有关扩展的详细信息，请参阅[适用于 Windows 的虚拟机扩展和功能](features-windows.md)。

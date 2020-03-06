@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453808"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396062"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "75453808"
 * 可向后端应用授予的不同预配服务访问权限。
 * 身份验证过程以及它用于验证权限的令牌。
 
-### <a name="when-to-use"></a>使用时机
+### <a name="when-to-use"></a>何时使用
 
 要访问某预配服务终结点，必须具有适当的权限。 例如，后端应用必须包含一个带安全凭据的令牌，以及它发送给该服务的每条消息。
 
@@ -75,7 +75,7 @@ SharedAccessSignature sr =
 
 以下是预期值：
 
-| 值 | Description |
+| 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
@@ -177,7 +177,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 下表列出了可用于控制对 IoT 设备预配服务的访问的权限。
 
-| 权限 | 说明 |
+| 权限 | 注意 |
 | --- | --- |
 | ServiceConfig |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
 | EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |

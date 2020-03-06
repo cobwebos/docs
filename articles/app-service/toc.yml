@@ -87,6 +87,8 @@
           href: networking-features.md
         - name: 包含服务终结点的应用程序网关
           href: networking/app-gateway-with-service-endpoints.md
+        - name: 专用终结点
+          href: networking/private-endpoint.md
     - name: 入站和出站 IP
       href: overview-inbound-outbound-ips.md
     - name: 虚拟网络集成

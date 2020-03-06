@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767736"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344119"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>用于设备和模块孪生、作业和消息路由的 IoT 中心查询语言
 
@@ -447,23 +447,23 @@ GROUP BY <group_by_element>
 
 支持以下运算符：
 
-| 家庭 | 运算符 |
+| 系列 | 运算符 |
 | --- | --- |
 | 算术 |+, -, *, /, % |
 | 逻辑 |AND、OR、NOT |
 | 比较 |=、!=、<、>、<=、>=、<> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>函数
 
 查询克隆和作业时唯一受支持的函数是：
 
-| 函数 | Description |
+| 函数 | 说明 |
 | -------- | ----------- |
 | IS_DEFINED(property) | 返回一个布尔值，指示是否已向属性分配值（包括 `null`）。 |
 
 在路由情况下，支持以下数学函数：
 
-| 函数 | Description |
+| 函数 | 说明 |
 | -------- | ----------- |
 | ABS(x) | 返回指定数值表达式的绝对（正）值。 |
 | EXP(x) | 返回指定数值表达式 (e^x) 的指数值。 |
@@ -476,7 +476,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下检查和强制转换类型的函数：
 
-| 函数 | Description |
+| 函数 | 说明 |
 | -------- | ----------- |
 | AS_NUMBER | 将输入字符串转换为数字。 如果输入数字，则为 `noop`；如果字符串不表示数字，则为 `Undefined`。|
 | IS_ARRAY | 返回一个布尔值，指示指定表达式类型是否为数组。 |
@@ -490,7 +490,7 @@ GROUP BY <group_by_element>
 
 在路由情况下，支持以下字符串函数：
 
-| 函数 | Description |
+| 函数 | 说明 |
 | -------- | ----------- |
 | CONCAT(x, y, …) | 返回一个字符串，该字符串是连接两个或多个字符串值的结果。 |
 | LENGTH(x) | 返回指定字符串表达式的字符数。|

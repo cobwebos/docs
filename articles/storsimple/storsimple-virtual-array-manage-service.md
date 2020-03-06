@@ -1,6 +1,6 @@
 ---
 title: 部署 StorSimple 设备管理器服务 | Microsoft 文档
-description: 说明如何在 Azure 门户中创建和删除 StorSimple Device Manager 服务，并介绍了如何管理服务注册密钥。
+description: 说明如何在 Azure 门户中创建和删除 StorSimple 设备管理器服务，并介绍了如何管理服务注册密钥。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516668"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365578"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 
@@ -73,7 +73,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 1. 转到“所有资源”。 搜索 StorSimple Device Manager 服务。 选择要删除的服务。
    
     ![选择要删除的服务](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击“删除”。
+2. 转到服务仪表板，确保没有设备连接到该服务。 如果没有设备注册到此服务，则还将看到指示此内容的横幅消息。 单击 **“删除”** 。
    
     ![删除服务](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
@@ -94,7 +94,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 可以执行以下步骤来获取服务注册密钥。
 
 #### <a name="to-get-the-service-registration-key"></a>获取服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”。
+1. 在**StorSimple 设备管理器**边栏选项卡中，请参阅**管理 &gt;** **密钥**。
    
    ![“密钥”边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. 在“密钥”边栏选项卡中，会显示服务注册密钥。 使用“复制”图标复制该注册密钥。 
@@ -107,7 +107,7 @@ StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 
 执行以下步骤，重新生成服务注册密钥。
 
 #### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”。
+1. 在**StorSimple 设备管理器**边栏选项卡中，请参阅**管理 &gt;** **密钥**。
    
    ![“密钥”边栏选项卡](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. 在“密钥”边栏选项卡中，单击“重新生成”。

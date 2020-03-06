@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650651"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380856"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
@@ -48,7 +48,7 @@ ms.locfileid: "75650651"
 ### <a name="steps"></a>steps
 返回在指定步骤中定义的元素的输出值。 若要获取 Basics 步骤中的元素的输出值，请改用 `basics()`。
 
-下面的示例返回 `foo` 步骤中名为 `bar` 的元素的输出：
+下面的示例返回 `bar` 步骤中名为 `foo` 的元素的输出：
 
 ```json
 "[steps('foo').bar]"
@@ -431,7 +431,7 @@ ms.locfileid: "75650651"
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>和
+### <a name="and"></a>and
 如果所有参数的计算结果都为 `true`，则返回 `true`。 此函数仅支持布尔类型的两个或两个以上参数。
 
 以下示例返回 `true`：
@@ -462,7 +462,7 @@ ms.locfileid: "75650651"
 ```
 
 ### <a name="not"></a>not
-如果参数的计算结果为 `false`，则返回 `true`。 此函数仅支持布尔类型的参数。
+如果参数的计算结果为 `true`，则返回 `false`。 此函数仅支持布尔类型的参数。
 
 以下示例返回 `true`：
 
@@ -687,7 +687,7 @@ ms.locfileid: "75650651"
 "[mod(6, 4)]"
 ```
 
-### <a name="min"></a>分钟
+### <a name="min"></a>min
 返回两个数字中的较小数。
 
 以下示例返回 `1`：

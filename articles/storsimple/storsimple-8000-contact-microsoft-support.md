@@ -7,13 +7,13 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277177"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384870"
 ---
-# <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
+# <a name="contact-microsoft-support"></a>请联系 Microsoft 支持部门
 
 StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录新支持请求**的功能。 若在使用 StorSimple 解决方案时遇到问题，可以创建服务请求以获取技术支持。 在与支持工程师进行联机会话时，可能还需在 StorSimple 设备上启动支持会话。 本文介绍：
 
