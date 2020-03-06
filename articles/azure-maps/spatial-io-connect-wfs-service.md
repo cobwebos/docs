@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0f50fe51f9c1cdef3c3f07c91640f5b9b9616229
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 18ac583837c7cb8b2dabbfa6f7d7210c8afe3fcb
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370955"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402753"
 ---
 # <a name="connect-to-a-wfs-service"></a>连接到 WF 服务
 
@@ -91,7 +91,7 @@ WF 标准规范使用 OGC 筛选器。 WF 客户端支持以下筛选器，假�
 
 <br/>
 
-<iframe height='700' scrolling='no' title= 'WF 服务资源管理器' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的 " <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>wf" 服务资源管理器</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+<iframe height='700' style='width: 100%;' scrolling='no' title= 'WF 服务资源管理器' src='//codepen.io/azuremaps/embed/bGdrvmG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的 " <a href='https://codepen.io/azuremaps/pen/bGdrvmG/'>wf" 服务资源管理器</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 你还可以使用代理服务加载在不启用 CORs 的域上托管的资源。 首先定义一个变量来保存代理服务 url，并为 WF 客户端设置 `proxyService` 选项。 若要为用户呈现代理服务选项，请将用户输入添加到 UI。 在单击输入时加载服务 url。 以下代码片段演示如何使用代理服务。

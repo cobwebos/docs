@@ -8,11 +8,11 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772102"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394340"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 可以使用 [SMB 内核客户端](https://wiki.samba.org/index.php/LinuxCIFS)在 Linux 分发版中装载 Azure 文件共享。 本文介绍装载 Azure 文件共享的两种方法：使用 `mount` 命令按需装载，以及通过在 `/etc/fstab` 中创建一个条目在启动时装载。
@@ -25,7 +25,7 @@ ms.locfileid: "75772102"
 | Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
-| openSUSE | 13.2+ | 42.3+ |
+| OpenSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
 如果你使用的是上表中未列出的 Linux 分发版，则可以通过检查 Linux 内核版本来查看 Linux 发行版是否支持使用加密的 SMB 3.0。 已将包含加密的 SMB 3.0 添加到 Linux 内核版本4.11。 `uname` 命令将返回正在使用的 Linux 内核版本：
@@ -34,7 +34,7 @@ ms.locfileid: "75772102"
 uname -r
 ```
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**确保安装了 utils 包。**  
@@ -199,7 +199,7 @@ uname -r
 
 从 Linux 内核4.18 开始，作为旧原因被称为 `cifs` 的 SMB 内核模块公开了新的模块参数（通常称为*parm* ），称为 `disable_legacy_dialects`。 尽管在 Linux 内核4.18 中引入，但某些供应商已将此更改向后移植到它们支持的旧内核。 为方便起见，下表详细介绍了常见 Linux 发行版上此模块参数的可用性。
 
-| 分配 | 可以禁用 SMB 1 |
+| 分发 | 可以禁用 SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | 否 |
 | Ubuntu 18.04 | 是 |

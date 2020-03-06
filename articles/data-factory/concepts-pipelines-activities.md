@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280734"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386673"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
-> * [第 1 版](v1/data-factory-create-pipelines.md)
+> * [版本 1](v1/data-factory-create-pipelines.md)
 > * [当前版本](concepts-pipelines-activities.md)
 
-本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端对端数据驱动工作流。
+本文帮助你了解 Azure 数据工厂中的管道和活动，并帮助你利用它们为数据移动和数据处理方案构造端到端数据驱动工作流。
 
 ## <a name="overview"></a>概述
 数据工厂可以包含一个或多个数据管道。 “管道”是共同执行一项任务的活动的逻辑分组。 例如，管道可能包含一组活动，这些活动用于引入和清理日志数据，然后启动映射数据流来分析日志数据。 使用管道可以将活动作为一个集来管理，而不是分别管理每个活动。 您可以独立部署和计划管道，而不是单独部署和计划。
@@ -58,7 +58,7 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [机器学习活动：批处理执行和更新资源](transform-data-using-machine-learning.md) | Azure VM
 [存储过程](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL 数据仓库或 SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[自定义活动](transform-data-using-dotnet-custom-activity.md) | Azure 批处理
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 [Databricks Jar 活动](transform-data-databricks-jar.md) | Azure Databricks
 [Databricks Python 活动](transform-data-databricks-python.md) | Azure Databricks
@@ -74,15 +74,15 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 [执行管道](control-flow-execute-pipeline-activity.md) | Execute Pipeline 活动允许数据工厂管道调用另一个管道。
 [筛选器](control-flow-filter-activity.md) | 向输入数组应用筛选器表达式
 [对于每个](control-flow-for-each-activity.md) | ForEach 活动在管道中定义重复的控制流。 此活动用于循环访问集合，并在循环中执行指定的活动。 此活动的循环实现类似于采用编程语言的 Foreach 循环结构。
-[获取元数据](control-flow-get-metadata-activity.md) | 获取元数据活动可用于检索 Azure 数据工厂中任何数据的元数据。
+[获取元数据](control-flow-get-metadata-activity.md) | GetMetadata 活动可用于检索 Azure 数据工厂中的任何数据的元数据。
 [If Condition 活动](control-flow-if-condition-activity.md) | If Condition 可用于基于计算结果为 true 或 false 的条件进行分支。 If Condition 活动可提供 if 语句在编程语言中提供相同的功能。 当条件计算结果为 `true` 时，它会计算一组活动，当条件计算结果为 `false` 时，它会计算另一组活动。
-[查找活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
+[Lookup 活动](control-flow-lookup-activity.md) | 查找活动可用于从任何外部源读取或查找记录/表名称/值。 此输出可进一步由后续活动引用。
 [设置变量](control-flow-set-variable-activity.md) | 设置现有变量的值。
 [Until 活动](control-flow-until-activity.md) | 实现类似于采用编程语言的 Do-Until 循环结构的 Do-Until 循环。 它在循环中将执行一组活动，直到与活动相关联的条件的计算结果为 true。 你可以在数据工厂中为 Until 活动指定超时值。
 [验证活动](control-flow-validation-activity.md) | 如果引用数据集存在、满足指定条件或已达到超时，则确保管道仅继续执行。
 [Wait 活动](control-flow-wait-activity.md) | 在管道中使用等待活动时，管道将等待一段指定的时间，然后继续执行后续活动。
 [Web 活动](control-flow-web-activity.md) | Web 活动可用于从数据工厂管道调用自定义的 REST 终结点。 可以传递数据集和链接服务以供活动使用和访问。
-[Webhook 活动](control-flow-webhook-activity.md) | 使用 webhook 活动，调用终结点并传递回调 URL。 管道运行在继续下一个活动之前，等待调用回调。
+[Webhook 活动](control-flow-webhook-activity.md) | 使用 webhook 活动，调用终结点并传递回调 URL。 管道运行将等待回调调用，然后再继续下一个活动。
 
 ## <a name="pipeline-json"></a>管道 JSON
 下面介绍如何以 JSON 格式定义管道：
@@ -105,12 +105,12 @@ Azure 数据工厂支持以下转换活动，这些活动既可以单独添加�
 }
 ```
 
-标记 | 说明 | 类型 | 必需
+标记 | 说明 | 类型 | 必选
 --- | ----------- | ---- | --------
 name | 管道的名称。 指定一个名称，它表示管道要执行的操作。 <br/><ul><li>最大字符数：140</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\”</li></ul> | String | 是
-说明 | 指定描述管道用途的文本。 | String | 否
+description | 指定描述管道用途的文本。 | String | 否
 活动 | **activities** 节中可定义有一个或多个活动。 请参阅[活动 JSON](#activity-json) 一节，以了解有关活动 JSON 元素的详细信息。 | Array | 是
-参数 | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
+parameters | **参数**部分可在在管道内定义一个或多个参数，使你的管道能够灵活地重复使用。 | 列出 | 否
 concurrency | 管道可以具有的最大并发运行数。 默认情况下，没有最大值。 如果达到并发限制，则附加管道运行将排队，直到更早的管道完成 | Number | 否 
 annotations | 与管道关联的标记列表 | Array | 否
 
@@ -140,10 +140,10 @@ annotations | 与管道关联的标记列表 | Array | 否
 
 下表描述了活动 JSON 定义中的属性：
 
-标记 | 说明 | 必需
+标记 | 说明 | 必选
 --- | ----------- | ---------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。 <br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li></ul>
-说明 | 描述活动用途的文本 | 是
+description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 linkedServiceName | 活动使用的链接服务的名称。<br/><br/>活动可能需要你指定链接到所需计算环境的链接服务。 | 对 HDInsight 活动、Azure 机器学习批处理评分活动和存储过程活动是必需的。 <br/><br/>对其他活动均非必需
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
@@ -181,12 +181,12 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 }
 ```
 
-JSON 名称 | 说明 | 允许的值 | 必需
+JSON 名称 | 说明 | 允许的值 | 必选
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 否。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 否。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 否。 默认为 30 秒
-secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 否。 默认值为 false。
+timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
+retry | 最大重试次数 | Integer | 不是。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不是。 默认为 30 秒
+secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不是。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：
@@ -205,10 +205,10 @@ secureOutput | 当设置为 true 时，来自活动的输出被视为安全的�
 }
 ```
 
-标记 | 说明 | 必需
+标记 | 说明 | 必选
 --- | ----------- | --------
 name | 活动的名称。 指定一个名称，它表示活动要执行的操作。<br/><ul><li>最大字符数：55</li><li>必须以字母、数字或下划线 (\_) 开头</li><li>不允许使用以下字符：“.”、“+”、“?”、“/”、“<”、“>”、“*”、“%”、“&”、“:”、“\” | 是</li><ul>
-说明 | 描述活动用途的文本 | 是
+description | 描述活动用途的文本 | 是
 type | 活动的类型。 有关不同的活动类型，请参阅[数据移动活动](#data-movement-activities)、[数据转换活动](#data-transformation-activities)和[控制活动](#control-flow-activities)部分。 | 是
 typeProperties | typeProperties 部分的属性取决于每个活动类型。 要查看活动的类型属性，请单击链接转到上一节中的活动。 | 否
 dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前活动的依赖方式。 有关详细信息，请参阅[活动依赖项](#activity-dependency)。 | 否
@@ -307,7 +307,7 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
   }
 }
 ```
-注意以下几点：
+请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **Copy**。
 - 活动的输入设置为 **InputDataset**，活动的输出设置为 **OutputDataset**。 有关在 JSON 中定义数据集的信息，请参阅[数据集](concepts-datasets-linked-services.md)文章。
@@ -354,13 +354,13 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
     }
 }
 ```
-注意以下几点：
+请注意以下几点：
 
 - 在 activities 节中，只有一个活动的 **type** 设置为 **HDInsightHive**。
 - 配置单元脚本文件，**partitionweblogs.hql**，被存储在 Azure 存储帐户中（由 scriptLinkedService 指定，调用 AzureStorageLinkedService），并位于容器 `adfgetstarted` 中的脚本文件夹中。
 - `defines` 部分用于指定以配置单元配置值传递到配置单元脚本的运行时设置（例如，$`{hiveconf:inputtable}`，`${hiveconf:partitionedtable}`）。
 
-每个转换活动的 typeProperties节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击“数据转换活动”[](#data-transformation-activities)中的转换活动。
+每个转换活动的 typeProperties节都不同。 若要了解有关转换活动所支持的类型属性的详细信息，请单击[数据转换活动](#data-transformation-activities)中的转换活动。
 
 有关创建此管道的完整演练，请参阅[教程：使用 Spark 转换数据](tutorial-transform-data-spark-powershell.md)。
 

@@ -4,11 +4,11 @@ description: 容器 Azure Monitor 收集指标和日志数据，本文介绍了�
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404543"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361818"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>如何从容器 Azure Monitor 查询日志
 
@@ -52,7 +52,7 @@ Azure Monitor 日志可帮助你查找趋势、诊断瓶颈、预测或关联数
 
 从一两个示例开始生成查询，然后修改它们以适应需求的做法通常很有用。 可使用以下示例查询进行试验，帮助生成更高级的查询：
 
-| 查询 | Description | 
+| 查询 | 说明 | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | 列出容器的所有生命周期信息| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes 事件|

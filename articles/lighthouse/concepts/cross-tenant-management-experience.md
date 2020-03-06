@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 02/14/2020
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb484ea936bbb64b3ca3d7fcf648de0d0ef73c66
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
-ms.translationtype: HT
+ms.openlocfilehash: 42368bcbc9f15f9ff5ef957b4c88f15bf070f25b
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328674"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402083"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -37,7 +37,14 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
 
-我们还提供用于执行 Azure 委派资源管理任务的 API。 有关详细信息，请参阅“参考”部分。
+Azure PowerShell [AzSubscription cmdlet](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0)显示每个订阅的**tenantID** ，使你可以确定返回的订阅是属于你的服务提供商租户还是托管客户租户。
+
+同样，Azure CLI 命令，如[az account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list)显示**homeTenantId**和**managedByTenants**属性。
+
+> [!TIP]
+> 如果使用 Azure CLI 时看不到这些值，请尝试通过运行 `az account clear` 来清除缓存，然后 `az login --identity`。
+
+我们还提供了特定于执行 Azure 委托资源管理任务的 Api。 有关详细信息，请参阅“参考”部分。
 
 ## <a name="enhanced-services-and-scenarios"></a>增强的服务和方案
 

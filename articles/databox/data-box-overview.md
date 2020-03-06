@@ -10,11 +10,11 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380336"
 ---
 # <a name="what-is-azure-data-box"></a>什么是 Azure Data Box？
 
@@ -66,7 +66,7 @@ Data Box 旨在几乎不影响网络的情况下将大量数据移至 Azure。 �
 | 功率分级                                            | 电源设备的概率为 700 瓦。 <br> 通常情况下，设备为 375 瓦。|
 | 网络接口                                      | 2 个 1 GbE 接口 - MGMT 和 DATA 3。 <br> MGMT - 适用于管理，用户不可配置，用于初始设置 <br> DATA3 - 适用于数据，用户可配置，且默认为动态 <br> MGMT 和 DATA 3 也可作为 10 GbE 接口使用 <br> 2 个 10 GbE 接口 - DATA 1 和 DATA 2 <br> 两者都用于数据，可以配置为动态（默认）或静态 |
 | 数据传输介质                                     | RJ45、SFP+ 铜缆 10 GbE 以太网  |
-| 安全                                                | 坚固耐用的设备外壳，带防破坏定制螺钉 <br> 防破坏贴纸放置在设备的底部|
+| 安全性                                                | 坚固耐用的设备外壳，带防破坏定制螺钉 <br> 防破坏贴纸放置在设备的底部|
 | 数据传输率                                      | 每天多达 80 TB 的数据，通过 10 GbE 的网络接口传输        |
 | 管理                                              | 本地 Web UI - 一次性初始设置和配置 <br> Azure 门户 - 日常设备管理        |
 

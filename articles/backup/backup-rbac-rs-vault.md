@@ -5,11 +5,11 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.openlocfilehash: e2e32ac6981635e3b9885119fdf397783ac32cc9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156380"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363678"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 
@@ -65,7 +65,7 @@ Azure 备份提供了三种内置角色来控制备份管理操作。 详细了�
 | 管理操作 | 需要角色 | 资源 |
 | --- | --- | --- |
 | 启用备份 Azure 文件共享 | 备份参与者 |恢复服务保管库 |
-| |存储器帐户 | 参与者存储帐户资源 |
+| |存储帐户 | 参与者存储帐户资源 |
 | 按需 VM 备份 | 备份操作员 | 恢复服务保管库 |
 | 还原文件共享 | 备份操作员 | 恢复服务保管库 |
 | | 存储帐户参与者 | 存在还原源和目标文件共享的存储帐户资源 |

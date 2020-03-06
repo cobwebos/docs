@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451264"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393533"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
@@ -51,7 +51,7 @@ echo "1" >/proc/sys/kernel/sysrq
 ### <a name="command-keys"></a>命令键
 在上述 SysRq 管理员指南中：
 
-|命令| 函数
+|Command| 函数
 | ------| ----------- |
 |``b``  |   将立即重新启动系统，且不会同步或卸载磁盘。
 |``c``  |   将通过 NULL 指针取消引用来执行系统崩溃。 将执行故障转储（如果已配置）。

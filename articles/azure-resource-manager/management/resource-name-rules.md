@@ -4,11 +4,11 @@ description: 显示用于命名 Azure 资源的规则和限制。
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153156"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391184"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 资源的命名规则和限制
 
@@ -328,8 +328,8 @@ ms.locfileid: "77153156"
 > | IotHubs | 全局 | 3-50 | 字母数字和连字符。<br><br>不能以连字符结尾。 |
 > | IotHubs/证书 | IoT 中心 | 1-64 | 字母数字、连字符、句点和下划线。 |
 > | IotHubs / eventHubEndpoints / ConsumerGroups | eventHubEndpoints | 1-50 | 字母数字、连字符、句点和下划线。 |
-> | provisioningServices | 资源组 | 3-64 | 字母数字和连字符。<br><br>以字母数字结尾。 |
-> | provisioningServices/证书 | provisioningServices | 1-64 | 字母数字、连字符、句点和下划线。 |
+> | ProvisioningServices | 资源组 | 3-64 | 字母数字和连字符。<br><br>以字母数字结尾。 |
+> | provisioningServices/证书 | ProvisioningServices | 1-64 | 字母数字、连字符、句点和下划线。 |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -607,7 +607,7 @@ ms.locfileid: "77153156"
 > [!div class="mx-tableFixed"]
 > | 实体 | 范围 | 长度 | 有效的字符 |
 > | --- | --- | --- | --- |
-> | signalR | 全局 | 3-63 | 字母数字和连字符。<br><br>字母开头。 以字母或数字结尾。  |
+> | SignalR | 全局 | 3-63 | 字母数字和连字符。<br><br>字母开头。 以字母或数字结尾。  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c59376344d2df7e9e9c76e630a4462b26343d187
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: c41ee293c853572ec9e1f9dd3edf001c805924d3
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78371007"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402773"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>从开放地理空间信息联盟添加地图层（OGC）
 
@@ -73,7 +73,7 @@ ms.locfileid: "78371007"
 
 <br/>
 
-<iframe height='700' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
+<iframe height='750' style='width: 100%;' scrolling='no' title='OGC Web 映射服务资源管理器' src='//codepen.io/azuremaps/embed/YzXxYdX/?height=750&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅<a href='https://codepen.io'>CodePen</a>上的<a href='https://codepen.io/azuremaps/pen/YzXxYdX/'>OGC Web 映射服务资源管理器</a>Azure Maps （<a href='https://codepen.io/azuremaps'>@azuremaps</a>）。
 </iframe>
 
 你还可以指定要使用代理服务的映射设置。 代理服务允许你加载在未启用 CORs 的域上托管的资源。

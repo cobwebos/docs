@@ -7,11 +7,11 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672219"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373345"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>使用 IT 服务管理连接器将 Azure 连接到 ITSM 工具
 
@@ -187,15 +187,15 @@ ServiceDeskWorkItemType_s="Incident"
 - 解决者
 - 关闭者
 - Source
-- 指派给
+- 分配给
 - 类别
 - 职务
 - 说明
 - 创建日期
 - 关闭日期
 - 解决日期
-- 上一次修改日期
-- 计算机
+- 上次修改日期
+- Computer
 
 
 **工作项：** **更改请求**
@@ -208,7 +208,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 创建者
 - 关闭者
 - Source
-- 指派给
+- 分配给
 - 职务
 - Type
 - 类别
@@ -219,17 +219,17 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priority
 - 风险
 - 影响
-- 指派给
+- 分配给
 - 创建日期
 - 关闭日期
-- 上一次修改日期
+- 上次修改日期
 - 请求日期
 - 计划开始日期
 - 计划结束日期
 - 工作开始日期
 - 工作结束日期
 - 说明
-- 计算机
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow 事件的输出数据
 
@@ -243,15 +243,15 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | CreatedBy_s | 打开者 |
 | ResolvedBy_s | 解决者|
 | ClosedBy_s  | 关闭者 |
-| Source_s| 联系人类型 |
-| AssignedTo_s | 分配给  |
+| Source_s| 联系类型 |
+| AssignedTo_s | 已分配到  |
 | Category_s | 类别 |
 | Title_s|  简短说明 |
 | Description_s|  注释 |
 | CreatedDate_t|  已打开 |
 | ClosedDate_t| 已关闭|
 | ResolvedDate_t|已解决|
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow 更改请求的输出数据
 
@@ -260,7 +260,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Number |
 | CreatedBy_s | 请求者 |
 | ClosedBy_s | 关闭者 |
-| AssignedTo_s | 分配给  |
+| AssignedTo_s | 已分配到  |
 | Title_s|  简短说明 |
 | Type_s|  Type |
 | Category_s|  类别 |
@@ -276,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | WorkStartDate_t  | 实际开始日期 |
 | WorkEndDate_t | 实际结束日期|
 | Description_s | 说明 |
-| 计算机  | 配置项 |
+| Computer  | 配置项 |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>排查 ITSM 连接问题
@@ -298,7 +298,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 3.  如果未能创建服务总线中继命名空间，请确保在订阅中注册所需的资源提供程序。 如果未注册，请手动从 Azure 门户创建服务总线中继命名空间。 从 Azure 门户[创建混合连接](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)时，也可进行创建。
 
 
-## <a name="contact-us"></a>与我们联系
+## <a name="contact-us"></a>联系我们
 
 在 IT Service Management Connector 方面如有任何咨询或反馈，请通过 [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com) 联系我们。
 
