@@ -115,16 +115,16 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 在向导的“摘要”  页上，检查托管域的配置设置。 可以后退到向导中的任何步骤进行更改。 若要通过这些配置选项采用一致的方式将 Azure AD DS 托管域重新部署到另一 Azure AD 租户，也可**下载用于自动化操作的模板**。
 
 1. 若要创建托管域，请选择“创建”。  系统会显示一个通知，指出在创建 Azure AD DS 托管域后，某些配置选项（例如 DNS 名称或虚拟网络）不能更改。 若要继续操作，请选择“确定”。 
-1. 预配托管域的过程可能最多需要一小时。 门户中会显示一条通知，其中显示了 Azure AD DS 部署的进度。 选择该通知可查看部署的详细进度。
+2. 预配托管域的过程可能最多需要一小时。 门户中会显示一条通知，其中显示了 Azure AD DS 部署的进度。 选择该通知可查看部署的详细进度。
 
     ![Azure 门户中显示的“正在部署”通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
-1. 此页面会加载部署过程的更新，包括在目录中创建新资源。
-1. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *aaddscontoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
+3. 此页面会加载部署过程的更新，包括在目录中创建新资源。
+4. 选择资源组（例如 *myResourceGroup*），然后从 Azure 资源列表中选择 Azure AD DS 实例，例如 *aaddscontoso.com*。 “概述”选项卡显示了当前“正在部署”的托管域。   在完全预配托管域之前无法对其进行配置。
 
     ![预配期间的域服务状态](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-1. 托管域完全预配之后，“概览”  选项卡会将域状态显示为“正在运行”  。
+4. 托管域完全预配之后，“概览”  选项卡会将域状态显示为“正在运行”  。
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
@@ -140,7 +140,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![使用 Azure AD 域服务 IP 地址配置虚拟网络的 DNS 设置](./media/tutorial-create-instance/configure-dns.png)
 
-1. 若要更新虚拟网络的 DNS 服务器设置，请选择“配置”按钮。  系统会自动为虚拟网络配置 DNS 设置。
+2. 若要更新虚拟网络的 DNS 服务器设置，请选择“配置”按钮。  系统会自动为虚拟网络配置 DNS 设置。
 
 > [!TIP]
 > 如果在前面的步骤中选择了现有的虚拟网络，连接到该网络的任何 VM 只会在重启后才能获取新的 DNS 设置。 可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 来重启 VM。
@@ -164,13 +164,13 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 若要更改仅限云的用户的密码，用户必须完成以下步骤：
 
 1. 转到 Azure AD 访问面板页 ([https://myapps.microsoft.com](https://myapps.microsoft.com))。
-1. 在右上角选择自己的姓名，然后从下拉菜单中选择“个人资料”。 
+2. 在右上角选择自己的姓名，然后从下拉菜单中选择“个人资料”。 
 
     ![选择配置文件](./media/tutorial-create-instance/select-profile.png)
 
-1. 在“个人资料”页上，选择“更改密码”。  
-1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。 
-1. 选择“提交”。 
+3. 在“个人资料”页上，选择“更改密码”。  
+4. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。 
+5. 选择“提交”。 
 
 更改密码后，需要几分钟才能在 Azure AD DS 中使用新密码，并成功登录已加入托管域的计算机。
 
