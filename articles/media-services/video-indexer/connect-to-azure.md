@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1f40f16ddbe5231dd754ad97b54e414c6ce9b9e7
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838385"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328823"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "73838385"
 
 本文介绍如何创建链接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 本主题提供使用自动（默认）流连接 Azure 的步骤。 它还演示如何手动连接到 Azure（高级）。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅。
 
@@ -72,7 +72,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
     ![将视频索引器连接到 Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-4. 从支持的位置选择一个 Azure 区域：“美国西部 2”、“北欧”或“东亚”。
+4. 从支持的位置中选择一个 Azure 区域：美国西部 2、北欧或东亚。
 5. 在“Azure 媒体服务帐户”下，选择以下选项之一：
 
     * 若要创建新的媒体服务帐户，请选择“创建新资源组”。 提供资源组的名称。
@@ -124,10 +124,10 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 4. 对于要使用媒体服务 API 执行身份验证的视频索引器，需要创建一个 AD 应用程序。 以下步骤引导你完成[通过 Azure 门户开始使用 Azure AD 身份验证](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 身份验证过程：
 
     1. 在新的媒体服务帐户中，选择“API 访问”。
-    2. 选择[服务主体身份验证方法](../previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)。
-    3. 按[获取客户端 ID 和客户端密码](../previous/media-services-portal-get-started-with-aad.md#get-the-client-id-and-client-secret)部分所述，获取客户端 ID 和客户端密码。
+    2. 选择[服务主体身份验证方法](../previous/media-services-portal-get-started-with-aad.md)。
+    3. 获取客户端 ID 和客户端密码
 
-        在选择“设置” **“密钥”后，添加“说明”并按“保存”，系统会填充密钥值**->。
+        在选择“设置”->“密钥”后，添加“说明”并按“保存”，系统会填充密钥值。
 
         如果密钥到期，帐户所有者需联系视频索引器支持人员更新密钥。
 
@@ -136,7 +136,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 ### <a name="connect-manually"></a>手动连接
 
-在**视频索引器**页的“将视频索引器连接到 Azure 订阅”对话框中，选择“切换为手动配置”链接[](https://www.videoindexer.ai/)。
+在[视频索引器](https://www.videoindexer.ai/)页的“将视频索引器连接到 Azure 订阅”对话框中，选择“切换为手动配置”链接。
 
 在对话框中提供以下信息：
 
@@ -173,7 +173,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 ## <a name="next-steps"></a>后续步骤
 
-可以遵照[使用 API](video-indexer-use-apis.md) 中的说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互。
+可以遵照如下说明，以编程方式来与试用帐户和/或连接到 Azure 的视频索引器帐户进行交互：[使用 API](video-indexer-use-apis.md)。
 
 应使用连接到 Azure 时所用的同一 Azure AD 用户。
 

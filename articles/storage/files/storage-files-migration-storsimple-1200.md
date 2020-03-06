@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 184101db34edbf5391b37c43770e8393316fe2fc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 4a32251b60066d6a85595e4d1b6c002f8587c01d
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252662"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330934"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 到 Azure 文件同步的迁移
 
 StorSimple 1200 系列是在本地数据中心运行的虚拟设备。 可以将此设备中的数据迁移到 Azure 文件同步的环境。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务的扩展支持将于12月 31 2022 到期。 应立即开始规划从 StorSimple 开始迁移，这一点很重要。
+
+Azure 文件同步是 StorSimple 设备可以迁移到的默认和策略长期 Azure 服务。
+
+> [!IMPORTANT]
+> Microsoft 致力于帮助客户完成其迁移。 电子邮件 AzureFilesMigration@microsoft .com 用于自定义的迁移计划，并在迁移过程中提供帮助。
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
@@ -111,7 +120,7 @@ Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 Robocopy /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-背景色：
+Background：
 
 :::row:::
    :::column span="1":::

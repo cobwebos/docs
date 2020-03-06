@@ -4,18 +4,18 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 StringToNull。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: c7ea3ca82cadb1351d8581f3d652ce060d67969b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7e17547f88465103b61eabec04978ea806ffa2c9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349245"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296433"
 ---
-# <a name="stringtonull-azure-cosmos-db"></a>StringToNull (Azure Cosmos DB)
- 返回已转换为 Null 的表达式。 如果表达式无法转换，则返回未定义的表达式。  
+# <a name="stringtonull-azure-cosmos-db"></a>StringToNull （Azure Cosmos DB）
+ 返回转换为 null 的表达式。 如果 expression 无法转换，则返回 undefined。  
   
 ## <a name="syntax"></a>语法
   
@@ -26,19 +26,19 @@ StringToNull(<str_expr>)
 ## <a name="arguments"></a>参数
   
 *str_expr*  
-   是要解析为 null 表达式的字符串表达式。
+   要分析为 null 表达式的字符串表达式。
   
 ## <a name="return-types"></a>返回类型
   
-  返回一个 Null 表达式或未定义的表达式。  
+  返回空表达式或未定义。  
   
 ## <a name="examples"></a>示例
   
-  以下示例演示 `StringToNull` 在不同类型中的行为方式。 
+  下面的示例演示了 `StringToNull` 跨不同类型的行为。 
 
-下面是输入有效的示例。
+下面是有效输入的示例。
 
- 只能在 "null" 之前或之后使用空格。
+ 仅允许在 "null" 之前或之后使用空格。
 
 ```sql
 SELECT 
@@ -47,15 +47,15 @@ SELECT
     IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
-下面是输入无效的示例。
+下面是无效输入的示例。
 
-Null 值区分大小写，必须全用小写字符（即 "null"）来表示。
+Null 区分大小写，并且必须用全部小写字符（即 "null"）来写入。
 
 ```sql
 SELECT    
@@ -63,13 +63,13 @@ SELECT
     StringToNull("Null")
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{}]
 ```  
 
-传递的表达式将会解析为 null 表达式；以下输入不会计算为 null 类型，因此会返回未定义。
+传递的表达式将被分析为 null 表达式;这些输入的计算结果不为类型 null，因此返回 undefined。
 
 ```sql
 SELECT    
@@ -79,11 +79,15 @@ SELECT
     StringToNull(NaN) 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

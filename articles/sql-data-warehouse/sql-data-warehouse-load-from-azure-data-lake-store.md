@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 02/04/2020
+ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b0b9cffe0b69545a6d0219941b48ac9eb0f399b3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194574"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300581"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>从 SQL Analytics Azure Data Lake Storage 加载数据
 本指南概述了如何使用 PolyBase 外部表从 Azure Data Lake Storage 中加载数据。 尽管可以对存储在 Data Lake Storage 中的数据运行即席查询，但我们建议导入数据以获得最佳性能。 
@@ -46,6 +46,8 @@ ms.locfileid: "78194574"
 若要访问你的 Data Lake Storage 帐户，你将需要创建一个数据库主密钥来加密凭据机密。 然后创建数据库范围的凭据来存储机密。 使用服务主体（Azure Directory 应用程序用户）进行身份验证时，数据库范围的凭据存储 AAD 中设置的服务主体凭据。 你还可以使用数据库范围凭据来存储 Gen2 的存储帐户密钥。
 
 若要使用服务主体连接到 Data Lake Storage，你必须**首先**创建一个 Azure Active Directory 应用程序，创建一个访问密钥，并授予应用程序对 Data Lake Storage 帐户的访问权限。 有关说明，请参阅[使用 Active Directory 对 Azure Data Lake Storage 进行身份验证](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。
+
+使用具有控制级别权限的用户登录到 SQL 池中，并对数据库执行以下 SQL 语句：
 
 ```sql
 -- A: Create a Database Master Key.

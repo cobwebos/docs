@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 11/04/2019
-ms.openlocfilehash: 443fcad17e5832a014dc463f0dd8a44d90667b75
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/05/2020
+ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646449"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399150"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75646449"
 
 下面是 Azure 订阅中各种资源类型的配额限制的细分条目。
 
-> [!Important]
+> [!IMPORTANT]
 > 限制随时会变化。 始终可以在所有 Azure 的服务级别配额[文档](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)中找到最新的限制。
 
 ### <a name="virtual-machines"></a>虚拟机
@@ -70,7 +70,7 @@ ms.locfileid: "75646449"
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
 | 最长作业生存期 | 90天<sup>1</sup> |
 | 低优先级节点上的最大作业生存期 | 7天<sup>2</sup> |
-| 每个节点的最大参数服务器数 | 第 |
+| 每个节点的最大参数服务器数 | 1 |
 
 <sup>1</sup> 最长生存期是指运行从开始到结束的时间。 已完成的运行会无限期保存；最长生存期内未完成的运行的数据不可访问。
 如果存在容量限制，则低优先级节点上的<sup>2</sup>个作业可能会被抢占。 建议在作业中实施检查点操作。
@@ -91,7 +91,7 @@ ms.locfileid: "75646449"
 
 有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)查看适用于 Azure 的配额文章。
 
-### <a name="storage"></a>存储空间
+### <a name="storage"></a>存储
 给定订阅中每个区域的存储帐户数量也有限制。 默认限制为250，同时包含标准存储帐户和高级存储帐户。 如果在给定区域中需要250个以上的存储帐户，请通过[Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
 
 

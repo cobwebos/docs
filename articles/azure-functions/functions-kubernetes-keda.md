@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549030"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301669"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>在 Kubernetes 上通过 KEDA Azure Functions
 
@@ -20,7 +20,7 @@ Azure Functions 运行时可在托管位置和所需的位置提供灵活性。 
 
 Azure Functions 服务由两个关键组件组成：运行时和缩放控制器。  函数运行时运行并执行您的代码。  运行时包括如何触发、记录和管理函数执行的逻辑。  Azure Functions 运行时可以在*任何位置*运行。  另一个组件是缩放控制器。  缩放控制器监视以函数为目标的事件的速率，并主动调整运行应用程序的实例数。  若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](functions-scale.md)。
 
-基于 Kubernetes 的函数在[Docker 容器](functions-create-function-linux-custom-image.md)中提供函数运行时，并通过 KEDA 进行事件驱动缩放。  KEDA 可以向下扩展到0个实例（没有事件发生时）和多达*n*个实例。 它通过公开 Kubernetes 自动缩放程序的自定义指标（水平 Pod 自动缩放程序）来实现此功能。  将函数容器与 KEDA 结合使用，可以在任何 Kubernetes 群集中复制无服务器函数功能。  还可以使用[Azure Kubernetes Services （AKS）虚拟节点](../aks/virtual-nodes-cli.md)功能为无服务器基础结构部署这些函数。
+基于 Kubernetes 的函数在[Docker 容器](functions-create-function-linux-custom-image.md)中提供函数运行时，并通过 KEDA 进行事件驱动缩放。  KEDA 可以扩展到0个实例（没有事件发生时）和*n*个实例。 它通过公开 Kubernetes 自动缩放程序的自定义指标（水平 Pod 自动缩放程序）来实现此功能。  将函数容器与 KEDA 结合使用，可以在任何 Kubernetes 群集中复制无服务器函数功能。  还可以使用[Azure Kubernetes Services （AKS）虚拟节点](../aks/virtual-nodes-cli.md)功能为无服务器基础结构部署这些函数。
 
 ## <a name="managing-keda-and-functions-in-kubernetes"></a>在 Kubernetes 中管理 KEDA 和函数
 

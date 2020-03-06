@@ -3,12 +3,12 @@ title: 使用 Azure 策略的符合性
 description: 将 Azure 策略中的内置策略分配给 Azure 容器注册表的符合性
 ms.topic: article
 ms.date: 02/26/2020
-ms.openlocfilehash: 331fcfaf72b1ad2022aa3edeefefa597e5bcfe17
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 012cd013de1c60fddcfb28e4bca96d761ada41ab
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925665"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330730"
 ---
 # <a name="audit-compliance-of-azure-container-registries-using-azure-policy"></a>使用 Azure 策略审核 Azure 容器注册表的符合性
 
@@ -68,14 +68,14 @@ Name                                                                            
 [Preview]: Container Registries should be encrypted with a Customer-Managed Key (CMK)  /subscriptions/<subscriptionID>/providers/Microsoft.Authorization/policyAssignments/cce1ed4f38a147ad994ab60a
 ```
 
-然后，运行[az policy state list](/cli/azure/policy/state#az-policy-assignment-list) ，为特定策略 ID 下的所有资源返回 JSON 格式的符合性状态：
+然后，运行[az policy state list](/cli/azure/policy/state#az-policy-state-list) ，为特定策略 ID 下的所有资源返回 JSON 格式的符合性状态：
 
 ```azurecli
 az policy state list \
   --resource <policyID>
 ```
 
-或运行[az policy state list](/cli/azure/policy/state#az-policy-assignment-list)返回特定注册表资源的 JSON 格式的符合性状态，如*myregistry*：
+或运行[az policy state list](/cli/azure/policy/state#az-policy-state-list)返回特定注册表资源的 JSON 格式的符合性状态，如*myregistry*：
 
 ```azurecli
 az policy state list \

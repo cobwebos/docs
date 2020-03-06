@@ -155,8 +155,8 @@
           href: active-directory-acs-migration.md
         - name: 重新激活禁用的访问控制服务命名空间
           href: howto-reactivate-disabled-acs-namespaces.md
-    - name: 使用 Azure AD 图形 API
-      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: 使用 Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 针对开发人员的 AD FS
       href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
 - name: 参考
@@ -164,8 +164,8 @@
     - name: 身份验证库
       displayName: ADAL
       href: active-directory-authentication-libraries.md
-    - name: Azure AD 图形 API
-      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Microsoft Graph API
+      href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 应用程序清单
       href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 身份验证和授权错误代码

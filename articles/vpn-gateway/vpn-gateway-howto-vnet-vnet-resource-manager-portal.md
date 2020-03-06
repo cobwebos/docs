@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18ef9d89a2366e6d4db3c3154bae0bd83e0386f1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654700"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399211"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -75,16 +75,16 @@ ms.locfileid: "77654700"
 
 - **虚拟网络设置**
     - **名称**： VNet1
-    - **地址空间**： 10.11.0.0/16
+    - **地址空间**：10.1.0.0/16
     - **订阅**：选择要使用的订阅。
     - **资源组**：TestRG1
     - **位置**：美国东部
     - **子网**
         - **名称**：前端
-        - **地址范围**： 10.11.0.0/24
+        - **地址范围**：10.1.0.0/24
     - **网关子网**：
         - **名称**： *GatewaySubnet*为 autofilled
-        - **地址范围**： 10.11.255.0/27
+        - **地址范围**： 10.1.255.0/27
 
 - **虚拟网络网关设置**
     - **名称**： VNet1GW
@@ -126,11 +126,6 @@ ms.locfileid: "77654700"
 
 ### <a name="to-create-a-virtual-network"></a>创建虚拟网络
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
-
-## <a name="add-additional-address-space-and-create-subnets"></a>添加其他地址空间并创建子网
-创建 VNet 后，可以添加其他地址空间和创建子网。
-
-[!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="create-a-virtual-network-gateway"></a>创建虚拟网络网关
 在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 如果你正在练习创建此配置，请参阅[示例设置](#example-settings)。

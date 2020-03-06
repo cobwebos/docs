@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 10/21/2019
+ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ecaf9e007d93b3a99a7609ebf36307f3a6dad15c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b689588bcbca640dd55b25c52c462ad1a363da5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199948"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296331"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Azure Synapse SQL 池中的备份和还原
 
@@ -58,7 +58,7 @@ order by run_id desc
 2. 暂停 SQL 池时不会创建快照。
 3. 还原点的存在时间是通过从获取还原点到暂停 SQL 池时起的绝对日历天数来度量的。
 4. 在任何时候，只要这些还原点未达到7天的保留期，SQL 池就能存储多达42的用户定义的还原点和42自动还原点
-5. 如果拍摄了快照，则 SQL 池将暂停7天以上，然后恢复，还原点可能一直保持到42总还原点（包括用户定义和自动）
+5. 如果拍摄了快照，则 SQL 池将暂停7天以上，然后恢复，还原点将一直持续到42的总还原点（包括用户定义和自动）
 
 ### <a name="snapshot-retention-when-a-sql-pool-is-dropped"></a>删除 SQL 池时的快照保留期
 

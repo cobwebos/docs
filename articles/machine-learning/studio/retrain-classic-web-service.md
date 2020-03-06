@@ -10,18 +10,18 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838690"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388480"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>重新训练和部署经典 Studio （经典） web 服务
 
 重新训练机器学习模型是确保它们保持准确并基于最相关的数据的一种方法。 本文将演示如何重新训练经典 Studio （经典） web 服务。 有关如何重新训练新的 Studio （经典） web 服务的指南，请[查看本操作指南文章。](retrain-machine-learning-model.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设你已经进行了重新训练试验和预测性试验。 这些步骤在[重新训练和部署机器学习模型](/azure/machine-learning/studio/retrain-machine-learning-model)中进行了解释。 但是，你不会将机器学习模型部署为新的 Web 服务，而是将预测试验部署为经典 Web 服务。
      
@@ -52,19 +52,6 @@ ms.locfileid: "73838690"
 ## <a name="update-the-added-endpoints-trained-model"></a>更新已添加终结点的训练模型
 
 ### <a name="retrieve-patch-url"></a>检索修补程序 URL
-
-### <a name="option-1-programmatically"></a>选项1：以编程方式
-
-要以编程方式获取正确的修补程序 URL，请按照下列步骤操作：
-
-1. 运行 [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) 示例代码。
-1. 从 AddEndpoint 的输出中，查找 *HelpLocation* 值并复制 URL。
-
-   ![addEndpoint 的输出中的 HelpLocation 示例。](./media/retrain-classic/addEndpoint-output.png)
-1. 将 URL 粘贴到浏览器中，以导航到提供 Web 服务帮助链接的页面。
-1. 单击“更新资源”链接，打开修补程序帮助页面。
-
-### <a name="option-2-use-the-azure-machine-learning-web-services-portal"></a>选项2：使用 Azure 机器学习 Web 服务门户
 
 请按照以下步骤使用 Web 门户获取正确的修补程序 URL：
 
@@ -101,8 +88,8 @@ ms.locfileid: "73838690"
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from the output, for example: "experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner"
+                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: "?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl"
                     }
                 }
             }
@@ -131,9 +118,9 @@ ms.locfileid: "73838690"
 
 *Resources* 中的 *Name* 参数的值应与预测实验中已保存的训练模型的资源名称相匹配。 若要获取资源名称，请执行以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在左侧菜单中，单击“机器学习”。
-1. 在“名称”下，单击工作区，然后单击“Web 服务”。
+1. 在“名称”下，单击你的工作区，并单击“Web 服务”。
 1. 在“名称”下，单击“人口普查模型 [预测实验]”。
 1. 单击已添加的新终结点。
 1. 在终结点仪表板上，单击“更新资源”。

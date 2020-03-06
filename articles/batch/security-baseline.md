@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 779b7d071b1161c53bdba08738539c4c682882d2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: af0466299d1f972fe9334beb5f31c886c1928a1c
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273546"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328993"
 ---
 # <a name="azure-security-baseline-for-batch"></a>适用于 Batch 的 Azure 安全基线
 
@@ -343,7 +343,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **责任**：客户
 
-## <a name="identity-and-access-control"></a>标识和访问控制
+## <a name="identity-and-access-control"></a>SQL Server 2008 联机丛书中的 Identity and Access Control
 
 *有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
@@ -628,7 +628,7 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 了解传输过程中的 Azure 存储帐户加密：
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure 安全中心监视**：是
 

@@ -3,12 +3,12 @@ title: 开发人员资源-语言理解
 description: Sdk、REST Api、CLI 可帮助你以编程语言开发语言理解（LUIS）应用。 管理 Azure 资源和 LUIS 预测。
 ms.topic: reference
 ms.date: 02/11/2020
-ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f9d531f800ba0729a1f679c0bf3b11c8958c78ed
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152680"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391937"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>适用于语言理解的 SDK、REST 和 CLI 开发人员资源（LUIS）
 
@@ -109,7 +109,7 @@ LUIS 目前有2种类型的终结点：
 ## <a name="next-steps"></a>后续步骤
 
 * 了解常见的[HTTP 错误代码](luis-reference-response-codes.md)
-* 所有 Api 和 Sdk 的[参考文档](https://docs.microsoft.com/azure/index#pivot=sdkstools)
+* 所有 Api 和 Sdk 的[参考文档](https://docs.microsoft.com/azure/index)
 * [机器人框架](https://github.com/Microsoft/botbuilder-dotnet)和[Azure 机器人服务](https://dev.botframework.com/)
 * [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
 * [认知容器](../cognitive-services-container-support.md)

@@ -1,70 +1,72 @@
 ---
-title: GetCurrentDateTime in Azure Cosmos DB query language
-description: Learn about SQL system function GetCurrentDateTime in Azure Cosmos DB.
+title: Azure Cosmos DB 查询语言中的 GetCurrentDateTime
+description: 了解 Azure Cosmos DB 中的 SQL 系统函数 GetCurrentDateTime。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8a2c3dcd3c8ca6dc9d751e50a7862fe98e6de510
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: d50b08ab85c7e299c465c3eb6f34e867d6634006
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351022"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303896"
 ---
-# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Returns the current UTC (Coordinated Universal Time) date and time as an ISO 8601 string.
+# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime （Azure Cosmos DB）
+ 以 ISO 8601 字符串的形式返回当前 UTC （协调世界时）日期和时间。
   
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>语法
   
 ```sql
 GetCurrentDateTime ()
 ```
   
-## <a name="return-types"></a>Return types
+## <a name="return-types"></a>返回类型
   
-  Returns the current UTC date and time ISO 8601 string value in the format <ph id="ph1">`YYYY-MM-DDThh:mm:ss.sssZ`</ph> where:
+  返回格式 `YYYY-MM-DDThh:mm:ss.fffffffZ` 的当前 UTC 日期和时间 ISO 8601 字符串值，格式为：
   
   |||
   |-|-|
-  |YYYY|four-digit year|
-  |MM|two-digit month (01 = January, etc.)|
-  |DD|two-digit day of month (01 through 31)|
-  |T|signifier for beginning of time elements|
-  |hh|two digit hour (00 through 23)|
-  |mm|two digit minutes (00 through 59)|
-  |ss|two digit seconds (00 through 59)|
-  |.sss|three digits of decimal fractions of a second|
-  |Z|UTC (Coordinated Universal Time) designator||
+  |YYYY|四位数年份|
+  |MM|两位数月份（01 = 一月，等等）|
+  |DD|两位数日期（01到31）|
+  |T|signifier for time 元素开始|
+  |hh|两位数的小时数（00到23）|
+  |mm|两位数分钟（00到59）|
+  |ss|两位数秒（00到59）|
+  |。 fffffff|七位数的秒小数部分|
+  |Z|UTC （协调世界时）指示符||
   
-  For more information on the ISO 8601 format, see <bpt id="p1">[</bpt>ISO_8601<ept id="p1">](https://en.wikipedia.org/wiki/ISO_8601)</ept>
+  有关 ISO 8601 格式的详细信息，请参阅[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 
-## <a name="remarks"></a>Remarks
+## <a name="remarks"></a>备注
 
-  GetCurrentDateTime() is a nondeterministic function. 
+  GetCurrentDateTime （）是不确定性函数。 
   
-  The result returned is UTC.
+  返回的结果为 UTC。
 
-## <a name="examples"></a>Examples
+  精度为7位，准确度为100毫微秒。
+
+## <a name="examples"></a>示例
   
-  The following example shows how to get the current UTC Date Time using the GetCurrentDateTime() built-in function.
+  下面的示例演示如何使用 GetCurrentDateTime （）内置函数获取当前的 UTC 日期时间。
   
 ```sql
 SELECT GetCurrentDateTime() AS currentUtcDateTime
 ```  
   
- Here is an example result set.
+ 下面是一个示例结果集。
   
 ```json
 [{
-  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
 }]  
 ```  
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>后续步骤
 
-- <bpt id="p1">[</bpt>Date and time functions Azure Cosmos DB<ept id="p1">](sql-query-date-time-functions.md)</ept>
-- <bpt id="p1">[</bpt>System functions Azure Cosmos DB<ept id="p1">](sql-query-system-functions.md)</ept>
-- <bpt id="p1">[</bpt>Introduction to Azure Cosmos DB<ept id="p1">](introduction.md)</ept>
+- [日期和时间函数 Azure Cosmos DB](sql-query-date-time-functions.md)
+- [系统函数 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 简介](introduction.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873278"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302502"
 ---
 # <a name="log-azure-cosmos-db"></a>日志（Azure Cosmos DB）
  返回指定数值表达式的自然对数。  
@@ -26,7 +26,7 @@ LOG (<numeric_expr> [, <base>])
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 base  
    设置对数底数的可选数值参数。  
@@ -39,7 +39,7 @@ base
   
   默认情况下，LOG() 返回自然对数。 可以使用可选底数参数将对数的底数改为另一个值。  
   
-  自然对数是以 e 为底数的对数，其中 e 是一个约等于2.718281828 的无理数常数。  
+  自然对数是底数 **e** 的对数，其中 **e** 是一个无理常数，约等于 2.718281828。  
   
   某个数的指数的自然对数就是该数本身：LOG( EXP( n ) ) = n。 并且某个数的自然对数的指数也是该数字本身：EXP( LOG( n ) ) = n。  
   
@@ -51,7 +51,7 @@ base
 SELECT LOG(10) AS log  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{log: 2.3025850929940459}]  
@@ -63,11 +63,15 @@ SELECT LOG(10) AS log
 SELECT EXP(LOG(10)) AS expLog  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

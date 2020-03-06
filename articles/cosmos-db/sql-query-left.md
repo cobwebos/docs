@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2e175e1ed62a4afb2a532add161dd2ab63ba9b1c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349775"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303743"
 ---
 # <a name="left-azure-cosmos-db"></a>LEFT （Azure Cosmos DB）
  返回具有指定字符数的字符串的左侧部分。  
@@ -43,11 +43,15 @@ LEFT(<str_expr>, <num_expr>)
 SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"l1": "a", "l2": "ab"}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

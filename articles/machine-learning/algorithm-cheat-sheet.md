@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 03/05/2020
+ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767630"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328603"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure 机器学习设计器机器学习算法备忘单
 
@@ -48,7 +48,7 @@ Azure 机器学习具有一个大型算法库，来自***分类***、***推荐�
 
 在监督式学习中，每个数据点都标记为或与一个感兴趣的类别或值相关联。 分类标签的示例是将图像分配为“猫”或“狗”。 值标签的示例是与二手车关联的销售价格。 监督式学习的目的是研究大量类似这样的标记示例，并能够对未来的数据点进行预测。 例如，识别包含正确动物的新照片或为其他二手车指定准确的销售价格。 这是一种常用且有用的机器学习类型。
 
-### <a name="unsupervised-learning"></a>非监督式学习
+### <a name="unsupervised-learning"></a>无人监督学习
 
 在非监督式学习中，数据点没有与其关联的标签。 相反，非监督式学习算法的目的是以某种方式组织数据或者说明其结构。 无人监督学习将数据分组为分类，作为 K 平均值，或查找不同的方法来查看复杂数据以使其显得更简单。
 

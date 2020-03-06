@@ -3,14 +3,14 @@ title: 设置过渡环境
 description: 了解如何将应用部署到非生产槽和 autoswap 到生产环境中。 提高可靠性并从部署中消除应用程序停机时间。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 03/04/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63070b2c1e6adbb0149446b218e6e58023b2d409
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666443"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300837"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -23,13 +23,13 @@ ms.locfileid: "75666443"
 * 首先将应用部署到槽，然后将其交换到生产，这确保槽的所有实例都已准备好，然后交换到生产。 部署应用时，这样可避免停机。 流量重定向是无缝的，且不会因交换操作而删除任何请求。 在不需要预交换验证时，可以通过配置[自动交换](#Auto-Swap)来自动执行整个工作流。
 * 交换后，具有以前分阶段应用的槽现在具有以前的生产应用。 如果交换到生产槽的更改与预期不同，可以立即执行同一交换来收回“上一已知的良好站点”。
 
-每种应用服务计划层支持不同数量的部署槽。 使用部署槽位不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#app-service-limits)。 
+每种应用服务计划层支持不同数量的部署槽。 使用部署槽位不会产生额外的费用。 若要了解应用层支持的槽数，请参阅[应用服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)。 
 
 若要将应用扩展到其他层，请确保目标层支持应用已使用的槽数。 例如，如果您的应用程序具有五个以上的槽，则无法将其缩小到**标准**层，因为**标准**级别仅支持五个部署槽。 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>添加槽位
+## <a name="add-a-slot"></a>添加槽
 应用必须在“标准”、“高级”或“独立”层中运行，才能启用多个部署槽位。
 
 
@@ -272,7 +272,7 @@ ms.locfileid: "75666443"
 
 ## <a name="delete-a-slot"></a>删除槽
 
-搜索并选择应用。 选择要删除 > **概述** * > \<槽的***部署槽位**。 在命令栏上选择 "**删除**"。  
+搜索并选择应用。 选择要删除 > **概述** *> > \<槽的***部署槽位**。 在命令栏上选择 "**删除**"。  
 
 ![删除部署槽](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
@@ -280,7 +280,7 @@ ms.locfileid: "75666443"
 
 <a name="PowerShell"></a>
 
-## <a name="automate-with-powershell"></a>使用 PowerShell 进行自动化操作
+## <a name="automate-with-powershell"></a>使用 PowerShell 自动执行
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -303,7 +303,7 @@ New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot
 ---
 ### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>启动带预览的交换（多阶段交换）并将目标槽配置应用到源槽
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
@@ -316,7 +316,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ---
 ### <a name="swap-deployment-slots"></a>交换部署槽
 ```powershell
-$ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
+$ParametersObject = @{targetSlot  = "[slot name – e.g. "production"]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 

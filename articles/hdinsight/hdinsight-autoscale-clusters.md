@@ -7,21 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/21/2020
-ms.openlocfilehash: 6eb8f86d7bfa1c140c6422753840ded8a37ce3c4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.date: 03/05/2020
+ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616086"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399713"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
 > [!Important]
-> Azure HDInsight 自动缩放功能已发布，适用于 Spark 和 Hadoop 群集的2019年11月7日，并随附了功能预览版本中未提供的改进。 如果你在2019年11月7日之前创建了一个 Spark 群集，并且想要在群集上使用自动缩放功能，则建议的路径是创建一个新的群集，并在新群集上启用自动缩放。 
+> Azure HDInsight 自动缩放功能已发布，适用于 Spark 和 Hadoop 群集的2019年11月7日，并随附了功能预览版本中未提供的改进。 如果你在2019年11月7日之前创建了一个 Spark 群集，并且想要在群集上使用自动缩放功能，则建议的路径是创建一个新的群集，并在新群集上启用自动缩放。
 >
->交互式查询（LLAP）和 HBase 群集的自动缩放仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。 
-
+> 交互式查询（LLAP）和 HBase 群集的自动缩放仍处于预览阶段。 自动缩放仅适用于 Spark、Hadoop、交互式查询和 HBase 群集。
 
 Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的辅助角色节点数。 当前无法缩放群集中的其他类型的节点。  创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 然后，自动缩放会监视 analytics 负载的资源要求，并增加或减少辅助角色节点的数量。 此功能不收取额外费用。
 
@@ -59,23 +58,18 @@ Azure HDInsight 的群集自动缩放功能会自动增加和减少群集中的�
 
 每 60 秒检查一次上述指标。 自动缩放根据这些指标进行纵向扩展和缩减决策。
 
-### <a name="load-based-cluster-scale-up"></a>基于负载的群集纵向扩展
+### <a name="load-based-scale-conditions"></a>基于负载的缩放条件
 
-当检测到以下情况时，自动缩放将发出向上扩展请求：
+当检测到以下情况时，自动缩放将发出一个缩放请求：
 
-* 挂起 CPU 总数大于可用 CPU 总数超过3分钟。
-* Total memory memory 大于可用内存总量超过3分钟。
+|纵向扩展|缩小|
+|---|---|
+|挂起 CPU 总数大于可用 CPU 总数超过3分钟。|总待处理 CPU 小于总可用 CPU 的时间超过 10 分钟。|
+|Total memory memory 大于可用内存总量超过3分钟。|总待处理内存小于总可用内存的时间超过 10 分钟。|
 
-HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU 和内存需求，然后发出向上扩展请求以添加所需数量的节点。
+对于纵向扩展，HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU 和内存需求，然后发出向上扩展请求以添加所需数量的节点。
 
-### <a name="load-based-cluster-scale-down"></a>基于负载的群集缩小
-
-当检测到以下情况时，自动缩放将发出向下缩放请求：
-
-* 总待处理 CPU 小于总可用 CPU 的时间超过 10 分钟。
-* 总待处理内存小于总可用内存的时间超过 10 分钟。
-
-根据每个节点的 AM 容器数以及当前的 CPU 和内存需求，自动缩放会发出删除一定数量节点的请求。 服务还会根据当前作业执行情况，检测哪些节点是候选删除。 缩小操作首先 add-on 节点，然后将其从群集中删除。
+若要根据每个节点的 AM 容器数以及当前的 CPU 和内存需求向下缩放，自动缩放会发出删除一定数量节点的请求。 服务还会根据当前作业执行情况，检测哪些节点是候选删除。 缩小操作首先 add-on 节点，然后将其从群集中删除。
 
 ## <a name="get-started"></a>入门
 
@@ -118,7 +112,7 @@ HDInsight 服务计算需要多少个新的工作节点来满足当前的 CPU �
 
 ![启用辅助节点基于计划的自动缩放节点大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-你的订阅具有针对每个区域的容量配额。 头节点核心总数加最大工作节点数不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
+你的订阅具有针对每个区域的容量配额。 头节点的总内核数与工作节点的最大数目结合不能超过容量配额。 但是，此配额是软性限制；始终可创建支持票证来轻松地增加此配额。
 
 > [!Note]  
 > 如果超出了总核心配额限制，则将收到一条错误消息，指出 "最大节点已超过此区域的可用内核数，请选择另一个区域，或联系支持人员以增加配额。"

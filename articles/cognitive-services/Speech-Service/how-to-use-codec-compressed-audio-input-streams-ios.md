@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5d65ac83fc8a41008971108c5b370c1d0416113b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805852"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331513"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>如何：在 iOS 上对 Speech SDK 使用编解码器压缩的音频输入
 
 语音 SDK 的**压缩音频输入流**API 提供了一种使用请求或推送流将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 在 iOS 上流式传输压缩音频需要语音 SDK 版本1.7.0 或更高版本。 [ C++Linux （ubuntu 16.04、ubuntu C#18.04、Debian 9）](how-to-use-codec-compressed-audio-input-streams.md)和 Android 上的 java 还支持、和 java [。](how-to-use-codec-compressed-audio-input-streams-android.md)
+> 在 iOS 上流式传输压缩音频需要语音 SDK 版本1.7.0 或更高版本。 [ C++Linux 上的C#、和 java （ubuntu 16.04、ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）](how-to-use-codec-compressed-audio-input-streams.md)和 Android 上的 java 也支持[。](how-to-use-codec-compressed-audio-input-streams-android.md)
 
 对于 wav/PCM，请参阅主线语音文档。 在 wav/PCM 外部，支持以下编解码器压缩输入格式：
 
@@ -32,7 +32,7 @@ ms.locfileid: "74805852"
 - Wav 容器中的 ALAW
 - Wav 容器中的 MULAW
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 处理压缩音频是使用[适用 gstreamer](https://gstreamer.freedesktop.org)实现的。 出于许可原因，这些功能不能随 SDK 一起提供，但包含这些函数的包装库需要由应用程序开发人员构建并使用 SDK 随应用一起提供。
 

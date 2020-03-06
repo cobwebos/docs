@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651355"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303216"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>使用 Azure 虚拟机上的高级文件共享配置 SQL Server 故障转移群集实例
 
@@ -53,7 +53,7 @@ ms.locfileid: "77651355"
 
 许多工作负荷都有突发 IO，因此最好在繁重的使用时间段内检查，并记下最大 IOPS 和平均 IOPS。 高级文件共享根据共享的大小提供 IOPS。 高级文件共享还提供了免费突发功能，使你能够将 IO 量最小提高到一小时。
 
-有关高级文件共享性能的详细信息，请参阅[文件共享性能层](https://docs.microsoft.com/azure/storage/files/storage-files-planning#file-share-performance-tiers)。
+有关高级文件共享性能的详细信息，请参阅[文件共享性能层](https://docs.microsoft.com/azure/storage/files/storage-files-planning#storage-tiers)。
 
 ### <a name="licensing-and-pricing"></a>许可和定价
 
@@ -71,7 +71,7 @@ ms.locfileid: "77651355"
 
 具有高级文件共享的故障转移群集不支持 Filestream。 若要使用 filestream，请使用[存储空间直通](virtual-machines-windows-portal-sql-create-failover-cluster.md)部署群集。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在完成本文中的步骤之前，你应该已经：
 
@@ -101,7 +101,7 @@ ms.locfileid: "77651355"
 
    1. 在 Azure 门户中，选择 "**创建资源**" 以打开 Azure Marketplace。 搜索“可用性集”。
    1. 选择 "**可用性集**"。
-   1. 选择“创建”。
+   1. 选择 **“创建”** 。
    1. 在 "**创建可用性集**" 下，提供以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -136,7 +136,7 @@ ms.locfileid: "77651355"
 
 1. Azure 创建虚拟机后，使用 RDP 连接到每个虚拟机。
 
-   当你首次使用 RDP 连接到虚拟机时，系统将提示你是否允许在网络上发现此 PC。 请选择“是”。
+   当你首次使用 RDP 连接到虚拟机时，系统将提示你是否允许在网络上发现此 PC。 选择 **“是”** 。
 
 1. 如果使用的是基于 SQL Server 的虚拟机映像之一，请删除 SQL Server 实例。
 
@@ -153,7 +153,7 @@ ms.locfileid: "77651355"
 
    在每个虚拟机上，在 Windows 防火墙上打开以下端口：
 
-   | 目的 | TCP 端口 | 说明
+   | 目的 | TCP 端口 | 注意
    | ------ | ------ | ------
    | SQL Server | 1433 | SQL Server 的默认实例正常使用的端口。 如果使用了库中的某个映像，此端口会自动打开。
    | 运行状况探测 | 59999 | 任何打开的 TCP 端口。 在后面的步骤中，需要将负载均衡器[运行状况探测](#probe)和群集配置为使用此端口。
@@ -222,14 +222,14 @@ ms.locfileid: "77651355"
 
 1. 在 "**服务器管理器**" 下，选择 "**工具**"，然后选择 "**故障转移群集管理器**"。
 1. 在 "**故障转移群集管理器**" 下，选择 "**操作**"，然后选择 "**验证配置**"。
-1. 选择“**下一页**”。
+1. 选择 **“下一步”** 。
 1. 在 "**选择服务器或群集**" 下，输入这两个虚拟机的名称。
-1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择“**下一页**”。
+1. 在 "**测试选项**" 下，选择 "**仅运行选择的测试**"。 选择 **“下一步”** 。
 1. 在 "**测试选择**" 下，选择 "**存储**和**存储空间直通**以外的所有测试"，如下所示：
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="选择群集验证测试":::
 
-1. 选择“**下一页**”。
+1. 选择 **“下一步”** 。
 1. **确认**下，选择 "**下一步**"。
 
 “验证配置向导”将运行验证测试。
@@ -330,9 +330,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 Azure 门户中，请前往包含虚拟机的资源组。
 
-1. 选择 **添加** 。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
+1. 选择“添加”。 在 Azure Marketplace 中搜索**负载均衡器**。 选择 "**负载均衡器**"。
 
-1. 选择“创建”。
+1. 选择 **“创建”** 。
 
 1. 使用以下值设置负载均衡器：
 
@@ -367,7 +367,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 "负载均衡器" 边栏选项卡中选择 "**运行状况探测**"。
 
-1. 选择 **添加** 。
+1. 选择“添加”。
 
 1. 在 "**添加运行状况探测**" <span id="probe"></span>边栏选项卡上，设置以下运行状况探测参数。
 
@@ -383,7 +383,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. 在 "负载均衡器" 边栏选项卡上，选择 "**负载均衡规则**"。
 
-1. 选择 **添加** 。
+1. 选择“添加”。
 
 1. 设置负载均衡规则参数：
 
@@ -449,7 +449,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 **故障转移群集管理器**显示角色，其资源处于脱机状态。 然后，这些资源将移动，并在另一个节点中重新联机。
 
-### <a name="test-connectivity"></a>测试连接
+### <a name="test-connectivity"></a>测试连接性
 
 若要测试连接，请登录到同一虚拟网络中的另一台虚拟机。 打开“SQL Server Management Studio”并连接到 SQL Server FCI 名称。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: d14b4a3f4c3fdddac64596760fdbbfefce49036a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208553"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364388"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>客户管理的密钥配置 Azure Monitor 
 
@@ -283,6 +283,11 @@ Content-type: application/json
 
 对于 Application Insights CMK 配置，请遵循此步骤的附录内容。
 
+需要对工作区和*群集*资源具有 "写入" 权限才能执行此操作，包括以下操作：
+
+- 在工作区中： Microsoft.operationalinsights/工作区/写入
+- 在*群集*资源中： microsoft.operationalinsights/群集/写入
+
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
 Authorization: Bearer <token>
@@ -290,18 +295,17 @@ Content-type: application/json
 
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     }
 }
 ```
-*ClusterDefinitionId*是在上一步骤的响应中提供的*clusterId*值。
 
 **响应**
 
 ```json
 {
   "properties": {
-    "WriteAccessResourceId": "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
+    "WriteAccessResourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/clusters/<cluster-name>"
     },
   "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name/linkedservices/cluster",
   "name": "workspace-name/cluster",
@@ -478,7 +482,6 @@ Log Analytics 和 Application Insights 使用相同的数据存储平台和查�
 Application Insights CMK 的配置与本文中所述的过程完全相同，包括除以下步骤以外的约束和故障排除：
 
 - 创建*群集*资源
-
 - 将组件关联到*群集*资源
 
 为 Application Insights 配置 CMK 时，请使用这些步骤，而不是上面列出的步骤。
@@ -534,6 +537,11 @@ Content-type: application/json
 > 复制并保留 "主体 id" 值，因为在后续步骤中需要用到它。
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>使用[组件-创建或更新](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)API 将组件关联到*群集*资源
+
+需要对组件和*群集*资源具有 "写入" 权限才能执行此操作，包括以下操作：
+
+- 在组件中： Microsoft Insights/组件/写入
+- 在*群集*资源中： microsoft.operationalinsights/群集/写入
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01

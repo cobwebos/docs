@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e105394765ccd8a495a0b44b0c29e0c4c0b9f59a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a717f343b0f46522a3ce2bb56c32e3f15998d777
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349782"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303760"
 ---
 # <a name="is_string-azure-cosmos-db"></a>IS_STRING （Azure Cosmos DB）
  返回一个布尔值，指示指定表达式的类型是否为字符串。  
@@ -47,11 +47,15 @@ SELECT
        IS_STRING({prop: "value"}.prop2) AS isStr7  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"isStr1":false,"isStr2":false,"isStr3":true,"isStr4":false,"isStr5":false,"isStr6":false,"isStr7":false}] 
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

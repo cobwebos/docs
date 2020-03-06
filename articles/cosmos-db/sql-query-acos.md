@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的 ACOS （arccosice） SQL 系统函数
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 733d6b009f03d61c37170cc506a3b2ec842d7c47
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300955"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACOS （Azure Cosmos DB）
  返回角度（弧度），其余弦是指定的数值表达式；也被称为反余弦。  
@@ -26,7 +26,7 @@ ACOS(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,11 +40,15 @@ ACOS(<numeric_expr>)
 SELECT ACOS(-1) AS acos 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"acos": 3.1415926535897931}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819889"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302859"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
 
@@ -87,7 +87,7 @@ Microsoft 合作伙伴可将 Azure 使用情况与其代表客户预配的任何
 
 ## <a name="use-the-resource-manager-apis"></a>使用资源管理器 API
 
-在某些情况下，你可能希望直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](https://docs.microsoft.com/azure/#pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
+在某些情况下，你可能希望直接调用资源管理器 REST API 来部署 Azure 服务。 [Azure 支持使用多个 SDK](https://docs.microsoft.com/azure/?pivot=sdkstools) 来启用这些调用。 你可以使用其中一个 SDK，也可以直接调用 REST API 来部署资源。
 
 如果使用资源管理器模板，应按照上述说明标记解决方案。 如果不使用资源管理器模板，而是直接发出 API 调用，则仍可标记部署以关联 Azure 资源的使用情况。
 
@@ -296,7 +296,7 @@ foreach ($deployment in $deployments){
     * 完成/查看联系信息。
     * 可以预先填充咨询详细信息，也可以从下拉项中进行选择。
     * 输入问题的标题和描述（提供尽可能多的详细信息）。
-1. 单击 "提交"
+1. 单击“Submit”（提交）。
 
 在[https://aka.ms/TechConsultInstructions](https://aka.ms/TechConsultInstructions)按屏幕截图查看分步说明。
 

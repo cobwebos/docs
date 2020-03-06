@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: e3dffca1d5e98de60941aab4400469810c9cfc30
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613754"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298728"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>使用资源管理器模板将 Windows Server 虚拟机加入到 Azure Active Directory 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "77613754"
 
 本文说明如何使用资源管理器模板创建 Windows Server VM 并将其加入到 Azure AD DS 托管域。 你还将了解如何将现有 Windows Server VM 加入到 Azure AD DS 域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77613754"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
-* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
+* 属于 Azure AD DS 托管域的用户帐户。
 
 ## <a name="azure-resource-manager-template-overview"></a>Azure 资源管理器模板概述
 
@@ -88,13 +88,13 @@ ms.locfileid: "77613754"
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择 VM 的资源组。 |
-    | 位置                  | 选择 VM 的位置。 |
+    | Location                  | 选择 VM 的位置。 |
     | 现有 VNET 名称        | 要将 VM 连接到的现有虚拟网络的名称，例如*myVnet*。 |
     | 现有子网名称      | 现有虚拟网络子网的名称，如*工作负荷*。 |
     | DNS 标签前缀          | 输入要用于 VM 的 DNS 名称，例如*myvm*。 |
     | VM 大小                   | 指定 VM 大小，如*Standard_DS2_v2*。 |
     | 要加入的域            | Azure AD DS 托管域 DNS 名称，例如*aaddscontoso.com*。 |
-    | 域用户名           | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aaddscontoso.com`。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
+    | 域用户名           | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aaddscontoso.com`。 此帐户必须是 Azure AD DS 托管域的一部分。 |
     | 域密码           | 在上一个设置中指定的用户帐户的密码。 |
     | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |
     | VM 管理员用户名         | 指定要在虚拟机上创建的本地管理员帐户。 |
@@ -104,7 +104,7 @@ ms.locfileid: "77613754"
 
 > [!WARNING]
 > **请小心处理密码。**
-> 模板参数文件请求作为*AZURE AD DC administrators*组成员的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
+> 模板参数文件请求属于 Azure AD DS 托管域的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
 
 成功完成部署需要几分钟时间。 完成后，会创建 Windows VM，并将其加入到 Azure AD DS 托管域。 可以管理 VM，也可以使用域帐户登录。
 
@@ -121,9 +121,9 @@ ms.locfileid: "77613754"
     |---------------------------|-------|
     | 订阅              | 请选择在其中启用了 Azure AD 域服务的同一个 Azure 订阅。 |
     | 资源组            | 选择包含现有 VM 的资源组。 |
-    | 位置                  | 选择现有 VM 的位置。 |
+    | Location                  | 选择现有 VM 的位置。 |
     | VM 列表                   | 输入要加入到 Azure AD DS 托管域的现有 VM 的逗号分隔列表，例如*myVM1、myVM2*。 |
-    | 域加入用户名     | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aaddscontoso.com`。 此帐户必须是 " *AZURE AD DC 管理员*" 组的成员。 |
+    | 域加入用户名     | 应用于将 VM 加入托管域的 Azure AD DS 托管域中的用户帐户，如 `contosoadmin@aaddscontoso.com`。 此帐户必须是 Azure AD DS 托管域的一部分。 |
     | 域加入用户密码 | 在上一个设置中指定的用户帐户的密码。 |
     | 可选 OU 路径          | 要在其中添加 VM 的自定义 OU。 如果未指定此参数的值，则会将 VM 添加到默认的*AAD DC 计算机*OU。 |
 
@@ -131,7 +131,7 @@ ms.locfileid: "77613754"
 
 > [!WARNING]
 > **请小心处理密码。**
-> 模板参数文件请求作为*AZURE AD DC administrators*组成员的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
+> 模板参数文件请求属于 Azure AD DS 托管域的用户帐户的密码。 不要手动向此文件中输入值，而是将其保留在文件共享或其他共享位置。
 
 完成部署需要几分钟时间。 完成后，指定的 Windows Vm 将加入到 Azure AD DS 托管域，并可使用域帐户进行管理或登录。
 

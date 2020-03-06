@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 48935dc74d6d22bcafa31afebbdfcb829e122815
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210595"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399247"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 托管磁盘的服务器端加密
 
@@ -72,6 +72,7 @@ ms.locfileid: "77210595"
 - 与客户托管的密钥（Azure 密钥保管库、磁盘加密集、Vm、磁盘和快照）相关的所有资源必须位于同一订阅和区域中。
 - 用客户管理的密钥加密的磁盘、快照和映像不能移到另一个订阅。
 - 如果使用 Azure 门户创建磁盘加密集，则目前无法使用快照。
+- 使用客户管理的密钥加密的托管磁盘也不能使用 Azure 磁盘加密进行加密。
 
 ### <a name="cli"></a>CLI
 #### <a name="setting-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet

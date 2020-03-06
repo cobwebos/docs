@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的余切（COT） SQL 系统函数如何
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: f049d1295eef3e6a45abeaafe8c22d376f90abe1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 25c907644f58ee40ea08e5636d68dc0e84564a28
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299481"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT （Azure Cosmos DB）
  返回指定数值表达式中指定角度的三角余切。  
@@ -26,7 +26,7 @@ COT(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,12 +40,15 @@ COT(<numeric_expr>)
 SELECT COT(124.1332) AS cot  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"cot": -0.040311998371148884}]  
 ```  
-  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

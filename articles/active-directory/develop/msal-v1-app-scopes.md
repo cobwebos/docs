@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e0ef46d23ba267bbfc1ff539eb659fafe2b44f8e
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085683"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299824"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>接受 v1.0 令牌中的 Web API 的范围
 
@@ -25,7 +25,7 @@ OAuth2 权限是指开发人员（1.0） web API （资源）应用程序向客�
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>将请求访问权限范围限定为 v1.0 应用程序的特定 OAuth2 权限
 
-若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如 Azure AD 图，请 https://graph.windows.net)将所需的资源标识符与该资源的所需 OAuth2 权限串联起来，以创建作用域。
+若要获取 v2.0 1.0 应用程序的特定作用域的令牌（例如， https://graph.microsoft.com)的 Microsoft Graph API，请通过将所需的资源标识符与该资源的所需 OAuth2 权限连接来创建作用域。
 
 例如，若要以用户的身份访问应用 ID URI 为 `ResourceId` 的 v1.0 Web API，请执行以下操作：
 
@@ -37,15 +37,15 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-若要使用 MSAL.NET Azure AD Azure AD 图形 API （https：\//graph.windows.net/）进行读取和写入，需创建范围列表，如以下示例中所示：
+若要使用 MSAL.NET Azure AD 使用 Microsoft Graph API （https：\//graph.microsoft.com/）进行读取和写入，需创建范围列表，如以下示例中所示：
 
 ```csharp
-string ResourceId = "https://graph.windows.net/";
+string ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
 ```javascript
-var ResourceId = "https://graph.windows.net/";
+var ResourceId = "https://graph.microsoft.com/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 

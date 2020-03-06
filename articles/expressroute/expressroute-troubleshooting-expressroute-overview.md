@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 69c32370b1f7f7cabb642ab140d69dcec57fb4aa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 58ae39e8dfdf918ae14ca9bb8dac28405828999e
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330951"
 ---
 # <a name="verifying-expressroute-connectivity"></a>验证 ExpressRoute 连接
 本文可帮助验证 ExpressRoute 连接并对其进行故障排除。 ExpressRoute 通过专用连接将本地网络扩展到 Microsoft 云，此连接通常由连接提供商提供。 通常，ExpressRoute 连接涉及三个不同的网络区域，如下所示：
@@ -275,7 +275,7 @@ ARP 表提供了特定对等互连的 IP 地址和 MAC 地址的映射。 用于
 ## <a name="confirm-the-traffic-flow"></a>确认流量
 若要获取对等互连上下文在主要路径和辅助路径上的综合流量统计信息（出入字节数），请使用以下命令：
 
-    Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private
+    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
 
 该命令的示例输出如下：
 

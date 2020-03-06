@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: bbdd1bedb7b9a9f00a0b65ccc4c108ba6fd2638c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754925"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398949"
 ---
 # <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>优化 Azure Cosmos DB 中的读取和写入成本
 
@@ -30,14 +30,6 @@ Azure Cosmos DB 通过使用预配置吞吐量模型，在吞吐量和延迟方�
 
 读取 1 KB 大小的项花费一个 RU。 写入 1 KB 的项花费五个 RU。 使用默认会话[一致性级别](consistency-levels.md)时，会同时计算读取和写入成本。  RU 的考虑因素包括：项大小、属性计数、数据一致性、索引属性、索引和查询模式。
 
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>100 万次读取和写入的标准化成本
-
-预配 1,000 RU/秒转换为 360 万 RU/小时，每小时费用为 $0.08（美国和欧洲）。 对于 1 KB 的项，可使用此预配吞吐量每小时执行 360 万次读取或 72 万次写入（此值计算方式为：`3.6 million RU / 5`）。 标准化为一百万次读取和写入，100 万次读取的成本为 $0.022（此值计算方式为：$0.08/360 万次），100 万次写入的成本为 $0.111（此值计算方式为：$0.08/72 万次）。
-
-## <a name="number-of-regions-and-the-request-units-cost"></a>区域数量和请求单位成本
-
-无论与 Azure Cosmos 帐户关联的区域数量如何，写入成本都是恒定的。 换句话说，1 KB 写入将花费五个 RU，而与该帐户关联的区域数量无关。 在复制、接受和处理每个区域的复制流量方面，花费了大量的资源。 有关多区域成本优化的详细信息，请参阅[优化多区域 Cosmos 帐户成本](optimize-cost-regions.md)一文。
-
 ## <a name="optimize-the-cost-of-writes-and-reads"></a>优化写入和读取成本
 
 执行写入操作时，应预配足够的容量以支持每秒所需的写入次数。 可在执行写入之前使用 SDK、门户网站、CLI 来增加预配置的吞吐量，然后在写入完成后降低吞吐量。 写入期间的吞吐量是给定数据所需的最小吞吐量，加上插入工作负荷所需的吞吐量（假设没有其他工作负荷正在运行）。 
@@ -50,8 +42,8 @@ Azure Cosmos DB 通过使用预配置吞吐量模型，在吞吐量和延迟方�
 
 接下来，可通过以下文章详细了解 Azure Cosmos DB 中的成本优化：
 
-* 详细了解如何[进行开发和测试优化](optimize-dev-test.md)
-* 详细了解 [Azure Cosmos DB 帐单](understand-your-bill.md)
+* 详细了解[开发和测试优化](optimize-dev-test.md)
+* 详细了解[了解 Azure Cosmos DB 帐单](understand-your-bill.md)
 * 详细了解如何[优化吞吐量成本](optimize-cost-throughput.md)
 * 详细了解如何[优化存储成本](optimize-cost-storage.md)
 * 详细了解如何[优化查询成本](optimize-cost-queries.md)

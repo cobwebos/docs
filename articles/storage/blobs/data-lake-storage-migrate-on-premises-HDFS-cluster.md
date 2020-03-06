@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368671"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301994"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
@@ -27,7 +27,7 @@ ms.locfileid: "77368671"
 > * 将设备寄回给 Microsoft。
 > * 应用对文件和目录的访问权限（仅 Data Lake Storage Gen2）
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成迁移需要执行以下任务。
 
@@ -186,7 +186,7 @@ ms.locfileid: "77368671"
 
 若要创建服务主体，请参阅[如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
-* 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
+* 执行该文中[将应用程序分配给角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分中的步骤时，请确保将“存储 Blob 数据参与者”角色分配给服务主体。
 
 * 执行项目的 "[获取值](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)" 部分中的步骤时，将应用程序 ID 和客户端密码值保存到文本文件中。 很快就会需要这些值。
 

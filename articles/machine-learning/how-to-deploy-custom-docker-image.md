@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 08/22/2019
-ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/05/2020
+ms.openlocfilehash: 8c55fec08f05352d4587a8821c10600b7d7fad07
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086927"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396165"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>使用自定义 Docker 基本映像部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,14 +41,14 @@ Azure 机器学习提供了一个默认 Docker 基本映像，因此你无需担
 * 创建自定义基本映像：向管理员和 DevOps 提供相关信息，了解如何创建自定义映像并使用 Azure CLI 和机器学习 CLI 配置 Azure 容器注册表的身份验证。
 * 使用自定义基本映像部署模型：在从 Python SDK 或 ML CLI 部署训练的模型时，向数据科学家和 DevOps/ML 工程师提供有关使用自定义映像的信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作组。 有关详细信息，请参阅[创建工作区一](how-to-manage-workspace.md)文。
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [用于 Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md)。
 * 可在 internet 上访问的[Azure 容器注册表](/azure/container-registry)或其他 Docker 注册表。
-* 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-deployment-artifacts)的 "准备部署" 一节。
+* 本文档中的步骤假定你熟悉如何创建和使用__推理配置__对象作为模型部署的一部分。 有关详细信息，请参阅[部署位置和方式](how-to-deploy-and-where.md#prepare-to-deploy)的 "准备部署" 一节。
 
 ## <a name="create-a-custom-base-image"></a>创建自定义基本映像
 

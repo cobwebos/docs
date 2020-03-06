@@ -1,6 +1,6 @@
 ---
-title: 创建群集错误字典
-description: 了解如何创建群集错误字典。
+title: Azure HDInsight 创建群集错误字典
+description: 了解如何排查创建 Azure HDInsight 群集时出现的错误
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: 979e83c0eeaac4555fc5144bca479f0b5656cd28
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617525"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302723"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight：群集创建错误
 

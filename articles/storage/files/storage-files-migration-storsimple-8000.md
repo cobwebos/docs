@@ -7,16 +7,25 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 78100a5dd38b211f6b0241d5a0bac10cf86b09f6
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250951"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330304"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
-StorSimple 8000 系列表示两个单独的 Sku，可以将这些 Sku 中的数据迁移到 Azure 文件同步的环境。 本文介绍如何将这两个设备迁移到 Azure 文件同步，并提供必要的背景知识和迁移步骤，使迁移 Azure 文件同步成功。
+StorSimple 8000 系列由8100或8600物理、本地设备及其云服务组件表示。 可以将这些设备中的数据迁移到 Azure 文件同步的环境。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+
+## <a name="storsimple"></a>StorSimple
+
+StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务的扩展支持将于12月 31 2022 到期。 应立即开始规划从 StorSimple 开始迁移，这一点很重要。
+
+Azure 文件同步是 StorSimple 设备可以迁移到的默认和策略长期 Azure 服务。
+
+> [!IMPORTANT]
+> Microsoft 致力于帮助客户完成其迁移。 电子邮件 AzureFilesMigration@microsoft .com 用于自定义的迁移计划，并在迁移过程中提供帮助。
 
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
@@ -337,7 +346,7 @@ RoboCopy 命令：
 Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-背景色：
+Background：
 
 :::row:::
    :::column span="1":::

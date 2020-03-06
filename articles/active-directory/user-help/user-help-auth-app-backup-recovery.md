@@ -8,17 +8,17 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d1b28000a14ec0825435742efe238e713f116ba7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2ac761355fc528fe3e4b4b5f05ee0a6e317ff99a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063928"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78297950"
 ---
-# <a name="backup-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
+# <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
 **适用于：**
 
@@ -31,7 +31,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 每个备份存储位置都要求有一个个人 Microsoft 帐户，而 iOS 还要求你具有 iCloud 帐户。 可以在该位置中存储多个帐户。 例如，你可以有个人帐户、工作或学校帐户，以及适用于 Facebook、Google 等的个人、非 Microsoft 帐户。
 
 > [!IMPORTANT]
-> 仅存储你的个人和第三方帐户凭据，其中包括你的用户名和验证身份所需的帐户验证代码。 我们不会存储与你的帐户相关的其他任何信息，包括电子邮件或文件。 以外，我们不会以任何方式或者与其他任何产品或服务关联或共享你的帐户。 最后，IT 管理员不会获得有关上述任何帐户的任何信息。
+> 仅存储你的个人和第三方帐户凭据，其中包括你的用户名和验证身份所需的帐户验证代码。 我们不会存储与帐户相关的任何其他信息，包括电子邮件或文件。 我们也不会以任何方式关联或共享你的帐户，也不会与任何其他产品或服务共享。 最后，IT 管理员不会获得任何这些帐户的任何信息。
 
 ## <a name="back-up-your-account-credentials"></a>备份帐户凭据
 
@@ -75,29 +75,47 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 ## <a name="recover-additional-accounts-requiring-more-verification"></a>恢复需要更多验证的其他帐户
 
-如果你在个人帐户或工作或学校帐户中使用推送通知，你将看到一个屏幕警报，指出你必须先提供其他验证才能恢复你的信息。 由于推送通知要求使用绑定到特定设备的凭据，而且永远不会通过网络发送，因此，在设备上创建凭据之前，必须先证明自己的身份。
+如果你在个人帐户或工作或学校帐户中使用推送通知，你将看到一个屏幕警报，指出你必须先提供其他验证才能恢复你的信息。 由于推送通知需要使用与特定设备关联的凭据，且从未通过网络发送，因此必须在设备上创建凭据之前验证身份。
 
 对于个人 Microsoft 帐户，可以通过输入密码以及备用电子邮件或电话号码来证明身份。 对于工作或学校帐户，必须扫描帐户提供商提供的 QR 码。
 
 ### <a name="to-provide-additional-verification-for-personal-accounts"></a>为个人帐户提供附加验证
 
-1. 在 Microsoft Authenticator 应用的“帐户”屏幕中，选择想要恢复的帐户旁边的下拉箭头。
+1. 在 Microsoft Authenticator 应用的 "**帐户**" 屏幕中，选择要恢复的帐户。 在 Android 设备上，选择要恢复的帐户旁边的箭头。
 
     ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
 
-2. 选择“登录以恢复”，键入密码，然后确认用作附加验证方式的电子邮件地址或电话号码。
+    在 iOS 设备上，点击要恢复的帐户以打开帐户的全屏视图。
 
-    ![Microsoft Authenticator 应用，允许输入登录信息](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+    ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+
+2. 登录以恢复帐户。 在 Android 设备上，选择 "**登录以恢复**"。
+
+    ![Microsoft Authenticator 应用在 Android 上输入登录信息](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+
+    在 iOS 设备上，点击要恢复的帐户磁贴，然后点击 "登录并恢复" 选项。 然后键入你的密码，并确认你的电子邮件地址或电话号码作为附加的 unt。
+
+    ![Microsoft Authenticator 应用在 iOS 上输入登录信息](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
 
 ### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供附加验证
 
-1. 在 Microsoft Authenticator 应用的“帐户”屏幕中，选择想要恢复的帐户旁边的下拉箭头。
+1. 登录以恢复帐户。 在 Android 设备上，选择 "**登录以恢复**"。
 
-    ![Microsoft Authenticator 应用，其中显示了可用帐户及其关联的下拉箭头](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
+    ![Microsoft Authenticator 应用在 Android 上恢复工作或学校帐户](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
 
-2. 选择“扫描 QR 码以恢复”，然后扫描 QR 码。
+    在 iOS 设备上，点击要恢复的帐户以打开帐户的全屏视图。
 
-    ![Microsoft Authenticator 应用，允许扫描 QR 码](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+    ![Microsoft Authenticator 应用恢复 iOS 上的工作或学校帐户](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
+
+2. 可以使用 QR 代码恢复帐户。 选择“扫描 QR 码以恢复”，然后扫描 QR 码。
+
+    在 Android 上：
+
+    ![在 Android 上 Microsoft Authenticator 应用程序，允许扫描 QR 码](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
+
+    在 iOS 上：
+
+    ![在 iOS 上 Microsoft Authenticator 应用，使你能够扫描 QR 码](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
 
     >[!NOTE]
     >有关 QR 码和如何获取 QR 码的详细信息，请参阅[Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用验证器应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
@@ -106,19 +124,19 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>备份和恢复问题疑难解答
 
-有几个可能的原因会导致无法备份：
+备份可能不可用的原因有几个
 
-- **更改操作系统。** 你的备份存储在适用于 Android 的 iCloud 和 Microsoft 的云存储提供程序中。 这意味着，如果你在 Android 和 iOS 设备之间切换，你的备份将不可用。 如果你进行切换，则必须在 Microsoft Authenticator 应用中手动重新创建帐户。
+- **更改操作系统**：你的备份存储在适用于 IOS 的 iCloud 和适用于 Android 的 Microsoft 云存储提供程序中。 这意味着，如果你在 Android 和 iOS 设备之间切换，你的备份将不可用。 如果你进行切换，则必须在 Microsoft Authenticator 应用中手动重新创建帐户。
 
-- **网络问题。** 如果遇到与网络相关的问题，请确保已连接到网络并正确登录到帐户。
+- **网络问题**：如果遇到与网络相关的问题，请确保已连接到网络并正确登录到帐户。
 
-- **帐户问题。** 如果遇到与帐户相关的问题，请确保已正确登录到帐户。 对于 iOS，这意味着必须使用与 iPhone 相同的 AppleID 帐户登录 iCloud。
+- **帐户问题**：如果遇到与帐户相关的问题，请确保已正确登录到帐户。 对于 iOS，这意味着必须使用与 iPhone 相同的 AppleID 帐户登录 iCloud。
 
-- **意外删除。** 你可能在上一台设备中删除了备份帐户，或者在管理云存储帐户时删除了备份帐户。 在这种情况下，必须在应用中手动重新创建帐户。
+- **意外删除**：可能已从以前的设备或在管理云存储帐户时删除了备份帐户。 在这种情况下，必须在应用中手动重新创建帐户。
 
-- **现有的 Microsoft Authenticator 帐户。** 如果已在 Microsoft Authenticator 应用中设置了帐户，该应用将无法恢复备份的帐户。 阻止恢复有助于确保帐户详细信息不会被过期的信息覆盖。 在这种情况下，必须先从 Authenticator 应用中设置的现有帐户删除现有的帐户信息，然后才能恢复备份。
+- **现有 Microsoft Authenticator 帐户**：如果已在 Microsoft Authenticator 应用程序中设置帐户，则该应用程序将无法恢复你的已备份帐户。 阻止恢复有助于确保帐户详细信息不会被过期的信息覆盖。 在这种情况下，必须先从 Authenticator 应用中设置的现有帐户删除现有的帐户信息，然后才能恢复备份。
 
-- **备份已过时。** 如果你的备份信息已过期，系统可能会要求你再次登录到 Microsoft 恢复帐户来刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点。 选择红点之后，系统会提示你再次登录以更新你的信息。
+- **备份已过期**：如果你的备份信息已过期，则系统可能会要求你再次登录到 Microsoft 恢复帐户来刷新信息。 恢复帐户是最初用于存储备份的个人 Microsoft 帐户。 如果需要登录，你会在菜单或操作栏上看到一个红点，或者你将看到一个惊叹号，提示你登录完成从备份还原。 选择该图标后，系统将提示你再次登录以更新你的信息。
 
 ## <a name="next-steps"></a>后续步骤
 

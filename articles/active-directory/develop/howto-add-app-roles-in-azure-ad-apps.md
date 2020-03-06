@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834240"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399090"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -44,10 +44,10 @@ ms.locfileid: "76834240"
 1. 编辑应用清单，方法是先查找 `appRoles` 设置，然后添加所有应用程序角色。
 
      > [!NOTE]
-     > 此清单中的每个应用程序角色定义都必须在 `id` 属性的清单的上下文中具有不同的有效 GUID。    
-     > 
+     > 此清单中的每个应用程序角色定义都必须在 `id` 属性的清单的上下文中具有不同的有效 GUID。
+     >
      > 每个应用程序角色定义的 `value` 属性应该与应用程序中的代码中使用的字符串完全匹配。 `value` 属性不能包含空格。 如果是这样，则在保存清单时，会收到错误。
-     
+
 1. 保存清单。
 
 ### <a name="examples"></a>示例
@@ -108,7 +108,7 @@ ms.locfileid: "76834240"
      如果看不到希望其显示在这里的应用程序，请使用“所有应用程序”列表顶部的各种筛选器来限制此列表，或者在列表中向下滚动，以便找到应用程序。
 
 1. 选择一个应用程序，以便在其中为角色分配用户或安全组。
-1. 在应用程序的左侧导航菜单中选择“用户和组”窗格。
+1. 在应用程序的左侧导航菜单中选择 "**用户和组**" 窗格。
 1. 在“用户和组”列表顶部选择“添加用户”按钮，以便打开“添加分配”窗格。
 1. 在“添加分配”窗格中，选择“用户和组”选择器。
 
@@ -122,7 +122,7 @@ ms.locfileid: "76834240"
 
 ## <a name="more-information"></a>详细信息
 
-- [使用 Azure AD 应用程序角色在 Web 应用中授权 &amp; 角色声明（示例）](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims)
+- [使用应用角色向 ASP.NET Core 的 web 应用 & 角色声明添加授权](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM)（在应用中使用安全组和应用程序角色（视频））
 - [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 应用清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

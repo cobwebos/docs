@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 5950a2a40a78716a76e49fcdaeb3129948b6a0e1
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302485"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 （Azure Cosmos DB）
  返回指定数值表达式中以 10 为底数的对数。  
@@ -26,7 +26,7 @@ LOG10 (<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expression*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -34,7 +34,7 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>备注
   
-  LOG10 和 POWER 函数互为反函数。 例如，10 ^ LOG10(n) = n。  
+  LOG10 和 POWER 函数彼此反向相关。 例如，10 ^ LOG10(n) = n。  
   
 ## <a name="examples"></a>示例
   
@@ -44,11 +44,15 @@ LOG10 (<numeric_expr>)
 SELECT LOG10(100) AS log10 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{log10: 2}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

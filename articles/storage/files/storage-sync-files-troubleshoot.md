@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 9d8aeba65a566cc93d3344a532a4636d709c1084
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048422"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303658"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -221,12 +221,12 @@ Set-AzStorageSyncServerEndpoint `
 如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 在云与服务器终结点之间同步文件之前，扫描 Azure 文件共享中的更改的更改枚举作业必须已完成。 完成该作业所需的时间取决于 Azure 文件共享中命名空间的大小。 更改枚举作业完成后，服务器终结点运行状况应会更新。
 
 ### <a id="broken-sync"></a>如何监视同步运行状况？
-# <a name="portaltabportal1"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[门户](#tab/portal1)
 在每个同步组中，可以向下钻取到单个服务器终结点，以查看最后几个已完成的同步会话的状态。 如果出现绿色的“运行状况”列，并且“文件未同步”的值为 0，则表示同步按预期工作。 否则，请参阅下面的常见同步错误列表，以及文件不同步问题的处理方法。 
 
 ![Azure 门户的屏幕截图](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 转到服务器的遥测日志（可在事件查看器中通过 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 找到）。 事件 9102 对应于已完成的同步会话；有关最新同步状态，请查找 ID 为 9102 的最新事件。 SyncDirection 会告知此会话是上传还是下载。 如果 HResult 为 0，则表示同步会话已成功。 如果 HResult 不为 0，则表示同步期间出错；有关常见错误的列表，请参阅下文。 如果 PerItemErrorCount 大于 0，则表示某些文件或文件夹未正确同步。 有可能 HResult 为 0，但 PerItemErrorCount 大于 0。
 
 下面是成功上传的示例。 为简洁起见，下面只列出了每个 9102 事件中包含的某些值。 
@@ -258,10 +258,10 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>如何监视当前同步会话的进度？
-# <a name="portaltabportal1"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[门户](#tab/portal1)
 在同步组中，转到有问题的服务器终结点，并在“同步活动”部分查看当前同步会话中已上传或下载的文件计数。 请注意，此状态会延迟大约 5 分钟，如果同步会话足够小，可在此时间段内完成，则可能不会在门户中报告此会话。 
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\Agent\Telemetry”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
 
 ```
@@ -276,14 +276,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>如何知道我的服务器是否已彼此同步？
-# <a name="portaltabportal1"></a>[门户](#tab/portal1)
+# <a name="portal"></a>[门户](#tab/portal1)
 对于给定同步组中的每个服务器，请确保：
 - 上传和下载会话的“上次尝试同步”时间戳是最近的时间。
 - 上传和下载会话的状态为绿色。
 - “同步活动”字段显示的要同步的剩余文件数很少或者为零。
 - 上传和下载会话的“文件未同步”字段值为 0。
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 查看由每个服务器的遥测事件日志中的 9102 事件标记的已完成同步会话（在事件查看器中，转到 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`）。 
 
 1. 在任何给定的服务器上，需要确保最近的上传和下载会话已成功完成。 为此，请检查上传和下载操作的 HResult 与 PerItemErrorCount 是否为 0（SyncDirection 字段会指示给定的会话是上传还下载会话）。 请注意，如果未看到最近完成的同步会话，原因有可能是同步会话当前正在进行；如果刚刚添加或修改了大量数据，则这种情况符合预期。
@@ -325,7 +325,7 @@ PerItemErrorCount: 1006.
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | 已跳过文件或目录，但会在下一个同步会话期间进行同步。 如果在下载项时报告此错误，则文件或目录的名称可能会无效。 | 如果在上传文件时报告此错误，则无需执行任何操作。 如果在下载文件时报告错误，请重命名相关文件或目录。 有关详细信息，请参阅[处理不支持的字符](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)。 |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | 无法同步文件或目录的创建，因为目标中已存在该项并且同步不知道更改。 | 不需要采取任何措施。 在目标上运行更改检测并检测到此新项后，同步将停止记录此错误。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | 无法同步该文件，因为已达到 Azure 文件共享限制。 | 要解决此问题，请参阅疑难解答指南中的[达到 Azure 文件共享存储限制](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)部分。 |
-| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 此文件由不受支持的解决方案（如 NTFS EFS）进行加密。 | 解密文件并使用受支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)部分。 |
+| 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | 此文件由不受支持的解决方案（如 NTFS EFS）进行加密。 | 解密文件并使用受支持的加密解决方案。 有关支持解决方案的列表，请参阅计划指南中的[加密解决方案](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption)部分。 |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | 此文件位于 DFS R 只读复制文件夹中。 | 文件位于 DFS R 只读复制文件夹中。 Azure 文件同步不支持 DFS-R 只读复制文件夹中的服务器终结点。 有关详细信息，请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 文件具有 "删除挂起" 状态。 | 不需要采取任何措施。 关闭所有打开的文件句柄后，文件将被删除。 |
 | 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | 由于启用了存储帐户上的防火墙和虚拟网络设置并且服务器无权访问存储帐户，因此无法同步该文件。 | 按照部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分所述的步骤，添加服务器 IP 地址或虚拟网络。 |
@@ -475,7 +475,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_STORAGE_ACCOUNT_LOCKED |
 | **所需的补救措施** | 是 |
 
-之所以发生此错误，是因为存储帐户具有只读[资源锁](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)。 若要解决此问题，请删除存储帐户上的只读资源锁。 
+之所以发生此错误，是因为存储帐户具有只读[资源锁](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)。 要解决此问题，请删除存储帐户上的只读资源锁。 
 
 <a id="-1906441138"></a>**由于同步数据库出现问题，同步失败。**  
 
@@ -872,7 +872,7 @@ PerItemErrorCount: 1006.
 | **错误字符串** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
 | **所需的补救措施** | 是 |
 
-发生此错误的原因是 Azure 文件同步不支持 HTTP 重定向（3xx 状态代码）。 若要解决此问题，请在代理服务器或网络设备上禁用 HTTP 重定向。
+发生此错误的原因是 Azure 文件同步不支持 HTTP 重定向（3xx 状态代码）。 要解决此问题，请在代理服务器或网络设备上禁用 HTTP 重定向。
 
 <a id="-2134364027"></a>**脱机数据传输期间发生超时，但仍在进行中。**  
 
@@ -883,18 +883,18 @@ PerItemErrorCount: 1006.
 | **错误字符串** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
 | **所需的补救措施** | 是 |
 
-当数据引入操作超过超时值时，会出现此错误。 如果正在进行同步，则可以忽略此错误（AppliedItemCount 大于0）。 请参阅[如何实现监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+数据引入操作超时可引发此错误。 如果正在进行同步，则可以忽略此错误（AppliedItemCount 大于0）。 请参阅[如何实现监视当前同步会话的进度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
 3. 记下打开的窗格中的 Azure 文件共享名称。
 4. 选择链接的存储帐户。 如果此链接不起作用，则表示引用的存储帐户已删除。
     ![显示云终结点详细信息窗格（包含存储帐户的链接）的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -970,12 +970,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 在左侧目录中单击“概述”，返回存储帐户主页。
 2. 选择“文件”查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -989,7 +989,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**确保 Azure 文件同步有权访问存储帐户。**  
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 在左侧的目录上单击“访问控制(IAM)”。
 1. 单击“角色分配”选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
 1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - 在“角色”字段中，选择“读者和数据访问”。
     - 在“选择”字段中，键入“混合文件同步服务”，选择角色并单击“保存”。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 
@@ -1090,27 +1090,27 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 修正 |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 文件无法进行层级，因为它正在使用中。 | 不需要采取任何措施。 当文件不再使用时，将对其进行分层。 |
-| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 文件无法进行层级，因为它已被同步排除。 | 不需要采取任何措施。 同步排除列表中的文件不能分层。 |
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | 文件无法进行层级，因为它正在使用中。 | 不需要采取任何措施。 不再使用该文件时，文件同步会对其进行分层。 |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | 文件无法进行层级，因为它已被同步排除。 | 不需要采取任何措施。 无法对同步排除列表中的文件进行分层。 |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | 由于在服务器上找不到该文件，因此无法将其分层。 | 不需要采取任何措施。 如果错误仍然存在，请检查服务器上是否存在该文件。 |
 | 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | 由于在 Azure 文件共享中删除了该文件，因此无法将其分层。 | 不需要采取任何措施。 当下一个下载同步会话运行时，应在服务器上删除该文件。 |
-| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
-| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
+| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件失败。 如果文件位于 DFS R 只读复制文件夹中，则会发生此错误。 | Azure 文件同步不支持 DFS-R 只读复制文件夹中的服务器终结点。 有关详细信息，请参阅[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)。 |
-| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
-| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 文件无法进行层级，因为文件大小小于支持的大小。 | 如果代理版本低于9.0，则支持的最小文件大小为64kb。 如果代理版本为9.0 和更高版本，则支持的最小文件大小取决于文件系统群集大小（双文件系统群集大小）。 例如，如果文件系统群集大小为4kb，则最小文件大小为8kb。 |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | 文件无法进行层级，因为文件大小小于支持的大小。 | 如果代理版本低于 9.0，则支持的最小文件大小为 64kb。 如果代理版本为 9.0 和更高版本，则支持的最小文件大小取决于文件系统群集大小（文件系统群集大小的两倍）。 例如，如果文件系统群集大小为4kb，则最小文件大小为8kb。 |
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | 由于 Azure 存储问题，文件未能分层。 | 如果错误仍然存在，请打开支持请求。 |
 | 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | 由于此文件是同时回调的，因此无法将其分层。 | 不需要采取任何措施。 撤回完成并且文件不再使用时，将会对文件进行分层。 |
-| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 该文件在同步到 Azure 文件共享后将层级。 |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 当文件同步到 Azure 文件共享后，文件将进行分层。 |
 | 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | 由于云分层筛选器驱动程序（storagesync.sys）未运行，导致文件无法分层。 | 若要解决此问题，请打开提升的命令提示符，并运行以下命令： `fltmc load storagesync`<br>如果在运行 fltmc 命令时无法加载 storagesync.sys 筛选器驱动程序，请卸载 Azure 文件同步代理，重新启动服务器，然后重新安装 Azure 文件同步代理。 |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于服务器终结点所在的卷上的磁盘空间不足，导致文件无法分层。 | 若要解决此问题，请在服务器终结点所在的卷上至少释放 100 MB 的磁盘空间。 |
-| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 该文件在同步到 Azure 文件共享后将层级。 |
-| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 文件无法进行层级，因为它是不受支持的重新分析点。 | 如果该文件是重复数据删除重新分析点，请按照[规划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步骤启用重复数据删除支持。 不支持重分析点为重复数据删除的文件，也不会对其进行分层。  |
-| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 文件无法进行层级，因为已对其进行了修改。 | 不需要采取任何措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行层级。 |
-| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 该文件在同步到 Azure 文件共享后将层级。 |
-| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 文件无法进行层级，因为已对其进行了修改。 | 不需要采取任何措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行层级。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法进行层级。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 当文件同步到 Azure 文件共享后，文件将进行分层。 |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | 文件无法进行层级，因为它是不受支持的重新分析点。 | 如果文件是重复数据删除重分析点，请按照 [计划指南](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)中的步骤启用重复数据删除支持。 不支持具有除重复数据删除以外的重分析点的文件，也不会对其进行分层。  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | 文件无法进行层级，因为已对其进行了修改。 | 不需要采取任何措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行分层。 |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | 文件无法进行分层，因为它尚未同步到 Azure 文件共享。 | 不需要采取任何措施。 当文件同步到 Azure 文件共享后，文件将进行分层。 |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | 由于网络问题，文件无法进行层级。 | 不需要采取任何措施。 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 文件无法进行层级，因为已对其进行了修改。 | 不需要采取任何措施。 当修改后的文件同步到 Azure 文件共享时，文件将进行分层。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法进行层级。 | 如果错误仍然存在，请调查耗尽了系统资源的应用程序或内核模式驱动程序。 |
 
 
 
@@ -1131,15 +1131,15 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 修正 |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | 由于 i/o 超时，文件无法撤回。 此问题可能是由以下几个原因导致的：服务器资源约束、网络连接差或 Azure 存储问题（例如，限制）。 | 不需要采取任何措施。 如果此错误持续数小时，请提交一个支持案例。 |
-| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | 由于网络问题，文件无法撤回。  | 如果错误仍然存在，请检查与 Azure 文件共享之间的网络连接。 |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | 由于网络问题，文件无法撤回。  | 如果错误仍然存在，请检查与 Azure 文件共享的网络连接。 |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | 由于已删除服务器终结点，因此文件无法撤回。 | 若要解决此问题，请参阅[删除服务器终结点后，服务器上的分层文件无法访问](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)。 |
-| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件无法撤回。 如果存储帐户上的防火墙和虚拟网络设置已启用并且服务器无权访问存储帐户，则可能出现此问题。 | 若要解决此问题，请遵循部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分中所述的步骤来添加服务器 IP 地址或虚拟网络。 |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | 由于访问被拒绝错误，文件无法撤回。 如果存储帐户启用了防火墙和虚拟网络设置，且服务器无权访问存储帐户，则可能出现此问题。 | 若要解决此问题，请遵循部署指南中的[配置防火墙和虚拟网络设置](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)部分中所述的步骤来添加服务器 IP 地址或虚拟网络。 |
 | 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | 由于在 Azure 文件共享中无法访问该文件，因此该文件无法撤回。 | 若要解决此问题，请验证文件是否存在于 Azure 文件共享中。 如果文件存在于 Azure 文件共享中，请升级到最新的 Azure 文件同步[代理版本](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。 |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | 由于对存储帐户的授权失败，文件无法撤回。 | 若要解决此问题，请验证[Azure 文件同步是否有权访问存储帐户](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac)。 |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | 由于无法访问 Azure 文件共享，该文件未能撤回。 | 验证文件共享存在并且可访问。 如果删除并重新创建了文件共享，请执行同步失败中所述的步骤，[因为已删除并重新创建 Azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810)部分以删除并重新创建同步组。 |
-| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法撤回。 | 如果错误仍然存在，请调查哪些应用程序或内核模式驱动程序耗尽系统资源。 |
-| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 由于 insuffcient 内存，文件无法重新调用。 | 如果错误仍然存在，请调查是哪个应用程序或内核模式驱动程序导致内存不足的情况。 |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于磁盘空间不足，文件无法撤回。 | 若要解决此问题，请通过将文件移动到不同的卷，增加卷的大小，或者使用 StorageSyncCloudTiering cmdlet 将文件强制转换为级别，从而释放卷上的空间。 |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | 由于系统资源不足，文件无法撤回。 | 如果错误仍然存在，请调查耗尽了系统资源的应用程序或内核模式驱动程序。 |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | 由于 insuffcient 内存，文件无法重新调用。 | 如果错误仍然存在，请调查导致内存不足的应用程序或内核模式驱动程序。 |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | 由于磁盘空间不足，文件无法撤回。 | 要解决此问题，请将文件移到其他卷以释放卷的空间、增加卷大小，或使用 Invoke-StorageSyncCloudTiering cmdlet 强制文件分层。 |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>删除服务器终结点后，无法在服务器上访问分层文件
 如果在删除服务器终结点之前未重新调用这些文件，则服务器上的分层文件将无法访问。

@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心适用于 Azure Sentinel 配置的 IoT 指南（预览版） |Microsoft Docs
-description: 本操作方法指南介绍了如何将 Azure Sentinel 配置为从 Azure 安全中心接收 IoT 解决方案的数据。
+description: 介绍如何将 Azure Sentinel 配置为从 Azure 安全中心接收 IoT 解决方案的数据。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: f6e7eddd6ddbcec61c3d8d173891cbc9abaaf08f
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 082b33332051fee9da2aebe63b0c41edb300afaf
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463175"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303539"
 ---
 > [!IMPORTANT]
 > Azure Sentinel 中用于 IoT 数据连接器的 Azure 安全中心目前以公共预览版提供。
@@ -29,13 +29,13 @@ ms.locfileid: "77463175"
 在本指南中，了解如何将 Azure 安全中心的 IoT 数据连接到 Azure Sentinel。  
 
 > [!div class="checklist"]
-> * 必备条件 
+> * 先决条件 
 > * 连接设置
 > * Log Analytics 警报视图 
 
 将 Azure 安全中心的警报连接到 IoT，并将其直接流式传输到 Azure Sentinel。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 您必须具有工作区**读取**和**写入**权限。
 - 必须在相关 IoT 中心**启用** **用于 Iot 的 Azure 安全中心**。
@@ -48,10 +48,10 @@ ms.locfileid: "77463175"
 ## <a name="connect-to-azure-security-center-for-iot"></a>连接到 Azure 安全中心以进行 IoT
 
 1. 在 Azure Sentinel 中，选择 "**数据连接器**"，然后单击 "**用于 IoT 的 Azure 安全中心**" 磁贴。
-1. 在右下方的窗格中，单击 "**打开连接器页面**"。 
+1. 在右侧窗格的底部，单击 "**打开连接器" 页面**。 
 1. 单击要流式传输到 Azure Sentinel 的每个 IoT 中心订阅旁边的 "**连接**"。 
-    - 如果未在该集线器上启用 Azure 安全中心的 IoT，你会看到 "启用警告" 消息。 单击 "**启用**" 链接以启动该服务。 
-1. 你可以决定是否希望来自 Azure 安全中心的警报在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用默认分析规则，以便根据连接的安全服务中生成的警报自动创建事件。此规则可以在 "**分析** > **活动**规则" 下进行更改或编辑。
+    - 如果未在该集线器上启用 Azure 安全中心的 IoT，你将看到启用警告消息。 单击 "**启用**" 链接以启动和启用该服务。 
+1. 你可以决定是否希望来自 Azure 安全中心的警报在 Azure Sentinel 中自动生成事件。 在 "**创建事件**" 下，选择 "**启用**" 以启用规则，以便根据生成的警报自动创建事件。  此规则可以在 "**分析** > **活动**规则" 下进行更改或编辑。
 
 > [!NOTE]
 >更改连接后，可能需要10秒钟或更长时间才能刷新中心列表。 

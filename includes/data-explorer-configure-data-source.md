@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 11/03/2019
 ms.author: orspodek
-ms.openlocfilehash: f8b3e541dfd55bbd613af2791329a08402cf8670
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3cd9d017429b629acad39f5b902e842886c3c818
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581977"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304966"
 ---
 ## <a name="configure-the-data-source"></a>配置数据源
 
@@ -29,7 +29,7 @@ ms.locfileid: "73581977"
 
 1. 要创建服务主体，请按照 [Azure 门户文档](/azure/active-directory/develop/howto-create-service-principal-portal)中的说明进行操作。
 
-    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集。
+    1. 在[将应用程序分配给角色](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)部分，将“读取者”的角色类型分配给 Azure 数据资源管理器群集。
 
     1. 在 "[获取登录的值](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)" 部分中，复制 "步骤：**目录 ID** （租户 id）"、"**应用程序 id**" 和 "**密码**" 中介绍的三个属性值。
 
@@ -61,7 +61,7 @@ ms.locfileid: "73581977"
     }
     ```
 
-1. 获取订阅列表。
+1. 获取订阅的列表。
 
     ```azurecli
     az account list --output table

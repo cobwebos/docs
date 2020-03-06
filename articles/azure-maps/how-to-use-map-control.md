@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 9bcb0fd26710b5f44ca9e3e3715c40cb32b3c40d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 535707191557142054e493d0216b713312f53953
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368645"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps map 控件
 
@@ -27,23 +27,23 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
 
 2. 载入 Azure Maps Web SDK。 您可以选择以下两个选项之一：
 
-   1. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
+    * 通过在 HTML 文件的 `<head>` 元素中添加对 JavaScript 和样式表的引用，使用 Azure Maps Web SDK 的全球托管的 CDN 版本：
 
-      ```HTML
-       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+        ```
 
-   1. 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
+    * 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
 
-      > **npm 安装 azure-maps**
+        > **npm 安装 azure-maps**
 
-   然后，在该文件的 `<head>` 元素中添加对 Azure Maps 样式表和脚本源的引用：
+       然后，在该文件的 `<head>` 元素中添加对 Azure Maps 样式表和脚本源的引用：
 
-      ```HTML
-       <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-       <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-      ```
+        ```HTML
+        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
+        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
+        ```
 
     > [!Note]
     > 可以通过添加以下代码将 Typescript 定义导入到应用程序中：

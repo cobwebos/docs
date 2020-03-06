@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: f46dd2b30ca84a7e6a1b0fc34ef0fa5bafffaef5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/05/2020
+ms.openlocfilehash: 68b7dfbf61f5d353f394bfbc034e00fddd262cd1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721109"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344037"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -28,6 +28,8 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
     | [自动机器学习](#automated-machine-learning) | 通过自动化机器学习，**无需大量数据科学或编程知识即可定型模型**。 对于具有数据科学和编程背景的人员，它提供了一种方法，可通过自动化算法选择和超参数优化来节省时间和资源。 使用自动机器学习时，无需担心定义运行配置。 |
     | [估算](#estimators) | 利用估计器类，**可以轻松地根据常用机器学习框架来训练模型**。 **Scikit-learn**、 **PyTorch**、 **TensorFlow**和**Chainer**有估计器类。 还有一个泛型估计器，可用于尚无专用估计器类的框架。 使用估算时，无需担心定义运行配置。 |
     | [机器学习管道](#machine-learning-pipeline) | 管道并不是一种不同的定型方法，而是**使用模块化的可重用步骤定义工作流的一种方法**，该方法可以包含定型作为工作流的一部分。 机器学习管道支持使用自动机器学习、估算和运行配置来训练模型。 由于管道并非专门针对定型，因此使用管道的原因比其他培训方法更有不同。 通常情况下，可以在以下情况下使用管道：<br>* 你需要**计划无人参与的进程**，如长时间运行的培训作业或数据准备。<br>* 使用跨异类计算资源和存储位置协调的**多个步骤**。<br>* 将管道用作特定方案（如重新训练或批处理评分）的**可重用模板**。<br>* **跟踪和版本工作流的数据源、输入和输出**。<br>* 你的工作流**由单独处理特定步骤的不同团队实现**。 然后，可以在管道中将步骤联接在一起以实现工作流。 |
+
++ [适用于 Python 的 AZURE 机器学习 sdk](#r-sdk)： sdk 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
 
 + **设计器**： Azure 机器学习设计器（预览）提供了一个简单的入口点，可用于构建概念证明或几乎编码经验的用户。 它允许您使用拖放基于 web 的 UI 来训练模型。 您可以使用 Python 代码作为设计的一部分，或在不编写任何代码的情况下定型模型。
 
@@ -88,6 +90,15 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [示例：机器学习管道 Jupyter Notebook 示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [示例：具有自动机器学习的管道](https://aka.ms/pl-automl)
 * [示例：具有估算的管道](https://aka.ms/pl-estimator)
+
+## <a name="r-sdk"></a>R SDK
+
+R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用 reticulate 包绑定到 Azure 机器学习的 Python SDK。 这样，便可以从任何 R 环境访问 Python SDK 中实现的核心对象和方法。
+
+有关详细信息，请参阅以下文章：
+
+* [教程：创建逻辑回归模型](tutorial-1st-r-experiment.md)
+* [R 参考 Azure 机器学习 SDK](https://azure.github.io/azureml-sdk-for-r/index.html)
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 

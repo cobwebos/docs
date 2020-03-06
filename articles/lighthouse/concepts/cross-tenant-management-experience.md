@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 02/07/2020
+ms.date: 02/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
-ms.translationtype: MT
+ms.openlocfilehash: cb484ea936bbb64b3ca3d7fcf648de0d0ef73c66
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122049"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328674"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -131,7 +131,7 @@ Azure 委派资源管理可更灵活地管理多个客户的资源，而无需�
 
 - 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派资源管理不支持由资源类型的实例处理的请求（如 KeyVault 机密访问或存储数据访问）。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。 
 - 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除了所有者或具有 [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 权限的任何内置角色之外，Azure 委派资源管理当前支持其他所有内置角色。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
-- 目前，如果订阅使用 Azure Databricks，则无法为 Azure 委托资源管理载入订阅（或订阅内的资源组）。 同样，如果订阅已注册为通过 Microsoft.ManagedServices 资源提供程序加入，则目前无法为该订阅创建 Databricks 工作区。
+- 虽然你可以将使用 Azure Databricks 的订阅加入其中，但管理租户中的用户目前无法在委派的订阅上启动 Azure Databricks 工作区。
 - 虽然可以为具有资源锁的 Azure 委托资源管理加入订阅和资源组，但这些锁不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](../../role-based-access-control/deny-assignments.md)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，此时客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。
 
 ## <a name="next-steps"></a>后续步骤

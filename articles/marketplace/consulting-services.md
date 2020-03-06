@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: evansma
-ms.openlocfilehash: 50e5be309d56f58a79fa19b5270a0b6d2fd3db92
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268239"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296145"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure 市场和 AppSource 的咨询服务
 Azure 市场和 AppSource 中的咨询服务使 Microsoft 合作伙伴可实现将客户与服务相连以支持和扩展他们对 Azure 的使用的目标以及业务目标。 
@@ -39,7 +39,7 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 基于可以在 Azure Marketplace 上列出的 Microsoft Azure 的咨询服务和托管服务产品/服务。 有关详细信息，请参阅有关[发布 azure 咨询服务](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)和将[托管服务产品发布到 Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)的文章。
 
 > [!Note]
-> Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 ** AppSource 中的咨询服务应利用面向其在为 Dynamics 365、Power BI 或 PowerApps 提供高质量解决方案方面的专业知识的产品，在 AppSource 上列出其咨询服务
+> Azure 市场中的咨询服务应利用为**技术人员提供的产品，着重于 Azure 技术解决方案和服务。 \* * AppSource 中的咨询服务应利用专用于其专业知识的产品，为 Dynamics 365、Power BI 或 Power Apps 提供优质解决方案，以便在 AppSource 上列出其咨询服务产品
 > 
 > 
 > [!TIP]
@@ -65,9 +65,9 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 | Dynamics 365 销售 <br> Dynamics 365 营销 <br> Dynamics 365 客户服务 <br> Dynamics 365 现场服务 <br> Dynamics 365 人力资源 |   必须是[云 Business Applications 资格](https://partner.microsoft.com/membership/cloud-business-applications-competency)认证中的金牌或银认证。    | 
 | Dynamics 365 财务 <br> Dynamics 365 供应链管理 <br> Dynamics 365 商业 <br> Dynamics 365 人力资源 <br> Dynamics 365 项目服务自动化 |  必须是[云 Business Applications 资格](https://partner.microsoft.com/membership/cloud-business-applications-competency)认证中的金牌或银认证选项。       |
 | Dynamics 365 Customer Insights | 至少必须有1个成功的[Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/)的生产内实现，且至少有5个度量值和5个段。 |
-| Dynamics 365 Business Central | 必须是[企业资源计划资格](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)中的金牌或银认证，并且必须是至少3个业务中心客户的云解决方案提供商。 <br> <br> 或 <br> <br> 必须已[在 AppSource 中发布业务中心应用程序](https://appsource.microsoft.com/) |
+| Dynamics 365 Business Central | 必须是[企业资源计划资格](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)中的金牌或银认证，并且必须是至少3个业务中心客户的云解决方案提供商。 <br> <br> 或者 <br> <br> 必须已[在 AppSource 中发布业务中心应用程序](https://appsource.microsoft.com/) |
 | Power BI | 必须在 " [Power BI 合作伙伴" 展示](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=)上列出。|
-|Power Apps | 必须符合[PowerApps 合作计划](https://aka.ms/PowerAppsPartner)中的高级权益。 |
+|Power Apps | 必须符合[Power Apps 合作关系计划](https://aka.ms/PowerAppsPartner)中的高级权益。 |
 
 其他资源和支持：
 
@@ -80,12 +80,12 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 
 |   |   |   |   |
 |---------|----------|----------|----------|
-| 澳大利亚 | 比利时 | Canada | 丹麦 |
-| 芬兰  | 法国 | 德国  | 印度   |
+| 澳大利亚 | 比利时 | 加拿大 | 丹麦 |
+| 芬兰  | France | Germany  | 印度   |
 | 意大利    | 日本  |  墨西哥  |  荷兰  |
 |  新西兰  |  挪威  |  波兰  | 南非 |
-|  西班牙  | 瑞典  | 瑞士  |  United States  |
-| United Kingdom  |
+|  西班牙  | 瑞典  | 瑞士  |  美国  |
+| 英国  |
 
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>如何在 Azure 市场和 AppSource 中注册咨询服务
@@ -158,7 +158,7 @@ Azure Marketplace 和 AppSource 支持 Microsoft 的系统集成商（SI）合�
 
 在审核“产品/服务说明”和“产品/服务摘要”时，审核团队会应用以下标准：
 
-|产品/服务类型  |必选 |建议  |
+|产品/服务类型  |必需 |建议  |
 |---------|---------|---------|
 |**评估**    |   包括一个详细的适用于多日或多周评估的议程，并说明客户预期可以获得的可交付结果      |    使用最常用的搜索引擎优化关键字来优化产品/服务摘要     |
 |**简报**    |   说明客户预期可以获得的可交付结果。 请记住，简报必须面对面提供。 如果提供的是虚拟服务，请选择另一产品/服务类型    |  使用最常用的搜索引擎优化关键字来优化产品/服务摘要       |

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d35241850d60e82b79bba0384f60c40e3ecd6427
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192517"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304185"
 ---
 # <a name="load-balancer-outbound-rules"></a>负载均衡器出站规则
 
@@ -206,7 +206,6 @@ disableOutboundSNAT 参数默认为 false，这意味着，负载均衡规则**�
 - 每个前端 IP 地址的最大可用临时端口数为 64,000。
 - 可配置的出站空闲超时范围为 4 到 120 分钟（240 到 7200 秒）。
 - 负载均衡器不支持将 ICMP 用于出站 NAT。
-- 不能使用门户来配置或查看出站规则。  请改为使用模板、REST API、Az CLI 2.0 或 PowerShell。
 - 出站规则只能应用于 NIC 的主 IP 配置。  支持多个 Nic。
 
 ## <a name="next-steps"></a>后续步骤

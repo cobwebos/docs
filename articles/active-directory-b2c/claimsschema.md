@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4c3b3318e941723ec333597c7e4b3e48710152d1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189918"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78397811"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -56,8 +56,11 @@ ClaimType 元素包含以下元素：
 | Mask | 0:1 | 显示声明时可以应用的掩码字符的可选字符串。 例如，电话号码 324-232-4343 可以屏蔽为 XXX-XXX-4343。 |
 | UserHelpText | 0:1 | 可帮助用户了解其用途的声明类型的说明。 可将值[本地化](localization.md)。 |
 | UserInputType | 0:1 | 应在手动输入声明类型的声明数据时可供用户使用的输入控制的类型。 请参阅稍后在此页中定义的用户输入类型。 |
+| AdminHelpText | 0:1 | 声明类型的说明，可帮助管理员了解其用途。 |
 | 限制 | 0:1 | 此声明的值限制，如正则表达式 (Regex) 或可接受值的列表。 可将值[本地化](localization.md)。 |
 PredicateValidationReference| 0:1 | 对 **PredicateValidationsInput** 元素的引用。 **PredicateValidationReference** 元素可用于执行验证过程，以确保仅输入格式正确的数据。 有关详细信息，请参阅 [Predicates](predicates.md)。 |
+
+
 
 ### <a name="datatype"></a>数据类型
 

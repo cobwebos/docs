@@ -2,15 +2,15 @@
 title: 从 Azure VM 载入“更新管理”、“更改跟踪”和“清单”解决方案
 description: 了解如何载入包含属于 Azure 自动化的“更新管理”、“更改跟踪”和“清单”解决方案的 Azure 虚拟机。
 services: automation
-ms.date: 03/20/2019
+ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421822"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299514"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入“更新管理”、“更改跟踪”和“清单”解决方案
 
@@ -22,13 +22,17 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ## <a name="enable-the-solutions"></a>启用解决方案
 
-转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 无论自动化帐户的位置如何，虚拟机都可以存在于任何区域中。 从 VM 载入解决方案时，需要具有 `Microsoft.OperationalInsights/workspaces/read` 的权限来确定 VM 是否载入到工作区。 若要了解常规所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding)。
+首先，在 VM 上启用一个或全部三个解决方案：
 
-若要仅为 VM 启用解决方案，请确保已选择“为此 VM 启用”。 若要将多台计算机加入到解决方案中，请选择“为此订阅中的 VM 启用”，然后选择“单击以选择要启用的计算机”。 若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
+1. 在[Azure 门户](https://portal.azure.com)中，从左侧窗格中选择 "**虚拟机**"，或从**主页**中搜索并选择 "**虚拟机**"。
+2. 选择要为其启用解决方案的 VM。
+3. 在 "VM" 页的 "**操作**" 下，选择 "**更新管理**"、"**清单**" 或 "**更改跟踪**"。 无论自动化帐户的位置如何，虚拟机都可以存在于任何区域中。 从 VM 载入解决方案时，需要具有 `Microsoft.OperationalInsights/workspaces/read` 的权限来确定 VM 是否载入到工作区。 若要了解所需的其他权限，请参阅[板载计算机所需的权限](automation-role-based-access-control.md#onboarding)。
+
+若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
 
 选择 Azure Log Analytics 工作区和自动化帐户，然后选择“启用”以启用此解决方案。 启用此解决方案最长需要 15 分钟的时间。
 
-![载入“更新管理”解决方案](media/automation-onboard-solutions-from-vm/onboard-solution.png)
+![载入“更新管理”解决方案](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
 请转到其他解决方案，然后选择“启用”。 已禁用 "Log Analytics 工作区和自动化帐户" 下拉列表，因为这些解决方案使用的工作区和自动化帐户与以前启用的解决方案相同。
 
@@ -37,7 +41,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ## <a name="scope-configuration"></a>作用域配置
 
-每个解决方案在工作区中使用作用域配置来确定获取解决方案的计算机。 作用域配置是包含一个或多个已保存搜索的组，这些搜索用来将解决方案的作用域限制为特定计算机。 若要访问作用域配置，请在自动化帐户中的“相关资源”下选择“工作区”。 在工作区中的“工作区数据源”下选择“作用域配置”。
+每个解决方案在工作区中使用作用域配置来确定获取解决方案的计算机。 作用域配置是包含一个或多个已保存搜索的组，这些搜索用来将解决方案的作用域限制为特定计算机。 若要访问作用域配置，请在自动化帐户中的 "**相关资源**" 下选择 "**工作区**"。 在工作区中的 "**工作区数据源**" 下，选择 "**作用域配置**"。
 
 如果所选工作区中还没有“更新管理”或“更改跟踪”解决方案，则将创建以下作用域配置：
 
@@ -55,7 +59,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 转到你的工作区。 在“常规”下，选择“保存的搜索”。 下表中将显示这些解决方案使用的两个已保存搜索：
 
-|名称     |类别  |别名  |
+|名称     |类别  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新        | Updates__MicrosoftDefaultComputerGroup         |
@@ -83,7 +87,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
-   ![“取消链接工作区”页](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png)。
+   ![“取消链接工作区”页](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    系统会提示用户确认是否要继续。
 
@@ -91,9 +95,9 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
-* 更新计划 - 每个计划都将具有与所创建的更新部署匹配的名称
+* 更新计划-每个计划都具有与创建的更新部署匹配的名称。
 
-* 为解决方案创建的混合辅助角色组 - 每个混合辅助角色组的命名都将类似于 machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8。
+* 为解决方案创建的混合辅助角色组-每个组的名称类似于 com_9ceb8108 machine1-26c9-4051-b6b3-227600d715c8）。
 
 如果使用了“在非工作时间启动/停止 VM”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 
@@ -115,5 +119,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 继续学习有关解决方案的教程来了解如何使用它们：
 
 * [教程 - 管理 VM 的更新](automation-tutorial-update-management.md)
+
 * [教程 - 识别 VM 上的软件](automation-tutorial-installed-software.md)
+
 * [教程 - 对 VM 上的更改进行故障排除](automation-tutorial-troubleshoot-changes.md)

@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中查看 Azure AD 角色的审核报告-Azure AD |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中查看 Azure AD 角色的审核历史记录。
+title: 查看 Azure AD PIM 中 Azure AD 角色的审核日志报告 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management （PIM）中查看 Azure AD 角色的审核日志历史记录。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 01/07/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329490"
 ---
-# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中查看 Azure AD 角色的审核历史记录
+# <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>查看 Privileged Identity Management 中 Azure AD 角色的审核历史记录
 
 你可以使用 Privileged Identity Management （PIM）审核历史记录查看过去30天内所有特权角色的所有角色分配和激活。 若要查看 Azure Active Directory （Azure AD）组织中活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用[Azure Active Directory 安全和活动报告](../reports-monitoring/overview-reports.md)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "77498493"
 1. 使用 "[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)" 角色的用户登录到[Azure 门户](https://portal.azure.com/)。
 1. 打开“Azure AD Privileged Identity Management”。 如果在 "概述" 页顶部有一个横幅，请按照本文的 "**新版本**" 选项卡中的说明进行操作。 否则，请按照 "以前的**版本**" 选项卡中的说明进行操作。
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "选择版本的选项卡")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
@@ -50,7 +50,7 @@ ms.locfileid: "77498493"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![包含筛选器的资源审核列表](media/pim-how-to-use-audit-log/resource-audit.png)
+    ![包含筛选器的资源审核列表](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>查看我的审核
 
@@ -66,7 +66,7 @@ ms.locfileid: "77498493"
 
 1. 可以使用预定义的日期或自定义范围筛选历史记录。
 
-    ![当前用户的审核列表](media/pim-how-to-use-audit-log/audit-time-span.png)
+    ![当前用户的审核列表](media/azure-pim-resource-rbac/my-audit-time.png)
 
 # <a name="previous-version"></a>[先前版本](#tab/previous)
 
@@ -84,7 +84,7 @@ ms.locfileid: "77498493"
 
     根据您的审核历史记录，将显示一个柱形图以及每日激活总数、每日最大激活次数以及每天激活的平均次数。
 
-    ![目录角色审核历史记录](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/directory-roles-audit-history.png "查看目录角色审核历史记录")](media/pim-how-to-use-audit-log/directory-roles-audit-history.png)
 
     在页面的底部，会显示一个表，其中包含有关可用审核历史记录中每个操作的信息。 列具有以下含义：
 
@@ -113,6 +113,28 @@ ms.locfileid: "77498493"
     ![更新图表参数窗格](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
 1. 选择 "**完成**" 以查看筛选的审核历史记录。
+
+## <a name="get-reason-approver-and-ticket-number-for-approval-events"></a>获取批准事件的原因、审批者和票证编号
+
+1. 以具有特权的角色管理员角色权限登录到[Azure 门户](https://aad.portal.azure.com)，并打开 Azure AD。
+1. 选择 "**审核日志**"。
+1. 使用**服务**筛选器仅显示特权标识管理服务的审核事件。 在 "**审核日志**" 页上，您可以：
+
+    - 请参阅**状态原因**列中的审核事件的原因。
+    - 对于 "将成员添加到角色请求已批准" 事件，请参阅 "**启动者（参与者）** " 列中的审批者。
+
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/filter-audit-logs.png "筛选 PIM 服务的审核日志")](media/pim-how-to-use-audit-log/filter-audit-logs.png)
+
+1. 选择 "审核日志" 事件，以在 "**详细信息**" 窗格中的 "**活动**" 选项卡上查看票证编号。
+  
+    [![Azure AD 角色新版本](media/pim-how-to-use-audit-log/audit-event-ticket-number.png "检查审核事件的票证编号")](media/pim-how-to-use-audit-log/audit-event-ticket-number.png)
+
+1. 您可以在 "**详细信息**" 窗格的 "**目标**" 选项卡上查看审核事件的请求者（激活该角色的人员）。 Azure AD 角色有两种目标类型：
+
+    - Role （**Type** = role）
+    - 请求者（**Type** = User）
+
+通常，批准事件的紧上方的审核日志事件是 "将成员添加到角色已完成" 的事件，其中**由（参与者）启动**的是请求者。 在大多数情况下，你无需从审核角度查找审批请求中的请求者。
 
 ---
 

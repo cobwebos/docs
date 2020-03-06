@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 11/05/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fe9cee44970da94c346caffc0d5fe76ffebf4a0b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845158"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402489"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>使用 CLI 扩展进行 Azure 机器学习
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,9 +31,9 @@ Azure 机器学习 CLI 是 [Azure CLI](https://docs.microsoft.com/cli/azure/?vie
 
 CLI 不能取代 Azure 机器学习 SDK。 它是一种补充工具，经过优化，可处理高度参数化的任务，这些任务非常适合自动化。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* 若要使用 CLI，必须拥有 Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)。
 
@@ -311,7 +311,7 @@ az extension remove -n azure-cli-ml
 
 下表详细说明了 JSON 文件中的每个顶级字段、类型和说明。 如果对象类型已链接到 Python SDK 中的类，则在 Python 类中的每个 JSON 字段与公共变量名称之间存在松1:1 匹配。 在某些情况下，字段可能会映射到构造函数参数，而不是类变量。 例如，"`environmentVariables`" 字段映射到[`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)类中的 `environment_variables` 变量。
 
-| JSON 字段 | 类型 | Description |
+| JSON 字段 | 类型 | 说明 |
 |---|---|---|
 | `name` | `string` | 环境的名称。 不要以**Microsoft**或**AzureML**开头。 |
 | `version` | `string` | 环境的版本。 |

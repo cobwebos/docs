@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/04/2019
-ms.openlocfilehash: c35afe6e3d6ec74e8fc7cd134f533d1e618c820e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/05/2020
+ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845736"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399106"
 ---
 # <a name="monitoring-azure-machine-learning"></a>监视 Azure 机器学习
 
@@ -28,9 +28,9 @@ ms.locfileid: "76845736"
 > * [通过 MLflow 跟踪试验](how-to-use-mlflow.md)
 > * [用 TensorBoard 进行可视化运行](how-to-monitor-tensorboard.md)
 
-## <a name="azure-monitor"></a>Azure 监视器
+## <a name="azure-monitor"></a>Azure Monitor
 
-Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中的一个完整 stack 监视服务。 Azure Monitor 提供了一组完整的功能来监视 Azure 资源。 它还可以监视其他云和本地的资源。
+Azure 机器学习使用 Azure Monitor 来记录监视数据，Azure Monitor 是 Azure 中的一个完整堆栈监视服务。 Azure Monitor 提供了一组完整的功能来监视 Azure 资源。 它还可以监视其他云和本地的资源。
 
 从[Azure Monitor 概述](/azure/azure-monitor/overview)一文开始，其中概述了监视功能。 以下各节通过提供有关将 Azure Monitor 与 Azure 机器学习结合使用的细节来构建此信息。
 
@@ -38,7 +38,7 @@ Azure 机器学习使用 Azure Monitor 来记录监视数据，这是 Azure 中�
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>监视 Azure 机器学习中的数据
 
-Azure 机器学习会收集与其他 Azure 资源相同的监视数据，如[监视 Azure 资源的数据](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 有关 Azure 机器学习创建的日志和指标的详细参考信息，请参阅[Azure 机器学习监视数据参考](monitor-resource-reference.md)。
+Azure 机器学习会收集与其他 Azure 资源类型相同的监视数据，如[监视 Azure 资源中的数据](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data)中所述。 有关 Azure 机器学习创建的日志和指标的详细参考信息，请参阅[Azure 机器学习监视数据参考](monitor-resource-reference.md)。
 
 ## <a name="analyzing-metric-data"></a>分析指标数据
 
@@ -62,7 +62,7 @@ Azure 机器学习的所有指标位于命名空间**机器学习服务工作区
 
 下表列出了 Azure 机器学习的常见和建议的指标警报规则：
 
-| 警报类型 | 条件 | Description |
+| 警报类型 | 条件 | 说明 |
 |:---|:---|:---|
 | 模型部署失败 | 聚合类型： Total、Operator：大于，阈值：0 | 当一个或多个模型部署失败时 |
 | 配额使用率百分比 | 聚合类型： Average、Operator：大于、阈值：90| 当配额使用率百分比大于90% 时 |
@@ -85,7 +85,7 @@ Azure 机器学习的所有指标位于命名空间**机器学习服务工作区
 
 你可以配置以下 Azure 机器学习的日志：
 
-| 类别 | Description |
+| 类别 | 说明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure 机器学习计算群集中的事件。 |
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集中的节点的事件。 |
@@ -100,7 +100,7 @@ Azure 机器学习的所有指标位于命名空间**机器学习服务工作区
 
 Azure Monitor 日志中的数据存储在表中，每个表都具有自己的唯一属性集。 Azure 机器学习将数据存储在下表中：
 
-| 表 | Description |
+| 表 | 说明 |
 |:---|:---|
 | AmlComputeClusterEvent | Azure 机器学习计算群集中的事件。 |
 | AmlComputeClusterNodeEvent | Azure 机器学习计算群集中的节点的事件。 |

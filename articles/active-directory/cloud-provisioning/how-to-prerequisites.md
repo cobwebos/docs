@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909034"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298643"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 云预配的先决条件
 本文提供了有关如何选择和使用 Azure Active Directory （Azure AD）将云预配作为标识解决方案进行连接的指导。
@@ -26,7 +26,7 @@ ms.locfileid: "76909034"
 ## <a name="cloud-provisioning-agent-requirements"></a>云设置代理要求
 你需要以下内容才能使用 Azure AD Connect 云预配：
     
-- Azure AD 租户的全局管理员帐户。
+- 不是来宾用户的 Azure AD 租户的全局管理员帐户。
 - 使用 Windows 2012 R2 或更高版本的预配代理的本地服务器。
 - 本地防火墙配置。
 
@@ -39,6 +39,10 @@ ms.locfileid: "76909034"
 
 1. 在 Azure AD 租户中创建仅限云的全局管理员帐户。 这样，你就可以在本地服务出现故障或不可用时管理租户的配置。 了解如何[添加仅限云的全局管理员帐户](../active-directory-users-create-azure-portal.md)。 完成此步骤对确保你不会受到租户的锁定至关重要。
 1. 在 Azure AD 租户中添加一个或多个[自定义域名](../active-directory-domains-add-azure-portal.md)。 用户可以使用其中一个域名登录。
+
+### <a name="in-your-directory-in-active-directory"></a>在目录中 Active Directory
+
+运行[IdFix 工具](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)，为同步准备目录属性。
 
 ### <a name="in-your-on-premises-environment"></a>在本地环境中
 
@@ -67,7 +71,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 ![验证端口可访问性](media/how-to-install/verify2.png)
 
-### <a name="additional-requirements"></a>其他要求
+### <a name="additional-requirements"></a>其他需求
 - [Microsoft .NET 框架4.7。1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS 要求

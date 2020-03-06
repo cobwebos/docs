@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8faf223a4871f6f109f9d133716989b1bcfdee08
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 04dfa6a028cf7c44bf99c665b396d51d8a0f3cef
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871170"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303182"
 ---
 # <a name="floor-azure-cosmos-db"></a>楼层（Azure Cosmos DB）
  返回小于或等于指定数值表达式的最大整数。  
@@ -26,7 +26,7 @@ FLOOR (<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,11 +40,15 @@ FLOOR (<numeric_expr>)
 SELECT FLOOR(123.45) AS fl1, FLOOR(-123.45) AS fl2, FLOOR(0.0) AS fl3  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{fl1: 123, fl2: -124, fl3: 0}]  
-```  
+```
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

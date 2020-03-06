@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 624f5c91a9d2a0eb4744d310120050d0d5ccef4e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c019424241bc07d5a5d2cc19a64685c476f94548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349845"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303811"
 ---
 # <a name="is_number-azure-cosmos-db"></a>IS_NUMBER （Azure Cosmos DB）
  返回一个布尔值，指示指定表达式的类型是否为数字。  
@@ -47,11 +47,15 @@ SELECT
     IS_NUMBER({prop: "value"}.prop2) AS isNum7  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"isNum1":false,"isNum2":true,"isNum3":false,"isNum4":false,"isNum5":false,"isNum6":false,"isNum7":false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

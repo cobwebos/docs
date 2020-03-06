@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 40ecb26e7ac782d7831e6ef94c9d3cfc6a370cbb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 07a339d82f5e4bea1ea0412a5d5b19522611b54a
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349329"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296110"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN （Azure Cosmos DB）
  返回一个布尔表达式，指示第一个参数中指定的 GeoJSON 对象（点、多边形或 LineString）是否在第二个参数中的 GeoJSON（点、多边形或 LineString）内。  
@@ -34,22 +34,26 @@ ST_WITHIN (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ST_WITHIN` 查找多边形内的所有家族文档。  
+  下面的示例演示如何使用 `ST_WITHIN`在多边形内查找所有家族文档。  
   
 ```sql
-SELECT f.id   
-FROM Families f   
+SELECT f.id
+FROM Families f
 WHERE ST_WITHIN(f.location, {  
-    'type':'Polygon',   
+    'type':'Polygon',
     'coordinates': [[[31.8, -5], [32, -5], [32, -4.7], [31.8, -4.7], [31.8, -5]]]  
 })  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{ "id": "WakefieldFamily" }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[地理空间索引](index-policy.md#spatial-indexes)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

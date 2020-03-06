@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: cef572eaf879110fd52657ac358f1261f594692d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349623"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302230"
 ---
 # <a name="radians-azure-cosmos-db"></a>RADIANS （Azure Cosmos DB）
- 返回输入的数值表达式（度）的弧度。  
+ 对于在数值表达式中输入的度数值返回弧度值。  
   
 ## <a name="syntax"></a>语法
   
@@ -26,7 +26,7 @@ RADIANS (<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,7 +40,7 @@ RADIANS (<numeric_expr>)
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
 ```  
   
-  结果集如下。  
+  下面是结果集：  
   
 ```json
 [{  
@@ -51,6 +51,10 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
        "r5": 3.4402174274458375  
    }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

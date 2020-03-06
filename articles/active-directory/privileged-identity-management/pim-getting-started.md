@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/09/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0ba7846b60ca6649b4342d5096e92dfd8c96601
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 733743f4680f3197a1754d87b4672641b2321907
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756315"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399333"
 ---
 # <a name="start-using-privileged-identity-management"></a>开始使用 Privileged Identity Management
 
@@ -27,7 +27,7 @@ ms.locfileid: "72756315"
 
 本文介绍如何启用和开始使用 Privileged Identity Management。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Privileged Identity Management，则必须具有以下许可证之一：
 
@@ -62,7 +62,7 @@ ms.locfileid: "72756315"
 
     ![选择帐户窗口以验证你的身份](./media/pim-getting-started/pick-account.png)
 
-1. 如果需要更多信息才能进行验证，系统会引导你完成相关过程。 有关详细信息，请参阅[获取有关双重验证的帮助](https://go.microsoft.com/fwlink/p/?LinkId=708614)。
+1. 如果需要更多信息才能进行验证，系统会引导你完成相关过程。 有关详细信息，请参阅[获取有关双重验证的帮助](../user-help/multi-factor-authentication-end-user-troubleshoot.md)。
 
     ![如果你的组织需要更多信息，则需要更多详细信息窗口](./media/pim-getting-started/more-information-required.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "72756315"
 
 ![导航窗口中 Privileged Identity Management 显示任务和管理选项](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 任务 + 管理 | 描述 |
+| 任务 + 管理 | 说明 |
 | --- | --- |
 | **我的角色**  | 显示已向你分配的符合条件的活动角色列表。 可以在此处激活任何符合条件的已分配角色。 |
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |
@@ -115,7 +115,7 @@ ms.locfileid: "72756315"
 
 为了更轻松地打开 Privileged Identity Management，应将 Privileged Identity Management 磁贴添加到 Azure 门户仪表板。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 单击“所有服务”，并查找 **Azure AD Privileged Identity Management** 服务。
 

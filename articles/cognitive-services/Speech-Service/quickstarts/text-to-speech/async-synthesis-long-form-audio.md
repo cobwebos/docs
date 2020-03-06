@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: afa9437a00c6f30688c7942feea94f7db7ed490a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d3cd330001bcf53e7bd4fb9e6955c76a9ef20511
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919339"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331070"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入门： Python 中长格式音频的异步合成（预览版）
 
@@ -24,13 +24,13 @@ ms.locfileid: "77919339"
 > [!NOTE]
 > 用于长格式音频的异步合成只能与[自定义神经语音](../../how-to-custom-voice.md#custom-neural-voices)一起使用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要：
 
 * Python 2.7. x 或1.x。
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、 [Visual Studio Code](https://code.visualstudio.com/download)或你喜欢的文本编辑器。
-* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建一个 Azure 帐户](../../get-started.md#new-resource)，并[创建一个语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)以获取密钥。 创建语音资源时，请确保将定价层设置为**S0**，并将位置设置为[受支持的区域](../../regions.md#standard-and-neural-voices)。
+* 一个 Azure 订阅和一个语音服务订阅密钥。 [创建一个 Azure 帐户](../../get-started.md#new-resource)，并[创建一个语音资源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-resource)以获取密钥。 创建语音资源时，请确保将定价层设置为**S0**，并将位置设置为[受支持的区域](../../regions.md#standard-and-neural-voices)。
 
 ## <a name="create-a-project-and-import-required-modules"></a>创建一个项目并导入必需的模块
 
@@ -85,7 +85,7 @@ if args.voices:
 * 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
 * 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
 
-运行以下命令：
+运行此命令：
 
 ```console
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
@@ -253,7 +253,7 @@ if args.delete:
 * 将 `<your_key>` 替换为语音服务订阅密钥。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
 * 将 `<region>` 替换为在其中创建了语音资源的区域（例如： `eastus` 或 `westus`）。 此信息可在[Azure 门户](https://aka.ms/azureportal)中资源的 "**概述**" 选项卡中找到。
 
-运行以下命令：
+运行此命令：
 
 ```console
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
@@ -277,7 +277,7 @@ ID : xxx , Name : xxx : Succeeded
 > [!NOTE]
 > 不能删除或删除状态为 "正在运行"/"正在等待" 的请求。
 
-运行以下命令：
+运行此命令：
 
 ```console
 python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>

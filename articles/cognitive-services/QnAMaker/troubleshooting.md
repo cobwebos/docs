@@ -4,12 +4,12 @@ description: 有关 QnA Maker 服务的最常见问题的特选列表将有助�
 ms.topic: troubleshooting
 ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 37aae8e67ccc84a6e22be8ce8a304fc4884ead52
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273398"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78296093"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -224,7 +224,7 @@ ms.locfileid: "78273398"
 <details>
 <summary><b>如何使用 QnA Maker 创建新的机器人？</b></summary>
 
-**答案**：按照[本](./Tutorials/create-qna-bot.md)文档中的说明，通过 Azure Bot 服务创建机器人。
+**答案**：按照[本](./Quickstarts/create-publish-knowledge-base.md)文档中的说明，通过 Azure Bot 服务创建机器人。
 
 </details>
 
@@ -255,7 +255,7 @@ ms.locfileid: "78273398"
 
 **答**：请按照以下步骤将 QnA Maker 服务作为 web 聊天控件嵌入到你的网站中：
 
-1. 按照[此处](./Tutorials/create-qna-bot.md)的说明创建常见问题解答机器人。
+1. 按照[此处](./Quickstarts/create-publish-knowledge-base.md)的说明创建常见问题解答机器人。
 2. 按照[此处](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)的步骤启用 Web 聊天
 
 </details>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 115667c93bbb832926a7939cf250a02b6fef8baa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873482"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303471"
 ---
 # <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS （Azure Cosmos DB）
 返回一个布尔，它指示数组是否包含指定的值。 可以通过在命令中使用布尔表达式来检查对象的部分匹配或完全匹配。 
@@ -48,7 +48,7 @@ SELECT
            ARRAY_CONTAINS(["apples", "strawberries", "bananas"], "mangoes") AS b2  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"b1": true, "b2": false}]  
@@ -63,16 +63,19 @@ SELECT
     ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) AS b3 
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{
   "b1": true,
   "b2": false,
   "b3": false
-}] 
-```  
-  
+}]
+```
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 如何返回数组表达式的一部分的�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3c65886eabfa87f729e18fb854aca6662d1d6fac
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871782"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303318"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE （Azure Cosmos DB）
  返回部分数组表达式。
@@ -53,7 +53,7 @@ SELECT
   
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{  
@@ -66,6 +66,10 @@ SELECT
            "s7": [] 
 }]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

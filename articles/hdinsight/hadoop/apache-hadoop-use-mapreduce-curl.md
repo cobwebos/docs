@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 607020f1d540e83a4d049b96b9ab9a4ebcd385f0
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157247"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302706"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业
 
@@ -22,7 +22,7 @@ ms.locfileid: "76157247"
 > [!NOTE]  
 > 如果已熟悉如何使用基于 Linux 的 Hadoop 服务器，但刚接触 HDInsight，请参阅 [HDInsight 上的基于 Linux 的 Apache Hadoop 须知信息](../hdinsight-hadoop-linux-information.md)文档。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Hadoop 群集。 请参阅[使用 Azure 门户创建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76157247"
 > [!NOTE]  
 > 使用 Curl 或者与 WebHCat 进行任何其他形式的 REST 通信时，必须通过提供 HDInsight 群集管理员用户名和密码对请求进行身份验证。 必须使用群集名称作为用来向服务器发送请求的 URI 的一部分。
 >
-> REST API 使用[basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)（基本访问验证）进行保护。 应该始终通过使用 HTTPS 来发出请求，以确保安全地将凭据发送到服务器。
+> REST API 使用[basic access authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)（基本访问验证）进行保护。 你应该始终通过使用 HTTPS 来发出请求，以确保安全地将凭据发送到服务器。
 
 ### <a name="curl"></a>Curl
 
@@ -171,7 +171,7 @@ ms.locfileid: "76157247"
 
 1. 在作业的状态更改为 `SUCCEEDED` 后，可以从 Azure Blob 存储中检索作业的结果。 随查询一起传递的 `statusdir` 参数包含输出文件的位置。 在本示例中，位置为 `/example/curl`。 此地址在群集默认存储的 `/example/curl` 中存储作业的输出。
 
-可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 列出并下载这些文件。 有关从 Azure CLI 中使用 blob 的详细信息，请参阅[将 Azure CLI 与 Azure 存储配合使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)文档。
+可以使用 [Azure CLI](/cli/azure/install-azure-cli) 列出并下载这些文件。 有关使用 Azure CLI 来处理 Azure Blob 存储的详细信息，请参阅[快速入门：使用 Azure CLI 创建、下载和列出 blob](../../storage/blobs/storage-quickstart-blobs-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

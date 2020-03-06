@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7495c6b114e232a9aad0075e173abebcb3c92cd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 4ce56b64502904308f45c74a5471447d93419452
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273594"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303046"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure 自动化中的变量资产
 
@@ -35,9 +35,6 @@ ms.locfileid: "78273594"
 Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerShell 模块随附的[AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) cmdlet 检索其值。 检索加密值的唯一方法是使用 runbook 或 DSC 配置中的**get-automationvariable**活动。
 
 >[!NOTE]
->如果要删除变量的加密，则必须删除该变量，并将其重新创建为未加密。
-
->[!NOTE]
 >本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。 若要详细了解新的 Az 模块和 AzureRM 兼容性，请参阅[新 Azure Powershell Az 模块简介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有关混合 Runbook 辅助角色上的 Az module 安装说明，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 对于你的自动化帐户，可使用[如何在 Azure 自动化中更新 Azure PowerShell 模块](../automation-update-azure-modules.md)，将模块更新到最新版本。
 
 ## <a name="variable-types"></a>变量类型
@@ -45,7 +42,7 @@ Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerSh
 使用 Azure 门户创建变量时，必须从下拉列表中指定数据类型，以便门户可以显示用于输入变量值的相应控件。 下面是 Azure Automation 中的可用变量类型：
 
 * String
-* Integer
+* 整数
 * DateTime
 * Boolean
 * Null
@@ -96,6 +93,9 @@ Azure Automation 安全地存储每个加密变量。 不能使用 Azure PowerSh
 1. 在自动化帐户中，单击“资产”磁贴，然后在“资产”边栏选项卡中选择“变量”。
 2. 在“变量”磁贴中，选择“添加变量”。
 3. 完成 "**新建变量**" 边栏选项卡上的选项，然后单击 "**创建**" 以保存新变量。
+
+>[!NOTE]
+>如果要删除变量的加密，则必须删除该变量，并将其重新创建为未加密。
 
 ### <a name="create-a-new-variable-with-windows-powershell"></a>使用 Windows PowerShell 创建新变量
 

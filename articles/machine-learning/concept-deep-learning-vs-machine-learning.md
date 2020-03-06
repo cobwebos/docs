@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 11/04/2019
-ms.openlocfilehash: 1217028dc6c206633f13fe44951732809cd72d22
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/05/2020
+ms.openlocfilehash: a930dc3974536047096912505b9a786cf53c41b8
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762785"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328585"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>深度学习与机器学习
 
@@ -31,7 +31,7 @@ ms.locfileid: "75762785"
 - **机器学习**是一种使用技术（如深度学习）的人工智能，使计算机能够使用经验来改进任务。 _学习过程_基于以下步骤：
 
    1. 将数据送入算法。 （在此步骤中，您可以向模型提供其他信息，例如，通过执行功能提取。）
-   1. 使用该数据来训练模型。
+   1. 使用此数据训练模型。
    1. 测试和部署模型。
    1. 使用部署的模型来执行自动化预测任务。 （换言之，调用并使用部署的模型来接收模型返回的预测。）
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 10/25/2019
-ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 03/05/2020
+ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122519"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78398337"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>使用 GPU 为推理部署深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "76122519"
 > [!NOTE]
 > 本文中的信息基于[如何部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)一文中的信息。 本文通常会涵盖部署到 AKS，本文介绍特定于 GPU 的部署。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -101,7 +101,7 @@ except ComputeTargetException:
 条目脚本接收提交给 web 服务的数据，将其传递给模型，并返回计分结果。 下面的脚本将在启动时加载 Tensorflow 模型，然后使用该模型对数据进行评分。
 
 > [!TIP]
-> 入口脚本特定于你的模型。 例如，脚本必须知道要用于模型的框架、数据格式等。
+> 条目脚本特定于您的模型。 例如，脚本必须知道要用于模型的框架、数据格式等。
 
 ```python
 import json

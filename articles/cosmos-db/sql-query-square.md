@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数平方。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 683db82f2574da9150fb64767047d6ada6d667da
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a22c4daaf9df889f2256bc78f2175c966d4841f7
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349411"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303437"
 ---
 # <a name="square-azure-cosmos-db"></a>正方形（Azure Cosmos DB）
  返回指定数字值的平方。  
@@ -26,7 +26,7 @@ SQUARE(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,11 +40,15 @@ SQUARE(<numeric_expr>)
 SELECT SQUARE(1) AS s1, SQUARE(2.0) AS s2, SQUARE(3) AS s3  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{s1: 1, s2: 4, s3: 9}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

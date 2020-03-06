@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/26/2019
+ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 1cc0132cc17217c858060e107dfcfc090a3ef8a7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3a9568e1a0307cd1713c511ef42c065424306548
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302876"
 ---
 # <a name="streaming-locators"></a>流式处理定位符
 
@@ -56,7 +56,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-### <a name="encrypted"></a>已加密 
+### <a name="encrypted"></a>加密 
 
 如果需要通过 CENC 加密来加密内容，请将策略设置为 "Predefined_MultiDrmCencStreaming"。 Widevine 加密将应用于短划线流，PlayReady 为平滑。 密钥会根据配置的 DRM 许可证传送到播放客户端。
 
@@ -90,20 +90,21 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 若要基于关联的资产名称获取流式处理定位符，请使用以下操作：
 
-|语言|API|
+|Language|API|
 |---|---|
 |REST|[liststreaminglocators](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az ams asset list-streaming-locators](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
+|CLI|[az ams 资产列表-流式处理-定位器](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
 |.NET|[ListStreamingLocators](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](https://docs.microsoft.com/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](https://docs.microsoft.com/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
-## <a name="also-see"></a>另请参阅
+## <a name="see-also"></a>另请参阅
 
 * [资产](assets-concept.md)
 * [流式处理策略](streaming-policy-concept.md)
 * [内容密钥策略](content-key-policy-concept.md)
+* [教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：使用 .NET 上传、编码和流式传输视频](stream-files-tutorial-with-api.md)
+[如何创建流式处理定位符并生成 Url](create-streaming-locator-build-url.md)

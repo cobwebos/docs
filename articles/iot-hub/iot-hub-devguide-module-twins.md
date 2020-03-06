@@ -5,14 +5,14 @@ author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 02/01/2020
 ms.author: menchi
-ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ef6c4de288a764abbe434c5d84fc99e154f7492
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303590"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>在 IoT 中心内了解并使用模块孪生
 
@@ -47,9 +47,9 @@ ms.locfileid: "74807419"
 
 * **标记**。 解决方案后端可从中读取和写入数据的 JSON 文档的某个部分。 标记对设备上的模块不可见。 设置的标记用于查询目的。
 
-* **所需的属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
+* **所需属性**。 与报告的属性结合使用，同步模块配置或状态。 解决方案后端可设置所需的属性，并且模块应用可进行读取。 此外，当所需的属性发生更改时，模块应用可收到通知。
 
-* **报告的属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
+* **报告属性**。 与所需的属性结合使用，同步模块配置或状态。 模块应用可设置报告的属性，并且解决方案后端可进行读取和查询。
 
 * **模块标识属性**。 模块孪生 JSON 文档的根包含[标识注册表](iot-hub-devguide-identity-registry.md)中存储的相应模块标识的只读属性。
 
@@ -176,14 +176,14 @@ ms.locfileid: "74807419"
 
   - 属性
 
-    | 名称 | Value |
+    | 名称 | 值 |
     | --- | --- |
     $content-type | application/json |
     $iothub-enqueuedtime |  发送通知的时间 |
     $iothub-message-source | twinChangeEvents |
     $content-encoding | utf-8 |
     deviceId | 设备 ID |
-    moduleId | 模块 ID |
+    moduleId | 模块 的 ID |
     hubName | IoT 中心的名称 |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) 操作时间戳 |
     iothub-message-schema | twinChangeNotification |
@@ -193,7 +193,7 @@ ms.locfileid: "74807419"
 
   - Body
         
-    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，
+    本部分包括 JSON 格式的所有孪生更改。 它使用与修补程序相同的格式，不同的是它包含所有孪生节：标记、properties.reported、properties.desired，并且它包含“$metadata”元素。 例如，应用于对象的
 
     ```json
     {
@@ -236,11 +236,15 @@ ms.locfileid: "74807419"
 
 标记、所需的属性和报告的属性是具有以下限制的 JSON 对象：
 
-* JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
+* **密钥**：JSON 对象中的所有键是区分大小写的 64 字节 UTF-8 UNICODE 字符串。 允许的字符不包括 UNICODE 控制字符（段 C0 和 C1）以及 `.`、SP 和 `$`。
 
-* JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。 最大整数值为 4503599627370495，而最小整数值为 -4503599627370496。
+* **值**：JSON 对象中的所有值可采用以下 JSON 类型：布尔值、数字、字符串、对象。 不允许数组。
 
-* 标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
+    * 整数的最小值可为-4503599627370496，最大值为4503599627370495。
+
+    * 字符串值是 UTF-8 编码的，最大长度为512字节。
+
+* **深度**：标记、所需属性和报告属性中的所有 JSON 对象的最大嵌套深度为 5 层。 例如，以下对象是有效的：
 
     ```json
     {
@@ -262,13 +266,21 @@ ms.locfileid: "74807419"
     }
     ```
 
-* 所有字符串的值的长度最多为 512 个字节。
-
 ## <a name="module-twin-size"></a>模块孪生大小
 
-IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素互斥。
+IoT 中心对 `tags`的值强制使用 8 KB 的大小限制，并对 `properties/desired` 和 `properties/reported`的值限制每个大小的大小限制为 32 KB。 这些总计与只读元素（例如 `$etag`、`$version`和 `$metadata/$lastUpdated`）不相容。
 
-该大小的计算考虑到了所有字符，但不包括 UNICODE 控制字符（段 C0 和 C1），以及出现在字符串常量外部的空格。
+克隆大小的计算方式如下：
+
+* 对于 JSON 文档中的每个属性，IoT 中心累积计算并添加属性的键和值的长度。
+
+* 属性键被视为 UTF8 编码的字符串。
+
+* 简单属性值被视为 UTF8 编码的字符串、数字值（8字节）或布尔值（4字节）。
+
+* UTF8 编码字符串的大小通过对所有字符进行计数计算，不包括 UNICODE 控制字符（段 C0 和 C1）。
+
+* 复杂属性值（嵌套对象）根据它们所包含的属性键和属性值的聚合大小进行计算。
 
 IoT 中心拒绝将这些文档的大小增加到超出限制的所有操作，在这种情况下还会返回错误。
 

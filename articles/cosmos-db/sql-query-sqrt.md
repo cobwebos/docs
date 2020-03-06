@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 SQRT。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 79dd520dde004e97f6ffca8dba000e96ccc61aaf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3d5452e5ba650b487acff03f622cdbb170275dce
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349437"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303454"
 ---
 # <a name="sqrt-azure-cosmos-db"></a>SQRT （Azure Cosmos DB）
  返回指定数值的平方根。  
@@ -26,7 +26,7 @@ SQRT(<numeric_expr>)
 ## <a name="arguments"></a>参数
   
 *numeric_expr*  
-   为数值表达式。  
+   是一个数值表达式。  
   
 ## <a name="return-types"></a>返回类型
   
@@ -40,11 +40,15 @@ SQRT(<numeric_expr>)
 SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{s1: 1, s2: 1.4142135623730952, s3: 1.7320508075688772}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 与其他应用程序集成-QnA Maker
 description: QnA Maker 集成到客户端应用程序（如聊天 bot）以及其他自然语言处理服务（如语言理解（LUIS））。
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: f75ee92f2ecd14f5c3e017aeee2340cff0c92561
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300513"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>适用于客户端应用程序的设计知识库
 
@@ -20,7 +20,7 @@ QnA Maker 与会话客户端应用程序（如[Microsoft Bot Framework](https://
 
 ## <a name="create-a-bot-without-writing-any-code"></a>创建机器人，无需编写任何代码
 
-发布知识库后，通过选择 "**创建机器人**" 按钮，从 "**发布**" 页创建一个 bot。 使用[机器人教程](../tutorials/create-qna-bot.md)了解选择按钮后会发生的情况。
+发布知识库后，通过选择 "**创建机器人**" 按钮，从 "**发布**" 页创建一个 bot。 使用[机器人教程](../Quickstarts/create-publish-knowledge-base.md)了解选择按钮后会发生的情况。
 
 ## <a name="providing-multi-turn-conversations"></a>提供多轮对话
 

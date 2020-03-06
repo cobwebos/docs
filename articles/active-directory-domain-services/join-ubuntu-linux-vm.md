@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 09654132b6e10f9905f79d1eb50f9bce220a7ab7
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bc5371ccbd3ba66117d5c613090b70ce7f07d51e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613774"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298835"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 Ubuntu Linux 虚拟机加入 Azure AD 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "77613774"
 
 本文介绍如何将 Ubuntu Linux VM 加入 Azure AD DS 托管域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77613774"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
-* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
+* 属于 Azure AD DS 托管域的用户帐户。
 
 ## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>创建并连接到 Ubuntu Linux VM
 
@@ -61,7 +61,7 @@ ms.locfileid: "77613774"
 sudo vi /etc/hosts
 ```
 
-在*hosts*文件中，更新*localhost*地址。 在以下示例中：
+在*hosts*文件中，更新*localhost*地址。 在下例中：
 
 * *aaddscontoso.com*是 Azure AD DS 托管域的 DNS 域名。
 * *ubuntu*是你要加入到托管域的 ubuntu VM 的主机名。
@@ -133,15 +133,15 @@ sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp n
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
-1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 现在使用 `kinit` 命令初始化 Kerberos。 指定属于 Azure AD DS 托管域的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC Administrators*组的成员：
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是 Azure AD DS 托管域的一部分：
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用同一个用户帐户，该帐户是在上一个 `kinit` 命令中指定的*AAD DC Administrators*组的成员，如 `contosoadmin@AADDSCONTOSO.COM`：
+1. 最后，使用 `realm join` 命令将计算机加入到 Azure AD DS 托管域。 使用在上一个 `kinit` 命令中指定的 Azure AD DS 托管域的一部分的相同用户帐户，如 `contosoadmin@AADDSCONTOSO.COM`：
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM' --install=/

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1968bc03bfddb9d6f6c8fe743a2a1a99722c074d
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716887"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399172"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
@@ -80,8 +80,11 @@ ms.locfileid: "76716887"
 
     保存结果，以获取 loginServer 属性。 这将是托管容器地址的一部分，稍后将在 `language.yml` 文件中使用。
 
-    ```console
-    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```azurecli-interactive
+    az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```
+
+    ```output
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -136,8 +139,7 @@ ms.locfileid: "76716887"
 
     该过程完成后，结果应类似于以下内容：
 
-    ```console
-    > docker push pattyregistry.azurecr.io/language-frontend:v1
+    ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
     82ff52ee6c73: Pushed
     07599c047227: Pushed
@@ -180,8 +182,7 @@ ms.locfileid: "76716887"
 
     为步骤 3 中代理人参数 `appId` 的保存结果 `<appId>` 值。 为下一节中 client-secret 参数 `password` 保存 `<client-secret>`。
 
-    ```console
-    > az ad sp create-for-rbac --skip-assignment
+    ```output
     {
       "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "displayName": "azure-cli-2018-12-31-18-39-32",
@@ -199,8 +200,7 @@ ms.locfileid: "76716887"
 
     为下一步中范围参数值 `<acrId>` 保存输出。 输出如下所示：
 
-    ```console
-    > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
+    ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
@@ -222,8 +222,7 @@ ms.locfileid: "76716887"
 
     这个步骤可能需要几分钟的时间。 结果为：
 
-    ```console
-    > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
+    ```output
     {
       "aadProfile": null,
       "addonProfiles": null,
@@ -300,8 +299,7 @@ ms.locfileid: "76716887"
 
     响应如下所示：
 
-    ```console
-    > kubectl get nodes
+    ```output
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-13756812-0   Ready     agent     6m        v1.9.11
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
@@ -337,8 +335,7 @@ ms.locfileid: "76716887"
 
     响应为：
 
-    ```console
-    > kubectl apply -f language.yml
+    ```output
     service "language-frontend" created
     deployment.apps "language-frontend" created
     service "language" created
@@ -353,8 +350,7 @@ ms.locfileid: "76716887"
 kubectl get all
 ```
 
-```console
-> kubectl get all
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE
 pod/language-586849d8dc-7zvz5            1/1       Running   0          13h
 pod/language-frontend-68b9969969-bz9bg   1/1       Running   1          13h

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a0691bd2a556219b3e3d989a3bbc465fa56b4bf
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b97b542d11e405bab00519c68d2365dada6b6c7f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613805"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298864"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>将 CoreOS 虚拟机加入 Azure AD 域服务托管域
 
@@ -24,7 +24,7 @@ ms.locfileid: "77613805"
 
 本文介绍了如何将 CoreOS VM 加入到 Azure AD DS 托管域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 需有以下资源和特权才能完成本教程：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77613805"
     * 如果需要，请[创建一个 Azure Active Directory 租户][create-azure-ad-tenant]或[将 Azure 订阅关联到你的帐户][associate-azure-ad-tenant]。
 * 在 Azure AD 租户中启用并配置 Azure Active Directory 域服务托管域。
     * 如果需要，请参考第一篇教程[创建并配置 Azure Active Directory 域服务实例][create-azure-ad-ds-instance]。
-* 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
+* 属于 Azure AD DS 托管域的用户帐户。
 
 ## <a name="create-and-connect-to-a-coreos-linux-vm"></a>创建并连接到 CoreOS Linux VM
 
@@ -61,7 +61,7 @@ ms.locfileid: "77613805"
 sudo vi /etc/hosts
 ```
 
-在*hosts*文件中，更新*localhost*地址。 在以下示例中：
+在*hosts*文件中，更新*localhost*地址。 在下例中：
 
 * *aaddscontoso.com*是 Azure AD DS 托管域的 DNS 域名。
 * *coreos*是你要加入到托管域的 coreos VM 的主机名。
@@ -134,9 +134,9 @@ krb5_realm = AADDSCONTOSO.COM
     * 检查是否已将 VM 部署到相同的或对等互连的虚拟网络，Azure AD DS 托管域在该网络中可用。
     * 确认已将虚拟网络的 DNS 服务器设置更新为指向 Azure AD DS 托管域的域控制器。
 
-1. 现在使用 `adcli join` 命令将 VM 加入到 Azure AD DS 托管域。 指定属于*AAD DC 管理员*组的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 现在使用 `adcli join` 命令将 VM 加入到 Azure AD DS 托管域。 指定属于 Azure AD DS 托管域的用户。 如果需要，请[将用户帐户添加到 Azure AD 中的组](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是*AAD DC 管理员*组的成员。
+    同样，必须以全部大写的形式输入 Azure AD DS 托管域名。 在下面的示例中，名为 `contosoadmin@aaddscontoso.com` 的帐户用于初始化 Kerberos。 输入您自己的用户帐户，该帐户是 Azure AD DS 托管域的一部分。
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos

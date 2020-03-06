@@ -3,12 +3,12 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293991"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302536"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -83,7 +83,7 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 - NWW （挪威西部）
 - SZN （瑞士北部）
 
-如果需要在上面没有列出的特定地理区域使用，请向 [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 发送邮件。
+如果需要在上面没有列出的特定地理区域使用，请向 [AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) 发送邮件。
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>可以在保管库中保护多少 Azure 文件共享？
 
@@ -91,7 +91,7 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>是否可以在不同的保管库中对同一存储帐户中的两个不同的文件共享进行保护？
 
-不。 只能由同一保管库对某个存储帐户中的所有文件共享进行保护。
+No。 只能由同一保管库对某个存储帐户中的所有文件共享进行保护。
 
 ## <a name="backup"></a>备份
 
@@ -103,7 +103,7 @@ Azure 备份当前支持对 Azure 文件共享配置计划的每日一次备份�
 
 在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后无法进行备份，请删除按需还原点，以便将来能够成功地进行备份。
 
-## <a name="restore"></a>还原
+## <a name="restore"></a>Restore
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>能否从已删除的 Azure 文件共享进行恢复？
 

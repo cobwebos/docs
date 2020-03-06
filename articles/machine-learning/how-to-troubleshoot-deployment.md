@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 10/25/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1645d2848c6d4b852a81042c4db8a0f6e90fd8fd
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945798"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399685"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure 机器学习 Azure Kubernetes 服务和 Azure 容器实例部署的故障排除
 
@@ -36,7 +36,7 @@ ms.locfileid: "75945798"
 
 请参阅[模型管理](concept-model-management-and-deployment.md)简介，详细了解此过程。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 一个 **Azure 订阅**。 如果没有，请尝试[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 * [AZURE 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
@@ -124,7 +124,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-请注意，如果定义自己的 conda 规范 YAML，则必须使用版本 > = 1.0.45 作为 pip 依赖项列出 azureml 默认值。 此包包含将模型托管为 web 服务所需的功能。
+请注意，如果定义自己的 conda 规范 YAML，则必须使用版本 > = 1.0.45 作为 pip 依赖项列出 azureml 默认值。 此包包含将模型托管为 Web 服务所需的功能。
 
 此时，您可以正常使用该服务。 例如，以下代码演示了如何将数据发送到服务：
 
@@ -219,7 +219,11 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 
-注意：通过 `run(input_data)` 调用返回错误消息应仅用于调试目的。 出于安全原因，不应在生产环境中以这种方式返回错误消息。
+注意：通过  **调用返回错误消息应仅用于调试目的**`run(input_data)`。 出于安全原因，不应在生产环境中以这种方式返回错误消息。
+
+## <a name="http-status-code-502"></a>HTTP 状态代码502
+
+502状态代码指示服务在 score.py 文件的 `run()` 方法中引发了异常或崩溃。 使用本文中的信息来调试该文件。
 
 ## <a name="http-status-code-503"></a>HTTP 状态代码503
 
@@ -261,6 +265,12 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
     > 如果收到的请求高峰大于新的最小副本可以处理的数量，则可能会再次收到503s。 例如，当服务的流量增加时，可能需要增加最小副本。
 
 有关设置 `autoscale_target_utilization`、`autoscale_max_replicas`和 `autoscale_min_replicas` 的详细信息，请参阅[AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py)模块参考。
+
+## <a name="http-status-code-504"></a>HTTP 状态代码504
+
+504状态代码指示请求已超时。默认超时值为1分钟。
+
+可以通过修改 score.py 来删除不必要的调用，从而增加超时或尝试加快服务的速度。 如果这些操作不能解决问题，请使用本文中的信息来调试 score.py 文件。 该代码可能处于挂起状态或无限循环。
 
 ## <a name="advanced-debugging"></a>高级调试
 

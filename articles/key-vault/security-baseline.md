@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 03b2312b554743d83eff268876be1f20be595290
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78267528"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302842"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>适用于 Key Vault 的 Azure 安全基线
 
@@ -131,7 +131,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 Azure 策略示例：
 
-https://docs.microsoft.com/azure/governance/policy/samples/#networ
+https://docs.microsoft.com/azure/governance/policy/samples
 
 快速入门：在门户中定义和分配蓝图：
 
@@ -296,7 +296,7 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **责任**：不适用
 
-## <a name="identity-and-access-control"></a>标识和访问控制
+## <a name="identity-and-access-control"></a>SQL Server 2008 联机丛书中的 Identity and Access Control
 
 *有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 

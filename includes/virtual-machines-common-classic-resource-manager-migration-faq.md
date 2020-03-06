@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 57469bef7014010164234638f3d059ac96b125cf
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912558"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384099"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>迁移所需的时间是多少？
 
@@ -22,6 +22,14 @@ ms.locfileid: "77912558"
 ## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>新客户在 IaaS Vm （经典）上的定义是什么？
 
 在 Febrauary 2020 （开始弃用之前的一个月）的订阅中没有 IaaS Vm （经典）的客户被视为新客户。 
+
+## <a name="what-is-the-definition-of-an-existing-customer-on-iaas-virtual-machines-classic"></a>IaaS 虚拟机（经典）上现有客户的定义是什么？
+
+在2020年2月，在其订阅中有活动或已停止但已分配 IaaS Vm （经典）的客户被视为现有客户。 只有这些客户在2023年3月1日之后才会将其 Vm 从 Azure Service Manager 迁移到 Azure 资源管理器。 
+
+## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>为什么会收到 "NewClassicVMCreationNotAllowedForSubscription" 错误？
+
+作为停用过程的一部分，IaaS VM （经典）不再适用于新客户。 我们已将你识别为新客户，因此你的操作未获得授权。 强烈建议使用[ARM 使用 Azure 虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)。 如果无法通过 ARM 使用 Azure Vm，请联系订阅允许列表支持人员。
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 

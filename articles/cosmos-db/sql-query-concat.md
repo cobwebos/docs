@@ -4,18 +4,18 @@ description: 了解 Azure Cosmos DB 中的 CONCAT SQL 系统函数如何返回�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78302604"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT （Azure Cosmos DB）
- 返回一个字符串，该字符串是连接两个或多个字符串值的结果。  
+ 返回作为串联两个或更多字符串值的结果的字符串。  
   
 ## <a name="syntax"></a>语法
   
@@ -40,12 +40,15 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
 SELECT CONCAT("abc", "def") AS concat  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"concat": "abcdef"}]  
 ```  
   
+## <a name="remarks"></a>备注
+
+此系统函数不会使用索引。
 
 ## <a name="next-steps"></a>后续步骤
 

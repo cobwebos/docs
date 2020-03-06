@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2020
+ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: f10604d23901c2d7ed23f8b4f32a296f063d8620
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299567"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>用于 IoT 安全警报的 Azure 安全中心
 
@@ -29,11 +29,11 @@ ms.locfileid: "76776269"
 
 下面列出了适用于 IoT 警报的 Azure 安全中心，它们根据预期的 IoT 中心和/或设备行为进行定义。 有关如何自定义每个警报的更多详细信息，请参阅[创建自定义警报](quickstart-create-custom-alerts.md)。
 
-## <a name="azure-security-center-for-iot-alerts-available-for-customization"></a>Azure 安全中心可供自定义的 IoT 警报 
+## <a name="iot-hub-alerts-available-for-customization"></a>可供自定义的 IoT 中心警报 
 
 
 
-| 严重性 | 警报名称 | 数据源 | Description | 建议的补救措施|
+| Severity | 警报名称 | 数据源 | 说明 | 建议的补救措施|
 |---|---|---|---|---|
 | 低      | 自定义警报 - AMQP 协议中云到设备的消息数目超出了允许的范围          | IoT 中心     | 特定时间范围内的云到设备消息（AMQP 协议）数目超出了配置的允许范围。||
 | 低      | 自定义警报 - AMQP 协议中已拒绝的云到设备的消息数目超出了允许的范围 | IoT 中心     | 设备在特定时间范围内拒绝的云到设备消息（AMQP 协议）数目超出了配置的允许范围。||
@@ -49,13 +49,18 @@ ms.locfileid: "76776269"
 | 低      | 自定义警报 - 命令队列清除数目超出了允许的范围                               | IoT 中心     | 特定时间范围内的命令队列清除数量超出了当前配置的允许范围。||
 | 低      | 自定义警报 - 模块孪生更新数目超出了允许的范围                                       | IoT 中心     | 特定时间范围内的模块孪生更新数量超出了当前配置的允许范围。|
 | 低      | 自定义警报 - 未授权的操作数目超出了允许的范围  | IoT 中心     | 特定时间范围内的未授权操作数量超出了当前配置的允许范围。|
+|
+
+## <a name="agent-alerts-available-for-customization"></a>可用于自定义的代理警报 
+
+| Severity | 警报名称 | 数据源 | 说明 | 建议的补救措施|
+|---|---|---|---|---|
 | 低      | 自定义警报 - 活动连接数目超出了允许的范围  | 代理       | 特定时间范围内的活动连接数目超出了当前配置的允许范围。|  调查设备日志。 了解连接的来源位置，并确定该连接是良性还是恶意的。 如果是恶意的，请删除可能的恶意软件并了解来源。 如果是良性的，请将来源添加到允许的连接列表。  |
 | 低      | 自定义警报 - 与不允许的 IP 建立了出站连接                             | 代理       | 与允许的 IP 列表以外的 IP 建立了出站连接。 |调查设备日志。 了解连接的来源位置，并确定该连接是良性还是恶意的。 如果是恶意的，请删除可能的恶意软件并了解来源。 如果是良性的，请将来源添加到允许的 IP 列表。                        |
 | 低      | 自定义警报 - 失败的本地登录次数超出了允许的范围                               | 代理       | 特定时间范围内的失败本地登录数量超出了当前配置的允许范围。 |   |
 | 低      | 自定义警报 - 允许的用户列表以外的用户登录 | 代理       | 允许的用户列表以外的本地用户登录到了设备。|  如果你正在保存原始数据，请导航到 Log Analytics 帐户，并使用该数据调查设备，确定来源，然后修复这些设置的允许/阻止列表。 如果当前不是在保存原始数据，请转到设备，并修复这些设置的允许/阻止列表。|
 | 低      | 自定义警报 - 执行了不允许的进程 | 代理       | 在设备上执行了某个不允许的进程。 |如果你正在保存原始数据，请导航到 Log Analytics 帐户，并使用该数据调查设备，确定来源，然后修复这些设置的允许/阻止列表。 如果当前不是在保存原始数据，请转到设备，并修复这些设置的允许/阻止列表。  |
 |
-
 
 ## <a name="next-steps"></a>后续步骤
 

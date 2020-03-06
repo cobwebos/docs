@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c841195cacd8c8d7698f69435572587bf04c3d67
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 56f240a5191dd483f89889f3ffe13b1819ca1e53
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008364"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399312"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory 报告 API 入门
 
@@ -34,7 +34,7 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 
 如果遇到问题，请参阅[如何获取对 Azure Active Directory 的支持](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要访问报告 API，无论是否需要用户干预，都需要：
 
@@ -50,13 +50,10 @@ Azure Active Directory 提供了各种[报告](overview-reports.md)，其中包�
 用于审核日志的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/beta/auditLogs/directoryAudits`，用于登录的 Microsoft Graph API 终结点为 `https://graph.microsoft.com/beta/auditLogs/signIns`。 有关详细信息，请参阅[审核 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)和[登录 API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)。
 
 此外，还可以使用[身份保护风险检测 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) ，通过 Microsoft Graph 获取对安全检测的编程访问。 有关详细信息，请参阅 [Azure Active Directory 标识保护和 Microsoft Graph 入门](../identity-protection/graph-get-started.md)。 
-
-> [!NOTE]
->  **https:\/\/graph.windows.net\/\<tenant-name\>\/reports\/** 终结点已被弃用。 请使用上述新的 API 终结点以编程方式访问活动和安全报告。
   
-## <a name="apis-with-graph-explorer"></a>Graph 浏览器的 API
+## <a name="apis-with-microsoft-graph-explorer"></a>具有 Microsoft Graph 资源管理器的 Api
 
-可以使用 [MSGraph 浏览器](https://developer.microsoft.com/graph/graph-explorer)来验证登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **AuditLog.Read.All** 和 **Directory.Read.All** 权限，如下所示。   
+你可以使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)来验证你的登录和审核 API 数据。 确保使用 Graph 浏览器 UI 中的两个登录按钮登录帐户，并为租户设置 **AuditLog.Read.All** 和 **Directory.Read.All** 权限，如下所示。   
 
 ![Graph 浏览器](./media/concept-reporting-api/graph-explorer.png)
 

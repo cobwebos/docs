@@ -8,19 +8,16 @@ ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b75740e9bff714ad68c93bea7e387e60da2f1c59
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212500"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298082"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
  若要自动执行无人参与的 PowerShell 任务，服务主体在托管的 Analysis Services 服务器上必须具备“服务器管理员”权限。 本文介绍如何将服务主体添加到 Azure AS 服务器上的服务器管理员角色。 您可以使用 SQL Server Management Studio 或资源管理器模板来执行此操作。
- 
-> [!NOTE]
-> 对于使用 Azure PowerShell cmdlet 的服务器操作，服务主体也必须属于[Azure 基于角色的访问控制（RBAC）](../role-based-access-control/overview.md)中资源的**所有者**角色。 
 
 ## <a name="before-you-begin"></a>开始之前
 在完成此项任务之前，必须有一个在 Azure Active Directory 中注册的服务主体。
@@ -96,6 +93,24 @@ ms.locfileid: "77212500"
     ]
 }
 ```
+
+## <a name="using-managed-identities"></a>使用托管标识
+
+还可以将托管标识添加到 Analysis Services 管理员列表。 例如，你可能有一个[使用系统分配的托管标识的逻辑应用](../logic-apps/create-managed-service-identity.md)，并且想要向其授予管理你的 Analysis Services 服务器的能力。
+
+在 Azure 门户和 Api 的大多数部分中，将使用服务主体对象 ID 标识托管标识。 但 Analysis Services 要求使用客户端 ID 来标识它们。 若要获取服务主体的客户端 ID，可以使用 Azure CLI：
+
+```bash
+az ad sp show --id <ManagedIdentityServicePrincipalObjectId> --query appId -o tsv
+```
+
+或者，可以使用 PowerShell：
+
+```powershell
+(Get-AzureADServicePrincipal -ObjectId <ManagedIdentityServicePrincipalObjectId>).AppId
+```
+
+然后，可以将此客户端 ID 与租户 ID 结合使用，以将托管标识添加到 Analysis Services 管理员列表中，如上所述。
 
 ## <a name="related-information"></a>相关信息
 

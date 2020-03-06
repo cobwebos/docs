@@ -1,7 +1,7 @@
 ---
-title: 使用 SSL 保护 web 服务
+title: 使用 TLS 保护 web 服务
 titleSuffix: Azure Machine Learning
-description: 了解如何启用 HTTPS 以便保护通过 Azure 机器学习部署的 web 服务。
+description: 了解如何启用 HTTPS 以便保护通过 Azure 机器学习部署的 web 服务。 Azure 机器学习使用 TLS 版本1.2 来保护部署为 web 服务的模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 08/12/2019
+ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 34c6071a127d0fc0c967991582f629c6ae713783
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905222"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355529"
 ---
-# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>通过 SSL 使用 SSL 来保护 web 服务 Azure 机器学习
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 通过 Azure 机器学习来保护 web 服务
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 本文介绍如何保护通过 Azure 机器学习部署的 web 服务。

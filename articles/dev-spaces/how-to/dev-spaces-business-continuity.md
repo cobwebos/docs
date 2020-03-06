@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: 了解如何使用 Azure Dev Spaces 和 Azure Kubernetes 服务提供业务连续性并为灾难恢复做好准备
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 8561486bcf8524d309ba46fcbb4b4d3e180d7c72
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 37c0048bfa7e72b25eb56603fc027045eba25cea
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252386"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78295821"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 的业务连续性和灾难恢复
 
@@ -27,11 +27,9 @@ Azure Dev Spaces 是 Azure Kubernetes 服务 (AKS) 的一项功能。 应了解 
 
 有关 AKS 的多区域部署的常规信息，请参阅[规划多区域部署](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-有关部署与 Azure Dev Spaces 兼容的 AKS 群集的信息，请参阅[使用 Azure Cloud Shell 创建 Kubernetes 群集](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
-
 ### <a name="enable-dev-spaces-via-the-azure-portal"></a>通过 Azure 门户启用 Dev Spaces
 
-单击 Azure 门户中每个群集属性下的“Dev Spaces”导航项。 然后选择该选项以启用 Dev Spaces。
+在 Azure 门户中每个分类的设置下，选择 " **Dev Spaces** " 菜单项。 然后选择选项以启用 Dev 空格并保存。
 
 ![通过 Azure 门户启用 Dev Spaces](../media/common/enable-dev-spaces.jpg)
 
@@ -53,7 +51,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>选择用于 Dev Spaces 的正确 AKS 群集
 
-一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后可以在 Dev Spaces 中重新运行正在处理的各个服务。
+一旦正确配置运行团队基线的备份群集，就可以随时快速切换到备份群集。 然后，你可以在子开发人员空间中重新运行正在处理的单个服务。
 
 使用以下 CLI 命令选择不同的群集：
 
@@ -81,7 +79,7 @@ azds space select -n <space name>
 1. 在解决方案资源管理器中右键单击项目名称，然后单击“属性”
 1. 在左窗格中，单击“调试”
 1. 在“调试属性”页上，单击“配置文件”下拉列表，然后选择“Azure Dev Spaces”。
-1. 单击“更改”按钮。
+1. 单击 **“更改”** 按钮。
 1. 在出现的对话框中，选择想要使用的 AKS 群集。 如果需要，请选择要使用的不同开发空间，或者创建新的开发空间，具体通过从“空间”下拉列表选择相应选项来创建。
 
 选择正确群集和空间后，可以按 F5 在 Dev Spaces 中运行服务。

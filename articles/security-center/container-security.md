@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: 45ce8a808efc5b882c90f99875fdde661e292774
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205970"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303250"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -34,9 +34,11 @@ Azure 安全中心是 Azure 本机解决方案，适用于容器安全性。 安
 有关如何使用这些功能的说明，请参阅[监视容器的安全性](monitor-container-security.md)。
 
 ## <a name="vulnerability-management---scanning-container-images"></a>漏洞管理-扫描容器映像
-若要监视基于 ARM 的 Azure 容器注册表，请确保在安全中心的标准层上（请参阅[定价](/azure/security-center/security-center-pricing)）。 然后启用可选的容器注册表绑定。 推送新映像后，安全中心将使用行业领先漏洞扫描供应商 Qualys 中的扫描仪扫描映像。
+若要监视基于 ARM 的 Azure 容器注册表，请确保在安全中心的标准层上（请参阅[定价](/azure/security-center/security-center-pricing)）。 然后，启用可选的容器注册表绑定。 推送新映像后，安全中心将使用行业领先漏洞扫描供应商 Qualys 中的扫描仪扫描映像。
 
 当通过 Qualys 或安全中心发现问题时，你将在安全中心仪表板中收到通知。 对于每个漏洞，安全中心都提供可操作的建议，以及严重性分类和有关如何修正问题的指南。 有关安全中心建议容器的详细信息，请参阅[建议的参考列表](recommendations-reference.md#recs-containers)。
+
+安全中心从扫描程序筛选和分类发现。 当映像运行正常时，安全中心会将其标记为。 安全中心仅为包含待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，可减少不需要的信息警报。
 
 ## <a name="environment-hardening"></a>环境强化
 
@@ -61,11 +63,11 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 
 有关可能为此功能显示的相关安全中心建议的详细信息，请参阅 "建议参考" 表的 "[容器" 部分](recommendations-reference.md#recs-containers)。
 
-## <a name="run-time-protection---real-time-threat-protection"></a>运行时保护-实时威胁防护
+## <a name="run-time-protection---real-time-threat-detection"></a>运行时保护-实时威胁检测
 
-安全中心为容器化环境提供实时威胁保护，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
+安全中心为容器化环境提供实时威胁检测，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
-我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁防护](threat-protection.md#azure-containers)。
+我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁检测](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
 
 
 ## <a name="container-security-faq"></a>容器安全常见问题
@@ -73,16 +75,18 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Azure 安全中心扫描哪些类型的映像？
 安全中心扫描基于 Linux OS 的映像，这些映像提供外壳访问权限。 
 
-Qualys 扫描程序不支持超级最简单映像（例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像）或 "Distroless" 映像，这些映像只包含应用程序及其运行时依赖项（无需包管理器、外壳程序或操作系统）。
+Qualys 扫描程序不支持超级最简单映像（如[Docker 暂存](https://hub.docker.com/_/scratch/)映像），也不支持仅包含应用程序及其运行时依赖项且无需包管理器、SHELL 或 OS 的 "Distroless" 映像。
 
-### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>如何扫描 Azure 安全中心扫描图像？
-将从注册表中提取映像。 然后，它使用 Qualys 扫描程序在隔离沙盒中运行，该扫描程序可提取已知漏洞的列表。
+### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 安全中心如何扫描映像？
+将从注册表中提取映像。 然后，它将在独立沙盒中运行，其中包含 Qualys 扫描程序，可提取已知漏洞的列表。
+
+安全中心从扫描程序筛选和分类发现。 当映像运行正常时，安全中心会将其标记为。 安全中心仅为包含待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，可减少不需要的信息警报。
 
 ### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure 安全中心扫描图像的频率如何？
 每次推送时都会触发图像扫描。
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
-可以。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
+可以。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，你还可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
  
 
 ## <a name="next-steps"></a>后续步骤

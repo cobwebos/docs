@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 89fa2297c50b6f28045f6f934092de3fd5d6c879
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b2138818a9092999dd54b14664f7146f087c4fed
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613067"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78328640"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>为 Azure Active Directory 域服务启用安全审核
 
@@ -43,7 +43,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 |对象访问| 审核尝试访问网络或计算机上的特定对象或对象类型。 此类别包括以下子类别：<ul><li>[已生成审核应用程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[审核证书服务](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[审核详细的文件共享](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[审核文件共享](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[审核文件系统](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[审核筛选平台连接](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[审核筛选平台数据包丢弃](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[审核句柄操作](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[审核内核对象](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[审核其他对象访问事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[审核注册表](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[审核可移动存储](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[审核 SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[审核中心访问策略暂存](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
 |策略更改|审核对本地系统或网络上的重要安全策略的更改。 策略通常由管理员建立，以帮助保护网络资源。 监视更改或更改这些策略的尝试可能是网络安全管理的一个重要方面。 此类别包括以下子类别：<ul><li>[审核审核策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[审核身份验证策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[审核授权策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[审核筛选平台策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[审核 MPSSVC 规则级别策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[审核其他策略更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
 |权限使用| 审核对一个或多个系统的特定权限的使用。 此类别包括以下子类别：<ul><li>[审核非敏感权限使用](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[审核敏感权限使用](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[审核其他权限使用事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|系统| 审核对不包含在其他类别中并具有潜在安全影响的计算机的系统级更改。 此类别包括以下子类别：<ul><li>[审核 IPsec 驱动程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[审核其他系统事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[审核安全状态更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[审核安全系统扩展](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[审核系统完整性](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+|System| 审核对不包含在其他类别中并具有潜在安全影响的计算机的系统级更改。 此类别包括以下子类别：<ul><li>[审核 IPsec 驱动程序](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[审核其他系统事件](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[审核安全状态更改](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[审核安全系统扩展](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[审核系统完整性](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>每个类别的事件 Id
 
@@ -72,7 +72,7 @@ Azure AD DS 安全审核与传统 AD DS 域控制器的传统审核一致。 在
 
 | 目标资源 | 场景 |
 |:---|:---|
-|Azure 存储| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 <br /><br />在启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)。|
+|Azure 存储空间| 如果你的主要需求是出于存档目的存储安全审核事件，则应使用此目标。 其他目标可用于存档目的，但是这些目标提供的功能超出了存档的主要需求。 <br /><br />在启用 Azure AD DS 安全审核事件之前，请先[创建一个 Azure 存储帐户](../storage/common/storage-account-create.md)。|
 |Azure 事件中心| 当主要需要与其他软件（如数据分析软件或安全信息 & 事件管理（SIEM）软件）共享安全审核事件时，应使用此目标。<br /><br />启用 Azure AD DS 安全审核事件之前，请[使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
 |Azure Log Analytics 工作区| 当你的主要需求是直接从 Azure 门户分析和查看安全审核时，应使用此目标。<br /><br />在启用 Azure AD DS 安全审核事件之前，请[在 Azure 门户中创建 Log Analytics 工作区。](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
@@ -193,7 +193,7 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>示例查询2
 
-查看4740年2月 3 2020 日到上午9点之间的所有帐户锁定事件（）。 2月10日午夜2019，按日期和时间升序排序：
+查看4740年2月 3 2020 日到上午9点之间的所有帐户锁定事件（）。 2月10日午夜2020，按日期和时间升序排序：
 
 ```Kusto
 AADDomainServicesAccountManagement

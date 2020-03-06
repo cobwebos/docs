@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 1539ca9aa18892f617f278e67c8b6141f5f6d880
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331121"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>如何：在 Android 上将编解码器压缩的音频输入与 Speech SDK 一起使用
 
 语音 SDK 的**压缩音频输入流**API 提供了使用 PullStream 或 PushStream 将压缩音频流式传输到语音服务的方法。
 
 > [!IMPORTANT]
-> 目前[ C++，Linux （ubuntu 16.04、ubuntu 18.04 C#、Debian 9）上的、和 Java](how-to-use-codec-compressed-audio-input-streams.md)支持流式传输的输入音频。 它在 Android 和[iOS 平台中](how-to-use-codec-compressed-audio-input-streams-ios.md)的适用于 Java 的 Java 也是支持的。
+> 目前[ C++，Linux （ubuntu 16.04、ubuntu 18.04 C#、Debian 9、RHEL 8、CentOS 8）的、和 Java](how-to-use-codec-compressed-audio-input-streams.md)支持流式传输的输入音频。 它在 Android 和[iOS 平台中](how-to-use-codec-compressed-audio-input-streams-ios.md)的适用于 Java 的 Java 也是支持的。
 > 需要语音 SDK 版本1.7.0 或更高版本。
 
 对于 wav/PCM，请参阅主线语音文档。 在 wav/PCM 外部，支持以下编解码器压缩输入格式：

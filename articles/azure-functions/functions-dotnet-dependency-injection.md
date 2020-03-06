@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77915701"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329010"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET 中使用依赖关系注入 Azure Functions
 
@@ -21,7 +21,7 @@ Azure Functions 支持依赖关系注入（DI）软件设计模式，这是在�
 
 - 对于依赖关系注入的支持从 Azure Functions 1.x 开始。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 使用依赖关系注入之前，必须安装以下 NuGet 包：
 
@@ -131,6 +131,52 @@ Azure Functions 应用提供与[ASP.NET 依赖关系注入](https://docs.microso
 > [!WARNING]
 > - 不要将 `AddApplicationInsightsTelemetry()` 添加到服务集合，因为它注册的服务与环境提供的服务发生冲突。
 > - 如果使用内置的 Application Insights 功能，请勿注册您自己的 `TelemetryConfiguration` 或 `TelemetryClient`。 如果需要配置自己的 `TelemetryClient` 实例，请通过插入的 `TelemetryConfiguration` 创建一个实例，如[监视器 Azure Functions](./functions-monitoring.md#version-2x-and-later-2)中所示。
+
+### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
+
+宿主会将 `ILogger<T>` 和 `ILoggerFactory` 服务注入构造函数中。  但是，默认情况下，将筛选出函数日志中的新的日志记录筛选器。  你将需要修改 `host.json` 文件，以选择加入其他筛选器和类别。  下面的示例演示如何添加包含将由主机公开的日志 `ILogger<HttpTrigger>`。
+
+```csharp
+namespace MyNamespace
+{
+    public class HttpTrigger
+    {
+        private readonly ILogger<HttpTrigger> _log;
+
+        public HttpTrigger(ILogger<HttpTrigger> log)
+        {
+            _log = log;
+        }
+
+        [FunctionName("HttpTrigger")]
+        public async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        {
+            _log.LogInformation("C# HTTP trigger function processed a request.");
+
+            // ...
+    }
+}
+```
+
+和一个添加日志筛选器的 `host.json` 文件。
+
+```json
+{
+    "version": "2.0",
+    "logging": {
+        "applicationInsights": {
+            "samplingExcludedTypes": "Request",
+            "samplingSettings": {
+                "isEnabled": true
+            }
+        },
+        "logLevel": {
+            "MyNamespace.HttpTrigger": "Information"
+        }
+    }
+}
+```
 
 ## <a name="function-app-provided-services"></a>函数应用提供的服务
 

@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697330"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300003"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用的服务条款和隐私声明
 
@@ -39,7 +39,7 @@ ms.locfileid: "76697330"
 
 添加指向应用的服务条款和隐私声明的文档之前，请确保 URL 遵循以下准则。
 
-| 准则     | Description                           |
+| 准则     | 说明                           |
 |---------------|---------------------------------------|
 | 格式        | 有效的 URL                             |
 | 有效的架构 | HTTP 和 HTTPS<br/>建议使用 HTTPS |
@@ -53,7 +53,7 @@ ms.locfileid: "76697330"
 
 * [通过 Azure 门户 添加](#azure-portal)
 * [使用应用对象 JSON](#app-object-json)
-* [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="azure-portal"></a>使用 Azure 门户
 在 Azure 门户中执行以下步骤。
@@ -77,12 +77,12 @@ ms.locfileid: "76697330"
     }
 ```
 
-### <a name="msgraph-beta-rest-api"></a>使用 MSGraph beta REST API
+### <a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-若要以编程方式更新所有应用，可以使用 MSGraph beta REST API 更新所有应用，以包含指向服务条款和隐私声明文档的链接。
+若要以编程方式更新所有应用程序，可以使用 Microsoft Graph API 更新所有应用程序，以包含指向服务条款和隐私声明文档的链接。
 
 ```
-PATCH https://graph.microsoft.com/beta/applications/{application id}
+PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 { 
     "appId": "{your application id}", 
     "info": { 
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 
 > [!NOTE]
 > * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
-> * 仅当使用 Azure AD 帐户登录时，MSGraph beta REST API 才会正常工作。 不支持 Microsoft 个人帐户。
+> * 仅当使用 Azure AD 帐户登录时，Microsoft Graph API 才适用。 不支持 Microsoft 个人帐户。

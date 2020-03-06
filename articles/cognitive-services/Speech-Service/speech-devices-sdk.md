@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188979"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330781"
 ---
 # <a name="about-the-speech-devices-sdk"></a>关于语音设备 SDK
 
@@ -47,7 +47,7 @@ ms.locfileid: "77188979"
 ### <a name="linux"></a>Linux
 
 对于 Linux，示例应用程序是以跨平台 Java 应用程序的形式提供的。 下载最新版本的[JRE 语音设备 SDK](https://aka.ms/sdsdk-download-JRE)。
-该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
+该应用程序是通过语音 SDK 包生成的，并且 Eclipse Java IDE （v4）在64位 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
 提供额外的二进制文件以支持即将推出的设备、 [Roobo V2 ddk](https://aka.ms/sdsdk-download-roobov2)和[Urbetter 的 ddk](https://aka.ms/sdsdk-download-urbetter)。
 

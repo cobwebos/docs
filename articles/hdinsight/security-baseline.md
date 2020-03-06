@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ace4ce5b9b0fd59a69e908c1f31d1ad4853889b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271855"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303267"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>适用于 HDInsight 的 Azure 安全基线
 
@@ -364,7 +364,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **责任**：客户
 
-## <a name="identity-and-access-control"></a>标识和访问控制
+## <a name="identity-and-access-control"></a>SQL Server 2008 联机丛书中的 Identity and Access Control
 
 *有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
@@ -659,7 +659,7 @@ https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overvi
 
 了解传输过程中的 Azure 存储帐户加密：
 
-https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
+https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Azure 安全中心监视**：是
 

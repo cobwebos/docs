@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 20486b8f8c0436d264135bb09952345548222216
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4dbf21c3052ddd5ebdd62925e65a854c47f59017
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349858"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303828"
 ---
 # <a name="is_null-azure-cosmos-db"></a>IS_NULL （Azure Cosmos DB）
  返回一个布尔值，指示指定表达式的类型是否为 null。  
@@ -47,11 +47,15 @@ SELECT
     IS_NULL({prop: "value"}.prop2) AS isNull7  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"isNull1":false,"isNull2":false,"isNull3":false,"isNull4":true,"isNull5":false,"isNull6":false,"isNull7":false}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

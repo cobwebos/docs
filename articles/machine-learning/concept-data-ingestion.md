@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 35c133a4d9d95dc6e942d5b8c3e8d21debb9493b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: HT
+ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268544"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303114"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure 机器学习中的数据引入
 
@@ -34,7 +34,7 @@ ms.locfileid: "78268544"
 
 下表总结了使用 Azure 数据工厂进行数据引入工作流的优点和缺点。
 
-|优点|缺点
+|专业人士|Cons
 ---|---
 专门构建以提取、加载和转换数据。|目前提供一组有限的 Azure 数据工厂管道任务 
 允许您创建数据驱动的工作流，用于大规模协调数据移动和转换。|构建和维护成本高昂。 有关详细信息，请参阅 Azure 数据工厂的[定价页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)。
@@ -59,7 +59,7 @@ Azure 数据工厂的嵌入数据沿袭功能数据流|
 
 下表总结了使用 SDK 的专业人员和职业以及用于数据引入任务的 ML 管道步骤。
 
-优点| 缺点
+专业人士| Cons
 ---|---
 配置自己的 Python 脚本 | 本身不支持数据源更改触发。 需要逻辑应用或 Azure 函数实现
 作为每个模型定型执行的一部分的数据准备|需要开发技能来创建数据引入脚本
@@ -71,4 +71,5 @@ Azure 数据工厂的嵌入数据沿袭功能数据流|
 
 ## <a name="next-steps"></a>后续步骤
 
+* 了解如何使用[Azure 数据工厂](how-to-data-ingest-adf.md)构建机器学习的数据引入管道
 * 了解如何通过[Azure Pipelines](how-to-cicd-data-ingestion.md)自动执行和管理数据引入管道的开发生命周期。

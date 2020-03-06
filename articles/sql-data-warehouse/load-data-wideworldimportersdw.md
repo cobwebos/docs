@@ -1,6 +1,6 @@
 ---
 title: 教程：使用 Azure 门户 & SSMS 加载数据
-description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure blob 加载到 Azure Synapse Analytics Sql 池。
+description: 教程使用 Azure 门户和 SQL Server Management Studio 将 WideWorldImportersDW 数据仓库从全局 Azure blob 加载到 Azure Synapse Analytics SQL 池。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d8242731466df9b80a6a6c3f0e340d6deb76e7d4
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78193536"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304032"
 ---
-# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics Sql 池
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教程：将数据加载到 Azure Synapse Analytics SQL 池
 
 本教程使用 PolyBase 将 WideWorldImportersDW 数据仓库从 Azure Blob 存储加载到 Azure Synapse Analytics SQL 池中的数据仓库。 本教程使用 [Azure 门户](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 执行以下操作：
 
@@ -45,7 +45,7 @@ ms.locfileid: "78193536"
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>在 SQL 池中创建空白数据仓库
 
-Sql 池是使用一组定义的[计算资源](memory-concurrency-limits.md)创建的。 SQL 池在[azure 资源组](../azure-resource-manager/management/overview.md)和[azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
+SQL 池是使用一组定义的[计算资源](memory-concurrency-limits.md)创建的。 SQL 池在[azure 资源组](../azure-resource-manager/management/overview.md)和[azure SQL 逻辑服务器](../sql-database/sql-database-features.md)中创建。 
 
 按照以下步骤创建一个空白 SQL 池。 
 
@@ -100,7 +100,7 @@ Azure Synapse Analytics 服务在服务器级别创建防火墙，阻止外部�
 1. 选择服务器名称。 
     服务器名称![](media/load-data-wideworldimportersdw/find-server-name.png) 
 
-1. 选择 "**显示防火墙设置**"。 此时将打开 Sql 池服务器的 "**防火墙设置**" 页。 
+1. 选择 "**显示防火墙设置**"。 此时将打开 SQL 池服务器的 "**防火墙设置**" 页。 
 
     ![服务器设置](media/load-data-wideworldimportersdw/server-settings.png) 
 
@@ -119,13 +119,13 @@ Azure Synapse Analytics 服务在服务器级别创建防火墙，阻止外部�
 
 完全限定的服务器名称是用于连接到服务器的名称。 中转到 Azure 门户中的 SQL 池资源，然后在 "**服务器名称**" 下查看完全限定的名称。
 
-![服务器名称](media/load-data-wideworldimportersdw/find-server-name.png) 
+![服务器名](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>以服务器管理员的身份连接到服务器
 
 本部分使用 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) 来建立与 Azure SQL Server 的连接。
 
-1. 打开 SQL Server Management Studio。
+1. 打开“SQL Server Management Studio”。
 
 2. 在“连接到服务器”对话框中，输入以下信息：
 
@@ -133,8 +133,8 @@ Azure Synapse Analytics 服务在服务器级别创建防火墙，阻止外部�
     | ------------ | --------------- | ----------- | 
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
     | 服务器名称 | 完全限定的服务器名称 | 例如， **sqlpoolservername.database.windows.net**是完全限定的服务器名称。 |
-    | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
-    | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
+    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+    | Login | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 
     ![连接到服务器](media/load-data-wideworldimportersdw/connect-to-server.png)
@@ -153,7 +153,7 @@ Azure Synapse Analytics 服务在服务器级别创建防火墙，阻止外部�
 
 由于当前是以服务器管理员的身份连接的，因此可以创建登录名和用户。 使用以下步骤创建名为 **LoaderRC60** 的登录名和用户。 然后将该用户分配到 **staticrc60** 资源类。 
 
-1.  在 SSMS 中，右键单击“master”，然后在显示的下拉菜单中选择“新建查询”。 “新建查询”窗口随即打开。
+1.  在 SSMS 中，右键单击“master”，然后在显示的下拉菜单中选择“新建查询”。 此时将打开一个新的查询窗口。
 
     ![在 Master 中新建查询](media/load-data-wideworldimportersdw/create-loader-login.png)
 

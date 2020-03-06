@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 960c6cbe6b60ad477f630b14ce0953601e71c34e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 04c8e41f1a431b329f2093851e4430e69ab6aee3
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349802"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303777"
 ---
 # <a name="is_primitive-azure-cosmos-db"></a>IS_PRIMITIVE （Azure Cosmos DB）
  返回一个布尔值，指示指定表达式的类型是否为一个（字符串、布尔、数值或 null）。  
@@ -47,11 +47,15 @@ SELECT
            IS_PRIMITIVE({prop: "value"}.prop2) AS isPrim7  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"isPrim1": true, "isPrim2": true, "isPrim3": true, "isPrim4": true, "isPrim5": false, "isPrim6": false, "isPrim7": false}]  
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 

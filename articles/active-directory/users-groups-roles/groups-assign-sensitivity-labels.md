@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329726"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>将敏感度标签分配到 Azure Active Directory 中的 Office 365 组（预览）
 
-Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。 有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels)。
+Azure Active Directory （Azure AD）支持将[Microsoft 365 符合性中心](https://sip.protection.office.com/homepage)发布的敏感度标签应用到 Office 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前处于公开预览状态。 有关 Office 365 应用支持的详细信息，请参阅[office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要配置此功能，你的 Azure AD 组织中必须至少有一个活动 Azure Active Directory Premium P1 许可证。

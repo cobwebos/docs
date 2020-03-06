@@ -7,21 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 8e2f8fd7f99c359949b02959cc442f2f3d3ebfff
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d61ca8fe7c6f5e7cc400714d7c31a0a7e50b8a88
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912148"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402795"
 ---
 # <a name="deprecation-of-tls-10-and-11-in-iot-hub-and-device-provisioning-service"></a>弃用 IoT 中心和设备预配服务中的 TLS 1.0 和1。1
 
-为了提供同类最佳的加密，IoT 中心和设备预配服务（DPS）将迁移到传输层安全性（TLS）1.2，作为 IoT 设备和服务的首选加密机制。 这种情况下，在**2020 年7月1日，** 将不再支持 tls 1.0 和 tls 1.1 以及多个非建议的旧密码。
-
-
-## <a name="impact"></a>影响
-根据客户的特定环境和配置，不推荐使用 TLS 1.0 和1.1，并且不建议使用的旧式密码可能是与 IoT 中心或 DPS 通信的 IoT 设备和服务的有影响力更改。 在某些情况下，与这些更改不兼容的设备和服务将无法在上述截止日期之后连接到 IoT 中心或 DPS。
-
+为了提供同类最佳的加密，IoT 中心和设备预配服务（DPS）将迁移到传输层安全性（TLS）1.2，作为 IoT 设备和服务的首选加密机制。 
 
 ## <a name="supported-ciphers"></a>支持的密码
 

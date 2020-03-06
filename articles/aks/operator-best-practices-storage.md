@@ -4,12 +4,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649613"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399480"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -75,7 +75,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 ![Azure Kubernetes 服务 (AKS) 群集中的永久性卷声明](media/concepts-storage/persistent-volume-claims.png)
 
-通过永久性卷声明 (PVC)，可根据需要动态创建存储。 基础 Azure 磁盘是根据 pod 的请求创建的。 在 pod 定义中，请求创建卷并将其附加到设计的装载路径
+通过永久性卷声明 (PVC)，可根据需要动态创建存储。 基础 Azure 磁盘是根据 pod 的请求创建的。 在 pod 定义中，请求创建卷并将其附加到指定的装载路径。
 
 有关如何动态创建和使用卷的概念，请参阅[永久性卷声明][aks-concepts-storage-pvcs]。
 

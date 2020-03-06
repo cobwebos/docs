@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: f187dba4eace61695a72e4b7b08731e65ff0d7f9
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612806"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299102"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>排查 Azure AD 域服务托管域的域加入问题
 
@@ -55,7 +55,7 @@ ms.locfileid: "77612806"
 
 1. 请尝试使用 UPN 格式指定凭据。例如 `dee@aaddscontoso.onmicrosoft.com`。 请确保在 Azure AD 中正确配置了此 UPN。
     * 如果租户中有多个用户具有相同的 UPN 前缀，或者 UPN 前缀过长，则可能会自动生成帐户的*SAMAccountName* 。 因此，你的帐户的*SAMAccountName*格式可能不同于你在本地域中的预期或使用的格式。
-1. 尝试使用属于 " *AAD DC 管理员*" 组的用户帐户的凭据将 vm 加入到 Azure AD DS 托管域。
+1. 尝试使用属于 Azure AD DS 托管域的用户帐户的凭据将 Vm 加入托管域。
 1. 请确保已[启用密码同步][enable-password-sync]并等待足够长的时间，以便初始密码同步完成。
 
 ## <a name="next-steps"></a>后续步骤

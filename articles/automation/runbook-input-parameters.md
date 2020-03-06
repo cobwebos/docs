@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 274ee0fe98281e733994f2d5df38886409cbc913
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273654"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329079"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -270,7 +270,7 @@ Param
 
 ![创建 webhook 并分配参数](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-使用 webhook 执行 runbook 时，会发送预定义的输入参数 *[WebhookData](automation-webhooks.md#details-of-a-webhook)* 和你定义的输入参数。 
+使用 webhook 执行 runbook 时，会发送预定义的输入参数 *[WebhookData](automation-webhooks.md)* 和你定义的输入参数。 
 
 ![WebhookData 参数](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 

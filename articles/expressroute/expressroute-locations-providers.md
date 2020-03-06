@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2bca7034780c4bfbbadd97558bf4b4891c7d6ec5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 3fb18b6afb2fc32ba8cc07c46a9a4f5a026d07e2
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251104"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402294"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -106,7 +106,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **伦敦** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | 英国南部 | 10G，100G | & T NetBond、英国电信、Colt、Equinix、euNetworks、InterCloud、Internet 解决方案-Cloud Connect、Interxion、Jisc、Level 3 通信、Megaport、MTN、NTT 通信、橙色、PCCW 全局受限、Tata 通信、Telehouse-KDDI、Telenor、Telia 载波、Verizon、Vodafone、Zayo |
 | **London2** | [Telehouse 北2](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | 英国南部 | 10G，100G | CenturyLink Cloud Connect、Colt、IX 范围、Equinix、Megaport、Telehouse-KDDI |
 | **洛杉矶** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | 不适用 | 不适用 | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Transtelco、Zayo |
-| **马赛** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | 法国南部 | 不适用 | CIX、GEANT、Interxion、Jaguar 网络 |
+| **马赛** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | 法国南部 | 不适用 | CIX，GEANT，Interxion，Jaguar Network，Ooredoo Cloud Connect |
 | **墨尔本** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | 澳大利亚东南部 | 10G，100G | AARNet、Devoli、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation、TPG 电信 |
 | **迈阿密** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | 不适用 | 10G | C3ntro、Equinix、Megaport、Neutrona 网络 |
 | **Milan** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | 不适用 | 10G | |

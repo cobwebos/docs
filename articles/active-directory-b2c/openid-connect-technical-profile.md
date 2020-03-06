@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 11d631f6977f760c8253fbaa0dc66af05def42a2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184003"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399073"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenID Connect 技术配置文件
 
@@ -77,9 +77,11 @@ Azure Active Directory B2C （Azure AD B2C）为[OpenID connect](https://openid.
 | Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
-| IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
-| METADATA | 是 | 一个 URL，其指向的 JSON 配置文档的格式符合 OpenID Connect Discovery 规范，该规范也称已知的 openid 配置终结点。 |
-| ProviderName | 否 | 标识提供者的名称。 |
+| IdTokenAudience | 否 | id_token 的受众。 如果已指定，则 Azure AD B2C 检查标识提供程序返回的令牌中的 `aud` 声明是否等于 IdTokenAudience 元数据中指定的声明。  |
+| METADATA | 是 | 指向 OpenID Connect 标识提供程序配置文档的 URL，也称为 OpenID 众所周知的配置终结点。 URL 可以包含 `{tenant}` 表达式，该表达式将替换为租户名称。  |
+| authorization_endpoint | 否 | 指向 OpenID Connect 标识提供程序配置授权终结点的 URL。 Authorization_endpoint 元数据的值优先于 OpenID 众所周知的配置终结点中指定的 `authorization_endpoint`。 URL 可以包含 `{tenant}` 表达式，该表达式将替换为租户名称。 |
+| 颁发者 | 否 | OpenID Connect 标识提供程序的唯一标识符。 颁发者元数据的值优先于 OpenID 众所周知的配置终结点中指定的 `issuer`。  如果已指定，则 Azure AD B2C 检查标识提供程序返回的令牌中的 `iss` 声明是否等于在颁发者元数据中指定的声明。 |
+| ProviderName | 否 | 标识提供者的名称。  |
 | response_types | 否 | 符合 OpenID Connect Core 1.0 规范的响应类型。 可能的值：`id_token`、`code` 或 `token`。 |
 | response_mode | 否 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
 | scope | 否 | 根据 OpenID Connect Core 1.0 规范定义的请求的范围。 例如 `openid`、`profile` 和 `email`。 |

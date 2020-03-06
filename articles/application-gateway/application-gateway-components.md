@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971139"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78301346"
 ---
 # <a name="application-gateway-components"></a>应用程序网关组件
 
@@ -32,7 +32,7 @@ V1 SKU 可配置为支持静态或动态内部 IP 地址和动态公共 IP 地�
 
 与应用程序网关关联的 DNS 名称不会随网关的生命周期而更改。 因此，应使用 CNAME 别名，并将其指向应用程序网关的 DNS 地址。
 
-## <a name="listeners"></a>侦听器
+## <a name="listeners"></a>Listeners
 
 侦听器是检查传入连接请求的逻辑实体。 如果与请求关联的协议、端口、主机名和 IP 地址与侦听器配置关联的元素匹配，则侦听器会接受请求。
 
@@ -53,7 +53,7 @@ V1 SKU 可配置为支持静态或动态内部 IP 地址和动态公共 IP 地�
 >仅针对连接到应用程序网关侦听程序的客户端提供了 HTTP/2 协议支持。 与后端服务器池的通信始终通过 HTTP/1.1 进行。 默认情况下，HTTP/2 支持处于禁用状态。 你可以选择启用它。
 
 - 在侦听器配置中指定 HTTP 和 HTTPS 协议。
-- 支持[websocket 和 HTTP/2 协议](overview.md#websocket-and-http2-traffic)，并在默认情况下启用[websocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 将 Websocket 用于 HTTP 和 HTTPS 侦听器。
+- 支持[websocket 和 HTTP/2 协议](features.md#websocket-and-http2-traffic)，并在默认情况下启用[websocket 支持](application-gateway-websocket.md)。 用户无法通过配置设置来选择性地启用或禁用 WebSocket 支持。 将 Websocket 用于 HTTP 和 HTTPS 侦听器。
 
 使用 HTTPS 侦听器进行 SSL 终止。 HTTPS 侦听器会将加密和解密工作卸载到应用程序网关，因此，web 服务器不会承受开销。
 
@@ -115,9 +115,9 @@ HTTP 设置中使用的端口和协议确定是否对应用程序网关和后端
 
 此组件还用于：
 
-- 使用[基于 cookie 的会话相关性](overview.md#session-affinity)确定是否要在同一台服务器上保存用户会话。
+- 使用[基于 cookie 的会话相关性](features.md#session-affinity)确定是否要在同一台服务器上保存用户会话。
 
-- 使用[连接排出](overview.md#connection-draining)正常删除后端池成员。
+- 使用[连接排出](features.md#connection-draining)正常删除后端池成员。
 
 - 关联自定义探测以监视后端运行状况，设置请求超时间隔，替代请求中的主机名和路径，并提供一次单击缓动来指定应用服务后端的设置。
 

@@ -7,20 +7,20 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 279130fa310b107bd1a016c717c48af3d905251b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270160"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330968"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
-流式引入针对需要低延迟的情况，对于不同的卷数据，引入时间小于10秒。 它用于在一个或多个数据库中优化多个表的操作处理，其中，每个表中的数据流相对较小（每秒少条记录），但总体数据引入量为高（每秒数千条记录）。
+如果需要低延迟，并且不同的卷数据的引入时间小于10秒，请使用流式引入。 它用于在一个或多个数据库中优化多个表的操作处理，其中，每个表中的数据流相对较小（每秒少条记录），但总体数据引入量为高（每秒数千条记录）。 
 
-当数据量增长到每个表的每秒 1 MB 以上时，使用经典（批量）引入而不是流式引入。 阅读[数据引入概述](/azure/data-explorer/ingest-data-overview)，了解有关引入的各种方法的详细信息。
+当数据量增长到每个表的每秒 1 MB 以上时，使用大容量引入而不是流式引入。 阅读[数据引入概述](/azure/data-explorer/ingest-data-overview)，了解有关引入的各种方法的详细信息。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[WEB UI](https://dataexplorer.azure.com/)。
@@ -63,7 +63,7 @@ ms.locfileid: "78270160"
 > [!WARNING]
 > 禁用流引入可能需要几个小时。
 
-1. 从所有相关的表和数据库中删除[流式处理引入策略](/azure/kusto/management/streamingingestionpolicy)。 流式处理引入策略删除触发从初始存储到列存储中的永久存储（区或分片）的流引入数据移动。 数据移动可能会持续几秒钟到几个小时，具体取决于初始存储中的数据量以及群集如何使用 CPU 和内存。
+1. 从所有相关的表和数据库中删除[流式处理引入策略](/azure/kusto/management/streamingingestionpolicy)。 流式处理引入策略删除触发从初始存储到列存储中的永久存储（区或分片）的流引入数据移动。 数据移动可能会持续几秒钟到几个小时，具体取决于初始存储中的数据量，以及群集如何使用 CPU 和内存。
 1. 在 Azure 门户中，转到 Azure 数据资源管理器群集。 在 "**设置**" 中选择 "**配置**"。 
 1. 在 "**配置**" 窗格中，选择 "**关闭**" 以禁用**流式引入**。
 1. 选择“保存”。
@@ -72,15 +72,12 @@ ms.locfileid: "78270160"
 
 ## <a name="limitations"></a>限制
 
+* 流式引入不支持[数据库游标](/azure/kusto/management/databasecursor)或[数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
 * VM 和群集大小增加时，流式处理引入性能和容量可扩展性。 并发 ingestions 限制为每个内核六个 ingestions。 例如，对于16核 Sku，如 D14 和 L16，支持的最大负载为96并发 ingestions。 对于两个核心 Sku，如 D11，最大支持负载为12个并发 ingestions。
 * 每个摄取请求的数据大小限制为 4 MB。
-* 架构更新（如创建和修改表和引入映射）可能需要长达5分钟的时间才能进入流式处理引入服务。
+* 对于流式引入服务，架构更新（如创建和修改表和引入映射）可能需要长达五分钟。
 * 即使数据不引入通过流式处理，也要在群集上启用流式引入，使用群集计算机的部分本地 SSD 磁盘来流式处理引入数据，并减少可用于热缓存的存储空间。
 * 无法在流式处理引入数据上设置[区标记](/azure/kusto/management/extents-overview#extent-tagging)。
-
-流式引入不支持以下功能：
-* [数据库游标](/azure/kusto/management/databasecursor)。
-* [数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/create-ingestion-mapping-command)数据映射。 
 
 ## <a name="next-steps"></a>后续步骤
 

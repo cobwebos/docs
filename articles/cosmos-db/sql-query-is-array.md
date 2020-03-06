@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 11ff29dcae7bf5c2e532eee658ee39d39b964e35
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f5867850db6eb3d6552bc129cca3708ef7747072
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350975"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303879"
 ---
 # <a name="is_array-azure-cosmos-db"></a>IS_ARRAY （Azure Cosmos DB）
  返回一个布尔值，指示指定表达式类型是否为数组。  
@@ -47,11 +47,15 @@ SELECT
  IS_ARRAY({prop: "value"}.prop2) AS isArray7  
 ```  
   
- 结果集如下。  
+ 下面是结果集：  
   
 ```json
 [{"isArray1":false,"isArray2":false,"isArray3":false,"isArray4":false,"isArray5":false,"isArray6":true,"isArray7":false}]
 ```  
+
+## <a name="remarks"></a>备注
+
+此系统函数将从[范围索引](index-policy.md#includeexclude-strategy)中受益。
 
 ## <a name="next-steps"></a>后续步骤
 
