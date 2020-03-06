@@ -3,24 +3,24 @@
 - name: 概述
   expanded: true
   items:
-    - name: 机器学习工作室（经典）
+    - name: 机器学习工作室（经典版）
       displayName: overview
       href: what-is-ml-studio.md
     - name: 比较我们的 ML 产品
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
-- name: 教程
+- name: 快速入门
   items:
     - name: 创建第一个试验
       displayName: quickstart
       href: create-experiment.md
-    - name: 创建预测解决方案
-      items:
-        - name: 1 - 创建试验
-          href: tutorial-part1-credit-risk.md
-        - name: 2 - 训练和评估
-          href: tutorial-part2-credit-risk-train.md
-        - name: 3 - 部署 Web 服务
-          href: tutorial-part3-credit-risk-deploy.md
+- name: 教程
+  items:
+    - name: 1：创建预测性实验
+      href: tutorial-part1-credit-risk.md
+    - name: '2:训练并评估解决方案'
+      href: tutorial-part2-credit-risk-train.md
+    - name: 3：部署 Web 服务
+      href: tutorial-part3-credit-risk-deploy.md
 - name: 示例
   items:
     - name: 可用数据集
@@ -44,7 +44,7 @@
     - name: 模型管理
       displayName: 'deploy, consume, web service'
       href: deploy-consume-web-service-guide.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 管理工作区
       items:
@@ -161,7 +161,7 @@
         - name: 库数据
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-- name: 引用
+- name: 参考
   items:
     - name: 算法和模块参考
       href: /azure/machine-learning/studio-module-reference/machine-learning-studio-algorithm-and-module-help

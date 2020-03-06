@@ -48,6 +48,8 @@
   href: code-samples.md
 - name: 概念
   items:
+    - name: Azure AD B2C 最佳做法
+      href: best-practices.md
     - name: 应用程序类型
       href: application-types.md
     - name: 身份验证协议
