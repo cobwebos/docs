@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186471"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395691"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -33,7 +33,7 @@ ms.locfileid: "77186471"
 
 有关 IoT Edge 最新版本中包含的内容的信息，请参阅[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 参考本部分检查你的 Windows 设备是否支持 IoT Edge，并在安装之前为容器引擎准备好该设备。
 
@@ -236,7 +236,7 @@ IoTEdge 命令在 Windows IoT Core 上不起作用。 若要从 Windows IoT Core
 
 IoTEdge 命令将下载并部署 IoT Edge 安全守护程序及其依赖项。 部署命令接受这些通用参数，以及其他参数。 有关完整列表，请使用命令 `Get-Help Deploy-IoTEdge -full`。  
 
-| 参数 | 接受的值 | Comments |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器操作系统，则 Windows 为默认值。<br><br>对于 Windows 容器，IoT Edge 使用安装中包含的小鲸鱼容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
@@ -248,7 +248,7 @@ IoTEdge 命令将下载并部署 IoT Edge 安全守护程序及其依赖项。 �
 
 IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息。 然后，此命令生成的大部分信息都存储在 iotedge\config.yaml 文件中。 初始化命令接受这些公共参数，以及其他参数。 有关完整列表，请使用命令 `Get-Help Initialize-IoTEdge -full`。
 
-| 参数 | 接受的值 | Comments |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **手动** | 无 | **开关参数**。 如果未指定设置类型，则手动为默认值。<br><br>声明你要提供设备连接字符串来手动预配设备 |
 | **Dps** | 无 | **开关参数**。 如果未指定设置类型，则手动为默认值。<br><br>声明你要提供设备预配服务 (DPS) 范围 ID 和设备的注册 ID，以通过 DPS 进行预配。  |
@@ -264,7 +264,7 @@ IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息�
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 
-| 参数 | 接受的值 | Comments |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定容器 OS，则 Windows 为默认值。 对于 Windows 容器，安装中会包含一个容器引擎。 对于 Linux 容器，需要在开始安装之前安装容器引擎。 |
 | **Proxy** | 代理 URL | 如果设备需要通过代理服务器来连接 Internet，请包含此参数。 有关详细信息，请参阅[将 IoT Edge 设备配置为通过代理服务器进行通信](how-to-configure-proxy-support.md)。 |
@@ -274,7 +274,7 @@ IoTEdge 命令将 IoT Edge 配置为设备连接字符串和操作详细信息�
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
-| 参数 | 接受的值 | Comments |
+| 参数 | 接受的值 | 注释 |
 | --------- | --------------- | -------- |
 | **团队** | none | 此标志会强制卸载，以防上一次卸载尝试失败。
 | **RestartIfNeeded** | none | 此标志允许卸载脚本在不提示的情况下重新启动计算机（如有必要）。 |

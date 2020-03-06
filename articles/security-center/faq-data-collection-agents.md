@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 8317a13b9ef87679836f55627268deefa4500dce
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599426"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372873"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>常见问题解答-有关数据收集、代理和工作区的问题
 
@@ -27,7 +27,7 @@ ms.locfileid: "77599426"
 
 ## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>在安全中心创建的工作区上，是否对 Azure Monitor 日志计费？
 
-不是。 安全中心创建的工作区，配置为按节点计费 Azure Monitor 日志，不会产生 Azure Monitor 日志收费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
+No。 安全中心创建的工作区，配置为按节点计费 Azure Monitor 日志，不会产生 Azure Monitor 日志收费。 安全中心的计费始终依据工作区上安装的以下安全中心安全策略和解决方案：
 
 - **免费层** – 安全中心在默认工作区中启用“SecurityCenterFree”解决方案。 免费层不会计费。
 
@@ -208,7 +208,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 
 ## <a name="will-security-center-work-using-an-oms-gateway"></a>安全中心将使用 OMS 网关吗？
 
-是的。 Azure 安全中心利用 Microsoft Monitoring Agent 从 Azure Vm 和服务器 Azure Monitor 收集数据。
+可以。 Azure 安全中心利用 Microsoft Monitoring Agent 从 Azure Vm 和服务器 Azure Monitor 收集数据。
 若要收集数据，每个 VM 和服务器都必须使用 HTTPS 连接到 Internet。 可以直接连接，也可以使用代理，也可以通过[OMS 网关](../azure-monitor/platform/gateway.md)连接。
 
 

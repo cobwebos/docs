@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963930"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377561"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中的条件性访问的最佳做法
 
@@ -35,7 +35,7 @@ ms.locfileid: "74963930"
 
 若要使策略发挥作用，必须进行下列配置：
 
-| 对象           | 方式                                  | Why |
+| 对象           | 如何收集                                  | Why |
 | :--            | :--                                  | :-- |
 | 云应用 |选择一个或多个应用。  | 条件性访问策略的目标是使你能够控制授权用户访问云应用的方式。|
 | 用户和组 | 至少选择一个已经授权的用户或组来访问所选云应用。 | 永远不会触发未分配用户和组的条件性访问策略。 |

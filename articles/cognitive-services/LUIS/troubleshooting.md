@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393698"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -68,11 +68,11 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>如何转让 LUIS 应用的所有权？
 若要将某个 LUIS 应用转让给另一 Azure 订阅，请导出该 LUIS 应用，然后使用新帐户来导入它。 在进行调用的客户端应用程序中更新 LUIS 应用 ID。 新应用返回的 LUIS 分数与原始应用返回的可能稍有不同。
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成实体在示例话语中标记，而不是在我的自定义实体中标记。 如何修复此问题？ 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>预生成的实体在示例查询文本中进行了标记，而不是我的自定义实体。 如何解决此问题？ 
 
 在 LUIS 门户中，可以为要提取的确切实体标记文本。 如果 LUIS 门户未显示正确的实体预测，则您可能需要添加更多最谈话并在文本中添加实体的标签，或者添加一个描述符（如功能）。 
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用或版本文件，但收到了错误，发生了什么情况？ 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>我尝试导入应用程序或版本文件，但收到错误消息？ 
 
 阅读有关[版本导入错误](luis-how-to-manage-versions.md#import-errors)的详细信息。
 
@@ -86,32 +86,32 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 <a name="luis-endpoint"></a>
 
-## <a name="endpoint"></a>终结点
+## <a name="endpoint"></a>端点
 
 ### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 403 错误状态代码。 如何解决问题？
 
-当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
+当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
 
-当你使用了所有这些免费的 1000 个终结点查询或超出定价层的每月事务配额时，将收到 HTTP 403 错误状态代码。 
+使用所有这些免费1000终结点查询或超出定价层的每月事务配额时，会收到 HTTP 403 错误状态代码。 
 
-若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为更高层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
+若要修复此错误，需要[将定价层更改](luis-how-to-azure-subscription.md#change-pricing-tier)为较高的层，或者[创建新资源](get-started-portal-deploy-app.md#create-the-endpoint-resource)并[将其分配给应用](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)。
 
-此错误的解决方法包括：
+此错误的解决方案包括：
 
-* 在 [Azure 门户](https://portal.azure.com)中你的语言理解资源的“资源管理”->“定价层”上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
-*  如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
+* 在[Azure 门户](https://portal.azure.com)的语言理解资源上，在**资源管理-> 定价层**上，将定价层更改为更高的 TPS 层。 如果资源已分配给语言理解应用，则无需在语言理解门户中执行任何操作。
+*  如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
 
 ### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>我收到了一个 HTTP 429 错误状态代码。 如何解决问题？
 
-当你超过你所在定价层的每秒事务数或每月事务数时，将收到 403 和 429 错误状态代码。 请提高你的定价层，或者使用语言理解[容器](luis-container-howto.md)。
+当你的定价层超出每秒的事务数或每月的事务数时，将获得403和429错误状态代码。 增加定价层，或使用语言理解[容器](luis-container-howto.md)。
 
-当你的每秒事务数超过你的定价层的每秒事务数时，将返回此状态代码。  
+每秒的事务数超过定价层时，将返回此状态代码。  
 
-解决方法包括：
+解决方案包括：
 
-* 如果不在最高层，可以[提高定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
-* 如果使用量超过了最高定价层相应的使用量，请添加更多的语言理解资源，并在这些资源前面放置一个负载均衡器。 带有 Kubernetes 或 Docker Compose 的[“语言理解”容器](luis-container-howto.md)可以帮助解决此问题。
-* 收到此状态代码时，可以使用你自己实现的[重试策略](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)来限制客户端应用程序请求。 
+* 如果你不在最高层，可以[增加定价层](luis-how-to-azure-subscription.md#change-pricing-tier)。
+* 如果你的使用量超过了最高定价层，请在其前面添加更多语言理解资源和负载均衡器。 具有 Kubernetes 或 Docker Compose 的[语言理解容器](luis-container-howto.md)有助于此。
+* 你可以通过在收到此状态代码时自行实现的[重试策略来设置](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)客户端应用程序请求。 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>我的终结点查询返回了意外的结果。 我该怎么办？
 
@@ -148,7 +148,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>我的 LUIS 应用昨天还可以正常使用，但今天却出现 403 错误。 我没有更改应用。 如何解决问题？
-按照这些[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建一个 LUIS 终结点密钥，然后将其分配给应用。 然后，必须更改客户端应用程序对终结点的 HTTP 请求以[使用新的终结点密钥](luis-concept-keys.md)。 如果你在不同的区域中创建了新资源，那么也要更改 HTTP 客户端请求的区域。
+按照以下[说明](#how-do-i-create-and-assign-a-luis-endpoint-key)创建 LUIS 终结点密钥并将其分配给应用。 然后，必须将客户端应用程序的 HTTP 请求更改为终结点才能[使用新的终结点密钥](luis-concept-keys.md)。 如果在其他区域创建了新资源，则也要更改 HTTP 客户端请求的区域。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>如何保护 LUIS 终结点安全？
 请参阅[保护终结点安全](luis-concept-keys.md#securing-the-endpoint)。
@@ -315,17 +315,17 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 
 ## <a name="migrating-to-the-next-version"></a>迁移到下一版本
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何迁移到预览版 V3 API？ 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>如何实现迁移到预览版 V3 API？ 
 
-请参阅[适用于 LUIS 应用的 API v2 到 v3 迁移指南](luis-migration-api-v3.md)
+[有关 LUIS 应用程序，请参阅 API v2 到 V3 迁移指南](luis-migration-api-v3.md)
 
-## <a name="build-2019-conference-announcements"></a>Build 2019 大会公告
+## <a name="build-2019-conference-announcements"></a>生成2019会议公告
 
-以下功能是在 Build 2019 大会上发布的：
+以下功能已在生成2019会议上发布：
 
-* [V3 API 预览版迁移指南](luis-migration-api-v3.md)
+* [V3 API 迁移指南预览](luis-migration-api-v3.md)
 * [改进的分析仪表板](luis-how-to-use-dashboard.md)
-* [改进的预生成域](luis-reference-prebuilt-domains.md) 
+* [改进的预构建域](luis-reference-prebuilt-domains.md) 
 * [动态列表实体](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [外部实体](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

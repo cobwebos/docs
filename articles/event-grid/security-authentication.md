@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846292"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359269"
 ---
 # <a name="event-grid-security-and-authentication"></a>事件网格安全和身份验证 
 
@@ -109,7 +109,7 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 #### <a name="query-parameters"></a>查询参数
 在创建事件订阅时，可以通过向 Webhook URL 中添加查询参数来保护 Webhook 终结点。 将这些查询参数之一设置为某个机密，例如[访问令牌](https://en.wikipedia.org/wiki/Access_token)。 Webhook 可以使用该机密来识别事件是否来自具有有效权限的事件网格。 事件网格会在前往 Webhook 的每个事件传递中包括这些查询参数。
 
-编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 参数，否则，不会显示或返回查询参数。
+编辑事件订阅时，除非在 Azure [CLI](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 中使用了 [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 参数，否则，不会显示或返回查询参数。
 
 最后，请务必注意 Azure 事件网格仅支持 HTTPS Webhook 终结点。
 
@@ -123,13 +123,13 @@ Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事�
 
 对于系统主题，需要在资源范围内写入新事件订阅的权限，才能发布该事件。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-例如，若要订阅存储帐户上名为“myacct”的事件，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限
+例如，若要订阅存储帐户上名为“myacct”的事件，需要  **的 Microsoft.EventGrid/EventSubscriptions/Write 权限**`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>自定义主题
 
 对于自定义主题，需要在事件网格主题范围内写入新事件订阅的权限。 该资源的格式为：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-例如，若要订阅名为“mytopic”的自定义主题，需要 `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic` 的 Microsoft.EventGrid/EventSubscriptions/Write 权限
+例如，若要订阅名为“mytopic”的自定义主题，需要  **的 Microsoft.EventGrid/EventSubscriptions/Write 权限**`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 ## <a name="custom-topic-publishing"></a>自定义主题发布
 

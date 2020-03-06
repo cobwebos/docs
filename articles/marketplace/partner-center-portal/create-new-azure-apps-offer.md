@@ -9,11 +9,11 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760876"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391462"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -173,7 +173,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 你在此处输入的名称将作为产品/服务列表的标题向客户显示。 此字段预填充了你在创建产品/服务时为 "**产品/服务别名**" 输入的文本，但你可以更改此值。 此名称可能是商标字（并且你可以包括商标或版权符号）。 名称不能超过50个字符，并且不能包含任何表情符号。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 提供产品/服务的简短说明（最多100个字符），可以在 marketplace 搜索结果中使用。
 
@@ -181,7 +181,7 @@ Azure Marketplace 的视频[构建解决方案模板和托管应用程序](https
 
 提供产品/服务的更长说明（最多256个字符）。 此说明可用于 marketplace 搜索结果中。
 
-### <a name="description"></a>Description
+### <a name="description"></a>说明
 
 提供产品/服务的更长说明（最多3000个字符）。 此说明将在 marketplace 列表概述中向客户显示。 包括产品/服务的价值主张、主要优势、类别和/或行业关联、应用内购买机会，以及任何所需的公开。 
 
@@ -313,11 +313,11 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 根据你在创建计划时为其分配的名称预先填充。  此名称将显示在 marketplace 中显示的 "软件计划" 的标题中。  最多可包含100个字符。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 提供软件计划的简短摘要。  最多可包含100个字符。
 
-### <a name="description"></a>Description
+### <a name="description"></a>说明
 
 此说明是一个机会，用于说明此软件计划的独特之处，以及与你的产品/服务中的其他软件计划的不同之处。 最多可包含2000个字符。
 
@@ -352,7 +352,7 @@ Azure 政府服务处理受特定政府法规和要求的数据，例如 FedRAMP
 
 如果已将计划的价格设置为美国美元（USD）并添加另一个市场位置，则将根据当前汇率计算新市场的价格。 请始终在发布前查看每个市场的价格。 保存更改后，可以通过使用 "导出价格（.xlsx）" 链接来查看定价。
 
-### <a name="pricing"></a>价格
+### <a name="pricing"></a>定价
 
 提供此计划的每月价格。  此价格是此解决方案部署的资源所产生的任何 Azure 基础结构或即用即付软件成本的补充。
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
 ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048446"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395475"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -22,7 +22,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
  专用终结点指定以下属性： 
 
 
-|属性  |说明 |
+|properties  |说明 |
 |---------|---------|
 |名称    |    资源组中的唯一名称。      |
 |子网    |  要从虚拟网络部署和分配专用 IP 地址的子网。 如需子网要求，请参阅本文中的限制部分。         |
@@ -130,7 +130,7 @@ Azure 会在公共 DNS 上创建规范名称 DNS 记录（CNAME），以将解�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解措施  |
+|限制 |说明 |缓解操作  |
 |---------|---------|---------|
 |网络安全组（NSG）规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有与之关联的 NSG，但这些规则对专用终结点处理的流量不起作用。 必须[禁用网络策略强制](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍在同一子网上托管的其他工作负荷上强制实施。 任何客户端子网上的路由都将使用/32 前缀，更改默认路由行为时需要类似的 UDR  | 在源客户端上使用 NSG 规则控制流量。 部署具有/32 前缀的各个路由以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 

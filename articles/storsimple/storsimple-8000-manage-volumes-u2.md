@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278844"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381862"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -57,8 +57,8 @@ StorSimple 卷可以是：
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **虚拟设备** | | |
-| 8010 |30 TB |N/A |
-| 8020 |64 TB |N/A |
+| 8010 |30 TB |不可用 |
+| 8020 |64 TB |不可用 |
 
 ## <a name="the-volumes-blade"></a>“卷”边栏选项卡
 

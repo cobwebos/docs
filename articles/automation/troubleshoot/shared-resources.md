@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769857"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372344"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>解决共享资源的错误
 
@@ -39,7 +39,7 @@ ms.locfileid: "75769857"
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>方案：尝试更新 AzureRM 模块后，它们会停滞导入
+### <a name="update-azure-modules-importing"></a>场景：在尝试更新 AzureRM 模块后，它们会停滞导入
 
 #### <a name="issue"></a>问题
 
@@ -76,11 +76,11 @@ Azure modules are being updated
 
 下述解决方案中的任何一种都可以解决此问题：
 
-* 确保该模块遵循以下格式：模块名称.Zip **->** 模块名称或版本号 **->** （模块名称.psm1、模块名称.psd1）
+* 请确保该模块遵循以下格式：ModuleName.Zip **->** 模块名称或版本号 **->** (ModuleName.psm1, ModuleName.psd1)
 * 打开 .psd1 文件，看模块是否有任何依赖项。 如果有，则将这些模块上传到自动化帐户。
 * 确保任何引用的 .dll 都存在于模块文件夹中。
 
-### <a name="all-modules-suspended"></a>方案： Update-AzureModule 更新模块时暂停
+### <a name="all-modules-suspended"></a>场景：Update-AzureModule.ps1 在更新模块时暂停
 
 #### <a name="issue"></a>问题
 
@@ -118,7 +118,7 @@ Azure modules are being updated
 
 ## <a name="run-as-accounts"></a>运行方式帐户
 
-### <a name="unable-create-update"></a>方案：无法创建或更新运行方式帐户
+### <a name="unable-create-update"></a>场景：无法创建或更新运行方式帐户
 
 #### <a name="issue"></a>问题
 
@@ -138,7 +138,7 @@ You do not have permissions to create…
 
 如果该问题是由某个锁引起的，请确保可以删除该锁。 然后导航到锁定的资源，右键单击该锁并选择“删除”以删除该锁。
 
-### <a name="iphelper"></a>方案：在执行 runbook 时，收到错误 "找不到 DLL ' iplpapi ' 中名为 ' GetPerAdapterInfo ' 的入口点"。
+### <a name="iphelper"></a>场景：执行 runbook 时，收到错误 "找不到 DLL ' iplpapi ' 中名为 ' GetPerAdapterInfo ' 的入口点"。
 
 #### <a name="issue"></a>问题
 

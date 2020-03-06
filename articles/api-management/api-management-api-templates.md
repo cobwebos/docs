@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176886"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374386"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "73176886"
   
 -   [API 列表](#APIList)  
 -   [操作](#Product)  
--   [代码示例](#CodeSamples)  
+-   [示例代码](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
@@ -89,7 +89,7 @@ ms.locfileid: "73176886"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`apis`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体的集合。|对当前用户可见的 API。|  
   
@@ -344,7 +344,7 @@ ms.locfileid: "73176886"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`apiId`|字符串|当前 API 的 ID。|  
 |`apiName`|字符串|API 的名称。|  

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464588"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391425"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 托管模型
 本文概述 Azure Service Fabric 提供的应用程序托管模型，并介绍**共享进程**模型和**独占进程**模型之间的差异。 本文介绍已部署的应用程序在 Service Fabric 节点上的外观，以及服务和服务主机进程的副本（或实例）之间的关系。
@@ -92,7 +92,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 如此处所示，Service Fabric 激活了“MyServicePackage”的两个新副本（分别对应分区 **P6** 和 **P7** 中的每个副本）。 Service Fabric 已将每个副本放置在其 *CodePackage* 的专用副本中。 对给定应用程序使用独占进程模型时，给定 *ServicePackage* 可以有多个副本在节点上保持活动状态。 在前面的示例中，有 3 个“MyServicePackage”副本对于 **fabric:/App1** 保持活动状态。 “MyServicePackage”的这 3 个活跃副本均具有与自身关联的 **ServicePackageActivationId**。 此 ID 在应用程序 **fabric:/App1** 中标识该副本。
 
-如果仅对应用程序使用共享进程模型，则节点上只有一个活动的 *ServicePackage* 副本。 此 *ServicePackage* 激活的 **ServicePackageActivationId** 是空字符串。 例如，**fabric:/App2** 就存在这种情况。
+如果仅对应用程序使用共享进程模型，则节点上只有一个活动的 *ServicePackage* 副本。 此 **ServicePackage** 激活的 *ServicePackageActivationId* 是空字符串。 例如，**fabric:/App2** 就存在这种情况。
 
 > [!NOTE]
 >- 共享进程托管模型与 **ServicePackageActivationMode**（相当于 **SharedProcess**）对应。 这是默认的托管模型，并且创建服务时无需指定 **ServicePackageActivationMode**。
