@@ -4,11 +4,11 @@ description: 介绍如何使用 Azure 资源管理器在 Azure 上部署和管�
 ms.topic: overview
 ms.date: 08/29/2019
 ms.openlocfilehash: f7e11ada8bf10baa99faf08d2b4b401e3bea2d9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75455861"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344627"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure 资源管理器概述
 

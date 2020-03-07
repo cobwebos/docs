@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260831"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357070"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>快速入门：使用 Azure 门户创建服务总线队列
 本快速入门介绍如何使用 [Azure 门户][Azure portal]创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列以及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已安装：
 

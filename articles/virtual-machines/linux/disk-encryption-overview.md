@@ -8,11 +8,11 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988414"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396828"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>适用于 Linux Vm 的 Azure 磁盘加密 
 
@@ -37,7 +37,7 @@ Linux Vm 在[大小范围](sizes.md)内可用。 Azure 磁盘加密不适用于[
 
 | 虚拟机 | 最小内存要求 |
 |--|--|
-| 仅加密数据卷时的 Linux Vm| 2GB |
+| 仅加密数据卷时的 Linux Vm| 2 GB |
 | 在加密数据和 OS 卷时，以及根（/）文件系统使用情况是4GB 或更低的情况下的 Linux Vm | 8 GB |
 | 在对数据和 OS 卷进行加密以及根（/）文件系统使用大于4GB 的情况下使用 Linux Vm | 根文件系统用法 * 2。 例如，16 GB 根文件系统使用至少需要32GB 的 RAM |
 
@@ -73,7 +73,7 @@ Azure[认可的 linux 分发](endorsed-distros.md)的一个子集上支持 Azure
 | CentOS | 7.3 | OS 和数据磁盘 |
 | CentOS | 7.2n | OS 和数据磁盘 |
 | CentOS | 6.8 | 数据磁盘 |
-| openSUSE | 42.3 | 数据磁盘 |
+| OpenSUSE | 42.3 | 数据磁盘 |
 | SLES | 12-SP4 | 数据磁盘 |
 | SLES | 12-SP3 | 数据磁盘 |
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612929"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378507"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>如何在 Azure AD 域服务托管域中同步对象和凭据
 

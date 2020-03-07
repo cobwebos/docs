@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516781"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365629"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为文件服务器
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -37,7 +37,7 @@ ms.locfileid: "68516781"
 配置和设置 StorSimple 虚拟阵列之前，请确保：
 
 * 已根据[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)中的详细说明预配和连接虚拟阵列。
-* 已获得所创建的 StorSimple Device Manager 服务提供的服务注册密钥，该服务用于管理 StorSimple 虚拟阵列。 有关详细信息，请参阅适用于 StorSimple 虚拟阵列的[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)。
+* 已获得所创建的 StorSimple Device Manager 服务提供的服务注册密钥，该服务用于管理 StorSimple 虚拟阵列。 有关详细信息，请参阅[获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)。
 * 如果向现有 StorSimple Device Manager 服务注册过虚拟阵列，用户应该已经有了服务数据加密密钥。 该密钥是在成功地通过此服务注册第一台设备时生成的。 如果该密钥已丢失，请参阅[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)（针对 StorSimple 虚拟阵列）。
 
 ## <a name="step-by-step-setup"></a>分步设置
@@ -52,7 +52,7 @@ ms.locfileid: "68516781"
    使用在上一步中记下的连接 URL。 此时会出现一个错误，指出网站的安全证书有问题。 单击“继续访问此网页”。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image2.png)
-2. 以 **StorSimpleAdmin** 身份登录到虚拟阵列的 Web UI。 输入在“步骤 3：启动虚拟阵列”中更改的设备管理员密码：详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)。
+2. 以 **StorSimpleAdmin** 身份登录到虚拟阵列的 Web UI。 输入在“步骤 3：启动虚拟设备”中更改的设备管理员密码，详见[在 Hyper-V 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-hyperv.md)或[在 VMware 中预配 StorSimple 虚拟阵列](storsimple-virtual-array-deploy2-provision-vmware.md)。
    
    ![](./media/storsimple-virtual-array-deploy3-fs-setup/image3.png)
 3. 此时会转到“主页”。 该页介绍配置虚拟阵列并将其注册到 StorSimple Device Manager 服务所需的各种设置。 “网络设置”、“Web 代理设置”和“时间设置”为可选设置。 仅“设备设置”和“云设置”为必需设置。
@@ -106,7 +106,7 @@ ms.locfileid: "68516781"
     4. 单击“应用”。 此时会验证并应用配置的时间设置。
 11. 配置设备的云设置。 此步骤需完成本地设备配置，然后将设备注册到 StorSimple Device Manager 服务。
     
-    1. 输入在适用于 StorSimple 虚拟阵列的[步骤 2：获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)中获取的服务注册密钥。
+    1. 输入在[获取服务注册密钥](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key)中获取的服务注册密钥。
     2. 如果这是注册到此服务的第一个设备，则会向你提供服务数据加密密钥。 复制此密钥并将其保存到一个安全位置。 向 StorSimple Device Manager 服务注册其他设备时，需要此密钥以及该服务注册密钥。 
        
        如果这不是注册到此服务的第一个设备，则需提供服务数据加密密钥。 有关详细信息，请参阅本地 Web UI 上的[获取服务数据加密密钥](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)。

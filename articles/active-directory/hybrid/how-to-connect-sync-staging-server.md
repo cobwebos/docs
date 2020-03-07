@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900060"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376219"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：过渡服务器和灾难恢复
 使用处于暂存模式的服务器，可以在激活服务器之前更改配置和预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。
 
 ## <a name="staging-mode"></a>过渡模式
@@ -42,7 +42,7 @@ ms.locfileid: "69900060"
 
 仍然可以使用 Synchronization Service Manager 强制导出。
 
-处于暂存模式的服务器将继续接收来自 Active Directory 和 Azure AD 的更改, 并且在发生故障时可快速接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
+处于暂存模式的服务器将继续接收来自 Active Directory 和 Azure AD 的更改，并且在发生故障时可快速接管另一服务器的责任。 如果对主要服务器进行配置更改，则需要负责对处于暂存模式的服务器进行相同的更改。
 
 对于熟悉旧式同步技术的人员而言，暂存模式是不同的，因为服务器有自身的 SQL 数据库。 此体系结构允许将暂存模式服务器放置在不同的数据中心。
 
@@ -69,12 +69,12 @@ ms.locfileid: "69900060"
 3. 确保“连接器”选项卡仍处于选中状态。 针对每个 **Active Directory 域服务**类型的连接器单击“运行”，并选择“差异同步”和“确定”。
 4. 选择 **Azure Active Directory (Microsoft)** 类型的连接器。 单击“运行”，选择“差异同步”，并选择“确定”。
 
-现在，已将导出更改暂存到 Azure AD 和本地 AD（如果你正在使用 Exchange 混合部署）。 使用后续步骤可在实际开始导出到目录之前，检查将要更改的内容。
+现在，已将导出更改暂存到 Azure AD 和本地 AD（如果正在使用 Exchange 混合部署）。 接下来的步骤可让你在实际开始导出到目录之前，检查将要更改的内容。
 
-#### <a name="verify"></a>验证
+#### <a name="verify"></a>Verify
 1. 启动 cmd 提示符并转到 `%ProgramFiles%\Microsoft Azure AD Sync\bin`
 2. 运行：`csexport "Name of Connector" %temp%\export.xml /f:x` 连接器名称可以在同步服务中找到。 它的名称类似于“contoso.com – AAD”（表示 Azure AD）。
-3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` %temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
+3. 运行：`CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` 现在，%temp% 中已有名为 export.csv 的文件，可在 Microsoft Excel 中检查。 此文件包含要导出的所有更改。
 4. 对数据或配置进行必要的更改并再次运行这些步骤（导入和同步和身份验证），直到要导出的更改都按预期进行。
 
 了解 export.csv 文件。大部分的文件都简单易懂。 请理解内容中的的一些缩写：
@@ -270,5 +270,5 @@ $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeI
 ## <a name="next-steps"></a>后续步骤
 **概述主题**  
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect 同步：理解和自定义同步](how-to-connect-sync-whatis.md)  
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)  

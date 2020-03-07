@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: victorh
 ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621888"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396038"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
 可以在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 规则是根据规则类型进行处理的。 

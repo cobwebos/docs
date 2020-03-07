@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78270590"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396776"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS 模型中每个区域性的实体
 

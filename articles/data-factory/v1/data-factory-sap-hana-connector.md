@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 361b98a1cde8ee5dee99a370b46d8fc8e0f5af28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928265"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387460"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP HANA 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -57,14 +57,14 @@ ms.locfileid: "74928265"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP HANA 链接服务专属 JSON 元素的说明。
 
-properties | 描述 | 允许的值 | 需要
+properties | 说明 | 允许的值 | 必选
 -------- | ----------- | -------------- | --------
-服务器 | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 字符串 | 是
+server | SAP HANA 实例所驻留的服务器的名称。 如果服务器使用的是自定义端口，则指定 `server:port`。 | 字符串 | 是
 authenticationType | 身份验证的类型。 | 字符串。 “基本”或“Windows” | 是 
 username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
 password | 用户密码。 | 字符串 | 是
 gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP HANA 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | No
+encryptedCredential | 加密的凭据字符串。 | 字符串 | 否
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -73,15 +73,15 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | No
 
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
 
 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP HANA）时，以下属性在 typeProperties 节中可用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| 查询 | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
+| query | 指定要从 SAP HANA 实例读取数据的 SQL 查询。 | SQL 查询。 | 是 |
 
 ## <a name="json-example-copy-data-from-sap-hana-to-azure-blob"></a>JSON 示例：将数据从 SAP HANA 复制到 Azure Blob
 下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 此示例演示如何将数据从本地 SAP HANA 复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动，**直接**将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)列出的任何接收器。  
@@ -93,11 +93,11 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | No
 
 1. [SapHana](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从 SAP HANA 实例复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 SAP HANA 实例复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 第一步，设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
@@ -287,21 +287,21 @@ TINYINT | Byte
 SMALLINT | Int16
 INT | Int32
 BIGINT | Int64
-REAL | 单一
-DOUBLE | 单一
+real | Single
+DOUBLE | Single
 DECIMAL | Decimal
 BOOLEAN | Byte
-VARCHAR | 字符串
-NVARCHAR | 字符串
+VARCHAR | String
+NVARCHAR | String
 CLOB | Byte[]
-ALPHANUM | 字符串
+ALPHANUM | String
 BLOB | Byte[]
-DATE | 日期/时间
+DATE | DateTime
 TIME | TimeSpan
-TIMESTAMP | 日期/时间
-SECONDDATE | 日期/时间
+TIMESTAMP | DateTime
+SECONDDATE | DateTime
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 从 SAP HANA 复制数据时，有以下几个已知限制：
 
 - NVARCHAR 字符串截断为最大长度为 4000 的 Unicode 字符

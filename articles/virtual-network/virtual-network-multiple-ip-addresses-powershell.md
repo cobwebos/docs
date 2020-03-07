@@ -17,11 +17,11 @@ ms.date: 03/24/2017
 ms.author: kumud
 ms.reviewer: annahar
 ms.openlocfilehash: a8bd4e4779d94cfc22ac7726c9746fe755764033
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647316"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381044"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 将多个 IP 地址分配到虚拟机
 
@@ -305,7 +305,7 @@ ms.locfileid: "75647316"
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   *IpConfig-3* 的 **PublicIpAddress** 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
+   **IpConfig-3** 的 *PublicIpAddress* 列为空，这表示该 IP 配置当前没有任何关联的公共 IP 地址资源。 可将现有公共 IP 地址资源添加到 IpConfig-3，或输入以下命令来创建一个：
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `

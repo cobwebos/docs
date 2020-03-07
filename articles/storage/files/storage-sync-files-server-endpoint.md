@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932623"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361872"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>添加/删除 Azure 文件同步服务器终结点
 借助 Azure 文件同步，既可将组织的文件共享集中在 Azure 文件中，又不失本地文件服务器的灵活性、性能和兼容性。 它通过将 Windows Server 转换为 Azure 文件共享的快速缓存来实现这一点。 你可以使用 Windows Server 上的任意可用协议在本地访问数据（包括 SMB、NFS 和 FTPS），并且可以在世界各地获取所需的缓存数。
@@ -21,7 +21,7 @@ ms.locfileid: "70932623"
 
 若要了解如何部署端到端的 Azure 文件同步，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 若要创建服务器终结点，必须首先确保满足以下条件： 
 - 服务器安装了 Azure 文件同步代理并已注册。 有关安装 Azure 文件同步代理的说明可以在[向 Azure 文件同步注册/注销服务器](storage-sync-files-server-registration.md)一文中找到。 
 - 确保已部署存储同步服务。 有关如何部署存储同步服务的详细信息，请参阅[如何部署 Azure 文件同步](storage-sync-files-deployment-guide.md)。 
@@ -35,9 +35,9 @@ ms.locfileid: "70932623"
 
 “添加服务器终结点”下需要以下信息：
 
-- **已注册的服务器**：要在其中创建服务器终结点的服务器或群集的名称。
-- **路径**：要作为同步组一部分进行同步的 Windows Server 上的路径。
-- **云分层**：启用或禁用云分层的开关。 启用时，云分层会将文件分层到 Azure 文件共享。 这会将本地文件共享转换为缓存而不是数据集的完整副本，以帮助你管理服务器上的空间效率。
+- **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
+- **路径**：要作为同步组的一部分进行同步的 Windows Server 上的路径。
+- 云分层：启用或禁用云分层的开关。 启用时，云分层会将文件分层到 Azure 文件共享。 这会将本地文件共享转换为缓存而不是数据集的完整副本，以帮助你管理服务器上的空间效率。
 - **卷可用空间**：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
 
 选择“创建”以添加服务器终结点。 同步组命名空间中的文件现在会保持同步。 
@@ -54,11 +54,11 @@ ms.locfileid: "70932623"
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-指定`-Order CloudTieringPolicy`将首先撤回最近修改的文件。
+指定 `-Order CloudTieringPolicy` 将首先撤回最近修改的文件。
 需要考虑的其他可选但有用的参数是：
-* `-ThreadCount`确定可并行回调的文件数。
+* `-ThreadCount` 确定可并行回调的文件数。
 * `-PerFileRetryCount`确定尝试重新调用当前被阻止的文件的频率。
-* `-PerFileRetryDelaySeconds`确定两次重试回调尝试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
+* `-PerFileRetryDelaySeconds`确定重试两次重试之间的时间间隔（以秒为单位），并且应始终结合前面的参数使用。
 
 > [!Note]  
 > 如果承载服务器的本地卷没有足够可用空间可用于召回所有分层数据，则 `Invoke-StorageSyncFileRecall` cmdlet 会失败。  

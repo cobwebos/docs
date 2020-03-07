@@ -7,11 +7,11 @@ ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75728746"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373839"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>为应用服务和 Azure Functions 使用 Key Vault 引用
 
@@ -38,7 +38,7 @@ ms.locfileid: "75728746"
 Key Vault 引用采用 `@Microsoft.KeyVault({referenceString})` 格式，其中 `{referenceString}` 将替换为下述选项之一：
 
 > [!div class="mx-tdBreakAll"]
-> | 引用字符串                                                            | Description                                                                                                                                                                                 |
+> | 引用字符串                                                            | 说明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | SecretUri=_secretUri_                                                       | **SecretUri** 应该是 Key Vault 中机密的完整数据平面 URI（包括版本），例如 https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** 应该是 Key Vault 资源的名称。 **SecretName** 应该是目标机密的名称。 **SecretVersion** 应该是要使用的机密的版本。 |
@@ -187,7 +187,7 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 ### <a name="using-the-detector-for-app-service"></a>使用应用程序服务的检测程序
 
 1. 在门户中，导航到你的应用。
-2. 选择“诊断和解决问题”。
+2. 选择 "**诊断并解决问题**"。
 3. 选择 "**可用性和性能**"，然后选择 " **Web 应用"。**
 4. 查找**Key Vault 应用程序设置诊断**，并单击 "**详细信息**"。
 
@@ -196,6 +196,6 @@ Key Vault 引用可以用作[应用程序设置](configure-common.md#configure-a
 
 1. 在门户中，导航到你的应用。
 2. 导航到 "**平台功能"。**
-3. 选择“诊断和解决问题”。
+3. 选择 "**诊断并解决问题**"。
 4. 选择 "**可用性和性能**"，然后选择 "**函数应用关闭" 或 "报告错误"。**
 5. 单击 " **Key Vault 应用程序设置**" "诊断"。

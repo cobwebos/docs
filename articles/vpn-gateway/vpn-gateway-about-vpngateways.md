@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972404"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78358622"
 ---
 # <a name="what-is-vpn-gateway"></a>什么是 VPN 网关？
 

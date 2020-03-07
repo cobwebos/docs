@@ -9,11 +9,11 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
 ms.openlocfilehash: b4278cb2e8c5152f522258a37c37acda5efbacf8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775326"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391133"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -53,9 +53,9 @@ ms.locfileid: "76775326"
 
 从浏览器导航到 Azure 门户并使用 Azure 帐户登录。
 
-1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”  。 在搜索框中键入“虚拟 WAN”  ，然后选择 Enter。
-2. 从结果中选择“虚拟 WAN”  。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页  。
-3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段   ：
+1. 导航到“虚拟 WAN”页。 在门户中，单击“+创建资源”。 在搜索框中键入“虚拟 WAN”，然后选择 Enter。
+2. 从结果中选择“虚拟 WAN”。 在“虚拟 WAN”页上，单击“创建”以打开“创建 WAN”页。
+3. 在“创建 WAN”页的“基本信息”选项卡上，填写以下字段：
 
    ![虚拟 WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
@@ -63,9 +63,9 @@ ms.locfileid: "76775326"
    * **资源组** - 新建资源组或使用现有的资源组。
    * **资源组位置** - 从下拉列表中选择资源位置。 WAN 是一个全局资源，不会驻留在某个特定区域。 但是，必须选择一个区域才能更轻松地管理和查找所创建的 WAN 资源。
    * **名称** - 键入要用于称呼 WAN 的名称。
-   * **类型：** 基本或标准。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
-4. 填写完字段后，单击“审阅 + 创建”  。
-5. 验证通过后，选择“创建”以创建虚拟 WAN  。
+   * **键入：** Basic 或 Standard。 如果创建基本 WAN，则只能创建基本中心。 基本中心仅支持 VPN 站点到站点连接。
+4. 填写完字段后，单击“审阅 + 创建”。
+5. 验证通过后，选择“创建”以创建虚拟 WAN。
 
 ## <a name="hub"></a>创建中心
 
@@ -89,22 +89,22 @@ ms.locfileid: "76775326"
 
 此步骤在中心与 VNet 之间创建互连。 针对要连接的每个 VNet 重复这些步骤。
 
-1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。 
-2. 在虚拟网络连接页上，单击“+添加连接”。 
-3. 在“添加连接”页上填写以下字段  ：
+1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
+2. 在虚拟网络连接页上，单击“+添加连接”。
+3. 在“添加连接”页上填写以下字段：
 
     * **连接名称** - 为连接命名。
     * **中心** - 选择要与此连接关联的中心。
     * **订阅** - 验证订阅。
     * **虚拟网络** - 选择要连接到此中心的虚拟网络。 此虚拟网络不能包含现有的虚拟网络网关。
-4. 单击“确定”  以创建虚拟网络连接。
+4. 单击“确定”以创建虚拟网络连接。
 
 ## <a name="device"></a>下载 VPN 配置
 
 使用 VPN 设备配置来配置本地 VPN 设备。
 
-1. 在虚拟 WAN 的页面上，单击“概述”。 
-2. 在“中心 ->VPNSite”  页的顶部，单击“下载 VPN 配置”  。Azure 会在资源组“microsoft-network-[location]”中创建一个存储帐户，其中，location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
+1. 在虚拟 WAN 的页面上，单击“概述”。
+2. 在**中心 > VPNSite**页面顶部，单击 "**下载 VPN 配置**"。Azure 会在资源组 "microsoft 网络-[location]" 中创建一个存储帐户，其中 location 是 WAN 的位置。 将配置应用到 VPN 设备后，可以删除此存储帐户。
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 将配置应用到本地 VPN 设备。
 
@@ -125,13 +125,13 @@ ms.locfileid: "76775326"
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
-    * 虚拟中心 vpngateway 的 IP 地址  。 由于 vpngateway 的每个连接由采用主动 - 主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
+    * 虚拟中心 vpngateway 的 IP 地址。 由于 vpngateway 的每个连接由采用主动 - 主动配置的 2 个隧道构成，因此，此文件中列出了这两个 IP 地址。 在此示例中，可以看到为每个站点指定了“Instance0”和“Instance1”。<br>示例：
 
         ``` 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * Vpngateway 连接配置详细信息，例如 BGP、预共享密钥等  。PSK 是自动生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
+    * **Vpngateway 连接配置详细信息**，例如 BGP、预共享密钥等等。PSK 是自动为您生成的预共享密钥。 始终可以在“概述”页中为自定义 PSK 编辑连接。
   
 ### <a name="example-device-configuration-file"></a>示例设备配置文件
 
@@ -254,8 +254,8 @@ ms.locfileid: "76775326"
 ## <a name="viewwan"></a>查看虚拟 WAN
 
 1. 导航到虚拟 WAN。
-2. 在“概述”  页上，地图中的每个点表示一个中心。 将鼠标悬停在任意点上可查看中心运行状况摘要、连接状态以及传入和传出的字节数。
-3. 在“中心和连接”部分中，可以查看中心状态、VPN 站点等。可以单击特定的中心名称并导航到 VPN 站点以获取更多详细信息。
+2. 在“概述”页上，地图中的每个点表示一个中心。 将鼠标悬停在任意点上可查看中心运行状况摘要、连接状态以及传入和传出的字节数。
+3. 在 "中心和连接" 部分中，可以查看中心状态、VPN 站点等。可以单击特定的集线器名称并导航到 VPN 站点以获取更多详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

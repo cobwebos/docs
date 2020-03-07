@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
 ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622184"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374700"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的标准 SKU 负载均衡器
 

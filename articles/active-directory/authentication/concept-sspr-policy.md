@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd6cacae9c7af705b0de7b59e0f25f25637a5a89
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962486"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376940"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory 中的密码策略和限制
 
@@ -57,7 +57,7 @@ ms.locfileid: "76962486"
 * 已为 Azure AD 租户配置了自定义域，如*contoso.com*;或
 * Azure AD Connect 正在从本地目录同步标识
 
-### <a name="exceptions"></a>异常
+### <a name="exceptions"></a>例外
 
 单门策略需要一条身份验证数据，如电子邮件地址*或*电话号码。 单门策略在以下情况下适用：
 
@@ -69,7 +69,7 @@ ms.locfileid: "76962486"
 
 需登录到 Azure AD 的每个用户帐户都必须有唯一的与其帐户关联的用户主体名称 (UPN) 属性值。 下表概括了既适用于同步到云的本地 Active Directory 用户帐户，又适用于仅限云的用户帐户的策略：
 
-| 属性 | UserPrincipalName 要求 |
+| properties | UserPrincipalName 要求 |
 | --- | --- |
 | 允许的字符 |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | 不允许的字符 |<ul> <li>任何不分隔用户名和域的“\@\"”字符。</li> <li>不能包含紧靠在“\@\"”符号前面的点字符“.”</li></ul> |
@@ -79,9 +79,9 @@ ms.locfileid: "76962486"
 
 下表描述了应用于在 Azure AD 中创建和管理的用户帐户的密码策略设置：
 
-| 属性 | 要求 |
+| properties | 要求 |
 | --- | --- |
-| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>空格</li></ul> |
+| 允许的字符 |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ "（）;</li> <li>空格</li></ul> |
 | 不允许的字符 | Unicode 字符。 |
 | 密码限制 |<ul><li>最少8个字符，最多256个字符。</li><li>需满足以下 4 项中的 3 项：<ul><li>小写字符。</li><li>大写字符。</li><li>数字 (0-9)。</li><li>符号（请参阅前面的密码限制）。</li></ul></li></ul> |
 | 密码过期持续时间（最长密码期限） |<ul><li>默认值：**90** 天。</li><li>可通过 Windows PowerShell 的 Azure Active Directory 模块中的 `Set-MsolPasswordPolicy` cmdlet 来配置该值。</li></ul> |

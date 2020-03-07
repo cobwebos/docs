@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375591"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>使用 REST API 调用在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -33,7 +33,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - 在 Azure VM 上启用和禁用系统分配托管标识
 - 在 Azure VM 上添加和删除用户分配托管标识
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -81,7 +81,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    **请求标头**
    
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -170,7 +170,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -202,7 +202,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -237,7 +237,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -280,7 +280,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -339,7 +339,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -420,7 +420,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -511,7 +511,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。
 
@@ -532,7 +532,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    ```
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        |
@@ -564,7 +564,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -600,7 +600,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -639,7 +639,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -680,7 +680,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。
@@ -703,7 +703,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -735,7 +735,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
    **请求标头**
 
-   |请求标头  |Description  |
+   |请求标头  |说明  |
    |---------|---------|
    |*Content-Type*     | 必需。 设置为 `application/json`。        |
    |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。        | 
@@ -765,7 +765,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。 | 
@@ -792,7 +792,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **请求标头**
 
-|请求标头  |Description  |
+|请求标头  |说明  |
 |---------|---------|
 |*Content-Type*     | 必需。 设置为 `application/json`。        |
 |*授权*     | 必需。 设置为有效的 `Bearer` 访问令牌。| 

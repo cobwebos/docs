@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 05cee60fb1f4d43d1b4ce371aa9f22650b4782da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931823"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387634"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>使用 Azure 数据工厂从本地 Cassandra 数据库移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,9 +32,9 @@ ms.locfileid: "74931823"
 可以将数据从本地 Cassandra 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Cassandra 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Cassandra 数据存储。
 
 ## <a name="supported-versions"></a>支持的版本
-Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承载集成运行时上运行的活动，Cassandra 3.x 受 IR 版本 3.7 及更高版本支持。
+Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承载集成运行时上运行的活动，从 IR 版本 3.7 以及更高版本开始，Cassandra 3.x 受支持。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 要使 Azure 数据工厂服务能够连接到本地 Cassandra 数据库，必须在托管数据库的同一计算机上或在单独的计算机上安装数据管理网关，以避免与数据库争用资源。 数据管理网关是一个以安全和托管的方式将本地数据源连接到云服务的组件。 有关数据管理网关的详细信息，请参阅[数据管理网关](data-factory-data-management-gateway.md)一文。 有关设置网关以便数据管道移动数据的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 必须使用网关连接到 Cassandra 数据库，即使数据库在云中托管（例如，在 Azure IaaS VM 上），也是如此。 只要网关能连接数据库，就可在托管数据库的同一 VM 上或单独的 VM 上安装网关。
@@ -63,16 +63,16 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供特定于 Cassandra 链接服务的 JSON 元素的说明。
 
-| properties | 描述 | 需要 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | type |“type”属性必须设置为：OnPremisesCassandra |是 |
-| host |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
+| 主机 |Cassandra 服务器的一个或多个 IP 地址或主机名。<br/><br/>指定以逗号分隔的 IP 地址或主机名列表，以同时连接到所有服务器。 |是 |
 | port |Cassandra 服务器用来侦听客户端连接的 TCP 端口。 |否，默认值：9042 |
 | authenticationType |Basic 或 Anonymous |是 |
 | username |为用户帐户指定用户名。 |是（如果 authenticationType 设置为 Basic）。 |
 | password |指定用户帐户的密码。 |是（如果 authenticationType 设置为 Basic）。 |
 | gatewayName |用于连接到本地 Cassandra 数据库的网关的名称。 |是 |
-| encryptedCredential |网关加密的凭据。 |No |
+| encryptedCredential |网关加密的凭据。 |是 |
 
 >[!NOTE]
 >当前不支持使用 SSL 连接到 Cassandra。
@@ -82,22 +82,22 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 CassandraTable 数据集类型的 typeProperties 节具有以下属性
 
-| properties | 描述 | 需要 |
+| 属性 | 说明 | 必需 |
 | --- | --- | --- |
 | keyspace |Cassandra 数据库中密钥空间或架构的名称。 |是（如果未定义 CassandraSource 的查询）。 |
 | tableName |Cassandra 数据库中表的名称。 |是（如果未定义 CassandraSource 的查询）。 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 源类型为 CassandraSource 时，以下属性在 typeProperties 节中可用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
-| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |不。 默认值为 ONE。 |
+| query |使用自定义查询读取数据。 |SQL-92 查询或 CQL 查询。 请参阅 [CQL reference](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)（CQL 参考）。 <br/><br/>使用 SQL 查询时，请指定 keyspace name.table name 来表示要查询的表。 |否（如果定义了数据集上的 tableName 和 keyspace）。 |
+| consistencyLevel |一致性级别指定在将数据返回到客户端应用程序之前必须响应读取请求的副本的数量。 Cassandra 会检查指定数量的副本，以使数据满足读取请求。 |ONE, TWO, THREE, QUORUM, ALL, LOCAL_QUORUM, EACH_QUORUM, LOCAL_ONE。 有关详细信息，请参阅 [Configuring data consistency](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html)（配置数据一致性）。 |No。 默认值为 ONE。 |
 
 ## <a name="json-example-copy-data-from-cassandra-to-azure-blob"></a>JSON 示例：将数据从 Cassandra 复制到 Azure Blob
 此示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 其中演示如何将数据从本地 Cassandra 数据库复制到 Azure Blob 存储。 但是，可使用 Azure 数据工厂中的复制活动将数据复制到[此处](data-factory-data-movement-activities.md#supported-data-stores-and-formats)所述的任何接收器。
@@ -109,8 +109,8 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 * [OnPremisesCassandra](#linked-service-properties) 类型的链接服务。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-* [CassandraTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+* [CassandraTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [CassandraSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
 **Cassandra 链接服务：**
@@ -182,7 +182,7 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
 ```json
 {
@@ -261,20 +261,20 @@ Cassandra 连接器支持以下版本的 Cassandra：2.x 和 3.x。 对于自承
 ### <a name="type-mapping-for-cassandra"></a>Cassandra 的类型映射
 | Cassandra 类型 | 基于.NET 的类型 |
 | --- | --- |
-| ASCII |字符串 |
+| ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |布尔 |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
 | DOUBLE |Double |
-| FLOAT |单一 |
-| INET |字符串 |
+| FLOAT |Single |
+| INET |String |
 | INT |Int32 |
-| TEXT |字符串 |
-| TIMESTAMP |日期/时间 |
-| TIMEUUID |GUID |
-| UUID |GUID |
-| VARCHAR |字符串 |
+| TEXT |String |
+| TIMESTAMP |DateTime |
+| TIMEUUID |Guid |
+| UUID |Guid |
+| VARCHAR |String |
 | VARINT |Decimal |
 
 > [!NOTE]
@@ -299,18 +299,18 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 ### <a name="example"></a>示例
 例如，下面的“ExampleTable”是一个 Cassandra 数据库表，其中包含名为“pk_int”的整数主键列、文本列命名值、列表列、映射列和名为“StringSet”的集列。
 
-| pk_int | Value | 列表 | 映射 | StringSet |
+| pk_int | 值 | 列表 | 映射 | StringSet |
 | --- | --- | --- | --- | --- |
-| 第 |“示例值 1” |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
+| 1 |“示例值 1” |["1", "2", "3"] |{"S1": "a", "S2": "b"} |{"A", "B", "C"} |
 | 3 |“示例值 3” |["100", "101", "102", "105"] |{"S1": "t"} |{"A", "E"} |
 
 该驱动程序会生成多个虚拟表来表示此单个表。 虚拟表中的外键列会引用实际表中的主键列，并指示该虚拟表行对应哪一个实际表行。
 
 第一个虚拟表是名为“ExampleTable”的基表，如下表所示。 除了会在此表中被省略但在其他虚拟表中展开的集合外，该基表包含与原始数据库表相同的数据。
 
-| pk_int | Value |
+| pk_int | 值 |
 | --- | --- |
-| 第 |“示例值 1” |
+| 1 |“示例值 1” |
 | 3 |“示例值 3” |
 
 下表中显示的虚拟表会重新规范化列表、映射和 StringSet 列中的数据。 名称以“_index”或“_key”结尾的列指示数据在原始列表或映射中的位置。 名称以“_value”结尾的列包含从集合中展开的数据。
@@ -318,27 +318,27 @@ Azure 数据工厂使用内置的 ODBC 驱动程序连接到 Cassandra 数据库
 #### <a name="table-exampletable_vt_list"></a>表“ExampleTable_vt_List”：
 | pk_int | List_index | List_value |
 | --- | --- | --- |
-| 第 |0 |第 |
-| 第 |第 |2 |
-| 第 |2 |3 |
+| 1 |0 |1 |
+| 1 |1 |2 |
+| 1 |2 |3 |
 | 3 |0 |100 |
-| 3 |第 |101 |
+| 3 |1 |101 |
 | 3 |2 |102 |
 | 3 |3 |103 |
 
 #### <a name="table-exampletable_vt_map"></a>表“ExampleTable_vt_Map”：
 | pk_int | Map_key | Map_value |
 | --- | --- | --- |
-| 第 |S1 |A |
-| 第 |S2 |b |
+| 1 |S1 |A |
+| 1 |S2 |b |
 | 3 |S1 |t |
 
 #### <a name="table-exampletable_vt_stringset"></a>表“ExampleTable_vt_StringSet”：
 | pk_int | StringSet_value |
 | --- | --- |
-| 第 |A |
-| 第 |B |
-| 第 |C |
+| 1 |A |
+| 1 |B |
+| 1 |C |
 | 3 |A |
 | 3 |E |
 
