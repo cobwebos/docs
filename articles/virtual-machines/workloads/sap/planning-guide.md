@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/13/2020
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
-ms.translationtype: MT
+ms.openlocfilehash: 693faf3a4e9d42321fee1258b8dd5d24582e4686
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616817"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363617"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -1052,7 +1052,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-如[本文][storage-azure-cli-copy-blobs]所示，可以使用 AZURE CLI 复制 VHD。 若要创建新的托管磁盘，请使用 az disk create，如下例所示。
+你可以使用 Azure CLI 来复制 VHD。 若要创建新的托管磁盘，请使用 az disk create，如下例所示。
 
 ```
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1152,8 +1152,6 @@ az storage blob show --name <target blob name> --container <target container nam
 ```
 
 * 如上所述将新 VHD 附加到虚拟机。
-
-有关示例，请参阅[此文][storage-azure-cli-copy-blobs]。
 
 ### <a name="disk-handling"></a>磁盘处理
 

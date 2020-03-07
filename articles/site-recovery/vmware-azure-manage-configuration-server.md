@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954360"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362540"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>为 VMware VM/物理服务器灾难恢复管理配置服务器
 
@@ -154,7 +154,7 @@ ms.locfileid: "73954360"
 
 1. 在保管库中，转到“管理” > “Site Recovery 基础结构” > “配置服务器”。
 2. 如果有可用的更新，链接将显示在“代理版本”> 列中。
-    ![更新](./media/vmware-azure-manage-configuration-server/update2.png)
+    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 将更新安装程序文件下载到配置服务器上。
 
     ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
@@ -184,7 +184,7 @@ ms.locfileid: "73954360"
   ```
 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>parameters
 
 |参数名称| 类型 | 说明| 值|
 |-|-|-|-|
@@ -261,7 +261,7 @@ ProxyPassword="Password"
     `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> 可使用 Remove-AzSiteRecoveryFabric 中的 -Force 选项强制删除配置服务器。
+> 可以使用 AzSiteRecoveryFabric 中的 **-Force**选项来强制删除配置服务器。
 
 ## <a name="generate-configuration-server-passphrase"></a>生成配置服务器通行短语
 

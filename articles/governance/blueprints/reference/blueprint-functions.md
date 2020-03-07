@@ -4,11 +4,11 @@ description: 介绍可用于 Azure 蓝图定义和分配中的蓝图项目的函
 ms.date: 12/09/2019
 ms.topic: reference
 ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970884"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386249"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>与 Azure 蓝图一起使用的函数
 
@@ -16,9 +16,9 @@ Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝�
 
 支持以下函数：
 
-- [artifacts](#artifacts)
+- [诸如](#artifacts)
 - [concat](#concat)
-- [parameters](#parameters)
+- [参数](#parameters)
 - [resourceGroup](#resourcegroup)
 - [resourceGroups](#resourcegroups)
 - [subscription](#subscription)
@@ -34,7 +34,7 @@ Azure 蓝图提供使蓝图定义更动态的函数。 这些函数可用于蓝�
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |是 |字符串 |蓝图项目的名称。 |
 
@@ -106,14 +106,14 @@ ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示
 
 从_myTemplateArtifact_示例中检索数据的一些示例如下：
 
-| 表达式 | Type | Value |
+| 表达式 | 类型 | 值 |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | 数组 | \["first", "second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | 字符串 | 1 |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | 字符串 | "我的字符串值" |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | 对象 | {"t.myproperty"： "my value"，"anotherProperty"： true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | 字符串 | "my value" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | 正确 |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first"、"second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | 1 |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "我的字符串值" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"t.myproperty"： "my value"，"anotherProperty"： true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "my value" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
 
 ## <a name="concat"></a>concat
 
@@ -123,10 +123,10 @@ ID 为_myTemplateArtifact_的资源管理器模板项目，其中包含以下示
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | string1 |是 |字符串 |串联的第一个值。 |
-| 其他参数 |No |字符串 |串联的顺序的其他值 |
+| 其他参数 |否 |字符串 |串联的顺序的其他值 |
 
 ### <a name="return-value"></a>返回值
 
@@ -140,7 +140,7 @@ Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适�
 
 `concat(parameters('organizationName'), '-vm')`
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -148,7 +148,7 @@ Azure 蓝图函数不同于 Azure 资源管理器模板功能，因为它仅适�
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |是 |字符串 |要返回的参数名称。 |
 
@@ -269,7 +269,7 @@ Azure 蓝图功能不同于 Azure 资源管理器模板功能。 `resourceGroup(
 
 ### <a name="parameters"></a>parameters
 
-| 参数 | 需要 | Type | 描述 |
+| 参数 | 必选 | 类型 | 说明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |是 |字符串 |要返回的资源组项目的占位符名称。 |
 

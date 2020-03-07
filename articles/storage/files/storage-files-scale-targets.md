@@ -8,11 +8,11 @@ ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598565"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361874"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 文件可伸缩性和性能目标
 
@@ -81,7 +81,7 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 | 内存 | 128 GiB |
 | 磁盘 | 采用 RAID 10 且带有以电池供电的高速缓存的 SAS 磁盘 |
 | 网络 | 1 Gbps 网络 |
-| 工作负荷 | 常规用途文件服务器|
+| 工作负载 | 常规用途文件服务器|
 
 | 初始的一次性预配  |  |
 |-|-|

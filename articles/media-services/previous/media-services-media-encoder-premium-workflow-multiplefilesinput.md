@@ -16,15 +16,15 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015451"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392975"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>在高级编码器中使用多个输入文件和组件属性
 ## <a name="overview"></a>概述
-在某些情况下，可能需要在使用**媒体编码器高级工作流**媒体处理器提交任务时自定义组件属性、指定剪辑列表 XML 内容或发送多个输入文件。 下面是一些示例：
+在某些情况下，可能需要在使用**媒体编码器高级工作流**媒体处理器提交任务时自定义组件属性、指定剪辑列表 XML 内容或发送多个输入文件。 一些示例如下：
 
 * 在每个输入视频运行时，覆盖视频中的文本和设置文本值（例如，当前日期）。
 * 自定义剪辑列表 XML（以指定一个或多个包含或不包含剪裁的源文件等）。
@@ -83,7 +83,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 **setRuntimeProperties** 用于覆盖工作流组件中的属性。
 
-例如：
+示例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -99,7 +99,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 ### <a name="property-with-an-xml-value"></a>具有 XML 值的属性
 若要设置预期具有 XML 值的属性，可使用 `<![CDATA[ and ]]>` 进行封装。
 
-例如：
+示例：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -141,7 +141,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![操作/编辑](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture6_actionedit.png)
 
-![属性](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
+![properties](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture7_viewproperty.png)
 
 ## <a name="multiple-input-files"></a>多个输入文件
 提交给**媒体编码器高级工作流**的每个任务需要两个资产：
@@ -271,11 +271,11 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>示例 1：覆盖视频顶层的图像
 
-### <a name="presentation"></a>演示文稿
+### <a name="presentation"></a>呈现
 假设要在视频编码时覆盖输入视频中的徽标图像。 此示例中，输入视频命名为“Microsoft_HoloLens_Possibilities_816p24.mp4”，徽标命名为“logo.png”。 应该执行以下步骤：
 
 * 创建包含工作流文件的工作流资产（参阅以下示例）。
-* 创建媒体资产，其中包含两个文件：作为主文件的 MyInputVideo.mp4 以及 MyLogo.png。
+* 创建包含以下两个文件的媒体资产：MyInputVideo.mp4（主文件）和 MyLogo.png。
 * 使用上述输入资产将任务发送到媒体编码器高级工作流媒体处理器，并指定以下配置字符串。
 
 配置:
@@ -297,7 +297,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 > 视频文件名已发送到 primarySourceFile 属性。 这样做的目的是要在工作流中使用此属性，以便（举例而言）使用 Expressions 构建正确的输出文件名。
 
 ### <a name="step-by-step-workflow-creation"></a>分步工作流创建
-以下是创建工作流的步骤，该工作流采用两个文件作为输入：视频和图像。 它将覆盖位于视频顶层的图像。
+以下步骤将创建一个工作流，该工作流采用视频和图像两个文件作为输入。 它将覆盖位于视频顶层的图像。
 
 打开“工作流设计器”，并选择“文件” > “新建工作区” > “转码蓝图”。
 
@@ -311,7 +311,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 新编码工作流
 
-为了接受输入媒体文件，请从添加媒体文件输入组件开始。 如果要将组件添加到工作流，请在“存储库”搜索框中查找它，并将所需的项拖放到设计器窗格。
+为了接受输入媒体文件，请从添加媒体文件输入组件开始。 要将组件添加到工作流，请在“存储库”搜索框中查找它，然后将所需的项拖放到设计器窗格。
 
 接下来，添加要用于设计工作流的视频文件。 为此，请单击工作流设计器中的背景窗格，并在右侧属性窗格中找到“主源文件”属性。 单击文件夹图标，并选择相应的视频文件。
 
@@ -325,7 +325,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 媒体文件输入源
 
-完成此操作之后，媒体文件输入组件检查该文件，并填充其输出引脚，以反映它检查的文件。
+完成此操作后，媒体文件输入组件会检查文件，并填充其输出插针，以反映其检查的文件。
 
 下一步是添加一个“视频数据类型更新器”，以将颜色空间指定为 Rec.709。 添加设置为“数据布局/布局类型 = 可配置平面”的“视频格式转换器”。 这会将视频流转换为可以用作覆盖层组件源的格式。
 
@@ -352,7 +352,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 覆盖层位置
 
 要将视频流编码成 H.264，请将 AVC 视频编码器和 AAC 编码器组件添加到设计器图面。 连接插针。
-设置 AAC 编码器，并选择“音频格式转换/预设:2.0 (L, R)”。
+设置 AAC 编码器，并选择“音频格式转换/预设：2.0 (L, R)”。
 
 ![音频和视频编码器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -421,7 +421,7 @@ AMSE 中的高级编码器
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 
-作业完成后，输出资产中的 MP4 文件显示覆盖层！
+作业完成后，输出资产中的 MP4 文件会显示覆盖层！
 
 ![视频中的覆盖层](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture21_resultoverlay.png)
 
@@ -464,9 +464,9 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 </transcodeRequest>
 ```
 
-* 编码资产会包含多语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
+* 编码资产将包含多个语言音频轨道，且可在 Azure Media Player 中选择这些轨道。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 * [在 Azure 媒体服务中引入高级编码](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
 * [如何在 Azure 媒体服务中使用高级编码](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
 * [使用 Azure 媒体服务对按需内容进行编码](media-services-encode-asset.md#media-encoder-premium-workflow)

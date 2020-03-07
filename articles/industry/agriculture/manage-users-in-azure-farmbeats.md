@@ -6,17 +6,17 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482291"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392727"
 ---
 # <a name="manage-users"></a>管理用户
 
 Azure FarmBeats 为属于 Azure Active Directory （Azure AD）实例的人员提供用户管理。 你可以将用户添加到你的 Azure FarmBeats 实例，以访问 Api、查看生成的映射以及从场访问传感器遥测。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 需要安装 Azure FarmBeats。 有关详细信息，请参阅[Install Azure FarmBeats](install-azure-farmbeats.md)。
 - 要在 Azure FarmBeats 实例中添加或删除的用户的电子邮件 Id。

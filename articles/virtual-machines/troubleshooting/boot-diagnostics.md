@@ -11,11 +11,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
 ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965631"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362554"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用启动诊断功能来排查 Azure 中虚拟机的问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "75965631"
 
 可以选择“启动诊断”选项以查看日志和屏幕截图。
 
-![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![资源管理器](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>常见的启动错误
 

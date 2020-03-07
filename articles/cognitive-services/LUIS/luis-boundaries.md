@@ -12,11 +12,11 @@ ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273521"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361079"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的边界
 LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 边界的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-reference-regions.md) API 之间的[世界区域映射](luis-glossary.md#endpoint)。

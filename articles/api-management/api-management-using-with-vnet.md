@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: apimpm
 ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047481"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374926"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -210,7 +210,7 @@ IP 地址除以**Azure 环境**。 允许入站请求带有**全局**标记的 i
 | Azure Public| 日本东部| 52.140.238.179|
 | Azure Public| 法国中部| 40.66.60.111|
 | Azure Public| 加拿大东部| 52.139.80.117|
-| Azure Public| 阿联酋北部| 20.46.144.85|
+| Azure Public| 阿拉伯联合酋长国北部| 20.46.144.85|
 | Azure Public| 巴西南部| 191.233.24.179|
 | Azure Public| 东南亚| 40.90.185.46|
 | Azure Public| 南非北部| 102.133.130.197|
@@ -233,7 +233,7 @@ IP 地址除以**Azure 环境**。 允许入站请求带有**全局**标记的 i
 | Azure Public| 法国南部| 20.39.80.2|
 | Azure Public| 瑞士西部| 51.107.96.8|
 | Azure Public| 澳大利亚中部 2| 20.39.99.81|
-| Azure Public| 阿拉伯联合酋长国中部| 20.37.81.41|
+| Azure Public| 阿联酋中部| 20.37.81.41|
 | Azure Public| 瑞士北部| 51.107.0.91|
 | Azure Public| 南非西部| 102.133.0.79|
 | Azure Public| 德国中西部| 51.116.96.0|
@@ -250,8 +250,8 @@ IP 地址除以**Azure 环境**。 允许入站请求带有**全局**标记的 i
 | Azure Government| USGov 德克萨斯州（全球）| 52.127.34.192|
 | Azure Government| USGov Virginia| 52.227.222.92|
 | Azure Government| USGov Iowa| 13.73.72.21|
-| Azure Government| 美国亚利桑那州政府| 52.244.32.39|
-| Azure Government| 美国德克萨斯州政府| 52.243.154.118|
+| Azure Government| US Gov 亚利桑那州| 52.244.32.39|
+| Azure Government| US Gov 德克萨斯州| 52.243.154.118|
 | Azure Government| USDoD 中部| 52.182.32.132|
 | Azure Government| USDoD 东部| 52.181.32.192|
 

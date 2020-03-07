@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
 ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383172"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>创建并管理具有多个 NIC 的 Windows 虚拟机
 Azure 中的虚拟机 (VM) 可附有多个虚拟网络接口卡 (NIC)。 一种常见方案是为前端和后端连接设置不同的子网。 可以将 VM 上的多个 NIC 关联到多个子网，但这些子网必须全都位于同一个虚拟网络 (vNet) 中。 本文详述了如何创建附有多个 NIC 的 VM。 还可以了解如何从现有 VM 中添加或删除 NIC。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
 
@@ -139,7 +139,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. 以下示例通过 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建附加到 *mySubnetBackEnd* 的名为 *myNic3* 的虚拟 NIC。 然后，通过 [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) 将该虚拟 NIC 附加到 *myResourceGroup* 中名为 *myVM* 的 VM：
+3. 以下示例通过 [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) 创建附加到 *mySubnetBackEnd* 的名为 *myNic3* 的虚拟 NIC。 然后，通过 *Add-AzVMNetworkInterface* 将该虚拟 NIC 附加到 *myResourceGroup* 中名为 [myVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) 的 VM：
 
     ```powershell
     # Get info for the back end subnet
@@ -204,7 +204,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. 通过 [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) 删除 NIC，然后通过 [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) 更新 VM。 以下示例删除上一步中由 `$nicId` 获得的“myNic3”：
+4. 通过 [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) 删除 NIC，然后通过 [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) 更新 VM。 以下示例删除上一步中由  *获得的“myNic3”* `$nicId`：
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `

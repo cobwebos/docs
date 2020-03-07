@@ -4,11 +4,11 @@ description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597246"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363683"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 备份概述
 
@@ -122,7 +122,7 @@ Azure 备份根据备份计划拍摄快照。
 
 **磁盘** | **最大大小** | **实际存在的数据**
 --- | --- | ---
-OS 磁盘 | 32 TB | 17 GB
+操作系统磁盘 | 32 TB | 17 GB
 本地/临时磁盘 | 135 GB | 5 GB（不包括在备份中）
 数据磁盘 1 | 32 TB| 30 GB
 数据磁盘 2 | 32 TB | 0 GB
