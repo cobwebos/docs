@@ -4,11 +4,11 @@ description: 了解如何使用适用于 Visual Studio Code 的 Azure 策略扩�
 ms.date: 11/04/2019
 ms.topic: how-to
 ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873108"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386811"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Azure Policy extension 进行 Visual Studio Code
 
@@ -21,11 +21,11 @@ ms.locfileid: "74873108"
 > [!NOTE]
 > 在 Visual Studio Code 的 Azure 策略扩展中查看的策略所做的更改不会同步到 Azure。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
-完成本文中的步骤需要具有以下项：
+完成本文中的步骤需要以下各项：
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+- 一个 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - [Visual Studio Code](https://code.visualstudio.com)。
 
 ## <a name="install-azure-policy-extension"></a>安装 Azure 策略扩展

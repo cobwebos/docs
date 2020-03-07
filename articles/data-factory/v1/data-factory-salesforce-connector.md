@@ -13,11 +13,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929275"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387443"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,12 +34,12 @@ Azure 数据工厂当前仅支持将数据从 Salesforce 移动到[支持的接�
 ## <a name="supported-versions"></a>支持的版本
 此连接器支持以下版本的 Salesforce：开发人员版、专业版、企业版或不受限制版。 并支持从 Salesforce 生产、沙盒和自定义域进行复制。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 * 必须启用 API 权限。 请参阅 [How do I enable API access in Salesforce by permission set?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)（如何通过权限集启用 Salesforce 中的 API 访问权限？）
 * 要将数据从 Salesforce 复制到本地数据存储，必须在本地环境中至少安装有数据管理网关 2.0。
 
 ## <a name="salesforce-request-limits"></a>Salesforce 请求限制
-Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下几点：
+Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以下几点：
 
 - 如果并发请求数超过限制，则将进行限制并且会看到随机失败。
 - 如果请求总数超过限制，将阻止 Salesforce 帐户 24 小时。
@@ -66,10 +66,10 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了针对 Salesforce 链接服务的 JSON 元素说明。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**Salesforce** |是 |
-| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https：\//login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |No |
+| environmentUrl | 指定 Salesforce 实例的 URL。 <br><br> -默认值为 "https：\//login.salesforce.com"。 <br> - 要从沙盒复制数据，请指定“https://test.salesforce.com”。 <br> - 若要从自定义域复制数据，请指定（例如）“https://[domain].my.salesforce.com”。 |否 |
 | username |为用户帐户指定用户名。 |是 |
 | password |指定用户帐户的密码。 |是 |
 | securityToken |为用户帐户指定安全令牌。 请参阅[获取安全令牌](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm)了解有关如何重置/获取安全令牌的说明。 若要了解有关安全令牌的一般信息，请参阅 [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)（安全性和 API）。 |是 |
@@ -79,7 +79,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分具有以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | tableName |在 Salesforce 中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
@@ -95,9 +95,9 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 Salesforce）时，以下属性在 typeProperties 部分中可用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了**数据集**的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 92 查询或 [Salesforce 对象查询语言 (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) 查询。 例如：`select * from MyTable__c`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!IMPORTANT]
 > 任何自定义对象均需要 API 名称的“__c”部分。
@@ -114,7 +114,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
     * **使用 JSON 编辑指定查询（正确转义字符）：** `$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>从 Salesforce 报表检索数据
-可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据，例如， `"query": "{call \"TestReport\"}"`。
+可通过将查询指定为 `{call "<report name>"}` 从 Salesforce 报表检索数据，例如， `"query": "{call \"TestReport\"}"` 列中的一个值匹配。
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>从 Salesforce 回收站中检索删除的记录
 若要从 Salesforce 回收站中检索软删除的记录，需要在查询中指定 **“IsDeleted = 1”** 。 例如，
@@ -129,8 +129,8 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 * [Salesforce](#linked-service-properties) 类型的链接服务
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务
-* [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)
+* [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)
+* [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)
 * 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 **Salesforce 链接服务**
@@ -201,7 +201,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
 ```json
 {
@@ -285,25 +285,25 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 注意以下�
 
 | Salesforce 类型 | 基于 .NET 的类型 |
 | --- | --- |
-| 自动编号 |字符串 |
-| 复选框 |布尔 |
+| 自动编号 |String |
+| 复选框 |Boolean |
 | 货币 |Decimal |
-| 日期 |日期/时间 |
-| 日期/时间 |日期/时间 |
-| 电子邮件 |字符串 |
-| ID |字符串 |
-| 查找关系 |字符串 |
-| 多选择列表 |字符串 |
+| Date |DateTime |
+| 日期/时间 |DateTime |
+| 电子邮件 |String |
+| ID |String |
+| 查找关系 |String |
+| 多选择列表 |String |
 | Number |Decimal |
 | 百分比 |Decimal |
-| 手机 |字符串 |
-| 选择列表 |字符串 |
-| 文本 |字符串 |
-| 文本区域 |字符串 |
-| 文本区域（长型值） |字符串 |
-| 文本区域（丰富） |字符串 |
-| 文本（加密） |字符串 |
-| URL |字符串 |
+| 电话 |String |
+| 选择列表 |String |
+| 文本 |String |
+| 文本区域 |String |
+| 文本区域（长型值） |String |
+| 文本区域（丰富） |String |
+| 文本（加密） |String |
+| 代码 |String |
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

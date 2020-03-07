@@ -16,18 +16,18 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69016716"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392924"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
 本文档包含的演练说明如何使用**工作流设计器**自定义工作流。 可以在[此处](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/PremiumEncoderWorkflowSamples)找到实际的工作流文件。  
 
 ## <a name="toc"></a>目录
-本文涵盖以下主题：
+所涉及的主题如下：
 
 * [将 MXF 编码为单比特率 MP4](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4)
   * [启动新工作流](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_start_new)
@@ -145,7 +145,7 @@ ms.locfileid: "69016716"
 
 未连接的 AAC 编码器
 
-目前不兼容性：AAC 编码器只有单个未压缩音频输入插针，而媒体文件输入可能有两个不同的未压缩音频流可用：一个用于左音频声道，一个用于右声道。 （如果要处理环绕音效，注意有六个声道。）因此，无法直接将音频从“媒体文件输入”源连接到 AAC 音频编码器。 AAC 组件预期需要一个称为“交错”的音频流：具有左右声道并彼此交错的单一流。 一旦我们从源媒体文件知道哪一个音频数据轨在源中的哪个位置，我们可以使用正确分配的左右扬声器位置来生成此类交错音频流。
+目前不兼容性：AAC 编码器只有单个未压缩音频输入插针，而媒体文件输入可能有两个不同的未压缩音频流可用：一个用于左音频声道，一个用于右声道。 （如果您处理的是环绕声，那就是六个声道。）因此无法直接将音频从媒体文件输入源连接到 AAC 音频编码器。 AAC 组件预期需要一个称为“交错”的音频流：具有左右声道并彼此交错的单一流。 一旦我们从源媒体文件知道哪一个音频数据轨在源中的哪个位置，我们可以使用正确分配的左右扬声器位置来生成此类交错音频流。
 
 首先，用户想要从所需的源音频声道生成交错流。 音频流交错器组件将为我们进行处理。 将它添加到工作流，并从“媒体文件输入”将音频输出连接到它。
 
@@ -513,7 +513,7 @@ JPG 编码器
 要在其中添加修剪的起始工作流
 
 ### <a id="time_based_trim_use_stream_trimmer"></a>使用流修剪器
-流修剪器组件允许根据计时信息（秒、分等等）修剪输入流的开头和末尾。修剪器不支持基于帧的修剪。
+Stream 修剪器组件允许根据计时信息（秒、分钟、...）剪裁输入流的开始和结束。修剪器不支持基于帧的修剪。
 
 ![流修剪器](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -599,7 +599,7 @@ JPG 编码器
 
 Hello world 日志输出
 
-调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件因此具备可通过系统选项卡输出日志记录数据的能力。在此情况下，将输出字符串文本“Hello World”。 在此处需要了解的是，这确实是非常重要的调试工具，可深入了解脚本实际上做些什么。
+调用日志方法所在的节点对象是指当前的“节点”或者我们正在编写脚本的组件。 每个组件都可以通过 "系统" 选项卡输出日志记录数据。在这种情况下，我们输出字符串文本 "hello world"。 在此处需要了解的是，这确实是非常重要的调试工具，可深入了解脚本实际上做些什么。
 
 从脚本环境内，我们也可以访问其他组件的属性。 试试看：
 
@@ -693,8 +693,8 @@ Hello world 日志输出
 
 首先，我们需要确定想要修剪视频的哪一个点到哪一个点。 为了让它方便工作流较不具技术性的用户，请将两个属性发布到图形的根目录。 为此，请右键单击设计器图面并选择“添加属性”：
 
-* 第一个属性：“ClippingTimeStart”的类型："TIMECODE"
-* 第二个属性：“ClippingTimeEnd”的类型："TIMECODE"
+* 第一个属性：类型为“TIMECODE”的“ClippingTimeStart”
+* 第二个属性：类型为“TIMECODE”的“ClippingTimeEnd”
 
 ![添加属性对话框中的剪辑开始时间](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -761,7 +761,7 @@ Hello world 日志输出
 
 记录生成的剪辑列表
 
-执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着, 只有首次设置了 in 和 out 点时, 才会导致 xml 转换, 而在其他所有情况下, 我们的 guard 子句 (if (`clipListXML.indexOf("<trim>") == -1`)) 将阻止工作流添加另一个修整元素 (如果已存在)。
+执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着，只有首次设置了 in 和 out 点时，才会导致 xml 转换，而在其他所有情况下，我们的 guard 子句（如果（`clipListXML.indexOf("<trim>") == -1`））将阻止工作流添加另一个修整元素（如果已存在）。
 
 为了让工作流方便在本地测试，我们最好添加一些监护代码，用于检查是否已经存在修剪元素。 如果是的话，我们可以在继续之前，将 XML 修改为新的值来将它删除。 不要使用纯文本字符串操作，通过实际的 XML 对象模型分析执行此操作可能更安全。
 
