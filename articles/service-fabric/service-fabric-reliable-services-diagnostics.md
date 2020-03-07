@@ -6,24 +6,24 @@ ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
 ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462911"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388414"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
 
 ## <a name="eventsource-events"></a>EventSource 事件
-有状态 Reliable Services StatefulServiceBase 类的 EventSource 名称是“Microsoft-ServiceFabric-Services”。 当[在 Visual Studio 中调试](service-fabric-debugging-your-application.md)服务时，来自此事件源的事件会显示在“[诊断事件](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)”窗口中。
+有状态 Reliable Services StatefulServiceBase 类的 EventSource 名称是“Microsoft-ServiceFabric-Services”。 当[在 Visual Studio 中调试](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)服务时，来自此事件源的事件会显示在“[诊断事件](service-fabric-debugging-your-application.md)”窗口中。
 
 可帮助收集和/或查看 EventSource 事件的工具和技术的示例包括：[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 诊断](../cloud-services/cloud-services-dotnet-diagnostics.md)和 [Microsoft TraceEvent 库](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)。
 
-## <a name="events"></a>活动
+## <a name="events"></a>事件
 | 事件名称 | 事件 ID | 级别 | 事件说明 |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |第 |信息 |在服务 RunAsync 任务启动时发出 |
+| StatefulRunAsyncInvocation |1 |信息 |在服务 RunAsync 任务启动时发出 |
 | StatefulRunAsyncCancellation |2 |信息 |在服务 RunAsync 任务取消时发出 |
 | StatefulRunAsyncCompletion |3 |信息 |在服务 RunAsync 任务完成时发出 |
 | StatefulRunAsyncSlowCancellation |4 |警告 |在服务 RunAsync 任务完成取消所用时间过长时发出 |
@@ -41,7 +41,7 @@ StatefulRunAsyncInvocation、StatefulRunAsyncCompletion 和 StatefulRunAsyncCanc
 ## <a name="performance-counters"></a>性能计数器
 Reliable Services 运行时定义以下性能计数器类别：
 
-| 类别 | Description |
+| 类别 | 说明 |
 | --- | --- |
 | Service Fabric 事务性复制器 |特定于 Azure Service Fabric 事务性复制器的计数器 |
 | Service Fabric TStore |特定于 Azure Service Fabric TStore 的计数器 |
@@ -95,7 +95,7 @@ Windows 操作系统中默认可用的 [Windows 性能监视器](https://technet
 
 Reliable Services 运行时发出的以下事件属于 `Service Fabric Transactional Replicator`类别
 
- 计数器名称 | Description |
+ 计数器名称 | 说明 |
 | --- | --- |
 | 启动事务操作数/秒 | 每秒创建的新写入事务数。|
 | 事务操作数/秒 | 每秒在 Reliable Collections 上执行的添加/更新/删除操作的数目。|
@@ -108,7 +108,7 @@ Reliable Services 运行时发出的以下事件属于 `Service Fabric Transacti
 
 Reliable Services 运行时发出的以下事件属于 `Service Fabric TStore`类别
 
- 计数器名称 | Description |
+ 计数器名称 | 说明 |
 | --- | --- |
 | 项计数 | 存储中的项数。|
 | 磁盘大小 | 存储检查点文件的磁盘总大小（以字节为单位）。|

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894846"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366694"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>管理 StorSimple 设备控制器
 
@@ -117,7 +117,7 @@ ms.locfileid: "75894846"
    
     `Reset-HcsFactoryDefault`
    
-    若要重置单个控制器，请结合 `-scope` 参数使用 [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet。
+    若要重置单个控制器，请结合 [ 参数使用 ](https://technet.microsoft.com/library/dn688132.aspx)Reset-HcsFactoryDefault`-scope` cmdlet。
    
     系统将重新启动多次。 重置成功完成后，系统会发出通知。 根据系统型号，在 8100 设备上可能需要 45-60 分钟才能完成此过程，而 8600 则需要 60-90 分钟。
    

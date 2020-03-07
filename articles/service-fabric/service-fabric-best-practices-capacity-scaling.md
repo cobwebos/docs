@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75377457"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386293"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量规划和扩展
 
@@ -18,7 +18,7 @@ ms.locfileid: "75377457"
 
 除了考虑节点类型和群集特征以外，还应预计规模操作要花费超过一小时才能完成生产环境。 无论要添加多少个 Vm，都需要考虑这一点。
 
-## <a name="autoscaling"></a>自动扩展
+## <a name="autoscaling"></a>自动缩放
 应通过 Azure 资源管理器模板执行缩放操作，因为这是将[资源配置视为代码]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)的最佳做法。 
 
 通过虚拟机规模集使用自动缩放会使版本化资源管理器模板不准确地定义虚拟机规模集的实例计数。 不准确的定义增加了将来的部署将导致非预期的缩放操作的风险。 通常，在下列情况下应使用自动缩放：
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> 当你向下缩放群集时，将在 Service Fabric Explorer 中看到以不正常状态显示的已删除节点/VM 实例。 有关此行为的说明，请参阅[Service Fabric Explorer 中所述的行为](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)。 你可以：
+> 当你向下缩放群集时，将在 Service Fabric Explorer 中看到以不正常状态显示的已删除节点/VM 实例。 有关此行为的说明，请参阅[Service Fabric Explorer 中所述的行为](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)。 可以：
 > * 用适当的节点名称调用[remove-servicefabricnodestate 命令](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
 > * 在群集上部署[Service Fabric 自动缩放帮助程序应用程序](https://github.com/Azure/service-fabric-autoscale-helper/)。 此应用程序可确保从 Service Fabric Explorer 中清除缩小节点。
 

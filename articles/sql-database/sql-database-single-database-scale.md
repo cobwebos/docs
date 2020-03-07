@@ -1,5 +1,5 @@
 ---
-title: Scale single database resources
+title: 缩放单一数据库资源
 description: 本文介绍如何在 Azure SQL 数据库中缩放适用于单一数据库的计算和存储资源。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
 ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359916"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
-This article describes how to scale the compute and storage resources available for an Azure SQL Database in the provisioned compute tier. Alternatively, the [serverless compute tier](sql-database-serverless.md) provides compute auto-scaling and bills per second for compute used.
+本文介绍如何在预配的计算层中缩放适用于 Azure SQL 数据库的计算和存储资源。 或者，[无服务器计算层](sql-database-serverless.md)为使用的计算提供计算自动缩放和每秒的帐单。
 
-After initially picking the number of vCores or DTUs, you can scale a single database up or down dynamically based on actual experience using the [Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), the [Azure CLI](/cli/azure/sql/db#az-sql-db-update), or the [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+最初选取 Vcore 或 Dtu 数后，可以根据使用[Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、 [transact-sql](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、 [Azure CLI](/cli/azure/sql/db#az-sql-db-update)或[REST API](https://docs.microsoft.com/rest/api/sql/databases/update)的实际经验，动态缩放单个数据库。
 
 下面的视频演示了如何动态更改服务层级和计算大小以增加单一数据库的可用 DTU。
 
@@ -33,26 +33,26 @@ After initially picking the number of vCores or DTUs, you can scale a single dat
 
 ## <a name="impact"></a>影响
 
-Changing the service tier or compute size of mainly involves the service performing the following steps:
+更改服务层或计算大小主要涉及服务执行以下步骤：
 
-1. Create new compute instance for the database  
+1. 为数据库创建新的计算实例  
 
-    A new compute instance is created with the requested service tier and compute size. For some combinations of service tier and compute size changes, a replica of the database must be created in the new compute instance which involves copying data and can strongly influence the overall latency. Regardless, the database remains online during this step, and connections continue to be directed to the database in the original compute instance.
+    使用请求的服务层和计算大小创建一个新的计算实例。 对于某些服务层和计算大小更改的组合，必须在新的计算实例中创建数据库的副本，这涉及复制数据，并可能会影响总体延迟。 无论如何，在此步骤中数据库仍保持联机状态，并且连接将继续定向到原始计算实例中的数据库。
 
-2. Switch routing of connections to new compute instance
+2. 将连接的路由切换到新的计算实例
 
-    Existing connections to the database in the original compute instance are dropped. Any new connections are established to the database in the new compute instance. For some combinations of service tier and compute size changes, database files are detached and reattached during the switch.  Regardless, the switch can result in a brief service interruption when the database is unavailable generally for less than 30 seconds and often for only a few seconds. If there are long running transactions running when connections are dropped, the duration of this step may take longer in order to recover aborted transactions. [Accelerated Database Recovery](sql-database-accelerated-database-recovery.md) can reduce the impact from aborting long running transactions.
+    将删除与原始计算实例中的数据库的现有连接。 将在新的计算实例中建立与数据库的任何新连接。 对于服务层和计算大小更改的某些组合，数据库文件在交换机中分离并重新附加。  无论如何，如果数据库不可用的时间通常不超过30秒，通常只需几秒钟，此开关就会导致短暂的服务中断。 如果在删除连接时运行了长时间运行的事务，则此步骤的持续时间可能需要更长的时间才能恢复中止的事务。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以降低中止长时间运行事务的影响。
 
 > [!IMPORTANT]
-> No data is lost during any step in the workflow. Make sure that you have implemented some [retry logic](sql-database-connectivity-issues.md) in the applications and components that are using Azure SQL Database while the service tier is changed.
+> 工作流中的任何步骤都不会丢失任何数据。 请确保在服务层更改时，使用 Azure SQL 数据库的应用程序和组件中已实现了一些[重试逻辑](sql-database-connectivity-issues.md)。
 
 ## <a name="latency"></a>延迟 
 
-The estimated latency to change the service tier or rescale the compute size of a single database or elastic pool is parameterized as follows:
+更改服务层或缩放单一数据库或弹性池的计算大小的估计延迟如下：
 
-|服务层|Basic single database,</br>Standard (S0-S1)|Basic elastic pool,</br>Standard (S2-S12), </br>Hyperscale, </br>General Purpose single database or elastic pool|Premium or Business Critical single database or elastic pool|
+|服务层|基本单一数据库，</br>标准（S0-S1）|基本弹性池，</br>标准（S2-S12）， </br>超大规模 </br>常规用途单一数据库或弹性池|高级或业务关键单一数据库或弹性池|
 |:---|:---|:---|:---|
-|**Basic single database,</br> Standard (S0-S1)**|与所用空间无关 &bull; &nbsp;固定时间延迟</br>&bull; &nbsp;通常不到5分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|
+|**基本单一数据库，</br> 标准（S0-S1）**|与所用空间无关 &bull; &nbsp;固定时间延迟</br>&bull; &nbsp;通常不到5分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|
 |**基本弹性池，</br>标准（S2-S12）、</br>超大规模 </br>常规用途单一数据库或弹性池**|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|与所用空间无关 &bull; &nbsp;固定时间延迟</br>&bull; &nbsp;通常不到5分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|
 |**高级或业务关键单一数据库或弹性池**|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|与数据复制所使用的数据库空间比例 &bull; &nbsp;滞后时间</br>&bull; 通常 &nbsp;使用的空间小于每 GB 的1分钟|
 
