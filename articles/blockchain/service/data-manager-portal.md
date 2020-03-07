@@ -5,11 +5,11 @@ ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
 ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977007"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387035"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>使用 Azure 门户配置区块链数据管理器
 
@@ -20,7 +20,7 @@ ms.locfileid: "74977007"
 * 为 Azure 区块链 Service transaction 节点创建区块链数据管理器实例
 * 添加区块链应用程序
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 完成[快速入门：使用 Azure 门户或快速入门创建区块链成员](create-member.md) [：使用 Azure CLI 创建 Azure 区块链 Service 区块链成员](create-member-cli.md)
 * 创建[事件网格主题](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
@@ -32,7 +32,7 @@ ms.locfileid: "74977007"
 
 出站连接将区块链数据发送到 Azure 事件网格。 创建实例时，可以配置单个出站连接。 区块链数据管理器支持对任意给定的区块链数据管理器实例使用多个事件网格主题出站连接。 可将区块链数据发送到一个或多个目标。 若要添加另一个目标，只需向实例添加其他出站连接即可。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 请参阅要连接到区块链数据管理器的 Azure 区块链服务成员。 选择“区块链数据管理器”。
 1. 选择 **添加** 。
 
@@ -40,7 +40,7 @@ ms.locfileid: "74977007"
 
     输入以下详细信息：
 
-    设置 | 描述
+    设置 | 说明
     --------|------------
     名称 | 为连接的区块链数据管理器输入唯一的名称。 区块链数据管理器名称可以包含小写字母和数字，并且最大长度为20个字符。
     事务节点 | 选择事务节点。 仅列出具有读取访问权限的事务节点。
@@ -82,11 +82,11 @@ ms.locfileid: "74977007"
 
 1. 在 Visual Studio Code 资源管理器窗格中，展开 Solidity 项目的 **build/contracts** 文件夹。
 1. 右键单击合同元数据 JSON 文件。 文件名为智能合同名称后接 **.json** 扩展名。
-1. 选择 "**复制事务字节码**"。
+1. 选择“复制事务字节码”。
 
-    ![包含复制事务字节码选择的 Visual Studio Code 窗格](./media/data-manager-portal/bytecode-devkit.png)
+    ![选择了“复制事务字节码”的 Visual Studio Code 窗格](./media/data-manager-portal/bytecode-devkit.png)
 
-    字节码将被复制到剪贴板。
+    字节码将复制到剪贴板。
 
 1. 将“字节码”值保存为 JSON 文件。 例如：“bytecode.json”。 在稍后的步骤中会使用此文件。
 
@@ -98,7 +98,7 @@ ms.locfileid: "74977007"
 
 添加应用程序时，区块链数据管理器要求由 URL 访问合同 ABI 和字节码文件。 可以使用 Azure 存储帐户提供可私下访问的 URL。
 
-#### <a name="create-storage-account"></a>创建存储器帐户
+#### <a name="create-storage-account"></a>创建存储帐户
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -108,7 +108,7 @@ ms.locfileid: "74977007"
 
     ![创建存储帐户容器](./media/data-manager-portal/create-container.png)
 
-    | 字段 | 描述 |
+    | 字段 | 说明 |
     |-------|-------------|
     | 名称  | 为该容器命名。 例如，“smartcontract” |
     | 公共访问级别 | 选择“专用(没有匿名访问权限)” |
@@ -144,7 +144,7 @@ ms.locfileid: "74977007"
 
     输入区块链应用程序的名称以及智能合同 ABI 和字节码 URL。
 
-    设置 | 描述
+    设置 | 说明
     --------|------------
     名称 | 输入要跟踪的区块链应用程序的唯一名称。
     合同 ABI | 合同 ABI 文件的 URL 路径。 有关详细信息，请参阅[创建合同 ABI 和字节码 URL](#create-contract-abi-and-bytecode-url)。

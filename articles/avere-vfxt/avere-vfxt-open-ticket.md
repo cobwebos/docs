@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153289"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372107"
 ---
 # <a name="get-help-with-your-system"></a>获得有关系统的帮助
 
@@ -43,7 +43,7 @@ ms.locfileid: "76153289"
 
     ![Azure 门户中的 "新支持请求" 屏幕的屏幕截图。 "基本信息" 选项卡处于选中状态。 屏幕项包括问题类型、订阅、服务、摘要和问题类型。](media/ticket-basics.png)
 
-   单击“下一步”以继续。
+   单击“下一步”继续。
 
 1. 支持窗体的第二页包含根据摘要说明来解决问题的建议。 如果仍需要创建支持票证，请单击底部的 "**下一步**" 按钮。
 

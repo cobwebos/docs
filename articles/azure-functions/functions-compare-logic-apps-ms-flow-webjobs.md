@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988101"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356862"
 ---
 > [!NOTE]
 > Microsoft Flow 现在为 Power Automate。 有关详细信息，请参阅此[博客](https://aka.ms/flow-now-pa)。

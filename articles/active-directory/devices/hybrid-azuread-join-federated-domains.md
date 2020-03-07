@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512124"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377078"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -40,7 +40,7 @@ ms.locfileid: "76512124"
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。  
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 本教程介绍如何使用 AD FS 在联合环境中为已加入 Active Directory 域的计算机设备配置混合 Azure AD 加入。
 
@@ -52,7 +52,7 @@ ms.locfileid: "76512124"
 > * 验证注册
 > * 故障排除
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>系统必备
 
 本教程假定你熟悉以下文章：
 
@@ -104,47 +104,47 @@ ms.locfileid: "76512124"
 
 **使用 Azure AD Connect 配置混合 Azure AD 加入**：
 
-1. 启动 Azure AD Connect，然后选择“配置”  。
+1. 启动 Azure AD Connect，然后选择“配置”。
 
    ![欢迎使用](./media/hybrid-azuread-join-federated-domains/11.png)
 
-1. 在“其他任务”页面上，选择“配置设备选项”，然后单击“下一步”    。
+1. 在“其他任务”页面上，选择“配置设备选项”，然后单击“下一步”。
 
    ![其他任务](./media/hybrid-azuread-join-federated-domains/12.png)
 
-1. 在“概述”页面上，选择“下一步”   。
+1. 在“概述”页面上，选择“下一步”。
 
    ![概述](./media/hybrid-azuread-join-federated-domains/13.png)
 
-1. 上“连接到 Azure AD”页面上，输入 Azure AD 租户的全局管理员凭据，然后选择“下一步”   。
+1. 上“连接到 Azure AD”页面上，输入 Azure AD 租户的全局管理员凭据，然后选择“下一步”。
 
    ![连接到 Azure AD](./media/hybrid-azuread-join-federated-domains/14.png)
 
-1. 在“设备选项”页面上，选择“配置混合 Azure AD 加入”，然后选择“下一步”    。
+1. 在“设备选项”页面上，选择“配置混合 Azure AD 加入”，然后选择“下一步”。
 
    ![设备选项](./media/hybrid-azuread-join-federated-domains/15.png)
 
-1. 在“SCP”页面上，完成以下步骤，然后选择“下一步”   ：
+1. 在“SCP”页面上，完成以下步骤，然后选择“下一步”：
 
    ![SCP](./media/hybrid-azuread-join-federated-domains/16.png)
 
    1. 选择林。
-   1. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端且你已配置计算机/设备同步或者你的组织使用无缝 SSO，否则必须选择“AD FS 服务器”  。
-   1. 单击“添加”，输入企业管理员凭据  。
+   1. 选择身份验证服务。 除非你的组织仅有 Windows 10 客户端且你已配置计算机/设备同步或者你的组织使用无缝 SSO，否则必须选择“AD FS 服务器”。
+   1. 单击“添加”，输入企业管理员凭据。
 
-1. 在“设备操作系统”页面上，选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”   。
+1. 在“设备操作系统”页面上，选择 Active Directory 环境中设备使用的操作系统，然后选择“下一步”。
 
    ![设备操作系统](./media/hybrid-azuread-join-federated-domains/17.png)
 
-1. 在“联合身份验证配置”页面上，输入 AD FS 管理员凭据，然后选择“下一步”   。
+1. 在“联合身份验证配置”页面上，输入 AD FS 管理员凭据，然后选择“下一步”。
 
    ![联合身份验证配置](./media/hybrid-azuread-join-federated-domains/18.png)
 
-1. 在“准备好配置”页面上，选择“配置”   。
+1. 在“准备好配置”页面上，选择“配置”。
 
    ![已准备好配置](./media/hybrid-azuread-join-federated-domains/19.png)
 
-1. 在“配置完成”页面上，选择“退出”   。
+1. 在“配置完成”页面上，选择“退出”。
 
    ![配置完成](./media/hybrid-azuread-join-federated-domains/20.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "76512124"
 - 组织的 STS（联合域）
 - `https://autologon.microsoftazuread-sso.com`（适用于无缝 SSO）
 
-此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”  。
+此外，还需要在用户的本地 Intranet 区域中启用“允许通过脚本更新状态栏”。
 
 ### <a name="install-microsoft-workplace-join-for-windows-downlevel-computers"></a>安装适用于 Windows 下层计算机的 Microsoft Workplace Join
 
@@ -178,20 +178,20 @@ ms.locfileid: "76512124"
 
 ## <a name="verify-the-registration"></a>验证注册
 
-要验证 Azure 租户中的设备注册状态，可使用 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中的 [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) cmdlet  。
+要验证 Azure 租户中的设备注册状态，可使用 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中的 [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) cmdlet。
 
-使用 Get-MSolDevice cmdlet 检查服务详细信息时  ：
+使用 Get-MSolDevice cmdlet 检查服务详细信息时：
 
 - 必须存在其**设备 ID** 与 Windows 客户端上的 ID 相匹配的对象。
-- DeviceTrustType 的值必须是“已加入域”   。 此设置相当于 Azure AD 门户中“设备”页面下的“已加入混合 Azure AD”状态   。
-- 对于采用了条件访问的设备，“已启用”值必须为 True，“DeviceTrustLevel”值必须为“Managed”     。
+- DeviceTrustType 的值必须是“已加入域”。 此设置相当于 Azure AD 门户中“设备”页面下的“已加入混合 Azure AD”状态。
+- 对于采用了条件访问的设备，“已启用”值必须为 True，“DeviceTrustLevel”值必须为“Managed”。
 
 **检查服务详细信息**：
 
 1. 以管理员身份打开 Windows PowerShell。
 1. 输入 `Connect-MsolService` 以连接到 Azure 租户。  
 1. 输入 `get-msoldevice -deviceId <deviceId>`。
-1. 确认“已启用”设置为 True   。
+1. 确认“已启用”设置为 True。
 
 ## <a name="troubleshoot-your-implementation"></a>对实现进行故障排除
 

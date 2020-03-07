@@ -10,11 +10,11 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981842"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365320"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
@@ -42,11 +42,11 @@ ms.locfileid: "75981842"
 
 - **支持所有 Blob 层：** WORM 策略独立于 Azure Blob 存储层，将应用到所有层：热层、冷层和存档层。 用户可将工作负荷的数据转换为最具成本效益的层，同时保持数据的不可变性。
 
-- **容器级配置：** 用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级设置，用户可以创建并锁定基于时间的保留策略、扩展保留时间间隔、设置并清除法定保留，等等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
+- **容器级配置：** 用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级设置，用户可以创建和锁定基于时间的保留策略、扩展保留间隔、设置和清除法律持有等。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
 
 - **审核日志记录支持**：每个容器都包含策略审核日志。 它为锁定的基于时间的保留策略显示最多7个基于时间的保留命令，并包含用户 ID、命令类型、时间戳和保留间隔。 对于法定保留，日志包含用户 ID、命令类型、时间戳和法定保留标记。 此日志在策略的生存期内保留，并依照 SEC 17a-4 （f）规范。 " [Azure 活动日志](../../azure-monitor/platform/platform-logs-overview.md)" 显示了所有控制平面活动的更全面的日志;启用[Azure 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)时，会保留并显示数据平面操作。 由用户负责根据法规要求或其他要求永久存储这些日志。
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于时间的保留和法定保留。 当在容器上应用基于时间的保留策略或法定保留时，所有现有 blob 将在30秒内进入不可变蠕虫状态。 上载到受保护的策略容器的所有新 blob 也将进入不可变状态。 所有 blob 都处于不可变状态后，将会确认不变策略，并且不允许使用不可变容器中的任何覆盖或删除操作。
 
@@ -110,7 +110,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 ## <a name="scenarios"></a>方案
 下表显示了针对不同不可变方案禁用的 Blob 存储操作的类型。 有关详细信息，请参阅[Azure Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)文档。
 
-|方案  |Blob 状态  |Blob 操作被拒绝  |容器和帐户保护
+|应用场景  |Blob 状态  |Blob 操作被拒绝  |容器和帐户保护
 |---------|---------|---------|---------|
 |Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         | Put Blob<sup>1</sup>，put 块<sup>1</sup>，put 块列表<sup>1</sup>，删除容器，删除 blob，设置 blob 元数据，Put 页，设置 Blob 属性，快照 Blob，增量复制 Blob，追加块<sup>2</sup>         |容器删除被拒绝;存储帐户删除操作被拒绝         |
 |Blob 的有效保留间隔已过期，未设置合法保留    |仅仅不可写入（允许删除操作）         |Put Blob<sup>1</sup>，put 块<sup>1</sup>，put 块列表<sup>1</sup>，设置 blob 元数据，put 页面，设置 Blob 属性，快照 Blob，增量复制 Blob，追加块<sup>2</sup>         |如果受保护的容器中至少有1个 blob，则容器删除操作被拒绝;仅对*锁定*的基于时间的策略删除存储帐户         |
@@ -120,7 +120,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 <sup>2</sup>仅允许将 Append 块用于启用了 `allowProtectedAppendWrites` 属性的基于时间的保留策略。 有关详细信息，请参阅[允许受保护的追加 Blob 写入](#allow-protected-append-blobs-writes)部分。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅[Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 

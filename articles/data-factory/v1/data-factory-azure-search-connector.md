@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929980"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387502"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据推送到 Azure 认知搜索索引
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -55,7 +55,7 @@ ms.locfileid: "74929980"
 
 下表提供了特定于 Azure 认知搜索链接服务的 JSON 元素的说明。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为：**AzureSearch**。 | 是 |
 | url | 搜索服务的 URL。 | 是 |
@@ -65,7 +65,7 @@ ms.locfileid: "74929980"
 
 有关可用于定义数据集的各节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 数据集 JSON 的结构、可用性和策略等节类似于所有数据集类型。 每个数据集类型的 **typeProperties** 节都不同。 **AzureSearchIndex** 数据集类型的 typeProperties 节具有以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | -------- | ----------- | -------- |
 | type | type 属性必须设置为 **AzureSearchIndex**。| 是 |
 | indexName | 搜索索引的名称。 数据工厂不创建索引。 索引必须存在于 Azure 认知搜索中。 | 是 |
@@ -76,10 +76,10 @@ ms.locfileid: "74929980"
 
 对于复制活动，如果接收器类型为 **AzureSearchIndexSink**，则可在 typeProperties 节中使用以下属性：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| No |
-| WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | No |
+| WriteBehavior | 指定索引中已存在文档时要合并还是替换该文档。 请参阅 [WriteBehavior 属性](#writebehavior-property)。| 合并（默认值）<br/>上载| 否 |
+| WriteBatchSize | 当缓冲区大小达到 writeBatchSize 时，将数据上传到搜索索引。 有关详细信息，请参阅 [WriteBatchSize 属性](#writebatchsize-property)。 | 1 到 1,000。 默认值为 1000。 | 否 |
 
 ### <a name="writebehavior-property"></a>WriteBehavior 属性
 AzureSearchSink 在写入数据时执行 upsert 操作。 换句话说，编写文档时，如果搜索索引中已存在文档键，则 Azure 认知搜索会更新现有文档，而不会引发冲突异常。
@@ -99,11 +99,11 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 | Azure 认知搜索数据类型 | 在 Azure 认知搜索接收器中受支持 |
 | ---------------------- | ------------------------------ |
-| 字符串 | Y |
+| String | Y |
 | Int32 | Y |
 | Int64 | Y |
 | Double | Y |
-| 布尔 | Y |
+| Boolean | Y |
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
@@ -114,8 +114,8 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 1. [AzureSearch](#linked-service-properties) 类型的链接服务。
 2. [OnPremisesSqlServer](data-factory-sqlserver-connector.md#linked-service-properties) 类型的链接服务。
-3. [SqlServerTable](data-factory-sqlserver-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureSearchIndex](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [SqlServerTable](data-factory-create-datasets.md) 类型的输入[数据集](data-factory-sqlserver-connector.md#dataset-properties)。
+4. [AzureSearchIndex](data-factory-create-datasets.md) 类型的输出[数据集](#dataset-properties)。
 4. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) 和 [AzureSearchIndexSink](#copy-activity-properties)。
 
 此示例将时间序列数据从本地 SQL Server 数据库复制到每小时搜索索引。 此示例中使用的 JSON 属性会在示例后的各部分进行说明。
@@ -206,7 +206,7 @@ Azure 认知搜索服务支持以批处理形式写入文档。 每批次可包�
 
 **使用 SQL 源和 Azure 认知搜索索引接收器的管道中的复制活动：**
 
-管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，**源**类型设置为 **SqlSource**，**接收器**类型设置为 **AzureSearchIndexSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
+管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **SqlSource**，**sink** 类型设置为 **AzureSearchIndexSink**。 为 **SqlReaderQuery** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
 ```JSON
 {
