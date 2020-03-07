@@ -1,6 +1,6 @@
 ---
 title: Azure ExpressRoute：配置对等互连： PowerShell
-description: 本文指导完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
+description: 本文将指导你完成创建和预配 ExpressRoute 线路的专用、公共和 Microsoft 对等互连的步骤。 本文还介绍了如何检查状态，以及如何更新或删除线路的对等互连。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436947"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361544"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路的对等互连
 
@@ -36,12 +36,12 @@ ms.locfileid: "75436947"
 > 
 > 
 
-可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连（新线路不推荐使用 Azure 公共对等互连）。 可以按所选的任意顺序配置对等互连。 但是，必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
+可以为 ExpressRoute 线路配置专用对等互连和 Microsoft 对等互连（新线路不推荐使用 Azure 公共对等互连）。 可以按所选的任意顺序配置对等互连。 但是，你必须确保一次只完成一个对等互连的配置。 有关路由域和对等互连的详细信息，请参阅 [ExpressRoute 路由域](expressroute-circuit-peerings.md)。 有关公共对等互连的信息，请参阅[ExpressRoute 公共对等互连](about-public-peering.md)。
 
 ## <a name="configuration-prerequisites"></a>配置先决条件
 
 * 在开始配置之前，请务必查看[先决条件](expressroute-prerequisites.md)页、[路由要求](expressroute-routing.md)页和[工作流](expressroute-workflows.md)页。
-* 必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
+* 你必须有一个活动的 ExpressRoute 线路。 在继续下一步之前，请按说明 [创建 ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并通过连接提供商启用该线路。 ExpressRoute 线路必须处于已预配和已启用状态，才能运行本文中的 cmdlet。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 
@@ -75,7 +75,7 @@ ms.locfileid: "75436947"
    ```
 2. 创建 ExpressRoute 线路。
 
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Microsoft 对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。 
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Microsoft 对等互连。 在此情况下，你不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。 
 
 3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
 
@@ -114,10 +114,10 @@ ms.locfileid: "75436947"
    * 辅助链路的 /30 或 /126 子网。 这必须是你拥有的且已在 RIR/IRR 中注册的有效公共 IPv4 或 IPv6 前缀。
    * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。
-   * 播发的前缀：必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中注册。 IPv4 BGP 会话需要 IPv4 播发前缀，而 IPv6 BGP 会话需要 IPv6 播发前缀。 
+   * 播发的前缀：你必须提供要通过 BGP 会话播发的所有前缀列表。 只接受公共 IP 地址前缀。 如果打算发送一组前缀，可以发送逗号分隔列表。 这些前缀必须已在 RIR/IRR 中为你注册。 IPv4 BGP 会话需要 IPv4 播发前缀，而 IPv6 BGP 会话需要 IPv6 播发前缀。 
    * 路由注册表名称：可以指定 AS 编号和前缀要注册到的 RIR/IRR。
-   * 可选：
-     * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，可以指定它们要注册到的 AS 编号。
+   * 可选:
+     * 客户 ASN：如果要播发的前缀未注册到对等互连 AS 编号，你可以指定它们要注册到的 AS 编号。
      * MD5 哈希（如果选择使用）。
 
 > [!IMPORTANT]
@@ -177,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 1. 为 ExpressRoute 导入 PowerShell 模块。
 
-   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 需要以管理员身份运行 PowerShell。
+   必须从 [PowerShell 库](https://www.powershellgallery.com/) 安装最新的 PowerShell 安装程序，并将 Azure 资源管理器模块导入 PowerShell 会话，以便开始使用 ExpressRoute cmdlet。 你需要以管理员身份运行 PowerShell。
 
    ```azurepowershell-interactive
    Install-Module Az
@@ -195,7 +195,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    Import-Module Az.Network 
    ```
 
-   登录到帐户。
+   登录到你的帐户。
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -208,7 +208,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 2. 创建 ExpressRoute 线路。
 
-   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
+   请按说明创建 [ExpressRoute 线路](expressroute-howto-circuit-arm.md) ，并由连接服务提供商进行预配。 如果连接服务提供商提供第 3 层托管服务，可以请求连接服务提供商启用 Azure 专用对等互连。 在此情况下，你不需要遵循后续部分中所列的说明。 但是，如果连接服务提供商不为你管理路由，请在创建线路后按照后续步骤继续配置。
 
 3. 检查 ExpressRoute 线路以确保它已预配并已启用。 使用以下示例：
 
@@ -247,7 +247,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    * 辅助链路的 /30 子网。 此子网不能是保留给虚拟网络使用的任何地址空间的一部分。
    * 用于建立此对等互连的有效 VLAN ID。 请确保线路中没有其他对等互连使用同一个 VLAN ID。
    * 对等互连的 AS 编号。 可以使用 2 字节和 4 字节 AS 编号。 可以将专用 AS 编号用于此对等互连。 请务必不要使用 65515。
-   * 可选：
+   * 可选:
      * MD5 哈希（如果选择使用）。
 
    使用以下示例为线路配置 Azure 专用对等互连：

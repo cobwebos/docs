@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: b7a561907e3f1968eb9adead3606822d7a1321c8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381664"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>使用 RDP 连接到 Azure VM 时排查身份验证错误
 
@@ -31,15 +31,15 @@ ms.locfileid: "71155615"
 
 ### <a name="error-message-1"></a>错误消息 1
 
-**身份验证出错。无法联系本地安全机构**。
+**出现身份验证错误。无法联系本地安全机构。**
 
 ### <a name="error-message-2"></a>错误消息 2
 
-**你尝试连接的远程计算机需要网络级别身份验证 (NLA)，但无法联系 Windows 域控制器来执行 NLA。如果你是远程计算机的管理员，则可使用“系统属性”对话框的“远程”选项卡上的选项禁用 NLA**。
+**你尝试连接到的远程计算机需要网络级别身份验证（NLA），但无法联系你的 Windows 域控制器来执行 NLA。如果你是远程计算机上的管理员，则可以使用 "系统属性" 对话框的 "远程" 选项卡上的选项来禁用 NLA。**
 
 ### <a name="error-message-3-generic-connection-error"></a>错误消息 3（泛型连接错误）
 
-此计算机无法连接到远程计算机。再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。
+**此计算机无法连接到远程计算机。再次尝试连接，如果问题仍然存在，请与远程计算机的所有者或网络管理员联系。**
 
 ## <a name="cause"></a>原因
 
@@ -124,7 +124,7 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="for-domain-joined-vms"></a>对于加入域的 VM
 
@@ -161,7 +161,7 @@ Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDE
 
 如果 DC 和 VM 之间的通信良好，但 DC 的运行状况不佳而无法打开 RDP 会话，则可以尝试重启 DC。
 
-如果上述命令未能修复到域的通信问题，则可以将此 VM 重新加入域。 为此，请执行以下步骤：
+如果上述命令未能修复到域的通信问题，则可以将此 VM 重新加入域。 为此，请按照下列步骤进行操作：
 
 1. 使用以下内容创建名为 Unjoin.ps1 的脚本，然后将该脚本部署为 Azure 门户上的自定义脚本扩展：
 

@@ -81,8 +81,12 @@
           href: batch-aad-auth-management.md
         - name: 使用 Batch 安全地访问 Key Vault
           href: credential-access-key-vault.md
-    - name: 使用应用程序包
-      href: batch-application-packages.md
+    - name: 将文件和应用程序复制到池节点
+      items:
+        - name: 使用应用程序包
+          href: batch-application-packages.md
+        - name: 创建资源文件
+          href: resource-files.md
     - name: 创建和管理池
       items:
         - name: 自动缩放计算机节点
@@ -123,12 +127,12 @@
           href: batch-user-accounts.md
         - name: 提交大量任务
           href: large-number-tasks.md
+        - name: 计划作业以提高效率
+          href: batch-job-schedule.md
         - name: 检查作业和任务错误
           href: batch-job-task-error-checking.md
         - name: 检测和处理 Batch 服务错误
           href: batch-retry-after-errors.md
-    - name: 创建资源文件
-      href: resource-files.md
     - name: 持久性作业和任务输出
       href: batch-task-output.md
       items:

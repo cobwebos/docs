@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744745"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389817"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -22,11 +22,11 @@ ms.locfileid: "75744745"
 
 Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类型在系统的操作中扮演着一个角色。 下表汇总了群集中的这些节点类型及其角色。
 
-| 类型 | Description |
+| 类型 | 说明 |
 | --- | --- |
 | 头节点 |  对于除 Apache Storm 之外的所有群集类型，头节点承载管理分布式应用程序执行的进程。 头节点也是可通过 SSH 连接并执行应用程序的节点，这些应用程序随后协调为跨群集资源运行。 所有群集类型的头节点数都固定为2。 |
 | ZooKeeper 节点 | Zookeeper 协调正在进行数据处理的节点之间的任务。 它还具有头节点的领导人选举，并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数固定为三。 |
-| 工作器节点 | 表示支持数据处理功能的节点。 可以在群集中添加或删除工作节点，以缩放计算功能和管理成本。 |
+| 辅助角色节点 | 表示支持数据处理功能的节点。 可以在群集中添加或删除工作节点，以缩放计算功能和管理成本。 |
 | R Server 边缘节点 | R Server edge 节点表示你可以通过 SSH 连接到的节点并执行应用程序，这些应用程序随后协调为跨群集资源运行。 边缘节点不参与群集内的数据分析。 此节点还托管 R Studio Server，使你能够使用浏览器运行 R 应用程序。 |
 | 区域节点 | 对于 HBase 群集类型，区域节点（也称为数据节点）运行区域服务器。 区域服务器提供并管理由 HBase 管理的部分数据。 可以在群集中添加或删除区域节点，以缩放计算功能和管理成本。|
 | Nimbus 节点 | 对于风暴群集类型，Nimbus 节点提供了类似于头节点的功能。 Nimbus 节点通过 Zookeeper 将任务分配给群集中的其他节点，该节点可协调风暴拓扑的运行。 |
@@ -54,18 +54,18 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 
 | 资源类型 | 当前数量 | 详细信息 |
 | --- | --- | --- |
-|头节点 | 二 |    |
-|Zookeeper 节点 | 三 | |
-|工作器节点 | 二 | 此数字根据群集配置和缩放而有所不同。 Apache Kafka 需要至少三个工作节点。  |
-|网关节点 | 二 | 网关节点是在 Azure 中创建的 Azure 虚拟机，但在你的订阅中不可见。 如果需要重新启动这些节点，请联系支持人员。 |
+|头节点 | two |    |
+|Zookeeper 节点 | three | |
+|辅助角色节点 | two | 此数字根据群集配置和缩放而有所不同。 Apache Kafka 需要至少三个工作节点。  |
+|网关节点 | two | 网关节点是在 Azure 中创建的 Azure 虚拟机，但在你的订阅中不可见。 如果需要重新启动这些节点，请联系支持人员。 |
 
 以下网络资源在用于 HDInsight 的虚拟网络中自动创建：
 
 | 网络资源 | 当前数量 | 详细信息 |
 | --- | --- | --- |
-|负载均衡器 | 三 | |
+|负载均衡器 | three | |
 |网络接口 | 份 | 此值基于常规群集，其中每个节点都有其自己的网络接口。 这九个接口适用于两个头节点、三个 zookeeper 节点、两个工作节点和上表中提到的两个网关节点。 |
-|公共 IP 地址 | 二 |    |
+|公共 IP 地址 | two |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>用于连接到 HDInsight 的终结点
 

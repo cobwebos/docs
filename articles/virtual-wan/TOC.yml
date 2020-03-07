@@ -34,24 +34,36 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: 配置全局 VNet 对等互连
       href: global-peering-vnet.md
-    - name: 配置 ExpressRoute 加密
-      href: vpn-over-expressroute.md
     - name: 升级虚拟 WAN SKU
       href: upgrade-virtual-wan.md
     - name: 配置自定义 IPsec 策略
       href: virtual-wan-custom-ipsec-portal.md
-    - name: 为用户 VPN 配置证书（点到站点）
-      href: certificates-point-to-site.md
-    - name: 为用户 VPN 配置 Azure AD 租户
-      href: openvpn-azure-ad-tenant.md
-    - name: 为用户 VPN 启用多重身份验证 (MFA)
-      href: openvpn-azure-ad-mfa.md
-    - name: 为用户 VPN 配置 Azure AD 身份验证
-      href: virtual-wan-point-to-site-azure-ad.md
-    - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
-      href: openvpn-azure-ad-tenant-multi-app.md
-    - name: 下载全局 VPN 配置文件和基于中心的 VPN 配置文件
-      href: global-hub-profile.md
+    - name: ExpressRoute
+      items:
+        - name: 创建 ExpressRoute 连接
+          href: virtual-wan-expressroute-portal.md
+        - name: 配置 ExpressRoute 加密
+          href: vpn-over-expressroute.md
+    - name: 站点到站点
+      items:
+        - name: 创建站点到站点连接
+          href: virtual-wan-site-to-site-portal.md
+    - name: 用户 VPN（点到站点）
+      items:
+        - name: 创建用户 VPN（点到站点）连接
+          href: virtual-wan-point-to-site-portal.md
+        - name: 为用户 VPN 配置证书
+          href: certificates-point-to-site.md
+        - name: 为用户 VPN 配置 Azure AD 租户
+          href: openvpn-azure-ad-tenant.md
+        - name: 为用户 VPN 启用多重身份验证 (MFA)
+          href: openvpn-azure-ad-mfa.md
+        - name: 为用户 VPN 配置 Azure AD 身份验证
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: 为用户 VPN 配置多应用程序 Azure AD 身份验证
+          href: openvpn-azure-ad-tenant-multi-app.md
+        - name: 下载全局 VPN 配置文件和基于中心的用户 VPN 配置文件
+          href: global-hub-profile.md
     - name: 配置路由
       items:
         - name: 将流量从虚拟中心路由到 NVA

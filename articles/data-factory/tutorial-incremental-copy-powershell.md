@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982545"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387844"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以增量方式将 Azure SQL 数据库中的数据加载到 Azure Blob 存储
 
@@ -66,7 +66,7 @@ ms.locfileid: "75982545"
 * **Azure PowerShell**。 遵循[安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps) 中的说明。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>在 SQL 数据库中创建数据源表
-1. 打开 SQL Server Management Studio。 在“服务器资源管理器”中  ，右键单击数据库，然后选择“新建查询”。 
+1. 打开 SQL Server Management Studio。 在“服务器资源管理器”中，右键单击数据库，然后选择“新建查询”。
 
 2. 针对 SQL 数据库运行以下 SQL 命令，创建名为 `data_source_table` 的表作为数据源存储：
 
@@ -190,14 +190,14 @@ END
     ```
 
 * 若要创建数据工厂实例，用于登录到 Azure 的用户帐户必须属于参与者或所有者角色，或者是 Azure 订阅的管理员。
-* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”  以找到“数据工厂”  ：[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
+* 若要查看目前提供数据工厂的 Azure 区域的列表，请在以下页面上选择感兴趣的区域，然后展开“分析”以找到“数据工厂”：[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/)。 数据工厂使用的数据存储（存储、SQL 数据库等）和计算资源（Azure HDInsight 等）可以位于其他区域中。
 
 
 ## <a name="create-linked-services"></a>创建链接服务
 可在数据工厂中创建链接服务，将数据存储和计算服务链接到数据工厂。 在本部分中，请创建存储帐户和 SQL 数据库的链接服务。
 
 ### <a name="create-a-storage-linked-service"></a>创建存储链接服务
-1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureStorageLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 `<accountName>` 和 `<accountKey>` 替换为存储帐户的名称和密钥，然后保存文件。
+1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureStorageLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建它。）将 `<accountName>` 和 `<accountKey>` 替换为存储帐户的名称和密钥，然后保存文件。
 
     ```json
     {
@@ -228,7 +228,7 @@ END
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>创建 SQL 数据库链接服务
-1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureSQLDatabaseLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建。）将 &lt;server&gt;、&lt;database&gt;、&lt;user id&gt; 和 &lt;password&gt; 分别替换为自己的服务器名称、数据库、用户 ID 和密码，然后保存文件。
+1. 在 C:\ADF 文件夹中，创建包含以下内容的名为 AzureSQLDatabaseLinkedService.json 的 JSON 文件。 （如果文件夹 ADF 不存在，请创建它。）保存文件之前，请将 &lt;server&gt;、&lt;数据库&gt;、&lt;用户 id&gt;和 &lt;密码&gt; 替换为服务器、数据库、用户 ID 和密码。
 
     ```json
     {

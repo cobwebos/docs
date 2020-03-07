@@ -10,11 +10,11 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 74539a7ed74d0216f1a4bb2d719983895d8b320f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209624"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359728"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 

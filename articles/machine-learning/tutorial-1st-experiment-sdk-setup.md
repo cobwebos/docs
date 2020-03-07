@@ -11,11 +11,11 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165970"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355617"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教程：开始使用 Python SDK 创建第一个 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

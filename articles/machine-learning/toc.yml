@@ -75,10 +75,10 @@
       href: samples-notebooks.md
     - name: Azure 开放数据集
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: 设计器数据集
+      href: sample-designer-datasets.md
     - name: 端到端 MLOps 示例
       href: 'https://github.com/microsoft/MLOps'
-    - name: 设计器示例数据集
-      href: designer-sample-datasets.md
 - name: 概念
   items:
     - name: 工作区

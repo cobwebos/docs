@@ -165,6 +165,22 @@
               href: map-get-information-from-coordinate.md
             - name: 显示从 A 到 B 的路线
               href: map-route.md
+        - name: 空间 IO 模块
+          items:
+            - name: 使用空间 IO 模块
+              href: how-to-use-spatial-io-module.md
+            - name: 添加简单的数据层
+              href: spatial-io-add-simple-data-layer.md
+            - name: 读取和写入空间数据
+              href: spatial-io-read-write-spatial-data.md
+            - name: 添加 OGC 地图层
+              href: spatial-io-add-ogc-map-layer.md
+            - name: 连接到 WFS 服务
+              href: spatial-io-connect-wfs-service.md
+            - name: 利用核心操作
+              href: spatial-io-core-operations.md
+            - name: 支持的数据格式详细信息
+              href: spatial-io-supported-data-format-details.md
         - name: Web SDK 支持的浏览器
           href: supported-browsers.md
     - name: 使用 Android SDK 进行开发

@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
 ms.openlocfilehash: a0b5f45ba993033a9f56ee6b078193677b1c5aad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191803"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383354"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Log Analytics 虚拟机扩展
 
 Azure Monitor 日志提供跨云和本地资产的监视功能。 适用于 Windows 的 Log Analytics 代理虚拟机扩展由 Microsoft 发布和提供支持。 该扩展在 Azure 虚拟机上安装 Log Analytics 代理，并将虚拟机注册到现有的 Log Analytics 工作区中。 本文档详细介绍适用于 Windows 的 Log Analytics 虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 

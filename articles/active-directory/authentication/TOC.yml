@@ -110,20 +110,18 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Azure AD 密码保护
       items:
-        - name: 本地集成
-          items:
-            - name: 部署 Azure AD 密码保护
-              href: howto-password-ban-bad-on-premises-deploy.md
-            - name: 配置 Azure AD 密码保护
-              href: howto-password-ban-bad-on-premises-operations.md
-            - name: 监视 Azure AD 密码保护
-              href: howto-password-ban-bad-on-premises-monitor.md
-            - name: 排查 Azure AD 密码保护问题
-              href: howto-password-ban-bad-on-premises-troubleshoot.md
-            - name: 常见问题
-              href: howto-password-ban-bad-on-premises-faq.md
-            - name: 本地代理版本历史记录
-              href: howto-password-ban-bad-on-premises-agent-versions.md
+        - name: 在本地规划和部署
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: 在本地启用和配置
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: 监视本地部署
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: 排查本地部署问题
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: 本地 Azure AD 密码保护常见问题解答
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: 本地代理版本历史记录
+          href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD 智能锁定
       href: howto-password-smart-lockout.md
     - name: 无密码

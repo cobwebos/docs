@@ -30,6 +30,8 @@
       href: create-private-endpoint-storage-portal.md
     - name: 专门连接到 Cosmos DB 帐户
       href: create-private-endpoint-cosmosdb-portal.md
+    - name: 专门连接到 Web 应用
+      href: create-private-endpoint-webapp-portal.md
     - name: 对专用终结点禁用网络策略
       href: disable-private-endpoint-network-policy.md
     - name: 对专用链接服务禁用网络策略

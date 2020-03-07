@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361301"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "73839477"
 
 ### <a name="create-an-account"></a>创建帐户
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源” > “智能 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值： 
    1. 名称：Data Lake Analytics 帐户的名称。
@@ -44,9 +44,9 @@ ms.locfileid: "73839477"
 删除 Data Lake Analytics 帐户前，先删除其默认 Data Lake Store 帐户。
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“删除”。
+2. 单击 **“删除”** 。
 3. 键入帐户名称。
-4. 单击“删除”。
+4. 单击 **“删除”** 。
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -63,7 +63,7 @@ Data Lake Analytics 支持以下数据源：
 ### <a name="add-a-data-source"></a>添加数据源
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
-2. 单击“数据源”。
+2. 单击 **“数据源”** 。
 3. 单击“添加数据源”。
     
    * 若要添加 Data Lake Store 帐户，需要帐户名称和此帐户的访问权限才能对其进行查询。
@@ -114,7 +114,7 @@ Data Lake Analytics 支持以下数据源：
 2. 单击“访问控制 (IAM)” **“添加角色分配”**  > 。
 3. 选择角色。
 4. 添加用户。
-5. 单击 **“确定”** 。
+5. 单击“确定”。
 
 >[!NOTE]
 >如果用户或安全组需要提交作业，还需要对存储帐户的权限。 有关详细信息，请参阅[保护 Data Lake Store 中存储的数据](../data-lake-store/data-lake-store-secure-data.md)。

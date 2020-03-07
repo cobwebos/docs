@@ -4,11 +4,11 @@ description: 介绍创作 Azure 资源管理器模板的建议方法。 提供�
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207479"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389202"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -38,7 +38,7 @@ ms.locfileid: "77207479"
 
 如果资源组的区域暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>参数
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 

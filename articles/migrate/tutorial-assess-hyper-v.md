@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.custom: mvc
 ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845516"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388965"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>使用 Azure Migrate 服务器评估工具评估 Hyper-V VM
 
@@ -34,7 +34,7 @@ ms.locfileid: "76845516"
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [完成](tutorial-prepare-hyper-v.md)本教程系列中的第一篇教程。 否则，本教程中的说明不适用。
 - 下面是在第一篇教程中应已完成的操作：

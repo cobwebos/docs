@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: f0367a195ca0aa5f26ff0819b00c50fabae1d271
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505854"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359718"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教程：使用 Azure Maps 实现 IoT 空间分析
 
@@ -83,7 +83,7 @@ Azure 函数中的代码将检查车辆是否已离开地理围栏。 如果车�
   ![地理围栏路线](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 ### <a name="create-a-resource-group"></a>创建资源组
 

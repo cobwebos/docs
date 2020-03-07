@@ -35,8 +35,8 @@
           href: howto-aad-app-configuration.md
     - name: 在 Azure Red Hat OpenShift 群集中部署独立的 Prometheus
       href: howto-deploy-prometheus.md
-    - name: 在 Azure Red Hat OpenShift 群集中管理项目
-      href: howto-manage-projects.md
+    - name: 创建专用 Azure Red Hat OpenShift 群集
+      href: howto-create-private-cluster.md
     - name: 监视和日志记录
       items:
         - name: 适用于容器的 Azure Monitor（预览版）

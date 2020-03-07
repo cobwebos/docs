@@ -193,10 +193,8 @@
           items:
             - name: 文本转语音 REST API
               href: rest-text-to-speech.md
-        - name: 音素集用法
-          items:
-            - name: 语音 API (SAPI) 音素集用法
-              href: sapi-phoneset-usage.md
+        - name: SSML 语音集
+          href: speech-ssml-phonetic-sets.md
     - name: 资源
       items:
         - name: 文本转语音常见问题解答
@@ -494,19 +492,14 @@
           href: speech-devices-sdk.md
         - name: 获取语音设备 SDK
           href: get-speech-devices-sdk.md
-        - name: 发行说明
-          href: devices-sdk-release-notes.md
-        - name: Roobo v1 详细信息
-          href: speech-devices-sdk-roobo-v1.md
-        - name: Roobo v2 详细信息
-          href: speech-devices-sdk-roobo-v2.md
-        - name: 麦克风规格
     - name: 硬件
       items:
         - name: 麦克风阵列建议
           href: speech-devices-sdk-microphone.md
-        - name: Roobo v1 工具包
+        - name: Roobo v1 详细信息
           href: speech-devices-sdk-roobo-v1.md
+        - name: Roobo v2 详细信息
+          href: speech-devices-sdk-roobo-v2.md
     - name: 快速入门
       items:
         - name: 使用语音设备 SDK

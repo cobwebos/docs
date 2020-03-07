@@ -9,12 +9,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 1/15/2020
-  ms.openlocfilehash: de21e0efb6725433fe16b15665fafd9226c74f61
-  ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+  ms.openlocfilehash: cab367254df3f83903eeee110f0a435b97ea8eba
+  ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/02/2020
-  ms.locfileid: "78208760"
+  ms.lasthandoff: 03/05/2020
+  ms.locfileid: "78368611"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:
@@ -74,6 +74,22 @@ landingContent:
       url: tutorial-route-location.md
     - text: 创建商店定位器
       url: tutorial-create-store-locator.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用空间 IO 模块
+      url: how-to-use-spatial-io-module.md
+    - text: 添加简单的数据层
+      url: spatial-io-add-simple-data-layer.md
+    - text: 读取和写入空间数据
+      url: spatial-io-read-write-spatial-data.md
+    - text: 添加 OGC 地图层
+      url: spatial-io-add-ogc-map-layer.md
+    - text: 连接到 WFS 服务
+      url: spatial-io-connect-wfs-service.md
+    - text: 利用核心操作
+      url: spatial-io-core-operations.md
+    - text: 支持的数据格式详细信息
+      url: spatial-io-supported-data-format-details.md
   - linkListType: reference
     links:
     - text: 地图控件
@@ -82,6 +98,8 @@ landingContent:
       url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
     - text: 服务模块
       url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+    - text: 空间 IO 模块
+      url: https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/?view=azure-maps-typescript-latest
 - title: 使用 Android SDK 进行开发
   linkLists:
   - linkListType: how-to-guide

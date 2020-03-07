@@ -24,6 +24,8 @@
           href: hana-data-tiering-extension-nodes.md
         - name: 操作模型和责任
           href: hana-operations-model.md
+        - name: 兼容的操作系统
+          href: os-compatibility-matrix-hana-large-instance.md
     - name: 体系结构
       items:
         - name: 一般体系结构

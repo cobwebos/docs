@@ -11,11 +11,11 @@ ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818036"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360414"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 
@@ -250,7 +250,7 @@ Azure SQL 数据库提供可以通过 Azure 门户访问的安全功能。 这�
 
    1. 在“高级数据安全”下选择“打开”，以便启用此功能。   选择用于保存漏洞评估结果的存储帐户。 再选择“保存”  。
 
-      ![导航窗格](./media/sql-database-security-tutorial/threat-settings.png)
+      ![“导航”窗格](./media/sql-database-security-tutorial/threat-settings.png)
 
       也可配置电子邮件，以便接收安全警报、存储详细信息和威胁检测类型。
 
@@ -338,7 +338,7 @@ Azure SQL 数据库提供可以通过 Azure 门户访问的安全功能。 这�
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何通过简单的几个步骤增强数据库的安全性。 你已了解如何：
+本教程介绍了如何通过简单的几个步骤增强数据库的安全性。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建服务器级和数据库级防火墙规则
