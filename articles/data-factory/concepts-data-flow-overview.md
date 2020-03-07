@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444498"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395956"
 ---
 # <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
@@ -43,7 +43,7 @@ ms.locfileid: "75444498"
 
 ### <a name="azure-integration-runtime-data-flow-properties"></a>Azure 集成运行时数据流属性
 
-![调试按钮](media/data-flow/debugbutton.png "“调试”按钮")
+![调试按钮](media/data-flow/debugbutton.png "调试按钮")
 
 开始在 ADF 中处理数据流时，需要为浏览器 UI 顶部的数据流启用 "调试" 开关。 这会加速用于交互式调试、数据预览和管道调试执行的 Azure Databricks 群集。 可以通过选择自定义[Azure Integration Runtime](concepts-integration-runtime.md)来设置使用的群集的大小。 上次数据预览或上次调试管道执行后，调试会话将保持活动状态长达60分钟。
 
@@ -129,7 +129,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 "**检查**" 选项卡可用于查看要转换的数据流的元数据。 您可以查看列计数、更改的列、添加的列、数据类型、列排序和列引用。 **检查**是元数据的只读视图。 不需要启用调试模式即可在 "**检查**" 窗格中查看元数据。
 
-![检查](media/data-flow/inspect1.png "检查")
+![一下](media/data-flow/inspect1.png "检查")
 
 通过转换更改数据形状时，"**检查**" 窗格中会显示元数据更改流。 如果源转换中没有定义的架构，则元数据将不会显示在 "**检查**" 窗格中。 缺少元数据在架构偏移方案中很常见。
 
@@ -137,7 +137,7 @@ Azure 数据工厂将生成列的哈希来生成统一的分区，使包含类�
 
 如果调试模式为打开状态，则 "**数据预览**" 选项卡将在每次转换时提供数据的交互式快照。 有关详细信息，请参阅[调试模式下的数据预览](concepts-data-flow-debug-mode.md#data-preview)。
 
-### <a name="top-bar"></a>上栏
+### <a name="top-bar"></a>顶部栏
 
 顶部栏包含影响整个数据流的操作，如保存和验证。 还可以通过使用 "**显示关系图**" 和 "**隐藏关系**图" 按钮，在关系图和配置模式间切换。
 

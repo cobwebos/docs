@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
 ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760345"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362552"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>有关 Azure Site Recovery 的一般问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "76760345"
 是的，站点恢复同时支持专用与共享的基础结构模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>对于服务提供商而言，我的租户标识是否与 Site Recovery 服务共享？
-不。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
+不是。 租户标识是匿名的。 租户不需要访问 Site Recovery 门户。 只有服务提供商管理员才能与门户交互。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租户应用程序数据是否会发往 Azure？
 在服务提供商拥有的站点之间进行复制时，永远不会将应用程序数据发送到 Azure。 数据进行传输中加密并直接在服务提供商站点之间复制。
@@ -42,13 +42,13 @@ ms.locfileid: "76760345"
 如果是复制到 Azure，应用程序数据将发送到 Azure 存储而不是站点恢复服务。 数据进行传输中加密并在 Azure 中保持加密状态。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>我的租户会收到来自 Azure 服务的帐单吗？
-不。 Azure 直接与服务提供商保持计费关系。 服务提供商责任为其租户生成特定的帐单。
+不是。 Azure 直接与服务提供商保持计费关系。 服务提供商责任为其租户生成特定的帐单。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>如果我复制到 Azure，需要在 Azure 中随时运行虚拟机吗？
 不可以，将数据复制到订阅中的 Azure 存储。 执行测试故障转移（灾难恢复演练）或实际的故障转移时，站点恢复会在订阅中自动创建虚拟机。
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>当我复制到 Azure 时，们确保提供租户级的隔离吗？
-可以。
+是的。
 
 ### <a name="what-platforms-do-you-currently-support"></a>目前支持哪些平台？
 我们支持 Azure Pack、云平台系统和基于 System Center 的（2012 和更高版本）的部署。 [了解更多](https://technet.microsoft.com/library/dn850370.aspx)有关 Azure Pack 和 Site Recovery 集成的信息。
@@ -56,7 +56,7 @@ ms.locfileid: "76760345"
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>是否支持单一 Azure Pack 和单一 VMM 服务器部署？
 是，可以复制 Hyper-V 虚拟机到 Azure，或者在服务提供商站点之间复制。  请注意，如果在服务提供商站点之间复制，将无法使用 Azure Runbook 集成。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 ### <a name="where-can-i-find-pricing-information"></a>在哪里可以找到定价信息？
 查看[Site Recovery 定价](https://azure.microsoft.com/pricing/details/site-recovery/)详细信息。
@@ -75,11 +75,11 @@ ms.locfileid: "76760345"
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>我已成为 Azure Site Recovery 用户一个多月。 对于每个受保护的实例，是否仍享受前 31 天免费？
 
-可以。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，如果你在过去6个月内保护了10个实例，并且你将第11个实例连接到 Azure Site Recovery，则在前31天内，第11个实例不会产生任何费用。 前10个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过31天。
+是的。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，如果你在过去6个月内保护了10个实例，并且你将第11个实例连接到 Azure Site Recovery，则在前31天内，第11个实例不会产生任何费用。 前10个实例将继续产生 Azure Site Recovery 费用，因为它们受到保护的时间已超过31天。
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 
-是的，即使在受保护实例的前31天内 Site Recovery 免费，你也可能会产生 Azure 存储、存储事务和数据传输的费用。 恢复后的虚拟机也可能产生 Azure 计算费用。
+是的，即使在受保护实例的前31天内 Site Recovery 免费，你也可能会产生 Azure 存储、存储事务和数据传输的费用。 恢复后的虚拟机也可能会产生 Azure 计算费用。
 
 
 ### <a name="is-there-a-cost-associated-to-perform-disaster-recovery-drillstest-failover"></a>执行灾难恢复演练/测试故障转移是否需要付费？
@@ -97,7 +97,7 @@ DR 演练没有单独的费用。 在测试故障转移后创建 VM 后，将会
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>为了遵从法规，即使是本地元数据也必须保留在同一个地理区域。 站点恢复可以帮助我们吗？
-可以。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
+是的。 在某个区域中创建站点恢复保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
@@ -118,7 +118,7 @@ DR 演练没有单独的费用。 在测试故障转移后创建 VM 后，将会
 可以使用站点恢复来保护在支持的 VM 或物理服务器上运行的大多数工作负荷。 站点恢复为应用程序感知型复制提供支持，因此，应用可以恢复为智能状态。 它除了与 Microsoft 应用程序（例如 SharePoint、Exchange、Dynamics、SQL Server 及 Active Directory）集成之外，还能与行业领先的供应商（包括 Oracle、SAP、IBM 及 Red Hat）紧密配合。 [详细了解](site-recovery-workload.md)工作负荷保护。
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>我可以使用站点恢复来管理分支机构的灾难恢复吗？
-可以。 使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
+是的。 使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
 
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>Azure Vm 是否支持灾难恢复？
@@ -185,14 +185,14 @@ Azure Site Recovery 通过公共终结点将数据复制到 Azure 存储帐户�
 
 
 ### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>能否限制为复制流量分配的带宽？
-可以。 有关限制的详细信息，请参阅以下文章：
+是的。 有关限制的详细信息，请参阅以下文章：
 
 * [复制 VMware VM 和物理服务器的容量规划](site-recovery-plan-capacity-vmware.md)
 * [将 Hyper-V VM 复制到 Azure 的容量规划](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
 
 
-## <a name="failover"></a>故障转移：
+## <a name="failover"></a>故障转移
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>如果要故障转移到 Azure，如何在故障转移后访问 Azure Vm？
 
 可以通过安全的 Internet 连接或者站点到站点 VPN 或 Azure ExpressRoute 访问 Azure VM。 若要进行连接，您需要准备一些东西。 [了解详细信息](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
@@ -222,7 +222,7 @@ Azure 具有复原能力。 Site Recovery 已根据 Azure SLA 设计为故障转
 ## <a name="automation"></a>自动化
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
-可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
+是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
 
 * [将 VMM 云中的 Hyper-V VM 复制到 Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)

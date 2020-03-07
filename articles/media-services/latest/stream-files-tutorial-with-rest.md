@@ -13,13 +13,13 @@ ms.custom: mvc
 ms.date: 11/05/2019
 ms.author: juliako
 ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514334"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359532"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>教程：根据 URL 编码远程文件并流式传输视频-REST
 
 使用 Azure 媒体服务可以将媒体文件编码为可在各种浏览器和设备上播放的格式。 例如，可能需要以 Apple 的 HLS 或 MPEG DASH 格式流式传输内容。 在流式传输之前，应该对高质量的数字媒体文件进行编码。 有关编码指南，请参阅[编码概念](encoding-concept.md)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "76514334"
 
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 
-    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他替代工具包括：带有 REST 插件的 **Visual Studio Code** 或 **Telerik Fiddler**。 
+    我们使用的是 **Postman**，但任何 REST 工具都适用。 其他适用的工具有：具有 REST 插件的 Visual Studio Code 或 Telerik Fiddler。 
 
 ## <a name="download-postman-files"></a>下载 Postman 文件
 
@@ -65,26 +65,26 @@ ms.locfileid: "76514334"
 ### <a name="configure-the-environment"></a>配置环境 
 
 1. 打开 **Postman** 应用。
-2. 在屏幕的右侧，选择“管理环境”  选项。
+2. 在屏幕的右侧，选择“管理环境”选项。
 
     ![管理环境](./media/develop-with-postman/postman-import-env.png)
-4. 从“管理环境”  对话框中，单击“导入”  。
-2. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Azure Media Service v3 Environment.postman_environment.json` 文件。
+4. 从“管理环境”对话框中，单击“导入”。
+2. 浏览到克隆 `Azure Media Service v3 Environment.postman_environment.json` 时下载的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 文件。
 6. **Azure Media Service v3 Environment** 环境已添加。
 
     > [!Note]
-    > 使用从上面的“访问媒体服务 API”  部分获得的值更新访问权限变量。
+    > 使用从上面的“访问媒体服务 API”部分获得的值更新访问权限变量。
 
 7. 双击所选的文件，并输入通过执行[访问 API](#access-the-media-services-api) 步骤获得的值。
 8. 关闭对话框。
-9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。 
+9. 从下拉列表中选择“Azure Media Service v3 Environment”环境。
 
     ![选择环境](./media/develop-with-postman/choose-env.png)
    
 ### <a name="configure-the-collection"></a>配置集合
 
-1. 单击“导入”  导入该集合文件。
-1. 浏览到克隆 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 时下载的 `Media Services v3.postman_collection.json` 文件
+1. 单击“导入”导入该集合文件。
+1. 浏览到克隆 `Media Services v3.postman_collection.json` 时下载的 `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` 文件
 3. 选择 **Media Services v3.postman_collection.json** 文件。
 
     ![导入文件](./media/develop-with-postman/postman-import-collection.png)
@@ -106,9 +106,9 @@ ms.locfileid: "76514334"
 
 ### <a name="get-azure-ad-token"></a>获取 Azure AD 令牌 
 
-1. 在 Postman 应用的左窗口中，选择“步骤 1: 获取 AAD 身份验证令牌”。
+1. 在 Postman 应用的左窗格中，选择 "步骤1：获取 AAD 身份验证令牌"。
 2. 然后，选择“获取适用于服务主体身份验证的 Azure AD 令牌”。
-3. 按“发送”。 
+3. 按“发送”。
 
     将会发送以下 **POST** 操作。
 
@@ -116,7 +116,7 @@ ms.locfileid: "76514334"
     https://login.microsoftonline.com/:tenantId/oauth2/token
     ```
 
-4. 响应会返回此令牌并将“AccessToken”环境变量设置为令牌值。 若要查看设置“AccessToken”的代码，请单击“测试”选项卡。  
+4. 响应会返回此令牌并将“AccessToken”环境变量设置为令牌值。 若要查看设置“AccessToken”的代码，请单击“测试”选项卡。 
 
     ![获取 AAD 令牌](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "76514334"
 
 1. 在 Postman 应用的左侧窗口中，选择“流式处理和实时”。
 2. 然后，选择“启动 StreamingEndpoint”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 发送以下 **POST** 操作：
 
@@ -153,7 +153,7 @@ ms.locfileid: "76514334"
 
 1. 在 Postman 应用的左侧窗口中，选择“资产”。
 2. 然后选择“创建或更新资产”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 将会发送以下 **PUT** 操作：
 
@@ -175,7 +175,7 @@ ms.locfileid: "76514334"
 
 对媒体服务中的内容进行编码或处理时，一种常见的模式是将编码设置设为脚本。 然后，需提交**作业**，将该脚本应用于视频。 为每个新视频提交新作业后，可将该脚本应用到库中的所有视频。 媒体服务中的脚本称为**转换**。 有关详细信息，请参阅[转换和作业](transform-concept.md)。 本教程中的示例定义有关将视频进行编码以将其流式传输到各种 iOS 和 Android 设备的脚本。 
 
-创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象  。 每个 TransformOutput 包含一个预设   。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput   。 本文中的示例使用名为 AdaptiveStreaming 的内置预设  。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
+创建新[转换](https://docs.microsoft.com/rest/api/media/transforms)实例时，需要指定希望生成的输出内容。 所需参数是 TransformOutput 对象。 每个 TransformOutput 包含一个预设。 预设介绍了视频和/或音频处理操作的分步说明，这些操作将用于生成所需的 TransformOutput。 本文中的示例使用名为 AdaptiveStreaming 的内置预设。 此预设将输入的视频编码为基于输入的分辨率和比特率自动生成的比特率阶梯（比特率 - 分辨率对），并通过与每个比特率 - 分辨率对相对应的 H.264 视频和 AAC 音频生成 ISO MP4 文件。 有关此预设的信息，请参阅[自动生成比特率阶梯](autogen-bitrate-ladder.md)。
 
 可以使用内置 EncoderNamedPreset 或使用自定义预设。 
 
@@ -184,7 +184,7 @@ ms.locfileid: "76514334"
 
 1. 在 Postman 应用的左侧窗口中，选择“编码和分析”。
 2. 然后选择“创建转换”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 将会发送以下 **PUT** 操作。
 
@@ -213,13 +213,13 @@ ms.locfileid: "76514334"
 
 ### <a name="create-a-job"></a>创建作业
 
-[作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将创建的**转换**应用到给定的输入视频或音频内容。 作业指定输入视频位置和输出位置等信息  。
+[作业](https://docs.microsoft.com/rest/api/media/jobs)是针对媒体服务的实际请求，目的是将创建的**转换**应用到给定的输入视频或音频内容。 作业指定输入视频位置和输出位置等信息。
 
 在此示例中，作业的输入基于 HTTPS URL（“https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/”）。
 
 1. 在 Postman 应用的左侧窗口中，选择“编码和分析”。
 2. 然后选择“创建或更新作业”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 将会发送以下 **PUT** 操作。
 
@@ -250,7 +250,7 @@ ms.locfileid: "76514334"
 
 此作业需要一些时间才能完成，完成时可发出通知。 若要查看作业的进度，建议使用事件网格。 事件网格旨在实现高可用性、一致性能和动态缩放。 使用事件网格，应用可以侦听和响应来自几乎所有 Azure 服务和自定义源的事件。 处理基于 HTTP 的反应事件非常简单，这有助于通过对事件的智能筛选和路由生成高效的解决方案。  请参阅[将事件路由到自定义 Web 终结点](job-state-events-cli-how-to.md)。
 
-**作业**通常会经历以下状态：**已计划**、**已排队**、**正在处理**、**已完成**（最终状态）。 如果作业出错，则显示“错误”状态  。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”   。
+作业通常将经历以下状态：“已计划”、“已排队”、“正在处理”、“已完成”（最终状态）。 如果作业出错，则显示“错误”状态。 如果作业正处于取消过程中，则显示“正在取消”，完成时则显示“已取消”。
 
 #### <a name="job-error-codes"></a>作业错误代码
 
@@ -267,11 +267,11 @@ ms.locfileid: "76514334"
 > [!IMPORTANT]
 > 使用自定义的 [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) 时，应为媒体服务帐户设计有限的一组此类策略，并在需要同样的加密选项和协议时重新将这些策略用于 StreamingLocators。 
 
-媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略  。
+媒体服务帐户具有对应于**流式处理策略**条目数的配额。 不应为每个流式处理定位符创建新的流式处理策略。
 
 1. 在 Postman 应用的左侧窗口中，选择“流式处理策略和定位符”。
 2. 然后选择“创建流式处理定位符(清除)”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 将会发送以下 **PUT** 操作。
 
@@ -299,7 +299,7 @@ ms.locfileid: "76514334"
 
 1. 在 Postman 应用的左侧窗口中，选择“流式处理策略”。
 2. 然后，选择“列出路径”。
-3. 按“发送”。 
+3. 按“发送”。
 
     * 将会发送以下 **POST** 操作。
 
@@ -371,8 +371,8 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 本文使用 Azure Media Player 测试流式传输。 
 
 1. 打开 Web 浏览器并导航到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL:”框中，粘贴生成的 URL。  
-3. 按“更新播放器”  。
+2. 在“URL:”框中，粘贴生成的 URL。 
+3. 按“更新播放器”。
 
 Azure Media Player 可用于测试，但不可在生产环境中使用。 
 
