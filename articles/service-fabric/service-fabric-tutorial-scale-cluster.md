@@ -4,12 +4,12 @@ description: 本教程介绍如何横向扩展和缩小 Azure 中的 Service Fab
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639031"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251799"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教程：缩放 Azure 中的 Service Fabric 群集
 
@@ -33,12 +33,12 @@ ms.locfileid: "75639031"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始学习本教程之前：
 
 * 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安装 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
 * 在 Azure 上创建安全 [Windows 群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 ## <a name="important-considerations-and-guidelines"></a>重要注意事项和指南
@@ -93,7 +93,7 @@ ms.locfileid: "75639031"
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -799,7 +799,7 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
@@ -845,7 +845,7 @@ Foreach($node in $nodes)
 
 从最近的部署的资源组中[导出模板和参数文件](#export-the-template-for-the-resource-group)。  打开 Parameters.json  文件。  如果使用本教程中的[示例模板][template]部署了群集，群集中就有三个节点类型。  
 
-第二个节点类型中 VM 的大小在 vmNodeType1Size  参数中设置。  将 vmNodeType1Size  参数值从 Standard_D2_V2 更改为 [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series)，这会让每个 VM 实例的资源增加一倍。
+第二个节点类型中 VM 的大小在 vmNodeType1Size  参数中设置。  将 vmNodeType1Size  参数值从 Standard_D2_V2 更改为 [Standard_D3_V2](../virtual-machines/dv2-dsv2-series.md)，这会让每个 VM 实例的资源增加一倍。
 
 所有三个节点类型的 VM SKU 在 vmImageSku  参数中设置。  同样，更改节点类型的 VM SKU 应慎重，不建议对主节点类型执行此操作。
 
@@ -856,7 +856,7 @@ Foreach($node in $nodes)
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 或者运行以下 Azure CLI 命令：
-```azure-cli
+```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 

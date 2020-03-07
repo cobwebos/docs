@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e98655dca7d682e5c42f3b0ae7f26c892bd12377
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710734"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190766"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
 
@@ -23,7 +23,7 @@ ms.locfileid: "76710734"
 > * 生成一个无服务器 HTTP API，用于分类包含狗或猫的图像。
 > * 从 Web 应用使用该 API。
 
-## <a name="prerequisites"></a>必备条件 
+## <a name="prerequisites"></a>先决条件 
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/)。 （Python 3.7.4 和 Python 3.6.x 已在 Azure Functions 中进行验证；目前尚不支持 Python 3.8 和更高版本。）
@@ -59,7 +59,7 @@ ms.locfileid: "76710734"
 导航到 *start* 文件夹，运行以下命令以创建并激活名为 `.venv` 的虚拟环境。 请务必使用受 Azure Functions 支持的 Python 3.7。
 
 
-# <a name="bashtabbash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[bash](#tab/bash)
 
 ```bash
 cd start
@@ -79,7 +79,7 @@ source .venv/bin/activate
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -93,7 +93,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 cd start
@@ -133,7 +133,7 @@ py -m venv .venv
     func new --name classify --template "HTTP trigger"
     ```
 
-    此命令创建与函数名称匹配的文件夹 *classify*。 该文件夹中有两个文件： *\_\_init\_\_.py*，其中包含函数代码；*function.json*，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅[在 Azure 中创建 HTTP 触发的 Python 函数 - 检查文件内容](functions-create-first-function-python.md#optional-examine-the-file-contents)。
+    此命令创建与函数名称匹配的文件夹 *classify*。 该文件夹中有两个文件： *\_\_init\_\_.py*，其中包含函数代码；*function.json*，描述函数的触发器及其输入和输出绑定。 有关这些文件的内容的详细信息，请参阅 Python 快速入门中的[检查文件内容](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents)。
 
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
@@ -158,19 +158,19 @@ py -m venv .venv
 
 1. 在 *start* 文件夹中，运行以下命令将模型文件复制到 *classify* 文件夹中。 请务必在命令中包含 `\*`。 
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\model\* classify
@@ -182,19 +182,19 @@ py -m venv .venv
 
 1. 在 *start* 文件夹中运行以下命令，将包含帮助器代码的文件复制到 *classify* 文件夹中：
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     copy ..\resources\predict.py classify
@@ -266,19 +266,19 @@ py -m venv .venv
 
 1. 使用 Python 启动一个 HTTP 服务器：
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
 
     ```bash 
     python -m http.server
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
     ```
 
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
 
     ```cmd
     py -m http.server

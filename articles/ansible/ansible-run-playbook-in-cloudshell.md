@@ -4,18 +4,18 @@ description: 本快速入门介绍如何使用 Azure Cloud Shell 中的 Bash 执
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 2a938179cf2e07a61749042db32ef9e1c9d843ba
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193644"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247896"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>快速入门：通过 Azure Cloud Shell 中的 Bash 运行 Ansible Playbook
 
-Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。 Cloud Shell 允许使用 Bash 或 Powershell 命令行。 在本文中，你将使用 Azure Cloud Shell 中的 Bash 运行一个 Ansible Playbook。
+Azure Cloud Shell 是一个用于管理 Azure 资源的交互式的可通过浏览器访问的 shell。 Cloud Shell 允许使用 Bash 或 PowerShell 命令行。 在本文中，你将使用 Azure Cloud Shell 中的 Bash 运行一个 Ansible Playbook。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 - **配置 Azure Cloud Shell** - 如果你是 Azure Cloud Shell 的新手，请参阅 [Azure Cloud Shell 中的 Bash 快速入门](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
@@ -35,7 +35,7 @@ az account list
 
 按如下所示使用 Azure 订阅 ID 设置 `AZURE_SUBSCRIPTION_ID`：
 
-```azurecli-interactive
+```console
 export AZURE_SUBSCRIPTION_ID=<your-subscription-id>
 ```
 

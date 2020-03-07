@@ -3,12 +3,12 @@ title: 教程 - 使用 CLI 在 Azure 上进行 SAP HANA 数据库备份
 description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470802"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206616"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>注册并保护 SAP HANA 实例
 
-对于要由 Azure 服务发现的 SAP HANA 实例（该实例上安装有包含 SAP HANA 的 VM），必须在 SAP HANA 计算机上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。 运行脚本之前，请确保满足所有[先决条件](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites)。 若要详细了解脚本的作用，请参阅[设置权限](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions)部分。
+对于要由 Azure 服务发现的 SAP HANA 实例（该实例上安装有包含 SAP HANA 的 VM），必须在 SAP HANA 计算机上运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。 运行脚本之前，请确保满足所有[先决条件](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites)。 若要了解脚本的更多功能，请参阅[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 
 脚本运行后，可通过之前创建的恢复服务保管库注册 SAP HANA 实例。 若要注册实例，请使用 [az backup container register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) cmdlet。 VMResourceId 是你创建的用于安装 SAP HANA 的 VM 资源 ID  。
 

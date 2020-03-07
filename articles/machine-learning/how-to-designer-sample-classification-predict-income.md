@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963355"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915905"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>使用 Azure 机器学习设计器生成分类器并使用特征选择来预测收入
 
@@ -25,13 +25,13 @@ ms.locfileid: "76963355"
 
 了解如何使用设计器（预览版）在不编写代码的情况下生成机器学习分类器。 此示例训练一个“双类提升决策树”来预测成人普查收入（>=50K 或 <=50K）  。
 
-因为此问题回答“哪一个？”， 所以这称为分类问题。 但是，你可以应用相同的基本过程来解决任何类型的机器学习问题，无论是回归、分类还是聚类，等等。
+因为问题是回答“哪一个？”，所以这称为分类问题。 但是，你可以应用相同的基本过程来解决任何类型的机器学习问题，无论是回归、分类还是聚类，等等。
 
 下面是本示例的最终管道图形：
 
 ![管道图形](./media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "76963355"
 
 1. 将 Adult Census Income Binary 数据集模块拖到管道画布上。
 1. 添加“拆分数据”模块来创建训练和测试集  。 将第一个输出数据集中的行部分设置为 0.7。 此设置指定 70% 的数据将输出到模块的左侧端口，其余的输出到右侧端口。 我们使用左侧数据集进行训练，使用右侧数据集进行测试。
-1. 添加“基于筛选器的特征选择”模块来按 PearsonCorreclation 选择 5 个特征  。 
+1. 添加“基于筛选器的特征选择”模块来按 PearsonCorrelation 选择 5 个特征  。 
 1. 添加“双类提升决策树”模块来初始化提升决策树分类器  。
 1. 添加“训练模型”模块  。 将上一步骤中的分类器连接到“训练模块”的左侧输入端口  。 将通过“基于筛选器的特征选择”模块筛选的数据集连接为训练数据集。  “训练模型”将训练分类器  。
 1. 添加“选择列转换并应用转换”模块来将同一转换（基于筛选器的特征选择）应用于测试数据集。

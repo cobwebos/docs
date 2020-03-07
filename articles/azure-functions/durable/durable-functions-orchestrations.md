@@ -6,11 +6,11 @@ ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261545"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78356662"
 ---
 # <a name="durable-orchestrations"></a>持久业务流程
 
@@ -57,7 +57,7 @@ Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程�
 
 Durable Task Framework 的事件溯源行为与编写的业务流程协调程序函数代码密切相关。 假设你有一个活动链接业务流程协调程序函数，如以下业务流程协调程序函数：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -216,7 +216,7 @@ public static async Task Synchronize(
 
 根据[协调程序函数代码约束](durable-functions-code-constraints.md)中所述，不允许业务流程协调程序函数执行 I/O。 此项限制的典型解决方法是将任何需要执行 I/O 的代码包装在某个活动函数中。 与外部系统交互的业务流程经常使用活动函数发出 HTTP 调用，并将结果返回给业务流程。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 若要简化这种常见模式，业务流程协调程序函数可以使用 `CallHttpAsync` 方法直接调用 HTTP API。
 
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -265,7 +265,7 @@ module.exports = df.orchestrator(function*(context) {
 
 无法直接将多个参数传递给一个活动函数。 建议传入对象或复合对象的数组。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 在 .NET 中，还可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 对象。 以下示例使用了 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 添加的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 的新功能：
 
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 #### <a name="orchestrator"></a>业务流程协调程序
 

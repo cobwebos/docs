@@ -1,5 +1,5 @@
 ---
-title: 教程`:`使用托管标识访问 Azure 存储 - Linux - Azure AD
+title: 教程`:`使用托管标识通过访问密钥访问 Azure 存储 - Linux - Azure AD
 description: 本教程将指导你完成使用 Linux VM 系统分配的托管标识访问 Azure 存储的过程。
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35c31fbf8c7c1aa37134a1808cd3f54a559833c1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183418"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273819"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>教程：使用 Linux VM 系统分配的托管标识通过访问密钥访问 Azure 存储
 
@@ -43,7 +43,7 @@ ms.locfileid: "74183418"
 1. 单击 Azure 门户左上角的“+/创建新服务”按钮。 
 2. 依次单击“存储”  、“存储帐户”  ，并将显示新的“创建存储帐户”面板。
 3. 输入存储帐户的**名称**，稍后将使用该名称。  
-4. “部署模型”和“帐户类型”应分别设置为“资源管理器”和“通用”。   
+4. **部署模型**和**帐户类型**应分别设置为“资源管理器”和“通用”。 
 5. 确保“订阅”和“资源组”与上一步中创建 VM 时指定的名称匹配。  
 6. 单击“创建”。 
 

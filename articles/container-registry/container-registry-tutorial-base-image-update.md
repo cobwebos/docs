@@ -4,12 +4,12 @@ description: 本教程介绍在更新同一注册表中的基础映像时，如�
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 23f77cb4f4c14f052d8ecdb23beed21263623d3e
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 3870bc70e9d18a3c1c854055cb0c27018554a556
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617501"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249983"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
@@ -30,7 +30,7 @@ ACR 任务支持在容器的[基础映像更新](container-registry-tasks-base-i
 
 如果想本地使用 Azure CLI，则必须已安装 Azure CLI 版本 **2.0.46** 或更高版本。 运行 `az --version` 即可查找版本。 如果需要安装或升级 CLI，请参阅[安装 Azure CLI][azure-cli]。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="complete-the-previous-tutorials"></a>完成前一篇教程
 
@@ -41,7 +41,7 @@ ACR 任务支持在容器的[基础映像更新](container-registry-tasks-base-i
 * 克隆示例存储库
 * 创建 GitHub 个人访问令牌
 
-如果尚未完成以上步骤，请在继续之前先完成以下教程：
+在继续之前，请先完成以下教程（如果尚未完成）：
 
 [使用 Azure 容器注册表任务在云中生成容器映像](container-registry-tutorial-quick-task.md)
 
@@ -51,7 +51,9 @@ ACR 任务支持在容器的[基础映像更新](container-registry-tasks-base-i
 
 使用适用于环境的值填充这些 shell 环境变量。 此步骤并非必须执行的步骤，但它能让在此教程中执行多个 Azure CLI 命令更容易。 如果未填充这些环境变量，则每当示例命令中出现每个值，都必须手动替换该值。
 
-```azurecli-interactive
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
@@ -74,7 +76,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ## <a name="build-the-base-image"></a>生成基础映像
 
-首先使用 [az acr build][az-acr-build] 通过 ACR 任务的快速任务来生成基础映像  。 如本系列教程的[第一篇教程](container-registry-tutorial-quick-task.md)中所述，如果生成成功，则此过程不仅会生成映像，还会将其推送到容器注册表。
+首先使用 [az acr build][az-acr-build] 通过 ACR 任务“快速任务”来生成基础映像。  如本系列教程的[第一篇教程](container-registry-tutorial-quick-task.md)中所述，如果生成成功，则此过程不仅会生成映像，还会将其推送到容器注册表。
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .

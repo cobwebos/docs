@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 运行 VMware VM 的无代理迁�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989359"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78304202"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>将 VMware VM 迁移到 Azure（使用无代理方法）
 
@@ -41,7 +41,7 @@ ms.locfileid: "76989359"
 - [了解](server-migrate-overview.md)无代理迁移的工作原理，并[比较迁移方法](server-migrate-overview.md#compare-migration-methods)。
 - 若要使用基于代理的方法，请[阅读此文](tutorial-migrate-vmware-agent.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，应做好以下准备：
 
@@ -248,7 +248,7 @@ Azure Migrate 需要对 VM 进行一些更改，以确保 VM 可迁移到 Azure�
 
 ## <a name="complete-the-migration"></a>完成迁移
 
-1. 完成迁移后，右键单击该 VM 并选择“停止迁移”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
+1. 完成迁移后，右键单击该 VM 并选择“停止复制”。  这会停止本地计算机的复制，并清理 VM 的复制状态信息。
 2. 在已迁移的计算机上安装 Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) 或 [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 代理。
 3. 执行任何迁移后的应用调整，例如更新数据库连接字符串和 Web 服务器配置。
 4. 对 Azure 中当前运行的迁移应用程序执行最终的应用程序和迁移验收测试。

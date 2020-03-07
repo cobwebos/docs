@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 4baf12533bed523c81ff41a81975f5bf5b918ac2
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586999"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78250805"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>教程：使用 Azure 门户创建 NAT 网关并测试 NAT 服务
 
@@ -36,27 +36,24 @@ ms.locfileid: "77586999"
 
 后续步骤将引导你配置整个测试环境，并执行测试本身。 我们从源开始。源使用我们在后续步骤中创建的 NAT 网关资源。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在部署 VM 并使用 NAT 网关之前，需要创建资源组和虚拟网络。
 
-1. 在屏幕的左上方选择“创建资源” > “网络” > “虚拟网络”，或者在市场搜索中搜索“虚拟网络”。    
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-2. 在“创建虚拟网络”  中，输入或选择以下信息：
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | 美国东部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 **myVNetsource**。 |
-    | 地址空间 | 输入 192.168.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”并输入 **myResourceGroupNAT**。 |
-    | 位置 | 选择“美国东部 2”。 |
-    | 子网 - 名称 | 输入 **mySubnetsource**。 |
-    | 子网 - 地址范围 | 输入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
-
-### <a name="create-source-virtual-machine"></a>创建源虚拟机
+## <a name="create-source-virtual-machine"></a>创建源虚拟机
 
 现在，我们将创建一个 VM 来使用 NAT 服务。 此 VM 将某个公共 IP 用作实例级公共 IP，使你能够访问此 VM。 NAT 服务可识别流的方向，并会替代子网中的默认 Internet 目标。 VM 的公共 IP 地址不会用于出站连接。
 
@@ -161,25 +158,25 @@ ms.locfileid: "77586999"
 
 现在，我们将为 NAT 服务转换的出站流量创建目标，以便对其进行测试。
 
-### <a name="configure-virtual-network-for-destination"></a>配置目标的虚拟网络
+
+## <a name="virtual-network-and-parameters-for-destination"></a>目标的虚拟网络和参数
 
 在为目标部署 VM 之前，需要创建一个虚拟网络，可将目标虚拟机置于其中。 以下步骤与针对源 VM 执行的步骤相同，只是需要做出一些轻微的更改来公开目标终结点。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-2. 在“创建虚拟网络”  中，输入或选择以下信息：
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | 美国东部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 **myVNetdestination**。 |
-    | 地址空间 | 输入 192.168.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”并输入 **myResourceGroupNAT**。 |
-    | 位置 | 选择“美国东部 2”。 |
-    | 子网 - 名称 | 输入 **mySubnetdestination**。 |
-    | 子网 - 地址范围 | 输入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-### <a name="create-destination-virtual-machine"></a>创建目标虚拟机
+## <a name="create-destination-virtual-machine"></a>创建目标虚拟机
 
 1. 在门户的左上方选择“创建资源” > “计算” > “Ubuntu Server 18.04 LTS”，或者在市场搜索中搜索“Ubuntu Server 18.04 LTS”。    
 

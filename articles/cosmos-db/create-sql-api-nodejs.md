@@ -1,19 +1,19 @@
 ---
-title: 快速入门：使用 Node.js 查询 Azure Cosmos DB SQL API 帐户
+title: 快速入门 - 使用 Node.js 查询 Azure Cosmos DB SQL API 帐户
 description: 如何使用 Node.js 创建连接 Azure Cosmos DB SQL API 帐户和查询数据的应用。
 author: deborahc
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/19/2019
+ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: d8b17472bb531ec799be227706261962d7914d68
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c36f31ef30b6386677c517b1d7e643f9eacea093
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134460"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303284"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>快速入门：使用 Node.js 连接和查询 Azure Cosmos DB SQL API 帐户中的数据
 
@@ -27,19 +27,38 @@ ms.locfileid: "77134460"
 
 在本快速入门中，你将通过 Azure 门户并使用从 GitHub 克隆的 Node.js 应用来创建和管理 Azure Cosmos DB SQL API 帐户。 Azure Cosmos DB 是一种多模型数据库服务，它通过全局分布和水平缩放功能让你快速创建和查询文档、表、键/值和图形数据库。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。 或者[免费试用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) 而无需 Azure 订阅。 你还可以使用 [Azure Cosmos DB 模拟器](https://aka.ms/cosmosdb-emulator)以及 URI `https://localhost:8081` 和密钥 `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`。
 - [Node.js 6.0.0+](https://nodejs.org/)。
 - [Git](https://www.git-scm.com/downloads)。
 
-## <a name="create-a-database"></a>创建数据库 
+## <a name="create-a-database"></a>创建数据库
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a name="add-a-container"></a>添加容器
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+现在可以在 Azure 门户中使用数据资源管理器工具来创建数据库和容器。 
+
+1. 选择“数据资源管理器” > “新建容器”。   
+    
+    “添加容器”区域显示在最右侧，可能需要向右滚动才能看到它。 
+
+    ![Azure 门户 >“数据资源管理器”>“添加集合”窗格](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+
+2. 在“添加容器”页中，输入新容器的设置。 
+
+    |设置|建议的值|说明
+    |---|---|---|
+    |**数据库 ID**|任务|输入 *Tasks* 作为新数据库的名称。 数据库名称必须包含 1 到 255 个字符，不能包含 `/, \\, #, ?` 或尾随空格。 选中“预配数据库吞吐量”选项，这样就可以在数据库中的所有容器之间共享预配给该数据库的吞吐量。  此选项还有助于节省成本。 |
+    |**吞吐量**|400|将吞吐量保留为每秒 400 个请求单位 (RU/s)。 如果想要减少延迟，以后可以增加吞吐量。| 
+    |**容器 ID**|Items|输入 *Items* 作为新容器的名称。 容器 ID 与数据库名称的字符要求相同。|
+    |**分区键**| /category| 本文中所述的示例使用 /category  作为分区键。|
+    
+    除了前面的设置，还可以选择为容器添加“唯一键”。  在此示例中，请将此字段留空。 开发人员可以使用唯一键向数据库添加一层数据完整性。 创建容器时，通过创建唯一键策略，可确保每个分区键的一个或多个值的唯一性。 若要了解详细信息，请参阅 [Azure Cosmos DB 中的唯一键](unique-keys.md)一文。
+    
+    选择“确定”  。 数据资源管理器将显示新的数据库和容器。
 
 ## <a name="add-sample-data"></a>添加示例数据
 
@@ -53,98 +72,99 @@ ms.locfileid: "77134460"
 
 现在让我们从 GitHub 克隆 Node.js 应用，设置连接字符串并运行。
 
-1. 打开命令提示符，新建一个名为“git-samples”的文件夹，然后关闭命令提示符。
+1. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
 
-    ```bash
-    md "C:\git-samples"
-    ```
-
-2. 打开诸如 git bash 之类的 git 终端窗口，并使用 `cd` 命令更改为要安装示例应用的新文件夹。
-
-    ```bash
-    cd "C:\git-samples"
-    ```
-
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。
-
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
-    ```
+   ```bash
+   git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started.git
+   ```
 
 ## <a name="review-the-code"></a>查看代码
 
-此步骤是可选的。 如果有意了解如何使用代码创建 Azure Cosmos 数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
+此步骤是可选的。 如果有意了解如何使用代码创建 Azure Cosmos 数据库资源，可以查看以下代码片段。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。
 
 如果你熟悉旧版 SQL JavaScript SDK，则可能习惯于看到术语“集合”和“文档”。   由于 Azure Cosmos DB 支持[多 API 模型](introduction.md)，因此 [2.0+ 版的 JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) 使用通用术语“容器”  （可能为集合、图形或表），并使用“项”  来描述容器的内容。
 
-以下代码片段全部摘自 *app.js* 文件。
+以下代码片段全部摘自 _app.js_ 文件。
 
-* `CosmosClient` 对象已初始化。
+- `CosmosClient` 对象已初始化。
 
-    ```javascript
-    const client = new CosmosClient({ endpoint, key });
-    ```
+  ```javascript
+  const client = new CosmosClient({ endpoint, key });
+  ```
 
-* 新建 Azure Cosmos 数据库。
+- 选择“Tasks”数据库。
 
-    ```javascript
-    const { database } = await client.databases.createIfNotExists({ id: databaseId });
-    ```
+  ```javascript
+  const database = await client.databases(databaseId);
+  ```
 
-* 在数据库中新建容器（集合）。
+- 选择“Items”容器/集合。
 
-    ```javascript
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId });
-    ```
+  ```javascript
+  const container = await client.databases(containerId);
+  ```
 
-* 将创建新项（文档）。
+- 选择“Items”容器中的所有项目。
 
-    ```javascript
-    const { item } = await client.database(databaseId).container(containerId).items.create(itemBody);
-    ```
+  ```javascript
+  // query to return all items
+  const querySpec = {
+    query: "SELECT * from c"
+  };
 
-* 在系列数据库中对 JSON 执行 SQL 查询。 查询返回 Anderson 系列的所有子级。 
+  const { resources: results } = await container.items
+    .query(querySpec)
+    .fetchAll();
 
-    ```javascript
-      const querySpec = {
-        query: 'SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName',
-        parameters: [
-          {
-            name: '@lastName',
-            value: 'Andersen'
-          }
-        ]
-      }
+  return results;
+  ```
 
-      const { resources: results } = await client
-        .database(databaseId)
-        .container(containerId)
-        .items.query(querySpec)
-        .fetchAll()
-      for (var queryResult of results) {
-        let resultString = JSON.stringify(queryResult)
-        console.log(`\tQuery returned ${resultString}\n`)
-      }
-    ```    
+- 创建新项
+
+  ```javascript
+  const { resource: createdItem } = await container.items.create(newItem);
+  ```
+
+- 更新项
+
+  ```javascript
+  const { id, category } = createdItem;
+
+  createdItem.isComplete = true;
+  const { resource: itemToUpdate } = await container
+    .item(id, category)
+    .replace(itemToUpdate);
+
+  return result;
+  ```
+
+- 删除项
+
+  ```javascript
+  const { resource: result } = await this.container.item(id, category).delete();
+  ```
+
+> [!NOTE]
+> 在“update”和“delete”方法中，必须通过调用 `container.item()` 从数据库中选择项。 传入的两个参数是项的 ID 和项的分区键。 在这种情况下，分区键是“category”字段的值。
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 
 现在，返回 Azure 门户，获取 Azure Cosmos 帐户的连接字符串详细信息。 将连接字符串复制到应用，以便其连接数据库。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，从左侧导航栏中选择“密钥”  ，然后选择“读写密钥”  。 在下一步骤中，你将使用屏幕右侧的复制按钮将 URI 和主密钥复制到 *config.js* 文件中。
+1. 在 [Azure 门户](https://portal.azure.com/)中，在你的 Azure Cosmos DB 帐户中，从左侧导航栏中选择“密钥”  ，然后选择“读写密钥”  。 在下一步中，使用屏幕右侧的复制按钮将 URI 和主密钥复制到 _app.js_ 文件中。
 
-    ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
+   ![在 Azure 门户的“密钥”边栏选项卡中查看并复制访问密钥](./media/create-sql-api-dotnet/keys.png)
 
-2. 打开 *config.js* 文件。 
+2. 打开 _config.js_ 文件。
 
-3. 从门户中复制 URI 值（使用复制按钮），并在 *config.js* 中将其设为终结点密钥的值。 
+3. 从门户中复制 URI 值（使用复制按钮），并在 _config.js_ 中将其设为终结点密钥的值。
 
-    `config.endpoint = "<Your Azure Cosmos account URI>"`
+   `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. 然后从门户复制“主密钥”的值，并在 *config.js* 中将其设为 `config.key` 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。 
+4. 然后从门户复制“主密钥”的值，并在 _config.js_ 中将其设为 `config.key` 的值。 现已使用与 Azure Cosmos DB 进行通信所需的所有信息更新应用。
 
-    `config.key = "<Your Azure Cosmos account key>"`
-    
+   `key: "<Your Azure Cosmos account key>"`
+
 ## <a name="run-the-app"></a>运行应用
 
 1. 在终端中运行 `npm install`，安装所需的 npm 模块
@@ -163,9 +183,7 @@ ms.locfileid: "77134460"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建容器，以及如何运行 Node.js 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。 
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户、如何使用数据资源管理器创建容器，以及如何运行 Node.js 应用。 现在可以将其他数据导入 Azure Cosmos DB 帐户了。
 
 > [!div class="nextstepaction"]
 > [将数据导入 Azure Cosmos DB](import-data.md)
-
-

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086205"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913812"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>从 Google Maps 迁移 Web 服务
 
@@ -24,21 +24,24 @@ Azure Maps 和 Google Maps 都通过 REST Web 服务提供对空间 API 的访�
 
 | Google Maps 服务 API | Azure Maps 服务 API                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| 方向              | [Route](https://docs.microsoft.com/rest/api/maps/route)                               |
-| 距离矩阵         | [路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| 地理编码               | [搜索](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 地点搜索           | [搜索](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 地点自动完成      | [搜索](https://docs.microsoft.com/rest/api/maps/search)                             |
-| 静态地图              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| 时区               | [时区](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| 方向              | [Route](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| 距离矩阵         | [路线矩阵](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| 地理编码               | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 地点搜索           | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 地点自动完成      | [搜索](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| 对齐道路            | 请参阅[计算路线和方向](#calculate-routes-and-directions)部分。            |
+| 速度限制            | 请参阅[对坐标进行反向地理编码](#reverse-geocode-a-coordinate)部分。                  |
+| 静态地图              | [Render](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| 时区               | [时区](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 以下服务 API 目前在 Azure Maps 中不可用：
 
 - Elevation
 - 地理位置
-- 地点详细信息和地点照片。 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
+- 位置详细信息和照片 - 电话号码和网站 URL 在 Azure Maps 搜索 API 中可用。
 - 地图 URL
-- 可通过 Azure Maps 中的路线和反向地理编码 API 使用道路限速数据。
+- 最近的道路 - 这可以使用 Web SDK 实现（如[此处](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+)所示），但目前不作为服务提供。
 - 静态街道视图
 
 Azure Maps 提供其他几个你可能会感兴趣的 REST Web 服务：
@@ -176,8 +179,8 @@ Azure Maps 提供多个搜索 API 用于搜索兴趣点：
 
 Azure Maps 路线服务提供以下 API 来计算路线：
 
-- [**计算路线**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，请使用 POST 请求。 这是因为，使用 POST 可确保 URL 请求不会太长并导致出现问题。
-- [**批处理路线**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理。 处理完成后，可以下载整个结果集。
+- [**计算路线**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)：计算路线并立即处理请求。 此 API 支持 GET 和 POST 请求。 指定大量中途点或使用大量路线选项时，建议使用 POST 请求，以确保 URL 请求不会太长并导致出现问题。 Azure Maps 中的“POST 路线方向”有一个选项，该选项可以接受数千个[支持点](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints)，并将使用这些支持点在它们之间重新创建一个逻辑路线路径（对齐到道路）。 
+- [**批处理路线**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview)：创建最多包含 1,000 个路线请求的请求，并在一段时间内对其进行处理。 所有数据将在服务器上同时进行处理，完成后，可以下载已完成的结果集。
 - [**移动服务**](https://docs.microsoft.com/rest/api/maps/mobility)：使用公共交通计算路线和方向。
 
 下表对 Google Maps API 参数与 Azure Maps 中的类似 API 参数做了交叉比较。
@@ -365,7 +368,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 - `geodesic` – 指示路径是否应为遵循地球曲率的线条。
 - `weight` – 路径线条的粗细（以像素为单位）。
 
-在 URL 参数中，将红色线条不透明度和像素粗细添加到地图上的坐标之间。 在以下示例中，线条不透明度为 50%，粗细为 4 像素。 坐标为经度：-110，纬度：45，以及经度：-100，纬度：50。
+在 URL 参数中，将红色线条不透明度和像素粗细添加到地图上的坐标之间。 在以下示例中，线条不透明度为 50%，粗细为 4 像素。 坐标为经度：-110，纬度：45）和（经度：-100，纬度：50。
 
 ```
 &path=color:0xFF000088|weight:4|45,-110|50,-100
@@ -408,7 +411,7 @@ Azure Maps 提供一个 API 用于呈现包含叠加数据的静态地图图像�
 
 Azure Maps 提供距离矩阵 API。 使用此 API 可以计算一组位置之间的行程时间和距离以及距离矩阵。 它类似于 Google Maps 中的距离矩阵 API。
 
-- [**路线矩阵**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组出发地和目的地的行程时间与距离。 每个请求最多支持 700 个单元。 该数字为出发地数乘以目的地数。 考虑到这一限制，可能的矩阵维度示例如下：700x1、50x10、10x10、28x25、10x70。
+- [**路线矩阵**](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)：以异步方式计算一组来源和目标的行程时间与距离。 每个请求最多支持 700 个单元。 该数字为出发地数乘以目的地数。 考虑到这一限制，可能的矩阵维度示例如下：700x1、50x10、10x10、28x25、10x70。
 
 > [!NOTE]
 > 只能使用在正文中包含来源和目标信息的 POST 请求向距离矩阵 API 发出请求。 此外，Azure Maps 要求以坐标形式指定所有来源和目标。 首先需要对地址进行地理编码。

@@ -4,12 +4,12 @@ description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动�
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533377"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196529"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -30,7 +30,7 @@ ms.locfileid: "74533377"
 
 ## <a name="prerequisites"></a>先决条件
 
-请参阅[在 Azure 中创建第一个 PowerShell 函数](../azure-functions/functions-create-first-function-powershell.md#prerequisites)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 配合使用的先决条件。
+请参阅[在 Azure 中创建第一个函数](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment)，了解在 OS 上安装 Visual Studio Code 并将其与 Azure Functions 配合使用的先决条件。
 
 本文中的一些步骤使用 Azure CLI。 可以使用 Azure Cloud Shell 或本地安装的 Azure CLI 完成这些步骤。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -193,7 +193,7 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们创建了一个 Azure 函数，该函数接受 HTTP 请求并触发对容器组的部署。 你已了解如何：
+在本教程中，我们创建了一个 Azure 函数，该函数接受 HTTP 请求并触发对容器组的部署。 你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将 Visual Studio Code 与 Azure Functions 扩展配合使用，创建基本的 HTTP 触发的 PowerShell 函数。

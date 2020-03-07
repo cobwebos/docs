@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028895"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252563"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>快速入门：使用 Azure 门户创建专用终结点
 
@@ -28,26 +28,22 @@ ms.locfileid: "76028895"
 ## <a name="create-a-vm"></a>创建 VM
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源（在本示例中为 Azure 中的某个 SQL 服务器）的 VM。
 
-### <a name="create-the-virtual-network"></a>创建虚拟网络
-
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
 在本部分，你将创建虚拟网络和子网来托管用于访问专用链接资源的 VM。
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 *MyVirtualNetwork*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
-    | 位置 | 选择“WestCentralUS”。 |
-    | 子网 - 名称 | 输入 *mySubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    |||
-1. 将其余的设置保留默认值，然后选择“创建”  。
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroup |
+| **\<virtual-network-name>** | myVirtualNetwork          |
+| **\<region-name>**          | 美国中西部    |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
 
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 

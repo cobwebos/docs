@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 02/10/2020
-ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121615"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227096"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>快速入门：在 Python 中使用 Jupyter Notebook 创建 Azure 认知搜索索引
 
@@ -30,7 +30,7 @@ ms.locfileid: "77121615"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门需要以下服务和工具。 
 
@@ -126,7 +126,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
     }
     ```
 
-2. 在另一个单元格中构建请求。 此 PUT 请求针对搜索服务的索引集合，根据在上一单元格中提供的索引架构创建索引。
+2. 在另一个单元格中构建请求。 此 POST 请求以搜索服务的索引集合为目标，并基于在上一单元格中提供的索引架构创建索引。
 
    ```python
    url = endpoint + "indexes" + api_version

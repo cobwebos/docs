@@ -4,23 +4,25 @@ description: 本文帮助你更好地了解 Azure 成本管理中包含的数据
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff3ed7ee65fd34ef9cd3541832f9cffc306e1aa8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560603"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245377"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
 本文帮助你更好地了解 Azure 成本管理中包含的 Azure 成本和使用情况数据。 本文介绍这些数据的处理频率以及收集、显示和关闭方式。 你需要按月支付 Azure 使用费。 尽管计费周期是按月的，但周期开始日期和结束日期因订阅类型而异。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
 
 成本管理包括所有使用情况和购买情况，其中包括企业协议 (EA) 帐户的预留和第三方产品/服务。 Microsoft 客户协议帐户和使用即用即付费率的个人订阅仅包含 Azure 和市场服务的使用情况。 不包括支持和其他成本。 在生成发票之前估计成本，而不考虑额度。
+
+如果你有新订阅，则无法立即使用成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
 ## <a name="supported-microsoft-azure-offers"></a>支持的 Microsoft Azure 套餐
 

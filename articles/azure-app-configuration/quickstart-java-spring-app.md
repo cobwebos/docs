@@ -10,18 +10,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750277"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919356"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 Java Spring 应用
 
 在本快速入门中，会将 Azure 应用程序配置合并到 Java Spring 应用程序中，以集中存储和管理与代码分离的应用程序设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 受支持的 [Java 开发工具包 (JDK)](https://docs.microsoft.com/java/azure/jdk)，版本为 8。
@@ -31,7 +31,7 @@ ms.locfileid: "75750277"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
+1. 选择“配置资源管理器” > “+创建”来添加以下键值对   ：
 
     | 密钥 | 值 |
     |---|---|
@@ -45,30 +45,42 @@ ms.locfileid: "75750277"
 
 1. 浏览到 <https://start.spring.io/>。
 
-2. 指定以下选项：
+1. 指定以下选项：
 
-   * 使用 **Java** 生成一个 **Maven** 项目。
-   * 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
-   * 指定应用程序的“组”和“项目”名称。  
-   * 添加 **Spring Web** 依赖项。
+   - 使用 **Java** 生成一个 **Maven** 项目。
+   - 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
+   - 指定应用程序的“组”和“项目”名称。  
+   - 添加 **Spring Web** 依赖项。
 
-3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
+1. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机中的路径。
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
 1. 从本地系统提取文件后，即可使用简单的 Spring Boot 应用程序进行编辑。 在应用的根目录中找到 pom.xml 文件  。
 
-2. 在文本编辑器中打开 *pom.xml* 文件，将 Spring Cloud Azure Config Starter 添加到 `<dependencies>` 列表：
+1. 在文本编辑器中打开 *pom.xml* 文件，将 Spring Cloud Azure Config Starter 添加到 `<dependencies>` 列表：
+
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     ```
 
-3. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
+    **Spring Cloud 1.2.x**
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。 添加以下行：
 
     ```java
     package com.example.demo;
@@ -89,7 +101,7 @@ ms.locfileid: "75750277"
     }
     ```
 
-4. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
+1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 添加以下行：
 
     ```java
     package com.example.demo;
@@ -112,7 +124,7 @@ ms.locfileid: "75750277"
     }
     ```
 
-5. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
+1. 打开主应用程序 Java 文件，并添加 `@EnableConfigurationProperties`以启用此功能。
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -126,10 +138,28 @@ ms.locfileid: "75750277"
     }
     ```
 
-6. 在应用的资源目录下创建名为 `bootstrap.properties` 的新文件，并将以下行添加到该文件中。 使用应用程序配置存储区的相应属性替换示例值。
+1. 在应用的资源目录下创建名为 `bootstrap.properties` 的新文件，并将以下行添加到该文件中。 使用应用程序配置存储区的相应属性替换示例值。
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
+    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    ```
+
+1. 设置名为“APP_CONFIGURATION_CONNECTION_STRING”的环境变量，并将其设置为应用配置存储的访问密钥  。 在命令行中，运行以下命令并重启命令提示符，以使更改生效：
+
+    ```CLI
+        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    ```
+
+    如果使用 Windows PowerShell，请运行以下命令：
+
+    ```azurepowershell
+        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    ```
+
+    如果使用 macOS 或 Linux，则请运行以下命令：
+
+    ```console
+        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>在本地生成并运行应用

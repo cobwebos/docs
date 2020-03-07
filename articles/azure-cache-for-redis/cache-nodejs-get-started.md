@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78300479"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>快速入门：将 Azure Redis 缓存与 Node.js 配合使用
 
@@ -55,7 +55,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 
 ## <a name="create-a-new-nodejs-app"></a>新建 Node.js 应用
 
-创建名为 *redistest.js* 的新脚本文件。
+创建名为 *redistest.js* 的新脚本文件。 使用命令 `npm install redis bluebird` 安装所需的包。
 
 将下面的示例 JavaScript 添加到文件。 此代码演示如何使用缓存主机名和密钥环境变量连接到 Azure Redis 缓存实例。 此代码还在缓存中存储和检索字符串值。 还执行了 `PING` 和 `CLIENT LIST` 命令。 有关将 Redis 与 [node_redis](https://github.com/mranney/node_redis) 客户端一起使用的更多示例，请参阅 [https://redis.js.org/](https://redis.js.org/)。
 
@@ -63,6 +63,7 @@ var client = redis.createClient(6380, process.env.REDISCACHEHOSTNAME,
 var redis = require("redis");
 var bluebird = require("bluebird");
 
+// Convert Redis client API to use promises, to make it usable with async/await syntax
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
 

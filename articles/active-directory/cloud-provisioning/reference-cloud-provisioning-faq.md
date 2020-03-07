@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fbc1baa86bb81c8975587e84427a72ccc044805e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020754"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916568"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect 常见问题解答
 
@@ -71,6 +71,14 @@ Microsoft 会自动升级代理。 对于 IT 团队来说，这可以减轻必�
 **问：我正使用云预配来预配用户。我删除了配置。为何我仍在 Azure AD 中看到了旧的同步对象？** 
 
 删除配置时，云预配不会清理 Azure AD 中的已同步对象。 若要确保删除旧对象，请将配置范围更改为空的组或组织单位。 预配运行并清理对象后，请禁用并删除配置。 
+
+**问：不支持 Exchange 混合意味着什么？**
+
+Exchange 混合部署功能使 Exchange 邮箱能够在本地和 Office 365 中共存。 Azure AD Connect 将一组特定的属性从 Azure AD 同步回到本地目录。  云预配代理目前不将这些属性同步回本地目录，因此不支持用它替代 Azure AD Connect。
+
+**问：能否在 Windows Server Core 上安装云预配代理？**
+
+否，不支持在 Server Core 上安装代理。
 
 ## <a name="next-steps"></a>后续步骤 
 

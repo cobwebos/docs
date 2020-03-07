@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965456"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384929"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>为 StorSimple 8000 系列设备部署 StorSimple 设备管理器服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "68965456"
 
 ## <a name="overview"></a>概述
 
-StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建此服务后，可以使用它从单个中央位置监视连接到 StorSimple 设备管理器服务的所有设备，因此最大限度地减少了管理负担。
+StorSimple Device Manager 服务在 Microsoft Azure 中运行并连接到多个 StorSimple 设备。 创建此服务后，可以使用它从单个中央位置监视连接到 StorSimple 设备管理器服务的所有设备，因此最大限度地减少了管理负担。
 
 本教程介绍了创建、删除和迁移此服务以及管理服务注册密钥所需执行的步骤。 本文中包含的信息仅适用于 StorSimple 8000 系列设备。 有关 StorSimple 虚拟阵列的详细信息，请转到[为 StorSimple 虚拟阵列部署 StorSimple 设备管理器服务](storsimple-virtual-array-manage-service.md)。
 
@@ -57,7 +57,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
 对于每项 StorSimple 设备管理器服务，存在以下属性：
 
-* **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **在创建服务后无法更改服务名称。这也适用于其他实体，例如，无法在 Azure 门户中重命名的设备、卷、卷容器和备份策略。**
+* **名称** – 在创建 StorSimple 设备管理器服务时为其分配的名称。 **创建服务后无法更改服务名称。这也适用于其他实体，例如设备、卷、卷容器和备份策略，这些实体无法在 Azure 门户中重命名。**
 * **状态** – 服务的状态，可以是**活动**、**正在创建**或**联机**。
 * **位置** – 会在其中部署 StorSimple 设备的地理位置。
 * **订阅** – 与服务关联的计费订阅。
@@ -77,7 +77,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 
     ![搜索要删除的服务](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击“删除”。
+2. 这将转到 StorSimple 设备管理器服务边栏选项卡。 单击 **“删除”** 。
 
     ![删除服务](./media/storsimple-8000-manage-service/deletessdevman2.png)
 
@@ -103,7 +103,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 执行以下步骤，重新生成服务注册密钥。
 
 ### <a name="to-regenerate-the-service-registration-key"></a>重新生成服务注册密钥
-1. 在“StorSimple Device Manager”边栏选项卡中，转到“管理”&gt;“密钥”。
+1. 在**StorSimple 设备管理器**边栏选项卡中，请参阅**管理 &gt;** **密钥**。
     
     ![“密钥”边栏选项卡](./media/storsimple-8000-manage-service/regenregkey2.png)
 
@@ -178,7 +178,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>在物理设备上更新服务数据加密密钥
 1. 使用 Windows PowerShell for StorSimple 连接到控制台。 选择选项 1 以使用完全访问权限登录。
 2. 在命令提示符处，键入：`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. 提供获取的服务数据加密密钥，该密钥的获取位置为[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)。
+3. 提供在[步骤 2：使用 Windows PowerShell for StorSimple 启动服务数据加密密钥更改](#to-initiate-the-service-data-encryption-key-change)中所获取的服务数据加密密钥。
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>更新所有 8010/8020 云设备上的服务数据加密密钥
 1. 下载和安装 [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell 脚本。 
@@ -189,7 +189,7 @@ StorSimple 设备管理器服务在 Microsoft Azure 中运行并连接到多个 
 ## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>在运行 Update 5.0 之前版本的设备上支持的操作
 Azure 门户中仅支持运行 Update 5.0 和更高版本的 StorSimple 设备。 对于运行较旧版本的设备，仅提供有限支持。 在迁移到 Azure 门户后，可使用下表来了解在运行 Update 5.0 之前版本的设备上支持的操作。
 
-| 操作                                                                                                                       | 支持      |
+| Operation                                                                                                                       | 支持      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
 | 注册设备                                                                                                               | 是            |
 | 配置设备设置，例如常规、网络和安全性                                                                | 是            |

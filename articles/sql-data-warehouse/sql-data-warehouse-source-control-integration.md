@@ -1,6 +1,6 @@
 ---
 title: 源代码管理集成
-description: 使用Azure Repos（Git 和 GitHub）集成了本机源代码管理的 SQL 数据仓库的企业级数据库 DevOps 体验。
+description: 使用 Azure Repos（Git 和 GitHub）进行本机源代码管理集成的 SQL 池的企业级数据库 DevOps 体验。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: integration
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fc1fdddc7a157828fcc4770c4e8237af9a45fdc3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1a4939e8c349f36fe745becb811717983caa95c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720021"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198197"
 ---
-# <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的源代码管理集成
+# <a name="source-control-integration-for-sql-pool"></a>SQL 池的源代码管理集成
 
-本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 SQL 数据仓库构建持续集成和部署管道的第一步。 
+本教程概述了如何将 SQL Server Data tools (SSDT) 数据库项目与源代码管理集成。  源代码管理集成是使用 Azure Synapse Analytics 中的 SQL 池资源构建持续集成和部署管道的第一步。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -81,4 +81,4 @@ ms.locfileid: "76720021"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [针对 Azure SQL 数据仓库进行开发](sql-data-warehouse-overview-develop.md)
+- [针对 SQL 池进行开发](sql-data-warehouse-overview-develop.md)

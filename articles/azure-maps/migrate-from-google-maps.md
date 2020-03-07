@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 175625ab9fca9103bde027c3c0ea0986806ad846
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208296"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913695"
 ---
 # <a name="migrate-from-google-maps-to-azure-maps"></a>从 Google Maps 迁移到 Azure Maps
 
@@ -39,10 +39,13 @@ Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 �
 | Elevation                   | 已计划                                |
 | 地理编码（正向/反向） | ✓                                      |
 | 地理位置                 | 空值                                    |
-| 位置搜索               | ✓                                      |
+| 最近的道路               | ✓                                      |
+| 地点搜索               | ✓                                      |
 | 位置详细信息              | 空值 – 网站和电话号码可用 |
 | 位置照片               | 空值                                    |
 | 位置自动完成          | ✓                                      |
+| 对齐道路                | ✓                                      |
+| 速度限制                | ✓                                      |
 | 静态地图                 | ✓                                      |
 | 静态街道视图          | 空值                                    |
 | 时区                   | ✓                                      |
@@ -87,7 +90,9 @@ Google Maps 提供基本的基于密钥的身份验证。 Azure Maps 提供基�
 - 开发人员论坛：[https://aka.ms/AzureMapsForums](https://aka.ms/AzureMapsForums)
 - 视频：[https://aka.ms/AzureMapsVideos](https://aka.ms/AzureMapsVideos)
 - 博客：[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
+- 技术博客：[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure Maps 反馈 (UserVoice)：[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
+- [Azure Maps Jupyter Notebook][https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook ]
 
 ## <a name="migration-support"></a>迁移支持
 

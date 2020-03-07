@@ -1,18 +1,17 @@
 ---
 title: 从 Azure 资源收集资源日志并使用 Azure Monitor 进行分析
 description: 本教程介绍如何将诊断设置配置为将 Azure 资源中的资源日志收集到 Log Analytics 工作区中，以通过日志查询对这些这些日志进行分析。
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532610"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78269191"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>教程：从 Azure 资源收集和分析资源日志
 
@@ -26,7 +25,7 @@ ms.locfileid: "75532610"
 > * 创建简单的日志查询以分析日志
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要完成本教程，需要一个要监控的 Azure 资源。 你可以使用 Azure 订阅中支持诊断设置的任何资源。 要确定资源是否支持诊断设置，请在 Azure 门户中前往其菜单，并验证菜单的“监视”部分是否有“诊断设置”选项   。
 
@@ -47,7 +46,7 @@ Azure Monitor 中的 Log Analytics 工作区可从各种源收集和索引日志
    - **订阅**：选择用于存储工作区的订阅。 此订阅无需与要监控资源的订阅相同。
    - **资源组**：选择现有资源组，或单击“新建”，创建一个新资源组  。 此资源组无需与要监控资源的资源组相同。
    - **位置**：选择一个 Azure 区域或创建一个新区域。 此区域无需与要监控资源的位置相同。
-   - **定价层**：选择“免费”将保留 7 天的数据  。 之后可以更改定价层。 单击“Log Analytics 定价”链接以了解有关不同定价层的详细信息  。
+   - **定价层**：选择“即用即付”  作为定价层。 之后可以更改定价层。 单击“Log Analytics 定价”链接以了解有关不同定价层的详细信息  。
 
     ![新建工作区](media/tutorial-resource-logs/new-workspace.png)
 

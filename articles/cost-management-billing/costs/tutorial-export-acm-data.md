@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 40846de9ee8eec3225a05e3c2c68c3ad5af02042
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 04228a5f3f7e0b10e3cd881043af7861bb9fb347
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201010"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251140"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "77201010"
 > * 创建每日导出
 > * 验证收集的数据
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 数据导出适用于各种 Azure 帐户类型，包括[企业协议(EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 和 [Microsoft 客户协议](get-started-partners.md)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 对于按用户和组导出的数据，每个订阅均支持以下 Azure 权限或作用域。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 所有者 - 可以为订阅创建、修改或删除计划导出。
@@ -39,6 +39,8 @@ ms.locfileid: "77201010"
 对于 Azure 存储帐户：
 - 无论导出权限如何，更改配置的存储帐户都需要写入权限。
 - 必须为 Blob 或文件存储配置 Azure 存储帐户。
+
+如果你有新订阅，则无法立即使用成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。

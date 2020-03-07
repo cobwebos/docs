@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 156892a4785bf1644d29b82e98c3b2ae202c5a49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/28/2020
+ms.openlocfilehash: aa23b61967b27fefba863255721f4a0709ec02d5
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494697"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204530"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>教程：使用 IntelliJ 在 HDInsight 中创建适用于 Apache Spark 的 Scala Maven 应用程序
 
-本教程介绍如何结合使用 [Apache Maven](https://maven.apache.org/) 和 IntelliJ IDEA 创建用 [Scala](https://www.scala-lang.org/) 编写的 [Apache Spark](https://spark.apache.org/) 应用程序。 本文将 Apache Maven 用作生成系统，并从 IntelliJ IDEA 提供的 Scala 的现有 Maven 原型入手。  在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
+本教程介绍如何结合使用 [Apache Maven](https://maven.apache.org/) 和 IntelliJ IDEA 创建用 [Scala](https://www.scala-lang.org/) 编写的 [Apache Spark](./apache-spark-overview.md) 应用程序。 本文将 Apache Maven 用作生成系统，并从 IntelliJ IDEA 提供的 Scala 的现有 Maven 原型入手。  在 IntelliJ IDEA 中创建 Scala 应用程序需要以下步骤：
 
 * 将 Maven 用作生成系统。
 * 更新项目对象模型 (POM) 文件，以解析 Spark 模块依赖项。
@@ -25,7 +25,7 @@ ms.locfileid: "73494697"
 * 生成可以提交到 HDInsight Spark 群集的 jar 文件。
 * 使用 Livy 在 Spark 群集上运行应用程序。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 安装适用于 IntelliJ IDEA 的 Scala 插件
 > * 使用 IntelliJ 开发 Scala Maven 应用程序
@@ -61,21 +61,21 @@ ms.locfileid: "73494697"
 
 1. 启动 IntelliJ IDEA，选择“创建新项目”打开“新建项目”窗口。  
 
-2. 在左窗格中选择“Azure Spark/HDInsight”  。
+2. 从左侧窗格中选择“Apache Spark/HDInsight”  。
 
 3. 在主窗口中选择“Spark 项目(Scala)”。 
 
-4. 在“生成工具”下拉列表中选择下列其中一项： 
+4. 从“生成工具”  下拉列表中，选择以下值之一：
       * **Maven**：支持 Scala 项目创建向导。
       * **SBT**：用于管理依赖项和生成 Scala 项目。
 
-   ![IntelliJ“新建项目”对话框](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+   ![IntelliJ“新建项目”对话框](./media/apache-spark-create-standalone-application/intellij-project-apache-spark.png)
 
-5. 选择“**下一步**”。
+5. 选择“**下一页**”。
 
 6. 在“新建项目”窗口中提供以下信息：   
 
-  	|  属性   | 说明   |  
+  	|  properties   | 说明   |  
   	| ----- | ----- |  
   	|项目名称| 输入名称。|  
   	|项目位置&nbsp;| 输入所需的位置用于保存项目。|
@@ -84,7 +84,7 @@ ms.locfileid: "73494697"
 
     ![IntelliJ IDEA 选择 Spark SDK](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
-7. 选择“完成”。 
+7. 选择“完成”  。
 
 ## <a name="create-a-standalone-scala-project"></a>创建独立 Scala 项目
 
@@ -98,16 +98,18 @@ ms.locfileid: "73494697"
 
 5. 从原型列表中，选择“org.scala-tools.archetypes:scala-archetype-simple”  。 此原型会创建适当的目录结构，并下载所需的默认依赖项来编写 Scala 程序。
 
-    ![IntelliJ IDEA 创建 Maven 项目](./media/apache-spark-create-standalone-application/create-maven-project.png)
+    ![IntelliJ IDEA 创建 Maven 项目](./media/apache-spark-create-standalone-application/intellij-project-create-maven.png)
 
-6. 选择“**下一步**”。
+6. 选择“**下一页**”。
 
-7. 提供 **GroupId**、**ArtifactId** 和 **Version** 的相关值。 本教程涉及以下值：
+7. 展开“项目坐标”  。 提供 **GroupId** 和 **ArtifactId** 的相关值。 **名称**和**位置**将自动填充。 本教程涉及以下值：
 
     - **GroupId:** com.microsoft.spark.example
     - **ArtifactId:** SparkSimpleApp
 
-8. 选择“**下一步**”。
+    ![IntelliJ IDEA 创建 Maven 项目](./media/apache-spark-create-standalone-application/intellij-artifact-coordinates.png)
+
+8. 选择“**下一页**”。
 
 9. 验证设置，并选择“下一步”  。
 
@@ -123,7 +125,7 @@ ms.locfileid: "73494697"
 
 15. 选中“自动导入 Maven 项目”复选框。 
 
-16. 依次选择“应用”、“确定”   。  随后将返回到项目窗口。
+16. 依次选择“应用”、“确定”   。  然后将返回到项目窗口。
 
     ![配置 Maven 以进行自动下载](./media/apache-spark-create-standalone-application/configure-maven-download.png)
 
@@ -202,7 +204,7 @@ ms.locfileid: "73494697"
 
 若要在群集上运行应用程序，可以使用以下方法：
 
-* **将应用程序 jar 复制到群集关联的 Azure 存储 blob**。 可以使用命令行实用工具 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 来执行此操作。 也可以使用许多其他客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
+* **将应用程序 jar 复制到与群集关联的 Azure 存储 blob**。 可以使用命令行实用工具 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 来执行此操作。 也可以使用许多其他客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
 
 * **使用 Apache Livy 将应用程序作业远程提交**到 Spark 群集。 HDInsight 上的 Spark 群集包括公开 REST 终结点的 Livy，可远程提交 Spark 作业。 有关详细信息，请参阅[将 Apache Livy 与 HDInsight 上的 Apache Spark 群集配合使用以远程提交 Spark 作业](apache-spark-livy-rest-interface.md)。
 
@@ -210,7 +212,7 @@ ms.locfileid: "73494697"
 
 如果不打算继续使用此应用程序，请使用以下步骤删除创建的群集：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 在顶部的“搜索”框中，键入 **HDInsight**。 
 

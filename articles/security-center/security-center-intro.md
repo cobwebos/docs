@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 884f5ab6fa57b201e1a9105729bf96e10931dca1
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604063"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918751"
 ---
 # <a name="what-is-azure-security-center"></a>什么是 Azure 安全中心？
 
@@ -39,7 +39,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 -   **加强安全态势**：安全中心会评估你的环境，并使你能够了解资源的状态以及它们是否安全。
 
--   **防范威胁**：安全中心会对你的工作负荷进行评估并提出威胁防护建议和威胁检测警报。
+-   **防范威胁**：安全中心会评估工作负荷，并提出威胁预防建议和引发安全警报。
 
 -   **更快地获取安全性**：在安全中心中，一切操作都以云速度完成。 由于它以本机方式集成，因此可以轻松部署安全中心，从而通过 Azure 服务为你提供自动预配和保护。
 
@@ -51,7 +51,7 @@ Azure 安全中心解决了三个最紧急的安全性挑战：
 
 此外，安全中心通过在 Windows 和 Linux 服务器的云中或本地非 Azure 服务器和虚拟机上安装 Microsoft Monitoring Agent 来对它们进行保护。 Azure 虚拟机是在安全中心中自动预配的。
 
-从代理和 Azure 收集的事件在安全分析引擎中相关联，从而提供定制的建议（强化任务）（应遵循这些建议以确保工作负荷是安全的）以及威胁检测警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
+从代理和 Azure 收集的事件在安全分析引擎中相关联，以为你提供量身定制的建议（强化任务），你应该遵循这些建议以确保工作负荷安全，并发出安全警报。 应尽快调查此类警报以确保没有针对工作负荷发生的恶意攻击。
 
 当启用安全中心时，内置到安全中心的安全策略将作为内置的计划反映在 Azure Policy 中，位于“安全中心”类别下。 内置的计划自动分配给安全中心注册的所有订阅（免费或标准层）。 内置的计划仅包含审核策略。 有关 Azure Policy 中的安全中心策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
 
@@ -107,9 +107,9 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 ![安全中心攻击建议](media/security-center-intro/sc-attack-recommendation.png)
 
-### <a name="advanced-threat-protection"></a>高级威胁防护
+### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>与 Microsoft Defender 高级威胁防护集成
 
-通过安全中心，可以立即与 Windows Defender 高级威胁防护进行本机集成。 这意味着，无需进行任何配置，Windows 虚拟机和服务器就可以与安全中心的建议和评估完全集成。 也为 Linux 虚拟机和服务器提供了现成的高级威胁检测。
+安全中心提供与 Microsoft Defender 高级威胁防护的自动本机集成。 这意味着，无需任何配置，Windows 和 Linux 计算机就可以与安全中心的建议和评估完全集成。
 
 此外，通过安全中心，还可以在服务器环境上自动执行应用程序控制策略。 安全中心中的自适应应用程序控制在 Windows 服务器之间启用端到端的应用允许列表。 无需创建规则和检查违规行为，这些都是自动完成的。
 
@@ -129,7 +129,7 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>保护 IoT 和混合云工作负荷
 
-适用于 IoT（物联网）的 Azure 安全中心可跨 Edge、本地、Azure 和其他云中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁检测和响应，从而简化混合工作负荷保护。 有关详细信息，请参阅[适用于 IoT 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
+适用于 IoT（物联网）的 Azure 安全中心通过跨边缘、本地、Azure 和其他云中运行的工作负荷提供统一的可见性和控制、自适应威胁防护以及智能威胁防护和响应，简化了混合工作负荷保护。 有关详细信息，请参阅[适用于 IoT 的 Azure 安全中心](https://docs.microsoft.com/azure/asc-for-iot/)。
 
 ## <a name="get-secure-faster"></a>更快地获取安全性
 
@@ -146,6 +146,5 @@ Azure 安全中心的值的核心在于其建议。 这些建议是针对在工�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要开始使用安全中心，需要具有 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
-- 安全中心的“免费”定价层通过 Azure 订阅启用。 若要利用高级安全管理和威胁检测功能，必须升级到“标准”定价层。 可以免费试用标准层。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+- 安全中心的免费定价层通过 Azure 订阅启用。 若要利用高级安全管理和威胁防护功能，必须升级到标准定价层。 标准层可以免费试用 30 天。 有关详细信息，请参阅[安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 - 如果已准备好立即启用安全中心标准版，请参阅[快速入门：将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)以详细了解相关步骤。
-

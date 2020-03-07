@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687197"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656018"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>教程：在 Spring Boot 应用中使用功能标志
 
@@ -29,7 +29,7 @@ Spring Boot Core 功能管理库支持在 Spring Boot 应用程序中实施功�
 
 [将功能标志添加到 Spring Boot 应用快速入门](./quickstart-feature-flag-spring-boot.md)介绍了在 Spring Boot 应用程序中添加功能标志的多种方法。 本教程将更详细地介绍这些方法。
 
-在本教程中，将了解如何：
+在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在应用程序的关键组件中添加功能标志，以控制功能可用性。
@@ -51,11 +51,23 @@ public HelloController(FeatureManager featureManager) {
 
 将 Spring Boot 应用程序连接到应用程序配置的最简单方法是使用配置提供程序：
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,23 +81,22 @@ public HelloController(FeatureManager featureManager) {
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
 按照约定，此 YML 文档的 `feature-management` 节用于功能标志设置。 以上示例演示了三个功能标志，其筛选器已在 `EnabledFor` 属性中定义：
 
-* `FeatureA` 状态为“打开”。 
-* `FeatureB` 状态为“关闭”。 
-* `FeatureC` 指定包含 `Parameters` 属性的名为 `Percentage` 的筛选器。 `Percentage` 是可配置的筛选器。 在此示例中，`Percentage` 指定打开 `FeatureC` 标志的概率为 50%。 
+* `feature-a` 状态为“打开”。 
+* `feature-b` 状态为“关闭”。 
+* `feature-c` 指定包含 `parameters` 属性的名为 `Percentage` 的筛选器。 `Percentage` 是可配置的筛选器。 在此示例中，`Percentage` 指定打开 `feature-c` 标志的概率为 50%。 
 
 ## <a name="feature-flag-checks"></a>功能标志检查
 
@@ -94,7 +105,7 @@ feature-management:
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -118,11 +129,11 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>控制器操作
 
-在 MVC 控制器中，使用 `@FeatureGate` 属性控制是否启用特定的操作。 以下 `Index` 操作要求 `FeatureA` 状态为“打开”才能运行该操作： 
+在 MVC 控制器中，使用 `@FeatureGate` 属性控制是否启用特定的操作。 以下 `Index` 操作要求 `feature-a` 状态为“打开”才能运行该操作： 
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
@@ -132,7 +143,7 @@ public String index(Model model) {
 
 ## <a name="mvc-filters"></a>MVC 筛选器
 
-可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `FeatureFlagFilter` 的 MVC 筛选器。 仅当已启用 `FeatureA` 时，才会在 MVC 管道内部触发此筛选器。
+可以设置 MVC 筛选器，以根据功能标志的状态激活这些筛选器。 以下代码添加名为 `FeatureFlagFilter` 的 MVC 筛选器。 仅当已启用 `feature-a` 时，才会在 MVC 管道内部触发此筛选器。
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>路由
 
-可以使用功能标志来重定向路由。 以下代码从启用的 `FeatureA` 重定向用户：
+可以使用功能标志来重定向路由。 以下代码从启用的 `feature-a` 重定向用户：
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

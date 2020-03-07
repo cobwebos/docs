@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 8319f2f5405271679d0c11d4ac68492cdec8fc14
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e1dccc42301cf73fb215d99636dfee9eef9bc59e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148935"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274158"
 ---
 # <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>（已弃用）将 ACR 与 DC/OS 群集配合使用，以部署应用程序
 
@@ -46,7 +46,7 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM
 
 创建注册表后，Azure CLI 输出与下方类似的数据。 请记下 `name` 和 `loginServer`，后续步骤中将使用这些参数。
 
-```azurecli
+```output
 {
   "adminUserEnabled": false,
   "creationDate": "2017-06-06T03:40:56.511597+00:00",
@@ -93,7 +93,7 @@ FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.f
 
 与基于 DC/OS 的集群的主节点（或第一个主节点）建立 SSH 连接。 如果创建群集时使用了非默认值，请更新用户名。
 
-```azurecli-interactive
+```console
 ssh azureuser@$FQDN
 ```
 
@@ -107,13 +107,13 @@ docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --passw
 
 创建包含容器注册表身份验证值的压缩文件。
 
-```azurecli-interactive
+```console
 tar czf docker.tar.gz .docker
 ```
 
 将此文件复制到群集共享存储。 此步骤将使该文件在 DC/OS 群集的所有节点上均可用。
 
-```azurecli-interactive
+```console
 cp docker.tar.gz /mnt/share/dcosshare
 ```
 
@@ -123,25 +123,25 @@ cp docker.tar.gz /mnt/share/dcosshare
 
 通过 Ubuntu 映像创建容器。
 
-```azurecli-interactive
+```console
 docker run ubuntu --name base-image
 ```
 
-现在，将容器捕获到新映像。 映像名称需要包括容器注册表的 `loginServer` 名称，格式为 `loginServer/imageName`。
+现在，将容器捕获到新映像。 映像名称需要包含容器注册表的 `loginServer` 名称，其格式为 `loginServer/imageName`。
 
-```azurecli-interactive
+```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
 登录 Azure 容器注册表。 将名称替换为 loginServer 名称，将 --username 替换为容器注册表的名称，而将 --password 替换为提供的密码之一。
 
-```azurecli-interactive
+```console
 docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
 ```
 
 最后，将映像上传到 ACR 注册表。 此示例将上传名为 dcos-demo 的映像。
 
-```azurecli-interactive
+```console
 docker push mycontainerregistry30678.azurecr.io/dcos-demo
 ```
 
@@ -189,7 +189,7 @@ docker push mycontainerregistry30678.azurecr.io/dcos-demo
 
 使用 DC/OC CLI 部署应用程序。
 
-```azurecli-interactive
+```console
 dcos marathon app add acrDemo.json
 ```
 

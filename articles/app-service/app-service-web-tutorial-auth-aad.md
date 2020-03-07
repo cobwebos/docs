@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 41e9ff79ad3f7abeda1b946295e8e0eb519c2554
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 46750383c1436a2d053d6db7fed858c7c0f8a9fe
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561729"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226303"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>教程：在 Azure 应用服务中对用户进行端到端身份验证和授权
 
@@ -42,9 +42,9 @@ ms.locfileid: "75561729"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+为完成此教程：
 
 * [安装 Git](https://git-scm.com/)。
 * [安装 .NET Core](https://www.microsoft.com/net/core/)。
@@ -237,7 +237,7 @@ git push frontend master
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>启用针对前端应用的身份验证和授权
 
-遵循前端应用的步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
+按照后端应用的相同步骤进行操作，但跳过最后一步。 对于前端应用，不需要客户端 ID。
 
 根据需要导航到 `http://<front-end-app-name>.azurewebsites.net`。 现在你会被定向到安全登录页。 登录后仍无法从后端应用访问数据，因为仍需执行三项操作：
 

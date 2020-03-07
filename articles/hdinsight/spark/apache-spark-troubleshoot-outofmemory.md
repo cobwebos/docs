@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894313"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395123"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 的 OutOfMemoryError 异常
 
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 此异常的最可能原因是未将足够的堆内存分配给 Java 虚拟机 (JVM)。 这些 Jvm 作为执行程序或驱动程序作为 Apache Spark 应用程序的一部分启动。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 确定 Spark 应用程序将要处理的数据大小上限。 根据输入数据的最大大小、转换输入数据时生成的中间数据，以及进一步转换中间数据时生成的输出数据，对大小进行估计。 如果初始估计值不足，请略微增加大小，然后循环访问直到内存错误下降。
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 可以通过在 Spark 配置中编辑 `SPARK_DAEMON_MEMORY` 属性并重新启动所有服务，来增加 Spark 历史记录服务器内存。
 
@@ -200,7 +200,7 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 当大量作业通过 Livy 提交时，作为 Livy 服务器的高可用性的一部分，将这些会话状态存储在 ZK 中（在 HDInsight 群集上），并在 Livy 服务重新启动时恢复这些会话。 在意外终止后重新启动时，Livy 将为每个会话创建一个线程，并累计一定数量的待恢复会话，从而导致创建的线程太多。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 使用以下详细步骤删除所有条目。
 

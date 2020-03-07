@@ -1,19 +1,18 @@
 ---
 title: 使用 Azure Application Insights 监视 ASP.NET Web 应用 | Microsoft Docs
 description: 提供有关快速安装 ASP.NET Web 应用以使用 Application Insights 进行监视的说明
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 1aab9009c2c33522abdeae6ca865a35b9fc104e4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ba7bca0756b4e2f6fdcb89208fe15e3517a9513
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900492"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661697"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>开始监视 ASP.NET Web 应用程序
 
@@ -69,9 +68,9 @@ Application Insights 收集应用程序的遥测数据，而不考虑应用程�
 
     ![应用程序地图](media/quick-monitor-portal/05-appmap.png)
 
-3. 单击其中一个应用程序组件上的“应用分析”  图标 ![应用程序地图](media/quick-monitor-portal/app-viewinlogs-icon.png)“在日志(分析)中查看”  。 这将打开“日志(分析)”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3. 单击其中一个应用程序组件上的“应用分析”  图标 ![应用程序映射](media/quick-monitor-portal/app-viewinlogs-icon.png)“在日志(分析)中查看”  。 这将打开“日志(分析)”  ，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
-    ![分析](media/quick-monitor-portal/6viewanalytics.png)
+    ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
 4. 在“调查”下，单击左侧的“实时指标流”。  这将显示有关正在运行的应用程序的实时统计信息。 这包括传入请求数、这些请求的持续时间和发生的任何故障等信息。 还可以检查处理器和内存等关键性能指标。
 

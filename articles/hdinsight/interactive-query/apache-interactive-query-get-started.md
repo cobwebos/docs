@@ -1,19 +1,19 @@
 ---
 title: 什么是 Azure HDInsight 中的交互式查询？
 description: Azure HDInsight 中的交互式查询（也称为 Apache Hive LLAP）简介
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/17/2019
-ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.custom: hdinsightactive
+ms.date: 03/03/2020
+ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198916"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271956"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的交互式查询？
 
@@ -36,35 +36,19 @@ ms.locfileid: "77198916"
 
 若要执行 Hive 查询，可以使用以下选项：
 
-* 使用 Microsoft Power BI
-
-    请参阅[在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Apache Hive 数据](./apache-hadoop-connect-hive-power-bi-directquery.md)以及[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。
-
-* 使用 Visual Studio
-
-    请参阅[使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)。
-
-* 使用 Visual Studio Code
-
-    请参阅[将 Visual Studio Code 用于 Apache Hive、LLAP 或 pySpark](../hdinsight-for-vscode.md)。
-* 使用 Apache Ambari Hive 视图运行 Apache Hive。
-  
-    请参阅[将 Apache Hive 视图与 Azure HDInsight 中的 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-ambari-view.md)。
-
-* 使用 Beeline 运行 Apache Hive。
-  
-    请参阅[通过 Beeline 将 Apache Hive 与 HDInsight 中的 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-beeline.md)。
-  
-    可以使用来自头结点或空边缘节点的 Beeline。 建议使用来自空边缘节点的 Beeline。 有关如何使用空边缘节点创建 HDInsight 群集的信息，请参阅[在 HDInsight 中使用空边缘节点](../hdinsight-apps-use-edge-node.md)。
-* 使用 Hive ODBC 运行 Apache Hive。
-  
-    请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Apache Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。
+|方法 |说明 |
+|---|---|
+|Microsoft Power BI|请参阅[在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Apache Hive 数据](./apache-hadoop-connect-hive-power-bi-directquery.md)以及[在 Azure HDInsight 中使用 Power BI 直观显示大数据](../hadoop/apache-hadoop-connect-hive-power-bi.md)。|
+|Visual Studio|请参阅[使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)。|
+|Visual Studio Code|请参阅[将 Visual Studio Code 用于 Apache Hive、LLAP 或 pySpark](../hdinsight-for-vscode.md)。|
+|Apache Ambari Hive 视图|请参阅[将 Apache Hive 视图与 Azure HDInsight 中的 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-ambari-view.md)。 Hive 视图不可用于 HDInsight 4.0。|
+|Apache Beeline|请参阅[通过 Beeline 将 Apache Hive 与 HDInsight 中的 Apache Hadoop 配合使用](../hadoop/apache-hadoop-use-hive-beeline.md)。 可以使用来自头结点或空边缘节点的 Beeline。 建议使用来自空边缘节点的 Beeline。 有关如何使用空边缘节点创建 HDInsight 群集的信息，请参阅[在 HDInsight 中使用空边缘节点](../hdinsight-apps-use-edge-node.md)。|
+|Hive ODBC|请参阅[使用 Microsoft Hive ODBC 驱动程序将 Excel 连接到 Apache Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)。|
 
 若要查找 Java Database Connectivity (JDBC) 连接字符串：
 
-1. 使用以下 URL 登录 Apache Ambari：`https://<cluster name>.AzureHDInsight.net`。
-2. 在左侧菜单中，选择“Hive”  。
-3. 若要复制 URL，请选择剪贴板图标：
+1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`，其中的 `CLUSTERNAME` 是群集的名称。
+1. 若要复制 URL，请选择剪贴板图标：
 
    ![HDInsight Hadoop 交互式查询 LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 

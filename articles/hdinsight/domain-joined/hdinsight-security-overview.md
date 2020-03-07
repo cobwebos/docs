@@ -1,22 +1,22 @@
 ---
 title: Azure HDInsight 中的企业安全性概述
 description: 了解如何通过各种方法来确保 Azure HDInsight 中的企业安全性。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: overview
-ms.date: 09/23/2019
-ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/03/2020
+ms.openlocfilehash: 95bfe7d7788133d8548598cb30c8084bf64a977f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122108"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78267717"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企业安全性概述
 
-Azure HDInsight 提供许多方法来解决企业安全性需求。 这些解决方案中的大多数默认情况下未激活。 这种灵活性允许你选择对你来说最重要的安全功能，避免在不需要的功能上花钱。 这也意味着，你有责任确保为设置和环境启用正确的解决方案。
+Azure HDInsight 提供许多方法来解决企业安全性需求。 默认情况下，其中大多数解决方案均未激活。 这种灵活性允许你选择对你来说最重要的安全功能，避免在不需要的功能上花钱。 这也意味着，你有责任确保为设置和环境启用正确的解决方案。
 
 本文审视安全解决方案的方式是将安全解决方案划分为四大传统的安全支柱：外围安全性、身份验证、授权和加密。
 
@@ -28,7 +28,7 @@ Azure HDInsight 提供许多方法来解决企业安全性需求。 这些解决
 
 ### <a name="perimeter-security"></a>外围安全性
 
-HDInsight 中的外围安全性通过[虚拟网络](../hdinsight-plan-virtual-network-deployment.md)实现。 企业管理员可在虚拟网络 (VNET) 中创建群集，并使用网络安全组 (NSG) 限制对虚拟网络的访问。 只有入站 NSG 规则中允许的 IP 地址才能与 HDInsight 群集通信。 此配置可实现外围安全性。
+HDInsight 中的外围安全性通过[虚拟网络](../hdinsight-plan-virtual-network-deployment.md)实现。 企业管理员可在虚拟网络 (VNET) 内创建群集，并使用网络安全组 (NSG) 限制对虚拟网络的访问。 只有入站 NSG 规则中允许的 IP 地址才能与 HDInsight 群集通信。 此配置可实现外围安全性。
 
 部署在 VNET 中的所有群集也会有一个专用终结点，该终结点解析为 VNET 中的专用 IP，可以对群集网关进行专用 HTTP 访问。
 
@@ -36,13 +36,13 @@ HDInsight 中的外围安全性通过[虚拟网络](../hdinsight-plan-virtual-ne
 
 HDInsight 的[企业安全性套餐](apache-domain-joined-architecture.md)提供基于 Active Directory 的身份验证、多用户支持和基于角色的访问控制。 Active Directory 集成通过使用 [Azure Active Directory 域服务](../../active-directory-domain-services/overview.md)实现。 有了这些功能，就可以创建已加入托管 Active Directory 域的 HDInsight 群集。 接下来可配置企业员工的列表，这些员工可进行身份验证并登录到群集。
 
-借助这种设置，企业员工可以使用其域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。 
+借助这种设置，企业员工可以使用其域凭据登录到群集节点。 他们还可以使用自己的域凭据在其他已批准的终结点（例如 Apache Ambari 视图、ODBC、JDBC、PowerShell 和 REST API）上进行身份验证，以便与群集交互。
 
 ### <a name="authorization"></a>授权
 
 大多数企业遵循的最佳实践是，确保并非每位员工都有权访问所有企业资源。 同理，管理员可以针对群集资源定义基于角色的访问控制策略。 此功能只在 ESP 群集中提供。
 
-Hadoop 管理员可以配置基于角色的访问控制 (RBAC) 来确保 Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md) 的安全性，只需使用 Apache Ranger 中的这些插件即可。 可以通过配置 RBAC 策略将权限与组织中的角色相关联。 此层抽象可以更轻松地确保用户仅仅有履行工作责任所需的权限。 也可通过 Ranger 审核员工的数据访问权限以及对访问控制策略所做的任何更改。
+hadoop 管理员可以使用 Apache Ranger 中的这些插件配置基于角色的访问控制 (RBAC) 以保护 Apache [Hive](apache-domain-joined-run-hive.md)、[HBase](apache-domain-joined-run-hbase.md) 和 [Kafka](apache-domain-joined-run-kafka.md)。 可以通过配置 RBAC 策略将权限与组织中的角色相关联。 此层抽象可以更轻松地确保用户仅仅有履行工作责任所需的权限。 也可通过 Ranger 审核员工的数据访问权限以及对访问控制策略所做的任何更改。
 
 例如，管理员可以配置 [Apache Ranger](https://ranger.apache.org/)，为 Hive 设置访问控制策略。 此功能可确保行级和列级筛选（数据掩码），用于筛选未授权用户的敏感数据。
 
@@ -50,7 +50,7 @@ Hadoop 管理员可以配置基于角色的访问控制 (RBAC) 来确保 Apache 
 
 若要跟踪对资源的未经授权或非故意的访问，则必须审核对群集资源和数据的所有访问。 这与阻止未经授权的用户访问 HDInsight 群集资源和保护数据具有同等重要性。
 
-管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员还可以查看和报告对在 Apache Ranger 支持的终结点中创建的访问控制策略进行的所有更改。 
+管理员可以查看和报告对 HDInsight 群集资源与数据的所有访问。 管理员还可以查看和报告对在 Apache Ranger 支持的终结点中创建的访问控制策略进行的所有更改。
 
 若要访问 Apache Ranger 和 Ambari 审核日志以及 SSH 访问日志，请[启用 Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) 并查看提供审核记录的表。
 
@@ -62,7 +62,7 @@ HDInsight 群集的两种数据存储（Azure Blob 存储和 Azure Data Lake Sto
 
 ### <a name="compliance"></a>合规性
 
-Azure 符合性产品/服务基于各种类型的保证，包括独立的第三方审核企业生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。 有关 HDInsight 合规性符合性信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center)和 [Microsoft Azure 合规性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
+Azure 合规性产品基于各种类型的保证，包括独立的第三方审计公司生成的正式认证、证明、验证、授权和评估，以及 Microsoft 生成的合同修正、自我评估和客户指南文档。 有关 HDInsight 合规性符合性信息，请参阅 [Microsoft 信任中心](https://www.microsoft.com/trust-center)和 [Microsoft Azure 合规性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)。
 
 ## <a name="shared-responsibility-model"></a>共担责任模型
 

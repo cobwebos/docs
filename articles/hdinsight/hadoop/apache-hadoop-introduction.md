@@ -1,20 +1,19 @@
 ---
-title: 什么是 Apache Hadoop 技术堆栈？ - Azure HDInsight
+title: 什么是 Apache Hadoop 和 MapReduce - Azure HDInsight
 description: 介绍 HDInsight，以及 Apache Hadoop 技术堆栈和组件。
-keywords: azure hadoop, hadoop azure, hadoop 简介, hadoop 技术堆栈, 什么是 hadoop 群集, hadoop 的用途
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088201"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244876"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>什么是 Azure HDInsight 中的 Apache Hadoop？
 
@@ -24,7 +23,7 @@ Azure HDInsight 是云中适用于企业的分析服务，具有完全托管、�
 
 若要查看 HDInsight 上的可用 Hadoop 技术堆栈组件，请参阅[可以与 HDInsight 配合使用的组件和版本](../hdinsight-component-versioning.md)。 若要详细了解 HDInsight 中的 Hadoop，请参阅 [HDInsight 的 Azure 功能页](https://azure.microsoft.com/services/hdinsight/)。
 
-## <a id="whatis"></a>什么是 MapReduce
+## <a name="what-is-mapreduce"></a>什么是 MapReduce
 
 Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据的作业。 输入的数据将拆分为独立的区块。 每个区块跨群集中的节点并行进行处理。 MapReduce 作业包括两个函数：
 
@@ -32,7 +31,7 @@ Apache Hadoop MapReduce 是一个软件框架，用于编写处理海量数据�
 
 * **化简器**：使用映射器发出的元组并执行汇总运算，以基于映射器数据创建更小的合并结果
 
-下图演示了一个基本的单词计数 MapReduce 作业示例：   
+下图演示了一个基本的单词计数 MapReduce 作业示例：
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,7 +50,7 @@ Hadoop 流式处理通过 STDIN 和 STDOUT 与映射器和化简器通信。 映
 
     [key]/t[value]
 
-有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/r1.2.1/streaming.html)（Hadoop 流式处理）。
+有关详细信息，请参阅 [Hadoop Streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html)（Hadoop 流式处理）。
 
 有关将 Hadoop 流式处理与 HDInsight 配合使用的示例，请参阅以下文档：
 

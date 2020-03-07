@@ -6,26 +6,26 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: e4d3a7fbdb938071b754a16179bcd021985383cc
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277487"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273210"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>将分布式跟踪与 Azure Spring Cloud 配合使用
 
-使用 Azure Spring Cloud 中的分布式跟踪工具，可以轻松地调试和监视复杂问题。 Azure Spring Cloud 将 [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 集成。 这种集成可以通过 Azure 门户提供强大的分布式跟踪功能。
+使用 Azure Spring Cloud 中的分布式跟踪工具，可以轻松地调试和监视复杂问题。 Azure Spring Cloud 将 [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) 与 Azure 的 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) 集成。 这种集成可以通过 Azure 门户提供强大的分布式跟踪功能。
 
 本文介绍如何执行以下操作：
 
 > [!div class="checklist"]
 > * 在 Azure 门户中启用分布式跟踪。
-> * 将 Azure Spring Cloud Sleuth 添加到应用程序。
+> * 将 Spring Cloud Sleuth 添加到应用程序。
 > * 查看微服务应用程序的依赖项映射。
 > * 通过不同的筛选器搜索跟踪数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要一个已预配并正在运行的 Azure Spring Cloud 服务。 完成[有关如何通过 Azure CLI 来部署应用的快速入门](spring-cloud-quickstart-launch-app-cli.md)，了解如何预配并运行 Azure Spring Cloud 服务。
     
@@ -39,7 +39,7 @@ ms.locfileid: "76277487"
 
    完成此更改后，Zipkin 发送方就可以将内容发送到 Web。
 
-1. 如果已按 [Azure Spring Cloud 应用程序准备指南](spring-cloud-tutorial-prepare-app-deployment.md)进行了操作，则可跳过此步骤。 否则，请转到本地开发环境并编辑 pom.xml 文件，使之包含以下 Azure Spring Cloud Sleuth 依赖项：
+1. 如果已按 [Azure Spring Cloud 应用程序准备指南](spring-cloud-tutorial-prepare-app-deployment.md)进行了操作，则可跳过此步骤。 否则，请转到本地开发环境并编辑 pom.xml 文件，以添加以下 Spring Cloud Sleuth 依赖项：
 
     ```xml
     <dependencyManagement>

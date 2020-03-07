@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/20/2019
-ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/27/2020
+ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969122"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662626"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>教程：使用 Azure 逻辑应用、Azure Functions 和 Azure 存储来自动执行处理电子邮件的任务
 
@@ -34,7 +34,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ![完成的逻辑应用概览](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -89,7 +89,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 1. 为电子邮件附件创建 Blob 存储容器。
 
-   1. 在存储帐户菜单中选择“概述”。  在“服务”下选择“容器”   。
+   1. 在存储帐户菜单中选择“概述”。  在“概述”窗格上，选择“容器”  。
 
       ![添加 Blob 存储容器](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
@@ -223,24 +223,24 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 在 Azure 主页上的搜索框中，查找并选择“逻辑应用”  。
+1. 在 Azure 顶层搜索框中，输入 `logic apps`，然后选择“逻辑应用”  。
 
    ![查找并选择“逻辑应用”](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. 在“逻辑应用”页上，选择“添加”   。
+1. 在“逻辑应用”  窗格中，选择“添加”  。
 
-   ![添加新逻辑应用](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![添加新逻辑应用](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. 在“创建逻辑应用”下，提供有关逻辑应用的详细信息，如下所示。  完成后，选择“创建”  。
+1. 在“逻辑应用”窗格上，提供有关逻辑应用的详细信息，如下所示  。 完成后，选择“查看 + 创建”  。
 
    ![提供逻辑应用信息](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | 设置 | 值 | 说明 |
    | ------- | ----- | ----------- |
-   | **名称** | LA-ProcessAttachment | 逻辑应用的名称 |
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 |
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 |
-   | **位置** | 美国西部 | 以前使用过的同一区域 |
+   | **逻辑应用名称** | LA-ProcessAttachment | 逻辑应用的名称 |
+   | **选择位置** | 美国西部 | 以前使用过的同一区域 |
    | **Log Analytics** | 关闭 | 对于本教程，请选择“关闭”设置  。 |
    ||||
 
@@ -667,7 +667,15 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 不再需要此示例时，删除包含你的逻辑应用和相关资源的资源组。
 
-1. 在 Azure 主菜单上选择“资源组”  。 从资源组列表中选择用于本教程的资源组。 在“概述”  窗格上，选择“删除资源组”。 
+1. 在顶层 Azure 搜索框中，输入 `resources groups`，并选择“资源组”  。
+
+   ![查找并选择“资源组”](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+
+1. 从“资源组”列表中，选择本教程的资源组。  。 
+
+   ![查找教程的资源组](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+
+1. 在“概述”  窗格上，选择“删除资源组”。 
 
    ![删除逻辑应用资源组](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

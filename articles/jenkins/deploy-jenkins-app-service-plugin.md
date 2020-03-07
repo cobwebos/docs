@@ -4,12 +4,12 @@ description: 了解如何在 Jenkins 中使用 Azure App Service Jenkins 插件�
 keywords: jenkins, azure, devops, 应用服务
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcaf45003e865cc5aac3f6bd4580479a27d38b50
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158513"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251464"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>使用 Jenkins 插件部署到 Azure App Service 
 
@@ -17,7 +17,7 @@ ms.locfileid: "74158513"
 * 文件上传。
 * 适用于 Linux 版 Web 应用的 Docker。
 
-本教程介绍如何执行下列操作：
+在本教程中，你将了解如何执行以下操作：
 > [!div class="checklist"]
 > * 配置 Jenkins 以通过文件上传部署 Web 应用。
 > * 配置 Jenkins 以部署用于容器的 Web 应用。
@@ -207,10 +207,13 @@ Linux 上的 Web 应用还支持 Git 和文件上传等传统部署方法，但�
 ### <a name="for-azure-app-service-on-linux"></a>对于 Linux 版 Azure App Service
 
 1. 要验证 Web 应用，请在 Azure CLI 中运行以下命令：
-    ```CLI
+    
+    ```azurecli
     az acr repository list -n <myRegistry> -o json
     ```
+    
     将显示以下消息：
+    
     ```CLI
     ["calculator"]
     ```
@@ -231,7 +234,7 @@ Linux 上的 Web 应用还支持 Git 和文件上传等传统部署方法，但�
 
 本教程使用 Azure App Service Jenkins 插件部署到 Azure。
 
-你已了解如何：
+你已了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 配置 Jenkins 以通过文件上传部署 Azure 应用服务 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 07d4b206c5651bb708ed8b56437a8769dff46557
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 940636a5e368a84aaaf0d4490bf874d56d3ddb6e
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225169"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251894"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>教程：通过 Azure 门户使用标准负载均衡器对可用性区域中的 VM 进行负载均衡
 
@@ -52,9 +52,9 @@ ms.locfileid: "74225169"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription               | 选择订阅。    |    
-    | Resource group         | 选择“新建”并在文本框中键入 MyResourceGroupZLB   。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupZLB   。|
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
@@ -63,18 +63,24 @@ ms.locfileid: "74225169"
     |可用性区域| 选择“1”。     |
 3. 在“查看 + 创建”选项卡中，单击“创建”   。   
 
-   ## <a name="create-backend-servers"></a>创建后端服务器
+## <a name="create-backend-servers"></a>创建后端服务器
 
 在本部分，请创建虚拟网络。 另请在该地区的同一区域（即区域 1）中创建两个要添加到负载均衡器后端池的虚拟机， 然后在虚拟机上安装 IIS，以便对区域冗余的负载均衡器进行测试。 如果一个 VM 发生故障，则同一区域中 VM 的运行状况探测将会失败， 而流量可继续由同一区域中的其他 VM 处理。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-1. 在屏幕的左上方，选择“创建资源”   > “网络”   > “虚拟网络”  。  为虚拟网络输入以下值：
-    - **myVnet**：虚拟网络的名称。
-    - **myResourceGroupZLB**：现有资源组的名称。
-    - **myBackendSubnet**：子网名称。
-2. 选择“创建”以创建虚拟网络。 
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-    ![创建虚拟网络](./media/tutorial-load-balancer-standard-zonal-portal/create-virtual-network.png)
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
+
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupZLB（选择现有资源组） |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西欧      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 

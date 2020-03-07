@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964058"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190993"
 ---
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运行和调试 Azure Functions 项目。  
+Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运行和调试 Azure Functions 项目。 有关如何在 Visual Studio Code 中进行调试的详细信息，请参阅[在本地调试 PowerShell Azure Functions](../articles/azure-functions/functions-debug-powershell-local.md)。 
 
-1. 若要调试函数，请在函数代码中要附加调试器的位置前面插入对 [`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) cmdlet 的调用，然后按 F5 启动函数应用项目并附加调试器。 来自 Core Tools 的输出会显示在“终端”  面板中。
+1. 按 F5 启动函数应用项目。 来自 Core Tools 的输出会显示在“终端”  面板中。
 
 1. 在“终端”  面板中，复制 HTTP 触发的函数的 URL 终结点。
 
@@ -38,9 +38,6 @@ Azure Functions Core Tools 与 Visual Studio Code 相集成，可让在本地运
 
     ![“终端”面板中的函数执行](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. 若要停止调试，请按 Ctrl + C 停止 Core Tools。
+1. 完成后，按 **Ctrl + C** 停止 Core Tools。
 
 确认该函数可以在本地计算机上正确运行以后，即可将项目发布到 Azure。
-
-> [!NOTE]
-> 将函数发布到 Azure 之前，请记得删除对 `Wait-Debugger` 的所有调用。 

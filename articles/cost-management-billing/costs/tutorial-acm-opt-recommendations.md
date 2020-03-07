@@ -3,17 +3,17 @@ title: 教程 - 使用建议降低 Azure 成本
 description: 本教程帮助你使用优化建议来降低 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 796d843461d5d622988f7992439a7c4426186761
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6f84b3fb75a3774dc14fd1ea045ab9cf1eeb5451
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199953"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78245414"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -26,13 +26,13 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 > * 实施建议，以将虚拟机的大小调整为更具成本效益的选项
 > * 验证操作，确保成功调整虚拟机的大小
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 建议适用于各种范围和 Azure 帐户类型。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 订阅
 - 资源组
 
-必须提供至少有 14 天保持活动状态的虚拟机。
+如果你有新订阅，则无法立即使用成本管理功能。 最多可能需要 48 小时才能使用所有成本管理功能。 另外，必须提供至少有 14 天保持活动状态的虚拟机。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com/) 中登录 Azure 门户。

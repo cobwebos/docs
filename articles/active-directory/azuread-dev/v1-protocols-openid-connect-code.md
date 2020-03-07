@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: fc108b9f49bc88c722ac2462ee82e27b6c6de5c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163936"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377803"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 来授权访问 Web 应用程序
 
@@ -113,11 +113,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 参数 |  | 说明 |
 | --- | --- | --- |
-| tenant |required |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
-| client_id |required |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击 " **Azure Active Directory**"，单击 "**应用注册**"，选择应用程序，并在应用程序页上找到应用程序 ID。 |
-| response_type |required |必须包含 OpenID Connect 登录的 `id_token`。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
-| 作用域 | 建议 | OpenID Connect 规范要求范围 `openid`，这会在同意 UI 中转换为 "登录" 权限。 此和其他 OIDC 范围在 v1.0 终结点上会被忽略，但对于符合标准的客户端仍是最佳实践。 |
-| nonce |required |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
+| tenant |必填 |请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 独立于租户的令牌的允许值为租户标识符，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` 或 `common` |
+| client_id |必填 |将应用注册到 Azure AD 时，分配给应用的应用程序 ID。 可以在 Azure 门户中找到该值。 单击 " **Azure Active Directory**"，单击 "**应用注册**"，选择应用程序，并在应用程序页上找到应用程序 ID。 |
+| response_type |必填 |必须包含 OpenID Connect 登录的 `id_token`。 还可以包含其他 response_type，例如 `code` 或 `token`。 |
+| scope | 建议 | OpenID Connect 规范要求范围 `openid`，这会在同意 UI 中转换为 "登录" 权限。 此和其他 OIDC 范围在 v1.0 终结点上会被忽略，但对于符合标准的客户端仍是最佳实践。 |
+| nonce |必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 `id_token` 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串或 GUID，可用以识别请求的来源。 |
 | redirect_uri | 建议 |应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 如果缺少此项，则会将用户代理发送回随机注册应用程序的重定向 Uri 之一。 最大长度为255字节 |
 | response_mode |可选 |指定将生成的 authorization_code 送回到应用程序所应该使用的方法。 HTTP 窗体发布`form_post`*支持的值为* ，URL 片段`fragment`*支持的值为* 。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 包含 id_token 的任何流的默认值为 `fragment`。|
 | state |建议 |随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
@@ -157,7 +157,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | 参数 | 说明 |
 | --- | --- |
-| 错误 |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>授权终结点错误的错误代码
@@ -267,7 +267,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 | 参数 | 说明 |
 | --- | --- |
-| 错误 |用于分类发生的错误类型与响应错误的错误码字符串。 |
+| error |用于分类发生的错误类型与响应错误的错误码字符串。 |
 | error_description |帮助开发人员识别身份验证错误根本原因的特定错误消息。 |
 
 有关可能的错误代码的描述及其建议的客户端操作，请参阅[授权终结点错误的错误代码](#error-codes-for-authorization-endpoint-errors)。

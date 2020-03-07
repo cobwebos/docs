@@ -4,12 +4,12 @@ description: 本教程介绍如何使用 Azure 容器注册表任务（ACR 任�
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8a45cf3a72ed8f38f6f28a2f0225d0913f906da
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 51891d7b17fad7e438cc31652b6a0769d024e8e0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456049"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78252099"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -52,13 +52,13 @@ ms.locfileid: "74456049"
 
 使用 `git` 克隆存储库，将“\<your-github-username\>”替换为你的 GitHub 用户名  ：
 
-```azurecli-interactive
+```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
 ```
 
 输入包含源代码的目录：
 
-```azurecli-interactive
+```console
 cd acr-build-helloworld-node
 ```
 
@@ -72,7 +72,9 @@ cd acr-build-helloworld-node
 
 为使执行示例命令更轻松，本系列教程使用 shell 环境变量。 执行以下命令来设置 `ACR_NAME` 变量。 将“\<registry-name\>”替换为新容器注册表的唯一名称  。 注册表名称在 Azure 中必须唯一，仅包含小写字母，并且包含 5-50 个字母数字字符。 本教程中创建的其他资源都基于该名称，因此仅需要修改该第一个变量。
 
-```azurecli-interactive
+[![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+```console
 ACR_NAME=<registry-name>
 ```
 
@@ -216,8 +218,8 @@ az keyvault secret set \
 
 现已创建 Azure Key Vault 并在其中存储了两个机密：
 
-* `$ACR_NAME-pull-usr`：用作容器注册表**用户名**的服务主体 ID。
-* `$ACR_NAME-pull-pwd`：用作容器注册表**密码**的服务主体密码。
+* `$ACR_NAME-pull-usr`设置用户帐户 ：用作容器注册表**用户名**的服务主体 ID。
+* `$ACR_NAME-pull-pwd`设置用户帐户 ：用作容器注册表**密码**的服务主体密码。
 
 现在，当你或你的应用程序和服务从注册表提取映像时，可以按名称引用这些机密。
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: cfd0f8a9a3180b14b4da9dc61e252054fe06628c
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273501"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78274174"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>（已弃用）为 Linux 容器部署 Kubernetes 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "76273501"
 
 ![浏览到 Azure Vote 的图像](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
-本快速入门假定你对 Kubernetes 概念有一个基本的了解。有关 Kubernetes 的详细信息，请参阅 [Kubernetes documentation]( https://kubernetes.io/docs/home/)（Kubernetes 文档）。
+本快速入门假定你基本了解 Kubernetes 概念。有关 Kubernetes 的详细信息，请参阅 [Kubernetes 文档]( https://kubernetes.io/docs/home/)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -41,7 +41,7 @@ ms.locfileid: "76273501"
 
 以下示例在“westeurope”  位置创建名为“myResourceGroup”  的资源组。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroup --location westeurope
 
 使用 [az acs create](/cli/azure/acs#az-acs-create) 命令在 Azure 容器服务中创建 Kubernetes 群集。 以下示例创建名为 myK8sCluster  的群集，其中包含一个 Linux 主节点和三个 Linux 代理节点。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8sCluster --generate-ssh-keys
 ```
 
@@ -76,23 +76,23 @@ az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl](https://kubernetes.io/docs/user-guide/kubectl/)。 
 
-如果使用的是 Azure CloudShell，则 kubectl 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
+如果使用的是 Azure Cloud Shell，则 kubectl 已安装。 如果想在本地安装，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 
 若要配置 kubectl 以连接到 Kubernetes 群集，请运行 [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) 命令。 此步骤下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
-```azurecli-interactive 
+```azurecli-interactive
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
 若要验证到群集的连接，请使用 [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令返回群集节点列表。
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 输出：
 
-```bash
+```output
 NAME                    STATUS                     AGE       VERSION
 k8s-agent-14ad53a1-0    Ready                      10m       v1.6.6
 k8s-agent-14ad53a1-1    Ready                      10m       v1.6.6
@@ -169,13 +169,13 @@ spec:
 
 使用 [kubectl create](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) 命令运行该应用程序。
 
-```azurecli-interactive
+```console
 kubectl create -f azure-vote.yml
 ```
 
 输出：
 
-```bash
+```output
 deployment "azure-vote-back" created
 service "azure-vote-back" created
 deployment "azure-vote-front" created
@@ -188,13 +188,13 @@ service "azure-vote-front" created
 
 若要监视进度，请将 [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令与 `--watch` 参数配合使用。
 
-```azurecli-interactive
+```console
 kubectl get service azure-vote-front --watch
 ```
 
  azure-vote-front 服务的  EXTERNAL-IP 一开始显示为“挂起”。  EXTERNAL-IP 地址从“挂起”变为 IP 地址以后，   请使用 `CTRL-C` 停止 kubectl 监视进程。 
   
-```bash
+```output
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ```
@@ -206,19 +206,19 @@ azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
 ## <a name="delete-cluster"></a>删除群集
 如果不再需要群集，可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令删除资源组、容器服务及所有相关资源。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
 ## <a name="get-the-code"></a>获取代码
 
-本快速入门使用了预先创建的容器映像来创建 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
+本快速入门使用预先创建的容器映像来创建 Kubernetes 部署。 GitHub 上提供了相关的应用程序代码、Dockerfile 和 Kubernetes 清单文件。
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。 
+在本快速入门中，部署了 Kubernetes 群集，并向该群集部署了多容器应用程序。 
 
 若要详细了解 Azure 容器服务并演练部署示例的完整代码，请继续阅读 Kubernetes 群集教程。
 

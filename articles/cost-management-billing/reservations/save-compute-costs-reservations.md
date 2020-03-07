@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: c1cced862bee1ec4579f3e6e5145968dec7613e4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1c5dd5ebd5023b75aad5dabf6a721a1193a6224d
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500574"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272202"
 ---
 # <a name="what-are-azure-reservations"></a>什么是 Azure 预留项？
 
@@ -42,6 +42,7 @@ ms.locfileid: "77500574"
 - **Azure Database for PostgreSQL** - 预留项仅包含计算费用。 预留容量不包括与 PostgreSQL 数据库服务器关联的软件、网络或存储费用。
 - **Azure Database for MariaDB** - 预留项仅包含计算费用。 预留容量不包括与 MariaDB 数据库服务器关联的软件、网络或存储费用。
 - **Azure 数据资源管理器** - 预留项涵盖标记费用。 预留项不涵盖与群集关联的计算、网络或存储费用。
+- **Azure Cache for Redis** - 预留仅包括计算费用。 预留不包括与 Redis 缓存实例相关联的网络或存储费用。
 - **高级 SSD 托管磁盘** - 预留是针对指定的磁盘 SKU 做出的。 
 
 软件计划：

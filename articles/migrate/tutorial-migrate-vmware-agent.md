@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: MVC
 ms.openlocfilehash: 49b576770d67ae9d2b98a8a0004f4219ecf0fae4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057271"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388957"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>将 VMware VM 迁移到 Azure（使用基于代理的方法）
 
@@ -57,7 +57,7 @@ ms.locfileid: "77057271"
 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，应做好以下准备：
 

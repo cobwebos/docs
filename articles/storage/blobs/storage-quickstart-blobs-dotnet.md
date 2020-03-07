@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 09002a8c0999dc137ca3386ca7392a566d323e8a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b8ddeda2c435a52efd14f06acb3c1a8bb94bc45e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196051"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381844"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12
 
@@ -114,7 +114,7 @@ Azure Blob 存储最适合存储巨量的非结构化数据。 非结构化数�
 
 以下图示显示了这些资源之间的关系。
 
-![Blob 存储体系结构的图示](./media/storage-blob-introduction/blob1.png)
+![Blob 存储体系结构的图示](./media/storage-blobs-introduction/blob1.png)
 
 使用以下 .NET 类与这些资源进行交互：
 

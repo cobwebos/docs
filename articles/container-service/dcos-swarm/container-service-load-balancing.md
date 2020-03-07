@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277832"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273377"
 ---
 # <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>（已弃用）在 Azure 容器服务 DC/OS 群集中对容器进行负载均衡
 
@@ -43,9 +43,11 @@ Marathon 负载均衡器 (marathon-lb) 将入站请求路由到容纳这些请�
 
 Marathon 负载均衡器基于已部署容器对自身进行动态配置。 还可在丢失容器或代理的情况下进行复原，如果发生此情况，Apache Mesos 将在其他位置重启容器，marathon-lb 随之调整。
 
+在浏览器中访问 [https://shell.azure.com](https://shell.azure.com) 以打开 Cloud Shell。
+
 运行以下命令，在公用代理群集上安装 marathon 负载均衡器。
 
-```azurecli-interactive
+```console
 dcos package install marathon-lb
 ```
 
@@ -97,7 +99,7 @@ az acs list --resource-group myResourceGroup --query "[0].agentPoolProfiles[0].f
 
 使用 DC/OS CLI 运行应用程序。 默认情况下，Marathon 会将应用程序部署到专用群集。 这意味着，上面的部署仅能通过负载均衡器进行访问，这也是一种所需的行为。
 
-```azurecli-interactive
+```console
 dcos marathon app add hello-web.json
 ```
 

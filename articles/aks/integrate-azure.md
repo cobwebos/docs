@@ -5,18 +5,18 @@ author: zr-msft
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 2eddedea7d626a92e21442c81aa49e00491958a1
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595597"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273025"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>使用 Open Service Broker for Azure (OSBA) 与 Azure 托管服务进行集成
 
 结合使用 [Kubernetes 服务目录][kubernetes-service-catalog]和 Open Service Broker for Azure (OSBA) 时，开发人员可利用 Kubernetes 中的 Azure 托管服务。 本指南重点介绍如何使用 Kubernetes 部署 Kubernetes 服务目录、Open Service Broker for Azure (OSBA) 和使用 Azure 托管服务的应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * Azure 订阅
 
 * Azure CLI：[在本地安装][azure-cli-install]，或在 [Azure Cloud Shell][azure-cloud-shell] 中使用。
@@ -29,39 +29,43 @@ ms.locfileid: "77595597"
 
 ## <a name="install-service-catalog"></a>安装服务目录
 
-第一步是使用 Helm 图表在 Kubernetes 群集中安装服务目录。 按照以下步骤升级群集中的 Tiller（Helm 服务器）安装：
+第一步是使用 Helm 图表在 Kubernetes 群集中安装服务目录。
 
-```azurecli-interactive
+在浏览器中访问 [https://shell.azure.com](https://shell.azure.com) 以打开 Cloud Shell。
+
+按照以下步骤升级群集中的 Tiller（Helm 服务器）安装：
+
+```console
 helm init --upgrade
 ```
 
 现在，将服务目录图表添加到 Helm 存储库：
 
-```azurecli-interactive
+```console
 helm repo add svc-cat https://svc-catalog-charts.storage.googleapis.com
 ```
 
 最后，使用 Helm Chart 安装服务目录。 如果群集启用了 RBAC，请运行此命令。
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 如果群集未启用 RBAC，请运行以下命令。
 
-```azurecli-interactive
+```console
 helm install svc-cat/catalog --name catalog --namespace catalog --set rbacEnable=false --set apiserver.storage.etcd.persistence.enabled=true --set apiserver.healthcheck.enabled=false --set controllerManager.healthcheck.enabled=false --set apiserver.verbosity=2 --set controllerManager.verbosity=2
 ```
 
 运行 Helm 图表后，验证 `servicecatalog` 是否出现在以下命令的输出中：
 
-```azurecli-interactive
+```console
 kubectl get apiservice
 ```
 
 例如，应看到与下面（此处显示的为节选）类似的输出：
 
-```
+```output
 NAME                                 AGE
 v1.                                  10m
 v1.authentication.k8s.io             10m
@@ -76,7 +80,7 @@ v1beta1.storage.k8s.io               10
 
 首先添加 Open Service Broker for Azure Helm 存储库：
 
-```azurecli-interactive
+```console
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
@@ -88,7 +92,7 @@ az ad sp create-for-rbac
 
 输出应如下所示。 记下 `appId`、`password` 和 `tenant` 值，下一步会用到这些值。
 
-```JSON
+```json
 {
   "appId": "7248f250-0000-0000-0000-dbdeb8400d85",
   "displayName": "azure-cli-2017-10-15-02-20-15",
@@ -100,7 +104,7 @@ az ad sp create-for-rbac
 
 使用上述值设置以下环境变量：
 
-```azurecli-interactive
+```console
 AZURE_CLIENT_ID=<appId>
 AZURE_CLIENT_SECRET=<password>
 AZURE_TENANT_ID=<tenant>
@@ -114,7 +118,7 @@ az account show --query id --output tsv
 
 再次使用上述值设置以下环境变量：
 
-```azurecli-interactive
+```console
 AZURE_SUBSCRIPTION_ID=[your Azure subscription ID from above]
 ```
 
@@ -132,20 +136,20 @@ OSBA 部署完成后，请安装[服务目录 CLI][service-catalog-cli]，这是
 
 执行以下命令以安装服务目录 CLI 二进制：
 
-```azurecli-interactive
+```console
 curl -sLO https://servicecatalogcli.blob.core.windows.net/cli/latest/$(uname -s)/$(uname -m)/svcat
 chmod +x ./svcat
 ```
 
 现在，列出已安装的服务代理：
 
-```azurecli-interactive
+```console
 ./svcat get brokers
 ```
 
 会得到类似于下面的输出：
 
-```
+```output
   NAME                               URL                                STATUS
 +------+--------------------------------------------------------------+--------+
   osba   http://osba-open-service-broker-azure.osba.svc.cluster.local   Ready
@@ -153,13 +157,13 @@ chmod +x ./svcat
 
 接下来，列出可用的服务类。 显示的服务类是可通过 Open Service Broker for Azure 预配的可用 Azure 托管服务。
 
-```azurecli-interactive
+```console
 ./svcat get classes
 ```
 
 最后，列出所有可用的服务计划。 服务计划是 Azure 托管服务的服务层级。 例如，对于 Azure Database for MySQL，计划范围为 `basic50`（具有 50 个数据传输单位 (DTU) 的基本层）到 `standard800`（具有 800 个 DTU 的标准层）。
 
-```azurecli-interactive
+```console
 ./svcat get plans
 ```
 
@@ -167,20 +171,20 @@ chmod +x ./svcat
 
 在此步骤中，使用 Helm 为 WordPress 安装更新的 Helm 图表。 该图表预配 WordPress 可以使用的外部 Azure Database for MySQL 实例。 此过程可能需要几分钟。
 
-```azurecli-interactive
+```console
 helm install azure/wordpress --name wordpress --namespace wordpress --set resources.requests.cpu=0 --set replicaCount=1
 ```
 
 为了验证安装是否已预配适当的资源，请列出已安装的服务实例和绑定：
 
-```azurecli-interactive
+```console
 ./svcat get instances -n wordpress
 ./svcat get bindings -n wordpress
 ```
 
 列出已安装的机密：
 
-```azurecli-interactive
+```console
 kubectl get secrets -n wordpress -o yaml
 ```
 

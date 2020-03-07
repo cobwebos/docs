@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0446ee4fb238d2fa8447f998536c3c14d968f630
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438648"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78303199"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>教程：准备部署 Azure Data Box Gateway
 
@@ -42,7 +42,7 @@ ms.locfileid: "75438648"
 
 现在可以开始设置 Azure 门户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本部分说明 Data Box Gateway 资源、Data Box Gateway 设备和数据中心网络的配置先决条件。
 
@@ -94,7 +94,7 @@ ms.locfileid: "75438648"
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
 2. 在左窗格中，选择“+ 创建资源”  。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。 选择“创建”  。
-3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 在此版本中，可以选择“美国东部”、“东南亚”和“西欧”。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。  
+3. 选择用于 Data Box Gateway 设备的订阅。 选择要将 Data Box Gateway 资源部署到的区域。 有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 选择离要部署设备的地理区域最近的位置。 在“Data Box Gateway”选项中，选择“创建”。  
 
     ![搜索 Data Box Gateway 服务](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "75438648"
     |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |   
-    |区域     |在此版本中，可以选择“美国东部”、“东南亚”和“西欧”来部署资源。 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。 <br> 选择离要部署设备的地理区域最近的位置。|
+    |区域     |有关可使用 Azure Stack Edge 资源的所有区域的列表，请参阅[可用的 Azure 产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 对于 Azure 政府版，可以选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中所列的所有政府区域。 <br> 选择离要部署设备的地理区域最近的位置。|
     
     ![创建 Data Box Gateway 资源](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     

@@ -1,6 +1,6 @@
 ---
-title: 快速入门：创建仓库 - Azure Powershell
-description: 使用 Azure PowerShell 快速创建 SQL 数据库逻辑服务器、服务器级防火墙规则和数据仓库。
+title: 快速入门：创建数据仓库 (PowerShell)
+description: 通过 Azure PowerShell 使用服务器级防火墙规则快速创建 Azure Synapse Analytics 数据仓库逻辑服务器。
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461523"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199982"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和查询 Azure SQL 数据仓库
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建和查询数据仓库
 
-使用 Azure PowerShell 快速创建 Azure SQL 数据仓库。
+通过使用 Azure PowerShell 预配 SQL 池来创建 Azure Synapse Analytics 数据仓库。
+
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 > [!NOTE]
-> 创建 SQL 数据仓库可能会导致新的计费服务。  有关详细信息，请参阅 [Azure SQL 数据仓库定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 创建仓库可能会产生新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>创建资源组
@@ -78,6 +80,7 @@ $databasename = "mySampleDataWarehosue"
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>创建逻辑服务器
 
 使用 [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) 命令创建 [Azure SQL 逻辑服务器](../sql-database/sql-database-logical-servers.md)。 逻辑服务器包含一组作为组管理的数据库。 以下示例使用管理员用户名 `ServerAdmin` 和密码 `ChangeYourAdminPassword1` 在资源组中创建随机命名的服务器。 根据需要替换这些预定义的值。
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL 数据库和 SQL 数据仓库通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则将无法连接到 Azure SQL 服务器，除非 IT 部门开放了端口 1433。
+> SQL 终结点通过端口 1433 进行通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则将无法连接到 Azure SQL 服务器，除非 IT 部门开放了端口 1433。
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 所需的参数有：
 
 * **RequestedServiceObjectiveName**：请求的[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)的数量。 增加此数量会增加计算成本。 有关支持值的列表，请参阅[内存和并发限制](memory-concurrency-limits.md)。
-* **DatabaseName**：要创建的 SQL 数据仓库的名称。
+* **DatabaseName**：要创建的数据仓库的名称。
 * **ServerName**：用于创建过程的服务器名称。
 * **ResourceGroupName**：要使用的资源组。 若要查找订阅中可用的资源，请使用 Get-AzureResource。
-* **Edition**：必须是“DataWarehouse”才能创建 SQL 数据仓库。
+* **Edition**：必须是“DataWarehouse”才能创建数据仓库。
 
 可选参数有：
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>后续步骤
 
-现已创建数据仓库、防火墙规则、已连接到数据仓库，并运行了几个查询。 若要了解有关 Azure SQL 数据仓库的详细信息，请继续有关加载数据的教程。
+现已创建数据仓库、防火墙规则、已连接到数据仓库，并运行了几个查询。 若要了解详细信息，请继续阅读有关加载数据的教程。
 > [!div class="nextstepaction"]
->[将数据加载到 SQL 数据仓库](load-data-from-azure-blob-storage-using-polybase.md)
+>[将数据加载到数据仓库](load-data-from-azure-blob-storage-using-polybase.md)

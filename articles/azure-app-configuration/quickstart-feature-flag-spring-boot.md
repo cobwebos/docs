@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766442"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655746"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>快速入门：将功能标志添加到 Spring Boot 应用
 
@@ -19,11 +19,11 @@ ms.locfileid: "76766442"
 
 Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架。 这些库**不**依赖于任何 Azure 库。 它们可以通过其 Spring Boot 配置提供程序无缝集成到应用程序配置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
-- 支持的 [Java 开发工具包 SDK](https://docs.microsoft.com/java/azure/jdk) 版本 8。
-- [Apache Maven](https://maven.apache.org/download.cgi) 版本 3.0 或更高版本。
+* Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
+* 支持的 [Java 开发工具包 SDK](https://docs.microsoft.com/java/azure/jdk) 版本 8。
+* [Apache Maven](https://maven.apache.org/download.cgi) 版本 3.0 或更高版本。
 
 ## <a name="create-an-app-configuration-instance"></a>创建应用程序配置实例
 
@@ -42,14 +42,14 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 1. 浏览到 <https://start.spring.io/>。
 
-2. 指定以下选项：
+1. 指定以下选项：
 
-   - 使用 **Java** 生成一个 **Maven** 项目。
-   - 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
-   - 指定应用程序的“组”和“项目”名称。    本文使用 `com.example` 和 `demo`。
-   - 添加 **Spring Web** 依赖项。
+   * 使用 **Java** 生成一个 **Maven** 项目。
+   * 指定一个其值大于或等于 2.0 的 Spring Boot  版本。
+   * 指定应用程序的“组”和“项目”名称。    本文使用 `com.example` 和 `demo`。
+   * 添加 **Spring Web** 依赖项。
 
-3. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机。
+1. 指定上述选项后，选择“生成项目”  。 出现提示时，将项目下载到本地计算机。
 
 ## <a name="add-feature-management"></a>添加功能管理
 
@@ -57,20 +57,41 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 1. 在文本编辑器中打开 *pom.xml* 文件，将以下内容添加到 `<dependencies>` 列表中：
 
+### <a name="spring-cloud-11x"></a>Spring Cloud 1.1.x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Spring Cloud 1.2.x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
         }
     }
     ```
+
 1. 在应用的包目录中创建名为 MessageProperties.java 的新 Java 文件  。
 
     ```java
@@ -131,7 +153,7 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
     }
     ```
 
-1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。 
+1. 在应用的包目录中创建新的名为 HelloController.java 的 Java 文件  。
 
     ```java
     package com.example.demo;
@@ -220,36 +242,36 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
     ```
 
-6. 在 `static` 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。
+1. 在 `static` 下创建名为 CSS 的新文件夹，并在其中创建名为 *main.css* 的新 CSS 文件。
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
@@ -284,6 +306,6 @@ Spring Boot 功能管理库使用全面的功能标志支持扩展了该框架�
 
 在本快速入门中，你已创建一个新的应用程序配置存储，并已使用它来通过[功能管理库](https://go.microsoft.com/fwlink/?linkid=2074664)管理 Spring Boot Web 应用中的功能。
 
-- 详细了解[功能管理](./concept-feature-management.md)。
-- [管理功能标志](./manage-feature-flags.md)。
-- [在 Spring Boot Core 应用中使用功能标志](./use-feature-flags-spring-boot.md)。
+* 详细了解[功能管理](./concept-feature-management.md)。
+* [管理功能标志](./manage-feature-flags.md)。
+* [在 Spring Boot Core 应用中使用功能标志](./use-feature-flags-spring-boot.md)。

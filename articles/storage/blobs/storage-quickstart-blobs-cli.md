@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: 57ab56fe3028da9011e86c589209e7505e69e719
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 58532c6eb6e01a993bce7d6e22a7b5274a465963
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650907"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298127"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入门：使用 Azure CLI 创建、下载和列出 blob
 
@@ -22,11 +22,13 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+## <a name="install-the-azure-cli-locally"></a>在本地安装 Azure CLI
 
 如果选择在本地安装并使用 Azure CLI，本快速入门要求运行 Azure CLI 2.0.46 或更高版本。 运行 `az --version` 即可确定你的版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
@@ -36,11 +38,13 @@ Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 可以在�
 az login
 ```
 
+有关使用 Azure CLI 进行身份验证的详细信息，请参阅[使用 Azure CLI 登录](/cli/azure/authenticate-azure-cli)。
+
 ## <a name="authorize-access-to-blob-storage"></a>授予对 Blob 存储的访问权限
 
 可以使用 Azure AD 凭据或存储帐户访问密钥通过 Azure CLI 授予对 Blob 存储的访问权限。 建议使用 Azure AD 凭据。 本文介绍如何使用 Azure AD 授权 Blob 存储操作。
 
-与针对 Blob 存储的数据操作相对应的 Azure CLI 命令支持 `--auth-mode` 参数，该参数用于指定如何授权给定操作。 将 `--auth-mode` 参数设置为 `login`，使用 Azure AD 凭据进行授权。 有关详细信息，请参阅[使用 Azure AD 凭据运行 Azure CLI 命令来访问 blob 或队列数据](../common/authorize-active-directory-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
+与针对 Blob 存储的数据操作相对应的 Azure CLI 命令支持 `--auth-mode` 参数，该参数用于指定如何授权给定操作。 将 `--auth-mode` 参数设置为 `login`，使用 Azure AD 凭据进行授权。 有关详细信息，请参阅[使用 Azure CLI 授权访问 blob 或队列数据](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 仅 Blob 存储数据操作支持 `--auth-mode` 参数。 管理操作（例如创建资源组或存储帐户）会自动将 Azure AD 凭据用于授权。
 
@@ -149,7 +153,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组中的任何资源（包括在本快速入门中创建的存储帐户），请使用 [az group delete](/cli/azure/group) 命令删除该资源组。 请务必将尖括号中的占位符值替换为你自己的值：
+若要删除在本快速入门中创建的资源（包括存储帐户），请使用 [az group delete](/cli/azure/group) 命令删除资源组。 请务必将尖括号中的占位符值替换为你自己的值：
 
 ```azurecli
 az group delete \

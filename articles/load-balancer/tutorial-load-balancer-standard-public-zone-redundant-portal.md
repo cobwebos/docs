@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 99ba530d4857520693060d83ad78a7f127003a3d
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732310"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251881"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>教程：在 Azure 门户中使用标准负载均衡器对跨可用性区域的 VM 进行负载均衡
 
@@ -69,16 +69,20 @@ ms.locfileid: "75732310"
 
 在本部分中，将创建一个虚拟网络，在地区中的不同区域中创建虚拟机，然后在虚拟机上安装 IIS，以便对区域冗余负载均衡器进行测试。 因此，如果某个区域发生故障，则同一区域中 VM 的运行状况探测将会失败，而流量可继续由其他区域中的 VM 提供服务。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-创建用于部署后端服务器的虚拟网络。
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在屏幕的左上方，单击“创建资源” > “网络” > “虚拟网络”，然后输入虚拟网络的以下值：   
-    - *myVnet* - 虚拟网络的名称。
-    - *myResourceGroupLBAZ* - 现有资源组的名称。
-    - *myBackendSubnet* - 子网名称。
-2. 单击“创建”以创建虚拟网络。 
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    ![创建虚拟网络](./media/load-balancer-standard-public-availability-zones-portal/2-load-balancer-virtual-network.png)
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLBAZ（选择现有资源组） |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西欧      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>创建网络安全组
 

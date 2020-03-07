@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554847"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361074"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>将活动的已训练应用发布到过渡或生产终结点
 
@@ -57,7 +57,7 @@ ms.locfileid: "74554847"
 
 选择槽后，配置的发布设置：
 
-* 观点分析
+* 情绪分析
 * 拼写更正-仅限 v2 预测终结点
 * 语音启动 
 
@@ -69,7 +69,7 @@ ms.locfileid: "74554847"
 
 如果需要终结点 URL，请选择该链接。 还可以通过在顶部菜单中选择 "**管理**"，然后在左侧菜单中选择 " **Azure 资源**" 来访问终结点 url。 
 
-## <a name="sentiment-analysis"></a>观点分析
+## <a name="sentiment-analysis"></a>情绪分析
 
 <a name="enable-sentiment-analysis"></a>
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 2477d91ac885d4ef39df7b9246f7272d66c3f7ee
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470184"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78251861"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
@@ -110,21 +110,20 @@ ms.locfileid: "77470184"
 
 在本部分，我们将创建一个虚拟网络，为负载均衡器的后端池创建三台虚拟机，然后在虚拟机上安装 IIS，以便对负载均衡器进行测试。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 *myVNet*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择现有资源 - *myResourceGroupSLB*。 |
-    | 位置 | 选择“西欧”  。|
-    | 子网 - 名称 | 输入 *myBackendSubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-1. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西欧      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 公共 IP SKU 和负载均衡器 SKU 必须匹配。 对于标准负载均衡器，请使用后端池中具有标准 IP 地址的 VM。 在本部分，你将在三个不同的区域（区域 1、区域 2 和区域 3）中创建具有标准公共 IP 地址的三个 VM（*myVM1*、*myVM2* 和 *myVM3*），这些 VM 将稍后添加到前面创建的负载均衡器后端池。    如果选择了“基本”，请使用具有基本 IP 地址的 VM。

@@ -4,12 +4,12 @@ description: 了解如何使用 Ansible 创建和配置 Azure Database for MySQL
 keywords: ansible, azure, devops, bash, playbook, mysql, 数据库
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603123"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78247871"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>教程：使用 Ansible 在 Azure Database for MySQL 中配置数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "77603123"
 > * 查询可用的 MySQL 服务器
 > * 列出已连接服务器中的所有数据库
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
@@ -157,9 +157,13 @@ ansible-playbook mysql_firewall.yml
 
 本部分将使用 Azure Cloud Shell 连接到先前创建的服务器。
 
-1. 在以下代码中选择“试用”按钮  ：
+1. 通过选择下面的图标打开 shell.azure.com。
 
-    ```azurecli-interactive
+   [![嵌入式启动](https://shell.azure.com/images/launchcloudshell.png "启动 Azure Cloud Shell")](https://shell.azure.com)
+
+1. 输入以下代码：
+
+    ```sql
     mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     ```
 
@@ -171,7 +175,7 @@ ansible-playbook mysql_firewall.yml
     
     如果一切顺利，可看到类似于以下结果的输出：
     
-    ```
+    ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.

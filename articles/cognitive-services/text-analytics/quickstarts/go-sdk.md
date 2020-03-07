@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 0b4495616c750b2b3e8431e011d71ae8671af1ef
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560773"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912628"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>快速入门：使用适用于 Go 文本分析客户端库
 
@@ -24,16 +24,15 @@ ms.locfileid: "77560773"
 > [!NOTE]
 > 本快速入门仅适用于文本分析 2.1 版。 目前，适用于 Go 的 v3 客户端库不可用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
 * 最新版本的 [Go](https://golang.org/dl/)
+* 你有了 Azure 订阅后，<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="创建文本分析资源"  target="_blank">将在 Azure 门户中创建文本分析资源 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，以获取你的密钥和终结点。 
+    * 你需要从创建的资源获取密钥和终结点，以便将应用程序连接到文本分析 API。 稍后会在本快速入门中执行此操作。
+    * 可以使用免费定价层试用该服务，然后再升级到付费层进行生产。
 
 ## <a name="setting-up"></a>设置
-
-### <a name="create-a-text-analytics-azure-resource"></a>创建文本分析 Azure 资源 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-go-project"></a>创建新的 Go 项目
 

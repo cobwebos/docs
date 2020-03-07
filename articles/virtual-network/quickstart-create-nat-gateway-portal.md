@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c6da4b54dbc982c69e9d3004a5da8f63deffa3e9
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588733"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78246016"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 NAT 网关
 
@@ -32,27 +32,24 @@ ms.locfileid: "77588733"
 
 登录 [Azure 门户](https://portal.azure.com)。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-在部署 VM 并使用 NAT 网关之前，需要创建资源组和虚拟网络。  
+在部署 VM 并使用 NAT 网关之前，需要创建资源组和虚拟网络。
 
-1. 在屏幕的左上方选择“创建资源” > “网络” > “虚拟网络”，或者在市场搜索中搜索“虚拟网络”。    
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-2. 在“创建虚拟网络”  中，输入或选择以下信息：
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 美国东部 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 名称 | 输入 **myVNet**。 |
-    | 地址空间 | 输入 192.168.0.0/16  。 |
-    | 订阅 | 选择订阅。|
-    | 资源组 | 选择“新建”并输入 **myResourceGroupNAT**。 |
-    | 位置 | 选择“美国东部 2”。 |
-    | 子网 - 名称 | 输入 **mySubnet**。 |
-    | 子网 - 地址范围 | 输入 **192.168.0.0/24**。 |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>创建 VM 以使用 NAT 网关
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>创建 VM 以使用 NAT 网关
 
 现在，我们将创建一个 VM 来使用 NAT 服务。 此 VM 将某个公共 IP 用作实例级公共 IP，使你能够访问此 VM。 NAT 服务可识别流的方向，并会替代子网中的默认 Internet 目标。 VM 的公共 IP 地址不会用于出站连接。
 

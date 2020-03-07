@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274176"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78273991"
 ---
 # <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>（已弃用）缩放 Kubernetes Pod 和 Kubernetes 基础结构
 
@@ -42,13 +42,15 @@ ms.locfileid: "76274176"
 
 到目前为止，Azure 投票前端和 Redis 实例已部署，每个都有一个副本。 若要进行验证，请运行 [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 命令。
 
-```azurecli-interactive
+在浏览器中访问 [https://shell.azure.com](https://shell.azure.com) 以打开 Cloud Shell。
+
+```console
 kubectl get pods
 ```
 
 输出：
 
-```bash
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -56,19 +58,19 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 
 使用 [kubectl scale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale) 命令手动 `azure-vote-front` 部署中的 Pod 数。 此示例将该数量增加到 5。
 
-```azurecli-interactive
+```console
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
 运行 [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) 以验证 Kubernetes 是否在创建 Pod。 一分钟左右之后，其他 Pod 在运行：
 
-```azurecli-interactive
+```console
 kubectl get pods
 ```
 
 输出：
 
-```bash
+```output
 NAME                                READY     STATUS    RESTARTS   AGE
 azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
 azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
@@ -84,7 +86,7 @@ Kubernetes 支持[水平 Pod 自动缩放](https://kubernetes.io/docs/tasks/run-
 
 若要使用自动缩放程序，Pod 必须定义了 CPU 请求和限制。 在 `azure-vote-front` 部署中，前端容器请求 0.25 个 CPU，限制为 0.5 个 CPU。 设置与下面类似：
 
-```YAML
+```yaml
 resources:
   requests:
      cpu: 250m
@@ -95,19 +97,19 @@ resources:
 下面的示例使用 [kubectl autoscale](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale) 命令自动缩放 `azure-vote-front` 部署中的 Pod 数。 在此处，如果 CPU 利用率超过 50%，则自动缩放程序会将 Pod 增加到最多 10 个。
 
 
-```azurecli-interactive
+```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
 若要查看自动缩放程序的状态，请运行以下命令：
 
-```azurecli-interactive
+```console
 kubectl get hpa
 ```
 
 输出：
 
-```bash
+```output
 NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
@@ -126,7 +128,7 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 命令输出在 `agentPoolProfiles:count` 值中显示代理节点数：
 
-```azurecli
+```output
 {
   "agentPoolProfiles": [
     {

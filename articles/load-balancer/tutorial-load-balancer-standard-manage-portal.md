@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5b39186a39fbd2398fb4045ba62797e321fc3284
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225182"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78249855"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>教程：通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡
 
@@ -42,16 +42,16 @@ ms.locfileid: "74225182"
 
 ## <a name="create-a-standard-load-balancer"></a>创建标准负载均衡器
 
-在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公用 IP 地址。 
+在本部分，我们将创建一个标准负载均衡器，以帮助对虚拟机进行负载均衡。 标准负载均衡器仅支持标准公共 IP 地址。 创建标准负载均衡器时，还必须为该标准负载均衡器创建一个配置为前端（默认情况下命名为 *LoadBalancerFrontend*）的新的标准公共 IP 地址。 
 
 1. 在屏幕的左上方，单击“创建资源”   > “网络”   > “负载均衡器”  。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”    ：
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | Subscription               | 选择订阅。    |    
-    | Resource group         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 订阅               | 选择订阅。    |    
+    | 资源组         | 选择“新建”并在文本框中键入 *myResourceGroupSLB*  。|
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”  。                                        |
     | 类型          | 选择“公共”。                                         |
     | SKU           | 选择“标准”  。                          |
@@ -85,7 +85,7 @@ ms.locfileid: "74225182"
      
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myHealthProbe*。 |
+    | 名称 | 输入 *myHealthProbe*。 |
     | 协议 | 选择“HTTP”。  |
     | 端口 | 输入 *80*。|
     | 时间间隔 | 输入 *15* 作为两次探测尝试之间的**时间间隔**（以秒为单位）。 |
@@ -103,7 +103,7 @@ ms.locfileid: "74225182"
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 *myHTTPRule*。 |
+    | 名称 | 输入 *myHTTPRule*。 |
     | 协议 | 选择“TCP”  。 |
     | 端口 | 输入 *80*。|
     | 后端端口 | 输入 *80*。 |
@@ -116,22 +116,20 @@ ms.locfileid: "74225182"
 
 在本部分，我们将创建一个虚拟网络，为负载均衡器的后端池创建三台虚拟机，然后在虚拟机上安装 IIS，以便对负载均衡器进行测试。
 
-### <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在屏幕的左上方，选择“创建资源” > “网络” > “虚拟网络”    。
-2. 在“创建虚拟网络”  中，输入或选择以下信息：
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
 
-    | 设置 | 值 |
-    | ------- | ----- |
-    | Name | 输入 *myVNet*。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | Subscription | 选择订阅。|
-    | Resource group | 选择现有资源 - *myResourceGroupSLB*。 |
-    | 位置 | 选择“西欧”  。|
-    | 子网 - 名称 | 输入 *myBackendSubnet*。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
-    
-3. 将剩余的字段保留默认设置，然后选择 **“创建”** 。
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB（选择现有资源组） |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 西欧      |
+| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0\24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -146,7 +144,7 @@ ms.locfileid: "74225182"
    - 在“实例详细信息” > “可用性选项”中，选择“可用性区域”。    
    - 在“实例详细信息” > “可用性区域”中，选择“1”。   
   
-1. 选择“网络”选项卡，或选择  **“下一步:磁盘”，然后选择“下一步:网络”** 。 
+1. 选择“网络”  选项卡，或选择“下一步: **磁盘”，然后选择“下一步:**  网络”。 
    
    - 确保选中以下项：
        - **虚拟网络**：**myVnet**
@@ -164,7 +162,7 @@ ms.locfileid: "74225182"
 1. 选择“管理”选项卡，或者选择“下一步”   >   “管理”。  在“监视”  下，将“启动诊断”  设置为“关闭”。  
 1. 选择“查看 + 创建”  。   
 1. 检查设置，然后选择“创建”。 
-1. 遵循 *myVM1* 的相同创建步骤，分别在**可用性区域** **2** 和 **3** 中，额外创建两个具有标准 SKU 公共 IP 地址的 VM - *myVM2* 和 *myVM3*。  
+1. 按照步骤创建另外两个 VM（myVM2  和 myVM3  ），其标准 SKU 公共 IP 地址分别位于**可用性区域** **2** 和 **3** 中，其他所有设置与 myVM1  相同。  
 
 ### <a name="create-network-security-group-rule"></a>创建网络安全组规则
 

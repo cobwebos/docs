@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310050"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207058"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用程序配置创建 Azure Functions 应用
 
 在本快速入门中，你会将 Azure 应用程序配置服务合并到 Azure Functions 应用中，以集中存储和管理与代码分离的所有应用程序设置。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/)
 - 包含 **Azure 开发**工作负载的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
@@ -42,11 +42,7 @@ ms.locfileid: "76310050"
 
 ## <a name="connect-to-an-app-configuration-store"></a>连接到应用程序配置存储区
 
-1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索以下 NuGet 包并将其添加到项目中  。 如果无法找到，请选中“包括预发行版”复选框  。
-
-    ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
-    ```
+1. 右键单击项目，然后选择“管理 NuGet 包”  。 在“浏览”选项卡中，搜索 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 包并将其添加到项目中  。 如果找不到，请选择“包含预发行版”复选框  。
 
 2. 打开 Function1.cs，添加 .NET Core 配置和“应用程序配置”配置提供程序的命名空间  。
 
@@ -54,6 +50,7 @@ ms.locfileid: "76310050"
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
+
 3. 添加名为 `Configuration` 的 `static` 属性以创建 `IConfiguration` 的单一实例。 然后通过调用 `AddAzureAppConfiguration()` 添加 `static` 构造函数以连接到应用程序配置。 应用程序启动时即会加载配置。 同一配置实例稍后将用于所有 Functions 调用。
 
     ```csharp
@@ -66,6 +63,7 @@ ms.locfileid: "76310050"
         Configuration = builder.Build();
     }
     ```
+
 4. 更新 `Run` 方法以从配置中读取值。
 
     ```csharp
@@ -76,7 +74,7 @@ ms.locfileid: "76310050"
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
-            
+
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
@@ -90,14 +88,18 @@ ms.locfileid: "76310050"
     ```CLI
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
+
     如果使用 Windows PowerShell，请运行以下命令：
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
+
     如果使用 macOS 或 Linux，则请运行以下命令：
 
+    ```bash
         export ConnectionString='connection-string-of-your-app-configuration-store'
+    ```
 
 2. 按 F5 测试函数。 如果系统提示，请按 Visual Studio 的请求下载和安装 Azure Functions Core (CLI) 工具  。 你还需要启用防火墙例外，这样工具才能处理 HTTP 请求。
 

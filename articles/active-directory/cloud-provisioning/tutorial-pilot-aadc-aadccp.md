@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442116"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78298813"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>为现有已同步的 AD 林试点云预配 
 
@@ -31,11 +31,11 @@ ms.locfileid: "77442116"
 3. 确保为试运行范围中的对象填充 ms-ds-consistencyGUID，使云预配与对象硬性匹配。 
 
    > [!NOTE]
-   > Azure AD Connect sync 默认不会为组对象填充 *ms-ds-consistencyGUID*。 请遵循[此博客文章](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/)中所述的步骤来填充组对象的 *ms-ds-consistencyGUID*。
+   > Azure AD Connect sync 默认不会为组对象填充 *ms-ds-consistencyGUID*。
 
 4. 这是一种高级方案。 请确保严格按照本教程所述的步骤操作。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 以下是完成本教程所需的先决条件
 - 装有 Azure AD Connect sync 1.4.32.0 或更高版本的测试环境
 - 处于同步范围内的且可用于试运行的 OU 或组。 我们建议从少量的对象开始。
@@ -119,7 +119,7 @@ Azure AD Connect sync 使用计划程序同步本地目录中发生的更改。 
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>安装 Azure AD Connect 预配代理
 1. 以企业管理员权限登录到要使用的服务器。  如果使用的是[基本 AD 和 Azure 环境](tutorial-basic-ad-azure.md)教程，则该服务器是 CP1。
-2. 在[此处](https://go.microsoft.com/fwlink/?linkid=2109037)下载 Azure AD Connect 云预配代理。
+2. 使用[此处](how-to-install.md#install-the-agent)列出的步骤下载 Azure AD Connect 云预配代理。
 3. 运行 Azure AD Connect 云预配 (AADConnectProvisioningAgent.Installer)
 3. 在初始屏幕上**接受**许可条款，然后单击“安装”。 </br>
 ![欢迎屏幕](media/how-to-install/install1.png)</br>

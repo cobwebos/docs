@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
+ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939372"
+ms.lasthandoff: 03/03/2020
+ms.locfileid: "78244975"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 专用 DNS 区域
 
@@ -48,7 +48,7 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 1. 在“创建专用 DNS 区域”页上，键入或选择以下值： 
 
-   - **资源组**：选择“新建”，输入 *MyAzureResourceGroup*，然后选择“确定”。   资源组名称在 Azure 订阅中必须唯一。 
+   - **资源组**：选择“新建”，输入 *MyAzureResourceGroup*，然后选择“确定”。   资源组名称在 Azure 订阅中必须唯一。
    -  **Name**：对于此示例，请键入 *private.contoso.com*。
 1. 对于“资源组位置”，请选择“美国中西部”。  
 
@@ -58,13 +58,21 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 
 创建区域可能需要几分钟。
 
-## <a name="create-a-virtual-network"></a>创建虚拟网络
+## <a name="virtual-network-and-parameters"></a>虚拟网络和参数
 
-1. 在门户页的左上角，依次选择“创建资源”、“网络”、“虚拟网络”。   
-2. 对于“名称”，请键入 **myAzureVNet**。 
-3. 对于“资源组”，请选择“MyAzureResourceGroup”。  
-4. 对于“位置”，请选择“美国中西部”。  
-5. 接受其他默认值，然后选择“创建”。 
+在本部分中，你需要将步骤中的以下参数替换为以下信息：
+
+| 参数                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | MyAzureResourceGroup（选择现有资源组） |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | 美国中西部      |
+| **\<IPv4-address-space>**   | 10.2.0.0\16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0\24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>链接虚拟网络
 
@@ -88,9 +96,8 @@ DNS 区域包含域的 DNS 条目。 若要开始在 Azure DNS 中托管域，�
 1. 选择“MyAzureResourceGroup”作为资源组。 
 1. 键入 **myVM01** 作为虚拟机的名称。
 1. 选择“美国中西部”作为**区域**。 
-1. 键入 **azureadmin** 作为管理员用户名。
-2. 键入 **Azure12345678** 作为密码，并确认该密码。
-
+1. 为管理员用户名输入一个名称。
+2. 输入密码并确认密码。
 5. 对“公共入站端口”选择“允许所选端口”，然后对“选择入站端口”选择“RDP (3389)”。    
 10. 接受该页上的其他默认值，然后单击“下一步:  磁盘 >”。
 11. 接受“磁盘”页上的默认值，然后单击“下一步:   网络 >”。

@@ -1,5 +1,5 @@
 ---
-title: '快速入门：创建工作负荷分类器 - T-SQL '
+title: 快速入门：创建工作负荷分类器 - T-SQL
 description: 使用 T-SQL 创建具有较高重要性的工作负荷分类器。
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.custom: azure-synapse
+ms.openlocfilehash: 9f15317141e56614cf6fe04f46ff478a73266775
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646291"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200492"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>快速入门：使用 T-SQL 创建工作负荷分类器
 
@@ -24,7 +25,7 @@ ms.locfileid: "73646291"
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
 > [!NOTE]
-> 创建 SQL 数据仓库可能会导致新的计费服务。  有关详细信息，请参阅 [Azure SQL 数据仓库定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
+> 在 Azure Synapse Analytics 中创建一个 SQL Analytics 实例可能会产生一个新的计费服务。  有关详细信息，请参阅 [Azure Synapse Analytics 定价](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)。
 >
 >
 
@@ -34,7 +35,7 @@ ms.locfileid: "73646291"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-登录到 [Azure 门户](https://portal.azure.com/)。
+登录 [Azure 门户](https://portal.azure.com/)。
 
 ## <a name="create-login-for-theceo"></a>为 TheCEO 创建登录名
 
@@ -108,5 +109,5 @@ DROP USER [TheCEO]
 ## <a name="next-steps"></a>后续步骤
 
 - 现已创建一个工作负荷分类器。 以 TheCEO 身份运行一些查询，以查看该分类器的执行情况。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
-- 有关 Azure SQL 数据仓库工作负荷管理的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷分类](sql-data-warehouse-workload-classification.md)。
+- 有关 SQL Analytics 工作负荷管理的详细信息，请参阅[工作负荷重要性](sql-data-warehouse-workload-importance.md)和[工作负荷分类](sql-data-warehouse-workload-classification.md)。
 - 请参阅有关[配置工作负荷重要性](sql-data-warehouse-how-to-configure-workload-importance.md)和[管理和监视工作负荷管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)的操作指南文章。

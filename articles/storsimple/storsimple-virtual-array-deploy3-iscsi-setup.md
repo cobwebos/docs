@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516816"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365596"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>部署 StorSimple 虚拟阵列 - 通过 Azure 门户设置为 iSCSI 服务器
 
@@ -90,7 +90,7 @@ ms.locfileid: "68516816"
       > 如果将 iSCSI 服务器加入域，请确保虚拟阵列采用其自身的适用于 Microsoft Azure Active Directory 的组织单位 (OU)，没有对其应用任何组策略对象 (GPO)。
       > 
       > 
-   4. 此时会显示一个对话框。 按指定格式输入域凭据。 设置筛选器后，单击选中图标 ![勾号图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)。 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
+   4. 此时会显示一个对话框。 按指定格式输入域凭据。 设置筛选器后，单击选中图标 ![选中图标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png). 此时会验证域凭据。 如果凭据不正确，则会显示错误消息。
       
        ![凭据](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. 单击“应用”。 此时会应用和验证设备设置。
@@ -100,7 +100,7 @@ ms.locfileid: "68516816"
    
     在“Web 代理”页上：
    
-   1. 提供此格式的**Web 代理 URL** : *\/http:/host-IP address*或*FQDN: 端口号*。 请注意，不支持 HTTPS URL。
+   1. 提供此格式的**Web 代理 URL** ： *http：\//Host-IP address*或*FQDN：端口号*。 请注意，不支持 HTTPS URL。
    2. 将“身份验证”指定为“基本”或“无”。
    3. 如果使用身份验证，则还需提供“用户名”和“密码”。
    4. 单击“应用”。 此时会验证并应用配置的 Web 代理设置。
@@ -123,7 +123,7 @@ ms.locfileid: "68516816"
       ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image11.png)
 10. 返回到 Azure 门户。
 11. 导航到服务的“设备”边栏选项卡。 如果有大量资源，请单击“所有资源”，单击服务名称（必要时可搜索），然后单击“设备”。
-12. 在“设备”边栏选项卡上，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“已准备好设置”。
+12. 在“设备”边栏选项卡上，通过查看状态验证该设备是否已成功连接到该服务。 设备状态应为“就绪可设置”。
     
     ![注册设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
@@ -162,7 +162,7 @@ ms.locfileid: "68516816"
 2. 在“添加卷”边栏选项卡中，执行以下操作：
    
    * 在“卷名”字段中，输入卷的唯一名称。 该名称必须是包含 3 到 127 个字符的字符串。
-   * 在“类型”下拉列表中，指定要创建**分层**卷还是要创建**本地固定**卷。 对于需要本地保证、低延迟和高性能的工作负荷，请选择“本地固定卷”。 对于所有其他数据，请选择“分层卷”。
+   * 在“类型”下拉列表中，指定要创建**分层**卷还是要创建**本地固定**卷。 对于需要本地保证、低延迟和高性能的工作负荷，请选择 "**本地固定** **卷**"。 对于所有其他数据，请选择 "**分层** **卷**"。
    * 在“容量”字段中，指定卷的大小。 分层卷的大小必须介于 500 GB 到 5 TB 之间，本地固定卷的大小必须介于 50 GB 到 500 GB 之间。
      
      本地固定卷经过充分预配，可确保卷中的主数据保留在设备上，未溢出到云。
@@ -197,12 +197,12 @@ ms.locfileid: "68516816"
 4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 （每个卷都可以是已发现的目标。）设备状态应显示为 **非活动**。
    
     ![已发现的目标](./media/storsimple-virtual-array-deploy3-iscsi-setup/image24.png)
-5. 选择目标设备，并单击“连接”。 设备连接后，状态应更改为 **已连接**。 (有关使用 Microsoft iSCSI 发起程序的详细信息, 请参阅[安装和配置 Microsoft Iscsi 发起程序][1]。
+5. 选择目标设备，并单击“连接”。 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft Iscsi 发起程序][1]。
    
     ![选择目标设备](./media/storsimple-virtual-array-deploy3-iscsi-setup/image25.png)
 6. 在 Windows 主机上，按 Windows 徽标键 + X，并单击“ **运行**”。
-7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中将显示主机上的卷。
-8. 在“磁盘管理”窗口中，将显示已装载的卷，如以下插图所示。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
+7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中会显示在主机上的卷。
+8. 在“ **磁盘管理** ”窗口中，已装载的卷会显示在以下所示的插图中。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
    
     ![磁盘管理](./media/storsimple-virtual-array-deploy3-iscsi-setup/image26.png)
 9. 右键单击，并选择“初始化磁盘”。

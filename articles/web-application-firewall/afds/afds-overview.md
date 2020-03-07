@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934719"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915633"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上的 Azure Web 应用程序防火墙
 
@@ -77,7 +77,7 @@ WAF 策略可以由安全规则（由客户创作的自定义规则）和托管�
 
 ### <a name="azure-managed-rule-sets"></a>Azure 托管的规则集
 
-Azure 托管的规则集可轻松针对一组常见的安全威胁来部署保护。 由于此类规则集由 Azure 托管，因此这些规则会根据需要进行更新以预防新的攻击签名。 在公共预览版中，Azure 托管的默认规则集包含针对以下威胁类别的规则：
+Azure 托管的规则集可轻松针对一组常见的安全威胁来部署保护。 由于此类规则集由 Azure 托管，因此这些规则会根据需要进行更新以预防新的攻击签名。 Azure 托管的默认规则集包含针对以下威胁类别的规则：
 
 - 跨站点脚本
 - Java 攻击
@@ -91,6 +91,8 @@ Azure 托管的规则集可轻松针对一组常见的安全威胁来部署保�
 
 将新的攻击签名添加到规则集时，默认规则集的版本号将递增。
 默认规则集在 WAF 策略的检测模式下默认启用。 可以禁用或启用默认规则集内的各个规则以满足应用程序要求。 还可以根据规则设置特定操作（允许/阻止/重定向/记录）。
+
+有时你可能需要忽略 WAF 评估中的某些请求属性。 一个常见的例子是用于身份验证的 Active Directory 插入令牌。 可以为托管规则、规则组或整个规则集配置排除列表。  
 
 默认操作为“阻止”。 此外，如果想要绕过默认规则集中的任何预配置规则，可以在同一 WAF 策略中配置自定义规则。
 
