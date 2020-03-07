@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433354"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372189"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>排查 Azure Cache for Redis 服务器端问题
 
@@ -19,7 +19,7 @@ ms.locfileid: "75433354"
 
 - [Redis 服务器上的内存压力](#memory-pressure-on-redis-server)
 - [CPU 使用率或服务器负载过高](#high-cpu-usage-or-server-load)
-- [长时间运行的命令](#long-running-commands)
+- [长时间运行命令](#long-running-commands)
 - [服务器端带宽限制](#server-side-bandwidth-limitation)
 
 > [!NOTE]

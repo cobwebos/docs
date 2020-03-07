@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
 ms.openlocfilehash: 308a474970db54022e5351fdf349d9572fbafb0d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888560"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390153"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -28,15 +28,15 @@ ms.locfileid: "75888560"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要运行 LUIS 容器，请注意以下先决条件：
 
-|需要|用途|
+|必需|用途|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|Azure `Cognitive Services` 资源和 LUIS[打包的应用](luis-how-to-start-new-app.md)文件 |若要使用容器，必须具有：<br><br>*_认知服务_Azure 资源和关联的计费密钥的计费终结点 URI。 这两个值都可用于资源的 "概述" 和 "键" 页，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以从 LUIS 门户或创作 Api 获取打包的文件。 如果从[创作 api](#authoring-apis-for-package-file)获取 LUIS 打包应用，还需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}** ：此密钥用于从云中的 LUIS 服务获取打包的应用，并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}** ：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}** ：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是_认知服务_资源的密钥列表中的 Azure 门户。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}** ： "概述" 页中提供的终结点。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
+|Azure `Cognitive Services` 资源和 LUIS[打包的应用](luis-how-to-start-new-app.md)文件 |若要使用容器，必须具有：<br><br>*_认知服务_Azure 资源和关联的计费密钥的计费终结点 URI。 这两个值都可用于资源的 "概述" 和 "键" 页，并且是启动容器所必需的。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以从 LUIS 门户或创作 Api 获取打包的文件。 如果从[创作 api](#authoring-apis-for-package-file)获取 LUIS 打包应用，还需要_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}** ：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}** ：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}** ：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是_认知服务_资源的密钥列表中的 Azure 门户。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{ENDPOINT_URI}** ："概述" 页中提供的终结点。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "75888560"
 
 此容器支持设置的最小值和建议值：
 
-|容器| 最小值 | 推荐 | TPS<br>（最小值、最大值）|
+|容器| 最低要求 | 建议 | TPS<br>（最小值、最大值）|
 |-----------|---------|-------------|--|
 |LUIS|单核，2 GB 内存|1核，4 GB 内存|20，40|
 
@@ -243,7 +243,7 @@ ApiKey={API_KEY}
 
 使用主机 `http://localhost:5000`，以获得容器 API。
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 预测终结点](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/v3)
 
 |包类型|HTTP 谓词|路由|查询参数|
 |--|--|--|--|
@@ -252,14 +252,14 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|Type|用途|
 |--|--|--|
 |`query`|字符串|用户的话语。|
 |`verbose`|boolean|一个布尔值，指示是否返回预测模型的所有元数据。 默认值为 false。|
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 false。|
 |`show-all-intents`|boolean|一个布尔值，该值指示是只返回所有意向还是仅返回 top 计分意向。 默认值为 false。|
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/v2)
 
 |包类型|HTTP 谓词|路由|查询参数|
 |--|--|--|--|
@@ -268,10 +268,10 @@ ApiKey={API_KEY}
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|Type|用途|
 |--|--|--|
 |`q`|字符串|用户的话语。|
-|`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
+|`timezoneOffset`|number|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
 |`verbose`|boolean|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
 |`staging`|boolean|设置为 true 时，返回过渡环境结果中的查询。 |
 |`log`|boolean|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
@@ -282,7 +282,7 @@ ApiKey={API_KEY}
 
 用于查询已发布应用的容器的示例 CURL 命令是：
 
-# <a name="v3-prediction-endpointtabv3"></a>[V3 预测终结点](#tab/v3)
+# <a name="v3-prediction-endpoint"></a>[V3 预测终结点](#tab/v3)
 
 若要查询槽中的模型，请使用以下 API：
 
@@ -308,7 +308,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
-# <a name="v2-prediction-endpointtabv2"></a>[V2 预测终结点](#tab/v2)
+# <a name="v2-prediction-endpoint"></a>[V2 预测终结点](#tab/v2)
 
 若要查询槽中的模型，请使用以下 API：
 
@@ -361,7 +361,7 @@ curl -X GET \
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>计费
+## <a name="billing"></a>账单
 
 LUIS 容器使用 Azure 帐户上的_认知服务_资源将计费信息发送到 azure。 
 
@@ -372,7 +372,7 @@ LUIS 容器使用 Azure 帐户上的_认知服务_资源将计费信息发送到
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>Summary
 
 在本文中，我们已学习相关的概念，以及语言理解 (LUIS) 容器的下载、安装和运行工作流。 综上所述：
 

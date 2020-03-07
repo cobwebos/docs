@@ -1,5 +1,5 @@
 ---
-title: 术语表 - LUIS
+title: 术语表-LUIS
 titleSuffix: Azure Cognitive Services
 description: 术语表解释使用 LUIS API 服务时可能遇到的术语。
 services: cognitive-services
@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325944"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361077"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>对包含常见词汇和概念的术语表进行语言理解
 语言理解 (LUIS) 术语表解释使用 LUIS API 服务时可能遇到的术语。
@@ -34,11 +34,11 @@ ms.locfileid: "74325944"
 
 ## <a name="batch-test-json-file"></a>批处理测试 JSON 文件
 
-批处理测试是使用一组一致且已知的用户话语测试集验证当前 LUIS 应用模型的功能。 批处理测试在 [JSON 格式化文件](luis-concept-batch-test.md#batch-file-format)中定义。
+批处理测试是指使用用户最谈话的一致且已知测试集验证当前 LUIS 应用的模型。 批处理测试在[JSON 格式的文件](luis-concept-batch-test.md#batch-file-format)中定义。
 
 另请参阅：
 * [概念](luis-concept-batch-test.md)
-* [操作说明](luis-how-to-batch-test.md)
+* [操作指南](luis-how-to-batch-test.md)
 * [教程](luis-tutorial-batch-testing.md)
 
 ## <a name="collaborator"></a>协作者
@@ -79,7 +79,7 @@ ms.locfileid: "74325944"
 
 ## <a name="features"></a>特征
 
-在机器学习中，特征是系统观察到的数据的不同特征或属性[](luis-concept-feature.md)。
+在机器学习中，[特征](luis-concept-feature.md)是系统观察到的数据的特征或特有属性。
 
 ## <a name="intent"></a>意向
 
@@ -154,7 +154,7 @@ LUIS 配额是 [Azure 订阅层](https://aka.ms/luis-price-tier)的限制。 可
 
 ## <a name="subscription-key"></a>订阅密钥
 
-订阅密钥是与[在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS **网站中的**“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥[](luis-reference-regions.md)。 它是“subscription-key”名称/值对的值。
+订阅密钥是与[在 Azure 中创建](luis-how-to-azure-subscription.md)的 LUIS 服务关联的**预测终结点**密钥。 此密钥不是[创作密钥](#programmatic-key)。 如果有终结点密钥，则应为所有终结点请求使用该密钥，而非创作密钥。 可在 [LUIS](luis-reference-regions.md) 网站中的[“密钥和终结点”页](luis-how-to-azure-subscription.md)底部的终结点 URL 内看到当前的终结点密钥。 它是“subscription-key”名称/值对的值。
 
 ## <a name="test"></a>测试
 

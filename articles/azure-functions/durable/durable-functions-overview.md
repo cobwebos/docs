@@ -7,11 +7,11 @@ ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
 ms.openlocfilehash: 5d454aefaba89bef9dc9009ff442fa5543dae2ef
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756137"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355649"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -50,7 +50,7 @@ Durable Functions 的主要用例是简化无服务器应用程序中出现的�
 
 在此示例中，值 `F1`、`F2``F3` 和 `F4` 是同一函数应用中其他函数的名称。 可以使用常规命令性编码构造实现控制流。 代码从上到下执行。 代码可能涉及现有语言控制流语义，如条件语句和循环语句。 可以在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -73,7 +73,7 @@ public static async Task<object> Run(
 
 可以使用 `context` 参数按名称调用其他函数、传递参数并返回函数输出。 每当代码调用 `await` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或虚拟机，函数实例将从上一个 `await` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -107,7 +107,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Durable Functions 扩展可使用相对简单的代码处理这种模式：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -136,7 +136,7 @@ public static async Task Run(
 
 在针对 `Task.WhenAll` 调用 `await` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -218,7 +218,7 @@ Durable Functions 扩展公开内置的 HTTP API 用于管理长时间运行的�
 
 以下代码实现一个基本的监视器：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -248,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -292,7 +292,7 @@ module.exports = df.orchestrator(function*(context) {
 
 这些示例创建一个审批过程来演示人机交互模式：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -321,7 +321,7 @@ public static async Task Run(
 
 若要创建持久计时器，请调用 `context.CreateTimer`。 通知由 `context.WaitForExternalEvent` 接收。 然后，调用 `Task.WhenAny` 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +355,7 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 
 也可以在同一函数应用中，使用另一个函数的持久业务流程客户端引发事件：
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -368,7 +368,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -392,7 +392,7 @@ module.exports = async function (context) {
 
 可以使用[持久实体](durable-functions-entities.md)轻松地将此模式实现为单一函数。
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -435,7 +435,7 @@ public class Counter
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -461,7 +461,7 @@ module.exports = df.entity(function(context) {
 
 客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -481,7 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > .NET 中也可以使用动态生成的代理以类型安全的方式发信号通知实体。 此外，除了发送信号外，客户端还可以对业务流程客户端绑定使用[类型安全方法](durable-functions-bindings.md#entity-client-usage)来查询实体函数的状态。
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");

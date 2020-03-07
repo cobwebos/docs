@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: spelluru
 ms.openlocfilehash: 9b31f3e68fbabc32f301fdcd8066a3bfbf1c2dbd
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028432"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380921"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>向用户授予特定实验室策略的权限
 ## <a name="overview"></a>概述
@@ -30,7 +30,7 @@ ms.locfileid: "72028432"
 
 在开发测试实验室中，策略是一种资源类型，可启用 RBAC 操作 **Microsoft.DevTestLab/labs/policySets/policies/** 。 每个实验室策略都是策略资源类型中的一种资源，并可作为作用域分配给 RBAC 角色。
 
-例如，若要向用户授予对**允许的 VM 大小**策略的读/写权限，你将创建一个与**microsoft.devtestlab/实验室/policySets/policy/** action 结合使用的自定义角色，然后将相应的用户分配到此自定义角色在**microsoft.devtestlab/labs/policySets/AllowedVmSizesInLab**的范围内。
+例如，若要授予用户对**允许的 VM 大小**策略的读/写权限，你需要创建一个可与**microsoft.devtestlab/实验室/policySets/policy/** 操作一起工作的自定义角色，然后将相应的用户分配到**microsoft.devtestlab/实验室/policySets/policy/AllowedVmSizesInLab**范围内的此自定义角色。
 
 若要了解有关 RBAC 中自定义角色的详细信息，请参阅[自定义角色的访问控制](../role-based-access-control/custom-roles.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "72028432"
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>使用自定义角色将某特定策略的权限分配给用户
 一旦定义了自定义角色，即可将其分配给用户。 为了将自定义角色分配给用户，首先必须获取代表用户的 **ObjectId**。 为此，请使用**AzADUser** cmdlet。
 
-在下方示例中，*SomeUser* 用户的 **ObjectId** 为 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3。
+在下方示例中，**SomeUser** 用户的 *ObjectId* 为 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3。
 
     PS C:\>Get-AzADUser -SearchString "SomeUser"
 
