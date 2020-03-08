@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 3/2/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 752e8745a1cf2965d2dc88eaeee9404cf596547a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620890"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668836"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -30,7 +30,7 @@ ms.locfileid: "77620890"
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
 > [!IMPORTANT]
-> 访问令牌是基于令牌的*受众*创建的，这意味着拥有令牌中的作用域的应用程序。  这是[应用程序清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 的 `2` 允许客户端调用1.0 版终结点以接收 v2.0 访问令牌。  同样，如果为客户端更改访问令牌的[可选声明](active-directory-optional-claims.md)，则更改该令牌时，不会更改接收的访问令牌，该令牌由 MS Graph 资源拥有 `user.read`。  
+> 访问令牌是基于令牌的*受众*创建的，这意味着拥有令牌中的作用域的应用程序。  这是[应用程序清单](reference-app-manifest.md#manifest-reference)中的资源设置 `accessTokenAcceptedVersion` 的 `2` 允许客户端调用1.0 版终结点以接收 v2.0 访问令牌。  同样，这就是为什么更改客户端的访问令牌[可选声明](active-directory-optional-claims.md)时，不会更改在请求令牌时收到的访问令牌，该令牌由资源拥有 `user.read`。
 > 出于同一原因，当使用个人帐户（如 hotmail.com 或 outlook.com）测试客户端应用程序时，可能会发现客户端收到的访问令牌是不透明的字符串。 这是因为要访问的资源请求了旧 MSA （Microsoft 帐户）票证，它们已加密，并且客户端无法理解。
 
 ## <a name="sample-tokens"></a>示例令牌
@@ -82,9 +82,9 @@ JWT 拆分成三个部分：
 
 | 声明 | 格式 | 说明 |
 |-----|--------|-------------|
-| `aud` | 字符串，应用 ID URI | 标识令牌的目标接收方。 在 id 令牌中，受众是应用的应用程序 ID，分配给你在 Azure 门户中的应用程序。 应用应该验证此值并拒绝其值不匹配的令牌。 |
+| `aud` | 字符串，应用 ID URI | 标识令牌的目标接收方。 在 ID 令牌中，受众是应用的应用程序 ID，分配给你在 Azure 门户中的应用程序。 应用应该验证此值并拒绝其值不匹配的令牌。 |
 | `iss` | 字符串，STS URI | 标识构造并返回令牌的安全令牌服务 (STS)，以及对用户进行身份验证的 Azure AD 租户。 如果颁发的令牌是 v2.0 令牌（请参阅 `ver` 声明），则 URI 将以 `/v2.0` 结尾。 表示用户是来自 Microsoft 帐户的使用者用户的 GUID 为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 应用应该使用声明的 GUID 部分限制可登录应用的租户集（如果适用）。 |
-|`idp`| 字符串，通常是 STS URI | 记录对令牌使用者进行身份验证的标识提供程序。 除非用户帐户与颁发者不在同一租户中，否则此值与颁发者声明的值相同 - 例如，来宾。 如果声明不存在，则表示可以改为使用 `iss` 的值。  对于在组织上下文中使用的个人帐户（例如，受邀加入 Azure AD 租户的个人帐户），`idp` 声明可能是“live.com”或包含 Microsoft 帐户租户 `9188040d-6c67-4c5b-b112-36a304b66dad` 的 STS URI。 |  
+|`idp`| 字符串，通常是 STS URI | 记录对令牌使用者进行身份验证的标识提供程序。 除非用户帐户与颁发者不在同一租户中，否则此值与颁发者声明的值相同 - 例如，来宾。 如果声明不存在，则表示可以改为使用 `iss` 的值。  对于在组织上下文中使用的个人帐户（例如，受邀加入 Azure AD 租户的个人帐户），`idp` 声明可能是“live.com”或包含 Microsoft 帐户租户 `9188040d-6c67-4c5b-b112-36a304b66dad` 的 STS URI。 |
 | `iat` | int，UNIX 时间戳 | “Issued At”表示针对此令牌进行身份验证的时间。 |
 | `nbf` | int，UNIX 时间戳 | “nbf”（不早于）声明指定只能在哪个时间之后接受 JWT 的处理。 |
 | `exp` | int，UNIX 时间戳 | “exp”（过期时间）声明指定只能在哪个时间（含）之前接受 JWT 的处理。 请务必注意，资源也可以在此时间之前拒绝令牌，例如，需要对身份验证进行更改，或者检测到令牌吊销时。 |
@@ -100,9 +100,9 @@ JWT 拆分成三个部分：
 | `scp` | 字符串，范围的空格分隔列表 | 应用程序公开的、客户端应用程序已请求（和接收）其许可的范围集。 应用应该验证这些范围是否为应用公开的有效范围，并根据这些范围的值做出授权决策。 仅为[用户令牌](#user-and-application-tokens)包含此值。 |
 | `roles` | 字符串数组、权限列表 | 应用程序公开的、请求的应用程序或用户已获得调用权限的权限集。 对于[应用程序令牌](#user-and-application-tokens)，此设置在客户端凭据[流（v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) [，v2.0](v2-oauth2-client-creds-grant-flow.md)）期间用于代替用户范围。  对于[用户令牌](#user-and-application-tokens)，此操作用用户在目标应用程序中分配的角色进行填充。 |
 | `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) guid 的数组 | 从["管理员角色" 页](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)中的角色部分，表示分配给此用户的租户范围的角色。  此声明通过[应用程序清单](reference-app-manifest.md)的 `groupMembershipClaims` 属性基于每个应用程序进行配置。  将其设置为 "All" 或 "DirectoryRole" 是必需的。  由于令牌长度方面的原因，通过隐式流获取的令牌中可能不存在。 |
-| `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过`groupMembershipClaims`应用程序清单[的 ](reference-app-manifest.md) 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `hasgroups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `groups` 声明。 <br>对于其他流，如果用户所在的组的数目超出了限制（150 for SAML，200 for JWT），则会将超额声明添加到声明源，该声明源指向包含用户的组列表的 AAD Graph 终结点。 |
-| `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应当使用 Graph 来确定用户的组 (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`)。 |
-| `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `groups` | GUID 的 JSON 数组 | 指定表示使用者的组成员身份的对象 ID。 这些值是唯一的（请参阅对象 ID），可安全地用于管理访问，例如强制要求授权才能访问资源。 组声明中包含的组通过`groupMembershipClaims`应用程序清单[的 ](reference-app-manifest.md) 属性基于每个应用程序进行配置。 值为 null 将排除所有组；值为“SecurityGroup”将只包括“Active Directory 安全组”成员身份；值为“All”将包括安全组和 Office 365 通讯组列表。 <br><br>有关将 `hasgroups` 声明与隐式授权一起使用的详细信息，请参阅下文中的 `groups` 声明。 <br>对于其他流，如果用户所在的组的数目超出了限制（150对于 SAML，200 for JWT），则会向声明源添加超额声明，指向包含用户的组列表的 Microsoft Graph 终结点。 |
+| `hasgroups` | Boolean | 如果存在，始终为 `true`，表示用户至少在一个组中。 如果完整组声明将导致 URI 片段超出 URL 长度限制（当前为 6 个或更多组），则在隐式授权流中用来替代 JWT 的 `groups` 声明。 指示客户端应使用 Microsoft Graph API 来确定用户的组（`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`）。 |
+| `groups:src1` | JSON 对象 | 对于长度不受限制（参阅上文中的 `hasgroups`）但对于令牌而言仍然太大的令牌请求，将包括指向用户的完整组列表的链接。 对于 JWT，作为分布式声明；对于 SAML，作为新声明替代 `groups` 声明。 <br><br>**JWT 值示例**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 另请参阅 `oid` 声明（它在租户内的应用程序中保持不变）。 |
 | `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定[用户帐户](/graph/api/resources/user)的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 | `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |
@@ -111,28 +111,28 @@ JWT 拆分成三个部分：
 | `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
 | `ver` | String，`1.0` 或 `2.0` | 指示访问令牌的版本。 |
 
+**组超额声明**
 
-> [!NOTE]
-> **组超额声明**
->
-> 为了确保标记大小不超过 HTTP 标头大小限制，Azure AD 会限制组声明中包含的对象 Id 的数量。 如果用户所属的组超过超额限制（150对于 SAML 令牌为，对于 JWT 令牌为200），则 Azure AD 不会在令牌中发出组声明。 相反，它在令牌中包含超额声明，该声明指示应用程序查询图形 API 以检索用户的组成员身份。
-  ```csharp
-  {
-    ...
-    "_claim_names": {
-     "groups": "src1"
-      },
-      {
-    "_claim_sources": {
-      "src1": {
-          "endpoint":"[Graph Url to get this user's group membership from]"
-          }
-         }
+为了确保标记大小不超过 HTTP 标头大小限制，Azure AD 会限制组声明中包含的对象 Id 的数量。 如果用户所属的组超过超额限制（150对于 SAML 令牌为，对于 JWT 令牌为200），则 Azure AD 不会在令牌中发出组声明。 相反，它在令牌中包含超额声明，该声明指示应用程序查询 Microsoft Graph API 以检索用户的组成员身份。
+
+```JSON
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
        }
-    ...
-   }
-   ```
-> 你可以使用 "[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/)" 文件夹中提供的 `BulkCreateGroups.ps1` 来帮助测试超额方案。
+     }
+  ...
+ }
+ ```
+
+你可以使用 "[应用创建脚本](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts)" 文件夹中提供的 `BulkCreateGroups.ps1` 来帮助测试超额方案。
 
 #### <a name="v10-basic-claims"></a>v1.0 基本声明
 
@@ -170,9 +170,9 @@ Microsoft 标识可以通过不同的方式进行身份验证，这可能与应�
 
 若要验证 id_token 或 access_token，应用应该验证该令牌的签名和声明。 若要验证访问令牌，应用还应验证颁发者、受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，与租户无关的文档版本位于[https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。
 
-Azure AD 中间件具有验证访问令牌的内置功能，可以浏览我们的[示例](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。 有关如何显式验证 JWT 令牌的详细信息，请参阅[手动 JWT 验证示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。
+Azure AD 中间件具有验证访问令牌的内置功能，可以浏览我们的[示例](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。
 
-我们提供了库和代码示例用于演示如何轻松处理令牌验证。 我们还提供了以下信息以帮助用户了解基础过程。 还有几个第三方开放源代码库可用于 JWT 验证-几乎每个平台和语言都至少有一个选项。 有关 Azure AD 身份验证库和代码示例的详细信息，请参阅 [v1.0 身份验证库](../azuread-dev/active-directory-authentication-libraries.md)和 [v2.0 身份验证库](reference-v2-libraries.md)。
+我们提供了库和代码示例，用于演示如何处理令牌验证。 我们还提供了以下信息以帮助用户了解基础过程。 还有几个第三方开放源代码库可用于 JWT 验证-几乎每个平台和语言都至少有一个选项。 有关 Azure AD 身份验证库和代码示例的详细信息，请参阅 [v1.0 身份验证库](../azuread-dev/active-directory-authentication-libraries.md)和 [v2.0 身份验证库](reference-v2-libraries.md)。
 
 ### <a name="validating-the-signature"></a>验证签名
 
@@ -210,7 +210,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 > [!NOTE]
 > V1.0 终结点返回 `x5t` 和 `kid` 声明，尽管 v2.0 终结点仅使用 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
-签名验证超出了本文档的范围-有许多开源库可用于帮助你在必要时执行此操作。  但是，Microsoft 标识平台具有标准自定义签名密钥的一个令牌签名扩展插件。  
+签名验证超出了本文档的范围-有许多开源库可用于帮助你在必要时执行此操作。  但是，Microsoft 标识平台具有标准自定义签名密钥的一个令牌签名扩展插件。
 
 如果你的应用程序具有自定义签名密钥作为使用[声明映射](active-directory-claims-mapping.md)功能的结果，则必须追加包含应用 ID 的 `appid` 查询参数，以获取指向应用的签名密钥信息的 `jwks_uri`，该信息应用于验证。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`的 `jwks_uri`。
 
@@ -233,13 +233,15 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 * 仅限应用的令牌不会有 `scp` 声明，可以改为具有 `roles` 声明。 这是记录应用程序权限的位置（与委托的权限相反）。 有关委派权限和应用程序权限的详细信息，请参阅权限和[许可（v1.0](../azuread-dev/v1-permissions-consent.md) [，v2.0](v2-permissions-and-consent.md)）。
 * 许多特定于人的声明将丢失，如 `name` 或 `upn`。
-* `sub` 和 `oid` 声明将相同。 
+* `sub` 和 `oid` 声明将相同。
 
 ## <a name="token-revocation"></a>令牌吊销
 
 出于不同的原因，刷新令牌可能会失效或撤消。 这些原因主要分为两个类别：超时和吊销。
 
 ### <a name="token-timeouts"></a>令牌超时
+
+使用[令牌生存期配置](active-directory-configurable-token-lifetimes.md)，可以更改刷新令牌的生存期。  这是正常的，应在不使用的情况下（例如，用户在3个月内未打开应用程序），并因此过期。  应用程序将遇到这样的情况：登录服务器拒绝刷新令牌，因为其期限。 
 
 * MaxInactiveTime：如果在 MaxInactiveTime 所规定的时间内未使用刷新令牌，则刷新令牌将不再有效。
 * MaxSessionAge：如果 MaxAgeSessionMultiFactor 或 MaxAgeSessionSingleFactor 已设置为其默认值（“直到吊销”）以外的值，则在经过 MaxAgeSession* 中设置的时间后，需要重新进行身份验证。
@@ -248,6 +250,8 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
   * 敏感应用程序的 MaxAgeSessionSingleFactor 为一天。 如果用户登录到星期一，在星期二（25小时后），则需要重新进行身份验证。
 
 ### <a name="revocation"></a>吊销
+
+由于凭据发生更改，或者因使用或管理操作的原因，服务器可能会撤消刷新令牌。  刷新令牌分为两类：颁发给机密客户端的类（最右侧的列）以及颁发给公用客户端（所有其他列）的类。   
 
 |   | 基于密码的 Cookie | 基于密码的令牌 | 不基于密码的 Cookie | 不基于密码的令牌 | 机密客户端令牌 |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -264,7 +268,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 >
 > Windows 10 上的主刷新令牌（PRT）是基于凭据隔离的。 例如，"Windows Hello" 和 "密码" 具有各自的 Prt （彼此隔离）。 当用户使用 Hello 凭据（PIN 或生物识别）登录并更改密码时，先前获取的基于密码的 PRT 将被吊销。 使用密码重新登录会使旧的 PRT，并请求新的。
 >
-> 当刷新令牌用于获取新的访问令牌和刷新令牌时，它们不会失效或撤消。  
+> 当刷新令牌用于获取新的访问令牌和刷新令牌时，它们不会失效或撤消。  但是，应用程序应在使用后立即丢弃旧的应用程序，并将其替换为新的令牌，因为新令牌中包含新的过期时间。 
 
 ## <a name="next-steps"></a>后续步骤
 

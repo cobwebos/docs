@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
 ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967461"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375401"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常见问题
 了解有关 Azure API 管理的常见问题解答、模式和最佳做法。
@@ -59,7 +59,7 @@ ms.locfileid: "75967461"
 当功能处于预览中时，这意味着我们正在积极寻求关于功能效果如何的反馈。 处于预览中的功能具备完整功能，但我们可能为了响应客户反馈而进行重大更改。 我们建议不要在生产环境中依赖处于预览中的功能。 如果有任何关于预览功能的反馈，请通过[如何向 Microsoft Azure API 管理团队提问？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)中的联系选项之一告知我们。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何确保 API 管理网关和后端服务之间的连接安全？
-有多个选项可确保 API 管理网关和后端服务之间的连接安全。 你可以：
+有多个选项可确保 API 管理网关和后端服务之间的连接安全。 可以：
 
 * 使用 HTTP 基本身份验证。 有关详细信息，请参阅[导入并发布第一个 API](import-and-publish.md)。
 * 使用[如何使用 Azure API 管理中的客户端证书身份验证确保后端服务安全](api-management-howto-mutual-certificates.md)中所述的 SSL 相互身份验证。
@@ -67,13 +67,13 @@ ms.locfileid: "75967461"
 * 将 API 管理实例连接到 Azure 虚拟网络。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何将 API 管理服务实例复制到新实例？
-如果要将 API 管理实例复制到新实例，则有多个选项。 你可以：
+如果要将 API 管理实例复制到新实例，则有多个选项。 可以：
 
 * 使用 API 管理中的备份和还原功能。 有关详细信息，请参阅[如何使用 Azure API 管理中的服务备份和还原实现灾难恢复](api-management-howto-disaster-recovery-backup-restore.md)。
 * 使用 [API 管理 REST API](/rest/api/apimanagement/) 创建自己的备份和还原功能。 使用 REST API 保存和还原所需的服务实例中的实体。
 * 使用 Git 下载服务配置，并将其上传到新实例。 有关详细信息，请参阅[如何使用 Git 保存和配置 API 管理服务](api-management-configuration-repository-git.md)。
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>能否以编程方式管理 API 管理实例？
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>是否可以编程方式管理 API 管理实例？
 是，可使用以下内容以编程方式管理 API 管理：
 
 * [API 管理 REST API](/rest/api/apimanagement/)。
@@ -98,7 +98,7 @@ ms.locfileid: "75967461"
 如果要添加的策略在策略管理器中显示为变暗或有阴影，请确保处于该策略的正确范围内。 每个策略声明都设计为在特定范围和策略部分中使用。 若要查看策略部分和策略范围，请参阅 [API 管理策略](/azure/api-management/api-management-policies)中的策略的用法部分。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>如何在单个 API 中设置多个环境？
-若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 你可以：
+若要在单个 API 中设置多个环境（例如，一个测试环境和一个生产环境），则有两个选项。 可以：
 
 * 在同一租户上托管不同的 API。
 * 在不同租户上托管相同的 API。
@@ -113,10 +113,10 @@ ms.locfileid: "75967461"
 API 管理使用[性能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)部署到多个地理位置。 传入流量路由到最近的 API 网关。 如果一个区域处于脱机状态，则传入流量自动路由到下一个最近的网关。 在[流量管理器路由方法](../traffic-manager/traffic-manager-routing-methods.md)中了解有关路由方法的详细信息。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>是否可以使用 Azure 资源管理器模板创建 API 管理服务实例？
-可以。 请参阅[AZURE API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
+是的。 请参阅[AZURE API 管理服务](https://aka.ms/apimtemplate)快速入门模板。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>是否可以为后端使用自签名 SSL 证书？
-可以。 可以通过 PowerShell 或直接提交到 API 完成此操作。 这将禁用证书链验证，并允许在从 API 管理与后端服务进行通信时使用自签名证书或私人签名证书。
+是的。 可以通过 PowerShell 或直接提交到 API 完成此操作。 这将禁用证书链验证，并允许在从 API 管理与后端服务进行通信时使用自签名证书或私人签名证书。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
 使用 [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（适用于新后端）或 [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（适用于现有后端）PowerShell cmdlet 并将 `-SkipCertificateChainValidation` 参数设置为 `True`。
@@ -135,7 +135,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 如果使用 Git 凭据管理器，或者正在尝试使用 Visual Studio 克隆 Git 存储库，可能遇到“Windows 凭据”对话框的已知问题。 该对话框将密码长度限制为 127 个字符，并截断 Microsoft 生成的密码。 我们正致力于缩短密码。 暂时请使用 Git Bash 克隆 Git 存储库。
 
 ### <a name="does-api-management-work-with-azure-expressroute"></a>API 管理是否适用于 Azure ExpressRoute？
-可以。 API 管理适用于 Azure ExpressRoute。
+是的。 API 管理适用于 Azure ExpressRoute。
 
 ### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>为什么在 Resource Manager 样式 VNET 中部署 API 管理时需要专用子网？
 API 管理需要专用子网，因为它建立在经典（PAAS V1 层）部署模型之上。 虽然也可以在 Resource Manager VNET（V2 层）中进行部署，但这样会导致后续问题。 Azure 中的经典部署模型与 Resource Manager 模型结合不紧密，因此如果在 V2 层中创建资源，V1 层会毫不知情，这样会发生问题，例如 API 管理会尝试使用已经分配给 NIC（在 V2 上构建）的 IP。
@@ -145,7 +145,7 @@ API 管理需要专用子网，因为它建立在经典（PAAS V1 层）部署�
 部署 API 管理所需的最小子网大小为 [/29](../virtual-network/virtual-networks-faq.md#configuration)，这是 Azure 支持的最小子网大小。
 
 ### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>是否可将 API 管理服务从一个订阅移到另一个订阅？
-可以。 要了解操作方法，请参阅[将资源移动到新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
+是的。 要了解操作方法，请参阅[将资源移动到新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>导入 API 是否存在限制或已知问题？
 [Open API(Swagger)、WSDL 和 WADL 格式的已知问题和限制](api-management-api-import-restrictions.md)。

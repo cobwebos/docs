@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362521"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>运行将 Hyper-V VM 灾难恢复到辅助站点的演练
 
@@ -45,11 +45,11 @@ ms.locfileid: "74132943"
 
 | **选项** | **详细信息** | |
 | --- | --- | --- |
-| **无** | 将在副本 VM 所在的主机上创建测试 VM。 该 VM 不会添加到云中，且不会连接到任何网络。<br/><br/> 创建 VM 后，可将它连接到 VM 网络。| |
+| 无 | 将在副本 VM 所在的主机上创建测试 VM。 该 VM 不会添加到云中，且不会连接到任何网络。<br/><br/> 创建 VM 后，可将它连接到 VM 网络。| |
 | **使用现有项** | 将在副本 VM 所在的主机上创建测试 VM。 该 VM 不会添加到云中。<br/><br/>创建与生产网络隔离的 VM 网络。<br/><br/>如果使用的是基于 VLAN 的网络，我们建议在 VMM 中创建一个未在生产中使用的单独逻辑网络来实现此目的。 此逻辑网络用于创建 VM 网络以用于测试故障转移。<br/><br/>逻辑网络应至少与所有托管虚拟机的 Hyper-V 服务器中的一个网络适配器关联。<br/><br/>对于 VLAN 逻辑网络，应隔离在逻辑网络中添加的网络站点。<br/><br/>如果使用基于 Windows 网络虚拟化的逻辑网络，Azure Site Recovery 会自动创建隔离的 VM 网络。 | |
 | **创建网络** | 将根据你在“逻辑网络”及其相关网站中指定的设置自动创建一个临时测试网络。<br/><br/> 故障转移会检查是否已创建 VM。<br/><br/> 如果恢复计划使用多个 VM 网络，则应使用此选项。<br/><br/> 如果使用 Windows 网络虚拟化网络，此选项可以使用副本虚拟机网络中的相同设置（子网和 IP 地址池）自动创建 VM 网络。 在测试故障转移完成后，会自动清理这些 VM 网络。<br/><br/> 将在副本虚拟机所在的主机上创建测试 VM。 该 VM 不会添加到云中。|
 
-### <a name="best-practices"></a>最佳实践
+### <a name="best-practices"></a>最佳做法
 
 - 测试生产网络会导致生产工作负荷出现停机。 灾难恢复演练进行期间，要求用户不要使用相关应用。
 

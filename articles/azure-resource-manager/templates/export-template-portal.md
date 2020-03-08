@@ -4,11 +4,11 @@ description: 使用 Azure 门户从订阅中的资源导出 Azure 资源管理�
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 8cdba58a7a2ba998bac7fc0225ff957047cd69b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384974"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure 门户中的单个和多个资源导出到模板
 

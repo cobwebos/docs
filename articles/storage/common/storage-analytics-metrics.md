@@ -9,11 +9,11 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514779"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360962"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -39,7 +39,7 @@ ms.locfileid: "72514779"
 > [!NOTE]
 >  目前，容量度量值仅适用于 BLOB 服务。
 
- 每天记录存储帐户的 BLOB 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 *$MetricsCapacityBlob*表包含以下统计信息：  
+ 每天记录存储帐户的 BLOB 服务的容量数据，并写入两个表实体。 一个实体提供用户数据的统计信息，另一个实体提供有关存储分析所使用的 `$logs` Blob 容器的统计信息。 *$MetricsCapacityBlob* 表包括以下统计信息：  
 
 - **Capacity**：存储帐户的 Blob 服务使用的存储量（字节）。  
 - **ContainerCount**：存储帐户的 Blob 服务中的 Blob 容器数。  
@@ -51,13 +51,13 @@ ms.locfileid: "72514779"
 
  每个存储服务的所有度量数据都存储在为该服务保留的三个表中：一个表存储事务信息，一个表存储分钟事务信息，还有一个表存储容量信息。 事务和分钟事务信息由请求和响应数据组成，而容量信息由存储使用情况数据组成。 存储帐户的 Blob 服务的小时度量值、分钟度量值和容量可在按下表所述命名的表中访问。  
 
-|指标级别|表名称|支持的版本|  
+|度量值级别|表名称|支持的版本|  
 |-------------------|-----------------|----------------------------|  
-|每小时度量值，主位置|-$MetricsTransactionsBlob<br />-$MetricsTransactionsTable<br />-$MetricsTransactionsQueue|仅限 2013-08-15 之前的版本。 虽然仍然支持这些名称，但还是建议改为使用下面列出的表。|  
-|每小时度量值，主位置|-$MetricsHourPrimaryTransactionsBlob<br />-$MetricsHourPrimaryTransactionsTable<br />-$MetricsHourPrimaryTransactionsQueue<br />-$MetricsHourPrimaryTransactionsFile|所有版本。 仅在版本2015-04-05 及更高版本中提供对文件服务指标的支持。|  
-|分钟度量值，主位置|-$MetricsMinutePrimaryTransactionsBlob<br />-$MetricsMinutePrimaryTransactionsTable<br />-$MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|所有版本。 仅在版本2015-04-05 及更高版本中提供对文件服务指标的支持。|  
-|每小时度量值，辅助位置|-$MetricsHourSecondaryTransactionsBlob<br />-$MetricsHourSecondaryTransactionsTable<br />-$MetricsHourSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
-|分钟度量值，辅助位置|-$MetricsMinuteSecondaryTransactionsBlob<br />-$MetricsMinuteSecondaryTransactionsTable<br />-$MetricsMinuteSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
+|每小时度量值，主位置|-   $MetricsTransactionsBlob<br />-   $MetricsTransactionsTable<br />-   $MetricsTransactionsQueue|仅限 2013-08-15 之前的版本。 虽然仍然支持这些名称，但还是建议改为使用下面列出的表。|  
+|每小时度量值，主位置|-   $MetricsHourPrimaryTransactionsBlob<br />-   $MetricsHourPrimaryTransactionsTable<br />-   $MetricsHourPrimaryTransactionsQueue<br />-   $MetricsHourPrimaryTransactionsFile|所有版本。 仅在版本2015-04-05 及更高版本中提供对文件服务指标的支持。|  
+|分钟度量值，主位置|-   $MetricsMinutePrimaryTransactionsBlob<br />-   $MetricsMinutePrimaryTransactionsTable<br />-   $MetricsMinutePrimaryTransactionsQueue<br />-$MetricsMinutePrimaryTransactionsFile|所有版本。 仅在版本2015-04-05 及更高版本中提供对文件服务指标的支持。|  
+|每小时度量值，辅助位置|-   $MetricsHourSecondaryTransactionsBlob<br />-   $MetricsHourSecondaryTransactionsTable<br />-   $MetricsHourSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
+|分钟度量值，辅助位置|-   $MetricsMinuteSecondaryTransactionsBlob<br />-   $MetricsMinuteSecondaryTransactionsTable<br />-   $MetricsMinuteSecondaryTransactionsQueue|所有版本。 必须启用读访问的异地冗余复制。|  
 |容量（仅限 Blob 服务）|$MetricsCapacityBlob|所有版本。|  
 
  为存储服务终结点启用存储分析时，会自动创建这些表。 它们通过存储帐户的命名空间进行访问，例如： `https://<accountname>.table.core.windows.net/Tables("$MetricsTransactionsBlob")`。 度量值表不会显示在列表操作中，必须直接通过表名进行访问。  
@@ -75,7 +75,7 @@ ms.locfileid: "72514779"
 [Azure 门户](https://portal.azure.com)目前不允许在存储帐户中配置分钟指标；必须通过 PowerShell 或编程方式启用分钟指标。
 
 ## <a name="enable-storage-metrics-using-powershell"></a>使用 PowerShell 启用存储度量值  
-你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值，方法是使用 Azure PowerShell cmdlet **AzStorageServiceMetricsProperty**检索当前设置，并使用 cmdlet **设置-AzStorageServiceMetricsProperty**以更改当前设置。  
+你可以使用本地计算机上的 PowerShell 在存储帐户中配置存储度量值，方法是使用 Azure PowerShell cmdlet **AzStorageServiceMetricsProperty**检索当前设置，并使用 cmdlet **AzStorageServiceMetricsProperty**更改当前设置。  
 
 控制存储度量值的 cmdlet 使用以下参数：  
 
@@ -112,9 +112,9 @@ Get-AzStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob -Context
 若要了解如何配置 Azure PowerShell cmdlet 来使用 Azure 订阅并了解如何选择要使用的默认存储帐户，请参阅：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/)。  
 
 ## <a name="enable-storage-metrics-programmatically"></a>以编程方式启用存储度量值  
-除了使用 Azure 门户或 Azure PowerShell cmdlet 控制存储指标之外，还可以使用 Azure 存储 Api 之一。 例如，如果您使用的是 .NET 语言，则可以使用存储客户端库。  
+除了使用 Azure 门户或 Azure PowerShell cmdlet 控制存储指标之外，还可以使用 Azure 存储 Api 之一。 例如，如果你要使用 .NET 语言，则可以使用存储客户端库。  
 
-类**CloudBlobClient**、 **CloudQueueClient**、 **CloudTableClient**和**CloudFileClient**都具有一些方法，如**都使用 setserviceproperties**和**setservicepropertiesasync 等方法**，它们采用**ServiceProperties**对象作为参数。 可以使用**ServiceProperties**对象配置存储指标。 例如，以下C#代码片段显示了如何更改每小时队列指标的度量值级别和保留天数：  
+类**CloudBlobClient**、 **CloudQueueClient**、 **CloudTableClient**和**CloudFileClient**都具有使用都使用 setserviceproperties 对象作为参数的方法，如**setservicepropertiesasync 等方法**和 **ServiceProperties** 。 你可以使用 **ServiceProperties** 对象配置存储指标。 例如，下面的 C# 代码段说明如何更改小时队列指标的指标级别和保留天数：  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -146,27 +146,27 @@ queueClient.SetServiceProperties(serviceProperties);
 ||||  
 |-|-|-|  
 |**指标**|**表名称**|**说明**|  
-|每小时度量值|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在2013-08-15 之前的版本中，这些表被称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从版本2015-04-05 开始，可以使用文件服务的指标。|  
-|分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能使用 PowerShell 或以编程方式启用。<br /><br /> 从版本2015-04-05 开始，可以使用文件服务的指标。|  
-|Capacity|$MetricsCapacityBlob|仅限 Blob 服务。|  
+|每小时度量值|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013-08-15 之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从版本2015-04-05 开始，可以使用文件服务的指标。|  
+|分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或编程方式启用。<br /><br /> 从版本2015-04-05 开始，可以使用文件服务的指标。|  
+|容量|$MetricsCapacityBlob|仅限 Blob 服务。|  
 
 有关这些表的完整架构详细信息，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/storage-analytics-metrics-table-schema)（存储分析度量值表架构）。 以下示例行仅显示一部分可用列，但也说明了存储度量值在采用相应方式保存这些度量值时展现的一些重要功能：  
 
 ||||||||||||  
 |-|-|-|-|-|-|-|-|-|-|-|  
 |**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
-|20140522T1100|user;All|2014-05-22T11：01： 16.7650250 Z|7|7|4003|46801|100|104.4286|6.857143|100|  
-|20140522T1100|user;QueryEntities|2014-05-22T11：01： 16.7640250 Z|5|5|2694|45951|100|143.8|7.8|100|  
-|20140522T1100|user;QueryEntity|2014-05-22T11：01： 16.7650250 Z|第|第|538|633|100|3|3|100|  
-|20140522T1100|user;UpdateEntity|2014-05-22T11：01： 16.7650250 Z|第|第|771|217|100|9|6|100|  
+|20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
+|20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
+|20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  
+|20140522T1100|user;UpdateEntity|2014-05-22T11:01:16.7650250Z|1|1|771|217|100|9|6|100|  
 
 在这个分钟度量值数据示例中，分区键按分钟使用时间。 行键可识别行中存储的信息的类型，其中包含两条信息，即访问类型和请求类型：  
 
--   访问类型是**user**或**system**，其中**user**是指用户对存储服务发出的所有请求，而**system**是指存储分析发出的请求。  
+-   访问类型是 **user** 或 **system**，其中 **user** 是指用户对存储服务发出的所有请求，而 **system** 是指存储分析发出的请求。  
 
--   请求类型为 "**所有**"，在这种情况下是摘要行，或标识特定 API，如**QueryEntity**或**UpdateEntity**。  
+-   请求类型是 **all**（在这种情况下是摘要行）或可识别的特定 API，如 **QueryEntity** 或 **UpdateEntity**。  
 
-上面的示例数据显示一分钟（从11： 00 (开始）中的所有记录，因此**QueryEntities**请求数加上**QueryEntity**请求数加上**UpdateEntity**请求数，最多可添加7个，这是**用户总数：全部**行。 同样，可以通过计算（（143.8 * 5） + 3 + 9）/7 得出**用户**的平均端到端延迟104.4286。  
+上面的示例数据显示一分钟的所有记录（从上午 11:00 开始），因此，**QueryEntities** 请求数加 **QueryEntity** 请求数再加 **UpdateEntity** 请求数的和为 7，这是显示在 **user:All** 行上的总数。 同样，通过计算 ((143.8 * 5) + 3 + 9)/7，可以在 **user:All** 行得到平均端到端延迟为 104.4286。  
 
 ## <a name="metrics-alerts"></a>度量警报
 你应考虑在[Azure 门户](https://portal.azure.com)中设置警报，以便自动通知你的存储服务行为的重要更改。 如果使用存储资源管理器工具下载这种采用分隔格式的指标数据，则可以使用 Microsoft Excel 分析数据。 有关可用存储资源管理器工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。 可以在 "**警报（经典）** " 边栏选项卡中配置警报，可在 "存储帐户" 菜单边栏选项卡中的 "**监视（经典）** " 下访问

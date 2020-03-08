@@ -5,11 +5,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
 ms.openlocfilehash: 514f1d6631a70301589943ddb7920ca3c9c46062
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609215"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362558"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>运行从本地到 Azure 的故障转移
 
@@ -46,7 +46,7 @@ ms.locfileid: "75609215"
 1. 在 Site Recovery 保管库中，选择 "**恢复计划** > *recoveryplan_name*"。
 2. 单击 **“故障转移”** 。
 
-    ![故障转移：](./media/site-recovery-failover/Failover.png)
+    ![故障转移](./media/site-recovery-failover/Failover.png)
 
 3. 在 "**故障转移** > **故障转移方向**" 下，如果要复制到 Azure，请保留默认值。
 4. 在 "**故障转移**" 中，选择要故障转移到的**恢复点**。
@@ -80,7 +80,7 @@ ms.locfileid: "75609215"
 
 与故障转移相关联的作业有很多。
 
-![故障转移：](./media/site-recovery-failover/FailoverJob.png)
+![故障转移](./media/site-recovery-failover/FailoverJob.png)
 
 - **先决条件检查**：确保满足故障转移所需的所有条件。
 - **故障转移**：处理数据，以便可以从中创建 Azure VM。 如果选择了 "**最新**恢复点"，则会从发送到服务的数据创建恢复点。

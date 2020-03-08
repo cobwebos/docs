@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176538"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374460"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API 管理模板数据模型参考
 本主题介绍数据模型中常用项目的实体和类型表示形式，这些数据模型适用于 Azure API 管理中的开发人员门户模板。  
@@ -36,7 +36,7 @@ ms.locfileid: "73176538"
 -   [应用程序](#Application)  
 -   [附件](#Attachment)  
 -   [代码示例](#Sample)  
--   [评论](#Comment)  
+-   [注释](#Comment)  
 -   [筛选](#Filtering)  
 -   [标头](#Header)  
 -   [HTTP 请求](#HTTPRequest)  
@@ -47,7 +47,7 @@ ms.locfileid: "73176538"
 -   [操作菜单项](#MenuItem)  
 -   [分页](#Paging)  
 -   [Parameter](#Parameter)  
--   [产品](#Product)  
+-   [Product](#Product)  
 -   [提供程序](#Provider)  
 -   [表示形式](#Representation)  
 -   [订阅](#Subscription)  
@@ -59,7 +59,7 @@ ms.locfileid: "73176538"
 ##  <a name="API"></a> API  
  `API` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的 API。 值是有效的相对 URL，采用 `apis/{id}` 格式，其中 `{id}` 是 API 标识符。 此属性为只读。|  
 |`name`|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
@@ -68,12 +68,12 @@ ms.locfileid: "73176538"
 |`path`|字符串|相对 URL，用于唯一标识此 API 及其在 API 管理服务实例中的所有资源路径。 可将其追加到在服务实例创建过程中指定的 API 终结点基 URL，构成此 API 的公共 URL。|  
 |`protocols`|数字数组|说明可在哪些协议上调用此 API 中的操作。 允许的值为 `1 - http` 和/或 `2 - https`。|  
 |`authenticationSettings`|[授权服务器身份验证设置](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|此 API 中包含的身份验证设置的集合。|  
-|`subscriptionKeyParameterNames`|对象|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|`subscriptionKeyParameterNames`|对象 (object)|可选属性，可用于指定包含订阅密钥的查询参数和/或标头参数的自定义名称。 如果存在此属性，则其必须包含以下两个属性中的至少一个。<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="APISummary"></a> API 摘要  
  `API summary` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的 API。 值是有效的相对 URL，采用 `apis/{id}` 格式，其中 `{id}` 是 API 标识符。 此属性为只读。|  
 |`name`|字符串|API 的名称。 不得为空。 最大长度为 100 个字符。|  
@@ -82,7 +82,7 @@ ms.locfileid: "73176538"
 ##  <a name="Application"></a> 应用程序  
  `application` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|应用程序的唯一标识符。|  
 |`Title`|字符串|应用程序的标题。|  
@@ -100,7 +100,7 @@ ms.locfileid: "73176538"
 ##  <a name="Attachment"></a> 附件  
  `attachment` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`UniqueId`|字符串|附件的唯一标识符。|  
 |`Url`|字符串|资源的 URL。|  
@@ -109,7 +109,7 @@ ms.locfileid: "73176538"
   
 ##  <a name="Sample"></a> 代码示例  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`title`|字符串|操作的名称。|  
 |`snippet`|字符串|此属性已弃用，不应使用。|  
@@ -127,7 +127,7 @@ ms.locfileid: "73176538"
 ##  <a name="Comment"></a> 注释  
  `API` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|数字|注释的 ID。|  
 |`CommentText`|字符串|注释的正文。 可以包含 HTML。|  
@@ -137,7 +137,7 @@ ms.locfileid: "73176538"
 ##  <a name="Issue"></a> 问题  
  `issue` 实体具有以下属性。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|问题的唯一标识符。|  
 |`ApiID`|字符串|报告了此问题的 API 的 ID。|  
@@ -153,7 +153,7 @@ ms.locfileid: "73176538"
 ##  <a name="Filtering"></a> 筛选  
  `filtering` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Pattern`|字符串|当前的搜索词；如果没有搜索词，则为 `null`。|  
 |`Placeholder`|字符串|没有指定搜索词时，在搜索框中显示的文本。|  
@@ -161,20 +161,20 @@ ms.locfileid: "73176538"
 ##  <a name="Header"></a> 标头  
  本部分描述 `parameter` 表示形式。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|-----------------|----------|  
 |`name`|字符串|参数名称。|  
 |`description`|字符串|参数说明。|  
 |`value`|字符串|标头值。|  
 |`typeName`|字符串|标头值的数据类型。|  
 |`options`|字符串|选项。|  
-|`required`|布尔值|标头是否为必需。|  
-|`readOnly`|布尔值|标头是否为只读。|  
+|`required`|boolean|标头是否为必需。|  
+|`readOnly`|boolean|标头是否为只读。|  
   
 ##  <a name="HTTPRequest"></a> HTTP 请求  
  本部分描述 `request` 表示形式。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`description`|字符串|操作请求说明。|  
 |`headers`|[标头](#Header)实体数组。|请求标头。|  
@@ -184,7 +184,7 @@ ms.locfileid: "73176538"
 ##  <a name="HTTPResponse"></a> HTTP 响应  
  本部分描述 `response` 表示形式。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`statusCode`|正整数|操作响应状态代码。|  
 |`description`|字符串|操作响应说明。|  
@@ -193,7 +193,7 @@ ms.locfileid: "73176538"
 ##  <a name="Operation"></a> 操作  
  `operation` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的操作。 值是有效的相对 URL，采用 `apis/{aid}/operations/{id}` 格式，其中 `{aid}` 是 API 标识符，`{id}` 是操作标识符。 此属性为只读。|  
 |`name`|字符串|操作的名称。 不得为空。 最大长度为 100 个字符。|  
@@ -208,7 +208,7 @@ ms.locfileid: "73176538"
 ##  <a name="Menu"></a> 操作菜单  
  `operation menu` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`ApiId`|字符串|当前 API 的 ID。|  
 |`CurrentOperationId`|字符串|当前操作的 ID。|  
@@ -218,7 +218,7 @@ ms.locfileid: "73176538"
 ##  <a name="MenuItem"></a> 操作菜单项  
  `operation menu item` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|操作的 ID。|  
 |`Title`|字符串|操作说明。|  
@@ -227,44 +227,44 @@ ms.locfileid: "73176538"
 ##  <a name="Paging"></a> 分页  
  `paging` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Page`|数字|当前页码。|  
 |`PageSize`|数字|要显示在单个页面上的最大结果数。|  
 |`TotalItemCount`|数字|要显示的项数。|  
-|`ShowAll`|布尔值|是否在单页上显示所有结果。|  
+|`ShowAll`|boolean|是否在单页上显示所有结果。|  
 |`PageCount`|数字|结果的页数。|  
   
 ##  <a name="Parameter"></a> 参数  
  本部分描述 `parameter` 表示形式。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|-----------------|----------|  
 |`name`|字符串|参数名称。|  
 |`description`|字符串|参数说明。|  
 |`value`|字符串|参数值。|  
 |`options`|字符串数组|为查询参数值定义的值。|  
-|`required`|布尔值|指定参数是否为必需。|  
+|`required`|boolean|指定参数是否为必需。|  
 |`kind`|数字|此参数是路径参数 (1)，还是查询字符串参数 (2)。|  
 |`typeName`|字符串|参数类型。|  
   
-##  <a name="Product"></a> 产品  
+##  <a name="Product"></a> Product  
  `product` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的产品。 值是有效的相对 URL，采用 `products/{pid}` 格式，其中 `{pid}` 是产品标识符。 此属性为只读。|  
 |`Title`|字符串|产品的名称。 不得为空。 最大长度为 100 个字符。|  
 |`Description`|字符串|产品说明。 不得为空。 可以包含 HTML 格式标记。 最大长度为 1000 个字符。|  
 |`Terms`|字符串|产品使用条款。 当开发人员尝试订阅此产品时，系统会显示这些条款，开发人员需接受这些条款才能完成订阅过程。|  
 |`ProductState`|数字|指定产品是否已发布。 开发人员可以在开发人员门户中发现已发布的产品。 尚未发布的产品只对管理员可见。<br /><br /> 允许用于产品状态的值包括：<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
-|`AllowMultipleSubscriptions`|布尔值|指定用户是否可以同时拥有此产品的多个订阅。|  
+|`AllowMultipleSubscriptions`|boolean|指定用户是否可以同时拥有此产品的多个订阅。|  
 |`MultipleSubscriptionsCount`|数字|允许用户同时拥有此产品订阅的最大数。|  
   
 ##  <a name="Provider"></a> 提供程序  
  `provider` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Properties`|字符串字典|此身份验证提供程序的属性。|  
 |`AuthenticationType`|字符串|提供程序类型。 （Azure Active Directory、Facebook 登录、Google 帐户、Microsoft 帐户、Twitter）。|  
@@ -273,7 +273,7 @@ ms.locfileid: "73176538"
 ##  <a name="Representation"></a> 表示形式  
  本部分描述 `representation`。  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`contentType`|字符串|指定此表示形式的已注册内容类型或自定义内容类型，例如 `application/xml`。|  
 |`sample`|字符串|表示形式的示例。|  
@@ -281,7 +281,7 @@ ms.locfileid: "73176538"
 ##  <a name="Subscription"></a> 订阅  
  `subscription` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |`ProductId`|字符串|已订阅产品的产品资源标识符。 值是有效的相对 URL，采用 `products/{pid}` 格式，其中 `{pid}` 是产品标识符。|  
@@ -291,23 +291,23 @@ ms.locfileid: "73176538"
 |`state`|字符串|订阅的状态。 可能的状态包括：<br /><br /> - `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br /><br /> - `1 - active` – 订阅处于活动状态。<br /><br /> - `2 - expired` – 订阅已达到其到期日期，因此已停用。<br /><br /> - `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br /><br /> - `4 - rejected` – 管理员已拒绝订阅请求。<br /><br /> - `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |`DisplayName`|字符串|订阅的显示名称。|  
 |`CreatedDate`|dateTime|订阅的创建日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
-|`CanBeCancelled`|布尔值|当前用户是否可以取消订阅。|  
-|`IsAwaitingApproval`|布尔值|订阅是否待批。|  
+|`CanBeCancelled`|boolean|当前用户是否可以取消订阅。|  
+|`IsAwaitingApproval`|boolean|订阅是否待批。|  
 |`StartDate`|dateTime|订阅的开始日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`ExpirationDate`|dateTime|订阅的到期日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`NotificationDate`|dateTime|订阅的通知日期，采用 ISO 8601 格式：`2014-06-24T16:25:00Z`。|  
 |`primaryKey`|字符串|主要订阅密钥。 最大长度为 256 个字符。|  
 |`secondaryKey`|字符串|辅助订阅密钥。 最大长度为 256 个字符。|  
-|`CanBeRenewed`|布尔值|当前用户是否可以续订订阅。|  
-|`HasExpired`|布尔值|订阅是否已到期。|  
-|`IsRejected`|布尔值|是否已拒绝订阅请求。|  
+|`CanBeRenewed`|boolean|当前用户是否可以续订订阅。|  
+|`HasExpired`|boolean|订阅是否已到期。|  
+|`IsRejected`|boolean|是否已拒绝订阅请求。|  
 |`CancelUrl`|字符串|用于取消订阅的相对 URL。|  
 |`RenewUrl`|字符串|用于续订订阅的相对 URL。|  
   
 ##  <a name="SubscriptionSummary"></a> 订阅摘要  
  `subscription summary` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Id`|字符串|资源标识符。 唯一标识当前 API 管理服务实例中的订阅。 值是有效的相对 URL，采用 `subscriptions/{sid}` 格式，其中 `{sid}` 是订阅标识符。 此属性为只读。|  
 |`DisplayName`|字符串|订阅的显示名称|  
@@ -315,7 +315,7 @@ ms.locfileid: "73176538"
 ##  <a name="UserAccountInfo"></a> 用户帐户信息  
  `user account info` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`FirstName`|字符串|名字。 不得为空。 最大长度为 100 个字符。|  
 |`LastName`|字符串|姓氏。 不得为空。 最大长度为 100 个字符。|  
@@ -323,37 +323,37 @@ ms.locfileid: "73176538"
 |`Password`|字符串|用户帐户密码。|  
 |`NameIdentifier`|字符串|帐户标识符，与用户电子邮件相同。|  
 |`ProviderName`|字符串|身份验证提供程序名称。|  
-|`IsBasicAccount`|布尔值|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
+|`IsBasicAccount`|boolean|如果此帐户使用电子邮件和密码注册，则为 true；如果此帐户使用提供程序注册，则为 false。|  
   
 ##  <a name="UseSignIn"></a> 用户登录  
  `user sign in` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
 |`Email`|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |`Password`|字符串|用户帐户密码。|  
 |`ReturnUrl`|字符串|用户单击“登录”时所在页面的 URL。|  
-|`RememberMe`|布尔值|是否保存当前用户的信息。|  
-|`RegistrationEnabled`|布尔值|是否已启用注册。|  
-|`DelegationEnabled`|布尔值|是否已启用委派登录。|  
+|`RememberMe`|boolean|是否保存当前用户的信息。|  
+|`RegistrationEnabled`|boolean|是否已启用注册。|  
+|`DelegationEnabled`|boolean|是否已启用委派登录。|  
 |`DelegationUrl`|字符串|委派登录 URL（如果已启用）。|  
 |`SsoSignUpUrl`|字符串|用户的单一登录 URL（如果存在）。|  
 |`AuxServiceUrl`|字符串|如果当前用户为管理员，则此项为指向 Azure 门户中服务实例的链接。|  
 |`Providers`|[提供程序](#Provider)实体的集合|此用户的身份验证提供程序。|  
 |`UserRegistrationTerms`|字符串|用户必须在登录之前同意的条款。|  
-|`UserRegistrationTermsEnabled`|布尔值|是否启用条款。|  
+|`UserRegistrationTermsEnabled`|boolean|是否启用条款。|  
   
 ##  <a name="UserSignUp"></a> 用户注册  
  `user sign up` 实体具有以下属性：  
   
-|属性|类型|说明|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|`PasswordConfirm`|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
+|`PasswordConfirm`|boolean|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`Password`|字符串|用户帐户密码。|  
 |`PasswordVerdictLevel`|数字|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`UserRegistrationTerms`|字符串|用户必须在登录之前同意的条款。|  
 |`UserRegistrationTermsOptions`|数字|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
-|`ConsentAccepted`|布尔值|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
+|`ConsentAccepted`|boolean|[注册](api-management-page-controls.md#sign-up)注册控件使用的值。|  
 |`Email`|字符串|电子邮件地址。 不得为空，且必须在服务实例中唯一。 最大长度为 254 个字符。|  
 |`FirstName`|字符串|名字。 不得为空。 最大长度为 100 个字符。|  
 |`LastName`|字符串|姓氏。 不得为空。 最大长度为 100 个字符。|  

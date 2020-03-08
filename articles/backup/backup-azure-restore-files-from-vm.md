@@ -3,12 +3,12 @@ title: 从 Azure VM 备份恢复文件和文件夹
 description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件夹。
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0e3061ea8fc26adcf39fe415cd9a662de739543a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660914"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363690"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -65,7 +65,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 #### <a name="for-windows"></a>对于 Windows
 
-运行可执行文件时，操作系统将装载新卷并分配驱动器号。 可以使用 Windows 资源管理器或文件资源管理器来浏览这些驱动器。 分配给卷的驱动器号不能与原始虚拟机的驱动器号相同。 但会保留卷名。 例如，如果原始虚拟机上的卷为“数据磁盘(E:`\`)”，可在本地计算机上将该卷附加为“数据磁盘(‘任意字母’:`\`)”。 浏览脚本输出中提到的所有卷，直到找到文件或文件夹。  
+运行可执行文件时，操作系统将装载新卷并分配驱动器号。 可以使用 Windows 资源管理器或文件资源管理器来浏览这些驱动器。 分配给卷的驱动器号不能与原始虚拟机的驱动器号相同。 但会保留卷名。 例如，如果原始虚拟机上的卷为 "数据磁盘（E：`\`）"，则可以在本地计算机上将该卷附加为 "数据磁盘（' 任何字母 '：`\`）"。 浏览脚本输出中提到的所有卷，直到找到文件或文件夹。  
 
    ![文件恢复菜单](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
@@ -125,7 +125,7 @@ pvs <volume name as shown above in the script output>
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command's results>
 ```
 
 将逻辑卷装载到所选的路径：
@@ -202,10 +202,10 @@ mount [RAID Disk Path] [/mountpath]
 
 - `download.microsoft.com`
 - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
-  - <https://pod01-rec2.geo-name.backup.windowsazure.com>（适用于 Azure 公共地区）
-  - <https://pod01-rec2.geo-name.backup.windowsazure.cn> （适用于 Azure 中国世纪互联）
-  - <https://pod01-rec2.geo-name.backup.windowsazure.us>（适用于 Azure 美国政府）
-  - <https://pod01-rec2.geo-name.backup.windowsazure.de>（适用于 Azure 德国）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.com`（适用于 Azure 公共地区）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.cn` （适用于 Azure 中国世纪互联）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.us`（适用于 Azure 美国政府）
+  - `https://pod01-rec2.geo-name.backup.windowsazure.de`（适用于 Azure 德国）
 - 出站端口53（DNS）、443、3260
 
 > [!NOTE]
@@ -257,7 +257,7 @@ mount [RAID Disk Path] [/mountpath]
 | ------------------------ | -------------- | ------------------ |
 | Exe 输出：*连接到目标时捕获到异常* | 此脚本无法访问恢复点    | 检查计算机是否满足以前的[访问要求](#access-requirements)。 |  
 | 可执行文件输出：已经通过 iSCSI 会话登录目标。 | 脚本已在同一台计算机上执行，并且已附加驱动器 | 已附加恢复点所在的卷。 不能使用与原始 VM 相同的驱动器号装载这些卷。 在文件资源管理器中浏览文件的所有可用卷。 |
-| Exe 输出：*此脚本无效，因为磁盘已通过门户卸载/已超过12小时限制。从门户下载新脚本。* |    磁盘已从门户卸除或超过了12小时限制 | 此特定可执行文件现已失效，无法运行。 如果要访问该恢复时间点的文件，请访问门户获取新的 exe。|
+| Exe 输出：*此脚本无效，因为磁盘已通过门户卸载/已超过12小时限制。从门户下载新脚本。* |    磁盘已从门户卸除或超过了12小时限制 | 此特定 exe 现在无效，无法运行。 如果要访问该恢复时间点的文件，请访问门户获取新的 exe。|
 | 在运行 exe 的计算机上：单击卸载按钮后，新卷不会被卸载 | 计算机上的 iSCSI 发起程序未响应/刷新与目标的连接并维护缓存。 |  单击“卸除”后，请等待几分钟。 如果未卸载新卷，请浏览所有卷。 浏览所有卷会强制发起程序刷新连接，并且会卸载卷，并显示一条错误消息，指出磁盘不可用。|
 | Exe 输出：脚本已成功运行，但脚本输出中不显示 "已附加新卷" |    这是暂时性的错误    | 卷已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重新启动计算机，列表应显示在后续 exe 运行中。 |
 | Linux 特定：无法查看所需的卷 | 运行脚本的计算机的 OS 可能无法识别受保护 VM 的基础文件系统 | 检查恢复点是崩溃一致还是文件一致。 如果文件一致，请在其 OS 识别受保护 VM 的文件系统的另一台计算机上运行该脚本。 |
@@ -295,7 +295,7 @@ mount [RAID Disk Path] [/mountpath]
 
 我们使用相互 CHAP 身份验证机制，以便每个组件对另一个组件进行身份验证。 这意味着，虚设发起程序连接到 iSCSI 目标以及将假目标连接到运行脚本的计算机非常困难。
 
-恢复服务与计算机之间的数据流通过基于 TCP 构建安全 SSL 隧道来保护（在运行脚本的计算机上[应支持 TLS 1.2](#system-requirements) ）。
+通过 TCP 构建安全 TLS 隧道来保护恢复服务与计算机之间的数据流（在运行脚本的计算机上[应支持 tls 1.2](#system-requirements) ）。
 
 父/备份 VM 中存在的任何文件访问控制列表（ACL）也会保留在已装载的文件系统中。
 

@@ -1,13 +1,9 @@
 ---
-title: Azure DDoS 保护标准概述 | Microsoft Docs
+title: Azure DDoS 保护标准概述
 description: 了解 Azure DDoS 保护服务。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: 0b0052d58ab4f950467902c4b177e844c9bc498d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6392c1a128032670ae9d43a1f23c59194c2964bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905174"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389937"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS 保护标准概述
 
@@ -28,28 +24,28 @@ ms.locfileid: "76905174"
 
 Azure DDoS 保护与应用程序设计最佳做法相结合，可提供针对 DDoS 攻击的防御。 Azure DDoS 防护提供了以下服务层级：
 
-- **基本**：作为 Azure 平台的一部分自动启用。 始终可用的流量监控和常见网络级别攻击的实时风险缓解提供了 Microsoft 联机服务所利用的相同防御。 Azure 全球网络的整个规模可用于跨区域分散和缓解攻击流量。 为 IPv4 和 IPv6 Azure[公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
+- **基本**：作为 Azure 平台的一部分自动启用。 始终在流量监视和常见网络级别攻击的实时缓解措施下，提供 Microsoft 联机服务所利用的相同防御。 Azure 全球网络的整个规模可用于跨区域分散和缓解攻击流量。 为 IPv4 和 IPv6 Azure[公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
 - **标准**：在专门针对 Azure 虚拟网络资源进行优化的基本服务层上提供其他缓解功能。 DDoS 保护标准易于启用，无需更改应用程序。 通过专用流量监控和机器学习算法优化保护策略。 策略应用到与部署在虚拟网络中资源相关的公共 IP 地址，例如 Azure 负载均衡器、Azure 应用程序网关和 Azure Service Fabric 实例，但此保护不适用于应用服务环境。 实时遥测在攻击和历史记录中通过 Azure Monitor 视图提供。 可通过诊断设置获取大量攻击缓解分析。 可通过 [Azure 应用程序网关 Web 应用程序防火墙](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或通过从 Azure 市场安装第三方防火墙来添加应用程序层保护。 为 IPv4 和 IPv6 Azure [公共 IP 地址](virtual-network-public-ip-address.md)提供保护。
 
-|功能                                         |基本 DDoS 防护                 |标准 DDoS 防护                      |
+|Feature                                         |基本 DDoS 防护                 |标准 DDoS 防护                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |活动流量监视 & always on 检测 |是                                   |是                                           |
 |自动攻击缓解                    |是                                   |是                                           |
 |可用性保证                          |Azure 区域                          |应用程序                                   |
 |缓解策略                             |已针对 Azure 流量区域卷进行优化 |已针对应用程序流量调整容量          |
-|指标和警报                                |否                                    |实时攻击指标通过 Azure monitor & 诊断日志                                 |
+|指标 & 警报                                |否                                    |实时攻击指标通过 Azure monitor & 诊断日志                                 |
 |缓解报告                              |否                                    |攻击后缓解报告                |
 |缓解流日志                            |否                                    |SIEM 集成的 NRT 日志流           |
 |迁移策略自定义                 |否                                    |与 DDoS 专家联系                           |
 |支持                                         |最大努力                           |在主动攻击期间访问 DDoS 专家|
 |SLA                                             |Azure 区域                          |应用程序保证 & 成本保护       |
-|价格                                         |免费                                  |每月 & 使用情况                         |
+|定价                                         |免费                                  |每月 & 使用情况                         |
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS 保护标准可缓解的 DDoS 攻击类型
 
 DDoS 保护标准可缓解以下攻击类型：
 
-- **容量耗尽攻击**：攻击的目标是借助大量看似合法的流量涌入网络层。 它包括 UDP 洪水、放大洪水以及其他欺骗性数据包洪水。 借助 Azure 的全球网络规模，DDoS 保护标准通过自动吸收和清理这些潜在的数千兆字节攻击，从而缓解这些攻击。
+- **容量耗尽攻击**：攻击的目标是借助大量看似合法的流量涌入网络层。 它包括 UDP 洪水、放大洪水以及其他欺骗性数据包洪水。 对于 Azure 的全球网络规模，DDoS 保护标准通过吸收和清理这些潜在的多 gb 攻击，自动进行处理。
 - **协议攻击**：这些攻击通过利用第 3 层和第 4 层协议堆栈中的漏洞，使目标无法访问。 它包括 SYN 洪水攻击、反射攻击和其他协议攻击。 DDoS 保护标准通过与客户端交互来区分恶意流量和合法流量并阻止恶意流量，从而缓解这些攻击。 
 - **资源（应用程序）层攻击**：这些攻击以 Web 应用程序数据包为目标来中断主机之间的数据传输。 这些攻击包括 HTTP 协议冲突、SQL 注入、跨站点脚本和其他第 7 层攻击。 使用 Web 应用程序防火墙（例如，Azure[应用程序网关 web 应用程序防火墙](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)）以及 DDoS 保护标准来防范这些攻击。 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中还提供了第三方 Web 应用程序防火墙产品。
 
@@ -64,7 +60,7 @@ DDoS 保护标准功能包括：
 - **本机平台集成：** 本机集成到 Azure 中。 包括通过 Azure 门户进行配置。 DDoS 保护标准了解你的资源和资源配置。
 - **统包保护：** 一旦启用 DDoS 保护标准，简化后的配置会立即保护虚拟网络上的所有资源。 要求没有干预或用户定义。 一旦检测到攻击，标准 DDoS 保护会立即自动减轻攻击。
 - **始终可用的流量监控：** 应用程序流量模式将全天候受到监控，以寻找 DDoS 攻击的迹象。 将在超出保护策略范围时执行缓解措施。
-- **自适应优化：** 智能流量分析了解不同时段的应用程序流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
+- **自适应优化：** 智能流量分析了解应用程序在一段时间内的流量，并选择和更新最适合服务的配置文件。 当流量随时间变化时，配置文件将进行调整。
 - **多层保护**：与 Web 应用程序防火墙配合使用时，提供完整的堆栈 DDoS 保护。
 - **广泛的缓解规模：** 可以使用全球容量缓解超过 60 种不同攻击类型，从而防止最大的已知 DDoS 攻击。
 - **攻击分析**：在攻击期间以五分钟为增量获取详细报告，在攻击结束后获取完整摘要。 将缓解流日志流式传输到离线安全信息和事件管理 (SIEM) 系统，以便在攻击期间进行近实时监视。

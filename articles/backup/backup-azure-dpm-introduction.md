@@ -4,11 +4,11 @@ description: 本文介绍如何使用 Azure 备份服务来准备 System Center 
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753950"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381498"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 
@@ -36,7 +36,7 @@ ms.locfileid: "75753950"
 
 ## <a name="prerequisites-and-limitations"></a>先决条件和限制
 
-**设置** | 要求
+**设置** | **要求**
 --- | ---
 Azure VM 上的 DPM | System Center 2012 R2 DPM 2012 R2 更新汇总 3 或更高版本。
 物理服务器上的 DPM | System Center 2012 SP1 或更高版本；System Center 2012 R2。
@@ -51,7 +51,7 @@ VMware VM 上的 DPM | System Center 2012 R2 更新汇总 5 或更高版本。
 Azure ExpressRoute | 如果使用私有或 Microsoft 对等互连配置了 Azure ExpressRoute，则无法使用它将数据备份到 Azure。<br/><br/> 如果使用公共对等互连配置了 Azure ExpressRoute，则可以使用它将数据备份到 Azure。<br/><br/> **注意：** 新线路不推荐使用公共对等互连。
 Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安装 DPM SP1 汇总 2 或更高版本。 这是代理安装所必需的。<br/><br/> 本文介绍如何部署最新版本的 Azure 备份代理（也称为 Microsoft Azure 恢复服务 (MARS) 代理）。 如果已部署早期版本，请更新到最新版本以确保备份按预期运行。
 
-在开始之前，需要一个启用了 Azure 备份功能的 Azure 帐户。 如果你没有帐户，则可以创建一个免费的试用帐户，只需几分钟即可完成。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
+在开始之前，需要一个启用了 Azure 备份功能的 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 阅读[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)的相关信息。
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 

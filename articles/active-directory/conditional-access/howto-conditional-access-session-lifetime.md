@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195056"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671894"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -37,7 +37,7 @@ ms.locfileid: "77195056"
 
 用户登录频率的 Azure Active Directory （Azure AD）默认配置为90天的滚动窗口。 要求用户提供凭据通常是一项明智的事情，但它可以 backfire：训练有素的用户输入其凭据，而不想让他们无意中将其提供给恶意凭据提示。
 
-如果不要求用户重新登录，则可能会发出警报，实际上任何违反 IT 策略的情况都将吊销会话。 一些示例包括（但不限于）密码更改、incompliant 设备或帐户禁用。 还可以[使用 PowerShell 显式撤销用户会话](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 默认配置会出现 "不要求用户在其会话的安全状况未更改的情况下提供其凭据"。
+如果不要求用户重新登录，则可能会发出警报，实际上任何违反 IT 策略的情况都将吊销会话。 一些示例包括（但不限于）密码更改、incompliant 设备或帐户禁用。 还可以[使用 PowerShell 显式撤销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 默认配置会出现 "不要求用户在其会话的安全状况未更改的情况下提供其凭据"。
 
 "登录频率" 设置适用于已根据标准实现了 OAUTH2 或 OIDC 协议的应用。 大多数适用于 Windows、Mac 和 Mobile 的 Microsoft 本机应用，包括以下 web 应用程序的设置。
 
@@ -72,7 +72,7 @@ ms.locfileid: "77195056"
 
 持久性浏览器会话允许用户在关闭并重新打开其浏览器窗口后保持登录。
 
-浏览器会话暂留 Azure AD 默认值允许个人设备上的用户通过显示 "保持登录状态" 来选择是否持久保存会话 身份验证成功后的提示。 如果使用[AD FS 单一登录设置一](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+浏览器会话暂留 Azure AD 默认值允许个人设备上的用户通过显示 "保持登录状态" 来选择是否持久保存会话 身份验证成功后的提示。 如果使用[AD FS 单一登录设置一](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 )文中的指南在 AD FS 中配置了浏览器持久性，我们将遵守该策略并同时保留 Azure AD 会话。 你还可以配置租户中的用户是否能看到 "保持登录？" 通过使用[自定义 Azure AD 登录页](../fundamentals/customize-branding.md)一文中的指南，在 Azure 门户中更改 "公司品牌" 窗格中的相应设置来提示。
 
 ## <a name="configuring-authentication-session-controls"></a>配置身份验证会话控件

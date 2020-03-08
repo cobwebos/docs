@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174657"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376709"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中更改访问包的资源角色
 
@@ -92,8 +92,8 @@ ms.locfileid: "73174657"
 
     |  |  |
     | --- | --- |
-    | “安全” | 用于授予对资源的访问权限。 |
-    | 分配 | 用于向一组人员发送通知。 |
+    | 安全性 | 用于授予对资源的访问权限。 |
+    | 分发 | 用于向一组人员发送通知。 |
     | O365 | 不是团队启用的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
     | 团队 | 启用了团队的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
 
@@ -178,7 +178,7 @@ ms.locfileid: "73174657"
 
 在 "授权管理" 中，Azure AD 将每天多次处理访问包中的分配和资源的批量更改。 因此，如果您执行分配或更改访问包的资源角色，则可能需要长达24小时才能在 Azure AD 中进行该更改，以及将这些更改传播到其他 Microsoft Online Services 或连接的 SaaS 应用程序所需的时间量。些. 如果你所做的更改只影响几个对象，则更改可能只需要几分钟的时间才能应用到 Azure AD 中，之后其他 Azure AD 组件将检测到该更改并更新 SaaS 应用程序。 如果更改会影响数千个对象，则所做的更改将需要更长的时间。 例如，如果你有一个具有2个应用程序的访问包和100个用户分配，并且你决定将 SharePoint 站点角色添加到访问包，则可能会有延迟，直到所有用户都是该 SharePoint 站点角色的一部分。 可以通过 Azure AD 审核日志、Azure AD 预配日志和 SharePoint 站点审核日志来监视进度。
 
-删除团队的成员时，也会从 Office 365 组中删除它们。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+删除团队成员时，也会将其从 Office 365 组中删除。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
 ## <a name="next-steps"></a>后续步骤
 

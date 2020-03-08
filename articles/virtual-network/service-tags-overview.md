@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 2af887f529d57052d8b729fa1a613e8eeb9003ea
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 21e35afc72aa9824baa1076abe0e767ce4935c28
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228286"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391111"
 ---
 # <a name="virtual-network-service-tags"></a>虚拟网络服务标记
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ ms.locfileid: "78228286"
 | **AzureBackup** |Azure 备份。<br/><br/>*注意：* 此标记依赖于**存储**和**AzureActiveDirectory**标记。 | 出站 | 否 | 是 |
 | **AzureBotService** | Azure 机器人服务。 | 出站 | 否 | 否 |
 | **AzureCloud** | 所有[数据中心公共 IP 地址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 出站 | 是 | 是 |
-| **AzureCognitiveSearch** | Azure 认知搜索。 <br/><br/>此标记或此标记涵盖的 IP 地址可用于授予索引器安全访问数据源的权限。 有关更多详细信息，请参阅[索引器连接文档](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 | 入站 | 否 | 否 |
+| **AzureCognitiveSearch** | Azure 认知搜索。 <br/><br/>此标记或此标记涵盖的 IP 地址可用于授予索引器安全访问数据源的权限。 有关更多详细信息，请参阅[索引器连接文档](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors)。 <br/><br/> *注意*：此服务标记的 ip 范围列表中不包含搜索服务的 ip，**还需要将其添加**到数据源的 ip 防火墙中。 | 入站 | 否 | 否 |
 | **AzureConnectors** | 用于探测/后端连接的 Azure 逻辑应用连接器。 | 入站 | 是 | 是 |
 | **AzureContainerRegistry** | Azure 容器注册表。 | 出站 | 是 | 是 |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 出站 | 是 | 是 |
