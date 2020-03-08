@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114294"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893071"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -34,7 +34,7 @@ ms.locfileid: "77114294"
 |[虚拟网络集成](#virtual-network-integration)|❌否|✅是（区域）|✅是（区域和网关）|✅是|
 |[虚拟网络触发器（非 HTTP）](#virtual-network-triggers-non-http)|❌否| ✅是 |✅是|✅是|
 |[混合连接](#hybrid-connections)（仅限 Windows）|❌否|✅是|✅是|✅是|
-|[出站 IP 限制](#outbound-ip-restrictions)|❌否| ❌否|❌否|✅是|
+|[出站 IP 限制](#outbound-ip-restrictions)|❌否| ✅是|✅是|✅是|
 
 ## <a name="inbound-ip-restrictions"></a>入站 IP 限制
 
@@ -57,65 +57,34 @@ ms.locfileid: "77114294"
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 
-通过虚拟网络集成，函数应用可以访问虚拟网络中的资源。 此功能适用于高级计划和应用服务计划。 如果你的应用处于应用服务环境中，它已在虚拟网络中，不需要虚拟网络集成即可访问同一虚拟网络中的资源。
+通过虚拟网络集成，函数应用可以访问虚拟网络中的资源。 Azure Functions 支持两种类型的虚拟网络集成：
 
-你可以使用虚拟网络集成来启用从应用到你的虚拟网络中运行的数据库和 web 服务的访问。 通过虚拟网络集成，无需向 VM 上的应用程序公开公共终结点。 可以改用专用的非 internet 可路由地址。
-
-虚拟网络集成有两种形式：
-
-+ **区域虚拟网络集成（预览版）** ：可在同一区域中与虚拟网络集成。 这种类型的集成需要在同一区域的虚拟网络中有一个子网。 此功能仍处于预览状态，但在 Windows 上运行的函数应用支持此功能，但在下面的问题/解决方案表后面有说明。
-+ **网关所需的虚拟网络集成**：允许与远程区域或经典虚拟网络的虚拟网络集成。 这种类型的集成要求在 VNet 中部署虚拟网络网关。 这是一个基于点到站点 VPN 的功能，仅支持在 Windows 上运行的函数应用。
-
-应用一次只能使用一种类型的虚拟网络集成功能。 尽管这两种方案对许多情况都很有用，但下表指明了应使用每个方案的位置：
-
-| Problem  | 解决方案 |
-|----------|----------|
-| 希望在同一区域中访问 RFC 1918 地址（10.0.0.0/8、172.16.0.0/12、192.168.0.0/16） | 区域虚拟网络集成 |
-| 想要访问经典虚拟网络或另一个区域中的虚拟网络中的资源 | 网关所需的虚拟网络集成 |
-| 想要跨 Azure ExpressRoute 访问 RFC 1918 终结点 | 区域虚拟网络集成 |
-| 希望跨服务终结点实现资源 | 区域虚拟网络集成 |
-
-这两种功能都不允许跨 ExpressRoute 访问非 RFC 1918 地址。 为此，您当前必须使用应用服务环境。
-
-使用区域虚拟网络集成不会将虚拟网络连接到本地终结点或配置服务终结点。 这是一个单独的网络配置。 区域虚拟网络集成只是使应用程序能够在这些连接类型上进行调用。
-
-无论使用何种版本，虚拟网络集成都使函数应用能够访问虚拟网络中的资源，但不会授予对虚拟网络中的函数应用的专用站点访问权限。 "专用站点访问" 意味着使应用只能通过专用网络（如 Azure 虚拟网络）进行访问。 虚拟网络集成仅适用于从应用到虚拟网络的出站调用。
-
-虚拟网络集成功能：
-
-* 需要标准、高级或 PremiumV2 应用服务计划
-* 支持 TCP 和 UDP
-* 适用于应用服务应用和函数应用
-
-虚拟网络集成不支持某些功能，其中包括：
-
-* 装载驱动器
-* Active Directory 集成
-* NetBIOS
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 Azure Functions 中的虚拟网络集成使用共享基础结构和应用服务 web 应用。 若要了解有关这两种类型的虚拟网络集成的详细信息，请参阅：
 
 * [区域虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [网关所需的虚拟网络集成](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-若要详细了解如何使用虚拟网络集成，请参阅将[function app 与 Azure 虚拟网络集成](functions-create-vnet.md)。
+若要了解如何设置虚拟网络集成，请参阅将[function app 与 Azure 虚拟网络集成](functions-create-vnet.md)。
+
+## <a name="regional-virtual-network-integration"></a>区域虚拟网络集成
+
+[!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
 ## <a name="connecting-to-service-endpoint-secured-resources"></a>连接到服务终结点保护的资源
-
-> [!NOTE]
-> 目前，在配置下游资源的访问限制后，最多可能需要12小时的时间，新服务终结点才可用于函数应用。 在此期间，资源将对你的应用程序完全不可用。
 
 若要提供更高级别的安全性，可以使用服务终结点将多个 Azure 服务限制为一个虚拟网络。 然后，必须将 function app 与该虚拟网络集成，才能访问该资源。 支持虚拟网络集成的所有计划都支持此配置。
 
 [详细了解虚拟网络服务终结点。](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制在虚拟网络中
+## <a name="restricting-your-storage-account-to-a-virtual-network"></a>将存储帐户限制在虚拟网络中
 
-创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。此功能当前可使用高级计划和虚拟网络集成。
+创建 function app 时，必须创建或链接支持 Blob、队列和表存储的常规用途的 Azure 存储帐户。 目前无法对此帐户使用任何虚拟网络限制。 如果在用于函数应用的存储帐户上配置虚拟网络服务终结点，则会中断你的应用程序。
 
 [了解有关存储帐户要求的详细信息。](./functions-create-function-app-portal.md#storage-account-requirements)
 
-### <a name="using-key-vault-references"></a>使用 Key Vault 引用 
+## <a name="using-key-vault-references"></a>使用 Key Vault 引用 
 
 Key Vault 引用允许在 Azure Functions 应用程序中使用 Azure Key Vault 的机密，无需进行任何代码更改。 Azure Key Vault 是一种提供集中式机密管理的服务，可以完全控制访问策略和审核历史记录。
 
@@ -141,7 +110,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 版本2.x 和更高版本的函数运行时支持虚拟网络触发器。 支持以下非 HTTP 触发器类型。
 
-| 扩展名 | 最低版本 |
+| 分机 | 最低版本 |
 |-----------|---------| 
 |[Microsoft Azure Web 作业](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/) | 3.0.10 或更高版本 |
 |[EventHubs （& e）](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs)| 4.1.0 或更高版本|
@@ -171,9 +140,13 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ## <a name="outbound-ip-restrictions"></a>出站 IP 限制
 
-出站 IP 限制仅适用于部署到应用服务环境的函数。 你可以为部署应用服务环境的虚拟网络配置出站限制。
+"高级" 计划、应用服务计划或应用服务环境提供出站 IP 限制。 你可以为部署应用服务环境的虚拟网络配置出站限制。
 
-将高级计划或应用服务计划中的函数应用与虚拟网络集成时，应用仍可对 internet 进行出站调用。
+将高级计划或应用服务计划中的函数应用与虚拟网络集成时，默认情况下，应用仍可对 internet 进行出站调用。 通过将应用程序设置添加 `WEBSITE_VNET_ROUTE_ALL=1`，可以强制将所有出站流量发送到虚拟网络，在该网络中，网络安全组规则可用于限制流量。
+
+## <a name="troubleshooting"></a>故障排除 
+
+[!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

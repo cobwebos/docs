@@ -3,22 +3,48 @@ title: 发行说明-语音服务
 titleSuffix: Azure Cognitive Services
 description: 正在运行的语音服务功能版本、改进、bug 修复和已知问题的日志。
 services: cognitive-services
-author: oscholz
-manager: nitinme
+author: brianem
+manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.author: oliversc
+ms.date: 02/25/2020
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168146"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394794"
 ---
 # <a name="release-notes"></a>发行说明
+## <a name="speech-sdk-1100-2020-february-release"></a>Speech SDK 1.10.0： 2020-2 月发行版
+
+**新功能**
+ - 添加了 Python 包以支持新3.8 版本的 Python。
+ - Red Hat Enterprise Linux （RHEL）/CentOS 8 x64 支持（C++、 C#、Java、Python）。
+   > [!NOTE] 
+   > 客户必须根据[这些说明](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)配置 OpenSSL。
+ - Linux ARM32 支持 Debian 和 Ubuntu。
+ - DialogServiceConnector 现在支持 BotFrameworkConfig 上的可选 "机器人 ID" 参数。 此参数允许将多个直接连线语音机器人用于单个 Azure 语音资源。 如果未指定参数，则将使用默认机器人（由 "直接连线语音通道配置" 页确定）。
+ - DialogServiceConnector 现在具有一个 SpeechActivityTemplate 属性。 直接 Line Speech 将使用此 JSON 字符串的内容来预填充到达直接语音机器人的所有活动中各种受支持的字段，包括自动生成的活动，以响应语音识别之类的事件。
+ - TTS 现在使用订阅密钥进行身份验证，从而减少了创建合成器后第一个合成结果的第一个字节延迟。
+ - 更新了适用于19个区域设置的语音识别模型，以获得18.6% （es，es-MX、fr-CA、fr、zh-chs、pt、ja、ko-KR、pt-BR、、zh-chs、nb、nb、fi、ru、pl、pl、CA-ES、zh-chs、、pt、tr、tr、）。 新模型在多个域中提供了重大改进，包括听写、呼叫中心脚本和视频索引方案。
+
+**Bug 修复**
+ - 修复了在 JAVA Api 中会话 Transcriber 未正确等待的 bug 
+ - 适用于 Xamarin [GitHub 问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)的 Android x86 模拟器修补程序
+ - 添加缺失（Get |Set） AudioConfig 属性方法
+ - 修复无法在连接失败时停止 audioDataStream 的 TTS bug
+ - 使用不带区域的终结点将导致会话转换器出现 USP 故障
+ - 通用 Windows 应用程序中的 ID 生成现在使用适当的唯一 GUID 算法;它以前和无意中默认为用作存根实现，这种实现通常会在大型交互集上生成冲突。
+ 
+ **示例**
+ - 结合使用 Speech SDK 与[unity 麦克风和推送模式流式处理](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)的 Unity 示例
+
+**其他更改**
+ - [适用于 Linux 的 OpenSSL 配置文档已更新](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0： 2020-一月发行版
 

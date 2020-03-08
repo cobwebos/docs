@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78186737"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669035"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -101,7 +101,7 @@ ms.locfileid: "78186737"
 | SubjectNamingInfo | 0:1 | 控制令牌中使用者名称的生成，其中的使用者名称与声明分开指定。 例如 OAuth 或 SAML。  |
 | IncludeInSso | 0:1 |  此技术配置文件的使用情况是应该应用会话的单一登录（SSO）行为，还是需要显式交互。 此元素仅在验证技术配置文件中使用的 SelfAsserted 配置文件中有效。 可能的值为 `true`（默认）或 `false`。 |
 | IncludeClaimsFromTechnicalProfile | 0:1 | 要将其中的所有输入和输出声明添加到此技术配置文件的技术配置文件的标识符。 必须在同一个策略文件中定义被引用的技术配置文件。 |
-| IncludeTechnicalProfile |0:1 | 要将其中的所有数据添加到此技术配置文件的技术配置文件的标识符。 被引用的技术配置文件必须在同一个策略文件中。 |
+| IncludeTechnicalProfile |0:1 | 要将其中的所有数据添加到此技术配置文件的技术配置文件的标识符。 |
 | UseTechnicalProfileForSessionManagement | 0:1 | 用于会话管理的另一个技术配置文件。 |
 |EnabledForUserJourneys| 0:1 |控制是否在用户旅程中执行技术配置文件。  |
 

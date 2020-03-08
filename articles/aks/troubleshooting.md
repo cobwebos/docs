@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593341"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893334"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -192,7 +192,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 | -- | :--: |
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
-| 1.12 及更高版本 | 空值 |
+| 1.12 及更高版本 | 不可用 |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 时失败
 
@@ -266,7 +266,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | 空值 |
+| 1.14 及更高版本 | 不可用 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过等待几分钟再重试来缓解此问题。
 
@@ -287,7 +287,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.6 或更高版本 |
 | 1.12 | 1.12.4 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | 空值 |
+| 1.14 及更高版本 | 不可用 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以尝试以下方法来缓解此问题：
 
@@ -308,7 +308,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.9 或更高版本 |
 | 1.12 | 1.12.7 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | 空值 |
+| 1.14 及更高版本 | 不可用 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过手动分离磁盘来缓解此问题。
 
@@ -323,7 +323,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
 | 1.14 | 1.14.2 或更高版本 |
-| 1.15 及更高版本 | 空值 |
+| 1.15 及更高版本 | 不可用 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 具有过时的磁盘列表，则可以通过将所有非现有磁盘作为单个批量操作从 VM 分离来缓解此问题。 **单独分离非现有磁盘可能会失败。**
 
@@ -343,7 +343,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
 | 1.14 | 1.14.4 或更高版本 |
-| 1.15 及更高版本 | 空值 |
+| 1.15 及更高版本 | 不可用 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 处于故障状态，则可以通过使用以下其中一项来手动更新 VM 状态来缓解此问题：
 
@@ -384,7 +384,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12.0-1.12。1 | 0755 |
 | 1.12.2 及更高版本 | 0777 |
 
-如果使用 Kuberetes 版本1.8.5 或更高版本的群集，并使用存储类动态创建永久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+如果使用 Kubernetes 版本1.8.5 或更高版本的群集，并使用存储类动态创建永久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass
@@ -460,7 +460,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 | -- | :--: |
 | 1.12 | 1.12.6 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | 空值 |
+| 1.14 及更高版本 | 不可用 |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>由于存储帐户密钥已更改，Azure 文件装载失败
 
@@ -491,6 +491,10 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 此错误是由于上游群集自动缩放程序争用条件，其中的群集自动缩放程序以与群集中实际的值不同的值结束。 若要退出此状态，只需禁用并重新启用[群集自动缩放程序][cluster-autoscaler]。
+
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>缓慢的磁盘连接，GetAzureDiskLun 需要10到15分钟的时间，并且你会收到一条错误消息
+
+在**早于 1.15.0**的 Kubernetes 版本中，你可能会收到一个错误，例如**错误 WaitForAttach 找不到磁盘的 Lun**。  此问题的解决方法是等待大约15分钟，然后重试。
 
 <!-- LINKS - internal -->
 [view-master-logs]: view-master-logs.md

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
+ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048814"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925537"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "77048814"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-No。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -148,6 +148,11 @@ Azure NetApp 文件支持 Windows Server 2008r2SP1-2019 版本的 Active Directo
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>为什么我的 SMB 客户端上的可用空间不显示预配的大小？
 
 SMB 客户端报告的卷大小是 Azure NetApp 文件量可以增长到的最大大小。 SMB 客户端上显示的 Azure NetApp 文件卷的大小不会反映卷的配额或大小。 可以通过 Azure 门户或 API 获取 Azure NetApp 文件的容量或配额。
+<!--
+### Does Azure NetApp Files support LDAP signing? 
+
+Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
+--> 
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题
 
@@ -157,7 +162,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-No。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ## <a name="data-migration-and-protection-faqs"></a>数据迁移和保护常见问题解答
 
@@ -191,11 +196,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-No。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不是。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-No。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

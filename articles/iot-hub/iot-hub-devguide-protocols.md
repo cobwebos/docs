@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626173"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668528"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 
@@ -29,7 +29,7 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 
 下表提供了针对协议选取的高水平建议：
 
-| Protocol | 何时应选择此协议 |
+| 协议 | 何时应选择此协议 |
 | --- | --- |
 | MQTT <br> 基于 WebSocket 的 MQTT |用于无需使用相同的 TLS 连接来连接多台设备（各有自己的设备凭据）的所有设备。 |
 | AMQP <br> 基于 WebSocket 的 AMQP |用于利用跨设备连接复用的字段和云网关。 |
@@ -48,13 +48,13 @@ IoT 中心允许设备使用以下协议进行设备端通信：
 * **有效负载大小**。 MQTT 和 AMQP 是二进制协议，因此，其有效负载比 HTTPS 的有效负载更精简。
 
 > [!WARNING]
-> 使用 HTTPS 时，每台设备应每 25 分钟或更长时间轮询一次从云到设备的消息。 但在开发期间，可按低于 25 分钟的更高频率进行轮询。
+> 使用 HTTPS 时，每台设备应每25分钟轮询一次云到设备的消息。 在开发中，每个设备都可以根据需要更频繁地轮询。
 
 ## <a name="port-numbers"></a>端口号
 
 设备可在 Azure 中使用各种协议来与 IoT 中心通信。 通常，选择的协议根据解决方案的具体要求而定。 下表列出了必须打开的、使设备能够使用特定协议的出站端口：
 
-| Protocol | Port |
+| 协议 | 端口 |
 | --- | --- |
 | MQTT |8883 |
 | 基于 WebSocket 的 MQTT |443 |

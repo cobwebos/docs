@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cdf447239da2f99c208ebd555f3d68e0302699b8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: f8c1500dbbd9135a850e145199de8fea68cc4630
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806229"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388292"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>获取认知服务语音设备 SDK
 
@@ -23,12 +23,12 @@ ms.locfileid: "74806229"
 
 ## <a name="choose-a-development-kit"></a>选择开发工具包
 
-|设备|规格|描述|方案|
+|设备|规格|说明|方案|
 |--|--|--|--|
-|[Roobo 智能音频开发工具包](https://ddk.roobo.com)</br>[安装](speech-devices-sdk-roobo-v1.md) / [快速入门](speech-devices-sdk-android-quickstart.md)![Roobo 智能音频开发工具包](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mic Array、ARM SOC、WIFI、音频输出、IO。 </br>[Android](speech-devices-sdk-android-quickstart.md)|用于适应 Microsoft Mic Array 和 front 处理 SDK 的第一种语音设备 SDK，用于开发高质量的脚本和语音方案|对话脚本，智能发言人，语音代理，可穿戴|
-|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)</br>[安装程序](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [快速入门](speech-devices-sdk-windows-quickstart.md)![Azure Kinect 深色](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic Array RGB 和 Depth 相机。 </br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|具有高级人工智能（AI）传感器的开发人员工具包，用于构建复杂的计算机视觉和语音模型。 它将同类最佳的空间麦克风阵列和深度相机与视频相机和方向传感器组合在一起，这一切都在具有多种模式、选项和 Sdk 的一小设备中，可容纳各种计算类型。|对话脚本，自动机器人，智能生成|
-|Roobo 智能音频开发工具包2![Roobo 智能音频开发工具包2](media/speech-devices-sdk/device-roobo-v2.jpg)|7麦克风阵列，ARM SOC，WIFI，蓝牙，IO。 </br>Linux|第2代语音设备 SDK，它在经济高效的参考设计中提供备选 OS 和更多功能。|对话脚本，智能发言人，语音代理，可穿戴|
-|URbetter T11 开发板![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7麦克风阵列，ARM SOC，WIFI，以太网，HDMI，USB 摄像机。 </br>Linux|一种可适应 Microsoft Mic 阵列并支持扩展 i/o （如 HDMI/以太网和更多 USB 外围设备）的行业级语音设备 SDK|对话会议、教育、医院、机器人、OTT Box、语音代理、驱动器到|
+|[Roobo 智能音频开发工具包](https://ddk.roobo.com)<br>[安装](speech-devices-sdk-roobo-v1.md) / [快速入门](speech-devices-sdk-android-quickstart.md)![Roobo 智能音频开发工具包](media/speech-devices-sdk/device-roobo-v1.jpg)|7 Mic Array、ARM SOC、WIFI、音频输出、IO。 <br>[Android](speech-devices-sdk-android-quickstart.md)|用于适应 Microsoft Mic Array 和 front 处理 SDK 的第一种语音设备 SDK，用于开发高质量的脚本和语音方案|对话脚本，智能发言人，语音代理，可穿戴|
+|[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)<br>[安装程序](https://docs.microsoft.com/azure/Kinect-dk/set-up-azure-kinect-dk) / [快速入门](speech-devices-sdk-windows-quickstart.md)![Azure Kinect 深色](media/speech-devices-sdk/device-azure-kinect-dk.jpg)|7 Mic Array RGB 和 Depth 相机。 <br>[Windows](speech-devices-sdk-windows-quickstart.md)/[Linux](speech-devices-sdk-linux-quickstart.md)|具有高级人工智能（AI）传感器的开发人员工具包，用于构建复杂的计算机视觉和语音模型。 它将同类最佳的空间麦克风阵列和深度相机与视频相机和方向传感器组合在一起，这一切都在具有多种模式、选项和 Sdk 的一小设备中，可容纳各种计算类型。|对话脚本，自动机器人，智能生成|
+|Roobo 智能音频开发工具包2<br>[安装](speech-devices-sdk-roobo-v2.md)<br>![Roobo 智能音频开发工具包 2](media/speech-devices-sdk/device-roobo-v2.jpg)|7麦克风阵列，ARM SOC，WIFI，蓝牙，IO。 <br>Linux|第2代语音设备 SDK，它在经济高效的参考设计中提供备选 OS 和更多功能。|对话脚本，智能发言人，语音代理，可穿戴|
+|URbetter T11 开发板![URbetter DDK](media/speech-devices-sdk/device-urbetter.jpg)|7麦克风阵列，ARM SOC，WIFI，以太网，HDMI，USB 摄像机。 <br>Linux|一种可适应 Microsoft Mic 阵列并支持扩展 i/o （如 HDMI/以太网和更多 USB 外围设备）的行业级语音设备 SDK|对话会议、教育、医院、机器人、OTT Box、语音代理、驱动器到|
 
 ## <a name="download-the-speech-devices-sdk"></a>下载语音设备 SDK
 

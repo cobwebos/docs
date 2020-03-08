@@ -3,12 +3,12 @@ title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717064"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925659"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -28,7 +28,7 @@ ms.locfileid: "76717064"
 |---|
 |<ul><li>批处理帐户是否已启动并正在运行？</li><li>此批处理帐户是否超出了池配额？</li></ul>|
 
-## <a name="microsoftcacheredisredis"></a>Microsoft.CacheRedis/Redis
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/Redis
 |执行的检查|
 |---|
 |<ul><li>所有缓存节点是否都已启用并正在运行？</li><li>是否可从数据中心内访问缓存？</li><li>缓存是否已达到最大连接数？</li><li> 缓存是否已用完可用内存？ </li><li>缓存是否遇到大量页面错误？</li><li>缓存是否负载过大？</li></ul>|
@@ -41,7 +41,7 @@ ms.locfileid: "76717064"
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li></ul>|
+|<ul><li>主机服务器是否已启动并正在运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预测到很快会失败？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |执行的检查|
@@ -51,9 +51,9 @@ ms.locfileid: "76717064"
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |执行的检查|
 |---|
-|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li></ul>|
+|<ul><li>托管此虚拟机的服务器是否已启动并运行？</li><li>主机 OS 启动是否已完成？</li><li>是否已配置并启动虚拟机容器？</li><li>主机和存储帐户之间是否有网络连接？</li><li>来宾 OS 启动是否已完成？</li><li>是否存在持续的计划内维护？</li><li>主机硬件是否降级并预测到很快会失败？</li></ul>|
 
-## <a name="microsoftdatafactoryfactories"></a>Datafactory/工厂
+## <a name="microsoftdatafactoryfactories"></a>datafactory/工厂
 |执行的检查|
 |---|
 |<ul><li>是否有管道运行失败？</li><li>承载数据工厂的群集是否正常？</li></ul>|
@@ -104,12 +104,12 @@ ms.locfileid: "76717064"
 |---|
 |<ul><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的数据库或集合请求？</li><li>是否存在因 Azure Cosmos DB 服务不可用而未处理的文档请求？</li></ul>|
 
-## <a name="microsofteventhubnamespaces"></a>Node.js/命名空间
+## <a name="microsofteventhubnamespaces"></a>node.js/命名空间
 |执行的检查|
 |---|
 |<ul><li>事件中心命名空间是否遇到用户生成的错误？</li><li>当前是否正在升级事件中心命名空间？</li></ul>|
 
-## <a name="microsofthdinsightclusters"></a>Microsoft hdinsight/群集
+## <a name="microsofthdinsightclusters"></a>microsoft hdinsight/群集
 |执行的检查|
 |---|
 |<ul><li>在 HDInsight 群集上是否提供核心服务？</li><li>HDInsight 群集是否可以访问静态 BYOK 加密的密钥？</li></ul>|

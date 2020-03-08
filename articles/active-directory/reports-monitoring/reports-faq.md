@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory 报告常见问题解答 | Microsoft Docs
-description: 有关 Azure Active Directory 报告的常见问题解答。
+description: 围绕 Azure Active Directory 报表的常见问题。
 services: active-directory
 documentationcenter: ''
 author: cawrites
@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbaf7d4e5a0dee82edf9b6b6bd65b91309e1344d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007681"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669334"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -37,7 +37,7 @@ ms.locfileid: "74007681"
 
 **问：我目前使用 `https://graph.windows.net/<tenant-name>/reports/` 终结点 Api 来以编程方式将 Azure AD 安全报告（如泄露的凭据或来自匿名 IP 地址的登录）提取到我们的报告系统中。我应该切换到哪些功能？**
 
-**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，需要做的工作可以扩展当前 MS Graph 投资或者帮助开始向此新的标准平台进行转换。
+**答：** 你可以使用 [Identity Protection 风险检测 API](../identity-protection/graph-get-started.md) 通过 Microsoft Graph 访问安全检测。 这种新格式可让你更灵活地查询数据、高级筛选、字段选择等，并将风险检测标准化为一种类型，以便更轻松地集成到 Siem 和其他数据收集工具。 因为数据采用的格式不同，所以无法用新查询替代旧查询。 不过，[新 API 使用的是 Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)，后者是 O365 或 Azure AD 之类的 API 的 Microsoft 标准。 因此，所需的工作可以扩展当前的 Microsoft Graph 投资，也可以帮助您开始过渡到这个新的标准平台。
 
 ---
 
@@ -76,7 +76,7 @@ ms.locfileid: "74007681"
 | 报表                 | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--                 | :--                 |
 | 审核日志             | 7 天        | 30 天             | 30 天             |
-| 登录               | 不适用           | 30 天             | 30 天             |
+| 登录               | 空值           | 30 天             | 30 天             |
 | Azure MFA 使用情况        | 30 天       | 30 天             | 30 天             |
 
 ---
@@ -131,7 +131,7 @@ ms.locfileid: "74007681"
 
 ---
 
-## <a name="conditional-access"></a>条件访问
+## <a name="conditional-access"></a>条件性访问
 
 **问：此功能有什么新内容？**
 

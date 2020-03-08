@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498926"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668515"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>为 Privileged Identity Management 中 Azure AD 角色配置安全警报
 
@@ -87,7 +87,7 @@ ms.locfileid: "77498926"
 | **如何修复？** | 请检查列表中的帐户。 如果它们不再需要访问权限，请将其从特权角色中删除。 |
 | **预防** | 确保当知道密码的用户有变化时，共享的帐户会轮换使用强密码。 </br>使用[访问评审](pim-how-to-start-security-review.md)定期审查具有特权角色的帐户，并删除不再需要的角色分配。 |
 | **门户中的缓解措施** | 从用户的特权角色中删除其帐户。 |
-| **最佳做法** | 使用密码进行身份验证并分配给高度特权的管理角色（如全局管理员或安全管理员）的共享、服务和紧急访问帐户应在以下情况下旋转其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解详细信息](https://aka.ms/breakglass) |
+| **最佳做法** | 使用密码进行身份验证并分配给高度特权的管理角色（如全局管理员或安全管理员）的共享、服务和紧急访问帐户应在以下情况下旋转其密码：<ul><li>发生涉及误用或泄露管理访问权限的安全事件后</li><li>任何用户的权限被更改而导致他们不再是管理员之后（例如，一名曾是管理员的员工离开了 IT 或组织）</li><li>固定时间间隔（例如，每季度或每年），即使没有任何已知的安全漏洞或 IT 人员变动</li></ul>由于多个用户有权限访问这些帐户的凭据，因此应轮换这些凭据以确保已失去其角色的人员无法再访问帐户。 [了解有关保护帐户的详细信息](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>在 Privileged Identity Management 之外分配角色
 

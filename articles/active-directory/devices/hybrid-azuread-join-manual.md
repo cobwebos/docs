@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed28b4bb8ec61455168f50058c8cdcaf9f50717d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
-ms.translationtype: HT
+ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882851"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672284"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教程：手动配置加入到混合 Azure Active Directory 的设备
 
@@ -25,7 +25,7 @@ ms.locfileid: "73882851"
 > [!TIP]
 > 如果使用 Azure AD Connect 是合适的选项，请参阅[托管](hybrid-azuread-join-managed-domains.md)域或[联合](hybrid-azuread-join-federated-domains.md)域的相关教程。 使用 Azure AD Connect，可以大大简化混合 Azure AD 加入配置。
 
-如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 本教程介绍如何执行下列操作：
+如果你有本地 Active Directory 环境，并且想要将已加入域的设备联接到 Azure AD，则可以通过配置联接到混合 Azure AD 的设备来实现。 在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 > * 手动配置混合 Azure AD 加入
@@ -35,7 +35,7 @@ ms.locfileid: "73882851"
 > * 验证联接的设备
 > * 对实现进行故障排除
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本教程假定你熟悉以下内容：
 
@@ -80,7 +80,7 @@ Azure AD Connect：
 
 在下表中了解方案所需的步骤概述：  
 
-| Steps | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
+| 步骤 | Windows 当前设备与密码哈希同步 | Windows 当前设备与联合 | Windows 下层设备 |
 | :--- | :---: | :---: | :---: |
 | 配置服务连接点 | ![勾选标记][1] | ![勾选标记][1] | ![勾选标记][1] |
 | 设置声明颁发 |     | ![勾选标记][1] | ![勾选标记][1] |
@@ -112,7 +112,7 @@ SCP 对象可能已进行配置，具体取决于 Azure AD Connect 的部署方�
    $scp.Keywords;
    ```
 
-$scp.Keywords  输出显示 Azure AD 租户信息。 下面是一个示例：
+$scp.Keywords 输出显示 Azure AD 租户信息。 下面是一个示例：
 
    ```
    azureADName:microsoft.com
@@ -141,7 +141,7 @@ cmdlet：
 
 * 使用 Active Directory PowerShell 模块和 Azure Active Directory 域服务 (Azure AD DS) 工具。 这些工具依赖于在域控制器上运行的 Active Directory Web 服务。 运行 Windows Server 2008 R2 和更高版本的域控制器支持 Active Directory Web 服务。
 * 仅受 MSOnline PowerShell 模块 1.1.166.0 版支持。 若要下载此模块，请使用[此链接](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/)。
-* 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 会失败。 可以通过服务器管理器（在“功能” > “远程服务器管理工具” > “角色管理工具”下）安装 AD DS 工具。   
+* 如果未安装 AD DS 工具，`Initialize-ADSyncDomainJoinedComputerSync` 会失败。 可以通过服务器管理器（在“功能” **“远程服务器管理工具”** “角色管理工具”下）安装 AD DS 工具。 >  > 
 
 对于运行 Windows Server 2008 或更低版本的域控制器，请使用以下脚本来创建服务连接点。 在多林配置中，请使用以下脚本在计算机所在的每个林中创建服务连接点。
 
@@ -185,7 +185,7 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。  
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” **“终结点”查看已启用哪些终结点。**  > 
 
 > [!NOTE]
 >如果不使用 AD FS 作为本地联合身份验证服务，请按供应商的说明操作，确保供应商支持 WS-Trust 1.3 或 2005 终结点，并且已通过元数据交换文件 (MEX) 发布这些终结点。
@@ -501,9 +501,9 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>在 Azure AD 中设置策略，让用户能够注册设备
 
-若要注册 Windows 下层设备，请确保已启用设置，允许用户在 Azure AD 中注册设备。 在 Azure 门户中，可以在“Azure Active Directory”   > “用户和组”   > “设备设置”  下找到此设置。
+若要注册 Windows 下层设备，请确保已启用设置，允许用户在 Azure AD 中注册设备。 在 Azure 门户中，可以在“Azure Active Directory” > “用户和组” > “设备设置”下找到此设置。
 
-以下策略必须设置为 **All**：**用户可以向 Azure AD 注册其设备**。
+以下策略必须设置为 "**全部**：**用户可以将其设备注册到 Azure AD**。
 
 ![允许用户注册设备的“全部”按钮](./media/hybrid-azuread-join-manual/23.png)
 
@@ -523,17 +523,17 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 在 AD FS 中，必须添加一个用于传递身份验证方法的颁发转换规则。 若要添加此规则，请执行以下操作：
 
-1. 在 AD FS 管理控制台中，转到“AD FS”   > “信任关系”   > “信赖方信任”  。
-1. 右键单击“Microsoft Office 365 标识平台”信赖方信任对象，并选择“编辑声明规则”  。
-1. 在“颁发转换规则”  选项卡中，选择“添加规则”  。
-1. 在“声明规则”  模板列表中选择“使用自定义规则发送声明”  。
-1. 选择“**下一步**”。
-1. 在“声明规则名称”  框中，输入“身份验证方法声明规则”  。
-1. 在“声明规则”  框中，输入以下规则：
+1. 在 AD FS 管理控制台中，转到“AD FS” > “信任关系” > “信赖方信任”。
+1. 右键单击“Microsoft Office 365 标识平台”信赖方信任对象，并选择“编辑声明规则”。
+1. 在“颁发转换规则”选项卡中，选择“添加规则”。
+1. 在“声明规则”模板列表中选择“使用自定义规则发送声明”。
+1. 选择“**下一页**”。
+1. 在“声明规则名称”框中，输入“身份验证方法声明规则”。
+1. 在“声明规则”框中，输入以下规则：
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 **\<RPObjectName\>** 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台”  。
+1. 在联合身份验证服务器上，输入以下 PowerShell 命令。 将 **\<RPObjectName\>** 替换为 Azure AD 信赖方信任对象的信赖方对象名称。 此对象通常命名为“Microsoft Office 365 标识平台”。
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -549,9 +549,9 @@ Windows 当前设备使用 Windows 集成身份验证向本地联合身份验证
 
 ## <a name="verify-joined-devices"></a>验证联接的设备
 
-可以在 [Azure Active Directory PowerShell 模块](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中运行 [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) cmdlet，查看组织中是否有已成功加入的设备。
+可以在 [Azure Active Directory PowerShell 模块](/powershell/msonline/v1/get-msoldevice)中运行 [Get-MsolDevice](/powershell/azure/install-msonlinev1?view=azureadps-2.0) cmdlet，查看组织中是否有已成功加入的设备。
 
-此 cmdlet 的输出显示向 Azure AD 进行注册并与之联接的设备。 若要获取所有设备，请使用 **-All** 参数，然后使用 **deviceTrustType** 属性筛选结果。 已加入域的设备的值为 Domain Joined  。
+此 cmdlet 的输出显示向 Azure AD 进行注册并与之联接的设备。 若要获取所有设备，请使用 **-All** 参数，然后使用 **deviceTrustType** 属性筛选结果。 已加入域的设备的值为 Domain Joined。
 
 ## <a name="troubleshoot-your-implementation"></a>对实现进行故障排除
 

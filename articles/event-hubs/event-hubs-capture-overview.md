@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460069"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925613"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>通过 Azure Blob 存储或 Azure Data Lake Storage 中的 Azure 事件中心来捕获事件
 使用 azure 事件中心，可以在[Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)中自动捕获事件中心中的流数据，也可以 Azure Data Lake Storage 所选的第[1 代或第2代](https://azure.microsoft.com/services/data-lake-store/)帐户中进行选择，同时增加了指定时间或大小间隔的灵活性。 设置捕获极其简单，无需管理费用即可运行它，并且可以使用事件中心[吞吐量单位](event-hubs-scalability.md#throughput-units)自动进行缩放。 事件中心捕获是在 Azure 中加载流式处理数据的最简单方法，并可让用户专注于数据处理，而不是数据捕获。
@@ -94,10 +94,11 @@ https://github.com/yorek/apache-drill-azure-blob
 
 ### <a name="use-apache-spark"></a>使用 Apache Spark
 
-[Apache Spark][Apache Spark]是一种用于大规模数据处理的统一分析引擎。 它支持不同的语言，包括 SQL，并且可以轻松地访问 Azure Blob 存储。 有两个选项可用来在 Azure 中运行 Apache Spark，这两个选项都可以轻松访问 Azure Blob 存储：
+[Apache Spark][Apache Spark]是一种用于大规模数据处理的统一分析引擎。 它支持不同的语言，包括 SQL，并且可以轻松地访问 Azure Blob 存储。 在 Azure 中运行 Apache Spark 有几个选项，每个选项都可以轻松访问 Azure Blob 存储：
 
 - [HDInsight： Azure 存储中的地址文件][HDInsight: Address files in Azure storage]
 - [Azure Databricks： Azure Blob 存储][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>使用 Avro 工具
 
