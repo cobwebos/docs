@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.openlocfilehash: ed7d45fb9148bd441a3798c48be8b25e1da2b8c1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036919"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675694"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>如何创建虚拟机或 VHD 的映像
 
@@ -40,7 +40,7 @@ ms.locfileid: "74036919"
 
 ## <a name="prefer-a-tutorial-instead"></a>要改用教程吗？
 
-有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则，请继续阅读本文以获得完整的信息。
+有关本文的用于测试、评估或了解 Azure 中的 VM 的简化版本，请参阅[使用 CLI 创建 Azure VM 的自定义映像](tutorial-custom-images.md)。  否则，请继续阅读此处以获取完整的图片。
 
 
 ## <a name="step-1-deprovision-the-vm"></a>步骤 1：取消预配 VM
@@ -56,7 +56,7 @@ ms.locfileid: "74036919"
    > 仅在将捕获为映像的 VM 上运行此命令。 此命令无法保证映像中的所有敏感信息均已清除，或该映像适合再分发。 `+user` 参数还会删除上次预配的用户帐户。 要保留 VM 中的用户帐户凭据，请仅使用 `-deprovision`。
  
 3. 按 **y** 继续。 添加 `-force` 参数即可免除此确认步骤。
-4. 该命令完成后，请输入“退出”以关闭 SSH 客户端。  此时 VM 仍将运行。
+4. 该命令完成后，请输入“退出”以关闭 SSH 客户端。  VM 将在此时仍在运行。
 
 ## <a name="step-2-create-vm-image"></a>步骤 2：创建 VM 映像
 使用 Azure CLI 将 VM 标记为通用化并捕获映像。 在以下示例中，请将示例参数名称替换为自己的值。 示例参数名称包括 *myResourceGroup*、*myVnet* 和 *myVM*。
@@ -69,7 +69,7 @@ ms.locfileid: "74036919"
       --name myVM
     ```
     
-    等待 VM 完全解除分配，然后再继续。 完成此命令可能需要几分钟。  VM 在解除分配期间将关闭。
+    等待 VM 完全解除分配，然后再继续。 完成此命令可能需要几分钟。  虚拟机在解除分配期间关闭。
 
 2. 使用 [az vm generalize](/cli/azure/vm) 将 VM 标记为通用化。 以下示例将名为 myResourceGroup 的资源组中名为 myVM 的 VM 标记为通用化。
    
@@ -79,7 +79,7 @@ ms.locfileid: "74036919"
       --name myVM
     ```
 
-    已通用化的 VM 无法再重启。
+    已通用化的 VM 无法再重新启动。
 
 3. 使用 [az image create](/cli/azure/image#az-image-create) 创建 VM 资源的映像。 以下示例使用名为 myVM 的 VM 资源在名为 myResourceGroup 的资源组中创建名为 myImage 的映像。
    

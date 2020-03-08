@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 600b0f598c54b5db154fd488aebf26a6fcdc0b1d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383468"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925403"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教程：在 Windows 虚拟桌面中创建租户
 
@@ -72,7 +72,7 @@ ms.locfileid: "78383468"
 
 若要分配 TenantCreator 应用程序角色：
 
-1. 转到  [Azure 门户](https://portal.azure.com) 以管理 TenantCreator 应用程序角色。 搜索并选择“企业应用程序”。 如果使用多个 Azure Active Directory 租户，则最好打开私密浏览器会话，然后将 URL 复制粘贴到地址栏。
+1. 请参阅[Azure 门户](https://portal.azure.com)以管理 TenantCreator 应用程序角色。 搜索并选择“企业应用程序”。 如果使用多个 Azure Active Directory 租户，则最好打开私密浏览器会话，然后将 URL 复制粘贴到地址栏。
 
    ![在 Azure 门户中搜索企业应用程序的屏幕截图](media/azure-portal-enterprise-applications.png)
 2. 在企业应用程序中，搜索“Windows 虚拟桌面”。 将会看到在前一部分中提供了许可的两个应用程序。 在这两个应用中，选择“Windows 虚拟桌面”。
