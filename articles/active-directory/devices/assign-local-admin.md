@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379658"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672723"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的设备上的本地管理员组
 
@@ -68,8 +68,8 @@ Azure AD 还会将 Azure AD 设备管理员角色添加到本地管理员组，�
 
 默认情况下，Azure AD 会将执行 Azure AD 联接的用户添加到设备上的管理员组。 如果希望防止常规用户成为本地管理员，可以使用以下选项：
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot 提供了一个选项，可以防止执行联接的主用户成为本地管理员。 可通过[创建 Autopilot 配置文件](https://docs.microsoft.com/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)完成此操作。
-- [批量注册](https://docs.microsoft.com/intune/windows-bulk-enroll) - 在批量注册的上下文中执行的 Azure AD 联接发生在自动创建的用户的上下文中。 在已加入设备后才登录的用户不会被添加到管理员组。   
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) - Windows Autopilot 提供了一个选项，可以防止执行联接的主用户成为本地管理员。 可通过[创建 Autopilot 配置文件](/intune/enrollment-autopilot#create-an-autopilot-deployment-profile)完成此操作。
+- [批量注册](/intune/windows-bulk-enroll) - 在批量注册的上下文中执行的 Azure AD 联接发生在自动创建的用户的上下文中。 在已加入设备后才登录的用户不会被添加到管理员组。   
 
 ## <a name="manually-elevate-a-user-on-a-device"></a>手动提升设备上的用户 
 

@@ -1,25 +1,26 @@
 ---
-title: 计划和计费 - Azure 计划程序
+title: 计划和计费
 description: 了解有关 Azure 计划程序的计划和计费
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
-ms.openlocfilehash: 4b63367ab9686eee66bf3f00dddc2e2efe4cb941
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300869"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898470"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Azure 计划程序的计划和计费
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但此时[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)仍可用，以便你可以管理作业和作业集合。
 
 ## <a name="job-collection-plans"></a>作业集合计划
 
@@ -27,7 +28,7 @@ ms.locfileid: "71300869"
 
 | 作业集合计划 | 每个集合的最大作业数 | 最大重复次数 | 每个订阅的最大作业集合数 | 限制 | 
 |:--- |:--- |:--- |:--- |:--- |
-| **标准** | 每个集合 50 个作业 | 每分钟一次。 不能运行每分钟超过一次的作业。 | 每个 Azure 订阅最多可以有 100 个标准版作业集合。 | 访问计划程序完整功能集 | 
+| **Standard** | 每个集合 50 个作业 | 每分钟一次。 不能运行每分钟超过一次的作业。 | 每个 Azure 订阅最多可以有 100 个标准版作业集合。 | 访问计划程序完整功能集 | 
 | **P10 高级** | 每个集合 50 个作业 | 每分钟一次。 不能运行每分钟超过一次的作业。 | 每个 Azure 订阅最多可以有 10,000 个 P10 高级版作业集合。 有关更多集合，请<a href="mailto:wapteams@microsoft.com">联系我们</a>。 | 访问计划程序完整功能集 |
 | **P20 高级** | 每个集合 1000 个作业数 | 每分钟一次。 不能运行每分钟超过一次的作业。 | 每个 Azure 订阅最多可以有 5,000 个 P20 标准版作业集合。 有关更多集合，请<a href="mailto:wapteams@microsoft.com">联系我们</a>。 | 访问计划程序完整功能集 |
 |||||| 
@@ -80,8 +81,7 @@ P20 高级版作业集合提供的功能与 P10 高级版作业集合相同，�
 
   计划程序服务根据设置为标准或高级的活动作业集合数计费。
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)

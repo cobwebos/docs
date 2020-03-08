@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文总结了备份运行 Microsoft Azure 恢复服务（MARS）代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392761"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668525"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -85,7 +85,7 @@ MARS 代理需要以下 URL 的访问权限：
 - Microsoft Azure 区域（根据恢复服务保管库的位置）
 - Azure 存储（根据恢复服务保管库的位置）
 
-有关更多详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
+有关详细信息，请参阅[ExpressRoute 路由要求](https://docs.microsoft.com/azure/expressroute/expressroute-routing)。
 
 >[!NOTE]
 >新线路不推荐使用公共对等互连。
@@ -97,7 +97,7 @@ MARS 代理需要以下 URL 的访问权限：
 带宽控制 | 支持。 在 MARS 代理中，使用 "**更改属性**" 来调整带宽。
 网络限制 | 不适用于运行 Windows Server 2008 R2、Windows Server 2008 SP2 或 Windows 7 的备份计算机。
 
-## <a name="support-for-direct-backups"></a>直接备份支持
+## <a name="supported-operating-systems"></a>支持的操作系统
 
 >[!NOTE]
 > MARS 代理不支持 Windows Server Core Sku。
@@ -114,7 +114,6 @@ MARS 代理需要以下 URL 的访问权限：
 Windows 10（Enterprise、Pro、Home） | 是 | 否 |  检查软件/模块要求的相应服务器版本
 Windows 8.1（Enterprise、Pro）| 是 |否 | 检查软件/模块要求的相应服务器版本
 Windows 8（Enterprise、Pro） | 是 | 否 | 检查软件/模块要求的相应服务器版本
-Windows 7（Ultimate、Enterprise、Pro、Home Premium/Basic、Starter） | 是 | 否 | 检查软件/模块要求的相应服务器版本
 Windows Server 2016（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012 R2（Standard、Datacenter、Foundation、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 Windows Server 2012（Standard、Datacenter、Foundation） | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0 <br> -部署映像服务和管理（DISM.EXE）
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 （标准版、工作组版） | 是 | 
 Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新兼容的 Microsoft VC + + 可再发行组件 <br> -Microsoft 管理控制台（MMC）3。0
 
 有关详细信息，请参阅[支持的 MABS 和 DPM 操作系统](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
+
+### <a name="operating-systems-at-end-of-support"></a>支持的操作系统
+
+以下操作系统已结束支持，强烈建议升级操作系统以继续保持受保护状态。
+
+如果现有承诺阻止升级操作系统，请考虑将 Windows 服务器迁移到 Azure Vm 并利用 Azure VM 备份来继续保护。 有关迁移 Windows server 的详细信息，请访问[此处的迁移页面](https://azure.microsoft.com/migration/windows-server/)。
+
+对于本地或托管环境，在无法升级操作系统或迁移到 Azure 的情况下，请为计算机激活扩展的安全更新以继续保护并支持。 请注意，只有特定版本有资格进行扩展安全更新。 请访问[FAQ 页面](https://www.microsoft.com/cloud-platform/extended-security-updates)了解更多。
+
+| **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 （旗舰版、企业版、专业版、家庭高级版/基本版、初学者版） | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
+| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  -Windows PowerShell <br>  兼容的 Microsoft VC + + 可再发行组件 <br>  -Microsoft 管理控制台（MMC）3。0 <br>  -部署映像服务和管理（DISM.EXE） |
+| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  -Windows PowerShell <br>  兼容的 Microsoft VC + + 可再发行组件 <br>  -Microsoft 管理控制台（MMC）3。0 <br>  -部署映像服务和管理（DISM.EXE） <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>备份限制
 

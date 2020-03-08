@@ -6,22 +6,22 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de2b99666dbed4eaec3db3e56800e9a7352e10e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369858"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898386"
 ---
-# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>使用样本数据测试 Azure 流分析作业
+# <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>在门户中测试 Azure 流分析作业
 
-在 Azure 流分析中，无需启动或停止作业即可测试查询。 可以从输入接收器测试传入数据的查询，或从 Azure 门户上的本地文件上传示例数据。 你还可以从本地示例数据或[Visual Studio](stream-analytics-live-data-local-testing.md)中的实时数据或[Visual Studio Code](visual-studio-code-local-run-live-input.md)中本地测试查询。
+在 Azure 流分析中，无需启动或停止作业即可测试查询。 可以从流式传输源中测试传入数据的查询，也可以从 Azure 门户上的本地文件上传示例数据。 你还可以从本地示例数据或[Visual Studio](stream-analytics-live-data-local-testing.md)中的实时数据或[Visual Studio Code](visual-studio-code-local-run-live-input.md)中本地测试查询。
 
-## <a name="sample-incoming-data-from-input"></a>来自输入的示例传入数据
+## <a name="automatically-sample-incoming-data-from-input"></a>自动从输入中采集传入数据
 
-Azure 流分析自动从流式处理输入中提取事件。 您可以对默认示例运行查询或设置该示例的特定时间范围。
+Azure 流分析会自动从流式输入中获取事件。 您可以对默认示例运行查询或设置该示例的特定时间范围。
 
 1. 登录到 Azure 门户。
 
@@ -31,9 +31,9 @@ Azure 流分析自动从流式处理输入中提取事件。 您可以对默认�
 
 4. 若要查看传入事件的示例列表，请选择 "使用文件输入" 图标，示例事件将自动显示在**输入预览**中。
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 如果数据的 JSON 或 CSV，则会自动检测数据的序列化类型。 可以通过更改下拉菜单中的选项，手动将其更改为 JSON、CSV 和 AVRO。
+   a. 如果数据的 JSON 或 CSV，则会自动检测数据的序列化类型。 可以通过更改下拉菜单中的选项，手动将其更改为 JSON、CSV 和 AVRO。
     
-   b.保留“数据库类型”设置，即设置为“共享”。 使用选择器以**表**或**原始**格式查看数据。
+   b. 使用选择器以**表**或**原始**格式查看数据。
     
    c. 如果显示的数据不是最新的，请选择 "**刷新**" 以查看最新的事件。
 
@@ -98,6 +98,7 @@ Azure 流分析自动从流式处理输入中提取事件。 您可以对默认�
 10. 验证浏览器中显示的结果后，可以**启动**作业。
 
 ## <a name="next-steps"></a>后续步骤
+* [使用流分析生成 IoT 解决方案](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics)：本教程将指导你使用数据生成器构建端到端解决方案，该解决方案将模拟收费展台的流量。
 
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 

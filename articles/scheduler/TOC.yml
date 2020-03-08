@@ -6,15 +6,15 @@
       href: scheduler-intro.md
 - name: 入门
   items:
-    - name: 创建和管理作业 - 门户
-      href: scheduler-get-started-portal.md
+    - name: 创建和管理计划 - Azure PowerShell
+      href: scheduler-powershell-reference.md
     - name: 从计划程序迁移到逻辑应用
       href: migrate-from-scheduler-to-logic-apps.md
 - name: 概念
   items:
     - name: 概念、术语和实体
       href: scheduler-concepts-terms.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 规划和设计
       items:
@@ -34,7 +34,7 @@
       items:
         - name: 出站调用身份验证
           href: scheduler-outbound-authentication.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.scheduler

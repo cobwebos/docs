@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/05/2019
+ms.openlocfilehash: 8466fbcb4325dc244551a3b84fc20581366b7071
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431631"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851145"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流数据的实时分析仪表板
 
@@ -23,12 +23,12 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 可观看演示此方案的[视频](https://www.youtube.com/watch?v=SGUpT-a99MA)。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保具有以下各项：
 
 * 一个 Azure 帐户。
-* Power BI 帐户。 可使用工作帐户或学校帐户。
+* Power BI Pro 的帐户。 可使用工作帐户或学校帐户。
 * [实时欺诈检测](stream-analytics-real-time-fraud-detection.md)教程的完整版本。 本教程包括的应用可生成虚拟的电话呼叫元数据。 在本教程中，需创建一个事件中心，并将流式处理电话呼叫数据发送到该事件中心。 编写查询，以便检测欺诈性呼叫（同一时间来自不同地点的相同号码呼叫）。 
 
 
@@ -137,7 +137,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     ![Power BI 中的流式处理数据集位置](./media/stream-analytics-power-bi-dashboard/stream-analytics-streaming-dataset.png)
 
-2. 在工作区中，单击“+&nbsp;创建”。
+2. 在工作区中，单击“ **+创建”&nbsp;** 。
 
     ![Power BI 工作区中的“创建”按钮](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard.png)
 
@@ -185,12 +185,12 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
      ![已完成的 Power BI 仪表板，其中显示欺诈性呼叫的两个磁贴](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
-## <a name="learn-more-about-power-bi"></a>了解关于 Power BI 的更多信息
+## <a name="learn-more-about-power-bi"></a>详细了解 Power BI
 
 本教程演示了如何为数据集创建仅几种类型的可视化效果。 Power BI 可帮助你为组织创建其他客户商业智能工具。 有关详细信息，请参阅以下资源：
 
 * 如需 Power BI 仪表板的其他示例，请观看 [Power BI 入门](https://youtu.be/L-Z_6P56aas?t=1m58s)视频。
-* 若要详细了解如何配置 Power BI 的流分析作业输出以及如何使用 Power BI 组，请参阅[流分析输出](stream-analytics-define-outputs.md)一文中的 [Power BI](stream-analytics-define-outputs.md#power-bi) 部分。 
+* 若要详细了解如何配置 Power BI 的流分析作业输出以及如何使用 Power BI 组，请参阅[流分析输出](stream-analytics-define-outputs.md#power-bi)一文中的 [Power BI](stream-analytics-define-outputs.md) 部分。 
 * 若要了解 Power BI 的常规使用方法，请参阅 [Power BI 中的仪表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
 
 

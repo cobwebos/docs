@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 9a7e2d9874f049000dadcb3e46cccb2202b53698
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429285"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669440"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>使用 Azure CLI 进行自动 IoT 设备和模块管理
 
@@ -36,8 +36,12 @@ Azure IoT 中心的自动设备管理自动执行许多管理大型设备群的�
 ## <a name="cli-prerequisites"></a>CLI 先决条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
-* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
+
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必须是2.0.70 或更高版本。 请使用 `az –-version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。 
+
+* [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-cli)。
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="implement-twins"></a>实现孪生
 

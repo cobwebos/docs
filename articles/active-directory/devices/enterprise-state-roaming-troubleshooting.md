@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194460"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672353"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "77194460"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>故障排除预备步骤 
 
@@ -37,10 +37,10 @@ ms.locfileid: "77194460"
 1. 为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
-## <a name="information-to-include-when-you-need-help"></a>你需要帮助时应包含的信息
+## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
 如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
 
-* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述你所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
+* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
 * **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
 * **关于用户的信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
 * **关于设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？

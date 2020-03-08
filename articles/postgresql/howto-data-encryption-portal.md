@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4be80e9ded2fe4009c05a2b699342f848491994a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 6028f5e618b4b480a2259241fc2380f0200cebc6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046127"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898353"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器的数据加密
 
@@ -93,6 +93,130 @@ ms.locfileid: "77046127"
 4. 注册服务主体后再次重新验证密钥，然后服务器恢复其正常功能。
 
    ![显示已还原功能的 Azure Database for PostgreSQL 屏幕截图](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+
+## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>使用 Azure 资源管理器模板启用数据加密
+
+除了 Azure 门户之外，还可以使用 Azure 资源管理器模板为新服务器和现有服务器启用 Azure Database for PostgreSQL 单一服务器上的数据加密。
+
+### <a name="for-a-new-server"></a>对于新服务器
+
+使用预先创建的 Azure 资源管理器模板之一来预配启用了数据加密的服务器：[包含数据加密的示例](https://github.com/Azure/azure-postgresql/tree/master/arm-templates/ExampleWithDataEncryption)
+
+此 Azure 资源管理器模板创建 Azure Database for PostgreSQL 单一服务器，并使用作为参数传递的**KeyVault**和**密钥**来启用服务器上的数据加密。
+
+### <a name="for-an-existing-server"></a>对于现有服务器
+此外，还可以使用 Azure 资源管理器模板在现有 Azure Database for PostgreSQL 单一服务器上启用数据加密。
+
+* 传递先前在 properties 对象的 `keyVaultKeyUri` 属性下复制的 Azure Key Vault 密钥的 URI。
+
+* 使用*2020-01-01-preview*作为 API 版本。
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string"
+    },
+    "serverName": {
+      "type": "string"
+    },
+    "keyVaultName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault name where the key to use is stored"
+      }
+    },
+    "keyVaultResourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key vault resource group name where it is stored"
+      }
+    },
+    "keyName": {
+      "type": "string",
+      "metadata": {
+        "description": "Key name in the key vault to use as encryption protector"
+      }
+    },
+    "keyVersion": {
+      "type": "string",
+      "metadata": {
+        "description": "Version of the key in the key vault to use as encryption protector"
+      }
+    }
+  },
+  "variables": {
+    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.DBforPostgreSQL/servers",
+      "apiVersion": "2017-12-01",
+      "kind": "",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "name": "[parameters('serverName')]",
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-05-01",
+      "name": "addAccessPolicy",
+      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/accessPolicies",
+              "name": "[concat(parameters('keyVaultName'), '/add')]",
+              "apiVersion": "2018-02-14-preview",
+              "properties": {
+                "accessPolicies": [
+                  {
+                    "tenantId": "[subscription().tenantId]",
+                    "objectId": "[reference(resourceId('Microsoft.DBforPostgreSQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
+                    "permissions": {
+                      "keys": [
+                        "get",
+                        "wrapKey",
+                        "unwrapKey"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
+      "type": "Microsoft.DBforPostgreSQL/servers/keys",
+      "apiVersion": "2020-01-01-preview",
+      "dependsOn": [
+        "addAccessPolicy",
+        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "serverKeyType": "AzureKeyVault",
+        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
+      }
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 

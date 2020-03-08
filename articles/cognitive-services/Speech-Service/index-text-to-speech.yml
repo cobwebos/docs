@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: 文本到语音文档
+title: 文本转语音文档
 summary: 通过语音服务的文本到语音转换，应用程序、工具或设备可以将文本转换为类似于用户的合成语音。
 metadata:
   title: 文本到语音文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 11fbb549409afd78f77e194fe45fa0d7626f75a7
+  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562896"
+  ms.lasthandoff: 03/06/2020
+  ms.locfileid: "78674450"
 landingContent:
 - title: 入门
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
       url: quickstarts/text-to-speech.md
     - text: 将语音合成到音频文件
       url: quickstarts/text-to-speech-audio-file.md
-    - text: 带有长格式音频的合成语音
+    - text: 将语音合成为长格式音频
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: 分步指南
   linkLists:
@@ -79,6 +79,8 @@ landingContent:
       url: language-support.md#text-to-speech
     - text: 定价
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: SSML 拼音集
+      url: speech-ssml-phonetic-sets.md
     - text: 行为准则
       url: https://aka.ms/custom-neural-code-of-conduct
     - text: 为配音员披露

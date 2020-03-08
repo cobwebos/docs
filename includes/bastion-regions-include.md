@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 01/30/2020
+ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: bc48daed4f20af7c275d651820cf9b17a8e24d41
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938310"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668628"
 ---
 >[!NOTE]
 >我们正在努力添加其他区域。 添加区域时，我们会将其添加到此列表中。
@@ -54,3 +54,11 @@ ms.locfileid: "76938310"
 **中东和非洲**
 * 南非北部
 * 阿联酋中部
+
+**Azure Government**
+* US DoD 中部
+* US DoD 东部
+* US Gov 亚利桑那州
+* US Gov 爱荷华州
+* US Gov 德克萨斯州
+* US Gov 弗吉尼亚州

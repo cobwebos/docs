@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913474"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671974"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>排查 Azure 中的常见索引器错误和警告认知搜索
 
@@ -48,7 +48,7 @@ ms.locfileid: "77913474"
 
 | 原因 | 详细信息/示例 | 解决方法 |
 | --- | --- | --- |
-| 不同文档中的字段类型不一致 | 值的类型与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在作者列中。  预期类型为 JArray。 | 确保每个字段的类型在不同的文档中是相同的。 例如，如果第一个文档 `'startTime'` 字段是日期时间，在第二个文档中为字符串，则会命中此错误。 |
+| 不同文档中的字段类型不一致 | "类型的值与列类型不匹配。 无法将 `'{47.6,-122.1}'` 存储在作者列中。  预期类型为 JArray。 "  "将数据类型 nvarchar 转换为浮点" 时出错。  "将 nvarchar 值" 12 个月 "转换为数据类型 int 时，转换失败。  “将表达式转换为数据类型 int 时发生算术溢出错误。” | 确保每个字段的类型在不同的文档中是相同的。 例如，如果第一个文档 `'startTime'` 字段是日期时间，在第二个文档中为字符串，则会命中此错误。 |
 | 来自数据源的基础服务的错误 | （从 Cosmos DB） `{"Errors":["Request rate is large"]}` | 检查存储实例，确保其正常运行。 可能需要调整缩放/分区。 |
 | 暂时性问题 | 在接收来自服务器的结果时发生传输级错误。 （提供程序： TCP 提供程序，错误： 0-远程主机强行关闭了现有连接 | 偶尔会出现意外的连接问题。 稍后再次尝试通过索引器运行文档。 |
 

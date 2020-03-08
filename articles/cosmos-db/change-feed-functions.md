@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7a74635551d8416bf60689b1f1403f29883e81bd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604995"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851367"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>具有 Azure Cosmos DB 和 Azure Functions 的基于事件的无服务器体系结构
 
@@ -37,7 +37,7 @@ Azure Functions 提供连接到[更改源](change-feed.md)的最简单方法。 
 现在跨所有 Azure Functions IDE 和 CLI 集成支持创建包含 Cosmos DB 的 Azure Functions 触发器的 Azure 函数：
 
 * Visual studio 用户的[Visual Studio 扩展](../azure-functions/functions-develop-vs.md)。
-* Visual Studio Code 用户的[Visual Studio Core 扩展](/azure/javascript/tutorial-vscode-serverless-node-01)。
+* Visual Studio Code 用户的[Visual Studio Code 扩展](/azure/javascript/tutorial-vscode-serverless-node-01)。
 * 最后是用于跨平台 IDE 不可知体验的[核心 CLI 工具](../azure-functions/functions-run-local.md#create-func)。
 
 ## <a name="run-your-trigger-locally"></a>在本地运行触发器

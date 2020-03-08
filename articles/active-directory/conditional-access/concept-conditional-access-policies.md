@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2d2ebcc885b4018f4d9c3ff1b525ffc19b1abdda
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186235"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671932"
 ---
 # <a name="building-a-conditional-access-policy"></a>生成条件性访问策略
 
@@ -70,7 +70,7 @@ ms.locfileid: "77186235"
 
 条件性访问策略的 "访问控制" 部分控制如何强制实施策略。
 
-### <a name="grant"></a>Grant
+### <a name="grant"></a>授予
 
 [Grant](concept-conditional-access-grant.md)为管理员提供了一种策略实施方法，可在其中阻止或授予访问权限。
 
@@ -131,6 +131,6 @@ Grant 控件可以触发一个或多个控件的强制执行。
 
 [规划基于云的 Azure 多重身份验证部署](../authentication/howto-mfa-getstarted.md)
 
-[用 Intune 管理设备符合性](https://docs.microsoft.com/intune/device-compliance-get-started)
+[用 Intune 管理设备符合性](/intune/device-compliance-get-started)
 
-[Microsoft Cloud App Security 和条件访问](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+[Microsoft Cloud App Security 和条件访问](/cloud-app-security/proxy-intro-aad)

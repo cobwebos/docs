@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: 97725099e82c5edb05447d97b47f352c440bd8e8
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.custom: hdinsightactive
+ms.date: 03/04/2020
+ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529295"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897914"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -28,12 +28,12 @@ ms.locfileid: "72529295"
 
 若要允许联接网络中的 HDInsight 和资源通过名称进行通信，必须执行以下操作：
 
-* 创建 Azure 虚拟网络。
-* 在 Azure 虚拟网络中创建自定义 DNS 服务器。
-* 配置虚拟网络以使用自定义 DNS 服务器，而不是默认 Azure 递归解析程序。
-* 配置自定义 DNS 服务器和本地 DNS 服务器之间的转发。
+1. 创建 Azure 虚拟网络。
+1. 在 Azure 虚拟网络中创建自定义 DNS 服务器。
+1. 配置虚拟网络以使用自定义 DNS 服务器，而不是默认 Azure 递归解析程序。
+1. 配置自定义 DNS 服务器和本地 DNS 服务器之间的转发。
 
-此配置可实现以下行为：
+这些配置可实现以下行为：
 
 * 对虚拟网络具有 DNS 后缀的完全限定域名的请求已转发至自定义 DNS 服务器。 然后，自定义 DNS 服务器将这些请求转发至 Azure 递归解析程序，Azure 递归解析程序将返回 IP 地址。
 * 其他所有请求将转发至本地 DNS 服务器。 甚至对公共 Internet 资源（如 microsoft.com）的请求也将因名称解析转发至本地 DNS 服务器。
@@ -42,7 +42,7 @@ ms.locfileid: "72529295"
 
 ![如何在配置中解析 DNS 请求的关系图](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](./hdinsight-hadoop-linux-use-ssh-unix.md)。
 * 如果使用 PowerShell，则需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
@@ -63,23 +63,25 @@ ms.locfileid: "72529295"
 
 这些步骤通过 [Azure 门户](https://portal.azure.com)创建 Azure 虚拟机。 关于其他创建虚拟机的方法，请参阅[创建 VM - Azure CLI](../virtual-machines/linux/quick-create-cli.md) 和[创建 VM - Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)。  若要创建使用 [Bind](https://www.isc.org/downloads/bind/) DNS 软件的 Linux VM，请使用以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
   
-2. 从左侧菜单中，导航到 " **+ 创建资源**"  > **计算**" > **Ubuntu Server 18.04 LTS**"。
+1. 在顶部菜单中，选择“+ 创建资源”。
 
-    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
+    ![创建 Ubuntu 虚拟机](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-3. 在“基本信息”选项卡中输入以下信息：  
+1. 选择 "**计算** > **虚拟机**" 以前往 "**创建虚拟机**" 页。
+
+1. 在“基本信息”选项卡中输入以下信息：  
   
-    | 字段 | Value |
+    | 字段 | 值 |
     | --- | --- |
-    |Subscription |选择相应的订阅。|
-    |Resource group |选择包含此前创建的虚拟网络的资源组。|
+    |订阅 |选择相应的订阅。|
+    |资源组 |选择包含此前创建的虚拟网络的资源组。|
     |虚拟机名称 | 输入用于标识该虚拟机的友好名称。 本示例使用 **DNSProxy**。|
     |地区 | 选择与此前创建的虚拟网络相同的区域。  并非所有 VM 大小都可在所有区域中使用。  |
     |可用性选项 |  选择所需的可用性级别。  Azure 提供一系列的选项，用于管理应用程序的可用性和复原能力。  将解决方案构建为使用可用性区域或可用性集中的已复制 VM，使应用和数据免受事件中心中断和维护事件的影响。 此示例使用“不需要基础结构冗余”。 |
-    |映像 | 离开**Ubuntu Server 18.04 LTS**。 |
-    |身份验证类型 | __密码__或__SSH 公钥__： SSH 帐户的身份验证方法。 建议使用公钥，因为这些密钥更安全。 此示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
+    |Image | 离开**Ubuntu Server 18.04 LTS**。 |
+    |身份验证类型 | __密码__或 __SSH 公钥__：SSH 帐户的身份验证方法。 建议使用公钥，因为这些密钥更安全。 此示例使用**密码**。  有关详细信息，请参阅[创建并使用用于 Linux VM 的 SSH 密钥](../virtual-machines/linux/mac-create-ssh-keys.md)文档。|
     |用户名 |输入 VM 的管理员用户名。  本示例使用 **sshuser**。|
     |密码或 SSH 公钥 | 可用字段取决于针对“身份验证类型”所做的选择。  输入相应的值。|
     |公共入站端口|选择“允许所选端口”。 然后从 "**选择入站端口**" 下拉列表中选择 " **SSH （22）** "。|
@@ -90,10 +92,10 @@ ms.locfileid: "72529295"
 
 4. 在“网络”选项卡中，输入以下信息：
 
-    | 字段 | Value |
+    | 字段 | 值 |
     | --- | --- |
     |虚拟网络 | 选择此前创建的虚拟网络。|
-    |子网 | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
+    |Subnet | 选择前面创建的虚拟网络的默认子网。 请勿选择 VPN 网关所用的子网。|
     |公共 IP | 使用自动填充的值。  |
 
     ![HDInsight 虚拟网络设置](./media/connect-on-premises-network/virtual-network-settings.png)
@@ -178,7 +180,7 @@ ms.locfileid: "72529295"
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 请保存该值，因为稍后将使用它。
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` 文本是该虚拟网络的 DNS 后缀。 保存此值，因为稍后将用到它。
 
 5. 若要配置 Bind 以在虚拟网络中解析资源的 DNS 名称，请使用以下文本作为 `/etc/bind/named.conf.local` 文件的内容：
 
@@ -232,7 +234,7 @@ ms.locfileid: "72529295"
 
 若要配置虚拟网络以使用自定义 DNS 服务器，而不是 Azure 递归解析程序，请在 [Azure 门户](https://portal.azure.com)中使用以下步骤：
 
-1. 从左侧菜单中，导航到 "**所有服务**"  > **网络** > **虚拟网络**"。
+1. 从左侧菜单中，导航到 "**所有服务**" > **网络** > **虚拟网络**"。
 
 2. 从列表中选择虚拟网络，此时会打开虚拟网络的默认视图。  
 
@@ -280,8 +282,8 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 对于步骤 1 中确定的 IP 地址，允许该 IP 地址的入站流量。
 
-   * 如果使用的是__NSG__：允许 IP 地址的端口__443__上的__入站__流量。
-   * 如果使用的是__UDR__：将 IP 地址的路由的__下一跃点__类型设置为__Internet__ 。
+   * 如果使用的是__NSG__：在端口 443上允许该 IP地址的入站流量。
+   * 如果使用的是__UDR__：为该 IP 地址将路由的下一个跃点类型设置为“Internet”。
 
 有关使用 Azure PowerShell 或 Azure CLI 创建 NSG 的示例，请参阅[使用 Azure 虚拟网络扩展 HDInsight](hdinsight-create-virtual-network.md#hdinsight-nsg) 文档。
 
@@ -329,7 +331,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 2. 若要确定服务的可用端口，请参阅 [HDInsight 的 Apache Hadoop 服务所用的端口](./hdinsight-hadoop-port-settings-for-services.md)文档。
 
     > [!IMPORTANT]  
-    > 一些在头节点上托管的服务一次只能在一个节点上处于活动状态。 如果在一个头节点上尝试访问服务并失败，请切换到其他头节点。
+    > 在头节点上托管的一些服务一次只能在一个节点上处于活动状态。 如果在一个头节点上尝试访问服务并失败，请切换到其他头节点。
     >
     > 例如，Apache Ambari 一次仅在一个头节点上处于活动状态。 如果在一个头节点上尝试访问 Ambari 并返回 404 错误，则它正在其他头节点上运行。
 

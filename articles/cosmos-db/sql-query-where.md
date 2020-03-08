@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 的 SQL WHERE 子句
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982223"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898781"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 WHERE 子句
 
@@ -35,10 +35,11 @@ WHERE <filter_condition>
   
    表示要计算的值的表达式。 有关详细信息，请参阅[标量表达式](sql-query-scalar-expressions.md)。  
   
-
 ## <a name="remarks"></a>备注
   
-  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有当布尔值为 true 才可以满足条件，任何其他值：未定义、null、false、数字、数组或对象均不满足条件。 
+  为了能够返回文档，指定为筛选条件的表达式的求值结果必须为 true。 只有布尔值 `true` 将满足条件，任何其他值： undefined、null、false、数字、数组或对象将不满足条件。
+
+  如果在 `WHERE` 子句中包含分区键作为相等筛选器的一部分，则查询将自动仅筛选相关的分区。
 
 ## <a name="examples"></a>示例
 

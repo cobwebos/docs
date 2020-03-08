@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538803"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672299"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理过时设备
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：在 Azure AD 中管理陈旧的设备
 
 理想情况下，若要完成生命周期，应该注销不再需要的已注册设备。 但是，在发生遗失、失窃、设备损坏或 OS 重装等情况下，环境中通常就会出现陈旧的设备。 IT 管理员可能希望通过某种方法来删除陈旧的设备，以便将资源重点投放在真正需要管理的设备上。
 
@@ -57,7 +57,7 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
     ![活动时间戳](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet
+- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet
 
     ![活动时间戳](./media/manage-stale-devices/02.png)
 
@@ -129,11 +129,11 @@ Azure AD 中的陈旧设备可能会影响到针对组织中设备实施的常�
 
 典型的例程包括以下步骤：
 
-1. 使用 [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet 连接到 Azure Active Directory
+1. 使用 [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) cmdlet 连接到 Azure Active Directory
 1. 获取设备列表
-1. 使用 [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet 禁用设备。 
+1. 使用 [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) cmdlet 禁用设备。 
 1. 在删除设备之前，将等待所选天数的宽限期。
-1. 使用 [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet 删除设备。
+1. 使用 [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) cmdlet 删除设备。
 
 ### <a name="get-the-list-of-devices"></a>获取设备列表
 

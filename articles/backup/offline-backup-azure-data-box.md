@@ -3,12 +3,12 @@ title: 使用 Azure Data Box 进行脱机备份
 description: 了解如何使用 Azure Data Box 从 MARS 代理脱机将较大的初始备份数据植入恢复服务保管库。
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a031a8cac357e7d212f8f6a3a5dbec749fbccc21
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196257"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672969"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure 备份使用 Azure Data Box 进行脱机备份
 
@@ -124,7 +124,7 @@ ms.locfileid: "78196257"
 
 1. 请确保卸载以前安装的任何 MARS 代理。
 1. 从此[网站](https://aka.ms/azurebackup_agent)下载最新的 MARS 代理。
-1. 运行*marsagentinstaller.exe*，并*仅*执行将[代理安装并注册](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
+1. 运行*marsagentinstaller.exe*，并*仅*执行将[代理安装并注册](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)到恢复服务保管库（要在其中存储备份）的步骤。
 
    > [!NOTE]
    > 恢复服务保管库必须与 Azure Data Box 作业位于同一订阅中。
@@ -307,7 +307,7 @@ Microsoft Azure 备份（MAB）代理在租户中为你创建 Azure Active Direc
     >[!NOTE]
     > 若要获取 Azure 用户 ID，请执行以下操作之一：
     >
-    >* 在 Azure 连接的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”` 命令。
+    >* 在 Azure 连接的 PowerShell 中运行 `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` 命令。
     > * 通过名称*CurrentUserId*，中转到注册表路径*计算机 \ HKEY_LOCAL_MACHINE \software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* 。
 
 6. 右键单击在上一步中添加的字符串，然后选择 "**修改**"。 在 "值" 中，提供你在步骤2中导出的证书的指纹。 选择“确定”。

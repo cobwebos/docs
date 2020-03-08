@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 327f17aca29f2787c86269e8dd707f5152285154
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397049"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673239"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -77,4 +77,4 @@ ms.locfileid: "78397049"
 使用以下文章了解相关操作：</br>
 [备份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)</br>
-[备份 Windows Server](backup-configure-vault.md)
+[备份 Windows Server](backup-windows-with-mars-agent.md)

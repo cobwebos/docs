@@ -1,26 +1,27 @@
 ---
-title: 生成高级作业计划和重复周期 - Azure 计划程序
+title: 生成高级作业计划和重复周期
 description: 了解如何在 Azure 计划程序中为作业创建高级计划和重复周期
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
+ms.reviewer: klam, estfan
 ms.suite: infrastructure-services
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300968"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898590"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>在 Azure 计划程序中为作业生成高级计划和重复周期
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但此时[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)仍可用，以便你可以管理作业和作业集合。
 
 在 [Azure 计划程序](../scheduler/scheduler-intro.md)作业中，计划是确定计划程序服务何时以及如何运行作业的核心。 可以使用计划程序为作业设置多个一次性计划和重复计划。 一次性计划仅在指定时间运行一次，并且基本上是仅运行一次的重复计划。 重复计划按照指定频率运行。 由于具有这种灵活性，可以使用计划程序支持各种业务方案，例如：
 
@@ -63,7 +64,7 @@ ms.locfileid: "71300968"
 
 此表简要概述了在设置作业的重复周期和计划时可以使用的主要 JSON 元素。 
 
-| 元素 | 必填 | 描述 | 
+| 元素 | 必选 | 说明 | 
 |---------|----------|-------------|
 | **startTime** | 否 | [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)的 DateTime 字符串值，用于指定作业在基本计划中首次启动的时间。 <p>对于复杂的计划，作业的启动时间不早于 **startTime**。 | 
 | **recurrence** | 否 | 作业运行时的重复规则。 **recurrence** 对象支持这些元素：**frequency**、**interval**、**schedule**、**count** 和 **endTime**。 <p>如果使用 **recurrence** 元素，则还必须使用 **frequency** 元素，而其他 **recurrence** 元素是可选的。 |
@@ -159,7 +160,7 @@ ms.locfileid: "71300968"
 
 下表详细描述了 schedule 元素：
 
-| JSON 名称 | 描述 | 有效值 |
+| JSON 名称 | 说明 | 有效值 |
 |:--- |:--- |:--- |
 | **分钟数** |运行作业的小时中的分钟。 |整数数组。 |
 | **小时数** |运行作业的日期中的小时。 |整数数组。 |
@@ -167,13 +168,13 @@ ms.locfileid: "71300968"
 | **monthlyOccurrences** |确定运行作业的月份日期。 只能配合每月频率指定。 |**monthlyOccurrences** 对象的数组：<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **day** 是运行作业的星期日期。 例如， *{Sunday}* 表示月份中的每个星期日。 必需。<br /><br />**occurrence** 是月份中重复的日期。 例如， *{Sunday, -1}* 表示月份中的最后一个星期日。 可选。 |
 | **monthDays** |运行作业的月份日期。 只能配合每月频率指定。 |以下值的数组：<br /><= -1 且 >= -31 的任意值<br />>= 1 且 <= 31 的任意值|
 
-## <a name="examples-recurrence-schedules"></a>例如：循环计划
+## <a name="examples-recurrence-schedules"></a>示例：循环计划
 
 以下示例演示各种循环计划。 这些示例着重于计划对象及其子元素。
 
 这些计划假设 **interval** 设置为 1\. 此外，这些示例假设正确的**频率**值符合 **schedule**。 例如，不能在使用 "day" 作为**频率**的同时，在**计划**中使用 **monthDays** 修改项。 本文前面已描述这些限制。
 
-| 示例 | 描述 |
+| 示例 | 说明 |
 |:--- |:--- |
 | `{"hours":[5]}` |在每天的 5:00 AM 运行。<br /><br />计划程序会将 "hours" 中的每个值与 "minutes" 中的每个值一一匹配，以创建运行作业的所有时间的列表。 |
 | `{"minutes":[15], "hours":[5]}` |在每天早晨 5:15 运行。 |
@@ -207,8 +208,9 @@ ms.locfileid: "71300968"
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |在月份的最后一个星期五每 15 分钟运行一次。 |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |在每月第三个星期三的早晨 5:15、早晨 5:45、下午 5:15、下午 5:45 运行。 |
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
+* [Azure 计划程序 REST API 参考](/rest/api/scheduler)
+* [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 40f89fbe19b93601f9e0525f0387e402bd175fe4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512192"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672677"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 加入设备
 
@@ -45,9 +45,9 @@ Azure AD 联接适用于希望成为云优先或仅限云的组织。 无论规�
 
 Azure AD 联接的设备使用组织 Azure AD 帐户登录。 根据应用于设备标识的 Azure AD 帐户和[条件访问策略](../conditional-access/overview.md)，可以进一步限制对组织中资源的访问。
 
-管理员可以使用移动设备管理（MDM）工具（如 Microsoft Intune 或使用 Microsoft 终结点 Configuration Manager 的共同管理方案）来保护和进一步控制 Azure AD 加入的设备。 这些工具提供了一种方法，可强制实施组织必需的配置，例如需要存储加密、密码复杂性、软件安装和软件更新。 管理员可以使用 Configuration Manager 来[管理业务和教育 Microsoft Store 中的应用](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)，使组织应用程序可用于 Azure AD 加入的设备。
+管理员可以使用移动设备管理（MDM）工具（如 Microsoft Intune 或使用 Microsoft 终结点 Configuration Manager 的共同管理方案）来保护和进一步控制 Azure AD 加入的设备。 这些工具提供了一种方法，可强制实施组织必需的配置，例如需要存储加密、密码复杂性、软件安装和软件更新。 管理员可以使用 Configuration Manager 来[管理业务和教育 Microsoft Store 中的应用](/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business)，使组织应用程序可用于 Azure AD 加入的设备。
 
-可以使用自助服务选项（如全新体验（OOBE）、批量注册或[Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot)）来实现 Azure AD join。
+可以使用自助服务选项（如全新体验（OOBE）、批量注册或[Windows Autopilot](/intune/enrollment-autopilot)）来实现 Azure AD join。
 
 Azure AD 联接的设备在组织的网络上时仍可保持对本地资源的单一登录访问。 Azure AD 联接的设备仍可对本地服务器（如文件、打印和其他应用程序）进行身份验证。
 
@@ -74,8 +74,8 @@ Azure AD 加入设备旨在简化：
 
 Azure AD 加入可以通过下列任何方法进行部署：
 
-- [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)
-- [批量部署](https://docs.microsoft.com/intune/windows-bulk-enroll)
+- [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)
+- [批量部署](/intune/windows-bulk-enroll)
 - [自助部署体验](azuread-joined-devices-frx.md)
 
 ## <a name="next-steps"></a>后续步骤

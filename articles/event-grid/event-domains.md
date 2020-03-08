@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511376"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898863"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>了解用于管理事件网格主题的事件域
 
@@ -31,7 +31,7 @@ ms.locfileid: "76511376"
 
 ### <a name="example-use-case"></a>示例用例
 
-解释事件域最简单的方法是采用示例。 假设你经营着 Contoso 建筑机械公司，公司制造拖拉机、挖掘设备和其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
+解释事件域最简单的方法是采用示例。 假设您运行的是 Contoso 建设装置，其中制造的是 tractors、深入设备以及其他重型机械。 运营业务时，可向客户推送有关设备维护、系统运行状况、合同更新的实时信息。 所有这些信息都会发布到各种终结点，包括应用、客户终结点以及客户已安装的其他基础结构。
 
 事件域允许将 Contoso 建筑机械公司建模为单个事件实体。 每个客户表示为域中的主题。 使用 Azure Active Directory 处理身份验证和授权。 每个客户都可订阅他们的主题并获取传送的事件。 通过事件域管理访问权限可确保客户仅能访问其主题。
 
@@ -43,13 +43,13 @@ ms.locfileid: "76511376"
 
 使用域，可通过 Azure 的基于角色的访问控制 (RBAC) 精细控制每个主题的授权和身份验证情况。 这些角色可用于将应用程序中的每个租户限制为仅可访问经授权的主题。
 
-事件域中 RBAC 的工作方式与[托管访问控制](security-authentication.md#management-access-control)在事件网格和 Azure 的其余部分中的工作方式相同。 使用 RBAC 在事件域中创建和强制实施自定义角色定义。
+事件域中 RBAC 的工作方式与[托管访问控制](security-authorization.md)在事件网格和 Azure 的其余部分中的工作方式相同。 使用 RBAC 在事件域中创建和强制实施自定义角色定义。
 
 ### <a name="built-in-roles"></a>内置角色
 
 事件网格提供两个内置角色定义，使 RBAC 可更方便地用于事件域。 这些角色是“EventGrid EventSubscription 参与者（预览版）”和“EventGrid EventSubscription 读取者（预览版）”。 将这些角色分配到需要订阅事件域中的主题的用户。 将角色分配的范围限定为用户需要订阅的主题。
 
-有关这些角色的信息，请参阅[事件网格的内置角色](security-authentication.md#built-in-roles)。
+有关这些角色的信息，请参阅[事件网格的内置角色](security-authorization.md#built-in-roles)。
 
 ## <a name="subscribing-to-topics"></a>订阅主题
 
@@ -101,13 +101,13 @@ ms.locfileid: "76511376"
 
 - 100000每个事件域的主题 
 - 每个 Azure 订阅100个事件域 
-- 事件域中的每个主题 500 个事件订阅
+- 事件域中的每个主题500事件订阅
 - 50域范围订阅 
 - 每秒5000事件引入速率（域中）
 
 如果这些限制不符合您的需要，请通过提出支持票证或发送电子邮件到[askgrid@microsoft.com](mailto:askgrid@microsoft.com)来联系产品团队。 
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 事件域使用的操作定价与事件网格中的所有其他功能使用的[操作定价](https://azure.microsoft.com/pricing/details/event-grid/)相同。
 
 操作在事件域中的工作方式与在自定义主题中的相同。 事件域每引入一个事件都为一个操作，每尝试传递一个事件都为一个操作。

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f148bfe08d5f7933857eb46cf0d13d4582da108
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: ec716924d3cebf8e78b0505b95837b91c568813a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950277"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898148"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
@@ -29,7 +29,7 @@ ms.locfileid: "68950277"
        <td><b>说明</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 目录 (仅第1代)</td>
+      <td>Azure Data Lake Store 目录（仅第1代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -37,7 +37,7 @@ ms.locfileid: "68950277"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 文件 (仅第1代)</td>
+      <td>Azure Data Lake Store 文件（仅第1代）</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -124,7 +124,7 @@ ms.locfileid: "68950277"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 和更高版本。</td>
     </tr>
     <tr>
       <td>Oracle Database 视图</td>
@@ -132,7 +132,7 @@ ms.locfileid: "68950277"
       <td>✓</td>
       <td>✓</td>
       <td>Excel、Power BI Desktop</td>
-      <td></td>
+      <td>Oracle 10 和更高版本。</td>
     </tr>
     <tr>
       <td>其他（通用资产）</td>
@@ -195,7 +195,7 @@ ms.locfileid: "68950277"
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
-      <td>浏览器</td>
+      <td>浏览者</td>
       <td>仅本机模式服务器。 不支持 SharePoint 模式。 仅 SQL Server 2008 和更高版本</td>
     </tr>
     <tr>

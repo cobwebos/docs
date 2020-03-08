@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 593f80583067d28292701353c8a6a62d81282614
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/26/2020
+ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650820"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898917"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -28,7 +28,7 @@ ms.locfileid: "77650820"
 
 | 存储服务 | 帐户类型 | 命名空间类型 | 支持的服务 | 支持的性能层 | 支持的访问层 | HDInsight 版本 | 群集类型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 常规用途 V2 | 层次结构（文件系统） | Blob | Standard | 热、冷、存档 | 3.6+ | 除 Spark 2.1 之外的所有 |
+|Azure Data Lake Storage Gen2| 常规用途 V2 | 层次结构（文件系统） | Blob | Standard | 热、冷、存档 | 3.6+ | 除 Spark 2.1 和2.2 之外的所有|
 |Azure 存储| 常规用途 V2 | Object | Blob | Standard | 热、冷、存档 | 3.6+ | All |
 |Azure 存储| 常规用途 V1 | Object | Blob | Standard | 空值 | All | All |
 |Azure 存储| Blob 存储 * * | Object | 块 blob | Standard | 热、冷、存档 | All | All |
@@ -58,7 +58,7 @@ ms.locfileid: "77650820"
 \* = 这可能是一个或多个 Data Lake Storage Gen2 帐户，只要它们都设置为使用相同的托管标识进行群集访问。
 
 > [!Note] 
-> Spark 2.1 群集不支持 Data Lake Storage Gen2 主存储。 
+> Spark 2.1 或2.2 群集不支持主存储 Data Lake Storage Gen2。 
 
 ## <a name="use-azure-data-lake-storage-gen2-with-apache-hadoop-in-azure-hdinsight"></a>在 Azure HDInsight 中将 Azure Data Lake Storage Gen2 用于 Apache Hadoop
 

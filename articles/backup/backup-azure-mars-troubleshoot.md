@@ -4,12 +4,12 @@ description: 本文介绍如何排查 Azure 备份代理的安装和注册问题
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: fdaad7e12a5f473a368b9249928591daddd68519
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583803"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673099"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务（MARS）代理问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "77583803"
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或可能已过期。 （例如，在注册时间之前，它们可能下载了超过48小时。）| 在 Azure 门户上从恢复服务保管库下载新凭据。 （请参阅[下载 MARS agent](https://docs.microsoft.com/azure/backup/backup-configure-vault#download-the-mars-agent)部分中的步骤6。）然后，根据需要执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在 "**操作**" 窗格中选择 "**注册服务器**"，以通过新凭据完成注册。 <br/> <li> 如果新的安装失败，请尝试重新安装新的凭据。</ul> **注意**：如果已下载多个保管库凭据文件，则在接下来的48小时内仅可使用最新的文件。 建议下载新的保管库凭据文件。
+| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或可能已过期。 （例如，在注册时间之前，它们可能下载了超过48小时。）| 在 Azure 门户上从恢复服务保管库下载新凭据。 （请参阅[下载 MARS agent](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)部分中的步骤6。）然后，根据需要执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在 "**操作**" 窗格中选择 "**注册服务器**"，以通过新凭据完成注册。 <br/> <li> 如果新的安装失败，请尝试重新安装新的凭据。</ul> **注意**：如果已下载多个保管库凭据文件，则在接下来的48小时内仅可使用最新的文件。 建议下载新的保管库凭据文件。
 | **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**无 internet 连接** <br/><br/> 如果计算机或代理服务器的 internet 连接受到限制，并且不确保访问必要的 Url，则注册将失败。| 执行以下步骤：<br/> <ul><li> 与你的 IT 团队合作，确保系统具有 internet 连接。<li> 如果没有代理服务器，请确保在注册代理时未选择 "代理" 选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你有防火墙/代理服务器，请与你的网络团队合作，以确保这些 Url 和 IP 地址具有访问权限：<br/> <br> **URLs**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，请尝试再次注册。<br></br> 如果是通过 Azure ExpressRoute 进行连接，请确保按照[Azure expressroute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中的说明配置设置。
 | **防病毒软件正在阻止注册** | 如果在服务器上安装了防病毒软件，请在防病毒扫描中添加这些文件和文件夹所需的排除规则： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> 暂存文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
 
@@ -49,7 +49,7 @@ ms.locfileid: "77583803"
 
 - 转到 C:/Windows/Temp，检查是否存在超过 60,000 或 65,000 个扩展名为 .tmp 的文件。 如果存在，请删除这些文件。
 - 确保计算机的日期和时间与本地时区匹配。
-- 确保将[这些站点](backup-configure-vault.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。
+- 确保将[这些站点](install-mars-agent.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。
 
 ### <a name="verifying-proxy-settings-for-windows"></a>验证 Windows 的代理设置
 
@@ -73,7 +73,7 @@ ms.locfileid: "77583803"
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050）检查你的网络设置，并确保你能够连接到 internet。<li>（407）需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，依次访问 "**工具**" > **internet 选项**" > **Security** > **internet**"。 选择 "**自定义级别**"，并向下滚动到 "**文件下载**" 部分。 选择“启用”。<p>你可能还需要在 Internet Explorer 中将[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)添加到受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url 和 IP 地址](backup-configure-vault.md#verify-internet-access)。 <li>如果在服务器上安装了防病毒软件，请从防病毒扫描中排除以下文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC。 在受影响的服务器上的所有版本的 .NET Framework 中排除 CSC 文件。 <li>暂存文件夹或缓存位置。 <br>暂存文件夹的默认位置或缓存路径为 "C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch."<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
+| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050）检查你的网络设置，并确保你能够连接到 internet。<li>（407）需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，依次访问 "**工具**" > **internet 选项**" > **Security** > **internet**"。 选择 "**自定义级别**"，并向下滚动到 "**文件下载**" 部分。 选择“启用”。<p>你可能还需要在 Internet Explorer 中将[url 和 IP 地址](install-mars-agent.md#verify-internet-access)添加到受信任的站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url 和 IP 地址](install-mars-agent.md#verify-internet-access)。 <li>如果在服务器上安装了防病毒软件，请从防病毒扫描中排除以下文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC。 在受影响的服务器上的所有版本的 .NET Framework 中排除 CSC 文件。 <li>暂存文件夹或缓存位置。 <br>暂存文件夹的默认位置或缓存路径为 "C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch."<li>C:\Program Files\Microsoft Azure Recovery Services Agent\Bin. 中的 bin 文件夹
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
 

@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 85006a318864aed537b70a97fb38f89746d2878c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: efe0b93fe1e37990422ffbd2256e38c12401dca5
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622810"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673189"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -138,7 +138,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 > [!NOTE]
 > 用于生成保管库证书的 bug 在 Az 3.5.0 release 中已修复。 使用 Az 3.5.0 release 版本或更高版本下载保管库证书。
 
-由于基本平台限制，在 Powershell 的最新 Az 模块中，下载保管库凭据需要自签名证书。 下面的示例演示如何提供自签名证书并下载保管库凭据。
+由于基本平台限制，在 PowerShell 的最新 Az 模块中，下载保管库凭据需要自签名证书。 下面的示例演示如何提供自签名证书并下载保管库凭据。
 
 ```powershell
 $dt = $(Get-Date).ToString("M-d-yyyy")
@@ -740,4 +740,4 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请执行以下操作：
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)
-* [备份 Windows Servers](backup-configure-vault.md)
+* [备份 Windows Servers](backup-windows-with-mars-agent.md)

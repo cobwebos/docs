@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b9240b863eef4d460cd8d3a47304fb96ffb4bc8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917767"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672637"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>什么是主刷新令牌？
 
@@ -33,7 +33,7 @@ ms.locfileid: "77917767"
 * **Azure AD CloudAP 插件**：在 CloudAP framework 上构建的 Azure AD 特定插件，用于在 Windows 登录期间使用 Azure AD 验证用户凭据。
 * **AZURE AD WAM 插件**：在 WAM 框架上构建的 Azure AD 特定插件，该插件可启用依赖于 Azure AD 进行身份验证的应用程序。
 * **Dsreg**： Windows 10 上的 Azure AD 特定组件，用于处理所有设备状态的设备注册过程。
-* **受信任的平台模块**（tpm）： TPM 是内置于设备中的硬件组件，为用户和设备机密提供基于硬件的安全功能。 有关更多详细信息，请参阅[受信任的平台模块技术概述](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-overview)。
+* **受信任的平台模块**（tpm）： TPM 是内置于设备中的硬件组件，为用户和设备机密提供基于硬件的安全功能。 有关更多详细信息，请参阅[受信任的平台模块技术概述](/windows/security/information-protection/tpm/trusted-platform-module-overview)。
 
 ## <a name="what-does-the-prt-contain"></a>PRT 包含哪些内容？
 
@@ -48,7 +48,7 @@ PRT 是从 Azure AD 发送的不透明 blob，其内容对于任何客户端组�
 
 ## <a name="how-is-a-prt-issued"></a>如何发出 PRT？
 
-在 Azure AD 中，设备注册是基于设备的身份验证的先决条件。 PRT 仅对已注册设备上的用户发出。 有关设备注册的更深入的详细信息，请参阅[Windows Hello 企业版和设备注册](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)一文。 在设备注册过程中，dsreg 组件会生成两组加密密钥对：
+在 Azure AD 中，设备注册是基于设备的身份验证的先决条件。 PRT 仅对已注册设备上的用户发出。 有关设备注册的更深入的详细信息，请参阅[Windows Hello 企业版和设备注册](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)一文。 在设备注册过程中，dsreg 组件会生成两组加密密钥对：
 
 * 设备密钥（dkpub/dkpriv）
 * 传输密钥（tkpub/tkpriv）

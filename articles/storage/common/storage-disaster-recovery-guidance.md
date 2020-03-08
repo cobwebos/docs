@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905528"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894531"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>灾难恢复和帐户故障转移（预览版）
 
@@ -114,22 +114,17 @@ Microsoft 还建议将应用程序设计为，可以应对可能出现的写入�
 
 ## <a name="about-the-preview"></a>关于此预览版
 
-对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户，可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 目前，帐户故障转移适用于下面这些区域：
-
-- 亚洲东部
-- 亚洲东南部
-- 澳大利亚东部
-- 澳大利亚东南部
-- 美国中部
-- 美国东部 2
-- 美国中西部
-- 美国西部 2
+对于在 Azure 资源管理器部署中使用 GRS 或 GRS 的所有客户，可通过预览版使用帐户故障转移。 支持常规用途 v1、常规用途 v2 和 Blob 存储帐户类型。 帐户故障转移当前在所有公共区域中可用。 目前不能在主权/全国云中使用帐户故障转移。
 
 此预览版仅用于非生产用途。 生产服务级别协议 (SLA) 当前不可用。
 
 ### <a name="additional-considerations"></a>其他注意事项
 
 请参阅此部分中介绍的其他注意事项，以了解在预览期间强制执行故障转移会对应用程序和服务造成什么影响。
+
+#### <a name="storage-account-containing-archived-blobs"></a>包含存档 blob 的存储帐户
+
+包含存档 blob 的存储帐户支持帐户故障转移。 故障转移完成后，若要将帐户转换回 GRS 或 GRS，则需要首先将所有 archieved blob 解除冻结到联机层。
 
 #### <a name="storage-resource-provider"></a>存储资源提供程序
 
@@ -162,8 +157,8 @@ Azure 虚拟机 (VM) 不会在帐户故障转移过程中进行故障转移。 �
 
 预览版本的帐户故障转移不支持以下功能和服务：
 
-- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。  
-- 无法对包含已存档 blob 的存储帐户执行故障转移。 请在你不打算执行故障转移的单独存储帐户中维护已存档 blob。
+- Azure 文件同步不支持存储帐户故障转移。 不得对包含 Azure 文件共享且用作 Azure 文件同步中云终结点的存储帐户执行故障转移。 否则，将会导致同步停止，并且可能还会在有新分层文件的情况下导致意外数据丢失。
+- 此时不支持 ADLS Gen2 存储帐户（已启用分层命名空间的帐户）。
 - 无法对包含高级块 blob 的存储帐户执行故障转移。 支持高级块 blob 的存储帐户暂不支持异地冗余。
 - 不能对包含任何启用了[蠕虫永久性策略](../blobs/storage-blob-immutable-storage.md)的容器的存储帐户进行故障转移。 已解锁/锁定的基于时间的保留或法律封存策略阻止故障转移，以便保持符合性。
 - 故障转移完成后，以下功能可能会在初始启用时停止工作：[事件订阅](../blobs/storage-blob-event-overview.md)、[更改源](../blobs/storage-blob-change-feed.md)、[生命周期策略](../blobs/storage-lifecycle-management-concepts.md)和[存储分析日志记录](storage-analytics-logging.md)。

@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 018a6cee3f00531752684b12f4988cac174d3d26
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617585"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673115"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -76,7 +76,7 @@ ms.locfileid: "77617585"
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
 | 将代理推送到受保护的服务器 | 为服务器指定的凭据无效。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br> 尝试根据[此文](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019)中的说明，在生产服务器上手动安装保护代理。|
-| Azure 备份代理无法连接到 Azure 备份服务 (ID: 100050) | Azure 备份代理无法连接到 Azure 备份服务。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br>1. 从权限提升的提示符下运行以下命令： **psexec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**。 此命令会打开 Internet Explorer 窗口。 <br/> 2. > **Internet 选项**"中的" > **连接**" > **LAN 设置**中转到"**工具**"。 <br/> 3. 将设置更改为使用代理服务器。 然后提供代理服务器详细信息。<br/> 4. 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url](backup-configure-vault.md#verify-internet-access)和[IP 地址](backup-configure-vault.md#verify-internet-access)。|
+| Azure 备份代理无法连接到 Azure 备份服务 (ID: 100050) | Azure 备份代理无法连接到 Azure 备份服务。 | **如果产品中显示的建议操作不起作用，请执行以下步骤**： <br>1. 从权限提升的提示符下运行以下命令： **psexec-i-s "C:\Program Files\Internet Explorer\iexplore.exe**。 此命令会打开 Internet Explorer 窗口。 <br/> 2. > **Internet 选项**"中的" > **连接**" > **LAN 设置**中转到"**工具**"。 <br/> 3. 将设置更改为使用代理服务器。 然后提供代理服务器详细信息。<br/> 4. 如果计算机具有有限的 internet 访问权限，请确保计算机或代理上的防火墙设置允许这些[url](install-mars-agent.md#verify-internet-access)和[IP 地址](install-mars-agent.md#verify-internet-access)。|
 | Azure 备份代理安装失败 | Microsoft Azure 恢复服务安装失败。 通过 Microsoft Azure 恢复服务安装对系统所做的所有更改都已回滚。 (ID: 4024) | 手动安装 Azure 代理。
 
 ## <a name="configuring-protection-group"></a>配置保护组
@@ -109,7 +109,7 @@ ms.locfileid: "77617585"
 
 | Operation | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| 原因：<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先确保 Exchange 上已设置用于 DPM 服务器的“在接收连接器上允许匿名中继”。 有关如何配置此设置的详细信息，请参阅[允许在接收连接器上使用匿名中继](https://docs.microsoft.com/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 O365](https://docs.microsoft.com/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)。<br><br>  请确保使用用户\@domain.com 格式，而*非*domain\user<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保反映新值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程中，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
+| 使用 Office 365 帐户设置电子邮件通知 |错误 ID：2013| 原因：<br> 尝试使用 Office 365 帐户 <br>**建议的操作：**<ol><li> 首先要确保 DPM 服务器的 "在接收连接器上允许匿名中继" 是在 Exchange 上设置的。 有关如何配置此设置的详细信息，请参阅[允许在接收连接器上使用匿名中继](https://docs.microsoft.com/exchange/mail-flow/connectors/allow-anonymous-relay?view=exchserver-2019)。</li> <li> 如果无法使用内部 SMTP 中继并需要使用 Office 365 服务器进行设置，可将 IIS 设置为中继。 将 DPM 服务器配置为[使用 IIS 将 SMTP 中继到 O365](https://docs.microsoft.com/exchange/mail-flow/test-smtp-with-telnet?view=exchserver-2019)。<br><br>  请确保使用用户\@domain.com 格式，而*非*domain\user<br><br><li>指示 DPM 将本地服务器名用作 SMTP 服务器，并使用端口 587。 然后将它指向于应从中发送电子邮件的用户电子邮件地址。<li> DPM SMTP 设置页上的用户名和密码应属于 DPM 所在域中的域帐户。 </li><br> 更改 SMTP 服务器地址时，请对新设置进行更改，关闭设置框，然后重新打开它以确保反映新值。  只是进行更改和测试可能不一定总能让新设置生效，因此最佳做法是通过此方法进行测试。<br><br>在此过程中，可随时清除这些设置，方法是关闭 DPM 控制台，然后编辑以下注册表项：**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> 删除 SMTPPassword 和 SMTPUserName 项**。 重新启动 UI 时，可将这些设置添加回到 UI。
 
 ## <a name="common-issues"></a>常见问题
 

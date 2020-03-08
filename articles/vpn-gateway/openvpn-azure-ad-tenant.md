@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 03/05/2020
 ms.author: alzam
-ms.openlocfilehash: b9627862002a70dc84b0e268128c53a97df0ebe8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: f4092f651a3058c8a2e738c81d9db7e296386bfa
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472292"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402895"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>创建用于 P2S OpenVPN 协议连接的 Azure Active Directory 租户
 
@@ -22,9 +22,10 @@ ms.locfileid: "77472292"
 > Azure AD 身份验证仅支持用于 OpenVPN®协议连接。
 >
 
-## <a name="tenant"></a>1. 创建 Azure AD 租户
 
-使用[创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步骤创建 Azure AD 租户：
+## <a name="tenant"></a>1. 验证 Azure AD 租户
+
+验证你是否拥有 Azure AD 租户。 如果没有 Azure AD 租户，可以使用[创建新租户](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)一文中的步骤创建一个租户：
 
 * 组织名称
 * 初始域名
@@ -35,7 +36,7 @@ ms.locfileid: "77472292"
 
 ## <a name="users"></a>2. 创建 Azure AD 租户用户
 
-接下来，创建两个用户帐户。 创建一个全局管理员帐户和一个主用户帐户。 主用户帐户用作您的主嵌入帐户（服务帐户）。 当你创建 Azure AD 租户用户帐户时，将为你要创建的用户类型调整目录角色。
+Azure AD 租户需要以下帐户：全局管理员帐户和主用户帐户。 主用户帐户用作您的主嵌入帐户（服务帐户）。 当你创建 Azure AD 租户用户帐户时，将为你要创建的用户类型调整目录角色。
 
 使用[本文](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步骤，为你的 Azure AD 租户至少创建两个用户。 确保更改**目录角色**以创建帐户类型：
 

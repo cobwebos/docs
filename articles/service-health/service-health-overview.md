@@ -3,12 +3,12 @@ title: 服务运行状况概述 | Microsoft Docs
 description: 有关当前和将来的 Azure 服务问题及维护对 Azure 应用造成的影响的个性化信息。
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654012"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898443"
 ---
 # <a name="service-health-overview"></a>服务运行状况概述
 
@@ -16,11 +16,12 @@ ms.locfileid: "77654012"
 
 ## <a name="service-health-events"></a>服务运行状况事件
 
-服务运行状况跟踪三种可能会影响资源的运行状况事件：
+服务运行状况跟踪可能会影响资源的四种类型的运行状况事件：
 
 1. **服务问题** - Azure 服务中目前已经造成了影响的问题。 
 2. **计划内维护** - 即将进行的且将来可能会影响服务可用性的维护。  
 3. **运行状况通告** - Azure 服务中发生的、需要引以注意的更改。 示例包括已弃用某些 Azure 功能，或超出了使用配额。
+4. **安全建议（预览版）** -安全相关通知，可能会影响 Azure 服务的可用性。
 
 > [!NOTE]
 > 若要查看服务运行状况事件，必须[向用户授予对订阅的 "读取者" 角色](../role-based-access-control/role-assignments-portal.md)。
@@ -43,7 +44,7 @@ ms.locfileid: "77654012"
 
 ## <a name="get-links-and-downloadable-explanations"></a>获取链接和可下载的说明 
 
-可以获取要在问题管理系统中使用的问题链接。 可以下载 PDF 文件（有时是 CSV 文件），以便与无法访问 Azure 门户的人员共享。   
+可以获取要在问题管理系统中使用的问题链接。 您可以下载 PDF 和有时是 CSV 文件，与无权访问 Azure 门户的人员共享。   
 
 ![管理服务问题 - 问题管理](./media/service-health-overview/azure-service-health-overview-3.png)
 

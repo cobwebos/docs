@@ -1,26 +1,26 @@
 ---
 title: 持续集成和部署
-description: 内置支持使用 Azure Pipelines 进行持续集成和部署的数据仓库的企业级数据库 DevOps 体验。
+description: 企业级数据库 DevOps 对数据仓库的体验，其中内置支持使用 Azure Pipelines 进行持续集成和部署。
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: overview
+ms.topic: how-to
 ms.subservice: integration
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: HT
+ms.openlocfilehash: a72ca29c2386035adaa6ebd58c4177f0f4e8ba11
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195934"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673600"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>适用于数据仓库的持续集成和部署
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>针对数据仓库进行持续集成和部署
 
-本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是为数据仓库构建持续集成和部署管道的第二步。 
+本简易教程概述如何将 SQL Server Data Tools (SSDT) 数据库项目集成到 Azure DevOps，并利用 Azure Pipelines 来设置持续集成和部署。 本教程是构建数据仓库持续集成和部署管道的第二个步骤。 
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -62,7 +62,7 @@ ms.locfileid: "78195934"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 探索 [SQL Analytics MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
+- 探索[SQL ANALYTICS MPP 体系结构](massively-parallel-processing-mpp-architecture.md)
 - 快速[创建 SQL 池](create-data-warehouse-portal.md)
 - [加载示例数据](sql-data-warehouse-load-sample-databases.md)
 - 浏览[视频](/azure/sql-data-warehouse/sql-data-warehouse-videos)

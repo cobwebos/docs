@@ -9,23 +9,23 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971503"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671562"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>有关 Azure Databricks 的常见问题解答
 
 本文列出了用户可能会遇到的与 Azure Databricks 相关的常见问题。 以及使用 Databricks 时可能会遇到的一些常见问题。 有关详细信息，请参阅[什么是 Azure Databricks](what-is-azure-databricks.md)？ 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>是否可以使用 Azure Key Vault 来存储要在 Azure Databricks 中使用的密钥/机密？
-可以。 可以使用 Azure Key Vault 来存储要用于 Azure Databricks 的密钥/机密。 有关详细信息，请参阅 [Azure Key Vault 支持的作用域](/azure/databricks/security/secrets/secret-scopes)。
+是的。 可以使用 Azure Key Vault 来存储要用于 Azure Databricks 的密钥/机密。 有关详细信息，请参阅 [Azure Key Vault 支持的作用域](/azure/databricks/security/secrets/secret-scopes)。
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>是否可以将 Azure 虚拟网络与 Databricks 配合使用？
-可以。 可以将 Azure 虚拟网络 (VNET) 与 Databricks 配合使用。 有关详细信息，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
+是的。 可以将 Azure 虚拟网络 (VNET) 与 Databricks 配合使用。 有关详细信息，请参阅[在 Azure 虚拟网络中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
 ## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>从笔记本如何实现访问 Azure Data Lake Storage？ 
 
@@ -40,11 +40,11 @@ ms.locfileid: "75971503"
 
 以下是使用 Databricks 时可能会遇到的一些问题。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>问题：该订阅未注册为使用命名空间“Microsoft.Databricks”
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>问题：此订阅未注册为使用命名空间 "Databricks"
 
 #### <a name="error-message"></a>错误消息
 
-“该订阅未注册为使用命名空间‘Microsoft.Databricks’。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found 。 （代码：MissingSubscriptionRegistration）”
+"此订阅未注册为使用命名空间" Databricks "。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。 （代码：MissingSubscriptionRegistration）”
 
 #### <a name="solution"></a>解决方案
 
@@ -67,15 +67,15 @@ ms.locfileid: "75971503"
 
 * 如果电子邮件域名在 Azure AD 中被分配给多个目录，也可能会发生此错误。 若要解决此问题，可在包含订阅和 Databricks 工作区的目录中创建新用户。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
+    a. 在 Azure 门户中，转到 Azure AD。 依次选择“用户和组” > “添加用户”。
 
-    b.保留“数据库类型”设置，即设置为“共享”。 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
+    b. 使用 `@<tenant_name>.onmicrosoft.com` 电子邮件而非 `@<your_domain>` 电子邮件添加用户。 可在 Azure 门户中 Azure AD 下的“自定义域”中找到此选项。
     
     c. 授予新用户 Databricks 工作区资源的“参与者”角色。
     
-    d.单击“下一步”。 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
+    d. 使用新用户登录到 Azure 门户，并找到 Databricks 工作区。
     
-    e.在“新建 MySQL 数据库”边栏选项卡中，接受法律条款，然后单击“确定”。 以此用户的身份启动 Databricks 工作区。
+    e. 以此用户的身份启动 Databricks 工作区。
 
 
 ### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>问题：你的帐户 {电子邮件} 未在 Databricks 中注册 
@@ -88,18 +88,27 @@ ms.locfileid: "75971503"
 
 #### <a name="error-message"></a>错误消息
 
-“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息: 不能在此区域为该订阅创建超过 60 个公共 IP 地址。”
+“云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。 Azure 错误代码：PublicIPCountLimitReached。 Azure 错误消息：无法在此区域为此订阅创建10个以上的公共 IP 地址。 "
+
+#### <a name="background"></a>背景
+
+Databricks 群集为每个节点使用一个公共 IP 地址（包括驱动程序节点）。 Azure 订阅的每个区域都有[公共 IP 地址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果群集创建和扩展操作导致在该区域中分配给该订阅的公共 IP 地址数目超过限制，则群集创建和扩展操作可能会失败。 此限制还包括为非 Databricks 使用分配的公共 IP 地址，如自定义用户定义的 Vm。
+
+通常，当群集处于活动状态时，群集只使用公共 IP 地址。 但是，即使在终止其他群集后，也可能会在短时间内继续出现 `PublicIPCountLimitReached` 错误。 这是因为在群集终止时，Databricks 会临时缓存 Azure 资源。 资源缓存是设计使然，因为在许多常见情况下，它可以显著减少群集启动和自动缩放的延迟。
 
 #### <a name="solution"></a>解决方案
 
-Databricks 群集为每个节点使用一个公共 IP 地址。 如果订阅已使用其所有的公共 IP，则应[请求增加配额](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”。 在“详细信息”中，请求增加公共 IP 地址配额。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
+如果你的订阅已达到给定区域的公共 IP 地址限制，则应执行以下一项或多项操作。
+
+- 在不同的 Databricks 工作区中创建新群集。 其他工作区必须位于尚未到达订阅的公共 IP 地址限制的区域中。
+- [请求增加公共 IP 地址限制](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 选择“配额”作为“问题类型”、选择“网络: ARM”作为“配额类型”。 在“详细信息”中，请求增加公共 IP 地址配额。 例如，如果限制当前为 60，但希望创建具有 100 个节点的群集，则请求将限制增加至 160。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>问题：设置群集时，第二种类型的云提供程序启动失败 (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>错误消息
 
 “云提供程序启动故障: 在设置群集时遇到云提供程序错误。 有关详细信息，请参阅“Databricks 指南”。
-Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found 。
+Azure 错误代码：MissingSubscriptionRegistration；Azure 错误消息：订阅未注册为使用命名空间“Microsoft.Databricks”。 有关如何注册订阅，请参阅 https://aka.ms/rps-not-found。
 
 #### <a name="solution"></a>解决方案
 
@@ -123,4 +132,3 @@ Azure Databricks 集成了 Azure Active Directory。 你可以通过指定 Azure
 
 - [快速入门：Azure Databricks 入门](quickstart-create-databricks-workspace-portal.md)
 - [什么是 Azure Databricks？](what-is-azure-databricks.md)
-

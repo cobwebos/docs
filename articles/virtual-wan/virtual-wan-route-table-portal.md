@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612354"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402953"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>为 Nva 创建虚拟 WAN 中心路由表： Azure 门户
 
-本文介绍如何通过网络虚拟设备（NVA）将流量从连接到虚拟 WAN 集线器的分支（本地站点）转移到分支 Vnet。
+本文介绍如何通过网络虚拟设备（NVA）将流量从连接到虚拟 WAN 集线器的分支（本地站点）转移到辐射虚拟网络（VNet）。
 
 ![虚拟 WAN 示意图](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -29,15 +29,16 @@ ms.locfileid: "75612354"
 
     * 必须将专用 IP 地址分配给 NVA 网络接口。
 
-    * 未在虚拟中心部署 NVA。 它必须部署在单独的 VNet 中。
+    * 未在虚拟中心部署 NVA。 它必须部署在单独的虚拟网络中。
 
-    *  NVA VNet 可能有一个或多个虚拟网络连接到它。 在本文中，我们将 NVA VNet 称为 "间接辐射 VNet"。 可使用 VNet 对等互连将这些 Vnet 连接到 NVA VNet。 Vnet 1、Vnet 2 和 NVA Vnet 之间的上图中的黑色箭头描述了 Vnet 对等互连链接。
-*  您已经创建了2个 Vnet。 它们将用作辐射 Vnet。
+    *  NVA 虚拟网络上可能有一个或多个虚拟网络连接到它。 本文以 "间接辐射 VNet" 的形式引用 NVA 虚拟网络。 可使用 VNet 对等互连将这些虚拟网络连接到 NVA VNet。 Vnet 1、VNet 2 和 NVA VNet 之间的上图中的黑色箭头描述了 VNet 对等互连链接。
+*  你已创建两个虚拟网络。 它们将用作辐射 Vnet。
 
-    * 对于本练习，VNet 辐射地址空间为： VNet1： 10.0.2.0/24 和 VNet2： 10.0.3.0/24。 如果需要有关如何创建 VNet 的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
+    * VNet 辐射地址空间为： VNet1： 10.0.2.0/24 和 VNet2： 10.0.3.0/24。 如果需要有关如何创建虚拟网络的信息，请参阅[创建虚拟网络](../virtual-network/quick-create-portal.md)。
 
     * 请确保任何 Vnet 中没有虚拟网络网关。
-    * 对于此配置，这些 Vnet 不需要网关子网。
+
+    * Vnet 不需要网关子网。
 
 ## <a name="signin"></a>1. 登录
 
@@ -45,7 +46,7 @@ ms.locfileid: "75612354"
 
 ## <a name="vwan"></a>2. 创建虚拟 WAN
 
-创建虚拟 WAN。 对于本练习，可以使用以下值：
+创建虚拟 WAN。 使用以下示例值：
 
 * **虚拟 WAN 名称：** myVirtualWAN
 * **资源组：** testRG
@@ -55,7 +56,7 @@ ms.locfileid: "75612354"
 
 ## <a name="hub"></a>3. 创建集线器
 
-创建中心。 对于本练习，可以使用以下值：
+创建中心。 使用以下示例值：
 
 * **位置：** 美国西部
 * **名称：** westushub
@@ -65,7 +66,7 @@ ms.locfileid: "75612354"
 
 ## <a name="route"></a>4. 创建和应用中心路由表
 
-使用集线器路由表更新中心。 对于本练习，可以使用以下值：
+使用集线器路由表更新中心。 使用以下示例值：
 
 * **分支 VNet 地址空间：** （VNet1 和 VNet2） 10.0.2.0/24 和 10.0.3.0/24
 * **DMZ NVA 网络接口专用 IP 地址：** 10.0.4。5
@@ -79,17 +80,17 @@ ms.locfileid: "75612354"
 
 ## <a name="connections"></a>5. 创建 VNet 连接
 
-创建从每个间接辐射 VNet （VNet1 和 VNet2）到中心的 Vnet 连接。 这些 Vnet 连接由上图中的蓝色箭头描述。 然后，创建从 NVA VNet 到集线器的 Vnet 连接（图中的黑色箭头）。 
+创建从每个间接辐射 VNet （VNet1 和 VNet2）到中心的虚拟网络连接。 上图中的蓝色箭头描述了这些虚拟网络连接。 然后，创建从 NVA VNet 到集线器的 VNet 连接（图中的黑色箭头）。
 
  对于此步骤，可以使用以下值：
 
-| VNet 名称| 连接名称|
+| 虚拟网络名称| 连接名称|
 | --- | --- |
 | VNet1 | testconnection1 |
 | VNet2 | testconnection2 |
 | NVAVNet | testconnection3 |
 
-为要连接的每个 VNet 重复以下过程。
+为要连接的每个虚拟网络重复以下过程。
 
 1. 在虚拟 WAN 的页面上，单击“虚拟网络连接”。
 2. 在虚拟网络连接页上，单击“+添加连接”。

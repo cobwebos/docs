@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 158b3b34bf433c1da0d1c4bdc851fd99e5bd54d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620857"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671953"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：阻止旧身份验证使用条件性访问 Azure AD   
 
-为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧协议不支持多重身份验证 (MFA)。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
+为了让用户轻松访问云应用程序，Azure Active Directory (Azure AD) 支持各种身份验证协议，包括旧身份验证。 但是，旧版协议不支持多重身份验证（MFA）。 许多环境通常都会要求使用 MFA，以解决身份盗用的情况。 
 
 如果你的环境已准备好阻止旧式身份验证来改善租户的保护，则可以使用条件性访问来实现此目标。 本文介绍如何配置阻止对租户进行旧身份验证的条件性访问策略。
 
@@ -54,7 +54,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 - 经过身份验证的 SMTP-POP 和 IMAP 客户端使用它来发送电子邮件。
 - 自动发现-由 Outlook 和 EAS 客户端用于查找和连接到 Exchange Online 中的邮箱。
-- Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
+- Exchange Online PowerShell-用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需要使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
 - Exchange Web 服务（EWS）-Outlook、Outlook for Mac 和第三方应用程序使用的编程接口。
 - IMAP4-由 IMAP 电子邮件客户端使用。
 - MAPI over HTTP （MAPI/HTTP）-由 Outlook 2010 及更高版本使用。
@@ -137,4 +137,4 @@ Azure 具有一项安全功能，可阻止你创建这样的策略，因为此�
 ## <a name="next-steps"></a>后续步骤
 
 - 如果你尚不熟悉配置条件访问策略，请参阅[需要对特定应用的 MFA，其中 Azure Active Directory 条件性访问](app-based-mfa.md)。
-- 有关新式身份验证支持的详细信息，请参阅[office 2013 和 office 2016 客户端应用的新式身份验证的工作原理](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) 
+- 有关新式身份验证支持的详细信息，请参阅[office 2013 和 office 2016 客户端应用的新式身份验证的工作原理](/office365/enterprise/modern-auth-for-office-2013-and-2016) 

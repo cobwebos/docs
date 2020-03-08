@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 9e5b3e633bf35a25a68eb513d0ec691c3254bde4
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916500"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674226"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服务配额
 
@@ -186,6 +186,20 @@ Cosmos DB 支持针对 MongoDB 编写的应用程序的 MongoDB 线路协议。 
 | 每个帐户的最大总存储 | 10 GB |
 
 试用 Cosmos DB 仅支持美国中部、北欧和东南亚地区的全局分发。 无法为试用 Azure Cosmos DB 帐户创建 Azure 支持票证。 但是，为具有现有支持计划的订阅者提供了支持。
+
+## <a name="free-tier-account-limits"></a>免费层帐户限制
+下表列出了[Azure Cosmos DB 免费层帐户](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
+
+| 资源 | 默认限制 |
+| --- | --- |
+| 每个 Azure 订阅的免费层帐户数 | 1 |
+| 免费层折扣的持续时间 | 帐户的生存期。 必须在创建帐户期间选择加入。 |
+| 可用的最大 RU/秒 | 400 RU/秒 |
+| 最大存储空间（免费） | 5 GB |
+| 共享吞吐量数据库的最大数目 | 5 |
+| 共享吞吐量数据库中的容器的最大数目 | 25 <br>在免费层帐户中，具有最多25个容器的共享吞吐量数据库的最小 RU/秒为 400 RU/s。 |
+
+  除此之外，[每个帐户的限制](#per-account-limits)也适用于免费层帐户。
 
 ## <a name="next-steps"></a>后续步骤
 

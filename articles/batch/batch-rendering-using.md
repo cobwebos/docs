@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 03/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: d181b9b2495ebd106bb068b78131fa90c2f6d62c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f3b2e641ab187514a7900b2ab7cc75068df00252
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449667"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672009"
 ---
 # <a name="using-azure-batch-rendering"></a>使用 Azure Batch 渲染
 
@@ -32,7 +32,7 @@ ms.locfileid: "75449667"
 
 对于非开发人员或者非 Azure 专家级的最终用户而言，体验 Azure Batch 渲染的最佳、最简单的方法是直接使用或者从客户端应用程序插件调用 Batch Explorer 应用程序。
 
-## <a name="using-batch-explorer"></a>使用批处理资源管理器
+## <a name="using-batch-explorer"></a>使用 Batch Explorer
 
 有关使用 Batch Explorer 执行渲染的分步教程，请参阅 [Blender 教程](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)。
 
@@ -48,17 +48,18 @@ ms.locfileid: "75449667"
 
 提供的模板可以配合市场渲染 VM 映像中所有应用程序。  每个应用程序有多个模板，包括用于配合 CPU 和 GPU 池、Windows 和 Linux 池的池模板；作业模板包括完整的框架或平铺式 Blender 渲染，以及 V-Ray 分布式渲染。 提供的模板集将不断扩展，以配合其他 Batch 功能，例如池自动缩放。
 
-此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 在 Batch Explorer 的“库”部分选择“本地模板”项可以使用自定义模板。
+此外，可以从头开始或者通过修改提供的模板，来生成自定义模板。 可以通过在 Batch Explorer 的 "库" 部分选择 "本地模板" 项来使用自定义模板。
 
 ### <a name="file-system-and-data-movement"></a>文件系统和数据移动
 
-使用 Batch Explorer 中的“数据”部分，可以在本地文件系统与 Azure 存储帐户之间复制文件。
+Batch Explorer 中的 "Data" 部分允许在本地文件系统和 Azure 存储帐户之间复制文件。
 
 ## <a name="client-application-plug-ins"></a>客户端应用程序插件
 
 我们为某些客户端应用程序提供了插件。  使用插件可以直接从应用程序创建池和作业，或调用 Batch Explorer。
 
-* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender 2.8 +](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

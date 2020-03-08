@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 02/22/2020
-ms.openlocfilehash: ece4b7a85ff5738900b8f999cc2f14ba35ecab0d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 334cf69db70e8a1e0c2994c492f15ff44505af0d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920087"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673368"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的算法 & 模块参考（预览版）
 
@@ -57,7 +57,7 @@ ms.locfileid: "77920087"
 | R 语言 | 编写代码，并将其嵌入到模块中，以便将 R 与管道集成。 | [执行 R 脚本](execute-r-script.md) |
 | 文本分析 | 提供专门用于处理结构化和非结构化文本的计算工具。 | [从文本提取 N 元语法特征](extract-n-gram-features-from-text.md) <br/> [功能哈希](feature-hashing.md) <br/> [预处理文本](preprocess-text.md) |
 | 建议 | 生成建议模型。 | [评估推荐器](evaluate-recommender.md) <br/> [评分 SVD 推荐器](score-svd-recommender.md) <br/> [训练 SVD 推荐器](train-SVD-recommender.md) |
-| 异常检测 | 生成异常情况检测模型。 | [基于 PCA 的异常情况检测](pca-based-anomaly-detection.md) <br/> [训练异常检测模型](train-anomaly-detection-model.md) |
+
 
 ## <a name="error-messages"></a>错误消息
 

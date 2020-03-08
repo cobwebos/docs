@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030080"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78674107"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP webhook 创建和运行自动基于事件的工作流
 
@@ -53,7 +53,7 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 * [Webhook 和订阅](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
 * [创建支持 webhook 的自定义 Api](../logic-apps/logic-apps-create-api-app.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -65,35 +65,47 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 ## <a name="add-an-http-webhook-trigger"></a>添加 HTTP Webhook 触发器
 
-此内置触发器向指定的服务注册一个回调 URL，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，触发器将触发，并立即运行逻辑应用。
+此内置触发器调用目标服务上的订阅终结点，并向目标服务注册回调 URL。 逻辑应用随后会等待目标服务将 `HTTP POST` 请求发送到回调 URL。 发生此事件时，触发器将触发，并将请求中的任何数据传递到工作流。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开空白逻辑应用。
 
-1. 在设计器的搜索框中，输入 "http webhook" 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP Webhook**触发器。
+1. 在设计器的搜索框中，输入 "`http webhook`" 作为筛选器。 从 "**触发器**" 列表中，选择**HTTP Webhook**触发器。
 
    ![选择 HTTP Webhook 触发器](./media/connectors-native-webhook/select-http-webhook-trigger.png)
 
-   此示例将触发器重命名为 "HTTP Webhook 触发器"，以使该步骤具有更具描述性的名称。 此外，该示例稍后会添加 HTTP Webhook 操作，并且这两个名称必须是唯一的。
+   此示例将触发器重命名为 `HTTP Webhook trigger`，以便该步骤具有更具描述性的名称。 此外，该示例稍后会添加 HTTP Webhook 操作，并且这两个名称必须是唯一的。
 
-1. 提供要用于订阅和取消订阅调用的[HTTP Webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)的值，例如：
+1. 提供要用于订阅和取消订阅调用的[HTTP Webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)的值。
+
+   在此示例中，触发器包含执行订阅和取消订阅操作时要使用的方法、Uri 和消息正文。
 
    ![输入 HTTP Webhook 触发器参数](./media/connectors-native-webhook/http-webhook-trigger-parameters.png)
 
-1. 若要添加其他可用参数，请打开 "**添加新参数**" 列表，然后选择所需的参数。
+   | properties | 必选 | 说明 |
+   |----------|----------|-------------|
+   | **订阅-方法** | 是 | 订阅目标终结点时要使用的方法 |
+   | **订阅-URI** | 是 | 用于订阅目标终结点的 URL |
+   | **订阅正文** | 否 | 要包含在订阅请求中的任何消息正文。 此示例包含唯一标识订阅服务器的回调 URL，该 URL 是逻辑应用，通过使用 `@listCallbackUrl()` 表达式检索逻辑应用的回调 URL。 |
+   | **取消订阅-方法** | 否 | 取消订阅目标终结点时使用的方法 |
+   | **取消订阅-URI** | 否 | 用于取消订阅目标终结点的 URL |
+   | **取消订阅正文** | 否 | 要包括在取消订阅请求中的可选消息正文 <p><p>**注意**：此属性不支持使用 `listCallbackUrl()` 函数。 但是，触发器会自动包括并发送标头、`x-ms-client-tracking-id` 和 `x-ms-workflow-operation-name`，目标服务可以使用这些标头来唯一标识订阅服务器。 |
+   ||||
 
-   有关可用于 HTTP Webhook 的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+1. 若要添加其他触发器属性，请打开 "**添加新参数**" 列表。
+
+   ![添加更多触发器属性](./media/connectors-native-webhook/http-webhook-trigger-add-properties.png)
+
+   例如，如果需要使用身份验证，则可以添加**订阅身份验证**和**取消订阅身份验证**属性。 有关可用于 HTTP Webhook 的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 继续使用触发器激发时运行的操作生成逻辑应用的工作流。
 
 1. 完成后，请记住保存逻辑应用。 在设计器工具栏上，选择“保存”。
 
-   保存逻辑应用会调用订阅终结点并注册用于触发此逻辑应用的回调 URL。
-
-1. 现在，每当目标服务向回调 URL 发送 `HTTP POST` 请求时，逻辑应用都将触发，并包含通过请求传递的所有数据。
+   保存逻辑应用会调用目标服务上的订阅终结点并注册回调 URL。 逻辑应用随后会等待目标服务将 `HTTP POST` 请求发送到回调 URL。 发生此事件时，触发器将触发，并将请求中的任何数据传递到工作流。 如果此操作成功完成，则触发器将从终结点取消订阅，你的逻辑应用将继续剩余工作流。
 
 ## <a name="add-an-http-webhook-action"></a>添加 HTTP Webhook 操作
 
-此内置操作向指定的服务注册回调 URL，暂停逻辑应用的工作流，并等待该服务向该 URL 发送 HTTP POST 请求。 发生此事件时，操作会继续运行逻辑应用。
+此内置操作调用目标服务上的订阅终结点，并向目标服务注册回调 URL。 逻辑应用随后会暂停并等待目标服务将 `HTTP POST` 请求发送到回调 URL。 发生此事件时，操作会将请求中的任何数据传递到工作流。 如果操作成功完成，则操作将从终结点取消订阅，逻辑应用会继续运行剩余工作流。
 
 1. 登录 [Azure 门户](https://portal.azure.com)。 在逻辑应用设计器中打开逻辑应用。
 
@@ -103,23 +115,37 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
    若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（ **+** ），然后选择 "**添加操作**"。
 
-1. 在设计器的搜索框中，输入 "http webhook" 作为筛选器。 从 "**操作**" 列表中，选择**HTTP Webhook**操作。
+1. 在设计器的搜索框中，输入 "`http webhook`" 作为筛选器。 从 "**操作**" 列表中，选择**HTTP Webhook**操作。
 
    ![选择 HTTP Webhook 操作](./media/connectors-native-webhook/select-http-webhook-action.png)
 
    此示例将操作重命名为 "HTTP Webhook 操作"，以使该步骤具有更具描述性的名称。
 
-1. 为 HTTP Webhook 操作参数提供值，这些参数类似于要用于订阅和取消订阅调用的[Http webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)，例如：
+1. 提供 HTTP Webhook 操作参数的值，这些参数与要用于订阅和取消订阅调用的[Http webhook 触发器参数](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)类似。
+
+   在此示例中，操作包括执行订阅和取消订阅操作时要使用的方法、Uri 和消息正文。
 
    ![输入 HTTP Webhook 操作参数](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
-   在运行时，逻辑应用在运行此操作时调用订阅终结点。 逻辑应用随后会暂停工作流，并等待目标服务将 `HTTP POST` 请求发送到回调 URL。 如果操作成功完成，则操作将从终结点取消订阅，逻辑应用会继续运行工作流。
+   | properties | 必选 | 说明 |
+   |----------|----------|-------------|
+   | **订阅-方法** | 是 | 订阅目标终结点时要使用的方法 |
+   | **订阅-URI** | 是 | 用于订阅目标终结点的 URL |
+   | **订阅正文** | 否 | 要包含在订阅请求中的任何消息正文。 此示例包含唯一标识订阅服务器的回调 URL，该 URL 是逻辑应用，通过使用 `@listCallbackUrl()` 表达式检索逻辑应用的回调 URL。 |
+   | **取消订阅-方法** | 否 | 取消订阅目标终结点时使用的方法 |
+   | **取消订阅-URI** | 否 | 用于取消订阅目标终结点的 URL |
+   | **取消订阅正文** | 否 | 要包括在取消订阅请求中的可选消息正文 <p><p>**注意**：此属性不支持使用 `listCallbackUrl()` 函数。 但是，该操作会自动包括并发送标头、`x-ms-client-tracking-id` 和 `x-ms-workflow-operation-name`，目标服务可以使用这些标头来唯一标识订阅服务器。 |
+   ||||
 
-1. 若要添加其他可用参数，请打开 "**添加新参数**" 列表，然后选择所需的参数。
+1. 若要添加其他操作属性，请打开 "**添加新参数**" 列表。
 
-   有关可用于 HTTP Webhook 的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+   ![添加更多操作属性](./media/connectors-native-webhook/http-webhook-action-add-properties.png)
+
+   例如，如果需要使用身份验证，则可以添加**订阅身份验证**和**取消订阅身份验证**属性。 有关可用于 HTTP Webhook 的身份验证类型的详细信息，请参阅[将身份验证添加到出站调用](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 1. 完成后，请记得保存逻辑应用。 在设计器工具栏上，选择“保存”。
+
+   现在，运行此操作时，逻辑应用会调用目标服务上的订阅终结点并注册回调 URL。 逻辑应用随后会暂停工作流，并等待目标服务将 `HTTP POST` 请求发送到回调 URL。 发生此事件时，操作会将请求中的任何数据传递到工作流。 如果操作成功完成，则操作将从终结点取消订阅，逻辑应用会继续运行剩余工作流。
 
 ## <a name="connector-reference"></a>连接器参考
 
@@ -129,16 +155,16 @@ HTTP webhook 操作也是基于事件的操作，并通过使用该服务或终�
 
 下面是有关从 HTTP Webhook 触发器或操作返回的输出的详细信息：
 
-| 属性名称 | 类型 | Description |
+| 属性名称 | 类型 | 说明 |
 |---------------|------|-------------|
-| headers | 对象 | 请求中的标头 |
-| body | 对象 | JSON 对象 | 具有来自请求的正文内容的对象 |
+| headers | 对象 (object) | 请求中的标头 |
+| body | 对象 (object) | JSON 对象 | 具有来自请求的正文内容的对象 |
 | 状态代码 | int | 请求的状态代码 |
 |||
 
-| 状态代码 | Description |
+| 状态代码 | 说明 |
 |-------------|-------------|
-| 200 | 确定 |
+| 200 | OK |
 | 202 | 已接受 |
 | 400 | 错误的请求 |
 | 401 | 未授权 |

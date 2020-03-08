@@ -445,8 +445,6 @@
           href: ship-application.md
     - name: 快速入门
       items:
-        - name: 创建一个项目
-          href: quickstarts/create-project.md
         - name: 安装语音 SDK
           href: quickstarts/setup-platform.md
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'

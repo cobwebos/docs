@@ -1,25 +1,26 @@
 ---
-title: 高可用性和可靠性 - Azure 计划程序
+title: 高可用性和可靠性
 description: 了解 Azure 计划程序中的高可用性和可靠性
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 20c2054e168a9b17d9b4ab159cfefbf607ab6d11
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979292"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898563"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Azure 计划程序的高可用性和可靠性
 
 > [!IMPORTANT]
 > [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但此时[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)仍可用，以便你可以管理作业和作业集合。
 
 Azure 计划程序为作业提供了[高可用性](https://docs.microsoft.com/azure/architecture/framework/#resiliency)和可靠性。 有关详细信息，请参阅 [SLA 计划程序](https://azure.microsoft.com/support/legal/sla/scheduler)。
 
@@ -29,7 +30,7 @@ Azure 计划程序[高度可用]，并使用地域冗余服务部署和地理区
 
 ### <a name="geo-redundant-service-deployment"></a>异地冗余的服务部署
 
-Azure 计划程序在 Azure 门户中提供，几乎适用于[目前 Azure 支持的每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
+Azure 计划程序在[azure 目前支持的几乎每个地理区域](https://azure.microsoft.com/global-infrastructure/regions/#services)都可用。 因此，如果托管区域中的 Azure 数据中心变得不可用，仍可以使用 Azure 计划程序，因为该服务的故障转移功能使计划程序可在另一个数据中心提供。
 
 ### <a name="geo-regional-job-replication"></a>地理区域作业复制
 
@@ -70,9 +71,9 @@ Azure 计划程序允许你设置重试策略。 如果作业失败，默认情�
 
 若要了解如何设置备用终结点，请参阅 [errorAction](scheduler-concepts-terms.md#error-action)。
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [概念、术语和实体层次结构](scheduler-concepts-terms.md)
-* [构建复杂的计划和高级重复周期](scheduler-advanced-complexity.md)
+* [Azure 计划程序 REST API 参考](/rest/api/scheduler)
+* [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)
 * [限制、配额、默认值和错误代码](scheduler-limits-defaults-errors.md)

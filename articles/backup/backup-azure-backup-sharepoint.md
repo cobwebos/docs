@@ -4,12 +4,12 @@ description: 本文概述如何在 Azure 中使用 DPM/Azure 备份服务器保�
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6640690f725c84899babef6825f817bad447b40f
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586472"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673269"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 将 SharePoint 场备份到 Azure
 
@@ -74,7 +74,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
    * 授予 WSS_Admin_WPG 组对 DPM 注册表项 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) 的读取访问权限。
 
 > [!NOTE]
-> 每当 SharePoint 场管理员凭据发生更改时，都要重新运行 ConfigureSharePoint.exe。
+> 每当 SharePoint 场管理员凭据发生更改时，都需要重新运行 Configuresharepoint.exe。
 >
 >
 
@@ -133,7 +133,7 @@ DPM 以 LocalSystem 帐户的形式运行。 若要备份 SQL Server 数据库�
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > DPM 每天在不同的时间最多以 Azure 为目标执行两次备份。 Azure 备份还可以使用 [Azure 备份网络限制](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)，来控制高峰期和非高峰期用于备份的 WAN 带宽量。
+    > DPM 每天在不同的时间最多以 Azure 为目标执行两次备份。 Azure 备份还可以使用[Azure 备份网络限制](backup-windows-with-mars-agent.md#enable-network-throttling)来控制在高峰期和非高峰时间使用的 WAN 带宽量。
     >
     >
 11. 根据选择的备份计划，在“指定联机保留策略”页上，选择每日、每周、每月和每年备份点的保留策略。

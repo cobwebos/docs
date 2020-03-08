@@ -3,36 +3,53 @@ title: 如何跨区域移动服务资源
 titleSuffix: Azure Cognitive Search
 description: 本文介绍如何将 Azure 认知搜索资源从 Azure 云中的一个区域移到另一个区域。
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
-ms.date: 03/05/2020
-ms.openlocfilehash: df712f48c5aff722a4f1a850788378fb78ea7335
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/06/2020
+ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379589"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78850680"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移到另一个 Azure 区域
 
-目前，不支持将搜索服务移到另一个区域，因为没有可用于帮助你完成端到端任务的自动化或工具。
+有时，客户会询问将现有搜索服务移到另一个区域。 目前没有内置机制或工具可帮助您处理该任务。 这仍是一个手动过程，本文将对此进行介绍。
 
-在门户中，"**导出模板**" 命令会生成服务（名称、位置、层、副本和分区计数）的基本定义，但不能识别服务的内容，也不会执行密钥、角色或日志。
+> [!NOTE]
+> 在 Azure 门户中，所有服务都有一个**导出模板**命令。 对于 Azure 认知搜索，此命令会生成服务（名称、位置、层、副本和分区计数）的基本定义，但不能识别服务的内容，也不会对密钥、角色或日志执行此定义。 尽管该命令存在，但我们不建议使用它来移动搜索服务。
 
-将搜索从一个区域移到另一个区域时，建议采用以下方法：
+## <a name="steps-for-moving-a-service"></a>移动服务的步骤
 
-1. 清点现有服务以获取服务上对象的完整列表。 如果启用了日志记录，则可以创建和存档报表，以供将来进行比较。
+如果需要将搜索服务移到不同的区域，则方法应类似于以下步骤：
 
-1. 在新区域中创建服务，然后从源代码中重新发布任何现有索引、索引器、数据源、技能集和同义词映射。 服务名称必须是唯一的，因此不能重复使用现有名称。
+1. 标识相关服务，了解重定位服务的全部影响。 你可能使用 Azure 存储来记录、知识库或外部数据源。 你可能会将认知服务用于 AI 扩充。 访问其他区域的服务很常见，但会产生额外的带宽费用。 如果使用 AI 扩充，认知服务和 Azure 认知搜索必须位于同一区域。
+
+1. 清点现有服务以获取服务上对象的完整列表。 如果启用了日志记录，请创建并存档历史记录可能需要的任何报表。
+
+1. 检查新区域中的定价和可用性，以确保 Azure 认知搜索以及你可能想要在同一区域中创建的任何相关服务的可用性。 检查功能奇偶校验。 某些预览功能的可用性受到限制。
+
+1. 在新区域中创建服务，然后从源代码中重新发布任何现有索引、索引器、数据源、技能集、知识库和同义词映射。 服务名称必须是唯一的，因此不能重复使用现有名称。
+
+1. 重载索引和知识存储（如果适用）。 你将使用应用程序代码将 JSON 数据推送到索引中，或重新运行索引器从外部源中请求文档。 
 
 1. 启用日志记录，如果使用日志记录，请重新创建安全角色。
 
 1. 更新客户端应用程序和测试套件以使用新的服务名称和 API 密钥，并对所有应用程序进行测试。
 
-1. 新服务完全运行后，删除旧服务。
+1. 在新服务经过完全测试和操作后，删除旧服务。
+
+## <a name="next-steps"></a>后续步骤
+
++ [选择层](search-sku-tier.md)
++ [创建搜索服务](search-create-service-portal.md)
++ [加载搜索文档](search-what-is-data-import.md)
++ [启用日志记录](search-monitor-logs.md)
+
 
 <!-- To move your Azure Cognitive Service account from one region to another, you will create an export template to move your subscription(s). After moving your subscription, you will need to move your data and recreate your service.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e1c75d5022432a9a57b30aabec4dd2c4f76f2f29
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468431"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671826"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>如何：在 Azure Active Directory 中规划条件访问部署
 
@@ -163,13 +163,13 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 
 |策略 |应用场景 |预期结果 | 结果 |
 |---|---|---|---|
-|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用|不提示用户执行 MFA| |
-|[在非工作时间要求执行 MFA](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用|提示用户执行 MFA，他们可以成功登录| |
-|[要求执行 MFA（针对管理员）](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全局管理员登录到应用|提示管理员执行 MFA| |
-|[有风险的登录](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|用户使用 [Tor 浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-playbook)登录到应用|提示管理员执行 MFA| |
-|[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从已授权的设备登录|授予访问权限| |
-|[设备管理](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从未授权的设备登录|阻止访问| |
-|[有风险用户的密码更改](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)|经授权的用户尝试使用已泄密的凭据登录（高风险登录）|根据策略提示用户更改密码或阻止访问| |
+|[在非工作时间要求执行 MFA](/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户在受信任的位置/工作时登录到应用|不提示用户执行 MFA| |
+|[在非工作时间要求执行 MFA](/azure/active-directory/conditional-access/untrusted-networks)|经授权的用户不在受信任的位置/工作时登录到应用|提示用户执行 MFA，他们可以成功登录| |
+|[要求执行 MFA（针对管理员）](/azure/active-directory/conditional-access/howto-baseline-protect-administrators)|全局管理员登录到应用|提示管理员执行 MFA| |
+|[有风险的登录](/azure/active-directory/identity-protection/howto-sign-in-risk-policy)|用户使用 [Tor 浏览器](/azure/active-directory/active-directory-identityprotection-playbook)登录到应用|提示管理员执行 MFA| |
+|[设备管理](/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从已授权的设备登录|授予访问权限| |
+|[设备管理](/azure/active-directory/conditional-access/require-managed-devices)|经授权的用户尝试从未授权的设备登录|阻止访问| |
+|[有风险用户的密码更改](/azure/active-directory/identity-protection/howto-user-risk-policy)|经授权的用户尝试使用已泄密的凭据登录（高风险登录）|根据策略提示用户更改密码或阻止访问| |
 
 ### <a name="configure-the-policy"></a>配置策略
 

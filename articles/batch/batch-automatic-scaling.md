@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 46be210ead3816356b63293b910e1c0e7ffc087b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f4831fd60038a2265990c0774106a5ea2f98a5a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200089"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672083"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>创建用于缩放 Batch 池中的计算节点的自动公式
 
@@ -134,8 +134,8 @@ $NodeDeallocationOption = taskcompletion;
 | $SucceededTasks |成功完成的任务数。 |
 | $FailedTasks |失败的任务数。 |
 | $CurrentDedicatedNodes |当前的专用计算节点数。 |
-| $CurrentLowPriorityNodes |当前的低优先级计算节点数，包括所有已预先清空的节点。 |
-| $PreemptedNodeCount | 池中处于预先清空状态的节点数。 |
+| $CurrentLowPriorityNodes |当前的低优先级计算节点数，包括所有已被抢占的节点。 |
+| $PreemptedNodeCount | 池中处于预占状态的节点数。 |
 
 > [!TIP]
 > 上表中所示的服务定义的只读变量是一些对象，它们提供各种方法来访问与其相关的数据。 有关详细信息，请参阅本文稍后的[获取样本数据](#getsampledata)。
@@ -144,12 +144,12 @@ $NodeDeallocationOption = taskcompletion;
 
 ## <a name="types"></a>类型
 
-公式中支持以下类型：
+公式支持以下类型：
 
 * double
 * doubleVec
 * doubleVecList
-* string
+* 字符串
 * timestamp--timestamp 是包含以下成员的复合结构：
 
   * year
@@ -176,7 +176,7 @@ $NodeDeallocationOption = taskcompletion;
 
 上一部分中列出的类型允许以下操作。
 
-| 操作 | 支持的运算符 | 结果类型 |
+| Operation | 支持的运算符 | 结果类型 |
 | --- | --- | --- |
 | double *operator* double |+, -, *, / |double |
 | double *operator* timeinterval |* |timeinterval |
@@ -238,9 +238,9 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | 方法 | 说明 |
 | --- | --- |
-| GetSample() |`GetSample()` 方法返回数据样本的矢量。<br/><br/>一个样本最好包含 30 秒钟的指标数据。 换而言之，将每隔 30 秒获取一次样本。 但如下所示，样本在收集后需经历一定的延迟才能供公式使用。 因此，并非一段指定时间内的所有样本都可用于公式求值。<ul><li>`doubleVec GetSample(double count)`<br/>指定从已收集的最近样本中获得的样本数。<br/><br/>`GetSample(1)` 返回最后一个可用样本。 但对于像 `$CPUPercent` 这样的度量值，不应使用此方法，因为无法知道样本是何时收集的。 它可能是最近收集的，也可能由于系统问题而变得很旧。 最好使用如下所示的时间间隔。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>指定收集样本数据的时间范围。 （可选）它还指定必须在请求的时间范围内提供的样本的百分比。<br/><br/>如果 CPUPercent 历史记录中存在过去 10 分钟的所有样本，`$CPUPercent.GetSample(TimeInterval_Minute * 10)` 将返回 20 个样本。 但如果最后一分钟的历史记录不可用，则只返回 18 个样本。 在这种情况下：<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` 会失败，因为仅 90% 的样本可用。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` 将成功。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>指定收集数据的时间范围（包括开始时间和结束时间）。<br/><br/>如前所述，每收集一个样本后并且该样本可供公式使用时，会存在一定的延迟。 使用 `GetSample` 方法时，请考虑到这种延迟。 请参阅下面的`GetSamplePercent`。 |
+| GetSample() |`GetSample()` 方法返回数据样本的矢量。<br/><br/>一个样本最好包含 30 秒钟的指标数据。 换而言之，将每隔 30 秒获取一次样本。 但如下所示，样本在收集后需经历一定的延迟才能供公式使用。 因此，并非一段指定时间内的所有样本都可用于公式求值。<ul><li>`doubleVec GetSample(double count)`<br/>指定从已收集的最近样本中获得的样本数。<br/><br/>`GetSample(1)` 返回最后一个可用样本。 但对于像 `$CPUPercent` 这样的度量值，不应使用此方法，因为无法知道样本是何时收集的。 它可能是最近收集的，也可能由于系统问题而变得很旧。 最好使用如下所示的时间间隔。<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>指定收集样本数据的时间范围。 （可选）它还指定必须在请求的时间范围内提供的样本的百分比。<br/><br/>如果 CPUPercent 历史记录中存在过去 10 分钟的所有样本，`$CPUPercent.GetSample(TimeInterval_Minute * 10)` 将返回 20 个样本。 但如果最后一分钟的历史记录不可用，则只返回 18 个样本。 在这种情况下：<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` 会失败，因为仅 90% 的样本可用。<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` 将成功。<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>指定收集数据的时间范围（包括开始时间和结束时间）。<br/><br/>如前所述，每收集一个样本后并且该样本可供公式使用时，会存在一定的延迟。 使用 `GetSample` 方法时，请考虑到这种延迟。 请参阅下面的 `GetSamplePercent`。 |
 | GetSamplePeriod() |返回在历史样本数据集中采样的期间。 |
-| Count() |返回度量值历史记录中的样本总数。 |
+| Count() |返回指标历史记录中的样本总数。 |
 | HistoryBeginTime() |返回指标最旧可用数据样本的时间戳。 |
 | GetSamplePercent() |返回给定时间间隔的可用样本百分比。 例如：<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>由于 `GetSample` 方法失败，因此如果返回的样本百分比低于指定的 `samplePercent`，则可先使用 `GetSamplePercent` 方法进行检查。 然后，如果存在的样本数量不足，可以执行其他操作，无需停止自动缩放评估。 |
 
@@ -294,7 +294,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 
 <table>
   <tr>
-    <th>跃点数</th>
+    <th>指标</th>
     <th>说明</th>
   </tr>
   <tr>

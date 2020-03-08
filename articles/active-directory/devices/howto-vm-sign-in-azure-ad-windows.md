@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016028"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672595"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -103,10 +103,10 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 在浏览器中打开 Cloud Shell。
 选择[Azure 门户](https://portal.azure.com)右上角菜单中的 "Cloud Shell" 按钮。
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.0.31 或更高版本。 若要查找版本，请运行 az --version。 如果需要安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)一文。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.0.31 或更高版本。 若要查找版本，请运行 az --version。 如果需要安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)一文。
 
-1. 使用 [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) 创建资源组。 
-1. 使用[az vm create](https://docs.microsoft.com/cli/azure/vm#az-vm-create)创建 vm，并在受支持的区域中使用受支持的分发版。 
+1. 使用 [az group create](/cli/azure/group#az-group-create) 创建资源组。 
+1. 使用[az vm create](/cli/azure/vm#az-vm-create)创建 vm，并在受支持的区域中使用受支持的分发版。 
 1. 安装 Azure AD 登录 VM 扩展。 
 
 下面的示例将一个名为 myVM 的 VM 部署到 default-machinelearning-southcentralus 区域中名为 myResourceGroup 的资源组中。 在以下示例中，可以根据需要提供自己的资源组和 VM 名称。
@@ -128,7 +128,7 @@ az vm create \
 
 创建 VM 和支持资源需要几分钟时间。
 
-最后，安装 Azure AD 登录 VM 扩展，以便为 Windows VM 启用 Azure AD 登录。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 使用[az vm extension](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 资源组中名为 MYVM 的 vm 上安装 AADLoginForWindows 扩展：
+最后，安装 Azure AD 登录 VM 扩展，以便为 Windows VM 启用 Azure AD 登录。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 使用[az vm extension](/cli/azure/vm/extension#az-vm-extension-set) set，在 myResourceGroup 资源组中名为 MYVM 的 vm 上安装 AADLoginForWindows 扩展：
 
 > [!NOTE]
 > 可以在现有的 Windows Server 2019 或 Windows 10 1809 及更高版本的 VM 上安装 AADLoginForWindows 扩展，以便 Azure AD 身份验证。 下面显示了 AZ CLI 的示例。
@@ -152,7 +152,6 @@ az vm extension set \
 
 > [!NOTE]
 > 若要允许用户通过 RDP 登录到 VM，你必须分配 "虚拟机管理员登录名" 或 "虚拟机用户登录" 角色。 为 VM 分配所有者或参与者角色的 Azure 用户不会自动拥有通过 RDP 登录到 VM 的权限。 这是为了提供控制虚拟机的一组人员与可访问虚拟机的一组用户之间经过审核的隔离。
-
 可以通过多种方式为 VM 配置角色分配：
 
 - 使用 Azure AD 门户体验
@@ -175,9 +174,9 @@ az vm extension set \
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>使用 Azure Cloud Shell 体验
 
-下面的示例使用[az role 赋值 create](https://docs.microsoft.com/cli/azure/role/assignment#az-role-assignment-create)为当前 Azure 用户将虚拟机管理员登录角色分配给 VM。 使用[az account show](https://docs.microsoft.com/cli/azure/account#az-account-show)获取活动 Azure 帐户的用户名，并使用[az VM show](https://docs.microsoft.com/cli/azure/vm#az-vm-show)将作用域设置为上一步中创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../virtual-machines/linux/login-using-aad.md)。
+下面的示例使用[az role 赋值 create](/cli/azure/role/assignment#az-role-assignment-create)为当前 Azure 用户将虚拟机管理员登录角色分配给 VM。 使用[az account show](/cli/azure/account#az-account-show)获取活动 Azure 帐户的用户名，并使用[az VM show](/cli/azure/vm#az-vm-show)将作用域设置为上一步中创建的 VM。 也可在资源组或订阅级别设置 scope，这种情况下会应用正常的 RBAC 继承权限。 有关详细信息，请参阅[基于角色的访问控制](../../virtual-machines/linux/login-using-aad.md)。
 
-```AzureCLI
+```   zureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -188,14 +187,14 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> 如果 AAD 域和登录用户名域不匹配，则必须指定用户 `--assignee-object-id`帐户的对象 ID，而不只是 `--assignee`的用户名。 可以使用 [az ad user list](https://docs.microsoft.com/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
+> 如果 AAD 域和登录用户名域不匹配，则必须指定用户 `--assignee-object-id`帐户的对象 ID，而不只是 `--assignee`的用户名。 可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 获取用户帐户的对象 ID。
 
 有关如何使用 RBAC 管理对 Azure 订阅资源的访问的详细信息，请参阅以下文章：
 
-- [使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
-
+- [使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问](/azure/role-based-access-control/role-assignments-cli)
+- [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-portal)
+- [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-powershell)。
+'
 ## <a name="using-conditional-access"></a>使用条件性访问
 
 在授权访问通过 Azure AD 登录启用的 Azure 中的 Windows Vm 之前，可以强制实施条件访问策略（如多重身份验证或用户登录风险检查）。 若要应用条件性访问策略，你必须从 "云应用" 或 "操作" 分配选项中选择 "Azure Windows VM 登录" 应用，然后将登录风险用作条件，并/或需要多重身份验证作为授权访问控制。 
@@ -228,13 +227,12 @@ az role assignment create \
 
 必须成功安装 AADLoginForWindows 扩展，才能让 VM 完成 Azure AD 联接过程。 如果 VM 扩展无法正确安装，请执行以下步骤。
 
-1. 使用本地管理员帐户通过 RDP 连接到 VM，并检查 Commandexecution.log  
+1. 使用本地管理员帐户通过 RDP 连接到 VM，并检查 CommandExecuti'n  
    
    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.ActiveDirectory.AADLoginForWindows\0.3.1.0. 
 
    > [!NOTE]
-   > 如果在第一次失败后重新启动扩展，则包含部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS .log。 
-
+   > 如果在第一次失败后重新启动扩展，则包含部署错误的日志将保存为 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
 1. 在 VM 上打开命令提示符，并针对 Azure 主机上运行的实例元数据服务（IMDS）终结点验证这些查询：
 
    | 要运行的命令 | 预期输出 |
@@ -338,7 +336,7 @@ az role assignment create \
 
 ![你的凭据不起作用](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
 
-验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅[什么是设备标识一](https://docs.microsoft.com/azure/active-directory/devices/overview)文。
+验证你用来启动远程桌面连接的 Windows 10 电脑是 Azure AD 联接的，或者是连接到你的 VM 加入同一 Azure AD 目录的混合 Azure AD。 有关设备标识的详细信息，请参阅[什么是设备标识一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
 > Windows 10 20H1 将添加对 Azure AD 已注册电脑的支持，以启动到 VM 的远程桌面连接。 加入 Windows 预览体验计划以试用并探索 Windows 10 的新功能。
@@ -355,7 +353,7 @@ az role assignment create \
 
 如果你配置了要求多重身份验证（MFA）的条件性访问策略，然后才能访问该资源，则需要确保 Windows 10 电脑启动到 VM 的远程桌面连接使用强身份验证方法，例如 Windows Hello。 如果未对远程桌面连接使用强身份验证方法，则会看到以前的错误。
 
-如果你尚未部署 Windows Hello for Business，并且此选项不是目前的选项，则可以通过配置条件访问策略来排除 MFA 要求，此条件访问策略从需要 MFA 的云应用列表中排除 "Azure Windows VM 登录" 应用。 若要了解有关 Windows Hello 企业版的详细信息，请参阅[Windows Hello 企业版概述](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
+如果你尚未部署 Windows Hello for Business，并且此选项不是目前的选项，则可以通过配置条件访问策略来排除 MFA 要求，此条件访问策略从需要 MFA 的云应用列表中排除 "Azure Windows VM 登录" 应用。 若要了解有关 Windows Hello 企业版的详细信息，请参阅[Windows Hello 企业版概述](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 
 > [!NOTE]
 > Windows 10 针对多种版本支持使用 RDP 进行 windows Hello 企业版 PIN 身份验证，但 Windows 10 版本1809中添加了对使用 RDP 的生物识别身份验证的支持。 在 RDP 期间使用 Windows Hello 企业版身份验证仅适用于使用证书信任模型并且当前不可用于密钥信任模式的部署。
@@ -365,4 +363,4 @@ az role assignment create \
 请在[Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上分享有关此预览功能的反馈或报告问题。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) "

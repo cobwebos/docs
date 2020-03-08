@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 05a3a8cf14a591dd3037175e4eed5b5bd8d3096c
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561972"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672660"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>了解 Azure 托管的安全工作站
 
@@ -81,18 +81,18 @@ ms.locfileid: "74561972"
 
 对安全工作站至关重要的是供应链解决方案，使用名为 "信任的根" 的可信工作站。 选择信任硬件的根时必须考虑的技术应包括现代便携式计算机中包含的以下技术： 
 
-* [受信任的平台模块（TPM）2。0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
-* [BitLocker 驱动器加密](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
-* [UEFI 安全启动](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
-* [通过 Windows 更新分发的驱动程序和固件](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
-* [已启用虚拟化和要求 HVCI](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
-* [驱动程序和应用要求 HVCI](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
-* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
-* [DMA i/o 保护](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
-* [系统防护](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
-* [新式备用](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+* [受信任的平台模块（TPM）2。0](/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker 驱动器加密](/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI 安全启动](/windows-hardware/design/device-experiences/oem-secure-boot)
+* [通过 Windows 更新分发的驱动程序和固件](/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [已启用虚拟化和要求 HVCI](/windows-hardware/design/device-experiences/oem-vbs)
+* [驱动程序和应用要求 HVCI](/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA i/o 保护](/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [系统防护](/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [新式备用](/windows-hardware/design/device-experiences/modern-standby)
 
-对于此解决方案，将使用[Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)技术部署信任的根，使硬件满足新式技术要求。 为了保护工作站，Autopilot 使你能够利用 Microsoft OEM 优化的 Windows 10 设备。 这些设备从制造商处进入已知的良好状态。 Autopilot 可以将 Windows 设备转换为 "企业就绪" 状态，而不是重置可能不安全的设备。 它应用设置和策略、安装应用，甚至更改 Windows 10 的版本。 例如，Autopilot 可能会将设备的 Windows 安装从 Windows 10 专业版更改为 Windows 10 企业版，以便能够使用高级功能。
+对于此解决方案，将使用[Microsoft Autopilot](/windows/deployment/windows-autopilot/windows-autopilot)技术部署信任的根，使硬件满足新式技术要求。 为了保护工作站，Autopilot 使你能够利用 Microsoft OEM 优化的 Windows 10 设备。 这些设备从制造商处进入已知的良好状态。 Autopilot 可以将 Windows 设备转换为 "企业就绪" 状态，而不是重置可能不安全的设备。 它应用设置和策略、安装应用，甚至更改 Windows 10 的版本。 例如，Autopilot 可能会将设备的 Windows 安装从 Windows 10 专业版更改为 Windows 10 企业版，以便能够使用高级功能。
 
 ![安全工作站级别](./media/concept-azure-managed-workstation/supplychain.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "74561972"
 
 * **增强的安全性**–此项级别的受保护解决方案适用于家庭用户、小型企业用户和一般开发人员。
 
-   增强型工作站是一种基于策略的方法，用于提高低安全性配置文件的安全性。 它提供一种安全的方法来处理客户数据，同时还使用电子邮件和 web 浏览等生产力工具。 你可以使用审核策略和 Intune 监视增强型工作站的用户行为和配置文件使用情况。 使用 Windows 10 （1809）脚本部署增强的工作站配置文件，并利用高级[威胁防护（ATP）](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)利用高级恶意软件防护。
+   增强型工作站是一种基于策略的方法，用于提高低安全性配置文件的安全性。 它提供一种安全的方法来处理客户数据，同时还使用电子邮件和 web 浏览等生产力工具。 你可以使用审核策略和 Intune 监视增强型工作站的用户行为和配置文件使用情况。 使用 Windows 10 （1809）脚本部署增强的工作站配置文件，并利用高级[威胁防护（ATP）](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection)利用高级恶意软件防护。
 
 * **高安全性**–减小工作站的受攻击面最有效的方法是删除自行管理工作站的能力。 删除本地管理权限是提高安全性的步骤，但如果实施不正确，则可能会影响工作效率。 高安全性配置文件是在增强的安全配置文件上构建的，并有一项重大更改：删除本地管理员。此配置文件专为高配置文件用户设计：高级管理人员、工资和敏感数据用户、服务和流程的审批者。
 
@@ -121,8 +121,8 @@ ms.locfileid: "74561972"
 
 * **独立**–此自定义脱机方案表示广泛的极端。 没有为这种情况提供安装脚本。 你可能需要管理要求不支持或未修补的旧版操作系统的业务关键功能。 例如，高价值生产线或生命支持系统。 由于安全性是关键的，云服务不可用，因此你可以手动管理和更新这些计算机，也可以使用独立的 Active Directory 林体系结构（如增强的安全管理环境（ESAE））来管理和更新这些计算机。 在这些情况下，请考虑删除基本 Intune 和 ATP 运行状况检查之外的所有访问。
 
-   * [Intune 网络通信要求](https://docs.microsoft.com/intune/network-bandwidth-use)
-   * [ATP 网络通信要求](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune 网络通信要求](/intune/network-bandwidth-use)
+   * [ATP 网络通信要求](/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>后续步骤
 

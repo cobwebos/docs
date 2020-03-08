@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 文件动态创建永久性卷，以便与
 services: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ef9ef10a5523bd91b346e16e105c5ff5cd9cb669
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596414"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897704"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 文件
 
@@ -29,11 +29,13 @@ ms.locfileid: "77596414"
 
 * *Standard_LRS* - 标准本地冗余存储 (LRS)
 * *Standard_GRS* - 标准异地冗余存储 (GRS)
+* *Standard_ZRS*标准区域冗余存储（GRS）
 * *Standard_RAGRS* - 标准读取访问异地冗余存储 (RA-GRS)
 * *Premium_LRS* -高级本地冗余存储（LRS）
+* *Premium_ZRS* -高级区域冗余存储（GRS）
 
 > [!NOTE]
-> Azure 文件支持 AKS 群集中运行 Kubernetes 1.13 或更高版本的高级存储。
+> Azure 文件支持运行 Kubernetes 1.13 或更高版本的 AKS 群集中的高级存储，最低的高级文件共享为100GB
 
 有关 Azure 文件的 Kubernetes 存储类的详细信息，请参阅[Kubernetes 存储类][kubernetes-storage-classes]。
 
@@ -48,11 +50,10 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
@@ -163,7 +164,7 @@ Volumes:
 
 ## <a name="mount-options"></a>装载选项
 
-对于 Kubernetes 版本1.9.1 和更高*版本，"dirMode" 和 "* " 的默认值为*0755* 。 如果使用 Kuberetes 版本1.8.5 或更高版本的群集，并使用存储类动态创建永久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
+对于 Kubernetes 版本1.13.0 和更高*版本，"dirMode" 和 "* " 的默认值为*0777* 。 如果使用存储类动态创建持久卷，则可以在存储类对象上指定装载选项。 以下示例设置 *0777*：
 
 ```yaml
 kind: StorageClass
@@ -174,16 +175,13 @@ provisioner: kubernetes.io/azure-file
 mountOptions:
   - dir_mode=0777
   - file_mode=0777
-  - uid=1000
-  - gid=1000
+  - uid=0
+  - gid=0
   - mfsymlinks
-  - nobrl
-  - cache=none
+  - cache=strict
 parameters:
   skuName: Standard_LRS
 ```
-
-如果使用版本为 1.8.0 - 1.8.4 的群集，则可在指定安全性上下文时，将 *runAsUser* 值设置为 *0*。 有关 Pod 安全上下文的详细信息，请参阅[配置安全上下文][kubernetes-security-context]。
 
 ## <a name="next-steps"></a>后续步骤
 

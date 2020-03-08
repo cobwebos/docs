@@ -7,15 +7,15 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448090"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898372"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>在示例言语中标记机器学习的实体
 
@@ -86,7 +86,7 @@ ms.locfileid: "75448090"
 1. 在“意向详细信息”页上，从上下文工具栏中选择“实体调色板”  。
 1. 在实体调色板打开后，从实体列表中选择实体。
 1. 转到“实体检查器”  ，选择现有角色或创建新角色。
-1. 在示例言语文本中，使用实体角色标记文本。 
+1. 在示例言语文本中，使用实体角色标记文本。
 
 ## <a name="unlabel-entities"></a>取消标记实体
 

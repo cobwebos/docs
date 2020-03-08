@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374246"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892746"
 ---
 # <a name="access-and-customize-developer-portal"></a>访问和自定义开发人员门户
 
@@ -125,6 +125,10 @@ ms.locfileid: "78374246"
 ## <a name="visit-the-published-portal"></a>访问发布的门户
 
 发布门户后，可以使用与管理面板相同的 URL 访问它，例如 `https://contoso-api.developer.azure-api.net`。 在单独的浏览器会话（incognito/专用浏览模式）中以外部访问者身份查看它。
+
+## <a name="apply-the-cors-policy-on-apis"></a>应用 Api 上的 CORS 策略
+
+需要在 Api 上启用 CORS （跨域资源共享），才能让门户的访问者通过内置交互控制台来测试 Api。 有关更多详细信息，请参阅[此文档](api-management-howto-developer-portal.md#cors)。
 
 ## <a name="next-steps"></a>后续步骤
 

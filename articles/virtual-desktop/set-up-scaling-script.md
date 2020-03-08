@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 353501912836e0f6706f20deed1c1d9d416f1ce6
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367249"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894515"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自动化缩放会话主机
 
@@ -37,7 +37,7 @@ ms.locfileid: "77367249"
 >[!NOTE]
 >*SessionThresholdPerCPU*不会限制虚拟机上的会话数。 此参数仅确定需要启动新 Vm 以对连接进行负载平衡的时间。 若要限制会话数，需要按照说明[RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/)来相应地配置*MaxSessionLimit*参数。
 
-在非高峰使用时间内，作业根据*MinimumNumberOfRDSH*参数确定哪些会话主机 vm 应关闭。 该作业会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果将*LimitSecondsToForceLogOffUser*参数设置为非零正值，则脚本将通知所有当前已登录用户保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该脚本会关闭 VM。
+在非高峰使用时间内，作业根据*MinimumNumberOfRDSH*参数确定哪些会话主机 vm 应关闭。 该作业会将会话主机 Vm 设置为排出模式，以防新会话连接到主机。 如果将*LimitSecondsToForceLogOffUser*参数设置为非零正值，则该作业将通知所有当前已登录用户保存其工作，等待配置的时间长度，然后强制用户注销。会话主机 VM 上的所有用户会话注销后，该作业将关闭 VM。
 
 如果将*LimitSecondsToForceLogOffUser*参数设置为零，则该作业将允许指定组策略中的会话配置设置处理注销用户会话。 若要查看这些组策略，请参阅 "**计算机配置** > **策略**" > **管理模板** > **Windows 组件** ** > 终端**服务器 > "终端**服务器** > **会话时间限制**"。 如果会话主机 VM 上存在任何活动会话，则该作业会使该会话主机 VM 运行。 如果没有活动会话，则该作业将关闭会话主机 VM。
 

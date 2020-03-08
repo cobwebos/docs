@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: bdffbc3a140bd13dcd6d352db8c192803d39b03e
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194307"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672368"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 
@@ -26,7 +26,7 @@ ms.locfileid: "77194307"
 下表描述了可用的策略设置。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="mdm-settings"></a>MDM 设置
 

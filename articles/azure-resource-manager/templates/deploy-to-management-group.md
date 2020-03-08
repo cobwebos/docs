@@ -2,23 +2,29 @@
 title: 将资源部署到管理组
 description: 介绍如何在 Azure 资源管理器模板中的管理组范围内部署资源。
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/06/2020
+ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228099"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78894895"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
-通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，还可以在管理组级别创建资源。 使用管理组级别部署来执行在该级别有意义的操作，例如分配[基于角色的访问控制](../../role-based-access-control/overview.md)或应用[策略](../../governance/policy/overview.md)。
+通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，还可以在以下位置创建资源：
+
+* [订阅级别](deploy-to-subscription.md)
+* 管理组级别（在本文中介绍）
+* [租户级别](deploy-to-tenant.md)
+
+使用管理组级别部署来执行在该级别有意义的操作，例如分配[基于角色的访问控制](../../role-based-access-control/overview.md)或应用[策略](../../governance/policy/overview.md)。
 
 ## <a name="supported-resources"></a>支持的资源
 
 你可以在管理组级别部署以下资源类型：
 
-* [方案](/azure/templates/microsoft.resources/deployments)
+* [部署](/azure/templates/microsoft.resources/deployments)-适用于部署到订阅或资源组的嵌套模板。
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)

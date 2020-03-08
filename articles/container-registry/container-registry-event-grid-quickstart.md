@@ -4,12 +4,12 @@ description: 在本快速入门中，我们将为容器注册表启用事件网�
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ff9572cf8614e3eb5d015a602ca3f878875a0a4
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455346"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403243"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
 
@@ -19,7 +19,7 @@ Azure 事件网格是一个完全托管的事件路由服务，可以通过发�
 
 ![呈现示例 Web 应用程序的 Web 浏览器，其中包含三个收到的事件][sample-app-01]
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户][azure-account]。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][azure-account]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -110,7 +110,7 @@ az eventgrid event-subscription create \
 
 完成订阅后，应会看到如下所示的输出：
 
-```JSON
+```json
 {
   "destination": {
     "endpointBaseUrl": "https://eventgridviewer.azurewebsites.net/api/updates",
@@ -149,8 +149,7 @@ az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://githu
 
 当 ACR 任务生成然后推送映像时，应会显示如下所示的输出。 为简洁起见，以下示例输出已截断。
 
-```console
-$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+```output
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -172,8 +171,7 @@ az acr repository show-tags --name $ACR_NAME --repository myimage
 
 生成的映像的“v1”标记应显示在输出中，如下所示：
 
-```console
-$ az acr repository show-tags --name $ACR_NAME --repository myimage
+```output
 [
   "v1"
 ]
@@ -189,10 +187,9 @@ az acr repository delete --name $ACR_NAME --image myimage:v1
 
 此时应会显示如下所示的输出，其中要求确认删除清单和关联的映像：
 
-```console
-$ az acr repository delete --name $ACR_NAME --image myimage:v1
+```output
 This operation will delete the manifest 'sha256:f15fa9d0a69081ba93eee308b0e475a54fac9c682196721e294b2bc20ab23a1b' and all the following images: 'myimage:v1'.
-Are you sure you want to continue? (y/n): y
+Are you sure you want to continue? (y/n): 
 ```
 
 ## <a name="view-registry-events"></a>查看注册表事件

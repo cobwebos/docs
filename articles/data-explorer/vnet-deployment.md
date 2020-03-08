@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 28b9c55df8cd7883e05e964b8b67e08c7a3eb8c1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812725"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851450"
 ---
 # <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>将 Azure 数据资源管理器部署到虚拟网络（预览版）
 
@@ -79,7 +79,7 @@ IP 地址的总数：
 | --- | --- | --- | --- |
 | 管理  |[ADX 管理地址](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement （ServiceTag） | ADX 子网：443  | TCP  |
 | 运行状况监视  | [ADX 运行状况监视地址](#health-monitoring-addresses)  | ADX 子网：443  | TCP  |
-| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | 所有  |
+| ADX 内部通信  | ADX 子网：所有端口  | ADX 子网：所有端口  | All  |
 | 允许 Azure 负载均衡器入站（运行状况探测）  | AzureLoadBalancer  | ADX 子网：80443  | TCP  |
 
 #### <a name="outbound-nsg-configuration"></a>出站 NSG 配置
@@ -93,14 +93,14 @@ IP 地址的总数：
 | Azure Monitor 配置下载  | ADX 子网  | [Azure Monitor 配置终结点地址](#azure-monitor-configuration-endpoint-addresses)：443 | TCP  |
 | Active Directory （如果适用） | ADX 子网 | AzureActiveDirectory：443 | TCP |
 | 证书颁发机构 | ADX 子网 | Internet：80 | TCP |
-| 内部通信  | ADX 子网  | ADX 子网：所有端口  | 所有  |
+| 内部通信  | ADX 子网  | ADX 子网：所有端口  | All  |
 | 用于 `sql\_request` 和 `http\_request` 插件的端口  | ADX 子网  | Internet：自定义  | TCP  |
 
 ### <a name="relevant-ip-addresses"></a>相关 IP 地址
 
 #### <a name="azure-data-explorer-management-ip-addresses"></a>Azure 数据资源管理器管理 IP 地址
 
-| 地区 | 地址 |
+| 区域 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 20.37.26.134 |
 | 澳大利亚 Central2 | 20.39.99.177 |
@@ -139,7 +139,7 @@ IP 地址的总数：
 
 #### <a name="health-monitoring-addresses"></a>运行状况监视地址
 
-| 地区 | 地址 |
+| 区域 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 191.239.64.128 |
 | 澳大利亚中部 2 | 191.239.64.128 |
@@ -174,11 +174,11 @@ IP 地址的总数：
 | 西欧 | 23.97.212.5 |
 | 印度西部 | 23.99.5.162 |
 | 美国西部 | 23.99.5.162 |
-| 美国西部 2 | 23.99.5.162 | 
+| 美国西部 2 | 23.99.5.162 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor 配置终结点地址
 
-| 地区 | 地址 |
+| 区域 | 地址 |
 | --- | --- |
 | 澳大利亚中部 | 52.148.86.165 |
 | 澳大利亚中部2 | 52.148.86.165 |
@@ -192,7 +192,7 @@ IP 地址的总数：
 | 美国中部 EUAP | 13.90.43.231 |
 | 东亚 | 13.75.117.221 |
 | 美国东部 | 13.90.43.231 |
-| 美国东部2 | 13.68.89.19 | 
+| 美国东部2 | 13.68.89.19 |    
 | 美国东部 2 EUAP | 13.68.89.19 |
 | 法国中部 | 52.174.4.112 |
 | 法国南部 | 52.174.4.112 |
@@ -263,3 +263,149 @@ crl3.digicert.com:80
 若要将 Azure 数据资源管理器群集部署到虚拟网络，请使用将[azure 数据资源管理器群集部署到 VNet](https://azure.microsoft.com/resources/templates/101-kusto-vnet/) Azure 资源管理器模板。
 
 此模板创建群集、虚拟网络、子网、网络安全组和公共 IP 地址。
+
+## <a name="troubleshooting"></a>故障排除
+
+本部分介绍如何排查部署到[虚拟网络](/azure/virtual-network/virtual-networks-overview)中的群集的连接、操作和群集创建问题。
+
+### <a name="access-issues"></a>访问问题
+
+如果你在使用公用（cluster.region.kusto.windows.net）或专用（private-cluster.region.kusto.windows.net）终结点访问群集时遇到问题，并且怀疑它与虚拟网络设置相关，请执行以下步骤以解决问题。
+
+#### <a name="check-tcp-connectivity"></a>检查 TCP 连接
+
+第一步包括使用 Windows 或 Linux OS 检查 TCP 连接。
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+   1. 将[TCping](https://www.elifulkerson.com/projects/tcping.php)下载到连接到群集的计算机。
+   2. 使用以下命令从源计算机 Ping 目标：
+
+    ```cmd
+     C:\> tcping -t yourcluster.kusto.windows.net 443 
+    
+     ** Pinging continuously.  Press control-c to stop **
+    
+     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
+     ```
+
+# <a name="linux"></a>[Linux](#tab/linux)
+
+   1. 在连接到群集的计算机上安装*netcat*
+
+    ```bash
+    $ apt-get install netcat
+     ```
+
+   2. 使用以下命令从源计算机 Ping 目标：
+
+     ```bash
+     $ netcat -z -v yourcluster.kusto.windows.net 443
+    
+     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
+     ```
+---
+
+如果测试不成功，请继续执行以下步骤。 如果测试成功，则问题不是由 TCP 连接问题导致的。 请继续执行[操作问题](#cluster-creation-and-operations-issues)以进一步解决问题。
+
+#### <a name="check-the-network-security-group-nsg"></a>检查网络安全组（NSG）
+
+   检查附加到群集子网的[网络安全组](/azure/virtual-network/security-overview)（NSG）是否具有允许从客户端计算机的 IP 访问端口443的入站规则。
+
+#### <a name="check-route-table"></a>检查路由表
+
+   如果群集的子网具有对防火墙的强制隧道设置（带有包含默认路由 "0.0.0.0/0" 的[路由表](/azure/virtual-network/virtual-networks-udr-overview)的子网），请确保计算机 IP 地址具有 "[下一跃点类型](/azure/virtual-network/virtual-networks-udr-overview)" 到 VirtualNetwork/Internet 的路由。 这是防止非对称路由问题所必需的。
+
+### <a name="ingestion-issues"></a>引入问题
+
+如果遇到引入问题并且怀疑它与虚拟网络设置有关，请执行以下步骤。
+
+#### <a name="check-ingestion-health"></a>检查引入运行状况
+
+    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
+
+#### <a name="check-security-rules-on-data-source-resources"></a>检查数据源资源上的安全规则
+
+如果度量值指示没有从数据源处理任何事件（处理的*事件*（对于事件/IoT 中心）指标），请确保数据源资源（事件中心或存储）允许通过防火墙规则或服务终结点中的群集子网进行访问。
+
+#### <a name="check-security-rules-configured-on-clusters-subnet"></a>检查群集子网上配置的安全规则
+
+请确保群集的子网具有正确配置的 NSG、UDR 和防火墙规则。 此外，请测试所有依赖终结点的网络连接。 
+
+### <a name="cluster-creation-and-operations-issues"></a>群集创建和操作问题
+
+如果遇到群集创建或操作问题，并且怀疑它与虚拟网络设置有关，请执行以下步骤来解决此问题。
+
+#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>诊断具有 REST API 的虚拟网络
+
+[ARMClient](https://chocolatey.org/packages/ARMClient)用于使用 PowerShell 调用 REST API。 
+
+1. 使用 ARMClient 登录
+
+   ```powerShell
+   armclient login
+   ```
+
+1. 调用诊断操作
+
+    ```powershell
+    $subscriptionId = '<subscription id>'
+    $clusterName = '<name of cluster>'
+    $resourceGroupName = '<resource group name>'
+    $apiversion = '2019-11-09'
+    
+    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
+    ```
+
+1. 检查响应
+
+    ```powershell
+    HTTP/1.1 202 Accepted
+    ...
+    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    ...
+    ```
+
+1. 等待操作完成
+
+    ```powershell
+    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
+    
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "[Running/Failed/Completed]",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {...}
+    }
+    ```
+    
+   等待 "*状态*" 属性显示为 "*已完成*"，然后 "*属性*" 字段应显示：
+
+    ```powershell
+    {
+      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
+      "name": "{operation-name}",
+      "status": "Completed",
+      "startTime": "{start-time}",
+      "endTime": "{end-time}",
+      "properties": {
+        "Findings": [...]
+      }
+    }
+    ```
+
+如果 "*发现*" 属性显示空结果，则表示所有网络测试均已通过，并且没有任何连接被中断。 如果此错误显示如下所示的错误：*出站依赖项 "{dependencyName}： {port}" 可能未满足（出站）* ，则群集无法访问依赖的服务终结点。 继续执行以下步骤进行故障排除。
+
+#### <a name="check-network-security-group-nsg"></a>检查网络安全组（NSG）
+
+请确保按照[VNet 部署依赖关系](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)中的说明正确配置[网络安全组](/azure/virtual-network/security-overview)
+
+#### <a name="check-route-table"></a>检查路由表
+
+如果群集的子网将强制隧道设置为防火墙（带有包含默认路由 "0.0.0.0/0" 的[路由表](/azure/virtual-network/virtual-networks-udr-overview)的子网），请确保[管理 ip 地址](#azure-data-explorer-management-ip-addresses)和[运行状况监视 ip 地址](#health-monitoring-addresses)具有[下一跃点类型](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools) *Internet*的路由，并且[源地址前缀](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route)为 *"management ip/32"* 和 *"运行状况监视-ip/32"* 。 这是防止非对称路由问题所必需的。
+
+#### <a name="check-firewall-rules"></a>检查防火墙规则
+
+如果强制将隧道子网出站流量发送到防火墙，请确保防火墙配置中允许所有依赖项 FQDN （例如， *. blob.core.windows.net*），如[使用防火墙保护出站流量](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall)中所述。

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 82f6da54aec7aee94c19fd75a06d2850ca0db8b6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883140"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673385"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>使用 Azure IoT SDK 针对 Android Things 平台进行开发
 
@@ -20,7 +20,7 @@ ms.locfileid: "68883140"
 
 本教程概述使用 Azure IoT Java SDK 在 Android Things 上构建设备端应用程序的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 受 Android Things 支持且运行 Android Things OS 的硬件。  可以按照有关如何刷新 Android Things OS 的 [Android Things 文档](https://developer.android.com/things/get-started/kits#flash-at)进行操作。  确保 Android Things 设备连接到 Internet 并连接了基本外围设备（例如键盘、显示器和鼠标）。  本教程使用 Raspberry Pi 3。
 
@@ -42,14 +42,14 @@ ms.locfileid: "68883140"
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
-   **MyAndroidThingsDevice**：这是为注册的设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
+   **MyAndroidThingsDevice** ：这是为注册设备提供的名称。 如图所示使用 MyAndroidThingsDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
+    az extension add --name azure-iot
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyAndroidThingsDevice
     ```
 
-2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册设备的设备连接字符串。 将下面的 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
+2. 在 Azure Cloud Shell 中运行以下命令，以获取刚注册的设备的*设备连接字符串*。 将以下 `YourIoTHubName` 替换为你为 IoT 中心选择的名称。
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table

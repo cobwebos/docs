@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967518"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673581"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player 概述
 
@@ -26,8 +26,6 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 > [!NOTE]
 > Widevine 加密的内容需要 HTTPS 播放。
-
-[开始免费试用](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>使用 Azure Media Player 演示页
 
@@ -39,7 +37,7 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 若要配置各种播放选项（例如技术、语言或加密），请按“高级选项”。
 
-![Azure 媒体播放器](./media/azure-media-player/home-page.png)
+![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>监视视频流的诊断
 
@@ -53,7 +51,7 @@ Azure Media Player 易于设置。 只需要片刻时间便可实现媒体服务
 
 ## <a name="additional-notes"></a>附加说明
 
-* Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+* Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="next-steps"></a>后续步骤
 

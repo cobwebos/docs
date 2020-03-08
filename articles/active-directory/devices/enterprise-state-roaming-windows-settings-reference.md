@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a75b662fabcce8ffa64f1b705e86a1c1dde625
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 3a7abc402f1fc2e449e7aac5effdb01b6b941100
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194324"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672623"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 漫游设置参考
 
@@ -26,12 +26,12 @@ ms.locfileid: "77194324"
 
 请参阅下表大概了解 Windows 10 中同步、备份和还原框架支持的设备和帐户类型。
 
-| 帐户类型和操作 | 桌面 | 移动设备 |
+| 帐户类型和操作 | 桌面型 | 移动型 |
 | --- | --- | --- |
-| Azure Active Directory：同步 |是 |是 |
-| Azure Active Directory：备份/还原 |是 |是 |
+| Azure Active Directory：同步 |是 |否 |
+| Azure Active Directory：备份/还原 |否 |否 |
 | Microsoft 帐户：同步 |是 |是 |
-| Microsoft 帐户：备份/还原 |是 |是 |
+| Microsoft 帐户：备份/还原 |否 |是 |
 
 ## <a name="what-is-backup"></a>什么是备份？
 
@@ -49,14 +49,14 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 * 其他 Windows 设置：请参阅 Windows 设置详细信息
 * Microsoft Edge 浏览器设置： Microsoft Edge 收藏夹、阅读列表和其他设置
 
-![同步你的设置](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
+![同步设置](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 最终用户可通过 Microsoft Edge 浏览器的“设置”菜单选项来启用或禁用 Microsoft Edge 浏览器设置组（收藏夹、读取列表）同步。
 
-![Account](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
+![帐户](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
 对于 Windows 10 版本 1803 或更高版本，最终用户可通过 Internet Explorer 的“设置”菜单选项启用或禁用 Internet Explorer 设置组（收藏夹、键入的 URL）同步。 
 
@@ -69,33 +69,33 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 “设置组”列中的“内部”项是指设置和应用，它们只能通过应用本身内的同步进行禁用，或使用移动设备管理 (MDM) 或“组策略”设置来禁用整个设备的同步进行禁用。
 不漫游或同步的设置不属于某个组。
 
-| 设置 | 桌面 | 移动设备 | 组 |
+| 设置 | 桌面型 | 移动型 | 组 |
 | --- | --- | --- | --- |
 | **帐户**：帐户图片 |sync |X |主题 |
 | **帐户**：其他帐户设置 |X |X | |
 | **高级移动宽带**： Internet 连接共享网络名称（允许通过蓝牙自动发现移动 wi-fi 热点） |X |X |密码 |
 | **应用数据**：单个应用可同步数据 |同步备份 |同步备份 |内部 |
-| **应用列表**：已安装应用的列表 |X |backup |其他 |
+| **应用列表**：已安装应用的列表 |X |备份 (backup) |其他 |
 | **蓝牙**：所有蓝牙设置 |X |X | |
 | **命令提示符**：命令提示符“Defaults”设置 |sync |X |内部 |
 | **凭据**：凭据保险箱 |sync |sync |password |
-| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |language |
-| **日期、时间和区域**：24 小时制 |sync |X |language |
-| **日期、时间和区域**：日期和时间 |sync |X |language |
-| **日期、时间和区域**：时区 | |X |language |
-| **日期、时间和区域**：夏令时 |sync |X |language |
-| **日期、时间和区域**：国家/地区 |sync |X |language |
-| **日期、时间和区域**：每周的第一天 |sync |X |language |
-| **日期、时间和区域**：区域格式（区域设置） |sync |X |language |
-| **日期、时间和区域**：简短日期 |sync |X |language |
-| **日期、时间和区域**：完整日期 |sync |X |language |
-| **日期、时间和区域**：简短时间 |sync |X |language |
-| **日期、时间和区域**：完整时间 |sync |X |language |
+| **日期、时间和区域**：自动时间（Internet 时间同步） |sync |sync |语言 |
+| **日期、时间和区域**：24 小时制 |sync |X |语言 |
+| **日期、时间和区域**：日期和时间 |sync |X |语言 |
+| **日期、时间和区域**：时区 | |X |语言 |
+| **日期、时间和区域**：夏令时 |sync |X |语言 |
+| **日期、时间和区域**：国家/地区 |sync |X |语言 |
+| **日期、时间和区域**：每周的第一天 |sync |X |语言 |
+| **日期、时间和区域**：区域格式（区域设置） |sync |X |语言 |
+| **日期、时间和区域**：简短日期 |sync |X |语言 |
+| **日期、时间和区域**：完整日期 |sync |X |语言 |
+| **日期、时间和区域**：简短时间 |sync |X |语言 |
+| **日期、时间和区域**：完整时间 |sync |X |语言 |
 | **桌面个性化**：桌面主题（背景、系统颜色、默认系统声音、屏幕保护） |sync |X |主题 |
 | **桌面个性化**：幻灯片放映壁纸 |sync |X |主题 |
 | **桌面个性化**：任务栏设置（位置、自动隐藏等） |sync |X |主题 |
-| **桌面个性化**：启动屏幕布局 |X |backup | |
-| **设备**：已连接的共享打印机 |X |X |other |
+| **桌面个性化**：启动屏幕布局 |X |备份 (backup) | |
+| **设备**：已连接的共享打印机 |X |X |其他 |
 | **Microsoft Edge 浏览器**：读取列表 |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：收藏夹 |sync |sync |内部 |
 | **Microsoft Edge 浏览器**：热门网站 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
@@ -125,35 +125,35 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **键盘**：开启粘滞键（默认为关闭） |sync |X |轻松访问 |
 | **键盘**：开启筛选键（默认为关闭） |sync |X |轻松访问 |
 | **键盘**：开启切换键（默认为关闭） |sync |X |轻松访问 |
-| **Internet Explorer**：域语言：中文 (CHS) 标准键盘 - 启用自学习 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 启用动态候选项排名 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 字符集简体中文 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 字符集繁体中文 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 模糊拼音 |sync |backup |Language |
-| **语言**：CHS 标准键盘 - 模糊配对 |sync |backup |Language |
-| **语言**：CHS 标准键盘 - 完整拼音 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 双拼音 |sync |X |Language |
-| **语言**：CHS 标准键盘 - 读取自动更正 |sync |X |Language |
-| **语言**：CHS 标准键盘 - C/E 切换键，shift |sync |X |Language |
-| **语言**：CHS 标准键盘 - C/E 切换键，Ctrl |sync |X |Language |
-| **语言**：CHS 五笔 - 单字符输入模式 |sync |X |Language |
-| **语言**：CHS 五笔 - 显示候选项的剩余编码 |sync |X |Language |
-| **语言**：CHS 五笔 - 误码时发出警报音 |sync |X |Language |
-| **语言**：CHT 注音符号 - 包含 CJK Ext-A |sync |X |Language |
-| **语言**：日语输入法 - 预测键入和自定义词语 |sync |sync |Language |
-| **语言**：韩文 (KOR) 输入法 |X |X |Language |
-| **语言**：手写识别 |X |X |Language |
-| **语言**：语言配置文件 |sync |backup |Language |
-| **语言**：拼写检查功能 - 自动更正并突出显示拼写错误 |sync |backup |Language |
-| **语言**：键盘列表 |sync |backup |Language |
+| **Internet Explorer**：域语言：中文 (CHS) 标准键盘 - 启用自学习 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 启用动态候选项排名 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 字符集简体中文 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 字符集繁体中文 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 模糊拼音 |sync |备份 (backup) |语言 |
+| **语言**：CHS 标准键盘 - 模糊配对 |sync |备份 (backup) |语言 |
+| **语言**：CHS 标准键盘 - 完整拼音 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 双拼音 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - 读取自动更正 |sync |X |语言 |
+| **语言**：CHS 标准键盘 - C/E 切换键，shift |sync |X |语言 |
+| **语言**：CHS 标准键盘 - C/E 切换键，Ctrl |sync |X |语言 |
+| **语言**：CHS 五笔 - 单字符输入模式 |sync |X |语言 |
+| **语言**：CHS 五笔 - 显示候选项的剩余编码 |sync |X |语言 |
+| **语言**：CHS 五笔 - 误码时发出警报音 |sync |X |语言 |
+| **语言**：CHT 注音符号 - 包含 CJK Ext-A |sync |X |语言 |
+| **语言**：日语输入法 - 预测键入和自定义词语 |sync |sync |语言 |
+| **语言**：韩文 (KOR) 输入法 |X |X |语言 |
+| **语言**：手写识别 |X |X |语言 |
+| **语言**：语言配置文件 |sync |备份 (backup) |语言 |
+| **语言**：拼写检查功能 - 自动更正并突出显示拼写错误 |sync |备份 (backup) |语言 |
+| **语言**：键盘列表 |sync |备份 (backup) |语言 |
 | **屏幕锁定**：所有屏幕锁定设置 |X |X | |
 | **放大镜**：打开或关闭（主切换） |X |X |轻松访问 |
 | **放大镜**：打开或关闭反转颜色（默认为关闭） |sync |X |轻松访问 |
 | **放大镜**：跟踪功能 - 跟随键盘焦点 |sync |X |轻松访问 |
 | **放大镜**：跟踪功能 - 跟随鼠标焦点 |sync |X |轻松访问 |
 | **放大镜**：用户登录时启动（默认为关闭） |sync |X |轻松访问 |
-| **鼠标**：更改鼠标光标大小 |sync |X |other |
-| **鼠标**：更改鼠标光标颜色 |sync |X |other |
+| **鼠标**：更改鼠标光标大小 |sync |X |其他 |
+| **鼠标**：更改鼠标光标颜色 |sync |X |其他 |
 | **鼠标**：所有其他设置 |X |X | |
 | **讲述人**：快速启动 |sync |X |轻松访问 |
 | **讲述人**：用户可更改“讲述人”音调 |sync |X |轻松访问 |
@@ -168,16 +168,16 @@ Windows 设置通常会默认进行同步，但某些设置只会进行备份，
 | **轻松访问**：删除背景图像（默认为关闭） |sync |X |轻松访问 |
 | **电源和睡眠**：所有设置 |X |X | |
 | **启动屏幕个性化**：主题色（仅限电话） |X |sync |主题 |
-| **键入**：拼写字典 |sync |backup |Language |
-| **键入**：自动更正拼写错误的单词 |sync |backup |Language |
-| **键入**：突出显示拼写错误的单词 |sync |backup |Language |
-| **键入**：键入时显示文本建议 |sync |backup |Language |
-| **键入**：选择文本建议后添加一个空格 |sync |backup |Language |
-| **键入**：双击空格键时添加一个句点 |sync |backup |Language |
-| **键入**：大写每个句子的首字母 |sync |backup |Language |
-| **键入**：双击 shift 键时全部使用大写字母 |sync |backup |Language |
-| **键入**：键入时播放键的声音 |sync |backup |Language |
-| **键入**：触摸键盘的个性化数据 |sync |backup |Language |
+| **键入**：拼写字典 |sync |备份 (backup) |语言 |
+| **键入**：自动更正拼写错误的单词 |sync |备份 (backup) |语言 |
+| **键入**：突出显示拼写错误的单词 |sync |备份 (backup) |语言 |
+| **键入**：键入时显示文本建议 |sync |备份 (backup) |语言 |
+| **键入**：选择文本建议后添加一个空格 |sync |备份 (backup) |语言 |
+| **键入**：双击空格键时添加一个句点 |sync |备份 (backup) |语言 |
+| **键入**：大写每个句子的首字母 |sync |备份 (backup) |语言 |
+| **键入**：双击 shift 键时全部使用大写字母 |sync |备份 (backup) |语言 |
+| **键入**：键入时播放键的声音 |sync |备份 (backup) |语言 |
+| **键入**：触摸键盘的个性化数据 |sync |备份 (backup) |语言 |
 | **Wi-Fi**：Wi-Fi 配置文件（仅 WPA） |sync |sync |密码 |
 
 ###### <a name="footnote-1"></a>脚注 1

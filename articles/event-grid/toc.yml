@@ -96,8 +96,12 @@
   items:
     - name: 事件网格概念
       href: concepts.md
-    - name: 安全性和身份验证
-      href: security-authentication.md
+    - name: 安全性
+      items:
+        - name: 身份验证
+          href: security-authentication.md
+        - name: 授权
+          href: security-authorization.md
     - name: 传递和重试
       href: delivery-and-retry.md
     - name: 事件筛选

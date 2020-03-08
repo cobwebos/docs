@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44de5878dcc39e09adf24f69b883a29370f00b48
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505726"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78851384"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -203,7 +203,7 @@ Start-AzureRmVm : Run Login-AzureRmAccount to login
 
 若要检查 RunAs 帐户是否已正确配置，请在 Azure 门户中转到“自动化帐户”，并选择“帐户设置”下的“RunAs 帐户”。 其中显示 RunAs 帐户的状态，如果 RunAs 帐户未正确配置或已过期，状态会体现出这一点。
 
-如果 RunAs 帐户[未正确配置](../manage-runas-account.md#misconfiguration)，应删除并重新创建 RunAs 帐户。
+如果运行方式帐户配置错误，则应删除并重新创建运行方式帐户。 请参阅[管理 Azure 自动化运行方式帐户](../manage-runas-account.md)。
 
 如果 RunAs 帐户的证书已过期，请按照[自签名证书续订](../manage-runas-account.md#cert-renewal)中列出的步骤操作，以续订证书。
 

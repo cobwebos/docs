@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: aahi
 ms.openlocfilehash: c5a413a4fe8d9ac9b7aac59ca78cedc6d5a7a313
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206168"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899436"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>文本分析 API 的语言和区域支持
 

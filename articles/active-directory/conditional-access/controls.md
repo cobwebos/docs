@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f1df037b66c72177a96f77231cee70782d04992
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 3fff08690eb2807fbbd50f297761c57d3fef88fe
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620711"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671840"
 ---
 # <a name="custom-controls-preview"></a>自定义控件（预览版）
 
-自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 验证响应，并且如果用户已成功通过身份验证或验证，则用户将继续在条件访问流中。
+自定义控件是 Azure Active Directory Premium P1 版的一项功能。 使用自定义控件时，用户将被重定向至兼容服务，以满足 Azure Active Directory 之外的其他要求。 为了满足此控制，用户的浏览器重定向到外部服务，执行任何所需的身份验证或验证活动，然后重定向回 Azure Active Directory。 Azure Active Directory 验证响应，并且如果用户已成功通过身份验证或验证，则用户将继续在条件访问流中。
 
 这些控件允许将某些外部或自定义服务用作条件性访问控制，并通常扩展条件性访问的功能。
 
@@ -45,7 +45,7 @@ ms.locfileid: "77620711"
 
 自定义控件不能与需要多重身份验证的身份保护自动化一起使用，也不能在特权标识管理器（PIM）中提升角色。
 
-复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
+复制 JSON 数据，然后将其粘贴到相关文本框中。 除非明确了解所做的更改，否则不要对 JSON 进行任何更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
 
 用于创建自定义控件的选项位于 "**条件访问**" 页的 "**管理**" 部分中。
 
@@ -67,22 +67,10 @@ ms.locfileid: "77620711"
 
 若要编辑自定义控件，必须删除当前控件，然后使用更新的信息创建新控件。
 
-## <a name="session-controls"></a>会话控制
-
-通过会话控制，可以限制云应用程序中的体验。 会话控制由云应用强制实施，取决于由 Azure AD 提供给应用的有关会话的其他信息。
-
-![控制](./media/controls/31.png)
-
-### <a name="use-app-enforced-restrictions"></a>使用应用所强制实施的限制
-
-可以使用此控制要求 Azure AD 将设备信息传递给所选云应用。 设备信息使云应用能够知道连接是从兼容设备还是已加入域设备发起的。 此控制仅支持将 SharePoint Online 和 Exchange Online 作为选定的云应用。 选择后，云应用会使用设备信息为用户提供有限或完整的体验，具体取决于设备状态。
-
-若要了解更多信息，请参阅以下文章：
-
-- [使用 SharePoint Online 启用受限访问](https://aka.ms/spolimitedaccessdocs)
-- [使用 Exchange Online 启用受限访问](https://aka.ms/owalimitedaccess)
-
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解如何配置条件访问策略，请参阅[通过 Azure Active Directory 条件访问要求特定应用必须使用 MFA](app-based-mfa.md)。
-- 如果已准备好针对环境配置条件访问策略，请参阅 [Azure Active Directory 中条件访问的最佳做法](best-practices.md)。
+- [条件访问公用策略](concept-conditional-access-policy-common.md)
+
+- [仅限报表模式](concept-conditional-access-report-only.md)
+
+- [使用条件性访问 What If 工具模拟登录行为](troubleshoot-conditional-access-what-if.md)

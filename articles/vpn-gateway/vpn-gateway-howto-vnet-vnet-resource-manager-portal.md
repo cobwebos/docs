@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: dbdc13b8c861c620bfdbaaf53c0901a51bb9ce08
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3d91203253c08acdaa159fc70f7a34fa7fca20c8
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399211"
+ms.locfileid: "78674158"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>使用 Azure 门户配置 VNet 到 VNet VPN 网关连接
 
@@ -127,7 +127,7 @@ ms.locfileid: "78399211"
 ### <a name="to-create-a-virtual-network"></a>创建虚拟网络
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
-## <a name="create-a-virtual-network-gateway"></a>创建虚拟网络网关
+## <a name="create-the-vnet1-gateway"></a>创建 VNet1 网关
 在此步骤中，为 VNet 创建虚拟网络网关。 创建网关通常需要 45 分钟或更长的时间，具体取决于所选的网关 SKU。 如果你正在练习创建此配置，请参阅[示例设置](#example-settings)。
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
@@ -138,7 +138,7 @@ ms.locfileid: "78399211"
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="create-and-configure-vnet4"></a>创建和配置 VNet4
-配置 VNet1 后，请通过重复前面的步骤来创建 VNet4，并将值替换为 VNet4 值。 在配置 VNet4 之前，无需等待 VNet1 的虚拟网络网关完成创建。 如果使用自己的值，请确保地址空间不与任何想要连接的 VNet 重叠。
+配置 VNet1 后，请通过重复前面的步骤来创建 VNet4 和 VNet4 网关，并将值替换为 VNet4 值。 在配置 VNet4 之前，无需等待 VNet1 的虚拟网络网关完成创建。 如果使用自己的值，请确保地址空间不与任何想要连接的 VNet 重叠。
 
 ## <a name="configure-the-vnet1-gateway-connection"></a>配置 VNet1 网关连接
 当 VNet1 和 VNet4 的虚拟网络网关已完成时，可以创建虚拟网络网关连接。 在本部分，请创建从 VNet1 到 VNet4 的连接。 这些步骤仅适用于同一订阅中的 VNet。 如果 VNet 属于不同的订阅，则必须使用 [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md) 进行连接。 不过，如果 VNet 位于同一订阅的不同资源组中，则可使用门户来连接它们。
@@ -148,7 +148,7 @@ ms.locfileid: "78399211"
    ![连接页](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/connections.png "连接页")
 2. 选择 " **+ 添加**" 以打开 "**添加连接**" 页。
 
-   ![添加连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-to-vnet4.png "添加连接")
+   ![添加连接](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet1-vnet4-connection.png "添加连接")
 3. 在“添加连接”页上，填写用于建立连接的值：
 
    - **名称**：输入连接的名称。 例如， *VNet1toVNet4*。

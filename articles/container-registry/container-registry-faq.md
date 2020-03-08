@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 699ee2c2c3b1a90231f24663619cc590aae9889d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252067"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403221"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题
 
@@ -241,7 +241,7 @@ ACR 支持提供不同级别的权限的[自定义角色](container-registry-rol
 
 * 提取映像：
 
-  ```console
+  ```bash
   docker pull myregistry.azurecr.io/hello-world
   ```
 
@@ -297,28 +297,25 @@ grep OPTIONS /etc/sysconfig/docker
 
 例如，Fedora 28 服务器具有以下 docker 守护程序选项：
 
-```
-OPTIONS='--selinux-enabled --log-driver=journald --live-restore'
-```
+`OPTIONS='--selinux-enabled --log-driver=journald --live-restore'`
 
 缺少 `--signature-verification=false` 时，`docker pull` 失败并出现类似于下面的错误：
 
-```bash
+```output
 Trying to pull repository myregistry.azurecr.io/myimage ...
 unauthorized: authentication required
 ```
 
 解决该错误：
 1. 将选项 `--signature-verification=false` 添加到 Docker 守护程序配置文件 `/etc/sysconfig/docker`。 例如：
-
-  ```
-  OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
-  ```
+   
+   `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
+   
 2. 通过运行以下命令重启 Docker 后台程序服务：
-
-  ```bash
-  sudo systemctl restart docker.service
-  ```
+   
+   ```bash
+   sudo systemctl restart docker.service
+   ```
 
 可以通过运行 `man dockerd`找到 `--signature-verification` 的详细信息。
 
@@ -478,9 +475,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 如果将本地源文件夹传递到 `az acr build` 命令，则默认情况下从已上载的包中排除 `.git` 文件夹。 您可以使用以下设置创建 `.dockerignore` 文件。 它会告知命令还原已上传包中 `.git` 下的所有文件。 
 
-```sh
-!.git/**
-```
+`!.git/**`
 
 此设置还适用于 `az acr run` 命令。
 

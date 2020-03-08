@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
-ms.date: 10/11/2019
-ms.openlocfilehash: 10e4ba16e00a37d532a2eceb69fedb8f5b62be8b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.date: 03/05/2020
+ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301652"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402818"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure 机器学习的 Git 集成
 
@@ -41,7 +41,7 @@ Azure 机器学习为工作区中的所有用户提供共享文件系统。
 
 当你从 Python SDK 或机器学习 CLI 提交定型运行时，训练模型所需的文件将上载到你的工作区。 如果 `git` 命令在你的开发环境中可用，则上传过程将使用它来检查文件是否存储在 git 存储库中。 如果是这样，则您的 git 存储库中的信息也将作为训练运行的一部分上传。 此信息存储在定型运行的以下属性中：
 
-| 属性 | 用于获取值的 Git 命令 | 说明 |
+| properties | 用于获取值的 Git 命令 | 说明 |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | 从中克隆存储库的 URI。 |

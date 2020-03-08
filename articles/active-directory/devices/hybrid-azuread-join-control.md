@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2c1a088e4c200dcc4a2ff35db942e3eb8480674
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512085"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672421"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>以受控方式验证混合 Azure AD 加入
 
@@ -82,13 +82,13 @@ ms.locfileid: "76512085"
 如果使用 AD FS，则首先需要使用上述说明来配置客户端 SCP，方法是将 GPO 链接到 AD FS 服务器。 SCP 对象定义设备对象的授权来源。 它可以是本地的，也可以是 Azure AD。 为 AD FS 配置客户端 SCP 后，设备对象的源将建立为 Azure AD。
 
 > [!NOTE]
-> 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用[AdfsDeviceRegistration cmdlet](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)找到 ADFS 设备注册对象。
+> 如果无法在 AD FS 服务器上配置客户端 SCP，则设备标识的源将被视为 "本地"。 然后，在 ADFS 设备注册的属性 "MaximumInactiveDays" 中定义的规定期限后，ADFS 将开始从本地目录中删除设备对象。 可以使用[AdfsDeviceRegistration cmdlet](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)找到 ADFS 设备注册对象。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows 下层设备上的混合 Azure AD 联接的受控验证
 
 若要注册 Windows 下层设备，组织必须安装 Microsoft 下载中心提供的[适用于 Windows 10 计算机的 Microsoft 工作区加入](https://www.microsoft.com/download/details.aspx?id=53554)。
 
-你可以使用软件分发系统（如 [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/)）部署包。 此包支持使用标准无提示安装选项（包含 quiet 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
+可以使用  [Microsoft Endpoint Configuration Manager](/configmgr/) 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 quiet 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
 
 安装程序会在系统上创建一项计划任务，该任务会在用户的上下文中运行。 当用户登录到 Windows 时触发该任务。 通过 Azure AD 进行身份验证后，该任务以无提示方式使用用户凭据将设备联接到 Azure AD。
 

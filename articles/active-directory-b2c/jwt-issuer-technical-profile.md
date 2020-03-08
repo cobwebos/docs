@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 03/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa6da347289a12867a2416dea16631ba4758832f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187468"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671786"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -56,6 +56,7 @@ Azure Active Directory B2C （Azure AD B2C）在处理每个身份验证流时�
 | allow_infinite_rolling_refresh_token | 否 | 如果设置为 `true`，则刷新令牌滑动窗口生存期永不过期。 |
 | IssuanceClaimPattern | 否 | 控制颁发者 (iss) 声明。 值为下列其中一项：<ul><li>AuthorityAndTenantGuid-iss 声明包含域名，例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`，以及租户标识符 https：\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp - iss 声明包含域名（例如 `login.microsoftonline` 或 `tenant-name.b2clogin.com`）、租户标识符和信赖方策略名称。 https：\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> 默认值： AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | 否 | 控制 `acr` 声明值。<ul><li>None - Azure AD B2C 不发出 acr 声明</li><li>PolicyId - `acr` 声明包含策略名称</li></ul>用于设置此值的选项为 TFP（信任框架策略）和 ACR（身份验证上下文引用）。 建议将此值设置为 TFP，若要设置值，请确保存在包含 `<Item>` 的 `Key="AuthenticationContextReferenceClaimPattern"`，且值为 `None`。 在信赖方策略中，添加 `<OutputClaims>` 项和此元素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`。 另请确保策略包含声明类型 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| 否 | 应在[刷新访问令牌](authorization-code-flow.md#4-refresh-the-token)POST 请求期间执行的用户旅程的标识符 `/token` 终结点。 |
 
 ## <a name="cryptographic-keys"></a>加密密钥
 

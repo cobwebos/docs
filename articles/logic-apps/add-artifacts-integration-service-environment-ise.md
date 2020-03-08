@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: d6e5eb8875e6b7d930a002708079dab0e357297f
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 7b9ce8be4ffc306417dd836e28127641f6100321
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250924"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78899186"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>将资源添加到 Azure 逻辑应用中的 integration service 环境（ISE）
 
@@ -51,7 +51,7 @@ ms.locfileid: "78250924"
 
 1. 继续[以常规方式创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-   有关在使用 ISE 与全局逻辑应用服务相比，触发器和操作的工作方式以及如何标记它们的区别，请参阅[ISE 概述中的隔离与全局](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
+   有关当使用 ISE 与多租户逻辑应用服务相比，触发器和操作的工作原理以及如何标记它们的区别，请参阅[ISE 概述中的隔离与多租户](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#difference)。
 
 1. 若要在 ISE 中管理逻辑应用和 API 连接，请参阅[管理集成服务环境](../logic-apps/ise-manage-integration-service-environment.md)。
 

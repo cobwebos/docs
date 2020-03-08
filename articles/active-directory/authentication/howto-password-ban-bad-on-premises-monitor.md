@@ -1,6 +1,6 @@
 ---
-title: 密码保护监视器和日志记录-Azure Active Directory
-description: 了解 Azure AD 密码保护中的监视和日志记录
+title: 监视本地 Azure AD 密码保护
+description: 了解如何监视和查看 Azure AD 本地 Active Directory 域服务环境的密码保护的日志
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c74ea99d3a0e39729bb4d89f012d7b790bf0568b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbb533d5565009fb22d686e4082c9b4bfaae6dc1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847705"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671654"
 ---
-# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD 密码保护中的监视和日志记录
+# <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>监视和查看本地 Azure AD 密码保护环境的日志
 
 部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
@@ -235,7 +235,7 @@ HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Paramete
 
 DC 代理服务软件安装名为“Azure AD 密码保护”的性能计数器对象。 目前提供以下性能计数器：
 
-|性能计数器名称 | 描述|
+|性能计数器名称 | 说明|
 | --- | --- |
 |处理的密码数 |此计数器显示自上次重启以来已处理的密码（接受或拒绝）总数。|
 |接受的密码数 |此计数器显示自上次重启以来已接受的密码总数。|

@@ -3,12 +3,12 @@ title: 在 Azure Stack 上备份 SharePoint 场
 description: 在 Azure Stack 上使用 Azure 备份服务器备份和还原 SharePoint 数据。 本文介绍如何配置 SharePoint 场，以便在 Azure 中存储所需的数据。 可以从磁盘或 Azure 还原受保护的 SharePoint 数据。
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d080605022cadf121fa6be99c9758fe9c0d878ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583208"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673049"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>在 Azure Stack 上备份 SharePoint 场
 
@@ -64,7 +64,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
    * 授予 WSS_Admin_WPG 组对 DPM 注册表项 (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager) 的读取访问权限。
 
 > [!NOTE]
-> 每当 SharePoint 场管理员凭据发生更改时，都要重新运行 ConfigureSharePoint.exe。
+> 每当 SharePoint 场管理员凭据发生更改时，都需要重新运行 Configuresharepoint.exe。
 >
 >
 
@@ -123,7 +123,7 @@ Azure 备份服务器以 LocalSystem 帐户的身份运行。 若要备份 SQL S
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
 
     > [!NOTE]
-    > MABS 从当时可用的最新磁盘备份点为 Azure 最多提供两个每日备份。 Azure 备份还可以使用 [Azure 备份网络限制](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)，来控制高峰期和非高峰期用于备份的 WAN 带宽量。
+    > MABS 从当时可用的最新磁盘备份点为 Azure 最多提供两个每日备份。 Azure 备份还可以使用 [Azure 备份网络限制](backup-windows-with-mars-agent.md#enable-network-throttling)，来控制高峰期和非高峰期用于备份的 WAN 带宽量。
     >
     >
 11. 根据选择的备份计划，在“指定联机保留策略”页上，选择每日、每周、每月和每年备份点的保留策略。

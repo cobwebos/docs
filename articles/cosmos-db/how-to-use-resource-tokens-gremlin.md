@@ -5,14 +5,14 @@ author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
-ms.translationtype: HT
+ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756067"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897853"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>通过 Gremlin SDK 使用 Azure Cosmos DB 资源令牌
 
@@ -26,8 +26,8 @@ Apache TinkerPop Gremlin SDK 没有用于创建资源令牌的 API。 术语“�
 
 - **Azure Cosmos DB 帐户** - 具有关联 DNS 的顶级实体（例如，`contoso.gremlin.cosmos.azure.com`）。
   - **Azure Cosmos DB 数据库**
-    - **User**
-      - 权限 
+    - **用户**
+      - **权限**
         - **令牌** - 表示允许或拒绝哪些操作的权限对象属性。
 
 资源令牌使用以下格式：`"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`。 此字符串对于客户端是不透明的，应按原样使用，而无任何修改或解释。

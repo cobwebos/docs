@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a9c9b808e737f8e72da803085bfebd8263319a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194341"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672379"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 
@@ -35,7 +35,7 @@ ms.locfileid: "77194341"
 * *其他 Windows 设置*，例如鼠标设置。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 **应用程序数据**：通用 Windows 应用可将设置数据写入漫游文件夹，并且会自动同步写入到此文件夹中的任何数据。 各应用开发人员可根据需要设计应用，以利用此功能。 有关如何开发使用漫游的通用 Windows 应用的详细信息，请参阅[appdata 存储 API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx)和[Windows 8 appdata 漫游开发人员博客](https://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)。
 

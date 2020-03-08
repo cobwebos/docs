@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd53b95472c72d70721612d8684779c206aad74e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888784"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672224"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>混合 Azure Active Directory 联接设备的故障排除 
 
@@ -26,7 +26,7 @@ ms.locfileid: "75888784"
 
 本文假设你已[配置已加入混合 Azure Active Directory 的设备](hybrid-azuread-join-plan.md)，以支持以下方案：
 
-- 基于设备的条件访问
+- 基于设备的条件性访问
 - [企业设置漫游](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
 
@@ -356,7 +356,7 @@ WamDefaultAuthority: organizations
    - 解决方法：在出现此错误的设备上禁用 TPM。 Windows 1809 会在不使用 TPM 的情况下自动检测 TPM 故障并完成混合 Azure AD 联接。
 - **NTE_AUTHENTICATION_IGNORED** （0x80090031/-2146893775）
    - 原因： TPM 已锁定。
-   - 解决方法：暂时性错误。 等待 cooldown 时间段。 在一段时间后尝试加入尝试应成功。 有关详细信息，请参阅[TPM 基础知识](https://docs.microsoft.com/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
+   - 解决方法：暂时性错误。 等待 cooldown 时间段。 在一段时间后尝试加入尝试应成功。 有关详细信息，请参阅[TPM 基础知识](/windows/security/information-protection/tpm/tpm-fundamentals#anti-hammering)
 
 ##### <a name="network-errors"></a>网络错误
 
@@ -372,13 +372,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>联合联接服务器错误
 
-| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 分辨率 |
+| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
 | --- | --- | --- | --- |
 | 目录错误 | 你的请求暂时受到限制。 请在300秒后重试。 | 应为错误。 可能是由于快速连续发出多个注册请求引起的。 | 在 cooldown 期限后重试联接 |
 
 ##### <a name="sync-join-server-errors"></a>同步联接服务器错误
 
-| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 分辨率 |
+| 服务器错误代码 | 服务器错误消息 | 可能的原因 | 解决方法 |
 | --- | --- | --- | --- |
 | 目录错误 | AADSTS90002：找不到租户 <UUID>。 如果租户没有活动的订阅，则可能发生此错误。 请咨询订阅管理员。 | SCP 对象中的租户 ID 不正确 | 请确保 SCP 对象配置了正确的 Azure AD 租户 ID 和活动订阅，并存在于租户中。 |
 | 目录错误 | 找不到具有给定 ID 的设备对象。 | 需要同步联接的错误。 设备对象尚未从 AD 同步到 Azure AD | 等待 Azure AD Connect 同步完成，同步完成后的下一次加入尝试将解决此问题 |
@@ -386,7 +386,7 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步骤5：收集日志并联系 Microsoft 支持部门
 
-在此处获取公共脚本： [https://1drv.ms/u/s ！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+在此处获取公共脚本： [https://1drv.ms/u/s！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
 
 1. 打开管理员命令提示符并运行 `start_ngc_tracing_public.cmd`。
 2. 执行步骤来重现问题。

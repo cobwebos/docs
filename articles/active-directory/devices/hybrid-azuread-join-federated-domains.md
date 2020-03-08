@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d6e5362df9f41822525af0d256cfd99568d6de
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 1a61c89199c89f09b5cc0e553dbbf48655ad1b6a
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377078"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672265"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教程：为联盟域配置混合 Azure Active Directory 加入
 
@@ -40,7 +40,7 @@ ms.locfileid: "78377078"
    `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
+> **adfs/services/trust/2005/windowstransport** 和 **adfs/services/trust/13/windowstransport** 应仅作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 本教程介绍如何使用 AD FS 在联合环境中为已加入 Active Directory 域的计算机设备配置混合 Azure AD 加入。
 
@@ -83,7 +83,7 @@ ms.locfileid: "78377078"
 
 从 Windows 10 1803 开始，如果无法在使用 AD FS 的联合环境中实现即时混合 Azure AD 加入，我们将依赖 Azure AD Connect 同步 Azure AD 中的计算机对象，该计算机对象随后用于完成混合 Azure AD 加入的设备注册。 验证 Azure AD Connect 是否已将要加入混合 Azure AD 的设备的计算机对象同步到 Azure AD。 如果这些计算机对象属于特定组织单位 (OU)，则还需要在 Azure AD Connect 中配置这些 OU 以进行同步。 要详细了解如何使用 Azure AD Connect 同步计算机对象，请参阅[使用 Azure AD Connect 配置筛选](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
 
-如果你的组织需要通过出站代理访问 Internet，Microsoft 建议[实施 Web 代理自动发现 (WPAD)](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，以使 Windows 10 计算机在 Azure AD 进行设备注册。 如果在配置和管理 WPAD 时遇到问题，请参阅[自动检测故障排除](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10))。 
+如果你的组织需要通过出站代理访问 Internet，Microsoft 建议[实施 Web 代理自动发现 (WPAD)](/previous-versions/tn-archive/cc995261(v%3dtechnet.10))，以使 Windows 10 计算机在 Azure AD 进行设备注册。 如果在配置和管理 WPAD 时遇到问题，请参阅[自动检测故障排除](/previous-versions/tn-archive/cc302643(v=technet.10))。 
 
 如果不使用 WPAD 并希望在计算机上配置代理设置，则可以从 Windows 10 1709 开始。 有关详细信息，请参阅[使用组策略对象 (GPO) 配置 WinHTTP 设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。
 
@@ -172,7 +172,7 @@ ms.locfileid: "78377078"
 
 要注册 Windows 下层设备，组织必须安装[适用于 Windows 10 计算机的 Microsoft Workplace Join](https://www.microsoft.com/download/details.aspx?id=53554)。 适用于 Windows 10 计算机的 Microsoft Workplace Join 在 Microsoft 下载中心提供。
 
-可以使用  [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/configmgr/) 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 `quiet` 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
+可以使用  [Microsoft Endpoint Configuration Manager](/configmgr/) 等软件分发系统部署该包。 此包支持使用标准无提示安装选项（包含 `quiet` 参数）。 Configuration Manager 的 Current Branch 提供优于早期版本的优势，例如可以跟踪已完成的注册。
 
 安装程序会在系统上创建一项计划任务，该任务会在用户的上下文中运行。 当用户登录到 Windows 时触发该任务。 在 Azure AD 中进行身份验证后，此任务便会使用用户凭据将设备静默加入 Azure AD。
 

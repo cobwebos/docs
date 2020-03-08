@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 26ed6fefdf95281429a8c91057195785db4f5589
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617602"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673246"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务（MARS）代理备份
 
@@ -172,4 +172,4 @@ ms.locfileid: "77617602"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关支持的方案和限制的详细信息，请参阅[MARS 代理的支持矩阵](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
-- 了解有关[按需备份策略保留行为的](backup-configure-vault.md#set-up-on-demand-backup-policy-retention-behavior)详细信息。
+- 了解有关[按需备份策略保留行为的](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)详细信息。

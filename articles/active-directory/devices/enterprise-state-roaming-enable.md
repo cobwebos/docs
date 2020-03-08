@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6887edacafb4fd4a68cfbe7d97e788c71dc68522
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194443"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78672397"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中启用企业状态漫游
 
@@ -25,13 +25,13 @@ ms.locfileid: "77194443"
 启用企业状态漫游时，会自动授予组织对 Azure Rights Management 保护的免费受限使用许可证，该许可证来自 Azure 信息保护。 此免费订阅仅限用于加密和解密企业设置，以及由企业状态漫游同步的应用程序数据。 必须拥有[付费版订阅](https://azure.microsoft.com/pricing/details/information-protection/)才能使用 Azure Rights Management 服务的完整功能。
 
 > [!NOTE]
-> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync)文章。
+> 本文适用于在7月2015中通过 Windows 10 启动的 Microsoft Edge 旧版 HTML 浏览器。 本文不适用于2020年1月15日发布的新的基于 Chromium 的 Microsoft Edge 浏览器。 有关新 Microsoft Edge 的同步行为的详细信息，请参阅[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)文章。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>启用企业状态漫游
 
 1. 登录到 [Azure AD 管理中心](https://aad.portal.azure.com/)。
 1. 选择**Azure Active Directory** &gt;**企业状态漫游**&gt;**设备**。
-1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)。
+1. 选择“用户可以跨设备同步设置和应用数据”。 有关详细信息，请参阅[如何配置设备设置](/azure/active-directory/device-management-azure-portal)。
   
    ![标有“用户可以跨设备同步设置和应用数据”的设备设置的图像](./media/enterprise-state-roaming-enable/device-settings.png)
   
@@ -65,7 +65,7 @@ ms.locfileid: "77194443"
   
    ![设备同步纵栏表数据图像](./media/enterprise-state-roaming-enable/device-status-row.png)
 
-## <a name="data-retention"></a>数据保持期
+## <a name="data-retention"></a>数据保留
 
 使用企业状态漫游同步到 Microsoft 云的数据会一直保留，直到手动将其删除，或判定相关的数据已过时。 
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c63180e77a15c6fc7cbee06ad2eb344b50b97ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434340"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673494"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>使用 Azure CLI 部署 Azure IoT Edge 模块
 
@@ -24,11 +24,11 @@ ms.locfileid: "75434340"
 
 本文介绍了如何创建 JSON 部署清单，然后使用此文件将部署推送至 IoT Edge 设备。 要了解如何创建基于设备的共享标记而面向多台设备的部署，请参阅[大规模地部署和监视 IoT Edge 模块](how-to-deploy-monitor-cli.md)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。
 * 已安装 IoT Edge 运行时的 [IoT Edge 设备](how-to-register-device.md#register-with-the-azure-cli)。
-* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本必须至少是 2.0.24 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
+* 环境中的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 版本至少必须是2.0.70 或更高版本。 请使用 `az --version` 验证版本。 此版本支持 az 扩展命令，并引入了 Knack 命令框架。
 * [适用于 Azure CLI 的 IoT 扩展](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置部署清单
@@ -112,7 +112,7 @@ ms.locfileid: "75434340"
 
 应用使用模块信息配置的部署清单即可将模块部署至设备。
 
-将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 **config** 文件夹中的 `deployment.json` 文件，而不是使用 `deployment.template.json` 文件。
+将目录更改到保存有部署清单的文件夹。 如果使用了 VS Code IoT Edge 模板之一，请使用解决方案目录的 `deployment.json`config**文件夹中的** 文件，而不是使用 `deployment.template.json` 文件。
 
 使用以下命令将配置应用于 IoT Edge 设备：
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84c794e6fe751bc1c12b90353ef7b285f31a2331
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192137"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671877"
 ---
 # <a name="conditional-access-session"></a>条件性访问：会话
 
@@ -30,12 +30,12 @@ ms.locfileid: "77192137"
 
 有关使用和配置应用强制实施的限制的详细信息，请参阅以下文章：
 
-- [使用 SharePoint Online 启用受限访问](https://docs.microsoft.com/sharepoint/control-access-from-unmanaged-devices)
+- [使用 SharePoint Online 启用受限访问](/sharepoint/control-access-from-unmanaged-devices)
 - [使用 Exchange Online 启用受限访问](https://aka.ms/owalimitedaccess)
 
 ## <a name="conditional-access-application-control"></a>条件访问应用程序控件
 
-条件访问应用控制使用反向代理体系结构，并且与 Azure AD 条件访问唯一集成。 Azure AD 条件性访问允许你根据某些条件在你的组织的应用上强制实施访问控制。 条件定义将条件访问策略应用到的用户（用户或用户组）和内容（哪个位置和网络）。 确定条件后，可通过应用访问和会话控制将用户路由到[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) ，你可以在其中使用条件访问应用控制来保护数据。
+条件访问应用控制使用反向代理体系结构，并且与 Azure AD 条件访问唯一集成。 使用 Azure AD 条件访问可以根据某些条件在组织的应用中强制实施访问控制。 条件定义了要向谁（用户或用户组）、什么（哪些云应用）和哪里（哪些位置和网络）应用条件访问策略。 确定条件后，可通过应用访问和会话控制将用户路由到[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) ，你可以在其中使用条件访问应用控制来保护数据。
 
 条件访问应用控制使用户应用访问和会话能够根据访问和会话策略实时监视和控制。 在 Cloud App Security 门户中使用访问和会话策略，以进一步优化筛选器并设置要对用户执行的操作。 使用访问和会话策略，可以：
 
@@ -46,7 +46,7 @@ ms.locfileid: "77192137"
 - 阻止访问：可以根据多个风险因素，以粒度方式阻止特定应用和用户的访问。 例如，如果使用客户端证书作为设备管理形式，则可以阻止它们。
 - 阻止自定义活动：某些应用具有有风险的独特方案，例如，在 Microsoft 团队或时差等应用中发送包含敏感内容的消息。 在这种情况下，你可以对敏感内容的消息进行扫描，并实时将其阻止。
 
-有关详细信息，请参阅文章[部署适用于特色应用的条件访问应用控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)。
+有关详细信息，请参阅文章[部署适用于特色应用的条件访问应用控制](/cloud-app-security/proxy-deployment-aad)。
 
 ## <a name="sign-in-frequency-preview"></a>登录频率（预览）
 

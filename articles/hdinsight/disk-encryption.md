@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: c22ee0ef0393c0dae64674d18bae5a2e92969b4c
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206040"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78403563"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
@@ -34,8 +34,8 @@ Azure HDInsight 支持对托管磁盘上的数据和附加到 HDInsight 群集�
 
 |群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
 |---|---|---|---|
-|Kafka，具有加速写入的 HBase|SSE 加密|SSE 加密 + 可选 CMK 加密|可选的 CMK 加密|
-|所有其他群集（Spark、Interactive、Hadoop、HBase，无需加速写入）|SSE 加密|不可用|可选的 CMK 加密|
+|Kafka，具有加速写入的 HBase|[SSE 加密](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#encryption)|SSE 加密 + 可选 CMK 加密|可选的 CMK 加密|
+|所有其他群集（Spark、Interactive、Hadoop、HBase，无需加速写入）|SSE 加密|空值|可选的 CMK 加密|
 
 ## <a name="get-started-with-customer-managed-keys"></a>客户托管密钥入门
 
@@ -86,7 +86,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
 1. 在 "**添加访问策略**" 页中，提供以下信息：
 
-    |属性 |说明|
+    |properties |说明|
     |---|---|
     |关键权限|选择 "**获取**"、"**解包密钥**" 和 "**环绕键**"。|
     |机密权限|选择 "**获取**"、"**设置**" 和 "**删除**"。|
@@ -94,7 +94,7 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. 选择“添加”。
+1. 选择 **添加** 。
 
 1. 选择“保存”。
 
@@ -177,7 +177,7 @@ HDInsight 使用与 HDInsight 群集关联的托管标识来访问你的 Azure K
 
 **如果对群集进行扩展，则新节点是否可以无缝地支持客户管理的密钥？**
 
-可以。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 使用相同的密钥来加密群集中的托管磁盘和资源磁盘。
+是的。 在纵向扩展期间，群集需要访问密钥保管库中的密钥。 使用相同的密钥来加密群集中的托管磁盘和资源磁盘。
 
 **客户管理的密钥在我的位置中是否可用？**
 

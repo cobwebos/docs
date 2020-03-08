@@ -6,12 +6,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: a2b66cdc7a0704cd3560c0776a0ca5302dc689d2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: eb1bde6bb58e3e5299311636f8222e2fc181ec5d
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250757"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673301"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>设置 Python 应用程序的 Azure Monitor （预览）
 
@@ -425,13 +425,14 @@ SDK 使用三个 Azure Monitor 导出程序将不同类型的遥测发送到 Azu
 
 * [GitHub 上的 OpenCensus Python](https://github.com/census-instrumentation/opencensus-python)
 * [自定义](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
-* [Flask 集成](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
-* [Django 集成](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)
-* [MySQL 集成](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
-* [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
+* [GitHub 上的 Azure Monitor 导出程序](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+* [OpenCensus 集成](https://github.com/census-instrumentation/opencensus-python#extensions)
+* [Azure Monitor 示例应用程序](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
 ## <a name="next-steps"></a>后续步骤
 
+* [跟踪传入请求](./../../azure-monitor/app/opencensus-python-dependency.md)
+* [跟踪传出请求](./../../azure-monitor/app/opencensus-python-request.md)
 * [应用程序映射](./../../azure-monitor/app/app-map.md)
 * [端到端性能监视](./../../azure-monitor/learn/tutorial-performance.md)
 

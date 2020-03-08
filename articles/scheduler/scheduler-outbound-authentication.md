@@ -1,25 +1,26 @@
 ---
-title: 出站身份验证 - Azure 计划程序
+title: 出站身份验证
 description: 了解如何设置或删除 Azure 计划程序的出站身份验证
 services: scheduler
 ms.service: scheduler
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
+ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 2ea09330fb8d3d97da5fbc197dba9668f1a4f685
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300850"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898515"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 计划程序的出站身份验证
 
 > [!IMPORTANT]
-> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)正在替换[正在停](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)用的 azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但此时[REST API](/rest/api/scheduler)和[Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md)仍可用，以便你可以管理作业和作业集合。
 
 Azure 计划程序作业必须调用需要进行身份验证的服务，例如其他 Azure 服务、Salesforce.com、Facebook 和安全自定义网站。 被调用的服务可以确定计划程序作业是否可以访问请求的资源。 
 
@@ -44,22 +45,22 @@ Azure 计划程序作业必须调用需要进行身份验证的服务，例如�
 
 使用 `ClientCertificate` 模型添加身份验证时，请在请求正文中指定以下附加元素。  
 
-| 元素 | 必填 | 描述 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素） | 用于使用 SSL 客户端证书的身份验证对象 |
-| **type** | 是 | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
+| type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
 | **pfx** | 是 | PFX 文件的 base64 编码内容 |
-| **password** | 是 | 用于访问 PFX 文件的密码 |
+| password | 是 | 用于访问 PFX 文件的密码 |
 ||| 
 
 ### <a name="response-body---client-certificate"></a>响应正文 - 客户端证书 
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | 描述 | 
+| 元素 | 说明 | 
 |---------|-------------| 
 | authentication（父元素） | 用于使用 SSL 客户端证书的身份验证对象 |
-| **type** | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
+| type | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
 | **certificateThumbprint** |证书的指纹 |
 | **certificateSubjectName** |证书使用者可分辨名称 |
 | **certificateExpiration** | 证书的过期日期 |
@@ -164,22 +165,22 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 使用 `Basic` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必填 | 描述 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素） | 用于使用基本身份验证的身份验证对象 | 
-| **type** | 是 | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 | 
+| type | 是 | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 | 
 | **username** | 是 | 要进行身份验证的用户名 | 
-| **password** | 是 | 要进行身份验证的密码 |
+| password | 是 | 要进行身份验证的密码 |
 |||| 
 
 ### <a name="response-body---basic"></a>响应正文 - 基本
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | 描述 | 
+| 元素 | 说明 | 
 |---------|-------------|
 | authentication（父元素） | 用于使用基本身份验证的身份验证对象 |
-| **type** | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 |
+| type | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 |
 | **username** | 经过身份验证的用户名 |
 ||| 
 
@@ -282,10 +283,10 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 使用 `ActiveDirectoryOAuth` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必填 | 描述 |
+| 元素 | 必选 | 说明 |
 |---------|----------|-------------|
 | authentication（父元素） | 是 | 用于使用 ActiveDirectoryOAuth 身份验证的身份验证对象 |
-| **type** | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 |
+| type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 |
 | **tenant** | 是 | Azure AD 租户的租户标识符。 若要找到 Azure AD 租户的租户标识符，请在 Azure PowerShell 中运行 `Get-AzureAccount`。 |
 | **audience** | 是 | 此值设置为 `https://management.core.windows.net/`。 | 
 | **clientId** | 是 | Azure AD 应用程序的客户端标识符 | 
@@ -296,10 +297,10 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | 描述 |
+| 元素 | 说明 |
 |---------|-------------|
 | authentication（父元素） | 用于使用 ActiveDirectoryOAuth 身份验证的身份验证对象 |
-| **type** | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
+| type | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 
 | **tenant** | Azure AD 租户的租户标识符 |
 | **audience** | 此值设置为 `https://management.core.windows.net/`。 |
 | **clientId** | Azure AD 应用程序的客户端标识符 |
@@ -403,10 +404,9 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 }
 ```
 
-## <a name="see-also"></a>请参阅
+## <a name="next-steps"></a>后续步骤
 
-* [什么是 Azure 计划程序？](scheduler-intro.md)
 * [Azure 计划程序的概念、术语和实体层次结构](scheduler-concepts-terms.md)
 * [Azure 计划程序的限制、默认值和错误代码](scheduler-limits-defaults-errors.md)
-* [Azure 计划程序 REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure 计划程序 REST API 参考](/rest/api/scheduler)
 * [Azure 计划程序 PowerShell cmdlet 参考](scheduler-powershell-reference.md)

@@ -6,30 +6,39 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 03/05/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 5e66632fab0306da7766f079733cd1d8cb3edc8d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 3ce726b858dc31f42a07d56c11330544df3861f1
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359229"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78669036"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
 
-本快速入门介绍如何使用 Azure 门户创建应用程序网关。  创建应用程序网关后，请测试该网关以确保其正常运行。 使用 Azure 应用程序网关，可以为端口分配侦听器、创建规则以及向后端池添加资源，以便将应用程序 Web 流量定向到特定资源。 为简单起见，本文使用了带有公共前端 IP 的简单设置、在此应用程序网关上托管单个站点的基本侦听器、用于后端池的两台虚拟机以及基本请求传递规则。
+在本快速入门中，请使用 Azure 门户创建应用程序网关。 然后对其进行测试以确保其正常运行。 
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+应用程序网关将应用程序 web 流量定向到后端池中的特定资源。 可将侦听器分配给端口，创建规则，并将资源添加到后端池。 为了简单起见，本文使用了简单的设置，其中包含公共前端 IP、用于在应用程序网关上托管单一站点的基本侦听器、基本请求路由规则和后端池中的两个虚拟机。
 
+你还可以使用[Azure PowerShell](quick-create-powershell.md)或[Azure CLI](quick-create-cli.md)完成本快速入门教程。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+
+
+## <a name="prerequisites"></a>必备条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
+
+使用 "**创建应用程序网关**" 页上的选项卡，可以创建应用程序网关。
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”。 此时会显示“新建”窗口。
 
@@ -126,7 +135,7 @@ ms.locfileid: "78359229"
 
 ## <a name="add-backend-targets"></a>添加后端目标
 
-本示例将使用虚拟机作为目标后端。 可以使用现有的虚拟机，或创建新的虚拟机。 将创建两个虚拟机，供 Azure 用作应用程序网关的后端服务器。
+本示例将使用虚拟机作为目标后端。 可以使用现有的虚拟机，或创建新的虚拟机。 你将创建两个虚拟机作为应用程序网关的后端服务器。
 
 为此，将要：
 
@@ -142,8 +151,8 @@ ms.locfileid: "78359229"
 
     - **资源组**：选择 " **myResourceGroupAG** " 作为资源组名称。
     - **虚拟机名称**：输入*myVM*作为虚拟机的名称。
-    - **用户名**：输入*azureuser*作为管理员用户名。
-    - **密码**：输入*Azure123456！* 作为管理员密码。
+    - **用户名**：键入*azureuser*作为管理员用户名。
+    - **密码**：键入密码。
 4. 接受其他默认值，然后选择 "**下一步：磁盘**"。  
 5. 接受 "**磁盘**" 选项卡默认值，然后选择 "**下一步：网络**"。
 6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择 "**下一步：管理**"。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP 连接。
@@ -155,7 +164,7 @@ ms.locfileid: "78359229"
 
 本示例在虚拟机上安装 IIS，只为验证 Azure 是否已成功创建应用程序网关。
 
-1. 打开 [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell)。 为此，请在 Azure 门户的顶部导航栏中选择“Cloud Shell”，然后从下拉列表中选择“PowerShell”。 
+1. 打开 Azure PowerShell。 从 Azure 门户的顶部导航栏中选择 " **Cloud Shell** "，然后从下拉列表中选择 " **PowerShell** "。 
 
     ![安装自定义扩展](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -199,11 +208,13 @@ ms.locfileid: "78359229"
 
 1. 在“概述”页面上查找应用程序网关的公共 IP 地址**记录应用程序网关公共 IP 地址**或者，可以选择“所有资源”，在搜索框中输入“myAGPublicIPAddress”，然后在搜索结果中选择该地址![](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)。 Azure 会在“概览”页上显示公共 IP 地址。
 2. 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。
-3. 检查响应。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。![测试应用程序网关](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+3. 检查响应。 有效响应验证应用程序网关是否已成功创建，以及是否能够成功连接后端。
+
+   ![测试应用程序网关](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要通过应用程序网关创建的资源，请删除资源组。 删除资源组时，也会删除应用程序网关和及其所有的相关资源。 
+当你不再需要通过应用程序网关创建的资源时，请删除该资源组。 删除资源组时，还会删除应用程序网关和所有相关资源。
 
 若要删除资源组，请执行以下操作：
 

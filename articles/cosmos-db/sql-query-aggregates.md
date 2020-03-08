@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB 中的聚合函数
 description: 了解 SQL 聚合函数语法，Azure Cosmos DB 支持的聚合函数的类型。
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: mjbrown
-ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 03/05/2020
+ms.author: tisande
+ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871833"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897833"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聚合函数
 
@@ -24,7 +24,7 @@ ms.locfileid: "74871833"
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -39,7 +39,7 @@ ms.locfileid: "74871833"
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [ 2 ]
@@ -53,7 +53,7 @@ ms.locfileid: "74871833"
     WHERE f.address.state = "WA"
 ```
 
-其结果是：
+结果有：
 
 ```json
     [ 1 ]
@@ -63,12 +63,12 @@ ms.locfileid: "74871833"
 
 SQL API 支持以下聚合函数。 对数字值进行 SUM 和 AVG 运算，对数字、字符串、布尔值和 null 值使用计数、最小值和最大值。
 
-| 函数 | 描述 |
+| 函数 | 说明 |
 |-------|-------------|
 | COUNT | 在表达式中返回项的数目。 |
 | SUM   | 在表达式中返回所有值的总和。 |
-| 最小值   | 在表达式中返回最小值。 |
-| MAX   | 在表达式中返回最大值。 |
+| 最小值   | 返回表达式中的最小值。 |
+| MAX   | 返回表达式中的最大值。 |
 | 平均值   | 在表达式中返回多个值的平均值。 |
 
 您还可以对数组迭代的结果进行聚合。

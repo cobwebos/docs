@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: da44e8482e335c209f45db478797efa5461bbfe1
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186086"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671859"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>在仅限报表模式下配置条件访问策略（预览）
 
@@ -48,8 +48,8 @@ ms.locfileid: "77186086"
 
 若要使用新的条件性访问见解工作簿来查看条件访问策略的聚合影响，必须将 Azure Monitor 与 Azure AD 集成并导出登录日志。 设置此集成的步骤有两个： 
 
-1. [注册 Azure Monitor 订阅并创建工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
-1. [将登录日志从 Azure AD 导出到 Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
+1. [注册 Azure Monitor 订阅并创建工作区](/azure/azure-monitor/learn/quick-create-workspace)。
+1. [将登录日志从 Azure AD 导出到 Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
 
 有关 Azure Monitor 定价的详细信息，请参阅[Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)。 用于估算成本、设置每日上限或自定义数据保持期的资源，请参阅[使用 Azure Monitor 日志管理使用情况和成本](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)一文。
 
