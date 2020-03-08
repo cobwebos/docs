@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169595"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379032"
 ---
 # <a name="configure-the-review-tool"></a>配置审阅工具
 
@@ -64,7 +64,7 @@ ms.locfileid: "76169595"
 
 ![切换子团队](images/3-review-image-subteam-2.png)
 
-## <a name="tags"></a>标记
+## <a name="tags"></a>Tags
 
 "**标记**" 选项卡可用于定义自定义审核标记，以及&mdash;**isadult** （**a**）和**isracy** （**r**）的两个默认审核标记。 当创建自定义标记时，它将在默认标记旁边的审阅中可用。 可以通过切换其可见性设置来更改中显示的标记。
 
@@ -95,7 +95,7 @@ ms.locfileid: "76169595"
 [查看工具](./human-in-the-loop.md)包括以下连接器：
 
 - 情感
-- 人脸
+- 脸
 - PhotoDNA 云服务
 - 文本分析
 
@@ -132,7 +132,7 @@ ms.locfileid: "76169595"
 
 ### <a name="use-your-azure-account-with-the-review-apis"></a>将你的 Azure 帐户用于查看 Api
 
-若要将你的 Azure 密钥与审查 Api 一起使用，你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源，然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值，并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**允许列表资源 ID** " 字段中。
+若要将你的 Azure 密钥与审查 Api 一起使用，你需要检索资源 ID。 在 Azure 门户中转到内容审查器资源，然后选择 "**属性**" 边栏选项卡。 复制 "资源 ID" 值，并将其粘贴到查看工具的 "**凭据**" 选项卡的 "**白名单资源 ID** " 字段中。
 
 ![Azure 门户中的内容审查器资源 ID](images/credentials-azure-portal-resourceid.PNG)
 

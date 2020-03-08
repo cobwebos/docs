@@ -3,12 +3,12 @@ title: Azure 资源运行状况概述
 description: Azure 资源运行状况概述
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356799"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925318"
 ---
 # <a name="resource-health-overview"></a>资源运行状况概述
  
@@ -38,7 +38,7 @@ Azure 资源运行状况有助于诊断和获取影响 Azure 资源的服务问�
 
 #### <a name="platform-events"></a>平台事件
 
-平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划的操作（例如计划内维护）和意外的事件（例如计划外的主机重启）。
+平台事件是由 Azure 基础结构的多个组件触发的。 它们包括计划的操作（例如计划内维护）和意外事件（例如，在指定的时间范围内预测为失败的计划外主机重启或降级主机硬件）。
 
 资源运行状况提供有关事件和恢复过程的更多详细信息。 它还使您可以与 Microsoft 支持部门联系，即使您没有活动的支持协议也是如此。
 
@@ -80,12 +80,12 @@ Azure 资源运行状况有助于诊断和获取影响 Azure 资源的服务问�
 
 ![过去两周内的“资源运行状况”事件列表](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 若要为某个资源打开“资源运行状况”，请执行以下操作：
 
 1. 登录到 Azure 门户。
-2. 浏览资源。
+2. 浏览您的资源。
 3. 在左窗格中的资源菜单上，选择“资源运行状况”。
 
 ![通过资源视图打开“资源运行状况”](./media/resource-health-overview/from-resource-blade.png)

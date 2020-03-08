@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366697"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署本地 StorSimple 设备（Update 3 及更高版本）
 
@@ -34,7 +34,7 @@ ms.locfileid: "76273965"
 ## <a name="deployment-steps"></a>部署步骤
 执行这些必需的步骤来配置 StorSimple 设备，并将其连接到 StorSimple Device Manager 服务。 除了这些所需的步骤外，在部署过程中可能还需要完成一些可选步骤和过程。 逐步部署说明将指示何时应执行每个可选步骤。
 
-| 步骤 | Description |
+| 步骤 | 说明 |
 | --- | --- |
 | **先决条件** |在为即将进行的部署执行准备工作时必须完成这些事项。 |
 | [部署配置清单](#deployment-configuration-checklist) |在部署之前或在部署期间使用此清单来收集和记录信息。 |
@@ -153,7 +153,7 @@ StorSimple Device Manager 服务可以管理多个 StorSimple 设备。 执行�
 [!INCLUDE [storsimple-8000-mount-initialize-format-volume](../../includes/storsimple-8000-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>步骤 8：执行备份
-备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 上述每种备份类型都可以是**计划**或**手动**的。
+备份可提供卷的时间点保护，并可提高可恢复性，同时最大限度地减少恢复时间。 可以在 StorSimple 设备上执行两种类型的备份：本地快照和云快照。 其中的每个备份类型可以是“已计划”或“手动”。
 
 在 Azure 门户中执行以下步骤来创建计划备份。
 

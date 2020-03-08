@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
 ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664830"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368002"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 模板创建指标警报
 
@@ -23,7 +23,7 @@ ms.locfileid: "77664830"
 > [!IMPORTANT]
 > 用于创建资源类型的指标警报的资源模板： Azure Log Analytics 工作区（即） `Microsoft.OperationalInsights/workspaces`，需要额外的步骤。 有关详细信息，请参阅有关[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)的文章。
 
-基本步骤如下所述：
+基本步骤如下所示：
 
 1. 将以下某个模板用作描述如何创建警报的 JSON 文件。
 2. 编辑并使用相应的参数文件作为 JSON 来自定义警报。
@@ -565,7 +565,7 @@ az group deployment create \
 
 较新的指标警报支持根据多维指标发出警报，且支持多个标准。 您可以使用以下模板根据维度指标创建更高级的指标警报规则，并指定多个条件。
 
-在包含多个条件的警报规则中使用维度时，请注意以下约束：
+在包含多个条件的预警规则中使用维度时，请注意以下约束：
 - 对于每个条件，只能在每个维度中选择一个值。
 - 不能使用 "\*" 作为维度值。
 - 如果在不同标准中配置的度量值支持相同的维度，则必须以相同方式为所有这些指标（在相关标准中）显式设置配置的维度值。

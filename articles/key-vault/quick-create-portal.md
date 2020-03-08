@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: a57370b7bf63ad73318ba13eff1b554aead7e186
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197753"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381361"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure Key Vault 中设置和检索机密
 
@@ -30,22 +30,22 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 ## <a name="create-a-vault"></a>创建保管库
 
-1. 在 Azure 门户菜单或“主页”中，选择“创建资源”   。
-2. 在“搜索”框中输入“Key Vault”  。
-3. 从结果列表中选择“Key Vault”  。
-4. 在“Key Vault”部分，选择“创建”  。
-5. 在“创建密钥保管库”部分，提供以下信息： 
-    - **Name**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
-    - **订阅**：选择订阅。
-    - 在“资源组”  下选择“新建”  ，然后输入资源组名称。
-    - 在“位置”下拉菜单中选择一个位置。 
+1. 在 Azure 门户菜单或“主页”中，选择“创建资源”。
+2. 在“搜索”框中输入“Key Vault”。
+3. 从结果列表中选择“Key Vault”。
+4. 在“Key Vault”部分，选择“创建”。
+5. 在“创建密钥保管库”部分，提供以下信息：
+    - **名称**：必须提供唯一的名称。 对于本快速入门，我们使用 **Contoso-vault2**。 
+    - **订阅**：选择一个订阅。
+    - 在“资源组”下选择“新建”，然后输入资源组名称。
+    - 在“位置”下拉菜单中选择一个位置。
     - 让其他选项保留默认值。
-6. 提供上述信息后，选择“创建”  。
+6. 提供上述信息后，选择“创建”。
 
 请记下下面列出的两个属性：
 
-* **保管库名称**：在本示例中，此项为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
-* **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
+* **保管库名称**：在本示例中为 **Contoso-Vault2**。 将在其他步骤中使用此名称。
+* **保管库 URI**：在本示例中，此项为 https://contoso-vault2.vault.azure.net/。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 目前，只有你的 Azure 帐户有权对这个新保管库执行操作。
 
@@ -55,13 +55,13 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 
 只需再执行几个步骤即可向保管库添加机密。 在此示例中，我们将添加可供应用程序使用的密码。 此密码名为 **ExamplePassword**，我们在其中存储的值为 **hVFkk965BuUv**。
 
-1. 在 Key Vault 属性页中，选择“机密”  。
-2. 单击“生成/导入”  。
-3. 在“创建机密”  屏幕上，选择以下值：
+1. 在 Key Vault 属性页中，选择“机密”。
+2. 单击“生成/导入”。
+3. 在“创建机密”屏幕上，选择以下值：
     - **上传选项**：手动。
-    - **Name**：ExamplePassword。
+    - **名称**：ExamplePassword。
     - **值**：hVFkk965BuUv
-    - 让其他值保留默认设置。 单击“创建”。 
+    - 让其他值保留默认设置。 单击“创建”。
 
 收到机密已成功创建的消息后，即可单击列表中的该机密， 然后就可以看到某些属性。 如果单击当前版本，则可看到在上一步指定的值。
 
@@ -77,8 +77,8 @@ Azure Key Vault 是一项云服务，它为机密提供了安全的存储。 可
 如果不再需要资源组，可以将其删除，这将删除 Key Vault 和相关的资源。 要通过门户删除资源组，请执行以下操作：
 
 1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
-2. 选择“删除资源组”  。
-3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”   。
+2. 选择“删除资源组”。
+3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384461"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -205,7 +205,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ```
 此代码生成四个表：
 
-| 事件 | 表名 |
+| 事件 | 表名称 |
 | --- | --- |
 | provider = "prov1" &lt;事件 id = "1"/&gt; |WADEvent + MD5 （"prov1"） + "1" |
 | provider = "prov1" &lt;事件 id = "2" eventDestination = "dest1"/&gt; |WADdest1 |
@@ -231,7 +231,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 | 退出代码 | 说明 |
 | --- | --- |
 | 0 |成功。 |
-| -1 |一般错误。 |
+| -1 |常规错误。 |
 | -2 |无法加载 rcf 文件。<p>仅当在 VM 上不正确地手动调用了来宾代理插件启动器时，才会发生此内部错误。 |
 | -3 |无法加载诊断配置文件。<p><p>解决方案：这是配置文件未通过架构验证的结果。 解决方案是提供符合架构的配置文件。 |
 | -4 |监视代理诊断的另一个实例已在使用本地资源目录。<p><p>解决方案：为“LocalResourceDirectory”指定不同的值。 |

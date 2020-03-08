@@ -4,11 +4,11 @@ description: QnA Maker 知识库由一组问题和答案（QnA）集以及与每
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843337"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389149"
 ---
 # <a name="importing-from-data-sources"></a>从数据源导入
 
@@ -28,7 +28,7 @@ Chit chat QnA 内容集以多种语言和会话样式提供的完整内容数据
 
 导入知识库将替换现有知识库的内容。 导入需要包含问题和答案的结构化 `.tsv` 文件。 此信息有助于 QnA Maker 将问题答案集分组，并将其属性设置为特定的数据源。
 
-| 问题  | 答案  | 源| 元数据（1键：1值） |
+| 问题  | Answer  | 源| 元数据（1键：1值） |
 |-----------|---------|----|---------------------|
 | 问题 1 | 答案 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 问题 2 | 答案 2 | 编辑|    `Key:Value`       |

@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961359"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362532"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>规划容量和缩放以便将 VMware 灾难恢复到 Azure
 
@@ -114,13 +114,13 @@ CPU | 内存 | 缓存磁盘大小 | 数据更改率 | 受保护的计算机
 1. 若要测量这些参数，请在环境中运行 Site Recovery 部署规划器。 如需指导帮助，请参阅[关于用于 VMware 到 Azure 复制的 Site Recovery 部署规划器](site-recovery-deployment-planner.md)。
 2. 部署符合[配置服务器的大小建议](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)的配置服务器。 如果生产工作负荷超过 650 个虚拟机，请部署另一个配置服务器。
 3. 根据测得的每日数据更改率，借助[大小指导](vmware-azure-set-up-process-server-scale.md#download-installation-file)部署[横向扩展进程服务器](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)。
-4. 如果预期磁盘虚拟机的数据更改率超过 2 MBps，请确保使用高级托管磁盘。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
+4. 如果预计磁盘虚拟机的数据更改率超过 2 MBps，请确保使用高级托管磁盘。 Site Recovery 部署规划器运行特定的一段时间。 报告中可能不会捕获其他时间段的数据更改率峰值。
 5. 请根据所要实现的 RPO [设置网络带宽](site-recovery-plan-capacity-vmware.md#control-network-bandwidth)。
 6. 设置基础结构时，请为工作负荷启用灾难恢复。 有关操作方法，请参阅[为 VMware 到 Azure 的复制设置源环境](vmware-azure-set-up-source.md)。
 
-## <a name="deploy-additional-process-servers"></a>部署额外的进程服务器
+## <a name="deploy-additional-process-servers"></a>部署附加的进程服务器
 
-如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 我们在 9.24 版本中增强了产品，以便提供有关何时设置横向扩展进程服务器的[进程服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)以保护新的源计算机或[均衡负载](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
+如果将部署扩展到 200 台以上的源计算机，或者每日总变动率超过 2 TB，则必须添加进程服务器来处理流量。 我们增强了9.24 版中的产品，以提供有关何时设置横向扩展进程服务器的[进程服务器警报](vmware-physical-azure-monitor-process-server.md#process-server-alerts)。 [设置进程服务器](vmware-azure-set-up-process-server-scale.md)以保护新的源计算机或[平衡负载](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load)。
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>对计算机进行迁移，以使用新的进程服务器
 

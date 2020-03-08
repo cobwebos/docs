@@ -17,11 +17,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014468"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376386"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory 风险检测
 
@@ -82,13 +82,13 @@ Microsoft 对检测过程的持续投入使得：
 
 ### <a name="impossible-travel-to-atypical-locations"></a>不可能前往异常位置
 
-此风险检测类型可标识从相距遥远的地理位置进行的两次登录，根据用户以往的行为，其中至少有一个位置属于异常。 除了若干其他因素外，此机器学习算法还考虑两次登录之间相隔的时间以及用户从第一个位置前往第二个位置所需的时间，因为这指示有不同的用户在使用相同的凭据。
+此风险检测类型标识来自地理位置遥远位置的两个登录，其中至少有一个位置对于用户来说也是典型的，但前提是过去的行为。 除了若干其他因素外，此机器学习算法还考虑两次登录之间相隔的时间以及用户从第一个位置前往第二个位置所需的时间，因为这指示有不同的用户在使用相同的凭据。
 
 此算法会忽略明显的“误报”，从而改善不可能前往条件，例如组织中其他用户定期使用的 VPN 和位置。 系统具有 14 天的初始学习期限，在此期间它将学习新用户的登录行为。 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>从不熟悉的位置登录
 
-此风险检测类型考虑过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从尚未在熟悉位置列表中列出的位置登录时，将触发此风险检测。 系统具有 30 天的初始学习期间，在此期间它不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
+此风险检测类型考虑过去的登录位置（IP、纬度/经度和 ASN）来确定新的/不熟悉的位置。 系统会存储用户以前的登录位置信息，并将其视为“熟悉”位置。 当从不在熟悉位置列表中的位置进行登录时，将触发风险检测。 系统具有 30 天的初始学习期间，在此期间它不会将任何新位置标记为不熟悉的位置。 系统还会忽略从常用设备和接近熟悉位置的地理位置进行登录。 
 
 “标识保护”检测来自不熟悉位置的登录，也用于基本身份验证/旧版协议。 由于这些协议没有熟悉的新型特性（如客户端 ID），因此没有足够的遥测数据来减少误报。 若要减少检测到的风险检测的数量，应转到新式身份验证。   
 
@@ -108,19 +108,19 @@ Microsoft 对检测过程的持续投入使得：
 | 检测类型 | 报告延迟 |
 | --- | --- |
 | 实时 | 5 - 10 分钟 |
-| 脱机 | 2 - 4 小时 |
+| Offline | 2 - 4 小时 |
 
 
 对于 Azure Active Directory 检测的风险检测类型，检测类型为：
 
 | 风险检测类型 | 检测类型 |
 | :-- | --- | 
-| [具有已泄漏凭据的用户](#leaked-credentials) | 脱机 |
+| [具有已泄漏凭据的用户](#leaked-credentials) | Offline |
 | [从匿名 IP 地址登录](#sign-ins-from-anonymous-ip-addresses) | 实时 |
-| [不可能前往异常位置](#impossible-travel-to-atypical-locations) | 脱机 |
+| [不可能前往异常位置](#impossible-travel-to-atypical-locations) | Offline |
 | [从不熟悉的位置登录](#sign-in-from-unfamiliar-locations) | 实时 |
-| [从受感染的设备登录](#sign-ins-from-infected-devices) | 脱机 |
-| [从具有可疑活动的 IP 地址登录](#sign-ins-from-ip-addresses-with-suspicious-activity) | 脱机|
+| [从受感染的设备登录](#sign-ins-from-infected-devices) | Offline |
+| [从具有可疑活动的 IP 地址登录](#sign-ins-from-ip-addresses-with-suspicious-activity) | Offline|
 
 
 ## <a name="risk-level"></a>风险级别

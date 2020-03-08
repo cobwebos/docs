@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
 ms.openlocfilehash: acb9784b745fa90fc9cd264162930020e6d64751
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668496"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395601"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor 中的日志警报进行故障排除  
 
