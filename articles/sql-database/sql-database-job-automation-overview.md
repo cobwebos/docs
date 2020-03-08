@@ -11,11 +11,11 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 02/07/2020
 ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083121"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382322"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>使用数据库作业自动完成管理任务
 
