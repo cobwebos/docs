@@ -124,7 +124,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![预配期间的域服务状态](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-4. 托管域完全预配之后，“概览”  选项卡会将域状态显示为“正在运行”  。
+5. 托管域完全预配之后，“概览” 选项卡会将域状态显示为“正在运行” 。
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
