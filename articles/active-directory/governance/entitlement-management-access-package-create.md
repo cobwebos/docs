@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120481"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376739"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 

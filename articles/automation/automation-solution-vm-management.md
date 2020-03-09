@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 02/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616047"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373151"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -213,7 +213,7 @@ ms.locfileid: "77616047"
 
 所有父 Runbook 都包含 _WhatIf_ 参数。 设置为 **True** 时，_WhatIf_ 支持详细说明在无 _WhatIf_ 参数的情况下运行时 Runbook 的确切行为，并验证是否以正确 VM 为目标。 仅当 _WhatIf_ 参数设置为 **False** 时，Runbook 才执行其定义的操作。
 
-|Runbook | parameters | 说明|
+|Runbook | 参数 | 说明|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|

@@ -13,11 +13,11 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820730"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360092"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -25,7 +25,7 @@ Azure SQL 数据库是一种通用的关系数据库，作为托管服务提供�
 
 它基于[Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)的最新稳定版本。 您可以使用高级查询处理功能，如[高性能内存中技术](sql-database-in-memory.md)和[智能查询处理](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)。 事实上，SQL Server 的最新功能首先发布到 SQL 数据库，然后 SQL Server 本身。 你可获得最新的 SQL Server 功能，无开销用于修补或升级，并可跨数百万个数据库进行测试。 
 
-使用 SQL 数据库可在两个不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库是一项完全托管的服务，它具有内置的高可用性、备份和其他常见维护操作。 Microsoft 处理 SQL 和操作系统代码的所有修补和更新。 无需管理基础结构。
+使用 SQL 数据库，您可以在两种不同的购买模型中轻松定义和缩放性能：[基于 vCore 的购买](sql-database-service-tiers-vcore.md)模型和[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)。 SQL 数据库是一项完全托管的服务，它具有内置的高可用性、备份和其他常见维护操作。 Microsoft 处理 SQL 和操作系统代码的所有修补和更新。 无需管理基础结构。
 
 > [!NOTE]
 > 有关相关术语及其定义，请参阅[SQL 数据库术语术语表](sql-database-glossary-terms.md)。
@@ -38,7 +38,7 @@ Azure SQL 数据库提供下述适用于 Azure SQL 数据库的部署选项：
 
 - [单个数据库](sql-database-single-database.md)表示完全托管的独立数据库。 如果需要使用单个可靠数据源的新式云应用程序和微服务，可以使用此选项。 单个数据库与[Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)中的[包含数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json)类似。
 - [托管实例](sql-database-managed-instance.md)是[Microsoft SQL Server 数据库引擎](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)的完全托管的实例。 它包含一组可一起使用的数据库。 使用此选项可以轻松地将本地 SQL Server 数据库迁移到 Azure 云，以及需要使用 SQL Server 数据库引擎提供的数据库功能的应用程序。
-- [弹性池](sql-database-elastic-pool.md)是具有一组共享资源（如 CPU 或内存）的[单一数据库](sql-database-single-database.md)的集合。 单一数据库可以移入或移出弹性池。
+- [弹性池](sql-database-elastic-pool.md)是具有一组共享资源（如 CPU 或内存）的[单一数据库](sql-database-single-database.md)的集合。 可以将单一数据库移入或移出弹性池。
 
 > [!IMPORTANT]
 > 若要了解 SQL 数据库和 SQL Server 之间的功能差异，以及不同的 Azure SQL 数据库部署选项之间的差异，请参阅[Sql 数据库功能](sql-database-features.md)。
@@ -48,7 +48,7 @@ SQL 数据库可提供多种资源类型、服务层和计算大小的可预测�
 ## <a name="scalable-performance-and-pools"></a>可缩放的性能和池
 
 你可以定义分配的资源量。 
-- 对于单一数据库，每个数据库都与其他数据库隔离，并且是可移植的。 每个都有其自己的有保证的计算、内存和存储资源量。 分配给数据库的资源量专用于该数据库，不与 Azure 中的其他数据库共享。 可以动态[缩放单个数据库资源](sql-database-single-database-scale.md)。 单个数据库选项提供不同的计算、内存和存储资源来满足不同的需求。 例如，可以获得1到80的 Vcore 或 32 GB 到 4 TB。 借助单一数据库的[“超大规模”服务层级](sql-database-service-tier-hyperscale.md)，可以通过快速备份和还原功能扩展到 100TB。
+- 对于单一数据库，每个数据库都与其他数据库隔离，并且是可移植的。 每个都有其自己的有保证的计算、内存和存储资源量。 分配给数据库的资源量专用于该数据库，不与 Azure 中的其他数据库共享。 可以动态[缩放单个数据库资源](sql-database-single-database-scale.md)。 单个数据库选项提供不同的计算、内存和存储资源来满足不同的需求。 例如，可以获得1到80的 Vcore 或 32 GB 到 4 TB。 利用单一数据库的[超大规模服务层](sql-database-service-tier-hyperscale.md)，可以通过快速备份和还原功能扩展到 100 TB。
 - 使用弹性池，可以分配池中所有数据库共享的资源。 可以创建新的数据库，也可以将现有的单一数据库移到资源池中，以最大限度地利用资源和节省资金。 此选项还使你能够动态[缩放弹性池资源](sql-database-elastic-pool-scale.md)。
 - 使用托管实例，每个托管实例都与其他实例隔离开来，并包含有保证的资源。 在托管实例中，实例数据库共享一组资源。 可以动态[缩放托管实例资源](sql-database-managed-instance-resource-limits.md)。
 
@@ -59,14 +59,14 @@ SQL 数据库可提供多种资源类型、服务层和计算大小的可预测�
 ### <a name="purchasing-models"></a>购买模型
 
 SQL 数据库提供以下购买模型：
-- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vCore 数、内存容量，以及存储的容量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅本文后面的 "常见问题解答" 一节。
+- [基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)允许选择 vcore 数、内存量以及存储量和速度。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。 有关 Azure 混合权益的详细信息，请参阅本文后面的 "常见问题解答" 一节。
 - [基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)在三个服务层中提供计算、内存和 i/o 资源的混合，以支持轻型到重型数据库工作负荷。 每个层级中的不同计算大小提供这些资源的不同组合，你可以向其添加更多的存储资源。
 - [无服务器模型](sql-database-serverless.md)根据工作负荷需求自动缩放计算，并根据每秒使用的计算量来计费。 当只对存储计费时，无服务器计算层还会在非活动期间自动暂停数据库，并在活动返回时自动恢复数据库。
 
 ### <a name="service-tiers"></a>服务层
 
-Azure SQL 数据库提供了三个专为不同类型的应用程序设计的服务层级：
-- [常规用途/标准](sql-database-service-tier-general-purpose.md)服务层级设计用于常见工作负荷。 它提供面向预算的平衡计算和存储选项。
+Azure SQL 数据库提供三个为不同类型的应用程序设计的服务层：
+- 为常见工作负荷设计的[常规用途/标准](sql-database-service-tier-general-purpose.md)服务层。 它提供面向预算的平衡计算和存储选项。
 - 为 OLTP 应用程序设计的、具有高事务速率和最低延迟 i/o 的[业务关键/高级](sql-database-service-tier-business-critical.md)服务层。 它通过使用多个独立副本提供故障的最高复原能力。
 - 为非常大的 OLTP 数据库设计的[超大规模](sql-database-service-tier-hyperscale.md)服务层，以及自动缩放存储和缩放计算流畅地的功能。 
 
@@ -111,7 +111,7 @@ Azure 提供[内置的性能监视](sql-database-performance.md)和[警报](sql-
 
 灾难恢复假设灾难性事件的地理位置本地化足以使另一台计算机或一组计算机的副本远远离数据。 在 SQL Server 中，可以使用在异步模式下运行 Always On 可用性组来获取此功能。 在提交事务之前，人们通常不希望等待复制完成，因此在进行计划外故障转移时，可能会丢失数据。
 
-高级和业务关键服务层级中的数据库的某些功能已经与可用性组的同步功能[非常类似](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)。 更低的服务层中的数据库通过使用不同的[等效机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)，通过存储提供冗余。 内置逻辑有助于防止单个计算机出现故障。 使用活动异地复制功能可以在灾难损毁整个区域时提供保护。
+高级和业务关键服务层中的数据库已经[执行了类似](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)于可用性组同步的操作。 更低的服务层中的数据库通过使用不同的[等效机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)，通过存储提供冗余。 内置逻辑有助于防止单个计算机出现故障。 活动异地复制功能使你能够防止在整个区域被破坏的情况下发生灾难。
 
 Azure 可用性区域尝试防止在单个区域内生成单个数据中心的服务中断。 它有助于防止网络丢失或网络丢失。 在 SQL 数据库中，您可以将不同的副本放在不同的可用性区域（而不是不同的建筑物）中。
 
@@ -144,9 +144,9 @@ Azure 可用性区域尝试防止在单个区域内生成单个数据中心的�
 
 SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库了解数据库模式，并使你能够将数据库架构调整为工作负荷。 SQL 数据库[提供性能优化建议](sql-database-advisor.md)，可在其中查看并应用优化操作。
 
-然而，持续监视数据库是一项艰巨且乏味的任务，尤其是在处理多个数据库时。 [智能见解](sql-database-intelligent-insights.md)可以通过大规模地自动监视 SQL 数据库性能来执行此作业。 它会告知性能下降问题，确定每个问题的根本原因，并在可能的情况下提供性能改进建议。
+然而，持续监视数据库是一种很繁琐的任务，尤其是在处理多个数据库时。 [智能见解](sql-database-intelligent-insights.md)可以通过大规模地自动监视 SQL 数据库性能来执行此作业。 它会告知性能下降问题，确定每个问题的根本原因，并在可能的情况下提供性能改进建议。
 
-即使使用 SQL 数据库和 Azure 提供的所有可用工具和报表，也可能无法高效管理大量数据库。 您可以考虑使用[自动优化](sql-database-automatic-tuning.md)将某些监视和优化操作委派给 SQL 数据库，而不是手动监视和优化数据库。 SQL 数据库自动应用建议、测试，并验证每个优化操作，确保性能持续提升。 这样一来，SQL 数据库将以受控且安全的方式自动适应工作负荷。 自动优化是指在每次优化操作前后仔细监视和比较数据库性能。 如果性能不能提高，则会恢复优化操作。
+即使使用 SQL 数据库和 Azure 提供的所有可用工具和报表，也可能无法高效管理大量数据库。 您可以考虑使用[自动优化](sql-database-automatic-tuning.md)将某些监视和优化操作委派给 SQL 数据库，而不是手动监视和优化数据库。 SQL 数据库自动应用建议、测试，并验证每个优化操作，确保性能持续提高。 这样一来，SQL 数据库将以受控且安全的方式自动适应工作负荷。 自动优化是指在每次优化操作前后仔细监视和比较数据库性能。 如果性能不能提高，则会恢复优化操作。
 
 在 SQL 数据库之上运行[SaaS 多租户应用](sql-database-design-patterns-multi-tenancy-saas-applications.md)的许多合作伙伴都依赖于自动性能优化，确保其应用程序始终具有稳定且可预测的性能。 对他们而言，此功能可大大降低午夜出现性能事故的风险。 此外，由于部分客户群也使用 SQL Server，因此他们使用 SQL 数据库提供的相同索引建议来帮助其 SQL Server 客户。
 
@@ -168,7 +168,7 @@ SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-sec
 
 ### <a name="advance-threat-protection"></a>高级威胁防护
 
-高级数据安全是高级 SQL 安全功能的统一程序包。 它包括用于发现和分类敏感数据、管理数据库漏洞以及检测可能指示数据库威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个位置。
+高级数据安全是高级 SQL 安全功能的统一包。 它包括用于发现和分类敏感数据、管理数据库漏洞以及检测可能指示数据库威胁的异常活动的功能。 它提供用于启用和管理这些功能的一个位置。
 
 - [数据发现和分类](sql-database-data-discovery-and-classification.md)：
 
@@ -221,7 +221,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>能否控制修补停机的时间？
 
-不能。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关详细信息，请参阅[在 AZURE SQL 数据库中规划 azure 维护事件](sql-database-planned-maintenance.md)。
+No。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关详细信息，请参阅[在 AZURE SQL 数据库中规划 azure 维护事件](sql-database-planned-maintenance.md)。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure 混合权益问题
 
@@ -242,7 +242,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 SQL 数据库客户具有与 SQL Server 的 Azure 混合权益关联的以下权限：
 
-|许可证占用情况|SQL Server 的 Azure 混合权益是什么？|
+|许可证占用|SQL Server 的 Azure 混合权益是什么？|
 |---|---|
 |具有 SA 的 SQL Server Enterprise Edition 核心客户|<li>可以支付常规用途或业务关键 SKU 的基础费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 4 个核心</li><br><li>1 个本地核心 =“业务关键”SKU 中的 1 个核心</li>|
 |具有 SA 的 SQL Server Standard Edition 核心客户|<li>只能支付常规用途 SKU 的基本费率</li><br><li>1 个本地核心 =“常规用途”SKU 中的 1 个核心</li>|

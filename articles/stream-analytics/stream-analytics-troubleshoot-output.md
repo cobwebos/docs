@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980255"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364543"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure 流分析输出的故障排除
 

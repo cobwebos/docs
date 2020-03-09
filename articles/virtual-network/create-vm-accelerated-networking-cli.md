@@ -17,11 +17,11 @@ ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
 ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793322"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363483"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 创建具有加速网络的 Linux 虚拟机
 
@@ -35,13 +35,13 @@ ms.locfileid: "74793322"
 
 加速网络的优势仅适用于已启用该功能的 VM。 为获得最佳效果，最好是在连接到同一个 Azure 虚拟网络 (VNet) 的最少两个 VM 上启用此功能。 跨 VNet 通信或者在本地连接时，此功能对总体延迟的影响极小。
 
-## <a name="benefits"></a>优势
+## <a name="benefits"></a>优点
 * **更低的延迟/更高的每秒数据包数 (pps)：** 从数据路径中去除虚拟交换机可以消除数据包在主机中进行策略处理所花费的时间，同时增大了 VM 中可处理的数据包数。
 * **减少抖动：** 虚拟交换机处理取决于需要应用的策略数量，以及正在执行处理的 CPU 工作负荷。 将策略实施卸载到硬件消除了这种可变性，因为可以将数据包直接传送到 VM，省去了主机与 VM 之间的通信，以及所有的软件中断和上下文切换。
 * **降低了 CPU 利用率：** 绕过主机中的虚拟交换机可以减少用于处理网络流量的 CPU 资源。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
-Azure 库现成支持以下分发版本： 
+从 Azure 库即可支持以下分发： 
 * **带有 linux 的 Ubuntu 14.04-azure 内核**
 * **Ubuntu 16.04 或更高版本** 
 * **SLES12 SP3 或更高版本** 
@@ -192,7 +192,7 @@ az vm create \
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>确认已启用加速网络
 
-使用以下命令来与 VM 建立 SSH 会话。 将 `<your-public-ip-address>` 替换为分配给所创建虚拟机的公共 IP 地址，并替换 azureuser（如果在创建 VM 时使用了 `--admin-username` 以外的值）。
+使用以下命令来与 VM 建立 SSH 会话。 将 `<your-public-ip-address>` 替换为分配给所创建虚拟机的公共 IP 地址，并替换 azureuser（如果在创建 VM 时使用了  *以外的值）。* `--admin-username`
 
 ```bash
 ssh azureuser@<your-public-ip-address>

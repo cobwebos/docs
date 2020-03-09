@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438828"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385350"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -42,16 +42,16 @@ ms.locfileid: "75438828"
 > - 无法使用自定义活动中的数据管理网关来访问本地数据源。 目前，[数据管理网关](data-factory-data-management-gateway.md)仅支持数据工厂中的复制活动和存储过程活动。
 
 ## <a name="walkthrough-create-a-custom-activity"></a>演练：创建自定义活动
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>先决条件
 * Visual Studio 2012/2013/2015/2017
 * 下载并安装 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch 先决条件
 在本演练中，将 Azure Batch 用作计算资源运行自定义 .NET 活动。 **Azure Batch**是一个平台服务，适用于在云中有效运行大规模并行和高性能计算 (HPC) 应用程序。 Azure Batch 可以计划要在托管的**虚拟机集合**上运行的计算密集型工作，并且可以缩放计算资源，使之符合作业的需求。 有关 Azure Batch 服务的详细概述，请参阅[Azure Batch 基础知识][batch-technical-overview]。
 
-本教程会创建一个包含 VM 池的 Azure Batch 帐户。 下面是相关步骤：
+本教程会创建一个包含 VM 池的 Azure Batch 帐户。 以下是具体步骤：
 
-1. 使用 [Azure 门户](https://portal.azure.com)创建 **Azure Batch 帐户**。 有关说明，请参阅[创建和管理 Azure Batch 帐户一][batch-create-account]文。
+1. 使用 **Azure 门户**创建 [Azure Batch 帐户](https://portal.azure.com)。 有关说明，请参阅[创建和管理 Azure Batch 帐户一][batch-create-account]文。
 2. 记下 Azure Batch 帐户名称、帐户密钥、URI 和池名称。 随后需要使用这些信息来创建 Azure Batch 链接服务。
     1. 在 Azure Batch 帐户的主页上，可以看到采用以下格式的 **URL**：`https://myaccount.westus.batch.azure.com`。 在本示例中，**myaccount** 是 Azure Batch 帐户的名称。 在链接服务定义中使用的 URI 是不带帐户名称的 URL。 例如：`https://<region>.batch.azure.com`。
     2. 在左侧菜单中单击“密钥”并复制“主访问密钥”。
@@ -105,7 +105,7 @@ public IDictionary<string, string> Execute(
      <li>从右侧项目类型列表中选择“类库”<b></b>。 在 Visual Studio 中，选择 "<b>类库（.NET Framework）</b> " </li>
      <li>对于“名称”<b></b>，输入 <b>MyDotNetActivity</b>。</li>
      <li>对于“位置”<b></b>，选择“C:\ADFGetStarted”<b></b>。</li>
-     <li>单击“确定”以创建该项目 <b></b> 。</li>
+     <li>单击“确定”<b></b>以创建项目。</li>
    </ol>
 
 2. 单击“工具”，指向“NuGet 包管理器”，并单击“包管理器控制台”。
@@ -372,7 +372,7 @@ public IDictionary<string, string> Execute(
     > 将 4.5.2 版本的 .NET Framework 作为项目的目标框架：右键单击项目，然后单击“属性”设置目标框架。 数据工厂不支持针对低于 4.5.2 的 .NET Framework 版本编译的自定义活动。
 
 11. 启动 **Windows 资源管理器**，并根据版本类型导航到 **bin\debug** 或 **bin\release** 文件夹。
-12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 \<project folder\>\bin\Debug 文件夹中的所有二进制文件。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
+12. 创建 zip 文件“MyDotNetActivity.zip”，其中包含 **project folder**\bin\Debug 文件夹中的所有二进制文件\<\>。 包含 **MyDotNetActivity.pdb** 文件以便获取其他详细信息，例如出现故障时引发问题的源代码中的行号。
 
     > [!IMPORTANT]
     > 在 zip 文件中，用于自定义活动的所有文件必须在不包含任何子文件夹的**顶级**目录中。
@@ -549,7 +549,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    | 切片 | 开始时间 | 输出文件 |
    |:--- |:--- |:--- |
-   | 第 |2016-11-16T00:00:00 |2016-11-16-00.txt |
+   | 1 |2016-11-16T00:00:00 |2016-11-16-00.txt |
    | 2 |2016-11-16T01:00:00 |2016-11-16-01.txt |
    | 3 |2016-11-16T02:00:00 |2016-11-16-02.txt |
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
@@ -712,7 +712,7 @@ test custom activity Microsoft test custom activity Microsoft
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
-    生成项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
+    生成此项目。 从 bin\Debug 文件夹中删除 4.3.0 版本以上的 Azure.Storage 程序集。 创建包含二进制代码的 zip 文件和 PDB 文件。 使用 blob 容器 (customactivitycontainer) 中的此文件替换旧的 zip 文件。 重新运行失败的切片（右击切片，并单击“运行”）。
 8. 自定义活动不使用包中的 **app.config** 文件。 因此，如果代码从配置文件读取任何连接字符串，其在运行时无效。 使用 Azure Batch 时的最佳做法是在 **Azure KeyVault** 中保存所有机密，使用基于证书的服务主体来保护 **keyvault**，并将该证书分发到 Azure Batch 池。 然后，.NET 自定义活动可以在运行时从 KeyVault 访问机密。 该解决方案是一种通用解决方法，可以延伸到任何类型的机密，而不仅仅是连接字符串。
 
    有一个更容易的解决方法（但非最佳做法）：可通过连接字符串设置创建 **Azure SQL 链接服务**，再创建使用该链接服务的数据集，并将作为虚拟输入数据集的数据集链接到自定义 .NET 活动。 然后，可访问自定义活动代码中的链接服务连接字符串。
