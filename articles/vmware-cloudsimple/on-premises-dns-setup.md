@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解决方案（AVS）-配置适用于 AVS 私有云的 DNS
-description: 描述如何设置 DNS 名称解析，以便从本地工作站访问 AVS 私有云上的 vCenter 服务器
+title: Azure VMware 解决方案（按 CloudSimple）-为 CloudSimple 私有云配置 DNS
+description: 描述如何设置 DNS 名称解析，以便从本地工作站访问 CloudSimple 私有云上的 vCenter 服务器
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -8,26 +8,26 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12c4362ae1b075af132d5971f4fe0461c9d91733
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364405"
 ---
-# <a name="configure-dns-for-name-resolution-for-avs-private-cloud-vcenter-access-from-on-premises-workstations"></a>为来自本地工作站的 AVS 私有云 vCenter 访问配置 DNS 进行名称解析
+# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>为本地工作站的私有云 vCenter 访问配置 DNS 进行名称解析
 
-若要从本地工作站访问 AVS 私有云上的 vCenter 服务器，你必须配置 DNS 地址解析，以便可以通过主机名和 IP 地址来寻址 vCenter 服务器。
+若要从本地工作站访问 CloudSimple 私有云上的 vCenter 服务器，你必须配置 DNS 地址解析，以便可以通过主机名和 IP 地址来寻址 vCenter 服务器。
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-avs-private-cloud"></a>获取你的 AVS 私有云的 DNS 服务器的 IP 地址
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>获取私有云的 DNS 服务器的 IP 地址
 
-1. 登录到[AVS 门户](access-cloudsimple-portal.md)。
+1. 登录到[CloudSimple 门户](access-cloudsimple-portal.md)。
 
-2. 导航到 "**资源** > **avs 私有**云"，然后选择要连接到的 AVS 私有云。
+2. 导航到 "**资源** > "**私有云**"，然后选择要连接到的私有云。
 
-3. 在 AVS 私有云的 "**摘要**" 页上的 "**基本信息**" 下，复制 avs 私有云 DNS 服务器 IP 地址。
+3. 在私有云的 "**摘要**" 页的 "**基本信息**" 下，复制私有云 DNS 服务器 IP 地址。
 
-    ![AVS 私有云 DNS 服务器](media/private-cloud-dns-server.png)
+    ![私有云 DNS 服务器](media/private-cloud-dns-server.png)
 
 
 使用这些选项中的任一选项进行 DNS 配置。
@@ -71,14 +71,14 @@ zone "az.cloudsimple.io"
 5. 输入区域名称，并单击 "**下一步**"。
 
     ![新建区域](media/DNS05.png)
-6. 输入你从 AVS 门户获取的你的 AVS 私有云的 DNS 服务器的 IP 地址。
+6. 输入你的私有云的 DNS 服务器的 IP 地址，该服务器是从 CloudSimple 门户获取的。
 
     ![新建区域](media/DNS06.png)
 7. 根据需要单击 "**下一步**" 以完成向导设置。
 
 ## <a name="create-a-conditional-forwarder"></a>创建条件转发器
 
-条件转发器将所有 DNS 名称解析请求转发到指定的服务器。 在此设置中，对 *. cloudsimple.io 的任何请求都将转发到 AVS 私有云上的 DNS 服务器。 下面的示例演示如何在不同类型的 DNS 服务器上设置转发器。
+条件转发器将所有 DNS 名称解析请求转发到指定的服务器。 在此设置中，对 *. cloudsimple.io 的任何请求都将转发到位于私有云上的 DNS 服务器。 下面的示例演示如何在不同类型的 DNS 服务器上设置转发器。
 
 ### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>在绑定 DNS 服务器上创建条件转发器
 
@@ -99,4 +99,4 @@ zone "az.cloudsimple.io" {
 2. 右键单击 "**条件转发器**"，然后选择用于添加新条件转发器的选项。
 
     ![条件转发器 1 Windows DNS](media/DNS08.png)
-3. 在 AVS 私有云中输入 dns 域和 DNS 服务器的 IP 地址，然后单击 **"确定"** 。
+3. 在私有云中输入 dns 域和 DNS 服务器的 IP 地址，然后单击 **"确定"** 。

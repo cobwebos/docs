@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498234"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382123"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>将基于 Windows 的 HDInsight 的 .NET 解决方案迁移到基于 Linux 的 HDInsight
 

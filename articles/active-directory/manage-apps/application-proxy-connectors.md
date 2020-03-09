@@ -13,11 +13,11 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997031"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375698"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -86,7 +86,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关连接器组的详细信息，请参阅[使用连接器组在单独的网络和位置上发布应用程序](application-proxy-connector-groups.md)。
 
-## <a name="capacity-planning"></a>容量规则
+## <a name="capacity-planning"></a>容量计划
 
 请务必确保已在连接器之间规划足够的容量以处理预期的流量。 建议每个连接器组至少有两个连接器，以提供高可用性和规模。 如果在任何时候都需要为计算机服务，则具有三个连接器是最佳的。
 
@@ -114,7 +114,7 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 
 有关配置出站防火墙规则的详细信息，请参阅[使用现有的本地代理服务器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
-## <a name="performance-and-scalability"></a>性能和可扩展性
+## <a name="performance-and-scalability"></a>性能和缩放性
 
 应用程序代理服务的规模是透明的，但对于连接器而言，规模是一种可变因素。 需要提供足够的连接器才能处理高峰流量。 由于连接器是无状态的，它们不受用户或会话数目影响。 而会对请求的数目及其有效负载大小进行响应。 使用标准 Web 流量，一台普通的计算机每秒就能处理几千个请求。 具体能够处理多少，取决于确切的计算机特征。
 

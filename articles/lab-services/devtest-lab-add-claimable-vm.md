@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383954"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390961"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建和管理可认领 VM
-使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为*自定义映像*、[公式](devtest-lab-create-template.md)或[市场映像](devtest-lab-manage-formulas.md)的“基”添加[](devtest-lab-configure-marketplace-images.md)。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
+使用与[添加标准 VM](devtest-lab-add-vm.md) 类似的方式向实验室添加可认领 VM：通过作为[自定义映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或[市场映像](devtest-lab-configure-marketplace-images.md)的“基”添加。 本教程指导你使用 Azure 门户向开发测试实验室中的实验室添加可认领 VM，并展示了认领和取消认领 VM 时需遵循的过程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>向 Azure 开发测试实验室中的实验室添加可认领 VM 的步骤
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 选择“所有服务”，然后在“DEVOPS”部分中选择“开发测试实验室”。 如果在“DEVOPS”部分中选择了“开发测试实验室”旁边的 *（星号）， 此操作会将“开发测试实验室”添加到左侧导航菜单中，以便你下次可以轻松访问它。 然后，可以在左侧导航菜单中选择“开发测试实验室”。
 
     ![所有服务 - 选择“开发测试实验室”](./media/devtest-lab-create-lab/all-services-select.png)
@@ -37,7 +37,7 @@ ms.locfileid: "74383954"
 1. 在“虚拟机”页面的“基本设置”选项卡上，执行以下操作：
     1. 在“虚拟机名称”文本框中，输入 VM 的名称。 该文本框会使用唯一的自动生成名称进行预填充。 该名称对应于电子邮件地址中的用户名，后接一个唯一的 3 位数字。 此功能可节省每次创建计算机时考虑计算机名称和键入该名称的时间。 如果愿意，可以用自己选择的名称替代此自动填充的字段。 若要替代 VM 的自动填充名称，请在“虚拟机名称”文本框中输入名称。
     2. 输入在虚拟机上被授予了管理员权限的**用户名**。 使用唯一的自动生成名称预先填充计算机的“用户名”。 该名称对应于电子邮件地址中的用户名。 此功能可节省每次创建新计算机时确定用户名的时间。 同样，如果愿意，可以用自己选择的用户名替代此自动填充的字段。 若要替代用户名的自动填充值，请在“用户名”文本框中输入值。 此用户在虚拟机上被授予了管理员权限。
-    3. 如果要在实验室中创建第一个 VM，请输入用户的密码。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”。 默认密码保存在名为“VmPassword”的密钥保管库中。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码。
+    3. 如果要在实验室中创建第一个 VM，请输入用户的密码。 若要将此密码保存为与实验室关联的 Azure Key Vault 中的默认密码，请选择“另存为默认密码”。 默认密码保存在名为**VmPassword** 的密钥保管库中。 尝试在实验室中创建后续 VM 时，会自动选择“VmPassword”作为密码。 若要替代该值，请清除“使用已保存的机密”复选框，然后输入密码。
 
         还可以先在密钥保管库中保存机密，然后在实验室中创建 VM 时使用它。 有关详细信息，请参阅[在密钥保管库中存储机密](devtest-lab-store-secrets-in-key-vault.md)。 若要使用在密钥保管库中存储的密码，请选择“使用已保存的机密”，并指定与机密（密码）对应的密钥值。
     4. 在“更多选项”部分中，选择“更改大小”。 选择指定了要创建的 VM 的处理器内核、RAM 大小和硬盘驱动器大小的预定义项之一。
@@ -52,7 +52,7 @@ ms.locfileid: "74383954"
     6. 指定想要使其可供实验室用户使用的 **VM 实例**数量。
 3. 选择“创建”将指定的 VM 添加到实验室。
 
-   实验室页将显示 VM 的创建状态 - 先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
+   实验室页面将显示 VM 的创建状态 - 先是显示为“正在创建”，然后在 VM 启动后显示为“正在运行”。
 
 > [!NOTE]
 > 如果通过  [Azure 资源管理器模板](devtest-lab-create-environment-from-arm.md)部署实验室 VM，则可通过将属性部分中的 **allowClaim** 属性设置为 true 来创建可声明的 VM。

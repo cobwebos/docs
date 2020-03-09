@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
-ms.translationtype: HT
+ms.openlocfilehash: 93e5ee9b46fb3387b70dd5092f72efcaa8a2bc19
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77612568"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668603"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教程：在混合环境的 Azure Active Directory 域服务中启用密码同步
 
@@ -32,7 +32,7 @@ ms.locfileid: "77612568"
 
 如果你没有 Azure 订阅，可以在开始之前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，需要以下各资源：
 
@@ -59,16 +59,16 @@ ms.locfileid: "77612568"
 
 安装 Azure AD Connect 并将其配置为与 Azure AD 同步后，接下来请配置 NTLM 和 Kerberos 的旧密码哈希同步。 可以使用一个 PowerShell 脚本来配置所需的设置，然后启动与 Azure AD 的完全密码同步。 Azure AD Connect 密码哈希同步过程完成后，用户可以通过 Azure AD DS 登录到使用旧 NTLM 或 Kerberos 密码哈希的应用程序。
 
-1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。 
-1. 选择“连接器”选项卡。  此时会列出用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
+1. 在安装了 Azure AD Connect 的计算机上，通过“开始”菜单打开“Azure AD Connect”>“同步服务”。
+1. 选择 "**连接器**" 选项卡。列出了用于在本地 AD DS 环境与 Azure AD 之间建立同步的连接信息。
 
-    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。    请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
+    “类型”中会列出“Windows Azure Active Directory (Microsoft)”（适用于 Azure AD 连接器）或“Active Directory 域服务”（适用于本地 AD DS 连接器）。 请记下连接器名称，以便在下一步骤所述的 PowerShell 脚本中使用。
 
     ![在同步服务管理器中列出连接器名称](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
     此示例屏幕截图中使用了以下连接器：
 
-    * Azure AD 连接器名为“aaddscontoso.onmicrosoft.com - AAD” 
+    * Azure AD 连接器的名称为*aaddscontoso.onmicrosoft.com-AAD*
     * 本地 AD DS 连接器名为 *onprem.contoso.com*
 
 1. 将以下 PowerShell 脚本复制并粘贴到安装了 Azure AD Connect 的计算机上。 该脚本触发完全密码同步（包括旧密码哈希）。 使用上一步骤中的连接器名称更新 `$azureadConnector` 和 `$adConnector` 变量。
@@ -79,6 +79,8 @@ ms.locfileid: "77612568"
     # Define the Azure AD Connect connector names and import the required PowerShell module
     $azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"
     $adConnector = "<CASE SENSITIVE AD DS CONNECTOR NAME>"
+    
+    Import-Module "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync\ADSync.psd1"
     Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
 
     # Create a new ForceFullPasswordSync configuration parameter object then

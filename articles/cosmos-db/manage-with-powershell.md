@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 978f37d08275de704dd01c0251dde42665fca552
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882109"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364428"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos DB SQL API 资源
 
@@ -323,7 +323,7 @@ Set-AzResource -ResourceType $resourceType `
 对于以下示例，假定当前的故障转移优先级为 `West US 2 = 0`、`East US 2 = 1`、`South Central US = 2`。
 
 > [!CAUTION]
-> 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他的优先级更改不会触发故障转移。
+> 在 `locationName` 的情况下更改 `failoverPriority=0` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他的优先级更改不会触发故障转移。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
@@ -354,7 +354,7 @@ Invoke-AzResourceAction -Action failoverPriorityChange `
 在下面的示例中，假设帐户的当前故障转移优先级为 `West US 2 = 0` 和 `East US 2 = 1`，然后将区域互换。
 
 > [!CAUTION]
-> 在 `failoverPriority=0` 的情况下更改 `locationName` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他优先级更改都不会触发故障转移。
+> 在 `locationName` 的情况下更改 `failoverPriority=0` 会触发 Azure Cosmos 帐户的手动故障转移。 任何其他优先级更改都不会触发故障转移。
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account

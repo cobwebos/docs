@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ms.openlocfilehash: ca223de2bc0b26e4968d400ea418761a399dacae
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462351"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364592"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database 机器学习服务 R （预览版）
 
@@ -38,12 +38,12 @@ ms.locfileid: "74462351"
 
 ### <a name="r-packages"></a>R 包
 
-大多数常见的开源 R 包都预安装在机器学习服务中。 此外还包括 Microsoft 提供的下述 R 包：
+大多数常见的开源 R 包都预安装在机器学习服务中。 还包括 Microsoft 提供的以下 R 包：
 
 | R 程序包 | 说明|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open 是 Microsoft 提供的增强型发行版 R。 它是一个用于统计分析和数据科学的完整开源平台。 它基于 R 且 100% 兼容 R，并且包括其他可以增强性能和可再现性的功能。 |
-| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR 是可缩放 R 的主库。该库中的函数属于使用最广泛的函数。 这些库中包含的函数可用于数据转换和操作、统计汇总、可视化以及许多形式的建模和分析。 此外，这些库中的函数可自动在可用内核之间分配工作负荷以进行并行处理，并且能够处理由计算引擎协调和管理的数据块。 |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open 是 Microsoft 提供的增强型发行版 R。 它是用于统计分析和数据科学的完整开源平台。 它基于 R，并 100% 与 R 兼容，包括很多其他功能，可以带来更高的性能和可再现性。 |
+| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR 是可缩放 R 的主库。该库中的函数属于使用最广泛的函数。 这些库中包含的函数可用于数据转换和操作、统计汇总、可视化以及许多形式的建模和分析。 另外，这些库中的函数可以自动地跨可用核心分发工作负荷，以便对其进行并行分析，并且可以处理由计算引擎协调和管理的大块数据。 |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML 增加了机器学习算法，可以创建进行文本分析、图像分析和情绪分析的自定义模型。 |
 
 除了预安装的包外，还可以[安装其他包](sql-database-machine-learning-services-add-r-packages.md)。

@@ -9,17 +9,17 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
 ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526104"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360594"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux (Ubuntu) 的 Data Science Virtual Machine
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>快速入门：设置适用于 Linux （Ubuntu）的 Data Science Virtual Machine
 
 启动并运行 Ubuntu 18.04 Data Science Virtual Machine。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 要创建 Ubuntu 18.04 Data Science Virtual Machine，必须具备 Azure 订阅。 [免费试用 Azure](https://azure.com/free)。
 请注意，Azure 免费帐户不支持启用 GPU 的虚拟机 SKU。
@@ -31,7 +31,7 @@ ms.locfileid: "77526104"
 1. 转到 [Azure 门户](https://portal.azure.com) 如果你尚未登录到 Azure 帐户，系统可能会提示你登录。
 1. 查找虚拟机列表，方法是：键入“data Science virtual machine”并选择“Data Science Virtual Machine - Ubuntu 18.04 预览版。”
 
-1. 在随后的窗口中，选择“创建”  。
+1. 在随后的窗口中，选择“创建”。
 
 1. 你应该被重定向到“创建虚拟机”边栏选项卡。
    
@@ -39,28 +39,28 @@ ms.locfileid: "77526104"
 
     1. **基本信息**：
     
-       * **订阅**：如果有多个订阅，请选择要在其上创建虚拟机并对其计费的订阅。 必须具有此订阅的资源创建权限。
-       * **资源组**：新建资源组，或使用现有资源组。
+       * **订阅**：如果你有多个订阅，请选择将在其中创建并计费计算机的订阅。 必须具有此订阅的资源创建权限。
+       * **资源组**：创建新组或使用现有组。
        * **虚拟机名称**：输入虚拟机的名称。 这就是它在 Azure 门户中的显示方式。
-       * **区域**：选择最合适的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
-       * **映像**：保留默认值。
-       * **Size**：它应自动填充为适合一般工作负荷的大小。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
-       * **身份验证类型**：为了更快地设置，请选择“密码”。 
+       * **区域**：选择最适合的数据中心。 为获得最快的网络访问速度，请选择包含大部分数据，或者最接近实际位置的数据中心。 详细了解 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。
+       * **Image**：保留默认值。
+       * **大小**：应使用适用于常规工作负荷的大小自动填充。 详细了解 [Azure 中的 Linux VM 大小](../../virtual-machines/linux/sizes.md)。
+       * **身份验证类型**：若要快速设置，请选择 "密码"。 
          
          > [!NOTE]
-         > 如果打算使用 JupyterHub，请确保选择“密码”，因为 JupyterHub 未  配置为使用 SSH 公钥。
+         > 如果打算使用 JupyterHub，请确保选择“密码”，因为 JupyterHub 未配置为使用 SSH 公钥。
 
        * **用户名**：输入管理员用户名。 这是你将用于登录到虚拟机的用户名，无需与 Azure 用户名相同。 *不要*使用大写字母。
          
          > [!NOTE]
          > 如果在用户名中使用大写字母，JupyterHub 将无法正常工作，并且你将遇到 500 内部服务器错误。
 
-       * **密码**：输入将用于登录到虚拟机的密码。    
+       * **密码**：输入用于登录到虚拟机的密码。    
     
-   1. 选择“查看 + 创建”  。
+   1. 选择“查看 + 创建”。
    1. **查看 + 创建**
       * 验证输入的所有信息是否正确。 
-      * 选择“创建”  。
+      * 选择 **“创建”** 。
     
     预配大约需要 5 分钟。 状态将显示在 Azure 门户中。
 
@@ -94,18 +94,18 @@ Linux VM 已通过 X2Go 服务器进行预配并且可接受客户端连接。 �
 
 1. 在显示的配置窗口中，输入以下配置参数：
    * **会话选项卡**：
-     * **主机**：输入之前记下的 VM 的 IP 地址。
-     * **登录名**：输入 Linux VM 上的用户名。
+     * **主机**：输入你在前面记下的 VM 的 IP 地址。
+     * **登录名**：在 Linux VM 上输入用户名。
      * **SSH 端口**：保留默认值 22。
-     * **会话类型**：将值更改为“XFCE”  。 Linux VM 目前仅支持 XFCE 桌面。
-   * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，可将其关闭。
+     * **会话类型**：将值更改为 **XFCE**。 Linux VM 目前仅支持 XFCE 桌面。
+   * **媒体选项卡**：如果无需使用声音支持和客户端打印功能，则可将其关闭。
    * **共享文件夹**：如果希望将目录从客户端计算机装入 Linux VM，则在此选项卡上添加要与 VM 共享的客户端计算机目录。
 
    ![X2go 配置](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. 选择“确定”  。
+1. 选择“确定”。
 1. 单击 X2Go 窗口右窗格中的框以调出 VM 的登录屏幕。
 1. 输入 VM 的密码。
-1. 选择“确定”  。
+1. 选择“确定”。
 1. 可能必须授予 X2Go 绕过防火墙的权限才能完成连接。
 1. 现在应会看到 Ubuntu DSVM 的图形界面。 
 

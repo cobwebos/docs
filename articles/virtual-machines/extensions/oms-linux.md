@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468773"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372433"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>适用于 Linux 的 Log Analytics 虚拟机扩展
 
@@ -32,7 +32,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、警报和警报修正
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="operating-system"></a>操作系统
 

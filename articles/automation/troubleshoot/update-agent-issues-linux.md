@@ -10,11 +10,11 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769823"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373064"
 ---
 # <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>了解和解决更新管理的 Linux 混合 Runbook 辅助角色运行状况
 
@@ -52,7 +52,7 @@ ms.locfileid: "75769823"
 
 操作系统检查会验证混合 Runbook 辅助角色是否正在运行以下操作系统之一：
 
-|操作系统  |说明  |
+|操作系统  |注意  |
 |---------|---------|
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理必须具有访问更新存储库的权限。 基于分类的修补需要借助“yum”来返回 CentOS 当前没有的安全数据。         |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理必须具有访问更新存储库的权限。        |

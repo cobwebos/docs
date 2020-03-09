@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 634e3532e13fcba5c9b802bd77c9530c0a831eb8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422518"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376529"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 

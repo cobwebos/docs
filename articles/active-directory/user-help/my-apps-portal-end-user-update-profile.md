@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022273"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374728"
 ---
 # <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>更新 "我的应用" 门户中的配置文件和帐户信息
 
@@ -33,7 +33,7 @@ ms.locfileid: "77022273"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> 此内容适用于 **"我的应用"** 用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
+> 此内容适用于“我的应用”用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="view-your-organization-related-profile-information"></a>查看与组织相关的个人资料信息
 

@@ -16,11 +16,11 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025943"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376966"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -57,7 +57,7 @@ ms.locfileid: "74025943"
 
 ![企业移动性 + 安全性许可的用户屏幕截图](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-如果希望用户具有两种许可证，则修改一个用户并将其 extensionAttribute1 值设置为 `EMS;E5_baseservices;`。 可在本地执行此项修改。 将更改与云同步后，该用户将自动添加到这两个组，并获得许可证。
+如果希望用户具有两种许可证，则修改一个用户并将其 extensionAttribute1 值设置为 `EMS;E5_baseservices;`。 可在本地执行此项修改。 将更改与云同步后，该用户会自动添加到这两个组，然后获得了许可证。
 
 ![显示如何设置用户的 extensionAttribute1 的屏幕截图](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "74025943"
 
 用户可能是具有许可证的多个组的成员。 下面是需要注意的事项：
 
-- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务*包含首先向用户部署的基础服务。 *E3 扩展服务*包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
+- 相同产品的多个许可证可能重叠，从而导致向用户应用所有已启用的服务。 以下示例显示了两个许可组：*E3 基本服务*包含首先向所有用户部署的基础服务。 *E3 扩展服务*包含只向某些用户部署的其他服务（Sway 和 Planner）。 在本示例中，用户已添加到两个组：
 
   ![启用的服务的屏幕截图](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -112,7 +112,7 @@ ms.locfileid: "74025943"
 
 3. 转到 [“Azure Active Directory”>“许可证”>“所有产品”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products)边栏选项卡，选择“Office 365 企业版 E5”，然后选择“许可的组”以查看具有该产品的所有组的列表。
 
-4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 这将打开 "**许可证**" 选项卡。单击 E5 许可证将打开一个边栏选项卡，其中列出了所有已启用的服务。
+4. 单击要查看的组（此处为 O365 E5 - Exchange only）。 随后将打开“许可证”选项卡。单击 E5 许可证会打开一个列出所有已启用服务的边栏选项卡。
    > [!NOTE]
    > 除了 Exchange Online服务外，Microsoft Stream服务也已自动添加到此组中并已启用：
 
@@ -134,7 +134,7 @@ ms.locfileid: "74025943"
 
    ![Get-Msolaccountsku cmdlet 的屏幕截图](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
-3. 通过*此 PowerShell 脚本*将 AccountSkuId [](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)值用于感兴趣的许可证。 这会生成具有此许可证的用户列表以及如何分配此许可证的信息。
+3. 通过[此 PowerShell 脚本](licensing-ps-examples.md#check-if-user-license-is-assigned-directly-or-inherited-from-a-group)将 AccountSkuId值用于感兴趣的许可证。 这会生成具有此许可证的用户列表以及如何分配此许可证的信息。
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>使用审核日志来监视基于组的许可活动
 

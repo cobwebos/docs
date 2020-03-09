@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391366"
 ---
 # <a name="replicas-and-instances"></a>副本和实例 
 本文概述了有状态服务副本和无状态服务实例的生命周期。
@@ -37,7 +37,7 @@ ms.locfileid: "75614598"
 在已删除状态下，实例不再在节点上运行。 此时，Service Fabric 维护关于此实例的元数据，该元数据最终也将被删除。
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用  **上的 ForceRemove 选项实现从任意状态到已删除状态的转换**`Remove-ServiceFabricReplica`。
 >
 
 ## <a name="replicas-of-stateful-services"></a>有状态服务的副本
@@ -101,7 +101,7 @@ InBuild 副本是创建或准备加入副本集的副本。 根据副本角色�
 >
 
 > [!NOTE]
-> 可通过使用 `Remove-ServiceFabricReplica` 上的 ForceRemove 选项实现从任意状态到已删除状态的转换。
+> 可通过使用  **上的 ForceRemove 选项实现从任意状态到已删除状态的转换**`Remove-ServiceFabricReplica`。
 >
 
 ## <a name="replica-role"></a>副本角色 

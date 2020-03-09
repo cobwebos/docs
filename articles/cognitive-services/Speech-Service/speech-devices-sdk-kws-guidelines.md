@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
 ms.openlocfilehash: 3c3943f7269fa2d0ed25acf2215549635b5f16ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360706"
 ---
 # <a name="guidelines-for-creating-an-effective-keyword"></a>创建有效关键字的准则
 

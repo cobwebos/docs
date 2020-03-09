@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 08a1ca0c85d69d1a5262f1dcac5d46fb82b1c22b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191786"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385093"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览：创建 Azure 映像生成器模板 
 
@@ -55,7 +55,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>位置
+## <a name="location"></a>Location
 
 该位置是要在其中创建自定义映像的区域。 对于图像生成器预览，支持以下区域：
 
@@ -70,7 +70,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
     "location": "<region>",
 ```
 ## <a name="vmprofile"></a>vmProfile
-默认情况下，映像生成器将使用 "Standard_D1_v2" 生成 VM，你可以重写此设置，例如，如果要为 GPU VM 自定义映像，则需要 GPU VM 大小。 此为可选项。
+默认情况下，映像生成器将使用 "Standard_D1_v2" 生成 VM，你可以重写此设置，例如，如果要为 GPU VM 自定义映像，则需要 GPU VM 大小。 这是可选的。
 
 ```json
  {
@@ -80,7 +80,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-默认情况下，映像生成器不会更改图像的大小，它将使用源图像中的大小。 你可以调整操作系统磁盘的大小（Win 和 Linux），请注意，不要小于操作系统所需的最小所需空间。 这是可选的，值为0表示保留与源映像相同的大小。 此为可选项。
+默认情况下，映像生成器不会更改图像的大小，它将使用源图像中的大小。 你可以调整操作系统磁盘的大小（Win 和 Linux），请注意，不要小于操作系统所需的最小所需空间。 这是可选的，值为0表示保留与源映像相同的大小。 这是可选的。
 
 ```json
  {
@@ -102,7 +102,7 @@ Azure 映像生成器使用 json 文件将信息传递到 Image Builder 服务�
 
 有关详细信息，请参阅[定义资源依赖项](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
 
-## <a name="identity"></a>标识
+## <a name="identity"></a>身份
 默认情况下，图像生成器支持使用脚本，或从多个位置（例如 GitHub 和 Azure 存储）复制文件。 若要使用这些功能，必须可公开访问。
 
 你还可以使用由你定义的 Azure 用户分配的托管标识，以允许映像生成器访问 Azure 存储，前提是该标识已在 Azure 存储帐户中至少授予 "存储 Blob 数据读取器"。 这意味着，无需使存储 blob 可供外部访问，也无需安装 SAS 令牌。

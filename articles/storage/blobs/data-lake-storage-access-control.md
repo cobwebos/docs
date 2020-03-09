@@ -9,11 +9,11 @@ ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026126"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381923"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -60,7 +60,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 |||
 |--------|-----------|
-|Azure 存储资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-explorer.md#managing-access)|
+|Azure 存储空间资源管理器 |[使用 Azure 存储资源管理器管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-explorer.md#managing-access)|
 |.NET |[使用 .NET 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[使用 Java 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-java.md)|
 |Python|[使用 Python 管理 Azure Data Lake Storage Gen2 中的目录、文件和 Acl](data-lake-storage-directory-file-acl-python.md)|
@@ -88,7 +88,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 容器对象上的权限为 "**读取**"、"**写入**" 和 "**执行**"，可用于文件和目录，如下表所示：
 
-|            |    文件     |   目录 |
+|            |    文件     |   Directory |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出目录内容 |
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在目录中创建子项 |
@@ -105,7 +105,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 |--------------|------------|------------------------|
 | 7            | `RWX`        | RWX |
 | 5            | `R-X`        | 读取 + 执行         |
-| 4            | `R--`        | 读取                   |
+| 4            | `R--`        | 读                   |
 | 0            | `---`        | 无权限         |
 
 #### <a name="permissions-inheritance"></a>权限继承
@@ -274,7 +274,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不。 只要启用了分层命名空间（HNS）功能，就会为存储帐户启用通过 Acl 的访问控制。
+No。 只要启用了分层命名空间（HNS）功能，就会为存储帐户启用通过 Acl 的访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 

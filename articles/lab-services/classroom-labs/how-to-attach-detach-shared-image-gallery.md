@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 00dbef7b4453ffcb54020340bde51f55827759a0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190511"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360570"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>在 Azure 实验室服务中附加或分离共享映像库
 教师/实验室管理员可以在 Azure[共享映像库](../../virtual-machines/windows/shared-image-galleries.md)中保存模板 VM 映像，使其可供其他人重复使用。 作为第一步，实验室管理员将现有的共享映像库附加到实验室帐户。 附加共享映像库后，在实验室帐户中创建的实验室可以将映像保存到共享映像库。 其他教师可以从共享图像库中选择此映像，以创建其类的模板。 

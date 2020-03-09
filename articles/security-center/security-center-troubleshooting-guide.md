@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603374"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372994"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure 安全中心故障排除指南
 
@@ -21,7 +21,7 @@ ms.locfileid: "77603374"
 
 安全中心使用 Microsoft Monitoring Agent 来收集和存储数据。 请参阅 [Azure 安全中心平台迁移](security-center-platform-migration.md)，了解详细信息。 本文中的信息表示转换到 Microsoft Monitoring Agent 后的安全中心功能。
 
-## <a name="troubleshooting-guide"></a>故障排除指南
+## <a name="troubleshooting-guide"></a>疑难解答指南
 
 本指南介绍如何排除安全中心的相关问题。
 
@@ -136,7 +136,7 @@ ms.locfileid: "77603374"
 
 可以使用本文中提供的指南来识别一些问题，还可以在安全中心公共 [论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)中查找记录的其他问题。 但是，如果需要进一步故障排除，则可使用 Azure 门户打开新的支持请求，如下所示：
 
-![Microsoft 支持部门](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
+![Microsoft 支持](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
 ## <a name="see-also"></a>另请参阅
 

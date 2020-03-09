@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929223"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387358"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>使用 Azure 数据工厂从 SAP Business Warehouse 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -61,15 +61,15 @@ ms.locfileid: "74929223"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供了 SAP Business Warehouse (BW) 链接服务专属 JSON 元素的说明。
 
-properties | 描述 | 允许的值 | 需要
+属性 | 说明 | 允许的值 | 必需
 -------- | ----------- | -------------- | --------
-服务器 | SAP BW 实例所驻留的服务器的名称。 | 字符串 | 是
+server | SAP BW 实例所驻留的服务器的名称。 | string | 是
 systemNumber | SAP BW 系统的系统编号。 | 用字符串表示的两位十进制数。 | 是
 clientId | SAP W 系统中的客户端的客户端 ID。 | 用字符串表示的三位十进制数。 | 是
-username | 有权访问 SAP 服务器的用户名 | 字符串 | 是
-password | 用户密码。 | 字符串 | 是
-gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | 字符串 | 是
-encryptedCredential | 加密的凭据字符串。 | 字符串 | No
+username | 有权访问 SAP 服务器的用户名 | string | 是
+password | 用户密码。 | string | 是
+gatewayName | 网关的名称，数据工厂服务应使用此网关连接到本地 SAP BW 实例。 | string | 是
+encryptedCredential | 加密的凭据字符串。 | string | 是
 
 ## <a name="dataset-properties"></a>数据集属性
 有关可用于定义数据集的节和属性的完整列表，请参阅[创建数据集](data-factory-create-datasets.md)一文。 对于所有数据集类型（Azure SQL、Azure Blob、Azure 表等），结构、可用性和数据集 JSON 的策略等部分均类似。
@@ -78,15 +78,15 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | No
 
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
 
 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 SAP BW）时，以下属性在 typeProperties 节中可用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| 属性 | 说明 | 允许的值 | 必需 |
 | --- | --- | --- | --- |
-| 查询 | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
+| query | 指定要从 SAP BW 实例读取数据的 MDX 查询。 | MDX 查询。 | 是 |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON 示例：将数据从 SAP Business Warehouse 复制到 Azure Blob
@@ -99,11 +99,11 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | No
 
 1. [SapBw](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [RelationalTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从 SAP Business Warehouse 实例复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 SAP Business Warehouse 实例复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 第一步，设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
@@ -291,27 +291,27 @@ encryptedCredential | 加密的凭据字符串。 | 字符串 | No
 ABAP 字典中的数据类型 | .NET 数据类型
 -------------------------------- | --------------
 ACCP |  Int
-CHAR | 字符串
-CLNT | 字符串
+CHAR | String
+CLNT | String
 CURR | Decimal
-CUKY | 字符串
+CUKY | String
 DEC | Decimal
 FLTP | Double
 INT1 | Byte
 INT2 | Int16
 INT4 | Int
-LANG | 字符串
-LCHR | 字符串
+LANG | String
+LCHR | String
 LRAW | Byte[]
 PREC | Int16
 QUAN | Decimal
 RAW | Byte[]
 RAWSTRING | Byte[]
-STRING | 字符串
-单位 | 字符串
-DATS | 字符串
-NUMC | 字符串
-TIMS | 字符串
+STRING | String
+单位 | String
+DATS | String
+NUMC | String
+TIMS | String
 
 > [!NOTE]
 > 要将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

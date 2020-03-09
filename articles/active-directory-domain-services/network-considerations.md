@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917333"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376964"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD 域服务的虚拟网络设计注意事项和配置选项
 
@@ -105,12 +105,12 @@ Azure AD DS 托管域连接到 Azure 虚拟网络中的子网。 为 Azure AD DS
 
 Azure AD DS 提供身份验证和管理服务需要以下网络安全组规则。 请勿编辑或删除 Azure AD DS 托管域部署到的虚拟网络子网的这些网络安全组规则。
 
-| 端口号 | 协议 | 源                             | 目标 | 操作 | 必选 | 目的 |
+| 端口号 | 协议 | 源                             | 目标 | 操作 | 必需 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | 是      | 与 Azure AD 租户同步。 |
-| 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | 是      | 域的管理。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | 是      | 域的管理。 |
-| 636         | TCP      | Any                                | Any         | Allow  | 否       | 仅在配置安全 LDAP （LDAPS）时启用。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | 任何         | 允许  | 是      | 与 Azure AD 租户同步。 |
+| 3389        | TCP      | CorpNetSaw                         | 任何         | 允许  | 是      | 域的管理。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任何         | 允许  | 是      | 域的管理。 |
+| 636         | TCP      | 任何                                | 任何         | 允许  | 是       | 仅在配置安全 LDAP （LDAPS）时启用。 |
 
 > [!WARNING]
 > 请不要手动编辑这些网络资源和配置。 将配置错误的网络安全组或用户定义的路由表与在其中部署 Azure AD DS 的子网相关联时，可能会中断 Microsoft 提供的服务和管理功能。 Azure AD 租户与 Azure AD DS 托管域之间的同步也会中断。

@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
 ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120904"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372527"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -20,7 +20,7 @@ Azure 自动化中的 Runbook 可能无权访问其他云或本地环境中的�
 
 ![混合 Runbook 辅助角色概述](media/automation-hybrid-runbook-worker/automation.png)
 
-每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是可以在一个组中安装多个代理，以实现高可用性。 每台计算机都可以将一个混合辅助角色报告托管到一个自动化帐户。
+每个混合 Runbook 辅助角色都是你在安装代理时指定的混合 Runbook 辅助角色组的成员。 一个组可以包含一个代理，但是你可以在一个组中安装多个代理，以实现高可用性。 每台计算机都可以将一个混合辅助角色报告托管到一个自动化帐户。
 
 在混合 Runbook 辅助角色中启动 Runbook 时，可以指定该辅助角色会在其中运行的组。 组中的每个辅助角色都会轮询 Azure 自动化以查看是否有可用作业。 如果作业可用，获取作业的第一个辅助角色将执行该作业。 作业队列的处理时间取决于混合辅助角色硬件配置文件和负载。 不能指定特定的辅助角色。 混合 Runbook 辅助角色不受 Azure 沙盒所具有的诸多限制。 它们没有磁盘空间、内存或网络套接字方面的相同限制。 混合 Runbook 辅助角色仅受混合 Runbook 辅助角色本身所拥有的资源的限制。 此外，混合 Runbook 辅助角色不受 Azure 沙盒所具有的 180 分钟[公平共享](automation-runbook-execution.md#fair-share)时间限制。 若要了解有关 Azure 沙盒和混合 Runbook 辅助角色的服务限制的详细信息，请参阅作业[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)页。
 
@@ -128,7 +128,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 | 澳大利亚东部 |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | 澳大利亚东南部 |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | 英国南部 | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Gov 弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| 美国政府弗吉尼亚州 | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 有关区域 IP 地址列表（非区域名称列表），请从 Microsoft 下载中心下载 [Azure 数据中心 IP 地址](https://www.microsoft.com/download/details.aspx?id=41653) XML 文件。
 
