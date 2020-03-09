@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438761"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385689"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
 
@@ -26,7 +26,7 @@ ms.locfileid: "75438761"
 
 了解如何使用 Azure 门户创建 Data Lake Storage Gen1 帐户并执行基本操作，如创建文件夹、上传和下载数据文件、删除帐户等。有关详细信息，请参阅[Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 开始学习本教程之前，必须做好以下准备：
 
@@ -44,7 +44,7 @@ ms.locfileid: "75438761"
    * **订阅**。 选择要在其下创建新的 Data Lake Storage Gen1 帐户的订阅。
    * **资源组**。 选择现有资源组，或选择“新建”选项创建一个资源组。 资源组是一个容器，包含应用程序的相关资源。 有关详细信息，请参阅 [Azure 中的资源组](../azure-resource-manager/management/overview.md#resource-groups)。
    * **位置**：选择要创建 Data Lake Storage Gen1 帐户的位置。
-   * **加密设置**。 有三个选项：
+   * **加密设置**。 有三个选择：
 
      * 不启用加密。
      * 如果希望 Data Lake Storage Gen1 管理加密密钥，请使用 Data Lake Storage Gen1 管理的密钥。
@@ -103,7 +103,7 @@ ms.locfileid: "75438761"
 1. 在“数据资源管理器”边栏选项卡中，单击“上传”。
 2. 在“上传文件”边栏选项卡中，导航到要上传的文件，然后单击“添加所选文件”。 也可选择多个要上传的文件。
 
-    ![上传数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上载数据")
+    ![上传数据](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "上传数据")
 
 如果正在查找一些示例数据进行上传，可以从 **Azure Data Lake Git 存储库** 获取 [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)文件夹。
 
@@ -113,7 +113,7 @@ ms.locfileid: "75438761"
 
 ![数据的属性](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "数据的属性")
 
-## <a name="secure-your-data"></a>保护数据安全
+## <a name="secure-your-data"></a>保护数据
 
 可以通过 Azure Active Directory 和访问控制 (ACL) 来保护 Data Lake Storage Gen1 帐户中存储的数据。 有关如何实现保护的说明，请参阅[保护 Azure Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)。
 

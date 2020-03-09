@@ -4,17 +4,17 @@ description: 本快速入门介绍如何通过 Azure 门户使用 Azure 蓝图�
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436621"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78357974"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>快速入门：在门户中定义和分配蓝图
 
 了解如何创建和分配蓝图时，可以定义常见的模式，以便根据 Azure 资源管理器模板、策略、安全性等方面的要求开发可重复使用和可快速部署的配置。 本教程介绍如何使用 Azure 蓝图来执行某些与在组织中创建、发布和分配蓝图相关的常见任务。 这些任务包括：
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free)。
 
