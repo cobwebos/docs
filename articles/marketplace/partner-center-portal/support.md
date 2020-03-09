@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: 032d4793576e2fb9b8de9e36666548e5bffb9460
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: a85d9ebb03ea0c9ebe078ad49ce6bbf40a5b004d
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898248"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927538"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>支持合作伙伴中心的商业市场计划
 
@@ -27,9 +27,9 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
 1. 使用工作帐户登录到[合作伙伴中心的 "商用 Marketplace" 计划](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)。 （如果尚未执行此操作，你将需要[创建合作伙伴中心帐户](./create-account.md)。）
 
-1. 在页面右侧的上部菜单中，选择 "**支持**" 图标。 
+2. 在页面右侧的上部菜单中，选择 "**支持**" 图标。 
  
-1. "**帮助和支持**" 窗格将显示在页面的右侧。 
+3. "**帮助和支持**" 窗格将显示在页面的右侧。 
  
    ![支持下拉菜单](./media/commercial-marketplace-support-pane.png)
 
@@ -37,11 +37,11 @@ Microsoft 支持各种产品和服务。 找到正确的支持团队对于确保
 
    ![主页帮助和支持](./media/homepage-help-support.png)
 
-1. 选择 **[文档](../index.md)** 以查看问题和资源的综合答案。 
+4. 选择 **[文档](../index.yml)** 以查看问题和资源的综合答案。 
 
-1. 选择 " **[Marketplace 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** "，通过利用其他 Microsoft 发布者的知识来回答您的问题。 
+5. 选择 " **[Marketplace 合作伙伴社区论坛](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** "，通过利用其他 Microsoft 发布者的知识来回答您的问题。 
 
-1. 选择 **[其他帮助](https://aka.ms/marketplacepublishersupport)** 以打开**新的支持请求**票证。  
+6. 选择 **[其他帮助](https://aka.ms/marketplacepublishersupport)** 以打开**新的支持请求**票证。  
 
 ## <a name="how-to-open-a-support-ticket"></a>如何开具支持票证
 

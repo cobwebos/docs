@@ -16,7 +16,7 @@ ms.locfileid: "78389509"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>缩放 Azure HDInsight 群集
 
-HDInsight 提供弹性，可让你选择扩展和缩减群集中的工作节点数。 使用此弹性，你可以在数小时或周末缩减群集，并在高峰业务需求期间将其展开。
+HDInsight 提供弹性，可让你选择纵向扩展和纵向缩减群集中的工作节点数。 使用此弹性，你可以在数小时或周末缩减群集，并在高峰业务需求期间将其展开。
 
 如果有定期批处理，HDInsight 群集可以在该操作之前的几分钟内扩展，以便群集具有足够的内存和 CPU 能力。  稍后，在完成处理后，使用再次出现故障时，可以将 HDInsight 群集缩小到更少的辅助角色节点。
 
@@ -158,9 +158,9 @@ org.apache.http.conn.HttpHostConnectException: Connect to active-headnode-name.s
 
 可通过多种方法防止 HDInsight 保留在安全模式：
 
-* 在缩减 HDInsight 之前停止所有 Hive 作业。 或者，计划好缩减进程，以避免与运行中的 Hive 作业冲突。
+* 在缩减 HDInsight 之前停止所有 Hive 作业。 或者，计划好纵向缩减进程，以避免与运行中的 Hive 作业冲突。
 * 执行缩减操作之前，在 HDFS 中手动清理 Hive 的 scratch `tmp` 目录文件。
-* 只将 HDInsight 缩减为三个工作节点（最少数量）。 避免将工作节点数减少至一个。
+* 只将 HDInsight 纵向缩减为三个工作节点（最少数量）。 避免将工作节点数减少至一个。
 * 根据需要运行命令来退出安全模式。
 
 以下部分将介绍这些选项。

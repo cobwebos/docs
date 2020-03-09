@@ -1,28 +1,29 @@
 ---
-title: Azure Migrate 设备的常见问题
-description: 获取有关 Azure Migrate 设备的常见问题解答
+title: Azure Migrate 设备常见问题
+description: 获取有关 Azure Migrate 设备的常见问题的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 3bb066b08447a951665e629da5ebcb75714b9f1e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 99f7fc7db79785f99b96e6076607e434e43e605f
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425349"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927329"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
-本文解答了有关 Azure Migrate 设备的常见问题。 如果你有其他问题，请查看以下文章：
+本文解答了有关 Azure Migrate 设备的常见问题。 如果你有其他问题，请查看以下资源：
 
-- 有关 Azure Migrate 的[一般问题](resources-faq.md)。
-- 有关发现、评估和依赖项可视化的[问题](common-questions-discovery-assessment.md)。
-- 有关服务器迁移的[问题](common-questions-server-migration.md)。
-- 在[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)上提问。 
-
+- 有关 Azure Migrate 的[一般问题](resources-faq.md)
+- 有关[发现、评估和依赖项可视化](common-questions-discovery-assessment.md)的问题
+- 有关[服务器迁移](common-questions-server-migration.md)的问题
+- 在[Azure Migrate 论坛](https://aka.ms/AzureMigrateForum)中获取问题答案
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>什么是 Azure Migrate 设备？
 
-Azure Migrate 设备是一种轻型设备，由 Azure Migrate：服务器评估工具用于发现和评估本地服务器。 Azure Migrate：服务器迁移工具也使用该设备进行本地 VMware Vm 的无代理迁移。 
+Azure Migrate 设备是一个轻型设备，Azure Migrate 服务器评估工具使用该设备来发现和评估本地服务器。 Azure Migrate：服务器迁移工具还使用该设备进行本地 VMware Vm 的无代理迁移。
+
+下面是有关 Azure Migrate 设备的详细信息：
 
 - 设备在本地部署为 VM 或物理计算机。
 - 设备会发现本地计算机，并持续将计算机元数据和性能数据发送到 Azure Migrate。
@@ -34,90 +35,97 @@ Azure Migrate 设备是一种轻型设备，由 Azure Migrate：服务器评估�
 
 设备可以通过 internet 进行连接，或通过公共/Microsoft 对等互连使用 Azure ExpressRoute。
 
-## <a name="does-appliance-analysis-impact-performance"></a>设备分析是否会影响性能？
+## <a name="does-appliance-analysis-affect-performance"></a>设备分析是否会影响性能？
 
-Azure Migrate 设备会持续分析本地计算机上的性能数据。 此分析几乎不会对性能造成影响的计算机进行性能影响。
+Azure Migrate 设备会持续分析本地计算机上的性能数据。 此分析对分析的计算机的性能几乎没有影响。
 
-### <a name="can-i-harden-the-appliance-vm"></a>能否强化设备 VM？
+## <a name="can-i-harden-the-appliance-vm"></a>能否强化设备 VM？
 
-使用下载的模板创建设备 VM 时，可以将组件（例如防病毒软件）添加到模板，前提是保留 Azure Migrate 设备所需的通信和防火墙规则。
+如果使用下载的模板来创建设备 VM，则可以将组件（例如，防病毒）添加到模板，前提是保留 Azure Migrate 设备所需的通信和防火墙规则。
 
+## <a name="what-network-connectivity-is-required"></a>需要哪种网络连接？
 
-## <a name="what-network-connectivity-is-needed"></a>需要哪些网络连接？
+有关 Azure Migrate 设备的网络连接要求的信息，请参阅以下文章：
 
-查看有关网络连接的信息：
-- 使用 Azure Migrate 设备的 VMware 评估： [URL](migrate-appliance.md#url-access)和[端口](migrate-support-matrix-vmware.md#port-access)访问要求。
-- 使用 Azure Migrate 设备的 VMware 无代理迁移： [URL](migrate-appliance.md#url-access)和[端口](migrate-support-matrix-vmware-migration.md#agentless-ports)访问要求。
-- 使用 Azure Migrate 设备进行 hyper-v 评估： [URL](migrate-appliance.md#url-access)和[端口](migrate-support-matrix-hyper-v.md#port-access)访问要求。
-
+- **VMware 评估**： [URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-vmware.md#port-access)
+- **VMware 无代理迁移**： [URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-vmware-migration.md#agentless-ports)
+- **Hyper-v 评估**： [URL 访问](migrate-appliance.md#url-access)和[端口访问](migrate-support-matrix-hyper-v.md#port-access)
 
 ## <a name="what-data-does-the-appliance-collect"></a>设备会收集哪些数据？
 
-查看收集的数据：
+请参阅以下文章，了解 Azure Migrate 设备在 Vm 上收集的数据：
 
-- VMware VM[性能数据](migrate-appliance.md#collected-performance-data-vmware)和[元数据](migrate-appliance.md#collected-metadata-vmware)。
-- Hyper-v VM[性能数据](migrate-appliance.md#collected-performance-data-hyper-v)和[元数据](migrate-appliance.md#collected-metadata-hyper-v)。
+- **VMWARE VM**：[性能数据](migrate-appliance.md#collected-performance-data-vmware)和[元数据](migrate-appliance.md#collected-metadata-vmware)
+- **HYPER-V VM**：[性能数据](migrate-appliance.md#collected-performance-data-hyper-v)和[元数据](migrate-appliance.md#collected-metadata-hyper-v)
 
+## <a name="how-is-data-stored"></a>如何存储数据？
 
-## <a name="how-is-data-stored"></a>数据以何种方式存储？
+Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure 位置。
 
-Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure 位置。 
+下面是有关如何存储数据的详细信息：
 
-- 数据将安全地存储在 Microsoft 订阅中，并在删除 Azure Migrate 项目时删除。
-- 如果使用[依赖关系可视化](concepts-dependency-visualization.md)，收集的数据将存储在美国中，在 Azure 订阅中创建的 Log Analytics 工作区中。 在订阅中删除 Log Analytics 工作区时会删除此数据。
+- 数据将安全地存储在 Microsoft 订阅中，并在删除 Azure Migrate 项目时被删除。
+- 如果使用[依赖关系可视化](concepts-dependency-visualization.md)，收集的数据将存储在 azure 订阅中创建的 azure Log Analytics 工作区的美国中。 删除订阅中的 "Log Analytics" 工作区时，数据将被删除。
 
-## <a name="how-much-data-is-uploaded-in-continuous-profiling"></a>连续分析中上载了多少数据？
+## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>连续分析期间上传了多少数据？
 
-发送给 Azure Migrate 的数据量取决于多个参数。 为此，有一个具有10台计算机（每个都有一个磁盘和一个 NIC）的 Azure Migrate 项目将每日大约 50 MB 发送一次。 此值为 "近似" 和 "更改"，具体取决于 Nic 和磁盘的数据点数量。 如果计算机、Nic 或磁盘的数量增加，则发送的数据量也是非线性的。
+发送给 Azure Migrate 的数据量取决于多个参数。 例如，有10台计算机（每个计算机有一个磁盘，一个 NIC）的 Azure Migrate 项目每天发送大约 50 MB 的数据。 此值为近似值;实际值取决于磁盘和 Nic 的数据点数量。 如果计算机、磁盘或 Nic 数增加，则发送的数据的增加是非线性的。
 
-## <a name="is-data-encrypted-at-restin-transit"></a>数据是静态加密的还是传输中的？
+## <a name="is-data-encrypted-at-rest-and-in-transit"></a>数据是否在静态和传输中加密？
 
-是的。
+是的，对于这两种情况：
 
 - 元数据通过 HTTPS 安全地发送到 Azure Migrate 服务。
-- 元数据存储在[Azure Cosmos](../cosmos-db/database-encryption-at-rest.md)数据库中，并存储在[azure Blob 存储](../storage/common/storage-service-encryption.md)中的 Microsoft 订阅中。 元数据是静态加密的。
-- 依赖关系分析的数据也会在传输中加密（安全 HTTPS）。 它存储在订阅的 Log Analytics 工作区中。 它还静态加密。
+- 元数据存储在[Azure Cosmos](../cosmos-db/database-encryption-at-rest.md)数据库和 Microsoft 订阅中的[azure Blob 存储](../storage/common/storage-service-encryption.md)中。 为存储加密的元数据是静态的。
+- 依赖关系分析的数据也会在传输过程中加密（通过安全 HTTPS）。 它存储在订阅的 Log Analytics 工作区中。 数据是静态加密的，以便进行依赖项分析。
 
 ## <a name="how-does-the-appliance-connect-to-vcenter-server"></a>设备如何连接 vCenter Server？
 
+以下步骤描述了设备如何连接到 VMware vCenter 服务器：
+
 1. 设备使用设置设备时提供的凭据连接到 vCenter Server （端口443）。
-2. 设备使用 VMware PowerCLI 来查询 vCenter Server，以收集 vCenter Server 管理的 Vm 的元数据。
+2. 设备使用 VMware PowerCLI 来查询 vCenter Server 来收集 vCenter Server 管理的 Vm 的元数据。
 3. 设备会收集有关过去个月内每个 VM 的 Vm （核心、内存、磁盘、Nic）和性能历史记录的配置数据。
-4. 收集的元数据将发送到 Azure Migrate：服务器评估（通过 internet 通过 HTTPS）进行评估。
+4. 收集的元数据将发送到 Azure Migrate： Server 评估工具（通过 internet 通过 HTTPS）进行评估。
 
-## <a name="can-i-connect-the-appliance-to-multiple-vcenter-servers"></a>是否可以将设备连接到多个 vCenter 服务器？
+## <a name="can-i-connect-the-appliance-to-multiple-instances-of-vcenter-server"></a>是否可以将设备连接到 vCenter Server 的多个实例？
 
-No。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，需要部署多个设备。
+不是。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>可以通过设备发现多少 Vm 或服务器？
 
-你最多可以发现10000个 VMware Vm （最多5000个 Hyper-v Vm），并且最多可使用单个设备来250物理服务器。 如果你在本地环境中有更多计算机，请阅读有关扩展[hyper-v](scale-hyper-v-assessment.md)、 [VMware](scale-vmware-assessment.md)和[物理](scale-physical-assessment.md)评估的信息。
+你最多可以发现10000个 VMware Vm （最多5000个 Hyper-v Vm），并且最多可使用单个设备来250物理服务器。 如果你在本地环境中有更多计算机，请阅读[扩展 hyper-v 评估](scale-hyper-v-assessment.md)、[扩展 VMware 评估](scale-vmware-assessment.md)和[缩放物理服务器评估](scale-physical-assessment.md)。
 
 ## <a name="can-i-delete-an-appliance"></a>能否删除设备？
 
 当前不支持从项目中删除设备。
 
-- 删除设备的唯一方法是删除包含与设备关联的 Azure Migrate 项目的资源组。
-- 但是，删除资源组也会删除其他已注册的设备、发现的清单、评估以及与资源组中的项目相关联的所有其他 Azure 组件。
+删除设备的唯一方法是删除包含与设备关联的 Azure Migrate 项目的资源组。
 
+但是，删除资源组也会删除其他已注册的设备、发现的清单、评估以及与项目关联的资源组中的所有其他 Azure 组件。
 
-## <a name="can-i-use-the-appliance-with-a-different-subscriptionproject"></a>是否可以将设备用于其他订阅/项目？
+## <a name="can-i-use-the-appliance-with-a-different-subscription-or-project"></a>是否可以将设备用于其他订阅或项目？
 
-使用设备启动发现后，不能使用其他 Azure 订阅重新配置它，也不能在不同 Azure Migrate 项目中使用。 也无法在不同 vCenter Server 上发现 Vm。 为这些任务设置新设备。
+使用设备启动发现后，不能将设备重新配置为与不同的 Azure 订阅一起使用，并且不能在不同 Azure Migrate 项目中使用它。 也无法在 vCenter Server 的不同实例上发现 Vm。 为这些任务设置新设备。
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>能否在 Azure VM 上设置设备？
-No。 目前不支持这种情况。 
+
+不是。 当前不支持此选项。 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>是否可以在 ESXi 主机上发现？
-No。 需要 vCenter Server 才能发现 VMware Vm。
+
+不是。 若要发现 VMware Vm，你必须拥有 vCenter Server。
 
 ## <a name="how-do-i-update-the-appliance"></a>如何实现更新设备？
 
-默认情况下，设备及其安装的代理会自动更新。 设备每24小时检查一次更新一次。 如果更新过程失败，则会重试。 自动更新仅更新设备和设备代理。 操作系统未更新。 使用 Microsoft 更新来使操作系统保持最新状态。
+默认情况下，设备及其安装的代理会自动更新。 设备每24小时检查一次更新。 重试失败的更新。 
+
+这些自动更新仅更新设备和设备代理。 Azure Migrate 自动更新不会更新操作系统。 使用 Windows 更新来使操作系统保持最新状态。
 
 ## <a name="can-i-check-agent-health"></a>能否检查代理运行状况？
 
-在门户中，前往服务器评估或服务器迁移工具中的 "**代理运行状况**" 页。 在那里，可以在设备和 Azure 上的发现代理与评估代理之间检查连接状态。
+是的。 在门户中，前往 Azure Migrate： Server 评估或 Azure Migrate： Server 迁移工具的 "**代理运行状况**" 页。 可以在 Azure 与设备上的 "发现" 和 "评估" 代理之间检查连接状态。
 
 ## <a name="next-steps"></a>后续步骤
+
 阅读[Azure Migrate 概述](migrate-services-overview.md)。

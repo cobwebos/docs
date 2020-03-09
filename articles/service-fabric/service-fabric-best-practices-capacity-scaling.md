@@ -68,7 +68,7 @@ ms.locfileid: "78386293"
 1. 在 PowerShell 中，运行具有意向 `RemoveNode` `Disable-ServiceFabricNode`，禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个6节点群集，请删除 "MyNodeType_5" 虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，这可能需要几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 减少此节点类型中 Vm 的数量。 现在，将会删除编号最大的 VM 实例。
-4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 根据需要重复步骤 1 到 3，但切勿将主节点类型的实例数目纵向缩减到少于可靠性层所需的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 5. 所有 Vm 都丢失（表示为 "关闭"）后，fabric：/System/InfrastructureService/[node name] 将显示错误状态。 然后，你可以更新群集资源以删除节点类型。 你可以使用 ARM 模板部署，或通过[Azure 资源管理器](https://resources.azure.com)编辑群集资源。 这会启动群集升级，这将删除处于错误状态的 fabric：/System/InfrastructureService/[node type] 服务。
  6. 之后，你可以选择删除 VMScaleSet，但仍会从 Service Fabric Explorer 视图中看到节点 "Down"。 最后一步是清理 `Remove-ServiceFabricNodeState` 命令。
 
@@ -103,7 +103,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 缩小时需要考虑更多的考虑因素。例如：
 
-* Service Fabric 系统服务在群集中的主节点类型上运行。 切勿关闭该节点类型的实例，或者将其实例数目缩减到少于可靠性层保证的数目。 
+* Service Fabric 系统服务在群集中的主节点类型上运行。 切勿关闭该节点类型的实例，或者将其实例数目纵向缩减到少于可靠性层保证的数目。 
 * 对于有状态服务，需要一定数量的节点，这些节点始终保持可用状态并保留服务的状态。 至少需要有多个节点与分区或服务的目标副本集计数相等。
 
 若要手动横向缩减，请执行以下步骤：
@@ -111,7 +111,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 1. 在 PowerShell 中，运行具有意向 `RemoveNode` `Disable-ServiceFabricNode`，禁用要删除的节点。 删除编号最大的节点类型。 例如，如果你有一个6节点群集，请删除 "MyNodeType_5" 虚拟机实例。
 2. 运行 `Get-ServiceFabricNode` 以确保该节点已转换为禁用状态。 如果没有，请等到节点已禁用。 对于每个节点，这可能需要几个小时。 在节点转换为禁用状态之前，请不要继续操作。
 3. 减少此节点类型中 Vm 的数量。 现在，将会删除编号最大的 VM 实例。
-4. 根据需要重复步骤1到步骤3，直到你预配所需的容量。 请勿将主节点类型的实例数目缩减到少于可靠性层保证的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 根据需要重复步骤1到步骤3，直到你预配所需的容量。 请勿将主节点类型的实例数目纵向缩减到少于可靠性层保证的数目。 有关建议实例的列表，请参阅[规划 Service Fabric 群集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 
 若要手动缩放，请在所需的[虚拟机规模集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)资源的 "SKU" 属性中更新容量。
 

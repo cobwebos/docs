@@ -1,6 +1,6 @@
 ---
 title: 如何使用 Azure CLI 调整 Linux VM 的大小
-description: 如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。
+description: 如何通过更改 VM 大小来纵向扩展或纵向缩减 Linux 虚拟机。
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson

@@ -112,7 +112,7 @@ Nginx 服务器的输出与下面类似：
 
 
 ## <a name="scale-your-containers"></a>缩放容器
-可以使用 Marathon API 来扩大或缩小应用程序部署。 在上一示例中，为应用程序部署了一个实例。 让我们进行扩展，扩大为三个实例。 为此，请使用以下 JSON 文本创建 JSON 文件，并将其存储在可访问的位置。
+可以使用 Marathon API 来横向扩展或横向缩减应用程序部署。 在上一示例中，为应用程序部署了一个实例。 让我们进行扩展，扩大为三个实例。 为此，请使用以下 JSON 文本创建 JSON 文件，并将其存储在可访问的位置。
 
 ```json
 { "instances": 3 }
@@ -169,7 +169,7 @@ Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-还可以使用 Marathon API 来扩大或缩小应用程序部署。 在上一示例中，为应用程序部署了一个实例。 让我们进行扩展，扩大为三个实例。 为此，请使用以下 JSON 文本创建 JSON 文件，并将其存储在可访问的位置。
+还可以使用 Marathon API 来横向扩展或横向缩减应用程序部署。 在上一示例中，为应用程序部署了一个实例。 让我们进行扩展，扩大为三个实例。 为此，请使用以下 JSON 文本创建 JSON 文件，并将其存储在可访问的位置。
 
 ```json
 { "instances": 3 }

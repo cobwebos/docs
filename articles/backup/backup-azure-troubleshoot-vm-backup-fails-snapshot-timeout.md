@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: beb20518d1350335ceed285f4d5cd9da135132e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393047"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932767"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure 备份故障排除：代理或扩展的问题
 
@@ -50,10 +50,11 @@ Azure VM 代理可能已停止、过时、状态不一致或未安装。 这些�
 **错误代码**： UserErrorVmProvisioningStateFailed<br>
 **错误消息**： VM 处于失败预配状态<br>
 
-如果其中一个扩展失败导致 VM 处于预配失败状态，则会出现此错误。<br>**打开 Azure 门户 > VM > 设置 > 扩展 > 扩展状态**，并检查所有扩展是否处于**预配已成功**状态。
+如果其中一个扩展失败导致 VM 处于预配失败状态，则会出现此错误。<br>**打开 Azure 门户 > VM > 设置 > 扩展 > 扩展状态**，并检查所有扩展是否处于**预配已成功**状态。 若要了解详细信息，请参阅[预配状态](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)。
 
 - 如果 VMSnapshot 扩展处于失败状态，请右键单击失败的扩展并将其删除。 触发按需备份。 此操作将重新安装扩展，并运行备份作业。  <br>
-- 如果任何其他扩展处于 "失败" 状态，则它可能会干扰备份。 请确保解决这些扩展问题，然后重试备份操作。  
+- 如果任何其他扩展处于 "失败" 状态，则它可能会干扰备份。 请确保解决这些扩展问题，然后重试备份操作。
+- 如果 VM 预配状态为 "正在更新" 状态，则它可能会干扰备份。 请确保它运行正常，然后重试备份操作。
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已达到还原点集合的最大限制
 
@@ -205,7 +206,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 | 原因 | 解决方案 |
 | --- | --- |
-| 由于在远程桌面协议 (RDP) 中关闭了 VM，VM 状态报告不正确。 | 如果在 RDP 中关闭了 VM，请检查门户，确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的“关闭”选项来关闭 VM。 |
+| 由于在远程桌面协议 (RDP) 中关闭了 VM，VM 状态报告不正确。 | 如果在 RDP 中关闭了 VM，请检查门户，确定 VM 状态是否正确。 如果不正确，请在门户中使用 VM 仪表板上的 "**关闭**" 选项来关闭 vm。 |
 | VM 无法从 DHCP 获取主机或结构地址。 | 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果 VM 无法从 DHCP 响应 245 获取主机或结构地址，则无法下载或运行任何扩展。 如果需要静态专用 IP，应通过**Azure 门户**或**PowerShell**进行配置，并确保已启用 VM 内的 DHCP 选项。 [详细了解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何使用 PowerShell 设置静态 IP 地址。
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931873"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387600"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 OData 源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -60,7 +60,7 @@ ms.locfileid: "74931873"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 OData 链接服务专属 JSON 元素的说明。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OData** |是 |
 | url |OData 服务的 URL。 |是 |
@@ -68,7 +68,7 @@ ms.locfileid: "74931873"
 | username |如果使用基本身份验证，请指定用户名。 |是（仅在使用基本身份验证时适用） |
 | password |指定为用户名指定的用户帐户的密码。 |是（仅在使用基本身份验证时适用） |
 | authorizedCredential |如果使用 OAuth，请在数据工厂复制向导或编辑器中单击“授权”按钮，并输入凭据，此时会自动生成此属性的值。 |是（仅在使用 OAuth 身份验证时适用） |
-| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅当从本地 OData 源复制数据时才指定。 |No |
+| gatewayName |网关名称 - 数据工厂服务应使用此网关连接到本地 OData 服务。 仅当从本地 OData 源复制数据时才指定。 |否 |
 
 ### <a name="using-basic-authentication"></a>使用基本身份验证
 ```json
@@ -145,20 +145,20 @@ ms.locfileid: "74931873"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **ODataResource** 类型数据集（包括 OData 数据集）的 typeProperties 节具有以下属性
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
-| 路径 |OData 资源路径 |No |
+| 路径 |OData 资源路径 |否 |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 另一方面，可用于此活动 typeProperties 部分的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 源属于 **RelationalSource** 类型（包括 OData）时，以下属性在 typeProperties 节可用：
 
-| properties | 描述 | 示例 | 需要 |
+| properties | 说明 | 示例 | 必选 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |No |
+| query |使用自定义查询读取数据。 |"?$select=Name, Description&$top=5" |否 |
 
 ## <a name="type-mapping-for-odata"></a>OData 的类型映射
 如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动使用以下 2 步方法执行从源类型到接收器类型的自动类型转换。
@@ -173,16 +173,16 @@ ms.locfileid: "74931873"
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
-| Edm.DateTime |日期/时间 |
+| Edm.DateTime |DateTime |
 | Edm.Decimal |Decimal |
 | Edm.Double |Double |
-| Edm.Single |单一 |
-| Edm.Guid |GUID |
+| Edm.Single |Single |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |字符串 |
+| Edm.String |String |
 | Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
@@ -194,11 +194,11 @@ ms.locfileid: "74931873"
 
 1. [OData](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [ODataResource](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [ODataResource](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从针对 OData 源的查询复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **OData 链接服务：** 此示例使用匿名身份验证。 请参阅 [OData 链接服务](#linked-service-properties)部分，了解各种可用的身份验证。
 
@@ -265,7 +265,7 @@ ms.locfileid: "74931873"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {

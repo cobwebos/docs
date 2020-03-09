@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文总结了备份运行 Microsoft Azure 恢复服务（MARS）代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 515ca065914dc535c1ba21fdb5ac574e3987ca32
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668525"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78932745"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -158,7 +158,7 @@ Windows 7| 1,700 GB
 
 类型 | **支持**
 --- | ---
-加密| 支持。
+加密<sup>*</sup>| 支持。
 Compressed | 支持。
 稀疏 | 支持。
 压缩和稀疏 |支持。
@@ -169,6 +169,8 @@ Compressed | 支持。
 稀疏流| 不支持。 跳过.
 OneDrive （同步的文件是稀疏流）| 不支持。
 已启用 DFS 复制的文件夹 | 不支持。
+
+\* 确保 MARS 代理有权访问所需的证书来访问加密的文件。 将跳过不可访问的文件。
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>支持备份的驱动器或卷
 

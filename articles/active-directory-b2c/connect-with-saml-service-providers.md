@@ -12,12 +12,12 @@ ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189644"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933011"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中注册 SAML 应用程序
 
@@ -113,7 +113,7 @@ Azure AD B2C 通过以下两种方式之一实现 SAML 互操作性：
 
 ### <a name="21-create-the-saml-token-issuer"></a>2.1 创建 SAML 令牌颁发者
 
-现在，请为你的租户添加功能，以颁发 SAML 令牌。
+现在，请为你的租户添加功能，以便使用[saml 令牌颁发者](saml-issuer-technical-profile.md)和[saml 会话提供程序](custom-policy-reference-sso.md#samlssosessionprovider)技术配置文件颁发 SAML 令牌。
 
 打开自定义策略初学者包中 `SocialAndLocalAccounts\` **`TrustFrameworkExtensions.xml`** 。
 
@@ -297,7 +297,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 如果在 SAML 元数据 URL 和应用程序注册的清单中*同时*指定了属性，则会**合并**它们。 首先处理元数据 URL 中指定的属性并优先处理。
 
-对于使用 SAML 测试应用程序的本教程，请使用以下 `samlMetadataUrl`值：
+对于本教程，使用 SAML 测试应用程序，请使用以下 `samlMetadataUrl`值：
 
 ```JSON
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
@@ -324,7 +324,7 @@ Azure AD B2C 策略 IDP 元数据是 SAML 协议中用于公开 SAML 标识提�
 
 此可选属性表示 `Logout` URL （`SingleLogoutService` 信赖方元数据中的 URL），这的 `BindingType` 假定为 `Http-Redirect`。
 
-对于使用 SAML 测试应用程序的本教程，将 `logoutUrl` 设置为 `https://samltestapp2.azurewebsites.net/logout`：
+对于本教程，使用 SAML 测试应用程序，将 `logoutUrl` 设置为 `https://samltestapp2.azurewebsites.net/logout`：
 
 ```JSON
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

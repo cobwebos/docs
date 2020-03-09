@@ -180,7 +180,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 ## <a name="storage-isolation"></a>存储隔离
 ### <a name="logical-isolation-between-compute-and-storage"></a>计算和存储之间的逻辑隔离
-作为其基本设计的一部分，Microsoft Azure 将基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主扩展，使提供多租户和隔离变得更简单。
+作为其基本设计的一部分，Microsoft Azure 将基于 VM 的计算与存储分隔开。 这种分隔可实现计算和存储的自主缩放，使提供多租户和隔离变得更简单。
 
 因此，Azure 存储在单独的硬件上运行，且没有与 Azure 计算建立网络连接，从逻辑上讲时例外。 这意味着，当创建虚拟磁盘时，不会为其整个容量分配磁盘空间。 而是会创建一个表格，用于将虚拟磁盘上的地址映射到物理磁盘上的区域中，且该表最初为空。 **客户首次在虚拟磁盘上写入数据时，将分配物理磁盘上的空间，且指向它的指针将位于表中。**
 ### <a name="isolation-using-storage-access-control"></a>使用存储访问控制的隔离

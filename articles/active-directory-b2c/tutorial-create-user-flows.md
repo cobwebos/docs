@@ -11,11 +11,11 @@ ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183561"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389923"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -32,7 +32,7 @@ ms.locfileid: "78183561"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 [注册](tutorial-register-applications.md)属于要创建的用户流的应用程序。
 
@@ -94,7 +94,7 @@ ms.locfileid: "78183561"
 1. 选择您创建的用户流以打开其 "概述" 页，然后选择 "**运行用户流**"。
 1. 对于“应用程序”，请选择前面已注册的名为 **webapp1** 的 Web 应用程序。 “回复 URL”应显示为 **。** `https://jwt.ms`
 1. 单击“运行用户流”，然后使用前面创建的帐户登录。
-1. 现在，你可以更改用户的显示名称和职务。 单击 **“继续”** 。 令牌将返回到 `https://jwt.ms` 并显示出来。
+1. 现在，你可以更改用户的显示名称和职务。 单击“继续”。 令牌将返回到 `https://jwt.ms` 并显示出来。
 
 ## <a name="create-a-password-reset-user-flow"></a>创建密码重置用户流
 

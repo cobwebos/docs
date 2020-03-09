@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍可用于 Azure 资源关系图的资源关系图表和可用的 Kusto 数据类型、运算符和函数。
-ms.date: 12/05/2019
+ms.date: 03/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a3503ce8d83b5bd47872db4b1de0eadb88be432c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f4be4d86a340867e1ad3015ff288f98fc54cecf
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851207"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927500"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -24,12 +24,16 @@ Azure Resource Graph 查询语言支持多个运算符和函数。 每个工作�
 
 资源图为它存储的数据提供了多个表，这些表用于资源管理器资源类型及其属性。 这些表可以与 `join` 或 `union` 运算符一起使用，以获取相关资源类型的属性。 下面是资源图中可用表的列表：
 
-|资源图表表 |描述 |
+|资源图表表 |说明 |
 |---|---|
 |资源 |如果未在查询中定义，则为默认表。 大多数资源管理器资源类型和属性位于此处。 |
 |ResourceContainers |包括订阅（预览--`Microsoft.Resources/subscriptions`）和资源组（`Microsoft.Resources/subscriptions/resourcegroups`）资源类型和数据。 |
+|AdvisorResources |包括_与 `Microsoft.Advisor`相关_的资源。 |
 |AlertsManagementResources |包括_与 `Microsoft.AlertsManagement`相关_的资源。 |
+|MaintenanceResources |包括_与 `Microsoft.Maintenance`相关_的资源。 |
 |SecurityResources |包括_与 `Microsoft.Security`相关_的资源。 |
+
+有关包含资源类型的完整列表，请参阅[引用：支持的表和资源类型](../reference/supported-tables-resources.md)。
 
 > [!NOTE]
 > _资源_是默认表。 查询_资源_表时，不需要提供表名称，除非使用 `join` 或 `union`。 但是，建议的做法是始终在查询中包含初始表。
@@ -67,7 +71,7 @@ Resources
 
 |KQL |资源图示例查询 |说明 |
 |---|---|---|
-|[count](/azure/kusto/query/countoperator) |[统计密钥保管库](../samples/starter.md#count-keyvaults) | |
+|[计数](/azure/kusto/query/countoperator) |[统计密钥保管库](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[显示特定别名的非重复值](../samples/starter.md#distinct-alias-values) | |
 |[extend](/azure/kusto/query/extendoperator) |[按 OS 类型对虚拟机进行计数](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[具有订阅名称的密钥保管库](../samples/advanced.md#join) |支持的联接风格： [innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、 [inner](/azure/kusto/query/joinoperator#inner-join)、 [leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 单个查询中的限制为 3 `join`。 不允许使用自定义联接策略，例如广播联接。 可以在单个表中使用，也可以在 "_资源_" 和 " _ResourceContainers_ " 表之间使用。 |
@@ -120,4 +124,4 @@ Resources
 
 - 请参阅[Starter 查询](../samples/starter.md)中使用的语言。
 - 请参阅高级[查询](../samples/advanced.md)中的高级使用。
-- 了解有关如何[浏览资源](explore-resources.md)的详细信息。
+- 详细了解如何[浏览资源](explore-resources.md)。

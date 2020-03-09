@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184020"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933045"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自定义策略中定义一次性密码技术配置文件
 
@@ -69,7 +69,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ### <a name="metadata"></a>元数据
 
-以下设置可用于配置代码生成和维护：
+以下设置可用于配置代码生成模式：
 
 | Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
@@ -77,7 +77,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | CodeLength | 否 | 代码的长度。 默认值是 `6`。 |
 | CharacterSet | 否 | 代码的字符集，格式设置为在正则表达式中使用。 例如，`a-z0-9A-Z` 。 默认值是 `0-9`。 字符集必须在指定的集中至少包含10个不同的字符。 |
 | NumRetryAttempts | 否 | 代码被视为无效之前的验证尝试次数。 默认值是 `5`。 |
-| Operation | 是 | 要执行的操作。 可能的值： `GenerateCode`或 `VerifyCode`。 |
+| Operation | 是 | 要执行的操作。 可能的值： `GenerateCode`。 |
 | ReuseSameCode | 否 | 当给定代码未过期且仍然有效时，是否应提供重复的代码，而不是生成新代码。 默认值是 `false`。 |
 
 ### <a name="returning-error-message"></a>返回错误消息
@@ -90,22 +90,22 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ```XML
 <TechnicalProfile Id="GenerateCode">
-    <DisplayName>Generate Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">GenerateCode</Item>
-        <Item Key="CodeExpirationInSeconds">600</Item>
-        <Item Key="CodeLength">6</Item>
-        <Item Key="CharacterSet">0-9</Item>
-        <Item Key="NumRetryAttempts">5</Item>
-        <Item Key="ReuseSameCode">false</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-    </InputClaims>
-    <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
-    </OutputClaims>
+  <DisplayName>Generate Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">GenerateCode</Item>
+    <Item Key="CodeExpirationInSeconds">600</Item>
+    <Item Key="CodeLength">6</Item>
+    <Item Key="CharacterSet">0-9</Item>
+    <Item Key="NumRetryAttempts">5</Item>
+    <Item Key="ReuseSameCode">false</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpGenerated" />
+  </OutputClaims>
 </TechnicalProfile>
 ```
 
@@ -132,21 +132,23 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ### <a name="metadata"></a>元数据
 
-以下设置可用于配置在代码验证失败时显示的错误消息：
+以下设置可用于代码验证模式：
+
+| Attribute | 必选 | 说明 |
+| --------- | -------- | ----------- |
+| Operation | 是 | 要执行的操作。 可能的值： `VerifyCode`。 |
+
+
+### <a name="error-messages"></a>错误消息
+
+以下设置可用于配置在代码验证失败时显示的错误消息。 应在[自断言](self-asserted-technical-profile.md)技术配置文件中配置元数据。 可以[本地化](localization-string-ids.md#one-time-password-error-messages)错误消息。
 
 | Attribute | 必选 | 说明 |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | 否 | 在代码验证会话过期时向用户显示的消息。 代码已过期，或者从未为给定标识符生成了代码。 |
 | UserMessageIfMaxRetryAttempted | 否 | 当用户超过允许的最大验证尝试次数时向用户显示的消息。 |
 | UserMessageIfInvalidCode | 否 | 如果用户提供的代码无效，则向用户显示消息。 |
-
-### <a name="returning-error-message"></a>返回错误消息
-
-如[元数据](#metadata)中所述，你可以针对不同的错误情况自定义向用户显示的错误消息。 可以通过对区域设置进行前缀来进一步本地化这些消息，例如：
-
-```XML
-<Item Key="en.UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-```
+|UserMessageIfSessionConflict|否| 当无法验证代码时向用户显示的消息。|
 
 ### <a name="example"></a>示例
 
@@ -154,24 +156,21 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ```XML
 <TechnicalProfile Id="VerifyCode">
-    <DisplayName>Verify Code</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">VerifyCode</Item>
-        <Item Key="UserMessageIfInvalidCode">Wrong code has been entered.</Item>
-        <Item Key="UserMessageIfSessionDoesNotExist">Code has expired.</Item>
-        <Item Key="UserMessageIfMaxRetryAttempted">You've tried too many times.</Item>
-    </Metadata>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
-        <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
-    </InputClaims>
+  <DisplayName>Verify Code</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">VerifyCode</Item>
+  </Metadata>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="identifier" PartnerClaimType="identifier" />
+    <InputClaim ClaimTypeReferenceId="otpGenerated" PartnerClaimType="otpToVerify" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅以下文章，了解将一次性密码 technial 配置文件与自定义电子邮件验证配合使用的示例：
+请参阅以下文章，了解将一次性密码技术配置文件与自定义电子邮件验证配合使用的示例：
 
 - [Azure Active Directory B2C 中的自定义电子邮件验证](custom-email.md)
 

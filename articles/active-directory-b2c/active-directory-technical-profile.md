@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2c36a2c47605e7e672996a4a33734c9281dad042
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 82daf447270fc0413284e3e7a908a8b5237a4f9c
+ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78397830"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78932970"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 Azure Active Directory 技术配置文件
 
@@ -58,13 +58,13 @@ Azure Active Directory B2C （Azure AD B2C）提供对 Azure Active Directory �
 
 ## <a name="input-claims"></a>输入声明
 
-以下技术配置文件包含社交和本地帐户的 **InputClaims**：
+InputClaims 元素包含一个声明，该声明用于在目录中查找帐户，或创建一个新帐户。 所有 Azure AD 技术配置文件的输入声明集合中必须只有一个 InputClaim 元素。 可能需要将策略中定义的声明名称映射到 Azure Active Directory 中定义的名称。
 
-- 社交帐户技术配置文件 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserWriteUsingAlternativeSecurityId** 包含 **AlternativeSecurityId** 声明。 此声明包含社交帐户用户标识符。
-- 本地帐户技术配置文件 **AAD-UserReadUsingEmailAddress** 和 **AAD-UserWriteUsingLogonEmail** 包含 **email** 声明。 此声明包含本地帐户的登录名。
-- 统一（本地和社交）技术配置文件 **AAD-UserReadUsingObjectId**、**AAD-UserWritePasswordUsingObjectId**、**AAD-UserWriteProfileUsingObjectId** 和 **AAD-UserWritePhoneNumberUsingObjectId** 包含 **objectId** 声明。 帐户的唯一标识符。
+若要读取、更新或删除现有的用户帐户，输入声明是一个密钥，用于唯一标识 Azure AD directory 中的帐户。 例如， **objectId**、 **userPrincipalName**、 **signInNames、emailAddress**、 **signInNames**或**alternativeSecurityId**。 
 
-**InputClaimsTransformations** 元素可以包含用于修改输入声明或生成新输入声明的 **InputClaimsTransformation** 元素集合。
+若要创建新的用户帐户，输入声明是唯一标识本地或联合帐户的密钥。 例如，"本地帐户： **signInNames**" 或 " **signInNames**"。 对于联合帐户： **alternativeSecurityId**。
+
+InputClaimsTransformations 元素可能包含一个输入声明转换元素集合，这些元素用于修改输入声明或生成新的输入声明。
 
 ## <a name="output-claims"></a>输出声明
 

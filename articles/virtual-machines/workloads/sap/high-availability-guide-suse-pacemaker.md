@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/06/2020
 ms.author: radeltch
-ms.openlocfilehash: 06c92797f2cab96a9e0c423b0f0f754e57b99b14
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: fb73bf6af46ce8303e1be80d1bfc7303f95cda06
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598436"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927341"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -328,6 +328,16 @@ o- / ...........................................................................
    <pre><code>sudo zypper in socat
    </code></pre>
 
+1. **[A]** 安装群集资源所需的 azure lb 组件
+
+   <pre><code>sudo zypper in resource-agents
+   </code></pre>
+
+   > [!NOTE]
+   > 检查包资源代理的版本，并确保满足最低版本要求：  
+   > - 对于 SLES 12 SP4/SP5，版本必须至少为 4.3.018. a7fb5035-3.30.1。  
+   > - 对于 SLES 15/15 SP1，版本必须至少为资源代理-4.3.0184.6 ee15eb2-4.13.1。  
+
 1. **[A]** 配置操作系统
 
    在某些情况下，Pacemaker 会创建多个进程，因此会耗尽允许的进程数。 对于这种情况，群集节点之间的检测信号可能失败，并导致资源故障转移。 我们建议通过设置以下参数来增大允许的进程数上限。
@@ -607,9 +617,9 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 Azure 提供[预定事件](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)。 计划事件通过元数据服务来提供，并留出时间让应用程序为 VM 关闭、VM 重新部署等事件做好准备。资源代理 **[azure-事件](https://github.com/ClusterLabs/resource-agents/pull/1161)** 监视计划的 azure 事件。 如果检测到事件，代理将尝试停止受影响 VM 上的所有资源，并将其移到群集中的其他节点。 若要实现，必须配置其他 Pacemaker 资源。 
 
-1. **[A]** 安装**azure 事件**代理。 
+1. **[A]** 请确保已安装**azure 事件**代理的包，并保持最新。 
 
-<pre><code>sudo zypper install resource-agents
+<pre><code>sudo zypper info resource-agents
 </code></pre>
 
 2. **[1]** 配置 Pacemaker 中的资源。 

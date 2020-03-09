@@ -19,13 +19,13 @@ ms.locfileid: "66814854"
 
 ## <a name="scale-with-the-azure-portal"></a>使用 Azure 门户缩放
 
-1. 在 [Azure 门户](https://portal.azure.com)中，浏览“容器服务”  ，并单击要修改的容器服务。
-2. 在“容器服务”  边栏选项卡中，单击“代理”  。
-3. 在“VM 计数”  中，输入所需的代理节点数。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览“容器服务” ，并单击要修改的容器服务。
+2. 在“容器服务” 边栏选项卡中，单击“代理” 。
+3. 在“VM 计数” 中，输入所需的代理节点数。
 
     ![在门户中缩放池](./media/container-service-scale/container-service-scale-portal.png)
 
-4. 若要保存配置，请单击“保存”  。
+4. 若要保存配置，请单击“保存” 。
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 缩放
 

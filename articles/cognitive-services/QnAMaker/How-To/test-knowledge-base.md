@@ -1,22 +1,14 @@
 ---
 title: 如何测试知识库 - QnA Maker
-titleSuffix: Azure Cognitive Services
 description: 测试 QnA Maker 知识库是迭代过程的重要部分，可以提高返回响应的准确性。 可以通过增强的聊天界面测试知识库，该界面还允许你进行编辑。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.date: 03/05/2020
+ms.openlocfilehash: da4988ced0b077952ce64e6227d16e58d40ae329
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091753"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927279"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>在 QnA Maker 中测试您的知识库
 
@@ -61,11 +53,11 @@ ms.locfileid: "74091753"
 
 ### <a name="add-a-new-answer"></a>添加新答案
 
-如果匹配的任何现有答案不正确或知识库中不存在答案（在知识库中找不到良好匹配），则可以添加新答案。 
+如果匹配的任何现有答案不正确或知识库中不存在答案（在知识库中找不到良好匹配），则可以添加新答案。
 
-在 "答案" 列表的底部，使用文本框输入新答案并按 enter 添加新答案。 
+在 "答案" 列表的底部，使用文本框输入新答案并按 enter 添加新答案。
 
-选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。 
+选择“保存并训练”保存此答案。 现在，新的问答对已添加到知识库中。
 
 > [!NOTE]
 > 只有在按下“保存并训练”按钮时，才会保存对知识库的所有编辑。
@@ -83,12 +75,14 @@ ms.locfileid: "74091753"
 * 确定一组问题的顶级答案和分数
 * 验证问题集的预期答案
 
-批处理测试工具随批处理测试工具一起提供。 此工具作为可下载的[压缩可执行文件](https://aka.ms/qnamakerbatchtestingtool)或作为[ C#源代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)提供。 
+有关分步说明，请参阅批处理测试[教程](../Quickstarts/batch-testing.md)。
+
+批处理测试工具随批处理测试工具一起提供。 此工具作为可下载的[压缩可执行文件](https://aka.ms/qnamakerbatchtestingtool)或作为[ C#源代码](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting)提供。
 
 [有关该工具的参考文档](../reference-tsv-format-batch-testing.md)包括：
 
 * 此工具的命令行示例
-* TSV 输入和 outfile 文件的格式 
+* TSV 输入和 outfile 文件的格式
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/06/2019
-ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/06/2020
+ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979710"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78927565"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 机器学习监视数据引用
 
@@ -27,7 +27,7 @@ ms.locfileid: "75979710"
 
 ### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 表
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:---|
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
@@ -43,7 +43,7 @@ ms.locfileid: "75979710"
 | JobName | 作业的名称 |
 | ClusterId | 群集的 ID |
 | EventType | 作业事件的类型，例如 JobSubmitted、JobRunning、JobFailed、JobSucceeded，等等。 |
-| ExecutionState | 作业（运行）的状态，例如已排队、正在运行、成功、失败 |
+| Executionstate& | 作业（运行）的状态，例如已排队、正在运行、成功、失败 |
 | ErrorDetails | 作业错误详细信息 |
 | CreationApiVersion | 用于创建作业的 Api 版本 |
 | ClusterResourceGroupName | 群集的资源组名称 |
@@ -56,14 +56,14 @@ ms.locfileid: "75979710"
 
 ### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 表
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
 | 类别 | 日志事件的名称，AmlComputeClusterNodeEvent |
 | ProvisioningState | 群集的预配状态 |
 | ClusterName | 群集的名称 |
-| ClusterType | 群集的类型 |
+| clusterType | 群集的类型 |
 | CreatedBy | 创建群集的用户 |
 | CoreCount | 群集中的内核计数 |
 | VmSize | 群集的 Vm 大小 |
@@ -74,8 +74,8 @@ ms.locfileid: "75979710"
 | MaximumNodeCount | 群集的最大节点计数 |
 | NodeDeallocationOption | 应如何解除分配节点 |
 | 发布者 | 群集类型的发布者 |
-| 产品 | 用于创建群集的产品/服务 |
-| Sku | 在群集内创建的节点/VM 的 Sku |
+| 产品/服务 | 用于创建群集的产品/服务 |
+| SKU | 在群集内创建的节点/VM 的 Sku |
 | 版本 | 创建节点/VM 时使用的映像的版本 |
 | SubnetId | 群集的 SubnetId |
 | AllocationState | 群集分配状态 |
@@ -99,7 +99,7 @@ ms.locfileid: "75979710"
 
 ### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 表
 
-| 属性 | Description |
+| properties | 说明 |
 |:--- |:--- |
 | TimeGenerated | 生成日志条目的时间 |
 | OperationName | 与日志事件关联的操作的名称 |
@@ -110,8 +110,8 @@ ms.locfileid: "75979710"
 | VmFamilyName | 节点所属的 Vm 系列 |
 | VmPriority | 已创建专用/LowPriority 节点的优先级 |
 | 发布者 | Vm 映像的发布者，例如 microsoft-dsvm |
-| 产品 | 与 VM 创建相关联的产品/服务 |
-| Sku | 已创建的节点/VM 的 Sku |
+| 产品/服务 | 与 VM 创建相关联的产品/服务 |
+| SKU | 已创建的节点/VM 的 Sku |
 | 版本 | 创建节点/VM 时使用的映像的版本 |
 | ClusterCreationTime | 创建群集的时间 |
 | ResizeStartTime | 群集扩展/启动的时间 |
@@ -128,37 +128,37 @@ ms.locfileid: "75979710"
 
 **Model**
 
-| 度量值 | 单位 | Description |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
-| 模型部署失败 | 计数 | 失败的模型部署数。 |
-| 模型部署已启动 | 计数 | 开始部署的模型数。 |
-| 模型部署成功 | 计数 | 成功的模型部署数。 |
-| 模型注册失败 | 计数 | 失败的模型注册数。 |
-| 模型注册成功 | 计数 | 成功的模型注册数。 |
+| 模型部署失败 | Count | 失败的模型部署数。 |
+| 模型部署已启动 | Count | 开始部署的模型数。 |
+| 模型部署成功 | Count | 成功的模型部署数。 |
+| 模型注册失败 | Count | 失败的模型注册数。 |
+| 模型注册成功 | Count | 成功的模型注册数。 |
 
 **配额**
 
 配额信息仅用于 Azure 机器学习计算。
 
-| 度量值 | 单位 | Description |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
-| 活动核心 | 计数 | 活动计算核心数。 |
-| 活动节点 | 计数 | 活动节点数。 |
-| 空闲内核数 | 计数 | 空闲计算核心数。 |
-| 空闲节点 | 计数 | 空闲计算节点数。 |
-| 正在离开内核 | 计数 | 离开内核的数量。 |
-| 退出节点 | 计数 | 正在离开的节点数。 |
-| 抢先核心 | 计数 | 被占用的内核数。 |
-| 抢占节点 | 计数 | 被抢占的节点数。 |
+| 活动核心 | Count | 活动计算核心数。 |
+| 活动节点 | Count | 活动节点数。 |
+| 空闲内核数 | Count | 空闲计算核心数。 |
+| 空闲节点 | Count | 空闲计算节点数。 |
+| 正在离开内核 | Count | 离开内核的数量。 |
+| 退出节点 | Count | 正在离开的节点数。 |
+| 抢先核心 | Count | 被占用的内核数。 |
+| 抢占节点 | Count | 被抢占的节点数。 |
 | 配额使用率百分比 | 百分比 | 使用的配额的百分比。 |
-| 总核心数 | 计数 | 内核总数。 |
-| 节点总数 | 计数 | 节点总数。 |
-| 不可用内核 | 计数 | 无法使用的内核数。 |
-| 不可用节点 | 计数 | 无法使用的节点数。 |
+| 内核总数 | Count | 内核总数。 |
+| 节点总数 | Count | 节点总数。 |
+| 不可用内核 | Count | 无法使用的内核数。 |
+| 不可用节点 | Count | 无法使用的节点数。 |
 
 下面是可用于筛选配额指标的维度：
 
-| 维度 | 可用的指标 | Description |
+| 维度 | 可用的指标 | 说明 |
 | ---- | ---- | ---- |
 | 群集名称 | 所有配额指标 | 计算实例的名称。 |
 | Vm 系列名称 | 配额使用率百分比 | 群集使用的 VM 系列的名称。 |
@@ -168,15 +168,15 @@ ms.locfileid: "75979710"
 
 有关定型运行的信息。
 
-| 度量值 | 单位 | Description |
+| 指标 | 单位 | 说明 |
 | ----- | ----- | ----- |
-| 已完成运行 | 计数 | 已完成的运行数。 |
-| 失败的运行 | 计数 | 失败的运行数。 |
-| 已开始运行 | 计数 | 已启动的运行数。 |
+| 已完成运行 | Count | 已完成的运行数。 |
+| 失败的运行 | Count | 失败的运行数。 |
+| 已开始运行 | Count | 已启动的运行数。 |
 
 下面是可用于筛选运行度量值的维度：
 
-| 维度 | Description |
+| 维度 | 说明 |
 | ---- | ---- |
 | ComputeType | 运行的计算类型。 |
 | PipelineStepType | 运行中使用的[PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)的类型。 |
@@ -185,7 +185,7 @@ ms.locfileid: "75979710"
 
 RunType 维度的有效值为：
 
-| 值 | Description |
+| 值 | 说明 |
 | ----- | ----- |
 | 试验 | 非管道运行。 |
 | PipelineRun | 管道运行，它是 StepRun 的父级。 |
