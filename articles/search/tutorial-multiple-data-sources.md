@@ -1,27 +1,27 @@
 ---
-title: C#教程：为多个数据源编制索引
+title: C# 教程：索引多个数据源
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用索引器将数据从多个数据源导入单个 Azure 认知搜索索引。 本教程和示例代码位于中C#。
+description: 了解如何使用索引器将多个数据源的数据导入单个 Azure 认知搜索索引。 本教程和示例代码以 C# 编写。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 272926e6c3572f03cc316ee696893941fd91968d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
-ms.translationtype: MT
+ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206871"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78271484"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教程：从多个数据源中检索数据C#
+# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>教程：在 C# 中为多个数据源的数据编制索引
 
-Azure 认知搜索可以将来自多个数据源的数据导入、分析和索引到单个合并搜索索引。 这适合以下情况：其中结构化数据是使用来自文本、HTML 或 JSON 文档等其他源的结构化程度较低或甚至纯文本数据来聚合的。
+Azure 认知搜索可以导入、分析多个数据源的数据，并将其编制成单个合并的搜索索引。 这适合以下情况：其中结构化数据是使用来自文本、HTML 或 JSON 文档等其他源的结构化程度较低或甚至纯文本数据来聚合的。
 
 本教程介绍如何为来自 Azure Cosmos DB 数据源的酒店数据编制索引并将其与来自 Azure Blob 存储文档的酒店房间详细信息整合。 其结果将是包含复杂数据类型的合并的酒店搜索索引。
 
-本教程使用C#和[.net SDK](https://aka.ms/search-sdk)。 在本教程中，你将执行以下任务：
+本教程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk)。 你将在本教程中执行以下任务：
 
 > [!div class="checklist"]
 > * 上传示例数据和创建数据源
@@ -40,37 +40,37 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 + [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
-> 您可以使用本教程的免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保你已在服务上实现了接受新资源的空间。
+> 可在本教程中使用免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保服务中有足够的空间可接受新资源。
 
 ## <a name="download-files"></a>下载文件
 
-本教程的源代码位于[多数据源](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources)文件夹中的 " [dotnet-示例](https://github.com/Azure-Samples/azure-search-dotnet-samples)" GitHub 存储库中。
+本教程的源代码位于 [azure-search-dotnet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) GitHub 存储库的 [multiple-data-sources](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/multiple-data-sources) 文件夹中。
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
-本教程使用 Azure 认知搜索进行索引和查询，为一个数据集 Azure Cosmos DB，为第二个数据集使用 Azure Blob 存储。 
+本教程使用 Azure 认知搜索进行索引编制和查询，对一个数据集使用 Azure Cosmos DB，对第二个数据集使用 Azure Blob 存储。 
 
-如果可能，请在同一区域和资源组中创建所有服务，以了解邻近性和可管理性。 在实践中，你的服务可以位于任何区域中。
+如果可能，请在同一区域和资源组中创建所有服务，使它们相互靠近并易于管理。 在实践中，服务可位于任意区域。
 
 此示例使用两个小数据集，其中包含七个虚构酒店的数据。 一个数据集描述酒店本身，将加载到 Azure Cosmos DB 数据库中。 另一个包含酒店房间的详细信息，并以七个单独的 JSON 文件的形式提供，将上传到 Azure Blob 存储中。
 
-### <a name="start-with-cosmos-db"></a>开始 Cosmos DB
+### <a name="start-with-cosmos-db"></a>从 Cosmos DB 开始
 
-1. 登录到[Azure 门户](https://portal.azure.com)，然后导航到 Azure Cosmos DB 帐户概述 "页。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后导航到自己的 Azure Cosmos DB 帐户的“概述”页。
 
-1. 选择**数据资源管理器**，然后选择 "**新建数据库**"。
+1. 依次选择“数据资源管理器”、“新建数据库”。  
 
-   ![创建新数据库](media/tutorial-multiple-data-sources/cosmos-newdb.png "创建新数据库")
+   ![创建新数据库](media/tutorial-multiple-data-sources/cosmos-newdb.png "新建数据库")
 
-1. 输入名称 "**宾馆-数据库**"。 接受其余设置的默认值。
+1. 输入名称 **hotel-rooms-db**。 对于剩余的设置，请接受默认值。
 
    ![配置数据库](media/tutorial-multiple-data-sources/cosmos-dbname.png "配置数据库")
 
-1. 创建新容器。 使用刚才创建的现有数据库。 输入 "**酒店**" 作为容器名称，并使用 " **/HotelId** " 作为分区键。
+1. 创建新容器。 使用刚刚创建的现有数据库。 输入**hotels** 作为容器名称，输入 **/HotelId** 作为分区键。
 
    ![添加容器](media/tutorial-multiple-data-sources/cosmos-add-container.png "添加容器")
 
-1. 选择 "**酒店**" 下的**项目**，然后单击命令栏上的 "**上传项目**"。 导航到项目文件夹中的**cosmosdb/HotelsDataSubset_CosmosDb**文件，然后选择该文件。
+1. 选择“hotels”下的“项”，然后单击命令栏上的“上传项”。    导航到项目文件夹中的 **cosmosdb/HotelsDataSubset_CosmosDb.json** 文件并将其选中。
 
    ![上传到 Azure Cosmos DB 集合](media/tutorial-multiple-data-sources/cosmos-upload.png "上传到 Cosmos DB 集合")
 
@@ -78,15 +78,15 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 
-1. 登录到[Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击 " **blob**"，然后单击 " **+ 容器**"。
+1. 登录到 [Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。  
 
-1. [创建 blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)，名为“hotel-rooms”，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
+1. [创建 blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)，名为“hotel-rooms”  ，用于存储示例酒店房间 JSON 文件。 可将“公共访问级别”设为任何有效值。
 
    ![创建一个 blob 容器](media/tutorial-multiple-data-sources/blob-add-container.png "创建 Blob 容器")
 
-1. 创建容器后，将其打开，然后在命令栏中选择“上传”。 导航到包含示例文件的文件夹。 选择所有这些文件，然后单击“上传”。
+1. 创建容器后，将其打开，然后在命令栏中选择“上传”  。 导航到包含示例文件的文件夹。 选择所有这些文件，然后单击“上传”  。
 
-   ![上传文件](media/tutorial-multiple-data-sources/blob-upload.png "上载文件")
+   ![上传文件](media/tutorial-multiple-data-sources/blob-upload.png "上传文件")
 
 上传完成后，这些文件应会显示在数据容器的列表中。
 
@@ -98,9 +98,9 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 
 必须有 Azure 认知搜索服务 URL 和访问密钥，才能与此服务交互。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-1. 在“设置” **“密钥”中，获取有关该服务的完全权限的管理员密钥** > 。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
    此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
@@ -108,19 +108,19 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 
 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="2---set-up-your-environment"></a>2-设置你的环境
+## <a name="2---set-up-your-environment"></a>2 - 设置环境
 
-1. 启动 Visual Studio 2019，然后在 "**工具**" 菜单中选择 " **Nuget 包管理器**"，然后选择 "**管理解决方案的 nuget 包**..."。 
+1. 启动 Visual Studio 2019，在“工具”菜单中，依次选择“NuGet 包管理器”、“管理解决方案...的 NuGet 包”。    
 
-1. 在“浏览”选项卡中，找到并安装 **Microsoft.Azure.Search**（9.0.1 或更高版本）。 需要再单击几个对话框来完成安装。
+1. 在“浏览”选项卡中，  找到并安装 **Microsoft.Azure.Search**（9.0.1 或更高版本）。 需要再单击几个对话框来完成安装。
 
     ![使用 NuGet 添加 Azure 库](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-1. 搜索并安装 "" 的 ""**配置**文件。
+1. 搜索 **Microsoft.Extensions.Configuration.Json** NuGet 包并安装它。
 
-1. 打开解决方案文件**AzureSearchMultipleDataSources**。
+1. 打开解决方案文件 **AzureSearchMultipleDataSources.sln**。
 
-1. 在解决方案资源管理器中，编辑**appsettings**文件以添加连接信息。  
+1. 在解决方案资源管理器中，编辑 **appsettings.json** 文件以添加连接信息。  
 
     ```json
     {
@@ -137,32 +137,32 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 
 其余条目指定 Azure Blob 存储和 Azure Cosmos DB 数据源的帐户名称和连接字符串信息。
 
-## <a name="3---map-key-fields"></a>3-映射键字段
+## <a name="3---map-key-fields"></a>3 - 映射键字段
 
-合并内容要求两个数据流都以搜索索引中的相同文档为目标。 
+合并内容需要两个数据流针对搜索索引中的相同文档。 
 
-在 Azure 认知搜索中，"键" 字段用于唯一标识每个文档。 每个搜索索引必须只有一个类型为 `Edm.String` 的键字段。 必须为添加到索引中的每个数据源文档设置键字段。 （事实上，它是唯一的必填字段。）
+在 Azure 认知搜索中，键字段用于唯一标识每个文档。 每个搜索索引必须只有一个类型为 `Edm.String` 的键字段。 必须为添加到索引中的每个数据源文档设置键字段。 （事实上，它是唯一的必填字段。）
 
-索引来自多个数据源的数据时，请确保每个传入行或文档都包含一个公共文档键，用于将两个物理不同源文档中的数据合并到合并索引的新搜索文档中。 
+为多个数据源的数据编制索引时，请确保传入的每个行或文档包含一个通用文档键，用于将物理上不同的两个源文档的数据合并成组合索引中的新搜索文档。 
 
-它通常需要进行一些前期规划才能标识索引的有意义的文档键，并确保它存在于这两个数据源中。 在此演示中，Cosmos DB 在 Blob 存储中的每个旅馆的 `HotelId` 密钥也出现在房间 JSON blob 中。
+通常需要进行一些前期规划，为索引确定有意义的文档键，并确保它存在于两个数据源中。 在本演示中，Cosmos DB 中每家酒店的 `HotelId` 键也存在于 Blob 存储中的客房 JSON Blob 内。
 
-在索引编制过程中，Azure 认知搜索索引器可以使用字段映射来重命名数据字段甚至重新设置其格式，以便可以将源数据定向到正确的索引字段。 例如，在 Cosmos DB 中，酒店标识符称为 **`HotelId`** 。 但在旅馆房间的 JSON blob 文件中，酒店标识符名为 **`Id`** 。 程序通过将 **`Id`** 字段从 blob 映射到索引中的 **`HotelId`** 键字段来处理这种情况。
+在索引编制过程中，Azure 认知搜索索引器可以使用字段映射来重命名数据字段甚至重新设置其格式，以便可以将源数据定向到正确的索引字段。 例如，在 Cosmos DB 中，酒店标识符名为 **`HotelId`** 。 但在酒店客房的 JSON Blob 文件中，酒店标识符名为 **`Id`** 。 程序通过将 Blob 中的 **`Id`** 字段映射到索引中的 **`HotelId`** 键字段来处理这种情况。
 
 > [!NOTE]
-> 在大多数情况下，自动生成的文档键（例如，某些索引器在默认情况下创建的）不会为组合索引提供好的文档键。 一般而言，会需要使用数据源中已存在的或可轻松添加到数据源中的有意义且唯一的键值。
+> 大多数情况下，自动生成的文档键（如某些索引器默认创建的），不会为合并的索引提供有用的文档键。 一般而言，会需要使用数据源中已存在的或可轻松添加到数据源中的有意义且唯一的键值。
 
-## <a name="4---explore-the-code"></a>4-浏览代码
+## <a name="4---explore-the-code"></a>4 - 浏览代码
 
-指定数据和配置设置后，AzureSearchMultipleDataSources.sln 中的示例程序应已可以生成并运行。
+指定数据和配置设置后，AzureSearchMultipleDataSources.sln  中的示例程序应已可以生成并运行。
 
 此简单的 C#/.NET 控制台应用程序执行以下任务：
 
-* 基于C#宾馆类的数据结构创建新的索引（也引用 Address 和聊天室类）。
-* 创建新的数据源和索引器，该索引器将 Azure Cosmos DB 的数据映射到索引字段。 这些是 Azure 认知搜索中的两个对象。
-* 运行索引器以从 Cosmos DB 加载宾馆数据。
-* 创建第二个数据源和一个将 JSON blob 数据映射到索引字段的索引器。
-* 运行第二个索引器以从 Blob 存储区加载房间数据。
+* 基于 C# Hotel 类的数据结构（该类还引用 Address 和 Room 类）创建新索引。
+* 创建新的数据源以及用于将 Azure Cosmos DB 数据映射到索引字段的索引器。 该数据源和索引器都是 Azure 认知搜索中的对象。
+* 运行该索引器以从 Cosmos DB 加载酒店数据。
+* 创建另一个数据源以及用于将 JSON Blob 数据映射到索引字段的索引器。
+* 运行第二个索引器以从 Blob 存储加载客房数据。
 
  运行该程序之前，请抽时间研究此示例的代码、索引和索引器定义。 相关代码在两个文件中：
 
@@ -175,7 +175,7 @@ Azure 认知搜索可以将来自多个数据源的数据导入、分析和索�
 
 数据模型由“酒店”类定义，该类还包含对“地址”和“房间”类的引用。 FieldBuilder 向下钻取多个类定义，从而为索引生成复杂的数据结构。 元数据标记用于定义每个字段的属性，例如字段是否可搜索或可排序。
 
-以下 Hotel.cs 文件中的片段显示如何指定单个字段和对另一个数据模型类的引用。
+以下 Hotel.cs  文件中的片段显示如何指定单个字段和对另一个数据模型类的引用。
 
 ```csharp
 . . . 
@@ -186,7 +186,7 @@ public Room[] Rooms { get; set; }
 . . .
 ```
 
-在 Program.cs 文件中，索引是使用由 `FieldBuilder.BuildForType<Hotel>()` 方法生成的名称和字段集合来定义的，并按下示方法创建：
+在 Program.cs  文件中，索引是使用由 `FieldBuilder.BuildForType<Hotel>()` 方法生成的名称和字段集合来定义的，并按下示方法创建：
 
 ```csharp
 private static async Task CreateIndex(string indexName, SearchServiceClient searchService)
@@ -229,7 +229,7 @@ private static async Task CreateAndRunCosmosDbIndexer(string indexName, SearchSe
     await searchService.DataSources.CreateOrUpdateAsync(cosmosDbDataSource);
   ```
 
-创建数据源后，该程序会设置一个名为 hotel-rooms-cosmos-indexer 的 Azure Cosmos DB 索引器。
+创建数据源后，该程序会设置一个名为 hotel-rooms-cosmos-indexer  的 Azure Cosmos DB 索引器。
 
 ```csharp
     Indexer cosmosDbIndexer = new Indexer(
@@ -289,7 +289,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
 ```
 
-创建数据源后，该程序会设置一个名为 hotel-rooms-blob-indexer 的 blob 索引器。
+创建数据源后，该程序会设置一个名为 hotel-rooms-blob-indexer  的 blob 索引器。
 
 ```csharp
     // Add a field mapping to match the Id field in the documents to 
@@ -315,7 +315,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-JSON blob 包含名为 **`Id`** 的键字段，而不是 **`HotelId`** 。 代码使用 `FieldMapping` 类通知索引器将 **`Id`** 字段值定向到索引中的 **`HotelId`** 文档键。
+JSON Blob 包含名为 **`Id`** 而不是 **`HotelId`** 的键字段。 该代码使用 `FieldMapping` 类来指示索引器将 **`Id`** 字段值定向到索引中的 **`HotelId`** 文档键。
 
 Blob 存储索引器可使用能标识要使用的分析模式的参数。 该分析模式不同于 blob，后者表示单个文档或相同 blob 中的多个文档。 在此示例中，每个 blob 表示单个索引文档，因此代码使用 `IndexingParameters.ParseJson()` 参数。
 
@@ -343,13 +343,13 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 由于索引已使用 Azure Cosmos DB 数据库的酒店数据进行了填充，blob 索引器会更新索引中的现有文档，并添加房间的详细信息。
 
 > [!NOTE]
-> 如果有两个数据源中都有的非键字段且这些字段中的数据不匹配，则索引将包含最近一次运行的任何索引器的值。 在本示例中，这两个数据源都包含 HotelName 字段。 如果由于某种原因，对于具有相同键值的文档，此字段中的数据不同，则索引中存储的值将是最近被编入索引的数据源的 HotelName 数据。
+> 如果有两个数据源中都有的非键字段且这些字段中的数据不匹配，则索引将包含最近一次运行的任何索引器的值。 在本示例中，这两个数据源都包含 HotelName  字段。 如果由于某种原因，对于具有相同键值的文档，此字段中的数据不同，则索引中存储的值将是最近被编入索引的数据源的 HotelName  数据。
 
 ## <a name="5---search"></a>5 - 搜索
 
-可尝试使用门户中的[搜索资源管理器](search-explorer.md)在程序开始运行后浏览填充的搜索索引。
+可尝试使用门户中的[搜索资源管理器](search-explorer.md)  在程序开始运行后浏览填充的搜索索引。
 
-在 Azure 门户中，打开搜索服务的“概述”页，在“索引”列表中找到“hotel-rooms-sample”索引。
+在 Azure 门户中，打开搜索服务的“概述”页，在“索引”列表中找到“hotel-rooms-sample”索引    。
 
   ![Azure 认知搜索索引列表](media/tutorial-multiple-data-sources/index-list.png "Azure 认知搜索索引列表")
 
@@ -357,21 +357,21 @@ Blob 存储索引器可使用能标识要使用的分析模式的参数。 该�
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 
-在开发的早期实验阶段，设计迭代的最实用方法是从 Azure 认知搜索中删除对象，并允许你的代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 认知搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
-本教程的示例代码检查现有对象并将其删除，以便您可以重新运行代码。
+本教程的示例代码将检查现有对象并将其删除，使你能够重新运行代码。
 
-还可以使用门户删除索引、索引器和数据源。
+也可以使用门户来删除索引、索引器和数据源。
 
 ## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-使用左侧导航窗格中的 "所有资源" 或 "资源组" 链接，可以在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接在门户中查找和管理资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在你熟悉了来自多个源的引入数据概念，接下来让我们详细了解索引器配置，从 Cosmos DB 开始。
+熟悉从多个源引入数据的概念后，接下来让我们从 Cosmos DB 开始更详细地了解索引器配置。
 
 > [!div class="nextstepaction"]
 > [配置 Azure Cosmos DB 索引器](search-howto-index-cosmosdb.md)

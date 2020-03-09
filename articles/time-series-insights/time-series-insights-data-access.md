@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894807"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360004"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 

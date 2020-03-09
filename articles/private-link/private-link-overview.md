@@ -1,46 +1,54 @@
 ---
 title: 什么是 Azure 专用链接？
-description: 了解如何使用 Azure 专用链接通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。
+description: Azure 专用链接功能、体系结构和实施方案的概述。 了解 Azure 专用终结点和 Azure 专用链接服务的工作原理及其用法。
 services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 01/09/2020
+ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: aea424d4e74f0744f5891a0d7b3b08008fa227b5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 710c5a780841135344d92e93a02f97963b36b09e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562031"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921384"
 ---
 # <a name="what-is-azure-private-link"></a>什么是 Azure 专用链接？ 
-使用 Azure 专用链接，可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问 Azure PaaS 服务（例如，Azure 存储、Azure Cosmos DB 和 SQL 数据库）和 Azure 托管的客户服务/合作伙伴服务。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 你还可以在虚拟网络 (VNet) 中创建自己的[专用链接服务](private-link-service-overview.md)，并将其专门提供给自己的客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
+使用 Azure 专用链接可以访问如下所述的 Azure PaaS 服务：
+ 
+ - **Azure 存储**
+ - **Azure Cosmos DB**
+ - **Azure SQL 数据库**
+
+使用专用链接可以通过虚拟网络中的[专用终结点](private-endpoint-overview.md)访问托管的客户服务和合作伙伴服务。
+
+虚拟网络与服务之间的流量将遍历 Microsoft 主干网络。 不再需要向公共 Internet 公开服务。 可以在虚拟网络中创建自己的[专用链接服务](private-link-service-overview.md)，并将其交付给客户。 使用 Azure 专用链接的设置和使用体验在 Azure PaaS、客户自有服务和共享合作伙伴服务中是一致的。
 
 > [!IMPORTANT]
-> Azure 专用链接现在是正式发布的功能。 专用终结点和专用链接服务（标准负载均衡器后的服务）都已正式发布。 不同的 Azure PaaS 会按不同计划加入 Azure 专用链接。 请查看下面的[可用性](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)部分，了解专用链接上 Azure PaaS 的准确状态。 有关已知的限制，请参阅[专用终结点](private-endpoint-overview.md#limitations)和[专用链接服务](private-link-service-overview.md#limitations)。 
+> Azure 专用链接现已推出正式版。 专用终结点和专用链接服务（标准负载均衡器后面的服务）都已推出正式版。 不同的 Azure PaaS 会按不同计划加入 Azure 专用链接。 请查看下面的[可用性](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)部分，了解专用链接上 Azure PaaS 的准确状态。 有关已知的限制，请参阅[专用终结点](private-endpoint-overview.md#limitations)和[专用链接服务](private-link-service-overview.md#limitations)。 
 
 ![专用终结点概述](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>主要优点
 Azure 专用链接提供以下优势：  
-- **以私密方式访问 Azure 平台上的服务**：以私密方式将虚拟网络连接到 Azure 中运行的服务，而无需在源或目标上使用公共 IP 地址。 服务提供商可在自己的虚拟网络中以私密方式呈现其服务，而使用者可在其本地虚拟网络中以私密方式访问这些服务。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。 
+- **以私密方式访问 Azure 平台上的服务**：无需在源或目标上使用公共 IP 地址，即可将虚拟网络连接到 Azure 中的服务。 服务提供商可在自己的虚拟网络中呈现其服务，而使用者可在其本地虚拟网络中访问这些服务。 专用链接平台将通过 Azure 主干网络处理使用者与服务之间的连接。 
  
-- **本地网络和对等互连的网络**：使用专用终结点通过 ExpressRoute 专用对等互连/VPN 隧道和对等互连的虚拟网络从本地访问 Azure 中运行的服务。 无需设置公共对等互连或遍历 Internet 即可访问服务。 此功能可让客户安全地将工作负荷迁移到 Azure。
+- **本地网络和对等互连的网络**：使用专用终结点通过 ExpressRoute 专用对等互连、VPN 隧道和对等互连的虚拟网络从本地访问 Azure 中运行的服务。 无需设置公共对等互连或遍历 Internet 即可访问服务。 专用链接可让客户安全地将工作负荷迁移到 Azure。
  
-- **防范数据渗透**：VNet 中的专用终结点通过 Azure 专用链接映射到客户 PaaS 资源的特定实例，而不是映射到整个服务。 使用专用终结点，使用者可以做到仅连接到特定的资源，而不连接到服务中的任何其他资源。 这种内置机制可以防范数据渗透的风险。 
+- **防范数据泄露**：专用终结点映射到 PaaS 资源的某个实例，而不是映射到整个服务。 使用者只能连接到特定的资源。 对服务中任何其他资源的访问将遭到阻止。 此机制可以防范数据泄露风险。 
  
-- **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 这意味着，使用者的虚拟网络可以位于区域 A，而且可以连接到区域 B 中专用链接后面的服务。  
+- **全球覆盖**：以私密方式连接到在其他区域中运行的服务。 使用者的虚拟网络可以位于区域 A，而且可以连接到区域 B 中专用链接后面的服务。  
  
-- **扩展到自己的服务**：利用相同的体验和功能以私密方式将自己的服务呈现给 Azure 中的使用者。 将服务放在标准负载均衡器的后面即可为其启用专用链接。 然后，使用者可以使用其自己的 VNet 中的专用终结点直接连接到你的服务。 可以使用简单的审批调用流来管理这些连接请求。 Azure 专用链接也适用于属于不同 Active Directory 租户的使用者和服务。 
+- **扩展到自己的服务**：实现相同的体验和功能，以私密方式将服务呈现给 Azure 中的使用者。 将服务放在标准 Azure 负载均衡器的后面即可为其启用专用链接。 然后，使用者可以使用其自己的虚拟网络中的专用终结点直接连接到你的服务。 可以使用审批调用流来管理这些连接请求。 Azure 专用链接适用于属于不同 Azure Active Directory 租户的使用者和服务。 
 
 ## <a name="availability"></a>可用性 
  下表列出了专用链接服务及其适用的区域。 
 
 |场景  |支持的服务  |可用区域 | 状态  |
 |:---------|:-------------------|:-----------------|:--------|
-|客户自有服务的专用链接|标准负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+|客户自有服务的专用链接|标准 Azure 负载均衡器后面的专用链接服务 | 所有公共区域  | GA <br/> [了解详细信息](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
 |Azure PaaS 服务的专用链接   | Azure 存储        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
 |  | Azure Data Lake Storage Gen2        |  所有公共区域      | 预览 <br/> [了解详细信息](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL 数据库         | 所有公共区域      |   预览 <br/> [了解详细信息](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
@@ -55,8 +63,15 @@ Azure 专用链接提供以下优势：
 
 ## <a name="logging-and-monitoring"></a>日志记录和监视
 
-Azure 专用链接与 Azure Monitor 集成，使你能够在存储帐户中存档日志、将事件流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 可以在 Azure Monitor 中访问以下信息： 
-- **专用终结点**：专用终结点处理的数据（传入/传出）
+Azure 专用链接可与 Azure Monitor 集成。 通过这种组合可以：
+
+ - 将日志存档到存储帐户。
+ - 将事件流式传输到事件中心。
+ - 启用 Azure Monitor 日志记录。
+
+可以在 Azure Monitor 中访问以下信息： 
+- **专用终结点**： 
+    - 专用终结点处理的数据（传入/传出）
  
 - **专用链接服务**：
     - 专用链接服务处理的数据（传入/传出）
@@ -75,12 +90,9 @@ Azure 专用链接与 Azure Monitor 集成，使你能够在存储帐户中存�
 有关 SLA，请参阅 [Azure 专用链接的 SLA](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)。
 
 ## <a name="next-steps"></a>后续步骤
-- [使用门户创建 SQL 数据库服务器的专用终结点](create-private-endpoint-portal.md)
-- [使用 PowerShell 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-powershell.md)
-- [使用 CLI 创建 SQL 数据库服务器的专用终结点](create-private-endpoint-cli.md)
-- [使用门户创建存储帐户的专用终结点](create-private-endpoint-storage-portal.md)
-- [使用门户创建 Azure Cosmos 帐户的专用终结点](../cosmos-db/how-to-configure-private-endpoints.md)
-- [使用 Azure PowerShell 创建自己的专用链接服务](create-private-link-service-powershell.md)
+
+- [快速入门：使用 Azure 门户创建专用终结点](create-private-endpoint-portal.md)
+- [快速入门：使用 Azure 门户创建专用链接服务](create-private-link-service-portal.md)
 
 
  

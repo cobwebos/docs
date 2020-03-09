@@ -17,11 +17,11 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775160"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377316"
 ---
 # <a name="protected-web-api-app-registration"></a>受保护的 web API：应用注册
 

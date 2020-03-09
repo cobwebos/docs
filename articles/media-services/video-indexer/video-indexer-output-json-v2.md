@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
 ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514385"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363921"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>检查 API 生成的视频索引器输出
 
@@ -28,7 +28,7 @@ ms.locfileid: "76514385"
 
 此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
 
-![见解](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![洞察力](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 本文探讨“获取视频索引”API 返回的 JSON 内容。 
 
@@ -38,7 +38,7 @@ ms.locfileid: "76514385"
 
 ## <a name="root-elements"></a>根元素
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |accountId|播放列表的 VI 帐户 ID。|
 |id|播放列表的 ID。|
@@ -78,7 +78,7 @@ ms.locfileid: "76514385"
 
 本部分介绍见解的摘要。
 
-|Attribute | Description|
+|特性 | 说明|
 |---|---|
 |name|视频的名称。 例如 Azure Monitor。|
 |id|视频的 ID。 例如 63c6d532ff。|
@@ -98,7 +98,7 @@ ms.locfileid: "76514385"
 
 ## <a name="videos"></a>videos
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |accountId|视频的 VI 帐户 ID。|
 |id|视频的 ID。|
@@ -117,7 +117,7 @@ ms.locfileid: "76514385"
 |publishedUrlProxy|要从中流式传输视频的 URL（适用于 Apple 设备）。|
 |viewToken|用于流式传输视频的短期查看令牌。|
 |sourceLanguage|视频的源语言。|
-|语言|视频的实际语言（翻译）。|
+|language|视频的实际语言（翻译）。|
 |indexingPreset|用于编制视频索引的预设。|
 |streamingPreset|用于发布视频的预设。|
 |linguisticModelId|用于转录视频的 CRIS 模型。|
@@ -152,12 +152,12 @@ ms.locfileid: "76514385"
 
 每个见解（例如，脚本行、面部、品牌等）都包含一个唯一元素（例如，face1、face2、face3）的列表，每个元素都有其自己的元数据和其实例的列表（这是具有其他可选元数据的时间范围）。
 
-人脸可能有 ID、名称、缩略图、其他元数据和其时态实例列表（例如：00:00:05 –00:00:10、00:01:00-00:02:30 和00:41:21 –00:41:49）。每个临时实例都可以有其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
+人脸可能具有 ID、名称、缩略图、其他元数据及其时态实例的列表（例如：00:00:05 - 00:00:10、00:01:00 - 00:02:30 和 00:41:21 - 00:41:49）。每个时态实例可以包含其他元数据。 例如，人脸的矩形坐标 (20,230,60,60)。
 
-|版本|代码版本|
+|Version|代码版本|
 |---|---|
 |sourceLanguage|视频的源语言（采用一种主要语言）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
-|语言|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
+|language|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |脚本|[脚本](#transcript)见解。|
 |ocr|[OCR](#ocr)见解。|
 |关键字|[关键字](#keywords)见解。|
@@ -173,7 +173,7 @@ ms.locfileid: "76514385"
 |情感| [情感](#emotions)见解。|
 |topics|[主题](#topics)见解。|
 
-示例：
+例如：
 
 ```json
 {
@@ -196,21 +196,21 @@ ms.locfileid: "76514385"
 
 #### <a name="blocks"></a>blocks
 
-Attribute | Description
+特性 | 说明
 ---|---
 id|块的 ID。|
 实例|此块的时间范围列表。|
 
 #### <a name="transcript"></a>脚本
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|行 ID。|
 |text|脚本本身。|
-|语言|脚本语言。 旨在支持每行语言不同的脚本。|
+|language|脚本语言。 旨在支持每行语言不同的脚本。|
 |实例|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
-示例：
+例如：
 
 ```json
 "transcript": [
@@ -241,12 +241,12 @@ id|块的 ID。|
 
 #### <a name="ocr"></a>ocr
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR 文本。|
 |confidence|识别置信度。|
-|语言|OCR 语言。|
+|language|OCR 语言。|
 |实例|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
 |height|OCR 矩形的高度|
 |top|Px 中的顶部位置|
@@ -276,12 +276,12 @@ id|块的 ID。|
 
 #### <a name="keywords"></a>关键字
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|关键字 ID。|
 |text|关键字文本。|
 |confidence|关键字的识别置信度。|
-|语言|关键字语言（转换后）。|
+|language|关键字语言（转换后）。|
 |实例|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|
 
 ```json
@@ -307,7 +307,7 @@ id|块的 ID。|
 
 #### <a name="faces"></a>人脸
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|人脸 ID。|
 |name|人脸名称。 可以为“Unknown #0”、公认的名人或经过客户培训的人员。|
@@ -352,11 +352,11 @@ id|块的 ID。|
 
 #### <a name="labels"></a>标签
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|标签 ID。|
 |name|标签名称（例如“计算机”、“电视”）。|
-|语言|标签名称语言（转换后）。 BCP-47|
+|language|标签名称语言（转换后）。 BCP-47|
 |实例|出现此标签的时间范围列表（一个标签可重复多次出现）。 每个实例都有置信度字段。 |
 
 
@@ -411,7 +411,7 @@ id|块的 ID。|
 
 #### <a name="scenes"></a>scenes
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|场景 ID。|
 |实例|此场景的时间范围列表（场景只能有1个实例）。|
@@ -444,7 +444,7 @@ id|块的 ID。|
 
 #### <a name="shots"></a>截图
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|截图 ID。|
 |keyFrames|快照内的关键帧列表（每个关键帧都有一个 ID 和一个实例时间范围列表）。 每个关键帧实例都有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
@@ -494,7 +494,7 @@ id|块的 ID。|
 
 在语音转文本脚本和/或视频 OCR 中检测到的企业和产品品牌名称。 这不包括品牌或徽标检测内容的视觉辨识形式。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|品牌 ID。|
 |name|品牌名称。|
@@ -553,7 +553,7 @@ id|块的 ID。|
 
 #### <a name="statistics"></a>statistics
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |CorrespondenceCount|视频中对应关系的数目。|
 |SpeakerWordCount|每个发言人的单词数。|
@@ -563,7 +563,7 @@ id|块的 ID。|
 
 #### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|音频效果 ID。|
 |type|音频效果类型（例如鼓掌、语音、静音）。|
@@ -592,7 +592,7 @@ id|块的 ID。|
 
 情绪依据其 sentimentType 字段得出（积极/中立/消极）。 例如：0-0.1、0.1-0.2。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|情绪 ID。|
 |averageScore |该情绪类型的所有实例的所有分数的均值 - 积极/中立/消极|
@@ -631,7 +631,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 被确定包含成人或不雅内容的视频可能仅可供私人观看。 用户可以选择请求人工审查内容，在这种情况下，IsAdult 属性将包含人工审查的结果。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|视觉内容审核 ID。|
 |adultScore|成人内容评分（由内容审核员提供）。|
@@ -667,7 +667,7 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="textualcontentmoderation"></a>textualContentModeration 
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|文本内容审核 ID。|
 |bannedWordsCount |受禁单词的数目。|
@@ -675,12 +675,12 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 #### <a name="emotions"></a>情感
 
-视频索引器根据语音和音频提示识别情感。确定的情感可能是：乐趣、悲伤、愤怒或恐惧。
+视频索引器基于语音和音频提示识别情感。识别的情感可能是：快乐、悲伤、愤怒或恐惧。
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|情感 ID。|
-|type|根据语音和音频提示识别的情感时刻。情感可能是：乐趣、悲伤、愤怒或恐惧。|
+|type|基于语音和音频提示识别的瞬间情感。情感可能是：快乐、悲伤、愤怒或恐惧。|
 |实例|出现该情感的时间范围列表。|
 
 ```json
@@ -767,13 +767,13 @@ visualContentModeration 块包含视频索引器找到的、可能具有成人�
 
 视频索引器从脚本中推理主要主题。 在可能的情况下，将包括第2级[IPTC](https://iptc.org/standards/media-topics/)分类。 
 
-|名称|Description|
+|名称|说明|
 |---|---|
 |id|主题 ID。|
-|name|主题名称，例如：“Pharmaceuticals”。|
-|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利 / 医疗和保健 / 药品”。|
+|name|主题名称，例如：“药品”。|
+|referenceId|反映主题层次结构的痕迹导航。 例如：“健康和福利/医疗和保健/药品”。|
 |confidence|[0,1] 范围内的置信度评分。 评分越高，则置信度越高。|
-|语言|主题中使用的语言。|
+|language|主题中使用的语言。|
 |iptcName|IPTC 媒体代码名称（如果已检测到）。|
 |实例 |目前，视频索引器不会按时间间隔编制主题的索引，因此，整个视频将用作间隔。|
 

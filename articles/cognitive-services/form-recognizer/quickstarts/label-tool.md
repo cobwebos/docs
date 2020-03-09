@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485346"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205810"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用示例标记工具通过标签来训练表单识别器模型
 
@@ -22,7 +22,7 @@ ms.locfileid: "77485346"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，必须具备以下条件：
 
@@ -35,12 +35,19 @@ ms.locfileid: "77485346"
 ## <a name="set-up-the-sample-labeling-tool"></a>设置示例标记工具
 
 你将使用 Docker 引擎来运行示例标记工具。 请按以下步骤设置 Docker 容器。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。
-1. 首先，在主计算机上安装 Docker。 主计算机可以是本地计算机（[Windows](https://docs.docker.com/docker-for-windows/)、[macOS](https://docs.docker.com/docker-for-mac/) 或 [Linux](https://docs.docker.com/install/)）。 或者，可以使用 Azure 中的 Docker 托管服务，例如 [Azure Kubernetes 服务](https://docs.microsoft.com/azure/aks/index)、[Azure 容器实例](https://docs.microsoft.com/azure/container-instances/index)或[部署到 Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) 的 Kubernetes 群集。 主计算机必须满足以下硬件要求：
+1. 首先，在主计算机上安装 Docker。 本指南介绍如何将本地计算机用作主机。 若要在 Azure 中使用 Docker 托管服务，请参阅[部署示例标记工具](../deploy-label-tool.md)操作指南。 
+
+   主计算机必须满足以下硬件要求：
 
     | 容器 | 最小值 | 建议|
     |:--|:--|:--|
     |示例标记工具|2 核心，4 GB 内存|4 核心，8 GB 内存|
-    
+
+   按照适用于所用操作系统的说明在计算机上安装 Docker： 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/)。
+
 1. 通过 `docker pull` 命令获取示例标记工具容器。
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ ms.locfileid: "77485346"
 
 ### <a name="apply-labels-to-text"></a>将标签应用于文本
 
-接下来，你将创建标签，并将其应用于希望模型识别的文本元素。
+接下来创建标记（标签），并将其应用到希望模型识别的文本元素。
 
-1. 首先，使用标记编辑器窗格创建要标识的标记（标签）。
+1. 首先，使用标记编辑器窗格创建要识别的标记。
+  1. 单击 **+** 创建新标记。
+  1. 输入标记名称。
+  1. 按 Enter 保存标记。
 1. 在主编辑器中，单击并拖动以从突出显示的文本元素中选择一个或多个字词。
+1. 单击要应用的标记，或按相应的键盘键。 数字键已分配为前 10 个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
+    > [!Tip]
+    > 标记窗体时，请记住以下提示。
+    > * 只能将一个标记应用到所选的每个文本元素。
+    > * 每页只能应用每个标记一次。 如果某个值多次显示在同一窗体中，将为每个实例创建不同的标记。 例如：“invoice# 1”、“invoice# 2”等。
+    > * 标记不能跨页。
+    > * 按照值在窗体中的显示方式标记值；不要尝试使用两个不同的标记将值拆分为两个部分。 例如，即使某个地址字段跨越多行，也应使用单个标记对其进行标记。
+    > * 不要在标记的字段中包含键 &mdash; 仅包含值。
+    > * 系统应自动检测表数据，最终的输出 JSON 文件中将提供这些数据。 但是，如果模型无法检测所有表数据，你也可以手动标记这些字段。 使用不同的标签标记表中的每个单元格。 如果窗体中的表包含不同的行数，请确保使用可能最大的表标记至少一个窗体。
 
-    > [!NOTE]
-    > 当前无法选择跨多个页面的文本。
-1. 单击要应用的标记，或按相应的键盘键。 只能对每个所选文本元素应用一个标记，并且每个标记在每个页面只能应用一次。
-
-    > [!TIP]
-    > 数字键被分配为前十个标记的热键。 可以使用标记编辑器窗格中的向上和向下箭头图标对标记进行重新排序。
 
 按照上述步骤来标记五个表单，然后进行下一步。
 

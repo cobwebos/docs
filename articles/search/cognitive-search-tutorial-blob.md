@@ -1,34 +1,43 @@
 ---
-title: 教程：从 JSON blob 提取文本和结构
+title: 教程：基于 Azure Blob 的 REST 和 AI
 titleSuffix: Azure Cognitive Search
-description: 通过一个示例来逐步了解如何使用 Postman 和 Azure 认知搜索 REST API 对 JSON Blob 中内容进行文本提取和自然语言处理。
+description: 通过一个示例来逐步了解如何使用 Postman 和 Azure 认知搜索 REST API 基于 Blob 存储中的内容进行文本提取和自然语言处理。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 8acafa14afab507b704806056efac0f877a47684
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113656"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190716"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>教程：使用 REST API 从 Azure 中的 JSON blob 提取文本和结构（Azure 认知搜索）
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>教程：使用 REST 和 AI 从 Azure Blob 生成可搜索的内容
 
-如果在 Azure Blob 存储中有使用非结构化文本或图像内容，则 [AI 扩充管道](cognitive-search-concept-intro.md)有助于提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像文件（JPG、PNG、TIFF），但本教程侧重于基于文字的内容，介绍如何应用语言检测和文本分析来创建可在查询、分面和筛选器中利用的新字段和信息。
+如果在 Azure Blob 存储中有使用非结构化文本或图像，则 [AI 扩充管道](cognitive-search-concept-intro.md)可以提取信息，并创建可用于全文搜索或知识挖掘方案的新内容。 尽管管道可以处理图像，但本 REST 教程侧重于如何分析文本、应用语言检测和自然语言处理，以创建可在查询、分面和筛选器中利用的新字段。
+
+本教程使用 Postman 和[搜索 REST API](https://docs.microsoft.com/rest/api/searchservice/) 执行以下任务：
 
 > [!div class="checklist"]
-> * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、MD、DOCX 和 PPTX）着手。
+> * 从整个文档（非结构化文本，例如 Azure Blob 存储中的 PDF、HTML、DOCX 和 PPTX）着手。
 > * 定义一个管道，用于提取文本、检测语言、识别实体和检测关键短语。
 > * 定义用于存储输出（原始内容，加上管道生成的名称/值对）的索引。
 > * 执行管道以开始转换和分析，以及创建和加载索引。
 > * 使用全文搜索和丰富的查询语法浏览结果。
 
-需要创建多个服务才能完成本演练，此外还需要安装 [Postman 桌面应用](https://www.getpostman.com/)或其他 Web 测试工具来发出 REST API 调用。 
-
 如果你没有 Azure 订阅，请在开始之前建立一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+## <a name="prerequisites"></a>先决条件
+
++ [Azure 存储](https://azure.microsoft.com/services/storage/)
++ [Postman 桌面应用](https://www.getpostman.com/)
++ [创建](search-create-service-portal.md)或[查找现有搜索服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+
+> [!Note]
+> 可在本教程中使用免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保服务中有足够的空间可接受新资源。
 
 ## <a name="download-files"></a>下载文件
 
@@ -38,7 +47,9 @@ ms.locfileid: "74113656"
 
 ## <a name="1---create-services"></a>1 - 创建服务
 
-本演练使用 Azure 认知搜索编制索引和进行查询、使用认知服务进行 AI 扩充，并使用 Azure Blob 存储提供数据。 如果可能，请在同一区域和资源组中创建上述所有三个服务，使它们相互靠近并易于管理。 在实践中，Azure 存储帐户可位于任意区域。
+本教程使用 Azure 认知搜索编制索引和进行查询、使用后端的认知服务进行 AI 扩充，并使用 Azure Blob 存储提供数据。 本教程使用的认知服务不超过每日为每个索引器免费分配 20 个事务这一限制，因此，只需要创建搜索和存储服务。
+
+如果可能，请在同一区域和资源组中创建这两个服务，使它们相互靠近并易于管理。 在实践中，Azure 存储帐户可位于任意区域。
 
 ### <a name="start-with-azure-storage"></a>从 Azure 存储开始
 
@@ -102,9 +113,9 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
 
 2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-    此外，获取查询密钥。 最好使用只读权限发出查询请求。
+   此外，获取查询密钥。 最好使用只读权限发出查询请求。
 
-![获取服务名称以及管理密钥和查询密钥](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![获取服务名称以及管理密钥和查询密钥](media/search-get-started-nodejs/service-name-and-keys.png)
 
 所有请求要求在发送到服务的每个请求的标头中指定 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
@@ -475,29 +486,25 @@ AI 扩充由认知服务（包括用于自然语言和图像处理的文本分�
    cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2019-05-06
    ```
 
-这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。有关更多查询示例，请参阅[搜索文档 REST API 中的示例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。
+这些查询演示了对认知搜索创建的新字段使用查询语法和筛选器的多种方式。 有关更多查询示例，请参阅[搜索文档 REST API 中的示例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[简单语法查询示例](search-query-simple-examples.md)和[完整 Lucene 查询示例](search-query-lucene-examples.md)。
 
 <a name="reset"></a>
 
 ## <a name="reset-and-rerun"></a>重置并重新运行
 
-在管道开发的前期试验阶段，设计迭代的最实用方法是删除 Azure 认知搜索中的对象，并允许代码重新生成这些对象。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 认知搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
 
-使用新定义为文档重新编制索引：
+可以使用门户来删除索引、索引器、数据源和技能集。 删除索引器时，可以根据需要选择同时删除索引、技能组和数据源。
 
-1. 删除索引器、索引和技能集。
-2. 修改对象。
-3. 在用于运行管道的服务中重新创建。 
+![删除搜索对象](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "在门户中删除搜索对象")
 
-可以使用门户删除索引、索引器和技能集，或使用 **DELETE** 并提供每个对象的 URL。 以下命令删除一个索引器。
+或者使用 **DELETE** 并提供每个对象的 URL。 以下命令删除一个索引器。
 
 ```http
-DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/cog-search-demo-idxr?api-version=2019-05-06
 ```
 
 成功删除后会返回状态代码 204。
-
-随着代码的成熟，可能需要优化重新生成策略。 有关详细信息，请参阅[如何重新生成索引](search-howto-reindex.md)。
 
 ## <a name="takeaways"></a>要点
 
@@ -509,11 +516,13 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 
 ## <a name="clean-up-resources"></a>清理资源
 
-完成本教程后，最快的清理方式是删除包含 Azure 认知搜索服务和 Azure Blob 服务的资源组。 假设已将这两个服务放在同一个组中，则删除该资源组会永久删除其中的所有内容，包括在本教程中创建的服务和任何存储内容。 在门户中，资源组名称显示在每个服务的“概述”页上。
+在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
+
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接在门户中查找和管理资源。
 
 ## <a name="next-steps"></a>后续步骤
 
-使用自定义技能自定义或扩展管道。 创建自定义技能并将其添加到技能集可以载入自己编写的文本或图像分析代码。 
+熟悉 AI 扩充管道中的所有对象后，接下来让我们更详细地了解技能集定义和各项技能。
 
 > [!div class="nextstepaction"]
-> 示例：[创建 AI 扩充的自定义技能](cognitive-search-create-custom-skill-example.md)
+> [如何创建技能集](cognitive-search-defining-skillset.md)

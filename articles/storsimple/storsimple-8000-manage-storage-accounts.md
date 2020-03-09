@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 11bc97be7ff8d924f7ccd0b4672a8f4cb0a178ff
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116334"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366695"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>使用 StorSimple 设备管理器服务管理存储帐户凭据
 
@@ -77,7 +77,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
 
 1. 导航到 StorSimple 设备管理器服务，选择并双击它。 这会打开“概述”边栏选项卡。
 2. 在“配置”部分中，选择“存储帐户凭据”。 这会列出与 StorSimple Device Manager 服务关联的任何现有存储帐户凭据。
-3. 单击 **“添加”** 。
+3. 单击“添加”。
 4. 在“添加存储帐户凭据”边栏选项卡中，执行以下步骤：
    
     1. 对于“订阅”，选择“其他”。
@@ -88,7 +88,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
    
     4. 若要启用 SSL，请单击“启用”按钮以创建用于在 StorSimple Device Manager 服务和云之间传输网络通信的安全通道。 仅当要在私有云中操作时，才单击“禁用”按钮。
    
-    5. 单击 **“添加”** 。 成功创建存储帐户凭据后，将收到通知。
+    5. 单击“添加”。 成功创建存储帐户凭据后，将收到通知。
 
 5. 新创建的存储帐户凭据会显示在 StorSimple 配置 Device Manager 服务边栏选项卡上的“存储帐户凭据”下。
    
@@ -110,7 +110,7 @@ StorSimple 设备管理器服务边栏选项卡中的“配置”部分提供了
 
     ![保存已编辑的存储帐户凭据](./media/storsimple-8000-manage-storage-accounts/editstorageacct3.png)
 
-4. 当系统提示你进行确认时，单击 **“是”** 。 
+4. 出现确认提示时，单击“是”。 
 
     ![确认修改](./media/storsimple-8000-manage-storage-accounts/editstorageacct4.png)
 
@@ -170,7 +170,7 @@ Microsoft Azure 管理员可以通过直接访问存储帐户中重新生成或�
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>同步服务订阅外部的存储帐户的密钥
 1. 在“服务”页上，单击“配置”选项卡。
 2. 单击“添加/编辑存储帐户”。
-3. 在“转换配置” 对话框中，执行以下操作：
+3. 在对话框中执行以下操作：
    
    1. 选择要更新其访问密钥的存储帐户。
    2. 需要更新 StorSimple 设备管理器服务中的存储访问密钥。 在此情况下，可以看到该存储访问密钥。 在“存储帐户访问密钥”框中输入新密钥。 

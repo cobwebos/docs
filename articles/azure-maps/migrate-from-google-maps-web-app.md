@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bdbf2a975cbdc3d06745b9375c1e6f8e751ddfd6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208737"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914066"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>从 Google Maps 迁移 Web 应用
 
@@ -57,8 +57,8 @@ ms.locfileid: "77208737"
 - Azure Maps Web SDK 中的形状基于 GeoJSON 架构。 帮助器类通过 [*atlas.data* 命名空间](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest)公开。 还有 [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 类。 使用此类可以包装 GeoJSON 对象，以便能够以数据可绑定的方式轻松更新和维护这些对象。
 - Azure Maps 中的坐标定义为 Position 对象。 将此坐标指定为采用 `[longitude,latitude]` 格式的数字数组。 或者，使用新的 atlas.data.Position(longitude, latitude) 来指定此坐标。
     > [!TIP]
-    > Position 类包含静态帮助器方法用于导入“纬度,经度”格式的坐标。 往往可以将 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) 方法替换为 Google Maps 代码中的 `new google.maps.LatLng` 方法。
-- Azure Maps 将样式与数据相区分。 与指定有关添加到地图的每个形状的样式信息相比，将样式与数据相区分更加高效。 数据存储在数据源中，并连接到呈现层。 Azure Maps 代码使用数据源来呈现数据。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项。 此项支持更改了单个形状根据形状中定义的属性在层中的呈现方式。
+    > Position 类包含静态帮助器方法用于导入“纬度, 经度”格式的坐标。 往往可以将 [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) 方法替换为 Google Maps 代码中的 `new google.maps.LatLng` 方法。
+- Azure Maps 将样式与数据相区分，而不是在添加到地图的每个形状中指定样式信息。 数据存储在数据源中，并连接到呈现层。 Azure Maps 代码使用数据源来呈现数据。 此方法提供增强的性能优势。 此外，很多层支持数据驱动的样式，其中，业务逻辑可添加到层样式选项。 此项支持更改了单个形状根据形状中定义的属性在层中的呈现方式。
 
 ## <a name="web-sdk-side-by-side-examples"></a>Web SDK 对比示例
 
@@ -246,7 +246,7 @@ map = new atlas.Map('myMap', {
 
 ### <a name="setting-the-map-view"></a>设置地图视图
 
-在 Azure Maps 和 Google Maps 中，可以编程方式动态将地图移到新的地理位置。 为此，请调用 JavaScript 中的相应函数。 该示例演示如何使地图显示卫星航拍图像，将地图中心点置于某个位置，并更改缩放级别。 使用以下位置坐标：经度：-111.0225，纬度：35.0272。
+可以编程方式将 Azure Maps 和 Google Maps 中的动态地图移到新的地理位置。 为此，请调用 JavaScript 中的相应函数。 这些示例演示如何在 Google Maps 中使地图显示卫星航拍图像，将地图中心点置于某个位置，并将缩放级别更改为 15。 使用以下位置坐标：经度：-111.0225，纬度：35.0272。
 
 > [!NOTE]
 > Google Maps 使用尺寸为 256 像素的图块，而 Azure Maps 则使用更大的 512 像素图块。 因此，在加载与 Google Maps 相同的地图区域时，Azure Maps 所需的网络请求数更少。 由于地图控件中图块金字塔的工作方式，Azure Maps 中更大的图块意味着在，在使用 Azure Maps 时，需要将 Google Maps 中使用的缩放级别减 1。 此算术运算确保 Azure Maps 中较大的图块呈现与 Google Maps 中相同的地图区域。
@@ -1515,6 +1515,156 @@ Azure Maps 和 Google Maps 都支持在地图上叠加地理围栏图像。 平�
 
 - [叠加图像](map-add-image-layer.md)
 - [图像层类](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+
+## <a name="add-kml-to-the-map"></a>将 KML 添加到地图
+
+Azure Maps 和 Google Maps 都可以在地图上导入和呈现 KML、KMZ 与 GeoRSS 数据。 Azure Maps 还支持 GPX、GML、空间 CSV 文件、GeoJSON、已知文本 (WKT)、Web 地图服务 (WMS)、Web 地图图块服务 (WMTS) 和 Web 特征服务 (WFS)。 Azure Maps 在本地将文件读取到内存中，在大多数情况下，可以处理大得多的 KML 文件。 
+
+**前者：Google Maps**
+
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <script type='text/javascript'>
+        var map, historicalOverlay;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('myMap'), {
+                center: new google.maps.LatLng(0, 0),
+                zoom: 1
+            });
+
+             var layer = new google.maps.KmlLayer({
+              url: 'https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml',
+              map: map
+            });
+        }
+    </script>
+
+    <!-- Google Maps Script Reference -->
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+</html>
+```
+
+在浏览器中运行此代码会显示如下图所示的地图：
+
+<center>
+
+![Google Maps 图像叠加](media/migrate-google-maps-web-app/google-maps-kml.png)</center>
+
+**后者：Azure Maps**
+
+在 Azure Maps 中，GeoJSON 是在 Web SDK 中使用的主要数据格式，可在其中使用[空间 IO 模块](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)轻松集成其他空间数据格式。 此模块提供读取和写入空间数据的功能，并且包含一个简单的数据层，可以轻松地从上述任何空间数据格式呈现数据。 若要读取空间数据文件中的数据，只需在 `atlas.io.read` 函数中传入一个 URL，或者字符串或 Blob 形式的原始数据。 这会返回该文件中的所有已分析数据，然后可将这些数据添加到地图中。 KML 比大多数空间数据格式要复杂一些，因为它包含的样式信息要多得多。 `SpatialDataLayer` 类支持呈现其中的大多数样式，但是，在加载特征数据之前必须先将图标图像载入地图，并单独将地面叠加层作为图层添加到地图中。 通过 URL 加载数据时，应将数据托管在支持 CORs 的终结点上，或者应该将代理服务作为一个选项传入 read 函数中。 
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+
+    <!-- Add reference to the Azure Maps Spatial IO module. -->
+    <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
+
+    <script type='text/javascript'>
+        var map, datasource, layer;
+
+        function initMap() {
+            //Initialize a map instance.
+            map = new atlas.Map('myMap', {
+                view: 'Auto',
+
+                //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
+            });
+
+            //Wait until the map resources are ready.
+            map.events.add('ready', function () {
+            
+                //Create a data source and add it to the map.
+                datasource = new atlas.source.DataSource();
+                map.sources.add(datasource);
+
+                //Add a simple data layer for rendering the data.
+                layer = new atlas.layer.SimpleDataLayer(datasource);
+                map.layers.add(layer);
+
+                //Read a KML file from a URL or pass in a raw KML string.
+                atlas.io.read('https://googlearchive.github.io/js-v2-samples/ggeoxml/cta.kml').then(async r => {
+                    if (r) {
+
+                        //Check to see if there are any icons in the data set that need to be loaded into the map resources.
+                        if (r.icons) {
+                            //For each icon image, create a promise to add it to the map, then run the promises in parrallel.
+                            var imagePromises = [];
+
+                            //The keys are the names of each icon image.
+                            var keys = Object.keys(r.icons);
+
+                            if (keys.length !== 0) {
+                                keys.forEach(function (key) {
+                                    imagePromises.push(map.imageSprite.add(key, r.icons[key]));
+                                });
+
+                                await Promise.all(imagePromises);
+                            }
+                        }
+
+                        //Load all features.
+                        if (r.features && r.features.length > 0) {
+                            datasource.add(r.features);
+                        }
+
+                        //Load all ground overlays.
+                        if (r.groundOverlays && r.groundOverlays.length > 0) {
+                            map.layers.add(r.groundOverlays);
+                        }
+
+                        //If bounding box information is known for data, set the map view to it.
+                        if (r.bbox) {
+                            map.setCamera({ bounds: r.bbox, padding: 50 });
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
+</body>
+</html>
+```
+
+<center>
+
+![Azure Maps 图像叠加](media/migrate-google-maps-web-app/azure-maps-kml.png)</center>
+
+**其他资源：**
+
+- [atlas.io.read 函数](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io?view=azure-maps-typescript-latest#read-string---arraybuffer---blob--spatialdatareadoptions-)
+- [SimpleDataLayer](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+- [SimpleDataLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ## <a name="additional-code-samples"></a>其他代码示例
 

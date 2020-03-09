@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760515"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380952"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -304,7 +304,7 @@ foreach($labVM in $labVMs)
 - 所有计算机必须具备的合规性或法规条件（例如安全策略）。
 - 使用自定义映像不应被视为非常少。 它们带来了额外的复杂性，因为你现在必须管理这些基础基本映像的 VHD 文件。 此外，还需要使用软件更新定期修补这些基础映像。 这些更新包括新的操作系统 (OS) 更新，以及软件包本身所需的任何更新或配置更改。
 
-## <a name="artifacts"></a>Artifacts
+## <a name="artifacts"></a>项目
 
 ### <a name="what-are-artifacts"></a>项目是什么？
 项目是用于将最新位或开发工具部署到 VM 的可自定义元素。 创建 VM 时，将项目附加到 VM。 预配 VM 后，项目可以部署和配置 VM。 [公共 GitHub 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)中提供了各种预先存在的项目。 也可以[创作自己的项目](devtest-lab-artifact-author.md)。
@@ -343,9 +343,9 @@ foreach($labVM in $labVMs)
 - [在现有开发测试实验室中从 Azure DevOps Services 部署新 VM](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [使用Azure DevOps Services 发布管理对开发测试实验室进行持续部署](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-对于其他持续集成 (CI)/持续交付 (CD) 工具链，可通过使用 [Azure PowerShell cmdlet](../azure-resource-manager/templates/deploy-powershell.md) 和 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) 部署 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/)来实现相同的方案。 还可使用[用于开发测试实验室的 REST API](https://aka.ms/dtlrestapis) 与工具链进行集成。
+对于其他持续集成 (CI)/持续交付 (CD) 工具链，可通过使用 [Azure PowerShell cmdlet](https://azure.microsoft.com/resources/templates/) 和 [.NET SDK](../azure-resource-manager/templates/deploy-powershell.md) 部署 [Azure 资源管理器模板](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)来实现相同的方案。 还可使用[用于开发测试实验室的 REST API](https://aka.ms/dtlrestapis) 与工具链进行集成。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
 如果 Vm 需要与现有基础结构进行交互，请考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，可能需要最大程度地减少 Vnet/子网的数量，以便不会对分配给订阅使用的 IP 地址空间进行分段。
@@ -365,7 +365,7 @@ foreach($labVM in $labVMs)
 
 ### <a name="how-do-i-ensure-that-development-and-test-virtual-machines-are-unable-to-reach-the-public-internet-are-there-any-recommended-patterns-to-set-up-network-configuration"></a>如何确保开发和测试虚拟机无法访问公共 Internet？ 是否有任何建议的模式来设置网络配置？
 
-可以。 有两个方面需要考虑，即入站和出站流量。
+是的。 有两个方面需要考虑，即入站和出站流量。
 
 - **入站流量**–如果虚拟机没有公共 IP 地址，则该虚拟机无法通过 internet 访问。 常见的方法是确保已设置订阅级别的策略，使用户不能创建公共 IP 地址。
 - **出站流量**–如果想要阻止虚拟机直接访问公共 internet 并强制通过公司防火墙进行通信，则可以使用强制路由通过快速路由或 VPN 来路由流量。
@@ -402,5 +402,5 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 #### <a name="option-1"></a>选项 1
 请在 Azure 区域中的 "[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/)" 页上查看资源类型的可用性。 如果资源类型在某个区域中不可用，则开发测试实验室不支持在该区域创建实验室。 创建实验室时，请选择其他区域。
 
-#### <a name="option-2"></a>选项 2
+#### <a name="option-2"></a>方法 2
 如果资源类型在你的区域中可用，请检查它是否已注册到你的订阅。 如本文所示，可在订阅所有者级别完成[此](../azure-resource-manager/management/resource-providers-and-types.md)操作。

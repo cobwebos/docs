@@ -1,5 +1,5 @@
 ---
-title: 教程：以 C# 为 Azure SQL 数据库中的数据编制索引
+title: '教程：在 C# 中为 Azure SQL 数据库中的数据编制索引 '
 titleSuffix: Azure Cognitive Search
 description: 在本 C# 教程中，连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 认知搜索索引。
 manager: nitinme
@@ -7,27 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 978587b68e719b79db31ff25adaf2b38d2235095
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.date: 02/28/2020
+ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650031"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193962"
 ---
-# <a name="tutorial-index-azure-sql-data-in-c-using-azure-cognitive-search-indexers"></a>教程：使用 Azure 认知搜索索引器在 C# 中为 Azure SQL 数据编制索引
+# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>教程：在 Azure 认知搜索中使用 C# 为 SQL 数据库中的数据编制索引
 
-使用 C# 配置一个[索引器](search-indexer-overview.md)，用于从 Azure SQL 数据库提取可搜索的数据并将其发送到搜索索引。 本教程使用 [Azure 认知搜索 .NET 客户端库](https://aka.ms/search-sdk)和 .NET Core 控制台应用程序执行以下任务：
+配置一个[索引器](search-indexer-overview.md)，用于从 Azure SQL 数据库提取可搜索的数据，并将其发送到 Azure 认知搜索中的搜索索引。 
+
+本教程使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 执行以下任务：
 
 > [!div class="checklist"]
 > * 创建连接到 Azure SQL 数据库的数据源
-> * 配置索引器
+> * 创建索引器
 > * 运行索引器以将数据载入索引
 > * 以验证步骤的形式查询索引
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 + [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -36,39 +38,17 @@ ms.locfileid: "77650031"
 > [!Note]
 > 可在本教程中使用免费服务。 免费搜索服务限制为三个索引、三个索引器和三个数据源。 本教程每样创建一个。 在开始之前，请确保服务中有足够的空间可接受新资源。
 
-## <a name="download-source-code"></a>下载源代码
+## <a name="download-files"></a>下载文件
 
 本教程的源代码位于 [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) GitHub 存储库中的 [DotNetHowToIndexer](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToIndexers) 文件夹内。
 
-## <a name="get-a-key-and-url"></a>获取密钥和 URL
+## <a name="1---create-services"></a>1 - 创建服务
 
-API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
+本教程使用 Azure 认知搜索进行索引编制和查询，使用 Azure SQL 数据库作为外部数据源。 如果可能，请在同一区域和资源组中创建这两个服务，使它们相互靠近并易于管理。 在实践中，Azure SQL 数据库可以位于任意区域中。
 
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+### <a name="start-with-azure-sql-database"></a>从 Azure SQL 数据库开始
 
-1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
-
-   ![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
-
-## <a name="set-up-connections"></a>设置连接
-
-1. 启动 Visual Studio 并打开 **DotNetHowToIndexers.sln**。
-
-1. 在解决方案资源管理器中打开 **appsettings.json**，并将占位符值替换为搜索服务的连接信息。 如果完整 URL 为“https://my-demo-service.search.windows.net”，则要提供的服务名称为“my-demo-service”。
-
-    ```json
-    {
-      "SearchServiceName": "Put your search service name here",
-      "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-      "AzureSqlConnectionString": "Put your Azure SQL database connection string here",
-    }
-    ```
-
-最后一个条目需是现有的数据库。 将在下一步骤中创建它。
-
-## <a name="prepare-sample-data"></a>准备示例数据
-
-此步骤在 Azure SQL 数据库中创建一个可供索引器爬网的外部数据源。 可以使用 Azure 门户和示例中的  hotels.sql 文件，在 Azure SQL 数据库中创建数据集。 Azure 认知搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
+此步骤在 Azure SQL 数据库中创建一个可供索引器爬网的外部数据源。 可以使用 Azure 门户和示例下载内容中的 *hotels.sql* 文件，在 Azure SQL 数据库中创建数据集。 Azure 认知搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
 
 如果你有现有的 Azure SQL 数据库资源，可在其中添加 hotels 表，从步骤 4 开始。
 
@@ -104,59 +84,45 @@ API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创�
     Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
     ```
 
-1. 在 Visual Studio 中将连接字符串粘贴到“AzureSqlConnectionString”中，作为 **appsettings.json** 文件中的第三个条目。
+在下一篇有关设置环境的练习中，需要用到此连接字符串。
+
+### <a name="azure-cognitive-search"></a>Azure 认知搜索
+
+下一个组件是可以[在门户中创建](search-create-service-portal.md)的 Azure 认知搜索。 可使用免费层完成本演练。 
+
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>获取 Azure 认知搜索的管理 API 密钥和 URL
+
+API 调用需要服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 认知搜索，则请按以下步骤获取必需信息：
+
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。  示例终结点可能类似于 `https://mydemo.search.windows.net`。
+
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥   。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+
+   ![获取 HTTP 终结点和访问密钥](media/search-get-started-postman/get-url-key.png "获取 HTTP 终结点和访问密钥")
+
+## <a name="2---set-up-your-environment"></a>2 - 设置环境
+
+1. 启动 Visual Studio 并打开 **DotNetHowToIndexers.sln**。
+
+1. 在解决方案资源管理器中，打开“appsettings.json”以提供连接信息。 
+
+1. 对于 `searchServiceName`，如果完整 URL 为“https://my-demo-service.search.windows.net”，则要提供的服务名称为“my-demo-service”。
+
+1. 对于 `AzureSqlConnectionString`，字符串格式如下所示：`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
       "SearchServiceName": "<placeholder-Azure-Search-service-name>",
       "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
-      "AzureSqlConnectionString": "Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+      "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
 
-1. 将密码输入到 **appsettings.json** 文件中的连接字符串内。 数据库名称和用户名将复制到连接字符串中，但密码必须手动输入。
+1. 确保连接字符串包含有效的密码。 数据库名称和用户名可以复制，但密码必须手动输入。
 
-## <a name="build-the-solution"></a>生成解决方案
+## <a name="3---create-the-pipeline"></a>3 - 创建管道
 
-按 F5 生成解决方案。 程序在调试模式下执行。 控制台窗口报告每项操作的状态。
-
-   ![控制台输出](./media/search-indexer-tutorial/console-output.png "控制台输出")
-
-代码将在 Visual Studio 本地运行，连接到 Azure 中的搜索服务，后者又会连接到 Azure SQL 数据库并检索数据集。 由于此处会发生多项操作，因此可能会造成多个故障点。 如果遇到错误，请先检查以下条件：
-
-+ 在本教程中，提供的搜索服务连接信息只能使用服务名称。 如果输入了完整 URL，则操作会停在索引创建阶段，出现“无法连接”错误。
-
-+ **appsettings.json** 中的数据库连接信息。 它应该是从门户获得的 ADO.NET 连接字符串，经修改后包括了适用于数据库的用户名和密码。 用户帐户必须有权检索数据。 必须允许本地客户端 IP 地址进行访问。
-
-+ 资源限制。 回想一下，免费层仅限 3 个索引、索引器和数据源。 达到最大限制的服务不能创建新的对象。
-
-## <a name="check-results"></a>检查结果
-
-使用 Azure 门户验证对象的创建，然后使用“搜索资源管理器”查询索引。 
-
-1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中轮流打开每个列表，以验证是否已创建该对象。  “索引”、“索引器”和“数据源”分别包含“hotels”、“azure-sql-indexer”和“azure-sql”。   
-
-   ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
-
-1. 选择 hotels 索引。 在 hotels 页上，“搜索资源管理器”是第一个选项卡。  
-
-1. 单击“搜索”发出空查询。  
-
-   索引中的三个条目以 JSON 文档的形式返回。 搜索浏览器返回 JSON 格式的文档，方便你查看整个结构。
-
-   ![查询索引](./media/search-indexer-tutorial/portal-search.png "查询索引")
-   
-1. 接下来，输入搜索字符串：`search=river&$count=true`。 
-
-   此查询调用 `river` 一词的全文搜索，结果包含匹配文档的计数。 在索引很大且文档成千上万甚至数百万的测试方案中，返回匹配文档的计数很有用。 在本示例中，只有一个文档与查询匹配。
-
-1. 最后，输入一个搜索字符串，将 JSON 输出限制为感兴趣的字段：`search=river&$count=true&$select=hotelId, baseRate, description`。 
-
-   查询响应范围缩小为选定字段，使输出更简洁。
-
-## <a name="explore-the-code"></a>浏览代码
-
-了解示例代码创建的内容后，让我们返回到解决方案查看代码。 相关代码在两个文件中：
+索引器需要数据源对象和索引。 相关代码在两个文件中：
 
   + **hotel.cs**，包含定义索引的架构
   + **Program.cs**，包含用于创建和管理服务中的结构的函数
@@ -230,17 +196,61 @@ public string HotelName { get; set; }
   }
   ```
 
+## <a name="4---build-the-solution"></a>4 - 生成解决方案
+
+按 F5 生成并运行解决方案。 程序在调试模式下执行。 控制台窗口报告每项操作的状态。
+
+   ![控制台输出](./media/search-indexer-tutorial/console-output.png "控制台输出")
+
+代码将在 Visual Studio 本地运行，连接到 Azure 中的搜索服务，后者又会连接到 Azure SQL 数据库并检索数据集。 由于此处会发生多项操作，因此可能会造成多个故障点。 如果遇到错误，请先检查以下条件：
+
++ 在本教程中，提供的搜索服务连接信息只能使用服务名称。 如果输入了完整 URL，则操作会停在索引创建阶段，出现“无法连接”错误。
+
++ **appsettings.json** 中的数据库连接信息。 它应该是从门户获得的 ADO.NET 连接字符串，经修改后包括了适用于数据库的用户名和密码。 用户帐户必须有权检索数据。 必须允许本地客户端 IP 地址进行访问。
+
++ 资源限制。 回想一下，免费层仅限 3 个索引、索引器和数据源。 达到最大限制的服务不能创建新的对象。
+
+## <a name="5---search"></a>5 - 搜索
+
+使用 Azure 门户验证对象的创建，然后使用“搜索资源管理器”查询索引。 
+
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中轮流打开每个列表，以验证是否已创建该对象。  “索引”、“索引器”和“数据源”分别包含“hotels”、“azure-sql-indexer”和“azure-sql”。   
+
+   ![索引器和数据源磁贴](./media/search-indexer-tutorial/tiles-portal.png)
+
+1. 选择 hotels 索引。 在 hotels 页上，“搜索资源管理器”是第一个选项卡。  
+
+1. 单击“搜索”发出空查询。  
+
+   索引中的三个条目以 JSON 文档的形式返回。 搜索浏览器返回 JSON 格式的文档，方便你查看整个结构。
+
+   ![查询索引](./media/search-indexer-tutorial/portal-search.png "查询索引")
+   
+1. 接下来，输入搜索字符串：`search=river&$count=true`。 
+
+   此查询调用 `river` 一词的全文搜索，结果包含匹配文档的计数。 在索引很大且文档成千上万甚至数百万的测试方案中，返回匹配文档的计数很有用。 在本示例中，只有一个文档与查询匹配。
+
+1. 最后，输入一个搜索字符串，将 JSON 输出限制为感兴趣的字段：`search=river&$count=true&$select=hotelId, baseRate, description`。 
+
+   查询响应范围缩小为选定字段，使输出更简洁。
+
+## <a name="reset-and-rerun"></a>重置并重新运行
+
+在开发的前期试验阶段，设计迭代的最实用方法是，删除 Azure 认知搜索中的对象，并允许代码重新生成它们。 资源名称是唯一的。 删除某个对象后，可以使用相同的名称重新创建它。
+
+本教程的示例代码将检查现有对象并将其删除，使你能够重新运行代码。
+
+也可以使用门户来删除索引、索引器和数据源。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 在自己的订阅中操作时，最好在项目结束时删除不再需要的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
 可以使用左侧导航窗格中的“所有资源”或“资源组”链接在门户中查找和管理资源。
 
-如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。
-
 ## <a name="next-steps"></a>后续步骤
 
-在 Azure 认知搜索中，索引器可用于多个 Azure 数据源。 接下来请了解 Azure Blob 存储的索引器。
+熟悉 SQL 数据库索引编制的基础知识后，接下来让我们更详细地了解索引器配置。
 
 > [!div class="nextstepaction"]
-> [为 Azure Blob 存储中的文档编制索引](search-howto-indexing-azure-blob-storage.md)
+> [配置 Azure SQL 数据库索引器](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

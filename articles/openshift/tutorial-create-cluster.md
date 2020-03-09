@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
 ms.openlocfilehash: 0e6aecccc19572ee980feb4d816fae1f2b0101b7
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381475"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>教程：创建 Azure Red Hat OpenShift 群集
 
@@ -42,7 +42,7 @@ ms.locfileid: "76274891"
 - 添加安全组
 - 创建 Active Directory 用户以登录到群集。
 
-## <a name="step-1-sign-in-to-azure"></a>步骤 1：登录 Azure
+## <a name="step-1-sign-in-to-azure"></a>步骤1：登录到 Azure
 
 如果在本地运行 Azure CLI，请打开 Bash 命令 shell，然后运行 `az login` 登录到 Azure。
 
@@ -52,7 +52,7 @@ az login
 
  如果你有权访问多个订阅，请运行 `az account set -s {subscription ID}`（将 `{subscription ID}` 替换为要使用的订阅）。
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步骤 2：创建 Azure Red Hat OpenShift 群集
+## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>步骤2：创建 Azure Red Hat OpenShift 群集
 
 在 Bash 命令窗口中，设置以下变量：
 
@@ -99,7 +99,7 @@ TENANT=<tenant ID>
 az group create --name $CLUSTER_NAME --location $LOCATION
 ```
 
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>可选：将群集的虚拟网络连接到现有的虚拟网络
+### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>可选：将群集的虚拟网络连接到现有虚拟网络
 
 如果不需要通过对等互连将所创建的群集的虚拟网络 (VNET) 连接到现有 VNET，请跳过此步骤。
 
@@ -180,17 +180,17 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
 群集的登录 URL 将为 `https://`，后跟 `publicHostName` 值。  例如：`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`。  下一步中将使用此 URI 作为应用注册重定向 URI 的一部分。
 
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>步骤 3：更新应用注册重定向 URI
+## <a name="step-3-update-your-app-registration-redirect-uri"></a>步骤3：更新应用注册重定向 URI
 
 现在已拥有群集的登录 URL，接下来可设置应用注册重定向 UI：
 
 1. 打开 [应用注册](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) 边栏选项卡。
 2. 单击应用注册对象。
-3. 单击“添加重定向 URI”  。
-4. 确保“类型”为“Web”，并使用以下模式设置“重定向 URI”：`https://<public host name>/oauth2callback/Azure%20AD`    。 例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. 单击“保存” 
+3. 单击“添加重定向 URI”。
+4. 确保“类型”为“Web”，并使用以下模式设置“重定向 URI”：`https://<public host name>/oauth2callback/Azure%20AD`。 例如： `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+5. 单击“保存”
 
-## <a name="step-4-sign-in-to-the-openshift-console"></a>步骤 4：登录到 OpenShift 控制台
+## <a name="step-4-sign-in-to-the-openshift-console"></a>步骤4：登录到 OpenShift 控制台
 
 现可登录到新群集的 OpenShift 控制台。 使用 [OpenShift Web 控制台](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html)可以可视化、浏览和管理 OpenShift 项目的内容。
 
@@ -201,26 +201,26 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 
 使用在[创建新的 Azure Active Directory 用户](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user)的步骤 3 中创建的用户名登录。
 
-此时将显示“请求权限”对话框  。 依次单击“代表组织同意”和“接受”   。
+此时将显示“请求权限”对话框。 依次单击“代表组织同意”和“接受”。
 
 现已登录到群集控制台。
 
 ![OpenShift 群集控制台的屏幕截图](./media/aro-console.png)
 
- 在 [Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html) 文档中详细了解如何[使用 OpenShift 控制台](https://docs.openshift.com/aro/getting_started/developers_console.html)来创建和生成映像。
+ 在 [Red Hat OpenShift](https://docs.openshift.com/aro/getting_started/developers_console.html) 文档中详细了解如何[使用 OpenShift 控制台](https://docs.openshift.com/aro/welcome/index.html)来创建和生成映像。
 
-## <a name="step-5-install-the-openshift-cli"></a>步骤 5：安装 OpenShift CLI
+## <a name="step-5-install-the-openshift-cli"></a>步骤5：安装 OpenShift CLI
 
-[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html)（或 OC 工具）提供了用于管理应用程序的命令，以及用于与 OpenShift 群集各组件进行交互的低级别实用工具。 
+[OpenShift CLI](https://docs.openshift.com/aro/cli_reference/get_started_cli.html)（或 OC 工具）提供了用于管理应用程序的命令，以及用于与 OpenShift 群集各组件进行交互的低级别实用工具。
 
-在 OpenShift 控制台中，单击右上角登录名旁边的问号，然后选择“命令行工具”。   单击“最新版本”链接下载并安装适用于 Linux、MacOS 或 Windows 的受支持 oc CLI。 
+在 OpenShift 控制台中，单击右上角登录名旁边的问号，然后选择“命令行工具”。  单击“最新版本”链接下载并安装适用于 Linux、MacOS 或 Windows 的受支持 oc CLI。
 
 > [!NOTE]
-> 如果右上角未显示问号图标，请从左上方的下拉列表中选择“服务目录”或“应用程序控制台”。  
+> 如果右上角未显示问号图标，请从左上方的下拉列表中选择“服务目录”或“应用程序控制台”。
 >
 > 或者，可以直接[下载 oc CLI](https://www.okd.io/download.html)。
 
-“命令行工具”页提供了一个采用 `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>` 格式的命令。   请单击“复制到剪贴板”按钮以复制此命令。   在终端窗口中，将[路径设置](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)为包含 oc 工具的本地安装。 然后使用复制的 oc CLI 命令登录到群集。
+“命令行工具”页提供了一个采用  **格式的命令。** `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`  请单击“复制到剪贴板”按钮以复制此命令。  在终端窗口中，将[路径设置](https://docs.okd.io/latest/cli_reference/get_started_cli.html#installing-the-cli)为包含 oc 工具的本地安装。 然后使用复制的 oc CLI 命令登录到群集。
 
 如果使用上述步骤无法获取令牌值，请从 `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` 获取令牌值。
 

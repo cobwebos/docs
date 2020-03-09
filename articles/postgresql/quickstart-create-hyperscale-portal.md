@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973403"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363358"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL - 超大规模 (Citus)
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Azure Database for PostgreSQL 超大规模（Citus）
 
 用于 PostgreSQL 的 Azure 数据库是一种托管服务，可用于在云中运行、管理和缩放具有高可用性的 PostgreSQL 数据库。 本快速入门介绍如何使用 Azure 门户创建 Azure Database for PostgreSQL - 超大规模 (Citus) 服务器组。 你将探究分布式数据：在节点之间将表分片、引入示例数据，以及运行在多个节点上执行的查询。
 
@@ -62,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-`github_events` 的 `payload` 字段包含 JSONB 数据类型。 JSONB 是 Postgres 中采用二进制格式的 JSON 数据类型。 使用此数据类型，可以方便在单个列中存储灵活的架构。
+`payload` 的 `github_events` 字段包含 JSONB 数据类型。 JSONB 是 Postgres 中采用二进制格式的 JSON 数据类型。 使用此数据类型，可以方便在单个列中存储灵活的架构。
 
 Postgres 可以基于此类型创建 `GIN` 索引，以便为表中的每个键和值编制索引。 通过索引可以使用各种条件快速轻松地查询有效负载。 在加载数据之前，让我们继续创建几个索引。 在 psql 中：
 
@@ -130,7 +130,7 @@ SELECT gu.login, count(*)
 
 ## <a name="clean-up-resources"></a>清理资源
 
-在前面的步骤中，你已在服务器组中创建了 Azure 资源。 如果你认为以后不需要这些资源，请删除该服务器组。 在服务器组的“概述”页中，按“删除”按钮   。 弹出页面上出现提示时，请确认服务器组的名称，然后单击最后一个“删除”按钮  。
+在前面的步骤中，你已在服务器组中创建了 Azure 资源。 如果你认为以后不需要这些资源，请删除该服务器组。 在服务器组的“概述”页中，按“删除”按钮。 弹出页面上出现提示时，请确认服务器组的名称，然后单击最后一个“删除”按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

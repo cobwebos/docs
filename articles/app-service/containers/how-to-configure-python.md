@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922277"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913848"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>为 Azure 应用服务配置 Linux Python 应用
 
@@ -47,6 +47,28 @@ az webapp list-runtimes --linux | grep PYTHON
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
+
+## <a name="customize-build-automation"></a>自定义生成自动化
+
+如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+
+1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+1. 运行 `pip install -r requirements.txt`。
+1. 如果在存储库的根目录中找到了 *manage.py*，则运行 *manage.py collectstatic*。 但是，如果 `DISABLE_COLLECTSTATIC` 设置为 `true`，则会跳过此步骤。
+1. 运行 `POST_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+
+`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND` 和 `DISABLE_COLLECTSTATIC` 是默认为空的环境变量。 若要运行生成前命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。 若要在生成 Django 应用时禁用正在运行的 collectstatic，请设置 `DISABLE_COLLECTSTATIC=true`。
+
+以下示例在一系列命令中指定两个以逗号分隔的变量。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+有关用于自定义生成自动化的其他环境变量，请参阅 [Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+有关应用服务如何在 Linux 中运行和生成 Python 应用的详细信息，请参阅 [Oryx 文档：如何检测和生成 Python 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md)。
 
 ## <a name="container-characteristics"></a>容器特征
 

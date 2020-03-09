@@ -1,34 +1,42 @@
 ---
-title: 使用 Java 和 Maven 将函数发布到 Azure
-description: 通过 Java 和 Maven 创建一个 HTTP 触发的函数，并将其发布到 Azure。
-author: rloutlaw
+title: 使用 Java 和 Maven/Gradle 将函数发布到 Azure
+description: 通过 Java 和 Maven 或 Gradle 创建一个 HTTP 触发的函数，并将其发布到 Azure。
+author: KarlErickson
+ms.author: karler
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f226736050319d57cd0bc123fdb2211e0faeae11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+zone_pivot_groups: java-build-tools-set
+ms.openlocfilehash: dbdcf2552b453fa72bfec616a02bd45afc45fb0f
+ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208840"
+ms.lasthandoff: 03/04/2020
+ms.locfileid: "78272736"
 ---
-# <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven 创建函数并将其发布到 Azure
+# <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>快速入门：使用 Java 和 Maven/Gradle 创建函数并将其发布到 Azure
 
-本文介绍如何使用 Maven 命令行工具生成 Java 函数并将该函数发布到 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。
+本文介绍如何使用 Maven/Gradle 命令行工具生成 Java 函数并将该函数发布到 Azure Functions。 完成后，函数代码会在 Azure 的[无服务器托管计划](functions-scale.md#consumption-plan)中运行，并由 HTTP 请求触发。
 
 <!--
 > [!NOTE] 
 > You can also create a Kotlin-based Azure Functions project by using the azure-functions-kotlin-archetype instead. Visit the [GitHub repository](https://github.com/microsoft/azure-maven-archetypes/tree/develop/azure-functions-kotlin-archetype) for more information.
 -->
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要使用 Java 开发函数，必须安装以下软件：
 
 - [Java 开发人员工具包](https://aka.ms/azure-jdks)版本 8
-- [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 版本 2.6.666 或更高版本
+::: zone pivot="java-build-tools-maven" 
+- [Apache Maven](https://maven.apache.org) 版本 3.0 或更高版本
+::: zone-end
+
+::: zone pivot="java-build-tools-gradle"  
+- [Gradle](https://gradle.org/) 4.10 和更高版本
+::: zone-end 
 
 还需要一个有效的 Azure 订阅。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -36,34 +44,20 @@ ms.locfileid: "77208840"
 > [!IMPORTANT]
 > JAVA_HOME 环境变量必须设置为 JDK 的安装位置，以完成本快速入门。
 
-## <a name="generate-a-new-functions-project"></a>生成新的 Functions 项目
+## <a name="prepare-a-functions-project"></a>准备 Functions 项目
 
+::: zone pivot="java-build-tools-maven" 
 在空的文件夹中，运行以下命令以从 [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) 生成 Functions 项目。
 
-### <a name="linuxmacos"></a>Linux/macOS
-
 ```bash
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
 > [!NOTE]
+> 如果使用的是 Powershell，请记得在参数的两侧添加 ""。
+
+> [!NOTE]
 > 如果在运行命令时遇到问题，请看看使用了什么 `maven-archetype-plugin` 版本。 由于你是在空的没有 `.pom` 文件的目录中运行该命令，因此它会尝试使用 `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` 中的旧版插件（如果你从旧版升级了 Maven）。 如果是这样，请尝试删除 `maven-archetype-plugin` 目录并重新运行命令。
-
-### <a name="windows"></a>Windows
-
-```powershell
-mvn archetype:generate `
-    "-DarchetypeGroupId=com.microsoft.azure" `
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
-
-```cmd
-mvn archetype:generate ^
-    "-DarchetypeGroupId=com.microsoft.azure" ^
-    "-DarchetypeArtifactId=azure-functions-archetype"
-```
 
 Maven 会请求你提供所需的值，以在部署上完成项目的生成。 系统提示时提供以下值：
 
@@ -79,7 +73,35 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。 �
 
 键入 `Y` 或按 Enter 进行确认。
 
-Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
+Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 运行以下命令，将目录切换到创建的项目文件夹。
+```bash
+cd fabrikam-function
+```
+
+::: zone-end 
+::: zone pivot="java-build-tools-gradle"
+使用以下命令克隆示例项目：
+
+```bash
+git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
+cd azure-functions-samples-java/
+```
+
+打开 `build.gradle`，将以下节中的 `appName` 更改为唯一名称，以免在部署到 Azure 时发生域名冲突。 
+
+```gradle
+azurefunctions {
+    resourceGroup = 'java-functions-group'
+    appName = 'azure-functions-sample-demo'
+    pricingTier = 'Consumption'
+    region = 'westus'
+    runtime {
+      os = 'windows'
+    }
+    localDebug = "transport=dt_socket,server=y,suspend=n,address=5005"
+}
+```
+::: zone-end
 
 在文本编辑器中打开 *src/main/java* 路径中的新 Function.java 文件，查看生成的代码。 该代码是一个 [HTTP 触发的](functions-bindings-http-webhook.md)函数，用于回显请求的正文。 
 
@@ -88,17 +110,25 @@ Maven 在名为 artifactId  的新文件夹（在此示例中为 `fabrikam-funct
 
 ## <a name="run-the-function-locally"></a>在本地运行函数
 
-运行以下命令，将目录更改为新创建的项目文件夹，然后生成并运行函数项目：
+运行以下命令，以生成并运行函数项目：
 
-```console
-cd fabrikam-function
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn clean package 
 mvn azure-functions:run
 ```
+::: zone-end 
+
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle jar --info
+gradle azureFunctionsRun
+```
+::: zone-end 
 
 在本地运行项目时，会看到 Azure Functions Core Tools 的如下所示的输出：
 
-```Output
+```output
 ...
 
 Now listening on: http://0.0.0.0:7071
@@ -112,11 +142,11 @@ Http Functions:
 
 使用 cURL 在新的终端窗口中从命令行触发函数：
 
-```CMD
+```bash
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 在本地运行时，不需要[功能键](functions-bindings-http-webhook-trigger.md#authorization-keys)。 在终端中使用 `Ctrl+C` 停止函数代码。
@@ -135,13 +165,22 @@ az login
 > [!TIP]
 > 如果帐户可以访问多个订阅，请使用 [az account set](/cli/azure/account#az-account-set) 设置此会话的默认订阅。 
 
-使用以下 Maven 命令将项目部署到新的函数应用。 
+使用以下命令将项目部署到新的函数应用。 
 
-```azurecli
+
+::: zone pivot="java-build-tools-maven" 
+```bash
 mvn azure-functions:deploy
 ```
+::: zone-end 
 
-此 `azure-functions:deploy` Maven 目标在 Azure 中创建以下资源：
+::: zone pivot="java-build-tools-gradle"  
+```bash
+gradle azureFunctionsDeploy
+```
+::: zone-end
+
+这会在 Azure 中创建以下资源：
 
 + 资源组。 使用你提供的 _resourceGroup_ 命名。
 + 存储帐户。 Functions 所需。 此名称根据存储帐户名称要求随机生成。
@@ -175,13 +214,13 @@ mvn azure-functions:deploy
 
 若要使用 `cURL` 验证在 Azure 上运行的函数应用，请将以下示例中的 URL 替换为从门户复制的 URL。
 
-```azurecli
+```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpTrigger-Java?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
 这会向函数终结点发送一个 POST 请求，请求正文中包含 `AzureFunctions`。 会看到以下响应。
 
-```Output
+```output
 Hello AzureFunctions!
 ```
 

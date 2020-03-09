@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
 ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668632"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372911"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>将 Windows 计算机连接到 Azure Monitor
 

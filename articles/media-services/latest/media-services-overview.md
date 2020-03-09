@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 873db6315841b585aa0ba6bcb843bfe05567836f
+ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987707"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78299255"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
@@ -34,13 +34,13 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 > 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
 ## <a name="compliance-privacy-and-security"></a>符合性、隐私和安全性
+
+需要重点提醒的是，在使用 Azure 媒体服务时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用媒体服务或任何 Azure 服务。
+
+在将任何视频/图像上传到媒体服务之前，必须拥有该视频/图像的适当使用权限，包括根据法律的要求，获得视频/图像中的个人（如果有）授予的，在媒体服务和 Azure 中使用、处理和存储其数据的所有必要许可。 某些司法辖区可能会对收集、在线处理和存储某些类别的数据（例如生物识别数据）施加特殊的法律要求。 在根据特殊法律要求使用媒体服务和 Azure 处理与存储任何数据之前，必须确保符合可能适用于你的任何法律要求。
+
+若要了解媒体服务中的合规性、隐私性和安全性，请访问 Microsoft [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 若要了解 Microsoft 的隐私义务、数据处理和保留惯例，包括如何删除数据，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[联机服务条款](https://www.microsoft.com/licensing/product-licensing/products?rtc=1)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 使用媒体服务即表示你同意遵守 OST、DPA 和隐私声明。
  
-需要重点提醒的是，在使用 Azure 媒体服务时，你必须遵守所有适用法律，不得以侵犯他人权利或可能对他人有害的方式使用 Azure 媒体服务或任何其他 Azure 服务。 
-
-在将任何视频/图像（包括任何生物特征数据）上传到媒体服务进行处理和存储之前，你必须 (1) 对视频/图像拥有所有适当的权利；且 (2) 获得视频中所有个人的适当同意，允许你在媒体服务中使用和存储其生物特征数据。 
-
-若要了解合规性、隐私以及 Microsoft 在 Azure 媒体服务中如何保护你的数据，请访问 Azure [信任中心](https://www.microsoft.com/trust-center/?rtc=1)。 若要了解 Microsoft 的隐私义务以及对你的数据的处理，请查看 Microsoft 的[隐私声明](https://privacy.microsoft.com/PrivacyStatement)、[联机服务条款](https://www.microsoft.com/licensing/product-licensing/products)（“OST”）和[数据处理附录](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67)（“DPA”）。 DPA 中提供了有关客户数据保留和删除的信息。 使用 Azure 媒体服务即表示你同意接受 OST、DPA 和隐私声明的约束。
-
 ## <a name="what-can-i-do-with-media-services"></a>媒体服务的功能是什么？
 
 使用媒体服务，你可以在云中构建各种媒体工作流。 下面是媒体服务的功能的一些示例：
@@ -51,8 +51,8 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * 分析录制的视频或音频内容。 例如，为了实现更高的客户满意度，组织可以提取语音转文本并生成搜索索引和仪表板。 然后，他们可以提取围绕常见的投诉、投诉原因以及其他相关数据的情报。
 * 当客户（例如电影工作室）需要限制对版权所有作品的访问和使用时，创建订阅视频服务并流式传输受 DRM 保护的内容。
 * 提供脱机内容，以便在飞机、火车和汽车上播放。 如果客户希望断开网络连接，可能需要将内容下载到手机或平板电脑上播放。
-* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕、多种语言翻译等功能。
-* 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
+* 使用 Azure 媒体服务和 [Azure 认知服务 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 实现教育在线学习视频平台，提供语音转文本字幕、多种语言翻译等功能。
+* 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
 * 启用 Azure CDN 实现大幅度缩放，更好地处理即时高负载（例如在产品发布活动开始时）。
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？ 
@@ -106,4 +106,3 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 ## <a name="next-steps"></a>后续步骤
 
 [了解基本概念](concepts-overview.md)
-

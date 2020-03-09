@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74870915"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386994"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用数组和对象
 
@@ -26,7 +26,7 @@ Azure Cosmos DB SQL API 的一项重要功能是数组和对象创建。
     FROM Families f
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -61,7 +61,7 @@ SQL API 为循环访问 JSON 数组提供了支持，并通过 FROM source 中�
     FROM Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -97,7 +97,7 @@ SQL API 为循环访问 JSON 数组提供了支持，并通过 FROM source 中�
     FROM c IN Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
@@ -130,7 +130,7 @@ SQL API 为循环访问 JSON 数组提供了支持，并通过 FROM source 中�
     WHERE c.grade = 8
 ```
 
-其结果是：
+结果有：
 
 ```json
     [{
@@ -145,7 +145,7 @@ SQL API 为循环访问 JSON 数组提供了支持，并通过 FROM source 中�
     FROM child IN Families.children
 ```
 
-其结果是：
+结果有：
 
 ```json
     [
