@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185576"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376659"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>为外部用户管理对 Azure AD 权限管理的访问权限
 
@@ -143,7 +143,7 @@ Azure AD 的权利管理利用[Azure AD 企业到企业（B2B）](../b2b/what-is
 
 1. 如果要删除此目录中的来宾用户帐户，可以设置删除之前的天数。 如果要在来宾用户帐户丢失其最后一次分配到任何访问包时立即将其删除，请设置将**此目录中的外部用户删除到0前的天数**。
 
-1. 单击 **“保存”** 。
+1. 单击“ **保存**”。
 
 ## <a name="next-steps"></a>后续步骤
 

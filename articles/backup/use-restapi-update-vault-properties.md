@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
 ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204491"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395548"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 
@@ -45,7 +45,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 确定        |
+|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>示例响应
 
@@ -83,11 +83,11 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 有关更多详细信息，请参阅[REST API 文档](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|名称  |必需  |类型  |说明  |
+|名称  |必选  |类型  |说明  |
 |---------|---------|---------|---------|
 |eTag     |         |   String      |  可选的 eTag       |
-|位置     |  true       |String         |   资源位置      |
-|属性     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
+|location     |  true       |String         |   资源位置      |
+|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保管库的属性       |
 |标记     |         | Object        |     资源标记    |
 
 #### <a name="example-request-body"></a>示例请求正文
@@ -109,7 +109,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 |名称  |类型  |说明  |
 |---------|---------|---------|
-|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | 确定        |
+|200 正常     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>示例响应
 

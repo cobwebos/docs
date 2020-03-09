@@ -11,15 +11,15 @@ ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
 ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706382"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393662"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中心常见问题
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-is-an-event-hubs-namespace"></a>什么是事件中心命名空间？
 命名空间是事件中心/Kafka 主题的范围容器。 它提供唯一的 [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)。 命名空间充当容装多个事件中心/Kafka 主题的应用程序容器。 
@@ -77,7 +77,7 @@ Azure 事件中心标准层提供的功能超出了基本层中提供的功能�
 | HTTP、HTTPS | 80、443 |  |
 | Kafka | 9093 | 请参阅[从 Kafka 应用程序使用事件中心](event-hubs-for-kafka-ecosystem-overview.md)
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行允许列表？
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>需要对哪些 IP 地址进行白名单？
 若要查找连接的空白列表的正确 IP 地址，请执行以下步骤：
 
 1. 从命令提示符处运行以下命令： 
@@ -171,7 +171,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
 | 100x1KB 批 | 2 | 400 MB/秒 | 每秒的400k 消息数 | 800 MB/秒 | 每秒的800k 消息数 | 400 TU | 100 TU | 
 | 10x10KB 批 | 2 | 666 MB/秒 | 66.6 k 条消息数/秒 | 1.33 GB/秒 | 每秒的133k 消息数 | 666 TU | 166 TU |
-| 6x32KB 批 | 第 | 1.05 GB/秒 | 每秒的34k 消息数 | 1.05 GB/秒 | 每秒的34k 消息数 | 1000 TU | 250 TU |
+| 6x32KB 批 | 1 | 1.05 GB/秒 | 每秒的34k 消息数 | 1.05 GB/秒 | 每秒的34k 消息数 | 1000 TU | 250 TU |
 
 测试中使用了以下条件：
 
@@ -195,7 +195,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 但是，如果有一个模型，其中应用程序具有到特定分区的关联性，则增加分区数可能对你没有任何益处。 有关详细信息，请参阅[可用性和一致性](event-hubs-availability-and-consistency.md)。
 
-## <a name="pricing"></a>价格
+## <a name="pricing"></a>定价
 
 ### <a name="where-can-i-find-more-pricing-information"></a>我可以在哪里找到更多定价信息？
 
@@ -207,7 +207,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>怎样对事件中心存储区大小进行计算和收费？
 
-所有存储的事件的总大小（包括所有事件中心内事件标头或磁盘存储器结构上的所有内部开销）按整天计量。 在一天结束时，将计算峰值存储器大小。 每日存储限额是根据一天中选择的最少吞吐量单位数计算的（每个吞吐量单位提供的限额为 84 GB）。 如果总大小超过计算出的每日存储限额，超出的存储量会采用 Azure Blob 存储费率（按**本地冗余存储**费率）来计费。
+所有存储的事件的总大小（包括所有事件中心内事件标头或磁盘存储器结构上的所有内部开销）按整天计量。 在一天结束时，计算存储区大小峰值。 每天的存储限制根据在当天所选择的吞吐量单元的最小数量（每个吞吐量单元提供 84 GB 的限制）来计算。 如果总大小超过计算出的每日存储限额，超出的存储量会采用 Azure Blob 存储费率（按**本地冗余存储**费率）来计费。
 
 ### <a name="how-are-event-hubs-ingress-events-calculated"></a>事件中心入口事件是怎样计算的？
 
@@ -217,7 +217,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>中转连接费用是否适用于事件中心？
 
-连接费用只在使用 AMQP 协议时适用。 不管有多少个发送系统或设备，使用 HTTP 发送事件都不必支付连接费用。 如果计划使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页，了解有关每个服务层级中包括多少连接的详细信息。
+连接费用只在使用 AMQP 协议时适用。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 如果计划使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页，了解有关每个服务层级中包括多少连接的详细信息。
 
 ### <a name="how-is-event-hubs-capture-billed"></a>事件中心捕获如何计费？
 

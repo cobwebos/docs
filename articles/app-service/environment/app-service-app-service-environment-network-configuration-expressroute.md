@@ -8,11 +8,11 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688751"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374987"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
@@ -85,9 +85,9 @@ ms.locfileid: "74688751"
 
 本部分介绍应用服务环境的示例 UDR 配置。
 
-### <a name="prerequisites"></a>必备组件
+### <a name="prerequisites"></a>必备条件
 
-* 从[Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
+* 从[Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” **“Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。**  > 
 
 * 创建专供应用服务环境使用的唯一子网。 该唯一子网确保应用到子网的 UDR 只会打开应用服务环境的出站流量。
 

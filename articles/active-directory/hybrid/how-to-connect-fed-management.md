@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085232"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376368"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自定义 Active Directory 联合身份验证服务
 本文介绍如何使用 Azure Active Directory (Azure AD) Connect 管理和自定义 Active Directory 联合身份验证服务 (AD FS)。 另外，还介绍了可能需要针对完整的 AD FS 场配置执行的其他常见 AD FS 任务。
@@ -64,7 +64,7 @@ ms.locfileid: "70085232"
 
     “已准备好配置”页会显示为修复信任而将要执行的操作列表。
 
-    ![已准备好进行配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
+    ![已准备好配置](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
 4. 单击“安装”修复信任。
 
@@ -77,8 +77,8 @@ ms.locfileid: "70085232"
 ![备用 ID 属性选择](./media/how-to-connect-fed-management/attributeselection.png)
 
 为 AD FS 配置备用登录 ID 包括两个主要步骤：
-1. **配置正确的颁发声明集**：将 Azure AD 信赖方信任中的颁发声明规则修改为使用所选的 UserPrincipalName 属性作为用户的备用 ID。
-2. **在 AD FS 配置中启用备用登录 ID**：更新 AD FS 配置，以便 AD FS 可以使用备用 ID 查找相应林中的用户。 此配置支持 Windows Server 2012 R2（带 KB2919355）或更高版本上的 AD FS。 如果 AD FS 服务器为 2012 R2，则 Azure AD Connect 会检查是否存在所需的知识库 (KB)。 如果未检测到知识库 (KB)，则在配置完成后会显示一条警告，如下所示：
+1. **配置正确的颁发声明集**：已将 Azure AD 信赖方信任中的颁发声明规则修改为使用所选的 UserPrincipalName 属性作为用户的备用 ID。
+2. **在 AD FS 配置中启用备用登录 ID**：已更新 AD FS 配置，以便 AD FS 可以使用备用 ID 查找相应林中的用户。 此配置支持 Windows Server 2012 R2（带 KB2919355）或更高版本上的 AD FS。 如果 AD FS 服务器为 2012 R2，则 Azure AD Connect 会检查是否存在所需的知识库 (KB)。 如果未检测到知识库 (KB)，则在配置完成后会显示一条警告，如下所示：
 
     ![警告：2012R2 上缺少知识库 (KB)](./media/how-to-connect-fed-management/kbwarning.png)
 
@@ -178,7 +178,7 @@ ms.locfileid: "70085232"
 
 5. 单击“下一步”。 “已准备好配置”页会显示 Azure AD Connect 将要执行的操作列表。 单击“安装”完成配置。
 
-   ![已准备好进行配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
+   ![已准备好配置](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
 > 已添加的联合域中的用户必须在同步之后才能登录到 Azure AD。
@@ -228,7 +228,7 @@ AD FS 支持丰富的声明语言，可用于创建自定义声明规则。 有�
 
 此规则定义名为 **idflag** 的临时标志，当没有为用户填充的 **ms-ds-consistencyguid** 时，该标志设置为 **useguid**。 这背后的逻辑在于 AD FS 不允许空的声明。 所以，当你在规则 1 中添加声明 http://contoso.com/ws/2016/02/identity/claims/objectguid 和 http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid 时，你最终会得到 msdsconsistencyguid 声明（除非为该用户填充该值）。 如果未填充该值，AD FS 发现该空值后会立即将它删除。 所有对象都具有 **objectGuid**，因此在执行规则 1 后声明将始终存在。
 
-**规则 3：如果存在，则将 ms-ds-consistencyguid 作为不可变 ID 发出**
+**规则 3：如果存在，将 ms-ds-consistencyguid 作为不可变 ID 发出**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);

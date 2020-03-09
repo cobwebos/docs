@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812907"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394839"
 ---
 # <a name="about-voice-assistants"></a>关于语音助手
 
@@ -31,7 +31,7 @@ ms.locfileid: "74812907"
 
 创建语音助手的第一步是确定其用途。 语音服务提供了多种补充性解决方案，用于编制助手交互。 无论你是否希望在简单的方案中，通过机器人框架的[直接线路语音](direct-line-speech.md)通道提供的灵活性和多功能性，还是简单的[自定义命令（预览）](custom-commands.md) ，选择合适的工具即可开始。
 
-| 是否要... | 然后考虑 。 | 例如 。 |
+| 如果你想要... | 然后考虑 。 | 例如 。 |
 |-------------------|------------------|----------------|
 |具有强大技能集成和完全部署控制的开放式对话 | 机器人框架的[直接连线语音](direct-line-speech.md)通道 | <ul><li>"我需要去西雅图"</li><li>"我可以订购哪种比萨饼？"</li></ul>
 |通过简化的创作和托管来进行命令和控制或面向任务的对话 | [自定义命令（预览）](custom-commands.md) | <ul><li>"打开高架灯"</li><li>"使其成为5度</ul>
@@ -58,11 +58,11 @@ ms.locfileid: "74812907"
 
 | 快速入门 | 平台 | API 参考 |
 |------------|----------|---------------|
-| C#，UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows、macOS、Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#，UWP | Windows | [“浏览”](https://aka.ms/csspeech/csharpref) |
+| Java | Windows、macOS、Linux | [“浏览”](https://aka.ms/csspeech/javaref) |
+| Java | Android | [“浏览”](https://aka.ms/csspeech/javaref) |
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了用于创建语音助手的示例代码。 这些示例涵盖了用几种常用编程语言连接到助手的客户端应用程序。
 

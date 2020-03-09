@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2020
+ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2fda5d1bdd00a601df363bd930e5f2f6d610c7f
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
+ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78208706"
+ms.lasthandoff: 03/08/2020
+ms.locfileid: "78926844"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>生成 SCIM 终结点并使用 Azure Active Directory （Azure AD）配置用户预配
 
@@ -33,7 +33,7 @@ SCIM 是两个终结点的标准化定义：/Users 终结点和/Groups 终结点
 
 SCIM 2.0 （RFC [7642](https://tools.ietf.org/html/rfc7642)、 [7643](https://tools.ietf.org/html/rfc7643)、 [7644](https://tools.ietf.org/html/rfc7644)）中定义的用于管理的标准用户对象架构和 rest api 允许标识提供者和应用更轻松地彼此集成。 生成 SCIM 终结点的应用程序开发人员无需进行自定义工作即可与任何 SCIM 兼容的客户端集成。
 
-自动预配到应用程序需要生成 SCIM 终结点，并将其与 Azure AD SCIM 兼容。 执行以下步骤，开始将用户和组预配到应用程序。 
+自动预配到应用程序需要生成 SCIM 终结点，并将其与 Azure AD SCIM 客户端集成。 执行以下步骤，开始将用户和组预配到应用程序。 
     
   * **[步骤 1：设计用户和组架构。](#step-1-design-your-user-and-group-schema)** 确定应用程序所需的对象和属性，并确定它们如何映射到 Azure AD SCIM 实现所支持的用户和组架构。
 
@@ -752,7 +752,7 @@ TLS 1.2 密码套件最小栏：
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步骤 3：生成 SCIM 终结点
 
-现在，你已将架构 desidned 并了解 Azure AD SCIM 实现，接下来可以开始开发 SCIM 终结点。 您可以依赖于由 SCIM commuinty 发布的多个开源 SCIM 库，而不是从头开始创建并完全生成实现。  
+现在，你已设计了架构并了解 Azure AD SCIM 实现，接下来可以开始开发 SCIM 终结点。 您可以依赖于由 SCIM commuinty 发布的多个开源 SCIM 库，而不是从头开始创建并完全生成实现。  
 Azure AD 预配团队发布的开源 .NET Core[参考代码](https://aka.ms/SCIMReferenceCode)是可以立即开始开发的一种资源。 生成 SCIM 终结点后，需要对其进行测试。你可以使用作为引用代码一部分提供的[postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)的集合，或通过[上面](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的示例请求/响应来运行。  
 
 注意:参考代码旨在帮助你开始生成 SCIM 终结点，并按 "原样" 提供。 来自社区的贡献欢迎使用来帮助生成和维护代码。 
