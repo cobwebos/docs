@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392716"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -39,7 +39,7 @@ InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-ti
 
 |**定价层**|**vCore(s)**|**InnoDB 缓冲池大小（MB <br>）（支持多达 4 TB 存储的服务器）**| **InnoDB 缓冲池大小（MB <br>）（支持高达 16 TB 存储的服务器）**|
 |:---|---:|---:|---:|
-|基本| 第| 832| |
+|基本| 1| 832| |
 |基本| 2| 2560| |
 |常规用途| 2| 3584| 7168|
 |常规用途| 4| 7680| 15360|
@@ -58,8 +58,8 @@ InnoDB 缓冲池的大小不能配置并绑定到[定价层](concepts-service-ti
 |**Parameter**|**固定值**|
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|第|
-|sync_binlog|第|
+|innodb_flush_log_at_trx_commit|1|
+|sync_binlog|1|
 |innodb_log_file_size|512MB|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。
@@ -104,4 +104,4 @@ SET time_zone = 'US/Pacific';
 
 ## <a name="next-steps"></a>后续步骤
 
-- [适用于 MySQL 的 Azure 数据库的连接库](concepts-connection-libraries.md)。
+- [Azure Database for MySQL 的连接库](concepts-connection-libraries.md)。

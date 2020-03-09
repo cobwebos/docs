@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895835"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366872"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>使用 AES-128 动态加密和密钥传递服务
 > [!div class="op_single_selector"]
@@ -67,7 +67,7 @@ ms.locfileid: "74895835"
 
 下图演示了上述工作流。 在图中，使用令牌进行了身份验证。
 
-![使用 AES-128 进行保护](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
+![使用 AES-128 提供保护](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
 本文余下部分提供了说明、代码示例和主题链接，介绍了如何完成上述任务。
 

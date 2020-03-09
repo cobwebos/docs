@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583712"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360591"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>在 Azure 实验室服务的实验室中启用适用于 Linux 虚拟机的远程桌面
 本文介绍如何执行以下任务：
@@ -44,8 +44,8 @@ ms.locfileid: "73583712"
 目前，以下操作系统支持远程桌面连接：
 
 - openSUSE Leap 42.3
-- 基于 CentOS 的 7.5
-- Debian 9“Stretch”
+- 基于 CentOS 的7。5
+- Debian 9 "Stretch"
 - Ubuntu Server 16.04 LTS
 
 ## <a name="connect-to-the-template-vm"></a>连接到模板 VM 

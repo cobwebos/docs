@@ -13,11 +13,11 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
 ms.openlocfilehash: 348bd2b92801217a5aea2ef4d1426c020085e4c1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624153"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359147"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL 数据库设计全球可用的服务
 
@@ -154,8 +154,8 @@ ms.locfileid: "77624153"
 
 | 模式 | RPO | ERT |
 |:--- |:--- |:--- |
-| 使用归置的数据库访问权限进行灾难恢复的主动-被动部署 |读写访问 < 5 秒 |故障检测时间 + DNS TTL |
-| 实现应用程序负载均衡的主动-主动部署 |读写访问 < 5 秒 |故障检测时间 + DNS TTL |
+| 使用并置数据库访问权限进行灾难恢复的主动-被动部署 |读写访问 < 5 秒 |故障检测时间 + DNS TTL |
+| 实现应用程序负载平衡的主动-主动部署 |读写访问 < 5 秒 |故障检测时间 + DNS TTL |
 | 实现保留数据的主动-被动部署 |只读访问 < 5 秒 | 只读访问 = 0 |
 ||读写访问 = 0 | 读写访问 = 故障检测时间 + 数据丢失宽限期 |
 |||

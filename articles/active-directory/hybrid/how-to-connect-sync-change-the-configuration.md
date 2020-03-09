@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919063"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376322"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：如何更改默认配置
 本文的目的是介绍如何对 Azure Active Directory （Azure AD）连接同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -208,7 +208,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
     如果选择此方法，则在启用 UserType 属性同步之前，对于同步到 Azure AD 的本地 Active Directory 中的所有现有用户对象，必须确保指定的属性填充了正确的值。
 
-- 或者，可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性结尾是域部分 <em>@partners.fabrikam123.org</em>，则应将这些用户全部同步为 **Guest**。 
+- 或者，可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性结尾是域部分<em>，则应将这些用户全部同步为 @partners.fabrikam123.orgGuest</em>。 
 
     如前所述，Azure AD Connect 不允许 Azure AD Connect 更改现有 Azure AD 用户的 UserType 属性。 因此，对于租户中的所有 Azure AD 用户，必须确保采用的逻辑与 UserType 属性的现有配置方式一致。
 
@@ -262,19 +262,19 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮创建新的入站规则。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | Value | 详细信息 |
+    | Attribute | 值 | 详细信息 |
     | --- | --- | --- |
     | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
-    | 描述 | *提供说明* |  |
+    | 说明 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
-    | 连接的系统对象类型 | **User** |  |
+    | 连接的系统对象类型 | **用户** |  |
     | Metaverse 对象类型 | **Person** |  |
     | 链接类型 | **Join** |  |
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含以下子句的**单个范围筛选器组**：
 
-    | 属性 | 运算符 | Value |
+    | Attribute | 操作员 | 值 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 用户\_ |
 
@@ -282,13 +282,13 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 6. 转到“转换”选项卡并实现所需转换规则。 例如，如果指定了未使用的本地 AD 属性（例如 extensionAttribute1）作为 UserType 的源属性，则可以实现直接属性流：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | extensionAttribute1 | 未选中 | 更新 |
+    | 直接 | UserType | extensionAttribute1 | 未选中 | 更新 |
 
     另举一例，我们可以从其他属性派生 UserType 属性的值。 例如，如果用户的本地 AD userPrincipalName 属性以域部分<em>@partners.fabrikam123.org</em>结束，则需要将所有用户同步为 Guest。可以实现如下所示的表达式：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
     | 表达式 | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | 未选中 | 更新 |
 
@@ -304,30 +304,30 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | Value | 详细信息 |
+    | Attribute | 值 | 详细信息 |
     | ----- | ------ | --- |
     | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
-    | 描述 | *提供说明* ||
+    | 说明 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
-    | 连接的系统对象类型 | **User** ||
+    | 连接的系统对象类型 | **用户** ||
     | Metaverse 对象类型 | **Person** ||
     | 链接类型 | **Join** ||
     | 优先级 | *选择介于 1 和 99 之间的数字* | 1-99 是为自定义同步规则保留的值。 请不要选择已被其他同步规则使用的值。 |
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的**单个范围筛选器组**：
 
-    | 属性 | 运算符 | Value |
+    | Attribute | 操作员 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | 用户 |
-    | cloudMastered | NOTEQUAL | 正确 |
+    | cloudMastered | NOTEQUAL | True |
 
     范围筛选器确定要将此出站同步规则应用到哪些 Azure AD 对象。 在本示例中，我们将使用 *Out to AD – User Identity* 现成同步规则中的相同范围筛选器。 它可以防止将同步规则应用到未从本地 Active Directory 同步的 User 对象。 可能需要根据 Azure AD Connect 部署调整范围筛选器。
 
 6. 转到“转换”选项卡并实现以下转换规则：
 
-    | 流类型 | 目标属性 | Source | 应用一次 | 合并类型 |
+    | 流类型 | 目标属性 | 源 | 应用一次 | 合并类型 |
     | --- | --- | --- | --- | --- |
-    | Direct | UserType | UserType | 未选中 | 更新 |
+    | 直接 | UserType | UserType | 未选中 | 更新 |
 
 7. 单击“添加”创建出站规则。
 

@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311384"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380945"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-[Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 控制 Azure 开发测试实验室中的访问。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 RBAC 的三个角色分别是所有者  、开发实验室用户  和参与者  。 在本文中，将了解这三个主要 RBAC 角色的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
+[Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 控制 Azure 开发测试实验室中的访问。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 RBAC 的三个角色分别是所有者、开发实验室用户和参与者。 在本文中，将了解这三个主要 RBAC 角色的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
 
 * 所有者
 * DevTest 实验室用户
-* 参与者
+* Contributor
 
 下表说明了每个角色的用户可以执行的操作：
 
 | **此角色的用户可以执行的操作** | **实验室用户** | **所有者** | **参与者** |
 | --- | --- | --- | --- |
 | **实验室任务** | | | |
-| 将用户添加到实验室 |否 |是 |否 |
-| 更新成本设置 |否 |是 |是 |
+| 将用户添加到实验室 |是 |是 |是 |
+| 更新成本设置 |是 |是 |是 |
 | **VM 基本任务** | | | |
-| 添加和删除自定义映像 |否 |是 |是 |
+| 添加和删除自定义映像 |是 |是 |是 |
 | 添加、更新和删除公式 |是 |是 |是 |
-| 将 Azure 市场映像加入允许列表 |否 |是 |是 |
+| 将 Azure 市场映像加入允许列表 |是 |是 |是 |
 | **VM 任务** | | | |
 | 创建 VM |是 |是 |是 |
 | 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
-| 更新 VM 策略 |否 |是 |是 |
+| 更新 VM 策略 |是 |是 |是 |
 | 将数据磁盘添加到 VM 或从中删除 |用户仅创建 VM |是 |是 |
 | **项目任务** | | | |
-| 添加和删除项目存储库 |否 |是 |是 |
+| 添加和删除项目存储库 |是 |是 |是 |
 | 应用项目 |是 |是 |是 |
 
 > [!NOTE]
@@ -64,23 +64,23 @@ ms.locfileid: "60311384"
 可以通过 Azure 门户在实验室级别添加所有者和用户。 用户可以是具有有效的 [Microsoft 帐户 (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) 的外部用户。
 以下步骤介绍在 Azure 开发测试实验室中将所有者或用户添加到实验室的过程：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“所有服务”  ，并从列表中选择“开发测试实验室”  。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+2. 选择“所有服务”，并从列表中选择“开发测试实验室”。
 3. 从实验室列表，选择所需的实验室。
-4. 在实验室的边栏选项卡中，选择“配置和策略”  。 
-5. 在“配置和策略”  页面，选择左侧菜单中的“访问控制 (IAM)”  。 
-6. 选择工具栏上的“添加角色分配”  以将用户添加到角色。
-1. 在“添加权限”  窗口中，执行以下操作： 
-    1. 选择角色（例如：开发测试实验室用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
+4. 在实验室的边栏选项卡中，选择“配置和策略”。 
+5. 在“配置和策略”页面，选择左侧菜单中的“访问控制 (IAM)”。 
+6. 选择工具栏上的“添加角色分配”以将用户添加到角色。
+1. 在“添加权限”窗口中，执行以下操作： 
+    1. 选择一个角色（例如：DevTest Labs 用户）。 [每个角色可以执行的操作](#actions-that-can-be-performed-in-each-role)部分列出了所有者、开发测试用户和参与者三种角色的用户可以执行的各种操作。
     2. 选择要被添加到角色的用户。 
-    3. 选择“保存”。  
-11. 返回到“用户”  边栏选项卡时，已添加该用户。  
+    3. 选择“保存”。 
+11. 返回到“用户”边栏选项卡时，已添加该用户。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 将外部用户添加到实验室
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下例中，修改“要更改的值”  注释下的参数值。
+除了添加 Azure 门户中的用户，还可以使用 PowerShell 脚本将外部用户添加到实验室。 在下例中，修改“要更改的值”注释下的参数值。
 可以从 Azure 门户的实验室边栏选项卡中检索 `subscriptionId`、`labResourceGroup` 和 `labName` 值。
 
 > [!NOTE]
@@ -119,21 +119,21 @@ Azure 权限在 Azure 中从父范围传播到子范围。 因此，包含实验
 
 要将所有者添加到 Azure 订阅，请按照下列步骤操作：
 
-1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 选择“所有服务”  ，并从列表中选择“订阅”  。
+1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+2. 选择“所有服务”，并从列表中选择“订阅”。
 3. 选择所需的订阅。
-4. 选择“访问”  图标。 
+4. 选择“访问”图标。 
    
     ![访问用户](./media/devtest-lab-add-devtest-user/access-users.png)
-5. 在“用户”  边栏选项卡上选择“添加”  。
+5. 在“用户”边栏选项卡上选择“添加”。
    
     ![添加用户](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-6. 在“选择角色”  边栏选项卡上，选择“所有者”  。
-7. 在“添加用户”  边栏选项卡上，输入要作为所有者添加的用户的电子邮件地址或名称。 如果找不到用户，则会显示一条错误消息来解释此问题。 如果找到该用户，则会在“用户”  文本框中列出该用户。
+6. 在“选择角色”边栏选项卡上，选择“所有者”。
+7. 在“添加用户”边栏选项卡上，输入要作为所有者添加的用户的电子邮件地址或名称。 如果找不到用户，则会显示一条错误消息来解释此问题。 如果找到该用户，则会在“用户”文本框中列出该用户。
 8. 选择找到的用户名。
-9. 选择“选择”  。
-10. 选择“确定”  关闭“添加访问”  边栏选项卡。
-11. 返回到“用户”  边栏选项卡时，已添加该用户为所有者。 现在，该用户是此订阅下创建的所有实验室的所有者，因此能够执行所有者任务。 
+9. 选择“选择”。
+10. 选择“确定”关闭“添加访问”边栏选项卡。
+11. 返回到“用户”边栏选项卡时，已添加该用户为所有者。 现在，该用户是此订阅下创建的所有实验室的所有者，因此能够执行所有者任务。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

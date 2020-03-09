@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 自动化中执行 Runbook
-description: 详细介绍如何处理 Azure 自动化中的 Runbook。
+title: 在 Azure Automation 中执行 Runbook
+description: 详细介绍如何处理 Azure Automation 中的 Runbook。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226473"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372539"
 ---
-# <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
+# <a name="runbook-execution-in-azure-automation"></a>在 Azure Automation 中执行 Runbook
 
 Runbook 根据在其内部定义的逻辑执行。 如果 Runbook 中断，则 Runbook 将在开始时重启。 此行为需要你编写支持在发生暂时性问题时重新启动的 runbook。
 
@@ -39,7 +39,7 @@ Azure Automation 中的 runbook 可以在 Azure 沙盒或[混合 Runbook 辅助�
 
 下表列出了一些 runbook 执行任务，其中每个任务都列出了建议的执行环境。
 
-|任务|最佳选择|说明|
+|任务|最佳选择|注意|
 |---|---|---|
 |与 Azure 资源集成|Azure 沙盒|在 Azure 中托管，身份验证更简单。 如果在 Azure VM 上使用混合 Runbook 辅助角色，则可以使用[azure 资源的托管标识](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)。|
 |获得最佳性能来管理 Azure 资源|Azure 沙盒|脚本运行在相同的环境中，延迟较低。|
@@ -49,7 +49,7 @@ Azure Automation 中的 runbook 可以在 Azure 沙盒或[混合 Runbook 辅助�
 |需要第三方软件和可执行文件|混合 Runbook 辅助角色|你可以管理操作系统并安装软件。|
 |使用 Runbook 监视文件或文件夹|混合 Runbook 辅助角色|在混合 Runbook 辅助角色上使用[观察程序任务](automation-watchers-tutorial.md)。|
 |运行资源密集型脚本|混合 Runbook 辅助角色| Azure 沙箱[对资源有限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
-|使用具有特定要求的模块| 混合 Runbook 辅助角色|一些示例如下：</br> WinSCP-依赖 WinSCP </br> IISAdministration-依赖于启用 IIS。|
+|使用具有特定要求的模块| 混合 Runbook 辅助角色|下面是一些示例：</br> WinSCP-依赖 WinSCP </br> IISAdministration-依赖于启用 IIS。|
 |使用安装程序安装模块|混合 Runbook 辅助角色|沙盒的模块必须支持复制。|
 |使用需要不同于4.7.2 的 .NET Framework 版本的 runbook 或模块|混合 Runbook 辅助角色|自动化沙箱有 .NET Framework 4.7.2，因此无法升级。|
 |运行需要提升的脚本|混合 Runbook 辅助角色|沙盒不允许提升。 使用混合 Runbook 辅助角色，你可以在运行需要提升的命令时关闭 UAC 并使用**Invoke 命令**。|
@@ -233,7 +233,7 @@ Runbook 必须能够处理错误。 PowerShell 有两种类型的错误，即终
 | 正在运行 |作业正在运行。 |
 | 正在运行，正在等待资源 |作业已卸载，因为它已达到公平份额限制。 片刻之后，它将从其上一个检查点恢复。 |
 | 已停止 |作业在完成之前已被用户停止。 |
-| 正在停止 |系统正在停止作业。 |
+| Stopping |系统正在停止作业。 |
 | Suspended |仅适用于[图形和 PowerShell 工作流 runbook](automation-runbook-types.md) 。 作业已被用户、系统或 Runbook 中的命令暂停。 如果 runbook 没有检查点，则会从开始处开始。 如果它有检查点，它将重新启动并从其上一个检查点继续。 系统仅在发生异常时挂起 runbook。 默认情况下， *ErrorActionPreference*变量设置为 Continue，表示该作业在出现错误时**继续**运行。 如果首选项变量设置为 "**停止**"，则作业将在出现错误时挂起。  |
 | 正在暂停 |仅适用于[图形和 PowerShell 工作流 runbook](automation-runbook-types.md) 。 系统正在尝试按用户请求暂停作业。 Runbook 只有在达到其下一个检查点后才能挂起。 如果它已通过其最后一个检查点，则它将完成，然后才能挂起。 |
 

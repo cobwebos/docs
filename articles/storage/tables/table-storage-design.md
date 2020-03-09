@@ -9,11 +9,11 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351181"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387138"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -37,11 +37,11 @@ ms.locfileid: "75351181"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -61,7 +61,7 @@ ms.locfileid: "75351181"
 </table>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
@@ -81,7 +81,7 @@ ms.locfileid: "75351181"
 </table>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -91,14 +91,14 @@ ms.locfileid: "75351181"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>销售热线</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>

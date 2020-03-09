@@ -4,11 +4,11 @@ description: 介绍如何在 Azure 资源管理器中部署资源时解决 Azure
 ms.topic: troubleshooting
 ms.date: 02/15/2019
 ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484514"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390052"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>解决资源提供程序注册的错误
 
@@ -16,7 +16,7 @@ ms.locfileid: "75484514"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>症状
+## <a name="symptom"></a>故障现象
 
 部署资源时，可能会收到以下错误代码和消息：
 

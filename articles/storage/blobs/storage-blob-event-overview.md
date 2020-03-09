@@ -9,11 +9,11 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
 ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835957"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387183"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -36,7 +36,7 @@ Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信
 如果你的帐户具有分层命名空间，本教程将演示如何在 Azure Databricks 中连接事件网格订阅、Azure 函数和[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)：[教程：使用 Azure Data Lake Storage Gen2 事件来更新 Databricks 增量表](data-lake-storage-events.md)。
 
 >[!NOTE]
-> 只有类型**StorageV2 （常规用途 v2）** 和**BlobStorage**的存储帐户支持事件集成。 **Storage （genral）** *不支持与*事件网格集成。
+> 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。 “存储(常规用途 v1)”不支持与事件网格集成。
 
 ## <a name="the-event-model"></a>事件模型
 

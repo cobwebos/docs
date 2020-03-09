@@ -1,5 +1,5 @@
 ---
-title: 特征 - LUIS
+title: 功能-LUIS
 titleSuffix: Azure Cognitive Services
 description: 将特征添加到语言模型，提供有关如何识别需要标记或分类的输入的提示。
 services: cognitive-services
@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280900"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393894"
 ---
 # <a name="machine-learned-features"></a>计算机学习的功能 
 
@@ -86,8 +86,8 @@ ms.locfileid: "74280900"
 
 例如，如果检测到街道地址实体（A），则查找街道地址（A）会将权重添加到寄送地址实体的预测（B）。 
 
-## <a name="best-practices"></a>最佳实践
-了解[最佳做法](luis-concept-best-practices.md)。
+## <a name="best-practices"></a>最佳做法
+了解[最佳实践](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
