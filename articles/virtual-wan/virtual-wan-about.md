@@ -9,11 +9,11 @@ ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77056336"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379400"
 ---
 # <a name="about-azure-virtual-wan"></a>关于 Azure 虚拟 WAN
 
@@ -25,13 +25,13 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 本文提供 Azure 虚拟 WAN 中网络连接的快速视图。 虚拟 WAN 提供以下优势：
 
-* **中心和辐射中的集成式连接解决方案：** 在本地站点与 Azure 中心之间自动建立站点到站点配置和连接。
-* **自动化的辐射设置和配置：** 将虚拟网络和工作负载无缝连接到 Azure 中心。
-* **直观的疑难解答：** 可以查看 Azure 中的端到端流，并使用此信息来执行所需的操作。
+* **中心和分支中的集成连接解决方案：** 在本地站点和 Azure 集线器之间自动执行站点到站点配置和连接。
+* **自动化的分支设置和配置：** 将虚拟网络和工作负荷无缝连接到 Azure 中心。
+* **直观的故障排除：** 可以在 Azure 中查看端到端流，然后使用此信息执行所需的操作。
 
 ## <a name="basicstandard"></a>基本和标准虚拟 WAN
 
-虚拟 WAN 分为两种类型：“基本”和“标准”。 下表显示了每种类型的可用配置。
+有两种类型的虚拟 Wan：基本和标准。 下表显示了每种类型的可用配置。
 
 [!INCLUDE [Basic and Standard SKUs](../../includes/virtual-wan-standard-basic-include.md)]
 
@@ -48,7 +48,7 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 若要配置端到端虚拟 WAN，请创建以下资源：
 
-* **virtualWAN：** virtualWAN 资源表示 Azure 网络的虚拟覆盖，并且是多个资源的集合。 它包含要部署到虚拟 WAN 中的所有虚拟中心的链接。 虚拟 WAN 资源相互隔离，不能包含公用中心。 跨虚拟 WAN 的虚拟中心不会相互通信。
+* **virtualWAN：** virtualWAN 资源表示 Azure 网络的一个虚拟叠加层，是多个资源的集合。 它包含要部署到虚拟 WAN 中的所有虚拟中心的链接。 虚拟 WAN 资源相互隔离，不能包含公用中心。 跨虚拟 WAN 的虚拟中心不会相互通信。
 
 * **中心：** 虚拟中心是 Microsoft 托管的虚拟网络。 中心包含用于建立连接的不同服务终结点。 从本地网络 (vpnsite)，你可以连接到虚拟中心内的 VPN 网关，将 ExpressRoute 线路连接到虚拟中心，甚至可以将移动用户连接到虚拟中心中的点到站点网关。 中心是区域中网络的核心。 每个 Azure 区域只能有一个中心。
 
@@ -62,11 +62,11 @@ Azure 虚拟 WAN 将许多 Azure 云连接服务（例如，站点到站点 VPN�
 
 **其他虚拟 WAN 资源**
 
-  * **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite  。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
+  * **站点：** 此资源仅用于站点到站点连接。 站点资源为 vpnsite。 它表示本地 VPN 设备及其设置。 可以通过与虚拟 WAN 合作伙伴合作，使用一个内置的解决方案自动将此信息导出到 Azure。
 
 ## <a name="connectivity"></a>连接类型
 
-虚拟 WAN 允许以下类型的连接：站点到站点 VPN、用户 VPN（点到站点）和 ExpressRoute。
+虚拟 WAN 允许以下类型的连接：站点到站点 VPN、用户 VPN （点到站点）和 ExpressRoute。
 
 ### <a name="s2s"></a>站点到站点 VPN 连接
 

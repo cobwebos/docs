@@ -1,6 +1,6 @@
 ---
 title: Azure 事件中心 - 使用 .NET Framework 发送/接收事件
-description: 快速入门：本文演练如何创建可将事件发送到 Azure 事件中心的 .NET Framework 应用程序。
+description: 快速入门：本文提供了有关创建将事件发送到 Azure 事件中心的 .NET Framework 应用程序的演练。
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -16,13 +16,13 @@ ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: shvija
 ms.openlocfilehash: 385430d993afe8b7a0ad57991d3c93eebd46ddcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437270"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365316"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向/从 Azure 事件中心发送/接收事件
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-net-framework"></a>快速入门：使用 .NET Framework 向 Azure 事件中心发送事件或接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
 
 本教程介绍如何在 C# 中创建 .NET Framework 控制台应用程序，用于向/从事件中心发送/接收事件。 
@@ -31,7 +31,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 若要完成本教程，需要具备以下先决条件：
 
 - [Microsoft Visual Studio 2019](https://visualstudio.com)。
-- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照以下文章中的说明获取**事件中心命名空间的连接字符串**：[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 本教程后面的步骤将使用此连接字符串。
+- **创建事件中心命名空间和事件中心**。 第一步是使用 [Azure 门户](https://portal.azure.com)创建事件中心类型的命名空间，并获取应用程序与事件中心进行通信所需的管理凭据。 要创建命名空间和事件中心，请按照[此文](event-hubs-create.md)中的步骤操作。 然后，按照 "[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)" 一文中的说明，获取**事件中心命名空间的连接字符串**。 本教程后面的步骤将使用此连接字符串。
 
 ## <a name="send-events"></a>发送事件 
 本部分介绍如何创建一个向事件中心发送事件的 .NET Framework 控制台应用程序。 
@@ -44,8 +44,8 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-1. 在解决方案资源管理器中，右键单击“Sender”项目，并单击“为解决方案管理 NuGet 包”。   
-2. 单击“浏览”  选项卡，并搜索 `WindowsAzure.ServiceBus`。 单击“安装”  并接受使用条款。 
+1. 在解决方案资源管理器中，右键单击“Sender”项目，并单击“为解决方案管理 NuGet 包”。 
+2. 单击“浏览”选项卡，并搜索 `WindowsAzure.ServiceBus`。 单击“安装”并接受使用条款。 
    
     ![安装服务总线 NuGet 包](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
@@ -53,13 +53,13 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>编写代码以将消息发送到事件中心
 
-1. 在 Program.cs  文件顶部添加以下 `using` 语句：
+1. 在 Program.cs`using`**文件顶部添加以下** 语句：
    
     ```csharp
     using System.Threading;
     using Microsoft.ServiceBus.Messaging;
     ```
-2. 将以下字段添加到 **Program** 类，并将占位符值分别替换成在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”  密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。
+2. 将以下字段添加到 **Program** 类，并将占位符值分别替换成在上一节中创建的事件中心的名称和前面保存的命名空间级别连接字符串。 可以在 Azure 门户中从“事件中心”页面上的 **RootManageSharedAccessKey** 下的“连接字符串-主要”密钥下复制你的事件中心的连接字符串。 有关详细步骤，请参阅[获取连接字符串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。
    
     ```csharp
     static string eventHubName = "Your Event Hub name";
@@ -115,8 +115,8 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="add-the-event-hubs-nuget-package"></a>添加事件中心 NuGet 包
 
-1. 在解决方案资源管理器中，右键单击“Receiver”项目，并单击“为解决方案管理 NuGet 包”。  
-2. 单击“浏览”  选项卡，并搜索 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装”  并接受使用条款。
+1. 在解决方案资源管理器中，右键单击“Receiver”项目，并单击“为解决方案管理 NuGet 包”。
+2. 单击“浏览”选项卡，并搜索 `Microsoft Azure Service Bus Event Hub - EventProcessorHost`。 单击“安装”并接受使用条款。
    
     ![搜索事件处理器主机 NuGet 包](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
@@ -124,7 +124,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
 
 ### <a name="implement-the-ieventprocessor-interface"></a>实现 IEventProcessor 接口
 
-1. 右键单击 **Receiver** 项目，单击“添加”，并单击“类”   。 将新类命名为 **SimpleEventProcessor**，然后单击“添加”以创建该类  。
+1. 右键单击 **Receiver** 项目，单击“添加”，并单击“类”。 将新类命名为 **SimpleEventProcessor**，然后单击“添加”以创建该类。
    
     ![添加 SimpleEventProcessor 类](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. 在 SimpleEventProcessor.cs 文件的顶部添加以下语句：
@@ -178,7 +178,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
       }
       ```
     
-      此类由 EventProcessorHost 调用，用于处理从事件中心接收的事件  。 `SimpleEventProcessor` 类使用秒表定期对 EventProcessorHost 上下文调用检查点方法  。 此操作确保接收方重启时，其丢失的处理工作不会超过五分钟。
+      此类由 EventProcessorHost 调用，用于处理从事件中心接收的事件。 `SimpleEventProcessor` 类使用秒表定期对 EventProcessorHost 上下文调用检查点方法。 此操作确保接收方重启时，其丢失的处理工作不会超过五分钟。
 
 ### <a name="update-the-main-method-to-use-simpleeventprocessor"></a>更新 Main 方法以使用 SimpleEventProcessor
 
@@ -188,7 +188,7 @@ Azure 事件中心是一个大数据流式处理平台和事件引入服务，�
       using Microsoft.ServiceBus.Messaging;
       ```
     
-2. 将 `Program` 类中的 `Main` 方法替换为以下代码，从而替换为以前保存的事件中心名称和命名空间级别连接字符串，以及在前面部分复制的存储帐户和密钥。 
+2. 将 `Main` 类中的 `Program` 方法替换为以下代码，从而替换为以前保存的事件中心名称和命名空间级别连接字符串，以及在前面部分复制的存储帐户和密钥。 
     
       ```csharp
       static void Main(string[] args)

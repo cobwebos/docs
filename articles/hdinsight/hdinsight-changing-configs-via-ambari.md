@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150117"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386923"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
 
@@ -51,9 +51,9 @@ NameNode Java 堆大小取决于许多因素，例如群集上的负载、文件
 
     ![Ambari 编辑 NameNode Java 堆 name> 时](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
-1. NameNode Java 堆大小已从 2 GB 更改为 1 GB。
+1. NameNode Java 堆大小更改为从 2 GB 到 1 GB。
 
-    ![已编辑 NameNode Java 堆大小 2](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
+    ![已编辑 NameNode Java 堆 z e 1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
 1. 单击配置屏幕顶部的绿色“保存”按钮保存所做的更改。
 
@@ -125,7 +125,7 @@ Hadoop 会尝试将单个文件拆分（映射）为多个文件，以并行方�
 
 1. 若要启用并行查询执行，请导航到 Hive 的“配置”选项卡并搜索  **属性。** `hive.exec.parallel` 默认值为 false。 将该值更改为 true，然后按 **Enter** 保存该值。
 
-1. 若要限制并行运行的作业数，请修改 `hive.exec.parallel.thread.number` 属性。 默认值为 8。
+1. 若要限制要并行运行的作业数，请修改 "`hive.exec.parallel.thread.number`" 属性。 默认值为 8。
 
     ![Apache Hive exec 并行显示](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
@@ -177,10 +177,10 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 | 格式 | 工具 | 算法 | 文件扩展名 | 是否可拆分？ |
 | -- | -- | -- | -- | -- |
-| Gzip | Gzip | DEFLATE | .gz | 否 |
+| Gzip | Gzip | DEFLATE | .gz | 是 |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
 | LZO | Lzop | LZO | .lzo | 是（如果已编制索引） |
-| Snappy | 不适用 | Snappy | Snappy | 否 |
+| Snappy | 不可用 | Snappy | Snappy | 是 |
 
 一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
@@ -195,7 +195,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 1. 添加自定义设置：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 导航到**Hive** > 配置 > **高级** > **自定义 Hive 站点**。
+    a. 导航到**Hive** > 配置 > **高级** > **自定义 Hive 站点**。
 
     b. 选择 "自定义 hive-站点" 窗格底部的 "**添加属性 ...** "。
 
@@ -266,7 +266,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
 
-| 联接类型 | 时间 | 方式 | Hive 设置 | 注释 |
+| 联接类型 | 时间 | 如何收集 | Hive 设置 | Comments |
 | -- | -- | -- | -- | -- |
 | 随机联接 | <ul><li>默认选项</li><li>始终运行</li></ul> | <ul><li>从某个表的一部分内容中读取</li><li>根据联接键存储和排序</li><li>向每个化简器发送一个存储桶</li><li>在化简端执行联接</li></ul> | 不需要过多的 Hive 设置 | 每次运行 |
 | 映射联接 | <ul><li>一个表可以装入内存</li></ul> | <ul><li>将小型表读入内存哈希表</li><li>通过大型文件的一部分流式处理</li><li>联接哈希表中的每条记录</li><li>只按映射器执行联接</li></ul> | `hive.auto.confvert.join=true` | 速度很快，但受限 |

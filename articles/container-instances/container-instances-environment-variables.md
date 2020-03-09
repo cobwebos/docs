@@ -4,11 +4,11 @@ description: 了解如何在 Azure 容器实例的已运行容器中设置环境
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252202"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379147"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 

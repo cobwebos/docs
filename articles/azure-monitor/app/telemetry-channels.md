@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671114"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78368288"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights 中的遥测通道
 
@@ -124,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 1. `MaxTransmissionBufferCapacity`：通道在内存中缓冲传输所使用的最大内存量（以字节为单位）。 达到此容量时，新项将直接存储到本地磁盘。 默认值为 5 MB。 设置较高的值将导致磁盘使用较少，但请记住，如果应用程序崩溃，内存中的项将丢失。
 
-1. `MaxTransmissionSenderCapacity`：将同时发送到 Application Insights 的 `Transmission` 实例的最大数量。 默认值为 10。 此设置可配置为更大的数字，如果生成的遥测数据量较大，则建议使用此设置。 大容量通常在负载测试过程中或在关闭采样时出现。
+1. `MaxTransmissionSenderCapacity`：将同时发送到 Application Insights 的 `Transmission` 实例的最大数量。 默认值为“10”。 此设置可配置为更大的数字，如果生成的遥测数据量较大，则建议使用此设置。 大容量通常在负载测试过程中或在关闭采样时出现。
 
 1. `StorageFolder`：通道用于根据需要将项存储到磁盘的文件夹。 在 Windows 中，如果未显式指定其他路径，则使用% LOCALAPPDATA% 或% TEMP%。 在 Windows 以外的环境中，你必须指定有效的位置，否则遥测将不会存储到本地磁盘。
 

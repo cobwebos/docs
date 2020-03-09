@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888050"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78364989"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure 容器实例中的容器组
 
@@ -64,7 +64,7 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 * 有关容器组中的**最大**资源，请参阅部署区域中 Azure 容器实例的[资源可用性][region-availability]。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 容器组可以共享一个面向外部的 IP 地址、该 IP 地址上的一个或多个端口，以及一个具有完全限定的域名（FQDN）的 DNS 标签。 若要启用外部客户端来访问组内的容器，必须从该容器公开 IP 地址上的端口。 由于组中的容器共享端口命名空间，因此不支持端口映射。 删除容器组后，将释放容器组的 IP 地址和 FQDN。 
 
@@ -72,7 +72,7 @@ Azure 容器实例通过在组中添加实例的[资源请求][resource-requests
 
 （可选）将容器组部署到[Azure 虚拟网络][virtual-network]，以允许容器与虚拟网络中的其他资源安全通信。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 可以指定要在容器组内装载的外部卷。 支持的卷包括：
 * [Azure 文件共享][azure-files]

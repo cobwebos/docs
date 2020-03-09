@@ -7,12 +7,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 8fb4d50a4ba56efd9087a829c7d54c3010fc671e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 5fd38a781a58da530ad805bbeee352858eb33b41
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431514"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893313"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建流分析作业
 
@@ -28,7 +28,7 @@ Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 A
 
 * 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
 
-* 某些 IoT 中心操作不受 Azure PowerShell 的支持，必须使用 Azure CLI 2.0.24 或更高版本以及 Azure CLI 的 IoT 扩展来完成。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-cli-iot-ext` 来安装 IoT 扩展。
+* Azure PowerShell 不支持某些 IoT 中心操作，必须使用 Azure CLI 版本2.0.70 或更高版本以及 Azure CLI 的 IoT 扩展完成此操作。 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并使用 `az extension add --name azure-iot` 来安装 IoT 扩展。
 
 
 ## <a name="sign-in-to-azure"></a>登录 Azure

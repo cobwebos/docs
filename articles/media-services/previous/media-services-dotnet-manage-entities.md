@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61235419"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366853"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>使用媒体服务 .NET SDK 管理资产和相关的实体
 > [!div class="op_single_selector"]
@@ -29,18 +29,18 @@ ms.locfileid: "61235419"
 > 
 
 > [!NOTE]
-> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 本主题演示如何使用 .NET 管理 Azure 媒体服务实体。
 
 自 2017 年 4 月 1 日起，即使记录总数低于最大配额，也会自动删除帐户中所有超过 90 天的作业记录，及其相关的任务记录。 例如，将于 2017 年 4 月 1 日自动删除帐户中 2016 年 12 月 31 日前的所有作业记录。 在需要时，可使用本主题中所述的代码存档作业/任务信息。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 设置开发环境，并根据[使用 .NET 进行媒体服务开发](media-services-dotnet-how-to-use.md)中所述，在 app.config 文件中填充连接信息。 
 
 ## <a name="get-an-asset-reference"></a>获取资产引用
-一个常见的任务是获取对媒体服务中某个现有资产的引用。 以下代码示例演示了如何根据资产 ID，从服务器上下文对象上的资产集合中获取资产引用。以下代码示例使用 Linq 查询来获取对现有 IAsset 对象的引用。
+一个常见的任务是获取对媒体服务中某个现有资产的引用。 下面的代码示例演示了如何根据资产 Id，从服务器上下文对象上的资产集合中获取资产引用。下面的代码示例使用 Linq 查询来获取对现有 IAsset 对象的引用。
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -100,7 +100,7 @@ ms.locfileid: "61235419"
 
 ## <a name="get-a-job-reference"></a>获取作业引用
 
-处理媒体服务代码中的任务时，通常需要根据 ID 获取对现有作业的引用。以下代码示例演示了如何获取对作业集合中某个 IJob 对象的引用。
+处理媒体服务代码中的任务时，通常需要根据 Id 获取对现有作业的引用。下面的代码示例演示如何获取对作业集合中的 IJob 对象的引用。
 
 开始长时运行的编码作业时，可能需要获取作业引用，并且需要检查线程上的作业状态。 在这种情况下，当方法从某个线程返回时，需要检索对作业的刷新引用。
 
@@ -295,7 +295,7 @@ ms.locfileid: "61235419"
 ## <a name="enumerating-through-large-collections-of-entities"></a>枚举大型实体集合
 查询实体时，一次返回的实体数限制为 1000 个，因为公共 REST v2 将查询结果数限制为 1000 个。 枚举大型实体集合时，需要使用 Skip 和 Take。 
 
-以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果你帐户中的作业超过 1000 个）。
+以下函数将循环访问所提供的媒体服务帐户中的所有作业。 媒体服务会在作业集合中返回 1000 个作业。 该函数使用 Skip 和 Take 来确保枚举所有作业（如果帐户中的作业超过 1000 个）。
 
 ```csharp
     static void ProcessJobs()

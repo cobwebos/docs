@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 3abd9835c1cf750b926f49442f3e34e96dc9c865
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
+ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917350"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78893017"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
@@ -91,13 +91,13 @@ ms.locfileid: "77917350"
 不是。 你没有权限使用远程桌面连接到托管域的域控制器。 *AAD DC 管理员*组的成员可以使用 ad 管理工具（例如 Active Directory 管理中心（ADAC）或 ad PowerShell）来管理托管域。 这些工具是使用已加入托管域的 Windows 服务器上的*远程服务器管理工具*功能安装的。 有关详细信息，请参阅[创建管理 VM 以配置和管理 Azure AD 域服务托管域](tutorial-create-management-vm.md)。
 
 ### <a name="ive-enabled-azure-ad-domain-services-what-user-account-do-i-use-to-domain-join-machines-to-this-domain"></a>我已启用 Azure AD 域服务。 应使用哪个用户帐户将计算机加入此域？
-管理组*AAD DC 管理员*的成员可以加入域。 此外，此组中的成员有权通过远程桌面访问已加入域的计算机。
+属于 Azure AD DS 托管域的任何用户帐户都可以加入 VM。 *AAD DC 管理员*组的成员被授予对已加入托管域的计算机的远程桌面访问权限。
 
 ### <a name="do-i-have-domain-administrator-privileges-for-the-managed-domain-provided-by-azure-ad-domain-services"></a>我是否具有 Azure AD 域服务提供的托管域的域管理员特权？
 不是。 你没有获得托管域的管理权限。 *域管理员*和*企业管理员*权限不可用于域中。 本地 Active Directory 中的域管理员或企业管理员组的成员也未被授予托管域上的域/企业管理员权限。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>能否在托管域上使用 LDAP 或其他 AD 管理工具修改组成员身份？
-不是。 在 Azure AD 域服务所服务的域中不能修改组成员身份。 这同样适用于用户属性。 你可以在 Azure AD 或本地域上更改组成员身份或用户属性。 更改将自动同步到 Azure AD 域服务。
+无法修改从 Azure Active Directory 同步到 Azure AD 域服务的用户和组，因为其源源 Azure Active Directory。 可能会修改托管域中的任何用户或组。
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>对 Azure AD 目录的更改需要多长时间才可在托管域中显示？
 使用 Azure AD UI 或 PowerShell 在 Azure AD 目录中所做的更改将自动同步到托管域。 此同步过程在后台运行。 没有定义用于完成所有对象更改的时间段。

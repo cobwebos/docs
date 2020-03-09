@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379568"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何在 azure Blob 存储中用 Azure 认知搜索索引文档
 
@@ -257,7 +257,7 @@ Blob 索引器可从以下文档格式提取文本：
 | 属性名称 | 属性值 | 说明 |
 | --- | --- | --- |
 | AzureSearch_Skip |"true" |指示 Blob 索引器完全跳过该 Blob， 既不尝试提取元数据，也不提取内容。 如果特定的 Blob 反复失败并且中断编制索引过程，此属性非常有用。 |
-| AzureSearch_SkipContent |"true" |此属性等效于[上面](#PartsOfBlobToIndex)所述的与特定 Blob 相关的 `"dataToExtract" : "allMetadata"` 设置。 |
+| AzureSearch_SkipContent |"true" |此属性等效于`"dataToExtract" : "allMetadata"`上面[所述的与特定 Blob 相关的 ](#PartsOfBlobToIndex) 设置。 |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>处理错误
@@ -300,7 +300,7 @@ Azure 认知搜索限制已编制索引的 blob 的大小。 [Azure 认知搜索
 2. 在数据源上配置软删除检测策略
 3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
 
-例如，如果某个 Blob 具有值为 `true` 的元数据属性 `IsDeleted`，以下策略会将该 Blob 视为已删除：
+例如，如果某个 Blob 具有值为 `IsDeleted` 的元数据属性 `true`，以下策略会将该 Blob 视为已删除：
 
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06
     Content-Type: application/json

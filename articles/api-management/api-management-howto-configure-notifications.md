@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902484"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375091"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中配置通知和电子邮件模板
 
 API 管理提供的功能为特定事件配置通知，以及配置用于和 API 管理实例的管理员及开发人员通信的电子邮件模板。 本文演示如何为可用事件配置通知，并提供配置用于这些事件的电子邮件模板的概述。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 如果没有 API 管理服务实例，请完成以下快速入门：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
 
@@ -50,7 +50,7 @@ API 管理提供的功能为特定事件配置通知，以及配置用于和 API
         > [!NOTE]
         > 仅由订阅策略根据[配额](api-management-access-restriction-policies.md#SetUsageQuota)触发通知。 [按密钥策略的配额](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不生成通知。
 
-    对于每个事件，可以指定电子邮件收件人使用电子邮件地址文本框，或从列表中选择用户。
+    对于每个事件，您可以指定电子邮件收件人使用电子邮件地址文本框，或从列表中选择用户。
 
 3.  要指定被通知的电子邮件地址，请在电子邮件地址文本框中输入。 如果有多个电子邮件地址，使用逗号分隔它们。
 

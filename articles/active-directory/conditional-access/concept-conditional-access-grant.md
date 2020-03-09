@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d3f18fb11dc54f560d867e2b5ff87251e2c836
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 09a720be10b09e11adc8acdc8ab26a06870311b0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249107"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78892937"
 ---
 # <a name="conditional-access-grant"></a>条件性访问： Grant
 
@@ -35,7 +35,7 @@ ms.locfileid: "78249107"
 在授予访问权限时，管理员可以选择强制实施一个或多个控件。 这些控件包括以下选项： 
 
 - [需要多重身份验证（Azure 多重身份验证）](../authentication/concept-mfa-howitworks.md)
-- [要求设备标记为符合（Microsoft Intune）](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [要求设备标记为符合（Microsoft Intune）](/intune/protect/device-compliance-get-started)
 - [需要混合 Azure AD 联接设备](../devices/concept-azure-ad-join-hybrid.md)
 - [需要批准的客户端应用](app-based-conditional-access.md)
 - [需要应用保护策略](app-protection-based-conditional-access.md)
@@ -53,7 +53,7 @@ ms.locfileid: "78249107"
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>要求将设备标记为合规
 
-已部署 Microsoft Intune 的组织可以使用从其设备返回的信息来识别满足特定符合性要求的设备。 此策略符合性信息将从 Intune 转发到 Azure AD，在这种情况下，条件访问可以决定是允许还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅文章[使用 Intune 设置设备上的规则以允许访问你的组织中的资源](https://docs.microsoft.com/intune/protect/device-compliance-get-started)。
+已部署 Microsoft Intune 的组织可以使用从其设备返回的信息来识别满足特定符合性要求的设备。 此策略符合性信息将从 Intune 转发到 Azure AD，在这种情况下，条件访问可以决定是允许还是阻止对资源的访问。 有关合规性策略的详细信息，请参阅文章[使用 Intune 设置设备上的规则以允许访问你的组织中的资源](/intune/protect/device-compliance-get-started)。
 
 设备可以被 Intune （适用于任何设备操作系统）或第三方 MDM 系统（适用于 Windows 10 设备）标记为合规。 Jamf pro 是唯一受支持的第三方 MDM 系统。 有关集成的详细信息，请参阅将[Jamf Pro 与 Intune 集成以实现符合性](/intune/protect/conditional-access-integrate-jamf)。
 
@@ -67,7 +67,35 @@ ms.locfileid: "78249107"
 
 组织可能需要从批准的客户端应用进行对所选云应用的访问尝试。 这些批准的客户端应用支持独立于任何移动设备管理（MDM）解决方案的[Intune 应用保护策略](/intune/app-protection-policy)。
 
-受支持的应用程序可在[Microsoft Intune 受保护的应用](/intune/apps/apps-supported-intune-apps)程序一文中找到。
+此设置适用于以下客户端应用：
+
+- Microsoft Azure 信息保护
+- Microsoft 预订
+- Microsoft Cortana
+- Microsoft Dynamics 365
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft Invoicing
+- Microsoft Kaizala
+- Microsoft Launcher
+- Microsoft OneDrive
+- Microsoft OneNote
+- Microsoft Outlook
+- Microsoft Planner
+- Microsoft PowerApps
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Skype for Business
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams
+- 微软待办
+- Microsoft Visio
+- Microsoft Word
+- Microsoft Yammer
 
 **注释**
 
@@ -76,17 +104,26 @@ ms.locfileid: "78249107"
    - 仅支持 iOS 和 Android 设备平台条件。
 - 条件性访问无法在 InPrivate 模式下将 Microsoft Edge 视为批准的客户端应用。
 
+有关配置示例，请参阅[如何：要求使用条件性访问获得批准的客户端应用，以获得适用于云应用的访问权限](app-based-conditional-access.md)。
+
 ### <a name="require-app-protection-policy"></a>需要应用保护策略
 
 在条件访问策略中，你可以要求在客户端应用上提供[Intune 应用保护策略](/intune/app-protection-policy)，然后才能访问所选的云应用。 
 
-受支持的应用程序可在[Microsoft Intune 受保护的应用](/intune/apps/apps-supported-intune-apps)程序一文中找到。
+此设置适用于以下客户端应用：
+
+- Microsoft Cortana
+- Microsoft OneDrive
+- Microsoft Outlook
+- Microsoft Planner
 
 **注释**
 
 - 适用于应用保护策略的应用支持 Intune 移动应用程序管理功能与策略保护。
 - **需要应用保护策略**要求：
     - 仅支持 iOS 和 Android 设备平台条件。
+
+有关配置示例，请参阅[如何：要求应用保护策略和批准的客户端应用，以进行 cloud 应用访问](app-protection-based-conditional-access.md)。
 
 ### <a name="terms-of-use"></a>使用条款
 

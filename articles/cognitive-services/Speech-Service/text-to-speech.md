@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: erhopf
 ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379872"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394805"
 ---
 # <a name="what-is-text-to-speech"></a>什么是文本转语音？
 
@@ -37,7 +37,7 @@ ms.locfileid: "75379872"
 
 * 语音合成标记语言（SSML）-一种基于 XML 的标记语言，用于自定义语音到文本输出。 使用 SSML，你可以调整音调，添加暂停，改进发音，加速或减速语速，增加或减少音量，并将多个语音特性设置为单个文档。 请参阅[SSML](speech-synthesis-markup.md)。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 可以通过[语音 SDK](speech-sdk.md)使用文本到语音服务。 在各种语言和平台中，有几种常见方案可用于快速入门：
 
@@ -47,7 +47,7 @@ ms.locfileid: "75379872"
 
 如果愿意，可以通过[REST](rest-text-to-speech.md)访问文本到语音服务。
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 GitHub 上提供了文本到语音的示例代码。 这些示例涵盖了最常用编程语言的文本到语音转换。
 

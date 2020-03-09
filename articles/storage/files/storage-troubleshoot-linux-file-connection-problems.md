@@ -8,11 +8,11 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544933"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361875"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>在 Linux 中排查 Azure 文件问题
 
@@ -34,7 +34,7 @@ ms.locfileid: "76544933"
 | RHEL | 7+ | 7.5+ |
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ |   |
-| openSUSE | 13.2+ | 42.3+ |
+| OpenSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
 - 客户端上未安装 CIFS 实用程序（utils）。
@@ -54,7 +54,7 @@ ms.locfileid: "76544933"
 * 可收集诊断跟踪。
 
 <a id="mounterror13"></a>
-## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现 "装载错误（13）：权限被拒绝"
+## <a name="mount-error13-permission-denied-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现“装载错误(13):权限被拒绝”
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1：信道未加密
 
@@ -67,7 +67,7 @@ ms.locfileid: "76544933"
 1. 从支持 SMB 加密的客户端进行连接，或者从用于 Azure 文件共享的 Azure 存储帐户所在数据中心内的虚拟机进行连接。
 2. 如果客户端不支持 SMB 加密，请验证是否已在存储帐户上禁用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置。
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因2：在存储帐户上启用虚拟网络或防火墙规则 
+### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2：在存储帐户上启用了虚拟网络或防火墙规则 
 
 如果在存储帐户上配置了虚拟网络 (VNET) 和防火墙规则，则将拒绝访问网络流量，除非允许客户端 IP 地址或虚拟网络访问。
 
@@ -134,16 +134,16 @@ ms.locfileid: "76544933"
 ## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>尝试访问或删除 Azure 文件共享时出现 "无法访问" 错误  
 尝试在门户中访问或删除 Azure 文件共享时，可能会收到以下错误：
 
-无法访问  
-错误代码：403 
+无访问权限  
+错误代码:403 
 
-### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因1：已在存储帐户上启用虚拟网络或防火墙规则
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 1：在存储帐户上启用了虚拟网络或防火墙规则
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
 验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
-### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因2：你的用户帐户无权访问存储帐户
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>原因 2：你的用户帐户无权访问该存储帐户
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
@@ -169,7 +169,7 @@ ms.locfileid: "76544933"
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM 上装载的 Azure 文件共享性能缓慢
 
-### <a name="cause-1-caching"></a>原因1：缓存
+### <a name="cause-1-caching"></a>原因 1：Caching
 
 性能缓慢的一个可能原因是禁用了缓存。 如果要反复访问文件，缓存可能会很有用，否则可能会造成开销。 在禁用缓存之前，请检查是否正在使用缓存。
 
@@ -191,7 +191,7 @@ ms.locfileid: "76544933"
 
 如果不存在 cache=strict 或 serverino 选项，请通过运行[文档](../storage-how-to-use-files-linux.md)中的装载命令卸载并再次装载 Azure 文件。 然后重新检查 **/etc/fstab** 条目是否具有正确选项。
 
-### <a name="cause-2-throttling"></a>原因2：限制
+### <a name="cause-2-throttling"></a>原因 2：限制
 
 你可能会遇到限制，请求将发送到队列。 可以通过使用[Azure Monitor 中的 Azure 存储指标](../common/storage-metrics-in-azure-monitor.md)来验证这一点。
 
@@ -217,11 +217,11 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;': 输入/输出错误
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: 无法访问 '&lt;path&gt;':输入/输出错误
 
 尝试使用 ls 命令列出 Azure 文件共享中的文件时，该命令在列出文件时挂起。 收到以下错误：
 
-**ls: 无法访问 '&lt;path&gt;': 输入/输出错误**
+**ls: 无法访问'&lt;path&gt;':输入/输出错误**
 
 
 ### <a name="solution"></a>解决方案
@@ -232,7 +232,7 @@ COPYFILE 中的强制标志 **f** 导致在 Unix 上执行 **cp -p -f**。 此�
 - 4.12.11+
 - 4\.13 或更高的所有版本
 
-## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't': 操作不受支持
+## <a name="cannot-create-symbolic-links---ln-failed-to-create-symbolic-link-t-operation-not-supported"></a>无法创建符号链接 - ln: 未能创建符号链接 't':操作不受支持
 
 ### <a name="cause"></a>原因
 默认情况下，使用 CIFS 在 Linux 上装载 Azure 文件共享不会启用符号链接的支持。 出现如下错误：
