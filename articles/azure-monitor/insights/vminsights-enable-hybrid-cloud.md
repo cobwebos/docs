@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
 ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669618"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361821"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>启用混合环境的用于 VM 的 Azure Monitor （预览版）
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931571"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378460"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory 域服务中的用户帐户、密码和管理的管理概念
 
@@ -80,9 +80,9 @@ Azure AD DS 包括一个默认密码策略，该策略定义帐户锁定、最�
 
 | SKU 名称   | 最大对象计数 | 备份频率 | 最大出站林信任数量 |
 |------------|----------------------|------------------|----|
-| 标准   | 无限制            | 每7天     | 0  |
-| Enterprise 版 | 无限制            | 每3天     | 5  |
-| 高级    | 无限制            | 每天            | 10 |
+| Standard   | 无限制            | 每7天     | 0  |
+| Enterprise | 无限制            | 每3天     | 5  |
+| Premium    | 无限制            | 每日            | 10 |
 
 在这些 Azure AD DS Sku 之前，使用基于 Azure AD DS 托管域中的对象数（用户和计算机帐户）的计费模型。 对于托管域中的对象数量，不再提供可变定价。
 

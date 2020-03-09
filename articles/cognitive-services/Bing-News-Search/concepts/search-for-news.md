@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448563"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360124"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>使用必应新闻搜索 API 搜索新闻
 
@@ -27,7 +27,7 @@ ms.locfileid: "75448563"
 
 如果提供供用户输入搜索词的搜索框，请使用[必应自动推荐 API](../../bing-autosuggest/get-suggested-search-terms.md) 来改进体验。 此 API 根据用户键入的部分搜索词返回建议的查询字符串。
 
-用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 `q` 设置为 `sailing+dinghies` 或 `sailing%20dinghies`。
+用户输入搜索词以后，URL 在设置 [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query) 查询参数之前会对搜索词进行编码。 例如，如果用户输入 sailing dinghies，系统会将 *设置为* 或 `q``sailing+dinghies``sailing%20dinghies`。
 
 ## <a name="get-general-news"></a>获取一般新闻
 
