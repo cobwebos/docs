@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
 ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610006"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378940"
 ---
 # <a name="scaling-in-service-fabric"></a>在 Service Fabric 中进行缩放
 Azure Service Fabric 通过管理服务、分区以及群集的节点上的副本，让生成可缩放的应用程序更简单。 在同一硬件上运行多个工作负荷不仅可实现最大资源使用率，还可提供在如何选择缩放工作负荷方面的灵活性。 此第 9 频道视频介绍了如何构建可缩放的微服务应用程序：
@@ -37,7 +37,7 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-PowerShell：
+Powershell：
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
@@ -54,7 +54,7 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-PowerShell：
+Powershell：
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
@@ -117,7 +117,7 @@ Service Fabric 支持分区。 分区可将服务拆分成若干逻辑和物理�
 
 由于操作系统之间的实现差异，选择使用 Windows 或 Linux Service Fabric 可能是缩放应用程序的重要部分。 一个潜在的障碍是如何执行暂存日志记录。 Windows 上的 Service Fabric 使用内核驱动程序进行一台每台计算机的日志，在有状态服务副本之间共享。 此日志约为 8 GB。 另一方面，Linux 对每个副本使用 256 MB 暂存日志，这使得对于想要最大程度地减少在给定节点上运行的轻型服务副本数量的应用程序而言，这种情况并不理想。 临时存储要求的这些差异可能会通知所需的平台进行 Service Fabric 群集部署。
 
-## <a name="putting-it-all-together"></a>汇总
+## <a name="putting-it-all-together"></a>总结
 让我们汇总已在此文中讨论的所有观点，并讨论一个示例。 请考虑以下服务：你想要生成一个充当通讯簿的服务，其中保存名称和联系信息。 
 
 首先，需要考虑多个与缩放相关的问题：要设置多少个用户？ 每个用户将存储多少个联系人？ 如果要在第一次构建服务时解决所有问题，这会很难。 我们假设你将处理具有特定分区计数的单个静态服务。 选错分区计数的后果可能会导致以后遇到缩放问题。 同样，即使选对计数，也可能并没有所需的所有信息。 例如，还需要首先决定群集的大小（节点数和其大小）。 通常难以预测服务将在其生存期内使用的资源数。 也可能很难提前知道服务实际看到的流量模式。 例如，可能人们只在早上首先添加和删除其联系人，或者也可能在一天中均匀分布。 基于此，可能需要动态地扩大和缩小服务。 也许可以学习预测何时需要扩大和缩小服务，但无论哪种方式，可能都需要应对服务不断变化的资源消耗情况。 这可能涉及更改群集的大小，以在重新组织现有资源的使用不足以解决问题时提供更多资源。 

@@ -1,14 +1,14 @@
 ---
 title: 将客户载入到 Azure 委派资源管理
 description: 了解如何将客户载入到 Azure 委派资源管理，使你能够通过自己的租户访问和管理其资源。
-ms.date: 01/20/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 7cf0ff1d64603215a9607f5a25ebc4077f9fa9da
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649783"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78925435"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -22,9 +22,6 @@ ms.locfileid: "77649783"
 > 在客户购买你发布到 Azure 市场的托管服务产品（公共或专用）时也可将其加入。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 你还可以使用此处所述的载入流程以及发布到 Azure Marketplace 的产品/服务。
 
 载入过程要求从服务提供商的租户和客户的租户中执行操作。 上述所有步骤均可参见本文。
-
-> [!IMPORTANT]
-> 目前，如果订阅使用 Azure Databricks，则无法为 Azure 委托资源管理载入订阅（或订阅内的资源组）。 同样，如果订阅已注册为通过 Microsoft.ManagedServices 资源提供程序加入，则目前无法为该订阅创建 Databricks 工作区。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租户和订阅详细信息
 
@@ -41,7 +38,7 @@ ms.locfileid: "77649783"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-可将鼠标悬停在 Azure 门户右上方的帐户名称上，或者选择“切换目录”来查看租户 ID。 要选择并复制租户 ID，请从门户中搜索“Azure Active Directory”，然后选择“属性”并复制“目录 ID”字段中显示的值。 若要在 customer 租户中查找订阅的 ID，请搜索 "订阅"，然后选择相应的订阅 ID。
+可将鼠标悬停在 Azure 门户右上方的帐户名称上，或者选择“切换目录”来查看租户 ID。 要选择并复制租户 ID，请从门户中搜索“Azure Active Directory”，然后选择“属性”并复制“目录 ID”字段中显示的值。 要在客户租户中查找订阅 ID，请搜索“订阅”，然后选择相应的订阅 ID。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -98,7 +95,7 @@ az account show
 az ad group list --query "[?displayName == '<yourGroupName>'].objectId" --output tsv
 
 # To retrieve the objectId for an Azure AD user
-az ad user show --upn-or-object-id "<yourUPN>" –-query "objectId" --output tsv
+az ad user show --id "<yourUPN>" --query "objectId" --output tsv
 
 # To retrieve the objectId for an SPN
 az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output tsv
@@ -113,7 +110,7 @@ az role definition list --name "<roleName>" | grep name
 
 若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 在 Azure 门户的 "[服务提供程序" 页](view-manage-service-providers.md)中查看 "产品/服务" 时，客户将可以看到**mspOfferName**和**mspOfferDescription**值。
 
-|字段  |定义  |
+|字段  |Definition  |
 |---------|---------|
 |**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户。         |
 |**mspOfferDescription**     |产品/服务的简短说明（例如，"Contoso VM 管理产品/服务"）。      |

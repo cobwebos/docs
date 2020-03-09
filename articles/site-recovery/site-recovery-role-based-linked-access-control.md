@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083764"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362553"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>使用基于角色的访问控制 (RBAC) 管理 Site Recovery 访问
 
@@ -41,32 +41,32 @@ Azure Site Recovery 提供了 3 个用于控制 Site Recovery 管理操作的内
 > [!NOTE]
 > 如果要为 Azure VM 启用复制，并希望允许 Site Recovery 管理更新，则在启用复制时，可能还需要创建一个新的自动化帐户，在这种情况下，你需要具有在同一中创建自动化帐户的权限作为保管库的订阅。
 
-| **资源类型** | 部署模型 | 权限 |
+| **资源类型** | 部署模型 | **权限** |
 | --- | --- | --- |
-| 计算 | Resource Manager | Microsoft.Compute/availabilitySets/read |
+| 计算 | 资源管理器 | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
 |  |  | Microsoft.Compute/virtualMachines/write |
 |  |  | Microsoft.Compute/virtualMachines/delete |
-|  | 经典 | Microsoft.ClassicCompute/domainNames/read |
+|  | Classic | Microsoft.ClassicCompute/domainNames/read |
 |  |  | Microsoft.ClassicCompute/domainNames/write |
 |  |  | Microsoft.ClassicCompute/domainNames/delete |
 |  |  | Microsoft.ClassicCompute/virtualMachines/read |
 |  |  | Microsoft.ClassicCompute/virtualMachines/write |
 |  |  | Microsoft.ClassicCompute/virtualMachines/delete |
-| 网络 | Resource Manager | Microsoft.Network/networkInterfaces/read |
+| 网络 | 资源管理器 | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
 |  |  | Microsoft.Network/virtualNetworks/read |
 |  |  | Microsoft.Network/virtualNetworks/subnets/read |
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
-|  | 经典 | Microsoft.ClassicNetwork/virtualNetworks/read |
+|  | Classic | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| 存储 | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| 存储 | 资源管理器 | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
-|  | 经典 | Microsoft.ClassicStorage/storageAccounts/read |
+|  | Classic | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
-| 资源组 | Resource Manager | Microsoft.Resources/deployments/* |
+| 资源组 | 资源管理器 | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 考虑分别为 Resource Manager 和经典部署模型使用[内置角色](../role-based-access-control/built-in-roles.md)“虚拟机参与者”和“经典虚拟机参与者”。

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 27510871f9a022cb27c6b03b812ce1d37b47312c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77665062"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373382"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure Monitor 中使用经典指标警报调用 webhook
 
@@ -70,12 +70,12 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 
 | 字段 | Mandatory | 一组固定值 | 注释 |
 |:--- |:--- |:--- |:--- |
-| 状态 |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
+| status |Y |Activated, Resolved |基于设置的条件的警报的状态。 |
 | context |Y | |警报上下文。 |
 | timestamp |Y | |触发警报的时间。 |
 | id |Y | |每个警报规则都有一个唯一 ID。 |
 | name |Y | |警报名称。 |
-| description |Y | |警报的描述。 |
+| description |Y | |警报的说明。 |
 | conditionType |Y |“Metric”、“Event” |支持两种类型的警报：指标和事件。 指标警报基于指标条件。 事件警报基于活动日志中的事件。 使用此值可检查警报是基于指标还是基于事件。 |
 | condition |Y | |要基于 **conditionType** 值检查的特定字段。 |
 | metricName |用于指标警报 | |定义规则监视对象的指标的名称。 |
@@ -84,7 +84,7 @@ POST 操作对于所有基于指标的警报包含以下 JSON 有效负载和架
 | threshold |用于指标警报 | |会激活警报的阈值。 |
 | windowSize |用于指标警报 | |用于根据阈值监视警报活动的时间段。 此值必须介于 5 分钟到 1 天之间。 此值必须采用 ISO 8601 持续时间格式。 |
 | timeAggregation |用于指标警报 |“Average”、“Last”、“Maximum”、“Minimum”、“None”、“Total” |随着时间推移，收集的数据应如何组合。 默认值为 Average。 请参阅[允许的值](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
-| 操作员 |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
+| 运算符后的表达式 |用于指标警报 | |用于将当前指标数据与所设阈值进行比较的运算符。 |
 | subscriptionId |Y | |Azure 订阅 ID。 |
 | resourceGroupName |Y | |受影响资源的资源组名称。 |
 | resourceName |Y | |受影响资源的资源名称。 |

@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: twooley
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933634"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365748"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 简介
 
@@ -87,7 +87,7 @@ StorSimple Snapshot Manager 使用卷组创建应用程序一致性备份副本�
 > 
 
 ## <a name="integration-with-windows-volume-shadow-copy-service"></a>与 Windows 卷影复制服务集成
-StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 来捕获应用程序一致性数据。 VSS 通过与识别 VSS 的应用程序通信来协调增量快照的创建，进而促进应用程序一致性。 VSS 确保拍摄快照时应用程序暂时处于非活动或静止状态。 
+StorSimple Snapshot Manager 使用 Windows 卷影复制服务 (VSS) 来捕获应用程序一致性数据。 VSS 通过与识别 VSS 的应用程序通信来协调增量快照的创建，进而促进应用程序一致性。 VSS 确保应用程序在捕获快照时暂时处于非活动或静止状态。 
 
 VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS 卷。 该过程如下所示： 
 
@@ -102,7 +102,7 @@ VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS �
 
 请参阅下图。
 
-![VSS 流程](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
+![VSS 进程](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
 
 **Windows 卷影复制服务流程** 
 
@@ -127,7 +127,7 @@ VSS 的 StorSimple Snapshot Manager 实现适用于 SQL Server 和通用 NTFS �
 * **名称** — 选定备份策略的唯一名称。
 * **类型** — 备份策略的类型；本地快照或云快照。
 * **卷组** — 将选定备份策略分配到的卷组。
-* **保留** — 要保留的备份副本数。 如果选中“**全部**”框，会保留所有的备份副本，直到达到每个卷的最大备份副本数，此时策略会失败并生成一条错误消息。 或者，可以指定要保留的备份数（1 到 64 之间）。
+* **保留** — 要保留的备份副本数。 如果你选中 **“所有”** 框，则所有备份副本都会保留，直至达到每个卷的最大备份副本数，此后策略将会失败并生成错误消息。 或者，可以指定要保留的备份数（1 到 64 之间）。
 * **日期** — 创建备份策略的日期。
 
 有关配置备份策略的信息，请转到[使用 StorSimple Snapshot Manager 创建和管理备份策略](storsimple-snapshot-manager-manage-backup-policies.md)。
