@@ -14,11 +14,11 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498860"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375469"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure AD 角色
 
@@ -189,7 +189,7 @@ Azure AD Privileged Identity Management （PIM）服务还允许特权角色管�
 
 1. 选择“所有服务”，然后选择“订阅”。
 
-1. 选择订阅。
+1. 选择你的订阅。
 
 1. 选择“访问控制(IAM)”。
 

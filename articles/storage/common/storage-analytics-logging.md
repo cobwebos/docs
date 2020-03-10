@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484887"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360963"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -47,7 +47,7 @@ ms.locfileid: "77484887"
 - 成功的请求
 - 服务器错误
 - 客户端和服务器的超时错误
-- 失败的 GET 请求，错误代码为 304（未修改）
+- 失败的 GET 请求，错误代码为 304（未修改）。
 
   不会记录所有其他失败的匿名请求。 [存储分析记录的操作和状态消息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[存储分析日志格式](/rest/api/storageservices/storage-analytics-log-format)主题中提供了所记录数据的完整列表。
 
@@ -58,7 +58,7 @@ ms.locfileid: "77484887"
 > [!NOTE]
 >  执行容器列出操作（例如列表容器操作）时，不会显示 `$logs` 容器。 必须直接访问该容器。 例如，可以使用 "列出 Blob" 操作访问 `$logs` 容器中的 blob。
 
-在记录请求时，存储分析将中间结果作为块进行上传。 存储分析定期提交这些块，并将其作为 Blob 提供。 日志数据会出现在 **$logs**容器中的 blob 中最多需要一小时，因为存储服务刷新日志编写器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。
+在记录请求时，存储分析将中间结果作为块进行上载。 存储分析定期提交这些块，并将其作为 Blob 提供。 日志数据会出现在 **$logs**容器中的 blob 中最多需要一小时，因为存储服务刷新日志编写器的频率。 在同一小时内创建的日志中可能存在重复的记录。 可以通过检查 RequestId 和操作编号确定记录是否为重复记录。
 
 如果你每小时都有包含多个文件的大量日志数据，则可检查 Blob 元数据字段，以便使用 Blob 元数据确定日志中包含的数据。 这也很有用，因为在将数据写入日志文件时有时可能会有延迟： blob 元数据提供的 blob 内容比 blob 名称更准确。
 
@@ -88,7 +88,7 @@ ms.locfileid: "77484887"
 
  下表说明了日志名称中的每个属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`<service-name>`|存储服务的名称 例如：`blob`、`table` 或 `queue`|
 |`YYYY`|用四位数表示的日志年份。 例如： `2011`|
@@ -112,7 +112,7 @@ ms.locfileid: "77484887"
 
  所有日志 Blob 与可用于确定 Blob 包含哪些日志记录数据的元数据一起存储。 下表说明了每个元数据属性：
 
-|Attribute|说明|
+|属性|说明|
 |---------------|-----------------|
 |`LogType`|描述日志是否包含与读取、写入或删除操作有关的信息。 该值可能包含一种类型，也可能包含所有三种类型的组合并用逗号隔开。<br /><br /> 示例 1：`write`<br /><br /> 示例 2：`read,write`<br /><br /> 示例3： `read,write,delete`|
 |`StartTime`|日志中的项的最早时间，采用 `YYYY-MM-DDThh:mm:ssZ` 形式。 例如： `2011-07-31T18:21:46Z`|

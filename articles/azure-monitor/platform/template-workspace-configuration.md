@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373322"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板管理 Log Analytics 工作区
 
@@ -39,10 +39,10 @@ ms.locfileid: "77658891"
 
 | 资源 | 资源类型 | API 版本 |
 |:---|:---|:---|
-| 工作区   | workspaces    | 2017-03-15-preview |
+| 工作区   | 工作区    | 2017-03-15-preview |
 | 搜索      | savedSearches | 2015-03-20 |
 | 数据源 | datasources   | 2015-11-01-preview |
-| 解决方案    | solutions     | 2015-11-01-preview |
+| 解决方案    | 解决方案     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>创建 Log Analytics 工作区
 

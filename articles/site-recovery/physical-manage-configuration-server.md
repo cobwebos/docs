@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78367077"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -24,7 +24,7 @@ ms.locfileid: "74084601"
 
 此表汇总了用于部署本地配置服务器计算机的先决条件。
 
-| **组件** | **要求** |
+| 组件 | **要求** |
 | --- |---|
 | CPU 核心数| 8 |
 | RAM | 16 GB|
@@ -32,7 +32,7 @@ ms.locfileid: "74084601"
 | 磁盘可用空间（进程服务器缓存） | 600 GB
 | 磁盘可用空间（保留磁盘） | 600 GB|
 | 操作系统  | Windows Server 2012 R2 <br> Windows Server 2016 |
-| 操作系统区域设置 | 英语(美国)|
+| 操作系统区域设置 | 简体中文|
 | VMware vSphere PowerCLI 版本 | 不是必需|
 | Windows Server 角色 | 请勿启用以下角色： <br> - Active Directory 域服务 <br>- Internet Information Services <br> - Hyper-V |
 | 组策略| 请勿启用以下组策略： <br> - 阻止访问命令提示符 <br> - 阻止访问注册表编辑工具 <br> - 信任文件附件的逻辑 <br> - 打开脚本执行 <br> [了解详细信息](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
@@ -68,7 +68,7 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
     - 如果想要使用当前已在计算机上设置的代理进行连接，请选择“使用代理服务器连接到 Azure Site Recovery”。
     - 如果希望提供程序直接进行连接，请选择“在不使用代理服务器的情况下直接连接到 Azure Site Recovery”。
     - 如果现有代理要求身份验证，或者你想要使用自定义代理进行提供程序连接，请选择“使用自定义代理设置进行连接”，并指定地址、端口和凭据。
-     ![防火墙](./media/physical-manage-configuration-server/combined-wiz4.png)
+     ![Firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. 在“先决条件检查”设置中运行检查，确保安装可以运行。 如果看到有关**全局时间同步检查**的警告，请检查系统时钟的时间（“日期和时间”设置）是否与时区相同。
 
     ![先决条件](./media/physical-manage-configuration-server/combined-wiz5.png)
@@ -106,23 +106,23 @@ Site Recovery 门户中提供了配置服务器安装文件的最新版本。 �
   ```
 
 
-### <a name="parameters"></a>Parameters
+### <a name="parameters"></a>参数
 
 |参数名称| 类型 | 说明| 值|
 |-|-|-|-|
-| /ServerMode|必选|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
-|/InstallLocation|必选|用于安装组件的文件夹| 计算机上的任意文件夹|
-|/MySQLCredsFilePath|必选|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
-|/VaultCredsFilePath|必选|保管库凭据文件的路径|有效的文件路径|
-|/EnvType|必选|要保护的环境类型 |VMware<br>NonVMware|
-|/PSIP|必选|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/CSIP|必选|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
-|/PassphraseFilePath|必选|通行短语文件位置的完整路径|有效的文件路径|
+| /ServerMode|必需|指定是要同时安装配置服务器和进程服务器，还是只安装进程服务器|CS<br>PS|
+|/InstallLocation|必需|用于安装组件的文件夹| 计算机上的任意文件夹|
+|/MySQLCredsFilePath|必需|MySQL 服务器凭据存储到的文件路径|文件应采用以下指定格式|
+|/VaultCredsFilePath|必需|保管库凭据文件的路径|有效的文件路径|
+|/EnvType|必需|要保护的环境类型 |VMware<br>NonVMware|
+|/PSIP|必需|要用于复制数据传输的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/CSIP|必需|配置服务器侦听时所在的 NIC 的 IP 地址| 任何有效的 IP 地址|
+|/PassphraseFilePath|必需|通行短语文件位置的完整路径|有效的文件路径|
 |/BypassProxy|可选|指定配置服务器不使用代理连接到 Azure|若要从 Venu 获取此值|
 |/ProxySettingsFilePath|可选|代理设置（默认代理需要身份验证，或自定义代理）|文件应采用以下指定格式|
 |DataTransferSecurePort|可选|PSIP 上用于复制数据的端口号| 有效端口号（默认值为 9433）|
 |/SkipSpaceCheck|可选|跳过缓存磁盘的空间检查| |
-|/AcceptThirdpartyEULA|必选|该标志表示接受第三方 EULA| |
+|/AcceptThirdpartyEULA|必需|该标志表示接受第三方 EULA| |
 |/ShowThirdpartyEULA|可选|显示第三方 EULA。 如果作为输入提供，将忽略所有其他参数| |
 
 

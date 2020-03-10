@@ -4,11 +4,11 @@ description: 了解如何在语言理解 (LUIS) 得出预测之前更改数据
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148260"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361076"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>在预测之前或预测期间更改话语数据
 LUIS 提供在预测之前或预测期间操作陈述的方法。 其中包括[修复拼写](luis-tutorial-bing-spellcheck.md)和修复预生成的[datetimeV2](luis-reference-prebuilt-datetimev2.md)的时区问题。
@@ -35,7 +35,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 
 [必应拼写检查 API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) 检测到错误时，将一并从终结点返回原始陈述、已更正陈述和预测。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
 {
@@ -49,7 +49,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 }
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 ```JSON
 {
@@ -85,7 +85,7 @@ LUIS 使用[必应拼写检查 API V7](../Bing-Spell-Check/overview.md) 来更�
 ### <a name="daylight-savings-example"></a>夏令时示例
 如果需要返回的预生成 datetimeV2 来调整夏令时，则对于该`timezoneOffset`终结点[查询应使用值为正数/负数（以分钟为单位）的 ](https://go.microsoft.com/fwlink/?linkid=2092356) querystring 参数。
 
-#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 预测终结点请求](#tab/V2)
+#### <a name="v2-prediction-endpoint-request"></a>[V2 预测终结点请求](#tab/V2)
 
 增加 60 分钟：
 
@@ -95,7 +95,7 @@ https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the l
 
 https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
-#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 预测终结点请求](#tab/V3)
+#### <a name="v3-prediction-endpoint-request"></a>[V3 预测终结点请求](#tab/V3)
 
 增加 60 分钟：
 

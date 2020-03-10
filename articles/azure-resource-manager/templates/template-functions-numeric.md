@@ -4,11 +4,11 @@ description: 介绍可在 Azure 资源管理器模板中使用的用于处理数
 ms.topic: conceptual
 ms.date: 11/08/2017
 ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207228"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380647"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的数值函数
 
@@ -34,7 +34,7 @@ Resource Manager 提供以下用于处理整数的函数：
 
 返回提供的两个整数的总和。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- | 
@@ -105,7 +105,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回一个迭代循环的索引。 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -151,7 +151,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数在整除后的商。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 将值转换为浮点数。 仅当将自定义参数传递给应用程序（例如，逻辑应用）时，才使用此函数。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -256,7 +256,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 将指定的值转换为整数。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -316,7 +316,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回整数数组或逗号分隔的整数列表中的最大值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -380,7 +380,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回整数数组或逗号分隔的整数列表中的最小值。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -444,7 +444,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回使用提供的两个整数整除后的余数。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -514,7 +514,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数的积。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |
@@ -585,7 +585,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 返回提供的两个整数在相减后的结果。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 | 参数 | 必需 | Type | 说明 |
 |:--- |:--- |:--- |:--- |

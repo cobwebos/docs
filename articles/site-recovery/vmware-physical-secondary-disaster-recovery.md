@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: 71d230c9fea25edfbf0ca4ea40f15b69779ad060
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620522"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362551"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -53,12 +53,12 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 **复制** |磁盘（Windows 和 Linux） |Volume-Windows<br> Disk-Linux
 **共享磁盘群集** |不支持|支持
 **数据变动量限制（平均）** |10 MB/秒数据/磁盘<br> 25 MB/秒数据/VM<br> [了解详细信息](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | > 10 MB/秒数据/磁盘  <br> > 25 MB/秒数据/VM
-**监视** |通过 Azure 门户|通过 CX（配置服务器）
+**Monitoring** |通过 Azure 门户|通过 CX（配置服务器）
 **支持矩阵** | [单击此处了解详细信息](./vmware-physical-azure-support-matrix.md)|[下载 ASR Scout 兼容矩阵](https://aka.ms/asr-scout-cm)
 
 
 ## <a name="prerequisites"></a>先决条件
-完成本教程需要：
+完成本教程：
 
 - [查看](vmware-physical-secondary-support-matrix.md)所有组件的支持要求。
 - 确保要复制的计算机符合[复制计算机支持](vmware-physical-secondary-support-matrix.md#replicated-vm-support)。
@@ -118,14 +118,14 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
 - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
   1. 解压缩 .zip 文件。
-  2. **Rx 服务器**：将**rx_ 8.0.7.0 _GA_UPDATE_7_2965621_28DEC18**复制到 RX 服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  3. **配置服务器和进程服务器**：将**cx_windows_ 8.0.7.0 _ga_update_7_2965621_28dec18**复制到配置服务器和进程服务器。 双击以运行该文件。<br>
-  4. **Windows 主目标服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release**复制到服务器。 双击以运行该文件。 同一文件还可用于全新安装。 相同的统一代理更新也适用于源服务器。
+  2. **Rx 服务器**： **0_GA_Update_7_2965621_28Dec18 RX_8 将 GZ**复制到 rx 服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  3. **配置服务器和进程服务器**：将**CX_Windows_8 0_GA_Update_7_2965621_28Dec18**复制到配置服务器和进程服务器。 双击以运行该文件。<br>
+  4. **Windows 主目标服务器**：要更新统一代理，请将**InMage_UA_8 0_Windows_GA_27Dec2018_release .exe**复制到服务器。 双击以运行该文件。 同一文件还可用于全新安装。 相同的统一代理更新也适用于源服务器。
   由于 **InMage_Scout_vContinuum_MT_8.0.7.0_Windows_GA_27Dec2018_release.exe** 是拥有所有最新更改的新 GA 安装程序，因此，在通过该安装程序执行了准备工作的主目标服务器上不需要应用更新。
-  5. **vContinuum 服务器**：将**inmage_scout_vcontinuum_mt_ 8.0.7.0 _windows_ga_27dec2018_release**复制到服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
-  6. **Linux 主目标服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _Rhel6-64_ga_03dec2018_release**复制到 Linux 主目标服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
-  7. **Windows 源服务器**：要更新统一代理，请将**inmage_ua_ 8.0.7.0 _windows_ga_27dec2018_release**复制到源服务器。 双击以运行该文件。 
-  8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将**inmage_ua_ 8.0.7.0 _rhel6-64_ga_03dec2018_release**复制到服务器，并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
+  5. **vContinuum 服务器**：将**InMage_Scout_vContinuum_MT_8 0_Windows_GA_27Dec2018_release**复制到服务器。  确保已关闭 vContinuum 向导。 双击以运行该文件。
+  6. **Linux 主目标服务器**：要更新统一代理，请将 gz 复制到 Linux 主目标服务器，并将其提取**64_GA_03Dec2018_release 0_RHEL6 InMage_UA_8** 。 在解压缩的文件夹中运行 **/Install**。
+  7. **Windows 源服务器**：要更新统一代理，请将**InMage_UA_8 0_Windows_GA_27Dec2018_release .exe**复制到源服务器。 双击以运行该文件。 
+  8. Linux 源服务器：要更新统一代理，请将相应版本的统一代理文件复制到 Linux 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。  示例：对于 RHEL 6.7 64 位服务器，将**64_GA_03Dec2018_release 0_RHEL6 InMage_UA_8**复制到服务器，然后将其解压缩。 在解压缩的文件夹中运行 **/Install**。
   9. 在使用上述安装程序升级配置服务器、进程服务器和 RX 服务器后，需要通过[快速安装指南](https://aka.ms/asr-scout-quick-install-guide)的第 7.4 部分中提到的步骤手动升级 PHP 和 MySQL 二进制文件。
 
 ## <a name="enable-replication"></a>启用复制
@@ -159,7 +159,7 @@ Scout Update 7 是一个完整的安装程序，可用于全新安装以及升�
 #### <a name="manual-upgrade-for-php-and-mysql-on-csps-and-rx"></a>在 CS、PS 和 RX 上针对 PHP 和 MySQL 进行手动升级
 在配置服务器、进程服务器和 RX 服务器上，PHP 脚本平台应当升级到版本 7.2.10。
 在配置服务器、进程服务器和 RX 服务器上，MySQL 数据库管理系统应当升级到版本 5.7.23。
-请按照[快速安装指南](https://aka.ms/asr-scout-quick-install-guide)中提供的手动步骤来升级 PHP 和 MySQL 版本。
+请按照[快速安装指南](https://aka.ms/asr-scout-quick-install-guide)中所述的手动步骤升级 PHP 和 MySQL 版本。
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 Update 6 
 更新时间：2017 年 10 月 12 日
@@ -188,7 +188,7 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- UA update4 bits for RHEL5，OL5，OL6，SUSE 10，SUSE 11： UA_\<Linux OS > _ 8.0.4.0 _GA_Update_4_9035261_26Sep16 Gz
+- UA update4 bits for RHEL5，OL5，OL6，SUSE 10，SUSE 11： UA_\<Linux OS > _ 0_GA_Update_4_9035261_26Sep16 8.0.4. gz
   1. 解压缩 .zip 文件。
   2. RX 服务器：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
   3. 配置服务器和进程服务器：将 CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe 复制到配置服务器和进程服务器。 双击以运行该文件。<br>

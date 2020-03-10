@@ -17,17 +17,17 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196601"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363680"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态专用 IP 地址的虚拟机
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-可以创建具有静态专用 IP 地址的虚拟机 (VM)。 若要从子网中选择分配给 VM 的具体地址，请分配静态专用 IP 地址而非动态地址。 详细了解[静态专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要将分配给现有 VM 的专用 IP 地址从动态更改为静态，或者要使用公共 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
+你可以使用静态专用 IP 地址创建虚拟机（VM）。 如果要选择从子网分配给 VM 的地址，请分配静态专用 IP 地址而不是动态地址。 了解有关[静态专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#allocation-method)的详细信息。 若要将分配给现有 VM 的专用 IP 地址从动态更改为静态，或使用公共 IP 地址，请参阅[添加、更改或删除 IP 地址](virtual-network-network-interface-addresses.md)。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
 
@@ -42,7 +42,7 @@ ms.locfileid: "74196601"
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. 使用 [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) 和 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 命令创建子网配置和虚拟网络：
+3. 使用[AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)和[AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)命令创建子网配置和虚拟网络：
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -62,7 +62,7 @@ ms.locfileid: "74196601"
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. 使用 [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) 和 [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) 命令在虚拟网络中创建一个网络接口，并将专用 IP 地址从子网分配给该网络接口：
+4. 在虚拟网络中创建一个网络接口，并使用[AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig)和[AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)命令将专用 IP 地址从子网分配到网络接口：
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -79,7 +79,7 @@ ms.locfileid: "74196601"
      -IpConfiguration $IpConfig1
    ```
 
-5. 使用 [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig) 创建 VM 配置，然后使用 [New-AzVM](/powershell/module/az.Compute/New-azVM) 创建 VM。 出现提示时，请提供用作 VM 登录凭据的用户名和密码：
+5. 使用[AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)创建 vm 配置，然后使用[new-azvm](/powershell/module/az.Compute/New-azVM)创建 vm。 出现提示时，请提供用户名和密码以用作 VM 的登录凭据：
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -90,13 +90,13 @@ ms.locfileid: "74196601"
    ```
 
 > [!WARNING]
-> 虽然可以向操作系统添加专用 IP 地址设置，但建议不要在阅读[向操作系统添加专用 IP 地址](virtual-network-network-interface-addresses.md#private)之前这样做。
+> 虽然你可以向操作系统添加专用 IP 地址设置，但我们建议在阅读[将专用 ip 地址添加到操作系统](virtual-network-network-interface-addresses.md#private)后再执行此操作。
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> 若要从 Internet 访问 VM，必须为该 VM 分配公共 IP 地址。 也可将动态专用 IP 地址分配更改为静态分配。 有关详细信息，请参阅[添加或更改 IP 地址](virtual-network-network-interface-addresses.md)。 另外，建议将一个网络安全组关联到网络接口和/或创建网络接口时所在的子网，限制从网络到 VM 的流量。 有关详细信息，请参阅[管理网络安全组](manage-network-security-group.md)。
+> 若要从 internet 访问 VM，必须向 VM 分配公共 IP 地址。 你还可以将动态专用 IP 地址分配更改为静态分配。 有关详细信息，请参阅[添加或更改 IP 地址](virtual-network-network-interface-addresses.md)。 此外，建议通过将网络安全组与网络接口、在其中创建网络接口的子网相关联，来限制 VM 的网络流量。 有关详细信息，请参阅[管理网络安全组](manage-network-security-group.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -108,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[专用 IP 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)以及如何为 Azure 虚拟机分配[静态公共 IP 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)。
-- 详细了解如何创建 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虚拟机。
+- 详细了解[专用 ip 地址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，并将[静态专用 ip 地址](virtual-network-network-interface-addresses.md#add-ip-addresses)分配给 Azure 虚拟机。
+- 了解有关创建[Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)虚拟机的详细信息。

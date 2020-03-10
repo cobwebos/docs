@@ -4,12 +4,12 @@ description: 本文介绍如何解决在备份和还原 Azure 虚拟机时遇到
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 8e29061becd9eb82dd04f3ed0db787542b29cbc7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597314"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363687"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -76,7 +76,7 @@ ms.locfileid: "77597314"
 错误代码： ExtensionInstallationFailedMDTC <br/>
 错误消息：扩展安装失败，出现错误 "COM + 无法与 Microsoft 分布式事务处理协调器联系 <br/>
 
-由于 Windows 服务**Com + 系统**应用程序出现问题，备份操作失败。  若要解决此问题，请执行以下步骤：
+由于 Windows 服务**Com + 系统**应用程序出现问题，备份操作失败。  ТЄЅвѕцґЛОКМв，ЗлЦґРРПВБРІЅЦи：
 
 * 尝试启动/重新启动 Windows 服务**Com + 系统应用程序**（通过提升的命令提示符 **-net start COMSysApp**）。
 * 确保**分布式事务处理协调器**服务作为**网络服务**帐户运行。 否则，请将其更改为以**网络服务**帐户运行，然后重新启动**Com + 系统应用程序**。
@@ -117,7 +117,7 @@ ms.locfileid: "77597314"
 
    * 列出文件夹/读取数据
    * 读取属性
-   * 读取扩展的属性
+   * 读取扩展属性
    * 创建文件/写入数据
    * 创建文件夹/附加数据
    * 写入属性
@@ -125,7 +125,7 @@ ms.locfileid: "77597314"
    * 读取权限
 2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书：
 
-   * [在本地计算机控制台上打开证书](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。
+   * [在本地计算机控制台上打开证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in)。
    * 在“个人” **“证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书** > 。
 3. 触发 VM 备份作业。
 
@@ -134,7 +134,7 @@ ms.locfileid: "77597314"
 错误代码： ExtensionStuckInDeletionState <br/>
 错误消息：扩展状态不能用于备份操作
 
-备份操作失败，因为备份扩展的状态不一致。 若要解决此问题，请执行以下步骤：
+备份操作失败，因为备份扩展的状态不一致。 ТЄЅвѕцґЛОКМв，ЗлЦґРРПВБРІЅЦи：
 
 * 确保来宾代理已安装并可做出响应
 * 从 Azure 门户中转到 "**虚拟机**" > **所有设置** > **扩展**
@@ -200,7 +200,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | 备份不能取消该作业，因为它没有正在进行： <br>仅支持取消正在进行的作业。 尝试取消正在进行的作业。 |由于临时状态而发生此错误。 请稍等片刻，并重试取消操作。 |
 | 备份未能取消作业： <br>请等待作业完成。 |无 |
 
-## <a name="restore"></a>还原
+## <a name="restore"></a>Restore
 
 | 错误详细信息 | 解决方法 |
 | --- | --- |
@@ -273,7 +273,7 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 * 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
 * VM 在高 CPU 或内存情况下运行。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终，它会超时。如果发生此问题，请尝试按需备份。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 必须在来宾内启用 DHCP，才能正常进行 IaaS VM 备份。 如果需要静态专用 IP，请通过 Azure 门户或 PowerShell 配置该 IP。 请确保已启用 VM 内的 DHCP 选项。
 获取有关如何通过 PowerShell 设置静态 IP 的详细信息：

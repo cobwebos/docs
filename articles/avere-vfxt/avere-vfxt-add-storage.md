@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153983"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372193"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -47,7 +47,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 
 1. 在 Avere 控制面板中，单击顶部的“设置”选项卡。
 
-1. 单击左侧的“核心文件管理器” > “管理核心文件管理器”。
+1. 单击左侧的“核心文件管理器” **“管理核心文件管理器”**  > 。
 
 1. 单击“创建”。
 
@@ -119,7 +119,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 
    ![用于复制密钥的 Azure 门户 GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. 打开群集的 Avere 控制面板。 单击“设置”，然后在左侧导航窗格中打开“群集” > “云凭据”。 在“云凭据”页上，单击“添加凭据”。
+1. 打开群集的 Avere 控制面板。 单击“设置”，然后在左侧导航窗格中打开“群集” **“云凭据”**  > 。 在“云凭据”页上，单击“添加凭据”。
 
    ![单击“云凭据”配置页上的“添加凭据”按钮](media/avere-vfxt-new-credential-button.png)
 
@@ -133,11 +133,11 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
    | 订阅 | 订阅 ID |
    | 存储访问密钥 | Azure 存储帐户密钥（在上一步中复制） |
 
-   单击“提交”。
+   单击 **“提交”** 。
 
    ![Avere 控制面板中已完成的云凭据表单](media/avere-vfxt-new-credential-submit.png)
 
-1. 接下来，创建核心文件管理器。 在 Avere 控制面板的左侧，单击“核心文件管理器” >  “管理核心文件管理器”。
+1. 接下来，创建核心文件管理器。 在 Avere 控制面板的左侧，单击“核心文件管理器” **“管理核心文件管理器”**  >  。
 
 1. 单击“管理核心文件管理器”设置页上的“创建”按钮。
 
@@ -151,8 +151,8 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
    * 将“Bucket 内容”设置为“空”
    * 将“证书验证”更改为“禁用”
    * 将“压缩模式”更改为“无”
-   * 单击“下一步”。
-   * 在第四页上，在“Bucket 名称”中输入容器的名称 storage_account_name/container_name。
+   * 单击 **“下一步”** 。
+   * 在第四页上，在“Bucket 名称”中输入容器的名称 storage_account_name**container_name**/。
    * （可选）将“加密类型”设置为“无”。  Azure 存储默认已加密。
    * 单击“添加文件管理器”。
 
@@ -172,11 +172,11 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 
 在 Avere 控制面板界面中执行以下步骤：
 
-* 单击左上角的“VServer” > “命名空间”。
+* 单击左上角的“VServer” **“命名空间”**  > 。
 * 提供以“/”（正斜杠）开头的命名空间路径，如 ``/vfxt/data``。
 * 选择核心文件管理器。
 * 选择核心文件管理器导出。
-* 单击“下一步”。
+* 单击 **“下一步”** 。
 
   ![“添加新交接点”页面的屏幕截图，其中包含为交接点、核心文件管理器和导出完成的字段](media/avere-vfxt-add-junction.png)
 

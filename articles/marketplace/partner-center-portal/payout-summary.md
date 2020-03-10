@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715434"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78344052"
 ---
 # <a name="payout-reporting"></a>支出报表
 
@@ -68,7 +68,7 @@ ms.locfileid: "76715434"
 
 ## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关
 
-|说明    |    Date  | 订单/使用情况  | 付款 |
+|说明    |    日期  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
 |订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
 |期限结束（月）   | 8月30日，2019 | | |
@@ -82,7 +82,7 @@ ms.locfileid: "76715434"
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
-| 说明 |    Date  | 使用情况 | 付款 |
+| 说明 |    日期  | 用法 | 付款 |
 |----------|----------|---------|-----------|
 |订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况报表** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> | |
 |期限结束（季度） | 9月30日，2019 | | |
@@ -169,7 +169,7 @@ ms.locfileid: "76715434"
 | LineItemId       | 客户发票中的单个行                                                                                                                   |
 | 客户所在国家/地区       | 客户提供的国家/地区名称。  这可能不同于客户的 Azure 订阅中的国家/地区。                                                                                                                   |
 | 客户 EmailAddress       | 最终客户提供的电子邮件地址。  这可能与客户的 Azure 订阅中的电子邮件地址不同。                                                                                                                   |
-| SkuId       | 在发布过程中定义的 SKU ID。 产品/服务可能有许多 Sku，但 SKU 只能与单个产品/服务相关联。                                                                                                                   |
+| skuId       | 在发布过程中定义的 SKU ID。 产品/服务可能有许多 Sku，但 SKU 只能与单个产品/服务相关联。                                                                                                                   |
 
 >[!Note]
 >对于 "事务发布" 选项的所有报告和见解，均可通过合作伙伴中心的 "云合作伙伴门户或分析" 部分的 "见解" 部分获得。

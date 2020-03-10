@@ -4,11 +4,11 @@ description: 了解如何使用已部署在订阅中的容器 Azure Monitor 来�
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250626"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395314"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>启用已部署的 Azure Kubernetes Service （AKS）群集的监视
 

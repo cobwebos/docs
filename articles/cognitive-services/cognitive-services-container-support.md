@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: dapine
 ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866956"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390766"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -36,20 +36,20 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 
 [Microsoft Azure](https://azure.microsoft.com)上提供认知服务资源。 登录到 [Azure 门户](https://portal.azure.com/)，创建和浏览适用于这些服务的 Azure 资源。
 
-## <a name="features-and-benefits"></a>功能和权益
+## <a name="features-and-benefits"></a>功能和优势
 
-- **不可变基础结构**：使 DevOps 的团队能够利用一组一致、可靠的已知系统参数，同时适应变化。 容器可灵活地在可预测生态系统内进行透视，并避免了配置偏移。
-- **对数据的控制**：允许客户选择这些认知服务处理数据的位置。 对于不能将数据发送到云，但需要访问认知服务技术的客户，此功能非常重要。 支持混合环境中的一致性 - 跨数据、管理、标识和安全性。
+- **不可变基础结构**：使 DevOps 团队能够利用一组一致、可靠的已知系统参数，同时能够适应变化。 容器可灵活地在可预测生态系统内进行透视，并避免了配置偏移。
+- **对数据的控制**：允许客户选择认知服务在何处处理其数据。 对于不能将数据发送到云，但需要访问认知服务技术的客户，此功能非常重要。 支持混合环境中的一致性 - 跨数据、管理、标识和安全性。
 - **对模型更新的控制**：为客户提供其解决方案中部署的模型的版本控制和更新方面的灵活性。
-- **可移植体系结构**：允许创建可在 Azure、本地和边缘部署的可移植应用程序体系结构。 可直接将容器部署到 [Azure Kubernetes 服务](../aks/index.yml)、[Azure 容器实例](../container-instances/index.yml)，或部署到 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
-- **高吞吐量/低延迟**：使客户能够通过使认知服务与应用程序逻辑和数据物理接近，来扩展高吞吐量和低延迟要求。 容器不限制每秒综合事务数 (TPS)，如果提供了必要的硬件资源，它还可进行纵向或横向扩展，来应对需求。
-- **可伸缩性**：随着容器化和容器业务流程软件的日益普及（如 Kubernetes），可伸缩性是技术进步的最前沿。 在可缩放的群集基础上构建，应用程序开发适用于高可用性。
+- **可移植的体系结构**：支持创建可在 Azure、本地和边缘部署的可移植应用程序体系结构。 可直接将容器部署到 [Azure Kubernetes 服务](../aks/index.yml)、[Azure 容器实例](../container-instances/index.yml)，或部署到 [Azure Stack](/azure-stack/operator) 的 [Kubernetes](https://kubernetes.io/) 集群。 有关详细信息，请参阅[将 Kubernetes 部署到 Azure Stack](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)。
+- **高吞吐量/低延迟**：通过使以物理方式运行的认知服务更深入了解其应用程序逻辑和数据，为客户提供缩放功能，以满足高吞吐量和低延迟扩展要求。 容器不限制每秒综合事务数 (TPS)，如果提供了必要的硬件资源，它还可进行纵向或横向扩展，来应对需求。
+- **可伸缩性**：随着越来越普及的容器化和容器业务流程软件（如 Kubernetes），可伸缩性是技术进步的最前沿。 在可缩放的群集基础上构建，应用程序开发适用于高可用性。
 
 ## <a name="containers-in-azure-cognitive-services"></a>Azure 认知服务中的容器
 
 Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都包含 Azure 认知服务中的服务的功能子集：
 
-| 服务 | 支持的定价层 | 容器 | Description |
+| 服务 | 支持的定价层 | 容器 | 说明 |
 |---------|----------|----------|-------------|
 |[异常探测器][ad-containers] |F0，S0|**异常探测器** |可以使用异常检测器 API 来监视并检测与机器学习配合使用的时序数据中的异常。<br>[请求访问权限](https://aka.ms/adcontainer)|
 |[计算机视觉][cv-containers] |F0，S1|**读取** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。 读取容器还检测图像中的*手写文本*，并提供 PDF/TIFF/多页面支持。<br/><br/>**重要提示：** Read 容器当前仅适用于英语。|
@@ -70,7 +70,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 
 此外，一些容器在认知服务的多个[**产品/** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)服务资源密钥中受支持。 你可以创建一个单一认知服务，并在支持的服务中为以下服务使用相同的计费密钥：
 
-* 计算机影像
+* 计算机视觉
 * 人脸
 * LUIS
 * 文本分析
@@ -89,7 +89,7 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 使用 Azure 认知服务容器之前，必须先满足以下先决条件：
 

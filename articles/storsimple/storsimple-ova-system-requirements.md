@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273766"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365671"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 
@@ -45,12 +45,12 @@ ms.locfileid: "76273766"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件 | 要求 |
+| 组件 | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
 | 磁盘空间<sup>1</sup> |OS 磁盘 - 80 GB <br></br>数据磁盘 - 500 GB 到 8 TB |
-| 网络接口的最小数目 |第 |
+| 网络接口的最小数目 |1 |
 | Internet 带宽 2<sup></sup> |所需最小带宽：5 Mbps <br> 建议带宽：100 Mbps <br> 数据传输速度与 Internet 带宽成正比。 例如，100 GB 的数据以 5 Mbps 的速度传输 2 天可能导致备份失败，因为每日备份无法在一天内完成。 带宽为 100 Mbps 时，可以在 2.5 小时内传输 100 GB 的数据。   |
 
 <sup>1</sup> - 精简预配
@@ -69,7 +69,7 @@ ms.locfileid: "76273766"
 
 | **受支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
+| Windows 服务器 |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
 以下软件要求适用于访问 StorSimple Virtual Array（配置为文件服务器）的 SMB 客户端。
 
@@ -91,13 +91,13 @@ ms.locfileid: "76273766"
 
 | **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
+| TCP 80 (HTTP) |出 |WAN |是 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>出站 Web 代理可由用户配置。 |
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
 | TCP 80 (HTTP) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
 | TCP 443 (HTTPS) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
-| TCP 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
+| TCP 3260 (iSCSI) |In |LAN |是 |此端口用于通过 iSCSI 访问数据。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 
@@ -120,7 +120,7 @@ ms.locfileid: "76273766"
 
 | URL 模式 | 组件/功能 |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Device Manager 服务<br>Access Control 服务<br>Azure 服务总线<br>身份验证服务|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Device Manager 服务<br>访问控制服务<br>Azure 服务总线<br>身份验证服务|
 | `http://*.backup.windowsazure.com` |设备注册 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |证书吊销 |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure 存储帐户和监视 |

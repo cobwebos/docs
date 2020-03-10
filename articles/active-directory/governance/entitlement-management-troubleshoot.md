@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422493"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376492"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD 权限管理疑难解答
 
@@ -35,19 +35,19 @@ ms.locfileid: "75422493"
 
 ## <a name="resources"></a>资源
 
-* 应用程序的角色由应用程序本身定义，并在 Azure AD 中进行管理。 如果应用程序没有任何资源角色，则权限管理会将用户分配到**默认访问**角色。
+* 应用程序的角色由应用程序自身定义，并在 Azure AD 中进行管理。 如果应用程序没有任何资源角色，则权限管理会将用户分配到**默认访问**角色。
 
-    请注意，Azure 门户可能还会显示不能选择为应用程序的服务的服务主体。  特别是， **Exchange online**和**SharePoint online**是服务，而不是在目录中具有资源角色的应用程序，因此它们不能包含在访问包中。  而是使用基于组的许可为需要访问这些服务的用户建立适当的许可证。
+    请注意，Azure 门户可能还会显示不能选择为应用程序的服务的服务主体。  特别是， **Exchange online**和**SharePoint online**是服务，而不是在目录中具有资源角色的应用程序，因此它们不能包含在访问包中。  相反，使用基于组的许可为需要访问这些服务的用户建立适当的许可。
 
-* 要使组成为访问包中的资源，它必须能够在 Azure AD 中进行修改。  无法将源自本地 Active Directory 的组分配为资源，因为在 Azure AD 中无法更改其所有者或成员属性。   无法在 Azure AD 中修改作为分发组的 Exchange Online 中的组。 
+* 要使组成为访问包中的资源，该组必须能够在 Azure AD 中可修改。  源自本地 Active Directory 的组无法分配为资源，因为无法在 Azure AD 中更改其所有者或成员属性。   也无法在 Azure AD 中修改作为通讯组在 Exchange Online 中创建的组。 
 
-* 不能将 SharePoint Online 文档库和单独的文档添加为资源。  相反，请创建一个[Azure AD 安全组](../fundamentals/active-directory-groups-create-azure-portal.md)，在 access 包中包含该组和站点角色，然后在 SharePoint Online 中使用该组来控制对文档库或文档的访问。
+* 无法将 SharePoint 联机文档库和单个文档添加为资源。  相反，请创建一个[Azure AD 安全组](../fundamentals/active-directory-groups-create-azure-portal.md)，在 access 包中包含该组和站点角色，然后在 SharePoint Online 中使用该组来控制对文档库或文档的访问。
 
-* 如果已将用户分配到你想要使用访问包管理的资源，请确保已将用户分配到具有相应策略的访问包。 例如，你可能想要在访问包中包含组中已有用户的组。 如果组中的用户需要持续访问，则他们必须对访问包具有适当的策略，以便它们不会失去对组的访问权限。 你可以通过要求用户请求包含该资源的访问包，或者通过将其直接分配到访问包来分配访问包。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
+* 如果有已分配给要使用访问包管理的资源的用户，请确保已使用适当的策略将这些用户分配给访问包。 例如，你可能希望在访问包中包含一个组，该组中已有用户。 如果该组中的这些用户需要继续访问，则他们必须具有访问包的适当策略，以便不会失去对组的访问权限。 你可以通过请求用户请求包含该资源的访问包，或直接将其分配给访问包来分配访问包。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
-* 删除团队的成员时，也会从 Office 365 组中删除它们。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+* 删除团队成员时，也会将其从 Office 365 组中删除。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
 
-* 确保你的目录未配置为多地域。 权利管理目前不支持 SharePoint Online 的多地理位置。 SharePoint Online 站点必须位于默认地理位置，才能与权利管理管辖。 有关详细信息，请参阅[OneDrive 和 SharePoint Online 中的多地理功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
+* 确保你的目录未在多地域进行配置。 权利管理当前不支持 SharePoint Online 的多地域位置。 SharePoint Online 站点必须位于默认地理位置，才能由权利管理进行管理。 有关详细信息，请参阅[OneDrive 和 SharePoint Online 中的多地理功能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)。
 
 ## <a name="external-users"></a>外部用户
 
@@ -55,19 +55,19 @@ ms.locfileid: "75422493"
 
 * 如果外部用户无法请求访问包的访问权限或无法访问资源，请务必检查[外部用户的设置](entitlement-management-external-users.md#settings-for-external-users)。
 
-* 如果之前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则在 SharePoint Online 中预配其帐户之前，其访问包将显示为 "未完全传递"。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
+* 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
 ## <a name="requests"></a>请求
 
 * 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
 
-* 如果你打开 "我的访问门户"，并将浏览器设置为 "专用" 或 "incognito" 模式，这可能会与登录行为发生冲突。 在访问 "我的访问门户" 时，建议不要对浏览器使用 "私有" 或 "incognito" 模式。
+* 如果在浏览器设置为“专用”或“匿名”模式时打开“我的访问权限”门户，这可能会与登录行为产生冲突。 建议在访问“我的访问权限”门户时不要在浏览器的“专用”或“匿名”模式下使用。
 
-* 如果你的目录中尚不是的用户登录到 "我的访问门户" 来请求访问包，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是在访问包的其中一个策略中包含的目录中。 如果用户的帐户不是组织帐户，或者策略中未包含其身份验证的目录，则用户将不会看到访问包。 有关详细信息，请参阅[请求访问访问包](entitlement-management-request-access.md)。
+* 当尚未在你的目录中的用户登录到“我的访问权限”门户以请求访问包时，请确保他们使用其组织帐户进行身份验证。 组织帐户可以是资源目录中的帐户，也可以是其他目录中的帐户，该目录包含在访问包的其中一个策略中。 如果用户的帐户不是组织帐户，或者策略中不包含他们验证的目录，那么用户将看不到访问包。 有关详细信息，请参阅[请求访问访问包](entitlement-management-request-access.md)。
 
-* 如果阻止用户登录到资源目录，则他们将无法在 "我的访问门户" 中请求访问。 在用户可以请求访问之前，必须从用户的配置文件中删除登录块。 若要删除登录块，请在 Azure 门户中单击 " **Azure Active Directory**"，单击 "**用户**"，单击用户，然后单击 "**配置文件**"。 编辑**设置**部分，并将 **"阻止登录**" 更改为 "**否**"。 有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因[Identity Protection 策略](../identity-protection/howto-unblock-user.md)而被阻止。
+* 如果阻止用户登录到资源目录，则他们将无法在“我的访问权限”门户中请求访问。 必须从用户配置文件中删除登录块，用户才可以请求访问。 若要删除登录块，请在 Azure 门户中单击 " **Azure Active Directory**"，单击 "**用户**"，单击用户，然后单击 "**配置文件**"。 编辑**设置**部分，并将 **"阻止登录**" 更改为 "**否**"。 有关详细信息，请参阅[使用 Azure Active Directory 添加或更新用户的配置文件信息](../fundamentals/active-directory-users-profile-azure-portal.md)。  你还可以检查用户是否因[Identity Protection 策略](../identity-protection/howto-unblock-user.md)而被阻止。
 
-* 在 "我的 Access" 门户中，如果某个用户既是请求者又是审批者，他们将不会在 "**审批**" 页上看到他们对访问包的请求。 此行为是有意的-用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
+* 在 "我的 Access" 门户中，如果某个用户既是请求者又是审批者，他们将不会在 "**审批**" 页上看到他们对访问包的请求。 此行为是有意行为 - 用户无法批准自己的请求。 确保他们请求的访问包在策略上配置了其他审批者。 有关详细信息，请参阅[更改访问包的请求和审批设置](entitlement-management-access-package-request-policy.md)。
 
 ### <a name="view-a-requests-delivery-errors"></a>查看请求的传递错误
 

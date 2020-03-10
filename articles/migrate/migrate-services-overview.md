@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 12/29/2019
 ms.custom: mvc
 ms.openlocfilehash: c336b2f95a17896edcc7eaad2b2586c6859804f9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772187"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361803"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -17,14 +17,14 @@ ms.locfileid: "75772187"
 
 使用 Azure Migrate 可迁移到 Azure。 Azure Migrate 提供了一个中心，用于评估本地基础结构、应用程序和数据并将其迁移到 Azure，具有以下功能：
 
-- **统一迁移平台**：用于启动、运行和跟踪 Azure 迁移进程的单一门户。
-- **工具范围**：用于评估和迁移的一系列工具。 该中心包括 Azure Migrate:服务器评估和 Azure Migrate:服务器迁移。 它与其他 Azure 服务集成，并与其他工具和独立软件供应商 (ISV) 产品/服务集成。
-- **评估和迁移**：在 Azure Migrate 中心，可以评估和迁移：
-    - **服务器**：评估本地服务器并将其迁移到 Azure VM。
-    - **数据库**：评估本地数据库，并将其迁移到 Azure SQL DB 或 Azure SQL 托管实例。
-    - **Web 应用程序**：使用 Azure 应用服务助手评估本地 Web 应用程序并将其迁移到 Azure 应用服务。
-    - **虚拟桌面**：评估本地虚拟桌面基础结构 (VDI) 并将其迁移到 Azure 中的 Windows 虚拟桌面。
-    - **Data**：使用 Azure Data Box 产品快速、经济、高效地将大量数据迁移到 Azure。 
+- **统一迁移平台**：单个门户，用于启动、运行和跟踪迁移到 Azure 的过程。
+- **工具范围**：用于评估和迁移的一系列工具。 该中心包括 Azure Migrate：服务器评估和 Azure Migrate：服务器迁移。 它与其他 Azure 服务集成，并与其他工具和独立软件供应商 (ISV) 产品/服务集成。
+- **评估和迁移**：在 Azure Migrate 中心，你可以评估和迁移：
+    - **服务器**：评估本地服务器并将其迁移到 Azure vm。
+    - **数据库**：评估本地数据库并将其迁移到 AZURE sql DB 或 azure sql 托管实例。
+    - **Web 应用程序**：使用 Azure App Service 助手评估本地 web 应用程序并将其迁移到 Azure App Service。
+    - **虚拟桌面**：评估并将本地虚拟桌面基础结构（VDI）迁移到 Azure 中的 Windows 虚拟桌面。
+    - **数据**：使用 Azure Data Box 产品快速且经济高效地将大量数据迁移到 Azure。 
 
 
 ## <a name="integrated-tools"></a>集成工具
@@ -33,8 +33,8 @@ Azure Migrate 中心提供了以下工具。
 
 **工具** | **评估/迁移** | **详细信息**
 --- | --- | ---
-**Azure Migrate:服务器评估** | 评估服务器 | 发现并评估本地 VMware VM、Hyper-V VM 和物理服务器，以便确定它们是否准备好迁移到 Azure。
-**Azure Migrate:服务器迁移** | 迁移服务器 | 将 VMware VM、Hyper-V VM、物理服务器、其他虚拟机和公有云 VM 迁移到 Azure。 
+**Azure Migrate：服务器评估** | 评估服务器 | 发现并评估本地 VMware VM、Hyper-V VM 和物理服务器，以便确定它们是否准备好迁移到 Azure。
+**Azure Migrate：服务器迁移** | 迁移服务器 | 将 VMware VM、Hyper-V VM、物理服务器、其他虚拟机和公有云 VM 迁移到 Azure。 
 **数据迁移助手 (DMA)** | 评估本地 SQL Server 数据库，以便迁移到 Azure SQL DB、Azure SQL 托管实例或运行 SQL Server 的 Azure VM。 | DMA 提供有关迁移的潜在障碍问题信息。 它确定不受支持的功能，以及迁移后可从中受益的新功能，并帮助确定数据库迁移的正确路径。 [了解详细信息](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)。
 **数据库迁移服务 (DMS)** | 将本地数据库迁移到运行 SQL 的 Azure VM、Azure SQL DB 和 Azure SQL 托管实例。 | [详细了解](https://docs.microsoft.com/azure/dms/dms-overview) DMS。
 **Movere** | 评估服务器 | [详细了解](#movere) Movere。
@@ -57,14 +57,14 @@ Azure Migrate 还与大量 ISV 产品/服务集成。
 [UnifyCloud](https://www.cloudatlasinc.com/cloudrecon/) | 评估服务器和数据库
 
 
-## <a name="azure-migrate-server-assessment-tool"></a>“Azure Migrate:服务器评估工具
+## <a name="azure-migrate-server-assessment-tool"></a>Azure Migrate：服务器评估工具
 
-Azure Migrate:服务器评估工具可发现并评估本地 VMware VM、Hyper-V VM 和物理服务器，以便迁移到 Azure。 它有助于识别以下内容:
+Azure Migrate：服务器评估工具发现并评估本地 VMware Vm、Hyper-v Vm 和物理服务器，以迁移到 Azure。 它有助于识别以下内容:
 
-- **Azure 迁移就绪性：** 评估本地计算机是否已准备好迁移到 Azure。
-- **Azure 大小调整：** 迁移后 Azure VM 的估计大小。
-- **Azure 成本估算：** 在 Azure 中运行本地服务器的估计成本。
-- **依赖关系可视化：** 如果你将服务器评估与依赖关系可视化结合使用，则可以有效地确定跨服务器的依赖关系，并找到将依赖服务器移动到 Azure 的最佳方式。
+- **Azure 就绪：** 评估本地计算机是否已准备好迁移到 Azure。
+- **Azure 调整大小：** 迁移后的 Azure Vm 的估计大小。
+- **Azure 成本估算：** 在 Azure 中运行本地服务器的预估成本。
+- **依赖项可视化：** 如果你将服务器评估与依赖关系可视化结合使用，则可以有效地确定跨服务器的依赖关系，并将依赖服务器移动到 Azure 的最佳方式。
 
 服务器评估使用在本地部署并向服务器评估注册的轻型设备。
 
@@ -74,9 +74,9 @@ Azure Migrate:服务器评估工具可发现并评估本地 VMware VM、Hyper-V 
 - 发现后，可将已发现的计算机收集到组中，并对组进行评估以便迁移。
 
 
-## <a name="azure-migrate-server-migration-tool"></a>“Azure Migrate:服务器迁移工具
+## <a name="azure-migrate-server-migration-tool"></a>Azure Migrate：服务器迁移工具
 
-Azure Migrate:服务器迁移工具有助于将本地 VMware VM、Hyper-V VM、物理服务器、其他虚拟机和公有云 VM 迁移到 Azure。 可在评估计算机后进行迁移，也可不评估直接进行迁移。
+Azure Migrate：服务器迁移工具可帮助你将本地 VMware Vm、Hyper-v Vm、物理服务器、其他虚拟机和公有云 Vm 迁移到 Azure。 可在评估计算机后进行迁移，也可不评估直接进行迁移。
 
 
 ## <a name="select-a-tool"></a>选择工具
@@ -99,8 +99,8 @@ Movere 是一个 SaaS 平台，它可以准确呈现整个 IT 环境在一天内
 
 有两个版本的 Azure Migrate 服务：
 
-- **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机，并安排评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
-- **以前版本**：如果使用的是以前的 Azure Migrate 版本（仅支持评估本地 VMware VM），则现在应使用当前版本。 你无法再使用以前版本创建 Azure Migrate 项目，建议不要执行新的发现。 若要访问现有项目，请在 Azure 门户中搜索并选择“Azure Migrate”  。 “Azure Migrate”  仪表板上显示了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
+- **当前版本**：使用此版本创建 Azure Migrate 项目，发现本地计算机并协调评估和迁移。 [详细了解](whats-new.md)此版本中的新增功能。
+- **以前的版本**：如果你使用的是以前版本的 Azure Migrate （仅支持对本地 VMware vm 进行评估），则现在应使用当前版本。 你无法再使用以前版本创建 Azure Migrate 项目，建议不要执行新的发现。 若要访问现有项目，请在 Azure 门户中搜索并选择“Azure Migrate”。 “Azure Migrate”仪表板上显示了一个通知和一个用于访问旧 Azure Migrate 项目的链接。
 
 
 

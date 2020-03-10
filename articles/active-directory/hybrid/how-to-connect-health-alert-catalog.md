@@ -16,11 +16,11 @@ ms.date: 03/15/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74966b60cc058837ed8b211961e2bb8a9a2e70f8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897248"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375937"
 ---
 # <a name="azure-active-directory-connect-health-alert-catalog"></a>Azure Active Directory Connect Health 警报目录 
 
@@ -30,13 +30,13 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 
 ## <a name="general-alerts"></a>常规警报
 
-| 警报名称 | Description | 补救 |
+| 警报名称 | 说明 | 修正 |
 | --- | --- | ----- |
 | 运行状况服务数据不是最新的 | 在一台或多台服务器上运行的运行状况代理未连接到运行状况服务，且运行状况服务未收到来自此服务器的最新数据。 运行状况服务处理的最后数据已过去 2 小时。 | 请确保运行状况代理具有到所需服务和终结点的出站连接。 [阅读详细信息](how-to-connect-health-data-freshness.md) |
 
 ## <a name="alerts-for-azure-ad-connect-sync"></a>Azure AD Connect 警报（同步）
 
-| 警报名称 | Description | 补救 |
+| 警报名称 | 说明 | 修正 |
 | --- | --- | ----- |
 | Azure AD Connect 同步服务未运行 | Microsoft Azure AD Sync Windows 服务未运行，或无法启动。 因此，对象将无法与 Azure Active Directory 进行同步。 | 启动 Microsoft Azure Active Directory 同步服务</b> <ol> <li>依次单击“开始”和“运行”，键入“Services.msc”，然后单击“确定”<b></b><b></b><b></b><b></b>。</li> <li>找到“Microsoft Azure AD 同步服务”，然后检查是否已启动该服务<b></b>。 如果未启动该服务，请右键单击该服务，然后单击“启动”<b></b>。 | 
 | 从 Azure Active Directory 导入失败 | 从 Azure Active Directory 连接器执行的导入操作失败。 |  请调查导入操作的事件日志错误，以获取更多详细信息。  |
@@ -51,7 +51,7 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | 导出到 Azure Active Directory 的操作已停止。 已达到意外删除阈值 | 到 Azure Active Directory 的导出操作失败。 要删除的对象数多于配置的阈值。 因此，未导出任何对象。 | <li> 标记为要删除的对象数超出了设定的阈值。 请确保该结果是你所需要的。</li> <li> 若要继续导出，请执行以下步骤： <ol type="a"> <li>通过运行 Disable-ADSyncExportDeletionThreshold 禁用阈值</li> <li>启动 Synchronization Service Manager</li> <li>在类型为 Azure Active Directory 的连接器上运行导出</li> <li>成功导出对象后，通过运行以下命令启用阈值：Enable-ADSyncExportDeletionThreshold</li> </ol> </li> |
 
 ## <a name="alerts-for-active-directory-federation-services"></a>Active Directory 联合身份验证服务的警报
-| 警报名称 | Description | 补救 |
+| 警报名称 | 说明 | 修正 |
 | --- | --- | ----- |
 |测试身份验证请求（综合事务）无法获取令牌 | 从此服务器启动的测试身份验证请求（综合事务）尝试 5 次后仍无法获取令牌。 这可能是由于临时网络问题、AD DS 域控制器可用性或 AD FS 服务器配置错误。  因此，联合身份验证服务处理的身份验证请求可能会失败。 代理使用本地计算机帐户上下文获取联合身份验证服务的令牌。 | 确保按照以下步骤操作，验证服务器的运行状况。<ol><li>验证场中的此服务器或其他 AD FS 服务器没有其他未解决的警报。</li><li>从 https://{your_adfs_server_name}/adfs/ls/idpinitiatedsignon.aspx 上的 AD FS 登录页面，以测试用户的身份登录，验证此状态不是暂时性的故障</li><li>中转到<a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a>并选择 "office 365" 选项卡。执行 "Office 365 单一登录测试"。</li><li>通过在此服务器上的命令提示符执行以下命令，验证是否可从此服务器解析 AD FS 服务名称。 nslookup your_adfs_server_name</li></ol><p>如果无法解析服务名称，请参阅 FAQ 部分，了解有关添加 AD FS 服务的 HOST 文件条目和此服务器 IP 地址的说明。 这将允许此服务器上运行的综合事务模块请求一个令牌</p> | 
 | 代理服务器无法访问联合服务器 | 此 AD FS 代理服务器无法与 AD FS 服务联系。 因此，此服务器处理的身份验证请求将失败。 | 执行以下步骤，验证此服务器和 AD FS 服务之间的连接。 <ol><li> 确保此服务器和 AD FS 服务之间的防火墙配置正确。 </li><li> 确保 AD FS 服务名称的 DNS 解析适当地指向位于公司网络内的 AD FS 服务。 这可通过在外围网络中为该服务器提供服务的 DNS 服务器，或通过 AD FS 服务名称的 HOSTS 文件中的条目来实现。 </li><li> 通过在此服务器上打开浏览器并访问联合元数据终结点来验证网络连接，该终结点位于 `https://<your-adfs-service-name>/federationmetadata/2007-06/federationmetadata.xml` </li> | 
@@ -62,7 +62,7 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 | AD FS SSL 证书为自签名证书 | 当前正在 AD FS 场中使用自签名证书作为 SSL 证书。 因此，Office 365 的电子邮件客户端身份验证将失败 | <p> 更新每台 AD FS 服务器上的 SSL 证书。 </p> <ol><li>获取具有以下要求的公开受信任的 SSL 证书。 </li><li>证书安装文件包含其私钥。 </li> <li>增强型密钥使用至少是服务器身份验证。 </li> <li>证书使用者或使用者可选名称 (SAN) 包含联合身份验证服务的 DNS 名称或适当的通配符。 例如：sso.contoso.com 或 *.contoso.com </li></ol> <p>在本地计算机证书存储中的每台服务器上安装新的 SSL 证书。 </p> <ol>确保 AD FS 服务帐户具有对证书私钥的读取访问权限。 <br /> <b>对于 Windows Server 2008R2 中的 AD FS 2.0：</b> <li>将新的 SSL 证书绑定到承载联合身份验证服务的 IIS 中的 Web 站点。 请注意，必须在每个联合服务器和联合服务器代理上执行此步骤。 </li> <br /><b>对于 Windows Server 2012 R2 或更高版本中的 AD FS：</b> <li>  请参阅<a href="https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap">在 AD FS 和 WAP 中管理 SSL 证书</a> </li> </ol> | 
 | 代理服务器与联合服务器之间的信任无效 | 无法建立或续订联合服务器代理与联合身份验证服务之间的信任。 | 更新代理服务器上的代理信任证书。 重新运行代理配置向导。 |
 | 已为 AD FS 禁用 Extranet 锁定保护 | Extranet 锁定保护功能在 AD FS 场上处于禁用状态。 此功能保护用户免遭来自 Internet 的暴力破解密码攻击，防止 AD DS 帐户锁定策略生效时对用户的拒绝服务攻击。 启用此功能后，如果某个用户失败的 Extranet 登录尝试次数（通过 WAP 服务器和 AD FS 进行的登录尝试）超过“ExtranetLockoutThreshold”，则 AD FS 服务器将停止处理“ExtranetObservationWindow”的进一步登录尝试。强烈建议在 AD FS 服务器上启用此功能。 | 运行以下命令，使用默认值启用 AD FS Extranet 锁定保护。<br>Set-AdfsProperties -EnableExtranetLockout $true<i></i><br><br>如果用户配置了 AD 锁定策略，请确保将“ExtranetLockoutThreshold”属性设置为低于 AD DS 锁定阈值的值<i></i>。 这样可确保丢弃已超出 AD FS 阈值的请求，并且永不验证 AD DS 服务器。 | 
-| AD FS 服务帐户的服务主体名称 (SPN) 无效 | 联合身份验证服务帐户的服务主体名称未注册或不唯一。 因此，已加入域的客户端的 Windows 集成身份验证可能不是无缝的。 | 使用 [SETSPN -L ServiceAccountName<b></b>] 列出服务主体。<br>使用 [SETSPN -X<b></b>] 检查重复的服务主体名称。</p><p>如果 AD FS 服务帐户的 SPN 重复，请使用 [SETSPN -d service/namehostname<b></b>] 从重复帐户中删除 SPN</p><p>如果未设置 SPN，请使用 [SETSPN -s {Desired-SPN} {domain_name}\{service_account}<b></b>] 为联合身份验证服务帐户设置所需的 SPN。 | 
+| AD FS 服务帐户的服务主体名称 (SPN) 无效 | 联合身份验证服务帐户的服务主体名称未注册或不唯一。 因此，已加入域的客户端的 Windows 集成身份验证可能不是无缝的。 | 使用 [SETSPN -L ServiceAccountName<b></b>] 列出服务主体。<br>使用 [SETSPN -X<b></b>] 检查重复的服务主体名称。</p><p>如果 AD FS 服务帐户的 SPN 重复，请使用 [SETSPN -d service/namehostname<b></b>] 从重复帐户中删除 SPN</p><p>如果未设置 SPN，请使用 [SETSPN -s {Desired-SPN} {domain_name}<b>service_account}\{</b>] 为联合身份验证服务帐户设置所需的 SPN。 | 
 | 主要 AD FS 令牌解密证书即将过期 | 主要 AD FS 令牌解密证书在 90 天内即将过期。 AD FS 无法解密来自受信任声明提供程序的令牌。 AD FS 无法解密已加密的 SSO Cookie。 最终用户无法进行身份验证，因此无法访问资源。 | 如果启用了自动证书续期，AD FS 将管理令牌解密证书。</p><p>如果手动管理证书，请按照以下说明操作。 <b>获取新的令牌解密证书</b>。<ol type="a"><li>确保增强型密钥使用 (EKU) 包括“密钥加密”。</li><li>使用者或使用者可选名称 (SAN) 没有任何限制。</li><li>请注意，验证令牌解密证书时，联合服务器和声明提供程序合作伙伴需要能够链接到受信任的根证书颁发机构。</li></ol><b>确定声明提供程序合作伙伴信任新令牌解密证书的方式</b><ol type="a"><li>请求合作伙伴在更新证书后拉取联合元数据。</li><li>与合作伙伴共享 新证书（.cer 文件）的公钥。 在声明提供程序合作伙伴 AD FS 服务器上，从“管理工具”菜单上启动 AD FS 管理。 在“信任关系”/“信赖方信任”下，选择为你创建的信任。 在“属性”/“加密”下，单击“浏览”以选择新的令牌解密证书，然后单击“确定”。</li></ol><b>在每个联合服务器的本地证书存储中安装证书</b>。<ul><li>确保证书安装文件在每个服务器上都有证书的私钥。</li></ul><b>确保联合身份验证服务帐户有权访问新证书的私钥</b>。 <b>将新证书添加到 AD FS</b>。<ol type="a"><li>从“管理工具”菜单中启动 AD FS 管理</li><li>展开“服务”，然后选择“证书”</li><li>在“操作”窗格中，单击“添加令牌解密证书”</li><li>系统将显示对令牌解密有效的证书列表。 如果发现新证书未显示在列表中，需要返回并确保证书位于本地计算机个人存储中，并与私钥关联，且证书包含作为扩展密钥使用的密钥加密。</li><li>选择新的“令牌解密证书”，然后单击“确定”。</li></ol><b>将新的令牌解密证书设为主证书</b>。<ol type="a"><li>在“AD FS 管理”中选中“证书”节点之后，现在“令牌解密”下应显示两个证书：现有证书和新证书。</li><li>选择新的令牌解密证书，右键单击，然后选择“设置为主证书”。</li><li>保留旧证书作为辅助证书，以便续期。 确定不再需要旧证书进行续期或证书过期后，应计划将其删除。 </li></ol>  | 
 | 主要 AD FS 令牌签名证书即将过期 | AD FS 令牌签名证书即将在 90 天内过期。 此证书无效时，AD FS 无法颁发已签名的令牌。 | <b>获取新的令牌签名证书</b>。<ol type="a"><li>确保增强型密钥使用 (EKU) 包括“数字签名”。 </li><li>使用者或使用者可选名称 (SAN) 没有任何限制。 </li><li>请注意，验证令牌签名证书时，联合服务器、资源伙伴联合服务器和信赖方应用程序服务器需要能够链接到受信任的根证书颁发机构。</li></ol><b>在每个联合服务器的本地证书存储中安装证书</b>。 <ul><li>确保证书安装文件在每个服务器上都有证书的私钥。</li></ul></li><b>确保联合身份验证服务帐户有权访问新证书的私钥</b>。 <b>将新证书添加到 AD FS</b>。<ol type="a"><li>从“管理工具”菜单中启动 AD FS 管理。</li><li>展开“服务”，然后选择“证书”</li><li>在“操作”窗格中，单击“添加令牌签名证书”</li><li>系统将展示对令牌签名有效的证书列表。 如果发现新证书未显示在列表中，需要返回并确保证书位于本地计算机个人存储中，并与私钥关联，且证书包含数字签名 KU。</li><li>选择新的“令牌签名证书”，然后单击“确定”</li></ol><b>将令牌签名证书中的更改告知所有信赖方</b>。<ol type="a"><li>使用 AD FS 联合元数据的信赖方必须请求新的联合元数据，然后开始使用新证书。</li><li>未使用 AD FS 联合元数据的信赖方必须手动更新新令牌签名证书的公钥。 与信赖方共享 .cer 文件。</li></a><b>将新的令牌签名证书设为主证书</b>。<ol type="a"><li>在“AD FS 管理”中选中“证书”节点之后，现在“令牌签名”下应显示两个证书：现有证书和新证书。</li><li>选择新的令牌签名证书，右键单击，然后选择“设置为主证书”<b></b></li><li>保留旧证书作为辅助证书，以便续期。 确定不再需要旧证书进行续期或证书过期后，请计划将其删除。 请注意，当前用户的 SSO 会话已签名。 当前 AD FS 代理信任关系将利用使用旧证书签名和加密的令牌。 </li></ol>  | 
 | 在本地证书存储中找不到 AD FS SSL 证书 | 在本地证书存储中找不到在 AD FS 数据库中指纹配置为 SSL 证书的证书。 因此，通过 SSL 的任何身份验证请求都将失败。 例如，Office 365 的电子邮件客户端身份验证将失败。 | 在本地证书存储中安装包含已配置指纹的证书。 | 
@@ -78,21 +78,21 @@ Azure AD Connect Health 服务发送警报指示标识基础结构运行不正�
 
 ## <a name="alerts-for-active-directory-domain-services"></a>Azure Active Directory 域服务警报
 
-| 警报名称 | Description | 补救 |
+| 警报名称 | 说明 | 修正 |
 | --- | --- | ----- |
 | 无法通过 LDAP ping 访问域控制器 | 无法通过 LDAP ping 访问域控制器。 这可能是由于网络问题或计算机问题所致。 因此，LDAP Ping 将失败。 |  <li>检查警报列表是否存在相关警报，例如：域控制器未在播发。 </li><li>确保受影响的域控制器有足够的磁盘空间。 空间不足将阻止 DC 将其自身作为 LDAP 服务器来播发。 </li><li> 尝试查找 PDC： <br> 在受影响的域控制器上运行 netdom query fsmo<i></i> </br> （在受影响的域控制器上运行）。 <li> 确保物理网络配置/连接正确。 </li> |
 | 发生了 Active Directory 复制错误 | 此域控制器发生的是复制问题，可转到“复制状态”仪表板找到该问题。 复制错误可能是由于配置不正确或其他相关问题所致。 未处理的复制错误可能会导致数据不一致。 | 有关受影响的源和目标 DC 的名称，请参阅其他详细信息。 导航到“复制状态”仪表板，并在受影响的 DC 上查找活动错误。 单击错误，以打开包含有关如何修复该特定错误的更多详细信息的边栏选项卡。| 
 | 域控制器找不到 PDC | 无法通过此域控制器访问 PDC。 这将导致用户登录受到影响、组策略更改得不到应用以及系统时间同步出现问题。 | <li>检查警报列表是否存在可能影响 PDC 的相关警报，例如：域控制器未在播发。 </li> <li>尝试查找 PDC： <br> 在受影响的域控制器上运行 netdom query fsmo<i></i> </br> （在受影响的域控制器上运行）。<li>确保网络正常运行。 </li> |
-| 域控制器找不到全局编录服务器 | 无法从此域控制器访问全局编录服务器。 它将导致通过此域控制器尝试的身份验证失败。 | 检查警报列表中是否存在任何“域控制器未在播发”警报，其中受影响的服务器可能为 GC<b></b>。 如果不存在播发警报，请检查 SRV 记录中是否存在 GC。 可通过运行以下命令检查它们： <br> nltest \/dnsgetdc: [ForestName] \/gc<i></i> </br> 应该会列出作为 GC 播发的 DC。 如果列表为空，请检查 DNS 配置，以确保 GC 已注册 SRV 记录。 DC 可以在 DNS 中找到它们。 <br />有关全局编录疑难解答信息，请参阅<a href="https://technet.microsoft.com/library/cc961811.aspx#ECAA">作为全局编录服务器播发</a>。 | 
+| 域控制器找不到全局编录服务器 | 无法从此域控制器访问全局编录服务器。 它将导致通过此域控制器尝试的身份验证失败。 | 检查警报列表中是否存在任何“域控制器未在播发”警报，其中受影响的服务器可能为 GC<b></b>。 如果不存在播发警报，请检查 SRV 记录中是否存在 GC。 可通过运行以下命令检查它们： <br> nltest <i>dnsgetdc: [ForestName] \/gc\/</i> </br> 应该会列出作为 GC 播发的 DC。 如果列表为空，请检查 DNS 配置，以确保 GC 已注册 SRV 记录。 DC 可以在 DNS 中找到它们。 <br />有关全局编录疑难解答信息，请参阅<a href="https://technet.microsoft.com/library/cc961811.aspx#ECAA">作为全局编录服务器播发</a>。 | 
 | 域控制器无法访问本地 SYSVOL 共享 | Sysvol 包含组策略对象中的重要元素以及要在域中的 DC 内分发的脚本。 DC 不会将其本身作为 DC 播发，并且将不会应用组策略。 | 请参阅<a href="https://support.microsoft.com/kb/2958414">如何对缺失的 SYSVOL 和 Netlogon 共享进行故障排除</a> | 
-| 域控制器时间不同步 | 此域控制器的时间超出了正常的时间偏差范围。 因此，Kerberos 身份验证将失败。 | <li>重启 Windows 时间服务： <br>运行 net stop w32time，<i></i> </br> 然后在受影响的域控制器上，运行 <br>net start w32time<i></i></br> （在受影响的域控制器上运行）。</li><li>重新同步时间： <br>在受影响的域控制器上，运行 w32tm \/resync<i></i></br> （在受影响的域控制器上运行）。 | 
+| 域控制器时间不同步 | 此域控制器的时间超出了正常的时间偏差范围。 因此，Kerberos 身份验证将失败。 | <li>重启 Windows 时间服务： <br>运行 net stop w32time，<i></i> </br> then <br>net start w32time<i></i></br> （在受影响的域控制器上运行）。</li><li>重新同步时间： <br>在受影响的域控制器上，运行 w32tm <i>resync\/</i></br> （在受影响的域控制器上运行）。 | 
 | 域控制器未在播发 | 此域控制器未正确播发其可执行的角色。 这可能是由复制、DNS 错误配置、关键服务未运行或服务器未完成初始化等问题导致的。  因此，域控制器、域成员和其他设备将找不到此域控制器。 此外，其他域控制器可能无法从此域控制器进行复制。 | 检查警报列表是否存在其他相关警报的，例如：复制已中断。 域控制器时间不同步。Netlogon 服务未运行。 DFSR 和/或 NTFRS 服务未运行。 确定并解决相关 DNS 问题：登录到受影响的域控制器。 打开系统事件日志。 如果存在事件 5774、5775 或 5781，请参阅<a href="https://msdn.microsoft.com/library/bb727055.aspx#ECAA">排查域控制器定位程序 DNS 记录注册故障</a>确定并排查相关 Windows 时间服务问题：确保 Windows 时间服务正在运行：在受影响的域控制器上运行“<b>net start w32time</b>”。 重启 Windows 时间服务：在受影响的域控制器上依次运行“<b>net stop w32time</b>”和“<b>net start w32time</b>”。 | 
 | GPSVC 服务未运行 | 如果已停止或禁用服务，则将不会应用由管理员配置的设置，并且将无法通过组策略管理应用程序和组件。 如果禁用此服务，则依赖于组策略组件的所有组件或应用程序都将无法正常运行。  | 运行 <br>net start gpsvc<i></i></br> （在受影响的域控制器上运行）。 | 
 | DFSR 和/或 NTFRS 服务未运行 | 如果 DFSR 和 NTFRS 服务均停止，域控制器将无法复制 SYSVOL 数据。 SYSVOL 数据将不一致。 | <li>如果使用 DFSR：<ol type="1" > 在受影响的域控制器上，运行“net start dfsr”<b></b>。 </li><li>如果使用 NTFRS：<ol type="1" >在受影响的域控制器上，运行“net start ntfrs”<b></b>。 </li>| 
 | Netlogon 服务未运行 | 无法在此 DC 上执行登录请求、注册、身份验证和查找域控制器。 | 在受影响的域控制器上，运行“net start netlogon”<b></b> | 
 | W32Time 服务未运行 | 如果停止 Windows 时间服务，日期和时间同步将不可用。 如果禁用此服务，则显式依赖于它的任何服务都将无法启动。 | 在受影响的域控制器上，运行“net start win32Time”<b></b> | 
 | ADWS 服务未运行 | 如果已停止或禁用 Active Directory Web Services 服务，Active Directory PowerShell 等客户端应用程序将无法访问或管理在此服务器上本地运行的任何目录服务实例。 | 在受影响的域控制器上，运行“net start adws”<b></b> | 
-| 根 PDC 当前未通过 NTP 服务器同步 | 如果未将 PDC 配置为与外部或内部时间源同步时间，PDC 仿真器使用其内部时钟，并且自身就是林的可靠时间源。 如果 PDC 自身的时间不准确，所有计算机的时间设置都不正确。 | 在受影响的域控制器上，打开命令提示符。 停止时间服务：net stop w32time</li> <li>配置外部时间源： <br> w32tm \/config \/manualpeerlist: time.windows.com \/syncfromflags:manual \/reliable:yes<i></i></br><br>注意：将 time.windows.com 替换为所需外部时间源的地址。 启动时间服务： <br> net start w32time<i></i></br> | 
+| 根 PDC 当前未通过 NTP 服务器同步 | 如果未将 PDC 配置为与外部或内部时间源同步时间，PDC 仿真器使用其内部时钟，并且自身就是林的可靠时间源。 如果 PDC 自身的时间不准确，所有计算机的时间设置都不正确。 | 在受影响的域控制器上，打开命令提示符。 停止时间服务：net stop w32time</li> <li>配置外部时间源： <br> w32tm <i>config \/manualpeerlist: time.windows.com \/syncfromflags:manual \/reliable:yes\/</i></br><br>注意：将 time.windows.com 替换为所需外部时间源的地址。 启动时间服务： <br> net start w32time<i></i></br> | 
 | 域控制器已隔离 | 此域控制器未连接到其他任何正在运行的域控制器。 这可能是由于配置错误所致。 因此，该 DC 不会被使用，将不会从任何域控制器进行复制，也不会复制到任何域控制器。 | 启用入站和出站复制：在受影响的域控制器上，运行“repadmin /options ServerName -DISABLE_INBOUND_REPL”<b></b>。 在受影响的域控制器上，运行“repadmin /options ServerName -DISABLE_OUTBOUND_REPL”<b></b>。 创建与其他域控制器的新复制连接：<ol type="1"><li>打开“Active Directory 站点和服务”：单击“开始”菜单，指向“管理工具”，然后单击“Active Directory 站点和服务”。 </li><li>在控制台树中，依次展开“站点”和此 DC 所属的站点。 </li><li>展开“服务器”容器以显示服务器列表。 </li><li>展开此 DC 的服务器对象。 </li><li>右键单击“NTDS 设置”对象，然后单击“新建 Active Directory 域服务连接...” </li><li>从列表中选择一个服务器，然后单击“确定”。</li></ol><a href="https://support.microsoft.com/kb/230306 ">How to remove orphaned domains from Active Directory</a>（如何从 Active Directory 删除孤立域）。 |
 | 已禁用出站复制 | 禁用出站复制的 DC 将无法分发任何源于其内部的更改。 | 若要在受影响的域控制器上启用出站复制，请按以下步骤操作：依次单击“开始”和“运行”，键入 cmd，然后单击“确定”。 键入以下文本，然后按 Enter：<br>repadmin /options -DISABLE_OUTBOUND_REPL<i></i> | 
 | 已禁用入站复制 | 禁用入站复制的 DC 将不具有最新信息。 此状态可能会导致登录失败。 | 若要在受影响的域控制器上启用入站复制，请按以下步骤操作：依次单击“开始”和“运行”，键入 cmd，然后单击“确定”。 键入以下文本，然后按 Enter：<br>repadmin /options -DISABLE_INBOUND_REPL<i></i> </br> | 

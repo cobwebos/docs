@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect：排查 Azure AD 连接问题 | Microsoft Docs
+title: Azure AD Connect：排查 Azure AD 连接问题 |Microsoft Docs
 description: 介绍如何使用 Azure AD Connect 排查连接问题。
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7519f47037d2d7ff37564ab27c1cc58b65ff6c14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572781"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376068"
 ---
-# <a name="troubleshoot-azure-ad-connectivity"></a>排查 Azure AD 连接问题
+# <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 连接性疑难解答
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
 
 ## <a name="troubleshoot-connectivity-issues-in-the-installation-wizard"></a>在安装向导中排查连接问题
@@ -43,7 +43,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 针对这些 URL，下表列出了连接到 Azure AD 时最起码需要的配置。 此列表未包含任何可选功能，例如密码写回或 Azure AD Connect Health。 本文中描述这些功能是为了帮助排查初始配置问题。
 
-| URL | Port | 描述 |
+| URL | Port | 说明 |
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |用于下载 CRL 列表。 |
 | \*.verisign.com |HTTP/80 |用于下载 CRL 列表。 |
@@ -53,19 +53,19 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 | \*.microsoftonline.com |HTTPS/443 |用于配置 Azure AD 目录并导入/导出数据。 |
 
 ## <a name="errors-in-the-wizard"></a>向导中的错误
-安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。  在“配置”页上，改为[运行同步引擎服务的帐户](reference-connect-accounts-permissions.md#adsync-service-account)。  如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。 
+安装向导使用两种不同的安全上下文。 在“连接到 Azure AD”页上，使用的是当前登录的用户。 在“配置”页上，改为[运行同步引擎服务的帐户](reference-connect-accounts-permissions.md#adsync-service-account)。 如果出现问题，该问题很有可能已显示在向导中的“连接到 Azure AD”页上，因为代理配置是全局性的。
 
 以下问题是在安装向导中遇到的最常见错误。
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>未正确配置安装向导
-当向导本身无法访问代理时，会出现此错误。  
+当向导本身无法访问代理时，将出现此错误。  
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * 如果看到此错误，请检查是否已正确配置 [machine.config](how-to-connect-install-prerequisites.md#connectivity)。
 * 如果配置看起来正确，请按照[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
 
 ### <a name="a-microsoft-account-is-used"></a>使用 Microsoft 帐户
-如果使用的是 Microsoft 帐户而不是学校或组织帐户，将会看到一个常规错误。    
+如果使用的是 **Microsoft 帐户**而不是**学校或组织**帐户，会看到一个常规错误。  
 ![使用 Microsoft 帐户](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>无法访问 MFA 终结点
@@ -76,7 +76,7 @@ Azure AD Connect 使用现代身份验证（使用 ADAL 库）来进行身份验
 
 ### <a name="the-password-cannot-be-verified"></a>无法验证密码
 如果安装向导已成功连接到 Azure AD，但无法验证密码本身，将出现此错误：  
-![密码不正确。](./media/tshoot-connect-connectivity/badpassword.png)
+![密码错误。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * 密码是否为临时密码并且必须更改？ 它确实是正确的密码吗？ 请尝试登录到 https://login.microsoftonline.com （在 Azure AD Connect 服务器以外的另一台计算机上），并验证该帐户是否可用。
 
@@ -87,13 +87,13 @@ PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh �
 
 如果代理配置正确，则会收到成功状态：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest200.png)
 
-如果收到“无法连接到远程服务器”，则表示 PowerShell 正在尝试进行直接调用而未使用代理，或者 DNS 配置不正确。  请确保 machine.config 文件配置正确。 
+如果收到“无法连接到远程服务器”，则表示 PowerShell 正在尝试进行直接调用而未使用代理，或者 DNS 配置不正确。 请确保正确配置了 **machine.config** 文件。
 ![unabletoconnect](./media/tshoot-connect-connectivity/invokewebrequestunable.png)
 
 如果未正确配置代理，将出现错误：![proxy200](./media/tshoot-connect-connectivity/invokewebrequest403.png)
 ![proxy407](./media/tshoot-connect-connectivity/invokewebrequest407.png)
 
-| 错误 | 错误文本 | 注释 |
+| 错误 | 错误文本 | 备注 |
 | --- | --- | --- |
 | 403 |禁止 |代理尚未对请求的 URL 打开。 请重新访问代理配置，并确保已打开 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)。 |
 | 407 |需要代理身份验证 |代理服务器要求登录，但未提供任何登录信息。 如果代理服务器需要身份验证，请确保在 machine.config 中配置此项设置。另外，请确保对运行向导的用户和服务帐户使用域帐户。 |
@@ -102,7 +102,7 @@ PowerShell 使用 machine.config 中的配置来联系代理。 winhttp/netsh �
 Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Azure AD 最多可用 5 分钟的时间来处理该请求。 如果同一导出请求中包含大量具有大型组成员身份的组对象，则会出现这种情况。 确保将代理空闲超时配置为大于 5 分钟。 否则，Azure AD Connect 服务器上可能会出现 Azure AD 的间歇性连接问题。
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect 与 Azure AD 之间的通信模式
-如果已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。 本部分说明正常且成功的连接模式。 此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。
+如果已遵循上述步骤但仍无法连接，现在可以开始查看网络日志。 本部分说明正常和成功的连接模式。 此外，还将列出你在阅读网络日志时可能会忽略的常见辅助信息。
 
 * 有向 https://dc.services.visualstudio.com 发出的调用。 不需要在代理中打开此 URL 即可成功安装，可以忽略这些调用。
 * 可以看到，DNS 解析列出了要处于 DNS 命名空间 nsatc.net 的实际主机，以及不在 microsoftonline.com 下的其他命名空间。 但是，实际服务器名称中不会有任何 Web 服务请求，因此不需要将这些 URL 添加到代理。
@@ -117,14 +117,14 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:32 |connect://bba800-anchor.microsoftonline.com:443  |
+| 1/11/2016 8:32 |connect://*bba800-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:32 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
 **配置**
 
-| Time | 代码 |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
@@ -144,14 +144,14 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
-| 1/11/2016 8:49 |connect://bba900-anchor.microsoftonline.com:443  |
+| 1/11/2016 8:49 |connect://*bba900-anchor*.microsoftonline.com:443 |
 | 1/11/2016 8:49 |connect://*bba800-anchor*.microsoftonline.com:443 |
 
 ## <a name="authentication-errors"></a>身份验证错误
-本部分说明可能从 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 返回的错误。 其中说明的错误可帮助了解后续步骤。
+本部分说明可能从 ADAL（Azure AD Connect 使用的身份验证库）和 PowerShell 返回的错误。 其中说明的错误可帮助你了解后续步骤。
 
 ### <a name="invalid-grant"></a>无效授权
-无效的用户名或密码。 有关详细信息，请参阅[无法验证密码](#the-password-cannot-be-verified)。
+用户名或密码无效。 有关详细信息，请参阅[无法验证密码](#the-password-cannot-be-verified)。
 
 ### <a name="unknown-user-type"></a>未知用户类型
 找不到或无法解析 Azure AD 目录。 也许你在尝试使用未验证域中的用户名登录？
@@ -165,8 +165,8 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ### <a name="authorization-failure"></a>授权失败
 未能授权用户在 Azure AD 中执行操作。
 
-### <a name="authentication-canceled"></a>已取消身份验证
-多重身份验证 (MFA) 质询已取消。
+### <a name="authentication-canceled"></a>身份验证已取消
+多重身份验证（MFA）质询已取消。
 
 <div id="connect-msolservice-failed">
 <!--
@@ -221,7 +221,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 ### <a name="unspecified-authentication-failure"></a>身份验证失败，出现未知错误
 在安装向导中显示为“意外错误”。 如果尝试使用 **Microsoft 帐户**而不是**学校或组织**帐户，可能会发生这种错误。
 
-## <a name="troubleshooting-steps-for-previous-releases"></a>针对旧版本的疑难解答步骤
+## <a name="troubleshooting-steps-for-previous-releases"></a>旧版疑难解答步骤
 从内部版本号 1.1.105.0（于 2016 年 2 月发行）开始已停用登录助理。 不再需要用到本部分所述的配置，这些内容仅供参考。
 
 要使单一登录助理正常工作，必须配置 winhttp。 可以使用 [**netsh**](how-to-connect-install-prerequisites.md#connectivity) 完成此配置。  
@@ -233,7 +233,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 
 * 如果看到此错误，请在 [netsh](how-to-connect-install-prerequisites.md#connectivity) 中查看代理配置并确认配置是否正确。
   ![netshshow](./media/tshoot-connect-connectivity/netshshow.png)
-* 如果配置看起来正确，请按照 [验证代理连接](#verify-proxy-connectivity) 中的步骤，查看问题是否也出现在向导外部的位置。
+* 如果配置看起来正确，请按照[验证代理连接](#verify-proxy-connectivity)中的步骤，查看问题是否也出现在向导外部的位置。
 
 ## <a name="next-steps"></a>后续步骤
 了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

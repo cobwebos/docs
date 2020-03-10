@@ -10,11 +10,11 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 02/24/2020
 ms.topic: overview
 ms.openlocfilehash: 57b44db9c1bb9a607ad8478b7208df40441020c2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586234"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372223"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）
 
@@ -43,7 +43,7 @@ Azure Arc for servers（预览版）支持以下使用联网计算机的方案�
 
 在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 为了在发生区域性中断时具有恢复能力，如果你有提供地理冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 ### <a name="supported-operating-systems"></a>支持的操作系统
 
@@ -52,7 +52,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 - Windows Server 2012 R2 及更高版本（包括 Windows Server Core）
 - Ubuntu 16.04 和 18.04
 - CentOS Linux 7
-- SUSE Linux Enterprise Server (SLES) 15
+- SUSE Linux Enterprise Server （SLES）15
 - Red Hat Enterprise Linux (RHEL) 7
 - Amazon Linux 7
 
@@ -72,7 +72,7 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 协议
 
-为了确保传输到 Azure 的数据的安全性，我们强烈建议你将计算机配置为使用传输层安全性 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 
+为了确保数据传输到 Azure 的安全性，我们强烈建议你将计算机配置为使用传输层安全性（TLS）1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 
 
 |平台/语言 | 支持 | 更多信息 |
 | --- | --- | --- |
@@ -109,8 +109,8 @@ URL：
 
 Azure Arc for servers（预览版）依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
 
--  Microsoft.HybridCompute
--  Microsoft.GuestConfiguration
+- Microsoft.HybridCompute
+- Microsoft.GuestConfiguration
 
 如果未注册这些提供程序，可使用以下命令注册：
 
@@ -135,7 +135,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="connected-machine-agent"></a>Connected Machine 代理
 
-可从以下位置下载适用于 Windows 和 Linux 的 Azure Connected Machine 代理包。
+你可以从下列位置下载适用于 Windows 和 Linux 的 Azure 连接计算机代理包。
 
 - Microsoft 下载中心提供的 [Windows 代理 Windows Installer 包](https://aka.ms/AzureConnectedMachineAgent)。
 - Linux 代理包通过 Microsoft 的[包存储库](https://packages.microsoft.com/)使用分发版的首选包格式（.RPM 或 .DEB）进行分发。
@@ -143,11 +143,11 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 >[!NOTE]
 >在预览期，仅发布了一个适用于 Ubuntu 16.04 或 18.04 的包。
 
-适用于 Windows 和 Linux 的 Azure Connected Machine 代理可以手动或自动升级到最新版本，具体取决于你的要求。 对于 Windows，可以使用 Windows 更新自动完成代理更新；对于 Ubuntu，可以使用 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) 命令行工具来这样做。
+适用于 Windows 和 Linux 的 Azure 连接的计算机代理可以手动或自动升级到最新版本，具体取决于你的要求。 对于 Windows，可以使用[apt](https://help.ubuntu.com/lts/serverguide/apt.html)命令行工具，使用 Windows 更新和 Ubuntu 自动完成代理更新。
 
 ### <a name="agent-status"></a>代理状态
 
-Connected Machine 代理每 5 分钟向服务发送一条定期检测信号消息。 如果在 15 分钟内未收到一条消息，则会将该计算机视为脱机，并会在门户中将状态自动更改为“已断开连接”  。 收到来自 Connected Machine 代理的后续检测信号消息后，其状态会自动更改为“已连接”  。
+连接的计算机代理每5分钟向服务发送一条定期检测信号消息。 如果15分钟内未收到一台计算机，则会将该计算机视为脱机，并且状态将自动更改为在门户中**断开连接**。 收到来自连接的计算机代理的后续检测信号消息后，其状态将自动更改为 "**已连接**"。
 
 ## <a name="install-and-configure-agent"></a>安装并配置代理
 

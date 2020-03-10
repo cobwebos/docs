@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552536"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380012"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>教程：将 Azure SQL 数据库弹性池添加到故障转移组
 
-为 Azure SQL 数据库弹性池配置故障转移组，并使用 Azure 门户来测试故障转移。  在本教程中，你将了解如何：
+为 Azure SQL 数据库弹性池配置故障转移组，并使用 Azure 门户来测试故障转移。  在本教程中，您将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > - 创建 Azure SQL 数据库单一数据库。
@@ -28,7 +28,7 @@ ms.locfileid: "75552536"
 > - 为两个逻辑 SQL server 之间的两个弹性池创建[故障转移组](sql-database-auto-failover-group.md)。
 > - 测试故障转移。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要完成本教程，请确保做好以下准备： 
 
@@ -43,7 +43,7 @@ ms.locfileid: "75552536"
 在此步骤中，你将创建一个弹性池，并向其添加你的单一数据库。 
 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户创建弹性池。 
 
@@ -55,9 +55,9 @@ ms.locfileid: "75552536"
     ![选择弹性池](media/sql-database-elastic-pool-failover-group-tutorial/select-azure-sql-elastic-pool.png)
 
 1. 用以下值配置弹性池：
-   - **名称**：为弹性池提供唯一的名称，如 `myElasticPool`。 
-   - **订阅**：从下拉菜单中选择你的订阅。
-   - **资源组：从**下拉部分中选择 "`myResourceGroup`"，在第1部分中创建的资源组。 
+   - **名称**：提供弹性池的唯一名称，例如 `myElasticPool`。 
+   - **订阅**：从下拉列表中选择订阅。
+   - **ResourceGroup**：从下拉 `myResourceGroup` 在第1部分中创建的资源组中选择 ""。 
    - **服务器**：从下拉部分中选择在第1部分中创建的服务器。  
 
        ![为弹性池创建新服务器](media/sql-database-elastic-pool-failover-group-tutorial/use-existing-server-for-elastic-pool.png)
@@ -71,7 +71,7 @@ ms.locfileid: "75552536"
 1. 选择 "**查看和创建**" 以查看弹性池设置，然后选择 "**创建**" 创建弹性池。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 使用 PowerShell 创建弹性池和辅助服务器。 
 
    ```powershell-interactive
@@ -118,7 +118,7 @@ ms.locfileid: "75552536"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | 为 Azure SQL 数据库创建弹性数据库池。| 
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | 设置数据库的属性，或将现有数据库移到弹性池中。 | 
@@ -129,7 +129,7 @@ ms.locfileid: "75552536"
 在此步骤中，将在现有的 Azure SQL server 和另一个区域中的新 Azure SQL server 之间创建[故障转移组](sql-database-auto-failover-group.md)。 然后，将弹性池添加到故障转移组。 
 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户创建故障转移组。 
 
@@ -146,10 +146,10 @@ ms.locfileid: "75552536"
 1. 在 "**故障转移组**" 页上，输入或选择以下值，然后选择 "**创建**"：
     - **故障转移组名称**：键入唯一的故障转移组名称，如 `failovergrouptutorial`。 
     - **辅助服务器**：选择 "*配置所需设置*" 选项，然后选择 "**创建新服务器**"。 或者，您可以选择已有的服务器作为辅助服务器。 为新的辅助服务器输入以下值后，选择 "**选择**"。 
-        - **服务器名称**：为辅助服务器键入唯一名称，如 `mysqlsecondary`。 
-        - **服务器管理员登录名**： Type `azureuser`
+        - **服务器名称**：键入辅助服务器的唯一名称，例如 "`mysqlsecondary`"。 
+        - **服务器管理员登录名**：键入 `azureuser`
         - **密码**：键入符合密码要求的复杂密码。
-        - **位置**：从下拉项中选择一个位置，例如 "`East US`"。 此位置不能与主服务器相同。
+        - **位置**：从下拉列表中选择一个位置，例如 `East US`。 此位置不能与主服务器相同。
 
        > [!NOTE]
        > 服务器登录名和防火墙设置必须与主服务器的设置相匹配。 
@@ -163,7 +163,7 @@ ms.locfileid: "75552536"
 1. 选择 "**选择**"，将弹性池设置应用到故障转移组，然后选择 "**创建**" 以创建故障转移组。 如果将弹性池添加到故障转移组，则将自动启动异地复制过程。
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 创建故障转移组。 
 
@@ -236,7 +236,7 @@ ms.locfileid: "75552536"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为逻辑服务器创建防火墙规则。 | 
@@ -252,7 +252,7 @@ ms.locfileid: "75552536"
 在此步骤中，你将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户测试故障转移组的故障转移。 
 
@@ -276,7 +276,7 @@ ms.locfileid: "75552536"
 1. 再次选择 "**故障转移**"，将故障转移组故障回复到原始设置。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 测试故障转移组的故障转移。 
 
@@ -344,7 +344,7 @@ ms.locfileid: "75552536"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
@@ -357,15 +357,15 @@ ms.locfileid: "75552536"
 通过删除资源组来清理资源。 
 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 
-1. 导航到[Azure 门户](https://portal.azure.com)中的资源组。
+1. 在 [Azure 门户](https://portal.azure.com)中导航到资源组。
 1. 选择 "**删除资源组**" 以删除组中的所有资源以及资源组本身。 
 1. 在文本框中键入资源组的名称，`myResourceGroup`，然后选择 "**删除**" 以删除该资源组。 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 PowerShell 清理资源。 
 
@@ -381,7 +381,7 @@ ms.locfileid: "75552536"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
 
@@ -392,13 +392,13 @@ ms.locfileid: "75552536"
 
 ## <a name="full-script"></a>完整脚本
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| 命令 | 注释 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库和弹性池的 SQL 数据库服务器。 |
@@ -414,7 +414,7 @@ ms.locfileid: "75552536"
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 | 
 
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 没有可用于 Azure 门户的脚本。
 
 ---
@@ -432,4 +432,4 @@ ms.locfileid: "75552536"
 转到下一教程，其中介绍了如何使用 DMS 进行迁移。
 
 > [!div class="nextstepaction"]
-> [教程：使用 DMS 将 SQL Server 迁移到共用数据库](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)
+> [教程：使用 DMS 将 SQL Server 迁移到池中的数据库](../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json)

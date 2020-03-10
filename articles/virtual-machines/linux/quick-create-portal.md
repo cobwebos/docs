@@ -15,11 +15,11 @@ ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035219"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372402"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 Linux 虚拟机
 
@@ -34,13 +34,13 @@ ms.locfileid: "74035219"
 打开 bash shell，使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 创建一个 SSH 密钥对。 如果本地计算机上没有 bash shell，则可使用 [Azure Cloud Shell](https://shell.azure.com/bash)。
 
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 在页面顶部的菜单中选择 `>_` 图标以打开 Cloud Shell。
-1. 请确保 CloudShell 在左上角显示 **Bash**。 如果显示“PowerShell”，请使用下拉菜单选择 **Bash**，然后选择“确认”  以更改为 Bash shell。
+1. 请确保 CloudShell 在左上角显示 **Bash**。 如果显示“PowerShell”，请使用下拉菜单选择 **Bash**，然后选择“确认”以更改为 Bash shell。
 1. 键入 `ssh-keygen -t rsa -b 2048` 以创建 ssh 密钥。 
 1. 系统将提示你输入用于保存密钥对的文件。 只需按 **Enter** 即可保存到括号中列出的默认位置。 
 1. 系统会要求你输入密码。 你可以为 SSH 密钥键入密码，或按 **Enter** 继续而不键入密码。
-1. `ssh-keygen` 命令会在 `~/.ssh directory` 中生成默认名称为 `id_rsa` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat ~/.ssh/id_rsa.pub` 使用公钥的此路径以 `cat` 显示其内容。
+1. `ssh-keygen` 命令会在 `id_rsa` 中生成默认名称为 `~/.ssh directory` 的公钥和私钥。 此命令返回公钥的完整路径。 通过键入 `cat` 使用公钥的此路径以 `cat ~/.ssh/id_rsa.pub` 显示其内容。
 1. 复制此命令的输出，并将其保存到某个位置，以供本文后面使用。 这是你的公钥，在配置登录 VM 所需的管理员帐户时，需要用到它。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -49,28 +49,28 @@ ms.locfileid: "74035219"
 
 ## <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 在搜索中键入“虚拟机”  。
-1. 在“服务”下，选择“虚拟机”   。
-1. 在“虚拟机”页上，选择“添加”   。 此时将打开“创建虚拟机”页  。
-1. 在“基本信息”  选项卡中的“项目详细信息”  下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup  。 
+1. 在搜索中键入“虚拟机”。
+1. 在“服务”下，选择“虚拟机”。
+1. 在“虚拟机”页上，选择“添加”。 此时将打开“创建虚拟机”页。
+1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 对于名称.*，请键入 myResourceGroup。 
 
     ![为 VM 新建资源组](./media/quick-create-portal/project-details.png)
 
-1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”        。 保留其他默认值。
+1. 在“实例详细信息”下，键入“myVM”作为“虚拟机名称”，选择“美国东部”作为“区域”，并选择“Ubuntu 18.04 LTS”作为“映像”。 保留其他默认值。
 
     ![“实例详细信息”部分](./media/quick-create-portal/instance-details.png)
 
-1. 在“管理员帐户”  下，选择“SSH 公钥”  ，键入用户名，然后粘贴公钥。 删除公钥中的所有前导或尾随空格。
+1. 在“管理员帐户”下，选择“SSH 公钥”，键入用户名，然后粘贴公钥。 删除公钥中的所有前导或尾随空格。
 
     ![管理员帐户](./media/quick-create-portal/administrator-account.png)
 
-1. 在“入站端口规则”   > “公共入站端口”  下，选择“允许所选端口”  ，然后从下拉列表中选择“SSH (22)”  和“HTTP (80)”  。 
+1. 在“入站端口规则” > “公共入站端口”下，选择“允许所选端口”，然后从下拉列表中选择“SSH (22)”和“HTTP (80)”。 
 
     ![打开 RDP 和 HTTP 的端口](./media/quick-create-portal/inbound-port-rules.png)
 
-1. 保留其余默认值，然后选择页面底部的“查看 + 创建”  按钮。
+1. 保留其余默认值，然后选择页面底部的“查看 + 创建”按钮。
 
-1. 在“创建虚拟机”页上，  可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”  。
+1. 在“创建虚拟机”页上，可以查看要创建的 VM 的详细信息。 准备好以后，选择“创建”。
 
 部署 VM 需要数分钟。 部署完成后，请转到下一部分。
 
@@ -79,11 +79,11 @@ ms.locfileid: "74035219"
 
 创建与 VM 的 SSH 连接。
 
-1. 选择 VM 的概述页面上的“连接”按钮。  
+1. 选择 VM 的概述页面上的“连接”按钮。 
 
     ![门户 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。  在“使用 VM 本地帐户登录”  中，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
+2. 在“连接到虚拟机”页面中，请保留默认选项，以使用 IP 地址通过端口 22 进行连接。 在“使用 VM 本地帐户登录”中，将显示一个连接命令。 选择相应的按钮来复制该命令。 下面的示例展示了 SSH 连接命令的样式：
 
     ```bash
     ssh azureuser@10.111.12.123
@@ -111,7 +111,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+当不再需要时，可以删除资源组、虚拟机和所有相关资源。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

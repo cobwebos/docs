@@ -10,11 +10,11 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930418"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373530"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure 自动化中的凭据资产
 
@@ -29,7 +29,7 @@ ms.locfileid: "76930418"
 
 对于 Azure PowerShell Az 模块，下表中的 cmdlet 用于通过 Windows PowerShell 创建和管理自动化凭据资产。 它们作为[AzureAz 模块](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)的一部分提供，可在自动化 RUNBOOK 和 DSC 配置中使用。
 
-| Cmdlet | Description |
+| Cmdlet | 说明 |
 |:--- |:--- |
 | [AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |检索有关凭据资产的信息。 这不会返回 PSCredential 对象。  |
 | [新-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |创建新的自动化凭据。 |
@@ -40,7 +40,7 @@ ms.locfileid: "76930418"
 
 下表中的活动用于在 Runbook 和 DSC 配置中访问凭据。
 
-| 活动 | Description |
+| 活动 | 说明 |
 |:--- |:--- |
 | Get-AutomationPSCredential |在 Runbook 或 DSC 配置中获取要使用的凭据。 返回 [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) 对象。 |
 
@@ -51,7 +51,7 @@ ms.locfileid: "76930418"
 
 下表中的函数用于在 Python2 Runbook 中访问凭据。
 
-| 函数 | Description |
+| 函数 | 说明 |
 |:---|:---|
 | automationassets.get_automation_credential | 检索有关凭据资产的信息。 |
 
@@ -71,7 +71,7 @@ ms.locfileid: "76930418"
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>使用 Windows PowerShell 创建新的凭据资产
 
-以下示例命令演示了如何创建新的自动化凭据。 首先创建了一个具有名称和密码的 PSCredential 对象，然后使用该对象创建凭据资产。 或者，可以使用 **Get-Credential** cmdlet，会提示键入名称和密码。
+以下示例命令演示了如何创建新的自动化凭据。 首先创建了一个具有名称和密码的 PSCredential 对象，然后使用该对象创建凭据资产。 或者，可以使用 **Get-Credential** cmdlet 并按照提示键入名称和密码。
 
 ```powershell
 $user = "MyDomain\MyUser"
@@ -82,7 +82,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 
 ## <a name="using-a-powershell-credential"></a>使用 PowerShell 凭据
 
-在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 此操作将返回 [PSCredential 对象](/dotnet/api/system.management.automation.pscredential)，可将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有一个用于用户名和安全密码的属性，或者可以使用 **GetNetworkCredential** 方法返回 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象，该对象将提供该密码的不安全版本。
+在 Runbook 或 DSC 配置中使用 **Get-AutomationPSCredential** 活动检索凭据资产。 这将返回 [PSCredential 对象](/dotnet/api/system.management.automation.pscredential)，你可以将其用于需要 PSCredential 参数的活动或 cmdlet。 还可以检索要单独使用的凭据对象的属性。 该对象具有用户名和安全密码属性，你也可以使用 **GetNetworkCredential** 方法返回将提供不安全版本的密码的 [NetworkCredential](/dotnet/api/system.net.networkcredential) 对象。
 
 > [!NOTE]
 > **AzAutomationCredential**不会返回可用于身份验证的**PSCredential** 。 它仅提供有关凭据的信息。 如果需要在 runbook 中使用凭据，则必须使用**get-automationpscredential**检索**PSCredential**对象。

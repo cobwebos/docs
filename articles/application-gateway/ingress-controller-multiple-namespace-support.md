@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795559"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78373467"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>使用应用程序网关入口控制器在 AKS 群集中启用多个命名空间支持
 
-## <a name="motivation"></a>推动
+## <a name="motivation"></a>动机
 使用 Kubernetes[命名空间](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)，可以将 Kubernetes 群集分区，并将其分配给更大团队的子组。 然后，这些子团队可以通过更精细地控制资源、安全性、配置等来部署和管理基础结构。Kubernetes 允许在每个命名空间内独立定义一个或多个入口资源。
 
 从0.7 版开始[Azure 应用程序网关 Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) （AGIC）可从引入事件，并观察多个命名空间。 如果 AKS 管理员决定使用[应用网关](https://azure.microsoft.com/services/application-gateway/)作为入口，则所有命名空间都将使用同一应用程序网关实例。 入口控制器的单个安装将监视可访问的命名空间，并将配置与其关联的应用程序网关。
 
 AGIC 版本0.7 将继续以独占方式观察 `default` 命名空间，除非在 Helm 配置中显式更改为一个或多个不同的命名空间（请参见下面的部分）。
 
-## <a name="enable-multiple-namespace-support"></a>启用多个命名空间支持
+## <a name="enable-multiple-namespace-support"></a>启用多命名空间支持
 启用多个命名空间支持：
 1. 通过以下方式之一修改[helm-yaml](#sample-helm-config-file)文件：
    - 完全通过 helm 删除 `watchNamespace` 项[。 yaml](#sample-helm-config-file) -AGIC 将观察所有命名空间
@@ -83,8 +83,8 @@ spec:
 
 尽管两个入口资源会要求流量 `www.contoso.com` 路由到相应的 Kubernetes 命名空间，但只有一个后端可以为流量提供服务。 AGIC 会在一个资源的 "首先提供" 基础上创建配置。 如果同时创建了两个恒温器资源，则字母表中前面的资源将优先。 在上述示例中，我们将只能为 `production` 入口创建设置。 将为应用程序网关配置以下资源：
 
-  - 侦听器： `fl-www.contoso.com-80`
-  - 路由规则： `rr-www.contoso.com-80`
+  - 侦听器： `fl- www.contoso.com-80`
+  - 路由规则： `rr- www.contoso.com-80`
   - 后端池： `pool-production-contoso-web-service-80-bp-80`
   - HTTP 设置： `bp-production-contoso-web-service-80-80-websocket-ingress`
   - 运行状况探测： `pb-production-contoso-web-service-80-websocket-ingress`

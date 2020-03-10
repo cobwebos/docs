@@ -1,5 +1,5 @@
 ---
-title: 自定义 Azure AD 租户应用声明（Powershell）
+title: 自定义 Azure AD 租户应用声明（PowerShell）
 titleSuffix: Microsoft identity platform
 description: 本页介绍 Azure Active Directory 声明映射。
 services: active-directory
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699064"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375826"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -44,7 +44,7 @@ ms.locfileid: "76699064"
 
 有一些可定义如何以及何时在令牌中使用它们的特定声明集。
 
-| 声明集 | Description |
+| 声明集 | 说明 |
 |---|---|
 | 核心声明集 | 存在于每个令牌中，与策略无关。 这些声明也被视为受限制的，无法修改。 |
 | 基本声明集 | 包括默认情况下为令牌发出的声明（除了核心声明集之外）。 可以省略或通过使用声明映射策略来修改基本声明。 |
@@ -59,7 +59,7 @@ ms.locfileid: "76699064"
 | access_token |
 | account_type |
 | acr |
-| actor |
+| 参与者 (actor) |
 | actortoken |
 | aio |
 | altsecid |
@@ -71,7 +71,7 @@ ms.locfileid: "76699064"
 | appctxsender |
 | appid |
 | appidacr |
-| assertion |
+| Assertion — 断言 |
 | at_hash |
 | aud |
 | auth_data |
@@ -159,10 +159,10 @@ ms.locfileid: "76699064"
 | resource |
 | 角色 (role) |
 | 角色 |
-| scope |
+| 作用域 |
 | scp |
 | sid |
-| 签名 |
+| Signature — 签名 |
 | signin_state |
 | src1 |
 | src2 |
@@ -284,13 +284,13 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| 源 | ID | Description |
+| 源 | ID | 说明 |
 |-----|-----|-----|
-| 用户 | surname | 姓氏 |
+| 用户 | surname | 系列名称 |
 | 用户 | givenname | 名字 |
 | 用户 | displayname | 显示名称 |
 | 用户 | objectid | ObjectID |
-| 用户 | mail | 电子邮件地址 |
+| 用户 | 邮件 | 电子邮件地址 |
 | 用户 | userprincipalname | 用户主体名称 |
 | 用户 | department|部门|
 | 用户 | onpremisessamaccountname | 本地 SAM 帐户名 |
@@ -299,7 +299,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | onpremisesecurityidentifier | 本地安全标识符 |
 | 用户 | companyname| 组织名称 |
 | 用户 | streetaddress | 街道地址 |
-| 用户 | postalcode | 邮政编码 |
+| 用户 | 邮政编码 | 邮政编码 |
 | 用户 | preferredlanguange | 首选语言 |
 | 用户 | onpremisesuserprincipalname | 本地 UPN |
 | 用户 | mailnickname | 邮件别名 |
@@ -319,16 +319,16 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | extensionattribute14 | 扩展属性 14 |
 | 用户 | extensionattribute15 | 扩展属性 15 |
 | 用户 | othermail | 其他邮件 |
-| 用户 | country | 国家/地区 |
-| 用户 | city | 城市 |
-| 用户 | state | 状况 |
+| 用户 | country | Country |
+| 用户 | 城市 | 城市 |
+| 用户 | state | State |
 | 用户 | jobtitle | 职务 |
 | 用户 | employeeid | 员工 ID |
 | 用户 | facsimiletelephonenumber | 传真电话号码 |
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objected | ObjectID |
 | application、resource、audience | 标记 | 服务主体标记 |
-| 公司 | tenantcountry | 租户的国家/地区 |
+| Company | tenantcountry | 租户的国家/地区 |
 
 **TransformationID：** 仅当 Source 元素设置为“transformation”时，才必须提供 TransformationID 元素。
 
@@ -358,10 +358,10 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4：转换方法以及预期输入和输出
 
-|TransformationMethod|预期输入|预期输出|Description|
+|TransformationMethod|预期输入|预期输出|说明|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
+|ExtractMailPrefix|邮件|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -384,9 +384,9 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|源|ID|Description|
+|源|ID|说明|
 |-----|-----|-----|
-| 用户 | mail|电子邮件地址|
+| 用户 | 邮件|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
 | 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
 | 用户 | employeeid|员工 ID|
@@ -415,7 +415,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure Powershell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure Powershell cmdlet 的详细信息，请单击[此处](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅[get-azureadapplicationkeycredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
 启用了声明映射的应用必须通过将 `appid={client_id}` 追加到[OpenID connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证其令牌签名密钥。 下面是应使用的 OpenID Connect 元数据文档的格式： 
 
@@ -435,7 +435,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>必备组件
+#### <a name="prerequisites"></a>先决条件
 
 在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 
@@ -469,7 +469,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph](/graph/traverse-the-graph)。 或者，在[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到您的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -493,7 +493,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph](/graph/traverse-the-graph)。 或者，在[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到您的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
       ``` powershell
@@ -517,7 +517,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
-   1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph](/graph/traverse-the-graph)。 或者，在[图形资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到您的 Azure AD 帐户。
+   1. 若要查看组织的所有服务主体，可以[查询 MICROSOFT GRAPH API](/graph/traverse-the-graph)。 或者，在[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)中，登录到 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令： 
      
       ``` powershell

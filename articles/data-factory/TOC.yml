@@ -491,6 +491,8 @@
           href: data-flow-exists.md
         - name: “筛选器”
           href: data-flow-filter.md
+        - name: 平展
+          href: data-flow-flatten.md
         - name: Join
           href: data-flow-join.md
         - name: 查找
@@ -515,8 +517,6 @@
           href: data-flow-unpivot.md
         - name: 窗口
           href: data-flow-window.md
-        - name: 平展
-          href: data-flow-flatten.md
     - name: 参数化
       items:
         - name: 将链接的服务参数化

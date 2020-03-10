@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.openlocfilehash: 99083cd08db98a6d6ac56d4cf55aaf9d0e64e2b4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672134"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361828"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机中的虚拟机和[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)监视的虚拟机之间进行全面管理而开发的。 Windows 和 Linux 代理将从不同源收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、 [azure 安全中心](/azure/security-center/)和[azure 自动化](../../automation/automation-intro.md)等 Azure Monitor 中的见解和其他服务。
@@ -101,7 +101,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 从 2018 年 8 月之后发布的版本开始，我们对支持模型进行了以下更改：  
 
 * 仅支持服务器版本，不支持客户端版本。  
-* 始终支持新版本的 [Azure Linux 认可的发行版](../../virtual-machines/linux/endorsed-distros.md)。  
+* 在任何[Azure Linux 认可的发行版](../../virtual-machines/linux/endorsed-distros.md)上专注于支持。 请注意，新的发行版/版本被 Azure Linux 认可的新的/版本与支持的 Linux 代理之间可能存在一定 Log Analytics 的延迟。
 * 列出的每个主版本支持所有的次版本。
 * 超出制造商终止支持日期的版本不受支持。  
 * 不支持新版本的 AMI。  
@@ -151,7 +151,7 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 ## <a name="network-firewall-requirements"></a>网络防火墙要求
 下面的信息列出了 Linux 和 Windows 代理与 Azure Monitor 日志通信所需的代理和防火墙配置信息。  
 
-|代理资源|端口 |方向 |绕过 HTTPS 检查|
+|代理资源|端口 |Direction |绕过 HTTPS 检查|
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |端口 443 |出站|是 |  
 |*.oms.opinsights.azure.com |端口 443 |出站|是 |  
@@ -170,7 +170,7 @@ Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 A
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|properties| 说明 |
+|属性| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

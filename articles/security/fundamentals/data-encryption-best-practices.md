@@ -4,7 +4,7 @@ description: 本文提供一系列有关使用内置 Azure 功能实现数据安
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934743"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945576"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳做法
-本文介绍了针对数据安全和加密的最佳做法。
+本文介绍了数据安全和加密的最佳实践。
 
-最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术将随着时间改变，本文会定期更新以反映这些更改。
+最佳做法以观点的共识以及 Azure 平台功能和特性集为基础。 观点和技术随时间而变化，本文会定期更新以反映这些更改。
 
 ## <a name="protect-data"></a>保护数据
 为了帮助保护云中的数据，需要考虑数据可能出现的状态以及可用于该状态的控件。 Azure 数据安全与加密的最佳做法与以下数据状态相关：
@@ -108,7 +108,7 @@ Azure 存储和 Azure SQL 数据库默认对静态数据进行加密，并且许
 **详细信息**：使用[点到站点 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create)。
 
 **最佳做法**：通过专用高速 WAN 链路移动大型数据集。   
-**详细信息**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 [SSL/TLS](https://support.microsoft.com/kb/257591) 或其他协议在应用程序级别加密数据，以提供额外的保护。
+**详细信息**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果选择使用 ExpressRoute，则还可以使用 SSL/TLS 或其他协议对应用程序级别的数据进行加密，以增加保护。
 
 **最佳做法**：通过 Azure 门户与 Azure 存储进行交互。   
 **详细信息**：所有事务都通过 HTTPS 进行。 还可以通过 HTTPS 使用[存储 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)来与[Azure 存储](https://azure.microsoft.com/services/storage/)交互。

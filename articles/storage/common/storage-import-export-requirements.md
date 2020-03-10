@@ -9,11 +9,11 @@ ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978478"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78360927"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -27,7 +27,7 @@ ms.locfileid: "75978478"
 |平台 |版本 |
 |---------|---------|
 |Windows     | Windows 7 企业版、Windows 7 旗舰版 <br> Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版 <br> Windows 10        |
-|Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
+|Windows 服务器     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 客户端所需的其他软件
 
@@ -57,9 +57,9 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 下面列出的存储类型都受 Azure 导入/导出服务支持。
 
 
-|作业  |存储服务 |受支持  |不支持  |
+|作业  |存储服务 |支持  |不支持  |
 |---------|---------|---------|---------|
-|Import     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
+|导入     |  Azure Blob 存储 <br><br> Azure 文件存储       | 支持块 Blob 和页 Blob <br><br> 支持文件          |
 |导出     |   Azure Blob 存储       | 支持块 Blob、页 Blob 和追加 Blob         | 不支持 Azure 文件
 
 
@@ -72,7 +72,7 @@ Azure 导入/导出服务支持以下类型的存储帐户：
 下面列出的存储类型均受支持，可与 Azure 导入/导出服务配合使用。
 
 
-|磁盘类型  |大小  |受支持 |
+|磁盘类型  |大小  |支持 |
 |---------|---------|---------|
 |SSD    |   2.5"      |SATA III          |
 |HDD     |  2.5"<br>3.5"       |SATA II、SATA III         |

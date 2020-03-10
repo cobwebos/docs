@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548605"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379340"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
 
@@ -31,32 +31,32 @@ IoT Edge 代理和 IoT Edge 中心是构成 IoT Edge 运行时的两个模块。
 
 IoT Edge 代理的模块孪生称为 `$edgeAgent`，用于协调设备上运行的 IoT Edge 代理与 IoT 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。
 
-| 属性 | Description | 需要 |
+| 属性 | 说明 | 必需 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |
 | runtime.settings.minDockerVersion | 设置为此部署清单所需的最小 Docker 版本 | 是 |
-| runtime.settings.loggingOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 否 |
-| runtime.settings.registryCredentials<br>.{registryId}.username | 容器注册表的用户名。 对于 Azure 容器注册表，用户名通常是注册表名称。<br><br> 所有专用模块映像都需要注册凭据。 | 否 |
-| runtime.settings.registryCredentials<br>.{registryId}.password | 容器注册表的密码。 | 否 |
-| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io。 | 否 |  
+| runtime.settings.loggingOptions | 字符串化的 JSON 包含 IoT Edge 代理容器的日志记录选项。 [Docker 日志记录选项](https://docs.docker.com/engine/admin/logging/overview/) | 是 |
+| runtime.settings.registryCredentials<br>.{registryId}.username | 容器注册表的用户名。 对于 Azure 容器注册表，用户名通常是注册表名称。<br><br> 所有专用模块映像都需要注册凭据。 | 是 |
+| runtime.settings.registryCredentials<br>.{registryId}.password | 容器注册表的密码。 | 是 |
+| runtime.settings.registryCredentials<br>.{registryId}.address | 容器注册表的地址。 对于 Azure 容器注册表，地址通常为 {registry name}.azurecr.io。 | 是 |  
 | systemModules.edgeAgent.type | 必须为“docker” | 是 |
 | systemModules.edgeAgent.settings.image | IoT Edge 代理的映像 URI。 目前，IoT Edge 代理无法自我更新。 | 是 |
-| systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含用于创建 IoT Edge 代理容器的选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
+| systemModules.edgeAgent.settings<br>.createOptions | 字符串化的 JSON 包含用于创建 IoT Edge 代理容器的选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 是 |
 | systemModules.edgeAgent.configuration.id | 部署此模块的部署 ID。 | 使用部署应用清单时，IoT 中心会设置此属性。 不是部署清单的一部分。 |
 | systemModules.edgeHub.type | 必须为“docker” | 是 |
 | systemModules.edgeHub.status | 必须为“running” | 是 |
 | systemModules.edgeHub.restartPolicy | 必须为“always” | 是 |
 | systemModules.edgeHub.settings.image | IoT Edge 中心的映像 URI。 | 是 |
-| systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含用于创建 IoT Edge 中心容器的选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
+| systemModules.edgeHub.settings<br>.createOptions | 字符串化的 JSON 包含用于创建 IoT Edge 中心容器的选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 是 |
 | systemModules.edgeHub.configuration.id | 部署此模块的部署 ID。 | 使用部署应用清单时，IoT 中心会设置此属性。 不是部署清单的一部分。 |
 | modules.{moduleId}.version | 用户定义的字符串，表示此模块的版本。 | 是 |
 | modules.{moduleId}.type | 必须为“docker” | 是 |
 | modules.{moduleId}.status | {"running" \| "stopped"} | 是 |
 | modules.{moduleId}.restartPolicy | {"绝不" \| "\|" （不正常） "\|" 始终 "} | 是 |
-| 模块.{moduleId}. imagePullPolicy | {"创建时" \| "从不"} | 否 |
+| 模块.{moduleId}. imagePullPolicy | {"创建时" \| "从不"} | 是 |
 | modules.{moduleId}.settings.image | 模块映像的 URI。 | 是 |
-| modules.{moduleId}.settings.createOptions | 字符串化的 JSON 包含模块容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 否 |
+| modules.{moduleId}.settings.createOptions | 字符串化的 JSON 包含模块容器的创建选项。 [Docker 创建选项](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | 是 |
 | modules.{moduleId}.configuration.id | 部署此模块的部署 ID。 | 使用部署应用清单时，IoT 中心会设置此属性。 不是部署清单的一部分。 |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent 报告属性
@@ -74,13 +74,13 @@ IoT Edge 代理报告属性包括三个主要信息：
 
 下表不包括从所需属性中复制的信息。
 
-| 属性 | Description |
+| 属性 | 说明 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 IoT Edge 代理处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此状态代码是指 IoT Edge 代理查看的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`412` 架构版本无效、`417` 所需属性为空、`500` 失败 |
 | lastDesiredStatus.description | 状态的文本说明 |
-| deviceHealth | 如果所有模块的运行时状态为 `running` 或 `stopped`，则为 `healthy`，否则为 `unhealthy` |
-| configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 设置的所有模块的运行时状态为 `running` 或 `stopped`，则为 `healthy`，否则为 `unhealthy` |
+| deviceHealth | 如果所有模块的运行时状态为 `healthy` 或 `running`，则为 `stopped`，否则为 `unhealthy` |
+| configurationHealth.{deploymentId}.health | 如果部署 {deploymentId} 设置的所有模块的运行时状态为 `healthy` 或 `running`，则为 `stopped`，否则为 `unhealthy` |
 | runtime.platform.OS | 报告在设备上运行的 OS |
 | runtime.platform.architecture | 报告设备上的 CPU 体系结构 |
 | systemModules.edgeAgent.runtimeStatus | IoT Edge 代理的报告状态：{"running" \| "unhealthy"} |
@@ -104,7 +104,7 @@ IoT Edge 代理报告属性包括三个主要信息：
 
 IoT Edge 中心的模块孪生称为 `$edgeHub`，用于协调设备上运行的 IoT Edge 中心与 IoT 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。
 
-| 属性 | Description | 部署清单中的必备项 |
+| 属性 | 说明 | 部署清单中的必备项 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | routes.{routeName} | 表示 IoT Edge 中心路由的字符串。 有关详细信息，请参阅[声明路由](module-composition.md#declare-routes)。 | `routes` 元素可以存在但为空。 |
@@ -112,7 +112,7 @@ IoT Edge 中心的模块孪生称为 `$edgeHub`，用于协调设备上运行的
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub 报告属性
 
-| 属性 | Description |
+| 属性 | 说明 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 IoT Edge 中心处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 状态代码，指的是 IoT Edge 集线器查看的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`500` 失败 |

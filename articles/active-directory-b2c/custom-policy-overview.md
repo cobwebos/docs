@@ -11,11 +11,11 @@ ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189220"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365225"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略
 
@@ -29,7 +29,7 @@ ms.locfileid: "78189220"
 |-|-------------------|-----------------|
 | 目标用户 | 具有或不具有标识专业知识的所有应用程序开发人员。 | 标识专业人员、系统集成人员、顾问和内部标识团队。 它们熟悉 OpenID Connect 流并了解标识提供者和基于声明的身份验证。 |
 | 配置方法 | 具有用户友好用户界面 (UI) 的 Azure 门户。 | 直接编辑 XML 文件，并上传到 Azure 门户。 |
-| UI 自定义 | 完全 UI 自定义，包括 HTML、CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
+| 用户界面自定义 | 完全 UI 自定义，包括 HTML、CSS 和 JavaScript。<br><br>使用自定义字符串实现多语言支持。 | 相同 |
 | 属性自定义 | 标准和自定义属性。 | 相同 |
 | 令牌和会话管理 | 自定义令牌和多个会话选项。 | 相同 |
 | 标识提供者 | 预定义的本地或社交提供程序以及大多数 OIDC 标识提供程序，如与 Azure Active Directory 租户的联合。 | 基于标准的 OIDC、OAUTH 和 SAML。  还可以通过结合使用与 REST Api 进行身份验证。 |

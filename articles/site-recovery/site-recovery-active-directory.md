@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084586"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362523"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 
@@ -87,7 +87,7 @@ ms.locfileid: "74084586"
 1. 如果要复制到其他本地站点并使用 DHCP，请[针对测试故障转移设置 DNS 和 DHCP](hyper-v-vmm-test-failover.md#prepare-dhcp)。
 2. 对隔离网络中运行的域控制器虚拟机执行测试故障转移。 使用域控制器虚拟机最新可用的应用程序一致恢复点来执行测试故障转移。
 3. 针对包含虚拟机（应用程序在其中运行）的恢复计划运行测试故障转移。
-4. 测试完成后，请在域控制器虚拟机上清理测试故障转移。 此步骤会删除为测试性故障转移创建的域控制器。
+4. 测试完成后，请在域控制器虚拟机上清理测试故障转移。 此步骤删除为测试性故障转移创建的域控制器。
 
 
 ### <a name="remove-references-to-other-domain-controllers"></a>删除对其他域控制器的引用
@@ -104,9 +104,9 @@ ms.locfileid: "74084586"
 从 Windows Server 2012 开始，[Active Directory 域服务 (AD DS) 中内置了额外的安全措施](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 如果底层虚拟机监控程序平台支持 VM-GenerationID，这些安全措施就可以防止虚拟化域控制器出现 USN 回退。 Azure 支持 VM-GenerationID。 因此，在 Azure 虚拟机上运行 Windows Server 2012 或更高版本的域控制器具有额外的安全防护措施。
 
 
-重置 VM-GenerationID时，AD DS 数据库的 InvocationID 值也会被重置。 除此之外，还放弃了 RID 池，将 sysvol 文件夹标记为非权威。 有关详细信息，请参阅 [Active Directory 域服务虚拟化简介](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全虚拟化 DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)。
+重置 VM-GenerationID时，AD DS 数据库的 InvocationID 值也会被重置。 此外，还会丢弃 RID 池，并将 sysvol 文件夹标记为非权威。 有关详细信息，请参阅 [Active Directory 域服务虚拟化简介](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全虚拟化 DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)。
 
-故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 尝试登录域控制器虚拟机时，这可能会导致严重延迟。
+故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 这可能会导致在登录域控制器虚拟机时出现*明显的延迟*。
 
 由于该域控制器仅用于测试故障转移，因此不需要实施虚拟化安全措施。 要确保域控制器虚拟机的 VM-GenerationID 值不改变，可在本地域控制器中将下述 DWORD 的值更改为 4：
 
@@ -144,7 +144,7 @@ ms.locfileid: "74084586"
 >
 >
 
-1. 在命令提示符处运行以下命令，检查 sysvol 文件夹和 NETLOGON 文件夹是否已共享：
+1. 在命令提示符下，运行以下命令，检查是否共享了 sysvol 文件夹和 NETLOGON 文件夹：
 
     `NET SHARE`
 
@@ -164,7 +164,7 @@ ms.locfileid: "74084586"
     * 虽然不推荐 [FRS 复制](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)，但如果使用了 FRS 复制，请按照步骤执行授权还原。 [使用 BurFlags 注册表项重新初始化文件复制服务](https://support.microsoft.com/kb/290762)中介绍了该过程。
 
         有关 BurFlags 的详细信息，请参阅博客文章 [D2 和 D4：它的作用是什么？](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)。
-    * 如果使用 DFSR 复制，请完成授权还原步骤。 [强制对 DFSR 复制的 sysvol 文件夹进行权威和非权威同步（如 FRS 的“D4/D2”）](https://support.microsoft.com/kb/2218556)中介绍了该过程。
+    * 如果使用 DFSR 复制，请完成授权还原步骤。 为[DFSR 复制的 sysvol 文件夹强制执行权威和非权威同步（如 FRS 的 "D4/D2"）](https://support.microsoft.com/kb/2218556)中介绍了此过程。
 
         还可以使用 PowerShell 函数。 有关详细信息，请参阅 [DFSR-SYSVOL 授权/非授权还原 PowerShell 函数](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)。
 

@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
 ms.openlocfilehash: b61a84f2b284177b7443be00efeea65e7eb8aaef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171081"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374825"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>归置资源以提高延迟
 
 在 Azure 中部署应用程序时，跨区域或可用性区域分配实例会产生网络延迟，这可能会影响应用程序的总体性能。 
 
 
-## <a name="proximity-placement-groups"></a>邻近位置组 
+## <a name="proximity-placement-groups"></a>邻近放置组 
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 

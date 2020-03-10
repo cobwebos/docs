@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997269"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78359863"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>复制到 SQL 数据库的单一数据库和共用数据库
 
@@ -28,7 +28,7 @@ ms.locfileid: "74997269"
 - Azure SQL 数据库必须是 SQL Server 发布服务器的推送订阅者。  
 - 不能将分发数据库和复制代理置于一个 Azure SQL 数据库上。  
 - 支持快照和单向事务复制。 不支持对等事务复制和合并复制。
-- Azure SQL 数据库托管实例上的公共预览版可以使用复制。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关详细信息，请参阅[通过 SQL 数据库托管实例进行复制](replication-with-sql-database-managed-instance.md)。
+- 复制适用于 Azure SQL 数据库托管实例上的公共预览版。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关详细信息，请参阅[通过 SQL 数据库托管实例进行复制](replication-with-sql-database-managed-instance.md)。
 
 ## <a name="versions"></a>版本  
 
@@ -54,7 +54,7 @@ ms.locfileid: "74997269"
 - SQL Server 上的单一发布可以支持 Azure SQL 数据库和 SQL Server（本地的以及 Azure 虚拟机中的 SQL Server）订阅服务器。  
 - 复制管理、监视和故障排除必须从本地 SQL Server 执行。  
 - 仅支持推送订阅 Azure SQL 数据库。  
-- 在适用于 SQL 数据库的 **sp_addsubscription** 中，仅 `@subscriber_type = 0` 受支持。  
+- 在适用于 SQL 数据库的 `@subscriber_type = 0`sp_addsubscription**中，仅** 受支持。  
 - Azure SQL 数据库不支持双向、即时、可更新或对等复制。
 
 ## <a name="replication-architecture"></a>复制体系结构  

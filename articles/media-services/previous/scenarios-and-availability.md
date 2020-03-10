@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920580"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366904"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -33,11 +33,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="overview"></a>概述
 
-### <a name="prerequisites"></a>必备条件
+### <a name="prerequisites"></a>先决条件
 
-要开始使用 Azure 媒体服务，应该具备以下条件：
+若要开始使用 Azure 媒体服务，你应该具备以下条件：
 
-* 一个 Azure 帐户。 如果没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
+* 一个 Azure 帐户。 如果你没有帐户，只需花费几分钟就能创建一个免费试用帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com)。
 * Azure 媒体服务帐户。 有关详细信息，请参阅[创建帐户](media-services-portal-create-account.md)。
 * 要从中流式传输内容的流式处理终结点必须处于“正在运行”状态。
 
@@ -59,7 +59,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 1. 将优质媒体文件上传到资产中。
 
-    建议向资产应用存储加密选项，以便在内容上传期间以及当内容在存储中处于静态时，为其提供保护。
+    建议向资产应用存储加密选项，以便在内容上载期间以及当内容在存储中处于静态时，为其提供保护。
 2. 编码为一组自适应比特率 MP4 文件。
 
     建议向输出资产应用存储加密选项，以便保护静态内容。
@@ -111,7 +111,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 3. 预览实时流。
 4. 通过常用流式处理协议（例如 MPEG DASH、Smooth、HLS）将内容直接传送给客户，或传送到内容分发网络 (CDN) 进行进一步分发。
 
-    -或-
+    \- 或 -
 
     记录和存储引入的内容，以便稍后进行流式处理（视频点播）。
 
@@ -137,11 +137,11 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 ## <a name="consuming-content"></a>使用内容
 
-Azure 媒体服务提供所需的工具，以便用户创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 
+Azure Media Services 提供你所需的工具，以便你创建适用于大多数平台的丰富、动态的客户端播放器应用程序，这些平台包括：iOS 设备、Android 设备、Windows、Windows Phone、Xbox 和机顶盒。 
 
 ## <a name="enabling-azure-cdn"></a>启用 Azure CDN
 
-媒体服务支持与 Azure CDN 集成。 有关如何启用 Azure CDN 的信息，请参阅 [如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
+Media Services 支持与 Azure CDN 集成。 有关如何启用 Azure CDN 的信息，请参阅 [如何在媒体服务帐户中管理流式处理终结点](media-services-portal-manage-streaming-endpoints.md)。
 
 ## <a id="scaling"></a>缩放媒体服务帐户
 
@@ -159,7 +159,7 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
     >RU 可用于并行化所有媒体处理，包括使用 Azure Media Indexer 为作业编制索引。 但是，与编码不同，索引作业使用更快的预留单位并不能更快地完成处理。
 
     有关详细信息，请参阅[缩放媒体处理](media-services-portal-scale-media-processing.md)。
-* 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
+* 也可以通过向媒体服务帐户添加存储帐户来缩放该帐户。 每个存储帐户大小限制为 500 TB。 若要在默认限制之外扩展存储，可选择将多个存储帐户附加到单个媒体服务帐户。 有关详细信息，请参阅[管理存储帐户](meda-services-managing-multiple-storage-accounts.md)。
 
 ## <a id="availability"></a> 媒体服务功能的跨数据中心可用性
 
@@ -179,8 +179,8 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 |名称|状态|数据中心
 |---|---|---|
-|Standard|GA|All|
-|Premium|GA|All|
+|标准|GA|全部|
+|高级|GA|全部|
 
 ### <a name="live-encoding"></a>实时编码
 
@@ -196,7 +196,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|All|
+|媒体编码器标准版|GA|全部|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -210,12 +210,12 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|All|
-|Azure 媒体索引器|GA|All|
-|Azure Media Motion Detector|预览|All|
-|Azure 媒体 OCR|预览|All|
-|Azure 媒体修订|GA|All|
-|Azure 媒体视频缩略图|预览|All|
+|Azure 媒体面部检测器|预览|全部|
+|Azure 媒体索引器|GA|全部|
+|Azure Media Motion Detector|预览|全部|
+|Azure 媒体 OCR|预览|全部|
+|Azure 媒体修订|GA|全部|
+|Azure 媒体视频缩略图|预览|全部|
 
 ### <a name="protection"></a>保护
 
@@ -225,10 +225,10 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |加密|状态|数据中心|
 |---|---|---| 
-|存储|GA|All|
-|AES-128 密钥|GA|All|
-|Fairplay|GA|All|
-|PlayReady|GA|All|
+|存储|GA|全部|
+|AES-128 密钥|GA|全部|
+|Fairplay|GA|全部|
+|PlayReady|GA|全部|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -251,7 +251,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和Media Encoder Premiu
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|All|
+|S1|GA|全部|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 

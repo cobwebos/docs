@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934984"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379193"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>使用托管标识对流分析进行 Azure Data Lake Storage Gen1 身份验证
 
@@ -178,7 +178,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 ## <a name="limitations"></a>限制
 此功能不支持以下功能：
 
-1. **多租户访问**：为给定流分析作业创建的服务主体将驻留在创建该作业的 Azure Active Directory 租户上，不能用于驻留在其他 Azure Active Directory 上的资源组织. 因此，你只能在 Azure 流分析作业所在 Azure Active Directory 租户中的 ADLS 第1代资源上使用 MSI。 
+1. **多租户访问**：为给定流分析作业创建的服务主体将驻留在创建该作业的 Azure Active Directory 租户上，不能用于驻留在不同 Azure Active Directory 租户上的资源。 因此，你只能在 Azure 流分析作业所在 Azure Active Directory 租户中的 ADLS 第1代资源上使用 MSI。 
 
 2. **[用户分配的标识](../active-directory/managed-identities-azure-resources/overview.md)** ：不受支持。 这意味着用户无法进入其流分析作业使用的服务主体。 服务主体由 Azure 流分析生成。
 

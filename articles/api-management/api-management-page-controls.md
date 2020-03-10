@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176599"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374471"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  
@@ -52,15 +52,15 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![应用&#45;操作控制](./media/api-management-page-controls/APIM-app-actions-control.png "APIM 应用程序-操作控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
   
-|参数|描述|  
+|参数|说明|  
 |---------------|-----------------|  
 |appId|应用程序的 ID。|  
   
@@ -74,13 +74,13 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![基本&#45;登录控件](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM 基本-登录控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <basic-SignIn></basic-SignIn>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
@@ -93,13 +93,13 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![分页控件](./media/api-management-page-controls/APIM-paging-control.png "APIM 分页控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <paging-control></paging-control>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
@@ -116,13 +116,13 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![提供程序控件](./media/api-management-page-controls/APIM-providers-control.png "APIM 提供程序控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <providers></providers>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
@@ -135,13 +135,13 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![搜索控件](./media/api-management-page-controls/APIM-search-control.png "APIM 搜索控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <search-control></search-control>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
@@ -156,13 +156,13 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  ![注册&#45;控制](./media/api-management-page-controls/APIM-sign-up-control.png "APIM 注册控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <sign-up></sign-up>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
@@ -175,26 +175,26 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
  !["&#45;订阅" 按钮控件](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM "订阅" 按钮控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <subscribe-button></subscribe-button>  
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
  无。  
   
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
  `subscribe-button` 控件可用于以下开发人员门户模板：  
   
--   [产品](api-management-product-templates.md#Product)  
+-   [Product](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a> subscription-cancel  
  `subscription-cancel` 控件提供了一个控件，用于在开发人员门户的用户配置文件页中取消产品订阅。  
   
  ![订阅&#45;取消控制](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM 订阅-取消控件")  
   
-### <a name="usage"></a>使用情况  
+### <a name="usage"></a>用法  
   
 ```xml  
 <subscription-cancel params="{ subscriptionId: '{{subscription.id}}', cancelUrl: '{{subscription.cancelUrl}}' }">  
@@ -202,9 +202,9 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 ```  
   
-### <a name="parameters"></a>parameters  
+### <a name="parameters"></a>参数  
   
-|参数|描述|  
+|参数|说明|  
 |---------------|-----------------|  
 |subscriptionId|要取消的订阅的 ID。|  
 |cancelUrl|订阅取消 URL。|  
@@ -212,7 +212,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
 ### <a name="developer-portal-templates"></a>开发人员门户模板  
  `subscription-cancel` 控件可用于以下开发人员门户模板：  
   
--   [产品](api-management-product-templates.md#Product)
+-   [Product](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>后续步骤
 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](api-management-developer-portal-templates.md)。

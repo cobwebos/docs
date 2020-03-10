@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376678"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 权限管理中更改访问包的请求和批准设置
 
@@ -35,13 +35,13 @@ ms.locfileid: "76897615"
 
 ![访问包中的多个策略](./media/entitlement-management-access-package-request-policy/access-package-policy.png)
 
-| 方案 | 策略数 |
+| 场景 | 策略数 |
 | --- | --- |
-| 我想让我的目录中的所有用户都具有相同的访问包请求和批准设置 | 一种 |
-| 我想让某些连接的组织中的所有用户都能够请求访问包 | 一种 |
-| 我想允许目录中的用户以及我的目录以外的用户请求访问包 | 多个 |
-| 我想为某些用户指定不同的审批设置 | 多个 |
-| 我想让某些用户访问包分配使其过期，而其他用户可以扩展其访问权限 | 多个 |
+| 我想让我的目录中的所有用户都具有相同的访问包请求和批准设置 | 一台 |
+| 我想让某些连接的组织中的所有用户都能够请求访问包 | 一台 |
+| 我想允许目录中的用户以及我的目录以外的用户请求访问包 | 多种 |
+| 我想为某些用户指定不同的审批设置 | 多种 |
+| 我想让某些用户访问包分配使其过期，而其他用户可以扩展其访问权限 | 多种 |
 
 有关应用多个策略时使用的优先级逻辑的信息，请参阅[多个策略](entitlement-management-troubleshoot.md#multiple-policies
 )。

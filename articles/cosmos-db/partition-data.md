@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754908"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78371585"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分区和水平缩放
 
-本文介绍 Azure Cosmos DB 中的物理和逻辑分区。 它还讨论了缩放和分区的最佳实践。 
+本文介绍 Azure Cosmos DB 中的物理和逻辑分区。 还讨论了缩放和分区的最佳做法。 
 
 ## <a name="logical-partitions"></a>逻辑分区
 
-逻辑分区包含一组具有相同分区键的项。 例如，在所有项都包含 `City` 属性的容器中，可以将 `City` 用作容器的分区键。 具有特定值 `City` 的项的组，如 `London`、`Paris` 和 `NYC`，构成不同的逻辑分区。 删除基础数据时，不必担心删除分区。
+逻辑分区包含一组具有相同分区键的项。 例如，在所有项都包含 `City` 属性的容器中，可以将 `City` 用作容器的分区键。 具有特定值 `City`的项的组，如 `London`、`Paris`和 `NYC`，构成不同的逻辑分区。 删除基础数据时，不必担心删除分区。
 
 在 Azure Cosmos DB 中，容器是基本的缩放单元。 添加到容器中的数据以及在容器上预配的吞吐量会自动（水平）分区在一组逻辑分区中。 数据和吞吐量根据你为 Azure Cosmos 容器指定的分区键进行分区。 有关详细信息，请参阅[创建 Azure Cosmos 容器](how-to-create-container.md)。
 
