@@ -4,13 +4,13 @@ description: 了解如何创建在自定义 Linux 映像中运行的 Azure Funct
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482354"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78355832"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -33,7 +33,7 @@ ms.locfileid: "77482354"
 
 可以在运行 Windows、Mac OS 或 Linux 的任何计算机上按照本教程所述进行操作。 完成本教程会在你的 Azure 帐户扣取几美元的费用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 或更高版本
@@ -70,7 +70,7 @@ ms.locfileid: "77482354"
 
 1. 在终端中或命令提示符下，在适当的位置创建用于本教程的文件夹，然后导航到该文件夹。
 
-1. 按照有关[创建和激活虚拟环境](functions-create-first-function-python.md#create-and-activate-a-virtual-environment)的说明创建用于本教程的虚拟环境。
+1. 按照有关[创建和激活虚拟环境](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv)的说明创建用于本教程的虚拟环境。
 
 1. 根据所选的语言运行以下命令，在某个文件夹中创建名为 `LocalFunctionsProject` 的函数应用项目。 `--docker` 选项生成该项目的 `Dockerfile`，其中定义了适合用于 Azure Functions 和所选运行时的自定义容器。
 
@@ -339,8 +339,9 @@ Azure 上的函数应用管理托管计划中函数的执行。 在本部分，�
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    ```
     
-1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+1. 使用 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) 命令将此设置添加到函数应用。 在下面的命令中，将 `<app_name>` 替换为函数应用的名称，并将 `<connection_string>` 替换为上一步中的连接字符串（以“DefaultEndpointProtocol=”开头的长编码字符串）：
  
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>

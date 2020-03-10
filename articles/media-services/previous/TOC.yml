@@ -393,6 +393,7 @@
           href: media-services-deliver-asset-download.md
         - name: 故障转移流式处理方案
           href: media-services-implement-failover.md
+          displayName: 'HA, high availability'
     - name: 使用
       items:
         - name: 使用现有播放器播放媒体

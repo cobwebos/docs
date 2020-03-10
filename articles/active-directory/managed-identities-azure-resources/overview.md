@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 47bd3b5da79bdb9c7dca75d521aa39d3652ab1ab
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365055"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945498"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 下图演示了托管服务标识如何与 Azure 虚拟机 (VM) 协同工作：
 
-![托管服务标识和 Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
+![托管服务标识和 Azure VM](media/overview/data-flow.png)
 
 |  properties    | 系统分配的托管标识 | 用户分配的托管标识 |
 |------|----------------------------------|--------------------------------|
