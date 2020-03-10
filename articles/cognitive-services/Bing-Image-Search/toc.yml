@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK 中 IsInRole 中的声明
       items:
-        - name: '使用 C#'
-          href: image-search-sdk-quickstart.md
-        - name: 使用 Node.js
-          href: image-search-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: image-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: image-sdk-java-quickstart.md
+        - name: 必应图像搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 构建图像搜索 Web 应用程序
@@ -44,7 +38,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 获取图像见解
       href: image-insights.md
@@ -66,7 +60,7 @@
       href: concepts/bing-image-search-get-images.md
     - name: 发送和使用搜索查询
       href: concepts/bing-image-search-sending-queries.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应图像搜索 API v7
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference'

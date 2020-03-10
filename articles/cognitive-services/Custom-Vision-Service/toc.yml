@@ -57,6 +57,8 @@
       href: test-your-model.md
     - name: 改进分类器
       href: getting-started-improving-your-classifier.md
+    - name: 选择域
+      href: select-domain.md
     - name: 使用预测 API
       href: use-prediction-api.md
     - name: 使用智能标记工具

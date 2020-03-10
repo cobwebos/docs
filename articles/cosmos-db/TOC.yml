@@ -89,7 +89,7 @@
       href: relational-nosql.md
     - name: 全球分布
       items:
-        - name: 概述
+        - name: 全球分布概述
           displayName: 'replication, replicate, geo distribution'
           href: distribute-data-globally.md
         - name: 一致性级别
@@ -118,7 +118,7 @@
           href: globally-distributed-transactional-analytical-storage.md
     - name: 分区
       items:
-        - name: 概述
+        - name: 分区概述
           href: partitioning-overview.md
         - name: 分区和水平扩展
           href: partition-data.md
@@ -461,7 +461,7 @@
           href: modeling-data.md
         - name: 索引
           items:
-            - name: 概述
+            - name: 索引概述
               displayName: 'range, spatial'
               href: index-overview.md
             - name: 索引策略
@@ -476,7 +476,7 @@
           href: database-transactions-optimistic-concurrency.md
     - name: 更改源
       items:
-        - name: 概述
+        - name: 更改源概述
           href: change-feed.md
         - name: 读取更改源
           href: read-change-feed.md
@@ -530,7 +530,7 @@
           href: cosmos-db-reserved-capacity.md
     - name: 安全性
       items:
-        - name: 概述
+        - name: 安全概述
           href: database-security.md
         - name: 数据加密
           href: database-encryption-at-rest.md
@@ -564,12 +564,12 @@
   items:
     - name: Cassandra API
       items:
-        - name: 介绍
-          href: cassandra-introduction.md
-        - name: 线路协议支持
-          href: cassandra-support.md
-        - name: 弹性缩放
-          href: manage-scale-cassandra.md
+        - name: 概述
+          items:
+            - name: 什么是 Cosmos DB 中的 Cassandra API？
+              href: cassandra-introduction.md
+            - name: 线路协议支持
+              href: cassandra-support.md
         - name: 快速入门
           items:
             - name: .NET
@@ -591,6 +591,10 @@
             - name: 4 - 迁移数据
               displayName: import
               href: cassandra-import-data.md
+        - name: 概念
+          items:
+            - name: 弹性缩放
+              href: manage-scale-cassandra.md
         - name: 操作方法指南
           items:
             - name: 更改源
@@ -628,12 +632,14 @@
               href: cli-samples-cassandra.md
     - name: MongoDB API
       items:
-        - name: 介绍
-          href: mongodb-introduction.md
-        - name: 线路协议支持 (3.2)
-          href: mongodb-feature-support.md
-        - name: 线路协议支持 (3.6)
-          href: mongodb-feature-support-36.md
+        - name: 概述
+          items:
+            - name: 什么是 Cosmos DB 中的 MongoDB API？
+              href: mongodb-introduction.md
+            - name: 线路协议支持 (3.2)
+              href: mongodb-feature-support.md
+            - name: 线路协议支持 (3.6)
+              href: mongodb-feature-support-36.md
         - name: 快速入门
           items:
             - name: .NET
@@ -719,10 +725,12 @@
     - name: Gremlin API
       displayName: 'graph, graph database'
       items:
-        - name: 介绍
-          href: graph-introduction.md
-        - name: 线路协议支持
-          href: gremlin-support.md
+        - name: 概述
+          items:
+            - name: 什么是 Cosmos DB 中的 Germlin API？
+              href: graph-introduction.md
+            - name: 线路协议支持
+              href: gremlin-support.md
         - name: 快速入门
           items:
             - name: Gremlin 控制台
@@ -778,8 +786,10 @@
               href: cli-samples-gremlin.md
     - name: 表 API
       items:
-        - name: 介绍
-          href: table-introduction.md
+        - name: 概述
+          items:
+            - name: 什么是 Cosmos DB 中的表 API？
+              href: table-introduction.md
         - name: 快速入门
           items:
             - name: .NET
@@ -849,10 +859,14 @@
               href: /rest/api/storageservices/table-service-rest-api
     - name: Etcd API
       items:
-        - name: 介绍
-          href: etcd-api-introduction.md
-        - name: 将 Azure Kubernetes 与 Azure Cosmos DB 配合使用
-          href: bootstrap-kubernetes-cluster.md
+        - name: 概述
+          items:
+            - name: 什么是 Cosmos DB 中的 Etcd API？
+              href: etcd-api-introduction.md
+        - name: 操作方法指南
+          items:
+            - name: 将 Azure Kubernetes 与 Azure Cosmos DB 配合使用
+              href: bootstrap-kubernetes-cluster.md
 - name: 操作方法指南
   items:
     - name: 使用 Azure Cosmos 帐户

@@ -1,24 +1,28 @@
 ---
-title: Azure 计划程序文档 - 教程和 API 参考 | Microsoft 文档
-description: 了解如何使用计划程序来计划及调用重复性应用程序操作和例行维护等作业。 教程、API 参考和其他资源。
+title: Azure 计划程序文档
+description: 在云中创建、计划并运行自动化作业，如定期应用程序操作和例行维护
 services: scheduler
-author: carmonmills
-manager: carmonm
-layout: LandingPage
 ms.service: scheduler
+author: derek1ee
+ms.author: estfan
+layout: LandingPage
 ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carmonm
-ms.openlocfilehash: ddf335d0c2b165ae98feab0b42e60527f87de59c
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 02/23/2020
+ms.openlocfilehash: 026d4590160d8292fed5e1a678715ac65fdbd859
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610333"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898611"
 ---
 # <a name="scheduler-documentation"></a>计划程序文档
 
-了解如何使用计划程序在云中计划和自动调用重复性作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
+> [!IMPORTANT]
+> [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)将替代[即将停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 计划程序。 若要继续使用在计划程序中设置的作业，请尽快[迁移到 Azure 逻辑应用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+>
+> 计划程序在 Azure 门户中不再可用，但 [REST API](/rest/api/scheduler) 和 [Azure 计划程序 PowerShell cmdlet](scheduler-powershell-reference.md) 目前仍可用，以便你可以管理作业和作业集合。
+
+了解如何在云中创建、计划、运行、管理和更新自动化定期作业。 教程、API 参考和其他文档介绍了如何计划及监视重复性应用程序操作和例行维护等作业。
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -33,6 +37,24 @@ ms.locfileid: "68610333"
                     </div>
                     <div class="cardText">
                         <h3>了解计划程序</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/scheduler/migrate-from-scheduler-to-logic-apps">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>从 Azure 计划程序迁移到 Azure 逻辑应用</h3>
                     </div>
                 </div>
             </div>
@@ -57,29 +79,11 @@ ms.locfileid: "68610333"
         </div>
         </a>
     </li>
-    <li>
-        <a href="/azure/scheduler/scheduler-get-started-portal">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/get-started.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Azure 计划程序入门</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
 </ul>
 
 ---
 
-<h2>引用</h2>
+<h2>参考</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">

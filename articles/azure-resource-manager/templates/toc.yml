@@ -145,10 +145,6 @@
             - name: Outputs
               displayName: 'iteration,copy'
               href: copy-outputs.md
-        - name: 订阅级资源
-          href: deploy-to-subscription.md
-        - name: 管理组级资源
-          href: deploy-to-management-group.md
     - name: 使用创作工具
       items:
         - name: VS Code
@@ -182,7 +178,15 @@
           href: rollback-on-error.md
         - name: 使用 SAS 令牌保护模板
           href: secure-template-with-sas-token.md
-        - name: 部署到多个资源组或订阅
+    - name: 作用域内部署
+      items:
+        - name: 订阅
+          href: deploy-to-subscription.md
+        - name: 管理组
+          href: deploy-to-management-group.md
+        - name: 租户
+          href: deploy-to-tenant.md
+        - name: 多个资源组或订阅
           href: cross-resource-group-deployment.md
     - name: 提供参数
       items:
