@@ -10,11 +10,11 @@ ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187550"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380281"
 ---
 ::: zone target="docs"
 
@@ -35,13 +35,13 @@ ms.locfileid: "77187550"
 在本教程中，你将了解如下主题：
 
 > [!div class="checklist"]
-> * 必备条件
+> * 先决条件
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
 > * 验证 Azure 中的数据上传
 > * 从 Data Box 中擦除数据
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 在开始之前，请确保：
 
@@ -77,7 +77,7 @@ ms.locfileid: "77187550"
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[在美国、加拿大和欧洲](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[在美国、加拿大和欧洲](#tab/in-us-canada-europe)
 
 如果在美国、加拿大或欧洲退回设备，请执行以下步骤。
 
@@ -114,7 +114,7 @@ ms.locfileid: "77187550"
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[在澳大利亚](#tab/in-australia)
+## <a name="in-australia"></a>[在澳大利亚](#tab/in-australia)
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 若要在澳大利亚寄送，请执行以下步骤。
 
@@ -143,7 +143,7 @@ ms.locfileid: "77187550"
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[在日本](#tab/in-japan) 
+## <a name="in-japan"></a>[在日本](#tab/in-japan) 
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 关闭设备电源并拔下电缆。
@@ -191,7 +191,7 @@ ms.locfileid: "77187550"
 
 ::: zone-end
 
-## <a name="in-singaporetabin-singapore"></a>[在新加坡](#tab/in-singapore) 
+## <a name="in-singapore"></a>[在新加坡](#tab/in-singapore) 
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 记下跟踪编号（在 Data Box 本地 Web UI 的“准备交付”页面上显示为参考编号）。 这在“准备交付”步骤成功完成后可用。 从此页面上下载发货标签并粘贴在包装箱上。 
@@ -273,7 +273,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managedtabin-selfmanaged"></a>[自托管](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[自托管](#tab/in-selfmanaged) 
 
 如果在日本、新加坡、韩国和西欧使用 Data Box，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
