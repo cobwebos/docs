@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315768"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391822"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 
@@ -35,9 +35,9 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 >    - [适用于 Visual Studio 2017 和2019](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
 >    - [对于 Visual Studio 2013 和 Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=49504)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* **Visual Studio**：除 Express 之外的所有版本都受支持。
+* Visual Studio：支持除 Express 以外的所有版本。
 
   * Visual Studio 2019
   * Visual Studio 2017
@@ -55,7 +55,7 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 1. 打开 Visual Studio。
 
-1. 通过选择 "**查看** > **服务器资源管理器**" 打开**服务器资源管理器**。
+1. 通过选择 "**查看** > **服务器资源管理器**打开**服务器资源管理器**。
 
 1. 右键单击 " **Azure**"，然后选择 "**连接到 Microsoft Azure 订阅**"。 在 "**登录到你的帐户**" 中，按照说明进行操作。
 

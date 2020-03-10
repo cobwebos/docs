@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 179a6181efdc6c31d50d3b5b3f708fd9149dadd3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438662"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384714"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>教程：准备部署 Azure Data Box Edge  
 
@@ -66,7 +66,7 @@ ms.locfileid: "75438662"
 在部署物理设备之前，请确保：
 
 - 你已经查看配送包中包含的安全信息。
-- 在数据中心的标准 19 英寸机架中提供一个 1U 插槽用于安装设备。
+- 你的数据中心内的标准19个机架中提供了一个1U 槽，用于安装设备的机架。
 - 将设备安全放置在平坦、稳定的水平工作台面上。
 - 用于安装设备的位置具有来自独立源的标准交流电，或具有带不间断电源 (UPS) 的机架电源分配单元 (PDU)。
 - 有权访问物理设备。
@@ -94,47 +94,47 @@ ms.locfileid: "75438662"
     - URL [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
     - 或者，通过 URL [https://portal.azure.us](https://portal.azure.us) 登录到 Azure 政府版门户。 有关更多详细信息，请参阅[使用门户连接到 Azure 政府版](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)。
 
-2. 在左窗格中，选择“+ 创建资源”  。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。  选择“创建”  。
-3. 选择要用于 Data Box Edge 设备的订阅。 选择要部署 Data Box Edge 资源的区域。 在此版本中，可以选择“美国东部”、“东南亚”和“西欧”。 
+2. 在左窗格中，选择“+ 创建资源”。 搜索 **Data Box Edge/Data Box Gateway**。 选择“Data Box Edge/Data Box Gateway”。 选择“创建”。
+3. 选择要用于 Data Box Edge 设备的订阅。 选择要部署 Data Box Edge 资源的区域。 有关 Azure Stack Edge 资源可用的所有区域的列表，请参阅[按区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
 
-    选择离要部署设备的地理区域最近的位置。 该区域只存储用于设备管理的元数据。 实际数据可以存储在任何存储帐户中。 
+    选择离要部署设备的地理区域最近的位置。 该区域只存储用于设备管理的元数据。 实际数据可以存储在任何存储帐户中。
     
-    在“Data Box Edge”选项中，选择“创建”   。
+    在“Data Box Edge”选项中，选择“创建”。
 
     ![搜索 Data Box Edge 服务](media/data-box-edge-deploy-prep/data-box-edge-sku.png)
 
-3. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。  
+3. 在“基本信息”选项卡上，输入或选择以下“项目详细信息”。
     
     |设置  |值  |
     |---------|---------|
     |订阅    |系统会根据前面所做的选择自动填充此字段。 订阅将链接到你的计费帐户。 |
     |资源组  |选择现有的组，或创建新组。<br>详细了解 [Azure 资源组](../azure-resource-manager/management/overview.md)。     |
 
-4. 输入或选择以下“实例详细信息”。 
+4. 输入或选择以下“实例详细信息”。
 
     |设置  |值  |
     |---------|---------|
     |名称   | 用于标识资源的友好名称。<br>该名称的长度必须介于 2 和 50 个字符之间，只能包含字母、数字和连字符。<br> 名称以字母或数字开头和结尾。        |
-    |区域     |在此版本中，可以选择“美国东部”、“东南亚”和“西欧”来部署资源。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
+    |区域     |有关 Azure Stack Edge 资源可用的所有区域的列表，请参阅[按区域提供的 Azure 产品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure 政府版，则可选择 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中显示的所有可用的政府区域。<br> 选择离要部署设备的地理区域最近的位置。|
 
     ![项目和实例详细信息](media/data-box-edge-deploy-prep/data-box-edge-resource.png)
 
-5. 在完成时选择“下一步:  送货地址”。
+5. 选择 "**下一步：送货地址**"。
 
-    - 如果已经有一个设备，请选择与“我有 Data Box Edge 设备”对应的组合框。 
+    - 如果已经有一个设备，请选择与“我有 Data Box Edge 设备”对应的组合框。
     - 如果这是你订购的新设备，请输入联系人姓名、公司、寄送设备的地址，以及联系人信息。
 
     ![新设备的送货地址](media/data-box-edge-deploy-prep/data-box-edge-resource1.png)
 
-6. 在完成时选择“下一步:  查看 + 创建”。
+6. 选择**下一步：查看 + 创建**。
 
-7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。    选择与“我已经查看隐私条款”对应的组合框。 
+7. 在“查看 + 创建”选项卡上，查看“定价详细信息”、“使用条款”和资源的详细信息。 选择与“我已经查看隐私条款”对应的组合框。
 
     ![查看 Data Box Edge 资源详细信息和隐私条款](media/data-box-edge-deploy-prep/data-box-edge-resource2.png)
 
-8. 选择“创建”  。
+8. 选择“创建”。
 
-创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。 
+创建资源需要几分钟时间。 成功创建并部署资源后，你会收到通知。 选择“转到资源”。
 
 ![转到 Data Box Edge 资源](media/data-box-edge-deploy-prep/data-box-edge-resource3.png)
 
@@ -146,11 +146,11 @@ ms.locfileid: "75438662"
 
 Data Box Edge 资源启动并运行后，需要获取激活密钥。 此密钥用于激活 Data Box Edge 设备并将其连接到资源。 如果你仍在 Azure 门户中，则现在可以获取此密钥。
 
-1. 选择所创建的资源。 选择“概述”，然后选择“设备设置”   。
+1. 选择所创建的资源。 选择“概述”，然后选择“设备设置”。
 
     ![选择“设备设置”](media/data-box-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。   选择复制图标复制密钥并将其保存供日后使用。
+2. 在“激活”磁贴上，选择“生成密钥”以创建激活密钥。 选择复制图标复制密钥并将其保存供日后使用。
 
     ![获取激活密钥](media/data-box-edge-deploy-prep/get-activation-key.png)
 

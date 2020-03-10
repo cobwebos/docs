@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76835158"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388796"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure 的 Windows 虚拟机上运行的 SQL Server 常见问题解答
 
@@ -46,7 +46,7 @@ ms.locfileid: "76835158"
 
 1. **是否可以从库中删除 SQL Server 虚拟机映像？**
 
-   可以。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
+   是的。 Azure 只为每个主要版本维护一个映像。 例如，发布新的 SQL Server Service Pack 时，Azure 会将新映像添加到该 Service Pack 的库。 先前 Service Pack 的 SQL Server 映像将立即从 Azure 门户中删除。 但是，在接下来的三个月，仍可以通过 PowerShell 预配该映像。 三个月之后，先前的 Service Pack 映像不再可用。 如果 SQL Server 版本由于生命周期结束而不受支持，则也会应用此删除策略。
 
 
 1. **是否可以部署 Azure 门户中不可见的 SQL Server 的旧映像？**
@@ -63,7 +63,7 @@ ms.locfileid: "76835158"
 
 1. **是否可以设置虚拟机库中未显示的配置（例如 Windows 2008 R2 + SQL Server 2012）？**
 
-   不。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 但是，你可以向其部署 Windows VM 和自行安装 SQL Server。 然后，必须向[SQL Server VM 资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) ，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 
+   不是。 对于包含 SQL Server 的虚拟机图库映像，必须通过 Azure 门户或 [PowerShell](virtual-machines-windows-ps-sql-create.md) 选择提供的某个映像。 但是，你可以向其部署 Windows VM 和自行安装 SQL Server。 然后，必须向[SQL Server VM 资源提供程序注册你的 SQL Server VM](virtual-machines-windows-sql-register-with-resource-provider.md) ，以便在门户中管理 SQL Server VM，并使用自动修补和自动备份等功能。 
 
 
 ## <a name="creation"></a>创建
@@ -76,7 +76,7 @@ ms.locfileid: "76835158"
 
    首先，请创建装有 SQL Server 实例的 Azure 虚拟机。 然后将本地数据库迁转到该实例。 有关数据迁移策略，请参阅[将 SQL Server 数据库迁移到 Azure VM 中的 SQL Server](virtual-machines-windows-migrate-sql.md)。
 
-## <a name="licensing"></a>许可
+## <a name="licensing"></a>授权
 
 1. **如何在 Azure VM 上安装 SQL Server 的许可版本？**
 
@@ -84,19 +84,19 @@ ms.locfileid: "76835158"
 
 1. **如果已通过即用即付库映像之一创建了 VM，是否可以将该 VM 更改为使用自己的 SQL Server 许可证？**
 
-   可以。 可以通过启用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)轻松地将即用即付（PAYG）库图像切换为自带许可证（BYOL）。  有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 目前，此功能仅面向公有云客户提供。
+   是的。 可以通过启用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)轻松地将即用即付（PAYG）库图像切换为自带许可证（BYOL）。  有关详细信息，请参阅[如何更改 SQL Server VM 的许可模型](virtual-machines-windows-sql-ahb.md)。 目前，此功能仅面向公有云客户提供。
 
 1. **切换许可模型是否需要将 SQL Server 停机？**
 
-   不。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要向 SQL Server VM 资源提供程序注册你的 SQL Server VM，则[Sql iaas 扩展](virtual-machines-windows-sql-server-agent-extension.md)为必备组件，并且在_完整_模式下安装 sql iaas 扩展会重启 SQL Server 服务。 同样，如果需要安装 SQL IaaS 扩展，则可以在_轻型_模式下安装它以实现有限的功能，或在维护时段内以_完全_模式安装。 在_轻型_模式下安装的 SQL IaaS 扩展可随时升级到_完整_模式，但需要重新启动 SQL Server 服务。 
+   不是。 [更改许可模型](virtual-machines-windows-sql-ahb.md)不需将 SQL Server 停机，因为更改会立即生效，不需重启 VM。 但是，若要向 SQL Server VM 资源提供程序注册你的 SQL Server VM，则[Sql iaas 扩展](virtual-machines-windows-sql-server-agent-extension.md)为必备组件，并且在_完整_模式下安装 sql iaas 扩展会重启 SQL Server 服务。 同样，如果需要安装 SQL IaaS 扩展，则可以在_轻型_模式下安装它以实现有限的功能，或在维护时段内以_完全_模式安装。 在_轻型_模式下安装的 SQL IaaS 扩展可随时升级到_完整_模式，但需要重新启动 SQL Server 服务。 
    
 1. **是否可以在使用经典模型部署的 SQL Server VM 上切换许可模型？**
 
-   不。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 Azure 资源管理器型号，并向 SQL Server VM 资源提供程序进行注册。 将 VM 注册到 SQL Server VM 资源提供程序后，会在 VM 上提供授权模型更改。
+   不是。 在经典 VM 上不支持更改许可模式。 可以将 VM 迁移到 Azure 资源管理器型号，并向 SQL Server VM 资源提供程序进行注册。 将 VM 注册到 SQL Server VM 资源提供程序后，会在 VM 上提供授权模型更改。
 
 1. **是否可以使用 Azure 门户来管理同一 VM 上的多个实例？**
 
-   不。 门户管理是 SQL Server VM 资源提供程序提供的一项功能，它依赖于 SQL Server IaaS 代理扩展。 同样，对资源提供程序的限制同样适用于扩展。 只要正确配置，门户就只能管理一个默认实例或一个命名实例。 有关这些限制的详细信息，请参阅[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 
+   不是。 门户管理是 SQL Server VM 资源提供程序提供的一项功能，它依赖于 SQL Server IaaS 代理扩展。 同样，对资源提供程序的限制同样适用于扩展。 只要正确配置，门户就只能管理一个默认实例或一个命名实例。 有关这些限制的详细信息，请参阅[SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 
 
 1. **CSP 订阅是否能够激活 Azure 混合权益？**
 
@@ -130,7 +130,7 @@ ms.locfileid: "76835158"
 
 1. **是否会向新的 SQL Server VM 资源提供程序注册我的 VM 带来额外的费用？**
 
-   不。 SQL Server VM 的资源提供程序只为 Azure VM 上的 SQL Server 启用了额外的可管理性，无需支付额外费用。 
+   不是。 SQL Server VM 的资源提供程序只为 Azure VM 上的 SQL Server 启用了额外的可管理性，无需支付额外费用。 
 
 1. **SQL Server VM 的资源提供程序是否适用于所有客户？**
  
@@ -146,7 +146,7 @@ ms.locfileid: "76835158"
 
 1. **是否可以向 SQL Server VM 资源提供程序注册自行部署 SQL Server Vm？**
 
-    可以。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，无法将自部署 SQL Server VM 转换为即用即付。
+    是的。 如果从自己的媒体部署 SQL Server，并安装 SQL IaaS 扩展，则可将 SQL Server VM 注册到资源提供程序，以便获取 SQL IaaS 扩展提供的可管理性权益。 但是，无法将自部署 SQL Server VM 转换为即用即付。
 
 
    
@@ -156,7 +156,7 @@ ms.locfileid: "76835158"
 
 1. **能否在同一 VM 上安装 SQL Server 的第二个实例？是否可以更改默认实例的已安装功能？**
 
-   可以。 SQL Server 安装媒体位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能（例如自动备份、自动修补和 Azure Key Vault 集成）仅针对默认实例或已正确配置的命名实例进行操作（请参阅问题3）。 
+   是的。 SQL Server 安装媒体位于 **C** 驱动器上的某个文件夹中。 可从该位置运行 **Setup.exe** 添加新的 SQL Server 实例，或更改计算机上 SQL Server 的其他已安装功能。 请注意，某些功能（例如自动备份、自动修补和 Azure Key Vault 集成）仅针对默认实例或已正确配置的命名实例进行操作（请参阅问题3）。 
 
 1. **是否可以卸载 SQL Server 的默认实例？**
 
@@ -190,7 +190,7 @@ ms.locfileid: "76835158"
 
 1. **向 SQL Server VM 资源提供程序注册后，能否升级 SQL Server 2008/2008 R2 实例？**
 
-   可以。 你可以使用任何安装媒体来升级 SQL Server 的版本和版本，然后从_无代理_[升级到](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)_完整_版本。 这样做将使你能够访问 SQL IaaS 扩展的所有优点，例如门户可管理性、自动备份和自动修补。 
+   是的。 你可以使用任何安装媒体来升级 SQL Server 的版本和版本，然后从_无代理_[升级到](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)_完整_版本。 这样做将使你能够访问 SQL IaaS 扩展的所有优点，例如门户可管理性、自动备份和自动修补。 
 
 1. **如何获取 SQL Server 2008 和 SQL Server 2008 R2 实例支持的免费扩展安全更新？**
 
@@ -202,7 +202,7 @@ ms.locfileid: "76835158"
 
 1. **Azure Vm 是否支持 SQL Server 故障转移群集实例（FCI）？**
 
-   可以。 可以使用[高级文件共享（PFS）](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)或存储[空间直通（S2D）](virtual-machines-windows-portal-sql-create-failover-cluster.md)为存储子系统安装故障转移群集实例。 高级文件共享提供可满足多个工作负荷需求的 IOPS 和吞吐量容量。 对于 IO 密集型工作负荷，请考虑使用存储空间直通（基于托管高级或 hyper-v）。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
+   是的。 可以使用[高级文件共享（PFS）](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md)或存储[空间直通（S2D）](virtual-machines-windows-portal-sql-create-failover-cluster.md)为存储子系统安装故障转移群集实例。 高级文件共享提供可满足多个工作负荷需求的 IOPS 和吞吐量容量。 对于 IO 密集型工作负荷，请考虑使用存储空间直通（基于托管高级或 hyper-v）。 或者，可使用第三方群集或存储解决方案，如 [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)中所述。
 
    > [!IMPORTANT]
    > 目前，Azure 上的 SQL Server FCI 不支持_完整_ [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 建议从参与 FCI 的 Vm 中卸载_完全_扩展，并改为在_轻型_模式下安装扩展。 此扩展插件支持功能，如自动备份和修补功能，以及 SQL Server 的一些门户功能。 卸载_完整_代理后，这些功能对 SQL Server 的 vm 将不起作用。
@@ -217,7 +217,7 @@ ms.locfileid: "76835158"
 
 1. **SQL Server Vm 上是否支持 MSDTC 的分布式事务？**
    
-    可以。 SQL Server 2016 SP2 及更高版本支持本地 DTC。 但是，在使用 Always On 可用性组时，必须对应用程序进行测试，因为故障转移过程中正在进行的事务将失败，并且必须重试。 群集 DTC 从 Windows Server 2019 开始使用。 
+    是的。 SQL Server 2016 SP2 及更高版本支持本地 DTC。 但是，在使用 Always On 可用性组时，必须对应用程序进行测试，因为故障转移过程中正在进行的事务将失败，并且必须重试。 群集 DTC 从 Windows Server 2019 开始使用。 
 
 ## <a name="resources"></a>资源
 

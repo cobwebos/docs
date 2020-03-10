@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: a9de9435c0e2fb2b67733a995ff412978ea02d89
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 711e961bd5eb1607e2e6f11b0b5762423d78c0e7
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250296"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78898761"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 本文详细介绍了可在 Azure Cosmos DB SQL 查询中使用的关键字。
@@ -108,7 +108,7 @@ FROM f
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
 
-## <a name="in"></a>中
+## <a name="in"></a>IN
 
 使用 IN 关键字检查指定的值是否与列表中的任何值匹配。 例如，下面的查询将返回 `id` `WakefieldFamily` 或 `AndersenFamily`的所有家族项。
 
@@ -126,7 +126,9 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 为[循环访问 JSON 数组](sql-query-object-array.md#Iteration)提供了支持，并通过 FROM source 中的 in 关键字添加了一个新构造。 
+SQL API 为[循环访问 JSON 数组](sql-query-object-array.md#Iteration)提供了支持，并通过 FROM source 中的 in 关键字添加了一个新构造。
+
+如果在 `IN` 筛选器中包含分区键，则查询将自动仅筛选相关的分区。
 
 ## <a name="top"></a>返回页首
 

@@ -10,15 +10,15 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896008"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395132"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Storm 进行故障排除
 
-了解处理 [Apache Ambari](https://ambari.apache.org/) 中的 [Apache Storm](https://storm.apache.org/) 有效负载时的最常见问题及其解决方法。
+了解处理 [Apache Ambari](https://storm.apache.org/) 中的 [Apache Storm](https://ambari.apache.org/) 有效负载时的最常见问题及其解决方法。
 
 ## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>如何在群集上访问 Storm UI？
 
@@ -104,7 +104,7 @@ lib 文件夹中有一些 .Jar 文件，其中包含导出/导入操作的实现
 * 网关节点
 * 头节点
 * ZooKeeper 节点
-* 工作器节点
+* 辅助角色节点
 
 ### <a name="gateway-nodes"></a>网关节点
 
@@ -124,10 +124,10 @@ HDInsight 附带一个三节点 ZooKeeper 仲裁。 仲裁大小是固定的，�
 
 群集中的 Storm 服务配置为自动使用 ZooKeeper 仲裁。
 
-### <a name="worker-nodes"></a>工作器节点
+### <a name="worker-nodes"></a>辅助角色节点
 
 Storm 工作节点运行以下服务：
-* Supervisor
+* 监督器
 * 用于运行拓扑的辅助角色 Java 虚拟机 (JVM)
 * Ambari 代理
 
@@ -174,7 +174,7 @@ Storm 工作节点运行以下服务：
 
 提交拓扑时，用户可能会收到类似于以下内容的错误消息： `Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
 
-若要解决此问题，用户可能需要提交票证才能重新启动/重新启动节点。 有关详细信息，请参阅[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
+若要解决此问题，用户可能需要提交票证才能重新启动/重新启动节点。 有关详细信息，请参阅 [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)。
 
 ---
 

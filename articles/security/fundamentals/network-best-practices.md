@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771992"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392034"
 ---
 # <a name="azure-best-practices-for-network-security"></a>网络安全的 Azure 最佳实践
 本文讨论了用于增强网络安全的 Azure 最佳实践集合。 这些最佳实践衍生自我们的 Azure 网络经验和客户的经验。
@@ -131,9 +131,9 @@ Azure 网络安全设备可提供比网络级控制所提供的更高的安全�
 在混合 IT 方案中，通常有某种类型的跨界连接。 跨界连接可让公司将其本地网络连接到 Azure 虚拟网络。 可用的跨界连接解决方案有两种：
 
 * [站点到站点 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)。 它是一种值得信赖、可靠且成熟的技术，但连接是通过 Internet 进行的。 带宽限制为最多约 1.25 Gbps。 在某些情况下，站点到站点 VPN 是一个理想的选择。
-* **Azure ExpressRoute**。 建议为跨界连接使用[ExpressRoute](../../expressroute/expressroute-introduction.md) 。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，可以建立与 Microsoft 云服务（如 Azure、Office 365 和 Dynamics 365）的连接。 ExpressRoute 是你本地位置或 Microsoft Exchange 托管提供商之间的专用 WAN 链路。 由于这是一种电信连接，你的数据不会通过 internet 传输，因此不会暴露在 internet 通信的潜在风险中。
+* **Azure ExpressRoute**。 建议使用 [ExpressRoute](../../expressroute/expressroute-introduction.md) 进行跨界连接。 使用 ExpressRoute 可通过连接服务提供商所提供的专用连接，将本地网络扩展到 Microsoft 云。 通过 ExpressRoute，可以建立与 Microsoft 云服务（如 Azure、Office 365 和 Dynamics 365）的连接。 ExpressRoute 是你本地位置或 Microsoft Exchange 托管提供商之间的专用 WAN 链路。 由于这是一种电信连接，你的数据不会通过 internet 传输，因此不会暴露在 internet 通信的潜在风险中。
 
-ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可靠性和网络流量可见性。 需要确定在现有（本地）网络中终止 ExpressRoute 的位置。 你可以：
+ExpressRoute 连接的位置可能会影响防火墙容量、可伸缩性、可靠性和网络流量可见性。 需要确定在现有（本地）网络中终止 ExpressRoute 的位置。 可以：
 
 - 如果需要对流量进行可见，请在防火墙之外终止（外围网络范例），如果需要继续现有的隔离数据中心的做法，或者只是将 extranet 资源放在 Azure 上。
 - 在防火墙内终止（网络扩展模式）。 这是默认建议。 在所有其他情况下，我们建议将 Azure 视为第 n 个数据中心。

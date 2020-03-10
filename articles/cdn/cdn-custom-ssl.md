@@ -16,13 +16,13 @@ ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361649"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394848"
 ---
-# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域中配置 HTTPS
+# <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>教程：在 Azure CDN 自定义域上配置 HTTPS
 
 本教程演示如何为与 Azure CDN 终结点关联的自定义域启用 HTTPS 协议。 通过在自定义域（例如 https:\//www.contoso.com）上使用 HTTPS 协议，可以确保敏感数据在通过 Internet 发送时可以通过 TLS/SSL 加密安全地进行分发。 Web 浏览器通过 HTTPS 连接到网站时，它会验证网站的安全证书并验证该证书是否是由合法的证书颁发机构颁发的。 此过程提供安全性并保护 Web 应用程序免受攻击。
 
@@ -62,44 +62,44 @@ ms.locfileid: "75361649"
 若要启用 HTTPS 协议以在 Azure CDN 自定义域上安全传送内容，必须使用 SSL 证书。 可以选择是使用由 Azure CDN 托管的证书还是使用自己的证书。
 
 
-# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[选项 1（默认）：使用 CDN 托管的证书启用 HTTPS](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[选项 1（默认）：使用 CDN 托管的证书启用 HTTPS](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
 
 使用 CDN 托管的证书时，只需单击几下即可启用 HTTPS 功能。 Azure CDN 可处理所有证书管理任务，如获取和续订。 启用此功能后，进程将立即启动。 如果自定义域已映射到 CDN 终结点，则不需要进一步操作。 Azure CDN 将自动执行步骤并完成请求。 但是，如果自定义域映射到其他位置，则必须使用电子邮件来验证域所有权。
 
 若要在自定义域上启用 HTTPS，请执行以下步骤：
 
-1. 请参阅 [Azure 门户](https://portal.azure.com)，查找 Azure CDN 托管的证书。 搜索并选择“CDN 配置文件”。  
+1. 请参阅 [Azure 门户](https://portal.azure.com)，查找 Azure CDN 托管的证书。 搜索并选择“CDN 配置文件”。 
 
-2. 选择“Microsoft 的 Azure CDN 标准版”、“Akamai 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件     。
+2. 选择“Microsoft 的 Azure CDN 标准版”、“Akamai 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件。
 
 3. 在 CDN 终结点列表中，选择包含自定义域的终结点。
 
     ![终结点列表](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
-    此时会显示“终结点”页。 
+    此时会显示“终结点”页。
 
 4. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
     ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-    此时将显示“自定义域”页。 
+    此时将显示“自定义域”页。
 
-5. 在证书管理类型下，选择“CDN 托管”  。
+5. 在证书管理类型下，选择“CDN 托管”。
 
-6. 选择“打开”，启用 HTTPS  。
+6. 选择“打开”，启用 HTTPS。
 
     ![自定义域 HTTPS 状态](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
 7. 继续[验证域](#validate-the-domain)。
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[选项 2：使用自己的证书启用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
+# <a name="option-2-enable-https-with-your-own-certificate"></a>[选项 2：使用自己的证书启用 HTTPS](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
-> 此选项仅适用于来自 Microsoft 的 Azure CDN 和来自 Verizon 的 Azure CDN 配置文件   。 
+> 此选项仅适用于来自 Microsoft 的 Azure CDN 和来自 Verizon 的 Azure CDN 配置文件。 
 >
  
-可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。对于  来自 Verizon 的 Azure CDN，可接受任何有效 CA。 
+可以使用自己的证书启用 HTTPS 功能。 此过程通过与 Azure Key Vault 的集成完成，后者允许你安全地存储证书。 Azure CDN 使用此安全机制来获得你的证书，并且需要一些额外的步骤。 创建 SSL 证书时，必须使用允许的证书颁发机构 (CA) 创建。 否则，如果使用不允许的 CA，你的请求将被拒绝。 有关允许的 CA 的列表，请参阅[允许在 Azure CDN 上启用自定义 HTTPS 的证书颁发机构](cdn-troubleshoot-allowed-ca.md)。对于来自 Verizon 的 Azure CDN，可接受任何有效 CA。 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>准备 Azure Key Vault 帐户和证书
  
@@ -124,19 +124,19 @@ ms.locfileid: "75361649"
  
 在 Azure Key Vault 帐户中为 Azure CDN 授予证书（机密）的访问权限。
 
-1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略   。
+1. 在 Key Vault 帐户的“设置”下，选择“访问策略”，然后选择“添加新策略”以创建新策略。
 
     ![创建新的访问策略](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-2. 在“选择主体”  中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”  。
+2. 在“选择主体”中，搜索 **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**，并选择 **Microsoft.Azure.Cdn**。 单击“选择”。
 
     ![访问策略设置](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. 选择“证书权限”  ，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出证书。
+3. 选择“证书权限”，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出证书。
 
-4. 选择“机密权限”  ，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出机密。
+4. 选择“机密权限”，然后选中 **Get** 和 **List** 所对应的复选框，以允许 CDN 执行这些权限来获取和列出机密。
 
-5. 选择“确定”  。 
+5. 选择“确定”。 
 
     Azure CDN 现在可以访问此 Key Vault 和存储在其中的证书（机密）。
  
@@ -146,9 +146,9 @@ ms.locfileid: "75361649"
 
 2. 在自定义域列表中，选择要为其启用 HTTPS 的自定义域。
 
-    此时将显示“自定义域”页。 
+    此时将显示“自定义域”页。
 
-3. 在证书管理类型下，选择“使用我自己的证书”  。 
+3. 在证书管理类型下，选择“使用我自己的证书”。 
 
     ![配置证书](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
 
@@ -159,7 +159,7 @@ ms.locfileid: "75361649"
     - 所选 Key Vault 下的证书（机密）。 
     - 可用证书版本。 
  
-5. 选择“打开”，启用 HTTPS  。
+5. 选择“打开”，启用 HTTPS。
   
 6. 使用自己的证书时，不需要对域进行验证。 转至[等待传播](#wait-for-propagation)。
 
@@ -224,7 +224,7 @@ postmaster@&lt;your-domain-name.com&gt;
 
 ## <a name="wait-for-propagation"></a>等待传播
 
-验证域名后，将需要长达 6-8 小时才能使自定义域 HTTPS 功能激活。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已启用”  ，且自定义域对话框中的四个操作步骤会标记为完成。 自定义域现可使用 HTTPS。
+验证域名后，将需要长达 6-8 小时才能使自定义域 HTTPS 功能激活。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已启用”，且自定义域对话框中的四个操作步骤会标记为完成。 自定义域现可使用 HTTPS。
 
 ![启用 HTTPS 对话框](./media/cdn-custom-ssl/cdn-enable-custom-ssl-complete.png)
 
@@ -262,9 +262,9 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>禁用 HTTPS 功能 
 
-1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“CDN 配置文件”。  
+1. 在 [Azure 门户](https://portal.azure.com)中，搜索并选择“CDN 配置文件”。 
 
-2. 选择“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件    。
+2. 选择“Microsoft 的 Azure CDN 标准版”、“Verizon 的 Azure CDN 标准版”或“Verizon 的 Azure CDN 高级版”配置文件。
 
 3. 在终结点的列表中，选取包含自定义域的终结点。
 
@@ -272,13 +272,13 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     ![自定义域列表](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-5. 选择“禁用”  以禁用 HTTPS，然后选择“应用”  。
+5. 选择“禁用”以禁用 HTTPS，然后选择“应用”。
 
     ![“自定义 HTTPS”对话框](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
 ### <a name="wait-for-propagation"></a>等待传播
 
-禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”  ，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
+禁用自定义域 HTTPS 功能后，最多可能需要 6-8 小时才会生效。 此过程完成后，Azure 门户中的自定义 HTTPS 状态会设置为“已禁用”，且自定义域对话框中的三个操作步骤会标记为完成。 自定义域不再能够使用 HTTPS。
 
 ![禁用 HTTPS 对话框](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
 
@@ -294,27 +294,27 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-1. 谁是证书提供者？使用哪种类型的证书？ 
+1. 谁是证书提供者？使用哪种类型的证书？
 
     对于 **Verizon 的 Azure CDN** 和 **Microsoft 的 Azure CDN**，Digicert 提供的专用/单个证书将用于自定义域。 
 
-2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？ 
+2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？
 
     **Verizon 的 Azure CDN** 和 **Microsoft 的 Azure CDN Standard** 都使用 SNI TLS/SSL。
 
-3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？ 
+3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？
 
     如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 cdnverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
-4. 使用 SAN 证书是否没有使用专用证书安全？ 
+4. 使用 SAN 证书是否没有使用专用证书安全？
     
     SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
 
-5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？ 
+5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？
 
     否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 
-6. 从 2018 年 6 月 20 日开始，Verizon 的 Azure CDN 默认使用专用证书和 SNI TLS/SSL。  使用“使用者可选名称”(SAN) 证书和基于 IP 的 TLS/SSL 的现有自定义域会发生什么情况？
+6. *2018年6月20日 Azure CDN，默认情况下，从 Verizon 开始使用具有 SNI TLS/SSL 的专用证书。使用使用者备用名称（SAN）证书和基于 IP 的 TLS/SSL 时，现有自定义域会发生什么情况？*
 
     如果 Microsoft 经分析后发现，只是向应用程序发出了仅 SNI 客户端请求，则现有的域将在未来几个月逐渐迁移到单个证书。 如果 Microsoft 检测到向应用程序发出了一些非 SNI 客户端请求，则域将保留在 SAN 证书和基于 IP 的 TLS/SSL 中。 在任何情况下，对服务或客户端请求的支持都不会中断，不管这些请求是否为 SNI。
 

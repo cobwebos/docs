@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
 ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746937"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396645"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric 群集安全方案
 
@@ -114,7 +114,7 @@ X.509 数字证书通常用于验证客户端与服务器。 它们还用于对�
 其他注意事项：
 
 * “使用者”字段可有多个值。 每个值都以名称首字母为前缀，指示值的类型。 通常，初始化为**CN** （适用于*公用名*）;例如， **CN = www\.contoso.com**。
-* "**使用者**" 字段可以为空。
+* “使用者”字段可为空。
 * 如果可选的“使用者可选名称”字段已填充数据，则此字段必须包含证书的公用名，以及每个 SAN 的一个条目。 这些内容作为“DNS 名称”值输入。 要了解如何生成具有 SAN 的证书，请参阅[如何向安全 LDAP 证书添加使用者可选名称](https://support.microsoft.com/kb/931351)。
 * 证书的“预期目的”字段值应包含适当的值，例如“服务器身份验证”或“客户端身份验证”。
 

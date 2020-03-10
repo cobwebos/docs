@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326306"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395241"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>配置 Azure 区块链 Service transaction 节点
 
@@ -17,7 +17,7 @@ ms.locfileid: "74326306"
 
 查看默认事务节点详细信息：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 导航到你的 Azure 区块链服务成员。 选择 "**事务节点**"。
 
     ![选择默认事务节点](./media/configure-transaction-nodes/nodes.png)
@@ -37,7 +37,7 @@ ms.locfileid: "74326306"
 
     | 设置 | 说明 |
     |---------|-------------|
-    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com`。 创建节点名称后，不能对其进行更改。 |
+    | 名称 | 事务节点名称。 该名称用于创建事务节点终结点的 DNS 地址。 例如，`newnode-myblockchainmember.blockchain.azure.com` 。 创建节点名称后，不能对其进行更改。 |
     | 密码 | 设置强密码。 使用密码访问具有基本身份验证的事务节点终结点。
 
 1. 选择“创建”。
@@ -71,7 +71,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
     |---------|-------------|
     | 角色 | 选择 "**所有者**"、"**参与者**" 或 "**读者**"。
     | 将访问权限分配到 | 选择**Azure AD 用户、组或服务主体**。
-    | 选择 | 搜索要添加的用户、组或服务主体。
+    | Select | 搜索要添加的用户、组或服务主体。
 
 1. 选择 "**保存**" 以添加角色分配。
 
@@ -121,7 +121,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 ![连接字符串](./media/configure-transaction-nodes/connection-strings.png)
 
-## <a name="sample-code"></a>代码示例
+## <a name="sample-code"></a>示例代码
 
 提供的示例代码可通过 Web3、Nethereum、Web3js 和 Truffle 快速启用到事务节点的连接。
 
@@ -129,7 +129,7 @@ Azure 区块链 Service transaction 节点终结点支持 Azure Active Directory
 
 选择 Web3、Nethereum、Truffle 或 Web3j 选项卡以查看要使用的代码示例。
 
-![代码示例](./media/configure-transaction-nodes/sample-code.png)
+![示例代码](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 

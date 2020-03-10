@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543669"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388173"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -21,7 +21,7 @@ ms.locfileid: "69543669"
 
 DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 DistCp 的使用。 本文介绍了基本功能，同时重点介绍了如何使用 DistCp 将数据复制到支持分层命名空间的帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户**。
@@ -41,7 +41,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
     输出应提供容器中内容的列表。
 
-3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行下面的命令：
+3. 同样，验证是否可从此群集访问启用分层命名空间的存储帐户。 运行以下命令：
 
         hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
@@ -71,9 +71,9 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
 请参考下面的指导。
 
-* **步骤 1：确定可用于“默认”YARN 应用队列的总内存** - 第一步是确定可用于“默认”YARN 应用队列的内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到可用于“默认”应用队列的 YARN 内存。 这是 DistCp 作业（实际是 MapReduce 作业）的总可用内存。
+* **步骤1：确定 "默认" YARN 应用队列可用的总内存**-第一步是确定 "默认" YARN 应用队列可用的内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到可用于“默认”应用队列的 YARN 内存。 这是 DistCp 作业（实际是 MapReduce 作业）的总可用内存。
 
-* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
+* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看 "配置" 选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -85,7 +85,7 @@ HDInsight 群集附带 DistCp 实用工具，该实用工具可用于从不同�
 
         YARN memory = 4 * 96GB = 384GB
 
-* **映射器数**：从 Ambari 门户确定一个 D14 群集节点的 YARN 容器大小为 3,072 MB。 因此，映射器数为：
+* **映射器数**：从 Ambari 门户确定 D14 群集节点的 YARN 容器大小为 3072 MB。 因此，映射器数为：
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

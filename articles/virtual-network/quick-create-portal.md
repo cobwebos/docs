@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
 ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488497"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393116"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建虚拟网络
 
@@ -30,27 +30,27 @@ ms.locfileid: "73488497"
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-a-virtual-network"></a>创建虚拟网络
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
+1. 在 Azure 门户菜单中，选择“创建资源”。
 
-2. 在 Azure 市场中，选择“网络” > “虚拟网络”   。
+2. 在 Azure 市场中，选择“网络” **“虚拟网络”**  > 。
 
-3. 在“创建虚拟网络”  中，输入或选择以下信息：
+3. 在“创建虚拟网络”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 myVirtualNetwork  。 |
-    | 地址空间 | 输入 10.1.0.0/16  。 |
-    | Subscription | 选择订阅。|
-    | Resource group | 选择“新建”，输入 myResourceGroup，然后选择“确定”    。 |
-    | 位置 | 选择“美国东部”  。|
-    | 子网 - 名称 | 输入 myVirtualSubnet  。 |
-    | 子网 - 地址范围 | 输入 10.1.0.0/24  。 |
+    | 名称 | 输入 myVirtualNetwork。 |
+    | 地址空间 | 输入 10.1.0.0/16。 |
+    | 订阅 | 选择订阅。|
+    | 资源组 | 选择“新建”，输入 myResourceGroup，然后选择“确定”。 |
+    | 位置 | 选择“美国东部”。|
+    | 子网 - 名称 | 输入 myVirtualSubnet。 |
+    | 子网 - 地址范围 | 输入 10.1.0.0/24。 |
 
-4. 将其余的设置保留默认值，然后选择“创建”  。
+4. 将其余的设置保留默认值，然后选择“创建”。
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -58,112 +58,112 @@ ms.locfileid: "73488497"
 
 ### <a name="create-the-first-vm"></a>创建第一个 VM
 
-1. 在 Azure 门户菜单中，选择“创建资源”  。
+1. 在 Azure 门户菜单中，选择“创建资源”。
 
-2. 在 Azure 市场中，选择“计算” > “Windows Server 2019 Datacenter”   。
+2. 在 Azure 市场中，选择“计算” **“Windows Server 2019 Datacenter”**  > 。
 
-3. 在“创建虚拟机 - 基本信息”  中，输入或选择以下信息：
+3. 在“创建虚拟机 - 基本信息”中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
     | **项目详细信息** | |
-    | Subscription | 选择订阅。 |
-    | Resource group | 选择“myResourceGroup”。  已在上一部分创建此内容。 |
+    | 订阅 | 选择订阅。 |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。 |
     | **实例详细信息** |  |
-    | 虚拟机名称 | 输入 myVm1  。 |
-    | 区域 | 选择“美国东部”  。 |
-    | 可用性选项 | 保留默认值“不需要基础结构冗余”  。 |
-    | 映像 | 保留默认值“Microsoft Windows Server 2019 Datacenter”  。 |
-    | 大小 | 保留默认值“标准 DS1 v2”  。 |
+    | 虚拟机名称 | 输入 myVm1。 |
+    | 区域 | 选择“美国东部”。 |
+    | 可用性选项 | 保留默认值“不需要基础结构冗余”。 |
+    | 映像 | 保留默认值“Microsoft Windows Server 2019 Datacenter”。 |
+    | 大小 | 保留默认值“标准 DS1 v2”。 |
     | **管理员帐户** |  |
     | 用户名 | 输入所选用户名。 |
     | 密码 | 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     | 确认密码 | 重新输入密码。 |
     | **入站端口规则** |  |
-    | 公共入站端口 | 保留默认值“无”  。 |
+    | 公共入站端口 | 保留默认值“无”。 |
     | **节省资金** |  |
-    | 已有 Windows 许可证？ | 保留默认值“否”  。 |
+    | 已有 Windows 许可证？ | 保留默认值“否”。 |
 
-4. 选择“下一步:**磁盘”** 。
+4. 选择 "**下一步：磁盘**"。
 
-5. 在“**创建虚拟机 - 磁盘**”中，保留默认设置，**然后选择“下一步:网络”** 。
+5. 在 "**创建虚拟机-磁盘**" 中，保留默认值并选择 "**下一步：网络**"。
 
-6. 在“创建虚拟机 - 基本信息”  中，选择以下信息：
-
-    | 设置 | 值 |
-    | ------- | ----- |
-    | 虚拟网络 | 保留默认值“myVirtualNetwork”  。 |
-    | 子网 | 保留默认值“myVirtualSubnet (10.1.0.0/24)”  。 |
-    | 公共 IP | 保留默认值“(new) myVm-ip”  。 |
-    | 公共入站端口 | 选择“允许所选端口”  。 |
-    | 选择入站端口 | 选择 HTTP 和 RDP   。
-
-7. **选择“下一步:管理”** 。
-
-8. 在“创建虚拟机 - 管理”中，为“诊断存储帐户”选择“新建”    。
-
-9. 在“创建存储帐户”中，输入或选择以下信息  ：
+6. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
-    | Name | 输入 myvmstorageaccount  。 如果此名称已被使用，请创建唯一的名称。|
-    | 帐户类型 | 保留默认值“存储(常规用途 v1)”  。 |
-    | 性能 | 保留默认值“标准”  。 |
-    | 复制 | 保留默认值“本地冗余存储(LRS)”  。 |
+    | 虚拟网络 | 保留默认值“myVirtualNetwork”。 |
+    | 子网 | 保留默认值“myVirtualSubnet (10.1.0.0/24)”。 |
+    | 公共 IP | 保留默认值“(new) myVm-ip”。 |
+    | 公共入站端口 | 选择“允许所选端口”。 |
+    | 选择入站端口 | 选择“HTTP”和“RDP”。
 
-10. 选择“确定” 
+7. 选择 "**下一步：管理**"。
 
-11. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置  。
+8. 在“创建虚拟机 - 管理”中，为“诊断存储帐户”选择“新建”。
 
-12. 看到“验证通过”消息时，选择“创建”   。
+9. 在“创建存储帐户”中，输入或选择以下信息：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入 myvmstorageaccount。 如果此名称已被使用，请创建唯一的名称。|
+    | 帐户类型 | 保留默认值“存储(常规用途 v1)”。 |
+    | 性能 | 保留默认值“标准”。 |
+    | 复制 | 保留默认值“本地冗余存储(LRS)”。 |
+
+10. 选择“确定”
+
+11. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
+
+12. 看到“验证通过”消息时，选择“创建”。
 
 ### <a name="create-the-second-vm"></a>创建第二个 VM
 
 1. 完成前面的步骤 1 和 9。
 
     > [!NOTE]
-    > 在步骤 2 中，对于“虚拟机名称”，请输入 myVm2   。
+    > 在步骤 2 中，对于“虚拟机名称”，请输入 myVm2。
     >
-    > 在步骤 7 中，对于“诊断存储帐户”，请确保选择 myvmstorageaccount   。
+    > 在步骤 7 中，对于“诊断存储帐户”，请确保选择 myvmstorageaccount。
 
-2. 选择“查看 + 创建”  。 随后你会转到“查看 + 创建”页，Azure 将验证配置  。
+2. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将验证配置。
 
-3. 看到“验证通过”消息时，选择“创建”   。
+3. 看到“验证通过”消息时，选择“创建”。
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>从 Internet 连接到 VM
 
-创建 myVm1 后，连接到 Internet  。
+创建 myVm1 后，连接到 Internet。
 
-1. 在门户的搜索栏中，输入 myVm1  。
+1. 在门户的搜索栏中，输入 myVm1。
 
-2. 选择“连接”按钮。 
+2. 选择“连接”按钮。
 
     ![连接到虚拟机](./media/quick-create-portal/connect-to-virtual-machine.png)
 
-    选择“连接”按钮后，“连接到虚拟机”随即打开   。
+    选择“连接”按钮后，“连接到虚拟机”随即打开。
 
-3. 选择“下载 RDP 文件”  。 Azure 创建远程桌面协议 (.rdp) 文件，并下载到计算机  。
+3. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
 4. 打开下载的 *.rdp* 文件。
 
-    1. 出现提示时，选择“连接”  。
+    1. 出现提示时，选择“连接”。
 
     2. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据   。
+        > 可能需要选择“更多选择” **“使用其他帐户”，以指定在创建 VM 时输入的凭据** > 。
 
-5. 选择“确定”  。
+5. 选择“确定”。
 
-6. 在登录过程中可能会收到证书警告。 如果收到证书警告，请选择“确定”或“继续”   。
+6. 在登录过程中可能会收到证书警告。 如果收到证书警告，请选择“确定”或“继续”。
 
 7. VM 桌面出现后，将其最小化以返回到本地桌面。
 
 ## <a name="communicate-between-vms"></a>VM 之间进行通信
 
-1. 在 myVm1 远程桌面中，打开 PowerShell  。
+1. 在 myVm1 远程桌面中，打开 PowerShell。
 
-2. 输入 `ping myVm2` 。
+2. 输入 `ping myVm2`。
 
     将收到类似于下面的消息：
 
@@ -180,7 +180,7 @@ ms.locfileid: "73488497"
 
     由于 `ping` 使用 Internet 控制消息协议 (ICMP)，`ping` 失败。 默认情况下，不允许 ICMP 通过 Windows 防火墙。
 
-3. 要允许 myVm2  在后面的步骤中对 myVm1 执行 ping 操作  ，请输入以下命令：
+3. 要允许 myVm2 在后面的步骤中对 myVm1 执行 ping 操作，请输入以下命令：
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -209,7 +209,7 @@ ms.locfileid: "73488497"
         Minimum = 0ms, Maximum = 1ms, Average = 0ms
     ```
 
-    将从 myVm1 收到答复，因为在第 3 步中已经允许 ICMP 通过 myVm1 VM 上的 Windows 防火墙   。
+    将从 myVm1 收到答复，因为在第 3 步中已经允许 ICMP 通过 myVm1 VM 上的 Windows 防火墙。
 
 7. 关闭与 *myVm2* 的远程桌面连接。
 
@@ -217,11 +217,11 @@ ms.locfileid: "73488497"
 
 使用虚拟网络和 VM 之后，请删除资源组和其包含的所有资源：
 
-1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”    。
+1. 在门户顶部的“搜索”框中输入“myResourceGroup”，并从搜索结果中选择“myResourceGroup”。
 
-2. 选择“删除资源组”  。
+2. 选择“删除资源组”。
 
-3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”    。
+3. 对于“键入资源组名称”，请输入“myResourceGroup”，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

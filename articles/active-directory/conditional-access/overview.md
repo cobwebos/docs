@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: HT
+ms.openlocfilehash: 7b044a4fd4e29bfe35abff7a4b36e5bae783328b
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966271"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671879"
 ---
 # <a name="what-is-conditional-access"></a>什么是条件访问？
 
@@ -26,7 +26,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 ![概念性条件信号加上要实施的决策](./media/overview/conditional-access-signal-decision-enforcement.png)
 
-最简单地讲，条件访问策略是一些 if-then 语句：如果用户想要访问某个资源，则必须完成某个操作。 示例：薪资管理人员想要访问薪资应用程序，而需要执行多重身份验证才能访问。
+最简单地讲，条件访问策略是一些 if-then 语句：如果用户想要访问某个资源，则必须完成某个操作。 示例：工资经理希望访问工资单应用程序，并需要执行多重身份验证才能访问该应用程序。
 
 管理员面临着两个主要目标：
 
@@ -92,7 +92,7 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 [!INCLUDE [Active Directory P1 license](../../../includes/active-directory-p1-license.md)]
 
-拥有 [Microsoft 365 商业版许可证](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
+拥有 [Microsoft 365 商业版许可证](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客户也可以访问条件访问功能。 
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -102,6 +102,6 @@ Azure Active Directory 使用条件访问作为一种工具来统合信号、做
 
 [了解标识保护](../identity-protection/overview-v2.md)
 
-[了解 Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)
+[了解 Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)
 
-[了解 Microsoft Intune](https://docs.microsoft.com/intune/index)
+[了解 Microsoft Intune](/intune/index)

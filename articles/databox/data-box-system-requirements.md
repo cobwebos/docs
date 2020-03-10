@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839751"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380587"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box 系统要求
 
@@ -41,7 +41,7 @@ ms.locfileid: "67839751"
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
 
-### <a name="supported-storage-types"></a>支持的存储类型
+### <a name="supported-storage-types"></a>受支持的存储类型
 
 [!INCLUDE [data-box-supported-storage-types](../../includes/data-box-supported-storage-types.md)]
 
@@ -55,7 +55,7 @@ ms.locfileid: "67839751"
 
 ### <a name="port-requirements"></a>端口要求
 
-下表列出了需要在防火墙以允许 SMB 或 NFS 流量打开端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 *Out*或*出站*表示在其中你 Data Box 设备外部发送数据的在部署范畴以外的方向： 例如，出站到 Internet。
+下表列出了需要在防火墙中打开以允许 SMB 或 NFS 通信的端口。 在此表中，*入*或*入站*表示传入客户端请求访问设备的方向。 " *Out* " 或 "*出站*" 是指 Data Box 设备在外部发送数据的方向，而不是部署：例如，到 Internet 的出站。
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

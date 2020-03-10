@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086638"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387186"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>教程：在本地发布和订阅事件
 
@@ -23,7 +23,7 @@ ms.locfileid: "77086638"
 > [!NOTE]
 > 若要了解有关 Azure 事件网格主题和订阅的信息，请参阅[事件网格概念](concepts.md)。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 若要完成本教程，您需要：
 
 * **Azure 订阅**-如果你还没有帐户，请创建一个[免费帐户](https://azure.microsoft.com/free)。 
@@ -77,7 +77,7 @@ ms.locfileid: "77086638"
           }
         }
     ```    
- 1. 单击 **“保存”**
+ 1. 单击“保存”
  1. 在将 Azure 事件网格订户模块一起部署之前，请继续阅读下一节。
 
     >[!IMPORTANT]
@@ -99,7 +99,7 @@ ms.locfileid: "77086638"
    * **名称**：订阅服务器
    * **映像 URI**： `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器创建选项**：无
-1. 单击 **“保存”**
+1. 单击“保存”
 1. 单击 "**下一步**" 以继续转到 "路由" 部分
 
  ### <a name="setup-routes"></a>安装路由

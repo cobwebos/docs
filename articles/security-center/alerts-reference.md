@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c62af3ddf8b2c2dc8082dc4f4870ecfcdc175ab8
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661953"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380723"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报-参考指南
 
@@ -243,7 +243,7 @@ ms.locfileid: "77661953"
 |警报|说明|意向（[了解详细信息](#intentions)）|
 |----|----|:----:|
 |**预览-检测到群集-管理员角色的角色绑定**|Kubernetes 审核日志分析检测到群集管理角色的新绑定，导致管理员权限。 不必要地提供管理员权限可能会导致群集中的权限提升问题。|持久性|
-|**检测到预览版的 Kubernetes 仪表板**|Kubernetes 审核日志分析检测到由 LoadBalancer 服务公开的 Kubernetes 仪表板。 公开的仪表板允许未经身份验证的群集管理访问，并带来安全威胁。|持久性|
+|**检测到预览版的 Kubernetes 仪表板**|Kubernetes 审核日志分析检测到由 LoadBalancer 服务公开的 Kubernetes 仪表板。 公开的仪表板允许未经身份验证的群集管理访问，并带来安全威胁。|初始访问|
 |**预览-检测到新的高特权角色**|Kubernetes 审核日志分析检测到具有高权限的新角色。 与具有高权限的角色的绑定在群集中为用户/组提升的权限。 不必要地提供提升的权限可能会导致群集中的权限提升问题。|持久性|
 |**预览-检测到 kube 命名空间中的新容器**|Kubernetes 审核日志分析检测到 kube 命名空间中的新容器，该容器不在通常在此命名空间中运行的容器中。 Kube 命名空间不应包含用户资源。 攻击者可以使用此命名空间隐藏恶意组件。|持久性|
 |**预览-检测到数字货币挖掘容器**|Kubernetes 审核日志分析检测到一个容器具有与数字货币挖掘工具关联的图像。|执行|
@@ -263,7 +263,7 @@ ms.locfileid: "77661953"
 |**SSH 服务器在容器中运行**|计算机日志表示 SSH 服务器在 Docker 容器中运行。 尽管此行为是有意的，但它通常表示容器配置不正确或被破坏。|执行|
 |**检测到挖掘器映像的容器**|计算机日志表示执行运行与数字货币挖掘关联的映像的 Docker 容器。 此行为可能表示资源被滥用。|执行|
 |**Kubernetes API 的可疑请求**|计算机日志表示对 Kubernetes API 发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|执行|
-|**向 Kubernetes 仪表板发出可疑请求**|计算机日志指示对 Kubernetes 仪表板发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|-|
+|**向 Kubernetes 仪表板发出可疑请求**|计算机日志指示对 Kubernetes 仪表板发出了可疑的请求。 请求是从 Kubernetes 节点发送的，该节点可能来自节点中运行的某个容器。 尽管此行为是有意的，但它可能指示节点正在运行已泄露的容器。|横向移动|
 ||||
 
 
@@ -395,7 +395,7 @@ ms.locfileid: "77661953"
 
 描述受到从侦测到数据渗透的进度的一系列步骤通常称为 "终止链"。 
 
-安全中心支持的 kill 链式方法基于[MITRE ATT &AMP; CK™框架](https://attack.mitre.org/matrices/enterprise)，如下表中所述。
+安全中心支持的 kill 链式方法基于[MITRE ATT &AMP; CK&trade; 框架](https://attack.mitre.org/matrices/enterprise)，如下表中所述。
 
 |Intent|说明|
 |------|-------|

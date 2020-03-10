@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: manayar
 ms.openlocfilehash: b427319fdba634ea3c61681baa30547450709dc1
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278086"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390409"
 ---
 # <a name="design-considerations-for-scale-sets"></a>规模集的设计注意事项
 本文讨论虚拟机规模集的设计注意事项。 有关什么是虚拟机规模集的信息，请参阅[虚拟机规模集概述](virtual-machine-scale-sets-overview.md)。
@@ -39,7 +39,7 @@ ms.locfileid: "76278086"
 - 可将单个 VM 从本机磁盘迁移到托管磁盘，但无法迁移规模集中的 VM 实例。
 - 可将 IPv6 公共 IP 地址分配给单个 VM 虚拟网络接口卡 (NIC)，但对于规模集中的 VM 实例，无法执行此操作。 可将 IPv6 公共 IP 地址分配到单个 VM 或规模集 VM 前面的负载均衡器。
 
-## <a name="storage"></a>存储空间
+## <a name="storage"></a>存储
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>使用 Azure 托管磁盘创建规模集
 可以使用 [Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)而不是传统的 Azure 存储帐户创建规模集。 托管磁盘可以提供以下优点：

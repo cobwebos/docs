@@ -4,11 +4,11 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77109539"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384536"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改
 
@@ -220,13 +220,13 @@ az lock delete --ids $lockid
 ```
 
 ## <a name="rest-api"></a>REST API
-可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 使您可以创建和删除锁，并且检索有关现有锁的信息。
+可以使用[管理锁的 REST API](https://docs.microsoft.com/rest/api/resources/managementlocks) 锁定已部署的资源。 REST API 可用于创建和删除锁，并且检索有关现有锁的信息。
 
 若要创建一个锁，请运行：
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-作用域可能是订阅、资源组或资源。 锁名称可以是您想要对该锁使用的任何称谓。 对于 api 版本，请使用**2016-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用**2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 
@@ -239,6 +239,6 @@ az lock delete --ids $lockid
 
 ## <a name="next-steps"></a>后续步骤
 * 有关使用逻辑方式组织资源的信息，请参阅[使用标记来组织资源](tag-resources.md)
-* 你可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
+* 可以使用自定义策略对订阅应用限制和约定。 有关详细信息，请参阅[什么是 Azure Policy？](../../governance/policy/overview.md)。
 * 有关企业可如何使用 Resource Manager 有效管理订阅的指南，请参阅 [Azure 企业基架 - 出于合规目的监管订阅](/azure/architecture/cloud-adoption-guide/subscription-governance)。
 

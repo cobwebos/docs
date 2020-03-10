@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/08/2020
 ms.author: evansma
 ms.openlocfilehash: 1ecb48751715d32e1e67f09e0e3d4bf9577c8eab
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064903"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392885"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>你的商业应用商店权益
 

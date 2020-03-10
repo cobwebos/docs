@@ -8,11 +8,11 @@ ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658965"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394943"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>将 Azure 资源日志存档到存储帐户
 Azure 中的[平台日志](platform-logs-overview.md)，包括 azure 活动日志和资源日志，提供 azure 资源及其所依赖的 azure 平台的详细诊断和审核信息。  本文介绍如何将平台日志收集到 Azure 存储帐户，以保留用于存档的数据。

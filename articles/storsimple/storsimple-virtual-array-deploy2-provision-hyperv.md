@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9d3f4f4ab6cc1c928761fce740d39f3f73426e62
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516796"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365669"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>部署 StorSimple 虚拟阵列 - 在 Hyper-V 中预配
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -40,7 +40,7 @@ ms.locfileid: "68516796"
 在开始之前，请确保：
 
 * 已完成[为 StorSimple 虚拟阵列准备门户](storsimple-virtual-array-deploy1-portal-prep.md)中的所有步骤。
-* 已从 Azure 门户下载 Hyper-V 的虚拟阵列映像。 有关更多信息，请参阅**步骤 3：下载虚拟阵列映像**（在 [为 StorSimple 虚拟阵列准备门户指南](storsimple-virtual-array-deploy1-portal-prep.md)中）。
+* 已从 Azure 门户下载 Hyper-V 的虚拟阵列映像。 有关详细信息，请参阅**为 StorSimple 虚拟阵列准备门户指南**中的[步骤 3：下载虚拟阵列映像](storsimple-virtual-array-deploy1-portal-prep.md)。
 
   > [!IMPORTANT]
   > 在 StorSimple 虚拟阵列上运行的软件只能结合 StorSimple Device Manager 服务使用。
@@ -88,12 +88,12 @@ ms.locfileid: "68516796"
 
 #### <a name="to-provision-a-virtual-array"></a>预配虚拟阵列
 1. 在 Windows Server 主机上，将虚拟阵列映像复制到本地驱动器。 通过 Azure 门户已下载该映像（VHD 或 VHDX）。 记下复制映像的位置，因为在以后的过程中将使用此映像。
-2. 打开“服务器管理器”。 单击右上角的“工具”，并选择“Hyper-V 管理器”。
+2. 打开 **“服务器管理器”** 。 单击右上角的“工具”，并选择“Hyper-V 管理器”。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image1.png)  
 
    如果运行的是 Windows Server 2008 R2，请打开 Hyper-V 管理器。 在服务器管理器中，单击“角色 > Hyper-V > Hyper-V 管理器”。
-3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” > “虚拟机”。
+3. 在“Hyper-V 管理器”的作用域窗格中，右键单击系统节点打开上下文菜单，并单击“新建” **“虚拟机”。**  > 
 
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image2.png)
 4. 在新建虚拟机向导的“准备工作”页上，单击“下一步”。
@@ -208,7 +208,7 @@ ms.locfileid: "68516796"
        >
        >
 
-如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请在“步骤 1：确保主机系统满足最低虚拟阵列要求”中参阅最低配置要求。
+如果设备不符合最低配置要求，则会在横幅文本中显示以下错误（如下所示）。 修改设备配置，使虚拟机有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅步骤1：确保主机系统满足最低虚拟阵列要求中的最低配置要求。
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 
