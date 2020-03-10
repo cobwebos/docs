@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
-ms.date: 08/05/2019
-ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/09/2020
+ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251900"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945384"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL 数据库和数据仓库网络访问控制
 
@@ -27,19 +27,28 @@ ms.locfileid: "77251900"
 > [!IMPORTANT]
 > 本文不适用于 **Azure SQL 数据库托管实例**。 有关网络配置的详细信息，请参阅[连接到托管实例](sql-database-managed-instance-connect-app.md)。
 
-[从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 时，结果为*yourservername.database.windows.net*格式的公共终结点。 按照设计，拒绝对公共终结点的所有访问。 然后，你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQl 数据库
-- 允许 Azure 服务：-当设置为 ON 时，Azure 边界内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
+从[Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 时，结果为*yourservername.database.windows.net*格式的公共终结点。
 
-- IP 防火墙规则：-使用此功能显式允许来自特定 IP 地址的连接，例如来自本地计算机的连接。
+你可以使用以下网络访问控制来有选择地允许通过公共终结点访问 SQl 数据库：
+- 允许 Azure 服务：当设置为 ON 时，Azure 边界内的其他资源（例如 Azure 虚拟机）可以访问 SQL 数据库
 
-- 虚拟网络防火墙规则：-使用此功能允许来自 Azure 边界内特定虚拟网络的流量
+- IP 防火墙规则：使用此功能显式允许来自特定 IP 地址的连接，例如来自本地计算机的连接
 
+还可以通过以下方式允许从[虚拟网络](../virtual-network/virtual-networks-overview.md)对 SQL 数据库进行专用访问：
+- 虚拟网络防火墙规则：使用此功能允许来自 Azure 边界内特定虚拟网络的流量
+
+- 专用链接：使用此功能可在特定虚拟网络中为 Azure SQL Server 创建专用终结点
+
+
+
+请参阅下面的视频，详细了解这些访问控制及其功能：
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
+
 
 ## <a name="allow-azure-services"></a>允许 Azure 服务 
 在[从 Azure 门户](sql-database-single-database-get-started.md)创建新的 Azure SQL Server 期间，此设置将处于未选中状态。
 
- ![新服务器创建的屏幕截图][1]
+
 
 你还可以在创建 Azure SQL Server 之后通过 "防火墙" 窗格更改此设置，如下所示。
   
@@ -129,6 +138,9 @@ start          end
 > [!NOTE]
 > 目前，子网上没有 SQL 数据库。 如果 Azure SQL 数据库服务器是虚拟网络子网上的一个节点，则虚拟网络中的所有节点都可以与 SQL 数据库通信。 在这种情况下，VM 可以与 SQL 数据库通信，不需任何虚拟网络规则或 IP 规则。
 
+## <a name="private-link"></a>专用链接 
+专用链接允许通过**专用终结点**连接到 Azure SQL Server。 专用终结点是特定[虚拟网络](../virtual-network/virtual-networks-overview.md)和子网中的专用 IP 地址。
+
 ## <a name="next-steps"></a>后续步骤
 
 - 有关创建服务器级 IP 防火墙规则的快速入门，请参阅[创建 AZURE SQL 数据库](sql-database-single-database-get-started.md)。
@@ -146,3 +158,4 @@ start          end
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/new-server2.png
 [2]: ./media/sql-database-get-started-portal/manage-server-firewall.png
+

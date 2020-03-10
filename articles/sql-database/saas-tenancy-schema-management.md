@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822017"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78397165"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>通过将“租户各有数据库”模式与 Azure SQL 数据库配合使用，在 SaaS 应用程序中管理架构
  
@@ -41,7 +41,7 @@ ms.locfileid: "73822017"
 * 已安装最新版的 SQL Server Management Studio (SSMS)。 [下载并安装 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
+> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 架构管理模式简介
 
@@ -55,7 +55,7 @@ ms.locfileid: "73822017"
 有一个新版的弹性作业，该作业现为 Azure SQL 数据库的集成功能。 此新版弹性作业目前为有限预览版。 此有限预览版目前支持使用 PowerShell 创建作业代理，同时支持使用 T-SQL 创建和管理作业。
 
 > [!NOTE]
-> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“弹性作业预览版”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
+> 本教程使用的是有限预览版（弹性数据库作业）中 SQL 数据库服务的功能。 如果希望完成本教程，请将订阅 ID 提供给 SaaSFeedback@microsoft.com，并在邮件主题中注明“Elastic Jobs Preview”。 收到订阅已启用的确认邮件后，即可[下载并安装最新的预发行作业 cmdlet](https://github.com/jaredmoo/azure-powershell/releases)。 此预览版的功能有限，如果有相关问题或者需要支持，请联系 SaaSFeedback@microsoft.com。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS“租户各有数据库”应用程序脚本
 
@@ -77,7 +77,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 首先，查看每个租户数据库中包含的地点类型。 连接 SQL Server Management Studio (SSMS) 中的一个租户数据库，并检查 VenueTypes 表。  还可在通过数据库页访问的 Azure 门户的查询编辑器中查询此表。 
 
 1. 打开 SSMS 并连接到租户服务器：*tenants1-dpt-&lt;user&gt;.database.windows.net*
-1. 浏览到 tenants1-dpt-*user* 服务器上的 contosoconcerthall 数据库，查询 VenueTypes 表以确认“赛车”和“游泳俱乐部”不在结果列表中 *&lt;&gt;* 。
+1. 若要确认*摩托车赛车*和*游泳俱乐部*当前**是否未**包括在内，请浏览到 *&lt;tenants1 用户&gt;* 服务器上的_contosoconcerthall_数据库，并查询*user*表。
 
 现在请创建一个作业，对所有租户数据库中的“VenueTypes”表进行更新，以便添加新的地点类型。
 
@@ -95,7 +95,7 @@ Demo-SchemaManagement.ps1 脚本调用 Deploy-SchemaManagement.ps1 脚本，目�
 * **sp\_add\_jobstep** 创建包含 T-SQL 命令文本的作业步骤，该文本用于更新引用表 VenueTypes。
 * 脚本中的剩余视图显示存在的对象以及监视作业执行情况。 使用这些查询查看“生命周期”列中的状态值，确定何时作业在所有目标数据库上完成。
 
-完成脚本后，可以验证引用数据是否已更新。  在 SSMS 中浏览到 *tenants1-dpt-* user *&lt; 服务器上的 &gt;contosoconcerthall* 数据库，然后查询 *VenueTypes* 表。  查看“赛车”和“游泳俱乐部”现在是否存在。
+完成脚本后，可以验证引用数据是否已更新。  在 SSMS 中浏览到 *tenants1-dpt-* user *&lt; 服务器上的 &gt;contosoconcerthall* 数据库，然后查询 *VenueTypes* 表。  检查*摩托车比赛*和*游泳俱乐部*现在**是否**存在。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>创建管理引用表索引的作业

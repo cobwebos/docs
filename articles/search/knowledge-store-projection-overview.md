@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d264768bf27967d1a778400ae4e9e6f2e054d746
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754525"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942976"
 ---
 # <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure 中的知识存储中的预测认知搜索
 
@@ -211,3 +211,8 @@ Azure 认知搜索通过内置认知技能和自定义技能作为索引的一�
 
 > [!div class="nextstepaction"]
 > [在 REST 中创建知识库](knowledge-store-create-rest.md)。
+
+有关涉及切片、内联造型和关系等高级投影概念的教程，请从[在知识存储中定义投影](knowledge-store-projections-examples.md)开始
+
+> [!div class="nextstepaction"]
+> [定义知识库中的投影](knowledge-store-projections-examples.md)

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273971"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933746"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 
@@ -102,7 +102,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    3. 在“筛选器”子节中，以 \MyRootDirectory\Data 格式输入包含目标数据的根目录。 不支持诸如 \C:\Data 的驱动器号。 还可以在此处添加任何文件筛选器。
 
-   4. 数据转换服务处理通过快照推送到 Azure 的数据。 运行此作业时，可以选择每次运行此作业时执行备份（以处理最新的数据）或者使用云中的上次现有备份（如果要处理某些已存档的数据）。
+   4. 数据转换服务仅适用于推送到 Azure 的数据的最新快照。
 
    5. 单击“确定”。
 
@@ -150,6 +150,11 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 4. 若要监视此作业，请转到 StorSimple 数据管理器中的“作业”。 除了在“作业”边栏选项卡中监视外，还可以侦听存储队列，每次将文件从 StorSimple 移到存储帐户时都会在该队列中添加一条消息。
 
     ![启动作业运行 4](./media/storsimple-data-manager-ui/start-job-run4.png)
+
+### <a name="view-logs-after-job-completion"></a>作业完成后查看日志
+
+完成作业后，可以查看作业的状态。 作业状态可以为 "**成功**"、"**部分成功**" 和 "**失败**"。 您可以查看已成功复制的文件列表和无法复制的文件。 这些列表位于目标存储帐户中名为 **"joblogs"** 的容器中。 在此容器中，可以查找与作业定义同名的文件夹。 在此中，将为包含列表的每个作业运行创建一个文件夹。 此文件夹的名称将是作业的 GUID，您可以从 "作业详细信息" 页获取该 GUID。 或者，在大多数情况下，你会在 "作业" 页中看到复制日志的链接。
+此文件夹中将显示2组 csv 文件。 所有以**copiedfilelist**开头的文件都将包含已成功复制的文件列表。 所有以**failedfilelist**开头的文件都包含无法复制的文件，以及一条错误消息。
 
 
 ## <a name="next-steps"></a>后续步骤

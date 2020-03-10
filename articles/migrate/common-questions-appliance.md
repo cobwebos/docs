@@ -2,13 +2,13 @@
 title: Azure Migrate 设备常见问题
 description: 获取有关 Azure Migrate 设备的常见问题的解答。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 99f7fc7db79785f99b96e6076607e434e43e605f
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.date: 03/09/2020
+ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927329"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939283"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate 设备：常见问题
 
@@ -64,7 +64,7 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 
 下面是有关如何存储数据的详细信息：
 
-- 数据将安全地存储在 Microsoft 订阅中，并在删除 Azure Migrate 项目时被删除。
+- 收集的数据将安全地存储在 Microsoft 订阅中的 CosmosDB 中。 删除 Azure Migrate 项目时，数据将被删除。 存储由 Azure Migrate 处理。 不能为收集的数据专门选择存储帐户。
 - 如果使用[依赖关系可视化](concepts-dependency-visualization.md)，收集的数据将存储在 azure 订阅中创建的 azure Log Analytics 工作区的美国中。 删除订阅中的 "Log Analytics" 工作区时，数据将被删除。
 
 ## <a name="how-much-data-is-uploaded-during-continuous-profiling"></a>连续分析期间上传了多少数据？
@@ -88,9 +88,13 @@ Azure Migrate 设备收集的数据存储在创建 Azure Migrate 项目的 Azure
 3. 设备会收集有关过去个月内每个 VM 的 Vm （核心、内存、磁盘、Nic）和性能历史记录的配置数据。
 4. 收集的元数据将发送到 Azure Migrate： Server 评估工具（通过 internet 通过 HTTPS）进行评估。
 
-## <a name="can-i-connect-the-appliance-to-multiple-instances-of-vcenter-server"></a>是否可以将设备连接到 vCenter Server 的多个实例？
+## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Azure Migrate 设备是否可以连接到多个 vCenter 服务器？
 
-不是。 设备与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。
+不是。 [Azure Migrate 设备](migrate-appliance.md)与 vCenter Server 之间存在一对一的映射。 若要发现多个 vCenter Server 实例上的 Vm，必须部署多个设备。 
+
+## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Migrate 项目可以有多个设备吗？
+一个项目可以附加多个设备。 但是，一个设备只能与一个项目关联。 
+
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>可以通过设备发现多少 Vm 或服务器？
 

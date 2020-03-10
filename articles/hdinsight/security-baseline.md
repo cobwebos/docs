@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a0e6d96f2e3d2686bdf96e5d7e25bf801f0fa9e5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303267"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943943"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>适用于 HDInsight 的 Azure 安全基线
 
@@ -364,7 +364,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **责任**：客户
 
-## <a name="identity-and-access-control"></a>SQL Server 2008 联机丛书中的 Identity and Access Control
+## <a name="identity-and-access-control"></a>标识和访问控制
 
 *有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 

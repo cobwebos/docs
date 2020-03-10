@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b330b6176ba9cadc85fad81876caf2583021d503
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988628"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942996"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 认知搜索中的知识存储简介
 
@@ -147,3 +147,13 @@ REST API 版本 `2019-05-06-Preview` 通过技能集上的其他定义提供知�
 
 > [!div class="nextstepaction"]
 > [使用 Postman 和 REST 创建知识库](knowledge-store-create-rest.md)
+
+若要了解有关投影的详细信息，请参阅这些功能以及如何[在技能组合中对其进行定义](knowledge-store-projection-overview.md)
+
+> [!div class="nextstepaction"]
+> [知识存储中的投影](knowledge-store-projection-overview.md)
+
+有关涉及切片、内联造型和关系等高级投影概念的教程，请从[在知识存储中定义投影](knowledge-store-projections-examples.md)开始
+
+> [!div class="nextstepaction"]
+> [定义知识库中的投影](knowledge-store-projections-examples.md)

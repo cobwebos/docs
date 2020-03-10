@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/06/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c882d286a73900f58ef06e7c51b05c7237e39a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425346"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942894"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合安全信息注册（预览）
 
@@ -52,12 +52,13 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 | Microsoft Authenticator | 是（最多5个） | 否 | 是 |
 | 其他验证器应用 | 是（最多5个） | 否 | 是 |
 | 硬件令牌 | 否 | 否 | 是 |
-| 手机 | 是 | 是 | 是 |
+| 电话 | 是 | 是 | 是 |
 | 备用号码 | 是 | 是 | 是 |
 | 办公电话 | 否 | 否 | 否 |
 | 电子邮件 | 是 | 是 | 是 |
 | 安全提问 | 是 | 否 | 是 |
 | 应用密码 | 是 | 否 | 是 |
+| FIDO2 安全密钥<br />*托管模式，仅从 "[安全信息](https://mysignins.microsoft.com/security-info)" 页*| 是 | 是 | 是 |
 
 > [!NOTE]
 > 应用密码仅适用于已强制执行多重身份验证的用户。 对于通过条件性访问策略启用多重身份验证的用户，不能使用应用密码。
@@ -67,7 +68,7 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 - Microsoft Authenticator –通知。
 - 验证器应用或硬件令牌-代码。
 - 电话呼叫。
-- 文本消息。
+- 短信。
 
 由于我们继续将更多的身份验证方法添加到 Azure AD，因此这些方法将在组合注册中可用。
 

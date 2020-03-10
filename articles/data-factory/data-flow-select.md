@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: a255d89aa4850d1249f1af9bdd0cb43b0826914f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/08/2020
+ms.openlocfilehash: 2d04de420f743e4fef4cff4bd2912559dae0886a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930235"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934171"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>映射数据流选择转换
 
@@ -55,6 +55,11 @@ ms.locfileid: "74930235"
 当你选择 "基于规则的映射" 时，将指示 ADF 评估匹配的表达式，以匹配传入模式规则并定义传出字段名称。 可以添加基于字段和基于规则的映射的任意组合。 然后，在运行时，将基于源传入的元数据在运行时生成字段名称。 在调试过程中，可以使用 "数据预览" 窗格查看生成的字段的名称。
 
 [列模式文档](concepts-data-flow-column-pattern.md)中提供了有关模式匹配的更多详细信息。
+
+### <a name="use-rule-based-mapping-to-parameterize-the-select-transformation"></a>使用基于规则的映射参数化 Select 转换
+您可以使用基于规则的映射在选择转换中参数化字段映射。 使用关键字 ```name``` 根据参数检查传入的列名称。 例如，如果你有一个名为的数据流参数 ```mycolumn``` 你可以创建一个选择转换规则，该规则始终将你设置的任何列名称映射 ```mycolumn``` 到字段名称，如下所示：
+
+```name == $mycolumn```
 
 ## <a name="next-steps"></a>后续步骤
 * 使用 "选择重命名"、"重新排序" 和 "别名" 列后，使用[接收器转换](data-flow-sink.md)将数据插入到数据存储中。

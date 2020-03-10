@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443850"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944092"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -180,6 +180,10 @@ image: <server-name>.azurecr.io/<image-name>:<tag>
 根据 Azure 应用服务常规定价，按照应用运行小时数计费。
 
 ## <a name="other-questions"></a>其他问题
+
+**"请求的功能在资源组中不可用" 是什么意思？**
+
+使用 Azure 资源管理器（ARM）创建 web 应用时，可能会看到此消息。 根据当前的限制，对于同一资源组，不能在同一区域中混合使用 Windows 和 Linux 应用程序。
 
 **应用程序设置名称中支持的字符有哪些？**
 

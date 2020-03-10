@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca8d0daf5b6d9bbad0d8fa24b4b150c5e6cd6b73
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300904"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943643"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 azure 安全基线
 
@@ -360,7 +360,7 @@ https://docs.microsoft.com/azure/security-center/security-center-managing-and-re
 
 **责任**：不适用
 
-## <a name="identity-and-access-control"></a>SQL Server 2008 联机丛书中的 Identity and Access Control
+## <a name="identity-and-access-control"></a>标识和访问控制
 
 *有关详细信息，请参阅[安全控制：标识和访问控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
@@ -812,10 +812,10 @@ https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#imple
 **指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源（包括 Azure SQL Server 实例）。  确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅以及订阅中的资源。
 
 
-虽然可通过资源图发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
+尽管可以通过 Azure 资源关系图发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
 
 
-如何通过 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何通过 Azure 资源关系图创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 如何查看 Azure 订阅： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
@@ -886,7 +886,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 如何配置和管理 Azure 策略： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何通过 Azure Graph 创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何通过 Azure 资源关系图创建查询： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure 安全中心监视**：不适用
 

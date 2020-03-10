@@ -1,25 +1,18 @@
 ---
 title: 使用 Azure Active Directory 凭据登录到 Linux VM
 description: 了解如何创建和配置 Linux VM，以使用 Azure Active Directory 身份验证进行登录。
-services: virtual-machines-linux
-documentationcenter: ''
 author: iainfoulds
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 9980ad7af4a9e5db1d93ffb389ef7b04209b8c43
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eb303ecb5657e9312445093841cfa6c501efda18
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544610"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944801"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -48,11 +41,11 @@ ms.locfileid: "76544610"
 
 下面是目前（此功能的预览期间）受支持的 Linux 发行版：
 
-| 分配 | 版本 |
+| 分发 | 版本 |
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
-| openSUSE | openSUSE Leap 42.3 |
+| OpenSUSE | openSUSE Leap 42.3 |
 | RedHat Enterprise Linux | RHEL 6 和 RHEL 7 | 
 | SUSE Linux Enterprise Server | SLES 12 |
 | Ubuntu Server | Ubuntu 14.04 LTS、Ubuntu Server 16.04 和 Ubuntu Server 18.04 |
@@ -113,7 +106,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。
+成功将扩展安装到 VM 后，会显示 "*成功*" 的*provisioningState* 。 VM 需要运行的 VM 代理来安装扩展。 有关详细信息，请参阅[VM 代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 

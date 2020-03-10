@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/10/2018
-ms.openlocfilehash: 322f5306949b266958ded908e981ed530e8245c8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.date: 03/03/2020
+ms.openlocfilehash: e771bc152ab50f907a8f2ad384e887c00d3f627a
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227614"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933851"
 ---
 # <a name="transformation-with-azure-databricks"></a>与 Azure Databricks 转换
 
@@ -30,7 +30,7 @@ ms.locfileid: "78227614"
 
 模板不会创建计划的触发器，以确保此模板简单好用。 如有必要，可添加触发器。
 
-![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![1](media/solution-template-Databricks-notebook/pipeline-example.png)
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -41,13 +41,13 @@ ms.locfileid: "78227614"
 3. **导入笔记本以进行转换**。 
     1. 在 Azure Databricks 中，请参考以下屏幕截图，将**转换**笔记本导入到 Databricks 工作区。 它不必与下面的位置相同，但请记住你稍后选择的路径。
    
-       ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)    
+       ![2](media/solution-template-Databricks-notebook/import-notebook.png)    
     
     1. 选择 "导入源： **URL**"，然后在文本框中输入以下 URL：
     
        * `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`
         
-       ![3](media/solution-template-Databricks-notebook/Databricks-tutorial-image03.png)    
+       ![3](media/solution-template-Databricks-notebook/import-from-url.png)    
 
 4. 现在，让我们用存储连接信息更新**转换**笔记本。 在上面导入的笔记本中，切换到**命令 5** （如以下代码片段所示），并将 `<storage name>`和 `<access key>` 替换为你自己的存储连接信息。 确保此帐户就是先前创建的存储帐户，并确保它包含 `sinkdata` 容器。
 
@@ -75,9 +75,9 @@ ms.locfileid: "78227614"
 
 5.  为数据工厂生成“Databricks 访问令牌”以访问 Databricks。 **保存访问令牌**供以后用于创建 Databricks 链接服务，其外观类似于 "dapi32db32cbb4w6eee18b7d87e45exxxxxx"。
 
-    ![4](media/solution-template-Databricks-notebook/Databricks-tutorial-image04.png)
+    ![4](media/solution-template-Databricks-notebook/user-setting.png)
 
-    ![5](media/solution-template-Databricks-notebook/Databricks-tutorial-image05.png)
+    ![5](media/solution-template-Databricks-notebook/generate-new-token.png)
 
 ## <a name="how-to-use-this-template"></a>如何使用此模板
 
@@ -90,19 +90,19 @@ ms.locfileid: "78227614"
         可以使用包含此示例的源文件的公共 Blob 存储。 参考下面的配置屏幕截图。 使用以下**SAS URL**连接到源存储（只读访问）： 
         * `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-        ![6](media/solution-template-Databricks-notebook/Databricks-tutorial-image06.png)
+        ![6](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
     1.  **目标 Blob 连接**-用于将数据复制到中。 
         
         在接收器链接服务中，选择在**必备组件**1 中创建的存储。
 
-        ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
+        ![7](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
     1.  **Azure Databricks** –用于连接到 Databricks 群集。
 
         使用在**必备组件**中生成的访问密钥创建 Databricks 链接服务。 如果有交互式群集，可以选择该群集。 （此示例使用“新建作业群集”选项。）
 
-        ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
+        ![8](media/solution-template-Databricks-notebook/databricks-connection.png)
 
 1. 选择 "**使用此模板**"，将会看到创建的管道，如下所示：
     
@@ -114,20 +114,20 @@ ms.locfileid: "78227614"
 
 1.  为执行源可用性检查而创建了验证活动**可用性标志**。 在上一步中创建的*SourceAvailabilityDataset*被选为数据集。
 
-    ![12](media/solution-template-Databricks-notebook/Databricks-tutorial-image12.png)
+    ![12](media/solution-template-Databricks-notebook/validation-settings.png)
 
 1.  将创建复制活动**文件到 blob** ，以将数据集从源复制到接收器。 请参阅以下屏幕截图，了解复制活动中的源和接收器配置。
 
-    ![13](media/solution-template-Databricks-notebook/Databricks-tutorial-image13.png)
+    ![13](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-    ![14](media/solution-template-Databricks-notebook/Databricks-tutorial-image14.png)
+    ![14](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
 1.  将创建一个笔记本活动**转换**，并选择在上一步中创建的链接服务。
-    ![16](media/solution-template-Databricks-notebook/Databricks-tutorial-image16.png)
+    ![16](media/solution-template-Databricks-notebook/notebook-activity.png)
 
      1. 选择 "**设置**" 选项卡。对于*笔记本路径*，模板默认情况下会定义一个路径。 你可能需要浏览并选择在**必备组件**2 中上传的正确笔记本路径。 
 
-         ![17](media/solution-template-Databricks-notebook/databricks-tutorial-image17.png)
+         ![17](media/solution-template-Databricks-notebook/notebook-settings.png)
     
      1. 查看创建的*基本参数*，如屏幕截图中所示。 它们将从数据工厂传递到 Databricks 笔记本。 
 
@@ -135,16 +135,16 @@ ms.locfileid: "78227614"
 
 1.  **管道参数**的定义如下。
 
-    ![15](media/solution-template-Databricks-notebook/Databricks-tutorial-image15.png)
+    ![15](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. 设置数据集。
     1.  创建**SourceAvailabilityDataset**以检查源数据是否可用。
 
-        ![9](media/solution-template-Databricks-notebook/Databricks-tutorial-image09.png)
+        ![9](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
     1.  **SourceFilesDataset** -用于复制源数据。
 
-        ![10](media/solution-template-Databricks-notebook/Databricks-tutorial-image10.png)
+        ![10](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
     1.  **DestinationFilesDataset** -用于复制到接收器/目标位置。
 
@@ -152,16 +152,16 @@ ms.locfileid: "78227614"
 
         2.  文件路径- *sinkdata/staged_sink*。
 
-            ![11](media/solution-template-Databricks-notebook/Databricks-tutorial-image11.png)
+            ![11](media/solution-template-Databricks-notebook/destination-dataset.png)
 
 
 1.  选择 "**调试**" 以运行管道。 可以找到 Databricks 日志的链接以获取更详细的 Spark 日志。
 
-    ![18](media/solution-template-Databricks-notebook/Databricks-tutorial-image18.png)
+    ![18](media/solution-template-Databricks-notebook/pipeline-run-output.png)
 
     还可以使用存储资源管理器验证数据文件。 （为了与数据工厂管道运行相关联，此示例将管道运行 ID 从数据工厂附加到输出文件夹。 这样，就可以追溯每次运行生成的文件。）
 
-    ![19](media/solution-template-Databricks-notebook/Databricks-tutorial-image19.png)
+    ![19](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>后续步骤
 

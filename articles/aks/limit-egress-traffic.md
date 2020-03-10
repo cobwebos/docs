@@ -4,12 +4,12 @@ description: 了解控制 Azure Kubernetes Service （AKS）中的出口流量�
 services: container-service
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: d69921ce23e961879fea6be68838f86bfcc703d0
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b40415fa78b48d506800049e72c864fb3cab3e29
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191293"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946397"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service （AKS）中群集节点的出口流量
 
@@ -34,7 +34,7 @@ ms.locfileid: "78191293"
 
 > [!IMPORTANT]
 > 使用 Azure 防火墙限制传出流量并创建用户定义的路由（UDR）来强制所有传出流量时，请确保在防火墙中创建适当的 DNAT 规则，以正确允许入口流量。 使用带有 UDR 的 Azure 防火墙会断开入口设置，因为不对称路由。 （如果 AKS 子网有一个默认路由，该路由转到防火墙的专用 IP 地址，但使用的是公共负载均衡器入口或类型为： LoadBalancer 的 Kubernetes 服务，则会出现此问题。 在这种情况下，将通过负载均衡器的公共 IP 地址接收传入的负载均衡器流量，但返回路径将通过防火墙的专用 IP 地址。 由于防火墙是有状态的，因此它会删除返回的数据包，因为防火墙无法识别已建立的会话。 若要了解如何将 Azure 防火墙与入口或服务负载均衡器集成，请参阅将[Azure firewall 与 azure 标准负载均衡器集成](https://docs.microsoft.com/azure/firewall/integrate-lb)。
-> 你可以使用传出工作节点 IP 和 API 服务器 IP 之间的网络规则锁定 TCP 端口9000和 TCP 端口22的流量。
+> 你可以使用传出工作节点 IP 和 API 服务器 IP 之间的网络规则锁定 TCP 端口9000、TCP 端口22和 UDP 端口1194的流量。
 
 在 AKS 中，有两组端口和地址：
 
@@ -50,7 +50,7 @@ AKS 群集需要以下出站端口/网络规则：
 
 * TCP 端口*443*
 * TCP [IPAddrOfYourAPIServer]：如果有应用需要与 API 服务器通信，则需要443。  创建群集后，可以设置此更改。
-* TCP 端口*9000*和 tcp 端口*22* （用于隧道前端盒）与 API 服务器上的隧道通信。
+* TCP 端口*9000*、tcp 端口*22*和 UDP 端口*1194* （用于隧道前端盒）与 API 服务器上的隧道通信。
     * 若要获取更具体的信息，请参阅下表中的 * *\<位置\>azmk8s.io*和 * *\<. azmk8s.io 地址\>。*
 * UDP 端口*123* ，适用于网络时间协议（NTP）时间同步（Linux 节点）。
 * 如果你有直接访问 API 服务器的 pod，则还需要使用 UDP 端口*53*作为 DNS。
@@ -60,29 +60,34 @@ AKS 群集需要以下出站端口/网络规则：
 > [!IMPORTANT]
 > **blob.core.windows.net 和 aksrepos.azurecr.io**不再需要用于出口锁定的 FQDN 规则。 *  对于现有群集，请使用 `az aks upgrade` 命令[执行群集升级操作][aks-upgrade]以删除这些规则。
 
+> [!IMPORTANT]
+> *. cdn.mscr.io 已被 data.mcr.microsoft.com 用于 Azure 公有云区域。 请升级现有防火墙规则，以使更改生效。
+
 - Azure 全球
 
 | FQDN                       | 端口      | 用途      |
 |----------------------------|-----------|----------|
-| \* hcp。\<location\>. azmk8s.io | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
-| *. 运行。\<location\>. azmk8s.io | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| \* hcp。\<location\>. azmk8s.io | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| *. 运行。\<location\>. azmk8s.io | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| *.cdn.mscr.io       | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
 | mcr.microsoft.com          | HTTPS:443 | 访问 Microsoft 容器注册表（MCR）中的图像需要此地址。 此注册表包含升级和缩放群集期间群集正常运行所需的第一方映像/图表（例如，小鲸鱼等） |
-| *.cdn.mscr.io              | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
 | management.azure.com       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
 | login.microsoftonline.com  | HTTPS:443 | 此地址是 Azure Active Directory 身份验证所必需的。 |
 | ntp.ubuntu.com             | UDP：123   | 对于 Linux 节点上的 NTP 时间同步，此地址是必需的。 |
 | packages.microsoft.com     | HTTPS:443 | 此地址是用于缓存*apt*操作的 Microsoft 包存储库。  示例包包括小鲸鱼、PowerShell 和 Azure CLI。 |
-| acs-mirror.azureedge.net   | HTTPS:443 | 此地址适用于安装所需的二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
+| acs-mirror.azureedge.net      | HTTPS:443 | 此地址适用于安装所需的二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
 
 - Azure 中国世纪互联
 
 | FQDN                       | 端口      | 用途      |
 |----------------------------|-----------|----------|
-| \* hcp。\<location\>. cx.prod.service.azk8s.cn | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
-| *. 运行。\<location\>. cx.prod.service.azk8s.cn | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| \* hcp。\<location\>. cx.prod.service.azk8s.cn | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| *. 运行。\<location\>. cx.prod.service.azk8s.cn | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
 | *. azk8s.cn        | HTTPS:443 | 下载所需的二进制文件和映像需要此地址|
 | mcr.microsoft.com          | HTTPS:443 | 访问 Microsoft 容器注册表（MCR）中的图像需要此地址。 此注册表包含升级和缩放群集期间群集正常运行所需的第一方映像/图表（例如，小鲸鱼等） |
-| *.cdn.mscr.io              | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
+| *.cdn.mscr.io       | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
 | management.chinacloudapi.cn       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
 | login.chinacloudapi.cn  | HTTPS:443 | 此地址是 Azure Active Directory 身份验证所必需的。 |
 | ntp.ubuntu.com             | UDP：123   | 对于 Linux 节点上的 NTP 时间同步，此地址是必需的。 |
@@ -92,15 +97,16 @@ AKS 群集需要以下出站端口/网络规则：
 
 | FQDN                       | 端口      | 用途      |
 |----------------------------|-----------|----------|
-| \* hcp。\<location\>. cx.aks.containerservice.azure.us | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
-| *. 运行。\<location\>. cx.aks.containerservice.azure.us | HTTPS：443，TCP：22，TCP：9000 | 此地址为 API 服务器终结点。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| \* hcp。\<location\>. cx.aks.containerservice.azure.us | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
+| *. 运行。\<location\>. cx.aks.containerservice.azure.us | HTTPS：443，TCP：22，TCP：9000，UDP：1194 | 节点 < > API 服务器通信需要此地址。 将 *\<位置*替换为部署 AKS 群集的区域\>。 |
 | mcr.microsoft.com          | HTTPS:443 | 访问 Microsoft 容器注册表（MCR）中的图像需要此地址。 此注册表包含升级和缩放群集期间群集正常运行所需的第一方映像/图表（例如，小鲸鱼等） |
-| *.cdn.mscr.io              | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
+|*.cdn.mscr.io              | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
+| *. data.mcr.microsoft.com             | HTTPS:443 | Azure 内容分发网络（CDN）支持的 MCR 存储需要此地址。 |
 | management.usgovcloudapi.net       | HTTPS:443 | 此地址是 Kubernetes GET/PUT 操作所必需的。 |
 | login.microsoftonline.us  | HTTPS:443 | 此地址是 Azure Active Directory 身份验证所必需的。 |
 | ntp.ubuntu.com             | UDP：123   | 对于 Linux 节点上的 NTP 时间同步，此地址是必需的。 |
 | packages.microsoft.com     | HTTPS:443 | 此地址是用于缓存*apt*操作的 Microsoft 包存储库。  示例包包括小鲸鱼、PowerShell 和 Azure CLI。 |
-| acs-mirror.azureedge.net   | HTTPS:443 | 此地址适用于安装所需的二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
+| acs-mirror.azureedge.net      | HTTPS:443 | 此地址适用于安装所需的二进制文件（如 kubenet 和 Azure CNI）所需的存储库。 |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>适用于 AKS 群集的可选推荐地址和端口
 
@@ -128,8 +134,8 @@ AKS 群集需要以下出站端口/网络规则：
 
 | FQDN                                    | 端口      | 用途      |
 |-----------------------------------------|-----------|----------|
-| dc.services.visualstudio.com | HTTPS:443  | 这适用于使用 Azure Monitor 的正确指标和监视遥测。 |
-| *.ods.opinsights.azure.com    | HTTPS:443 | Azure Monitor 用于引入 log analytics 数据。 |
+| dc.services.visualstudio.com | HTTPS:443    | 这适用于使用 Azure Monitor 的正确指标和监视遥测。 |
+| *.ods.opinsights.azure.com    | HTTPS:443    | Azure Monitor 用于引入 log analytics 数据。 |
 | *.oms.opinsights.azure.com | HTTPS:443 | 此地址由用于对 log analytics 服务进行身份验证的 omsagent 使用。 |
 |*.microsoftonline.com | HTTPS:443 | 这用于验证度量值并将其发送到 Azure Monitor。 |
 |*.monitoring.azure.com | HTTPS:443 | 此值用于将指标数据发送到 Azure Monitor。 |
@@ -156,7 +162,7 @@ AKS 群集需要以下出站端口/网络规则：
 |-----------------------------------------|-----------|----------|
 | gov-prod-policy-data.trafficmanager.net | HTTPS:443 | 此地址用于正确操作 Azure 策略。 （目前在 AKS 中为预览版） |
 | raw.githubusercontent.com | HTTPS:443 | 此地址用于从 GitHub 请求内置策略，以确保 Azure 策略的正确操作。 （目前在 AKS 中为预览版） |
-| \* gk。\<location\>. azmk8s.io | HTTPS:443   | 与在主服务器上运行的网关审核终结点通信以获取审核结果的 Azure 策略附加项。 |
+| \* gk。\<location\>. azmk8s.io | HTTPS:443    | 与在主服务器上运行的网关审核终结点通信以获取审核结果的 Azure 策略附加项。 |
 | dc.services.visualstudio.com | HTTPS:443 | 向 application insights 终结点发送遥测数据的 Azure 策略外接程序。 |
 
 ## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已启用基于 Windows Server 的节点（公共预览版中）的要求

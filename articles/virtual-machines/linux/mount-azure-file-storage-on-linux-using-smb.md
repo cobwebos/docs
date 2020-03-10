@@ -1,24 +1,18 @@
 ---
 title: 使用 SMB 在 Linux VM 上装载 Azure 文件存储
 description: 如何通过 Azure CLI 使用 SMB 在 Linux VM 上装载 Azure 文件存储
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0918cfda81be93982c1ca6eccce0c116ac65ca28
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7b9b536def2aa7da25fef9f3baa5efdd8b0ed6f7
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035660"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944617"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>使用 SMB 在 Linux VM 上装载 Azure 文件存储
 
@@ -41,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
 
-使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 *mySTORAGEACCT\<random number>* 的存储帐户，然后将该存储帐户的名称置于变量 **STORAGEACCT** 中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
+使用 [az storage account create](/cli/azure/storage/account) 在创建的资源组中创建一个新存储帐户。 此示例创建一个名为 MySTORAGEACCT 的存储帐户， *\<随机数 >* 并将该存储帐户的名称放在**STORAGEACCT**变量中。 存储帐户名称必须唯一，请使用 `$RANDOM` 将一个数字追加到名称末尾，使之变得唯一。
 
 ```bash
 STORAGEACCT=$(az storage account create \

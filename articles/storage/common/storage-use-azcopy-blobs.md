@@ -8,12 +8,12 @@ ms.date: 10/22/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f218c64d3ffe4955877516551a29376372144598
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526716"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933576"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>用 AzCopy 和 Blob 存储传输数据
 
@@ -73,7 +73,8 @@ AzCopy 是一个命令行实用工具，可用于在存储帐户之间复制数�
 还可以通过在文件路径或文件名中的任意位置使用通配符（*）来上传文件。 例如： `'C:\myDirectory\*.txt'`或 `C:\my*\*.txt`。
 
 > [!NOTE]
-> 默认情况下，AzCopy 将数据上传到块 blob。 若要将文件上传为追加 Blob 或页 Blob，请使用标志 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+> 默认情况下，AzCopy 将数据作为块 blob 上传。 若要将文件上传为追加 Blob 或页 Blob，请使用标志 `--blob-type=[BlockBlob|PageBlob|AppendBlob]`。
+> 默认情况下，AzCopy 将上载您的数据以继承帐户访问层。 若要将文件上传到特定的[访问层](../blobs/storage-blob-storage-tiers.md)，请使用标志 `--block-blob-tier=[Hot|Cool|Archive]`。
 
 ### <a name="upload-a-directory"></a>上传目录
 

@@ -4,12 +4,12 @@ description: 如何部署 Azure 区块链工作台预览版
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 141bb8825e47eb2309f9f551990a2976e8f4e209
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189190"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943203"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>部署 Azure 区块链工作台预览版
 
@@ -135,7 +135,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
 
     ![应用服务概要](media/deploy/app-service.png)
 
-若要将自定义域名与 Blockchain Workbench 相关联，请参阅[使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名](../../app-service/web-sites-traffic-manager-custom-domain-name.md)。
+若要将自定义域名与 Blockchain Workbench 相关联，请参阅[使用流量管理器为 Azure 应用服务中的 Web 应用配置自定义域名](../../app-service/configure-domain-traffic-manager.md)。
 
 ## <a name="azure-ad-configuration-script"></a>Azure AD 配置脚本
 

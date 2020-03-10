@@ -1,36 +1,26 @@
 ---
-title: 在 Azure 中移动 Linux VM
-description: 在 Resource Manager 部署模型中将 Linux VM 移到其他 Azure 订阅或资源组。
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用 Azure CLI 移动 VM
+description: 使用 Azure CLI 将 VM 移到另一个 Azure 订阅或资源组。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d635f0a5-4458-4b95-a5f8-eed4f41eb4d4
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979029"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944587"
 ---
-# <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>将 Linux VM 移到其他订阅或资源组
-本文逐步说明如何在资源组或订阅之间移动 Linux 虚拟机 (VM)。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
+# <a name="move-a-vm-to-another-subscription-or-resource-group"></a>将 VM 移到其他订阅或资源组
+本文逐步讲解如何在资源组或订阅之间移动虚拟机（VM）。 如果在个人订阅中创建了 VM，现在想要将其移到公司的订阅，则在订阅之间移动 VM 会很方便。
 
 > [!IMPORTANT]
->不可在此时移动 Azure 托管磁盘。
->
 >在移动过程中将创建新的资源 ID。 移动 VM 后，需要更新工具和脚本以使用新的资源 ID。
 >
->
+
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>使用 Azure CLI 移动 VM
 

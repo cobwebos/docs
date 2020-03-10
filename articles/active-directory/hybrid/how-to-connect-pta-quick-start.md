@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fe38b434c4e54b375b22d76c573d3bbe88b0e16
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be6a6e9231b13c47d1421543464c720f6283b5f9
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889934"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78376179"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 直通身份验证：快速入门
 
@@ -66,9 +66,9 @@ ms.locfileid: "74889934"
      | **8080**（可选） | 如果端口 443 不可用，身份验证代理每隔十分钟通过端口 8080 报告其状态。 此状态显示在 Azure AD 门户上。 用户登录不会使用端口 8080。 |
      
      如果防火墙根据原始用户强制实施规则，请打开这些端口以允许来自作为网络服务运行的 Windows 服务的流量。
-   - 如果防火墙或代理允许执行 DNS 允许列表，可以将与 \*.msappproxy.net和 \*.servicebus.windows.net的连接加入允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果防火墙或代理允许执行 DNS 允许列表，可以将与 **.msappproxy.net \*** 和 **.servicebus.windows.net \*** 的连接加入允许列表。 否则，请允许访问每周更新的 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 身份验证代理首次注册需要访问 login.windows.net和 login.microsoftonline.net。 另外，还请为这些 URL 打开防火墙。
-   - 对于证书验证，请取消阻止以下 Url： **mscrl.microsoft.com:80**、 **crl.microsoft.com:80**、 **ocsp.msocsp.com:80**和**www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
+   - 为了进行验证证书，请取消阻止以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由于这些 URL 与其他 Microsoft 产品一起用于证书验证，因此可能已取消阻止这些 URL。
 
 ## <a name="step-2-enable-the-feature"></a>步骤 2：启用功能
 
@@ -131,7 +131,7 @@ ms.locfileid: "74889934"
 ![Azure Active Directory 管理中心：“下载代理”窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理之前，请查看并接受其[服务条款](https://aka.ms/authagenteula)。
+>也可以直接[下载身份验证代理软件](https://aka.ms/getauthagent)。 安装身份验证代理_之前_，请查看并接受其[服务条款](https://aka.ms/authagenteula)。
 
 以下是部署独立身份验证代理的两种方法：
 
@@ -140,15 +140,15 @@ ms.locfileid: "74889934"
 其次，还可以创建并运行无人参与的部署脚本。 如果希望同时部署多个身份验证代理，或在没有启用用户界面的 Windows 服务器上安装身份验证代理，或无法使用远程桌面进行访问时，这种方法非常有用。 以下是如何使用此方法的说明：
 
 1. 运行以下命令以安装身份验证代理：`AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`。
-2. 可以通过我们的服务使用 Windows PowerShell 注册身份验证代理。 创建包含租户全局管理用户名和密码的 PowerShell 凭据对象 `$cred`。 运行以下命令，替换 \<用户名\> 和 \<密码\>：
+2. 可以通过我们的服务使用 Windows PowerShell 注册身份验证代理。 创建包含租户全局管理用户名和密码的 PowerShell 凭据对象 `$cred`。 运行以下命令，替换 *用户名\< 和 \>密码* *\<\>* ：
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
-3. 转到 C:\Program Files\Microsoft Azure AD Connect Authentication Agent 并使用创建的 `$cred` 对象运行以下脚本：
+3. 转到 C:\Program Files\Microsoft Azure AD Connect Authentication Agent 并使用创建的  **对象运行以下脚本**`$cred`：
 
-        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
 >如果在虚拟机上安装了身份验证代理，则无法克隆虚拟机以安装其他身份验证代理。 此方法不**受支持**。

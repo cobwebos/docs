@@ -1,21 +1,19 @@
 ---
 title: 使用 REST API 获取 Azure 虚拟机使用情况数据
 description: 使用 Azure REST API 收集虚拟机的使用情况指标。
-services: virtual-machines
 author: rloutlaw
-ms.reviewer: routlaw
-manager: gwallace
-ms.service: load-balancer
+ms.service: virtual-machines
+ms.subservice: monitoring
 ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035813"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944756"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 获取虚拟机使用情况指标
 
@@ -38,7 +36,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 |请求标头|说明|  
 |--------------------|-----------------|  
 |Content-Type：|必需。 设置为 `application/json`。|  
-|Authorization：|必需。 设置为有效的 `Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|Authorization：|必需。 设置为有效的`Bearer` [访问令牌](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 参数
 

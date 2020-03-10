@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e28403d905a25e9e792b3b1f31b79c39cd7728b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5b29f84931c169ffe1c2c81d5e32201cbc63fc88
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522079"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942872"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>使用 Azure Active Directory （预览）启用无密码安全密钥登录到本地资源
 
@@ -50,6 +50,7 @@ Azure AD Kerberos Server 对象在本地 Active Directory 中创建，然后安�
 
 - 设备必须运行 Windows 10 内部版本18945或更高版本。
 - 您必须具有[Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect)版本的1.4.32.0 或更高版本。
+  - 有关可用 Azure AD 混合身份验证选项的详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../../security/fundamentals/choose-ad-authn.md)，并[选择要用于 Azure AD Connect 的安装类型](../hybrid/how-to-connect-install-select-installation.md)。
 - Windows Server 域控制器必须安装下列修补程序：
     - 对于 Windows Server 2016- https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
     - 对于 Windows Server 2019- https://support.microsoft.com/help/4534321/windows-10-update-kb4534321

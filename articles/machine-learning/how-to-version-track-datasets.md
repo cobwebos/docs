@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sihhu
 author: sihhu
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 7b124c0f35b5cfda4380555385971e4968d4c45c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834798"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939247"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>试验中的版本和跟踪数据集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "75834798"
 * 当新数据可用于重新训练时
 * 应用不同的数据准备或功能设计方法时
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 对于本教程的内容，你需要：
 
@@ -60,6 +60,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'titanic training data',
                                  create_new_version = True)
 ```
+你还可以在中注册数据集的新版本 
 
 ### <a name="retrieve-a-dataset-by-name"></a>按名称检索数据集
 
@@ -120,7 +121,7 @@ dataset2.register(workspace = workspace,
 
 您可以使用 dataset 作为每个机器学习管道步骤的输入和输出。 重新运行管道时，每个管道步骤的输出将注册为新的数据集版本。
 
-由于机器学习管道会在每次管道重新运行时将每个步骤的输出填充到新文件夹中，因此，版本控制的输出数据集是可重复的。
+由于机器学习管道会在每次管道重新运行时将每个步骤的输出填充到新文件夹中，因此，版本控制的输出数据集是可重复的。 详细了解[管道中的数据集](how-to-create-your-first-pipeline.md#steps)。
 
 ```Python
 from azureml.core import Dataset
@@ -169,7 +170,7 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-还可以通过使用[Azure 机器学习 studio](https://ml.azure.com/)查找试验 `input_datasets`。 
+还可以通过使用 https://ml.azure.com/从试验中查找 `input_datasets`。 
 
 下图显示了在何处查找 Azure 机器学习 studio 中实验的输入数据集。 在此示例中，请参阅**试验**窗格，并打开试验的特定运行的 "**属性**" 选项卡，`keras-mnist`。
 
@@ -183,7 +184,9 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-注册后，可以使用 Python 或[Azure 机器学习 studio](https://ml.azure.com/)来查看向数据集注册的模型列表。 以下视图来自 "**资产**" 下的 "**数据集**" 窗格。 选择数据集，然后选择 "**模型**" 选项卡，获取向数据集注册的模型的列表。 
+注册后，可以通过使用 Python 或中转到 https://ml.azure.com/查看向数据集注册的模型列表。
+
+以下视图来自 "**资产**" 下的 "**数据集**" 窗格。 选择数据集，然后选择 "**模型**" 选项卡，获取向数据集注册的模型的列表。 
 
 ![输入数据集模型](./media/how-to-version-track-datasets/dataset-models.png)
 

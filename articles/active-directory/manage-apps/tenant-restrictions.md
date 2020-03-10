@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276509"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942854"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租户限制管理对 SaaS 云应用程序的访问
 
@@ -60,7 +60,7 @@ ms.locfileid: "74276509"
 
 需要以下配置才能通过代理基础结构启用租户限制。 本指南的内容是概括性的，有关具体的实施步骤，请参阅代理供应商的文档。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 - 代理必须能够使用 FQDN/URL 执行 SSL 截获，HTTP 标头插入和目标筛选。
 
@@ -105,12 +105,15 @@ ms.locfileid: "74276509"
 
 指定为受限制访问上下文租户的租户的管理员可以使用此报告来查看由于租户限制策略而被阻止的登录，包括使用的标识和目标目录 ID。 如果设置限制的租户是登录的用户租户或资源租户，则会包含登录。
 
+> [!NOTE]
+> 当用户处于受限制访问上下文租户之外的其他租户时，该报表可能包含有限信息，例如目标目录 ID。 在这种情况下，将屏蔽用户身份信息（如名称和用户主体名称），以保护其他租户中的用户数据。
+
 与使用 Azure 门户中的其他报告时一样，可以使用筛选器来指定报告的范围。 你可以按特定的时间间隔、用户、应用程序、客户端或状态进行筛选。 如果选择 "**列**" 按钮，则可以选择显示具有以下字段的任意组合的数据：
 
-- **User**
+- **用户**
 - **应用程序**
 - **Status**
-- **日期**
+- **Date**
 - **Date （utc）** （其中，Utc 是协调世界时）
 - **MFA**身份验证方法（多重身份验证方法）
 - **MFA 身份验证详细信息**（多重身份验证详细信息）

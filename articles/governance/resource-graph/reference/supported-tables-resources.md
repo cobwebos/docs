@@ -1,14 +1,14 @@
 ---
 title: 支持的资源管理器资源类型
 description: 提供 Azure 资源关系图支持的资源管理器资源类型列表和更改历史记录。
-ms.date: 03/05/2020
+ms.date: 03/09/2020
 ms.topic: reference
-ms.openlocfilehash: 597e1c2f7e04a7861099763d809ac09978e09805
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 9844b2fe7f1cbaf069789a4083229b4a6f37f38f
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399603"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943974"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure 资源关系图表和资源类型引用
 
@@ -122,6 +122,7 @@ Azure 资源 Graph 支持以下[azure 资源管理器](../../../azure-resource-m
 - virtualmachinescalesets/计算
 - containerinstance/containergroups
 - microsoft.containerregistry/注册表
+- microsoft.containerregistry/注册表/agentpools
 - microsoft.containerregistry/注册表/buildtasks
 - microsoft.containerregistry/注册表/复制
 - microsoft.containerregistry/注册表/taskruns
@@ -152,6 +153,7 @@ Azure 资源 Graph 支持以下[azure 资源管理器](../../../azure-resource-m
 - dbforpostgresql/servergroups
 - dbforpostgresql/服务器
 - dbforpostgresql/serversv2
+- dbforpostgresql/singleservers
 - deploymentmanager/artifactsources
 - deploymentmanager/部署
 - deploymentmanager/servicetopologies
@@ -413,6 +415,7 @@ Azure 资源 Graph 支持以下[azure 资源管理器](../../../azure-resource-m
 - microsoft.web/connections
 - system.web/customapis
 - system.web/hostingenvironments
+- system.web/kubeenvironments
 - system.web/serverfarms
 - microsoft.web/sites
 - system.web/sites/premieraddons

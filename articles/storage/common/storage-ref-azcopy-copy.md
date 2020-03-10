@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905502"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933780"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -147,31 +147,31 @@ azcopy copy [source] [destination] [flags]
 
 使用访问密钥和 SAS 令牌将单个对象从 Amazon Web Services （AWS） S3 复制到 Blob 存储。 首先，为 AWS S3 源设置环境变量 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
   
-- azcopy cp "https://s3.amazonaws.com/ [bucket]/[object]" "https：//[destaccount]/[container]/[path/to/blob]？[SAS] "
+- azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https：//[destaccount]/[container]/[path/to/blob]？[SAS] "
 
 使用访问密钥和 SAS 令牌将整个目录从 AWS S3 复制到 Blob 存储。 首先，为 AWS S3 源设置环境变量 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/ [bucket]/[folder]" "https：//[destaccount]/[container]/[path/to/directory]？[SAS] "--recursive = true
+- azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https：//[destaccount]/[container]/[path/to/directory]？[SAS] "--recursive = true
 
-请参阅 https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html ，以更好地了解 "[文件夹]" 占位符。
+请参阅 https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html，以更好地了解 "[文件夹]" 占位符。
 
 使用访问密钥和 SAS 令牌将所有存储桶从 Amazon Web Services （AWS）复制到 Blob 存储。 首先，为 AWS S3 源设置环境变量 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/ " https：//[destaccount]. l w？[SAS] "--recursive = true
+- azcopy cp "https://s3.amazonaws.com/" https：//[destaccount]. l w？[SAS] "--recursive = true
 
 使用访问密钥和 SAS 令牌将所有存储桶从 Amazon Web Services （AWS）区域复制到 Blob 存储。 首先，为 AWS S3 源设置环境变量 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3- [region]. amazonaws/" "https：//[destaccount][SAS] "--recursive = true
+- azcopy cp "https://s3-[region]. amazonaws/" "https：//[destaccount][SAS] "--recursive = true
 
 使用存储桶名称中的通配符（*）复制存储桶的子集。 如前面的示例所示，你将需要一个访问密钥和一个 SAS 令牌。 请确保为 AWS S3 源设置环境变量 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopy cp "https://s3.amazonaws.com/ [bucket * name]/" "https：//[destaccount][SAS] "--recursive = true
+- azcopy cp "https://s3.amazonaws.com/[bucket * name]/" "https：//[destaccount][SAS] "--recursive = true
 
 ## <a name="options"></a>选项
 
 **--blob 类型**字符串定义目标中的 blob 类型。 这用于上传 blob 以及在帐户之间复制（默认值为 "检测"）。 有效值包括 "检测"、"BlockBlob"、"PageBlob" 和 "AppendBlob"。 在帐户之间复制时，值 "检测" 会导致 AzCopy 使用源 blob 的类型来确定目标 blob 的类型。 在上传文件时，"检测" 确定该文件是基于文件扩展名的 VHD 还是 VHDX 文件。 如果文件网 VHD 或 VHDX 文件，则 AzCopy 会将文件视为页 blob。 （默认值为 "检测"）
 
-**--块 blob 层**字符串上传将块 blob 用于使用此 blob 层的 Azure 存储。 （默认值为 "无"）
+**--块 blob-** 将块 Blob 直接上传到所选的[访问层](../blobs/storage-blob-storage-tiers.md)。 （默认值为 "无"）。 有效值包括 "无"、"热"、"冷" 和 "存档"。 如果未传递 "无" 或任何层，则 blob 将继承存储帐户的层。
 
 **--块大小-mb**浮点：在上传到 azure 存储时使用此块大小（在 MiB 中指定），并从 Azure 存储空间下载。 默认值是根据文件大小自动计算的。 允许使用小数小数（例如：0.25）。
 

@@ -1,21 +1,18 @@
 ---
 title: 通过 Azure Site Recovery 将 Linux Vm 迁移到 Azure 高级存储
 description: 使用 Site Recovery 将现有虚拟机迁移到 Azure 高级存储。 高级存储为 Azure 虚拟机上运行的 I/O 密集型工作负载提供高性能、低延迟的磁盘支持。
-services: virtual-machines-linux,storage
-cloud: Azure
 author: luywang
 ms.service: virtual-machines-linux
-ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: b8c299869da003d8dc4e9ac111ba8c5e8bb27345
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035826"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944832"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 迁移到高级存储
 
@@ -65,7 +62,7 @@ Site Recovery 支持多种类型的、停机时间极短或不造成停机的故
 * 故障转移时创建的 VM 要连接到的 Azure 虚拟网络。 Azure 虚拟网络必须位于 Site Recovery 运行所在的同一区域。
 * 存储复制日志的 Azure 标准存储帐户。 可以是要迁移的 VM 磁盘的同一存储帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 在上一部分中了解相关的迁移方案组件。
 * 了解 [Site Recovery 中的故障转移](../../site-recovery/site-recovery-failover.md)，规划停机时间。

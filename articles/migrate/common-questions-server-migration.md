@@ -3,12 +3,12 @@ title: Azure Migrate Server 迁移常见问题解答
 description: 获取有关使用 Azure Migrate 服务器迁移迁移计算机的常见问题的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 273ef746e685afcf9f3654963dd9c6bd5b855b24
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927519"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78939196"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 迁移：常见问题
 
@@ -74,6 +74,19 @@ Azure Migrate 将网络块设备（NBD）协议与 SSL 加密配合使用。
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>使用无代理迁移，可以一次复制多少个 Vm？
 
 目前，可以同时迁移每个 vCenter Server 的 100 Vm。 成批迁移10个虚拟机。
+
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>何时将计算机作为物理服务器迁移？
+
+通过将计算机视为物理服务器来迁移计算机在许多情况下很有用：
+
+- 正在迁移本地物理服务器。
+- 如果迁移的是虚拟化的 Vm，请使用诸如 Xen、KVM 等平台。
+- 若要迁移 Hyper-v 或 VMware Vm，如果出于某种原因，你无法使用适用于[hyper-v](tutorial-migrate-hyper-v.md)的标准迁移过程或[vmware](server-migrate-overview.md)迁移。 例如，如果你未运行 VMware vCenter，且仅使用 ESXi 主机。
+- 将当前在私有云中运行的虚拟机迁移到 Azure
+- 如果要将在公有云中运行的 Vm （例如 Amazon Web Services （AWS）或 Google Cloud Platform （GCP））迁移到 Azure。
+
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>是否需要 VMware vCenter 才能迁移 VMware Vm？
+若要使用基于 VMware 代理或无代理迁移迁移[Vmware vm](server-migrate-overview.md) ，则必须通过 VCenter Server 管理 vm 所在的 ESXi 主机。 如果没有 vCenter Server，则可以通过将 VMware Vm 作为物理服务器进行迁移来将其迁移。 [了解详细信息](migrate-support-matrix-physical-migration.md)。
  
 ## <a name="next-steps"></a>后续步骤
 

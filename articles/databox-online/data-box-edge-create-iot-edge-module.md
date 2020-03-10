@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 3aa1190fb713c2fbdedcb1ce84a65d4263693827
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315820"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942543"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>开发C# IoT Edge 模块以在 Data Box Edge 上移动文件
 
@@ -40,7 +40,7 @@ ms.locfileid: "71315820"
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
 
@@ -53,7 +53,7 @@ ms.locfileid: "71315820"
 - 以下开发资源：
 
     - [Visual Studio Code](https://code.visualstudio.com/)。
-    - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
+    - [适用于 Visual Studio Code 的 C# 扩展（由 OmniSharp 提供支持）](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。
     - [适用于 Visual Studio Code 的 Azure IoT Edge 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
     - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows)。 你可能需要创建一个帐户来下载并安装该软件。
@@ -92,8 +92,8 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 创建可以使用自己的代码自定义的 C# 解决方案模板。
 
 1. 在 Visual Studio Code 中，选择“查看”>“命令面板”，以打开 VS Code 命令面板。
-2. 在命令面板中，输入并运行命令“Azure:Sign in”并按照说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
-3. 在命令面板中，输入并运行“Azure IoT Edge: **New IoT Edge Solution** 命令。 在命令面板中提供以下信息，以便创建解决方案：
+2. 在命令面板中，输入并运行“Azure: 登录”命令，然后按说明登录 Azure 帐户。 如果已登录，则可跳过此步骤。
+3. 在命令面板中，输入并运行“Azure IoT Edge: 新建 IoT Edge 解决方案”命令。 在命令面板中提供以下信息，以便创建解决方案：
 
     1. 选择要在其中创建解决方案的文件夹。
     2. 提供解决方案的名称，或者接受默认的 **EdgeSolution**。
@@ -270,7 +270,7 @@ Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中�
 
     可能会看到可以忽略的以下警告：
 
-    *Program.cs(77,44)：警告 CS1998：此异步方法缺少“await”运算符，因此将以同步方式运行。请考虑使用“await”运算符等待非阻止的 API 调用，或者使用“await Task.Run(...)”在后台线程上执行占用大量 CPU 的工作。*
+    *Program .cs （77，44）：警告 CS1998：此异步方法缺少 "await" 运算符，将同步运行。请考虑使用 "await" 运算符等待非阻塞 API 调用，或使用 "await （...）" 在后台线程上执行占用大量 CPU 的工作。*
 
 4. 可在 VS Code 集成终端中查看具有标记的完整容器映像地址。 映像地址根据 module.json 文件中的信息生成，其格式为 `<repository>:<version>-<platform>`。 对于本文，它应类似于 `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`。
 

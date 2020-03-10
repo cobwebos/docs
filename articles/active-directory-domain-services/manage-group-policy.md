@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 74d9aa8228e841b17313fb3c15efe459ccd7339a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: bce71355eef19ec3cc85525033274f57b1a3e0b9
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77613581"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946407"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域中的组策略
 
@@ -42,7 +42,11 @@ Azure Active Directory 域服务（Azure AD DS）中的用户和计算机对象�
 * 属于 Azure AD 租户中“Azure AD DC 管理员”组的用户帐户。
 
 > [!NOTE]
-> 由于[没有 AZURE AD DS 中的域控制器的访问权限](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)，因此不能为托管域中的组策略管理模板创建和使用中央存储。 [Sysvol 未包含在本地 Azure AD Connect 同步](synchronization.md#what-isnt-synchronized-to-azure-ad-ds)中，因此也无法创建本地中心存储并通过 Azure AD 将其同步到 Azure AD DS。
+> 可以通过将新模板复制到管理工作站，使用组策略管理模板。 将*admx*文件复制到 `%SYSTEMROOT%\PolicyDefinitions`，并将特定于区域设置的 *.adml*文件复制到 `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`，其中 `Language-CountryRegion` 与 *.adml*文件的语言和区域相匹配。
+>
+> 例如，将 *.adml*文件的英语美国版本复制到 `\en-us` 文件夹中。
+>
+> 或者，你可以在作为 Azure AD DS 托管域的一部分的域控制器上集中存储组策略管理模板。 有关详细信息，请参阅[如何在 Windows 中为组策略管理模板创建和管理中心存储](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)。
 
 ## <a name="install-group-policy-management-tools"></a>安装组策略管理工具
 

@@ -3,18 +3,18 @@ title: Azure DevOps Projects 文档
 summary: Azure DevOps Projects 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
 metadata:
   title: Azure DevOps Projects 文档
-  description: Azure DevOps Projects 提供一种简化的体验，你在其中既可使用现有的代码和 Git 存储库，也可选择一个示例应用程序，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
+  description: 使用现有的代码和 Git 存储库，或者选择一个示例应用，以便创建连接到 Azure 的持续集成 (CI) 和持续交付 (CD) 管道。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
   ms.date: 03/05/2020
-  ms.openlocfilehash: 0c67ed2fdffd80c447608348429985477dd426df
-  ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/06/2020
-  ms.locfileid: "78674198"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78942458"
 landingContent:
 - title: 关于 Azure DevOps Projects
   linkLists:

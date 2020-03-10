@@ -3,13 +3,13 @@ title: 使用 Azure Kubernetes 服务（AKS）负载均衡器的静态 IP 地址
 description: 了解如何创建静态 IP 地址并将其用于 Azure Kubernetes 服务 (AKS) 负载均衡器。
 services: container-service
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: d5177494ecdd112342b2cd719e9305bfab97902c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/09/2020
+ms.openlocfilehash: 32889dbbcafd9510f8d04cb9c602d4802c6d1a1a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593591"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943571"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>使用 Azure Kubernetes 服务（AKS）负载均衡器的静态公共 IP 地址和 DNS 标签
 
@@ -67,7 +67,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 ```azurecli-interactive
 az role assignment create \
     --assignee <SP Client ID> \
-    --role "Contributor" \
+    --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 

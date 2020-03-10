@@ -708,6 +708,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
             - name: Apache HIVE 故障排除
               href: ./hdinsight-troubleshoot-hive.md
+            - name: Apache Hive 日志占用头节点上的整个磁盘空间
+              href: ./interactive-query/interactive-query-troubleshoot-hive-logs-diskspace-full-headnodes.md
 - name: ML Services
   items:
     - name: 概述

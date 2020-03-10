@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c4461856bd5eeb01eb84b0d39afef9507438f8d3
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920653"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944471"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -45,7 +45,7 @@ ms.locfileid: "77920653"
 
 预定事件提供以下用例中的事件：
 - [平台启动的维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)（例如，VM 重新启动、实时迁移或保留主机更新的内存）
-- 降级的硬件
+- 虚拟机正在降级的[主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行，这些硬件预测很快就会失败
 - 用户启动的维护（例如，用户重启或重新部署 VM）
 - [点 VM](spot-vms.md)和[点规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出
 
@@ -135,6 +135,9 @@ DocumentIncarnation 是一个 ETag，它提供了一种简单的方法来检查�
 | 重新部署 | 10 分钟 |
 | 优先于 | 30 秒 |
 | Terminate | [用户可配置](../../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md#enable-terminate-notifications)：5至15分钟 |
+
+> [!NOTE] 
+> 在某些情况下，由于硬件降级，Azure 能够预测主机故障，并通过计划迁移来尝试缓解服务中断。 受影响的虚拟机将收到计划事件，该事件的 `NotBefore` 通常是将来几天的时间。 实际时间取决于预测的失败风险评估。 Azure 会在可能的情况下尝试提前7天的提前通知，但实际时间会变化，如果预测是即将的硬件发生故障，可能会更小。 为了最大程度地降低服务的风险，以防硬件在系统启动迁移之前出现故障，建议尽快自行重新部署虚拟机。
 
 ### <a name="event-scope"></a>事件作用域     
 计划的事件传送到：

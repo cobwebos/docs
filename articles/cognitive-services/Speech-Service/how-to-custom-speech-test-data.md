@@ -3,19 +3,19 @@ title: 准备自定义语音语音服务的测试数据
 titleSuffix: Azure Cognitive Services
 description: 在测试 Microsoft speech 识别的准确性或定型您的自定义模型时，您将需要音频和文本数据。 在此页上，我们介绍了数据类型、使用方法和管理数据。
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 6100ac6a6b01a7d0eac74b0e83539bf4e671cb89
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 03/09/2020
+ms.author: dapine
+ms.openlocfilehash: 969c1450966d2754e6e8f00126da52a1e88181fc
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660403"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942681"
 ---
 # <a name="prepare-data-for-custom-speech"></a>准备自定义语音的数据
 
@@ -36,7 +36,7 @@ ms.locfileid: "75660403"
 > [!TIP]
 > 若要快速开始使用，请考虑使用示例数据。 请参阅此 GitHub 存储库，了解<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">示例自定义语音数据<span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-## <a name="upload-data"></a>上载数据
+## <a name="upload-data"></a>上传数据
 
 若要上传数据，请导航到<a href="https://speech.microsoft.com/customspeech" target="_blank">自定义语音<span class="docon docon-navigate-external x-hidden-focus"></span>门户</a>。 从门户中，单击 "**上传数据**" 以启动向导并创建第一个数据集。 系统会要求你为数据集选择语音数据类型，然后才能上传数据。
 
@@ -55,22 +55,24 @@ ms.locfileid: "75660403"
 
 使用此表可以确保正确设置音频文件的格式，以便与自定义语音一起使用：
 
-| 属性 | 值 |
-|----------|-------|
-| 文件格式 | RIFF (WAV) |
-| 采样速率 | 8000 hz 或 16000 Hz |
-| 频道 | 1（单音） |
-| 每个音频的最大长度 | 2 小时 |
-| 示例格式 | PCM，16 位 |
-| 存档格式 | .zip |
-| 最大存档大小 | 2GB |
+| properties                 | 值                 |
+|--------------------------|-----------------------|
+| 文件格式              | RIFF (WAV)            |
+| 采样速率              | 8000 hz 或 16000 Hz |
+| 声道                 | 1（单音）              |
+| 每个音频的最大长度 | 2 小时               |
+| 示例格式            | PCM，16 位           |
+| 存档格式           | .zip                  |
+| 最大存档大小     | 2 GB                  |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
 > 上传定型和测试数据时，.zip 文件的大小不能超过 2 GB。 如果需要更多的培训数据，请将其划分为多个 .zip 文件并分别上传。 稍后，您可以选择从*多个*数据集进行训练。 但是，只能从*单个*数据集进行测试。
 
 使用<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span> </a>验证音频属性，或将现有音频转换为适当的格式。 以下示例说明了如何通过 SoX 命令行完成每个活动：
 
-| 活动 | Description | SoX 命令 |
+| 活动 | 说明 | SoX 命令 |
 |----------|-------------|-------------|
 | 检查音频格式 | 使用此命令检查<br>音频文件格式。 | `sox --i <filename>` |
 | 转换音频格式 | 使用此命令转换<br>单个通道的音频文件，16位，16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -79,18 +81,20 @@ ms.locfileid: "75660403"
 
 若要在处理音频文件时测量 Microsoft 语音到文本准确性的准确性，必须提供人机标记的转录（单词字词）进行比较。 尽管人为标记的脚本通常非常耗时，但还是需要评估准确性并为用例定型模型。 请记住，识别的改进仅适用于所提供的数据。 出于此原因，仅上传高质量的脚本很重要。
 
-| 属性 | 值 |
-|----------|-------|
-| 文件格式 | RIFF (WAV) |
-| 采样速率 | 8000 hz 或 16000 Hz |
-| 频道 | 1（单音） |
+| properties                 | 值                               |
+|--------------------------|-------------------------------------|
+| 文件格式              | RIFF (WAV)                          |
+| 采样速率              | 8000 hz 或 16000 Hz               |
+| 声道                 | 1（单音）                            |
 | 每个音频的最大长度 | 2小时（测试）/60 秒（培训） |
-| 示例格式 | PCM，16 位 |
-| 存档格式 | .zip |
-| 最大 zip 大小 | 2GB |
+| 示例格式            | PCM，16 位                         |
+| 存档格式           | .zip                                |
+| 最大 zip 大小         | 2 GB                                |
+
+[!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> 上传定型和测试数据时，.zip 文件的大小不能超过 2 GB。 Uou 只能从*单个*数据集进行测试，请确保将其保持在适当的文件大小内。
+> 上传定型和测试数据时，.zip 文件的大小不能超过 2 GB。 只能从*单个*数据集进行测试，请确保将其保持在适当的文件大小内。 此外，每个定型文件不能超过60秒，否则会出错。
 
 若要解决 word 删除或替换等问题，需要大量数据来改善识别。 通常，建议提供大约10到1000小时的音频的单词转录。 应在单个纯文本文件中包含所有 WAV 文件的听录。 听录文件的每一行应包含一个音频文件的名称，后接相应的听录。 文件名和听录应以制表符 (\t) 分隔。
 
@@ -130,10 +134,10 @@ ms.locfileid: "75660403"
 
 使用此表可确保最谈话的相关数据文件的格式正确：
 
-| 属性 | 值 |
+| properties | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM |
-| 每行的话语数 | 第 |
+| 每行的话语数 | 1 |
 | 文件大小上限 | 200 MB |
 
 此外，您还需要考虑以下限制：
@@ -161,17 +165,17 @@ ms.locfileid: "75660403"
 
 自定义发音提供英语（`en-US`）和德语（`de-DE`）。 此表按语言显示支持的字符：
 
-| 语言 | 区域设置 | 字符 |
+| 语言 | Locale | 字符 |
 |----------|--------|------------|
 | 英语 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德语 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 使用下表来确保发音的相关数据文件格式正确。 发音文件较小，只应使用几 kb 的大小。
 
-| 属性 | 值 |
+| properties | 值 |
 |----------|-------|
 | 文本编码 | UTF-8 BOM （英语还支持 ANSI） |
-| 每行的发音数 | 第 |
+| 每行的发音数 | 1 |
 | 文件大小上限 | 1 MB （1 KB 用于免费层） |
 
 ## <a name="next-steps"></a>后续步骤

@@ -2,23 +2,17 @@
 title: 将资源部署到管理组
 description: 介绍如何在 Azure 资源管理器模板中的管理组范围内部署资源。
 ms.topic: conceptual
-ms.date: 03/06/2020
-ms.openlocfilehash: ae561468531b0c3fa584a02793c58ee64ca3610f
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/09/2020
+ms.openlocfilehash: dc46762755718c798b4a7eed6f2dc6b8afce9b98
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894895"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942753"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
-通常情况下，你可将 Azure 资源部署到 Azure 订阅中的资源组。 但是，还可以在以下位置创建资源：
-
-* [订阅级别](deploy-to-subscription.md)
-* 管理组级别（在本文中介绍）
-* [租户级别](deploy-to-tenant.md)
-
-使用管理组级别部署来执行在该级别有意义的操作，例如分配[基于角色的访问控制](../../role-based-access-control/overview.md)或应用[策略](../../governance/policy/overview.md)。
+随着组织的成熟，你可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用管理组级别模板，可以通过声明方式应用策略并在管理组级别分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -41,10 +35,10 @@ ms.locfileid: "78894895"
 https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#
 ```
 
-对于参数文件，请使用：
+对于所有部署范围，参数文件的架构都是相同的。 对于参数文件，请使用：
 
 ```json
-https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentParameters.json#
+https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>部署命令
@@ -169,5 +163,4 @@ New-AzManagementGroupDeployment `
 
 * 若要了解如何分配角色，请参阅[使用 RBAC 和 azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
-* 若要了解有关创建 Azure 资源管理器模板的信息，请参阅[创作模板](template-syntax.md)。
-* 有关模板的可用函数列表，请参阅[模板函数](template-functions.md)。
+* 你还可以在[订阅级别](deploy-to-subscription.md)和[租户级别](deploy-to-tenant.md)部署模板。

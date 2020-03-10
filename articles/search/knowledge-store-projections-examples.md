@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: daaedf346bed78a93e0762a37687b623d25ef753
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 23c370289669c2dde4f8969a2921018cd0abc08c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77441963"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943683"
 ---
 # <a name="knowledge-store-projections-how-to-shape-and-export-enrichments"></a>知识存储投影：如何调整和导出根据
 
@@ -671,7 +671,13 @@ Power BI 依赖于这些生成的密钥来发现表中的关系。 如果需要�
 
 本文中的示例演示如何创建投影的常见模式。 既然您已经充分了解这些概念，就能更好地为您的特定方案构建预测。
 
-在循环访问知识 store 定义时，请考虑将增量扩充作为下一步。 增量扩充基于缓存，可让你重复使用任何不受技能组合修改影响的根据。 这对于包含 OCR 和图像分析的管道特别有用。
+当你探索新功能时，请考虑增量扩充作为下一步。 增量扩充基于缓存，可让你重复使用任何不受技能组合修改影响的根据。 这对于包含 OCR 和图像分析的管道特别有用。
 
 > [!div class="nextstepaction"]
 > [增量扩充和缓存简介](cognitive-search-incremental-indexing-conceptual.md)
+
+有关预测的概述，请了解有关组和切片等功能的详细信息，以及如何[在技能组合中定义这些](knowledge-store-projection-overview.md)功能
+
+> [!div class="nextstepaction"]
+> [知识存储中的投影](knowledge-store-projection-overview.md)
+

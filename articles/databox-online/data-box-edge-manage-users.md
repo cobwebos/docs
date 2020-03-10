@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 68f8ad903f967812c4a416c732b35fa1712404cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 443ed983a0eec5dfd8f7a917fbc1440cd66c3db3
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756589"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946143"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-edge"></a>使用 Azure 门户管理 Azure Data Box Edge 上的用户
 
@@ -33,25 +33,24 @@ ms.locfileid: "60756589"
  - **全权用户** - 拥有完全访问权限的本地用户。
  - **只读用户** - 拥有只读访问权限的本地用户。 这些用户与允许只读操作的共享相关联。
 
-在创建共享期间创建用户时，首先会定义用户权限。 定义与某个用户关联的权限后，可以使用文件资源管理器修改这些权限。 
-
+在创建共享期间创建用户时，首先会定义用户权限。 当前不支持修改共享级权限。
 
 ## <a name="add-a-user"></a>添加用户
 
 在 Azure 门户中执行以下步骤可以添加用户。
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“概述”>“用户”。  选择命令栏上的“+ 添加用户”  。
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“概述”>“用户”。 选择命令栏上的“+ 添加用户”。
 
     ![选择“添加用户”](media/data-box-edge-manage-users/add-user-1.png)
 
-2. 指定要添加的用户的用户名和密码。 确认密码，然后选择“添加”。 
+2. 指定要添加的用户的用户名和密码。 确认密码，然后选择“添加”。
 
     ![指定用户名和密码](media/data-box-edge-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > 以下用户由系统保留，不应使用：Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
 
-3. 用户创建过程开始和完成后，会显示通知。 创建用户后，在命令栏中选择“刷新”可查看更新的用户列表。 
+3. 用户创建过程开始和完成后，会显示通知。 创建用户后，在命令栏中选择“刷新”可查看更新的用户列表。
 
 
 ## <a name="modify-user"></a>修改用户
@@ -66,11 +65,11 @@ ms.locfileid: "60756589"
 在 Azure 门户中执行以下步骤可以删除用户。
 
 
-1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“概述”>“用户”。 
+1. 在 Azure 门户中，转到自己的 Data Box Edge 资源，然后转到“概述”>“用户”。
 
     ![选择要删除的用户](media/data-box-edge-manage-users/delete-user-1.png)
 
-2. 从用户列表中选择一个用户，然后选择“删除”。   
+2. 从用户列表中选择一个用户，然后选择“删除”。  
 
    ![选择“删除”](media/data-box-edge-manage-users/delete-user-2.png)
 

@@ -45,10 +45,6 @@
           href: how-to-automatic-language-detection.md
         - name: 使用压缩的音频输入格式
           href: how-to-use-codec-compressed-audio-input-streams.md
-        - name: 使用压缩的音频输入格式 (iOS)
-          href: how-to-use-codec-compressed-audio-input-streams-ios.md
-        - name: 使用压缩的音频输入格式 (Android)
-          href: how-to-use-codec-compressed-audio-input-streams-android.md
     - name: 自定义
       items:
         - name: 准备数据
@@ -63,6 +59,10 @@
           href: how-to-custom-speech-deploy-model.md
         - name: 创建用户标记的听录内容
           href: how-to-custom-speech-human-labeled-transcriptions.md
+        - name: 自定义关键字命名准则
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: 自定义关键字发现
+          href: speech-devices-sdk-create-kws.md
     - name: 参考
       items:
         - name: 语音 SDK API
@@ -156,10 +156,6 @@
               href: how-to-custom-voice-create-voice.md
             - name: 录制语音示例
               href: record-custom-voice-samples.md
-            - name: 自定义关键字命名准则
-              href: speech-devices-sdk-kws-guidelines.md
-            - name: 自定义关键字发现
-              href: speech-devices-sdk-create-kws.md
         - name: 音频内容创建
           items:
             - name: 音频内容创建
@@ -413,6 +409,12 @@
           items:
             - name: 语音助手常见问题解答
               href: faq-voice-assistants.md
+    - name: 自定义关键字
+      items:
+        - name: 自定义关键字命名准则
+          href: speech-devices-sdk-kws-guidelines.md
+        - name: 自定义关键字发现
+          href: speech-devices-sdk-create-kws.md
 - name: Hosting
   expanded: false
   items:

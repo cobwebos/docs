@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: maxluk
 author: maxluk
-ms.date: 08/02/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: d61e33568297e6f72aca0ab736f8a14f1758ffa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255129"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942251"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>构建 scikit-learn-通过 Azure 机器学习的规模了解模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "78255129"
     - [创建工作区配置文件](how-to-configure-environment.md#workspace)。
     - 下载数据集和示例脚本文件 
         - [iris 数据集](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+        - [train_iris. py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
     - 你还可以在 GitHub 示例页上找到本指南的已完成[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 笔记本包含一个扩展部分，涵盖智能超参数优化，并按主要指标检索最佳模型。
 
 ## <a name="set-up-the-experiment"></a>设置试验
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version`和 `resource_configuration`，无代码模型部署将变为可用。 这使你可以从已注册的模型直接将你的模型部署为 web 服务，`ResourceConfiguration` 对象定义 web 服务的计算资源。
+用以下代码将模型注册到工作区。 通过指定参数 `model_framework`、`model_framework_version`和 `resource_configuration`，无代码模型部署将变为可用。 这使你可以从已注册的模型直接将你的模型部署为 web 服务， [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py)对象定义 web 服务的计算资源。
 
 ```Python
 from azureml.core import Model
@@ -199,7 +199,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>效果无代码模型部署
 
-除了传统的部署路由，还可以使用无代码部署功能（预览版）进行 scikit-learn。 所有内置 scikit-learn 模型类型都支持非代码模型部署。 通过向上面所示的 `model_framework`、`model_framework_version`和 `resource_configuration` 参数注册模型，只需使用 `deploy()` 静态函数部署模型即可。
+除了传统的部署路由，还可以使用无代码部署功能（预览版）进行 scikit-learn。 所有内置 scikit-learn 模型类型都支持非代码模型部署。 通过向上面所示的 `model_framework`、`model_framework_version`和 `resource_configuration` 参数注册模型，只需使用[`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)静态函数部署模型即可。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

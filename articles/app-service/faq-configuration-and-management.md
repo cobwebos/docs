@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649272"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942938"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用配置和管理常见问题解答
 
@@ -183,7 +183,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 ### <a name="f12-console-output"></a>F12 控制台输出
 
 1. 选择“控制台”选项卡。
-2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选择选项卡，则选项卡图标会在光标离开它时为灰色或黑色。
+2. 对于包含的项数不为零的每个选项卡，选择选项卡（“错误”、“警告”或“信息”）。 如果未选择该选项卡，则将光标移开时，选项卡图标为灰色或黑色。
 3. 在窗格的消息区域中右键单击，然后选择“全部复制”。
 4. 在文件中粘贴复制的文本，然后保存文件。
 
@@ -212,7 +212,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 优势，创建应用服务环境会失败。 在这种情况下，你会在活动日志中看到以下错误：
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 若要解决此问题，请确保不存在以下任何情况：
@@ -248,7 +248,7 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>如何为使用流量管理器的应用服务 Web 应用配置自定义域名？
 
-若要了解如何对使用 Azure 流量管理器进行负载平衡的应用服务应用使用自定义域名，请参阅[为使用流量管理器的 Azure Web 应用配置自定义域名](web-sites-traffic-manager-custom-domain-name.md)。
+若要了解如何对使用 Azure 流量管理器进行负载平衡的应用服务应用使用自定义域名，请参阅[为使用流量管理器的 Azure Web 应用配置自定义域名](configure-domain-traffic-manager.md)。
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>我的应用服务证书被标记为存在欺诈。 如何解决此问题？
 
@@ -282,7 +282,7 @@ Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Gr
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>如何将默认的 *.azurewebsites.net 域重定向到我的 Azure Web 应用的自定义域？
 
-在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *.azurewebsites.net 域，则可以重定向默认 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
+在 Azure 中使用 Web 应用创建新网站时，会向站点分配默认的 sitename.azurewebsites.net 域。 如果将自定义主机名添加到站点，并且不希望用户能够访问默认的 *. azurewebsites.net 域，则可以重定向默认的 URL。 若要了解如何将所有流量从网站的默认域重定向到自定义域，请参阅[在 Azure Web 应用中将默认域重定向到自定义域](https://zainrizvi.io/blog/block-default-azure-websites-domain/)。
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>如何确定应用服务中安装的 .NET 版本？
 

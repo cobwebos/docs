@@ -2,24 +2,21 @@
 title: Azure 实例元数据服务
 description: RESTful 接口，用于获取有关 Linux Vm 计算、网络和即将发生的维护事件的信息。
 services: virtual-machines-linux
-documentationcenter: ''
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: monitoring
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: b0d4d1d13a329b0d95fcd0358f6141486b4435e5
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205001"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78944863"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -50,7 +47,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 若要试用实例元数据服务，请在上述区域中从 [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/)或 [Azure 门户](https://portal.azure.com)创建一个 VM，并按照以下示例操作。
 有关如何查询 IMDS 的更多示例，请参阅[Azure 实例元数据示例](https://github.com/microsoft/azureimds)
 
-## <a name="usage"></a>用法
+## <a name="usage"></a>使用情况
 
 ### <a name="versioning"></a>版本控制
 
@@ -318,7 +315,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 以下 Api 可通过元数据终结点获得：
 
-数据 | 说明 | 引入的版本
+data | 说明 | 引入的版本
 -----|-------------|-----------------------
 attested | 请参阅[证明数据](#attested-data) | 2018-10-01
 identity | Azure 资源的托管标识。 请参阅[获取访问令牌](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -332,11 +329,11 @@ scheduledevents | 请参阅[计划事件](scheduled-events.md) | 2017-08-01
 > [!NOTE]
 > 通过元数据终结点，可通过实例/计算访问以下类别
 
-数据 | 说明 | 引入的版本
+data | 说明 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 在其中运行的 Azure 环境 | 2018-10-01
 customData | 此功能当前处于禁用状态，我们将在此文档可用时更新它 | 2019-02-01
-位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
+location | 正在运行 VM 的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息，并且仅适用于从 Azure 映像库部署的映像 | 2017-04-02
 osType | Linux 或 Windows | 2017-04-02
@@ -354,18 +351,18 @@ storageProfile | 请参阅[存储配置文件](#storage-profile) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
-version | VM 映像的版本 | 2017-04-02
+版本 | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的虚拟机规模集[名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [VM 大小](sizes.md) | 2017-04-02
-Zone — 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
+区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 
 以下网络类别可通过实例 API 使用：
 
 > [!NOTE]
 > 通过元数据终结点，可通过实例/网络/接口访问以下类别
 
-数据 | 说明 | 引入的版本
+data | 说明 | 引入的版本
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02
 ipv4/publicIpAddress | VM 的公共 IPv4 地址 | 2017-04-02
@@ -656,7 +653,7 @@ Verification successful
 }
 ```
 
-数据 | 说明
+data | 说明
 -----|------------
 nonce | 用户提供了带有请求的可选字符串。 如果请求中未提供 nonce，则返回当前 UTC 时间戳
 计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者
@@ -706,23 +703,23 @@ VM 的存储配置文件分为三个类别：映像引用、操作系统磁盘�
 
 Image reference 对象包含有关 OS 映像的以下信息：
 
-数据    | 说明
+data    | 说明
 --------|-----------------
 id      | 资源 ID
 offer   | 平台或 marketplace 映像的产品/服务
 发布者 | 映像发布者
 sku     | 图像 sku
-version | 平台或 marketplace 映像的版本
+版本 | 平台或 marketplace 映像的版本
 
 OS 磁盘对象包含有关 VM 使用的 OS 磁盘的以下信息：
 
-数据    | 说明
+data    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小（GB）
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
@@ -731,14 +728,14 @@ writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 
 数据磁盘数组包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象都包含以下信息：
 
-数据    | 说明
+data    | 说明
 --------|-----------------
 缓存 | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小（GB）
 encryptionSettings | 磁盘的加密设置
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 osType  | 磁盘中包含的操作系统类型
@@ -816,10 +813,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>在 VM 内使用不同语言调用元数据服务的示例
 
-Language | 示例
+语言 | 示例
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-开始  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -831,9 +828,9 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
-1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这意味着什么？
+1. 出现 `400 Bad Request, Required metadata header not specified` 错误。 这是什么意思呢？
    * 实例元数据服务要求将标头 `Metadata: true` 传入请求。 将此标头传入 REST 调用即可访问实例元数据服务。
 2. 为什么我无法获取我的 VM 的计算信息？
    * 目前，实例元数据服务仅支持使用 Azure 资源管理器创建的实例。 将来可能会添加对云服务 VM 的支持。

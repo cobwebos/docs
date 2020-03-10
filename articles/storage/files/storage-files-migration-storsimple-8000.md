@@ -4,30 +4,26 @@ description: 了解如何将 StorSimple 8100 或8600设备迁移到 Azure 文件
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d04b38fac2b42d2d510902c7ba54ddebb8e3f410
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d937852ace8d9bf39495f1fdd92e6edfc4452a0a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330304"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943588"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 和8600迁移到 Azure 文件同步
 
-StorSimple 8000 系列由8100或8600物理、本地设备及其云服务组件表示。 可以将这些设备中的数据迁移到 Azure 文件同步的环境。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。
+StorSimple 8000 系列由8100或8600物理、本地设备和其云服务组件表示。 可以将这些设备中的数据迁移到 Azure 文件同步的环境。 Azure 文件同步是 StorSimple 设备可以迁移到的默认和策略长期 Azure 服务。
 
-## <a name="storsimple"></a>StorSimple
+StorSimple 8000 系列[将在 12](https://support.microsoft.com/en-us/lifecycle/search?alpha=StorSimple%208000%20Series)月2022日到期。 请务必尽快开始规划迁移。 本文提供成功迁移到 Azure 文件同步所需的背景知识和迁移步骤。 
 
-StorSimple 是一种不再使用的 Microsoft 产品。 此产品及其云服务的扩展支持将于12月 31 2022 到期。 应立即开始规划从 StorSimple 开始迁移，这一点很重要。
-
-Azure 文件同步是 StorSimple 设备可以迁移到的默认和策略长期 Azure 服务。
+## <a name="azure-file-sync"></a>Azure 文件同步
 
 > [!IMPORTANT]
 > Microsoft 致力于帮助客户完成其迁移。 电子邮件 AzureFilesMigration@microsoft .com 用于自定义的迁移计划，并在迁移过程中提供帮助。
-
-## <a name="azure-file-sync"></a>Azure 文件同步
 
 Azure 文件同步是一种 Microsoft 云服务，基于两个主要组件：
 
@@ -247,10 +243,10 @@ Azure 文件同步用于将文件从已装载的 iSCSI StorSimple 卷移动到�
 > [!IMPORTANT]
 > 为此，必须先在服务器上设置注册表项，然后才能配置 Azure 文件同步。
 
-1. 在 VM 的系统驱动器上创建新目录。 需要将 Azure 文件同步信息保存在该卷中，而不是保存在已装载的卷克隆中。 例如： `“C:\syncmetadata”`
+1. 在 VM 的系统驱动器上创建新目录。 需要将 Azure 文件同步信息保存在该卷中，而不是保存在已装载的卷克隆中。 例如： `"C:\syncmetadata"`
 2. 打开 regedit，找到以下注册表配置单元： `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync`
 3. 创建名为 "String" 的新密钥，名为： ***MetadataRootPath***
-4. 设置在系统卷上创建的目录的完整路径，例如： `C:\syncmetadata”`
+4. 设置在系统卷上创建的目录的完整路径，例如： `C:\syncmetadata"`
 
 ### <a name="configure-azure-file-sync-on-the-azure-vm"></a>在 Azure VM 上配置 Azure 文件同步
 
@@ -346,7 +342,7 @@ RoboCopy 命令：
 Robocopy /MT:32 /UNILOG:<file name> /TEE /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
-Background：
+背景色：
 
 :::row:::
    :::column span="1":::

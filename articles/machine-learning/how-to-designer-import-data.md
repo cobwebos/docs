@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 8cd49f9714746578ec701e22f9e6b0ccce772c6b
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138155"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942284"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>将数据导入 Azure 机器学习设计器（预览）
 
@@ -56,6 +56,8 @@ ms.locfileid: "77138155"
 
 有关如何使用导入数据模块的详细信息，请参阅[导入数据引用页](algorithm-module-reference/import-data.md)。
 
+[!NOTE]
+> 如果数据包含多个列，则可能会遇到 "导入数据" 模块中的 "由于大小限制而失败"。 这是因为在编码后，列会排除 maxmium 模块参数长度。 在这种情况下，我们建议[在数据集 UI 中注册数据集](how-to-create-register-datasets.md#use-the-ui)，这样可以避免此错误。  
 
 ## <a name="supported-sources"></a>支持的源
 
@@ -77,10 +79,10 @@ ms.locfileid: "77138155"
 设计器在内部识别以下数据类型：
 
 * String
-* 整数
+* Integer
 * Decimal
 * Boolean
-* 日期
+* Date
 
 设计器使用内部数据类型在模块之间传递数据。 您可以使用 "[转换为数据集](algorithm-module-reference/convert-to-dataset.md)" 模块将数据显式转换为数据表格式。 接受除内部格式以外的其他格式的任何模块在将数据传递到下一个模块之前都将进行无提示转换。
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
-ms.openlocfilehash: f5b02376111a3deba33cd5688330018bd7c370d8
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78899212"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78934188"
 ---
 # <a name="media-services-high-availability-encoding"></a>媒体服务高可用性编码 
 
@@ -42,8 +42,8 @@ Azure 媒体服务编码服务是一个区域批处理平台，当前不是针�
     * [EVENTGRID SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) （本机支持媒体服务事件）。
 
     还可以通过 Azure Functions 使用事件网格事件。
-*    创建[作业](transforms-jobs-concept.md)时：
-    
+* 创建[作业](transforms-jobs-concept.md)时：
+
     * 从当前使用的帐户列表中随机选择一个帐户（此列表通常包含两个帐户，但如果检测到问题，则它可能只包含一个帐户）。 如果列表为空，则引发警报，以便操作员能够调查。
     * 一般指导原则是，每个[JobOutput](https://docs.microsoft.com/rest/api/media/jobs/create#joboutputasset)都需要一个[媒体保留单位](media-reserved-units-cli-how-to.md)（除非使用的是[VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) ，但建议使用3个媒体保留单位）。
     * 获取所选帐户的媒体保留单位（Mru）的计数。 如果当前的**媒体保留单位**计数尚未达到最大值，请添加作业所需的 mru 数，并更新该服务。 如果你的作业提交率较高，而你经常查询 Mru 以找到最大值，请将分布式缓存用于值合理的超时值。

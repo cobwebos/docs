@@ -1,25 +1,18 @@
 ---
 title: Azure 上的 FreeBSD 简介
 description: 了解如何在 Azure 上使用 FreeBSD 虚拟机
-services: virtual-machines-linux
-documentationcenter: ''
 author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 32b87a5f-d024-4da0-8bf0-77e233d1422b
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: d243806d619aa6d7328220eae53804d734737489
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fe64418e254289a29aafd155b92396082bff5b6a
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036123"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945089"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 简介
 本文提供有关在 Azure 中运行 FreeBSD 虚拟机的概述。
@@ -105,16 +98,16 @@ ssh azureuser@xx.xx.xx.xx -i /etc/ssh/ssh_host_rsa_key
 * 保护 CommandToExecute 中的敏感数据。
 
 > [!NOTE]
-> FreeBSD VM 目前仅支持 CustomScript 1.x 版。  
+> 目前 FreeBSD VM 仅支持 CustomScript 1.x。  
 
 ## <a name="authentication-user-names-passwords-and-ssh-keys"></a>身份验证：用户名、密码和 SSH 密钥
 使用 Azure 门户创建 FreeBSD 虚拟机时，必须提供用户名、密码或 SSH 公钥。
 在 Azure 上部署 FreeBSD 虚拟机时，用户名必须与已经存在于虚拟机中的系统帐户 (UID <100) 的名称（例如“root”）相符。
 目前仅支持 RSA SSH 密钥。 多行 SSH 密钥必须以 `---- BEGIN SSH2 PUBLIC KEY ----` 开头，以 `---- END SSH2 PUBLIC KEY ----` 结尾。
 
-## <a name="obtaining-superuser-privileges"></a>获取超级用户特权
+## <a name="obtaining-superuser-privileges"></a>获取超级用户权限
 在 Azure 上部署虚拟机实例的过程中指定的用户帐户是特权帐户。 sudo 的包已安装在所发布的 FreeBSD 映像中。
-通过此用户帐户登录后，即可使用命令语法以 root 用户身份运行命令。
+通过此用户帐户登录后，即可使用命令语法以 root 身份运行命令。
 
 ```
 $ sudo <COMMAND>

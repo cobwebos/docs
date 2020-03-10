@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Microsoft 标识平台（以前称为面向开发人员的 Azure Active Directory）
-summary: Microsoft 标识平台由 Azure Active Directory (Azure AD) 开发人员平台演变而来。 开发人员可以通过它来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft Graph 等 Microsoft API 或开发人员生成的 API。 它是一个全功能的平台，包含 OAuth 2.0 以及符合 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门示例、代码示例、教程以及操作方法指南。
+title: Microsoft 标识平台文档
+summary: 开发人员可以通过 Microsoft 标识平台来生成应用程序，从而可以采用所有 Microsoft 标识登录，以及获取令牌来调用 Microsoft API（如 Microsoft Graph）或你已生成的 API。 这一全功能平台包含符合 OAuth 2.0 和 OpenID Connect 标准的身份验证服务、开源库、应用程序注册和配置、可靠的概念和参考文档、快速入门、代码示例、教程以及操作方法指南。
 metadata:
   ms.topic: landing-page
   ms.date: 06/22/2019
@@ -9,21 +9,21 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: ea67860d851e9228ca14c6e53c4831f8d6f34f17
-  ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+  ms.openlocfilehash: edc613b275d996ac8ef8ed4470529153fdcfbecb
+  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/13/2020
-  ms.locfileid: "77194532"
+  ms.lasthandoff: 03/09/2020
+  ms.locfileid: "78943479"
 landingContent:
 - title: 关于 Microsoft 标识平台
   linkLists:
   - linkListType: overview
     links:
-    - text: Microsoft 标识平台的发展
-      url: about-microsoft-identity-platform.md
     - text: Microsoft 标识平台 (v2.0)
       url: v2-overview.md
+    - text: Microsoft 标识平台的发展
+      url: about-microsoft-identity-platform.md
     - text: 面向开发人员的 Azure Active Directory (v1.0)
       url: ../azuread-dev/v1-overview.md
   - linkListType: concept

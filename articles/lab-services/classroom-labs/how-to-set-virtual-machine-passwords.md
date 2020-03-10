@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
+ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591517"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78933799"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>设置和管理虚拟机池 
 本文介绍如何执行以下任务：
@@ -102,6 +102,13 @@ ms.locfileid: "77591517"
 
 > [!NOTE]
 > 当教授启动 VM 并连接到该 VM 时，学生配额不受影响。 
+
+## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>将虚拟机列表导出到 CSV 文件
+
+1. 切换到 "**虚拟机池**" 选项卡。
+2. 选择工具栏上的 " **...** " （省略号），然后选择 "**导出 CSV**"。 
+
+    ![导出虚拟机列表](../media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>后续步骤
 若要了解你（作为实验室所有者）可以配置的其他学生使用条款选项，请参阅以下文章：[配置学生使用情况](how-to-configure-student-usage.md)。
