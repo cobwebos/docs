@@ -10,11 +10,11 @@ ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442194"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78365493"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用大容量执行器 .NET 库在 Azure Cosmos DB 中执行批量操作
 
@@ -22,7 +22,7 @@ ms.locfileid: "75442194"
 
 目前，Azure Cosmos DB SQL API 和 Gremlin API 帐户仅支持批量执行程序库。 本文介绍如何将批量执行器 .NET 库与 SQL API 帐户一起使用。 若要了解如何使用 Gremlin API 帐户的批量执行器 .NET 库，请参阅[Azure Cosmos DB GREMLIN api 中的执行批量操作](bulk-executor-graph-dotnet.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * 如果尚未安装 Visual Studio 2019，可以下载并使用[Visual studio 2019 社区版](https://www.visualstudio.com/downloads/)。 请确保在安装 Visual Studio 期间启用了 "Azure 开发"。
 

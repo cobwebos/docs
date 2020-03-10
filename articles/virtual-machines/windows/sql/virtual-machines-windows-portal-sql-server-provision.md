@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350909"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389063"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
 
@@ -106,7 +106,7 @@ ms.locfileid: "75350909"
 ![SQL VM 磁盘设置](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>联网
+### <a name="networking"></a>网络
 
 在 "**网络**" 选项卡上，配置网络选项。 
 
@@ -143,7 +143,7 @@ ms.locfileid: "75350909"
 | [机器学习服务](#machine-learning-services) |
 
 
-### <a name="connectivity"></a>连接性
+### <a name="connectivity"></a>连接
 
 在“ **SQL 连接**”下，指定要对此 VM 上的 SQL Server 实例进行的访问类型。 对于本演示，请选择“公共(Internet)”以允许从 Internet 上的计算机或服务连接到 SQL Server。 选中此选项后，Azure 会自动将防火墙和网络安全组配置为允许所选端口上的流量。
 
@@ -163,7 +163,7 @@ ms.locfileid: "75350909"
 
 
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 如果需要 SQL Server 身份验证，请在**SQL Server 设置**"选项卡上单击" **SQL 身份验证**"下的"**启用**"。
 
@@ -187,7 +187,7 @@ ms.locfileid: "75350909"
 
 | 参数 | DESCRIPTION | 示例 |
 | --- | --- | --- |
-| **密钥保管库 URL** |密钥保管库的位置。 |https:\//contosokeyvault.vault.azure.net/ |
+| **密钥保管库 URL** |密钥保管库的位置。 |https：\//contosokeyvault.vault.azure.net/ |
 | **主体名称** |Azure Active Directory 服务主体名称。 该名称也称为客户端 ID。 |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **主体密码** |Azure Active Directory 服务主体密码。 该密码也称为客户端密码。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **凭据名称** |**凭据名称**：AKV 集成在 SQL Server 内创建一个凭据，使 VM 具有对密钥保管库的访问权限。 为此凭据选择一个名称。 |mycred1 |

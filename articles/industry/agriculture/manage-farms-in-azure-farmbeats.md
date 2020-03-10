@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482408"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385168"
 ---
 # <a name="manage-farms"></a>管理场
 
@@ -25,7 +25,7 @@ ms.locfileid: "75482408"
 
     下面是示例图像：
 
-    ![项目场节拍](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
 2. 选择 "**创建场**" 并提供**名称**、**裁剪**和**地址**。
@@ -35,12 +35,12 @@ ms.locfileid: "75482408"
 
 1. **标记地图**：使用地图控制工具绘制和标记场的边界。 若要标记边界，![项目场节拍](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) 并标记确切的边界。
 
-    ![项目场节拍](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
 2. **粘贴 GeoJson 代码**： GeoJson 是一种用于对地理数据结构进行编码的格式，使用 JAVASCRIPT 对象表示法（JSON）。 此选项显示一个文本框，可以在其中输入 GeoJSON 字符串来标记场边界。 还可以从 GeoJSON.io 创建 GeoJSON 代码。
 使用工具提示来帮助填写信息。
 
-    ![项目场节拍](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
 3.  选择 "**提交**" 以创建场。 新场随即创建并显示在 "**服务器场**" 页中。
 
@@ -60,7 +60,7 @@ ms.locfileid: "75482408"
 1.  选择场以查看和编辑场。
 2.  选择 "**编辑场**" 以编辑场信息。 在 "**服务器场详细信息**" 窗口中，您可以编辑**名称**、**裁剪**、**地址**和定义**场边界**字段。
 
-    ![项目场节拍](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
+    ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
 3. 选择 "**提交**" 以保存编辑的详细信息。
 
@@ -71,7 +71,7 @@ ms.locfileid: "75482408"
 1.  从列表中选择要删除场详细信息的场。
 2.  选择 "**删除场**" 以删除场。
 
-    ![项目场节拍](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![FarmBeats 项目](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
     > 删除场时，不会删除与该场关联的设备和映射。 与设备和地图关联的任何场信息都不相关。 你可以继续从 FarmBeats 服务查看设备、遥测和映射。

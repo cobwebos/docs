@@ -16,11 +16,11 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534185"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380605"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上配置软件 RAID
 在 Azure 中的 Linux 虚拟机上使用软件 RAID 将多个附加的数据磁盘呈现为一个单一的 RAID 设备，是一种常见的情形。 通常，使用这种方法可以改进性能，而且与只使用单独一块磁盘相比，吞吐量也会有所改进。
@@ -222,7 +222,7 @@ ms.locfileid: "74534185"
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-- 在 `/etc/fstab` 中使用 `discard` 装载选项，例如：
+- 在 `discard` 中使用 `/etc/fstab` 装载选项，例如：
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2

@@ -4,11 +4,11 @@ description: 了解如何使用 Azure PowerShell 创建适用于 Windows 或 Lin
 ms.date: 12/16/2019
 ms.topic: how-to
 ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167183"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387274"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>如何创建来宾配置策略
 

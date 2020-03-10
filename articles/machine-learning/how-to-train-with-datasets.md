@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 09/25/2019
-ms.openlocfilehash: ece8ee77f57dc3252c70c3f8b49dcee72967dc9e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 03/09/2020
+ms.openlocfilehash: 401383f2d483836bf725051810d78167869f7b22
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78198059"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942320"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure 机器学习中的数据集定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Azure 机器学习数据集提供与 Azure 机器学习定型产品（如[Script
 
 若要创建和训练数据集，需要：
 
-* Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
+* Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 立即试用[免费版或付费版 Azure 机器学习](https://aka.ms/AMLFree)。
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)。
 
@@ -70,7 +70,7 @@ from azureml.core import Dataset, Run
 
 run = Run.get_context()
 # get the input dataset by name
-dataset = run.input_datasets['titanic_ds']
+dataset = run.input_datasets['titanic']
 # load the TabularDataset to pandas DataFrame
 df = dataset.to_pandas_dataframe()
 ```

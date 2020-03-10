@@ -10,15 +10,15 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514147"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380484"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
+# <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box 磁盘并验证
 
 ::: zone-end
 
@@ -43,7 +43,7 @@ ms.locfileid: "76514147"
 ## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保：
-- 已完成[教程：安装和配置 Azure Data Box Disk](data-box-disk-deploy-set-up.md)。
+- 已完成[教程：安装和配置 Azure Data Box 磁盘](data-box-disk-deploy-set-up.md)。
 - 磁盘已解锁，并且已连接到客户端计算机。
 - 用来将数据复制到磁盘的客户端计算机必须运行[受支持的操作系统](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)。
 - 请确保数据的预期存储类型与[支持的存储类型](data-box-disk-system-requirements.md#supported-storage-types-for-upload)匹配。
@@ -82,11 +82,11 @@ ms.locfileid: "76514147"
 
     ![磁盘驱动器的内容](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
-2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中  。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹   。
+2. 将需要作为块 Blob 导入的数据复制到 BlockBlob 文件夹中。 同样，将 VHD/VHDX 等数据复制到 PageBlob 文件夹并将数据复制到 AzureFile 文件夹。
 
     在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 `$root` 中。 `$root` 容器中的所有文件始终作为块 Blob 上传。
 
-   将文件复制到“AzureFile”文件夹中的文件夹  。 AzureFile 文件夹中的子文件夹创建文件共享  。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+   将文件复制到“AzureFile”文件夹中的文件夹。 AzureFile 文件夹中的子文件夹创建文件共享。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
 
     如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
@@ -106,8 +106,8 @@ ms.locfileid: "76514147"
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
-    |/R:\<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
-    |/W:\<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
+    |/R： \<N >             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
+    |/W： \<N >             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
     |/NFL                | 指定不记录文件名。        |
     |/NDL                | 指定不记录目录名。        |
     |/FFT                | 采用 FAT 文件时间（精度为两秒）。        |
@@ -311,12 +311,12 @@ ms.locfileid: "76514147"
 执行以下步骤，连接到计算机并将其上的数据复制到 Data Box Disk。
 
 1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
-2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob  文件夹，将 VHD 或 VHDX 数据复制到 PageBlob  文件夹，并将文件复制到 AzureFile  文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
+2. 将数据复制到与适当数据格式对应的文件夹中。 例如，将非结构化数据复制到 BlockBlob 文件夹，将 VHD 或 VHDX 数据复制到 PageBlob 文件夹，并将文件复制到 AzureFile 文件夹。 如果数据格式与相应的文件夹（存储类型）不匹配，则在后续步骤中，数据将无法上传到 Azure。
 
     - 请确保所有容器、blob 和文件都符合 [Azure 命名约定](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)和 [Azure 对象大小限制](data-box-disk-limits.md#azure-object-size-limits)。 如果不遵循这些规则或限制，则无法将数据上传到 Azure。     
     - 如果你的订单将托管磁盘作为存储目标之一，请参阅[托管磁盘](data-box-disk-limits.md#managed-disk-naming-conventions)的命名约定。
-    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob  和 PageBlob  文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
-    - 在 AzureFile  文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传  。
+    - 在 Azure 存储帐户中，为 BlockBlob 和 PageBlob 文件夹下的每个子文件夹创建一个容器。 BlockBlob 和 PageBlob 文件夹下的所有文件将复制到 Azure 存储帐户下的默认容器 $root 中。 $root 容器中的所有文件将始终作为块 blob 上传。
+    - 在 AzureFile 文件夹内创建子文件夹。 此子文件夹将映射到云中的文件共享。 将文件复制到子文件夹。 直接复制到 AzureFile 文件夹的文件都会失败，会作为块 Blob 上传。
     - 如果根目录中存在文件和文件夹，则必须先将它们移到另一个文件夹，然后开始复制数据。
 
 3. 使用文件资源管理器或任何与 SMB 兼容的文件复制工具（如 Robocopy）通过拖放来复制数据。 可以使用以下命令启动多个复制作业：

@@ -8,11 +8,11 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750444"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381239"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -22,9 +22,9 @@ Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站�
 ## <a name="overview"></a>概述
 Azure 文件同步在 Windows Server、Azure 文件共享和多项其他的 Azure 服务之间充当业务流程服务，用于同步同步组中所述的数据。 需将服务器配置为与以下 Azure 服务通信，确保 Azure 文件同步正常工作：
 
-- Azure 存储器
+- Azure 存储
 - Azure 文件同步
-- Azure Resource Manager
+- Azure 资源管理器
 - 身份验证服务
 
 > [!Note]  
@@ -94,8 +94,8 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | **Azure 资源管理器** | https://management.azure.com | https://management.usgovcloudapi.net | 包括初始服务器注册调用在内的任何用户调用（例如 PowerShell）都会转到/经过此 URL。 |
 | **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure 资源管理器调用必须由经过身份验证的用户发出。 若要成功，请使用此 URL 进行用户身份验证。 |
 | **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | 在部署 Azure 文件同步的过程中，将在订阅的 Azure Active Directory 中创建服务主体。 此 URL 用于该操作。 此主体用于将最小的一组权限委托给 Azure 文件同步服务。 对 Azure 文件同步进行初始设置的用户必须是经过身份验证且具有订阅所有者特权的用户。 |
-| **Azure 存储** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
-| **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;.afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
+| **Azure 存储** | &ast;.core.windows.net | &ast;. core.usgovcloudapi.net | 服务器在下载某个文件时，可以直接与存储帐户中的 Azure 文件共享通信，从而提高数据移动效率。 服务器有一个 SAS 密钥，只允许进行针对性的文件共享访问。 |
+| **Azure 文件同步** | &ast;.one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | 在完成初始服务器注册以后，服务器会收到一个区域 URL，适用于该区域中的 Azure 文件同步服务实例。 服务器可以使用此 URL 直接且高效地与负责其同步的实例通信。 |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | 安装 Azure 文件同步代理后，PKI URL 用于下载与 Azure 文件同步服务和 Azure 文件共享进行通信所需的中间证书。 OCSP URL 用于检查证书的状态。 |
 
 > [!Important]
@@ -105,7 +105,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
 出于业务连续性和灾难恢复 (BCDR) 的原因，你可能在全局冗余 (GRS) 存储帐户中指定了 Azure 文件共享。 如果是这样，在发生长时间的区域性中断时，Azure 文件共享将故障转移到配对的区域。 Azure 文件同步使用的区域配对与存储相同。 因此，如果你使用 GRS 存储帐户，则需要启用其他 Url，以允许服务器与 Azure 文件同步的配对区域通信。下表将调用此 "配对区域"。 此外，还需要启用一个流量管理器配置文件 URL。 在发生故障转移时，此 URL 可确保将网络流量无缝重新路由到配对区域；在下表中，此 URL 称为“发现 URL”。
 
-| 云  | 地区 | 主终结点 URL | 配对区域 | 发现 URL |
+| 云  | 区域 | 主终结点 URL | 配对区域 | 发现 URL |
 |--------|--------|----------------------|---------------|---------------|
 | 公共 |澳大利亚东部 | https：\//kailani-aue.one.microsoft.com | 澳大利亚东南部 | https：\//tm-kailani-aue.one.microsoft.com |
 | 公共 |澳大利亚东南部 | https：\//kailani-aus.one.microsoft.com | 澳大利亚东部 | https：\//tm-kailani-aus.one.microsoft.com |
@@ -121,19 +121,19 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 | 公共 | 日本西部 | https：\//japanwest01.afs.azure.net | 日本东部 | https：\//tm-japanwest01.afs.azure.net |
 | 公共 | 韩国中部 | https：\//koreacentral01.afs.azure.net/ | 韩国南部 | https：\//tm-koreacentral01.afs.azure.net/ |
 | 公共 | 韩国南部 | https：\//koreasouth01.afs.azure.net/ | 韩国中部 | https：\//tm-koreasouth01.afs.azure.net/ |
-| 公共 | 美国中北部 | https:\//northcentralus01.afs.azure.net | 美国中南部 | https:\//tm-northcentralus01.afs.azure.net |
+| 公共 | 美国中北部 | https：\//northcentralus01.afs.azure.net | 美国中南部 | https：\//tm-northcentralus01.afs.azure.net |
 | 公共 | 北欧 | https：\//kailani7.one.microsoft.com | 西欧 | https：\//tm-kailani7.one.microsoft.com |
-| 公共 | 美国中南部 | https:\//southcentralus01.afs.azure.net | 美国中北部 | https:\//tm-southcentralus01.afs.azure.net |
+| 公共 | 美国中南部 | https：\//southcentralus01.afs.azure.net | 美国中北部 | https：\//tm-southcentralus01.afs.azure.net |
 | 公共 | 印度南部 | https：\//kailani-sin.one.microsoft.com | 印度中部 | https：\//tm-kailani-sin.one.microsoft.com |
 | 公共 | 东南亚 | https：\//kailani10.one.microsoft.com | 东亚 | https：\//tm-kailani10.one.microsoft.com |
 | 公共 | 英国南部 | https：\//kailani-uks.one.microsoft.com | 英国西部 | https：\//tm-kailani-uks.one.microsoft.com |
 | 公共 | 英国西部 | https：\//kailani-ukw.one.microsoft.com | 英国南部 | https：\//tm-kailani-ukw.one.microsoft.com |
-| 公共 | 美国中西部 | https:\//westcentralus01.afs.azure.net | 美国西部 2 | https：\//tm-westcentralus01.afs.azure.net |
+| 公共 | 美国中西部 | https：\//westcentralus01.afs.azure.net | 美国西部 2 | https：\//tm-westcentralus01.afs.azure.net |
 | 公共 | 西欧 | https：\//kailani6.one.microsoft.com | 北欧 | https：\//tm-kailani6.one.microsoft.com |
 | 公共 | 美国西部 | https：\//kailani.one.microsoft.com | 美国东部 | https：\//tm-kailani.one.microsoft.com |
 | 公共 | 美国西部 2 | https：\//westus201.afs.azure.net | 美国中西部 | https：\//tm-westus201.afs.azure.net |
-| 政府 | US Gov 亚利桑那州 | https：\//usgovarizona01.afs.azure.us | US Gov 德克萨斯州 | https：\//tm-usgovarizona01.afs.azure.us |
-| 政府 | US Gov 德克萨斯州 | https:\//usgovtexas01.afs.azure.us | US Gov 亚利桑那州 | https:\//tm-usgovtexas01.afs.azure.us |
+| Government | US Gov 亚利桑那州 | https：\//usgovarizona01.afs.azure.us | US Gov 德克萨斯州 | https：\//tm-usgovarizona01.afs.azure.us |
+| Government | US Gov 德克萨斯州 | https：\//usgovtexas01.afs.azure.us | US Gov 亚利桑那州 | https：\//tm-usgovtexas01.afs.azure.us |
 
 - 如果使用本地冗余 (LRS) 或区域冗余 (ZRS) 存储帐户，只需启用“主终结点 URL”下面列出的 URL。
 

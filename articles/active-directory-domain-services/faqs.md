@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: cea1664a0418dbe6269c22cffc70e0979dea41f0
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: a57826c79babded6e616548879a5ec0c223307d0
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893017"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78946436"
 ---
 # <a name="frequently-asked-questions-faqs"></a>常见问题 (FAQ)
 
@@ -36,6 +36,7 @@ ms.locfileid: "78893017"
 * [是否可以将域控制器添加到 Azure AD 域服务托管域？](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [来宾用户是否可以通过 Azure AD 域服务邀请到目录？](#can-guest-users-invited-to-my-directory-use-azure-ad-domain-services)
 * [是否可以将现有 Azure AD 域服务托管域移到不同的订阅、资源组、区域或虚拟网络？](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [域服务是否包含高可用性选项 Azure AD？](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>是否可为单个 Azure AD 目录创建多个托管域？
 不是。 对于单个 Azure AD 目录，只能创建一个由 Azure AD 域服务提供服务的托管域。
@@ -74,6 +75,10 @@ ms.locfileid: "78893017"
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>是否可以将现有 Azure AD 域服务托管域移到不同的订阅、资源组、区域或虚拟网络？
 不是。 创建 Azure AD 域服务托管域后，不能将实例移动到不同的资源组、虚拟网络、订阅等。部署 Azure AD DS 实例时，请注意选择最适当的订阅、资源组、区域和虚拟网络。
+
+### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>域服务是否包含高可用性选项 Azure AD？
+
+是的。 每个 Azure AD 域服务托管域包括两个域控制器。 不管理或连接到这些域控制器，它们是托管服务的一部分。 如果将 Azure AD 域服务部署到支持可用性区域的区域，则域控制器跨区域分布。 在不支持可用性区域的区域中，域控制器分布于多个可用性集。 你没有针对此分发的配置选项或管理控制。 有关详细信息，请参阅[Azure 中虚拟机的可用性选项](../virtual-machines/windows/availability.md)。
 
 ## <a name="administration-and-operations"></a>管理和操作
 

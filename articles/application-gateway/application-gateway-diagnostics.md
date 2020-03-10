@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
 ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966921"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384801"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>应用程序网关的后端运行状况和诊断日志
 
@@ -158,7 +158,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 只有在每个应用程序网关实例上启用了访问日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 应用程序网关的每次访问均以 JSON 格式记录，如 v1 中的以下示例所示：
 
-|值  |Description  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -202,7 +202,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 ```
 对于应用程序网关和 WAF v2，日志显示了一些详细信息：
 
-|值  |Description  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 为请求服务的应用程序网关实例。        |
 |clientIP     | 请求的初始 IP。        |
@@ -256,7 +256,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有在每个应用程序网关实例上启用了性能日志，才会生成此日志，如上述步骤所示。 数据存储在启用日志记录时指定的存储帐户中。 每隔 1 分钟生成性能日志数据。 它仅适用于 v1 SKU。 对于 v2 SKU，使用性能数据的[指标](application-gateway-metrics.md)。 将记录以下数据：
 
 
-|值  |Description  |
+|值  |说明  |
 |---------|---------|
 |instanceId     |  正在为其生成性能数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。        |
 |healthyHostCount     | 后端池中运行正常的主机数。        |
@@ -293,7 +293,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 只有为每个应用程序网关启用了防火墙日志，才会生成此日志，如上述步骤所示。 此日志还需在应用程序网关上配置 Web 应用程序防火墙。 数据存储在启用日志记录时指定的存储帐户中。 将记录以下数据：
 
 
-|值  |Description  |
+|值  |说明  |
 |---------|---------|
 |instanceId     | 正在为其生成防火墙数据的应用程序网关实例。 对于多实例应用程序网关，每个实例有一行性能数据。         |
 |clientIp     |   请求的初始 IP。      |

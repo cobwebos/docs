@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
 ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604711"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380721"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议-参考指南
 
@@ -53,7 +53,7 @@ ms.locfileid: "77604711"
 |----|----|----|----|----|
 |**应使用基于角色的访问控制来限制对 Kubernetes 服务群集的访问权限**|若要提供用户可以执行的操作的详细筛选，请使用基于角色的访问控制（RBAC）管理 Kubernetes Service 群集中的权限，并配置相关的授权策略。 有关详细信息，请参阅[Azure 基于角色的访问控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>（相关策略： [预览版]：基于角色的访问控制（RBAC）应在 Kubernetes Services 上使用）|中型|N|计算资源（容器）|
 |**Kubernetes 服务应升级到最新的 Kubernetes 版本**|将 Azure Kubernetes Service 群集升级到最新的 Kubernetes 版本，以便从最新的漏洞修补程序中获益。 有关特定 Kubernetes 漏洞的详细信息，请参阅[Kubernetes 标识符](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>（相关策略： [预览版]： Kubernetes Services 应升级到不容易受到攻击的 Kubernetes 版本）|高|N|计算资源（容器）|
-|**应通过删除不必要的应用程序特权来定义 Pod 安全策略，以减少攻击向量（预览）**|通过删除不必要的应用程序特权，定义 Pod 安全策略来减少攻击向量。 建议配置 pod 安全策略，以便盒只能访问允许访问的资源。<br>（相关策略： [预览版]： Pod 安全策略应在 Kubernetes Services 上定义）|中型|N|计算资源（容器）|
+|**应通过删除不必要的应用程序特权来定义 Pod 安全策略，以减少攻击向量（预览）**|通过删除不必要的应用程序特权，来定义 Pod 安全策略以减少攻击途径。 建议配置 pod 安全策略，以便盒只能访问允许访问的资源。<br>（相关策略： [预览版]： Pod 安全策略应在 Kubernetes Services 上定义）|中型|N|计算资源（容器）|
 |**只有仅授权特定的 IP 范围，才能访问 Kubernetes 服务管理 API**|仅向特定范围内的 IP 地址授予 API 访问权限，以限制对 Kubernetes 服务管理 API 的访问。 建议配置授权的 IP 范围，以便只有来自允许的网络的应用程序可以访问该群集。<br>（相关策略： [预览版]：应在 Kubernetes Services 上定义授权 IP 范围）|高|N|计算资源（容器）|
 |**应修正 Azure 容器注册表映像中的漏洞（由 Qualys 提供支持）**|容器映像漏洞评估扫描注册表中每个推送的容器映像的安全漏洞，并显示每个映像的详细发现。 解决这些漏洞可以极大地改善您的容器的安全状况，并防范攻击。<br>（无相关策略）|高|N|计算资源（容器）|
 ||||||

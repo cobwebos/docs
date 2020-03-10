@@ -1,17 +1,17 @@
 ---
-title: 教程：适用于 Azure Cosmos DB 的数据库迁移工具
-description: 教程：了解如何使用开源 Azure Cosmos DB 数据迁移工具从各种源将数据导入 Azure Cosmos DB 中，这些源包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件。 将 CSV 转换为 JSON。
+title: 教程：用于 Azure Cosmos DB 的数据库迁移工具
+description: 教程：了解如何使用开源 Azure Cosmos DB 数据迁移工具将数据从各种源（包括 MongoDB、SQL Server、表存储、Amazon DynamoDB、CSV 和 JSON 文件）导入到 Azure Cosmos DB 中。 将 CSV 转换为 JSON。
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: dech
 ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721138"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387948"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>教程：使用数据迁移工具将数据迁移到 Azure Cosmos DB
 
@@ -35,7 +35,7 @@ ms.locfileid: "73721138"
 
 在按照本文中的说明操作之前，请确保执行以下步骤：
 
-* **安装** [Microsoft .NET Framework 4.5.1](https://www.microsoft.com/download/developer-tools.aspx) 或更高版本。
+* **安装** [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx)或更高版本。
 
 * **增加吞吐量：** 数据迁移的持续时间取决于为单个集合或一组集合设置的吞吐量。 请确保对于较大的数据迁移增加吞吐量。 完成迁移后，减少吞吐量以节约成本。 有关在 Azure 门户中增加吞吐量的详细信息，请参阅 Azure Cosmos DB 中的[性能级别](performance-levels.md)和[定价层](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
@@ -90,8 +90,8 @@ ms.locfileid: "73721138"
 
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
-* `<CosmosDB Endpoint>` 是终结点 URI。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“概述”窗格并复制 URI 值   。
-* `<AccountKey>` 是“密码”或“主要密钥”  。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“连接字符串”或“密钥”窗格，然后复制“密码”或“主要密钥”值    。
+* `<CosmosDB Endpoint>` 是终结点 URI。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“概述”窗格并复制 URI 值。
+* `<AccountKey>` 是“密码”或“主要密钥”。 可从 Azure 门户获取此值。 导航到 Azure Cosmos 帐户。 打开“连接字符串”或“密钥”窗格，然后复制“密码”或“主要密钥”值。
 * `<CosmosDB Database>` 是 CosmosDB 数据库名称。
 
 示例： `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`
@@ -184,7 +184,7 @@ dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.Con
 
 请注意 Address.AddressType 和 Address.Location.StateProvinceName 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 Address 和 Address.Location 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-*{ "id":"956", "Name":"Finer Sales and Service", "Address": { "AddressType":"Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City":"Ottawa", "StateProvinceName":"Ontario" }, "PostalCode":"K4B 1S2", "CountryRegionName":"Canada" } }*
+{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }
 
 下面是一些从 SQL Server 中导入的命令行示例：
 
@@ -208,7 +208,7 @@ CSV 文件源导入程序选项可用于导入一个或多个 CSV 文件。 添�
 
 请注意 DomainInfo.Domain_Name 和 RedirectInfo.Redirecting 等别名。 通过指定嵌套分隔符“.”，导入工具会在导入过程中创建 DomainInfo 和 RedirectInfo 子文档。 下面是 Azure Cosmos DB 中的生成文档的示例：
 
-*{ "DomainInfo": { "Domain_Name":"ACUS.GOV", "Domain_Name_Address": "https:\//www.ACUS.GOV" }, "Federal Agency":"Administrative Conference of the United States", "RedirectInfo": { "Redirecting":"0", "Redirect_Destination": "" }, "id":"9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{"DomainInfo"： {"Domain_Name"： "ACUS.GOV"、"Domain_Name_Address"： "https：\//www.ACUS.GOV"}、"联邦机构"： "美国的管理会议"、"RedirectInfo"： {"重定向"： "0"，"Redirect_Destination"： ""}，"id"： "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
 
 导入工具会尝试针对 CSV 文件中不带引号的值推断类型信息（带引号的值始终作为字符串处理）。  按以下顺序标识类型︰数值、日期时间、布尔值。  
 
@@ -401,13 +401,13 @@ Azure Cosmos DB 帐户连接字符串可从 Azure 门户的“密钥”页中检
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Azure Cosmos DB 批量导入程序具有下列高级附加选项：
 
-1. 批大小：工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
+1. 批大小︰工具默认将批大小设置为 50。  如果要导入的文档很大，请考虑减小批大小。 如果要导入的文档很小，请考虑增大批大小。
 2. 最大脚本大小（字节）：工具默认设置为 512 KB 的最大脚本大小。
-3. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+3. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 4. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 5. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 6. 重试间隔：指定在发生暂时性故障（例如网络连接中断）时重试 Azure Cosmos DB 连接等待的时间间隔。
@@ -456,12 +456,12 @@ Azure Cosmos DB 连接字符串的格式为：
 
 * 字符串：保持字符串值
 * Epoch：保持 Epoch 数字值
-* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value":"2013-10-21T21:17:25.2410000Z", "Epoch":1382390245 }
+* 两者：保持字符串和 Epoch 数字值。 此选项创建一个子文档，例如："date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
 Azure Cosmos DB - 顺序记录导入程序具有下列高级附加选项：
 
 1. 并行请求数：工具默认设置为两个并行请求。 如果要导入的文档很小，请考虑增加并行请求的数量。 如果此数字提高得过多，则导入可能会遇到速率限制。
-2. 禁用自动生成 ID：如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
+2. 禁用自动生成 ID︰如果要导入的每个文档都包含一个 ID 字段，则选择此选项可以提高性能。 不会导入缺少唯一 ID 字段的文档。
 3. 更新现有文档：工具将默认设置为不替换存在 ID 冲突的现有文档。 选择此选项可以覆盖具有匹配 ID 的现有文档。 此功能可用于更新现有文档的计划内数据迁移。
 4. 失败重试次数：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接的频率。
 5. 重试间隔：指定在发生暂时性故障（例如网络连接中断）期间重试 Azure Cosmos DB 连接等待的时间间隔。
@@ -563,7 +563,7 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
     ![摘要屏幕的屏幕截图](./media/import-data/summarycommand.png)
 
-2. 对源和目标选项满意后，单击“导入”  。 在导入过程中，已用时间、传输计数和失败信息（如果未在“高级”配置中提供文件名）将会更新。 完成后，可以导出结果（例如，用于处理所有导入失败结果）。
+2. 对源和目标选项满意后，单击“导入”。 在导入过程中，已用时间、传输计数和失败信息（如果未在“高级”配置中提供文件名）将会更新。 完成后，可以导出结果（例如，用于处理所有导入失败结果）。
 
     ![Azure Cosmos DB JSON 导出选项的屏幕截图](./media/import-data/viewresults.png)
 
@@ -573,7 +573,7 @@ dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<Cos
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，我们已完成以下任务：
+在本教程中，已完成以下任务：
 
 > [!div class="checklist"]
 > * 已安装数据迁移工具

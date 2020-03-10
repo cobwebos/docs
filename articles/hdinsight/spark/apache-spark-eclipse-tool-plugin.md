@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 07ed22879180d8126711eba9af0a2cac5b7b2953
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936503"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381617"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>使用 Azure Toolkit for Eclipse 为 HDInsight 群集创建 Apache Spark 应用程序
 
-在 Azure Toolkit for [Eclipse](https://www.eclipse.org/) 中使用 HDInsight 工具开发以 [Scala](https://www.scala-lang.org/) 编写的 [Apache Spark](https://spark.apache.org/) 应用程序，并直接从 Eclipse IDE 将其提交到 Azure HDInsight Spark 群集。 可以通过多种不同方式使用 HDInsight 工具插件：
+在 Azure Toolkit for [Eclipse](https://www.eclipse.org/) 中使用 HDInsight 工具开发以 [Scala](https://spark.apache.org/) 编写的 [Apache Spark](https://www.scala-lang.org/) 应用程序，并直接从 Eclipse IDE 将其提交到 Azure HDInsight Spark 群集。 可以通过多种不同方式使用 HDInsight 工具插件：
 
 * 在 HDInsight Spark 群集中开发和提交 Scala Spark 应用程序。
 * 访问 Azure HDInsight Spark 群集资源。
 * 在本地开发和运行 Scala Spark 应用程序。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76936503"
     * Azure Toolkit for Eclipse \<版本 >。
     * Scala IDE \<版本 >。
 
-## <a name="sign-in-to-your-azure-subscription"></a>登录 Azure 订阅
+## <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
 1. 启动 Eclipse IDE。
 
@@ -159,9 +159,9 @@ ms.locfileid: "76936503"
 
 1. 在 HDInsight Spark 群集中运行该应用程序：
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，然后单击“添加引用”。 在“包资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
+   a. 在“包资源管理器”中，右键单击项目名称，并选择“将 Spark 应用程序提交到 HDInsight”。
 
-   b.保留“数据库类型”设置，即设置为“共享”。 在“Spark 提交”对话框中提供以下值，然后选择“提交”：
+   b. 在“Spark 提交”对话框中提供以下值，然后选择“提交”：
 
    * 对于“群集名称”，选择要在其上运行应用程序的 HDInsight Spark 群集。
    * 从 Eclipse 项目或硬盘中选择一个项目。 默认值取决于从包资源管理器右键单击的项。

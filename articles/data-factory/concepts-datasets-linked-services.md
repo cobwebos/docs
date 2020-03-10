@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928477"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381760"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure 数据工厂中的数据集
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -67,11 +67,11 @@ ms.locfileid: "74928477"
 ```
 下表描述了上述 JSON 中的属性：
 
-properties | 描述 | 需要 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
-structure | 数据集的架构。 有关详细信息，请参阅[数据集架构](#dataset-structure-or-schema)。 | No |
+structure | 数据集的架构。 有关详细信息，请参阅[数据集架构](#dataset-structure-or-schema)。 | 否 |
 typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 ### <a name="data-flow-compatible-dataset"></a>数据流兼容的数据集
@@ -112,11 +112,11 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 
 下表描述了上述 JSON 中的属性：
 
-properties | 描述 | 需要 |
+properties | 说明 | 必选 |
 -------- | ----------- | -------- |
 name | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
-schema | 数据集的架构。 有关详细信息，请参阅数据流兼容的数据[集](#dataset-type)。 | No |
+架构 | 数据集的架构。 有关详细信息，请参阅数据流兼容的数据[集](#dataset-type)。 | 否 |
 typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属性各不相同。 若要详细了解受支持的类型及其属性，请参阅[数据集类型](#dataset-type)。 | 是 |
 
 
@@ -140,7 +140,7 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 }
 
 ```
-注意以下几点：
+请注意以下几点：
 
 - type 设置为 AzureSqlTable。
 - tableName 类型属性（特定于 AzureSqlTable 类型）设置为 MyTable。
@@ -178,12 +178,12 @@ typeProperties | 每种类型（例如 Azure Blob、Azure SQL 表）的类型属
 
 结构中的每个列都包含以下属性：
 
-properties | 描述 | 需要
+properties | 说明 | 必选
 -------- | ----------- | --------
 name | 列的名称。 | 是
-type | 列的数据类型。 数据工厂支持将以下临时数据类型作为允许的值：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan | No
-culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | No
-format | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | No
+type | 列的数据类型。 数据工厂支持将以下临时数据类型作为允许的值：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan | 否
+culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | 否
+format | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
 
 ### <a name="example"></a>示例
 在下面的示例中，假设源 Blob 数据采用 CSV 格式，并且包含三列： userid、name 和 lastlogindate。 它们的类型分别为 Int64、String 和 Datetime，并采用使用星期几的缩写法语名称的自定义日期时间格式。

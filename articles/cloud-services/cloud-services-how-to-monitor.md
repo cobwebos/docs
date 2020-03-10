@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972945"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384138"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>云服务监视简介
 
@@ -54,7 +54,7 @@ ms.locfileid: "75972945"
 
 首先，如果你没有**经典**存储帐户，请[创建一个](../storage/common/storage-account-create.md)。 确保为创建的存储帐户指定**经典部署模型**。
 
-接下来，导航到“存储帐户(经典)”资源。 选择“设置” > “访问密钥”，并复制“主连接字符串”值。 云服务需要此值。 
+接下来，导航到“存储帐户(经典)”资源。 选择“设置” **“访问密钥”，并复制“主连接字符串”值。**  >  云服务需要此值。 
 
 必须更改两个配置文件才能启用高级诊断：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 

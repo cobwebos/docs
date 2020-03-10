@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
 ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084530"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395008"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>关于用于 VMware 到 Azure 部署的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery 部署规划器用户指南。
@@ -42,7 +42,7 @@ ms.locfileid: "74084530"
 **Azure 基础结构要求**
 
 * 每个 VM 的存储类型（标准或高级存储）要求
-* 要为复制设置的标准和高级存储帐户总数（包括缓存存储帐户）
+* 要为复制设置的标准和高级存储帐户的总数（包括缓存存储帐户）
 * 基于存储指南的存储帐户命名建议
 * 针对订阅执行测试性故障转移或故障转移之前要设置的 Azure 核心数
 * 适用于每个本地 VM 的 Azure VM 建议大小
@@ -65,13 +65,13 @@ ms.locfileid: "74084530"
 | | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
 支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.7、6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | 不可用 |Windows Server 2016、Windows Server 2012 R2|不可用
-支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|不可用|Hyper-V 群集、Hyper-V 主机|不可用|
-可以按 Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| 不可用 |多个（一次可以分析多个主机或主机群集的 VM）| 不可用
+支持的版本 | vCenter 6.7、6.5、6.0 或5。5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
+可以按 Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| NA |多个（一次可以分析多个主机或主机群集的 VM）| NA
 
 *此工具主要用于 Hyper-V 到 Azure 灾难恢复方案。 对于 Hyper-V 到辅助站点灾难恢复，只能将其用于了解源端建议，例如所需网络带宽、每个源 Hyper-V 服务器上需要的可用存储空间，以及初始复制批处理数和批次定义。 忽略报表中的 Azure 建议和成本。 另外，“获取吞吐量”操作不适用于 Hyper-V 到辅助站点灾难恢复方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 该工具的操作分两个主要阶段：分析和报告生成。 此外还有第三个选项，即仅计算吞吐量。 下表提供了可以进行分析和吞吐量测量的服务器的要求。
 
 | 服务器要求 | 说明|
@@ -104,7 +104,7 @@ ms.locfileid: "74084530"
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>更新至最新版本的部署规划器
 
-最新更新汇总在部署规划器[版本历史记录](site-recovery-deployment-planner-history.md)中。
+部署规划器[版本历史记录](site-recovery-deployment-planner-history.md)中概述了最新的更新。
 
 如果部署规划器为旧版，请执行以下操作之一：
  * 如果最新版不包含分析修补程序且分析已在当前版本的 Planner 上进行，请继续该分析。
@@ -119,7 +119,7 @@ ms.locfileid: "74084530"
 
 
 ## <a name="version-history"></a>版本历史记录
-最新的 Site Recovery 部署规划器工具版本为 2.5。
+最新的 Site Recovery 部署规划器工具版本为2.5。
 请参阅 [Site Recovery 部署规划器版本历史记录](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history)页，了解每个更新中增加的修补程序。
 
 ## <a name="next-steps"></a>后续步骤

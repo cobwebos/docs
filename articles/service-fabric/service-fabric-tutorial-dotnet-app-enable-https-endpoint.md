@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614071"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382769"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>允许 NETWORK SERVICE 访问证书的私钥
 
-在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 **SetupEntryPoint** 中[配置启动脚本](service-fabric-run-script-at-service-startup.md)，以便自动运行 PowerShell 脚本。
+在前面的步骤中，已在开发计算机上将证书导入 `Cert:\LocalMachine\My` 存储。  现在，显式允许运行服务（默认为 NETWORK SERVICE）的帐户访问证书的私钥。 可以手动执行此步骤（使用 certlm.msc 工具），但最好是在服务清单的 [SetupEntryPoint](service-fabric-run-script-at-service-startup.md) 中**配置启动脚本**，以便自动运行 PowerShell 脚本。
 
 ### <a name="configure-the-service-setup-entry-point"></a>配置服务安装程序入口点
 
@@ -221,17 +221,17 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ### <a name="add-the-batch-and-powershell-setup-scripts"></a>添加批处理和 PowerShell 设置脚本
 
-若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“Setup.bat”的新文件。     编辑 *Setup.bat* 文件，添加以下命令：
+若要从 **SetupEntryPoint** 点运行 PowerShell，可以在指向 PowerShell 文件的批处理文件中运行 PowerShell.exe。 首先，添加服务项目的批处理文件。  在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“Setup.bat”的新文件。** ->  编辑 *Setup.bat* 文件，添加以下命令：
 
 ```bat
 powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
-修改 *Setup.bat* 文件属性，将“复制到输出目录”设置为“如果较新则复制”。 
+修改 *Setup.bat* 文件属性，将“复制到输出目录”设置为“如果较新则复制”。
 
 ![设置文件属性][image1]
 
-在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加”->“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。     编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
+在“解决方案资源管理器”中，右键单击“VotingWeb”，选择“添加” **“新建项”，然后添加名为“SetCertAccess.ps1”的新文件。** ->  编辑 *SetCertAccess.ps1* 文件，添加以下脚本：
 
 ```powershell
 $subject="mytestcert"
@@ -280,7 +280,7 @@ if ($cert -eq $null)
 
 ```
 
-修改 *SetCertAccess.ps1* 文件属性，将“复制到输出目录”设置为“如果较新则复制”。 
+修改 *SetCertAccess.ps1* 文件属性，将“复制到输出目录”设置为“如果较新则复制”。
 
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>以管理员身份运行设置脚本
 
@@ -335,7 +335,7 @@ if ($cert -eq $null)
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 
-在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”  属性设置为“https:\//localhost:443”。
+在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”属性设置为“https:\//localhost:443”。
 
 保存所有文件并按 F5，以便在本地运行应用程序。  在应用程序部署完以后，Web 浏览器会打开到 https:\//localhost:443。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 
@@ -345,11 +345,11 @@ if ($cert -eq $null)
 
 在将应用程序部署到 Azure 之前，请将证书安装到所有远程群集节点的 `Cert:\LocalMachine\My` 存储中。  服务可以移到群集的不同节点。  当前端 Web 服务在群集节点上启动时，启动脚本会查找证书并配置访问权限。
 
-首先，将证书导出到 PFX 文件。 打开 certlm.msc 应用程序，导航到“个人”  >  “证书”。  右键单击 *mytestcert* 证书，选择“所有任务”  >  “导出”。
+首先，将证书导出到 PFX 文件。 打开 certlm.msc 应用程序，导航到“个人”>“证书”。  右键单击 *mytestcert* 证书，选择“所有任务”>“导出”。
 
 ![导出证书][image4]
 
-在导出向导中，选择“是，导出私钥”，然后选择“个人信息交换(PFX)”格式。   将文件导出到 *C:\Users\sfuser\votingappcert.pfx*。
+在导出向导中，选择“是，导出私钥”，然后选择“个人信息交换(PFX)”格式。  将文件导出到 *C:\Users\sfuser\votingappcert.pfx*。
 
 接下来，使用[提供的 Powershell 脚本](./scripts/service-fabric-powershell-add-application-certificate.md)在远程群集上安装此证书。
 
@@ -383,7 +383,7 @@ $slb | Set-AzLoadBalancer
 
 ## <a name="deploy-the-application-to-azure"></a>将应用程序部署到 Azure
 
-保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布”   。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。 
+保存所有文件，从“调试”切换到“发布”，然后按 F6 进行重新生成。  在“解决方案资源管理器”中，右键单击“Voting”并选择“发布”。 选择在[将应用程序部署到群集](service-fabric-tutorial-deploy-app-to-party-cluster.md)中创建的群集的连接终结点，或者选择另一群集。  单击“发布”，将应用程序发布到远程群集。
 
 当应用程序部署后，打开 Web 浏览器，导航到 [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443)（使用群集的连接终结点更新 URL）。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 

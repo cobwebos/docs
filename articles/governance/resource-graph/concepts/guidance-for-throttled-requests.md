@@ -4,11 +4,11 @@ description: 了解如何对进行并行处理，以避免请求被 Azure 资源
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436064"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388624"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure 资源图中的限制请求指南
 
@@ -185,7 +185,7 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 }
 ```
 
-## <a name="pagination"></a>标记页数
+## <a name="pagination"></a>分页
 
 由于 Azure 资源关系图在单个查询响应中最多返回1000项，因此你可能需要对查询进行[分页](./work-with-data.md#paging-results)以获取所需的完整数据集。 但是，某些 Azure 资源关系图客户端处理分页的方式不同。
 

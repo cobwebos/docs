@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045821"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388763"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教程：在 Azure SQL Server VM 上手动配置可用性组
 
@@ -32,13 +32,13 @@ ms.locfileid: "76045821"
 
 ![可用性组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 本教程假设读者对 SQL Server Always On 可用性组有一个基本的了解。 如需更多信息，请参阅 [Always On 可用性组概述 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
 下表列出了开始本教程之前需要完成的先决条件：
 
-|  |要求 |Description |
+|  |要求 |说明 |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 两个 SQL Server | - 位于 Azure 可用性集中 <br/> - 位于单个域中 <br/> - 已安装故障转移群集功能 |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | 群集的文件共享见证 |  
@@ -72,7 +72,7 @@ ms.locfileid: "76045821"
    ![创建群集](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. 在“创建群集向导”中，逐页完成下表中的设置来创建一个单节点群集：
 
-   | 页面 | 设置 |
+   | 页 | 设置 |
    | --- | --- |
    | 开始之前 |使用默认值 |
    | 选择服务器 |在“输入服务器名称”中键入第一个 SQL Server 的名称，并单击“添加”。 |
@@ -402,7 +402,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
 1. 对侦听器运行状况探测进行如下设置：
 
-   | 设置 | Description | 示例
+   | 设置 | 说明 | 示例
    | --- | --- |---
    | **名称** | 文本 | SQLAlwaysOnEndPointProbe |
    | 协议 | 选择 TCP | TCP |
@@ -418,7 +418,7 @@ Azure 负载均衡器可以是标准负载均衡器或基本负载均衡器。 �
 
 1. 对侦听器负载均衡器规则进行如下设置。
 
-   | 设置 | Description | 示例
+   | 设置 | 说明 | 示例
    | --- | --- |---
    | **名称** | 文本 | SQLAlwaysOnEndPointListener |
    | “前端 IP 地址” | 选择一个地址 |使用创建负载均衡器时所创建的地址。 |
@@ -445,7 +445,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 对 WSFC 群集核心 IP 地址运行状况探测进行如下设置：
 
-   | 设置 | Description | 示例
+   | 设置 | 说明 | 示例
    | --- | --- |---
    | **名称** | 文本 | WSFCEndPointProbe |
    | 协议 | 选择 TCP | TCP |
@@ -459,7 +459,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 将群集核心 IP 地址负载均衡规则进行如下设置。
 
-   | 设置 | Description | 示例
+   | 设置 | 说明 | 示例
    | --- | --- |---
    | **名称** | 文本 | WSFCEndPoint |
    | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
@@ -493,7 +493,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
 1. 启动 SQL Server Management Studio 并连接到主副本。
 
-1. 导航到“AlwaysOn 高可用性” | “可用性组” | “可用性组侦听器”。
+1. 导航到“AlwaysOn 高可用性” **“可用性组”** “可用性组侦听器”。 |  | 
 
 1. 现在应看到在故障转移群集管理器中创建的侦听器名称。 右键单击侦听器名称，并单击“属性”。
 

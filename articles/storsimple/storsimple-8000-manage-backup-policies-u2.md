@@ -15,18 +15,18 @@ ms.workload: TBD
 ms.date: 07/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 607379f8645226a031646376df9ca18f4d3164bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60818800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394591"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>在 Azure 门户中使用 StorSimple 设备管理器服务管理备份策略
 
 
 ## <a name="overview"></a>概述
 
-本教程介绍如何使用 StorSimple 设备管理器服务的“备份策略”边栏选项卡控制 StorSimple 卷的备份过程和备份保留。  此外还介绍如何完成手动备份。
+本教程介绍如何使用 StorSimple 设备管理器服务的“备份策略”边栏选项卡控制 StorSimple 卷的备份过程和备份保留。 此外还介绍如何完成手动备份。
 
 备份卷时，可以选择创建本地快照或云快照。 若要备份本地固定卷，建议指定云快照。 如果对本地固定卷进行大量的本地快照操作，同时使用包含大量改动的数据集，则可能导致本地空间快速用尽。 如果选择进行本地快照操作，建议用户在备份最新状态时拍摄较少的每日快照，将其保留一天，再删除。
 
@@ -34,7 +34,7 @@ ms.locfileid: "60818800"
 
 ## <a name="the-backup-policy-blade"></a>“备份策略”边栏选项卡
 
-使用 StorSimple 设备的“备份策略”边栏选项卡可以管理备份策略并计划本地快照和云快照。  备份策略用于配置一组卷的备份计划和备份保留。 使用备份策略可以同时执行多个卷的快照。 这意味着，通过备份策略创建的备份属于崩溃一致性副本。
+使用 StorSimple 设备的“备份策略”边栏选项卡可以管理备份策略并计划本地快照和云快照。 备份策略用于配置一组卷的备份计划和备份保留。 使用备份策略可以同时执行多个卷的快照。 这意味着，通过备份策略创建的备份属于崩溃一致性副本。
 
 使用备份策略表格列表还可通过以下一个或多个字段筛选现有备份策略：
 

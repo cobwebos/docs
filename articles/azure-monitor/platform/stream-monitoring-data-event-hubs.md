@@ -8,11 +8,11 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: b22f779d616751ebaa3dad853d5aa23ec4969f23
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658857"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381183"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>将 Azure 监视数据流式传输到事件中心
 Azure Monitor 提供适用于 Azure 中的应用程序和服务、其他云和本地的完整堆栈监视解决方案。 除了使用 Azure Monitor 分析数据并将其用于不同的监视方案，你可能需要将其发送到环境中的其他监视工具。 在大多数情况下，最有效的方法是将监视数据流式处理到外部工具使用[Azure 事件中心](/azure/event-hubs/)。 本文简要介绍了如何将来自不同源的监视数据流式传输到事件中心，并提供详细指南链接。

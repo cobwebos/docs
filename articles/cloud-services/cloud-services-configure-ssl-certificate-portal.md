@@ -1,6 +1,6 @@
 ---
 title: 为云服务配置 SSL | Microsoft Docs
-description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上载 SSL 证书来保护你的应用程序。 这些示例使用 Azure 门户。
+description: 了解如何为 Web 角色指定 HTTPS 终结点以及如何上传 SSL 证书来保护应用程序。 这些示例使用 Azure 门户。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386759"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385387"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>在 Azure 中为应用程序配置 SSL
 
-安全套接字层 (SSL) 加密是用于保护通过 Internet 发送的数据的最常见方法。 此常见任务讨论了如何为 Web 角色指定 HTTPS 终结点以及如何上载 SSL 证书来保护你的应用程序。
+安全套接字层 (SSL) 加密是用于保护通过 Internet 发送的数据的最常见方法。 此常见任务讨论了如何为 Web 角色指定 HTTPS 终结点以及如何上传 SSL 证书来保护应用程序。
 
 > [!NOTE]
 > 本任务中的过程适用于 Azure 云服务；对于应用服务，请参阅[此文章](../app-service/configure-ssl-bindings.md)。
@@ -34,12 +34,12 @@ ms.locfileid: "75386759"
 
 * 证书必须包含私钥。
 * 必须为密钥交换创建证书，并且该证书可导出到个人信息交换 (.pfx) 文件。
-* 证书的使用者名称必须与用于访问云服务的域匹配。 你无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 你必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为**contoso.com** ，则需要从 CA 申请一个证书用于 * **. contoso.com**或**www\.contoso.com**。
+* 证书的使用者名称必须与用于访问云服务的域匹配。 无法从证书颁发机构 (CA) 处获取针对 cloudapp.net 域的 SSL 证书。 必须获取在访问服务时要使用的自定义域名。 在从 CA 请求证书时，该证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，如果自定义域名为**contoso.com** ，则需要从 CA 申请一个证书用于 * **. contoso.com**或**www\.contoso.com**。
 * 该证书必须使用至少 2048 位加密。
 
 出于测试目的，可以[创建](cloud-services-certs-create.md)并使用自签名证书。 自签名证书不通过 CA 进行身份验证并可使用 cloudapp.net 域作为网站 URL。 例如，以下任务使用其公用名 (CN) 为 **sslexample.cloudapp.net** 的自签名证书。
 
-接下来，你必须在服务定义和服务配置文件中包含有关此证书的信息。
+接下来，必须在服务定义和服务配置文件中包含有关此证书的信息。
 
 <a name="modify"> </a>
 
@@ -76,7 +76,7 @@ ms.locfileid: "75386759"
 
    权限（`permissionLevel` 属性）可以设置为以下值之一：
 
-   | 权限值 | Description |
+   | 权限值 | 说明 |
    | --- | --- |
    | limitedOrElevated |**（默认）** 所有角色进程都可以访问该私钥。 |
    | 提升的 |仅提升的进程可以访问该私钥。 |
@@ -150,7 +150,7 @@ ms.locfileid: "75386759"
 4. 提供“文件”、“密码”，然后单击数据输入区域底部的“上传”。
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>步骤 4：使用 HTTPS 连接到角色实例
-现在，你的部署已在 Azure 中启用并运行，你可以使用 HTTPS 连接到该部署。
+在 Azure 中启动并运行部署后，便可以使用 HTTPS 连接到该部署。
 
 1. 单击“**站点 URL**”打开 Web 浏览器。
 

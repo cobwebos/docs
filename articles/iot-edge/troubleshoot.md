@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772233"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387165"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -277,7 +277,7 @@ IoT Edge 运行时只支持短于 64 个字符的主机名。 物理计算机通
    ![配置虚拟机的 DNS 名称](./media/troubleshoot/configure-dns.png)
 
 3. 为“DNS 名称标签”提供一个值，然后选择“保存”。
-4. 复制新的 DNS 名称，此名称应该为 \<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com。
+4. 复制新的 DNS 名称，此名称应该为 **DNSnamelabel\<.\>vmlocation\<.cloudapp.azure.com\>** 。
 5. 在虚拟机中使用下列命令，以 DNS 名称设置 IoT Edge 运行时：
 
    * 在 Linux 上：
@@ -373,7 +373,7 @@ Azure IoT Edge 允许使用受支持的 IoT 中心协议从本地服务器通信
 
 IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的模块，但仍依赖于底层计算机和网络配置。 因此，必须确保将正确的网络和防火墙规则设置为安全边缘到云的通信。 当承载 Azure IoT Edge 运行时的基础服务器的配置防火墙规则时，可以使用下表作为指导原则：
 
-|协议|Port|传入|传出|指南|
+|协议|端口|传入|传出|指南|
 |--|--|--|--|--|
 |MQTT|8883|阻止（默认）|阻止（默认）|<ul> <li>使用 MQTT 作为通信协议时，请将传出（出站）端口配置为“打开”。<li>IoT Edge 不支持将端口 1883 用于 MQTT。 <li>应阻止传入（入站）连接。</ul>|
 |AMQP|5671|阻止（默认）|打开（默认）|<ul> <li>IoT Edge 的默认通信协议。 <li> 如果未为其他支持的协议配置 Azure IoT Edge，或者 AMQP 是所需的通信协议，则必须将此端口配置为“打开”。<li>IoT Edge 不支持将端口 5672 用于 AMQP。<li>当 Azure IoT Edge 使用不同的受 IoT 中心支持的协议时，请阻止此端口。<li>应阻止传入（入站）连接。</ul></ul>|
@@ -412,7 +412,7 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 
 重新启动容器引擎以使更新生效。
 
-| 平台 | 命令 |
+| 平台 | Command |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows （管理员 Powershell） | `Restart-Service iotedge-moby -Force` |

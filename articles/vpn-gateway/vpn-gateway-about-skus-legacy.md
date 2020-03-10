@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861908"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78379211"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虚拟网络网关 SKU（旧式 SKU）
 
@@ -36,7 +36,7 @@ ms.locfileid: "75861908"
 
 可以在同一 SKU 系列内将网关大小重设到某个网关 SKU。 例如，如果具有标准 SKU，则可重设大小为高性能 SKU。 但不能在旧式 SKU 和新式 SKU 系列之间重设 VPN 网关大小。 例如，不能从标准 SKU 调整为 VpnGw2 SKU 或从标准 SKU 调整为 VpnGw1。
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>资源管理器
 
 若要使用 PowerShell 重设资源管理器部署模型的网关大小，请使用以下命令：
 

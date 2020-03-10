@@ -4,11 +4,11 @@ description: 本教程介绍如何创建 Azure Policy 的自定义策略定义�
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966020"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386804"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教程：创建自定义策略定义
 
@@ -71,7 +71,7 @@ ms.locfileid: "75966020"
 #### <a name="existing-resource-in-the-portal"></a>门户中的现有资源
 
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
-在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）   。
+在 Azure 门户中，找到该特定资源的“导出模板”页（在“设置”下）。
 
 ![现有资源上的“导出模板”页](../media/create-custom-policy-definition/export-template.png)
 
@@ -119,13 +119,13 @@ ms.locfileid: "75966020"
 ...
 ```
 
-“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。  此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
+“属性”下面提供了名为 **supportsHttpsTrafficOnly**、设置为 **false** 的值。 此属性似乎是我们所要查找的属性。 此外，该资源的**类型**为 **Microsoft.Storage/storageAccounts**。 该类型告知我们，要将策略限定于此类型的资源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在门户中创建资源
 
-另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。   此属性具有“已禁用”和“已启用”选项。   信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
+另一种方式是通过门户中的资源创建体验。 通过门户创建存储帐户时，“高级”选项卡下会提供“需要安全传输”选项。 此属性具有“已禁用”和“已启用”选项。 信息图标包含附加文本，确认此选项可能是我们所需的属性。 但是，门户不会在此屏幕上显示属性名称。
 
-在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。   选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
+在“查看 + 创建”选项卡上，页面底部提供了“下载自动化模板”链接。 选择该链接会打开用于创建所配置的资源的模板。 在这种情况下，我们会看到两段重要信息：
 
 ```json
 ...
@@ -155,7 +155,7 @@ GitHub 上的 [Azure 快速入门模板](https://github.com/Azure/azure-quicksta
 
 浏览 Azure 资源的另一种方式是使用 [Azure 资源浏览器](https://resources.azure.com)（预览版）。 此工具使用订阅的上下文，因此，你需要在网站中使用 Azure 凭据进行身份验证。 完成身份验证后，可按提供程序、订阅、资源组和资源进行浏览。
 
-找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。 
+找到存储帐户资源并查看属性。 在此处还可以查看 **supportsHttpsTrafficOnly** 属性。 选择“文档”选项卡，可以看到，属性说明与我们在前面的参考文档中找到的信息相匹配。
 
 ## <a name="find-the-property-alias"></a>查找属性别名
 
@@ -216,7 +216,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过_投影_ _别名_数组来包含[别名](../concepts/definition-structure.md#aliases)详细信息：
+结果类似于在资源管理器模板中和通过 Azure 资源浏览器查找后获得的结果。 但是，Azure Resource Graph 结果还可通过[投影](../concepts/definition-structure.md#aliases)_别名_数组来包含_别名_详细信息：
 
 ```kusto
 Resources
@@ -350,7 +350,7 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 
 ### <a name="metadata"></a>元数据
 
-前三个组成部分是策略元数据。 由于我们知道要为哪些对象创建规则，因此可以轻松提供这些组成部分的值。 [Mode](../concepts/definition-structure.md#mode) 主要与标记和资源位置相关。 由于我们不需要将评估范围限制为支持标记的资源，因此将对 **mode** 使用 _all_ 值。
+前三个组成部分是策略元数据。 由于我们知道要为哪些对象创建规则，因此可以轻松提供这些组成部分的值。 [Mode](../concepts/definition-structure.md#mode) 主要与标记和资源位置相关。 由于我们不需要将评估范围限制为支持标记的资源，因此将对 _mode_ 使用 **all** 值。
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -457,11 +457,11 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 
 如果今后不再使用本教程中的资源，请使用以下步骤删除前面创建的所有分配或定义：
 
-1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）    。
+1. 在“Azure Policy”页左侧的“创作”下选择“定义”（如果尝试删除分配，则选择“分配”）。
 
 1. 搜索要删除的新计划或策略定义（或分配）。
 
-1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。  
+1. 右键单击定义（或分配）对应的行或选择其末尾的省略号，然后选择“删除定义”（或“删除分配”）。
 
 ## <a name="review"></a>审阅
 

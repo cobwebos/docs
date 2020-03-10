@@ -5,15 +5,15 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: e12596b496483b872f76ccd610fd70710327b586
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450025"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78396805"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>使用 Azure 资源管理器部署模型将文件还原到 Windows
 
-本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 你可以：
+本文介绍如何从备份保管库还原数据。 若要还原数据，请在 Microsoft Azure 恢复服务 (MARS) 代理中使用“恢复数据”向导。 可以：
 
 * 将数据还原到备份时所在的同一台计算机。
 * 将数据还原到备用计算机。
@@ -40,7 +40,7 @@ ms.locfileid: "75450025"
 
     ![Azure 备份的屏幕截图，其中突出显示了“恢复数据”](./media/backup-azure-restore-windows-server/recover.png)
 
-3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器(`<server name>`)” > “下一步”。
+3. 若要将数据还原到同一台服务器或计算机，请在“开始”页上选择“此服务器( **)”** “下一步”。 **`<server name>`**  > 
 
     ![恢复数据向导“开始”页的屏幕截图](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
@@ -114,7 +114,7 @@ ms.locfileid: "75450025"
 
     ![恢复数据向导“选择备份服务器”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. 在“选择恢复模式”页上，选择“单个文件和文件夹” > “下一步”。
+7. 在“选择恢复模式”页上，选择“单个文件和文件夹” **“下一步”。**  > 
 
     ![恢复数据向导“选择恢复模式”页的屏幕截图](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60815144"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385632"
 ---
 # <a name="command-line-interface"></a>命令行接口
 
@@ -30,13 +30,13 @@ ms.locfileid: "60815144"
 
 <a name="build_index-command"></a>
 
-## <a name="buildindex-command"></a>build_index 命令
+## <a name="build_index-command"></a>build_index 命令
 
-build_index 命令可从架构定义文件和要编制索引对象的数据文件生成二进制索引文件  。  可以使用生成的索引文件评估结构化的查询表达式，或者与已编译的语法文件结合使用生成自然语言查询的解释。
+build_index 命令可从架构定义文件和要编制索引对象的数据文件生成二进制索引文件。  可以使用生成的索引文件评估结构化的查询表达式，或者与已编译的语法文件结合使用生成自然语言查询的解释。
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
 
-| 参数      | 描述               |
+| 参数      | 说明               |
 |----------------|---------------------------|
 | `<schemaFile>` | 输入架构路径 |
 | `<dataFile>`   | 输入数据路径   |
@@ -46,7 +46,7 @@ build_index 命令可从架构定义文件和要编制索引对象的数据文�
 
 可通过 Azure blob 的本地文件路径或 URL 路径指定这些文件。  架构文件介绍要编制索引的对象的结构以及要支持的操作（请参阅[架构格式](SchemaFormat.md)）。  数据文件将枚举要编制索引的对象和属性值（请参阅[数据格式](DataFormat.md)）。  当生成成功时，输出索引文件将包含支持所需操作的输入数据的压缩表示形式。  
 
-可使用 describe_index 命令选择指定说明字符串，用来随后标识二进制索引  。  
+可使用 describe_index 命令选择指定说明字符串，用来随后标识二进制索引。  
 
 默认情况下，在本地计算机上生成索引。  在 Azure 环境外部，本地生成被限制为最多包含 10,000 个对象的数据文件。  指定 --remote 标记时，将在临时创建的具有指定大小的 VM 上生成索引。  这样便可使用具有更多内存的 Azure VM 有效生成大型索引。  若要避免减缓生成过程的分页，建议将 3 倍 RAM 大小的 VM 作为输入数据文件大小。  有关可用的 VM 大小列表，请参阅[虚拟机大小](../../../articles/virtual-machines/virtual-machines-windows-sizes.md)。
 
@@ -55,13 +55,13 @@ build_index 命令可从架构定义文件和要编制索引对象的数据文�
 
 <a name="build_grammar-command"></a>
 
-## <a name="buildgrammar-command"></a>build_grammar 命令
+## <a name="build_grammar-command"></a>build_grammar 命令
 
-build_grammar 命令可将指定的 XML 格式的语法编译为二进制语法文件  。  可将生成的语法文件与索引文件结合使用，以生成自然语言查询的解释。
+build_grammar 命令可将指定的 XML 格式的语法编译为二进制语法文件。  可将生成的语法文件与索引文件结合使用，以生成自然语言查询的解释。
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
 
-| 参数       | 描述               |
+| 参数       | 说明               |
 |-----------------|---------------------------|
 | `<xmlFile>`     | 输入 XML 语法规范路径 |
 | `<grammarFile>` | 输出已编译语法路径         |
@@ -70,31 +70,31 @@ build_grammar 命令可将指定的 XML 格式的语法编译为二进制语法�
 
 <a name="host_service-command"/>
 
-## <a name="hostservice-command"></a>host_service 命令
+## <a name="host_service-command"></a>host_service 命令
 
-host_service 命令在本地计算机上承载 KES 服务实例  。
+host_service 命令在本地计算机上承载 KES 服务实例。
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
 
-| 参数       | 描述                |
+| 参数       | 说明                |
 |-----------------|----------------------------|
 | `<grammarFile>` | 输入二进制语法路径         |
 | `<indexFile>`   | 输入二进制索引路径           |
 | `--port <port>` | 本地端口号。  默认值：8000 |
 
-可通过 Azure blob 的本地文件路径或 URL 路径指定这些文件。  Web 服务将承载于 http://localhost:&lt ;port&gt; /。  请参阅 [Web API](WebAPI.md)，了解受支持操作的列表。
+可通过 Azure blob 的本地文件路径或 URL 路径指定这些文件。  Web 服务将承载于 http://localhost:&lt;port&gt;/。  请参阅 [Web API](WebAPI.md)，了解受支持操作的列表。
 
-在 Azure 环境外，本地托管服务被限制为大小最大 1 MB 的索引文件、每秒 10 个请求和 1000 个总调用数。  若要消除这些限制，请在 Azure VM 中运行 host_service，或者使用 deploy_service 将其部署到 Azure 云服务   。
+在 Azure 环境外，本地托管服务被限制为大小最大 1 MB 的索引文件、每秒 10 个请求和 1000 个总调用数。  若要消除这些限制，请在 Azure VM 中运行 host_service，或者使用 deploy_service 将其部署到 Azure 云服务。
 
 <a name="deploy_service-command"/>
 
-## <a name="deployservice-command"></a>deploy_service 命令
+## <a name="deploy_service-command"></a>deploy_service 命令
 
-deploy_service 命令可将 KES 服务实例部署到 Azure 云服务  。
+deploy_service 命令可将 KES 服务实例部署到 Azure 云服务。
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
 
-| 参数       | 描述                  |
+| 参数       | 说明                  |
 |-----------------|------------------------------|
 | `<grammarFile>` | 输入二进制语法路径           |
 | `<indexFile>`   | 输入二进制索引路径             |
@@ -108,27 +108,27 @@ deploy_service 命令可将 KES 服务实例部署到 Azure 云服务  。
 
 <a name="describe_index-command"/>
 
-## <a name="describeindex-command"></a>describe_index 命令
+## <a name="describe_index-command"></a>describe_index 命令
 
-describe_index 命令可输出有关索引文件的信息（包括架构和说明）  。
+describe_index 命令可输出有关索引文件的信息（包括架构和说明）。
 
 `kes.exe describe_index <indexFile>`
 
-| 参数     | 描述      |
+| 参数     | 说明      |
 |---------------|------------------|
 | `<indexFile>` | 输入索引路径 |
 
-可通过 Azure blob 的本地文件路径或 URL 路径指定此文件。  可以使用 build_index 命令的 --description 参数指定输出描述字符串  。
+可通过 Azure blob 的本地文件路径或 URL 路径指定此文件。  可以使用 build_index 命令的 --description 参数指定输出描述字符串。
 
 <a name="describe_grammar-command"/>
 
-## <a name="describegrammar-command"></a>describe_grammar 命令
+## <a name="describe_grammar-command"></a>describe_grammar 命令
 
-describe_grammar 命令输出用来生成二进制语法的原始语法规范  。
+describe_grammar 命令输出用来生成二进制语法的原始语法规范。
 
 `kes.exe describe_grammar <grammarFile>`
 
-| 参数       | 描述      |
+| 参数       | 说明      |
 |-----------------|------------------|
 | `<grammarFile>` | 输入语法路径 |
 

@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
 ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938661"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392648"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理器终结点
 
@@ -91,7 +91,7 @@ PublicIPAddress 资源属于 Azure 资源管理器资源。 经典部署模型�
 
 如果禁用配置文件中的所有终结点，或者禁用配置文件本身，则流量管理器会向新的 DNS 查询发送“NXDOMAIN”响应。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 * [能否将流量管理器用于多个订阅中的终结点？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 

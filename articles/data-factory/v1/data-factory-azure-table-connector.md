@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918719"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387547"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure 表
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -60,9 +60,9 @@ ms.locfileid: "74918719"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **AzureTable** 数据集类型的 **typeProperties** 部分具有以下属性。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
-| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |可以。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| tableName |链接服务指代的 Azure 表数据库实例中表的名称。 |是的。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
 
 ### <a name="schema-by-data-factory"></a>数据工厂的构架
 对于无架构的数据存储（如 Azure 表），数据工厂服务将使用下列方式之一推断架构：
@@ -73,16 +73,16 @@ ms.locfileid: "74918719"
 因此，对于无架构的数据源，最佳做法是使用**结构**属性指定数据的结构。
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出数据集等属性和策略可用于所有类型的活动。
 
 另一方面，可用于此活动 typeProperties 部分的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 **AzureTableSource** 支持 typeProperties 部分的以下属性：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |使用自定义查询读取数据。 |Azure 表查询字符串。 请参阅下一节中的示例。 |不。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
-| azureTableSourceIgnoreTableNotFound |指示是否存在忽略表异常。 |TRUE<br/>FALSE |No |
+| azureTableSourceQuery |使用自定义查询读取数据。 |Azure 表查询字符串。 请参阅下一节中的示例。 |不是。 指定了 tableName 但未指定 azureTableSourceQuery 时，表中的所有记录都将复制到目标中。 如果还指定了 azureTableSourceQuery，则会将满足查询的表中的记录复制到目标中。 |
+| azureTableSourceIgnoreTableNotFound |指示是否存在忽略表异常。 |TRUE<br/>FALSE |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 示例
 如果 Azure 表列为 string 类型：
@@ -99,12 +99,12 @@ azureTableSourceQuery": "$$Text.Format('PartitionKey ge \\'{0:yyyyMMddHH00_0000}
 
 **AzureTableSink** 支持 typeProperties 部分的以下属性：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |字符串值。 |No |
-| azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用 AzureTableDefaultPartitionKeyValue 作为分区键。 |列名称。 |No |
-| azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |列名称。 |No |
-| azureTableInsertType |将数据插入 Azure 表的模式。<br/><br/>此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>若要了解这些设置（合并和替换）的工作原理，请参阅 [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx)（插入或合并实体）和 [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx)（插入或替换实体）主题。 <br/><br> 此设置在行级别而不是表级别进行应用，并且两个选项都不会删除输入中不存在的输出表中的行。 |合并（默认值）<br/>replace |No |
+| azureTableDefaultPartitionKeyValue |接收器可以使用的默认分区键值。 |字符串值。 |否 |
+| azureTablePartitionKeyName |指定列名称，使用列值作为分区键。 如果未指定，则使用 AzureTableDefaultPartitionKeyValue 作为分区键。 |列名称。 |否 |
+| azureTableRowKeyName |指定列名称，使用列值作为行键。 如果未指定，对每一行使用 GUID。 |列名称。 |否 |
+| azureTableInsertType |将数据插入 Azure 表的模式。<br/><br/>此属性控制输出表中具有匹配的分区键和行键的现有行是否替换或合并其值。 <br/><br/>若要了解这些设置（合并和替换）的工作原理，请参阅 [Insert or Merge Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx)（插入或合并实体）和 [Insert or Replace Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx)（插入或替换实体）主题。 <br/><br> 此设置在行级别而不是表级别进行应用，并且两个选项都不会删除输入中不存在的输出表中的行。 |合并（默认值）<br/>replace |否 |
 | writeBatchSize |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表。 |整数（行数） |否（默认值：10000） |
 | writeBatchTimeout |writeBatchSize 或 writeBatchTimeout 命中时，将数据插入 Azure 表 |timespan<br/><br/>示例：“00:20:00”（20 分钟） |否（默认为存储客户端默认超时值 90 秒） |
 
@@ -130,17 +130,17 @@ DivisionID 被指定为分区键。
 }
 ```
 ## <a name="json-examples"></a>JSON 示例
-下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据**直接**复制到任何受支持的接收器。 有关详细信息，请参阅[使用复制活动移动数据](data-factory-data-movement-activities.md)中的“支持的数据存储和格式”部分。
+下面的示例提供示例 JSON 定义，可用于通过使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)创建管道。 它们演示如何将数据复制到 Azure 表存储和 Azure Blob 数据库，以及如何从 Azure 表存储和 Azure Blob 数据库复制数据。 但是，可以从任何源将数据**直接**复制到任何受支持的接收器。 有关详细信息，请参阅 [Move data by using Copy Activity](data-factory-data-movement-activities.md)（使用复制活动移动数据）中的“支持的数据存储和格式”部分。
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>示例：将数据从 Azure 表复制到 Azure Blob
 以下示例显示：
 
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）。
-2. 类型 [AzureTable](#dataset-properties) 的输入[数据集](data-factory-create-datasets.md)。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+2. 类型 [AzureTable](data-factory-create-datasets.md) 的输入[数据集](#dataset-properties)。
+3. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 4. [管道](data-factory-create-pipelines.md)，具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 的复制活动。
 
-此示例按小时将属于 Azure 表中默认分区的数据复制到 blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例按小时将属于 Azure 表中默认分区的数据复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure 存储链接服务：**
 
@@ -190,7 +190,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
 {
@@ -303,11 +303,11 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 以下示例显示：
 
 1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务（用于表和 blob）
-2. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
-3. [AzureTable](#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+2. [AzureBlob](data-factory-create-datasets.md)类型的输入[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
+3. [AzureTable](data-factory-create-datasets.md) 类型的输出[数据集](#dataset-properties)。
 4. [管道](data-factory-create-pipelines.md)，具有使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 [AzureTableSink](#copy-activity-properties) 的复制活动。
 
-此示例按小时将时序数据从 Azure blob 复制到 Azure 表。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例按小时将时序数据从 Azure blob 复制到 Azure 表。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure 存储（适用于 Azure 表和 Blob）链接服务：**
 
@@ -477,13 +477,13 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | Odata 数据类型 | .NET 类型 | 详细信息 |
 | --- | --- | --- |
 | Edm.Binary |byte[] |一个字节数组，最大 64 KB。 |
-| Edm.Boolean |bool |布尔值。 |
-| Edm.DateTime |日期/时间 |一个 64 位值，用协调世界时 (UTC) 表示。 支持的 DateTime 范围从 (UTC) 公元 (C.E.) 1601 年 1 月 1 日 午夜 12:00 开始。 到 9999 年 12 月 31 日结束。 |
+| Edm.Boolean |bool |一个布尔值。 |
+| Edm.DateTime |DateTime |一个 64 位值，用协调世界时 (UTC) 表示。 支持的 DateTime 范围从 (UTC) 公元 (C.E.) 1601 年 1 月 1 日 午夜 12:00 开始。 到 9999 年 12 月 31 日结束。 |
 | Edm.Double |double |64 位浮点值。 |
-| Edm.Guid |GUID |128 位全局唯一标识符。 |
+| Edm.Guid |Guid |128 位全局唯一标识符。 |
 | Edm.Int32 |Int32 |32 位整数。 |
 | Edm.Int64 |Int64 |64 位整数。 |
-| Edm.String |字符串 |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
+| Edm.String |String |UTF-16 编码值。 字符串值最大可以为 64 KB。 |
 
 ### <a name="type-conversion-sample"></a>类型转换示例
 以下示例适用于使用类型转换将数据从 Azure Blob 复制到 Azure 表。
@@ -534,7 +534,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 
 **Azure 表架构：**
 
-| 列名称 | Type |
+| 列名称 | 类型 |
 | --- | --- |
 | userid |Edm.Int64 |
 | name |Edm.String |

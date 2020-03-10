@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
 ms.openlocfilehash: 252ddeb372744986df0b8ba9b742d0462a4e8202
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672083"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372209"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor 日志中的标准属性
 Azure Monitor 日志中的数据以[一组记录的形式存储在 Log Analytics 工作区或 Application Insights 应用程序中](../log-query/logs-structure.md)，每个记录都具有一组具有唯一属性的特定数据类型。 许多数据类型都具有在多种类型中通用的标准属性。 本文介绍这些属性，并提供如何在查询中使用它们的示例。

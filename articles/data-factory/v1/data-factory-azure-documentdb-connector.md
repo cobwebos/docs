@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930091"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387581"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -123,8 +123,8 @@ ms.locfileid: "74930091"
 
 | **属性** | **说明** | **允许的值** | **必需** |
 | --- | --- | --- | --- |
-| 查询 |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例： `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
-| nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动会根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |No |
+| query |指定要读取数据的查询。 |Azure Cosmos DB 支持的查询字符串。 <br/><br/>示例： `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |否 <br/><br/>如果未指定，则执行的 SQL 语句为：`select <columns defined in structure> from mycollection` |
+| nestingSeparator |指示嵌套文档的特殊字符 |任意字符。 <br/><br/>Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构。 Azure 数据工厂允许用户通过 nestingSeparator 来表示层次结构，即 上述示例中的“.”。 通过该分隔符，复制活动会根据表定义中的“Name.First”、“Name.Middle”和“Name.Last”生成包含三个子元素（First、Middle 和 Last）的“Name”对象。 |否 |
 
 **DocumentDbCollectionSink** 支持以下属性：
 
@@ -132,7 +132,7 @@ ms.locfileid: "74930091"
 | --- | --- | --- | --- |
 | nestingSeparator |源列名称中的特殊字符，指示需要嵌套的文档。 <br/><br/>在上述示例中：输出表中的 `Name.First` 在 Cosmos DB 文档中生成以下 JSON 结构：<br/><br/>"Name": {<br/>    "First":"John"<br/>}, |用于分隔嵌套级别的字符。<br/><br/>默认值为 `.`（点）。 |用于分隔嵌套级别的字符。 <br/><br/>默认值为 `.`（点）。 |
 | writeBatchSize |向 Azure Cosmos DB 服务发送创建文档的并行请求数。<br/><br/>向/从 Cosmos DB 复制数据时，可使用此属性对性能进行微调。 当增加 writeBatchSize 时，由于会向 Cosmos DB 发送更多的并行请求，因此可以获得更好的性能。 但是，需要避免可能会引发“请求速率大”的错误消息的限制。<br/><br/>限制由多个因素决定，包括文档大小、文档中的术语数、目标集合的索引策略等。对于复制操作，可以使用更好的集合（例如 S3）来获得最大的吞吐量（2500个请求单位/秒）。 |Integer |否（默认值：5） |
-| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |No |
+| writeBatchTimeout |超时之前等待操作完成的时间。 |timespan<br/><br/> 示例：“00:30:00”（30 分钟）。 |否 |
 
 ## <a name="importexport-json-documents"></a>导入/导出 JSON 文档
 使用此 Cosmos DB 连接器，可以轻松地
@@ -153,11 +153,11 @@ ms.locfileid: "74930091"
 
 1. [DocumentDb](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [DocumentDbCollection](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [DocumentDbCollection](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的一个[管道](data-factory-create-pipelines.md)，该复制活动使用 [DocumentDbCollectionSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例将 Azure Cosmos DB 中的数据复制到 Azure Blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例将 Azure Cosmos DB 中的数据复制到 Azure Blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Cosmos DB 链接服务：**
 
@@ -302,11 +302,11 @@ SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as Mi
 
 1. DocumentDb 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)类型的输入[数据集](data-factory-create-datasets.md)
+3. [AzureBlob](data-factory-create-datasets.md)类型的输入[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 4. DocumentDbCollection 类型的一个输出[数据集](data-factory-create-datasets.md)。
 5. 包含复制活动的一个[管道](data-factory-create-pipelines.md)，该复制活动使用 [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) 和 DocumentDbCollectionSink。
 
-此示例将数据从 Azure Blob 复制到 Azure Cosmos DB。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例将数据从 Azure Blob 复制到 Azure Cosmos DB。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 **Azure Blob 存储链接服务：**
 

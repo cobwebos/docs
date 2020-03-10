@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176576"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78374375"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
 
@@ -28,7 +28,7 @@ ms.locfileid: "73176576"
   
 -   [产品列表](#ProductList)  
   
--   [产品](#Product)  
+-   [Product](#Product)  
   
 > [!NOTE]
 >  示例默认模板包含在后续文档中，但是会因持续改进而有所更改。 通过导航到所需单个模板，可在开发人员门户中查看实时的默认模板。 如需详细了解如何使用模板，请参阅[如何使用模板自定义 API 管理开发人员门户](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
@@ -79,9 +79,9 @@ ms.locfileid: "73176576"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|分页|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
+|Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
 |Filtering|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
 |Products|[产品](api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
   
@@ -204,19 +204,19 @@ ms.locfileid: "73176576"
   
 ### <a name="data-model"></a>数据模型  
   
-|properties|Type|描述|  
+|properties|类型|说明|  
 |--------------|----------|-----------------|  
-|Products|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
-|IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
+|Products|[Product](api-management-template-data-model-reference.md#Product)|指定的产品。|  
+|IsDeveloperSubscribed|boolean|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
-|Limits|数组|此属性已弃用，不应使用。|  
-|DelegatedSubscriptionEnabled|布尔值|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
+|限制|array|此属性已弃用，不应使用。|  
+|DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
 |DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
-|IsAgreed|布尔值|如果产品有条款，当前用户是否已同意这些条款。|  
+|IsAgreed|boolean|如果产品有条款，当前用户是否已同意这些条款。|  
 |Subscriptions|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 实体的集合。|此产品中的 API。|  
-|CannotAddBecauseSubscriptionNumberLimitReached|布尔值|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|布尔值|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

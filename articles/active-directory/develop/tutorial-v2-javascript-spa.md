@@ -16,18 +16,18 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159874"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377409"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
 本指南演示 JavaScript 单页应用程序 (SPA) 如何执行以下操作：
 - 将个人帐户以及工作和学校帐户登录 
 - 获取访问令牌
-- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API 
+- 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
@@ -75,18 +75,18 @@ ms.locfileid: "77159874"
 
 ## <a name="create-your-project"></a>创建项目
 
-> ### <a name="option-1-nodejs-or-other-web-servers"></a>选项 1：Node.js 或其他 Web 服务器
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>选项1： node.js 或其他 web 服务器
 > 确保已安装 [Node.js](https://nodejs.org/en/download/)，然后创建一个用于托管应用程序的文件夹。
 >
 > ### <a name="option-2-visual-studio"></a>选项 2：Visual Studio
 > 如果使用 Visual Studio 并要创建新项目，请执行以下步骤：
-> 1. 在 Visual Studio 中，选择“文件”   > “新建”   > “项目”  。
-> 1. 在 Visual C#\Web 下，选择“ASP.NET Web 应用程序(.NET Framework)”   。
-> 1. 输入应用程序的名称并选择“确定”  。
-> 1. 在“新建 ASP.NET Web 应用程序”  下，选择“空”  。
+> 1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。
+> 1. 在 Visual C#\Web 下，选择“ASP.NET Web 应用程序(.NET Framework)”。
+> 1. 输入应用程序的名称并选择“确定”。
+> 1. 在“新建 ASP.NET Web 应用程序”下，选择“空”。
 
 ## <a name="create-the-spa-ui"></a>创建 SPA UI
-1. 为 JavaScript SPA 创建 *index.html* 文件。 如果使用 Visual Studio，请选择项目（项目根文件夹）。 右键单击并选择“添加” > “新建项” > “HTML 页”，并将文件命名为 *index.html*。   
+1. 为 JavaScript SPA 创建 *index.html* 文件。 如果使用 Visual Studio，请选择项目（项目根文件夹）。 右键单击并选择“添加” **“新建项”** “HTML 页”，并将文件命名为  > index.html **。**  > 
 
 1. 在 *index.html* 文件中，添加以下代码：
 
@@ -260,9 +260,9 @@ ms.locfileid: "77159874"
 <!--start-collapse-->
 ### <a name="more-information"></a>详细信息
 
-用户首次选择“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以将用户登录。  此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。  成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名  。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
+用户首次选择“登录”按钮后，**方法将调用** 以将用户登录。`signIn``loginPopup` 此方法会打开一个包含 Microsoft 标识平台终结点的弹出窗口，以提示并验证用户的凭据。 成功登录后，用户将重定向回到原始的 *index.html* 页。 他们将接收到一个由 `msal.js` 处理的令牌，该令牌包含的信息已缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
-本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌  。 如果需要用于验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
+本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要用于验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序。 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
@@ -306,7 +306,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>对受保护 API 进行 REST 调用的详细信息
 
-在本指南创建的示例应用程序中，将使用 `callMSGraph()` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求。 然后，该请求将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌  。 本指南创建的示例应用程序中的资源是 Microsoft Graph API *me* 终结点，它显示用户个人资料信息。
+在本指南创建的示例应用程序中，将使用 `callMSGraph()` 方法对需要令牌的受保护资源发出 HTTP `GET` 请求。 然后，该请求将内容返回给调用方。 此方法可在 HTTP 授权标头中添加获取的令牌。 本指南创建的示例应用程序中的资源是 Microsoft Graph API *me* 终结点，它显示用户个人资料信息。
 
 <!--end-collapse-->
 
@@ -329,36 +329,36 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 1. 如果帐户提供访问多个租户的权限，请在右上方选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
-1. “注册应用程序”页显示后，请输入应用程序的名称。 
-1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。  
-1. 在“重定向 URI”部分的下拉列表中选择“Web”平台，然后将值设置为基于 Web 服务器的应用程序 URL。  
+1. “注册应用程序”页显示后，请输入应用程序的名称。
+1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
+1. 在“重定向 URI”部分的下拉列表中选择“Web”平台，然后将值设置为基于 Web 服务器的应用程序 URL。
 
    有关如何设置和获取 Node.js 及 Visual studio 的重定向 URL 的信息，请参阅下面的“设置 Node.js 的重定向 URL”部分和[设置 Visual Studio 的重定向 URL](#set-a-redirect-url-for-visual-studio)。
 
-1. 选择“注册”  。
-1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用   。
-1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”  。
-1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框     。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
-1. 选择“保存”。 
+1. 选择“注册”。
+1. 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用。
+1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
+1. 在“高级设置”部分的“隐式授权”下，选中“ID 令牌”和“访问令牌”复选框。 由于此应用必须将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
+1. 选择“保存”。
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>设置 Node.js 的重定向 URL
 > 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662，但你可以使用任何其他可用端口。
 >
-> 若要设置应用程序注册信息中的重定向 URL，请切换回“应用程序注册”  窗格，然后执行以下两项操作之一：
+> 若要设置应用程序注册信息中的重定向 URL，请切换回“应用程序注册”窗格，然后执行以下两项操作之一：
 >
-> - 将 *`http://localhost:30662/`* 设置为“重定向 URL”  。
+> - 将 *`http://localhost:30662/`* 设置为“重定向 URL”。
 > - 如果使用的是自定义 TCP 端口，请使用 *`http://localhost:<port>/`* （其中， *\<端口>* 是自定义 TCP 端口号）。
 >
 > #### <a name="set-a-redirect-url-for-visual-studio"></a>设置 Visual Studio 的重定向 URL
 > 若要获取 Visual Studio 的重定向 URL，请执行以下步骤：
 > 1. 在解决方案资源管理器中选择项目。
 >
->    此时将打开“属性”窗口  。 如果未打开，请按 F4。
+>    此时将打开“属性”窗口。 如果未打开，请按 F4。
 >
 >    ![JavaScriptSPA 项目属性窗口](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
 >
-> 1. 复制“URL”  的值。
-> 1. 切换回“应用程序注册”  窗格，然后将已复制的值粘贴为“重定向 URL”  。
+> 1. 复制“URL”的值。
+> 1. 切换回“应用程序注册”窗格，然后将已复制的值粘贴为“重定向 URL”。
 
 #### <a name="configure-your-javascript-spa"></a>配置 JavaScript SPA
 
@@ -378,11 +378,11 @@ function callMSGraph(theUrl, accessToken, callback) {
     ```
 
     其中：
-    - *\<Enter_the_Application_Id_here>* 是已注册的应用程序的“应用程序(客户端) ID”  。
+    - *\<Enter_the_Application_Id_here>* 是已注册的应用程序的“应用程序(客户端) ID”。
     - *\<Enter_the_Tenant_info_here>* 设置为以下选项之一：
-       - 如果应用程序支持“此组织目录中的帐户”  ，请将此值替换为“租户 ID”  或“租户名称”  （例如，*contoso.microsoft.com*）。
-       - 如果应用程序支持“任何组织目录中的帐户”  ，请将此值替换为 **organizations**。
-       - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”  ，请将此值替换为 **common**。 若要将支持限于“仅限个人 Microsoft 帐户”  ，请将此值替换为 **consumers**。
+       - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
+       - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
+       - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要将支持限于“仅限个人 Microsoft 帐户”，请将此值替换为 **consumers**。
 
 ## <a name="test-your-code"></a>测试代码
 
@@ -392,21 +392,21 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 如果使用的不是 Visual Studio，请确保 Web 服务器已启动。
 
-1. 配置服务器侦听基于“index.html”文件位置的 TCP 端口  。 对于 Node.js，请通过在命令提示符下从应用程序文件夹运行以下命令，启动 Web 服务器来侦听该端口：
+1. 配置服务器侦听基于“index.html”文件位置的 TCP 端口。 对于 Node.js，请通过在命令提示符下从应用程序文件夹运行以下命令，启动 Web 服务器来侦听该端口：
 
     ```bash
     npm install
     node server.js
     ```
-1. 在浏览器中，输入 **http://\<span>\</span>localhost:30662** 或 **http://\<span>\</span>localhost:{port}** ，其中 *port* 是 Web 服务器正在侦听的端口。 应会显示 index.html 文件的内容和“登录”按钮   。
+1. 在浏览器中，输入 **http://\<span>\</span>localhost:30662** 或 **http://\<span>\</span>localhost:{port}** ，其中 *port* 是 Web 服务器正在侦听的端口。 应会显示 index.html 文件的内容和“登录”按钮。
 
 ### <a name="test-with-visual-studio"></a>使用 Visual Studio 进行测试
 
-如果使用的是 Visual Studio，请选择项目解决方案，然后按 F5 运行项目。 浏览器将打开到 http://<span></span>localhost:{port} 位置，然后应显示“登录”按钮  。
+如果使用的是 Visual Studio，请选择项目解决方案，然后按 F5 运行项目。 浏览器将打开到 http://<span></span>localhost:{port} 位置，然后应显示“登录”按钮。
 
 ## <a name="test-your-application"></a>测试应用程序
 
-在浏览器加载 index.html 文件后，选择“登录”。   系统将提示你使用 Microsoft 标识平台终结点进行登录：
+在浏览器加载 index.html 文件后，选择“登录”。 系统将提示你使用 Microsoft 标识平台终结点进行登录：
 
 ![JavaScript SPA 帐户登录窗口](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

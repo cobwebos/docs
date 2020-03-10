@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d2ea038c7d7212529185d77a6ba9e64deacb1c9e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927939"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387466"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>使用 Azure 数据工厂从 Web 表源移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -34,7 +34,7 @@ ms.locfileid: "74927939"
 > [!IMPORTANT]
 > 此 Web 连接器目前仅支持从 HTML 页提取表内容。 若要从 HTTP/s 终结点中检索数据，请改用 [HTTP 连接器](data-factory-http-connector.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要使用此 Web 表连接器，需要设置自托管集成运行时（又称数据管理网关）和配置接收器链接服务中的 `gatewayName` 属性。 例如，若要从 Web 表复制到 Azure Blob 存储，请按如下所示配置 Azure 存储链接服务：
 
@@ -70,7 +70,7 @@ ms.locfileid: "74927939"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 Web 链接服务专属 JSON 元素的描述。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**Web** |是 |
 | URL |Web 源的 URL |是 |
@@ -98,10 +98,10 @@ ms.locfileid: "74927939"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **WebTable** 类型的数据集的 typeProperties 部分具有以下属性
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type |数据集类型。 必须设置为 **WebTable** |是 |
-| 路径 |包含表的资源的相对 URL。 |不。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
+| 路径 |包含表的资源的相对 URL。 |不是。 未指定路径时，仅使用链接服务定义中指定的 URL。 |
 | 索引 |资源中表的索引。 请参阅[获取 HTML 页中表的索引](#get-index-of-a-table-in-an-html-page)，了解获取 HTML 页中表的索引的步骤。 |是 |
 
 **示例：**
@@ -126,7 +126,7 @@ ms.locfileid: "74927939"
 ```
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
@@ -138,11 +138,11 @@ ms.locfileid: "74927939"
 
 1. [Web](#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [WebTable](#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [WebTable](data-factory-create-datasets.md) 类型的输入[数据集](#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，其使用 [WebSource](#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从 Web 表复制到 Azure blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 Web 表复制到 Azure blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 下一个示例介绍如何从 Web 表将数据复制到 Azure blob。 然而，可在 Azure 数据工厂中使用复制活动，直接将数据复制到[数据移动活动](data-factory-data-movement-activities.md)一文中所述的接收器中。
 
@@ -207,7 +207,7 @@ ms.locfileid: "74927939"
 
 **Azure Blob 输出数据集**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。
 
 ```json
 {
@@ -231,7 +231,7 @@ ms.locfileid: "74927939"
 
 
 
-**具有复制活动的管道**
+**包含复制活动的管道**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **WebSource**，将 **sink** 类型设置为 **BlobSink**。
 
@@ -288,7 +288,7 @@ ms.locfileid: "74927939"
 2. 单击工具栏中的“新建查询”，指向“从其他源”，并单击“从 Web”。
 
     ![Power Query 菜单](./media/data-factory-web-table-connector/PowerQuery-Menu.png)
-3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如： https://en.wikipedia.org/wiki/) ）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”。
+3. 在“从 Web”对话框中，输入要在链接服务 JSON 中使用的 URL（例如： **）以及要为数据集指定的路径（例如：AFI%27s_100_Years...100_Movies），并单击“确定”** https://en.wikipedia.org/wiki/)。
 
     ![“从 Web”对话框](./media/data-factory-web-table-connector/FromWeb-DialogBox.png)
 

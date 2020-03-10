@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965726"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78366696"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>在 Azure 中部署和管理 StorSimple 云设备（Update 3 及更高版本）
 
@@ -42,7 +42,7 @@ StorSimple 8000 系列云设备是 Microsoft Azure StorSimple 解决方案附带
 
 StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和高级 8020（在 Update 2 引入的）。 下表提供了这两种型号的对比。
 
-| 设备模型 | 8010<sup>1</sup> | 8020 |
+| 设备型号 | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3（4 核，7 GB 内存）| Standard_DS3（4 核，14 GB 内存）|
@@ -50,9 +50,9 @@ StorSimple 云设备以两种型号提供：标准 8010（前身为 1100）和�
 | **存储类型** |为本地磁盘使用 Azure 标准存储<br></br> 了解如何 [创建标准存储帐户](../storage/common/storage-create-storage-account.md) |为本地磁盘使用 Azure 高级存储<sup>2</sup> <br></br> |
 | **工作负荷指导** |在级别从备份中检索文件 |云开发和测试方案 <br></br>低延迟和更高性能工作负载<br></br>用于灾难恢复的辅助设备 |
 
-<sup>1</sup>*前身为 1100*。
+<sup>1</sup> *以前称为 1100*。
 
-<sup>2</sup> *8010 和 8020 为云层使用 Azure 标准存储。只有设备中的本地层存在差异*。
+<sup>2</sup> *8010 和8020将 Azure 标准存储用于云层。该差异仅存在于设备内的本地层中*。
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>云设备与物理设备有何差异
 
@@ -64,7 +64,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 
 |  | 物理设备 | 云设备 |
 | --- | --- | --- |
-| **Location** |驻留在数据中心。 |在 Azure 中运行。 |
+| **位置** |驻留在数据中心。 |在 Azure 中运行。 |
 | **网络接口** |有六个网络接口：DATA 0 到 DATA 5。 |只有一个网络接口：DATA 0。 |
 | **注册** |在初始配置步骤中注册的。 |注册是一个单独的任务。 |
 | **服务数据加密密钥** |在物理设备上重新生成，并使用新密钥更新云设备。 |无法从云设备重新生成。 |
@@ -118,7 +118,7 @@ StorSimple 云设备是软件形式的 StorSimple，在 Microsoft Azure 虚拟�
 
 如果在此步骤中创建云设备失败，可能是因为没有连接到 Internet。 有关详细信息，请转到[排查创建云设备时遇到的 Internet 连接问题](#troubleshoot-internet-connectivity-errors)。
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>步骤 2：配置和注册云设备
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>步骤 2：配置并注册云设备
 
 开始此过程之前，请确保已获得服务数据加密密钥的副本。 服务数据加密密钥是在向 StorSimple Device Manager 服务注册第一台 StorSimple 物理设备时创建的。 创建时会指示将其保存在一个安全位置。 如果没有服务数据加密密钥的副本，则必须联系 Microsoft 支持部门获得帮助。
 

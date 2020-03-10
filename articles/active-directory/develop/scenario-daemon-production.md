@@ -16,11 +16,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: db5f52c95daf4e93c140b4c93f39dad19971319d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775206"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78377319"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>用于调用 web Api 的后台应用程序-迁移到生产
 
@@ -41,7 +41,7 @@ ms.locfileid: "76775206"
 
 下面是一些可帮助你了解更多信息的链接：
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 - 快速入门：[使用应用的标识从控制台应用获取令牌并调用 MICROSOFT GRAPH API](./quickstart-v2-netcore-daemon.md)。
 - 参考文档：
@@ -60,11 +60,11 @@ ms.locfileid: "76775206"
 
     ![拓扑](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 尝试快速入门[获取令牌，并使用应用的标识从 Python 控制台应用调用 MICROSOFT GRAPH API](./quickstart-v2-python-daemon.md)。
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java 当前为公共预览版。 有关详细信息，请参阅[MSAL Java dev 示例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)。
 

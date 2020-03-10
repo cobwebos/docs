@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0050112dc7d9d2fa20da612691f1ff0927df93fb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662342"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385328"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -152,17 +152,21 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 在发出自定义指标之前，无需在 Azure Monitor 中预定义该指标。 发布的每个指标数据点包含命名空间、名称和维度信息。 因此，首次将自定义指标发送到 Azure Monitor 时，会自动创建指标定义。 然后，可在通过指标定义发出其指标的任何资源上发现此指标定义。
 
 > [!NOTE]  
-> Azure Monitor 尚不支持为自定义指标定义“单位”。
+> Azure Monitor 尚不支持定义自定义指标的**单位**。
 
 ## <a name="using-custom-metrics"></a>使用自定义指标
 将自定义指标提交到 Azure Monitor 之后，可以通过 Azure 门户浏览它们，以及通过 Azure Monitor REST API 查询它们。 还可以对其创建警报，以便在满足特定的条件时收到通知。
+
+> [!NOTE]
+> 你需要成为 "读者" 或 "参与者" 角色才能查看自定义指标。
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>通过 Azure 门户浏览自定义指标
-1.  转到 [Azure 门户](https://portal.azure.com)。
-2.  选择“监视”窗格。
-3.  选择“指标”。
-4.  选择已针对其发出自定义指标的资源。
-5.  选择自定义指标的指标命名空间。
-6.  选择自定义指标。
+1.    转到 [Azure 门户](https://portal.azure.com)。
+2.    选择“监视”窗格。
+3.    选择“指标”。
+4.    选择已针对其发出自定义指标的资源。
+5.    选择自定义指标的指标命名空间。
+6.    选择自定义指标。
 
 ## <a name="supported-regions"></a>支持的区域
 在公共预览期，发布自定义指标的功能只在一部分 Azure 区域中可用。 此限制意味着，只能发布某个受支持区域中的资源的指标。 下表列出了自定义指标支持的 Azure 区域。 另外还列出了这些区域中的资源的指标应发布到的相应终结点：

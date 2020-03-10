@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
 ms.openlocfilehash: d5d5b8a7328ee82e94d494795617832cb0258667
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901510"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392986"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure 按需媒体编码器概述 
 

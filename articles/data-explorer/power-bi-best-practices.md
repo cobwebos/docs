@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024035"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395218"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>使用 Power BI 查询和可视化 Azure 数据资源管理器数据的最佳做法
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 [Power BI](https://docs.microsoft.com/power-bi/)是一种业务分析解决方案，可让你直观显示数据，并在组织中共享结果。 Azure 数据资源管理器提供三个选项用于连接到 Power BI 中的数据。 使用[内置连接器](power-bi-connector.md)，将[查询从 Azure 数据资源管理器导入 Power BI](power-bi-imported-query.md)或使用[SQL 查询](power-bi-sql-query.md)。 本文提供了有关在 Power BI 中查询和可视化 Azure 数据资源管理器数据的技巧。 
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 [Power BI](https://docs.microsoft.com/power-bi/)是一种业务分析解决方案，可让你直观显示数据，并在组织中共享结果。 Azure 数据资源管理器提供三个选项用于连接到 Power BI 中的数据。 使用[内置连接器](power-bi-connector.md)，将[查询从 Azure 数据资源管理器导入 Power BI](power-bi-imported-query.md)或使用[SQL 查询](power-bi-sql-query.md)。 本文提供了有关在 Power BI 中查询和可视化 Azure 数据资源管理器数据的技巧。 
 
 ## <a name="best-practices-for-using-power-bi"></a>使用 Power BI 的最佳实践 
 
@@ -146,7 +146,7 @@ Power BI 包括可以定期对数据源发出查询的数据刷新计划程序�
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据](power-bi-connector.md)
+[使用 Azure 数据资源管理器连接器实现 Power BI 的数据的可视化效果](power-bi-connector.md)
 
 
 

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 2e6aeda0e84b11221af110bda738d6d93f258978
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857b50a04466f43a25cf80d7930cfb4639dc9d65
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391144"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 门户中创建站点到站点连接
 
@@ -51,7 +51,7 @@ ms.locfileid: "75894988"
 * **子网：** FrontEnd：10.1.0.0/24，BackEnd：10.1.1.0/24（可选，适用于本练习）
 * **网关子网地址范围：** 10.1.255.0/27
 * 虚拟网关名称：VNet1GW
-* **公共 IP 地址名称：** VNet1GWIP
+* 公共 IP 地址名称：VNet1GWpip
 * VPN 类型：基于路由
 * **连接类型：** 站点到站点（IPsec）
 * 网关类型：VPN
@@ -61,7 +61,7 @@ ms.locfileid: "75894988"
 
 ## <a name="CreatVNet"></a>1. 创建虚拟网络
 
-[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-create-virtual-network-portal-include.md)]
+[!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
 ## <a name="VNetGateway"></a>2. 创建 VPN 网关
 
@@ -77,7 +77,7 @@ ms.locfileid: "75894988"
 * **实例详细信息 > 网关类型：** UPN
 * **实例详细信息 > VPN 类型：** 基于路由
 * **虚拟网络 > 网关子网地址范围：** 10.1.255.0/27
-* 公共**ip 地址 > 公共 ip 地址名称：** VNet1GWIP
+* 公共**ip 地址 > 公共 ip 地址名称：** VNet1GWpip
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 

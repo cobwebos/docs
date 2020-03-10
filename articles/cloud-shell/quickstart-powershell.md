@@ -10,11 +10,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791603"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394300"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -88,7 +88,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
 
 ### <a name="allresources-view"></a>“所有资源”视图
 
-在 `AllResources` 目录下键入 `dir` 可查看 Azure 资源。
+在 `dir` 目录下键入 `AllResources` 可查看 Azure 资源。
 
 ```azurepowershell-interactive
 PS Azure:\MySubscriptionName> dir AllResources

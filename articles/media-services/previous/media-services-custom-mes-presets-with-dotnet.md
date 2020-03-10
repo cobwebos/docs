@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247237"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78394748"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>自定义 Media Encoder Standard 预设  
 
@@ -30,7 +30,7 @@ ms.locfileid: "61247237"
 本文介绍如何使用 [H264 多比特率 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) 预设并减少层数，从而自定义预设。 [自定义 Media Encoder Standard 预设](media-services-advanced-encoding-with-mes.md)这篇文章演示了可用于执行高级编码任务的自定义预设。
 
 > [!NOTE]
-> 不能用于在本文中所述的自定义预设[媒体服务 V3](https://docs.microsoft.com/azure/media-services/latest/)转换或 CLI 命令。 请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)的更多详细信息。
+> 本文中所述的自定义预设不能用于[媒体服务 V3](https://docs.microsoft.com/azure/media-services/latest/)转换或 CLI 命令。 有关更多详细信息，请参阅[v2 中的迁移指南](../latest/migrate-from-v2-to-v3.md)。
 
 ## <a id="customizing_presets"></a>自定义 MES 预设
 
@@ -266,7 +266,7 @@ namespace CustomizeMESPresests
 
 ## <a name="see-also"></a>另请参阅
 
-- [如何使用 CLI 编码自定义转换](../latest/custom-preset-cli-howto.md)
+- [如何使用 CLI 通过自定义转换进行编码](../latest/custom-preset-cli-howto.md)
 - [使用媒体服务 v3 进行编码](../latest/encoding-concept.md)
 
 ## <a name="media-services-learning-paths"></a>媒体服务学习路径

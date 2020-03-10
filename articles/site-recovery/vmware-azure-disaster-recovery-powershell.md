@@ -8,11 +8,11 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
 ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861262"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391753"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>使用 PowerShell 设置 VMware VM 到 Azure 的灾难恢复
 
@@ -31,7 +31,7 @@ ms.locfileid: "75861262"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 开始之前：
 
@@ -105,7 +105,7 @@ Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 使用 Set-ASRVaultContext cmdlet 设置保管库上下文。 设置后，PowerShell 会话中的后续 Azure Site Recovery 操作将在所选保管库的上下文中执行。
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块（Az Microsoft.recoveryservices module）为大多数 cmdlet 提供了易于使用的别名。 模块中的 cmdlet 采用 *\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名  *\<操作 >-**ASR**\<对象 >* 。 可以替换 cmdlet 别名以方便使用。
+> Azure Site Recovery PowerShell 模块（Az Microsoft.recoveryservices module）为大多数 cmdlet 提供了易于使用的别名。 本模块中的 cmdlet 采用 *\<operation\<> 操作* 的形式 >，并具有采用\<> 操作格式\<>*操作* 的等效别名。 可以替换 cmdlet 别名以方便使用。
 
 在以下示例中，使用来自 $vault 变量的保管库详细信息指定 PowerShell 会话的保管库上下文。
 
@@ -351,11 +351,11 @@ $ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDR
 现在使用此表中指定的设置复制以下虚拟机
 
 
-|虚拟机  |进程服务器        |存储器帐户              |日志存储帐户  |策略           |用于移动服务安装的帐户|目标资源组  | 目标虚拟网络  |目标子网  |
+|虚拟机  |进程服务器        |存储帐户              |日志存储帐户  |策略           |用于移动服务安装的帐户|目标资源组  | 目标虚拟网络  |目标子网  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
+|CentOSVM1       |ConfigurationServer   |空值| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| 空值                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
 
 ```azurepowershell

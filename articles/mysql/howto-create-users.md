@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770469"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78385402"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在 Azure Database for MySQL 服务器中创建用户 
 本文介绍如何在 Azure Database for MySQL 服务器中创建用户。
@@ -82,6 +82,6 @@ ms.locfileid: "74770469"
    ```
 
 ## <a name="next-steps"></a>后续步骤
-打开防火墙以允许连接到新用户计算机的 IP 地址：通过 [Azure CLI](howto-manage-firewall-using-cli.md) 或 [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](howto-manage-firewall-using-portal.md)。
+打开防火墙以允许连接到新用户计算机的 IP 地址：通过 [Azure CLI](howto-manage-firewall-using-portal.md) 或 [使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则](howto-manage-firewall-using-cli.md)。
 
 有关用户帐户管理的详细信息，请参阅 MySQL 产品文档，了解[用户帐户管理](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html)、[GRANT 语法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和[权限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

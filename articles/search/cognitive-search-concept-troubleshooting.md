@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113828"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391227"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 扩充的提示
 
@@ -94,7 +94,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 对于计划的索引器来说，索引编制会按计划从已知正常的最后一个文档继续开始。 使用定时计划时，索引器可以在计划的一系列时间或日期进行积压图像的处理，直至所有未处理的图像得到处理。 有关计划语法的详细信息，请参阅[步骤3：创建索引器](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)或了解[如何为 Azure 认知搜索计划索引器](search-howto-schedule-indexers.md)。
 
 > [!NOTE]
-> 如果将索引器设置为某个计划，但每次运行时一次又一次地在同一文档上反复失败，则索引器将以不那么频繁的间隔开始运行（最多每 24 小时至少一次），直到它成功地再次取得进展。  如果你认为你已修复了导致索引器在某一点停滞的任何问题，可以按需运行索引器，如果成功取得进展，索引器将再次回到其设置的计划间隔。
+> 如果索引器设置为某个计划，但每次运行时在同一文档上重复失败，则索引器将以不太频繁的间隔（最多每24小时至少一次）运行，直到它成功完成进度 aga中.  如果你认为已修复了导致索引器停留在某个时间点的任何问题，则可以执行索引器的按需运行，如果成功，则索引器将再次返回到其设置的计划时间间隔。
 
 进行基于门户的索引编制（如快速入门中所述）时，选择“运行一次”索引器选项即可将处理时间限制为 1 小时 (`"maxRunTime": "PT1H"`)。 可能需要延长处理时间至更长。
 

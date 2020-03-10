@@ -1,6 +1,6 @@
 ---
-title: 密码保护疑难解答-Azure Active Directory
-description: 了解 Azure AD 密码保护常见故障排除
+title: 排查本地 Azure AD 密码保护问题
+description: 了解如何排查 Azure AD 本地 Active Directory 域服务环境的密码保护
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847654"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78671723"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>故障排除：本地 Azure AD 密码保护
 
 部署 Azure AD 密码保护后，可能需要进行故障排除。 本文详细介绍如何帮助你了解一些常见的故障排除步骤。
 
@@ -82,9 +82,9 @@ Azure AD 密码保护对 Microsoft 密钥分发服务提供的加密和解密功
 
 1. 你的 DC 代理无法下载策略或者无法解密现有策略。 检查上述主题中的可能原因。
 
-1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 请参阅[启用密码保护](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
+1. 密码策略强制模式仍设置为“审核”。 如果此配置有效，请将其重新配置为使用 Azure AD 密码保护门户。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
-1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 请参阅[启用密码保护](howto-password-ban-bad-on-premises-operations.md#enable-password-protection)。
+1. 密码策略已被禁用。 如果此配置生效，请使用 Azure AD 密码保护门户将其重新配置为启用。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 1. 你未在域中的所有域控制器上安装 DC 代理软件。 在这种情况下，很难确保远程 Windows 客户端在密码更改操作过程中以特定的域控制器为目标。 如果你认为已成功将安装了 DC 代理软件的特定 DC 作为目标，则可以通过双重检查 DC 代理管理事件日志进行验证：无论结果如何，都至少需要一个事件来记录密码的结果检查. 如果用户的密码更改不存在任何事件，则可能是由另一个域控制器处理密码更改。
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 在任何版本中，Azure AD 密码保护代理软件不受时间限制。 Microsoft 仍建议将 DC 和代理代理发布到最新版本。 `Get-AzureADPasswordProtectionProxy` cmdlet 可用于查找需要升级的代理程序，类似于针对 DC 代理的示例。
 
-有关具体的升级过程的详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理程序](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent)。
+有关具体的升级过程的详细信息，请参阅[升级 DC 代理](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent)和[升级代理服务](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service)。
 
 ## <a name="emergency-remediation"></a>紧急补救
 
 如果 DC 代理服务造成了问题，可以立即关闭 DC 代理服务。 DC 代理密码筛选器 dll 仍会尝试调用未运行的服务并记录警告事件（10012、10013），但在此期间会接受所有传入的密码。 然后，也可以通过 Windows 服务控制管理器并根据需要使用启动类型“Disabled”来配置 DC 代理服务。
 
-另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅[强制模式](howto-password-ban-bad-on-premises-operations.md#enforce-mode)。
+另一种补救措施是在 Azure AD 密码保护门户中将“启用”模式设置为“否”。 下载更新的策略后，各 DC 代理服务将进入静默模式，在这种模式下，将按原样接受所有密码。 有关详细信息，请参阅[操作模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
 ## <a name="removal"></a>删除
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327254"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390720"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>安装和运行异常探测器容器（预览）
 
@@ -28,13 +28,13 @@ ms.locfileid: "74327254"
 有关 Api 的详细信息，请参阅：
 * [详细了解异常探测器 API 服务](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 使用异常探测器容器之前，必须满足以下先决条件：
 
-|必需|目的|
+|必选|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -65,13 +65,13 @@ ms.locfileid: "74327254"
 | 10 QPS | 4核，1 GB 内存 | 8核 2 GB 内存 |
 | 20 QPS | 8核，2 GB 内存 | 16核 4 GB 内存 |
 
-每个核心至少必须为 2.6 GHz 或更快。
+每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 获取容器映像
 
-运行 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
+使用 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) 命令下载容器映像。
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -97,9 +97,9 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 ## <a name="run-the-container-with-docker-run"></a>通过 `docker run` 运行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 [ 和 ](#gathering-required-parameters) 值的详细信息，请参阅`{ENDPOINT_URI}`收集所需的参数`{API_KEY}`。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-[ 命令的](anomaly-detector-container-configuration.md#example-docker-run-commands)示例`docker run`可用。
+`docker run` 命令的[示例](anomaly-detector-container-configuration.md#example-docker-run-commands)可用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -180,7 +180,7 @@ ApiKey={API_KEY}
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>总结
 
 本文介绍了用于下载、安装和运行异常探测器容器的概念和工作流。 综上所述：
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280886"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393728"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 应用中的意向
 
@@ -26,12 +26,12 @@ ms.locfileid: "74280886"
 
 旅行应用意向   |   示例陈述   | 
 ------|------|
- 预订航班     |   “帮我预订下周去里约的航班” <br/> “24 号飞里约” <br/> “我需要下周日去里约热内卢的机票”    |
+ BookFlight     |   “帮我预订下周去里约的航班” <br/> “24 号飞里约” <br/> “我需要下周日去里约热内卢的机票”    |
  Greeting     |   “嗨” <br/>“你好” <br/>“早上好”  |
  CheckWeather | “波士顿的天气怎样？” <br/> “显示本周末的天气预报” |
  无         | “给我一份饼干食谱”<br>“湖人赢了吗？” |
 
-所有应用程序均附带了预定义意向“[None](#none-intent)”，这是一个回退意向。 
+所有应用程序都附带预定义意向 "[无](#none-intent)"，即回退目的。 
 
 ## <a name="prebuilt-domains-provide-intents"></a>预生成域提供意向
 除了定义的意向以外，还可以使用预构建的[域](luis-how-to-use-prebuilt-domains.md)之一。 
@@ -41,7 +41,7 @@ ms.locfileid: "74280886"
 
 如果希望查询文本的所有意图的分数，可以在预测 API 的查询字符串中提供标志。 
 
-|预测 API 版本|Flag|
+|预测 API 版本|标志|
 |--|--|
 |V2|`verbose=true`|
 |V3|`show-all-intents=true`|
@@ -53,9 +53,9 @@ ms.locfileid: "74280886"
 
 在_用户希望在_客户端应用程序中触发操作（如调用 checkweather （）函数）时创建意向。 然后创建实体以表示执行操作所需的参数。 
 
-|意向   | 实体 | 示例陈述   | 
+|Intent   | 实体 | 示例陈述   | 
 |------------------|------------------------------|------------------------------|
-| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`?（西雅图明天天气怎样？） |
+| CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | `Seattle` `tomorrow`中有哪些天气呢？ |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend`（显示本周末的天气预报） | 
 ||||
 
@@ -76,9 +76,9 @@ ms.locfileid: "74280886"
 
 ## <a name="intents-and-patterns"></a>意向和模式
 
-如果你有可部分或全部定义为正则表达式的示例话语，请考虑使用与[模式](luis-concept-entity-types.md#regular-expression-entity)配对的[正则表达式实体](luis-concept-patterns.md)。 
+如果有可在部分或整个中定义为正则表达式的最谈话示例，请考虑使用与[模式](luis-concept-patterns.md)配对的[正则表达式实体](luis-concept-entity-types.md#regular-expression-entity)。 
 
-使用正则表达式实体可以确保数据提取，以便匹配模式。 模式匹配可确保返回确切的意向。 
+使用正则表达式实体可保证数据提取，以便匹配模式。 模式匹配保证返回准确的意图。 
 
 ## <a name="intent-balance"></a>意向平衡
 应用域意向应让每个意向的陈述数保持平衡。 请勿出现一个意向具有 10 个陈述，而另一个意向具有 500 个陈述的情况。 这样不平衡。 如果遇到这种情况，请查看具有 500 个陈述的意向，了解是否可将其中许多意向重新组织为[模式](luis-concept-patterns.md)。 
@@ -98,7 +98,7 @@ ms.locfileid: "74280886"
 深入了解有关将 LUIS 和 QnA maker 应用与[调度模型](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps)相结合的信息。 
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>请求具有大量意向的应用的帮助
-如果减少意向数或将意向划分给多个应用不起作用，请与支持部门联系。 如果 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果减少意向数或将意向划分给多个应用不起作用，请与支持部门联系。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

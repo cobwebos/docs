@@ -4,11 +4,11 @@ description: 本文介绍如何使用 Azure Red Hat OpenShift 上托管 Azure Mo
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.openlocfilehash: c2fd3568be2c51296bb1377e91031ebfb7ca6ee3
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250693"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395357"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>配置适用于容器 Azure Monitor 的 Azure Red Hat OpenShift 群集
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775119"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393732"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通过查看端点最谈话改善 LUIS 应用
 
@@ -42,7 +42,7 @@ ms.locfileid: "76775119"
     > [!div class="mx-imgBorder"]
     > ![使用 LUIS 门户来保存活动学习所需的日志。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-     此操作通过添加 `log=true` querystring 参数更改示例 URL。 对运行时终结点进行预测查询时，复制并使用更改后的示例查询 URL。
+     此操作通过添加 `log=true` 查询字符串参数来更改示例 URL。 对运行时终结点进行预测查询时，请复制并使用更改后的示例查询 URL。
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>更正意向预测以使最谈话
 

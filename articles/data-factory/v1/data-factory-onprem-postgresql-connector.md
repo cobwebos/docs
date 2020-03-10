@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 37c83e77cadae002ff701a08c4b36a86f7cab9a0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929070"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387337"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>使用 Azure 数据工厂从 PostgreSQL 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -30,9 +30,9 @@ ms.locfileid: "74929070"
 
 本文介绍如何使用 Azure 数据工厂中的复制活动从本地 PostgreSQL 数据库移动数据。 它基于[数据移动活动](data-factory-data-movement-activities.md)一文，其中总体概述了如何使用复制活动移动数据。
 
-可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
+可以将数据从本地 PostgreSQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持用作接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 数据工厂当前支持将数据从 PostgreSQL 数据库移至其他数据存储，而不支持将数据从其他数据存储移至 PostgreSQL 数据库。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 数据工厂服务支持使用数据管理网关连接到本地 PostgreSQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
@@ -70,15 +70,15 @@ ms.locfileid: "74929070"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表提供 PostgreSQL 链接服务专属 JSON 元素的说明。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |type 属性必须设置为：**OnPremisesPostgreSql** |是 |
-| 服务器 |PostgreSQL 服务器的名称。 |是 |
-| 数据库 |PostgreSQL 数据库的名称。 |是 |
-| schema |数据库中架构的名称。 架构名称区分大小写。 |No |
+| server |PostgreSQL 服务器的名称。 |是 |
+| database |PostgreSQL 数据库的名称。 |是 |
+| 架构 |数据库中架构的名称。 架构名称区分大小写。 |否 |
 | authenticationType |用于连接到 PostgreSQL 数据库的身份验证类型。 可能的值为：Anonymous、Basic 和 Windows。 |是 |
-| username |如果使用基本或 Windows 身份验证，请指定用户名。 |No |
-| password |指定为用户名指定的用户帐户的密码。 |No |
+| username |如果使用基本或 Windows 身份验证，请指定用户名。 |否 |
+| password |指定为用户名指定的用户帐户的密码。 |否 |
 | gatewayName |网关的名称 - 数据工厂服务应使用此网关连接到本地 PostgreSQL 数据库。 |是 |
 
 ## <a name="dataset-properties"></a>数据集属性
@@ -86,20 +86,20 @@ ms.locfileid: "74929070"
 
 每种数据集的 typeProperties 节有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型的数据集的 typeProperties 部分（包括 PostgreSQL 数据集）具有以下属性：
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | tableName |链接服务引用的 PostgreSQL 数据库实例中表的名称。 TableName 区分大小写。 |否（如果指定了 **RelationalSource** 的**query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称、说明、输入和输出表格等属性和策略可用于所有类型的活动。
 
 而可用于此活动的 typeProperties 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 当源属于 **RelationalSource** 类型（包括 PostgreSQL）时，以下属性可在 typeProperties 节中使用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集** 的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：`"query": "select * from \"MySchema\".\"MyTable\""`。 |否（如果指定了**数据集**的 **tableName**） |
 
 > [!NOTE]
 > 架构和表名称区分大小写。 在查询中将名称括在 `""`（双引号）中。
@@ -118,11 +118,11 @@ ms.locfileid: "74929070"
 
 1. [OnPremisesPostgreSql](data-factory-onprem-postgresql-connector.md#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [RelationalTable](data-factory-onprem-postgresql-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](data-factory-onprem-postgresql-connector.md#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-postgresql-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例每小时将数据从 PostgreSQL 数据库中的查询结果复制到 blob。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例每小时将数据从 PostgreSQL 数据库中的查询结果复制到 blob。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 第一步，设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
@@ -162,7 +162,7 @@ ms.locfileid: "74929070"
 
 该示例假定已在 PostgreSQL 中创建表“MyTable”，并且它包含用于时间序列数据的“timestamp”列。
 
-设置 `"external": true` 告知数据工厂服务：数据集在数据工厂外部且不由数据工厂中的活动生成。
+设置 `"external": true` 将告知数据工厂服务：数据集在数据工厂外部且不是由数据工厂中的活动生成的。
 
 ```json
 {
@@ -189,7 +189,7 @@ ms.locfileid: "74929070"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态评估 blob 的文件夹路径和文件名。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```json
 {
@@ -247,7 +247,7 @@ ms.locfileid: "74929070"
 }
 ```
 
-**包含复制活动的管道：**
+**复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集，且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询从 PostgreSQL 数据库的 public.usstates 表中选择数据。
 
@@ -295,7 +295,7 @@ ms.locfileid: "74929070"
 }
 ```
 ## <a name="type-mapping-for-postgresql"></a>PostgreSQL 的类型映射
-如[数据移动活动](data-factory-data-movement-activities.md)部分的文章所述，复制活动通过以下 2 个步骤执行从源类型到接收器类型的自动类型转换：
+如[数据移动活动](data-factory-data-movement-activities.md)一文中所述，复制活动通过以下 2 步方法执行从源类型到接收器类型的自动类型转换：
 
 1. 从本机源类型转换为 .NET 类型
 2. 从 .NET 类型转换为本机接收器类型
@@ -309,41 +309,41 @@ ms.locfileid: "74929070"
 | bigserial |serial8 |Int64 |
 | bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
-| boolean |bool |布尔 |
+| boolean |bool |Boolean |
 | box | |Byte[], String |
 | bytea | |Byte[], String |
-| character [(n)] |char [(n)] |字符串 |
-| character varying [(n)] |varchar [(n)] |字符串 |
-| cid | |字符串 |
-| cidr | |字符串 |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
+| cid | |String |
+| cidr | |String |
 | circle | |Byte[], String |
 | date | |Datetime |
-| daterange | |字符串 |
+| daterange | |String |
 | 双精度 |float8 |Double |
 | inet | |Byte[], String |
-| intarry | |字符串 |
-| int4range | |字符串 |
-| int8range | |字符串 |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | integer |int, int4 |Int32 |
 | interval [fields] [(p)] | |Timespan |
-| json | |字符串 |
+| json | |String |
 | jsonb | |Byte[] |
 | 折线图 | |Byte[], String |
 | lseg | |Byte[], String |
 | macaddr | |Byte[], String |
 | money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |字符串 |
+| numrange | |String |
 | oid | |Int32 |
 | 路径 | |Byte[], String |
 | pg_lsn | |Int64 |
 | point | |Byte[], String |
 | polygon | |Byte[], String |
-| real |float4 |单一 |
+| real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |字符串 |
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

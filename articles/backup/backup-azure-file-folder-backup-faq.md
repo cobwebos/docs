@@ -3,12 +3,12 @@ title: 备份文件和文件夹-常见问题
 description: 解决有关在 Azure 备份中备份文件和文件夹的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425062"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673083"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>有关备份文件和文件夹的常见问题
 
@@ -41,11 +41,11 @@ ms.locfileid: "77425062"
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>能否使用 MARS 代理来备份 Azure VM 上的文件和文件夹？  
 
-可以。 Azure 备份使用 Azure VM 代理的 VM 扩展为 Azure Vm 提供 VM 级别备份。 如果你想要在 VM 上备份来宾 Windows 操作系统中的文件和文件夹，可以安装 MARS 代理来执行此操作。
+是的。 Azure 备份使用 Azure VM 代理的 VM 扩展为 Azure Vm 提供 VM 级别备份。 如果你想要在 VM 上备份来宾 Windows 操作系统中的文件和文件夹，可以安装 MARS 代理来执行此操作。
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>是否可以使用 MARS 代理来备份 Azure VM 的临时存储中的文件和文件夹？
 
-可以。 安装 MARS 代理，并将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
+是的。 安装 MARS 代理，并将来宾 Windows 操作系统上的文件和文件夹备份到临时存储。
 
 * 擦除临时存储数据后，备份作业将失败。
 * 如果删除临时存储数据，则只能还原到非易失性存储。
@@ -56,7 +56,7 @@ ms.locfileid: "77425062"
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理是否支持 Windows Server 2012 重复数据删除？
 
-可以。 MARS 代理在准备备份操作时将删除了重复数据的数据转换为常规数据。 然后，它会优化用于备份的数据，对数据进行加密，然后将加密的数据发送到保管库。
+是的。 MARS 代理在准备备份操作时将删除了重复数据的数据转换为常规数据。 然后，它会优化用于备份的数据，对数据进行加密，然后将加密的数据发送到保管库。
 
 ## <a name="manage-backups"></a>管理备份
 
@@ -149,16 +149,16 @@ MARS 代理依赖 NTFS，并允许文件名称/路径中[支持的字符](/windo
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有办法调整用于备份的带宽量？
 
-是的，可以使用 MARS 代理中的 "**更改属性**" 选项来调整带宽和计时。 [了解详细信息](backup-configure-vault.md#enable-network-throttling)。
+是的，可以使用 MARS 代理中的 "**更改属性**" 选项来调整带宽和计时。 [了解详细信息](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>还原
 
 ### <a name="manage"></a>管理
 
 **如果我忘记了密码，可以恢复吗？**
 Azure 备份代理需要密码（在注册过程中提供），以便在还原过程中对备份的数据进行解密。 查看以下方案，了解用于处理丢失的密码的选项：
 
-| 原始计算机 <br> *（执行备份的源计算机）* | Passphrase | 可用选项 |
+| 原始计算机 <br> *（执行备份的源计算机）* | 通行短语 | 可用选项 |
 | --- | --- | --- |
 | 可用 |流失 |如果原始计算机（在其中创建了备份）可用且仍注册到同一个恢复服务保管库，则可以通过执行以下[步骤](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)来重新生成该通行短语。  |
 | 流失 |流失 |无法恢复数据或数据不可用 |
@@ -177,7 +177,7 @@ Azure 备份代理需要密码（在注册过程中提供），以便在还原�
 
 如果在原始计算机的注册过程中提供了相同的密码，则可以将备份的数据还原到备用计算机。 请查看以下方案了解还原选项。
 
-| 原始计算机 | Passphrase | 可用选项 |
+| 原始计算机 | 通行短语 | 可用选项 |
 | --- | --- | --- |
 | 流失 |可用 |你可以在另一台计算机上安装和注册 MARS 代理，该计算机具有你在注册原始计算机期间提供的相同密码。 选择**恢复选项** > **其他位置**执行还原。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 | 流失 |流失 |无法恢复数据或数据不可用 |

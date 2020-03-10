@@ -1,5 +1,5 @@
 ---
-title: 快速入门：查找可用房间 - Azure 数字孪生 | Microsoft Docs
+title: 快速入门：查找可用聊天室-Azure 数字孪生 |Microsoft Docs
 description: 在本快速入门中，请运行两个 .NET Core 示例应用程序，将模拟的移动和二氧化碳遥测数据发送到 Azure 数字孪生中的空间。 目标是在云中进行计算处理以后，通过管理 API 查找空气清新的可用房间。
 ms.author: alinast
 author: alinamstanciu
@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 01/10/2020
 ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: HT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895598"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382223"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>快速入门：通过 Azure 数字孪生查找可用房间
 
@@ -101,7 +101,7 @@ ms.locfileid: "75895598"
 1. 打开新的命令提示符窗口。 转到下载在 `digital-twins-samples-csharp-master` 文件夹中的项目。
 1. 运行 `cd device-connectivity`。
 1. 运行 `dotnet restore`。
-1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 `ConnectionString` 更新 **DeviceConnectionString**。 保存更新的文件。
+1. 编辑 [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json)，使用上面的 **更新**DeviceConnectionString`ConnectionString`。 保存更新的文件。
 1. 运行 `dotnet run`，开始发送传感器数据。 这些数据将发送到 Azure 数字孪生，如下图所示。
 
      [![设备连接性](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
@@ -154,7 +154,7 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 若要继续学习这些教程，请勿清除本快速入门中创建的资源。 如果不打算继续学习，请删除通过本快速入门创建的所有资源。
 
 1. 删除下载示例存储库时创建的文件夹。
-1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。  然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”   。
+1. 在 [Azure 门户](https://portal.azure.com)左侧的菜单中，选择“所有资源”。 然后，选择数字孪生资源。 在“所有资源”窗格的顶部选择“删除”。
 
     > [!TIP]
     > 如果之前在删除数字孪生实例时遇到麻烦，请使用已推出的包含修补程序的服务更新。 请重新尝试删除实例。

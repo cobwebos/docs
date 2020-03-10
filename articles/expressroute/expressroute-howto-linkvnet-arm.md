@@ -9,11 +9,11 @@ ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 2685b9b519eaac453726f4923c46f1604cbd4681
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197821"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384254"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>将虚拟网络连接到 ExpressRoute 线路
 > [!div class="op_single_selector"]

@@ -8,11 +8,11 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 85aeafb2c4461b50d399e40d9abff2ac04b677c0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887132"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395176"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight 中的区域服务器问题
 
@@ -34,7 +34,7 @@ multiple regions being unassigned or holes in the chain of regions
 
 可能是由于脱机区域导致的。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 修复分配。 请遵循以下步骤使未分配的区域恢复为正常状态：
 
@@ -66,7 +66,7 @@ multiple regions being unassigned or holes in the chain of regions
 
 1. 检查 `wals.out` 文件。 如果拆分目录太多（从 * 拆分后开始），则区域服务器可能会因为这些目录而失败。
 
-### <a name="resolution"></a>分辨率
+### <a name="resolution"></a>解决方法
 
 1. 从 Ambari 门户停止 HBase。
 

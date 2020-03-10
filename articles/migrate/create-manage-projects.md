@@ -4,11 +4,11 @@ description: 在 Azure Migrate 中查找、创建、管理和删除项目。
 ms.topic: how-to
 ms.date: 02/17/2020
 ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425657"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78392741"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>创建和管理 Azure Migrate 项目
 
@@ -66,7 +66,7 @@ ms.locfileid: "77425657"
     - 如果 Azure Migrate 项目专门使用资源组，则可以删除整个资源组。
 
 
-注意：
+请注意：
 
 - 删除时，将删除项目和有关发现的计算机的元数据。
 - 如果使用的是较旧版本的 Azure Migrate，请打开在其中创建项目的 Azure 资源组。 选择要删除的迁移项目（资源类型为 "**迁移项目**"）。

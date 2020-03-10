@@ -4,11 +4,11 @@ description: 本文介绍管理和监视 Azure 虚拟机上运行的 SAP HANA �
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390622"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382489"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
 
@@ -64,7 +64,7 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 1. 在保管库菜单中，单击“备份项”。
 2. 在 "**备份项目**" 中，选择运行 SAP HANA 数据库的 VM，然后单击 "**立即备份**"。
 3. 现在，在 "**备份**" 中使用 "日历" 控件选择应该保留恢复点的最后一天。 然后单击“确定”。
-4. 监视门户通知。 可以在保管库仪表板 >“备份作业” > “进行中”监视作业进度。 创建初始备份可能需要一些时间，具体取决于数据库的大小。
+4. 监视门户通知。 可以在保管库仪表板 >“备份作业” **“进行中”监视作业进度。**  >  创建初始备份可能需要一些时间，具体取决于数据库的大小。
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>在启用了 Azure 备份的数据库上运行 SAP HANA native client 备份
 
@@ -113,18 +113,18 @@ Azure 备份在 Azure 门户上的 "**备份作业**" 部分显示所有手动�
 >
 > 增量备份策略不能用于 SAP HANA 的数据库。 对于这些数据库，目前不支持增量备份。
 
-### <a name="stop-protection-for-an-sap-hana-database"></a>停止保护 SAP HANA 数据库
+### <a name="stop-protection-for-an-sap-hana-database"></a>停止对 SAP HANA 数据库的保护
 
 可以通过以下几种方式停止保护 SAP HANA 数据库：
 
 * 停止所有将来的备份作业并删除所有恢复点。
-* 停止所有将来的备份作业，并将恢复点保留不变。
+* 停止所有将来的备份作业，且恢复点保留不变。
 
-如果选择保留恢复点，请记住以下详细信息：
+如果选择保留恢复点，请记住以下详细内容：
 
-* 所有恢复点都将永久保持原样，所有修剪都应在停止保护时停止，并保留数据。
+* 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
 * 将为受保护的实例和使用的存储付费。 有关详细信息，请参阅[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
-* 如果在不停止备份的情况下删除数据源，则新备份将会失败。
+* 如果在不停止备份的情况下删除数据源，则新备份会失败。
 
 停止数据库的保护：
 

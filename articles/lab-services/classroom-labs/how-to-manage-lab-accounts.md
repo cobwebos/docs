@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443256"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78382937"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>管理 Azure 实验室服务中的实验室帐户 
 在 Azure 实验室服务中，实验室帐户是托管实验室类型的容器，例如教室实验室。 管理员可以设置一个具有 Azure 实验室服务的实验室帐户，并为能够在帐户中创建实验室的实验室所有者提供访问权限。 本文介绍如何创建实验室帐户、查看所有实验室帐户，或者删除实验室帐户。
@@ -33,7 +33,7 @@ ms.locfileid: "77443256"
 3. 在 "**实验室帐户**" 页上，选择工具栏上的 "**添加**" 或在页面上**创建实验室帐户**。 
 
     ![在“实验室帐户”页上选择“添加”](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. 在 "**创建实验室帐户**" 页的 "**基本**信息" 选项卡上，执行以下操作： 
+4. 在“创建实验室帐户”页面的“基本信息”选项卡上，执行以下操作： 
     1. 在“实验室帐户名称”中输入名称。 
     2. 选择要在其中创建实验室帐户的“Azure 订阅”。
     3. 在“资源组”中选择“新建”，然后输入资源组的名称。

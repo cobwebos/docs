@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037394"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78388085"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 门户配置 ExpressRoute 的虚拟网络网关
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ ms.locfileid: "74037394"
     * 子网地址范围 =“192.168.1.0/24”
 * 资源组 = “TestRG”
 * 位置 =“美国东部”
-* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 GatewaySubnet。
+* 网关子网名称：“GatewaySubnet”必须始终将网关子网命名为 *GatewaySubnet*。
     * 网关子网地址空间 = “192.168.200.0/26”
 * 网关名称 =“ERGW”
 * 网关公共 IP 名称 =“MyERGWVIP”

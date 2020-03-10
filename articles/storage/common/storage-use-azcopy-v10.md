@@ -8,11 +8,11 @@ ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: c4e2681121a15e0b84a11c7cf35119c3f1b69f11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443727"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391191"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -271,7 +271,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要获取该链接，请运行以下命令：
 
-| 操作系统  | 命令 |
+| 操作系统  | Command |
 |--------|-----------|
 | **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
@@ -281,7 +281,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 该 URL 显示在此命令的输出中。 然后，你的脚本可以通过使用该 URL 来下载 AzCopy。
 
-| 操作系统  | 命令 |
+| 操作系统  | Command |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

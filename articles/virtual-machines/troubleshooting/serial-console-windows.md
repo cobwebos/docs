@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451257"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78381702"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -32,7 +32,7 @@ Azure 门户中的串行控制台提供对 Windows 虚拟机（Vm）和虚拟机
 > 在全球 Azure 区域和 Azure 政府公共预览版中，此串行控制台已正式发布。 它目前在 Azure 中国云中不可用。
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * VM 或虚拟机规模集实例必须使用资源管理部署模型。 不支持经典部署。
 
@@ -170,7 +170,7 @@ Azure 上的更新版本的 Windows Server 映像在默认情况下已启用[特
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>要访问串行控制台的常见场景
 
-方案          | 串行控制台中的操作
+场景          | 串行控制台中的操作
 :------------------|:-----------------------------------------
 错误的防火墙规则 | 访问串行控制台，并修复 Windows 防火墙规则。
 文件系统损坏/检查 | 访问串行控制台并恢复文件系统。
@@ -199,7 +199,7 @@ A. 可以通过在 https://aka.ms/serialconsolefeedback 中创建 GitHub 问题�
 
 **问：串行控制台是否支持复制/粘贴？**
 
-A. 可以。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
+A. 是的。 可以使用 **Ctrl**+**Shift**+**C** 和 **Ctrl**+**Shift**+**V** 复制并粘贴到终端。
 
 **问：谁可以启用或禁用我的订阅的串行控制台？**
 

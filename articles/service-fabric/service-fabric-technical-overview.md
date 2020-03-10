@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024891"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78389181"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 
@@ -164,15 +164,15 @@ Service Fabric 是一种开放源平台技术，多种不同的服务和产品�
 
 | 应用程序类型 | 介绍依据 | Azure Service Fabric 网格 | Azure Service Fabric 群集（任何 OS）| 本地群集 | 独立群集 |
 |---|---|---|---|---|---|
-| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 受支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 受支持|受支持|Windows - 支持|
+| Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | 支持 |不支持 | Windows - 支持，Linux 和 Mac - 不支持 | Windows - 不支持 |
+|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | 不支持| 支持|支持|Windows - 支持|
 
 下表介绍了不同的应用模型以及针对 Service Fabric 为它们提供的工具。
 
-| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
+| 应用程序类型 | 介绍依据 | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|
 | Service Fabric 网格应用程序 | 资源模型（YAML 和 JSON） | VS 2017 |不支持 |不支持 | 支持 - 仅网格环境 | 不支持|
-|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 受支持|受支持|受支持|受支持|
+|Service Fabric 本机应用程序 | 本机应用程序模型 (XML) | VS 2017 和 VS 2015| 支持|支持|支持|支持|
 
 ## <a name="next-steps"></a>后续步骤
 

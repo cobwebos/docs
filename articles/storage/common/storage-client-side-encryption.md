@@ -10,17 +10,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 921ea148c12a23ece47688a26743e1195caf52f4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003795"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391728"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure 存储的客户端加密和 Azure 密钥保管库
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>概述
-[用于 .NET 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，以及在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
+[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)支持在上传到 Azure 存储之前加密客户端应用程序中的数据，并在下载到客户端时解密数据。 此库还支持与 [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)集成，以便管理存储帐户密钥。
 
 有关使用客户端加密和 Azure 密钥保管库完成加密 blob 过程的分步教程，请参阅[使用 Azure 密钥保管库在 Microsoft Azure 存储中加密和解密 blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)。
 
@@ -52,18 +52,18 @@ ms.locfileid: "71003795"
 存储客户端库使用 [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 来加密用户数据。 具体而言，是使用 AES 的[加密块链接 (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) 模式。 每个服务的工作方式都稍有不同，因此我们会在此讨论其中每个服务。
 
 ### <a name="blobs"></a>Blob
-目前，客户端库仅支持整个 Blob 的加密。 具体而言，用户使用 **UploadFrom** 方法或 OpenWrite 方法时支持加密。 对于下载，支持完整下载和范围下载。
+目前，客户端库仅支持整个 Blob 的加密。 具体说来，用户使用**UploadFrom**方法或**OpenWrite**方法时支持加密。 对于下载，支持完整下载和范围下载。
 
 在加密过程中，客户端库将生成 16 字节的随机初始化向量 (IV) 和 32 字节的随机内容加密密钥 (CEK) 并将使用此信息对 Blob 数据执行信封加密。 然后，已包装的 CEK 和一些附加加密元数据将与服务上的已加密 Blob 一起存储为 Blob 元数据。
 
 > [!WARNING]
-> 如果您要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
+> 如果要针对 Blob 编辑或上传自己的元数据，需要确保此元数据已保留。 如果在没有此元数据的情况下上传新元数据，则已包装的 CEK、IV 和其他元数据将丢失，而 Blob 内容将永远无法再检索。
 > 
 > 
 
-下载已加密的 Blob 需要使用 **DownloadTo**/**BlobReadStream** 便捷方法检索整个 Blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
+下载已加密的 blob 涉及使用**DownloadTo**/**BlobReadStream**便捷方法检索整个 blob 的内容。 将已包装的 CEK 解包，与 IV（在本示例中存储为 Blob 元数据）一起使用将解密后的数据返回给用户。
 
-下载已加密 Blob 中的任意范围（**DownloadRange** 方法）需要调整用户提供的范围，获取少量可用于成功解密所请求范围的附加数据。
+下载已加密的 blob 中的任意范围（**DownloadRange**方法）涉及调整用户提供的范围以获取少量可用于成功解密所请求范围的附加数据。
 
 所有 Blob 类型（块 Blob、页 Blob 和追加 Blob）都可以使用此方案进行加密/解密。
 
@@ -125,7 +125,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 
 有关密钥保管库用法的详细信息，请查看[加密代码示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)。
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 仅在用于 .NET 的存储空间客户端库中提供加密支持。 Windows Phone 和 Windows 运行时当前不支持加密。
 
 > [!IMPORTANT]
@@ -149,7 +149,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 本文中的代码示例演示如何设置加密策略和使用加密数据，但不演示如何使用 Azure Key Vault。 GitHub 上的[加密示例](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)演示了针对 Blob、队列和表的更详细端到端方案，以及 Key Vault 集成。
 
 ### <a name="requireencryption-mode"></a>RequireEncryption 模式
-用户可以选择启用一个操作模式，让所有上传和下载都必须加密。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **RequireEncryption** 属性控制此行为。 如果应用程序要加密存储于 Azure 存储中的所有对象，则可以在服务客户端对象的默认请求选项上设置 **RequireEncryption**属性。 例如，将 CloudBlobClient.DefaultRequestOptions.RequireEncryption 设置为 true，要求对通过该客户端对象执行的所有 blob 操作进行加密。
+用户可以选择启用一个操作模式，让所有上传和下载都必须加密。 在此模式下，尝试在没有加密策略的情况下上传数据或下载在服务中未加密的数据，将导致在客户端上失败。 请求选项对象的 **RequireEncryption** 属性控制此行为。 如果应用程序要加密存储于 Azure 存储中的所有对象，则可以在服务客户端对象的默认请求选项上设置 **RequireEncryption**属性。 例如，将 **CloudBlobClient.DefaultRequestOptions.RequireEncryption** 设置为 **true**，要求对通过该客户端对象执行的所有 blob 操作进行加密。
 
 
 ### <a name="blob-service-encryption"></a>Blob 服务加密
@@ -242,7 +242,7 @@ Azure 密钥保管库可帮助保护云应用程序和服务使用的加密密�
 注意，加密存储数据会导致额外的性能开销。 必须生成内容密钥和 IV，内容本身必须进行加密，并且其他元数据必须进行格式化并上传。 此开销将因所加密的数据量而有所变化。 我们建议客户在开发过程中始终测试其应用程序的性能。
 
 ## <a name="next-steps"></a>后续步骤
-* [教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [教程：在 Microsoft Azure 存储中使用 Azure 密钥保管库加密和解密 blob](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * 下载[适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage)
 * 下载 Azure 密钥保管库 NuGet [核心](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[客户端](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)和[扩展](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)包  
 * 访问 [Azure 密钥保管库文档](../../key-vault/key-vault-overview.md)

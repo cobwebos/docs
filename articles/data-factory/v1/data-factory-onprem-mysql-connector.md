@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928113"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78387675"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>使用 Azure 数据工厂从 MySQL 移动数据
 > [!div class="op_single_selector" title1="选择所使用的数据工厂服务版本："]
@@ -32,7 +32,7 @@ ms.locfileid: "74928113"
 
 可以将数据从本地 MySQL 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 MySQL 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 MySQL 数据存储。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 数据工厂服务支持使用数据管理网关连接到本地 MySQL 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 MySQL 数据库托管在 Azure IaaS 虚拟机 (VM) 中，仍需要网关。 只要网关能连接数据库，即可在与数据存储相同的 VM 上或不同的 VM 上安装网关。
@@ -65,12 +65,12 @@ ms.locfileid: "74928113"
 ## <a name="linked-service-properties"></a>链接服务属性
 下表描述特定于 MySQL 链接服务的 JSON 元素。
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | type |类型属性必须设置为：**OnPremisesMySql** |是 |
-| 服务器 |MySQL 服务器的名称。 |是 |
-| 数据库 |MySQL 数据库的名称。 |是 |
-| schema |数据库中架构的名称。 |No |
+| server |MySQL 服务器的名称。 |是 |
+| database |MySQL 数据库的名称。 |是 |
+| 架构 |数据库中架构的名称。 |否 |
 | authenticationType |用于连接 MySQL 数据库的身份验证类型。 可能的值为：`Basic` |是 |
 | userName |指定用于连接到 MySQL 数据库的用户名。 |是 |
 | password |指定该用户帐户的密码。 |是 |
@@ -81,20 +81,20 @@ ms.locfileid: "74928113"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 MySQL 数据集）的 typeProperties 部分具有以下属性
 
-| properties | 描述 | 需要 |
+| properties | 说明 | 必选 |
 | --- | --- | --- |
 | tableName |链接服务引用的 MySQL 数据库实例中表的名称。 |否（如果指定了 **RelationalSource** 的**query**） |
 
 ## <a name="copy-activity-properties"></a>复制活动属性
-有关可用于定义活动的各节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
+有关可用于定义活动的节和属性的完整列表，请参阅[创建管道](data-factory-create-pipelines.md)一文。 名称和描述等属性、输入和输出表格以及策略可用于所有类型的活动。
 
 但是，可用于此活动的 **typeProperties** 节的属性因每个活动类型而异。 对于复制活动，这些属性则因源和接收器的类型而异。
 
 在复制活动中，当源属于 **RelationalSource** 类型（包括 MySQL）时，以下属性在 typeProperties 部分中可用：
 
-| properties | 描述 | 允许的值 | 需要 |
+| properties | 说明 | 允许的值 | 必选 |
 | --- | --- | --- | --- |
-| 查询 |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了**数据集** 的 **tableName**） |
+| query |使用自定义查询读取数据。 |SQL 查询字符串。 例如：从 MyTable 中选择 *。 |否（如果指定了**数据集**的 **tableName**） |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON 示例：将数据从 MySQL 复制到 Azure Blob
@@ -107,11 +107,11 @@ ms.locfileid: "74928113"
 
 1. [OnPremisesMySql](data-factory-onprem-mysql-connector.md#linked-service-properties) 类型的链接服务。
 2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 类型的链接服务。
-3. [RelationalTable](data-factory-onprem-mysql-connector.md#dataset-properties) 类型的输入[数据集](data-factory-create-datasets.md)
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 类型的输出[数据集](data-factory-create-datasets.md)。
+3. [RelationalTable](data-factory-create-datasets.md) 类型的输入[数据集](data-factory-onprem-mysql-connector.md#dataset-properties)。
+4. [AzureBlob](data-factory-create-datasets.md) 类型的输出[数据集](data-factory-azure-blob-connector.md#dataset-properties)。
 5. 包含复制活动的[管道](data-factory-create-pipelines.md)，该复制活动使用 [RelationalSource](data-factory-onprem-mysql-connector.md#copy-activity-properties) 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)。
 
-此示例将数据从 MySQL 数据库中的查询结果复制到 blob，且每小时进行一次。 示例后续部分描述了这些示例中使用的 JSON 属性。
+此示例将数据从 MySQL 数据库中的查询结果复制到 blob，且每小时进行一次。 对于这些示例中使用的 JSON 属性，在示例后的部分对其进行描述。
 
 第一步，设置数据管理网关。 有关说明，请参考[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
@@ -181,7 +181,7 @@ ms.locfileid: "74928113"
 
 **Azure Blob 输出数据集：**
 
-数据将写入到新 blob，每隔一小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
+数据将写入到新 blob，每小时进行一次（频率：小时，间隔：1）。 根据处理中切片的开始时间，动态计算 blob 的文件夹路径。 文件夹路径使用开始时间的年、月、日和小时部分。
 
 ```JSON
     {
@@ -239,7 +239,7 @@ ms.locfileid: "74928113"
     }
 ```
 
-**包含复制活动的管道：**
+**复制活动的管道：**
 
 管道包含配置为使用输入和输出数据集、且计划每小时运行一次的复制活动。 在管道 JSON 定义中，将 **source** 类型设置为 **RelationalSource**，将 **sink** 类型设置为 **BlobSink**。 为 **query** 属性指定的 SQL 查询选择复制过去一小时的数据。
 
@@ -303,42 +303,42 @@ ms.locfileid: "74928113"
 | 无符号 bigint |Decimal |
 | bigint |Int64 |
 | bit |Decimal |
-| Blob |Byte[] |
-| bool |布尔 |
-| char |字符串 |
+| blob |Byte[] |
+| bool |Boolean |
+| char |String |
 | date |Datetime |
 | datetime |Datetime |
-| decimal |Decimal |
+| Decimal |Decimal |
 | 双精度 |Double |
 | double |Double |
-| 枚举 |字符串 |
-| float |单一 |
+| 枚举 |String |
+| FLOAT |Single |
 | 无符号 int |Int64 |
 | int |Int32 |
 | 无符号 integer |Int64 |
 | integer |Int32 |
 | 长 varbinary |Byte[] |
-| 长 varchar |字符串 |
+| 长 varchar |String |
 | longblob |Byte[] |
-| longtext |字符串 |
+| longtext |String |
 | mediumblob |Byte[] |
 | 无符号 mediumint |Int64 |
 | mediumint |Int32 |
-| mediumtext |字符串 |
+| mediumtext |String |
 | numeric |Decimal |
 | real |Double |
-| set |字符串 |
+| set |String |
 | 无符号 smallint |Int32 |
 | smallint |Int16 |
-| text |字符串 |
+| text |String |
 | time |TimeSpan |
 | timestamp |Datetime |
 | tinyblob |Byte[] |
 | 无符号 tinyint |Int16 |
 | tinyint |Int16 |
-| tinytext |字符串 |
-| varchar |字符串 |
-| 年 |Int |
+| tinytext |String |
+| varchar |String |
+| year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>将源映射到接收器列
 要了解如何将源数据集中的列映射到接收器数据集中的列，请参阅[映射 Azure 数据工厂中的数据集列](data-factory-map-columns.md)。

@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073793"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78383271"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 扩展
 
@@ -26,7 +26,7 @@ ms.locfileid: "74073793"
 
 适用于 Windows 的 PowerShell DSC 扩展由 Microsoft 发布和提供支持。 扩展在 Azure VM 中上传和应用 PowerShell DSC 配置。 DSC 扩展可调用 PowerShell DSC，在 VM 上启用收到的 DSC 配置。 本文档详细介绍适用于 Windows 的 DSC 虚拟机扩展支持的平台、配置和部署选项。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="operating-system"></a>操作系统
 
@@ -36,7 +36,7 @@ Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Serv
 
 ### <a name="internet-connectivity"></a>Internet 连接
 
-适用于 Windows 的 DSC 扩展要求目标虚拟机能够与 Azure 以及配置文件包（.zip 文件）的位置（如果它存储在 Azure 之外的位置）通信。 
+适用于 Windows 的 DSC 扩展要求目标虚拟机能够与 Azure 进行通信，以及配置包（.zip 文件）的位置（如果它存储在 Azure 外部的位置中）。 
 
 ## <a name="extension-schema"></a>扩展架构
 
@@ -99,7 +99,7 @@ Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Serv
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2018-10-01 | 日期 |
+| apiVersion | 2018-10-01 | date |
 | 发布者 | Microsoft.Powershell.DSC | 字符串 |
 | type | DSC | 字符串 |
 | typeHandlerVersion | 2.77 | int |
@@ -115,7 +115,7 @@ Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Serv
 | settings.configurationArguments | 集合 | 定义想要传递到 DSC 配置的任何参数。 不会加密此属性。
 | settings.configurationData.url | 字符串 | 指定 URL，将从中下载配置数据 (.pds1) 文件用作 DSC 配置的输入。 如果提供的 URL 需要 SAS 令牌才能访问，必须将 protectedSettings.configurationDataUrlSasToken 属性设置为 SAS 令牌的值。
 | settings.privacy.dataEnabled | 字符串 | 启用或禁用遥测数据收集。 此属性的可能值只有“Enable”、“Disable”或“$null”。 将此属性留空，否则 null 将启用遥测
-| settings.advancedOptions.forcePullAndApply | Bool | 此设置旨在增强使用扩展将节点注册到 Azure Automation DSC 的体验。  如果值为 `$true`，则扩展会等待从服务拉取的配置完成第一次运行，然后返回成功/失败。  如果值设置为 $false，则扩展返回的状态仅指节点是否已成功注册到 Azure Automation State Configuration，而在注册过程中不会运行节点配置。
+| settings.advancedOptions.forcePullAndApply | Bool | 此设置旨在增强使用扩展向 Azure Automation DSC 注册节点的体验。  如果此值为 `$true`，扩展将等待第一次运行从服务中请求的配置，然后再返回成功/失败。  如果将该值设置为 $false，则扩展返回的状态将只引用是否已成功向 Azure 自动化状态配置注册节点，并且在注册过程中不会运行节点配置。
 | settings.advancedOptions.downloadMappings | 集合 | 定义用于下载依赖项（如 WMF 和 .NET）的备用位置
 
 ### <a name="protected-settings-property-values"></a>受保护设置属性值
@@ -131,7 +131,7 @@ Windows Server 2019，Windows Server 2016，Windows Server 2012R2，Windows Serv
 
 可使用 Azure 资源管理器模板部署 Azure VM 扩展。
 部署需要部署后配置的一个或多个虚拟机时，模板是理想选择。
-包含 Windows 的 DSC 扩展的示例资源管理器模板可以在 [Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中找到。
+可在[Azure 快速入门库](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91)中找到包括适用于 WINDOWS 的 DSC 扩展的示例资源管理器模板。
 
 ## <a name="troubleshoot-and-support"></a>故障排除和支持
 
@@ -148,7 +148,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-扩展状态文件包含子状态和状态成功/错误代码以及每个扩展运行的详细错误和说明。
+扩展状态文件包含子状态和状态成功/错误代码，以及每个扩展运行的详细错误和说明。
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\{Extension_Name}\{Extension_Version}
 
 ### <a name="support"></a>支持
 
-如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。

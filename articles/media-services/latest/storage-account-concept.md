@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
 ms.openlocfilehash: 4bbadd7e10f0fd6896932dd79a5ca42d9906d2a2
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602135"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78393495"
 ---
 # <a name="azure-storage-accounts"></a>Azure 存储帐户
 

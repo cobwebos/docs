@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
 ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367749"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78390787"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -73,25 +73,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 下表描述了每个语音容器的最小和建议的资源分配。
 
-# <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 语音转文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
-# <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 自定义语音到文本 | 2核，2 GB 内存 | 4核，4 GB 内存 |
 
-# <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
 | 文本转语音 | 单核，2 GB 内存 | 2核，3 GB 内存 |
 
-# <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
 | 容器 | 最小值 | 建议 |
 |-----------|---------|-------------|
@@ -110,25 +110,25 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 以下容器注册表中提供了语音容器图像。
 
-# <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 | 容器 | 存储库 |
 |-----------|------------|
 | 语音转文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
-# <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 | 容器 | 存储库 |
 |-----------|------------|
 | 自定义语音到文本 | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
-# <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 | 容器 | 存储库 |
 |-----------|------------|
 | 文本转语音 | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
-# <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
 | 容器 | 存储库 |
 |-----------|------------|
@@ -140,7 +140,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 ### <a name="docker-pull-for-the-speech-containers"></a>用于语音容器的 Docker 拉取
 
-# <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>用于语音到文本的容器的 Docker 拉取
 
@@ -169,7 +169,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 对于 "**语音到文本**" 容器的所有受支持的区域设置，请参阅[语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。
 
-# <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 #### <a name="docker-pull-for-the-custom-speech-to-text-container"></a>自定义语音到文本的容器的 Docker 拉取
 
@@ -182,7 +182,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 > [!NOTE]
 > 自定义语音容器的 `locale` 和 `voice` 由容器的自定义模型引入确定。
 
-# <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 #### <a name="docker-pull-for-the-text-to-speech-container"></a>文本到语音容器的 Docker 拉取
 
@@ -214,7 +214,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 > [!IMPORTANT]
 > 构造*标准文本到语音转换*HTTP POST 时，[语音合成标记语言（SSML）](speech-synthesis-markup.md)消息需要具有 `name` 属性的 `voice` 元素。 该值是对应的容器区域设置和语音，也称为["短名称"](language-support.md#standard-voices)。 例如，`latest` 标记的语音名称应为 `en-US-JessaRUS`。
 
-# <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
 #### <a name="docker-pull-for-the-custom-text-to-speech-container"></a>自定义文本到语音容器的 Docker 拉取
 
@@ -240,7 +240,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 有关如何获取 `{Endpoint_URI}` 和 `{API_Key}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。 还提供了 `docker run` 命令的其他[示例](speech-container-configuration.md#example-docker-run-commands)。
 
-# <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
+# <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 若要运行*语音到文本*的容器，请执行以下 `docker run` 命令。
 
@@ -259,7 +259,7 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 *自定义语音到文本*的容器依赖于自定义语音模型。 自定义模型必须使用[自定义语音门户](https://speech.microsoft.com/customspeech)进行[训练](how-to-custom-speech-train-model.md)。
 
@@ -311,7 +311,7 @@ ApiKey={API_KEY}
 * 如果以前下载过自定义模型，则将忽略 `ModelId`。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="text-to-speechtabtts"></a>[文本转语音](#tab/tts)
+# <a name="text-to-speech"></a>[文本转语音](#tab/tts)
 
 若要运行*文本到语音的*容器，请执行以下 `docker run` 命令。
 
@@ -330,7 +330,7 @@ ApiKey={API_KEY}
 * 公开 TCP 端口 5000，并为容器分配伪 TTY。
 * 退出后自动删除容器。 容器映像在主计算机上仍然可用。
 
-# <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
+# <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
 自定义的*文本到语音转换*容器依赖于自定义语音模型。 自定义模型必须使用[自定义语音门户](https://aka.ms/custom-voice-portal)进行[训练](how-to-custom-voice-create-voice.md)。 需要自定义语音**模型 ID**才能运行容器。 可在自定义语音门户的 "**培训**" 页中找到。 在自定义语音门户中，导航到**定型**页面并选择模型。
 <br>

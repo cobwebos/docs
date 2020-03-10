@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.author: raynew
 ms.openlocfilehash: 5c3adecf62f9bd15c820baf116dbc01e5d3542fa
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014005"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78361805"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -33,18 +33,18 @@ ms.locfileid: "77014005"
 **工具** | **评估** | **迁移** 
 --- | --- | ---
 Azure Migrate 服务器评估 | 评估[VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和[物理服务器](tutorial-prepare-physical.md)。 |  不可用（NA）
-Azure Migrate 服务器迁移 | 不可用 | 迁移[VMware vm](tutorial-migrate-vmware.md)、 [hyper-v vm](tutorial-migrate-hyper-v.md)和[物理服务器](tutorial-migrate-physical-virtual-machines.md)。
-[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | 不可用 | 迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 
-[Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
+Azure Migrate 服务器迁移 | NA | 迁移[VMware vm](tutorial-migrate-vmware.md)、 [hyper-v vm](tutorial-migrate-hyper-v.md)和[物理服务器](tutorial-migrate-physical-virtual-machines.md)。
+[Carbonite](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure) | NA | 迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 
+[Cloudamize](https://www.cloudamize.com/platform#tab-0)| 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | NA
 [Corent Technology](https://go.microsoft.com/fwlink/?linkid=2084928) | 评估和迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 |  迁移 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。
-[设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| 不可用
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | 不可用
-[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | 不可用 | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
-[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | 不可用
-[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | 不可用
-[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | 不可用 | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
-[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | 不可用
-[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | 不可用
+[设备 42](https://go.microsoft.com/fwlink/?linkid=2097158) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。| NA
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) | 评估本地 SQL Server 数据库。 | NA
+[DMS](https://docs.microsoft.com/azure/dms/dms-overview) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
+[Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构（VDI） | NA
+[Movere](https://go.microsoft.com/fwlink/?linkid=2109528) | 评估 VMWare Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
+[RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 迁移 VMWare Vm、Hyper-v Vm、Xen Vm、KVM Vm、物理计算机、公有云工作负荷 
+[Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷。 | NA
+[UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware Vm、Hyper-v Vm、物理服务器、公有云工作负荷和 SQL Server 数据库。 | NA
 [Webapp 迁移助手](https://appmigration.microsoft.com/) | 评估 web 应用 | 迁移 web 应用。
 
 
@@ -75,18 +75,18 @@ Hyper-V VM | 在单个项目中最多评估35000个 Hyper-v Vm。
 
 **地域** | **元数据存储位置**
 --- | ---
-Azure Government | 美国弗吉尼亚州政府
-亚太 | 东亚或东南亚
+Azure Government | US Gov 弗吉尼亚州
+亚太区 | 东亚或东南亚
 澳大利亚 | 澳大利亚东部或澳大利亚东南部
 巴西 | 巴西南部
-加拿大 | 加拿大中部或加拿大东部
+Canada | 加拿大中部或加拿大东部
 欧洲 | 欧洲北部或欧洲西部
 法国 | 法国中部
 印度 | 印度中部或印度南部
 日本 |  日本东部或日本西部
 韩国 | 韩国中部或韩国南部
-英国 | 英国南部或英国西部
-美国 | 美国中部或美国西部2
+United Kingdom | 英国南部或英国西部
+United States | 美国中部或美国西部2
 
 
  > [!NOTE]

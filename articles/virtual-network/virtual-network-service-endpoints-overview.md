@@ -14,11 +14,11 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 72c2c90f7a71bd9bf251adb492168fa5d2baa60a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378689"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78380134"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -139,7 +139,7 @@ ms.locfileid: "74378689"
 
 VNet 服务终结点策略允许你筛选 Azure 服务的虚拟网络流量。 此筛选器只允许服务终结点上的特定 Azure 服务资源。 服务终结点策略针对发往 Azure 服务的虚拟网络流量提供精细的访问控制。 有关详细信息，请参阅[虚拟网络服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 
 有关常见问题，请参阅[虚拟网络服务终结点常见问题解答](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
 
@@ -151,5 +151,5 @@ VNet 服务终结点策略允许你筛选 Azure 服务的虚拟网络流量。 �
 - [保护虚拟网络的 Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [虚拟网络中的 Azure 服务集成](virtual-network-for-azure-services.md)
 - [虚拟网络服务终结点策略](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Azure Resource Manager 模板](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

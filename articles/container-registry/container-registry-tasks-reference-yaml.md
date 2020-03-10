@@ -3,12 +3,12 @@ title: YAML 参考-ACR 任务
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9558f698b4a9dbca46431fc02ced6ae30de29121
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945741"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78668463"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -75,7 +75,7 @@ az configure --defaults acr=myregistry
 
 任务属性通常显示在 `acr-task.yaml` 文件的顶部，是全局属性，适用于整个任务步骤的整个执行。 其中的某些全局属性可在单个步骤中重写。
 
-| 属性 | 类型 | 可选 | Description | 支持的重写 | 默认值 |
+| properties | 类型 | 可选 | 说明 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，则默认为最新版本。 | 否 | 无 |
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务上指定了属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤上指定 `timeout` 属性，则它将覆盖任务提供的属性。 | 是 | 600（10 分钟） |
@@ -88,7 +88,7 @@ az configure --defaults acr=myregistry
 
 机密对象具有以下属性。
 
-| 属性 | 类型 | 可选 | Description | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | 字符串 | 否 | 机密的标识符。 | 无 |
 | `keyvault` | 字符串 | 是 | Azure Key Vault 的机密 URL。 | 无 |
@@ -98,7 +98,7 @@ az configure --defaults acr=myregistry
 
 Network 对象具有以下属性。
 
-| 属性 | 类型 | 可选 | Description | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | 字符串 | 否 | 网络的名称。 | 无 |
 | `driver` | 字符串 | 是 | 用于管理网络的驱动程序。 | 无 |
@@ -110,7 +110,7 @@ Network 对象具有以下属性。
 
 ACR 任务支持三种步骤类型。 每种步骤类型支持多个属性，每个步骤类型的相关部分中会予以详述。
 
-| 步骤类型 | Description |
+| 步骤类型 | 说明 |
 | --------- | ----------- |
 | [`build`](#build) | 使用熟悉的 `docker build` 语法生成容器映像。 |
 | [`push`](#push) | 执行 `docker push`，将新生成或重新标记的映像推送到容器注册表。 支持 Azure 容器注册表、其他专用注册表和公共 Docker 中心。 |
@@ -131,7 +131,7 @@ steps:
 
 `build` 步骤类型支持下表中的参数。 `build` 步骤类型还支持 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有生成选项，例如 `--build-arg` 以设置生成时变量。
 
-| 参数 | Description | 可选 |
+| 参数 | 说明 | 可选 |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与 `az acr build`不同，运行 ACR 任务并不提供默认推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
 | `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定 Dockerfile，请将文件名相对于上下文的根进行传递。 | 是 |
@@ -152,13 +152,13 @@ steps:
 | `ignoreErrors` | bool | 可选 |
 | `isolation` | 字符串 | 可选 |
 | `keep` | bool | 可选 |
-| `network` | 对象 | 可选 |
+| `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
 | `pull` | bool | 可选 |
 | `repeat` | int | 可选 |
 | `retries` | int | 可选 |
 | `retryDelay` | 整数（秒） | 可选 |
-| `secret` | 对象 | 可选 |
+| `secret` | 对象 (object) | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
@@ -269,13 +269,13 @@ steps:
 | `ignoreErrors` | bool | 可选 |
 | `isolation` | 字符串 | 可选 |
 | `keep` | bool | 可选 |
-| `network` | 对象 | 可选 |
+| `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
 | `pull` | bool | 可选 |
 | `repeat` | int | 可选 |
 | `retries` | int | 可选 |
 | `retryDelay` | 整数（秒） | 可选 |
-| `secret` | 对象 | 可选 |
+| `secret` | 对象 (object) | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
@@ -356,7 +356,7 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| 属性 | 类型 | 可选 | Description | 默认值 |
+| properties | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用 `workingDirectory` 重写功能。 将此与 `workingDirectory` 结合使用，可以完全控制容器的工作目录。 | `false` |
@@ -367,14 +367,14 @@ steps:
 | `ignoreErrors` | bool | 是 | 是否将步骤标记为成功，而不管容器执行过程中是否发生了错误。 | `false` |
 | `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
 | `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
-| `network` | 对象 | 是 | 标识运行容器的网络。 | 无 |
+| `network` | 对象 (object) | 是 | 标识运行容器的网络。 | 无 |
 | `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
 | `pull` | bool | 是 | 是否在执行容器之前强制提取容器以防止任何缓存行为。 | `false` |
 | `privileged` | bool | 是 | 是否在特权模式下运行容器。 | `false` |
 | `repeat` | int | 是 | 用于重复执行容器的重试次数。 | 0 |
 | `retries` | int | 是 | 容器执行失败时的重试次数。 如果容器的退出代码为非零，则仅尝试重试。 | 0 |
 | `retryDelay` | 整数（秒） | 是 | 容器执行重试之间的延迟（以秒为单位）。 | 0 |
-| `secret` | 对象 | 是 | 标识 Azure 资源的 Azure Key Vault 机密或[托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
+| `secret` | 对象 (object) | 是 | 标识 Azure 资源的 Azure Key Vault 机密或[托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
 | `startDelay` | 整数（秒） | 是 | 延迟容器执行的秒数。 | 0 |
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
@@ -385,7 +385,7 @@ steps:
 
 #### <a name="example-id"></a>示例：id
 
-生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `when` 属性中引用的唯一 `id` 进行标识。
+生成两个映像，并实例化功能测试映像。 每个步骤由任务中的其他步骤在其 `id` 属性中引用的唯一 `when` 进行标识。
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -514,7 +514,7 @@ ACR 任务支持多个预定义的别名以及您创建的自定义别名。
 
 以下任务别名可用于代替[运行变量](#run-variables)：
 
-| 别名 | 运行变量 |
+| Alias | 运行变量 |
 | ----- | ------------ |
 | `ID` | `Run.ID` |
 | `SharedVolume` | `Run.SharedVolume` |
@@ -528,7 +528,7 @@ ACR 任务支持多个预定义的别名以及您创建的自定义别名。
 
 在任务步骤中，在别名前面加上 `$` 指令，如本示例所示：
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
@@ -538,7 +538,7 @@ steps:
 
 以下每个别名指向 Microsoft 容器注册表（MCR）中的稳定映像。 您可以在任务文件的 `cmd` 部分中引用每个文件，而无需使用指令。
 
-| 别名 | 图像 |
+| Alias | 映像 |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
 | `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
@@ -547,7 +547,7 @@ steps:
 
 以下示例任务使用几个别名在运行注册表中的存储库中[清除](container-registry-auto-purge.md)超过7天的映像标记 `samples/hello-world`：
 
-```yaml
+```yml
 version: v1.1.0
 steps:
   - cmd: acr tag list --registry $RegistryName --repository samples/hello-world

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360899"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386891"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>在 Azure 门户中管理云服务
 在 Azure 门户的“云服务”区域中，可以：
@@ -26,7 +26,7 @@ ms.locfileid: "75360899"
 有关如何缩放云服务的详细信息，请参阅[如何在门户中为云服务配置自动缩放](cloud-services-how-to-scale-portal.md)。
 
 ## <a name="update-a-cloud-service-role-or-deployment"></a>更新云服务角色或部署
-如果需要更新云服务的应用程序代码，请使用云服务边栏选项卡上的“更新”。 你可以更新一个角色或所有角色。 若要进行更新，可以上传新服务包或服务配置文件。
+如果需要更新云服务的应用程序代码，请使用云服务边栏选项卡上的“更新”。 可以更新一个角色或所有角色。 若要进行更新，可以上传新服务包或服务配置文件。
 
 1. 在[Azure 门户][Azure portal]中，选择要更新的云服务。 此步骤将打开云服务实例边栏选项卡。
 
@@ -86,7 +86,7 @@ ms.locfileid: "75360899"
 如上一部分中所述，部署交换通常非常快，因为它只更改 Azure 负载均衡器中的配置。 在某些情况下，它会需要 10 秒或更长时间并导致暂时性连接故障。 若要减少对客户的影响，请考虑实施[客户端重试逻辑](../best-practices-retry-general.md)。
 
 ## <a name="delete-deployments-and-a-cloud-service"></a>删除部署和云服务
-必须先删除每个现有部署，然后才能删除云服务。
+必须先删除每个现有部署，才能删除云服务。
 
 为节省计算成本，可以在验证生产部署能够按预期运行后删除过渡部署。 停止的已部署角色实例仍会产生计算成本。
 

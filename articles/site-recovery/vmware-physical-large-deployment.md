@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
-ms.translationtype: MT
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895800"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78362524"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>为 VMware Vm/物理服务器设置大规模灾难恢复
 
@@ -26,7 +26,7 @@ ms.locfileid: "75895800"
 - 当你为 VMware Vm 规划大规模灾难恢复并找出所需的 Azure 资源时，你可以指定将用于容量计算的 RTO 值。
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 大规模灾难恢复的一些常规最佳做法。 本文的后续部分将更详细地讨论这些最佳做法。
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547500"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78372110"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -34,7 +34,7 @@ ms.locfileid: "76547500"
 
 有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并为创建者分配其他基于角色的访问控制（RBAC）角色。 在所有这些情况下，订阅所有者还必须提前[接受 Avere vFXT 软件条款](#accept-software-terms)。
 
-| 方案 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
+| 场景 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
 |----------|--------|-------|
 | 资源组管理员创建 vFXT | 必须在资源组中创建虚拟网络、群集控制器和群集节点。 | "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色，作用域为目标资源组。 |
 | 使用现有的外部虚拟网络 | 群集控制器和群集节点是在 vFXT 的资源组中创建的，但使用其他资源组中的现有虚拟网络。 | （1） "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色的作用域为 vFXT 资源组;和（2）[虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)和[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)角色，作用域为虚拟网络的资源组。 |
@@ -49,7 +49,7 @@ ms.locfileid: "76547500"
 >
 > 确保为要运行工作流的区域启用了配额。
 
-|Azure 组件|配额|
+|Azure 组件|Quota|
 |----------|-----------|
 |虚拟机|3个或更多 E32s_v3 （每个群集节点一个） |
 |高级 SSD 存储|200 GB OS 空间加上每个节点的 1 TB 到 4 TB 缓存空间 |

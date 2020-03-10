@@ -8,11 +8,11 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277295"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78384918"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>远程连接到 StorSimple 8000 系列设备
 
@@ -229,7 +229,7 @@ ms.locfileid: "76277295"
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     对于 cmdlet 中的 -ComputerName 参数，请提供 <*目标设备的序列号*>。 已在远程主机上将此序列号映射到 hosts 文件中 DATA 0 的 IP 地址；如下图中所示的 **SHX0991003G44MT**。
-5. 类型：
+5. 键入：
    
      `Enter-PSSession $session`
 6. 等待几分钟后，会在 SSL 上通过 HTTPS 连接到设备。 会看到一条指示已连接到设备的消息。

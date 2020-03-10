@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 52d9f7a0b2a7cebefdb5ade8e16417043c5c83d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425298"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78378061"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure 多重身份验证中的报告
 
 Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，供你和你的组织使用。 下表列出了可用的报告：
 
-| 报告 | 位置 | Description |
+| 报表 | 位置 | 说明 |
 |:--- |:--- |:--- |
 | 阻止的用户历史记录 | Azure AD > 安全 > MFA > 阻止/解除阻止用户 | 显示请求阻止或解除阻止用户的历史记录。 |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
@@ -40,7 +40,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
 
 ## <a name="azure-ad-sign-ins-report"></a>Azure AD 登录报告
 
-通过 [Azure 门户](https://portal.azure.com)中的**登录活动报告**，可以获取确定环境运行状况所需的信息。
+通过 **Azure 门户**中的[登录活动报告](https://portal.azure.com)，可以获取确定环境运行状况所需的信息。
 
 登录报告可以提供托管应用程序的使用和用户登录活动方面的信息，其中包括多重身份验证 (MFA) 使用方面的信息。 可以通过 MFA 数据了解 MFA 在组织中的使用情况。 可以通过它来了解以下情况：
 
@@ -104,7 +104,7 @@ Azure 多重身份验证提供了几个可通过 Azure 门户访问的报告，�
       - 找不到用户
       - 验证代码已使用过一次
 
-**MFA 身份验证方法：** 用户用来完成 MFA 的身份验证方法。 可能值包括：
+**MFA 身份验证方法：** 用户用来完成 MFA 的身份验证方法。 可能的值包括：
 
 - 短信
 - 移动应用通知
@@ -148,12 +148,12 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 下表可用于通过多因素身份验证活动报表的下载版本排查多重身份验证问题。 它们不会直接显示在 Azure 门户中。
 
-| 调用结果 | Description | 广泛说明 |
+| 调用结果 | 说明 | 广泛说明 |
 | --- | --- | --- |
-| SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则他们输入了正确的 PIN 码。  如果身份验证被拒绝，则他们输入的 PIN 不正确，或用户设置为 "标准" 模式。 |
-| SUCCESS_NO_PIN | 仅输入 # | 如果用户被设置为“PIN”模式并且身份验证被拒绝，这表示用户没有输入自己的 PIN，而只输入了 #。  如果用户被设置为“标准”模式并且身份验证成功，这表示用户只输入了 #，而这在“标准”模式下是正确的做法。 |
-| SUCCESS_WITH_PIN_BUT_TIMEOUT | 输入后未按 # | 由于未输入 #，因此用户未发送任何 DTMF 数字。  除非输入指示条目完成的 #，否则不会发送输入的其他数字。 |
-|SUCCESS_NO_PIN_BUT_TIMEOUT | 未输入电话号码 - 已超时 | 呼叫已被接听，但是无人应答。  这通常表示由语音邮件提取呼叫。 |
+| SUCCESS_WITH_PIN | 已输入 PIN | 用户已输入 PIN。  如果身份验证成功，则他们输入的 PIN 是正确的。  如果身份验证被拒绝，则他们输入的 PIN 不正确，或用户设置为 "标准" 模式。 |
+| SUCCESS_NO_PIN | 仅输入 # | 如果用户被设置为“PIN”模式并且身份验证被拒绝，这表示用户没有输入自己的 PIN，而只输入了 #。  如果用户设置为 "标准" 模式并且身份验证成功，这意味着用户只需输入 #，这是在标准模式下执行的正确操作。 |
+| SUCCESS_WITH_PIN_BUT_TIMEOUT | 输入后未按 # | 由于未输入 #，因此用户未发送任何 DTMF 数字。  除非已输入 # 表明输入完成，否则不会发送已输入的其他数字。 |
+|SUCCESS_NO_PIN_BUT_TIMEOUT | 未输入电话号码 - 已超时 | 呼叫已被接听，但是无人应答。  这通常表明呼叫由语音信箱接听。 |
 | SUCCESS_PIN_EXPIRED | PIN 已过期且未更改 | 用户的 PIN 已过期，并且系统已提示用户更改 PIN，但他们未成功完成 PIN 的更改。 |
 | SUCCESS_USED_CACHE | 已使用缓存 | 身份验证成功，但没有多重身份验证呼叫，因为在配置的缓存时间范围内发生相同用户名的以前成功的身份验证。 |
 | SUCCESS_BYPASSED_AUTH | 已免身份验证 | 已使用为用户发起的免验证一次成功进行身份验证。  有关绕过的详细信息，请参阅跳过的用户历史记录报告。 |
@@ -166,13 +166,13 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | SUCCESS_PHONE_APP_AUTHENTICATED | 已通过移动应用程序进行身份验证 | 用户已成功通过移动应用程序进行身份验证。 |
 | SUCCESS_OATH_CODE_PENDING | OATH 代码待处理 | 系统已提示用户输入其 OATH 代码，但是该用户未做出响应。 |
 | SUCCESS_OATH_CODE_VERIFIED | 已验证 OATH 代码 | 在出现提示后，用户输入了有效的 OATH 代码。 |
-| SUCCESS_FALLBACK_OATH_CODE_VERIFIED | 已验证回退 OATH 代码 | 用户已被拒绝使用其主要多重身份验证方法进行身份验证，于是提供了一个有效的 OATH 代码以进行回退。 |
-| SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | 已回答回退安全问题 | 用户已被拒绝使用其主要多重身份验证方法进行身份验证，于是正确回答了自己的安全问题以进行回退。 |
-| FAILED_PHONE_BUSY | 身份验证已在进行中 | 多重身份验证已在处理对此用户的身份验证。  这通常是由在同一登录期间发送多个身份验证请求的 RADIUS 客户端引起的。 |
+| SUCCESS_FALLBACK_OATH_CODE_VERIFIED | 已验证回退 OATH 代码 | 用户已被拒绝使用其主要多重身份验证方法进行身份验证，并提供有效的 OATH 代码以进行回退。 |
+| SUCCESS_FALLBACK_SECURITY_QUESTIONS_ANSWERED | 已回答回退安全问题 | 用户已被拒绝使用其主要多重身份验证方法进行身份验证，并正确回答了其安全问题以进行回退。 |
+| FAILED_PHONE_BUSY | 身份验证已在进行中 | 多重身份验证已在处理此用户的身份验证。  这通常是由在同一登录期间发送多个身份验证请求的 RADIUS 客户端引起的。 |
 | CONFIG_ISSUE | 无法接通电话 | 已尝试调用，但无法将其放置或未应答。  这包括繁忙信号、快速繁忙信号（断开连接）、三色调（数字不再处于服务中）、铃声超时等。 |
 | FAILED_INVALID_PHONENUMBER | 电话号码格式无效 | 电话号码格式无效。  电话号码必须是数字，并且国家/地区代码必须为10位数 + 1 （美国 & 加拿大）。 |
 | FAILED_USER_HUNGUP_ON_US | 用户已挂断电话 | 用户接听了电话，但是没有按任何按钮就挂断了电话。 |
-| FAILED_INVALID_EXTENSION | 分机号无效 | 该分机号包含无效字符。  只允许使用数字、逗号、* 和 #。  还可以使用 @ 前缀。 |
+| FAILED_INVALID_EXTENSION | 分机号无效 | 该分机号包含无效字符。  仅允许使用数字、逗号、* 和 #。  还可以使用 @ 前缀。 |
 | FAILED_FRAUD_CODE_ENTERED | 已输入欺诈行为代码 | 用户在通话期间选择举报欺诈行为，导致身份验证被拒绝且电话号码被阻止。| 
 | FAILED_SERVER_ERROR | 无法拨打电话 | 多重身份验证服务无法发出呼叫。 |
 | FAILED_SMS_NOT_SENT | 无法发送文本消息 | 无法发送短信。  身份验证被拒绝。 |

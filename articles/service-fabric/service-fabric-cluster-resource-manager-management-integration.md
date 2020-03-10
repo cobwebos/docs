@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614615"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78386264"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>群集 Resource Manager 与 Service Fabric 群集管理的集成
 Service Fabric 群集资源管理器不会在 Service Fabric 中驱动升级，但会关注升级。 群集 Resource Manager 帮助进行管理的第一种方式是跟踪群集及其中服务的所需状态。 无法将群集放入所需配置时，群集 Resource Manager 会发出运行状况报告。 例如，如果容量不足，则群集资源管理器会发出运行状况警告和错误，指示该问题。 集成的另一个部分与升级的工作方式有关。 在升级期间，群集资源管理器会稍微改变其行为。  
@@ -105,7 +105,7 @@ HealthEvents          :
 
 在所有约束中，可能觉得：“嘿 – 我认为容错域约束在系统中是最重要的。 为了确保不违反故障域约束，我情愿违反其他约束。”
 
-可为约束配置不同的优先级别。 他们分别是：
+可为约束配置不同的优先级别。 其中包括：
 
    - “硬”(0)
    - “软”(1)

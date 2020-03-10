@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622212"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78391738"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>设置源环境以便从 VMware 复制到 Azure
 
 本文介绍如何设置源本地环境，以便将 VMware VM 复制到 Azure。 本文包括选择复制方案、将本地计算机设置为 Site Recovery 配置服务器以及自动发现本地 Vm 的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 本文假设已完成以下操作：
 
@@ -31,7 +31,7 @@ ms.locfileid: "73622212"
 
 1. 在“恢复服务保管库”中，选择保管库名称。 我们在此方案中使用 **ContosoVMVault**。
 2. 在“入门”中，选择“Site Recovery”， 然后选择“准备基础结构”。
-3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
+3. 在“保护目标” **“计算机所在位置”中，选择“本地”**  > 。
 4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”。
 5. 在“你的计算机是否已虚拟化”中，选择“是，带有 VMware vSphere 虚拟机监控程序”。 然后选择“确定”。
 
@@ -41,7 +41,7 @@ ms.locfileid: "73622212"
 
 1. 了解配置服务器部署的[先决条件](vmware-azure-deploy-configuration-server.md#prerequisites)。
 2. [检查容量数字](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements)以便进行部署。
-3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 通过模板提供的许可证是评估许可证，有效期为 180 天。 超过有效期之后，客户需要使用购买的许可证来激活 Windows。
+3. [下载](vmware-azure-deploy-configuration-server.md#download-the-template)并[导入](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVA 模板，设置运行配置服务器的本地 VMware VM。 随模板提供的许可证是评估版许可证，有效期为180天。 在此期间，客户需要使用采购许可证激活 windows。
 4. 打开 VMware VM，并将其[注册](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services)到恢复服务保管库中。
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>从防病毒程序中排除 Azure Site Recovery 文件夹

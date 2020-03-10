@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771519"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78395644"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 表存储表设计指南：可缩放的高性能表
 
@@ -39,11 +39,11 @@ ms.locfileid: "76771519"
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>00001</td>
 <td>2014-08-22T00:50:32Z</td>
 <td>
@@ -63,7 +63,7 @@ ms.locfileid: "76771519"
 </table>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>00002</td>
 <td>2014-08-22T00:50:34Z</td>
 <td>
@@ -83,7 +83,7 @@ ms.locfileid: "76771519"
 </table>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>部门</td>
 <td>2014-08-22T00:50:30Z</td>
 <td>
@@ -93,14 +93,14 @@ ms.locfileid: "76771519"
 <th>EmployeeCount</th>
 </tr>
 <tr>
-<td>营销</td>
+<td>Marketing</td>
 <td>153</td>
 </tr>
 </table>
 </td>
 </tr>
 <tr>
-<td>销售热线</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -1126,7 +1126,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
@@ -1218,7 +1218,7 @@ foreach (var e in entities)
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>时间戳</th>
 <th></th>
 </tr>
 <tr>
