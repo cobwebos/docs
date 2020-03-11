@@ -1,37 +1,27 @@
 ---
-title: 安装和配置 Terraform 以预配 Azure 资源
-description: 了解如何安装和配置用于创建 Azure 资源的 Terraform
-services: virtual-machines-linux
-documentationcenter: virtual-machines
-author: tomarchermsft
-manager: gwallace
-editor: na
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 09/20/2019
-ms.author: tarcher
-ms.openlocfilehash: 74728fb05e900c534580f1c8eaf14dd0e48fc42c
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
-ms.translationtype: MT
+title: 快速入门 - 安装并配置 Terraform 以预配 Azure 资源
+description: 在此快速入门中，你将安装并配置 Terraform 以创建 Azure 资源
+keywords: azure devops terraform 安装 配置
+ms.topic: quickstart
+ms.date: 03/09/2020
+ms.openlocfilehash: 82635f59ec8165add2046a230a040b06f89d9898
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77473124"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78943498"
 ---
-# <a name="install-and-configure-terraform-to-provision-azure-resources"></a>安装和配置 Terraform 以预配 Azure 资源
+# <a name="quickstart-install-and-configure-terraform-to-provision-azure-resources"></a>快速入门：安装并配置 Terraform 以预配 Azure 资源
  
 借助 Terraform，可以轻松使用[简单模板语言](https://www.terraform.io/docs/configuration/syntax.html)来定义、预览和部署云基础结构。 本文介绍使用 Terraform 在 Azure 中预配资源的必要步骤。
 
 若要了解有关如何在 Azure 中使用 Terraform 的详细信息，请访问 [Terraform 中心](/azure/terraform)。
 > [!NOTE]
-> 有关 Terraform 的特定支持，请直接使用其一个社区渠道联系 Terraform：
+> 要获得特定于 Terraform 的支持，请直接使用以下社区通道之一联系 Terraform：
 >
->   •社区门户的[Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用的模式。
+>    * 社区门户的 [Terraform 部分](https://discuss.hashicorp.com/c/terraform-core)包含问题、用例和有用的模式。
 >
->   •对于与提供程序相关的问题，请访问社区门户的[Terraform 提供程序](https://discuss.hashicorp.com/c/terraform-providers)部分。
+>    * 有关与提供程序相关的问题，请访问社区门户的 [Terraform 提供程序](https://discuss.hashicorp.com/c/terraform-providers)部分。
 
 
 
@@ -54,7 +44,7 @@ Usage: terraform [--version] [--help] <command> [args]
 
 要使 Terraform 能够将资源预配到 Azure，请创建 [Azure AD 服务主体](/cli/azure/create-an-azure-service-principal-azure-cli)。 服务主体允许你的 Terraform 脚本在 Azure 订阅中预配资源。
 
-如果有多个 Azure 订阅，请首先使用[az account list](/cli/azure/account#az-account-list)查询帐户，以获取订阅 id 和租户 id 值的列表：
+如果有多个 Azure 订阅，请先使用 [az account list](/cli/azure/account#az-account-list) 查询帐户，以获取订阅 ID 和租户 ID 值列表：
 
 ```azurecli-interactive
 az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
@@ -66,7 +56,7 @@ az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 az account set --subscription="${SUBSCRIPTION_ID}"
 ```
 
-现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示：
+现在，可以创建一个服务主体以与 Terraform 一起使用。 使用 [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)，并将“范围”设置为你的订阅，如下所示  ：
 
 ```azurecli-interactive
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
@@ -104,6 +94,10 @@ export ARM_ENVIRONMENT=public
 
 ```hcl
 provider "azurerm" {
+  # The "feature" block is required for AzureRM provider 2.x. 
+  # If you are using version 1.x, the "features" block is not allowed.
+  version = "~>2.0"
+  features {}
 }
 resource "azurerm_resource_group" "rg" {
         name = "testResourceGroup"

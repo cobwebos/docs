@@ -42,6 +42,8 @@
       href: enable-dynamic-configuration-dotnet.md
     - name: 在 Azure Functions 应用中实现动态配置
       href: enable-dynamic-configuration-azure-functions-csharp.md
+    - name: 在 Spring Boot 应用中实现动态配置
+      href: enable-dynamic-configuration-java-spring-app.md
     - name: 在 .NET Core 应用中使用功能标志
       href: use-feature-flags-dotnet-core.md
     - name: 在 Spring Boot 应用中使用功能标志

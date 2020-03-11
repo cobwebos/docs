@@ -213,6 +213,8 @@
               items:
                 - name: 客户端 JavaScript
                   href: app/javascript.md
+                - name: 用于 JavaScript 的源映射
+                  href: app/source-map-support.md
             - name: Application Insights API 摘要
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -921,7 +923,7 @@
               items:
                 - name: 访问控制
                   href: platform/workbooks-access-control.md
-                - name: parameters
+                - name: 参数
                   items:
                     - name: 参数摘要
                       href: platform/workbooks-parameters.md
@@ -1005,6 +1007,8 @@
               href: platform/alerts-activity-log.md
             - name: 将管理事件迁移到活动日志警报
               href: platform/migrate-management-alerts.md
+            - name: Webhook 架构
+              href: platform/activity-log-alerts-webhook.md
         - name: 活动日志中的服务运行状况警报
           items:
             - name: 查看通知
@@ -1023,8 +1027,6 @@
               href: platform/alerts-common-schema-definitions.md
             - name: 将常见警报架构与逻辑应用集成
               href: platform/alerts-common-schema-integrations.md
-            - name: Webhook 架构
-              href: platform/activity-log-alerts-webhook.md
             - name: 短信警报行为
               href: platform/alerts-sms-behavior.md
             - name: 通知速率限制
