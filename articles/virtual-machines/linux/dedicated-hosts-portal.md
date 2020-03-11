@@ -1,20 +1,17 @@
 ---
 title: 使用 Azure 门户部署 Azure 专用主机
 description: 使用 Azure 门户将 Vm 部署到专用主机。
-services: virtual-machines-linux
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: c8e2ac929b3285b0ba122928485b423e34dc8f4f
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
-ms.translationtype: MT
+ms.openlocfilehash: 5af09cf7ef6c811a239a64c5c6349c3625316177
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835130"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970755"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>使用门户将 Vm 部署到专用主机
 
@@ -27,7 +24,7 @@ ms.locfileid: "75835130"
 1. 在 Azure 门户的左上角，选择“创建资源”。
 1. 在 Azure 市场资源列表上方的搜索框中，搜索并选择 Canonical 提供的“Ubuntu Server 16.04 LTS”，然后选择“创建”。
 1. 在 "**基本**信息" 选项卡中的 "**项目详细信息**" 下，确保选择了正确的订阅，然后选择 " *myDedicatedHostsRG* " 作为**资源组**。 
-1. 在“实例详细信息”下，对于“虚拟机名称”键入 *myVM*，对于“位置”选择“美国东部”。
+1. 在“实例详细信息”下，对于“虚拟机名称”键入 **myVM**，对于“位置”选择“美国东部”。
 1. 在 "**可用性选项**" 中，选择 "**可用性区域**"，然后从下拉范围中选择*1* 。
 1. 对于 "大小"，请选择 "**更改大小**"。 在可用大小列表中，选择 Esv3 系列中的一个，如**标准 E2s v3**。 您可能需要清除筛选器才能查看所有可用大小。
 1. 在“管理员帐户”下，选择“SSH 公钥”，键入用户名，然后将公钥粘贴到文本框中。 删除公钥中的所有前导或尾随空格。

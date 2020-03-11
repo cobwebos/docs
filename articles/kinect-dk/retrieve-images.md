@@ -60,7 +60,7 @@ if (K4A_RESULT_SUCCEEDED != k4a_device_start_cameras(device, &config))
 
 ## <a name="get-a-capture-from-the-device"></a>从设备获取捕获
 
-图像是以关联的方式从设备捕获的。 捕获的每个图像包含深度图像、IR 图像、彩色图像或图像的组合。
+图像是以关联的方式从设备捕获的。 捕获的每个图像都包含深度图像、IR 图像、彩色图像或图像的组合。
 
 默认情况下，API 只会在收到流模式请求的所有图像后才返回捕获。 可以通过清除 [`k4a_device_configuration_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t.html) 的 [`synchronized_images_only`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__device__configuration__t_a8208974f05d89fc1362c6a0900bdef4d.html#a8208974f05d89fc1362c6a0900bdef4d) 参数，将 API 配置为在深度图像和彩色图像可用后，立即返回仅包含这些图像的部分捕获。
 

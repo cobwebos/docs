@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c0b0c6ec68c818f107c7e3e3241e4acc0edb7
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: d00a8b84477226b68913f95c5121bbbdfc2eb09d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78671702"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082399"
 ---
-# <a name="enable-on-premises-azure-active-password-protection"></a>启用本地 Azure Active Password Protection
+# <a name="enable-on-premises-azure-active-directory-password-protection"></a>启用本地 Azure Active Directory 密码保护
 
 用户经常会创建密码，使用常用的词语，如学校、体育团队或名人。 这些密码易于猜测，并使基于字典的攻击变弱。 若要在组织中强制实施强密码，Azure Active Directory （Azure AD）密码保护提供了全局和自定义的禁止密码列表。 如果这些禁止密码列表中存在匹配项，则密码更改请求失败。
 

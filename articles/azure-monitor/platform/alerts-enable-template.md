@@ -4,23 +4,22 @@ description: 了解如何使用资源管理器模板创建经典指标警报，�
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
-ms.date: 4/27/2018
+ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: c25886308b4f9560b336982b87bd4b38b306bcb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668037"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037228"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>使用资源管理器模板创建经典指标警报
-本文说明如何使用 [Azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)配置 Azure 指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
-
-> [!NOTE]
+> [!WARNING]
 > 
-> 本文介绍如何使用资源管理器模板创建经典指标警报。 如果你正在寻找使用模板创建[较新指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)的方法，那么[本文](alerts-metric-create-templates.md)可提供详细信息。
+> 本文介绍如何使用资源管理器模板创建经典指标警报。 经典警报已于8月2019停用，并已设置为在6月2020完全弃用。 不能创建新的经典警报公共 Azure。 某些区域版本的 Azure 可能仍有选项，但我们建议你尽可能使用模板来创建[较新的指标警报](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 [本文](alerts-metric-create-templates.md)提供了详细信息。
 >
 
+本文介绍如何使用[azure 资源管理器模板](../../azure-resource-manager/templates/template-syntax.md)来配置 azure 经典指标警报。 这样，便可以在创建资源时自动对资源设置警报，确保正确监视所有资源。
 
 基本步骤如下所述：
 

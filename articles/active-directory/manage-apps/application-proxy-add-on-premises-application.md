@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ab39c10686066599a23d12c4fd8e66caae732e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 263c7fc208a9dd92858845a948e0f64df8ba2952
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375680"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967987"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 | 代码 | 用途 |
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 连接器与应用程序代理云服务之间的通信 |
-| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Azure 使用以下 URL 验证证书。 |
+| mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 连接器使用这些 Url 来验证证书。 |
 | login.windows.net<br>secure.aadcdn.microsoftonline p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 在注册过程中，连接器将使用这些 URL。 |
 
 如果防火墙或代理允许配置 DNS 允许列表，则可将与 \*.msappproxy.net 和 \*.servicebus.windows.net 的连接加入允许列表。 如果没有，则需要允许访问 [Azure IP 范围和服务标记 - 公有云](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 范围每周更新。

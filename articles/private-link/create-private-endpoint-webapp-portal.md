@@ -8,12 +8,12 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: f19e4e34b2ec8cebc9e1841f277f26fba941bb89
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673983"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037157"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>使用 Azure 专用终结点将专用连接到 Web 应用（预览版）
 
@@ -73,6 +73,9 @@ Azure 专用终结点是 Azure 中专用链接的基本构建基块。 它允许
 ## <a name="create-your-web-app-and-private-endpoint"></a>创建 Web 应用和专用终结点
 
 在本部分中，你将使用专用终结点创建专用 Web 应用。
+
+> [!Note]
+>专用终结点功能仅适用于高级版 V2 并与外部 ASE SKU 隔离
 
 ### <a name="web-app"></a>Web 应用
 

@@ -1,26 +1,17 @@
 ---
 title: Azure CLI 示例
 description: Azure CLI 示例
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: eda3154bb921a46bbe3b768713d4e72f1cc45d5f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 76803f8c3a703071eb733c5cfde65482ffd07f40
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036851"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970077"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>适用于 Linux 虚拟机的 Azure CLI 示例
 
@@ -37,7 +28,7 @@ ms.locfileid: "74036851"
 | [从托管 OS 磁盘创建 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 通过将现有托管磁盘附加为 OS 磁盘来创建虚拟机。 |
 | [从快照创建 VM](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 通过先从快照创建托管磁盘，然后将新的托管磁盘附加为 OS 磁盘来从快照创建虚拟机。 |
 |**管理存储**||
-| [从 VHD 创建托管磁盘](../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从作为 OS 磁盘的专用 VHD 或从作为数据磁盘的数据 VHD 创建托管磁盘。  |
+| [从 VHD 创建托管磁盘](../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 创建从专用 VHD 作为 OS 磁盘或从数据 VHD 作为数据磁盘的托管磁盘。  |
 | [从快照创建托管磁盘](../scripts/virtual-machines-linux-cli-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 从快照创建托管磁盘。 |
 | [将托管磁盘复制到相同或不同订阅](../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管磁盘复制到相同或不同订阅（但是与父托管磁盘处于相同区域中）。 
 | [将快照作为 VHD 导出到存储帐户](../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | 将托管快照作为 VHD 导出到不同区域中的存储帐户。 |

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 76fab93543310252bb9003029573f9d3f1ff62b6
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0c279118df3a9205e82f8444b261922c688578da
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834999"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969082"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>使用 .NET 管理 Azure Data Lake Storage Gen2 （预览版）中的目录、文件和 Acl
 
@@ -24,7 +24,7 @@ ms.locfileid: "75834999"
 
 [包（NuGet）](https://www.nuget.org/packages/Azure.Storage.Files.DataLake) | [示例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake) | [API 参考](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake) | [Gen1 到 Gen2 映射](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md) | [提供反馈](https://github.com/Azure/azure-sdk-for-net/issues)
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 > [!div class="checklist"]
 > * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -41,6 +41,7 @@ ms.locfileid: "75834999"
 ```csharp
 using Azure.Storage.Files.DataLake;
 using Azure.Storage.Files.DataLake.Models;
+using Azure.Storage;
 using System.IO;
 using Azure;
 ```

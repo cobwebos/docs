@@ -5,12 +5,12 @@ author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
-ms.openlocfilehash: 350718e4ce890fcbfaa7f2b10cc4c47dfac4da90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614700"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969035"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[设置加密证书和加密 windows 群集上的机密][secret-management-windows-specific-link]。
@@ -29,14 +29,14 @@ ms.locfileid: "75614700"
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>在群集中安装证书
-必须在群集中每个节点上的 `/var/lib/sfcerts` 下安装此证书。 用来运行该服务的用户帐户（默认情况下为 sfuser）对已安装的证书（对于当前示例为 `/var/lib/sfcerts/TestCert.pem`）**应当具有读取访问权限**。
+必须在群集中每个节点上的 `/var/lib/sfcerts` 下安装此证书。 用来运行该服务的用户帐户（默认情况下为 sfuser）对已安装的证书（对于当前示例为 **）** 应当具有读取访问权限`/var/lib/sfcerts/TestCert.pem`。
 
 ## <a name="encrypt-secrets"></a>加密机密
 以下代码片段可用来加密机密。 此代码片段仅对值进行加密；**不**对密码文本进行签名。 若要生成机密值的密文，**必须使用**群集中安装的同一个加密证书。
 
 ```console
 user@linux:$ echo "Hello World!" > plaintext.txt
-user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt -o plaintext_UTF-16.txt
+user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
 所生成的输出到 encrypted.txt 中的 base-64 编码字符串包含机密密文，以及用来将其加密的证书相关信息。 可以通过使用 OpenSSL 将其解密来验证其有效性。

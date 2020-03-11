@@ -7,12 +7,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 2/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 957fef32702f35b4b509d829eba6a41914c4fc53
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: ff69262a89d8112419ffe62cd391d003cb21adc1
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205851"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967593"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
 
@@ -33,7 +33,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 > * 配置应用以在连接到应用程序配置时使用托管标识。
 > * （可选）将应用配置为在通过应用配置 Key Vault 引用连接到 Key Vault 时使用托管标识。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要完成本教程，必须满足以下先决条件：
 
@@ -239,8 +239,6 @@ git push azure master
 ```bash
 http://<app_name>.azurewebsites.net
 ```
-
-![在应用服务中运行的应用](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
 ## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
 

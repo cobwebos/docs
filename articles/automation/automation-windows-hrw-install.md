@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: fc6d3bbe1580c4e6f7064c957a9d420555296231
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372650"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082611"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -139,7 +139,13 @@ Heartbeat
 | where TimeGenerated > ago(30m)
 ```
 
-在搜索结果中，应该会看到计算机的检测信号记录，指出它已连接并向服务报告。 默认情况下，每个代理都会将一个检测信号记录转发到其分配的工作区。 当代理在**C:\Program Files\Microsoft Monitoring Agent\Agent**中有一个名为**AzureAutomationFiles**的文件夹时，可以验证该代理是否已正确下载自动化解决方案。 若要确认混合 Runbook 辅助角色的版本，请浏览到**C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation**并记下**版本**子文件夹。
+在搜索结果中，应该会看到计算机的检测信号记录，指出它已连接并向服务报告。 默认情况下，每个代理都会将一个检测信号记录转发到其分配的工作区。 
+
+使用以下步骤来完成代理的安装和设置。
+
+1. 启用解决方案以载入代理计算机。 请参阅[工作区中的板载计算机](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)。
+2. 验证代理是否已正确下载自动化解决方案。 它应该具有一个名为**AzureAutomationFiles**的文件夹在**C:\Program Files\Microsoft Monitoring Agent\Agent**中。 
+3. 若要确认混合 Runbook 辅助角色的版本，请浏览到**C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation**并记下**版本**子文件夹。
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 4-安装 runbook 环境并连接到 Azure 自动化
 

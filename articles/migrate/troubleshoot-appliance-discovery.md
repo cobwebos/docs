@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048693"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080373"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>排查 Azure Migrate 设备和发现问题
 
@@ -78,7 +78,7 @@ ms.locfileid: "77048693"
 如果收到错误60030或60031，"Azure Key Vault 管理操作失败"，请执行以下操作：
 - 请确保用于注册设备的 Azure 用户帐户至少具有订阅的参与者权限。
 - 请确保该帐户具有对错误消息中指定的密钥保管库的访问权限，然后重试该操作。
-- 如果问题仍然存在，请与 Microsoft 支持联系。
+- 如果问题持续出现，请联系 Microsoft 支持。
 - [详细了解](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware)所需的 Azure 角色和权限。
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>错误60028：无法启动发现
@@ -89,7 +89,7 @@ ms.locfileid: "77048693"
 - 如果出现验证错误，请查看更正指南以修复错误，然后再次尝试 "**保存并启动发现**" 选项。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>错误60025： Azure AD 操作失败 
-错误60025： "Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行以下操作之一：
+错误60025： "Azure AD 操作失败。 如果用于启动发现的 Azure 用户帐户与用于注册设备的帐户不同，则在创建或更新 Azure AD 应用程序时发生错误。 执行下列操作之一：
 
 - 确保启动发现的用户帐户与用于注册设备的用户帐户相同。
 - 为发现操作失败的用户帐户提供 Azure Active Directory 应用程序访问权限。
@@ -150,6 +150,7 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 10004： "找不到 < Windows/Linux > 计算机的已安装应用程序。" |  设备不提供访问 < Windows/Linux > 计算机的凭据。| 向设备添加可访问 < Windows/Linux > 计算机的凭据。
 10005： "无法访问本地服务器"。 | 访问凭据可能是错误的。 | 更新设备凭据确保你可以使用这些凭据访问相关计算机。 
 10006： "无法访问本地服务器"。 | 如果计算机操作系统不是 Windows 或 Linux，则可能会发生这种情况。|  仅使用适用于 Windows/Linux 的应用发现。
+10007： "无法处理检索的元数据" | 尝试反序列化 JSON 时发生此内部错误 | 联系 Microsoft 支持部门解决方法
 9000/9001/9002： "无法发现服务器上安装的应用程序"。 | VMware 工具可能未安装或已损坏。 | 在相关计算机上安装/重新安装 VMware 工具，并检查其是否正在运行。
 9003：无法发现服务器上安装的应用程序 "。 | 如果计算机操作系统不是 Windows 或 Linux，则可能会发生这种情况。 | 仅使用适用于 Windows/Linux 的应用发现。
 9004： "无法发现服务器上安装的应用程序"。 | 如果 VM 已关闭，则可能会发生这种情况。 | 对于发现，请确保 VM 已打开。
@@ -158,9 +159,21 @@ Azure Migrate 使用 Azure Migrate：服务器评估支持应用程序、角色�
 9008： "无法检索安装了服务器的应用程序"。 | 可能是内部错误。  | Tf 此问题不会在24小时内自行解决，请联系支持人员。
 9009： "无法检索安装了服务器的应用程序"。 | 如果服务器上的 Windows 用户帐户控制（UAC）设置受到限制，则可能会发生这种情况，并阻止发现已安装的应用程序。 | 搜索服务器上的 "用户帐户控制" 设置，并将服务器上的 UAC 设置配置为下面两个级别之一。
 9010： "无法检索安装了服务器的应用程序"。 | 可能是内部错误。  | Tf 此问题不会在24小时内自行解决，请联系支持人员。
+9011： "来宾 VM 上找不到从来宾下载的文件" | 此问题可能是由于内部错误引起的。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+9012： "结果文件内容为空。" | 此问题可能是由于内部错误引起的。 | 此问题应在24小时内自动解决。 如果问题仍然存在，请联系 Microsoft 支持部门。
+9013： "已为每个到 VMware VM 的登录创建新的临时配置文件" | 为每个登录到 VM 创建一个新的临时配置文件 | 确保来宾 VM 凭据中提供的用户名采用 UPN 格式。
+9015： "由于 vCenter 上的权限不足，无法连接到 VMware Vm" | VCenter 用户帐户上未启用来宾操作角色 | 确保在 vCenter 用户帐户上启用了来宾操作角色。
+9016： "无法连接到 VMware Vm，因为来宾操作代理不在数据中" | VMware 工具未正确安装或不是最新版本。 | 请确保 VMware 工具安装正确并处于最新状态。
+9017： "在 VM 上找不到具有发现的元数据的文件。" | 此问题可能是由于内部错误引起的。 | 若要解决此问题，请联系 Microsoft 支持部门。
+9018： "来宾 Vm 中未安装 PowerShell"。 | PowerShell 在来宾 VM 中不可用。 | 在来宾 VM 中安装 PowerShell。
+9019： "由于来宾 VM 操作失败，无法发现" | VM 上的 VMware 来宾操作失败。 | 请确保 VM 凭据有效，并且来宾 VM 凭据中提供的用户名采用 UPN 格式。
+9020： "文件创建权限被拒绝。" | 与用户或组策略关联的角色限制用户在文件夹中创建文件 | 检查来宾用户是否提供了对文件夹中的文件的 create 权限。 请参阅服务器评估中的**通知**，了解文件夹的名称。
+9021： "文件夹系统临时路径中的文件创建权限被拒绝。" | VM 上的 VMware 工具版本不受支持 | 升级10.2.0 上的 VMware 工具版本。
+9022： "获取 WMI 对象访问被拒绝"。 | 与用户或组策略关联的角色限制用户访问 WMI 对象。 | 请联系 Microsoft 支持。
+9023： "SystemRoot 环境变量值为空。" | 未知 | 请联系 Microsoft 支持。
+9024： "TEMP 环境变量值为空。" | 未知 | 请联系 Microsoft 支持。
+9025： "来宾 Vm 中的 PowerShell 已损坏"。 | 未知 | 在来宾 VM 中重新安装 PowerShell，并检查 PowerShell 是否可以在来宾 VM 上运行。
 8084： "由于 VMware 错误，无法发现应用程序： <Exception from VMware>" | Azure Migrate 设备使用 VMware Api 来发现应用程序。 如果在尝试发现应用程序时 vCenter Server 引发异常，则可能出现此问题。 VMware 中的错误消息将显示在 "门户" 中显示的错误消息中。 | 在[VMware 文档](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)中搜索该消息，然后按照步骤进行修复。 如果无法解决问题，请联系 Microsoft 支持部门。
-9012： "无法发现服务器上安装的应用程序" | 此问题可能是由于内部错误引起的。  | 如果问题无法在24小时内自行解决，请联系支持人员。
-9013： "无法发现服务器上安装的应用程序" | 每次登录到 VM 时都会创建一个新的临时配置文件。  | 确保不为提供的来宾用户创建临时配置文件。
 
 
 

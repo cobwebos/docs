@@ -3,12 +3,12 @@ title: 发现、评估和依赖关系分析常见问题解答
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7733213f78452b3f35b835eec847ec837138b8e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: e46d1e6ee1dd404e6e040eb394e89dd86a3d4d8e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932652"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082678"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -68,6 +68,12 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 例如，如果将 "性能持续时间" 设置为 "1"，将 "百分点" 值设置为 "95%"，则 Azure Migrate 按升序对过去一天发送的每15分钟的样本点进行排序。 它将第95百分位值作为有效利用率。
 
 使用第95百分位值可确保忽略离群值。 如果 Azure Migrate 使用99% 百分点值，则可能会包含离群值。 若要在不丢失任何离群值的情况下选取高峰用量，请将 Azure Migrate 设置为使用99% 百分点值。
+
+## <a name="how-are-import-based-assessments-different-from-assessments-with-discovery-source-as-appliance"></a>与发现源作为设备相比，基于导入的评估与评估有何不同？
+
+基于导入的评估是使用 CSV 文件导入到 Azure Migrate 中的计算机创建的评估。 导入只需要四个字段：服务器名称、内核、内存和操作系统。 下面是一些要注意的事项： 
+ - 对于启动类型参数上基于导入的评估，准备情况条件不太严格。 如果未提供启动类型，则假定计算机具有 BIOS 启动类型，并且计算机未标记为有**条件就绪**。 在 "将发现源作为设备进行评估" 中，如果缺少启动类型，则就绪标记将被标记为有**条件就绪**。 准备情况计算的这一差异是因为在完成基于导入的评估时，用户可能不会在迁移规划的早期阶段中包含所有信息。 
+ - 基于性能的导入评估使用用户提供的使用值进行适当大小的计算。 由于用户提供了利用率值，因此在 "评估属性" 中禁用了 "**性能历史记录**" 和 "**百分比利用率**" 选项。 在 "使用发现源作为设备进行评估" 中，从设备收集的性能数据中选取所选的百分位值。
 
 ## <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
 

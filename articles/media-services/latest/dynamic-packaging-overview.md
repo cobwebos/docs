@@ -12,20 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: dac5f75216a8addcaa65407d945a06363e4cbf9d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: d408a862c18038f64b816bb54fc235d1b9d84179
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359508"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968081"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒体服务 v3 中的动态打包
 
 Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码。 它通过不同的流式处理协议（无论是否提供内容保护）来提供它们，以覆盖所有主要设备（如 iOS 和 Android 设备）。 这些客户端可理解不同的协议。 例如，iOS 要求以 HTTP Live Streaming (HLS) 格式传送流，Android 设备支持 HLS 以及 MPEG DASH。
 
 在媒体服务中，[流式处理终结点](streaming-endpoint-concept.md)表示动态（即时）打包和源服务，该服务可直接将你的实时和按需内容发送到客户端播放器应用。 它使用下一部分中所述的一种常见流式处理媒体协议。 动态打包是所有流式处理终结点（标准或高级）的标准功能。
+
+> [!NOTE]
+> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
 
 ## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>准备源文件供传输
 
@@ -36,7 +39,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 要使编码资产中的视频可供客户端播放，必须创建[流式处理定位符](streaming-locators-concept.md)，然后生成流式处理 URL。 然后，根据流式处理客户端清单中指定的格式（HLS、MPEG DASH 或平滑流式处理），使用你选择的协议接收流。
 
-因此，你只需以单一存储格式存储文件并为其付费，然后 Media Services 服务就会基于客户端的请求构建并提供相应响应。
+因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 如果计划使用媒体服务动态加密来保护内容，请参阅[流式处理协议和加密类型](content-protection-overview.md#streaming-protocols-and-encryption-types)。
 
@@ -65,7 +68,7 @@ Microsoft Azure 媒体服务可用于对许多媒体源文件格式进行编码�
 
 |协议|说明/示例| 
 |---|---|
-|平滑流式处理| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|平滑流| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
 |平滑流式处理 2.0（旧清单）|默认情况下，平滑流式处理清单格式包含重复标记（r 标记）。 但是，一些播放器不支持 `r-tag`。 使用这些播放器的客户端可以使用禁用 r 标记的格式：<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 ## <a name="on-demand-streaming-workflow"></a>按需流式处理工作流
@@ -214,7 +217,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
    </Period>
 </MPD>
 ```
-#### <a name="smooth-streaming"></a>平滑流式处理
+#### <a name="smooth-streaming"></a>平滑流
 
 下面是平滑流式处理清单文件的示例：
 
@@ -302,7 +305,4 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="next-steps"></a>后续步骤
 
-> [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
-
-了解如何[对视频进行上传、编码和流式处理](stream-files-tutorial-with-api.md)。
+[上传、编码和流式处理视频](stream-files-tutorial-with-api.md)

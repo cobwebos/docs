@@ -1,26 +1,17 @@
 ---
-title: 在 Azure 中的 Linux VM 上使用 Docker Compose
-description: 如何通过 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 和 Compose
-services: virtual-machines-linux
-documentationcenter: ''
+title: 使用 Docker Compose
+description: 如何使用 Azure CLI 在 Linux 虚拟机上安装和使用 Docker 并进行撰写。
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 02ab8cf9-318d-4a28-9d0c-4a31dccc2a84
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f2f12e0124743ad31e083cf4ece83bcb608bce0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036270"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970308"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>使用 Docker 和 Compose 在 Azure 中定义和运行多容器应用程序入门
 借助 [Compose](https://github.com/docker/compose)，可以使用简单的文本文件定义由多个 Docker 容器组成的应用程序。 然后使用单个命令启动应用程序，该命令会执行部署定义的环境所需的所有操作。 作为示例，本文说明如何在 Ubuntu VM 上使用后端 MariaDB SQL 数据库快速设置 WordPress 博客。 也可以使用 Compose 设置更复杂的应用程序。

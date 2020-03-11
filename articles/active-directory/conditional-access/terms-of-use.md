@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d92c3e51aae70c66dcf9b7ca6dfd631650ace574
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561742"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079892"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用条款
 
@@ -277,7 +277,11 @@ Azure AD 使用条款使用 PDF 格式来呈现内容。 此 PDF 文件可以是
 
 如果用户使用 Chrome，系统会提示他们安装 [Windows 10 帐户扩展](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)。
 
-### <a name="join-an-android-device"></a>加入 Android 设备
+### <a name="register-an-ios-device"></a>注册 iOS 设备
+
+如果用户使用的是 iOS 设备，则系统会提示他们安装[Microsoft Authenticator 应用](https://apps.apple.com/us/app/microsoft-authenticator/id983156458)。
+
+### <a name="register-an-android-device"></a>注册 Android 设备
 
 如果用户正在使用 Android 设备，则系统会提示他们安装[Microsoft Authenticator 应用](https://play.google.com/store/apps/details?id=com.azure.authenticator)。
 

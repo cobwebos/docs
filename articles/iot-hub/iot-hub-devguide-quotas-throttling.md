@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396512"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968214"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -105,7 +105,7 @@ IoT 中心强制实施的其他操作限制：
 | 云到设备的消息传递<sup>1</sup> | 最大消息大小为 64 KB。 要传递的最大挂起消息数为每个设备50。 |
 | 直接方法<sup>1</sup> | 直接方法有效负载的最大大小为 128 KB。 |
 | 自动设备和模块配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
-| IoT Edge 自动部署<sup>1</sup> | 每个部署 20 个模块。 100每个付费 SKU 中心的部署（包括分层部署）。 每个免费 SKU 中心10个部署。 |
+| IoT Edge 自动部署<sup>1</sup> | 每个部署50个模块。 100每个付费 SKU 中心的部署（包括分层部署）。 每个免费 SKU 中心10个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告属性部分的最大大小为 32 KB。 标记的最大大小部分为 8 KB。 |
 | 共享访问策略 | 共享访问策略的最大数目为16 |
 

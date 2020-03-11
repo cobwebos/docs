@@ -1,26 +1,18 @@
 ---
 title: 将数据磁盘附加到 Linux VM
 description: 使用门户将新的或现有数据磁盘附加到 Linux VM。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 5e1c6212-976c-4962-a297-177942f90907
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851666"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969359"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用门户将数据磁盘附加到 Linux VM 
 本文介绍如何通过 Azure 门户将新磁盘和现有磁盘附加到 Linux 虚拟机。 也可以[在 Azure 门户中将数据磁盘附加到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
@@ -102,7 +94,7 @@ dmesg | grep SCSI
 > [!NOTE]
 > 建议使用可用于发行版的最新版本的 fdisk 或 parted。
 
-使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 */dev/sdc* 上启动 `fdisk` 进程：
+使用 `fdisk` 对磁盘进行分区。 如果磁盘大小为 2 太字节 (TiB) 或更大，则必须使用 GPT 分区；可以使用 `parted` 来执行 GPT 分区。 如果磁盘大小在 2 TiB 以下，则可以使用 MBR 或 GPT 分区。 将其设置为分区 1 中的主磁盘，并接受其他默认值。 以下示例在 `fdisk`/dev/sdc*上启动* 进程：
 
 ```bash
 sudo fdisk /dev/sdc
@@ -243,7 +235,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 在 Linux VM 中有两种方法可以启用 TRIM 支持。 与往常一样，有关建议的方法，请参阅分发：
 
-* 在 */etc/fstab* 中使用 `discard` 装载选项，例如：
+* 在 `discard`/etc/fstab*中使用* 装载选项，例如：
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2

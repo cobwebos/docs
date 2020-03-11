@@ -1,19 +1,19 @@
 ---
 title: 修改 Azure 虚拟机规模集
 description: 了解如何使用 REST API、Azure PowerShell 和 Azure CLI 修改和更新 Azure 虚拟机规模集
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390397"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082244"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虚拟机规模集
 
@@ -311,7 +311,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 >[!NOTE]
 > Service Fabric 群集只能使用“自动”模式，但采用不同方式来处理更新。 有关详细信息，请参阅[Service Fabric 应用程序升级](../service-fabric/service-fabric-application-upgrade.md)。
 
-有一类对全局规模集属性的修改不遵循升级策略。 只能通过 API 版本 *2017-12-01* 或更高版本修改规模集 OS 配置文件（例如管理员用户名和密码）。 这些更改仅适用于在对规模集模型进行更改后创建的 VM。 若要更新现有的 VM，必须对每个现有的 VM 执行“重置映像”操作。 可通过以下方式执行此重置映像操作：
+有一类对全局规模集属性的修改不遵循升级策略。 只能在 API 版本*2017-12-01*或更高版本中更改对规模集 OS 和数据磁盘配置文件的更改（例如，管理员用户名和密码）。 这些更改仅适用于在对规模集模型进行更改后创建的 VM。 若要更新现有的 VM，必须对每个现有的 VM 执行“重置映像”操作。 可通过以下方式执行此重置映像操作：
 
 - 如下所示通过 REST API 使用 [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage)：
 

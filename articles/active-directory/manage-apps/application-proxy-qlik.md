@@ -14,17 +14,17 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45bf71274d8eb1039254cafe48a34587199be724
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 2edf63da0fd09f829f936b54eb088c34dfe029a1
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263500"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037001"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>应用程序代理和 Qlik Sense 
 Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保可轻松使用应用程序代理来提供对 Qlik Sense 部署的远程访问。  
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>必备条件 
 此方案的剩余部分假定你已完成以下操作：
  
 - 配置 [Qlik Sense](https://community.qlik.com/docs/DOC-19822)。 
@@ -38,7 +38,7 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 
 
 1. 以全局管理员身份登录到 Azure 门户。 
-2. 选择“Azure Active Directory” > “企业应用程序”。 
+2. 选择“Azure Active Directory” **“企业应用程序”。**  >  
 3. 单击边栏选项卡顶部的“添加”。 
 4. 选择“本地应用程序”。 
 5. 在必填的字段中填写有关新应用的信息。 参考以下指导完成设置： 
@@ -52,7 +52,8 @@ Azure Active Directory 应用程序代理和 Qlik Sense 已进行合作，确保
 ### <a name="application-2"></a>应用程序 2： 
 按照应用程序 1 的相同步骤操作，但存在以下例外： 
 
-**步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 对于 HTTPS，默认值为4244，对于 2018 年4月之前，QlikSense 版本为**4248** 。 2018年4月之后的默认 QlikSense 版本为**443** ，适用于 HTTP 的 HTTPS 和**80** 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>**步骤 10：** 请勿设置 SSO，并使 **“单一登录”处于禁用状态**
+**步骤 5**：外部 URL 现应为包含应用程序所用的身份验证端口的 QlikSense URL。 对于 HTTPS，默认值为4244，对于 2018 年4月之前，QlikSense 版本为**4248** 。 2018年4月之后的默认 QlikSense 版本为**443** ，适用于 HTTP 的 HTTPS 和**80** 。  例如：**https&#58;//demo.qlik.com:4244**</br></br>
+**步骤 #10：** 请勿设置 SSO，并使**单一登录处于禁用状态**
  
  
 ## <a name="testing"></a>测试 

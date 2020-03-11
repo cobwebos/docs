@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 13fa733417558ab8be9ff1e5a9f1e484fb40f445
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9f0a7425fc09d391828a748832f662f02c6022cf
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102950"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970786"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -31,10 +31,10 @@ ms.locfileid: "70102950"
 
 下表有助于在不同的编码速度之间进行选择时做出决定。 它还提供了几个基准案例，可[下载视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)来执行自己的测试：
 
-|RU 类型|应用场景|[7 分钟 1080p 视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的示例结果|
+|RU 类型|场景|[7 分钟 1080p 视频](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)的示例结果|
 |---|---|---|
 | **S1**|单比特率编码。 <br/>具有 SD 或更低分辨率的文件，不具有高时效性，成本低。|使用 "H264 单比特率 SD 16x9" 编码为单比特率 SD 解析|
-| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|预设为“H264 单比特率 720p”的编码大约需要 6 分钟。<br/><br/>预设为“H264 多比特率 720p”的编码大约需要 12 分钟。|
+| **S2**|单比特率和多比特率编码。<br/>SD 和 HD 编码的正常使用情况。|使用 "H264 单比特率 720p" 预设进行编码大约需6分钟。<br/><br/>使用 "H264 多比特率 720p" 预设进行编码大约需12分钟。|
 | **S3**|单比特率和多比特率编码。<br/>全高清和 4K 分辨率视频。 对时间敏感，更快的编码周转。|使用 "H264 单比特率 1080p" 预设进行编码大约需3分钟。<br/><br/>预设为“H264 多比特率 1080p”的编码大约需要 8 分钟。|
 
 ## <a name="considerations"></a>注意事项
@@ -46,10 +46,8 @@ ms.locfileid: "70102950"
 
 > [!NOTE]
 > 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
->
-> 目前, 不能使用 Azure 门户来管理其他 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 
@@ -65,15 +63,15 @@ ms.locfileid: "70102950"
 az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
 
-## <a name="billing"></a>帐单
+## <a name="billing"></a>计费
 
-根据在帐户中预配的媒体预留单位的分钟数计费。 这与帐户中是否有作业运行无关。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
+根据在帐户中预配媒体保留单位的分钟数对你进行收费。 这与你的帐户中是否存在任何作业无关。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
 
 ## <a name="next-step"></a>后续步骤
 
 [分析视频](analyze-videos-tutorial-with-api.md) 
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [配额和限制](limits-quotas-constraints.md)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

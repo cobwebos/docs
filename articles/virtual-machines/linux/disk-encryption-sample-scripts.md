@@ -2,21 +2,22 @@
 title: Azure 磁盘加密示例脚本
 description: 本文是 Microsoft Azure 适用于 Linux Vm 的磁盘加密的附录。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad0e3bbba729436c3a07f44d989a40f5349dfb3e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326350"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970514"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁盘加密示例脚本 
 
-本文提供了用于准备预加密 VHD 和其他任务的示例脚本。
+本文提供了用于准备预加密的 Vhd 和其他任务的示例脚本。
 
  
 
@@ -79,7 +80,7 @@ ms.locfileid: "74326350"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁盘加密的先决条件
 
-* VM 必须使用与 [Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vm-sizes)中列出的 OS 磁盘加密兼容的分发版 
+* VM 必须使用与[Azure 磁盘加密支持的操作系统](disk-encryption-overview.md#supported-vm-sizes)中列出的 OS 磁盘加密兼容的分发 
 * 必须从 Azure 资源管理器中的市场映像创建 VM。
 * Azure VM，至少具有 4 GB RAM（建议大小为 7 GB）。
 * （针对 RHEL 和 CentOS）禁用 SELinux。 若要禁用 SELinux，请参阅 [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)（SELinux 用户和管理员指南）中针对 VM 的“4.4.2. Disabling SELinux（4.4.2. 禁用 SELinux）”。
@@ -107,7 +108,7 @@ ms.locfileid: "74326350"
 
 5. 使用[下一部分](#monitoring-os-encryption-progress)中的说明，定期监视加密进度。
 
-6. Get-AzVmDiskEncryptionStatus 显示“VMRestartPending”后，通过登录 VM 或使用门户/PowerShell/CLI 重启 VM。
+6. 在 AzVmDiskEncryptionStatus 显示 "VMRestartPending" 后，请通过登录到 VM 或使用门户、PowerShell 或 CLI 来重新启动 VM。
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -160,7 +161,7 @@ ms.locfileid: "74326350"
   建议不要在 OS 加密正在进行时登录 VM。 仅当其他两个方法都失败时复制日志。
 
 ## <a name="prepare-a-pre-encrypted-linux-vhd"></a>准备预加密的 Linux VHD
-预加密 VHD 的准备过程根据分发版的不同而异。 我们提供了有关准备 Ubuntu 16、openSUSE 13.2 和 CentOS 7 的示例。 
+预加密 VHD 的准备过程根据分发版的不同而异。 提供有关准备 Ubuntu 16、openSUSE 13.2 和 CentOS 7 的示例。 
 
 ### <a name="ubuntu-16"></a>Ubuntu 16
 通过执行以下步骤在分发版安装过程中配置加密：
@@ -400,11 +401,11 @@ ms.locfileid: "74326350"
     ![CentOS 7 安装 - 运行 /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>将加密的 VHD 上传到 Azure 存储帐户
-启用 DM-Crypt 加密后，需要将本地加密的 VHD 上传到存储帐户。
+启用 DM Dm-crypt 加密后，需要将本地加密的 VHD 上传到存储帐户。
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
-## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密 VM 的机密上传到密钥保管库
+## <a name="upload-the-secret-for-the-pre-encrypted-vm-to-your-key-vault"></a>将预加密的 VM 的机密上传到密钥保管库
 使用 Azure AD 应用（以前的版本）加密时，必须上传前面获取的磁盘加密机密作为 Key Vault 中的机密。 Key Vault 需要具有对 Azure AD 客户端启用的磁盘加密等权限。
 
 ```powershell 
@@ -418,7 +419,7 @@ ms.locfileid: "74326350"
 ``` 
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁盘加密机密
-若要在密钥保管库中设置机密，请使用 [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 将密码编码为 base64 字符串，然后将其上传到密钥保管库。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
+若要在密钥保管库中设置机密，请使用[AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 该通行短语编码为 base64 字符串，然后上传到密钥保管库。 此外，请确保在 Key Vault 中创建机密时设置以下标记。
 
 ```powershell
 

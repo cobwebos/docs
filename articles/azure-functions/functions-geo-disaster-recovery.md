@@ -1,17 +1,15 @@
 ---
 title: Azure Functions 异地灾难恢复和高可用性
 description: 如何使用地理区域进行冗余并在 Azure Functions 中进行故障转移。
-author: wesmc7777
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: jehollan
-ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920793"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080231"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions 异地灾难恢复
 

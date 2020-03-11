@@ -1,26 +1,18 @@
 ---
 title: Microsoft Azure 上的 Cloud Foundry 入门
 description: 在 Microsoft Azure 上运行 OSS 或 Pivotal Cloud Foundry
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 2a15ffbf-9f86-41e4-b75b-eb44c1a2a7ab
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 447550d2f6bca570869c9fa93724e4dbaba02132
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ba0b4a636d8f785f1c169e4066c9cf6d25ba81db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036810"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970054"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure 上的 Cloud Foundry
 
@@ -36,7 +28,7 @@ Cloud Foundry 是一种开源平台即服务 (PaaS)，用于生成、部署和�
 
 Microsoft 通过以下社区渠道为 OSS CF 提供最大支持：
 
-- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slackhttpsslackcloudfoundryorg"></a>[Cloud Foundry Slack](https://slack.cloudfoundry.org/) 上的 bosh-azure-cpi 渠道
+- #<a name="bosh-azure-cpi-channel-on-cloud-foundry-slack"></a>[Cloud Foundry Slack](https://slack.cloudfoundry.org/) 上的 bosh-azure-cpi 渠道
 - [cf-bosh 邮件列表](https://lists.cloudfoundry.org/pipermail/cf-bosh)
 - [CPI](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/issues) 和[服务中转站](https://github.com/Azure/meta-azure-service-broker/issues)的 GitHub 问题
 

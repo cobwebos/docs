@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7018100c830f22c3ed5e924b5096911b1f8135cb
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942319"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081822"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -130,8 +130,8 @@ automl_config = AutoMLConfig(task = "classification")
 ## <a name="compute-to-run-experiment"></a>用于运行试验的计算环境
 
 接下来，确定要在何处训练模型。 自动化机器学习训练试验可在以下计算选项中运行：
-*   本地台式机或便携式计算机等本地计算机  – 如果数据集较小，并且仍处于探索阶段，则通常使用此选项。
-*   云中的远程计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
+*    本地台式机或便携式计算机等本地计算机  – 如果数据集较小，并且仍处于探索阶段，则通常使用此选项。
+*    云中的远程计算机 – [Azure 机器学习托管计算](concept-compute-target.md#amlcompute)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
 
     有关具有本地和远程计算目标的笔记本的示例，请参阅此[GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
 
@@ -147,7 +147,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 示例包括：
 
-1.  使用 AUC 加权作为主要指标的分类试验，其中 "试验超时分钟数" 设置为30分钟，2次交叉验证折叠。
+1.    使用 AUC 加权作为主要指标的分类试验，其中 "试验超时分钟数" 设置为30分钟，2次交叉验证折叠。
 
     ```python
     automl_classifier=AutoMLConfig(
@@ -159,7 +159,7 @@ automl_config = AutoMLConfig(task = "classification")
         label_column_name=label,
         n_cross_validations=2)
     ```
-2.  下面是在60分钟之后结束的回归试验集的一个示例，其中包含5次验证交叉折叠。
+2.    下面是在60分钟之后结束的回归试验集的一个示例，其中包含5次验证交叉折叠。
 
     ```python
     automl_regressor = AutoMLConfig(

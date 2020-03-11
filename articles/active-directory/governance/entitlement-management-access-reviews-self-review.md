@@ -16,12 +16,12 @@ ms.date: 11/01/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a346f48856ea33ae5e27e3537f53dfa1ca3ae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608808"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967769"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看访问包
 
@@ -37,7 +37,7 @@ Azure AD 的权利管理简化了企业如何管理对组、应用程序和 Shar
 
 1. 单击 "**查看访问权限**" 链接。
 
-1. 如果你没有收到电子邮件，你还可以直接进入 https://myaccess.microsoft.com 查找待定的访问评审。
+1. 如果你没有收到电子邮件，你还可以直接进入 https://myaccess.microsoft.com 查找待定的访问评审。  （对于美国政府版，请改用 `https://myaccess.microsoft.us`。）
 
 1. 单击左侧导航栏上的 "**访问评审**" 可查看分配给你的待定访问评审的列表。
 
@@ -50,7 +50,7 @@ Azure AD 的权利管理简化了企业如何管理对组、应用程序和 Shar
 
 1.  确定是否仍需要访问访问包。 例如，你正在处理的项目未完成，因此你仍需要访问以继续处理该项目。
 
-1.  单击“是”保留访问权限，或者单击“否”删除访问权限。
+1.  单击 **"是"** 以保留访问权限，或者单击 "**否**" 以删除访问权限。
     >[!NOTE]
     >如果你指出不再需要访问，则不会立即从访问包中删除。 当评审结束或管理员停止评审时，将从访问包中删除。
 

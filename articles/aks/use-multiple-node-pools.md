@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes 服务中使用多个节点池（AKS）
 description: 了解如何在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 services: container-service
 ms.topic: article
-ms.date: 02/14/2020
-ms.openlocfilehash: 3e0890a0e8600526da2047cabc0b50af8177ea37
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/10/2020
+ms.openlocfilehash: cf127cc75377c3ca3a18cdeaedbc1d450d6c3826
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374519"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082360"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中创建和管理群集的多个节点池
 
@@ -33,8 +33,8 @@ ms.locfileid: "78374519"
 * AKS 群集必须使用标准 SKU 负载均衡器来使用多个节点池，但基本 SKU 负载均衡器不支持此功能。
 * AKS 群集必须使用节点的虚拟机规模集。
 * 节点池的名称只能包含小写字母数字字符，且必须以小写字母开头。 对于 Linux 节点池，长度必须在1到12个字符之间，对于 Windows 节点池，长度必须介于1到6个字符之间。
-* 所有节点池必须位于同一 vnet 和子网中。
-* 在创建群集时，在创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与控制平面的版本相匹配。 使用每个节点池操作设置群集后，可以更新此设置。
+* 所有节点池必须位于同一个虚拟网络和子网中。
+* 在创建群集时，在创建多个节点池时，节点池使用的所有 Kubernetes 版本都必须与控制平面的版本相匹配。 使用每个节点池操作预配群集后，可以更新此版本。
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
@@ -195,11 +195,11 @@ AKS 群集具有两个与 Kubernetes 版本关联的群集资源对象。
 
 控件平面映射到一个或多个节点池。 升级操作的行为取决于所使用的 Azure CLI 命令。
 
-升级 AKS 控制平面需要使用 `az aks upgrade`。 这会升级群集中的控制平面版本和所有节点池。 
+升级 AKS 控制平面需要使用 `az aks upgrade`。 此命令升级群集中的控制平面版本和所有节点池。
 
 发出带 `--control-plane-only` 标志的 `az aks upgrade` 命令仅升级群集控制平面。 不会更改群集中的任何关联节点池。
 
-升级各个节点池需要使用 `az aks nodepool upgrade`。 这仅升级具有指定 Kubernetes 版本的目标节点池
+升级各个节点池需要使用 `az aks nodepool upgrade`。 此命令仅升级具有指定 Kubernetes 版本的目标节点池
 
 ### <a name="validation-rules-for-upgrades"></a>升级的验证规则
 
@@ -449,12 +449,50 @@ Events:
 
 只能在*gpunodepool*中的节点上计划已应用此破坏的箱。 任何其他 pod 都将在*nodepool1*节点池中进行计划。 如果创建其他节点池，则可以使用附加的 taints 和 tolerations 来限制可以在这些节点资源上计划的 pod。
 
-## <a name="specify-a-tag-for-a-node-pool"></a>指定节点池的标记
+## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定节点池的破坏、标签或标记
 
-可以将 Azure 标记应用于 AKS 群集中的节点池。 应用于节点池的标记将应用于节点池中的每个节点，并通过升级持久保存。 标记还适用于在 scale out 操作期间添加到节点池的新节点。 添加标记有助于处理策略跟踪或成本估算等任务。
+创建节点池时，可以将 taints、标签或标记添加到该节点池。 添加破坏、标签或标记时，该节点池中的所有节点也会获得该破坏、标签或标记。
+
+若要创建具有破坏的节点池，请使用[az aks nodepool add][az-aks-nodepool-add]。 指定名称*taintnp* ，并使用 `--node-taints` 参数为破坏指定*sku = gpu： NoSchedule* 。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name taintnp \
+    --node-count 1 \
+    --node-taints sku=gpu:NoSchedule \
+    --no-wait
+```
+
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*taintnp*正在*创建*具有指定*nodeTaints*的节点：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "taintnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeTaints":  {
+      "sku": "gpu:NoSchedule"
+    },
+    ...
+  },
+ ...
+]
+```
+
+破坏信息显示在 Kubernetes 中，用于处理节点的计划规则。
 
 > [!IMPORTANT]
-> 若要使用节点池标记，需要*aks* CLI 扩展版本0.4.29 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
+> 若要使用节点池标签和标记，需要*aks* CLI 扩展版本0.4.35 或更高版本。 使用[az extension add][az-extension-add]命令安装*aks-preview* Azure CLI 扩展，然后使用[az extension update][az-extension-update]命令检查是否有任何可用的更新：
 > 
 > ```azurecli-interactive
 > # Install the aks-preview extension
@@ -464,7 +502,51 @@ Events:
 > az extension update --name aks-preview
 > ```
 
-使用[az aks 节点池 add][az-aks-nodepool-add]创建节点池。 指定名称*tagnodepool* ，并使用 `--tag` 参数为标记指定*部门 = IT*和*costcenter = 9999* 。
+你还可以在创建节点池期间向节点池添加标签。 在节点池中设置的标签将添加到节点池中的每个节点。 这些[标签在 Kubernetes 中可见][kubernetes-labels]，用于处理节点的计划规则。
+
+若要创建包含标签的节点池，请使用[az aks nodepool add][az-aks-nodepool-add]。 指定名称*labelnp* ，并使用 `--labels` 参数为标签指定*部门 = IT*和*costcenter = 9999* 。
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name labelnp \
+    --node-count 1 \
+    --labels dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> 只能在创建节点池期间为节点池设置标签。 标签还必须是键/值对，并且具有[有效的语法][kubernetes-label-syntax]。
+
+以下来自[az aks nodepool list][az-aks-nodepool-list]命令的示例输出显示*labelnp*正在*创建*具有指定*nodeLabels*的节点：
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "labelnp",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "nodeLabels":  {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
+可以将 Azure 标记应用于 AKS 群集中的节点池。 应用于节点池的标记将应用于节点池中的每个节点，并通过升级持久保存。 标记还适用于在扩展操作期间添加到节点池的新节点。 添加标记有助于处理策略跟踪或成本估算等任务。
+
+使用[az aks nodepool add][az-aks-nodepool-add]创建节点池。 指定名称*tagnodepool* ，并使用 `--tag` 参数为标记指定*部门 = IT*和*costcenter = 9999* 。
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -617,13 +699,13 @@ az group deployment create \
 > [!WARNING]
 > 在为每个节点分配公共 IP 的预览过程中，由于可能存在与 VM 预配冲突的负载均衡器规则，因此不能将其与*AKS 中的标准负载均衡器 SKU*一起使用。 由于此限制，此预览功能不支持 Windows 代理池。 在预览中，如果需要为每个节点分配一个公共 IP，则必须使用*基本负载均衡器 SKU* 。
 
-AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下，可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 为此，可以注册单独的预览功能 "节点公共 IP （预览版）"。
+AKS 节点不需要自己的公共 IP 地址进行通信。 但某些情况下，可能需要节点池中的节点具有其自己的公共 IP 地址。 例如游戏，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册单独的预览功能 "节点公共 IP （预览版）" 来实现。
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并将 "布尔值" 属性 `enableNodePublicIP` 添加到 "agentPoolProfiles"。 将值设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 这只是一个创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
+注册成功后，按照[上述](#manage-node-pools-using-a-resource-manager-template)相同说明部署 Azure 资源管理器模板，并将 "布尔值" 属性 `enableNodePublicIP` 添加到 "agentPoolProfiles"。 将值设置为 `true` 默认情况下，如果未指定，则将其设置为 `false`。 此属性只是创建时的属性，需要的最低 API 版本为2019-06-01。 这可同时适用于 Linux 和 Windows 节点池。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -652,6 +734,8 @@ az group delete --name myResourceGroup --yes --no-wait
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-taint]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#taint
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubernetes-labels]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+[kubernetes-label-syntax]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set
 
 <!-- INTERNAL LINKS -->
 [aks-windows]: windows-container-cli.md

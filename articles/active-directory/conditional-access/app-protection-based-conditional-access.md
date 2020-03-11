@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8cdb32e04f9ba1274291430ac230107f3150c6
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298371"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080067"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>如何：要求使用条件性访问的应用保护策略和批准的客户端应用进行云应用访问
 
@@ -30,6 +30,9 @@ ms.locfileid: "78298371"
 在条件性访问中，这些客户端应用被认为是使用应用保护策略保护的。 有关应用保护策略的详细信息，请参阅[应用保护策略概述](/intune/apps/app-protection-policy)
 
 有关符合条件的客户端应用的列表，请参阅[应用保护策略要求](concept-conditional-access-grant.md)。
+
+> [!NOTE]
+>    在策略中使用或子句，以使用户能够利用支持 "**需要应用保护策略**" 或 "**需要批准的客户端应用**授予控制" 的应用。 有关哪些应用支持 "**需要应用保护策略**" 授权控制的详细信息，请参阅[应用保护策略要求](concept-conditional-access-grant.md)。
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>方案1： Office 365 应用需要具有应用保护策略的已批准应用
 
@@ -56,7 +59,7 @@ ms.locfileid: "78298371"
 1. 在 "**访问控制**" > **Grant**"下，选择以下选项：
    - **需要批准的客户端应用**
    - **需要应用保护策略（预览）**
-   - **需要所有选定控件**
+   - “需要某一已选控件”
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以创建和启用策略。
 
@@ -75,7 +78,7 @@ ms.locfileid: "78298371"
    1. **客户端应用（预览）** ：
       1. 将 "**配置**" 设置为 **"是"** 。
       1. 选择 "**移动应用和桌面客户端**和**Exchange ActiveSync 客户端**"。
-1. 在 "**访问控制**" > **grant**"下，选择"**授予访问权限**，**需要批准的客户端应用**"，然后选择"**选择**
+1. 在 "**访问控制**" > **grant**"下，选择"**授予访问权限**，**需要应用保护策略**"，然后选择"**选择**"。
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以创建和启用策略。
 
@@ -108,7 +111,7 @@ ms.locfileid: "78298371"
 1. 在 "**访问控制**" > **Grant**"下，选择以下选项：
    - **需要批准的客户端应用**
    - **需要应用保护策略（预览）**
-   - **需要所有选定控件**
+   - “需要某一已选控件”
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以创建和启用策略。
 
@@ -125,7 +128,7 @@ ms.locfileid: "78298371"
    1. **客户端应用（预览）** ：
       1. 将 "**配置**" 设置为 **"是"** 。
       1. 选择 "**移动应用和桌面客户端**和**Exchange ActiveSync 客户端**"。
-1. 在 "**访问控制**" > **grant**"下，选择"**授予访问权限**，**需要批准的客户端应用**"，然后选择"**选择**
+1. 在 "**访问控制**" > **grant**"下，选择"**授予访问权限**，**需要应用保护策略**"，然后选择"**选择**"。
 1. 确认设置并将 "**启用策略**" 设置为 **"开"** 。
 1. 选择 "**创建**" 以创建和启用策略。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f038868e80b600c805a1f33a54f9d0032e81dab8
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933188"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967270"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中为 SAML 令牌颁发者定义技术配置文件
 
@@ -70,6 +70,12 @@ CryptographicKeys 元素包含以下属性：
 ## <a name="session-management"></a>会话管理
 
 若要在信赖方应用程序之间配置 Azure AD B2C SAML 会话，`UseTechnicalProfileForSessionManagement` 元素的属性，对[SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) SSO 会话的引用。
+
+## <a name="next-steps"></a>后续步骤
+
+请参阅以下文章，了解有关使用 SAML 颁发者技术配置文件的示例：
+
+- [在 Azure AD B2C 中注册 SAML 应用程序](connect-with-saml-service-providers.md)
 
 
 

@@ -1,21 +1,21 @@
 ---
 title: Azure Application Insights | Microsoft Docs
-description: ''
+description: 将 Application Insights 中的数据与其他数据集（如数据扩充或查找表、非 Application Insights 数据源和自定义数据）关联。
 ms.topic: conceptual
 author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 75c5bd5bd6a7ded8679c30446a45809a1ea4406a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671998"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082755"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>将 Application Insights 数据与自定义数据源相关联
 
-Application Insights 收集多种不同的数据类型：异常、跟踪、页面视图等。 虽然通常情况下这对调查应用程序的性能、可靠性和使用情况来说已足够，但有时候，将存储在 Application Insights 中的数据与其他完全自定义的数据集相关联会很有用。
+Application Insights 收集多种不同的数据类型：异常、跟踪、页面视图等。 虽然这通常足以调查应用程序的性能、可靠性和用法，但在某些情况下，将 Application Insights 中存储的数据与其他完全自定义的数据集相关联是非常有用的。
 
 下述情况可能需要自定义数据：
 
@@ -25,17 +25,17 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>如何将自定义数据与 Application Insights 数据相关联 
 
-由于 Application Insights 由强大的 Azure Monitor 日志平台提供支持，因此我们可以充分利用 Azure Monitor 来引入数据。 然后，我们会使用“join”运算符来编写查询，将此自定义数据与 Azure Monitor 日志中提供的数据相关联。 
+由于 Application Insights 由强大的 Azure Monitor 日志平台提供支持，因此我们可以充分利用 Azure Monitor 来引入数据。 接下来，我们将使用 "join" 运算符编写查询，该运算符将此自定义数据与我们在 Azure Monitor 日志中可用的数据相关联。 
 
 ## <a name="ingesting-data"></a>引入数据
 
 在此部分，我们会讨论如何将数据引入 Azure Monitor 日志中。
 
-如果还没有 Log Analytics 工作区，请预配一个新的，只需根据[这些说明](../learn/quick-collect-azurevm.md)操作并包括“创建工作区”步骤即可。
+如果尚未安装，请按照[这些说明进行操作](../learn/quick-collect-azurevm.md)，预配一个新的 Log Analytics 工作区，其中包括 "创建工作区" 步骤。
 
 开始将日志数据发送到 Azure Monitor。 存在多个选项：
 
-- 对于同步机制，可以直接调用[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)，也可以使用逻辑应用连接器 - 只需查找“Azure Log Analytics”并选取“发送数据”选项即可：
+- 对于同步机制，可以直接调用[数据收集器 API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) ，也可以使用我们的逻辑应用连接器–只需查找 "Azure Log Analytics" 并选择 "发送数据" 选项：
 
   ![“选择操作”的屏幕截图](./media/custom-data-correlation/01-logic-app-connector.png)  
 
@@ -45,7 +45,7 @@ Application Insights 收集多种不同的数据类型：异常、跟踪、页�
 
 Application Insights 基于 Azure Monitor 日志平台。 因此，我们可以使用[跨资源联接](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search)将已引入到 Azure Monitor 中的任何数据与 Application Insights 数据相关联。
 
-例如，可以将实验室库存和位置引入名为“myLA”的 Log Analytics 工作区的名为“LabLocations_CL”的表中。 然后，如果我们需要查看在名为“myAI”的 Application Insights 应用中跟踪的请求，并将处理请求的计算机名称与存储在前述自定义表中的这些计算机的位置相关联，则可在 Application Insights 或 Azure Monitor 上下文中运行以下查询：
+例如，我们可以将实验室清单和位置引入到名为 "myLA" 的 Log Analytics 工作区中名为 "LabLocations_CL" 的表中。 如果接下来，我们想要查看在名为 "myAI" 的 Application Insights 应用中跟踪的请求，并将为请求提供服务的计算机名称与之前提到的自定义表中存储的这些计算机的位置相关联，我们可以从Application Insights 或 Azure Monitor 上下文：
 
 ```
 app('myAI').requests

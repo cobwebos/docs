@@ -2,25 +2,26 @@
 title: 使用 Azure AD 应用 Linux IaaS VM 的 Azure 磁盘加密（以前的版本）
 description: 本文提供有关如何为 Linux IaaS VM 启用 Microsoft Azure 磁盘加密的说明。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: d41f2138a453e4a34354c10bbebad41724a18d1d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457485"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970610"
 ---
-# <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>在 Linux VM 上使用 Azure AD 启用 Azure 磁盘加密（以前版本）
+# <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>使用 Linux Vm 上的 Azure AD 启用 Azure 磁盘加密（以前的版本）
 
 新版本的 Azure 磁盘加密消除了提供 Azure Active Directory （Azure AD）应用程序参数以启用 VM 磁盘加密的要求。 使用新版本，在执行启用加密步骤时，不再需要提供 Azure AD 凭据。 在不使用新版本的情况下，必须使用 Azure AD 的应用程序参数对所有新的 Vm 进行加密。 有关如何使用新版本启用 VM 磁盘加密的说明，请参阅适用于[LINUX vm 的 Azure 磁盘加密](disk-encryption-linux.md)。 已使用 Azure AD 应用程序参数加密的 VM 仍受支持，应继续使用 AAD 语法进行维护。
 
-您可以启用多种磁盘加密方案，步骤可能因情况而异。 以下部分详细介绍了适用于 Linux 基础结构即服务（IaaS） Vm 的更多方案。 只能对具有[支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)的虚拟机应用磁盘加密。 还必须满足以下先决条件：
+您可以启用多种磁盘加密方案，步骤可能因情况而异。 以下部分详细介绍了适用于 Linux 基础结构即服务（IaaS） Vm 的更多方案。 你只能对[受支持的 VM 大小和操作系统](disk-encryption-overview.md#supported-vms-and-operating-systems)的虚拟机应用磁盘加密。 还必须满足以下先决条件：
 
-- [VM 的其他要求](disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Vm 的其他要求](disk-encryption-overview.md#supported-vms-and-operating-systems)
 - [网络和组策略](disk-encryption-overview-aad.md#networking-and-group-policy)
 - [加密密钥存储要求](disk-encryption-overview-aad.md#encryption-key-storage-requirements)
 
@@ -35,7 +36,7 @@ ms.locfileid: "74457485"
 
  
 
-## <a name="bkmk_RunningLinux"></a>在现有或正在运行的 IaaS Linux VM 上启用加密
+## <a name="bkmk_RunningLinux"></a>在现有或正在运行的 IAAS Linux VM 上启用加密
 
 在此方案中，可以通过使用 Azure 资源管理器模板、PowerShell cmdlet 或 Azure CLI 命令来启用加密。 
 
@@ -78,9 +79,9 @@ ms.locfileid: "74457485"
      ```
 
 ### <a name="bkmk_RunningLinuxPSH"></a>使用 PowerShell 在现有或正在运行的 Linux VM 上启用加密
-使用 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet 在 Azure 中运行的 IaaS 虚拟机上启用加密。 在对磁盘进行加密之前，拍摄[快照](snapshot-copy-managed-disk.md)或使用[AZURE 备份](../../backup/backup-azure-vms-encryption.md)创建 VM 的备份。 已在 PowerShell 脚本中指定 -skipVmBackup 参数以加密正在运行的 Linux VM。
+使用[AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Cmdlet 在 Azure 中正在运行的 IaaS 虚拟机上启用加密。 在对磁盘进行加密之前，拍摄[快照](snapshot-copy-managed-disk.md)或使用[AZURE 备份](../../backup/backup-azure-vms-encryption.md)创建 VM 的备份。 已在 PowerShell 脚本中指定-skipVmBackup 参数，用于对正在运行的 Linux VM 进行加密。
 
-- **使用客户端机密对正在运行的 VM 进行加密：** 以下脚本将初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。 修改 -VolumeType 参数，以指定要加密哪些磁盘。
+- **使用客户端机密对正在运行的 VM 进行加密：** 以下脚本将初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。 修改-将 volumetype 参数，以指定要加密哪些磁盘。
 
      ```azurepowershell
          $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -96,7 +97,7 @@ ms.locfileid: "74457485"
     
          Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType '[All|OS|Data]' -SequenceVersion $sequenceVersion -skipVmBackup;
      ```
-- **使用 KEK 加密正在运行的 VM 以包装客户端密钥：** Azure 磁盘加密允许你指定密钥保管库中的现有密钥，以包装启用加密时生成的磁盘加密机密。 指定密钥加密密钥时，Azure 磁盘加密将使用该密钥在写入到密钥保管库之前包装加密机密。 修改 -VolumeType 参数，以指定要加密哪些磁盘。 
+- **使用 KEK 加密正在运行的 VM 以包装客户端密钥：** Azure 磁盘加密允许你指定密钥保管库中的现有密钥，以包装启用加密时生成的磁盘加密机密。 指定密钥加密密钥时，Azure 磁盘加密将使用该密钥在写入到密钥保管库之前包装加密机密。 修改-将 volumetype 参数，以指定要加密哪些磁盘。 
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';
@@ -131,7 +132,7 @@ ms.locfileid: "74457485"
      ```
 
 
-### <a name="bkmk_RunningLinux"></a>使用模板在现有或正在运行的 IaaS Linux VM 上启用加密
+### <a name="bkmk_RunningLinux"></a>使用模板在现有或正在运行的 IAAS Linux VM 上启用加密
 
 可通过[资源管理器模板模板](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) 在 Azure 中为现有或正在运行的 IaaS Linux VM 启用磁盘加密。
 
@@ -163,7 +164,7 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
 > 当 VM 的数据卷上需要数据时，不应使用 EncryptFormatAll。 可以通过卸载来从加密中排除磁盘。 首先尝试测试 VM 上的 EncryptFormatAll 参数，了解功能参数及其含义，然后再在生产 VM 上尝试该参数。 EncryptFormatAll 选项设置数据磁盘的格式，因此，其上的所有数据都将丢失。 在继续操作之前，请验证要排除的所有磁盘是否均已正确卸载。 </br></br>
  >如果在更新加密设置时设置此参数，则可能会在实际加密之前导致重新启动。 在这种情况下，还需要从 fstab 文件中删除不想格式化的磁盘。 同样，在启动加密操作之前，应将需要加密格式的分区添加到 fstab 文件。 
 
-### <a name="bkmk_EFACriteria"></a>EncryptFormatAll 的条件
+### <a name="bkmk_EFACriteria"></a> EncryptFormatAll 条件
 参数会遍历所有分区，并对它们进行加密，只要它们满足以下*所有*条件： 
 - 不是根/OS/启动分区
 - 尚未加密
@@ -174,7 +175,7 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
 
 加密组成 RAID 或 LVM 卷而不是 RAID 或 LVM 卷的磁盘。
 
-### <a name="bkmk_EFATemplate"></a>结合模板使用 EncryptFormatAll 参数
+### <a name="bkmk_EFATemplate"></a>在模板中使用 EncryptFormatAll 参数
 若要使用 EncryptFormatAll 选项，请使用任何已预先存在的 Azure 资源管理器模板来加密 Linux VM，并更改 AzureDiskEncryption 资源的**EncryptionOperation**字段。
 
 1. 例如，使用[资源管理器模板加密正在运行的 Linux IaaS VM](https://github.com/vermashi/azure-quickstart-templates/tree/encrypt-format-running-linux-vm/201-encrypt-running-linux-vm)。 
@@ -183,10 +184,10 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
 4. 选择订阅、资源组、资源组位置、其他参数、法律条款和协议。 选择 "**创建**" 以在现有或正在运行的 IaaS VM 上启用加密。
 
 
-### <a name="bkmk_EFAPSH"></a>结合 PowerShell cmdlet 使用 EncryptFormatAll 参数
-结合 EncryptFormatAll 参数使用 [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet。
+### <a name="bkmk_EFAPSH"></a>将 EncryptFormatAll 参数与 PowerShell cmdlet 一起使用
+将[AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Cmdlet 与 EncryptFormatAll 参数一起使用。
 
-**使用客户端机密和 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本将初始化变量，并使用 EncryptFormatAll 参数运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。
+**使用客户端机密和 EncryptFormatAll 加密正在运行的 VM：** 例如，以下脚本将初始化变量，并使用 EncryptFormatAll 参数运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyKeyVaultResourceGroup、MyVirtualMachineResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。
   
    ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -202,7 +203,7 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
    ```
 
 
-### <a name="bkmk_EFALVM"></a>结合逻辑卷管理器 (LVM) 使用 EncryptFormatAll 参数 
+### <a name="bkmk_EFALVM"></a>将 EncryptFormatAll 参数与逻辑卷管理器（LVM）配合使用 
 我们建议采用 LVM-on-crypt 设置。 对于以下所有示例，请将设备路径和装载点替换为你的用例。 可按如下所述完成此设置：
 
 - 添加构成 VM 的数据磁盘。
@@ -220,7 +221,7 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
          
             `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
         
-    4. 结合 -EncryptFormatAll 运行 Set-AzVMDiskEncryptionExtension PowerShell cmdlet，以加密这些磁盘。
+    4. 通过-EncryptFormatAll 运行 AzVMDiskEncryptionExtension PowerShell cmdlet 以加密这些磁盘。
              ```azurepowershell-interactive
              Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
              ```
@@ -229,7 +230,7 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
 
 
 
-## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥新建的 IaaS VM
+## <a name="bkmk_VHDpre"></a>通过客户加密的 VHD 和加密密钥创建的新 IaaS vm
 在此方案中，可以通过使用资源管理器模板、PowerShell cmdlet 或 CLI 命令启用加密。 以下部分详细介绍了资源管理器模板和 CLI 命令。 
 
 参考附录中的说明来准备可在 Azure 中使用的预加密映像。 创建映像后，可使用下一部分中的步骤创建加密的 Azure VM。
@@ -243,8 +244,8 @@ EncryptFormatAll 参数可减少 Linux 数据磁盘加密的时间。 满足特�
 
 
 
-### <a name="bkmk_VHDprePSH"></a>使用 Azure PowerShell 加密包含预加密 VHD 的 IaaS VM 
-可以使用 PowerShell cmdlet [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples) 在加密的 VHD 上启用磁盘加密。 下面的示例提供了一些常见参数。 
+### <a name="bkmk_VHDprePSH"></a>使用 Azure PowerShell 通过预加密 Vhd 对 IaaS vm 进行加密 
+可以使用 PowerShell cmdlet [AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk#examples)在加密的 VHD 上启用磁盘加密。 下面的示例提供了一些常见参数。 
 
 ```powershell
 $VirtualMachine = New-AzVMConfig -VMName "MySecureVM" -VMSize "Standard_A1"
@@ -276,7 +277,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
  使用 Powershell 为 Linux 加密新磁盘时，需要指定新的序列版本。 序列版本必须唯一。 下面的脚本为序列版本生成 GUID。 
  
 
--  **使用客户端机密对正在运行的 VM 进行加密：** 以下脚本将初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、My-AAD-client-ID 和 My-AAD-client-secret 替换为自己的值。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果以前使用 "OS" 或 "全部" 卷类型对 VM 进行了加密，则应将-将 volumetype 参数更改为 "全部"，以便包括 OS 和新的数据磁盘。
+-  **使用客户端机密对正在运行的 VM 进行加密：** 以下脚本将初始化变量并运行 AzVMDiskEncryptionExtension cmdlet。 资源组、VM、密钥保管库、Azure AD 应用和客户端密码应已创建为必备组件。 将 MyVirtualMachineResourceGroup、MyKeyVaultResourceGroup、MySecureVM、MySecureVault、我的 AAD 客户端 ID 和你的 AAD 客户端密码替换为你的值。 -VolumeType 参数设置为数据磁盘而不是 OS 磁盘。 如果以前使用 "OS" 或 "全部" 卷类型对 VM 进行了加密，则应将-将 volumetype 参数更改为 "全部"，以便包括 OS 和新的数据磁盘。
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';
@@ -340,4 +341,4 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 ## <a name="next-steps"></a>后续步骤
 
 - [适用于 Linux 的 Azure 磁盘加密概述](disk-encryption-overview-aad.md)
-- [使用 Azure AD 创建和配置用于 Azure 磁盘加密的密钥保管库（以前版本）](disk-encryption-key-vault-aad.md)
+- [使用 Azure AD 为 Azure 磁盘加密创建和配置密钥保管库（以前的版本）](disk-encryption-key-vault-aad.md)

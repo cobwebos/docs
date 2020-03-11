@@ -1,30 +1,22 @@
 ---
 title: 准备用于云初始化的 Azure VM 映像
 description: 如何准备一个与 cloud-init 配合用来完成部署的现有 Azure VM 映像
-services: virtual-machines-linux
-documentationcenter: ''
 author: danis
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: a75bceebe584522ee999f86664b8afb9fa00f17b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 73df3a12ebea3b94563d02eda8f1211401d1ae3f
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036753"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969180"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>准备与 cloud-init 配合使用的现有 Linux Azure VM 映像
-本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 配置资源后，这些 cloud-init 脚本将在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
+本文介绍如何选择一个现有的 Azure 虚拟机，使其准备好重新部署并可使用 cloud-init。 生成的映像可用于部署新的虚拟机或虚拟机规模集 - 然后，可以在部署时通过 cloud-init 进一步对其进行自定义。  Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 本文档假设已有一个运行受支持 Linux 操作系统版本的 Azure 虚拟机。 已根据需要配置该计算机，已安装所需的所有模块，已处理所需的所有更新并已对其进行测试，确保其满足要求。 
 
 ## <a name="preparing-rhel-76--centos-76"></a>准备 RHEL 7.6/CentOS 7。6
@@ -68,7 +60,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-使用所选的编辑器创建包含以下行的新文件 `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`，以便只允许将 Azure 用作 Azure Linux 代理的数据源：
+使用所选的编辑器通过以下行，仅允许 azure 作为 Azure Linux 代理的数据源：创建新文件 `/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`：
 
 ```bash
 # Azure Data Source config
@@ -127,7 +119,7 @@ az image create --resource-group myResourceGroup --name myCloudInitImage --sourc
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关配置更改的其他 cloud-init 示例，请参阅以下内容：
+有关配置更改的其他 cloud-init 示例，请参阅以下文章：
  
 - [向 VM 添加其他 Linux 用户](cloudinit-add-user.md)
 - [运行包管理器以在首次启动时更新现有包](cloudinit-update-vm.md)

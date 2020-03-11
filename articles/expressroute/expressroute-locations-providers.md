@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: d6dba6f68238327c1c5c51c75cc5a65ceec2838f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: aa0deaf00a5121d50a2621d146ac83f97ee45df4
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942369"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081703"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -95,7 +95,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | 阿拉伯联合酋长国北部 | 不适用 | Etisalat 阿拉伯联合酋长国 |
 | **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯联合酋长国北部 | 不适用 | du datamena，Megaport，橙色，Orixcom |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北欧 | 10G，100G | Colt、eir、Equinix、euNetworks、Interxion、Megaport |
-| **法兰克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G，100G | Colt，CIX，GEANT，Interxion，Megaport，橙色，Telia 载波 |
+| **法兰克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G，100G | CenturyLink Cloud Connect、Colt、CIX、GEANT、Interxion、Megaport、橙色、Telia 运营商 |
 | **Geneva** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G，100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 不适用 | Aryaka networks、网络，英国电信，CenturyLink 云连接，首席电信，中国电信全局，Equinix，InterCloud，Megaport，NTT 通信，橙色，PCCW 全局有限，Tata 通信，Telia 载波，Verizon |
 | **香港 Kong2** | [万像素-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 不适用 | 10G | |

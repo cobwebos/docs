@@ -2,17 +2,18 @@
 title: Linux Vm 上的 Azure 磁盘加密方案
 description: 本文介绍如何针对各种方案启用适用于 Linux Vm 的 Microsoft Azure 磁盘加密
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4ccb4409bd9a41f390668cb94ef91b1b565421
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19dcfb96f29939fd92f49ba288ddb6d9264e0f9a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358806"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970596"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux Vm 上的 Azure 磁盘加密方案
 
@@ -193,7 +194,7 @@ key-encryption-key 参数值的语法是 KEK 的完整 URI，其格式为： htt
 
 下表列出了现有的或正在运行的 VM 的资源管理器模板参数：
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | vmName | 运行加密操作的 VM 的名称。 |
 | KeyVaultName | 加密密钥应上传到的密钥保管库的名称。 你可以使用 cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` 或 Azure CLI 命令 `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`获取它。|

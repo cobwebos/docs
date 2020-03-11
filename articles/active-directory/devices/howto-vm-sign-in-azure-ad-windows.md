@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fe33f78b96dbfe780c94fbddfc5c8821148279
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672595"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080090"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -152,6 +152,7 @@ az vm extension set \
 
 > [!NOTE]
 > 若要允许用户通过 RDP 登录到 VM，你必须分配 "虚拟机管理员登录名" 或 "虚拟机用户登录" 角色。 为 VM 分配所有者或参与者角色的 Azure 用户不会自动拥有通过 RDP 登录到 VM 的权限。 这是为了提供控制虚拟机的一组人员与可访问虚拟机的一组用户之间经过审核的隔离。
+
 可以通过多种方式为 VM 配置角色分配：
 
 - 使用 Azure AD 门户体验
@@ -194,7 +195,7 @@ az role assignment create \
 - [使用 RBAC 和 Azure CLI 管理对 Azure 资源的访问](/azure/role-based-access-control/role-assignments-cli)
 - [使用 RBAC 和 Azure 门户管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-portal)
 - [使用 RBAC 和 Azure PowerShell 管理对 Azure 资源的访问权限](/azure/role-based-access-control/role-assignments-powershell)。
-'
+
 ## <a name="using-conditional-access"></a>使用条件性访问
 
 在授权访问通过 Azure AD 登录启用的 Azure 中的 Windows Vm 之前，可以强制实施条件访问策略（如多重身份验证或用户登录风险检查）。 若要应用条件性访问策略，你必须从 "云应用" 或 "操作" 分配选项中选择 "Azure Windows VM 登录" 应用，然后将登录风险用作条件，并/或需要多重身份验证作为授权访问控制。 
@@ -363,4 +364,5 @@ az role assignment create \
 请在[Azure AD 反馈论坛](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上分享有关此预览功能的反馈或报告问题。
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) "
+
+有关 Azure Active Directory 的详细信息，请参阅[什么是 Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)

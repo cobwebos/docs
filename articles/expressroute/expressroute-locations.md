@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: f46dfdb0b92e2a5c5f9b98ac93889ca49bd8c471
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: cd2562974a689ecbca0d7016d3d970895ea211d9
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942352"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081754"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -88,7 +88,7 @@ ExpressRoute 位置（有时称为 "对等互连位置" 或 "满足我的位置"
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |支持 |支持 |阿姆斯特丹、香港特别行政区、约翰内斯堡、伦敦、纽波特（威尔士）、圣保罗、硅谷、新加坡、悉尼、东京、华盛顿特区 |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |支持 |支持 |迈阿密 |
 | **CDC** | 支持 | 支持 | 堪培拉、堪培拉 2 |
-| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |Amsterdam2，芝加哥，香港特别行政区，拉斯维加斯，London2，纽约，巴黎，San Antonio，硅谷，东京，多伦多，华盛顿特区，华盛顿特区 |
+| **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |支持 |支持 |Amsterdam2，芝加哥，法兰克福，香港特别行政区，拉斯维加斯，London2，纽约，巴黎，San Antonio，硅谷，东京，多伦多，华盛顿特区，华盛顿特区 |
 | **[首席电信](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |支持 |支持 |香港特别行政区，台北 |
 | **中国移动国际** |支持 |支持 | 新加坡 |
 | **China Telecom Global** |支持 |支持 |香港特别行政区 |

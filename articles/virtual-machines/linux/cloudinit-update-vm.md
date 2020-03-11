@@ -1,24 +1,17 @@
 ---
 title: 在 Azure 上的 Linux VM 中使用云初始化
 description: 在使用 Azure CLI 创建期间如何使用 cloud-init 在 Linux VM 中更新和安装包
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
-ms.openlocfilehash: 7bb48ec11ec042f021203c1716968daa9ab45047
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973129"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969152"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>使用 cloud-init 在 Azure 的 Linux VM 中更新和安装包
 本文介绍如何在 Azure 中的预配时使用[cloud init](https://cloudinit.readthedocs.io)在 Linux 虚拟机（VM）或虚拟机规模集上更新包。 Azure 预配资源后，这些 cloud-init 脚本即会在第一次启动时运行。 有关 cloud-init 如何在 Azure 以及受支持的 Linux 发行版中本机工作的详细信息，请参阅 [cloud-init 概述](using-cloud-init.md)
@@ -64,7 +57,7 @@ ssh <publicIpAddress>
 sudo yum update
 ```
 
-由于 cloud-init 在启动时已检查和安装更新，因此，应没有要应用的其他更新。  你可以通过运行 `yum history` 来查看更新过程、更改的程序包数量以及 `httpd` 的安装，并查看类似于以下内容的输出。
+由于 cloud-init 在启动时已检查和安装更新，因此，应没有要应用的其他更新。  你可以通过运行 `httpd` 来查看更新过程、更改的程序包数量以及 `yum history` 的安装，并查看类似于以下内容的输出。
 
 ```bash
 Loaded plugins: fastestmirror, langpacks

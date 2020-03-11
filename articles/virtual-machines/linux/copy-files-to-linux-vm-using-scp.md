@@ -1,26 +1,19 @@
 ---
 title: 通过 SCP 将文件移入和移出 Azure Linux Vm
 description: 使用 SCP 和 SSH 密钥对安全地将文件移到 Azure Linux VM 和从 Azure Linux VM 移动文件。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: d78a8e59a55718048df2022cec75c7a2b56f1a6b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036599"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969607"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 将文件移到 Linux VM 和从 Linux VM 移动文件
 
@@ -72,7 +65,7 @@ scp ~/.azure/config azureuser@myserver.eastus.cloudapp.com:/home/azureuser/confi
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` cli 标志指示 SCP 从命令中列出目录的时点起以递归方式复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
+`-r` 标志指示 SCP 从命令中列出的目录点以递归方式复制文件和目录。  另请注意，命令行语法类似于 `cp` 复制命令。
 
 ## <a name="next-steps"></a>后续步骤
 

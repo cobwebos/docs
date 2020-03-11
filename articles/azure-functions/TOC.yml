@@ -138,7 +138,7 @@
       displayName: best practice
     - name: 存储注意事项
       href: storage-considerations.md
-      displayName: 'encryption, keys'
+      displayName: 'encryption, keys, mount, files'
     - name: Functions 代理
       href: functions-proxies.md
     - name: 网络选项

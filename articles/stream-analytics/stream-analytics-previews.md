@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 2/1/2020
-ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 3/9/2020
+ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983543"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969618"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure 流分析预览功能
 
@@ -33,13 +33,6 @@ ms.locfileid: "76983543"
 
 在云中或 IoT Edge 上创建流分析模块的开发人员可以编写或重复C#使用自定义函数，并通过[用户定义函数](stream-analytics-edge-csharp-udf-methods.md)直接在查询中调用它们。
 
-### <a name="managed-identity-authentication-with-power-bi"></a>Power BI 的托管标识身份验证
-
-Azure 流分析提供针对动态仪表板建设体验的 Power BI 的基于托管标识身份验证的完全支持。
-
-### <a name="anomaly-detection"></a>异常检测
-
-Azure 流分析机器学习模型除了双向、速度缓慢和慢速负面趋势检测以外，还支持*峰值*和*dip*检测。 有关详细信息，请访问[Azure 流分析中的异常情况检测](stream-analytics-machine-learning-anomaly-detection.md)。
 
 ### <a name="debug-query-steps-in-visual-studio"></a>在 Visual Studio 中调试查询步骤
 

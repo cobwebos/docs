@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661288"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080302"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -279,6 +279,9 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的一项功能，如[Azu
 每 1 TiB 的卷配额的[Azure NetApp 文件吞吐量限制](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)如下：
 - 高级存储层-64 MiB/秒  
 - 超存储层-128 MiB/秒  
+
+> [!IMPORTANT]
+> 不依赖于在单个 NFS 卷上部署的容量（吞吐量）应达到平稳虚拟机中的使用者所利用的 1.2-1.4 GB/秒带宽。 这与和产品/服务的基础体系结构以及有关 NFS 的相关 Linux 会话限制相关。 针对[Azure NetApp 文件的性能基准测试结果](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-performance-benchmarks)一文中所述的性能和吞吐量数字是针对包含多个客户端 vm 的一个共享 NFS 卷执行的，因此具有多个会话。 这种情况不同于我们在 SAP 中衡量的方案。 从单个 VM 对 NFS 卷衡量吞吐量。 托管在和上。
 
 为了满足数据和日志的 SAP 最小吞吐量要求，并根据 `/hana/shared`的准则，建议的大小如下所示：
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7265cd0e2d292a2d8cc7273d2746348629ec4a06
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390787"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082546"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安装和运行语音服务容器（预览）
 
@@ -28,8 +28,8 @@ ms.locfileid: "78390787"
 
 | 函数 | 功能 | 最近 |
 |--|--|--|
-| 语音转文本 | 转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
-| 自定义语音到文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.0.0 |
+| 语音转文本 | 转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.1.1 |
+| 自定义语音到文本 | 使用[自定义语音门户](https://speech.microsoft.com/customspeech)中的自定义模型，转录连续实时语音或批处理音频记录到带有中间结果的文本中。 | 2.1.1 |
 | 文本转语音 | 用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音语音。 | 1.3.0 |
 | 自定义文本到语音转换 | 使用[自定义语音门户](https://aka.ms/custom-voice-portal)中的自定义模型，使用纯文本输入或语音合成标记语言（SSML）将文本转换为自然声音声音。 | 1.3.0 |
 
@@ -164,7 +164,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 以下标记是以下格式的示例：
 
 ```
-2.0.0-amd64-en-us-preview
+2.1.1-amd64-en-us-preview
 ```
 
 对于 "**语音到文本**" 容器的所有受支持的区域设置，请参阅[语音到文本图像标记](../containers/container-image-tags.md#speech-to-text)。

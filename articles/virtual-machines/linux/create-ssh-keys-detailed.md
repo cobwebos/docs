@@ -1,25 +1,17 @@
 ---
-title: 详细步骤-适用于 Azure Linux Vm 的 SSH 密钥对
+title: 创建 SSH 密钥对的详细步骤
 description: 了解创建和管理适用于 Azure 中 Linux VM 的 SSH 公钥和私钥对的详细步骤。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: eea078a4fb8287a4f07db478adf059eecce9ed82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c34a88c39104d3af2c5747d1cd6d3dea6929379a
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929713"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969542"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>详细步骤：创建和管理用于 Azure 中 Linux VM 的身份验证的 SSH 密钥 
 使用安全外壳 (SSH) 密钥对，可在 Azure 上创建默认使用 SSH 密钥进行身份验证的 Linux 虚拟机，从而无需密码即可登录。 使用 Azure 门户、Azure CLI、资源管理器模板或其他工具创建的 VM 可在部署中包含 SSH 公钥，为 SSH 连接设置 SSH 密钥身份验证。 
@@ -132,11 +124,11 @@ ls -al ~/.ssh
 
 ## <a name="generate-keys-automatically-during-deployment"></a>部署期间自动生成密钥
 
-如果使用 [Azure CLI](/cli/azure) 创建 VM，则可以选择通过运行具有 `--generate-ssh-keys` 选项的 [az vm create](/cli/azure/vm) 命令生成 SSH 公钥和私钥文件。 密钥存储在 ~/.ssh 目录中。 请注意，如果该位置已存在密钥，此命令选项不会覆盖这些密钥。
+如果使用 [Azure CLI](/cli/azure) 创建 VM，则可以选择通过运行具有 [ 选项的 ](/cli/azure/vm)az vm create`--generate-ssh-keys` 命令生成 SSH 公钥和私钥文件。 密钥存储在 ~/.ssh 目录中。 请注意，如果该位置已存在密钥，此命令选项不会覆盖这些密钥。
 
 ## <a name="provide-ssh-public-key-when-deploying-a-vm"></a>部署 VM 时提供 SSH 公钥
 
-若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、CLI、资源管理器模板或其他方法创建 VM 时提供 SSH 公钥。 使用门户时，请输入公钥本身。 如果借助现有公钥使用 [Azure CLI](/cli/azure) 创建 VM，请通过运行具有 `--ssh-key-value` 选项的 [az vm create](/cli/azure/vm) 命令来指定此公钥的值或位置。 
+若要创建使用 SSH 密钥进行身份验证的 Linux VM，请在使用 Azure 门户、CLI、资源管理器模板或其他方法创建 VM 时提供 SSH 公钥。 使用门户时，请输入公钥本身。 如果借助现有公钥使用 [Azure CLI](/cli/azure) 创建 VM，请通过运行具有 [ 选项的 ](/cli/azure/vm)az vm create`--ssh-key-value` 命令来指定此公钥的值或位置。 
 
 如果不熟悉 SSH 公钥的格式，则可通过运行 `cat` 来查看公钥（如下所示），注意需将 `~/.ssh/id_rsa.pub` 替换成自己的公钥文件位置：
 
@@ -184,7 +176,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 eval "$(ssh-agent -s)"
 ```
 
-现在，使用命令 `ssh-add` 将私钥添加到 `ssh-agent`。
+现在，使用命令 `ssh-agent` 将私钥添加到 `ssh-add`。
 
 ```bash
 ssh-add ~/.ssh/id_rsa
@@ -217,7 +209,7 @@ touch ~/.ssh/config
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>示例配置
+### <a name="example-configuration"></a>配置示例
 
 添加适用于主机 VM 的配置设置。
 

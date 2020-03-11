@@ -1,31 +1,21 @@
 ---
 title: 如何使用 Azure CLI 调整 Linux VM 的大小
-description: 如何通过更改 VM 大小来纵向扩展或纵向缩减 Linux 虚拟机。
-services: virtual-machines-linux
-documentationcenter: na
+description: 如何通过更改 VM 大小来扩展或缩减 Linux 虚拟机。
 author: mikewasson
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: e163f878-b919-45c5-9f5a-75a64f3b14a0
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6f3f0a937b33b1c5dd1a68d86f80f870a7311d0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20e7db80b55347c4a4a76b7c95d4d8bec368abda
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036881"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969262"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 重设 Linux 虚拟机大小 
 
-预配虚拟机 (VM) 后，可以通过更改 [VM 大小][vm-sizes]来扩展或缩减 VM。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 本文详细介绍了如何使用 Azure CLI 重设 Linux VM 大小。 
+预配虚拟机（VM）后，可以通过更改[vm 大小][vm-sizes]来扩展或缩减 vm。 在某些情况下，必须先解除分配 VM。 如果所需大小在托管 VM 的硬件群集上不可用，则需要解除分配 VM。 本文详细介绍了如何使用 Azure CLI 重设 Linux VM 大小。 
 
 ## <a name="resize-a-vm"></a>调整 VM 的大小
 若要重设 VM 大小，需要安装最新版 [Azure CLI](/cli/azure/install-az-cli2)，并使用 [az login](/cli/azure/reference-index) 登录 Azure 帐户。
@@ -44,7 +34,7 @@ ms.locfileid: "74036881"
    
     在此过程中，VM 将重新启动。 重启后，现有 OS 和数据磁盘将重新映射。 临时磁盘上的所有内容会丢失。
 
-3. 如果未列出所需的 VM 大小，则需要先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 然后，可以通过此过程将 VM 的大小调整为区域支持的任何可用大小，再启动该 VM。 以下步骤会将名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM 解除分配、调整大小并启动：
+3. 如果未列出所需的 VM 大小，则需要先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 此过程允许将 VM 调整为该区域支持的任何可用大小然后将其启动。 以下步骤会将名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM 解除分配、调整大小并启动：
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM

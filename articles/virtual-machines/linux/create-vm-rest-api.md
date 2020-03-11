@@ -1,25 +1,17 @@
 ---
-title: 使用 Azure REST API 创建 Linux 虚拟机
+title: 使用 REST API 创建 Linux VM
 description: 了解如何使用 Azure REST API 在 Azure 中创建使用托管磁盘和 SSH 身份验证的 Linux 虚拟机。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036441"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970279"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>使用 REST API 创建使用 SSH 身份验证的 Linux 虚拟机
 
@@ -54,7 +46,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 请求标头   | 说明 |
 |------------------|-----------------|
 | Content-Type：  | 必需。 设置为 `application/json`。 |
-| Authorization： | 必需。 设置为有效的 `Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| Authorization： | 必需。 设置为有效的`Bearer` [访问令牌](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 有关使用 REST API 请求的一般信息，请参阅 [REST API 请求/响应的组件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -126,7 +118,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 }
 ```
 
-有关请求正文中的变量定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
+有关请求正文中可用定义的完整列表，请参阅[虚拟机创建或更新请求正文定义](/rest/api/compute/virtualmachines/createorupdate#definitions)。
 
 ## <a name="sending-the-request"></a>发送请求
 
@@ -139,7 +131,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | 名称        | 类型                                                                              | 说明 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 正常      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 已创建     |
+| 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 创建     |
 
 下面是一个精简后的 *201 Created* 响应，它来自前面创建 VM 的示例请求正文，该响应表明已分配了 *vmId* 并且 *provisioningState* 为 *Creating*：
 

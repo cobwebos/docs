@@ -51,7 +51,7 @@ Current Firmware Versions:
 
 ## <a name="update-device-firmware"></a>更新设备固件
 
-此工具的最常见用途是更新设备固件。 使用 `-u` 选项调用该工具可以执行更新。 固件更新可能需要几分钟时间，具体取决于必须更新哪些固件文件。
+此工具最常见的用途是更新设备固件。 使用 `-u` 选项调用该工具可以执行更新。 固件更新可能需要几分钟时间，具体取决于必须更新哪些固件文件。
 
 有关固件更新的分步说明，请参阅 [Azure Kinect 固件更新](update-device-firmware.md)。  
 

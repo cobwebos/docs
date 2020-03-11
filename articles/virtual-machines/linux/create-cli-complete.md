@@ -1,26 +1,17 @@
 ---
 title: 使用 Azure CLI 创建 Linux 环境
 description: 使用 Azure CLI 从头开始创建存储、Linux VM、虚拟网络和子网、负载均衡器、NIC、公共 IP 和网络安全组。
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 56b476c431ed8b41f04b1a1c11c730e5260ade8d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036546"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969561"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 创建完整的 Linux 虚拟机
 若要在 Azure 中快速创建虚拟机 (VM)，可使用单个使用默认值的 Azure CLI 命令创建任何所需的支持资源。 虚拟网络、公共 IP 地址和网络安全组规则等资源均会自动创建。 为了在生产使用中更好地控制环境，可提前创建这些资源，然后将 VM 添加到其中。 本文将逐步介绍如何创建 VM 和每个支持资源。
@@ -482,7 +473,7 @@ az vm availability-set create \
 
 指定用于身份验证的 SSH 密钥。 如果没有 SSH 公钥对，可[进行创建](mac-create-ssh-keys.md)或使用 `--generate-ssh-keys` 参数创建。 如果已有密钥对，此参数使用 `~/.ssh` 中的现有密钥。
 
-使用 [az vm create](/cli/azure/vm) 命令并结合所有资源和信息来创建 VM。 以下示例创建一个名为 myVM 的 VM：
+使用 [az vm create](/cli/azure/vm) 命令并结合所有资源和信息来创建 VM。 以下示例创建一个名为 *myVM* 的 VM：
 
 ```azurecli
 az vm create \

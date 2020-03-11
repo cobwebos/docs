@@ -1,25 +1,17 @@
 ---
 title: 在 Azure 上部署 IBM DB2 pureScale
 description: 了解如何部署最近用于将企业从其 z/OS 上运行的 IBM DB2 环境迁移到 Azure 上的 IBM DB2 pureScale 的示例体系结构。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: c4db27b938934aafa350866991ff174cbdbed0ac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291543"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968893"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>在 Azure 上部署 IBM DB2 pureScale
 
@@ -27,7 +19,7 @@ ms.locfileid: "76291543"
 
 要按照迁移使用的步骤进行操作，请参阅 GitHub 上的 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的安装脚本。 这些脚本基于典型的中型联机事务处理 (OLTP) 工作负载所用的体系结构。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 要部署此体系结构，请下载并运行 GitHub 上 [DB2onAzure](https://aka.ms/db2onazure) 存储库中的 deploy.sh 脚本。
 
@@ -81,11 +73,11 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 
 | 屏幕名称               | 字段                                        | 值                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| 欢迎                   |                                              | 新安装                                                                                           |
+| 欢迎使用                   |                                              | 新安装                                                                                           |
 | 选择产品          |                                              | DB2 版本 11.1.3.3。 带有 DB2 pureScale 的服务器版本                                              |
 | 配置             | 目录                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | 选择安装类型                 | 典型                                                                                               |
-|                           | 我同意 IBM 条款                     | 已勾选                                                                                               |
+|                           | 我同意 IBM 条款                     | 已选中                                                                                               |
 | 实例所有者            | 实例的现有用户、用户名        | DB2sdin1                                                                                              |
 | 防护用户               | 现有用户、用户名称                     | DB2sdfe1                                                                                              |
 | 群集文件系统       | 共享磁盘分区设备路径            | /dev/dm-2                                                                                             |
@@ -119,7 +111,7 @@ GitHub 存储库包含一个响应 (.rsp) 文件 DB2server.rsp，通过该文件
 
 - 设置脚本使用 iSCSI 磁盘的别名，以便可以轻松找到实际名称。
 
-- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm-\* 值可能不同。 值之间的差异不会影响 DB2 pureScale 设置。
+- 在 d0 上运行设置脚本时，d1、cf0 和 cf1 上的 /dev/dm- **值可能不同\*** 。 值之间的差异不会影响 DB2 pureScale 设置。
 
 ## <a name="troubleshooting-and-known-issues"></a>故障排除和已知问题
 

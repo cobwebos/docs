@@ -1,25 +1,18 @@
 ---
-title: 使用 Docker 计算机在 Azure 中创建 Linux 主机
+title: 使用 Docker 计算机创建 Linux 主机
 description: 介绍如何使用 Docker Machine 在 Azure 中创建 Docker 主机。
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: tysonn
-ms.assetid: 164b47de-6b17-4e29-8b7d-4996fa65bea4
 ms.service: virtual-machines-linux
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6b7f26d4554cc5ab1450ac3a8cf927b2338f8ea2
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036249"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968802"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker Machine 在 Azure 中创建主机
 本文详细介绍如何使用 [Docker Machine](https://docs.docker.com/machine/) 在 Azure 中创建主机。 `docker-machine` 命令在 Azure 中创建一个 Linux 虚拟机 (VM)，然后安装 Docker。 然后，可以使用相同的本地工具和工作流来管理 Azure 中的 Docker 主机。 若要在 Windows 10 中使用 docker-machine，必须使用 Linux bash。
@@ -31,9 +24,9 @@ ms.locfileid: "74036249"
 sub=$(az account show --query "id" -o tsv)
 ```
 
-通过指定 `docker-machine create`azure*作为驱动程序，在 Azure 中使用* 创建 Docker 主机 VM。 有关详细信息，请参阅 [Docker Azure 驱动程序文档](https://docs.docker.com/machine/drivers/azure/)
+通过指定 Azure`docker-machine create`*作为驱动程序，在 Azure 中使用* 创建 Docker 主 VM。 有关详细信息，请参阅 [Docker Azure 驱动程序文档](https://docs.docker.com/machine/drivers/azure/)
 
-以下示例基于“标准 D2 v2”计划创建一个名为“myVM”的 VM，创建一个名为“azureuser”的用户帐户，并在主 VM 上打开端口 *80*。 按照任何提示登录 Azure 帐户，并授予 Docker Machine 创建和管理资源的权限。
+以下示例基于“标准 D2 v2”计划创建一个名为“myVM”的 VM，创建一个名为“azureuser”的用户帐户，并在主 VM 上打开端口 *80*。 按照任何提示登录你的 Azure 帐户，并授予 Docker Machine 创建和管理资源的权限。
 
 ```bash
 docker-machine create -d azure \
@@ -77,8 +70,8 @@ Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
 
-## <a name="configure-your-docker-shell"></a>配置 Docker shell
-若要连接到 Azure 中的 Docker 主机，请定义适当的连接设置。 按输出末尾所示，查看 Docker 主机的连接信息，如下所示： 
+## <a name="configure-your-docker-shell"></a>配置 Docker 外壳
+若要连接到 Azure 中的 Docker 主机，请定义适当的连接设置。 如输出的结尾所示，查看 Docker 主机的连接信息，如下所示： 
 
 ```bash
 docker-machine env myvm
@@ -98,7 +91,7 @@ export DOCKER_MACHINE_NAME="machine"
 若要定义连接设置，可以运行建议的配置命令 (`eval $(docker-machine env myvm)`)，也可以手动设置环境变量。 
 
 ## <a name="run-a-container"></a>运行容器
-若要查看运行中的容器，请运行一个基本的 NGINX Web 服务器。 使用 `docker run` 创建一个容器，并为 Web 流量公开端口 80，如下所示：
+若要查看运行的容器，请运行一个基本的 NGINX Web 服务器。 使用 `docker run` 创建一个容器，并为 Web 流量公开端口 80，如下所示：
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -117,7 +110,7 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-使用 `docker ps` 查看正在运行的容器。 以下示例输出显示使用公开的端口 80 运行的 NGINX 容器：
+使用 `docker ps` 查看正在运行的容器。 以下示例输出显示公开了端口 80 运行的 NGINX 容器：
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES

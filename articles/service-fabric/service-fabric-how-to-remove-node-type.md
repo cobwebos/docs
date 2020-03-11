@@ -6,12 +6,12 @@ manager: sridmad
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: chrpap
-ms.openlocfilehash: d8ee2327f65332d32038806f2d2416cac190875b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 330b455a61c45ccdb59e5aef8162fd1b04859a00
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661970"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969407"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>如何删除 Service Fabric 节点类型
 本文介绍如何通过删除群集的现有节点类型来缩放 Azure Service Fabric 群集。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。 创建 Service Fabric 群集之后，可以通过删除节点类型（虚拟机规模集）及其所有节点来水平缩放群集。  随时可以缩放群集，即使该群集上正在运行工作负荷。  在缩放群集的同时，应用程序也会随之自动缩放。
@@ -31,7 +31,7 @@ Service Fabric 会“协调”基础更改和更新，以便数据不会丢失�
 
 删除铜级的节点类型时，节点类型中的所有节点都会立即关闭。 Service Fabric 不会阻止任何铜级节点的规模集更新，因此所有 VM 都会立即关闭。 如果这些节点上有任何有状态的内容，则数据将丢失。 现在，即使是无状态，Service Fabric 中的所有节点也会参与该更新，因此整个邻域可能会丢失，这可能会影响群集本身。
 
-## <a name="remove-a-non-primary-node-type"></a>删除非主节点类型
+## <a name="remove-a-node-type"></a>删除节点类型
 
 1. 在开始此过程之前，请先处理此必备组件。
 
@@ -122,7 +122,7 @@ Service Fabric 会“协调”基础更改和更新，以便数据不会丢失�
     - 找到用于部署的 Azure 资源管理器模板。
     - 查找与 Service Fabric 部分中的节点类型相关的部分。
     - 删除与节点类型对应的部分。
-    - 对于银色和更高耐用性群集，请更新模板中的群集资源，并通过添加 `applicationDeltaHealthPolicies` 来配置运行状况策略，以忽略 fabric：/系统应用程序运行状况，如下所示。 下面的策略应忽略现有错误，但不允许新的运行状况错误。 
+    - 仅适用于银色和更高耐用性群集，更新模板中的群集资源，并配置运行状况策略，以忽略 fabric：/系统应用程序运行状况，方法是在群集资源 `properties` 下添加 `applicationDeltaHealthPolicies`，如下所示。 下面的策略应忽略现有错误，但不允许新的运行状况错误。 
  
  
      ```json
@@ -158,7 +158,7 @@ Service Fabric 会“协调”基础更改和更新，以便数据不会丢失�
     },
     ```
 
-    部署已修改的 Azure 资源管理器模板。 \* * 此步骤将需要一段时间，通常长达两个小时。 此升级会将设置更改为 InfrastructureService，因此需要重新启动节点。 在这种情况下 `forceRestart` 将被忽略。 
+    - 部署已修改的 Azure 资源管理器模板。 \* * 此步骤将需要一段时间，通常长达两个小时。 此升级会将设置更改为 InfrastructureService，因此需要重新启动节点。 在这种情况下 `forceRestart` 将被忽略。 
     参数 `upgradeReplicaSetCheckTimeout` 指定 Service Fabric 等待分区处于安全状态（如果尚未处于安全状态）的最长时间。 一旦安全检查通过某个节点上的所有分区，Service Fabric 将继续该节点上的升级。
     参数 `upgradeTimeout` 的值可以缩短到6小时，但应使用最大安全12小时。
 

@@ -1,24 +1,17 @@
 ---
-title: Azure 中 Linux 虚拟机的 DNS 名称解析选项
+title: 适用于 Linux Vm 的 DNS 名称解析选项
 description: Azure IaaS 中 Linux 虚拟机的名称解析方案，包括提供的 DNS 服务、混合外部 DNS 和自带 DNS 服务器。
-services: virtual-machines
-documentationcenter: na
 author: RicksterCDN
-manager: gwallace
-editor: tysonn
-ms.assetid: 787a1e04-cebf-4122-a1b4-1fcf0a2bbf5f
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 16dc7d16b3e8f2a4c95e93f9b85c74027291ce19
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084044"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969322"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure 中 Linux 虚拟机的 DNS 名称解析选项
 Azure 默认为单个虚拟网络中的所有虚拟机提供 DNS 名称解析。 在 Azure 托管的虚拟机上配置自己的 DNS 服务，即可实现自己的 DNS 名称解析解决方案。 以下方案有助于选择适合的解决方案。
@@ -86,7 +79,7 @@ Rogue Wave Software 的 CentOS（之前为 OpenLogic；使用 NetworkManager）
 5. 重新启动网络服务（“service network restart”），将缓存设置为本地 DNS 解析程序
 
 > [!NOTE]
-> :“dnsmasq”包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否满足需求，并确认没有安装其他缓存。
+> “dnsmasq”包只是适用于 Linux 的众多 DNS 缓存中的一个。 在使用之前，请检查其是否满足需求，并确认没有安装其他缓存。
 >
 >
 

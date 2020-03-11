@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 03/10/2020
 ms.author: victorh
-ms.openlocfilehash: 69c0c13c7027707cdadb2f1f1de9cc1655c9c625
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396038"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081995"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure 防火墙规则处理逻辑
 可以在 Azure 防火墙上配置 NAT 规则、网络规则和应用程序规则。 规则是根据规则类型进行处理的。 
@@ -32,7 +32,7 @@ ms.locfileid: "78396038"
 
 可以通过配置目标网络地址转换（DNAT）来启用入站 Internet 连接，如[使用 Azure 门户使用 Azure 防火墙 DNAT 筛选入站流量](tutorial-firewall-dnat.md)中所述。 NAT 规则在网络规则之前按优先级应用。 如果找到匹配项，则会添加一个隐式的对应网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。
 
-应用程序规则不应用于入站连接。 因此，如果要筛选入站 HTTP/S 流量，应使用 Web 应用程序防火墙（WAF）。 有关详细信息，请参阅[什么是 Azure Web 应用程序防火墙？](../web-application-firewall/overview.md)
+应用程序规则不适用于入站连接。 因此，如果要筛选入站 HTTP/S 流量，应使用 Web 应用程序防火墙（WAF）。 有关详细信息，请参阅[什么是 Azure Web 应用程序防火墙？](../web-application-firewall/overview.md)
 
 ## <a name="examples"></a>示例
 
@@ -90,6 +90,10 @@ ms.locfileid: "78396038"
 **结果**
 
 SSH 连接被拒绝，因为较高优先级的网络规则集合阻止了 SSH 连接。 规则处理此时停止。
+
+## <a name="rule-changes"></a>规则更改
+
+如果更改规则以拒绝以前允许的流量，则会删除任何相关的现有会话。
 
 ## <a name="next-steps"></a>后续步骤
 

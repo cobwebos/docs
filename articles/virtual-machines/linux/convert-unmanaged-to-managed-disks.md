@@ -1,18 +1,18 @@
 ---
-title: 将 Linux 虚拟机从非托管磁盘转换为托管磁盘
-description: 如何在资源管理器部署模型中使用 Azure CLI 将 Linux VM 从非托管磁盘转换为托管磁盘
+title: 将 Linux VM 从非托管磁盘转换为托管磁盘
+description: 如何使用 Azure CLI 将 Linux VM 从非托管磁盘转换为托管磁盘。
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 24024bc66e10937f1ae2fdc5130ffcd8c76c1763
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2774dcbd5fc5b01627b965c2c02d870412c8bf77
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430994"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969694"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 
@@ -30,7 +30,7 @@ ms.locfileid: "75430994"
 ## <a name="convert-single-instance-vms"></a>转换单实例 VM
 本节介绍如何将单实例 Azure VM 从非托管磁盘转换为托管磁盘。 （如果 Vm 位于可用性集中，请参阅下一节。）可以使用此过程将 Vm 从高级（SSD）非托管磁盘转换为高级托管磁盘，或将标准（HDD）非托管磁盘转换为标准托管磁盘。
 
-1. 使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM：
+1. 使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例在名为 `myVM` 的资源组中解除分配名为 `myResourceGroup` 的 VM：
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -42,7 +42,7 @@ ms.locfileid: "75430994"
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. 使用 [az vm start](/cli/azure/vm) 在转换为托管磁盘后启动 VM。 以下示例启动名为 `myResourceGroup` 的资源组中名为 `myVM` 的 VM。
+3. 使用 [az vm start](/cli/azure/vm) 在转换为托管磁盘后启动 VM。 以下示例启动名为 `myVM` 的资源组中名为 `myResourceGroup` 的 VM。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -54,7 +54,7 @@ ms.locfileid: "75430994"
 
 可用性集中的所有 VM 都必须在转换可用性集之前解除分配。 可用性集转换为托管可用性集后，计划将所有 VM 转换为托管磁盘。 然后，启动所有 VM，并继续照常操作。
 
-1. 使用 [az vm availability-set list](/cli/azure/vm/availability-set) 列出可用性集中的所有 VM。 以下示例列出了名为 `myResourceGroup` 的资源组中名为 `myAvailabilitySet` 的可用性集中的所有 VM：
+1. 使用 [az vm availability-set list](/cli/azure/vm/availability-set) 列出可用性集中的所有 VM。 以下示例列出了名为 `myAvailabilitySet` 的资源组中名为 `myResourceGroup` 的可用性集中的所有 VM：
 
     ```azurecli
     az vm availability-set show \
@@ -64,13 +64,13 @@ ms.locfileid: "75430994"
         --output table
     ```
 
-2. 使用 [az vm deallocate](/cli/azure/vm) 解除分配所有 VM。 以下示例在名为 `myResourceGroup` 的资源组中解除分配名为 `myVM` 的 VM：
+2. 使用 [az vm deallocate](/cli/azure/vm) 解除分配所有 VM。 以下示例在名为 `myVM` 的资源组中解除分配名为 `myResourceGroup` 的 VM：
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. 使用 [az vm availability-set convert](/cli/azure/vm/availability-set) 转换可用性集。 以下示例转换名为 `myResourceGroup` 的资源组中名为 `myAvailabilitySet` 的可用性集：
+3. 使用 [az vm availability-set convert](/cli/azure/vm/availability-set) 转换可用性集。 以下示例转换名为 `myAvailabilitySet` 的资源组中名为 `myResourceGroup` 的可用性集：
 
     ```azurecli
     az vm availability-set convert \
@@ -84,7 +84,7 @@ ms.locfileid: "75430994"
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. 使用 [az vm start](/cli/azure/vm) 在转换为托管磁盘后启动所有 VM。 以下示例在名为 `myResourceGroup` 的资源组中启动名为 `myVM` 的 VM：
+5. 使用 [az vm start](/cli/azure/vm) 在转换为托管磁盘后启动所有 VM。 以下示例在名为 `myVM` 的资源组中启动名为 `myResourceGroup` 的 VM：
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192619"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037246"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
@@ -25,11 +25,11 @@ Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默�
 > [!IMPORTANT]  
 > 存储帐户类型**BlobStorage**只能用作 HDInsight 群集的辅助存储。
 
-| 存储帐户类型 | 支持的服务 | 支持的性能层 | 支持的访问层 |
-|----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2（常规用途 v2）  | Blob     | Standard                    | 热、冷、存档\*   |
-| 存储（常规用途 v1）   | Blob     | Standard                    | 空值                    |
-| BlobStorage                    | Blob     | Standard                    | 热、冷、存档\*   |
+| 存储帐户类型 | 支持的服务 | 支持的性能层 |不支持的性能层| 支持的访问层 |
+|----------------------|--------------------|-----------------------------|---|------------------------|
+| StorageV2（常规用途 v2）  | Blob     | Standard                    |Premium| 热、冷、存档\*   |
+| 存储（常规用途 v1）   | Blob     | Standard                    |Premium| 空值                    |
+| BlobStorage                    | Blob     | Standard                    |Premium| 热、冷、存档\*   |
 
 建议不要使用默认 blob 容器来存储业务数据。 良好的做法是每次使用之后删除默认 blob 容器以降低存储成本。 默认容器包含应用程序日志和系统日志。 请确保在删除该容器之前检索日志。
 

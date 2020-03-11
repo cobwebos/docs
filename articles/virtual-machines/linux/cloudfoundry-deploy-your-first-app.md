@@ -1,26 +1,18 @@
 ---
 title: 将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 description: 将应用程序部署到 Azure 上的 Cloud Foundry
-services: virtual-machines-linux
-documentationcenter: ''
 author: seanmck
-manager: gwallace
-editor: ''
-tags: ''
-keywords: ''
-ms.assetid: 8fa04a58-56ad-4e6c-bef4-d02c80d4b60f
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: b1f9ab5289a41aacb5514e954f1ca01f6ad66152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036824"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970076"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>将首个应用部署到 Microsoft Azure 上的 Cloud Foundry
 
@@ -39,7 +31,7 @@ ms.locfileid: "74036824"
 
 ## <a name="connect-to-the-cloud-controller"></a>连接到云控制器
 
-云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在这种情况下，我们会通过[CLOUD FOUNDRY CLI][cf-cli]与之进行交互。 你可以在 Linux、MacOS 或 Windows 上安装 CLI，但如果不想安装它，则可在[Azure Cloud Shell][cloudshell-docs]中预安装该 CLI。
+云控制器是部署和管理应用程序的 Cloud Foundry 环境的主要入口点。 核心云控制器 API (CCAPI) 是一种 REST API，但可通过各种工具访问。 在这种情况下，我们会通过[CLOUD FOUNDRY CLI][cf-cli]与之进行交互。 你可以在 Linux、macOS 或 Windows 上安装 CLI，但如果不想安装它，则可在[Azure Cloud Shell][cloudshell-docs]中预安装该 CLI。
 
 若要登录，请将 `api` 追加到从市场部署中获得的 SYSTEMDOMAINURL 中。 由于默认部署使用自签名证书，因此还应设置 `skip-ssl-validation` 开关。
 

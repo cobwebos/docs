@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/10/2020
+ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917401"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037118"
 ---
 # <a name="execute-r-script"></a>执行 R 脚本
 
@@ -67,11 +67,43 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
   > 安装之前，请检查包是否已存在，以避免重复安装。 类似于上面的示例代码 `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")`。 重复安装可能会导致 web 服务请求超时。     
 
+## <a name="upload-files"></a>上传文件
+**执行 r 脚本**支持使用 AZURE 机器学习 R SDK 上传文件。
+
+下面的示例演示如何在**执行 R 脚本**中上载映像文件：
+```R
+
+# R version: 3.5.1
+# The script MUST contain a function named azureml_main
+# which is the entry point for this module.
+
+# The entry point function can contain up to two input arguments:
+#   Param<dataframe1>: a R DataFrame
+#   Param<dataframe2>: a R DataFrame
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+
+  # Generate a jpeg graph
+  img_file_name <- "rect.jpg"
+  jpeg(file=img_file_name)
+  example(rect)
+  dev.off()
+
+  upload_files_to_run(names = list(file.path("graphic", img_file_name)), paths=list(img_file_name))
+
+
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
+成功提交管道后，可以在模块的右面板中预览图像 ![上传的映像](media/module/upload-image-in-r-script.png)
+
 ## <a name="how-to-configure-execute-r-script"></a>如何配置执行 R 脚本
 
 **执行 R 脚本**模块包含可用作起始点的示例代码。 若要配置 "**执行 R 脚本**" 模块，请提供一组输入和要执行的代码。
 
-![R-模块](media/module/execute-r-script.png)
+![R-模块](media/module/upload-image-in-r-script.png)
 
 使用此模块加载时，存储在设计器中的数据集将自动转换为 R 数据帧。
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: b366262ce7849658eb84444d873956c25ab38804
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: af7bfe74d8df177650cea76a9bed7b0d7311f87e
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78244663"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968997"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -33,7 +33,7 @@ ms.locfileid: "78244663"
 本文概述了如何使用媒体服务实时传送视频流，并提供指向其他相关文章的链接。
  
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -125,5 +125,6 @@ Live 脚本是一项功能，可将其用于传递或实时编码的实时事件
 
 ## <a name="next-steps"></a>后续步骤
 
+* [实时流式处理快速入门]（live-events-wirecast-quickstart.md （
 * [实时传送视频流教程](stream-live-tutorial-with-api.md)
 * [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)

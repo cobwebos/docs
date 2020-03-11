@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1cac52dcee91e57a22b6d18595b067de888aba73
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365321"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081901"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -93,7 +93,7 @@ ms.locfileid: "78365321"
    
 ### <a id="audit-storage-destination">审核到存储目标</a>
 
-若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击 **“确定”** 。 早于保留期的日志会被删除。
+若要配置将审核日志写入存储帐户的操作，请选择“存储”，打开“存储详细信息”。 依次选择要用于保存日志的 Azure 存储帐户以及保持期。 然后单击“确定”。 早于保留期的日志会被删除。
 
    > [!IMPORTANT]
    > - 保持期的默认值为0（无限制保留期）。 在配置存储帐户进行审核时，可以通过移动**存储设置**中的 "**保留期（天）** " 滑块来更改此值。
@@ -255,12 +255,6 @@ ms.locfileid: "78365321"
 - Azure SQL Database 审核针对可用性 & 性能进行了优化。 在非常高的活动中，Azure SQL 数据库允许操作继续执行，并且可能不会记录某些审核的事件。
 
 - 若要在存储帐户中配置不可变审核，请参阅[允许受保护的追加 blob 写入](../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。 请注意，审核容器名称为**sqldbauditlogs**。
-
-    > [!IMPORTANT]
-    > 基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
-    > - 美国东部
-    > - 美国中南部
-    > - 美国西部 2
 
 
 ## <a id="subheading-7"></a>使用 Azure PowerShell 管理 Azure SQL Server 和数据库审核

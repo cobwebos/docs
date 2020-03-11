@@ -1,21 +1,17 @@
 ---
 title: 在 Azure 中创建和上传 Ubuntu Linux VHD
 description: 了解如何创建和上传包含 Ubuntu Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
 ms.service: virtual-machines-linux
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1b343fef13127f2b74da92e6b2c5b51767e6e325
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251685"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970289"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>为 Azure 准备 Ubuntu 虚拟机
 

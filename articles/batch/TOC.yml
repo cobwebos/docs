@@ -51,6 +51,8 @@
       href: batch-api-basics.md
     - name: API 和工具
       href: batch-apis-tools.md
+    - name: 检测和处理 Batch 服务错误
+      href: batch-retry-after-errors.md
     - name: 最佳做法
       href: best-practices.md
     - name: 配额和限制
@@ -131,8 +133,6 @@
           href: batch-job-schedule.md
         - name: 检查作业和任务错误
           href: batch-job-task-error-checking.md
-        - name: 检测和处理 Batch 服务错误
-          href: batch-retry-after-errors.md
     - name: 持久性作业和任务输出
       href: batch-task-output.md
       items:

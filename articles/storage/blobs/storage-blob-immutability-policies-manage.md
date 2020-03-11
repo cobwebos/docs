@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903478"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970103"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>为 Blob 存储设置和管理永久性策略
 
@@ -23,7 +23,7 @@ ms.locfileid: "75903478"
 
 ## <a name="set-retention-policies-and-legal-holds"></a>设置保留策略和合法保留
 
-### <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 请创建新的容器或选择现有容器，以便存储需要保持不可变状态的 Blob。 容器必须位于常规用途 v2 或 Blob 存储帐户中。
 
@@ -59,11 +59,11 @@ ms.locfileid: "75903478"
 
 9. 若要清除合法保留，请删除应用的合法保留标识符标记。
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 以下命令组包含该功能：`az storage container immutability-policy` 和 `az storage container legal-hold`。 对这些命令运行 `-h` 可查看命令。
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -116,10 +116,10 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-创建或更新不可变策略：
+创建或更新基于时间的永久性策略：
 
 ```powershell
-# Create an immutablity policy
+# Create a time-based immutablity policy
 Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
@@ -168,17 +168,23 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ## <a name="enabling-allow-protected-append-blobs-writes"></a>启用允许受保护的追加 blob 写入
 
-目前只能通过此特定[门户链接](https://aka.ms/immutableappendblobs)访问基于时间的保留策略的 `allowProtectedAppendWrites` 设置。 
-
-> [!IMPORTANT] 
->  基于时间的保留下的 "允许受保护的追加 blob 写入" 设置当前可用并且仅在以下区域中可见：
-> - 美国东部
-> - 美国中南部
-> - 美国西部 2
->
-> 有关详细信息，请参阅[允许受保护的追加 Blob 写入](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes)。
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 ![允许额外追加写入](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+以下命令组包含该功能：`az storage container immutability-policy` 和 `az storage container legal-hold`。 对这些命令运行 `-h` 可查看命令。
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```powershell
+# Create an immutablity policy with appends allowed
+Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
+    -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10 -AllowProtectedAppendWrite $true
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

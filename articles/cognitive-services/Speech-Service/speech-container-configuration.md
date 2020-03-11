@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 34b4664ec13f7ba1871433e37d86170b2207a17a
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816578"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037330"
 ---
 # <a name="configure-speech-service-containers"></a>配置语音服务容器
 
@@ -50,9 +50,9 @@ ms.locfileid: "74816578"
 
 - Azure 门户：**语音**概述，标记 `Endpoint`
 
-| 需要 | 名称 | 数据类型 | 描述 |
+| 必选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
-| 是 | `Billing` | 字符串 | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
+| 是 | `Billing` | String | 计费终结点 URI。 有关获取计费 URI 的详细信息，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 有关详细信息和区域终结点的完整列表，请参阅[认知服务的自定义子域名](../cognitive-services-custom-subdomains.md)。 |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -72,16 +72,16 @@ ms.locfileid: "74816578"
 
 ## <a name="mount-settings"></a>装载设置
 
-使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令中指定 `--mount` 选项来指定输入装载或输出装载。
+使用绑定装载从容器读取数据并将数据写入容器。 可以通过在 `--mount`docker run[ 命令中指定 ](https://docs.docker.com/engine/reference/commandline/run/) 选项来指定输入装载或输出装载。
 
 标准语音容器不使用输入或输出装入来存储定型或服务数据。 但是，自定义语音容器依赖于卷装入。
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](speech-container-howto.md#the-host-computer)的装载位置。
 
-| 可选 | 名称 | 数据类型 | 描述 |
+| 可选 | 名称 | 数据类型 | 说明 |
 | -------- | ---- | --------- | ----------- |
-| 不允许 | `Input` | 字符串 | 标准语音容器不使用此功能。 自定义语音容器使用[卷装入](#volume-mount-settings)。                                                                                    |
-| 可选 | `Output` | 字符串 | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
+| 不允许 | `Input` | String | 标准语音容器不使用此功能。 自定义语音容器使用[卷装入](#volume-mount-settings)。                                                                                    |
+| 可选 | `Output` | String | 输出装入点的目标。 默认值是 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>卷装入设置
 
@@ -115,7 +115,7 @@ ms.locfileid: "74816578"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | Value | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 | ----------- | ----- | ----------------- |
 | **{API_KEY}** | Azure `Speech` 密钥页上的 `Speech` 资源的终结点键。   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
 | **{ENDPOINT_URI}** | "计费终结点" 值在 "Azure `Speech` 概述" 页上提供。 | 有关显式示例，请参阅[收集所需的参数](speech-container-howto.md#gathering-required-parameters)。 |
@@ -130,7 +130,7 @@ ms.locfileid: "74816578"
 
 以下 Docker 示例适用于语音容器。
 
-## <a name="speech-to-texttabstt"></a>[语音转文本](#tab/stt)
+## <a name="speech-to-text"></a>[语音转文本](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>语音到文本的基本示例
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-speech-to-texttabcstt"></a>[自定义语音到文本](#tab/cstt)
+## <a name="custom-speech-to-text"></a>[自定义语音到文本](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>自定义语音到文本的基本示例
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="text-to-speechtabtss"></a>[文本转语音](#tab/tss)
+## <a name="text-to-speech"></a>[文本转语音](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>文本到语音转换的基本示例
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-## <a name="custom-text-to-speechtabctts"></a>[自定义文本到语音转换](#tab/ctts)
+## <a name="custom-text-to-speech"></a>[自定义文本到语音转换](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>自定义文本到语音转换的基本示例
 

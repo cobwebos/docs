@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/27/2019
-ms.openlocfilehash: 72006f907a1c1641308c8ee43e7a405765410789
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 03/09/2020
+ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770877"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082874"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>监视 Azure HDInsight 中的群集性能
 
@@ -27,13 +27,13 @@ ms.locfileid: "75770877"
 
 若要大致了解群集的节点及其加载情况，请登录[Ambari WEB UI](hdinsight-hadoop-manage-ambari.md)，然后选择 "**主机**" 选项卡。主机按其完全限定的域名列出。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | Description |
+| Color | 说明 |
 | --- | --- |
-| 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
-| Orange | 主机上至少有一个辅助组件关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
-| 黄色 | Ambari 服务器已在3分钟内未收到来自主机的检测信号。 |
+| Red | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
+| 橙色 | 主机上至少有一个辅助组件关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
+| Yellow | Ambari 服务器已在3分钟内未收到来自主机的检测信号。 |
 | 绿色 | 正常运行状态。 |
- 
+
 此外还将看到列，显示每个主机的内核数及 RAM 量、磁盘使用情况和平均负载。
 
 ![Apache Ambari 主机选项卡概述](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -52,7 +52,7 @@ YARN 将 JobTracker、资源管理和作业计划/监视的两种责任划分为
 
 资源管理器是一个纯计划程序，且仅仲裁所有竞争应用程序之间的可用资源。 资源管理器确保所有资源都处于使用状态，并针对各种常量（如 SLA、容量保障等）进行优化。 ApplicationMaster 处理来自于 ResourceManager 的资源，并与 NodeManager 一起执行和监视容器及其资源消耗。
 
-当多个租户共享一个大型群集时，会对群集的资源进行竞争。 CapacityScheduler 是一种可插入计划程序，通过对请求进行排队来协助资源共享。 CapacityScheduler 还支持分层队列，确保在允许其他应用程序的队列使用可用资源之前，在组织的子队列之间共享资源。
+当多个租户共享一个大型群集时，会对群集的资源进行竞争。 CapacityScheduler 是一种可插入计划程序，通过对请求进行排队来协助资源共享。 CapacityScheduler 还支持*分层队列*，以确保在组织的子队列之间共享资源，然后允许其他应用程序的队列使用可用资源。
 
 YARN 允许我们将资源分配给这些队列，并显示是否已分配所有可用资源。 若要查看有关队列的信息，请登录到 Ambari Web UI，然后从顶部菜单选择“YARN 队列管理器”。
 
@@ -81,6 +81,46 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 * [Apache Hive on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [MapReduce on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)
 * [Apache Storm on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-storm.md)
+
+## <a name="troubleshoot-sluggish-node-performance"></a>排查节点性能缓慢问题
+
+在某些情况下，迟滞可能是由于群集上的磁盘空间不足引起的。 调查以下步骤：
+
+1. 使用[ssh 命令](./hdinsight-hadoop-linux-use-ssh-unix.md)连接到每个节点。
+
+1. 通过运行以下命令之一检查磁盘使用情况：
+
+    ```bash
+    df -h
+    du -h --max-depth=1 / | sort -h
+    ```
+
+1. 查看输出，并检查 "`mnt`" 文件夹或其他文件夹中是否存在任何大文件。 通常，`usercache`和 `appcache` （mnt/resource/hadoop/yarn/local/usercache/hive/appcache/）文件夹包含大型文件。
+
+1. 如果有较大的文件，可能是因为当前作业导致文件增长或失败的上一个作业已导致此问题。 若要检查此行为是否是由当前作业引起的，请运行以下命令：
+
+    ```bash
+    sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
+    ```
+
+1. 如果此命令指示特定作业，则可以选择使用类似于以下内容的命令终止作业：
+
+    ```bash
+    yarn application -kill -applicationId <application_id>
+    ```
+
+    将 `application_id` 替换为应用程序 ID。 如果未指定任何特定作业，请继续执行下一步。
+
+1. 在上述命令完成后，或者如果没有指定任何特定作业，请通过运行类似于以下内容的命令删除所标识的大型文件：
+
+    ```bash
+    rm -rf filecache usercache
+    ```
+
+有关磁盘空间问题的详细信息，请参阅[磁盘空间不足](./hadoop/hdinsight-troubleshoot-out-disk-space.md)。
+
+> [!NOTE]  
+> 如果你有想要保留的大型文件，但磁盘空间不足的问题，则必须扩展你的 HDInsight 群集并重新启动你的服务。 完成此过程并等待几分钟后，你会注意到存储已释放，并且该节点的常规性能会还原。
 
 ## <a name="next-steps"></a>后续步骤
 

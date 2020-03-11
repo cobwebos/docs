@@ -1,26 +1,18 @@
 ---
-title: 如何通过 Packer 创建 Linux Azure VM 映像
+title: 通过 Packer 创建 Linux Azure VM 映像
 description: 了解如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: a9f0750908123c236596683ec2ad6de505c46213
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 338541661b335e3d96a267f01590173f8ce8ee89
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036953"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969285"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>如何使用 Packer 在 Azure 中创建 Linux 虚拟机映像
 Azure 中的每个虚拟机 (VM) 都创建至定义 Linux 分发和 OS 版本的映像。 映像可包括预安装的应用程序和配置。 Azure 市场为最常见的分发和应用程序环境提供许多第一和第三方映像，或者也可创建满足自身需求的自定义映像。 本文详细介绍了如何使用开源工具 [Packer](https://www.packer.io/) 在 Azure 中定义和生成自定义映像。

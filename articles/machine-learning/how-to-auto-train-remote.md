@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bad957a70079a5513f103968066e2ff6a436cd77
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/09/2020
+ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754160"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080405"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>在云中使用自动化机器学习对模型进行训练
 
@@ -24,7 +24,7 @@ ms.locfileid: "75754160"
 
 在 Azure 机器学习中，我们在所管理的不同类型的计算资源上训练模型。 计算目标可以是本地计算机，也可以是云中的资源。
 
-可以通过添加更多计算目标（例如 Azure 机器学习计算（AmlCompute））来轻松增加或减少机器学习试验。 AmlCompute 是一种托管计算基础结构，可让你轻松创建单个或多节点计算。
+可以通过添加更多计算目标（例如 Azure 机器学习计算（AmlCompute））来轻松增加或减少机器学习试验。 AmlCompute 是一个托管的计算基础结构，可让你轻松创建单节点或多节点计算。
 
 本文介绍如何通过 AmlCompute 使用自动 ML 构建模型。
 

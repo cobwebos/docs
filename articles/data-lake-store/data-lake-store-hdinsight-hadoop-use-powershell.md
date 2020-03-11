@@ -1,5 +1,6 @@
 ---
 title: PowerShell：将 Azure Data Lake Store Gen1 用作附加存储的 Azure HDInsight 群集 | Microsoft Docs
+description: 了解如何使用 Azure PowerShell 配置 Azure Data Lake Storage Gen1 为附加存储的 HDInsight 群集。
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: twooley
@@ -11,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66161401"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970144"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
 
@@ -28,7 +29,7 @@ ms.locfileid: "66161401"
 >
 >
 
-了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集  。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
+了解如何使用 Azure PowerShell 来配置包含 Azure Data Lake Storage Gen1（用作额外存储）的 HDInsight 群集。 有关如何创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集的说明，请参阅[创建将 Data Lake Storage Gen1 用作默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)。
 
 > [!NOTE]
 > 若要将 Data Lake Storage Gen1 用作 HDInsight 群集的额外存储，强烈建议在创建群集时按本文说明进行操作。 向现有 HDInsight 群集添加 Data Lake Storage Gen1 作为额外存储是很复杂的过程，容易出现错误。
@@ -49,7 +50,7 @@ ms.locfileid: "66161401"
 * 创建具有 Data Lake Storage Gen1 身份验证的 HDInsight 群集
 * 在此群集上运行作业
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -137,7 +138,7 @@ ms.locfileid: "66161401"
 
 继续进行本部分中的步骤前，请确保已安装有 [Windows SDK](https://dev.windows.com/en-us/downloads)。 还必须创建一个目录（该证书会在其中创建），例如 **C:\mycertdir**。
 
-1. 在 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常为 `C:\Program Files (x86)\Windows Kits\10\bin\x86`），并使用 [MakeCert][makecert] 实用工具创建一个自签名证书和私钥。 使用以下命令。
+1. 从 PowerShell 窗口中，导航到安装 Windows SDK 的位置（通常 `C:\Program Files (x86)\Windows Kits\10\bin\x86` 并使用[MakeCert][makecert]实用工具创建自签名证书和私钥。 使用以下命令。
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
@@ -145,7 +146,7 @@ ms.locfileid: "66161401"
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
     系统会提示输入私钥密码。 此命令成功执行后，指定的证书目录中应会出现 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 实用工具将 MakeCert 创建的.pvk 和.cer 文件转换为.pfx 文件。 运行以下命令。
+2. 使用[Pvk2Pfx][pvk2pfx]实用工具将 MakeCert 创建的 pvk 和 .cer 文件转换为 .pfx 文件。 运行以下命令。
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
@@ -230,7 +231,7 @@ ms.locfileid: "66161401"
 1. 连接后，请使用以下命令启动 Hive 命令行界面 (CLI)。
 
         hive
-2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表  ：
+2. 使用该 CLI 输入以下语句，通过使用 Data Lake Storage Gen1 中的示例数据创建一个名为 vehicles 的新表：
 
         DROP TABLE vehicles;
         CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';
@@ -271,7 +272,7 @@ ms.locfileid: "66161401"
 
 ## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [门户：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [门户：创建使用 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

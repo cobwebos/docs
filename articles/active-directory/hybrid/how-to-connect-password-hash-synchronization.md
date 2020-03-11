@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f6451507eb5a25f432c73468d0da0db1838c8c9a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378433"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082519"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。
@@ -124,6 +124,7 @@ Azure AD 支持每个注册域单独的密码过期策略。
 
 > [!NOTE]
 > 此功能目前处于公共预览阶段。
+> Set-msolpasswordpolicy PowerShell 命令在联合域上不起作用。 
 
 #### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>用于同步临时密码和 "下次登录时强制更改密码" 的公共预览版
 

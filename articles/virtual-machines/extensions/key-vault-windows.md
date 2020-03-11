@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 3de4baa4eafe26cff18d9b1bcfb59398439994b0
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425776"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969773"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -29,7 +29,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
 
 ## <a name="extension-schema"></a>扩展架构
 
-以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体而言：  
+以下 JSON 显示 Key Vault VM 代理扩展的架构。 扩展不需要受保护的设置-其所有设置均被视为公用信息。 扩展需要一个列表，其中列出了监视的证书、轮询频率和目标证书存储。 具体来说：  
 
 ```json
     {
@@ -69,13 +69,13 @@ Key Vault VM 扩展支持以下版本的 Windows：
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| 发布者 | Microsoft.Azure.KeyVault | string |
-| type | KeyVaultForWindows | string |
+| 发布者 | Microsoft.Azure.KeyVault | 字符串 |
+| type | KeyVaultForWindows | 字符串 |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字符串 |
+| certificateStoreName | MY | 字符串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | LocalMachine | 字符串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
 
@@ -101,6 +101,7 @@ Key Vault VM 扩展支持以下版本的 Windows：
       "typeHandlerVersion": "1.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
+        "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
           "certificateStoreName": <certificate store name, e.g.: "MY">,
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,

@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a49c69b0f96add61501d9e2c5fc00ba564eba2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b1ccde2f1f92237978ab4e68acaa26393bbb9d8
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376769"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968285"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>请求访问 Azure AD 权限管理中的访问包
 
@@ -35,7 +35,7 @@ ms.locfileid: "78376769"
 
 **必备角色：** 者
 
-1. 查找使用的项目或业务经理发来的电子邮件或消息。 电子邮件应该包含指向需要访问的访问包的链接。 该链接从 `myaccess`开始，包括一个目录提示，并以访问包 ID 结尾。
+1. 查找使用的项目或业务经理发来的电子邮件或消息。 电子邮件应该包含指向需要访问的访问包的链接。 该链接从 `myaccess`开始，包括一个目录提示，并以访问包 ID 结尾。  （对于美国政府版，可以改为 `https://myaccess.microsoft.us` 域。）
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

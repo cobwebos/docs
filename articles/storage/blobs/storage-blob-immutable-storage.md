@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 55dbcc15afb12c03c98fb8d6e4e7f4acb269f620
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365320"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968153"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>将业务关键 blob 数据存储在不可变的存储中
 
@@ -68,7 +68,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 以下限制适用于保留策略：
 
 - 对于存储帐户，具有锁定的基于时间的不可变策略的容器的最大数目为10000。
-- 最小保留时间间隔为 1 天。 最大值为146000天（400年）。
+- 最小保留间隔为1天。 最大值为146000天（400年）。
 - 对于容器，为锁定的基于时间的不可变策略延长保留间隔的最大编辑次数为5。
 - 对于容器，每个锁定的策略最多保留7个基于时间的保留策略审核日志。
 
@@ -84,15 +84,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 基于时间的未锁定保留策略允许在任何时间启用和禁用 `allowProtectedAppendWrites` 设置。 锁定基于时间的保留策略后，不能更改 `allowProtectedAppendWrites` 设置。
 
-合法保留策略不能启用 `allowProtectedAppendWrites` 并且不允许新的块附加到追加 blob。 如果在启用 `allowProtectedAppendWrites` 的情况下将法律持有应用于基于时间的保留策略，则在提升法律持有之前， *AppendBlock* API 将会失败。
-
-> [!IMPORTANT] 
-> 基于时间的保留下的 "允许受保护的追加 blob 写入" 设置目前在以下区域中提供：
-> - 美国东部
-> - 美国中南部
-> - 美国西部 2
->
-> 目前，我们强烈建议你不要在除指定外的任何其他区域启用 `allowProtectedAppendWrites`，因为这可能会导致间歇性故障，并影响追加 blob 的符合性。 有关如何设置和锁定基于时间的保留策略的详细信息，请参阅[启用允许受保护的追加 blob 写入](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)。
+合法保留策略无法启用 `allowProtectedAppendWrites`，任何合法保留都将废除 "allowProtectedAppendWrites" 属性。 如果在启用 `allowProtectedAppendWrites` 的情况下将法律持有应用于基于时间的保留策略，则在提升法律持有之前， *AppendBlock* API 将会失败。
 
 ## <a name="legal-holds"></a>法定保留
 
@@ -110,7 +102,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 ## <a name="scenarios"></a>方案
 下表显示了针对不同不可变方案禁用的 Blob 存储操作的类型。 有关详细信息，请参阅[Azure Blob 服务 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)文档。
 
-|应用场景  |Blob 状态  |Blob 操作被拒绝  |容器和帐户保护
+|场景  |Blob 状态  |Blob 操作被拒绝  |容器和帐户保护
 |---------|---------|---------|---------|
 |Blob 的有效保留时间间隔尚未到期，并且/或者法定保留已设置     |不可变：不可删除和写入         | Put Blob<sup>1</sup>，put 块<sup>1</sup>，put 块列表<sup>1</sup>，删除容器，删除 blob，设置 blob 元数据，Put 页，设置 Blob 属性，快照 Blob，增量复制 Blob，追加块<sup>2</sup>         |容器删除被拒绝;存储帐户删除操作被拒绝         |
 |Blob 的有效保留间隔已过期，未设置合法保留    |仅仅不可写入（允许删除操作）         |Put Blob<sup>1</sup>，put 块<sup>1</sup>，put 块列表<sup>1</sup>，设置 blob 元数据，put 页面，设置 Blob 属性，快照 Blob，增量复制 Blob，追加块<sup>2</sup>         |如果受保护的容器中至少有1个 blob，则容器删除操作被拒绝;仅对*锁定*的基于时间的策略删除存储帐户         |
@@ -124,11 +116,11 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅[Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 **能否提供蠕虫符合性的文档？**
 
-可以。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估不可变的 Blob 存储及其与特定于金融服务行业。 Cohasset 验证当用于在蠕虫状态下保留基于时间的 Blob 时，不可变的 Blob 存储满足 CFTC 规则1.31 （c）-（d）、FINRA 规则4511和 SEC 规则17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫不可变性符合性的证明，请联系 Azure 支持。
+是的。 为了记录相容性，Microsoft 保留了一个领先的独立评估事务所，该公司专用于记录管理和信息管理、Cohasset 关联，以评估不可变的 Blob 存储及其与特定于金融服务行业。 Cohasset 验证当用于在蠕虫状态下保留基于时间的 Blob 时，不可变的 Blob 存储满足 CFTC 规则1.31 （c）-（d）、FINRA 规则4511和 SEC 规则17a-4 的相关存储要求。 Microsoft 以这组规则为目标，因为它们表示针对金融机构的记录保留内容的最具规范性指导。 [Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)提供了 Cohasset 报告。 若要从 Microsoft 请求有关蠕虫不可变性符合性的证明，请联系 Azure 支持。
 
 **此功能是否仅适用于块 blob 和追加 blob，或是否也适用于页 blob？**
 
@@ -140,7 +132,7 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **是否可以同时应用合法保留和基于时间的保留策略？**
 
-是的，容器可以同时具有法定保留和基于时间的保留策略。 该容器中的所有 Blob 会一直保持不可变状态，直至所有法定保留被清除，即使有效保留期已过。 与之相反，即使所有法定保留已被清除，Blob 也会保持不可变状态，直至有效保留期已过。
+是的，容器可以同时具有法定保留和基于时间的保留策略;但是，"allowProtectedAppendWrites" 设置将不会应用，直到清除了合法保留。 该容器中的所有 Blob 会一直保持不可变状态，直至所有法定保留被清除，即使有效保留期已过。 与之相反，即使所有法定保留已被清除，Blob 也会保持不可变状态，直至有效保留期已过。 
 
 **合法保留策略是否仅适用于法律程序或是否有其他使用情况？**
 
@@ -164,11 +156,11 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 **如果我无法付款，但我的保留时间间隔尚未到期，会发生什么情况？**
 
-在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。
+在未付款的情况下，会根据你与 Microsoft 签署的合同条款与条件应用常规的数据保留策略。 有关一般信息，请参阅 Microsoft 中的[数据管理](https://www.microsoft.com/en-us/trust-center/privacy/data-management)。 
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 
-可以。 首次创建基于时间的保留策略时，该策略处于*解锁*状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定策略可防止删除和修改保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
+是的。 首次创建基于时间的保留策略时，该策略处于*解锁*状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定策略可防止删除和修改保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
 
 **是否可以使用可变 blob 策略的软删除？**
 

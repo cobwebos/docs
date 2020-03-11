@@ -60,13 +60,13 @@ Visual Studio 与 Azure Functions Core Tools 集成，方便你使用完整的 F
 
         http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME> 
 
-2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面演示浏览器中函数返回的对远程 GET 请求的响应：
+2. 将 HTTP 请求的这个新 URL 粘贴到浏览器的地址栏中。 下面显示了该函数返回的远程GET请求在浏览器中的响应：
 
     ![浏览器中的函数响应](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-你已通过 Visual Studio 在 Azure 中创建和发布使用简单的 HTTP 触发函数的 C# 函数应用。 若要了解有关以 .NET 类库开发函数的详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
+你已经使用 Visual Studio 在 Azure 中创建和发布了一个带有简单的 HTTP 触发函数的 C# 函数应用。 若要了解有关以 .NET 类库开发函数的详细信息，请参阅 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
 > [!div class="nextstepaction"]
 > [将 Azure 存储队列绑定添加到函数](functions-add-output-binding-storage-queue-vs.md)

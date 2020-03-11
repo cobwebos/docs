@@ -16,13 +16,13 @@ ms.locfileid: "76756239"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>下载 Azure Kinect 人体跟踪 SDK
 
-本文档提供各版本 Azure Kinect 正文跟踪 SDK 的安装链接。
+本文档提供各版本 Azure Kinect 人体跟踪 SDK 的安装链接。
 
 ## <a name="azure-kinect-body-tracking-sdk-contents"></a>Azure Kinect 人体跟踪 SDK 的内容
 
-- 标头和库，用于通过 Azure Kinect DK 生成人体跟踪应用程序。
-- 使用 Azure Kinect DK 的人体跟踪应用程序所需的可分发 DLL。
-- 示例人体跟踪应用程序。
+- 使用 Azure Kinect DK 生成人体跟踪应用程序的头文件和库。
+- 使用 Azure Kinect DK 的人体跟踪应用程序所需的可再发行 DLL。
+- 人体跟踪应用程序示例。
 
 ## <a name="windows-download-links"></a>Windows 下载链接
 
@@ -53,7 +53,7 @@ ms.locfileid: "76756239"
 
 > [!NOTE]
 > 安装 SDK 时，请记住要安装到的路径。 例如，“C:\Program Files\Azure Kinect Body Tracking SDK 1.0.0”。 你将要在此路径中查找文章中参考的示例。
-> 正文跟踪示例位于 Azure-Kinect-Samples 存储库的 [body-tracking-samples](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples) 文件夹中。 你将在此处的文章中找到参考的示例。
+> 正文跟踪示例位于 Azure-Kinect-Samples 存储库的 [body-tracking-samples](https://github.com/microsoft/Azure-Kinect-Samples/tree/master/body-tracking-samples) 文件夹中。 你将找到这些文章中参考的示例。
 
 ## <a name="change-log"></a>更改日志
 
@@ -108,7 +108,7 @@ ms.locfileid: "76756239"
 * [API 更改] 已将 `k4abt_tracker_queue_capture()` 重命名为 `k4abt_tracker_enqueue_capture()`
 * [API 更改] 已将 `k4abt_frame_get_body()` 划分为两个单独的函数：`k4abt_frame_get_body_skeleton()` 和 `k4abt_frame_get_body_id()`。 现在，无需复制整个主干结构即可查询人体 ID。
 * [API 更改] 添加了 `k4abt_frame_get_timestamp_usec()` 函数用于简化用户查询人体帧时间戳的步骤。
-* 进一步改进了人体跟踪算法的准确性和跟踪可靠性
+* 进一步改进了人体跟踪算法的准确性和跟踪可靠性。
 
 ## <a name="next-steps"></a>后续步骤
 

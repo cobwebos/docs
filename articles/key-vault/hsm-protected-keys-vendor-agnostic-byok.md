@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 08a4330f4a786deca8ddb2f1c6803b29152e7f50
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207024"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080129"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>将受 HSM 保护的密钥导入到 Key Vault（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "78207024"
 * KEK 必须位于将导入目标密钥的同一密钥保管库中。
 * 将 BYOK 文件上传到 Key Vault 时，Key Vault HSM 使用 KEK 私钥来解密目标密钥材料，并将其作为 HSM 密钥导入。 此操作完全在 Key Vault HSM 内发生。 目标密钥始终保留在 HSM 保护边界内。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 下表列出了在 Azure Key Vault 中使用 BYOK 的先决条件：
 
@@ -58,9 +58,11 @@ ms.locfileid: "78207024"
 
 ## <a name="supported-hsms"></a>支持的 Hsm
 
-|HSM 供应商名称|支持的 HSM 模型|详细信息|
-|---|---|---|
-|Thales|SafeNet Luna HSM 7 系列固件版本7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|供应商名称|供应商类型|支持的 HSM 模型|详细信息|
+|---|---|---|---|
+|Thales|制造商|SafeNet Luna HSM 7 系列固件版本7.3 或更高版本| [SafeNet Luna BYOK 工具和文档](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Fortanix|HSM 即服务|自我防御密钥管理服务（SDKMS）|[将 SDKMS 密钥导出到 BYOK 的云提供程序-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+
 
 > [!NOTE]
 > 若要从 Hsm 的 nCipher nShield 系列导入受 HSM 保护的密钥，请使用[旧版 BYOK 过程](hsm-protected-keys-legacy.md)。

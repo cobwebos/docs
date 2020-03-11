@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: e4fc3555d7d880dcbd4f76d8f507300e98c237db
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5f481ebf219eea8ae31e9802144bbf771a24e8b8
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718362"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081771"
 ---
 # <a name="limits-and-quotas"></a>限制和配额
 
@@ -27,7 +27,7 @@ ms.locfileid: "73718362"
 |-----|-----|-----|
 |项目|2|100|
 |每项目训练图像数 |5,000|100,000|
-|预测/月|10,000 |不受限制|
+|预测/月|10,000 |无限制|
 |标记/项目|50|500|
 |迭代 |10|10|
 |每个标记的最小标记图像，分类（建议使用50个） |5|5|
@@ -42,8 +42,8 @@ ms.locfileid: "73718362"
 |最大图像高度/宽度（以像素为单位）|不受限制|不受限制|
 |最大图像大小（训练图像上传） |6 MB|6 MB|
 |最大图像大小（预测）|4 MB|4 MB|
-|每个对象的最大区域检测培训图像|200|200|
-|每个分类的最大标记图像|30|30|
+|每个对象的最大区域检测培训图像|300|300|
+|每个分类的最大标记图像|100|100|
 
 > [!NOTE]
 > 小于256像素的图像将被接受，但升级。

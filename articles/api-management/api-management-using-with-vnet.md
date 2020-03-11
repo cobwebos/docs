@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/05/2020
+ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: c5a1aaac0edea1e5ab2e6cdf35f91f61eed23db5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 62e8c174cd10a003657093b805291e003a9ede1b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374926"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78967922"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将多个 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "78374926"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -108,21 +108,21 @@ ms.locfileid: "78374926"
 
 <a name="required-ports"></a>在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
-| 源 / 目标端口 | Direction          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
+| 源 / 目标端口 | 方向          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | 入站            | TCP                | INTERNET / VIRTUAL_NETWORK            | 客户端与 API 管理的通信                      | 外部             |
 | * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 Powershell 的管理终结点         | 外部和内部  |
 | * / 80, 443                  | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | **与 Azure 存储的依赖关系**                             | 外部和内部  |
-| * / 80, 443                  | 出站           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory（如果适用）                   | 外部和内部  |
+| * / 80, 443                  | 出站           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | [Azure Active Directory](api-management-howto-aad.md) （如果适用）                   | 外部和内部  |
 | * / 1433                     | 出站           | TCP                | VIRTUAL_NETWORK / SQL                 | **访问 Azure SQL 终结点**                           | 外部和内部  |
-| */5671、5672、443          | 出站           | TCP                | VIRTUAL_NETWORK / EventHub            | 事件中心策略日志和监视代理的依赖项 | 外部和内部  |
-| * / 445                      | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | 与适用于 GIT 的 Azure 文件共享的依赖关系                      | 外部和内部  |
+| */5671、5672、443          | 出站           | TCP                | VIRTUAL_NETWORK / EventHub            | [日志到事件中心策略](api-management-howto-log-event-hubs.md)和监视代理的依赖项 | 外部和内部  |
+| * / 445                      | 出站           | TCP                | VIRTUAL_NETWORK / Storage             | 适用于[GIT](api-management-configuration-repository-git.md)的 Azure 文件共享的依赖关系                      | 外部和内部  |
 | * / 1886                     | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 需要为发布到资源运行状况的运行状况状态          | 外部和内部  |
-| * / 443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 发布诊断日志和指标                        | 外部和内部  |
+| * / 443                     | 出站           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 发布[诊断日志和指标](api-management-howto-use-azure-monitor.md)                       | 外部和内部  |
 | */25                       | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | */587                      | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
 | * / 25028                    | 出站           | TCP                | VIRTUAL_NETWORK/INTERNET            | 连接到 SMTP 中继以发送电子邮件                    | 外部和内部  |
-| * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 访问 RoleInstance 之间的 Azure Redis 缓存实例          | 外部和内部  |
+| * / 6381 - 6383              | 入站和出站 | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | 在计算机之间访问[速率限制](api-management-access-restriction-policies.md#LimitCallRateByKey)策略的 Redis 服务         | 外部和内部  |
 | * / *                        | 入站            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure 基础结构负载均衡器                          | 外部和内部  |
 
 >[!IMPORTANT]
@@ -136,9 +136,12 @@ ms.locfileid: "78374926"
 
     | Azure 环境 | 终结点                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net （**新**）</li><li>prod.warmpath.msftcloudes.com （**不推荐使用**）</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
-    | Azure 中国世纪互联     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net （**新**）</li><li>prod.warmpath.msftcloudes.com （**不推荐使用**）</li><li>shoebox2.metrics.microsoftmetrics.com （**新**）</li><li>shoebox2.metrics.nsatc.net （**不推荐使用**）</li><li>prod3.metrics.microsoftmetrics.com （**新**）</li><li>prod3.metrics.nsatc.net （**不推荐使用**）</li><li>prod3-black.prod3.metrics.microsoftmetrics.com （**新**）</li><li>prod3-black.prod3.metrics.nsatc.net （**不推荐使用**）</li><li>prod3-red.prod3.metrics.microsoftmetrics.com （**新**）</li><li>prod3-red.prod3.metrics.nsatc.net （**不推荐使用**）</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com，其中 `East US 2` 是 eastus2.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com （**新**）</li><li>shoebox2.metrics.nsatc.net （**不推荐使用**）</li><li>prod3.metrics.microsoftmetrics.com （**新**）</li><li>prod3.metrics.nsatc.net （**不推荐使用**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure 中国世纪互联     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com （**新**）</li><li>shoebox2.metrics.nsatc.net （**不推荐使用**）</li><li>prod3.metrics.microsoftmetrics.com （**新**）</li><li>prod3.metrics.nsatc.net （**不推荐使用**）</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+
+>[!IMPORTANT]
+> 将上述群集的**nsatc.net**更改为**microsoftmetrics.com**的主要是 dns 更改。 群集的 IP 地址将不会更改。
 
 + **Smtp 中继**： smtp 中继的出站网络连接，可在主机 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com` 和 `ies.global.microsoft.com` 下解析
 

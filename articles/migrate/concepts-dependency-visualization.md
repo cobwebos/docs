@@ -3,12 +3,12 @@ title: Azure Migrate 中的依赖项可视化
 description: 概述中的服务器评估服务中的评估计算 Azure Migrate
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: f24656d02e19f422ff26e6b06d1631a9128dff43
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361812"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082132"
 ---
 # <a name="dependency-visualization"></a>依赖项可视化
 
@@ -55,7 +55,7 @@ ms.locfileid: "78361812"
 **受支持的操作系统** | 查看无代理可视化所支持的[操作系统](migrate-support-matrix-vmware.md#agentless-dependency-visualization)。
 **VM** | **Vmware 工具**：必须在要分析的 vm 上安装并运行 vmware 工具。<br/><br/> **帐户**：在 Azure Migrate 设备上，你需要添加可用于访问用于分析的 vm 的用户帐户。<br/><br/> **Windows vm**：用户帐户必须是计算机上的本地或域管理员。<br/><br/> **Linux vm**：帐户需要 root 权限。 此外，用户帐户需要/bin/netstat 和/bin/ls 文件上的以下两个功能： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。 | [了解](migrate-appliance.md)Azure Migrate 设备。
 **VMware** | **vCenter**：设备需要具有只读访问权限的 vCenter Server 帐户，并为虚拟机启用 > 来宾操作的特权。<br/><br/> **ESXi 主机**：在运行要分析的 Vm 的 ESXi 主机上，Azure Migrate 设备必须能够连接到 TCP 端口443。
-**收集的数据** |  无代理依赖项可视化的工作原理是从启用了它的计算机捕获 TCP 连接数据。 启动依赖项发现后，设备会每五分钟轮询一次，从计算机中收集这些数据：<br/> -TCP 连接。<br/> -具有活动连接的进程的名称。<br/> -运行具有活动连接的进程的已安装应用程序的名称。<br/> -在每个轮询间隔检测到的连接数。
+**收集的数据** |  无代理依赖项分析通过从启用了它的计算机捕获 TCP 连接数据来工作。 启用依赖项发现后，设备每隔5分钟从来宾 Vm 收集 TCP 连接数据。 此数据通过 vCenter Server 使用 vSphere Api 从来宾 Vm 收集。 收集的数据将在设备上进行处理，以推导出依赖关系信息，并每隔6小时发送到 Azure Migrate。 将从每台计算机中收集以下数据： <br/> -具有活动连接的进程的名称。<br/> -运行具有活动连接的进程的应用程序的名称。<br/> -活动连接上的目标端口。
 
 
 ## <a name="next-steps"></a>后续步骤

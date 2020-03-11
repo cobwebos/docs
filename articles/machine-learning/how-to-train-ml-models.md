@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 11/08/2019
+ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942238"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79078479"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "75942238"
 
 ### <a name="single-node-training"></a>单节点训练
 
-对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应已创建[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 和[数据存储](how-to-access-data.md)对象 `ds`。
+对在 Azure 中的远程计算上为 scikit 学习模型运行的单节点训练使用 `Estimator`。 应该已经创建了[计算目标](how-to-set-up-training-targets.md#amlcompute)对象 `compute_target` 并且[FileDataset](how-to-create-register-datasets.md)对象 `ds`。
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +58,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 此代码片段指定了 `Estimator` 构造函数的以下参数。
 
-参数 | Description
+参数 | 说明
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹将从您的本地计算机复制到远程计算。
 `script_params`| 指定要传递给训练脚本 `entry_script`的命令行参数的字典，格式为 `<command-line argument, value>` 对。 若要在 `script_params`中指定详细标志，请使用 `<command-line argument, "">`。
@@ -68,7 +68,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 构造函数有另一个名为 `pip_packages` 的参数，用于所需的任何 pip 包。
 
-创建了 `Estimator` 对象后，请提交要在远程计算上通过调用[实验](concept-azure-machine-learning-architecture.md#experiments)对象 `experiment` 上的 `submit` 函数来运行的训练作业。 
+创建了 `Estimator` 对象后，请提交要在远程计算上通过调用`submit`实验[对象 ](concept-azure-machine-learning-architecture.md#experiments) 上的 `experiment` 函数来运行的训练作业。 
 
 ```Python
 run = experiment.submit(sk_est)
@@ -76,7 +76,7 @@ print(run.get_portal_url())
 ```
 
 > [!IMPORTANT]
-> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 `./outputs` 和 `./logs`）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限。
+> **特殊文件夹**两个文件夹 *outputs* 和 *logs* 接收 Azure 机器学习的特殊处理。 在训练期间，如果将文件写入相对于根目录（分别为 *和*）的名为 outputs 和 logs 的文件夹，则会将这些文件自动上传到运行历史记录，以便在完成运行后对其具有访问权限`./outputs``./logs`。
 >
 > 要在训练期间创建项目（如模型文件、检查点、数据文件或绘制的图像），请将其写入 `./outputs` 文件夹。
 >
@@ -110,7 +110,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 上述代码显示了 `Estimator` 构造函数的以下新参数：
 
-参数 | Description | 默认
+参数 | 说明 | 默认
 --|--|--
 `custom_docker_image`| 要使用的映像的名称。 仅提供公共 docker 存储库（这种情况下为 Docker 中心）中可用的映像。 若要使用专用 docker 存储库中的映像，请改为使用构造函数的 `environment_definition` 参数。 [请参阅示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)。 | `None`
 `node_count`| 要用于训练作业的节点数。 | `1`

@@ -14,41 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162440"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082789"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用资源管理器模板部署专色 Vm
 
 使用[污点 vm](spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
-基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 
+基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。
 
 你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位来设置专色 VM 的最大价格（美元）。 例如，值 `0.98765`的最大价格为 $0.98765 美元/小时。 如果将最大价格设置为 `-1`，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。 有关设置最大价格的详细信息，请参阅[污点 vm-定价](spot-vms.md#pricing)。
 
 > [!IMPORTANT]
 > 污点实例当前为公共预览版。
-> 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 不建议将此预览版本用于生产工作负荷。 某些功能可能不受支持或者受限。
+> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 >
 
+## <a name="use-a-template"></a>使用模板
 
-
-## <a name="use-a-template"></a>使用模板 
-
-对于 "部署点模板"，请使用`"apiVersion": "2019-03-01"` 或更高版本。 将 `priority`、`evictionPolicy` 和 `billingProfile` 属性添加到模板中： 
+对于 "部署点模板"，请使用`"apiVersion": "2019-03-01"` 或更高版本。 将 `priority`、`evictionPolicy` 和 `billingProfile` 属性添加到模板中：
 
 ```json
-                "priority": "Spot",
-                "evictionPolicy": "Deallocate",
-                "billingProfile": {
-                    "maxPrice": -1
-                }
+"priority": "Spot",
+"evictionPolicy": "Deallocate",
+"billingProfile": {
+    "maxPrice": -1
+}
 ```
-
-
 
 下面是一个示例模板，其中包含为专色 VM 添加的属性。 将资源名称替换为自己的名称，将 `<password>` 替换为 VM 上本地管理员帐户的密码。
 
@@ -163,7 +160,7 @@ ms.locfileid: "77162440"
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
-                }               
+                }
             }
         },
         {

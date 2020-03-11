@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: keli19
-author: likebupt
+ms.author: sihhu
+author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5527d58f140074279d6b9feac13803f29eb0bda5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 36d622bf2873b7e629a0f6abeecded33e32898f5
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396197"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081973"
 ---
 # <a name="access-data-in-azure-storage-services"></a>访问 Azure 存储服务中的数据
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "78396197"
 
 ## <a name="prerequisites"></a>必备条件
 需要：
-- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始操作前先创建一个免费帐户。 试用[Azure 机器学习免费或付费版本](https://aka.ms/AMLFree)。
 
 - 使用[azure blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或[azure 文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)的 azure 存储帐户。
 

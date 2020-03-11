@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312424"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037624"
 ---
-# <a name="what-is-azure-machine-learning-designer"></a>什么是 Azure 机器学习设计器？ 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>什么是 Azure 机器学习设计器（预览）？ 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Azure 机器学习设计器使您能够以可视方式连接交互式画布上的[数据集](#datasets)和[模块](#module)，以创建机器学习模型。 若要了解如何开始设计设计器，请参阅[教程：利用设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
@@ -116,7 +116,7 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>从可视界面移到设计器
 
-视觉对象接口（预览版）已更新，现在 Azure 机器学习设计器中。 设计器已重建使用基于管道的后端，该后端与 Azure 机器学习的其他功能完全集成。 
+视觉对象界面（预览）已更新，现在 Azure 机器学习设计器（预览）。 设计器已重建使用基于管道的后端，该后端与 Azure 机器学习的其他功能完全集成。 
 
 由于这些更新的原因，视觉对象界面的一些概念和术语已更改或重命名。 有关最重要的概念更改，请参阅下表。 
 
@@ -135,13 +135,5 @@ Azure 机器学习设计器使您能够以可视方式连接交互式画布上�
 ## <a name="next-steps"></a>后续步骤
 
 * 了解有关预测分析和机器学习的基本知识[教程：通过设计器预测汽车价格](tutorial-designer-automobile-price-train-score.md)
-* 使用其中一个示例并进行修改以满足你的需求：
-
-- [示例 1-回归：预测汽车的价格](how-to-designer-sample-regression-automobile-price-basic.md)
-- [示例 2-回归：比较汽车价格预测的算法](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [示例 3-通过功能选择进行分类：收入预测](how-to-designer-sample-classification-predict-income.md)
-- [示例 4-分类：预测信用风险（区分成本）](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [示例 5-分类：预测改动](how-to-designer-sample-classification-churn.md)
-- [示例 6-分类：预测航班延迟](how-to-designer-sample-classification-flight-delay.md)
-- [示例 7-文本分类：维基百科 SP 500 数据集](how-to-designer-sample-text-classification.md)
+* 了解如何修改现有[设计器示例](samples-designer.md)以根据需要对其进行调整。
 

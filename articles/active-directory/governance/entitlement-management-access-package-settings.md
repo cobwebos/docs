@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d32bf26def6832f51b4e09c697bca885162dc2
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ea90032b1f0cfe598ffdb3d35448a996f3111036
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174417"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968764"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接，以在 Azure AD 权利管理中请求访问包
 
@@ -41,7 +41,7 @@ ms.locfileid: "73174417"
 
     ![访问包概述 - 我的访问权限门户链接](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 该链接从 `myaccess` 开始，包括一个目录提示，以访问包 ID 结尾。
+    将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 该链接从 `myaccess`开始，包括一个目录提示，并以访问包 ID 结尾。  （对于美国政府版，将 `myaccess.microsoft.us`"我的 Access 门户" 链接中的域。）
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

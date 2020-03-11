@@ -9,22 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 6e05dc2136211bcd15a9f0583358b05ccbf96f5a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 65033f9b6599d690b1097b4b78aa01148a40fc39
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383164"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037511"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
 容器使你能够在自己的环境中运行文本分析 Api，这非常适合你的特定安全和数据管理要求。 文本分析容器提供对原始文本的高级自然语言处理，并包括三个主要功能：情绪分析、关键短语提取和语言检测。 容器当前不支持实体链接。
 
-如果还没有 Azure 订阅，可以在开始前创建一个 [免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+> [!IMPORTANT]
+> 免费帐户限制为每月5000个事务，并且只有**免费**和**标准**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定价层<span class="docon docon-navigate-external x-hidden-focus"></span> </a>对容器有效。 有关事务请求速率的详细信息，请参阅[数据限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
+
+## <a name="prerequisites"></a>必备条件
 
 若要运行任何文本分析容器，你必须拥有主机计算机和容器环境。
 
@@ -32,7 +35,7 @@ ms.locfileid: "74383164"
 
 使用文本分析容器之前，必须满足以下先决条件：
 
-|必需|目的|
+|必选|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -48,21 +51,21 @@ ms.locfileid: "74383164"
 
 下表描述了每个文本分析容器的 CPU 和内存配置，其中包括要分配的最少和建议 CPU 核心数（至少 2.6 GHz）和内存量 (GB)。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[关键短语提取](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-requirements](../includes/key-phrase-extraction-container-requirements.md)]
 
-# <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [language-detection-container-requirements](../includes/language-detection-container-requirements.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-requirements](../includes/sentiment-analysis-container-requirements.md)]
 
 ***
 
-* 每个核心至少必须为 2.6 GHz 或更快。
+* 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
 * TPS - 每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
@@ -71,15 +74,15 @@ ms.locfileid: "74383164"
 
 Microsoft 容器注册表中提供了文本分析的容器映像。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[关键短语提取](#tab/keyphrase)
 
 [!INCLUDE [key-phrase-extraction-container-repository](../includes/key-phrase-extraction-container-repository.md)]
 
-# <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [language-detection-container-repository](../includes/language-detection-container-repository.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [sentiment-analysis-container-repository](../includes/sentiment-analysis-container-repository.md)]
 
@@ -89,15 +92,15 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 ### <a name="docker-pull-for-the-text-analytics-containers"></a>用于文本分析容器的 Docker 请求
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[关键短语提取](#tab/keyphrase)
 
 [!INCLUDE [docker-pull-key-phrase-extraction-container](../includes/docker-pull-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [docker-pull-sentiment-analysis-container](../includes/docker-pull-sentiment-analysis-container.md)]
 
@@ -114,17 +117,17 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 有关如何获取 `{ENDPOINT_URI}` 和 `{API_KEY}` 值的详细信息，请参阅[收集必需的参数](#gathering-required-parameters)。
 
-[ 命令的](../text-analytics-resource-container-config.md#example-docker-run-commands)示例`docker run`可用。
+`docker run` 命令的[示例](../text-analytics-resource-container-config.md#example-docker-run-commands)可用。
 
-# <a name="key-phrase-extractiontabkeyphrase"></a>[关键短语提取](#tab/keyphrase)
+# <a name="key-phrase-extraction"></a>[关键短语提取](#tab/keyphrase)
 
 [!INCLUDE [docker-run-key-phrase-extraction-container](../includes/docker-run-key-phrase-extraction-container.md)]
 
-# <a name="language-detectiontablanguage"></a>[语言检测](#tab/language)
+# <a name="language-detection"></a>[语言检测](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="sentiment-analysistabsentiment"></a>[情绪分析](#tab/sentiment)
+# <a name="sentiment-analysis"></a>[情绪分析](#tab/sentiment)
 
 [!INCLUDE [docker-run-sentiment-analysis-container](../includes/docker-run-sentiment-analysis-container.md)]
 
@@ -167,7 +170,7 @@ Microsoft 容器注册表中提供了文本分析的容器映像。
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Summary
+## <a name="summary"></a>总结
 
 在本文中，我们已学习相关的概念，以及文本分析容器的下载、安装和运行工作流。 综上所述：
 

@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 7874a6b274939c233dd1c4e6d146df2a9a409e65
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cd4ff97902b1ce3d1d5a0ea066608fd33e6bf697
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833992"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037100"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>在 Kubernetes 和 Helm 中使用语音服务容器
 
 在本地管理语音容器的一个选项是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定义语音到文本和文本到语音的容器映像，我们将创建一个 Kubernetes 包。 此包将部署到本地的 Kubernetes 群集。 最后，我们将探讨如何测试已部署的服务和各种配置选项。 有关在没有 Kubernetes 业务流程的情况下运行 Docker 容器的详细信息，请参阅[安装和运行语音服务容器](speech-container-howto.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在本地使用语音容器之前的先决条件如下：
 
-|需要|用途|
+|必选|目的|
 |--|--|
 | Azure 帐户 | 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][free-azure-account]。 |
 | 容器注册表访问 | 为了使 Kubernetes 能够将 docker 映像提取到群集中，需要访问容器注册表。 |

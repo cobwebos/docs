@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 8e170c27923d2bb091c4121e350809b85e4c48a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f56717c086f005b1155988e2041ff2e717e047f2
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452106"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79081686"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
@@ -205,6 +205,7 @@ ClusterManifest.xml
 * 指标是 Service Fabric 群集资源管理器在群集中管理消耗和容量的方式。 若要详细了解指标及其配置方式，请查看[本文](service-fabric-cluster-resource-manager-metrics.md)
 * 移动成本是向群集 Resource Manager 发出信号，表示移动某些服务比移动其他服务会产生更高成本的方式之一。 若要了解有关移动成本的详细信息，请参阅[此文](service-fabric-cluster-resource-manager-movement-cost.md)
 * 群集 Resource Manager 提供多个限制机制，可以配置这些限制机制，以减慢群集中的流动。 这些限制通常不是必要的，但如果需要，可以在[此处](service-fabric-cluster-resource-manager-advanced-throttling.md)了解其相关信息
+* 群集资源管理器可以识别和处理子群集（这种情况下，当你使用放置约束和平衡时，有时会出现这种情况）。 若要了解子群集如何影响均衡以及如何处理它，请参阅[此处](service-fabric-cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

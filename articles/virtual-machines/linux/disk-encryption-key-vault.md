@@ -1,18 +1,18 @@
 ---
 title: 为 Azure 磁盘加密创建和配置密钥保管库
 description: 本文介绍如何创建和配置用于 Azure 磁盘加密的密钥保管库
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: article
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 90306c55d976670f432d146d94764c4d90b8667d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a818d9fe9707d1789fbe8e77489fc380fd2c92dd
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828499"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970626"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>为 Azure 磁盘加密创建和配置密钥保管库
 
@@ -135,7 +135,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
      ```
 
 ###  <a name="azure-powershell"></a>Azure PowerShell
- 使用 Key Vault PowerShell cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) 为 Key Vault 启用磁盘加密。
+ 使用密钥保管库 PowerShell cmdlet [AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)为密钥保管库启用磁盘加密。
 
   - **为磁盘加密启用 Key Vault：** 需要使用 EnabledForDiskEncryption 来启用 Azure 磁盘加密。
       
@@ -160,7 +160,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
 1. 选择密钥保管库，中转到 "**访问策略**"，然后**单击 "显示高级访问策略**"。
 2. 选中标有“启用对 Azure 磁盘加密的访问以进行卷加密”的框。
 3. 根据需要选择“启用对 Azure 虚拟机的访问以进行部署”和/或“启用对 Azure 资源管理器的访问以进行模板部署”。 
-4. 单击“保存”。
+4. 单击“ **保存**”。
 
     ![Azure Key Vault 高级访问策略](./media/disk-encryption/keyvault-portal-fig4.png)
 

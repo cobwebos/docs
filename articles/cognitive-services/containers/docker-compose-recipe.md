@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 54a2aac3db47d60f02a45adae9aaa6077d675a43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bfbaa03469ee04ff900a215aadd8c814efcba761
+ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716891"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79037517"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
 
@@ -23,7 +23,7 @@ ms.locfileid: "76716891"
 
 > [Docker Compose](https://docs.docker.com/compose/)是一种用于定义和运行多容器 Docker 应用程序的工具。 使用 YAML 文件来配置应用程序的服务。 然后，通过运行单个命令从配置创建和启动所有服务。
 
-在单台主机计算机上协调多个容器映像可能会很有用。 在本文中，我们将识别文本和窗体识别器容器组合在一起。
+在单台主机计算机上协调多个容器映像可能会很有用。 在本文中，我们会将读取和窗体识别器容器组合在一起。
 
 ## <a name="prerequisites"></a>必备条件
 
@@ -70,11 +70,11 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text"
+    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
     environment:
       eula: accept
-      apikey: # < Your recognize text API key >
-      billing: # < Your recognize text billing URL >
+      apikey: # < Your computer vision API key >
+      billing: # < Your computer vision billing URL >
     ports:
       - "5021:5000"
 ```
@@ -87,9 +87,9 @@ services:
 使用 Docker Compose 文件可以管理定义的服务生命周期中的所有阶段：启动、停止和重新生成服务;查看服务状态;和日志流式处理。 从项目目录中打开一个命令行接口（docker yaml 文件所在的位置）。
 
 > [!NOTE]
-> 若要避免错误，请确保主机计算机与 Docker 引擎正确共享驱动器。 例如，如果将 E:\publicpreview 用作 docker yaml 文件中的目录，请将驱动器 E 与 Docker 共享。
+> 若要避免错误，请确保主机计算机与 Docker 引擎正确共享驱动器。 例如，如果将*E:\publicpreview*用作*docker yaml*文件中的目录，请将驱动器**E**与 docker 共享。
 
-在命令行界面中，执行以下命令以启动（或重新启动） docker yaml 文件中定义的所有服务：
+在命令行界面中，执行以下命令以启动（或重新启动） *docker yaml*文件中定义的所有服务：
 
 ```console
 docker-compose up
@@ -113,8 +113,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:)...
-latest: Pulling from microsoft/cognitive-services-recognize-text
+Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
+latest: Pulling from microsoft/cognitive-services-read
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -167,18 +167,12 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
 2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text    latest
+4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
 ```
 
-### <a name="test-the-recognize-text-container"></a>测试识别文本容器
+### <a name="test-containers"></a>测试容器
 
-在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5021/swagger/index.html）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试识别文本终结点。
-
-![识别文本容器](media/recognize-text-swagger-page.png)
-
-### <a name="test-the-form-recognizer-container"></a>测试窗体识别器容器
-
-在主计算机上打开浏览器，并使用 yaml 文件中的指定端口（如 http://localhost:5010/swagger/index.html）来使用**localhost** 。 可以使用 API 中的 "试用" 功能来测试窗体识别器终结点。
+在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（如 http://localhost:5021/swagger/index.html）来使用**localhost** 。 例如，可以在 API 中使用 "**尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
 
 ![窗体识别器容器](media/form-recognizer-swagger-page.png)
 

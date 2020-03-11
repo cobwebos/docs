@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 49959ff12744f28e930959c43a449800c76818f5
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114229"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969797"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -32,7 +32,7 @@ ms.locfileid: "77114229"
 ## <a name="known-issues"></a>已知问题
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
+> 你可以使用[Azure 门户](https://portal.azure.com/)来管理 V3[实时事件](live-events-outputs-concept.md)，查看 v3[资产](assets-concept.md)，获取有关访问 api 的信息。 对于所有其他管理任务（例如，转换和作业），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
 
 有关详细信息，请参阅[有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md#known-issues)。
  

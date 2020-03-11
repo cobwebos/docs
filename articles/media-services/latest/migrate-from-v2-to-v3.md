@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/28/2020
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393512"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082641"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -31,7 +31,7 @@ ms.locfileid: "78393512"
 如果你目前基于[旧版媒体服务 v2 API](../previous/media-services-overview.md) 开发了一个视频服务，则在迁移到 v3 API 之前，应查看以下指导原则和注意事项。 v3 API 中的许多优势和新功能可以改进开发体验和媒体服务的功能。 但是，如本文的[已知问题](#known-issues)部分中所述，API 版本的变化也带来了一些限制。 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。 
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+> 你可以使用[Azure 门户](https://portal.azure.com/)管理 V3[实时事件](live-events-outputs-concept.md)、查看（不管理） v3[资产](assets-concept.md)、获取有关访问 api 的信息。 有关更多详细信息，请参阅[常见问题解答](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources)。 
 
 ## <a name="benefits-of-media-services-v3"></a>媒体服务 v3 的优势
   
@@ -131,7 +131,13 @@ ms.locfileid: "78393512"
 
 ## <a name="known-issues"></a>已知问题
 
-* 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-sdk)、CLI 或支持的 SDK 之一。
+*  目前，可以使用[Azure 门户](https://portal.azure.com/)执行以下操作：
+
+    * 管理媒体服务 v3[实时事件](live-events-outputs-concept.md)， 
+    * 查看（不管理） v3[资产](assets-concept.md)， 
+    * [获取有关访问 api 的信息](access-api-portal.md)。 
+
+对于所有其他管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
 * 需要在帐户中预配媒体预留单位 (MRU) 才能控制作业的并发和性能，特别是涉及到视频或音频分析的那些作业。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 可以使用[适用于媒体服务 v3 的 CLI 2.0](media-reserved-units-cli-how-to.md)、使用 [Azure 门户](../previous/media-services-portal-scale-media-processing.md)或 [v2 API](../previous/media-services-dotnet-encoding-units.md) 来管理 MRU。 无论使用的是媒体服务 v2 还是 v3 API，都需要预配 MRU。
 * 无法使用 v2 API 来管理通过 v3 API 创建的媒体服务实体。  
 * 并非 V2 API 中的所有实体会自动显示在 V3 API 中。  下面是两个不兼容的版本中的实体示例：  

@@ -1,18 +1,19 @@
 ---
-title: 故障排除-适用于 Linux Vm 的 Azure 磁盘加密
+title: Linux Vm 的 Azure 磁盘加密故障排除
 description: 本文提供了有关 Microsoft Azure Linux Vm 的磁盘加密的故障排除提示。
 author: msmbaldwin
-ms.service: security
+ms.service: virtual-machines-linux
+ms.subservice: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd21b6520dc68a6f7faa5500054b2865556e3dfb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205902"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970483"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
 

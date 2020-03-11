@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: 78ec5b6d330f03d78dcb4e798b23d588fd93398e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5281dab8fd42326d88964614fd20a81621b5e9dd
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387183"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082409"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -33,7 +33,10 @@ Blob 存储将事件发送到事件网格，通过丰富的重试策略和死信
 |PowerShell    |[快速入门：通过 PowerShell 将存储事件路由到 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Azure CLI    |[快速入门：将存储事件路由到具有 Azure CLI 的 web 终结点](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
-如果你的帐户具有分层命名空间，本教程将演示如何在 Azure Databricks 中连接事件网格订阅、Azure 函数和[作业](https://docs.azuredatabricks.net/user-guide/jobs.html)：[教程：使用 Azure Data Lake Storage Gen2 事件来更新 Databricks 增量表](data-lake-storage-events.md)。
+若要深入了解使用 Azure 函数对 Blob 存储事件做出反应的详细示例，请参阅以下文章：
+
+- [教程：使用 Azure Data Lake Storage Gen2 事件更新 Databricks 增量表](data-lake-storage-events.md)。
+- [教程：使用事件网格自动调整已上传图像的大小](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
 > 只有种类为“StorageV2 (常规用途 v2)”和“BlobStorage”的存储帐户支持事件集成。 “存储(常规用途 v1)”不支持与事件网格集成。
@@ -93,7 +96,8 @@ Blob 存储事件使用者使用的格式：
 > [!div class="checklist"]
 > * 由于可将多个订阅配置为将事件路由至相同的事件处理程序，因此请勿假定事件来自特定的源，而是应检查消息的主题，确保它来自所期望的存储帐户。
 > * 同样，检查 eventType 是否为准备处理的项，并且不假定所接收的全部事件都是期望的类型。
-> * 消息在一段延迟时间后会无序到达，请使用 etag 字段来了解对象的相关信息是否是最新的。  此外，还可使用 sequencer 字段来了解任何特定对象的事件顺序。
+> * 当消息可以在延迟后到达后，请使用 etag 字段来了解有关对象的信息是否仍然是最新的。 若要了解如何使用 etag 字段，请参阅[在 Blob 存储中管理并发](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)。 
+> * 当消息可以不按顺序到达时，使用 sequencer 字段来了解任何特定对象上事件的顺序。 Sequencer 字段是一个字符串值，表示任何特定 blob 名称的事件的逻辑顺序。 您可以使用标准字符串比较来了解同一 blob 名称上的两个事件的相对顺序。
 > * 使用 blobType 字段可了解 blob 中允许何种类型的操作，以及应当使用哪种客户端库类型来访问该 blob。 有效值为 `BlockBlob` 或 `PageBlob`。 
 > * 将 URL 字段与 `CloudBlockBlob` 和 `CloudAppendBlob` 构造函数配合使用，以访问 blob。
 > * 忽略不了解的字段。 此做法有助于适应将来可能添加的新功能。

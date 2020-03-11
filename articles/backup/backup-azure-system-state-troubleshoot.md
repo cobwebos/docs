@@ -4,12 +4,12 @@ description: 本文介绍如何解决本地 Windows server 的系统状态备份
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583293"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969575"
 ---
 # <a name="troubleshoot-system-state-backup"></a>系统状态备份故障排除
 
@@ -137,7 +137,7 @@ Microsoft 软件卷影复制提供程序（SWPRV） | 手动
 
 | 症状 | 解决方法
 | -- | --
-| -MARS 代理失败，并出现以下错误消息：备份失败，因为卷上的磁盘空间不足，导致卷影副本卷包含系统文件 <br/><br/> -Volsnap 系统事件日志中出现以下错误/警告日志： "卷 C：上的磁盘空间不足，无法为 C：卷的卷影副本存储增加卷的卷影副本存储 | -释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间来使卷影副本增长 <br/><br/> -在配置卷影副本空间时，可以限制用于卷影复制的空间量。 有关详细信息，请参阅此[文](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax)
+| -MARS 代理失败，并出现以下错误消息：备份失败，因为卷上的磁盘空间不足，导致卷影副本卷包含系统文件 <br/><br/> -Volsnap 系统事件日志中出现以下错误/警告日志： "卷 C：上的磁盘空间不足，无法为 C：卷的卷影副本存储增加卷的卷影副本存储 | -释放事件日志中突出显示的卷中的空间，以便在备份过程中有足够的空间来使卷影副本增长 <br/><br/> -在配置卷影副本空间时，可以限制用于卷影复制的空间量。 有关详细信息，请参阅此[文](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>已锁定 EFI 分区
 
