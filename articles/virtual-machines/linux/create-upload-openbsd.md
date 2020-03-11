@@ -1,32 +1,24 @@
 ---
-title: 创建 OpenBSD VM 映像并将其上传到 Azure
+title: 创建并上传 OpenBSD 映像
 description: 了解如何通过 Azure CLI 创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD) 以创建 Azure 虚拟机
-services: virtual-machines-linux
-documentationcenter: ''
 author: thomas1206
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 1ef30f32-61c1-4ba8-9542-801d7b18e9bf
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291883"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969486"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
 
 
-## <a name="prerequisites"></a>必备组件
-本文假定你拥有以下项目：
+## <a name="prerequisites"></a>系统必备
+本文假设拥有以下项目：
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
 * Azure CLI - 确保已安装了最新的 [Azure CLI](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。

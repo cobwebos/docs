@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378440"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082479"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>教程：创建和配置 Azure Active Directory 域服务实例
 
@@ -124,7 +124,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![预配期间的域服务状态](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-1. 托管域完全预配之后，“概览”选项卡会将域状态显示为“正在运行”。
+1. 托管域完全预配之后，“概览”  选项卡会将域状态显示为“正在运行”  。
 
     ![成功预配后的域服务状态](./media/tutorial-create-instance/successfully-provisioned.png)
 
@@ -136,7 +136,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。 第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
 
-    列出的地址是在虚拟网络中使用的域控制器。 在本示例中，这些地址为 *10.1.0.4* 和 *10.1.0.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。
+    列出的地址是在虚拟网络中使用的域控制器。 在此示例中，这些地址是*10.0.1.4*和*10.0.1.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。
 
     ![使用 Azure AD 域服务 IP 地址配置虚拟网络的 DNS 设置](./media/tutorial-create-instance/configure-dns.png)
 

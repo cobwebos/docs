@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1549a26022b8d593412a666228b07f05272d640c
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
-ms.translationtype: HT
+ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945615"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968094"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用情况和成本
 
@@ -125,7 +125,6 @@ dependencies
 | render barchart  
 ```
 
-
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>查看 Azure 帐单上的 Application Insights 使用情况
 
 Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中心提供了大量有用的功能。 例如，通过 "成本分析" 功能，可以查看 Azure 资源的花费。 按资源类型添加筛选器（对于 Application Insights 的 "insights/组件"）将允许您跟踪您的支出。
@@ -174,6 +173,14 @@ Azure 在[Azure 成本管理 + 计费](https://docs.microsoft.com/azure/cost-man
 ![调整每日遥测数据量上限](./media/pricing/pricing-003.png)
 
 若要[通过 Azure 资源管理器更改每日上限](../../azure-monitor/app/powershell.md)，要更改的属性为 `dailyQuota`。  你还可以通过 Azure 资源管理器设置 `dailyQuotaResetTime` 和每日 cap 的 `warningThreshold`。
+
+### <a name="create-alerts-for-the-daily-cap"></a>为每日上限创建警报
+
+当引入数据量达到警告级别或每日上限级别时，Application Insights 每日上限在 Azure 活动 kog 中创建一个事件。  您可以[基于这些活动日志事件创建警报](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)。 这些事件的信号名称如下：
+
+* 已达到 Application Insights 组件每日上限警告阈值
+
+* 已达到 Application Insights 组件每日上限
 
 ## <a name="sampling"></a>采样
 [采样](../../azure-monitor/app/sampling.md)是一种方法，可降低向应用发送遥测的速率，同时仍可在诊断搜索过程中查找相关事件。 此外，还可保留正确的事件计数。

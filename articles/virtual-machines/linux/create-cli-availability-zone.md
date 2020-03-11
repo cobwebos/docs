@@ -1,26 +1,17 @@
 ---
 title: 使用 Azure CLI 创建分区 Linux VM
 description: 使用 Azure CLI 在可用性区域中创建 Linux VM
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.custom: ''
-ms.openlocfilehash: 1cb8222b5e7bf2efee36673f9b80738500345754
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3f15b59be1182a65da7acb54d0748caf69fc0af3
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036561"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78970208"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性区域中创建 Linux 虚拟机
 
@@ -61,7 +52,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 
 ## <a name="create-resource-group"></a>创建资源组
 
-使用 [az group create](/cli/azure/group) 命令创建资源组。  
+使用[az group create](/cli/azure/group)命令创建资源组。  
 
 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 必须在创建虚拟机前创建资源组。 在此示例中，在“eastus2”区域中创建了名为“myResourceGroupVM”的资源组。 “美国东部 2”是支持可用性区域的 Azure 区域之一。
 
@@ -148,7 +139,7 @@ az disk show --resource-group myResourceGroupVM --name $osdiskname
 }
 ```
 
-使用 [az vm list-ip-addresses](/cli/azure/vm) 命令返回 *myVM* 中公用 IP 地址资源的名称。 在此示例中，该名称存储在变量中，会在稍后的步骤中用到。
+使用 [az vm list-ip-addresses](/cli/azure/vm) 命令返回 *myVM* 中公共 IP 地址资源的名称。 在此示例中，该名称存储在变量中，会在稍后的步骤中用到。
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)
@@ -197,7 +188,7 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，你已学习了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
+本文介绍了如何在可用性区域中创建 VM。 详细了解 Azure Vm 的[可用性](availability.md)。
 
 
 

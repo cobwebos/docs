@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 03/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee0dd0cd83ab27dd728a7572b6fcd69c40bb1b00
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848742"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78968773"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
@@ -26,14 +26,14 @@ ms.locfileid: "74848742"
 
 Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身份验证方法，以防他们无法使用其中的某个方法。
 
-|身份验证方法|使用情况|
+|身份验证方法|用法|
 | --- | --- |
 | 密码 | MFA 和 SSPR |
 | 安全提问 | 仅限 SSPR |
 | 电子邮件地址 | 仅限 SSPR |
 | Microsoft Authenticator 应用 | MFA 和 SSPR |
 | OATH 硬件令牌 | MFA 和 SSPR 公共预览版 |
-| 短信 | MFA 和 SSPR |
+| SMS | MFA 和 SSPR |
 | 语音呼叫 | MFA 和 SSPR |
 | 应用密码 | 仅限在某些情况下执行 MFA |
 
@@ -41,7 +41,7 @@ Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身�
 
 |     |
 | --- |
-| 适用于 MFA 和 SSPR 的 OATH 硬件令牌是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| 适用于 MFA 和 SSPR 的 OATH 硬件令牌是 Azure Active Directory 的公共预览功能。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。|
 |     |
 
 ## <a name="password"></a>密码
@@ -156,25 +156,25 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
 
-OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 机密密钥限制为128个字符，它们可能与所有令牌都不兼容。 机密密钥需要在 Base32 中进行编码。
+OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 机密密钥限制为128个字符，它们可能与所有令牌都不兼容。 密钥只能*包含字符 a-z*或 a-z 以及数字*1-7* *，并且必须*在 Base32 中进行编码。
 
-![将 OATH 令牌上传到 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+![将 OATH 令牌上传到 MFA OATH 令牌边栏选项卡](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-OATH 硬件令牌目前作为公共预览版的一部分受支持。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+公共预览版中支持 OATH 硬件令牌。 有关预览版的详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-获取令牌后，必须以逗号分隔值 (CSV) 文件格式将其上传，包括 UPN、序列号、密钥、时间间隔、制造商以及型号，如下所示。
+获取令牌后，必须以逗号分隔值（CSV）文件格式（包括 UPN、序列号、密钥、时间间隔、制造商和型号）上传这些令牌，如以下示例中所示：
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
 ```
 
 > [!NOTE]
-> 请确保 CSV 文件中包含如上所示的标题行。
+> 请确保 CSV 文件中包含标题行。
 
-正确格式化为 CSV 文件后，管理员便可以登录 Azure 门户并导航到 Azure Active Directory、MFA 服务器、OATH 令牌，然后上传生成的 CSV 文件。
+格式化为 CSV 文件后，管理员可以登录到 Azure 门户，导航到**Azure Active Directory** > **安全** > **MFA** > **OATH 令牌**，并上传生成的 CSV 文件。
 
-根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。
+根据 CSV 文件的大小，这可能需要花费几分钟来处理。 单击“刷新”按钮可获取当前状态。 如果文件中有任何错误，可以选择下载 CSV 文件，其中列出了需要解决的所有错误。 下载的 CSV 文件中的字段名称与上传的版本不同。
 
 解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥。
 
@@ -197,7 +197,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 除美国和加拿大以外，Microsoft 不支持国家/地区的短代码。
 
-#### <a name="text-message"></a>短信
+#### <a name="text-message"></a>文本消息
 
 将一条包含验证码的短信发送到手机号码。 在登录界面中输入提供的验证码可继续操作。
 

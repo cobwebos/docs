@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 14c120af69a94331586f9264a12f5d2333a5d87d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a4dd3247a9931de3ae2c699bdf7800407695c86
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586744"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080209"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure 认知搜索中的 AI 简介
 
@@ -21,7 +21,7 @@ AI 扩充是 Azure 认知搜索索引的一项功能，用于从图像、Blob �
 
 + “自然语言处理”技能包括[实体识别](cognitive-search-skill-entity-recognition.md)、[语言检测](cognitive-search-skill-language-detection.md)、[关键短语提取](cognitive-search-skill-keyphrases.md)、文本操作、[情绪检测](cognitive-search-skill-sentiment.md)和 [PII 检测](cognitive-search-skill-pii-detection.md)。 通过这些技能，非结构化文本可以假定新窗体，在索引中映射为可搜索和可筛选字段。
 
-+ “图像处理”技能包括 [光学字符识别 (OCR)](cognitive-search-skill-ocr.md) 和[视觉特征](cognitive-search-skill-image-analysis.md)标识，例如面部检测、图像解释、图像识别（名人和地标）或属性（例如颜色或图像方向）。 可以创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的所有查询功能进行搜索。
++ **图像处理**技能包括[光学字符识别（OCR）](cognitive-search-skill-ocr.md)和[可视功能](cognitive-search-skill-image-analysis.md)的识别，如面部检测、图像解释、图像识别（著名人物和特征点）或图像方向等属性。 可以创建图像内容的文本表示形式，这样就可以使用 Azure 认知搜索的所有查询功能进行搜索。
 
 ![扩充管道关系图](./media/cognitive-search-intro/cogsearch-architecture.png "扩充管道概述")
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544311"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79080354"
 ---
 # <a name="encrypt-deployment-data"></a>加密部署数据
 
@@ -41,6 +41,10 @@ ms.locfileid: "77544311"
 
 第一步是确保[azure 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)具有分配给 Azure 容器实例服务授予权限的服务主体。 
 
+> [!IMPORTANT]
+> 若要运行以下命令并成功创建服务主体，请确认你有权在租户中创建服务主体。
+>
+
 以下 CLI 命令将在你的 Azure 环境中设置 ACI SP：
 
 ```azurecli-interactive
@@ -48,6 +52,10 @@ az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
 运行此命令的输出应显示已设置了 "displayName" 的服务主体："Azure 容器实例服务"。
+
+如果无法成功创建服务主体：
+* 确认你在租户中有权执行此操作
+* 检查是否已存在租户中的服务主体，以便部署到 ACI。 为此，可以运行 `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` 并改用该服务主体
 
 ### <a name="create-a-key-vault-resource"></a>创建 Key Vault 资源
 
