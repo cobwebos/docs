@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: 欢迎使用 Microsoft 的商业市场
+summary: 了解 Microsoft 的商业市场（一个在线的应用程序和服务市场。从初创公司到企业，各种规模的用户均可使用它向全球客户提供解决方案）。
+metadata:
+  title: 欢迎使用 Microsoft 的商业市场
+  description: 了解 Microsoft 的商业市场（一个在线的应用程序和服务市场。从初创公司到企业，各种规模的用户均可使用它向全球客户提供解决方案）。
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: landing-page
+  author: MaggiePucciEvans
+  ms.author: evansma
+  ms.date: 03/04/2020
+  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
+  ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/08/2020
+  ms.locfileid: "78927590"
+landingContent:
+- title: 使用 Microsoft 商业市场
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 创建新帐户
+      url: ./partner-center-portal/create-account.md
+    - text: 确定发布选项
+      url: ./determine-your-listing-type.md
+    - text: Microsoft 商业市场常见问题解答
+      url: ./marketplace-faq-publisher-guide.md
+    - text: 发行说明
+      url: https://aka.ms/publicmarketplaceroadmap
+    - text: 策略和条款
+      url: ./policies-terms.md
+- title: 常见方案和任务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 市场营销最佳做法
+      url: ./gtm-marketing-best-practices.md
+    - text: 套餐列出最佳做法
+      url: ./gtm-offer-listing-best-practices.md
+    - text: SaaS 应用程序产品/服务发布指南
+      url: ./marketplace-saas-applications-technical-publishing-guide.md
+  - linkListType: get-started
+    links:
+    - text: 参与 Azure 市场和 AppSource 社区论坛
+      url: https://aka.ms/MarketplaceCommunity
+    - text: 注册以加入网络研讨会进行讨论或稍后按需观看
+      url: https://aka.ms/allwebinars
+    - text: 让解决方案在 Microsoft AppSource 和 Office 内可用
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
+- title: 分析产品/服务和客户数据
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: “摘要”仪表板
+      url: ./partner-center-portal/summary-dashboard.md
+    - text: 订单仪表板
+      url: ./partner-center-portal/orders-dashboard.md
+    - text: 客户仪表板
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: 使用情况仪表板
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: 市场见解仪表板
+      url: ./partner-center-portal/insights-dashboard.md
+    - text: 下载仪表板
+      url: ./partner-center-portal/downloads-dashboard.md
+    - text: 评分和评价仪表板
+      url: ./partner-center-portal/ratings-reviews.md
+- title: 管理产品/服务
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure 应用程序产品/服务
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Dynamics 365 for Customer Engagement 和 PowerApps 产品/服务
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Dynamics 365 for Operations 产品/服务
+      url: ./partner-center-portal/create-new-operations-offer.md
+    - text: Dynamics 365 Business Central 产品/服务
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: SaaS 产品/服务
+      url: ./partner-center-portal/create-new-saas-offer.md
+    - text: 虚拟机产品/服务
+      url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: 更多产品/服务类型
+      url: ./cloud-partner-portal/cpp-marketplace-offers.md
+- title: 获得付费
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 设置付款帐户和纳税表单
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+    - text: 商业市场计费
+      url: ./partner-center-portal/billing-details.md
+    - text: 付款阈值、方法和时间范围
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: 付款报告
+      url: ./partner-center-portal/payout-summary.md
+    - text: 税项详细信息
+      url: ./partner-center-portal/tax-details-paid-transactions.md
+- title: API 参考
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: API 先决条件
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
+    - text: SaaS 履行 API
+      url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
+    - text: 云合作伙伴门户 API 参考
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: Azure 市场计量服务 API
+      url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
+    - text: 创建或修改产品/服务
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: 检索产品/服务
+      url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
+    - text: 投入使用
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: 虚拟机套餐的定价
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+- title: 获取支持
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 支持选项
+      url: ./partner-center-portal/support.md
+    - text: 上市地区和货币
+      url: ./marketplace-geo-availability-currencies.md
+    - text: 排查身份验证错误
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md

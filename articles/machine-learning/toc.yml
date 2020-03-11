@@ -79,6 +79,8 @@
       href: sample-designer-datasets.md
     - name: 端到端 MLOps 示例
       href: 'https://github.com/microsoft/MLOps'
+    - name: 设计器管道
+      href: samples-designer.md
 - name: 概念
   items:
     - name: 工作区
@@ -216,30 +218,6 @@
           href: how-to-cicd-data-ingestion.md
     - name: 训练模型
       items:
-        - name: 使用设计器
-          displayName: sample designer experiments
-          items:
-            - name: 预测价格
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-basic.md
-            - name: 预测价格（高级）
-              displayName: 'regression, studio'
-              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
-            - name: 预测收入
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-predict-income.md
-            - name: 预测信用风险（高级）
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
-            - name: 预测变动率
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-churn.md
-            - name: 预测航班延误
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-classification-flight-delay.md
-            - name: 文本分类
-              displayName: 'classification, studio'
-              href: how-to-designer-sample-text-classification.md
         - name: 将估算器用于 ML
           items:
             - name: 在训练期间创建估算器

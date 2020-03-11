@@ -206,11 +206,15 @@
   items:
     - name: 入门
       items:
+        - name: 创建帐户 - 门户
+          href: create-account-portal.md
         - name: 创建帐户 - CLI
           href: create-account-cli-how-to.md
           displayName: storage
         - name: 重置帐户凭据 - CLI
           href: cli-reset-account-credentials.md
+        - name: 访问 API - 门户
+          href: access-api-portal.md
         - name: 访问 API - CLI
           href: access-api-cli-how-to.md
         - name: 缩放媒体预留单位 - CLI

@@ -91,7 +91,7 @@
   items:
     - name: Service Fabric 最佳做法概述
       href: service-fabric-best-practices-overview.md
-    - name: 安全
+    - name: 安全性
       href: service-fabric-best-practices-security.md
     - name: 网络
       href: service-fabric-best-practices-networking.md
@@ -123,7 +123,7 @@
       href: service-fabric-application-scenarios.md
     - name: 体系结构
       href: service-fabric-architecture.md
-    - name: 安全
+    - name: 安全性
       items:
         - name: Service Fabric 安全性
           href: service-fabric-best-practices-security.md
@@ -316,6 +316,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: 均衡群集
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: 子群集
+              href: service-fabric-cluster-resource-manager-subclustering.md
             - name: 限制
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: 服务移动
@@ -358,7 +360,7 @@
       href: concepts-managed-identity.md
     - name: 配置容器存储库凭据
       href: configure-container-repository-credentials.md
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 设置开发环境
       items:
@@ -773,7 +775,7 @@
           href: how-to-managed-identity-service-fabric-app-code.md
         - name: 授予对其他 Azure 资源的访问权限
           href: how-to-grant-access-other-resources.md
-- name: 引用
+- name: 参考
   items:
     - name: Azure PowerShell
       href: /powershell/module/az.servicefabric/
@@ -886,7 +888,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 发行说明
       href: release-notes.md
-    - name: 代码示例
+    - name: 示例代码
       href: 'https://aka.ms/servicefabricsamples'
     - name: 支持选项
       href: service-fabric-support.md

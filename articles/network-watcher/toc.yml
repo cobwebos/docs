@@ -118,6 +118,8 @@
                   href: traffic-analytics-faq.md
                 - name: 架构和数据聚合
                   href: traffic-analytics-schema.md
+                - name: 架构更新（2019 年 8 月）
+                  href: traffic-analytics-schema-update.md
             - name: 使用 Power BI
               href: network-watcher-visualize-nsg-flow-logs-power-bi.md
             - name: 使用 Elastic Stack

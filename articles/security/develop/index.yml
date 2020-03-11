@@ -3,7 +3,7 @@ title: 安全开发文档
 summary: 通过我们的示例应用、最佳做法和指南，了解如何在 Azure 上开发和部署安全的应用程序。
 metadata:
   title: Microsoft Azure 上的安全开发文档
-  description: 了解如何开发 Azure 上的安全应用。
+  description: 通过使用示例应用、最佳做法和指南，了解如何在 Azure 上开发安全的应用程序。
   services: security
   ms.service: security
   ms.subservice: develop
@@ -12,12 +12,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 10/24/2019
-  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 6ca73686874b1a90d5374d7d6326c4f121d928f9
+  ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72934071"
+  ms.lasthandoff: 03/10/2020
+  ms.locfileid: "78970010"
 landingContent:
 - title: 开发安全示例应用
   linkLists:

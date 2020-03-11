@@ -12,6 +12,17 @@
       href: quick-create-powershell.md
     - name: 创建虚拟网络 - Azure CLI
       href: quick-create-cli.md
+    - name: NAT
+      items:
+        - name: 创建 NAT 网关 - 门户
+          href: quickstart-create-nat-gateway-portal.md
+        - name: 创建 NAT 网关 - PowerShell
+          href: quickstart-create-nat-gateway-powershell.md
+        - name: 创建 NAT 网关 - CLI
+          href: quickstart-create-nat-gateway-cli.md
+        - name: 创建 NAT 网关 - ARM 模板
+          displayname: Resource Manager
+          href: quickstart-create-nat-gateway-template.md
   expanded: true
 - name: 教程
   items:
@@ -23,6 +34,14 @@
       href: tutorial-restrict-network-access-to-resources.md
     - name: 连接虚拟网络
       href: tutorial-connect-virtual-networks-portal.md
+    - name: NAT
+      items:
+        - name: 创建并验证 NAT 网关 - 门户
+          href: tutorial-create-validate-nat-gateway-portal.md
+        - name: 创建并验证 NAT 网关 - PowerShell
+          href: tutorial-create-validate-nat-gateway-powershell.md
+        - name: 创建并验证 NAT 网关 - CLI
+          href: tutorial-create-validate-nat-gateway-cli.md
 - name: 示例
   items:
     - name: Azure CLI
@@ -123,20 +142,6 @@
           href: virtual-network-nsg-manage-log.md
     - name: 连接
       items:
-        - name: NAT
-          items:
-            - name: 创建 NAT 网关 - 门户
-              href: quickstart-create-nat-gateway-portal.md
-            - name: 创建 NAT 网关 - PowerShell
-              href: quickstart-create-nat-gateway-powershell.md
-            - name: 创建 NAT 网关 - CLI
-              href: quickstart-create-nat-gateway-cli.md
-            - name: 创建并验证 NAT 网关 - 门户
-              href: tutorial-create-validate-nat-gateway-portal.md
-            - name: 创建并验证 NAT 网关 - PowerShell
-              href: tutorial-create-validate-nat-gateway-powershell.md
-            - name: 创建并验证 NAT 网关 - CLI
-              href: tutorial-create-validate-nat-gateway-cli.md
         - name: 路由网络流量
           items:
             - name: Azure 门户

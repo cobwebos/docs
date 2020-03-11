@@ -120,6 +120,8 @@
           href: blob-output-managed-identity.md
         - name: 使用托管标识进行身份验证 - Power BI
           href: powerbi-output-managed-identity.md
+        - name: 加密数据
+          href: data-protection.md
     - name: 构建解决方案
       items:
         - name: Twitter 情绪分析
@@ -167,6 +169,8 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: 对 IoT Edge 作业使用 API
           href: stream-analytics-cicd-api.md
+        - name: 使用 Azure 资源管理器进行导出和部署
+          href: resource-manager-export.md
     - name: Visual Studio
       items:
         - name: 安装工具
@@ -223,6 +227,9 @@
       href: stream-analytics-scale-with-machine-learning-functions.md
 - name: 流分析查询语言
   items:
+    - name: 流分析查询语言概述
+      href: /stream-analytics-query/stream-analytics-query-language-reference
+      maintainContext: true
     - name: 内置函数
       items:
         - name: 内置函数概述

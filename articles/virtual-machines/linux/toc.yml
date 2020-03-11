@@ -251,8 +251,8 @@
       items:
         - name: 使用 CLI
           href: create-cli-complete.md
-        - name: 使用模板
-          displayName: 'Azure Resource Manager, ARM'
+        - name: 使用 ARM 模板
+          displayName: Azure Resource Manager
           href: create-ssh-secured-vm-from-template.md
         - name: 使用 REST API
           href: create-vm-rest-api.md
@@ -270,8 +270,9 @@
               href: spot-cli.md
             - name: 门户
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
-            - name: 模板
+            - name: ARM 模板
               href: spot-template.md
+              displayName: Azure Resource Manager
             - name: 错误代码
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: 从经典部署迁移到 Azure 资源管理器部署
@@ -462,8 +463,9 @@
               href: image-builder-overview.md
             - name: 使用 Azure CLI
               href: image-builder.md
-            - name: 模板参考
+            - name: ARM 模板参考
               href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
             - name: 在映像库中生成映像
               href: image-builder-gallery.md
             - name: 更新现有映像
@@ -631,7 +633,7 @@
               href: attach-disk-portal.md
         - name: 分离磁盘
           href: detach-disk.md
-        - name: 使用模板部署磁盘
+        - name: 使用 ARM 模板部署磁盘
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
         - name: 启用共享磁盘
@@ -757,9 +759,10 @@
       href: /rest/api/compute
     - name: 资源管理器模板
       href: /azure/templates/microsoft.compute/allversions
+      displayName: ARM
 - name: 资源
   items:
-    - name: 创作模板
+    - name: 创作 ARM 模板
       displayName: 'Azure Resource Manager, ARM'
       href: /azure/azure-resource-manager/
     - name: 利用 Microsoft Learn 掌握技能
