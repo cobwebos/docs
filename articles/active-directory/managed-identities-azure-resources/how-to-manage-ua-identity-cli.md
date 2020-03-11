@@ -16,11 +16,11 @@ ms.date: 10/15/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547513"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78375492"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 创建、列出或删除用户分配的托管标识
 
@@ -29,7 +29,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 在本文中，将了解如何使用 Azure CLI 创建、列出和删除用户分配的托管标识。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 如果不熟悉 Azure 资源的托管标识，请查阅[概述部分](overview.md)。 请务必了解[系统分配的托管标识与用户分配的托管标识之间的差异](overview.md#how-does-the-managed-identities-for-azure-resources-work)。
 - 如果没有 Azure 帐户，请在继续前[注册免费帐户](https://azure.microsoft.com/free/)。
@@ -40,7 +40,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配托管标识 
+## <a name="create-a-user-assigned-managed-identity"></a>创建用户分配的托管标识 
 
 若要创建用户分配的托管标识，你的帐户需要[托管标识参与者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色分配。
 

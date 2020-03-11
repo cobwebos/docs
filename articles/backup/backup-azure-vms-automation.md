@@ -4,11 +4,11 @@ description: 介绍如何通过 PowerShell 使用 Azure 备份来备份和恢复
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527988"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78363686"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>通过 PowerShell 备份和还原 Azure Vm
 
@@ -58,7 +58,7 @@ ms.locfileid: "75527988"
 3. 使用 **Connect-AzAccount** 登录到 Azure 帐户。 此 cmdlet 打开一个网页，提示输入帐户凭据：
 
     * 或者，可以使用 **-Credential** 参数，在 **Connect-AzAccount** cmdlet 中将帐户凭据包含为参数。
-    * 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如： **AzAccount-Tenant "fabrikam.com"**
+    * 如果是代表租户的 CSP 合作伙伴，则需使用 tenantID 或租户主域名将客户指定为一名租户。 例如：**Connect-AzAccount -Tenant "fabrikam.com"**
 
 4. 由于一个帐户可以有多个订阅，因此请将要使用的订阅与帐户关联在一起：
 
@@ -504,9 +504,9 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 若要替换磁盘和配置信息，请执行以下步骤：
 
-* 步骤1：[还原磁盘](backup-azure-vms-automation.md#restore-the-disks)
-* 步骤2：[使用 PowerShell 分离数据磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
-* 步骤3：[通过 PowerShell 将数据磁盘附加到 WINDOWS VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
+* 步骤 1：[还原磁盘](backup-azure-vms-automation.md#restore-the-disks)
+* 步骤 2：[使用 PowerShell 分离数据磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell)
+* 步骤 3：[通过 PowerShell 将数据磁盘附加到 Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps)
 
 ## <a name="create-a-vm-from-restored-disks"></a>从还原的磁盘创建 VM
 
@@ -521,7 +521,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>使用部署模板创建 VM
 
-生成的作业详细信息为模板 URI 指定可查询和部署。
+生成的作业详细信息提供可以查询和部署的模板 URI。
 
 ```powershell
    $properties = $details.properties
@@ -530,7 +530,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-模板不能直接访问，因为它在客户的存储帐户和给定容器下。 需要完整的 URL （连同临时 SAS 令牌）才能访问此模板。
+模板不能直接访问，因为它在客户的存储帐户和给定容器下。 需要完整的 URL（以及临时 SAS 令牌）才能访问此模板。
 
 1. 首先从 templateBlobURI 中提取模板名称。 此格式如下所述。 可以在 Powershell 中使用 split 操作从此 URL 中提取最终模板名称。
 
