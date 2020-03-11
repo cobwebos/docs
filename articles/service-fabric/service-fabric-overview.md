@@ -20,7 +20,7 @@ Azure Service Fabric 是一款分布式系统平台，可方便用户轻松打�
 
 ## <a name="compliance"></a>合规性
 
-Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDPR。 请查看以下内容以获取合规性证书的完整列表：[合规性产品](https://www.microsoft.com/trustcenter/compliance/complianceofferings)
+Azure Service Fabric 资源提供程序在所有 Azure 区域中都可用，并符合 Azure 所具有的所有合规性证书；这包括以下内容：SOC、ISO、PCI DSS、HIPAA 和 GDPR。 要获取合规性证书的完整列表，请查看：[合规性产品](https://www.microsoft.com/trustcenter/compliance/complianceofferings)。
 
 ## <a name="applications-composed-of-microservices"></a>由微服务组成的应用程序
 

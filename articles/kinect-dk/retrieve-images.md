@@ -84,7 +84,7 @@ case K4A_WAIT_RESULT_FAILED:
 
 ## <a name="get-an-image-from-the-capture"></a>从捕获中获取图像
 
-若要检索捕获的图像，请针对每个图像类型调用相应的函数。 为以下之一：
+若要检索捕获的图像，请针对每个图像类型调用相应的函数。 即以下函数之一：
 
 - [`k4a_capture_get_color_image()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga683e440b5f22215a2de58d7fa140488c.html#ga683e440b5f22215a2de58d7fa140488c)
 - [`k4a_capture_get_depth_image()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafa03513da96bf6b8c254fc11a04ee6d6.html#gafa03513da96bf6b8c254fc11a04ee6d6)
