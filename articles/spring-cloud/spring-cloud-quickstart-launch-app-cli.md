@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 48d05dad45a5ff4c561f492e424b53c918998c7c
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431243"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78945454"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>快速入门：使用 Azure CLI 启动 Java Spring 应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "77431243"
 > * 部署每个微服务
 > * 为应用程序分配公共终结点
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 >[!Note]
 > Azure Spring Cloud 目前以公共预览版的形式提供。 使用公共预览版产品/服务，客户可以在产品/服务正式发布之前体验新功能。  公共预览功能和服务并非供生产使用。  有关预览期间支持的详细信息，请参阅[常见问题解答](https://azure.microsoft.com/support/faq/)或提交[支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
@@ -74,7 +74,7 @@ az extension add --name spring-cloud
 4. 打开 Azure CLI 窗口，运行以下命令预配 Azure Spring Cloud 的实例。
 
     ```azurecli
-        az spring-cloud create -n <service name> -g <resource group name>
+        az spring-cloud create -n <service instance name> -g <resource group name>
     ```
 
     部署服务实例需要大约五分钟时间。
@@ -82,7 +82,7 @@ az extension add --name spring-cloud
 5. 使用以下命令设置默认的资源组名称和群集名称：
 
     ```azurecli
-        az configure --defaults group=<service group name>
+        az configure --defaults group=<resource group name>
         az configure --defaults spring-cloud=<service instance name>
     ```
 
@@ -93,8 +93,8 @@ az extension add --name spring-cloud
 
 使用项目的 git 存储库的位置更新配置服务器：
 
-```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
+```azurecli
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]
@@ -158,7 +158,7 @@ az spring-cloud app show --name gateway | grep url
 ```
 Windows：
 ```azurecli
-az spring-cloud app show --name gateway | findstr url
+az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
 ```
 3. 导航到上一个命令提供的 URL，以运行 PiggyMetrics 应用程序。
     ![PiggyMetrics 运行的屏幕截图](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)

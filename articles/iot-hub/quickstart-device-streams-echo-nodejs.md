@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 0757c5eb8639e4a864b049adc92c97a7cf69adba
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471918"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675512"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "77471918"
 
 在本快速入门中，我们运行服务端应用程序，并使用设备流设置设备和服务之间的通信。 服务和设备应用程序可以使用 Azure IoT 中心设备流以安全且防火墙友好的方式进行通信。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只介绍如何运行服务端应用程序。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[通过 IoT 中心设备流使用 C 与设备应用进行通信](./quickstart-device-streams-echo-c.md)或[通过 IoT 中心设备流使用 C# 与设备应用进行通信](./quickstart-device-streams-echo-csharp.md)。
 
@@ -55,8 +55,10 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

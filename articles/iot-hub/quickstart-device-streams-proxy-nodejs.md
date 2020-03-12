@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: c372a0a09fd3143f570aa4b316c9191e617c69e2
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470677"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675457"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "77470677"
 
 在本快速入门中，我们可以通过设备流将安全外壳 (SSH) 和远程桌面协议 (RDP) 流量发送到设备。 服务和设备应用程序可以使用 Azure IoT 中心设备流以安全且防火墙友好的方式进行通信。 本快速入门介绍如何执行一个在服务端运行的 Node.js 代理应用程序。 在公共预览期，Node.js SDK 仅支持服务端的设备流。 因此，本快速入门只会提供有关运行服务本地代理应用程序的说明。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 完成[使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-c.md)或[使用 C# 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案](./quickstart-device-streams-proxy-csharp.md)。
 
@@ -55,8 +55,10 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 运行以下命令，将用于 Azure CLI 的 Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将特定于 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 的命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

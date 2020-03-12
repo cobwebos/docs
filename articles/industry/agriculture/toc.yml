@@ -9,6 +9,8 @@
       href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: 引入历史遥测数据
       href: ingest-historical-telemetry-data-in-azure-farmbeats.md
+    - name: 查询引入的遥测数据
+      href: query-telemetry-data-from-azure-farmbeats.md
 - name: 概念
   items:
     - name: 集成模式
