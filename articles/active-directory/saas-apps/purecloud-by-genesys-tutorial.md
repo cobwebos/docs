@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779328f4c21afb4392663e6f8840749ea505c529
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: dac8e0f2e10906f2cc56ecf86e0cc70947cb7e85
+ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242436"
+ms.lasthandoff: 03/07/2020
+ms.locfileid: "78897779"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>教程：Azure Active Directory 单一登录 (SSO) 与 PureCloud by Genesys 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "73242436"
 
 ## <a name="adding-purecloud-by-genesys-from-the-gallery"></a>从库中添加 PureCloud by Genesys
 
-若要配置 PureCloud by Genesys 与 Azure AD 的集成，必须从库中将 PureCloud by Genesys 添加到托管 SaaS 应用程序列表。 为此，请执行以下步骤：
+若要配置 PureCloud by Genesys 与 Azure AD 的集成，必须从库中将 PureCloud by Genesys 添加到托管 SaaS 应用程序列表。 为此，请按照下列步骤进行操作：
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
@@ -123,9 +123,9 @@ ms.locfileid: "73242436"
 
 1. 此外，PureCloud by Genesys 应用程序还要求在 SAML 响应中传递一些属性，如下表所示。 这些属性也是预先填充的，但可以根据需要查看它们。
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------| --------------- |
-    | 电子邮件 | user.userprinicipalname |
+    | 电子邮件 | user.userprincipalname |
     | OrganizationName | `Your organization name` |
 
 1. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。

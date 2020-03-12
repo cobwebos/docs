@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d7b060a2b35ca41bf87b69be706284174d7b1012
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 8047ac5d3db2db230a00583e888a4afea3b282b9
+ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587152"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "78969374"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>教程：使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -30,7 +30,7 @@ ms.locfileid: "77587152"
 使用事件中心公开的 Kafka 终结点时，无需更改协议客户端或运行自己的群集。 Azure 事件中心支持 [Apache Kafka 版本 1.0](https://kafka.apache.org/10/documentation.html)。 及更高版本。 
 
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要完成本快速入门，请确保符合以下先决条件：
 
@@ -60,7 +60,7 @@ ms.locfileid: "77587152"
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. 导航到 `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app`，在所选编辑器中打开 TestDataReporter.java  。 
+5. 导航到 `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/`，在所选编辑器中打开 TestDataReporter.java  。 
 6. 为以下代码行添加注释：
 
     ```java

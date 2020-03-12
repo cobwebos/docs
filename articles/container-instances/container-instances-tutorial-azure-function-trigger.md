@@ -4,12 +4,12 @@ description: 创建 HTTP 触发的无服务器 PowerShell 函数，以便自动�
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196529"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78331019"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>教程：使用 HTTP 触发的 Azure 函数创建容器组
 
@@ -42,7 +42,7 @@ ms.locfileid: "78196529"
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>在函数应用中启用 Azure 托管标识
 
-现在，在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#adding-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
+现在，在函数应用中启用系统分配的[托管标识](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity)。 运行此应用的 PowerShell 主机可以使用此标识自动进行身份验证，使函数能够在标识有权访问的 Azure 服务上执行操作。 在本教程中，我们授予托管标识在函数应用的资源组中创建资源的权限。 
 
 首先使用 [az group show][az-group-show] 命令获取函数应用的资源组的 ID 并将其存储在环境变量中。 以下示例假定你在 Bash shell 中运行该命令。
 

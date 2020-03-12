@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: e22a9ae2888187dc877876ee5d4d4ec4ecb7c6e5
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602594"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78329436"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>教程：使用设备功能模型创建 IoT 即插即用（预览版）设备并将其连接到 IoT Central 应用程序
 
@@ -31,7 +31,7 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
 > * 在 Windows 中运行设备代码，并查看它是否可连接到 IoT Central 应用程序。
 > * 查看设备发送的模拟遥测数据。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 完成[创建 Azure IoT Central 应用程序](./quick-deploy-iot-central.md)快速入门，使用“自定义应用”>“自定义应用程序”模板创建 IoT Central 应用程序。 
 
@@ -169,10 +169,10 @@ _设备功能模型_ (DCM) 描述 [IoT 即插即用（预览版）](../../iot-pn
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. 生成成功完成后，在同一命令提示符下运行该应用程序。 将 `<scopeid>` 和 `<primarykey>` 替换为之前记下的值：
+1. 生成成功完成后，在同一命令提示符下运行该应用程序。 将 `<scopeid>` 和 `<devicekey>` 替换为之前记下的值：
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
 1. 设备应用程序将开始向 IoT 中心发送数据。 有时，在首次运行上一命令时会看到错误 `Error registering device for DPS`。 如果看到此错误，请重试命令。

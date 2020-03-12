@@ -4,12 +4,12 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7d84770f1b945ff47cb4e9118d9c342e67118722
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: ff32b3095638af6b2b246b99a5dc9219e0020782
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249905"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402300"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时在云中运行多步骤容器工作流
 
@@ -92,7 +92,7 @@ az acr task create \
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -157,7 +157,7 @@ az acr task run --registry $ACR_NAME --name example1
 
 默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。 输出显示每个任务步骤的运行进度。 以下输出经过简化，只显示关键步骤。
 
-```console
+```output
 Queued a run with ID: cf19
 Waiting for an agent...
 2019/05/03 03:03:31 Downloading source code...
@@ -234,8 +234,7 @@ git push origin master
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -248,8 +247,7 @@ az acr task logs --registry $ACR_NAME
 
 输出结果类似于以下内容，显示当前执行（或最近执行）的任务：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: cf1d
 
@@ -268,9 +266,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 该命令产生的输出应如下所示。 将显示 ACR 任务已执行的运行，并在最近执行的任务的 TRIGGER 列中显示“Git Commit”：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK       PLATFORM    STATUS     TRIGGER    STARTED               DURATION
 --------  ---------  ----------  ---------  ---------  --------------------  ----------
 cf1d      example1   linux       Succeeded  Commit     2019-05-03T04:16:44Z  00:00:37
@@ -362,7 +358,7 @@ az acr task run --registry $ACR_NAME --name example2
 
 输出：
 
-```console
+```output
 Queued a run with ID: cf1g
 Waiting for an agent...
 2019/05/03 04:33:39 Downloading source code...

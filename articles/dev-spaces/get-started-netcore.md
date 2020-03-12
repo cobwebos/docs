@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 .NET Core 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: e23685d410b2d663efde8c530be01adaab637bf8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 306e1c7a43ddd10faa0a537d567257fe95336c23
+ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252429"
+ms.lasthandoff: 03/09/2020
+ms.locfileid: "78942492"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 .NET Core 与 Azure Dev Spaces 结合使用
 
@@ -81,7 +81,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 丰富的功能（如 Kubernetes调试）可供使用 VS Code 的 .NET Core 和 Node.js 开发人员使用。
 
 1. 如果尚未安装 [VS Code](https://code.visualstudio.com/Download)，请安装它。
-1. 下载并安装 [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) 扩展。 对于每个扩展，在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
+1. 下载并安装 [VS Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 和 [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) 扩展。 对于每个扩展，在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
 
 ## <a name="create-a-web-app-running-in-a-container"></a>创建在容器中运行的 Web 应用
 

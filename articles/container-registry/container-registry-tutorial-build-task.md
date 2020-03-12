@@ -4,12 +4,12 @@ description: 本教程介绍如何配置一个 Azure 容器注册表任务，以
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6882cb683e0bd8b76bb1207e628e43f24c7b5987
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252122"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78402842"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
@@ -69,7 +69,7 @@ az acr task create \
 
 成功的 [az acr task create][az-acr-task-create] 命令的输出应如下所示：
 
-```console
+```output
 {
   "agentConfiguration": {
     "cpu": 2
@@ -136,9 +136,7 @@ az acr task run --registry $ACR_NAME --name taskhelloworld
 
 默认情况下，执行此命令时，`az acr task run` 命令会将日志流式传输到控制台。
 
-```console
-$ az acr task run --registry $ACR_NAME --name taskhelloworld
-
+```output
 2018/09/17 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
 2018/09/17 22:51:00 Setting up Docker configuration...
 2018/09/17 22:51:02 Successfully set up Docker configuration
@@ -225,8 +223,7 @@ git push origin master
 
 执行 `git push` 命令时可能需要提供 GitHub 凭据。 提供 GitHub 用户名并输入之前为密码创建的个人访问令牌 (PAT)。
 
-```console
-$ git push origin master
+```azurecli-interactive
 Username for 'https://github.com': <github-username>
 Password for 'https://githubuser@github.com': <personal-access-token>
 ```
@@ -239,8 +236,7 @@ az acr task logs --registry $ACR_NAME
 
 输出结果类似于以下内容，显示当前执行（或最近执行）的任务：
 
-```console
-$ az acr task logs --registry $ACR_NAME
+```output
 Showing logs of the last created run.
 Run ID: da4
 
@@ -259,9 +255,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 
 该命令产生的输出应如下所示。 将显示 ACR 任务已执行的运行，并在最近执行的任务的 TRIGGER 列中显示“Git Commit”：
 
-```console
-$ az acr task list-runs --registry $ACR_NAME --output table
-
+```output
 RUN ID    TASK             PLATFORM    STATUS     TRIGGER     STARTED               DURATION
 --------  --------------  ----------  ---------  ----------  --------------------  ----------
 da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
