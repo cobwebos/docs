@@ -5,28 +5,37 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 03/09/2020
 ms.author: helohr
-ms.openlocfilehash: 8c919326607100d48db1f681fd587776d2b88483
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383671"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127974"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教程：使用 Azure Marketplace 创建主机池
 
+在本教程中，你将了解如何使用 Microsoft Azure 市场产品/服务在 Windows 虚拟桌面租户中创建主机池。
+
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
-本教程介绍如何使用 Microsoft Azure 市场产品/服务在 Windows 虚拟桌面租户中创建主机池。 相关任务包括：
+本教程中的任务包括：
 
 > [!div class="checklist"]
+>
 > * 在 Windows 虚拟桌面中创建主机池。
 > * 在 Azure 订阅中创建包含 VM 的资源组。
 > * 将 VM 加入到 Active Directory 域。
 > * 将 VM 注册到 Windows 虚拟桌面。
 
-在开始之前，如果尚未这样做，请[下载并导入 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)，以便在 PowerShell 会话中使用。 然后，运行以下 cmdlet 登录到你的帐户：
+## <a name="prerequisites"></a>必备条件
+
+* 虚拟机中的租户。 前面的[教程](tenant-setup-azure-active-directory.md)创建了一个租户。
+* [Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)。
+
+安装此模块后，请运行以下 cmdlet 登录到你的帐户：
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -41,103 +50,113 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 若要运行 Azure 市场套餐以预配新的主机池，请执行以下操作：
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源”。
-2. 在市场搜索窗口中输入“Windows 虚拟桌面”。
-3. 选择“Windows 虚拟桌面 - 预配主机池”，然后选择“创建”。
+1. 在市场搜索窗口中输入“Windows 虚拟桌面”。
+1. 选择“Windows 虚拟桌面 - 预配主机池”，然后选择“创建”。
 
-然后，按照下一部分中的说明为相应边栏选项卡输入信息。
+然后，按照下一部分中的说明，为相应的选项卡输入信息。
 
 ### <a name="basics"></a>基础
 
-下面是你在“基本信息”边栏选项卡中可执行的操作：
+下面是 "**基本**信息" 选项卡的作用：
 
-1. 输入主机池的名称，该名称在 Windows 虚拟桌面租户中必须唯一。
-2. 选择适合个人桌面的选项。 如果选择“是”，则连接到此主机池的每个用户将永久分配到某个虚拟机。
-3. 输入在 Azure 市场产品/服务完成后可登录到 Windows 虚拟桌面客户端并访问桌面的用户的逗号分隔列表。 例如，如果要分配 user1@contoso.com 和 user2@contoso.com 访问权限，请输入“user1@contoso.com,user2@contoso.com”。
-4. 选择“新建”，并为新资源组提供一个名称。
-5. 对于“位置”，请选择连接到 Active Directory 服务器的虚拟网络所在的同一位置。
-6. 选择**下一步：配置虚拟机 >** 。
+1. 选择一个“订阅”。
+1. 对于 "**资源组**"，选择 "**新建**" 并提供新资源组的名称。
+1. 选择**区域**。
+1. 输入 Windows 虚拟桌面租户中唯一的主机池的名称。
+1. 选择 "**桌面类型**"。 如果选择 "**个人**"，则会将连接到此主机池的每个用户永久分配给虚拟机。
+1. 输入可登录到 Windows 虚拟桌面客户端和访问桌面的用户。 使用以逗号分隔的列表。 例如，如果要分配 `user1@contoso.com` 和 `user2@contoso.com` 访问权限，请输入 *`user1@contoso.com,user2@contoso.com`*
+1. 对于 "**服务元数据位置**"，选择与已连接到 Active Directory 服务器的虚拟网络相同的位置。
 
->[!IMPORTANT]
->如果使用的是纯 Azure Active Directory 域服务和 Azure Active Directory 解决方案，请确保将主机池部署在与 Azure Active Directory 域服务相同的区域中，以避免加入域错误和凭据错误。
+   >[!IMPORTANT]
+   >如果使用纯 Azure Active Directory 域服务（Azure AD DS）和 Azure Active Directory （Azure AD）解决方案，请确保将主机池部署在与 Azure AD DS 相同的区域中，以避免域加入和凭据错误。
+
+1. 选择 "**下一步：配置虚拟机**"。
 
 ### <a name="configure-virtual-machines"></a>配置虚拟机
 
-在“配置虚拟机”边栏选项卡中，可以执行以下操作：
+对于 "**配置虚拟机**" 选项卡：
 
-1. 接受默认设置，或自定义 VM 的数量和大小。
-    
+1. 接受默认值或自定义虚拟机的数量和大小。
+
     >[!NOTE]
-    >如果要查找的特定 VM 大小未出现在 VM 大小选择器中，那是因为我们尚未将其加入到 Azure 市场工具中。 若要请求 VM 大小，请在 [Windows 虚拟桌面 UserVoice 论坛](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中创建请求或投票赞成现有请求。
-    
-2. 输入虚拟机名称的前缀。 例如，如果输入“prefix”作为名称，则虚拟机的名称将是“prefix-0”、“prefix-1”，依此类推。
-3. 选择 "**下一步：虚拟机设置**"。
+    >如果要查找的特定虚拟机大小未显示在大小选择器中，这是因为我们尚未将其载入到 Azure Marketplace 工具。 若要请求大小，请在[Windows 虚拟桌面 UserVoice 论坛](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中创建请求或投票赞成现有请求。
+
+1. 输入虚拟机名称的前缀。 例如，如果输入*前缀*，则虚拟机将被称为**前缀-0**、**前缀-1**，依此类推。
+1. 选择 "**下一步：虚拟机设置**"。
 
 ### <a name="virtual-machine-settings"></a>虚拟机设置
 
-在“虚拟机设置”边栏选项卡中，可以执行以下操作：
+对于 "**虚拟机设置**" 选项卡：
 
->[!NOTE]
-> 如果要将 VM 加入到 Azure Active Directory 域服务 (Azure AD DS) 环境，请确保你的域加入用户是 [AAD DC 管理员组](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
->
-> 此帐户还必须属于 Azure AD DS 托管域或 Azure AD 租户 - 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。 
+1. 对于“映像源”，请选择所需的源，并输入有关如何找到和存储该源的相应信息。 Blob 存储、托管映像和库的选项有所不同。
 
-1. 对于“映像源”，请选择所需的源，并输入有关如何找到和存储该源的相应信息。 如果选择不使用托管磁盘，请选择包含 .vhd 文件的存储帐户。
-2. 输入用于将 VM 加入 Active Directory 域的域帐户的用户主体名称和密码。 在虚拟机上将会创建与此相同的用户名和密码作为本地帐户。 以后可以重置这些本地帐户。
-3. 选择连接到 Active Directory 服务器的虚拟网络，然后选择一个子网用于托管虚拟机。
-4. 选择**下一步： Windows 虚拟桌面信息**。
+   如果选择不使用托管磁盘，请选择包含 *.vhd*文件的存储帐户。
+1. 输入用户主体名称和密码。 此帐户必须是将虚拟机加入到 Active Directory 域的域帐户。 在虚拟机上将会创建与此相同的用户名和密码作为本地帐户。 以后可以重置这些本地帐户。
+
+   >[!NOTE]
+   > 如果要将虚拟机加入到 Azure AD DS 环境中，请确保域加入用户是[AAD DC Administrators 组](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)的成员。
+   >
+   > 该帐户还必须是 Azure AD DS 托管域或 Azure AD 租户的成员。 与 Azure AD 租户关联的外部目录的帐户无法在加入域的过程中正确进行身份验证。
+
+1. 选择连接到 Active Directory 服务器的**虚拟网络**，然后选择用于托管虚拟机的子网。
+1. 选择**下一步： Windows 虚拟桌面信息**。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows 虚拟桌面租户信息
 
-在“Windows 虚拟桌面租户信息”边栏选项卡中，可以执行以下操作：
+对于**Windows 虚拟桌面租户信息**选项卡：
 
 1. 对于“Windows 虚拟桌面租户组名称”，请输入租户所在的租户组的名称。 将此字段保留默认值，除非为你提供了具体的租户组名称。
-2. 对于“Windows 虚拟桌面租户名称”，请输入要在其中创建此主机池的租户的名称。
-3. 指定以 Windows 虚拟桌面租户 RDS 所有者身份进行身份验证时要使用的凭据类型。 如果已完成[“使用 PowerShell 创建服务主体和角色分配”教程](./create-service-principal-role-powershell.md)，选择“服务主体”。 在“Azure AD 租户 ID”显示时，请输入包含服务主体的 Azure Active Directory 实例的 ID。
-4. 请输入租户管理员帐户的凭据。 仅支持具有密码凭据的服务主体。
-5. 选择**下一步：查看 + 创建**。
+1. 对于“Windows 虚拟桌面租户名称”，请输入要在其中创建此主机池的租户的名称。
+1. 指定以 Windows 虚拟桌面租户 RDS 所有者身份进行身份验证时要使用的凭据类型。 输入 UPN 或服务主体和密码。
+
+   如果已完成[“使用 PowerShell 创建服务主体和角色分配”教程](./create-service-principal-role-powershell.md)，选择“服务主体”。
+
+1. 对于 "**服务主体**"，为**Azure AD 租户 ID**"输入包含服务主体的 Azure AD 实例的租户管理员帐户。 仅支持具有密码凭据的服务主体。
+1. 选择**下一步：查看 + 创建**。
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>完成设置并创建虚拟机
 
-对于最后两个边栏选项卡：
+在 "**检查和创建**" 中，查看安装信息。 如果需要更改某些内容，请返回并进行更改。 准备就绪后，选择 "**创建**" 以部署主机池。
 
-1. 在“查看并创建”边栏选项卡中查看设置信息。 如果需要更改设置，请返回相应的边栏选项卡进行更改，然后继续。 如果信息正确，请选择“确定”。
-2. 选择“创建”以部署主机池。
+完成此过程可能需要30分钟或更长时间，具体取决于要创建的虚拟机的数量。
 
-此过程可能需要 30 分钟或更长时间才能完成，具体取决于创建的 VM 有多少。
+>[!IMPORTANT]
+> 为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在虚拟机上打开入站端口3389。 Windows 虚拟桌面不需要打开的入站端口3389供用户访问主机池的虚拟机。
+>
+> 如果出于故障排除目的，必须打开端口3389，建议使用实时访问。 有关详细信息，请参阅[使用实时访问保护管理端口](../security-center/security-center-just-in-time.md)。
 
 ## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>（可选）将其他用户分配到桌面应用程序组
 
-在 Azure 市场产品/服务完成后，可将更多用户分配到桌面应用程序组，然后在虚拟机上开始测试完整的会话桌面。 如果已在 Azure 市场套餐中添加默认用户，并且不想要添加其他用户，则可以跳过本部分。
+Azure Marketplace 完成创建池后，可以将更多用户分配到桌面应用程序组。 如果不想添加其他内容，请跳过此部分。
 
-若要将用户分配到桌面应用程序组，首先必须打开 PowerShell 窗口。 然后，需要输入以下两个 cmdlet。
+将用户分配到桌面应用程序组：
 
-运行以下 cmdlet 登录到 Windows 虚拟桌面环境：
+1. 打开 PowerShell 窗口。
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+1. 运行以下命令以登录到 Windows 虚拟桌面环境：
 
-使用此 cmdlet 将用户添加到桌面应用程序组：
+   ```powershell
+   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+   ```
 
-```powershell
-Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-```
+1. 使用以下命令将用户添加到桌面应用程序组：
 
-用户的 UPN 应与该用户在 Azure Active Directory 中的标识（例如 user1@contoso.com）相匹配。 若要添加多个用户，必须针对每个用户运行此 cmdlet。
+   ```powershell
+   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
+   ```
 
-完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并且可以看到会话桌面的资源。
+   用户的 UPN 应匹配用户在 Azure AD 中的标识，例如 *user1@contoso.com* 。 如果要添加多个用户，请为每个用户运行此命令。
+
+添加到桌面应用程序组的用户可以使用受支持的远程桌面客户端登录到 Windows 虚拟桌面，并查看会话桌面的资源。
 
 当前支持的客户端如下：
 
-- [适用于 Windows 7 和 Windows 10 的远程桌面客户端](connect-windows-7-and-10.md)
-- [Windows 虚拟桌面 Web 客户端](connect-web.md)
-
->[!IMPORTANT]
->为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。
+* [适用于 Windows 7 和 Windows 10 的远程桌面客户端](connect-windows-7-and-10.md)
+* [Windows 虚拟桌面 Web 客户端](connect-web.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-创建了主机池并分配了可访问其桌面的用户后，便可使用 RemoteApp 程序填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅以下教程：
+你已经创建了一个主机池，并为其分配了用户访问其桌面的权限。 可以用 RemoteApp 程序填充主机池。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅以下教程：
 
 > [!div class="nextstepaction"]
 > [管理应用组教程](./manage-app-groups.md)

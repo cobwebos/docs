@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: a6a1371553ccd9b810ba4649af448fb8847d0ed8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1d8a42a4ec106418b481ac705d3ce1b33f58a312
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380721"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086481"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议-参考指南
 
@@ -25,7 +25,10 @@ ms.locfileid: "78380721"
 
 若要了解如何响应这些建议，请参阅[Azure 安全中心中的修正建议](security-center-remediate-recommendations.md)。
 
-安全分数以您已缓解的安全中心建议的数量为基础。 若要确定首先要解决的建议的优先级，请考虑每个建议的严重性。
+安全分数基于已完成的安全中心建议的数量。 若要确定首先要解决的建议，请查看每个建议的严重性，并查看其对安全分数的潜在影响。
+
+>[!TIP]
+> 如果建议的描述显示 "无相关策略"，通常是因为该建议依赖于不同的建议和*其*策略。 例如，建议 "应修正 Endpoint protection 运行状况失败 ..."，它依赖于检查是否甚至*安装*了 endpoint protection 解决方案的建议（"应安装 endpoint protection 解决方案 ..."）。 基本*建议具有*策略。 将策略限制为仅限基础建议会简化策略管理。
 
 ## <a name="recs-network"></a>网络建议
 
@@ -106,7 +109,7 @@ ms.locfileid: "78380721"
 |**应通过漏洞评估解决方案修复漏洞**|会持续评估为其部署了漏洞评估第三方解决方案的虚拟机的应用程序和 OS 漏洞。 只要发现此类漏洞，就会在建议中提供详细信息。<br>（相关策略：漏洞评估解决方案应修正的漏洞）|高|N|计算机|
 |**应修复计算机上安全配置中的漏洞**|修复计算机上安全配置的漏洞，以保护其免受攻击。<br>（相关策略：应修正计算机上安全配置中的漏洞）|低|N|计算机|
 |**应修正容器安全配置中的漏洞**|修复安装了 Docker 的计算机上安全配置中的漏洞，使它们免受攻击。<br>（相关策略：应修正容器安全配置中的漏洞）|高|N|计算机|
-|**应在你的计算机上解决 Endpoint protection 运行状况问题**|若要实现全面的安全中心保护，请遵照故障排除指南中的说明，解决计算机上的监视代理问题。<br>（无相关策略-依赖于 "在计算机上安装 endpoint protection 解决方案"）|中型|N|计算机|
+|**应在你的计算机上解决 Endpoint protection 运行状况问题**|若要实现全面的安全中心保护，请遵照故障排除指南中的说明，解决计算机上的监视代理问题。<br>（此建议依赖于 "在计算机上安装 endpoint protection 解决方案" 和其策略）|中型|N|计算机|
 ||||||
 
 

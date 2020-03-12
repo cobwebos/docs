@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
 ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595835"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117783"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>保护 Azure Kubernetes 服务 (AKS) 中的 Pod 的最佳做法
 
 在 Azure Kubernetes 服务 (AKS) 中开发和运行应用程序时，Pod 的安全性是需要考虑的一个重要方面。 设计应用程序时，应以所需权限最少为原则。 客户最看重的是私人数据的安全。 你不会希望将数据库连接字符串、密钥或机密和证书等凭据暴露给外部世界，因为攻击者可能利用这些机密进行恶意攻击。 请勿将这些凭据添加到代码中，或将其嵌入容器映像中。 这样会有暴露的风险，并且会限制凭证的轮换能力，因为轮换时需要重建容器映像。
 
-此最佳实践文章重点介绍如何在 AKS 中保护 pod。 学习如何：
+此最佳实践文章重点介绍如何在 AKS 中保护 pod。 你将学习：
 
 > [!div class="checklist"]
 > * 使用 Pod 安全性上下文来限制对进程和服务，或权限提升的访问权限

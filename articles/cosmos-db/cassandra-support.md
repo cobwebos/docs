@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0a2ace3f73379cff0b9289a8cebb10cb7930348d
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78397327"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129213"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能 
 
@@ -145,6 +145,8 @@ Azure Cosmos DB 在 Cassandra API 帐户上支持以下数据库命令。
 
 * CREATE KEYSPACE（忽略此命令的复制设置）
 * CREATE TABLE 
+* CREATE INDEX （无需指定索引名称，并且不支持完整冻结索引）
+* 允许筛选
 * ALTER TABLE 
 * USE 
 * INSERT 
@@ -179,7 +181,7 @@ Azure Cosmos DB 支持基于角色的访问控制 (RBAC) 用于预配、旋转�
 
 ## <a name="keyspace-and-table-options"></a>密钥空间和表选项
 
-目前会忽略“创建密钥空间”命令中针对区域名称、类、replication_factor 和数据中心的选项。 系统使用基础 Azure Cosmos DB 的[全局分发](global-dist-under-the-hood.md)复制方法来添加区域。 如果需要数据跨区域存在，可以使用 PowerShell、CLI 或门户在帐户级别启用它。若要了解详细信息，请参阅[如何添加区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 Durable_writes 不能禁用，因为 Azure Cosmos DB 需确保每次写入都是持久的。 在每个区域，Azure Cosmos DB 都会跨副本集（由四个副本组成）来复制数据。该副本集[配置](global-dist-under-the-hood.md)不能修改。
+目前会忽略“创建密钥空间”命令中针对区域名称、类、replication_factor 和数据中心的选项。 系统使用基础 Azure Cosmos DB 的[全局分发](global-dist-under-the-hood.md)复制方法添加区域。 如果需要数据跨区域存在，可以使用 PowerShell、CLI 或门户在帐户级别启用它。若要了解详细信息，请参阅[如何添加区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)一文。 Durable_writes 不能禁用，因为 Azure Cosmos DB 需确保每次写入都是持久的。 在每个区域，Azure Cosmos DB 都会跨副本集（由四个副本组成）来复制数据。该副本集[配置](global-dist-under-the-hood.md)不能修改。
  
 在创建表时，会忽略所有选项，但 gc_grace_seconds 除外，后者应设置为零。
 密钥空间和表有一个名为“cosmosdb_provisioned_throughput”的额外选项，该选项的最小值为 400 RU/秒。 密钥空间吞吐量允许跨多个表共享吞吐量，这适用于所有表都不利用预配的吞吐量的情况。 “更改表”命令允许跨区域更改预配的吞吐量。 

@@ -3,12 +3,12 @@ title: 通过 Azure 资源运行状况支持的资源类型 | Microsoft Docs
 description: 通过 Azure 资源运行状况支持的资源类型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ec194287e8a8e06d3bb14c4b202cc2f11063d1dd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925659"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128990"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 资源运行状况中的资源类型和运行状况检查
 下面是通过资源运行状况执行的所有检查（按资源类型）的完整列表。
@@ -188,6 +188,11 @@ ms.locfileid: "78925659"
 |执行的检查|
 |---|
 |<ul><li>客户是否遇到用户生成的服务总线错误？</li><li>用户是否遇到由于服务总线命名空间升级导致的暂时性错误增加？</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>ServiceFabric/群集
+|执行的检查|
+|---|
+|<ul><li>Service Fabric 群集是否已启动并正在运行？</li><li>Service Fabric 群集是否可以通过 Azure 资源管理器来管理？</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>ManagedInstances/数据库
 |执行的检查|

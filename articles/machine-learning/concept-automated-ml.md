@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 501158ffa8d05bc34dd39c21680012b1f3308def
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396413"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127203"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -95,9 +95,9 @@ ms.locfileid: "78396413"
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>高级预处理：可选特征化
 
-还提供了其他高级预处理和特征化，例如 data guardrails、encoding 和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#featurization)。 启用此设置，使用：
+还提供了其他高级预处理和特征化，例如 data guardrails、encoding 和转换。 [详细了解所包含的特征化](how-to-use-automated-ml-for-ml-models.md#featurization)。 启用此设置，使用：
 
-+ Azure 机器学习 studio：在 "**查看附加配置**" 部分中[使用以下步骤](how-to-create-portal-experiments.md#create-and-run-experiment)启用**自动特征化**。
++ Azure 机器学习 studio：在 "**查看附加配置**" 部分中[使用以下步骤](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)启用**自动特征化**。
 
 + Python SDK：指定[`AutoMLConfig` 类](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 
 
@@ -153,7 +153,7 @@ ms.locfileid: "78396413"
 
 ## <a name="classification--regression"></a>分类 & 回归
 
-分类和回归是最常见的机器学习任务类型。 这两者都是监视使用定型数据的模型，并将这些知识应用于新数据的监控类型。 Azure 机器学习为这些任务专门提供 featurizations，例如分类的深层神经网络文本 featurizers。 了解有关[特征化选项](how-to-create-portal-experiments.md#featurization)的详细信息。 
+分类和回归是最常见的机器学习任务类型。 这两者都是监视使用定型数据的模型，并将这些知识应用于新数据的监控类型。 Azure 机器学习为这些任务专门提供 featurizations，例如分类的深层神经网络文本 featurizers。 了解有关[特征化选项](how-to-use-automated-ml-for-ml-models.md#featurization)的详细信息。 
 
 分类模型的主要目标是根据知识的定型数据来预测新数据将归入的类别。 常见分类示例包括欺诈检测、手写识别和对象检测。  了解更多详细信息，并查看[使用自动机器学习进行分类](tutorial-train-models-with-aml.md)的示例。
 
@@ -286,7 +286,7 @@ Azure 机器学习提供了两种使用自动 ML 的体验
 + 按照[教程操作：使用 Azure 机器学习自动为回归模型定型](tutorial-auto-train-models.md)
 
 + 配置自动定型试验的设置：
-  + 在 Azure 机器学习 studio 中，请[使用以下步骤](how-to-create-portal-experiments.md)。
+  + 在 Azure 机器学习 studio 中，请[使用以下步骤](how-to-use-automated-ml-for-ml-models.md)。
   + 使用 Python SDK 时，请[使用以下步骤](how-to-configure-auto-train.md)。
 
 + 若要了解如何使用时序数据自动定型，请[使用以下步骤](how-to-auto-train-forecast.md)。

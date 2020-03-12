@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: rogarana
-ms.openlocfilehash: 223906343c2391d03d8526026d3daad3174791ed
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1f904435622c8128810bb0e381308c8a308dd360
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361871"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129505"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>启用对 Azure 文件共享的 SMB 的 Active Directory 身份验证
 
@@ -34,7 +34,7 @@ ms.locfileid: "78361871"
 
 用于访问 Azure 文件共享的 AD 标识必须同步到 Azure AD，才能通过标准的[基于角色的访问控制（RBAC）](../../role-based-access-control/overview.md)模型来强制执行共享级别文件权限。 将保留并强制执行从现有文件服务器中执行的文件/目录上的[Windows 样式 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 。 此功能提供与企业 AD 域基础结构的无缝集成。 将本地文件服务器替换为 Azure 文件共享时，现有用户可以通过单一登录体验从当前客户端访问 Azure 文件共享，而无需更改所使用的凭据。  
  
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备条件 
 
 在为 Azure 文件共享启用 AD 身份验证之前，请确保已完成以下先决条件： 
 
@@ -159,7 +159,7 @@ join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Na
 ```PowerShell
 #Set the feature flag on the target storage account and provide the required AD domain information
 
-Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServiesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
+Set-AzStorageAccount -ResourceGroupName "<your-resource-group-name-here>" -Name "<your-storage-account-name-here>" -EnableActiveDirectoryDomainServicesForFile $true -ActiveDirectoryDomainName "<your-domain-name-here>" -ActiveDirectoryNetBiosDomainName "<your-netbios-domain-name-here>" -ActiveDirectoryForestName "<your-forest-name-here>" -ActiveDirectoryDomainGuid "<your-guid-here>" -ActiveDirectoryDomainsid "<your-domain-sid-here>" -ActiveDirectoryAzureStorageSid "<your-storage-account-sid>"
 ```
 
 

@@ -15,23 +15,25 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: ffbac18b3172dd0cd3d430bae5060be0a8d1bb21
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: b432f381bae79d783663130d06dbf874f00a9994
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082641"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129123"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
 >通过复制并粘贴以下 URL，获取有关何时通过复制和粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Migrate+from+Azure+Media+Services+v2+to+v3%22&locale=en-us` 到 RSS 源读者。
 
-本文介绍 Azure 媒体服务 v3 中引入的更改，说明两个版本之间的差异，并提供迁移指导。
+本文提供媒体服务 v2 到 v3 的迁移指南。
 
 如果你目前基于[旧版媒体服务 v2 API](../previous/media-services-overview.md) 开发了一个视频服务，则在迁移到 v3 API 之前，应查看以下指导原则和注意事项。 v3 API 中的许多优势和新功能可以改进开发体验和媒体服务的功能。 但是，如本文的[已知问题](#known-issues)部分中所述，API 版本的变化也带来了一些限制。 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。 
 
-> [!NOTE]
-> 你可以使用[Azure 门户](https://portal.azure.com/)管理 V3[实时事件](live-events-outputs-concept.md)、查看（不管理） v3[资产](assets-concept.md)、获取有关访问 api 的信息。 有关更多详细信息，请参阅[常见问题解答](frequently-asked-questions.md#can-i-use-the-azure-portal-to-manage-v3-resources)。 
+## <a name="prerequisites"></a>必备条件
+
+* 查看[Media Services v2 与 v3](media-services-v2-vs-v3.md)
+* [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="benefits-of-media-services-v3"></a>媒体服务 v3 的优势
   
@@ -57,78 +59,6 @@ ms.locfileid: "79082641"
 * RTMPS 安全引入。<br/>创建直播活动时，将获得 4 个引入 URL。 这 4 个引入 URL 几乎是相同的，具有相同的流式处理令牌 (AppId)，仅端口号部分不同。 其中两个 URL 是 RTMPS 的主要和备份 URL。   
 * 可对实体使用基于角色的访问控制 (RBAC)。 
 
-## <a name="changes-from-v2"></a>自 v2 以来的更改
-
-* 对于通过 v3 创建的资产，媒体服务仅支持[Azure 存储服务器端存储加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)。
-    * 对于通过 v2 API 创建的，并采用媒体服务提供的[存储加密](../previous/media-services-rest-storage-encryption.md) (AES 256) 的资产，可以使用 v3 API。
-    * 无法使用 v3 API 创建采用旧版 AES 256 [存储加密](../previous/media-services-rest-storage-encryption.md)的新资产。
-* V3 中[资产](assets-concept.md)的属性不同于 v2，请参阅[属性的映射方式](assets-concept.md#map-v3-asset-properties-to-v2)。
-* v3 SDK 现在已与存储 SDK 分离，可让你更精细地控制所要使用的存储 SDK 版本，并避免版本控制问题。 
-* 在 v3 API 中，所有编码比特率以“比特/秒”为单位。 这与 v2 Media Encoder Standard 预设不同。 例如，v2 中的比特率指定为 128 (kbps)，而在 v3 中，则指定 128000（比特/秒）。 
-* v3 中不存在实体 AssetFile、AccessPolicy 和 Ingestmanifest。
-* v3 中不存在 IAsset.ParentAssets 属性。
-* 现在，Contentkey 不再是实体，而是流式处理定位符的一个属性。
-* 事件网格支持替换 NotificationEndpoint。
-* 以下实体已重命名
-    * 作业输出取代了任务，现在是作业的一部分。
-    * 流式处理定位符取代了定位符。
-    * 直播活动取代了频道。<br/>直播活动计费基于实时频道计量器。 有关详细信息，请参阅[计费](live-event-states-billing.md)和[定价](https://azure.microsoft.com/pricing/details/media-services/)。
-    * 实时输出取代了节目。
-* 实时输出在创建时启动，在删除后停止。 v2 API 中的节目以不同的方式工作，它们必须在创建后启动。
-* 若要获取有关作业的信息，需要知道在其下创建作业的转换名称。 
-* 在 v2 中，XML[输入](../previous/media-services-input-metadata-schema.md)和[输出](../previous/media-services-output-metadata-schema.md)元数据文件作为编码作业的结果生成。 在 v3 中，元数据格式已从 XML 转换为 JSON。 
-* 在 Media Services v2 中，可以指定初始化向量（IV）。 在媒体服务 v3 中，无法指定 FairPlay IV。 尽管这不会影响使用媒体服务进行打包和许可证传递的客户，但在使用第三方 DRM 系统提供 FairPlay 许可证（混合模式）时可能会遇到问题。 在这种情况下，请务必知道，FairPlay IV 派生自 cbc 密钥 ID，可以使用以下公式检索：
-
-    ```
-    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
-    ```
-
-    替换为
-
-    ``` 
-    public static byte[] HexStringToByteArray(string hex)
-    {
-        return Enumerable.Range(0, hex.Length)
-            .Where(x => x % 2 == 0)
-            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-            .ToArray();
-    }
-    ```
-
-    有关详细信息，请参阅[实时C#和 VOD 操作的混合模式下的媒体服务 v3 Azure Functions 代码](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)。
- 
-> [!NOTE]
-> 查看适用于[媒体服务 v3 资源](media-services-apis-overview.md#naming-conventions)的命名约定。 还要查看[命名 blob](assets-concept.md#naming)。
-
-## <a name="feature-gaps-with-respect-to-v2-apis"></a>与 v2 API 之间的功能差距
-
-与 v2 API 相比，v3 API 存在以下功能差距。 我们正在弥补这些差距。
-
-* [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
-* [V2 api 中 Media Encoder Standard 的许多高级功能](../previous/media-services-advanced-encoding-with-mes.md)当前在 v3 中不可用，例如：
-  
-    * 资产拼接
-    * 叠加
-    * 裁剪
-    * 缩略图子画面
-    * 输入没有音频时插入无提示音频轨
-    * 当输入不包含视频时插入视频轨
-* 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
-
-> [!NOTE]
-> 请将本文加入书签，并不时地查看最新信息。
- 
-## <a name="code-differences"></a>代码差异
-
-下表显示了常见方案中 v2 和 v3 的代码差异。
-
-|场景|V2 API|V3 API|
-|---|---|---|
-|创建资产并上传文件 |[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|提交作业|[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>演示如何先创建转换，再提交作业。|
-|发布使用 AES 加密的资产 |1. 创建 ContentKeyAuthorizationPolicyOption<br/>2. 创建 ContentKeyAuthorizationPolicy<br/>3. 创建 AssetDeliveryPolicy<br/>4. 创建资产并上传内容或提交作业并使用输出资产<br/>5. 将 AssetDeliveryPolicy 与资产关联<br/>6. 创建 ContentKey<br/>7. 将 ContentKey 附加到资产<br/>8. 创建 AccessPolicy<br/>9. 创建定位符<br/><br/>[v2 .NET 示例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. 创建内容密钥策略<br/>2. 创建资产<br/>3. 上传内容或使用资产作为 JobOutput<br/>4. 创建流式处理定位符<br/><br/>[v3 .NET 示例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|获取作业详细信息和管理作业 |[用 v2 管理作业](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[用 v3 管理作业](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
-
 ## <a name="known-issues"></a>已知问题
 
 *  目前，可以使用[Azure 门户](https://portal.azure.com/)执行以下操作：
@@ -153,5 +83,4 @@ ms.locfileid: "79082641"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何轻松地开始编码和流式传输视频文件，请查看[流文件](stream-files-dotnet-quickstart.md)。 
-
+[教程：根据 URL 编码远程文件并流式传输视频-.NET](stream-files-dotnet-quickstart.md)

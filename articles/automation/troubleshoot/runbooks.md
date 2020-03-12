@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b7d876c7f865b8368451ea1b6cc96ade89a59aa8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 9786129207ead804bdd6c9439dc82168959e7db9
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373448"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129413"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -31,7 +31,7 @@ ms.locfileid: "78373448"
 
 3. **确保节点和自动化工作区具有所需的模块：** 如果你的 runbook 导入任何模块，请使用[导入模块](../shared-resources/modules.md#import-modules)中列出的步骤，确保它们可用于你的自动化帐户。 按照[Azure 自动化中的更新 azure 模块中](..//automation-update-azure-modules.md)的说明，将模块更新到最新版本。 有关疑难解答的详细信息，请参阅[排查模块问题](shared-resources.md#modules)。
 
-如果 Runbook 已挂起或意外失败：
+如果 runbook 已挂起或意外失败：
 
 * [检查作业状态](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses)定义 runbook 状态和某些可能的原因。
 * [将其他输出添加](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams)到 runbook，以标识在挂起 runbook 之前会发生的情况。
@@ -92,7 +92,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="issue"></a>问题
 
-使用 `Select-AzureSubscription` 或 `Select-AzureRmSubscription` cmdlet 时收到以下错误：
+使用**get-azuresubscription**或**get-azurermsubscription** cmdlet 时，会收到以下错误：
 
 ```error
 The subscription named <subscription name> cannot be found.
@@ -100,26 +100,25 @@ The subscription named <subscription name> cannot be found.
 
 ### <a name="error"></a>错误
 
-以下情况下可能发生此错误：
+如果出现以下情况，则可能发生此错误：
 
 * 订阅名称无效
-
 * 尝试获取订阅详细信息的 Azure Active Directory 用户未配置为订阅的管理员。
 
 ### <a name="resolution"></a>解决方法
 
-执行以下步骤以确定是否已正确向 Azure 进行身份验证并有权访问尝试选择的订阅：
+执行以下步骤，确定是否已对 Azure 进行了身份验证，并且有权访问要尝试选择的订阅：
 
 1. 在 Azure 自动化之外测试脚本，以确保它独立运行。
-2. 请确保在运行 `Add-AzureAccount` cmdlet 之前运行 `Select-AzureSubscription` cmdlet。
-3. 将 `Disable-AzureRmContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 可以确保任何凭据都仅适用于当前 runbook 的执行。
-4. 如果仍然看到此错误消息，可通过在 **cmdlet 后添加**AzureRmContext`Add-AzureAccount` 参数来修改代码，然后执行代码。
+2. 确保先运行 **Add-AzureAccount** cmdlet，再运行 **Select-AzureSubscription** cmdlet。
+3. 将 `Disable-AzureRmContextAutosave –Scope Process` 添加到 runbook 的开头。 此 cmdlet 调用可确保任何凭据仅适用于当前 runbook 的执行。
+4. 如果仍看到此错误消息，请通过添加**add-azureaccount** Cmdlet 的*set-azurermcontext*参数来修改代码，然后执行代码。
 
    ```powershell
    Disable-AzureRmContextAutosave –Scope Process
 
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
    $context = Get-AzureRmContext
 
@@ -142,13 +141,13 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 ### <a name="resolution"></a>解决方法
 
-若要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建和添加证书以管理 azure 服务](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)，并使用[azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+若要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建和添加证书以管理 azure 服务](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和使用[azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="get-serializationsettings"></a>方案：在作业流中看到关于 get_SerializationSettings 方法的错误
 
 ### <a name="issue"></a>问题
 
-Runbook 的作业流中出现错误并显示了以下消息：
+Runbook 的作业流中会出现以下错误：
 
 ```error
 Connect-AzureRMAccount : Method 'get_SerializationSettings' in type
@@ -202,7 +201,7 @@ Runbook 在运行时没有使用正确的上下文。
 
 ### <a name="resolution"></a>解决方法
 
-如果使用多个订阅，则调用 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给 Runbook，请将 `AzureRmContext` 参数添加到 cmdlet 并将上下文传递给它。 还建议将 `Disable-AzureRmContextAutosave` cmdlet 与 **Process** 范围配合使用来确保你使用的凭据仅用于当前 runbook。
+调用多个 runbook 时，订阅上下文可能会丢失。 若要确保将订阅上下文传递给 runbook，请将上下文传递到*set-azurermcontext*参数中的 cmdlet。 将**disable-azurermcontextautosave** Cmdlet 与**进程**范围一起使用，以确保指定的凭据仅用于当前 runbook。
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -268,13 +267,13 @@ The job was tried three times but it failed
 
 ### <a name="cause"></a>原因
 
-发生此错误的原因是以下问题之一。
+发生此错误的原因是以下问题之一：
 
 * 内存限制。 如果作业使用超过 400 MB 的内存，作业可能会失败。 在[自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)中可以找到已记录的分配给沙盒的内存限制。 
 
 * 网络套接字。 Azure 沙箱限制为1000并发网络套接字。 请参阅[自动化服务限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。
 
-* 模块不兼容。 模块依赖项可能不正确。 在这种情况下，runbook 通常会返回 "找不到命令" 或 "无法绑定参数" 消息。
+* 模块不兼容。 模块依赖项可能不正确。 在这种情况下，runbook 通常会返回 "**找不到命令**" 或 "**无法绑定参数**消息"。
 
 * 没有用于沙盒 Active Directory 的身份验证。 Runbook 尝试调用在 Azure 沙盒中运行的可执行文件或子进程。 不支持使用 Azure Active Directory 身份验证库（ADAL）将 runbook 配置为使用 Azure AD 进行身份验证。
 
@@ -292,11 +291,11 @@ The job was tried three times but it failed
 
 * 异常数据太多。 作业输出流的限制为1MB。 确保你的 runbook 在 try/catch 块中包含对可执行文件或子进程的调用。 如果操作引发异常，请使代码将异常消息写入自动化变量中。 此方法可防止将消息写入作业输出流中。
 
-## <a name="sign-in-failed"></a>方案：登录 Azure 帐户失败
+## <a name="sign-in-failed"></a>方案：登录到 Azure 帐户失败
 
 ### <a name="issue"></a>问题
 
-使用 `Add-AzureAccount` 或 `Connect-AzureRmAccount` cmdlet 时，会收到以下错误之一：
+使用**add-azureaccount**或**add-azurermaccount** cmdlet 时，会收到以下错误之一：
 
 ```error
 Unknown_user_type: Unknown User Type
@@ -308,13 +307,13 @@ No certificate was found in the certificate store with thumbprint
 
 ### <a name="cause"></a>原因
 
-如果凭据资产名称无效，将发生此错误。 如果用于设置自动化凭据资产的用户名和密码无效，也可能会出现此错误。
+如果凭据资产名称无效，将发生此错误。 如果用于设置自动化凭据资产的用户名和密码无效，则也可能发生此错误。
 
 ### <a name="resolution"></a>解决方法
 
 要确定具体错误，请执行以下步骤：
 
-1. 请确保没有包含任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的  **字符\@** 。
+1. 请确保没有任何特殊字符。 这些字符包括用于连接 Azure 的自动化凭据资产名称中的  **字符\@** 。
 2. 查看你是否能够在本地 PowerShell ISE 编辑器中使用存储在 Azure 自动化凭据中的用户名和密码。 可以通过在 PowerShell ISE 中运行以下 cmdlet 来检查用户名和密码是否正确：
 
    ```powershell
@@ -325,7 +324,7 @@ No certificate was found in the certificate store with thumbprint
    Connect-AzureRmAccount –Credential $Cred
    ```
 
-3. 如果无法在本地进行身份验证，则意味着你尚未设置好 Azure Active Directory 凭据。 请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。
+3. 如果身份验证在本地失败，则意味着你尚未正确设置 Azure Active Directory 凭据。 请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。
 
 4. 如果它看起来是暂时性错误，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -363,11 +362,11 @@ Object reference not set to an instance of an object
 
 ### <a name="cause"></a>原因
 
-存在一个已知问题，即 Start-azurermautomationrunbook 在包含对象的情况下不会正确处理输出流。
+**Start-azurermautomationrunbook**如果流包含对象，则不会正确处理输出流。
 
 ### <a name="resolution"></a>解决方法
 
-若要解决此问题，建议你实现轮询逻辑，并使用[get-azurermautomationjoboutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 来检索输出。 下面的示例中定义了此逻辑的示例。
+建议实现轮询逻辑，并使用[get-azurermautomationjoboutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 来检索输出。 下面定义了此逻辑的示例。
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -427,7 +426,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 ### <a name="cause"></a>原因
 
-作业执行时间超过帐户的 500 分钟免费配额时，就会出现此错误。 此配额适用于所有类型的作业执行任务。 其中一些任务可能是测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 门户或数据中心计划要执行的作业。 若要详细了解自动化的定价，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
+作业执行时间超过帐户的 500 分钟免费配额时，就会出现此错误。 此配额适用于所有类型的作业执行任务。 其中一些任务是测试作业、从门户启动作业、使用 webhook 执行作业，或使用 Azure 门户或数据中心计划要执行的作业。 若要详细了解自动化的定价，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
 ### <a name="resolution"></a>解决方法
 
@@ -450,28 +449,28 @@ Runbook 作业失败并显示错误：
 
 ### <a name="cause"></a>原因
 
-当 PowerShell 引擎找不到要在 runbook 中使用的 cmdlet 时，则会导致此错误。 此错误可能是因为，帐户中缺少包含该 cmdlet 的模块、与 Runbook 名称冲突，或者该 cmdlet 也存在于其他模块中，而自动化无法解析该名称。
+当 PowerShell 引擎找不到要在 runbook 中使用的 cmdlet 时，则会导致此错误。 帐户中可能缺少包含该 cmdlet 的模块、与 runbook 名称存在名称冲突，或者该 cmdlet 也存在于其他模块中，而自动化无法解析该名称。
 
 ### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
 * 检查输入的 cmdlet 名称是否正确。
-* 确保 cmdlet 存在于自动化帐户中，且没有冲突。 要验证 cmdlet 是否存在，请在编辑模式下打开 Runbook，并搜索希望在库中找到的 cmdlet，或者运行 `Get-Command <CommandName>`。 验证该 cmdlet 可供帐户使用且与其他 cmdlet 或 runbook 不存在名称冲突以后，可将其添加到画布上，并确保使用的是 runbook 中的有效参数集。
+* 确保 cmdlet 存在于自动化帐户中，且没有冲突。 要验证 cmdlet 是否存在，请在编辑模式下打开 Runbook，并搜索希望在库中找到的 cmdlet，或者运行 `Get-Command <CommandName>`。 验证该 cmdlet 可供帐户使用且与其他 cmdlet 或 runbook 不存在名称冲突时，请将该 cmdlet 添加到画布中，并确保在 runbook 中使用有效的参数集。
 * 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 **ModuleName\CmdletName**。
-* 如果是在本地执行混合辅助角色组中的 runbook，则请确保模块和 cmdlet 已安装在托管混合辅助角色的计算机上。
+* 如果要在混合辅助角色组中本地执行 runbook，请确保在承载混合辅助角色的计算机上安装了该模块和 cmdlet。
 
 ## <a name="long-running-runbook"></a>方案：长时间运行的 runbook 无法完成
 
 ### <a name="issue"></a>问题
 
-运行 3 小时后，runbook 将显示处于“已停止”状态。 可能还会收到错误：
+Runbook 在运行3小时后显示为停止状态。 还可能会收到此错误：
 
 ```error
-The job was evicted and subsequently reached a Stopped state. The job cannot continue running
+The job was evicted and subsequently reached a Stopped state. The job cannot continue running.
 ```
 
-此行为是在 Azure 沙箱中设计的，因为在 Azure 自动化中对进程进行[公平共享](../automation-runbook-execution.md#fair-share)监视。 如果执行时间超过三个小时，公平份额会自动停止 runbook。 超过公平共享时间限制的 runbook 状态因 runbook 类型而异。 PowerShell 和 Python runbook 设置为“已停止”状态。 PowerShell 工作流 runbook 设置为“失败”。
+此行为是在 Azure 沙箱中设计的，因为在 Azure 自动化中对进程进行[公平共享](../automation-runbook-execution.md#fair-share)监视。 如果某个进程的执行时间超过3小时，则公平共享会自动停止 runbook。 超过公平共享时间限制的 runbook 状态因 runbook 类型而异。 PowerShell 和 Python runbook 设置为 "已停止" 状态。 PowerShell 工作流 runbook 设置为 "失败"。
 
 ### <a name="cause"></a>原因
 
@@ -483,7 +482,7 @@ Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
 混合辅助角色不受 Azure 沙箱使用的3小时公平共享 runbook 限制的限制。 应开发在混合 Runbook 辅助角色上运行的 runbook，以便在出现意外的本地基础结构问题时支持重启行为。
 
-另一种选择是通过创建[子 runbook](../automation-child-runbooks.md) 来优化 runbook。 如果 runbook 在多个资源上遍历同一函数，例如在多个数据库上执行某个数据库操作，则可将该函数移到子 runbook。 各个子 runbook 是在单独的进程中并行执行的。 此行为降低了完成父 runbook 所需的时间总量。
+另一种选择是通过创建[子 runbook](../automation-child-runbooks.md) 来优化 runbook。 如果 runbook 在多个资源上循环遍历相同的函数（例如，在多个数据库的数据库操作中），则可以将函数移动到子 runbook。 每个子 runbook 并行在单独的进程中执行。 此行为降低了完成父 runbook 所需的时间总量。
 
 启用子 runbook 方案的 PowerShell cmdlet 是：
 
@@ -513,7 +512,7 @@ Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
 ### <a name="issue"></a>问题
 
-在运行 `Get-AzureRmAutomationJobOutput` cmdlet 时收到以下错误消息：
+在运行**get-azurermautomationjoboutput** cmdlet 时，会收到以下错误消息：
 
 ```error
 429: The request rate is currently too large. Please try again
@@ -521,14 +520,14 @@ Runbook 在 Azure 沙盒中的公平共享允许的3小时限制内运行。
 
 ### <a name="cause"></a>原因
 
-从具有多个[详细流](../automation-runbook-output-and-messages.md#verbose-stream)的 Runbook 中检索作业输出时，可能发生此错误。
+从具有多个[详细流](../automation-runbook-output-and-messages.md#verbose-stream)的 runbook 检索作业输出时可能会发生此错误。
 
 ### <a name="resolution"></a>解决方法
 
 可通过两种方法来解决此错误：
 
 * 编辑 Runbook，并减少它发出的作业流数量。
-* 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以为 `-Stream Output` cmdlet 指定 `Get-AzureRmAutomationJobOutput` 参数以仅检索输出流。 
+* 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以将**get-azurermautomationjoboutput** Cmdlet 的*Stream*参数值设置为仅检索输出流。 
 
 ## <a name="cannot-invoke-method"></a>方案： PowerShell 作业失败并出现错误：无法调用方法
 
@@ -542,16 +541,16 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>原因
 
-当你在 Azure 中运行的 runbook 中启动 PowerShell 作业时，可能会发生此错误。 发生此行为的原因是，在 Azure 沙盒中运行的 runbook 可能无法以[完整语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)运行。
+此错误可能表示在 Azure 沙盒中运行的 runbook 无法在[完整语言模式下](/powershell/module/microsoft.powershell.core/about/about_language_modes)运行。
 
 ### <a name="resolution"></a>解决方法
 
-可通过两种方法来解决此错误：
+可以通过两种方法来解决此错误。
 
-* 使用 `Start-AzureRmAutomationRunbook` 启动 runbook，而不使用 `Start-Job`。
-* 如果 runbook 有此错误消息，请在混合 Runbook 辅助角色上运行它
+* 使用**start-azurermautomationrunbook**启动 runbook，而不是使用**启动作业**。
+* 如果 runbook 有此错误消息，请尝试在混合 Runbook 辅助角色上运行它。
 
-若要了解有关此行为以及 Azure 自动化 Runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
+若要了解有关此行为以及 Azure 自动化 runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>方案： Linux 混合 Runbook 辅助角色在对 Runbook 进行签名时接收密码提示
 
@@ -561,13 +560,13 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>原因
 
-未在 sudoers 文件中正确配置适用于 Linux 的 Log Analytics 代理的 nxautomationuser 帐户。 混合 Runbook 辅助角色需要对帐户权限和其他数据进行适当的配置，以便能够对 Linux Runbook 辅助角色上的 runbook 进行签名。
+未在 sudoers 文件中正确配置适用于 Linux 的 Log Analytics 代理的**nxautomationuser**帐户。 混合 Runbook 辅助角色需要对帐户权限和其他数据进行适当的配置，以便能够对 Linux Runbook 辅助角色上的 runbook 进行签名。
 
 ### <a name="resolution"></a>解决方法
 
 * 确保混合 Runbook 辅助角色在计算机上具有 GnuPG （GPG）可执行文件。
 
-* 验证 nxautomationuser 帐户在 sudoers 文件中的配置。 请参阅[在混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)
+* 验证**nxautomationuser**帐户在 sudoers 文件中的配置。 请参阅[在混合 Runbook 辅助角色上运行 runbook](../automation-hrw-run-runbooks.md)
 
 ## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>方案： Cmdlet 在 Azure 自动化中的 PnP PowerShell runbook 中失败
 
@@ -577,7 +576,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 ### <a name="cause"></a>原因
 
-此问题最常见的原因是 Azure 自动化处理调用 PnP PowerShell cmdlet 的 runbook，例如**pnplistitem**，而无需捕获返回对象。
+此问题最常见的情况是，Azure 自动化处理调用 PnP PowerShell cmdlet 的 runbook，例如**pnplistitem**，而不会捕获返回对象。
 
 ### <a name="resolution"></a>解决方法
 
@@ -586,6 +585,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 ```azurecli
   $null = add-pnplistitem
 ```
+
 如果你的脚本分析了 cmdlet 输出，则该脚本必须将输出存储在一个变量中，然后操作变量，而不是只是对输出进行流式处理。
 
 ```azurecli
@@ -595,20 +595,15 @@ if ($SomeVariable.someproperty -eq ....
 
 ## <a name="other"></a>我的问题未在上面列出
 
-以下部分列出了其他常见错误以及支持文档，以帮助你解决问题。
+以下各部分列出了其他常见错误，并提供了可帮助您解决问题的支持文档。
 
 ### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>混合 runbook 辅助角色不运行作业，或者没有响应
 
-如果使用混合辅助角色而不是在 Azure 自动化中运行作业，可能需要对[混合辅助角色本身进行故障排除](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)。
+如果要在混合 Runbook 辅助角色（而不是 Azure 自动化）中运行作业，可能需要对[混合辅助角色本身进行故障排除](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker)。
 
 ### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook 由于“无权限”或某个变动而失败
 
 运行方式帐户可能没有与当前帐户相同的权限。 确保运行方式帐户有权访问脚本中使用的[任何资源](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
-
-### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
-
-* 如果 runbook 以前执行但停止，请确保[运行方式帐户](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)未过期。
-* 如果使用 webhook 启动 runbook，请确保[webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)未过期。
 
 ### <a name="issues-passing-parameters-into-webhooks"></a>将参数传递到 webhook 的问题
 
@@ -616,7 +611,7 @@ if ($SomeVariable.someproperty -eq ....
 
 ### <a name="issues-using-az-modules"></a>使用 Az 模块时出现问题
 
-不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 有关详细信息，请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)了解更多详细信息。
+不支持在同一 Automation 帐户中使用 Az 模块和 AzureRM 模块。 有关更多详细信息，请参阅[runbook 中的 Az 模块](https://docs.microsoft.com/azure/automation/az-modules)。
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Runbook 中的行为不一致
 
@@ -628,8 +623,8 @@ if ($SomeVariable.someproperty -eq ....
 
 ### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbook 在工作时突然停止
 
-* 如果 runbook 以前执行但停止，请确保运行方式帐户未过期。 请参阅[认证续订](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)。
-* 如果使用 webhook 启动 runbook，请确保 webhook[未过期](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)。
+* 确保运行方式帐户未过期。 请参阅[认证续订](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal)。
+* 如果你使用[webhook](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook)来启动 runbook，请确保 webhook 未过期。
 
 ### <a name="passing-parameters-into-webhooks"></a>将参数传递到 webhook
 
@@ -643,6 +638,10 @@ if ($SomeVariable.someproperty -eq ....
 
 若要使用自签名证书，请参阅[创建新证书](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate)。
 
+### <a name="access-denied-when-using-azure-sandbox-for-a-runbook"></a>使用 Azure 沙盒作为 runbook 时拒绝访问
+
+Azure 沙箱会阻止访问所有进程外 COM 服务器。 例如，沙盒应用程序或 runbook 无法调入 Windows Management Instrumentation （WMI）或 Windows Installer 服务（msiserver）中。 有关如何使用沙盒的详细信息，请参阅[在 Azure 自动化中执行 Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution.md)。
+
 ## <a name="recommended-documents"></a>建议的文档
 
 * [在 Azure 自动化中启动 Runbook](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
@@ -652,6 +651,6 @@ if ($SomeVariable.someproperty -eq ....
 
 如果你的问题未在本文中列出，或者无法解决问题，请访问以下渠道之一获取更多支持：
 
-* 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
+* 通过[Azure 论坛](https://azure.microsoft.com/support/forums/)获取 azure 专家的解答。
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
 * 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

@@ -5,14 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 03/10/2020
 ms.author: helohr
-ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+manager: lizross
+ms.openlocfilehash: ce85fb70e1480ad285eee78fe20faa8d77b9a147
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383643"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127954"
 ---
 # <a name="identify-and-diagnose-issues"></a>识别和诊断问题
 
@@ -34,23 +35,66 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 Windows 虚拟桌面诊断只使用一个 PowerShell cmdlet，但包含许多可选参数来帮助缩小和隔离问题。 以下部分列出了可用于诊断问题的 cmdlet。 大多数筛选器可以一起应用。 括在括号中的值（如 `<tenantName>`）应替换为适用于你的情况的值。
 
-### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>检索租户中的诊断活动
+>[!IMPORTANT]
+>诊断功能适用于单用户故障排除。 使用 PowerShell 的所有查询都必须包含 *-UserName*或 *-ActivityID*参数。 对于监视功能，请使用 Log Analytics。 有关如何向工作区发送诊断数据的详细信息，请参阅[使用 Log Analytics 诊断功能](diagnostics-log-analytics.md)。 
 
-可以通过输入**RdsDiagnosticActivities** cmdlet 来检索诊断活动。 下面的示例 cmdlet 将返回诊断活动列表，按从最高到最晚的顺序进行排序。
+### <a name="filter-diagnostic-activities-by-user"></a>按用户筛选诊断活动
 
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName>
-```
-
-与其他 Windows 虚拟桌面 PowerShell cmdlet 一样，必须使用 **-TenantName**参数指定要用于查询的租户的名称。 租户名称适用于几乎所有诊断活动查询。
-
-### <a name="retrieve-detailed-diagnostic-activities"></a>检索详细诊断活动
-
-**-详细**参数为返回的每个诊断活动提供其他详细信息。 每个活动的格式因其活动类型而异。 **-详细**参数可添加到任何**RdsDiagnosticActivities**查询，如下面的示例中所示。
+**-UserName**参数返回由指定用户启动的诊断活动列表，如下面的示例 cmdlet 中所示。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Detailed
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
 ```
+
+**-UserName**参数也可以与其他可选筛选参数组合。
+
+### <a name="filter-diagnostic-activities-by-time"></a>按时间筛选诊断活动
+
+可以用 **-StartTime**和 **-EndTime**参数筛选返回的诊断活动列表。 **-StartTime**参数将返回从特定日期开始的诊断活动列表，如下面的示例中所示。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018"
+```
+
+**-EndTime**参数可以添加到 cmdlet，其中 **-StartTime**参数用于指定要接收结果的特定时间段。 下面的示例 cmdlet 将从8月1日到8月10日之间返回诊断活动列表。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -StartTime "08/01/2018" -EndTime "08/10/2018"
+```
+
+**-StartTime**和 **-EndTime**参数也可以与其他可选筛选参数结合。
+
+### <a name="filter-diagnostic-activities-by-activity-type"></a>按活动类型筛选诊断活动
+
+还可以使用 **-ActivityType**参数按活动类型筛选诊断活动。 以下 cmdlet 将返回最终用户连接的列表：
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -ActivityType Connection
+```
+
+以下 cmdlet 将返回管理员管理任务的列表：
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
+```
+
+**RdsDiagnosticActivities** cmdlet 当前不支持指定源作为 ActivityType。
+
+### <a name="filter-diagnostic-activities-by-outcome"></a>按结果筛选诊断活动
+
+您可以通过使用 **-结果**参数的结果来筛选返回的诊断活动列表。 下面的示例 cmdlet 将返回成功诊断活动的列表。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN> -Outcome Success
+```
+
+下面的示例 cmdlet 将返回失败的诊断活动的列表。
+
+```powershell
+Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
+```
+
+**-结果**参数还可与其他可选筛选参数组合。
 
 ### <a name="retrieve-a-specific-diagnostic-activity-by-activity-id"></a>按活动 ID 检索特定诊断活动
 
@@ -68,63 +112,13 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityIdGuid
 Get-RdsDiagnosticActivities -TenantName <tenantname> -ActivityId <ActivityGuid> -Detailed | Select-Object -ExpandProperty Errors
 ```
 
-### <a name="filter-diagnostic-activities-by-user"></a>按用户筛选诊断活动
+### <a name="retrieve-detailed-diagnostic-activities"></a>检索详细诊断活动
 
-**-UserName**参数返回由指定用户启动的诊断活动列表，如下面的示例 cmdlet 中所示。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -UserName <UserUPN>
-```
-
-**-UserName**参数也可以与其他可选筛选参数组合。
-
-### <a name="filter-diagnostic-activities-by-time"></a>按时间筛选诊断活动
-
-可以用 **-StartTime**和 **-EndTime**参数筛选返回的诊断活动列表。 **-StartTime**参数将返回从特定日期开始的诊断活动列表，如下面的示例中所示。
+**-详细**参数为返回的每个诊断活动提供其他详细信息。 每个活动的格式因其活动类型而异。 **-详细**参数可添加到任何**RdsDiagnosticActivities**查询，如下面的示例中所示。
 
 ```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018"
+Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityId <ActivityGuid> -Detailed
 ```
-
-**-EndTime**参数可以添加到 cmdlet，其中 **-StartTime**参数用于指定要接收结果的特定时间段。 下面的示例 cmdlet 将从8月1日到8月10日之间返回诊断活动列表。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -StartTime "08/01/2018" -EndTime "08/10/2018"
-```
-
-**-StartTime**和 **-EndTime**参数也可以与其他可选筛选参数结合。
-
-### <a name="filter-diagnostic-activities-by-activity-type"></a>按活动类型筛选诊断活动
-
-还可以使用 **-ActivityType**参数按活动类型筛选诊断活动。 以下 cmdlet 将返回最终用户连接的列表：
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Connection
-```
-
-以下 cmdlet 将返回管理员管理任务的列表：
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -ActivityType Management
-```
-
-**RdsDiagnosticActivities** cmdlet 当前不支持指定源作为 ActivityType。
-
-### <a name="filter-diagnostic-activities-by-outcome"></a>按结果筛选诊断活动
-
-您可以通过使用 **-结果**参数的结果来筛选返回的诊断活动列表。 下面的示例 cmdlet 将返回成功诊断活动的列表。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Success
-```
-
-下面的示例 cmdlet 将返回失败的诊断活动的列表。
-
-```powershell
-Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
-```
-
-**-结果**参数还可与其他可选筛选参数组合。
 
 ## <a name="common-error-scenarios"></a>常见错误情况
 

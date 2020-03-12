@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: cca22c499efde74bb1469222d2f8a6e576452aa2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/11/2020
+ms.openlocfilehash: 1a6b50456a5dc3ff89fe7b513f406dc68bd2401e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381959"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129499"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射数据流性能和优化指南
 
 在 Azure 数据工厂中映射数据流提供了一个无代码界面，用于大规模设计、部署和协调数据转换。 如果不熟悉如何映射数据流，请参阅[映射数据流概述](concepts-data-flow-overview.md)。
 
 从 ADF UX 设计和测试数据流时，请确保在调试模式下实时执行数据流，而无需等待群集预热。 有关详细信息，请参阅[调试模式](concepts-data-flow-debug-mode.md)。
+
+此视频显示了用数据流转换数据的一些示例计时：
+> [!VIDEO https://www.youtube.com/watch?v=6CSbWm4lRhw]
 
 ## <a name="monitoring-data-flow-performance"></a>监视数据流性能
 

@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384119"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128774"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows 诊断扩展架构
 Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作系统中的监视数据和 Azure 计算资源的工作负荷。 本文详细介绍了用于在 Windows 虚拟机和其他计算资源上配置诊断扩展的架构。
@@ -506,7 +506,7 @@ Azure 诊断扩展是 Azure Monitor 中的一个代理，它收集来宾操作�
 ```
 
 > [!NOTE]
-> 公共配置 Azure Monitor 接收器定义具有两个属性： *PrincipalId*和*Secret*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
+> 专用配置 Azure Monitor 接收器定义具有两个属性： *PrincipalId*和*Secret*。 这些属性仅是经典 VM 和经典云服务所必需的。 这些属性不应用于其他资源。
 
 
 ```json

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b3cd858653d54ae622758d218bb887d94bceb697
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378105"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086371"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -29,7 +29,7 @@ ms.locfileid: "78378105"
 1. **NAS/VPN 服务器**接收来自 VPN 客户端的请求，并将其转换为可发往 NPS 服务器的 RADIUS 请求。 
 2. **NPS 服务器**连接到 Active Directory，针对 RADIUS 请求执行主要身份验证，成功后，将请求传递到所有已安装的扩展。  
 3. **NPS 扩展**向 Azure MFA 触发一个执行辅助身份验证的请求。 该扩展收到响应后，如果 MFA 质询成功，该扩展将通过向 NPS 服务器提供由 Azure STS 颁发的、包含 MFA 声明的安全令牌，来完成身份验证请求。  
-4. **Azure MFA** 与 Azure Active Directory 通信，检索用户的详细信息并使用配置给用户的验证方法执行辅助身份验证。
+4. **AZURE MFA**与 Azure Active Directory 通信以检索用户的详细信息，并使用配置给用户的验证方法执行辅助身份验证。
 
 下图显示了此高级身份验证请求流： 
 
@@ -43,7 +43,7 @@ NPS 扩展自动处理冗余，因此无需特殊配置。
 
 VPN 服务器会路由身份验证请求，因此它们需要留意已启用新 Azure MFA 的 NPS 服务器。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满足以下先决条件。
 
@@ -96,7 +96,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 1. 在服务器上，从“服务器管理器快速入门”菜单中打开“添加角色和功能向导”。
 2. 为安装类型选择“基于角色或基于功能的安装”。
 3. 选择“网络策略和访问服务”服务器角色。 可能会弹出窗口，以通知运行此角色所需的功能。
-4. 继续完成该向导，直到出现“确认”页。 选择**安装**。
+4. 继续完成该向导，直到出现“确认”页。 选择“安装”。
 
 既然已为 NPS 指定了服务器，还应配置此服务器以处理来自 VPN 解决方案的传入 RADIUS 请求。
 
@@ -165,7 +165,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 安装程序会在以下位置创建 PowerShell 脚本：`C:\Program Files\Microsoft\AzureMfa\Config`（其中，C:\ 是安装驱动器）。 此 PowerShell 脚本在每次运行时执行以下操作：
 
-- 创建一个自签名证书。
+- 创建自签名证书。
 - 将证书的公钥关联到 Azure AD 上的服务主体。
 - 将证书存储在本地计算机证书存储中。
 - 向网络用户授予对证书私钥的访问权限。
@@ -238,7 +238,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的注册表设置 *REQUIRE_USER_MATCH* 可以控制功能行为。 此项设置提供单个配置选项：
 
-| Key | 值 | 默认 |
+| 密钥 | 值 | 默认 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 
@@ -250,9 +250,9 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 ### <a name="nps-extension-health-check-script"></a>NPS 扩展运行状况检查脚本
 
-以下脚本在 TechNet 库中提供，用于在对 NPS 扩展进行故障排除时执行基本运行状况检查步骤。
+下面的脚本可用于在对 NPS 扩展进行故障排除时执行基本运行状况检查步骤。
 
-[MFA_NPS_Troubleshooter ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -334,6 +334,8 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 可在[解决来自 Azure 多重身份验证的 NPS 扩展中的错误消息](howto-mfa-nps-extension-errors.md)一文中找到其他故障排除指南和可能的解决方案。
 
 ## <a name="next-steps"></a>后续步骤
+
+- [Windows Server 中网络策略服务器的概述和配置](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - 在[适用于多重身份验证 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)中配置登录名的备用 ID 或设置不应执行双重验证的 IP 的异常列表
 

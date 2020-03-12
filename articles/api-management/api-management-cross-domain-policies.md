@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375070"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126547"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -127,7 +127,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 |cors|根元素。|是|空值|
 |allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|空值|
 |origin|值可以是允许所有源的 `*`，或者是用于指定单个源的 URI。 URI 必须包括方案、主机和端口。|是|如果 URI 中省略了端口，则端口 80 用于 HTTP，端口 443 用于 HTTPS。|
-|allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。|否|如果此部分不存在，则支持 GET 和 POST。|
+|allowed-methods|如果允许 GET 或 POST 之外的方法，则此元素是必需的。 包含 `method` 元素，用于指定支持的 HTTP 谓词。 值 `*` 指示所有方法。|否|如果此部分不存在，则支持 GET 和 POST。|
 |method|指定 HTTP 谓词。|如果 `method` 部分存在，则至少一个 `allowed-methods` 元素是必需。|空值|
 |allowed-headers|此元素包含 `header` 元素，用于指定可以包括在请求中的标头的名称。|否|空值|
 |expose-headers|此元素包含 `header` 元素，用于指定可以通过客户端访问的标头的名称。|否|空值|
@@ -137,8 +137,8 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 |名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的功能。|否|false|
-|preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预检响应的功能。|否|0|
+|allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的能力。|否|false|
+|preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预处理响应的能力。|否|0|
 
 ### <a name="usage"></a>使用情况
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。

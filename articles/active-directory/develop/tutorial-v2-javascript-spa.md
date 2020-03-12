@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377409"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129437"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>让用户登录并从 JavaScript 单页应用程序 (SPA) 调用 Microsoft 图形 API
 
@@ -28,6 +28,9 @@ ms.locfileid: "78377409"
 - 将个人帐户以及工作和学校帐户登录 
 - 获取访问令牌
 - 从 Microsoft 标识平台终结点调用需要访问令牌的 Microsoft Graph API 或其他 API
+
+>[!NOTE]
+> 如果你不熟悉 Microsoft 标识平台，建议你先使用[登录用户，然后在 JAVASCRIPT SPA 快速入门中获取访问令牌](quickstart-v2-javascript.md)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a2af1e87ce7b17183ae09fb02b2652a04f585e84
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78396211"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129169"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Azure 机器学习中的数据访问
 
@@ -83,7 +83,7 @@ Azure 机器学习数据存储是通过 Azure 存储服务进行的存储提取�
 
 + [训练机器学习模型](how-to-train-with-datasets.md)。
 + 使用数据集 
-     + [自动 ML 试验](how-to-create-portal-experiments.md)
+     + [自动 ML 试验](how-to-use-automated-ml-for-ml-models.md)
      + [设计器](tutorial-designer-automobile-price-train-score.md#import-data) 
 + 使用[机器学习管道](how-to-create-your-first-pipeline.md)中的批处理推理访问数据集。
 + 创建[数据标记项目](#label)。

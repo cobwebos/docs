@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364431"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129342"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引策略
 
@@ -19,7 +19,7 @@ ms.locfileid: "78364431"
 
 ## <a name="indexing-policy-examples"></a>索引策略示例
 
-下面是以 JSON 格式显示的一些索引策略示例，该格式是在 Azure 门户上公开索引策略的方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
+下面是采用[JSON 格式](index-policy.md#include-exclude-paths)显示的索引策略的一些示例，这是它们在 Azure 门户上的公开方式。 可以通过 Azure CLI 或任何 SDK 设置相同的参数。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>用以有选择地排除某些属性路径的选择退出策略
 
@@ -153,7 +153,7 @@ ms.locfileid: "78364431"
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 86dbcee7150adacd0e961dbe07cf66ad117d2041
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386960"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128946"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -34,7 +34,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 默认情况下，索引策略设置为 `automatic`。 这是通过将索引策略中的 `automatic` 属性设置为 `true`来实现的。 如果将此属性设置为 "`true` 允许 Azure CosmosDB 在文档写入时自动为文档编制索引。
 
-## <a name="including-and-excluding-property-paths"></a>包括和排除属性路径
+## <a id="include-exclude-paths"></a>包括和排除属性路径
 
 自定义索引策略可以指定显式包含在索引中或从索引中排除的属性路径。 通过优化已编制索引的路径数，可以降低容器使用的存储量，并提高写入操作的延迟时间。 这些路径按照["索引概述" 部分中描述的方法](index-overview.md#from-trees-to-property-paths)定义，其中添加了以下内容：
 
@@ -75,7 +75,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 - 对于包含以下字符的路径：字母数字字符和 _ （下划线），无需转义双引号的路径字符串（例如 "/path/？"）。 对于包含其他特殊字符的路径，需要为双引号（例如，"/\"path-abc\"/？"）转义路径字符串。 如果你希望路径中有特殊字符，则可以对每个路径进行转义以保证安全。 在功能上，如果你转义每个路径，而不是包含特殊字符的路径，则不会产生任何差别。
 
-- 默认情况下，系统属性 "etag" 将从索引中排除，除非将 etag 添加到要索引的包含路径。
+- 默认情况下，系统属性 "_etag" 将从索引中排除，除非将 etag 添加到用于索引的包含路径。
 
 包括和排除路径时，可能会遇到以下属性：
 
@@ -99,7 +99,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 在索引策略中定义空间路径时，应定义 ```type``` 应应用于该路径的索引。 空间索引的可能类型包括：
 
-* 点
+* Point
 
 * Polygon
 
