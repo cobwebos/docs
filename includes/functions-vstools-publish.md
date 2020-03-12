@@ -25,7 +25,7 @@ ms.locfileid: "76021053"
     | ------------ |  -------------------------------------------------- |
     | **Azure Functions 消耗计划** |   将项目发布到在[消耗计划](../articles/azure-functions/functions-scale.md#consumption-plan)中运行的函数应用时，只需为函数应用的执行付费。 其他托管计划会产生更高的成本。 若要了解更多信息，请参阅 [Azure Functions 的缩放和托管](../articles/azure-functions/functions-scale.md)。 | 
     | **新建** | 在 Azure 中创建具有相关资源的新函数应用。 选择“选择现有”  时，Azure 中现有函数应用中的所有文件都将被本地项目中的文件覆盖。 仅在将更新重新发布到现有函数应用时才使用此选项。 |
-    | **从包文件运行** | 在启用[从包运行](../articles/azure-functions/run-functions-from-deployment-package.md)模式的情况下使用 [Zip 部署](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy)来部署函数应用。 建议通过这种方式来运行函数，可以提高性能。 如果未使用此选项，请确保在发布到 Azure 之前先使函数应用项目停止在本地运行。 |
+    | **从包文件运行** | 启用[从包运行](../articles/azure-functions/run-functions-from-deployment-package.md)模式，函数应用将使用 [Zip 部署](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy)进行部署。 建议通过这种方式来运行函数，可以提高性能。 如果未使用此选项，请确保在函数应用发布到 Azure 之前，先停止其在本地的运行。 |
 
 
 3. 选择“发布”  。 如果尚未从 Visual Studio 登录到 Azure 帐户，请选择“登录”  。 也可以创建免费 Azure 帐户。

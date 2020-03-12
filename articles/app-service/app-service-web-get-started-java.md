@@ -19,7 +19,7 @@ ms.locfileid: "78226352"
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 
 > [!NOTE]
-> 本文将应用部署到 Windows 上的应用服务。 若要部署到基于 _Linux_ 的应用服务，请参阅[在 Linux 上创建 Java Web 应用](./containers/quickstart-java.md)。
+> 本文将应用部署到 Windows 上的应用服务。 若要部署到 _Linux_上的应用服务，请参阅[在 Linux 上创建 Java Web 应用](./containers/quickstart-java.md)。
 >
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Maven 的 Azure Web 应用插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java Web 存档 (WAR) 文件。
@@ -43,7 +43,7 @@ mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -Darchetyp
 
 ## <a name="configure-the-maven-plugin"></a>配置 Maven 插件
 
-若要从 Maven 进行部署，请在 Cloud Shell 中使用代码编辑器打开 `helloworld` 目录中的项目 `pom.xml` 文件。 
+若要使用 Maven 进行部署，请在 Cloud Shell 中使用代码编辑器打开 `helloworld` 目录中的项目 `pom.xml` 文件。 
 
 ```bash
 code pom.xml
@@ -97,10 +97,10 @@ code pom.xml
 
 | 占位符 | 说明 |
 | ----------- | ----------- |
-| `SUBSCRIPTION_ID` | 想要将应用部署到的订阅的唯一 ID。 可以使用 `az account show` 命令从 Cloud Shell 或 CLI 中找到默认订阅的 ID。 对于所有可用的订阅，请使用 `az account list` 命令。|
+| `SUBSCRIPTION_ID` | 想要将应用部署到的订阅的唯一 ID。 可以在 Cloud Shell 或 CLI 中使用 `az account show` 命令找到默认订阅的 ID。 对于所有可用的订阅，请使用 `az account list` 命令。|
 | `RESOURCEGROUP_NAME` | 要在其中创建应用的新资源组的名称。 通过将应用的所有资源都放在一个组中，可以一起管理它们。 例如，删除资源组会删除与该应用关联的所有资源。 使用唯一的新资源组名称（例如 *myResourceGroup*）更新此值。 将在后面的部分使用此资源组名称来清除所有 Azure 资源。 |
 | `WEBAPP_NAME` | 部署到 Azure (WEBAPP_NAME.azurewebsites.net) 时，应用名称将成为应用主机名的一部分。 使用将托管 Java 应用的新应用服务应用的唯一名称（例如 *contoso*）更新此值。 |
-| `REGION` | 托管着应用的 Azure 区域，例如 westus2  。 可以从 Cloud Shell 或 CLI 使用 `az account list-locations` 命令获取区域列表。 |
+| `REGION` | 托管着应用的 Azure 区域，例如 westus2  。 可以在 Cloud Shell 或 CLI 中使用 `az account list-locations` 命令获取区域列表。 |
 
 ## <a name="deploy-the-app"></a>部署应用
 

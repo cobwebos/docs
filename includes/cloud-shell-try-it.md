@@ -27,7 +27,7 @@ Azure 托管 Azure Cloud Shell（一个可通过浏览器使用的交互式 shel
 
 1. 启动 Cloud Shell。
 
-1. 选择代码块上的“复制”按钮  以复制代码。
+1. 选择代码块上的“复制”按钮以复制代码。 
 
 1. 在 Windows 和 Linux 上选择 **Ctrl**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中，或在 macOS 上选择 **Cmd**+**Shift**+**V** 将代码粘贴到 Cloud Shell 会话中。
 

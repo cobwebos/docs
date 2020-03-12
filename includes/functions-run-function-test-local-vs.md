@@ -17,7 +17,7 @@ ms.locfileid: "68592898"
 
     ![Azure 本地运行时](./media/functions-run-function-test-local-vs/functions-debug-local-vs.png)
 
-3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并执行请求。 下面演示浏览器中函数返回的对本地 GET 请求的响应： 
+3. 将 HTTP 请求的 URL 粘贴到浏览器的地址栏中。 将查询字符串 `?name=<YOUR_NAME>` 追加到此 URL 并执行请求。 下面显示了该函数返回的对本地 GET 请求在浏览器中的响应： 
 
     ![浏览器中的函数 localhost 响应](./media/functions-run-function-test-local-vs/functions-run-browser-local-vs.png)
 

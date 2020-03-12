@@ -22,7 +22,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="prerequisites"></a>必备条件
 
-若要完成本教程，必须先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 确保还安装了 **Azure 开发**工作负荷。
+若要完成本教程，必须先安装 [Visual Studio 2019](https://azure.microsoft.com/downloads/)。 确保还安装了“Azure 开发”工作负荷。 
 
 ![安装包含“Azure 开发”工作负载的 Visual Studio](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
