@@ -9,12 +9,12 @@ ms.date: 01/24/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: 9f1f60fd16aa830372bd0f5b19e22e7003de496b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 84a9d6aa6203b8a518b0e33bed0ec2707c4389a1
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770316"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79082908"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>为 Azure 虚拟机添加扩展指标
 
@@ -34,7 +34,7 @@ Cloudyn 使用 Azure VM 中的 Azure 指标数据来显示有关其资源的详�
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>确定是否启用了扩展的指标
 
-1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 2. 在“虚拟机”下选择一个 VM，然后在“监视”下选择“指标”。    此时会显示可用指标的列表。
 3. 选择一些指标，随后有一个图形会显示这些指标的数据。  
     ![示例指标 – 主机 CPU 百分比](./media/azure-vm-extended-metrics/metric01.png)
