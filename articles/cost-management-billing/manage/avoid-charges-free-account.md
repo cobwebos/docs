@@ -22,7 +22,7 @@ ms.locfileid: "77200942"
 
 ## <a name="your-credit-runs-out-or-is-expired"></a>额度已用完或已过期
 
-当额度用尽或在 30 天后过期，订阅和服务将禁用。 若要继续使用 Azure 服务，必须升级帐户。 有关详细信息，请参阅[升级 Azure 免费帐户](upgrade-azure-subscription.md)。 升级后，仍然可以使用 12 个月的免费服务，并且仅对超出免费服务和数量的使用量付费。
+当额度用尽或 30 天期限已过，订阅和服务将禁用。 若要继续使用 Azure 服务，必须升级帐户。 有关详细信息，请参阅[升级 Azure 免费帐户](upgrade-azure-subscription.md)。 升级后，仍然可以使用 12 个月的免费服务，并且仅对超出免费服务和数量的使用量付费。
 
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>使用量超出了免费服务的限值
@@ -31,7 +31,7 @@ ms.locfileid: "77200942"
 
 ## <a name="you-used-some-services-that-arent-free"></a>你使用了一些不免费的服务
 
-升级帐户后，需要按即用即付费率为 Azure 免费帐户未免费提供的服务付款。 若要了解有关免费帐户所含服务的信息，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。 可以在 Azure 门户中检查服务使用情况。 若要了解详细信息，请参阅[定期检查门户的成本明细和燃速率](getting-started.md#costs)。
+升级帐户后，需要按即用即付费率为 Azure 免费帐户未免费提供的服务付款。 若要了解有关免费帐户所含服务的信息，请参阅 [Azure 免费帐户常见问题解答](https://azure.microsoft.com/free/free-account-faq/)。 可以在 Azure 门户中检查服务使用情况。 若要了解详细信息，请参阅[定期检查门户的成本明细和消耗率](getting-started.md#costs)。
 
 ## <a name="you-reached-the-end-of-your-free-12-months"></a>你的免费使用 12 个月已结束
 
@@ -39,9 +39,9 @@ ms.locfileid: "77200942"
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
-2. 在左侧的导航区域中，选择“所有服务”  。
+2. 在左侧的导航区域中，选择“所有服务”。 
 
-3.  选择 **订阅**。
+3.  选择“订阅”。 
 
 4.  选择注册免费帐户时创建的订阅。
 

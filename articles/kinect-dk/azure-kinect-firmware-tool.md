@@ -20,7 +20,7 @@ Azure Kinect 固件工具可用于查询和更新 Azure Kinect DK 的设备固�
 
 ## <a name="list-connected-devices"></a>列出已连接的设备
 
-可以使用 -l 选项获取已连接的设备列表。  `AzureKinectFirmwareTool.exe -l`
+可以使用 -l 选项获取已连接的设备列表：  `AzureKinectFirmwareTool.exe -l`
 
 ```console
  == Azure Kinect DK Firmware Tool ==
