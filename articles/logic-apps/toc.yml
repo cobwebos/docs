@@ -105,8 +105,10 @@
           href: logic-apps-diagnosing-failures.md
     - name: 访问 Azure 虚拟网络
       items:
-        - name: 连接到带有集成服务环境的虚拟网络
+        - name: 创建集成服务环境 - Azure 门户
           href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 创建集成服务环境 - REST API
+          href: create-integration-service-environment-rest-api.md
         - name: 为多个集成服务环境设置访问权限
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: 向集成服务环境添加资源

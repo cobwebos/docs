@@ -392,14 +392,22 @@
       items:
         - name: 通过复制活动复制数据
           href: copy-activity-overview.md
+        - name: 监视复制活动
+          href: copy-activity-monitoring.md
         - name: 使用“删除活动”删除文件
           href: delete-activity.md
         - name: 复制数据工具
           href: copy-data-tool.md
         - name: 格式和压缩支持
           href: supported-file-formats-and-compression-codecs.md
-        - name: 性能和优化
-          href: copy-activity-performance.md
+        - name: 复制活动性能
+          items:
+            - name: 性能和可伸缩性指南
+              href: copy-activity-performance.md
+            - name: 排查性能问题
+              href: copy-activity-performance-troubleshooting.md
+            - name: 性能功能
+              href: copy-activity-performance-features.md
         - name: 保留元数据和 ACL
           href: copy-activity-preserve-metadata.md
         - name: 架构和类型映射
@@ -689,6 +697,8 @@
       href: frequently-asked-questions.md
     - name: 服务更新
       href: 'https://azure.microsoft.com/updates/?product=data-factory'
+    - name: 博客
+      href: 'https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog#'
     - name: 提出问题 - MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 提出问题 - Stack Overflow

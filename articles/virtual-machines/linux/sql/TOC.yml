@@ -10,6 +10,8 @@
   items:
     - name: 通过 STONITH 设置 Azure RHEL VM 可用性组
       href: sql-server-linux-rhel-ha-stonith-tutorial.md
+    - name: 在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组侦听程序
+      href: sql-server-linux-rhel-ha-listener-tutorial.md
 - name: 参考
   items:
     - name: Azure CLI

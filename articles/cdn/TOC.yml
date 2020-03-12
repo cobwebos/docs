@@ -102,6 +102,8 @@
     - name: 分析
       href: cdn-log-analysis.md
       items:
+        - name: HTTP 原始日志
+          href: enable-raw-logs.md
         - name: Azure 诊断日志
           href: cdn-azure-diagnostic-logs.md
         - name: Verizon 中用于 Azure CDN 的分析工具

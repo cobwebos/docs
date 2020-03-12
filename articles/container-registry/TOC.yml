@@ -80,6 +80,8 @@
           items:
             - name: 使用虚拟网络限制访问（预览版）
               href: container-registry-vnet.md
+            - name: 与 Azure 专用链接集成（预览版）
+              href: container-registry-private-link.md
             - name: 在防火墙后访问
               href: container-registry-firewall-access-rules.md
             - name: 身份验证
@@ -102,8 +104,10 @@
               href: container-registry-repository-scoped-permissions.md
             - name: 内容信任
               href: container-registry-content-trust.md
-            - name: 通过安全中心扫描映像（预览版）
+            - name: 通过安全中心扫描映像
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: 加密注册表数据（预览版）
+              href: container-registry-customer-managed-keys.md
         - name: 注册表和其他 Azure 服务
           expanded: false
           items:
