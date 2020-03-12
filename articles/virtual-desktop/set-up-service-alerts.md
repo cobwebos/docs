@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: 2834ba924fa9c29d955c38fbaeb45ab23e5c4e9b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368767"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127709"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
@@ -25,7 +26,7 @@ ms.locfileid: "77368767"
 
 若要详细了解 Azure 服务运行状况，请参阅 [Azure 运行状况文档](https://docs.microsoft.com/azure/service-health/)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [教程：在 Windows 虚拟桌面中创建租户](tenant-setup-azure-active-directory.md)
 - [教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)

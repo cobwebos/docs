@@ -199,9 +199,14 @@
         - name: 流式处理
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
-    - name: 从 v2 到 v3 的迁移指南
-      href: migrate-from-v2-to-v3.md
-      displayName: naming
+    - name: 从 v2 迁移到 v3
+      items:
+        - name: v2 与 v3
+          displayName: 'migrate, v2 to v3'
+          href: media-services-v2-vs-v3.md
+        - name: 迁移指导
+          href: migrate-from-v2-to-v3.md
+          displayName: naming
 - name: 操作方法指南
   items:
     - name: 入门
@@ -328,6 +333,18 @@
           href: download-results-howto.md
         - name: 表示描述性音频
           href: signal-descriptive-audio-howto.md
+    - name: 故障排除
+      items:
+        - name: 常见问题
+          href: frequently-asked-questions.md
+        - name: 错误代码
+          items:
+            - name: 流式处理终结点错误代码
+              href: streaming-endpoint-error-codes.md
+            - name: 直播活动错误代码
+              href: live-event-error-codes.md
+            - name: 作业错误代码
+              href: job-error-codes.md
 - name: 参考
   items:
     - name: OpenAPI 规范 (Swagger)
@@ -351,14 +368,6 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: 资源管理器模板
       href: /azure/templates/microsoft.media/allversions
-    - name: 错误代码
-      items:
-        - name: 流式处理终结点错误代码
-          href: streaming-endpoint-error-codes.md
-        - name: 直播活动错误代码
-          href: live-event-error-codes.md
-        - name: 作业错误代码
-          href: job-error-codes.md
 - name: 资源
   items:
     - name: Azure 媒体服务社区
@@ -392,7 +401,5 @@
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
     - name: 配额和限制
       href: limits-quotas-constraints.md
-    - name: 常见问题解答
-      href: frequently-asked-questions.md
     - name: Azure 云和区域
       href: azure-clouds-regions.md

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 381f1486f13907aa52558029789e49bc4e5c4961
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 65352b8f8f85f5e7a2e25ae99d5ca3368ad78711
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687611"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126516"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Linux 上的 Azure 应用服务简介
 
@@ -91,7 +91,7 @@ Linux 上的应用服务仅支持[免费、基本、标准和高级](https://azu
 * [设置应用服务中的过渡环境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Docker 中心持续部署](app-service-linux-ci-cd.md)
 
-如有问题和疑问，请在[我们的论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)上发帖。
+如有问题和疑问，请在[我们的论坛](https://docs.microsoft.com/answers/topics/azure-webapps.html)上发帖。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

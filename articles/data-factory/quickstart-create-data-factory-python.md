@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3b8edd249b19a61f8c80eb5b8c9df25754d4f070
+ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898531"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78399506"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>快速入门：使用 Python 创建数据工厂和管道
 
@@ -32,7 +32,7 @@ Azure 数据工厂是基于云的数据集成服务，用于创建数据驱动�
 
 管道可以从不同的数据存储引入数据。 管道使用计算服务（例如 Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics 和 Azure 机器学习）处理或转换数据。 管道将输出数据发布到数据存储（例如 Azure SQL 数据仓库），供商业智能 (BI) 应用程序使用。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -379,9 +379,9 @@ def main():
     act_name = 'copyBlobtoBlob'
     blob_source = BlobSource()
     blob_sink = BlobSink()
-    dsin_ref = DatasetReference(ds_name)
-    dsOut_ref = DatasetReference(dsOut_name)
-    copy_activity = CopyActivity(act_name, inputs=[dsin_ref], outputs=[
+    dsin_ref = DatasetReference(reference_name=ds_name)
+    dsOut_ref = DatasetReference(reference_name=dsOut_name)
+    copy_activity = CopyActivity(name=act_name, inputs=[dsin_ref], outputs=[
                                  dsOut_ref], source=blob_source, sink=blob_sink)
 
     # Create a pipeline with the copy activity

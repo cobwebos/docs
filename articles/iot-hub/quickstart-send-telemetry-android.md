@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 6c7428a4f34f0be64423c42efc06667cb18aa025
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e239f8c6a7738500176b84589f2032636eeb71e5
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471262"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675445"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 
@@ -23,7 +23,7 @@ ms.locfileid: "77471262"
 
 在本快速入门中，请通过运行在物理或模拟设备上的 Android 应用程序将遥测数据发送到 Azure IoT 中心。 IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引入云中进行存储或处理。 本快速入门使用预先编写的 Android 应用程序来发送遥测数据。 遥测数据将通过 Azure Cloud Shell 从 IoT 中心读取。 运行此应用程序前，请先创建 IoT 中心并在中心注册设备。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 具有活动订阅的 Azure 帐户。 [免费创建一个](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
@@ -37,11 +37,13 @@ ms.locfileid: "77471262"
 
 ### <a name="add-azure-iot-extension"></a>添加 Azure IoT 扩展
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 

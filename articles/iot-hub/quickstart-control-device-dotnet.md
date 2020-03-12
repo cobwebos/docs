@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 3e01f02026bfd788c398e580a78812d1a69f8f1d
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 740cb3a046514ffee9b2151315133220465878cf
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108948"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78673462"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入门：控制连接到 IoT 中心的设备 (.NET)
 
@@ -33,7 +33,7 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
 
@@ -45,11 +45,13 @@ IoT 中心是一项 Azure 服务，使你可以从云管理 IoT 设备，并将�
 dotnet --version
 ```
 
-运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IoT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
 ```azurecli-interactive
-az extension add --name azure-cli-iot-ext
+az extension add --name azure-iot
 ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载 Azure IoT C# 示例并提取 ZIP 存档。
 

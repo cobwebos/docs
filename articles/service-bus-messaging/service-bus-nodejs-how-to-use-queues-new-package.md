@@ -13,21 +13,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c2e24e9dea2c8463294c85f04c9e4d7d2da17261
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774579"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330645"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何通过 Node.js 和 azure/service-bus 包使用服务总线队列
-> [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 本教程介绍如何使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包编写一个 Nodejs 程序，用于向/从服务总线队列发送/接收消息。 此包使用速度更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)，而旧版 [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用的是[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 示例是使用 JavaScript 编写的。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。 记下服务总线实例的连接字符串以及创建的队列的名称。 我们将在示例中使用这些值。
 

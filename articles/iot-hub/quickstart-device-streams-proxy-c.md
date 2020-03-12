@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: f47c2c30f71d6510ee66bb19bdd936e0780e242c
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: af303928490d2570fa9430bd4b9d30c4a49df304
+ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461850"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78675488"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入门：使用 C 代理应用程序通过 IoT 中心设备流实现 SSH 和 RDP 方案（预览）
 
@@ -50,7 +50,7 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
@@ -65,8 +65,10 @@ Azure IoT 中心目前支持设备流作为[预览版功能](https://azure.micro
 * 运行以下命令将用于 Azure CLI 的 Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
    ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
+   az extension add --name azure-iot
    ```
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>准备开发环境
 

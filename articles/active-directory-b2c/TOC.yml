@@ -182,9 +182,13 @@
             - name: 自定义 UI
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
+            - name: 自定义语言
+              href: custom-policy-localization.md
             - name: 自定义电子邮件
               href: custom-email.md
               displayName: verification
+            - name: 禁用电子邮件验证
+              href: custom-policy-disable-email-verification.md
             - name: 启用 JavaScript
               href: javascript-samples.md
             - name: 密码复杂性

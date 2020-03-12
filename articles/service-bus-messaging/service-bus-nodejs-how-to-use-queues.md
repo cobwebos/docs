@@ -15,24 +15,22 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: fee7ff6ffbd18cf514ce1bfda81aca727ed362c3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7ee3939c1a1b450f2458267ab0b70e3924a4869b
+ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773507"
+ms.lasthandoff: 03/05/2020
+ms.locfileid: "78330594"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入门：通过 Node.js 和 azure-sb 包使用 Azure 中的服务总线队列
-
-> [!div class="op_multi_selector" title1="编程语言" title2="Node.js 包"]
-> - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
-> - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)
-
 本教程介绍如何使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 包创建 Node.js 应用程序，用于向/从 Azure 服务总线队列发送/接收消息。 示例以 JavaScript 编写并使用 Node.js [Azure 模块](https://www.npmjs.com/package/azure)，该模块在内部使用 azure-sb 包。
 
-[azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 获得更快的体验，因为该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线队列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
+> [!IMPORTANT]
+> [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 获得更快的体验，因为该包使用更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)。 
+> 
+> 若要详细了解新包，请参阅[如何通过 Node.js 和 @azure/service-bus 包使用服务总线队列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否则请继续阅读以了解如何使用 [azure](https://www.npmjs.com/package/azure) 包。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 - Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或[注册免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
 - 如果没有可使用的队列，请遵循[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文来创建队列。
     1. 阅读服务总线**队列**的快速**概述**。 
