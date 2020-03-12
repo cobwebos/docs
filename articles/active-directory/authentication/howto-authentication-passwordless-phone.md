@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 7c684d6f1fbd8128ae020b6fd29da928b286aa18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78227060"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126687"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
@@ -62,7 +62,7 @@ ms.locfileid: "78227060"
 1. 在**Microsoft Authenticator**中，从 "帐户" 下拉菜单中选择 "**启用手机登录**"。
 1. 按照应用中的说明完成注册无密码手机登录。 
 
-组织可以让他们的用户登录到[你的手机，而不是你的密码，](../user-help/microsoft-authenticator-app-phone-signin-faq.md)以便在 Microsoft Authenticator 的应用程序中设置进一步的帮助并启用手机登录。
+组织可以让他们的用户登录到[你的手机，而不是你的密码，](../user-help/microsoft-authenticator-app-phone-signin-faq.md)以便在 Microsoft Authenticator 的应用程序中设置进一步的帮助并启用手机登录。 若要应用这些设置，你可能需要注销并重新登录到租户。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>用无密码凭据登录
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
-ms.openlocfilehash: 7ef35bdf6c7470d425826d7a30755cc216e69158
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+manager: lizross
+ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164713"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128189"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>确定 Windows 虚拟桌面中的用户连接延迟
 
@@ -20,7 +21,7 @@ Windows 虚拟桌面全局可用。 管理员可以在所需的任何 Azure 区�
  
 [Windows 虚拟桌面体验估计器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)可帮助你确定优化 vm 延迟的最佳位置。 建议每隔两至三个月使用该工具，以确保在 Windows 虚拟桌面推出到新区域时，最佳位置没有发生变化。 
 
-## <a name="azure-traffic-manager"></a>Azure Traffic Manager
+## <a name="azure-traffic-manager"></a>Azure 流量管理器
 
 Windows 虚拟桌面使用 Azure 流量管理器，该管理器检查用户的 DNS 服务器的位置以查找最近的 Windows 虚拟桌面服务实例。 建议管理员在为 Vm 选择位置之前查看用户的 DNS 服务器的位置。
 

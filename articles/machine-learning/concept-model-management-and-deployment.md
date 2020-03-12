@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 82866d452289a29dcdcacc12db8048acb7a351ba
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6671b9c83ab71b4a92fe36d647e5a4e4d781154e
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250862"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096185"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -70,11 +70,6 @@ Azure 机器学习环境允许跟踪和重现项目的软件依赖关系。 环�
 
 不能删除在活动部署中使用的已注册模型。
 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#registermodel)的注册模型部分。
-
-### <a name="profile-models"></a>配置文件模型
-
-Azure 机器学习可以帮助你了解部署模型时将创建的服务的 CPU 和内存要求。 分析测试运行模型并返回诸如 CPU 使用情况、内存使用情况和响应延迟等信息的服务。 它还根据资源使用情况提供了 CPU 和内存建议。
-有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#profilemodel)的分析部分。
 
 ### <a name="package-and-debug-models"></a>包和调试模型
 

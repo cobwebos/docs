@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: ffe9ea5f46571f6a22717c376c97055f6f1759e4
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: ad0d8e751e79a23b2e7ac7b9da934f141ca9aa55
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604726"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086528"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>增强的安全评分（预览） 
 
@@ -99,7 +99,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全情况�
 |**修正漏洞**|6|-应在 SQL server 上启用高级数据安全性<br>-应修正 Azure 容器注册表映像中的漏洞（预览版）<br>-应修正 SQL 数据库上的漏洞<br>-漏洞评估解决方案应修正漏洞<br>-应对 SQL 托管实例启用漏洞评估<br>-应在 SQL server 上启用漏洞评估<br>-应在虚拟机上安装漏洞评估解决方案|
 |**启用静态加密**|4|-应在虚拟机上应用磁盘加密<br>-应启用 SQL 数据库上的透明数据加密<br>-应加密 Automation 帐户变量<br>-Service Fabric 群集应将 ClusterProtectionLevel 属性设置为 EncryptAndSign<br>-应将 SQL server TDE 保护程序加密为自己的密钥|
 |**加密传输中的数据**|4|-API 应用只能通过 HTTPS 访问<br>-Function App 只能通过 HTTPS 访问<br>-仅应启用到 Redis 缓存的安全连接<br>-应启用到存储帐户的安全传输<br>-只能通过 HTTPS 访问 Web 应用程序|
-|**管理访问权限和权限**|4|-应为订阅指定最多3个所有者<br>-应从订阅中删除不推荐使用的帐户（预览）<br>-应从订阅中删除不推荐使用的帐户（预览）<br>-应从订阅中删除具有所有者权限的外部帐户（预览）<br>-应从订阅中删除具有读取权限的外部帐户<br>-应从订阅中删除具有写入权限的外部帐户（预览）<br>-应该有多个所有者分配给你的订阅<br>-基于角色的访问控制（RBAC）应在 Kubernetes Services （预览版）上使用<br>-Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证|
+|**管理访问权限和权限**|4|-应为订阅指定最多3个所有者<br>-应从订阅中删除不推荐使用的帐户<br>-应从订阅中删除不推荐使用的具有所有者权限的帐户<br>-应从订阅中删除具有所有者权限的外部帐户<br>-应从订阅中删除具有读取权限的外部帐户<br>-应从订阅中删除具有写入权限的外部帐户<br>-应该有多个所有者分配给你的订阅<br>-基于角色的访问控制（RBAC）应在 Kubernetes Services （预览版）上使用<br>-Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证|
 |**修正安全配置**|4|-Pod 安全策略应在 Kubernetes Services （预览版）上定义<br>-应修正容器安全配置中的漏洞<br>-应修正计算机上安全配置中的漏洞<br>-应修正虚拟机规模集上的安全配置漏洞<br>-监视代理应安装在虚拟机上<br>-应在计算机上安装监视代理<br>-监视代理应安装在虚拟机规模集上<br>-应在计算机上解决监视代理运行状况问题|
 |**限制未经授权的网络访问**|4|-应禁用虚拟机上的 IP 转发<br>-应在 Kubernetes Services （预览版）上定义授权的 IP 范围<br>-（已弃用）应限制对应用服务的访问（预览）<br>-（已弃用）应强制执行 IaaS Nsg 上的 web 应用程序的规则<br>-虚拟机应与网络安全组相关联<br>-CORS 不应允许每个资源访问 API 应用<br>-CORS 不应允许每个资源访问你的 Function App<br>-CORS 不应允许每个资源访问你的 Web 应用程序<br>-应对 API 应用关闭远程调试<br>-应对 Function App 关闭远程调试<br>-应关闭 Web 应用程序的远程调试<br>-应为具有面向 Internet 的 Vm 的许可网络安全组限制访问<br>-应加强面向 Internet 的虚拟机的网络安全组规则|
 |**应用自适应应用程序控制**|3|-应在虚拟机上启用自适应应用程序控件<br>-监视代理应安装在虚拟机上<br>-应在计算机上安装监视代理<br>-应在计算机上解决监视代理运行状况问题|

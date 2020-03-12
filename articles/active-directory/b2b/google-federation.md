@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/1/2019
+ms.date: 03/05/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 72c18e48c27942c7bea47931ec79a31af941064e
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272884"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126654"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>将 Google 添加为 B2B 来宾用户的标识提供者
 
@@ -55,25 +55,24 @@ ms.locfileid: "74272884"
    
    ![显示 Google 的新项目页的屏幕截图](media/google-federation/google-new-project.png)
 
-3. 确保已在项目菜单中选择该新项目。 然后，打开左上角的菜单，并选择“APIs & Services”（API 和服务） **“Credentials”（凭据）。**  > 
+3. 确保已在项目菜单中选择该新项目。 然后，在 " **api & Services**" 下，选择 " **OAuth 许可屏幕**"。
 
-   ![显示 Google API 凭据选项的屏幕截图](media/google-federation/google-api.png)
- 
-4. 选择“OAuth consent screen”（OAuth 许可屏幕）选项卡，并输入**应用程序名称**。 （保留其他设置。）
+4. 选择 "**外部**"，然后选择 "**创建**"。 
+5. 在**OAuth 许可屏幕**上，输入**应用程序名称**。 （保留其他设置。）
 
    ![显示 Google OAuth 许可屏幕选项的屏幕截图](media/google-federation/google-oauth-consent-screen.png)
 
-5. 滚动到“授权域”部分，然后输入microsoftonline.com。
+6. 滚动到“授权域”部分，然后输入microsoftonline.com。
 
    ![显示授权域部分的屏幕截图](media/google-federation/google-oauth-authorized-domains.png)
 
-6. 选择“保存”。
+7. 选择“保存”。
 
-7. 选择 "**凭据**" 选项卡。在 "**创建凭据**" 菜单中，选择 " **OAUTH 客户端 ID**"。
+8. 选择 "**凭据**"。 在“Create credentials”（创建凭据）菜单中，选择“OAuth client ID”（OAuth 客户端 ID）。
 
    ![显示 Google Api 创建凭据选项的屏幕截图](media/google-federation/google-api-credentials.png)
 
-8. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：
+9. 在“Application type”（应用程序类型）下，选择“Web application”（Web 应用程序），然后在“Authorized redirect URIs”（已授权的重定向 URI）下输入以下 URI：
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>（其中，`<directory id>` 是你的目录 ID）
    
@@ -82,7 +81,7 @@ ms.locfileid: "74272884"
 
    ![显示 "授权重定向 Uri" 部分的屏幕截图](media/google-federation/google-create-oauth-client-id.png)
 
-9. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
+10. 选择“创建”。 复制客户端 ID 和客户端机密，稍后在 Azure AD 门户中添加标识提供者时需要用到。
 
    ![显示 OAuth 客户端 ID 和客户端密钥的屏幕截图](media/google-federation/google-auth-client-id-secret.png)
 

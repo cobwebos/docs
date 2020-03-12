@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: f712d1be76a9bb3dc4856b9f1fa7c7b805296dea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970762"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127692"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 将 Vm 部署到专用主机
  
@@ -24,7 +24,7 @@ ms.locfileid: "78970762"
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 初始版本支持以下 VM 系列： DSv3、ESv3、FSv2、LSv2 和 MSv2。 
+- 专用主机可用的大小和硬件类型因区域而异。 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
  
 
 ## <a name="create-resource-group"></a>创建资源组 
@@ -77,7 +77,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>创建主机 
 
-现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  支持以下 SKU 值： DSv3_Type1 和 ESv3_Type1。
+现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。  
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 

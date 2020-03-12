@@ -5,23 +5,26 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 03/05/2020
-ms.openlocfilehash: a0330ae8e69691f431756e6ea9a3027e1ac07b1c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/12/2020
+ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303369"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127242"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用访问 Azure 虚拟网络资源
 
-有时，你的逻辑应用和集成帐户需要访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中受保护的资源，例如虚拟机（vm）以及其他系统或服务。 若要设置此访问权限，可以[创建*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是逻辑应用服务的独立实例，该实例使用专用资源并独立于 "全局" 多租户逻辑应用服务运行。
+有时，逻辑应用需要访问[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中受保护的资源，例如虚拟机（vm）以及其他系统或服务。 若要设置此访问权限，可以[创建*集成服务环境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是逻辑应用服务的独立实例，该实例使用专用资源并独立于 "全局" 多租户逻辑应用服务运行。
 
 在单独的独立实例中运行逻辑应用有助于降低其他 Azure 租户对应用性能的影响，也称为["干扰邻居"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors)的影响。 ISE 还提供以下优势：
 
 * 你自己的静态 IP 地址，它们不同于多租户服务中的逻辑应用共享的静态 IP 地址。 还可以设置单个公共、静态和可预测的出站 IP 地址，以便与目标系统进行通信。 这样，就无需在每个 ISE 的目标系统上设置其他防火墙。
 
 * 增加了对运行持续时间、存储保留、吞吐量、HTTP 请求和响应超时、消息大小和自定义连接器请求的限制。 有关详细信息，请参阅[Azure 逻辑应用的限制和配置](logic-apps-limits-and-config.md)。
+
+> [!NOTE]
+> 某些 Azure 虚拟网络使用专用终结点（[Azure 专用链接](../private-link/private-link-overview.md)）来提供对 azure PaaS 服务（例如 azure 存储、Azure Cosmos DB 或 Azure SQL 数据库、合作伙伴服务或托管在 azure 上的客户服务）的访问权限。 如果逻辑应用需要访问使用专用终结点的虚拟网络，则必须在 ISE 中创建、部署和运行这些逻辑应用。
 
 创建 ISE 时，Azure 会将此 ISE*注入*或部署到 Azure 虚拟网络。 然后，你可以将此 ISE 用作需要访问的逻辑应用和集成帐户的位置。
 
@@ -42,7 +45,7 @@ ms.locfileid: "78303369"
 > [!IMPORTANT]
 > 在 ISE 中运行的逻辑应用、内置触发器、内置操作和连接器使用不同于基于消耗的定价计划的定价计划。 有关详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有关定价的详细信息，请参阅[逻辑应用定价](../logic-apps/logic-apps-pricing.md)。
 
-本概述介绍了如何通过 ISE 为逻辑应用和集成帐户提供对 Azure 虚拟网络的直接访问权限并比较 ISE 与多租户逻辑应用服务之间的差异的详细信息。
+本概述介绍了如何通过 ISE 为逻辑应用提供对 Azure 虚拟网络的直接访问权限并比较 ISE 与多租户逻辑应用服务之间的差异的详细信息。
 
 <a name="difference"></a>
 
@@ -51,8 +54,6 @@ ms.locfileid: "78303369"
 在 ISE 中创建和运行逻辑应用时，可以获得与多租户逻辑应用服务相同的用户体验和类似功能。 可以使用多租户逻辑应用服务中提供的所有相同内置触发器、操作和托管连接器。 某些托管连接器提供其他 ISE 版本。 在 ISE 中工作时，ISE 连接器和非 ISE 连接器之间的区别在于它们的运行位置以及它们在逻辑应用设计器中的标签。
 
 ![ISE 中具有和不含标签的连接器](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
-
-
 
 * 内置触发器和操作显示 "**核心**" 标签。 它们始终在与逻辑应用相同的 ISE 中运行。 显示**ise**标签的托管连接器也与逻辑应用在同一 ISE 中运行。
 
@@ -129,8 +130,6 @@ ms.locfileid: "78303369"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [从隔离逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
-* [向 integration service 环境添加项目](../logic-apps/add-artifacts-integration-service-environment-ise.md)
-* [管理 integration service 环境](../logic-apps/ise-manage-integration-service-environment.md)
+* [从 Azure 逻辑应用连接到 Azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
 * 详细了解 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)
 * 了解 [Azure 服务的虚拟网络集成](../virtual-network/virtual-network-for-azure-services.md)

@@ -9,24 +9,28 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977720"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086777"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒体服务 v3 常见问题
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 
-## <a name="general"></a>一般信息
+## <a name="general"></a>常规
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure 角色可以对 Azure 媒体服务资源执行哪些操作？ 
 
 请参阅[媒体服务帐户的基于角色的访问控制（RBAC）](rbac-overview.md)。
+
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>如何流式传输到 Apple iOS 设备？
+
+请确保路径末尾（URL 的 "/manifest" 部分后面）有 "（format = m3u8-aapl-v3-流式处理 m3u8-aapl-v3）"，通知流式源服务器返回 HLS 内容以获取 Apple iOS 本机设备上的使用情况（有关详细信息，请参阅[传递内容](dynamic-packaging-overview.md)）。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体预留单位？
 
@@ -38,13 +42,17 @@ ms.locfileid: "74977720"
 
 [转换](https://docs.microsoft.com/rest/api/media/transforms)可用来配置对视频进行编码或分析的常见任务。 每个**转换**描述了用于处理视频或音频文件的脚本或任务工作流。 [作业](https://docs.microsoft.com/rest/api/media/jobs)是对媒体服务的实际请求，它将**转换**应用于给定的输入视频或音频内容。 创建转换后，可以使用媒体服务 API 或任何已发布的 SDK 来提交作业。 有关详细信息，请参阅[转换和作业](transforms-jobs-concept.md)。
 
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>我已经上传、编码并发布了视频。 为什么在我尝试对视频进行流式处理时，它不播放？
+
+最常见的原因之一是你没有尝试播放的流式处理终结点的运行状态。
+
 ### <a name="how-does-pagination-work"></a>分页是如何工作的？
 
 使用分页时，应始终使用下一链接来枚举集合，而不依赖特定的页面大小。 有关详细信息和示例，请参阅[筛选、排序、分页](entities-overview.md)。
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中尚不提供哪些功能？
 
-有关详细信息，请参阅[针对 V2 api 的功能差距](migrate-from-v2-to-v3.md#feature-gaps-with-respect-to-v2-apis)。
+有关详细信息，请参阅[针对 V2 api 的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在订阅之间移动媒体服务帐户的过程是什么？  
 
@@ -76,7 +84,7 @@ DRM 系统（如 PlayReady、Widevine 和 FairPlay）对用于对内容进行解
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>在使用 JWT 令牌请求许可证或密钥之前，如何以及在何处获取 JWT 令牌？
 
-1. 对于生产环境，需要有一个安全令牌服务（STS）（web 服务），该服务在 HTTPS 请求上发出 JWT 标记。 对于测试，可以使用 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 定义的 **GetTokenAsync** 方法中所示的代码。
+1. 对于生产环境，需要有一个安全令牌服务（STS）（web 服务），该服务在 HTTPS 请求上发出 JWT 标记。 对于测试，可以使用 **Program.cs** 定义的 [GetTokenAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) 方法中所示的代码。
 2. 对用户进行身份验证后，播放器需要向 STS 发出请求以获取此类令牌，并将其分配为令牌的值。 可以使用 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)。
 
 * 有关使用对称和非对称密钥运行 STS 的示例，请参阅 [https://aka.ms/jwt](https://aka.ms/jwt)。 
@@ -120,19 +128,25 @@ DRM 系统（如 PlayReady、Widevine 和 FairPlay）对用于对内容进行解
 * 不再需要在媒体服务中配置许可证传送服务。 需要在配置 ContentKeyPolicies 时，提供许可证获取 URL（针对 PlayReady、Widevine 和 FairPlay）。
 
 > [!NOTE]
-> Widevine 是 Google Inc. 提供的一项服务，受 Google，Inc. 的服务条款和隐私策略的约束。
+> Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
 ## <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3 
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>能否使用 Azure 门户来管理 v3 资源？
 
-目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](media-services-apis-overview.md#sdks) 之一。
+目前，可以使用[Azure 门户](https://portal.azure.com/)执行以下操作：
+
+* 管理媒体服务 v3[实时事件](live-events-outputs-concept.md)， 
+* 查看（不管理） v3[资产](assets-concept.md)， 
+* [获取有关访问 api 的信息](access-api-portal.md)。 
+
+对于所有其他管理任务（例如，[转换和作业](transforms-jobs-concept.md)和[内容保护](content-protection-overview.md)），请使用[REST API](https://aka.ms/ams-v3-rest-ref)、 [CLI](https://aka.ms/ams-v3-cli-ref)或其中一个受支持的[sdk](media-services-apis-overview.md#sdks)。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 
 已从 AMS API 中删除 AssetFile，以便将媒体服务与存储 SDK 依赖项分开。 现在由存储而非媒体服务来保存属于存储的信息。 
 
-有关详细信息，请参阅[迁移到媒体服务 v3](migrate-from-v2-to-v3.md)。
+有关详细信息，请参阅[迁移到媒体服务 v3](media-services-v2-vs-v3.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>客户端存储加密在哪里进行？
 

@@ -4,12 +4,12 @@ description: 了解如何使用用于访问 Azure Kubernetes Service （AKS）�
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596703"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126624"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service （AKS）中的授权 IP 地址范围保护对 API 服务器的访问
 
@@ -59,6 +59,8 @@ az aks create \
 > - 防火墙公共 IP 地址
 > - 任何表示你要从中管理群集的网络的范围
 > - 如果你使用的是 AKS 群集上的 Azure Dev Spaces，则必须[根据你所在的区域允许其他范围][dev-spaces-ranges]。
+
+> 可指定的 IP 范围数的上限为3500。 
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>指定标准 SKU 负载均衡器的出站 Ip
 

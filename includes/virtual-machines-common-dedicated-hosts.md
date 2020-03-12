@@ -5,20 +5,19 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/26/2019
+ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3369dc7cde7082659df556e008adb5e45b4c011c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 2daaf9bbdf90029f0aad4333ab94e2d1d1d3d7ff
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246205"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129383"
 ---
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
 
 ## <a name="benefits"></a>优点 
 
@@ -101,17 +100,15 @@ ms.locfileid: "78246205"
 
 你还可以使用[Azure 专用主机的保留实例](../articles/virtual-machines/prepay-dedicated-hosts-reserved-instances.md)节省成本。
  
-## <a name="vm-families-and-hardware-generations"></a>VM 系列和硬件代
+## <a name="sizes-and-hardware-generations"></a>大小和硬件代
 
-SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单个主机内混合使用不同大小的多个 Vm，只要它们属于相同的大小系列。 该类型是当前在该区域中可用的硬件生成。
+SKU 是为主机定义的，它表示 VM 大小系列和类型。 可以在单个主机内混合使用不同大小的多个 Vm，只要它们属于相同的大小系列。 
 
-同一 VM 系列的不同 `types` 将来自不同的 CPU 供应商，并且具有不同的 CPU 生成和核心数。
+*类型*为硬件生成。 同一 VM 系列的不同硬件类型将来自不同的 CPU 供应商，并且具有不同的 CPU 生成和核心数。 
 
-若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
+大小和硬件类型因区域而异。 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
 
-专用主机支持以下主机 SKU\types： DSv3_Type1 和 ESv3_Type1
 
- 
 ## <a name="host-life-cycle"></a>主机生命周期
 
 

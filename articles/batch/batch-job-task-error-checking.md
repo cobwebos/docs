@@ -5,14 +5,14 @@ services: batch
 author: mscurrell
 ms.service: batch
 ms.topic: article
-ms.date: 12/01/2019
+ms.date: 03/10/2019
 ms.author: markscu
-ms.openlocfilehash: c4e36d76bf85b9715a817dbeb7c690aa77f8d978
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4ace0de6d252680eb64990277b9478adf752f54d
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852180"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087009"
 ---
 # <a name="job-and-task-error-checking"></a>作业和任务错误检查
 
@@ -20,7 +20,7 @@ ms.locfileid: "74852180"
 
 本文介绍了在提交作业和任务后可能会发生的错误。 它列出并解释了需要检查和处理的错误。
 
-## <a name="jobs"></a>工作
+## <a name="jobs"></a>作业
 
 作业是一个或多个任务的分组，这些任务实际上指定要运行的命令行。
 
@@ -72,6 +72,17 @@ ms.locfileid: "74852180"
 任务失败对作业和所有任务依赖项的影响必须考虑在内。  可为任务指定[exitConditions](https://docs.microsoft.com/rest/api/batchservice/task/add#exitconditions)属性以配置依赖项的操作和作业。
 - 对于依赖项， [DependencyAction](https://docs.microsoft.com/rest/api/batchservice/task/add#dependencyaction)控制依赖于失败的任务的任务是被阻止还是运行。
 - 对于作业， [JobAction](https://docs.microsoft.com/rest/api/batchservice/task/add#jobaction)控制失败的任务是导致作业被禁用、终止还是保持不变。
+
+### <a name="task-command-line-failures"></a>任务命令行失败
+
+运行任务命令行时，输出将写入到 `stderr.txt` 和 `stdout.txt`。 此外，应用程序还可以写入特定于应用程序的日志文件。
+
+如果运行任务的池节点仍存在，则可以获取和查看日志文件。 例如，Azure 门户列出并可以查看任务或池节点的日志文件。 多个 Api 还允许列出和获取任务文件，如 "[从任务获取](https://docs.microsoft.com/rest/api/batchservice/file/getfromtask)"。
+
+由于池和池节点经常是暂时的，因此，如果节点持续添加和删除，则建议保留日志文件。 [任务输出文件](https://docs.microsoft.com/azure/batch/batch-task-output-files)是将日志文件保存到 Azure 存储的一种简便方法。
+
+### <a name="output-file-failures"></a>输出文件失败
+每次上传文件时，Batch 都会将以下两个日志文件写入计算节点：`fileuploadout.txt` 和 `fileuploaderr.txt`。 可以检查这些日志文件来详细了解具体的失败情况。 如果从未尝试过文件上传，例如因为任务本身无法运行，则这些日志文件将不存在。  
 
 ## <a name="next-steps"></a>后续步骤
 

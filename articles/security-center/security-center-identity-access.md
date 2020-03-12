@@ -11,92 +11,55 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2019
+ms.date: 03/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552978"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086488"
 ---
-# <a name="monitor-identity-and-access-preview"></a>监视标识和访问（预览）
+# <a name="monitor-identity-and-access"></a>监视标识和访问
+
+> [!TIP]
+> 从2020年3月起，Azure 安全中心的标识和访问建议包含在免费定价层上的所有订阅中。 如果你在免费层上有订阅，则其安全分数会受到影响，因为之前未对其标识和访问安全进行评估。 
+
 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
 
-本文介绍 Azure 安全中心的 "资源安全性" 部分的 "**标识和访问**" 页。
+安全边界已从网络边界演进成标识边界。 安全性越来越少地与如何保护网络相关，而更多地与如何保护数据，以及如何管理应用和用户的安全性相关。 而现在，随着越来越多的数据和应用移到云中，标识成为新的外围。
 
-有关此页上可能会看到的建议的完整列表，请参阅[身份验证和访问建议](recommendations-reference.md#recs-identity)。
+监视标识活动即可在事件发生前主动采取措施，或事后采取针对性措施来阻止攻击尝试。 你可能会在 Azure 安全中心的 "**身份和访问**资源安全性" 一节中看到的建议示例包括：
 
-> [!NOTE]
-> 监视标识和访问的功能以预览版提供，仅适用于安全中心的标准层。 若要详细了解安全中心的定价层，请参阅[定价](security-center-pricing.md)。
->
+- 应在对订阅拥有所有者权限的帐户上启用 MFA
+- 只多只为订阅指定 3 个所有者
+- 应从订阅中删除弃用的帐户
+- 应从订阅中删除拥有读取权限的外部帐户
 
-标识应为企业的控制平面，保护标识应是最高优先级。 安全边界已从网络边界演进成标识边界。 安全性越来越少地与如何保护网络相关，而更多地与如何保护数据，以及如何管理应用和用户的安全性相关。 而现在，随着越来越多的数据和应用移到云中，标识成为新的外围。
-
-监视标识活动即可在事件发生前主动采取措施，或事后采取针对性措施来阻止攻击尝试。 “标识和访问”仪表板提供如下建议：
-
-- 为订阅中的特权帐户启用 MFA
-- 从订阅中删除具有写入权限的外部帐户
-- 从订阅中删除具有特权的外部帐户
+有关您可能会在此处看到的建议的完整列表，请参阅[身份验证和访问建议](recommendations-reference.md#recs-identity)。
 
 > [!NOTE]
 > 如果订阅包含 600 多个帐户，则安全中心无法针对订阅运行标识建议。 下面的 "不可用评估" 下列出了未运行的建议。
 安全中心无法针对云解决方案提供商 (CSP) 合作伙伴的管理代理运行标识建议。
 >
 
-## <a name="monitor-identity-and-access"></a>监视标识和访问
 
-通过从安全中心侧栏（在 "**资源**" 下）或 "概述" 页中选择 "**标识" & 访问**，打开已标识标识和访问问题的列表。 
+**建议**页面的两个安全控件中提供所有标识和访问建议：
 
-“标识和访问”下面有两个选项卡：
+- 管理访问权限和权限 
+- 启用 MFA
 
-- **概述**：安全中心识别的建议。
-- **订阅**：订阅列表和每个订阅的当前安全状态。
+![具有与标识和访问相关的建议的两个安全控件](media/security-center-identity-access/two-security-controls-for-identity-and-access.png)
 
-[![标识 & 访问](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
-### <a name="overview-section"></a>“概述”部分
-“概述”下面提供了建议列表。 第一列列出了建议。 第二列显示受该建议影响的订阅总数。 第三列显示问题的严重性。
+## <a name="enable-multi-factor-authentication-mfa"></a>启用多重身份验证（MFA）
 
-1. 选择一条建议。 此时将打开并显示 "建议" 窗口：
+启用 MFA 需要[Azure Active Directory （AD）租户权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
 
-   - 建议的说明
-   - 不正常和正常的订阅列表
-   - 由于评估失败，或者资源位于免费层上运行的订阅下且未评估，而未扫描的资源列表
+- 如果使用的是 AD 高级版，则使用[条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)启用 MFA。
 
-    [![推荐窗口](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
+- AD 免费版用户可以在 Azure Active Directory 中启用**安全默认设置**，如[AD 文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中所述，但启用 MFA 的安全中心建议仍会显示。
 
-1. 在列表中选择一个订阅以查看更多详细信息。
-
-### <a name="subscriptions-section"></a>“订阅”部分
-“订阅”下面提供了订阅列表。 第一列列出订阅。 第二列显示每个订阅的建议总数。 第三列显示问题的严重性。
-
-[![订阅 "选项卡](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
-
-1. 选择一个订阅。 此时会打开摘要视图，其中包含三个选项卡：
-
-   - **建议**：基于安全中心执行的失败的评估。
-   - **已通过的评估**：安全中心执行的、已通过的评估列表。
-   - **不可用的评估**：由于出错或者订阅包含 600 个以上的帐户，而未能运行的评估列表。
-
-   “建议”下面是选定订阅的建议列表，以及每条建议的严重性。
-
-   [选择订阅的 ![建议](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
-
-1. 选择某个建议可以查看该建议的说明、不正常和正常订阅的列表，以及未扫描的资源列表。
-
-   [建议 ![说明](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
-
-   “已通过的评估”下面是已通过的评估列表。  这些评估的严重性始终为绿色。
-
-   [![通过的评估](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
-
-1. 在列表中选择一个已通过的评估可以查看该评估的说明，以及正常订阅的列表。 不正常的订阅也有一个选项卡，其中列出了所有失败的订阅。
-
-   [![通过的评估](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
-
-> [!NOTE]
-> 如果创建的条件性访问策略要求使用 MFA 但包含了排除集，则安全中心 MFA 建议评估会将策略视为不符合，因为这样可以使某些用户无需 MFA 即可登录到 Azure。
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解适用于其他 Azure 资源类型的建议，请参阅以下文章：

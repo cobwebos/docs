@@ -1,23 +1,18 @@
 ---
 title: 使用 Azure PowerShell 部署 Azure 专用主机
 description: 使用 Azure PowerShell 将 Vm 部署到专用主机。
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190523"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79130308"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>使用 Azure PowerShell 将 Vm 部署到专用主机
 
@@ -28,7 +23,7 @@ ms.locfileid: "77190523"
 ## <a name="limitations"></a>限制
 
 - 虚拟机规模集目前在专用主机上不受支持。
-- 支持以下 VM 系列： DSv3、ESv3 和 Fsv2。 
+- 专用主机可用的大小和硬件类型因区域而异。 若要了解详细信息，请参阅 "主机[定价" 页](https://aka.ms/ADHPricing)。
 
 ## <a name="create-a-host-group"></a>创建主机组
 
@@ -57,7 +52,6 @@ $hostGroup = New-AzHostGroup `
 ## <a name="create-a-host"></a>创建主机
 
 现在，让我们在主机组中创建一个专用主机。 除了主机名称外，还需要提供主机的 SKU。 主机 SKU 捕获受支持的 VM 系列以及专用主机的硬件生成。
-
 
 有关主机 Sku 和定价的详细信息，请参阅[Azure 专用主机定价](https://aka.ms/ADHPricing)。
 
@@ -170,7 +164,7 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 即使部署了虚拟机，也需要为你的专用主机付费。 应删除当前未使用的任何主机以节省成本。  
 

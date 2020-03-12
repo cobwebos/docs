@@ -7,14 +7,15 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: dd9fd135536fc2cb222b908f3d61c1d1430e65b0
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+manager: lizross
+ms.openlocfilehash: 9d07ba42e83d9eec071ab047e9e1e92bac1f1411
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905610"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127489"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows 虚拟桌面管理工具疑难解答
+# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>排查 Windows 虚拟桌面管理工具问题
 
 本文介绍部署 Windows 虚拟桌面管理工具时可能出现的问题，以及如何修复这些问题。
 
@@ -31,7 +32,7 @@ ms.locfileid: "73905610"
 - 用户拥有其订阅和租户级别全局管理员的所有者权限，但他们无法登录到 Azure。
 - 用户的帐户设置已启用多重身份验证。
 
-若要解决此问题：
+解决此问题的步骤：
 
 1. 确保为 Azure Active Directory 用户主体名称创建的用户具有 "参与者" 订阅级别。
 2. 用 UPN 帐户登录到 > <，以检查帐户设置，并确保未启用多重身份验证。 如果已打开，请将其关闭。

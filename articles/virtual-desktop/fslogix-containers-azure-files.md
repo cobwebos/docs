@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 49a63be8e8ac3752006d531f4541cb3c2904c3e3
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+manager: lizross
+ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539614"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127883"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
@@ -46,13 +47,13 @@ UPD 和 RUP 是远程桌面会话主机（RDSH）和虚拟硬盘（VHD）环境�
 
 下表显示了以前的用户配置文件技术的优点和局限性。
 
-| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |注意|
+| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |说明|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **用户配置文件磁盘（UPD）** | 是 | 是 | 是 | 是 | 是 | 是 | 是 | Win 7 + | 是 | |
-| **漫游用户配置文件（RUP），维护模式** | 是 | 是 | 是 | 是 | 是| 是 | 是 | Win 7 + | 是 | |
-| **企业状态漫游（ESR）** | 是 | 是 | 是 | 是 | 请参阅说明 | 是 | 是 | Win 10 | 是 | 服务器 SKU 上的函数，但不支持用户界面 |
-| **用户体验虚拟化（UE-V）** | 是 | 是 | 是 | 是 | 是 | 是 | 是 | Win 7 + | 是 |  |
-| **OneDrive 云文件** | 是 | 是 | 是 | 是 | 请参阅说明 | 请参阅说明  | 查看注释 | Win 10 RS3 | 是 | 未在服务器 SKU 上测试。 Azure 上的后端存储依赖于同步客户端。 本地上的后端存储需要同步客户端。 |
+| **用户配置文件磁盘（UPD）** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
+| **漫游用户配置文件（RUP），维护模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |
+| **企业状态漫游（ESR）** | 是 | 否 | 是 | 否 | 请参阅说明 | 是 | 否 | Win 10 | 否 | 服务器 SKU 上的函数，但不支持用户界面 |
+| **用户体验虚拟化（UE-V）** | 是 | 是 | 是 | 否 | 是 | 否 | 是 | Win 7 + | 否 |  |
+| **OneDrive 云文件** | 否 | 否 | 否 | 是 | 请参阅说明 | 请参阅说明  | 查看注释 | Win 10 RS3 | 否 | 未在服务器 SKU 上测试。 Azure 上的后端存储依赖于同步客户端。 本地上的后端存储需要同步客户端。 |
 
 #### <a name="performance"></a>性能
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: fd881142e0260d313e197d5e40ae25a2621646df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372460"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096205"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
@@ -83,7 +83,7 @@ Azure SQL 数据库中的托管实例不支持以下功能：
 
 为工作目录[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，并在存储帐户中创建[文件共享](../storage/files/storage-how-to-create-file-share.md)。 
 
-复制文件共享路径，格式为： `\\storage-account-name.file.core.windows.net\file-share-name`
+按以下格式复制文件共享路径：`\\storage-account-name.file.core.windows.net\file-share-name`
 
 示例： `\\replstorage.file.core.windows.net\replshare`
 
@@ -185,7 +185,7 @@ EXEC sp_adddistpublisher
 ```
 
    > [!NOTE]
-   > 请确保 file_storage 参数只使用反斜杠（`\`）。 在连接到文件共享时，使用正斜杠（`/`）可能会导致错误。 
+   > 请确保 file_storage 参数只使用反斜杠（`\`）。 在连接到文件共享时使用正斜杠（`/`）可能会导致错误。 
 
 此脚本在托管实例上配置本地发布服务器，添加链接服务器，并为 SQL Server 代理创建一组作业。 
 
@@ -260,8 +260,8 @@ EXEC sp_addpushsubscription_agent
   @subscriber_security_mode = 0,
   @subscriber_login = N'$(target_username)',
   @subscriber_password = N'$(target_password)',
-  @job_login = N'$(target_username)',
-  @job_password = N'$(target_password)';
+  @job_login = N'$(username)',
+  @job_password = N'$(password)';
 
 -- Initialize the snapshot
 EXEC sp_startpublication_snapshot
@@ -292,15 +292,15 @@ where subsystem in ('Distribution','LogReader','Snapshot') and command not like 
 
 ## <a name="10---test-replication"></a>10-测试复制
 
-配置复制后，可以通过在发布服务器上插入新项并监视将更改传播到订阅服务器，对其进行测试。 
+配置复制后，可对其进行测试，方法是：在发布服务器上插入新项并监视更改传播到订阅服务器。 
 
-运行以下 T-sql 代码段以查看订阅服务器上的行：
+运行以下 T-SQL 代码片段可查看订阅服务器上的行：
 
 ```sql
 select * from dbo.ReplTest
 ```
 
-运行以下 T-sql 代码段，在发布服务器上插入更多行，然后再次检查订阅服务器上的行。 
+运行以下 T-SQL 代码片段可在发布服务器上插入更多行，然后再次检查订阅服务器上的行。 
 
 ```sql
 INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')

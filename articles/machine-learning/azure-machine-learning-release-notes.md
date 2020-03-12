@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9407ad09a9b30e11cbf1e3f3debb357df46e316d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c12a6efd608625b93b1a084de3ceb790a8773eee
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399465"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79129804"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
@@ -22,9 +22,99 @@ ms.locfileid: "78399465"
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
+## <a name="2020-03-11"></a>2020-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v115"></a>用于 Python 的 Azure 机器学习 SDK 1.1。5
+
++ **功能弃用**
+  + **Python 2.7**
+    + 支持 python 2.7 的最后版本
+
++ **重大更改**
+  + **语义版本控制2.0。0**
+    + 从版本1.1 开始，Azure ML Python SDK 采用语义版本控制2.0.0。 在[此处](https://semver.org/)了解详细信息。 所有后续版本都将遵循新的编号方案和语义版本控制约定。 
+
++ **Bug 修复和改进**
+  + **azure-cli-ml**
+    + 将终结点 CLI 命令名称从 "az ml endpoint aks" 更改为 "az ml endpoint 实时" 以实现一致性。
+    + 为稳定的试验性分支 CLI 更新 CLI 安装说明
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+  + **automl-核心**
+    + 为 automl ONNX 模型启用了批处理模式推理（一次只接受多行）
+    + 提高了对数据集的频率的检测，缺少数据或包含不规则的数据点
+    + 添加了删除不符合主导频率的数据点的功能。
+    + 更改了构造函数的输入，以获取用于为相应列应用插补法选项的选项的列表。
+    + 错误日志记录已改进。
+  + **automl-运行时**
+    + 修复了在测试集中出现定型集不存在的颗粒时引发的错误的问题
+    + 删除预测服务评分期间的 y_query 要求
+    + 解决了当数据集包含带有长时间间隙的短粒度时的预测问题。
+    + 解决了自动最大水平范围启用并且日期列包含字符串格式的日期时的问题。 当不能转换为 date 时添加了正确的转换和错误消息
+    + 使用 native NumPy 和 SciPy 对 FileCacheStore 的中间数据进行序列化和反序列化（用于本地 AutoML）
+    + 修复了失败的子运行可能会停滞在运行状态的错误。
+    + 提高了特征化的速度。
+    + 修复了评分期间的频率检查，此时预测任务不要求定型和测试集之间具有严格的频率等效性。
+    + 更改了构造函数的输入，以获取用于为相应列应用插补法选项的选项的列表。
+    + 修复了与 lag 类型选择相关的错误。
+    + 修复了数据集上引发的未分类错误，使粒度具有单个行
+    + 修复了 frequency 检测缓慢的问题。
+    + 修复了 AutoML 异常处理中的 bug，该 bug 导致定型失败的实际原因被 AttributeError 取代。
+  + **azureml-cli-常见**
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+  + **contrib-mir**
+    + 添加 MirWebservice 类中的功能以检索访问令牌
+    + 如果调用失败，则在 MirWebservice （）调用中默认使用令牌身份验证（& e）
+    + Mir webservice 部署现在需要相应的 Sku [Standard_DS2_v2、Standard_F16 Standard_A2_v2]，而不是分别需要 [Ds2v2、A2v2 和 F16]。
+  + **contrib-管道-步骤**
+    + 可选参数 side_inputs 添加到 ParallelRunStep。 此参数可用于将文件夹装载到容器上。 当前支持的类型为 DataReference 和 PipelineData。
+    + 可以通过立即传递管道参数覆盖 ParallelRunConfig 中传递的参数。 支持的新管道参数 aml_mini_batch_size、aml_error_threshold、aml_logging_level、aml_run_invocation_timeout （aml_node_count 和 aml_process_count_per_node 已是早期版本的一部分）。
+  + **azureml 核心**
+    + 部署的 AzureML Webservices 现在将默认 `INFO` 日志记录。 这可以通过在已部署的服务中设置 `AZUREML_LOG_LEVEL` 环境变量来控制。
+    + Python sdk 使用发现服务来使用 "api" 终结点，而不使用 "管道"。
+    + 交换到所有 SDK 调用中的新路由
+    + 将对 ModelManagementService 的调用路由到新的统一结构
+      + 公开提供工作区更新方法。
+      + 已在工作区更新方法中添加 image_build_compute 参数，以允许用户更新映像生成的计算
+    +  将弃用消息添加到旧的分析工作流。 固定分析 cpu 和内存限制
+    + 添加了 RSection 作为运行 R 作业的环境的一部分
+    +  向 `Dataset.mount` 添加了验证，以便在数据集的源不可访问或不包含任何数据时引发错误。
+    + 添加了 `--grant-workspace-msi-access` 作为数据存储 CLI 的附加参数，用于注册 Azure Blob 容器，这将允许你注册位于 VNet 后面的 Blob 容器
+    + 单实例分析已修复，可产生建议并在核心 sdk 中提供。
+    + 修复了 aks.py _deploy 中的问题
+    + 验证要上传的模型的完整性以避免无提示存储失败。
+    + 用户现在可以在为 webservices 重新生成密钥时为身份验证密钥指定一个值。
+    + 修复了不能将大写字母用作数据集输入名称的 bug
+  + **azureml-默认值**
+    + `azureml-dataprep` 现在将作为 `azureml-defaults`的一部分进行安装。 不再需要在计算目标上手动安装 dataprep [保险丝] 来装入数据集。
+  + **azureml-解释**
+    + 已更新的 azureml-解释为解释-社区 0.6. *
+    + 已更新的 azureml-解释为依赖于解读-社区0.5。0
+    + 向 azureml-解读添加了 azureml 样式的例外
+    + 修复了 keras 模型的 DeepScoringExplainer 序列化
+  + **azureml-mlflow**
+    + 向 azureml 添加对主权云的支持。 mlflow
+  + **azureml-核心**
+    + 管道批处理计分笔记本现在使用 ParallelRunStep
+    + 修复了一个 bug，无论是否更改参数列表，PythonScriptStep 结果都可能会错误地重用
+    + 添加了在对 `PipelineOutputFileDataset` 调用 parse_ * 方法时设置列的类型的功能
+  + **azureml-管道-步骤**
+    + 已将 `AutoMLStep` 移动到 `azureml-pipeline-steps` 包。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+    + 添加了数据集的文档示例作为 PythonScriptStep 输入
+  + **azureml-tensorboard**
+    + 更新的 tensorboard 支持 tensorflow 2。0
+    + 在计算实例上使用自定义 Tensorboard 端口时显示正确的端口号
+  + **azureml-automl-客户端**
+    + 解决了某些包可能安装在远程运行的不正确版本的问题。
+    + 修复了用于筛选自定义特征化配置的问题的 FeaturizationConfig。
+  + **azureml-automl-运行时**
+    + 解决了远程运行中的频率检测问题
+    + 已移动 `azureml-pipeline-steps` 包中的 `AutoMLStep`。 弃用 `azureml-train-automl-runtime`内的 `AutoMLStep`。
+  + **azureml-核心**
+    + 支持 PyTorch 估计器中的 PyTorch 版本1。4
+  
 ## <a name="2020-03-02"></a>2020-03-02
 
-### <a name="azure-machine-learning-sdk-for-python-v112rc0"></a>用于 Python 1.1.2 rc0 的 Azure 机器学习 SDK
+### <a name="azure-machine-learning-sdk-for-python-v112rc0-pre-release"></a>用于 Python 1.1.2 rc0 的 Azure 机器学习 SDK （预发行版）
 
 + **Bug 修复和改进**
   + **automl-核心**
@@ -62,7 +152,7 @@ ms.locfileid: "78399465"
 
 ## <a name="2020-02-18"></a>2020-02-18
 
-### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>用于 Python 的 Azure 机器学习 SDK 版本 1.1.1 rc0
+### <a name="azure-machine-learning-sdk-for-python-v111rc0-pre-release"></a>用于 Python 的 Azure 机器学习 SDK 版本 1.1.1 rc0 （预发行版）
 
 + **Bug 修复和改进**
   + **azure-cli-ml**
@@ -101,7 +191,7 @@ ms.locfileid: "78399465"
   
 ## <a name="2020-02-04"></a>2020-02-04
 
-### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>用于 Python 1.1.0 rc0 的 Azure 机器学习 SDK
+### <a name="azure-machine-learning-sdk-for-python-v110rc0-pre-release"></a>用于 Python 1.1.0 rc0 的 Azure 机器学习 SDK （预发行版）
 
 + **重大更改**
   + **语义版本控制2.0。0**

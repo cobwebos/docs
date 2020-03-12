@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 71a02e47db288890d1392f5423da0ef817ecd690
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303114"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086887"
 ---
 # <a name="data-ingestion-in-azure-machine-learning"></a>Azure 机器学习中的数据引入
 
@@ -26,7 +26,7 @@ ms.locfileid: "78303114"
 
 数据引入是指将非结构化数据从一个或多个源中提取出来，然后准备好用于训练机器学习模型的过程。 这也会耗费时间，尤其是当手动完成时，如果有大量的数据来自多个源。 自动执行此工作可释放资源并确保模型使用最新的适用数据。
 
-建议最初使用 Azure 数据工厂（ADF）进行评估，因为它是专门为提取、加载和转换数据而构建的。 如果你无法使用 ADF 满足你的要求，则可以使用 Python SDK 开发自定义代码解决方案，或将 ADF 和 Python SDK 一起使用来创建可满足你的需求的总体数据引入工作流。
+Azure 数据工厂（ADF）是专门为提取、加载和转换数据而构建的，但是 Python SDK 允许您为基本数据引入任务开发自定义代码解决方案。 如果这两种情况都不是您所需要的，也可以同时使用 ADF 和 Python SDK 来创建满足您需求的总体数据引入工作流。 
 
 ## <a name="use-azure-data-factory"></a>使用 Azure 数据工厂
 
@@ -34,7 +34,7 @@ ms.locfileid: "78303114"
 
 下表总结了使用 Azure 数据工厂进行数据引入工作流的优点和缺点。
 
-|专业人士|Cons
+|优点|缺点
 ---|---
 专门构建以提取、加载和转换数据。|目前提供一组有限的 Azure 数据工厂管道任务 
 允许您创建数据驱动的工作流，用于大规模协调数据移动和转换。|构建和维护成本高昂。 有关详细信息，请参阅 Azure 数据工厂的[定价页](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)。
@@ -52,6 +52,8 @@ Azure 数据工厂的嵌入数据沿袭功能数据流|
 
 
     ![ADF 数据引入](media/concept-data-ingestion/data-ingest-option-one.svg)
+    
+了解如何使用[Azure 数据工厂](how-to-data-ingest-adf.md)构建机器学习的数据引入管道。
 
 ## <a name="use-the-python-sdk"></a>使用 Python SDK 
 
@@ -59,7 +61,7 @@ Azure 数据工厂的嵌入数据沿袭功能数据流|
 
 下表总结了使用 SDK 的专业人员和职业以及用于数据引入任务的 ML 管道步骤。
 
-专业人士| Cons
+优点| 缺点
 ---|---
 配置自己的 Python 脚本 | 本身不支持数据源更改触发。 需要逻辑应用或 Azure 函数实现
 作为每个模型定型执行的一部分的数据准备|需要开发技能来创建数据引入脚本

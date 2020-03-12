@@ -1,6 +1,6 @@
 ---
 title: 教程：为 RingCentral 配置自动用户预配 Azure Active Directory |Microsoft Docs
-description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 RingCentral 以及取消其预配。
+description: 了解如何自动将用户 Azure AD 帐户预配到 RingCentral 以及取消其预配。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,44 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 6c6936b485526c07b3486874d6bdaacaf07ae8e5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77060806"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087065"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
-本教程的目的是演示要在 RingCentral 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 RingCentral 以及取消其预配。
+本教程介绍了需要在 RingCentral 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
-> [!NOTE]
-> 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
->
-> 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="capabilities-supported"></a>支持的功能
+> [!div class="checklist"]
+> * 在 RingCentral 中创建用户
+> * 当用户不再需要访问权限时，删除 RingCentral 中的用户
+> * 使用户属性在 Azure AD 和 RingCentral 之间保持同步
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)到 RingCentral （推荐）
+
+## <a name="prerequisites"></a>必备条件
 
 本教程中概述的方案假定你已具有以下先决条件：
 
-* Azure AD 租户
+* [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 中的一个用户帐户，有权配置预配（例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）的[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。 
 * [RingCentral 租户](https://www.ringcentral.com/office/plansandpricing.html)
 * RingCentral 中具有管理员权限的用户帐户。
 
-## <a name="assigning-users-to-ringcentral"></a>将用户分配到 RingCentral
+## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
+1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 确定将处于[预配范围内的](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)用户。
+3. 确定要[在 Azure AD 与 RingCentral 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和/或组。
-
-在配置和启用自动用户预配之前，应确定 Azure AD 中哪些用户和/或组需要访问 RingCentral。 确定后，可按照此处的说明将这些用户和/或组分配到 RingCentral：
-* [向企业应用分配用户或组](../manage-apps/assign-user-or-group-access-portal.md)
-
-## <a name="important-tips-for-assigning-users-to-ringcentral"></a>将用户分配到 RingCentral 的重要提示
-
-* 建议将单个 Azure AD 用户分配到 RingCentral 以测试自动用户预配配置。 其他用户和/或组可以稍后分配。
-
-* 将用户分配到 RingCentral 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
-
-## <a name="set-up-ringcentral-for-provisioning"></a>设置 RingCentral 以进行预配
+## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 RingCentral 以支持 Azure AD 的预配
 
 1. 登录到[RingCentral 管理控制台](https://login.ringcentral.com/sw.html)。 导航到 "**工具" > 目录集成**"。
 
@@ -67,37 +63,22 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 > [!NOTE]
 > 若要将许可证分配给用户，请参阅[此处](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)的视频链接。
 
-## <a name="add-ringcentral-from-the-gallery"></a>从库中添加 RingCentral
+## <a name="step-3-add-ringcentral-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 RingCentral
 
-在将 RingCentral 配置为 Azure AD 的自动用户预配之前，需要从 Azure AD 应用程序库将 RingCentral 添加到托管 SaaS 应用程序列表。
+从 Azure AD 应用程序库中添加 RingCentral，开始管理预配到 RingCentral。 如果以前为 SSO 设置了 RingCentral，则可以使用相同的应用程序。 但建议您在最初测试集成时创建一个单独的应用程序。 在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)了解有关从库中添加应用程序的详细信息。 
 
-**若要从 Azure AD 应用程序库中添加 RingCentral，请执行以下步骤：**
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步骤 4. 定义将在设置范围内的人员 
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择 " **Azure Active Directory**"。
+Azure AD 预配服务允许你确定将根据分配给应用程序的人员，或基于用户/组属性进行预配的用户的范围。 如果选择将根据分配预配到你的应用的用户的范围，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性设置的作用域，则可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-    ![“Azure Active Directory”按钮](common/select-azuread.png)
+* 将用户和组分配到 RingCentral 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有默认访问角色的用户将从预配中排除，并在预配日志中被标记为不有效。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)来添加其他角色。 
 
-2. 转到“企业应用程序”，并选择“所有应用程序”。
+* 从小开始。 在向所有人推出之前，请使用少量的用户和组进行测试。 如果设置的作用域设置为 "分配的用户和组"，则可以通过将一个或两个用户或组分配到应用来对此进行控制。 当作用域设置为 "所有用户和组" 时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
-    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加新应用程序，请选择窗格顶部的 "**新建应用程序**" 按钮。
+## <a name="step-5-configure-automatic-user-provisioning-to-ringcentral"></a>步骤 5。 配置 RingCentral 的自动用户预配 
 
-    ![“新增应用程序”按钮](common/add-new-app.png)
-
-4. 在搜索框中，输入 " **RingCentral**"，在结果面板中选择 " **RingCentral** "，然后单击 "**添加**" 按钮添加该应用程序。
-
-    ![结果列表中的 RingCentral](common/search-new-app.png)
-
-## <a name="configuring-automatic-user-provisioning-to-ringcentral"></a>配置 RingCentral 的自动用户预配 
-
-本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 RingCentral 中创建、更新和禁用用户和/或组。
-
-> [!TIP]
-> 你还可以选择按照[RingCentral 单一登录教程](ringcentral-tutorial.md)中提供的说明为 RingCentral 启用基于 SAML 的单一登录。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
-
-> [!NOTE]
-> 若要了解有关 RingCentral 的 SCIM 终结点的详细信息，请参阅[RINGCENTRAL API 参考](https://developers.ringcentral.com/api-reference)。
+本部分将指导你完成以下步骤：配置 Azure AD 预配服务，以便基于 Azure AD 中的用户和/或组分配在 TestApp 中创建、更新和禁用用户和/或组。
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>若要在 Azure AD 中配置 RingCentral 的自动用户预配：
 
@@ -119,23 +100,38 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
 5. 在 "**管理员凭据**" 部分下的 "**租户 URL**" 中输入 `https://platform.ringcentral.com/scim/v2`。 输入先前在**机密令牌**中检索到的**SCIM Authentication 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 RingCentral。 如果连接失败，请确保 RingCentral 帐户具有管理员权限，然后重试。
 
-    ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
+    ![设置选项卡](./media/ringcentral-provisioning-tutorial/provisioning.png)
 
-6. 在“通知电子邮件”字段中，输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”。
+6. 在 "**通知电子邮件**" 字段中，输入应接收预配错误通知的人员或组的电子邮件地址，并选中 "**发生故障时发送电子邮件通知**" 复选框。
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击 **“保存”** 。
+7. 选择“保存”。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 RingCentral**"。
 
-    ![RingCentral 用户映射](media/ringcentral-provisioning-tutorial/usermappings.png)
+9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 RingCentral 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 RingCentral 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 RingCentral API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 RingCentral 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 RingCentral 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+   |Attribute|类型|
+   |---|---|
+   |userName|String|
+   |externalId|String|
+   |活动|Boolean|
+   |displayName|String|
+   |title|String|
+   |emails[type eq "work"].value|String|
+   |地址 [类型 eq "work"]。国家/地区|String|
+   |地址 [类型 eq "work"]。区域|String|
+   |地址 [类型 eq "work"]。位置|String|
+   |addresses[type eq "work"].postalCode|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User：部门|String|
+   |urn： ietf： params： scim：架构：扩展： enterprise：2.0： User： manager|参考|
 
-    ![RingCentral 用户属性](media/ringcentral-provisioning-tutorial/userattributes.png)
-
-10. 若要配置范围筛选器，请参阅[范围筛选器教程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
 11. 若要为 RingCentral 启用 Azure AD 预配服务，请在 "**设置**" 部分中将 "**预配状态**" 更改为 **"打开**"。
 
@@ -149,16 +145,20 @@ Azure Active Directory 使用称为 "*分配*" 的概念来确定哪些用户应
 
     ![保存预配配置](common/provisioning-configuration-save.png)
 
-此操作会对“设置”部分的“范围”中定义的所有用户和/或组启动初始同步。 初始同步执行的时间比后续同步长，只要 Azure AD 预配服务正在运行，大约每隔 40 分钟就会进行一次同步。 你可以使用 "**同步详细信息**" 部分监视进度并跟踪指向预配活动报告的链接，该报告描述了 Azure AD 预配服务对 RingCentral 执行的所有操作。
+此操作将启动 "**设置**" 部分的 "**范围**" 中定义的所有用户和组的初始同步循环。 初始周期比后续循环长，只要 Azure AD 预配服务正在运行，就大约每40分钟执行一次。 
 
-若要详细了解如何读取 Azure AD 预配日志，请参阅[有关自动用户帐户预配的报告](../app-provisioning/check-status-user-account-provisioning.md)。
+## <a name="step-6-monitor-your-deployment"></a>步骤 6. 监视部署
+配置预配后，请使用以下资源来监视部署：
+
+1. 使用[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已成功设置或失败
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)，查看设置周期的状态以及完成操作的方式
+3. 如果预配配置似乎处于不正常状态，则应用程序将进入隔离区。 [在此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [管理企业应用的用户帐户预配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../app-provisioning/check-status-user-account-provisioning.md)
-
+* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)

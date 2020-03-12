@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/05/2019
-ms.openlocfilehash: 24ecf90c2ffc88415afbf84f54af3efa7d5f4a39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/10/2020
+ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435422"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79117230"
 ---
 # <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>适用于 Azure HDInsight 的网络安全组（NSG）服务标记
 
@@ -40,7 +40,7 @@ ms.locfileid: "75435422"
 
 1. 从 "**源服务标记**" 下拉列表中，选择 " **HDInsight**"。
 
-    ![Azure 门户添加服务标记](./media/hdinisght-service-tags/azure-portal-add-service-tag.png)
+    ![Azure 门户添加服务标记](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
 此标记包含 HDInsight 可用的所有区域的运行状况和管理服务的 IP 地址，并确保在创建群集时，群集可以与必要的运行状况和管理服务通信。
 
@@ -54,17 +54,17 @@ ms.locfileid: "75435422"
 
 如果你更愿意使用服务标记选项2，并且你的群集位于此表中列出的某个区域，则你只需将单个区域服务标记添加到你的网络安全组。
 
-| 国家/地区 | 地区 | 服务标记 |
+| 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
 | 澳大利亚 | 澳大利亚东部 | AustraliaEast |
 | &nbsp; | 澳大利亚东南部 | AustraliaSoutheast |
 | &nbsp; | 澳大利亚中部 | AustraliaCentral |
 | 中国 | 中国东部 2 | ChinaEast2 |
 | &nbsp; | 中国北部 2 | ChinaNorth2 |
-| 美国 | 美国中北部 | NorthCentralUS |
+| United States | 美国中北部 | NorthCentralUS |
 | &nbsp; | 美国西部 2 | WestUS2 |
 | &nbsp; | 美国中西部 | WestCentralUS |
-| 加拿大 | 加拿大东部 | CanadaEast |
+| Canada | 加拿大东部 | CanadaEast |
 | 巴西 | 巴西南部 | BrazilSouth |
 | 韩国 | 韩国中部 | KoreaCentral |
 | &nbsp; | 韩国南部 | KoreaSouth |
@@ -76,6 +76,7 @@ ms.locfileid: "75435422"
 | Azure Government | USDoD 中部   | USDoDCentral |
 | &nbsp; | US Gov 德克萨斯州 | USGovTexas |
 | &nbsp; | UsDoD 东部 | USDoDEast |
+| &nbsp; | US Gov 亚利桑那州 | USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多个区域服务标记
 
@@ -83,7 +84,7 @@ ms.locfileid: "75435422"
 
 其余区域根据它们所使用的区域服务标记划分为多个组。
 
-#### <a name="group-1"></a>组 1
+#### <a name="group-1"></a>组1
 
 如果你的群集是在下表的其中一个区域中创建的，则除了列出的区域服务标记外，还允许 `HDInsight.WestUS` 和 `HDInsight.EastUS` 服务标记。 本部分中的区域需要三个服务标记。
 
@@ -93,9 +94,9 @@ ms.locfileid: "75435422"
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| 国家/地区 | 地区 | 服务标记 |
+| 国家/地区 | 区域 | 服务标记 |
 | ---- | ---- | ---- |
-| 美国 | 美国东部 2 | EastUS2 |
+| United States | 美国东部 2 | EastUS2 |
 | &nbsp; | 美国中部 | CentralUS |
 | &nbsp; | NorthCentral | HDInsight. NorthCentralUS |
 | &nbsp; | 美国中南部 | Default-machinelearning-southcentralus |
@@ -112,11 +113,11 @@ ms.locfileid: "75435422"
 
 **中国北部**和**中国东部**区域中的群集需要允许两个服务标记： `HDInsight.ChinaNorth` 和 `HDInsight.ChinaEast`。
 
-#### <a name="group-3"></a>组 3
+#### <a name="group-3"></a>组3
 
 **US Gov 爱荷华州**和**US Gov 弗吉尼亚州**区域中的群集需要允许两个服务标记： `HDInsight.USGovIowa` 和 `HDInsight.USGovVirginia`。
 
-#### <a name="group-4"></a>组 4
+#### <a name="group-4"></a>组4
 
 **德国中部**和**德国**北部地区的群集需要允许两个服务标记： `HDInsight.GermanyCentral` 和 `HDInsight.GermanyNorthEast`。
 

@@ -7,12 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
-ms.openlocfilehash: 354ee312099902372863ce2ea636d2f9f9943d5c
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+manager: lizross
+ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566421"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127891"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
@@ -76,13 +77,13 @@ ms.locfileid: "77566421"
 
 本部分中的所有值应与首次创建主机池和会话主机 Vm 时提供的值匹配（*默认桌面用户*除外）：
 
-1.  对于 "*订阅*"，请选择你在其中首次创建主机池的订阅。
-2.  对于 "*资源组*"，请选择现有主机池会话所在的同一资源组。
-3.  对于 "*区域*"，请选择现有主机池会话所在的同一区域。
-4.  对于 " *Hostpool 名称*"，请输入现有主机池的名称。
-5.  对于 "*桌面类型*"，请选择与现有主机池匹配的桌面类型。
-6.  对于*默认的桌面用户*，请输入一个逗号分隔列表，其中列出了你希望在 Azure Marketplace 产品完成后登录到 Windows 虚拟桌面客户端并访问桌面的任何其他用户。 例如，如果要分配 user3@contoso.com 和 user4@contoso.com 访问权限，请输入 user3@contoso.comuser4@contoso.com。
-7.  选择 "**下一步：配置虚拟机**"。
+1.    对于 "*订阅*"，请选择你在其中首次创建主机池的订阅。
+2.    对于 "*资源组*"，请选择现有主机池会话所在的同一资源组。
+3.    对于 "*区域*"，请选择现有主机池会话所在的同一区域。
+4.    对于 " *Hostpool 名称*"，请输入现有主机池的名称。
+5.    对于 "*桌面类型*"，请选择与现有主机池匹配的桌面类型。
+6.    对于*默认的桌面用户*，请输入一个逗号分隔列表，其中列出了你希望在 Azure Marketplace 产品完成后登录到 Windows 虚拟桌面客户端并访问桌面的任何其他用户。 例如，如果要分配 user3@contoso.com 和 user4@contoso.com 访问权限，请输入 user3@contoso.comuser4@contoso.com。
+7.    选择 "**下一步：配置虚拟机**"。
 
 >[!NOTE]
 >除了*默认的桌面用户*，所有字段必须与现有主机池中配置的内容完全匹配。 如果存在不匹配的情况，则会导致新的主机池。

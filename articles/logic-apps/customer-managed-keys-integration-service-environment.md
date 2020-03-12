@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 6f4e0744aad5f053cdda0a52b382ad3c86982c2f
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.date: 03/11/2020
+ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904975"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127649"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>设置客户管理的密钥，以便在 Azure 逻辑应用中为集成服务环境（ISEs）加密静态数据
 
@@ -19,7 +19,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 创建用于托管逻辑应用的[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)并希望更好地控制 Azure 存储使用的加密密钥时，可以使用[Azure Key Vault](../key-vault/key-vault-overview.md)设置、使用和管理你自己的密钥。 此功能也称为 "创建自己的密钥" （BYOK），你的密钥称为 "客户管理的密钥"。
 
-本主题说明如何设置和指定你自己的加密密钥，以便在创建 ISE 时使用。 
+本主题说明如何设置和指定你自己的加密密钥，以便在你使用逻辑应用 REST API 创建 ISE 时使用。 有关通过逻辑应用创建 ISE REST API 的常规步骤，请参阅[使用逻辑应用 REST API 创建集成服务环境（ISE）](../logic-apps/create-integration-service-environment-rest-api.md)。
 
 ## <a name="considerations"></a>注意事项
 
@@ -33,9 +33,9 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * 发送用于创建 ISE 的 HTTPS PUT 请求后*30 分钟*内，必须[为 ise 的系统分配的标识授予密钥保管库访问权限](#identity-access-to-key-vault)。 否则，ISE 创建失败并引发权限错误。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* 为[ise 启用访问权限](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的[先决条件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求与在 Azure 门户中创建 ise 时相同。
 
 * 已启用**软删除**且**未清除**属性的 Azure 密钥保管库
 
@@ -43,7 +43,7 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 * 在密钥保管库中，使用以下属性值创建的密钥：
 
-  | 属性 | 值 |
+  | properties | 值 |
   |----------|-------|
   | **键类型** | RSA |
   | **RSA 密钥大小** | 2048 |
@@ -66,6 +66,15 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 > [!IMPORTANT]
 > 逻辑应用 REST API 2019-05-01 版本要求你为 ISE 连接器自行发出 HTTP PUT 请求。
+
+部署通常需要两个小时才能完成。 有时，部署可能最多需要四个小时。 若要检查部署状态，请在 " [Azure 门户](https://portal.azure.com)的 Azure 工具栏上，选择" 通知 "图标，打开" 通知 "窗格。
+
+> [!NOTE]
+> 如果部署失败或删除了 ISE，Azure 可能需要长达一小时的时间才能释放子网。 这种延迟意味着可能需要等待，才能在另一 ISE 中重用这些子网。
+>
+> 如果删除虚拟网络，则在释放子网之前，Azure 通常需要两个小时，但此操作可能需要更长时间。 
+> 删除虚拟网络时，请确保没有资源仍处于连接状态。 
+> 请参阅[删除虚拟网络](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 ### <a name="request-header"></a>请求标头
 
@@ -220,4 +229,4 @@ Azure 逻辑应用依赖 Azure 存储来存储和自动[加密静态数据](../s
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[Azure Key Vault](../key-vault/key-vault-overview.md)
+* 详细了解 [Azure Key Vault](../key-vault/key-vault-overview.md)

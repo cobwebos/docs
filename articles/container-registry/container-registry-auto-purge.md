@@ -3,12 +3,12 @@ title: 清除标记和清单
 description: 使用 "清除" 命令可根据 age 和标记筛选器从 Azure 容器注册表中删除多个标记和清单，并选择性地计划清除操作。
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d86b628bdd0ce0db3067b02a47517d8aadcba3
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923108"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087339"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>自动清除 Azure 容器注册表中的映像
 
@@ -16,7 +16,7 @@ ms.locfileid: "74923108"
 
 `acr purge` 命令当前分布于公共容器映像（`mcr.microsoft.com/acr/acr-cli:0.1`）中，该映像是从 GitHub 中的[acr-cli](https://github.com/Azure/acr-cli)存储库中的源代码生成的。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的 ACR 任务示例。 如果要在本地使用，则需要版本2.0.69 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。 
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的 ACR 任务示例。 如果要在本地使用，则需要版本2.0.69 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。 
 
 > [!IMPORTANT]
 > 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
@@ -47,7 +47,7 @@ ms.locfileid: "74923108"
 
 对于其他参数，请运行 `acr purge --help`。 
 
-`acr purge` 支持 ACR 任务命令的其他功能，包括流式处理的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-overview.md#view-task-logs)，还保存用于以后检索。
+`acr purge` 支持 ACR 任务命令的其他功能，包括流式处理的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-logs.md)，还保存用于以后检索。
 
 ### <a name="run-in-an-on-demand-task"></a>在按需任务中运行
 

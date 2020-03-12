@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 842fcaf6ea06ed4aaaff04f6bb5d7d38a672573c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 598876e12fe04129692d0c9a842f4edb2ec00768
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78162345"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086804"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 地址
 
@@ -39,6 +39,7 @@ Azure Integration Runtime 使用的 IP 地址取决于 Azure 集成运行时所�
 | &nbsp;         | 澳大利亚东南部 | 20.42.225.0/25，</br>20.42.225.128/26，</br>13.77.53.160/28    |
 | 巴西         | 巴西南部        | 191.235.224.128/25，</br>191.235.225.0/26，</br>191.233.205.160/28 |
 | Canada         | 加拿大中部      | 52.228.80.128/25，</br>52.228.81.0/26，</br>13.71.175.80/28    |
+| 中国          | 中国东部 2        | 40.73.172.48/28，</br>52.130.0.128/25，</br>52.130.1.0/26      |
 | 欧洲         | 北欧        | 20.38.82.0/23，</br>20.38.80.192/26，</br>13.69.230.96/28      |
 | &nbsp;         | 西欧         | 40.74.26.0/23，</br>40.74.24.192/26，</br>13.69.67.192/28      |
 | 法国         | 法国中部      | 20.43.40.128/25，</br>20.43.41.0/26，</br>40.79.132.112/28     |

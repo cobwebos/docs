@@ -7,19 +7,19 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 02/04/2020
+ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 82bf6f9a78a46659cc2e0955895c6e1a6e6eb3aa
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195917"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096626"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>监视 Azure Synapse 分析中的资源利用率和查询活动
-Azure Synapse Analytics 在 Azure 门户内提供丰富的监视体验，以将见解深入到数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 门户还使你可以与其他 Azure 监视服务（如 Operations Management Suite （OMS）和 Azure Monitor （日志））集成，以提供全面的监视体验，不仅针对数据仓库，还提供整个 Azure 分析集成监视体验的平台。 本文档介绍可用于优化和管理使用 SQL Analytics 分析平台的监视功能。 
+Azure Synapse Analytics 在 Azure 门户内提供丰富的监视体验，以了解有关数据仓库工作负荷的信息。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 使用门户还可以将其他 Azure 监视服务（如 Azure Monitor （日志）与 Log analytics 集成，从而为你的数据仓库提供总体监视体验，同时为集成的 Azure 分析平台提供全面的监视体验监视体验。 本文档介绍可用于优化和管理使用 SQL Analytics 分析平台的监视功能。 
 
 ## <a name="resource-utilization"></a>资源利用率 
 SQL Analytics Azure 门户中提供了以下指标。 这些指标通过 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) 显示。
@@ -41,9 +41,13 @@ SQL Analytics Azure 门户中提供了以下指标。 这些指标通过 [Azure 
 | 缓存命中百分比    | (缓存命中数/缓存未命中数) * 100，其中，缓存命中数是在本地 SSD 缓存中所有列存储段的总命中数，缓存未命中数是所有节点上本地 SSD 缓存中列存储段的未命中数之和 | Avg、Min、Max    |
 | 缓存使用百分比   | (已用缓存/缓存容量) * 100，其中，已用缓存是所有节点上的本地 SSD 缓存中所有字节之和，缓存容量是所有节点上的本地 SSD 缓存存储容量之和 | Avg、Min、Max    |
 | 本地 tempdb 百分比 | 所有计算节点上的本地 tempdb 利用率 - 每五分钟发出一次值 | Avg、Min、Max    |
+| 数据存储大小 | 加载到数据库中的数据的总大小。 这包括在 CCI 和非 CCI 表中驻留的数据，其中非 CCI 表的大小由数据库文件总大小度量 | SUM |
+| 灾难恢复大小 | 每24小时进行异地备份的总大小 | SUM |
+| 快照存储大小 | 用于提供数据库还原点的快照的总大小。 这包括自动和用户定义的快照。 | SUM |
 
 查看度量值和设置警报时要考虑的事项：
 
+- 使用的 DWU 只表示在 SQL 池中**使用的高级表示形式**，并不是一种全面的利用率指标。 若要确定是向上扩展还是向下缩放，请考虑可能会受 DWU 影响的所有因素，如并发性、内存、tempdb 和自适应缓存容量。 建议[在不同的 DWU 设置中运行工作负荷](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units)，以确定哪种方法最适合你的业务目标。
 - 针对特定数据仓库报告失败和成功的连接-不是针对逻辑服务器
 - 即使数据仓库处于空闲状态，内存百分比也会反映利用率，而不会反映活动工作负荷的内存消耗。 使用并跟踪此指标和其他人（tempdb、gen2 缓存），以便对更多缓存容量的规模提高工作负荷性能以满足您的要求进行全面的决策。
 

@@ -3,21 +3,21 @@ title: 用云本机 Buildpack 构建映像
 description: 使用 az acr pack build 命令从应用生成容器映像，并推送到 Azure 容器注册表，无需使用 Dockerfile。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456113"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087070"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用云本机 Buildpack 从应用生成并推送映像
 
 Azure CLI 命令 `az acr pack build` 使用[Buildpacks](https://buildpacks.io/)中的[`pack`](https://github.com/buildpack/pack) CLI 工具来生成应用，并将其映像推送到 Azure 容器注册表中。 此功能提供了一个选项，可用于从 node.js、Java 和其他语言中的应用程序源代码快速构建容器映像，而无需定义 Dockerfile。
 
-您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 如果要在本地使用，则需要版本2.0.70 或更高版本。 可以运行 `az --version` 来查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
+您可以使用 Azure CLI 的 Azure Cloud Shell 或本地安装来运行本文中的示例。 如果要在本地使用，则需要版本2.0.70 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
 > [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="use-the-build-command"></a>使用生成命令
 
@@ -30,7 +30,7 @@ Azure CLI 命令 `az acr pack build` 使用[Buildpacks](https://buildpacks.io/)�
 * ACR 任务[支持的上下文位置](container-registry-tasks-overview.md#context-locations)之一，例如本地目录、GitHub 存储库或远程 tarball
 * 适用于你的应用程序的 Buildpack 生成器图像的名称。 Azure 容器注册表会缓存生成器图像，例如 `cloudfoundry/cnb:0.0.34-cflinuxfs3` 以实现更快的生成。  
 
-`az acr pack build` 支持 ACR 任务命令的其他功能，包括流式处理的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-overview.md#view-task-logs)，还保存用于以后检索。
+`az acr pack build` 支持 ACR 任务命令的其他功能，包括流式处理的[运行变量](container-registry-tasks-reference-yaml.md#run-variables)和[任务运行日志](container-registry-tasks-logs.md)，还保存用于以后检索。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>示例：用 Cloud Foundry 生成器生成 node.js 映像
 

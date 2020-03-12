@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 9f3fd59fa040ab46a5fc4ef8272a17cba4c631b8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77925769"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127334"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023年3月1日将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -31,7 +31,7 @@ ms.locfileid: "77925769"
 2) 2023年3月1日，客户将无法再使用 Azure Service Manager 启动 IaaS Vm，并且仍在运行或分配的任何都将停止并解除分配。 
 2) 2023年3月1日，尚未迁移到 Azure 资源管理器的订阅将收到有关删除任何剩余经典 Vm 的时间线。  
 
-以下 Azure 服务和功能**不**会受到此停用的影响： 
+下列 Azure 服务和功能不受此停用影响： 
 - 云服务 
 - 经典 Vm**未**使用的存储帐户 
 - 经典 Vm**未**使用的虚拟网络（vnet）。 

@@ -6,16 +6,18 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 11b469425a80d588462e0332c973260cc3b56992
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596175"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126605"
 ---
-# <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Azure Kubernetes 服务（AKS）诊断概述
+# <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Azure Kubernetes Service 诊断（预览版）概述
 
 排查 Azure Kubernetes 服务（AKS）群集问题是维护群集的重要部分，尤其是在群集运行任务关键型工作负荷的情况下。 AKS 诊断是一种智能的自我诊断体验，可帮助你识别和解决群集中的问题。 AKS 诊断是云本机的，你可以使用它，而无需额外配置或计费成本。
+
+此功能现已公开预览版。
 
 ## <a name="open-aks-diagnostics"></a>打开 AKS 诊断
 

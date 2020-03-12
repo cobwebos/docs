@@ -1,5 +1,5 @@
 ---
-title: 将 Azure 数据资源管理器部署到虚拟网络（预览版）
+title: 将 Azure 数据资源管理器部署到你的虚拟网络
 description: 了解如何在虚拟网络中部署 Azure 数据资源管理器
 author: basaba
 ms.author: basaba
@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e845b44c51b7611cd3f23f8b33e6576aced2d6ca
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851450"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096771"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network-preview"></a>将 Azure 数据资源管理器部署到虚拟网络（预览版）
+# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>将 Azure 数据资源管理器部署到你的虚拟网络
 
 本文介绍将 Azure 数据资源管理器群集部署到自定义 Azure 虚拟网络时存在的资源。 此信息将帮助你将群集部署到虚拟网络（VNet）中的子网。 有关 Azure 虚拟网络的详细信息，请参阅[什么是 Azure 虚拟网络？](/azure/virtual-network/virtual-networks-overview)
 
@@ -25,9 +25,6 @@ Azure 数据资源管理器支持将群集部署到虚拟网络（VNet）中的�
 * 在 Azure 数据资源管理器群集流量上强制实施[网络安全组](/azure/virtual-network/security-overview)（NSG）规则。
 * 将本地网络连接到 Azure 数据资源管理器群集的子网。
 * 通过[服务终结点](/azure/virtual-network/virtual-network-service-endpoints-overview)保护数据连接源（[事件中心](/azure/event-hubs/event-hubs-about)和[事件网格](/azure/event-grid/overview)）。
-
-> [!NOTE]
-> 虚拟网络集成和部署处于预览模式。 若要启用此功能，请打开[支持票证](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 
 ## <a name="access-your-azure-data-explorer-cluster-in-your-vnet"></a>在 VNet 中访问 Azure 数据资源管理器群集
 

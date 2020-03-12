@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2a5d1178bd6dbd6f7cfdd2ec2af17b78836a38d7
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670519"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096730"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Azure Monitor 的监视数据源
 Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platform-metrics.md)的[常见监视数据平台](data-platform.md)。 通过将数据收集到此平台，可以使用 Azure Monitor 中的一组常用工具来一起分析多个资源中的数据。 还可以将监视数据发送到其他位置以支持特定方案，并且某些资源可能会写入到其他位置，然后才能将这些数据收集到日志或指标中。
@@ -72,8 +72,8 @@ Azure Monitor 基于包含[日志](data-platform-logs.md)和[指标](data-platfo
 |:---|:---|
 | 活动日志 | 活动日志将收集到其自己的数据存储中，你可以从 "Azure Monitor" 菜单中查看该日志，或使用创建活动日志警报。 | [在 Azure 门户中查询活动日志](activity-log-view.md#azure-portal) |
 | Azure Monitor 日志 | 将 Azure Monitor 日志配置为收集活动日志，以便用其他监视数据对其进行分析。 | [收集和分析 Azure Monitor 中 Log Analytics 工作区中的 Azure 活动日志](activity-log-collect.md) |
-| Azure 存储 | 将活动日志导出到 Azure 存储以进行存档。 | [存档活动日志](activity-log-export.md#archive-activity-log)  |
-| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](activity-log-export.md#stream-activity-log-to-event-hub)。 |
+| Azure 存储 | 将活动日志导出到 Azure 存储以进行存档。 | [存档活动日志](resource-logs-collect-storage.md)  |
+| 事件中心 | 使用事件中心将活动日志流式传输到其他位置 | [将活动日志流式传输到事件中心](resource-logs-stream-event-hubs.md)。 |
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
 [Azure 服务运行状况](../../service-health/service-health-overview.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。

@@ -9,12 +9,12 @@ ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132079"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096606"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>设置目录级别的非活动超时
 
@@ -43,7 +43,7 @@ ms.locfileid: "77132079"
 此设置对新会话生效。 它不会立即应用于已登录的任何用户。
 
 > [!NOTE]
-> 如果管理员配置了目录级别的超时设置，则用户可以替代策略并设置其自己的非活动注销持续时间。 但是，用户必须选择小于在目录级别设置的时间间隔。
+> 如果全局管理员已配置了目录级别的超时设置，则用户可以重写策略并设置其自己的非活动注销持续时间。 但是，用户必须选择一个时间间隔，该时间间隔小于全局管理员在目录级别设置的时间间隔。
 >
 
 ## <a name="next-steps"></a>后续步骤

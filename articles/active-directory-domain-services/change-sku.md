@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 18395f2b839aef88491f71aeed660eb2ce011e2c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: b65310569e95173b88dd0aa0dfe1dbacd86cc8fc
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614243"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79126706"
 ---
 # <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>更改现有 Azure AD 域服务托管域的 SKU
 
-在 Azure Active Directory 域服务（Azure AD DS）中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任的最大数量（当前为预览版）。 创建托管域时，可以选择 SKU，并且可以在部署托管域后，根据业务需求的变化来切换 Sku。 业务需求的变化可能包括需要更频繁的备份或创建更多的林信任。 有关不同 Sku 的限制和定价的详细信息，请参阅[AZURE AD DS SKU 的概念][concepts-sku]和[Azure AD ds 定价][pricing]页。
+在 Azure Active Directory 域服务（Azure AD DS）中，可用的性能和功能基于 SKU 类型。 这些功能差异包括备份频率或单向出站林信任的最大数量（当前为预览版）。 当你创建托管域时，你可以选择 SKU，你可以在部署托管域后，随着业务需求的变化向上或向下切换 Sku。 业务需求的变化可能包括需要更频繁的备份或创建更多的林信任。 有关不同 Sku 的限制和定价的详细信息，请参阅[AZURE AD DS SKU 的概念][concepts-sku]和[Azure AD ds 定价][pricing]页。
 
 本文说明如何使用 Azure 门户更改现有 Azure AD DS 托管域的 SKU。
 
@@ -36,9 +36,12 @@ ms.locfileid: "77614243"
 
 ## <a name="sku-change-limitations"></a>SKU 更改限制
 
-如果使用资源林（当前为预览版）并已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
+部署 Azure AD DS 托管域后，可以向上或向下更改 Sku。 但是，如果使用资源林（当前为预览版），并已创建从 Azure AD DS 到本地 AD DS 环境的单向出站林信任，则 SKU 更改操作有一些限制。 *高级版*和*企业版*sku 定义了可以创建的信任数量限制。 你无法更改到最大限制低于当前配置的 SKU。
 
-例如，如果在*高级*sku 上创建了两个林信任，则无法更改为*标准*sku。 *标准*SKU 不支持林信任。 或者，如果你在*高级*SKU 上创建了7个信任，则无法更改为*企业*sku。 *企业*SKU 最多支持五个信任关系。
+例如：
+
+* 如果在*高级*sku 上创建了两个林信任，则无法更改为*标准*sku。 *标准*SKU 不支持林信任。
+* 或者，如果你在*高级*SKU 上创建了7个信任，则无法更改为*企业*sku。 *企业*SKU 最多支持五个信任关系。
 
 有关这些限制的详细信息，请参阅[AZURE AD DS SKU 功能和限制][concepts-sku]。
 

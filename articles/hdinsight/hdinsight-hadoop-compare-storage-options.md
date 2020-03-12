@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 72534225acffa176d248901f363100955e36c6f6
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.date: 03/10/2020
+ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78898917"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79095548"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -46,7 +46,6 @@ ms.locfileid: "78898917"
 |---|---|---|---|
 | 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
 | 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | Data Lake Storage Gen2 | 否 |
-| 3.6 & 4.0 | 常规用途 V1，常规用途 V2 | Data Lake Storage Gen1 | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2 * | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
 | 3.6 & 4.0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | 否 |
@@ -54,6 +53,7 @@ ms.locfileid: "78898917"
 | 3.6 | Data Lake Storage Gen1 | 常规用途 V1，常规用途 V2，BlobStorage （块 Blob） | 是 |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | 否 |
 | 4.0 | Data Lake Storage Gen1 | Any | 否 |
+| 4.0 | 常规用途 V1，常规用途 V2 | Data Lake Storage Gen1 | 否 |
 
 \* = 这可能是一个或多个 Data Lake Storage Gen2 帐户，只要它们都设置为使用相同的托管标识进行群集访问。
 

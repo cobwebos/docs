@@ -3,12 +3,12 @@ title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921107"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087033"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
@@ -91,6 +91,7 @@ ms.locfileid: "77921107"
 - Tar 和 gzip 格式不受支持。
 - 此功能不是用本地缓存构成的。
 - 为了改进冷启动性能，请使用本地 Zip 选项（`WEBSITE_RUN_FROM_PACKAGE`= 1）。
+- "从包中运行" 与部署自定义选项（`SCM_DO_BUILD_DURING_DEPLOYMENT=true`）不兼容，部署过程中将忽略生成步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

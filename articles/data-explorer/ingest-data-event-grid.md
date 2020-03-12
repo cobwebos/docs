@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424977"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096417"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
@@ -26,9 +26,9 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 本文介绍如何设置[Azure 事件网格](/azure/event-grid/overview)订阅，并通过事件中心将事件路由到 Azure 数据资源管理器。 在开始之前，应已准备好一个存储帐户，以及一个可将通知发送到 Azure 事件中心的事件网格订阅。 然后创建事件网格数据连接，并查看整个系统中的数据流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 创建[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [一个群集和数据库](create-cluster-database-portal.md)。
 * [一个存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)。
 * [一个事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
@@ -51,7 +51,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
     | 订阅所有事件类型 | *clear* | 不要获取有关所有事件的通知。 |
     | 定义的事件类型 | *已创建 Blob* | 要获取其通知的特定事件。 |
     | 终结点类型 | *事件中心* | 要将事件发送到的终结点的类型。 |
-    | 终结点 | test-hub | 你创建的事件中心。 |
+    | 端点 | test-hub | 你创建的事件中心。 |
     | | |
 
 1. 如果要跟踪特定容器中的文件，请选择 "**筛选器**" 选项卡。 按如下所述设置通知筛选器：
@@ -118,7 +118,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
     | 表 | TestTable | 在“TestDatabase”中创建的表。 |
-    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 支持的压缩选项： Zip 和 GZip |
+    | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV、原始和 TXT。 支持的压缩选项： Zip 和 GZip |
     | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
     
@@ -150,13 +150,32 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
     az storage container create --name $container_name
 
     echo "Uploading the file..."
-    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
+    az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name --metadata "rawSizeBytes=1024"
 
     echo "Listing the blobs..."
     az storage blob list --container-name $container_name --output table
 
     echo "Done"
 ```
+
+> [!NOTE]
+> 若要获得最佳引入性能，必须传达用于引入的压缩 blob 的*未压缩*大小。 由于事件网格通知只包含基本详细信息，因此必须显式传达大小信息。 可以通过设置 blob 元数据*上的 `rawSizeBytes`* 属性（以字节为单位），来提供未压缩的大小信息。
+
+### <a name="ingestion-properties"></a>引入属性
+
+可以通过 blob 元数据指定 blob 引入的[引入属性](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#ingestion-properties)。
+
+可以设置以下属性：
+
+|**属性** | **属性说明**|
+|---|---|
+| `rawSizeBytes` | 原始（未压缩）数据的大小。 对于 Avro/ORC/Parquet，这是在应用特定于格式的压缩之前的大小。|
+| `kustoTable` |  现有目标表的名称。 替代在 "`Data Connection`" 边栏选项卡上设置的 `Table`。 |
+| `kustoDataFormat` |  数据格式。 替代在 "`Data Connection`" 边栏选项卡上设置的 `Data format`。 |
+| `kustoIngestionMappingReference` |  要使用的现有引入映射的名称。 替代在 "`Data Connection`" 边栏选项卡上设置的 `Column mapping`。|
+| `kustoIgnoreFirstRecord` | 如果设置为 `true`，则 Kusto 将忽略 blob 的第一行。 使用表格格式数据（CSV、TSV 或类似格式）来忽略标头。 |
+| `kustoExtentTags` | 表示将附加到产生区的[标记](/azure/kusto/management/extents-overview#extent-tagging)的字符串。 |
+| `kustoCreationTime` |  覆盖 blob [$IngestionTime](/azure/kusto/query/ingestiontimefunction?pivots=azuredataexplorer) ，格式为 ISO 8601 字符串。 用于回填。 |
 
 > [!NOTE]
 > Azure 数据资源管理器不会删除引入后的 blob。

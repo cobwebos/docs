@@ -3,12 +3,12 @@ title: ACR 任务概述
 description: ACR 任务简介，Azure 容器注册表中的一套功能，可在云中提供安全、自动化的容器映像生成、管理和修补。
 ms.topic: article
 ms.date: 01/22/2020
-ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615959"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087274"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>利用 ACR 任务自动生成和维护容器映像
 
@@ -124,15 +124,11 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 | Linux | amd64<br/>单臂<br/>arm64<br/>386 |
 | Windows | amd64 |
 
-## <a name="view-task-logs"></a>查看任务日志
+## <a name="view-task-output"></a>查看任务输出
 
-每个任务运行都会生成日志输出，你可以通过检查这些输出来确定任务步骤是否成功运行。 如果使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令来触发任务，则会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 当自动触发任务（例如，通过源代码提交或基本映像更新）时，仅存储任务日志。 查看 Azure 门户中的任务运行的日志，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
+每个任务运行都会生成日志输出，你可以通过检查这些输出来确定任务步骤是否成功运行。 手动触发任务时，会将任务运行的日志输出流式传输到控制台，并将其存储起来供以后检索。 当自动触发任务（例如，通过源代码提交或基本映像更新）时，仅存储任务日志。 查看 Azure 门户中的运行日志，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
 
-默认情况下，在注册表中运行的任务的数据和日志将保留30天，然后自动清除。 如果要存档任务运行的数据，请使用[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run)命令启用存档。 以下示例为 registry *myregistry*中的任务运行*cf11*启用存档。
-
-```azurecli
-az acr task update-run --registry myregistry --run-id cf11 --no-archive false
-```
+查看有关[查看和管理任务日志](container-registry-tasks-logs.md)的更多信息。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e32754d94bf6d0c35ac131f244696049f56380e9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76118104"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128889"
 ---
 ## <a name="resources-for-development-with-net"></a>用于通过 .NET 进行开发的资源
 
@@ -21,13 +21,13 @@ ms.locfileid: "76118104"
 
 ### <a name="azure-storage-common-apis"></a>Azure 存储公共 Api
 
-- [API 参考文档](/dotnet/api/overview/azure/storage/client)
+- [API 参考文档](/dotnet/api/overview/azure/storage)
 - [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [包（NuGet）](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
 ### <a name="blob-storage-apis"></a>Blob 存储 API
 
-- [API 参考文档](/dotnet/api/overview/azure/storage/client)
+- [API 参考文档](/dotnet/api/overview/azure/storage)
 - [库源代码](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [版本 11. x 的包（NuGet）](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 - [版本 12. x 的包（NuGet）](https://www.nuget.org/packages/Azure.Storage.Blobs)

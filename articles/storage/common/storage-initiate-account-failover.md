@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 76e34736238273f2af3fccae0ac2b5ed0ff491f0
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157697"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128344"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>启动存储帐户故障转移（预览版）
 
@@ -29,9 +29,8 @@ ms.locfileid: "77157697"
 
 ## <a name="prerequisites"></a>必备条件
 
-请先确保已按照以下步骤操作，然后才能对存储帐户执行帐户故障转移：
+在存储帐户上执行帐户故障转移之前，请确保已执行以下步骤：
 
-- 注册帐户故障转移（预览版）。 若要了解如何注册，请参阅[关于预览版](storage-disaster-recovery-guidance.md#about-the-preview)。
 - 确保存储帐户已配置为，使用异地冗余存储 (GRS) 或读取访问权限异地冗余存储 (RA-GRS)。 有关异地冗余存储的详细信息，请参阅[Azure 存储冗余](storage-redundancy.md)。
 
 ## <a name="important-implications-of-account-failover"></a>帐户故障转移的重要影响
@@ -44,7 +43,7 @@ ms.locfileid: "77157697"
 
 在你为存储帐户重新启用 GRS 后，Microsoft 便会开始将帐户中的数据复制到新的次要区域。 复制时间取决于要复制的数据量。  
 
-## <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+## <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要通过 Azure 门户启动帐户故障转移，请按照以下步骤操作：
 
@@ -60,7 +59,7 @@ ms.locfileid: "77157697"
 
     ![显示帐户故障转移确认对话框的屏幕截图](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 必须先安装 6.0.1 预览版模块，才能使用 PowerShell 启动帐户故障转移。 若要安装此模块，请按照以下步骤操作：
 
@@ -97,7 +96,7 @@ ms.locfileid: "77157697"
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 启动帐户故障转移，请执行以下命令：
 

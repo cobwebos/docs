@@ -8,12 +8,12 @@ ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
 ms.date: 03/7/2020
 tags: connectors
-ms.openlocfilehash: 0f62fb835fdd2353557a4aff47128bb94ba91a31
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851529"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79128415"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -55,9 +55,6 @@ ms.locfileid: "78851529"
   | **重命名文件** | 不适用 | 不适用 |
   | **更新文件** | 否 | 不适用 |
   ||||
-
-  > [!NOTE]
-  > 若要上传大型文件，需要对 SFTP 服务器上的根文件夹具有读取和写入权限。
 
 * SFTP SSH 触发器不支持消息块。 请求文件内容时，触发器仅选择 15 MB 或更小的文件。 若要获取大于 15 MB 的文件，请改用此模式：
 

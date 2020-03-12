@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
+ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654427"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79096231"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -183,7 +183,7 @@ NPM 使用跟踪路由的修改版来发现从源代理到目标的拓扑。 不
 * 网络设备不允许 ICMP_TTL_EXCEEDED 流量。
 * 防火墙阻止了来自网络设备的 ICMP_TTL_EXCEEDED 响应。
 
-当任一终结点位于 Azure 中时，traceroute 会显示未识别的跃点，因为 Azure ndrastructure 不会向 traceroute 显示标识。 
+当任一终结点位于 Azure 中时，traceroute 会显示未识别的跃点，因为 Azure 基础结构不会向 traceroute 显示标识。 
 
 ### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到不正常测试的警报，但在 NPM 的 "丢失" 和 "延迟" 关系图中看不到较高的值。 如何实现检查哪些功能不正常？
 如果源和目标之间的端到端延迟超过了它们之间任何路径的阈值，NPM 将引发警报。 某些网络具有连接相同源和目标的多个路径。 NPM 引发警报是指任何路径都不正常。 关系图中显示的丢失和延迟是所有路径的平均值，因此它可能不会显示单个路径的确切值。 若要了解阈值已被破坏的位置，请在警报中查找 "子类型" 列。 如果此问题是由路径引起的，则子类型值将为 NetworkPath （用于性能监视器测试）、EndpointPath （适用于服务连接监视器测试）和 ExpressRoutePath （适用于 Expressroute Monitor 测试）。 

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/10/2020
+ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201792"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087859"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -25,11 +25,9 @@ ms.locfileid: "77201792"
 
 Azure 流分析目前支持三种兼容性级别：
 
-* 1.0-以前的行为
-* 1.1-默认行为
+* 1.0-原始兼容级别，在 Azure 流分析在几年前正式发布时引入。
+* 1.1-以前的行为
 * 1.2-最新的行为和最新的改进
-
-在过去几年前，Azure 流分析的公开上市期间引入了原始1.0 兼容性级别。
 
 创建新的流分析作业时，最佳做法是使用最新的兼容性级别来创建它。 根据最新行为开始工作设计，以避免以后增加更改和复杂性。
 
@@ -55,7 +53,7 @@ Azure 流分析目前支持三种兼容性级别：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 消息传送协议
 
-**1.2 级别**： Azure 流分析使用[高级消息队列协议（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)消息传递协议来写入 Service Bus 队列和主题。 AMQP 让您能够使用开放标准协议构建跨平台的混合应用程序。
+**1.2 级别**： Azure 流分析使用[高级消息队列协议（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)消息传递协议来写入 Service Bus 队列和主题。 AMQP 让你能够使用开放标准协议构建跨平台的混合应用程序。
 
 ### <a name="geospatial-functions"></a>地理空间函数
 

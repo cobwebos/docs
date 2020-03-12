@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 03/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5386cace7191be60534f0d2fbf4a85b592d1ecdd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 762f62fa0901672c447da42f416e5b003e7419b2
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151624"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127296"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>关于 P2S VPN 客户端配置文件
 
@@ -60,7 +60,7 @@ $PROFILE.VpnProfileSASUrl
 
 ## <a name="folder-contents"></a>文件夹内容
 
-* **OpenVPN 文件夹**包含需要修改以包括密钥和证书的*ovpn*配置文件。 有关详细信息，请参阅为[AZURE VPN 网关配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md#windows)。
+* **OpenVPN 文件夹**包含需要修改以包括密钥和证书的*ovpn*配置文件。 有关详细信息，请参阅为[AZURE VPN 网关配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md#windows)。 如果在 VPN 网关上选择 Azure AD 身份验证，则此文件夹不会出现在 zip 文件中。 相反，azurevpnconfig 将在 Azurevpn.bgpsettings.asn 文件夹中。
 
 * **通用文件夹**包含公共服务器证书和 vpnsettings.xml 文件。 Vpnsettings.xml 文件包含配置泛型客户端所需的信息。
 

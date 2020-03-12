@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3ea40ed02fd6b585cfdc9c30fe59bd4e247395c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6f49529b0599f36ae4a26939bbbe171a45a1a53a
+ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79081822"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79127212"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中配置自动 ML 试验
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "79081822"
 * 探索模型指标
 * 注册和部署模型
 
-如果你不愿意，还可以[在 Azure 机器学习 studio 中创建自动化机器学习试验](how-to-create-portal-experiments.md)。
+如果你不愿意，还可以[在 Azure 机器学习 studio 中创建自动化机器学习试验](how-to-use-automated-ml-for-ml-models.md)。
 
 ## <a name="select-your-experiment-type"></a>选择试验类型
 
@@ -174,7 +174,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 三个不同的 `task` 参数值（第三个任务类型为 `forecasting`，并使用类似的算法池作为 `regression` 任务）确定要应用的模型的列表。 使用 "`whitelist`" 或 "`blacklist` 参数" 可以进一步修改包含或排除的可用模型的迭代。 支持的模型的列表可在[SupportedModels 类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels)（[分类](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification)、[预测](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting)和[回归](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression)）上找到。
 
-自动 ML 验证会要求将 `experiment_timeout_minutes` 设置为15分钟的最小超时，以帮助避免试验超时失败。
+自动 ML 的验证服务要求将 `experiment_timeout_minutes` 设置为最小超时15分钟，以帮助避免试验超时失败。
 
 ### <a name="primary-metric"></a>主要指标
 主要指标用于确定要在模型定型期间用于优化的指标。 您可以选择的可用指标由您选择的任务类型决定，下表显示了每种任务类型的有效主要指标。
@@ -191,7 +191,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 ### <a name="data-featurization"></a>数据特征化
 
-在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-create-portal-experiments.md#featurization)。
+在每个自动机器学习试验中，你的数据将[自动进行缩放和规范化](concept-automated-ml.md#preprocess)，以帮助*特定*的算法对不同规模的功能敏感。  但是，还可以启用其他特征化，例如缺失值插补法、编码和转换。 [详细了解所包含的特征化](how-to-use-automated-ml-for-ml-models.md#featurization)。
 
 配置试验时，可以启用 "高级" 设置 `featurization`。 下表显示[`AutoMLConfig` 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)中特征化的已接受设置。
 
@@ -199,7 +199,7 @@ automl_config = AutoMLConfig(task = "classification")
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指示应使用自定义的特征化步骤。 [了解如何自定义特征化](how-to-configure-auto-train.md#customize-feature-engineering)。|
 |`"featurization": 'off'`| 指示不应自动执行特征化步骤。|
-|`"featurization": 'auto'`| 指示在预处理过程中，将自动执行[数据 guardrails 和特征化步骤](how-to-create-portal-experiments.md#advanced-featurization-options)。|
+|`"featurization": 'auto'`| 指示在预处理过程中，将自动执行[数据 guardrails 和特征化步骤](how-to-use-automated-ml-for-ml-models.md#advanced-featurization-options)。|
 
 > [!NOTE]
 > 自动机器学习特征化步骤（功能规范化、处理丢失的数据、将文本转换为数字等）成为基础模型的一部分。 使用模型进行预测时，在训练过程中应用的相同特征化步骤会自动应用于输入数据。

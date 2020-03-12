@@ -10,17 +10,17 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ce32343faefbcf2484ec0b1b39f752654a2d8514
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b04941a5799955097fbd54ad9bdf50eccb87541
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303607"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79087917"
 ---
-# <a name="assets-in-azure-media-services"></a>Azure 媒体服务中的资产
+# <a name="assets-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的资产
 
 在 Azure 媒体服务中，[资产](https://docs.microsoft.com/rest/api/media/assets)是核心概念。 您可以在其中输入媒体（例如，通过上传或实时摄取）、输出媒体（从作业输出）以及从中发布媒体（用于流式处理）。 
 
@@ -39,37 +39,6 @@ ms.locfileid: "78303607"
 ### <a name="blobs"></a>Blob
 
 资产内文件/blob 的名称必须遵循[blob 名称要求](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)和[NTFS 名称要求](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)。 这些要求的原因是，可将文件从 blob 存储复制到本地 NTFS 磁盘进行处理。
-
-## <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2
-
-下表显示了 v3 中[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)的属性映射到 V2 中资产的属性的方式。
-
-|v3 属性|v2 属性|
-|---|---|
-|`id`-（唯一）完整的 Azure 资源管理器路径，请参阅[资产](https://docs.microsoft.com/rest/api/media/assets/createorupdate)中的示例||
-|`name`-（唯一）请参阅[命名约定](media-services-apis-overview.md#naming-conventions) ||
-|`alternateId`|`AlternateId`|
-|`assetId`|`Id`-（唯一）值以 `nb:cid:UUID:` 前缀开头。|
-|`created`|`Created`|
-|`description`|`Name`|
-|`lastModified`|`LastModified`|
-|`storageAccountName`|`StorageAccountName`|
-|`storageEncryptionFormat`| `Options` （创建选项）|
-|`type`||
-
-## <a name="storage-side-encryption"></a>存储端加密
-
-若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务中的工作方式：
-
-|加密选项|说明|媒体服务 v2|媒体服务 v3|
-|---|---|---|---|
-|媒体服务存储加密|AES-256 加密，密钥由媒体服务管理。|支持<sup>(1)</sup>|不支持<sup>(2)</sup>|
-|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure 存储提供的服务器端加密、由 Azure 或客户管理的密钥。|支持|支持|
-|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure 存储提供的客户端加密，Key Vault 中的客户管理的密钥。|不支持|不支持|
-
-<sup>1</sup>虽然媒体服务支持以明文/不加密形式处理内容，但不建议这样做。
-
-<sup>2</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 意思是，v3 适用于现有的存储加密资产，但不允许创建新的资产。
 
 ## <a name="next-steps"></a>后续步骤
 

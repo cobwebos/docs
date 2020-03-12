@@ -1,25 +1,25 @@
 ---
-title: 使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI 输出（预览）
+title: 使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI 输出
 description: 本文介绍如何使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI 输出。
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/10/2020
+ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
+ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459691"
+ms.lasthandoff: 03/11/2020
+ms.locfileid: "79086329"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>使用托管标识对要 Power BI 的 Azure 流分析作业进行身份验证（预览）
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI
 
-用于输出到 Power BI 的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)可用于 Azure 流分析作为预览。 这使流分析作业可以直接访问 Power BI 帐户中的工作区。 此功能允许完全自动部署流分析作业，因为用户不再需要通过 Azure 门户以交互方式登录到 Power BI。 此外，还可以更好地支持写入 Power BI 的长时间运行的作业，因为无需定期重新授权作业。
+用于输出到 Power BI 的[托管标识身份验证](../active-directory/managed-identities-azure-resources/overview.md)使流分析作业可以直接访问 Power BI 帐户中的工作区。 此功能允许完全自动部署流分析作业，因为用户不再需要通过 Azure 门户以交互方式登录到 Power BI。 此外，还可以更好地支持写入 Power BI 的长时间运行的作业，因为无需定期重新授权作业。
 
 本文介绍如何通过 Azure 门户和 Azure 资源管理器部署，为流分析作业的 Power BI 输出启用托管标识。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 使用此功能需要以下各项：
 
