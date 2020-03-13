@@ -1,27 +1,37 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Microsoft 基因组学文档
+summary: 了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK) 为基因组排序提供支持。
 metadata:
   title: Microsoft 基因组学文档
-  meta.description: Learn how Microsoft Genomics can power genome sequencing using a cloud implementation of the Burrows-Wheeler Aligner (BWA) and the Genome Analysis Toolkit (GATK) for secondary analysis.
+  description: 了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK) 为基因组排序提供支持。
   services: genomics
-  author: grhuynh
-  manager: cgronlun
-  ms.author: grhuynh
   ms.service: genomics
   ms.topic: landing-page
-  ms.date: 12/07/2017
-abstract:
-  description: 了解 Microsoft 基因组学如何使用 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK) 为基因组排序提供支持。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 通过 Microsoft 基因组学服务提交工作流。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/helix-blue-orange.svg
-            text: 提交工作流
-            href: quickstart-run-genomics-workflow-portal
+  author: grhuynh
+  ms.author: grhuynh
+  ms.date: 03/11/2020
+  ms.openlocfilehash: 36b5898aca2f019351aaeda8438fb6771a09b6c4
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137035"
+landingContent:
+- title: 入门
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Microsoft 基因组学？
+      url: overview-what-is-genomics.md
+    - text: 常见问题
+      url: frequently-asked-questions-genomics.md
+  - linkListType: quickstart
+    links:
+    - text: 运行示例工作流
+      url: quickstart-run-genomics-workflow-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 FASTQ 文件输入
+      url: quickstart-input-pair-fastq.md
+    - text: 使用 BAM 文件输入
+      url: quickstart-input-bam.md

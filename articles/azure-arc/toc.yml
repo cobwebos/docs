@@ -12,6 +12,8 @@
       href: ./servers/onboard-portal.md
     - name: 使用服务主体大规模连接计算机
       href: ./servers/onboard-service-principal.md
+    - name: 通过 PowerShell DSC 将计算机连接到 Azure Arc
+      href: ./servers/onboard-dsc.md
 - name: 参考
   items:
     - name: Azure 连接的计算机代理 CLI 接口
