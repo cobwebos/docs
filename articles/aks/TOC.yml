@@ -117,18 +117,12 @@
   items:
     - name: 群集操作
       items:
-        - name: 创建 AKS 群集
-          href: '/cli/azure/aks#az-aks-create'
-          maintainContext: true
         - name: 缩放 AKS 群集
           href: scale-cluster.md
         - name: 升级 AKS 群集
           href: upgrade-cluster.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md
-        - name: 删除 AKS 群集
-          href: '/cli/azure/aks#az-aks-delete'
-          maintainContext: true
         - name: 将 ACR 与 AKS 群集集成
           href: cluster-container-registry-integration.md
         - name: 创建虚拟节点

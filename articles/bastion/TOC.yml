@@ -4,7 +4,11 @@
   items:
     - name: 关于 Azure Bastion
       href: bastion-overview.md
-- name: 操作指南
+- name: 快速入门
+  items:
+    - name: 通过 VM 设置创建 Bastion 主机
+      href: quickstart-host-portal.md
+- name: 操作方法指南
   items:
     - name: 创建 Bastion 主机
       items:
