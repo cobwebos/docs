@@ -81,7 +81,7 @@
               href: ../sql-database/sql-database-private-endpoint-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: 虚拟网络服务终结点
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
-        - name: Authentication
+        - name: 身份验证
           items:
             - name: 概述
               href: sql-data-warehouse-authentication.md
@@ -94,7 +94,7 @@
         - name: 访问控制
           items:
             - name: 概述
-              href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: 行级别安全性
               href: column-level-security.md
             - name: 行级安全性

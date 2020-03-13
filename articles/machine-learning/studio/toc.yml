@@ -161,6 +161,9 @@
         - name: 库数据
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
+        - name: 下载笔记本
+          displayName: export
+          href: download-notebooks-data.md
 - name: 参考
   items:
     - name: 算法和模块参考

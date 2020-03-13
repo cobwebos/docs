@@ -154,6 +154,8 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+        - name: Kibana（K2Bridge 连接器）
+          href: k2bridge.md
     - name: 安全
       items:
         - name: 管理群集安全性

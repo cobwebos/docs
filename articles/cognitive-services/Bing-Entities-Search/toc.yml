@@ -26,14 +26,8 @@
           href: quickstarts/ruby.md
     - name: SDK 中 IsInRole 中的声明
       items:
-        - name: '使用 C#'
-          href: quickstarts/entity-sdk-csharp-quickstart.md
-        - name: 使用 Node.js
-          href: quickstarts/entity-sdk-node-quickstart.md
-        - name: 使用 Python
-          href: quickstarts/entity-sdk-python-quickstart.md
-        - name: 使用 Java
-          href: quickstarts/entity-sdk-java-quickstart.md
+        - name: 必应实体搜索客户端库
+          href: ./quickstarts/client-libraries.md
 - name: 教程
   items:
     - name: 构建单页 Web 应用
@@ -42,7 +36,7 @@
   items:
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
-- name: 操作指南
+- name: 操作方法指南
   items:
     - name: 调整和裁剪缩略图
       maintainContext: true
@@ -53,7 +47,7 @@
       href: concepts/search-for-entities.md
     - name: 发送搜索请求
       href: concepts/sending-requests.md
-- name: 引用
+- name: 参考
   items:
     - name: 必应搜索 API 使用和显示要求
       href: ../Bing-Web-Search/use-display-requirements.md
