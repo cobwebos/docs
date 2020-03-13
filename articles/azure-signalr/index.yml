@@ -1,82 +1,56 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure SignalR 服务文档
+summary: Azure SignalR 服务是一项 Azure 托管服务，可帮助开发者轻松开发具有实时功能的 Web 应用程序。
 metadata:
-  title: 文档 - Azure SignalR 服务
+  title: Azure SignalR 服务文档
   description: 在无服务器模式或服务器模式下轻松构建和缩放实时 Web 应用。 基于支持各种语言和框架的 WebSocket。
-  services: azure-signalr
-  author: v-chmccl
-  manager: wesmc
   ms.service: signalr
-  ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 09/12/2018
+  author: v-chmccl
   ms.author: wesmc
-abstract:
-  description: Azure SignalR 服务是一项 Azure 托管服务，可帮助开发者轻松开发具有实时功能的 Web 应用程序。
-sections:
-  - title: 5 分钟快速入门
-    items:
-      - type: paragraph
-        text: 了解如何使用 Azure SignalR 服务开发第一个进行实时通信的 Web 应用程序：
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
-            text: ASP.NET Core
-            href: /azure/azure-signalr/signalr-quickstart-dotnet-core
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-            text: ASP.NET
-            href: /azure/azure-signalr/signalr-quickstart-dotnet
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: JavaScript
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-javascript
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_Csharp.svg'
-            text: 'C#'
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_java.svg'
-            text: Java
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-java
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_python.svg'
-            text: Python
-            href: /azure/azure-signalr/signalr-quickstart-azure-functions-python
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_REST.svg'
-            text: REST API
-            href: /azure/azure-signalr/signalr-quickstart-rest-api
-  - title: 分步教程
-    items:
-      - type: paragraph
-        text: 了解如何开发 Azure SignalR 服务应用程序
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">将 Azure SignalR 服务与 ASP.NET Core Identity 集成</a>
-          - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">生成带身份验证的无服务器实时应用</a>
-  - title: 示例
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/aspnet/AzureSignalR-samples">Azure SignalR 代码示例</a>'
-          - html: <a href="/azure/azure-signalr/signalr-cli-samples">Azure CLI</a>
-  - title: 参考
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 命令行
-            html: <p><a href="signalr-reference-cli.md">Azure CLI</a></p>
-          - title: Languages
-            html: |
-              <p><a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core 服务器 SDK</a></p> <p><a href="/azure/azure-functions/functions-bindings-signalr-service">Azure Functions 绑定</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript 客户端</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/dotnet-client">.NET Standard 客户端</a></p> <p><a href="https://github.com/aspnet/SignalR/tree/release/2.2/clients/java/signalr">Java 客户端</a></p>
-          - title: REST
-            html: '<p><a href="https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md">REST API</a></p>'
+  ms.date: 03/11/2020
+  ms.openlocfilehash: db405e7405fc96779aebc9074fa19302f3b4ba1b
+  ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 03/12/2020
+  ms.locfileid: "79137931"
+landingContent:
+- title: 关于 Azure SignalR 服务
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是 Azure SignalR 服务？
+      url: signalr-overview.md
+- title: 入门
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core - C#
+      url: signalr-quickstart-dotnet-core.md
+    - text: ASP.NET - C#
+      url: signalr-quickstart-dotnet.md
+    - text: Azure Functions - JavaScript
+      url: signalr-quickstart-azure-functions-javascript.md
+    - text: Azure Functions - C#
+      url: signalr-quickstart-azure-functions-csharp.md
+    - text: Azure Functions - Java
+      url: signalr-quickstart-azure-functions-java.md
+    - text: Azure Functions - Python
+      url: signalr-quickstart-azure-functions-python.md
+    - text: REST API
+      url: signalr-quickstart-rest-api.md
+- title: 构建 Azure SignalR 服务应用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 将 Azure SignalR 服务与 ASP.NET Core Identity 集成
+      url: signalr-concept-authenticate-oauth.md
+    - text: 生成带身份验证的无服务器实时应用
+      url: signalr-tutorial-authenticate-azure-functions.md
+  - linkListType: sample
+    links:
+    - text: Azure SignalR 代码示例
+      url: https://github.com/aspnet/AzureSignalR-samples
+    - text: Azure CLI
+      url: signalr-reference-cli.md
