@@ -88,6 +88,8 @@
           href: concept-disaster-recovery.md
 - name: 操作方法指南
   items:
+    - name: 为一部分用户启用某一功能
+      href: howto-feature-filters-aspnet-core.md
     - name: 导入或导出配置数据
       href: howto-import-export-data.md
     - name: 将事件路由到自定义终结点

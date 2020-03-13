@@ -97,6 +97,8 @@
       href: concepts-security.md
     - name: 服务
       href: concepts-service.md
+    - name: 了解 DPS IP 地址
+      href: iot-dps-understand-ip-address.md
     - name: TPM 证明
       href: concepts-tpm-attestation.md
     - name: 对称密钥证明
@@ -127,6 +129,8 @@
           href: how-to-manage-dps-with-cli.md
         - name: 控制对预配服务 API 的访问
           href: how-to-control-access.md
+        - name: 配置 IP 筛选
+          href: iot-dps-ip-filtering.md
     - name: 预配 IoT Edge 设备
       items:
         - name: Linux

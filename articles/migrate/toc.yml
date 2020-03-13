@@ -116,6 +116,8 @@
       href: how-to-modify-assessment.md
     - name: 添加迁移工具
       href: how-to-migrate.md
+    - name: 将 VMware VM 迁移到使用 SSE 和 CMK 加密的 Azure VM
+      href: how-to-migrate-vmware-vms-with-cmk-disks.md
     - name: 准备计算机以进行迁移
       href: prepare-for-migration.md
     - name: 删除 Azure Migrate 项目

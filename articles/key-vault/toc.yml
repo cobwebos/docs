@@ -125,6 +125,8 @@
       href: event-grid-tutorial.md
     - name: 通过事件网格和逻辑应用接收通知
       href: event-grid-logicapps.md
+    - name: 为单用户资源轮换机密
+      href: tutorial-rotation.md
     - name: 与 Azure Policy 集成
       href: azure-policy.md
     - name: 与 Azure 专用链接服务（预览版）集成
