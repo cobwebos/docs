@@ -1,31 +1,34 @@
 ---
-title: 将专用终结点用于 Azure 存储 |Microsoft Docs
+title: 使用专用终结点
+titleSuffix: Azure Storage
 description: 用于从虚拟网络安全访问存储帐户的专用终结点的概述。
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252650"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299050"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>使用 Azure 存储的专用终结点（预览）
+# <a name="use-private-endpoints-for-azure-storage"></a>使用 Azure 存储的专用终结点
 
 你可以使用 Azure 存储帐户的[专用终结点](../../private-link/private-endpoint-overview.md)，以允许虚拟网络（VNet）上的客户端通过[专用链接](../../private-link/private-link-overview.md)安全地访问数据。 专用终结点使用来自你的存储帐户服务的 VNet 地址空间中的 IP 地址。 VNet 和存储帐户上的客户端之间的网络流量通过 VNet 和 Microsoft 主干网络上的专用链接进行遍历，从而消除了公共 internet 的泄露。
 
 使用存储帐户的专用终结点可以：
+
 - 通过将存储防火墙配置为阻止存储服务的公共终结点上的所有连接来保护存储帐户。
 - 通过使你能够阻止渗透来自 VNet 的数据，提高虚拟网络（VNet）的安全性。
 - 使用[VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../../expressroute/expressroute-locations.md)与专用对等互连连接到 VNet，从而安全地连接到存储帐户。
 
-## <a name="conceptual-overview"></a>概念性概述
+## <a name="conceptual-overview"></a>概念概述
+
 ![Azure 存储的专用终结点概述](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
 专用终结点是[虚拟网络](../../virtual-network/virtual-networks-overview.md)（VNet）中 Azure 服务的特殊网络接口。 当你为存储帐户创建专用终结点时，它会在 VNet 和你的存储中的客户端之间提供安全连接。 专用终结点是从 VNet 的 IP 地址范围分配的 IP 地址。 专用终结点与存储服务之间的连接使用安全的专用链接。
@@ -43,7 +46,7 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 你可以通过将[存储防火墙配置](storage-network-security.md#change-the-default-network-access-rule)为拒绝默认情况下通过其公共终结点进行访问，从而保护存储帐户仅接受来自 VNet 的连接。 无需防火墙规则即可允许来自具有专用终结点的 VNet 的流量，因为存储防火墙只控制通过公共终结点进行的访问。 专用终结点而是依赖于授予对存储服务的子网访问权限的许可流。
 
-### <a name="private-endpoints-for-storage-service"></a>用于存储服务的专用终结点
+### <a name="private-endpoints-for-azure-storage"></a>Azure 存储的专用终结点
 
 创建专用终结点时，必须指定存储帐户及其连接到的存储服务。 对于需要访问的存储帐户中的每个存储服务，都需要一个单独的专用终结点，即[blob](../blobs/storage-blobs-overview.md)、 [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)、[文件](../files/storage-files-introduction.md)、[队列](../queues/storage-queues-introduction.md)、[表](../tables/table-storage-overview.md)或[静态网站](../blobs/storage-blob-static-website.md)。
 
@@ -51,8 +54,6 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 > 为存储服务的辅助实例创建单独的专用终结点，以在 GRS 帐户中获得更好的读取性能。
 
 若要使用为异地冗余存储配置的存储帐户对辅助区域进行读取访问，需要为服务的主实例和辅助实例使用单独的专用终结点。 无需为**故障转移**的辅助实例创建专用终结点。 故障转移后，专用终结点将自动连接到新的主实例。 有关存储冗余选项的详细信息，请参阅[Azure 存储冗余](storage-redundancy.md)。
-
-#### <a name="resources"></a>资源
 
 有关为你的存储帐户创建专用终结点的详细信息，请参阅以下文章：
 
@@ -111,8 +112,6 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 | 表服务          | `privatelink.table.core.windows.net` |
 | 静态网站        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>资源
-
 有关配置自己的 DNS 服务器以支持专用终结点的详细信息，请参阅以下文章：
 
 - [Azure 虚拟网络中资源的名称解析](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ VNet 中的应用程序可以**使用相同的连接字符串和要使用的授�
 
 ## <a name="known-issues"></a>已知问题
 
+请记住以下有关 Azure 存储的专用终结点的已知问题。
+
 ### <a name="copy-blob-support"></a>复制 Blob 支持
 
-在预览期间，我们不支持在源存储帐户受防火墙保护时，发布到通过专用终结点访问的存储帐户的 "[复制 Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) " 命令。
+如果存储帐户受防火墙保护，并且通过专用终结点访问帐户，则该帐户不能充当[复制 Blob](/rest/api/storageservices/copy-blob)操作的源。
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>具有专用终结点的 Vnet 中客户端的存储访问约束
 
-Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的其他存储帐户时面临约束。 例如，假设 VNet N1 具有用于存储帐户 A1 的专用终结点，例如，blob 服务。 如果存储帐户 A2 在 VNet N2 中有一个用于 blob 服务的专用终结点，则 VNet N1 中的客户端还必须使用专用终结点访问帐户 A2 的 blob 服务。 如果存储帐户 A2 没有用于 blob 服务的任何专用终结点，则 VNet N1 中的客户端无需专用终结点即可访问其 blob 服务。
+Vnet 中具有现有专用终结点的客户端在访问具有专用终结点的其他存储帐户时面临约束。 例如，假设 VNet N1 具有用于 Blob 存储的存储帐户 A1 的专用终结点。 如果存储帐户 A2 在 VNet N2 中有用于 Blob 存储的专用终结点，则 VNet N1 中的客户端还必须使用专用终结点访问帐户 A2 中的 Blob 存储。 如果存储帐户 A2 没有用于 Blob 存储的任何专用终结点，则 VNet N1 中的客户端无需专用终结点即可访问该帐户中的 Blob 存储。
 
 此约束是在帐户 A2 创建专用终结点时所做的 DNS 更改的结果。
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>具有专用终结点的子网的网络安全组规则
 
 目前，无法为专用终结点配置[网络安全组](../../virtual-network/security-overview.md)（NSG）规则和用户定义的路由。 应用于托管专用终结点的子网的 NSG 规则应用到专用终结点。 此问题的一种有限的解决方法是在源子网中实现专用终结点的访问规则，不过，这种方法可能需要更高的管理开销。
+
+## <a name="next-steps"></a>后续步骤
+
+- [配置 Azure 存储防火墙和虚拟网络](storage-network-security.md)
+- [Blob 存储的安全建议](../blobs/security-recommendations.md)

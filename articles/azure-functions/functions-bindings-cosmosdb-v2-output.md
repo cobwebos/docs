@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 9360a90b457f99cb9c15deda80dce8233069100d
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606550"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277760"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Functions 2.x Azure Cosmos DB 输出绑定
 
@@ -574,6 +574,8 @@ Python 不支持特性。
 |**partitionKey**|**PartitionKey** |如果 `CreateIfNotExists` 为 true，则它将为创建的集合定义分区键路径。|
 |**collectionThroughput**|**CollectionThroughput**| 如果 `CreateIfNotExists` 为 true，则它将定义创建的集合的[吞吐量](../cosmos-db/set-throughput.md)。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |内含 Azure Cosmos DB 连接字符串的应用设置的名称。        |
+|**preferredLocations**| **PreferredLocations**| 可有可无为 Azure Cosmos DB 服务中异地复制的数据库帐户定义首选位置（区域）。 值应以逗号分隔。 例如，"美国东部"、"美国中南部" 北欧 "。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| 可有可无如果设置为 `true` 和 `PreferredLocations`，则它可以在 Azure Cosmos DB 服务中利用[多区域写入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

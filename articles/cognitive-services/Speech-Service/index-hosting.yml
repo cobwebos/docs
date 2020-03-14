@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: 托管文档
+title: “承载”文档
 summary: 语音服务容器适用于语音到文本和文本到语音方案，涵盖标准或自定义模型。
 metadata:
   title: 托管文档-教程、API 参考-Azure 认知服务 |Microsoft Docs
@@ -10,32 +10,32 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: ead45759891d4b2a41a380c88cf32f4e504b6e2c
-  ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+  ms.openlocfilehash: ff12c357ba273c6965b11db4eabc1890925439be
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/28/2020
-  ms.locfileid: "77920869"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79366694"
 landingContent:
-- title: 入门
+- title: 关于托管
   linkLists:
   - linkListType: concept
     links:
-    - text: 语音服务容器
+    - text: 安装和运行语音容器
       url: speech-container-howto.md
-    - text: 带有 Kubernetes 的语音服务容器
+    - text: 具有 Kubernetes 和 Helm 的语音容器
       url: speech-container-howto-on-premises.md
-    - text: Azure 容器实例上的语音服务容器
+    - text: Azure 容器实例上的语音容器
       url: deploy-speech-on-container-instances.md
-- title: 分步指南
+- title: 创建和配置
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: 创建 Azure 语音资源
       url: get-started.md#new-resource
-    - text: 配置容器
+    - text: 配置语音容器
       url: speech-container-configuration.md
 - title: 参考
   linkLists:

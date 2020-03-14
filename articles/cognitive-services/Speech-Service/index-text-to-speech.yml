@@ -10,16 +10,16 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 9070577c07cb826d10b911689f456d64709450b7
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 82499c16b6ad8cd8c1adfe27eeb7a0c842e37d1e
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943376"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79370400"
 landingContent:
-- title: 入门
+- title: 关于文本到语音转换
   linkLists:
   - linkListType: overview
     links:
@@ -33,7 +33,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: 将语音合成为长格式音频
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: 分步指南
+- title: 用文本到语音进行开发
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -41,43 +41,27 @@ landingContent:
       url: speech-synthesis-markup.md
     - text: 通过自定义语音改进合成
       url: how-to-custom-voice.md
-    - text: 使用长音频 API 合成语音
-      url: long-audio-api.md
     - text: 使用 REST 获取语音列表 (Python)
       url: quickstart-python-get-text-to-speech-voices.md
     - text: 使用 REST 将文本转换为语音 (Python)
       url: quickstart-python-text-to-speech.md
-    - text: 通过音频内容创建改善合成
-      url: how-to-audio-content-creation.md
   - linkListType: concept
     links:
     - text: 自定义语音入门
       url: how-to-custom-voice.md
-    - text: 准备自定义语音数据
-      url: how-to-custom-voice-prepare-data.md
     - text: 创建并使用自定义语音模型
       url: how-to-custom-voice-create-voice.md
-    - text: 录制语音示例
-      url: record-custom-voice-samples.md
     - text: 自定义语音的限制
       url: concepts-gating-overview.md
-    - text: 部署合成技术
-      url: concepts-guidelines-responsible-deployment-synthetic.md
-    - text: 披露设计准则
-      url: concepts-disclosure-guidelines.md
-    - text: 披露设计模式
-      url: concepts-disclosure-patterns.md
 - title: 参考
   linkLists:
   - linkListType: reference
     links:
-    - text: 语言支持
-      url: language-support.md#text-to-speech
-    - text: 定价
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: 标准语音支持
+      url: language-support.md#standard-voices
+    - text: 神经语音支持
+      url: language-support.md#neural-voices
     - text: SSML 拼音集
       url: speech-ssml-phonetic-sets.md
-    - text: 行为准则
-      url: https://aka.ms/custom-neural-code-of-conduct
-    - text: 为配音员披露
-      url: https://aka.ms/disclosure-voice-talent
+    - text: 文本到语音定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

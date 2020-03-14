@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 0df2c0501dfba6311d1178703e0907090706859a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303250"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79296772"
 ---
 # <a name="container-security-in-security-center"></a>安全中心的容器安全
 
@@ -67,7 +67,7 @@ AKS 提供安全控制和查看群集的安全状况。 安全中心使用以下
 
 安全中心为容器化环境提供实时威胁检测，并生成可疑活动的警报。 可以使用此信息快速补救安全问题，并提高容器的安全性。
 
-我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁检测](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)。
+我们检测到主机和 AKS 群集级别的威胁。 有关完整详细信息，请参阅[Azure 容器的威胁检测](threat-protection.md#azure-containers)。
 
 
 ## <a name="container-security-faq"></a>容器安全常见问题
@@ -86,7 +86,7 @@ Qualys 扫描程序不支持超级最简单映像（如[Docker 暂存](https://h
 每次推送时都会触发图像扫描。
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
-可以。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，你还可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
+是的。 结果为[子评估 REST API](/rest/api/securitycenter/subassessments/list/)。 此外，你还可以对所有资源使用 Azure 资源图（ARG），这是类似 Kusto 的 API：查询可以提取特定扫描。
  
 
 ## <a name="next-steps"></a>后续步骤

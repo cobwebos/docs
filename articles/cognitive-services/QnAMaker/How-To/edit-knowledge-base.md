@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b5ee7f60eab0349378767473c9c80f035a65c9a5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326798"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220728"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>在 QnA Maker 中编辑知识库
 
@@ -42,7 +42,7 @@ QnA Maker 允许你通过提供易于使用的编辑体验来管理知识库的�
     |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
     |刷新内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”复选框。 这将更新包含最新 URL 内容一次的知识库。 这不会设置定期更新计划。|
     |添加文件|可以通过选择“管理知识库”并选择“+ 添加文件”将受支持的文件文档添加为知识库的一部分。|
-    |导入|还可以通过选择“导入知识库”按钮导入任何现有知识库。 |
+    |Import|您还可以通过选择 "**导入知识库**" 按钮导入任何现有知识库。 |
     |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
 
 1. 完成对知识库的更改后，选择页面右上角的“保存并训练”以保留更改。    

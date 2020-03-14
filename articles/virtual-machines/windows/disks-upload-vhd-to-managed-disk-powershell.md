@@ -3,17 +3,17 @@ title: 使用 Azure PowerShell 将 vhd 上传到 Azure
 description: 了解如何使用 Azure PowerShell 通过直接上传将 vhd 上传到 Azure 托管磁盘并跨区域复制托管磁盘。
 author: roygara
 ms.author: rogarana
-ms.date: 05/06/2019
+ms.date: 03/13/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 8a7e5243428eb88a2757b675c7d66dbfb3c66a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 883fea1e25ded26c35e96d11edd8f417e96db30e
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459986"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369550"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>使用 Azure PowerShell 将 vhd 上传到 Azure
 
@@ -23,11 +23,11 @@ ms.locfileid: "75459986"
 
 目前，标准 HDD、标准 SSD 和高级 SSD 托管磁盘支持直接上传。 它尚不支持超 Ssd。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 下载最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
-- 如果要从本地上载 VHD：已[为 Azure 准备](prepare-for-upload-vhd-image.md)的 vhd，本地存储。
+- 如果要从本地上载 VHD：已[为 Azure 准备](prepare-for-upload-vhd-image.md)的固定大小 VHD，本地存储。
 - 如果要执行复制操作，请使用 Azure 中的托管磁盘。
 
 ## <a name="create-an-empty-managed-disk"></a>创建一个空托管磁盘
@@ -76,8 +76,6 @@ $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
 ```
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
-
-如果在上传过程中 SAS 过期，并且尚未调用 `revoke-access`，则可以获取新的 SAS，使用 `grant-access`继续上传。
 
 上传完成后，不再需要将任何数据写入磁盘，请撤销 SAS。 吊销 SAS 将更改托管磁盘的状态，并允许你将磁盘附加到 VM。
 

@@ -14,11 +14,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
 ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243193"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -28,7 +28,7 @@ ms.locfileid: "75981739"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 若要使用自动存储配置设置，虚拟机需有以下特征：
 
@@ -140,7 +140,7 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
 下表描述了三个可用的工作负荷类型选项及其对应的优化：
 
-| 工作负载类型 | Description | 优化 |
+| 工作负荷类型 | 说明 | 优化 |
 | --- | --- | --- |
 | **常规** |支持大多数工作负荷的默认设置 |无 |
 | **事务处理** |针对传统数据库 OLTP 工作负荷优化存储 |跟踪标志 1117<br/>跟踪标志 1118 |

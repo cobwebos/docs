@@ -1,17 +1,17 @@
 ---
-title: 使用客户管理的密钥 Azure Database for PostgreSQL 单服务器数据加密
+title: 客户托管的密钥 Azure Database for PostgreSQL-单服务器的数据加密
 description: 使用客户管理的密钥 Azure Database for PostgreSQL 单服务器数据加密可以为静态数据保护创建自己的密钥（BYOK）。 它还允许组织在密钥和数据的管理中实现职责分离。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198694"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297016"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>使用客户管理的密钥 Azure Database for PostgreSQL 单服务器数据加密
 
@@ -32,9 +32,9 @@ Key Vault 是一种基于云的外部密钥管理系统。 它高度可用，并
 Azure Database for PostgreSQL 单一服务器的数据加密具有以下优势：
 
 * 数据访问由你完全控制，可以删除密钥并使数据库无法访问 
-*   完全控制密钥生命周期，包括对密钥的轮替以与公司政策保持一致
-*   Azure Key Vault 中的集中管理和密钥组织
-*   能够在安全专员之间实现职责分离，以及 DBA 和系统管理员
+*    完全控制密钥生命周期，包括对密钥的轮替以与公司政策保持一致
+*    Azure Key Vault 中的集中管理和密钥组织
+*    能够在安全专员之间实现职责分离，以及 DBA 和系统管理员
 
 ## <a name="terminology-and-description"></a>术语和说明
 

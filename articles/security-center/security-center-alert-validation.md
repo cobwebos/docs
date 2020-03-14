@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604566"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139991"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Azure 安全中心的警报验证（EICAR 测试文件）
 本文档介绍如何验证系统是否已针对 Azure 安全中心警报进行了适当的配置。
@@ -75,8 +75,7 @@ ms.locfileid: "77604566"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了警报验证过程。 熟悉该验证以后，请尝试阅读以下文章：
 
+* [在 Azure 安全中心验证 Azure Key Vault 威胁检测](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [管理和响应 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)-了解如何管理警报并响应安全中心的安全事件。
 * [Azure 安全中心的安全运行状况监视](security-center-monitoring.md) - 了解如何监视 Azure 资源的运行状况。
 * [了解 Azure 安全中心的安全警报](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)-了解不同类型的安全警报。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)-了解如何对安全中心的常见问题进行故障排除。
-* [Azure 安全性博客](https://blogs.msdn.com/b/azuresecurity/)-查找有关 Azure 安全性和符合性的博客文章。

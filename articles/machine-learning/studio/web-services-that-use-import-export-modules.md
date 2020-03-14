@@ -12,14 +12,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 0ae545fd3ecafda74b90a6a4694dd6f506fb44b1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 144a3bc0d9e0499a238e4033d37d5e4d3fa61e05
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838801"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79204046"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用数据导入和数据导出模块 Azure 机器学习 Studio （经典） web 服务
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 创建预测性实验时，通常添加 Web 服务输入和输出。 部署实验时，使用者可通过输入和输出从 Web 服务发送和接收数据。 对于某些应用程序，使用者的数据可能从数据源提供或已经驻留在外部数据源（如 Azure Blob 存储）中。 在这些情况下，它们不需要使用 Web 服务输入和输出读取和写入数据。 它们可以改为使用批处理执行服务 (BES)，使用导入数据模块从数据源读取数据，使用导出数据模块将评分结果写入不同的数据位置。
 
@@ -70,7 +72,7 @@ ms.locfileid: "73838801"
 4. 从结果列表中，将*导出数据*模块添加到实验画布。
 5. 将*评分模型*模块的输出连接到*导出数据*模块的输入。
 6. 在属性窗格中，在数据目标下拉列表中选择“Azure SQL 数据库”。
-7. 在“数据库服务器名称”、“数据库名称”、“服务器用户帐户名”和“服务器用户帐户密码密码”字段中，输入数据库的相应信息。
+7. 在“数据库服务器名称”、“数据库名称”、“服务器用户帐户名”和“服务器用户帐户密码”字段中，输入数据库的相应信息。
 8. 在“要保存的列的逗号分隔列表字段中，键入评分标签。
 9. 在“数据表名称”字段中，键入 dbo.ScoredLabels。 如果表不存在，则在运行实验或调用 Web 服务时创建它。
 10. 在“数据表列的逗号分隔列表”字段中，键入 ScoredLabels。

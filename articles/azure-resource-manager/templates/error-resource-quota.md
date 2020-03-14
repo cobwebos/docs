@@ -4,11 +4,11 @@ description: 介绍如何在 Azure 资源管理器中部署资源时解决资源
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 410b086b39d63d03491d390364f4aec6300fc7c1
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273782"
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>解决资源配额错误
 

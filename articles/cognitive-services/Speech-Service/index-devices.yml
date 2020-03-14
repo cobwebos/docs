@@ -10,20 +10,20 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: cbdbcce25d357530775140bc8b5fdf82808c64ad
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562852"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79369244"
 landingContent:
-- title: 入门
+- title: 关于语音设备 SDK
   linkLists:
   - linkListType: overview
     links:
-    - text: 关于语音设备 SDK
+    - text: 什么是语音设备 SDK？
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
@@ -33,7 +33,7 @@ landingContent:
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
     - text: 使用语音设备 SDK （Android）
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: 分步指南
+- title: 通过语音设备 SDK 进行开发
   linkLists:
   - linkListType: how-to-guide
     links:

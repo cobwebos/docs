@@ -3,12 +3,12 @@ title: Azure Functions 的存储注意事项
 description: 了解 Azure Functions 和有关加密存储的数据的存储要求。
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190296"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276577"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的存储注意事项
 
@@ -56,6 +56,25 @@ ms.locfileid: "77190296"
 Azure 存储加密静态存储帐户中的所有数据。 有关详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 默认情况下，使用 Microsoft 托管的密钥对数据进行加密。 为了更进一步控制加密密钥，你可以提供客户管理的密钥，以用于加密 blob 和文件数据。 这些密钥必须存在于 Azure Key Vault 中才能访问存储帐户。 若要了解详细信息，请参阅[使用 Azure 门户配置 Azure Key Vault 客户管理的密钥](../storage/common/storage-encryption-keys-portal.md)。  
+
+## <a name="mount-file-shares-linux"></a>装载文件共享（Linux）
+
+可以将现有的 Azure 文件共享装载到 Linux function apps。 通过将共享装载到 Linux function app，你可以利用现有的机器学习模型或函数中的其他数据。 可以使用[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add)命令将现有共享装载到 Linux function app。 
+
+在此命令中，`share-name` 是现有 Azure 文件共享的名称，并且 `custom-id` 可以是在装载到 function app 时唯一定义该共享的任何字符串。 此外，`mount-path` 是在函数应用中访问共享的路径。 `mount-path` 的格式必须 `/dir-name`，并且不能以 `/home`开头。
+
+有关完整示例，请参阅[创建 Python 函数应用和装载 Azure 文件共享](scripts/functions-cli-mount-files-storage-linux.md)中的脚本。 
+
+目前仅支持 `AzureFiles` `storage-type`。 只能将五个共享装载到给定的函数应用。 装载文件共享时，如果存储帐户在不同的区域中，则最多可增加300ms 的冷启动时间，甚至更多。
+
+装载的共享可用于指定 `mount-path` 的函数代码。 例如，当 `/path/to/mount``mount-path` 时，可以通过文件系统 Api 访问目标目录，如下面的 Python 示例所示：
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>后续步骤
 

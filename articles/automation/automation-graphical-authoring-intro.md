@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a50dbe4d1e100032282891ccd15a94330f7fead4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c1af4b0dac4b50e01b62b02f606be9fdd89d2ad1
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373380"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367323"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -72,7 +72,7 @@ Azure 自动化中的所有 runbook 都是 Windows PowerShell 工作流。 图�
 
 #### <a name="parameter-values"></a>参数值
 
-指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源取决于该参数的有效值。 例如，对于不允许 null 值的参数， **Null**不是可用的选项。
+指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
 | 数据源 | 说明 |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Azure 自动化中的所有 runbook 都是 Windows PowerShell 工作流。 图�
 
 #### <a name="optional-additional-parameters"></a>可选的其他参数
 
-所有 cmdlet 都会有提供其他参数的选项。 这些是 PowerShell 通用参数或其他自定义参数。 图形编辑器提供了一个文本框，可以在其中使用 PowerShell 语法提供参数。 例如，若要使用*Verbose*通用参数，应指定 `-Verbose:$True`。
+所有 cmdlet 都会有提供其他参数的选项。 这些是 PowerShell 通用参数或其他自定义参数。 图形编辑器提供了一个文本框，可以在其中使用 PowerShell 语法提供参数。 例如，若要使用 `Verbose` 通用参数，应指定 `-Verbose:$True`。
 
 ### <a name="retry-activity"></a>重试活动
 
@@ -102,14 +102,14 @@ Azure 自动化中的所有 runbook 都是 Windows PowerShell 工作流。 图�
 
 ![活动重试延迟](media/automation-graphical-authoring-intro/retry-condition.png)
 
-重试条件可以使用名为*RetryData*的变量，该变量提供对活动重试相关信息的访问。 此变量具有下表中的属性。
+重试条件可以使用名为 `RetryData` 的变量，该变量提供对活动重试相关信息的访问。 此变量具有下表中的属性。
 
 | properties | 说明 |
 |:--- |:--- |
-| NumberOfAttempts |活动已运行的次数。 |
-| 输出 |活动上次运行的输出。 |
-| TotalDuration |活动首次开始之后的经过时间。 |
-| StartedAt |首次启动活动时的时间（UTC 格式）。 |
+| `NumberOfAttempts` |活动已运行的次数。 |
+| `Output` |活动上次运行的输出。 |
+| `TotalDuration` |活动首次开始之后的经过时间。 |
+| `StartedAt` |首次启动活动时的时间（UTC 格式）。 |
 
 下面是活动重试条件的示例。
 
@@ -136,7 +136,7 @@ $RetryData.TotalDuration.TotalMinutes -ge 2
 
 工作流脚本控件是一种特殊的活动，它接受 PowerShell 或 PowerShell 工作流脚本，具体取决于所创作的图形 runbook 的类型。 此控件提供了可能无法通过其他方式获得的功能。 它不能接受参数，但可以使用针对活动输出和 Runbook 输入参数的变量。 活动的任何输出都将添加到 databus。 异常是没有传出链接的输出，在这种情况下，会将输出添加到 runbook 的输出中。
 
-例如，以下代码使用名为*NumberOfDays*的 runbook 输入变量执行日期计算。 然后，它会将计算的日期时间值作为输出发送，供 runbook 中的后续活动使用。
+例如，以下代码使用名为 `NumberOfDays`的 runbook 输入变量执行日期计算。 然后，它会将计算的日期时间值作为输出发送，供 runbook 中的后续活动使用。
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -167,9 +167,9 @@ $DateTimeStart
 
 ### <a name="link-conditions"></a>链接条件
 
-在链接上指定条件时，只有当条件解析为 True 时才会运行目标活动。 通常会在条件中使用*ActivityOutput*变量来检索源活动的输出。
+在链接上指定条件时，只有当条件解析为 True 时才会运行目标活动。 通常会在条件中使用 `ActivityOutput` 变量来检索源活动的输出。
 
-对于管道链接，必须为单个对象指定条件。 Runbook 针对源活动的每个对象输出对条件进行评估。 然后，它将为满足条件的每个对象运行目标活动。 例如，对于**new-azvm**的源活动，你可以使用以下条件管道链接语法来仅检索资源组中名为 Group1 的虚拟机。
+对于管道链接，必须为单个对象指定条件。 Runbook 针对源活动的每个对象输出对条件进行评估。 然后，它将为满足条件的每个对象运行目标活动。 例如，对于 `Get-AzVM`的源活动，你可以使用以下条件管道链接语法来仅检索资源组中名为 Group1 的虚拟机。
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
@@ -181,7 +181,7 @@ $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 
 ![使用序列的条件链接](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Runbook 使用三个不同的序列链接来验证输入参数*VMName*和*ResourceGroupName*的值，以确定要执行的相应操作。 可能的操作是启动单个 VM、启动资源组中的所有 Vm，或者启动订阅中的所有 Vm。 对于 "**连接到 Azure** " 和 "**获取单个 VM**" 之间的序列链接，以下是条件逻辑：
+Runbook 使用三个不同的序列链接来验证输入参数的值 `VMName` 和 `ResourceGroupName` 以确定要执行的相应操作。 可能的操作是启动单个 VM、启动资源组中的所有 Vm，或者启动订阅中的所有 Vm。 对于 `Connect to Azure` 和 `Get single VM`之间的序列链接，以下是条件逻辑：
 
 ```powershell-interactive
 <#
@@ -196,11 +196,11 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 使用条件链接时，将通过条件来筛选该分支中从源活动到其他活动所提供的数据。 如果某个活动是多个链接的源，则每个分支中可供活动使用的数据将取决于连接到该分支的链接中的条件。
 
-例如，下面的 runbook 中的**new-azvm**活动将启动所有虚拟机。 它有两个条件链接。 第一个条件链接使用 expression `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` 筛选**new-azvm**活动是否成功完成。 第二个条件链接使用 expression `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` 筛选**new-azvm**活动是否无法启动虚拟机。
+例如，下面的 runbook 中的 `Start-AzVM` 活动将启动所有虚拟机。 它有两个条件链接。 第一个条件链接使用 expression `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true` 筛选 `Start-AzVM` 活动是否成功完成。 第二个条件链接使用 expression `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true` 筛选 `Start-AzVm` 活动是否无法启动虚拟机。
 
 ![条件链接示例](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-在第一个链接之后使用的活动**输出的任何活动仅会**检索运行**get-help**时启动的虚拟机。 遵循第二个链接的任何活动仅会获取运行**get-help**时停止的虚拟机。 任何按第三个链接进行的活动都会获取所有虚拟机，不管这些虚拟机的运行状态如何。
+在第一个链接之后使用活动输出的任何活动仅检索运行 `Get-AzureVM` 时启动的虚拟机的 `Get-AzureVM`。 遵循第二个链接的任何活动仅会获取运行 `Get-AzureVM` 时停止的虚拟机。 任何按第三个链接进行的活动都会获取所有虚拟机，不管这些虚拟机的运行状态如何。
 
 ### <a name="junctions"></a>交接点
 
@@ -232,7 +232,7 @@ Runbook 有两种方法可用于在 databus 上访问数据：
 
 ![活动输出](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-第二个数据访问机制使用如下所示的语法，在 PowerShell 表达式数据源或包含*ActivityOutput*变量的工作流脚本活动中检索活动的输出。 如果输出是一个对象，则 runbook 可以指定单个属性。
+第二个数据访问机制使用如下所示的语法，在 PowerShell 表达式数据源或包含 `ActivityOutput` 变量的工作流脚本活动中检索活动的输出。 如果输出是一个对象，则 runbook 可以指定单个属性。
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -245,7 +245,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-检查点仅在图形 PowerShell 工作流 runbook 中启用，在图形 runbook 中不可用。 如果 runbook 使用 Azure cmdlet，则它应遵循**AzAccount**活动的任何检查点活动。 如果 runbook 已挂起，则使用 connect 操作，并且必须在另一辅助角色上从此检查点重新启动。
+检查点仅在图形 PowerShell 工作流 runbook 中启用，在图形 runbook 中不可用。 如果 runbook 使用 Azure cmdlet，则它应遵循带有 `Connect-AzAccount` 活动的任何检查点活动。 如果 runbook 已挂起，则使用 connect 操作，并且必须在另一辅助角色上从此检查点重新启动。
 
 ## <a name="runbook-input-and-output"></a>Runbook 输入和输出
 
@@ -255,7 +255,7 @@ Runbook 需要从通过 Azure 门户启动 runbook 的用户或从另一个 runb
 
 Runbook 通过定义一个或多个输入参数来接受输入。 每次启动 runbook 时，用户都提供这些参数的值。 当用户使用 Azure 门户启动 runbook 时，系统将提示用户为 runbook 支持的每个输入参数提供值。
 
-创作 runbook 时，可以通过单击 runbook 工具栏上的 "**输入和输出**" 按钮来访问其输入参数。 这将打开输入和输出控件，你可以在其中编辑现有输入参数或通过单击 "**添加输入**" 创建一个新的。
+创作 runbook 时，可以通过单击 runbook 工具栏上的 "**输入和输出**" 来访问其输入参数。 这将打开输入和输出控件，你可以在其中编辑现有输入参数或通过单击 "**添加输入**" 创建一个新的。
 
 ![添加输入](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -266,8 +266,8 @@ Runbook 通过定义一个或多个输入参数来接受输入。 每次启动 r
 | 名称 | 必需。 参数的名称。 该名称在 runbook 中必须是唯一的。 它必须以字母开头，只能包含字母、数字和下划线。 名称不能包含空格。 |
 | 说明 |可选。 输入参数用途说明。 |
 | 类型 | 可选。 参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 支持的参数类型包括 String、Int32、Int64、Decimal、Boolean、DateTime 和 Object。 如果未选择数据类型，则默认为字符串。|
-| 必需 | 可选。 指定是否必须为参数提供值的设置。 如果选择 **"是"** ，则在启动 runbook 时必须提供一个值。 如果选择 "**否**"，则在启动 runbook 时不需要值，并且可以使用默认值。 如果没有为每个没有定义默认值的必需参数提供值，则无法启动 runbook。 |
-| 默认值 | 可选。 如果在 runbook 启动时未传入参数，则为参数使用该值。 若要设置默认值，请选择“自定义”。 如果不想提供任何默认值，请选择 "**无**"。 |
+| 必需 | 可选。 指定是否必须为参数提供值的设置。 如果选择 `yes`，则启动 runbook 时必须提供一个值。 如果选择 `no`，则启动 runbook 时不需要一个值，并且可以使用默认值。 如果没有为每个没有定义默认值的必需参数提供值，则无法启动 runbook。 |
+| 默认值 | 可选。 如果在 runbook 启动时未传入参数，则为参数使用该值。 若要设置默认值，请选择 "`Custom`"。 如果不想提供任何默认值，请选择 "`None`"。 |
 
 ### <a name="runbook-output"></a>Runbook 输出
 
@@ -304,7 +304,7 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>活动输出
 
-若要在 runbook 中使用上一个活动的输出，请使用具有以下语法的*ActivityOutput*变量。
+若要在 runbook 中使用上一个活动的输出，请使用具有以下语法的 `ActivityOutput` 变量。
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -332,7 +332,7 @@ Runbook 可以在更复杂的表达式中使用活动的输出，如下所示。
 
 使用[比较运算符](https://technet.microsoft.com/library/hh847759.aspx)来比较值或确定值是否与指定的模式匹配。 比较返回的值为 True 或 False。
 
-例如，以下条件确定名为**get-help**的活动中的虚拟机当前是否已停止。
+例如，以下条件确定当前已停止名为 `Get-AzureVM` 的活动中的虚拟机。
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
@@ -344,7 +344,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-可以使用[逻辑运算符](https://technet.microsoft.com/library/hh847789.aspx)（例如 **-and**或 **-or**）在 runbook 中加入多个条件。 例如，以下条件会检查上一示例中的虚拟机是否处于**停止**或**停止**状态。
+可以使用[逻辑运算符](https://technet.microsoft.com/library/hh847789.aspx)（如 `-and` 或 `-or`）在 runbook 中联接多个条件。 例如，以下条件会检查上一示例中的虚拟机是否处于停止或停止状态。
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -369,7 +369,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-以下示例使用名为 **Get Twitter Connection** 的活动的输出来填充哈希表。
+下面的示例使用名为 `Get Twitter Connection` 的活动的输出来填充哈希表。
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -380,30 +380,30 @@ $h
 
 ## <a name="authenticating-to-azure-resources"></a>通过 Azure 资源进行身份验证
 
-Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](automation-create-runas-account.md)（也称为服务主体）是自动化 runbook 用来访问订阅中的 Azure 资源管理器资源的默认机制。 可以通过将使用 PowerShell [get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) Cmdlet 的**AzureRunAsConnection**连接资产添加到画布，将此功能添加到图形 runbook。 还可以添加[AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 下面的示例阐释了这种情况。
+Azure 自动化中用于管理 Azure 资源的 Runbook 将需要通过 Azure 进行身份验证。 [运行方式帐户](automation-create-runas-account.md)（也称为服务主体）是自动化 runbook 用来访问订阅中的 Azure 资源管理器资源的默认机制。 可以通过将使用[get-automationconnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) cmdlet 的 `AzureRunAsConnection` 连接资产添加到画布，将此功能添加到图形 runbook。 还可以添加[AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 下面的示例阐释了这种情况。
 
 ![运行方式身份验证活动](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-使用名为**AzureRunAsConnection**的常量值数据源配置 "**获取运行方式连接" 活动**或 " **get-automationconnection**" 配置。
+`Get Run As Connection` 活动（或 `Get-AutomationConnection`）是使用名为 `AzureRunAsConnection`的常量值数据源配置的。
 
 ![运行方式连接配置](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-接下来， **AzAccount**会添加已通过身份验证的运行方式帐户，以便在 runbook 中使用。
+下一个活动 `Connect-AzAccount`添加已验证的运行方式帐户，以便在 runbook 中使用。
 
 ![AzAccount 参数集](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->对于 PowerShell runbook， **AzAccount**和**add-azurermaccount**是**AzAccount**的别名。 请注意，这些别名不适用于图形 runbook。 图形 runbook 只能使用**AzAccount**本身。
+>对于 PowerShell runbook，`Add-AzAccount` 和 `Add-AzureRMAccount` 是 `Connect-AzAccount`的别名。 请注意，这些别名不适用于图形 runbook。 图形 runbook 只能使用 `Connect-AzAccount` 本身。
 
-对于参数字段、 **APPLICATIONID**、 **CERTIFICATETHUMBPRINT**和**TENANTID**，请指定字段路径的属性的名称，因为该活动输出的对象具有多个属性。 否则，runbook 在执行时失败，并在尝试进行身份验证时失败。 这是你在通过运行方式帐户对 Runbook 进行身份验证时必须满足的最低要求。
+对于参数字段**APPLICATIONID**、 **CERTIFICATETHUMBPRINT**和**TENANTID**，请指定字段路径的属性的名称，因为该活动输出的对象具有多个属性。 否则，runbook 在执行时失败，并在尝试进行身份验证时失败。 这是你在通过运行方式帐户对 Runbook 进行身份验证时必须满足的最低要求。
 
-某些订阅者使用[Azure AD 的用户帐户](automation-create-aduser-account.md)创建一个自动化帐户，用于管理 azure 经典部署或 azure 资源管理器资源。 若要维护这些订阅服务器的向后兼容性，在 runbook 中使用的身份验证机制是包含[凭据资产](automation-credentials.md)的**add-azureaccount** cmdlet。 资产表示有权访问 Azure 帐户的 Active Directory 用户。
+某些订阅者使用[Azure AD 的用户帐户](automation-create-aduser-account.md)创建一个自动化帐户，用于管理 azure 经典部署或 azure 资源管理器资源。 为维护这些订阅服务器的向后兼容性，在 runbook 中使用的身份验证机制是 `Add-AzureAccount` cmdlet，其中包含[凭据资产](automation-credentials.md)。 资产表示有权访问 Azure 帐户的 Active Directory 用户。
 
-你可以为图形 runbook 启用此功能，方法是将凭据资产添加到画布，然后使用**add-azureaccount**活动，该活动将凭据资产用于输入。 请参阅以下示例。
+可以通过以下方式为图形 runbook 启用此功能：将凭据资产添加到画布，然后在 `Add-AzureAccount` 活动中使用凭据资产进行输入。 请参阅以下示例。
 
 ![身份验证活动](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Runbook 必须在其开始和每个检查点之后进行身份验证。 因此，在任何**检查点工作流**活动之后，必须使用**add-azureaccount**活动。 不需要使用其他凭据活动。
+Runbook 必须在其开始和每个检查点之后进行身份验证。 因此，在任何 `Checkpoint-Workflow` 活动之后，都必须使用 `Add-AzureAccount` 活动。 不需要使用其他凭据活动。
 
 ![活动输出](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 

@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392519"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254464"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>将数据作为流分析的输入进行流式传输
 
@@ -47,7 +47,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 
 下表介绍了 Azure 门户的“新输入”页中用于从事件中心流式传输数据输入的每个属性：
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **输入别名** |在作业查询中用于引用此输入的友好名称。 |
 | **订阅** | 选择事件中心资源所在的订阅。 | 
@@ -62,7 +62,7 @@ Azure 事件中心提供高度可缩放的发布-订阅事件引入器。 事件
 
 如果数据来自事件中心流输入，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** |事件中心收到事件的日期和时间。 |
@@ -96,7 +96,7 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 下表介绍了将 IoT 中心配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。|
 | **订阅** | 选择 IoT 中心资源所在的订阅。 | 
@@ -113,7 +113,7 @@ Azure IoT 中心是一个高度可缩放的发布-订阅事件引入器，针对
 
 如果使用的流数据来自 IoT 中心，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **EventProcessedUtcTime** | 处理事件的日期和时间。 |
 | **EventEnqueuedUtcTime** | IoT 中心收到事件的日期和时间。 |
@@ -149,7 +149,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 下表介绍了将 Blob 存储配置为流输入时，Azure 门户的“新输入”页中的每个属性。
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **输入别名** | 在作业查询中用于引用此输入的友好名称。 |
 | **订阅** | 选择 IoT 中心资源所在的订阅。 | 
@@ -166,7 +166,7 @@ CSV 格式的输入需要标头行来定义数据集的字段，并且所有标�
 
 如果数据来自 Blob 存储源，则可以在流分析查询中访问以下元数据字段：
 
-| 属性 | 说明 |
+| properties | 说明 |
 | --- | --- |
 | **BlobName** |提供事件的输入 blob 的名称。 |
 | **EventProcessedUtcTime** |流分析处理事件的日期和时间。 |

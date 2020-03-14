@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3c22f63b7085c7ab8d6b54e383528568dc9c12e7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917027"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368513"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中轮替证书
 
@@ -37,7 +37,7 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 * `kubectl` 客户端具有用于与 AKS 群集通信的证书。
 
 > [!NOTE]
-> 2019年3月之前创建的 AKS 群集包含两年后过期的证书。 2019年3月之后创建的任何群集或已旋转证书的任何群集都具有30年后过期的证书。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*使用期限*。
+> 2019年3月之前创建的 AKS 群集包含两年后过期的证书。 2019年3月之后创建的任何群集或已旋转证书的任何群集都具有30年后过期的群集 CA 证书。 所有其他证书在两年后过期。 若要验证群集的创建时间，请使用 `kubectl get nodes` 查看节点池的*使用期限*。
 > 
 > 此外，还可以检查群集证书的到期日期。 例如，以下命令显示*myAKSCluster*群集的证书详细信息。
 > ```console
@@ -52,13 +52,13 @@ AKS 生成并使用以下证书、证书颁发机构和服务帐户：
 
 使用[az aks get 凭据][az-aks-get-credentials]登录到 aks 群集。 此命令还会在本地计算机上下载并配置 `kubectl` 客户端证书。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 使用 `az aks rotate-certs` 来旋转群集上的所有证书、Ca 和 SAs。
 
-```console
+```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
@@ -74,7 +74,7 @@ Unable to connect to the server: x509: certificate signed by unknown authority (
 
 通过运行 `az aks get-credentials`更新 `kubectl` 使用的证书。
 
-```console
+```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 

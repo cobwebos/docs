@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4908d5f9f6eccaaaf71308b868d712f0eb96cb52
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 972712d37c146ce288c49af7832919946f5503cd
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303148"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297112"
 ---
 # <a name="st_distance-azure-cosmos-db"></a>ST_DISTANCE （Azure Cosmos DB）
- 返回两个 GeoJSON 点、多边形或 LineString 表达式之间的距离。  
+ 返回两个 GeoJSON 点、多边形、MultiPolygon 或 LineString 表达式之间的距离。 若要了解详细信息，请参阅[地理空间和 GeoJSON 位置数据](sql-query-geospatial-intro.md)一文。
   
 ## <a name="syntax"></a>语法
   
@@ -34,7 +34,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
 ## <a name="examples"></a>示例
   
-  下面的示例演示如何使用 `ST_DISTANCE` 内置函数返回指定位置的30公里内的所有家族文档。 .  
+  下面的示例演示如何使用 `ST_DISTANCE` 内置函数返回指定位置的30公里内的所有家族文档。 。  
   
 ```sql
 SELECT f.id

@@ -1,20 +1,20 @@
 ---
-title: 接收和响应 HTTPS 调用
-description: 使用 Azure 逻辑应用实时处理 HTTPS 请求和事件
+title: 使用 HTTPS 接收和响应呼叫
+description: 使用 Azure 逻辑应用处理来自外部服务的入站 HTTPS 请求
 services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900262"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297283"
 ---
-# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用接收和响应传入的 HTTPS 调用
+# <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure 逻辑应用中接收和响应入站 HTTPS 请求
 
 通过[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和内置请求触发器或响应操作，你可以创建可接收和响应传入 HTTPS 请求的自动化任务和工作流。 例如，你可以创建逻辑应用：
 
@@ -36,7 +36,7 @@ ms.locfileid: "76900262"
 > * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 > * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，可以[注册一个免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
@@ -58,7 +58,7 @@ ms.locfileid: "76900262"
 
    ![请求触发器](./media/connectors-native-reqres/request-trigger.png)
 
-   | 属性名称 | JSON 属性名称 | 需要 | Description |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {无} | 是 | 保存逻辑应用并用于调用逻辑应用后生成的终结点 URL |
    | **请求正文 JSON 架构** | `schema` | 否 | 描述传入请求正文中的属性和值的 JSON 架构 |
@@ -157,7 +157,7 @@ ms.locfileid: "76900262"
 
 1. 若要指定其他属性，请打开 "**添加新参数**" 列表，然后选择要添加的参数。
 
-   | 属性名称 | JSON 属性名称 | 需要 | Description |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 传入请求必须用于调用逻辑应用的方法 |
    | **相对路径** | `relativePath` | 否 | 逻辑应用的终结点 URL 可以接受的参数的相对路径 |
@@ -189,10 +189,10 @@ ms.locfileid: "76900262"
 
 下面详细介绍了 Request 触发器的输出：
 
-| JSON 属性名称 | 数据类型 | Description |
+| JSON 属性名称 | 数据类型 | 说明 |
 |--------------------|-----------|-------------|
-| `headers` | 对象 | 描述请求中的标头的 JSON 对象 |
-| `body` | 对象 | 一个 JSON 对象，用于描述请求中的正文内容 |
+| `headers` | Object | 描述请求中的标头的 JSON 对象 |
+| `body` | Object | 一个 JSON 对象，用于描述请求中的正文内容 |
 ||||
 
 <a name="add-response"></a>
@@ -202,6 +202,19 @@ ms.locfileid: "76900262"
 你可以使用响应操作来使用负载（数据）来响应传入 HTTPS 请求，但仅在由 HTTPS 请求触发的逻辑应用中进行响应。 你可以在工作流中的任何时间点添加 "响应" 操作。 有关此触发器的基础 JSON 定义的详细信息，请参阅[响应操作类型](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)。
 
 逻辑应用使传入请求仅打开一分钟。 假定逻辑应用工作流包含响应操作，如果逻辑应用在这段时间后未返回响应，则逻辑应用会向调用方返回 `504 GATEWAY TIMEOUT`。 否则，如果逻辑应用不包括响应操作，则逻辑应用会立即向调用方返回 `202 ACCEPTED` 响应。
+
+> [!IMPORTANT]
+> 如果响应操作包含这些标头，则逻辑应用会从生成的响应消息中删除这些标头，而不会显示任何警告或错误：
+>
+> * `Allow`
+> * `Content-*` 具有以下例外： `Content-Disposition`、`Content-Encoding`和 `Content-Type`
+> * `Cookie`
+> * `Expires`
+> * `Last-Modified`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> 尽管逻辑应用不会阻止你保存具有这些标头的响应操作的逻辑应用，但逻辑应用会忽略这些标头。
 
 1. 在逻辑应用设计器中，在要添加响应操作的步骤下，选择 "**新建步骤**"。
 
@@ -231,7 +244,7 @@ ms.locfileid: "76900262"
 
    下面是有关可以在响应操作中设置的属性的详细信息。 
 
-   | 属性名称 | JSON 属性名称 | 需要 | Description |
+   | 属性名称 | JSON 属性名称 | 必选 | 说明 |
    |---------------|--------------------|----------|-------------|
    | **状态代码** | `statusCode` | 是 | 要在响应中返回的状态代码 |
    | **标头** | `headers` | 否 | 一个 JSON 对象，描述要包括在响应中的一个或多个标头 |

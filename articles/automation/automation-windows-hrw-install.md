@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c99cb15ef6874ef0efecb15eb99443904491209
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 420775fee36df900ce95718e58fee145de3a9f53
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082611"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366983"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -71,14 +71,14 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 | 参数 | 状态 | 说明 |
 | --------- | ------ | ----------- |
-| *AAResourceGroupName* | 必需 | 与自动化帐户关联的资源组的名称。 |
-| *AutomationAccountName* | 必需 | 自动化帐户的名称。
-| *凭据* | 可选 | 登录到 Azure 环境时要使用的凭据。 |
-| *HybridGroupName* | 必需 | 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 runbook 的目标。 |
-| *OMSResourceGroupName* | 可选 | Log Analytics 工作区的资源组的名称。 如果未指定此资源组，则使用*AAResourceGroupName*的值。 |
-| *订阅* | 必需 | 与自动化帐户关联的 Azure 订阅的标识符。 |
-| *TenantID* | 可选 | 与自动化帐户关联的租户组织的标识符。 |
-| *WorkspaceName* | 可选 | Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。 |
+| `AAResourceGroupName` | 必需 | 与自动化帐户关联的资源组的名称。 |
+| `AutomationAccountName` | 必需 | 自动化帐户的名称。
+| `Credential` | 可选 | 登录到 Azure 环境时要使用的凭据。 |
+| `HybridGroupName` | 必需 | 混合 Runbook 辅助角色组的名称，可将其指定为支持此方案的 runbook 的目标。 |
+| `OMSResourceGroupName` | 可选 | Log Analytics 工作区的资源组的名称。 如果未指定此资源组，则使用 `AAResourceGroupName` 的值。 |
+| `SubscriptionID` | 必需 | 与自动化帐户关联的 Azure 订阅的标识符。 |
+| `TenantID` | 可选 | 与自动化帐户关联的租户组织的标识符。 |
+| `WorkspaceName` | 可选 | Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。 |
 
 > [!NOTE]
 > 启用解决方案时，Azure 自动化仅支持某些区域来链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
@@ -89,7 +89,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 ### <a name="step-3---run-the-powershell-script"></a>步骤 3-运行 PowerShell 脚本
 
-在 PowerShell 命令行 shell 中，浏览到包含已下载的脚本的文件夹。 更改*AutomationAccountName*、 *AAResourceGroupName*、 *OMSResourceGroupName*、 *HybridGroupName*、 *SubscriptionID*和*WorkspaceName*参数的值。 然后运行脚本。
+在 PowerShell 命令行 shell 中，浏览到包含已下载的脚本的文件夹。 更改参数的值 `AutomationAccountName`、`AAResourceGroupName`、`OMSResourceGroupName`、`HybridGroupName`、`SubscriptionID`和 `WorkspaceName`。 然后运行脚本。
 
 运行脚本后，系统会提示在 Azure 上进行身份验证。 必须以订阅管理员角色成员和订阅共同管理员的帐户身份登录。
 
@@ -149,7 +149,7 @@ Heartbeat
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>步骤 4-安装 runbook 环境并连接到 Azure 自动化
 
-将代理配置为向 Log Analytics 工作区报告时，自动化解决方案会向下推送**HybridRegistration** PowerShell 模块，其中包含**add-hybridrunbookworker** cmdlet。 使用此 cmdlet 在计算机上安装 runbook 环境，并将其注册到 Azure 自动化。
+将代理配置为向 Log Analytics 工作区报告时，自动化解决方案会向下推送 `HybridRegistration` PowerShell 模块，其中包含 `Add-HybridRunbookWorker` cmdlet。 使用此 cmdlet 在计算机上安装 runbook 环境，并将其注册到 Azure 自动化。
 
 在管理员模式下打开 PowerShell 会话，并运行以下命令以导入模块。
 
@@ -158,7 +158,7 @@ cd "C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\<version>\
 Import-Module .\HybridRegistration.psd1
 ```
 
-现在，使用以下语法运行**add-hybridrunbookworker** cmdlet。
+现在，使用以下语法运行 `Add-HybridRunbookWorker` cmdlet。
 
 ```powershell-interactive
 Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
@@ -168,18 +168,18 @@ Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
 ![管理密钥页](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-* 对于 "组名 *" 参数，* 请使用混合 Runbook 辅助角色组的名称。 如果该组已经存在于自动化帐户中，则会将当前计算机添加到其中。 如果该组不存在，则将添加该组。
-* 对于*EndPoint*参数，请使用 "管理密钥" 页上的**URL**条目。
-* 对于*令牌*参数，请使用 "管理密钥" 页上的 "**主访问密钥**" 条目。
-* 如果需要，请设置*详细*参数以接收有关安装的详细信息。
+* 对于 `GroupName` 参数，请使用混合 Runbook 辅助角色组的名称。 如果该组已经存在于自动化帐户中，则会将当前计算机添加到其中。 如果该组不存在，则将添加该组。
+* 对于 `EndPoint` 参数，请使用 "管理密钥" 页上的**URL**条目。
+* 对于 `Token` 参数，请使用 "管理密钥" 页上的 "**主访问密钥**" 条目。
+* 如果需要，请设置 `Verbose` 参数以接收有关安装的详细信息。
 
 ### <a name="step-5----install-powershell-modules"></a>步骤 5-安装 PowerShell 模块
 
 Runbook 可以使用在 Azure 自动化环境中安装的模块中定义的任何活动和 cmdlet。 由于这些模块不会自动部署到本地计算机，因此必须手动安装它们。 Azure 模块除外。 此模块是默认安装的，提供对所有 Azure 服务的 cmdlet 以及 Azure 自动化的活动的访问权限。
 
-由于混合 Runbook 辅助角色功能的主要用途是管理本地资源，因此你很可能需要安装支持这些资源的模块，尤其是**PowerShellGet**模块。 有关安装 Windows PowerShell 模块的信息，请参阅[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
+由于混合 Runbook 辅助角色功能的主要用途是管理本地资源，因此你很可能需要安装支持这些资源的模块，尤其是 `PowerShellGet` 模块。 有关安装 Windows PowerShell 模块的信息，请参阅[Windows powershell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell)。
 
-安装的模块必须位于 PSModulePath 环境变量所引用的位置，以便混合辅助角色自动将其导入。 有关详细信息，请参阅[在 PSModulePath 中安装模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
+安装的模块必须位于 `PSModulePath` 环境变量所引用的位置，以便混合辅助角色可以自动导入它们。 有关详细信息，请参阅[在 PSModulePath 中安装模块](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7)。
 
 ## <a name="next-steps"></a>后续步骤
 

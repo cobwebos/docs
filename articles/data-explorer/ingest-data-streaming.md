@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330968"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297078"
 ---
 # <a name="streaming-ingestion-preview"></a>流式引入（预览）
 
@@ -20,7 +20,7 @@ ms.locfileid: "78330968"
 
 当数据量增长到每个表的每秒 1 MB 以上时，使用大容量引入而不是流式引入。 阅读[数据引入概述](/azure/data-explorer/ingest-data-overview)，了解有关引入的各种方法的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * 登录到[WEB UI](https://dataexplorer.azure.com/)。
@@ -72,7 +72,7 @@ ms.locfileid: "78330968"
 
 ## <a name="limitations"></a>限制
 
-* 流式引入不支持[数据库游标](/azure/kusto/management/databasecursor)或[数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/tables#create-ingestion-mapping)数据映射。 
+* 流式引入不支持[数据库游标](/azure/kusto/management/databasecursor)或[数据映射](/azure/kusto/management/mappings)。 仅支持[预先创建的](/azure/kusto/management/create-ingestion-mapping-command)数据映射。 
 * VM 和群集大小增加时，流式处理引入性能和容量可扩展性。 并发 ingestions 限制为每个内核六个 ingestions。 例如，对于16核 Sku，如 D14 和 L16，支持的最大负载为96并发 ingestions。 对于两个核心 Sku，如 D11，最大支持负载为12个并发 ingestions。
 * 每个摄取请求的数据大小限制为 4 MB。
 * 对于流式引入服务，架构更新（如创建和修改表和引入映射）可能需要长达五分钟。

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376083"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261276"
 ---
 # <a name="more-details-about-features-in-preview"></a>有关预览版功能的详细信息
 本主题介绍如何使用当前以预览版形式提供的功能。

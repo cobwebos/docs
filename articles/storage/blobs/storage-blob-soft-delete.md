@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 360930b708d6358692de2af7325701b73d5cf9c9
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972727"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370536"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 存储 Blob 的软删除
 
 Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或其他存储帐户用户错误地修改或删除数据后可以更轻松地恢复数据。
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="how-soft-delete-works"></a>软删除的工作方式
 
@@ -72,7 +74,7 @@ Azure 存储现提供 Blob 对象软删除，目的是为了在应用程序或�
 
 下表详述了启用软删除后的预期行为：
 
-| REST API 操作 | 资源类型 | Description | 行为更改 |
+| REST API 操作 | 资源类型 | 说明 | 行为更改 |
 |--------------------|---------------|-------------|--------------------|
 | [删除](/rest/api/storagerp/StorageAccounts/Delete) | 帐户 | 删除存储帐户，包括它包含的所有容器和 blob。                           | 无更改。 已删除帐户中的容器和 blob 不可恢复。 |
 | [删除容器](/rest/api/storageservices/delete-container) | 容器 | 删除容器，包括它包含的所有 blob。 | 无更改。 已删除容器中的 blob 不可恢复。 |
@@ -146,11 +148,11 @@ Copy a snapshot over the base blob:
 
 初次启用软删除时，建议使用较短的保持期，以便更好地了解因该功能产生的费用变动。
 
-## <a name="get-started"></a>开始体验
+## <a name="get-started"></a>入门
 
 以下步骤说明了如何开始执行软删除。
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 使用 Azure 门户为存储帐户上的 blob 启用软删除：
 
@@ -190,7 +192,7 @@ Copy a snapshot over the base blob:
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -227,7 +229,7 @@ $Blobs.ICloudBlob.Undelete()
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="clitabazure-cli"></a>[CLI](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 
@@ -241,7 +243,7 @@ az storage blob service-properties delete-policy update --days-retained 7  --acc
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 
@@ -259,7 +261,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 
@@ -307,7 +309,7 @@ blockBlob.StartCopy(copySource);
 
 如果某个应用程序或其他存储帐户用户意外修改或删除了数据，则建议启用软删除。 为频繁覆盖的数据启用软删除可能会导致存储容量收费，并在列出 blob 时增加延迟。 你可以通过将经常覆盖的数据存储在禁用软删除的单独存储帐户中来降低这种额外的成本和延迟。 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="for-which-storage-services-can-i-use-soft-delete"></a>对于哪些存储服务，可以使用软删除？
 
@@ -323,7 +325,7 @@ blockBlob.StartCopy(copySource);
 
 ### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>是否可以使用设置 Blob 层 API 将 blob 与软删除快照进行分层？
 
-可以。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
+是的。 软删除的快照会保留在原始层中，但基础 Blob 会移到新层中。 
 
 ### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>高级存储帐户的每个 blob 快照限制为100。 软删除的快照计数是否达到此限制？
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299480"
 ---
 ### <a name="portal"></a>门户
 
@@ -49,9 +49,14 @@ ms.locfileid: "77206288"
 
 #### <a name="setting-up-your-disk-encryption-set"></a>设置磁盘加密集
 
-若要创建和配置磁盘加密集，必须使用以下链接： https://aka.ms/diskencryptionsets。 磁盘加密集创建在全局 Azure 门户中尚不可用。
+若要创建和配置磁盘加密集，必须使用以下链接： https://aka.ms/diskencryptionsets。 如果位于 Microsoft Azure 政府区域中，则必须改为使用此链接： [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)。 磁盘加密集创建在全局 Azure 门户中尚不可用。
 
-1. 打开 "[磁盘加密集" 链接](https://aka.ms/diskencryptionsets)。
+1. 打开适用于你所在地区的磁盘加密集链接：
+
+    公共区域： [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure 政府区域： [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
 1. 选择“+添加”。
 
     ![磁盘加密门户主屏幕的屏幕截图。 突出显示 "添加" 按钮](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
@@ -77,7 +82,12 @@ ms.locfileid: "77206288"
 现在，你已创建并设置了密钥保管库和磁盘加密集，接下来可以使用加密来部署 VM。
 VM 部署过程与标准部署过程类似，唯一的差别在于，你需要将 VM 部署在与其他资源相同的区域中，并选择使用客户托管密钥。
 
-1. 打开 "[磁盘加密集" 链接](https://aka.ms/diskencryptionsets)。
+1. 打开适用于你所在地区的磁盘加密集链接：
+
+    公共区域： [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure 政府区域： [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+
 1. 搜索 "**虚拟机**"，并选择 " **+ 添加**" 以创建 VM。
 1. 在 "**基本**" 选项卡上，选择与你的磁盘加密集相同的区域，并 Azure Key Vault。
 1. 根据需要填写 "**基本**" 选项卡上的其他值。
@@ -97,8 +107,13 @@ VM 部署过程与标准部署过程类似，唯一的差别在于，你需要�
 > [!CAUTION]
 > 若要在附加到 VM 的任何磁盘上启用磁盘加密，将需要停止 VM。
 
-1. 打开 "[磁盘加密集" 链接](https://aka.ms/diskencryptionsets)。
-1. 导航到与你的某个磁盘加密集位于同一区域中的 VM。
+1. 打开适用于你所在地区的磁盘加密集链接：
+
+    公共区域： [https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
+
+    Azure 政府区域： [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
+    
+1. 导航到与一个磁盘加密集位于同一区域中的 VM。
 1. 打开 VM，并选择 "**停止**"。
 
     ![示例 VM 的主要覆盖屏幕截图。 突出显示 "停止" 按钮](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)

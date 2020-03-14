@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: f72dd5595d67ae989cec5681d22def9a2f929adf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022335"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253151"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>"我的应用" 门户问题疑难解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "77022335"
 
 - 请确保使用的是受支持的浏览器，包括：
 
-    - **Microsoft Edge.** 在 Windows 10 周年纪念版或更高版本上运行。
+    - **Microsoft Edge。** 在 Windows 10 周年纪念版或更高版本上运行。
 
     - **Google Chrome。** 在 Windows 7 或更高版本上运行，在 Mac OS X 或更高版本上运行。
 
@@ -47,7 +47,7 @@ ms.locfileid: "77022335"
 
 如果在登录 "**我的应用**" 门户时遇到问题，可以尝试以下操作：
 
-- 请确保使用正确的 URL。 它应 https://myapps.microsoft.com 或组织的自定义页面，如 https://myapps.microsoft.com/contoso.com 。
+- 请确保使用正确的 URL。 它应 https://myapps.microsoft.com 或组织的自定义页面，如 https://myapps.microsoft.com/contoso.com。
 
 - 请确保密码正确且未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 

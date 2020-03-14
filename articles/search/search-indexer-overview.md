@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534528"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282986"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -42,7 +42,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 <a name="supported-data-sources"></a>
 
-## <a name="supported-data-sources"></a>受支持的数据源
+## <a name="supported-data-sources"></a>支持的数据源
 
 索引器在 Azure 上抓取数据存储。
 

@@ -10,66 +10,54 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 369213485934236a05ecb3fcb458bdd28fd76136
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943328"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79365553"
 landingContent:
-- title: 入门
+- title: 关于语音助手
   linkLists:
   - linkListType: overview
     links:
-    - text: 语音助手解决方案
+    - text: 什么是语音助手？
       url: voice-assistants.md
-    - text: 关于自定义命令
+    - text: 什么是自定义命令应用？
       url: custom-commands.md
-    - text: 关于直接行语音
+    - text: 什么是 Direct Line 语音？
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: 定价
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: 语音助手常见问题解答
       url: faq-voice-assistants.md
-- title: Custom 关键字
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Custom 关键字
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: 自定义关键字命名准则
-      url: speech-devices-sdk-kws-guidelines.md
-- title: 自定义命令
+    - text: 语音助手定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: 用自定义命令进行开发
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 创建自定义命令（预览版）
+    - text: 创建自定义命令应用
       url: quickstart-custom-speech-commands-create-new.md
-    - text: 创建带参数的自定义命令（预览版）
+    - text: 使用参数创建自定义命令
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: 借助自定义语音使用自定义命令（预览版）
+    - text: 使用自定义命令和自定义语音
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: 借助语音 SDK 使用自定义命令（预览版）
+    - text: 结合使用自定义命令和语音 SDK
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: 带有语音 SDK 的自定义命令
+    - text: 满足客户端的命令
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: 使用语音 SDK 履行自定义命令（预览版）
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: 向自定义命令添加参数验证
+    - text: 添加参数验证
       url: how-to-custom-speech-commands-validations.md
-    - text: 向自定义命令添加确认
+    - text: 添加确认
       url: how-to-custom-speech-commands-confirmations.md
-    - text: 向自定义命令添加单步更正
+    - text: 添加单步更正
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line 语音
+- title: 利用直接行语音进行开发
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +71,13 @@ landingContent:
     links:
     - text: 使用语音 SDK 为机器人启用语音
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: 用自定义关键字进行开发
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 创建自定义关键字
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: 自定义关键字命名准则
+      url: speech-devices-sdk-kws-guidelines.md

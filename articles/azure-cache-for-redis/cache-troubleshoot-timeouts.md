@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412077"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278241"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>排查 Azure Cache for Redis 超时问题
 
@@ -103,7 +103,7 @@ Stackexchange.redis 使用名为 `synctimeout` 的配置设置进行同步操作
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. 通过[监视](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)`Used Memory RSS` 和 `Used Memory`来查看适用于 Redis 服务器的 Azure 缓存的内存使用情况。 如果实施了逐出策略，则当 `Used_Memory` 达到缓存大小时，Redis 就会开始逐出密钥。 理想情况下，`Used memory` 应只稍高于 `Used Memory RSS`。 差别较大意味着存在内存碎片（内部或外部）。 如果 `Used Memory RSS` 小于 `Used Memory`，则意味着操作系统已更换部分缓存内存。 如果发生这种情况，则会出现明显的延迟。 由于 Redis 无法控制如何将其分配映射到内存页，因此，高 `Used Memory RSS` 通常是内存使用高峰的结果。 当 Redis server 释放内存时，分配器会占用内存，但可能会将内存送回系统。 `Used Memory` 值与操作系统所报告的内存消耗量可能存在差异。 内存可能已由 Redis 使用，但未返回给系统。 若要帮助减少内存问题，可执行以下步骤：
+1. 通过[监视](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)`Used Memory RSS` 和 `Used Memory`来查看适用于 Redis 服务器的 Azure 缓存的内存使用情况。 如果实施了逐出策略，则当 `Used_Memory` 达到缓存大小时，Redis 就会开始逐出密钥。 理想情况下，`Used Memory RSS` 应只稍高于 `Used memory`。 差别较大意味着存在内存碎片（内部或外部）。 如果 `Used Memory RSS` 小于 `Used Memory`，则意味着操作系统已更换部分缓存内存。 如果发生这种情况，则会出现明显的延迟。 由于 Redis 无法控制如何将其分配映射到内存页，因此，高 `Used Memory RSS` 通常是内存使用高峰的结果。 当 Redis server 释放内存时，分配器会占用内存，但可能会将内存送回系统。 `Used Memory` 值与操作系统所报告的内存消耗量可能存在差异。 内存可能已由 Redis 使用，但未返回给系统。 若要帮助减少内存问题，可执行以下步骤：
 
    - 将缓存升级到更大的大小，以便不会在系统上运行内存限制。
    - 对密钥设置过期时间，以便主动逐出过旧的值。

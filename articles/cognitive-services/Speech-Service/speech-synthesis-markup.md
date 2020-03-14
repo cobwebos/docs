@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: dapine
-ms.openlocfilehash: b39b8712f3e8b869d7dbe496dd30f0599aa4150d
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 68691ad60542c55db4d381e2923a9f928a22995a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254791"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79220497"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言（SSML）改善合成
 
@@ -329,7 +329,7 @@ speechConfig!.setPropertyTo(
 
 | Attribute | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定综合属性 `ph` 中字符串的发音时要使用的拼音字母表。 指定字母表的字符串必须以小写字母指定。 下面是可以指定的可能字母表。<ul><li>ipa &ndash; 国际注音字母</li><li>sapi &ndash; 语音 API 电话集</li><li>ups &ndash; 通用手机集</li></ul>字母表仅适用于元素中的音素。 有关详细信息，请参阅[拼音字母参考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。 | 可选 |
+| `alphabet` | 指定综合属性 `ph` 中字符串的发音时要使用的拼音字母表。 指定字母表的字符串必须以小写字母指定。 下面是可以指定的可能字母表。<ul><li>`ipa` &ndash; 国际注音字母表</li><li>`sapi` &ndash; 语音服务注音</li><li>`ups` &ndash; 通用手机集</li></ul><br>字母表仅适用于元素中的 `phoneme`。 有关详细信息，请参阅[拼音字母参考](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet)。 | 可选 |
 | `ph` | 一个包含手机的字符串，该字符串指定 `phoneme` 元素中单词的发音。 如果指定的字符串包含无法识别的手机，则文本语音转换（TTS）服务将拒绝整个 SSML 文档并不生成文档中指定的任何语音输出。 | 如果使用音素，则是必需的。 |
 
 **示例**
@@ -418,13 +418,11 @@ Could you help leave a message to Robert Benigni for me?
 - 文件大小：自定义词典文件大小最大限制为100KB，如果超过此大小，合成请求将会失败。
 - 词典缓存刷新：首次加载时，自定义词典将用 URI 作为其上的密钥来缓存该服务。 不会在15分钟内重新加载具有相同 URI 的字典，因此自定义词典更改需要等待15分钟才能生效。
 
-**SAPI 手机集**
+**语音服务拼音设置**
 
-在上面的示例中，我们使用的是国际拼音协会（IPA）电话集。 我们建议开发人员使用 IPA，因为 IPA 是国际标准。 
+在上面的示例中，我们使用的是国际拼音字母，也称为 IPA 手机集。 我们建议开发人员使用 IPA，因为它是国际标准。 考虑到 IPA 不容易记住，语音服务将为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义拼音集。
 
-考虑到 IPA 不容易记住，Microsoft 将为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义 SAPI 手机集。 有关字母表中的详细信息，请参阅[拼音字母参考](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)。
-
-可以按如下所示将 SAPI 手机集用于自定义词典。 用**sapi**设置字母值。
+您可以使用 "`sapi` 作为 `alphabet` 属性的 refreshtype 作为自定义词典，如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-16"?>
@@ -445,7 +443,7 @@ Could you help leave a message to Robert Benigni for me?
 </lexicon>
 ```
 
-有关详细信息的 SAPI 字母表的详细信息，请参阅[Sapi 字母参考](sapi-phoneset-usage.md)。
+有关详细的语音服务拼音字母的详细信息，请参阅[语音服务拼音设置](speech-ssml-phonetic-sets.md)。
 
 ## <a name="adjust-prosody"></a>调整诗体论
 

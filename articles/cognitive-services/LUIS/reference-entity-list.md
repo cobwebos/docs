@@ -1,21 +1,14 @@
 ---
 title: 列出实体类型-LUIS
-titleSuffix: Azure Cognitive Services
 description: 列表实体表示一组固定、封闭的相关单词及其同义词。 LUIS 不会为列表实体发现更多值。 使用 "建议" 功能可查看基于当前列表的新词建议。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/11/2019
-ms.author: diberry
-ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 03/12/2020
+ms.openlocfilehash: 795d16bc2e0c4223ff3ac283a72493923d3ab355
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849762"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297231"
 ---
 # <a name="list-entity"></a>列表实体
 
@@ -28,7 +21,7 @@ ms.locfileid: "74849762"
 * 是已知的集。
 * 不经常更改。 如果需要经常更改列表或希望列表自行展开，则使用短语列表提升的简单实体是更好的选择。
 * 此集不超出此实体类型的最大 LUIS [边界](luis-boundaries.md)。
-* 话语中的文本是同义项或规范名称的完全匹配。 LUIS 不会使用除文本完全匹配项之外的列表。 不使用列表实体解析模糊匹配、不区分大小写、词干、复数和其他变体。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
+* 查询文本中的文本是与同义词或规范名称不区分大小写的匹配项。 LUIS 不会使用超出匹配项的列表。 模糊匹配、词干分析、复数和其他变体不会使用列表实体进行解析。 若要管理变体，请考虑使用带有可选文本语法的[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)。
 
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
@@ -70,7 +63,7 @@ ms.locfileid: "74849762"
 
 在之前的陈述中，单词 `paris` 映射至属于 `Cities` 列表实体一部分的“巴黎”项。 列表实体同时匹配项的规范化名称及其同义词。
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 预测终结点响应](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 预测终结点响应](#tab/V2)
 
 ```JSON
   "entities": [
@@ -88,7 +81,7 @@ ms.locfileid: "74849762"
   ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 预测终结点响应](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 预测终结点响应](#tab/V3)
 
 
 如果在查询字符串中设置 `verbose=false`，则这是 JSON：
@@ -132,7 +125,7 @@ ms.locfileid: "74849762"
 
 * * *
 
-|数据对象|实体名称|Value|
+|数据对象|实体名称|值|
 |--|--|--|
 |列出实体|`Cities`|`paris`|
 

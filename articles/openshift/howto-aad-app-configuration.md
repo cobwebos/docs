@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 0a629a86ab9029bf7c12470e582a72bd3671fc86
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78940923"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280529"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory Azure Red Hat OpenShift 集成
 
@@ -92,12 +92,20 @@ Microsoft Azure Red Hat OpenShift 需要权限来代表群集执行任务。 如
 
 ## <a name="add-api-permissions"></a>添加 API 权限
 
-1. 在 "**管理**" 部分中，单击 " **API 权限**"，然后单击 " **+ 添加权限**"。 
-3. 在 "**请求 API 权限**" 窗格中，选择 " **Microsoft api** " 选项卡，然后选择 " **Microsoft Graph** " 磁贴。 选择“应用程序权限”。
-4. 搜索 "**用户**" 并启用**用户 "读取**" 权限。 搜索 "**目录**" 并启用 "**目录读取**"。
-5. 单击 "**添加权限**" 以接受更改。
-6. "API 权限" 面板现在应显示 "用户"、"*读取*" 和 "*目录*"。 请注意 "*目录*" 旁边的 "**管理员同意要求**" 列中的警告。
-7. 如果你是*Azure 订阅管理员*，请单击 "授予管理员许可 * 订阅名称 * *"。 如果你不是*Azure 订阅管理员*，请向管理员请求同意。
+[//]: # (不要更改为 Microsoft Graph。它不适用于 Microsoft Graph。)
+1. 在 "**管理**" 部分单击 " **API 权限**"
+2. 单击 "**添加权限**"，然后选择 " **Azure Active Directory 关系图**，然后**委派权限**"。
+> [!NOTE]
+> 请确保已选择 "Azure Active Directory 图形"，而不是 "Microsoft Graph" 磁贴。
+
+3. 在下面的列表中展开 "**用户**"，并启用 "**用户读取**" 权限。 如果在默认情况下启用了**User. read** ，请确保它是**Azure Active Directory Graph**权限**用户。读取**。
+4. 向上滚动并选择 "**应用程序权限**"。
+5. 在下面的列表中展开 "**目录**"，然后启用**ReadAll**。
+6. 单击 "**添加权限**" 以接受更改。
+7. API 权限面板现在应显示 "ReadAll *" 和 "* *目录*"。 请注意 " *ReadAll*" 旁边的 "**管理员同意要求**" 列中的警告。
+8. 如果你是*Azure 订阅管理员*，请单击下面的 "**授予*订阅名称*管理员许可**"。 如果你不是*Azure 订阅管理员*，请向管理员请求同意。
+
+![API 权限面板的屏幕截图。 添加了 ReadAll 权限，ReadAll 需要管理员许可。](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > 只有在授予同意后，才可以同步群集管理员组。 你将看到一个绿色圆圈，其中包含一个复选标记和一条 "*需要管理员同意* *" 列*中的消息。

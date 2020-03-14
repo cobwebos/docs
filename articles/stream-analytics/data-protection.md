@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 34cbe5f23728c1fcff0555256575cc34b2b6a869
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079831"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299390"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 流分析中的数据保护 
 
@@ -53,8 +53,6 @@ Azure 流分析是一种完全托管的平台即服务，可用于构建实时�
 * 已创作的查询及其相关配置  
 
 * 用户定义的函数 
-
-* 输入数据采样的结果 
 
 * 流分析运行时所需的检查点
 

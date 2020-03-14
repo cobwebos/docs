@@ -5,18 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132834"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298727"
 ---
 # <a name="sensor-partner-integration"></a>传感器合作伙伴集成
 
 本文提供了有关 Azure FarmBeats **Translator**组件的信息，该组件启用传感器伙伴集成。
 
-使用此组件，合作伙伴可以使用 FarmBeats 数据中心 Api 与 FarmBeats 集成，并将客户设备数据和遥测发送到 FarmBeats 数据中心。 数据在 FarmBeats 中可用后，将使用 FarmBeats 加速器进行可视化，并可用于数据合成和构建机器学习/人工智能模型。
+使用此组件，合作伙伴可以使用 FarmBeats Datahub Api 与 FarmBeats 集成，并将客户设备数据和遥测发送到 FarmBeats Datahub。 数据在 FarmBeats 中可用后，将使用 FarmBeats 加速器进行可视化，并可用于数据合成和构建机器学习/人工智能模型。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -25,7 +25,7 @@ ms.locfileid: "77132834"
 - API 终结点
 - 租户 ID
 - 客户端 ID
-- 客户端密钥
+- 客户端机密
 - EventHub 连接字符串
 
 请参阅此部分以获取上述凭据：[启用设备集成](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
@@ -50,7 +50,7 @@ FarmBeats 使用 Microsoft Azure Active Directory 身份验证。 Azure App Se
 
 有关详细信息，请参阅[Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)。
 
-FarmBeats 数据中心使用持有者身份验证，需要以下凭据：
+FarmBeats Datahub 使用持有者身份验证，需要以下凭据：
    - 客户端 ID
    - 客户端机密
    - 租户 ID
@@ -85,14 +85,14 @@ access_token = token_response.get('accessToken') 
 
 **HTTP 请求标头**
 
-下面是在对 FarmBeats 数据中心进行 API 调用时需要指定的最常见请求标头。
+下面是在对 FarmBeats Datahub 进行 API 调用时需要指定的最常见请求标头。
 
 
 **标头** | **说明和示例**
 --- | ---
-Content-Type | 请求格式（Content-type： application/<format>）。 对于 FarmBeats 数据中心 Api，格式为 JSON。 Content-Type: application/json
+Content-Type | 请求格式（Content-type： application/<format>）。 对于 FarmBeats Datahub Api，格式为 JSON。 Content-Type: application/json
 授权 | 指定进行 API 调用所需的访问令牌。 授权：持有者 < 访问令牌 >
-接受 | 响应格式。 对于 FarmBeats 数据中心 Api，格式为 JSON。 接受： application/json
+Accept | 响应格式。 对于 FarmBeats Datahub Api，格式为 JSON。 接受： application/json
 
 **API 请求**
 
@@ -119,7 +119,7 @@ JSON 是一种与语言无关的公共数据格式，提供任意数据结构的
 
 ## <a name="metadata-specifications"></a>元数据规范
 
-FarmBeats 数据中心具有以下 Api，可让设备合作伙伴创建和管理设备或传感器元数据。
+FarmBeats Datahub 具有以下 Api，可让设备合作伙伴创建和管理设备或传感器元数据。
 
 - /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
 - /**设备**：设备对应于在场上存在的物理设备。
@@ -139,7 +139,7 @@ FarmBeats 数据中心具有以下 Api，可让设备合作伙伴创建和管理
   DeviceModelId  |关联的设备模型的 ID。 |
   HardwareId   |设备的唯一 ID，如 MAC 地址。  |
   ReportingInterval |报告间隔（秒）。 |
-  Location    |设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。 |
+  位置    |设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。 |
   ParentDeviceId | 此设备连接到的父设备的 ID。 例如，如果某个节点连接到网关，则该节点将 parentDeviceID 作为网关。 |
   名称  | 用于标识资源的名称。 设备合作伙伴需要发送与设备伙伴端设备名称一致的名称。 如果设备名称是设备伙伴端上的用户定义的，则应将同一用户定义的名称传播到 FarmBeats。  |
   说明  | 提供有意义的说明。  |
@@ -161,7 +161,7 @@ FarmBeats 数据中心具有以下 Api，可让设备合作伙伴创建和管理
   **器**  |  |
   HardwareId  | 制造商设置的传感器的唯一 ID。
   SensorModelId  | 关联的传感器型号的 ID。
-  Location  | 传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
+  位置  | 传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。
   端口 > 名称  |设备上传感器连接到的端口的名称和类型。 此名称必须与设备模型中定义的名称相同。
   DeviceId  | 传感器连接到的设备的 ID。
   名称  | 用于标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。
@@ -230,11 +230,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
@@ -304,7 +304,7 @@ write_client.stop()
 
 ## <a name="unlink-farmbeats"></a>取消链接 FarmBeats
 
-设备合作伙伴可以让客户取消链接现有的 FarmBeats 集成。 取消链接 FarmBeats 不应删除在 FarmBeats 数据中心中创建的任何设备或传感器元数据。 取消链接会执行以下操作：
+设备合作伙伴可以让客户取消链接现有的 FarmBeats 集成。 取消链接 FarmBeats 不应删除在 FarmBeats Datahub 中创建的任何设备或传感器元数据。 取消链接会执行以下操作：
 
    - 停止遥测流。
    - 删除并清除设备伙伴上的集成凭据。

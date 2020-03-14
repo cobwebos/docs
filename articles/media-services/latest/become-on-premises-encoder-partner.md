@@ -1,6 +1,6 @@
 ---
 title: 成为本地编码器合作伙伴-Azure 媒体服务
-description: 使用 Azure 媒体服务成为本地编码器合作伙伴。
+description: 本文介绍如何验证本地实时流式处理编码器。
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252969"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298625"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>成为本地编码器合作伙伴
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>如何验证本地实时流式处理编码器
 
 作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为本地编码器合作伙伴，必须验证本地编码器与媒体服务的兼容性。 为此，请完成以下验证。
 
-### <a name="pass-through-live-event-verification"></a>直通直播活动验证
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>直通直播活动验证
 
 1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
 2. 创建并启动直通直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
@@ -38,7 +40,7 @@ ms.locfileid: "78252969"
 15. 在创建每个示例后重置直播活动状态。
 16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
 
-### <a name="live-encoding-live-event-verification"></a>实时编码直播活动验证
+## <a name="live-encoding-live-event-verification"></a>实时编码直播活动验证
 
 1. 在媒体服务帐户中，确保**流式处理终结点**正在运行。 
 2. 创建并启动实时编码直播活动。 <br/> 有关详细信息，请参阅[直播活动状态和计费](live-event-states-billing.md)。
@@ -57,17 +59,17 @@ ms.locfileid: "78252969"
 15. 在创建每个示例后重置直播活动状态。
 16. 对编码器支持的所有配置重复（有或无广告信号、字幕或不同编码速度）步骤 5 到 15。
 
-### <a name="longevity-verification"></a>使用寿命验证
+## <a name="longevity-verification"></a>使用寿命验证
 
 遵循[直通直播活动验证](#pass-through-live-event-verification)中的相同步骤（步骤 11 除外）。 <br/>运行实时编码器一周或更长时间，而不是 10 分钟。 使用 [Azure Media Player](https://aka.ms/azuremediaplayer) 等播放器不时观看实时传送视频流（或存档的资产），确保播放没有明显问题。
 
-### <a name="email-your-recorded-settings"></a>通过电子邮件发送记录的设置
+## <a name="email-your-recorded-settings"></a>通过电子邮件发送记录的设置
 
 最后，通过电子邮件将记录的设置和实时存档参数作为通知发送到 Azure 媒体服务 (amshelp@microsoft.com)，告知所有自我验证检查已通过。 另请提供联系信息，以方便跟进。 在此过程中如有任何问题，可以联系 Azure 媒体服务团队。
 
 ## <a name="see-also"></a>另请参阅
 
-[推荐的本地实时编码器](recommended-on-premises-live-encoders.md)
+[测试的本地编码器](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>后续步骤
 

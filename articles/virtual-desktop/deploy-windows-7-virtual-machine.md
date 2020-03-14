@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128000"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366677"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>在 Windows 虚拟桌面上部署 Windows 7 虚拟机
 
@@ -35,7 +35,7 @@ ms.locfileid: "79128000"
 4. 将使用 RDP 连接到主机时使用的帐户添加到 "远程桌面用户" 组。 否则，可能无法在将 VM 加入到 Active Directory 域后连接到该 VM。
 5. 请在 VM 上中转到 Windows 更新。
 6. 安装 "重要" 类别中的所有 Windows 更新。
-7. 在可选类别中安装所有 Windows 更新（语言包除外）。 这将安装完成这些说明所需的远程桌面协议8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)）。
+7. 在可选类别中安装所有 Windows 更新（语言包除外）。 这将安装完成这些说明所需的远程桌面协议8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)）。
 8. 打开本地组策略编辑器，导航到 "**计算机配置**" > **管理模板** > **Windows 组件** ** > 远程桌面服务 > ** 远程桌面会话主机**远程会话环境**。 > 
 9. 启用远程桌面协议8.0 策略。
 10. 将此 VM 加入到 Active Directory 域。

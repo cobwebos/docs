@@ -3,12 +3,12 @@ title: 查看容器 Azure Monitor 的实时数据（预览） |Microsoft Docs
 description: 本文介绍 Kubernetes 日志、事件和 pod 指标的实时视图，而无需在容器 Azure Monitor 中使用 kubectl。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404757"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216536"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何实时查看 Kubernetes 日志、事件和 pod 指标
 
@@ -65,7 +65,7 @@ ms.locfileid: "75404757"
 
 窗格标题显示容器的分组容器的名称。
 
-## <a name="view-events"></a>查看活动
+## <a name="view-events"></a>查看事件
 
 如果选择了容器、pod、node、ReplicaSet、DaemonSet、作业、CronJob 或部署，则可以在容器引擎从**节点**、**控制器**、**容器**和**部署（预览）** 视图中生成实时事件数据。 若要查看事件，请执行以下步骤。
 
@@ -84,7 +84,7 @@ ms.locfileid: "75404757"
     
 如果你选择的对象是一个容器，请在窗格中选择 "**事件**" 选项。 如果选择了节点、Pod 或控制器，则会自动选择 "查看事件"。 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+!["控制器属性" 窗格查看事件](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 窗格标题显示容器的分组容器的名称。
 

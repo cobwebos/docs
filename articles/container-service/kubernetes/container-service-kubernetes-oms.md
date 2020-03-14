@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271074"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371148"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
 
@@ -21,38 +21,41 @@ ms.locfileid: "76271074"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
 并假设已安装 `az` Azure CLI 和 `kubectl` 工具。
 
 可以通过运行以下语句测试是否已安装 `az` 工具：
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 如果尚未安装 `az` 工具，请参阅[此处](https://github.com/azure/azure-cli#installation)的说明。
-或者，可以使用已安装 `az` Azure CLI 和 `kubectl` 工具的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。
+或者，可以使用已安装 [ Azure CLI 和 ](https://docs.microsoft.com/azure/cloud-shell/overview) 工具的 `az`Azure Cloud Shell`kubectl`。
 
 可以通过运行以下语句测试是否已安装 `kubectl` 工具：
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 如果尚未安装 `kubectl`，则可运行：
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 若要测试 kubectl 工具中是否已安装 kubernetes 密钥，可运行：
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 如果上述命令错误，需要将 kubernetes 群集密钥安装到 kubectl 工具中。 可使用以下命令执行该操作：
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ DaemonSet 还特别适合用于运行监视代理。
 将工作区 ID 和密钥添加到 DaemonSet 配置中后，可以使用 `kubectl` 命令行工具在群集上安装 Log Analytics 代理：
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 机密安装 Log Analytics 代理
@@ -94,16 +97,24 @@ $ kubectl create -f oms-daemonset.yaml
   - 机密模板 - secret-template.yaml
     - DaemonSet YAML 文件 - omsagent-ds-secrets.yaml
 - 运行该脚本。 该脚本需要 Log Analytics 工作区 ID 和主键。 插入该 ID 和主密钥，然后该脚本将创建一个机密 yaml 文件，以便可以运行。
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - 通过运行以下命令创建机密 Pod：```kubectl create -f omsagentsecret.yaml```
+  - 通过运行以下命令创建机密 Pod：
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - 若要检查，请运行以下命令：
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ $ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 通过运行 ```kubectl create -f omsagent-ds-secrets.yaml``` 创建 omsagent daemon-set
+  - 通过运行以下内容创建 omsagent 守护程序集：
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>结束语
 就这么简单！ 几分钟后，应该可以看到数据流向 Log Analytics 仪表板。

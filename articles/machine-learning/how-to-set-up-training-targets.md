@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 209ed755a7ef83b67170ef75911f93cdda742caa
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156346"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368190"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型定型的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "76156346"
 可以使用 Azure 机器学习 SDK、Azure 机器学习 studio、Azure CLI 或 Azure 机器学习 VS Code 扩展来创建和管理计算目标。 如果计算目标是通过其他服务（例如 HDInsight 群集）创建的，则可以通过将其附加到 Azure 机器学习工作区来使用它们。
  
 本文介绍如何使用各种计算目标进行模型训练。  适用于所有计算目标的步骤遵循相同的工作流：
-1. __创建__计算目标（如果没有）。
+1. 如果还没有计算目标，请__创建__一个。
 2. 将计算目标__附加__到工作区。
 3. __配置__计算目标，使其包含脚本所需的 Python 环境和包依赖项。
 
@@ -89,7 +89,7 @@ ML 管道是从多个**步骤**构造的，这些步骤是管道中的不同计�
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
-附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+现在，你已附加了计算并配置了运行，下一步是[提交训练运行](#submit)。
 
 ### <a id="amlcompute"></a>Azure 机器学习计算
 
@@ -114,7 +114,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
 
 
-附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+现在，你已附加了计算并配置了运行，下一步是[提交训练运行](#submit)。
 
 #### <a id="persistent"></a>持久性计算
 
@@ -136,7 +136,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
-附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+现在，你已附加了计算并配置了运行，下一步是[提交训练运行](#submit)。
 
 
 ### <a id="vm"></a>远程虚拟机
@@ -154,15 +154,30 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 这种�
 
 1. **附加**：若要将现有的虚拟机附加为计算目标，必须为虚拟机提供完全限定的域名（FQDN）、用户名和密码。 在本示例中，请将 \<fqdn> 替换为 VM 的 FQDN，或替换为公共 IP 地址。 请将 \<username> 和 \<password> 替换为 VM 的 SSH 用户名和密码。
 
+    > [!IMPORTANT]
+    > 以下 Azure 区域不支持附加使用 VM 的公共 IP 地址的虚拟机。 请改为将 VM 的 Azure 资源管理器 ID 与 `resource_id` 参数一起使用：
+    >
+    > * 美国东部
+    > * 美国西部 2
+    > * 美国中南部
+    >
+    > 可以使用订阅 ID、资源组名称和 VM 名称，使用以下字符串格式构造 VM 的资源 ID： `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`。
+
+
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address = "<fqdn>",
+   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
                                                     ssh_port=22,
                                                     username='<username>',
                                                     password="<password>")
+   # If in US East, US West 2, or US South Central, use the following instead:
+   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+   #                                                 ssh_port=22,
+   #                                                 username='<username>',
+   #                                                 password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -184,7 +199,7 @@ Azure 机器学习还支持将自己的计算资源附加到工作区。 这种�
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
-附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+现在，你已附加了计算并配置了运行，下一步是[提交训练运行](#submit)。
 
 ### <a id="hdinsight"></a>Azure HDInsight 
 
@@ -198,6 +213,15 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
 
 1. **附加**：若要将 hdinsight 群集附加为计算目标，必须提供 hdinsight 群集的主机名、用户名和密码。 下面的示例使用 SDK 将群集附加到工作区。 在该示例中，请将 \<clustername> 替换为群集名称。 请将 \<username> 和 \<password> 替换为群集的 SSH 用户名和密码。
 
+    > [!IMPORTANT]
+    > 以下 Azure 区域不支持使用群集的公共 IP 地址附加 HDInsight 群集。 请改用具有 `resource_id` 参数的群集的 Azure 资源管理器 ID：
+    >
+    > * 美国东部
+    > * 美国西部 2
+    > * 美国中南部
+    >
+    > 可以使用以下字符串格式，使用订阅 ID、资源组名称和群集名称构造群集的资源 ID： `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`。
+
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
    from azureml.exceptions import ComputeTargetException
@@ -208,6 +232,11 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
+    # If you are in US East, US West 2, or US South Central, use the following instead:
+    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
+    #                                                      ssh_port=22, 
+    #                                                      username='<ssh-username>', 
+    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)
@@ -225,7 +254,7 @@ Azure HDInsight 是用于大数据分析的热门平台。 该平台提供的 Ap
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 
-附加计算并配置运行后，下一步是[提交训练运行](#submit)。
+现在，你已附加了计算并配置了运行，下一步是[提交训练运行](#submit)。
 
 
 ### <a id="azbatch"></a>Azure Batch 
@@ -234,9 +263,9 @@ Azure Batch 用于在云中高效运行大规模并行和高性能计算（HPC�
 
 若要将 Azure Batch 附加为计算目标，必须使用 Azure 机器学习 SDK，并提供以下信息：
 
--   **Azure Batch 计算名称**：要用于工作区中计算的友好名称
--   **Azure Batch 帐户名称**： Azure Batch 帐户的名称
--   **资源组**：包含 Azure Batch 帐户的资源组。
+-    **Azure Batch 计算名称**：要用于工作区中计算的友好名称
+-    **Azure Batch 帐户名称**： Azure Batch 帐户的名称
+-    **资源组**：包含 Azure Batch 帐户的资源组。
 
 下面的代码演示如何将 Azure Batch 附加为计算目标：
 
@@ -377,7 +406,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 > [!IMPORTANT]
 > 提交训练运行时，将创建包含定型脚本的目录的快照，并将其发送到计算目标。 它也作为实验的一部分存储在工作区中。 如果更改文件并再次提交运行，则只会上载已更改的文件。
 >
-> 若要防止文件包含在快照中, 请在目录中创建 [.gitignore](https://git-scm.com/docs/gitignore) 或`.amlignore`文件, 并将文件添加到其中。 `.amlignore`文件使用与 [.gitignore](https://git-scm.com/docs/gitignore) 文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
+> 若要防止文件包含在快照中，请在目录中创建一个[.gitignore](https://git-scm.com/docs/gitignore)或 `.amlignore` 文件，并将文件添加到其中。 `.amlignore` 文件使用与[.gitignore](https://git-scm.com/docs/gitignore)文件相同的语法和模式。 如果这两个文件都存在，则 `.amlignore` 文件优先。
 > 
 > 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshots)。
 
@@ -412,7 +441,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 或者可以：
 
-* 根据[使用评估器训练机器学习模型](how-to-train-ml-models.md)中所述，使用 `Estimator` 对象提交试验。
+* 根据`Estimator`使用评估器训练机器学习模型[中所述，使用 ](how-to-train-ml-models.md) 对象提交试验。
 * 提交用于[超参数优化](how-to-tune-hyperparameters.md)的 HyperDrive 运行。
 * 通过[VS Code 扩展](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)提交试验。
 

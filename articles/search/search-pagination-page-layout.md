@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e83ecb3888ed4b19933233f3ab511d1e86fb37af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721568"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136984"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 认知搜索中使用搜索结果
 本文提供有关如何实现搜索结果页面的标准元素（例如总计数、记录检索、排序顺序和导航）的指南。 向你的搜索结果提供数据或信息的页面相关选项通过发送到 Azure 认知搜索服务的[搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)请求来指定。 
@@ -25,7 +25,7 @@ ms.locfileid: "76721568"
 + 使用门户中的[应用程序生成器](search-create-app-portal.md)创建一个具有搜索栏、分面导航和结果区域的 HTML 页面。
 + 请按照[创建第一个应用教程C#中](tutorial-csharp-create-first-app.md)的步骤创建功能客户端。
 
-几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 "[城市作业" 演示应用](https://azjobsdemo.azurewebsites.net/)、[使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+几个代码示例包含一个 web 前端接口，可在此处找到：纽约的 "[城市作业" 演示应用](https://aka.ms/azjobsdemo)、[使用实时演示网站的 JavaScript 示例代码](https://github.com/liamca/azure-search-javascript-samples)和[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
 
 > [!NOTE]
 > 有效的请求包括大量元素，例如服务 URL 和路径、HTTP 谓词、`api-version` 等。 为简洁起见，我们剪裁了示例，以便仅突出显示与分页相关的语法。 有关请求语法的详细信息，请参阅[Azure 认知搜索 REST api](https://docs.microsoft.com/rest/api/searchservice)。

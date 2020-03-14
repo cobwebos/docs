@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c71643adf3b34954ea5ce020351559abbfc60fab
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562354"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298931"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（源）
 
@@ -116,7 +116,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
     > [!NOTE]
     > 位于同一数据中心的流式处理终结点不能共享相同的自定义主机名。
 
-    目前，媒体服务不支持具有自定义域的 SSL。
+    媒体服务当前对自定义域不支持 SSL。
 
 - `maxCacheAge`-重写由媒体片段和按需清单上的流式处理终结点设置的默认最大期限 HTTP 缓存控制标头。 该值以秒为单位进行设置。
 - `resourceState` -
@@ -150,7 +150,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
     假设你的客户主要在观看实时内容，但只是偶尔观看点播内容并从同一个流式处理终结点提供服务。 按需内容的使用率较低会占用缓存空间，该空间可更好地保存用于实时内容。 在此方案中，我们建议从一个流式处理终结点和来自另一个流式处理终结点的长尾内容中提供实时内容。 这将提高实时事件内容的性能。
     
-## <a name="scaling-streaming-with-cdn"></a>用 CDN 缩放流式处理
+## <a name="scaling-streaming-with-cdn"></a>使用 CDN 缩放流式处理
 
 请参阅以下文章：
 
@@ -163,4 +163,4 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 ## <a name="next-steps"></a>后续步骤
 
-此[存储库](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)中的示例介绍了如何使用 .NET 启动默认流式处理终结点。
+[管理流式处理终结点](manage-streaming-endpoints-howto.md)

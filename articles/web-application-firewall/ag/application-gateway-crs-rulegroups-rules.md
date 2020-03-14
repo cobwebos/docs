@@ -9,11 +9,11 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075378"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279242"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
@@ -21,24 +21,24 @@ ms.locfileid: "74075378"
 
 ## <a name="core-rule-sets"></a>核心规则集
 
-默认情况下，应用程序网关 WAF 是由 CRS 3.0 预配置的。 但你可以改为选择使用 CRS 3.1 或 CRS 2.2.9。 CRS 3.1 提供了新的规则集来防范 Java 感染、一组初始文件上传检查、纠正误报等等。 与 CRS 2.2.9 相比，CRS 3.0 的误报数更少。 还可以[根据需求自定义规则](application-gateway-customize-waf-rules-portal.md)。
+默认情况下，应用程序网关 WAF 是由 CRS 3.0 预配置的。 但你可以改为选择使用 CRS 3.1 或 CRS 2.2.9。 CRS 3.1 提供了新的规则集来防范 Java 感染、一组初始文件上传检查、纠正误报等等。 CRS 3.0 比 CRS 2.2.9 减少了误报。 你还可以[自定义规则以满足你的需求](application-gateway-customize-waf-rules-portal.md)。
 
 > [!div class="mx-imgBorder"]
 > ![管理规则](../media/application-gateway-crs-rulegroups-rules/managed-rules-01.png)
 
-WAF 可针对以下 Web 漏洞提供保护：
+WAF 可防止以下 web 漏洞：
 
-- SQL 注入攻击
+- SQL 注入式攻击
 - 跨站点脚本攻击
 - 其他常见攻击，例如命令注入、HTTP 请求走私、HTTP 响应拆分和远程文件包含
-- HTTP 协议违规
-- HTTP 协议异常，例如缺少主机用户代理和接受标头
-- 机器人、爬网程序和扫描程序
-- 常见应用程序错误配置（例如 Apache 和 IIS）
+- HTTP 协议冲突
+- HTTP 协议异常，如缺少主机用户代理和接受标头
+- Bot、爬网程序和扫描程序
+- 常见的应用程序配置错误（例如 Apache 和 IIS）
 
 ### <a name="owasp-crs-31"></a>OWASP CRS 3。1
 
-CRS 3.1 包含13个规则组，如下表所示。 每个组包含多个可以禁用的规则。
+CRS 3.1 包含13个规则组，如下表所示。 每个组都包含多个可以禁用的规则。
 
 |规则组|说明|
 |---|---|
@@ -46,19 +46,19 @@ CRS 3.1 包含13个规则组，如下表所示。 每个组包含多个可以禁
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|防范端口和环境扫描程序|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|防范协议和编码问题|
-|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-31)**|防范标头注入、请求走私和响应拆分|
+|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-31)**|防止标头注入、请求走私和响应拆分|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-31)**|防范文件和路径攻击|
-|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-31)**|防范远程文件包含 (RFI) 攻击|
-|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-31)**|防范远程代码执行攻击|
-|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-31)**|防范 PHP 注入攻击|
-|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-31)**|防范跨站点脚本攻击|
-|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-31)**|防范 SQL 注入攻击|
-|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-31)**|防范会话固定攻击|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-31)**|防范远程文件包含（RFI）攻击|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-31)**|再次保护远程代码执行攻击|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-31)**|防范 PHP 注入式攻击|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-31)**|抵御跨站点脚本攻击|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-31)**|防范 SQL 注入式攻击|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-31)**|抵御会话固定攻击|
 |**[请求-944-应用程序-会话-JAVA](#crs944-31)**|防范 JAVA 攻击|
 
-### <a name="owasp-crs-30"></a>OWASP CRS 3.0
+### <a name="owasp-crs-30"></a>OWASP CRS 3。0
 
-CRS 3.0 包括12个规则组，如下表所示。 每个组包含多个可以禁用的规则。
+CRS 3.0 包括12个规则组，如下表所示。 每个组都包含多个可以禁用的规则。
 
 |规则组|说明|
 |---|---|
@@ -66,39 +66,39 @@ CRS 3.0 包括12个规则组，如下表所示。 每个组包含多个可以禁
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|锁定方法（PUT、PATCH）|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|防范端口和环境扫描程序|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|防范协议和编码问题|
-|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-30)**|防范标头注入、请求走私和响应拆分|
+|**[REQUEST-921-PROTOCOL-ATTACK](#crs921-30)**|防止标头注入、请求走私和响应拆分|
 |**[REQUEST-930-APPLICATION-ATTACK-LFI](#crs930-30)**|防范文件和路径攻击|
-|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-30)**|防范远程文件包含 (RFI) 攻击|
-|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-30)**|防范远程代码执行攻击|
-|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-30)**|防范 PHP 注入攻击|
-|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-30)**|防范跨站点脚本攻击|
-|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-30)**|防范 SQL 注入攻击|
-|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-30)**|防范会话固定攻击|
+|**[REQUEST-931-APPLICATION-ATTACK-RFI](#crs931-30)**|防范远程文件包含（RFI）攻击|
+|**[REQUEST-932-APPLICATION-ATTACK-RCE](#crs932-30)**|再次保护远程代码执行攻击|
+|**[REQUEST-933-APPLICATION-ATTACK-PHP](#crs933-30)**|防范 PHP 注入式攻击|
+|**[REQUEST-941-APPLICATION-ATTACK-XSS](#crs941-30)**|抵御跨站点脚本攻击|
+|**[REQUEST-942-APPLICATION-ATTACK-SQLI](#crs942-30)**|防范 SQL 注入式攻击|
+|**[REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION](#crs943-30)**|抵御会话固定攻击|
 
-### <a name="owasp-crs-229"></a>OWASP CRS 2.2.9
+### <a name="owasp-crs-229"></a>OWASP CRS 2.2。9
 
-CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可以禁用的规则。
+CRS 2.2.9 包含10个规则组，如下表所示。 每个组都包含多个可以禁用的规则。
 
 |规则组|说明|
 |---|---|
-|**[crs_20_protocol_violations](#crs20)**|防范协议违规（例如无效字符，或使用请求正文执行 GET）|
+|**[crs_20_protocol_violations](#crs20)**|防范协议冲突（如无效字符或带有请求正文的 GET）|
 |**[crs_21_protocol_anomalies](#crs21)**|防范错误的标头信息|
-|**[crs_23_request_limits](#crs23)**|防范参数或文件超出限制|
-|**[crs_30_http_policy](#crs30)**|防范受限的方法、标头和文件类型|
-|**[crs_35_bad_robots](#crs35)**|防范 Web 爬网程序和扫描程序|
-|**[crs_40_generic_attacks](#crs40)**|防范常规攻击（例如会话固定、远程文件包含和 PHP 注入）|
-|**[crs_41_sql_injection_attacks](#crs41sql)**|防范 SQL 注入攻击|
-|**[crs_41_xss_attacks](#crs41xss)**|防范跨站点脚本攻击|
+|**[crs_23_request_limits](#crs23)**|防范超出限制的参数或文件|
+|**[crs_30_http_policy](#crs30)**|防范受限方法、标头和文件类型|
+|**[crs_35_bad_robots](#crs35)**|防范 web 爬网程序和扫描程序|
+|**[crs_40_generic_attacks](#crs40)**|防范一般攻击（例如会话固定、远程文件包含和 PHP 注入）|
+|**[crs_41_sql_injection_attacks](#crs41sql)**|防范 SQL 注入式攻击|
+|**[crs_41_xss_attacks](#crs41xss)**|抵御跨站点脚本攻击|
 |**[crs_42_tight_security](#crs42)**|防范路径遍历攻击|
 |**[crs_45_trojans](#crs45)**|防范后门特洛伊木马|
 
 在应用程序网关上使用 Web 应用程序防火墙时，可以使用以下规则组和规则。
 
-# <a name="owasp-31tabowasp31"></a>[OWASP 3。1](#tab/owasp31)
+# <a name="owasp-31"></a>[OWASP 3。1](#tab/owasp31)
 
-## <a name="owasp31"></a> 规则集
+## <a name="owasp31"></a>规则集
 
-### <a name="general-31"></a> <p x-ms-format-detection="none">一般信息</p>
+### <a name="general-31"></a> <p x-ms-format-detection="none">常规</p>
 
 |RuleId|说明|
 |---|---|
@@ -130,7 +130,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920120|尝试的多部分/窗体数据绕过|
 |920121|尝试的多部分/窗体数据绕过|
 |920130|未能分析请求正文。|
-|920140|多部分请求正文无法通过严格的验证|
+|920140|多部分请求正文未通过严格验证|
 |920160|Content-Length HTTP 标头不是数字。|
 |920170|包含正文内容的 GET 或 HEAD 请求。|
 |920171|带有传输编码的 GET 或 HEAD 请求。|
@@ -140,9 +140,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920201|范围 = pdf 请求的字段在多（35 个或以上）|
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击尝试|
+|920220|URL 编码滥用攻击企图|
 |920230|检测到多个 URL 编码|
-|920240|URL 编码滥用攻击尝试|
+|920240|URL 编码滥用攻击企图|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
@@ -153,8 +153,8 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920280|请求缺少 Host 标头|
 |920290|Host 标头为空|
 |920300|请求缺少 Accept 标头|
-|920310|请求包含空的 Accept 标头|
-|920311|请求包含空的 Accept 标头|
+|920310|请求包含空 Accept 标头|
+|920311|请求包含空 Accept 标头|
 |920320|缺少用户代理标头|
 |920330|用户代理标头为空|
 |920340|请求包含内容但缺少 Content-Type 标头|
@@ -258,16 +258,16 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941180|节点验证器方块列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
-|941210|使用经过模糊处理的 Javascript 的 XSS|
-|941220|使用经过模糊处理的 VB Script 的 XSS|
-|941230|使用“embed”标记的 XSS|
-|941240|使用“import”或“implementation”属性的 XSS|
+|941210|使用模糊 Javascript 的 XSS|
+|941220|使用模糊 VB 脚本的 XSS|
+|941230|使用 "嵌入" 标记的 XSS|
+|941240|使用 "import" 或 "实现" 特性的 XSS|
 |941250|IE XSS 筛选器-检测到攻击|
-|941260|使用“meta”标记的 XSS|
-|941270|使用“link”href 的 XSS|
-|941280|使用“base”标记的 XSS|
-|941290|使用“applet”标记的 XSS|
-|941300|使用“object”标记的 XSS|
+|941260|使用 "meta" 标记的 XSS|
+|941270|使用 "链接" href 的 XSS|
+|941280|使用 "base" 标记的 XSS|
+|941290|使用 "applet" 标记的 XSS|
+|941300|使用 "object" 标记的 XSS|
 |941310|US-ASCII 格式错误编码 XSS 筛选器 - 检测到攻击。|
 |941320|检测到可能的 XSS 攻击 - HTML 标记处理程序|
 |941330|IE XSS 筛选器 - 检测到攻击。|
@@ -300,7 +300,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |942280|检测 Postgres pg_sleep 注入、waitfor 延迟攻击和数据库关闭尝试|
 |942290|查找基本 MongoDB SQL 注入企图|
 |942300|检测到 MySQL 注释、条件和 ch(a)r 注入|
-|942310|检测链式 SQL 注入尝试次数 2/2|
+|942310|检测链接的 SQL 注入尝试2/2|
 |942320|检测 MySQL 和 PostgreSQL 存储过程/函数注入|
 |942330|检测到经典 SQL 注入探测 1/2|
 |942340|检测到基本 SQL 身份验证绕过尝试 3/3|
@@ -340,11 +340,11 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |944130|可疑 Java 类|
 |944200|利用 Java 反序列化 Apache Commons|
 
-# <a name="owasp-30tabowasp30"></a>[OWASP 3.0](#tab/owasp30)
+# <a name="owasp-30"></a>[OWASP 3。0](#tab/owasp30)
 
-## <a name="owasp30"></a> 规则集
+## <a name="owasp30"></a>规则集
 
-### <a name="general-30"></a> <p x-ms-format-detection="none">一般信息</p>
+### <a name="general-30"></a> <p x-ms-format-detection="none">常规</p>
 
 |RuleId|说明|
 |---|---|
@@ -373,21 +373,21 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |---|---|
 |920100|无效的 HTTP 请求行|
 |920130|未能分析请求正文。|
-|920140|多部分请求正文无法通过严格的验证|
+|920140|多部分请求正文未通过严格验证|
 |920160|Content-Length HTTP 标头不是数字。|
 |920170|包含正文内容的 GET 或 HEAD 请求。|
 |920180|POST 请求缺少 Content-Length 标头。|
 |920190|范围 = 最后一个字节值无效。|
 |920210|找到了多个/有冲突的连接标头数据。|
-|920220|URL 编码滥用攻击尝试|
-|920240|URL 编码滥用攻击尝试|
+|920220|URL 编码滥用攻击企图|
+|920240|URL 编码滥用攻击企图|
 |920250|UTF8 编码滥用攻击企图|
 |920260|Unicode 全角/半角滥用攻击企图|
 |920270|请求中的字符无效（null 字符）|
 |920280|请求缺少 Host 标头|
 |920290|Host 标头为空|
-|920310|请求包含空的 Accept 标头|
-|920311|请求包含空的 Accept 标头|
+|920310|请求包含空 Accept 标头|
+|920311|请求包含空 Accept 标头|
 |920330|用户代理标头为空|
 |920340|请求包含内容但缺少 Content-Type 标头|
 |920350|Host 标头是数字 IP 地址|
@@ -411,7 +411,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920273|请求中的字符无效（不属于极严格集）|
 |920274|请求标头中的字符无效（不属于极严格集）|
-|920460|转义字符异常|
+|920460|异常转义符|
 
 ### <a name="crs921-30"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
@@ -485,15 +485,15 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |941180|节点验证器方块列表关键字|
 |941190|使用样式表的 XSS|
 |941200|使用 VML 帧的 XSS|
-|941210|使用经过模糊处理的 Javascript 的 XSS|
-|941220|使用经过模糊处理的 VB Script 的 XSS|
-|941230|使用“embed”标记的 XSS|
-|941240|使用“import”或“implementation”属性的 XSS|
-|941260|使用“meta”标记的 XSS|
-|941270|使用“link”href 的 XSS|
-|941280|使用“base”标记的 XSS|
-|941290|使用“applet”标记的 XSS|
-|941300|使用“object”标记的 XSS|
+|941210|使用模糊 Javascript 的 XSS|
+|941220|使用模糊 VB 脚本的 XSS|
+|941230|使用 "嵌入" 标记的 XSS|
+|941240|使用 "import" 或 "实现" 特性的 XSS|
+|941260|使用 "meta" 标记的 XSS|
+|941270|使用 "链接" href 的 XSS|
+|941280|使用 "base" 标记的 XSS|
+|941290|使用 "applet" 标记的 XSS|
+|941300|使用 "object" 标记的 XSS|
 |941310|US-ASCII 格式错误编码 XSS 筛选器 - 检测到攻击。|
 |941330|IE XSS 筛选器 - 检测到攻击。|
 |941340|IE XSS 筛选器 - 检测到攻击。|
@@ -517,7 +517,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |942270|正在查找基本 sql 注入。 针对 mysql oracle 和其他系统的常见攻击字符串。|
 |942290|查找基本 MongoDB SQL 注入企图|
 |942300|检测到 MySQL 注释、条件和 ch(a)r 注入|
-|942310|检测链式 SQL 注入尝试次数 2/2|
+|942310|检测链接的 SQL 注入尝试2/2|
 |942320|检测 MySQL 和 PostgreSQL 存储过程/函数注入|
 |942330|检测到经典 SQL 注入探测 1/2|
 |942340|检测到基本 SQL 身份验证绕过尝试 3/3|
@@ -540,9 +540,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击 = 不包含引用方的 SessionID 参数名称|
 
-# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+# <a name="owasp-229"></a>[OWASP 2.2。9](#tab/owasp2)
 
-## <a name="owasp229"></a> 规则集
+## <a name="owasp229"></a>规则集
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -551,7 +551,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
 |960912|未能分析请求正文。|
-|960914|多部分请求正文无法通过严格的验证|
+|960914|多部分请求正文未通过严格验证|
 |960915|多部分分析器检测到可能的不匹配边界。|
 |960016|Content-Length HTTP 标头不是数字。|
 |960011|包含正文内容的 GET 或 HEAD 请求。|
@@ -562,9 +562,9 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |958291|范围 = 字段存在并以 0 开始。|
 |958230|范围 = 最后一个字节值无效。|
 |958295|找到了多个/有冲突的连接标头数据。|
-|950107|URL 编码滥用攻击尝试|
+|950107|URL 编码滥用攻击企图|
 |950109|检测到多个 URL 编码|
-|950108|URL 编码滥用攻击尝试|
+|950108|URL 编码滥用攻击企图|
 |950801|UTF8 编码滥用攻击企图|
 |950116|Unicode 全角/半角滥用攻击企图|
 |960901|请求中的字符无效|
@@ -577,7 +577,7 @@ CRS 2.2.9 包含下表中所示的 10 个规则组。 每个组包含多个可�
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
 |960015|请求缺少 Accept 标头|
-|960021|请求包含空的 Accept 标头|
+|960021|请求包含空 Accept 标头|
 |960009|请求缺少用户代理标头|
 |960006|用户代理标头为空|
 |960904|请求包含内容但缺少 Content-Type 标头|

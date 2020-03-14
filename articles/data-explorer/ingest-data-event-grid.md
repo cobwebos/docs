@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 47870410741cf96e289014fab5a9c2eab26759b1
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: ec218b1638183db463ff09488c988cad64d78c6d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096417"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370434"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
 
@@ -69,7 +69,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 1. 将以下命令复制到窗口中，然后选择“运行”以创建将接收引入数据的表 (TestTable)。
 
-    ```Kusto
+    ```kusto
     .create table TestTable (TimeStamp: datetime, Value: string, Source:string)
     ```
 
@@ -77,7 +77,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 1. 将以下命令复制到窗口中，然后选择“运行”将传入的 JSON 数据映射到表 (TestTable) 的列名和数据类型。
 
-    ```Kusto
+    ```kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.TimeStamp"},{"column":"Value","path":"$.Value"},{"column":"Source","path":"$.Source"}]'
     ```
 
@@ -130,11 +130,11 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 将数据保存到某个文件，然后使用以下脚本上传该文件：
 
-```Json
+```json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
 ```
 
-```bash
+```azurecli
 #!/bin/bash
 ### A simple Azure Storage example script
 
@@ -187,7 +187,7 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 > [!NOTE]
 > Azure 数据资源管理器具有用于数据引入的聚合（批处理）策略，旨在优化引入过程。
 默认情况下，该策略配置为 5 分钟。
-以后可根据需要更改该策略。 在本文中，可能会有几分钟的延迟。
+如果需要，你可以稍后更改策略。 在本文中，可能会有几分钟的延迟。
 
 1. 在 Azure 门户中的事件网格下，可以看到应用运行时的活动高峰。
 
@@ -195,14 +195,14 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
 1. 若要检查到目前为止已向数据库发送的消息数，请在测试数据库中运行以下查询。
 
-    ```Kusto
+    ```kusto
     TestTable
     | count
     ```
 
 1. 若要查看消息的内容，请在测试数据库中运行以下查询。
 
-    ```Kusto
+    ```kusto
     TestTable
     ```
 

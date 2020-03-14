@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 63c53a9b95e27486d7d6944c28f8fb085b1bc6ca
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/14/2020
 ms.locfileid: "74279166"
 ---
 <!-- Not used for Ls-series -->
@@ -20,7 +20,7 @@ ms.locfileid: "74279166"
 ## <a name="size-table-definitions"></a>大小表定义
 
 - 存储容量的单位为 GiB 或 1024^3 字节。 将以 GB （1000 ^ 3 字节）度量的磁盘与在 GiB （1024 ^ 3）中度量的磁盘进行比较时，请记住在 GiB 中指定的容量数量可能会更小。 例如，1023 GiB = 1098.4 GB。
-- 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 Mbps，其中 Mbps = 10^6 字节/秒。
+- 磁盘吞吐量的单位为每秒输入/输出操作数 (IOPS) 和 MBps，其中 MBps = 10^6 字节/秒。
 - 数据磁盘可以在缓存或非缓存模式下运行。 对于缓存数据磁盘操作，主机缓存模式设置为 **ReadOnly** 或 **ReadWrite**。  对于非缓存数据磁盘操作，主机缓存模式设置为 **None**。
 - 如果要获得 Vm 的最佳性能，应将数据磁盘的数量限制为每个 vCPU 的两个磁盘。
 - **预期网络带宽**是所有目标的所有 nic 上为每个 VM 类型分配的最大聚合带宽。 有关详细信息，请参阅[虚拟机网络带宽](../articles/virtual-network/virtual-machine-network-throughput.md)。

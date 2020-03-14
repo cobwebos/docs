@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198269"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276395"
 ---
 # <a name="extended-geojson-geometries"></a>扩展的 GeoJSON 几何图形
 
@@ -26,7 +26,7 @@ Azure Maps 提供了一个功能强大的 Api 列表，用于在地理功能内�
 * MultiLineString
 * MultiPoint
 * MultiPolygon
-* 点
+* Point
 * Polygon
 
 某些 Azure Maps Api 接受不属于[GeoJSON 规范][1]的几何。例如，[几何图形内的搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)接受圆圈和多边形。

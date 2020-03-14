@@ -5,11 +5,11 @@ ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277019"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions 的连续部署
 
@@ -63,7 +63,7 @@ Azure 中函数的部署单位是 function app。 函数应用中的所有函数
 
 6. 查看所有详细信息，然后选择 "**完成**" 以完成部署配置。
 
-    ![Summary](./media/functions-continuous-deployment/summary.png)
+    ![总结](./media/functions-continuous-deployment/summary.png)
 
 完成此过程后，指定源中的所有代码都将部署到你的应用。 此时，部署源中的更改会触发将这些更改部署到 Azure 中的函数应用。
 

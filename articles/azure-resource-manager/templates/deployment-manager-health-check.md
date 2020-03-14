@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
 ms.openlocfilehash: aa99bdfcbc2f42ae81bdd55c266bcd7d87808031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484800"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273795"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介绍 Azure 部署管理器的运行状况集成推出（公共预览版）
 
@@ -138,7 +138,7 @@ Azure 部署管理器中的新*healthCheck*步骤使你可以声明指示正常�
 
     1. 部署操作完成后，Vm 可能会重新启动、基于新数据重新配置，甚至首次启动。 运行状况监视提供程序将运行状况信号聚合为有用的内容时，服务还需要花费时间。 在此 tumultuous 过程中，检查服务运行状况可能并不合理，因为更新尚未达到稳定状态。 事实上，当资源结算时，服务在正常和不正常状态之间可能会变得不稳定。 
     1. 在等待阶段，不会监视服务运行状况。 这用于在开始运行状况检查过程之前，允许已部署的资源制作时间。 
-1. 灵活
+1. Elastic
 
     1. 由于在所有情况下都不可能知道资源在变得稳定之前需要多长时间才能制作，因此，弹性阶段允许在资源可能不稳定以及需要维持正常稳定状态.
     1. 当弹性阶段开始时，Azure 部署管理器会定期轮询为服务运行状况提供的 REST 终结点。 轮询间隔是可配置的。 
@@ -147,7 +147,7 @@ Azure 部署管理器中的新*healthCheck*步骤使你可以声明指示正常�
     1. 因此，为弹性阶段指定的持续时间是在正常响应被视为必需之前，可用于轮询服务运行状况的最长时间。 
 1. HealthyState
 
-    1. 在 HealthyState 阶段，服务运行状况会以与 Elastic 阶段相同的间隔持续进行轮询。 
+    1. 在 HealthyState 阶段，服务运行状况会按照弹性阶段的相同时间间隔持续轮询。 
     1. 此服务应在整个指定的持续时间内维护运行状况监视提供程序的正常信号。 
     1. 如果在任何时候检测到不正常的响应，Azure 部署管理器将停止整个推出并返回带有不正常服务信号的 REST 响应。
     1. HealthyState 持续时间结束后，healthCheck 完成，部署将继续进行下一步。

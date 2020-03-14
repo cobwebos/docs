@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974796"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271520"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>如何使用 SDK 中提供的工具来简化预配开发
 IoT 中心设备预配服务简化了预配过程，以安全且可缩放的方式实现零接触实时[自动预配](concepts-auto-provisioning.md)。  需要 X.509 证书形式的安全证明，或受信任的平台模块 (TPM)。  Microsoft 还与[其他安全硬件合作伙伴](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)携手合作，共同提高安全 IoT 部署的可信度。 对于开发者，了解硬件安全需求可能是一项大挑战。 我们提供了一组 Azure IoT 预配服务 SDK，因此，开发者可使用一个便捷的层来编写与预配服务通信的客户端。 这些 SDK 还提供了常用方案的示例，以及一组可简化开发安全证明的工具。

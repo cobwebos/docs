@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8fa8ca50a8d8cae7543c6aacb84fa57bc2f9c3a4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a4fb3ad2ce6225528910bbda9d98a38001242710
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298982"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>适用于 Linux 的虚拟机扩展 Key Vault
 
@@ -27,6 +27,10 @@ Key Vault VM 扩展支持以下 Linux 分发版：
 - Ubuntu-1804
 - Debian-9
 - Suse-15 
+
+### <a name="supported-certificate-content-types"></a>支持的证书内容类型
+
+- PKCS #12
 
 ## <a name="extension-schema"></a>扩展架构
 

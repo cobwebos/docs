@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869287"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263499"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>在 Azure 门户中添加 Azure Active Directory B2B 协作用户
 
@@ -85,7 +85,7 @@ ms.locfileid: "74869287"
 
 1. 以 Azure AD 管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 搜索并从任意页面中选择**Azure Active Directory** 。
-3. 在“管理”下，选择“企业应用程序” > “所有应用程序”。
+3. 在“管理”下，选择“企业应用程序” **“所有应用程序”**  > 。
 4. 选择要将来宾用户添加到的应用程序。
 5. 在应用程序的仪表板上，选择“用户总数”以打开“用户和组”窗格。
 

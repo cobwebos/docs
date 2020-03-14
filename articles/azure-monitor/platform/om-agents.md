@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78373288"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274341"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -33,7 +33,7 @@ ms.locfileid: "78373288"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关如何将 Operations Manager 管理组配置为通过 Log Analytics 网关与 Azure Monitor 通信的详细信息和步骤，请参阅[使用 Log Analytics 网关将计算机连接到 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请查看以下要求。
 
@@ -133,7 +133,7 @@ ms.locfileid: "78373288"
 
 配置与 Log Analytics 工作区的集成后，只是建立了与服务的连接，不会从向管理组报告的代理中收集任何数据。 在配置了哪些特定代理管理的计算机为 Azure Monitor 收集日志数据之前，将不会发生这种情况。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
-1. 打开 Operations Manager 控制台并选择“管理”工作区。
+1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite 节点，并单击“**连接**”。
 1. 在窗格右侧的“操作”标题下单击“**添加计算机/组**”链接。
 1. 在“计算机搜索”对话框中，可以搜索 Operations Manager 监视的计算机或组。 选择包括 Operations Manager 管理服务器的计算机或组以加载到 Azure Monitor 中，单击 "**添加**"，然后单击 **"确定"** 。
@@ -144,17 +144,17 @@ ms.locfileid: "78373288"
 
 如果内部代理服务器位于管理组与 Azure Monitor 之间，请执行以下步骤。 这些设置是从管理组集中管理的，并分发给代理管理系统，这些系统包含在为 Azure Monitor 收集日志数据的作用域中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
-1. 打开 Operations Manager 控制台并选择“管理”工作区。
+1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 展开 Operations Management Suite，并单击“**连接**”。
 1. 在“OMS 连接”视图中，单击“**配置代理服务器**”。
 1. 在“Operations Management Suite 向导: 代理服务器”页上，选择“使用代理服务器访问 Operations Management Suite”，键入包含端口号的 URL，例如 http://corpproxy:80 ，并单击“完成”。
 
 如果你的代理服务器要求身份验证，请执行以下步骤来配置需要传播到管理组中的 Azure Monitor 的被管理计算机的凭据和设置。
 
-1. 打开 Operations Manager 控制台并选择“管理”工作区。
-1. 在“RunAs 配置”下，选择“配置文件”。
+1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
+1. 在“**运行方式配置**”下面，选择“**配置文件**”。
 1. 打开 **System Center Advisor Run As Profile Proxy** 配置文件。
-1. 在“作为配置文件运行”向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
+1. 在运行方式配置文件向导中，单击“添加”以使用运行方式帐户。 可以创建一个[运行方式帐户](https://technet.microsoft.com/library/hh321655.aspx)或使用现有帐户。 此帐户需要有足够的权限以通过代理服务器。
 1. 若要设置管理的帐户，请选择“**选定的类、组或对象**”，单击“**选择...** ” 然后单击“**组...** ” 打开“**组搜索**”框。
 1. 搜索然后选择 **Microsoft System Center Advisor Monitoring Server Group**。 选择组后单击“**确定**”以关闭“**组搜索**”框。
 1. 单击“**确定**”以关闭“**添加运行方式帐户**”框。
@@ -180,7 +180,7 @@ ms.locfileid: "78373288"
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 当你开始键入时，该列表会基于你的输入进行筛选。 选择“Log Analytics”，然后创建一个工作区。  
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
 1. 展开 Log Analytics，然后选择“连接”。
 1. 在窗格中间选择“**重新配置 Operation Management Suite**”链接。
@@ -197,7 +197,7 @@ ms.locfileid: "78373288"
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>通过 Azure 门户确认集成
 
-1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 当你开始键入时，该列表会基于你的输入进行筛选。
+1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。
 1. 在 Log Analytics 工作区列表中，选择相应的工作区。  
 1. 依次选择“高级设置”、“连接的源”、“System Center”。
 1. 在 System Center Operations Manager 部分下的表中，应该可看到列出管理组的名称，以及代理数量和最后一次收到数据的状态。
@@ -206,7 +206,7 @@ ms.locfileid: "78373288"
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>通过 Operations 控制台确认集成
 
-1. 打开 Operations Manager 控制台并选择“管理”工作区。
+1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 选择“**管理包**”，并在“**查找:** ”文本框中键入 “**Advisor**”或“**Intelligence**”。
 1. 相应的管理包会在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理会在表中列出。
 1. 从“**监视**”视图导航到“**Operations Management Suite\Health State**”视图。  选择“管理服务器状态”窗格下的一个管理服务器，并在“详细信息视图”窗格中确认“身份验证服务 URI”属性值与 Log Analytics 工作区 ID 匹配。

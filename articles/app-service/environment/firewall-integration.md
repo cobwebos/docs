@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391812"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243856"
 ---
 # <a name="locking-down-an-app-service-environment"></a>锁定应用服务环境
 
@@ -112,15 +112,15 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
-| Azure 存储空间 |
+| Azure 存储 |
 | Azure 事件中心 |
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
@@ -137,7 +137,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
@@ -218,7 +218,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="wildcard-httphttps-dependencies"></a>通配符 HTTP/HTTPS 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |gr-Prod-\*.cloudapp.net:443 |
 | \*.management.azure.com:443 |
@@ -228,7 +228,7 @@ Azure 防火墙可将日志发送到 Azure 存储、事件中心或 Azure Monito
 
 #### <a name="linux-dependencies"></a>Linux 依赖项 
 
-| 终结点 |
+| 端点 |
 |----------|
 |wawsinfraprodbay063.blob.core.windows.net:443 |
 |registry-1.docker.io:443 |
@@ -270,15 +270,15 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 
 #### <a name="service-endpoint-capable-dependencies"></a>支持服务终结点的依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | Azure SQL |
-| Azure 存储空间 |
+| Azure 存储 |
 | Azure 事件中心 |
 
 #### <a name="ip-address-dependencies"></a>IP 地址依赖项
 
-| 终结点 | 详细信息 |
+| 端点 | 详细信息 |
 |----------| ----- |
 | \*:123 | NTP 时钟检查。 在端口 123 上的多个终结点中检查流量 |
 | \*:12000 | 此端口用于某些系统监视活动。 如果被阻止，某些问题将更难会审，而 ASE 将继续运行 |
@@ -293,7 +293,7 @@ Linux 在 US Gov 区域中不可用，因此不作为可选配置列出。
 
 #### <a name="dependencies"></a>依赖项 ####
 
-| 终结点 |
+| 端点 |
 |----------|
 | \*. ctldl.windowsupdate.com:80 |
 | \*. management.usgovcloudapi.net:80 |

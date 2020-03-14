@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: d47fdb9461786d80d65ee2448cc983a7a8348ff2
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131901"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298761"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
@@ -20,36 +20,35 @@ ms.locfileid: "77131901"
 
 ## <a name="before-you-begin"></a>开始之前
 
-在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集了历史数据。
-还需要启用合作伙伴访问权限，如以下步骤中所述。
+在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集了历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
 ## <a name="enable-partner-access"></a>启用合作伙伴访问
 
 需要启用与 Azure FarmBeats 实例的合作伙伴集成。 此步骤将创建一个客户端，该客户端可以访问作为设备伙伴的 Azure FarmBeats 实例，并提供后续步骤中所需的以下值：
 
-- API 终结点：这是 Datahub URL，例如 https://\<Datahub > appname>.azurewebsites.net。
+- API 终结点：这是 Datahub URL，例如 https://\<Datahub > appname>.azurewebsites.net
 - 租户 ID
 - 客户端 ID
 - 客户端机密
 - EventHub 连接字符串
 
-请执行下列步骤。
+执行以下步骤:
 
 >[!NOTE]
 > 您必须是管理员才能执行以下步骤。
 
 1. 下载[zip 文件](https://aka.ms/farmbeatspartnerscriptv2)，并将其解压缩到本地驱动器。 Zip 文件中将有一个文件。
-2. 登录到 https://portal.azure.com/ 并中转到 Azure Active Directory > 应用注册
+2. 登录到 https://portal.azure.com/ 并中转到**Azure Active Directory** > **应用注册**。
 
-3. 单击在 FarmBeats 部署过程中创建的应用注册。 它的名称与你的 FarmBeats Datahub 相同。
+3. 选择在 FarmBeats 部署过程中创建的**应用注册**。 它的名称与你的 FarmBeats Datahub 相同。
 
-4. 单击 "公开 API"-> 单击 "添加客户端应用程序" 并输入**04b07795-8ddb-461a-bbee-02f9e1bf7b46**并选中 "授权范围"。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤。
+4. 选择 "**公开 API** > 选择"**添加客户端应用程序**"并输入**04B07795-8ddb-461a-bbee-02f9e1bf7b46**并检查**授权作用域**。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤：
 
 5. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. 请确保将环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
+6. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
 
     ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
@@ -59,9 +58,9 @@ ms.locfileid: "77131901"
 
 8. 中转到上载文件的目录。 默认情况下，文件将上传到用户名下的主目录。
 
-9. 运行以下脚本。 该脚本要求提供可从 Azure Active Directory > 概述页获取的租户 ID。
+9. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory** > 概述 "**页**获取。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1   
 
@@ -70,9 +69,12 @@ ms.locfileid: "77131901"
 10. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
 ## <a name="create-device-or-sensor-metadata"></a>创建设备或传感器元数据
 
- 现在，你已拥有所需的凭据，可以定义设备和传感器。 为此，请通过调用 FarmBeats Api 来创建元数据。 请注意，你需要将 Api 作为你在上一节中创建的客户端应用程序调用
+ 现在，你已拥有所需的凭据，可以定义设备和传感器。 为此，请通过调用 FarmBeats Api 来创建元数据。 请确保将 Api 作为你在上一节中创建的客户端应用程序调用。
 
- FarmBeats Datahub 提供了以下 Api，可用于创建和管理设备或传感器元数据。 请注意，作为合作伙伴，你可以访问仅读取、创建和更新元数据;**伙伴不允许删除。**
+ FarmBeats Datahub 提供了以下 Api，可用于创建和管理设备或传感器元数据。
+
+ > [!NOTE]
+ > 作为合作伙伴，你只需读取、创建和更新元数据;**删除选项限制为合作伙伴。**
 
 - /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
 - /**设备**：设备对应于在场上存在的物理设备。
@@ -93,7 +95,7 @@ ms.locfileid: "77131901"
 |   DeviceModelId     |     关联的设备模型的 ID。  |
 |  HardwareId          | 设备的唯一 ID，如 MAC 地址。
 |  ReportingInterval        |   报告间隔（秒）。
-|  Location            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
+|  位置            |  设备纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。   
 |ParentDeviceId       |    此设备连接到的父设备的 ID。 例如，连接到网关的节点。 节点将 parentDeviceId 作为网关。  |
 |    名称            | 用于标识资源的名称。 设备合作伙伴必须发送与合作伙伴端设备名称一致的名称。 如果合作伙伴设备名称是用户定义的，则应将同一用户定义的名称传播到 FarmBeats。|
 |     说明       |      提供有意义的说明。 |
@@ -113,7 +115,7 @@ ms.locfileid: "77131901"
 |    **器**      |          |
 | HardwareId          |   制造商设置的传感器的唯一 ID。 |
 |  SensorModelId     |    关联的传感器型号的 ID。   |
-| Location          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
+| 位置          |  传感器纬度（-90 到 + 90）、经度（-180 到180）和提升（以米为单位）。|
 |   端口 > 名称        |  设备上传感器连接到的端口的名称和类型。 此名称需要与设备模型中定义的名称相同。 |
 |    设备 ID  |    传感器连接到的设备的 ID。     |
 | 名称            |   标识资源的名称。 例如，传感器名称或产品名称以及型号或产品代码。|
@@ -126,7 +128,7 @@ ms.locfileid: "77131901"
 
 若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （ https://\<yourdatahub > appname>.azurewebsites.net）。  
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 FarmBeats Datahub 使用持有者身份验证，该身份验证需要在上一节中生成的以下凭据：
 
@@ -284,6 +286,22 @@ curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 \"description\": \"Test Device 123\"}" *
 ```
 
+下面是 Python 中的示例代码。 在此示例中使用的访问令牌与身份验证期间接收的访问令牌相同。
+
+```python
+import requests
+import json
+
+# Got access token - Calling the Device Model API
+headers = {
+    "Authorization": "Bearer " + access_token,
+    "Content-Type" : "application/json"
+    }
+payload = '{"type" : "Node", "productCode" : "TestCode", "ports": [{"name": "port1","type": "Analog"}], "name" : "DummyDevice"}'
+response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=headers)
+```
+
+
 > [!NOTE]
 > Api 为创建的每个实例返回唯一 Id。 必须保留 Id 才能发送相应的遥测消息。
 
@@ -331,11 +349,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
         }
       ]
     }
@@ -392,8 +410,10 @@ write_client.stop()
 
 **纠正操作**：
 
-1. 请确保已正确完成合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照此处的[步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+1. 请确保已完成相应的合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照[此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+
 2. 确保已使用合作伙伴客户端凭据创建元数据（DeviceModel、设备、SensorModel、传感器）。
+
 3. 确保使用了正确的遥测消息格式（如下所示）：
 
 ```json
@@ -407,11 +427,11 @@ write_client.stop()
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": <value>
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }

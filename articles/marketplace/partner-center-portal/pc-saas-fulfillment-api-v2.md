@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c0d5deef609796501515fc9c7064a96ca1419b3a
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816608"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371522"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS 履单 Api，版本2 
 
@@ -58,7 +58,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 
 ![从 SaaS 服务启动更新时的 API 调用](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>已挂起
+#### <a name="suspended"></a>Suspended
 
 此状态表示尚未收到客户的付款。 按照策略，我们将在取消订阅之前向客户提供宽限期。 当订阅处于此状态时： 
 
@@ -281,7 +281,7 @@ Azure SaaS 管理 SaaS 订阅购买的整个生命周期。 它使用履单 Api 
 
 获取指定的 SaaS 订阅。 使用此调用获取许可证信息和计划信息。
 
-##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`
+##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>获取<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *查询参数：*
 
@@ -593,7 +593,7 @@ Request Body:
 
 取消订阅并删除指定的订阅。
 
-##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionid-api-versionapiversion"></a>删除<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`
+##### <a name="deletebr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>删除<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 *查询参数：*
 
@@ -816,7 +816,7 @@ Response body:
 未找到。
 
 代码：409<br>
-合并. 例如，已经满足了较新的事务。
+冲突。 例如，已经满足了较新的事务。
 
 代码：500<br> 内部服务器错误。
 

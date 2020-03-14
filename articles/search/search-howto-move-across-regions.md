@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 03/06/2020
-ms.openlocfilehash: 183a937a232dbd28962bb7d6ef42b0d78b8a81fd
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: c31a81d2836e9f8c00dec3c0c2eb3a43800a5322
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78850680"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136255"
 ---
 # <a name="move-your-azure-cognitive-search-service-to-another-azure-region"></a>将 Azure 认知搜索服务移到另一个 Azure 区域
 
@@ -123,7 +123,7 @@ To obtain region location codes, see [Azure Locations](https://azure.microsoft.c
     "resources": [
         {
             "type": "Microsoft.Search/searchServices",
-            "apiVersion": "2015-08-19",
+            "apiVersion": "2020-03-13",
             "name": "[parameters('searchServices_target_region_search_name')]",
             "location": "centralus",
             "sku": {

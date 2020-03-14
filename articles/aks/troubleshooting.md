@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: f0ad8d503b5280b8cba89d940b99dcd81da71ffc
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893334"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79368326"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑难解答
 
@@ -60,7 +60,7 @@ ms.locfileid: "78893334"
 
 要访问群集外的服务，最简单的方法是运行 `kubectl proxy`，它将代理对 Kubernetes API 服务器使用 localhost 端口 8001 的请求。 在此，API 服务器可以代理服务：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`。
 
-如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` Pod 是否在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
+如果看不到 Kubernetes 仪表板，请检查 `kube-proxy` pod 是否正在 `kube-system` 命名空间中运行。 如果未处于运行状态，请删除 Pod，它会重启。
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>无法使用 Kubectl 日志获取日志或无法连接到 API 服务器。 收到 "服务器出错：错误拨号后端：拨号 tcp ..."。 我该怎么办？
 
@@ -192,7 +192,7 @@ Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.Wait
 | -- | :--: |
 | 1.10 | 1.10.2 或更高版本 |
 | 1.11 | 1.11.0 或更高版本 |
-| 1.12 及更高版本 | 不可用 |
+| 1.12 及更高版本 | 空值 |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>在 Azure 磁盘的 mountOptions 中设置 uid 和 gid 时失败
 
@@ -266,7 +266,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.5 或更高版本 |
 | 1.12 | 1.12.3 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | 不可用 |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过等待几分钟再重试来缓解此问题。
 
@@ -287,7 +287,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.6 或更高版本 |
 | 1.12 | 1.12.4 或更高版本 |
 | 1.13 | 1.13.0 或更高版本 |
-| 1.14 及更高版本 | 不可用 |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以尝试以下方法来缓解此问题：
 
@@ -298,7 +298,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 在某些情况下，如果 Azure 磁盘分离操作第一次尝试失败，则不会重试分离操作，并将保持附加到原始节点 VM。 将磁盘从一个节点移到另一个节点时，可能会发生此错误。 例如：
 
 ```console
-[Warning] AttachVolume.Attach failed for volume “pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9” : Attach volume “kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance “/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0” failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code=“ConflictingUserInput” Message=“Disk ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9’ cannot be attached as the disk is already owned by VM ‘/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1’.”
+[Warning] AttachVolume.Attach failed for volume "pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" : Attach volume "kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9" to instance "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-0" failed with compute.VirtualMachinesClient#CreateOrUpdate: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="ConflictingUserInput" Message="Disk '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/disks/kubernetes-dynamic-pvc-7b7976d7-3a46-11e9-93d5-dee1946e6ce9' cannot be attached as the disk is already owned by VM '/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.Compute/virtualMachines/aks-agentpool-57634498-1'."
 ```
 
 此问题已在 Kubernetes 的以下版本中得到解决：
@@ -308,7 +308,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.11 | 1.11.9 或更高版本 |
 | 1.12 | 1.12.7 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | 不可用 |
+| 1.14 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本不能解决此问题，则可以通过手动分离磁盘来缓解此问题。
 
@@ -323,7 +323,7 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.9 或更高版本 |
 | 1.13 | 1.13.6 或更高版本 |
 | 1.14 | 1.14.2 或更高版本 |
-| 1.15 及更高版本 | 不可用 |
+| 1.15 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 具有过时的磁盘列表，则可以通过将所有非现有磁盘作为单个批量操作从 VM 分离来缓解此问题。 **单独分离非现有磁盘可能会失败。**
 
@@ -343,17 +343,17 @@ MountVolume.WaitForAttach failed for volume "pvc-12b458f4-c23f-11e8-8d27-46799c2
 | 1.12 | 1.12.10 或更高版本 |
 | 1.13 | 1.13.8 或更高版本 |
 | 1.14 | 1.14.4 或更高版本 |
-| 1.15 及更高版本 | 不可用 |
+| 1.15 及更高版本 | 空值 |
 
 如果你使用的 Kubernetes 版本没有此问题的修补程序，并且你的节点 VM 处于故障状态，则可以通过使用以下其中一项来手动更新 VM 状态来缓解此问题：
 
 * 对于基于可用性集的群集：
-    ```console
+    ```azurecli
     az vm update -n <VM_NAME> -g <RESOURCE_GROUP_NAME>
     ```
 
 * 对于基于 VMSS 的群集：
-    ```console
+    ```azurecli
     az vmss update-instances -g <RESOURCE_GROUP_NAME> --name <VMSS_NAME> --instance-id <ID>
     ```
 
@@ -460,7 +460,7 @@ E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"k
 | -- | :--: |
 | 1.12 | 1.12.6 或更高版本 |
 | 1.13 | 1.13.4 或更高版本 |
-| 1.14 及更高版本 | 不可用 |
+| 1.14 及更高版本 | 空值 |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>由于存储帐户密钥已更改，Azure 文件装载失败
 

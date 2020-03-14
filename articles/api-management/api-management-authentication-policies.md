@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120818"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280321"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -48,18 +48,18 @@ ms.locfileid: "77120818"
 
 ### <a name="elements"></a>元素
 
-|名称|说明|必需|
+|名称|说明|必选|
 |----------|-----------------|--------------|
 |authentication-basic|根元素。|是|
 
-### <a name="attributes"></a>Attributes
+### <a name="attributes"></a>属性
 
-|名称|说明|必需|默认|
+|名称|说明|必选|默认|
 |----------|-----------------|--------------|-------------|
-|username|指定基本凭据的用户名。|是|不可用|
-|password|指定基本凭据的密码。|是|不可用|
+|username|指定基本凭据的用户名。|是|空值|
+|password|指定基本凭据的密码。|是|空值|
 
-### <a name="usage"></a>用法
+### <a name="usage"></a>使用情况
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
 -   **策略段：** 入站
@@ -88,18 +88,18 @@ ms.locfileid: "77120818"
 
 ### <a name="elements"></a>元素  
   
-|名称|说明|必需|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
-### <a name="attributes"></a>Attributes  
+### <a name="attributes"></a>属性  
   
-|名称|说明|必需|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|客户端证书的指纹。|必须存在 `thumbprint` 或 `certificate-id`。|不可用|  
-|certificate-id|证书资源名称。|必须存在 `thumbprint` 或 `certificate-id`。|不可用|  
+|thumbprint|客户端证书的指纹。|必须存在 `thumbprint` 或 `certificate-id`。|空值|  
+|certificate-id|证书资源名称。|必须存在 `thumbprint` 或 `certificate-id`。|空值|  
   
-### <a name="usage"></a>用法  
+### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 入站  
@@ -147,19 +147,19 @@ ms.locfileid: "77120818"
 
 ### <a name="elements"></a>元素  
   
-|名称|说明|必需|  
+|名称|说明|必选|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |根元素。|是|  
   
-### <a name="attributes"></a>Attributes  
+### <a name="attributes"></a>属性  
   
-|名称|说明|必需|默认|  
+|名称|说明|必选|默认|  
 |----------|-----------------|--------------|-------------|  
-|resource|“字符串”。 Azure Active Directory 中的目标 web API （受保护资源）的应用 ID。|是|不可用|  
-|output-token-variable-name|“字符串”。 将接收令牌值作为对象类型 `string`的上下文变量的名称。 |是|不可用|  
-|ignore-error|“布尔值”。 如果设置为 `true`，即使未获取访问令牌，策略管道也将继续执行。|是|false|  
+|resource|字符串。 Azure Active Directory 中的目标 web API （受保护资源）的应用 ID。|是|空值|  
+|output-token-variable-name|字符串。 将接收令牌值作为对象类型 `string`的上下文变量的名称。 |否|空值|  
+|ignore-error|布尔值。 如果设置为 `true`，即使未获取访问令牌，策略管道也将继续执行。|否|false|  
   
-### <a name="usage"></a>用法  
+### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
   
 -   **策略段：** 入站  

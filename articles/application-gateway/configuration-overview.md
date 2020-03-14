@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ef82d748b67db736bc2294089cd92edd2adde4a7
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913253"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79297928"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -127,7 +127,7 @@ Azure 还在每个子网中保留5个 IP 地址供内部使用：前4个和最�
 
 - 如果选择 HTTP，则不会加密客户端和应用程序网关之间的流量。
 
-- 如果需要[ssl 终止](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination)或[端到端 ssl 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 "HTTPS"。 客户端和应用程序网关之间的流量会被加密。 SSL 连接将在应用程序网关上终止。 如果需要端到端 SSL 加密，则必须选择 "HTTPS" 并配置**后端 HTTP**设置。 这可确保当流量从应用程序网关传输到后端时，会重新对其进行加密。
+- 如果需要[ssl 终止](features.md#secure-sockets-layer-ssltls-termination)或[端到端 ssl 加密](https://docs.microsoft.com/azure/application-gateway/ssl-overview)，请选择 "HTTPS"。 客户端和应用程序网关之间的流量会被加密。 SSL 连接将在应用程序网关上终止。 如果需要端到端 SSL 加密，则必须选择 "HTTPS" 并配置**后端 HTTP**设置。 这可确保当流量从应用程序网关传输到后端时，会重新对其进行加密。
 
 若要配置 SSL 终止和端到端 SSL 加密，必须将证书添加到侦听器，以使应用程序网关能够派生对称密钥。 这由 SSL 协议规范决定。 对称密钥用于加密和解密发送到网关的流量。 网关证书必须为个人信息交换（PFX）格式。 此格式允许您导出网关用于加密和解密流量的私钥。
 
@@ -340,7 +340,7 @@ Azure 应用程序网关使用网关托管 cookie 来维护用户会话。 当�
 
 ## <a name="back-end-pool"></a>后端池
 
-可以将后端池指向四种类型的后端成员：特定虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 每个后端池可以指向同一类型的多个成员。 不支持指向同一后端池中不同类型的成员。
+可以将后端池指向四种类型的后端成员：特定虚拟机、虚拟机规模集、IP 地址/FQDN 或应用服务。 
 
 创建后端池后，必须将其与一个或多个请求路由规则相关联。 还必须为应用程序网关上的每个后端池配置运行状况探测。 满足请求路由规则条件时，应用程序网关会将流量转发到相应后端池中的正常服务器（由运行状况探测决定）。
 

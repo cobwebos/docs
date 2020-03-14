@@ -4,11 +4,11 @@ description: 使用 v1 运行时的 Azure Functions host.json 文件的参考文
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 2b00e2343e0959e07b195e2e98c6719a1893b8c8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769602"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277045"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -16,7 +16,7 @@ ms.locfileid: "75769602"
 > * [版本 1](functions-host-json-v1.md)
 > * [第 2 版](functions-host-json.md)
 
-*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host 。
+*host.json* 元数据文件包含对函数应用的所有函数产生影响的全局配置选项。 本文列出了可用于 v1 运行时的设置。 JSON 架构位于 http://json.schemastore.org/host。
 
 > [!NOTE]
 > 本文适用于 Azure Functions 1.x。  有关函数1.x 和更高版本中的 host 的引用，请参阅 Azure Functions 1.x 的[host json 引用](functions-host-json.md)。
@@ -136,7 +136,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------|
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
 |协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)|
@@ -188,7 +188,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |已启用|true|指定是否启用此功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
@@ -211,7 +211,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |dynamicThrottlesEnabled|false|启用时，将为此设置将导致请求处理管道，以定期检查系统性能计数器类似连接/线程/进程/内存/CPU 等，并通过内置的高阈值 (80%)，如果有任何这些计数器请求拒绝与 429“太忙”响应，直至恢复到正常水平的计数器。|
 |maxConcurrentRequests|无限（`-1`）|将并行执行的 HTTP 函数的最大数目。 这样，可以控制并发性，从而帮助管理资源利用率。 例如，你可能有一个 HTTP 函数使用大量系统资源（内存/cpu/套接字），因此并发性过高时将导致问题。 或者，某个函数向第三方服务发出出站请求，则可能需要限制这些调用的速率。 在这种情况下，应用限制可能有帮助。|
@@ -249,7 +249,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |categoryFilter|不适用|指定按类别进行筛选| 
 |defaultLevel|信息|对于 `categoryLevels` 数组中未指定的任何类别，会将此级别和更高级别的日志发送到 Application Insights。| 
@@ -271,7 +271,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |maxPollingInterval|60000|队列轮询的最大间隔时间，以毫秒为单位。| 
 |visibilityTimeout|0|消息处理失败时的重试间隔时间。| 
@@ -290,7 +290,7 @@ ms.locfileid: "75769602"
     }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |从|不适用|所有函数的发件人电子邮件地址。| 
 
@@ -308,7 +308,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |maxConcurrentCalls|16|消息泵应该对回调发起的最大并发调用数。 默认情况下，Functions 运行时同时处理多条消息。 若要指示运行时一次只处理单个队列或主题消息，请将 `maxConcurrentCalls` 设置为 1。 | 
 |prefetchCount|不适用|基础 MessageReceiver 将要使用的默认 PrefetchCount。| 
@@ -330,7 +330,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|占用函数级锁的时间段。 锁自动续订。| 
 |listenerLockPeriod|00:01:00|占用侦听器锁的时间段。| 
@@ -353,7 +353,7 @@ ms.locfileid: "75769602"
 }
 ```
 
-|属性  |默认 | Description |
+|properties  |默认 | 说明 |
 |---------|---------|---------| 
 |consoleLevel|info|控制台日志记录的跟踪级别。 选项包括：`off`、`error`、`warning`、`info` 和 `verbose`。|
 |fileLoggingMode|debugOnly|文件日志记录的跟踪级别。 选项包括 `never`、`always` 和 `debugOnly`。| 

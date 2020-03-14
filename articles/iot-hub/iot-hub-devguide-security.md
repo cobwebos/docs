@@ -9,13 +9,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546939"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272053"
 ---
-# <a name="control-access-to-iot-hub"></a>控制 IoT 中心的访问权限
+# <a name="control-access-to-iot-hub"></a>控制对 IoT 中心的访问
 
 本文介绍用于保护 IoT 中心的选项。 IoT 中心使用*权限*向每个 IoT 中心终结点授予访问权限。 权限可根据功能限制对 IoT 中心的访问。
 
@@ -35,7 +35,7 @@ ms.locfileid: "76546939"
 
 可以通过以下方式授予[权限](#iot-hub-permissions)：
 
-* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](/rest/api/iothub/iothubresource) 或使用 [az iot 中心策略](/cli/azure/iot/hub/policy?view=azure-cli-latest) CLI 以编程方式在 [Azure 门户](https://portal.azure.com)中定义策略。 新建的 IoT 中心有以下默认策略：
+* **IoT 中心级别的共享访问策略**。 共享访问策略可以授予任意[权限](#iot-hub-permissions)组合。 可使用 [IoT 中心资源 REST API](https://portal.azure.com) 或使用 [az iot 中心策略](/rest/api/iothub/iothubresource) CLI 以编程方式在 [Azure 门户](/cli/azure/iot/hub/policy?view=azure-cli-latest)中定义策略。 新建的 IoT 中心有以下默认策略：
   
   | 共享访问策略 | 权限 |
   | -------------------- | ----------- |
@@ -57,7 +57,7 @@ ms.locfileid: "76546939"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#iot-hub-permissions)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure IoT 中心可根据共享访问策略和标识注册表安全凭据来验证令牌，以授予对终结点的访问权限。
 
@@ -134,7 +134,7 @@ IoT 中心还允许设备使用 [X.509 证书](iot-hub-devguide-security.md#supp
 
 以下是预期值：
 
-| 值 | Description |
+| 值 | 说明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。 |
 | {resourceURI} |此令牌可以访问的终结点的 URI 前缀（根据分段）以 IoT 中心的主机名开始（无协议）。 例如： `myHub.azure-devices.net/devices/device1` |
@@ -247,7 +247,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 面向设备的终结点包括（无论任何协议）：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |发送设备到云的消息。 |
 | `{iot hub host name}/devices/{deviceId}/messages/devicebound` |接收云到设备的消息。 |
@@ -319,7 +319,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 以下是终结点上显示的服务功能：
 
-| 终结点 | 功能 |
+| 端点 | 功能 |
 | --- | --- |
 | `{iot hub host name}/devices` |创建、更新、检索和删除设备标识。 |
 | `{iot hub host name}/messages/events` |接收设备到云的消息 |
@@ -408,7 +408,7 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 可以使用 IoT 中心[标识注册表](iot-hub-devguide-identity-registry.md)，通过[令牌](iot-hub-devguide-security.md#security-tokens)配置每个设备/模块的安全凭据和访问控制。 如果 IoT 解决方案已经具有自定义标识注册表和/或身份验证方案，可考虑通过创建“令牌服务”，将此基础结构与 IoT 中心集成。 这样，便可以在解决方案中使用其他 IoT 功能。
 
-令牌服务是自定义云服务。 它使用包含 **DeviceConnect** 或 **ModuleConnect** 权限的 IoT 中心共享访问策略创建设备范围的或模块范围的令牌。 这些令牌可让设备和模块连接到 IoT 中心。
+令牌服务是自定义云服务。 它使用包含 *DeviceConnect* 或 **ModuleConnect** 权限的 IoT 中心共享访问策略创建设备范围的或模块范围的令牌。 这些令牌可让设备和模块连接到 IoT 中心。
 
 ![令牌服务模式的步骤](./media/iot-hub-devguide-security/tokenservice.png)
 

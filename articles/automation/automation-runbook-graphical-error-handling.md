@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246278"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367064"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -48,7 +48,7 @@ Runbook 执行期间可能会发生的 PowerShell 错误的类型将终止错误
 1. 发送有关此问题的通知。
 2. 启动其他自动预配新 VM 的 runbook。
 
-一种解决方法是在 runbook 中包含一个指向处理第一步的活动的错误链接。 例如，runbook 可以将**写入警告**cmdlet 连接到步骤2的活动，例如[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet。
+一种解决方法是在 runbook 中包含一个指向处理第一步的活动的错误链接。 例如，runbook 可以将 `Write-Warning` cmdlet 连接到步骤2的活动，例如[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) cmdlet。
 
 你还可以通过将这两个活动放在单独的错误处理 runbook 中来通用化此行为以供许多 runbook 使用。 在原始 runbook 调用此错误处理 runbook 之前，它可以从其数据构造自定义消息，然后将其作为参数传递给错误处理 runbook。
 
@@ -60,9 +60,9 @@ Runbook 中的每个活动都有一个将异常转换为非终止错误的配置
 
 在下面的示例中，runbook 检索包含 VM 的计算机名称的变量。 然后，它会尝试通过下一个活动启动 VM。<br><br> ![自动化 runbook 错误处理示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-**Get-automationvariable**活动和[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 配置为将异常转换为错误。 如果获取变量或启动 VM 时出现问题，则代码将生成错误。<br><br> ![自动化 runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
+`Get-AutomationVariable` 活动和[new-azvm](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) cmdlet 将配置为将异常转换为错误。 如果获取变量或启动 VM 时出现问题，则代码将生成错误。<br><br> ![自动化 runbook 错误处理活动设置](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
-错误链接从这些活动流向单个**错误管理**代码活动。 此活动使用简单的 PowerShell 表达式进行配置，该表达式使用**throw**关键字来停止处理，并使用 `$Error.Exception.Message` 获取描述当前异常的消息。<br><br> ![自动化 runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+错误链接从这些活动流向单个 `error management` 代码活动。 此活动使用简单的 PowerShell 表达式进行配置，该表达式使用 `throw` 关键字来停止处理，并使用 `$Error.Exception.Message` 获取描述当前异常的消息。<br><br> ![自动化 runbook 错误处理代码示例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>后续步骤
 

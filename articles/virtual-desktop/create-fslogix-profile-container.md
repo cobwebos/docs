@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 7cd989d944a35af8b1fd932643826e1aedd03962
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128177"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370196"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器
 
@@ -73,7 +73,7 @@ ms.locfileid: "79128177"
 7. 在搜索结果中选择 " **Azure NetApp 文件**"，然后选择 "**创建**"。
 
 8. 选择“添加”按钮。
-9. 当 "**新的 NetApp 帐户**" 边栏选项卡打开时，输入以下值：
+9. 当 "**新 NetApp 帐户**" 选项卡打开时，输入以下值：
 
     - 对于 "**名称**"，请输入你的 NetApp 帐户名称。
     - 对于 "**订阅**"，从下拉菜单中选择你在步骤4中设置的存储帐户的订阅。
@@ -92,7 +92,7 @@ ms.locfileid: "79128177"
 1. 请在 "Azure NetApp 文件" 菜单中，选择新的帐户。
 2. 在帐户菜单中，选择 "存储服务" 下的**容量池**。
 3. 选择 "**添加池**"。
-4. 打开 "**新建容量池**" 边栏选项卡时，输入以下值：
+4. 打开 "**新建容量池**" 选项卡时，输入以下值：
 
     - 对于 "**名称**"，请输入新容量池的名称。
     - 对于 "**服务级别**"，请从下拉菜单中选择所需的值。 对于大多数环境，建议**高级**。
@@ -127,7 +127,7 @@ ms.locfileid: "79128177"
 
 1. 选择**卷**，然后选择 "**添加卷**"。
 
-2. 打开 "**创建卷**" 边栏选项卡时，输入以下值：
+2. 打开 "**创建卷**" 选项卡时，输入以下值：
 
     - 对于 "**卷名称**"，请输入新卷的名称。
     - 对于 "**容量池**"，请从下拉菜单中选择刚创建的容量池。

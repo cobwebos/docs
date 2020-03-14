@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 9284400254860b47f3aea6de5c79ab4c2a77f199
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384577"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265436"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
@@ -45,9 +45,12 @@ ms.locfileid: "78384577"
 
 3. 选择共享的**类型**。 类型可以是“SMB”或“NFS”，默认为“SMB”。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
-4. 提供共享所在的**存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。
+4. 提供共享所在的**存储帐户**。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。  
 
 5. 从块 Blob、页 Blob 或文件中选择“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
+
+   > [!IMPORTANT]
+   > 如果你使用的 Azure 存储帐户与 Azure Stack 边缘或 Data Box Gateway 设备一起使用，请确保该帐户不会对其设置永久性策略。 有关详细信息，请参阅[设置和管理 blob 存储的不可变性策略](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage)。
 
 6. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
     - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供**用户名**、**密码**和确认密码。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
@@ -89,21 +92,21 @@ ms.locfileid: "78384577"
 
 在 Azure 门户中执行以下步骤，以刷新共享。
 
-1.  在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
+1.   在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
 
     ![选择共享](media/data-box-gateway-manage-shares/refresh-1.png)
 
-2.  单击“刷新”。 
+2.   单击“刷新”。 
 
     ![单击“刷新”](media/data-box-gateway-manage-shares/refresh-2.png)
  
-3.  出现确认提示时，单击“是”。 此时会启动一个作业来刷新本地共享的内容。 
+3.   出现确认提示时，单击“是”。 此时会启动一个作业来刷新本地共享的内容。 
 
     ![确认刷新](media/data-box-gateway-manage-shares/refresh-3.png)
  
-4.  刷新正在进行时，上下文菜单中的刷新选项会灰显。 单击作业通知以查看刷新作业的状态。
+4.   刷新正在进行时，上下文菜单中的刷新选项会灰显。 单击作业通知以查看刷新作业的状态。
 
-5.  刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 
+5.   刷新所需的时间取决于 Azure 容器中的文件数以及设备上的文件数。 成功完成刷新后，共享时间戳将会更新。 即使刷新已部分失败，刷新操作也被视为成功，并时间戳会更新。 
 
     ![更新的时间戳](media/data-box-gateway-manage-shares/refresh-4.png)
  

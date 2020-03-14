@@ -8,27 +8,27 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 85403442119f73b363fee98a9c225b9c0ec18119
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e67a8f6b9cc175932b09e6f576148656dd9da9ba
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026856"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298812"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>连接到 Azure IoT Central
 
 本文介绍与 Microsoft Azure IoT Central 中的设备连接相关的重要概念。
 
-Azure IoT Central 使用[Azure IoT 中心设备预配服务（DPS）](../../iot-dps/about-iot-dps.md)来管理所有设备注册和连接。
+Azure IoT Central 使用 [Azure IoT 中心设备预配服务 (DPS)](../../iot-dps/about-iot-dps.md) 来管理所有设备注册和连接。
 
-使用 DPS 启用：
+使用 DPS：
 
-- IoT Central 支持大规模载入和连接设备。
-- 您可以生成设备凭据并使设备脱机配置，而无需通过 IoT Central UI 注册设备。
+- 可让 IoT Central 支持大规模的设备加入和连接。
+- 可让你离线生成设备凭据并配置设备，而无需通过 IoT Central UI 注册设备。
 - 使用共享访问签名（SAS）连接的设备。
-- 使用行业标准的 x.509 证书进行连接的设备。
-- 你使用自己的设备 Id 在 IoT Central 中注册设备。 使用自己的设备 Id 可简化与现有后端办公系统的集成。
-- 将设备连接到 IoT Central 的一种一致的方式。
+- 可让设备使用行业标准的 X.509 证书建立连接。
+- 可让你使用自己的设备 ID 在 IoT Central 中注册设备。 使用自己的设备 ID 可以简化与现有后端办公系统的集成。
+- 可以通过一致的单一方式将设备连接到 IoT Central。
 
 本文介绍以下用例：
 
@@ -194,6 +194,9 @@ IoT Central 支持以下证明机制
     - 未在 "**设备**" 页上手动注册的设备与有效凭据连接，但在注册过程中未指定模板 ID。  
 操作员可以使用 "**迁移**" 按钮，将设备从 "**设备**" 页关联到模板。
 
+## <a name="best-practices"></a>最佳做法 
+1.  使用 DPS 将设备连接到 IoT Central 时，请确保（IoT 中心）设备连接字符串不会持久保存或缓存。 若要重新连接设备，请执行常规 DPS 设备注册流，以获取正确的设备连接字符串。 如果缓存了连接字符串，则设备软件就会面临在 IoT Central 更新了基础 Azure IoT 中心的情况下出现陈旧连接字符串的风险。 
+
 ## <a name="sdk-support"></a>SDK 支持
 
 Azure 设备 Sdk 为实现设备代码提供了最简单的方法。 以下设备 SDK 已发布：
@@ -213,7 +216,7 @@ Azure 设备 Sdk 为实现设备代码提供了最简单的方法。 以下设�
 
 下表对 Azure IoT Central 设备功能映射到 IoT 中心功能的具体情况进行了汇总：
 
-| Azure IoT 中心 | Azure IoT 中心 |
+| Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
 | 度量：遥测 | 设备到云的消息传递 |
 | 设备属性 | 设备孪生报告属性 |

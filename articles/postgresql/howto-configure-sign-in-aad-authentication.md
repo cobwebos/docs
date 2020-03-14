@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: aacffbfdec67d7faa58cb8bd08f99963fb78263a
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763634"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299271"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>使用 Azure Active Directory 通过 PostgreSQL 进行身份验证
 
@@ -163,7 +163,7 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 现在，你可以使用 Azure Database for PostgreSQL 启动连接，如下所示：
 
 ```shell
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres"
+psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
 你现在可以使用 Azure AD 身份验证向 PostgreSQL 服务器进行身份验证。

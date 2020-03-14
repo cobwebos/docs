@@ -8,32 +8,34 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6dd5d98b559d49656c44b75e86398a017d923203
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933185"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371080"
 ---
 # <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
 BlockBlobStorage 帐户类型允许你创建具有高级性能特征的块 blob。 此类型的存储帐户针对具有高事务速率或需要极快访问时间的工作负荷进行了优化。 本文介绍如何使用 Azure 门户、Azure CLI 或 Azure PowerShell 创建 BlockBlobStorage 帐户。
 
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+
 有关 BlockBlobStorage 帐户的详细信息，请参阅[Azure 存储帐户概述](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
 无。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 本操作指南文章需要 Azure PowerShell 模块 Az version 1.2.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找当前版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 可以登录到 Azure，然后采用以下两种方式之一运行 Azure CLI 命令：
 
@@ -52,17 +54,17 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 
 ### <a name="install-the-cli-locally"></a>在本地安装 CLI
 
-也可在本地安装和使用 Azure CLI。 本操作指南文章要求运行 Azure CLI 版本2.0.46 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
+也可在本地安装和使用 Azure CLI。 本操作指南文章要求运行 Azure CLI 版本2.0.46 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ---
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 
-登录到 [Azure 门户](https://portal.azure.com)。
+登录 [Azure 门户](https://portal.azure.com)。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，然后按照屏幕上的说明进行身份验证。
 
@@ -70,7 +72,7 @@ Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 A
 Connect-AzAccount
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要启动 Azure Cloud Shell，请登录到[Azure 门户](https://portal.azure.com)。
 
@@ -84,7 +86,7 @@ az login
 
 ## <a name="create-a-blockblobstorage-account"></a>创建 BlockBlobStorage 帐户
 
-## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+## <a name="portal"></a>[门户](#tab/azure-portal)
 若要在 Azure 门户中创建 BlockBlobStorage 帐户，请按照以下步骤操作：
 
 1. 在 Azure 门户中，选择 "**所有服务**" **> 存储 "** 类别 >**存储帐户**。
@@ -105,9 +107,9 @@ az login
 
 1. 对于其余设置，请配置以下各项：
 
-   |字段     |Value  |
+   |字段     |值  |
    |---------|---------|
-   |**性能**    |  选择 "**高级**"。   |
+   |**“性能”**    |  选择 "**高级**"。   |
    |**帐户种类**    | 选择**BlockBlobStorage**。      |
    |**复制**    |  保留 "**本地冗余存储（LRS）** " 的默认设置。      |
 
@@ -115,9 +117,9 @@ az login
 
 1. 选择 "查看" " **+ 创建**"，查看存储帐户设置。
 
-1. 选择**创建**。
+1. 选择“创建”。
 
-## <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -153,9 +155,9 @@ az login
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要使用 Azure CLI 创建块 blob 帐户，必须先安装 Azure CLI v。 2.0.46 或更高版本。 可以运行 `az --version` 来查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+若要使用 Azure CLI 创建块 blob 帐户，必须先安装 Azure CLI v。 2.0.46 或更高版本。 运行 `az --version` 即可查找版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 1. 登录到 Azure 订阅。
 

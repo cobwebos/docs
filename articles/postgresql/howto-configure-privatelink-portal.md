@@ -1,19 +1,19 @@
 ---
-title: Azure Database for PostgreSQL-单一服务器（预览版）门户安装方法的专用链接
+title: 专用链接-Azure 门户-Azure Database for PostgreSQL-单一服务器
 description: 了解如何从 Azure 门户配置 Azure Database for PostgreSQL 单服务器的专用链接
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562592"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370910"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器（预览版）的专用链接
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>使用门户创建和管理 Azure Database for PostgreSQL 单一服务器的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
@@ -126,12 +126,12 @@ ms.locfileid: "77562592"
 
 在本部分中，你将创建一个 PostgreSQL 服务器，并向其添加专用终结点。 
 
-1. 在 Azure 门户屏幕的左上方，选择“创建资源” **“网络”** “专用链接中心(预览版)”。 >  > 
+1. 在 Azure 门户屏幕的左上方，选择 "**创建资源** > **网络** > **专用链接**"。
 2. 在“专用链接中心 - 概述”中的“与服务建立专用连接”选项的旁边，选择“启动”。
 
     ![专用链接概述](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. 在“创建专用终结点(预览版) - 基本信息”中，输入或选择以下信息：
+1. 在 "**创建专用终结点-基础知识**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |
@@ -154,7 +154,7 @@ ms.locfileid: "77562592"
     |目标子资源 |选择*postgresqlServer*|
     |||
 7. 选择**下一步：配置**。
-8. 在“创建专用终结点(预览版) - 配置”中，输入或选择以下信息：
+8. 在 "**创建专用终结点-配置**" 中，输入或选择以下信息：
 
     | 设置 | 值 |
     | ------- | ----- |

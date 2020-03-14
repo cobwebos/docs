@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b76edb2d0db806d8ff4935d2b093fee3c2bb34d7
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 0713f59889962960b4f3ad5eba58ddb7b32e95ff
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925537"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369737"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -60,7 +60,7 @@ ms.locfileid: "78925537"
 
 Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的 XTS-256 数据加密密钥。 加密密钥层次结构用于加密和保护所有卷密钥。 这些加密密钥永远不会以未加密的格式显示或报告。 删除卷时，会立即删除加密密钥。
 
-目前不支持用户托管的密钥（自带密钥）。
+使用 Azure 专用 HSM 支持用户托管的密钥（自带密钥），可在美国东部、美国 West2 和美国中南部区域提供控制。  客户可以 anffeedback@microsoft.com请求访问权限，并且在容量可用的情况下，将批准请求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>能否配置 NFS 导出策略规则来控制对 Azure NetApp 文件服务装载目标的访问？
 

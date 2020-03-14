@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297834"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138937"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用登录到帐户
 
@@ -31,7 +31,7 @@ ms.locfileid: "78297834"
   >[!Important]
   >此手机登录方法仅适用于工作或学校以及个人 Microsoft 帐户。 非 Microsoft 帐户要求使用标准的双重验证过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在使用 Microsoft Authenticator 应用之前，必须：
 
@@ -112,7 +112,7 @@ ms.locfileid: "78297834"
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>使用针对帐户的双重验证进行登录
 
-标准双因素验证方法要求您在要登录到的设备中输入用户名和密码，然后选择 Microsoft Authenticator 应用程序是否收到 Microsoft Authenticator 应用程序。 在 Android 设备上，可以在 "帐户" 屏幕上找到这些验证代码。 在 iOS 设备上，可以在帐户的 "设备 **" 屏幕或**全屏视图中找到这些验证代码，具体取决于帐户类型。 请在将帐户添加到 Microsoft Authenticator 应用的过程中为帐户启用双重验证。
+标准双因素验证方法要求您在要登录到的设备中输入用户名和密码。 然后，打开 Microsoft Authenticator 应用，然后在 "**输入代码**" 框中键入帐户的随机生成的代码。 在 Android 设备上，可以在 "**帐户**" 屏幕上找到这些验证代码。 在 iOS 设备上，可以在**帐户屏幕或帐户的全屏**视图上找到这些验证代码，具体取决于帐户类型。 请在将帐户添加到 Microsoft Authenticator 应用的过程中为帐户启用双重验证。
 
 >[!Note]
 >如果在 Microsoft Authenticator 应用的“帐户”屏幕上看不到工作或学校帐户或个人帐户，则意味着尚未将帐户添加到 Microsoft Authenticator 应用。 若要添加帐户，请参阅[添加工作或学校帐户](user-help-auth-app-add-work-school-account.md)或[添加个人帐户](user-help-auth-app-add-personal-ms-account.md)。
@@ -125,7 +125,7 @@ ms.locfileid: "78297834"
 | -------- | -------- |
 | 为什么使用手机登录比键入密码更安全？ | 当今，大多数人在登录网站或应用时，使用用户名和密码。 遗憾的是，密码可能会丢失、被盗或被黑客猜出。<br><br>安装 Microsoft Authenticator 应用后，该应用会在手机上创建一个密钥，用于解锁受手机 PIN 或生物识别锁保护的帐户。 登录时，可以使用此密钥来证明自己的身份。<br><br>**重要说明**<br>你的数据仅用于在本地保护你的密钥。 这些数据永远不会发送到或者存储在云中。 |
 | 电话登录是否替换双重验证？ 我是否应将其关闭？ | 手机登录是一种在移动设备上进行的双重验证。 应该让双重验证保持启用状态，以便为帐户提供额外的安全性。 |
-| 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | No。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
+| 如果为我的帐户启用了双重验证，是否必须批准两个通知？ | 不是。 使用手机登录到 Microsoft 帐户也算作双重验证，因此不需要再次批准。 |
 | 如果我的手机丢失或没有与我联系，怎么办？ 如何实现访问我的帐户？ | 始终可以在登录页中选择“改用密码”链接，重新改用密码登录。 但是，如果使用双重验证，则仍需要使用第二种方法来验证身份。<br><br>**重要说明**<br>强烈建议确保有多个最新的验证方法与你的帐户相关联。<br><br>可以通过[安全设置](https://account.live.com/proofs/manage)页管理个人帐户的验证方法。 对于工作或学校帐户，如果管理员已启用安全信息，则你可以转到组织的[其他安全验证](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1)页或“保护帐户安全”页。 有关安全信息的详细信息，请参阅[安全信息（预览版）概述](user-help-security-info-overview.md)。<br><br>如果无法管理验证方法，则必须与管理员联系。 |
 | 如何实现停止使用此功能并返回到使用我的密码？ | 对于个人帐户，请在登录期间选择“改用密码”链接。 系统会记住你最近的选择，并在下次登录时默认提供此选项。 如果想要改用手机登录，请在登录期间选择“改用应用”链接。<br><br>对于工作或学校帐户，你必须从 "Microsoft Authenticator" 应用的 "**设置**" 页中注销该设备，或从配置文件的 "**设备 &" 活动**区域中禁用该设备。 有关从配置文件禁用设备的详细信息，请参阅[从 "我的应用" 门户更新你的配置文件和帐户信息](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information)。 |
 | 为什么不能使用多个工作或学校帐户登录？ | 一部手机只能注册到单个工作或学校帐户。 如果要为不同的工作或学校帐户启用电话登录，则必须通过 "**设置**" 页从该设备中取消注册帐户。 |

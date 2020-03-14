@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
 ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660303"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249589"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor 中的日志查询范围和时间范围 Log Analytics
 当你在[Azure 门户中 Log Analytics](get-started-portal.md)运行[日志查询](log-query-overview.md)时，查询计算的数据集取决于所选范围和时间范围。 本文介绍范围和时间范围，以及如何根据需要设置每个范围和时间范围。 还介绍了不同类型的作用域的行为。

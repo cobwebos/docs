@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757860"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260223"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系统要求
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 对托管 Azure IoT Edge 运行时的服务器使用下表中的端口配置：
 
-| 端口号。 | 入或出 | 端口范围 | 需要 | 指南 |
+| 端口号。 | 入或出 | 端口范围 | 必选 | 指南 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 出       | WAN        | 是      | 为 IoT Edge 预配打开此出站端口。 使用手动脚本或 Azure IoT 设备预配服务 (DPS) 时，此配置是必需的。|
 
@@ -94,8 +94,8 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 | URL 模式                      | 组件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| https：\//mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器注册表（必填）               |
-| https://\*.azure-devices.us              | Iot 中心访问权限（必填）           |
+| https：\//mcr.microsoft.com<br></br>https://\*. cdn.mscr.com | Microsoft 容器注册表（必填）               |
+| https://\*. azure-devices.us              | Iot 中心访问权限（必填）           |
 | https://\*. azurecr.us                    | 个人和第三方容器注册表（可选） | 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽

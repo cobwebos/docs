@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 88c35b7b1420b5d89f9215f7da3ccf24870024e9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: b5bf5cc5c44226236f39a6e32c33ebe346e36eeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597769"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269011"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -45,7 +45,7 @@ ms.locfileid: "77597769"
 如果要使用存储帐户密钥来访问 Azure 文件共享，我们建议使用 "[网络](#networking)" 部分中所述的服务终结点。
 
 ## <a name="networking"></a>网络
-可以从任何位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，经过身份验证的请求（如用户的登录标识所授权的请求）可从 Azure 内部或外部发起。 在许多客户环境中，本地工作站上的 Azure 文件共享的初始装载会失败，即使 Azure Vm 的装载成功。 这样做的原因是许多组织和 internet 服务提供商（Isp）会阻止 SMB 用来通信的端口，即端口445。 
+可以从任何位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，经过身份验证的请求（如用户的登录标识所授权的请求）可从 Azure 内部或外部发起。 在许多客户环境中，本地工作站上的 Azure 文件共享的初始装载会失败，即使 Azure Vm 的装载成功。 这样做的原因是许多组织和 internet 服务提供商（Isp）会阻止 SMB 用来通信的端口，即端口445。 若要概览允许或不允许从端口 445 访问的 ISP，请转到 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
 
 若要取消阻止对 Azure 文件共享的访问，有两个主要选项：
 

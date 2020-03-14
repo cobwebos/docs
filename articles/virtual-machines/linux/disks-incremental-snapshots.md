@@ -1,18 +1,18 @@
 ---
-title: 托管磁盘的增量快照（预览版）
-description: 了解托管磁盘的增量快照（预览版），包括如何使用 PowerShell 和 Azure 资源管理器创建。
+title: 托管磁盘的增量快照
+description: 了解托管磁盘的增量快照，包括如何使用 CLI 和 Azure 资源管理器创建。
 author: roygara
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 03/13/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74c1c84b4deb1f2d904f88887fcf81b880f0f8ec
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: cc2685c234bceb302b86ebd84d0ec091ac11f098
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970400"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79370859"
 ---
-# <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>为托管磁盘创建增量快照（预览版）
-[!INCLUDE [virtual-machines-disks-incremental-snapshot](../../../includes/virtual-machines-disks-incremental-snapshot.md)]
+# <a name="create-an-incremental-snapshot-for-managed-disks---cli"></a>为托管磁盘创建增量快照-CLI
+[!INCLUDE [virtual-machines-disks-incremental-snapshot-cli](../../../includes/virtual-machines-disks-incremental-snapshot-cli.md)]

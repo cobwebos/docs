@@ -1,17 +1,17 @@
 ---
-title: Active Directory authentication-Azure Database for MySQL-单一服务器
-description: 了解 Azure Active Directory 用于 Azure Database for MySQL 单一服务器进行身份验证的概念
+title: Active Directory 身份验证-Azure Database for MySQL
+description: 了解 Azure Active Directory 用于身份验证的概念 Azure Database for MySQL
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: eb26bc09ce273280b55a023c563427b5b323ace9
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 960536c3f80aa7870d6f2056d8e95cd1a4338dfe
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76706097"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79299016"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>使用 Azure Active Directory 通过 MySQL 进行身份验证
 
@@ -90,7 +90,7 @@ Azure Active Directory 身份验证支持使用 Azure AD 标识连接到数据�
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解如何创建和填充 Azure AD，然后用 Azure Database for MySQL 配置 Azure AD，请参阅[Azure Database for MySQL 的 Azure AD 配置和登录](howto-configure-sign-in-azure-ad-authentication.md)。
-- 有关登录名和数据库用户 Azure Database for MySQL 的概述，请参阅[在 Azure Database for MySQL 单服务器中创建用户](howto-create-users.md)。
+- 有关登录名和数据库用户 Azure Database for MySQL 的概述，请参阅[在 Azure Database for MySQL 中创建用户](howto-create-users.md)。
 
 <!--Image references-->
 

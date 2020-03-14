@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535322"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79298608"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory 标识和访问管理操作参考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "74535322"
 
 管理 Azure Active Directory 需要连续执行关键操作任务和可能不属于推出项目的过程。 将这些任务设置为维护您的环境仍很重要。 关键任务及其建议所有者包括：
 
-| 任务 | 所有者 |
+| 任务 | “所有者” |
 | :- | :- |
 | 定义创建 Azure 订阅的过程 | 因组织而异 |
 | 决定谁获得企业移动性 + 安全性许可证 | IAM 操作团队 |
@@ -170,7 +170,7 @@ Azure Active Directory 通过[基于组](https://docs.microsoft.com/azure/active
 资源所有者可能相信，"**所有用户**"**组在实际情况中**都包含**企业**员工和**来宾**。 因此，在使用 "**所有用户**" 组进行应用程序分配并授予对 SharePoint 内容或应用程序等资源的访问权限时，应该特别小心。
 
 > [!IMPORTANT]
-> 如果 "**所有用户**" 组已启用，并且用于条件访问策略、"应用" 或 "资源分配"，请确保在不想让用户包括来宾用户的情况下[保护组](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group)。 而且，你应该通过创建并分配给只包含**企业员工**的组来修复你的授权分配。 另一方面，如果你发现 "**所有用户**" 组已启用但未被用于授予对资源的访问权限，请确保你的组织的操作指导有意使用该组（包括**企业员工**和**来宾**）。
+> 如果 "**所有用户**" 组已启用，并且用于条件访问策略、"应用" 或 "资源分配"，请确保在不想让用户包括来宾用户的情况下[保护组](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups)。 而且，你应该通过创建并分配给只包含**企业员工**的组来修复你的授权分配。 另一方面，如果你发现 "**所有用户**" 组已启用但未被用于授予对资源的访问权限，请确保你的组织的操作指导有意使用该组（包括**企业员工**和**来宾**）。
 
 ### <a name="automated-user-provisioning-to-apps"></a>应用的自动用户预配
 

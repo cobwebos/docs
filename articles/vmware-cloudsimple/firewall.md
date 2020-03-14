@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78386847"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79244662"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>为私有云设置防火墙表和规则
 
@@ -76,4 +76,4 @@ ms.locfileid: "78386847"
 2. 打开 "**附加的 vlan/子网**" 选项卡。
 3. 单击 "**附加到 VLAN/子网**"。
 4. 选择私有云和 VLAN。 显示关联的子网名称和 CIDR 块。
-5. 单击 **“提交”** 。
+5. 单击“提交”。

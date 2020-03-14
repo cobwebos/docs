@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566343"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367578"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB 中的地理空间和 GeoJSON 位置数据
 
@@ -25,7 +25,10 @@ ms.locfileid: "77566343"
 
 空间数据用于描述空间中对象的位置和形状。 在大部分应用程序中，这些会对应于地球上的对象和地理空间数据。 空间数据可以用来表示人、名胜古迹、城市边界或湖泊所处的位置。 常见用例通常涉及邻近查询，例如“寻找我目前位置附近的所有咖啡厅”。
 
-Azure Cosmos DB 的 SQL API 支持**geography**数据类型。 **Geography** 类型表示圆形地球坐标系中的数据。
+Azure Cosmos DB 的 SQL API 支持两种空间数据类型： **geometry**数据类型和**geography**数据类型。
+
+- **Geometry**类型表示欧氏（平面）坐标系中的数据
+- **Geography** 类型表示圆形地球坐标系中的数据。
 
 ## <a name="supported-data-types"></a>支持的数据类型
 
@@ -70,7 +73,11 @@ Azure Cosmos DB 中的点
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>地理坐标系统中的点
+### <a name="points-in-a-geometry-coordinate-system"></a>几何坐标系统中的点
+
+对于**geometry**数据类型，GeoJSON 规范首先指定水平轴和垂直轴。
+
+### <a name="points-in-a-geography-coordinate-system"></a>地理坐标系统中的点
 
 对于**geography**数据类型，GeoJSON 规范指定了经度 first 和纬度 second。 与其他地图应用程序一样，经度和纬度为角度，并以度为单位表示。 经度值从本初子午线测量，并介于 -180 度和 180.0 度之间；纬度值从赤道测量，并介于 -90.0 度和 90.0 度之间。
 
@@ -125,20 +132,20 @@ GeoJSON 中的多边形
 ```json
 {
     "type":"MultiPolygon",
-    "coordinates":[ [
+    "coordinates":[[[
         [52.0, 12.0],
         [53.0, 12.0],
         [53.0, 13.0],
         [52.0, 13.0],
         [52.0, 12.0]
-    ],
-    [
+        ]],
+        [[
         [50.0, 0.0],
         [51.0, 0.0],
         [51.0, 5.0],
         [50.0, 5.0],
         [50.0, 0.0]
-    ] ]
+        ]]]
 }
 ```
 

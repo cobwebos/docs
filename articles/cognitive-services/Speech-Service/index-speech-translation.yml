@@ -10,16 +10,16 @@ metadata:
   layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 742b9710fc7ab396aa906c956d6809df9440c78e
+  ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
   ms.translationtype: MT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562918"
+  ms.lasthandoff: 03/14/2020
+  ms.locfileid: "79367969"
 landingContent:
-- title: 入门
+- title: 关于语音翻译
   linkLists:
   - linkListType: overview
     links:
@@ -29,11 +29,11 @@ landingContent:
     links:
     - text: 将语音翻译为文本
       url: quickstarts/translate-speech-to-text.md
-    - text: 将语音转换为多个目标语言
+    - text: 将语音翻译为多种目标语言
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 将语音翻译为语音
       url: quickstarts/translate-speech-to-speech.md
-- title: 分步指南
+- title: 通过语音翻译进行开发
   linkLists:
   - linkListType: learn
     links:
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: 语言支持
       url: language-support.md#speech-translation
-    - text: 定价
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
     - text: 语音翻译常见问题解答
       url: https://www.microsoft.com/translator/business/faq/
+    - text: 语音翻译定价
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

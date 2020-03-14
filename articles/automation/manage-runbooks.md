@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78226257"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366830"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>在 Azure 自动化中管理 Runbook
 
@@ -33,7 +33,7 @@ ms.locfileid: "78226257"
 
 ### <a name="create-a-runbook-with-powershell"></a>通过 PowerShell 创建 Runbook
 
-可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 创建空的[PowerShell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用*Type*参数指定为**AzAutomationRunbook**定义的 runbook 类型之一。
+可以使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) cmdlet 创建空的[PowerShell 工作流 runbook](automation-runbook-types.md#powershell-workflow-runbooks)。 使用 `Type` 参数指定为 `New-AzAutomationRunbook`定义的一个 runbook 类型。
 
 下面的示例演示如何创建新的空 runbook。
 
@@ -75,7 +75,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ### <a name="import-a-runbook-from-a-script-file-with-windows-powershell"></a>使用 Windows PowerShell 从脚本文件导入 runbook
 
-使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 将脚本文件导入为 PowerShell 工作流 runbook 草稿。 如果 runbook 已存在，除非将*Force*参数与 cmdlet 一起使用，否则导入将失败。
+使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) cmdlet 将脚本文件导入为 PowerShell 工作流 runbook 草稿。 如果 runbook 已存在，除非将 `Force` 参数与 cmdlet 一起使用，否则导入将失败。
 
 下面的示例演示如何将脚本文件导入 runbook。
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>测试 Runbook
 
-测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 不会创建任何作业历史记录，但会在 "测试输出" 窗格中显示[输出](automation-runbook-output-and-messages.md#output-stream)、[警告和错误](automation-runbook-output-and-messages.md#message-streams)流。 仅当 VerbosePreference 变量] （automation-变量）设置为**Continue**时，才会在输出窗格中显示[详细流](automation-runbook-output-and-messages.md#message-streams)的消息。
+测试 Runbook 时，将执行[草稿版](#publish-a-runbook)，并会完成其所执行的任何操作。 不会创建任何作业历史记录，但会在 "测试输出" 窗格中显示[输出](automation-runbook-output-and-messages.md#output-stream)、[警告和错误](automation-runbook-output-and-messages.md#message-streams)流。 仅当 `VerbosePreference` 变量] （automation-"----------messages # 首选项"）设置为 "继续" 时，才会在 "输出" 窗格中显示[详细流](automation-runbook-output-and-messages.md#message-streams)的消息。
 
 即使草稿版正在运行，该 Runbook 也仍会正常执行，并针对环境中的资源执行任何操作。 因此，只能在非生产资源中测试 Runbook。
 

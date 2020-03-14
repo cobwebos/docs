@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791744"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270571"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -20,9 +20,9 @@ ms.locfileid: "74791744"
 若要重复操作直到满足条件或状态发生变化，可以创建[“Until”循环](#until-loop)。 逻辑应用首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。 有关逻辑应用运行中“Until”循环数的限制，请参阅[限制和配置](../logic-apps/logic-apps-limits-and-config.md)。 
 
 > [!TIP]
-> 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用 [**SplitOn** 触发器属性](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)“分离”该数组。 
+> 如果你有接收数组的触发器并且希望针对每个数组项运行工作流，则可以使用SplitOn[ 触发器属性 **“分离”** ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)该数组。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "74791744"
 2. 在 RSS 触发器与“发送电子邮件”操作之间，添加一个 Foreach 循环。 
 
    1. 若要在步骤之间添加循环，请将鼠标指针移到这些步骤之间的箭头上。 
-   选择出现的加号 (+)，然后选择“添加操作”。
+   选择出现的加号 ( **)，然后选择“添加操作”** **+** 。
 
       ![选择“添加操作”。](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "74791744"
 
    ![启用并发控制](media/logic-apps-control-flow-loops/for-each-loop-sequential-setting.png)
 
-如果在使用逻辑应用的 JSON 定义，则可以通过添加 `operationOptions` 参数来使用 `Sequential` 选项，例如：
+如果在使用逻辑应用的 JSON 定义，则可以通过添加 `Sequential` 参数来使用 `operationOptions` 选项，例如：
 
 ``` json
 "actions": {
@@ -173,10 +173,10 @@ ms.locfileid: "74791744"
 
    ![设置定期计划](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | properties | Value |
+   | properties | 值 |
    | -------- | ----- |
-   | 间隔 | 第 | 
-   | **频率** | 天 |
+   | 间隔 | 1 | 
+   | **频率** | 日期 |
    | **在这些小时** | 8 |
    ||| 
 
@@ -189,9 +189,9 @@ ms.locfileid: "74791744"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | properties | Value | 描述 |
+   | properties | 值 | 说明 |
    | -------- | ----- | ----------- |
-   | 名称 | Limit | 变量的名称 | 
+   | **名称** | 限制 | 变量的名称 | 
    | 类型 | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
@@ -230,7 +230,7 @@ ms.locfileid: "74791744"
 
       ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | properties | Value | 描述 |
+      | properties | 值 | 说明 |
       | -------- | ----- | ----------- | 
       | **收件人** | *\<电子邮件地址\@域 >* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
       | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
@@ -247,7 +247,7 @@ ms.locfileid: "74791744"
 
 Until 循环具有默认限制，用于在发生下列任一条件时停止执行：
 
-| properties | 默认值 | 描述 | 
+| properties | 默认值 | 说明 | 
 | -------- | ------------- | ----------- | 
 | **Count** | 60 | 在循环退出之前运行的最大循环次数。 默认值为 60 个周期。 | 
 | **超时** | PT1H | 在循环退出之前运行循环的最大时间量。 默认值为一小时，并且是以 ISO 8601 格式指定的。 <p>将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 | 

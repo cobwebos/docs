@@ -10,22 +10,24 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5831f83d8cd38cc07c64fdc398405c3a70935485
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 85bae9bfc10460b51935c6eb1e14e3a3dd816a8c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169093"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217801"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>将分析从 Excel 迁移到 Azure 机器学习 Studio （经典）
 
-> *Kate Baroni* 和 *Ben Boatman* 是 Microsoft 数据科学卓越中心中的企业解决方案架构师。 本文介绍了如何使用 Azure 机器学习 Studio （经典）将现有回归分析套件迁移到基于云的解决方案。
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+> *Kate Baroni*和*Ben Boatman*是 Microsoft Data Insights 中心的企业解决方案架构师。 本文介绍了如何使用 Azure 机器学习 Studio （经典）将现有回归分析套件迁移到基于云的解决方案。
 
 ## <a name="goal"></a>目标
 
 我们的项目开始时有两个目标： 
 
-1. 使用预测分析来提高我们组织每月收入预测的准确性 
+1. 使用预测分析提高组织每月收入预测的准确性 
 2. 使用 Azure 机器学习 Studio （经典）来确认、优化、提高速度并缩放我们的结果。 
 
 与许多企业一样，我们的组织每月也会经历收入预测过程。 我们的小型业务分析人员团队使用 Azure 机器学习 Studio （经典）来支持该过程和提高预测准确性。 小组花费了几个月的时间从多个源中收集数据，并通过标识与服务销售预测相关的重要属性的统计分析来运行数据属性。 后续步骤是要开始在 Excel 中为数据建立统计回归模型的原型。 在几个星期内，我们便有了 Excel 回归模型，其效果优于当前字段和财务预测过程。 这也成为预测结果的基线。 
@@ -54,8 +56,8 @@ ms.locfileid: "77169093"
 |  | Excel | 工作室（经典版） |
 | --- |:---:|:---:|
 | 性能 | | |
-| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |不可用 |
-| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |不可用 |0.78<br />（低准确性） |
+| <ul style="list-style-type: none;"><li>调整 R 平方</li></ul> |0.96 |空值 |
+| <ul style="list-style-type: none;"><li>决定 <br />系数</li></ul> |空值 |0.78<br />（低准确性） |
 | 平均绝对误差 |$9.5M |$ 19.4 M |
 | 平均绝对误差 (%) |6.03% |12.2% |
 
@@ -73,13 +75,13 @@ ms.locfileid: "77169093"
 | --- |:---:|:---:|:---:|
 | 有标签的值 |实际值（数值） |相同 |相同 |
 | 学习器 |Excel -> 数据分析 -> 回归 |线性回归。 |线性回归 |
-| 学习器选项 |不可用 |默认值 |普通最小二乘法<br />L2 = 0.005 |
+| 学习器选项 |空值 |默认值 |普通最小二乘法<br />L2 = 0.005 |
 | 数据集 |26 行、3 个功能、1 个标签。 所有数字。 |相同 |相同 |
 | 拆分：训练 |Excel 在前 18 行进行训练，在最后 8 行进行测试。 |相同 |相同 |
 | 拆分：测试 |Excel 回归公式应用于最后 8 行 |相同 |相同 |
 | **“性能”** | | | |
-| 调整 R 平方 |0.96 |不可用 | |
-| 决定系数 |不可用 |0.78 |0.952049 |
+| 调整 R 平方 |0.96 |空值 | |
+| 决定系数 |空值 |0.78 |0.952049 |
 | 平均绝对误差 |$9.5M |$ 19.4 M |$9.5M |
 | 平均绝对误差 (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
@@ -115,7 +117,7 @@ ms.locfileid: "77169093"
 
 如果要实验回归，能源效率回归示例数据集即是可用于尝试的好的数据集，其中包含很多数值属性。 数据集作为 Studio （经典）中的示例数据集的一部分提供。 可以使用各种学习模块来预测加热负载或冷却负载。 下表是针对目标变量冷却负载预测的能源效率数据集的不同回归学习的性能比较： 
 
-| 模型 | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
+| “模型” | 平均绝对误差 | 均方根误差 | 相对绝对误差 | 相对平方误差 | 决定系数 |
 | --- | --- | --- | --- | --- | --- |
 | 提升决策树 |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
 | 线性回归（梯度下降） |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
@@ -132,8 +134,8 @@ ms.locfileid: "77169093"
 ## <a name="resources"></a>资源
 下面是一些可帮助用户处理回归的资源： 
 
-* Excel 中的回归。 如果从未尝试在 Excel 中使用回归，可参阅本教程轻松完成操作：[https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
-* 回归与预测。 Tyler Chessman 撰写的博客文章，介绍了如何在 Excel 中进行时间序列预测，其中包括适合初学者的线性回归描述。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
+* Excel 中的回归。 如果你从未在 Excel 中尝试回归，则本教程使其变得简单： [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)
+* 回归与预测。 Tyler Chessman 撰写了一篇博客文章，其中介绍了如何在 Excel 中进行时序预测，其中包含了一个很好的入门线性回归说明。 [https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts](https://www.itprotoday.com/sql-server/understanding-time-series-forecasting-concepts) 
 * 普通最小二乘法线性回归：缺陷、问题和陷阱。 有关回归的介绍和讨论： [https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 <!-- Module References -->

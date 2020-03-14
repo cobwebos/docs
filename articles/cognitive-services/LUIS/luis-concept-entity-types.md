@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976955"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221025"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>实体及其在 LUIS 中的用途
 
@@ -37,10 +37,10 @@ ms.locfileid: "74976955"
 
  您可以定义自己的实体，也可以使用预构建的实体来节省常见概念（如[datetimeV2](luis-reference-prebuilt-datetimev2.md)、[序号](luis-reference-prebuilt-ordinal.md)、[电子邮件](luis-reference-prebuilt-email.md)和[电话号码](luis-reference-prebuilt-phonenumber.md)）的时间。
 
-|话语|实体|数据|
+|话语|实体|data|
 |--|--|--|
 |购买 3 张到纽约的机票|预生成的数字<br>Location.Destination|3<br>纽约|
-|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>伦敦<br>2018 年 3 月 5 日|
+|购买 3 月 5 日从纽约到伦敦的机票|Location.Origin<br>Location.Destination<br>预生成的 datetimeV2|纽约<br>London<br>2018 年 3 月 5 日|
 
 ### <a name="entities-are-optional"></a>实体是可选的
 
@@ -60,12 +60,12 @@ ms.locfileid: "74976955"
 |--|--|--|--|
 |帮助|help|-|没有要提取的内容。|
 |发送内容|sendSomething|-|没有要提取的内容。 尚未训练该模型来提取此上下文中 `something`，并且不存在任何接收方。|
-|发送小明|sendSomething|`Bob`，`present`|该模型已通过[personName](luis-reference-prebuilt-person.md)预先生成的实体进行定型，该实体已提取 `Bob`的名称。 已使用计算机学习的实体提取 `present`。|
-|向 Bob 发送甜蜜的框|sendSomething|`Bob`，`box of chocolates`|两个重要的数据段（`Bob` 和 `box of chocolates`）已由实体提取。|
+|发送小明|sendSomething|`Bob`、`present`|该模型已通过[personName](luis-reference-prebuilt-person.md)预先生成的实体进行定型，该实体已提取 `Bob`的名称。 已使用计算机学习的实体提取 `present`。|
+|向 Bob 发送甜蜜的框|sendSomething|`Bob`、`box of chocolates`|两个重要的数据段（`Bob` 和 `box of chocolates`）已由实体提取。|
 
 ## <a name="design-entities-for-decomposition"></a>为分解设计实体
 
-这是一种良好的实体设计，使顶级实体成为计算机学习的实体。 这允许在一段时间内对你的实体设计进行更改 ，并可选择使用**约束**和**描述符**将顶级实体分解为客户端应用程序所需的部件。
+这是一种良好的实体设计，使顶级实体成为计算机学习的实体。 这允许在一段时间内对你的实体设计进行更改**subcomponents** ，并可选择使用**约束**和**描述符**将顶级实体分解为客户端应用程序所需的部件。
 
 针对分解进行设计使 LUIS 可以向客户端应用程序返回更深层的实体解析。 这样，客户端应用程序便可以专注于业务规则并将数据解析 LUIS。
 
@@ -90,7 +90,7 @@ ms.locfileid: "74976955"
 
 请根据数据的提取方式以及提取后的数据表示方式，来选择实体。
 
-|实体类型|用途|
+|实体类型|目的|
 |--|--|
 |[**计算机学习**](tutorial-machine-learned-entity.md)|计算机学习的实体从查询文本中的上下文学习。 实体的父分组，与实体类型无关。 这会使最谈话的位置变体变得很重要。 |
 |[**列表**](reference-entity-list.md)|用**精确文本匹配**提取的项及其同义词的列表。|
@@ -138,7 +138,7 @@ LUIS 门户显示了当实体（在示例中为查询文本）具有不同于所
 
 了解关于优良[话语](luis-concept-utterance.md)的概念。
 
-请参阅[添加实体](luis-how-to-add-entities.md)，了解如何将实体添加到 LUIS 应用的详细信息。
+请参阅[添加实体](luis-how-to-add-entities.md)，详细了解如何将实体添加到 LUIS 应用。
 
 请参阅[教程：从用户查询文本中提取结构化数据和语言理解（LUIS）中的机器学习的实体](tutorial-machine-learned-entity.md)，了解如何使用机器学习的实体从查询文本提取结构化数据。
  

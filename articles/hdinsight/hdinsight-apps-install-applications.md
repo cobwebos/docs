@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78389479"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366336"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安装第三方 Apache Hadoop 应用程序
 
@@ -39,12 +39,12 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01) |Hadoop、Spark、HBase |Trifacta Wrangler Enterprise for HDInsight 支持企业范围的数据整理，适用于任何规模的数据。 在 Azure 上运行 Trifacta 的成本是 Trifacta 订阅成本加上虚拟机的 Azure 基础结构成本的组合。 |
 |[Unifi 数据平台](https://unifisoftware.com/platform/) |Hadoop、HBase、风暴、Spark |Unifi 数据平台是一套无缝集成的自助服务数据工具，旨在使业务用户能够应对不断增加收入、降低成本或运营复杂性的数据挑战。 |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |适用于 HDInsight Spark 群集的难以数据应用。 |
-|[等高线-驱动数据目录](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |使用 AI 对数据进行分类、组织和控制，并使用业务术语自动标记数据。 Waterline 的商业文献目录是一个用于自助分析、合规性和管理，以及 IT 管理计划的关键成功组件。 |
+|[等高线-驱动数据目录](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |使用 AI 对数据进行分类、组织和控制，并使用业务术语自动标记数据。 等高线的 business serilog.sinks.literate catalog 是一项关键的成功组件，用于自助分析、合规性和管理以及 IT 管理计划。 |
 
 本文提供的说明将使用 Azure 门户。 也可以从门户导出 Azure 资源管理器模板或从供应商处获取 Resource Manage 模板的副本，并使用 Azure PowerShell 和 Azure 经典 CLI 部署模板。  请参阅[使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
 ## <a name="prerequisites"></a>必备条件
-如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
+如果想要在现有的 HDInsight 群集上安装 HDInsight 应用程序，必须有一个 HDInsight 群集。 若要创建群集，请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。 也可以在创建 HDInsight 群集时安装 HDInsight 应用程序。
 
 ## <a name="install-applications-to-existing-clusters"></a>将应用程序安装到现有群集
 下面的过程演示如何将 HDInsight 应用程序安装到现有的 HDInsight 群集。
@@ -53,7 +53,7 @@ HDInsight 应用程序是用户可以在 HDInsight 群集上安装的应用程�
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 从左侧菜单中，导航到 "**所有服务**" > **Analytics** > **HDInsight 群集**"。
-3. 从列表中选择一个 HDInsight 群集。  如果没有群集，必须先创建一个。  请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
+3. 从列表中选择一个 HDInsight 群集。  如果没有群集，必须先创建一个。  请参阅 [创建群集](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 4. 在 "**设置**" 类别下，选择 "**应用程序**"。 你可以在主窗口中查看已安装应用程序的列表。 
    
     ![HDInsight 应用程序门户菜单](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)

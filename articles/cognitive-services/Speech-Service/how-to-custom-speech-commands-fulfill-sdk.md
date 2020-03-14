@@ -1,23 +1,23 @@
 ---
-title: 如何在客户端上通过语音 SDK 完成自定义命令
+title: 如何使用 Speech SDK 实现客户端的命令
 titleSuffix: Azure Cognitive Services
-description: 本文介绍如何在客户端上利用语音 SDK 处理自定义命令活动。
+description: 本文介绍如何使用语音 SDK 处理客户端上的自定义命令活动。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156499"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79367732"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>如何：在客户端上通过语音 SDK 完成命令（预览）
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>使用 Speech SDK （预览版）从客户端中完成命令
 
 若要使用自定义命令应用程序完成任务，你可以将自定义负载发送到已连接的客户端设备。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76156499"
 - 从自定义命令应用程序定义并发送自定义 JSON 有效负载
 - 从C# UWP Speech SDK 客户端应用程序接收和可视化自定义 JSON 负载内容
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - 用于语音服务的 Azure 订阅密钥
@@ -49,7 +49,7 @@ ms.locfileid: "76156499"
    > [!div class="mx-imgBorder"]
    > ![发送活动完成规则](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | 设置 | 建议的值 | Description |
+   | 设置 | 建议的值 | 说明 |
    | ------- | --------------- | ----------- |
    | 规则名称 | UpdateDeviceState | 描述规则用途的名称 |
    | 条件 | 必需参数-`OnOff` 和 `SubjectDevice` | 确定何时可以运行规则的条件 |
@@ -131,7 +131,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 };
 ```
 
-## <a name="try-it-out"></a>试试看
+## <a name="try-it-out"></a>试用
 
 1. 启动应用程序
 1. 选择启用麦克风

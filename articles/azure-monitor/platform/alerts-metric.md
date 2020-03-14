@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 02/16/2020
+ms.date: 03/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5452f67a9da9a71a72c9387bc3e62d6735929984
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363397"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79369380"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -136,7 +136,7 @@ Azure Monitor 中的指标警报提供了一种方法，以便在某个指标超
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-enable-template.md)。
+- [使用 Azure 资源管理器模板创建指标警报](../../azure-monitor/platform/alerts-metric-create-templates.md)。
 - [了解指标警报的工作原理](alerts-metric-overview.md)。
 - [了解指标警报与动态阈值条件的工作原理](alerts-dynamic-thresholds.md)。
 - [了解指标警报的 Webhook 架构](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
