@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafd209073b36265d24dbad4a66b3870d8f593db
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148646"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79365860"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>如何：配置 Azure AD SAML 令牌加密（预览）
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：配置 Azure AD SAML 令牌加密
 
 > [!NOTE]
 > 令牌加密是一项 Azure Active Directory (Azure AD) 高级功能。 若要详细了解 Azure AD 版本、功能和定价，请参阅 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -123,26 +123,21 @@ Azure AD 使用 AES-256 加密 SAML 断言数据。
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>使用 PowerShell 配置令牌加密
 
-此功能即将推出。 
+1. 使用最新 Azure AD PowerShell 模块连接到你的租户。
 
-<!--
-1. Use the latest Azure AD PowerShell module to connect to your tenant.
-
-1. Set the token encryption settings using the **[Set-AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** command.
+1. 使用 **[azure 应用程序](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令设置令牌加密设置。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. Read the token encryption settings using the following commands.
+1. 使用以下命令读取令牌加密设置。
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>
     $app.KeyCredentials
     $app.TokenEncryptionKeyId
     ```
-
--->
 
 ### <a name="to-configure-token-encryption-using-the-application-manifest"></a>使用应用程序清单配置令牌加密
 

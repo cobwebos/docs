@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 147a131eb79c74dc38c4217d167c7d65ee8a9274
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046462"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79366166"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>为 Office 365 组配置过期策略
 
@@ -42,7 +42,7 @@ ms.locfileid: "77046462"
 
 ## <a name="activity-based-automatic-renewal"></a>基于活动的自动续订
 
-使用 Azure AD 智能，将根据最近是否使用组来自动续订组。 此功能消除了组所有者对手动操作的需要，因为它基于 Office 365 服务（例如 Outlook、SharePoint、团队或 Yammer）组中的用户活动。 例如，如果某个所有者或组成员执行类似于在 SharePoint 中上传文档的操作，请访问一个团队渠道，或将电子邮件发送到 Outlook 中的组，则该组将自动续订，所有者不会获得任何续订通知。
+使用 Azure AD 智能，将根据最近是否使用组来自动续订组。 此功能消除了组所有者对手动操作的需要，因为它基于 Office 365 服务（如 Outlook、SharePoint 或团队）组中的用户活动。 例如，如果某个所有者或组成员执行类似于在 SharePoint 中上传文档的操作，请访问一个团队渠道，或将电子邮件发送到 Outlook 中的组，则该组将自动续订，所有者不会获得任何续订通知。
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>自动续订组过期的活动
 
@@ -134,7 +134,7 @@ Role | 权限
    Connect-AzureAD
    ```
 
-1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Office 365 组的生存期设置为365天。 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”
+1. 配置过期设置使用 Remove-azureadmsgrouplifecyclepolicy cmdlet 将 Azure AD 组织中所有 Office 365 组的生存期设置为365天。 没有所有者的 Office 365 组的续订通知将发送到 "emailaddress@contoso.com"
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ Role | 权限
 
    - 策略 ID
    - Azure AD 组织中所有 Office 365 组的生存期设置为365天
-   - 没有所有者的 Office 365 组的续订通知将发送到“emailaddress@contoso.com”。
+   - 没有所有者的 Office 365 组的续订通知将发送到 "emailaddress@contoso.com"。
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy
