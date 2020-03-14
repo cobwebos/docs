@@ -6,11 +6,11 @@ ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
 ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361826"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275823"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -34,10 +34,10 @@ ms.locfileid: "78361826"
 |-|-|-|-|
 | ASP.NET | [是（默认启用）](#configuring-adaptive-sampling-for-aspnet-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-applications) | 仅当没有其他采样有效时 |
 | ASP.NET Core | [是（默认启用）](#configuring-adaptive-sampling-for-aspnet-core-applications) | [是](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | 仅当没有其他采样有效时 |
-| Azure Functions | [是（默认启用）](#configuring-adaptive-sampling-for-azure-functions) | 是 | 仅当没有其他采样有效时 |
-| Java | 是 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 仅当没有其他采样有效时 |
-| Python | 是 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 仅当没有其他采样有效时 |
-| 所有其他属性 | 是 | 是 | [是](#ingestion-sampling) |
+| Azure Functions | [是（默认启用）](#configuring-adaptive-sampling-for-azure-functions) | 否 | 仅当没有其他采样有效时 |
+| Java | 否 | [是](#configuring-fixed-rate-sampling-for-java-applications) | 仅当没有其他采样有效时 |
+| Python | 否 | [是](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | 仅当没有其他采样有效时 |
+| 其他 | 否 | 否 | [是](#ingestion-sampling) |
 
 > [!NOTE]
 > 本页面中的大部分信息适用于当前版本的 Application Insights Sdk。 有关更早版本的 Sdk 的信息，[请参阅下面的部分](#older-sdk-versions)。
@@ -506,7 +506,7 @@ union requests,dependencies,pageViews,browserTimings,exceptions,traces
 
 *遥测是否可以进行多次采样？*
 
-* No。 如果已对项进行了采样，SamplingTelemetryProcessors 将忽略样本注意事项中的项。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
+* 不是。 如果已对项进行了采样，SamplingTelemetryProcessors 将忽略样本注意事项中的项。 同样适用于引入采样，这也不会将采样应用于已在 SDK 自身中进行了采样的那些项。
 
 *为何不采样简单“收集每个遥测类型 %X”？*
 

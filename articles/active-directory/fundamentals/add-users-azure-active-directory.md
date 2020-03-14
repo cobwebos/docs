@@ -14,15 +14,15 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72616422934501e042375edfb10a25aa27c527
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073505"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262108"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 添加或删除用户
 
-在 Azure Active Directory (Azure AD) 组织中添加新用户或删除现有用户。 若要添加或删除用户，您必须是用户管理员或全局管理员。
+添加新用户或从你的 Azure Active Directory （Azure AD）组织中删除现有用户。 若要添加或删除用户，您必须是用户管理员或全局管理员。
 
 ## <a name="add-a-new-user"></a>添加新用户
 
@@ -30,7 +30,7 @@ ms.locfileid: "74073505"
 
 若要添加新用户，请按照以下步骤操作：
 
-1. 以组织的用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 以组织用户管理员身份登录到[Azure 门户](https://portal.azure.com/)。
 
 1. 搜索并从任意页面中选择*Azure Active Directory* 。
 
@@ -42,13 +42,13 @@ ms.locfileid: "74073505"
 
    - **名称**。 必需。 新用户的姓氏和名字。 例如，Mary Parker。
 
-   - **用户名**。 必需。 新用户的用户名。 例如，`mary@contoso.com`。
+   - **用户名**。 必需。 新用户的用户名。 例如，`mary@contoso.com` 。
 
      用户名的域部分必须使用初始默认域名、 *\<yourdomainname > onmicrosoft*或自定义域名（例如*contoso.com*）。 有关如何创建自定义域名的详细信息，请参阅[使用 Azure Active Directory 门户添加自定义域名](add-custom-domain.md)。
 
    - **组**。 （可选）可将用户添加到一个或多个现有组。 也可稍后将用户添加到组。 有关将用户添加到组的详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](active-directory-groups-create-azure-portal.md)。
 
-   - **目录角色**：如果需要用户 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 可以将用户分配为全局管理员，或者分配为 Azure AD 中有限的管理员角色中的一个或多个。 有关分配角色的详细信息，请参阅[如何为用户分配角色](active-directory-users-assign-role-azure-portal.md)。
+   - **目录角色**：如果需要用户 Azure AD 管理权限，则可以将其添加到 Azure AD 角色。 你可以将用户分配为全局管理员，或者 Azure AD 中的一个或多个有限管理员角色。 有关分配角色的详细信息，请参阅[如何为用户分配角色](active-directory-users-assign-role-azure-portal.md)。
 
    - **作业信息**：可以在此处添加有关用户的详细信息，也可以稍后执行此操作。 有关添加用户信息的详细信息，请参阅[如何添加或更改用户配置文件信息](active-directory-users-profile-azure-portal.md)。
 
@@ -76,7 +76,7 @@ ms.locfileid: "74073505"
 
 若要删除用户，请执行以下步骤：
 
-1. 使用组织的用户管理员帐户登录到 [Azure 门户](https://portal.azure.com/)。
+1. 使用组织的用户管理员帐户登录到[Azure 门户](https://portal.azure.com/)。
 
 1. 搜索并从任意页面中选择*Azure Active Directory* 。
 

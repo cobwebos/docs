@@ -4,11 +4,11 @@ description: Azure 门户中指定的区域与您将在其中发布 LUIS 应用�
 ms.topic: reference
 ms.date: 11/19/2019
 ms.openlocfilehash: 097f3078b54b014dc646d144f3532e20236a9e4f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273409"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219749"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
 

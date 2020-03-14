@@ -3,12 +3,12 @@ title: 在 Azure VM 上还原 SQL Server 数据库
 description: 本文介绍如何还原在 Azure VM 上运行并且使用 Azure 备份进行备份的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 58525069af28be250c3536db076a38fb350bc1da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390759"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252449"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -23,7 +23,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 - 使用事务日志备份还原到特定的日期或时间（到第二个）。 Azure 备份会自动根据所选时间确定所需的完整差异备份和日志备份链。
 - 还原特定的完整备份或差异备份以还原到特定恢复点。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在还原数据库之前，请注意以下事项：
 
@@ -70,7 +70,7 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 
 7. 在 "**还原配置**" 中，指定还原数据的位置（或方法）：
    - **备用位置**：将数据库还原到备用位置，并保留原始源数据库。
-   - **覆盖数据库**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项将覆盖原始数据库。
+   - **覆盖数据库**：将数据还原到原始源所在的同一 SQL Server 实例。 此选项会覆盖原始数据库。
 
     > [!IMPORTANT]
     > 如果选定的数据库属于 Always On 可用性组，则 SQL Server 不允许覆盖数据库。 仅“备用位置”可用。
@@ -112,24 +112,25 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 2. 选择要将备份文件还原到的 SQL Server 名称。
 3. 在**服务器上的 "目标路径**" 中，输入在步骤2中选择的服务器上的文件夹路径。 此位置是服务将转储所有必要备份文件的位置。 通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，则会使同一网络中的其他计算机或其上装载的 Azure 文件共享更加轻松地访问这些文件。<BR>
 
->若要将数据库备份文件还原到安装在目标注册 VM 上的 Azure 文件共享上，请确保 NT AUTHORITY\SYSTEM 有权访问该文件共享。 你可以执行以下步骤来向 VM 上装载的 AFS 授予读取/写入权限：
->- 运行 `PsExec -s cmd` 进入 NT AUTHORITY\SYSTEM shell
->   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
->   - 使用 `dir \\<storageacct>.file.core.windows.net\<filesharename>` 验证访问权限
->- 以文件形式从备份保管库中作为文件进行还原，作为路径 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
-可以通过 <https://docs.microsoft.com/sysinternals/downloads/psexec> 下载 Psexec
+    >若要将数据库备份文件还原到安装在目标注册 VM 上的 Azure 文件共享上，请确保 NT AUTHORITY\SYSTEM 有权访问该文件共享。 你可以执行以下步骤来向 VM 上装载的 AFS 授予读取/写入权限：
+    >
+    >- 运行 `PsExec -s cmd` 进入 NT AUTHORITY\SYSTEM shell
+    >   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
+    >   - 使用 `dir \\<storageacct>.file.core.windows.net\<filesharename>` 验证访问权限
+    >- 以文件形式从备份保管库中作为文件进行还原，作为路径 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
+    可以通过 <https://docs.microsoft.com/sysinternals/downloads/psexec> 下载 Psexec
 
 4. 选择“确定”。
 
-![选择还原为文件](./media/backup-azure-sql-database/restore-as-files.png)
+    ![选择还原为文件](./media/backup-azure-sql-database/restore-as-files.png)
 
 5. 选择要将所有可用的 .bak 文件还原到的**还原点**。
 
-![选择还原点](./media/backup-azure-sql-database/restore-point.png)
+    ![选择还原点](./media/backup-azure-sql-database/restore-point.png)
 
 6. 与所选恢复点关联的所有备份文件都将转储到目标路径中。 您可以使用 SQL Server Management Studio 将文件还原为任何计算机上存在的数据库。
 
-![目标路径中还原的备份文件](./media/backup-azure-sql-database/sql-backup-files.png)
+    ![目标路径中还原的备份文件](./media/backup-azure-sql-database/sql-backup-files.png)
 
 ### <a name="restore-to-a-specific-point-in-time"></a>还原到特定时间点
 
@@ -163,6 +164,9 @@ Azure 备份可以还原在 Azure Vm 上运行 SQL Server 数据库，如下所�
 1. 在列表中选择一个恢复点，然后选择“确定”完成还原点过程。
 
     ![选择完整恢复点](./media/backup-azure-sql-database/choose-fd-recovery-point.png)
+
+    >[!NOTE]
+    > 默认情况下，将显示过去30天内的恢复点。 可以通过单击 "**筛选器**" 并选择自定义范围来显示30天之前的恢复点。
 
 1. 在 "**高级配置**" 菜单上，如果要在还原后保留数据库 nonoperational，请启用 "**使用 NORECOVERY 还原**"。
 1. 若要更改目标服务器上的还原位置，请输入新的目标路径。

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: faab28a714b1a62e1e34de5b07119aa3018db24e
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847963"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263655"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 身份验证和 Azure 多重身份验证服务器
 
@@ -38,14 +38,14 @@ ms.locfileid: "74847963"
    ![MFA Server 中的 Windows 身份验证](./media/howto-mfaserver-windows/windowsauth.png)
 2. 选中“启用 Windows 身份验证”复选框。 默认情况下，此框处于未选中状态。
 3. 使用“应用程序”选项卡，管理员可以为 Windows 身份验证配置一个或多个应用程序。
-4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击 **“确定”** 。
+4. 选择服务器或应用程序 - 指定是否启用服务器/应用程序。 单击“确定”。
 5. 单击“添加...”
 6. 使用“受信任 IP”选项卡，可以跳过从特定 IP 发起的 Windows 会话的 Azure 多重身份验证。 例如，如果员工可以在办公室和家里使用应用程序，你可以决定不让其在办公室进行 Azure 多重身份验证时电话响铃。 为此，可将办公室子网指定为受信任 IP 条目。
 7. 单击“添加...”
 8. 若要跳过单个 IP 地址，请选择“单个 IP”。
 9. 若要跳过整个 IP 范围，请选择“IP 范围”。 示例：10.63.193.1-10.63.193.100。
 10. 若要使用子网表示法指定 IP 范围，请选择“子网”。 输入子网的起始 IP，并从下拉列表中选取适当的子网掩码。
-11. 单击 **“确定”** 。
+11. 单击“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 

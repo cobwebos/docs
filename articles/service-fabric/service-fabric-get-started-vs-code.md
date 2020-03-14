@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251628"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258481"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -48,7 +48,7 @@ ms.locfileid: "77251628"
 必须为 .NET Core/C# 开发安装以下必备组件：
 
 * [.NET Core](https://www.microsoft.com/net/learn/get-started)（2.0.0 或更高版本）
-* 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的**活动栏**上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
+* 调试 C# 服务时所需的 [C# for Visual Studio Code (Powered by OmniSharp) VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 可通过以下方法之一安装该扩展：在 VS Code 中的**活动栏**上单击“扩展”图标并搜索该扩展，或者从 VS Code 市场安装。
 
 ## <a name="setup"></a>设置
 

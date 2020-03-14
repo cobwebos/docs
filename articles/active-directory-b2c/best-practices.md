@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304389"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136153"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C 的建议和最佳实践
 
 以下最佳实践和建议涵盖了将 Azure Active Directory （Azure AD） B2C 集成到现有或新应用程序环境中的一些主要方面。
 
-## <a name="fundamentals"></a>基础
+## <a name="fundamentals"></a>基本
 
 |  |  |
 |--|--|
@@ -51,7 +51,7 @@ ms.locfileid: "78304389"
 
 |  |  |
 |--|--|
-| 用 Visual Studio Code 的 Azure AD B2C 扩展编辑自定义策略 | [从 Visual Studio Code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c))下载 Visual Studio Code 和此社区构建的扩展。 尽管不是官方的 Microsoft 产品，Visual Studio Code 的 Azure AD B2C 扩展包含多项功能，可帮助简化自定义策略的使用。 |
+| 用 Visual Studio Code 的 Azure AD B2C 扩展编辑自定义策略 | [从 Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)下载 Visual Studio Code 和此社区构建的扩展。 尽管不是官方的 Microsoft 产品，Visual Studio Code 的 Azure AD B2C 扩展包含多项功能，可帮助简化自定义策略的使用。 |
 | 了解如何排查 Azure AD B2C | 了解如何在开发期间对[自定义策略进行故障排除](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications)。 了解常规身份验证流的外观，并使用工具来发现异常和错误。 例如，使用[Application Insights](troubleshoot-with-application-insights.md)查看用户旅程的输出日志。 |
 | 利用我们的经验证的自定义策略模式 | 查找多个增强型 Azure AD B2C 客户标识和访问管理（CIAM）用户旅程的[示例](https://github.com/azure-ad-b2c/samples)。 |
 
@@ -91,5 +91,5 @@ ms.locfileid: "78304389"
 |  |  |
 |--|--|
 | [服务更新](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  随时了解 Azure AD B2C 的产品更新和公告。 |
-| [Microsoft 支持](support-options.md) | 为 Azure AD B2C 技术问题提供支持请求。 我们免费提供计费和订阅管理支持。 |
+| [Microsoft 支持](support-options.md) | 为 Azure AD B2C 技术问题提供支持请求。 计费和订阅管理支持免费提供。 |
 | [Azure 状态](https://status.azure.com/status) | 查看所有 Azure 服务的当前运行状况状态。 |

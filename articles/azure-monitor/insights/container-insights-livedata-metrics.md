@@ -3,12 +3,12 @@ title: 与 Azure Monitor 容器一起实时查看指标 |Microsoft Docs
 description: 本文介绍了度量值的实时视图，而无需将 kubectl 与容器的 Azure Monitor 一起使用。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404935"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79216594"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>如何实时查看指标
 
@@ -24,7 +24,7 @@ ms.locfileid: "75404935"
 
 若要获取有关设置实时数据（预览）功能或对其进行故障排除的帮助，请参阅我们的[安装指南](container-insights-livedata-setup.md)。
 
-## <a name="how-it-works"></a>工作原理 
+## <a name="how-it-works"></a>工作方式 
 
 实时数据（预览版）功能直接访问 Kubernetes API，还可以在[此处](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到有关身份验证模型的其他信息。 
 
@@ -34,7 +34,7 @@ ms.locfileid: "75404935"
 
 "轮询间隔" 是从 "**设置间隔**" 下拉项配置的，使你可以每隔1、5、15和30秒为新数据设置轮询。 
 
-![上线下拉轮询间隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.ping.png)
+![上线下拉轮询间隔](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
 >建议在一小段时间内对问题进行故障排除时，将轮询间隔设置为1秒。 这些请求可能会影响群集上 Kubernetes API 的可用性和限制。 之后，重新配置为更长的轮询间隔。 

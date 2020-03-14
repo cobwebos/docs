@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029952"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268296"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 导入/导出服务将数据导入到 Azure 文件
 
@@ -21,7 +21,7 @@ ms.locfileid: "76029952"
 
 导入/导出服务仅支持将 Azure 文件导入到 Azure 存储。 不支持导出 Azure 文件。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在创建导入作业来将数据传输到 Azure 文件之前，请仔细查看并完成以下先决条件列表。 必须：
 
@@ -115,7 +115,7 @@ ms.locfileid: "76029952"
 ## <a name="step-2-create-an-import-job"></a>步骤 2：创建导入作业
 
 在 Azure 门户中执行以下步骤来创建导入作业。
-1. 登录到 https://portal.azure.com/ 。
+1. 登录到 https://portal.azure.com/。
 2. 转到“所有服务”>“存储”>“导入/导出作业”。
 
     ![转到“导入/导出”](./media/storage-import-export-data-to-blobs/import-to-blob1.png)

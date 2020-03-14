@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376367"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261042"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -31,7 +31,7 @@ ms.locfileid: "78376367"
 “连接器”选项卡可用于管理同步引擎连接的所有系统。
 
 ## <a name="connector-actions"></a>连接器操作
-| 操作 | 备注 |
+| 操作 | 注释 |
 | --- | --- |
 | 创建 |请勿使用。 若要连接到其他 AD 林，请使用安装向导。 |
 | 属性 |用于域和 OU 筛选。 |

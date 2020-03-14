@@ -14,11 +14,11 @@ ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synapse
 ms.openlocfilehash: e9a4aa5b54cf7ed48daf1899bb5801c609dfbf32
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194030"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255868"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-synapse-analytics-ssms-support-for-mfa"></a>在 Azure SQL 数据库和 Azure Synapse Analytics 中使用多重 AAD 身份验证（对 MFA 的 SSMS 支持）
 Azure SQL Database 和 Azure Synapse 支持使用*Active Directory 通用身份验证*从 SQL SERVER MANAGEMENT STUDIO （SSMS）进行连接。 本文讨论各种身份验证选项之间的差异，以及与使用通用身份验证相关的限制。 

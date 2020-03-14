@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376263"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261614"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步：了解体系结构
 本主题介绍 Azure AD Connect 同步的基本体系结构。在许多方面，它类似于其前置任务2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步是这些技术的演进。 如果熟悉上述任何早期技术，则也会熟悉本主题的内容。 本主题很适合同步功能的新手。 但是，不一定要了解本主题的详细信息才能成功自定义 Azure AD Connect 同步（在本主题中称为“同步引擎”）。
@@ -145,9 +145,9 @@ Metaverse 对象包含同步引擎具有的连接器空间中暂存对象的聚�
 ## <a name="sync-engine-identity-management-process"></a>同步引擎标识管理过程
 标识管理过程控制在不同的连接数据源之间更新标识信息的方式。 标识管理分为三个过程：
 
-* 导入
+* Import
 * Synchronization
-* 导出
+* Export
 
 在导入过程中，同步引擎评估从连接的数据源传入的标识信息。 检测到更改时，它会在连接器空间中创建新的暂存对象或更新现有暂存对象以进行同步。
 

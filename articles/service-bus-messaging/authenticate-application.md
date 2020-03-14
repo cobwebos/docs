@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: aschhab
 ms.openlocfilehash: 6a78e4d81921fae8dcb325e9d72df1eee7b99a3b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78395627"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259287"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 访问 Azure 服务总线实体，对应用程序进行身份验证和授权
 Azure 服务总线支持使用 Azure Active Directory （Azure AD）对服务总线实体（队列、主题、订阅或筛选器）的请求进行授权。 使用 Azure AD，你可以使用基于角色的访问控制（RBAC）向安全主体授予权限，这可能是用户、组或应用程序服务主体。 若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。

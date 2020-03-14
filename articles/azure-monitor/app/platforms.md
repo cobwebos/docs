@@ -4,12 +4,12 @@ description: 适用于 Application Insights 的语言、平台和集成
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: d87b1d0aa74263f249db2030f2366b93b8c2b421
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: cbda252fece638393ee7757dc165c4b009a0195e
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669822"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136717"
 ---
 # <a name="supported-languages"></a>支持的语言
 
@@ -17,7 +17,7 @@ ms.locfileid: "77669822"
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [JavaScript](../../azure-monitor/app/javascript.md)
 * [Node.JS](../../azure-monitor/app/nodejs.md)
-* [Python（预览版）](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 
 ## <a name="supported-platforms-and-frameworks"></a>支持的平台和框架
 
@@ -34,7 +34,7 @@ ms.locfileid: "77669822"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
-* [Python（预览版）](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)
 * [通用 Windows 应用](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Windows 桌面应用程序、服务和辅助角色](../../azure-monitor/app/windows-desktop.md)
 

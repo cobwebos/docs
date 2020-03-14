@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362717"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256830"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -118,7 +118,7 @@ ms.locfileid: "78362717"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-用法 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安装位置 >/Platform "VmWare"/Silent
+使用情况 | Unifiedagent.exe/Role \<MS/MT >/InstallLocation \<安装位置 >/Platform "VmWare"/Silent
 安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
@@ -128,7 +128,7 @@ ms.locfileid: "78362717"
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-用法 | UnifiedAgentConfigurator/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
+使用情况 | UnifiedAgentConfigurator/CSEndPoint \<CSIP >/PassphraseFilePath \<PassphraseFilePath >
 代理配置日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log 下。
 /CSEndPoint | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 /PassphraseFilePath |  Mandatory。 通行短语的位置。 使用任何有效的 UNC 或本地文件路径。
@@ -157,17 +157,17 @@ ms.locfileid: "78362717"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-用法 | /install \<安装位置 >-r \<MS/MT >-v VmWare-q
+使用情况 | /install \<安装位置 >-r \<MS/MT >-v VmWare-q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | Mandatory。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。
--q | 可选。 指定是否以静默模式运行安装程序。
+-S | 可选。 指定是否以静默模式运行安装程序。
 
 #### <a name="registration-settings"></a>注册设置
 **设置** | **详细信息**
 --- | ---
-用法 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
--i | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
+使用情况 | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSIP >-P \<PassphraseFilePath >
+-o | 必需的参数。 指定配置服务器的 IP 地址。 使用任何有效的 IP 地址。
 -P |  Mandatory。 通行短语所保存到的文件的完整文件路径。 使用任何有效文件夹。
 
 ## <a name="azure-virtual-machine-agent"></a>Azure 虚拟机代理

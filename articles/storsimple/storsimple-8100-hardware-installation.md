@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365779"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267581"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打开 StorSimple 8100 设备的包装并进行机架安装和布线
 
@@ -100,7 +100,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 #### <a name="to-install-the-device-on-the-rails"></a>将设备安装到导轨上
 1. 仅当设备上未安装内部导轨时，才需执行此步骤。 通常，出厂时内部导轨已装好。 若未安装，则将左侧和右侧导轨安装到机箱底架的侧面。 每侧使用 6 个公制螺丝连接。 为帮助确定方向，导轨上标有 **LH – Front** 和 **RH – Front**，固定在机箱后部的导轨一端为锥形。<br/>
    
-    ![将导轨滑块附加到机箱](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![在机箱底部安装导轨](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
     **在机箱侧面安装内部导轨**
    
@@ -114,7 +114,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 4. 使用提供的 2 个公制螺丝将导轨组件固定到机架垂直部件上。 前部和后部各使用 1 颗螺丝。
 5. 其他导轨组装请重复以上步骤。<br/>
    
-     ![将导轨滑块附加到机架机柜](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![将导轨固定到机架机箱上](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
     **将外部导轨组件固定到机架上**
    
@@ -133,14 +133,14 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 1. 在他人的协助下，将机箱抬起并将其与机架导轨对齐。
 2. 小心地将设备插入导轨，然后将其完全推入机架机箱。<br/>
    
-    ![将设备插到机架中](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![将设备插入机架](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
     **将设备安装到机架中**
 3. 拉松法兰帽，取下左前和右前的法兰帽。 只需将法兰帽卡到法兰上。
 4. 每个法兰左右各安装 1 个提供的十字螺丝，将机箱固定在机架中。
 5. 将法兰帽压入到合适位置并将其卡入到位，完成法兰帽安装。<br/>
    
-     ![安装法兰盖](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
+     ![安装法兰帽](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
     **安装法兰帽**
    
@@ -153,7 +153,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 ## <a name="cable-your-storsimple-8100-device"></a>进行 StorSimple 8100 设备布线
 以下过程阐释了如何针对电源、网络和串行连接进行 StorSimple 8100 设备布线。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备条件
 在开始进行设备布线之前，需要：
 
 * 存储设备已完全打开包装并已完成机架安装。
@@ -188,10 +188,10 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
    | --- | --- |
    |   0,1,4,5 |1 GbE 网络接口 |
    |   2,3 |10 GbE 网络接口 |
-   |   6 |串行口 |
+   |   6 |串行端口 |
 2. 有关网络布线的信息，请参阅下图。 （最低网络配置以蓝色实线显示。 高可用性和性能所需的其他配置以虚线显示。）
 
-    ![将 2U 设备用电缆连接到网络](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
+    ![进行 2U 设备网络布线](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
     **设备网络布线**
 
@@ -233,7 +233,7 @@ Microsoft Azure StorSimple 8100 是单机箱机架式设备。 本教程介绍�
 3. 使用提供的串行电缆（必要时可使用笔记本电脑的 USB 串口转换器），并将控制台或计算机（使用终端模拟连接到设备）连接到活动控制器的串行端口。
 4. 在计算机上安装 USB 串口驱动程序（随设备一起提供）。
 5. 将串行连接设置如下：115,200 波特、8 个数据位、1 个停止位、无奇偶校验、流控制设置为 None。
-6. 在控制台中按 Enter 以验证连接是否正常工作。 将出现串行控制台菜单。
+6. 在控制台中按 Enter 键确认连接是否正常。 将出现串行控制台菜单。
 
 > [!NOTE]
 > **无人值守管理**：当设备安装在远程数据中心或有限访问的计算机机房中时，请确保与两个控制器的串行连接始终连接到串行控制台交换机或类似设备。 如果出现网络中断或意外故障，这可实现带外远程控制和支持操作。

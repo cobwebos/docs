@@ -1,6 +1,6 @@
 ---
 title: 登录名和用户
-description: 了解有关 SQL 数据库和 Azure Synapse 安全管理的信息，尤其是如何通过服务器级主体帐户管理数据库的访问和登录安全。
+description: 了解 Azure SQL 数据库和 Azure Synapse Analytics 如何使用登录名和用户帐户对用户进行身份验证，并使用角色和显式权限来授权登录名和用户在数据库中以及在服务器级别执行操作。
 keywords: sql 数据库安全,数据库安全管理,登录安全,数据库安全,数据库访问权限
 services: sql-database
 ms.service: sql-database
@@ -11,219 +11,152 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 02/06/2020
-tags: azure-synapse
-ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/12/2020
+ms.openlocfilehash: 7c70d5dd19ec0495fe09152b5653363ad369347c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360036"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268907"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>控制和授予数据库访问 SQL 数据库和 Azure Synapse Analytics 的权限
+# <a name="granting-database-access-and-authorization-to-sql-database-and-azure-synapse-analytics-using-logins-and-user-accounts"></a>使用登录名和用户帐户授予数据库访问权限并授权到 SQL 数据库和 Azure Synapse Analytics
 
-防火墙规则配置之后，可以连接到 Azure [SQL 数据库](sql-database-technical-overview.md)和[azure Synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)作为管理员帐户之一，作为数据库所有者或数据库中的数据库用户。  
+使用登录名和用户帐户对 Azure SQL 数据库和 Azure Synapse Analytics （以前称为 Azure SQL 数据仓库）中的数据库进行经过身份验证的访问。 [**身份验证**](sql-database-security-overview.md#authentication)是证明用户身份的过程。
 
-> [!NOTE]  
-> 本主题适用于 Azure SQL server 以及在 Azure SQL server 上创建的 SQL 数据库和 Azure Synapse。 为简单起见，在同时引用 SQL 数据库和 Azure Synapse 时使用 SQL 数据库。
-> [!TIP]
-> 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。 本教程不适用于 Azure SQL 数据库托管实例。
+- 登录名是 master 数据库中的单个帐户
+- 用户帐户是任何数据库中的个人帐户，无需与登录名相关联
 
-## <a name="unrestricted-administrative-accounts"></a>非受限管理帐户
+> [!IMPORTANT]
+> Azure SQL 数据库和 Azure Synapse Analytics （以前称为 Azure SQL 数据仓库）中的数据库将在本文的其余部分统称为 Azure SQL 数据库（为简单起见）。
 
-有两个充当管理员的管理帐户（**服务器管理员**和 **Active Directory 管理员**）。 若要在 SQL 服务器中识别这些管理员帐户，请打开 Azure 门户并导航到 SQL 服务器或 SQL 数据库的“属性”选项卡。
+数据库用户使用用户帐户连接到 Azure SQL 数据库，并使用以下两种方法之一进行身份验证：
+
+- [SQL 身份验证](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)，由存储在 Azure SQL 数据库中的登录名、用户帐户名和关联密码组成。
+- [Azure Active Directory 身份验证](sql-database-aad-authentication.md)，它使用存储在 Azure Active Directory 中的登录凭据
+
+在 Azure SQL 数据库中访问数据和执行各种操作的授权使用数据库角色和显式权限进行管理。 [**授权**](sql-database-security-overview.md#authorization)是指分配给 Azure SQL 数据库中的用户的权限，并确定允许用户执行的操作。 授权由用户帐户的数据库[角色成员身份](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)和[对象级权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)控制。 作为最佳实践，应向用户授予所需的最低权限。
+
+在本文中，将学习以下内容：
+
+- 最初创建新的 Azure SQL 数据库后的访问和授权配置
+- 如何在 master 数据库和用户帐户中添加登录名和用户帐户，然后向这些帐户授予管理权限
+- 如何在用户数据库中添加用户帐户（与登录名或作为包含的用户帐户关联）
+- 使用数据库角色和显式权限在用户数据库中配置具有权限的用户帐户
+
+## <a name="existing-logins-and-user-accounts-after-creating-a-new-database"></a>创建新数据库后的现有登录名和用户帐户
+
+创建第一个 Azure SQL 数据库部署时，为该登录名指定管理员登录名和关联的密码。 此管理帐户称为**服务器管理员**。在部署过程中，主数据库和用户数据库中的登录名和用户的以下配置将会发生：
+
+- 使用指定的登录名创建具有管理权限的 SQL 登录名。 [登录名](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login)是用于登录到 SQL 数据库的单个用户帐户。
+- 此登录名被授予了对所有数据库作为[服务器级别主体](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)的完全管理权限。 此登录名在 SQL 数据库中具有所有可用的权限，并且不能受到限制。 在托管实例中，此登录名添加到[sysadmin 固定服务器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)中（对于单一或共用数据库，此角色不存在）。
+- 将为每个用户数据库中的此登录名创建一个名为 `dbo` 的[用户帐户](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users)。 [Dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine)用户在数据库中拥有所有数据库权限，并将其映射到 `db_owner` 固定数据库角色。 本文稍后将讨论其他固定数据库角色。
+
+若要确定 SQL server 的管理员帐户，请打开 Azure 门户，然后导航到 SQL server 或 SQL 数据库的 "**属性**" 选项卡。
 
 ![SQL 服务器管理员](media/sql-database-manage-logins/sql-admins.png)
 
-- **服务器管理员**
+> [!IMPORTANT]
+> 在创建管理员登录名后，不能对其进行更改。 若要重置逻辑服务器管理员的密码，请单击 " [Azure 门户](https://portal.azure.com)"，单击 " **SQL server**"，从列表中选择服务器，然后单击 "**重置密码**"。 若要重置托管实例服务器的密码，请前往 Azure 门户，单击该实例，然后单击 "**重置密码**"。 你还可以使用 PowerShell 或 Azure CLI。
 
-  创建 Azure SQL 服务器时，必须指定**服务器管理员登录名**。 SQL 服务器创建该帐户作为 master 数据库中的登录名。 此帐户通过 SQL Server 身份验证（用户名和密码）进行连接。 此类帐户只能存在一个。
+## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>创建具有管理权限的其他登录名和用户
+
+此时，只使用单个 SQL 登录名和用户帐户对 SQL 数据库进行访问配置。 若要创建具有完全或部分管理权限的其他登录名，可以使用以下选项（具体取决于部署模式）：
+
+- **创建具有完全管理权限的 Azure Active Directory 管理员帐户**
+
+  启用 Azure Active Directory 身份验证，并创建 Azure AD 管理员登录名。 可以将一个 Azure Active Directory 帐户配置为具有完全管理权限的 SQL 数据库部署的管理员。 此帐户可以是个人帐户或安全组帐户。 如果要使用 Azure AD 帐户连接到 SQL 数据库，则**必须**配置 Azure AD 管理员。 有关为所有 SQL 数据库部署类型启用 Azure AD 身份验证的详细信息，请参阅以下文章：
+
+  - [将 Azure Active Directory 身份验证用于使用 SQL 进行身份验证](sql-database-aad-authentication.md)
+  - [使用 SQL 配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)
+
+- **在托管实例部署中，创建具有完全管理权限的 SQL 登录名**
+
+  - 在托管实例中创建其他 SQL Server 登录名
+  - 使用[ALTER SERVER role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql)语句将登录名添加到[sysadmin 固定服务器角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles)。 此登录名具有完全管理权限。
+  - 或者，使用<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE login</a>语法创建[Azure AD 登录名](sql-database-aad-authentication-configure.md?tabs=azure-powershell#new-azure-ad-admin-functionality-for-mi)。
+
+- **在单个或共用部署中，创建具有有限管理权限的 SQL 登录名**
+
+  - 在 master 数据库中为单个或共用数据库部署或托管实例部署创建附加的 SQL 登录名
+  - 在与此新登录名关联的 master 数据库中创建用户帐户
+  - 使用[ALTER SERVER role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)语句将用户帐户添加到 `master` 数据库中的 `dbmanager`，`loginmanager` 角色，或者同时添加这两者。
 
   > [!NOTE]
-  > 若要重置服务器管理员的密码，请转到 [Azure 门户](https://portal.azure.com)，单击“SQL Server”，从列表中选择服务器，然后单击“重置密码”。
+  > `dbmanager` 和 `loginmanager` 角色与托管实例**部署无关。**
 
-- **Azure Active Directory 管理员**
+  对于单个或共用数据库，这些[特殊的 master 数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles#special-roles-for--and-)的成员使用户拥有创建和管理数据库的权限，或者用于创建和管理登录名的权限。 在由作为 `dbmanager` 角色成员的用户创建的数据库中，成员将映射到 `db_owner` 固定数据库角色，并可以使用 `dbo` 用户帐户登录和管理该数据库。 这些角色没有 master 数据库外的显式权限。
 
-  也可以将某个 Azure Active Directory 帐户（个人帐户或安全组帐户）配置为管理员。 配置 Azure AD 管理员是选择性的，但如果需要使用 Azure AD 帐户连接到 SQL 数据库，则必须配置 Azure AD 管理员。 有关配置 Azure Active Directory 访问的详细信息，请参阅[使用 Azure Active Directory Authentication 连接到 Sql 数据库或 Azure Synapse 和使用](sql-database-aad-authentication.md) [SQL 数据库和 AZURE Synapse Azure AD MFA 的 SSMS 支持](sql-database-ssms-mfa-authentication.md)。
+  > [!IMPORTANT]
+  > 不能在单个或共用数据库中创建具有完全管理权限的其他 SQL 登录名。
 
-**服务器管理员**和**Azure AD 管理员**帐户具有以下特征：
+## <a name="create-accounts-for-non-administrator-users"></a>为非管理员用户创建帐户
 
-- 只有这些帐户才能自动连接到服务器上的任何 SQL 数据库。 （其他帐户若要连接到用户数据库，它们必须是数据库的所有者，或者在用户数据库中具有相应的用户帐户。）
-- 这些帐户以 `dbo` 用户的身份进入用户数据库，在用户数据库中拥有所有权限。 （用户数据库的所有者也以 `dbo` 用户的身份进入数据库。） 
-- 不会以 `dbo` 用户的身份进入 `master` 数据库，在 master 数据库中拥有受限的权限。 
-- **不是**标准 SQL Server `sysadmin` 固定服务器角色的成员，SQL 数据库中未提供此角色。  
-- 可以在 master 数据库和服务器级 IP 防火墙规则中创建、更改及删除数据库、登录名与用户。
-- 可以在 `dbmanager` 和 `loginmanager` 角色中添加和删除成员。
-- 可以查看 `sys.sql_logins` 系统表。
-- 不能重命名。
-- 若要更改 Azure AD 管理员帐户，请使用门户或 Azure CLI。
-- 以后无法更改服务器管理员帐户。
+您可以使用以下两种方法之一为非管理用户创建帐户：
 
-### <a name="configuring-the-firewall"></a>配置防火墙
+- **创建登录名**
 
-为单个 IP 地址或地址范围配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以连接到 master 数据库以及所有用户数据库。 初始服务器级防火墙可通过 [Azure 门户](sql-database-single-database-get-started.md)、[PowerShell](sql-database-powershell-samples.md) 或 [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx) 进行配置。 建立连接以后，还可以使用 [Transact-SQL](sql-database-configure-firewall-settings.md) 配置其他服务器级 IP 防火墙规则。
+  在 master 数据库中创建 SQL 登录名。 然后在每个需要访问该用户的数据库中创建一个用户帐户，并将用户帐户与该登录名相关联。 如果用户必须访问多个数据库，并且你希望使密码保持同步，此方法是首选方法。 但是，与异地复制结合使用时，这种方法很复杂，因为必须同时在主服务器和辅助服务器上创建登录名。 有关详细信息，请参阅为[异地还原或故障转移配置和管理 AZURE SQL 数据库安全性](sql-database-geo-replication-security-config.md)。
+- **创建用户帐户**
 
-### <a name="administrator-access-path"></a>管理员访问路径
+  在数据库中创建用户需要访问的用户帐户（也称为[包含的用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)）。
 
-适当地配置服务器级防火墙后，**SQL 服务器管理员**和 **Azure Active Directory 管理员**可以使用 SQL Server Management Studio 或 SQL Server Data Tools 等客户端工具进行连接。 仅最新工具提供所有的特性和功能。 下图显示了这两个管理员帐户的典型配置。
+  - 使用单个或共用数据库，您始终可以创建这种类型的用户帐户。
+  - 对于不支持[Azure AD 服务器主体](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的托管实例数据库，只能在[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)中创建这种类型的用户帐户。 通过支持[Azure AD 服务器主体](sql-database-aad-authentication-configure.md?tabs=azure-powershell#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)的托管实例，你可以创建用户帐户以向托管实例进行身份验证，而无需将数据库用户创建为包含的数据库用户。
 
-![两个管理帐户的配置](./media/sql-database-manage-logins/1sql-db-administrator-access.png)
-
-使用服务器级防火墙中的开放端口时，管理员可以连接到任何 SQL 数据库。
-
-### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>通过使用 SQL Server Management Studio 连接到数据库
-
-有关创建服务器、数据库和服务器级 IP 防火墙规则，以及使用 SQL Server Management Studio 查询数据库的演练，请参阅[通过 Azure 门户和 SQL Server Management Studio 开始使用 Azure SQL 数据库服务器、数据库和防火墙规则](sql-database-single-database-get-started.md)。
+  采用此方法时，用户身份验证信息存储在每个数据库中，并自动复制到异地复制的数据库。 但是，如果同一帐户存在于多个数据库中，并且你使用的是 SQL 身份验证，则必须保持密码同步。 此外，如果用户在不同的数据库中具有不同密码的帐户，则记住这些密码可能会成为问题。
 
 > [!IMPORTANT]
-> 建议始终使用最新版本的 Management Studio 以保持与 Microsoft Azure 和 SQL 数据库的更新同步。 [更新 SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)。
+> 若要创建映射到 Azure AD 标识的包含用户，必须使用 SQL 数据库中的管理员 Azure AD 帐户进行登录。 在托管实例中，具有 `sysadmin` 权限的 SQL 登录还可以创建 Azure AD 登录名或用户。
 
-## <a name="additional-server-level-administrative-roles"></a>其他服务器级管理角色
+有关演示如何创建登录名和用户的示例，请参阅：
 
->[!IMPORTANT]
->本部分不适用于 Azure SQL 数据库托管实例，因为这些角色特定于 Azure SQL 数据库。
+- [为单个或共用数据库创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current#examples-1)
+- [为托管实例数据库创建登录名](https://docs.microsoft.com/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current#examples-2)
+- [为 Azure Synapse Analytics 数据库创建登录名](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest#examples-3)
+- [创建用户](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql#examples)
+- [创建 Azure AD 包含的用户](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)
 
-除了上述服务器级管理角色以外，SQL 数据库还在可以添加用户帐户的 master 数据库中提供了两个受限的管理角色，这些角色可授予创建数据库或管理登录名的权限。
+> [!TIP]
+> 有关包含在单个或共用数据库中创建 SQL Server 包含的用户的安全教程，请参阅[教程：保护单个或共用数据库](sql-database-security-tutorial.md)。
 
-### <a name="database-creators"></a>数据库创建者
+## <a name="using-fixed-and-custom-database-roles"></a>使用固定数据库角色和自定义数据库角色
 
-其中一个管理角色是 **dbmanager** 角色。 此角色的成员可以创建新数据库。 要使用此角色，请在 `master` 数据库中创建一个用户，然后将该用户添加到 **dbmanager** 数据库角色。 若要创建数据库，用户必须是基于 `master` 数据库中的 SQL Server 登录名的用户，或者是基于 Azure Active Directory 用户的已包含数据库用户。
+在数据库中创建用户帐户之后，无论是基于登录名还是包含用户，都可以授权该用户执行各种操作并访问特定数据库中的数据。 你可以使用以下方法来授权访问：
 
-1. 使用管理员帐户连接到 `master` 数据库。
-2. 使用 [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) 语句创建 SQL Server 身份验证登录名。 示例语句：
+- **固定数据库角色**
 
-   ```sql
-   CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
-   ```
+  将用户帐户添加到[固定数据库角色](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)。 有9个固定数据库角色，每个角色都有一组已定义的权限。 最常见的固定数据库角色是： **db_owner**、 **db_ddladmin**、 **db_datawriter**、 **db_datareader**、 **db_denydatawriter**和**db_denydatareader**。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如， **db_datareader**固定数据库角色授予对数据库中每个表的读取访问权限，而这是绝对必要的。
 
-   > [!NOTE]
-   > 创建登录名或包含数据库用户时使用强密码。 有关详细信息，请参阅 [Strong Passwords](https://msdn.microsoft.com/library/ms161962.aspx)。
+  - 若要将用户添加到固定数据库角色：
 
-   为了提高性能，会暂时在数据库级别缓存登录名（服务器级主体）。 若要刷新身份验证缓存，请参阅 [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)。
+    - 在 Azure SQL 数据库中，使用[ALTER ROLE](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)语句。 有关示例，请参阅[ALTER ROLE 示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql#examples)
+    - Azure Synapse Analytics，请使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)语句。 有关示例，请参阅[sp_addrolemember 示例](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql)。
 
-3. 在 `master` 数据库中，使用 [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) 语句创建用户。 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。示例语句：
+- **自定义数据库角色**
 
-   ```sql
-   CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
-   CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
-   ```
+  使用[CREATE role](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)语句创建自定义数据库角色。 使用自定义角色，您可以创建自己的用户定义的数据库角色，并为每个角色认真授予业务需求所需的最小权限。 然后，你可以将用户添加到自定义角色。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
+- **直接授予权限**
 
-4. 使用 [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) 语句将新用户添加到 `master` 中的 dbmanager 数据库角色。 示例语句：
+  直接向用户帐户授予[权限](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)。 可以在 SQL 数据库中单独授予或拒绝 100 多种权限。 这些权限中，许多都是嵌套式的。 例如，针对架构的 `UPDATE` 权限包括针对该架构中每个表的 `UPDATE` 权限。 与大多数权限系统中的情况一样，拒绝某个权限将覆盖对该权限的授予操作。 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 一开始可以了解[权限（数据库引擎）](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
 
-   ```sql
-   ALTER ROLE dbmanager ADD MEMBER Mary; 
-   ALTER ROLE dbmanager ADD MEMBER [mike@contoso.com];
-   ```
+## <a name="using-groups"></a>使用组
 
-   > [!NOTE]
-   > dbmanager 是 master 数据库中的数据库角色，因此只能向该 dbmanager 角色添加数据库用户。 不能向数据库级角色添加服务器级登录名。
+有效的访问管理使用分配给 Active Directory 安全组和固定角色或自定义角色（而不是单个用户）的权限。
 
-5. 必要时，可将防火墙规则配置为允许新用户建立连接。 （可在现有防火墙规则中包括新用户。）
+- 使用 Azure Active Directory 身份验证时，请将 Azure Active Directory 用户放入 Azure Active Directory 安全组。 为该组创建包含数据库用户。 将一个或多个数据库用户放入具有适用于该用户组的特定权限的自定义数据库角色。
 
-现在，该用户可以连接到 `master` 数据库，并且可以创建新数据库。 创建数据库的帐户成为该数据库的所有者。
+- 使用 SQL 身份验证时，在数据库中创建包含的数据库用户。 将一个或多个数据库用户放入具有适用于该用户组的特定权限的自定义数据库角色。
 
-### <a name="login-managers"></a>登录名管理器
+  > [!NOTE]
+  > 你还可以对非包含数据库用户使用组。
 
-另一个管理角色是登录管理员角色。 此角色的成员可在 master 数据库中创建新登录名。 如果需要，可以完成相同的步骤（创建登录名和用户，并向 **loginmanager** 角色添加用户），使用户能够在 master 数据库中创建新登录名。 通常不必要创建登录名，因为 Microsoft 建议使用包含的数据库用户在数据库级别进行身份验证，而不要使用基于登录名的用户。 有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
+用户应熟悉以下功能，以便限制或提升权限：
 
-## <a name="non-administrator-users"></a>非管理员用户
-
-非管理员帐户通常无需访问 master 数据库。 使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 语句在数据库级别创建包含数据库用户。 该用户可以是 Azure Active Directory 身份验证包含数据库用户（如果已针对 Azure AD 身份验证配置了环境），可以是 SQL Server 身份验证包含数据库用户，也可以是基于 SQL Server 身份验证登录名（在前一步骤中创建）的 SQL Server 身份验证用户。有关详细信息，请参阅 [包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。 
-
-要创建用户，请先连接到数据库，然后执行如下所示的语句：
-
-```sql
-CREATE USER Mary FROM LOGIN Mary; 
-CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
-```
-
-开始时，仅其中一个管理员或数据库所有者可以创建用户。 若要授权其他用户来创建新用户，可通过如下所示语句向该选定用户授予 `ALTER ANY USER` 权限：
-
-```sql
-GRANT ALTER ANY USER TO Mary;
-```
-
-若要向其他用户授予对数据库的完全控制权限，可让这些用户成为 db_owner 固定数据库角色的成员。
-
-在 Azure SQL 数据库中使用 `ALTER ROLE` 语句。
-
-```sql
-ALTER ROLE db_owner ADD MEMBER Mary;
-```
-
-在 Azure Synapse 中使用[EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。
-```sql
-EXEC sp_addrolemember 'db_owner', 'Mary';
-```
-
-
-> [!NOTE]
-> 创建基于 SQL 数据库服务器登录名的数据库用户的一个常见原因是用户需要访问多个数据库。 由于包含的数据库的用户都是单独的实体，因此每个数据库都维护其各自的用户及其密码。 这可能会导致开销，因为用户必须记住每个数据库的密码，当必须为许多数据库更改多个密码时，这通常难以做到。 但是，当使用 SQL Server 登录名和高可用性（活动异地复制和故障转移组）时，必须手动在每台服务器上设置 SQL Server 登录名。 否则，数据库用户在发生故障转移后将不再映射到该服务器登录名，并且在故障转移后将无法访问数据库。 有关为异地复制配置登录名的详细信息，请参阅[针对异地还原或故障转移配置和管理 Azure SQL 数据库的安全性](sql-database-geo-replication-security-config.md)。
-
-### <a name="configuring-the-database-level-firewall"></a>配置数据库级防火墙
-
-最好是规定非管理员用户只能通过防火墙来访问所使用的数据库。 可以使用 [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) 语句来配置数据库级防火墙，而不必通过服务器级防火墙来授权其 IP 地址访问所有数据库。 不能通过门户来配置数据库级防火墙。
-
-### <a name="non-administrator-access-path"></a>非管理员访问路径
-
-对数据库级防火墙进行适当配置以后，数据库用户即可使用 SQL Server Management Studio 或 SQL Server Data Tools 这样的客户端工具进行连接。 仅最新工具提供所有的特性和功能。 下图显示了典型的非管理员访问路径。
-
-![非管理员访问路径](./media/sql-database-manage-logins/2sql-db-nonadmin-access.png)
-
-## <a name="groups-and-roles"></a>组和角色
-
-有效的访问管理需要将权限分配到组和角色，而不是分配到单个用户。 
-
-- 使用 Azure Active Directory 身份验证时，请将 Azure Active Directory 用户放入 Azure Active Directory 组。 为该组创建包含数据库用户。 将一个或多个数据库用户添加到[数据库角色](https://msdn.microsoft.com/library/ms189121)，然后向数据库角色分配[权限](https://msdn.microsoft.com/library/ms191291.aspx)。
-
-- 使用 SQL Server 身份验证时，请在数据库中创建包含的数据库用户。 将一个或多个数据库用户添加到[数据库角色](https://msdn.microsoft.com/library/ms189121)，然后向数据库角色分配[权限](https://msdn.microsoft.com/library/ms191291.aspx)。
-
-数据库角色可以是内置的角色，例如 **db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter** 和 **db_denydatareader**。 **db_owner** 通常用于向部分用户授予完全权限。 其他固定数据库角色可用于快速开发简单的数据库，但不建议用于大多数生产数据库。 例如，**db_datareader** 固定数据库角色授予用户对数据库中每个表的读取访问权限，这通常超出了必要的范畴。 而如果先使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 语句创建自己的用户定义数据库角色，再根据业务需要向每个角色授予所需的最低权限，则要合适得多。 如果用户是多个角色的成员，则会聚合所有这些角色的权限。
-
-## <a name="permissions"></a>权限
-
-可以在 SQL 数据库中单独授予或拒绝 100 多种权限。 这些权限中，许多都是嵌套式的。 例如，针对架构的 `UPDATE` 权限包括针对该架构中每个表的 `UPDATE` 权限。 与大多数权限系统中的情况一样，拒绝某个权限将覆盖对该权限的授予操作。 考虑到权限的嵌套性质和数目，可能需要进行仔细的研究才能设计出适当的权限系统，以便对数据库进行恰当的保护。 一开始可以了解[权限（数据库引擎）](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)中的权限列表，并查看这些权限的[海报大小的图](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
-
-
-### <a name="considerations-and-restrictions"></a>注意事项和限制
-
-管理 SQL 数据库中的登录名和用户时，请注意以下事项：
-
-- 执行 `CREATE/ALTER/DROP DATABASE` 语句时，必须连接到 **master** 数据库。   
-- 不能更改或删除对应于**服务器管理员**登录名的数据库用户。 
-- 美国英语是**服务器管理员**登录名的默认语言。
-- 只有管理员（**服务器管理员**登录名或 Azure AD 管理员）和 **master** 数据库中 **dbmanager** 数据库角色的成员才有权执行 `CREATE DATABASE` 和 `DROP DATABASE` 语句。
-- 执行 `CREATE/ALTER/DROP LOGIN` 语句时，必须连接到 master 数据库。 但不建议使用登录名。 改用包含的数据库用户。
-- 若要连接到用户数据库，必须在连接字符串中提供数据库的名称。
-- 只有服务器级别主体登录名和 **master** 数据库中**loginmanager** 数据库角色的成员才有权执行 `CREATE LOGIN`、`ALTER LOGIN` 和 `DROP LOGIN` 语句。
-- 在 ADO.NET 应用程序中执行 `CREATE/ALTER/DROP LOGIN` 和 `CREATE/ALTER/DROP DATABASE` 语句时，不允许使用参数化命令。 有关详细信息，请参阅[命令和参数](https://msdn.microsoft.com/library/ms254953.aspx)。
-- 在执行 `CREATE/ALTER/DROP DATABASE` 和 `CREATE/ALTER/DROP LOGIN` 语句时，上述每个语句都必须是 Transact-SQL 批处理中的唯一语句。 否则，将会出错。 例如，以下 Transact-SQL 会检查该数据库是否存在。 如果该数据库存在，则调用 `DROP DATABASE` 语句删除该数据库。 因为 `DROP DATABASE` 语句不是该批处理中的唯一语句，所以执行以下 Transact-SQL 将导致错误。
-
-  ```sql
-  IF EXISTS (SELECT [name]
-           FROM   [sys].[databases]
-           WHERE  [name] = N'database_name')
-  DROP DATABASE [database_name];
-  GO
-  ```
-  
-  相反，请使用以下 Transact-sql 语句：
-  
-  ```sql
-  DROP DATABASE IF EXISTS [database_name]
-  ```
-
-- 在使用 `FOR/FROM LOGIN` 选项执行 `CREATE USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
-- 在使用 `WITH LOGIN` 选项执行 `ALTER USER` 语句时，该语句必须是 Transact-SQL 批处理中的唯一语句。
-- 若要执行 `CREATE/ALTER/DROP` 操作，用户需要对数据库拥有 `ALTER ANY USER` 权限。
-- 在数据库角色的所有者尝试在该数据库角色中添加或删除其他数据库用户时，可能会发生以下错误：“此数据库中不存在用户或角色‘Name’”。 在用户对所有者不可见时，会发生此错误。 若要解决此问题，请向角色所有者授予对该用户的 `VIEW DEFINITION` 权限。 
-
+- [模拟](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)和[模块签名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)可用于安全地暂时提升权限。
+- [行级安全性](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)可用于限制用户可访问的行。
+- [数据屏蔽](sql-database-dynamic-data-masking-get-started.md)可用于限制敏感数据的公开。
+- [存储过程](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)可用于限制可对数据库执行的操作。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关防火墙规则的详细信息，请参阅 [Azure SQL 数据库防火墙](sql-database-firewall-configure.md)。
-- 有关所有 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。
-- 相关教程，请参阅[保护 Azure SQL 数据库](sql-database-security-tutorial.md)。
-- 有关视图和存储过程的信息，请参阅[创建视图和存储过程](https://msdn.microsoft.com/library/ms365311.aspx)
-- 有关授予数据库对象访问权限的信息，请参阅[授予数据库对象访问权限](https://msdn.microsoft.com/library/ms365327.aspx)
+有关所有 SQL 数据库安全功能的概述，请参阅 [SQL 安全概述](sql-database-security-overview.md)。

@@ -5,15 +5,15 @@ services: storage
 author: SnehaGunda
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
+ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78387138"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255140"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -140,19 +140,8 @@ ms.locfileid: "78387138"
 EGT 还引入了一个在设计时需要评估的潜在权衡。 那就是，使用更多分区会提高应用程序的可伸缩性，因为 Azure 可以有更多的机会在各个节点之间对请求进行负载均衡。 但是，使用更多分区可能会限制应用程序执行原子事务以及保持数据的强一致性的能力。 而且，在分区级别还有特定的可伸缩性目标，这些目标可能会限制预期单个节点可以实现的事务吞吐量。 有关 Azure 标准存储帐户的可伸缩性目标的详细信息，请参阅[标准存储帐户的可伸缩性目标](../common/scalability-targets-standard-account.md)。 有关表服务的可伸缩性目标的详细信息，请参阅[表存储的可伸缩性和性能目标](scalability-targets.md)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
-下表介绍了设计表服务解决方案时需要注意的一些关键值：  
 
-| Azure 存储帐户的总容量 | 500 TB |
-| --- | --- |
-| Azure 存储帐户中表的个数 |仅受存储帐户的容量限制 |
-| 表中的分区个数 |仅受存储帐户的容量限制 |
-| 分区中实体的个数 |仅受存储帐户的容量限制 |
-| 单个实体的大小 |最大 1 MB，最多 255 个属性（包括 **PartitionKey**、**RowKey** 和 **Timestamp**） |
-| **PartitionKey** 的大小 |大小最大为 1 KB 的字符串 |
-| **RowKey** 的大小 |大小最大为 1 KB 的字符串 |
-| 实体组事务的大小 |一个事务最多可包含 100 个实体，并且负载大小必须小于 4 MB。 EGT 只能更新一次实体。 |
-
-有关详细信息，请参阅 [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx)（了解表服务数据模型）。  
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 ## <a name="cost-considerations"></a>成本注意事项
 表存储的价格相对便宜，但在评估任何表服务解决方案时，应同时针对容量使用情况和事务数量进行成本估算。 但是，在许多情况下，为提高解决方案的性能或可伸缩性，存储非规范化或重复的数据是一种有效方法。 有关定价的详细信息，请参阅 [Azure 存储定价](https://azure.microsoft.com/pricing/details/storage/)。  

@@ -13,11 +13,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666926"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260366"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>使用“监视和管理”应用监视和管理 Azure 数据工厂管道
 > [!div class="op_single_selector"]
@@ -159,7 +159,7 @@ ms.locfileid: "73666926"
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">子状态</th><th align="left">说明</th>
+    <th align="left">状态</th><th align="left">子状态</th><th align="left">说明</th>
 </tr>
 <tr>
     <td rowspan="8">等待</td><td>ScheduleTime</td><td>未到运行活动窗口的时间。</td>
@@ -187,13 +187,13 @@ ms.locfileid: "73666926"
 </tr>
 <tr>
 <tr>
-<td rowspan="2">InProgress</td><td>正在验证</td><td>正在进行验证。</td>
+<td rowspan="2">正在进行</td><td>正在验证</td><td>正在进行验证。</td>
 </tr>
 <td>-</td>
 <td>正在处理活动窗口。</td>
 </tr>
 <tr>
-<td rowspan="4">已失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
+<td rowspan="4">失败</td><td>已超时</td><td>活动执行时间超过活动允许的时间。</td>
 </tr>
 <tr>
 <td>已取消</td><td>用户操作已取消活动窗口。</td>
@@ -238,7 +238,7 @@ ms.locfileid: "73666926"
 
 在底部窗格中，可使用工具栏按钮来重新运行活动窗口或刷新窗格中的详细信息。
 
-### <a name="script"></a>脚本
+### <a name="script"></a>Script
 可以使用“脚本”选项卡来查看所选数据工厂实体（链接服务、数据集或管道）的 JSON 定义。
 
 ![脚本选项卡](./media/data-factory-monitor-manage-app/ScriptTab.png)
@@ -270,7 +270,7 @@ ms.locfileid: "73666926"
 
 ![“活动窗口”列表列菜单](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-可以执行以下操作：
+您可以执行下列操作：
 
 * 按升序排序。
 * 按降序排序。

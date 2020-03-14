@@ -4,11 +4,11 @@ description: 了解如何将客户载入到 Azure 委派资源管理，使你能
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7cf0ff1d64603215a9607f5a25ebc4077f9fa9da
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78925435"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270675"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>将客户载入到 Azure 委派资源管理
 
@@ -110,7 +110,7 @@ az role definition list --name "<roleName>" | grep name
 
 若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 在 Azure 门户的 "[服务提供程序" 页](view-manage-service-providers.md)中查看 "产品/服务" 时，客户将可以看到**mspOfferName**和**mspOfferDescription**值。
 
-|字段  |Definition  |
+|字段  |定义  |
 |---------|---------|
 |**mspOfferName**     |描述此定义的名称。 此值将作为产品/服务的标题显示给客户。         |
 |**mspOfferDescription**     |产品/服务的简短说明（例如，"Contoso VM 管理产品/服务"）。      |

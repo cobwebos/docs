@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388046"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251838"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>利用 Azure 资源管理器模板管理 Azure Cosmos DB SQL （内核） API 资源
 
@@ -138,7 +138,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
-### <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
+### <a name="deploy-with-powershell"></a>使用 PowerShell 部署
 
 使用 PowerShell 部署 Azure 资源管理器模板：
 

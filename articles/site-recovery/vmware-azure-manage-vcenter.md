@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362533"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257259"
 ---
 # <a name="manage-vmware-vcenter-server"></a>管理 VMware vCenter 服务器
 
@@ -53,7 +53,7 @@ ms.locfileid: "78362533"
 1. 在 "**添加 vCenter**" 中，指定 vSphere 主机或 vCenter 服务器的友好名称。
 1. 指定服务器的 IP 地址或 FQDN。
 1. 除非已将 VMware 服务器配置为在不同的端口上侦听请求，否则请保留 443 作为端口号。
-1. 选择用于连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 然后单击 **“确定”** 。
+1. 选择用于连接到 VMware vCenter 或 vSphere ESXi 服务器的帐户。 然后单击“确定”。
 
 ## <a name="modify-credentials"></a>修改凭据
 

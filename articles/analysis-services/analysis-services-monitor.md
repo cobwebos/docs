@@ -8,11 +8,11 @@ ms.date: 03/04/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: aaa3a6d128fe7dd466f6f60ab515f05fa38ba63b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375121"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252800"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
@@ -37,10 +37,10 @@ Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户�
 
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
-|跃点数|指标显示名称|单位|聚合类型|说明|
+|指标|指标显示名称|单位|聚合类型|说明|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|
-|CurrentConnections|连接: 当前连接数|Count|平均值|当前建立的客户端连接数。|
+|CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|
 |CurrentUserSessions|当前用户会话数|Count|平均值|当前已建立的用户会话数。|
 |mashup_engine_memory_metric|M 引擎内存|字节|平均值|糅合引擎进程的内存使用率|
 |mashup_engine_qpu_metric|M 引擎 QPU|Count|平均值|糅合引擎进程的 QPU 使用率|
@@ -55,10 +55,10 @@ Analysis Services 提供 Azure 指标资源管理器中的指标，它是门户�
 |MemoryLimitVertiPaq|内存: 内存 VertiPaq 限制|字节|平均值|内存中限制，来自配置文件。|
 |MemoryUsage|内存: 内存使用量|字节|平均值|服务器进程的内存使用量（在计算清理器内存价格时使用）。 等于计数器 Process\PrivateBytes 加上内存映射的数据的大小，并且将忽略由内存中分析引擎 (VertiPaq) 映射或分配的超出了引擎内存限制的任何内存。|
 |private_bytes_metric|专用字节 |字节|平均值|Analysis Services 引擎进程和混合容器进程分配的内存总量，不包括与其他进程共享的内存。|
-|virtual_bytes_metric|Virtual Bytes |字节|平均值|Analysis Services 引擎进程和混合容器进程使用的虚拟地址空间的当前大小。|
+|virtual_bytes_metric|虚拟字节 |字节|平均值|Analysis Services 引擎进程和混合容器进程使用的虚拟地址空间的当前大小。|
 |mashup_engine_private_bytes_metric|M 引擎专用字节数 |字节|平均值|已分配的内存混合容器进程的总量，不包括与其他进程共享的内存。|
 |mashup_engine_virtual_bytes_metric|M 引擎虚拟字节数 |字节|平均值|当前正在使用的虚拟地址空间混合容器进程的大小。|
-|“配额”|内存: 配额|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|
+|Quota|内存: 配额|字节|平均值|当前内存配额（字节）。 内存配额也称为内存授予或内存预留。|
 |QuotaBlocked|内存: 阻止的配额|Count|平均值|在其他内存配额被释放之前已阻止的当前的配额请求数。|
 |VertiPaqNonpaged|内存: VertiPaq 未分页|字节|平均值|工作集中被锁定的供内存中引擎使用的内存字节数。|
 |VertiPaqPaged|内存: VertiPaq 已分页|字节|平均值|用于内存中数据的已分页内存字节数。|

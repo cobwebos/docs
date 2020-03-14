@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365671"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79267542"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 
@@ -69,7 +69,7 @@ ms.locfileid: "78365671"
 
 | **受支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
-| Windows 服务器 |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
+| Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
 以下软件要求适用于访问 StorSimple Virtual Array（配置为文件服务器）的 SMB 客户端。
 
@@ -91,13 +91,13 @@ ms.locfileid: "78365671"
 
 | **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |出 |WAN |是 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
+| TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>出站 Web 代理可由用户配置。 |
 | UDP 53 (DNS) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 DNS 服务器时，才需要此端口。 <br></br> 注意，如果部署文件服务器，建议使用本地 DNS 服务器。 |
 | UDP 123 (NTP) |出 |WAN |在某些情况下；请参阅说明。 |仅当使用基于 Internet 的 NTP 服务器时，才需要此端口。<br></br> 注意，如果部署文件服务器，建议与 Active Directory 域控制器同步时间。 |
 | TCP 80 (HTTP) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 <br></br> 注意，通过 HTTP 访问本地 UI 会自动重定向到 HTTPS。 |
 | TCP 443 (HTTPS) |In |LAN |是 |这是 StorSimple 设备上用于本地管理的本地 UI 的入站端口。 |
-| TCP 3260 (iSCSI) |In |LAN |是 |此端口用于通过 iSCSI 访问数据。 |
+| TCP 3260 (iSCSI) |In |LAN |否 |此端口用于通过 iSCSI 访问数据。 |
 
 <sup>1</sup> 无需在公共 Internet 上打开任何入站端口。
 

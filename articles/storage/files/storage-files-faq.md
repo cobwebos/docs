@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598181"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268179"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>有关 Azure 文件的常见问题解答 (FAQ)
 [Azure 文件](storage-files-introduction.md)在云端提供完全托管的文件共享，这些共享项可通过行业标准的[服务器消息块 (SMB) 协议](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)进行访问。 你可以在云或 Windows、Linux 和 macOS 的本地部署同时装载 Azure 文件共享。 另外，你也可以使用 Azure 文件同步在 Windows Server 计算机上缓存 Azure 文件共享，以在靠近使用数据的位置实现快速访问。
@@ -81,6 +81,9 @@ ms.locfileid: "77598181"
   **我确实要查看已添加到 Azure 文件的特定功能。你可以添加它吗？**  
     Azure 文件团队非常乐于听取你针对我们服务提供的任何反馈。 请在 [Azure 文件 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 上进行功能请求投票！ 希望我们提供的众多新功能能够满足你的需求。
 
+  **Azure 文件是否支持文件锁定？**  
+    是的，Azure 文件完全支持 SMB/Windows 样式文件锁定，[请参阅详细信息](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。 
+    
 ## <a name="azure-file-sync"></a>Azure 文件同步
 
 * <a id="afs-region-availability"></a>
@@ -179,12 +182,12 @@ ms.locfileid: "77598181"
 * <a id="ad-support-rest-apis"></a>
 **是否有支持获取/设置/复制目录/文件 NTFS ACL 的 REST API？**
 
-    是的，支持使用[2019-02-02](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-02-02) （或更高版本） REST API 时，为目录或文件获取、设置或复制 NTFS ACL 的 REST api。
+    是的，支持使用[2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) （或更高版本） REST API 时，为目录或文件获取、设置或复制 NTFS ACL 的 REST api。
 
 * <a id="ad-vm-subscription"></a>
 **我是否可以从不同订阅下的 VM 使用 Azure AD 凭据访问 Azure 文件？**
 
-    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。    
+    如果部署了文件共享的订阅与 VM 所加入到的 Azure AD 域服务部署相同的 Azure AD 租户相关联，则可以使用相同的 Azure AD 凭据访问 Azure 文件存储。 限制不是针对订阅，而是针对关联的 Azure AD 租户的。
     
 * <a id="ad-support-subscription"></a>
 是否**可以使用与文件共享关联的主租户不同的 Azure AD 租户启用 AZURE AD DS 或 AD 身份验证的 Azure 文件？**
@@ -211,6 +214,11 @@ ms.locfileid: "77598181"
 
     是的，你可以在 Azure 文件同步管理的文件共享上启用 Azure AD DS 或 AD 身份验证。对本地文件服务器上的 NTFS Acl 的更改将分层到 Azure 文件，反之亦然。
 
+* <a id="ad-aad-smb-files"></a>
+**如何在存储帐户和 ad 域信息上启用 ad 身份验证？**
+
+    可以参考[此处](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account)提供的说明，验证是否在存储帐户上启用了 AZURE 文件 AD 身份验证并检索 ad 域信息。
+    
 * <a id="encryption-at-rest"></a>
 **如何确保已静态加密 Azure 件共享？**  
 

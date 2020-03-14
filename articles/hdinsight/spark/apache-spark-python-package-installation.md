@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 98326d23f5aca1264bc47168cc25b427c3db331d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087121"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135949"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>使用脚本操作在 Azure HDInsight 上安全管理 Python 环境
 
@@ -22,9 +22,9 @@ ms.locfileid: "77087121"
 
 HDInsight 在 Spark 群集中有两个内置的 Python 安装，Anaconda Python 2.7 和 Python 3.5。 在某些情况下，客户需要自定义 Python 环境，如安装外部 Python 包或其他 Python 版本。 本文介绍如何安全地管理 HDInsight 上的[Apache Spark](https://spark.apache.org/)群集的 Python 环境。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
-* 一个 Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 * HDInsight 上的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -51,9 +51,9 @@ HDInsight Spark 群集是通过 Anaconda 安装创建的。 群集中有两个 P
 
 | |Python 2.7|Python 3.5|
 |----|----|----|
-|Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|默认设置为2。7|不可用|
-|Livy|默认设置为2。7|不可用|
+|路径|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|默认设置为2。7|空值|
+|Livy|默认设置为2。7|空值|
 |Jupyter|PySpark 内核|PySpark3 内核|
 
 ## <a name="safely-install-external-python-packages"></a>安全安装外部 Python 包
@@ -74,12 +74,38 @@ HDInsight 群集依赖于内置的 Python 环境，即 Python 2.7 和 Python 3.5
 
     可以在[包索引](https://pypi.python.org/pypi)中搜索可用包的完整列表。 也可以从其他源获取可用包的列表。 例如，可以安装通过 [conda-forge](https://conda-forge.org/feedstocks/) 提供的包。
 
-    -   `seaborn` 是要安装的包名称。
-    -   `-n py35new` 指定刚创建的虚拟环境名称。 请确保根据虚拟环境创建相应地更改名称。
+    如果要安装具有最新版本的库，请使用以下命令：
+    
+    - 使用 conda 通道：
 
-    ```bash
-    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
-    ```
+        -   `seaborn` 是要安装的包名称。
+        -   `-n py35new` 指定刚创建的虚拟环境名称。 请确保根据虚拟环境创建相应地更改名称。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
+        ```
+
+    - 或者，使用 PyPi 存储库，相应地更改 `seaborn` 和 `py35new`：
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install seaborn
+        ```        
+
+    如果要安装具有特定版本的库，请使用以下命令：
+
+    - 使用 conda 通道：
+
+        -   `numpy=1.16.1` 是要安装的包名称和版本。
+        -   `-n py35new` 指定刚创建的虚拟环境名称。 请确保根据虚拟环境创建相应地更改名称。
+
+        ```bash
+        sudo /usr/bin/anaconda/bin/conda install numpy=1.16.1 -n py35new --yes
+        ```
+
+    - 或者，使用 PyPi 存储库，相应地更改 `numpy==1.16.1` 和 `py35new`：
+
+        ```bash
+        sudo /usr/bin/anaconda/env/py35new/bin/pip install numpy==1.16.1
+        ```
 
     如果不知道虚拟环境名称，可以通过 SSH 连接到群集的头节点并运行 `/usr/bin/anaconda/bin/conda info -e` 以显示所有虚拟环境。
 

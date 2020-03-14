@@ -4,11 +4,11 @@ description: 有关 Azure Functions 应用设置或环境变量的参考文档�
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963693"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277825"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -36,7 +36,7 @@ ms.locfileid: "76963693"
 
 |密钥|示例值|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https;AccountName =<name>;AccountKey =<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
 > [!NOTE]
 > 为了获得更好的性能和体验，运行时版本2.x 和更高版本使用 APPINSIGHTS_INSTRUMENTATIONKEY 和 App Insights 来监视而不是 `AzureWebJobsDashboard`。
@@ -181,7 +181,7 @@ _仅限 Windows。_
 
 |密钥|示例值|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_PACKAGE|第|
+|WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
 有效值是解析为部署包文件位置的 URL 或 `1`。 设置为 `1` 时，包必须位于 `d:\home\data\SitePackages` 文件夹中。 使用此设置的 zip 部署时，包将自动上传到此位置。 在预览版中，此设置名为 `WEBSITE_RUN_FROM_ZIP`。 有关详细信息，请参阅[从包文件运行函数](run-functions-from-deployment-package.md)。
 
@@ -189,7 +189,7 @@ _仅限 Windows。_
 
 默认情况下，Functions 代理将使用快捷方式从代理直接将 API 调用发送到同一 Function App 中的函数，而不是创建新的 HTTP 请求。 此设置让你能够禁用该行为。
 
-|密钥|值|Description|
+|密钥|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|使用指向本地 Function App 中某个函数的后端 URL 的调用将不再直接发送到该函数，并将改回定向回 Function App 的 HTTP 前端。|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|这是默认值。 使用指向本地 Function App 中某个函数的后端 URL 的调用将直接转发到该函数|
@@ -199,7 +199,7 @@ _仅限 Windows。_
 
 此设置控制 %2F 在路由参数插入后端 URL 时是否在路由参数中解码为斜杠。 
 
-|密钥|值|Description|
+|密钥|值|说明|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|包含编码斜杠的路由参数会将其解码。 `example.com/api%2ftest` 将成为 `example.com/api/test`|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|此选项为默认行为。 所有路由参数在传递时将保持不变|

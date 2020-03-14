@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Heavy 限制 | Microsoft Docs
-description: 介绍 Microsoft Azure Data Box Heavy 组件和连接的系统限制与建议大小。
+title: Azure Data Box Heavy 限制 |Microsoft Docs
+description: 描述 Microsoft Azure Data Box Heavy 组件和连接的系统限制和建议大小。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126118"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260093"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
 
-在部署和操作 Azure Data Box Heavy 设备时请考虑这些限制。 下表介绍了 Data Box 的这些限制。
+部署和操作 Azure Data Box Heavy 设备时，请考虑这些限制。 下表介绍了 Data Box 的这些限制。
 
 
 ## <a name="data-box-heavy-service-limits"></a>Data Box Heavy 服务限制

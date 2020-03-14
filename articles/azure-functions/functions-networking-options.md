@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f06c50c35e25f2f64948c5f18672e00382d4ef42
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: d8c3357325eadefec7bb97faba5d600e9c6793a9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893071"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276707"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络选项
 
@@ -54,6 +54,8 @@ ms.locfileid: "78893071"
     * 有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。
     * 请注意，对于服务终结点，即使配置了虚拟网络集成，函数仍具有 internet 的完全出站访问权限。
 * 还可在使用内部负载均衡器（ILB）配置的应用服务环境中获取专用站点访问。 有关详细信息，请参阅[创建和使用带有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+
+若要了解如何设置专用站点访问权限，请参阅[建立 Azure Functions 专用站点访问](functions-create-private-site-access.md)。
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 

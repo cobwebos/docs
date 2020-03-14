@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226100"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260327"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
 
@@ -43,17 +43,17 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 ## <a name="permissions"></a>权限
 
-文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：   
+文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和文件夹使用这些权限：
 
-|            |    文件     |   文件夹 |
+|            |    文件     |   Folder |
 |------------|-------------|----------|
-| **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容  |
-| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项   |
+| **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容|
+| **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项 |
 | **执行 (X)** | 不表示 Data Lake Storage Gen1 上下文中的任何内容 | 需要遍历文件夹的子项 |
 
 ### <a name="short-forms-for-permissions"></a>权限的简短形式
 
-**RWX** 用于表示“读取 + 写入 + 执行”。  还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。    下面是一些示例。
+**RWX** 用于表示“读取 + 写入 + 执行”。 还有更精简的数字形式，“读取=4”，“写入=2”，“执行=1”，其总和表示各种不同的权限。 下面是一些示例。
 
 | 数字形式 | 简短形式 |      含义     |
 |--------------|------------|------------------------|
@@ -71,15 +71,15 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 以下常见方案可帮助你了解对 Data Lake Storage Gen1 帐户执行特定操作所需的权限。
 
-| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| Operation | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 读取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 追加到 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| DELETE    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| 删除    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | 创建    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| 列表      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| 列表      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| 列表      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| 列出      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| 列出      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| 列出      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 可以更改任何文件或文件夹的权限。
 * 可以更改任何文件或文件夹的拥有用户或拥有组。
 
-属于 Data Lake Storage Gen1 帐户“所有者”角色的所有用户都自动成为超级用户。 
+属于 Data Lake Storage Gen1 帐户“所有者”角色的所有用户都自动成为超级用户。
 
 ### <a name="the-owning-user"></a>拥有用户
 
@@ -118,7 +118,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 更改所拥有文件的拥有组，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者用户无法更改某个文件或文件夹的所有者用户。  只有超级用户可以更改文件或文件夹的拥有用户。
+> 所有者用户无法更改某个文件或文件夹的所有者用户。 只有超级用户可以更改文件或文件夹的拥有用户。
 >
 >
 
@@ -132,8 +132,8 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 **为新文件或文件夹分配拥有组**
 
-* **情况 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
-* **情况 2**（所有其他情况）：创建新项时，从父文件夹复制拥有组。
+* **案例 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
+* **案例 2**（任何其他案例）：创建新项时，从父文件夹复制拥有组。
 
 **更改负责人组**
 
@@ -142,7 +142,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 * 拥有用户，前提是该拥有用户也是目标组的成员。
 
 > [!NOTE]
-> 所有者组无法更改某个文件或文件夹的 ACL。 
+> 所有者组无法更改某个文件或文件夹的 ACL。
 >
 > 对于在 2018 年 9 月或之前创建的帐户，拥有组设置为在上面**案例 1** 的根文件夹情况下创建帐户的用户。  单个用户帐户无法通过拥有组提供权限，因此此默认设置不授予任何权限。 可以将此权限分配给有效的用户组。
 
@@ -194,7 +194,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>掩码
 
-如访问检查算法中所示，掩码会限制对  “命名用户”、  “负责人组”和  “命名组”的访问权限。  
+如访问检查算法中所示，掩码会限制对“命名用户”、“负责人组”和“命名组”的访问权限。  
 
 > [!NOTE]
 > 对于新 Data Lake Storage Gen1 帐户，根文件夹（“/”）的访问 ACL 的掩码默认为 RWX。
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值, 其中包含用于**拥有用户**、**拥有组**和**其他**的 RWX 值。
+创建文件或文件夹时，umask 用于修改默认 ACL 在子项上的设置方式。 umask 是父文件夹上的一个9位值，其中包含用于**拥有用户**、**拥有组**和**其他**的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是设置为007的常量值。 此值将转换为
 
@@ -250,12 +250,12 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-否。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
+不是。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
-* 父文件夹必须拥有“写入 + 执行”权限。 
-* 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。 
+* 父文件夹必须拥有“写入 + 执行”权限。
+* 要删除的文件夹及其中的每个文件夹都需要“读取 + 写入 + 执行”权限。
 
 > [!NOTE]
 > 不需要有“写入”权限即可删除文件夹中的文件。 但是，**永远无法**删除根文件夹“/”。
@@ -297,6 +297,6 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [在 Linux 上使用访问控制列表 (ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)

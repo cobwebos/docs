@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78365053"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258923"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric 安全 
 
 有关 [Azure 安全性最佳做法](https://docs.microsoft.com/azure/security/)的详细信息，请参阅 [Azure Service Fabric 安全性最佳做法](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)
 
-## <a name="key-vault"></a>密钥保管库
+## <a name="key-vault"></a>Key Vault
 
 [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) 是建议用于 Azure Service Fabric 应用程序和群集的机密管理服务。
 > [!NOTE]

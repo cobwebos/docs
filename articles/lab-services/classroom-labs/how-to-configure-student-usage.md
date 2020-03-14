@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: daa302e9be026157b464a12998f3faa52526aba6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270935"
 ---
 # <a name="add-and-manage-lab-users"></a>添加和管理实验室用户
 本文介绍了如何向实验室添加用户，将用户注册到实验室，控制用户可以使用 VM 的小时数，以及其他内容。 
@@ -101,7 +101,7 @@ ms.locfileid: "77539133"
 2. 在 "**用户注册**" 对话框中，选择 "**完成**"。 
 4. 向学生发送**注册链接**，以便学生可以注册该类。 
 
-## <a name="view-registered-users"></a>查看注册用户
+## <a name="view-registered-users"></a>查看已注册用户
 
 1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 
 2. 选择“登录”并输入凭据。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。
@@ -144,7 +144,7 @@ ms.locfileid: "77539133"
 ## <a name="student-accounts"></a>学生帐户
 若要将学生添加到课堂实验室，请使用其电子邮件帐户。 可以使用以下类型的电子邮件帐户：
 
-- 大学的 Office 365 Azure Active Directory （AAD）提供的学生电子邮件帐户。 
+- 大学的 Office 365 Azure Active Directory 提供的学生电子邮件帐户。 
 - Microsoft 电子邮件帐户，如 `@outlook.com`、`@hotmail.com`、`@msn.com`或 `@live.com`。
 - 非 Microsoft 电子邮件帐户，如 Yahoo 或 Google 提供的帐户。 但是，这些类型的帐户必须与 Microsoft 帐户链接。
 - 一个 GitHub 帐户。 此帐户必须与 Microsoft 帐户链接。
@@ -173,6 +173,14 @@ ms.locfileid: "77539133"
 ![用 GitHub 链接登录](../media/how-to-configure-student-usage/signin-github.png)
 
 最后，系统将提示他们创建链接到其 GitHub 帐户的 Microsoft 帐户。 当学生选择**下一个**时，会自动发生此情况。  然后，该学生会立即登录并连接到教室实验室。
+
+## <a name="export-list-of-users-to-a-csv-file"></a>将用户列表导出到 CSV 文件
+
+1. 切换到 "**用户**" 选项卡。
+2. 选择工具栏上的 " **...** " （省略号），然后选择 "**导出 CSV**"。 
+
+    ![导出用户列表](../media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 请参阅以下文章：

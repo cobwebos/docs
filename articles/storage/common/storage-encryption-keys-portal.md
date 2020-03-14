@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f592872e67ff8559060706ddb3b1e45839b6acaf
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 5f091341bee65d17b42e289bab1192142d095637
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665467"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136119"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥 Azure Key Vault
 
@@ -23,7 +23,7 @@ ms.locfileid: "75665467"
 
 本文说明如何使用[Azure 门户](https://portal.azure.com/)配置使用客户管理的密钥的 Azure Key Vault。 若要了解如何使用 Azure 门户创建密钥保管库，请参阅[快速入门：使用 Azure 门户从 Azure Key Vault 设置和检索机密](../../key-vault/quick-create-portal.md)。
 
-## <a name="configure-azure-key-vault"></a>配置 Azure 密钥保管库
+## <a name="configure-azure-key-vault"></a>配置 Azure Key Vault
 
 将客户托管的密钥用于 Azure 存储加密要求在 key vault 上设置两个属性，**软删除**并不**清除**。 默认情况下不启用这些属性，但可以使用 PowerShell 或 Azure CLI 在新的或现有的密钥保管库上启用。
 
@@ -94,7 +94,7 @@ Azure 存储加密仅支持大小为2048的 RSA 密钥。 有关密钥的详细�
 
 ## <a name="disable-customer-managed-keys"></a>禁用客户管理的密钥
 
-当你禁用客户管理的密钥时，存储帐户将通过 Microsoft 管理的密钥进行加密。 若要禁用客户托管的密钥，请执行以下步骤：
+禁用客户管理的密钥后，存储帐户将再次通过 Microsoft 管理的密钥加密。 若要禁用客户托管的密钥，请执行以下步骤：
 
 1. 导航到你的存储帐户并显示**加密**设置。
 1. 取消选中 "**使用自己的密钥**" 设置旁边的复选框。

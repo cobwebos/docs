@@ -4,11 +4,11 @@ description: 了解如何使用适用于 Visual Studio Code 的 Azure 策略扩�
 ms.date: 03/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78932644"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264669"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>使用 Azure Policy extension 进行 Visual Studio Code
 

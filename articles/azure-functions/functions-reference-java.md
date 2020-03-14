@@ -4,11 +4,11 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769024"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276746"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -291,7 +291,7 @@ public class Function {
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
-若要发送多个输出值，请使用 `azure-functions-java-library` 包中定义的 `OutputBinding<T>`。 
+若要发送多个输出值，请使用 `OutputBinding<T>` 包中定义的 `azure-functions-java-library`。 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -331,7 +331,7 @@ public class Function {
 
  这些是在 `azure-functions-java-library`中定义的。 它们是帮助程序类型，可以使用 HttpTrigger 函数。
 
-| 专用类型      |       确定目标        | 典型用法                  |
+| 专用类型      |       目标        | 典型用法                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
 | `HttpResponseMessage` | HTTP 输出绑定 | 返回200以外的状态   |

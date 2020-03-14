@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: fe338ca3f25cd606da7f95f6c9437a3cd3dc4e69
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78391371"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258273"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services 生命周期概述
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ ms.locfileid: "78391371"
 1. 并行：
     - 关闭任何打开的侦听器。 对每个侦听器调用 `ICommunicationListener.CloseAsync()`。
     - 取消传递给 `RunAsync()` 的取消令牌。 检查取消令牌的 `IsCancellationRequested` 属性是否返回 true，如果调用令牌的 `ThrowIfCancellationRequested` 方法，则会引发 `OperationCanceledException`。
-2. 如果存在，则在针对每个侦听器完成 `CloseAsync()` 并且完成 `RunAsync()` 后，调用服务的 `StatelessService.OnCloseAsync()` 方法。  当要正常关闭无状态服务实例时调用 OnCloseAsync。 升级服务代码、由于负载平衡而移动服务实例或是检测到暂时性故障时，可能会出现这种情况。 重写 `StatelessService.OnCloseAsync()` 并不常见，但它可以用于安全地关闭资源、停止后台处理、完成外部状态保存或关闭现有连接。
+2. 如果存在，则在针对每个侦听器完成 `CloseAsync()` 并且完成 `RunAsync()` 后，调用服务的 `StatelessService.OnCloseAsync()` 方法。  当要正常关闭无状态服务实例时调用 OnCloseAsync。 升级服务代码、由于负载均衡而移动服务实例或是检测到暂时性故障时，可能会出现这种情况。 重写 `StatelessService.OnCloseAsync()` 并不常见，但它可以用于安全地关闭资源、停止后台处理、完成外部状态保存或关闭现有连接。
 3. 完成 `StatelessService.OnCloseAsync()` 后，销毁服务对象。
 
 ## <a name="stateful-service-startup"></a>有状态服务启动

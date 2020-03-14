@@ -1,7 +1,7 @@
 ---
 title: 已知问题：从 PostgreSQL 联机迁移到 Azure Database for PostgreSQL
 titleSuffix: Azure Database Migration Service
-description: 了解使用 Azure 数据库迁移服务从 PostgreSQL 到 Azure Database for PostgreSQ 的联机迁移的已知问题和迁移限制。
+description: 了解使用 Azure 数据库迁移服务从 PostgreSQL 到 Azure Database for PostgreSQL 的联机迁移的已知问题和迁移限制。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: ded3302c590a55f0da8e4e37869f2b7f5a702838
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: f149d8de6b736379388c4a93045b6a0178067892
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650497"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79138291"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>从 PostgreSQL 到 Azure DB for PostgreSQL 的联机迁移的已知问题/迁移限制
 

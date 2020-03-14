@@ -1,16 +1,16 @@
 ---
 title: 启用诊断日志记录
-description: 了解如何启用诊断日志记录和将检测添加到应用程序中，以及如何访问由 Azure 记录的信息。
+description: 了解如何启用诊断日志记录并将检测添加到应用程序，以及如何访问由 Azure 记录的信息。
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985928"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79280464"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -23,7 +23,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](overview.md
 >
 >
 
-|类型|平台|位置|Description|
+|类型|平台|位置|说明|
 |-|-|-|-|
 | 应用程序日志记录 | Windows、Linux | 应用服务文件系统和/或 Azure 存储 blob | 记录由应用程序代码生成的消息。 这些消息可以由你选择的 web 框架或你的应用程序代码使用你的语言的标准日志模式直接生成。 为每条消息分配以下类别之一：**严重**、**错误**、**警告**、**信息**、**调试**和**跟踪**。 启用应用程序日志记录时，可以通过设置严重性级别来选择要进行日志记录的详细程度。|
 | Web 服务器日志记录| Windows | 应用服务文件系统或 Azure 存储 blob| 采用[W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的原始 HTTP 请求数据。 每条日志消息都包括 HTTP 方法、资源 URI、客户端 IP、客户端端口、用户代理、响应代码等数据。 |
@@ -163,7 +163,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 对于 Windows 应用，ZIP 文件包含应用服务文件系统中*D:\Home\LogFiles*目录的内容。 其结构如下：
 
-| 日志类型 | 目录 | Description |
+| 日志类型 | 目录 | 说明 |
 |-|-|-|
 | **应用程序日志** |*/LogFiles/Application/* | 包含一个或多个文本文件。 日志消息的格式取决于所使用的日志提供程序。 |
 | **失败请求跟踪** | */LogFiles/W3SVC # # # # # # # # #/* | 包含 XML 文件和一个 XSL 文件。 您可以在浏览器中查看格式化的 XML 文件。 |
@@ -182,7 +182,7 @@ az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 下表显示了支持的日志类型和说明： 
 
-| 日志类型 | Windows 支持 | Linux （Docker）支持 | Description |
+| 日志类型 | Windows 支持 | Linux （Docker）支持 | 说明 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | 是 | 标准输出和标准错误 |
 | AppServiceHTTPLogs | 是 | 是 | Web 服务器日志 |

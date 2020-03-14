@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426697"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282271"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。
@@ -19,7 +19,7 @@ Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft
 ## <a name="performance-counters"></a>性能计数器
 Reliable ServiceRemoting 运行时定义以下性能计数器类别：
 
-| 类别 | Description |
+| 类别 | 说明 |
 | --- | --- |
 | Service Fabric 服务 |特定于 Azure Service Fabric Service Remoting 的计数器，例如，处理请求所需的平均时间 |
 | Service Fabric 服务方法 |特定于 Service Fabric Remoting Service 所实现方法的计数器，例如，调用服务方法的频率 |
@@ -74,7 +74,7 @@ ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用�
 
 Reliable Service 运行时发布与执行服务方法相关的下列性能计数器。
 
-| 类别名称 | 计数器名称 | Description |
+| 类别名称 | 计数器名称 | 说明 |
 | --- | --- | --- |
 | Service Fabric 服务方法 |调用/秒 |每秒调用服务方法的次数 |
 | Service Fabric 服务方法 |每次调用的平均毫秒数 |执行服务方法所用的时间（以毫秒为单位） |
@@ -83,7 +83,7 @@ Reliable Service 运行时发布与执行服务方法相关的下列性能计数
 ### <a name="service-request-processing-performance-counters"></a>服务请求处理的性能计数器
 客户端通过服务代理对象调用方法时，会通过网络向远程服务发送请求消息。 该服务处理此请求消息并向客户端返回响应。 Reliable ServiceRemoting 运行时发布以下与服务请求处理相关的性能计数器。
 
-| 类别名称 | 计数器名称 | Description |
+| 类别名称 | 计数器名称 | 说明 |
 | --- | --- | --- |
 | Service Fabric 服务 |未完成的请求数 |正在服务中处理的请求数 |
 | Service Fabric 服务 |每个请求的平均毫秒数 |服务处理请求所用时间（以毫秒为单位） |

@@ -4,11 +4,11 @@ description: Azure 顾问入门。
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443141"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259625"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure 顾问入门
 

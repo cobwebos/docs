@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613782"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260158"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
 
@@ -72,7 +72,7 @@ ms.locfileid: "75613782"
 
 | Azure 对象类型 | 默认限制                                             |
 |-------------------|-----------------------------------------------------------|
-| 块 Blob        | ~ 4.75 TiB                                                 |
+| 块 blob        | ~ 4.75 TiB                                                 |
 | 页 blob         | 8 TiB <br> （每个上传的文件的格式必须为512字节，否则上传会失败。 <br> VHD 和 VHDX 的对齐方式均为512字节。） |
 |Azure 文件        | 1 TiB <br> 最大 共享大小为 5 TiB     |
 | 托管磁盘     |4 TiB <br> 有关大小和限制的详细信息，请参阅： <li>[托管磁盘的可伸缩性目标](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|

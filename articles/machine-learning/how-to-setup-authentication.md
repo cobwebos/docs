@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602581"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283532"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -297,12 +297,12 @@ Web 服务还支持基于令牌的身份验证，但仅适用于 Azure Kubernete
 
 ### <a name="token-based-web-service-authentication"></a>基于令牌的 web 服务身份验证
 
-为 web 服务启用令牌身份验证时，用户必须向 web 服务提供 Azure 机器学习 JSON Web 令牌才能访问它。 令牌在指定的时间框架后过期，需要刷新才能继续调用。
+为 web 服务启用令牌身份验证时，用户必须向 web 服务提供 Azure 机器学习 JSON Web 令牌才能访问它。 令牌在指定的时间范围后过期，需要刷新才能继续调用。
 
 * 部署到 Azure Kubernetes 服务时，令牌身份验证**默认情况下处于禁用状态**。
 * 当你部署到 Azure 容器实例时，令牌身份验证**不受支持**。
 
-若要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
+要控制令牌身份验证，请在创建或更新部署时使用 `token_auth_enabled` 参数。
 
 如果启用了令牌身份验证，则可以使用 `get_token` 方法检索 JSON Web 令牌（JWT）和令牌的过期时间：
 
@@ -312,7 +312,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> 需要在令牌的 `refresh_by` 时间之后请求新令牌。 如果需要刷新 Python SDK 之外的令牌，一种选择是使用服务主体身份验证的 REST API 定期进行 `service.get_token()` 调用，如前文所述。
+> 需要在令牌的 `refresh_by` 时间后请求一个新令牌。 如果需要刷新 Python SDK 之外的令牌，一种选择是使用服务主体身份验证的 REST API 定期进行 `service.get_token()` 调用，如前文所述。
 >
 > 强烈建议在 Azure Kubernetes Service 群集所在的同一区域中创建 Azure 机器学习工作区。 
 >

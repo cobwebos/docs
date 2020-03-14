@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274473"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79221102"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>将墨迹数据发送到墨迹识别器 API 
 
 数字墨迹是以数字形式表示手写和绘制等输入内容的技术。 此功能通常是使用一个数字化器实现的，该数字化器可以捕获输入设备（例如手写笔）的动作。 随着设备中不断推出丰富的数字墨迹书写体验，可以通过人工智能和机器学习来识别任意上下文中的书写形状和文本。 使用墨迹识别器 API 可以发送墨迹笔划及获取其详细信息。 
 
-## <a name="the-ink-recognizer-api-vs-ocr-services"></a>墨迹识别器 API 与OCR 服务
+## <a name="the-ink-recognizer-api-vs-ocr-services"></a>手写识别器 API 与 OCR 服务
 
 墨迹识别器 API 不使用光学字符识别 (OCR)。 OCR 服务通过处理图像中的像素数据来提供手写内容与文本的识别。 此功能有时称为脱机识别。 手写识别器 API 需要处理使用输入设备时捕获的数字墨迹笔划数据。 与 OCR 服务相比，以这种方式处理数字墨迹数据可以生成更准确的识别结果。 
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376133"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253827"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓扑
 本文介绍使用 Azure AD Connect 同步作为关键集成解决方案的各种本地拓扑和 Azure Active Directory (Azure AD) 拓扑。 此外，介绍支持和不支持的配置。
@@ -120,7 +120,7 @@ Azure AD Connect 同步中的默认配置假设：
 ## <a name="office-365-and-topology-considerations"></a>Office 365 和拓扑注意事项
 某些 Office 365 工作负荷对支持的拓扑实施一些限制：
 
-| 工作负载 | 限制 |
+| 工作负荷 | 限制 |
 | --------- | --------- |
 | Exchange Online | 有关 Exchange Online 支持的混合拓扑的详细信息，请参阅[具有多个 Active Directory 林的混合部署](https://technet.microsoft.com/library/jj873754.aspx)。 |
 | Skype for Business | 使用多个本地林时，只支持帐户资源林拓扑。 有关详细信息，请参阅 [Skype for Business Server 2015 的环境要求](https://technet.microsoft.com/library/dn933910.aspx)。 |
@@ -134,7 +134,7 @@ Azure AD Connect 支持以*暂存模式*安装第二个服务器。 使用此模
 
 在主服务器发生故障的灾难事件中，可以故障转移到暂存服务器。 在 Azure AD Connect 向导中执行此操作。 可将第二个服务器定位在不同的数据中心，因为没有和主服务器共享基础结构。 必须手动将主服务器上所做的任何配置更改复制到第二台服务器。
 
-可以使用暂存服务器来测试新的自定义配置及其对数据造成的影响。 你可以预览更改并调整配置。 如果满意新的配置，可让暂存服务器成为活动服务器，将旧的活动服务器设置为暂存模式。
+可以使用暂存服务器来测试新的自定义配置及其对数据造成的影响。 可以预览更改并调整配置。 如果满意新的配置，可让暂存服务器成为活动服务器，将旧的活动服务器设置为暂存模式。
 
 还可以使用此方法替换活动的同步服务器。 准备新的服务器，并将其设置为暂存模式。 确保它处于良好状态、禁用暂存模式（使之成为活动服务器），并关闭当前活动的服务器。
 

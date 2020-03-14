@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78945678"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79277565"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Functions 2.x Azure Cosmos DB 触发器
 

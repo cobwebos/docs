@@ -17,11 +17,11 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c8a9cf0c05d8af14d52bb1efb536dc8bbe7db84d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702124"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262563"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>用于调用 web Api 的桌面应用：移动到生产环境
 
@@ -45,7 +45,7 @@ ms.locfileid: "76702124"
 
 在此示例中，请使用具有 `extraScopesToConsent` 参数的 `.WithAdditionalPromptToConsent` 修饰符。
 
-对于实例：
+例如：
 
 ### <a name="in-msalnet"></a>在 MSAL.NET 中
 

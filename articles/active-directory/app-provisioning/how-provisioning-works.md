@@ -16,11 +16,11 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 892cdeea20780c90ce325e8be9b7b91fee0d9fad
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522520"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264045"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 

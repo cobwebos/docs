@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120240"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261861"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
 
@@ -137,7 +137,7 @@ ms.locfileid: "77120240"
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击 **“保存”** 。
+1. 单击“ **保存**”。
 
 ## <a name="delete-a-catalog"></a>删除目录
 

@@ -4,11 +4,11 @@ description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用�
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 5028d95ef784b0d309880d0d05371cd42f627d7d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361824"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276304"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 应用程序的 Application Insights
 
@@ -30,7 +30,7 @@ ms.locfileid: "78361824"
 > [!NOTE]
 > 如果使用 ASP.NET Core 3.0 以及 Application Insights，请使用[2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)版本或更高版本。 这是支持 ASP.NET Core 3.0 的唯一版本。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - 运行 ASP.NET Core 应用程序。 如果需要创建 ASP.NET Core 应用程序，请遵循本[ASP.NET Core 教程](https://docs.microsoft.com/aspnet/core/getting-started/)。
 - 有效的 Application Insights 检测密钥。 需要此密钥才能将任何遥测数据发送到 Application Insights。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
@@ -46,7 +46,7 @@ ms.locfileid: "78361824"
 
 3. 选择“入门”。 根据你的 Visual Studio 版本，此选择的文本可能会有所不同。 某些早期版本使用的是 "**开始可用**" 按钮。
 
-4. 选择你的订阅。 然后选择 "**资源** > **Register**"。
+4. 选择订阅。 然后选择 "**资源** > **Register**"。
 
 5. 将 Application Insights 添加到项目中后，请检查以确认你使用的是最新版本的 SDK。 请参阅**Project** > **管理 NuGet 包** > **applicationinsights.config. AspNetCore**。 如果需要，请选择 "**更新**"。
 
@@ -357,7 +357,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="does-application-insights-support-aspnet-core-30"></a>Application Insights 是否支持 ASP.NET Core 3.0？
 
-可以。 更新[APPLICATION INSIGHTS SDK ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.8.0 或更高版本。 较早版本的 SDK 不支持 ASP.NET Core 3.0。
+是的。 更新[APPLICATION INSIGHTS SDK ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.8.0 或更高版本。 较早版本的 SDK 不支持 ASP.NET Core 3.0。
 
 此外，如果使用的是基于 Visual Studio 的说明[，请更新](#enable-application-insights-server-side-telemetry-visual-studio)到最新版本的 visual studio 2019 （16.3.0）以进行载入。 Visual Studio 的早期版本不支持 ASP.NET Core 3.0 应用程序的自动载入。
 
@@ -410,7 +410,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>能否使用状态监视器等工具启用 Application Insights 监视？
 
-No。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前仅支持 ASP.NET 4.x。
+不是。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)和[状态监视器 v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)目前仅支持 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>对于我的 ASP.NET Core 2.0 应用程序 Application Insights 自动启用吗？
 
@@ -418,7 +418,7 @@ No。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monit
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中运行我的应用程序，是否支持所有功能？
 
-可以。 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
+是的。 SDK 的功能支持在所有平台中都是相同的，但有以下例外：
 
 * SDK 收集 Linux 上的[事件计数器](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters)，因为只有 Windows 支持[性能计数器](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters)。 大多数指标是相同的。
 * 即使默认情况下启用 `ServerTelemetryChannel`，如果应用程序在 Linux 或 MacOS 中运行，则通道不会自动创建本地存储文件夹，以在出现网络问题时暂时保留遥测数据。 由于存在此限制，因此当存在暂时性网络或服务器问题时，遥测将丢失。 若要解决此问题，请配置通道的本地文件夹：

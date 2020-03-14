@@ -4,11 +4,11 @@ description: 了解静态和动态参数，以及如何使用它们创建安全�
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644964"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264708"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -131,11 +131,11 @@ ms.locfileid: "75644964"
   }
   ```
 
-在此示例中，**principalIds** 属性通过 `[parameters('owners')]` 的值使用 **owners** 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
+在此示例中，**principalIds** 属性通过 **的值使用**owners`[parameters('owners')]` 蓝图级参数。 使用蓝图级参数在项目中设置参数仍是**静态参数**的示例。 蓝图级参数无法在蓝图分配期间设置，每次分配时都是同一个值。
 
 ##### <a name="artifact-level-parameter"></a>项目级别参数
 
-在项目上创建“静态参数”情况相似，但采用直接值而不是使用 `parameters()` 函数。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
+在项目上创建“静态参数”情况相似，但采用直接值而不是使用  **函数**`parameters()`。 以下示例创建了两个静态参数：“tagName”和“tagValue”。 每个参数的值直接提供，且不使用函数调用。
 
 - REST API URI
 

@@ -4,11 +4,11 @@ description: 如果资源不符合，则可能有很多原因。 了解如何查
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385251"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264630"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 

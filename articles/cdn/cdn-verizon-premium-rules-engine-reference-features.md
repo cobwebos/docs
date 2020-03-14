@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78381827"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247574"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>从 Verizon 高级规则引擎功能 Azure CDN
 

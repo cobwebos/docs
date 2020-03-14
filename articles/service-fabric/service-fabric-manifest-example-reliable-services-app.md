@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: pepogors
 ms.openlocfilehash: f40e54f5260f827f0b18c833d23d1f57b5ebc3a3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78382809"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282349"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Reliable Services 应用程序和服务清单示例
 下面是包含 ASP.NET Core Web 前端和有状态后端的 Service Fabric 应用程序的应用程序和服务清单示例。 这些示例的用途是展示有哪些设置可用以及如何使用它们。 这些应用程序和服务清单基于 [Service Fabric .NET 快速入门](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)清单。
 
 展示了以下功能：
 
-|Manifest|功能|
+|清单|功能|
 |---|---|
 |[应用程序清单](#application-manifest)| [资源监管](service-fabric-resource-governance.md)、[以本地管理员帐户运行服务](service-fabric-application-runas-security.md)、[将默认策略应用到所有服务代码包](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages)、[创建用户和组主体](service-fabric-application-runas-security.md)、在服务实例之间共享数据包、[重写服务终结点](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
 |FrontEndService 服务清单| [服务启动时运行脚本](service-fabric-run-script-at-service-startup.md)、[定义 HTTPS 终结点](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 

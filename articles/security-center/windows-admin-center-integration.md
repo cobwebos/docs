@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960698"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139617"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>将 Azure 安全中心与 Windows 管理中心集成（预览版）
+# <a name="integrate-azure-security-center-with-windows-admin-center"></a>将 Azure 安全中心与 Windows 管理中心集成
 
 Windows 管理中心是适用于 Windows 服务器的管理工具。 它是系统管理员访问大部分最常用管理工具的单一位置。 从 Windows 管理中心，可以直接在 Azure 安全中心中本地服务器。 然后，你可以直接在 Windows 管理中心体验中查看安全建议和警报的摘要。
 

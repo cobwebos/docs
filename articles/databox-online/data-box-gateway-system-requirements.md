@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442385"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260184"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据框网关系统要求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway 系统要求
 
 本文介绍了 Microsoft Azure Data Box Gateway 解决方案以及连接到 Azure Data Box Gateway 的客户端的重要系统要求。 建议在部署 Data Box Gateway 之前仔细查看信息，然后在部署和后续操作期间根据需要重新参考。
 
@@ -29,12 +29,12 @@ Data Box Gateway 虚拟设备的系统要求包括：
 
 Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设备：
 
-| 规范                                          | 描述              |
+| 规范                                          | 说明              |
 |---------------------------------------------------------|--------------------------|
 | 虚拟处理器（核心数）   | 最低为 4 核 |
 | 内存  | 最低为 8 GB|
 | 可用性|单节点|
-| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、预配精简，并且必须由 SSD 提供支持|
+| 磁盘| OS 磁盘：250 GB <br> 数据磁盘：最低为 2 TB、配置精简，并且必须由 SSD 提供支持|
 | 网络接口|1 个或多个虚拟网络接口|
 
 
@@ -59,7 +59,7 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 [!INCLUDE [Supported storage accounts](../../includes/data-box-edge-gateway-supported-storage-accounts.md)]
 
 
-## <a name="supported-storage-types"></a>支持的存储类型
+## <a name="supported-storage-types"></a>受支持的存储类型
 
 [!INCLUDE [Supported storage types](../../includes/data-box-edge-gateway-supported-storage-types.md)]
 

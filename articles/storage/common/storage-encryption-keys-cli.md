@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bf21cd27fa290b9b9b863803aef043eccc815573
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: fcb4636263843143e685de2e3d2a27bf87cc5a90
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912714"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137401"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>使用 Azure CLI 配置客户管理的密钥 Azure Key Vault
 
@@ -120,11 +120,21 @@ az storage account update
 
 若要更改用于 Azure 存储加密的密钥，请调用[az 存储帐户更新](/cli/azure/storage/account#az-storage-account-update)，如[使用客户管理的密钥配置加密](#configure-encryption-with-customer-managed-keys)和提供新的密钥名称和版本中所示。 如果新密钥在不同的密钥保管库中，则还要更新密钥保管库 URI。
 
+## <a name="revoke-customer-managed-keys"></a>撤消客户管理的密钥
+
+如果你认为某个密钥可能已泄露，则可以通过删除密钥保管库访问策略来吊销客户管理的密钥。 若要撤消客户托管的密钥，请调用[az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy)命令，如以下示例中所示。 请记住，将占位符中的占位符值替换为自己的值，并使用在前面的示例中定义的变量。
+
+```azurecli-interactive
+az keyvault delete-policy \
+    --name <key-vault> \
+    --object-id $storage_account_principal
+```
+
 ## <a name="disable-customer-managed-keys"></a>禁用客户管理的密钥
 
-当你禁用客户管理的密钥时，存储帐户将通过 Microsoft 管理的密钥进行加密。 若要禁用客户托管的密钥，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例中所示。 请记住，将占位符中的占位符值替换为自己的值，并使用在前面的示例中定义的变量。
+禁用客户管理的密钥后，存储帐户将再次通过 Microsoft 管理的密钥加密。 若要禁用客户托管的密钥，请调用[az storage account update](/cli/azure/storage/account#az-storage-account-update)并将 `--encryption-key-source parameter` 设置为 `Microsoft.Storage`，如以下示例中所示。 请记住，将占位符中的占位符值替换为自己的值，并使用在前面的示例中定义的变量。
 
-```powershell
+```azurecli-interactive
 az storage account update
     --name <storage-account> \
     --resource-group <resource_group> \

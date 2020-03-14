@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 3932c22ff003a343e4c32aee117a7ddea922fbdb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd9e41418eac670bd1cb52be40dbd25c17af6fac
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360092"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255686"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -68,7 +68,7 @@ SQL 数据库提供以下购买模型：
 Azure SQL 数据库提供三个为不同类型的应用程序设计的服务层：
 - 为常见工作负荷设计的[常规用途/标准](sql-database-service-tier-general-purpose.md)服务层。 它提供面向预算的平衡计算和存储选项。
 - 为 OLTP 应用程序设计的、具有高事务速率和最低延迟 i/o 的[业务关键/高级](sql-database-service-tier-business-critical.md)服务层。 它通过使用多个独立副本提供故障的最高复原能力。
-- 为非常大的 OLTP 数据库设计的[超大规模](sql-database-service-tier-hyperscale.md)服务层，以及自动缩放存储和缩放计算流畅地的功能。 
+- 为非常大的 OLTP 数据库设计的[超大规模](sql-database-service-tier-hyperscale.md)服务层，以及自动缩放存储和缩放计算流畅地的功能。    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>弹性池可以最大化资源利用率
 
@@ -76,7 +76,7 @@ Azure SQL 数据库提供三个为不同类型的应用程序设计的服务层�
 
    ![显示 "基本"、"标准" 和 "高级" 版中的弹性池的图形](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-使用弹性池时，不需要在资源需求波动时担心如何上下调节数据库性能。 共用数据库可根据需要使用弹性池的性能资源。 共用数据库会使用该池，但不会超出其限制，因此即使单个数据库的使用情况仍不可预测，成本也仍是可预测的。
+对于弹性池，无需将精力集中在资源需求波动的情况下，将精力集中在数据库性能上增加。 共用数据库可根据需要使用弹性池的性能资源。 池数据库使用但不超过池的限制，因此即使单个数据库的使用不是如此，你的成本仍可预测。
 
 你可以在[池中添加和删除数据库](sql-database-elastic-pool-manage-portal.md)，将应用从少量数据库扩展到数千个，所有这些都在你控制的预算内。 您还可以控制池中数据库可用的最小和最大资源，以确保池中没有数据库使用所有池资源，并且每个共用数据库都有保证的最小资源量。 若要了解有关使用弹性池的软件即服务（SaaS）应用程序的设计模式的详细信息，请参阅[具有 SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 
@@ -95,7 +95,7 @@ Azure SQL 数据库提供高级监视和故障排除功能，可帮助你深入�
  - 最新版本的 SQL Server 数据库引擎提供内置监视功能。 它们允许你查找实时性能见解。 
  - 由 Azure 提供的 PaaS 监视功能，可用于监视大量数据库实例并对其进行故障排除。
 
-[查询存储](sql-database-operate-query-store.md)是一种内置的 SQL Server 监视功能，可实时记录查询的性能，并使你能够确定潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关具有回归性能的查询的建议，以及缺少或重复的索引。 使用 SQL 数据库中的自动优化，可以手动应用可修复问题的脚本，或让 SQL 数据库应用此修补程序。 SQL 数据库还可以测试并验证此修补程序是否有一定的优点，并根据结果保留或恢复更改。 除了查询存储和自动优化功能，还可以使用标准[dmv 和 XEvent](sql-database-monitoring-with-dmvs.md)来监视工作负荷性能。
+[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store)是一种内置的 SQL Server 监视功能，可实时记录查询的性能，并使你能够确定潜在的性能问题和排名靠前的资源使用者。 自动优化和建议提供有关具有回归性能的查询的建议，以及缺少或重复的索引。 使用 SQL 数据库中的自动优化，可以手动应用可修复问题的脚本，或让 SQL 数据库应用此修补程序。 SQL 数据库还可以测试并验证此修补程序是否有一定的优点，并根据结果保留或恢复更改。 除了查询存储和自动优化功能，还可以使用标准[dmv 和 XEvent](sql-database-monitoring-with-dmvs.md)来监视工作负荷性能。
 
 Azure 提供[内置的性能监视](sql-database-performance.md)和[警报](sql-database-insights-alerts-portal.md)工具，结合性能评级，使你能够监视上千个数据库的状态。 使用这些工具，可以根据当前的或预计的性能需求，快速评估增加或减少扩展的影响。 此外，SQL 数据库可[发出指标和诊断日志](sql-database-metrics-diag-logging.md)，以便更轻松地监视。 可配置 SQL 数据库，将资源使用情况、辅助角色和会话以及连接性存储到以下 Azure 资源之一：
 
@@ -157,7 +157,7 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 
 ### <a name="adaptive-query-processing"></a>自适应查询处理
 
-您可以使用[自适应查询处理](/sql/relational-databases/performance/intelligent-query-processing)，包括多语句表值函数的交错执行、批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能均应用类似的“学习和适应”技巧，帮助进一步解决与历史上棘手的查询优化问题相关的性能问题。
+您可以使用[自适应查询处理](/sql/relational-databases/performance/intelligent-query-processing)，包括多语句表值函数的交错执行、批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能都适用于类似的 "学习和改编" 技术，有助于进一步解决与历史上棘手的查询优化问题相关的性能问题。
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
@@ -221,7 +221,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>能否控制修补停机的时间？
 
-No。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关详细信息，请参阅[在 AZURE SQL 数据库中规划 azure 维护事件](sql-database-planned-maintenance.md)。
+不是。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关详细信息，请参阅[在 AZURE SQL 数据库中规划 azure 维护事件](sql-database-planned-maintenance.md)。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure 混合权益问题
 

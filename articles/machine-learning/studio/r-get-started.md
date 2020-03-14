@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 9e010a5179f2da2d5bbce5526d59ac075a9270b0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1b347707b3c656bd692a29f0fd748c1503be4fb8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169261"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217999"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Azure 机器学习 Studio 中的 R 编程语言入门（经典）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
 
@@ -952,7 +954,7 @@ outframe
 
 ### <a name="creating-the-dataframe-for-analysis"></a>创建用于分析的数据框
 
-首先将新的 [执行 R 脚本][execute-r-script]模块添加到试验中。 将现有[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新模块的**Dataset1**输入。 结果如图 20 所示。
+首先将新的**new** [执行 R 脚本][execute-r-script]模块添加到试验中。 将现有[执行 R 脚本][execute-r-script]模块的**结果数据集**输出连接到新模块的**Dataset1**输入。 结果如图 20 所示。
 
 ![已添加新执行 R 脚本模块的实验](./media/r-quickstart/fig21.png)
 

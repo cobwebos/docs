@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
 ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500334"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256752"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>了解 Azure 春季云的指标
 

@@ -18,11 +18,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773323"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262290"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 标识平台和 OpenID Connect 协议
 
@@ -51,7 +51,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 `{tenant}` 可采用四个值的其中之一：
 
-| 值 | Description |
+| 值 | 说明 |
 | --- | --- |
 | `common` |同时拥有个人 Microsoft 帐户和工作或学校帐户的用户 Azure AD 可以登录到应用程序。 |
 | `organizations` |仅拥有工作/学校帐户的用户可以从 Azure AD 登录到应用程序。 |
@@ -83,7 +83,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 当 Web 应用需要对用户进行身份验证时，可以将用户定向到 `/authorize` 终结点。 此请求类似于 [OAuth 2.0 授权代码流](v2-oauth2-auth-code-flow.md)的第一个阶段，但有以下几个重要区别：
 
-* 该请求必须在 `scope` 参数中包含 `openid` 范围。
+* 该请求必须在 `openid` 参数中包含 `scope` 范围。
 * `response_type` 参数必须包含 `id_token`。
 * 请求必须包含 `nonce` 参数。
 
@@ -109,16 +109,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 单击下面的链接可执行此请求。 登录后，浏览器将重定向到 `https://localhost/myapp/`，且地址栏中有一个 ID 令牌。 请注意，此请求使用 `response_mode=fragment`（仅用于演示）。 建议使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | --- | --- | --- |
-| `tenant` | 需要 | 可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
-| `client_id` | 需要 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
-| `response_type` | 需要 | 必须包含 OpenID Connect 登录的 `id_token`。 它可能还包括其他 `response_type` 值，例如 `code`。 |
-| `redirect_uri` | 推荐 | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 如果不存在，终结点将随机选取一个注册的 redirect_uri，以将用户返回到。 |
-| `scope` | 需要 | 范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 也可以在此请求中包含其他范围，以请求同意。 |
-| `nonce` | 需要 | 应用生成并包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用于识别请求的来源。 |
-| `response_mode` | 推荐 | 指定应用于将生成的授权代码发送回应用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
-| `state` | 推荐 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于身份验证请求出现前（例如用户所在页面或视图），对有关用户在应用中状态的信息进行编码。 |
+| `tenant` | 必选 | 可以使用请求路径中的 `{tenant}` 值来控制哪些用户可以登录到该应用程序。 允许的值为 `common`、`organizations`、`consumers` 和租户标识符。 有关详细信息，请参见[协议基础知识](active-directory-v2-protocols.md#endpoints)。 |
+| `client_id` | 必选 | Azure 门户的**应用程序（客户端） ID** [-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给应用程序的体验。 |
+| `response_type` | 必选 | 必须包含 OpenID Connect 登录的 `id_token`。 它可能还包括其他 `response_type` 值，例如 `code`。 |
+| `redirect_uri` | 建议 | 应用的重定向 URI，应用可通过此 URI 发送和接收身份验证响应。 其必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码。 如果不存在，终结点将随机选取一个注册的 redirect_uri，以将用户返回到。 |
+| `scope` | 必选 | 范围的空格分隔列表。 针对 OpenID Connect，即必须包含范围 `openid`，其在同意 UI 中转换为“你将登录”权限。 也可以在此请求中包含其他范围，以请求同意。 |
+| `nonce` | 必选 | 应用生成并包含在请求中的值，以声明方式包含在生成的 id_token 值中。 应用可验证此值，以减少令牌重放攻击。 此值通常是随机的唯一字符串，可用于识别请求的来源。 |
+| `response_mode` | 建议 | 指定应用于将生成的授权代码发送回应用的方法。 可以是 `form_post` 或 `fragment`。 对于 Web 应用程序，建议使用 `response_mode=form_post`，确保以最安全的方式将令牌传输到应用程序。 |
+| `state` | 建议 | 同样随令牌响应返回的请求中所包含的值。 其可以是关于想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于身份验证请求出现前（例如用户所在页面或视图），对有关用户在应用中状态的信息进行编码。 |
 | `prompt` | 可选 | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。 `prompt=login` 声明将强制用户在该请求上输入凭据，从而取消单一登录。 而 `prompt=none` 声明截然相反。 此声明确保用户不会在上显示任何交互式提示。 如果请求无法通过单一登录静默完成，Microsoft 标识平台终结点将返回错误。 `prompt=consent` 声明会在用户登录后触发 OAuth 同意对话框。 该对话框要求用户向应用授予权限。 |
 | `login_hint` | 可选 | 如果事先知道用户名，可使用此参数预先填充用户登录页面的用户名和电子邮件地址字段。 通常，应用在已经使用 `preferred_username` 声明从前次登录提取用户名后，会在重新身份验证时使用此参数。 |
 | `domain_hint` | 可选 | 联合目录中的用户领域。  这会跳过用户在登录页面上经历的基于电子邮件的发现过程，从而获得稍微更精简的用户体验。 对于通过本地目录（如 AD FS）联合的租户，这通常是由于现有登录会话而导致的无缝登录。 |
@@ -139,7 +139,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `id_token` | 应用请求的 ID 令牌。 可以使用 `id_token` 参数验证用户身份，并开始与该用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | `state` | 如果请求中包含 `state` 参数，响应中应该出现相同的值。 应用程序应该验证请求和响应中的状态值是否完全相同。 |
@@ -156,7 +156,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |
@@ -165,7 +165,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 下表描述了可在错误响应的 `error` 参数中返回的错误代码：
 
-| 错误代码 | Description | 客户端操作 |
+| 错误代码 | 说明 | 客户端操作 |
 | --- | --- | --- |
 | `invalid_request` | 协议错误，例如缺少必需的参数。 |修复并重新提交请求。 这是通常在初始测试期间捕获的开发错误。 |
 | `unauthorized_client` | 客户端应用程序无法请求授权代码。 |当客户端应用程序未在 Azure AD 中注册或未添加到用户的 Azure AD 租户时，通常会发生这种情况。 应用程序可以提示用户，说明如何安装该应用程序并将其添加到 Azure AD。 |
@@ -200,9 +200,9 @@ GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
 
-| 参数 | 条件 | Description |
+| 参数 | 条件 | 说明 |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | 推荐 | 用户在成功注销后重定向到的 URL。如果未包括此参数，则用户将显示由 Microsoft 标识平台终结点生成的一般消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
+| `post_logout_redirect_uri` | 建议 | 用户在成功注销后重定向到的 URL。如果未包括此参数，则用户将显示由 Microsoft 标识平台终结点生成的一般消息。 此 URL 必须与在应用注册门户中为应用程序注册的重定向 URI 之一匹配。 |
 
 ## <a name="single-sign-out"></a>单一登录
 
@@ -252,7 +252,7 @@ Content-Type: application/x-www-form-urlencoded
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&state=12345
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `id_token` | 应用请求的 ID 令牌。 可以使用 ID 令牌验证用户的身份，并开始与用户的会话。 有关 ID 令牌及其内容的详细信息，请参阅 [`id_tokens` 参考](id-tokens.md)。 |
 | `code` | 应用程序请求的授权代码。 应用程序可以使用授权代码请求目标资源的访问令牌。 授权代码的生存期很短。 通常情况下，授权代码会在约 10 分钟后过期。 |
@@ -270,7 +270,7 @@ Content-Type: application/x-www-form-urlencoded
 error=access_denied&error_description=the+user+canceled+the+authentication
 ```
 
-| 参数 | Description |
+| 参数 | 说明 |
 | --- | --- |
 | `error` | 可用于分类发生的错误类型和响应错误的错误代码字符串。 |
 | `error_description` | 可帮助用户识别身份验证错误根本原因的特定错误消息。 |

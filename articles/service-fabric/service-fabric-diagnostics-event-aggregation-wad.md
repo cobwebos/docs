@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980210"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282492"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "75980210"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 本文中使用了以下工具：
 
 * [Azure 资源管理器](../azure-resource-manager/management/overview.md)
@@ -193,7 +193,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ### <a name="update-storage-quota"></a>更新存储配额
 
-由于由该扩展填充的表不断增长，直至达到配额，因此可能需要考虑减小配额大小。 默认值为 50 GB，可以在模板中在 `DiagnosticMonitorConfiguration` 下的 `overallQuotaInMB` 字段下进行配置。
+由于由该扩展填充的表不断增长，直至达到配额，因此可能需要考虑减小配额大小。 默认值为 50 GB，可以在模板中在 `overallQuotaInMB` 下的 `DiagnosticMonitorConfiguration` 字段下进行配置。
 
 ```json
 "overallQuotaInMB": "50000",
@@ -229,7 +229,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 >此通道包含非常大量的事件，从详细通道启用事件收集会导致快速生成大量跟踪并可能会消耗存储容量。 请只有在绝对必要的情况下才启用此项。
 
 
-若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 `WadCfg` 中的 `EtwManifestProviderConfiguration` 将如下所示：
+若要启用“基本操作通道”（建议启用以获得干扰最少的全面日志记录），模板的 **中的** 将如下所示`EtwManifestProviderConfiguration``WadCfg`：
 
 ```json
   "WadCfg": {
@@ -282,7 +282,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 若要将诊断更新为从新的 EventSource 通道（表示要部署的新应用程序）收集日志，请执行之前描述的相同的步骤，其中描述了现有群集的诊断设置。
 
-在使用 `New-AzResourceGroupDeployment` PowerShell 命令应用配置更新之前，请更新 template.json 文件中的 `EtwEventSourceProviderConfiguration` 节，添加新 EventSource 通道的条目。 事件源的名称定义为 Visual Studio 生成的 ServiceEventSource.cs 文件中的代码的一部分。
+在使用 `EtwEventSourceProviderConfiguration` PowerShell 命令应用配置更新之前，请更新 template.json 文件中的 `New-AzResourceGroupDeployment` 节，添加新 EventSource 通道的条目。 事件源的名称定义为 Visual Studio 生成的 ServiceEventSource.cs 文件中的代码的一部分。
 
 例如，如果事件源名为 My-Eventsource，请添加以下代码，将来自 My-Eventsource 的事件放入名为 MyDestinationTableName 的表中。
 
@@ -300,7 +300,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ## <a name="collect-performance-counters"></a>收集性能计数器
 
-若要从群集中收集性能指标，请将性能计数器添加到群集中的 Resource Manager 模板“WadCfg > DiagnosticMonitorConfiguration”。 有关修改 `WadCfg` 以收集特定性能计数器的步骤，请参阅[通过 WAD 监控性能](service-fabric-diagnostics-perf-wad.md)。 对于我们建议收集的性能计数器列表，请参阅 [Service Fabric 性能计数器](service-fabric-diagnostics-event-generation-perf.md)。
+若要从群集中收集性能指标，请将性能计数器添加到群集中的 Resource Manager 模板“WadCfg > DiagnosticMonitorConfiguration”。 有关修改 [ 以收集特定性能计数器的步骤，请参阅](service-fabric-diagnostics-perf-wad.md)通过 WAD 监控性能`WadCfg`。 对于我们建议收集的性能计数器列表，请参阅 [Service Fabric 性能计数器](service-fabric-diagnostics-event-generation-perf.md)。
   
 如果使用 Application Insights 接收器（如下面部分所述）并想要这些指标显示在 Application Insights 中，请确保将接收器名称添加到“sinks”部分，如上所示。 这将自动向你的 Application Insights 资源发送单独配置的性能计数器。
 
@@ -338,7 +338,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
     ```
 
-2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `WadCfg` 的 `DiagnosticMonitorConfiguration` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
+2. 在 `DiagnosticMonitorConfiguration` 中添加接收器，具体方法是在 `DiagnosticMonitorConfiguration` 的 `WadCfg` 中添加以下代码行（紧靠声明的 `EtwProviders` 前面）：
 
     ```json
     "sinks": "applicationInsights"

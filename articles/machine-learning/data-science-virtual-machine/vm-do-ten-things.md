@@ -10,11 +10,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824386"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283623"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
 
@@ -40,7 +40,7 @@ DSVM 与 Azure 服务密切合作。 它可以读取和处理已存储在 Azure�
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * 需要一个 Azure 订阅。 可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * [创建虚拟机](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)中提供了有关在 Azure 门户上设置 Data Science Virtual Machine 的说明。
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>生成和操作 R 模型
-你可以将基于 Data Science Virtual Machine 或其他位置构建的 R 模型部署到 Azure 机器学习，其方式类似于对 Python 执行的操作。 下面是相关步骤：
+你可以将基于 Data Science Virtual Machine 或其他位置构建的 R 模型部署到 Azure 机器学习，其方式类似于对 Python 执行的操作。 以下是具体步骤：
 
 1. 创建一个 json 文件来提供工作区 ID 和身份验证令牌。 
 2. 编写模型的预测函数的包装。
@@ -265,7 +265,7 @@ DSVM 随客户端工具一起加载到命令行和 GUI 上，以访问 GitHub �
 ### <a name="azure-blob-storage"></a>Azure Blob 存储
 Azure Blob 存储是一种可靠、经济的云存储服务，适用于大数据和小数据。 本部分介绍如何将数据移动到 Blob 存储，以及如何访问存储在 Azure blob 中的数据。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 * 从[Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。
 
@@ -367,7 +367,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ### <a name="azure-data-lake"></a>Azure Data Lake
 Azure Data Lake Storage 是适用于大数据分析工作负荷的超大规模存储库，并且与 Hadoop 分布式文件系统（HDFS）兼容。 它适用于 Hadoop、Spark 和 Azure Data Lake Analytics。 在本部分中，你将了解如何使用 Azure Data Lake Analytics 将数据移动到 Azure Data Lake Storage 并运行分析。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 * 在[Azure 门户](https://portal.azure.com)中创建 Azure Data Lake Analytics 实例。
 
@@ -452,7 +452,7 @@ Azure Data Lake 中的数据集之后，可以使用引入[语言](../../data-la
 ### <a name="hdinsight-hadoop-clusters"></a>HDInsight Hadoop 群集
 Azure HDInsight 是云中托管的 Apache Hadoop、Spark、HBase 和风暴服务。 可以通过 Data Science Virtual Machine 轻松使用 Azure HDInsight 群集。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 * 从[Azure 门户](https://portal.azure.com)创建 Azure Blob 存储帐户。 此存储帐户用于存储 HDInsight 群集的数据。
 
@@ -893,6 +893,6 @@ in
 
 - [文本文档分类](https://github.com/anargyri/lstm_han)：本演练演示如何构建和训练两个神经网络体系结构：分层注意网络和长短期内存（LSTM）网络。 这些神经网络使用用于深度学习的 Keras API 对文本文档进行分类。 Keras 是、TensorFlow 和 Theano 的三个最受欢迎的深度学习 Microsoft Cognitive Toolkit 框架的前端。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 本文介绍了可在 Microsoft Data Science Virtual Machine 上执行的某些操作。 你还可以执行更多操作，使 DSVM 成为有效的分析环境。
 

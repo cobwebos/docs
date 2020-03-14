@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793218"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282817"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure 认知搜索中的查询类型和组合
 
@@ -33,7 +33,7 @@ ms.locfileid: "72793218"
 }
 ```
 
-+ **`queryType`** 设置分析器，它是[默认的简单查询分析器](search-query-simple-examples.md)（对于全文搜索是最佳的），或者[是用于高级查询构造](search-query-lucene-examples.md)（如正则表达式、邻近搜索、模糊和通配符搜索，只需对其进行命名。
++ **`queryType`** 设置分析器，它是[默认的简单查询分析器](search-query-simple-examples.md)（对于全文搜索是最佳的），或者是用于高级查询构造（如正则表达式、邻近搜索、模糊和通配符搜索）的[完整 Lucene 查询分析器](search-query-lucene-examples.md)。
 
 + **`search`** 提供匹配条件（通常是文本，但往往附带布尔运算符）。 包含单个独立字词的查询称为字词查询。 由括在引号中的多个部分组成的查询称为关键短语查询。 搜索可以是未定义的（例如 **`search=*`** ），但搜索更有可能包含字词、短语和运算符，如以下示例中所示。
 
@@ -80,7 +80,7 @@ ms.locfileid: "72793218"
 
 下表列出用于提交查询的 API 和基于工具的方法。
 
-| 方法 | 描述 |
+| 方法 | 说明 |
 |-------------|-------------|
 | [搜索浏览器（门户）](search-explorer.md) | 提供搜索栏，以及索引和 API 版本选项。 结果会以 JSON 文档的形式返回。 建议用于浏览、测试和验证。 <br/>[了解详细信息。](search-get-started-portal.md#query-index) | 
 | [Postman 或其他 REST 工具](search-get-started-postman.md) | Web 测试工具是用公式表示 REST 调用的极佳选择。 REST API 支持 Azure 认知搜索中的每个可能操作。 本文介绍如何设置 HTTP 请求标头和正文，以便向 Azure 认知搜索发送请求。  |
@@ -91,7 +91,7 @@ ms.locfileid: "72793218"
 
 Azure 认知搜索位于 Apache Lucene 的顶层，可让你选择两个查询分析器来处理典型查询和专用查询。 使用简单分析器的请求是通过[简单查询语法](query-simple-syntax.md)构建的。由于在自由格式文本查询中具有速度和效率优势，这种语法已选作默认语法。 此语法支持多种常用的搜索运算符，包括 AND、OR、NOT、短语、后缀和优先运算符。
 
-在将 `queryType=full` 添加到请求时所启用的[完整 Lucene 查询语法](query-Lucene-syntax.md#bkmk_syntax)公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
+在将 [ 添加到请求时所启用的](query-Lucene-syntax.md#bkmk_syntax)完整 Lucene 查询语法`queryType=full`公开作为 [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 的一部分开发的、已被广泛采用的且富有表达能力的查询语言。 完整语法扩展了简单语法。 为简单语法编写的任何查询在完整 Lucene 分析器下运行。 
 
 以下示例演示了一个要点：采用不同 queryType 设置的同一个查询会产生不同的结果。 在第一个查询中，将 `historic` 之后的 `^3` 视为搜索词的一部分。 此查询的排名靠前的结果是 "Marquis Plaza & 套件"，其说明中包含*海洋*
 

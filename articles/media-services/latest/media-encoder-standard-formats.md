@@ -15,11 +15,11 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363953"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251357"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>标准编码器格式和编解码器
 
@@ -62,7 +62,7 @@ ms.locfileid: "78363953"
 | MPEG-2（最高支持 422 Profile 和 High Level；包括 XDCAM、XDCAM HD、XDCAM IMX、CableLabs® 和 D10 等变体） |最高支持 422 Profile |
 | MPEG-1 |是 |
 | VC-1/WMV9 |是 |
-| Canopus HQ/HQX |是 |
+| Canopus HQ/HQX |否 |
 | Mpeg-4 第 2 部分 |是 |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |是 |
 | YUV420（未压缩或夹层） |是 |
@@ -86,10 +86,10 @@ ms.locfileid: "78363953"
 | [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR（自适应多速率） |是 |
-| AES（SMPTE 331M 和 302M、AES3-2003） |是 |
-| Dolby® E |是 |
-| Dolby® Digital (AC3) |是 |
-| Dolby® Digital Plus (E-AC3) |是 |
+| AES（SMPTE 331M 和 302M、AES3-2003） |否 |
+| Dolby® E |否 |
+| Dolby® Digital (AC3) |否 |
+| Dolby® Digital Plus (E-AC3) |否 |
 
 ## <a name="output-formats-and-codecs"></a>输出格式和编解码器
 下表列出了导出操作支持的编解码器和文件格式。

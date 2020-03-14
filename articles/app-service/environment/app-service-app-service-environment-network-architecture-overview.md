@@ -8,11 +8,11 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78374135"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79243843"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
 始终在[虚拟网络][virtualnetwork]的子网中创建应用服务环境-在应用服务环境中运行的应用可以与位于同一虚拟网络拓扑中的专用终结点通信。  由于客户可能锁定了其虚拟网络基础结构的组件，因此请务必了解与应用服务环境发生的网络通信流类型。
@@ -29,7 +29,7 @@ ms.locfileid: "78374135"
 应用服务环境可与各种专用客户终结点进行通信。  例如，在应用服务环境中运行的应用可以连接到在相同虚拟网络拓扑中的 IaaS 虚拟机上运行的数据库服务器。
 
 > [!IMPORTANT]
-> 请查看网络图，“其他计算资源”部署在与应用服务环境不同的子网中。 将资源部署于和 ASE 相同的子网中，阻止从 ASE 连接到这些资源的连接（除了特定的内部 ASE 路由之外）。 请改为部署到（相同 VNET 中）不同的子网。 然后，应用服务环境将能够连接。 不需要附加配置。
+> 请查看网络图，“其他计算资源”部署在与应用服务环境不同的子网中。 将资源部署于和 ASE 相同的子网中，阻止从 ASE 连接到这些资源的连接（除了特定的内部 ASE 路由之外）。 请改为部署到（相同 VNET 中）不同的子网。 然后，应用服务环境将能够连接。 不需要任何其他配置。
 > 
 > 
 

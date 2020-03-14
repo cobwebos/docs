@@ -4,11 +4,11 @@ description: 本文介绍如何使用容器 Azure Monitor 来查看和分析 Kub
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385543"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275472"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>利用容器 Azure Monitor 来监视 Kubernetes 群集性能
 

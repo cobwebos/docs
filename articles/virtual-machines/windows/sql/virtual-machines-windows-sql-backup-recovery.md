@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100552"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79249771"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的备份和还原
 
@@ -31,11 +31,11 @@ ms.locfileid: "70100552"
 
 下表提供有关适用于 Azure VM 上运行的 SQL Server 的各种备份和还原选项的信息：
 
-| 策略 | SQL 版本 | 描述 |
+| 策略 | SQL 版本 | 说明 |
 |---|---|---|
 | [自动备份](#automated) | 2014<br/> 2016<br/> 2017 | 使用自动备份可以针对 SQL Server VM 上的所有数据库计划定期备份。 备份在 Azure 存储中最多存储 30 天。 从 SQL Server 2016 开始，自动备份 v2 提供更多选项，例如，配置手动计划，以及完整备份和日志备份的频率。 |
 | [适用于 SQL VM 的 Azure 备份](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | Azure 备份为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 使用此服务，可以集中管理多个服务器和数千个数据库的备份。 可在门户中将数据库还原到特定的时间点。 此服务提供可将备份保留数年之久的可自定义保留策略。 |
-| [手动备份](#manual) | 全部 | 根据所用的 SQL Server 版本，可通过不同的方法手动备份和还原 Azure VM 上运行的 SQL Server。 在这种情况下，你需要负责指定数据库的备份方式和存储位置，并管理这些备份。 |
+| [手动备份](#manual) | All | 根据所用的 SQL Server 版本，可通过不同的方法手动备份和还原 Azure VM 上运行的 SQL Server。 在这种情况下，你需要负责指定数据库的备份方式和存储位置，并管理这些备份。 |
 
 以下部分更详细地介绍了每个选项。 本文的最后一个部分以功能矩阵的形式提供了摘要。
 
@@ -63,10 +63,10 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 [Azure 备份](/azure/backup/)为 Azure VM 中运行的 SQL Server 提供企业级备份功能。 在恢复服务保管库中存储和管理所有备份。 此解决方案提供许多优势，尤其是针对企业：
 
 - **零基础结构备份**：无需管理备份服务器或存储位置。
-- **缩放**：保护大量的 SQL VM 和数千个数据库。
-- **即用即付**：此功能是 Azure 备份提供的独立服务，但与所有 Azure 服务一样，你只需为使用的资源付费。
+- **规模**：保护大量的 SQL VM 和数千个数据库。
+- **即用即付**：此功能是 Azure 备份提供的独立服务，但与所有 Azure 服务，你只需为使用的功能付费。
 - **集中式管理和监视**：通过 Azure 中的单个仪表板集中管理所有备份，包括 Azure 备份支持的其他工作负荷。
-- **策略驱动备份和保留**：为常规备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
+- **策略驱动的备份和保留**：为定期备份创建标准备份策略。 建立保留策略，将备份保留数年之久。
 - **支持 SQL Always On**：检测和保护 SQL Server Always On 配置，并遵循备份可用性组的备份首选项。
 - **15 分钟恢复点目标 (RPO)** ：最多可将 SQL 事务日志备份频率配置为每隔 15 分钟备份一次。
 - **时间点还原**：使用门户将数据库恢复到特定的时间点，无需手动还原多个完整备份、差异备份和日志备份。
@@ -77,7 +77,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 > [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-这种适用于 SQL VM 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
+此适用于 SQL Vm 的 Azure 备份解决方案已正式发布。 有关详细信息，请参阅[将 SQL Server 数据库备份到 Azure](../../../backup/backup-azure-sql-database.md)。
 
 ## <a id="manual"></a>手动备份
 
@@ -108,9 +108,9 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 
 有关详细信息，请根据所用的 SQL Server 版本参阅以下文章之一：
 
-- **SQL Server 2016/2017**：[SQL Server 的 URL 备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
-- **SQL Server 2014**：[SQL Server 2014 的 URL 备份](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
-- **SQL Server 2012**:[SQL Server 2012 的 URL 备份](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
+- **SQL Server 2016/2017**：[将 SQL Server 备份到 URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)
+- **SQL Server 2014**：[将 SQL Server 2014 备份到 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.120%29.aspx)
+- **SQL Server 2012**：[将 SQL Server 2012 备份到 URL](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)
 
 ### <a name="managed-backup"></a>托管备份
 
@@ -133,7 +133,7 @@ SQL Server 2016 和更高版本的 VM 提供更多的自定义选项，以及自
 | 在 Azure 门户中配置备份策略 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 在 Azure 门户中还原数据库 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 在一个仪表板中管理多个服务器 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 时间点还原 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
+| 时点还原 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 15 分钟恢复点目标 (RPO) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 短期备份保留策略（天） | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 长期备份保留策略（月、年） |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |

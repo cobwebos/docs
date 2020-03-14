@@ -8,11 +8,11 @@ ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
 ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344052"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269895"
 ---
 # <a name="payout-reporting"></a>支出报表
 
@@ -68,7 +68,7 @@ ms.locfileid: "78344052"
 
 ## <a name="corelation-between-payout-and-usage"></a>支出与使用量之间的相关
 
-|说明    |    日期  | 订单/使用情况  | 付款 |
+|说明    |    Date  | 订单/使用情况  | 付款 |
 |----------|----------|-----------|-------------|
 |订购期   | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> |  |
 |期限结束（月）   | 8月30日，2019 | | |
@@ -82,7 +82,7 @@ ms.locfileid: "78344052"
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>企业协议（每季度/每月客户）
 
-| 说明 |    日期  | 用法 | 付款 |
+| 说明 |    Date  | 使用情况 | 付款 |
 |----------|----------|---------|-----------|
 |订购期 | 8月15日，2019-8 月30日，2019 | **相关属性订单** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **使用情况报表** <br> <ul> <li>CustomerId </li> <li>客户名称</li> <li>(UsageReference)PurchaseRecordId/LineItemId</li> <li> 估计的扩展费用 <br> 估计的付款金额 (PC) </li> </ul> | |
 |期限结束（季度） | 9月30日，2019 | | |

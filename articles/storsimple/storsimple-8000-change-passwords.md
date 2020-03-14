@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ab874bbdcd47a4bfa9abfba721afa46d0f23a338
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78366690"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79268023"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>使用 StorSimple 设备管理器服务更改 StorSimple 密码
 
@@ -48,7 +48,7 @@ Azure 门户中的“设备设置”选项包含可以在由 StorSimple 设备�
 
 5. 在“密码”边栏选项卡中，提供包含 8 至 15 个字符的管理员密码。 此密码必须是下述 3 项或 3 项以上要求的组合：大写字符、小写字符、数字字符、特殊字符。
 
-6. “确认”密码。
+6. 确认该密码。
 
     ![](./media/storsimple-8000-change-passwords/changepwd4.png)
 
@@ -82,7 +82,7 @@ StorSimple Snapshot Manager 软件驻留在 Windows 主机上，可让管理员�
 
 5. 在“密码”边栏选项卡中，输入包含 14 或 15 个字符的密码。 请确保该密码包含 3 项或 3 项以上下述要求的组合：大写字符、小写字符、数字字符、特殊字符。
 
-6. “确认”密码。
+6. 确认该密码。
 
      ![](./media/storsimple-8000-change-passwords/changepwd5.png)
 

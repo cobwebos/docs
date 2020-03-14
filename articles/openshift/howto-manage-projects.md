@@ -4,16 +4,16 @@ description: 在 Azure Red Hat OpenShift 群集中管理项目、模板和图像
 services: openshift
 keywords: red hat openshift 项目请求配置程序
 author: mjudeikis
-ms.author: b-majude
+ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378222"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139107"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中管理项目、模板和图像流 
 
@@ -25,7 +25,7 @@ ms.locfileid: "75378222"
 
 提交项目请求时，API 会将以下参数替换为模板：
 
-| 参数               | Description                                    |
+| 参数               | 说明                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 项目的名称。 必需。             |
 | PROJECT_DISPLAYNAME     | 项目的显示名称。 可能为空。 |

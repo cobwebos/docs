@@ -4,11 +4,11 @@ description: 了解如何在使用 Azure 资源关系图的同时，在大型数
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388629"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259794"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 

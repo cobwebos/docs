@@ -4,11 +4,11 @@ description: 了解如何打包 Azure Service Fabric 应用程序以及如何准
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083608"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258338"
 ---
 # <a name="package-an-application"></a>打包应用程序
 

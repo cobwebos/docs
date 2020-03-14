@@ -9,17 +9,17 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457026"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271169"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
 本教程演示使用*X.509 证书身份验证*保护 Azure IoT 中心所需的步骤。 为了便于说明，我们使用开源工具 OpenSSL 在 Windows 计算机上本地创建证书。 我们建议仅将本教程用于测试目的。 对于生产环境，应该从*根证书颁发机构 (CA)* 购买证书。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 本教程要求准备好以下资源：
 
@@ -97,7 +97,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 
     此步骤将下载、安装 Azure IoT 设备 SDK NuGet 包及其依赖项并添加对它的引用。
 
-1. 在 Program.cs 文件顶部添加以下 `using` 语句：
+1. 在 Program.cs`using`**文件顶部添加以下** 语句：
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

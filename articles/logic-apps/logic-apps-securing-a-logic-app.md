@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
 ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191319"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270376"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure 逻辑应用中的安全访问和数据
 
@@ -607,7 +607,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 > [!NOTE]
 > 在逻辑应用设计器中，可以在某些触发器和操作中隐藏**身份验证**属性，你可以在其中指定身份验证类型。 若要使属性在这些情况下出现，请在 "触发器" 或 "操作" 中打开 "**添加新参数**" 列表，然后选择 "**身份验证**"。 有关详细信息，请参阅[使用托管身份验证访问权限](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
 
-| 身份验证类型 | 受以下产品支持 |
+| 身份验证类型 | 支持的语句 |
 |---------------------|--------------|
 | [基本](#basic-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
 | [客户端证书](#client-certificate-authentication) | Azure API 管理，Azure 应用服务，HTTP，HTTP + Swagger，HTTP Webhook |
@@ -622,7 +622,7 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果 "[基本](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md)" 选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
+| 属性（设计器） | 属性（JSON） | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | 基本 | 要使用的身份验证类型 |
 | **用户名** | `username` | 是 | <*用户名*>| 用于对目标服务终结点访问进行身份验证的用户名 |
@@ -653,11 +653,11 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[客户端证书](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
+| 属性（设计器） | 属性（JSON） | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | **客户端证书** <br>或 <br>`ClientCertificate` | 安全套接字层 (SSL) 客户端证书使用的身份验证类型。 虽然支持自签名证书，但不支持用于 SSL 的自签名证书。 |
 | **Pfx** | `pfx` | 是 | <*编码-pfx-文件内容*> | 个人信息交换 (PFX) 文件中的 base64 编码内容 <p><p>若要将 PFX 文件转换为 base64 编码格式，可以通过执行以下步骤来使用 PowerShell： <p>1. 将证书内容保存到变量： <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. 通过使用 `ToBase64String()` 函数来转换证书内容，并将该内容保存到文本文件中： <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **密码** | `password`| 是 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码 |
+| **密码** | `password`| 否 | <*pfx 密码-文件*> | 用于访问 PFX 文件的密码 |
 |||||
 
 使用[受保护的参数](#secure-action-parameters)处理和保护敏感信息（例如，在[用于自动部署的 Azure 资源管理器模板](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中）时，可以在运行时使用表达式来访问这些参数值。 此示例 HTTP 操作定义将身份验证 `type` 指定为 `ClientCertificate` 并使用[parameters （）函数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)获取参数值：
@@ -692,10 +692,10 @@ HTTP 和 HTTPS 终结点支持各种身份验证。 根据你用来发出出站�
 
 如果[Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md)选项可用，请指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
+| 属性（设计器） | 属性（JSON） | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
-| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 要使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
-| **无权** | `authority` | 是 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
+| **身份验证** | `type` | 是 | **Active Directory OAuth** <br>或 <br>`ActiveDirectoryOAuth` | 可使用的身份验证类型。 逻辑应用当前遵循[OAuth 2.0 协议](../active-directory/develop/v2-overview.md)。 |
+| **无权** | `authority` | 否 | <*URL-for-authority-token-issuer*> | 提供身份验证令牌的颁发机构的 URL。 此值默认为 `https://login.windows.net`。 |
 | **组织** | `tenant` | 是 | <*tenant-ID*> | Azure AD 租户的租户 ID |
 | **受众** | `audience` | 是 | <*resource-to-authorize*> | 要用于授权的资源，例如 `https://management.core.windows.net/` |
 | **客户端 ID** | `clientId` | 是 | <*client-ID*> | 请求授权的应用的客户端 ID |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 在支持原始身份验证的触发器或操作中，指定以下属性值：
 
-| 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
+| 属性（设计器） | 属性（JSON） | 必选 | 值 | 说明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **身份验证** | `type` | 是 | Raw | 要使用的身份验证类型 |
 | **值** | `value` | 是 | <*authorization-标头值*> | 要用于身份验证的授权标头值 |
@@ -781,7 +781,7 @@ Authorization: OAuth realm="Photos",
 
 1. 在要使用托管标识的触发器或操作中，指定以下属性值：
 
-   | 属性（设计器） | 属性（JSON） | 必需 | 值 | 说明 |
+   | 属性（设计器） | 属性（JSON） | 必选 | 值 | 说明 |
    |---------------------|-----------------|----------|-------|-------------|
    | **身份验证** | `type` | 是 | **托管的标识** <br>或 <br>`ManagedServiceIdentity` | 要使用的身份验证类型 |
    | **托管的标识** | `identity` | 是 | * **系统分配的托管标识** <br>或 <br>`SystemAssigned` <p><p>* <*用户分配的标识-名称*> | 要使用的托管标识 |

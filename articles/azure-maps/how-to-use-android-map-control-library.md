@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca4051e56f7d51ac7ac5fbe534cb8fc536d64a68
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: b43169b59425e97b0aa614eb64a5c86c20179a8d
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78368679"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136810"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK 入门
 
 Azure Maps Android SDK 是适用于 Android 的矢量地图库。 本文将指导你完成安装 Azure Maps Android SDK 和加载映射的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 ### <a name="create-an-azure-maps-account"></a>创建 Azure Maps 帐户
 
@@ -109,7 +109,7 @@ Android Studio 可让你在计算机上设置 Android 虚拟设备。 这样做�
     * 设置 Azure Maps 身份验证信息
     * 在 **onCreate** 方法中获取地图控件实例
 
-    使用 `setSubscriptionKey` 或 `setAadProperties` 方法全局设置 `AzureMaps` 类的身份验证信息，这样就无需在每个视图上添加身份验证信息。 
+    使用 `AzureMaps` 或 `setSubscriptionKey` 方法在 `setAadProperties` 类中全局设置身份验证信息后，无需在每个视图中添加身份验证信息。 
 
     地图控件包含自身的生命周期方法用于管理 Android 的 OpenGL 生命周期。 必须直接从包含活动中调用这些生命周期方法。 若要让应用正确调用地图控件的生命周期方法，必须在包含地图控件的活动中重写以下生命周期方法。 而且，您必须调用各自的 map 控制方法。 
 
@@ -273,7 +273,7 @@ mapControl.onReady(map -> {
 了解如何在地图上添加覆盖数据：
 
 > [!div class="nextstepaction"]
-> [向 Android 地图添加符号层](https://review.docs.microsoft.com/azure/azure-maps/how-to-add-symbol-to-android-map)
+> [向 Android 地图添加符号层](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
 > [将形状添加到 Android 地图](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)

@@ -648,8 +648,10 @@
           href: snapshot-copy-managed-disk.md
         - name: 预留磁盘存储
           href: disks-reserved-capacity.md
-        - name: 创建增量快照
+        - name: 创建增量快照 - CLI
           href: disks-incremental-snapshots.md
+        - name: 创建增量快照 - 门户
+          href: disks-incremental-snapshots-portal.md
         - name: 备份非托管磁盘
           href: incremental-snapshots.md
         - name: 迁移和转换

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121737"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259469"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共享访问签名进行服务总线访问控制
 
@@ -98,7 +98,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 用于签名的共享访问授权规则必须在此 URI 指定的实体上，或由其分层父级之一进行配置。 例如，前面的示例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
-SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的所有资源有效。
+SAS 令牌对于以 `<resourceURI>` 中使用的 `signature-string` 为前缀的所有资源有效。
 
 ## <a name="regenerating-keys"></a>重新生成密钥
 
@@ -114,7 +114,7 @@ SAS 令牌对于以 `signature-string` 中使用的 `<resourceURI>` 为前缀的
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>访问实体上的共享访问授权规则
 
-使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 对象。
+使用服务总线 .NET Framework 库，可通过相应 [QueueDescription](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 或 [TopicDescription](/dotnet/api/microsoft.servicebus.messaging.authorizationrules) 中的 [AuthorizationRules](/dotnet/api/microsoft.servicebus.messaging.queuedescription) 集合，访问在服务总线队列或主题上配置的 [Microsoft.ServiceBus.Messaging.SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.topicdescription) 对象。
 
 下面的代码演示了如何向队列添加授权规则。
 
@@ -261,21 +261,21 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 
 下表显示对服务总线资源进行各种操作所需的访问权限。
 
-| 操作 | 所需声明 | 声明范围 |
+| Operation | 所需声明 | 声明范围 |
 | --- | --- | --- |
 | **Namespace** | | |
 | 在命名空间上配置授权规则 |管理 |任何命名空间地址 |
 | **服务注册表** | | |
 | 枚举私有策略 |管理 |任何命名空间地址 |
 | 开始在命名空间上侦听 |侦听 |任何命名空间地址 |
-| 将消息发送到命名空间中的侦听器 |发送 |任何命名空间地址 |
+| 将消息发送到命名空间中的侦听器 |Send |任何命名空间地址 |
 | **队列** | | |
 | 创建队列 |管理 |任何命名空间地址 |
 | 删除队列 |管理 |任何有效队列地址 |
 | 枚举队列 |管理 |/$Resources/Queues |
 | 获取队列说明 |管理 |任何有效队列地址 |
 | 在队列上配置授权规则 |管理 |任何有效队列地址 |
-| 发送到队列 |发送 |任何有效队列地址 |
+| 发送到队列 |Send |任何有效队列地址 |
 | 从队列接收消息 |侦听 |任何有效队列地址 |
 | 在查看锁定模式下接收消息后放弃或完成消息 |侦听 |任何有效队列地址 |
 | 推迟消息以供将来检索 |侦听 |任何有效队列地址 |
@@ -289,7 +289,7 @@ AMQP 消息包含一组属性，比简单消息包含更多信息。 SAS 令牌�
 | 枚举主题 |管理 |/$Resources/Topics |
 | 获取主题说明 |管理 |任何有效主题地址 |
 | 在主题上配置授权规则 |管理 |任何有效主题地址 |
-| 发送到主题 |发送 |任何有效主题地址 |
+| 发送到主题 |Send |任何有效主题地址 |
 | **订阅** | | |
 | 创建订阅 |管理 |任何命名空间地址 |
 | 删除订阅 |管理 |../myTopic/Subscriptions/mySubscription |

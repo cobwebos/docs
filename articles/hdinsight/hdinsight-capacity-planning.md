@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79272638"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight 群集的容量规划
 
@@ -56,7 +56,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 * 如果要创建数据，则已上传到可用于群集的 blob 容器。
 * 出于安全原因想要隔离存储的不同部分，或要简化管理时。
 
-对于 48 节点群集，我们建议使用 4 到 8 个存储帐户。 尽管存储总量可能已足够，但每个存储帐户能够为计算节点提供额外的网络带宽。 如果有多个存储帐户，请为每个存储帐户使用不带前缀的随机名称。 使用随机名称的目的是降低出现存储瓶颈（限制）或所有帐户发生共模故障的可能性。 为提高性能，请对每个存储帐户仅使用一个容器。
+为提高性能，请对每个存储帐户仅使用一个容器。
 
 ## <a name="choose-a-cluster-type"></a>选择群集类型
 
@@ -100,7 +100,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 2. 导航到 HDInsight 群集的 "**概述**" 页。 
 3. 在左侧菜单中，单击 "**配额限制**"。
 
-   页面显示正在使用的内核数、可用内核数和内核总数。
+   页面显示正在使用的核心数、可用核心数和总核心数。
 
 如果需要请求增加配额，请执行以下操作：
 
@@ -118,7 +118,7 @@ Azure 存储具有某些[容量限制](../azure-resource-manager/management/azur
 1. 选择 "**下一步：解决方案" > >** 。
 1. 在 "**详细信息**" 页上，输入问题的说明，选择问题的严重性、首选的联系方法和其他必填字段。
 1. 选择 "**下一步"：查看 + 创建 > >** 。
-1. 在 "**查看**" 和 "创建" 选项卡上，选择 "**创建**"。
+1. 在“查看 + 创建”选项卡上，选择“创建”。
 
 > [!NOTE]  
 > 如果需要增加专用区域中的 HDInsight 核心配额，请[提交允许列表请求](https://aka.ms/canaryintwhitelist)。

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: d6174459237399ea370ee9c36ba537391104a917
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7b4b869695eb2073121a889cd81d99c4fc06d4b9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168557"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79218035"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure 机器学习 Studio （经典）：通过 R 扩展试验 
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 您可以使用 "[执行 r 脚本][execute-r-script]" 模块，通过 R 语言扩展 Azure 机器学习 Studio （经典）的功能。
 
 此模块接受多个输入数据集，并且生成单个数据集作为输出。 可以将 R 脚本键入到[执行 r 脚本][execute-r-script]模块的**r 脚本**参数中。

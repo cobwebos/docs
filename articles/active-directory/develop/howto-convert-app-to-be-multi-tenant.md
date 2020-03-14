@@ -15,11 +15,11 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 33116039d5e47b95322ffafb4e8f4eef31bd84cf
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375633"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262940"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
 
@@ -146,7 +146,7 @@ Web 应用程序和 web Api 接收并验证 Microsoft 标识平台中的令牌�
 
 如果在不同的租户中注册不同的应用程序层，将发生类似的情况。 例如，考虑构建一个调用 Office 365 Exchange Online API 的本机客户端应用程序的情况。 要开发该本机应用程序，并让该本机应用程序在客户的租户中运行，必须存在 Exchange Online 服务主体。 在此情况下，开发人员和客户必须购买 Exchange Online，才能在其租户中创建服务主体。
 
-如果它是由 Microsoft 之外的组织构建的 API，API 的开发人员需要为其客户提供一种向客户的租户许可应用程序的方式。 建议的设计是让第三方开发人员构建 API，使其也可用作 web 客户端来实现注册。 为此，请执行以下操作：
+如果它是由 Microsoft 之外的组织构建的 API，API 的开发人员需要为其客户提供一种向客户的租户许可应用程序的方式。 建议的设计是让第三方开发人员构建 API，使其也可用作 web 客户端来实现注册。 为此，请按以下步骤操作：
 
 1. 根据前面各节的内容确保 API 实现多租户应用程序注册/代码要求。
 2. 除了公开 API 的作用域/角色外，还请确保注册包括 "登录和读取用户配置文件" 权限（默认情况下已提供）。

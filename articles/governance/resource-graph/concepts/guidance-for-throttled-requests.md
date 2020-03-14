@@ -4,11 +4,11 @@ description: 了解如何对进行并行处理，以避免请求被 Azure 资源
 ms.date: 12/02/2019
 ms.topic: conceptual
 ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388624"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259846"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure 资源图中的限制请求指南
 

@@ -5,17 +5,17 @@ ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 573ec477a3e75beb91f90da0545fb7d4c0f9bf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74324714"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252176"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>在 Azure Blockchain Workbench 中管理用户
 
 Azure Blockchain Workbench 包含的用户管理功能适用于隶属于联盟的人员和组织。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 需部署 Blockchain Workbench。 有关部署详情，请参阅 [Azure Blockchain Workbench 部署](deploy.md)。
 
@@ -25,7 +25,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 在向应用程序和角色分配 Blockchain Workbench 用户之前，该用户必须存在于 Azure AD 租户中。 若要向 Azure AD 添加用户，请执行以下步骤：
 
-1.  登录到 [Azure 门户](https://portal.azure.com)。
+1.  登录 [Azure 门户](https://portal.azure.com)。
 2.  在右上角选择帐户，然后切换到与 Blockchain Workbench 关联的 Azure AD 租户。
 3.  选择“Azure Active Directory”>“用户”。 此时会看到目录中用户的列表。
 4.  若要向目录添加用户，请选择“新用户”。 对于外部用户，请选择“新来宾用户”。
@@ -42,7 +42,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
 若要向 Azure AD 目录中的“管理员”组添加用户，请执行以下操作：
 
-1.  登录到 [Azure 门户](https://portal.azure.com)。
+1.  登录 [Azure 门户](https://portal.azure.com)。
 2.  在右上角选择帐户，验证自己是否存在于与 Blockchain Workbench 关联的 Azure AD 租户中。
 3.  选择“Azure Active Directory”>“企业应用程序”。
 4.  选择适用于 Blockchain Workbench 的 Azure AD 客户端应用程序
@@ -83,7 +83,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
     ![添加成员](./media/manage-users/application-add-members.png)
 
-3. 搜索用户的名称。  仅列出存在于 Blockchain Workbench 租户中的 Azure AD 用户。 如果找不到用户，则需[添加 Azure AD 用户](#add-azure-ad-users)。
+3. 搜索用户的名称。  只会列出 Blockchain Workbench 租户中存在的 Azure AD 用户。 如果找不到用户，则需[添加 Azure AD 用户](#add-azure-ad-users)。
 
     ![添加成员](./media/manage-users/find-user.png)
 
@@ -91,7 +91,7 @@ Azure Blockchain Workbench 将 Azure Active Directory (Azure AD) 用于身份验
 
     ![选择角色成员](./media/manage-users/application-select-role.png)
 
-5. 选择“添加”，向应用程序添加具有关联角色的成员。
+5. 选择“添加”，将具有关联角色的成员添加到应用程序。
 
 #### <a name="remove-member-from-application"></a>从应用程序中删除成员
 

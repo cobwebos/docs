@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155140"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263876"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>规划基于云的 Azure 多重身份验证部署
 
@@ -24,11 +24,11 @@ ms.locfileid: "76155140"
 
 [Azure 多重身份验证（MFA）](concept-mfa-howitworks.md)可帮助保护对数据和应用程序的访问。 它使用第二种形式的身份验证提供额外的安全层。 组织可以使用[条件性访问](../conditional-access/overview.md)来使解决方案满足其特定需求。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 在开始部署 Azure 多重身份验证之前，需要考虑必备项。
 
-| 方案 | 先决条件 |
+| 场景 | 先决条件 |
 | --- | --- |
 | 具有新式身份验证的**仅限云**的标识环境 | **无其他先决条件任务** |
 | **混合**标识方案 | 部署[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) ，并且用户标识与 Azure Active Directory 的本地 Active Directory 域服务同步或联合。 |
@@ -85,7 +85,7 @@ Azure Active Directory Identity Protection 检测到的某些风险检测是实�
 ### <a name="configuring-a-named-location"></a>配置命名位置
 
 1. 打开 Azure 门户中的**Azure Active Directory**
-2. 选择**安全**
+2. 选择“安全性”
 3. 在 "**管理**" 下，选择**命名位置**
 4. 选择**新位置**
 5. 在 "**名称**" 字段中，提供有意义的名称
@@ -218,10 +218,10 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 必须防止无意中锁定 Azure AD 租户，这一点很重要。 可以通过[在租户中创建两个或更多紧急访问帐户](../users-groups-roles/directory-emergency-access.md)并将其从条件访问策略中排除，来减轻这种意外的管理访问权限。
 
-### <a name="create-conditional-access-policy"></a>创建条件访问策略
+### <a name="create-conditional-access-policy"></a>创建条件性访问策略
 
 1. 使用全局管理员帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到**Azure Active Directory** > **安全** > **条件性访问**。
+1. 浏览到“Azure Active Directory” > “安全性” > “条件访问”。
 1. 选择“新策略”。
    ![创建条件性访问策略，以便在试点组中为 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. 为策略提供一个有意义的名称。
@@ -283,12 +283,12 @@ NPS 扩展在 RADIUS 与基于云的 Azure MFA 之间充当适配器，以提供
 
 此项设置的目的是确定当某个用户未注册 MFA 时要执行哪个操作。 下表列出了更改此设置的效果。
 
-| 设置 | 用户 MFA 状态 | Effects |
+| 设置 | 用户 MFA 状态 | 效果 |
 | --- | --- | --- |
 | 项不存在 | 未注册 | MFA 质询失败 |
 | 值设置为 True/未设置 | 未注册 | MFA 质询失败 |
 | 项设置为 False | 未注册 | 无 MFA 身份验证 |
-| 键设置为 False 或 True | 已注册 | 必须通过 MFA 进行身份验证 |
+| 键设置为 False 或 True | 参加 | 必须通过 MFA 进行身份验证 |
 
 ### <a name="integrate-with-active-directory-federation-services"></a>与 Active Directory 联合身份验证服务集成
 
@@ -347,7 +347,7 @@ Azure MFA 的报告
 
 Azure 多重身份验证通过 Azure 门户提供报告：
 
-| 报告 | 位置 | Description |
+| 报表 | 位置 | 说明 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

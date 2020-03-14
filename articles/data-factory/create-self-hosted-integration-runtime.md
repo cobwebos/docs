@@ -12,11 +12,11 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 06/18/2019
 ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928508"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261211"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 
@@ -34,7 +34,7 @@ ms.locfileid: "74928508"
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>通过 Azure PowerShell 创建自承载 IR
 
-1. 可以将 Azure PowerShell 用于此任务。 下面是一个示例：
+1. 可以将 Azure PowerShell 用于此任务。 以下是示例：
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -102,24 +102,24 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 下面是应用程序的参数和属性的详细信息： 
 
-| properties                                                    | 描述                                                  | 需要 |
+| properties                                                    | 说明                                                  | 必选 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | No       |
-| **RegisterNewNode**"`<AuthenticationKey>`"`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | No       |
-| **EnableRemoteAccess**"`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问以设置高可用性群集。 或者对自承载 IR 直接设置凭据，而无需通过 Azure 数据工厂。 使用 AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet 从同一网络中的远程计算机执行后一**项**操作。 | No       |
-| **EnableRemoteAccessInContainer**"`<port>`" ["`<thumbprint>`"] | 当节点在容器中运行时，允许对当前节点进行远程访问。 | No       |
-| **DisableRemoteAccess**                                         | 禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 仍可正常工作。 只要在与自承载 IR 节点相同的计算机上执行 cmdlet，就会执行此行为。 | No       |
-| **键**"`<AuthenticationKey>`"                                 | 覆盖或更新以前的身份验证密钥。 请小心处理此操作。 如果密钥是新的集成运行时，则以前的自承载 IR 节点可能会脱机。 | No       |
-| **GenerateBackupFile**"`<filePath>`"`<password>`"            | 为当前节点生成备份文件。 备份文件包括节点键和数据存储区凭据。 | No       |
-| **ImportBackupFile**"`<filePath>`"`<password>`"              | 从备份文件还原节点。                          | No       |
-| **重启**                                                     | 重新启动自承载集成运行时主机服务。   | No       |
-| **启动**                                                       | 启动自承载集成运行时主机服务。     | No       |
-| **Stop**                                                        | 停止自承载集成运行时主机服务。        | No       |
-| **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | No       |
-| **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | No       |
-| **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | No       |
-| **TurnOffAutoUpdate**                                           | 关闭自承载集成运行时自动更新。       | No       |
-| **SwitchServiceAccount**"`<domain\user>`" ["`<password>`"]           | 将 DIAHostService 设置为作为新帐户运行。 对于系统帐户和虚拟帐户，使用空密码 ""。 | No       |
+| **RegisterNewNode**"`<AuthenticationKey>`"                     | 使用指定的身份验证密钥注册自承载集成运行时节点。 | 否       |
+| **RegisterNewNode**"`<AuthenticationKey>`"`<NodeName>`"      | 使用指定的身份验证密钥和节点名称注册自承载集成运行时节点。 | 否       |
+| **EnableRemoteAccess**"`<port>`" ["`<thumbprint>`"]            | 在当前节点上启用远程访问以设置高可用性群集。 或者对自承载 IR 直接设置凭据，而无需通过 Azure 数据工厂。 使用 AzDataFactoryV2LinkedServiceEncryptedCredential cmdlet 从同一网络中的远程计算机执行后一**项**操作。 | 否       |
+| **EnableRemoteAccessInContainer**"`<port>`" ["`<thumbprint>`"] | 当节点在容器中运行时，允许对当前节点进行远程访问。 | 否       |
+| **DisableRemoteAccess**                                         | 禁用对当前节点的远程访问。 多节点设置需要远程访问。 即使禁用了远程访问， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell cmdlet 仍可正常工作。 只要在与自承载 IR 节点相同的计算机上执行 cmdlet，就会执行此行为。 | 否       |
+| **键**"`<AuthenticationKey>`"                                 | 覆盖或更新以前的身份验证密钥。 请小心处理此操作。 如果密钥是新的集成运行时，则以前的自承载 IR 节点可能会脱机。 | 否       |
+| **GenerateBackupFile**"`<filePath>`"`<password>`"            | 为当前节点生成备份文件。 备份文件包括节点键和数据存储区凭据。 | 否       |
+| **ImportBackupFile**"`<filePath>`"`<password>`"              | 从备份文件还原节点。                          | 否       |
+| **重启**                                                     | 重新启动自承载集成运行时主机服务。   | 否       |
+| **启动**                                                       | 启动自承载集成运行时主机服务。     | 否       |
+| **Stop**                                                        | 停止自承载集成运行时主机服务。        | 否       |
+| **StartUpgradeService**                                         | 启动自承载集成运行时升级服务。       | 否       |
+| **StopUpgradeService**                                          | 停止自承载集成运行时升级服务。        | 否       |
+| **TurnOnAutoUpdate**                                            | 启用自承载集成运行时自动更新。        | 否       |
+| **TurnOffAutoUpdate**                                           | 关闭自承载集成运行时自动更新。       | 否       |
+| **SwitchServiceAccount**"`<domain\user>`" ["`<password>`"]           | 将 DIAHostService 设置为作为新帐户运行。 对于系统帐户和虚拟帐户，使用空密码 ""。 | 否       |
 
 
 ## <a name="command-flow-and-data-flow"></a>命令流和数据流
@@ -148,7 +148,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 即使数据存储位于 Azure 基础结构即服务（IaaS）虚拟机上的云中，也使用自承载集成运行时。
 - 在已启用 FIPS 兼容加密的 Windows server 上安装的自承载集成运行时，任务可能会失败。 要解决此问题，请禁用服务器上符合 FIPS 标准的加密。 若要禁用符合 FIPS 的加密，请将以下注册表子项的值从1（已启用）更改为0（已禁用）： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - 支持的 Windows 版本如下：
   + Windows 7 Service Pack 1
@@ -357,7 +357,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 1. 打开“Microsoft Integration Runtime Configuration Manager”。
 1. 选择“设置”选项卡。
 1. 在 " **HTTP 代理**" 下，选择 "**更改**" 链接以打开 "**设置 HTTP 代理**" 对话框。
-1. 选择“**下一步**”。 然后，会看到一条警告，要求您保存代理设置并重新启动 integration runtime 主机服务。
+1. 选择“**下一页**”。 然后，会看到一条警告，要求您保存代理设置并重新启动 integration runtime 主机服务。
 
 您可以使用配置管理器工具来查看和更新 HTTP 代理。
 

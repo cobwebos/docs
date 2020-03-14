@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ffe3d359dffea3278337de00bea42e0b959e10f6
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378179"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79264032"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -28,13 +28,13 @@ ms.locfileid: "78378179"
 
 当涉及身份验证时，每个组织都有不同的需求。 Microsoft 提供以下三个无密码身份验证选项：
 
-- Windows Hello 企业版
+- Windows Hello for Business
 - Microsoft Authenticator 应用
 - FIDO2 安全密钥
 
 ![身份验证：安全性和便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello 企业版
+## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工作者。 生物识别和 PIN 直接绑定到用户的 PC，这会阻止除所有者之外的任何人访问。 利用公钥基础结构（PKI）集成和单一登录（SSO）的内置支持，Windows Hello 企业版提供了一种方便的方法，可在本地和云中无缝访问公司资源。
 
@@ -69,7 +69,7 @@ FIDO2 安全密钥是基于 unphishable 标准的无密码身份验证方法，�
 
 以下提供商提供了 FIDO2 安全密钥，它们具有已知兼容无密码体验的不同形式因素。 建议你通过联系供应商以及 FIDO 联盟来评估这些密钥的安全属性。
 
-| 提供商 | 联系人 |
+| 提供程序 | 联系人 |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

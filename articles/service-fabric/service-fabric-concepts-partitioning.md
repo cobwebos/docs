@@ -4,11 +4,11 @@ description: 介绍如何对 Service Fabric 有状态服务进行分区。 分�
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78390192"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258611"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services 分区
 本文介绍 Azure Service Fabric Reliable Services 分区的基本概念。 本文中使用的源代码也可以在 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 上获取。
@@ -230,7 +230,7 @@ Service Fabric 提供了三个分区方案可供选择：
     此服务可用作简单 Web 界面，它接受姓氏作为查询字符串参数，确定分区键，然后将它发送到 Alphabet.Processing 服务进行处理。
 11. 在“**创建服务**”对话框中，选择“**无状态**”服务并将它称为“Alphabet.Web”，如下所示。
     
-    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png).
+    ![无状态服务屏幕截图](./media/service-fabric-concepts-partitioning/createnewstateless.png)。
 12. 在 Alphabet.WebApi 服务的 ServiceManifest.xml 中更新终结点信息，以打开端口，如下所示。
     
     ```xml

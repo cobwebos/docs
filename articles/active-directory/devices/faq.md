@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f5345a96e333e0f75264880ee18a95c9ab8dd63c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185846"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262251"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "77185846"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备。 但为什么在 Azure 门户中我的用户信息下看不到该设备？ 或者为什么为混合 Azure Active Directory （Azure AD）加入的设备将设备所有者标记为不适用？
 
 **答：** 已加入混合 Azure AD 的 Windows 10 设备不会显示在 "**用户设备**" 下。
-使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
+使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
 
 “USER 设备”下面只会列出以下设备：
 
@@ -62,7 +62,7 @@ ms.locfileid: "77185846"
 - 用户从 "我的应用" 门户禁用该设备。 
 - 管理员（或用户）在 Azure 门户或使用 PowerShell 删除或禁用设备
 - 仅联接混合 Azure AD：管理员将设备 OU 从同步范围中删除，导致设备从 Azure AD
-- 升级 Azure AD 连接到版本 1.4. x. x. x. x. x. x。 [了解 Azure AD Connect 1.4. x. x 和设备消失](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)。
+- 升级 Azure AD 连接到版本 1.4. x. x. x. x. x. x。 [了解 Azure AD Connect 1.4. x. x 和设备消失](/azure/active-directory/hybrid/reference-connect-device-disappearance)。
 
 
 请参阅下面有关如何纠正这些操作的说明。
@@ -128,7 +128,7 @@ ms.locfileid: "77185846"
 **答：** 从 Azure AD 设备标记为禁用的时间起，将需要长达一小时的时间。
 
 >[!NOTE] 
->对于已注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅[什么是设备注册？](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
+>对于已注册的设备，建议擦除该设备，确保用户无法访问这些资源。 有关详细信息，请参阅[什么是设备注册？](/intune/deploy-use/enroll-devices-in-microsoft-intune)。 
 
 ---
 
@@ -180,13 +180,13 @@ ms.locfileid: "77185846"
 
 ### <a name="q-my-users-cant-search-printers-from-azure-ad-joined-devices-how-can-i-enable-printing-from-those-devices"></a>问：我的用户无法从 Azure AD 联接的设备中搜索打印机。 如何从这些设备启用打印？
 
-**答：** 若要为 Azure AD 联接的设备部署打印机，请参阅[利用预身份验证部署 Windows Server 混合云打印](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
+**答：** 若要为 Azure AD 联接的设备部署打印机，请参阅[利用预身份验证部署 Windows Server 混合云打印](/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy)。 需要安装本地 Windows Server 才能部署混合云打印。 当前，无法使用基于云的打印服务。 
 
 ---
 
 ### <a name="q-how-do-i-connect-to-a-remote-azure-ad-joined-device"></a>问：如何实现连接到已加入远程 Azure AD 设备？
 
-**答：** 请参阅[连接到远程 Azure Active Directory 联接的 PC](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc)。
+**答：** 请参阅[连接到远程 Azure Active Directory 联接的 PC](/windows/client-management/connect-to-remote-aadj-pc)。
 
 ---
 
@@ -220,7 +220,7 @@ ms.locfileid: "77185846"
 
 ### <a name="q-why-do-i-see-the-oops-an-error-occurred-dialog-when-i-try-to-azure-ad-join-my-pc"></a>问：为何我看*不到 。出现错误！* 尝试 Azure AD 加入我的电脑时的对话框？
 
-**答：** 当你设置 Azure Active Directory 向 Intune 注册时，将发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](https://docs.microsoft.com/intune/windows-enroll)。  
+**答：** 当你设置 Azure Active Directory 向 Intune 注册时，将发生此错误。 确保尝试进行 Azure AD 加入的用户已获得正确的 Intune 许可证。 有关详细信息，请参阅[设置 Windows 设备的注册](/intune/windows-enroll)。  
 
 ---
 
@@ -307,7 +307,7 @@ ms.locfileid: "77185846"
 
 **答：** 执行以下步骤：
 
-1.  [创建符合性策略](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+1.  [创建符合性策略](/intune/compliance-policy-create-mac-os)
 1.  [定义 macOS 设备的条件访问策略](../active-directory-conditional-access-azure-portal.md) 
 
 **备注：**

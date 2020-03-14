@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8c995a40e621f7155ad0741004d10b1146523489
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462575"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256050"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>托管实例 T-sql 差异、限制和已知问题
 
@@ -65,7 +65,6 @@ ms.locfileid: "77462575"
 
 - 对于托管实例，可以将实例数据库备份到最多32条带化的备份，如果使用备份压缩，这对于最大为 4 TB 的数据库来说就足够了。
 - 不能对使用服务托管透明数据加密（TDE）加密的数据库执行 `BACKUP DATABASE ... WITH COPY_ONLY`。 服务托管的 TDE 强制使用内部 TDE 密钥对备份进行加密。 无法导出密钥，因此无法还原备份。 使用自动备份和时间点还原，或改为使用[客户托管（BYOK） TDE](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key) 。 您还可以在数据库上禁用加密。
-- 仅[BlockBlobStorage 帐户](/azure/storage/common/storage-account-overview#types-of-storage-accounts)支持手动备份到 Azure Blob 存储。
 - 使用托管实例中的 `BACKUP` 命令的最大备份条带大小为 195 GB，这是最大 blob 大小。 增加备份命令中的带状线数量以缩小单个带状线大小，将其保持在限制范围内。
 
     > [!TIP]
@@ -140,8 +139,8 @@ WITH PRIVATE KEY (<private_key_options>)
     托管实例支持 Azure AD 具有语法 `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`的数据库主体。 此功能也称为 Azure AD 包含的数据库用户。
 
 - 不支持用 `CREATE LOGIN ... FROM WINDOWS` 语法创建的 Windows 登录名。 使用 Azure Active Directory 登录名和用户。
-- 创建实例的 Azure AD 用户具有不[受限制的管理员权限](sql-database-manage-logins.md#unrestricted-administrative-accounts)。
-- 非管理员 Azure AD 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建数据库级别的用户。 请参阅[创建用户 .。。来自外部提供程序](sql-database-manage-logins.md#non-administrator-users)。
+- 创建实例的 Azure AD 用户具有不[受限制的管理员权限](sql-database-manage-logins.md)。
+- 非管理员 Azure AD 可以使用 `CREATE USER ... FROM EXTERNAL PROVIDER` 语法创建数据库级别的用户。 请参阅[创建用户 .。。来自外部提供程序](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。
 - Azure AD 服务器主体（登录）仅支持一个托管实例中的 SQL 功能。 需要跨实例交互的功能，无论它们是在同一 Azure AD 租户还是不同租户中，不支持 Azure AD 用户。 此类功能的示例包括：
 
   - SQL 事务复制。
@@ -470,6 +469,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - 不支持 `sp_execute_external_scripts`。 请参阅 [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples)。

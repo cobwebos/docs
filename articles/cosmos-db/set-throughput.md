@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: e7a64776cba00a6840af70cecad5bf9c02b3f38e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78364434"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79251968"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
 
@@ -87,11 +87,11 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 
 ## <a name="update-throughput-on-a-database-or-a-container"></a>更新数据库或容器的吞吐量
 
-创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量没有限制。 预配的最小吞吐量取决于以下因素： 
+创建 Azure Cosmos 容器或数据库后，可以更新预配的吞吐量。 对于可以在数据库或容器上配置的最大预配吞吐量没有限制。 [预配的最小吞吐量](concepts-limits.md#storage-and-throughput)取决于以下因素： 
 
 * 你曾经在容器中存储的最大数据大小
 * 你在容器中设置的最大吞吐量
-* 使用共享吞吐量在数据库中创建的 Azure Cosmos 容器的最大数目。 
+* 数据库中具有共享吞吐量的 Azure Cosmos 容器的当前数目。 
 
 您可以使用 Sdk 以编程方式检索容器或数据库的最小吞吐量，或在 Azure 门户中查看值。 使用 .NET SDK 时，使用[DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet)方法可以缩放预配的吞吐量值。 使用 Java SDK 时，可以使用[RequestOptions. setOfferThroughput](sql-api-java-samples.md#offer-examples)方法缩放预配的吞吐量值。 
 
@@ -107,7 +107,7 @@ Azure Cosmos 数据库是一组容器的管理单元。 数据库包含一组不
 |每个容器的最小 RU 数|100|400|
 |最大 RU 数|对于数据库无限。|对于容器无限。|
 |分配或提供给特定容器的 RU 数|无保证。 为给定容器分配的 RU 数取决于多种属性。 属性可以是为共享吞吐量的容器选择的分区键、工作负荷的分布，以及容器的数量。 |对容器配置的所有 RU 专门保留给该容器使用。|
-|容器的最大存储|无限制。|无限制。|
+|容器的最大存储|不受限制。|不受限制。|
 |容器的每个逻辑分区的最大吞吐量|10K RU|10K RU|
 |容器的每个逻辑分区的最大存储（数据 + 索引）|20 GB|20 GB|
 

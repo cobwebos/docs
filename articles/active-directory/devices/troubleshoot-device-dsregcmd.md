@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 676a1dd2435d17db2151bdf21f1989e7f182701b
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707938"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136477"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>使用 dsregcmd.exe 命令对设备进行故障排除
 
@@ -29,7 +29,7 @@ ms.locfileid: "75707938"
 | AzureAdJoined | EnterpriseJoined | DomainJoined | 设备状态 |
 | ---   | ---   | ---   | ---   |
 | YES | 是 | 是 | Azure AD 联接 |
-| 是 | 是 | YES | 加入域 |
+| 是 | 是 | YES | 已加入域 |
 | YES | 是 | YES | 已加入混合广告 |
 | 是 | YES | YES | 已联接本地 DRS |
 
@@ -211,8 +211,16 @@ ms.locfileid: "75707938"
 - **AD 配置测试：** -测试读取并验证是否在本地 AD 林中正确配置了 SCP 对象。 此测试中的错误可能导致发现阶段出现联接错误，错误代码为0x801c001d。
 - **DRS 发现测试：** -Test 从发现元数据终结点获取 DRS 终结点并执行用户领域请求。 此测试中的错误可能导致发现阶段出现联接错误。
 - **Drs 连接测试：** -测试对 DRS 终结点执行基本连接测试。
-- **令牌获取测试：** 如果用户租户是联合的，则测试尝试获取 Azure AD 身份验证令牌。 此测试中的错误可能导致在身份验证阶段出现联接错误。 如果身份验证失败，则将尝试将同步联接作为回退，除非使用注册表项显式禁用回退。
-- **回退到同步连接：** -如果注册表项不存在，则设置为 "已启用"，以防止回退与身份验证失败的联接。 此选项在 Windows 10 1803 和更高版本中可用。
+- **令牌获取测试：** 如果用户租户是联合的，则测试尝试获取 Azure AD 身份验证令牌。 此测试中的错误可能导致在身份验证阶段出现联接错误。 如果身份验证失败，则将尝试将同步联接作为回退，除非通过以下注册表项设置显式禁用回退。
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **回退到同步-联接：** -设置为 "已启用"，如果上述注册表项阻止回退与身份验证失败的联接，则不存在。 此选项在 Windows 10 1803 和更高版本中可用。
 - **上一次注册：** -上次进行联接尝试的时间。 仅记录失败的联接尝试。
 - **错误阶段：** -已中止的联接的阶段。 可能的值包括预检查、发现、身份验证和联接。
 - **客户端错误：** -返回的客户端错误代码（HRESULT）。

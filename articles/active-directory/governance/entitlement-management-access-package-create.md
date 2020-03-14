@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c858a17d4574e6e45283df7c1276cd303f25297
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376739"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262004"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
@@ -67,7 +67,7 @@ ms.locfileid: "78376739"
    
     ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>基础知识
+## <a name="basics"></a>基础
 
 在 "**基本**信息" 选项卡上，为访问包指定一个名称，并指定要在其中创建访问包的目录。
 
@@ -83,7 +83,7 @@ ms.locfileid: "78376739"
 
     你正在创建的访问包和其中包含的任何资源将添加到新目录中。 稍后，还可以添加其他目录所有者。
 
-1. 单击 **“下一步”** 。
+1. 单击“下一步”。
 
 ## <a name="resource-roles"></a>资源角色
 
@@ -105,9 +105,9 @@ ms.locfileid: "78376739"
 
     ![访问包-资源角色选择](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1. 单击 **“下一步”** 。
+1. 单击“下一步”。
 
-## <a name="requests"></a>请求
+## <a name="requests"></a>Requests
 
 在 "**请求**" 选项卡上，可以创建第一个策略来指定谁可以请求访问包和审批设置。 稍后，你可以创建更多的请求策略，以允许其他用户组使用其自己的审批设置来请求访问包。
 

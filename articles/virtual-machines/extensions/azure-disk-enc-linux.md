@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
 ms.openlocfilehash: 4fa7f7d1419a8cd1006a632ba67587ab3434bf5a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78383234"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254022"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>适用于 Linux 的 Azure 磁盘加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -26,7 +26,7 @@ ms.locfileid: "78383234"
 
 Azure 磁盘加密利用 Linux 中的 dm-crypt 子系统在[选择 Azure Linux 发行版](https://aka.ms/adelinux)上提供完整磁盘加密。  此解决方案与 Azure Key Vault 集成，用于管理磁盘加密密钥和机密。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 有关先决条件的完整列表，请参阅[适用于 Linux vm 的 Azure 磁盘加密](../linux/disk-encryption-overview.md)，具体如下部分：
 
@@ -135,20 +135,20 @@ V1.1 架构是推荐的，不需要 Azure Active Directory 属性。
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| 发布者 | Microsoft.Azure.Security | string |
-| type | AzureDiskEncryptionForLinux | string |
+| 发布者 | Microsoft.Azure.Security | 字符串 |
+| type | AzureDiskEncryptionForLinux | 字符串 |
 | typeHandlerVersion | 0.1、1。1 | int |
 | (0.1 schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （0.1 schema） AADClientSecret | password | string |
-| （0.1 schema） AADClientCertificate | thumbprint | string |
+| （0.1 schema） AADClientSecret | password | 字符串 |
+| （0.1 schema） AADClientCertificate | thumbprint | 字符串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
-| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
-| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |
-| KeyEncryptionKeyURL | url | string |
-| 可有可无KeyVaultURL | url | string |
-| Passphrase | password | string | 
-| SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS, Data, All | string |
+| EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | 字符串 | 
+| KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | 字符串 |
+| KeyEncryptionKeyURL | url | 字符串 |
+| 可有可无KeyVaultURL | url | 字符串 |
+| 通行短语 | password | 字符串 | 
+| SequenceVersion | uniqueidentifier | 字符串 |
+| VolumeType | OS, Data, All | 字符串 |
 
 ## <a name="template-deployment"></a>模板部署
 

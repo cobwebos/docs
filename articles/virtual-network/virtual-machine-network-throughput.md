@@ -16,11 +16,11 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750322"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245429"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -64,7 +64,7 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 
 [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)中提供了度量值，用于跟踪 VM 或 VMSS 实例上的网络流数和流创建速率。
 
-![azure-monitor-flow-metrics .png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 连接建立和终止速度还会影响网络性能，因为连接建立和终止将 CPU 与数据包处理例程结合在一起。 建议根据预期流量模式对工作负荷进行基准测试，并适当地横向扩展工作负荷以满足性能需求。 
 

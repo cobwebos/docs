@@ -8,11 +8,11 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78360797"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79275043"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>查看和检索 Azure 活动日志事件
 

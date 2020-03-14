@@ -8,11 +8,11 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713195"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259820"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>应用服务环境的网络注意事项 #
 
@@ -53,7 +53,7 @@ ms.locfileid: "76713195"
 
 仅为 ASE 操作，ASE 需要打开以下端口：
 
-| 使用 | 源 | 目标 |
+| 用途 | 源 | 目标 |
 |-----|------|----|
 | 管理 | 应用服务管理地址 | ASE 子网：454、455 |
 |  ASE 内部通信 | ASE 子网：所有端口 | ASE 子网：所有端口
@@ -69,7 +69,7 @@ ms.locfileid: "76713195"
 
 你需要考虑的其他端口是应用程序端口：
 
-| 使用 | 端口 |
+| 用途 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
@@ -166,7 +166,7 @@ ASE 具有一些需要注意的 IP 地址。 它们分别是：
 
 不需要在 dns 中添加 DNS 端口，因为 NSG 规则不会影响 dns 的流量。 这些端口不包括应用成功使用所需的端口。 常规应用访问端口为：
 
-| 使用 | 端口 |
+| 用途 | 端口 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |

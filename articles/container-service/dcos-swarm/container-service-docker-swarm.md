@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456542"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136221"
 ---
 # <a name="deprecated-container-management-with-docker-swarm"></a>（已弃用）使用 Docker Swarm 管理容器
 
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>使用 Docker Compose 部署容器
 可以使用 Docker Compose 自动执行多个容器的部署和配置。 为此，请确保已创建安全外壳 (SSH) 隧道并已设置 DOCKER_HOST 变量（请参阅上述的先决条件）。
 
-在本地系统上创建 docker-compose.yml 文件。 为此，请使用此 [示例](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml)。
+在本地系统上创建 docker-compose.yml 文件。 为此，请使用此示例：
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:

@@ -9,11 +9,11 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562589"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265202"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解数字孪生对象模型和空间智能图
 
@@ -31,19 +31,19 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
 
 数字孪生对象模型支持以下主要对象类别：
 
-- 空间：虚拟或实体位置，例如 `Tenant`、`Customer`、`Region` 和 `Venue`。
-- 设备：虚拟或实体设备，例如 `AwesomeCompany Device` 和 `Raspberry Pi 3`。
-- 传感器：检测事件的对象，例如 `AwesomeCompany Temperature Sensor` 和 `AwesomeCompany Presence Sensor`。
+- 空间：虚拟或实体位置，例如 **、** 、`Tenant` 和 `Customer``Region``Venue`。
+- 设备：虚拟或实体设备，例如 **和**`AwesomeCompany Device``Raspberry Pi 3`。
+- 传感器：检测事件的对象，例如 **和**`AwesomeCompany Temperature Sensor``AwesomeCompany Presence Sensor`。
 - 用户：标识在位者及其特征。
 
 其他对象类别包括：
 
-- 资源：附加到空间，通常表示空间图中的对象要使用的 Azure 资源，例如 `IoTHub`。
+- 资源：附加到空间，通常表示空间图中的对象要使用的 Azure 资源，例如`IoTHub`。
 - Blob：附加到对象（如空间、设备、传感器和用户）。 它们用作具有 MIME 类型和元数据的文件，例如 `maps`、`pictures` 和 `manuals`。
-- 扩展类型：可扩展的枚举，用于扩充具有特定特征的实体，例如 `SpaceType` 和 `SpaceSubtype`。
-- 本体：表示一组扩展的类型，例如 `Default`、`Building`、`BACnet` 和 `EnergyGrid`。
+- 扩展类型：可扩展的枚举，用于扩充具有特定特征的实体，例如 **和**`SpaceType``SpaceSubtype`。
+- 本体：表示一组扩展的类型，例如 **、** 、`Default` 和 `Building``BACnet``EnergyGrid`。
 - 属性密钥和值：空间、设备、传感器和用户的自定义特征。 除了用作内置特征，它们还可以用于其他用途，例如将 `DeltaProcessingRefreshTime` 作为密钥，将 `10` 作为值。
-- 角色：分配给空间图中的用户和设备的权限集，例如 `Space Administrator`、`User Administrator` 和 `Device Administrator`。
+- 角色：分配给空间图中的用户和设备的权限集，例如 **、** 和 `Space Administrator``User Administrator``Device Administrator`。
 - 角色分配：空间图中角色与对象之间的关联。 例如，可授予用户或服务主体管理空间图中某个空间的权限。
 - 安全密钥存储：为给定空间对象下的层次结构中的所有设备提供安全密钥，以允许设备与数字孪生进行安全通信。
 - 用户定义的函数 (UDF)：允许在空间图中进行可自定义的传感器遥测处理。 例如，UDF 可执行以下操作：
@@ -52,7 +52,7 @@ Azure 数字孪生是一种 Azure IoT 服务，可提供物理环境及相关设
   - 将元数据附加到空间。
   - 满足预定义条件时发送通知。 目前，可以用 JavaScript 编写 UDF。
 - 匹配器：用于确定为给定的遥测消息执行哪些 UDF 的对象。
-- 终结点：可以路由遥测消息和数字孪生事件的位置，例如 `Event Hub`、`Service Bus` 和 `Event Grid`。
+- 终结点：可以路由遥测消息和数字孪生事件的位置，例如 **、** 和 `Event Hub``Service Bus``Event Grid`。
 
 ## <a name="spatial-intelligence-graph"></a>空间智能图
 

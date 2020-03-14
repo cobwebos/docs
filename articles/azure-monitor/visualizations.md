@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/24/2018
 ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372224"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79274107"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -23,7 +23,7 @@ ms.locfileid: "78372224"
 ## <a name="azure-dashboards"></a>Azure 仪表板
 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)是 Azure 的主要仪表板技术。 这种在 Azure 基础结构和服务上提供的单一管理平台，在实现快速识别重要问题方面尤其有用。
 
-![面板](media/visualizations/dashboard.png)
+![仪表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>优点
 - 深度集成到 Azure 中。 可视化效果可以从多个 Azure 页面固定到仪表板，包括指标资源管理器、Log Analytics 和 Application Insights。
@@ -47,7 +47,7 @@ ms.locfileid: "78372224"
 ## <a name="azure-monitor-views"></a>Azure Monitor 视图
 借助 [Azure Monitor 中的视图](platform/view-designer.md)，可以使用日志数据创建自定义可视化效果。 它们由[监视解决方案](insights/solutions.md)用于呈现所收集的数据。
 
-![视图](media/visualizations/view.png)
+![查看](media/visualizations/view.png)
 
 ### <a name="advantages"></a>优点
 - 为日志数据提供了丰富的可视化效果。

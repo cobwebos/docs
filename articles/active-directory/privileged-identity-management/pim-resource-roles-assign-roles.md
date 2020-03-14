@@ -16,17 +16,17 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895948"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266554"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中分配 Azure 资源角色
 
 Azure Active Directory （Azure AD） Privileged Identity Management （PIM）可以管理内置的 Azure 资源角色和自定义角色，其中包括（但不限于）：
 
-- 所有者
+- “所有者”
 - 用户访问管理员
 - 参与者
 - 安全管理员

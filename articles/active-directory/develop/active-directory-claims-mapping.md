@@ -14,11 +14,11 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78375826"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79263187"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -59,7 +59,7 @@ ms.locfileid: "78375826"
 | access_token |
 | account_type |
 | acr |
-| 参与者 (actor) |
+| actor |
 | actortoken |
 | aio |
 | altsecid |
@@ -71,7 +71,7 @@ ms.locfileid: "78375826"
 | appctxsender |
 | appid |
 | appidacr |
-| Assertion — 断言 |
+| assertion |
 | at_hash |
 | aud |
 | auth_data |
@@ -159,10 +159,10 @@ ms.locfileid: "78375826"
 | resource |
 | 角色 (role) |
 | 角色 |
-| 作用域 |
+| scope |
 | scp |
 | sid |
-| Signature — 签名 |
+| 签名 |
 | signin_state |
 | src1 |
 | src2 |
@@ -286,11 +286,11 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 | 源 | ID | 说明 |
 |-----|-----|-----|
-| 用户 | surname | 系列名称 |
+| 用户 | surname | 姓氏 |
 | 用户 | givenname | 名字 |
 | 用户 | displayname | 显示名称 |
 | 用户 | objectid | ObjectID |
-| 用户 | 邮件 | 电子邮件地址 |
+| 用户 | mail | 电子邮件地址 |
 | 用户 | userprincipalname | 用户主体名称 |
 | 用户 | department|部门|
 | 用户 | onpremisessamaccountname | 本地 SAM 帐户名 |
@@ -299,7 +299,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | onpremisesecurityidentifier | 本地安全标识符 |
 | 用户 | companyname| 组织名称 |
 | 用户 | streetaddress | 街道地址 |
-| 用户 | 邮政编码 | 邮政编码 |
+| 用户 | postalcode | 邮政编码 |
 | 用户 | preferredlanguange | 首选语言 |
 | 用户 | onpremisesuserprincipalname | 本地 UPN |
 | 用户 | mailnickname | 邮件别名 |
@@ -319,9 +319,9 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | 用户 | extensionattribute14 | 扩展属性 14 |
 | 用户 | extensionattribute15 | 扩展属性 15 |
 | 用户 | othermail | 其他邮件 |
-| 用户 | country | Country |
-| 用户 | 城市 | 城市 |
-| 用户 | state | State |
+| 用户 | country | 国家/地区 |
+| 用户 | city | 城市 |
+| 用户 | state | 状态 |
 | 用户 | jobtitle | 职务 |
 | 用户 | employeeid | 员工 ID |
 | 用户 | facsimiletelephonenumber | 传真电话号码 |
@@ -361,7 +361,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 |TransformationMethod|预期输入|预期输出|说明|
 |-----|-----|-----|-----|
 |Join|string1、string2、separator|outputClaim|联接输入字符串（之间使用分隔符）。 例如：string1：“foo@bar.com”、string2：“sandbox”、separator：“.”会生成 outputClaim：“foo@bar.com.sandbox”|
-|ExtractMailPrefix|邮件|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
+|ExtractMailPrefix|mail|outputClaim|提取电子邮件地址的本地部分。 例如：mail：“foo@bar.com”会生成 outputClaim：“foo”。 如果未提供 \@ 符号，则按原样返回原始输入字符串。|
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
@@ -386,7 +386,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |源|ID|说明|
 |-----|-----|-----|
-| 用户 | 邮件|电子邮件地址|
+| 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
 | 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
 | 用户 | employeeid|员工 ID|
@@ -435,7 +435,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备条件
 
 在以下示例中，会为服务主体创建、更新、链接和删除策略。 如果你是 Azure AD 新手，我们建议在继续学习这些示例之前，先[了解如何获取 Azure AD 租户](quickstart-create-new-tenant.md)。
 

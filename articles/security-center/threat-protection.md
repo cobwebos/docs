@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: memildin
-ms.openlocfilehash: 8bd66b602201dbbb47a1fdba879c52a8ac441762
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.openlocfilehash: 031423d72aecacc1feed692aaa32bcd1ff7efbab
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372829"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282700"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -127,6 +127,10 @@ Azure 安全中心与 Azure 服务集成，以监视和保护基于 Windows 的�
 
 另外，我们的安全研究人员的全球安全研究人员不断监视威胁的发展。 它们在发现时添加容器特定的警报和漏洞。
 
+> [!TIP]
+> 可以按照[此博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)中的说明来模拟容器警报。
+
+
 
 
 
@@ -208,6 +212,9 @@ Azure 安全中心包含适用于 Azure Key Vault 的 Azure 本机高级威胁�
 * [如何为 Azure 存储启用高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 存储的威胁防护警报列表](alerts-reference.md#alerts-azurestorage)
 
+
+> [!TIP]
+> 可以按照[此博客文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的说明来模拟 Azure 存储警报。
 
 
 

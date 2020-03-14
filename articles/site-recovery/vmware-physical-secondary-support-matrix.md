@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082191"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79256791"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>将 VMware VM 和物理服务器灾难恢复到辅助站点时的支持矩阵
 
@@ -83,10 +83,10 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ### <a name="host-storage"></a>主机存储
 
-存储（主机） | **支持** 
+**存储（主机）** | **支持** 
 --- | --- 
 NFS | 是 
-SMB 3.0 | 不适用 
+SMB 3.0 | 空值 
 SAN (ISCSI) | 是 
 多路径 (MPIO) | 是 
 
@@ -95,8 +95,8 @@ SAN (ISCSI) | 是
 **配置** | **支持** 
 --- | --- 
 VMDK | 是 
-VHD/VHDX | 不适用 
-第 2 代 VM | 不适用 
+VHD/VHDX | 空值 
+第 2 代 VM | 空值 
 共享群集磁盘 | 是 
 加密磁盘 | 否 
 UEFI| 是 
@@ -108,11 +108,11 @@ RDM | 是
 存储空间 | 否 
 热添加/移除磁盘 | 是 
 排除磁盘 | 是 
-多路径 (MPIO) | 不适用 
+多路径 (MPIO) | 空值 
 
 ## <a name="vaults"></a>保管库
 
-**操作** | **支持** 
+**Action** | **支持** 
 --- | --- 
 跨资源组移动保管库（订阅内或跨订阅移动） | 否 
 跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否 
@@ -121,7 +121,7 @@ RDM | 是
 
 移动服务可协调本地 VMware 服务器/物理服务器和辅助站点之间的复制。 如果设置了复制，应确保安装了最新版本的移动服务和其他组件。
 
-| **更新** | **详细信息** |
+| **Update** | **详细信息** |
 | --- | --- |
 |Scout 更新 | Scout 更新是累积更新。 <br/><br/> [了解和下载](vmware-physical-secondary-disaster-recovery.md#updates)最新的 Scout 更新 |
 |组件更新 | Scout 更新包括所有组件的更新，包括 RX 服务器、配置服务器、进程和主目标服务器，vContinuum 服务器和要保护的源服务器。<br/><br/> [了解详细信息](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)。|

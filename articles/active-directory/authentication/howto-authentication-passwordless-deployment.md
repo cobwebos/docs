@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc8a62bd75a01cb6b7184cb52585c4f8b08cadb
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78378240"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136528"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>在 Azure Active Directory 中规划无密码 authentication 部署
 
@@ -51,7 +51,7 @@ Microsoft 提供了三种无密码的身份验证选项，涵盖了许多情况�
 
 Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你的组织需要、先决条件以及每种身份验证方法的功能，以选择你的无密码 authentication 战略。 建议使用 Windows 10 设备的每个组织都使用 Windows Hello for Business。 然后，为其他方案添加电话登录（包括 Microsoft Authenticator 应用）或安全密钥。
 
-| 场景 | 电话身份验证 | 安全密钥 | Windows Hello 企业版 |
+| 场景 | 电话身份验证 | 安全密钥 | Windows Hello for Business |
 | --- | --- | --- | --- |
 | **计算机登录**： <br> 从分配的 Windows 10 设备 | **是** | **是** <br> 带生物识别、PIN | **是**<br>带有生物识别识别和或 PIN |
 | **计算机登录**： <br> 从共享 Windows 10 设备 | **是** | **是** <br> 带生物识别、PIN  | **是** |
@@ -61,7 +61,7 @@ Microsoft 的无密码身份验证方法可实现不同的方案。 请考虑你
 
 有关为你的组织选择最佳方法的信息，请参阅[确定无密码方法](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始无密码部署之前，组织必须满足以下先决条件：
 
@@ -82,7 +82,7 @@ Windows Hello 的先决条件非常依赖于你是在本地、混合还是仅限
 
 用户将其无密码方法注册为 Azure 多因素身份验证注册流的一部分。 使用用户名和密码以及另一个注册方法的多重身份验证可以作为回退，以防它们在某些情况下无法使用其电话或安全密钥。
 
-### <a name="licensing"></a>许可 
+### <a name="licensing"></a>授权 
 无密码 authentication 无需额外付费，不过某些先决条件可能需要高级订阅。 [Azure Active Directory 许可页面](https://azure.microsoft.com/pricing/details/active-directory/)中提供详细的功能和许可信息。 
 
 ## <a name="develop-a-plan"></a>制定计划
@@ -130,7 +130,7 @@ Microsoft 提供多重身份验证[通信模板](https://aka.ms/mfatemplates)、
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>通过 Microsoft Authenticator 应用计划无密码 authentication
 
-Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下载。 [详细了解如何下载 Microsoft Authenticator 应用](https://www.microsoft.com/account/authenticator?cmp=h66ftb_42hbak)。 让用户下载 Microsoft Authenticator 应用。 并按照说明启用手机登录。 
+Microsoft Authenticator 应用可从 Google Play 或 Apple App Store 免费下载。 [详细了解如何下载 Microsoft Authenticator 应用](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)。 让用户下载 Microsoft Authenticator 应用。 并按照说明启用手机登录。 
 
 它会将任何 iOS 或 Android 手机变成强的无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与电话上的一个数字匹配，然后使用生物识别或 PIN 来确认。 [请参阅有关 Microsoft Authenticator 应用的工作原理的详细信息](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in)。 
 

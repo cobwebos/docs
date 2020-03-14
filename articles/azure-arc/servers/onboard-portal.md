@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 7465ec4ef717f709aacb5e543a8f1cf4fa37bfb5
+ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586251"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79139005"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
@@ -56,6 +56,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 ## <a name="install-and-validate-the-agent-on-windows"></a>在 Windows 上安装并验证代理
 
 ### <a name="install-manually"></a>手动安装
+
 可以运行 Windows Installer 包 *AzureConnectedMachineAgent.msi* 来手动安装 Connected Machine 代理。 
 
 > [!NOTE]

@@ -9,11 +9,11 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749236"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255426"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能和可伸缩性清单
 
@@ -32,12 +32,12 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | &nbsp; |可伸缩性目标 |[是否有大量客户端同时访问单个 blob？](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |可伸缩性目标 |[应用程序是否会保持在单个 blob 的可伸缩性目标内？](#bandwidth-and-operations-per-blob) |
 | &nbsp; |分区 |[命名约定是否旨在实现更好的负载均衡？](#partitioning) |
-| &nbsp; |联网 |[客户端设备是否具有足够高的带宽和足够低的延迟，以实现所需的性能？](#throughput) |
-| &nbsp; |联网 |[客户端设备是否具有优质网络链接？](#link-quality) |
-| &nbsp; |联网 |[客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
+| &nbsp; |网络 |[客户端设备是否具有足够高的带宽和足够低的延迟，以实现所需的性能？](#throughput) |
+| &nbsp; |网络 |[客户端设备是否具有优质网络链接？](#link-quality) |
+| &nbsp; |网络 |[客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
 | &nbsp; |直接客户端访问 |[是否使用共享访问签名 (SAS) 和跨源资源共享 (CORS) 来实现对 Azure 存储的直接访问？](#sas-and-cors) |
-| &nbsp; |缓存 |[你的应用程序是否会缓存经常访问和很少更改的数据？](#reading-data) |
-| &nbsp; |缓存 |[应用程序是否通过在客户端上缓存更新来对更新进行批处理，然后将其上传到更大的集中？](#uploading-data-in-batches) |
+| &nbsp; |Caching |[你的应用程序是否会缓存经常访问和很少更改的数据？](#reading-data) |
+| &nbsp; |Caching |[应用程序是否通过在客户端上缓存更新来对更新进行批处理，然后将其上传到更大的集中？](#uploading-data-in-batches) |
 | &nbsp; |.NET 配置 |[是否使用 .NET Core 2.1 或更高版本来实现最佳性能？](#use-net-core) |
 | &nbsp; |.NET 配置 |[是否已将客户端配置为使用足够数量的并发连接？](#increase-default-connection-limit) |
 | &nbsp; |.NET 配置 |[对于 .NET 应用程序，是否已将 .NET 配置为使用足够数量的线程？](#increase-minimum-number-of-threads) |
@@ -115,7 +115,7 @@ Blob 存储使用基于范围的分区方案进行缩放和负载均衡。 每�
   
 - 有关 Azure 存储中使用的分区方案的详细信息，请参阅[Azure 存储：具有高度一致性的高可用性云存储服务](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)。
 
-## <a name="networking"></a>联网
+## <a name="networking"></a>网络
 
 物理网络对应用程序的约束可能会严重影响性能。 以下部分描述了用户可能会遇到的某些限制。  
 
@@ -151,7 +151,7 @@ Blob 存储使用基于范围的分区方案进行缩放和负载均衡。 每�
   
 SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。  
 
-## <a name="caching"></a>缓存
+## <a name="caching"></a>Caching
 
 缓存在性能方面扮演着重要的角色。 以下各节讨论缓存的最佳实践。
 

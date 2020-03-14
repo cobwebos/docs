@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161561"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276902"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions 高级计划
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-在此示例中，将 `<RESOURCE_GROUP>` 替换为资源组，并将 `<PLAN_NAME>` 替换为在资源组中唯一的计划的名称。 指定[支持的 `<REGION>`](#regions)。 若要创建支持 Linux 的高级计划，请包含 `--is-linux` 选项。
+在此示例中，将 `<RESOURCE_GROUP>` 替换为资源组，并将 `<PLAN_NAME>` 替换为在资源组中唯一的计划的名称。 指定[支持的 `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)。 若要创建支持 Linux 的高级计划，请包含 `--is-linux` 选项。
 
 创建计划后，可以使用[az functionapp create](/cli/azure/functionapp#az-functionapp-create)创建 function app。 在门户中，计划和应用都同时创建。 有关完整 Azure CLI 脚本的示例，请参阅[在高级计划中创建函数应用](scripts/functions-cli-create-premium-plan.md)。
 
@@ -65,7 +65,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="longer-run-duration"></a>运行持续时间较长
 
-对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 不过，你可以[修改 host json 配置](./functions-host-json.md#functiontimeout)，以使高级计划应用60分钟。
+对于单个执行，消耗计划中的 Azure Functions 限制为10分钟。  在高级计划中，运行持续时间默认为30分钟，以防止执行失控。 不过，你可以[修改 host json 配置](./functions-host-json.md#functiontimeout)，使其不受高级计划应用的限制（保证60分钟）。
 
 ## <a name="plan-and-sku-settings"></a>计划和 SKU 设置
 
@@ -99,44 +99,42 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 例如，JavaScript 函数应用受 node.js 中默认的内存限制的限制。 若要增加此固定内存限制，请添加值为 `--max-old-space-size=<max memory in MB>`的应用设置 `languageWorkers:node:arguments`。
 
-## <a name="regions"></a>区域
+## <a name="region-max-scale-out"></a>区域最大 Scale Out
 
-下面是每个操作系统当前支持的区域。
+下面是每个区域和 OS 配置中的单个计划的当前支持的最大扩大值。 若要请求增加，请打开支持票证。
+
+请参阅此处的功能的完整区域可用性： [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |区域| Windows | Linux |
 |--| -- | -- |
-|澳大利亚中部| ✔<sup>1</sup> | |
-|澳大利亚中部 2| ✔<sup>1</sup> | |
-|澳大利亚东部| ✔ | ✔<sup>1</sup> |
-|澳大利亚东南部 | ✔ | ✔<sup>1</sup> |
-|巴西南部| ✔<sup>2</sup> | ✔<sup>1</sup> |
-|加拿大中部| ✔ | ✔<sup>1</sup> |
-|美国中部| ✔ | ✔<sup>1</sup> |
-|东亚| ✔ | ✔<sup>1</sup> |
-|美国东部 | ✔ | ✔<sup>1</sup> |
-|美国东部 2| ✔ | ✔<sup>1</sup> |
-|法国中部| ✔ | ✔<sup>1</sup> |
-|德国中西部| ✔ | |
-|日本东部| ✔ | ✔<sup>1</sup> |
-|日本西部| ✔ | ✔<sup>1</sup> |
-|韩国中部| ✔ | ✔<sup>1</sup> |
-|美国中北部| ✔ | ✔<sup>1</sup> |
-|北欧| ✔ | ✔<sup>1</sup> |
-|挪威东部| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|美国中南部| ✔ | ✔<sup>1</sup> |
-|印度南部 | ✔ | |
-|东南亚| ✔ | ✔<sup>1</sup> |
-|英国南部| ✔ | ✔<sup>1</sup> |
-|英国西部| ✔ | ✔<sup>1</sup> |
-|西欧| ✔ | ✔<sup>1</sup> |
-|印度西部| ✔ | ✔<sup>1</sup> |
-|美国中西部| ✔<sup>1</sup> | ✔<sup>1</sup> |
-|美国西部| ✔ | ✔<sup>1</sup> |
-|美国西部 2| ✔ | ✔<sup>1</sup> |
-
-<sup>1</sup>最大扩大范围限制为20个实例。  
-<sup>2</sup>最大扩大规模限制为60实例。
-
+|澳大利亚中部| 20 | 不可用 |
+|澳大利亚中部 2| 20 | 不可用 |
+|澳大利亚东部| 100 | 20 |
+|澳大利亚东南部 | 100 | 20 |
+|巴西南部| 60 | 20 |
+|加拿大中部| 100 | 20 |
+|美国中部| 100 | 20 |
+|东亚| 100 | 20 |
+|美国东部 | 100 | 20 |
+|美国东部 2| 100 | 20 |
+|法国中部| 100 | 20 |
+|德国中西部| 100 | 不可用 |
+|日本东部| 100 | 20 |
+|日本西部| 100 | 20 |
+|韩国中部| 100 | 20 |
+|美国中北部| 100 | 20 |
+|北欧| 100 | 20 |
+|挪威东部| 20 | 20 |
+|美国中南部| 100 | 20 |
+|印度南部 | 100 | 不可用 |
+|东南亚| 100 | 20 |
+|英国南部| 100 | 20 |
+|英国西部| 100 | 20 |
+|西欧| 100 | 20 |
+|印度西部| 100 | 20 |
+|美国中西部| 20 | 20 |
+|美国西部| 100 | 20 |
+|美国西部 2| 100 | 20 |
 
 ## <a name="next-steps"></a>后续步骤
 

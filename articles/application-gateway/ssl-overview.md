@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
 ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75657975"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279099"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>通过应用程序网关概述 SSL 终止和端到端 SSL
 

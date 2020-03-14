@@ -4,11 +4,11 @@ description: 本文介绍如何准备环境，以使用 Microsoft Azure 备份 S
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392075"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273405"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -88,7 +88,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
      ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-## <a name="software-package"></a>软件程序包
+## <a name="software-package"></a>软件包
 
 ### <a name="downloading-the-software-package"></a>下载软件包
 

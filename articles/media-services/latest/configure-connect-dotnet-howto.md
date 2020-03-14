@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899896"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79269804"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
 
 本文介绍如何使用服务主体登录方法连接到 Azure 媒体服务 v3 .NET SDK。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 - [创建媒体服务帐户](create-account-cli-how-to.md)。 请确保记住资源组名称和媒体服务帐户名
 - 安装要用于 .NET 开发的工具。 本文中的步骤演示如何使用[Visual Studio 2019 社区版](https://www.visualstudio.com/downloads/)。 您可以使用 Visual Studio Code，请[参阅C#使用](https://code.visualstudio.com/docs/languages/csharp)。 或者，可以使用其他代码编辑器。
@@ -45,7 +45,7 @@ ms.locfileid: "74899896"
 1. 在 Visual Studio 中，选择 "**工具**" > Nuget**包管理器** > " **nuget 管理器控制台**"。
 2. 在 "**程序包管理器控制台**" 窗口中，使用 `Install-Package` 命令添加以下 NuGet 包。 例如，`Install-Package Microsoft.Azure.Management.Media` 。
 
-|程序包|描述|
+|程序包|说明|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure 媒体服务 SDK。 <br/>若要确保使用最新的 Azure 媒体服务包，请检查 " [Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.Management.Media)媒体服务"。|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|适用于 Azure SDK for NET 的 ADAL 身份验证库|

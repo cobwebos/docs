@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362539"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257246"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -47,7 +47,7 @@ ms.locfileid: "78362539"
 
     ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. 单击 "**选择计算机**"，然后选择要从当前移动到目标进程服务器的计算机。 针对每个虚拟机显示平均数据更改的详细信息。 然后单击 **“确定”** 。 
+2. 单击 "**选择计算机**"，然后选择要从当前移动到目标进程服务器的计算机。 针对每个虚拟机显示平均数据更改的详细信息。 然后单击“确定”。 
 3. 在保管库中，监视**监视** > **Site Recovery 作业**的作业进度。
 
 需要大约15分钟的时间才能在门户中反映更改。 为了获得更快的效果，请[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。

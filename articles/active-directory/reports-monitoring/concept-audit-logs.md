@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376976"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79253229"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“审核活动”报告 
 
@@ -89,7 +89,7 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 使用**服务**筛选器可以从以下服务的下拉列表中进行选择：
 
-- 全部
+- All
 - AAD 管理 UX
 - 访问评审
 - 帐户预配
@@ -111,10 +111,10 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 **类别**筛选器使您可以选择以下筛选器之一：
 
-- 全部
+- All
 - AdministrativeUnit
 - ApplicationManagement
-- 身份验证
+- Authentication
 - 授权
 - 联系人
 - 设备
@@ -138,8 +138,8 @@ Azure AD 审核日志提供系统活动的记录以实现符合性。 若要访�
 
 利用**状态**筛选器，您可以基于审核操作的状态进行筛选。 状态可以为下列其中一项：
 
-- 全部
-- 成功
+- All
+- Success
 - 失败
 
 **目标**筛选器允许您通过名称或用户主体名称（UPN）搜索特定目标。 目标名称和 UPN 区分大小写。 

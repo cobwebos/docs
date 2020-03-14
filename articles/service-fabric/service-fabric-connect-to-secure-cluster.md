@@ -4,11 +4,11 @@ description: 介绍如何对访问 Service Fabric 群集的客户端进行身份
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78361250"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79258572"
 ---
 # <a name="connect-to-a-secure-cluster"></a>连接到安全群集
 

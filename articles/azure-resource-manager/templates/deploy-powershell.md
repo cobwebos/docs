@@ -4,11 +4,11 @@ description: 使用 Azure 资源管理器和 Azure PowerShell 将资源部署到
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: c31cde9d3023c49a03f4a7a6c434c16405c88bea
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121924"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273873"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>使用 Resource Manager 模板和 Azure PowerShell 部署资源
 
@@ -36,7 +36,7 @@ New-AzDeployment -Location <location> -TemplateFile <path-to-template>
 
 本文中的示例使用资源组部署。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 需要部署模板。 如果尚未安装，请从 Azure 快速入门模板存储库下载并保存[示例模板](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)。 本文中使用的本地文件名称为 **c:\MyTemplates\azuredeploy.json**。
 

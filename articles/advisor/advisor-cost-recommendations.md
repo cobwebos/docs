@@ -3,12 +3,12 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443125"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79259690"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -46,6 +46,9 @@ Azure 顾问将检测重复失败的 Azure 数据工厂管道，并建议解决�
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>使用托管磁盘的标准快照
 为了节省 60% 的成本，我们建议将快照存储在标准存储中，无论父磁盘的存储类型是什么，都是如此。 此选项是托管磁盘快照的默认选项。 Azure 顾问会识别存储高级存储的快照，并建议将快照从高级存储迁移到标准存储。 [了解有关托管磁盘定价的详细信息](https://aka.ms/aa_manageddisksnapshot_learnmore)
+
+## <a name="utilize-lifecycle-management"></a>利用生命周期管理
+Azure 顾问将利用有关 Azure blob 存储对象计数、总大小和事务的智能，以检测是否有一个或多个存储帐户最适合用于对数据进行数据的生命周期管理。 它将提示你创建生命周期管理规则，以便将你的数据自动分层为 "冷" 或 "存档"，以优化存储成本，同时保留 Azure blob 存储中的数据以实现应用程序兼容性。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>如何访问 Azure 顾问中的成本建议
 

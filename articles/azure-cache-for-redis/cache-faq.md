@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433452"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79278709"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -125,11 +125,11 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 * 启用 Redis 群集功能时，增加群集中分片（节点）的数量会导致吞吐量线性提高。 例如，如果创建了一个具有10个分片的 P4 群集，则可用吞吐量为 400000 * 10 = 4000000 RPS。
 * 如果增加密钥大小，则高级层的吞吐量要高于标准层。
 
-| 定价层 | 大小 | CPU 内核数 | 可用带宽 | 1 KB 值大小 | 1 KB 值大小 |
+| 定价层 | 大小 | CPU 核心数 | 可用带宽 | 1 KB 值大小 | 1 KB 值大小 |
 | --- | --- | --- | --- | --- | --- |
 | **标准缓存大小** | | |**兆位/秒（Mb/秒）/兆字节/秒（MB/秒）** |**非 SSL 请求数/秒 (RPS)** |**SSL 请求数/秒 (RPS)** |
 | C0 | 250 MB | 共享 | 100/12.5  |  15,000 |   7,500 |
-| C1 |   1 GB | 第      | 500/62.5  |  38,000 |  20,720 |
+| C1 |   1 GB | 1      | 500/62.5  |  38,000 |  20,720 |
 | C2 | 2.5 GB | 2      | 500/62.5  |  41,000 |  37,000 |
 | C3 |   6 GB | 4      | 1000/125  | 100,000 |  90,000 |
 | C4 |  13 GB | 2      | 500/62.5  |  60,000 |  55,000 |
@@ -177,7 +177,7 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 配置选项有什么作用？
 StackExchange.Redis 有很多选项。 本部分介绍一些常用设置。 有关 StackExchange.Redis 选项的详细详细，请参阅 [StackExchange.Redis configuration](https://stackexchange.github.io/StackExchange.Redis/Configuration)（StackExchange.Redis 配置）。
 
-| 配置选项 | Description | 建议 |
+| 配置选项 | 说明 | 建议 |
 | --- | --- | --- |
 | AbortOnConnectFail |如果设置为 true，则发生网络故障后不会重新建立连接。 |设置为 false，让 StackExchange.Redis 自动重新连接。 |
 | ConnectRetry |初始连接期间重试连接的次数。 |请参阅下面的注释寻求指导。 |
@@ -285,11 +285,11 @@ Redis 数据库就是同一 Redis 实例中的数据的逻辑隔离。 缓存内
 Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。 如果要连接到 Azure Redis 缓存并且客户端支持 SSL（如 StackExchange.Redis），则应使用 SSL。
 
 >[!NOTE]
->默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果客户端不支持 SSL，则必须根据[在 Azure Redis 缓存中配置缓存](cache-configure.md)一文中的[访问端口](cache-configure.md#access-ports)部分中的说明启用非 SSL 端口。
+>默认情况下，为新的 Azure Redis 缓存实例禁用了非 SSL 端口。 如果客户端不支持 SSL，则必须根据[在 Azure Redis 缓存中配置缓存](cache-configure.md#access-ports)一文中的[访问端口](cache-configure.md)部分中的说明启用非 SSL 端口。
 >
 >
 
-`redis-cli` 等 Redis 工具对 SSL 端口不起作用，但是，可以[根据适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)中的说明，使用 `stunnel` 等实用程序安全地将这些工具连接到 SSL。
+`redis-cli` 等 Redis 工具对 SSL 端口不起作用，但是，可以`stunnel`根据适用于 Redis 预览版的 ASP.NET 会话状态提供程序通告[中的说明，使用 ](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) 等实用程序安全地将这些工具连接到 SSL。
 
 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
@@ -300,7 +300,7 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis 的最佳做法
 * 将 `AbortConnect` 设置为 false，然后使 ConnectionMultiplexer 自动重新连接。 [请参阅此处了解详细信息](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
-* 重复使用 ConnectionMultiplexer - 不要为每个请求创建一个新的 ConnectionMultiplexe。 建议使用[此处所示](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)的 `Lazy<ConnectionMultiplexer>` 模式。
+* 重复使用 ConnectionMultiplexer - 不要为每个请求创建一个新的 ConnectionMultiplexe。 建议使用`Lazy<ConnectionMultiplexer>`此处所示[的 ](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) 模式。
 * 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 在[此 Redis 讨论](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)中，100 kb 被视为大。 阅读[此文章](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)以了解较大值可能引起的问题示例。
 * 配置 [ThreadPool](#important-details-about-threadpool-growth) 设置，以免超时。
 * 将默认 connectTimeout 至少设置为 5 秒。 当网络故障时，此间隔提供 Stackexchange.redis Redis 足够的时间来重新建立连接。

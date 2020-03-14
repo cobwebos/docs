@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: motanv
 ms.openlocfilehash: 4bdb00eec38addc0c9f88eba8b73185ec5721277
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465584"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282037"
 ---
 # <a name="testability-actions"></a>可测试性操作
 为了模拟不可靠的基础结构，Azure Service Fabric 向开发者提供了众多选项，用于模拟各种现实世界故障和状态转换。 这些方式被称为可测试操作。 这些操作属于低级别 API，导致具体的故障注入、状态转换或验证。 结合使用这些操作，可以为服务编写全面的测试方案。
@@ -28,7 +28,7 @@ System.Fabric.dll 程序集包含了这些操作的 C# 实现。 Microsoft.Servi
 为了实现更好的质量验证，在引入各种常规故障和非常规故障的情况下运行服务和业务工作负荷。 非常规故障执行服务进程在某些工作流程中实然退出的方案。 这会在 Service Fabric 恢复服务副本时立即测试恢复路径。 这会有助于一致性地测试数据以及是否在故障之后正确维护服务状态。 另一组故障，即常规故障，测试服务是否对 Service Fabric 正在移动的副本做出正确的反应。 这会测试 RunAsync 方法中的取消处理。 服务需要检查是否正在设置取消标记、正确保存其状态及退出 RunAsync 方法。
 
 ## <a name="testability-actions-list"></a>可测试性操作列表
-| 行动 | Description | 托管 API | PowerShell Cmdlet | 常规/非常规故障 |
+| 操作 | 说明 | 托管 API | PowerShell Cmdlet | 常规/非常规故障 |
 | --- | --- | --- | --- | --- |
 | CleanTestState |在测试驱动器非正常关闭时从群集删除所有测试状态。 |CleanTestStateAsync |Remove-ServiceFabricTestState |不适用 |
 | InvokeDataLoss |将数据丢失引入到服务分区。 |InvokeDataLossAsync |Invoke-ServiceFabricPartitionDataLoss |常规 |

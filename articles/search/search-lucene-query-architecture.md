@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793559"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282934"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Azure 中全文搜索的工作原理认知搜索
 
-本文面向需要更深入了解 Azure 认知搜索中的 Lucene 全文搜索工作原理的开发人员。 对于文本查询，Azure 认知搜索将在大多数情况下无缝地提供预期结果，但有时你可能会遇到 "关闭" 的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
+本文面向需要更深入了解 Azure 认知搜索中的 Lucene 全文搜索工作原理的开发人员。 对于文本查询，在大多数情况下，Azure 认知搜索都会无缝提供预期结果，但偶尔也会提供看上去“不靠谱”的结果。 在这种情况下，如果对 Lucene 查询执行的四个阶段（查询分析、词法分析、文档匹配和评分）有一定的背景知识，则有助于确定要对提供所需结果的查询参数或索引配置进行哪些特定的更改。 
 
 > [!Note] 
 > Azure 认知搜索使用 Lucene 进行全文搜索，但 Lucene 集成并不完整。 我们会有选择地公开和扩展 Lucene 功能，以实现对 Azure 认知搜索重要的方案。 
@@ -31,7 +31,7 @@ ms.locfileid: "72793559"
 1. 查询分析 
 2. 词法分析 
 3. 文档检索 
-4. 评分 
+4. 计分 
 
 以下关系图演示了用于处理搜索请求的组件。 
 
@@ -84,11 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 
 + 针对独立字词（例如 spacious）的*字词查询*
 + 针对带引号字词（例如 ocean view）的*短语查询*
-+ 针对字词后接前缀运算符 `*`（例如 air-condition）的*前缀查询*
++ 针对字词后接前缀运算符 *（例如 air-condition）的*前缀查询`*`
 
 有关支持的查询类型的完整列表，请参阅 [Lucene 查询语法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 
-与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+` 运算符，`+"Ocean view"` 表示“必须”满足查询。 
+与子查询关联的运算符确定是“必须”还是“应该”满足该查询，才将某个文档视为匹配项。 例如，由于使用了 `+"Ocean view"` 运算符，`+` 表示“必须”满足查询。 
 
 查询分析器将传递给搜索引擎的子查询重新构造成*查询树*（表示查询的内部结构）。 在查询分析的第一个阶段，查询树如下所示。  
 
@@ -108,7 +108,7 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-显式运算符（例如 `+"Ocean view"` 中的 `+`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
+显式运算符（例如 `+` 中的 `+"Ocean view"`）在布尔查询构造中没有歧义（*必须*匹配字词）。 剩余字词的解释方式不太明确：spacious 和 air-condition。 搜索引擎是否应该根据 ocean view *和* spacious *和* air-condition 查找匹配项？ 或者，是否应该查找 ocean view 加上*任何一个*剩余的字词？ 
 
 默认情况下 (`searchMode=any`)，搜索引擎采用更广泛的解释。 *应该*匹配任一字段，反映“or”的语义。 上面所示的初始查询树包含两个“should”运算符，显示了默认行为。  
 
@@ -251,9 +251,9 @@ Spacious,||air-condition*+"Ocean view"
 
 继续使用前面的示例，对于**标题**字段，倒排索引如下所示：
 
-| 条款 | 文档列表 |
+| 术语 | 文档列表 |
 |------|---------------|
-| atman | 第 |
+| atman | 1 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -265,30 +265,30 @@ Spacious,||air-condition*+"Ocean view"
 
 对于**说明**字段，索引如下所示：
 
-| 条款 | 文档列表 |
+| 术语 | 文档列表 |
 |------|---------------|
 | air | 3
 | and | 4
-| beach | 第
+| beach | 1
 | conditioned | 3
 | comfortable | 3
-| distance | 第
+| distance | 1
 | island | 2
 | kauaʻi | 2
 | located | 2
 | north | 2
 | ocean | 1, 2, 3
-| ，步骤总数为 | 2
+| of | 2
 | on |2
 | quiet | 4
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 第
+| spacious | 1
 | the | 1, 2
-| to | 第
-| 视图 | 1, 2, 3
-| walking | 第
+| to | 1
+| view | 1, 2, 3
+| walking | 1
 | 替换为 | 3
 
 

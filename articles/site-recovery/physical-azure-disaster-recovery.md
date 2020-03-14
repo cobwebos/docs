@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980324"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257922"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -27,7 +27,7 @@ ms.locfileid: "75980324"
 > * 创建复制策略
 > * 为服务器启用复制
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 完成本教程：
 
@@ -136,7 +136,7 @@ ms.locfileid: "75980324"
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-注册完成后，配置服务器会显示在保管库的“设置” > “服务器”页中。
+注册完成后，配置服务器会显示在保管库的“设置” **“服务器”页中** > 。
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 
@@ -146,7 +146,7 @@ ms.locfileid: "75980324"
 2. 指定目标部署模型。
 3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
-   ![确定目标](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![目标](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>创建复制策略
@@ -169,7 +169,7 @@ ms.locfileid: "75980324"
 - 启用复制后，Site Recovery 会安装移动服务。
 - 为服务器启用复制后，可能要等 15 分钟或更长时间，更改才会生效并显示在门户中。
 
-1. 单击“复制应用程序” > “源”。
+1. 单击“复制应用程序” **“源”。**  > 
 2. 在“源”中选择配置服务器。
 3. 在“计算机类型”中，选择“物理计算机”。
 4. 选择进程服务器（配置服务器）。 然后单击“确定”。
@@ -178,12 +178,12 @@ ms.locfileid: "75980324"
 7. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 8. 选择“立即为选定的计算机配置”，将网络设置应用到选择保护的所有计算机。 选择“稍后配置”以选择每个计算机的 Azure 网络。 
 9. 在“物理计算机”中，单击“+物理计算机”。 指定名称和 IP 地址。 选择要复制的计算机的操作系统。 发现和列出服务器需要几分钟的时间。 
-10. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
-11. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。 
-12. 单击“启用复制”。 可以在“设置” > “作业” > “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 在“完成保护”作业运行之后，计算机就可以进行故障转移了。
+10. 在“属性” **“配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。**  > 
+11. 在“复制设置” **“配置复制设置”中，检查是否选择了正确的复制策略。**  >  
+12. 单击“启用复制”。 可以在“设置” **“作业”** “Site Recovery 作业”中，跟踪“启用保护”作业的进度。 >  >  在“完成保护”作业运行之后，计算机就可以进行故障转移了。
 
 
-若要监视添加的服务器，可在“配置服务器” > “上次联系位置”查看上次发现服务器的时间。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”。
+若要监视添加的服务器，可在“配置服务器” **“上次联系位置”查看上次发现服务器的时间** > 。 若要添加计算机而不想要等待计划的发现时间，请突出显示配置服务器（不要单击它），并单击“刷新”。
 
 ## <a name="next-steps"></a>后续步骤
 

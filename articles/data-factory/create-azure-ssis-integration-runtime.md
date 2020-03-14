@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 4146191453e7c7a589dacc41345a36a29a540de5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964278"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79260769"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>在 Azure 数据工厂中创建 Azure-SSIS 集成运行时
 
@@ -37,7 +37,7 @@ ms.locfileid: "76964278"
 
 本文说明如何使用 Azure 门户、Azure PowerShell 和 Azure 资源管理器模板来预配 Azure-SSIS IR。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -75,7 +75,7 @@ ms.locfileid: "76964278"
 
 下表对 Azure SQL 数据库服务器和托管实例的某些功能进行了比较，因为它们与 Azure SSIR IR 相关：
 
-| 功能 | 单个数据库/弹性池| 托管实例 |
+| Feature | 单个数据库/弹性池| 托管实例 |
 |---------|--------------|------------------|
 | **计划** | SQL Server 代理不可用。<br/><br/>请参阅[在数据工厂管道中计划包执行](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)。| 托管实例代理可用。 |
 | **身份验证** | 你可以使用包含的数据库用户创建一个 SSISDB 实例，该实例表示具有数据工厂的托管标识的任何 Azure AD 组作为**db_owner**角色的成员。<br/><br/>请参阅[启用 Azure AD 身份验证，在 AZURE SQL 数据库服务器上创建 SSISDB 实例](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database)。 | 您可以使用表示数据工厂的托管标识的包含的数据库用户创建 SSISDB 实例。 <br/><br/>请参阅[启用 Azure AD 身份验证，在 AZURE SQL 数据库托管实例中创建 SSISDB 实例](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance)。 |
@@ -368,7 +368,7 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 
 ### <a name="create-a-resource-group"></a>创建资源组
 
-使用[AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)命令创建[Azure 资源组](../azure-resource-manager/management/overview.md)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
+使用 [New-AzResourceGroup](../azure-resource-manager/management/overview.md) 命令创建 [Azure 资源组](/powershell/module/az.resources/new-azresourcegroup)。 资源组是在其中以组的形式部署和管理 Azure 资源的逻辑容器。
 
 如果资源组已存在，请不要将此代码复制到脚本中。 
 

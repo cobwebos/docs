@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 32912f0aef91bd4a7c831a82d1e83f00a1e0f131
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379568"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283103"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何在 azure Blob 存储中用 Azure 认知搜索索引文档
 
@@ -289,16 +289,56 @@ Azure 认知搜索限制已编制索引的 blob 的大小。 [Azure 认知搜索
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>增量索引和删除检测
+
 将 Blob 索引器设置为按计划运行时，它将只根据 Blob 的 `LastModified` 时间戳，为更改的 Blob 重新编制索引。
 
 > [!NOTE]
 > 无需指定更改检测策略 - 系统会自动启用增量索引。
 
-若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。 应该改用以下步骤：  
+若要支持删除文档，请使用“软删除”方法。 如果彻底删除 Blob，相应的文档不会从搜索索引中删除。
 
-1. 将自定义元数据属性添加到 blob，以指示 Azure 认知搜索逻辑删除它
-2. 在数据源上配置软删除检测策略
-3. 索引器处理 Blob 后（如索引器状态 API 所示），可以使用物理方式删除该 Blob
+可以通过两种方法实现软删除方法。 下面描述了这两种方法。
+
+### <a name="native-blob-soft-delete-preview"></a>本机 blob 软删除（预览版）
+
+> [!IMPORTANT]
+> 在预览版中支持本机 blob 软删除。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) 提供了此功能。 目前没有门户或 .NET SDK 支持。
+
+在此方法中，你将使用 Azure Blob 存储提供的[本机 blob 软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果数据源具有本机软删除策略集，并且索引器发现已转换为软删除状态的 blob，则该索引器将从索引中删除该文档。
+
+请使用以下步骤：
+1. [为 Azure Blob 存储启用本机软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 建议将保留策略设置为比索引器间隔计划大得多的值。 这样，如果在运行索引器时出现问题，或者如果有大量的文档要建立索引，则索引器最终处理软删除的 blob 会有很多时间。 如果 Azure 认知搜索索引器在其处于软删除状态时处理 blob，则将仅从索引中删除该文档。
+1. 在数据源上配置本机 blob 软删除检测策略。 下面显示了一个示例。 由于此功能处于预览阶段，因此必须使用预览版 REST API。
+1. 运行索引器或将索引器设置为按计划运行。 当索引器运行并处理 blob 时，将从索引中删除该文档。
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>重新索引删除的 blob
+
+如果在存储帐户上删除了启用了本机软删除的 Azure Blob 存储中的 blob，则 blob 会转换为软删除状态，从而使你能够在保持期内删除该 blob。 当 Azure 认知搜索数据源具有本机 blob 软删除策略并且索引器处理软删除的 blob 时，它会从索引中删除该文档。 如果稍后删除该 blob，则索引器**不**会始终重新索引该 blob。 这是因为索引器根据 blob 的 `LastModified` 时间戳确定要建立索引的 blob。 删除软删除的 blob 时，不会对 `LastModified` 其进行更新，因此，如果索引器已经处理了比未删除的 blob 更早的 `LastModified` 时间戳的 blob，则不会重新索引未删除的 blob。 若要确保未删除的 blob 是重新编制索引的，应重新保存该 blob 的元数据。 您无需更改元数据，而重新保存元数据将更新 blob 的 `LastModified` 时间戳，以便索引器知道它需要重新索引此 blob。
+
+### <a name="soft-delete-using-custom-metadata"></a>使用自定义元数据的软删除
+
+在此方法中，您将使用一个自定义元数据属性来指示应从搜索索引中删除文档的时间。
+
+请使用以下步骤：
+
+1. 将自定义元数据属性添加到 blob，以指示 Azure 认知搜索逻辑删除。
+1. 在数据源上配置软删除列检测策略。 下面显示了一个示例。
+1. 在索引器处理 blob 并从索引中删除文档后，可以删除 Azure Blob 存储的 blob。
 
 例如，如果某个 Blob 具有值为 `IsDeleted` 的元数据属性 `true`，以下策略会将该 Blob 视为已删除：
 
@@ -310,13 +350,17 @@ Azure 认知搜索限制已编制索引的 blob 的大小。 [Azure 认知搜索
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>重新索引删除的 blob
+
+如果对数据源设置软删除列检测策略，则将自定义元数据属性添加到具有标记值的 blob，然后运行索引器，该索引器将从索引中删除该文档。 如果要将该文档重新编制索引，只需更改该 blob 的软删除元数据值，然后重新运行该索引器。
 
 ## <a name="indexing-large-datasets"></a>为大型数据集编制索引
 

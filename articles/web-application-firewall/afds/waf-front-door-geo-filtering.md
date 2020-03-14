@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c49892f97d9c15efcaecccb6133c67133e81c87
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512569"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79137554"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
 
@@ -21,7 +21,7 @@ ms.locfileid: "73512569"
 
 WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  就地区筛选规则来说，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为感兴趣的双字母国家/地区代码。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
-可以通过 [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md) 或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)为 Front Door 配置地区筛选策略。
+你可以使用 Azure 门户、 [Azure PowerShell](waf-front-door-tutorial-geo-filtering.md)或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)为前门配置异地筛选策略。
 
 ## <a name="country-code-reference"></a>国家/地区代码参考
 
@@ -57,7 +57,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | BW | 博茨瓦纳|
 | BY | 白俄罗斯|
 | BZ | 伯利兹|
-| CA | 加拿大|
+| CA | Canada|
 | CD | 刚果民主共和国|
 | CF | 中非共和国|
 | CH | 瑞士|
@@ -84,7 +84,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | FJ | 斐济|
 | FM | 密克罗尼西亚联邦|
 | FR | 法国|
-| GB | 英国|
+| GB | United Kingdom|
 | GE | 格鲁吉亚|
 | GF | 法属圭亚那|
 | GH | 加纳|
@@ -145,12 +145,12 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | MX | 墨西哥|
 | MY | 马来西亚|
 | MZ | 莫桑比克|
-| 不可用 | 纳米比亚|
+| NA | 纳米比亚|
 | NE | 尼日尔|
 | NG | 尼日利亚|
 | NI | 尼加拉瓜|
 | NL | 荷兰|
-| 否 | 挪威|
+| 是 | 挪威|
 | NP | 尼泊尔|
 | NR | 瑙鲁|
 | NZ | 新西兰|
@@ -189,11 +189,11 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | TN | 突尼斯|
 | TR | 土耳其|
 | TT | 特立尼达和多巴哥|
-| TW | 台湾|
+| TW | 中国台湾|
 | TZ | 坦桑尼亚联合共和国|
 | UA | 乌克兰|
 | UG | 乌干达|
-| 美国 | 美国|
+| 美国 | United States|
 | UY | 乌拉圭|
 | UZ | 乌兹别克斯坦|
 | VC | 圣文森特和格林纳丁斯|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: d9cf78f3cc5399a9e974cd9b4f0b3f24c80dacce
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943643"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214122"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 azure 安全基线
 
@@ -238,13 +238,12 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 此外，你还可以将 Azure SQL 诊断遥测流式传输到 Azure SQL Analytics，这是一种云解决方案，可跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 它可以帮助你收集和可视化 Azure SQL 数据库性能指标，并提供内置智能进行性能故障排除。
 
-
 如何设置 Azure SQL 数据库的审核：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-如何 Azure Monitor 收集平台日志和指标：
+如何 Azure Monitor 收集指标和资源日志：
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 

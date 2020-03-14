@@ -4,11 +4,11 @@ description: 了解如何使用 REST API 从 Azure 备份创建的还原点还�
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78393182"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79252501"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>使用 REST API 还原 Azure 文件共享
 

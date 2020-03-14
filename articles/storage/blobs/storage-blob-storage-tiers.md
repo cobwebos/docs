@@ -9,11 +9,11 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368717"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79255504"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储： "热"、"冷" 和 "存档" 访问层
 
@@ -140,7 +140,7 @@ Blob 存储生命周期管理提供了一种基于规则的丰富策略，可用
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户的默认帐户访问层
 
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择 "**所有资源**"。
@@ -155,7 +155,7 @@ Blob 存储生命周期管理提供了一种基于规则的丰富策略，可用
 
 ![更改存储帐户层](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改帐户层。 必须用资源组名称初始化 `$rgName` 变量。 必须用您的存储帐户名称初始化 `$accountName` 变量。 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -168,7 +168,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>更改 GPv2 或 Blob 存储帐户中 blob 的层
-# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择 "**所有资源**"。
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 以下 PowerShell 脚本可用于更改 blob 层。 必须用资源组名称初始化 `$rgName` 变量。 必须用您的存储帐户名称初始化 `$accountName` 变量。 必须用您的容器名称初始化 `$containerName` 变量。 必须用您的 blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

@@ -4,11 +4,11 @@ description: 使用 v2 运行时的 Azure Functions host.json 文件的参考文
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605139"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276993"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 及更高版本的 host json 引用 
 

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376492"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261679"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD 权限管理疑难解答
 
@@ -57,7 +57,7 @@ ms.locfileid: "78376492"
 
 * 如果以前未在目录中登录的新外部用户接收到包含 SharePoint Online 站点的访问包，则其访问包将显示为未完全传递，直到其帐户在 SharePoint Online 中设置。 有关共享设置的详细信息，请参阅[查看 SharePoint Online 外部共享设置](entitlement-management-external-users.md#review-your-sharepoint-online-external-sharing-settings)。
 
-## <a name="requests"></a>请求
+## <a name="requests"></a>Requests
 
 * 当用户要请求访问包的访问权限时，请确保他们使用访问包的 "**我的访问门户" 链接**。 有关详细信息，请参阅 "[共享链接" 来请求访问包](entitlement-management-access-package-settings.md)。
 

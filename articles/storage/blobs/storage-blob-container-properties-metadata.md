@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 17ed10d424d606091bd2b7d6f3e325955c48a5a2
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894192"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79135915"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>通过 .NET 管理容器属性和元数据
 
-Blob 容器除了支持系统属性和用户定义的元数据之外，还支持系统属性和用户定义元数据。 本文介绍如何通过[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage/client)管理系统属性和用户定义的元数据。
+Blob 容器除了支持系统属性和用户定义的元数据之外，还支持系统属性和用户定义元数据。 本文介绍如何通过[用于 .net 的 Azure 存储客户端库](/dotnet/api/overview/azure/storage?view=azure-dotnet)管理系统属性和用户定义的元数据。
 
 ## <a name="about-properties-and-metadata"></a>关于属性和元数据
 

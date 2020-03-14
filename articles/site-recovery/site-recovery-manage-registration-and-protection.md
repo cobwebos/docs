@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: a411fc9a95bef595a8fc49cad77189bb88fb7661
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362537"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257623"
 ---
 # <a name="remove-servers-and-disable-protection"></a>删除服务器并禁用保护
 
@@ -227,7 +227,7 @@ ms.locfileid: "78362537"
         $vm = get-scvirtualmachine -Name "SQLVM1"
         Remove-SCVirtualMachine -VM $vm -Force
 5. 在辅助 VMM 服务器上刷新 Hyper-V 主机服务器上的虚拟机，以便在 VMM 控制台中重新检测辅助 VM。
-6. 上述步骤清理 VMM 服务器上的复制设置。 若要停止虚拟机的复制，请在主 VM 和辅助 VM 上运行以下脚本。 将 SQLVM1 替换为你的虚拟机名称。
+6. 上述步骤清理 VMM 服务器上的复制设置。 若要停止虚拟机的复制，请在主 VM 和辅助 VM 上运行以下脚本。 将 SQLVM1 替换为虚拟机名称。
 
         Remove-VMReplication –VMName “SQLVM1”
 

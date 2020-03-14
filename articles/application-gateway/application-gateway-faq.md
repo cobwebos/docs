@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 03/06/2020
 ms.author: victorh
-ms.openlocfilehash: 27048a8464fc7380a5c11ab6bbb543e35c089774
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ad3289d9b93421df6776c685325f388d552bdba4
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919594"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79279229"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>有关应用程序网关的常见问题
 
@@ -65,6 +65,8 @@ Azure 应用程序网关以服务形式提供应用程序传送控制器（ADC�
 ### <a name="where-do-i-find-the-application-gateway-ip-and-dns"></a>在哪里找到应用程序网关 IP 和 DNS？
 
 如果使用公共 IP 地址作为终结点，则会在公共 IP 地址资源上找到 IP 和 DNS 信息。 或者在门户中应用程序网关的 "概述" 页上进行查找。 如果使用内部 IP 地址，请在 "概述" 页上查找信息。
+
+对于 v2 SKU，请打开公共 IP 资源，然后选择 "**配置**"。 " **Dns 名称标签（可选）** " 字段可用于配置 dns 名称。
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>保持活动超时和 TCP 空闲超时的设置有哪些？
 
@@ -130,7 +132,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="does-application-gateway-support-connection-draining"></a>应用程序网关是否支持连接排出？
 
-是的。 可以在不中断的情况下，设置连接排出以更改后端池内的成员。 有关详细信息，请参阅[应用程序网关的连接排出部分](overview.md#connection-draining)。
+是的。 可以在不中断的情况下，设置连接排出以更改后端池内的成员。 有关详细信息，请参阅[应用程序网关的连接排出部分](features.md#connection-draining)。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>是否可以在不造成中断的情况下，将实例大小从中型更改为大型？
 
@@ -410,7 +412,7 @@ Kubernetes 允许创建 `deployment` 和 `service` 资源，以便在群集内�
 仅适用于专用 ip 的 NSG 配置示例：仅限专用 IP 访问的 ![应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>应用程序网关关联 cookie 是否支持 SameSite 属性？
-是的， [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP cookie 的强制要求，无 SameSite 特性被视为 SameSite = 宽松。 这意味着，浏览器不会将应用程序网关关联 cookie 发送到第三 pary 的上下文中。 若要支持此方案，应用程序网关会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。  这些 cookie 类似，但*ApplicationGatewayAffinityCORS* cookie 添加了另外两个属性： *SameSite = None;安全*。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 cookie 的相似性部分](configuration-overview.md#cookie-based-affinity)。
+是的， [Chromium 浏览器](https://www.chromium.org/Home) [v80 更新](https://chromiumdash.appspot.com/schedule)引入了对 HTTP cookie 的强制要求，无 SameSite 特性被视为 SameSite = 宽松。 这意味着，浏览器不会将应用程序网关关联 cookie 发送到第三方上下文中。 若要支持此方案，应用程序网关会注入名为*ApplicationGatewayAffinityCORS*的另一个 cookie 以及现有的*ApplicationGatewayAffinity* cookie。  这些 cookie 类似，但*ApplicationGatewayAffinityCORS* cookie 添加了另外两个属性： *SameSite = None;安全*。 即使对于跨域请求，这些属性也会保留粘滞会话。 有关详细信息，请参阅[基于 cookie 的相似性部分](configuration-overview.md#cookie-based-affinity)。
 
 ## <a name="next-steps"></a>后续步骤
 

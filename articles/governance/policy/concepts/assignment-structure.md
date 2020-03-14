@@ -4,11 +4,11 @@ description: 描述 Azure 策略使用的策略分配定义，用于将策略定
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747197"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79265293"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy 分配结构
 
@@ -59,7 +59,7 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 
 此属性具有以下值：
 
-|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |Description |
+|“模式” |JSON 值 |类型 |手动修正 |活动日志条目 |说明 |
 |-|-|-|-|-|-|
 |已启用 |默认 |字符串 |是 |是 |策略效果在创建或更新资源的过程中强制执行。 |
 |已禁用 |DoNotEnforce |字符串 |是 |否 | 在创建或更新资源的过程中不会强制实施策略。 |
@@ -71,7 +71,7 @@ Azure 策略使用策略分配来定义为哪些资源分配哪些策略或计�
 此字段必须是策略定义或计划定义的完整路径名称。
 `policyDefinitionId` 是字符串而不是数组。 如果经常将多个策略分配到一起，则建议使用[方案](./definition-structure.md#initiatives)。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 策略分配的此段提供[策略定义或计划定义](./definition-structure.md#parameters)中定义的参数的值。
 此设计使你可以重复使用不同资源的策略或计划定义，但需要检查不同的业务值或结果。

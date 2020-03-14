@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
-ms.translationtype: HT
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78362710"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79257818"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery 中的服务更新
 
@@ -52,7 +52,7 @@ Site Recovery 通过电子邮件（如果订阅了电子邮件通知）或在门
 --- | ---
 超过60天后，组件到期 | 每周一次
 未来53天 | 一周一次
-过去 7 天 | 一天一次
+过去 7 天 | 每天 1 次
 过期后 | 每周一次
 
 

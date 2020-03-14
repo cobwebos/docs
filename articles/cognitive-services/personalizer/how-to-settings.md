@@ -4,11 +4,11 @@ description: 服务配置包括服务处理奖励的方式、服务的探索频�
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623729"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79219353"
 ---
 # <a name="configure-personalizer-learning-loop"></a>配置 Personalizer 学习循环
 

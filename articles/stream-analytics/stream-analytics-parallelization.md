@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431588"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79254334"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>利用 Azure 流分析中的查询并行化
 本文说明了如何利用 Azure 流分析中的并行化。 了解如何通过配置输入分区和调整分析查询定义来缩放流分析作业。
@@ -35,7 +35,7 @@ ms.locfileid: "75431588"
 ### <a name="outputs"></a>Outputs
 
 处理流分析时，可利用输出中的分区：
--   Azure Data Lake Storage
+-   Azure Data Lake 存储
 -   Azure Functions
 -   Azure 表
 -   Blob 存储（可显式设置分区键）
@@ -254,27 +254,27 @@ Power BI 输出当前不支持分区。 因此，此方案不易并行。
 
 #### <a name="event-hub"></a>事件中心
 
-|引入速率（每秒事件数） | 流式处理单元 | 输出资源  |
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |--------|---------|---------|
-| 1 千     |    第    |  2 TU   |
+| 1K     |    1    |  2 TU   |
 | 5K     |    6    |  6 TU   |
 | 10K    |    12   |  10 TU  |
 
 [事件中心](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs)解决方案在流式处理单元（SU）和吞吐量方面呈线性伸缩，使其成为分析和流式传输流分析中的数据的最有效的方法。 作业可扩展到 192 SU，这大致会转换为每日最多 200 MB/秒或19000000000000个事件。
 
 #### <a name="azure-sql"></a>Azure SQL
-|引入速率（每秒事件数） | 流式处理单元 | 输出资源  |
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |---------|------|-------|
-|    1 千   |   3  |  S3   |
+|    1K   |   3  |  S3   |
 |    5K   |   18 |  P4   |
 |    10K  |   36 |  P6   |
 
 [AZURE SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql)支持并行编写，称为继承分区，但默认情况下未启用。 但是，启用继承分区以及完全并行查询可能不足以实现更高的吞吐量。 SQL write 吞吐量明显依赖于 SQL Azure 数据库配置和表架构。 [SQL 输出性能](./stream-analytics-sql-output-perf.md)一文提供了有关可最大程度地提高写入吞吐量的参数的详细信息。 如 azure[流分析输出到 AZURE SQL 数据库](./stream-analytics-sql-output-perf.md#azure-stream-analytics)一文中所述，此解决方案不能线性缩放为超过8个分区的完全并行管道，并且可能[需要在 SQL](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)输出之前重新分区（请参阅）。 需要高级 Sku 来维持高 IO 率，以及每隔几分钟进行日志备份的开销。
 
-#### <a name="cosmos-db"></a>Azure Cosmos DB
-|引入速率（每秒事件数） | 流式处理单元 | 输出资源  |
+#### <a name="cosmos-db"></a>Cosmos DB
+|引入速率（每秒事件数） | 流式处理单位数 | 输出资源  |
 |-------|-------|---------|
-|  1 千   |  3    | 20K RU  |
+|  1K   |  3    | 20K RU  |
 |  5K   |  24   | 60K RU  |
 |  10K  |  48   | 12万条 RU |
 

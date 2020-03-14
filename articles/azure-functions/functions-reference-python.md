@@ -3,12 +3,12 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206327"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276681"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -65,16 +65,16 @@ Python 函数项目的建议文件夹结构类似于以下示例：
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -89,19 +89,47 @@ Python 函数项目的建议文件夹结构类似于以下示例：
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。 
 
-共享代码应保存在 \_\_应用\_\_的单独文件夹中。 若要引用 SharedCode 文件夹中的模块，可以使用以下语法：
-
-```python
-from __app__.SharedCode import myFirstHelperFunction
-```
-
-若要引用函数的本地模块，可以使用相对导入语法，如下所示：
-
-```python
-from . import example
-```
-
 在将项目部署到 Azure 中的函数应用时，会在包中包含主项目（ *\_\_app\_\_* ）文件夹的全部内容，但不应包括文件夹本身。 建议在与项目文件夹不同的文件夹中维护测试，在此示例中 `tests`。 这使你可以在应用中部署测试代码。 有关详细信息，请参阅[单元测试](#unit-testing)。
+
+## <a name="import-behavior"></a>导入行为
+
+您可以使用显式的相对引用和绝对引用来导入函数代码中的模块。 根据上面所示的文件夹结构，以下导入函数文件中的 *\_\_应用程序\_\_\my\_第一个\_函数\\_\_init\_\_。 py*：
+
+```python
+from . import example #(explicit relative)
+```
+
+```python
+from ..shared_code import my_first_helper_function #(explicit relative)
+```
+
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+以下导入不适*用于*同一文件中：
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+共享代码应保存在 *\_\_应用\_\_* 的单独文件夹中。 若要引用*共享\_代码*文件夹中的模块，可以使用以下语法：
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>触发器和输入
 
@@ -276,7 +304,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 在这种情况下，你可以通过使用异步模式和使用多个语言辅助进程进一步提高性能。
 
-### <a name="async"></a>Async
+### <a name="async"></a>异步
 
 由于 Python 是单线程运行时，因此用于 Python 的主机实例一次只能处理一个函数调用。 对于处理大量 i/o 事件和/或 i/o 绑定的应用程序，你可以通过异步运行函数来提高性能。
 
@@ -323,7 +351,7 @@ def main(req: azure.functions.HttpRequest,
 在其中运行函数的目录。
 
 `function_name`  
-函数名称。
+函数的名称。
 
 `invocation_id`  
 当前函数调用的 ID。
@@ -366,7 +394,18 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="python-version"></a>Python 版本 
 
-目前，Azure Functions 支持 Python 3.6. x 和 3.7. x （官方 CPython 分布）。 在本地运行时，运行时使用可用的 Python 版本。 若要在 Azure 中创建函数应用时请求特定的 Python 版本，请使用[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create)命令的 `--runtime-version` 选项。 仅 Function App 创建时允许版本更改。  
+Azure Functions 支持以下 Python 版本：
+
+| Functions 版本 | Python<sup>*</sup>版本 |
+| ----- | ----- |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 2.x | 3.7<br/>3.6 |
+
+<sup>*</sup>官方 CPython 分布
+
+若要在 Azure 中创建函数应用时请求特定的 Python 版本，请使用[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create)命令的 `--runtime-version` 选项。 函数运行时版本由 `--functions-version` 选项设置。 Python 版本是在创建函数应用时设置的，无法更改。  
+
+在本地运行时，运行时使用可用的 Python 版本。 
 
 ## <a name="package-management"></a>包管理
 

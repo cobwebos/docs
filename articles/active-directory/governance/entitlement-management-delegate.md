@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78376615"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261835"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>委托和角色 Azure AD 的权利管理
 
@@ -84,7 +84,7 @@ ms.locfileid: "78376615"
 
 此外，指定的审批者和访问包的请求者也具有权限，但他们不是角色。
 
-| 右侧 | 说明 |
+| Right | 说明 |
 | --- | --- |
 | 审批者 | 由策略授权，以批准或拒绝访问包的请求，但不能更改访问包定义。 |
 | 者 | 授权访问包的策略，用于请求访问包。 |

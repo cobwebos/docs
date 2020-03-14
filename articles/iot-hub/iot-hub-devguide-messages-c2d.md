@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78379793"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271234"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>从 IoT 中心发送云到设备的消息
 
@@ -76,15 +76,15 @@ IoT 中心的 "**最大传递计数**" 属性确定消息可以在*排队*和*�
 | Ack 属性值 | 行为 |
 | ------------ | -------- |
 | none     | IoT 中心不会生成反馈消息（默认行为）。 |
-| 正 | 如果云到设备的消息达到 "*已完成*" 状态，则 IoT 中心将生成反馈消息。 |
-| 否定 | 如果云到设备的消息达到了 "*死信*" 状态，则 IoT 中心将生成反馈消息。 |
-| 全部     | IoT 中心在任一情况下都会生成反馈消息。 |
+| 积极 | 如果云到设备的消息达到 "*已完成*" 状态，则 IoT 中心将生成反馈消息。 |
+| 消极 | 如果云到设备的消息达到了 "*死信*" 状态，则 IoT 中心将生成反馈消息。 |
+| 完全     | IoT 中心在任一情况下都会生成反馈消息。 |
 
 如果**Ack**值为*full*，且未收到反馈消息，则意味着反馈消息已过期。 该服务无法了解原始消息的经历。 实际上，服务应该确保它可以在反馈过期之前对其进行处理。 最长过期时间是两天，如果发生故障，该时间会使服务再次运行。
 
 如[终结点](iot-hub-devguide-endpoints.md)中所述，IoT 中心通过面向服务的终结点（ */messages/servicebound/feedback*）以消息的形式提供反馈。 接收反馈的语义与云到设备消息的语义相同。 可能的话，消息反馈将放入单个消息中，其格式如下：
 
-| 属性     | 说明 |
+| properties     | 说明 |
 | ------------ | ----------- |
 | EnqueuedTime | 指示中心收到反馈消息的时间的时间戳 |
 | UserId       | `{iot hub name}` |
@@ -92,7 +92,7 @@ IoT 中心的 "**最大传递计数**" 属性确定消息可以在*排队*和*�
 
 正文是记录的 JSON 序列化数组，每条记录具有以下属性：
 
-| 属性           | 说明 |
+| properties           | 说明 |
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | 指示消息结果何时发生（例如，集线器收到反馈消息或原始消息过期）的时间戳 |
 | OriginalMessageId  | 此反馈信息相关的从云到设备的消息的*MessageId* |
@@ -132,7 +132,7 @@ IoT 中心的 "**最大传递计数**" 属性确定消息可以在*排队*和*�
 
 每个 IoT 中心都针对云到设备的消息传送公开以下配置选项：
 
-| 属性                  | 说明 | 范围和默认值 |
+| properties                  | 说明 | 范围和默认值 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | 云到设备消息的默认 TTL | ISO_8601 间隔最多为2天（最小1分钟）;默认值：1小时 |
 | maxDeliveryCount          | 云到设备每设备队列的最大传送计数 | 1到 100;默认值：10 |

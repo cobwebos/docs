@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ed1f47ae99f6346a932d0fe94be7586dc25a672f
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377379"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79262732"
 ---
 # <a name="using-web-browsers-msalnet"></a>使用 web 浏览器（MSAL.NET）
 
@@ -45,15 +45,15 @@ MSAL.NET 是一个多框架库，它具有框架特定的代码，用于在 UI �
 
 ### <a name="at-a-glance"></a>速览
 
-| 框架        | 嵌入 | System | 默认 |
+| 框架        | 嵌入 | 系统 | 默认 |
 | ------------- |-------------| -----| ----- |
 | .NET 经典     | 是 | 是 ^ | 嵌入 |
-| .NET Core     | 是 | 是 ^ | System |
-| .NET Standard | 是 | 是 ^ | System |
-| UWP | 是 | 是 | 嵌入 |
-| Xamarin.Android | 是 | 是  | System |
-| Xamarin.iOS | 是 | 是  | System |
-| Xamarin| 是 | 是 | 嵌入 |
+| .NET Core     | 否 | 是 ^ | 系统 |
+| .NET Standard | 否 | 是 ^ | 系统 |
+| UWP | 是 | 否 | 嵌入 |
+| Xamarin.Android | 是 | 是  | 系统 |
+| Xamarin.iOS | 是 | 是  | 系统 |
+| Xamarin| 是 | 否 | 嵌入 |
 
 ^ 需要 "http://localhost" 重定向 URI
 

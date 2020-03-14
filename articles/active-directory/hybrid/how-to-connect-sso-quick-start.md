@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888662"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79261198"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
 1. 打开“组策略管理编辑器”工具。
 2. 编辑适用于部分或全部用户的组策略。 此示例使用**默认域策略**。
-3. 浏览到“用户配置” > “首选项” > “Windows 设置” > “注册” > “新建” > “注册项”。
+3. 浏览到“用户配置” **“首选项”** “Windows 设置” > “注册” **“新建”** “注册项” >  >  >  > 。
 
     ![单一登录](./media/how-to-connect-sso-quick-start/sso15.png)
 

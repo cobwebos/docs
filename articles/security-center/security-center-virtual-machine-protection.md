@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
 ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78380834"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79282635"
 ---
 # <a name="protect-your-machines-and-applications"></a>保护您的计算机和应用程序
 当 Azure 安全中心识别到潜在的安全漏洞时，它会创建建议，指导你完成配置所需控件以强化和保护资源的过程。

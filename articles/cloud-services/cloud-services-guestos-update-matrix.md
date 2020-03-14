@@ -13,11 +13,11 @@ ms.workload: tbd
 ms.date: 1/24/2020
 ms.author: raiye
 ms.openlocfilehash: c4bdb6fec5c20940e0afe4ab2e94702a2b21a60c
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78344524"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79273106"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure 来宾 OS 版本和 SDK 兼容性对照表
 提供适用于云服务的最新 Azure 来宾 OS 版本的最新信息。 此信息可帮助在禁用来宾 OS 之前规划升级路径。 如果根据 *Azure 来宾 OS 更新设置*中所述将角色配置为使用[自动][Azure Guest OS Update Settings]进行来宾 OS 更新，则不一定要阅读本页面。
@@ -286,7 +286,7 @@ ms.locfileid: "78344524"
 
 Microsoft Azure 不断地发布更新。 来宾 OS 只不过是此类更新的其中一种。 一个发行版本会受到许多因素影响，不胜列举。 此外，Azure 实际上在成千上万的计算机上运行。 这意味着无法提供重新启动你角色的准确日期和时间。 我们正在制定限制或定时重新启动的计划。
 
-在发布新的来宾 OS 发行版本时，可能需要一段时间才能在 Azure 中完全传播。 在将服务更新为新的来宾 OS 时，将重新启动这些服务以满足更新域限制。 设置为使用“自动”更新的服务将先获取发行版本。 更新后将在 Azure 门户中显示为所选服务列出的新来宾 OS 版本。 在此期间，可能会发布再发行版本。 某些版本可能需要较长的部署时间，可能不会在正式发行日期后的几个星期内执行自动升级重新启动。 在来宾 OS 可用后，你可以从门户或配置文件中显式选择该版本。
+在发布新的来宾 OS 发行版本时，可能需要一段时间才能在 Azure 中完全传播。 在将服务更新为新的来宾 OS 时，将重新启动这些服务以满足更新域限制。 设置为使用“自动”更新的服务将先获取发行版本。 更新后将在 Azure 门户中显示为所选服务列出的新来宾 OS 版本。 在此期间，可能会发布再发行版本。 某些版本可能需要较长的部署时间，可能不会在正式发行日期后的几个星期内执行自动升级重新启动。 在来宾 OS 可用后，可以从门户或配置文件中显式选择该版本。
 
 有关重新启动和指针的大量宝贵信息以及有关来宾和主机操作系统更新的详细信息，请参阅 MSDN 博客文章[角色实例因操作系统升级而重新启动][restarts]。
 

@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: e3668718e27a3dcb545428637b34de51ec621c60
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: b7b8606f7f15f8d6fdd66681a1c7ade60ff506f3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169059"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79217788"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习 Studio 中使用示例数据集（经典）
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 [top]: #machine-learning-sample-datasets
 
 在 Azure 机器学习 Studio （经典）中创建新的工作区时，默认情况下会包含一些示例数据集和试验。 其中许多示例数据集由 [Azure AI 库](https://gallery.azure.ai/)中的示例模型使用。 其他示例数据集作为通常在机器学习中使用的各种类型数据的示例包含在内。
@@ -397,7 +400,7 @@ RCV1-V2 路透社新闻数据集中新闻文章的主题分配。 可以分配�
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 中找到该数据。
+此数据来自 KDD Cup 2010 学生成绩评估挑战赛（<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">学生成绩评估</a>）。 使用的数据为 Algebra_2008_2009 训练集 (Stamper, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. （2010 年）。 代数 I 2008-2009。 来自 KDD Cup 2010 教育数据挖掘挑战赛的挑战数据集。 可在 <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> 中找到该数据。
 <p></p>
 该数据集已下载并存储在 Azure Blob 存储 (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) 中，包含学生辅导系统中的日志文件。 提供的特征包含问题 ID 及其简要描述、学生 ID、时间戳以及学生在正确解决该问题之前尝试的次数。 原始数据集具有 890 万条记录，此数据集已降低取样为前 10 万行。 该数据集具有 23 个制表符分隔的各种类型的列：数值、分类和时间戳。
   </td>
