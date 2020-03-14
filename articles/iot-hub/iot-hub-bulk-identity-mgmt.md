@@ -1,5 +1,5 @@
 ---
-title: 导入和导出 Azure IoT 中心设备标识 | Microsoft Docs
+title: 导入/导出 Azure IoT 中心设备标识 |Microsoft Docs
 description: 如何使用 Azure IoT 服务 SDK 针对标识注册表执行批量操作，以导入和导出设备标识。 借助导入操作，可批量创建、更新和删除设备标识。
 author: robinsh
 manager: philmea
@@ -8,25 +8,27 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429254"
+ms.lasthandoff: 03/14/2020
+ms.locfileid: "79371573"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>批量导入和导出 IoT 中心设备标识
 
 每个 IoT 中心都有一个标识注册表，可以使用该注册表在服务中创建每设备资源。 设备标识注册表还可控制对面向设备的终结点的访问。 本文介绍如何在标识注册表中批量导入和导出设备标识。 若要查看中C#的工作示例并了解如何在将集线器克隆到其他区域时使用此功能，请参阅[如何克隆 IoT 中心](iot-hub-how-to-clone.md)。
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT 中心最近添加了数量有限的区域的虚拟网络支持。 此功能保护了导入和导出操作的安全，无需传递密钥即可进行身份验证。  最初，仅在以下区域提供虚拟网络支持：*WestUS2*、 *EastUS*和*default-machinelearning-southcentralus*。 若要详细了解虚拟网络支持以及用于实现它的 API 调用，请参阅[IoT 中心对虚拟网络的支持](virtual-network-support.md)。
 
 *作业*的上下文中发生导入和导出操作，可允许对 IoT 中心执行批量服务操作。
 
 **RegistryManager** 类包括使用**作业**框架的 **ExportDevicesAsync** 和 **ImportDevicesAsync** 方法。 使用这些方法可导出、导入和同步整个 IoT 中心标识注册表。
 
-本主题讨论如何使用 **RegistryManager** 类和**作业**系统执行设备到 IoT 中心的标识注册表的批量导入，以及从 IoT 中心的标识注册表到设备的批量导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/azure/iot-dps)。
+本主题讨论如何使用**RegistryManager**类和**作业**系统在 IoT 中心的标识注册表中执行设备的批量导入和导出。 还可以使用 Azure IoT 中心设备预配服务实现无需人工干预，零接触实时预配到一个或多个 IoT 中心。 若要了解详细信息，请参阅[预配服务文档](/azure/iot-dps)。
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>什么是作业？
 
@@ -84,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> 如果你的存储帐户具有限制 IoT 中心连接的防火墙配置，请考虑使用[Microsoft 受信任的第一方例外](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing)（在使用托管服务标识的 IoT 中心的选择区域中提供）。
+
 
 ## <a name="device-importexport-job-limits"></a>设备导入/导出作业限制
 
@@ -257,13 +263,13 @@ JobProperties importJob =
 
 在每个设备的导入序列化数据中使用可选 **importMode** 属性可控制每个设备的导入过程。 **ImportMode** 属性具有以下选项：
 
-| importMode | Description |
+| importMode | 说明 |
 | --- | --- |
-| **createOrUpdate** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果该设备已存在，则使用提供的输入数据覆盖现有信息，与 **ETag** 值无关。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
-| **create** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
+| **createOrUpdate** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果该设备已存在，则使用提供的输入数据覆盖现有信息，与 **ETag** 值无关。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
+| **create** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
 | **update** |如果具有指定**ID**的设备已存在，则使用提供的输入数据覆盖现有信息，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **updateIfMatchETag** |如果具有指定**ID**的设备已存在，则只有当**ETag**匹配时，才会使用提供的输入数据覆盖现有信息。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 |
-| **createOrUpdateIfMatchETag** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则只有当 **ETag** 匹配时，才使用提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
+| **createOrUpdateIfMatchETag** |如果不存在具有指定**ID**的设备，则新注册该设备。 <br/>如果设备已存在，则只有当 **ETag** 匹配时，才使用提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了克隆的 etag，则将独立于设备的 etag 进行处理。 如果现有的克隆的 etag 不匹配，则会将错误写入日志文件。 |
 | **delete** |如果具有指定**ID**的设备已存在，则将其删除，而不考虑**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **deleteIfMatchETag** |如果具有指定**ID**的设备已存在，则只有当**ETag**匹配时才会将其删除。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |
 
@@ -423,7 +429,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 在本文中，已学习如何针对 IoT 中心内的标识注册表执行批量操作。 其中的许多操作（包括如何将设备从一个集线器移动到另一个集线器）都用在 "[管理注册到 iot 中心的设备" 部分](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub)中。 
 
-克隆项目有一个与之关联的工作示例，该示例位于本页的 iot C#示例中：[的C#Azure iot 示例](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)，项目是 ImportExportDevicesSample 的。 您可以下载该示例并进行试用;[如何克隆 IoT 中心](iot-hub-how-to-clone.md)一文中提供了说明。
+克隆项目有一个与之关联的工作示例，该示例位于本页的 IoT C#示例中：的[Azure IoT 示例C# ](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/)，其中项目是 ImportExportDevicesSample 的。 您可以下载该示例并进行试用;[如何克隆 IoT 中心](iot-hub-how-to-clone.md)一文中提供了说明。
 
 若要了解有关管理 Azure IoT 中心的详细信息，请查看以下文章：
 

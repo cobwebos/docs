@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7349c22a2478020c9ac79655ad1e7c23c4cf5034
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 6fef1829e008b58f50546e9e6e7ad2ccee037224
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78893308"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79245260"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -495,9 +495,17 @@ Microsoft Azure 平台是多租户平台。 作为托管 Azure Vm 的存储、�
 
 此外，Azure 还提供了专用主机的概念。 专用主机概念使你可以更好地控制 Azure 完成的修补周期。 你可以根据自己的计划来进行修补。 此产品/服务专门面向的客户的工作负荷可能不符合工作负荷的正常周期。 若要了解 Azure 专用主机产品/服务的概念，请阅读[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)一文。 SAP 工作负荷支持使用此产品/服务，并且需要更好地控制对基础结构和 Microsoft 最终维护计划的修补的多个 SAP 客户使用此产品/服务。 有关 Microsoft 如何维护和修补托管虚拟机的 Azure 基础结构的详细信息，请参阅[azure 中虚拟机的维护](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates)文章。
 
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>第1代和第2代虚拟机
+Microsoft 的虚拟机监控程序能够处理两代不同的虚拟机。 这些格式称为**第1代**和**第2代**。 Windows Server 2012 虚拟机监控程序2012年引入了**第2代**。 Azure 已开始使用第1代虚拟机。 部署 Azure 虚拟机时，默认情况下仍使用第1代格式。 同时，还可以部署第2代 VM 格式。 [Azure 上第2代 Vm 支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)的文章列出了可部署为第2代 Vm 的 azure VM 系列。 本文还列出了第2代虚拟机的非常重要的功能差异，因为它们可以在 Hyper-v 私有云和 Azure 上运行。 更重要的是，本文还列出第1代虚拟机和第2代 Vm （与在 Azure 中运行的 Vm）之间的功能差异。 
+
+> [!NOTE]
+> 在 Azure 中运行的第1代和第2代 Vm 的功能差异。 若要查看这些差异的列表，请参阅[Azure 上的第2代 Vm 支持](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。  
+ 
+不能将现有 VM 从一个代移到另一代。 若要更改虚拟机的生成，需要部署所需的新 VM，并重新安装在生成的虚拟机中运行的软件。 这只会影响 VM 的基本 VHD 映像，并且不会影响数据磁盘或附加的 NFS 或 SMB 共享。 最初分配到第1代 VM 的数据磁盘、NFS 或 SMB 共享
+
+目前，你会遇到此问题，尤其是在 Azure M 系列 Vm 和 Mv2 系列 Vm 之间。 由于第1代 VM 格式的限制，不能以第1代格式提供 Mv2 系列的大型 Vm，但需要仅在第2代中提供。 另一方面，尚未在第2代中启用 M 系列 VM 系列。 因此，在 M 系列和 Mv2 系列虚拟机之间重新调整大小，需要在另一个 VM 系列的目标虚拟机中重新安装软件。 Microsoft 正在努力为第2代部署部署 M 系列 Vm。 在将来将 M 系列 Vm 部署为第2代 Vm，这将使看似和 Mv2 虚拟机之间的重新调整规模更小。 在这两个方向上，都可以从 M 系列调整到更大的 Mv2 系列虚拟机，或从较大的 Mv2 系列 Vm 调整为较小的 M 系列 Vm。 只要 M 系列 Vm 可以部署为第2代 Vm，就会立即更新文档。    
 
  
-
 
 ### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>存储：Microsoft Azure 存储和数据磁盘
 Microsoft Azure 虚拟机使用不同的存储类型。 在 Azure 虚拟机服务上实施 SAP 时，必须了解以下两种主要存储类型之间的差异：
