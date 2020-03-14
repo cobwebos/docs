@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 46044d4c6dd65944291aff157229be0abc60d3d7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7003dc19a7bfc405809de91534028aba8e0416c5
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913236"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136844"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>通过 Java 和 IntelliJ 创建第一个 Azure 函数
 
@@ -46,7 +46,7 @@ ms.locfileid: "77913236"
 1. 在“添加 Archetype”窗口中按以下说明填写各个字段：
     - _GroupId_：com.microsoft.azure
     - _ArtifactId_：azure-functions-archetype
-    - _版本_：使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新**1.22**版
+    - _版本_：查看并使用[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新版本，
     ![在 IntelliJ 中从原型创建 Maven 项目](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. 选择“确定”，然后选择“下一步”。
 1. 输入当前项目的详细信息，并选择“完成”。

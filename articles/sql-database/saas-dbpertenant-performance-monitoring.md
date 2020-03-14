@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822235"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214469"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -52,11 +52,11 @@ Wingtip Tickets SaaS Database Per Tenant 应用使用单租户数据模型，在
 * 如不希望手动监视性能，最有效的方式是设置警报，在数据库或池的性能不在正常范围内时触发该警报。
 * **池 eDTU 级别可以上下缩放**，以应对池聚合计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，**则可让池按计划自动缩放**。 例如，如果知道工作负荷在夜间或周末会减轻，则可纵向缩减。
 * 要应对较长期的波动，或者应对数据库数目的变化，**可将单个数据库移至其他池**。
-* 若要应对单个数据库负载的短期增加，可将单个数据库移出池，为其分配单独的计算大小。 一旦负载降低，则可让该数据库返回池中。 如果预先知道这种情况，则可提前移动数据库，确保数据库的资源始终满足需求，同时避免对池中的其他数据库造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
+* 若要应对单个数据库负载的短期增加，可将单个数据库移出池，为其分配单独的计算大小。 一旦负载降低，则可让该数据库返回池中。 如果事先知道这种情况，可以将数据库提前移动以确保数据库始终具有它需要的资源，从而避免对池中的其他数据库造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库来说，监视和警报功能可以在数据库和池上使用。 这种内置的监视和警报功能是特定于资源的，因此对于少量资源使用方便，但在处理大量资源时就不是很方便。
 
-对于大容量方案，使用多个资源时，可以使用[Azure Monitor 日志](saas-dbpertenant-log-analytics.md)。 这是单独的 Azure 服务，可针对在 Log Analytics 工作区中收集的发出的诊断日志和遥测提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据，并用于查询和设置警报。
+对于大容量方案，使用多个资源时，可以使用[Azure Monitor 日志](saas-dbpertenant-log-analytics.md)。 这是单独的 Azure 服务，可针对 Log Analytics 工作区中收集的发出的日志提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据，并用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>获取 Wingtip Tickets SaaS Database Per Tenant 应用程序的脚本
 
@@ -218,7 +218,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 ## <a name="other-performance-management-patterns"></a>其他性能管理模式
 
-**提前缩放** 在上述练习中，探索了如何缩放独立的数据库，知道要查找的数据库。 如果 Contoso 音乐厅的管理层将即将发生的售票事件告知了 Wingtip，则可提前将数据库移出池。 否则就可能需要在池或数据库上设置一个警报，监视所发生的事件。 并不希望从池中其他抱怨性能下降的租户处了解到这些情况。 如果租户可以预测其对额外资源的需求时间，便可以设置一个 Azure 自动化 Runbook，按定义的计划将数据库移出池，然后再移回去。
+**提前缩放** 在上述练习中，探索了如何缩放独立的数据库，知道要查找的数据库。 如果 Contoso 音乐会厅的管理已通知 Wingtips 即将到来的票证销售，则数据库可能已被移出池提前。 否则就可能需要在池或数据库上设置一个警报，监视所发生的事件。 并不希望从池中其他抱怨性能下降的租户处了解到这些情况。 如果租户可以预测其对额外资源的需求时间，便可以设置一个 Azure 自动化 Runbook，按定义的计划将数据库移出池，然后再移回去。
 
 **租户自助缩放**：由于缩放是一项可以轻松地通过管理 API 调用的任务，可以轻松地构建一项功能，将租户数据库缩放到面向租户的应用程序中，作为 SaaS 服务的功能提供。 例如，可以让租户自行管理上下缩放，也许还可以将其与租户的计费直接关联在一起！
 

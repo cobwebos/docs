@@ -4,11 +4,11 @@ description: 介绍如何通过 PowerShell 使用 Azure 备份来备份和恢复
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78363686"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79247977"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>通过 PowerShell 备份和还原 Azure Vm
 

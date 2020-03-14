@@ -6,11 +6,11 @@ ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78372089"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79266073"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据与 Azure 订阅凭据不同。
@@ -40,7 +40,7 @@ JSON 输出会将该密码显示为 `null`。 如果收到 `'Conflict'. Details:
 
 在 Azure 门户中，必须至少有一个应用，才能访问 "部署凭据" 页面。 配置用户级别凭据的步骤：
 
-1. 在[Azure 门户](https://portal.azure.com)中，从左侧菜单中选择 "**应用服务**" >  **\<any_app >** ** >  > **  > 
+1. 在[Azure 门户](https://portal.azure.com)中，从左侧菜单中选择 "**应用服务**" >  **\<any_app >** ** >  > **  > **FTP** **Dashboard**
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 

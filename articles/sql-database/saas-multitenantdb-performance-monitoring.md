@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827954"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79214155"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理分片多租户 Azure SQL 数据库的性能
 
@@ -47,11 +47,11 @@ Wingtip Tickets SaaS 多租户数据库应用使用分片多租户数据模型�
 * 若不希望手动监视性能，那么最有效的方式就是设置警报，在数据库的性能不在正常范围内时触发该警报。
 * 可以上下缩放 DTU 级别，以应对数据库计算大小的短期波动。 如果该波动定期发生或者发生时间可以预见，则可让数据库按计划自动缩放。 例如，如果知道工作负荷在夜间或周末会减轻，则可纵向缩减。
 * 若要应对较长期的波动，或者应对租户中的变化，可将单个租户移至其他数据库。
-* 若要应对单个租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的计算大小。 一旦负载降低，则可让该租户返回多租户数据库中。 如果预先知道这种情况，则可提前移动租户，以确保数据库的资源始终可满足需求，同时避免对多租户数据库中的其他租户造成影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
+* 若要应对单个租户负载的短期增加，可将单个租户移出数据库，并为其分配单独的计算大小。 一旦负载降低，则可让该租户返回多租户数据库中。 如果事先知道这种情况，可以提前迁移租户，以确保数据库始终具有它需要的资源，并避免对多租户数据库中的其他租户产生影响。 如果此类需求是可以预测的（例如某个地点因举行热门活动而导致售票剧增），则可将这种管理行为集成到应用程序中。
 
 [Azure 门户](https://portal.azure.com)提供内置的监视和警报功能，可以监视大多数资源。 对于 SQL 数据库，在数据库上提供了监视和警报功能。 这种内置的监视和警报功能是特定于资源的，因此，对于使用少量资源的方案比较方便，但在处理大量资源时就不太适用了。
 
-对于大容量方案，使用多个资源时，可以使用[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对在 Log Analytics 工作区中收集的发出的诊断日志和遥测提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据，并用于查询和设置警报。
+对于大容量方案，使用多个资源时，可以使用[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。 这是单独的 Azure 服务，可针对 Log Analytics 工作区中收集的发出的日志提供分析。 Azure Monitor 日志可以收集来自多个服务的遥测数据，并用于查询和设置警报。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>获取 Wingtip Tickets SaaS 多租户数据库应用程序源代码和脚本
 

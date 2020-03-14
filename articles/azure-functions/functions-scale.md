@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4ff3ebf6239f9b62409ff0885f23115711e33cb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77584535"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79276603"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
@@ -63,7 +63,7 @@ ms.locfileid: "77584535"
 
 * 永久温实例，以避免任何冷启动
 * VNet 连接
-* 无限制的执行持续时间
+* 无限制的执行持续时间（保证为60分钟）
 * 高级实例大小（一个核心、两个核心和四个核心实例）
 * 更可预测的定价
 * 针对具有多个 function app 的计划的高密度应用分配
@@ -142,7 +142,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
-Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要扩大或缩小。 缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
+Azure Functions 使用名为“缩放控制器”的组件来监视事件率以及确定是要横向扩展还是横向缩减。 缩放控制器针对每种触发器类型使用试探法。 例如，使用 Azure 队列存储触发器时，它会根据队列长度和最旧队列消息的期限进行缩放。
 
 Azure Functions 的小数位数是 function app。 横向扩展函数应用时，将分配额外的资源来运行 Azure Functions 主机的多个实例。 相反，计算需求下降时，扩展控制器将删除函数主机实例。 当函数应用内没有运行任何函数时，实例的数量最终将*放大*为零。
 
@@ -153,12 +153,10 @@ Azure Functions 的小数位数是 function app。 横向扩展函数应用时�
 缩放可根据多种因素而异，可根据选定的触发器和语言以不同的方式缩放。 需要注意以下几个复杂的缩放行为：
 
 * 单函数应用仅可扩大到最多200个实例。 不过，单个实例每次可以处理多个消息或请求，因此，对并发执行数没有规定的限制。
-* 对于 HTTP 触发器，将每隔1秒至少分配一次新实例。
-* 对于非 HTTP 触发器，每隔30秒一次最多只能分配一个新实例。
-
-不同触发器还可能有不同的缩放限制，如下所述：
-
-* [事件中心](functions-bindings-event-hubs-trigger.md#scaling)
+* 对于 HTTP 触发器，每秒最多分配一个新实例。
+* 对于非 HTTP 触发器，每隔30秒分配最多一个新实例。 在[高级计划](#premium-plan)中运行时，缩放速度会更快。
+* 对于服务总线触发器，使用对资源的_管理_权限，以实现最有效的缩放。 使用_侦听_权限，缩放并不太准确，因为队列长度不能用于通知缩放决定。 若要详细了解如何在服务总线访问策略中设置权限，请参阅[共享访问授权策略](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)。
+* 有关事件中心触发器，请参阅参考文章中的[缩放指南](functions-bindings-event-hubs-trigger.md#scaling)。 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>可缩放应用的最佳做法和模式
 

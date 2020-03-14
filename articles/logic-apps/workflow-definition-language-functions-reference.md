@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 87798c93bbc1098daea2f7258a3af3e26bb4bb93
-ms.sourcegitcommit: 85d52b799621d35d7df32c2cb1e339071c619bb3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/03/2020
-ms.locfileid: "76966089"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283909"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在 Azure 逻辑应用和电源自动化的表达式中使用函数的参考指南
 
@@ -889,7 +889,7 @@ array('<value>')
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*value*>] | Array | 一个包含单一指定输入的数组 |
+| [<*value*>] | 数组 | 一个包含单一指定输入的数组 |
 ||||
 
 *示例*
@@ -1178,7 +1178,7 @@ concat('Hello', 'World')
 
 <a name="contains"></a>
 
-### <a name="contains"></a>contains
+### <a name="contains"></a>包含
 
 检查集合是否包含某个特定项。
 当找到该项目时返回 true，找不到该项目时返回 false。
@@ -1367,7 +1367,7 @@ createArray('<object1>', '<object2>', ...)
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*object1*>, <*object2*>, ...] | Array | 基于所有输入项创建的数组 |
+| [<*object1*>, <*object2*>, ...] | 数组 | 基于所有输入项创建的数组 |
 ||||
 
 *示例*
@@ -1733,7 +1733,7 @@ encodeUriComponent('https://contoso.com')
 
 <a name="empty"></a>
 
-### <a name="empty"></a>empty
+### <a name="empty"></a>空
 
 检查集合是否为空。
 当集合为空时返回 true，不为空时返回 false。
@@ -1960,7 +1960,7 @@ formDataMultiValues('<actionName>', '<key>')
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*array-with-key-values*>] | Array | 包含与指定键匹配的所有值的数组 |
+| [<*array-with-key-values*>] | 数组 | 包含与指定键匹配的所有值的数组 |
 ||||
 
 *示例*
@@ -2608,7 +2608,7 @@ join([<collection>], '<delimiter>')
 
 | 参数 | 必需 | Type | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | Array | 包含要联接的项的数组 |
+| <*collection*> | 是 | 数组 | 包含要联接的项的数组 |
 | <*delimiter*> | 是 | String | 出现在结果字符串中的每个字符之间的分隔符 |
 |||||
 
@@ -2696,7 +2696,7 @@ lastIndexOf('hello world', 'world')
 
 <a name="length"></a>
 
-### <a name="length"></a>长度
+### <a name="length"></a>length
 
 返回集合中的项数。
 
@@ -3224,7 +3224,7 @@ range(<startIndex>, <count>)
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*range-result*>] | Array | 从指定索引开始的整数组成的数组 |
+| [<*range-result*>] | 数组 | 从指定索引开始的整数组成的数组 |
 ||||
 
 *示例*
@@ -3591,13 +3591,13 @@ skip([<collection>], <count>)
 
 | 参数 | 必需 | Type | 说明 |
 | --------- | -------- | ---- | ----------- |
-| <*collection*> | 是 | Array | 要删除其项的集合 |
+| <*collection*> | 是 | 数组 | 要删除其项的集合 |
 | <*count*> | 是 | Integer | 要从开头删除的项数（一个正整数） |
 |||||
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*updated-collection*>] | Array | 删除指定项后得到的更新后的集合 |
+| [<*updated-collection*>] | 数组 | 删除指定项后得到的更新后的集合 |
 ||||
 
 *示例*
@@ -3628,7 +3628,7 @@ split('<text>', '<delimiter>')
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*substring1*>,<*substring2*>,...] | Array | 一个数组，其中包含从原始字符串返回以逗号分隔的子字符串 |
+| [<*substring1*>,<*substring2*>,...] | 数组 | 一个数组，其中包含从原始字符串返回以逗号分隔的子字符串 |
 ||||
 
 *示例*
@@ -4098,7 +4098,7 @@ triggerFormDataMultiValues('<key>')
 
 | 返回值 | Type | 说明 |
 | ------------ | ---- | ----------- |
-| [<*array-with-key-values*>] | Array | 包含与指定键匹配的所有值的数组 |
+| [<*array-with-key-values*>] | 数组 | 包含与指定键匹配的所有值的数组 |
 ||||
 
 *示例*
@@ -4695,7 +4695,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | 一个 XML 节点，当只有单个节点与指定的 XPath 表达式匹配时 |
 | <*value*> | 任意 | 来自一个 XML 节点的值，当只有单个值与指定的 XPath 表达式匹配时 |
-| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | Array | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>-或- </br>[<*value1*>, <*value2*>, ...] | 数组 | 一个数组，其中包含与指定的 XPath 表达式匹配的 XML 节点或值 |
 ||||
 
 *示例 1*

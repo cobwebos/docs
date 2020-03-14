@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666731"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79283935"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>在 Azure 逻辑应用中执行数据操作
 
@@ -29,7 +29,7 @@ ms.locfileid: "75666731"
 
 这些操作帮助处理数组中的数据。
 
-| 行动 | Description |
+| 操作 | 说明 |
 |--------|-------------|
 | [**创建 CSV 表**](#create-csv-table-action) | 从数组创建逗号分隔值 (CSV) 表。 |
 | [**创建 HTML 表**](#create-html-table-action) | 从数组创建 HTML 表。 |
@@ -42,7 +42,7 @@ ms.locfileid: "75666731"
 
 这些操作帮助处理采用 JavaScript 对象表示法 (JSON) 格式的数据。
 
-| 行动 | Description |
+| 操作 | 说明 |
 |--------|-------------|
 | [Compose](#compose-action) | 从可能具有不同数据类型的多个输入创建一个消息或字符串。 然后可以使用此字符串作为单个输入，而无需反复输入相同的输入。 例如，可以从各种输入创建单个 JSON 消息。 |
 | [Parse JSON](#parse-json-action) | 为 JSON 内容中的属性创建用户友好的数据令牌，以便在逻辑应用中更轻松地使用这些属性。 |
@@ -50,13 +50,13 @@ ms.locfileid: "75666731"
 
 若要创建更复杂的 JSON 转换，请参阅[使用 Liquid 模板执行高级 JSON 转换](../logic-apps/logic-apps-enterprise-integration-liquid-transform.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 需在其中使用操作处理数据的逻辑应用
 
-  如果不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  如果你不熟悉逻辑应用，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)和 [快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 * 用作逻辑应用中第一个步骤的[触发器](../logic-apps/logic-apps-overview.md#logic-app-concepts) 
 
@@ -76,7 +76,7 @@ ms.locfileid: "75666731"
 
 `{"age":35,"fullName":"Owens,Sophie"}`
 
-若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你偏好使用代码视图编辑器，可将本文中的示例“撰写”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
+若要尝试示例，请在逻辑应用设计器中遵循以下步骤。 或者，如果你喜欢在代码视图编辑器中工作，则可以将本文中的示例**组合**和**初始化变量**操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-撰写](../logic-apps/logic-apps-data-operations-code-samples.md#compose-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -134,7 +134,7 @@ ms.locfileid: "75666731"
 
 若要创建一个逗号分隔值（CSV）表，该表具有数组中 JavaScript 对象表示法（JSON）对象的属性和值，请使用 "**创建 CSV 表**" 操作。 然后，可以在“创建 CSV 表”操作后面的操作中使用生成的表。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“创建 CSV 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
+如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的 "**创建 CSV 表**" 和 "**初始化变量**操作定义" 从本文复制到你自己的逻辑应用的基础工作流定义：[数据操作代码示例-创建 CSV 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-csv-table-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -285,7 +285,7 @@ Oranges,2
 
 若要创建具有数组中 JavaScript 对象表示法（JSON）对象属性和值的 HTML 表，请使用 "**创建 HTML 表**" 操作。 然后，可以在“创建 HTML 表”操作后面的操作中使用生成的表。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“创建 HTML 表”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
+如果你更喜欢在代码视图编辑器中工作，则可以将此示例中的 "**创建 HTML 表**" 和 "**初始化变量**操作" 定义复制到自己的逻辑应用的基础工作流定义：[数据操作代码示例-创建 HTML 表](../logic-apps/logic-apps-data-operations-code-samples.md#create-html-table-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -447,7 +447,7 @@ Oranges,2
 > 如果调用 HTTP 终结点并接收 JSON 响应，请使用**PARSE json**操作来处理 json 响应。 
 > 否则，**筛选器数组**操作只能读取响应正文，而不能读取 JSON 有效负载的结构。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“筛选数组”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
+如果你更喜欢在 "代码视图" 编辑器中工作，则可以将示例**筛选器数组**和将此项目中的变量操作定义**初始化**为自己的逻辑应用的基础工作流定义：[数据操作代码示例-筛选数组](../logic-apps/logic-apps-data-operations-code-samples.md#filter-array-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -512,7 +512,7 @@ Oranges,2
 
 若要创建一个包含数组中所有项的字符串，并使用特定分隔符字符分隔这些项，请使用**联接**操作。 然后，可以在“联接”操作后面的操作中使用该字符串。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“联接”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
+如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的 "**联接**" 和 "**初始化变量**" 操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-联接](../logic-apps/logic-apps-data-operations-code-samples.md#join-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -528,7 +528,7 @@ Oranges,2
 
    * 若要在步骤之间添加操作，请将鼠标移到连接箭头上，以便显示加号（ **+** ）。 选择加号，然后选择 "**添加操作**"。
 
-1. 在搜索框中，输入 `join` 作为筛选器。 在操作列表中选择此操作：“联接”
+1. 在搜索框中，输入 `join` 作为筛选器。 在操作列表中选择此操作：**Join**
 
    ![选择 "联接" 操作](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
@@ -572,7 +572,7 @@ Oranges,2
 
 若要引用或访问 JavaScript 对象表示法（JSON）内容中的属性，可以通过使用**PARSE JSON**操作为这些属性创建用户友好的字段或令牌。 这样，在为逻辑应用指定输入时，便可以从动态内容列表中选择这些属性。 对于此操作，可以提供 JSON 架构，或者从示例 JSON 内容或有效负载生成 JSON 架构。
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“分析 JSON”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
+如果你更喜欢在 "代码视图" 编辑器中工作，则可以将此示例中的示例**分析 JSON**和**初始化变量**操作定义复制到自己的逻辑应用的基础工作流定义中：[数据操作代码示例-分析 JSON](../logic-apps/logic-apps-data-operations-code-samples.md#parse-json-action-example)
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 
@@ -647,7 +647,7 @@ Oranges,2
 > [!NOTE]
 > 要使操作使用“选择”操作的数组输出，这些操作必须接受数组作为输入，或者必须将输出数组转换为另一种兼容格式。 
 
-如果你偏好使用代码视图编辑器，可将本文中的示例“选择”和“初始化变量”操作复制到自己的逻辑应用基础工作流定义：[数据操作代码示例 - 选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
+如果你更喜欢在代码视图编辑器中工作，则可以将此**示例中**的变量操作定义复制到你自己的逻辑应用的基础工作流定义，并将其**初始化**为你自己的逻辑应用：[数据操作代码示例-选择](../logic-apps/logic-apps-data-operations-code-samples.md#select-action-example) 
 
 1. 在 [Azure 门户](https://portal.azure.com)或 Visual Studio 的逻辑应用设计器中打开逻辑应用。
 

@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 05a650752e9346b9836fe3ba275181369bd94cf0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227126"
+ms.lasthandoff: 03/12/2020
+ms.locfileid: "79136827"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 创建第一个函数 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>通过 Java 和 Eclipse 创建第一个函数 
 
 本文介绍如何使用 Eclipse IDE 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/solutions/serverless/)函数项目、对其进行测试和调试，然后将其部署到 Azure Functions。 
 
@@ -37,15 +37,15 @@ ms.locfileid: "74227126"
 
 ## <a name="create-a-functions-project"></a>创建 Functions 项目
 
-1. 在 Eclipse 中，选择“文件”菜单，然后选择“新建”- **“Maven 项目”&gt;** 。 
+1. 在 Eclipse 中，选择 "**文件**" 菜单，然后选择 " **&gt; Maven 项目**"。 
 1. 接受“新建 Maven 项目”对话框中的默认设置，然后选择“下一步”。
-1. 选择“添加原型”，并为 **azure-functions-archetype** 添加条目。[](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。
     - 原型组 ID：com.microsoft.azure
     - 原型项目 ID：azure-functions-archetype
-    - 版本：使用[中央存储库中的](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)最新**1.22**版
+    - 版本：查看并使用[中央存储库中的](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)最新版本
     ![Eclipse Maven create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. 单击 **"确定"** ，然后单击 "**下一步**"。  请确保填写所有字段的值（包括 `resourceGroup`、`appName`和 `appRegion`）（请使用**fabrikam 函数 20170920120101928**以外的不同 appName），最终**完成**。
-    ![Eclipse Maven 创建 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+    ![Eclipse Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生成的代码是一个简单的回显触发 HTTP 请求正文的 [HTTP 触发](/azure/azure-functions/functions-bindings-http-webhook)函数。
 
@@ -55,7 +55,7 @@ Maven 在新文件夹中创建名为 artifactId 的项目文件。 项目中生�
 > 必须安装 [Azure Functions Core Tools 版本 2](functions-run-local.md#v2)，才能在本地运行和调试函数。
 
 1. 右键单击生成的项目，然后选择“运行方式”和“Maven 生成”。
-1. 在“编辑配置”对话框中的“目标”和“名称”字段内输入 **，然后选择“运行”。** `package` 这会生成并打包函数代码。
+1. 在“编辑配置”对话框中的“目标”和“名称”字段内输入 `package`，然后选择“运行”。 这会生成并打包函数代码。
 1. 生成完成后，使用 `azure-functions:run` 作为目标和名称，如上所述创建另一个“运行”配置。 选择“运行”，在 IDE 中运行函数。
 
 完成函数测试后，在控制台窗口中终止运行时。 一次只能有一个函数主机处于活动状态并在本地运行。

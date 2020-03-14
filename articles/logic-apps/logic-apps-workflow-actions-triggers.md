@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366231"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79270363"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure 逻辑应用中的触发器和操作类型的架构参考指南
 
@@ -59,7 +59,7 @@ ms.locfileid: "77366231"
 
 | 值 | Type | 说明 | 
 |-------|------|-------------| 
-| <*array-with-conditions*> | Array | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
+| <*array-with-conditions*> | 数组 | 数组，其中包含一个或多个决定是否运行工作流的[条件](#trigger-conditions)。 仅适用于触发器。 | 
 | <*runtime-config-options*> | JSON 对象 | 通过设置 `runtimeConfiguration` 属性可更改触发器运行时行为。 有关详细信息，请参阅[运行时配置设置](#runtime-config-options)。 | 
 | <*splitOn-expression*> | String | 对于返回数组的触发器，可指定一个将数组项[拆分或解除批处理*到多个工作流实例进行处理的表达式*](#split-on-debatch)。 | 
 | <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -612,7 +612,7 @@ ms.locfileid: "77366231"
 |-------|------|-------------| 
 | <*method-type*> | String | 传入请求必须用以调用逻辑应用的方法：“GET”、“PUT”、“POST”、“PATCH”、“DELETE” |
 | <relative-path-for-accepted-parameter> | String | 终结点的 URL 可接受的参数的相对路径 | 
-| <required-properties> | Array | 需要值的一个或多个属性 | 
+| <required-properties> | 数组 | 需要值的一个或多个属性 | 
 | <max-runs> | Integer | 默认情况下，工作流实例将同时（并发或并行）运行，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要通过设置新的 <count> 值更改此限制，请参阅[更改触发器并发](#change-trigger-concurrency)。 | 
 | <max-runs-queue> | Integer | 如果工作流已在运行最大实例数（可根据 `runtimeConfiguration.concurrency.runs` 属性进行更改），则任何新的运行都将放入此队列中，直到达到[默认限制](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 
 | <*operation-option*> | String | 通过设置 `operationOptions` 属性可更改默认行为。 有关详细信息，请参阅[操作选项](#operation-options)。 | 
@@ -827,7 +827,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 | [Query](#query-action) | 基于条件或筛选器使用另一个数组中的项创建数组。 | 
 | [Response](#response-action) | 创建针对传入调用或请求的响应。 | 
 | [Select](#select-action) | 通过基于指定映射转换另一个数组中的项，使用 JSON 对象创建数组。 | 
-| [Table](#table-action) | 根据数组创建 CSV 或 HTML 表。 | 
+| [**Table**](#table-action) | 根据数组创建 CSV 或 HTML 表。 | 
 | [Terminate](#terminate-action) | 停止正在主动运行的工作流。 | 
 | [Wait](#wait-action) | 将工作流暂停指定的时间段或暂停到指定日期和时间。 | 
 | [Workflow](#workflow-action) | 将一个工作流嵌套在另一个工作流内。 | 
@@ -1277,7 +1277,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | 值 | Type | 说明 | 
 |-------|------|-------------| 
-| <array> | Array | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 | 
+| <array> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 | 
 | <*delimiter*> | 单字符字符串 | 分隔字符串中每个项的字符 | 
 |||| 
 
@@ -1423,7 +1423,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | 值 | Type | 说明 | 
 |-------|------|-------------| 
-| <array> | Array | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 |
+| <array> | 数组 | 提供源项的数组或表达式。 如果指定表达式，请将表达式括于双引号内。 |
 | <condition-or-filter> | String | 用于筛选源数组中的项的条件 <p>**注意**：如果没有任何值满足此条件，则该操作会创建一个空数组。 |
 |||| 
 
@@ -1539,7 +1539,7 @@ Azure 逻辑应用提供多种操作类型，每个类型均具有定义操作�
 
 | 值 | Type | 说明 | 
 |-------|------|-------------| 
-| <array> | Array | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意**：如果源数组为空，则该操作会创建一个空数组。 | 
+| <array> | 数组 | 提供源项的数组或表达式。 确保将表达式放入双引号内。 <p>**注意**：如果源数组为空，则该操作会创建一个空数组。 | 
 | <*key-name*> | String | 从 <expression>  分配给结果的属性名称<p>若要为输出数组中的所有对象添加一个新属性，请提供该属性的 <key-name> 以及属性值的 <expression>。 <p>若要从数组的所有对象中删除属性，请删除该属性的 <key-name>。 | 
 | <*expression*> | String | 转换源数组中的项并将结果分配给 <key-name>的表达式 | 
 |||| 
@@ -1638,7 +1638,7 @@ Select 操作创建一个数组作为输出，因此，任何想要使用此输�
 | 值 | Type | 说明 | 
 |-------|------|-------------| 
 | \<CSV*或*HTML >| String | 要创建的表的格式 | 
-| <array> | Array | 为表提供源项的数组或表达式 <p>**注意**：如果源数组为空，则该操作会创建一个空表。 | 
+| <array> | 数组 | 为表提供源项的数组或表达式 <p>**注意**：如果源数组为空，则该操作会创建一个空表。 | 
 |||| 
 
 *Optional*
@@ -2383,7 +2383,7 @@ ID,Product_Name
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | Integer | 更改当逻辑应用已在运行最大并发实例时必须等待运行的工作流实例数的[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)。 <p>若要更改此默认限制，请参阅[更改等待的运行限制](#change-waiting-runs)。 | 所有触发器 | 
 | `runtimeConfiguration.concurrency.repetitions` | Integer | 更改可同时运行的 "for each" 循环迭代数的[*默认限制*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)（并发或并行）。 <p>将 `repetitions` 属性设置为 `1` 与将 `operationOptions` 属性设置为 `SingleInstance` 的作用相同。 可以设置其中任一属性，但不能同时设置二者。 <p>若要更改默认限制，请参阅[更改“for each”并发](#change-for-each-concurrency)或[按顺序运行“for each”循环](#sequential-for-each)。 | 操作： <p>[Foreach](#foreach-action) | 
 | `runtimeConfiguration.paginationPolicy.minimumItemCount` | Integer | 对于支持和启用分页的特定操作，此值指定要检索的结果的*最小*数目。 <p>若要启用分页，请参阅[获取使用分页的批量数据、项或结果](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md) | 操作：随 |
-| `runtimeConfiguration.secureData.properties` | Array | 在许多触发器和操作中，这些设置将从逻辑应用的运行历史记录中隐藏输入和/或输出。 <p>若要详细了解如何保护此数据，请参阅[隐藏运行历史记录中的输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view)。 | 大多数触发器和操作 |
+| `runtimeConfiguration.secureData.properties` | 数组 | 在许多触发器和操作中，这些设置将从逻辑应用的运行历史记录中隐藏输入和/或输出。 <p>若要详细了解如何保护此数据，请参阅[隐藏运行历史记录中的输入和输出](../logic-apps/logic-apps-securing-a-logic-app.md#secure-data-code-view)。 | 大多数触发器和操作 |
 | `runtimeConfiguration.staticResult` | JSON 对象 | 对于支持并启用[静态结果](../logic-apps/test-logic-apps-mock-data-static-results.md)设置的操作，`staticResult` 对象具有以下特性： <p>- `name`，它引用当前操作的静态结果定义名称，该名称出现在逻辑应用工作流的 `definition` 特性中的 `staticResults` 属性中。 有关详细信息，请参阅[静态结果-工作流定义语言的架构参考](../logic-apps/logic-apps-workflow-definition-language.md#static-results)。 <p> - `staticResultOptions`，指定当前操作是否 `Enabled` 静态结果。 <p>若要启用静态结果，请参阅[使用模拟数据测试逻辑应用通过设置静态结果](../logic-apps/test-logic-apps-mock-data-static-results.md) | 操作：随 |
 ||||| 
 

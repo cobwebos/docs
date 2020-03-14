@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196104"
+ms.lasthandoff: 03/13/2020
+ms.locfileid: "79271728"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>关于密钥、机密和证书
 
@@ -120,6 +120,7 @@ Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信�
 -   **ES384** - 使用曲线 P-384 创建的 SHA-384 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 -   **ES512** - 使用曲线 P-521 创建的 SHA-512 摘要和密钥的 ECDSA。 [RFC7518](https://tools.ietf.org/html/rfc7518) 中描述了此算法。
 
+
 ###  <a name="rsa-algorithms"></a>RSA 算法  
  Key Vault 中的 RSA 和 RSA-HSM 密钥支持以下算法标识符。  
 
@@ -130,6 +131,9 @@ Key Vault 使用的加密模块（HSM 或软件）经过 FIPS（美国联邦信�
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
+-   **PS256** -RSASSA-PKCS-V1.5-PSS 使用 sha-256 和 MGF1 with sha-256，如[RFC7518](https://tools.ietf.org/html/rfc7518)中所述。
+-   **PS384** -RSASSA-PKCS-V1.5-PSS 使用 sha-384 和 MGF1 with sha-384，如[RFC7518](https://tools.ietf.org/html/rfc7518)中所述。
+-   **PS512** -RSASSA-PKCS-V1.5-PSS 使用 sha-512 和 MGF1 with sha-512，如[RFC7518](https://tools.ietf.org/html/rfc7518)中所述。
 -   **RS256** - RSASSA-PKCS-v1_5 使用 SHA-256。 必须使用 SHA-256 计算应用程序提供的摘要值，并且该值的长度必须为 32 字节。  
 -   **RS384** - RSASSA-PKCS-v1_5 使用 SHA-384。 必须使用 SHA-384 计算应用程序提供的摘要值，并且该值的长度必须为 48 字节。  
 -   **RS512** - RSASSA-PKCS-v1_5 使用 SHA-512。 必须使用 SHA-512 计算应用程序提供的摘要值，并且该值的长度必须为 64 字节。  
